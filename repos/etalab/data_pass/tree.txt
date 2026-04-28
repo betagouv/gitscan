@@ -983,6 +983,7 @@
 │   │   ├── developers
 │   │   │   ├── oauth_applications_controller.rb
 │   │   │   ├── open_api_controller.rb
+│   │   │   ├── tutorials_controller.rb
 │   │   │   ├── webhook_attempts_controller.rb
 │   │   │   └── webhooks_controller.rb
 │   │   ├── developers_controller.rb
@@ -1236,6 +1237,7 @@
 │   │   │   ├── modified_form_controller.js
 │   │   │   ├── name_with_uid_preview_controller.js
 │   │   │   ├── remove_attached_file_controller.js
+│   │   │   ├── scroll_into_view_controller.js
 │   │   │   ├── scroll_to_controller.js
 │   │   │   ├── scroll_to_top_controller.js
 │   │   │   ├── show_and_hide_controller.js
@@ -1579,6 +1581,7 @@
 │   │   ├── message_template_preview_renderer.rb
 │   │   ├── piste_api_client.rb
 │   │   ├── skip_links_implemented_checker.rb
+│   │   ├── title_defined_checker.rb
 │   │   ├── user_context.rb
 │   │   └── webhook_http_service.rb
 │   ├── validators
@@ -1803,8 +1806,10 @@
 │       │   │   ├── _specific_requirements.html.erb
 │       │   │   ├── _submit_buttons.html.erb
 │       │   │   └── _tos_checkboxes.html.erb
+│       │   ├── submit.turbo_stream.erb
 │       │   └── summary.html.erb
 │       ├── authorization_request_mailer
+│       │   ├── _submit_body.text.erb
 │       │   ├── annuaire_des_entreprises
 │       │   │   ├── approve.html.erb
 │       │   │   └── approve.text.erb
@@ -1889,15 +1894,17 @@
 │       │   ├── reopening_refuse.text.erb
 │       │   ├── reopening_request_changes.html.erb
 │       │   ├── reopening_request_changes.text.erb
+│       │   ├── reopening_submit.text.erb
 │       │   ├── request_changes.html.erb
 │       │   ├── request_changes.text.erb
 │       │   ├── revoke.html.erb
 │       │   ├── revoke.text.erb
-│       │   └── shared
-│       │       ├── _with_reason_body.html.erb
-│       │       └── dgfip_sandbox
-│       │           ├── approve.text.erb
-│       │           └── reopening_approve.text.erb
+│       │   ├── shared
+│       │   │   ├── _with_reason_body.html.erb
+│       │   │   └── dgfip_sandbox
+│       │   │       ├── approve.text.erb
+│       │   │       └── reopening_approve.text.erb
+│       │   └── submit.text.erb
 │       ├── authorization_request_transfer_mailer
 │       │   └── success.text.erb
 │       ├── authorization_requests
@@ -1999,6 +2006,9 @@
 │       │   ├── oauth_applications
 │       │   │   └── index.html.erb
 │       │   ├── open_api
+│       │   │   └── show.html.erb
+│       │   ├── tutorials
+│       │   │   ├── index.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── webhook_attempts
 │       │   │   ├── index.html.erb
@@ -2492,6 +2502,11 @@
 │   ├── dashboard-comportement-utilisateur.md
 │   ├── datagouv-habilitations-sync.md
 │   ├── design.md
+│   ├── developers
+│   │   └── tutorials
+│   │       ├── ecriture.md
+│   │       ├── lecture.md
+│   │       └── webhooks.md
 │   ├── lifecycle_documentation.md
 │   ├── lifecycle_documentation_with_stages.md
 │   ├── modification_scopes.md
@@ -2529,6 +2544,7 @@
 │   ├── developpeurs
 │   │   ├── applications.feature
 │   │   ├── documentation.feature
+│   │   ├── tutoriels.feature
 │   │   └── webhooks.feature
 │   ├── eligibility_check.feature
 │   ├── gestion_des_documents.feature
@@ -3204,6 +3220,7 @@
 │   │   ├── message_template_interpolator_spec.rb
 │   │   ├── message_template_preview_renderer_spec.rb
 │   │   ├── skip_links_implemented_spec.rb
+│   │   ├── title_defined_checker_spec.rb
 │   │   └── webhook_http_service_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
@@ -3261,4 +3278,4 @@
     ├── .keep
     └── javascript
         └── .keep
-444 directories, 2957 files
+447 directories, 2971 files
