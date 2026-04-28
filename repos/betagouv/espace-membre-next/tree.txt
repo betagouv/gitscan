@@ -2,13 +2,11 @@
 ├── .dockerignore
 ├── .env.development
 ├── .env.test
-├── .eslintrc.json
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── codeql-analysis.yml
 │       ├── nodejs.yml
-│       ├── onboarding-checklist-validation.yml
 │       ├── playwright.yml
 │       └── utils
 │           └── validateFile.ts
@@ -22,7 +20,6 @@
 ├── .talismanrc
 ├── CRON.md
 ├── Dockerfile
-├── EMAIL.md
 ├── LICENCE.md
 ├── Makefile
 ├── Procfile
@@ -40,7 +37,6 @@
 │   ├── test-create-member.ts
 │   ├── test-email.ts
 │   ├── test-event.ts
-│   ├── test-lib-github.ts
 │   ├── test-service-account.ts
 │   ├── test-setup.ts
 │   ├── test-startups.ts
@@ -59,6 +55,7 @@
 │   ├── account.spec.ts
 │   ├── api.spec.ts
 │   ├── auth.valid.member.setup.ts
+│   ├── community.create.spec.ts
 │   ├── community.spec.ts
 │   ├── dashboard.spec.ts
 │   ├── incubator.spec.ts
@@ -68,6 +65,7 @@
 │   ├── organization.spec.ts
 │   ├── startups.spec.ts
 │   └── team.spec.ts
+├── eslint.config.mjs
 ├── generate-cron-md.ts
 ├── generate-email-md.ts
 ├── knexfile.js
@@ -427,7 +425,6 @@
 │   │   │   └── EventsList.tsx
 │   │   ├── FicheHeader.tsx
 │   │   ├── FichePicture.tsx
-│   │   ├── Footer.tsx
 │   │   ├── Formation
 │   │   │   ├── FormationCard.tsx
 │   │   │   └── FormationList.tsx
@@ -602,9 +599,7 @@
 │   │   ├── events.ts
 │   │   ├── file.ts
 │   │   ├── flat.ts
-│   │   ├── github.ts
 │   │   ├── hstore.ts
-│   │   ├── icalhelper.ts
 │   │   ├── kysely
 │   │   │   ├── index.ts
 │   │   │   ├── queries
@@ -797,6 +792,7 @@
 │       ├── error.ts
 │       ├── file.ts
 │       ├── gracefulExit.ts
+│       ├── ical.ts
 │       ├── member.ts
 │       ├── pgAdpter.ts
 │       ├── platform.ts
@@ -808,4 +804,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-186 directories, 624 files
+186 directories, 620 files
