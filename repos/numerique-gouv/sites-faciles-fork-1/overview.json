@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/numerique-gouv/sites-faciles-fork-1",
   "name": "sites-faciles-fork-1",
-  "description": "Ce projet permet la création simplifiée de sites web conformes aux normes numériques en vigueur, en utilisant Wagtail CMS et le Système de design de l’État (DSFR).",
+  "description": "Sites Conformes permet la création simplifiée de sites internet pour le domaine .gouv.fr, basé sur Wagtail et le Système de design de l’État (DSFR). Il facilite la conception de sites conformes aux normes numériques.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Contenu éditorial",
-    "Sécurité & Conformité",
-    "Accessibilité & i18n"
+    "Accessibilité & i18n",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,32 +16,31 @@
     "Wagtail",
     "django-dsfr",
     "PostgreSQL",
-    "python-dotenv"
+    "python-dotenv",
+    "dj-database-url",
+    "gunicorn",
+    "dj-static",
+    "whitenoise",
+    "wagtailmenus",
+    "wagtail-modeladmin",
+    "wagtail-markdown",
+    "boto3"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
-    "TypeScript / JavaScript",
     "Django",
     "Python (scripts & backend)",
-    "Design System (DSFR)"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
-  "workflows": [
-    "ci-check-i18n.yml",
-    "ci-check-migrations.yml",
-    "ci-main.yml",
-    "ci-quality.yml"
-  ],
-  "lastActivity": "2026-04-02T13:54:46+00:00",
+  "tests": "Tests automatisés couvrant Python 3.12 à 3.14 et PostgreSQL 14 à 17.",
+  "workflows": [],
+  "lastActivity": "2026-04-23T12:51:13+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -54,8 +53,8 @@
   "tags": [
     "Python",
     "Django",
-    "Wagtail",
     "DSFR",
-    "CMS"
+    "Gouvernement",
+    "Wagtail"
   ]
 }
