@@ -1,13 +1,11 @@
-## Changelog : infra (30 derniers jours, au 16 mai 2026)
+## Changelog : infra (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce changelog présente les récentes modifications apportées à l'infrastructure Mna. Les changements se concentrent principalement sur la sécurité, avec une correction concernant les adresses IP de confiance, ainsi que sur la gestion des accès au projet LBA.
-
-### Évolutions fonctionnelles
-- Correction concernant la gestion des adresses IP de confiance : permet de garantir la sécurité et l'accessibilité des services. [#002031f](https://github.com/mission-apprentissage/infra/commit/002031f)
+Ce changelog présente les récentes améliorations apportées à l'infrastructure Mna. Les changements incluent l'ajout d'une grappe MongoDB pour les tests, la mise à jour des habilitations de projets et une correction concernant les adresses IP de confiance.
 
 ### Évolutions techniques
-- Mise à jour des habilitations du projet LBA : amélioration de la gestion des permissions et de l'accès aux ressources. [#13efcb9](https://github.com/mission-apprentissage/infra/commit/13efcb9)
+- Ajout d'une grappe MongoDB dédiée aux environnements de test, facilitant ainsi le développement et la validation des fonctionnalités. [#210](https://github.com/mission-apprentissage/infra/issues/210)
+- Mise à jour des habilitations des projets LBA et Data pour une meilleure gestion des accès et une sécurité renforcée. [#212](https://github.com/mission-apprentissage/infra/issues/212)
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Correction d'un problème lié aux adresses IP de confiance. [#211](https://github.com/mission-apprentissage/infra/issues/211)
