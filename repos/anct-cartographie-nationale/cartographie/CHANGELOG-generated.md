@@ -1,35 +1,43 @@
-## Changelog : cartographie (30 derniers jours, au 24 avril 2026)
+## Changelog : cartographie (30 derniers jours, au 26 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la performance et la stabilité de la plateforme. Des optimisations significatives ont été apportées au caching, à la gestion des requêtes API et à l'infrastructure, notamment avec l'ajout d'un reverse proxy Nginx et de mesures de sécurité renforcées. Des corrections de bugs ont également été implémentées pour améliorer l'expérience utilisateur et la fiabilité du système.
+Ce mois-ci, les améliorations se concentrent sur l'optimisation des performances du site, notamment en améliorant la vitesse de chargement des pages et en réduisant la charge sur le serveur. Des améliorations de sécurité ont également été apportées avec l'ajout de limitations de débit et la protection contre les bots malveillants. Enfin, des corrections d'accessibilité et des améliorations de l'expérience utilisateur ont été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un endpoint `/api/cache/reset` pour invalider manuellement le cache.
-- Pré-remplissage des informations du lieu dans le formulaire de signalement d'erreur.
-- Ajout de pages légales avec du contenu en MDX.
-- Redirections pour les anciennes routes Angular.
-- Amélioration de la gestion du thème (passage automatique au thème système).
+- Ajout d'un point de terminaison `/api/cache/reset` pour invalider le cache à la demande. [#80781fc](https://github.com/anct-cartographie-nationale/cartographie/commit/80781fc)
+- Amélioration de la gestion des erreurs avec une page d'erreur plus conviviale pour les échecs d'API. [#f462ef5](https://github.com/anct-cartographie-nationale/cartographie/commit/f462ef5)
+- Correction de l'affichage des heures d'ouverture. [#a8da3b8](https://github.com/anct-cartographie-nationale/cartographie/commit/a8da3b8)
+- Correction du comportement des filtres pour conserver les filtres `code_insee` spécifiques. [#f5d08c1](https://github.com/anct-cartographie-nationale/cartographie/commit/f5d08c1)
+- Correction de l'affichage du thème sombre, qui utilise maintenant les préférences du système. [#b8448bd](https://github.com/anct-cartographie-nationale/cartographie/commit/b8448bd)
 
 ### Évolutions techniques
-- Implémentation d'un cache en mémoire (BFF) pour remplacer les appels directs à l'API PostgREST, améliorant significativement les performances.
-- Ajout d'un reverse proxy Nginx avec caching (TTL de 6h), compression gzip, et configuration de sécurité (limitation de débit, page d'erreur personnalisée 403, timeouts).
-- Intégration de CrowdSec pour la détection collaborative de menaces.
-- Optimisation de la taille de l'image Docker (réduction de 42%).
-- Amélioration de la gestion des erreurs et ajout de logs plus détaillés.
-- Mise à jour de Node.js vers la version 22 pour une meilleure compatibilité avec les Web Streams.
-- Amélioration de la configuration et des ressources des conteneurs Scaleway.
-- Ajout de tests d'infrastructure pour la restriction géographique et le cache.
-- Refactorisation de la configuration Nginx et des tests associés.
-- Ajout de tests e2e pour les endpoints de statistiques.
+- Optimisation significative des performances :
+    - Mise en cache du CSV export avec des tags et augmentation du timeout Nginx.
+    - Utilisation de `next/dynamic` pour le chargement différé de MapLibre.
+    - Extraction du contenu LCP (Largest Contentful Paint) vers des composants serveur pour un rendu plus rapide.
+    - Mise en cache HTTP et côté serveur pour les routes API.
+    - Utilisation de ReadableStream pour les exports CSV.
+    - Optimisation du rendu React pour les marqueurs de carte et les éléments de liste.
+    - Ajout de preconnect hints pour les assets statiques S3.
+- Amélioration de la sécurité :
+    - Ajout de limitations de débit (rate limiting) et blocage des bots malveillants.
+    - Intégration de CrowdSec pour la détection collaborative des menaces.
+    - Ajout d'un reverse proxy Nginx avec cache, compression gzip, et configuration améliorée.
+    - Ajout d'un geo-whitelist pour autoriser l'accès depuis certains pays (notamment les crawlers de moteurs de recherche).
+- Infrastructure :
+    - Mise à jour de Node.js vers la version 22 pour la compatibilité avec Web Streams.
+    - Réduction de la taille de l'image Docker.
+    - Amélioration de la configuration des ressources conteneur Scaleway.
+- Tests :
+    - Ajout de tests E2E pour les endpoints de statistiques.
+    - Amélioration des tests E2E existants.
 
 ### Autres changements
-- Mise à jour des variables d'environnement Matomo.
-- Mise à jour de l'URL de La Coop.
 - Mise à jour des dépendances.
-- Amélioration de la configuration de lint-staged.
-- Ajout de sources de données Cockpit Grafana.
-- Correction de la configuration robots.txt et sitemap.
-- Ajout de health check pour Scaleway container.
-- Suppression de code et de dépendances inutilisées.
-- Amélioration de la configuration des workflows GitHub Actions.
-- Correction de bugs divers liés à l'extraction d'IP, la gestion des filtres, et la configuration de l'environnement.
+- Correction de la configuration de `lint-staged`.
+- Mise à jour de l'URL de la cartographie dans la documentation.
+- Ajout de variables d'environnement Matomo.
+- Amélioration de la configuration de GitHub Actions.
+- Ajout d'un health check endpoint pour Scaleway.
+- Ajout de logs d'accès Nginx avec country et status du cache.
+- Suppression de code inutile et nettoyage général du code.

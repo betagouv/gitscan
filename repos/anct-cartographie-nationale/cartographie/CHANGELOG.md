@@ -1,3 +1,87 @@
+## [6.15.9](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.8...v6.15.9) (2026-04-26)
+
+
+### Bug Fixes
+
+* add AI bots to nginx rate limiting and export blocking ([66f23e7](https://github.com/anct-cartographie-nationale/cartographie/commit/66f23e780f47d17d328f35d15efef91bcf391a46))
+
+## [6.15.8](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.7...v6.15.8) (2026-04-26)
+
+
+### Bug Fixes
+
+* fix bot blocking on exports and remove unstable_cache for exports ([bc787d9](https://github.com/anct-cartographie-nationale/cartographie/commit/bc787d921385c9ca40d18409a42f3a613f3ae589))
+
+## [6.15.7](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.6...v6.15.7) (2026-04-26)
+
+
+### Bug Fixes
+
+* increase global rate limit burst to 40 ([9c2877c](https://github.com/anct-cartographie-nationale/cartographie/commit/9c2877c39fc3646456422c03a8c91999fd4aab48))
+* restore breadcrumbsItems prop for web component compatibility ([3ce34b1](https://github.com/anct-cartographie-nationale/cartographie/commit/3ce34b1f7171be7e201770aaec7414f3598534af))
+* restore main landmark and skip links in refactored pages ([d2d2ea9](https://github.com/anct-cartographie-nationale/cartographie/commit/d2d2ea9a9cfdea07acfe6083c4fee0d59c42b5f5))
+
+
+### Performance Improvements
+
+* extract LCP content to server component for faster paint ([4c74a69](https://github.com/anct-cartographie-nationale/cartographie/commit/4c74a699c83467adcd693fbb53fafb53b43ba42f))
+* extract LCP content to server components for region and department pages ([17673b9](https://github.com/anct-cartographie-nationale/cartographie/commit/17673b97082212519690e995ac8844b68e6f9ce1))
+
+## [6.15.6](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.5...v6.15.6) (2026-04-26)
+
+
+### Performance Improvements
+
+* cache CSV exports with tags and increase nginx timeout ([5d465bb](https://github.com/anct-cartographie-nationale/cartographie/commit/5d465bb6667d0c1c9d9aa72830490254c8370223))
+
+## [6.15.5](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.4...v6.15.5) (2026-04-26)
+
+
+### Bug Fixes
+
+* **a11y:** add aria-label to map marker links ([cff6fc5](https://github.com/anct-cartographie-nationale/cartographie/commit/cff6fc5bb249ce07ac6be077439ac8205c20dca9))
+
+
+### Performance Improvements
+
+* add preconnect hint for S3 static assets ([d604bf5](https://github.com/anct-cartographie-nationale/cartographie/commit/d604bf51157d1614a4d70063f1c667d20a3e5822))
+* render LCP heading without waiting for map loading state ([6a85511](https://github.com/anct-cartographie-nationale/cartographie/commit/6a855110e7932cab50b723d52ef153c7f0cb74d3))
+
+## [6.15.4](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.3...v6.15.4) (2026-04-26)
+
+
+### Performance Improvements
+
+* lazy-load MapLibre via next/dynamic ([02f1c40](https://github.com/anct-cartographie-nationale/cartographie/commit/02f1c402183a47d5252dbb1e437cfd4d6db643e7))
+
+## [6.15.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.2...v6.15.3) (2026-04-26)
+
+
+### Bug Fixes
+
+* **a11y:** add accessible names, image dimensions and link underlines ([3161684](https://github.com/anct-cartographie-nationale/cartographie/commit/3161684104c02fed032a4dfa25ae90b87400bf14))
+* block bot exports, exclude map tiles from rate limit, tune scaling ([e273c7a](https://github.com/anct-cartographie-nationale/cartographie/commit/e273c7aa864dba26bb72eb56d0de950653b087a2))
+
+
+### Performance Improvements
+
+* add immutable cache headers to static assets on S3 ([2ade3ac](https://github.com/anct-cartographie-nationale/cartographie/commit/2ade3ac4d8b9b45596320059236058999658529d))
+* switch CSV exports from in-memory to streaming response ([51ade24](https://github.com/anct-cartographie-nationale/cartographie/commit/51ade240c09973a6a035c9fc860f3c78fa148588))
+
+## [6.15.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.1...v6.15.2) (2026-04-26)
+
+
+### Bug Fixes
+
+* add cache to lieu redirect page and remove stale Cache-Control headers ([65f5e7a](https://github.com/anct-cartographie-nationale/cartographie/commit/65f5e7a65c74e4aac80cabe42aafc0e82f00a5b2))
+* reduce SSR payload size and rate limit Facebook bot ([86c9a20](https://github.com/anct-cartographie-nationale/cartographie/commit/86c9a209225879cbfd7f86830e28f73fc1216cc3))
+
+
+### Performance Improvements
+
+* enable ISR with on-demand revalidation via cache tags ([c50fbbc](https://github.com/anct-cartographie-nationale/cartographie/commit/c50fbbcdd7415048218f269a76112a3cc3d19406))
+* switch all API routes from TTL to on-demand cache revalidation ([14b905c](https://github.com/anct-cartographie-nationale/cartographie/commit/14b905c03a706ea100c4d6cd88681b51fb0dd318))
+
 ## [6.15.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.0...v6.15.1) (2026-04-24)
 
 
