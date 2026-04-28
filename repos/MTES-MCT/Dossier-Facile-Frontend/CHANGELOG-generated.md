@@ -1,32 +1,29 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 22 avril 2026)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Dossier-Facile-Frontend au cours du dernier mois. Les principales évolutions concernent l'analyse de documents (notamment les fiches de paie et les avis de situation), l'expérience utilisateur sur les formulaires et la gestion des erreurs, ainsi que l'ajout de la fonctionnalité Visale.
+Ce mois-ci, les améliorations se concentrent sur l'analyse des documents (notamment les fiches de paie et les attestations d'assurance Visale), l'expérience utilisateur lors de la saisie des informations et la correction de bugs liés à la validation des dossiers. Plusieurs versions ont été publiées pour intégrer ces changements et améliorer la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- **Analyse de documents :**
-    - Ajout de l'analyse des documents Visale [#1912](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1912).
-    - Intégration d'un indicateur d'IA pour l'analyse des fiches de paie, avec affichage d'un message d'aide [#1948](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1948) et [#1928](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1928).
-    - Amélioration des messages d'erreur liés à l'analyse des fiches de paie [#1940](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1940).
-    - Masquage des documents actuels lorsque la liste est vide lors de l'analyse de la continuité de la fiche de paie [#1949](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1949).
-- **Interface utilisateur :**
-    - Ajout d'un lien vers la documentation dans le support de la location [#1950](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1950).
-    - Ajout d'un badge d'erreur au composant de récapitulatif financier [#1947](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1947).
-    - Suppression du bouton de réponse dans les messages lorsque le locataire est validé [#1943](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1943).
-    - Refonte de la logique de sauvegarde des fichiers de salaire avec analyse [#1939](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1939).
-    - Amélioration du focus sur la somme lorsque celle-ci est vide dans le formulaire de salaire [#1941](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1941).
-    - Remplacement du modal "asdir" par un toast d'erreur lors du téléchargement [#1927](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1927).
-    - Modification du bouton "Sauvegarder" par "Suivant" sur la page d'explication de l'analyse [#1925](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1925).
-- **Formulaire de contact :**
-    - Ajout d'un état de chargement au bouton de soumission du formulaire de contact [#1923](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1923).
-- **Page de confirmation :**
-    - Correction de la page de confirmation pour les utilisateurs connectés [#1919](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1919).
+- **Analyse de documents :** Ajout de l'analyse des documents Visale pour faciliter la vérification des dossiers. [#1912](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1912)
+- **Fiche de paie :**
+    - Ajout d'une indication visuelle (badge d'erreur) pour signaler les problèmes lors de l'analyse de la fiche de paie. [#1947](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1947)
+    - Amélioration des messages d'erreur liés à l'analyse de la fiche de paie pour une meilleure clarté. [#1940](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1940)
+    - Ajout d'un support pour la compatibilité avec la règle de la feuille d'impôt. [#1946](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1946)
+    - Ajout d'un callout IA pour l'analyse de la fiche de paie. [#1948](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1948)
+    - Correction de l'affichage des documents lors de l'analyse de la fiche de paie. [#1949](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1949)
+- **Garantie :** Correction d'un bug empêchant la validation d'un dossier avec un garant légal. [#1952](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1952)
+- **Formulaire de contact :** Réinitialisation du formulaire de contact après soumission. [#1945](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1945)
+- **Messages :** Masquage du bouton de réponse dans les messages une fois le dossier validé. [#1943](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1943)
+- **Visale :** Amélioration de la gestion des erreurs et des messages liés à Visale. [#1926](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1926)
+- **Navigation :** Remplacement du bouton "Enregistrer" par un bouton "Suivant" dans l'explication de l'analyse. [#1925](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1925)
 
 ### Évolutions techniques
-- **Compatibilité avec les règles fiscales :** Ajout de la compatibilité avec la règle des tranches d'imposition [#1946](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1946).
-- **Tests E2E :** Ajout d'un test E2E pour le modal lors du téléchargement d'un avis déclaratif [#1918](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1918) et pour le happy path de l'analyse de la fiche de paie [#1937](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1937).
-- **Refactoring :** Refactoring de la logique de sauvegarde des fichiers de salaire avec analyse.
+- **Refactoring :** Refactorisation de la logique de sauvegarde des fichiers pour l'analyse des salaires. [#1939](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1939)
+- **Tests :** Ajout de tests E2E pour la fiche de paie. [#1937](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1937)
+- **Corrections diverses :** Correction de problèmes de focus et de gestion de l'état dans le formulaire de salaire. [#1941](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1941), [#1936](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1936)
 
 ### Autres changements
-- Correction de fautes de frappe (garant) [#1922](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1922).
-- Publication des versions 3.5.2, 3.5.3, 3.5.4 et 3.5.6.
+- Mises à jour de version : 3.5.3, 3.5.4, 3.5.6 et 3.5.7 ont été publiées.
+- Amélioration de la gestion des messages d'erreur liés aux fichiers. [#1929](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1929)
+- Remplacement de la modale asdir par un toast d'erreur. [#1927](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1927)
+- Correction de l'affichage de l'analyse doc-ia sur la mise à jour du fichier de salaire. [#1935](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1935)
