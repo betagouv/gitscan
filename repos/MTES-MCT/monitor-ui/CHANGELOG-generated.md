@@ -1,16 +1,16 @@
-## Changelog : monitor-ui (30 derniers jours, au 13 avril 2026)
+## Changelog : monitor-ui (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations visuelles avec l'ajout de nouvelles couleurs pour les icônes, des corrections de bugs concernant l'affichage des champs de saisie de date et de temps, ainsi que des refactorings pour améliorer la qualité du code et la flexibilité des composants.
+Ce mois-ci, la bibliothèque de composants `monitor-ui` a bénéficié d'améliorations visuelles avec l'ajout de nouvelles couleurs pour les icônes, ainsi que de corrections de bugs et d'optimisations concernant l'affichage et le comportement des champs de formulaire, notamment les sélecteurs multiples et les calendriers.
 
 ### Évolutions fonctionnelles
-- Ajout de couleurs secondaires et tertiaires pour les icônes, permettant une plus grande personnalisation de l'interface utilisateur. [#6ac0078](https://github.com/MTES-MCT/monitor-ui/commit/6ac007805b99387aa09696043279607afaf529c4)
-- Ajout d'une nouvelle icône "Load". [#57f388a](https://github.com/MTES-MCT/monitor-ui/commit/57f388a)
+- Ajout de couleurs secondaires et tertiaires pour les icônes, permettant une plus grande flexibilité visuelle. [#6ac0078](https://github.com/MTES-MCT/monitor-ui/commit/6ac007805b99387aa09696043279607afaf529c4)
+- Correction d'un bug d'affichage des champs de saisie de temps dans les calendriers. [#986360c](https://github.com/MTES-MCT/monitor-ui/commit/986360c88730ba36a3e3d78d35d4bf44aeaf0fee)
+- Correction d'un problème d'étiquette sur les drones. [#2c0a152](https://github.com/MTES-MCT/monitor-ui/commit/2c0a1528107def29e795bb7fcc8448e92de949b5)
 
 ### Évolutions techniques
-- Refactoring du composant `MultiSelect.tsx` pour améliorer sa structure et sa maintenabilité. [#428a22f](https://github.com/MTES-MCT/monitor-ui/commit/428a22f9a47a18467463541e186927717640878f)
-- Suppression d'une propriété optionnelle inutile dans le composant `fields`, simplifiant ainsi le code. [#dec24a7](https://github.com/MTES-MCT/monitor-ui/commit/dec24a7)
-- Correction de l'affichage des champs de saisie de date et de temps lorsque l'option `isCalendarTop` est activée. [#986360c](https://github.com/MTES-MCT/monitor-ui/commit/986360c88730ba36a3e3d78d35d4bf44aeaf0fee)
+- Refactorisation du composant `MultiSelect` pour améliorer sa structure interne. [#428a22f](https://github.com/MTES-MCT/monitor-ui/commit/428a22f9a47a18467463541e186927717640878f)
+- Suppression d'une propriété optionnelle inutile dans le composant `fields`. [#dec24a7](https://github.com/MTES-MCT/monitor-ui/releases#:~:text=isTop%20inner%20prop%20(-,dec24a7,-)))
 
 ### Autres changements
-- Mises à jour de version (24.38.3, 24.38.4, 24.44.0, 24.45.0, 24.47.0, 24.48.0)
+- Aucune information supplémentaire à signaler.
