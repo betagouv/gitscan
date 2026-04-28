@@ -1,12 +1,13 @@
-## Changelog : patrinotes (30 derniers jours, au 25 mars 2026)
+## Changelog : patrinotes (30 derniers jours, au 26 avril 2026)
 
 ### Résumé
-Cette mise à jour améliore la robustesse de l'envoi d'emails, notamment en gérant les erreurs et en utilisant des fonctions asynchrones pour une meilleure performance. Cela garantit une notification plus fiable des alertes et des informations importantes concernant le patrimoine.
+Cette mise à jour apporte une amélioration significative à l'affichage des dernières données de sprint, permettant un suivi plus clair de l'avancement du projet.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des erreurs lors de l'envoi d'emails. [#1234](https://github.com/betagouv/patrinotes/issues/1234)
-- Utilisation de `async/await` pour optimiser l'envoi d'emails.
+- Affichage des 2 derniers sprints dans l'interface utilisateur. [#69](https://github.com/betagouv/patrinotes/issues/69)
 
 ### Évolutions techniques
-- Refactorisation des fonctions d'envoi d'emails pour une meilleure gestion asynchrone.
-- Ajout de la gestion des erreurs dans les fonctions d'envoi d'emails.
+- Aucune évolution technique notable.
+
+### Autres changements
+- Aucune autre modification à signaler.

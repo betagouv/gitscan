@@ -1,22 +1,18 @@
 .
-├── .claude
-│   └── settings.local.json
 ├── .dockerignore
 ├── .env.dist
 ├── .env.test
 ├── .gitattributes
 ├── .github
 │   └── workflows
-│       └── main.yml
+│       ├── main.yml
+│       └── tests.yml
 ├── .gitignore
 ├── .npmrc
 ├── .prettierrc
 ├── Dockerfile
 ├── Procfile
 ├── README.md
-├── ci
-│   ├── docker-compose.development.yaml
-│   └── docker-compose.main.yaml
 ├── db
 │   ├── 0000_bright_stone_men.sql
 │   ├── 0001_needy_zemo.sql
@@ -37,6 +33,17 @@
 │   ├── 0016_pale_rhodey.sql
 │   ├── 0017_overrated_the_professor.sql
 │   ├── 0018_tan_gravity.sql
+│   ├── 0019_bouncy_falcon.sql
+│   ├── 0020_noisy_lady_ursula.sql
+│   ├── 0021_bizarre_wither.sql
+│   ├── 0022_volatile_joseph.sql
+│   ├── 0023_naive_fenris.sql
+│   ├── 0024_grey_captain_universe.sql
+│   ├── 0025_silly_roland_deschain.sql
+│   ├── 0026_mighty_arachne.sql
+│   ├── 0027_wonderful_dark_beast.sql
+│   ├── 0028_lethal_lenny_balinger.sql
+│   ├── 0029_rapid_moonstone.sql
 │   ├── init
 │   │   ├── 0_create-publication.sql
 │   │   └── 1_create_keycloak.sql
@@ -60,6 +67,17 @@
 │       ├── 0016_snapshot.json
 │       ├── 0017_snapshot.json
 │       ├── 0018_snapshot.json
+│       ├── 0019_snapshot.json
+│       ├── 0020_snapshot.json
+│       ├── 0021_snapshot.json
+│       ├── 0022_snapshot.json
+│       ├── 0023_snapshot.json
+│       ├── 0024_snapshot.json
+│       ├── 0025_snapshot.json
+│       ├── 0026_snapshot.json
+│       ├── 0027_snapshot.json
+│       ├── 0028_snapshot.json
+│       ├── 0029_snapshot.json
 │       └── _journal.json
 ├── docker-compose.test.yaml
 ├── docker-compose.yaml
@@ -75,6 +93,8 @@
 │   │   ├── openapi.json
 │   │   ├── package.json
 │   │   ├── public
+│   │   │   ├── Marianne-Dark@2x.png
+│   │   │   ├── Marianne-Light@2x.png
 │   │   │   ├── fonts
 │   │   │   │   ├── Marianne-Bold.ttf
 │   │   │   │   ├── Marianne-BoldItalic.ttf
@@ -98,7 +118,6 @@
 │   │   │   │   │   └── pop.ts
 │   │   │   │   ├── debug.ts
 │   │   │   │   ├── errors.ts
-│   │   │   │   ├── image.ts
 │   │   │   │   ├── mail
 │   │   │   │   │   ├── alertMail.ts
 │   │   │   │   │   ├── assets
@@ -106,6 +125,7 @@
 │   │   │   │   │   │   ├── Marianne-Light@2x.png
 │   │   │   │   │   │   ├── placeholder.16x9.png
 │   │   │   │   │   │   └── placeholder.1x1.png
+│   │   │   │   │   ├── dsfrMailWrapper.ts
 │   │   │   │   │   └── template-generique.html
 │   │   │   │   ├── mail.ts
 │   │   │   │   └── sentry.ts
@@ -113,15 +133,20 @@
 │   │   │   ├── index.ts
 │   │   │   ├── router.ts
 │   │   │   ├── routes
+│   │   │   │   ├── adminMiddleware.ts
+│   │   │   │   ├── adminRoutes.ts
+│   │   │   │   ├── attachmentRedirectRoutes.ts
 │   │   │   │   ├── authMiddleware.ts
 │   │   │   │   ├── authRoutes.ts
 │   │   │   │   ├── index.d.ts
 │   │   │   │   ├── pdfRoutes.tsx
 │   │   │   │   ├── stateReportRoutes.ts
 │   │   │   │   ├── staticDataRoutes.ts
+│   │   │   │   ├── statsRoutes.ts
 │   │   │   │   ├── syncRoutes.ts
 │   │   │   │   ├── uploadRoutes.tsx
-│   │   │   │   └── userRoutes.ts
+│   │   │   │   ├── userRoutes.ts
+│   │   │   │   └── validationRoutes.ts
 │   │   │   ├── services
 │   │   │   │   ├── authService.ts
 │   │   │   │   ├── services.ts
@@ -132,8 +157,6 @@
 │   │   │   │   └── userService.ts
 │   │   │   └── types.ts
 │   │   ├── test.png
-│   │   ├── tests
-│   │   │   └── user.test.ts
 │   │   ├── tsconfig.json
 │   │   └── vite.config.ts
 │   ├── frontend
@@ -226,12 +249,13 @@
 │   │   │   │   ├── FullWidthButton.tsx
 │   │   │   │   ├── HomeImageSvg.tsx
 │   │   │   │   ├── InputGroup.tsx
-│   │   │   │   ├── LoginForm.tsx
 │   │   │   │   ├── MUIDsfr.tsx
 │   │   │   │   ├── MutationAlert.tsx
+│   │   │   │   ├── PDFViewerPaginated.tsx
 │   │   │   │   ├── PasswordInput.tsx
 │   │   │   │   ├── RedirectIfUser.tsx
 │   │   │   │   ├── ReportSearch.tsx
+│   │   │   │   ├── SearchModal.tsx
 │   │   │   │   ├── SmartAddressInput.tsx
 │   │   │   │   ├── Spinner.tsx
 │   │   │   │   ├── SyncForm.tsx
@@ -252,9 +276,7 @@
 │   │   │   │   └── AuthContext.tsx
 │   │   │   ├── db
 │   │   │   │   ├── AppSchema.ts
-│   │   │   │   ├── AttachmentQueue.ts
 │   │   │   │   ├── Connector.ts
-│   │   │   │   ├── Storage.ts
 │   │   │   │   └── db.ts
 │   │   │   ├── envVars.ts
 │   │   │   ├── features
@@ -276,8 +298,6 @@
 │   │   │   │   ├── chips
 │   │   │   │   │   └── useChipOptions.tsx
 │   │   │   │   ├── idb.ts
-│   │   │   │   ├── keycloak
-│   │   │   │   │   └── auth.ts
 │   │   │   │   ├── menu
 │   │   │   │   │   ├── ClauseMenu.tsx
 │   │   │   │   │   ├── HelpMenu.tsx
@@ -286,12 +306,16 @@
 │   │   │   │   │   ├── MenuTitle.tsx
 │   │   │   │   │   ├── ServicesMenu.tsx
 │   │   │   │   │   ├── Share.tsx
+│   │   │   │   │   ├── StatusBadge.tsx
 │   │   │   │   │   └── menuMachine.tsx
+│   │   │   │   ├── polyfill.ts
 │   │   │   │   ├── report
+│   │   │   │   │   ├── AppSearchBar.tsx
 │   │   │   │   │   ├── ReportActions.tsx
 │   │   │   │   │   ├── ReportList.tsx
 │   │   │   │   │   └── ReportListItem.tsx
 │   │   │   │   ├── state-report
+│   │   │   │   │   ├── ImageSyncModal.tsx
 │   │   │   │   │   ├── MHAddressAutocomplete.tsx
 │   │   │   │   │   ├── StateReportActions.tsx
 │   │   │   │   │   ├── StateReportForm.tsx
@@ -306,7 +330,10 @@
 │   │   │   │   │   │   ├── StateReportAlerts.hook.tsx
 │   │   │   │   │   │   ├── StateReportAlertsEmailInput.tsx
 │   │   │   │   │   │   └── StateReportAlertsMenu.tsx
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   └── useUnsyncedAttachments.ts
 │   │   │   │   │   ├── pdf
+│   │   │   │   │   │   ├── AlertsReminder.tsx
 │   │   │   │   │   │   ├── ConstatPdf.edit.tsx
 │   │   │   │   │   │   ├── ConstatPdf.hook.tsx
 │   │   │   │   │   │   ├── ConstatPdf.queries.tsx
@@ -331,9 +358,16 @@
 │   │   │   │   │   └── TextEditorToolbar.tsx
 │   │   │   │   ├── upload
 │   │   │   │   │   ├── DrawingCanvas.tsx
+│   │   │   │   │   ├── KonvaDrawingCanvas.tsx
 │   │   │   │   │   ├── UploadImage.tsx
 │   │   │   │   │   ├── UploadImageButton.tsx
-│   │   │   │   │   └── UploadReportImage.tsx
+│   │   │   │   │   ├── UploadReportImage.tsx
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   └── useAttachmentImages.ts
+│   │   │   │   │   ├── machines
+│   │   │   │   │   │   ├── attachmentUploadMachine.ts
+│   │   │   │   │   │   └── thumbnailMachine.ts
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── useDocumentQueries.tsx
 │   │   │   │   └── userSettings.ts
 │   │   │   ├── hooks
@@ -352,8 +386,10 @@
 │   │   │   ├── routes
 │   │   │   │   ├── __root.tsx
 │   │   │   │   ├── account.tsx
+│   │   │   │   ├── admin.lazy.tsx
 │   │   │   │   ├── cgu.tsx
 │   │   │   │   ├── connexion.tsx
+│   │   │   │   ├── constat-validation.$token.tsx
 │   │   │   │   ├── constat.$constatId.tsx
 │   │   │   │   ├── constat_.$constatId.pdf.tsx
 │   │   │   │   ├── edit.$reportId.tsx
@@ -361,9 +397,11 @@
 │   │   │   │   ├── inscription.tsx
 │   │   │   │   ├── mentions-legales.tsx
 │   │   │   │   ├── pdf.$reportId.tsx
+│   │   │   │   ├── politique-confidentialite.tsx
 │   │   │   │   ├── reset-password.$link.tsx
 │   │   │   │   ├── reset-password.index.lazy.tsx
-│   │   │   │   └── service.tsx
+│   │   │   │   ├── service.tsx
+│   │   │   │   └── stats.lazy.tsx
 │   │   │   ├── service-worker
 │   │   │   │   └── sw.ts
 │   │   │   ├── service-worker.d.ts
@@ -375,6 +413,9 @@
 │   └── pdf
 │       ├── package.json
 │       ├── src
+│       │   ├── components
+│       │   │   ├── MarianneHeader.tsx
+│       │   │   └── Pagination.tsx
 │       │   ├── index.ts
 │       │   ├── report.tsx
 │       │   ├── serviceInstructeur.json
@@ -386,17 +427,33 @@
 ├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── powersync-config.yaml
+├── powersync
+│   ├── powersync-config.yaml
+│   └── sync-config.yaml
 ├── scalingo.json
 ├── scripts
-│   └── clear-db.sh
+│   ├── clear-db.sh
+│   ├── db
+│   │   └── service.sql
+│   └── fill-db.sh
 └── tests
+    ├── admin.spec.ts
+    ├── attachment-redirect.spec.ts
     ├── compte-rendu.spec.ts
+    ├── constat-validation.spec.ts
+    ├── constat-with-alerts.spec.ts
     ├── constat.spec.ts
+    ├── fixtures
+    │   ├── test-image.jpg
+    │   └── test-image.png
+    ├── image-drawing-legend.spec.ts
+    ├── image-upload-compte-rendu.spec.ts
+    ├── image-upload-constat.spec.ts
     ├── keycloak-entrypoint.sh
     ├── realm-template.json
     ├── setup.ts
+    ├── stats.spec.ts
     ├── teardown.ts
     ├── user.spec.ts
     └── utils.ts
-64 directories, 337 files
+67 directories, 391 files
