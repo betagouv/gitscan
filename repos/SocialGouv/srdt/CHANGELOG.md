@@ -1,3 +1,24 @@
+## [1.39.4](https://github.com/SocialGouv/srdt/compare/v1.39.3...v1.39.4) (2026-04-23)
+
+
+### Bug Fixes
+
+* **llm:** back to chatgpt ([722b46a](https://github.com/SocialGouv/srdt/commit/722b46a788ee0356c753b79bfead9824019aef1a))
+
+## [1.39.3](https://github.com/SocialGouv/srdt/compare/v1.39.2...v1.39.3) (2026-04-23)
+
+
+### Bug Fixes
+
+* **prompt:** update prompt (CC_2) ([cbde56c](https://github.com/SocialGouv/srdt/commit/cbde56c438abcb1e4ef04d0f8d21425b267ee3e3)), closes [#328](https://github.com/SocialGouv/srdt/issues/328)
+
+## [1.39.2](https://github.com/SocialGouv/srdt/compare/v1.39.1...v1.39.2) (2026-04-23)
+
+
+### Bug Fixes
+
+* **llm:** restore Mistral LLM ([b6f7ce0](https://github.com/SocialGouv/srdt/commit/b6f7ce04444c61d90cf1091003db124d23ecbb9f))
+
 ## [1.39.1](https://github.com/SocialGouv/srdt/compare/v1.39.0...v1.39.1) (2026-04-16)
 
 
