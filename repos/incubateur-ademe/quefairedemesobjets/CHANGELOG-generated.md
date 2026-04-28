@@ -1,43 +1,26 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 22 avril 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la recherche et de l'affichage des résultats, ainsi que sur la correction de bugs et l'optimisation des performances. Des efforts importants ont également été déployés pour la maintenance technique, incluant des mises à jour de dépendances et des améliorations de l'infrastructure. Un travail de fond sur la déduplication des données et le clustering a également été initié.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la stabilité et des performances de la plateforme, notamment en corrigeant des erreurs et en optimisant les tests. Des améliorations significatives ont été apportées au tracking analytique, à la recherche et à l'indexation du contenu. Des travaux préliminaires sur un modèle de machine learning pour la déduplication des données ont également été réalisés.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche : correction de l'affichage dupliqué du nom dans les résultats de recherche (notamment pour Vélovélo) [#2754].
-- Tracking des clics sur les résultats de recherche implémenté [#2722].
-- Correction de la page d'accueil de l'assistant, avec une refonte complète [#2572].
-- Ajout de la sous-catégorie "Smartphone" au PAM pour les acteurs Ecologic et Ecosysteme [#2634].
-- Correction d'un problème sur les couleurs dans la fiche acteur, qui reprenaient la couleur de l'action au lieu du groupe.
-- Ajout de la distance dans le mode liste et la fiche acteur [#2632].
-- Correction d'un bug sur le formulaire : la carte était masquée et le titre tronqué [#2632].
-- Redirections massives depuis l'ancien site vers le nouveau implémentées [#2639].
-- Affichage des liens des SIRET dans le clustering [#2649].
+- **Recherche :** Correction de l'affichage dupliqué du nom dans les résultats de recherche (Vélovélo) [#2754](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2754).
+- **Redirections :** Mise en place de redirections depuis l'ancien domaine vers le nouveau [#2756](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2756) et ajout de redirections massives depuis l'ancien site vers le nouveau [#2639](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2639).
+- **Fiche Acteur :** Correction de l'affichage des couleurs dans la fiche acteur [#2654](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2654) et ajout de la distance dans le mode liste et la fiche acteur [#2632](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2632).
+- **Tracking :** Mise en place d'un nouveau système de tracking des pages vues et des événements [#2721](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2721) et tracking des clics sur les résultats de recherche [#2722](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2722).
+- **Indexation :** Amélioration de l'indexation lors de la publication d'une page Wagtail [#2653](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2653).
+- **Suggestion Groupe :** Passage des enrichissements d'URL sur la nouvelle architecture de SuggestionGroupe [#2621](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2621).
 
 ### Évolutions techniques
-- Migration de base de données effectuée [#2750].
-- Correction d'erreurs sur les termes de recherche orphelins [#2749].
-- Optimisations de performances apportées [#2633].
-- Passage de la version d'Airflow à la version 2 (rollback effectué suite à des problèmes) [#2646].
-- Refactoring de la gestion du tableau des suggestions de groupe [#2619].
-- Amélioration de l'indexation à la publication d'une page Wagtail [#2653].
-- Suppression du script de migration de la page d'accueil [#2637].
-- Rationalisation des environnements de développement [#2659].
-- Documentation et Makefile pour la partie DBT ajoutés [#2631].
-- Correction des tests e2e suite à des mises à jour de dépendances [#2736].
-- Correction des tests après les mises à jour de Pandas [#2735].
-- Mise à jour de nombreuses dépendances (Django, React, Parcel, PostgreSQL, Airflow, dbt, etc.).
-- Amélioration de la résilience des tests e2e [#2661].
+- **Tests :** Fiabilisation des tests analytics avec la résolution du Frame iframe [#2760](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2760) et correction des tests e2e en échec suite à des mises à jour de dépendances [#2736](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2736).
+- **Déploiement :** Suppression de directives Nginx en double sur Scalingo [#2718](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2718).
+- **Architecture :** Refactoring de la gestion du tableau des suggestion groupe [#2619](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2619).
+- **Machine Learning :** Premières itérations d'un modèle de machine learning pour la déduplication des données [#2727](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2727) et exécution du clustering via un Notebook [#2662](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2662).
+- **Performance :** Optimisations de performances générales [#2633](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2633).
+- **Airflow :** Retour à une version antérieure d'Airflow pour résoudre des problèmes de compatibilité [#2646](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2646).
 
 ### Autres changements
-- Redirection du domaine legacy vers le domaine principal [#2756].
-- Proxy PostHog configuré via le domaine principal [#2720].
-- Suppression de directives Nginx en double sur Scalingo [#2718].
-- Ajout d'un avertissement si une page à rediriger existe déjà dans le CMS [#2701].
-- Début de l'implémentation d'un modèle de Machine Learning pour la déduplication des données [#2727, #2662].
-- Suppression de l'accent du code `mélange_d_inertes_produits` des sous-catégories [#2635].
-- Suppression du cache npm car le `package-lock.json` est maintenant dans `webapp` [#2700].
-- Suppression de l'icône bonus réparation incorrecte [#2660].
-- Mise en place d'un système d'enrichissement des URL pour la nouvelle architecture de SuggestionGroupe [#2699].
-- Correction de l'indexation des pages pour éviter la mise en cache incorrecte [#2629].
-- Suppression de la mise en cache de la version iframe et standalone d'une page avec la même clé [#2629].
+- **Documentation :** Ajout du template manquant pour les tests analytics [#2757](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2757).
+- **Configuration :** Suppression du script de migration de la page d'accueil [#2637](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2637).
+- **Dépendances :** Mise à jour de nombreuses dépendances (Posthog, Django, etc.). Ces mises à jour sont gérées automatiquement et ne sont pas listées en détail ici.
+- **Divers :** Correction d'une erreur sur les termes de recherche orphelins [#2749](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2749).
