@@ -1,18 +1,15 @@
-## Changelog : plusfraisautravail (30 derniers jours)
+## Changelog : plusfraisautravail (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application plusfraisautravail a connu des améliorations significatives, notamment le déploiement sur GitHub Pages, la mise à jour du contenu et la suppression de l'en-tête et du pied de page pour une expérience utilisateur plus focalisée. Le projet a également été initialisé et configuré pour utiliser un contenu dynamique.
+Ce mois-ci, les améliorations se concentrent sur la mise à jour et l'enrichissement du contenu des questionnaires et des thématiques proposés par l'application. Ces modifications visent à affiner l'évaluation des capacités d'adaptation au travail et à fournir des recommandations plus pertinentes aux utilisateurs. Un correctif de déploiement a également été appliqué.
 
 ### Évolutions fonctionnelles
-- Le contenu de l'application a été mis à jour pour améliorer la pertinence des informations présentées. [#2](https://github.com/incubateur-ademe/plusfraisautravail/pull/2)
-- L'application est maintenant déployée sur GitHub Pages, la rendant accessible en ligne. [#1](https://github.com/incubateur-ademe/plusfraisautravail/pull/1)
-- Suppression de l'en-tête et du pied de page pour une interface plus épurée et centrée sur le questionnaire.
+- Mise à jour et amélioration des questions du questionnaire : plusieurs itérations ont permis d'affiner les questions posées aux utilisateurs pour une évaluation plus précise. [#12](https://github.com/incubateur-ademe/plusfraisautravail/pull/12), [#13](https://github.com/incubateur-ademe/plusfraisautravail/pull/13), [#14](https://github.com/incubateur-ademe/plusfraisautravail/pull/14), [#15](https://github.com/incubateur-ademe/plusfraisautravail/pull/15), [#16](https://github.com/incubateur-ademe/plusfraisautravail/pull/16), [#17](https://github.com/incubateur-ademe/plusfraisautravail/pull/17)
+- Mise à jour des thématiques : les thématiques proposées ont été revues et mises à jour pour refléter les dernières tendances et les besoins des utilisateurs. [#14](https://github.com/incubateur-ademe/plusfraisautravail/pull/14), [#15](https://github.com/incubateur-ademe/plusfraisautravail/pull/15)
+- Mise à jour du contenu général : le contenu de l'application a été mis à jour pour améliorer la clarté et la pertinence des informations présentées. [#13](https://github.com/incubateur-ademe/plusfraisautravail/pull/13)
 
 ### Évolutions techniques
-- Initialisation du dépôt et configuration de base.
-- Ajout d'un proxy pour gérer les requêtes.
-- Mise en place d'un système de contenu dynamique pour faciliter les mises à jour futures.
-- Modification de l'index.html pour supporter le déploiement.
+- Correction du déploiement : un correctif a été appliqué pour résoudre un problème de déploiement.
 
 ### Autres changements
-- Mise à jour du fichier `contenu.yaml` pour refléter les nouvelles données. [#2](https://github.com/incubateur-ademe/plusfraisautravail/pull/2)
+- Mise à jour des fichiers YAML (questions.yaml, themes.yaml, contenu.yaml) pour intégrer les modifications de contenu.
