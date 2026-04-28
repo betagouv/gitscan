@@ -1,21 +1,27 @@
-## Changelog : infra-apps (30 derniers jours)
+## Changelog : infra-apps (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce changelog résume les modifications apportées à l'infrastructure d'applications au cours du dernier mois. Les mises à jour concernent principalement l'application Metabase, avec des corrections de rafraîchissement de vues et d'augmentation de la taille du disque. Des modifications ont également été apportées pour intégrer et configurer l'application Charon pour différents environnements (proconnect, srdt).
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'observabilité et de l'accès aux données avec le déploiement d'Elasticsearch, ainsi que sur l'intégration de nouveaux outils comme Kuik et Huginn. Plusieurs corrections et ajustements ont été apportés pour stabiliser ces déploiements et améliorer leur configuration.
 
 ### Évolutions fonctionnelles
-- Ajout de la configuration Charon pour l'environnement proconnecttest pour srdt (#36).
-- Intégration de l'application Charon pour l'environnement proconnect (#33, #32).
-- Mise à jour de la version de l'image Charon (#35, #34).
-- Accès de Metabase (srdt) à l'espace de noms srdt autorisé (#f07c6fb).
-- Ajout du secret `matomo-key` à Metabase (srdt) (#0b9ce16).
-- Correction du rafraîchissement des vues dans Metabase (cdtn) (#72c4a57, #554f840).
-- Correction d'un problème de rafraîchissement concurrent des vues dans Metabase (cdtn) (#427dfb5).
+- **Elasticsearch:** Elasticsearch est maintenant exposé via Ingress, permettant un accès plus facile et une meilleure intégration avec d'autres services [#issue](https://github.com/SocialGouv/infra-apps/issues/). Il a été déployé sur l'environnement `ovh-dev` avec Kibana et une authentification par `fileRealm`.
+- **Kuik:** Kuik a été déployé sur les environnements `ovh-prod` et `tools`, avec une désactivation initiale des webhooks via un sélecteur d'opt-in. Il est également en cours de test sur `ovh-dev` avant déploiement en production.
+- **Huginn:** Huginn a été déployé en production et sur l'environnement `tools`. Des configurations de scénarios et des intégrations avec Mattermost et SMTP ont été ajoutées.
+- **Openebs-nfs:** Openebs-nfs a été déployé sur l'environnement `tools`.
 
 ### Évolutions techniques
-- Augmentation de la taille du disque alloué à Metabase (#875928f, #588d540).
-- Correction d'un problème et restauration d'une configuration précédente pour Metabase (cdtn) (#90caac4).
+- **Kuik:**
+    - Suppression du registre en cluster et routage de `docker.io` via le proxy cache Harbor pour optimiser les performances et la sécurité.
+    - Ajout du champ `path` requis pour les images Docker provenant de `docker.io`.
+- **Huginn:**
+    - Ajout d'un chart Helm et d'un `applicationset` pour le déploiement sur l'environnement `ovh-dev`.
+- **Infrastructure:**
+    - Correction d'un problème d'accessibilité à Elasticsearch depuis `ingress-nginx` (correction du code 504).
+- **Documentation:**
+    - Ajout d'un document `CLAUDE.md` décrivant les modèles IaC (Infrastructure as Code) utilisés dans `infra-apps`.
+    - Documentation des limitations de la branche "Always" sur les Kubernetes managés pour Kuik.
+    - Documentation de l'intégration de Huginn.
 
 ### Autres changements
-- Nettoyage du code (#c854179).
-- Mise à jour de l'application Greenmask (#c926944).
+- Correction d'un problème lié à l'ignorance d'un secret autogénéré pour Kuik.
+- Diverses corrections et ajustements de configuration pour Huginn durant sa phase de développement et de déploiement.

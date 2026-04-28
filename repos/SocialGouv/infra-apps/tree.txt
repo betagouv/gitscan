@@ -2,6 +2,8 @@
 ├── .gitattributes
 ├── .github
 │   └── CODEOWNERS
+├── .gitignore
+├── CLAUDE.md
 ├── README.md
 ├── applications
 │   ├── appset-rancher-projects.yaml
@@ -12,6 +14,8 @@
 │   ├── clamav.yaml
 │   ├── cnpg.yaml
 │   ├── eck-operator.yaml
+│   ├── huginn.yaml
+│   ├── kube-image-keeper.yaml
 │   ├── kubesight.yaml
 │   ├── no-package-malware.yaml
 │   ├── oblik.yaml
@@ -22,6 +26,7 @@
 │   ├── startups-apps.yaml
 │   ├── startups-raw.yaml
 │   ├── token-bureau.yaml
+│   ├── vao-apps.yaml
 │   └── vaultwarden.yaml
 ├── appset-rancher-projects-plugin
 │   ├── Chart.yaml
@@ -82,6 +87,15 @@
 │   │   ├── templates
 │   │   │   ├── _appset-env.yaml
 │   │   │   └── namespace.yaml
+│   │   └── values.yaml
+│   ├── kube-image-keeper
+│   │   ├── Chart.lock
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── charts
+│   │   │   └── kube-image-keeper-2.2.2.tgz
+│   │   ├── templates
+│   │   │   └── cluster-replicated-image-set.yaml
 │   │   └── values.yaml
 │   ├── metabase
 │   │   ├── Chart.lock
@@ -162,6 +176,28 @@
 │   │   ├── controller-manager-secret.yaml
 │   │   ├── github-webhook-server-secret.yaml
 │   │   └── runner-deployment.yaml
+│   └── values.yaml
+├── huginn
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── charts
+│   │   └── cnpg-cluster-1.30.5.tgz
+│   ├── scenarios
+│   │   ├── README.md
+│   │   ├── veille-tech-dev.json
+│   │   └── veille-tech-prod.json
+│   ├── templates
+│   │   ├── configmap.yaml
+│   │   ├── deployment-web.yaml
+│   │   ├── deployment-worker.yaml
+│   │   ├── huginn-secrets-prod.sealedsecret.yaml
+│   │   ├── huginn-secrets.sealedsecret.yaml
+│   │   ├── ingress.yaml
+│   │   ├── netpol.yaml
+│   │   └── service.yaml
+│   ├── values.ovh-dev.yaml
+│   ├── values.ovh-prod.yaml
 │   └── values.yaml
 ├── kubesight
 │   ├── Chart.yaml
@@ -289,6 +325,7 @@
 │   ├── copy_secret_script.sh
 │   ├── templates
 │   │   └── clusterpolicies
+│   │       ├── kyverno-resync-wildcard-crt.yaml
 │   │       ├── sync-secrets-common-to-ci-ns.yaml
 │   │       ├── sync-secrets-from-ci-ns.yaml
 │   │       ├── sync-sre-secret-to-startups.yaml
@@ -335,6 +372,7 @@
 │   ├── cdtn
 │   │   └── apps
 │   │       ├── elasticsearch
+│   │       │   ├── Chart.lock
 │   │       │   ├── Chart.yaml
 │   │       │   ├── charts
 │   │       │   │   └── final-appset
@@ -344,12 +382,18 @@
 │   │       │   │       │   └── namespace.yaml
 │   │       │   │       └── values.yaml
 │   │       │   ├── envs
-│   │       │   │   └── prod
+│   │       │   │   └── dev
 │   │       │   │       ├── config.yaml
+│   │       │   │       ├── templates
+│   │       │   │       │   ├── file-realm.sealedsecret.yaml
+│   │       │   │       │   └── netpol.yaml
 │   │       │   │       └── values.yaml
 │   │       │   ├── templates
+│   │       │   │   ├── appset-env.yaml
+│   │       │   │   ├── elasticsearch-ingress.yaml
 │   │       │   │   ├── elasticsearch.yaml
-│   │       │   │   └── netpol.yaml
+│   │       │   │   ├── kibana-ingress.yaml
+│   │       │   │   └── kibana.yaml
 │   │       │   └── values.yaml
 │   │       ├── metabase
 │   │       │   ├── Chart.yaml
@@ -681,4 +725,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-291 directories, 392 files
+299 directories, 428 files
