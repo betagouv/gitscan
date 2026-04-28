@@ -1,20 +1,18 @@
 ## Changelog : menshen (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation initiale de la fonctionnalité d'échange de jetons OAuth 2.0, qui constitue le cœur de métier de Menshen. Des refactorings ont été effectués pour préparer l'arrivée de cette fonctionnalité et simplifier la structure du projet. Des mises à jour de configuration et de dépendances ont également été réalisées pour assurer la stabilité et la sécurité du système.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation de la fonctionnalité d'échange de jetons OAuth 2.0, une fonctionnalité clé du projet.  Des refactorings ont également été effectués pour préparer l'arrivée de cette nouvelle fonctionnalité et améliorer la maintenance du code.
 
 ### Évolutions fonctionnelles
 - Implémentation d'une première version de l'échange de jetons OAuth 2.0. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implémentation en cours)
 
 ### Évolutions techniques
-- Refactorisation de la structure des applications, déplacement de l'application `tx` vers `token_exchange` pour une meilleure organisation.
-- Suppression de l'application `api` qui n'était plus nécessaire.
+- Refactoring de l'application `tx` et déplacement vers un nouveau module `token_exchange` pour une meilleure organisation du code.
 - Mise à jour de la version de Python utilisée pour le packaging.
-- Fix de la configuration de Renovate pour une gestion plus précise des dépendances.
-- Épingle de la version de PostgreSQL à la version 16 pour garantir la stabilité.
-- Activation du gestionnaire Docker de Renovate pour automatiser les mises à jour des images Docker.
+- Suppression de l'application API, probablement en anticipation de la nouvelle fonctionnalité d'échange de jetons.
+- Fixation de la version de PostgreSQL à 16 pour assurer la stabilité de l'environnement.
 
 ### Autres changements
-- Correction d'un bug où le manager était activé par catégorie au lieu de son nom.
-- Correction de la configuration de Renovate.
-- Mise à jour des dépendances GitHub Actions et des images Docker `ghcr.io/astral-sh/uv` et `quay.io/keycloak/keycloak`.
+- Mise à jour des dépendances GitHub Actions.
+- Mise à jour de l'image Docker `ghcr.io/astral-sh/uv` vers la version v0.11.2.
+- Mise à jour des dépendances Python.
