@@ -1,13 +1,14 @@
-## Changelog : statistiques-impact (30 derniers jours, au 2026-04-21)
+## Changelog : statistiques-impact (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la correction d'un problème lié à la configuration de l'environnement, améliorant ainsi la stabilité et la fiabilité du site. Aucune nouvelle fonctionnalité n'a été ajoutée, mais cette correction est essentielle pour assurer le bon fonctionnement de la plateforme.
+Ce mois-ci, les mises à jour se concentrent sur la correction de problèmes liés à l'intégration de données, notamment pour FranceTransfert. Ces corrections visent à améliorer la fiabilité des statistiques affichées et à assurer un suivi précis de l'impact des services publics numériques.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Correction d'un problème d'intégration des données FranceTransfert lors de la fusion des tâches. [#1](https://github.com/numerique-gouv/statistiques-impact/issues/1)
+- Correction d'un problème lié à l'environnement FranceTransfert (ftenv). [#1](https://github.com/numerique-gouv/statistiques-impact/issues/1)
 
 ### Évolutions techniques
-- Correction d'un problème de configuration de l'environnement avec `ftenv` [#issue à identifier si existante](https://github.com/numerique-gouv/statistiques-impact/issues/).
+- Aucune évolution technique majeure à signaler ce mois-ci.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Aucune autre modification significative.
