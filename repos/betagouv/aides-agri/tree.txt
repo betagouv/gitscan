@@ -39,54 +39,41 @@
 │   │   ├── README.md
 │   │   ├── __init__.py
 │   │   ├── apps.py
-│   │   ├── data
-│   │   │   ├── README.md
-│   │   │   ├── mapping_codes_naf.csv
-│   │   │   └── mapping_tranche_effectif_salarie.csv
-│   │   ├── importmaps.py
 │   │   ├── signals
 │   │   │   ├── __init__.py
 │   │   │   └── handlers.py
-│   │   ├── siret.py
 │   │   ├── sitemap.py
 │   │   ├── static
 │   │   │   └── agri
-│   │   │       ├── base.css
 │   │   │       ├── home.css
 │   │   │       ├── images
-│   │   │       │   ├── bg-summary-mobile-button.svg
-│   │   │       │   ├── home
-│   │   │       │   │   ├── background.webp
-│   │   │       │   │   ├── orientation.svg
-│   │   │       │   │   └── selection.svg
-│   │   │       │   └── placeholder.1x1.svg
-│   │   │       ├── results.css
-│   │   │       ├── step-2.css
-│   │   │       └── summary-mobile.js
+│   │   │       │   └── home
+│   │   │       │       ├── background.webp
+│   │   │       │       └── slalom.svg
+│   │   │       └── results.css
 │   │   ├── tasks.py
 │   │   ├── templates
 │   │   │   └── agri
-│   │   │       ├── _base.html
-│   │   │       ├── _form.html
 │   │   │       ├── _partials
+│   │   │       │   ├── more_results_from_type.html
+│   │   │       │   ├── results_less.html
 │   │   │       │   └── send-results-by-mail-ok.html
 │   │   │       ├── blocks
-│   │   │       │   └── modal_feedback_themes_sujets.html
+│   │   │       │   └── home
+│   │   │       │       └── themes.html
 │   │   │       ├── home.html
 │   │   │       ├── mail
 │   │   │       │   └── results.mjml
-│   │   │       ├── results.html
-│   │   │       ├── step-2.html
-│   │   │       ├── step-4.html
-│   │   │       └── step-5.html
+│   │   │       ├── modals
+│   │   │       │   ├── external_link_information.html
+│   │   │       │   ├── feedback_on_themes_sujets.html
+│   │   │       │   └── send_results_by_mail.html
+│   │   │       └── results.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   ├── data
-│   │   │   │   ├── mapping_codes_naf.csv
-│   │   │   │   └── mapping_tranche_effectif_salarie.csv
+│   │   │   ├── test_prepare_e2e.py
 │   │   │   ├── test_signal_handlers.py
-│   │   │   ├── test_siret.py
 │   │   │   ├── test_tasks.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
@@ -106,11 +93,10 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       ├── aides_load_zones_geographiques.py
-│   │   │       ├── aides_organismes_logos_files_from_db.py
+│   │   │       ├── aides_publish_illustrations_from_db.py
 │   │   │       ├── aides_send_daily_admin_notifications.py
-│   │   │       ├── aides_set_organisme_logo.py
-│   │   │       ├── aides_unpublish_aides_having_invalid_link.py
-│   │   │       └── aides_unpublish_closed_aides.py
+│   │   │       ├── aides_set_organisme_illustration.py
+│   │   │       └── aides_unpublish_aides_having_invalid_link.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_alter_aide_nom_alter_operateur_nom_alter_sujet_nom_and_more.py
@@ -174,6 +160,12 @@
 │   │   │   ├── 0066_remove_aide_aap_ami_remove_aide_duree_accompagnement_and_more.py
 │   │   │   ├── 0067_basejuridique.py
 │   │   │   ├── 0068_basejuridique_commentaire.py
+│   │   │   ├── 0069_rename_logo_filename_organisme_illustration_filename_and_more.py
+│   │   │   ├── 0070_sujet_icon_name_theme_icon_name_and_more.py
+│   │   │   ├── 0071_zonegeographique_prefix.py
+│   │   │   ├── 0072_type_position.py
+│   │   │   ├── 0073_alter_aide_couverture_geographique.py
+│   │   │   ├── 0074_alter_zonegeographique_options_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -192,6 +184,8 @@
 │   │   │       ├── aide_detail.css
 │   │   │       ├── icons
 │   │   │       │   └── etapes.svg
+│   │   │       ├── images
+│   │   │       │   └── placeholder.1x1.svg
 │   │   │       └── parent_aide_detail.css
 │   │   ├── templates
 │   │   │   ├── admin
@@ -203,8 +197,13 @@
 │   │   │   │       │   ├── derive_for_departements.html
 │   │   │   │       │   ├── duplicate.html
 │   │   │   │       │   └── submit_line.html
-│   │   │   │       └── organisme
-│   │   │   │           └── change_form.html
+│   │   │   │       ├── organisme
+│   │   │   │       │   └── change_form.html
+│   │   │   │       ├── sujet
+│   │   │   │       │   └── change_form.html
+│   │   │   │       ├── theme
+│   │   │   │       │   └── change_form.html
+│   │   │   │       └── with_illustration_change_form.html
 │   │   │   └── aides
 │   │   │       ├── aide_detail.html
 │   │   │       ├── blocks
@@ -360,7 +359,6 @@
 │   │   ├── __init__.py
 │   │   ├── apps
 │   │   │   ├── __init__.py
-│   │   │   ├── agri.py
 │   │   │   ├── aides.py
 │   │   │   ├── anymail.py
 │   │   │   ├── axes.py
@@ -382,11 +380,10 @@
 ├── cron.json
 ├── cypress
 │   ├── e2e
-│   │   ├── fixtures
-│   │   │   ├── aides_01_sujets.json
-│   │   │   ├── aides_02_filieres.json
-│   │   │   └── aides_03_zones_geographiques.json
-│   │   └── home.cy.js
+│   │   ├── aide.cy.js
+│   │   ├── home-besoins.cy.js
+│   │   ├── home.cy.js
+│   │   └── results.cy.js
 │   └── support
 │       ├── commands.js
 │       └── e2e.js
@@ -405,17 +402,28 @@
 │   ├── chefs-sea
 │   │   ├── .gitignore
 │   │   └── extract.py
-│   ├── logos-ddt
+│   ├── logos-services-deconcentres
 │   │   ├── README.md
-│   │   ├── create_organismes.py
+│   │   ├── create_ddt_ddtm.py
+│   │   ├── create_draaf_dreal.py
 │   │   ├── data
 │   │   │   └── .gitignore
-│   │   ├── ddt.png
-│   │   ├── ddtm.png
 │   │   ├── download_logo_prefets.py
+│   │   ├── download_logo_prefets_regions.py
+│   │   ├── logos
+│   │   │   ├── daaf.png
+│   │   │   ├── ddt.png
+│   │   │   ├── ddtm.png
+│   │   │   ├── deal.png
+│   │   │   ├── draaf.png
+│   │   │   ├── dreal.png
+│   │   │   ├── driaaf.png
+│   │   │   └── drieat.png
 │   │   ├── merge_logos.sh
+│   │   ├── merge_logos_draaf_dreal.sh
 │   │   ├── pyproject.toml
-│   │   └── scalingo-upload.sh
+│   │   ├── scalingo-upload.sh
+│   │   └── uv.lock
 │   ├── pac
 │   │   └── .gitignore
 │   ├── pdf-to-structured-data
@@ -429,7 +437,7 @@
 │       ├── README.md
 │       ├── easymde.min.css
 │       ├── easymde.min.js
-│       ├── htmx.esm.js
+│       ├── htmx.js
 │       ├── sentry.js
 │       └── stimulus.js
 ├── templates
@@ -441,7 +449,8 @@
 │   │   └── _base.html
 │   └── ui
 │       └── blocks
-│           └── footer.html
+│           ├── footer.html
+│           └── header.html
 ├── uv.lock
 ├── vendor.txt
 └── webroot
@@ -449,9 +458,15 @@
     │   ├── pgp-publickey.txt
     │   └── security.txt
     ├── aides
+    │   ├── illustrations-organisme
+    │   │   └── .gitignore
+    │   ├── illustrations-sujet
+    │   │   └── .gitignore
+    │   ├── illustrations-theme
+    │   │   └── .gitignore
     │   └── organismes-logos
     │       └── .gitignore
     ├── favicon.ico
     ├── robots-non-prod.txt
     └── robots-prod.txt
-121 directories, 335 files
+127 directories, 344 files
