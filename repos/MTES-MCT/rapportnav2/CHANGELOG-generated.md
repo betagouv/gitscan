@@ -1,35 +1,39 @@
-## Changelog : rapportnav2 (30 derniers jours, au 23 avril 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des ports et des criées, avec l'intégration de données externes et de nouvelles fonctionnalités dans l'interface utilisateur. Des corrections et améliorations ont également été apportées à la gestion des missions, des contrôles et de la sécurité. L'ajout de la gestion Sati est également une évolution majeure.
+Ce mois-ci, les évolutions de rapportnav2 se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la gestion des criées, l'intégration d'un service d'adresse et des améliorations de la gestion des infractions. Des corrections de bugs et des mises à jour de sécurité ont également été apportées pour améliorer la stabilité et la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la liste des criées avec les endpoints associés et un panneau d'administration.
-- Intégration d'un service d'adresse via l'API data.gouv.fr avec une fonction d'autocomplétion dans l'interface utilisateur.
-- Ajout de la connexion à l'API des ports de MonitorFish et ajout d'un composant de recherche dans l'interface utilisateur.
-- Implémentation de la gestion Sati avec des fonctionnalités de création, lecture et mise à jour.
-- Ajout du "permis d'armement confirmé" pour les contrôles administratifs [#1099](https://github.com/MTES-MCT/rapportnav2/issues/1099).
-- Ajout de la possibilité de renseigner le nombre d'heures en mer pour les missions de type "SEA" [#1250](https://github.com/MTES-MCT/rapportnav2/issues/1250).
-- Amélioration du message d'avertissement pour les contrôles navals [#1259](https://github.com/MTES-MCT/rapportnav2/issues/1259).
-- Ajout de la gestion des catégories d'infraction pour les contrôles navals.
+- Ajout de la gestion des criées avec une liste, des endpoints associés et un panneau d'administration.
+- Intégration d'un service d'adresse provenant de data.gouv.fr avec une fonctionnalité d'autocomplétion dans l'interface utilisateur.
+- Amélioration de la gestion des infractions lors de la création de nouveaux contrôles.
+- Mise à jour de la règle AEM 4.1.3.
+- Ajout de la possibilité de récupérer les SATI avec un retour possible de null.
+- Implémentation de cas d'utilisation pour la gestion des SATI (GET/PUT).
+- Ajout d'attributs avec code pays pour les SATI.
+- Ajout d'un listener sur les modèles de données.
 
 ### Évolutions techniques
+- Refonte de la configuration de release-please pour optimiser le processus de publication.
 - Mise à jour de Spring Boot.
-- Archivage des anciennes tables SQL dans un nouveau schéma "archived".
+- Amélioration de la validation des schémas pour les contrôles nautiques et de loisirs.
+- Mise à jour de la dépendance `tools.jackson.core:jackson-core`.
+- Correction d'une boucle infinie causée par `isLoggedIn` dans `use-auth.ts`.
+- Correction d'un problème de cache HTML avec CSP.
+- Mise à jour de la dépendance `monitor-ui`.
+- Correction de l'utilisation de l'API d'établissement en cas d'absence d'adresse.
 - Amélioration de l'architecture hexagonale pour les Vessels.
-- Utilisation du hash de commit au lieu du tag pour l'action Trivy afin de renforcer la sécurité.
 - Ajout de stubs de ports.
-- Mise à jour de la version de Trivy.
+- Ajout de cache pour la configuration de Caffeine.
+- Utilisation du hash de commit au lieu du tag pour une meilleure sécurité.
+- Correction de problèmes de validation de schéma.
 
 ### Autres changements
-- Correction de la validation du schéma pour les secteurs de contrôle.
-- Correction de la validation du schéma pour les contrôles nautiques et de loisirs.
-- Correction d'un bug empêchant l'affichage du message d'erreur de validation ULAM.
-- Correction d'un problème empêchant l'exécution de la complétion de la mission environnementale sur les missions navales.
-- Suppression de l'utilitaire de contrôle obsolète.
-- Correction de bugs et améliorations de la sécurité grâce à Snyk.
-- Correction de problèmes liés à la gestion des ressources ULAM.
-- Correction de l'utilisation de l'API d'établissement en cas d'absence d'adresse.
-- Correction des tests frontend.
-- Mise à jour des dépendances.
-- Publication des versions 2.72.0 et 2.73.0.
+- Ajout d'un fichier `.trivyignore.yml` pour ignorer certains résultats de l'analyse de vulnérabilités Trivy.
+- Correction de problèmes de sécurité identifiés par Snyk dans les dépendances frontend.
+- Mise à jour des snapshots de tests.
+- Désactivation temporaire de Trivy.
+- Mise à jour de la documentation.
+- Correction de problèmes liés à l'environnement InfractionEnvEntity.
+- Suppression de valeurs codées en dur pour le type d'action de pêche (FishActionType).
+- Ajout de `compliantSafeManningPermit` au type Control.
