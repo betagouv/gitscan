@@ -206,7 +206,6 @@
         │   │   ├── async_http_client_interface.py
         │   │   ├── document_cleaner_interface.py
         │   │   ├── embedding_generator_interface.py
-        │   │   ├── http_client_interface.py
         │   │   ├── logger_interface.py
         │   │   ├── ocr_interface.py
         │   │   ├── pdf_extractor_interface.py
@@ -341,13 +340,10 @@
         │   │   │   ├── albert_types.py
         │   │   │   ├── ingres_corps_dtos.py
         │   │   │   ├── ingres_metiers_dtos.py
-        │   │   │   ├── openai_dtos.py
         │   │   │   ├── talentsoft_back_dtos.py
         │   │   │   └── talentsoft_dtos.py
         │   │   ├── external_document_gateway.py
         │   │   ├── ocr_extractor.py
-        │   │   ├── openai_embedding_generator.py
-        │   │   ├── openai_pdf_extractor.py
         │   │   ├── piste_client.py
         │   │   └── talentsoft_client.py
         │   ├── gateways
@@ -369,7 +365,6 @@
         │   │   └── shared
         │   │       ├── __init__.py
         │   │       ├── async_http_client.py
-        │   │       ├── http_client.py
         │   │       └── logger.py
         │   ├── mappers
         │   │   ├── __init__.py
@@ -398,7 +393,8 @@
         ├── presentation
         │   ├── api
         │   │   ├── __init__.py
-        │   │   └── urls.py
+        │   │   ├── urls.py
+        │   │   └── views.py
         │   ├── assets
         │   │   └── styles
         │   │       ├── abstracts
@@ -466,7 +462,6 @@
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── apps.py
-        │   │   ├── health.py
         │   │   ├── management
         │   │   │   ├── README.md
         │   │   │   ├── __init__.py
@@ -515,11 +510,15 @@
         │   │   └── js
         │   │       ├── drawer.js
         │   │       ├── matomo-tracking.js
+        │   │       ├── redoc.standalone.js
+        │   │       ├── redoc.standalone.js.map
         │   │       └── toast.js
         │   └── templates
         │       ├── 403.html
         │       ├── 404.html
         │       ├── 500.html
+        │       ├── api
+        │       │   └── redoc.html
         │       ├── candidate
         │       │   ├── components
         │       │   │   ├── _filter_fieldset.html
@@ -528,6 +527,7 @@
         │       │   │   ├── _opportunity_body.html
         │       │   │   ├── _opportunity_cta.html
         │       │   │   ├── _opportunity_detail_content.html
+        │       │   │   ├── _opportunity_drawer.html
         │       │   │   ├── _opportunity_drawer_content.html
         │       │   │   ├── _opportunity_feedback.html
         │       │   │   ├── _processing_content.html
@@ -543,7 +543,6 @@
         │       │   ├── cv_upload.html
         │       │   └── opportunity_detail.html
         │       ├── components
-        │       │   ├── _drawer.html
         │       │   ├── cv_upload_actions.html
         │       │   └── file_upload.html
         │       ├── layouts
@@ -558,38 +557,34 @@
         ├── start.sh
         ├── tests
         │   ├── __init__.py
-        │   ├── accessibility
-        │   │   ├── __init__.py
-        │   │   ├── conftest.py
-        │   │   └── test_home_a11y.py
-        │   ├── api
-        │   │   ├── __init__.py
-        │   │   └── test_endpoints.py
         │   ├── candidate
         │   │   ├── __init__.py
-        │   │   ├── conftest.py
         │   │   ├── integration
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_cv_results_view.py
-        │   │   │   ├── test_cv_upload_view.py
-        │   │   │   ├── test_drawer_views.py
         │   │   │   ├── test_integration_initialize_cv_metadata.py
         │   │   │   ├── test_integration_match_cv_to_opportunities.py
         │   │   │   └── test_integration_process_uploaded_cv.py
+        │   │   ├── presentation
+        │   │   │   ├── __init__.py
+        │   │   │   ├── accessibility
+        │   │   │   │   ├── conftest.py
+        │   │   │   │   └── test_home_a11y.py
+        │   │   │   ├── tasks
+        │   │   │   │   └── test_process_cv_tasks.py
+        │   │   │   └── views
+        │   │   │       ├── test_cv_results_view.py
+        │   │   │       ├── test_cv_upload_view.py
+        │   │   │       ├── test_drawer_views.py
+        │   │   │       ├── test_error_views.py
+        │   │   │       └── test_home_view.py
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       ├── test_limit_date.py
         │   │       ├── test_unit_initialize_cv_metadata.py
         │   │       ├── test_unit_match_cv_to_opportunities.py
-        │   │       ├── test_unit_process_cv_tasks.py
         │   │       └── test_unit_process_uploaded_cv.py
-        │   ├── external_gateways
-        │   │   ├── __init__.py
-        │   │   ├── unit
-        │   │   │   ├── __init__.py
-        │   │   │   ├── test_talentsoft_client.py
-        │   │   │   └── test_talentsoft_dtos.py
-        │   │   └── utils.py
+        │   ├── conftest.py
+        │   ├── cov.md
         │   ├── factories
         │   │   ├── concours_factory.py
         │   │   ├── corps_factory.py
@@ -602,49 +597,56 @@
         │   │   └── vectorized_document_factory.py
         │   ├── fixtures
         │   │   ├── __init__.py
-        │   │   ├── candidate_fixtures.py
         │   │   ├── clean_test_factories.py
         │   │   ├── concours_greco_2025.json
         │   │   ├── corps_ingres_20251117.json
         │   │   ├── embedding_fixtures.json
         │   │   ├── fixture_loader.py
-        │   │   ├── ingestion_fixtures.py
         │   │   ├── shared_fixtures.py
         │   │   └── vectorize_test_factories.py
         │   ├── ingestion
         │   │   ├── __init__.py
-        │   │   ├── conftest.py
         │   │   ├── integration
+        │   │   │   ├── repository
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── test_postgres_document_repository.py
         │   │   │   ├── test_integration_clean_documents.py
         │   │   │   ├── test_integration_load_documents.py
-        │   │   │   ├── test_integration_load_offers.py
         │   │   │   └── test_integration_vectorize_documents.py
-        │   │   ├── management
-        │   │   │   ├── test_clean_documents_command.py
-        │   │   │   ├── test_load_corps_command.py
-        │   │   │   ├── test_load_offers_command.py
-        │   │   │   └── test_vectorize_documents_command.py
-        │   │   ├── repository
-        │   │   │   ├── __init__.py
-        │   │   │   └── test_postgres_document_repository.py
+        │   │   ├── presentation
+        │   │   │   ├── management
+        │   │   │   │   ├── test_clean_documents_command.py
+        │   │   │   │   ├── test_load_corps_command.py
+        │   │   │   │   ├── test_load_offers_command.py
+        │   │   │   │   └── test_vectorize_documents_command.py
+        │   │   │   ├── tasks
+        │   │   │   │   └── test_ingestion_tasks.py
+        │   │   │   └── views
+        │   │   │       └── test_ingestion_views.py
         │   │   └── unit
+        │   │       ├── external_gateways
+        │   │       │   ├── test_talentsoft_client.py
+        │   │       │   ├── test_talentsoft_dtos.py
+        │   │       │   └── utils.py
         │   │       ├── test_unit_clean_documents.py
-        │   │       ├── test_unit_load_documents.py
-        │   │       └── test_unit_tasks.py
-        │   ├── pages
-        │   │   ├── __init__.py
-        │   │   └── integration
-        │   │       ├── __init__.py
-        │   │       ├── test_error_views.py
-        │   │       └── test_home_view.py
+        │   │       └── test_unit_load_documents.py
         │   ├── shared
         │   │   ├── __init__.py
-        │   │   └── repository
-        │   │       ├── __init__.py
-        │   │       ├── test_postgres_concours_repository.py
-        │   │       ├── test_postgres_corps_repository.py
-        │   │       ├── test_postgres_offers_repository.py
-        │   │       └── test_qdrant_repository.py
+        │   │   ├── integration
+        │   │   │   ├── __init__.py
+        │   │   │   └── repository
+        │   │   │       ├── __init__.py
+        │   │   │       ├── test_postgres_concours_repository.py
+        │   │   │       ├── test_postgres_corps_repository.py
+        │   │   │       ├── test_postgres_offers_repository.py
+        │   │   │       └── test_qdrant_repository.py
+        │   │   └── presentation
+        │   │       ├── api
+        │   │       │   ├── __init__.py
+        │   │       │   └── test_endpoints.py
+        │   │       └── views
+        │   │           ├── __init__.py
+        │   │           └── test_views.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── cv_test_utils.py
@@ -661,4 +663,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-129 directories, 534 files
+136 directories, 529 files
