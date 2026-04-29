@@ -1,10 +1,11 @@
 ## Changelog : boris (30 derniers jours, au 10 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la simulation d'éligibilité au Bail Réel Solidaire, notamment dans la présentation des statistiques. Des corrections et optimisations internes ont également été réalisées pour améliorer la qualité du code et suivre les recommandations de bonnes pratiques.
+Cette mise à jour apporte des améliorations à la simulation d'éligibilité au Bail Réel Solidaire, notamment au niveau des statistiques affichées. Des corrections ont également été apportées suite à des recommandations de revue de code pour améliorer la qualité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de la présentation des statistiques de simulation d'éligibilité. [#487](https://github.com/MTES-MCT/boris/issues/487)
+- Amélioration des statistiques de simulation d'éligibilité au Bail Réel Solidaire.
 
 ### Évolutions techniques
-- Refactorisation du code suite aux recommandations issues de la revue de code. [#488](https://github.com/MTES-MCT/boris/issues/488)
+- Refactorisation du code de la simulation d'éligibilité pour suivre les recommandations issues de la revue de code [#488](https://github.com/MTES-MCT/boris/issues/488).
+- Refactorisation des statistiques de simulation d'éligibilité [#487](https://github.com/MTES-MCT/boris/issues/487).
