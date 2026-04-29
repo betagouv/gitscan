@@ -6,6 +6,39 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.33.0](https://github.com/betagouv/ma-cantine/compare/v2026.32.0...v2026.33.0) (2026-04-28)
+
+
+### Nouveautés
+
+* **Télédéclarations:** script pour permettre de télédéclarer une liste de bilans hors campagne ([#6671](https://github.com/betagouv/ma-cantine/issues/6671)) ([cf4a693](https://github.com/betagouv/ma-cantine/commit/cf4a69313c0a3fd6e8c369517fcde5f4fa12ef9c))
+
+
+### Technique
+
+* **Scripts:** petit ménage de printemps ([#6672](https://github.com/betagouv/ma-cantine/issues/6672)) ([26bb819](https://github.com/betagouv/ma-cantine/commit/26bb819e31610094cea8c965d2a110dd5a287d85))
+* **Télédéclarations:** clarifier les méthodes pour récupérer les dates de fin de campagne ([#6657](https://github.com/betagouv/ma-cantine/issues/6657)) ([43d3477](https://github.com/betagouv/ma-cantine/commit/43d3477d8a051919baef69adef09332315883db9))
+* **Télédéclarations:** homogénéiser les tests des scripts créé récemment ([#6673](https://github.com/betagouv/ma-cantine/issues/6673)) ([e95f052](https://github.com/betagouv/ma-cantine/commit/e95f05244ced65d040b8394ba43adb8db40ebdc2))
+* **Télédéclarations:** simplifier le code des règles métiers encadrant la TD ([#6656](https://github.com/betagouv/ma-cantine/issues/6656)) ([46a216e](https://github.com/betagouv/ma-cantine/commit/46a216e2e0d36b230b71b8d638ae8bacdd45d07c))
+
+## [2026.32.0](https://github.com/betagouv/ma-cantine/compare/v2026.31.0...v2026.32.0) (2026-04-27)
+
+
+### Nouveautés
+
+* **Télédéclarations:** nouveau script pour télédéclarer tous les bilans en CORRECTION ([#6666](https://github.com/betagouv/ma-cantine/issues/6666)) ([d5944bc](https://github.com/betagouv/ma-cantine/commit/d5944bcb6f765d1fe38827c12ecc232a46121c83))
+
+
+### Améliorations
+
+* **Satellites:** clarifie les messages d'erreur pour modifier les RSAT du groupe avec une TD durant la campagne ([#6667](https://github.com/betagouv/ma-cantine/issues/6667)) ([58a96bd](https://github.com/betagouv/ma-cantine/commit/58a96bdd7a65f1ff74af415e13b1bf57e87e58a2))
+
+
+### Corrections (bugs, typos...)
+
+* **Police Marianne:** corrige le non affichage de la police ([#6669](https://github.com/betagouv/ma-cantine/issues/6669)) ([e16f07f](https://github.com/betagouv/ma-cantine/commit/e16f07f6a0bba41313695aa24aabbad5ff53d676))
+* **Télédéclaration:** corrige l'affichage du pourcentage des valeurs durables et de qualité ([#6668](https://github.com/betagouv/ma-cantine/issues/6668)) ([9ff076b](https://github.com/betagouv/ma-cantine/commit/9ff076bd98c95df22aa4090726603e820ad09ba8))
+
 ## [2026.31.0](https://github.com/betagouv/ma-cantine/compare/v2026.30.1...v2026.31.0) (2026-04-23)
 
 
