@@ -1,46 +1,35 @@
-## Changelog : reva (30 derniers jours, au 2026-04-24)
+## Changelog : reva (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment dans les formulaires et la gestion des candidatures, avec un accent particulier sur l'intégration de FranceConnect. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des évolutions techniques pour faciliter la maintenance et l'évolutivité du projet.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'authentification avec FranceConnect, la gestion des rôles et des permissions, ainsi que l'ajout de nouvelles fonctionnalités pour l'administration des jurys et la gestion des candidatures. Des corrections et optimisations ont également été apportées pour améliorer la performance et la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- **FranceConnect :** Amélioration du flux d'abonnement AAP avec un avertissement concernant l'email et le SIRET. Correction d'un bug empêchant la planification d'une date de jury antérieure à la date d'envoi du dossier de validation.
-- **Gestion des candidatures :** Possibilité de modifier la ville et le département de naissance pour les candidats FranceConnect. Correction d'un bug lié à la sélection de villes non uniques dans le composant d'autocomplétion d'adresse.
-- **Interface Admin :**
-    - Affichage par défaut des accordéons pour les autorités de certification si le résultat de la faisabilité n'est ni admissible ni rejeté.
-    - Alignement de la carte blanche admin avec la largeur du conteneur DSFR.
-    - Alignement de la page d'informations générales du compte local avec les spécifications Figma.
-    - Affichage de l'autorité de certification sur la page d'informations générales du compte local.
-    - Alignement des champs de contact du compte local.
-    - Ajout d'une page de nettoyage des candidats FranceConnect en sandbox.
-    - Ajout d'une page pour gérer les décisions de jury par blocs.
-    - Amélioration de la page de signalement des problèmes de DV.
-    - Possibilité de limiter le nombre d'heures de formation à 100.
-    - Ajout d'une modale pour afficher les blocs inclus et non inclus dans la faisabilité.
-- **VAE Collective :** Correction d'un bug lié aux tokens stockés dans les cookies.
-- **Notifications :** Amélioration des messages d'erreur liés à FranceConnect.
-- **Formulaires :** Amélioration du wording des champs requis (genre).
-- **Expérience utilisateur :** Amélioration de la gestion des dates de décision de faisabilité (COMPLETE/INCOMPLETE).
+- Intégration améliorée de FranceConnect : simplification du processus de connexion et de gestion des informations utilisateur, notamment pour la gestion des lieux de naissance. [#9233d20](https://github.com/betagouv/reva/issues/9233d20)
+- Gestion des rôles et permissions : ajout de pages d'administration pour la gestion des accès et des rôles des utilisateurs.
+- Gestion des jurys :
+    - Ajout de la possibilité de visualiser et de gérer les résultats des jurys par blocs de compétences. [#851b337](https://github.com/betagouv/reva/issues/851b337)
+    - Amélioration de l'interface de saisie des résultats de jury, avec une meilleure gestion des validations et des incohérences.
+    - Ajout d'une page dédiée à la planification des dates de jury.
+- Amélioration de l'expérience utilisateur :
+    - Ajout de titres et de slogans de service dans les en-têtes des différentes applications (candidat, collectif, admin). [#f724232](https://github.com/betagouv/reva/issues/f724232)
+    - Amélioration de la gestion des erreurs d'authentification avec des messages plus clairs et des liens d'aide.
+- Ajout d'une page pour la gestion des comptes FranceConnect en sandbox.
+- Possibilité de supprimer une candidature (en mode projet). [#1d1c02e](https://github.com/betagouv/reva/issues/1d1c02e)
 
 ### Évolutions techniques
-- **API :**
-    - Suppression de la logique d'attribution du rôle candidat lors du callback FranceConnect.
-    - Refactorisation de la gestion des erreurs FranceConnect et ajout de logs pour faciliter le débogage.
-    - Ajout d'index sur les tables de la base de données pour optimiser les requêtes.
-    - Suppression de la fonctionnalité de connexion par lien magique.
-    - Suppression des fonctionnalités liées à l'inscription candidat.
-    - Ajout de la possibilité de révoquer une décision de jury.
-    - Amélioration de la gestion des données DFF.
-    - Ajout de la gestion des prénoms dans l'API.
-- **Infrastructure :** Mise à jour de plusieurs dépendances (Fastify, Axios, Lodash, etc.).
-- **Tests :** Ajout et mise à jour de nombreux tests unitaires et d'intégration.
-- **Refactoring :** Réorganisation des dossiers de routes dans l'admin.
-- **Sécurité :** Correction de vulnérabilités potentielles liées à la vérification des JWT et à l'utilisation de FranceConnect.
-- **Suppression de code obsolète :** Suppression de plusieurs fonctionnalités et dépendances obsolètes.
+- Refonte de l'authentification : refactorisation du code d'authentification avec Keycloak, amélioration de la sécurité et de la gestion des tokens.
+- Amélioration des performances : optimisation des requêtes SQL et ajout d'index pour accélérer l'accès aux données.
+- Mise à jour des dépendances : mise à jour de nombreuses dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Refactorisation du code : amélioration de la structure du code et suppression de code obsolète.
+- Amélioration des tests : ajout de nouveaux tests unitaires et d'intégration pour garantir la qualité du code.
+- Utilisation de feature flags pour activer/désactiver de nouvelles fonctionnalités de manière progressive.
+- Suppression de code lié à des fonctionnalités obsolètes (inscription candidat, etc.).
+- Amélioration de la gestion des erreurs et des logs.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation.
-- **Configuration :** Mise à jour de la configuration de l'environnement de développement.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Corrections de style :** Correction de problèmes de style et de formatage du code.
-- **Mise à jour des versions des paquets :** De nombreuses mises à jour de dépendances ont été effectuées pour corriger des vulnérabilités et améliorer la stabilité.
+- Mise à jour de la documentation.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Suppression de tables inutilisées dans la base de données. [#67872a3](https://github.com/betagouv/reva/issues/67872a3)
+- Ajustements de la configuration pour améliorer la sécurité et la performance.
+- Amélioration de la gestion des cookies.
+- Correction de problèmes de compatibilité avec différentes versions de navigateurs.

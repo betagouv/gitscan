@@ -1420,185 +1420,210 @@
     │   │   │   │   │       └── components
     │   │   │   │   │           └── subscription-request-card
     │   │   │   │   │               └── SubscriptionRequestCard.tsx
-    │   │   │   │   └── (certificateur)
-    │   │   │   │       ├── candidacies
-    │   │   │   │       │   ├── (components)
-    │   │   │   │       │   │   ├── CertificationAuthority.tsx
-    │   │   │   │       │   │   └── CertificationAuthorityLocalAccount.tsx
-    │   │   │   │       │   ├── [candidacyId]
-    │   │   │   │       │   │   ├── dossier-de-validation
-    │   │   │   │       │   │   │   ├── _components
-    │   │   │   │       │   │   │   │   ├── DossierDeValidationCard.tsx
-    │   │   │   │       │   │   │   │   └── HistoryDossierDeValidationView.tsx
-    │   │   │   │       │   │   │   ├── dossierDeValidationPageLogic.ts
-    │   │   │   │       │   │   │   ├── page.tsx
-    │   │   │   │       │   │   │   ├── problem
-    │   │   │   │       │   │   │   │   ├── dossierDeValidationProblemPageLogic.ts
-    │   │   │   │       │   │   │   │   └── page.tsx
-    │   │   │   │       │   │   │   └── types.ts
-    │   │   │   │       │   │   ├── feasibility
-    │   │   │   │       │   │   │   ├── _components
-    │   │   │   │       │   │   │   │   ├── FeasibilityBanner.tsx
-    │   │   │   │       │   │   │   │   ├── FeasibilityCompletionForm.tsx
-    │   │   │   │       │   │   │   │   ├── FeasibilityValidationForm.tsx
-    │   │   │   │       │   │   │   │   ├── dematerialized-feasibility
-    │   │   │   │       │   │   │   │   │   ├── DematerializedFeasibility.tsx
-    │   │   │   │       │   │   │   │   │   └── dematerializedFeasibility.hook.ts
-    │   │   │   │       │   │   │   │   ├── feasibility-uploaded-pdf
-    │   │   │   │       │   │   │   │   │   ├── FeasibilityUploadedPdf.tsx
-    │   │   │   │       │   │   │   │   │   └── feasibilityUploadedPdf.hook.ts
-    │   │   │   │       │   │   │   │   ├── feasibilityPage.hook.ts
-    │   │   │   │       │   │   │   │   └── useRevokeFeasibilityDecisionModal.hook.tsx
-    │   │   │   │       │   │   │   └── page.tsx
-    │   │   │   │       │   │   ├── jury
-    │   │   │   │       │   │   │   ├── [[...juryId]]
-    │   │   │   │       │   │   │   │   ├── DateDeJury.tsx
-    │   │   │   │       │   │   │   │   ├── DateDeJuryCard.tsx
-    │   │   │   │       │   │   │   │   ├── HistoryDateDeJuryView.tsx
-    │   │   │   │       │   │   │   │   ├── HistoryResultatView.tsx
-    │   │   │   │       │   │   │   │   ├── Resultat.tsx
-    │   │   │   │       │   │   │   │   ├── ResultatCard.tsx
-    │   │   │   │       │   │   │   │   ├── juryPageLogic.ts
-    │   │   │   │       │   │   │   │   └── page.tsx
-    │   │   │   │       │   │   │   ├── date
-    │   │   │   │       │   │   │   │   ├── DateDeJuryCard.tsx
-    │   │   │   │       │   │   │   │   ├── juryDatePageLogic.ts
-    │   │   │   │       │   │   │   │   └── page.tsx
-    │   │   │   │       │   │   │   └── resultat
-    │   │   │   │       │   │   │       ├── Resultat.tsx
-    │   │   │   │       │   │   │       ├── ResultatByBlocks.tsx
-    │   │   │   │       │   │   │       ├── _components
-    │   │   │   │       │   │   │       │   ├── ConfirmJuryResultModal.tsx
-    │   │   │   │       │   │   │       │   ├── FeasibilityCompetenceBlocksModal.tsx
-    │   │   │   │       │   │   │       │   ├── HistoryResultatView.tsx
-    │   │   │   │       │   │   │       │   ├── ResultInconsistencyErrorModal.tsx
-    │   │   │   │       │   │   │       │   ├── ResultatCard.tsx
-    │   │   │   │       │   │   │       │   ├── ResultatCardWithBlocks.tsx
-    │   │   │   │       │   │   │       │   └── RevokeJuryDecisionModal.tsx
-    │   │   │   │       │   │   │       ├── juryResultPageLogic.ts
-    │   │   │   │       │   │   │       └── page.tsx
-    │   │   │   │       │   │   ├── layout.tsx
-    │   │   │   │       │   │   ├── transfer
-    │   │   │   │       │   │   │   └── page.tsx
-    │   │   │   │       │   │   ├── transfer-to-certification-authority
-    │   │   │   │       │   │   │   ├── _components
-    │   │   │   │       │   │   │   │   ├── CertificationAuthorityCard.tsx
-    │   │   │   │       │   │   │   │   ├── CertificationAuthoritySearchList.tsx
-    │   │   │   │       │   │   │   │   ├── CertificationAuthorityValidation.tsx
-    │   │   │   │       │   │   │   │   ├── EmptyStateCertificationSearch.tsx
-    │   │   │   │       │   │   │   │   └── transferCandidacy.hook.ts
-    │   │   │   │       │   │   │   └── page.tsx
-    │   │   │   │       │   │   └── transfer-to-certification-authority-local-account
-    │   │   │   │       │   │       ├── _components
-    │   │   │   │       │   │       │   ├── CertificationAuthorityLocalAccountCard.tsx
-    │   │   │   │       │   │       │   ├── CertificationAuthorityLocalAccountSearchList.tsx
-    │   │   │   │       │   │       │   ├── CertificationAuthorityLocalAccountValidation.tsx
-    │   │   │   │       │   │       │   ├── EmptyStateCertificationAuthorityLocalAccountSearch.tsx
-    │   │   │   │       │   │       │   └── transferCandidacy.hook.ts
-    │   │   │   │       │   │       └── page.tsx
-    │   │   │   │       │   └── annuaire
-    │   │   │   │       │       ├── _components
-    │   │   │   │       │       │   ├── AnnuaireEmptyState.tsx
-    │   │   │   │       │       │   ├── CandidacyCard.tsx
-    │   │   │   │       │       │   ├── CandidacyCardSkeleton.tsx
-    │   │   │   │       │       │   ├── FiltersSection.tsx
-    │   │   │   │       │       │   ├── SortByBar.tsx
-    │   │   │   │       │       │   └── annuaire.hook.ts
-    │   │   │   │       │       └── page.tsx
-    │   │   │   │       ├── certificateur-cgu
-    │   │   │   │       │   ├── _components
-    │   │   │   │       │   │   ├── CguAwaitingManagerValidationNotice.tsx
-    │   │   │   │       │   │   ├── CguCertificateurForm.tsx
-    │   │   │   │       │   │   └── IgnoreCguCertificateurModalContent.tsx
-    │   │   │   │       │   ├── cgu-certificateur.hook.ts
-    │   │   │   │       │   └── page.tsx
-    │   │   │   │       ├── certificateur-layout.hook.ts
-    │   │   │   │       ├── certification-authorities
-    │   │   │   │       │   ├── [certificationAuthorityId]
-    │   │   │   │       │   │   └── settings
-    │   │   │   │       │   │       ├── certificationAuthoritySettingsPage.hook.ts
-    │   │   │   │       │   │       ├── certifications
-    │   │   │   │       │   │       │   ├── [certificationId]
-    │   │   │   │       │   │       │   │   └── parcours
-    │   │   │   │       │   │       │   │       ├── page.tsx
-    │   │   │   │       │   │       │   │       └── parcoursCertification.hooks.ts
-    │   │   │   │       │   │       │   ├── _components
-    │   │   │   │       │   │       │   │   ├── NoParcoursCertificationCard.tsx
-    │   │   │   │       │   │       │   │   └── WithParcoursCertificationCard.tsx
-    │   │   │   │       │   │       │   ├── certifications.hooks.ts
-    │   │   │   │       │   │       │   └── page.tsx
-    │   │   │   │       │   │       ├── informations-generales
-    │   │   │   │       │   │       │   ├── certificationAuthorityGeneralInfo.hooks.ts
-    │   │   │   │       │   │       │   └── page.tsx
-    │   │   │   │       │   │       ├── local-account
-    │   │   │   │       │   │       │   ├── certifications
-    │   │   │   │       │   │       │   │   ├── _components
-    │   │   │   │       │   │       │   │   │   └── GenericCertificationCard.tsx
-    │   │   │   │       │   │       │   │   ├── certificationsLocalAccountPage.hook.ts
-    │   │   │   │       │   │       │   │   └── page.tsx
-    │   │   │   │       │   │       │   ├── general-information
-    │   │   │   │       │   │       │   │   ├── generalInformationLocalAccountPage.hook.ts
-    │   │   │   │       │   │       │   │   └── page.tsx
-    │   │   │   │       │   │       │   ├── localAccountSettingsPage.hook.ts
-    │   │   │   │       │   │       │   └── page.tsx
-    │   │   │   │       │   │       ├── local-accounts
-    │   │   │   │       │   │       │   ├── [certificationAuthorityLocalAccountId]
-    │   │   │   │       │   │       │   │   ├── certifications
-    │   │   │   │       │   │       │   │   │   ├── page.tsx
-    │   │   │   │       │   │       │   │   │   └── updateLocalAccountCertificationsPage.hook.ts
-    │   │   │   │       │   │       │   │   ├── general-information
-    │   │   │   │       │   │       │   │   │   ├── page.tsx
-    │   │   │   │       │   │       │   │   │   └── updateLocalAccountGeneralInformationPage.hook.ts
-    │   │   │   │       │   │       │   │   ├── intervention-area
-    │   │   │   │       │   │       │   │   │   ├── page.tsx
-    │   │   │   │       │   │       │   │   │   └── updateLocalAccountInterventionAreaPage.hook.ts
-    │   │   │   │       │   │       │   │   ├── page.tsx
-    │   │   │   │       │   │       │   │   └── updateLocalAccountPage.hook.ts
-    │   │   │   │       │   │       │   └── add-local-account
-    │   │   │   │       │   │       │       ├── general-information
-    │   │   │   │       │   │       │       │   ├── addLocalAccountGeneralInformationPage.hook.ts
-    │   │   │   │       │   │       │       │   └── page.tsx
-    │   │   │   │       │   │       │       └── page.tsx
-    │   │   │   │       │   │       └── page.tsx
-    │   │   │   │       │   └── help
-    │   │   │   │       │       ├── help.hook.ts
-    │   │   │   │       │       └── page.tsx
-    │   │   │   │       ├── dashboard
-    │   │   │   │       │   └── page.tsx
-    │   │   │   │       ├── layout.tsx
-    │   │   │   │       └── responsable-certifications
-    │   │   │   │           ├── certifications
-    │   │   │   │           │   ├── (list)
-    │   │   │   │           │   │   ├── layout.tsx
-    │   │   │   │           │   │   └── page.tsx
-    │   │   │   │           │   └── [certificationId]
-    │   │   │   │           │       ├── additional-info
-    │   │   │   │           │       │   ├── page.tsx
-    │   │   │   │           │       │   └── useCertificationAdditionalInfo.hook.ts
-    │   │   │   │           │       ├── bloc-competence
-    │   │   │   │           │       │   └── [certificationCompetenceBlocId]
-    │   │   │   │           │       │       ├── page.tsx
-    │   │   │   │           │       │       └── updateCompetenceBloc.hook.ts
-    │   │   │   │           │       ├── description
-    │   │   │   │           │       │   ├── page.tsx
-    │   │   │   │           │       │   └── updateCertificationDescription.hook.ts
-    │   │   │   │           │       ├── page.tsx
-    │   │   │   │           │       ├── prerequisites
-    │   │   │   │           │       │   ├── page.tsx
-    │   │   │   │           │       │   └── updatePrerequisites.hook.ts
-    │   │   │   │           │       ├── replace
-    │   │   │   │           │       │   ├── page.tsx
-    │   │   │   │           │       │   └── replaceCertification.hook.ts
-    │   │   │   │           │       └── updateCertification.hook.ts
-    │   │   │   │           ├── certifications.hooks.ts
-    │   │   │   │           ├── layout.tsx
-    │   │   │   │           └── page.tsx
+    │   │   │   │   ├── (certificateur)
+    │   │   │   │   │   ├── candidacies
+    │   │   │   │   │   │   ├── (components)
+    │   │   │   │   │   │   │   ├── CertificationAuthority.tsx
+    │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccount.tsx
+    │   │   │   │   │   │   ├── [candidacyId]
+    │   │   │   │   │   │   │   ├── dossier-de-validation
+    │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── DossierDeValidationCard.tsx
+    │   │   │   │   │   │   │   │   │   └── HistoryDossierDeValidationView.tsx
+    │   │   │   │   │   │   │   │   ├── dossierDeValidationPageLogic.ts
+    │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   ├── problem
+    │   │   │   │   │   │   │   │   │   ├── dossierDeValidationProblemPageLogic.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   │   │   ├── feasibility
+    │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── FeasibilityBanner.tsx
+    │   │   │   │   │   │   │   │   │   ├── FeasibilityCompletionForm.tsx
+    │   │   │   │   │   │   │   │   │   ├── FeasibilityValidationForm.tsx
+    │   │   │   │   │   │   │   │   │   ├── dematerialized-feasibility
+    │   │   │   │   │   │   │   │   │   │   ├── DematerializedFeasibility.tsx
+    │   │   │   │   │   │   │   │   │   │   └── dematerializedFeasibility.hook.ts
+    │   │   │   │   │   │   │   │   │   ├── feasibility-uploaded-pdf
+    │   │   │   │   │   │   │   │   │   │   ├── FeasibilityUploadedPdf.tsx
+    │   │   │   │   │   │   │   │   │   │   └── feasibilityUploadedPdf.hook.ts
+    │   │   │   │   │   │   │   │   │   ├── feasibilityPage.hook.ts
+    │   │   │   │   │   │   │   │   │   └── useRevokeFeasibilityDecisionModal.hook.tsx
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── jury
+    │   │   │   │   │   │   │   │   ├── [[...juryId]]
+    │   │   │   │   │   │   │   │   │   ├── DateDeJury.tsx
+    │   │   │   │   │   │   │   │   │   ├── DateDeJuryCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── HistoryDateDeJuryView.tsx
+    │   │   │   │   │   │   │   │   │   ├── HistoryResultatView.tsx
+    │   │   │   │   │   │   │   │   │   ├── Resultat.tsx
+    │   │   │   │   │   │   │   │   │   ├── ResultatCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── juryPageLogic.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── date
+    │   │   │   │   │   │   │   │   │   ├── DateDeJuryCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── juryDatePageLogic.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   └── resultat
+    │   │   │   │   │   │   │   │       ├── Resultat.tsx
+    │   │   │   │   │   │   │   │       ├── ResultatByBlocks.tsx
+    │   │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │   │       │   ├── ConfirmJuryResultModal.tsx
+    │   │   │   │   │   │   │   │       │   ├── FeasibilityCompetenceBlocksModal.tsx
+    │   │   │   │   │   │   │   │       │   ├── HistoryResultatView.tsx
+    │   │   │   │   │   │   │   │       │   ├── ResultInconsistencyErrorModal.tsx
+    │   │   │   │   │   │   │   │       │   ├── ResultatCard.tsx
+    │   │   │   │   │   │   │   │       │   ├── ResultatCardWithBlocks.tsx
+    │   │   │   │   │   │   │   │       │   └── RevokeJuryDecisionModal.tsx
+    │   │   │   │   │   │   │   │       ├── juryResultPageLogic.ts
+    │   │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   │   ├── layout.tsx
+    │   │   │   │   │   │   │   ├── transfer
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── transfer-to-certification-authority
+    │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySearchList.tsx
+    │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityValidation.tsx
+    │   │   │   │   │   │   │   │   │   ├── EmptyStateCertificationSearch.tsx
+    │   │   │   │   │   │   │   │   │   └── transferCandidacy.hook.ts
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   └── transfer-to-certification-authority-local-account
+    │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │       │   ├── CertificationAuthorityLocalAccountCard.tsx
+    │   │   │   │   │   │   │       │   ├── CertificationAuthorityLocalAccountSearchList.tsx
+    │   │   │   │   │   │   │       │   ├── CertificationAuthorityLocalAccountValidation.tsx
+    │   │   │   │   │   │   │       │   ├── EmptyStateCertificationAuthorityLocalAccountSearch.tsx
+    │   │   │   │   │   │   │       │   └── transferCandidacy.hook.ts
+    │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   └── annuaire
+    │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │       │   ├── AnnuaireEmptyState.tsx
+    │   │   │   │   │   │       │   ├── CandidacyCard.tsx
+    │   │   │   │   │   │       │   ├── CandidacyCardSkeleton.tsx
+    │   │   │   │   │   │       │   ├── FiltersSection.tsx
+    │   │   │   │   │   │       │   ├── SortByBar.tsx
+    │   │   │   │   │   │       │   └── annuaire.hook.ts
+    │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   ├── certificateur-cgu
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   ├── CguAwaitingManagerValidationNotice.tsx
+    │   │   │   │   │   │   │   ├── CguCertificateurForm.tsx
+    │   │   │   │   │   │   │   └── IgnoreCguCertificateurModalContent.tsx
+    │   │   │   │   │   │   ├── cgu-certificateur.hook.ts
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── certificateur-layout.hook.ts
+    │   │   │   │   │   ├── certification-authorities
+    │   │   │   │   │   │   ├── [certificationAuthorityId]
+    │   │   │   │   │   │   │   └── settings
+    │   │   │   │   │   │   │       ├── certificationAuthoritySettingsPage.hook.ts
+    │   │   │   │   │   │   │       ├── certifications
+    │   │   │   │   │   │   │       │   ├── [certificationId]
+    │   │   │   │   │   │   │       │   │   └── parcours
+    │   │   │   │   │   │   │       │   │       ├── page.tsx
+    │   │   │   │   │   │   │       │   │       └── parcoursCertification.hooks.ts
+    │   │   │   │   │   │   │       │   ├── _components
+    │   │   │   │   │   │   │       │   │   ├── NoParcoursCertificationCard.tsx
+    │   │   │   │   │   │   │       │   │   └── WithParcoursCertificationCard.tsx
+    │   │   │   │   │   │   │       │   ├── certifications.hooks.ts
+    │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │       ├── informations-generales
+    │   │   │   │   │   │   │       │   ├── certificationAuthorityGeneralInfo.hooks.ts
+    │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │       ├── local-account
+    │   │   │   │   │   │   │       │   ├── certifications
+    │   │   │   │   │   │   │       │   │   ├── _components
+    │   │   │   │   │   │   │       │   │   │   └── GenericCertificationCard.tsx
+    │   │   │   │   │   │   │       │   │   ├── certificationsLocalAccountPage.hook.ts
+    │   │   │   │   │   │   │       │   │   └── page.tsx
+    │   │   │   │   │   │   │       │   ├── general-information
+    │   │   │   │   │   │   │       │   │   ├── generalInformationLocalAccountPage.hook.ts
+    │   │   │   │   │   │   │       │   │   └── page.tsx
+    │   │   │   │   │   │   │       │   ├── localAccountSettingsPage.hook.ts
+    │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │       ├── local-accounts
+    │   │   │   │   │   │   │       │   ├── [certificationAuthorityLocalAccountId]
+    │   │   │   │   │   │   │       │   │   ├── certifications
+    │   │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │       │   │   │   └── updateLocalAccountCertificationsPage.hook.ts
+    │   │   │   │   │   │   │       │   │   ├── general-information
+    │   │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │       │   │   │   └── updateLocalAccountGeneralInformationPage.hook.ts
+    │   │   │   │   │   │   │       │   │   ├── intervention-area
+    │   │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │       │   │   │   └── updateLocalAccountInterventionAreaPage.hook.ts
+    │   │   │   │   │   │   │       │   │   ├── page.tsx
+    │   │   │   │   │   │   │       │   │   └── updateLocalAccountPage.hook.ts
+    │   │   │   │   │   │   │       │   └── add-local-account
+    │   │   │   │   │   │   │       │       ├── general-information
+    │   │   │   │   │   │   │       │       │   ├── addLocalAccountGeneralInformationPage.hook.ts
+    │   │   │   │   │   │   │       │       │   └── page.tsx
+    │   │   │   │   │   │   │       │       └── page.tsx
+    │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   └── help
+    │   │   │   │   │   │       ├── help.hook.ts
+    │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   ├── dashboard
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── layout.tsx
+    │   │   │   │   │   └── responsable-certifications
+    │   │   │   │   │       ├── certifications
+    │   │   │   │   │       │   ├── (list)
+    │   │   │   │   │       │   │   ├── layout.tsx
+    │   │   │   │   │       │   │   └── page.tsx
+    │   │   │   │   │       │   └── [certificationId]
+    │   │   │   │   │       │       ├── additional-info
+    │   │   │   │   │       │       │   ├── page.tsx
+    │   │   │   │   │       │       │   └── useCertificationAdditionalInfo.hook.ts
+    │   │   │   │   │       │       ├── bloc-competence
+    │   │   │   │   │       │       │   └── [certificationCompetenceBlocId]
+    │   │   │   │   │       │       │       ├── page.tsx
+    │   │   │   │   │       │       │       └── updateCompetenceBloc.hook.ts
+    │   │   │   │   │       │       ├── description
+    │   │   │   │   │       │       │   ├── page.tsx
+    │   │   │   │   │       │       │   └── updateCertificationDescription.hook.ts
+    │   │   │   │   │       │       ├── page.tsx
+    │   │   │   │   │       │       ├── prerequisites
+    │   │   │   │   │       │       │   ├── page.tsx
+    │   │   │   │   │       │       │   └── updatePrerequisites.hook.ts
+    │   │   │   │   │       │       ├── replace
+    │   │   │   │   │       │       │   ├── page.tsx
+    │   │   │   │   │       │       │   └── replaceCertification.hook.ts
+    │   │   │   │   │       │       └── updateCertification.hook.ts
+    │   │   │   │   │       ├── certifications.hooks.ts
+    │   │   │   │   │       ├── layout.tsx
+    │   │   │   │   │       └── page.tsx
+    │   │   │   │   ├── error.tsx
+    │   │   │   │   └── layout.tsx
     │   │   │   ├── (public)
-    │   │   │   │   ├── auth-error
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── plan-du-site
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   └── post-login
+    │   │   │   │   ├── (auth)
+    │   │   │   │   │   ├── auth-error
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── client-auth-redirect
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── forgot-password
+    │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── forgot-password-confirmation
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── login
+    │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── logout-confirmation
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── post-login
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   ├── reset-password
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   └── password-definition-input
+    │   │   │   │   │   │   │       └── PasswordDefinitionInput.tsx
+    │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   └── reset-password-confirmation
+    │   │   │   │   │       └── page.tsx
+    │   │   │   │   ├── error.tsx
+    │   │   │   │   ├── layout.tsx
+    │   │   │   │   └── plan-du-site
     │   │   │   │       └── page.tsx
     │   │   │   ├── apple-icon.tsx
     │   │   │   ├── contact-infos-section
@@ -1616,7 +1641,10 @@
     │   │   │   ├── alert-decision-sent-feasibility
     │   │   │   │   └── DecisionSentComponent.tsx
     │   │   │   ├── auth
+    │   │   │   │   ├── AuthLoader.tsx
     │   │   │   │   ├── auth.tsx
+    │   │   │   │   ├── authGuard.tsx
+    │   │   │   │   ├── keycloak.utils.ts
     │   │   │   │   ├── keycloakContext.tsx
     │   │   │   │   └── types.ts
     │   │   │   ├── authenticated-link
@@ -1721,6 +1749,8 @@
     │   │   │   ├── empty-state
     │   │   │   │   ├── EmptyState.tsx
     │   │   │   │   └── hexagonBackground.svg
+    │   │   │   ├── error-page
+    │   │   │   │   └── ErrorPage.tsx
     │   │   │   ├── fancy-preview
     │   │   │   │   └── FancyPreview.tsx
     │   │   │   ├── fancy-upload
@@ -1777,8 +1807,12 @@
     │   │   │   │   └── OrganismSummaryLegalInformationDocumentsDecisions.tsx
     │   │   │   ├── pagination
     │   │   │   │   └── Pagination.tsx
+    │   │   │   ├── password-input
+    │   │   │   │   └── PasswordInput.tsx
     │   │   │   ├── pictograms
     │   │   │   │   └── Pictograms.tsx
+    │   │   │   ├── public-header
+    │   │   │   │   └── PublicHeader.tsx
     │   │   │   ├── script
     │   │   │   │   ├── Produktly.tsx
     │   │   │   │   └── Tarteaucitron.ts
@@ -1829,6 +1863,10 @@
     │   │   │   └── genders.constant.ts
     │   │   ├── graphql
     │   │   │   └── strapi.ts
+    │   │   ├── helpers
+    │   │   │   └── graphql
+    │   │   │       └── public-api-client
+    │   │   │           └── publicApiClient.ts
     │   │   ├── styles
     │   │   │   ├── dsfr-theme-tac-extra.css
     │   │   │   ├── dsfr-theme-tac.min.css
@@ -1843,7 +1881,8 @@
     │   │       ├── formatIso8601Time.ts
     │   │       ├── input-sanitization.ts
     │   │       ├── isCandidacyPaymentRequestAlreadySent.ts
-    │   │       └── isCandidacyStatusEqualOrAbove.ts
+    │   │       ├── isCandidacyStatusEqualOrAbove.ts
+    │   │       └── url.ts
     │   ├── tailwind.config.js
     │   ├── tests
     │   │   ├── (aap)
@@ -4278,6 +4317,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260417114603_add_france_connect_sandbox_cleanup_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260427125347_drop_table_organism_region_certification
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260428135602_add_candidate_drop_out_v2_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -5836,4 +5879,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1958 directories, 3880 files
+1976 directories, 3905 files
