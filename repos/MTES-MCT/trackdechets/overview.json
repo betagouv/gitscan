@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/trackdechets",
   "name": "trackdechets",
-  "description": "Trackdéchets est une plateforme pour gérer la traçabilité des déchets en toute sécurité. Elle est incubée par la Fabrique Numérique du Ministère de la Transition Écologique et vise à simplifier et sécuriser le suivi des déchets.",
+  "description": "Trackdéchets est une plateforme sécurisée pour gérer la traçabilité des déchets. Elle vise à faciliter le suivi des déchets tout au long de leur cycle de vie, en conformité avec les réglementations en vigueur.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -22,8 +22,7 @@
     "Elasticsearch",
     "Redis",
     "React.js",
-    "Apollo Server",
-    "Apollo Client",
+    "Typescript",
     "Prisma ORM"
   ],
   "components": [
@@ -35,18 +34,18 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
-  "tests": [
-    "Jest",
-    "Intégration tests"
-  ],
+  "tests": "Intégration tests avec Github Actions",
   "workflows": [
-    "Build & Test",
-    "Integration tests"
+    "build-and-test.yml",
+    "integration-tests.yml"
   ],
-  "lastActivity": "2026-04-23T11:08:44+02:00",
+  "lastActivity": "2026-04-28T17:51:31+02:00",
   "status": "active",
   "license": "GNU Affero General Public License v3.0",
   "hasDocumentation": true,

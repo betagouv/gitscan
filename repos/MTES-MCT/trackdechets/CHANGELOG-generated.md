@@ -1,26 +1,38 @@
-## Changelog : trackdechets (30 derniers jours, au 23 avril 2026)
+## Changelog : trackdechets (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Trackdéchets se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des formulaires BSDA, BSFF et VHU. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de la plateforme, ainsi que des améliorations concernant la gestion des codes déchets Bâle et l'anonymisation des utilisateurs.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des BSD (Bordereaux de Suivi des Déchets), notamment en facilitant la modification des informations, en corrigeant des bugs bloquants et en ajoutant de nouvelles fonctionnalités pour les utilisateurs ETQ (Établissements Titulaires d'une Exploitation). L'implémentation de l'authentification à double facteur (2FA) renforce également la sécurité de la plateforme. Des améliorations ont été apportées à l'interface utilisateur et à la gestion des codes déchets Bâle.
 
 ### Évolutions fonctionnelles
-- Possibilité d'anonymiser un utilisateur administrateur par son adresse email. [#4722](https://github.com/MTES-MCT/trackdechets/issues/4722)
-- Amélioration de la gestion des métadonnées du BSDA dans les formulaires. [#4720](https://github.com/MTES-MCT/trackdechets/issues/4720)
-- Correction d'un bug empêchant la mise à jour correcte des VHU avec plusieurs transporteurs. [#4718](https://github.com/MTES-MCT/trackdechets/issues/4718)
-- La modal de signature transporteur (BSDD) permet désormais la modification des informations de contact (email, numéro de téléphone). [#4713](https://github.com/MTES-MCT/trackdechets/issues/4713)
-- Correction d'un bug bloquant la publication des BSVHU lorsque le champ dépassait 250 caractères. [#4728](https://github.com/MTES-MCT/trackdechets/issues/4728)
-- Suppression du sélecteur d'entreprise si la case "installation sans SIRET" est cochée. [#4727](https://github.com/MTES-MCT/trackdechets/issues/4727)
-- L'affichage de la mention "estimé" n'apparaît plus que si la case correspondante est cochée. [#4726](https://github.com/MTES-MCT/trackdechets/issues/4726)
-- Possibilité de créer un BSFF avec un SIRET fermé, même si l'utilisateur ne peut pas en créer un initialement. [#4717](https://github.com/MTES-MCT/trackdechets/issues/4717)
-- Redirection correcte de l'utilisateur après la fermeture d'un BSDA. [#4715](https://github.com/MTES-MCT/trackdechets/issues/4715)
-- Ajout du SIRET de la destination ultérieure BSVHU aux exports registre et pays sur PDF. [#4706](https://github.com/MTES-MCT/trackdechets/issues/4706)
-- Nettoyage des informations de certification section 3 BSDA. [#4707](https://github.com/MTES-MCT/trackdechets/issues/4707)
+- **BSDD (Bordereau de Suivi des Déchets de Déchets Dangereux):**
+    - Possibilité de modifier les intermédiaires jusqu'à la signature de la réception par la destination. [#4741](https://github.com/MTES-MCT/trackdechets/issues/4741)
+    - Ajout de la possibilité d'ajouter 2 intermédiaires supplémentaires. [#4738](https://github.com/MTES-MCT/trackdechets/issues/4738)
+- **Authentification:**
+    - Implémentation de l'authentification à double facteur (2FA) avec possibilité de la désactiver. [#4736](https://github.com/MTES-MCT/trackdechets/issues/4736), [#4739](https://github.com/MTES-MCT/trackdechets/issues/4739), [#4740](https://github.com/MTES-MCT/trackdechets/issues/4740)
+- **BSFF (Bordereau de Suivi des Déchets):**
+    - Ajout de champs pour l'émetteur, le transporteur et la destination.
+    - Sélection du type de BSFF.
+- **ETQ:**
+    - Possibilité pour les administrateurs ETQ d'anonymiser un utilisateur par son adresse email. [#4722](https://github.com/MTES-MCT/trackdechets/issues/4722)
+    - Correction d'un bug empêchant la création d'un BSFF avec un SIRET fermé. [#4717](https://github.com/MTES-MCT/trackdechets/issues/4717)
+- **Codes déchets Bâle:**
+    - Création d'une liste de codes déchets Bâle. [#4719](https://github.com/MTES-MCT/trackdechets/issues/4719)
+- **BSDA:**
+    - Récupération des métadonnées du BSDA dans les formulaires front-end. [#4720](https://github.com/MTES-MCT/trackdechets/issues/4720)
+    - Correction d'un bug de mise à jour sur le VHU avec plusieurs transporteurs. [#4718](https://github.com/MTES-MCT/trackdechets/issues/4718)
+    - La modal de signature transporteur permet désormais de modifier les informations de contact. [#4713](https://github.com/MTES-MCT/trackdechets/issues/4713)
+- **BSVHU:**
+    - Correction d'un blocage lors de la publication d'un BSVHU si le champ dépassait 250 caractères. [#4728](https://github.com/MTES-MCT/trackdechets/issues/4728)
 
 ### Évolutions techniques
-- Préparation d'une modification pour le 07/04/2026 et mise à jour du changelog. [#4730](https://github.com/MTES-MCT/trackdechets/issues/4730)
-- Création d'une liste de Codes déchets Bâle sur le même principe que la liste des codes déchets existants. [#4737](https://github.com/MTES-MCT/trackdechets/issues/4737)
+- Correction d'un problème d'affichage de CRISP pour les politiques.
+- Refactorisation du code pour améliorer la performance et la maintenabilité.
+- Correction de problèmes de format et de tests d'intégration.
+- Mise en place d'un script pour la modification de la base de données.
+- Suppression d'un sélecteur de société inutile dans certains cas.
 
 ### Autres changements
-- Corrections de format et tests d'intégration.
-- Revert de modifications concernant le sélecteur de code Bâle.
-- Passage de la branche `master` à `dev`.
+- Mise à jour du texte présent dans le bandeau d'information. [#4733](https://github.com/MTES-MCT/trackdechets/issues/4733)
+- Préparation de la recette du 28 avril 2026.
+- Ajout d'un chatbot IA (en préparation). [#4743](https://github.com/MTES-MCT/trackdechets/issues/4743)
+- Diverses corrections de style et de documentation.

@@ -361,6 +361,7 @@
 │   │   │   ├── server.integration.ts
 │   │   │   ├── testClient.ts
 │   │   │   ├── testWorkflow.ts
+│   │   │   ├── totpStrategy.test.ts
 │   │   │   ├── utils.test.ts
 │   │   │   └── utils.ts
 │   │   ├── activity-events
@@ -2343,10 +2344,13 @@
 │   │   │   │   │   ├── anonymizeUser.ts
 │   │   │   │   │   ├── changePassword.ts
 │   │   │   │   │   ├── changeUserRole.ts
+│   │   │   │   │   ├── confirmTotpSetup.ts
 │   │   │   │   │   ├── createAccessToken.ts
 │   │   │   │   │   ├── createPasswordResetRequest.ts
 │   │   │   │   │   ├── deleteInvitation.ts
+│   │   │   │   │   ├── disableTotp.ts
 │   │   │   │   │   ├── editProfile.ts
+│   │   │   │   │   ├── generateTotpSetup.ts
 │   │   │   │   │   ├── inviteUserToCompany.ts
 │   │   │   │   │   ├── inviteUserToCompanyService.ts
 │   │   │   │   │   ├── joinWithInvite.ts
@@ -2513,10 +2517,12 @@
 │   ├── package.json
 │   ├── project.json
 │   ├── public
-│   │   ├── Politique de confidentialité.pdf
+│   │   ├── Mentions-legales.pdf
+│   │   ├── Politique-de-confidentialite.pdf
 │   │   ├── android-chrome-192x192.png
 │   │   ├── android-chrome-512x512.png
 │   │   ├── apple-touch-icon.png
+│   │   ├── brgm.svg
 │   │   ├── favicon.ico
 │   │   ├── favicon.svg
 │   │   ├── fonts
@@ -2534,6 +2540,7 @@
 │   │   │       └── marianne-thin-webfont.woff2
 │   │   ├── hero-bg-high-res.jpg
 │   │   ├── hero-bg.jpg
+│   │   ├── homologation.pdf
 │   │   ├── icons
 │   │   │   ├── buildings
 │   │   │   │   ├── ancient-gate-fill.svg
@@ -3173,6 +3180,10 @@
 │   │   │   │   │       ├── AccountApplicationsMyApplicationsCreateUpdate.tsx
 │   │   │   │   │       ├── AccountApplicationsMyApplicationsDelete.tsx
 │   │   │   │   │       └── queries.ts
+│   │   │   │   ├── AccountAuthentication
+│   │   │   │   │   ├── AccountAuthentication.tsx
+│   │   │   │   │   ├── DisableTotpModal.tsx
+│   │   │   │   │   └── TotpSetupWizard.tsx
 │   │   │   │   ├── AccountContentWrapper.module.scss
 │   │   │   │   ├── AccountContentWrapper.tsx
 │   │   │   │   ├── AccountInfo
@@ -3465,6 +3476,29 @@
 │   │   │   │   │   │   │   └── Worker.tsx
 │   │   │   │   │   │   └── utils
 │   │   │   │   │   │       └── initial-state.ts
+│   │   │   │   │   ├── bsff
+│   │   │   │   │   │   ├── FormSteps.tsx
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── BsffCompanyResult.tsx
+│   │   │   │   │   │   │   ├── BsffPackagingForm.tsx
+│   │   │   │   │   │   │   ├── BsffPackagingList.tsx
+│   │   │   │   │   │   │   ├── BsffSelectableWasteTable.tsx
+│   │   │   │   │   │   │   ├── BsffSelectableWasteTableWrapper.tsx
+│   │   │   │   │   │   │   ├── MyBsffComapnySelector.tsx
+│   │   │   │   │   │   │   ├── RhfBsffPackagingForm.tsx
+│   │   │   │   │   │   │   ├── RhfBsffPackagingList.tsx
+│   │   │   │   │   │   │   └── scss
+│   │   │   │   │   │   │       └── CompanyResult.module.scss
+│   │   │   │   │   │   ├── schema.ts
+│   │   │   │   │   │   ├── steps
+│   │   │   │   │   │   │   ├── Destination.tsx
+│   │   │   │   │   │   │   ├── Detenteur.tsx
+│   │   │   │   │   │   │   ├── Emitter.tsx
+│   │   │   │   │   │   │   ├── Transporter.tsx
+│   │   │   │   │   │   │   └── Waste.tsx
+│   │   │   │   │   │   └── utils
+│   │   │   │   │   │       ├── constants.ts
+│   │   │   │   │   │       └── initial-state.ts
 │   │   │   │   │   ├── bspaoh
 │   │   │   │   │   │   ├── FormSteps.tsx
 │   │   │   │   │   │   ├── PaohForm.module.scss
@@ -3610,6 +3644,13 @@
 │   │   │   │   │   │   └── useBroker.ts
 │   │   │   │   │   ├── CompanyContactInfo
 │   │   │   │   │   │   └── CompanyContactInfo.tsx
+│   │   │   │   │   ├── DetenteurAccordion
+│   │   │   │   │   │   ├── DetenteurAccordion.scss
+│   │   │   │   │   │   └── DetenteurAccordion.tsx
+│   │   │   │   │   ├── DetenteurForm
+│   │   │   │   │   │   └── RhfDetenteurForm.tsx
+│   │   │   │   │   ├── DetenteurList
+│   │   │   │   │   │   └── RhfDetenteurList.tsx
 │   │   │   │   │   ├── FormStepsTabs
 │   │   │   │   │   │   ├── FormStepsTabs.tsx
 │   │   │   │   │   │   ├── formStepsTabs.scss
@@ -3780,6 +3821,8 @@
 │   │   │   │   │   │   └── wasteCode.module.scss
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── layout
+│   │   │   │   │   │   ├── Footer.module.scss
+│   │   │   │   │   │   ├── Footer.tsx
 │   │   │   │   │   │   ├── Header.module.scss
 │   │   │   │   │   │   ├── Header.tsx
 │   │   │   │   │   │   ├── Layout.tsx
@@ -3797,6 +3840,7 @@
 │   │   │   │   │   └── initialState.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useCopyToClipboard.ts
+│   │   │   │   │   ├── useCrisp.tsx
 │   │   │   │   │   ├── useMyCompany.ts
 │   │   │   │   │   ├── useOnClickOutsideRefTarget.ts
 │   │   │   │   │   └── usePersistedState.tsx
@@ -3910,6 +3954,7 @@
 │   │   │   │   ├── SideMenu.test.tsx
 │   │   │   │   ├── helper.test.ts
 │   │   │   │   └── packagings.test.ts
+│   │   │   ├── bsffPackagings.ts
 │   │   │   ├── components
 │   │   │   │   ├── ActionButton.module.scss
 │   │   │   │   ├── ActionButton.tsx
@@ -4493,6 +4538,8 @@
 │   │   │   │   │   │   ├── refus-total-dechet.html
 │   │   │   │   │   │   ├── registry-delegation-creation.html
 │   │   │   │   │   │   ├── reinitialisation-mot-de-passe.html
+│   │   │   │   │   │   ├── totp-activated.html
+│   │   │   │   │   │   ├── totp-disabled.html
 │   │   │   │   │   │   └── your-company-is-identified-on-a-bsd.html
 │   │   │   │   │   ├── provider
 │   │   │   │   │   │   └── templateIds.ts
@@ -5014,6 +5061,8 @@
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260226085645_add_family_code_waste_family_code
 │   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260413000000_add_totp_recovery_codes
+│   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   └── migration_lock.toml
 │   │   │   │   ├── models
 │   │   │   │   │   ├── main.prisma
@@ -5154,7 +5203,8 @@
 │   │   │   │       ├── 20251030152845218_add-new-eco-organismes.ts
 │   │   │   │       ├── 20251120171331767_fix_dates_before_1900.ts
 │   │   │   │       ├── 20251211120000000_reindex_bsds_with_revision_requests.ts
-│   │   │   │       └── 20260311000123428_fix_remaining_dates_before_1900.ts
+│   │   │   │       ├── 20260311000123428_fix_remaining_dates_before_1900.ts
+│   │   │   │       └── 20260426090022073_update-handle-eco-organisme.ts
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
@@ -5279,4 +5329,4 @@
 │   ├── validation-doc.js
 │   └── waste-consistence-migration.sql
 └── tsconfig.base.json
-928 directories, 4390 files
+938 directories, 4430 files
