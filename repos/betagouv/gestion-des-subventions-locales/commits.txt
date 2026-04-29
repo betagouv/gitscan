@@ -1,6 +1,47 @@
+2026-04-28T15:21:02+02:00 - ce73343f - Maud Royer : fix(simulation): open "déjà en cours" modal after bulk-job-start
+2026-04-28T15:21:02+02:00 - 9fa8e961 - Maud Royer : feat(simulation): register BulkStatusJob in admin
+2026-04-28T15:21:02+02:00 - 9947c467 - Maud Royer : fix(simulation): preserve bulk-status checkbox after row edits
+2026-04-28T15:21:02+02:00 - 567cafd3 - Maud Royer : fix(simulation): rephrase bulk-job TransitionNotAllowed error
+2026-04-28T15:20:14+02:00 - ea8262b8 - Maud Royer : feat(simulation): async bulk status change for DN-triggering transitions
+2026-04-28T14:40:36+02:00 - b5358a4b - Maud Royer : fix(notification): allow closing the « not instructor » modal
+2026-04-28T13:40:19Z - ba63c730 - Maud Royer : Permettre de fermer la modale « Vous ne faites pas partie du groupe d'instructeurs » (#690)
+2026-04-28T13:30:49Z - c46af00f - maxi_malain : Retrait du Demandeur (doublon) pour ne conserver que le demandeur au niveau du dossier (#670)
+2026-04-28T13:24:52Z - aec45d62 - Maud Royer : Changement de statut en masse asynchrone pour les transitions impliquant Démarches Numériques (#677)
+2026-04-28T13:04:42+02:00 - a18828c7 - maximallain : refacto: use personne_morale instead of projet demandeur
+2026-04-28T12:56:56+02:00 - 95f1966e - Maud Royer : feat(simulation): persist sort order alongside filters on simulation detail
+2026-04-28T12:42:26+02:00 - a27e42d5 - Maud Royer : Corriger l'URL du script HeatmapSessionRecording de Matomo
+2026-04-28T12:18:32+02:00 - 76dade6b - Maud Royer : ci: run tests on push to hotfix/* branches
+2026-04-28T11:08:38Z - f3ec9aaa - Maud Royer : Persistance du tri en plus des filtres sur la page de simulation (#689)
+2026-04-28T11:04:04Z - baeed49c - Maud Royer : Corriger l'URL du script HeatmapSessionRecording de Matomo (#687)
+2026-04-28T11:03:45Z - fd34d4d5 - Maud Royer : CI : exécuter les tests lors des push sur les branches hotfix/* (#686)
+2026-04-27T17:38:21+02:00 - 339aa55b - maximallain : fix(logging): silence fontTools subset verbose logs in production
+2026-04-27T17:00:59+02:00 - 037c8a86 - Maud Royer : fix(ds-proxy): drop null nodes and partial-fetch errors in dossier list
+2026-04-27T16:13:50Z - f6ddfeaa - maxi_malain : Supprimer les logs verbeux de fontTools en production (#684)
+2026-04-27T15:44:09Z - 3d44a2cf - maxi_malain : Mise à jour de l'enveloppe lorsqu'on modifie les montants des projets acceptés (#674)
+2026-04-27T15:11:33Z - 436553b1 - maxi_malain : Se baser sur les champs actifs d'une démarche DN (#668)
+2026-04-27T15:04:14Z - f968a522 - Maud Royer : Proxy DS : ignorer les nœuds null et masquer les erreurs partielles dans la liste des dossiers (#683)
+2026-04-27T12:48:26+02:00 - 5adcdd22 - Maud Royer : fix(release): drop --target main so hotfix tags scope notes correctly
+2026-04-27T12:32:59Z - f6d53df1 - Maud Royer : Cibler le commit du tag plutôt que main lors de la création de la release (#681)
+2026-04-27T12:30:52+02:00 - f89234ce - Maud Royer : feat(justfile): add release-dry-run recipe to preview release tag and notes
+2026-04-27T12:23:56+02:00 - 4a9556ad - maxi_malain : fix(dn): use objects as default manager for FieldMapping
+2026-04-27T12:21:35+02:00 - fcae1ec0 - maximallain : refacto: use a manager
+2026-04-27T12:21:35+02:00 - aea0c1b3 - maximallain : feat(field-mapping): track active status on FieldMapping to handle demarche revisions
+2026-04-27T12:20:14+02:00 - 2303dfe8 - Maud Royer : fix(ds-proxy): forward upstream GraphQL errors instead of misattributing them to scope check
+2026-04-27T10:33:39Z - 51fb31bc - Maud Royer : Ajout d'une commande `just release-dry-run` pour prévisualiser un tag et ses notes de version (#680)
+2026-04-27T10:23:17Z - 731a6f33 - Maud Royer : Proxy DS : remonter les erreurs GraphQL d'amont au lieu de les masquer par le contrôle de périmètre (#678)
+2026-04-27T10:19:58Z - 1cdf3cc8 - maxi_malain : Ajout de la librairie django-query-counter (#671)
+2026-04-27T09:52:57Z - 014a6c6c - maxi_malain : Afficher la priorité du dossier si plusieurs ont été déposés par le même demandeur (#675)
+2026-04-27T09:49:44Z - 475f865c - maxi_malain : Ajout d'un filtre EPCI sur les pages projet, programmation et simulation (#673)
+2026-04-27T09:42:10Z - 489b582f - Maud Royer : Éviter les timeouts Scalingo du proxy DS via un heartbeat streamé (#676)
+2026-04-24T15:29:20+02:00 - ac5a479e - Maud Royer : Stream a heartbeat byte to avoid Scalingo router timeouts on DS proxy
+2026-04-23T18:00:15+02:00 - f3a0c0ab - maximallain : feat: get and display priority
+2026-04-23T16:38:43+02:00 - 73be0d9d - maximallain : refacto: send enveloppe line only if the simu is accepted
+2026-04-23T16:38:40+02:00 - 3ef4cb7a - maximallain : feat(simulation): update enveloppe when accepted projet montant is updated
+2026-04-23T12:38:57+02:00 - 3e235851 - maximallain : feat: add EPCI filter on projet, programmation and simulation pages
 2026-04-23T08:00:26Z - a3215249 - maxi_malain : Utilisation de l'adresse complète plutôt que reconstruite sur une ligne (#669)
 2026-04-23T07:06:46Z - 48264990 - maxi_malain : Mise en place de la FAQ (#672)
 2026-04-22T17:19:05+02:00 - 1766d46b - maximallain : feat: create a 1st faq
+2026-04-22T14:50:32+02:00 - 81779d41 - maximallain : core: add django-query-counter
 2026-04-22T09:35:18+02:00 - a5dc386f - maximallain : fix: replace \n by <br>
 2026-04-22T09:11:47+02:00 - 65a445e2 - maximallain : fix: use address label instead of __str__
 2026-04-22T08:08:34Z - 9def2488 - Maud Royer : Ajouter le script HeatmapSessionRecording de Matomo (#666)

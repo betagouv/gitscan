@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions de manière centralisée et efficace, en facilitant le suivi des dossiers et des paiements. Il vise à simplifier le processus de demande et d'attribution de subventions pour les collectivités locales.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions, les projets, les enveloppes financières et les simulations. Il offre une interface pour les agents de l'administration et les associations.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -19,8 +19,8 @@
     "Celery",
     "Redis",
     "Mozilla-django-oidc",
-    "django-dsfr",
-    "htmx.org"
+    "htmx.org",
+    "django-dsfr"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,17 +33,17 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "sso"
     ]
   },
   "tests": [
-    "pytest",
-    "pytest-django"
+    "pytest"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-04-23T08:00:26Z",
+  "lastActivity": "2026-04-28T15:21:02+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,11 +54,12 @@
     "openIssues": null
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "Python",
-    "Bases de données SQL",
     "Subventions & Finances publiques",
-    "Gestion des établissements & Structures"
+    "Données & Open Data",
+    "Python",
+    "Django",
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Territoire & Collectivités"
   ]
 }

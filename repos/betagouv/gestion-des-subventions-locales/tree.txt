@@ -246,6 +246,9 @@
 │   │   ├── 0052_merge_20260327_1130.py
 │   │   ├── 0053_merge_20260327_1201.py
 │   │   ├── 0054_add_porteur_de_projet_civilite_to_dossier.py
+│   │   ├── 0055_fieldmapping_is_active_deactivated_at.py
+│   │   ├── 0055_remove_dossier_demande_autre_numero_dossier_and_more.py
+│   │   ├── 0056_merge_20260427_1223.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -575,6 +578,7 @@
 │   │   ├── 0033_projet_dotations_updated_in_app.py
 │   │   ├── 0034_alter_dotationprojet_assiette.py
 │   │   ├── 0035_alter_dotationprojet_assiette.py
+│   │   ├── 0036_remove_projet_demandeur_delete_demandeur.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services
@@ -689,6 +693,7 @@
 │   │   ├── 0023_alter_simulationprojet_montant.py
 │   │   ├── 0024_simulation_filters.py
 │   │   ├── 0025_simulation_downloaded_at.py
+│   │   ├── 0026_bulkstatusjob.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -712,6 +717,7 @@
 │   │       │   └── utils.js
 │   │       └── tableEditForms.js
 │   ├── table_columns.py
+│   ├── tasks.py
 │   ├── templates
 │   │   ├── gsl_simulation
 │   │   │   ├── simulation_detail.html
@@ -738,7 +744,13 @@
 │   │   │       └── taux.html
 │   │   ├── htmx
 │   │   │   ├── _base_htmx_modal.html
+│   │   │   ├── _bulk_status_progress_partial.html
 │   │   │   ├── acceptance_errors_modal.html
+│   │   │   ├── bulk_status_already_running_modal.html
+│   │   │   ├── bulk_status_confirm_modal.html
+│   │   │   ├── bulk_status_missing_ds_profile_modal.html
+│   │   │   ├── bulk_status_nothing_modifiable_modal.html
+│   │   │   ├── bulk_status_preflight_modal.html
 │   │   │   ├── go_back_to_simulation_state_modal.html
 │   │   │   ├── not_instructeur_error.html
 │   │   │   ├── notify_later_confirmation_modal.html
@@ -784,9 +796,11 @@
 │   │   ├── test_form_helpers.py
 │   │   ├── test_models.py
 │   │   ├── test_simuprojet_constraints.py
+│   │   ├── test_tasks.py
 │   │   ├── test_urls.py
 │   │   └── views
 │   │       ├── test_acceptance_validation.py
+│   │       ├── test_bulk_status_job_views.py
 │   │       ├── test_bulk_status_update.py
 │   │       ├── test_double_dotation_view_form_selection.py
 │   │       ├── test_filters.py
@@ -805,6 +819,7 @@
 │   │       └── test_status_modal_view.py
 │   ├── urls.py
 │   └── views
+│       ├── bulk_status_job_views.py
 │       ├── decorators.py
 │       ├── simulation_projet_notes_views.py
 │       ├── simulation_projet_views.py
@@ -845,4 +860,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-152 directories, 695 files
+152 directories, 710 files
