@@ -1,7 +1,10 @@
 .
 ├── .actrc
 ├── .claude
-│   └── settings.json
+│   ├── settings.json
+│   └── worktrees
+│       ├── download-preuves-archive
+│       └── fix-snbc-calculation
 ├── .cursor
 │   └── rules
 │       └── comply-adr.mdc
@@ -177,6 +180,13 @@
 │   │   │   │   │   │   │   │       └── [indicateurId]
 │   │   │   │   │   │   │   │           └── page.tsx
 │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   ├── ma-collectivite
+│   │   │   │   │   │   │   │   ├── default.tsx
+│   │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   │   ├── personnalisation
+│   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   └── presentation
+│   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── plans
 │   │   │   │   │   │   │   │   ├── (creation)
 │   │   │   │   │   │   │   │   │   ├── creer
@@ -269,6 +279,7 @@
 │   │   │   │   │   │   │   │   │   │       │   │   │   └── referentiel-dropdown.navigation.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── display-settings-buttons.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── infos.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── points-potentiels.label.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── previous-and-next-actions.links.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   └── vertical-divider.tsx
@@ -326,11 +337,6 @@
 │   │   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   ├── personnalisation
-│   │   │   │   │   │   │   │   │   ├── [thematiqueId]
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   └── tableau-de-bord.show.tsx
 │   │   │   │   │   │   │   ├── tableau-de-bord
 │   │   │   │   │   │   │   │   ├── _components
@@ -733,35 +739,38 @@
 │   │   │   │   │       │       ├── save-score.button.tsx
 │   │   │   │   │       │       ├── save-score.modal.tsx
 │   │   │   │   │       │       └── useSaveScore.ts
-│   │   │   │   │       └── Trajectoire
-│   │   │   │   │           ├── AllerPlusLoin.tsx
-│   │   │   │   │           ├── CommuneNonSupportee.tsx
-│   │   │   │   │           ├── ComparezLaTrajectoire.tsx
-│   │   │   │   │           ├── DonneesCollectivite
-│   │   │   │   │           │   ├── DonneesCollectivite.tsx
-│   │   │   │   │           │   ├── TableauDonnees.stories.tsx
-│   │   │   │   │           │   ├── TableauDonnees.tsx
-│   │   │   │   │           │   ├── fixture.ts
-│   │   │   │   │           │   ├── tabs-properties.tsx
-│   │   │   │   │           │   └── useDonneesSectorisees.tsx
-│   │   │   │   │           ├── DonneesPartiellementDisponibles.tsx
-│   │   │   │   │           ├── Methodologie.tsx
-│   │   │   │   │           ├── MethodologieSection.tsx
-│   │   │   │   │           ├── Trajectoire.tsx
-│   │   │   │   │           ├── TrajectoireCalculee.tsx
-│   │   │   │   │           ├── db-error.svg
-│   │   │   │   │           ├── graphes
-│   │   │   │   │           │   ├── GrapheSecteur.stories.tsx
-│   │   │   │   │           │   ├── GrapheSecteur.tsx
-│   │   │   │   │           │   ├── GrapheTousSecteurs.stories.tsx
-│   │   │   │   │           │   ├── GrapheTousSecteurs.tsx
-│   │   │   │   │           │   └── layer-parameters.ts
-│   │   │   │   │           ├── trajectoire.svg
-│   │   │   │   │           ├── use-get-statut-trajectoire.ts
-│   │   │   │   │           ├── use-indicateur-trajectoire.ts
-│   │   │   │   │           ├── use-trajectoire.ts
-│   │   │   │   │           ├── useTelechargementModele.ts
-│   │   │   │   │           └── useTelechargementTrajectoire.ts
+│   │   │   │   │       ├── Trajectoire
+│   │   │   │   │       │   ├── AllerPlusLoin.tsx
+│   │   │   │   │       │   ├── CommuneNonSupportee.tsx
+│   │   │   │   │       │   ├── ComparezLaTrajectoire.tsx
+│   │   │   │   │       │   ├── DonneesCollectivite
+│   │   │   │   │       │   │   ├── DonneesCollectivite.tsx
+│   │   │   │   │       │   │   ├── TableauDonnees.stories.tsx
+│   │   │   │   │       │   │   ├── TableauDonnees.tsx
+│   │   │   │   │       │   │   ├── fixture.ts
+│   │   │   │   │       │   │   ├── tabs-properties.tsx
+│   │   │   │   │       │   │   └── useDonneesSectorisees.tsx
+│   │   │   │   │       │   ├── DonneesPartiellementDisponibles.tsx
+│   │   │   │   │       │   ├── Methodologie.tsx
+│   │   │   │   │       │   ├── MethodologieSection.tsx
+│   │   │   │   │       │   ├── Trajectoire.tsx
+│   │   │   │   │       │   ├── TrajectoireCalculee.tsx
+│   │   │   │   │       │   ├── db-error.svg
+│   │   │   │   │       │   ├── graphes
+│   │   │   │   │       │   │   ├── GrapheSecteur.stories.tsx
+│   │   │   │   │       │   │   ├── GrapheSecteur.tsx
+│   │   │   │   │       │   │   ├── GrapheTousSecteurs.stories.tsx
+│   │   │   │   │       │   │   ├── GrapheTousSecteurs.tsx
+│   │   │   │   │       │   │   └── layer-parameters.ts
+│   │   │   │   │       │   ├── trajectoire.svg
+│   │   │   │   │       │   ├── use-get-statut-trajectoire.ts
+│   │   │   │   │       │   ├── use-indicateur-trajectoire.ts
+│   │   │   │   │       │   ├── use-trajectoire.ts
+│   │   │   │   │       │   ├── useTelechargementModele.ts
+│   │   │   │   │       │   └── useTelechargementTrajectoire.ts
+│   │   │   │   │       └── presentation
+│   │   │   │   │           ├── info-administratives.tsx
+│   │   │   │   │           └── presentation.page.tsx
 │   │   │   │   ├── paths.ts
 │   │   │   │   ├── static
 │   │   │   │   │   ├── favicons
@@ -778,6 +787,8 @@
 │   │   │   │   │       └── no-results-astronaut-bro.svg
 │   │   │   │   └── theme.ts
 │   │   │   ├── collectivites
+│   │   │   │   ├── collectivites
+│   │   │   │   │   └── use-get-collectivite.ts
 │   │   │   │   ├── membres
 │   │   │   │   │   ├── invite-membre
 │   │   │   │   │   │   ├── invite-membre.button.tsx
@@ -812,11 +823,67 @@
 │   │   │   │   │   └── data
 │   │   │   │   │       ├── fetchCollectivitePanierInfo.ts
 │   │   │   │   │       └── useGetCollectivitePanierInfo.ts
+│   │   │   │   ├── personnalisations
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── transform-reponse.ts
+│   │   │   │   │   │   ├── use-list-opened-thematiques.ts
+│   │   │   │   │   │   ├── use-list-personnalisation-questions-reponses.ts
+│   │   │   │   │   │   ├── use-list-personnalisation-regles.ts
+│   │   │   │   │   │   ├── use-list-personnalisation-thematiques.ts
+│   │   │   │   │   │   ├── use-set-personnalisation-justification.ts
+│   │   │   │   │   │   └── use-set-personnalisation-reponse.ts
+│   │   │   │   │   ├── filters
+│   │   │   │   │   │   ├── count-active-personnalisation-filters.ts
+│   │   │   │   │   │   ├── format-to-printable-filters.ts
+│   │   │   │   │   │   ├── personnalisation-filter-badges.tsx
+│   │   │   │   │   │   ├── personnalisation-filters-context.tsx
+│   │   │   │   │   │   ├── personnalisation-filters-converter.ts
+│   │   │   │   │   │   ├── personnalisation-filters.menu.tsx
+│   │   │   │   │   │   ├── personnalisation-filters.types.ts
+│   │   │   │   │   │   ├── personnalisation-thematiques.dropdown.tsx
+│   │   │   │   │   │   ├── personnalisation-url-keys.constants.ts
+│   │   │   │   │   │   └── referentiels.dropdown.tsx
+│   │   │   │   │   ├── personnalisation-questions.list.tsx
+│   │   │   │   │   ├── personnalisation-thematique-questions.list.tsx
+│   │   │   │   │   ├── personnalisation-thematique.tsx
+│   │   │   │   │   ├── personnalisation-thematiques.list.tsx
+│   │   │   │   │   ├── personnalisation.header.tsx
+│   │   │   │   │   ├── personnalisation.page.tsx
+│   │   │   │   │   └── question
+│   │   │   │   │       ├── justification.tsx
+│   │   │   │   │       ├── question-actions-liees.tsx
+│   │   │   │   │       ├── question-reponse-props.types.ts
+│   │   │   │   │       ├── question-reponse.tsx
+│   │   │   │   │       ├── reponse-binaire.tsx
+│   │   │   │   │       ├── reponse-choix.tsx
+│   │   │   │   │       ├── reponse-proportion.tsx
+│   │   │   │   │       └── reponse.tsx
 │   │   │   │   ├── preferences
 │   │   │   │   │   ├── affichage-referentiels.page.tsx
 │   │   │   │   │   └── use-update-collectivite-preferences.ts
 │   │   │   │   └── tags
-│   │   │   │       └── use-list-personne-tags.ts
+│   │   │   │       ├── financeur-tag.dropdown.tsx
+│   │   │   │       ├── instance-gouvernance-tag.dropdown.tsx
+│   │   │   │       ├── invalidate-fiche-queries-by-tag.ts
+│   │   │   │       ├── libre-tag.dropdown.tsx
+│   │   │   │       ├── partenaire-tag.dropdown.tsx
+│   │   │   │       ├── personne-tag.dropdown.tsx
+│   │   │   │       ├── personnes.utils.ts
+│   │   │   │       ├── service-tag.dropdown.tsx
+│   │   │   │       ├── structure-tag.dropdown.tsx
+│   │   │   │       ├── tag.dropdown.tsx
+│   │   │   │       ├── use-create-tag.ts
+│   │   │   │       ├── use-delete-tag.ts
+│   │   │   │       ├── use-list-financeurs.ts
+│   │   │   │       ├── use-list-instance-gouvernances.ts
+│   │   │   │       ├── use-list-libre-tags.ts
+│   │   │   │       ├── use-list-partenaires.ts
+│   │   │   │       ├── use-list-personne-tags.ts
+│   │   │   │       ├── use-list-personnes.ts
+│   │   │   │       ├── use-list-services.ts
+│   │   │   │       ├── use-list-structures.ts
+│   │   │   │       ├── use-list-tags.ts
+│   │   │   │       └── use-update-tag.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs
 │   │   │   │   │   ├── indicateur-definition-authorization.utils.ts
@@ -931,8 +998,6 @@
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── delete-fiche.modal.tsx
 │   │   │   │   │   │   ├── delete-or-remove-fiche-sharing.modal.tsx
-│   │   │   │   │   │   ├── dropdowns
-│   │   │   │   │   │   │   └── instance-gouvernance.dropdown.tsx
 │   │   │   │   │   │   └── fiche-action-plans.utils.ts
 │   │   │   │   │   ├── show-fiche
 │   │   │   │   │   │   ├── components
@@ -1061,20 +1126,14 @@
 │   │   │   │   │   │   │   │   └── use-fiche-sous-actions.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
-│   │   │   │   │   │   │   ├── use-create-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── use-delete-fiche.ts
-│   │   │   │   │   │   │   ├── use-delete-instance-gouvernance-tag.ts
-│   │   │   │   │   │   │   ├── use-list-instance-gouvernance-tags.ts
-│   │   │   │   │   │   │   ├── use-update-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheActionInfos.ts
 │   │   │   │   │   │   │   ├── useFicheActionImpactId.ts
-│   │   │   │   │   │   │   ├── useFicheActionPilote.ts
 │   │   │   │   │   │   │   ├── useFichesActionLiees.ts
 │   │   │   │   │   │   │   ├── usePlanActionChemin.tsx
 │   │   │   │   │   │   │   ├── usePlanActionProfondeur.tsx
-│   │   │   │   │   │   │   ├── useRestreindreFiches.ts
 │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   ├── fiche.view.tsx
 │   │   │   │   │   │   ├── header
@@ -1207,7 +1266,7 @@
 │   │   │   │   │   │   │   ├── plan-node-to-profondeur-axe.adapter.ts
 │   │   │   │   │   │   │   ├── update-fiche-visibility.modal.tsx
 │   │   │   │   │   │   │   ├── use-move-fiche.ts
-│   │   │   │   │   │   │   └── use-restrict-fiches.ts
+│   │   │   │   │   │   │   └── use-set-fiches-private.ts
 │   │   │   │   │   │   ├── completion
 │   │   │   │   │   │   │   ├── completion-messages.config.ts
 │   │   │   │   │   │   │   └── completion.alert.tsx
@@ -1340,6 +1399,8 @@
 │   │   │   │   │   ├── action-documents.download-button.tsx
 │   │   │   │   │   ├── action-edit.modal.tsx
 │   │   │   │   │   ├── action-label.constants.ts
+│   │   │   │   │   ├── action-personnalisations
+│   │   │   │   │   │   └── ActionPersonnalisationInfo.tsx
 │   │   │   │   │   ├── action-preuve.panel.lazy.tsx
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
 │   │   │   │   │   ├── action-preuve.panel.tsx
@@ -1348,7 +1409,8 @@
 │   │   │   │   │   │   ├── action-statut.badge.tsx
 │   │   │   │   │   │   ├── action-statut.select.stories.tsx
 │   │   │   │   │   │   ├── action-statut.select.tsx
-│   │   │   │   │   │   └── use-action-statut.ts
+│   │   │   │   │   │   ├── use-action-statut.ts
+│   │   │   │   │   │   └── use-hide-action.ts
 │   │   │   │   │   ├── action.card.tsx
 │   │   │   │   │   ├── action.linked-card.tsx
 │   │   │   │   │   ├── avancement-detaille
@@ -1366,7 +1428,7 @@
 │   │   │   │   │   ├── use-list-actions.ts
 │   │   │   │   │   ├── use-mesure-pilotes.ts
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
-│   │   │   │   │   └── use-prev-and-next-action-links.tsx
+│   │   │   │   │   └── use-prev-and-next-action-links.ts
 │   │   │   │   ├── actions.utils.ts
 │   │   │   │   ├── audits
 │   │   │   │   │   ├── ActionAuditDetail.stories.tsx
@@ -1448,33 +1510,6 @@
 │   │   │   │   │   ├── useLabellisationParcours.ts
 │   │   │   │   │   ├── useStartAudit.ts
 │   │   │   │   │   └── useValidateAudit.ts
-│   │   │   │   ├── personnalisations
-│   │   │   │   │   ├── PersoPotentielModal
-│   │   │   │   │   │   ├── Justification.tsx
-│   │   │   │   │   │   ├── PersoPotentiel.tsx
-│   │   │   │   │   │   ├── PersoPotentielDoc.tsx
-│   │   │   │   │   │   ├── PersoPotentielQR.tsx
-│   │   │   │   │   │   ├── PersoPotentielTabs.tsx
-│   │   │   │   │   │   ├── Reponse.tsx
-│   │   │   │   │   │   ├── fixture.json
-│   │   │   │   │   │   ├── points-potentiels.label.tsx
-│   │   │   │   │   │   ├── useChangeReponseHandler.tsx
-│   │   │   │   │   │   ├── useRegles.ts
-│   │   │   │   │   │   └── useUpdateJustification.ts
-│   │   │   │   │   ├── PersoReferentiel
-│   │   │   │   │   │   ├── PersoReferentiel.tsx
-│   │   │   │   │   │   └── useQuestionThematiqueCompletude.ts
-│   │   │   │   │   ├── PersoReferentielThematique
-│   │   │   │   │   │   ├── CarteIdentite.tsx
-│   │   │   │   │   │   ├── PersoReferentielThematique.tsx
-│   │   │   │   │   │   ├── useCarteIdentite.ts
-│   │   │   │   │   │   ├── useNextThematiqueId.ts
-│   │   │   │   │   │   ├── useQuestions.ts
-│   │   │   │   │   │   ├── useQuestionsReponses.ts
-│   │   │   │   │   │   ├── useReponses.ts
-│   │   │   │   │   │   └── useThematique.ts
-│   │   │   │   │   ├── personnalisation-referentiel.context.tsx
-│   │   │   │   │   └── personnalisation.types.ts
 │   │   │   │   ├── preuves
 │   │   │   │   │   ├── AddPreuveComplementaire.tsx
 │   │   │   │   │   ├── AddPreuveModal
@@ -1621,29 +1656,10 @@
 │   │   │   │   ├── dropdownLists
 │   │   │   │   │   ├── FichesActionsDropdown
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
-│   │   │   │   │   ├── FinanceursDropdown
-│   │   │   │   │   │   ├── FinanceursDropdown.tsx
-│   │   │   │   │   │   └── useFinanceursListe.ts
 │   │   │   │   │   ├── MesuresReferentielsDropdown
 │   │   │   │   │   │   └── MesuresReferentielsDropdown.tsx
-│   │   │   │   │   ├── PartenairesDropdown
-│   │   │   │   │   │   ├── PartenairesDropdown.tsx
-│   │   │   │   │   │   └── usePartenairesListe.ts
 │   │   │   │   │   ├── PeriodeDropdown.tsx
-│   │   │   │   │   ├── PersonnesDropdown
-│   │   │   │   │   │   ├── PersonnesDropdown.tsx
-│   │   │   │   │   │   ├── usePersonneListe.ts
-│   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── PlansActionDropdown.tsx
-│   │   │   │   │   ├── ServicesPilotesDropdown
-│   │   │   │   │   │   ├── ServicesPilotesDropdown.tsx
-│   │   │   │   │   │   └── useServicesPilotesListe.ts
-│   │   │   │   │   ├── StructuresDropdown
-│   │   │   │   │   │   ├── StructuresDropdown.tsx
-│   │   │   │   │   │   └── useStructuresListe.ts
-│   │   │   │   │   ├── TagsSuiviPersoDropdown
-│   │   │   │   │   │   ├── TagsSuiviPersoDropdown.tsx
-│   │   │   │   │   │   └── useTagsSuiviPersoListe.ts
 │   │   │   │   │   ├── ThematiquesDropdown
 │   │   │   │   │   │   ├── ThematiquesDropdown.tsx
 │   │   │   │   │   │   ├── use-get-thematique-and-sous-thematique-options.ts
@@ -1673,14 +1689,7 @@
 │   │   │   │   │   │   ├── IndicateurCompletsDropdown.tsx
 │   │   │   │   │   │   ├── use-categorie-tags.tsx
 │   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   ├── listesStatiques.ts
-│   │   │   │   │   └── tags
-│   │   │   │   │       ├── SelectTags.tsx
-│   │   │   │   │       ├── index.ts
-│   │   │   │   │       ├── select-tags-generic.tsx
-│   │   │   │   │       ├── useTagCreate.ts
-│   │   │   │   │       ├── useTagDelete.ts
-│   │   │   │   │       └── useTagUpdate.ts
+│   │   │   │   │   └── listesStatiques.ts
 │   │   │   │   ├── export-pdf
 │   │   │   │   │   ├── DocumentToExport.tsx
 │   │   │   │   │   ├── ExportPDFButton.tsx
@@ -2012,11 +2021,13 @@
 │   │   │   │   │   ├── collectivite-preferences.repository.ts
 │   │   │   │   │   ├── collectivite-preferences.router.e2e-spec.ts
 │   │   │   │   │   ├── collectivite-preferences.router.ts
+│   │   │   │   │   ├── collectivite-preferences.service.spec.ts
 │   │   │   │   │   └── collectivite-preferences.service.ts
 │   │   │   │   ├── collectivite.controller.spec.ts
 │   │   │   │   ├── collectivite.controller.ts
 │   │   │   │   ├── collectivites
 │   │   │   │   │   └── collectivites.test-fixture.ts
+│   │   │   │   ├── collectivites-core.module.ts
 │   │   │   │   ├── collectivites.module.ts
 │   │   │   │   ├── collectivites.router.ts
 │   │   │   │   ├── collectivites.test-fixture.ts
@@ -2076,15 +2087,6 @@
 │   │   │   │   │   ├── list-categories.router.e2e-spec.ts
 │   │   │   │   │   ├── list-categories.router.ts
 │   │   │   │   │   └── list-categories.service.ts
-│   │   │   │   ├── handle-instance-gouvernance
-│   │   │   │   │   ├── handle-instance-gouvernance.errors.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.input.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.repository.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.result.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.router.e2e-spec.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.router.ts
-│   │   │   │   │   ├── handle-instance-gouvernance.service.ts
-│   │   │   │   │   └── handle-instance-gouvernance.test-fixture.ts
 │   │   │   │   ├── import-collectivite-relations
 │   │   │   │   │   ├── epci-perimetre.schema.ts
 │   │   │   │   │   ├── import-collectivite-relations.request.ts
@@ -2140,25 +2142,49 @@
 │   │   │   │   │   │   ├── import-personnalisation-question.service.ts
 │   │   │   │   │   │   └── samples
 │   │   │   │   │   │       ├── import-personnalisation-choices.csv
+│   │   │   │   │   │       ├── import-personnalisation-competences.csv
 │   │   │   │   │   │       ├── import-personnalisation-questions.csv
 │   │   │   │   │   │       └── import-personnalisation-thematiques.csv
 │   │   │   │   │   ├── list-personnalisation-questions
+│   │   │   │   │   │   ├── list-personnalisation-questions.errors.ts
+│   │   │   │   │   │   ├── list-personnalisation-questions.input.ts
+│   │   │   │   │   │   ├── list-personnalisation-questions.repository.ts
+│   │   │   │   │   │   ├── list-personnalisation-questions.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-personnalisation-questions.router.ts
 │   │   │   │   │   │   └── list-personnalisation-questions.service.ts
+│   │   │   │   │   ├── list-personnalisation-regles
+│   │   │   │   │   │   ├── list-personnalisation-regles.input.ts
+│   │   │   │   │   │   ├── list-personnalisation-regles.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-personnalisation-regles.router.ts
+│   │   │   │   │   │   └── list-personnalisation-regles.service.ts
+│   │   │   │   │   ├── list-personnalisation-reponses
+│   │   │   │   │   │   ├── list-personnalisation-reponses.errors.ts
+│   │   │   │   │   │   ├── list-personnalisation-reponses.input.ts
+│   │   │   │   │   │   ├── list-personnalisation-reponses.repository.ts
+│   │   │   │   │   │   └── list-personnalisation-reponses.service.ts
+│   │   │   │   │   ├── list-personnalisation-thematiques
+│   │   │   │   │   │   ├── list-personnalisation-thematiques.errors.ts
+│   │   │   │   │   │   ├── list-personnalisation-thematiques.input.ts
+│   │   │   │   │   │   ├── list-personnalisation-thematiques.output.ts
+│   │   │   │   │   │   ├── list-personnalisation-thematiques.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-personnalisation-thematiques.router.ts
+│   │   │   │   │   │   └── list-personnalisation-thematiques.service.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── get-personnalisation-consequences.request.ts
 │   │   │   │   │   │   ├── get-personnalisation-consequences.response.ts
 │   │   │   │   │   │   ├── get-personnalisation-regles.request.ts
 │   │   │   │   │   │   ├── get-personnalisation-regles.response.ts
 │   │   │   │   │   │   ├── get-personnalisation-reponses.request.ts
+│   │   │   │   │   │   ├── historique-justification.table.ts
 │   │   │   │   │   │   ├── historique-reponse-binaire.table.ts
 │   │   │   │   │   │   ├── historique-reponse-choix.table.ts
 │   │   │   │   │   │   ├── historique-reponse-proportion.table.ts
+│   │   │   │   │   │   ├── justification.table.ts
 │   │   │   │   │   │   ├── personnalisation-consequence.dto.ts
 │   │   │   │   │   │   ├── personnalisation-regle.table.ts
 │   │   │   │   │   │   ├── personnalisation.table.ts
 │   │   │   │   │   │   ├── question-choix.table.ts
 │   │   │   │   │   │   ├── question-thematique.table.ts
-│   │   │   │   │   │   ├── question-with-choices.dto.ts
 │   │   │   │   │   │   ├── question.table.ts
 │   │   │   │   │   │   ├── reponse-binaire.table.ts
 │   │   │   │   │   │   ├── reponse-choix.table.ts
@@ -2168,16 +2194,20 @@
 │   │   │   │   │   │       └── eci-personnalisation-regles.sample.ts
 │   │   │   │   │   ├── personnalisations.module.ts
 │   │   │   │   │   ├── personnalisations.router.ts
+│   │   │   │   │   ├── personnalisations.test-fixture.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── generated-diagrams.html
+│   │   │   │   │   │   ├── personnalisation-consequences.service.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.spec.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.spec.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.ts
 │   │   │   │   │   │   └── personnalisations-service.ts
 │   │   │   │   │   └── set-personnalisation-reponse
+│   │   │   │   │       ├── set-personnalisation-reponse-historique.repository.ts
 │   │   │   │   │       ├── set-personnalisation-reponse.errors.ts
 │   │   │   │   │       ├── set-personnalisation-reponse.input.ts
+│   │   │   │   │       ├── set-personnalisation-reponse.repository.ts
 │   │   │   │   │       ├── set-personnalisation-reponse.router.e2e-spec.ts
 │   │   │   │   │       ├── set-personnalisation-reponse.router.ts
 │   │   │   │   │       └── set-personnalisation-reponse.service.ts
@@ -2200,6 +2230,8 @@
 │   │   │   │   ├── shared
 │   │   │   │   │   └── models
 │   │   │   │   │       ├── collectivite-api.constants.ts
+│   │   │   │   │       ├── collectivite-banatic-2025-competence.table.ts
+│   │   │   │   │       ├── collectivite-banatic-2025-transfert.table.ts
 │   │   │   │   │       ├── collectivite-banatic-competence.table.ts
 │   │   │   │   │       ├── collectivite-banatic-type.table.ts
 │   │   │   │   │       ├── collectivite-bucket.table.ts
@@ -2223,8 +2255,22 @@
 │   │   │   │       ├── categorie-tag.fixture.ts
 │   │   │   │       ├── categorie-tag.table.ts
 │   │   │   │       ├── financeur-tag.table.ts
-│   │   │   │       ├── instance-gouvernance.table.ts
+│   │   │   │       ├── instance-gouvernance-tag.table.ts
 │   │   │   │       ├── libre-tag.table.ts
+│   │   │   │       ├── list-tags
+│   │   │   │       │   ├── list-tags.errors.ts
+│   │   │   │       │   ├── list-tags.input.ts
+│   │   │   │       │   ├── list-tags.repository.ts
+│   │   │   │       │   ├── list-tags.router.e2e-spec.ts
+│   │   │   │       │   ├── list-tags.router.ts
+│   │   │   │       │   └── list-tags.service.ts
+│   │   │   │       ├── mutate-tag
+│   │   │   │       │   ├── mutate-tag.errors.ts
+│   │   │   │       │   ├── mutate-tag.input.ts
+│   │   │   │       │   ├── mutate-tag.repository.ts
+│   │   │   │       │   ├── mutate-tag.router.e2e-spec.ts
+│   │   │   │       │   ├── mutate-tag.router.ts
+│   │   │   │       │   └── mutate-tag.service.ts
 │   │   │   │       ├── partenaire-tag.table.ts
 │   │   │   │       ├── personnes
 │   │   │   │       │   ├── list-personne-tags.output.ts
@@ -2236,7 +2282,6 @@
 │   │   │   │       ├── service-tag.fixture.ts
 │   │   │   │       ├── service-tag.table.ts
 │   │   │   │       ├── structure-tag.table.ts
-│   │   │   │       ├── tag.service.ts
 │   │   │   │       └── tag.table-base.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── charts
@@ -2546,12 +2591,16 @@
 │   │   │   │   │   │       ├── plan-pilote.table.ts
 │   │   │   │   │   │       └── plan-referent.table.ts
 │   │   │   │   │   └── update-fiche
+│   │   │   │   │       ├── fiche-action-link.errors.ts
+│   │   │   │   │       ├── fiche-action-link.repository.ts
+│   │   │   │   │       ├── fiche-action-link.service.ts
 │   │   │   │   │       ├── update-fiche.errors.ts
 │   │   │   │   │       ├── update-fiche.input.ts
 │   │   │   │   │       ├── update-fiche.result.ts
 │   │   │   │   │       ├── update-fiche.router.e2e-spec.ts
 │   │   │   │   │       ├── update-fiche.router.ts
-│   │   │   │   │       └── update-fiche.service.ts
+│   │   │   │   │       ├── update-fiche.service.ts
+│   │   │   │   │       └── validate-fiches-in-collectivite.ts
 │   │   │   │   ├── paniers
 │   │   │   │   │   ├── checkout
 │   │   │   │   │   │   ├── checkout.errors.ts
@@ -2644,8 +2693,6 @@
 │   │   │   │   │   │   │   ├── excel-parser.spec.ts
 │   │   │   │   │   │   │   └── excel-parser.ts
 │   │   │   │   │   │   ├── resolvers
-│   │   │   │   │   │   │   ├── instance-gouvernance.resolver.spec.ts
-│   │   │   │   │   │   │   ├── instance-gouvernance.resolver.ts
 │   │   │   │   │   │   │   ├── personne.resolver.spec.ts
 │   │   │   │   │   │   │   ├── personne.resolver.ts
 │   │   │   │   │   │   │   ├── resolve-entity.service.ts
@@ -2718,6 +2765,10 @@
 │   │   │   │       ├── get-plan-url.service.ts
 │   │   │   │       └── plans-utils.module.ts
 │   │   │   ├── referentiels
+│   │   │   │   ├── action-personnalisations
+│   │   │   │   │   ├── action-personnalisations.router.e2e-spec.ts
+│   │   │   │   │   ├── action-personnalisations.router.ts
+│   │   │   │   │   └── action-personnalisations.service.ts
 │   │   │   │   ├── compute-score
 │   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
@@ -2748,6 +2799,10 @@
 │   │   │   │   │   ├── export-score-comparison.controller.ts
 │   │   │   │   │   ├── export-score-comparison.service.ts
 │   │   │   │   │   └── load-score-comparison.service.ts
+│   │   │   │   ├── get-action
+│   │   │   │   │   ├── get-action.module.ts
+│   │   │   │   │   ├── get-action.repository.ts
+│   │   │   │   │   └── get-action.service.ts
 │   │   │   │   ├── get-referentiel
 │   │   │   │   │   ├── get-referentiel.service.spec.ts
 │   │   │   │   │   └── get-referentiel.service.ts
@@ -2885,6 +2940,7 @@
 │   │   │   │   │       ├── simple-referentiel-scoring.sample.ts
 │   │   │   │   │       └── simple-referentiel.ts
 │   │   │   │   ├── referentiel-id.column.ts
+│   │   │   │   ├── referentiels-core.module.ts
 │   │   │   │   ├── referentiels.module.ts
 │   │   │   │   ├── referentiels.router.ts
 │   │   │   │   ├── referentiels.test-fixture.ts
@@ -2925,6 +2981,9 @@
 │   │   │   │   │   ├── update-action-commentaire.router.e2e-spec.ts
 │   │   │   │   │   ├── update-action-commentaire.router.ts
 │   │   │   │   │   └── update-action-commentaire.service.ts
+│   │   │   │   ├── update-action-fiches
+│   │   │   │   │   ├── update-action-fiches.router.e2e-spec.ts
+│   │   │   │   │   └── update-action-fiches.router.ts
 │   │   │   │   └── update-action-statut
 │   │   │   │       ├── can-update-action-statut.rules.spec.ts
 │   │   │   │       ├── get-action-status-create-to-complete-referentiel.spec.ts
@@ -2938,6 +2997,8 @@
 │   │   │   │   │   ├── effet-attendu.service.ts
 │   │   │   │   │   └── effet-attendu.table.ts
 │   │   │   │   ├── models
+│   │   │   │   │   ├── banatic-2021-2025-crosswalk.table.ts
+│   │   │   │   │   ├── banatic-2025-competence.table.ts
 │   │   │   │   │   ├── banatic-competence.table.ts
 │   │   │   │   │   ├── categorie-fnv.table.ts
 │   │   │   │   │   ├── changelog.dto.ts
@@ -3104,7 +3165,8 @@
 │   │   │       │   ├── custom-zod-validation.pipe.ts
 │   │   │       │   ├── errors.utils.ts
 │   │   │       │   ├── http-error.response.ts
-│   │   │       │   └── http-exception.dto.ts
+│   │   │       │   ├── http-exception.dto.ts
+│   │   │       │   └── service-second-arg.utils.ts
 │   │   │       ├── node-postgres-error.dto.ts
 │   │   │       ├── notifications
 │   │   │       │   ├── components
@@ -3166,6 +3228,7 @@
 │   │   │   ├── auth-utils.ts
 │   │   │   ├── collectivites-utils.ts
 │   │   │   ├── csv-utils.ts
+│   │   │   ├── get-auth-user-from-credentials.ts
 │   │   │   ├── index.ts
 │   │   │   ├── indicateurs-utils.ts
 │   │   │   ├── test-users.samples.ts
@@ -3252,7 +3315,6 @@
 │   │   ├── eslint.config.mjs
 │   │   ├── hooks
 │   │   │   └── useLandingPathname.ts
-│   │   ├── next-env.d.ts
 │   │   ├── next.config.mjs
 │   │   ├── package.json
 │   │   ├── postcss.config.js
@@ -3482,7 +3544,6 @@
 │   │   │   └── video
 │   │   │       └── EmbededVideo.tsx
 │   │   ├── eslint.config.mjs
-│   │   ├── next-env.d.ts
 │   │   ├── next.config.mjs
 │   │   ├── package.json
 │   │   ├── postcss.config.js
@@ -3834,6 +3895,29 @@
 │       │   │       └── cron-compute-trajectoire.service.ts
 │       │   ├── main.ts
 │       │   ├── migrations
+│       │   │   ├── banatic2025
+│       │   │   │   ├── README.md
+│       │   │   │   ├── collectivite-db.ts
+│       │   │   │   ├── csv.ts
+│       │   │   │   ├── db.ts
+│       │   │   │   ├── import-banatic-2025-codes
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── import-banatic-2025-collectivite-competences
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── import-banatic-2025-crosswalk
+│       │   │   │   │   ├── __fixtures__
+│       │   │   │   │   │   └── crosswalk.csv
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── utils.test.ts
+│       │   │   │   │   └── utils.ts
+│       │   │   │   └── import-banatic-2025-transferts
+│       │   │   │       ├── __fixtures__
+│       │   │   │       │   ├── transferts-complex.csv
+│       │   │   │       │   ├── transferts-mixed.csv
+│       │   │   │       │   └── transferts-multiple-epci.csv
+│       │   │   │       ├── index.ts
+│       │   │   │       ├── utils.test.ts
+│       │   │   │       └── utils.ts
 │       │   │   ├── ingest-instance-gouvernance-migration-output.ts
 │       │   │   ├── migrate-instance-gouvernance-to-tags.ts
 │       │   │   └── migrate-notes-complementaires.ts
@@ -3907,6 +3991,7 @@
 │   │   ├── content
 │   │   │   ├── 19-communes.sql
 │   │   │   ├── 20-epcis.sql
+│   │   │   ├── 22-banatic_2021_2025_crosswalk.sql
 │   │   │   ├── 23-indicateur_referentiel.sql
 │   │   │   ├── 24-missing_collectivites.sql
 │   │   │   ├── 25-collectivite_test.sql
@@ -3937,7 +4022,8 @@
 │   │   │   ├── 03-commune.sql
 │   │   │   ├── 04-banatic.sql
 │   │   │   ├── 05-competence_banatic.sql
-│   │   │   └── 06-complete_collectivite_with_import.sql
+│   │   │   ├── 06-complete_collectivite_with_import.sql
+│   │   │   └── 07-banatic_2025_competence_par_collectivite.sql
 │   │   ├── seed.sh
 │   │   ├── test
 │   │   │   ├── 00-pgtap.sql
@@ -4069,6 +4155,7 @@
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
+│   │   │   │   ├── add_personnalisation_question_competence.sql
 │   │   │   │   ├── add_personnalisation_question_version.sql
 │   │   │   │   ├── client_scores.sql
 │   │   │   │   ├── client_scores@v1.14.0.sql
@@ -4076,9 +4163,12 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v4.41.0.sql
 │   │   │   │   ├── contenu_json@v4.50.0.sql
+│   │   │   │   ├── drop-justification-triggers.sql
+│   │   │   │   ├── drop-reponse-historique-triggers.sql
 │   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
+│   │   │   │   ├── question_choix_formulation_not_null.sql
 │   │   │   │   ├── question_display.sql
 │   │   │   │   ├── reactivite.sql
 │   │   │   │   ├── referentiel_progress.sql
@@ -4239,6 +4329,7 @@
 │   │   │   │   ├── add_fiche_recursive_axe_view.sql
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
+│   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
 │   │   │   │   ├── annexe.sql
@@ -4248,6 +4339,7 @@
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
+│   │   │   │   ├── drop_private_plan_action_functions.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── export@v2.29.0.sql
 │   │   │   │   ├── export@v2.30.0.sql
@@ -4322,6 +4414,7 @@
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
 │   │   │   │   ├── clean_vues_rpc.sql
@@ -4448,6 +4541,7 @@
 │   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
+│   │   │   │   ├── drop_claim_collectivite.sql
 │   │   │   │   ├── drop_list_membres_views.sql
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
@@ -4597,6 +4691,7 @@
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
+│   │   │   │   ├── add_personnalisation_question_competence.sql
 │   │   │   │   ├── add_personnalisation_question_version.sql
 │   │   │   │   ├── client_scores.sql
 │   │   │   │   ├── client_scores@v1.14.0.sql
@@ -4604,9 +4699,12 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v4.41.0.sql
 │   │   │   │   ├── contenu_json@v4.50.0.sql
+│   │   │   │   ├── drop-justification-triggers.sql
+│   │   │   │   ├── drop-reponse-historique-triggers.sql
 │   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
+│   │   │   │   ├── question_choix_formulation_not_null.sql
 │   │   │   │   ├── question_display.sql
 │   │   │   │   ├── reactivite.sql
 │   │   │   │   ├── referentiel_progress.sql
@@ -4767,6 +4865,7 @@
 │   │   │   │   ├── add_fiche_recursive_axe_view.sql
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
+│   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
 │   │   │   │   ├── annexe.sql
@@ -4776,6 +4875,7 @@
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
+│   │   │   │   ├── drop_private_plan_action_functions.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── export@v2.29.0.sql
 │   │   │   │   ├── export@v2.30.0.sql
@@ -4850,6 +4950,7 @@
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
 │   │   │   │   ├── clean_vues_rpc.sql
@@ -4976,6 +5077,7 @@
 │   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
+│   │   │   │   ├── drop_claim_collectivite.sql
 │   │   │   │   ├── drop_list_membres_views.sql
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
@@ -5124,6 +5226,7 @@
 │   │       ├── delete_navigation_plans-rpc.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
+│   │       │   ├── add_personnalisation_question_competence.sql
 │   │       │   ├── add_personnalisation_question_version.sql
 │   │       │   ├── client_scores.sql
 │   │       │   ├── client_scores@v1.14.0.sql
@@ -5131,9 +5234,12 @@
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v4.41.0.sql
 │   │       │   ├── contenu_json@v4.50.0.sql
+│   │       │   ├── drop-justification-triggers.sql
+│   │       │   ├── drop-reponse-historique-triggers.sql
 │   │       │   ├── drop-save-reponse.sql
 │   │       │   ├── justification.sql
 │   │       │   ├── question.sql
+│   │       │   ├── question_choix_formulation_not_null.sql
 │   │       │   ├── question_display.sql
 │   │       │   ├── reactivite.sql
 │   │       │   ├── referentiel_progress.sql
@@ -5294,6 +5400,7 @@
 │   │       │   ├── add_fiche_recursive_axe_view.sql
 │   │       │   ├── add_report_generation_table.sql
 │   │       │   ├── add_report_notifications.sql
+│   │       │   ├── ajout_created_columns_tags.sql
 │   │       │   ├── ajout_de_pilote_par_plan.sql
 │   │       │   ├── ajout_de_referent_par_plan.sql
 │   │       │   ├── annexe.sql
@@ -5303,6 +5410,7 @@
 │   │       │   ├── budget@v4.50.0.sql
 │   │       │   ├── confidentialite.sql
 │   │       │   ├── drop_create_fiche.sql
+│   │       │   ├── drop_private_plan_action_functions.sql
 │   │       │   ├── export.sql
 │   │       │   ├── export@v2.29.0.sql
 │   │       │   ├── export@v2.30.0.sql
@@ -5377,6 +5485,7 @@
 │   │       │   ├── action_statut_historique@v1.14.0.sql
 │   │       │   ├── add_audit_etoiles.sql
 │   │       │   ├── add_demande_associated_collectivite_id.sql
+│   │       │   ├── banatic_2025.sql
 │   │       │   ├── business_update.sql
 │   │       │   ├── clean-import-json-table.sql
 │   │       │   ├── clean_vues_rpc.sql
@@ -5503,6 +5612,7 @@
 │   │       │   ├── dcp_*.sql  (5 files)
 │   │       │   ├── droits.sql
 │   │       │   ├── droits_*.sql  (9 files)
+│   │       │   ├── drop_claim_collectivite.sql
 │   │       │   ├── drop_list_membres_views.sql
 │   │       │   ├── export_connect.sql
 │   │       │   ├── invitation.sql
@@ -5557,7 +5667,6 @@
 │       │   └── identite.sql
 │       ├── evaluation
 │       │   ├── contenu_json.sql
-│       │   ├── reponse_historique.sql
 │       │   ├── score_service.sql
 │       │   ├── seuils_de_population.sql
 │       │   └── thematique_completude.sql
@@ -5577,7 +5686,6 @@
 │       │   ├── action_statut_historique.sql
 │       │   ├── fichiers_preuves.sql
 │       │   ├── filterable_referentiel_view.sql
-│       │   ├── justification_historique.sql
 │       │   ├── referentiel_json.sql
 │       │   └── vue_tabulaire.sql
 │       ├── retool
@@ -5587,7 +5695,6 @@
 │       │   └── vues_BI.sql
 │       ├── utilisateur
 │       │   ├── dcp_sync.sql
-│       │   ├── droits.sql
 │       │   ├── invitation.sql
 │       │   ├── membre.sql
 │       │   ├── modified_by_nom.sql
@@ -5626,6 +5733,8 @@
 │       │   └── extract-history-repository-from-service.md
 │       ├── database-issues
 │       │   └── select-for-update-race-condition-drizzle-orm.md
+│       ├── logic-errors
+│       │   └── zod-default-leaks-into-partial-update-schema.md
 │       └── test-failures
 │           └── parallel-e2e-test-isolation.md
 ├── docs
@@ -5650,11 +5759,18 @@
 │   │   │   │   ├── invite-membre.pom.ts
 │   │   │   │   ├── invite-membre.spec.ts
 │   │   │   │   └── list-membres.spec.ts
+│   │   │   ├── personnalisations
+│   │   │   │   ├── personnalisation.pom.ts
+│   │   │   │   ├── personnalisation.spec.ts
+│   │   │   │   └── personnalisations.fixture.ts
 │   │   │   ├── preferences-referentiels
 │   │   │   │   └── preferences-referentiels.spec.ts
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── indicateurs
+│   │   │   ├── indicateur-detail
+│   │   │   │   ├── indicateur-detail.pom.ts
+│   │   │   │   └── indicateur-detail.spec.ts
 │   │   │   └── indicateurs.fixture.ts
 │   │   ├── main.fixture.ts
 │   │   ├── plans
@@ -5669,6 +5785,7 @@
 │   │   │   │   │   ├── list-fiches-filter.spec.ts
 │   │   │   │   │   └── list-fiches.pom.ts
 │   │   │   │   └── show-fiche
+│   │   │   │       ├── breadcrumbs-navigation.spec.ts
 │   │   │   │       ├── contributeur.spec.ts
 │   │   │   │       ├── financeurs-draft.spec.ts
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
@@ -5694,9 +5811,11 @@
 │   │   │       ├── action-access-rights.spec.ts
 │   │   │       ├── create-update-document.spec.ts
 │   │   │       ├── hash-navigation.spec.ts
+│   │   │       ├── hide-action-desactive.spec.ts
 │   │   │       ├── referentiel-scores.pom.ts
 │   │   │       ├── score-indicatif-modal.spec.ts
-│   │   │       └── update-action-statut.spec.ts
+│   │   │       ├── update-action-statut.spec.ts
+│   │   │       └── update-personnalisation.spec.ts
 │   │   ├── shared
 │   │   │   ├── database.service.ts
 │   │   │   ├── dropdown.pom.ts
@@ -5837,13 +5956,9 @@
 │   │   │   │   ├── index.server.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── shared
-│   │   │   │       ├── data-access
-│   │   │   │       │   ├── filtre-values.fetch.test.ts
-│   │   │   │       │   ├── filtre-values.fetch.ts
-│   │   │   │       │   ├── groupement.fetch.test.ts
-│   │   │   │       │   └── groupement.fetch.ts
-│   │   │   │       └── domain
-│   │   │   │           └── groupement.schema.ts
+│   │   │   │       └── data-access
+│   │   │   │           ├── filtre-values.fetch.test.ts
+│   │   │   │           └── filtre-values.fetch.ts
 │   │   │   ├── database.types.ts
 │   │   │   ├── environmentVariables.ts
 │   │   │   ├── index.ts
@@ -5872,14 +5987,6 @@
 │   │   │   │   │   └── data-access
 │   │   │   │   │       └── fiche-action.save.ts
 │   │   │   │   └── index.ts
-│   │   │   ├── shared
-│   │   │   │   └── actions
-│   │   │   │       ├── tag.fetch.test.ts
-│   │   │   │       ├── tag.fetch.ts
-│   │   │   │       ├── tag.save.test.ts
-│   │   │   │       ├── tag.save.ts
-│   │   │   │       ├── thematique.fetch.test.ts
-│   │   │   │       └── thematique.fetch.ts
 │   │   │   ├── tests
 │   │   │   │   ├── auth.ts
 │   │   │   │   ├── supabase.ts
@@ -5962,11 +6069,16 @@
 │   │   │   │   ├── partenaire-tag.schema.ts
 │   │   │   │   ├── personnalisation-reponses-payload.schema.ts
 │   │   │   │   ├── personnalisations
+│   │   │   │   │   ├── competence-banatic.schema.ts
 │   │   │   │   │   ├── personnalisation-regle.schema.ts
+│   │   │   │   │   ├── personnalisation-thematique.schema.ts
 │   │   │   │   │   ├── personnalisation.schema.ts
 │   │   │   │   │   ├── question-choix.schema.ts
+│   │   │   │   │   ├── question-reponse.ts
 │   │   │   │   │   ├── question-thematique.schema.ts
-│   │   │   │   │   └── question.schema.ts
+│   │   │   │   │   ├── question-with-choices.schema.ts
+│   │   │   │   │   ├── question.schema.ts
+│   │   │   │   │   └── reponse.schema.ts
 │   │   │   │   ├── personne-tag-or-user.schema.ts
 │   │   │   │   ├── personne-tag.schema.ts
 │   │   │   │   ├── service-tag.schema.ts
@@ -6125,6 +6237,7 @@
 │   │   │       │   ├── chart-render.request.ts
 │   │   │       │   └── palettes.ts
 │   │   │       ├── enum.utils.ts
+│   │   │       ├── feature-flags.ts
 │   │   │       ├── get-error-message.ts
 │   │   │       ├── html-to-text.ts
 │   │   │       ├── index.ts
@@ -6379,6 +6492,7 @@
 │       │   │   │   ├── Tabs.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── TabsNext
+│       │   │   │   ├── Tabs.next.stories.tsx
 │       │   │   │   ├── Tabs.next.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── Tag
@@ -6729,4 +6843,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1179 directories, 5708 files
+1192 directories, 5809 files

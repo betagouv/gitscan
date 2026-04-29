@@ -1,33 +1,36 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 24 avril 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches actions et des plans, notamment avec une refonte de l'édition et de l'import de données. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme, ainsi que l'intégration avec des outils externes comme Crisp et Streamlit.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des plans et des actions, notamment avec la migration vers tRPC pour plus de performance et de fiabilité. Des améliorations significatives ont également été apportées à l'interface utilisateur, en particulier pour la gestion des référentiels et des indicateurs, avec une attention particulière à la personnalisation et à l'expérience utilisateur. Enfin, des corrections de bugs et des optimisations ont été réalisées pour stabiliser la plateforme et améliorer sa performance globale.
 
 ### Évolutions fonctionnelles
-- **Plans :** Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions. [#e2e6673](https://github.com/incubateur-ademe/territoires-en-transitions/issues/e2e6673)
-- **Rapports :** Possibilité d'ajouter la dernière note dans les rapports. [#6f4471d](https://github.com/incubateur-ademe/territoires-en-transitions/issues/6f4471d)
-- **Indicateurs :** Suppression du groupement "trajectoire" pour simplifier l'affichage des indicateurs.
-- **Scores indicatifs :** Amélioration de l'ergonomie et correction de bugs liés à l'affichage et au calcul des scores indicatifs.
-- **Interface utilisateur :**
-    - Amélioration de l'ergonomie de l'édition des données dans les fiches actions, notamment avec l'utilisation de side panels et de menus portails.
-    - Correction de divers bugs d'affichage et de comportement des composants d'interface (checkbox, select, etc.).
-    - Mise à jour du style et du wording de certains éléments (tags, titres, etc.).
+- **Plans et Actions :** Migration des mutations de fiche de Supabase vers tRPC pour optimiser les performances et la fiabilité. Possibilité pour les contributeurs pilotes de créer, modifier et supprimer des sous-actions.
+- **Rapports :** Ajout de la dernière note dans les rapports et correction du tri des fiches.
+- **Référentiels :**
+    - Cache des mesures, sous-mesures et tâches désactivées par la personnalisation.
+    - Amélioration du message d'alerte pour les mesures affectées par la personnalisation.
+    - Recalcule du score courant si la version du référentiel a changé.
+- **Indicateurs :** Préserve les favoris et la confidentialité lors d'une mise à jour partielle d'un indicateur.
+- **Interface Utilisateur :**
+    - Amélioration de l'ergonomie de l'édition de données de l'action (EDL) avec l'utilisation d'un side panel.
+    - Ajout de la propriété Badge au composant TabsNext du Design System.
+    - Amélioration de l'affichage des titres et de l'organisation des informations sur les pages.
+    - Correction de bugs d'affichage et d'interactions.
 - **Authentification :** Amélioration de la gestion des erreurs lors de l'inscription.
-- **Pages Programme et Accueil :** Refonte complète de la page d'accueil et de la page Programme avec ajout de nouvelles bannières, vidéos et témoignages.
-- **Import de plans :** Amélioration de la gestion des sous-actions lors de l'import de plans depuis des fichiers.
 
 ### Évolutions techniques
-- **Tests :** Amélioration de l'isolation des tests et parallélisation pour une exécution plus rapide.
-- **Base de données :** Finalisation de la stratégie de backup et restore de la base de données.
-- **Architecture :** Refactorisation du code pour améliorer la modularité et la maintenabilité, notamment en centralisant certains hooks et en supprimant du code legacy.
-- **CI/CD :** Mise à jour des versions de Node.js dans les workflows GitHub Actions.
-- **Streamlit :** Intégration d'un dashboard Streamlit pour les statistiques, avec vérification de son bon fonctionnement via un healthcheck.
-- **Backend :** Ajout d'un endpoint pour créer un plan à partir d'un panier d'actions.
-- **Supabase :** Utilisation de transactions pour garantir la cohérence des données lors de la sauvegarde de l'historique des statuts et commentaires des actions.
+- **Architecture :** Migration de certains endpoints SQL vers tRPC pour améliorer les performances et la maintenabilité.
+- **Tests :** Amélioration de l'isolation des tests, parallélisation et correction de tests flaky.
+- **CI/CD :** Ajout de scripts de backup et restore de la base de données.
+- **Infrastructure :** Mise à jour de l'adresse d'envoi d'email.
+- **Base de données :** Finalisation de la stratégie de backup & restore.
+- **Refactoring :** Suppression de code inutilisé et simplification de certains composants.
+- **Déploiement :** Ajout du dashboard privé Streamlit dans le healthcheck.
 
 ### Autres changements
 - **Documentation :** Mise à jour de la documentation.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Configuration :** Mise à jour de la configuration de l'application.
-- **Migration :** Correction et amélioration des scripts de migration de données.
-- **Typescript :** Correction d'erreurs de typage.
+- **Configuration :** Ajout de paramètres de configuration pour Claude.
+- **Nettoyage de code :** Suppression de fichiers et de code obsolètes.
+- **Design System :** Ajout de stories et amélioration des composants Checkbox et TabsNext.
+- **Migration :** Script pour modifier les created_at des SA en se basant sur l'ordre des étapes legacy des fiches.
+- **Divers :** Mise à jour de la version du spreadsheet.
