@@ -1,6 +1,15 @@
 .
+├── .agent-vm.runtime.sh
 ├── .claude
 │   └── skills
+│       ├── .gitkeep
+│       ├── budget-reporting
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       ├── executive-summary.md
+│       │       ├── exploration.md
+│       │       ├── flash.md
+│       │       └── tech-summary.md
 │       └── edit-endpoint
 │           └── SKILL.md
 ├── .github
@@ -17,6 +26,7 @@
 │       ├── site-https-deploy-sandbox.yaml
 │       └── site-https-deploy-staging.yaml
 ├── .gitignore
+├── AGENTS.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
@@ -115,13 +125,17 @@
 │       ├── openapi-particulier.yaml
 │       └── openapi-particulierv2.yaml
 ├── mocks
+│   ├── .agents
+│   │   └── skills -> ../.claude/skills
 │   ├── .claude
 │   │   └── skills
+│   │       ├── .gitkeep
 │   │       └── siade-sync-openapi-payloads
 │   │           └── SKILL.md
 │   ├── .gitignore
 │   ├── .rspec
 │   ├── .ruby-version
+│   ├── AGENTS.md -> ../AGENTS.md
 │   ├── CLAUDE.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
@@ -132,7 +146,6 @@
 │   │   ├── bootstrap_payload.rb
 │   │   ├── generate_payload_readme.rb
 │   │   ├── generate_token.rb
-│   │   ├── reload_mock_backend.rb
 │   │   └── test_using_docker.sh
 │   ├── commons -> ../commons
 │   ├── future_payloads
@@ -1071,16 +1084,19 @@
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_civility
 │   │   │   ├── 200_boursier.yaml
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_non_boursier.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_france_connect
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── README.md
 │   │   │   ├── fake_france_connect.yaml
 │   │   │   ├── france_connect.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_ine
 │   │   │   ├── 200_boursier.yaml
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_radie.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
@@ -1124,9 +1140,14 @@
 │   └── tokens
 │       ├── README.md
 │       └── default
+├── runtime.example.sh
 ├── siade
+│   ├── .agents
+│   │   └── skills -> ../.claude/skills
 │   ├── .claude
-│   │   └── settings.local.json
+│   │   ├── settings.local.json
+│   │   └── skills
+│   │       └── .gitkeep
 │   ├── .expand
 │   ├── .gitignore
 │   ├── .ignore
@@ -1134,7 +1155,7 @@
 │   ├── .rubocop.yml
 │   ├── .rubocop_todo.yml
 │   ├── .ruby-version
-│   ├── AGENTS.md
+│   ├── AGENTS.md -> ../AGENTS.md
 │   ├── CLAUDE.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
@@ -1313,8 +1334,7 @@
 │   │   │   │   └── version_aware.rb
 │   │   │   ├── errors_controller.rb
 │   │   │   ├── mcp_controller.rb
-│   │   │   ├── ping_controller.rb
-│   │   │   └── reload_mock_backend_controller.rb
+│   │   │   └── ping_controller.rb
 │   │   ├── errors
 │   │   │   ├── abstract_generic_provider_error.rb
 │   │   │   ├── abstract_specific_provider_error.rb
@@ -1476,6 +1496,7 @@
 │   │   │   │   │   └── make_request.rb
 │   │   │   │   ├── student_scholarship_with_ine
 │   │   │   │   │   └── make_request.rb
+│   │   │   │   ├── validate_campaign_year.rb
 │   │   │   │   └── validate_response.rb
 │   │   │   ├── concerns
 │   │   │   │   ├── djepva
@@ -2397,6 +2418,7 @@
 │   │   ├── maintenances.yml
 │   │   ├── mcp
 │   │   │   └── resources.yml
+│   │   ├── mock_payloads -> ../../mocks/payloads
 │   │   ├── openapi_common_errors
 │   │   │   ├── entreprise.yml
 │   │   │   └── particulier.yml
@@ -2572,8 +2594,7 @@
 │   │   │   │   │   └── has_mandatory_params_spec.rb
 │   │   │   │   └── api_particulier
 │   │   │   │       └── civility_parameters_spec.rb
-│   │   │   ├── mcp_controller_spec.rb
-│   │   │   └── reload_mock_backend_controller_spec.rb
+│   │   │   └── mcp_controller_spec.rb
 │   │   ├── errors
 │   │   │   ├── abstract_generic_provider_error_spec.rb
 │   │   │   ├── acoss_error_spec.rb
@@ -2764,12 +2785,6 @@
 │   │   │   │       └── valid_siren_json.yml
 │   │   │   ├── dummy.jpg
 │   │   │   ├── dummy.pdf
-│   │   │   ├── github_mocks
-│   │   │   │   ├── endpoints00.yaml
-│   │   │   │   ├── endpoints11.yaml
-│   │   │   │   ├── endpoints12.yaml
-│   │   │   │   ├── endpoints21.yaml
-│   │   │   │   └── endpoints404.yaml
 │   │   │   ├── json_api_schemas
 │   │   │   │   ├── insee
 │   │   │   │   │   ├── v2
@@ -2791,6 +2806,15 @@
 │   │   │   │   ├── liasse_fiscale_complete.json
 │   │   │   │   ├── liasse_fiscale_declaration.json
 │   │   │   │   └── liasse_fiscale_dictionary.json
+│   │   │   ├── mock_payloads
+│   │   │   │   ├── whatever_endpoint
+│   │   │   │   │   └── 1.yaml
+│   │   │   │   ├── whatever_endpoint1
+│   │   │   │   │   ├── 1.yaml
+│   │   │   │   │   └── 2.yaml
+│   │   │   │   └── whatever_endpoint2
+│   │   │   │       ├── 1.yaml
+│   │   │   │       └── 404.yaml
 │   │   │   ├── payloads
 │   │   │   │   ├── ants
 │   │   │   │   │   ├── found_fni.xml
@@ -3123,6 +3147,7 @@
 │   │   │   │   │   └── make_request_spec.rb
 │   │   │   │   ├── student_scholarship_with_ine
 │   │   │   │   │   └── make_request_spec.rb
+│   │   │   │   ├── validate_campaign_year_spec.rb
 │   │   │   │   └── validate_response_spec.rb
 │   │   │   ├── data_subvention
 │   │   │   │   └── subventions
@@ -4002,6 +4027,7 @@
     │   └── skills -> ../.claude/skills
     ├── .claude
     │   └── skills
+    │       ├── .gitkeep
     │       └── bump-version
     │           ├── SKILL.md
     │           └── references
@@ -4013,6 +4039,7 @@
     ├── .rspec
     ├── .rubocop.yml
     ├── .ruby-version
+    ├── AGENTS.md -> ../AGENTS.md
     ├── CLAUDE.md
     ├── Dockerfile
     ├── Gemfile
@@ -6537,4 +6564,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1340 directories, 5468 files
+1351 directories, 5484 files

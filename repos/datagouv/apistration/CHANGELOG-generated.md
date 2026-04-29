@@ -1,30 +1,33 @@
-## Changelog : apistration (30 derniers jours, au 24 avril 2026)
+## Changelog : apistration (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des données d'API, la refactorisation de l'architecture pour une meilleure maintenabilité et performance, ainsi que sur l'ajout de nouvelles fonctionnalités de surveillance et d'annonces pour les utilisateurs. Des corrections de bugs et des améliorations de la sécurité ont également été apportées.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la documentation, la gestion des secrets, la robustesse des tests et l'ajout de nouvelles fonctionnalités pour les API, notamment concernant les données scolaires et les quotas d'utilisation. Des optimisations de performance et des corrections de bugs ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des quotas pour l'API GIP-MDS, incluant le suivi des erreurs 429 dans Sentry [#44](https://github.com/datagouv/apistration/pull/44).
-- Implémentation d'une bannière d'annonce pour communiquer des maintenances planifiées (ProConnect) [#33](https://github.com/datagouv/apistration/pull/33).
-- Ajout de la prise en charge du régime de pensionnat dans l'API Scolarités (MEN V5) [#13](https://github.com/datagouv/apistration/pull/13).
-- Amélioration de la gestion des paramètres de civilité pour le QF, notamment avec le paramètre `nomUsage` [#45](https://github.com/datagouv/apistration/pull/45).
-- Ajout de la possibilité d'afficher les informations de limitation de débit (rate limiting) sur chaque page d'endpoint de l'API [#48](https://github.com/datagouv/apistration/pull/48).
-- Ajout de traductions pour les scopes d'autorisation [#42](https://github.com/datagouv/apistration/pull/42).
+- Ajout du paramètre `campaignYear` à l'API CNOUS pour les bourses étudiantes [#69](https://github.com/datagouv/apistration/pull/69).
+- Implémentation d'une nouvelle fonctionnalité permettant de surveiller l'API DataSubvention via des sondes (ping) [#43](https://github.com/datagouv/apistration/pull/43).
+- Ajout de scopes pour les données MEN (Ministère de l'Éducation Nationale) [#1](https://github.com/datagouv/apistration/pull/1) et [#2175](https://github.com/datagouv/apistration/pull/2175).
+- Ajout de la gestion du régime de pensionnat dans l'API Scolarités (MEN) [#17](https://github.com/datagouv/apistration/pull/17).
+- Amélioration de la gestion des quotas pour l'API GIP-MDS [#44](https://github.com/datagouv/apistration/pull/44).
+- Ajout d'une bannière d'annonce pour signaler les maintenances programmées, comme celle de ProConnect [#33](https://github.com/datagouv/apistration/pull/33).
 
 ### Évolutions techniques
-- Refactorisation majeure de la structure des définitions d'endpoints, avec déplacement des fichiers vers `commons/endpoints/` et intégration des données Swagger [#55](https://github.com/datagouv/apistration/pull/55).
-- Simplification de la résolution des utilisateurs et de la gestion des tokens, avec l'introduction de `UserResolutionMiddleware` et la lecture des informations depuis `request.env` [#48](https://github.com/datagouv/apistration/pull/48).
-- Amélioration de la gestion des fichiers de configuration, avec l'utilisation de fichiers YAML en clair au lieu des credentials chiffrés de Rails [#4](https://github.com/datagouv/apistration/pull/4).
-- Mise en place d'un système de tests plus robuste, incluant des mocks et des tests d'intégration [#57](https://github.com/datagouv/apistration/pull/57), [#52](https://github.com/datagouv/apistration/pull/52).
-- Mise à jour de l'infrastructure CI/CD pour une meilleure gestion des workflows et des dépendances [#61](https://github.com/datagouv/apistration/pull/61).
-- Mise en place d'un système de cooldown pour les mises à jour de dépendances via Dependabot [#29](https://github.com/datagouv/apistration/pull/29).
-- Ajout d'une sonde de monitoring pour DataSubvention [#43](https://github.com/datagouv/apistration/pull/43).
-- Mise en place d'un système de gestion des bases de données isolées par worktree via dotenv [#60](https://github.com/datagouv/apistration/pull/60).
-- Suppression de `DeferredGarbageCollection` pour améliorer la performance des tests.
+- Refactorisation de la gestion des secrets : remplacement des credentials chiffrés par des fichiers YAML en clair, avec une gestion plus robuste et sécurisée [#4](https://github.com/datagouv/apistration/pull/4) et [#2176](https://github.com/datagouv/apistration/pull/2176).
+- Amélioration de la structure du code avec un passage à une architecture monorepo et une organisation des workflows CI/CD [#2](https://github.com/datagouv/apistration/pull/2), [#20](https://github.com/datagouv/apistration/pull/20) et [#26](https://github.com/datagouv/apistration/pull/26).
+- Refactorisation des définitions d'endpoints pour une meilleure organisation et réutilisation [#55](https://github.com/datagouv/apistration/pull/55).
+- Optimisation des tests : suppression de la collecte de déchets différée (DeferredGarbageCollection) et stub de DataEncryptor pour accélérer l'exécution [#12](https://github.com/datagouv/apistration/pull/12).
+- Mise en place d'un système de tests local avec mocks pour faciliter le développement et les tests en environnement isolé [#58](https://github.com/datagouv/apistration/pull/58) et [#59](https://github.com/datagouv/apistration/pull/59).
+- Amélioration de la gestion des erreurs et ajout de logs pour faciliter le débogage.
+- Mise à jour des dépendances (Ruby, Rails, etc.) et des outils de développement (Node.js, Ruby setup) avec les dernières versions stables.
 
 ### Autres changements
-- Ajout d'une adresse email pour la divulgation de vulnérabilités de sécurité dans le fichier `CONTRIBUTING.md` [#35](https://github.com/datagouv/apistration/pull/35).
-- Ajout d'un fichier `CONTRIBUTING.md` pour guider les contributeurs et protéger les mainteneurs [#35](https://github.com/datagouv/apistration/pull/35).
-- Mise à jour de la documentation et des exemples pour refléter les changements apportés.
-- Corrections mineures et améliorations de la lisibilité du code.
-- Mises à jour de dépendances (Rubocop, Rack, ActionText-Trix, MCP) [#2177](https://github.com/datagouv/apistration/pull/2177), [#2176](https://github.com/datagouv/apistration/pull/2176), [#2175](https://github.com/datagouv/apistration/pull/2175), [#2174](https://github.com/datagouv/apistration/pull/2174).
+- Amélioration de la documentation, notamment sur les routes de ping pour le monitoring [#70](https://github.com/datagouv/apistration/pull/70).
+- Ajout d'une documentation sur la chaîne de résolution des utilisateurs.
+- Ajout d'un fichier `CONTRIBUTING.md` pour encourager les contributions et protéger les mainteneurs.
+- Mise à jour des références aux données de staging.
+- Ajout d'une adresse email pour signaler les vulnérabilités de sécurité.
+- Corrections de bugs mineurs et améliorations de la qualité du code.
+- Ajout de tests pour les cas d'utilisation spécifiques (QF, EAJE).
+- Suppression de liens obsolètes dans la documentation.
+- Ajout de la possibilité de configurer un agent pour l'exécution des tests.
+- Ajout d'un cooldown de 7 jours pour les mises à jour de dépendances.
