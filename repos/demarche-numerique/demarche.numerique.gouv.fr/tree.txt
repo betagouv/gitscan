@@ -340,7 +340,7 @@
 │   │   │   ├── conditions_errors_component.rb
 │   │   │   ├── ineligibilite_rules_component
 │   │   │   │   ├── ineligibilite_rules_component.fr.yml
-│   │   │   │   └── ineligibilite_rules_component.html.haml
+│   │   │   │   └── ineligibilite_rules_component.html.erb
 │   │   │   ├── ineligibilite_rules_component.rb
 │   │   │   ├── routing_rules_component
 │   │   │   │   ├── routing_rules_component.fr.yml
@@ -2669,6 +2669,7 @@
 │   │       ├── t20260403backfill_no_ban_address_value_task.rb
 │   │       ├── t20260408_backfill_referentiel_tiptap_columns_task.rb
 │   │       ├── t20260408lowercase_type_de_champ_nature_values_task.rb
+│   │       ├── t20260427backfill_virus_scan_blobs_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -3997,6 +3998,11 @@
 │   │       ├── manager
 │   │       │   ├── en.yml
 │   │       │   └── fr.yml
+│   │       ├── notification_mailer
+│   │       │   ├── send_accuse_lecture_notification
+│   │       │   │   └── fr.yml
+│   │       │   └── send_notification_for_tiers
+│   │       │       └── fr.yml
 │   │       ├── pro_connect
 │   │       │   ├── en.yml
 │   │       │   └── fr.yml
@@ -4985,6 +4991,7 @@
 │   │   │   ├── instructeurs_controller_spec.rb
 │   │   │   ├── procedures_controller_spec.rb
 │   │   │   ├── services_controller_spec.rb
+│   │   │   ├── super_admins_controller_spec.rb
 │   │   │   └── users_controller_spec.rb
 │   │   ├── password_complexity_controller_spec.rb
 │   │   ├── ping_controller_spec.rb
@@ -5334,6 +5341,7 @@
 │   │   │   ├── enable_procedure_expires_when_termine_enabled_job_spec.rb
 │   │   │   ├── expired_users_deletion_job_spec.rb
 │   │   │   ├── fallback_fetch_cadastre_real_geometry_job_spec.rb
+│   │   │   ├── fix_missing_antivirus_analysis_job_spec.rb
 │   │   │   ├── operations_signature_job_spec.rb
 │   │   │   ├── procedure_process_sva_svr_job_spec.rb
 │   │   │   ├── purge_manager_administrateur_sessions_job_spec.rb
@@ -5809,6 +5817,7 @@
 │   │   │   ├── expert_spec.rb
 │   │   │   ├── instructeur_creation_spec.rb
 │   │   │   ├── instruction_spec.rb
+│   │   │   ├── notification_preferences_spec.rb
 │   │   │   ├── procedure_export_template_tabular_spec.rb
 │   │   │   ├── procedure_export_template_zip_spec.rb
 │   │   │   ├── procedure_filters_spec.rb
@@ -5950,6 +5959,7 @@
 │   │       ├── t20260403backfill_no_ban_address_value_task_spec.rb
 │   │       ├── t20260408_backfill_referentiel_tiptap_columns_task_spec.rb
 │   │       ├── t20260408lowercase_type_de_champ_nature_values_task_spec.rb
+│   │       ├── t20260427backfill_virus_scan_blobs_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -6053,4 +6063,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-978 directories, 5393 files
+981 directories, 5400 files
