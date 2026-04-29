@@ -1,19 +1,22 @@
-## Changelog : projects (30 derniers jours, au 26 mars 2026)
+## Changelog : projects (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la personnalisation de l'apparence de l'application (thème sombre/clair, favicon), la correction de bugs impactant l'expérience utilisateur (lecture des notifications, accès aux tableaux de bord) et l'amélioration de la flexibilité de l'outil (création de tableaux sans gestionnaire de projet). Des améliorations de la documentation et des traductions ont également été apportées.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de la stabilité de l'application, notamment concernant la duplication de tableaux, l'affichage des activités et la gestion des droits d'accès. Une nouvelle API pour les statistiques a également été implémentée.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de désactiver le bouton de changement de thème clair/sombre via l'option `disableDarkMode` [#1234](https://github.com/suitenumerique/projects/issues/1234).
-- Correction du bouton de lecture des notifications.
-- Possibilité de créer et d'accéder aux tableaux de bord sans avoir besoin d'entrées de gestionnaire de projet [#1234](https://github.com/suitenumerique/projects/issues/1234).
-- Ajout du support du favicon et du logo dans le thème.
-- Ajout des locales pour le widget de feedback.
-- Restauration du rôle "owner" (propriétaire).
+- Les notifications ne sont plus automatiquement marquées comme lues lorsqu'on clique dessus.
+- Correction d'un bug empêchant l'affichage correct des activités.
+- Correction d'un bug empêchant l'affichage du sélecteur de projet en mode organisation.
+- Correction des droits d'accès en mode organisation [#68](https://github.com/suitenumerique/projects/issues/68).
+- Correction de problèmes liés à la duplication de tableaux :
+    - Résolution d'un problème de récupération des tableaux lors de la duplication [#805d156](https://github.com/suitenumerique/projects/commit/805d156).
+    - Correction d'un problème d'ID de projet cible lors de la duplication [#38ca03c](https://github.com/suitenumerique/projects/commit/38ca03c).
+    - Correction de la création de tableaux modèles [#b1a2e3e](https://github.com/suitenumerique/projects/commit/b1a2e3e).
+- Correction d'un bug empêchant la mise à jour des tableaux [#9ee3492](https://github.com/suitenumerique/projects/commit/9ee3492).
 
 ### Évolutions techniques
-- Mise à jour des liens dans la documentation.
+- Implémentation d'une API pour les statistiques [#67](https://github.com/suitenumerique/projects/issues/67).
+- Déploiement en environnement de staging [#69](https://github.com/suitenumerique/projects/commit/1fa07d0).
 
 ### Autres changements
-- Ajout d'un favicon ANCT pour le thème sombre.
-- Amélioration des traductions pour le widget de feedback.
+- Aucune information supplémentaire.
