@@ -1,6 +1,18 @@
 .
 ├── .claude
 │   ├── agents
+│   │   ├── architect
+│   │   │   └── AGENT.md
+│   │   ├── code-dev
+│   │   │   └── AGENT.md
+│   │   ├── design-validator
+│   │   │   └── AGENT.md
+│   │   ├── designer
+│   │   │   └── AGENT.md
+│   │   ├── functional-validator
+│   │   │   └── AGENT.md
+│   │   ├── product-owner
+│   │   │   └── AGENT.md
 │   │   ├── rgaa-auditor
 │   │   │   └── AGENT.md
 │   │   ├── security-auditor
@@ -16,22 +28,31 @@
 │   ├── rules
 │   │   ├── audit-logging.md
 │   │   ├── automation.md
+│   │   ├── bug-fix-workflow.md
 │   │   ├── code-quality.md
 │   │   ├── database-drizzle.md
 │   │   ├── figma-workflow.md
+│   │   ├── github-board.md
 │   │   ├── react-components.md
 │   │   ├── styling-dsfr.md
 │   │   ├── testing.md
-│   │   └── trpc-api.md
+│   │   ├── ticket-spec-format.md
+│   │   ├── trpc-api.md
+│   │   └── visual-quality-validation.md
 │   ├── settings.json
 │   └── skills
-│       ├── analyse
+│       ├── code
 │       │   └── SKILL.md
-│       ├── implement
+│       ├── epic
+│       │   ├── SKILL-legacy.md.bak
+│       │   └── SKILL.md
+│       ├── open
+│       │   └── SKILL.md
+│       ├── report
 │       │   └── SKILL.md
 │       ├── review
 │       │   └── SKILL.md
-│       └── ship
+│       └── ticket
 │           └── SKILL.md
 ├── .dockerignore
 ├── .github
@@ -1120,5 +1141,20 @@
 │       └── vitest.integration.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── scripts
+│   ├── orchestration
+│   │   ├── cache_gh.sh
+│   │   ├── cleanup_terminal_worktrees.sh
+│   │   ├── create_linked_branch.sh
+│   │   ├── dispatch_plan.sh
+│   │   ├── epic_loop.sh
+│   │   ├── epic_state.sh
+│   │   ├── log_event.sh
+│   │   ├── open_worktree.sh
+│   │   ├── process_tick_result.sh
+│   │   ├── render_dashboard.sh
+│   │   └── set_ticket_status.sh
+│   ├── setup-worktree.sh
+│   └── teardown-worktree.sh
 └── sonar-project.properties
-211 directories, 912 files
+221 directories, 938 files
