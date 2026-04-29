@@ -1,12 +1,8 @@
-## Changelog : transport-validator (derniers 30 jours)
+## Changelog : transport-validator (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce validateur de données GTFS a reçu des améliorations concernant la validation des informations de calendrier et de langue. Ces mises à jour permettent de garantir une meilleure qualité des données de transport en commun et de détecter plus précisément les erreurs de conformité aux spécifications GTFS.
+Ce mois-ci, les mises à jour du validateur de données GTFS se concentrent principalement sur la maintenance et la sécurité des dépendances du projet. Aucune nouvelle fonctionnalité n'a été ajoutée, mais des bibliothèques utilisées ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
 
-### Évolutions fonctionnelles
-- La validation de l'absence de calendrier est maintenant signalée comme une erreur critique (#230).
-- La présence de la langue du flux (feed_info.feed_lang) est maintenant obligatoire et est validée (#229).
-
-### Autres changements
-- Mise à jour de la documentation (#227).
-- Correction de la mise en forme de l'entrée "MissingLanguage" dans le fichier README (#227).
+### Évolutions techniques
+- Mise à jour de la bibliothèque `rand` de la version 0.8.5 à la version 0.8.6 [#236](https://github.com/etalab/transport-validator/issues/236).
+- Mise à jour de la bibliothèque `actix-http` de la version 3.9.0 à la version 3.12.1 [#235](https://github.com/etalab/transport-validator/issues/235).
