@@ -1,13 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 27 avril 2026)
+## Changelog : upptime (30 derniers jours, au 2026-04-29)
 
 ### Résumé
-Ce changelog résume les mises à jour du projet upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques de l'état des différents services surveillés par upptime. Le bot Upptime a régulièrement vérifié la disponibilité de ces services et mis à jour le tableau de bord et le résumé de l'état en conséquence.
+Ce changelog couvre les 30 derniers jours et met en évidence les mises à jour régulières du statut des différents services surveillés par Upptime.  Il s'agit principalement de rapports d'état (up/down) pour les API, les interfaces utilisateur et les missions, assurant une visibilité continue sur la disponibilité des services.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle n'a été apportée au projet durant cette période. Les changements concernent uniquement les rapports d'état des services surveillés.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le projet se concentre sur la surveillance continue et le reporting de l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique n'a été apportée au projet durant cette période.
+Aucune évolution technique n'a été apportée durant cette période.
 
 ### Autres changements
-Aucun autre changement n'a été apporté au projet durant cette période. Les commits sont principalement des mises à jour automatiques du bot de surveillance.
+- Mises à jour régulières du fichier `README.md` et du résumé de l'état.
+- Mises à jour régulières des graphiques de statut.
+- Rapports d'état constants des différents services surveillés (API Apprentissage, Percona, Monitoring, Sentry, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance) par le bot Upptime. Ces rapports incluent des informations sur le statut (up/down) et le temps de réponse.
