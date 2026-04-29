@@ -1,41 +1,43 @@
-## Changelog : mon-service-securise (30 derniers jours, au 23 avril 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'interface utilisateur, notamment la refonte de la page d'accueil et l'intégration du nouveau design système (DSFR). L'accès aux données et la navigation ont été optimisés, avec l'ajout de nouvelles pages et fonctionnalités liées à la gestion des risques et des indices cyber. Des corrections et améliorations ont également été apportées pour améliorer l'accessibilité et la stabilité de l'application.
+Ce mois-ci, les efforts de développement se sont concentrés sur la modernisation de l'interface utilisateur avec l'intégration du Design System de l'État (DSFR), l'amélioration de l'expérience utilisateur sur les pages de service, et l'ajout de nouvelles fonctionnalités liées à la gestion des risques et des indices cyber. Des corrections de bugs et des améliorations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Intégration du header DSFR pour une expérience utilisateur plus cohérente.
-- Ajout de la page "Risques" dans la navigation "Sécuriser".
-- Affichage des dossiers d'homologation dans la SPA, avec des boutons pour la création, la reprise et le téléchargement du tampon d'homologation.
-- Affichage des données de dossiers d'homologation dans le service complet.
-- Ajout d'une page squelette pour l'Indice Cyber, avec l'affichage du radar et des tranches d'indice.
+- Intégration du header DSFR pour une meilleure cohérence visuelle et une navigation améliorée.
+- Affichage des indices cyber (ANSSI et personnalisé) dans l'en-tête des pages de service.
+- Ajout d'une nouvelle page "Indice Cyber" avec un radar et des visualisations des données.
+- Amélioration de la navigation et de l'affichage des dossiers d'homologation.
+- Ajout de la possibilité de télécharger le tampon d'homologation.
 - Affichage des contacts utiles du service.
-- Implémentation de l'objet de données pour l'annexe PDF des risques V2.
-- Génération des matrices de risque V2 dans le PDF d'annexes.
-- Affichage des indices cyber ANSSI et personnalisé dans l'entête des pages service.
-- Ajout du bouton de suppression de dossier courant.
-- Ajout du bandeau de simulation vers le référentiel V2.
-- Amélioration de l'affichage des risques résiduels.
+- Amélioration de la page "Décrire V2" avec une intégration plus fluide.
+- Ajout d'une gestion des rubriques spécifiques aux différentes versions de service.
+- Affichage des risques V1 et V2.
+- Génération d'un PDF d'annexe pour les risques V2, incluant les matrices et la légende.
+- Ajout d'un bouton pour la gestion des contributeurs.
+- Amélioration de la visite guidée pour les étapes "Sécuriser" et "Homologuer".
 
 ### Évolutions techniques
-- Migration vers le nouveau design système (DSFR) pour le header, le footer et la navigation.
-- Refonte de la page d'accueil pour les différentes tailles d'écran (mobile, tablette, desktop).
-- Transformation de plusieurs pages (Décrire V2, Mesures, Contacts Utiles) en Single Page Application (SPA).
-- Utilisation de l'API pour charger les données des services.
-- Refactoring du code pour utiliser TypeScript et améliorer la structure.
+- Migration vers les dernières versions des dépendances (Express, PostgreSQL, bcrypt, jsonwebtoken, axios, pg, knex, Svelte, Vite, etc.).
+- Refonte de la navigation avec le composant `dsfr-navigation`.
+- Utilisation des composants DSFR pour le footer et le menu.
+- Transformation de plusieurs pages (Mesures, Décrire V2) en Single Page Applications (SPA) avec Svelte.
+- Utilisation d'un objet de données unique pour le service complet, facilitant l'accès aux informations.
+- Amélioration de la structure du code et factorisation de composants.
 - Ajout de tests d'accessibilité avec Playwright et Axe.
-- Mise à jour des dépendances (Express, PostgreSQL, bcrypt, jsonwebtoken, axios, pg, knex, dotenv, Svelte, Vite, etc.).
-- Amélioration de la gestion des erreurs et des états de chargement.
-- Optimisation des performances et de la réactivité de l'interface utilisateur.
+- Configuration de l'exécution des tests d'accessibilité dans les workflows CI/CD.
+- Amélioration des workflows de déploiement Clever Cloud.
 
 ### Autres changements
-- Correction de typos et de bugs mineurs.
-- Amélioration de la documentation.
-- Suppression de code obsolète.
-- Mise à jour des workflows CI/CD.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Correction de problèmes d'accessibilité.
-- Suppression de styles CSS obsolètes.
-- Amélioration de la gestion des erreurs dans les tests.
-- Ajout de retries pour la recherche d'entreprise.
-- Publication des rapports d'accessibilité dans Mattermost.
+- Correction de plusieurs bugs et améliorations de l'expérience utilisateur.
+- Suppression de code obsolète et nettoyage du code.
+- Mise à jour de la documentation.
+- Correction de problèmes de typographie.
+- Amélioration des performances.
+- Correction d'erreurs d'accessibilité.
+- Suppression du bandeau de promotion de MSC.
+- Suppression de l'ancien menu de navigation.
+- Correction de problèmes de scroll et d'affichage.
+- Ajustement de la longueur des titres et des sous-titres.
+- Amélioration de la gestion des erreurs.
+- Ajout de commentaires et de documentation pour faciliter la maintenance.
