@@ -5,8 +5,7 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── codeql-analysis.yml
-│       ├── github-actions.yml
-│       └── release.yml
+│       └── github-actions.yml
 ├── .gitignore
 ├── .npmrc
 ├── .slugignore
@@ -276,6 +275,7 @@
 │   │   ├── services
 │   │   │   ├── address.service.ts
 │   │   │   ├── analysis.service.ts
+│   │   │   ├── analysisDai.service.ts
 │   │   │   ├── api.builder.ts
 │   │   │   ├── api.service.ts
 │   │   │   ├── apiClient.ts
@@ -312,6 +312,9 @@
 │   │       ├── AdminView
 │   │       │   ├── AdminView.stories.tsx
 │   │       │   ├── AdminView.tsx
+│   │       │   ├── AnalysisDaiAdminView
+│   │       │   │   ├── AnalysisDaiAdminView.tsx
+│   │       │   │   └── AnalysisDaiFilters.tsx
 │   │       │   ├── Notice
 │   │       │   │   ├── AdminViewDashboardNotice.tsx
 │   │       │   │   └── AdminViewRootNotice.tsx
@@ -466,6 +469,12 @@
 │   │       │   │       ├── SampleAnalysisOverview.stories.tsx
 │   │       │   │       └── SampleAnalysisOverview.tsx
 │   │       │   ├── SampleOverview
+│   │       │   │   ├── AnalysisDaiHistory
+│   │       │   │   │   ├── AnalysisDaiHistory.scss
+│   │       │   │   │   ├── AnalysisDaiHistory.stories.tsx
+│   │       │   │   │   ├── AnalysisDaiHistory.tsx
+│   │       │   │   │   ├── DocumentsModal.tsx
+│   │       │   │   │   └── RetryModal.tsx
 │   │       │   │   ├── SampleAgreementOverview.tsx
 │   │       │   │   ├── SampleComplianceForm.tsx
 │   │       │   │   ├── SampleContextOverview.tsx
@@ -505,6 +514,7 @@
 │   ├── .npmrc
 │   ├── controllers
 │   │   ├── analysisController.ts
+│   │   ├── analysisDaiController.ts
 │   │   ├── analysisReportDocumentsController.ts
 │   │   ├── authController.ts
 │   │   ├── checkLaboratoryEmailsController.ts
@@ -519,6 +529,7 @@
 │   │   ├── programmingPlanController.ts
 │   │   ├── sachaCommemoratifsController.ts
 │   │   ├── sampleController.integration.test.ts
+│   │   ├── sampleController.test.ts
 │   │   ├── sampleController.ts
 │   │   ├── specificDataFieldConfigController.ts
 │   │   └── userController.ts
@@ -635,7 +646,8 @@
 │   │   │   ├── 089-sample-compliance.ts
 │   │   │   ├── 089-split-sampled-at.ts
 │   │   │   ├── 090-refactor-status.ts
-│   │   │   └── 091-analysis-dai.ts
+│   │   │   ├── 091-analysis-dai.ts
+│   │   │   └── 092-analysis-dai-daoa.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -731,6 +743,7 @@
 │   │   ├── routes.type.ts
 │   │   ├── test
 │   │   │   ├── analysis.router.test.ts
+│   │   │   ├── analysisDai.router.test.ts
 │   │   │   ├── analysisReportDocuments.router.test.ts
 │   │   │   ├── auth.router.test.ts
 │   │   │   ├── companies.router.test.ts
@@ -925,6 +938,7 @@
 │   │   └── region.test.ts
 │   ├── routes
 │   │   ├── analysis.routes.ts
+│   │   ├── analysisDai.routes.ts
 │   │   ├── auth.routes.ts
 │   │   ├── companies.routes.ts
 │   │   ├── documents.routes.ts
@@ -957,8 +971,10 @@
 │   │   │       └── ResultKind.ts
 │   │   ├── AnalysisDai
 │   │   │   ├── AnalysisDai.ts
+│   │   │   ├── AnalysisDaiAnalysisGroup.ts
 │   │   │   ├── AnalysisDaiSentMethod.ts
-│   │   │   └── AnalysisDaiState.ts
+│   │   │   ├── AnalysisDaiState.ts
+│   │   │   └── FindAnalysisDaiOptions.ts
 │   │   ├── AppRouteLinks
 │   │   │   └── AppRouteLinks.ts
 │   │   ├── Auth
@@ -1015,6 +1031,7 @@
 │   │   ├── Sample
 │   │   │   ├── FindSampleOptions.test.ts
 │   │   │   ├── FindSampleOptions.ts
+│   │   │   ├── Sample.test.ts
 │   │   │   ├── Sample.ts
 │   │   │   ├── SampleCompliance.ts
 │   │   │   ├── SampleItem.ts
@@ -1062,7 +1079,8 @@
 │   │   ├── typescript.ts
 │   │   ├── utils.test.ts
 │   │   ├── utils.ts
-│   │   └── zod.ts
+│   │   ├── zod.ts
+│   │   └── zodConfig.ts
 │   └── vitest.config.ts
 ├── test
 │   ├── setupFakerJS.ts
@@ -1072,4 +1090,4 @@
     ├── env.d.ts
     └── express-jwt
         └── index.d.ts
-205 directories, 869 files
+207 directories, 885 files
