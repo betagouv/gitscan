@@ -1,32 +1,31 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 23 avril 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la landing page du simulateur simplifié et l'ajout de nouvelles informations sur les écoréseaux. Des améliorations techniques ont également été apportées, notamment des mises à jour de dépendances et des corrections de bugs.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur le simulateur de raccordement, la page "Qui sommes-nous" et la gestion des données des réseaux de chaleur. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme. L'ajout de la gestion des écoréseaux est une nouveauté importante.
 
 ### Évolutions fonctionnelles
-- **Simulateur simplifié :** Refonte complète de la landing page avec de nouveaux visuels, des CTA améliorés et une meilleure intégration du carrousel. [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215)
-- **Écoréseaux :** Ajout d'une nouvelle colonne et d'un filtre pour les écoréseaux dans la liste des réseaux de chaleur/froid.  Intégration des données des écoréseaux avec l'ajout de leur source et d'un label spécifique. [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224)
-- **Page "Qui sommes-nous" :** Mise à jour des textes et suppression de la section "équipe" ainsi que correction du wording concernant le budget. [#1232](https://github.com/betagouv/france-chaleur-urbaine/pull/1232)
-- **Formulaire de contact :** Ajout de liens vers les formulaires de contact dans les emails. [#1228](https://github.com/betagouv/france-chaleur-urbaine/pull/1228)
-- **Gestion des utilisateurs :** Ajout d'une structure pour la gestion des utilisateurs dans l'administration. [#1226](https://github.com/betagouv/france-chaleur-urbaine/pull/1226)
-- **Affichage des réseaux :** Le label des réseaux est maintenant affiché sur la carte, la page réseau et la liste des réseaux.
-- **Tableau des réseaux :** Ajout de filtres textuels sur les colonnes du tableau des réseaux de chaleur.
+- **Simulateur de raccordement :** Refonte complète du simulateur, incluant une nouvelle interface utilisateur, une meilleure gestion des calculs et des conditions d'éligibilité, et une intégration avec la nouvelle version de publi.codes. [#1234](https://github.com/betagouv/france-chaleur-urbaine/issues/1234)
+- **Page "Qui sommes-nous" :** Mise à jour du contenu et du design de la page, avec notamment la suppression des icônes de l'équipe et une clarification du budget. [#1232](https://github.com/betagouv/france-chaleur-urbaine/issues/1232)
+- **Gestion des écoréseaux :** Ajout de la gestion des écoréseaux, incluant l'importation de données, l'affichage sur la carte et dans les listes de réseaux, et l'ajout d'une colonne dédiée dans l'administration. [#1224](https://github.com/betagouv/france-chaleur-urbaine/issues/1224)
+- **Collecte de contact non raccordable :** Amélioration du formulaire de collecte de contact pour les utilisateurs non raccordables, incluant un bouton de réinitialisation et une gestion améliorée de l'état du formulaire. [#1236](https://github.com/betagouv/france-chaleur-urbaine/issues/1236)
+- **Aide "Coup de pouce" :** Mise à jour des conditions d'attribution de l'aide "Coup de pouce". [#1231](https://github.com/betagouv/france-chaleur-urbaine/issues/1231)
+- **Tableau des réseaux de chaleur :** Ajout de filtres et de colonnes supplémentaires au tableau des réseaux de chaleur dans l'administration.
+- **Emails :** Amélioration du style et de l'encodage des emails, avec l'ajout du logo ADEME.
 
 ### Évolutions techniques
-- **Mise à jour des dépendances :** Mise à jour des dépendances du projet, incluant TypeScript et remark-directive-rehype. [#1229](https://github.com/betagouv/france-chaleur-urbaine/pull/1229)
-- **Envoi d'emails :** Configuration de l'envoi d'emails depuis une adresse no-reply beta.gouv.
-- **Tests :** Correction d'un bug dans les tests concernant l'import en masse d'adresses. [#1230](https://github.com/betagouv/france-chaleur-urbaine/pull/1230)
-- **Admin Events :** Refonte de l'écran d'administration des événements pour ressembler à un tableau de bord de type Grafana.
-- **Linting & Styling :** Amélioration du linting et du style avec des classes Tailwind CSS canoniques.
-- **Typage :** Amélioration du typage de certaines variables et réponses API.
+- **Refactoring du code :** Plusieurs refactorings ont été effectués pour améliorer la lisibilité et la maintenabilité du code, notamment dans les modules de simulation et de gestion des adresses.
+- **Mise à jour des dépendances :** Mise à jour des dépendances du projet, incluant remark-directive-rehype et typescript. [#1229](https://github.com/betagouv/france-chaleur-urbaine/issues/1229)
+- **Amélioration des tests :** Correction de bugs dans les tests et ajout de nouveaux tests pour améliorer la couverture du code.
+- **Optimisation des images :** Conversion des images au format WebP pour réduire leur taille et améliorer les performances.
+- **Utilisation de Tailwind CSS :** Migration progressive vers Tailwind CSS pour le style de certains composants.
+- **Gestion des erreurs :** Amélioration de la gestion des erreurs et des messages d'erreur affichés à l'utilisateur.
 
 ### Autres changements
-- Mise à jour des statistiques d'avril.
-- Procédure de mise à jour des statistiques mensuelles documentée.
-- Correction de coquilles et d'erreurs typographiques.
-- Conversion d'images au format WebP pour optimiser les performances.
-- Suppression de code inutile et amélioration de la structure du code.
-- Ajout d'images pour les articles et la nouvelle landing du simulateur simplifié.
-- Amélioration du nommage du tracking pour le simulateur simplifié.
-- Correction d'un problème d'affichage initial des réseaux dans les iframes.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés au projet.
+- **Statistiques :** Mise à jour des statistiques mensuelles.
+- **Configuration :** Modifications de la configuration pour améliorer la sécurité et la performance.
+- **Linting et formatage :** Application de règles de linting et de formatage pour assurer la cohérence du code.
+- **Suppression de code inutile :** Suppression de code obsolète ou inutile pour simplifier le projet.
+- **Correction de coquilles et d'erreurs typographiques.**
+- **Amélioration du tracking Matomo et Posthog.**
+- **Correction de bugs mineurs et améliorations de l'interface utilisateur.**
