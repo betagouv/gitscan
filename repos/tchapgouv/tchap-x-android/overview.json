@@ -1,28 +1,25 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Application cliente Matrix de nouvelle génération pour Android, réécrite avec le SDK Matrix Rust et utilisant Jetpack Compose pour l'interface utilisateur.",
+  "description": "Application cliente Matrix de nouvelle génération, réécrite avec le SDK Matrix Rust et utilisant Jetpack Compose pour l'interface utilisateur.",
   "language": "Kotlin",
   "features": [
-    "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des espaces",
-    "Gestion des salons"
+    "Authentification & Accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix Rust SDK",
-    "Jetpack Compose",
-    "Appyx"
+    "Jetpack Compose"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "Android",
+    "Docker & Conteneurs",
     "Kotlin",
-    "Jetpack Compose"
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -30,7 +27,10 @@
       "oauth2"
     ]
   },
-  "tests": "Tests unitaires et d'interface utilisateur",
+  "tests": [
+    "Compose tests",
+    "Maestro tests"
+  ],
   "workflows": [
     "build",
     "SonarCloud analysis"
@@ -46,12 +46,10 @@
     "openIssues": null
   },
   "tags": [
-    "Android",
-    "Matrix",
-    "Sécurité",
-    "Communication",
-    "Tchap",
+    "Sécurité & Conformité",
+    "Données & Open Data",
+    "JavaScript",
     "Kotlin",
-    "Jetpack Compose"
+    "Tests & QA"
   ]
 }
