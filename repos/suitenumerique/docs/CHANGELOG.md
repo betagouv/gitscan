@@ -18,6 +18,8 @@ and this project adheres to
 - ♿️(frontend) structure correctly 5xx error alerts #2128
 - ♿️(frontend) make doc search result labels uniquely identifiable #2212
 - ⬆️(backend) upgrade docspec to v3.0.x and adapt converter API #2220
+- ✨(backend) make forward auth request uri header configurable #2241
+- ♿️(frontend) fix sidebar resize handle for screen readers #2122
 
 ### Fixed
 
@@ -28,6 +30,8 @@ and this project adheres to
 - 🐛(frontend) fix interlinking modal clipping #2213
 - 🛂(frontend) fix cannot manage member on small screen #2226
 - 🐛(backend) load jwks url when OIDC_RS_PRIVATE_KEY_STR is set
+- 🐛(backend) Prevent moving document to its own descendant or self #2208
+- 🐛(backend) return 400 when restoring a non-deleted document #2225
 
 ### Removed
 
@@ -201,6 +205,7 @@ and this project adheres to
 
 ### Fixed
 
+- 🐛(backend) enforce emoji validation for reactions #1965
 - 🐛(frontend) analytic feature flags problem #1953
 - 🐛(frontend) fix home collapsing panel #1954
 - 🐛(frontend) fix disabled color on icon Dropdown #1950

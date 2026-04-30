@@ -1,30 +1,42 @@
-## Changelog : docs (30 derniers jours, au 27 avril 2026)
+## Changelog : docs (30 derniers jours, au 2026-04-29)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration de l'expérience utilisateur, notamment en matière de gestion de contenu, de performance et d'accessibilité. Des optimisations ont été apportées au backend pour la gestion des fichiers et des requêtes, tandis que le frontend a bénéficié de corrections de bugs et d'améliorations de l'interface utilisateur, notamment pour les liens internes et la navigation. L'accessibilité a également été renforcée avec des améliorations pour les lecteurs d'écran et la navigation au clavier.
+Les 30 derniers jours ont été marqués par des améliorations significatives de la robustesse et de la performance de Docs, notamment au niveau de la gestion du contenu et de l'intégration avec les services externes. Des corrections de bugs ont été apportées pour améliorer l'expérience utilisateur, en particulier concernant l'interlinking et la gestion des erreurs. Des optimisations ont également été réalisées sur l'infrastructure et les tests.
 
 ### Évolutions fonctionnelles
-- Ajout du support hors ligne pour le contenu via Service Workers [#4d250a7](https://github.com/suitenumerique/docs/commit/4d250a7).
-- Intégration d'un lien vers la documentation dans le menu d'aide [#ee90443](https://github.com/suitenumerique/docs/commit/ee90443).
-- Ajout d'un easter egg pour la création d'emojis dans les documents [#45fac1e](https://github.com/suitenumerique/docs/commit/45fac1e).
-- Possibilité d'ouvrir les liens internes (interlinks) avec le bouton central de la souris ou les touches Ctrl/Cmd [#4dcf752](https://github.com/suitenumerique/docs/commit/4dcf752).
-- Ajout d'un indicateur visuel pour les liens internes [#c20e71e](https://github.com/suitenumerique/docs/commit/c20e71e).
-- Amélioration de l'expérience utilisateur pour la gestion des membres sur les petits écrans [#599b909](https://github.com/suitenumerique/docs/commit/599b909).
+- Ajout d'un lien vers la documentation dans le menu d'aide. [#2222](https://github.com/suitenumerique/docs/issues/2222)
+- Amélioration de la gestion des liens internes (interlinking) avec une meilleure expérience utilisateur et correction de bugs. [#2170](https://github.com/suitenumerique/docs/issues/2170), [#2213](https://github.com/suitenumerique/docs/issues/2213)
+- Mise en place d'un support hors-ligne pour le contenu via un Service Worker, incluant la mise en cache du contenu et des métadonnées.
+- Ajout d'un easter egg sur la création d'emojis dans les documents. [#2155](https://github.com/suitenumerique/docs/issues/2155)
+- Possibilité de configurer l'URI de la requête d'authentification forward. [#2241](https://github.com/suitenumerique/docs/issues/2241)
+- Amélioration de l'ordre d'affichage des documents épinglés (par date de mise à jour). [#2028](https://github.com/suitenumerique/docs/issues/2028)
 
 ### Évolutions techniques
-- Mise à jour de Docspec vers la version 3.0.0 et adaptation de l'API de conversion [#2d2e326](https://github.com/suitenumerique/docs/commit/2d2e326).
-- Refonte de l'architecture pour la gestion du contenu, avec des endpoints dédiés pour la mise à jour et la récupération du contenu [#d7a186a](https://github.com/suitenumerique/docs/commit/d7a186a, #6f2cd8a](https://github.com/suitenumerique/docs/commit/6f2cd8a, #207f214](https://github.com/suitenumerique/docs/commit/207f214).
-- Mise en place de headers ETag et Last-Modified pour optimiser la récupération du contenu [#6f2cd8a](https://github.com/suitenumerique/docs/commit/6f2cd8a).
-- Utilisation d'Uvicorn pour exécuter l'application Django en environnement de développement [#ef93763](https://github.com/suitenumerique/docs/commit/ef93763).
-- Factorisation des tests E2E dans un workflow séparé [#d933435](https://github.com/suitenumerique/docs/commit/d933435).
-- Amélioration de la gestion des erreurs 5xx avec une page dédiée et une structure améliorée [#9a5d81f](https://github.com/suitenumerique/docs/commit/9a5d81f, #31fea43](https://github.com/suitenumerique/docs/commit/31fea43).
-- Mise en place d'un système de feature flags pour l'import de documents [#f166e75](https://github.com/suitenumerique/docs/commit/f166e75).
+- Mise à jour de l'image Nginx dans le Dockerfile vers la dernière version.
+- Refonte de l'architecture de la gestion du contenu avec un endpoint dédié pour les mises à jour, l'utilisation d'ETag et de `Last-Modified` pour la mise en cache.
+- Suppression de l'endpoint `descendants` obsolète.
+- Mise à niveau de la librairie `docspec` vers la version 3.0.0 et adaptation de l'API de conversion. [#2220](https://github.com/suitenumerique/docs/issues/2220)
+- Amélioration de la configuration du logger en mode debug pour l'environnement "feature".
+- Utilisation d'Uvicorn pour exécuter l'application Django en environnement de développement.
+- Refactorisation des tests E2E pour une meilleure organisation et une exécution plus rapide.
+- Ajout de permissions au workflow CI pour une sécurité accrue.
+- Amélioration de la gestion des erreurs 5xx avec une redirection vers une page dédiée et une structure d'alerte améliorée. [#2128](https://github.com/suitenumerique/docs/issues/2128)
+- Amélioration de l'accessibilité des résultats de recherche de documents. [#2122](https://github.com/suitenumerique/docs/issues/2122)
 
 ### Autres changements
-- Ajout d'une liste des changements incompatibles (breaking changes) dans le fichier UPGRADE.md [#1c2bafb](https://github.com/suitenumerique/docs/commit/1c2bafb).
-- Mise à jour des dépendances lxml, axios et next avec des correctifs de sécurité [#e747e03](https://github.com/suitenumerique/docs/commit/e747e03, #0060c59](https://github.com/suitenumerique/docs/commit/0060c59, #48fb17b](https://github.com/suitenumerique/docs/commit/48fb17b).
-- Corrections de typos dans le fichier contributing.md [#30ed563](https://github.com/suitenumerique/docs/commit/30ed563).
-- Amélioration de l'accessibilité des étiquettes des résultats de recherche de documents [#e59d8a4](https://github.com/suitenumerique/docs/commit/e59d8a4).
-- Ajout d'un checklist IA au template de PR et refonte de la documentation contributing.md [#d0bf24f](https://github.com/suitenumerique/docs/commit/d0bf24f, #2da87ba](https://github.com/suitenumerique/docs/commit/2da87ba).
-- Mise à jour des chaînes de traduction [#e2d0e7c](https://github.com/suitenumerique/docs/commit/e2d0e7c).
-- Suppression de l'endpoint descendants déprécié [#5e22bc4](https://github.com/suitenumerique/docs/commit/5e22bc4).
+- Correction de tests unitaires et E2E instables.
+- Corrections de typos dans la documentation (contributing.md).
+- Mise à jour des dépendances JavaScript et Python (hors mises à jour de sécurité).
+- Ajout d'un checklist IA dans le template de pull request.
+- Mise à jour des chaînes de traduction.
+- Correction de problèmes de style et d'erreurs ESLint.
+- Ajout d'un favicon par défaut.
+- Validation des emojis pour les réactions. [#2208](https://github.com/suitenumerique/docs/issues/2208)
+- Suppression des paramètres UTM.
+- Correction de bugs liés à la gestion des espaces blancs dans les URLs CORS.
+- Interdiction de restaurer un document non supprimé.
+- Prévention du déplacement d'un document vers son propre descendant ou vers lui-même.
+- Amélioration de la gestion des erreurs lors de l'importation de CSV.
+- Correction de problèmes de compatibilité avec les instances E2E.
+- Ajout d'un flag `last-failed` aux tests E2E.
+- Mise à jour des dépendances `blocknote` vers la version 0.47.3.
