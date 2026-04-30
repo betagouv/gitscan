@@ -1,22 +1,24 @@
-## Changelog : domifa (30 derniers jours, au 27 avril 2026)
+## Changelog : domifa (30 derniers jours, au 2026-04-30)
 
 ### Résumé
-Les dernières mises à jour de DomiFa se concentrent sur l'amélioration de la sécurité, la correction de bugs et l'intégration de la nouvelle bibliothèque de composants DSFR pour une interface utilisateur plus moderne et accessible. Des optimisations ont également été apportées pour améliorer la performance et la robustesse de l'application.
+Ce mois-ci, les évolutions de DomiFa se sont concentrées sur l'amélioration de l'interface utilisateur avec l'intégration du Design System Framework (DSFR), la correction de plusieurs bugs notamment sur les formulaires et l'assignation des référents, et l'ajout de mesures de sécurité pour limiter les requêtes abusives. Des améliorations techniques ont également été apportées pour optimiser les tests et le processus de publication.
 
 ### Évolutions fonctionnelles
-- Intégration de la bibliothèque de composants DSFR sur le frontend, améliorant l'accessibilité et l'expérience utilisateur.
-- Ajout d'un mécanisme de limitation de débit (throttling) pour protéger l'API contre les requêtes abusives.
-- Correction de bugs concernant l'édition du numéro SIRET et l'assignation des référents.
-- Ajout d'une bannière DSFR sur le frontend.
+- Intégration du Design System Framework (DSFR) pour une interface utilisateur plus moderne et accessible.
+- Correction de problèmes d'affichage et de fonctionnement des formulaires, notamment sur la page RGAA.
+- Amélioration de l'assignation des référents.
+- Ajout d'une bannière DSFR à l'interface.
+- Correction de l'affichage des fiches pratiques.
+- Correction des labels de boutons pour une meilleure clarté.
 
 ### Évolutions techniques
-- Amélioration de la sécurité en renforçant les règles de validation et en ajoutant des logs pour le suivi des activités.
-- Ajout de tests unitaires et correction de tests existants.
-- Refonte des DTO (Data Transfer Objects) pour une meilleure cohérence et validation des données.
-- Optimisation des performances en désactivant le throttling pour les vérifications de santé (health check).
-- Mise en place d'un mécanisme pour éviter les commits déclenchant des CI inutiles.
+- Ajout d'un système de limitation de requêtes (throttling) pour protéger le backend contre les abus, avec ajout de logs pour le suivi.
+- Amélioration des tests unitaires backend.
+- Optimisation du processus de publication avec l'ajout de `[skip ci]` aux messages de commit de semantic-release.
+- Refonte de la gestion des DTO (Data Transfer Objects) pour une meilleure sécurité et validation des données.
+- Correction de problèmes liés à l'exécution des tests.
 
 ### Autres changements
-- Ajout d'un fichier `claude.md`.
-- Amélioration du changelog et correction des liens vers les commits.
-- Ajout de logs pour faciliter le débogage.
+- Ajout du fichier `claude.md`.
+- Mise à jour de la documentation du changelog.
+- Ajout d'une branche `fix-enforce-safety` au workflow de publication.
