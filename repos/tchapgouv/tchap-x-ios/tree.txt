@@ -29,7 +29,8 @@
 │       ├── triage_labelled.yml
 │       ├── ui_tests.yml
 │       ├── unit_tests.yml
-│       └── unit_tests_enterprise.yml
+│       ├── unit_tests_enterprise.yml
+│       └── zizmor.yml
 ├── .gitignore
 ├── .gitmodules
 ├── .periphery.yml
@@ -508,7 +509,8 @@
 │   │   │   │   ├── MapLibreModels.swift
 │   │   │   │   ├── MapLibreStaticMapView.swift
 │   │   │   │   ├── MapTilerURLBuilderProtocol.swift
-│   │   │   │   └── MapURLs.swift
+│   │   │   │   ├── MapURLs.swift
+│   │   │   │   └── StaticLocationData.swift
 │   │   │   ├── MatrixEntityRegex.swift
 │   │   │   ├── NetworkMonitor
 │   │   │   │   ├── NetworkMonitor.swift
@@ -544,6 +546,7 @@
 │   │   │   │   │   ├── ReadableFrameModifier.swift
 │   │   │   │   │   ├── TimelineMediaFrame.swift
 │   │   │   │   │   └── ViewFrameReader.swift
+│   │   │   │   ├── RowDivider.swift
 │   │   │   │   ├── Search.swift
 │   │   │   │   ├── ShouldScrollOnKeyboardDidShow.swift
 │   │   │   │   ├── Styles
@@ -841,12 +844,14 @@
 │   │   │   │   └── View
 │   │   │   │       └── LinkNewDeviceScreen.swift
 │   │   │   ├── LocationSharing
+│   │   │   │   ├── LocationSharingScreenCoordinator.swift
 │   │   │   │   ├── LocationSharingScreenModels.swift
-│   │   │   │   ├── StaticLocationScreenCoordinator.swift
-│   │   │   │   ├── StaticLocationScreenViewModel.swift
-│   │   │   │   ├── StaticLocationScreenViewModelProtocol.swift
+│   │   │   │   ├── LocationSharingScreenViewModel.swift
+│   │   │   │   ├── LocationSharingScreenViewModelProtocol.swift
 │   │   │   │   └── View
-│   │   │   │       └── StaticLocationScreen.swift
+│   │   │   │       ├── LocationPickerSheet.swift
+│   │   │   │       ├── LocationSharingScreen.swift
+│   │   │   │       └── StaticLocationSheet.swift
 │   │   │   ├── LogViewerScreen
 │   │   │   │   ├── LogViewerScreenCoordinator.swift
 │   │   │   │   ├── LogViewerScreenModels.swift
@@ -1682,7 +1687,8 @@
 │   └── xcshareddata
 │       ├── IDETemplateMacros.plist
 │       └── xcschemes
-│           └── AccessibilityTests.xcscheme
+│           ├── AccessibilityTests.xcscheme
+│           └── PreviewTests.xcscheme
 ├── Gemfile
 ├── Gemfile.lock
 ├── IntegrationTests
@@ -2417,10 +2423,30 @@
 │   │           ├── locationMarkerView.iPad-pseudo-0.png
 │   │           ├── locationMarkerView.iPhone-en-GB-0.png
 │   │           ├── locationMarkerView.iPhone-pseudo-0.png
+│   │           ├── locationPickerSheet.iPad-en-GB-0.png
+│   │           ├── locationPickerSheet.iPad-pseudo-0.png
+│   │           ├── locationPickerSheet.iPhone-en-GB-0.png
+│   │           ├── locationPickerSheet.iPhone-pseudo-0.png
 │   │           ├── locationRoomTimelineView.Bubbles-iPad-en-GB.png
 │   │           ├── locationRoomTimelineView.Bubbles-iPad-pseudo.png
 │   │           ├── locationRoomTimelineView.Bubbles-iPhone-en-GB.png
 │   │           ├── locationRoomTimelineView.Bubbles-iPhone-pseudo.png
+│   │           ├── locationSharingScreen.Picker-iPad-en-GB.png
+│   │           ├── locationSharingScreen.Picker-iPad-pseudo.png
+│   │           ├── locationSharingScreen.Picker-iPhone-en-GB.png
+│   │           ├── locationSharingScreen.Picker-iPhone-pseudo.png
+│   │           ├── locationSharingScreen.Picker-without-live-location-sharing-iPad-en-GB.png
+│   │           ├── locationSharingScreen.Picker-without-live-location-sharing-iPad-pseudo.png
+│   │           ├── locationSharingScreen.Picker-without-live-location-sharing-iPhone-en-GB.png
+│   │           ├── locationSharingScreen.Picker-without-live-location-sharing-iPhone-pseudo.png
+│   │           ├── locationSharingScreen.Pin-Static-Location-iPad-en-GB.png
+│   │           ├── locationSharingScreen.Pin-Static-Location-iPad-pseudo.png
+│   │           ├── locationSharingScreen.Pin-Static-Location-iPhone-en-GB.png
+│   │           ├── locationSharingScreen.Pin-Static-Location-iPhone-pseudo.png
+│   │           ├── locationSharingScreen.User-Static-Location-iPad-en-GB.png
+│   │           ├── locationSharingScreen.User-Static-Location-iPad-pseudo.png
+│   │           ├── locationSharingScreen.User-Static-Location-iPhone-en-GB.png
+│   │           ├── locationSharingScreen.User-Static-Location-iPhone-pseudo.png
 │   │           ├── loginScreen.Credentials-Entered-iPad-en-GB.png
 │   │           ├── loginScreen.Credentials-Entered-iPad-pseudo.png
 │   │           ├── loginScreen.Credentials-Entered-iPhone-en-GB.png
@@ -3433,18 +3459,14 @@
 │   │           ├── stateRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── stateRoomTimelineView.iPhone-en-GB-0.png
 │   │           ├── stateRoomTimelineView.iPhone-pseudo-0.png
-│   │           ├── staticLocationScreenViewer.Picker-iPad-en-GB.png
-│   │           ├── staticLocationScreenViewer.Picker-iPad-pseudo.png
-│   │           ├── staticLocationScreenViewer.Picker-iPhone-en-GB.png
-│   │           ├── staticLocationScreenViewer.Picker-iPhone-pseudo.png
-│   │           ├── staticLocationScreenViewer.View-Only-iPad-en-GB.png
-│   │           ├── staticLocationScreenViewer.View-Only-iPad-pseudo.png
-│   │           ├── staticLocationScreenViewer.View-Only-iPhone-en-GB.png
-│   │           ├── staticLocationScreenViewer.View-Only-iPhone-pseudo.png
-│   │           ├── staticLocationScreenViewer.View-Only-with-description-iPad-en-GB.png
-│   │           ├── staticLocationScreenViewer.View-Only-with-description-iPad-pseudo.png
-│   │           ├── staticLocationScreenViewer.View-Only-with-description-iPhone-en-GB.png
-│   │           ├── staticLocationScreenViewer.View-Only-with-description-iPhone-pseudo.png
+│   │           ├── staticLocationSheet.Static-own-location-iPad-en-GB.png
+│   │           ├── staticLocationSheet.Static-own-location-iPad-pseudo.png
+│   │           ├── staticLocationSheet.Static-own-location-iPhone-en-GB.png
+│   │           ├── staticLocationSheet.Static-own-location-iPhone-pseudo.png
+│   │           ├── staticLocationSheet.Static-pin-location-iPad-en-GB.png
+│   │           ├── staticLocationSheet.Static-pin-location-iPad-pseudo.png
+│   │           ├── staticLocationSheet.Static-pin-location-iPhone-en-GB.png
+│   │           ├── staticLocationSheet.Static-pin-location-iPhone-pseudo.png
 │   │           ├── stickerRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── stickerRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── stickerRoomTimelineView.iPhone-en-GB-0.png
@@ -3954,9 +3976,16 @@
 │   │   │   ├── BuildSDK.swift
 │   │   │   ├── BumpCalendarVersion.swift
 │   │   │   ├── CI
+│   │   │   │   ├── AccessibilityTests.swift
 │   │   │   │   ├── CI.swift
+│   │   │   │   ├── ConfigureNightly.swift
+│   │   │   │   ├── ConfigureProduction.swift
+│   │   │   │   ├── IntegrationTests.swift
 │   │   │   │   ├── RunTests.swift
-│   │   │   │   └── UnitTests.swift
+│   │   │   │   ├── TagNightly.swift
+│   │   │   │   ├── UITests.swift
+│   │   │   │   ├── UnitTests.swift
+│   │   │   │   └── UploadDSYMs.swift
 │   │   │   ├── DownloadStrings.swift
 │   │   │   ├── GenerateSAS.swift
 │   │   │   ├── GenerateSDKMocks.swift
@@ -4271,6 +4300,7 @@
 │   │   │   └── LayoutMocks.swift
 │   │   ├── LegalInformationScreenViewModelTests.swift
 │   │   ├── LocalizationTests.swift
+│   │   ├── LocationSharingScreenViewModelTests.swift
 │   │   ├── LoggingTests.swift
 │   │   ├── LoginScreenViewModelTests.swift
 │   │   ├── ManageRoomMemberSheetViewModelTests.swift
@@ -4343,7 +4373,6 @@
 │   │   ├── SpaceListScreenViewModelTests.swift
 │   │   ├── SpaceScreenViewModelTests.swift
 │   │   ├── StartChatViewModelTests.swift
-│   │   ├── StaticLocationScreenViewModelTests.swift
 │   │   ├── StringTests.swift
 │   │   ├── TestUtilities
 │   │   │   ├── DeferredFulfillment.swift
@@ -4587,4 +4616,4 @@
 ├── project-tchap-x.yml
 ├── project.yml
 └── renovate.json
-548 directories, 5514 files
+548 directories, 5543 files

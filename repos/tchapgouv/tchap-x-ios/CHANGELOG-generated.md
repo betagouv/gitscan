@@ -1,22 +1,25 @@
-## Changelog : tchap-x-ios (30 derniers jours, au 24 avril 2026)
+## Changelog : tchap-x-ios (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la gestion des espaces et des salons, notamment la possibilité de créer des salons accessibles par lien. Des corrections et des améliorations techniques ont également été apportées pour stabiliser l'application et faciliter le développement futur.
+Cette version apporte des améliorations significatives à la gestion des espaces et des salons, notamment l'introduction de l'accès par lien aux salons, ainsi que des corrections et des ajustements d'interface utilisateur. Des efforts ont également été faits pour harmoniser la terminologie avec les standards Tchap.
 
 ### Évolutions fonctionnelles
-- **Accès par lien aux salons :** Implémentation de la fonctionnalité permettant de générer un lien d'accès pour un salon, facilitant ainsi l'invitation de participants. [#309](https://github.com/tchapgouv/tchap-x-ios/pull/309)
+- **Accès par lien aux salons :** Possibilité de générer un lien d'accès pour les salons, facilitant ainsi l'invitation de nouveaux participants. [#309](https://github.com/tchapgouv/tchap-x-ios/pull/309)
 - **Gestion des espaces :** Amélioration de l'affichage et de la gestion des espaces, avec une action par défaut de filtrage des conversations. [#329](https://github.com/tchapgouv/tchap-x-ios/pull/329)
-- **Création de salon :** Modification de l'écran de création de salon pour mieux s'intégrer avec la gestion des espaces, notamment en masquant la sélection d'espace. [#323](https://github.com/tchapgouv/tchap-x-ios/pull/323)
-- **Désactivation de l'épinglage des données géographiques :** Désactivation temporaire de l'épinglage pour les données géographiques. [#331](https://github.com/tchapgouv/tchap-x-ios/pull/331)
-- **Écran de récupération :** L'écran de récupération s'ouvre maintenant avant l'écran de confirmation d'identité. [#8959144c7](https://github.com/tchapgouv/tchap-x-ios/commit/8959144c7)
+- **Création de salon :** Modification de l'interface de création de salon pour intégrer l'option d'accès par lien et masquer la sélection d'espace. [#325](https://github.com/tchapgouv/tchap-x-ios/pull/325)
+- **Désactivation de l'épinglage des géolocalisations :** L'épinglage des données de géolocalisation a été temporairement désactivé. [#331](https://github.com/tchapgouv/tchap-x-ios/pull/331)
+- **Taxonomie :** Mise à jour de la taxonomie. [#323](https://github.com/tchapgouv/tchap-x-ios/pull/323)
+- **Écran de récupération :** L'écran de récupération s'ouvre maintenant en premier avant l'écran de confirmation d'identité. [#333](https://github.com/tchapgouv/tchap-x-ios/pull/333)
 
 ### Évolutions techniques
-- **Mise à jour du SDK matrix-rust-components-swift :** Mise à jour vers la version `v0.9.10` du SDK. [#324](https://github.com/tchapgouv/tchap-x-ios/pull/324)
-- **Correction temporaire de visibilité du SDK :** Correction temporaire de la visibilité du SDK. [#322](https://github.com/tchapgouv/tchap-x-ios/pull/322)
-- **Formatage du code :** Formatage du code source avec `swiftformat v0.59.1` pour améliorer la lisibilité et la cohérence. [#ffddb50fc](https://github.com/tchapgouv/tchap-x-ios/commit/ffddb50fc)
-- **Correction des tests unitaires :** Correction de problèmes de compilation et d'import dans les tests unitaires. [#b33d332f0](https://github.com/tchapgouv/tchap-x-ios/commit/b33d332f0)
+- **Mise à jour du SDK Matrix Rust :** Passage à la version v26.03.10 du SDK Matrix Rust.
+- **Mise à jour de Compound Design Token :** Mise à jour vers la version 6.10-angelo.
+- **Rebase :** Rebase de la branche Tchap sur ElementX-ios v26.03.3.
+- **Formatage du code :** Le code a été formaté avec swiftformat v0.59.1 pour une meilleure lisibilité et cohérence.
+- **Corrections de compilation des tests unitaires :** Résolution de problèmes de compilation des tests unitaires.
 
 ### Autres changements
-- **Terminologie Tchap :** Utilisation de la terminologie spécifique à Tchap dans l'application. [#3b59175ca](https://github.com/tchapgouv/tchap-x-ios/commit/3b59175ca)
-- **Suppression de fichiers inutiles :** Suppression de fichiers hérités de ElementX. [#a278eff34](https://github.com/tchapgouv/tchap-x-ios/commit/a278eff34)
-- **Génération de chaînes de caractères :** Ajout de chaînes de caractères générées. [#9f982bc8d](https://github.com/tchapgouv/tchap-x-ios/commit/9f982bc8d)
+- **Terminologie Tchap :** Utilisation de la terminologie spécifique à Tchap dans l'application.
+- **Correction du gradient de la timeline :** Correction d'un problème d'affichage du gradient de la timeline.
+- **Suppression de fichiers inutiles :** Suppression de fichiers hérités d'ElementX.
+- **Amélioration de la gestion des autorisations :** Le bouton de bascule pour l'accès par lien est maintenant désactivé si l'activation de cette fonctionnalité n'est pas autorisée.
