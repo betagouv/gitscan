@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.73.2](https://github.com/SocialGouv/cdtn-admin/compare/v2.73.1...v2.73.2) (2026-04-29)
+
+### Bug Fixes
+
+- **alert:** gestion du cas où une section peut avoir un titre vide ([#1670](https://github.com/SocialGouv/cdtn-admin/issues/1670)) ([1b9b52a](https://github.com/SocialGouv/cdtn-admin/commit/1b9b52a6ca9671fc6f9efcef32809274e8df56fe))
+
+## [2.73.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.73.0...v2.73.1) (2026-04-29)
+
+### Features
+
+- migration vers une instance interne d'ES pour la preprod ([c08e225](https://github.com/SocialGouv/cdtn-admin/commit/c08e225a67c7f423428e1b131ffa2a831b2c3534))
+
+# [2.73.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.72.3...v2.73.0) (2026-04-29)
+
+### Bug Fixes
+
+- **ingest:** update mapping, convert html to text for : contributions / infographies / informations / modèles de courrier ([#1665](https://github.com/SocialGouv/cdtn-admin/issues/1665)) ([3306881](https://github.com/SocialGouv/cdtn-admin/commit/3306881128dc2483d59522de59843c1f24ca47a1))
+
+### Features
+
+- migration vers une instance interne d'ES ([#1668](https://github.com/SocialGouv/cdtn-admin/issues/1668)) ([bd72d0c](https://github.com/SocialGouv/cdtn-admin/commit/bd72d0c7bc876ab02a79955200620342fa65a1a1))
+
 ## [2.72.3](https://github.com/SocialGouv/cdtn-admin/compare/v2.72.2...v2.72.3) (2026-04-24)
 
 ### Bug Fixes
