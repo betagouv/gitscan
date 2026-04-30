@@ -1,36 +1,31 @@
-## Changelog : api-engagement (30 derniers jours, au 24 avril 2026)
+## Changelog : api-engagement (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de performance, notamment au niveau de la recherche d'organisations et de la gestion des sauvegardes de la base de données. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des améliorations d'accessibilité et de l'expérience utilisateur sur l'interface web.
+Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de performance et de sécurité, notamment grâce à l'optimisation des recherches d'organisations et à l'ajout de limitations de débit. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des améliorations de l'interface utilisateur dans l'application web.
 
 ### Évolutions fonctionnelles
-- Ajout de scripts pour les missions SDIS via l'API. [#942](https://github.com/betagouv/api-engagement/pull/942)
-- Amélioration de la recherche d'organisations grâce à l'utilisation de `tsvector`. [#950](https://github.com/betagouv/api-engagement/pull/950)
-- Correction d'un bug empêchant la déconnexion en cas d'erreur réseau dans l'application. [#930](https://github.com/betagouv/api-engagement/pull/930)
-- Amélioration de la conception réactive pour les petites vues (RGAA 10.11). [#930](https://github.com/betagouv/api-engagement/pull/930)
-- Amélioration de la liste des utilisateurs et des formulaires utilisateurs dans l'application. [#922](https://github.com/betagouv/api-engagement/pull/922)
-- Correction du blocage de la sélection du jour courant dans le sélecteur de date. [#924](https://github.com/betagouv/api-engagement/pull/924)
-- Amélioration des filtres de modération avec la recherche facetée. [#902](https://github.com/betagouv/api-engagement/pull/902)
-- Correction d'un problème de redirection lorsque la mission n'est pas trouvée. [#926](https://github.com/betagouv/api-engagement/pull/926)
-- Correction d'un problème d'affichage de la page organisation. [#925](https://github.com/betagouv/api-engagement/pull/925)
-- Amélioration de l'accessibilité du sélecteur de date. [#928](https://github.com/betagouv/api-engagement/pull/928)
+- Ajout de scripts pour les missions SDIS [#942](https://github.com/betagouv/api-engagement/issues/942).
+- Amélioration de la liste des utilisateurs et des formulaires utilisateurs dans l'application web [#922](https://github.com/betagouv/api-engagement/issues/922).
+- Amélioration du sélecteur de plage de dates dans l'application web, avec une accessibilité accrue [#928](https://github.com/betagouv/api-engagement/issues/928).
+- Correction d'un bug empêchant la déconnexion de l'utilisateur en cas d'erreur réseau dans l'application web [#930](https://github.com/betagouv/api-engagement/issues/930).
+- Ajout de limites de débit pour les requêtes API (publisherRateLimiter et ipRateLimiter) [#932](https://github.com/betagouv/api-engagement/issues/932).
+- Correction d'un problème de redirection après la création d'une mission [#926](https://github.com/betagouv/api-engagement/issues/926).
+- Amélioration des filtres de modération avec une recherche facettée [#902](https://github.com/betagouv/api-engagement/issues/902).
 
 ### Évolutions techniques
-- Mise en place de sauvegardes régulières de la base de données (RDB). [#955](https://github.com/betagouv/api-engagement/pull/955) et [#957](https://github.com/betagouv/api-engagement/pull/957)
-- Suppression du magasin partagé de limitation de débit de l'API. [#959](https://github.com/betagouv/api-engagement/pull/959)
-- Ajout de limiteurs de débit basés sur l'éditeur et l'adresse IP. [#932](https://github.com/betagouv/api-engagement/pull/932)
-- Optimisation de la mise à l'échelle de l'API (max_scale). [#949](https://github.com/betagouv/api-engagement/pull/949)
-- Suppression de la clé étrangère `mission` dans la table `stat_events`. [#933](https://github.com/betagouv/api-engagement/pull/933) et [#921](https://github.com/betagouv/api-engagement/pull/921)
-- Suppression des champs d'organisation hérités de la table `stat_event`. [#918](https://github.com/betagouv/api-engagement/pull/918)
-- Suppression des champs d'organisation hérités du schéma de mission. [#917](https://github.com/betagouv/api-engagement/pull/917)
-- Amélioration des règles CLAUDE. [#935](https://github.com/betagouv/api-engagement/pull/935)
-- Mise à jour de la documentation OpenAPI. [#915](https://github.com/betagouv/api-engagement/pull/915)
-- Ajout d'une politique de sécurité. [#920](https://github.com/betagouv/api-engagement/pull/920)
+- Refactorisation de la recherche d'organisations pour utiliser `tsvector`, améliorant ainsi les performances [#950](https://github.com/betagouv/api-engagement/issues/950).
+- Suppression du magasin partagé pour les limites de débit, simplifiant ainsi l'architecture [#959](https://github.com/betagouv/api-engagement/issues/959).
+- Refactorisation du traitement des missions avec exclusion de l'organisation publiant [#965](https://github.com/betagouv/api-engagement/issues/965).
+- Refactorisation de l'exécution des agrégations du widget en mode séquentiel [#966](https://github.com/betagouv/api-engagement/issues/966).
+- Ajout de jobs de sauvegarde de la base de données RDB [#955](https://github.com/betagouv/api-engagement/issues/955) et activation du job [#957](https://github.com/betagouv/api-engagement/issues/957).
+- Suppression de colonnes inutiles et amélioration des requêtes pour optimiser les performances de l'API [#917](https://github.com/betagouv/api-engagement/issues/917), [#918](https://github.com/betagouv/api-engagement/issues/918), [#919](https://github.com/betagouv/api-engagement/issues/919), [#921](https://github.com/betagouv/api-engagement/issues/921).
+- Mise à jour de la documentation OpenAPI [#915](https://github.com/betagouv/api-engagement/issues/915).
+- Ajout d'une politique de sécurité [#920](https://github.com/betagouv/api-engagement/issues/920).
+- Amélioration de la configuration du proxy Metabase [#916](https://github.com/betagouv/api-engagement/issues/916).
 
 ### Autres changements
-- Publication des versions v1.4.1 et v1.3.1.
-- Amélioration du script de vérification des champs orphelins de mission dans `stat_event`. [#930](https://github.com/betagouv/api-engagement/pull/930)
-- Correction de la configuration du proxy Metabase. [#916](https://github.com/betagouv/api-engagement/pull/916)
-- Correction de la configuration du déploiement sandbox de l'application. [#914](https://github.com/betagouv/api-engagement/pull/914)
-- Suppression de la dépendance `letudiant` des jobs.
-- Mise à jour des dépendances.
+- Publication des versions v1.3.0 et v1.4.0 [#956](https://github.com/betagouv/api-engagement/issues/956), [#959](https://github.com/betagouv/api-engagement/issues/959).
+- Amélioration du script de vérification des champs orphelins de `stat_event` [#428515e](https://github.com/betagouv/api-engagement/commit/428515e).
+- Correction de l'affichage de la page organisation désactivée [#18512e0](https://github.com/betagouv/api-engagement/commit/18512e0).
+- Amélioration des règles CLAUDE [#4e75f5d](https://github.com/betagouv/api-engagement/commit/4e75f5d).
+- Diverses mises à jour de dépendances.
