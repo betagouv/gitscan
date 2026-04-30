@@ -1,39 +1,100 @@
-## Changelog : data_pass (30 derniers jours, au 27 avril 2026)
+## Changelog : data_pass (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de data_pass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'accusés de réception pour les demandes, une meilleure gestion des rôles et des droits, ainsi que des corrections de bugs critiques. Des améliorations techniques ont également été apportées pour optimiser les performances et la sécurité de la plateforme, notamment au niveau des tests et de la gestion des dépendances.
+Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur les formulaires de demande et la gestion des droits. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la sécurité et de la conformité. L'API a été enrichie avec de nouvelles fonctionnalités et une meilleure documentation.
 
 ### Évolutions fonctionnelles
-
-- Ajout d'un accusé de réception envoyé à l'utilisateur lors du dépôt d'une demande. [#1536](https://github.com/etalab/data_pass/pull/1536)
-- Amélioration de l'affichage des scopes boursier MEN sur les formulaires CNAF, en les masquant. [#1514](https://github.com/etalab/data_pass/pull/1514)
-- Ajout d'un lien vers le formulaire de création de demande dans la liste des habilitations. [#1487](https://github.com/etalab/data_pass/pull/1487)
-- Amélioration de la gestion des rôles et des droits, notamment avec la prise en charge des rôles de niveau FD (Finance Développement). [#1520](https://github.com/etalab/data_pass/pull/1520) et [#1484](https://github.com/etalab/data_pass/pull/1484)
-- Ajout de la possibilité de retirer complètement les droits d'un utilisateur. [#1494](https://github.com/etalab/data_pass/pull/1494)
-- Correction d'un bug critique provoquant une boucle de redirection. [#1469](https://github.com/etalab/data_pass/pull/1469)
-- Correction d'un bug empêchant la consultation des habilitations pour les organisations non vérifiées. [#1554](https://github.com/etalab/data_pass/pull/1478)
-- Ajout de la possibilité de bannir un utilisateur. [#1508](https://github.com/etalab/data_pass/pull/1508)
-- Amélioration de l'affichage des erreurs de connexion. [#1531](https://github.com/etalab/data_pass/pull/1531)
-- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API. [#1523](https://github.com/etalab/data_pass/pull/1523)
+- Ajout d'une bannière de maintenance ProConnect visible sur toutes les pages.
+- Amélioration de l'affichage du statut des demandes (revendiquées/non revendiquées).
+- Suppression du compteur de longlet "Demandes" pour les instructeurs.
+- Affichage du numéro de SIRET formaté dans les emails.
+- Ajout d'un accusé de réception lors du dépôt d'une demande.
+- Possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout d'un lien vers la création d'une demande dans la liste des habilitations.
+- Amélioration de l'affichage des scopes sans groupes dans les formulaires.
+- Correction d'un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
+- Ajout d'un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
+- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
+- Affichage d'un message d'erreur plus clair en cas d'échec de connexion.
+- Amélioration de l'affichage des scopes boursier MEN sur les formulaires CNAF.
+- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Ajout de la gestion des CGU vides pour les types d'habilitation dynamiques.
 
 ### Évolutions techniques
-
-- Optimisation des tests CI/CD, réduisant significativement leur durée d'exécution. [#1503](https://github.com/etalab/data_pass/pull/1503)
-- Refactoring de la gestion des erreurs et amélioration de l'affichage des messages d'erreur. [#1515](https://github.com/etalab/data_pass/pull/1515)
-- Mise à jour de plusieurs dépendances (Rubocop, Yard, Zlib, Rack-Session, etc.).
-- Migration des tables rails_pulse et lazy_load faker. [#1533](https://github.com/etalab/data_pass/pull/1533)
-- Ajout de tests contractuels pour garantir la cohérence des définitions. [#1528](https://github.com/etalab/data_pass/pull/1528)
-- Amélioration de la documentation et ajout de tutoriels pour les développeurs. [#1522](https://github.com/etalab/data_pass/pull/1522)
-- Ajout d'un service singleton `AnnouncementBanner` pour gérer les bannières de maintenance. [#1506](https://github.com/etalab/data_pass/pull/1506)
-- Amélioration de la gestion des webhooks. [#1500](https://github.com/etalab/data_pass/pull/1500)
+- Refactorisation de la gestion des rôles avec l'introduction de `RoleHierarchy` et `RoleSet`.
+- Ajout de tests contractuels pour garantir la cohérence des définitions.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation des requêtes SQL sur le dashboard demandeur pour améliorer les performances.
+- Mise à jour des dépendances (Rubocop, Rack-Session, Zlib, etc.).
+- Ajout de webhooks pour notifier les événements liés aux organisations (création, mise à jour).
+- Amélioration de la documentation de l'API et ajout de tutoriels pour les développeurs.
+- Ajout de contrôles pour forcer la définition du titre de chaque vue.
+- Ajout d'un service `MarkdownRenderer` pour le rendu du Markdown.
+- Amélioration de la gestion des scopes OAuth2.
+- Ajout d'une page de documentation dédiée aux webhooks.
+- Amélioration de la gestion des erreurs lors de la soumission de formulaires.
+- Ajout de la raison du bannissement sur l'utilisateur.
+- Ajout d'événements pour les mises à jour des données.
+- Amélioration de la gestion des erreurs dans les emails.
 
 ### Autres changements
-
-- Mise à jour de la documentation des rôles. [#1507](https://github.com/etalab/data_pass/pull/1507)
-- Correction de fautes de frappe dans les sujets des emails. [#1537](https://github.com/etalab/data_pass/pull/1537)
-- Ajout d'instructions pour l'exécution de `make build` en cas de dépendances manquantes. [#1525](https://github.com/etalab/data_pass/pull/1525)
-- Clarification des messages d'erreur de `SkipLinksImplementedChecker`. [#1524](https://github.com/etalab/data_pass/pull/1524)
-- Ajout d'un checker pour forcer la définition du titre sur chaque vue. [#1523](https://github.com/etalab/data_pass/pull/1523)
-- Mise à jour du fichier CLAUDE.md. [#1522](https://github.com/etalab/data_pass/pull/1522)
-- Correction d'un problème de timezone en CI. [#1517](https://github.com/etalab/data_pass/pull/1517)
-- Suppression de scopes inutiles pour l'API entreprise-entrouvert. [#1482](https://github.com/etalab/data_pass/pull/1482)
+- Mise à jour de la documentation des rôles.
+- Correction de fautes de frappe dans les textes des emails.
+- Ajout d'instructions pour l'exécution des tests en CI.
+- Amélioration des descriptions de l'OpenAPI.
+- Ajout d'un guide de contribution avec CLAUDE.
+- Correction d'un problème de remplacement des apostrophes dans les tests.
+- Suppression de code inutile et nettoyage du code.
+- Correction d'un revert de mise à jour de dépendances.
+- Ajout d'un suffixe au slug des HabilitationType.
+- Correction d'un bug lié à l'affichage des scopes.
+- Ajout d'un message d'erreur plus clair en cas d'échec de connexion.
+- Correction d'un problème lié à l'affichage des habilitations FC.
+- Ajout de la gestion de l'erreur `EntityNotFoundError`.
+- Amélioration de la gestion des diffs des changelogs.
+- Correction d'un problème de timezone en CI.
+- Ajout de la gestion des erreurs à la soumission d'une demande avec turbo-stream.
+- Ajout de la gestion des scopes cnaf_adresse et cnaf_enfants pour le formulaire Solis.
+- Ajout de la gestion des scopes men_regime_pensionnat pour l'API Particulier.
+- Ajout de la gestion des scopes beneficiaires_effectifs_inpi pour l'API Entreprise Entrouvert.
+- Ajout de la possibilité d'afficher l'astérisque depuis les validators dsfr_file_field.
+- Ajout de la possibilité de remplir le champ `france_connect_authorization_id` lors de la validation d'une demande.
+- Ajout de la gestion des droits de niveau FD.
+- Ajout de la gestion des cas personne physique et organisation étrangère dans Organization#name.
+- Ajout de la gestion des erreurs à la soumission d'une demande avec turbo-stream.
+- Ajout de la gestion des scopes boursier MEN sur les formulaires CNAF.
+- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
+- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
+- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
+- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
+- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
+- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
+- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
+- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
+- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
+- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
+- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
+- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
+- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
+- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
+- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
+- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
+- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
+- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
+- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
+- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
+- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
+- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
+- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
+- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
