@@ -1,39 +1,41 @@
-## Changelog : dictaphone (30 derniers jours, au 25 avril 2026)
+## Changelog : dictaphone (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application, notamment l'intégration de l'application mobile (iOS et Android) avec une authentification sécurisée, l'ajout de fonctionnalités de suppression et de restauration de fichiers, ainsi que l'intégration avec un service d'IA pour la transcription et la synthèse audio. L'interface utilisateur a également été améliorée, avec une attention particulière à la réactivité et à l'expérience mobile.
+Ce mois-ci, l'équipe a concentré ses efforts sur le développement d'une application mobile (iOS et Android) pour Dictaphone, l'amélioration de l'intégration avec des services externes comme Docs, et l'ajout de fonctionnalités de gestion des enregistrements, notamment la corbeille et la suppression définitive. Des améliorations significatives ont également été apportées à l'interface utilisateur web et mobile, ainsi qu'à la robustesse et la sécurité du backend.
 
 ### Évolutions fonctionnelles
-- Ajout d'une application mobile (iOS et Android) avec authentification via JWT et PKCE.
-- Intégration de la suppression et de la restauration des enregistrements avec une page "Corbeille".
-- Intégration avec un service d'IA externe pour la transcription et la synthèse des enregistrements.
-- Possibilité d'ouvrir les transcriptions dans une application externe via un bouton "Ouvrir dans Docs".
-- Ajout d'une page d'aide avec des liens de téléchargement des applications mobiles.
-- Amélioration de l'interface utilisateur pour une meilleure réactivité et une expérience utilisateur optimisée sur mobile.
-- Affichage de l'état de progression lors du téléchargement des fichiers.
-- Ajout d'indicateurs visuels pour les enregistrements en cours de traitement.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Ajout d'une option pour afficher la durée des enregistrements.
-- Possibilité de copier la transcription dans le presse-papier.
+- Ajout d'une application mobile (iOS et Android) avec les fonctionnalités de base : enregistrement, liste des enregistrements, lecture, suppression et connexion utilisateur.
+- Intégration avec Docs pour la transcription et l'accès aux transcriptions.
+- Implémentation d'une corbeille pour les enregistrements supprimés, permettant leur restauration.
+- Possibilité de supprimer définitivement les enregistrements de la corbeille.
+- Ajout d'un lien "Ouvrir dans Docs" pour faciliter l'accès aux transcriptions.
+- Amélioration de la gestion des erreurs et des retours d'information à l'utilisateur (ex: retry upload).
+- Ajout d'un lien vers la documentation dans l'application mobile.
+- Possibilité de télécharger l'application mobile depuis le menu d'aide sur le web.
+- Ajout d'un indicateur de progression pendant le téléchargement des fichiers.
+- Amélioration de la gestion des autorisations sur Android.
+- Ajout d'une option pour supprimer un compte utilisateur depuis l'application mobile.
 
 ### Évolutions techniques
-- Mise en place d'un système d'authentification JWT avec PKCE pour l'application mobile.
-- Refonte de l'architecture backend pour supporter l'intégration avec le service d'IA externe.
-- Amélioration de la gestion des logs pour faciliter le débogage.
-- Mise à jour des dépendances pour bénéficier des dernières corrections et améliorations.
-- Configuration du pipeline CI/CD pour déployer les images Docker sur les branches d'intégration.
-- Ajout de tests unitaires pour valider le bon fonctionnement des nouvelles fonctionnalités.
-- Amélioration de la gestion des fichiers audio (support de m4a).
+- Refonte de l'authentification mobile avec JWT et PKCE pour une meilleure sécurité.
+- Mise à jour des dépendances backend et Dockerfiles.
+- Amélioration des tests backend et généralisation des tests.
+- Suppression de vérifications inutiles dans le CI.
+- Amélioration de la journalisation (logging) pour faciliter le débogage.
+- Support amélioré des formats audio m4a.
 - Mise en place d'un système d'analyse (PostHog) pour suivre l'utilisation de l'application.
-- Amélioration de la gestion des erreurs lors de l'appel au service d'IA.
+- Amélioration de la gestion des erreurs lors de l'appel à l'API Docs.
+- Mise en place d'un système de gestion des versions pour l'application mobile.
+- Amélioration de la gestion des configurations pour l'application mobile.
+- Utilisation de React Native Nitro Player pour la lecture audio sur mobile.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
-- Amélioration de la structure du code pour une meilleure lisibilité et maintenabilité.
-- Correction de typos et amélioration de la qualité du code.
-- Ajout de commentaires pour expliquer le fonctionnement de certaines parties du code.
-- Mise à jour des assets et des logos de l'application.
-- Amélioration de la configuration du projet pour faciliter le développement et le déploiement.
-- Suppression du code obsolète.
-- Ajout de variables d'environnement pour configurer le comportement de l'application.
-- Correction de problèmes de compatibilité avec certains navigateurs.
+- Mise à jour de la documentation.
+- Amélioration de la structure du code et nettoyage.
+- Corrections de bugs mineurs dans l'interface utilisateur web et mobile.
+- Mise à jour des logos et des icônes.
+- Amélioration de la traduction en français.
+- Correction de problèmes de typographie et de formatage.
+- Suppression de l'écriture inclusive dans la documentation.
+- Amélioration des styles et des couleurs de l'interface utilisateur.
+- Mise à jour des dépendances React Native pour l'application mobile.
