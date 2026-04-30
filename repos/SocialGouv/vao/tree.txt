@@ -1142,11 +1142,26 @@
 │   │   │   │   └── notifySuppressionCompteInactif.type.d.ts
 │   │   │   ├── services
 │   │   │   │   └── Tracking.ts
+│   │   │   ├── shared
+│   │   │   │   ├── organismes
+│   │   │   │   │   ├── organismes.repository.ts
+│   │   │   │   │   ├── organismes.service.ts
+│   │   │   │   │   └── organismes.type.d.ts
+│   │   │   │   └── territoires
+│   │   │   │       ├── territoire.repository.ts
+│   │   │   │       ├── territoire.service.ts
+│   │   │   │       └── territoire.type.d.ts
 │   │   │   ├── suppressionCompteInactif
 │   │   │   │   ├── suppressionCompteInactif.cron.ts
 │   │   │   │   ├── suppressionCompteInactif.email.ts
 │   │   │   │   ├── suppressionCompteInactif.service.ts
 │   │   │   │   └── suppressionCompteInactif.type.d.ts
+│   │   │   ├── updateAndNotifySva
+│   │   │   │   ├── updateAndNotifySva.cron.ts
+│   │   │   │   ├── updateAndNotifySva.email.ts
+│   │   │   │   ├── updateAndNotifySva.repository.ts
+│   │   │   │   ├── updateAndNotifySva.service.ts
+│   │   │   │   └── updateAndNotifySva.type.d.ts
 │   │   │   ├── updateStatutDs
 │   │   │   │   ├── updateStatusDs.cron.ts
 │   │   │   │   ├── updateStatusDs.service.ts
@@ -1649,6 +1664,8 @@
 │   │   │   └── utils
 │   │   │       ├── DeclarationSejour.js
 │   │   │       ├── UploadFile.js
+│   │   │       ├── agrementFile.spec.ts
+│   │   │       ├── agrementFile.ts
 │   │   │       ├── agrementMenu.ts
 │   │   │       ├── cssHelper.js
 │   │   │       ├── csv.js
@@ -1677,7 +1694,8 @@
 │   │   │       ├── regex.js
 │   │   │       └── telephoneValidators.js
 │   │   ├── start.sh
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.mts
 │   ├── migrations
 │   │   ├── .dockerignore
 │   │   ├── .eslintrc.json
@@ -1759,7 +1777,9 @@
 │   │   │   │   ├── 20260313102118_front.agrement_update_statut_old_agrement.js
 │   │   │   │   ├── 20260318163921_ front.agrement__add_completion.js
 │   │   │   │   ├── 20260326094626_ front.agrement__add_completude.js
-│   │   │   │   └── 20260413162607_increase_agrement_files_category_length.js
+│   │   │   │   ├── 20260413162607_increase_agrement_files_category_length.js
+│   │   │   │   ├── 20260420153912_front.agrement__add-sva.js
+│   │   │   │   └── 20260427_add_agrement_files_contrainte_unicite.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -1781,6 +1801,7 @@
 │   │   │   │   ├── featureFlags.ts
 │   │   │   │   ├── file.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── organisme.ts
 │   │   │   │   ├── tracking.ts
 │   │   │   │   └── users.ts
 │   │   │   ├── dto
@@ -1852,6 +1873,8 @@
 │   │   │       ├── file.spec.ts
 │   │   │       ├── file.ts
 │   │   │       ├── index.ts
+│   │   │       ├── normalizeAdresse.spec.ts
+│   │   │       ├── normalizeAdresse.ts
 │   │   │       ├── request.spec.ts
 │   │   │       ├── request.ts
 │   │   │       ├── siret.spec.ts
@@ -2000,4 +2023,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-300 directories, 1707 files
+304 directories, 1726 files
