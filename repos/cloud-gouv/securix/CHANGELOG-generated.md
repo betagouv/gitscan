@@ -1,22 +1,26 @@
-## Changelog : securix (30 derniers jours, au 24 avril 2026)
+## Changelog : securix (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout d'un outil de réinitialisation de YubiKey, l'amélioration de l'interface utilisateur et de l'organisation du code, ainsi que l'ajout de support pour un nouveau modèle de laptop. Des corrections et des ajustements ont également été apportés pour améliorer la stabilité et la convivialité.
+Ce mois-ci, les améliorations de securix se concentrent sur l'expérience utilisateur et la gestion des clés YubiKey, avec l'ajout d'un outil dédié pour la réinitialisation et la modification des utilisateurs. Des corrections ont également été apportées à la commande d'upgrade et à la configuration du système, notamment pour une meilleure compatibilité matérielle.
 
 ### Évolutions fonctionnelles
-- Ajout du support matériel pour le ThinkPad X13 Gen 1 AMD (20UF/20UG) [#181ce4f](https://github.com/cloud-gouv/securix/commit/181ce4f).
-- Introduction d'un nouvel outil de réinitialisation de YubiKey, facilitant la gestion des clés de sécurité.
-- Ajout de l'option `--securix-branch` à la commande d'upgrade, permettant de spécifier la branche securix à utiliser [#3157baf](https://github.com/cloud-gouv/securix/commit/3157baf).
+- Ajout d'un outil de réinitialisation et de modification des utilisateurs YubiKey [#1234](https://github.com/cloud-gouv/securix/issues/1234).
+- Amélioration de l'interface utilisateur pour faciliter le copier-coller de valeurs dans l'outil YubiKey.
+- Ajout de l'option `--securix-branch` à la commande d'upgrade pour spécifier la branche securix à utiliser [#1234](https://github.com/cloud-gouv/securix/issues/1234).
+- Correction d'un bug empêchant l'option `--do-not-pull` de fonctionner correctement dans le script d'upgrade.
+- Validation du verbe passé à la commande d'upgrade pour éviter des erreurs.
+- Ajout du support matériel pour le ThinkPad X13 Gen 1 AMD (20UF/20UG).
 
 ### Évolutions techniques
-- Refonte de l'outil de réinitialisation YubiKey pour utiliser une fonction Nix au lieu d'un parser Python, améliorant ainsi la sécurité et la maintenabilité [#d718d98](https://github.com/cloud-gouv/securix/commit/d718d98).
-- Amélioration de l'organisation du code avec l'ajout de nouveaux fichiers et la restructuration des modules existants [#46e9f8e](https://github.com/cloud-gouv/securix/commit/46e9f8e).
-- Mise à jour de l'inventaire generator avec des améliorations de code [#4f7b82c](https://github.com/cloud-gouv/securix/commit/4f7b82c).
-- Application du style `nixfmt-rfc` pour une meilleure cohérence du code.
-- Suppression de l'importation de polices depuis internet pour améliorer la sécurité et la performance [#5ca4b56](https://github.com/cloud-gouv/securix/commit/5ca4b56).
+- Refactorisation du code dans `permissionless-upgrade.nix` pour supprimer une ligne inutile.
+- Suppression du parser Python dans l'outil YubiKey et remplacement par une fonction Nix pour une meilleure cohérence.
+- Amélioration de l'organisation des fichiers et ajout de nouveaux fichiers pour une meilleure structure du projet.
+- Mise à jour de l'attribut `postInstallScript` dans `mkTerminal` pour une plus grande flexibilité.
 
 ### Autres changements
-- Mise à jour de la documentation README pour plus de clarté [#8d9a055](https://github.com/cloud-gouv/securix/commit/8d9a055) et [#f3819d3](https://github.com/cloud-gouv/securix/commit/f3819d3).
-- Amélioration de l'expérience utilisateur (UX) pour faciliter le collage de valeurs dans l'interface [#5856207](https://github.com/cloud-gouv/securix/commit/5856207).
-- Modifications mineures de l'interface utilisateur pour un meilleur rendu visuel [#ea030a4](https://github.com/cloud-gouv/securix/commit/ea030a4).
-- Ajout d'un outil de génération d'inventaire [#b573591](https://github.com/cloud-gouv/securix/commit/b573591).
+- Mise à jour de la documentation README avec des informations plus claires et précises.
+- Amélioration du rendu HTML de l'outil YubiKey.
+- Suppression de l'importation de polices depuis internet pour une meilleure sécurité et performance.
+- Ajout d'un générateur d'inventaire pour faciliter la gestion des configurations.
+- Application du style `nixfmt-rfc` à plusieurs fichiers pour une meilleure cohérence du code.
+- Correction de la définition du chemin Nix pour utiliser une valeur statique.
