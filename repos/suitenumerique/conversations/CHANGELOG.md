@@ -12,6 +12,7 @@ and this project adheres to
 
 - ✨(back) add ODT parsing support
 - ✨(back) add self-documentation tool
+- ✅(front) add tests for SourceItem component
 
 ### Changed
 
@@ -25,12 +26,14 @@ and this project adheres to
 - ⚙️(back) get carbon data from albert api provider
 - ✨(tools): update descriptions
 - ✨(auth) add silent OIDC login
+- ⬆️(back) upgrade lxml and pypdf
 
 ### Fixed
 
 - 🐛(fix) new conversation in project button max size
 - 💄(ui) little fix margin top
 - 💄(ui) review ui for part of the project
+- 🐛(fix) Fix streaming crash with OpenAI-compatible APIs
 
 ## [0.0.15] - 2026-03-31
 

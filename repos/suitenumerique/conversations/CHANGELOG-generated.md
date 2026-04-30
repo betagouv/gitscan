@@ -1,30 +1,36 @@
-## Changelog : conversations (30 derniers jours, au 27 avril 2026)
+## Changelog : conversations (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de nouvelles fonctionnalités pour l'authentification, la gestion des documents et l'expérience utilisateur globale. L'ajout d'un outil de documentation automatique et l'amélioration de l'interface utilisateur pour les projets sont particulièrement notables. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance.
+Ce mois-ci, l'équipe a apporté des améliorations significatives à la sécurité, à la compatibilité des documents et à l'expérience utilisateur de l'application. L'ajout de l'authentification OIDC silencieuse, la prise en charge de nouveaux formats de documents (ODT) et l'optimisation de l'interface utilisateur sont les points forts de cette version. Des corrections de bugs ont également été implémentées pour améliorer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de l'authentification OIDC silencieuse [#1234](https://github.com/suitenumerique/conversations/issues/1234).
-- Prise en charge de l'analyse des fichiers ODT et amélioration du routage des documents.
-- Possibilité de copier le contenu formaté dans Word/Docs depuis l'interface.
-- Ajout d'un outil de documentation automatique pour le backend.
-- Possibilité de taper pendant que le LLM génère une réponse.
-- Amélioration de l'interface utilisateur pour la gestion des projets (UI et correction de bugs).
-- Nouvelle interface utilisateur pour l'en-tête.
-- Ajout d'un mode débogage pour le développement local.
+- Ajout de l'authentification OIDC silencieuse pour une connexion plus fluide [#1234](https://github.com/suitenumerique/conversations/issues/1234).
+- Prise en charge de l'analyse des documents ODT, permettant aux utilisateurs de charger et d'interagir avec ce format de fichier.
+- Amélioration de l'interface utilisateur avec un nouveau header.
+- Possibilité de taper pendant que le LLM génère une réponse, améliorant l'interactivité.
+- Ajout d'un outil d'auto-documentation pour faciliter la compréhension et l'utilisation de l'application.
+- Ajout d'un mode débogage pour le développement local, facilitant l'identification et la résolution des problèmes.
+- Amélioration de l'interface utilisateur pour les projets, avec des corrections de style et de mise en page.
+- Les liens sources s'ouvrent désormais dans un nouvel onglet.
+- Correction d'un bug qui empêchait la création de nouvelles conversations dans un projet.
+- Correction d'un bug qui provoquait un crash en streaming avec les APIs compatibles OpenAI.
 
 ### Évolutions techniques
-- Prise en charge des modèles open source.
-- Refactorisation des tests backend pour une meilleure organisation.
-- Mise à jour des dépendances backend et frontend pour corriger des vulnérabilités de sécurité (CVEs).
-- Récupération des données carbone depuis l'API Albert.
+- Refactorisation des tests pour améliorer leur organisation et leur maintenabilité.
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (CVE).
+- Mise à jour de `lxml` et `pypdf`.
+- Mise à jour de `pydantic-ai-slim` et d'autres packages.
+- Ajout de support pour les modèles open source.
+- Intégration des données carbone depuis l'API Albert.
+- Amélioration du routage des documents.
+- Ajout de tests unitaires pour le composant `SourceItem`.
 - Ajout de linting supplémentaire sur le frontend.
-- Suppression des outils de recherche legacy de la configuration du modèle.
+- Mise à jour des dépendances frontend et backend.
+- Force de la langue anglaise avant les tests du panneau gauche pour éviter des problèmes d'i18n.
 
 ### Autres changements
-- Correction de bugs mineurs d'interface utilisateur (taille du bouton "nouvelle conversation", liens sources ouvrant dans un nouvel onglet, marges, couleurs).
 - Mise à jour des chaînes de traduction (i18n).
-- Ajout d'une blague pour le 1er avril (désactivée).
-- Correction de problèmes de rendu Markdown en streaming.
-- Correction de bugs liés au thème sombre.
-- Correction de problèmes liés aux tests E2E (langue forcée à l'anglais).
+- Bump de la version à 0.0.15.
+- Mise à jour des descriptions des outils.
+- Correction d'un bug lié à un prank d'avril.
+- Correction de problèmes de style CSS pour les boutons et le sélecteur de modèle.
