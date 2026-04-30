@@ -1,15 +1,27 @@
 .
+├── CHANGELOG.md
 ├── README.md
 ├── assets
 │   ├── claw-code-go.png
 │   └── screenshot.png
+├── bench
+│   ├── results
+│   │   └── .gitkeep
+│   └── run_benches.sh
 ├── claw-code-go
 ├── cmd
-│   └── claw-code-go
+│   ├── claw-code-go
+│   │   └── main.go
+│   └── claw-store-init
 │       └── main.go
+├── docs
+│   ├── parity.md
+│   ├── plugin_signing.md
+│   └── review_rationale.md
 ├── go.mod
 ├── go.sum
 ├── hooks
+│   ├── cancel_test.go
 │   ├── config.go
 │   ├── exec.go
 │   ├── exec_unix.go
@@ -25,23 +37,43 @@
 │   ├── api
 │   │   ├── auth.go
 │   │   ├── auth_test.go
+│   │   ├── bench_test.go
 │   │   ├── client.go
 │   │   ├── client_telemetry_test.go
+│   │   ├── errors.go
+│   │   ├── httputil
+│   │   │   ├── httputil.go
+│   │   │   └── httputil_test.go
 │   │   ├── provider.go
 │   │   ├── providers
 │   │   │   ├── anthropic
 │   │   │   │   └── provider.go
 │   │   │   ├── bedrock
-│   │   │   │   └── provider.go
+│   │   │   │   ├── provider.go
+│   │   │   │   ├── provider_live_test.go
+│   │   │   │   └── provider_test.go
 │   │   │   ├── foundry
-│   │   │   │   └── provider.go
+│   │   │   │   ├── provider.go
+│   │   │   │   ├── provider_live_test.go
+│   │   │   │   └── provider_test.go
 │   │   │   ├── openai
 │   │   │   │   ├── provider.go
-│   │   │   │   └── reasoning_test.go
+│   │   │   │   ├── reasoning_test.go
+│   │   │   │   ├── responses.go
+│   │   │   │   └── responses_test.go
+│   │   │   ├── openaiwire
+│   │   │   │   ├── convert.go
+│   │   │   │   ├── stream.go
+│   │   │   │   └── types.go
 │   │   │   └── vertex
-│   │   │       └── provider.go
+│   │   │       ├── provider.go
+│   │   │       ├── provider_live_test.go
+│   │   │       └── provider_test.go
 │   │   ├── sse.go
 │   │   ├── sse_test.go
+│   │   ├── sseutil
+│   │   │   ├── toolcall.go
+│   │   │   └── toolcall_test.go
 │   │   └── types.go
 │   ├── apikit
 │   │   ├── doc.go
@@ -63,6 +95,14 @@
 │   │   ├── retry.go
 │   │   ├── retry_test.go
 │   │   ├── session_tracer.go
+│   │   ├── telemetry
+│   │   │   ├── otlp
+│   │   │   │   ├── exporter.go
+│   │   │   │   └── exporter_test.go
+│   │   │   └── otlpgrpc
+│   │   │       ├── env.go
+│   │   │       ├── exporter.go
+│   │   │       └── exporter_test.go
 │   │   ├── telemetry.go
 │   │   ├── telemetry_sinks.go
 │   │   └── telemetry_test.go
@@ -74,6 +114,8 @@
 │   │   └── storage.go
 │   ├── commands
 │   │   ├── auth.go
+│   │   ├── claudemd_loader.go
+│   │   ├── claudemd_loader_test.go
 │   │   ├── code_cmds.go
 │   │   ├── code_cmds_test.go
 │   │   ├── config_cmds.go
@@ -91,10 +133,14 @@
 │   │   ├── mcp.go
 │   │   ├── plugin_cmds.go
 │   │   ├── plugin_cmds_test.go
+│   │   ├── plugin_marketplace.go
+│   │   ├── plugin_marketplace_test.go
 │   │   ├── registry.go
 │   │   ├── registry_test.go
 │   │   ├── session_cmds.go
 │   │   ├── session_cmds_test.go
+│   │   ├── session_timeline.go
+│   │   ├── session_timeline_test.go
 │   │   ├── slash_test.go
 │   │   ├── status_cmds.go
 │   │   ├── status_cmds_test.go
@@ -104,7 +150,11 @@
 │   │   ├── bootstrap.go
 │   │   ├── bootstrap_test.go
 │   │   ├── harness.go
-│   │   └── manifest.go
+│   │   ├── manifest.go
+│   │   ├── plugin_install.go
+│   │   ├── plugin_install_test.go
+│   │   ├── timeline.go
+│   │   └── timeline_test.go
 │   ├── config
 │   │   ├── errors.go
 │   │   ├── errors_test.go
@@ -122,9 +172,11 @@
 │   │   ├── memory.go
 │   │   └── sysinfo.go
 │   ├── hooks
-│   │   └── hookstesting
-│   │       ├── helpers.go
-│   │       └── helpers_test.go
+│   │   ├── hookstesting
+│   │   │   ├── helpers.go
+│   │   │   └── helpers_test.go
+│   │   ├── runner.go
+│   │   └── runner_test.go
 │   ├── lsp
 │   │   ├── client.go
 │   │   ├── client_test.go
@@ -139,12 +191,19 @@
 │   │   ├── lifecycle_test.go
 │   │   ├── managed_proxy.go
 │   │   ├── managed_proxy_test.go
+│   │   ├── oauth
+│   │   │   ├── broker.go
+│   │   │   ├── broker_test.go
+│   │   │   ├── pkce.go
+│   │   │   ├── pkce_test.go
+│   │   │   └── storage.go
 │   │   ├── registry.go
 │   │   ├── resources.go
 │   │   ├── sdk_send_test.go
 │   │   ├── sdk_server.go
 │   │   ├── sdk_server_test.go
 │   │   ├── sse.go
+│   │   ├── sse_test.go
 │   │   ├── stdio.go
 │   │   ├── transport.go
 │   │   ├── transport_rpc.go
@@ -153,6 +212,10 @@
 │   │   ├── websocket.go
 │   │   └── websocket_test.go
 │   ├── permissions
+│   │   ├── classifier.go
+│   │   ├── dontask_auto_test.go
+│   │   ├── llm_classifier.go
+│   │   ├── llm_classifier_test.go
 │   │   ├── manager.go
 │   │   ├── mode.go
 │   │   ├── permissions_test.go
@@ -162,6 +225,15 @@
 │   │   ├── rule_parser.go
 │   │   ├── rule_parser_test.go
 │   │   └── rules.go
+│   ├── plugins
+│   │   ├── installer.go
+│   │   ├── installer_test.go
+│   │   ├── manager.go
+│   │   ├── manager_test.go
+│   │   ├── marketplace.go
+│   │   ├── marketplace_test.go
+│   │   ├── verifier.go
+│   │   └── verifier_test.go
 │   ├── runtime
 │   │   ├── compact.go
 │   │   ├── compact_test.go
@@ -169,6 +241,7 @@
 │   │   ├── config_test.go
 │   │   ├── conversation.go
 │   │   ├── conversation_dispatch_test.go
+│   │   ├── conversation_lifecycle_test.go
 │   │   ├── errors.go
 │   │   ├── errors_loop.go
 │   │   ├── errors_test.go
@@ -245,10 +318,14 @@
 │   │   ├── agent.go
 │   │   ├── agent_test.go
 │   │   ├── ask_user.go
+│   │   ├── ask_user_test.go
 │   │   ├── bash.go
 │   │   ├── bash_pipeline.go
 │   │   ├── bash_validation.go
 │   │   ├── bash_validation_test.go
+│   │   ├── computer_use.go
+│   │   ├── computer_use_exec.go
+│   │   ├── computer_use_test.go
 │   │   ├── config_tool.go
 │   │   ├── config_tool_test.go
 │   │   ├── cron_tools.go
@@ -268,6 +345,7 @@
 │   │   ├── plan_mode.go
 │   │   ├── plan_mode_test.go
 │   │   ├── remote_trigger.go
+│   │   ├── remote_trigger_test.go
 │   │   ├── repl.go
 │   │   ├── send_message.go
 │   │   ├── send_message_test.go
@@ -307,16 +385,75 @@
 │   │   ├── permission_policy_decisions.golden
 │   │   └── telemetry_session_tracer.golden
 │   └── parity_test.go
+├── pkg
+│   ├── api
+│   │   ├── api_smoke_test.go
+│   │   ├── auth.go
+│   │   ├── client.go
+│   │   ├── hooks
+│   │   │   └── hooks.go
+│   │   ├── lsp
+│   │   │   └── lsp.go
+│   │   ├── mcp
+│   │   │   ├── mcp.go
+│   │   │   └── oauth
+│   │   │       └── oauth.go
+│   │   ├── provider.go
+│   │   ├── providers
+│   │   │   ├── anthropic
+│   │   │   │   └── provider.go
+│   │   │   ├── bedrock
+│   │   │   │   └── provider.go
+│   │   │   ├── foundry
+│   │   │   │   └── provider.go
+│   │   │   ├── openai
+│   │   │   │   └── provider.go
+│   │   │   └── vertex
+│   │   │       └── provider.go
+│   │   ├── sse.go
+│   │   ├── task
+│   │   │   └── task.go
+│   │   ├── team
+│   │   │   └── team.go
+│   │   ├── tools
+│   │   │   ├── builtins.go
+│   │   │   ├── computer_use.go
+│   │   │   ├── cron.go
+│   │   │   ├── extended_test.go
+│   │   │   ├── lsp.go
+│   │   │   ├── mcp.go
+│   │   │   ├── plan_mode.go
+│   │   │   ├── simple.go
+│   │   │   ├── skill.go
+│   │   │   ├── tasks.go
+│   │   │   ├── teams.go
+│   │   │   ├── tool_search.go
+│   │   │   └── workers.go
+│   │   ├── types.go
+│   │   └── worker
+│   │       └── worker.go
+│   ├── apikit
+│   │   └── apikit.go
+│   ├── permissions
+│   │   ├── permissions.go
+│   │   └── permissions_test.go
+│   └── runtime
+│       ├── compact.go
+│       ├── provider.go
+│       └── provider_test.go
 ├── plugin
 │   ├── errors.go
 │   ├── exec_unix.go
 │   ├── exec_windows.go
 │   ├── kind.go
+│   ├── lifecycle_hooks_test.go
 │   ├── manager.go
 │   ├── manifest.go
 │   ├── plugin.go
 │   ├── plugin_test.go
 │   ├── registry.go
+│   ├── remote_marketplace.go
+│   ├── remote_marketplace_test.go
 │   ├── tool.go
 │   ├── tool_test.go
 │   └── validate.go
@@ -332,4 +469,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-44 directories, 290 files
+75 directories, 396 files
