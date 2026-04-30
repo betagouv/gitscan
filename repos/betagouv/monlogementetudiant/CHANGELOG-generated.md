@@ -1,38 +1,39 @@
-## Changelog : monlogementetudiant (30 derniers jours, au 24 avril 2026)
+## Changelog : monlogementetudiant (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration significative de l'administration des logements et des résidences, notamment avec l'ajout d'un outil d'import CSV avancé avec suivi de progression.  Des améliorations ont également été apportées à l'interface utilisateur, à la recherche et à la gestion des partenaires. Plusieurs corrections de bugs et optimisations ont été réalisées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'administration des logements et des gestionnaires, avec l'ajout de nouvelles fonctionnalités d'import CSV, d'export de données et de gestion des utilisateurs. Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment la refonte de la page de détails des logements et l'ajout de filtres et de widgets pour faciliter la recherche. Des corrections de bugs et des optimisations de performance ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- **Import CSV Amélioré :** Ajout d'un outil d'import CSV pour les résidences avec suivi de progression via SSE, aperçu des données et résumé du propriétaire. [#1234](https://github.com/betagouv/monlogementetudiant/issues/1234)
-- **Filtres de recherche :** Possibilité de filtrer les actualités disponibles.
-- **Widgets Calculatrice/Simulateur Aides :** Intégration de nouveaux widgets pour aider les étudiants à calculer les aides auxquelles ils peuvent prétendre.
-- **Affichage des logements :** Amélioration de l'affichage des logements, incluant un badge pour les disponibilités inconnues.
-- **Partenaires :** Importation et normalisation des noms des partenaires.
-- **Visite Virtuelle :** Ajout de la possibilité d'intégrer des visites virtuelles via un lien YouTube.
-- **Demande Sociale :** Intégration de la gestion des demandes sociales.
-- **Informations Résidences :** Possibilité d'éditer la superficie et le prix des logements lors de la modification.
-- **Page Détails Logement :** Refonte de la page de détails des logements avec un système d'onglets.
-- **Gestion des propriétaires :** Possibilité de lier un propriétaire à un logement depuis l'administration.
-- **Statistiques Administration :** Ajout de statistiques pour l'administration.
-- **Documents :** Affichage de tous les documents associés à un logement.
-- **Fac Habitat :** Ajout de la gestion de Fac Habitat, incluant la validation des données importées.
+- **Import CSV:** Ajout d'une fonctionnalité d'import CSV pour les logements, avec une prévisualisation, un résumé du propriétaire et une gestion des erreurs améliorée [#1234](https://github.com/betagouv/monlogementetudiant/issues/1234).
+- **Export CSV:** Possibilité d'exporter la liste des comptes gestionnaires en format CSV.
+- **Gestion des utilisateurs:** Amélioration de la gestion des propriétaires et des gestionnaires, avec la possibilité de lier un propriétaire à un compte administrateur.
+- **Page de détails des logements:** Refonte complète de la page de détails des logements avec un affichage en onglets pour une meilleure organisation des informations.
+- **Filtres et Widgets:** Ajout de nouveaux filtres et widgets pour affiner la recherche de logements (superficie, besoin de logement social, etc.).
+- **Visite virtuelle:** Intégration de la possibilité d'ajouter un lien vers une visite virtuelle (3D) pour les logements.
+- **Affichage des documents:** Possibilité d'afficher tous les documents associés à un logement.
+- **Statistiques d'administration:** Ajout de statistiques pour l'administration, permettant de suivre l'activité et les données clés.
+- **Demande sociale:** Ajout de la gestion des demandes de logement social.
+- **Nouvelles options de recherche:** Ajout de filtres pour les logements avec des équipements spécifiques (wifi, cuisine, salle de bain).
+- **Affichage des aides:** Ajout de widgets pour simuler les aides possibles.
+- **Informations sur les logements:** Ajout de l'affichage de la superficie et du type de logement.
+- **Politique d'administration des gestionnaires:** Ajout d'une politique d'administration pour les gestionnaires.
 
 ### Évolutions techniques
-- **Optimisation des migrations :** Amélioration de l'application des migrations de base de données.
-- **Mise à jour Next.js :** Mise à jour vers la version 16.2 de Next.js.
-- **S3 Upload :** Implémentation de l'upload d'images vers Amazon S3.
-- **Indexation PostGIS :** Ajout d'indexation PostGIS pour améliorer les performances des requêtes géospatiales.
-- **Suppression de liens Sitemaps :** Suppression des liens vers les sitemaps, désormais gérés sur le CMS.
-- **Métadonnées :** Création de métadonnées pour chaque page afin d'éviter la duplication et d'améliorer le SEO.
-- **Healthcheck Villes :** Ajout d'un healthcheck pour les données des villes.
-- **Refactoring :** Plusieurs refactorings de code ont été effectués pour améliorer la maintenabilité.
+- **Mise à jour Drizzle ORM:** Mise à jour de Drizzle ORM vers la version 0.45.2.
+- **Optimisation des migrations:** Optimisation des migrations de la base de données.
+- **Indexation PostGIS:** Amélioration de l'indexation PostGIS pour optimiser les requêtes géospatiales.
+- **Refonte de l'architecture:** Refonte de certaines parties de l'architecture pour améliorer la maintenabilité et la performance.
+- **Amélioration des tests:** Ajout de tests d'intégration et correction de tests existants.
+- **Mise à jour Next.js:** Mise à jour de Next.js vers la version 16.2.
+- **S3 Upload:** Implémentation de l'upload d'images vers S3.
+- **Healthcheck:** Ajout d'un healthcheck pour les villes.
+- **Canonical URLs & Metadata:** Ajout de canonical URLs et de metadata pour améliorer le SEO.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation et du fichier README.
-- **Tests :** Ajout et amélioration des tests unitaires et E2E.
-- **Wording :** Corrections et améliorations du wording sur plusieurs parties de l'application.
-- **Correction de bugs :** Correction de nombreux bugs mineurs et améliorations de la stabilité.
-- **Amélioration de l'UX/UI :** Diverses améliorations de l'expérience utilisateur et de l'interface utilisateur.
-- **Sentry :** Réactivation de Sentry pour le suivi des erreurs.
-- **robots.txt :** Ajout d'un fichier robots.txt pour contrôler l'indexation par les moteurs de recherche.
+- **Documentation:** Mise à jour de la documentation.
+- **Nettoyage du code:** Suppression de code inutile et amélioration de la lisibilité du code.
+- **Wording:** Corrections et améliorations du wording dans l'interface utilisateur.
+- **Configuration:** Mise à jour de la configuration de l'environnement de développement et de production.
+- **Correction de bugs:** Correction de divers bugs et améliorations de la stabilité de l'application.
+- **Amélioration des logs:** Ajout de logs plus détaillés pour faciliter le débogage.
+- **Suppression des sitemaps:** Suppression des liens vers les sitemaps, car ils sont maintenant gérés par le CMS.

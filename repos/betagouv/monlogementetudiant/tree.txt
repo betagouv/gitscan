@@ -44,8 +44,6 @@
 │   │   │   ├── geocoder.test.ts
 │   │   │   └── matomo.test.ts
 │   │   ├── db-utils.ts
-│   │   ├── db.ts
-│   │   ├── geocoder.ts
 │   │   ├── matomo.ts
 │   │   └── scalingo-backup.ts
 │   ├── types.ts
@@ -83,6 +81,8 @@
 │   ├── 0026_externalsource_cascade.sql
 │   ├── 0027_import_jobs.sql
 │   ├── 0028_wild_punisher.sql
+│   ├── 0029_accommodation-addresses.sql
+│   ├── 0030_bailleur_roles_permissions.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -113,6 +113,8 @@
 │       ├── 0026_snapshot.json
 │       ├── 0027_snapshot.json
 │       ├── 0028_snapshot.json
+│       ├── 0029_snapshot.json
+│       ├── 0030_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -195,6 +197,8 @@
 │   │   ├── admin-owner-link.integration.test.ts
 │   │   ├── admin-users.integration.test.ts
 │   │   ├── alerts.integration.test.ts
+│   │   ├── bailleur-permissions.test.ts
+│   │   ├── bailleur-users.integration.test.ts
 │   │   ├── bailleur.integration.test.ts
 │   │   ├── df-redirect.integration.test.ts
 │   │   ├── dossier-facile.integration.test.ts
@@ -207,6 +211,7 @@
 │   │   │   ├── test-db-module.ts
 │   │   │   └── test-db.ts
 │   │   ├── mattermost.integration.test.ts
+│   │   ├── multi-address.integration.test.ts
 │   │   ├── password-verify.integration.test.ts
 │   │   ├── resolve-city.integration.test.ts
 │   │   ├── role-isolation.integration.test.ts
@@ -249,11 +254,22 @@
 │   │   │   │       │   ├── nouvelle-residence
 │   │   │   │       │   │   └── page.tsx
 │   │   │   │       │   └── page.tsx
-│   │   │   │       └── tableau-de-bord
-│   │   │   │           ├── chart.tsx
-│   │   │   │           ├── get-bailleur-dashboard-page-context.ts
+│   │   │   │       ├── tableau-de-bord
+│   │   │   │       │   ├── chart.tsx
+│   │   │   │       │   ├── get-bailleur-dashboard-page-context.ts
+│   │   │   │       │   ├── page.tsx
+│   │   │   │       │   └── tableau-de-bord.module.css
+│   │   │   │       └── utilisateurs
+│   │   │   │           ├── [id]
+│   │   │   │           │   ├── edit-bailleur-user-form.tsx
+│   │   │   │           │   └── page.tsx
+│   │   │   │           ├── get-users-page-context.ts
+│   │   │   │           ├── nouveau
+│   │   │   │           │   ├── new-bailleur-user-form.tsx
+│   │   │   │           │   └── page.tsx
 │   │   │   │           ├── page.tsx
-│   │   │   │           └── tableau-de-bord.module.css
+│   │   │   │           ├── users-list.module.css
+│   │   │   │           └── users-list.tsx
 │   │   │   └── administration
 │   │   │       ├── administration.module.css
 │   │   │       ├── bailleurs
@@ -421,12 +437,18 @@
 │   │   │   │           └── upload
 │   │   │   │               └── route.ts
 │   │   │   ├── admin
-│   │   │   │   └── import
-│   │   │   │       └── csv
-│   │   │   │           ├── execute
-│   │   │   │           │   └── route.ts
-│   │   │   │           └── preview
-│   │   │   │               └── route.ts
+│   │   │   │   ├── comptes-gestionnaires
+│   │   │   │   │   └── export
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── import
+│   │   │   │   │   └── csv
+│   │   │   │   │       ├── execute
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       └── preview
+│   │   │   │   │           └── route.ts
+│   │   │   │   └── residences
+│   │   │   │       └── export
+│   │   │   │           └── route.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...all]
 │   │   │   │       └── route.ts
@@ -520,7 +542,11 @@
 │   │   │   ├── residence-filters.tsx
 │   │   │   ├── residence-list.tsx
 │   │   │   ├── update-residence-list.module.css
-│   │   │   └── update-residence-list.tsx
+│   │   │   ├── update-residence-list.tsx
+│   │   │   └── users
+│   │   │       ├── bailleur-user-form.tsx
+│   │   │       ├── user-card.module.css
+│   │   │       └── user-card.tsx
 │   │   ├── budget-simulation
 │   │   │   ├── budget-section.tsx
 │   │   │   ├── budget-simulator-context.tsx
@@ -788,6 +814,7 @@
 │   │   ├── use-admin-user.ts
 │   │   ├── use-admin-users.ts
 │   │   ├── use-alert-accommodation.ts
+│   │   ├── use-bailleur-users.ts
 │   │   ├── use-candidatures.ts
 │   │   ├── use-cities.ts
 │   │   ├── use-create-alert.ts
@@ -812,6 +839,7 @@
 │   │   ├── use-update-residence-details.ts
 │   │   └── use-upload-residence-images.ts
 │   ├── i18n
+│   │   ├── locales.ts
 │   │   └── request.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
@@ -841,6 +869,8 @@
 │   │   │   ├── delete-alert.ts
 │   │   │   ├── get-alerts.ts
 │   │   │   └── update-alert.ts
+│   │   ├── bailleur-users
+│   │   │   └── bailleur-user-form.ts
 │   │   ├── credentials-sign-in
 │   │   │   └── credentials-sign-in.ts
 │   │   ├── dossier-facile
@@ -872,12 +902,15 @@
 │   │   │   └── get-accommodations.ts
 │   │   ├── bailleur
 │   │   │   ├── get-accommodation-my-by-id.ts
+│   │   │   ├── get-bailleur-context.ts
 │   │   │   ├── get-my-accommodations.ts
-│   │   │   └── get-owner-for-user.ts
+│   │   │   ├── get-owner-for-user.ts
+│   │   │   └── permissions.ts
 │   │   ├── db
 │   │   │   ├── index.ts
 │   │   │   └── schema
 │   │   │       ├── academies.ts
+│   │   │       ├── accommodation-addresses.ts
 │   │   │       ├── accommodations.ts
 │   │   │       ├── activity-log.ts
 │   │   │       ├── admin-owner-links.ts
@@ -962,6 +995,7 @@
 │       ├── calculateAvailability.ts
 │       ├── canonical.ts
 │       ├── date-helpers.ts
+│       ├── dayjs.ts
 │       ├── debugPromiseTiming.ts
 │       ├── formatDate.ts
 │       ├── formatRelativeTime.ts
@@ -979,4 +1013,4 @@
 │       └── widget-resize.ts
 ├── tsconfig.json
 └── vitest.config.ts
-216 directories, 765 files
+225 directories, 790 files
