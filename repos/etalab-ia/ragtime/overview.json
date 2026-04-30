@@ -6,19 +6,17 @@
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Recherche",
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Intelligence Artificielle & NLP"
   ],
-  "audience": [
-    "Professionnels",
-    "Agents de l'Administration"
-  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "albert-client",
-    "chainlit",
+    "chainlit-chat",
     "httpx",
     "pydantic",
+    "openai",
     "supabase"
   ],
   "components": [
@@ -30,12 +28,11 @@
   "auth": {
     "methods": [
       "oauth2"
-    ]
+    ],
+    "providers": []
   },
-  "tests": "Pytest",
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
+  "tests": "Pytest, Respx",
+  "workflows": [],
   "lastActivity": "2026-04-20T00:00:00Z",
   "status": "active",
   "license": "MIT",
