@@ -1,18 +1,14 @@
-## Changelog : menshen (30 derniers jours, au 22 avril 2026)
+## Changelog : menshen (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation de la fonctionnalité d'échange de jetons OAuth 2.0, une fonctionnalité clé du projet.  Des refactorings ont également été effectués pour préparer l'arrivée de cette nouvelle fonctionnalité et améliorer la maintenance du code.
+Les dernières évolutions se concentrent sur la mise en place de la fonctionnalité d'échange de jetons OAuth 2.0, qui constitue le cœur de métier de Menshen. Des refactorings ont été effectués pour préparer l'implémentation et organiser le code, notamment en déplaçant les applications liées à l'échange de jetons vers un nouveau module dédié.
 
 ### Évolutions fonctionnelles
-- Implémentation d'une première version de l'échange de jetons OAuth 2.0. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implémentation en cours)
+- Implémentation d'une première version de l'échange de jetons OAuth 2.0. [#9c84614](https://github.com/suitenumerique/menshen/commit/9c84614)
+- Préparation du code pour l'échange de jetons en déplaçant l'application `tx` vers le module `token_exchange`. [#cfdc37f](https://github.com/suitenumerique/menshen/commit/cfdc37f), [#2396221](https://github.com/suitenumerique/menshen/commit/2396221)
 
 ### Évolutions techniques
-- Refactoring de l'application `tx` et déplacement vers un nouveau module `token_exchange` pour une meilleure organisation du code.
-- Mise à jour de la version de Python utilisée pour le packaging.
-- Suppression de l'application API, probablement en anticipation de la nouvelle fonctionnalité d'échange de jetons.
-- Fixation de la version de PostgreSQL à 16 pour assurer la stabilité de l'environnement.
+- Refactoring du code pour organiser les applications liées à l'échange de jetons. [#cfdc37f](https://github.com/suitenumerique/menshen/commit/cfdc37f), [#2396221](https://github.com/suitenumerique/menshen/commit/2396221)
 
 ### Autres changements
-- Mise à jour des dépendances GitHub Actions.
-- Mise à jour de l'image Docker `ghcr.io/astral-sh/uv` vers la version v0.11.2.
-- Mise à jour des dépendances Python.
+- Mise à jour des dépendances Python et Docker (Keycloak, Uvicorn, GitHub Actions). Ces mises à jour sont gérées automatiquement par Renovate.
