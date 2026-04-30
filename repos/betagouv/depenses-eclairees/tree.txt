@@ -10,35 +10,6 @@
 ├── LICENSE
 ├── Procfile
 ├── README.md
-├── app
-│   ├── __init__.py
-│   ├── ai_models
-│   │   ├── __init__.py
-│   │   └── config_albert.py
-│   ├── config_data.py
-│   ├── data
-│   │   ├── __init__.py
-│   │   └── sql
-│   │       ├── __init__.py
-│   │       └── sql.py
-│   ├── file_manager
-│   │   ├── __init__.py
-│   │   ├── cleaner.py
-│   │   ├── loader.py
-│   │   ├── statistics.py
-│   │   └── utils_file_manager.py
-│   ├── grist
-│   │   ├── __init__.py
-│   │   └── grist_api.py
-│   ├── models
-│   │   ├── __init__.py
-│   │   ├── marche.py
-│   │   └── tiers.py
-│   ├── processor
-│   │   ├── __init__.py
-│   │   ├── select_relevant_content.py
-│   │   └── synthesis.py
-│   └── utils.py
 ├── ci.env
 ├── cron.json
 ├── docia
@@ -100,6 +71,7 @@
 │   │   │   │   └── sous_traitance.py
 │   │   │   ├── attributes_query.py
 │   │   │   ├── classifier.py
+│   │   │   ├── cleaner.py
 │   │   │   ├── pdf_drawings.py
 │   │   │   ├── post_processing_llm.py
 │   │   │   └── text_extraction
@@ -157,6 +129,10 @@
 │   │   ├── 0028_document_analyzed_at_externaldocumentmetadata_date_and_more.py
 │   │   ├── 0029_fileinfo_root_external_id.py
 │   │   ├── 0030_document_nb_pages.py
+│   │   ├── 0031_groupscope.py
+│   │   ├── 0032_data_20260421_1042.py
+│   │   ├── 0033_remove_engagementscope_groups.py
+│   │   ├── 0034_alter_engagementscope_options_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions
@@ -223,9 +199,6 @@
 ├── manage.py
 ├── poetry.lock
 ├── pyproject.toml
-├── scripts
-│   ├── from_scalingo_to_local_sql.py
-│   └── maj_grist_from_scalingo.py
 ├── static
 │   ├── css
 │   │   └── main.css
@@ -234,17 +207,16 @@
 ├── test.env
 ├── tests
 │   ├── __init__.py
-│   ├── app
-│   │   ├── __init__.py
-│   │   └── test_utils.py
 │   ├── conftest.py
 │   ├── docia
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── test_document_admin.py
+│   │   │   ├── test_engagement_admin.py
 │   │   │   ├── test_engagement_scope_admin.py
-│   │   │   └── test_group_admin.py
+│   │   │   ├── test_group_admin.py
+│   │   │   └── test_tracking_event_admin.py
 │   │   ├── common
 │   │   │   ├── __init__.py
 │   │   │   └── test_models.py
@@ -301,7 +273,7 @@
 │   │   │   │       │       ├── checkbox.docx
 │   │   │   │       │       ├── checkbox.pdf
 │   │   │   │       │       ├── generate_docs.sh
-│   │   │   │       │       ├── generate_excel_assets.py
+│   │   │   │       │       ├── generate_excels.sh
 │   │   │   │       │       ├── lettre-ocr.pdf
 │   │   │   │       │       ├── lettre.doc
 │   │   │   │       │       ├── lettre.docx
@@ -362,10 +334,12 @@
 │   │   ├── __init__.py
 │   │   ├── data.py
 │   │   ├── file_processing.py
+│   │   ├── tracking.py
 │   │   └── users.py
 │   └── utils.py
 └── tests_e2e
     ├── __init__.py
+    ├── grist_api.py
     ├── test_quality_acte_engagement.py
     ├── test_quality_ccap.py
     ├── test_quality_classification.py
@@ -381,4 +355,4 @@
     │   │   └── lettre.md
     │   └── test_ocr_api.py
     └── utils.py
-77 directories, 306 files
+67 directories, 290 files

@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees",
   "name": "depenses-eclairees",
-  "description": "Ce projet vise à éclaircir les dépenses publiques en extrayant et en analysant des informations à partir de divers documents financiers. Il utilise l'OCR et le traitement du langage naturel pour identifier des données clés et les rendre accessibles. L'objectif est d'améliorer la transparence et la compréhension des finances publiques.",
+  "description": "Ce projet vise à analyser et extraire des informations pertinentes à partir de documents financiers, tels que des factures et des contrats, afin de promouvoir la transparence des dépenses publiques. Il utilise des techniques d'OCR et de traitement du langage naturel pour identifier et structurer les données clés.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -14,67 +14,69 @@
     "Sécurité & Conformité",
     "Données & Schémas"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels",
+    "Associations"
+  ],
   "dependencies": [
     "Django",
     "Poetry",
     "psycopg",
+    "djangorestframework",
+    "celery",
+    "django-environ",
+    "whitenoise",
+    "django-celery-results",
+    "gunicorn",
+    "django-dsfr",
+    "mozilla-django-oidc",
+    "django-storages",
+    "moto",
+    "docx2txt",
     "python-dotenv",
-    "faiss-cpu",
+    "jupyter",
+    "olefile",
+    "openai",
     "openpyxl",
+    "pandas",
     "Pillow",
-    "PyCryptodome",
     "PyMuPDF",
     "python-magic",
+    "tiktoken",
+    "tqdm",
     "tesserocr",
     "unidecode",
     "xlrd",
     "schwifty",
-    "celery",
-    "whitenoise",
-    "django-environ",
-    "mozilla-django-oidc",
-    "django-dsfr",
-    "django-storages",
-    "moto",
-    "openai",
-    "tiktoken",
-    "tqdm",
-    "docx2txt",
-    "ipykernel",
-    "jupyter",
-    "olefile",
-    "scikit-learn"
+    "tabulate",
+    "odfpy"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
-    "Python (scripts & backend)",
     "Django",
+    "Python (scripts & backend)",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "saml"
     ],
     "providers": [
-      "mozilla-django-oidc"
+      "Google",
+      "Microsoft"
     ]
   },
   "tests": [
     "pytest",
-    "pytest-cov",
-    "pytest-django",
-    "pytest-factoryboy",
-    "pytest-responses",
-    "pytest-ruff"
+    "pytest-cov"
   ],
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-16T18:22:54+02:00",
+  "lastActivity": "2026-04-29T16:01:29+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -90,7 +92,6 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Intelligence Artificielle & NLP",
-    "Subventions & Finances publiques"
+    "Intelligence Artificielle & NLP"
   ]
 }
