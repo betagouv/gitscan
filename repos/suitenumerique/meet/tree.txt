@@ -76,7 +76,9 @@
 │   │   │   ├── Marianne-Regular_Italic-subset.woff2
 │   │   │   ├── Marianne-Thin-subset.woff2
 │   │   │   └── Marianne-Thin_Italic-subset.woff2
-│   │   └── logo.svg
+│   │   ├── logo.svg
+│   │   └── nginx
+│   │       └── default.conf
 │   ├── files
 │   │   ├── etc
 │   │   │   └── nginx
@@ -160,6 +162,53 @@
 │   └── gitlint_emoji.py
 ├── renovate.json
 └── src
+    ├── addons
+    │   └── outlook
+    │       ├── .eslintrc.json
+    │       ├── assets
+    │       │   ├── add-16.png
+    │       │   ├── add-32.png
+    │       │   ├── add-80.png
+    │       │   ├── icon-128.png
+    │       │   ├── icon-16.png
+    │       │   ├── icon-32.png
+    │       │   ├── icon-64.png
+    │       │   ├── icon-80.png
+    │       │   ├── logo-filled.png
+    │       │   ├── settings-16.png
+    │       │   ├── settings-32.png
+    │       │   └── settings-80.png
+    │       ├── babel.config.json
+    │       ├── manifest.xml
+    │       ├── package-lock.json
+    │       ├── package.json
+    │       ├── src
+    │       │   ├── commands
+    │       │   │   ├── commands.html
+    │       │   │   └── commands.js
+    │       │   ├── common
+    │       │   │   ├── api.js
+    │       │   │   ├── helpers.js
+    │       │   │   ├── index.js
+    │       │   │   ├── messageBuilder.js
+    │       │   │   ├── polling.js
+    │       │   │   ├── session.js
+    │       │   │   ├── transitDialog.js
+    │       │   │   ├── transitToken.js
+    │       │   │   └── urls.js
+    │       │   ├── styles
+    │       │   │   └── spinner.css
+    │       │   ├── success
+    │       │   │   ├── success.html
+    │       │   │   └── success.js
+    │       │   ├── taskpane
+    │       │   │   ├── taskpane.css
+    │       │   │   ├── taskpane.html
+    │       │   │   └── taskpane.js
+    │       │   └── transit
+    │       │       ├── transit.html
+    │       │       └── transit.js
+    │       └── webpack.config.js
     ├── agents
     │   ├── Dockerfile
     │   ├── exceptions.py
@@ -991,6 +1040,8 @@
     │   └── meet
     │       ├── Chart.yaml
     │       ├── README.md
+    │       ├── files
+    │       │   └── outlook-manifest.xml.tpl
     │       ├── generate-readme.sh
     │       ├── templates
     │       │   ├── _helpers.tpl
@@ -1005,6 +1056,8 @@
     │       │   ├── celery_summary_backend_deployment.yaml
     │       │   ├── celery_transcribe_deployment.yaml
     │       │   ├── extra-objects.yaml
+    │       │   ├── frontend_addons_cm.yml
+    │       │   ├── frontend_addons_manifest_cm.yml
     │       │   ├── frontend_deployment.yaml
     │       │   ├── frontend_svc.yaml
     │       │   ├── ingress.yaml
@@ -1145,4 +1198,4 @@
             └── models
                 ├── __init__.py
                 └── test_whisper_x_response.py
-216 directories, 931 files
+228 directories, 972 files
