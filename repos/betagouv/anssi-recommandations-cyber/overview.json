@@ -4,22 +4,21 @@
   "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.",
   "language": "Python",
   "features": [
-    "Recherche",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Recherche & Filtres"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "cryptography",
     "fastapi",
-    "httpx",
     "openai",
     "psycopg2-binary",
     "requests",
     "sentry-sdk",
-    "slowapi",
-    "starlette",
-    "uvicorn"
+    "uvicorn",
+    "pnpm"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,11 +32,12 @@
     ]
   },
   "tests": [
-    "pytest",
-    "mypy"
+    "pytest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-22T10:07:41+02:00",
+  "workflows": [
+    "CI"
+  ],
+  "lastActivity": "2026-04-29T15:51:11+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
