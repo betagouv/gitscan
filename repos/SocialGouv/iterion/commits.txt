@@ -1,3 +1,57 @@
+2026-04-29T20:34:43Z - 86f3ec2 - devthejo : feat(interaction): compact persisted conversation at ask_user pause
+2026-04-29T20:29:15Z - f5bfdba - devthejo : refactor(interaction): centralize ask_user contract keys in delegate
+2026-04-29T20:08:00Z - 43aece5 - devthejo : docs(resume): document the ask_user pause/resume mechanics
+2026-04-29T20:06:51Z - dbda96f - devthejo : test(interaction): multi-turn ask_user accumulates history (L3)
+2026-04-29T20:03:51Z - 1338293 - devthejo : feat(interaction): persist LLM conversation across ask_user pauses (claw)
+2026-04-29T19:19:23Z - 8d46b8e - devthejo : feat(interaction): native ask_user MCP tool for claude_code delegate
+2026-04-29T18:33:31Z - adc5dca - devthejo : chore(vendor): refresh claw-code-go (P0+P1+P2 parity)
+2026-04-29T18:12:00Z - bf3d4cb - devthejo : feat(interaction): wire claw-code-go's native ask_user tool to iterion's pause/resume
+2026-04-29T17:06:30Z - 36b1a3e - devthejo : feat(interaction): claw backend honors interaction protocol; LLM escalation works for any backend
+2026-04-29T16:49:26Z - b0577c3 - devthejo : feat(example): false-positive resistance in vibe_review_alternating
+2026-04-29T16:39:45Z - aec0364 - devthejo : feat(dsl): compute node, when expressions, loop/run namespaces
+2026-04-29T12:28:35Z - c981b90 - devthejo : refactor: consolidate Go layout under pkg/
+2026-04-29T11:57:12Z - fac626e - devthejo : docs: drop accomplished plans
+2026-04-29T11:55:47Z - dd177cd - devthejo : feat: close 4 deferred roadmap items — coverage, sigstore, compaction
+2026-04-29T10:42:50Z - 4945a7e - devthejo : feat: recovery dispatch + cost tracking + tool classifier + Prometheus exporter
+2026-04-29T08:42:22Z - 535122c - devthejo : fix(review): apply all 16 findings from cross-repo review
+2026-04-29T06:55:10Z - 473d040 - devthejo : docs: roadmap for next session — 10 tracks ranked by impact
+2026-04-29T06:32:57Z - 90a3483 - devthejo : feat(editor): contextual Inspector, inline diagnostics, ref autocomplete, structured diagnostics
+2026-04-29T06:23:40Z - b1d2c1a - devthejo : chore(gitignore): drop accidentally-committed scheduled_tasks.lock
+2026-04-28T20:40:24Z - 0fac41b - devthejo : feat(tool): expose claw read_image / screenshot via RegisterClawComputerUse
+2026-04-28T20:08:48Z - e97a1cc - devthejo : docs(e2e): coverage matrix mapping each feature to its test home
+2026-04-28T18:59:06Z - 361336d - devthejo : docs(handoff): mark final wiring complete
+2026-04-28T18:50:17Z - f216900 - devthejo : docs(handoff): mark all 7 deferred features delivered
+2026-04-28T18:15:35Z - 0eda5ee - devthejo : docs(handoff): plan de reprise pour les 7 features differees
+2026-04-28T18:11:20Z - 038d21d - devthejo : examples: 3 fixtures showcasing bedrock/hooks/permission features
+2026-04-28T17:51:01Z - d28fc7c - devthejo : perf(model): per-key sync.Once on Registry.Resolve
+2026-04-28T16:42:22Z - 49e04c6 - devthejo : docs(port): mark Phase 5/6/7 complete + refresh vendor for permissions diff
+2026-04-28T16:31:16Z - 4824d3d - devthejo : feat(model): wire bedrock/vertex/foundry provider factories
+2026-04-28T16:12:13Z - 8303b01 - devthejo : docs(port): claw parity progress + resume plan
+2026-04-28T16:08:14Z - 28aa810 - devthejo : feat(model): retry on claw APIError + fix Anthropic prompt cache observability
+2026-04-28T15:42:22Z - 493af5a - devthejo : test(live): long-context end-to-end via claw + Anthropic Haiku 4.5
+2026-04-28T15:40:00Z - 980ef58 - devthejo : test(live): MCP integration end-to-end via claw + stdio server
+2026-04-28T15:31:49Z - cbc1115 - devthejo : feat(claw): registerable built-in tools, reasoning_effort observability, cache marshal contract
+2026-04-28T14:39:41Z - e2af16b - devthejo : test(live): add claw comprehensive coverage + fix provider-prefix bug
+2026-04-28T14:10:37Z - bae0751 - devthejo : test(live): add session-inherit validation test
+2026-04-28T10:18:18Z - 220f67a - devthejo : fix(live-tests): wire model field, repair codex/opus drift, switch to Opus 4.7 + GPT 5.5
+2026-04-28T09:25:24Z - 2209508 - devthejo : feat(model): cut Anthropic spend with prompt caching, per-node max_tokens, cache telemetry
+2026-04-28T08:49:44Z - 22fea66 - devthejo : feat(ir): discourage codex backend with C030 warning
+2026-04-28T07:58:47Z - c7f0d06 - devthejo : chore(deps): pin claw-code-go and codex-agent-sdk-go to remote versions, drop local replace
+2026-04-28T07:55:47Z - fc78e98 - devthejo : refactor(deps): rename claw-code-go module path to github.com/SocialGouv/claw-code-go
+2026-04-28T01:10:18Z - 954ab4f - devthejo : docs(claude): update CLAUDE.md to reflect claw-code-go pkg/api as the LLM SDK
+2026-04-28T01:08:27Z - 790eb4e - devthejo : docs(workflow): add run-005 success-story addendum to pitfalls doc
+2026-04-28T01:02:39Z - 2feacd6 - devthejo : feat(model): replace goai with claw-code-go/pkg/api native client
+2026-04-28T00:55:00Z - 50c2711 - devthejo : fix(workflow): tool commands use {{input.X}} not {{vars.X}} (substituter mismatch)
+2026-04-27T22:57:04Z - 8dfabee - devthejo : fix(workflow): use vars.X_repo_path (judges have no input.X_repo_path field)
+2026-04-27T22:56:27Z - 7316589 - devthejo : fix(workflow): require judges to use ABSOLUTE paths from input.iterion_repo_path / input.claw_repo_path
+2026-04-27T22:19:47Z - 5f0f0f0 - devthejo : fix(workflow): require judges to USE tools before claiming filesystem state
+2026-04-27T21:51:13Z - 972a856 - devthejo : fix(runtime,workflow): substitute workflow var defaults in entry node + tool judges
+2026-04-27T21:21:48Z - 290027c - devthejo : docs(workflow): add workflow_authoring_pitfalls + harden goai_to_claw_port spec
+2026-04-27T12:07:47Z - a464281 - devthejo : chore(workflow): bump goai_to_claw budget (iter 200, dur 12h, $300)
+2026-04-27T10:32:44Z - 636b4d3 - devthejo : fix(server): use all:static prefix on go:embed to handle empty static dir
+2026-04-27T10:03:45Z - c030963 - devthejo : feat(workflow): add iterion_goai_to_claw_port.iter
+2026-04-27T09:02:46Z - 1f8b0da - devthejo : chore: disable falcon temporary
+2026-04-20T14:13:15Z - a43c611 - devthejo : feat(codex): safer sandbox, two-pass output, live budget, retry classifier
 2026-04-17T15:30:50Z - 73134bb - Victor DEGLIAME : docs(workflow): tighten codex_reviewer + update session handoff
 2026-04-17T15:30:41Z - 919d11f - Victor DEGLIAME : feat(codex): frugal-by-default preamble + sandbox-mapped AllowedTools
 2026-04-17T15:30:25Z - 2de338b - Victor DEGLIAME : chore(.gitignore): ignore .claude/*.local.json

@@ -1,6 +1,4 @@
 .
-├── .claude
-│   └── settings.json
 ├── .devcontainer
 │   └── devcontainer.json
 ├── .env.example
@@ -19,39 +17,6 @@
 ├── SKILL-run-and-refine.md
 ├── SKILL.md
 ├── Taskfile.yml
-├── ast
-│   ├── ast.go
-│   ├── ast_test.go
-│   ├── helpers.go
-│   └── pos.go
-├── astjson
-│   ├── astjson.go
-│   └── astjson_test.go
-├── benchmark
-│   ├── benchmark_test.go
-│   ├── metrics.go
-│   ├── report.go
-│   ├── runner.go
-│   └── store.go
-├── cli
-│   ├── cli_test.go
-│   ├── diagram.go
-│   ├── editor.go
-│   ├── init.go
-│   ├── init_test.go
-│   ├── inspect.go
-│   ├── output.go
-│   ├── report.go
-│   ├── resume.go
-│   ├── run.go
-│   ├── templates
-│   │   ├── pr_refine_single_model.iter
-│   │   └── pr_refine_single_model_backend.iter
-│   ├── tty.go
-│   ├── tty_darwin.go
-│   ├── tty_linux.go
-│   ├── tty_windows.go
-│   └── validate.go
 ├── cmd
 │   └── iterion
 │       ├── diagram.go
@@ -59,44 +24,41 @@
 │       ├── init_cmd.go
 │       ├── inspect.go
 │       ├── main.go
+│       ├── mcp_ask_user.go
 │       ├── report.go
 │       ├── resume.go
 │       ├── run.go
 │       ├── validate.go
 │       └── version.go
-├── delegate
-│   ├── claude_code.go
-│   ├── claudesdk
-│   │   ├── agent.go
-│   │   ├── channel.go
-│   │   ├── claude.go
-│   │   ├── content.go
-│   │   ├── doc.go
-│   │   ├── error.go
-│   │   ├── hook.go
-│   │   ├── mcp.go
-│   │   ├── message.go
-│   │   ├── option.go
-│   │   ├── process.go
-│   │   ├── protocol.go
-│   │   ├── session.go
-│   │   └── uuid.go
-│   ├── codex.go
-│   ├── codex_output_discipline.txt
-│   ├── delegate.go
-│   ├── delegate_test.go
-│   ├── parse.go
-│   ├── registry.go
-│   └── truncate.go
 ├── devbox.json
 ├── devbox.lock
 ├── docs
 │   ├── adr
 │   │   └── 001-round-robin-router-mode.md
+│   ├── e2e_coverage.md
+│   ├── grammar
+│   │   ├── V1_SCOPE.md
+│   │   └── iterion_v1.ebnf
 │   ├── install.sh
+│   ├── observability
+│   │   ├── README.md
+│   │   ├── configs
+│   │   │   ├── grafana-dashboards.yaml
+│   │   │   ├── grafana-datasources.yaml
+│   │   │   ├── otel-collector.yaml
+│   │   │   ├── prometheus.yaml
+│   │   │   └── tempo.yaml
+│   │   ├── docker-compose.yml
+│   │   └── grafana
+│   │       └── iterion-workflow.json
 │   ├── persisted-formats.md
+│   ├── references
+│   │   ├── diagnostics.md
+│   │   ├── dsl-grammar.md
+│   │   └── patterns.md
 │   ├── resume.md
-│   └── routers.md
+│   ├── routers.md
+│   └── workflow_authoring_pitfalls.md
 ├── e2e
 │   ├── REPORT_TODO_APP_FULL.md
 │   ├── SCENARIOS.md
@@ -114,7 +76,8 @@
 │   │       ├── index_v1_claude_implement.html
 │   │       ├── index_v2_codex_implement.html
 │   │       └── report.md
-│   └── live_test.go
+│   ├── live_test.go
+│   └── vibe_review_alternating_test.go
 ├── editor
 │   ├── index.html
 │   ├── package.json
@@ -130,6 +93,7 @@
 │   │   │   │   ├── AuxiliaryNode.tsx
 │   │   │   │   ├── BreadcrumbBar.tsx
 │   │   │   │   ├── Canvas.tsx
+│   │   │   │   ├── CanvasEmpty.tsx
 │   │   │   │   ├── CanvasToolbar.tsx
 │   │   │   │   ├── ConditionalEdge.tsx
 │   │   │   │   ├── DetailSubNode.tsx
@@ -144,22 +108,24 @@
 │   │   │   │   ├── WorkflowNode.tsx
 │   │   │   │   └── handlePositions.ts
 │   │   │   ├── Diagnostics
+│   │   │   │   ├── DiagnosticBadge.tsx
 │   │   │   │   └── DiagnosticsPanel.tsx
+│   │   │   ├── FilePicker
+│   │   │   │   └── FilePicker.tsx
+│   │   │   ├── Inspector
+│   │   │   │   ├── Inspector.tsx
+│   │   │   │   ├── InspectorEdge.tsx
+│   │   │   │   ├── InspectorEditItem.tsx
+│   │   │   │   ├── InspectorEmpty.tsx
+│   │   │   │   ├── InspectorMulti.tsx
+│   │   │   │   └── InspectorNode.tsx
 │   │   │   ├── Library
 │   │   │   │   ├── LibraryItemCard.tsx
 │   │   │   │   └── LibraryPanel.tsx
-│   │   │   ├── Modals
-│   │   │   │   ├── EditEdgeModal.tsx
-│   │   │   │   ├── EditItemModal.tsx
-│   │   │   │   ├── EditPromptModal.tsx
-│   │   │   │   ├── EditSchemaModal.tsx
-│   │   │   │   └── EditVarModal.tsx
 │   │   │   ├── Panels
 │   │   │   │   ├── CommentsEditor.tsx
 │   │   │   │   ├── PromptEditor.tsx
-│   │   │   │   ├── PropertiesPanel.tsx
 │   │   │   │   ├── SchemaEditor.tsx
-│   │   │   │   ├── SidebarTabs.tsx
 │   │   │   │   ├── VarsEditor.tsx
 │   │   │   │   ├── WorkflowSettingsForm.tsx
 │   │   │   │   └── forms
@@ -172,14 +138,31 @@
 │   │   │   ├── SourceView
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
-│   │   │   │   └── Toolbar.tsx
+│   │   │   │   ├── Toolbar.tsx
+│   │   │   │   └── ToolbarGroup.tsx
 │   │   │   ├── icons
 │   │   │   │   ├── ProviderIcon.tsx
 │   │   │   │   └── providerDetect.ts
-│   │   │   └── shared
-│   │   │       ├── ConfirmDialog.tsx
-│   │   │       ├── ShortcutsHelp.tsx
-│   │   │       └── Toast.tsx
+│   │   │   ├── shared
+│   │   │   │   ├── ConfirmDialog.tsx
+│   │   │   │   ├── ShortcutsHelp.tsx
+│   │   │   │   └── Toast.tsx
+│   │   │   └── ui
+│   │   │       ├── Badge.tsx
+│   │   │       ├── Button.tsx
+│   │   │       ├── Chip.tsx
+│   │   │       ├── Dialog.tsx
+│   │   │       ├── IconButton.tsx
+│   │   │       ├── Input.tsx
+│   │   │       ├── Popover.tsx
+│   │   │       ├── RefAwareInput.tsx
+│   │   │       ├── RefAwarePopup.tsx
+│   │   │       ├── Select.tsx
+│   │   │       ├── Tabs.tsx
+│   │   │       ├── Textarea.tsx
+│   │   │       ├── ThemeToggle.tsx
+│   │   │       ├── Tooltip.tsx
+│   │   │       └── index.ts
 │   │   ├── hooks
 │   │   │   ├── useActiveWorkflow.ts
 │   │   │   ├── useAddFromLibrary.ts
@@ -190,28 +173,37 @@
 │   │   │   ├── useCanvasKeyboard.ts
 │   │   │   ├── useCanvasLayout.ts
 │   │   │   ├── useCanvasSearch.ts
+│   │   │   ├── useCaretPosition.ts
 │   │   │   ├── useEscapeStack.ts
 │   │   │   ├── useFileWatcher.ts
-│   │   │   └── useFullscreen.ts
+│   │   │   ├── useFullscreen.ts
+│   │   │   ├── useGroupedDiagnostics.ts
+│   │   │   └── useInspectorMode.ts
 │   │   ├── lib
 │   │   │   ├── autoLayout.ts
 │   │   │   ├── computeEdgeHandles.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── defaults.ts
+│   │   │   ├── diagnosticHints.ts
+│   │   │   ├── diagnostics.ts
 │   │   │   ├── docMutations.ts
 │   │   │   ├── documentToGraph.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── iterLanguage.ts
+│   │   │   ├── iterMonacoCompletion.ts
 │   │   │   ├── library
 │   │   │   │   ├── presets.ts
 │   │   │   │   └── types.ts
-│   │   │   └── nodeDetailGraph.ts
+│   │   │   ├── nodeDetailGraph.ts
+│   │   │   └── refCompletion.ts
 │   │   ├── main.tsx
 │   │   ├── store
 │   │   │   ├── document.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── library.ts
+│   │   │   ├── recents.ts
 │   │   │   ├── selection.ts
+│   │   │   ├── theme.ts
 │   │   │   └── ui.ts
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
@@ -219,6 +211,16 @@
 ├── examples
 │   ├── FIXTURES.md
 │   ├── ci_fix_until_green.iter
+│   ├── claw_bedrock_provider.iter
+│   ├── claw_builtin_tools.iter
+│   ├── claw_comprehensive_coverage.iter
+│   ├── claw_hooks_observability.iter
+│   ├── claw_long_context.iter
+│   ├── claw_mcp.iter
+│   ├── claw_permission_safety.iter
+│   ├── claw_read_image.iter
+│   ├── claw_reasoning_effort.iter
+│   ├── claw_subagents.iter
 │   ├── dual_model_plan_implement_review.iter
 │   ├── exhaustive_dsl_coverage.iter
 │   ├── feature_dev_review_fix_dual.iter
@@ -226,7 +228,10 @@
 │   ├── feature_request_dual_model.iter
 │   ├── github-actions
 │   │   └── iterion-hitl.yml
+│   ├── iterion_goai_to_claw_port.iter
 │   ├── llm_router_task_dispatch.iter
+│   ├── mcp_test_server
+│   │   └── main.go
 │   ├── pr_refine_dual_model_parallel.iter
 │   ├── pr_refine_dual_model_parallel_compliance.iter
 │   ├── pr_refine_single_model.iter
@@ -238,130 +243,1295 @@
 │   ├── rust_to_go_port.iter
 │   ├── rust_to_go_port.md
 │   ├── session_fork.iter
+│   ├── session_inherit_validation.iter
 │   ├── session_review_fix.iter
 │   ├── skill
 │   │   ├── human_gate.iter
 │   │   ├── loop_with_judge.iter
 │   │   ├── minimal_linear.iter
 │   │   └── parallel_fan_out_join.iter
-│   └── validate_syntax.js
+│   ├── validate_syntax.js
+│   └── vibe_review_alternating.iter
 ├── go.mod
 ├── go.sum
-├── grammar
-│   ├── V1_SCOPE.md
-│   └── iterion_v1.ebnf
-├── internal
-│   └── appinfo
-│       └── appinfo.go
-├── ir
-│   ├── bench_test.go
-│   ├── compile.go
-│   ├── compile_test.go
-│   ├── ir.go
-│   ├── mermaid.go
-│   ├── mermaid_test.go
-│   ├── ref.go
-│   ├── ref_test.go
-│   ├── validate.go
-│   └── validate_test.go
-├── log
-│   └── log.go
 ├── marketplace.json
-├── mcp
-│   ├── cache.go
-│   ├── cache_test.go
-│   ├── config.go
-│   ├── config_test.go
-│   ├── fingerprint.go
-│   ├── fingerprint_test.go
-│   ├── manager.go
-│   ├── rpc.go
-│   ├── sanitize.go
-│   └── sanitize_test.go
-├── model
-│   ├── delegate_test.go
-│   ├── events.go
-│   ├── executor.go
-│   ├── executor_act_test.go
-│   ├── executor_mcp_test.go
-│   ├── executor_test.go
-│   ├── goai_backend.go
-│   ├── hooks.go
-│   ├── registry.go
-│   ├── schema.go
-│   └── validate.go
 ├── package.json
-├── parser
-│   ├── bench_test.go
-│   ├── diagnostic.go
-│   ├── fuzz_test.go
-│   ├── lexer.go
-│   ├── parser.go
-│   ├── parser_test.go
-│   └── token.go
+├── pkg
+│   ├── backend
+│   │   ├── cost
+│   │   │   ├── cost.go
+│   │   │   └── cost_test.go
+│   │   ├── delegate
+│   │   │   ├── claude_code.go
+│   │   │   ├── claudesdk
+│   │   │   │   ├── agent.go
+│   │   │   │   ├── channel.go
+│   │   │   │   ├── claude.go
+│   │   │   │   ├── content.go
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── error.go
+│   │   │   │   ├── hook.go
+│   │   │   │   ├── mcp.go
+│   │   │   │   ├── message.go
+│   │   │   │   ├── option.go
+│   │   │   │   ├── process.go
+│   │   │   │   ├── protocol.go
+│   │   │   │   ├── session.go
+│   │   │   │   └── uuid.go
+│   │   │   ├── codex.go
+│   │   │   ├── codex_output_discipline.txt
+│   │   │   ├── delegate.go
+│   │   │   ├── delegate_test.go
+│   │   │   ├── parse.go
+│   │   │   ├── registry.go
+│   │   │   └── truncate.go
+│   │   ├── llmtypes
+│   │   │   └── llmtypes.go
+│   │   ├── mcp
+│   │   │   ├── cache.go
+│   │   │   ├── cache_test.go
+│   │   │   ├── config.go
+│   │   │   ├── config_test.go
+│   │   │   ├── fingerprint.go
+│   │   │   ├── fingerprint_test.go
+│   │   │   ├── manager.go
+│   │   │   ├── oauth.go
+│   │   │   ├── oauth_test.go
+│   │   │   ├── rpc.go
+│   │   │   ├── sanitize.go
+│   │   │   └── sanitize_test.go
+│   │   ├── model
+│   │   │   ├── api_errors.go
+│   │   │   ├── cache_marshal_test.go
+│   │   │   ├── capabilities.go
+│   │   │   ├── claw_backend.go
+│   │   │   ├── claw_backend_test.go
+│   │   │   ├── claw_registry_test.go
+│   │   │   ├── delegate_test.go
+│   │   │   ├── events.go
+│   │   │   ├── events_test.go
+│   │   │   ├── executor.go
+│   │   │   ├── executor_act_test.go
+│   │   │   ├── executor_mcp_test.go
+│   │   │   ├── executor_test.go
+│   │   │   ├── generation.go
+│   │   │   ├── generation_test.go
+│   │   │   ├── generation_tool.go
+│   │   │   ├── generation_types.go
+│   │   │   ├── hooks.go
+│   │   │   ├── lifecycle_hooks.go
+│   │   │   ├── lifecycle_hooks_test.go
+│   │   │   ├── llm_tool.go
+│   │   │   ├── registry.go
+│   │   │   ├── schema.go
+│   │   │   ├── session.go
+│   │   │   ├── session_test.go
+│   │   │   ├── streaming_types.go
+│   │   │   └── validate.go
+│   │   ├── recipe
+│   │   │   ├── recipe.go
+│   │   │   └── recipe_test.go
+│   │   └── tool
+│   │       ├── adapter.go
+│   │       ├── classifier.go
+│   │       ├── classifier_test.go
+│   │       ├── claw_builtins.go
+│   │       ├── claw_builtins_test.go
+│   │       ├── policy.go
+│   │       ├── policy_test.go
+│   │       ├── registry.go
+│   │       ├── registry_test.go
+│   │       ├── rule_policy.go
+│   │       ├── rule_policy_test.go
+│   │       ├── schema.go
+│   │       └── schema_test.go
+│   ├── benchmark
+│   │   ├── benchmark_test.go
+│   │   ├── metrics.go
+│   │   ├── prometheus.go
+│   │   ├── prometheus_test.go
+│   │   ├── report.go
+│   │   ├── runner.go
+│   │   └── store.go
+│   ├── cli
+│   │   ├── cli_test.go
+│   │   ├── diagram.go
+│   │   ├── editor.go
+│   │   ├── init.go
+│   │   ├── init_test.go
+│   │   ├── inspect.go
+│   │   ├── output.go
+│   │   ├── report.go
+│   │   ├── resume.go
+│   │   ├── run.go
+│   │   ├── templates
+│   │   │   ├── pr_refine_single_model.iter
+│   │   │   └── pr_refine_single_model_backend.iter
+│   │   ├── tty.go
+│   │   ├── tty_darwin.go
+│   │   ├── tty_linux.go
+│   │   ├── tty_windows.go
+│   │   ├── validate.go
+│   │   └── version.go
+│   ├── dsl
+│   │   ├── ast
+│   │   │   ├── ast.go
+│   │   │   ├── ast_test.go
+│   │   │   ├── helpers.go
+│   │   │   ├── jsonenc.go
+│   │   │   ├── jsonenc_test.go
+│   │   │   └── pos.go
+│   │   ├── expr
+│   │   │   ├── expr.go
+│   │   │   └── expr_test.go
+│   │   ├── ir
+│   │   │   ├── bench_test.go
+│   │   │   ├── compile.go
+│   │   │   ├── compile_test.go
+│   │   │   ├── compute_when_test.go
+│   │   │   ├── ir.go
+│   │   │   ├── mermaid.go
+│   │   │   ├── mermaid_test.go
+│   │   │   ├── ref.go
+│   │   │   ├── ref_test.go
+│   │   │   ├── validate.go
+│   │   │   └── validate_test.go
+│   │   ├── parser
+│   │   │   ├── bench_test.go
+│   │   │   ├── diagnostic.go
+│   │   │   ├── fuzz_test.go
+│   │   │   ├── lexer.go
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   └── token.go
+│   │   ├── types
+│   │   │   └── types.go
+│   │   └── unparse
+│   │       ├── roundtrip_test.go
+│   │       ├── unparse.go
+│   │       └── unparse_test.go
+│   ├── internal
+│   │   ├── appinfo
+│   │   │   └── appinfo.go
+│   │   └── log
+│   │       └── log.go
+│   ├── runtime
+│   │   ├── budget.go
+│   │   ├── budget_test.go
+│   │   ├── chaos_test.go
+│   │   ├── engine.go
+│   │   ├── engine_test.go
+│   │   ├── errors.go
+│   │   ├── fan_out.go
+│   │   ├── hardening_test.go
+│   │   ├── helpers.go
+│   │   ├── llm_router_test.go
+│   │   ├── parallel_test.go
+│   │   ├── recipe_test.go
+│   │   ├── recovery
+│   │   │   ├── recovery.go
+│   │   │   └── recovery_test.go
+│   │   ├── recovery_dispatch.go
+│   │   ├── recovery_dispatch_test.go
+│   │   ├── resume.go
+│   │   ├── round_robin_test.go
+│   │   ├── routing.go
+│   │   ├── session_test.go
+│   │   └── validation_test.go
+│   ├── server
+│   │   ├── filter.go
+│   │   ├── hub.go
+│   │   ├── server.go
+│   │   ├── static
+│   │   │   └── .gitkeep
+│   │   └── watcher.go
+│   └── store
+│       ├── event.go
+│       ├── lock.go
+│       ├── lock_test.go
+│       ├── lock_unix.go
+│       ├── lock_windows.go
+│       ├── run.go
+│       ├── store.go
+│       └── store_test.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── recipe
-│   ├── recipe.go
-│   └── recipe_test.go
-├── references
-│   ├── diagnostics.md
-│   ├── dsl-grammar.md
-│   └── patterns.md
-├── runtime
-│   ├── budget.go
-│   ├── budget_test.go
-│   ├── chaos_test.go
-│   ├── engine.go
-│   ├── engine_test.go
-│   ├── errors.go
-│   ├── fan_out.go
-│   ├── hardening_test.go
-│   ├── helpers.go
-│   ├── llm_router_test.go
-│   ├── parallel_test.go
-│   ├── recipe_test.go
-│   ├── resume.go
-│   ├── round_robin_test.go
-│   ├── routing.go
-│   ├── session_test.go
-│   └── validation_test.go
 ├── scripts
 │   └── build.sh
-├── server
-│   ├── filter.go
-│   ├── hub.go
-│   ├── server.go
-│   ├── static
-│   │   └── .gitkeep
-│   └── watcher.go
-├── store
-│   ├── event.go
-│   ├── lock.go
-│   ├── lock_test.go
-│   ├── lock_unix.go
-│   ├── lock_windows.go
-│   ├── run.go
-│   ├── store.go
-│   └── store_test.go
-├── tool
-│   ├── adapter.go
-│   ├── policy.go
-│   ├── policy_test.go
-│   ├── registry.go
-│   ├── registry_test.go
-│   ├── rule_policy.go
-│   ├── rule_policy_test.go
-│   ├── schema.go
-│   └── schema_test.go
-├── types
-│   └── types.go
-├── unparse
-│   ├── roundtrip_test.go
-│   ├── unparse.go
-│   └── unparse_test.go
 └── vendor
+    ├── cloud.google.com
+    │   └── go
+    │       └── compute
+    │           └── metadata
+    │               ├── CHANGES.md
+    │               ├── LICENSE
+    │               ├── README.md
+    │               ├── log.go
+    │               ├── metadata.go
+    │               ├── retry.go
+    │               ├── retry_linux.go
+    │               ├── syscheck.go
+    │               ├── syscheck_linux.go
+    │               └── syscheck_windows.go
     ├── github.com
+    │   ├── Azure
+    │   │   └── azure-sdk-for-go
+    │   │       └── sdk
+    │   │           ├── azcore
+    │   │           │   ├── CHANGELOG.md
+    │   │           │   ├── LICENSE.txt
+    │   │           │   ├── README.md
+    │   │           │   ├── arm
+    │   │           │   │   ├── internal
+    │   │           │   │   │   └── resource
+    │   │           │   │   │       ├── resource_identifier.go
+    │   │           │   │   │       └── resource_type.go
+    │   │           │   │   ├── policy
+    │   │           │   │   │   └── policy.go
+    │   │           │   │   └── runtime
+    │   │           │   │       ├── pipeline.go
+    │   │           │   │       ├── policy_bearer_token.go
+    │   │           │   │       ├── policy_register_rp.go
+    │   │           │   │       ├── policy_trace_namespace.go
+    │   │           │   │       └── runtime.go
+    │   │           │   ├── ci.yml
+    │   │           │   ├── cloud
+    │   │           │   │   ├── cloud.go
+    │   │           │   │   └── doc.go
+    │   │           │   ├── core.go
+    │   │           │   ├── doc.go
+    │   │           │   ├── errors.go
+    │   │           │   ├── etag.go
+    │   │           │   ├── internal
+    │   │           │   │   ├── exported
+    │   │           │   │   │   ├── exported.go
+    │   │           │   │   │   ├── pipeline.go
+    │   │           │   │   │   ├── request.go
+    │   │           │   │   │   └── response_error.go
+    │   │           │   │   ├── log
+    │   │           │   │   │   └── log.go
+    │   │           │   │   ├── pollers
+    │   │           │   │   │   ├── async
+    │   │           │   │   │   │   └── async.go
+    │   │           │   │   │   ├── body
+    │   │           │   │   │   │   └── body.go
+    │   │           │   │   │   ├── fake
+    │   │           │   │   │   │   └── fake.go
+    │   │           │   │   │   ├── loc
+    │   │           │   │   │   │   └── loc.go
+    │   │           │   │   │   ├── op
+    │   │           │   │   │   │   └── op.go
+    │   │           │   │   │   ├── poller.go
+    │   │           │   │   │   └── util.go
+    │   │           │   │   └── shared
+    │   │           │   │       ├── constants.go
+    │   │           │   │       └── shared.go
+    │   │           │   ├── log
+    │   │           │   │   ├── doc.go
+    │   │           │   │   └── log.go
+    │   │           │   ├── policy
+    │   │           │   │   ├── doc.go
+    │   │           │   │   └── policy.go
+    │   │           │   ├── runtime
+    │   │           │   │   ├── doc.go
+    │   │           │   │   ├── errors.go
+    │   │           │   │   ├── pager.go
+    │   │           │   │   ├── pipeline.go
+    │   │           │   │   ├── policy_api_version.go
+    │   │           │   │   ├── policy_bearer_token.go
+    │   │           │   │   ├── policy_body_download.go
+    │   │           │   │   ├── policy_http_header.go
+    │   │           │   │   ├── policy_http_trace.go
+    │   │           │   │   ├── policy_include_response.go
+    │   │           │   │   ├── policy_key_credential.go
+    │   │           │   │   ├── policy_logging.go
+    │   │           │   │   ├── policy_request_id.go
+    │   │           │   │   ├── policy_retry.go
+    │   │           │   │   ├── policy_sas_credential.go
+    │   │           │   │   ├── policy_telemetry.go
+    │   │           │   │   ├── poller.go
+    │   │           │   │   ├── request.go
+    │   │           │   │   ├── response.go
+    │   │           │   │   ├── transport_default_dialer_other.go
+    │   │           │   │   ├── transport_default_dialer_wasm.go
+    │   │           │   │   └── transport_default_http_client.go
+    │   │           │   ├── streaming
+    │   │           │   │   ├── doc.go
+    │   │           │   │   └── progress.go
+    │   │           │   └── tracing
+    │   │           │       ├── constants.go
+    │   │           │       └── tracing.go
+    │   │           ├── azidentity
+    │   │           │   ├── .gitignore
+    │   │           │   ├── BREAKING_CHANGES.md
+    │   │           │   ├── CHANGELOG.md
+    │   │           │   ├── LICENSE.txt
+    │   │           │   ├── MIGRATION.md
+    │   │           │   ├── README.md
+    │   │           │   ├── TOKEN_CACHING.MD
+    │   │           │   ├── TROUBLESHOOTING.md
+    │   │           │   ├── assets.json
+    │   │           │   ├── authentication_record.go
+    │   │           │   ├── azidentity.go
+    │   │           │   ├── azure_cli_credential.go
+    │   │           │   ├── azure_developer_cli_credential.go
+    │   │           │   ├── azure_pipelines_credential.go
+    │   │           │   ├── azure_powershell_credential.go
+    │   │           │   ├── chained_token_credential.go
+    │   │           │   ├── ci.yml
+    │   │           │   ├── client_assertion_credential.go
+    │   │           │   ├── client_certificate_credential.go
+    │   │           │   ├── client_secret_credential.go
+    │   │           │   ├── confidential_client.go
+    │   │           │   ├── default_azure_credential.go
+    │   │           │   ├── developer_credential_util.go
+    │   │           │   ├── developer_credential_util_nonwindows.go
+    │   │           │   ├── developer_credential_util_windows.go
+    │   │           │   ├── device_code_credential.go
+    │   │           │   ├── environment_credential.go
+    │   │           │   ├── errors.go
+    │   │           │   ├── go.work
+    │   │           │   ├── interactive_browser_credential.go
+    │   │           │   ├── internal
+    │   │           │   │   └── cache.go
+    │   │           │   ├── logging.go
+    │   │           │   ├── managed-identity-matrix.json
+    │   │           │   ├── managed_identity_client.go
+    │   │           │   ├── managed_identity_credential.go
+    │   │           │   ├── on_behalf_of_credential.go
+    │   │           │   ├── public_client.go
+    │   │           │   ├── test-resources-post.ps1
+    │   │           │   ├── test-resources-pre.ps1
+    │   │           │   ├── test-resources.bicep
+    │   │           │   ├── username_password_credential.go
+    │   │           │   ├── version.go
+    │   │           │   └── workload_identity.go
+    │   │           └── internal
+    │   │               ├── LICENSE.txt
+    │   │               ├── diag
+    │   │               │   ├── diag.go
+    │   │               │   └── doc.go
+    │   │               ├── errorinfo
+    │   │               │   ├── doc.go
+    │   │               │   └── errorinfo.go
+    │   │               ├── exported
+    │   │               │   └── exported.go
+    │   │               ├── log
+    │   │               │   ├── doc.go
+    │   │               │   └── log.go
+    │   │               ├── poller
+    │   │               │   └── util.go
+    │   │               ├── temporal
+    │   │               │   └── resource.go
+    │   │               └── uuid
+    │   │                   ├── doc.go
+    │   │                   └── uuid.go
+    │   ├── AzureAD
+    │   │   └── microsoft-authentication-library-for-go
+    │   │       ├── LICENSE
+    │   │       └── apps
+    │   │           ├── cache
+    │   │           │   └── cache.go
+    │   │           ├── confidential
+    │   │           │   └── confidential.go
+    │   │           ├── errors
+    │   │           │   ├── error_design.md
+    │   │           │   └── errors.go
+    │   │           ├── internal
+    │   │           │   ├── base
+    │   │           │   │   ├── base.go
+    │   │           │   │   └── storage
+    │   │           │   │       ├── items.go
+    │   │           │   │       ├── partitioned_storage.go
+    │   │           │   │       └── storage.go
+    │   │           │   ├── exported
+    │   │           │   │   └── exported.go
+    │   │           │   ├── json
+    │   │           │   │   ├── design.md
+    │   │           │   │   ├── json.go
+    │   │           │   │   ├── mapslice.go
+    │   │           │   │   ├── marshal.go
+    │   │           │   │   ├── struct.go
+    │   │           │   │   └── types
+    │   │           │   │       └── time
+    │   │           │   │           └── time.go
+    │   │           │   ├── local
+    │   │           │   │   └── server.go
+    │   │           │   ├── oauth
+    │   │           │   │   ├── oauth.go
+    │   │           │   │   ├── ops
+    │   │           │   │   │   ├── accesstokens
+    │   │           │   │   │   │   ├── accesstokens.go
+    │   │           │   │   │   │   ├── apptype_string.go
+    │   │           │   │   │   │   └── tokens.go
+    │   │           │   │   │   ├── authority
+    │   │           │   │   │   │   ├── authority.go
+    │   │           │   │   │   │   └── authorizetype_string.go
+    │   │           │   │   │   ├── internal
+    │   │           │   │   │   │   ├── comm
+    │   │           │   │   │   │   │   ├── comm.go
+    │   │           │   │   │   │   │   └── compress.go
+    │   │           │   │   │   │   └── grant
+    │   │           │   │   │   │       └── grant.go
+    │   │           │   │   │   ├── ops.go
+    │   │           │   │   │   └── wstrust
+    │   │           │   │   │       ├── defs
+    │   │           │   │   │       │   ├── endpointtype_string.go
+    │   │           │   │   │       │   ├── mex_document_definitions.go
+    │   │           │   │   │       │   ├── saml_assertion_definitions.go
+    │   │           │   │   │       │   ├── version_string.go
+    │   │           │   │   │       │   ├── wstrust_endpoint.go
+    │   │           │   │   │       │   └── wstrust_mex_document.go
+    │   │           │   │   │       └── wstrust.go
+    │   │           │   │   └── resolvers.go
+    │   │           │   ├── options
+    │   │           │   │   └── options.go
+    │   │           │   ├── shared
+    │   │           │   │   └── shared.go
+    │   │           │   └── version
+    │   │           │       └── version.go
+    │   │           ├── managedidentity
+    │   │           │   ├── azure_ml.go
+    │   │           │   ├── cloud_shell.go
+    │   │           │   ├── managedidentity.go
+    │   │           │   └── servicefabric.go
+    │   │           └── public
+    │   │               └── public.go
+    │   ├── SocialGouv
+    │   │   └── claw-code-go
+    │   │       ├── hooks
+    │   │       │   ├── config.go
+    │   │       │   ├── exec.go
+    │   │       │   ├── exec_unix.go
+    │   │       │   ├── exec_windows.go
+    │   │       │   ├── feedback.go
+    │   │       │   ├── hook.go
+    │   │       │   ├── payload.go
+    │   │       │   ├── response.go
+    │   │       │   └── runner.go
+    │   │       ├── internal
+    │   │       │   ├── api
+    │   │       │   │   ├── auth.go
+    │   │       │   │   ├── client.go
+    │   │       │   │   ├── errors.go
+    │   │       │   │   ├── httputil
+    │   │       │   │   │   └── httputil.go
+    │   │       │   │   ├── provider.go
+    │   │       │   │   ├── providers
+    │   │       │   │   │   ├── anthropic
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── bedrock
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── foundry
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── openai
+    │   │       │   │   │   │   ├── provider.go
+    │   │       │   │   │   │   └── responses.go
+    │   │       │   │   │   ├── openaiwire
+    │   │       │   │   │   │   ├── convert.go
+    │   │       │   │   │   │   ├── stream.go
+    │   │       │   │   │   │   └── types.go
+    │   │       │   │   │   └── vertex
+    │   │       │   │   │       └── provider.go
+    │   │       │   │   ├── sse.go
+    │   │       │   │   ├── sseutil
+    │   │       │   │   │   └── toolcall.go
+    │   │       │   │   └── types.go
+    │   │       │   ├── apikit
+    │   │       │   │   ├── doc.go
+    │   │       │   │   ├── errors.go
+    │   │       │   │   ├── model_registry.go
+    │   │       │   │   ├── preflight.go
+    │   │       │   │   ├── prompt_cache.go
+    │   │       │   │   ├── prompt_cache_fingerprint.go
+    │   │       │   │   ├── prompt_cache_paths.go
+    │   │       │   │   ├── provider_routing.go
+    │   │       │   │   ├── proxy.go
+    │   │       │   │   ├── retry.go
+    │   │       │   │   ├── session_tracer.go
+    │   │       │   │   ├── telemetry.go
+    │   │       │   │   └── telemetry_sinks.go
+    │   │       │   ├── config
+    │   │       │   │   ├── errors.go
+    │   │       │   │   ├── feature.go
+    │   │       │   │   ├── frontmatter.go
+    │   │       │   │   ├── loader.go
+    │   │       │   │   └── validate.go
+    │   │       │   ├── context
+    │   │       │   │   ├── assembler.go
+    │   │       │   │   ├── git.go
+    │   │       │   │   ├── memory.go
+    │   │       │   │   └── sysinfo.go
+    │   │       │   ├── hooks
+    │   │       │   │   └── runner.go
+    │   │       │   ├── lsp
+    │   │       │   │   ├── client.go
+    │   │       │   │   ├── transport.go
+    │   │       │   │   └── types.go
+    │   │       │   ├── mcp
+    │   │       │   │   ├── auth.go
+    │   │       │   │   ├── client.go
+    │   │       │   │   ├── lifecycle.go
+    │   │       │   │   ├── managed_proxy.go
+    │   │       │   │   ├── oauth
+    │   │       │   │   │   ├── broker.go
+    │   │       │   │   │   ├── pkce.go
+    │   │       │   │   │   └── storage.go
+    │   │       │   │   ├── registry.go
+    │   │       │   │   ├── resources.go
+    │   │       │   │   ├── sdk_server.go
+    │   │       │   │   ├── sse.go
+    │   │       │   │   ├── stdio.go
+    │   │       │   │   ├── transport.go
+    │   │       │   │   ├── transport_rpc.go
+    │   │       │   │   ├── types.go
+    │   │       │   │   └── websocket.go
+    │   │       │   ├── permissions
+    │   │       │   │   ├── classifier.go
+    │   │       │   │   ├── llm_classifier.go
+    │   │       │   │   ├── manager.go
+    │   │       │   │   ├── mode.go
+    │   │       │   │   ├── policy.go
+    │   │       │   │   ├── prompter.go
+    │   │       │   │   ├── rule_parser.go
+    │   │       │   │   └── rules.go
+    │   │       │   ├── plugins
+    │   │       │   │   ├── installer.go
+    │   │       │   │   ├── manager.go
+    │   │       │   │   ├── marketplace.go
+    │   │       │   │   └── verifier.go
+    │   │       │   ├── runtime
+    │   │       │   │   ├── compact.go
+    │   │       │   │   ├── config.go
+    │   │       │   │   ├── conversation.go
+    │   │       │   │   ├── errors.go
+    │   │       │   │   ├── errors_loop.go
+    │   │       │   │   ├── events.go
+    │   │       │   │   ├── green_contracts.go
+    │   │       │   │   ├── lane
+    │   │       │   │   │   ├── branch_lock.go
+    │   │       │   │   │   ├── event.go
+    │   │       │   │   │   ├── stale_base.go
+    │   │       │   │   │   └── stale_branch.go
+    │   │       │   │   ├── lane_compress_init.go
+    │   │       │   │   ├── loop_adapter.go
+    │   │       │   │   ├── loop_config.go
+    │   │       │   │   ├── loop_context.go
+    │   │       │   │   ├── loop_prompt.go
+    │   │       │   │   ├── loop_usage.go
+    │   │       │   │   ├── permissions.go
+    │   │       │   │   ├── provider_factory.go
+    │   │       │   │   ├── session.go
+    │   │       │   │   ├── session_jsonl.go
+    │   │       │   │   ├── session_store.go
+    │   │       │   │   ├── summary_compression.go
+    │   │       │   │   ├── task
+    │   │       │   │   │   └── task.go
+    │   │       │   │   ├── team
+    │   │       │   │   │   └── registry.go
+    │   │       │   │   ├── trust
+    │   │       │   │   │   └── trust_resolver.go
+    │   │       │   │   └── worker
+    │   │       │   │       ├── detect.go
+    │   │       │   │       ├── registry.go
+    │   │       │   │       └── worker.go
+    │   │       │   ├── strutil
+    │   │       │   │   └── ascii.go
+    │   │       │   ├── tools
+    │   │       │   │   ├── agent.go
+    │   │       │   │   ├── ask_user.go
+    │   │       │   │   ├── bash.go
+    │   │       │   │   ├── bash_pipeline.go
+    │   │       │   │   ├── bash_validation.go
+    │   │       │   │   ├── computer_use.go
+    │   │       │   │   ├── computer_use_exec.go
+    │   │       │   │   ├── config_tool.go
+    │   │       │   │   ├── cron_tools.go
+    │   │       │   │   ├── file_edit.go
+    │   │       │   │   ├── files.go
+    │   │       │   │   ├── glob.go
+    │   │       │   │   ├── grep.go
+    │   │       │   │   ├── lsp_tool.go
+    │   │       │   │   ├── mcp_resource_tools.go
+    │   │       │   │   ├── notebook_edit.go
+    │   │       │   │   ├── pdf.go
+    │   │       │   │   ├── plan_mode.go
+    │   │       │   │   ├── remote_trigger.go
+    │   │       │   │   ├── repl.go
+    │   │       │   │   ├── send_message.go
+    │   │       │   │   ├── skill.go
+    │   │       │   │   ├── sleep.go
+    │   │       │   │   ├── structured_output.go
+    │   │       │   │   ├── task_tools.go
+    │   │       │   │   ├── team_tools.go
+    │   │       │   │   ├── todo_write.go
+    │   │       │   │   ├── tool_search.go
+    │   │       │   │   ├── web_fetch.go
+    │   │       │   │   ├── web_search.go
+    │   │       │   │   └── worker_tools.go
+    │   │       │   └── usage
+    │   │       │       └── tracker.go
+    │   │       ├── pkg
+    │   │       │   ├── api
+    │   │       │   │   ├── auth.go
+    │   │       │   │   ├── client.go
+    │   │       │   │   ├── hooks
+    │   │       │   │   │   └── hooks.go
+    │   │       │   │   ├── lsp
+    │   │       │   │   │   └── lsp.go
+    │   │       │   │   ├── mcp
+    │   │       │   │   │   ├── mcp.go
+    │   │       │   │   │   └── oauth
+    │   │       │   │   │       └── oauth.go
+    │   │       │   │   ├── provider.go
+    │   │       │   │   ├── providers
+    │   │       │   │   │   ├── anthropic
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── bedrock
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── foundry
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   ├── openai
+    │   │       │   │   │   │   └── provider.go
+    │   │       │   │   │   └── vertex
+    │   │       │   │   │       └── provider.go
+    │   │       │   │   ├── sse.go
+    │   │       │   │   ├── task
+    │   │       │   │   │   └── task.go
+    │   │       │   │   ├── team
+    │   │       │   │   │   └── team.go
+    │   │       │   │   ├── tools
+    │   │       │   │   │   ├── builtins.go
+    │   │       │   │   │   ├── computer_use.go
+    │   │       │   │   │   ├── cron.go
+    │   │       │   │   │   ├── lsp.go
+    │   │       │   │   │   ├── mcp.go
+    │   │       │   │   │   ├── plan_mode.go
+    │   │       │   │   │   ├── simple.go
+    │   │       │   │   │   ├── skill.go
+    │   │       │   │   │   ├── tasks.go
+    │   │       │   │   │   ├── teams.go
+    │   │       │   │   │   ├── tool_search.go
+    │   │       │   │   │   └── workers.go
+    │   │       │   │   ├── types.go
+    │   │       │   │   └── worker
+    │   │       │   │       └── worker.go
+    │   │       │   ├── permissions
+    │   │       │   │   └── permissions.go
+    │   │       │   └── runtime
+    │   │       │       ├── compact.go
+    │   │       │       └── provider.go
+    │   │       └── plugin
+    │   │           ├── errors.go
+    │   │           ├── exec_unix.go
+    │   │           ├── exec_windows.go
+    │   │           ├── kind.go
+    │   │           ├── manager.go
+    │   │           ├── manifest.go
+    │   │           ├── plugin.go
+    │   │           ├── registry.go
+    │   │           ├── remote_marketplace.go
+    │   │           ├── tool.go
+    │   │           └── validate.go
+    │   ├── aws
+    │   │   ├── aws-sdk-go-v2
+    │   │   │   ├── LICENSE.txt
+    │   │   │   ├── NOTICE.txt
+    │   │   │   ├── aws
+    │   │   │   │   ├── accountid_endpoint_mode.go
+    │   │   │   │   ├── checksum.go
+    │   │   │   │   ├── config.go
+    │   │   │   │   ├── context.go
+    │   │   │   │   ├── credential_cache.go
+    │   │   │   │   ├── credentials.go
+    │   │   │   │   ├── defaults
+    │   │   │   │   │   ├── auto.go
+    │   │   │   │   │   ├── configuration.go
+    │   │   │   │   │   ├── defaults.go
+    │   │   │   │   │   └── doc.go
+    │   │   │   │   ├── defaultsmode.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── endpoints.go
+    │   │   │   │   ├── errors.go
+    │   │   │   │   ├── from_ptr.go
+    │   │   │   │   ├── go_module_metadata.go
+    │   │   │   │   ├── logging.go
+    │   │   │   │   ├── logging_generate.go
+    │   │   │   │   ├── middleware
+    │   │   │   │   │   ├── metadata.go
+    │   │   │   │   │   ├── middleware.go
+    │   │   │   │   │   ├── osname.go
+    │   │   │   │   │   ├── osname_go115.go
+    │   │   │   │   │   ├── recursion_detection.go
+    │   │   │   │   │   ├── request_id.go
+    │   │   │   │   │   ├── request_id_retriever.go
+    │   │   │   │   │   └── user_agent.go
+    │   │   │   │   ├── protocol
+    │   │   │   │   │   ├── eventstream
+    │   │   │   │   │   │   ├── CHANGELOG.md
+    │   │   │   │   │   │   ├── LICENSE.txt
+    │   │   │   │   │   │   ├── debug.go
+    │   │   │   │   │   │   ├── decode.go
+    │   │   │   │   │   │   ├── encode.go
+    │   │   │   │   │   │   ├── error.go
+    │   │   │   │   │   │   ├── eventstreamapi
+    │   │   │   │   │   │   │   ├── headers.go
+    │   │   │   │   │   │   │   ├── middleware.go
+    │   │   │   │   │   │   │   ├── transport.go
+    │   │   │   │   │   │   │   └── transport_go117.go
+    │   │   │   │   │   │   ├── go_module_metadata.go
+    │   │   │   │   │   │   ├── header.go
+    │   │   │   │   │   │   ├── header_value.go
+    │   │   │   │   │   │   └── message.go
+    │   │   │   │   │   ├── query
+    │   │   │   │   │   │   ├── array.go
+    │   │   │   │   │   │   ├── encoder.go
+    │   │   │   │   │   │   ├── map.go
+    │   │   │   │   │   │   ├── middleware.go
+    │   │   │   │   │   │   ├── object.go
+    │   │   │   │   │   │   └── value.go
+    │   │   │   │   │   ├── restjson
+    │   │   │   │   │   │   └── decoder_util.go
+    │   │   │   │   │   └── xml
+    │   │   │   │   │       └── error_utils.go
+    │   │   │   │   ├── ratelimit
+    │   │   │   │   │   ├── none.go
+    │   │   │   │   │   ├── token_bucket.go
+    │   │   │   │   │   └── token_rate_limit.go
+    │   │   │   │   ├── request.go
+    │   │   │   │   ├── retry
+    │   │   │   │   │   ├── adaptive.go
+    │   │   │   │   │   ├── adaptive_ratelimit.go
+    │   │   │   │   │   ├── adaptive_token_bucket.go
+    │   │   │   │   │   ├── attempt_metrics.go
+    │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   ├── errors.go
+    │   │   │   │   │   ├── jitter_backoff.go
+    │   │   │   │   │   ├── metadata.go
+    │   │   │   │   │   ├── middleware.go
+    │   │   │   │   │   ├── retry.go
+    │   │   │   │   │   ├── retryable_error.go
+    │   │   │   │   │   ├── standard.go
+    │   │   │   │   │   ├── throttle_error.go
+    │   │   │   │   │   └── timeout_error.go
+    │   │   │   │   ├── retryer.go
+    │   │   │   │   ├── runtime.go
+    │   │   │   │   ├── signer
+    │   │   │   │   │   ├── internal
+    │   │   │   │   │   │   └── v4
+    │   │   │   │   │   │       ├── cache.go
+    │   │   │   │   │   │       ├── const.go
+    │   │   │   │   │   │       ├── header_rules.go
+    │   │   │   │   │   │       ├── headers.go
+    │   │   │   │   │   │       ├── hmac.go
+    │   │   │   │   │   │       ├── host.go
+    │   │   │   │   │   │       ├── scope.go
+    │   │   │   │   │   │       ├── time.go
+    │   │   │   │   │   │       └── util.go
+    │   │   │   │   │   └── v4
+    │   │   │   │   │       ├── middleware.go
+    │   │   │   │   │       ├── presign_middleware.go
+    │   │   │   │   │       ├── stream.go
+    │   │   │   │   │       └── v4.go
+    │   │   │   │   ├── to_ptr.go
+    │   │   │   │   ├── transport
+    │   │   │   │   │   └── http
+    │   │   │   │   │       ├── client.go
+    │   │   │   │   │       ├── content_type.go
+    │   │   │   │   │       ├── response_error.go
+    │   │   │   │   │       ├── response_error_middleware.go
+    │   │   │   │   │       └── timeout_read_closer.go
+    │   │   │   │   ├── types.go
+    │   │   │   │   └── version.go
+    │   │   │   ├── config
+    │   │   │   │   ├── CHANGELOG.md
+    │   │   │   │   ├── LICENSE.txt
+    │   │   │   │   ├── auth_scheme_preference.go
+    │   │   │   │   ├── config.go
+    │   │   │   │   ├── defaultsmode.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── env_config.go
+    │   │   │   │   ├── generate.go
+    │   │   │   │   ├── go_module_metadata.go
+    │   │   │   │   ├── internal
+    │   │   │   │   │   └── ini
+    │   │   │   │   │       ├── errors.go
+    │   │   │   │   │       ├── ini.go
+    │   │   │   │   │       ├── parse.go
+    │   │   │   │   │       ├── sections.go
+    │   │   │   │   │       ├── strings.go
+    │   │   │   │   │       ├── token.go
+    │   │   │   │   │       ├── tokenize.go
+    │   │   │   │   │       └── value.go
+    │   │   │   │   ├── load_options.go
+    │   │   │   │   ├── local.go
+    │   │   │   │   ├── provider.go
+    │   │   │   │   ├── resolve.go
+    │   │   │   │   ├── resolve_bearer_token.go
+    │   │   │   │   ├── resolve_credentials.go
+    │   │   │   │   └── shared_config.go
+    │   │   │   ├── credentials
+    │   │   │   │   ├── CHANGELOG.md
+    │   │   │   │   ├── LICENSE.txt
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── ec2rolecreds
+    │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   └── provider.go
+    │   │   │   │   ├── endpointcreds
+    │   │   │   │   │   ├── internal
+    │   │   │   │   │   │   └── client
+    │   │   │   │   │   │       ├── auth.go
+    │   │   │   │   │   │       ├── client.go
+    │   │   │   │   │   │       ├── endpoints.go
+    │   │   │   │   │   │       └── middleware.go
+    │   │   │   │   │   └── provider.go
+    │   │   │   │   ├── go_module_metadata.go
+    │   │   │   │   ├── logincreds
+    │   │   │   │   │   ├── dpop.go
+    │   │   │   │   │   ├── file.go
+    │   │   │   │   │   ├── provider.go
+    │   │   │   │   │   └── token.go
+    │   │   │   │   ├── processcreds
+    │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   └── provider.go
+    │   │   │   │   ├── ssocreds
+    │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   ├── sso_cached_token.go
+    │   │   │   │   │   ├── sso_credentials_provider.go
+    │   │   │   │   │   └── sso_token_provider.go
+    │   │   │   │   ├── static_provider.go
+    │   │   │   │   └── stscreds
+    │   │   │   │       ├── assume_role_provider.go
+    │   │   │   │       └── web_identity_provider.go
+    │   │   │   ├── feature
+    │   │   │   │   └── ec2
+    │   │   │   │       └── imds
+    │   │   │   │           ├── CHANGELOG.md
+    │   │   │   │           ├── LICENSE.txt
+    │   │   │   │           ├── api_client.go
+    │   │   │   │           ├── api_op_GetDynamicData.go
+    │   │   │   │           ├── api_op_GetIAMInfo.go
+    │   │   │   │           ├── api_op_GetInstanceIdentityDocument.go
+    │   │   │   │           ├── api_op_GetMetadata.go
+    │   │   │   │           ├── api_op_GetRegion.go
+    │   │   │   │           ├── api_op_GetToken.go
+    │   │   │   │           ├── api_op_GetUserData.go
+    │   │   │   │           ├── auth.go
+    │   │   │   │           ├── doc.go
+    │   │   │   │           ├── endpoints.go
+    │   │   │   │           ├── go_module_metadata.go
+    │   │   │   │           ├── internal
+    │   │   │   │           │   └── config
+    │   │   │   │           │       └── resolvers.go
+    │   │   │   │           ├── request_middleware.go
+    │   │   │   │           └── token_provider.go
+    │   │   │   ├── internal
+    │   │   │   │   ├── auth
+    │   │   │   │   │   ├── auth.go
+    │   │   │   │   │   ├── scheme.go
+    │   │   │   │   │   └── smithy
+    │   │   │   │   │       ├── bearer_token_adapter.go
+    │   │   │   │   │       ├── bearer_token_signer_adapter.go
+    │   │   │   │   │       ├── credentials_adapter.go
+    │   │   │   │   │       ├── smithy.go
+    │   │   │   │   │       └── v4signer_adapter.go
+    │   │   │   │   ├── configsources
+    │   │   │   │   │   ├── CHANGELOG.md
+    │   │   │   │   │   ├── LICENSE.txt
+    │   │   │   │   │   ├── config.go
+    │   │   │   │   │   ├── endpoints.go
+    │   │   │   │   │   └── go_module_metadata.go
+    │   │   │   │   ├── context
+    │   │   │   │   │   └── context.go
+    │   │   │   │   ├── endpoints
+    │   │   │   │   │   ├── awsrulesfn
+    │   │   │   │   │   │   ├── arn.go
+    │   │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   │   ├── generate.go
+    │   │   │   │   │   │   ├── host.go
+    │   │   │   │   │   │   ├── partition.go
+    │   │   │   │   │   │   ├── partitions.go
+    │   │   │   │   │   │   └── partitions.json
+    │   │   │   │   │   ├── endpoints.go
+    │   │   │   │   │   └── v2
+    │   │   │   │   │       ├── CHANGELOG.md
+    │   │   │   │   │       ├── LICENSE.txt
+    │   │   │   │   │       ├── endpoints.go
+    │   │   │   │   │       └── go_module_metadata.go
+    │   │   │   │   ├── rand
+    │   │   │   │   │   └── rand.go
+    │   │   │   │   ├── sdk
+    │   │   │   │   │   ├── interfaces.go
+    │   │   │   │   │   └── time.go
+    │   │   │   │   ├── sdkio
+    │   │   │   │   │   └── byte.go
+    │   │   │   │   ├── shareddefaults
+    │   │   │   │   │   └── shared_config.go
+    │   │   │   │   ├── strings
+    │   │   │   │   │   └── strings.go
+    │   │   │   │   ├── sync
+    │   │   │   │   │   └── singleflight
+    │   │   │   │   │       ├── LICENSE
+    │   │   │   │   │       ├── docs.go
+    │   │   │   │   │       └── singleflight.go
+    │   │   │   │   ├── timeconv
+    │   │   │   │   │   └── duration.go
+    │   │   │   │   └── v4a
+    │   │   │   │       ├── CHANGELOG.md
+    │   │   │   │       ├── LICENSE.txt
+    │   │   │   │       ├── credentials.go
+    │   │   │   │       ├── error.go
+    │   │   │   │       ├── go_module_metadata.go
+    │   │   │   │       ├── internal
+    │   │   │   │       │   ├── crypto
+    │   │   │   │       │   │   ├── compare.go
+    │   │   │   │       │   │   └── ecc.go
+    │   │   │   │       │   └── v4
+    │   │   │   │       │       ├── const.go
+    │   │   │   │       │       ├── header_rules.go
+    │   │   │   │       │       ├── headers.go
+    │   │   │   │       │       ├── hmac.go
+    │   │   │   │       │       ├── host.go
+    │   │   │   │       │       ├── time.go
+    │   │   │   │       │       └── util.go
+    │   │   │   │       ├── middleware.go
+    │   │   │   │       ├── presign_middleware.go
+    │   │   │   │       ├── smithy.go
+    │   │   │   │       └── v4a.go
+    │   │   │   └── service
+    │   │   │       ├── bedrockruntime
+    │   │   │       │   ├── CHANGELOG.md
+    │   │   │       │   ├── LICENSE.txt
+    │   │   │       │   ├── api_client.go
+    │   │   │       │   ├── api_op_ApplyGuardrail.go
+    │   │   │       │   ├── api_op_Converse.go
+    │   │   │       │   ├── api_op_ConverseStream.go
+    │   │   │       │   ├── api_op_CountTokens.go
+    │   │   │       │   ├── api_op_GetAsyncInvoke.go
+    │   │   │       │   ├── api_op_InvokeModel.go
+    │   │   │       │   ├── api_op_InvokeModelWithBidirectionalStream.go
+    │   │   │       │   ├── api_op_InvokeModelWithResponseStream.go
+    │   │   │       │   ├── api_op_ListAsyncInvokes.go
+    │   │   │       │   ├── api_op_StartAsyncInvoke.go
+    │   │   │       │   ├── auth.go
+    │   │   │       │   ├── deserializers.go
+    │   │   │       │   ├── doc.go
+    │   │   │       │   ├── document
+    │   │   │       │   │   ├── doc.go
+    │   │   │       │   │   └── document.go
+    │   │   │       │   ├── endpoints.go
+    │   │   │       │   ├── eventstream.go
+    │   │   │       │   ├── generated.json
+    │   │   │       │   ├── go_module_metadata.go
+    │   │   │       │   ├── internal
+    │   │   │       │   │   ├── document
+    │   │   │       │   │   │   └── document.go
+    │   │   │       │   │   └── endpoints
+    │   │   │       │   │       └── endpoints.go
+    │   │   │       │   ├── options.go
+    │   │   │       │   ├── serializers.go
+    │   │   │       │   ├── types
+    │   │   │       │   │   ├── enums.go
+    │   │   │       │   │   ├── errors.go
+    │   │   │       │   │   └── types.go
+    │   │   │       │   └── validators.go
+    │   │   │       ├── internal
+    │   │   │       │   ├── accept-encoding
+    │   │   │       │   │   ├── CHANGELOG.md
+    │   │   │       │   │   ├── LICENSE.txt
+    │   │   │       │   │   ├── accept_encoding_gzip.go
+    │   │   │       │   │   ├── doc.go
+    │   │   │       │   │   └── go_module_metadata.go
+    │   │   │       │   └── presigned-url
+    │   │   │       │       ├── CHANGELOG.md
+    │   │   │       │       ├── LICENSE.txt
+    │   │   │       │       ├── context.go
+    │   │   │       │       ├── doc.go
+    │   │   │       │       ├── go_module_metadata.go
+    │   │   │       │       └── middleware.go
+    │   │   │       ├── signin
+    │   │   │       │   ├── CHANGELOG.md
+    │   │   │       │   ├── LICENSE.txt
+    │   │   │       │   ├── api_client.go
+    │   │   │       │   ├── api_op_CreateOAuth2Token.go
+    │   │   │       │   ├── auth.go
+    │   │   │       │   ├── deserializers.go
+    │   │   │       │   ├── doc.go
+    │   │   │       │   ├── endpoints.go
+    │   │   │       │   ├── generated.json
+    │   │   │       │   ├── go_module_metadata.go
+    │   │   │       │   ├── internal
+    │   │   │       │   │   └── endpoints
+    │   │   │       │   │       └── endpoints.go
+    │   │   │       │   ├── options.go
+    │   │   │       │   ├── serializers.go
+    │   │   │       │   ├── types
+    │   │   │       │   │   ├── enums.go
+    │   │   │       │   │   ├── errors.go
+    │   │   │       │   │   └── types.go
+    │   │   │       │   └── validators.go
+    │   │   │       ├── sso
+    │   │   │       │   ├── CHANGELOG.md
+    │   │   │       │   ├── LICENSE.txt
+    │   │   │       │   ├── api_client.go
+    │   │   │       │   ├── api_op_GetRoleCredentials.go
+    │   │   │       │   ├── api_op_ListAccountRoles.go
+    │   │   │       │   ├── api_op_ListAccounts.go
+    │   │   │       │   ├── api_op_Logout.go
+    │   │   │       │   ├── auth.go
+    │   │   │       │   ├── deserializers.go
+    │   │   │       │   ├── doc.go
+    │   │   │       │   ├── endpoints.go
+    │   │   │       │   ├── generated.json
+    │   │   │       │   ├── go_module_metadata.go
+    │   │   │       │   ├── internal
+    │   │   │       │   │   └── endpoints
+    │   │   │       │   │       └── endpoints.go
+    │   │   │       │   ├── options.go
+    │   │   │       │   ├── serializers.go
+    │   │   │       │   ├── types
+    │   │   │       │   │   ├── errors.go
+    │   │   │       │   │   └── types.go
+    │   │   │       │   └── validators.go
+    │   │   │       ├── ssooidc
+    │   │   │       │   ├── CHANGELOG.md
+    │   │   │       │   ├── LICENSE.txt
+    │   │   │       │   ├── api_client.go
+    │   │   │       │   ├── api_op_CreateToken.go
+    │   │   │       │   ├── api_op_CreateTokenWithIAM.go
+    │   │   │       │   ├── api_op_RegisterClient.go
+    │   │   │       │   ├── api_op_StartDeviceAuthorization.go
+    │   │   │       │   ├── auth.go
+    │   │   │       │   ├── deserializers.go
+    │   │   │       │   ├── doc.go
+    │   │   │       │   ├── endpoints.go
+    │   │   │       │   ├── generated.json
+    │   │   │       │   ├── go_module_metadata.go
+    │   │   │       │   ├── internal
+    │   │   │       │   │   └── endpoints
+    │   │   │       │   │       └── endpoints.go
+    │   │   │       │   ├── options.go
+    │   │   │       │   ├── serializers.go
+    │   │   │       │   ├── types
+    │   │   │       │   │   ├── enums.go
+    │   │   │       │   │   ├── errors.go
+    │   │   │       │   │   └── types.go
+    │   │   │       │   └── validators.go
+    │   │   │       └── sts
+    │   │   │           ├── CHANGELOG.md
+    │   │   │           ├── LICENSE.txt
+    │   │   │           ├── api_client.go
+    │   │   │           ├── api_op_AssumeRole.go
+    │   │   │           ├── api_op_AssumeRoleWithSAML.go
+    │   │   │           ├── api_op_AssumeRoleWithWebIdentity.go
+    │   │   │           ├── api_op_AssumeRoot.go
+    │   │   │           ├── api_op_DecodeAuthorizationMessage.go
+    │   │   │           ├── api_op_GetAccessKeyInfo.go
+    │   │   │           ├── api_op_GetCallerIdentity.go
+    │   │   │           ├── api_op_GetDelegatedAccessToken.go
+    │   │   │           ├── api_op_GetFederationToken.go
+    │   │   │           ├── api_op_GetSessionToken.go
+    │   │   │           ├── api_op_GetWebIdentityToken.go
+    │   │   │           ├── auth.go
+    │   │   │           ├── deserializers.go
+    │   │   │           ├── doc.go
+    │   │   │           ├── endpoints.go
+    │   │   │           ├── generated.json
+    │   │   │           ├── go_module_metadata.go
+    │   │   │           ├── internal
+    │   │   │           │   └── endpoints
+    │   │   │           │       └── endpoints.go
+    │   │   │           ├── options.go
+    │   │   │           ├── serializers.go
+    │   │   │           ├── types
+    │   │   │           │   ├── errors.go
+    │   │   │           │   └── types.go
+    │   │   │           └── validators.go
+    │   │   └── smithy-go
+    │   │       ├── .gitignore
+    │   │       ├── .travis.yml
+    │   │       ├── AGENTS.md
+    │   │       ├── CHANGELOG.md
+    │   │       ├── CODE_OF_CONDUCT.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── Makefile
+    │   │       ├── NOTICE
+    │   │       ├── README.md
+    │   │       ├── auth
+    │   │       │   ├── auth.go
+    │   │       │   ├── bearer
+    │   │       │   │   ├── docs.go
+    │   │       │   │   ├── middleware.go
+    │   │       │   │   ├── token.go
+    │   │       │   │   └── token_cache.go
+    │   │       │   ├── identity.go
+    │   │       │   ├── option.go
+    │   │       │   └── scheme_id.go
+    │   │       ├── changelog-template.json
+    │   │       ├── context
+    │   │       │   └── suppress_expired.go
+    │   │       ├── doc.go
+    │   │       ├── document
+    │   │       │   ├── doc.go
+    │   │       │   ├── document.go
+    │   │       │   ├── errors.go
+    │   │       │   ├── internal
+    │   │       │   │   └── serde
+    │   │       │   │       ├── field.go
+    │   │       │   │       ├── field_cache.go
+    │   │       │   │       ├── reflect.go
+    │   │       │   │       ├── serde.go
+    │   │       │   │       └── tags.go
+    │   │       │   └── json
+    │   │       │       ├── decoder.go
+    │   │       │       ├── doc.go
+    │   │       │       ├── encoder.go
+    │   │       │       └── json.go
+    │   │       ├── document.go
+    │   │       ├── encoding
+    │   │       │   ├── doc.go
+    │   │       │   ├── encoding.go
+    │   │       │   ├── httpbinding
+    │   │       │   │   ├── encode.go
+    │   │       │   │   ├── header.go
+    │   │       │   │   ├── path_replace.go
+    │   │       │   │   ├── query.go
+    │   │       │   │   └── uri.go
+    │   │       │   ├── json
+    │   │       │   │   ├── array.go
+    │   │       │   │   ├── constants.go
+    │   │       │   │   ├── decoder_util.go
+    │   │       │   │   ├── encoder.go
+    │   │       │   │   ├── escape.go
+    │   │       │   │   ├── object.go
+    │   │       │   │   └── value.go
+    │   │       │   └── xml
+    │   │       │       ├── array.go
+    │   │       │       ├── constants.go
+    │   │       │       ├── doc.go
+    │   │       │       ├── element.go
+    │   │       │       ├── encoder.go
+    │   │       │       ├── error_utils.go
+    │   │       │       ├── escape.go
+    │   │       │       ├── map.go
+    │   │       │       ├── value.go
+    │   │       │       └── xml_decoder.go
+    │   │       ├── endpoints
+    │   │       │   ├── endpoint.go
+    │   │       │   └── private
+    │   │       │       └── rulesfn
+    │   │       │           ├── doc.go
+    │   │       │           ├── split.go
+    │   │       │           ├── strings.go
+    │   │       │           └── uri.go
+    │   │       ├── errors.go
+    │   │       ├── go_module_metadata.go
+    │   │       ├── internal
+    │   │       │   └── sync
+    │   │       │       └── singleflight
+    │   │       │           ├── LICENSE
+    │   │       │           ├── docs.go
+    │   │       │           └── singleflight.go
+    │   │       ├── io
+    │   │       │   ├── byte.go
+    │   │       │   ├── doc.go
+    │   │       │   ├── reader.go
+    │   │       │   └── ringbuffer.go
+    │   │       ├── local-mod-replace.sh
+    │   │       ├── logging
+    │   │       │   └── logger.go
+    │   │       ├── metrics
+    │   │       │   ├── metrics.go
+    │   │       │   └── nop.go
+    │   │       ├── middleware
+    │   │       │   ├── context.go
+    │   │       │   ├── doc.go
+    │   │       │   ├── eventstream_middleware.go
+    │   │       │   ├── logging.go
+    │   │       │   ├── metadata.go
+    │   │       │   ├── middleware.go
+    │   │       │   ├── ordered_group.go
+    │   │       │   ├── stack.go
+    │   │       │   ├── stack_values.go
+    │   │       │   ├── step_build.go
+    │   │       │   ├── step_deserialize.go
+    │   │       │   ├── step_finalize.go
+    │   │       │   ├── step_initialize.go
+    │   │       │   └── step_serialize.go
+    │   │       ├── modman.toml
+    │   │       ├── private
+    │   │       │   └── requestcompression
+    │   │       │       ├── gzip.go
+    │   │       │       ├── middleware_capture_request_compression.go
+    │   │       │       └── request_compression.go
+    │   │       ├── properties.go
+    │   │       ├── ptr
+    │   │       │   ├── doc.go
+    │   │       │   ├── from_ptr.go
+    │   │       │   ├── gen_scalars.go
+    │   │       │   └── to_ptr.go
+    │   │       ├── rand
+    │   │       │   ├── doc.go
+    │   │       │   ├── rand.go
+    │   │       │   └── uuid.go
+    │   │       ├── sync
+    │   │       │   └── error.go
+    │   │       ├── time
+    │   │       │   └── time.go
+    │   │       ├── tracing
+    │   │       │   ├── context.go
+    │   │       │   ├── nop.go
+    │   │       │   └── tracing.go
+    │   │       ├── transport
+    │   │       │   └── http
+    │   │       │       ├── auth.go
+    │   │       │       ├── auth_schemes.go
+    │   │       │       ├── checksum_middleware.go
+    │   │       │       ├── client.go
+    │   │       │       ├── doc.go
+    │   │       │       ├── headerlist.go
+    │   │       │       ├── host.go
+    │   │       │       ├── interceptor.go
+    │   │       │       ├── interceptor_middleware.go
+    │   │       │       ├── internal
+    │   │       │       │   └── io
+    │   │       │       │       └── safe.go
+    │   │       │       ├── md5_checksum.go
+    │   │       │       ├── metrics.go
+    │   │       │       ├── middleware_close_response_body.go
+    │   │       │       ├── middleware_content_length.go
+    │   │       │       ├── middleware_header_comment.go
+    │   │       │       ├── middleware_headers.go
+    │   │       │       ├── middleware_http_logging.go
+    │   │       │       ├── middleware_metadata.go
+    │   │       │       ├── middleware_min_proto.go
+    │   │       │       ├── properties.go
+    │   │       │       ├── request.go
+    │   │       │       ├── response.go
+    │   │       │       ├── time.go
+    │   │       │       ├── url.go
+    │   │       │       └── user_agent.go
+    │   │       └── validation.go
+    │   ├── beorn7
+    │   │   └── perks
+    │   │       ├── LICENSE
+    │   │       └── quantile
+    │   │           ├── exampledata.txt
+    │   │           └── stream.go
+    │   ├── cespare
+    │   │   └── xxhash
+    │   │       └── v2
+    │   │           ├── LICENSE.txt
+    │   │           ├── README.md
+    │   │           ├── testall.sh
+    │   │           ├── xxhash.go
+    │   │           ├── xxhash_amd64.s
+    │   │           ├── xxhash_arm64.s
+    │   │           ├── xxhash_asm.go
+    │   │           ├── xxhash_other.go
+    │   │           ├── xxhash_safe.go
+    │   │           └── xxhash_unsafe.go
     │   ├── dustin
     │   │   └── go-humanize
     │   │       ├── .travis.yml
@@ -379,6 +1549,19 @@
     │   │       ├── si.go
     │   │       └── times.go
     │   ├── ethpandaops
+    │   │   ├── agent-sdk-observability
+    │   │   │   ├── LICENSE
+    │   │   │   ├── errclass
+    │   │   │   │   └── errclass.go
+    │   │   │   ├── histograms
+    │   │   │   │   └── histograms.go
+    │   │   │   ├── promexporter
+    │   │   │   │   └── promexporter.go
+    │   │   │   ├── semconv
+    │   │   │   │   └── genaiconv
+    │   │   │   │       └── genaiconv.go
+    │   │   │   └── tracer
+    │   │   │       └── tracer.go
     │   │   └── codex-agent-sdk-go
     │   │       ├── .gitignore
     │   │       ├── .golangci.yml
@@ -406,6 +1589,8 @@
     │   │       │   │   ├── preset.go
     │   │       │   │   ├── tool_permissions.go
     │   │       │   │   └── transport.go
+    │   │       │   ├── elicitation
+    │   │       │   │   └── elicitation.go
     │   │       │   ├── errors
     │   │       │   │   ├── doc.go
     │   │       │   │   └── errors.go
@@ -420,9 +1605,16 @@
     │   │       │   │   ├── codex_event.go
     │   │       │   │   ├── content.go
     │   │       │   │   ├── message.go
-    │   │       │   │   └── parse.go
+    │   │       │   │   ├── parse.go
+    │   │       │   │   └── raw_json.go
     │   │       │   ├── model
     │   │       │   │   └── model.go
+    │   │       │   ├── observability
+    │   │       │   │   ├── attrs.go
+    │   │       │   │   ├── classes.go
+    │   │       │   │   ├── metrics.go
+    │   │       │   │   ├── observability.go
+    │   │       │   │   └── prometheus.go
     │   │       │   ├── permission
     │   │       │   │   └── permission.go
     │   │       │   ├── protocol
@@ -453,6 +1645,7 @@
     │   │       ├── models.go
     │   │       ├── options.go
     │   │       ├── options.md
+    │   │       ├── otel.go
     │   │       ├── query.go
     │   │       ├── sdk_mcp_server.go
     │   │       ├── sdk_mcp_tool.go
@@ -513,6 +1706,60 @@
     │   │       ├── rulimit.go
     │   │       ├── sqlite.go
     │   │       └── sqlite_go18.go
+    │   ├── go-logr
+    │   │   ├── logr
+    │   │   │   ├── .golangci.yaml
+    │   │   │   ├── CHANGELOG.md
+    │   │   │   ├── CONTRIBUTING.md
+    │   │   │   ├── LICENSE
+    │   │   │   ├── README.md
+    │   │   │   ├── SECURITY.md
+    │   │   │   ├── context.go
+    │   │   │   ├── context_noslog.go
+    │   │   │   ├── context_slog.go
+    │   │   │   ├── discard.go
+    │   │   │   ├── funcr
+    │   │   │   │   ├── funcr.go
+    │   │   │   │   └── slogsink.go
+    │   │   │   ├── logr.go
+    │   │   │   ├── sloghandler.go
+    │   │   │   ├── slogr.go
+    │   │   │   └── slogsink.go
+    │   │   └── stdr
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       └── stdr.go
+    │   ├── golang-jwt
+    │   │   └── jwt
+    │   │       └── v5
+    │   │           ├── .gitignore
+    │   │           ├── LICENSE
+    │   │           ├── MIGRATION_GUIDE.md
+    │   │           ├── README.md
+    │   │           ├── SECURITY.md
+    │   │           ├── VERSION_HISTORY.md
+    │   │           ├── claims.go
+    │   │           ├── doc.go
+    │   │           ├── ecdsa.go
+    │   │           ├── ecdsa_utils.go
+    │   │           ├── ed25519.go
+    │   │           ├── ed25519_utils.go
+    │   │           ├── errors.go
+    │   │           ├── hmac.go
+    │   │           ├── map_claims.go
+    │   │           ├── none.go
+    │   │           ├── parser.go
+    │   │           ├── parser_option.go
+    │   │           ├── registered_claims.go
+    │   │           ├── rsa.go
+    │   │           ├── rsa_pss.go
+    │   │           ├── rsa_utils.go
+    │   │           ├── signing_method.go
+    │   │           ├── staticcheck.conf
+    │   │           ├── token.go
+    │   │           ├── token_option.go
+    │   │           ├── types.go
+    │   │           └── validator.go
     │   ├── google
     │   │   ├── jsonschema-go
     │   │   │   ├── LICENSE
@@ -574,6 +1821,17 @@
     │   │       ├── README.md
     │   │       ├── trap_others.go
     │   │       └── trap_windows.go
+    │   ├── kylelemons
+    │   │   └── godebug
+    │   │       ├── LICENSE
+    │   │       ├── diff
+    │   │       │   └── diff.go
+    │   │       └── pretty
+    │   │           ├── .gitignore
+    │   │           ├── doc.go
+    │   │           ├── public.go
+    │   │           ├── reflect.go
+    │   │           └── structure.go
     │   ├── mattn
     │   │   └── go-isatty
     │   │       ├── LICENSE
@@ -644,6 +1902,12 @@
     │   │           ├── oauthex.go
     │   │           ├── resource_meta.go
     │   │           └── resource_meta_public.go
+    │   ├── munnerz
+    │   │   └── goautoneg
+    │   │       ├── LICENSE
+    │   │       ├── Makefile
+    │   │       ├── README.txt
+    │   │       └── autoneg.go
     │   ├── ncruces
     │   │   └── go-strftime
     │   │       ├── .gitignore
@@ -653,6 +1917,194 @@
     │   │       ├── pkg.go
     │   │       ├── specifiers.go
     │   │       └── strftime.go
+    │   ├── pkg
+    │   │   └── browser
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── browser.go
+    │   │       ├── browser_darwin.go
+    │   │       ├── browser_freebsd.go
+    │   │       ├── browser_linux.go
+    │   │       ├── browser_netbsd.go
+    │   │       ├── browser_openbsd.go
+    │   │       ├── browser_unsupported.go
+    │   │       └── browser_windows.go
+    │   ├── prometheus
+    │   │   ├── client_golang
+    │   │   │   ├── LICENSE
+    │   │   │   ├── NOTICE
+    │   │   │   ├── internal
+    │   │   │   │   └── github.com
+    │   │   │   │       └── golang
+    │   │   │   │           └── gddo
+    │   │   │   │               ├── LICENSE
+    │   │   │   │               └── httputil
+    │   │   │   │                   ├── header
+    │   │   │   │                   │   └── header.go
+    │   │   │   │                   └── negotiate.go
+    │   │   │   └── prometheus
+    │   │   │       ├── .gitignore
+    │   │   │       ├── README.md
+    │   │   │       ├── build_info_collector.go
+    │   │   │       ├── collector.go
+    │   │   │       ├── collectorfunc.go
+    │   │   │       ├── counter.go
+    │   │   │       ├── desc.go
+    │   │   │       ├── doc.go
+    │   │   │       ├── expvar_collector.go
+    │   │   │       ├── fnv.go
+    │   │   │       ├── gauge.go
+    │   │   │       ├── get_pid.go
+    │   │   │       ├── get_pid_gopherjs.go
+    │   │   │       ├── go_collector.go
+    │   │   │       ├── go_collector_go116.go
+    │   │   │       ├── go_collector_latest.go
+    │   │   │       ├── histogram.go
+    │   │   │       ├── internal
+    │   │   │       │   ├── almost_equal.go
+    │   │   │       │   ├── difflib.go
+    │   │   │       │   ├── go_collector_options.go
+    │   │   │       │   ├── go_runtime_metrics.go
+    │   │   │       │   └── metric.go
+    │   │   │       ├── labels.go
+    │   │   │       ├── metric.go
+    │   │   │       ├── num_threads.go
+    │   │   │       ├── num_threads_gopherjs.go
+    │   │   │       ├── observer.go
+    │   │   │       ├── process_collector.go
+    │   │   │       ├── process_collector_darwin.go
+    │   │   │       ├── process_collector_mem_cgo_darwin.c
+    │   │   │       ├── process_collector_mem_cgo_darwin.go
+    │   │   │       ├── process_collector_mem_nocgo_darwin.go
+    │   │   │       ├── process_collector_not_supported.go
+    │   │   │       ├── process_collector_procfsenabled.go
+    │   │   │       ├── process_collector_windows.go
+    │   │   │       ├── promhttp
+    │   │   │       │   ├── delegator.go
+    │   │   │       │   ├── http.go
+    │   │   │       │   ├── instrument_client.go
+    │   │   │       │   ├── instrument_server.go
+    │   │   │       │   ├── internal
+    │   │   │       │   │   └── compression.go
+    │   │   │       │   └── option.go
+    │   │   │       ├── registry.go
+    │   │   │       ├── summary.go
+    │   │   │       ├── timer.go
+    │   │   │       ├── untyped.go
+    │   │   │       ├── value.go
+    │   │   │       ├── vec.go
+    │   │   │       ├── vnext.go
+    │   │   │       └── wrap.go
+    │   │   ├── client_model
+    │   │   │   ├── LICENSE
+    │   │   │   ├── NOTICE
+    │   │   │   └── go
+    │   │   │       └── metrics.pb.go
+    │   │   ├── common
+    │   │   │   ├── LICENSE
+    │   │   │   ├── NOTICE
+    │   │   │   ├── expfmt
+    │   │   │   │   ├── decode.go
+    │   │   │   │   ├── encode.go
+    │   │   │   │   ├── expfmt.go
+    │   │   │   │   ├── fuzz.go
+    │   │   │   │   ├── openmetrics_create.go
+    │   │   │   │   ├── text_create.go
+    │   │   │   │   └── text_parse.go
+    │   │   │   └── model
+    │   │   │       ├── alert.go
+    │   │   │       ├── fingerprinting.go
+    │   │   │       ├── fnv.go
+    │   │   │       ├── labels.go
+    │   │   │       ├── labelset.go
+    │   │   │       ├── labelset_string.go
+    │   │   │       ├── metadata.go
+    │   │   │       ├── metric.go
+    │   │   │       ├── model.go
+    │   │   │       ├── signature.go
+    │   │   │       ├── silence.go
+    │   │   │       ├── time.go
+    │   │   │       ├── value.go
+    │   │   │       ├── value_float.go
+    │   │   │       ├── value_histogram.go
+    │   │   │       └── value_type.go
+    │   │   ├── otlptranslator
+    │   │   │   ├── .gitignore
+    │   │   │   ├── .golangci.yml
+    │   │   │   ├── CODE_OF_CONDUCT.md
+    │   │   │   ├── LICENSE
+    │   │   │   ├── MAINTAINERS.md
+    │   │   │   ├── README.md
+    │   │   │   ├── SECURITY.md
+    │   │   │   ├── constants.go
+    │   │   │   ├── doc.go
+    │   │   │   ├── label_namer.go
+    │   │   │   ├── metric_namer.go
+    │   │   │   ├── metric_type.go
+    │   │   │   ├── strategy.go
+    │   │   │   ├── strconv.go
+    │   │   │   └── unit_namer.go
+    │   │   └── procfs
+    │   │       ├── .gitignore
+    │   │       ├── .golangci.yml
+    │   │       ├── CODE_OF_CONDUCT.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── MAINTAINERS.md
+    │   │       ├── Makefile
+    │   │       ├── Makefile.common
+    │   │       ├── NOTICE
+    │   │       ├── README.md
+    │   │       ├── SECURITY.md
+    │   │       ├── arp.go
+    │   │       ├── buddyinfo.go
+    │   │       ├── cmdline.go
+    │   │       ├── cpuinfo.go
+    │   │       ├── cpuinfo_armx.go
+    │   │       ├── cpuinfo_loong64.go
+    │   │       ├── cpuinfo_mipsx.go
+    │   │       ├── cpuinfo_others.go
+    │   │       ├── cpuinfo_ppcx.go
+    │   │       ├── cpuinfo_riscvx.go
+    │   │       ├── cpuinfo_s390x.go
+    │   │       ├── cpuinfo_x86.go
+    │   │       ├── crypto.go
+    │   │       ├── doc.go
+    │   │       ├── fs.go
+    │   │       ├── fs_statfs_notype.go
+    │   │       ├── fs_statfs_type.go
+    │   │       ├── fscache.go
+    │   │       ├── internal
+    │   │       │   ├── fs
+    │   │       │   │   └── fs.go
+    │   │       │   └── util
+    │   │       │       ├── parse.go
+    │   │       │       ├── readfile.go
+    │   │       │       ├── sysreadfile.go
+    │   │       │       ├── sysreadfile_compat.go
+    │   │       │       └── valueparser.go
+    │   │       ├── ipvs.go
+    │   │       ├── kernel_hung.go
+    │   │       ├── kernel_random.go
+    │   │       ├── loadavg.go
+    │   │       ├── mdstat.go
+    │   │       ├── meminfo.go
+    │   │       ├── mountinfo.go
+    │   │       ├── mountstats.go
+    │   │       ├── net_*.go  (14 files)
+    │   │       ├── netstat.go
+    │   │       ├── nfnetlink_queue.go
+    │   │       ├── proc.go
+    │   │       ├── proc_*.go  (18 files)
+    │   │       ├── schedstat.go
+    │   │       ├── slab.go
+    │   │       ├── softirqs.go
+    │   │       ├── stat.go
+    │   │       ├── swaps.go
+    │   │       ├── thread.go
+    │   │       ├── ttar
+    │   │       ├── vm.go
+    │   │       └── zoneinfo.go
     │   ├── remyoudompheng
     │   │   └── bigfft
     │   │       ├── LICENSE
@@ -808,88 +2260,444 @@
     │   │       ├── uint64.go
     │   │       ├── uint8.go
     │   │       └── uint_slice.go
-    │   ├── yosida95
-    │   │   └── uritemplate
-    │   │       └── v3
-    │   │           ├── LICENSE
-    │   │           ├── README.rst
-    │   │           ├── compile.go
-    │   │           ├── equals.go
-    │   │           ├── error.go
-    │   │           ├── escape.go
-    │   │           ├── expression.go
-    │   │           ├── machine.go
-    │   │           ├── match.go
-    │   │           ├── parse.go
-    │   │           ├── prog.go
-    │   │           ├── uritemplate.go
-    │   │           └── value.go
-    │   └── zendev-sh
-    │       └── goai
-    │           ├── .gitignore
-    │           ├── AGENTS.md
-    │           ├── CLAUDE.md
-    │           ├── CONTRIBUTING.md
+    │   └── yosida95
+    │       └── uritemplate
+    │           └── v3
+    │               ├── LICENSE
+    │               ├── README.rst
+    │               ├── compile.go
+    │               ├── equals.go
+    │               ├── error.go
+    │               ├── escape.go
+    │               ├── expression.go
+    │               ├── machine.go
+    │               ├── match.go
+    │               ├── parse.go
+    │               ├── prog.go
+    │               ├── uritemplate.go
+    │               └── value.go
+    ├── go.opentelemetry.io
+    │   ├── auto
+    │   │   └── sdk
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── VERSIONING.md
+    │   │       ├── doc.go
+    │   │       ├── internal
+    │   │       │   └── telemetry
+    │   │       │       ├── attr.go
+    │   │       │       ├── doc.go
+    │   │       │       ├── id.go
+    │   │       │       ├── number.go
+    │   │       │       ├── resource.go
+    │   │       │       ├── scope.go
+    │   │       │       ├── span.go
+    │   │       │       ├── status.go
+    │   │       │       ├── traces.go
+    │   │       │       └── value.go
+    │   │       ├── limit.go
+    │   │       ├── span.go
+    │   │       ├── tracer.go
+    │   │       └── tracer_provider.go
+    │   └── otel
+    │       ├── .clomonitor.yml
+    │       ├── .codespellignore
+    │       ├── .codespellrc
+    │       ├── .gitattributes
+    │       ├── .gitignore
+    │       ├── .golangci.yml
+    │       ├── .lycheeignore
+    │       ├── .markdownlint.yaml
+    │       ├── CHANGELOG.md
+    │       ├── CODEOWNERS
+    │       ├── CONTRIBUTING.md
+    │       ├── LICENSE
+    │       ├── Makefile
+    │       ├── README.md
+    │       ├── RELEASING.md
+    │       ├── SECURITY-INSIGHTS.yml
+    │       ├── VERSIONING.md
+    │       ├── attribute
+    │       │   ├── README.md
+    │       │   ├── doc.go
+    │       │   ├── encoder.go
+    │       │   ├── filter.go
+    │       │   ├── hash.go
+    │       │   ├── internal
+    │       │   │   ├── attribute.go
+    │       │   │   └── xxhash
+    │       │   │       └── xxhash.go
+    │       │   ├── iterator.go
+    │       │   ├── key.go
+    │       │   ├── kv.go
+    │       │   ├── rawhelpers.go
+    │       │   ├── set.go
+    │       │   ├── type_string.go
+    │       │   └── value.go
+    │       ├── baggage
+    │       │   ├── README.md
+    │       │   ├── baggage.go
+    │       │   ├── context.go
+    │       │   └── doc.go
+    │       ├── codes
+    │       │   ├── README.md
+    │       │   ├── codes.go
+    │       │   └── doc.go
+    │       ├── dependencies.Dockerfile
+    │       ├── doc.go
+    │       ├── error_handler.go
+    │       ├── exporters
+    │       │   └── prometheus
+    │       │       ├── LICENSE
+    │       │       ├── README.md
+    │       │       ├── config.go
+    │       │       ├── doc.go
+    │       │       ├── errors.go
+    │       │       ├── exporter.go
+    │       │       └── internal
+    │       │           ├── counter
+    │       │           │   └── counter.go
+    │       │           ├── gen.go
+    │       │           ├── observ
+    │       │           │   └── instrumentation.go
+    │       │           ├── version.go
+    │       │           └── x
+    │       │               ├── README.md
+    │       │               ├── features.go
+    │       │               └── x.go
+    │       ├── handler.go
+    │       ├── internal
+    │       │   ├── baggage
+    │       │   │   ├── baggage.go
+    │       │   │   └── context.go
+    │       │   ├── errorhandler
+    │       │   │   └── errorhandler.go
+    │       │   └── global
+    │       │       ├── handler.go
+    │       │       ├── instruments.go
+    │       │       ├── internal_logging.go
+    │       │       ├── meter.go
+    │       │       ├── propagator.go
+    │       │       ├── state.go
+    │       │       └── trace.go
+    │       ├── internal_logging.go
+    │       ├── metric
+    │       │   ├── LICENSE
+    │       │   ├── README.md
+    │       │   ├── asyncfloat64.go
+    │       │   ├── asyncint64.go
+    │       │   ├── config.go
+    │       │   ├── doc.go
+    │       │   ├── embedded
+    │       │   │   ├── README.md
+    │       │   │   └── embedded.go
+    │       │   ├── instrument.go
+    │       │   ├── meter.go
+    │       │   ├── noop
+    │       │   │   ├── README.md
+    │       │   │   └── noop.go
+    │       │   ├── syncfloat64.go
+    │       │   └── syncint64.go
+    │       ├── metric.go
+    │       ├── propagation
+    │       │   ├── README.md
+    │       │   ├── baggage.go
+    │       │   ├── doc.go
+    │       │   ├── propagation.go
+    │       │   └── trace_context.go
+    │       ├── propagation.go
+    │       ├── renovate.json
+    │       ├── requirements.txt
+    │       ├── sdk
+    │       │   ├── LICENSE
+    │       │   ├── README.md
+    │       │   ├── instrumentation
+    │       │   │   ├── README.md
+    │       │   │   ├── doc.go
+    │       │   │   ├── library.go
+    │       │   │   └── scope.go
+    │       │   ├── internal
+    │       │   │   └── x
+    │       │   │       ├── README.md
+    │       │   │       ├── features.go
+    │       │   │       └── x.go
+    │       │   ├── metric
+    │       │   │   ├── LICENSE
+    │       │   │   ├── README.md
+    │       │   │   ├── aggregation.go
+    │       │   │   ├── cache.go
+    │       │   │   ├── config.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── env.go
+    │       │   │   ├── exemplar
+    │       │   │   │   ├── README.md
+    │       │   │   │   ├── doc.go
+    │       │   │   │   ├── exemplar.go
+    │       │   │   │   ├── filter.go
+    │       │   │   │   ├── fixed_size_reservoir.go
+    │       │   │   │   ├── histogram_reservoir.go
+    │       │   │   │   ├── reservoir.go
+    │       │   │   │   ├── storage.go
+    │       │   │   │   └── value.go
+    │       │   │   ├── exemplar.go
+    │       │   │   ├── exporter.go
+    │       │   │   ├── instrument.go
+    │       │   │   ├── instrumentkind_string.go
+    │       │   │   ├── internal
+    │       │   │   │   ├── aggregate
+    │       │   │   │   │   ├── aggregate.go
+    │       │   │   │   │   ├── atomic.go
+    │       │   │   │   │   ├── doc.go
+    │       │   │   │   │   ├── drop.go
+    │       │   │   │   │   ├── exemplar.go
+    │       │   │   │   │   ├── exponential_histogram.go
+    │       │   │   │   │   ├── filtered_reservoir.go
+    │       │   │   │   │   ├── histogram.go
+    │       │   │   │   │   ├── lastvalue.go
+    │       │   │   │   │   ├── limit.go
+    │       │   │   │   │   └── sum.go
+    │       │   │   │   ├── observ
+    │       │   │   │   │   └── instrumentation.go
+    │       │   │   │   ├── reservoir
+    │       │   │   │   │   ├── concurrent_safe.go
+    │       │   │   │   │   └── doc.go
+    │       │   │   │   └── reuse_slice.go
+    │       │   │   ├── manual_reader.go
+    │       │   │   ├── meter.go
+    │       │   │   ├── metricdata
+    │       │   │   │   ├── README.md
+    │       │   │   │   ├── data.go
+    │       │   │   │   ├── temporality.go
+    │       │   │   │   └── temporality_string.go
+    │       │   │   ├── periodic_reader.go
+    │       │   │   ├── pipeline.go
+    │       │   │   ├── provider.go
+    │       │   │   ├── reader.go
+    │       │   │   ├── version.go
+    │       │   │   └── view.go
+    │       │   ├── resource
+    │       │   │   ├── README.md
+    │       │   │   ├── auto.go
+    │       │   │   ├── builtin.go
+    │       │   │   ├── config.go
+    │       │   │   ├── container.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── env.go
+    │       │   │   ├── host_id.go
+    │       │   │   ├── host_id_bsd.go
+    │       │   │   ├── host_id_darwin.go
+    │       │   │   ├── host_id_exec.go
+    │       │   │   ├── host_id_linux.go
+    │       │   │   ├── host_id_readfile.go
+    │       │   │   ├── host_id_unsupported.go
+    │       │   │   ├── host_id_windows.go
+    │       │   │   ├── os.go
+    │       │   │   ├── os_release_darwin.go
+    │       │   │   ├── os_release_unix.go
+    │       │   │   ├── os_unix.go
+    │       │   │   ├── os_unsupported.go
+    │       │   │   ├── os_windows.go
+    │       │   │   ├── process.go
+    │       │   │   └── resource.go
+    │       │   └── version.go
+    │       ├── semconv
+    │       │   ├── v1.37.0
+    │       │   │   ├── MIGRATION.md
+    │       │   │   ├── README.md
+    │       │   │   ├── attribute_group.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── error_type.go
+    │       │   │   ├── exception.go
+    │       │   │   └── schema.go
+    │       │   └── v1.40.0
+    │       │       ├── MIGRATION.md
+    │       │       ├── README.md
+    │       │       ├── attribute_group.go
+    │       │       ├── doc.go
+    │       │       ├── error_type.go
+    │       │       ├── exception.go
+    │       │       ├── genaiconv
+    │       │       │   └── metric.go
+    │       │       ├── otelconv
+    │       │       │   └── metric.go
+    │       │       └── schema.go
+    │       ├── trace
+    │       │   ├── LICENSE
+    │       │   ├── README.md
+    │       │   ├── auto.go
+    │       │   ├── config.go
+    │       │   ├── context.go
+    │       │   ├── doc.go
+    │       │   ├── embedded
+    │       │   │   ├── README.md
+    │       │   │   └── embedded.go
+    │       │   ├── hex.go
+    │       │   ├── internal
+    │       │   │   └── telemetry
+    │       │   │       ├── attr.go
+    │       │   │       ├── doc.go
+    │       │   │       ├── id.go
+    │       │   │       ├── number.go
+    │       │   │       ├── resource.go
+    │       │   │       ├── scope.go
+    │       │   │       ├── span.go
+    │       │   │       ├── status.go
+    │       │   │       ├── traces.go
+    │       │   │       └── value.go
+    │       │   ├── nonrecording.go
+    │       │   ├── noop
+    │       │   │   ├── README.md
+    │       │   │   └── noop.go
+    │       │   ├── noop.go
+    │       │   ├── provider.go
+    │       │   ├── span.go
+    │       │   ├── trace.go
+    │       │   ├── tracer.go
+    │       │   └── tracestate.go
+    │       ├── trace.go
+    │       ├── verify_released_changelog.sh
+    │       ├── version.go
+    │       └── versions.yaml
+    ├── go.yaml.in
+    │   └── yaml
+    │       └── v2
+    │           ├── .travis.yml
     │           ├── LICENSE
-    │           ├── Makefile
+    │           ├── LICENSE.libyaml
+    │           ├── NOTICE
     │           ├── README.md
-    │           ├── ROADMAP.md
-    │           ├── agent-loop
-    │           ├── caching.go
-    │           ├── chat
-    │           ├── cov.html
-    │           ├── embed.go
-    │           ├── errors.go
-    │           ├── generate.go
-    │           ├── goai.go
-    │           ├── goai.png
-    │           ├── hooks.go
-    │           ├── image.go
-    │           ├── internal
-    │           │   ├── httpc
-    │           │   │   └── httpc.go
-    │           │   ├── openaicompat
-    │           │   │   ├── messages.go
-    │           │   │   └── openaicompat.go
-    │           │   └── sse
-    │           │       └── sse.go
-    │           ├── messages.go
-    │           ├── object.go
-    │           ├── options.go
-    │           ├── package-lock.json
-    │           ├── package.json
-    │           ├── partial_json.go
-    │           ├── provider
-    │           │   ├── anthropic
-    │           │   │   ├── anthropic.go
-    │           │   │   └── tools.go
-    │           │   ├── openai
-    │           │   │   ├── embedding.go
-    │           │   │   ├── image.go
-    │           │   │   ├── openai.go
-    │           │   │   ├── responses.go
-    │           │   │   └── tools.go
-    │           │   ├── provider.go
-    │           │   ├── token.go
-    │           │   └── types.go
-    │           ├── retry.go
-    │           ├── schema.go
-    │           ├── streaming
-    │           ├── tools
-    │           └── types.go
+    │           ├── apic.go
+    │           ├── decode.go
+    │           ├── emitterc.go
+    │           ├── encode.go
+    │           ├── parserc.go
+    │           ├── readerc.go
+    │           ├── resolve.go
+    │           ├── scannerc.go
+    │           ├── sorter.go
+    │           ├── writerc.go
+    │           ├── yaml.go
+    │           ├── yamlh.go
+    │           └── yamlprivateh.go
     ├── golang.org
     │   └── x
+    │       ├── crypto
+    │       │   ├── LICENSE
+    │       │   ├── PATENTS
+    │       │   └── pkcs12
+    │       │       ├── bmp-string.go
+    │       │       ├── crypto.go
+    │       │       ├── errors.go
+    │       │       ├── internal
+    │       │       │   └── rc2
+    │       │       │       └── rc2.go
+    │       │       ├── mac.go
+    │       │       ├── pbkdf.go
+    │       │       ├── pkcs12.go
+    │       │       └── safebags.go
+    │       ├── net
+    │       │   ├── LICENSE
+    │       │   ├── PATENTS
+    │       │   ├── http
+    │       │   │   └── httpguts
+    │       │   │       ├── guts.go
+    │       │   │       └── httplex.go
+    │       │   ├── http2
+    │       │   │   ├── .gitignore
+    │       │   │   ├── ascii.go
+    │       │   │   ├── ciphers.go
+    │       │   │   ├── client_conn_pool.go
+    │       │   │   ├── client_priority_go126.go
+    │       │   │   ├── client_priority_go127.go
+    │       │   │   ├── config.go
+    │       │   │   ├── config_go125.go
+    │       │   │   ├── config_go126.go
+    │       │   │   ├── databuffer.go
+    │       │   │   ├── errors.go
+    │       │   │   ├── flow.go
+    │       │   │   ├── frame.go
+    │       │   │   ├── gotrack.go
+    │       │   │   ├── hpack
+    │       │   │   │   ├── encode.go
+    │       │   │   │   ├── hpack.go
+    │       │   │   │   ├── huffman.go
+    │       │   │   │   ├── static_table.go
+    │       │   │   │   └── tables.go
+    │       │   │   ├── http2.go
+    │       │   │   ├── pipe.go
+    │       │   │   ├── server.go
+    │       │   │   ├── transport.go
+    │       │   │   ├── unencrypted.go
+    │       │   │   ├── write.go
+    │       │   │   ├── writesched.go
+    │       │   │   ├── writesched_priority_rfc7540.go
+    │       │   │   ├── writesched_priority_rfc9218.go
+    │       │   │   ├── writesched_random.go
+    │       │   │   └── writesched_roundrobin.go
+    │       │   ├── idna
+    │       │   │   ├── go118.go
+    │       │   │   ├── idna10.0.0.go
+    │       │   │   ├── idna9.0.0.go
+    │       │   │   ├── pre_go118.go
+    │       │   │   ├── punycode.go
+    │       │   │   ├── tables10.0.0.go
+    │       │   │   ├── tables11.0.0.go
+    │       │   │   ├── tables12.0.0.go
+    │       │   │   ├── tables13.0.0.go
+    │       │   │   ├── tables15.0.0.go
+    │       │   │   ├── tables9.0.0.go
+    │       │   │   ├── trie.go
+    │       │   │   ├── trie12.0.0.go
+    │       │   │   ├── trie13.0.0.go
+    │       │   │   └── trieval.go
+    │       │   └── internal
+    │       │       ├── httpcommon
+    │       │       │   ├── ascii.go
+    │       │       │   ├── headermap.go
+    │       │       │   └── request.go
+    │       │       └── httpsfv
+    │       │           └── httpsfv.go
     │       ├── oauth2
     │       │   ├── .travis.yml
     │       │   ├── CONTRIBUTING.md
     │       │   ├── LICENSE
     │       │   ├── README.md
+    │       │   ├── authhandler
+    │       │   │   └── authhandler.go
     │       │   ├── deviceauth.go
+    │       │   ├── google
+    │       │   │   ├── appengine.go
+    │       │   │   ├── default.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── error.go
+    │       │   │   ├── externalaccount
+    │       │   │   │   ├── aws.go
+    │       │   │   │   ├── basecredentials.go
+    │       │   │   │   ├── executablecredsource.go
+    │       │   │   │   ├── filecredsource.go
+    │       │   │   │   ├── header.go
+    │       │   │   │   ├── programmaticrefreshcredsource.go
+    │       │   │   │   └── urlcredsource.go
+    │       │   │   ├── google.go
+    │       │   │   ├── internal
+    │       │   │   │   ├── externalaccountauthorizeduser
+    │       │   │   │   │   └── externalaccountauthorizeduser.go
+    │       │   │   │   ├── impersonate
+    │       │   │   │   │   └── impersonate.go
+    │       │   │   │   └── stsexchange
+    │       │   │   │       ├── clientauth.go
+    │       │   │   │       └── sts_exchange.go
+    │       │   │   ├── jwt.go
+    │       │   │   └── sdk.go
     │       │   ├── internal
     │       │   │   ├── doc.go
     │       │   │   ├── oauth2.go
     │       │   │   ├── token.go
     │       │   │   └── transport.go
+    │       │   ├── jws
+    │       │   │   └── jws.go
+    │       │   ├── jwt
+    │       │   │   └── jwt.go
     │       │   ├── oauth2.go
     │       │   ├── pkce.go
     │       │   ├── token.go
@@ -899,117 +2707,326 @@
     │       │   ├── PATENTS
     │       │   └── errgroup
     │       │       └── errgroup.go
-    │       └── sys
+    │       ├── sys
+    │       │   ├── LICENSE
+    │       │   ├── PATENTS
+    │       │   ├── cpu
+    │       │   │   ├── asm_aix_ppc64.s
+    │       │   │   ├── asm_darwin_arm64_gc.s
+    │       │   │   ├── asm_darwin_x86_gc.s
+    │       │   │   ├── byteorder.go
+    │       │   │   ├── cpu.go
+    │       │   │   ├── cpu_*.go  (39 files)
+    │       │   │   ├── cpu_*.s  (5 files)
+    │       │   │   ├── cpu_gccgo_x86.c
+    │       │   │   ├── endian_big.go
+    │       │   │   ├── endian_little.go
+    │       │   │   ├── hwcap_linux.go
+    │       │   │   ├── parse.go
+    │       │   │   ├── proc_cpuinfo_linux.go
+    │       │   │   ├── runtime_auxv.go
+    │       │   │   ├── runtime_auxv_go121.go
+    │       │   │   ├── syscall_aix_gccgo.go
+    │       │   │   ├── syscall_aix_ppc64_gc.go
+    │       │   │   ├── syscall_darwin_arm64_gc.go
+    │       │   │   └── syscall_darwin_x86_gc.go
+    │       │   ├── unix
+    │       │   │   ├── .gitignore
+    │       │   │   ├── README.md
+    │       │   │   ├── affinity_linux.go
+    │       │   │   ├── aliases.go
+    │       │   │   ├── asm_*.s  (20 files)
+    │       │   │   ├── auxv.go
+    │       │   │   ├── auxv_unsupported.go
+    │       │   │   ├── bluetooth_linux.go
+    │       │   │   ├── bpxsvc_zos.go
+    │       │   │   ├── bpxsvc_zos.s
+    │       │   │   ├── cap_freebsd.go
+    │       │   │   ├── constants.go
+    │       │   │   ├── dev_*.go  (9 files)
+    │       │   │   ├── dirent.go
+    │       │   │   ├── endian_big.go
+    │       │   │   ├── endian_little.go
+    │       │   │   ├── env_unix.go
+    │       │   │   ├── fcntl.go
+    │       │   │   ├── fcntl_darwin.go
+    │       │   │   ├── fcntl_linux_32bit.go
+    │       │   │   ├── fdset.go
+    │       │   │   ├── gccgo.go
+    │       │   │   ├── gccgo_c.c
+    │       │   │   ├── gccgo_linux_amd64.go
+    │       │   │   ├── ifreq_linux.go
+    │       │   │   ├── ioctl_linux.go
+    │       │   │   ├── ioctl_signed.go
+    │       │   │   ├── ioctl_unsigned.go
+    │       │   │   ├── ioctl_zos.go
+    │       │   │   ├── mkall.sh
+    │       │   │   ├── mkerrors.sh
+    │       │   │   ├── mmap_nomremap.go
+    │       │   │   ├── mremap.go
+    │       │   │   ├── pagesize_unix.go
+    │       │   │   ├── pledge_openbsd.go
+    │       │   │   ├── ptrace_darwin.go
+    │       │   │   ├── ptrace_ios.go
+    │       │   │   ├── race.go
+    │       │   │   ├── race0.go
+    │       │   │   ├── readdirent_getdents.go
+    │       │   │   ├── readdirent_getdirentries.go
+    │       │   │   ├── sockcmsg_*.go  (5 files)
+    │       │   │   ├── symaddr_zos_s390x.s
+    │       │   │   ├── syscall.go
+    │       │   │   ├── syscall_*.go  (59 files)
+    │       │   │   ├── sysvshm_linux.go
+    │       │   │   ├── sysvshm_unix.go
+    │       │   │   ├── sysvshm_unix_other.go
+    │       │   │   ├── timestruct.go
+    │       │   │   ├── unveil_openbsd.go
+    │       │   │   ├── vgetrandom_linux.go
+    │       │   │   ├── vgetrandom_unsupported.go
+    │       │   │   ├── xattr_bsd.go
+    │       │   │   ├── zerrors_*.go  (39 files)
+    │       │   │   ├── zptrace_*.go  (5 files)
+    │       │   │   ├── zsymaddr_zos_s390x.s
+    │       │   │   ├── zsyscall_*.go  (42 files)
+    │       │   │   ├── zsyscall_*.s  (9 files)
+    │       │   │   ├── zsysctl_*.go  (7 files)
+    │       │   │   ├── zsysnum_*.go  (35 files)
+    │       │   │   └── ztypes_*.go  (39 files)
+    │       │   └── windows
+    │       │       ├── aliases.go
+    │       │       ├── dll_windows.go
+    │       │       ├── env_windows.go
+    │       │       ├── eventlog.go
+    │       │       ├── exec_windows.go
+    │       │       ├── memory_windows.go
+    │       │       ├── mkerrors.bash
+    │       │       ├── mkknownfolderids.bash
+    │       │       ├── mksyscall.go
+    │       │       ├── race.go
+    │       │       ├── race0.go
+    │       │       ├── registry
+    │       │       │   ├── key.go
+    │       │       │   ├── mksyscall.go
+    │       │       │   ├── syscall.go
+    │       │       │   ├── value.go
+    │       │       │   └── zsyscall_windows.go
+    │       │       ├── security_windows.go
+    │       │       ├── service.go
+    │       │       ├── setupapi_windows.go
+    │       │       ├── str.go
+    │       │       ├── syscall.go
+    │       │       ├── syscall_windows.go
+    │       │       ├── types_windows.go
+    │       │       ├── types_windows_386.go
+    │       │       ├── types_windows_amd64.go
+    │       │       ├── types_windows_arm.go
+    │       │       ├── types_windows_arm64.go
+    │       │       ├── zerrors_windows.go
+    │       │       ├── zknownfolderids_windows.go
+    │       │       └── zsyscall_windows.go
+    │       └── text
     │           ├── LICENSE
     │           ├── PATENTS
-    │           ├── cpu
-    │           │   ├── asm_aix_ppc64.s
-    │           │   ├── asm_darwin_arm64_gc.s
-    │           │   ├── asm_darwin_x86_gc.s
-    │           │   ├── byteorder.go
-    │           │   ├── cpu.go
-    │           │   ├── cpu_*.go  (40 files)
-    │           │   ├── cpu_*.s  (5 files)
-    │           │   ├── cpu_gccgo_x86.c
-    │           │   ├── endian_big.go
-    │           │   ├── endian_little.go
-    │           │   ├── hwcap_linux.go
-    │           │   ├── parse.go
-    │           │   ├── proc_cpuinfo_linux.go
-    │           │   ├── runtime_auxv.go
-    │           │   ├── runtime_auxv_go121.go
-    │           │   ├── syscall_aix_gccgo.go
-    │           │   ├── syscall_aix_ppc64_gc.go
-    │           │   ├── syscall_darwin_arm64_gc.go
-    │           │   └── syscall_darwin_x86_gc.go
-    │           ├── unix
-    │           │   ├── .gitignore
-    │           │   ├── README.md
-    │           │   ├── affinity_linux.go
-    │           │   ├── aliases.go
-    │           │   ├── asm_*.s  (20 files)
-    │           │   ├── auxv.go
-    │           │   ├── auxv_unsupported.go
-    │           │   ├── bluetooth_linux.go
-    │           │   ├── bpxsvc_zos.go
-    │           │   ├── bpxsvc_zos.s
-    │           │   ├── cap_freebsd.go
-    │           │   ├── constants.go
-    │           │   ├── dev_*.go  (9 files)
-    │           │   ├── dirent.go
-    │           │   ├── endian_big.go
-    │           │   ├── endian_little.go
-    │           │   ├── env_unix.go
-    │           │   ├── fcntl.go
-    │           │   ├── fcntl_darwin.go
-    │           │   ├── fcntl_linux_32bit.go
-    │           │   ├── fdset.go
-    │           │   ├── gccgo.go
-    │           │   ├── gccgo_c.c
-    │           │   ├── gccgo_linux_amd64.go
-    │           │   ├── ifreq_linux.go
-    │           │   ├── ioctl_linux.go
-    │           │   ├── ioctl_signed.go
-    │           │   ├── ioctl_unsigned.go
-    │           │   ├── ioctl_zos.go
-    │           │   ├── mkall.sh
-    │           │   ├── mkerrors.sh
-    │           │   ├── mmap_nomremap.go
-    │           │   ├── mremap.go
-    │           │   ├── pagesize_unix.go
-    │           │   ├── pledge_openbsd.go
-    │           │   ├── ptrace_darwin.go
-    │           │   ├── ptrace_ios.go
-    │           │   ├── race.go
-    │           │   ├── race0.go
-    │           │   ├── readdirent_getdents.go
-    │           │   ├── readdirent_getdirentries.go
-    │           │   ├── sockcmsg_*.go  (5 files)
-    │           │   ├── symaddr_zos_s390x.s
-    │           │   ├── syscall.go
-    │           │   ├── syscall_*.go  (59 files)
-    │           │   ├── sysvshm_linux.go
-    │           │   ├── sysvshm_unix.go
-    │           │   ├── sysvshm_unix_other.go
-    │           │   ├── timestruct.go
-    │           │   ├── unveil_openbsd.go
-    │           │   ├── vgetrandom_linux.go
-    │           │   ├── vgetrandom_unsupported.go
-    │           │   ├── xattr_bsd.go
-    │           │   ├── zerrors_*.go  (39 files)
-    │           │   ├── zptrace_*.go  (5 files)
-    │           │   ├── zsymaddr_zos_s390x.s
-    │           │   ├── zsyscall_*.go  (42 files)
-    │           │   ├── zsyscall_*.s  (9 files)
-    │           │   ├── zsysctl_*.go  (7 files)
-    │           │   ├── zsysnum_*.go  (35 files)
-    │           │   └── ztypes_*.go  (39 files)
-    │           └── windows
-    │               ├── aliases.go
-    │               ├── dll_windows.go
-    │               ├── env_windows.go
-    │               ├── eventlog.go
-    │               ├── exec_windows.go
-    │               ├── memory_windows.go
-    │               ├── mkerrors.bash
-    │               ├── mkknownfolderids.bash
-    │               ├── mksyscall.go
-    │               ├── race.go
-    │               ├── race0.go
-    │               ├── security_windows.go
-    │               ├── service.go
-    │               ├── setupapi_windows.go
-    │               ├── str.go
-    │               ├── syscall.go
-    │               ├── syscall_windows.go
-    │               ├── types_windows.go
-    │               ├── types_windows_386.go
-    │               ├── types_windows_amd64.go
-    │               ├── types_windows_arm.go
-    │               ├── types_windows_arm64.go
-    │               ├── zerrors_windows.go
-    │               ├── zknownfolderids_windows.go
-    │               └── zsyscall_windows.go
+    │           ├── secure
+    │           │   └── bidirule
+    │           │       └── bidirule.go
+    │           ├── transform
+    │           │   └── transform.go
+    │           └── unicode
+    │               ├── bidi
+    │               │   ├── bidi.go
+    │               │   ├── bracket.go
+    │               │   ├── core.go
+    │               │   ├── prop.go
+    │               │   ├── tables15.0.0.go
+    │               │   ├── tables17.0.0.go
+    │               │   └── trieval.go
+    │               └── norm
+    │                   ├── composition.go
+    │                   ├── forminfo.go
+    │                   ├── input.go
+    │                   ├── iter.go
+    │                   ├── normalize.go
+    │                   ├── readwriter.go
+    │                   ├── tables15.0.0.go
+    │                   ├── tables17.0.0.go
+    │                   ├── transform.go
+    │                   └── trie.go
+    ├── google.golang.org
+    │   └── protobuf
+    │       ├── LICENSE
+    │       ├── PATENTS
+    │       ├── encoding
+    │       │   ├── protodelim
+    │       │   │   └── protodelim.go
+    │       │   ├── prototext
+    │       │   │   ├── decode.go
+    │       │   │   ├── doc.go
+    │       │   │   └── encode.go
+    │       │   └── protowire
+    │       │       └── wire.go
+    │       ├── internal
+    │       │   ├── descfmt
+    │       │   │   └── stringer.go
+    │       │   ├── descopts
+    │       │   │   └── options.go
+    │       │   ├── detrand
+    │       │   │   └── rand.go
+    │       │   ├── editiondefaults
+    │       │   │   ├── defaults.go
+    │       │   │   └── editions_defaults.binpb
+    │       │   ├── encoding
+    │       │   │   ├── defval
+    │       │   │   │   └── default.go
+    │       │   │   ├── messageset
+    │       │   │   │   └── messageset.go
+    │       │   │   ├── tag
+    │       │   │   │   └── tag.go
+    │       │   │   └── text
+    │       │   │       ├── decode.go
+    │       │   │       ├── decode_number.go
+    │       │   │       ├── decode_string.go
+    │       │   │       ├── decode_token.go
+    │       │   │       ├── doc.go
+    │       │   │       └── encode.go
+    │       │   ├── errors
+    │       │   │   └── errors.go
+    │       │   ├── filedesc
+    │       │   │   ├── build.go
+    │       │   │   ├── desc.go
+    │       │   │   ├── desc_init.go
+    │       │   │   ├── desc_lazy.go
+    │       │   │   ├── desc_list.go
+    │       │   │   ├── desc_list_gen.go
+    │       │   │   ├── editions.go
+    │       │   │   ├── placeholder.go
+    │       │   │   └── presence.go
+    │       │   ├── filetype
+    │       │   │   └── build.go
+    │       │   ├── flags
+    │       │   │   ├── flags.go
+    │       │   │   ├── proto_legacy_disable.go
+    │       │   │   └── proto_legacy_enable.go
+    │       │   ├── genid
+    │       │   │   ├── any_gen.go
+    │       │   │   ├── api_gen.go
+    │       │   │   ├── descriptor_gen.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── duration_gen.go
+    │       │   │   ├── empty_gen.go
+    │       │   │   ├── field_mask_gen.go
+    │       │   │   ├── go_features_gen.go
+    │       │   │   ├── goname.go
+    │       │   │   ├── map_entry.go
+    │       │   │   ├── name.go
+    │       │   │   ├── source_context_gen.go
+    │       │   │   ├── struct_gen.go
+    │       │   │   ├── timestamp_gen.go
+    │       │   │   ├── type_gen.go
+    │       │   │   ├── wrappers.go
+    │       │   │   └── wrappers_gen.go
+    │       │   ├── impl
+    │       │   │   ├── api_export.go
+    │       │   │   ├── api_export_opaque.go
+    │       │   │   ├── bitmap.go
+    │       │   │   ├── bitmap_race.go
+    │       │   │   ├── checkinit.go
+    │       │   │   ├── codec_extension.go
+    │       │   │   ├── codec_field.go
+    │       │   │   ├── codec_field_opaque.go
+    │       │   │   ├── codec_gen.go
+    │       │   │   ├── codec_map.go
+    │       │   │   ├── codec_message.go
+    │       │   │   ├── codec_message_opaque.go
+    │       │   │   ├── codec_messageset.go
+    │       │   │   ├── codec_tables.go
+    │       │   │   ├── codec_unsafe.go
+    │       │   │   ├── convert.go
+    │       │   │   ├── convert_list.go
+    │       │   │   ├── convert_map.go
+    │       │   │   ├── decode.go
+    │       │   │   ├── encode.go
+    │       │   │   ├── enum.go
+    │       │   │   ├── equal.go
+    │       │   │   ├── extension.go
+    │       │   │   ├── lazy.go
+    │       │   │   ├── legacy_enum.go
+    │       │   │   ├── legacy_export.go
+    │       │   │   ├── legacy_extension.go
+    │       │   │   ├── legacy_file.go
+    │       │   │   ├── legacy_message.go
+    │       │   │   ├── merge.go
+    │       │   │   ├── merge_gen.go
+    │       │   │   ├── message.go
+    │       │   │   ├── message_opaque.go
+    │       │   │   ├── message_opaque_gen.go
+    │       │   │   ├── message_reflect.go
+    │       │   │   ├── message_reflect_field.go
+    │       │   │   ├── message_reflect_field_gen.go
+    │       │   │   ├── message_reflect_gen.go
+    │       │   │   ├── pointer_unsafe.go
+    │       │   │   ├── pointer_unsafe_opaque.go
+    │       │   │   ├── presence.go
+    │       │   │   └── validate.go
+    │       │   ├── order
+    │       │   │   ├── order.go
+    │       │   │   └── range.go
+    │       │   ├── pragma
+    │       │   │   └── pragma.go
+    │       │   ├── protolazy
+    │       │   │   ├── bufferreader.go
+    │       │   │   ├── lazy.go
+    │       │   │   └── pointer_unsafe.go
+    │       │   ├── set
+    │       │   │   └── ints.go
+    │       │   ├── strs
+    │       │   │   ├── strings.go
+    │       │   │   └── strings_unsafe.go
+    │       │   └── version
+    │       │       └── version.go
+    │       ├── proto
+    │       │   ├── checkinit.go
+    │       │   ├── decode.go
+    │       │   ├── decode_gen.go
+    │       │   ├── doc.go
+    │       │   ├── encode.go
+    │       │   ├── encode_gen.go
+    │       │   ├── equal.go
+    │       │   ├── extension.go
+    │       │   ├── merge.go
+    │       │   ├── messageset.go
+    │       │   ├── proto.go
+    │       │   ├── proto_methods.go
+    │       │   ├── proto_reflect.go
+    │       │   ├── reset.go
+    │       │   ├── size.go
+    │       │   ├── size_gen.go
+    │       │   ├── wrapperopaque.go
+    │       │   └── wrappers.go
+    │       ├── reflect
+    │       │   ├── protoreflect
+    │       │   │   ├── methods.go
+    │       │   │   ├── proto.go
+    │       │   │   ├── source.go
+    │       │   │   ├── source_gen.go
+    │       │   │   ├── type.go
+    │       │   │   ├── value.go
+    │       │   │   ├── value_equal.go
+    │       │   │   ├── value_union.go
+    │       │   │   └── value_unsafe.go
+    │       │   └── protoregistry
+    │       │       └── registry.go
+    │       ├── runtime
+    │       │   ├── protoiface
+    │       │   │   ├── legacy.go
+    │       │   │   └── methods.go
+    │       │   └── protoimpl
+    │       │       ├── impl.go
+    │       │       └── version.go
+    │       └── types
+    │           └── known
+    │               └── timestamppb
+    │                   └── timestamp.pb.go
     ├── modernc.org
     │   ├── libc
     │   │   ├── .gitignore
@@ -2238,4 +4255,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-189 directories, 2448 files
+594 directories, 4089 files
