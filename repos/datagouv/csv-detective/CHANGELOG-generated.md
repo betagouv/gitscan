@@ -1,27 +1,23 @@
-## Changelog : csv-detective (30 derniers jours, au 18 mars 2026)
+## Changelog : csv-detective (30 derniers jours, au 2026-04-29)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la détection des formats de données, notamment pour les codes INSEE, les dates et les nombres. Des corrections ont également été apportées pour améliorer la précision de l'analyse des fichiers, en particulier concernant les valeurs manquantes et les erreurs de conversion. Enfin, la gestion des encodages a été revue.
+Les récentes mises à jour de csv-detective se concentrent sur l'amélioration de la robustesse et de la performance, notamment en optimisant la détection des types de données dans les colonnes, en particulier pour les colonnes vides et les formats de date. Des corrections de bugs ont également été apportées pour garantir une analyse plus précise des fichiers CSV.
 
 ### Évolutions fonctionnelles
-- Ajout du format `code_epci` pour la détection des codes d'établissements publics de coopération intercommunale. [#214](https://github.com/datagouv/csv-detective/pull/214)
-- Possibilité de définir des proportions personnalisées pour les formats détectés. [#213](https://github.com/datagouv/csv-detective/pull/213)
-- Amélioration de la détection des nombres en notation scientifique, y compris pour les nombres négatifs. [#229](https://github.com/datagouv/csv-detective/pull/229)
-- Correction de la détection des dates dans certains formats (RFC822 et dates avec fuseau horaire). [#226](https://github.com/datagouv/csv-detective/pull/226), [#227](https://github.com/datagouv/csv-detective/pull/227)
-- Correction du nom du format `code_commune_insee` qui a été renommé `code_commune` pour une meilleure cohérence. [#215](https://github.com/datagouv/csv-detective/pull/215)
+- Correction d'un bug empêchant la validation de se terminer correctement en cas de crash lors du chargement des données par blocs. [#1f9788f](https://github.com/datagouv/csv-detective/commit/1f9788f)
+- Correction d'un bug sur les colonnes vides qui empêchait l'analyse correcte des données. [#998be02](https://github.com/datagouv/csv-detective/commit/998be02)
+- Amélioration de la détection des dates au format RFC 822. [#e624e48](https://github.com/datagouv/csv-detective/commit/e624e48)
+- Optimisation de la détection en ne testant que les valeurs uniques dans les colonnes. [#e4c67c0](https://github.com/datagouv/csv-detective/commit/e4c67c0)
+- Amélioration de la performance en utilisant des itérateurs dans les fonctions `any` et `all`. [#6e49268](https://github.com/datagouv/csv-detective/commit/6e49268)
+- Les tests ne sont plus exécutés sur les colonnes vides. [#02240fa](https://github.com/datagouv/csv-detective/commit/02240fa)
+- Les tests sont ignorés pour les colonnes d'étiquettes obligatoires. [#0df0057](https://github.com/datagouv/csv-detective/commit/0df0057)
 
 ### Évolutions techniques
-- Changement de la librairie de détection d'encodage pour une meilleure performance et précision. [#218](https://github.com/datagouv/csv-detective/pull/218)
-- Correction du calcul du nombre de valeurs manquantes dans les fichiers analysés par blocs (chunked).
-- Suppression de code mort dans le module `siret.py`. [#228](https://github.com/datagouv/csv-detective/pull/228)
-- Amélioration de la gestion des `NaN` et `inf` lors de la création du profil des données. [#235](https://github.com/datagouv/csv-detective/pull/235)
-- Correction d'une erreur qui empêchait la publication automatique lors des commits sur la branche principale. [#216](https://github.com/datagouv/csv-detective/pull/216)
+- Mise à jour de la version minimale de Python supportée (documentée). [#7855f7e](https://github.com/datagouv/csv-detective/commit/7855f7e)
+- Ajout d'un test pour vérifier que tous les formats ont des étiquettes. [#231](https://github.com/etalab/csv-detective/pull/231) (via CHANGELOG.md)
+- Amélioration de la détection de l'encodage. [#218](https://github.com/etalab/csv-detective/pull/218) (via CHANGELOG.md)
+- Mise à jour de la librairie `frformat`. [#234](https://github.com/etalab/csv-detective/pull/234) (via CHANGELOG.md)
+- Mise à jour de la librairie `pandas` vers la version 3.0. [#236](https://github.com/etalab/csv-detective/pull/236) (via CHANGELOG.md)
 
 ### Autres changements
-- Ajout de tests pour vérifier que tous les formats ont une description (label). [#231](https://github.com/datagouv/csv-detective/pull/231)
-- Correction de typos et amélioration de la lisibilité du code.
-- Correction de problèmes mineurs dans les exemples de sortie du schéma. [#224](https://github.com/datagouv/csv-detective/pull/224)
-- Correction du nom de fichier exporté contenant le nom de la feuille. [#230](https://github.com/datagouv/csv-detective/pull/230)
-- Correction de la gestion des chaînes vides dans la détection des pourcentages et des montants monétaires. [#222](https://github.com/datagouv/csv-detective/pull/222)
-- Correction d'une erreur qui empêchait la validation si le format détecté était une chaîne de caractères. [#232](https://github.com/datagouv/csv-detective/pull/232)
-- Amélioration de la gestion des entiers trop longs, qui n'étaient pas correctement détectés comme des entiers ou des flottants. [#233](https://github.com/datagouv/csv-detective/pull/233)
+- Corrections de linting et ajout de tests. [#fb220a9](https://github.com/datagouv/csv-detective/commit/fb220a9), [#7298276](https://github.com/datagouv/csv-detective/commit/7298276)
