@@ -1,22 +1,23 @@
-## Changelog : projects (30 derniers jours, au 27 avril 2026)
+## Changelog : projects (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de la stabilité de l'application, notamment concernant la duplication de tableaux, l'affichage des activités et la gestion des droits d'accès. Une nouvelle API pour les statistiques a également été implémentée.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de l'expérience utilisateur, notamment au niveau de la duplication de tableaux, de l'affichage des activités et des notifications. Une nouvelle API pour les statistiques a également été implémentée.
 
 ### Évolutions fonctionnelles
-- Les notifications ne sont plus automatiquement marquées comme lues lorsqu'on clique dessus.
-- Correction d'un bug empêchant l'affichage correct des activités.
-- Correction d'un bug empêchant l'affichage du sélecteur de projet en mode organisation.
-- Correction des droits d'accès en mode organisation [#68](https://github.com/suitenumerique/projects/issues/68).
-- Correction de problèmes liés à la duplication de tableaux :
-    - Résolution d'un problème de récupération des tableaux lors de la duplication [#805d156](https://github.com/suitenumerique/projects/commit/805d156).
-    - Correction d'un problème d'ID de projet cible lors de la duplication [#38ca03c](https://github.com/suitenumerique/projects/commit/38ca03c).
-    - Correction de la création de tableaux modèles [#b1a2e3e](https://github.com/suitenumerique/projects/commit/b1a2e3e).
-- Correction d'un bug empêchant la mise à jour des tableaux [#9ee3492](https://github.com/suitenumerique/projects/commit/9ee3492).
+- Les filtres sont maintenant inclus dans l'URL, permettant de les partager et de les retrouver facilement. [#69](https://github.com/suitenumerique/projects/pull/69)
+- Après la duplication d'un tableau, la nouvelle carte est automatiquement ouverte.
+- Correction d'un bug empêchant l'ajout correct d'utilisateurs dans la fenêtre de partage.
+- Correction d'un bug lié à l'ouverture des cartes avec la combinaison de touches Cmd+Enter sur Mac.
+- Amélioration de la couleur de fond des badges de date d'échéance.
+- Les notifications ne sont plus automatiquement marquées comme lues lors d'un clic.
+- Correction de problèmes d'affichage des activités.
+- L'accès au sélecteur de projet est maintenant correctement géré en mode organisation.
+- Correction des droits d'accès en mode organisation. [#68](https://github.com/suitenumerique/projects/issues/68)
 
 ### Évolutions techniques
-- Implémentation d'une API pour les statistiques [#67](https://github.com/suitenumerique/projects/issues/67).
-- Déploiement en environnement de staging [#69](https://github.com/suitenumerique/projects/commit/1fa07d0).
+- Implémentation d'une API pour les statistiques. [#67](https://github.com/suitenumerique/projects/issues/67)
+- Correction de problèmes lors de la duplication de tableaux et de la création de tableaux à partir de modèles.
+- Correction de bugs liés à la mise à jour des tableaux.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Staging de modifications. [#69](https://github.com/suitenumerique/projects/pull/69)
