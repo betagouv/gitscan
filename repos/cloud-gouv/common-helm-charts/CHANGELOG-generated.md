@@ -1,19 +1,19 @@
 ## Changelog : common-helm-charts (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les charts Helm ont bénéficié d'améliorations concernant la publication en OCI, la gestion des secrets externes, et la correction de bugs liés à Restic et à la configuration des jobs CI. Des optimisations ont également été apportées pour améliorer la stabilité et la performance des déploiements.
+Ce mois-ci, les mises à jour se concentrent sur l'amélioration de la flexibilité et de la robustesse des charts Helm. Des correctifs ont été apportés pour résoudre des problèmes de déverrouillage de Restic et de configuration du CI, tandis que de nouvelles fonctionnalités permettent l'utilisation de secrets externes et l'ajout de publication OCI lors des releases.
 
 ### Évolutions fonctionnelles
-- Possibilité d'utiliser des secrets externes pour les charts, offrant une plus grande flexibilité et sécurité dans la gestion des informations sensibles. [#15](https://github.com/cloud-gouv/common-helm-charts/issues/15)
-- Correction d'un bug empêchant le déverrouillage correct de Restic. [#13](https://github.com/cloud-gouv/common-helm-charts/issues/13)
+- Possibilité d'utiliser des secrets externes pour les charts. [#15](https://github.com/cloud-gouv/common-helm-charts/issues/15)
+- Correction d'un problème de déverrouillage de Restic. [#13](https://github.com/cloud-gouv/common-helm-charts/issues/13)
+- Correction de l'application du nom cible des applications.
 
 ### Évolutions techniques
-- Ajout de la publication des charts au format OCI lors des releases, facilitant leur distribution et leur utilisation dans différents environnements. [#12](https://github.com/cloud-gouv/common-helm-charts/issues/12)
-- Suppression d'une limite CPU inutile dans certains charts, améliorant potentiellement les performances. [#11](https://github.com/cloud-gouv/common-helm-charts/issues/11)
-- Correction du nom de l'application cible dans le chart Copier. [#8](https://github.com/cloud-gouv/common-helm-charts/issues/8) et [#14](https://github.com/cloud-gouv/common-helm-charts/issues/14)
-- Désactivation temporaire des jobs CI HTTP pour résoudre des problèmes de stabilité.
+- Ajout de la publication OCI lors des releases, améliorant le processus de déploiement. [#12](https://github.com/cloud-gouv/common-helm-charts/issues/12)
+- Suppression d'une limite CPU inutile dans un chart. [#11](https://github.com/cloud-gouv/common-helm-charts/issues/11)
+- Désactivation temporaire du CI et mise à jour de l'index de développement pour améliorer la stabilité.
+- Correction de la configuration du CI pour éviter des erreurs.
 
 ### Autres changements
 - Nettoyage général du code.
 - Mise à jour de l'index de documentation et des packages.
-- Correction du nom de la cible "app" dans certains charts. [#11](https://github.com/cloud-gouv/common-helm-charts/issues/11) et [#8](https://github.com/cloud-gouv/common-helm-charts/issues/8)
