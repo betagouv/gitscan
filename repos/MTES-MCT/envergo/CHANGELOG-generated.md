@@ -1,38 +1,41 @@
-## Changelog : envergo (30 derniers jours, au 24 avril 2026)
+## Changelog : envergo (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des haies, avec des ajouts de validations, de configurations et de tests. L'interface utilisateur a également été améliorée, notamment pour la page de contact et l'affichage des résultats. Des corrections de bugs et des optimisations de performance ont été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la page de contact, la gestion des haies Natura 2000, et la correction de bugs liés à la validation et à l'affichage des données. Des optimisations de performance et des mises à jour de l'infrastructure ont également été réalisées. La FAQ a été migrée vers Gitbook.
 
 ### Évolutions fonctionnelles
-- Ajout de la validation de la longueur maximale des haies, configurable en backend et avec un message d'erreur associé. [#1074](https://github.com/MTES-MCT/envergo/issues/1074)
-- Amélioration du formulaire de contact, avec la prise en compte de la configuration la plus récente et un fallback en cas d'absence de contacts. [#1085](https://github.com/MTES-MCT/envergo/issues/1085)
-- Ajout d'un bouton pour retirer une pièce jointe lors de l'upload de fichiers. [#1081](https://github.com/MTES-MCT/envergo/issues/1081)
-- Correction de l'affichage du périmètre sur certaines pages. [#1087](https://github.com/MTES-MCT/envergo/issues/1087)
-- Ajout d'un paramètre "aa handling" pour gérer le cas échéant. [#1088](https://github.com/MTES-MCT/envergo/issues/1088)
-- Amélioration de l'affichage des résultats et ajout de nouvelles options de configuration pour les réglementations. [#1070](https://github.com/MTES-MCT/envergo/issues/1070)
-- Ajout de filtres et d'une interface utilisateur pour la gestion des projets. [#1065](https://github.com/MTES-MCT/envergo/issues/1065)
-- Ajout d'une page de contact améliorée avec des informations pertinentes. [#1066](https://github.com/MTES-MCT/envergo/issues/1066)
-- Migration de la FAQ utilisateur vers Gitbook. [#1073](https://github.com/MTES-MCT/envergo/issues/1073)
+
+*   **Page de contact :** Amélioration de l'interface utilisateur, ajout d'une barre de recherche et d'informations sur les moyens de contact.
+*   **Haies Natura 2000 :**
+    *   Ajout de la gestion du paramètre "concerne_aa" pour les haies Natura 2000.
+    *   Amélioration de la validation de la longueur des haies.
+    *   Affichage d'un message personnalisé pour la réglementation Natura 2000 dans la vue `confighaie_settings`.
+*   **FAQ :** Migration de la FAQ vers Gitbook pour une meilleure accessibilité et maintenance.
+*   **Affichage des résultats :** Amélioration de l'affichage des résultats de densité et ajout de détails sur les cartes.
+*   **Gestion des contacts :** Amélioration de la gestion des contacts et ajout de liens vers les informations pertinentes.
+*   **Analytique :** Ajout de suivi pour les informations de responsabilité sur les pages d'évaluation et de simulation.
 
 ### Évolutions techniques
-- Refactor de la gestion de `concerne_aa` pour Natura 2000 Haie, avec l'utilisation de migrations de données et de champs de choix.
-- Optimisations de performance pour les requêtes de densité. [#1059](https://github.com/MTES-MCT/envergo/issues/1059)
-- Mise à jour des dépendances et corrections de bugs liés à l'infrastructure de déploiement.
-- Amélioration des tests unitaires et d'intégration, notamment pour les haies et les réglementations.
-- Correction de problèmes de sécurité (XSS) dans l'affichage des messages d'erreur.
-- Ajout de tests Playwright pour la couverture des tests E2E.
-- Amélioration de la gestion des erreurs et ajout de logs plus informatifs.
-- Utilisation de Gist pour l'indexation des données. [#1078](https://github.com/MTES-MCT/envergo/issues/1078)
+
+*   **Optimisations de performance :**
+    *   Optimisation des requêtes de densité.
+    *   Réduction de la complexité de certaines opérations.
+*   **Refactoring :**
+    *   Simplification du code et suppression de code obsolète.
+    *   Remplacement de `var` par `const` dans le code JavaScript.
+    *   Amélioration de la structure du code pour une meilleure maintenabilité.
+*   **Infrastructure :**
+    *   Mise à jour de la configuration de déploiement pour résoudre les problèmes de mémoire.
+    *   Ajout de variables d'environnement pour Sentry.
+    *   Correction de problèmes liés à la gestion des erreurs et des timeouts.
+*   **Tests :** Ajout et amélioration des tests unitaires et d'intégration.
+*   **Migrations :** Ajout de nouvelles migrations pour la gestion des données et des configurations.
+*   **Sécurité :** Correction d'une vulnérabilité XSS potentielle dans le message d'erreur de la messagerie.
 
 ### Autres changements
-- Mise à jour de la documentation et des textes de l'interface utilisateur.
-- Correction de coquilles et amélioration de la lisibilité du code.
-- Ajout de commentaires et de docstrings pour faciliter la maintenance.
-- Suppression de code obsolète et nettoyage du code source.
-- Ajout d'analytics pour suivre l'utilisation de l'application.
-- Ajout de la gestion des erreurs Sentry.
-- Amélioration de la gestion des configurations et des paramètres.
-- Ajout de la gestion des événements d'accordéon.
-- Ajout de la gestion des erreurs 429 et amélioration des messages d'erreur.
-- Ajout de la gestion des erreurs de réseau.
-- Ajout de la gestion des erreurs de timeout.
+
+*   **Documentation :** Mise à jour de la documentation et ajout de commentaires.
+*   **Configuration :** Ajout de nouvelles constantes de configuration pour faciliter la maintenance et la personnalisation.
+*   **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+*   **Corrections de bugs :** Correction de divers bugs mineurs et amélioration de la stabilité de l'application.
+*   **Mise à jour des dépendances :** (non listées individuellement)
