@@ -1,25 +1,32 @@
-## Changelog : st-home (30 derniers jours, au 26 avril 2026)
+## Changelog : st-home (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application st-home a bénéficié d'améliorations significatives, notamment le déploiement d'une nouvelle version de la carte de déploiement avec plus d'informations (services, EPCI, etc.), l'ajout d'une page dédiée aux partenaires OPSN et des corrections de données et d'affichage. Des optimisations techniques ont également été apportées, comme le remplacement de Nginx par Caddy et la configuration des logs.
+Les dernières mises à jour de st-home se concentrent sur l'amélioration de la carte de déploiement, l'intégration de nouvelles données (notamment de DILA), et l'optimisation de l'affichage des services et des partenaires. Des améliorations techniques ont également été apportées, notamment le remplacement de Nginx par Caddy et des ajustements de la planification des mises à jour de la base de données.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page listant les partenaires OPSN. [#58](https://github.com/suitenumerique/st-home/issues/58)
-- Nouvelle version de la carte de déploiement (v2) affichant les services, les EPCI et d'autres informations. [#56](https://github.com/suitenumerique/st-home/issues/56)
-- Amélioration de l'affichage des niveaux sur la carte de déploiement. [#62](https://github.com/suitenumerique/st-home/issues/62)
-- Ajout d'une nouvelle entrée de menu pour la carte de déploiement.
-- Mise à jour des textes dans les pages RPNT et OPSN pour une meilleure clarté.
-- Correction de l'affichage des données OPSN, qui n'étaient pas visibles avant l'étape d'intention.
-- Correction de l'export CSV pour les statistiques groupées par niveau.
+
+- **Carte de déploiement (Deploymap) v2 :** Nouvelle version de la carte de déploiement avec affichage des services, des EPCI et d'autres informations. [#56](https://github.com/suitenumerique/st-home/issues/56)
+- **Affichage des services :**
+    - Correction de l'affichage des services visibles dans la liste des services d'une commune. [#62](https://github.com/suitenumerique/st-home/issues/62)
+    - Séparation des services en deux catégories : socle et écosystème.
+    - Amélioration de la gestion des différents niveaux d'affichage des services.
+- **Partenaires :** Ajout d'une nouvelle page dédiée aux partenaires OPSN. [#58](https://github.com/suitenumerique/st-home/issues/58)
+- **Données :** Mise à jour pour utiliser le nouveau format d'export de données de DILA. [#64](https://github.com/suitenumerique/st-home/issues/64)
+- **Réorganisation des services :** Réorganisation de l'ordre des services provenant d'OPSNs.
+- **Textes :** Mise à jour des textes sur les pages RPNT et OPSN.
 
 ### Évolutions techniques
-- Remplacement de Nginx par Caddy comme reverse proxy pour améliorer les performances et la configuration. [#58](https://github.com/suitenumerique/st-home/issues/58)
-- Désactivation des logs d'accès de Caddy et utilisation des logs du routeur Scalingo. [#59](https://github.com/suitenumerique/st-home/issues/59)
-- Mise à jour de la base de données toutes les 4 heures.
-- Ajout d'une commande de restauration de base de données distante.
-- Utilisation des données du centre de déploiement pour la carte des partenaires.
-- Passage au nouveau format d'export de données de DILA.
+
+- **Infrastructure :** Remplacement de Nginx par Caddy comme reverse proxy. [#58](https://github.com/suitenumerique/st-home/issues/58)
+- **Base de données :**
+    - Ajout d'une commande de restauration de base de données à distance.
+    - Mise à jour de la base de données toutes les 4 heures.
+- **Logs :** Désactivation des logs d'accès de Caddy et utilisation des logs du routeur Scalingo. [#59](https://github.com/suitenumerique/st-home/issues/59)
+- **Refactoring :** Regroupement des blocs de services en un seul bloc de service.
 
 ### Autres changements
-- Suppression des logs de console inutiles.
-- Correction d'un bug dans le code.
+
+- Correction d'un bug dans l'export CSV pour les niveaux groupés dans les statistiques.
+- Suppression d'un affichage prématuré des OPSN avant l'étape d'intention.
+- Suppression de `console.log` inutiles.
+- Utilisation des données du `deploycenter` pour la carte des partenaires.
