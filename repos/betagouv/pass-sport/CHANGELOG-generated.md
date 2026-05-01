@@ -1,13 +1,13 @@
-## Changelog : pass-sport (30 derniers jours, au 18 mars 2026)
+## Changelog : pass-sport (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte une modification de la notice d'information concernant le dispositif Pass'Sport. Cette modification vise à assurer que les utilisateurs disposent des informations les plus récentes et précises concernant l'éligibilité et l'utilisation du pass.
+Ce mois-ci, les modifications apportées au projet Pass'Sport se concentrent principalement sur la maintenance et la mise à jour des dépendances. Aucune nouvelle fonctionnalité ou correction de bug significative n'a été déployée pour les utilisateurs finaux.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la notice d'information sur le Pass'Sport [#497](https://github.com/betagouv/pass-sport/pull/497).
+Aucune évolution fonctionnelle à signaler.
 
 ### Évolutions techniques
-- Aucune évolution technique significative.
+- Mise à jour de la dépendance `python-dotenv` de la version 1.0.0 à la version 1.2.2 dans le répertoire `/data` [#498](https://github.com/betagouv/pass-sport/pull/498).
 
 ### Autres changements
-- Aucune autre modification à signaler.
+Aucun autre changement à signaler.
