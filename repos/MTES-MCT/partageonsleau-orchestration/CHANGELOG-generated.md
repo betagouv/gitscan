@@ -1,20 +1,24 @@
-## Changelog : partageonsleau-orchestration (30 derniers jours, au 24 avril 2026)
+## Changelog : partageonsleau-orchestration (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'orchestrateur Partageons l'Eau a connu des avancées significatives en termes d'intégration de sources de données et de préparation pour la connexion à la plateforme PLE. L'ajout de connecteurs pour plusieurs sources (Willie, Olo, Aquasys) et l'implémentation d'une file d'attente de tâches (BullMQ) permettent une ingestion plus robuste et scalable des données. Le projet a également été dockerisé pour faciliter le déploiement et la reproductibilité.
+Ce mois-ci, le projet a connu des avancées significatives dans la connexion avec les différentes Plateformes de Données Environnementales (PLE) et l'amélioration de l'infrastructure. L'ajout de connecteurs pour plusieurs PLE (Willie, Olo, Aquasys) permet d'étendre la capacité du système à ingérer des données.  L'orchestration a été dockerisée et une file d'attente BullMQ a été implémentée pour améliorer la gestion des tâches.
 
 ### Évolutions fonctionnelles
-- Ajout de connecteurs pour les sources de données Willie, Olo et Aquasys, permettant l'ingestion de données depuis ces sources vers Partageons l'Eau. [#4](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/4)
-- Préparation de l'intégration avec la plateforme Partageons l'Eau (PLE) en utilisant un compte de service et un token de déclarant. [#6](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/6)
-- Implémentation d'un connecteur de base pour la source de données template-file.
-- Mise en place d'un mécanisme pour mettre à jour la date de dernière exécution (`last_run_at`) à la fin de chaque tâche.
+- Ajout de la connexion avec la PLE : permet l'échange de données avec les plateformes externes. [#5](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/5)
+- Implémentation de connecteurs pour les PLE Willie, Olo et Aquasys : permet l'ingestion de données depuis ces sources. [#4](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/4)
+- Ajout du `pointId` lors de l'envoi des données au backend : améliore l'identification et le suivi des données. [#6](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/6)
+- Mise en place d'une file d'attente BullMQ : améliore la gestion et la fiabilité des tâches asynchrones. [#5](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/5)
+- Mise à jour de `last_run_at` à la fin de l'exécution de la tâche : assure un suivi précis des exécutions.
 
 ### Évolutions techniques
-- Dockerisation de l'application pour faciliter le déploiement et la reproductibilité. [#1](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/1)
-- Intégration de la librairie BullMQ pour la gestion des tâches en file d'attente, améliorant la robustesse et la scalabilité de l'orchestrateur. [#5](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/5)
-- Correction de problèmes de linting avec xo. [#2](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/2) et [#3](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/3)
-- Amélioration de la structure du code et correction de bugs mineurs liés à TypeScript.
+- Dockerisation de l'application : facilite le déploiement et la reproductibilité de l'environnement. [#1](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/1)
+- Ajout d'un fichier `deploy.yml` : automatise le processus de déploiement.
+- Configuration des certificats Redis : améliore la sécurité de la connexion à Redis.
+- Correction de variables et de secrets : renforce la sécurité et la configuration du projet.
+- Refactorisation du code et correction de linting : améliore la qualité et la maintenabilité du code. [#2](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/2), [#3](https://github.com/MTES-MCT/partageonsleau-orchestration/pull/3)
+- Modification du port par défaut.
 
 ### Autres changements
-- Initialisation du projet avec un pipeline connecteur par point (compte de service -> contexte -> connecteur -> ingestion) et une première implémentation Willie en mode incrémental.
-- Ajout du `pointId` pour l'envoi à la plateforme backend.
+- Initialisation du projet en TypeScript avec un pipeline connecteur par point.
+- Ajout d'une première implémentation Willie en mode incrémental.
+- Amélioration de la ressemblance du `template-file` avec Aquasys.

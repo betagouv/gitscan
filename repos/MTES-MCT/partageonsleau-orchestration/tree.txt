@@ -6,9 +6,15 @@
 │       └── deploy.yml
 ├── .gitignore
 ├── .nvmrc
-├── Dockerfile
 ├── README.md
 ├── compose.yaml
+├── deploy
+│   ├── Dockerfile
+│   └── certs
+│       ├── prod
+│       │   └── redis-ca.pem
+│       └── testing
+│           └── redis-ca.pem
 ├── index.ts
 ├── package-lock.json
 ├── package.json
@@ -23,6 +29,7 @@
 │   │   └── willie.ts
 │   ├── instrument.ts
 │   ├── jobs
+│   │   ├── process-declaration.ts
 │   │   └── pull_updated_data.ts
 │   ├── queues
 │   │   ├── config.ts
@@ -36,4 +43,4 @@
 │       └── partageonsleau-client.ts
 ├── tsconfig.json
 └── xo.config.ts
-8 directories, 30 files
+12 directories, 33 files
