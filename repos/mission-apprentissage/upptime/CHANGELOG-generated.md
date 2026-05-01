@@ -1,15 +1,16 @@
-## Changelog : upptime (30 derniers jours, au 2026-04-29)
+## Changelog : upptime (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours et met en évidence les mises à jour régulières du statut des différents services surveillés par Upptime.  Il s'agit principalement de rapports d'état (up/down) pour les API, les interfaces utilisateur et les missions, assurant une visibilité continue sur la disponibilité des services.
+Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour régulières du statut des différents services surveillés par le bot Upptime. Ces mises à jour indiquent si les services sont opérationnels ou rencontrent des problèmes.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le projet se concentre sur la surveillance continue et le reporting de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Le projet se concentre actuellement sur la surveillance continue et la notification de l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique n'a été apportée durant cette période.
+Le projet est principalement maintenu par des mises à jour automatisées du bot Upptime. Il n'y a pas eu de changements techniques significatifs dans les commits récents.
 
 ### Autres changements
-- Mises à jour régulières du fichier `README.md` et du résumé de l'état.
-- Mises à jour régulières des graphiques de statut.
-- Rapports d'état constants des différents services surveillés (API Apprentissage, Percona, Monitoring, Sentry, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance) par le bot Upptime. Ces rapports incluent des informations sur le statut (up/down) et le temps de réponse.
+- Mises à jour régulières du fichier `README.md` pour refléter l'état actuel des services surveillés.
+- Mises à jour régulières du fichier de résumé du statut.
+- Génération de graphiques de statut.
+- Corrections mineures et améliorations continues du bot Upptime.
