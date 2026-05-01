@@ -204,6 +204,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260423132042_rename_reporting_fields
 │   │   │   └── migration.sql
+│   │   ├── 20260427123318_delete_indicateurs_financiers_in_budget
+│   │   │   └── migration.sql
+│   │   ├── 20260430093540_add_two_quality_indicators_on_actes_administratifs
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -265,6 +269,7 @@
 │   ├── matrice-impact-bhasile.png
 │   ├── ofii.webp
 │   ├── ovoid.svg
+│   ├── structure-marker.svg
 │   └── technical-error.svg
 ├── scripts
 │   ├── apply-views.ts
@@ -318,178 +323,198 @@
 ├── src
 │   ├── app
 │   │   ├── (authenticated)
-│   │   │   ├── cpoms
-│   │   │   │   ├── [id]
+│   │   │   ├── (with-menu)
+│   │   │   │   ├── cpoms
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── _components
+│   │   │   │   │   │   │   ├── ActesAdministratifsBlock.tsx
+│   │   │   │   │   │   │   ├── CompositionBlock.tsx
+│   │   │   │   │   │   │   ├── CpomHeader.tsx
+│   │   │   │   │   │   │   ├── DescriptionBlock.tsx
+│   │   │   │   │   │   │   ├── FinanceTypeSwitch.tsx
+│   │   │   │   │   │   │   └── FinancesBlock.tsx
+│   │   │   │   │   │   ├── _context
+│   │   │   │   │   │   │   ├── CpomClientContext.tsx
+│   │   │   │   │   │   │   └── CpomContext.tsx
+│   │   │   │   │   │   ├── ajout
+│   │   │   │   │   │   │   ├── 01-identification
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── 02-finances
+│   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── modification
+│   │   │   │   │   │   │   ├── actes-administratifs
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── composition
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── description
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── finances
+│   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── _components
-│   │   │   │   │   │   ├── ActesAdministratifsBlock.tsx
-│   │   │   │   │   │   ├── CompositionBlock.tsx
-│   │   │   │   │   │   ├── CpomHeader.tsx
-│   │   │   │   │   │   ├── DescriptionBlock.tsx
-│   │   │   │   │   │   ├── FinanceTypeSwitch.tsx
-│   │   │   │   │   │   └── FinancesBlock.tsx
-│   │   │   │   │   ├── _context
-│   │   │   │   │   │   ├── CpomClientContext.tsx
-│   │   │   │   │   │   └── CpomContext.tsx
+│   │   │   │   │   │   ├── CpomItem.tsx
+│   │   │   │   │   │   └── CpomsTable.tsx
 │   │   │   │   │   ├── ajout
 │   │   │   │   │   │   ├── 01-identification
 │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   └── 02-finances
-│   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   ├── modification
-│   │   │   │   │   │   ├── actes-administratifs
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── composition
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── description
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   └── finances
-│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   ├── _components
+│   │   │   │   │   │   │   └── CpomAjoutHeader.tsx
+│   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   └── page.tsx
-│   │   │   │   ├── _components
-│   │   │   │   │   ├── CpomItem.tsx
-│   │   │   │   │   └── CpomsTable.tsx
-│   │   │   │   ├── ajout
-│   │   │   │   │   ├── 01-identification
+│   │   │   │   ├── deconnexion
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── proconnect
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── operateurs
+│   │   │   │   │   ├── OperateurItem.tsx
+│   │   │   │   │   ├── OperateursList.tsx
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── _components
+│   │   │   │   │   │   │   ├── DescriptionBlock.tsx
+│   │   │   │   │   │   │   ├── DocumentsBlock.tsx
+│   │   │   │   │   │   │   └── OperateurHeader.tsx
+│   │   │   │   │   │   ├── _context
+│   │   │   │   │   │   │   ├── OperateurClientContext.tsx
+│   │   │   │   │   │   │   └── OperateurContext.tsx
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── modification
+│   │   │   │   │   │   │   └── description
+│   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   ├── _components
-│   │   │   │   │   │   └── CpomAjoutHeader.tsx
-│   │   │   │   │   └── layout.tsx
-│   │   │   │   └── page.tsx
-│   │   │   ├── deconnexion
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── proconnect
-│   │   │   │       └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   ├── operateurs
-│   │   │   │   ├── OperateurItem.tsx
-│   │   │   │   ├── OperateursList.tsx
-│   │   │   │   ├── [id]
-│   │   │   │   │   ├── _components
-│   │   │   │   │   │   ├── DescriptionBlock.tsx
-│   │   │   │   │   │   ├── DocumentsBlock.tsx
-│   │   │   │   │   │   └── OperateurHeader.tsx
-│   │   │   │   │   ├── _context
-│   │   │   │   │   │   ├── OperateurClientContext.tsx
-│   │   │   │   │   │   └── OperateurContext.tsx
-│   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   ├── modification
-│   │   │   │   │   │   └── description
-│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── statistiques
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── structures
+│   │   │   │       ├── [id]
+│   │   │   │       │   ├── _components
+│   │   │   │       │   │   ├── AutoSaveErrorToast.tsx
+│   │   │   │       │   │   ├── ButtonAffectations.tsx
+│   │   │   │       │   │   ├── PrahdaStructure.tsx
+│   │   │   │       │   │   ├── Structure.tsx
+│   │   │   │       │   │   ├── StructureContent.tsx
+│   │   │   │       │   │   ├── _actes-administratifs
+│   │   │   │       │   │   │   ├── ActesAdministratifsBlock.tsx
+│   │   │   │       │   │   │   ├── ActesAdministratifsCategory.tsx
+│   │   │   │       │   │   │   └── ActesAdministratifsItem.tsx
+│   │   │   │       │   │   ├── _activite
+│   │   │   │       │   │   │   ├── ActiviteBlock.tsx
+│   │   │   │       │   │   │   ├── ActiviteDurations.tsx
+│   │   │   │       │   │   │   ├── ActiviteHistorique.tsx
+│   │   │   │       │   │   │   ├── ActiviteMotifsIndisponibilite.tsx
+│   │   │   │       │   │   │   ├── ActivitePlaces.tsx
+│   │   │   │       │   │   │   └── ActiviteTypes.tsx
+│   │   │   │       │   │   ├── _calendrier
+│   │   │   │       │   │   │   ├── CalendrierBlock.tsx
+│   │   │   │       │   │   │   ├── DateBar.tsx
+│   │   │   │       │   │   │   └── DateBars.tsx
+│   │   │   │       │   │   ├── _controles
+│   │   │   │       │   │   │   ├── ControleAccordion.tsx
+│   │   │   │       │   │   │   ├── ControleTable.tsx
+│   │   │   │       │   │   │   ├── ControlesBlock.tsx
+│   │   │   │       │   │   │   ├── DemarchesNumeriquesInfo.tsx
+│   │   │   │       │   │   │   ├── EIGTable.tsx
+│   │   │   │       │   │   │   ├── EvaluationTable.tsx
+│   │   │   │       │   │   │   └── HudaPrahdaControlesBlock.tsx
+│   │   │   │       │   │   ├── _description
+│   │   │   │       │   │   │   ├── Adresses.tsx
+│   │   │   │       │   │   │   ├── AntennesAndContacts.tsx
+│   │   │   │       │   │   │   ├── Codes.tsx
+│   │   │   │       │   │   │   ├── CpomViewer.tsx
+│   │   │   │       │   │   │   ├── DescriptionBlock.tsx
+│   │   │   │       │   │   │   ├── General.tsx
+│   │   │   │       │   │   │   └── PrahdaDescriptionBlock.tsx
+│   │   │   │       │   │   ├── _finances
+│   │   │   │       │   │   │   ├── AmountBadge.tsx
+│   │   │   │       │   │   │   ├── BudgetExecutoire.tsx
+│   │   │   │       │   │   │   ├── CpomStaticTable.tsx
+│   │   │   │       │   │   │   ├── DocumentsFinanciers.tsx
+│   │   │   │       │   │   │   ├── DotationChart.tsx
+│   │   │   │       │   │   │   ├── FinancesBlock.tsx
+│   │   │   │       │   │   │   ├── HistoriqueIndicateursGeneraux.tsx
+│   │   │   │       │   │   │   ├── StructureCpomSwitch.tsx
+│   │   │   │       │   │   │   ├── StructureStaticTable.tsx
+│   │   │   │       │   │   │   ├── getBudgetStaticTableLines.tsx
+│   │   │   │       │   │   │   └── getIndicateurFinancierStaticTableHeading.tsx
+│   │   │   │       │   │   ├── _header
+│   │   │   │       │   │   │   ├── AutoSaveStatus.tsx
+│   │   │   │       │   │   │   ├── FinalisationHeader.tsx
+│   │   │   │       │   │   │   └── StructureHeader.tsx
+│   │   │   │       │   │   ├── _notes
+│   │   │   │       │   │   │   └── NotesBlock.tsx
+│   │   │   │       │   │   └── _type-places
+│   │   │   │       │   │       ├── PrahdaTypePlaceBlock.tsx
+│   │   │   │       │   │       ├── TypePlaceBlock.tsx
+│   │   │   │       │   │       ├── TypePlaceCharts.tsx
+│   │   │   │       │   │       └── TypePlaceHistory.tsx
+│   │   │   │       │   ├── _context
+│   │   │   │       │   │   ├── StructureClientContext.tsx
+│   │   │   │       │   │   └── StructureContext.tsx
+│   │   │   │       │   ├── finalisation
+│   │   │   │       │   │   ├── 01-identification
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── 02-documents-financiers
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── 03-finance
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── 04-controles
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── 05-documents
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── 06-notes
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   └── _components
+│   │   │   │       │   │       ├── Tab.tsx
+│   │   │   │       │   │       └── Tabs.tsx
+│   │   │   │       │   ├── layout.tsx
+│   │   │   │       │   ├── modification
+│   │   │   │       │   │   ├── actes-administratifs
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── adresses
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── calendrier
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── controle-qualite
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── description
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── finances
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── notes
+│   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   └── type-places
+│   │   │   │       │   │       └── page.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── _components
+│   │   │   │       │   ├── RepartitionBadge.tsx
+│   │   │   │       │   ├── StructureItem.tsx
+│   │   │   │       │   ├── StructuresMap.tsx
+│   │   │   │       │   ├── StructuresTable.tsx
+│   │   │   │       │   └── Toolbar.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── page.tsx
-│   │   │   ├── statistiques
-│   │   │   │   └── page.tsx
 │   │   │   └── structures
-│   │   │       ├── [id]
-│   │   │       │   ├── _components
-│   │   │       │   │   ├── AutoSaveErrorToast.tsx
-│   │   │       │   │   ├── ButtonAffectations.tsx
-│   │   │       │   │   ├── PrahdaStructure.tsx
-│   │   │       │   │   ├── Structure.tsx
-│   │   │       │   │   ├── StructureContent.tsx
-│   │   │       │   │   ├── _actes-administratifs
-│   │   │       │   │   │   ├── ActesAdministratifsBlock.tsx
-│   │   │       │   │   │   ├── ActesAdministratifsCategory.tsx
-│   │   │       │   │   │   └── ActesAdministratifsItem.tsx
-│   │   │       │   │   ├── _activite
-│   │   │       │   │   │   ├── ActiviteBlock.tsx
-│   │   │       │   │   │   ├── ActiviteDurations.tsx
-│   │   │       │   │   │   ├── ActiviteHistorique.tsx
-│   │   │       │   │   │   ├── ActiviteMotifsIndisponibilite.tsx
-│   │   │       │   │   │   ├── ActivitePlaces.tsx
-│   │   │       │   │   │   └── ActiviteTypes.tsx
-│   │   │       │   │   ├── _calendrier
-│   │   │       │   │   │   ├── CalendrierBlock.tsx
-│   │   │       │   │   │   ├── DateBar.tsx
-│   │   │       │   │   │   └── DateBars.tsx
-│   │   │       │   │   ├── _controles
-│   │   │       │   │   │   ├── ControleAccordion.tsx
-│   │   │       │   │   │   ├── ControleTable.tsx
-│   │   │       │   │   │   ├── ControlesBlock.tsx
-│   │   │       │   │   │   ├── DemarchesNumeriquesInfo.tsx
-│   │   │       │   │   │   ├── EIGTable.tsx
-│   │   │       │   │   │   ├── EvaluationTable.tsx
-│   │   │       │   │   │   └── HudaPrahdaControlesBlock.tsx
-│   │   │       │   │   ├── _description
-│   │   │       │   │   │   ├── Adresses.tsx
-│   │   │       │   │   │   ├── AntennesAndContacts.tsx
-│   │   │       │   │   │   ├── Codes.tsx
-│   │   │       │   │   │   ├── CpomViewer.tsx
-│   │   │       │   │   │   ├── DescriptionBlock.tsx
-│   │   │       │   │   │   ├── General.tsx
-│   │   │       │   │   │   └── PrahdaDescriptionBlock.tsx
-│   │   │       │   │   ├── _finances
-│   │   │       │   │   │   ├── AmountBadge.tsx
-│   │   │       │   │   │   ├── BudgetExecutoire.tsx
-│   │   │       │   │   │   ├── CpomStaticTable.tsx
-│   │   │       │   │   │   ├── DocumentsFinanciers.tsx
-│   │   │       │   │   │   ├── DotationChart.tsx
-│   │   │       │   │   │   ├── FinancesBlock.tsx
-│   │   │       │   │   │   ├── HistoriqueIndicateursGeneraux.tsx
-│   │   │       │   │   │   ├── StructureCpomSwitch.tsx
-│   │   │       │   │   │   ├── StructureStaticTable.tsx
-│   │   │       │   │   │   ├── getBudgetStaticTableLines.tsx
-│   │   │       │   │   │   └── getIndicateurFinancierStaticTableHeading.tsx
-│   │   │       │   │   ├── _header
-│   │   │       │   │   │   ├── AutoSaveStatus.tsx
-│   │   │       │   │   │   ├── FinalisationHeader.tsx
-│   │   │       │   │   │   └── StructureHeader.tsx
-│   │   │       │   │   ├── _notes
-│   │   │       │   │   │   └── NotesBlock.tsx
-│   │   │       │   │   └── _type-places
-│   │   │       │   │       ├── PrahdaTypePlaceBlock.tsx
-│   │   │       │   │       ├── TypePlaceBlock.tsx
-│   │   │       │   │       ├── TypePlaceCharts.tsx
-│   │   │       │   │       └── TypePlaceHistory.tsx
-│   │   │       │   ├── _context
-│   │   │       │   │   ├── StructureClientContext.tsx
-│   │   │       │   │   └── StructureContext.tsx
-│   │   │       │   ├── finalisation
-│   │   │       │   │   ├── 01-identification
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 02-documents-financiers
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 03-finance
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 04-controles
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 05-documents
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 06-notes
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   └── _components
-│   │   │       │   │       ├── Tab.tsx
-│   │   │       │   │       └── Tabs.tsx
-│   │   │       │   ├── layout.tsx
-│   │   │       │   ├── modification
-│   │   │       │   │   ├── actes-administratifs
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── adresses
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── calendrier
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── controle-qualite
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── description
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── finances
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── notes
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   └── type-places
-│   │   │       │   │       └── page.tsx
-│   │   │       │   └── page.tsx
-│   │   │       ├── _components
-│   │   │       │   ├── RepartitionBadge.tsx
-│   │   │       │   ├── SearchBar.tsx
-│   │   │       │   ├── StructureItem.tsx
-│   │   │       │   ├── StructureMarker.tsx
-│   │   │       │   ├── StructureMarkerContent.tsx
-│   │   │       │   ├── StructuresMap.tsx
-│   │   │       │   └── StructuresTable.tsx
-│   │   │       └── page.tsx
+│   │   │       └── transformation
+│   │   │           ├── [idTransformation]
+│   │   │           │   ├── contraction
+│   │   │           │   │   └── [idStructure]
+│   │   │           │   │       └── page.tsx
+│   │   │           │   ├── extension
+│   │   │           │   │   └── [idStructure]
+│   │   │           │   │       └── page.tsx
+│   │   │           │   ├── fermeture
+│   │   │           │   │   └── [idStructure]
+│   │   │           │   │       └── page.tsx
+│   │   │           │   ├── ouverture
+│   │   │           │   │   └── [idStructure]
+│   │   │           │   │       └── page.tsx
+│   │   │           │   ├── selection
+│   │   │           │   │   └── page.tsx
+│   │   │           │   └── verification
+│   │   │           │       └── page.tsx
+│   │   │           └── type
+│   │   │               └── page.tsx
 │   │   ├── (not-authenticated)
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
@@ -571,7 +596,8 @@
 │   │   ├── actions.ts
 │   │   ├── api
 │   │   │   ├── actes-administratifs
-│   │   │   │   └── acteAdministratif.repository.ts
+│   │   │   │   ├── acte-administratif.repository.ts
+│   │   │   │   └── acte-administratif.util.ts
 │   │   │   ├── activites
 │   │   │   │   ├── activite.repository.ts
 │   │   │   │   ├── activite.service.ts
@@ -580,6 +606,7 @@
 │   │   │   │       └── route.ts
 │   │   │   ├── adresses
 │   │   │   │   ├── adresse.repository.ts
+│   │   │   │   ├── adresse.service.ts
 │   │   │   │   └── adresse.util.ts
 │   │   │   ├── antennes
 │   │   │   │   └── antenne.repository.ts
@@ -597,12 +624,14 @@
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── cpom.constants.ts
+│   │   │   │   ├── cpom.db.type.ts
 │   │   │   │   ├── cpom.repository.ts
 │   │   │   │   ├── cpom.service.ts
 │   │   │   │   ├── cpom.util.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── dna-codes
 │   │   │   │   ├── dna-codes.repository.ts
+│   │   │   │   ├── dna-codes.service.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── dna-structures
 │   │   │   │   ├── dna-structure.repository.ts
@@ -670,6 +699,7 @@
 │   │   │   ├── NameChangeNotice.tsx
 │   │   │   ├── NameChangeNoticeClient.tsx
 │   │   │   ├── NoDataAccordion.tsx
+│   │   │   ├── SearchBar.tsx
 │   │   │   ├── SubmitError.tsx
 │   │   │   ├── Tracking.tsx
 │   │   │   ├── User.tsx
@@ -808,6 +838,8 @@
 │   │   │   │   │   ├── Adresse.tsx
 │   │   │   │   │   ├── FieldSetHebergement.tsx
 │   │   │   │   │   ├── FieldSetTypeBati.tsx
+│   │   │   │   │   ├── ImportOptionNotices.tsx
+│   │   │   │   │   ├── ManualOptionNotices.tsx
 │   │   │   │   │   └── Notices.tsx
 │   │   │   │   ├── notes
 │   │   │   │   │   ├── FieldSetNotes.tsx
@@ -826,9 +858,13 @@
 │   │   │   │   ├── OrderButton.tsx
 │   │   │   │   └── entitiesConstants.ts
 │   │   │   ├── map
-│   │   │   │   ├── GroupMarker.tsx
 │   │   │   │   ├── Map.tsx
-│   │   │   │   └── SingleMarker.tsx
+│   │   │   │   ├── MapContext.tsx
+│   │   │   │   ├── StructureMarker.tsx
+│   │   │   │   ├── StructureMarkerContent.tsx
+│   │   │   │   ├── structuresInteractions.ts
+│   │   │   │   ├── structuresPopup.ts
+│   │   │   │   └── structuresStyle.ts
 │   │   │   ├── structure-selection
 │   │   │   │   ├── BackButton.tsx
 │   │   │   │   ├── StructureSearch.tsx
@@ -1012,16 +1048,47 @@
 │   │   └── structures
 │   │       ├── StructuresTable.test.tsx
 │   │       ├── [id]
-│   │       │   └── finalisation
-│   │       │       └── 01-identification
+│   │       │   ├── finalisation
+│   │       │   │   ├── 01-identification
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── 02-documents-financiers
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── 03-finance
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── 04-controles
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── 05-documents
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   └── 06-notes
+│   │       │   │       └── page.test.tsx
+│   │       │   └── modification
+│   │       │       ├── actes-administratifs
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── adresses
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── calendrier
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── controle-qualite
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── description
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── finances
+│   │       │       │   └── page.test.tsx
+│   │       │       ├── notes
+│   │       │       │   └── page.test.tsx
+│   │       │       └── type-places
 │   │       │           └── page.test.tsx
-│   │       └── _components
-│   │           ├── Filters.test.tsx
-│   │           ├── ListTableHeadings.test.tsx
-│   │           └── OrderButton.test.tsx
+│   │       ├── _components
+│   │       │   ├── Filters.test.tsx
+│   │       │   ├── ListTableHeadings.test.tsx
+│   │       │   └── OrderButton.test.tsx
+│   │       └── page.test.tsx
 │   ├── api
+│   │   ├── actes-administratifs
+│   │   │   └── acte-administratif.util.test.ts
 │   │   └── structures
 │   │       ├── structure.repository.test.ts
+│   │       ├── structure.util.test.ts
 │   │       └── structures.route.test.ts
 │   ├── components
 │   │   ├── Menu.test.tsx
@@ -1130,15 +1197,24 @@
 │   ├── scripts
 │   │   └── parse-date.test.ts
 │   ├── test-utils
-│   │   ├── adresse-typologie.factory.ts
-│   │   ├── adresse.factory.ts
-│   │   ├── budget.factory.ts
-│   │   ├── contact.factory.ts
-│   │   ├── controle.factory.ts
-│   │   ├── evaluation.factory.ts
+│   │   ├── factories
+│   │   │   ├── adresse-typologie.factory.ts
+│   │   │   ├── adresse.factory.ts
+│   │   │   ├── budget.factory.ts
+│   │   │   ├── contact.factory.ts
+│   │   │   ├── controle.factory.ts
+│   │   │   ├── current-places.factory.ts
+│   │   │   ├── dna-structure.factory.ts
+│   │   │   ├── evaluation.factory.ts
+│   │   │   ├── finalisation-form.factory.ts
+│   │   │   ├── finess.factory.ts
+│   │   │   ├── operateur.factory.ts
+│   │   │   ├── structure-typologie.factory.ts
+│   │   │   └── structure-typologies.factory.ts
 │   │   ├── form-test-wrapper.tsx
 │   │   ├── http.mock.ts
-│   │   ├── structure-typologie.factory.ts
+│   │   ├── structure-page-test.helpers.tsx
+│   │   ├── structure-page-test.mocks.tsx
 │   │   └── structure.factory.ts
 │   ├── utils
 │   │   ├── adresse.util.test.ts
@@ -1157,4 +1233,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-299 directories, 860 files
+332 directories, 903 files
