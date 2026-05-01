@@ -1,36 +1,31 @@
-## Changelog : messages (30 derniers jours, au 28 avril 2026)
+## Changelog : messages (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a apporté des améliorations significatives à la gestion des threads, notamment en permettant leur assignation et en améliorant la gestion des notifications. Des améliorations de sécurité ont également été implémentées, ainsi que des optimisations de performance et des corrections de bugs pour une meilleure expérience utilisateur. De nouvelles fonctionnalités ont été ajoutées pour la configuration des backends d'authentification et la validation DNS.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, la sécurité et la robustesse de la plateforme. Les utilisateurs peuvent désormais inviter des personnes n'ayant pas encore de compte, assigner des threads, et bénéficier d'une meilleure gestion des mots de passe. Des optimisations ont été apportées à la recherche et à l'indexation, ainsi qu'à la gestion des erreurs et des tâches asynchrones.
 
 ### Évolutions fonctionnelles
-- Possibilité d'assigner un thread à un utilisateur. [#2673725](https://github.com/suitenumerique/messages/pull/2673725)
+- Possibilité d'inviter des utilisateurs qui n'ont pas encore accédé à la plateforme. [#644](https://github.com/suitenumerique/messages/issues/644)
+- Renforcement de la sécurité des mots de passe en forçant l'inclusion de caractères spéciaux. [#640](https://github.com/suitenumerique/messages/issues/640)
+- Ajout de la possibilité d'assigner des threads à des utilisateurs. [#621](https://github.com/suitenumerique/messages/issues/621)
 - Ajout de notifications pour les mentions d'utilisateurs. [#621](https://github.com/suitenumerique/messages/issues/621)
-- Possibilité d'envoyer des messages internes via un ThreadEvent. [#566](https://github.com/suitenumerique/messages/issues/566)
-- Ajout de la possibilité de visualiser et de poster des commentaires internes sur les threads pour les utilisateurs ayant uniquement un accès de visualisation. [#632](https://github.com/suitenumerique/messages/issues/632)
-- Amélioration de l'assignation des labels avec une interface de sélection groupée et une option d'archivage.
-- Ajout d'une option pour configurer des backends d'authentification entrants. [#636](https://github.com/suitenumerique/messages/issues/636)
-- Ajout de vérifications SPF récursives et de validation du temps d'envoi pour la sécurité DNS. [#625](https://github.com/suitenumerique/messages/issues/625)
-- Ajout de vérifications de l'intégrité des données avec lprobe et Caddy. [#600](https://github.com/suitenumerique/messages/issues/600)
+- Amélioration de l'assignation des labels avec la possibilité d'archiver et d'utiliser un widget en masse.
+- Possibilité d'envoyer des messages internes via ThreadEvent. [#566](https://github.com/suitenumerique/messages/issues/566)
+- Ajout d'une vérification SPF récursive et d'une validation optionnelle au moment de l'envoi pour une meilleure sécurité des emails. [#625](https://github.com/suitenumerique/messages/issues/625)
+- Ajout de la gestion de l'encryption, de scopes personnalisés et de l'audit pour les canaux. [#599](https://github.com/suitenumerique/messages/issues/599)
 
 ### Évolutions techniques
-- Amélioration de la performance de la réindexation de la recherche en optimisant la taille des payloads.
-- Décalage des tâches d'indexation pour éviter les blocages.
-- Correction d'une condition de concurrence dans la suppression du dernier éditeur.
-- Correction de tests qui dépendaient de `boto3`.
+- Optimisation de la recherche et de l'indexation : remplacement de `delete_by_query` par une suppression en masse par `_id`, gestion des erreurs de transport OpenSearch, et report des tâches d'indexation.
+- Amélioration de la gestion des erreurs Celery : gestion des erreurs de tâches non sérialisables et arrêt du polling infini. [#633](https://github.com/suitenumerique/messages/issues/633)
+- Refonte de l'architecture des workers pour séparer les imports et le reindex dans des conteneurs dédiés. [#643](https://github.com/suitenumerique/messages/issues/643)
 - Mise à jour de Keycloak vers la version 26.6.1. [#637](https://github.com/suitenumerique/messages/issues/637)
-- Refactorisation du code SSRF pour permettre les redirections dans le proxy d'images. [#631](https://github.com/suitenumerique/messages/issues/631)
-- Mise en place d'un flag de fonctionnalité pour la division des threads. [#624](https://github.com/suitenumerique/messages/issues/624)
-- Amélioration de la gestion des erreurs des tâches Celery avec arrêt du polling infini. [#633](https://github.com/suitenumerique/messages/issues/633)
-- Mise à jour de Cunningham et de l'UI Kit. [#647](https://github.com/suitenumerique/messages/issues/647)
+- Amélioration de la gestion des erreurs SSRF et ajout de la possibilité de rediriger dans le proxy d'images. [#631](https://github.com/suitenumerique/messages/issues/631)
+- Mise à jour des dépendances frontend (Cunningham & ui-kit).
+- Correction de problèmes de noms de processus dans le Procfile (PAAS). [#648](https://github.com/suitenumerique/messages/issues/648)
 
 ### Autres changements
-- Correction d'un bug d'affichage des popups de labels. [#635](https://github.com/suitenumerique/messages/issues/635)
-- Correction d'un bug d'initialisation de l'entrée d'événement de thread. [#634](https://github.com/suitenumerique/messages/issues/634)
-- Correction d'une erreur de citation dans la livraison sortante MDA. [#626](https://github.com/suitenumerique/messages/issues/626)
-- Désactivation du menu d'application lorsque aucune option n'est disponible.
-- Amélioration du format de date des événements de thread.
-- Suppression de `npm` des moteurs du projet. [#616](https://github.com/suitenumerique/messages/issues/616)
-- Correction de l'ordre des threads. [#617](https://github.com/suitenumerique/messages/issues/617)
-- Alignement du bouton d'envoi sur la gauche.
-- Amélioration de la gestion des erreurs non sérialisables dans les tâches Celery.
+- Support des widgets legacy et nouveaux. [#650](https://github.com/suitenumerique/messages/issues/650)
+- Correction de bugs mineurs dans l'interface utilisateur (popup des labels, focus sur le champ "à", format de date des événements de thread).
+- Mise à jour de la documentation et des tests.
+- Correction de problèmes liés aux droits d'édition sur les threads.
+- Ajout d'un flag de fonctionnalité pour la fonctionnalité de division de thread. [#624](https://github.com/suitenumerique/messages/issues/624)
+- Suppression de `npm` des moteurs. [#616](https://github.com/suitenumerique/messages/issues/616)

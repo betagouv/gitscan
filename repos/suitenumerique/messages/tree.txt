@@ -247,6 +247,7 @@
     │   │   │   ├── search
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── coalescer.py
+    │   │   │   │   ├── exceptions.py
     │   │   │   │   ├── index.py
     │   │   │   │   ├── mapping.py
     │   │   │   │   ├── parse.py
@@ -267,11 +268,14 @@
     │   │   │           │   └── change_form.html
     │   │   │           ├── maildomain
     │   │   │           │   └── change_form.html
-    │   │   │           └── message
-    │   │   │               ├── change_form.html
-    │   │   │               ├── change_list.html
-    │   │   │               ├── import_imap.html
-    │   │   │               └── import_messages.html
+    │   │   │           ├── message
+    │   │   │           │   ├── change_form.html
+    │   │   │           │   ├── change_list.html
+    │   │   │           │   ├── import_imap.html
+    │   │   │           │   └── import_messages.html
+    │   │   │           └── user
+    │   │   │               ├── add_passwordless.html
+    │   │   │               └── change_list.html
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
     │   │   │   └── extra_tags.py
@@ -347,7 +351,8 @@
     │   │   │   │   ├── test_e2e_modifiers.py
     │   │   │   │   ├── test_parse_query.py
     │   │   │   │   ├── test_search.py
-    │   │   │   │   └── test_search_modifiers.py
+    │   │   │   │   ├── test_search_modifiers.py
+    │   │   │   │   └── test_search_reindex_command.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_ssrf.py
@@ -1089,9 +1094,10 @@
     │   │   │       │   ├── index.test.ts
     │   │   │       │   ├── index.ts
     │   │   │       │   └── types.ts
-    │   │   │       └── view-helper
-    │   │   │           ├── index.test.ts
-    │   │   │           └── index.ts
+    │   │   │       ├── view-helper
+    │   │   │       │   ├── index.test.ts
+    │   │   │       │   └── index.ts
+    │   │   │       └── widget-helper.ts
     │   │   ├── hooks
     │   │   │   ├── use-ability.ts
     │   │   │   ├── use-debounce-callback.ts
@@ -1219,4 +1225,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-264 directories, 1113 files
+265 directories, 1118 files
