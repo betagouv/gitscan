@@ -149,9 +149,12 @@
     │   │   │   └── views.py
     │   │   ├── entitlements
     │   │   │   ├── __init__.py
-    │   │   │   ├── anct_entitlements_backend.py
-    │   │   │   ├── dummy_entitlements_backend.py
-    │   │   │   └── entitlements_backend.py
+    │   │   │   ├── backends
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base.py
+    │   │   │   │   ├── deploycenter.py
+    │   │   │   │   └── static.py
+    │   │   │   └── factory.py
     │   │   ├── enums.py
     │   │   ├── external_api
     │   │   │   ├── permissions.py
@@ -272,7 +275,7 @@
     │   │   │   │       └── test_update_suspicious_item_file_hash.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_entitlements.py
-    │   │   │   ├── test_api_entitlements_anct.py
+    │   │   │   ├── test_api_entitlements_deploycenter.py
     │   │   │   ├── test_api_sdk_relay.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_utils_detect_mimetype.py
@@ -528,6 +531,15 @@
     │   │   │   │   │   │   │   └── StandardDriver.ts
     │   │   │   │   │   │   ├── types.ts
     │   │   │   │   │   │   └── utils.tsx
+    │   │   │   │   │   ├── entitlement-disclaimers
+    │   │   │   │   │   │   ├── EntitlementDisclaimers.tsx
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   └── EntitlementDisclaimerModal.tsx
+    │   │   │   │   │   │   ├── disclaimers
+    │   │   │   │   │   │   │   └── CannotUploadDisclaimer.tsx
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   └── useEntitlements.ts
+    │   │   │   │   │   │   └── types.ts
     │   │   │   │   │   ├── errors
     │   │   │   │   │   │   └── AppError.ts
     │   │   │   │   │   ├── explorer
@@ -813,6 +825,7 @@
     │   │   │   │   │   │           │   ├── pdfPolyfills.ts
     │   │   │   │   │   │           │   ├── useDebouncedResize.ts
     │   │   │   │   │   │           │   ├── usePdfNavigation.ts
+    │   │   │   │   │   │           │   ├── usePdfPageDimensions.ts
     │   │   │   │   │   │           │   └── useRedirectDisclaimer.tsx
     │   │   │   │   │   │           ├── suspicious
     │   │   │   │   │   │           │   └── SuspiciousPreview.tsx
@@ -878,6 +891,7 @@
     │   │   │   │   │   ├── assets
     │   │   │   │   │   │   ├── empty_doc.docx
     │   │   │   │   │   │   ├── generate-pdfs.mjs
+    │   │   │   │   │   │   ├── mixed_page_sizes.pdf
     │   │   │   │   │   │   ├── pdf_corrupted.pdf
     │   │   │   │   │   │   ├── pdf_with_js.pdf
     │   │   │   │   │   │   ├── pdf_with_js_link.pdf
@@ -898,11 +912,13 @@
     │   │   │   │   │   ├── db.setup.ts
     │   │   │   │   │   ├── delete-item.spec.ts
     │   │   │   │   │   ├── duplicate-item.spec.ts
+    │   │   │   │   │   ├── entitlement-disclaimers.spec.ts
     │   │   │   │   │   ├── file-preview
     │   │   │   │   │   │   ├── audio-preview.spec.ts
     │   │   │   │   │   │   ├── file-preview-actions.spec.ts
     │   │   │   │   │   │   ├── heic-file-preview.spec.ts
     │   │   │   │   │   │   ├── image-preview.spec.ts
+    │   │   │   │   │   │   ├── pdf-preview-mixed-sizes.spec.ts
     │   │   │   │   │   │   ├── pdf-preview.spec.ts
     │   │   │   │   │   │   ├── unsupported-file-preview.spec.ts
     │   │   │   │   │   │   └── video-preview.spec.ts
@@ -1035,4 +1051,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-246 directories, 791 files
+251 directories, 802 files
