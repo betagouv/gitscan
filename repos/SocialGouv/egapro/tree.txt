@@ -241,7 +241,8 @@
 │       │   ├── fetch-large-companies.ts
 │       │   ├── generate-edge-case-gip-data.ts
 │       │   ├── generate-mock-gip-data.ts
-│       │   └── migrate.mjs
+│       │   ├── migrate.mjs
+│       │   └── post-process-schema-wiki.ts
 │       ├── src
 │       │   ├── __tests__
 │       │   │   └── middleware.test.ts
@@ -614,6 +615,7 @@
 │       │   │   │   │   ├── complianceNavigation.ts
 │       │   │   │   │   ├── constants.ts
 │       │   │   │   │   ├── devFillData.ts
+│       │   │   │   │   ├── gapBadge.module.scss
 │       │   │   │   │   ├── gapBadge.ts
 │       │   │   │   │   ├── gipMdsMapping.ts
 │       │   │   │   │   ├── gipToStepData.ts
@@ -639,7 +641,6 @@
 │       │   │   │   │   │   ├── CompliancePathChoice.test.tsx
 │       │   │   │   │   │   ├── CompliancePathPage.test.ts
 │       │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
-│       │   │   │   │   │   ├── QuartileReadingNote.test.tsx
 │       │   │   │   │   │   ├── Step1DevFill.test.tsx
 │       │   │   │   │   │   ├── Step1Workforce.test.tsx
 │       │   │   │   │   │   ├── Step2DevFill.test.tsx
@@ -681,7 +682,6 @@
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── step4
 │       │   │   │   │   │   ├── QuartileInterpretationCallout.tsx
-│       │   │   │   │   │   ├── QuartileReadingNote.tsx
 │       │   │   │   │   │   ├── QuartileTable.tsx
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── step5
@@ -849,6 +849,7 @@
 │       │   │   │   │   └── index.tsx
 │       │   │   │   ├── ImpersonateBanner.tsx
 │       │   │   │   ├── PublicChrome.tsx
+│       │   │   │   ├── ResourceBanner.module.scss
 │       │   │   │   ├── ResourceBanner.tsx
 │       │   │   │   ├── __tests__
 │       │   │   │   │   ├── Breadcrumb.test.tsx
@@ -934,6 +935,7 @@
 │       │   │   │   ├── DeclarationProcessPanel.module.scss
 │       │   │   │   ├── DeclarationProcessPanel.tsx
 │       │   │   │   ├── DeclarationStepLabel.ts
+│       │   │   │   ├── DeclarationsSection.module.scss
 │       │   │   │   ├── DeclarationsSection.tsx
 │       │   │   │   ├── DocumentsPanel.tsx
 │       │   │   │   ├── MissingInfoModal.tsx
@@ -986,7 +988,8 @@
 │       │   │   │   ├── ProfileModal.module.scss
 │       │   │   │   ├── ProfileModal.tsx
 │       │   │   │   ├── __tests__
-│       │   │   │   │   └── ProfileModal.test.tsx
+│       │   │   │   │   ├── ProfileModal.test.tsx
+│       │   │   │   │   └── phone.test.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── phone.ts
 │       │   │   │   └── schemas.ts
@@ -1100,11 +1103,13 @@
 │       │   │   │   └── proconnect-logout.ts
 │       │   │   ├── db
 │       │   │   │   ├── __tests__
-│       │   │   │   │   └── getGlobalSettings.test.ts
+│       │   │   │   │   ├── getGlobalSettings.test.ts
+│       │   │   │   │   └── schema-comments.test.ts
 │       │   │   │   ├── auditSchema.ts
 │       │   │   │   ├── getCampaignDeadlines.ts
 │       │   │   │   ├── getGlobalSettings.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── schema-comments.ts
 │       │   │   │   └── schema.ts
 │       │   │   └── services
 │       │   │       ├── __tests__
@@ -1157,4 +1162,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-221 directories, 938 files
+221 directories, 943 files
