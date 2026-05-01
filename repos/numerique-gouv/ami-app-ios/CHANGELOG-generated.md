@@ -1,36 +1,28 @@
-## Changelog : ami-app-ios (30 derniers jours, au 23 avril 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la navigation et à l'expérience utilisateur, notamment la gestion des liens, des notifications et des pages externes. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. Une page d'onboarding pour les notifications a été ajoutée.
+Cette version apporte des améliorations significatives à la navigation et à l'expérience utilisateur, notamment en gérant mieux les liens externes et le retour en arrière depuis les pages web. L'application a également été optimisée pour une meilleure gestion des notifications et des partenaires. Des corrections de bugs et des améliorations techniques ont été apportées pour une plus grande stabilité et performance.
 
 ### Évolutions fonctionnelles
-- **Notifications :** L'application ouvre maintenant la page des notifications lorsqu'on clique sur une notification push [#54](https://github.com/numerique-gouv/ami-app-ios/pull/54).
-- **Liens :** Gestion améliorée des liens `mailto` sur les pages partenaires [#65](https://github.com/numerique-gouv/ami-app-ios/pull/65).
-- **Navigation :**
-    - Ajout d'un bouton "Retour" lorsque l'on navigue vers une page externe dans la WebView [#78](https://github.com/numerique-gouv/ami-app-ios/pull/78).
-    - Amélioration de la navigation vers la page d'accueil après le choix des préférences de réception de notifications [#76](https://github.com/numerique-gouv/ami-app-ios/pull/76).
-    - Introduction d'une vue "Partenaire" simplifiée pour les pages externes, avec un bouton "Retour" visible [#74](https://github.com/numerique-gouv/ami-app-ios/pull/74).
-- **Partage de logs :** Le bouton de partage de logs a été mis à jour avec le style DSFR [#72](https://github.com/numerique-gouv/ami-app-ios/pull/72) et [#73](https://github.com/numerique-gouv/ami-app-ios/pull/73).
-- **Onboarding Notifications :** Ajout d'une page d'onboarding native pour la gestion des notifications [#71](https://github.com/numerique-gouv/ami-app-ios/pull/71).
-- **WebView :** Amélioration de la gestion de la navigation dans la WebView, avec la possibilité de réinitialiser la navigation à l'URL racine et la gestion des autorisations de navigation [#80](https://github.com/numerique-gouv/ami-app-ios/pull/80).
+- **Gestion des liens et navigation :** Amélioration de la gestion du bouton "Retour" lors de la navigation vers des services partenaires ou des pages externes, assurant un retour cohérent à l'application. [#82](https://github.com/numerique-gouv/ami-app-ios/pull/82) et [#78](https://github.com/numerique-gouv/ami-app-ios/pull/78)
+- **Partage de logs :** Le bouton de partage de logs a été mis à jour avec le nouveau design DSFR. [#83](https://github.com/numerique-gouv/ami-app-ios/pull/83) et [#73](https://github.com/numerique-gouv/ami-app-ios/pull/73)
+- **Gestion des notifications :** L'application ouvre désormais la page des notifications lorsqu'un utilisateur clique sur une notification push. [#59](https://github.com/numerique-gouv/ami-app-ios/pull/59)
+- **Onboarding Notifications :** Promotion de la page d'onboarding des notifications en natif. [#71](https://github.com/numerique-gouv/ami-app-ios/pull/71)
+- **Liens "mailto" :** La gestion des liens "mailto" (pour envoyer un email) a été réactivée sur les pages partenaires. [#65](https://github.com/numerique-gouv/ami-app-ios/pull/65)
+- **Affichage des partenaires :** Amélioration de l'affichage des partenaires et de la navigation vers leurs pages.
 
 ### Évolutions techniques
-- **Architecture :** Introduction d'une classe `AppState` pour gérer l'état de l'application et d'un `NetworkMonitor` pour surveiller la connectivité réseau.
-- **Refactoring :** Refactor de la WebView et des vues `HomeView` et `ReviewAppView` pour améliorer la structure du code et la maintenabilité.
-- **Observabilité :** Utilisation de `@Observable` pour l'affichage d'informations dans l'application.
-- **Gestion des certificats :** Acceptation uniquement des certificats auto-signés en mode DEBUG.
-- **Configuration :** Suppression des fichiers de configuration obsolètes.
-- **Compatibilité iOS :** L'application est maintenant compatible avec iOS 17.0.
+- **Refactoring de la navigation :** Refonte de la navigation avec l'introduction d'un `AppState` et l'utilisation d'un `NavigationStack` pour une meilleure gestion de la navigation et du retour en arrière.
+- **Gestion des WebView :** Amélioration de la gestion des WebView, notamment pour la gestion des liens et la navigation.
+- **Architecture :** Introduction d'un `ViewModel` pour la vue racine de l'application pour une meilleure séparation des préoccupations. [#80](https://github.com/numerique-gouv/ami-app-ios/pull/80)
+- **Gestion des certificats :**  Acceptation uniquement des certificats auto-signés en mode DEBUG. [#edc2b85](https://github.com/numerique-gouv/ami-app-ios/commit/edc2b85)
+- **Firebase :** Amélioration de la gestion de l'enregistrement des tokens Firebase.
+- **Observable :** La classe `InformationBanner` adopte le protocole `@Observable`.
+- **Suppression de code obsolète :** Suppression de fichiers de configuration et de code commenté inutiles.
 
 ### Autres changements
-- Correction de fautes de frappe.
-- Suppression de code inutile.
-- Amélioration des messages de log.
-- Mise à jour de la documentation.
-- Amélioration de l'alignement vertical des sous-vues dans `HomeView`.
-- Correction d'un problème d'initialisation des vues `HomeView` et `ReviewAppView` après le refactoring.
-- Ajout de tests pour la gestion des notifications.
-- Amélioration de la gestion de l'enregistrement des tokens Firebase.
-- Exécution de `evaluateJavaScript` sur le thread principal.
-- Log des réceptions de tokens FCM.
-- Suppression de fichiers WebView obsolètes.
+- Correction de typos et amélioration des messages de log.
+- Mise à jour de la documentation et des commentaires.
+- Amélioration de la structure du code et de la lisibilité.
+- Suppression de dépendances inutiles.
+- Correction de bugs mineurs liés à l'affichage et à la navigation.
