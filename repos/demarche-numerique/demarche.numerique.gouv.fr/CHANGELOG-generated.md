@@ -1,100 +1,42 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 28 avril 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de la sécurité, notamment la correction de vulnérabilités potentielles liées à l'authentification, à l'injection SQL et à l'énumération d'utilisateurs.  Des optimisations de performance ont été apportées, ainsi que des corrections de bugs et des améliorations de l'expérience utilisateur, notamment dans la gestion des pièces justificatives, des procédures et des tableaux de bord administrateur. La migration vers de nouvelles technologies et la refactorisation du code ont également été des axes importants.
+Cette période a été marquée par des améliorations significatives en matière de sécurité, notamment la correction de vulnérabilités potentielles liées à l'injection de code, au contournement d'authentification et à la divulgation d'informations sensibles. De nombreuses optimisations ont également été apportées à la plateforme, notamment au niveau du traitement des images, des performances des requêtes et de la gestion des fichiers. Des améliorations fonctionnelles ont été implémentées pour faciliter l'administration et la configuration des démarches, ainsi que pour améliorer l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des pièces justificatives : prise en charge de nouveaux types de fichiers (.md, .xlsm) et amélioration de la gestion des erreurs d'upload.
-- Amélioration de la sécurité :
-    - Restriction du domaine email pour les administrateurs.
-    - Correction d'une vulnérabilité potentielle d'énumération d'utilisateurs.
-    - Prévention de l'injection SQL dans la recherche de zones.
-    - Correction d'une vulnérabilité de prise de contrôle de compte expert.
-- Amélioration de l'interface administrateur :
-    - Possibilité de personnaliser l'affichage des procédures pour les instructeurs.
-    - Amélioration de la recherche dans le tableau de bord super-admin.
-    - Ajout d'un bandeau d'information pour la campagne "champ tableau".
-- Amélioration des emails :
-    - Amélioration des emails d'affectation d'instructeurs avec un titre, un appel à l'action et une meilleure traduction.
-    - Notification des administrateurs avant l'expiration du token API Entreprise.
-- Ajout de la possibilité de lier des dossiers entre eux.
-- Amélioration de la gestion des dates de naissance dans les champs de formulaire.
+- Ajout d'une notification aux administrateurs avant l'expiration des tokens d'API Entreprise.
+- Amélioration de la gestion des pièces justificatives, notamment en autorisant les fichiers `.md` et `.xlsm`.
+- Possibilité pour les administrateurs de personnaliser la présentation des dossiers pour les instructeurs.
+- Amélioration de l'interface utilisateur pour la gestion des champs et des référentiels.
+- Ajout d'un indicateur visuel pour les dossiers liés qui ont été supprimés ou sont expirés.
+- Amélioration de la gestion des erreurs et des messages d'information pour les utilisateurs.
+- Possibilité de lier un dossier existant lors de la création d'une nouvelle demande.
+- Amélioration de la gestion des champs de date de naissance dans l'interface d'administration.
 
 ### Évolutions techniques
-- Refactorisation du code : migration de composants HAML vers ERB pour une meilleure maintenabilité.
-- Optimisation des performances :
-    - Amélioration de la performance des requêtes de recherche.
-    - Optimisation du traitement des images avec Vips.
-    - Amélioration de la performance des tests.
-- Mise à jour des dépendances : mise à jour de plusieurs librairies et frameworks.
-- Amélioration de la sécurité :
-    - Utilisation de `SELECT FOR UPDATE` pour sérialiser les uploads concurrents.
-    - Correction de vulnérabilités potentielles liées à l'utilisation de `GET` pour des actions sensibles.
-- Migration vers WeasyPrint pour la génération des attestations de dépôt PDF.
-- Amélioration de la gestion des erreurs et des logs.
-- Utilisation de Lingui pour la gestion de la traduction JavaScript.
-- Mise en place de tests plus robustes et complets.
-- Amélioration de la gestion des erreurs dans les jobs Sidekiq.
-- Refonte de la gestion des URLs des pièces justificatives.
+- Refactorisation importante du code lié au traitement des images, avec l'utilisation de Vips pour optimiser les performances.
+- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles liées à l'injection de code SQL, à la manipulation de l'URL et au contournement de l'authentification.
+- Optimisation des requêtes SQL pour améliorer les performances de la plateforme.
+- Migration de composants HAML vers ERB pour une meilleure maintenabilité.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Mise à jour des dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performances.
+- Amélioration de la gestion des tâches asynchrones avec Sidekiq.
+- Ajout d'instrumentation pour le suivi des performances de l'API GraphQL.
+- Amélioration de la gestion des cookies et des sessions.
+- Correction de problèmes de concurrence lors de la gestion des pièces justificatives.
+- Amélioration de la gestion des URLs et des redirections.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Documentation : mise à jour de la documentation pour refléter les changements apportés.
-- Nettoyage du code : suppression de code obsolète et amélioration de la lisibilité du code.
-- Correction de bugs mineurs et amélioration de la stabilité de la plateforme.
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités et les modifications apportées à la plateforme.
+- Corrections de bugs mineurs et améliorations de l'expérience utilisateur.
+- Nettoyage du code et suppression de code obsolète.
 - Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration de la gestion des configurations et des variables d'environnement.
-- Mise en place d'un système de monitoring plus performant.
-- Correction de problèmes de compatibilité avec certains navigateurs.
-- Ajout de nouvelles métriques pour le suivi de la performance de la plateforme.
-- Correction de problèmes de traduction.
-- Amélioration de l'accessibilité de la plateforme.
-- Mise à jour des outils de développement.
-- Correction de problèmes de sécurité mineurs.
-- Amélioration de la gestion des logs.
-- Ajout de nouvelles fonctionnalités de débogage.
-- Amélioration de la gestion des erreurs.
-- Correction de problèmes de performance.
-- Amélioration de la documentation.
-- Ajout de nouveaux tests.
-- Amélioration de la sécurité.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Mise à jour des dépendances.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de la maintenabilité du code.
-- Amélioration de la scalabilité de la plateforme.
-- Amélioration de la fiabilité de la plateforme.
-- Amélioration de la sécurité de la plateforme.
-- Amélioration de la performance de la plateforme.
-- Amélioration de l'accessibilité de la plateforme.
-- Amélioration de la documentation de la plateforme.
-- Ajout de nouveaux tests pour la plateforme.
-- Amélioration de la gestion des erreurs de la plateforme.
-- Amélioration de la gestion des logs de la plateforme.
-- Amélioration de la gestion des configurations de la plateforme.
-- Amélioration de la gestion des variables d'environnement de la plateforme.
-- Amélioration de la gestion des dépendances de la plateforme.
-- Amélioration de la gestion des builds de la plateforme.
-- Amélioration de la gestion des déploiements de la plateforme.
-- Amélioration de la gestion des infrastructures de la plateforme.
-- Amélioration de la gestion des métriques de la plateforme.
-- Amélioration de la gestion des alertes de la plateforme.
-- Amélioration de la gestion des incidents de la plateforme.
-- Amélioration de la gestion des changements de la plateforme.
-- Amélioration de la gestion des risques de la plateforme.
-- Amélioration de la gestion de la conformité de la plateforme.
-- Amélioration de la gestion de la sécurité de la plateforme.
-- Amélioration de la gestion de la performance de la plateforme.
-- Amélioration de la gestion de l'accessibilité de la plateforme.
-- Amélioration de la gestion de la documentation de la plateforme.
-- Ajout de nouveaux tests pour la plateforme.
-- Amélioration de la gestion des erreurs de la plateforme.
-- Amélioration de la gestion des logs de la plateforme.
-- Amélioration de la gestion des configurations de la plateforme.
-- Amélioration de la gestion des variables d'environnement de la plateforme.
-- Amélioration de la gestion des dépendances de la plateforme.
-- Amélioration de la gestion des builds de la plateforme.
-- Amélioration de la gestion des déploiements de la plateforme.
-- Amélioration de la gestion des infrastructures de la plateforme.
-- Amélioration de la gestion des métriques de la plateforme.
+- Amélioration de la configuration de l'environnement de développement et de production.
+- Mise à jour des outils de développement et des bibliothèques utilisées.
+- Correction de problèmes de compatibilité avec certaines versions de Ruby et de Rails.
+- Amélioration de la gestion des logs et du monitoring.
+- Correction de problèmes de performance liés à la recherche et à la pagination.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Correction de problèmes de typographie et de grammaire dans les messages d'erreur et les textes de l'interface utilisateur.
