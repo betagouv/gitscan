@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-api",
   "name": "prelevements-deau-api",
-  "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit divers scripts pour récupérer les dossiers de prélèvements, extraire des données précises et générer des rapports.",
+  "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit des scripts pour récupérer les dossiers, extraire des données et générer des rapports.",
   "language": "JavaScript",
   "features": [
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
-    "Données & Schémas",
-    "Sécurité & Conformité",
-    "Gestion des fichiers",
-    "Visualisation de données & Cartographie"
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,9 +20,7 @@
     "Express",
     "bullmq",
     "nodemailer",
-    "mjml",
-    "@fabnum/demarches-simplifiees",
-    "@fabnum/prelevements-deau-timeseries-parsers"
+    "mjml"
   ],
   "components": [
     "API REST & GraphQL",
@@ -35,12 +33,16 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
   "tests": "Ava, Jest",
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD & Déploiement",
+    "Linting",
+    "Tests"
   ],
   "lastActivity": "2026-04-22T15:13:34+02:00",
   "status": "active",
