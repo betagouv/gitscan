@@ -39,6 +39,7 @@
 │   └── vite
 │       └── Dockerfile
 ├── .dockerignore
+├── .env.dist
 ├── .gitguardian.yaml
 ├── .github
 │   └── workflows
@@ -63,7 +64,6 @@
 │   ├── config
 │   │   ├── bundles.php
 │   │   ├── packages
-│   │   │   ├── api_platform.yaml
 │   │   │   ├── cache.yaml
 │   │   │   ├── csrf.yaml
 │   │   │   ├── dama_doctrine_test_bundle.yaml
@@ -99,7 +99,6 @@
 │   │   ├── reference.php
 │   │   ├── routes
 │   │   │   ├── api.yaml
-│   │   │   ├── api_platform.yaml
 │   │   │   ├── attributes.yaml
 │   │   │   ├── framework.yaml
 │   │   │   ├── pentatrion_vite.yaml
@@ -107,7 +106,21 @@
 │   │   │   └── web_profiler.yaml
 │   │   └── services.yaml
 │   ├── migrations
-│   │   └── Version20260203082259.php
+│   │   ├── Version20260203082259.php
+│   │   ├── Version20260227192446.php
+│   │   ├── Version20260227193422.php
+│   │   ├── Version20260302101540.php
+│   │   ├── Version20260302143944.php
+│   │   ├── Version20260302154954.php
+│   │   ├── Version20260303140602.php
+│   │   ├── Version20260304144147.php
+│   │   ├── Version20260305084816.php
+│   │   ├── Version20260327150509.php
+│   │   ├── Version20260401135932.php
+│   │   ├── Version20260424062101.php
+│   │   ├── Version20260428102402.php
+│   │   ├── Version20260428133710.php
+│   │   └── Version20260429031522.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -137,90 +150,135 @@
 │   │   └── index.php
 │   ├── src
 │   │   ├── Api
-│   │   │   └── Agent
-│   │   │       ├── FDO
-│   │   │       │   ├── Endpoint
-│   │   │       │   │   └── BrisDePorte
-│   │   │       │   │       ├── EditerDeclarationBrisPorteEndpoint.php
-│   │   │       │   │       ├── InitierDeclarationBrisPorteEndpoint.php
-│   │   │       │   │       ├── ListerMesDeclarationsEndpoint.php
-│   │   │       │   │       ├── SoumettreDeclarationBrisPorteEndpoint.php
-│   │   │       │   │       ├── SupprimerDeclarationBrisPorteEndpoint.php
-│   │   │       │   │       ├── SupprimerPieceJointeDeclarationBrisPorteEndpoint.php
-│   │   │       │   │       └── TeleverserPieceJointeDeclarationBrisPorteEndpoint.php
-│   │   │       │   ├── Input
-│   │   │       │   │   ├── AdresseInput.php
-│   │   │       │   │   ├── CoordonneesRequerantInput.php
-│   │   │       │   │   ├── DeclarationFDOBrisPorteInput.php
-│   │   │       │   │   ├── DocumentDto.php
-│   │   │       │   │   └── ProcedureJudiciaireInput.php
-│   │   │       │   ├── Output
-│   │   │       │   │   ├── AdresseOutput.php
-│   │   │       │   │   ├── AgentOutput.php
-│   │   │       │   │   ├── CoordonneesRequerantOutput.php
-│   │   │       │   │   ├── DeclarationFDOBrisPorteOutput.php
-│   │   │       │   │   ├── DocumentOutput.php
-│   │   │       │   │   └── ProcedureJudiciaireOutput.php
-│   │   │       │   ├── Transformers
-│   │   │       │   │   ├── DeclarationFDOBrisPorteOutputMapper.php
-│   │   │       │   │   ├── TimestampToDateImmutableTransformer.php
-│   │   │       │   │   └── TimestampToDateTransformer.php
-│   │   │       │   └── Voter
-│   │   │       │       └── DeclarationFDOBrisPorteVoter.php
-│   │   │       └── Fip6
-│   │   │           ├── Endpoint
-│   │   │           │   ├── Agent
-│   │   │           │   │   ├── DeclarerNouvelAgentEndpoint.php
-│   │   │           │   │   ├── EditerAgentEndpoint.php
-│   │   │           │   │   ├── EditerAgentInput.php
-│   │   │           │   │   ├── ListerAgentsActifsEndpoint.php
-│   │   │           │   │   └── MoiEndpoint.php
-│   │   │           │   ├── Document
-│   │   │           │   │   ├── ImprimerDocumentEndpoint.php
-│   │   │           │   │   ├── ImprimerDocumentInput.php
-│   │   │           │   │   ├── RenseignerMetaDonneesAttestationEndpoint.php
-│   │   │           │   │   └── RenseignerMetaDonneesAttestationInput.php
-│   │   │           │   └── Dossier
-│   │   │           │       ├── AjouterPieceJointeEndpoint.php
-│   │   │           │       ├── AttribuerDossierEndpoint.php
-│   │   │           │       ├── AttribuerDossierInput.php
-│   │   │           │       ├── DemarrerInstructionDossierEndpoint.php
-│   │   │           │       ├── GenererArretePaiementEndpoint.php
-│   │   │           │       ├── GenererCourrierPropositionIndemnisationEndpoint.php
-│   │   │           │       ├── GenererCourrierPropositionIndemnisationInput.php
-│   │   │           │       ├── GenererCourrierRejetEndpoint.php
-│   │   │           │       ├── GenererCourrierRejetInput.php
-│   │   │           │       ├── GenererDeclarationAcceptationEndpoint.php
-│   │   │           │       ├── ListerDossierAAttribuerEndpoint.php
-│   │   │           │       ├── ListerDossierACategoriserEndpoint.php
-│   │   │           │       ├── ListerDossierAInstruireEndpoint.php
-│   │   │           │       ├── ListerDossierATransmettreEndpoint.php
-│   │   │           │       ├── ListerDossierAVerifierEndpoint.php
-│   │   │           │       ├── ListerDossierArreteASignerEndpoint.php
-│   │   │           │       ├── ListerDossierEnAttenteIndemnisationEndpoint.php
-│   │   │           │       ├── ListerDossierPropositionASignerEndpoint.php
-│   │   │           │       └── ListerDossierRejetASignerEndpoint.php
-│   │   │           ├── Output
-│   │   │           │   ├── AgentOutput.php
-│   │   │           │   ├── DocumentOutput.php
-│   │   │           │   ├── DossierAAttribuerOutput.php
-│   │   │           │   ├── DossierACategoriserOutput.php
-│   │   │           │   ├── DossierAInstruireOutput.php
-│   │   │           │   ├── DossierATransmettreOutput.php
-│   │   │           │   ├── DossierAVerifierOutput.php
-│   │   │           │   ├── DossierArreteASignerOutput.php
-│   │   │           │   ├── DossierEnAttenteIndemnisationOutput.php
-│   │   │           │   ├── DossierPropositionASignerOutput.php
-│   │   │           │   ├── DossierRejetASignerOutput.php
-│   │   │           │   └── EtatDossierOutput.php
-│   │   │           ├── Transformers
-│   │   │           │   ├── AgentIdTransformer.php
-│   │   │           │   ├── DossierEtatTransformer.php
-│   │   │           │   └── RequerantNomTransformer.php
-│   │   │           └── Voter
-│   │   │               ├── AgentVoter.php
-│   │   │               ├── DocumentVoter.php
-│   │   │               └── DossierVoter.php
+│   │   │   ├── Agent
+│   │   │   │   ├── FDO
+│   │   │   │   │   ├── Endpoint
+│   │   │   │   │   │   └── BrisDePorte
+│   │   │   │   │   │       ├── EditerDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │       ├── InitierDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │       ├── ListerMesDeclarationsEndpoint.php
+│   │   │   │   │   │       ├── SoumettreDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │       ├── SupprimerDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │       ├── SupprimerPieceJointeDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │       └── TeleverserPieceJointeDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   ├── Input
+│   │   │   │   │   │   ├── AdresseInput.php
+│   │   │   │   │   │   ├── CoordonneesRequerantInput.php
+│   │   │   │   │   │   ├── DeclarationFDOBrisPorteInput.php
+│   │   │   │   │   │   ├── DocumentDto.php
+│   │   │   │   │   │   └── ProcedureJudiciaireInput.php
+│   │   │   │   │   ├── Output
+│   │   │   │   │   │   ├── AdresseOutput.php
+│   │   │   │   │   │   ├── AgentOutput.php
+│   │   │   │   │   │   ├── CoordonneesRequerantOutput.php
+│   │   │   │   │   │   ├── DeclarationFDOBrisPorteOutput.php
+│   │   │   │   │   │   ├── DocumentOutput.php
+│   │   │   │   │   │   └── ProcedureJudiciaireOutput.php
+│   │   │   │   │   ├── Transformers
+│   │   │   │   │   │   ├── DeclarationFDOBrisPorteOutputMapper.php
+│   │   │   │   │   │   ├── TimestampToDateImmutableTransformer.php
+│   │   │   │   │   │   └── TimestampToDateTransformer.php
+│   │   │   │   │   └── Voter
+│   │   │   │   │       └── DeclarationFDOBrisPorteVoter.php
+│   │   │   │   └── Fip6
+│   │   │   │       ├── Endpoint
+│   │   │   │       │   ├── Agent
+│   │   │   │       │   │   ├── DeclarerNouvelAgentEndpoint.php
+│   │   │   │       │   │   ├── EditerAgentEndpoint.php
+│   │   │   │       │   │   ├── EditerAgentInput.php
+│   │   │   │       │   │   ├── ListerAgentsActifsEndpoint.php
+│   │   │   │       │   │   └── MoiEndpoint.php
+│   │   │   │       │   ├── Document
+│   │   │   │       │   │   ├── ImprimerDocumentEndpoint.php
+│   │   │   │       │   │   ├── ImprimerDocumentInput.php
+│   │   │   │       │   │   ├── RenseignerMetaDonneesAttestationEndpoint.php
+│   │   │   │       │   │   └── RenseignerMetaDonneesAttestationInput.php
+│   │   │   │       │   └── Dossier
+│   │   │   │       │       ├── AjouterPieceJointeEndpoint.php
+│   │   │   │       │       ├── AttribuerDossierEndpoint.php
+│   │   │   │       │       ├── AttribuerDossierInput.php
+│   │   │   │       │       ├── DemarrerInstructionDossierEndpoint.php
+│   │   │   │       │       ├── GenererArretePaiementEndpoint.php
+│   │   │   │       │       ├── GenererCourrierPropositionIndemnisationEndpoint.php
+│   │   │   │       │       ├── GenererCourrierPropositionIndemnisationInput.php
+│   │   │   │       │       ├── GenererCourrierRejetEndpoint.php
+│   │   │   │       │       ├── GenererCourrierRejetInput.php
+│   │   │   │       │       ├── GenererDeclarationAcceptationEndpoint.php
+│   │   │   │       │       ├── ListerDossierAAttribuerEndpoint.php
+│   │   │   │       │       ├── ListerDossierACategoriserEndpoint.php
+│   │   │   │       │       ├── ListerDossierAInstruireEndpoint.php
+│   │   │   │       │       ├── ListerDossierATransmettreEndpoint.php
+│   │   │   │       │       ├── ListerDossierAVerifierEndpoint.php
+│   │   │   │       │       ├── ListerDossierArreteASignerEndpoint.php
+│   │   │   │       │       ├── ListerDossierEnAttenteIndemnisationEndpoint.php
+│   │   │   │       │       ├── ListerDossierPropositionASignerEndpoint.php
+│   │   │   │       │       └── ListerDossierRejetASignerEndpoint.php
+│   │   │   │       ├── Output
+│   │   │   │       │   ├── AdresseOutput.php
+│   │   │   │       │   ├── AgentOutput.php
+│   │   │   │       │   ├── BaseDossierOutput.php
+│   │   │   │       │   ├── CoordonneesRequerantOutput.php
+│   │   │   │       │   ├── DeclarationFDOOutput.php
+│   │   │   │       │   ├── DossierAAttribuerOutput.php
+│   │   │   │       │   ├── DossierACategoriserOutput.php
+│   │   │   │       │   ├── DossierAInstruireOutput.php
+│   │   │   │       │   ├── DossierATransmettreOutput.php
+│   │   │   │       │   ├── DossierAVerifierOutput.php
+│   │   │   │       │   ├── DossierApercuOutput.php
+│   │   │   │       │   ├── DossierArreteASignerOutput.php
+│   │   │   │       │   ├── DossierDetailOutput.php
+│   │   │   │       │   ├── DossierDetailleOutput.php
+│   │   │   │       │   ├── DossierEnAttenteIndemnisationOutput.php
+│   │   │   │       │   ├── DossierPropositionASignerOutput.php
+│   │   │   │       │   ├── DossierRejetASignerOutput.php
+│   │   │   │       │   ├── EtatDossierOutput.php
+│   │   │   │       │   ├── PieceJointeOutput.php
+│   │   │   │       │   ├── ProcedureJudiciaireOutput.php
+│   │   │   │       │   ├── RequerantOutput.php
+│   │   │   │       │   └── TestEligibiliteOutput.php
+│   │   │   │       ├── Transformers
+│   │   │   │       │   ├── AgentIdTransformer.php
+│   │   │   │       │   ├── DossierEtatTransformer.php
+│   │   │   │       │   └── RequerantNomTransformer.php
+│   │   │   │       └── Voter
+│   │   │   │           ├── AgentVoter.php
+│   │   │   │           ├── DocumentVoter.php
+│   │   │   │           └── DossierVoter.php
+│   │   │   └── Requerant
+│   │   │       ├── Commune
+│   │   │       │   └── ListerCommuneEndpoint.php
+│   │   │       ├── Dossier
+│   │   │       │   ├── AccepterIndemnisationEndpoint.php
+│   │   │       │   ├── AmenderDossierEndpoint.php
+│   │   │       │   ├── ConsulterDossierEndpoint.php
+│   │   │       │   ├── Dto
+│   │   │       │   │   ├── AdresseDto.php
+│   │   │       │   │   ├── CommuneDto.php
+│   │   │       │   │   ├── DossierApercuDto.php
+│   │   │       │   │   ├── DossierDto.php
+│   │   │       │   │   ├── EtatDossierDto.php
+│   │   │       │   │   ├── EtatDossierUsager.php
+│   │   │       │   │   ├── PaysDto.php
+│   │   │       │   │   ├── PersonneDto.php
+│   │   │       │   │   ├── PersonneMoraleDto.php
+│   │   │       │   │   ├── PersonnePhysiqueDto.php
+│   │   │       │   │   ├── PieceJointeDto.php
+│   │   │       │   │   └── UsagerDto.php
+│   │   │       │   ├── MesDemandesEndpoint.php
+│   │   │       │   ├── Normalization
+│   │   │       │   │   └── EntityResolveur.php
+│   │   │       │   ├── PublierBrouillonEndpoint.php
+│   │   │       │   └── TeleverserPiecesJointesEndpoint.php
+│   │   │       ├── Moi
+│   │   │       │   ├── MoiDto.php
+│   │   │       │   └── MoiEndpoint.php
+│   │   │       ├── Request
+│   │   │       │   └── Attribute
+│   │   │       │       ├── MapDossier.php
+│   │   │       │       ├── MapDossierDto.php
+│   │   │       │       └── MapDossierResolver.php
+│   │   │       └── Voter
+│   │   │           └── RequerantDossierVoter.php
 │   │   ├── Command
 │   │   │   ├── DossierEtatAnnulerCommand.php
 │   │   │   ├── DossierEtatAvancerCommand.php
@@ -250,10 +308,8 @@
 │   │   │   ├── HomeController.php
 │   │   │   ├── InscriptionController.php
 │   │   │   ├── Requerant
-│   │   │   │   ├── BrisPorteController.php
 │   │   │   │   ├── DocumentController.php
-│   │   │   │   ├── HomeController.php
-│   │   │   │   └── RequerantController.php
+│   │   │   │   └── HomeController.php
 │   │   │   └── SecurityController.php
 │   │   ├── DataFixtures
 │   │   │   ├── AgentFixture.php
@@ -261,8 +317,9 @@
 │   │   │   ├── DossierFixture.php
 │   │   │   ├── FDOFixture.php
 │   │   │   ├── GeoFixtures.php
-│   │   │   ├── RequerantFixture.php
+│   │   │   ├── PersonneFixture.php
 │   │   │   ├── TestEligibiliteFixture.php
+│   │   │   ├── UsagerFixture.php
 │   │   │   └── fichiers
 │   │   │       └── agent
 │   │   │           └── fdo
@@ -287,6 +344,8 @@
 │   │   │   ├── DeclarationFDOBrisPorteErreurType.php
 │   │   │   ├── Document.php
 │   │   │   ├── DocumentType.php
+│   │   │   ├── Dossier.php
+│   │   │   ├── DossierType.php
 │   │   │   ├── EtatDossier.php
 │   │   │   ├── EtatDossierType.php
 │   │   │   ├── FournisseurIdentiteAgent.php
@@ -301,15 +360,17 @@
 │   │   │   │   ├── AbstractMetadonnees.php
 │   │   │   │   ├── MetadonneesAttestation.php
 │   │   │   │   └── NavigationRequerant.php
+│   │   │   ├── Personne.php
 │   │   │   ├── PersonneMorale.php
+│   │   │   ├── PersonneMoraleType.php
 │   │   │   ├── PersonnePhysique.php
 │   │   │   ├── PrejudiceType.php
 │   │   │   ├── ProcedureJudiciaire.php
-│   │   │   ├── QualiteRequerant.php
-│   │   │   ├── Requerant.php
+│   │   │   ├── RapportAuLogement.php
 │   │   │   ├── TestEligibilite.php
 │   │   │   ├── TypeAttestation.php
-│   │   │   └── TypeInstitutionSecuritePublique.php
+│   │   │   ├── TypeInstitutionSecuritePublique.php
+│   │   │   └── Usager.php
 │   │   ├── Event
 │   │   │   ├── Event
 │   │   │   │   ├── DossierArreteEditeEvent.php
@@ -328,7 +389,7 @@
 │   │   │   │   └── DossierTransmisBudgetEvent.php
 │   │   │   └── Listener
 │   │   │       ├── ApiExceptionListener.php
-│   │   │       ├── ConnexionRequerantListener.php
+│   │   │       ├── ConnexionUsagerListener.php
 │   │   │       ├── DetectObsoleteBrowserListener.php
 │   │   │       ├── DossierEntitylistener.php
 │   │   │       ├── DossierTransitionListener.php
@@ -354,8 +415,8 @@
 │   │   │   ├── GeoPaysRepository.php
 │   │   │   ├── PersonneMoraleRepository.php
 │   │   │   ├── PersonnePhysiqueRepository.php
-│   │   │   ├── RequerantRepository.php
-│   │   │   └── ServiceEnqueteurRepository.php
+│   │   │   ├── ServiceEnqueteurRepository.php
+│   │   │   └── UsagerRepository.php
 │   │   ├── Security
 │   │   │   ├── AgentChecker.php
 │   │   │   ├── Authenticator
@@ -365,7 +426,7 @@
 │   │   │   │   └── OidcClient.php
 │   │   │   ├── Provider
 │   │   │   │   └── AgentProvider.php
-│   │   │   ├── RequerantChecker.php
+│   │   │   ├── UsagerChecker.php
 │   │   │   └── Voter
 │   │   │       └── FDODocumentVoter.php
 │   │   ├── Service
@@ -482,62 +543,63 @@
 │   │   ├── qui-sommes-nous.html.twig
 │   │   ├── requerant
 │   │   │   ├── _header.html.twig
-│   │   │   ├── default
-│   │   │   │   └── index.html.twig
-│   │   │   └── dossier
-│   │   │       ├── decision.html.twig
-│   │   │       └── declare_bris_porte.html.twig
+│   │   │   └── requerant.html.twig
 │   │   └── security
 │   │       ├── connexion.html.twig
 │   │       └── reset_password.html.twig
 │   ├── tests
 │   │   ├── Api
-│   │   │   └── Agent
-│   │   │       ├── FDO
-│   │   │       │   └── Endpoint
-│   │   │       │       └── BrisDePorte
-│   │   │       │           ├── EditerDeclarationBrisPorteEndpointTest.php
-│   │   │       │           ├── InitierDeclarationBrisPorteEndpointTest.php
-│   │   │       │           ├── ListerMesDeclarationsBrisPorteEndpointTest.php
-│   │   │       │           ├── SoumettreDeclarationBrisPorteEndpointTest.php
-│   │   │       │           ├── SupprimerDeclarationBrisPorteEndpointTest.php
-│   │   │       │           ├── SupprimerPieceJointeDeclarationBrisPorteEndpointTest.php
-│   │   │       │           └── TeleverserPieceJointeDeclarationBrisPorteEndpointTest.php
-│   │   │       └── Fip6
-│   │   │           ├── APIEndpointTestCase.php
-│   │   │           ├── AbstractEndpointTestCase.php
-│   │   │           ├── Agent
-│   │   │           │   └── Endpoint
-│   │   │           │       └── DeclarerNouvelAgentEndpointTest.php
-│   │   │           ├── Document
-│   │   │           │   └── Endpoint
-│   │   │           │       ├── ImprimerDocumentEndpointTest.php
-│   │   │           │       └── RenseignerMetaDonneesAttestationEndpointTest.php
-│   │   │           └── Dossier
-│   │   │               └── Endpoint
-│   │   │                   ├── AjouterPieceJointeEndpointTest.php
-│   │   │                   ├── AttribuerDossierEndpointTest.php
-│   │   │                   ├── DemarrerInstructionDossierEndpointTest.php
-│   │   │                   ├── GenererArretePaiementEndpointTest.php
-│   │   │                   ├── GenererCourrierPropositionIndemnisationEndpointTest.php
-│   │   │                   ├── GenererCourrierRejetEndpointTest.php
-│   │   │                   ├── GenererDeclarationAcceptationEndpointTest.php
-│   │   │                   ├── ListeDossierPropositionASignerEndpointTest.php
-│   │   │                   ├── ListeDossierRejetASignerEndpointTest.php
-│   │   │                   ├── ListerDossierAAttribuerEndpointTest.php
-│   │   │                   ├── ListerDossierACategoriserEndpointTest.php
-│   │   │                   ├── ListerDossierAInstruireEndpointTest.php
-│   │   │                   ├── ListerDossierATransmettreEndpointTest.php
-│   │   │                   ├── ListerDossierAVerifierEndpointTest.php
-│   │   │                   ├── ListerDossierArreteASignerEndpointTest.php
-│   │   │                   └── ListerDossierEnAttenteIndemnisationEndpointTest.php
+│   │   │   ├── Agent
+│   │   │   │   ├── FDO
+│   │   │   │   │   └── Endpoint
+│   │   │   │   │       └── BrisDePorte
+│   │   │   │   │           ├── EditerDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │           ├── InitierDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │           ├── ListerMesDeclarationsBrisPorteEndpointTest.php
+│   │   │   │   │           ├── SoumettreDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │           ├── SupprimerDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │           ├── SupprimerPieceJointeDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │           └── TeleverserPieceJointeDeclarationBrisPorteEndpointTest.php
+│   │   │   │   └── Fip6
+│   │   │   │       ├── APIEndpointTestCase.php
+│   │   │   │       ├── AbstractEndpointTestCase.php
+│   │   │   │       ├── Agent
+│   │   │   │       │   └── Endpoint
+│   │   │   │       │       └── DeclarerNouvelAgentEndpointTest.php
+│   │   │   │       ├── Document
+│   │   │   │       │   └── Endpoint
+│   │   │   │       │       ├── ImprimerDocumentEndpointTest.php
+│   │   │   │       │       └── RenseignerMetaDonneesAttestationEndpointTest.php
+│   │   │   │       └── Dossier
+│   │   │   │           └── Endpoint
+│   │   │   │               ├── AjouterPieceJointeEndpointTest.php
+│   │   │   │               ├── AttribuerDossierEndpointTest.php
+│   │   │   │               ├── DemarrerInstructionDossierEndpointTest.php
+│   │   │   │               ├── GenererArretePaiementEndpointTest.php
+│   │   │   │               ├── GenererCourrierPropositionIndemnisationEndpointTest.php
+│   │   │   │               ├── GenererCourrierRejetEndpointTest.php
+│   │   │   │               ├── GenererDeclarationAcceptationEndpointTest.php
+│   │   │   │               ├── ListeDossierPropositionASignerEndpointTest.php
+│   │   │   │               ├── ListeDossierRejetASignerEndpointTest.php
+│   │   │   │               ├── ListerDossierAAttribuerEndpointTest.php
+│   │   │   │               ├── ListerDossierACategoriserEndpointTest.php
+│   │   │   │               ├── ListerDossierAInstruireEndpointTest.php
+│   │   │   │               ├── ListerDossierATransmettreEndpointTest.php
+│   │   │   │               ├── ListerDossierAVerifierEndpointTest.php
+│   │   │   │               ├── ListerDossierArreteASignerEndpointTest.php
+│   │   │   │               └── ListerDossierEnAttenteIndemnisationEndpointTest.php
+│   │   │   └── Requerant
+│   │   │       └── Dossier
+│   │   │           ├── AmenderDossierEndpointTest.php
+│   │   │           ├── MesDemandesEndpointTest.php
+│   │   │           ├── PublierDossierEndpointTest.php
+│   │   │           └── TeleverserPiecesJointesEndpointTest.php
 │   │   ├── Controller
 │   │   │   ├── Agent
 │   │   │   │   └── DossierControllerTest.php
 │   │   │   ├── AtterrissageControllerTest.php
 │   │   │   ├── BrisPorteControllerTest.php
 │   │   │   ├── Requerant
-│   │   │   │   ├── ApiPlatformTest.php
 │   │   │   │   └── HomeControllerTest.php
 │   │   │   └── SecurityControllerTest.php
 │   │   ├── Repository
@@ -580,9 +642,21 @@
 │   │   │       └── rechercher-un-dossier.e2e.test.ts
 │   │   ├── connexion.e2e.test.ts
 │   │   ├── depot-dossier.e2e.test.ts
-│   │   ├── helpers.ts
+│   │   ├── helpers
+│   │   │   ├── connexion.ts
+│   │   │   ├── date.ts
+│   │   │   ├── formulaire.ts
+│   │   │   ├── index.ts
+│   │   │   └── titre.ts
 │   │   ├── ressources
-│   │   │   └── attestation_completee_par_les_forces_de_l_ordre.pdf
+│   │   │   ├── acte_de_propriete.pdf
+│   │   │   ├── attestation_completee_par_les_forces_de_l_ordre.pdf
+│   │   │   ├── cni.jpg
+│   │   │   ├── contrat_location.pdf
+│   │   │   ├── facture-1.png
+│   │   │   ├── photo-porte-2.jpeg
+│   │   │   ├── rib.jpg
+│   │   │   └── sample-4.pdf
 │   │   └── test-eligibilite.e2e.test.ts
 │   ├── tsconfig.json
 │   └── yarn.lock
@@ -636,8 +710,7 @@
     │   │   │   │   │           ├── les-documents.tsx
     │   │   │   │   │           └── requisition-serrurier.tsx
     │   │   │   │   ├── routeur
-    │   │   │   │   │   ├── routeur-fdo.gen.ts
-    │   │   │   │   │   └── routeur-fdo.ts
+    │   │   │   │   │   └── routeur-fdo.gen.ts
     │   │   │   │   └── services
     │   │   │   │       ├── declaration.ts
     │   │   │   │       └── index.ts
@@ -684,8 +757,8 @@
     │   │   │       │   │   │   │   └── index.ts
     │   │   │       │   │   │   └── piecejointe
     │   │   │       │   │   │       ├── AjoutPieceJointe.tsx
+    │   │   │       │   │   │       ├── ChampPieceJointe.tsx
     │   │   │       │   │   │       ├── MenuPieceJointe.tsx
-    │   │   │       │   │   │       ├── PieceJointe.tsx
     │   │   │       │   │   │       ├── SuppressionPieceJointe.tsx
     │   │   │       │   │   │       ├── TelechargerPieceJointe.tsx
     │   │   │       │   │   │       └── index.ts
@@ -733,42 +806,113 @@
     │   │   │           ├── routeur-fip6.gen.ts
     │   │   │           └── routeur-fip6.ts
     │   │   ├── requerant
-    │   │   │   └── dossier
-    │   │   │       ├── components
-    │   │   │       │   ├── BrisPorte
-    │   │   │       │   │   ├── Recapitulatif.module.css
-    │   │   │       │   │   └── Recapitulatif.tsx
-    │   │   │       │   ├── BrisPorte.tsx
-    │   │   │       │   ├── BrisPortePanel.tsx
-    │   │   │       │   ├── Civilite.tsx
-    │   │   │       │   ├── PersonneMorale.tsx
-    │   │   │       │   ├── PersonnePhysique.tsx
-    │   │   │       │   ├── PieceJointe
-    │   │   │       │   │   └── PieceJointe.tsx
-    │   │   │       │   ├── Referentiel.tsx
-    │   │   │       │   ├── Requerant.tsx
-    │   │   │       │   ├── TestEligibiliteForm.tsx
-    │   │   │       │   ├── Uploader.tsx
-    │   │   │       │   └── User.tsx
-    │   │   │       ├── consulter_la_decision.tsx
-    │   │   │       ├── contexts
-    │   │   │       │   ├── DossierContext.ts
-    │   │   │       │   └── PaysContext.ts
-    │   │   │       ├── creation_de_compte.tsx
-    │   │   │       ├── deposer_mon_dossier.tsx
-    │   │   │       ├── models
-    │   │   │       │   ├── Inscription.ts
-    │   │   │       │   └── QualiteRequerant.ts
-    │   │   │       ├── services
-    │   │   │       │   ├── Object.ts
-    │   │   │       │   ├── Random.ts
-    │   │   │       │   └── devtools.js
-    │   │   │       └── tester_mon_eligibilite.tsx
+    │   │   │   ├── composants
+    │   │   │   │   ├── IconeLigne.tsx
+    │   │   │   │   ├── SelectionCivilite.tsx
+    │   │   │   │   ├── SuggestedInput.tsx
+    │   │   │   │   ├── TitreSection.tsx
+    │   │   │   │   ├── champs
+    │   │   │   │   │   ├── CodePostalInput.tsx
+    │   │   │   │   │   ├── PaysSelect.tsx
+    │   │   │   │   │   ├── RegExpInput.tsx
+    │   │   │   │   │   ├── check
+    │   │   │   │   │   │   ├── CheckInput.tsx
+    │   │   │   │   │   │   ├── CheckRadioButtons.tsx
+    │   │   │   │   │   │   ├── CheckSelect.tsx
+    │   │   │   │   │   │   ├── CheckSuggestedInput.tsx
+    │   │   │   │   │   │   └── CheckUpload.tsx
+    │   │   │   │   │   ├── form
+    │   │   │   │   │   │   ├── FormInput.tsx
+    │   │   │   │   │   │   ├── FormRadioButtons.tsx
+    │   │   │   │   │   │   ├── FormSelect.tsx
+    │   │   │   │   │   │   ├── FormSuggeestedInput.tsx
+    │   │   │   │   │   │   ├── FormUpload.tsx
+    │   │   │   │   │   │   └── TanstackFormField.d.ts
+    │   │   │   │   │   └── pays.json
+    │   │   │   │   ├── piecesJointes
+    │   │   │   │   │   ├── AjouterPiecesJointesModale.tsx
+    │   │   │   │   │   ├── PieceJointePanelNavigation.tsx
+    │   │   │   │   │   └── PrevisualiserFichier.tsx
+    │   │   │   │   └── routeur
+    │   │   │   │       └── NonTrouveComposant.tsx
+    │   │   │   ├── container.ts
+    │   │   │   ├── dossier
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── PieceJointe
+    │   │   │   │   │   │   └── AfficherPieceJointe.tsx
+    │   │   │   │   │   └── TestEligibiliteForm.tsx
+    │   │   │   │   ├── creation_de_compte.tsx
+    │   │   │   │   ├── models
+    │   │   │   │   │   └── Inscription.ts
+    │   │   │   │   ├── services
+    │   │   │   │   │   ├── Object.ts
+    │   │   │   │   │   └── devtools.js
+    │   │   │   │   └── tester_mon_eligibilite.tsx
+    │   │   │   ├── formulaires
+    │   │   │   │   └── brisDePorte
+    │   │   │   │       ├── 1-bris-porte.schema.ts
+    │   │   │   │       ├── 2-infos-requerants.schema.ts
+    │   │   │   │       └── 3-pieces-jointes.schema.ts
+    │   │   │   ├── hooks
+    │   │   │   │   ├── useClickOutside.ts
+    │   │   │   │   └── useDebounce.ts
+    │   │   │   ├── models
+    │   │   │   │   ├── Adresse.ts
+    │   │   │   │   ├── Civilite.ts
+    │   │   │   │   ├── Commune.ts
+    │   │   │   │   ├── Dossier.ts
+    │   │   │   │   ├── EtatDossier.ts
+    │   │   │   │   ├── Pays.ts
+    │   │   │   │   ├── Personne.ts
+    │   │   │   │   ├── PersonneMorale.ts
+    │   │   │   │   ├── PersonnePhysique.ts
+    │   │   │   │   ├── PieceJointe.ts
+    │   │   │   │   ├── QualiteRequerant.ts
+    │   │   │   │   ├── RapportAuLogement.ts
+    │   │   │   │   ├── TypePersonneMoraleType.ts
+    │   │   │   │   ├── TypePieceJointe.ts
+    │   │   │   │   ├── Usager.ts
+    │   │   │   │   └── index.ts
+    │   │   │   ├── query.ts
+    │   │   │   ├── requerant.tsx
+    │   │   │   ├── routes
+    │   │   │   │   ├── __root.tsx
+    │   │   │   │   └── requerant
+    │   │   │   │       ├── dossier
+    │   │   │   │       │   └── bris-de-porte
+    │   │   │   │       │       └── $id
+    │   │   │   │       │           ├── 1-bris-porte.tsx
+    │   │   │   │       │           ├── 2-infos-requerant.tsx
+    │   │   │   │       │           ├── 3-pieces-jointes.tsx
+    │   │   │   │       │           ├── 4-recapitulatif.tsx
+    │   │   │   │       │           ├── consulter-la-decision.tsx
+    │   │   │   │       │           └── index.tsx
+    │   │   │   │       ├── index.tsx
+    │   │   │   │       └── mes-demandes.tsx
+    │   │   │   ├── routeur
+    │   │   │   │   ├── contexte.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   └── routeur-requerant.gen.ts
+    │   │   │   ├── services
+    │   │   │   │   ├── AdresseManager.ts
+    │   │   │   │   ├── DossierManager.ts
+    │   │   │   │   └── UsagerManager.ts
+    │   │   │   └── style
+    │   │   │       ├── composants
+    │   │   │       │   ├── IconeLigne.module.css
+    │   │   │       │   ├── SuggestedInput.module.css
+    │   │   │       │   └── piecesJointes
+    │   │   │       │       └── PieceJointePanelNavigation.module.css
+    │   │   │       └── form.module.css
     │   │   └── sentry.ts
     │   ├── common
-    │   │   ├── components
+    │   │   ├── composants
     │   │   │   ├── ListeEtapes.tsx
     │   │   │   ├── Loader.tsx
+    │   │   │   ├── dsfr
+    │   │   │   │   ├── MiseEnAvant.tsx
+    │   │   │   │   ├── Modale.tsx
+    │   │   │   │   └── Requis.tsx
     │   │   │   └── loader.css
     │   │   ├── models
     │   │   │   ├── Adresse.ts
@@ -783,10 +927,12 @@
     │   │   │   ├── Requerant.ts
     │   │   │   ├── TestEligibilite.ts
     │   │   │   ├── TypeAttestation.ts
+    │   │   │   ├── TypePersonneMorale.ts
     │   │   │   └── index.ts
     │   │   ├── normalisation
     │   │   │   └── transformers
-    │   │   │       └── DateTransform.ts
+    │   │   │       ├── DateTransform.ts
+    │   │   │       └── UndefinedTransform.ts
     │   │   ├── polyfill.ts
     │   │   ├── services
     │   │   │   ├── RequerantManager.ts
@@ -799,7 +945,9 @@
     │   │   │   ├── date.ts
     │   │   │   ├── devise.ts
     │   │   │   ├── divers.ts
-    │   │   │   └── index.ts
+    │   │   │   ├── fichier.ts
+    │   │   │   ├── index.ts
+    │   │   │   └── object.ts
     │   │   └── validation
     │   │       └── index.ts
     │   └── style
@@ -810,15 +958,24 @@
     │               └── test_mon_eligibilite.css
     ├── stylelint.config.ts
     ├── tests
-    │   └── common
-    │       ├── models
-    │       │   └── Dossier.test.ts
-    │       └── validation
-    │           └── index.test.ts
+    │   ├── apps
+    │   │   └── requerant
+    │   │       └── models
+    │   │           ├── Dossier.test.ts
+    │   │           └── TypePieceJointe.test.ts
+    │   ├── common
+    │   │   ├── models
+    │   │   │   └── Dossier.test.ts
+    │   │   ├── services
+    │   │   │   ├── date.test.ts
+    │   │   │   └── object.test.ts
+    │   │   └── validation
+    │   │       └── index.test.ts
+    │   └── helpers.ts
     ├── tsconfig.json
     ├── types
     │   └── index.d.ts
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-187 directories, 636 files
+220 directories, 760 files
