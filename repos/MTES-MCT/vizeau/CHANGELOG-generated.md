@@ -1,30 +1,35 @@
-## Changelog : vizeau (30 derniers jours, au 23 avril 2026)
+## Changelog : vizeau (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application Vizeau a bénéficié d'améliorations significatives en termes de gestion des exploitations, notamment avec l'ajout de fonctionnalités d'export de données (parcelles, journal de bord).  L'interface utilisateur a également été enrichie avec de nouvelles couches cartographiques et des informations résumées sur les AAC (Autorisations d'aménagement concertées). Des améliorations ont été apportées à la gestion des territoires et des permissions utilisateurs, ainsi qu'à la gestion des contacts.
+Ce mois-ci, Vizeau a bénéficié d'améliorations significatives en termes de fonctionnalités et d'expérience utilisateur, notamment dans la gestion des exploitations agricoles, la visualisation des données sur la carte et la gestion des contacts. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter les parcelles d'une exploitation. [#372](https://github.com/MTES-MCT/vizeau/pull/372)
-- Ajout de la possibilité d'exporter le journal de bord d'une exploitation. [#371](https://github.com/MTES-MCT/vizeau/pull/371)
-- Ajout de nouvelles couches sur la carte de visualisation. [#366](https://github.com/MTES-MCT/vizeau/pull/366)
-- Affichage d'un résumé des informations relatives aux AAC sur la page de visualisation. [#357](https://github.com/MTES-MCT/vizeau/pull/357)
-- Possibilité de centrer la carte sur une AAC spécifique.
-- Amélioration de la gestion des contacts : correction de la suppression du dernier contact supplémentaire, gestion inter-formulaires, fermeture du tiroir de formulaire au chargement. [#363](https://github.com/MTES-MCT/vizeau/pull/363)
-- Ajout d'une indication de RPG (Référentiel Paysager Graphique).
-- Redirection vers la page d'une AAC pour consulter ses évolutions.
-- Filtrage des AACs dans la page de visualisation. [#364](https://github.com/MTES-MCT/vizeau/pull/364)
-- Correction de l'affichage du journal de bord sur la page d'accueil.
-- Traduction des codes NAF en libellés. [#370](https://github.com/MTES-MCT/vizeau/pull/370)
+- **Exploitations agricoles :**
+    - Ajout de la fonctionnalité d'export des parcelles d'une exploitation [#380](https://github.com/MTES-MCT/vizeau/pull/380).
+    - Implémentation de l'export du journal de bord d'une exploitation [#371](https://github.com/MTES-MCT/vizeau/pull/371).
+    - Possibilité d'exporter les données d'une exploitation [#372](https://github.com/MTES-MCT/vizeau/pull/372).
+- **Visualisation des données :**
+    - Ajout de nouvelles couches sur la carte de visualisation [#366](https://github.com/MTES-MCT/vizeau/pull/366).
+    - Filtrage des AACs (Autorisations d'aménagement de captage) directement sur la carte [#368](https://github.com/MTES-MCT/vizeau/pull/368).
+    - Traduction des codes NAF (Nomenclature d'Activités Française) en libellés pour une meilleure compréhension [#370](https://github.com/MTES-MCT/vizeau/pull/370).
+- **Gestion des contacts :**
+    - Amélioration de la gestion des contacts secondaires dans les formulaires [#363](https://github.com/MTES-MCT/vizeau/pull/363).
+    - Ajout d'une indication de RPG (Responsable de Point de Prélèvement) [#357](https://github.com/MTES-MCT/vizeau/pull/357).
+- **Territoires :**
+    - Attribution de territoires aux comptes animateurs [#375](https://github.com/MTES-MCT/vizeau/pull/375).
+    - Affectation de territoire aux CMD (Collectivités et Métropoles) [#359](https://github.com/MTES-MCT/vizeau/pull/359).
+- **Page AAC :** Mise à jour de la page AAC [#383](https://github.com/MTES-MCT/vizeau/pull/383).
+- **Composants UI :** Ajout des composants CheckboxCard et SearchWithFilters.
 
 ### Évolutions techniques
-- Implémentation des permissions par territoire, permettant de restreindre l'accès aux données en fonction du territoire de l'utilisateur. [#358](https://github.com/MTES-MCT/vizeau/pull/358)
-- Création d'une commande CLI pour assigner facilement des territoires aux utilisateurs. [#359](https://github.com/MTES-MCT/vizeau/pull/359)
-- Amélioration du seeding des comptes animateurs avec l'attribution de territoires. [#380](https://github.com/MTES-MCT/vizeau/pull/380)
-- Correction d'un crash lié à l'exportation.
-- Correction de la transparence des résultats dans le composant autocomplete. [#378](https://github.com/MTES-MCT/vizeau/pull/378)
+- Correction de la transparence des résultats dans le composant autocomplete [#378](https://github.com/MTES-MCT/vizeau/pull/378).
+- Correction d'un crash lié à l'affichage du journal de bord [#372](https://github.com/MTES-MCT/vizeau/pull/372).
+- Amélioration de la gestion des dépendances dans les `useEffect` pour le formulaire de contact.
+- Correction de la navigation au clavier et amélioration de l'accessibilité.
+- Déboucement de l'input autocomplete pour améliorer la performance.
 
 ### Autres changements
-- Composants pour le module Point de prélèvement. [#381](https://github.com/MTES-MCT/vizeau/pull/381)
-- Correction de l'erreur de redirection vers la page d'erreur des territoires lorsque l'utilisateur n'en a pas.
-- Amélioration de la gestion des dépendances dans useEffect pour le contact principal.
-- Diverses corrections et optimisations suite aux revues de code Copilot.
+- Corrections diverses suite aux revues Copilot.
+- Mise à jour de certaines dépendances npm et yarn.
+- Ajout de composants pour le module Point de prélèvement [#381](https://github.com/MTES-MCT/vizeau/pull/381).
+- Correction de bugs mineurs et améliorations de la qualité du code.
