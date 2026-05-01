@@ -1,3 +1,29 @@
+2026-04-29T18:21:44+02:00 - 3ee949a0 - Etienne Weil : fix(bin/dev): now using foreman start
+2026-04-28T15:04:25+02:00 - e991c1c1 - Maxime Pierrot : Merge pull request #845 from betagouv/1631_fix_sentry_dialog_invitation
+2026-04-28T14:45:31+02:00 - d04be42e - pierrax : Fix sentry 1634
+2026-04-28T11:38:17+02:00 - d20da44b - Etienne Weil : Merge branch 'review' of https://github.com/betagouv/monstagedeseconde into review
+2026-04-28T11:37:36+02:00 - 6c464951 - Etienne Weil : fix(:apply in ability): simplified and ... debugged !
+2026-04-28T10:52:19+02:00 - 6f65a490 - Maxime Pierrot : Merge pull request #843 from betagouv/1628_cache_sentry_error
+2026-04-28T10:52:09+02:00 - 0a4d1fba - Maxime Pierrot : Merge pull request #844 from betagouv/1627_sentry_error
+2026-04-28T10:51:25+02:00 - e6f9d0b5 - pierrax : Fix sentry mascot dialog invitation
+2026-04-28T09:38:12+02:00 - ed2f4f62 - Etienne WEIL : fix(application ability): complementary weeks now ok for secondes ! (#839)
+2026-04-28T09:37:51+02:00 - c3daa713 - Maxime Pierrot : Seconde student can validate two applications on weeks 1 and 2 (#842)
+2026-04-27T21:44:14+02:00 - 5b6d82be - pierrax : internship area nil issue
+2026-04-27T17:18:23+02:00 - a29d0f48 - pierrax : Cache key error
+2026-04-27T16:04:21+02:00 - 56b9d4aa - Etienne Weil : review: Validate student email uniqueness on create only
+2026-04-27T14:36:29+02:00 - ee1f0f7d - Maxime Pierrot : Merge pull request #834 from betagouv/1620_sentry_fix_applications_show
+2026-04-27T14:35:55+02:00 - 3dda7fe8 - Maxime Pierrot : Merge pull request #833 from betagouv/1619_sentry_logs_size
+2026-04-27T14:33:59+02:00 - 51f7edd2 - Maxime Pierrot : Merge pull request #786 from betagouv/1578_bug_soft_delete
+2026-04-27T14:32:37+02:00 - 70e4eb53 - Maxime Pierrot : Merge pull request #784 from betagouv/1563_bug_export_applications
+2026-04-27T14:31:59+02:00 - de308d58 - Maxime Pierrot : Merge pull request #783 from betagouv/MGF-1553-export-des-candidatures-provoque-une-erreur-500
+2026-04-27T14:30:27+02:00 - e90afbcb - Maxime Pierrot : Merge pull request #766 from betagouv/1486_empty_weeks_on_search_for_students
+2026-04-27T14:29:53+02:00 - 1a55601b - Maxime Pierrot : Merge pull request #762 from betagouv/MGF-1530-une-candidature-retenue-ne-peut-plus-evoluer
+2026-04-27T14:29:21+02:00 - 5622ff49 - Maxime Pierrot : Merge pull request #761 from betagouv/1518_offer_group_id_check_front_end
+2026-04-27T14:28:38+02:00 - 9e2ab268 - Maxime Pierrot : Merge pull request #758 from betagouv/1523_new_offer_wording
+2026-04-27T12:45:24+02:00 - ca792f41 - Etienne Weil : feat(gitignore): storing some specs
+2026-04-27T11:18:31+02:00 - 97c73544 - Etienne WEIL : MGF 1601 0371417 p les conventions sont editees avec le mauvais chef detablissement (#830)
+2026-04-27T11:08:24+02:00 - 2f538267 - Etienne WEIL : Mgf 1590 edition de convention par letablissement nom et mail du responsable detablissement incorrect (#808)
+2026-04-27T11:03:12+02:00 - 31ffcc2a - Etienne WEIL : Mgf 1423 rails upgrade 8.1 (#765)
 2026-04-24T15:26:07+02:00 - 3821d462 - Maxime Pierrot : Merge pull request #809 from betagouv/MGF-1544-nombre-de-caractere-minimum-ne-se-calcule-pas
 2026-04-24T15:25:19+02:00 - 016507c3 - Maxime Pierrot : Merge pull request #825 from betagouv/MGF-1597-erreur-500-lorsque-ladresse-est-trop-longue
 2026-04-24T15:23:34+02:00 - 12d3ddb0 - Maxime Pierrot : Merge pull request #818 from betagouv/1494_offers_order
@@ -8,6 +34,8 @@
 2026-04-24T11:05:28+02:00 - d16a7a3e - Etienne Weil : Merge branch 'review' of https://github.com/betagouv/monstagedeseconde into review
 2026-04-24T11:05:24+02:00 - 038fbef8 - Etienne Weil : fix(ability): notification ability fixed
 2026-04-24T10:45:00+02:00 - d004cd6e - pierrax : Fix error message
+2026-04-24T09:21:48+02:00 - 95b3e5fc - pierrax : Fix applications show
+2026-04-24T09:11:03+02:00 - cdea6938 - pierrax : Fix sentry issue with search logs
 2026-04-23T16:15:35+02:00 - 72f68664 - pierrax : Merge branch 'review' into staging
 2026-04-23T16:14:56+02:00 - f764110d - pierrax : Merge branch 'review' of https://github.com/betagouv/monstagedeseconde into review
 2026-04-23T16:14:34+02:00 - a50443aa - pierrax : Fix boarding house postal code
@@ -55,10 +83,13 @@
 2026-04-17T12:16:19+02:00 - 2060bf2d - Etienne Weil : Revert "feat(MGF): update SSH connection scripts to use Clever Tools and environment variables"
 2026-04-17T12:14:24+02:00 - ae24f073 - Etienne Weil : feat(MGF): update SSH connection scripts to use Clever Tools and environment variables
 2026-04-16T23:02:03+02:00 - e087b17e - pierrax : Dashboard offers order
+2026-04-16T15:37:59+02:00 - d11b7ba8 - Etienne Weil : Merge branch 'review' into MGF-1530-une-candidature-retenue-ne-peut-plus-evoluer
 2026-04-16T15:26:00+02:00 - 405e3be5 - Maxime Pierrot : Merge pull request #779 from betagouv/MGF-1558-referents-ne-peuvent-pas-inviter-de-collegues
 2026-04-16T15:25:25+02:00 - 57ca9c13 - Maxime Pierrot : Merge pull request #755 from betagouv/1467_mutlti_display_city
 2026-04-16T15:24:42+02:00 - 9c156507 - Maxime Pierrot : Merge pull request #812 from betagouv/MGF-1586-pour-les-offres-qpv-la-description-napparait-pas
 2026-04-16T15:24:16+02:00 - f2f36c73 - Maxime Pierrot : Merge pull request #775 from betagouv/1551_sign_agreement_for_legal_represent
+2026-04-16T14:57:37+02:00 - c9d2ff44 - Etienne Weil : feat(review): Add CodeQL workflow and ignore changes to its directory
+2026-04-16T14:57:37+02:00 - 07c325b1 - Etienne Weil : skill removal: Standardize commit format for conventional git commit messages
 2026-04-16T14:53:58+02:00 - a9461b41 - Etienne Weil : Merge branch 'review' into MGF-1544-nombre-de-caractere-minimum-ne-se-calcule-pas
 2026-04-16T13:25:09+02:00 - 359167cb - pierrax : Fix boarding house map
 2026-04-16T12:19:06+02:00 - a9ffe7de - Etienne Weil : Merge branch 'review' into MGF-1586-pour-les-offres-qpv-la-description-napparait-pas
@@ -128,6 +159,8 @@
 2026-03-13T16:10:04+01:00 - 5d72a974 - pierrax : Fix tests
 2026-03-12T12:10:55+01:00 - caafc8e7 - Maxime Pierrot : Merge pull request #764 from betagouv/MGF-1526-candidature-expired-by-student
 2026-03-12T10:51:32+01:00 - a4bc22ad - pierrax : Merge branch 'review' into 1467_mutlti_display_city
+2026-03-12T10:50:32+01:00 - a5bd0513 - pierrax : Merge branch 'review' into 1518_offer_group_id_check_front_end
+2026-03-12T10:50:08+01:00 - 20a86654 - pierrax : Merge branch 'review' into 1523_new_offer_wording
 2026-03-12T10:42:14+01:00 - faf7d682 - pierrax : Merge branch 'review' into 1477_duplicate_email_student
 2026-03-12T09:48:48+01:00 - 64799538 - pierrax : Merge branch '1551_sign_agreement_for_legal_represent' of https://github.com/betagouv/monstagedeseconde into 1551_sign_agreement_for_legal_represent
 2026-03-12T09:46:42+01:00 - 81d011e8 - pierrax : Merge branch 'review' into 1551_sign_agreement_for_legal_represent
@@ -142,8 +175,11 @@
 2026-03-09T11:43:03+01:00 - 84346adf - pierrax : 1579 fix school w/o department
 2026-03-09T11:34:19+01:00 - dd72e657 - Maxime Pierrot : Merge pull request #773 from betagouv/dependabot/bundler/nokogiri-1.19.1
 2026-03-09T11:34:01+01:00 - 5b03ccf5 - Maxime Pierrot : Merge pull request #782 from betagouv/dependabot/npm_and_yarn/immutable-5.1.5
+2026-03-09T11:29:41+01:00 - ce7c9ac7 - pierrax : Fix soft delete applications for area
 2026-03-07T09:31:08+01:00 - c00a9dc0 - Etienne Weil : Merge branch 'staging' into review
 2026-03-07T09:22:46+01:00 - 25288d04 - Etienne Weil : fix(Department model): redirecting cedex codes for reunion to reunion code + script to set department to schools when missing
+2026-03-07T09:21:11+01:00 - 66d06e0c - Etienne Weil : fix(Department model): redirecting cedex codes for reunion to reunion code + script to set department to schools when missing
+2026-03-06T21:58:19+01:00 - 352bc448 - pierrax : Bug export applications
 2026-03-06T18:16:40+01:00 - 32c04d9c - Etienne Weil : fix(employer_description): scope api : truncated when too long
 2026-03-06T17:47:26+01:00 - a73fadc1 - pierrax : Merge branch 'review' of https://github.com/betagouv/monstagedeseconde into review
 2026-03-06T17:46:41+01:00 - 52cc3f5d - Etienne Weil : fix(script for doubling offers): api scope: missing employer_description filled with a dummy 'Descriptif à fournir par l'employeur'
@@ -214,15 +250,20 @@
 2026-02-14T18:07:28+01:00 - 7e80eab8 - Etienne Weil : fix(rebuild_review_job)
 2026-02-13T15:46:19+01:00 - 8e9ac378 - Etienne Weil : fix(reviewRebuild): OffersCreationSteps
 2026-02-12T18:18:24+01:00 - 1a603f3e - Etienne WEIL : Mgf 1448 comptabilisation places 2 nouvelles offres college et lycees dupliquees (#756)
+2026-02-12T13:55:55+01:00 - 3f624063 - pierrax : Empty weeks for students in search
+2026-02-12T11:29:55+01:00 - 0ac6114b - pierrax : Fix stimulus
 2026-02-11T16:12:01+01:00 - 0fc96185 - Etienne Weil : fix(Gemfile): double removed and reordered
 2026-02-11T16:08:13+01:00 - 1f36fbb9 - Etienne WEIL : MGF-1504-fix(multi agreements view): signature for school managers (#752)
 2026-02-11T11:02:22+01:00 - debd849e - Etienne Weil : Merge branch 'review' into MGF-1526-candidature-expired-by-student
 2026-02-11T10:33:12+01:00 - 2e0cd3dc - Etienne WEIL : MGF-1497-feat(gem): letter_thief (#750)
+2026-02-10T18:21:33+01:00 - 7bcb653c - Etienne Weil : feat(cancel notice): now contextualized for a better understanding
 2026-02-10T17:43:20+01:00 - 84c356db - Etienne Weil : fix(offer status label in internship_application view): using presenter and human state the right way
+2026-02-10T16:43:35+01:00 - 870aab56 - pierrax : frontend check group_id
 2026-02-10T14:55:29+01:00 - 87e57809 - Etienne Weil : fix(structure.sql): prod parameters withdrawn
 2026-02-10T10:40:56+01:00 - 87fa17a4 - Etienne Weil : fix(Gemfile): openssh to be declared
 2026-02-10T09:42:00+01:00 - fe35f839 - Maxime Pierrot : Merge pull request #757 from betagouv/dependabot/bundler/faraday-2.14.1
 2026-02-09T22:20:58Z - 08351ec2 - dependabot[bot] : build(deps): bump faraday from 2.14.0 to 2.14.1
+2026-02-09T16:13:57+01:00 - 9c5122c5 - pierrax : New offer wording
 2026-02-09T15:49:49+01:00 - ee14af1c - pierrax : Prismic fix
 2026-02-09T15:48:33+01:00 - 5bfd697c - pierrax : Duplicate email student
 2026-02-09T13:05:07+01:00 - 30b41a3f - pierrax : Merge branch 'staging'
