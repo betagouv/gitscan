@@ -23,7 +23,6 @@
 │       ├── tests-rust.yml
 │       ├── tests.yml
 │       ├── triage-labelled.yml
-│       ├── triage-move-review-requests.yml
 │       ├── triage-priority-bugs.yml
 │       ├── update-gradle-wrapper.yml
 │       └── validate-lfs.yml
@@ -50,7 +49,10 @@
 ├── TCHAP_CHANGES.md
 ├── build.gradle
 ├── changelog.d
-│   └── .gitignore
+│   ├── .gitignore
+│   ├── 1199.bugfix
+│   ├── 1203.improvements
+│   └── 1204.bugfix
 ├── coverage.gradle
 ├── dependencies.gradle
 ├── dependencies_groups.gradle
@@ -62,7 +64,6 @@
 │   ├── danger.md
 │   ├── database_migration_test.md
 │   ├── design.md
-│   ├── flipper.md
 │   ├── hilt_migration.md
 │   ├── identity_server.md
 │   ├── installing_from_ci.md
@@ -89,7 +90,7 @@
 │       └── android
 │           ├── en-US
 │           │   ├── changelogs
-│           │   │   └── 4*.txt  (120 files)
+│           │   │   └── 4*.txt  (124 files)
 │           │   ├── full_description.txt
 │           │   ├── images
 │           │   │   ├── featureGraphic.png
@@ -1034,6 +1035,7 @@
 │       │   │                   │   │   ├── UserPasswordAuth.kt
 │       │   │                   │   │   ├── converter.kt
 │       │   │                   │   │   ├── data
+│       │   │                   │   │   │   ├── AuthMetadata.kt
 │       │   │                   │   │   │   ├── Credentials.kt
 │       │   │                   │   │   │   ├── DelegatedAuthConfig.kt
 │       │   │                   │   │   │   ├── DiscoveryInformation.kt
@@ -1916,7 +1918,7 @@
 │       │   │                   │   │   │   ├── TimelineEventMapper.kt
 │       │   │                   │   │   │   └── UserMapper.kt
 │       │   │                   │   │   ├── migration
-│       │   │                   │   │   │   └── MigrateSessionTo*.kt  (56 files)
+│       │   │                   │   │   │   └── MigrateSessionTo*.kt  (57 files)
 │       │   │                   │   │   ├── model
 │       │   │                   │   │   │   ├── BreadcrumbsEntity.kt
 │       │   │                   │   │   │   ├── ChunkEntity.kt
@@ -2194,6 +2196,7 @@
 │       │   │                   │   │   │   ├── RoomFilter.kt
 │       │   │                   │   │   │   └── SaveFilterTask.kt
 │       │   │                   │   │   ├── homeserver
+│       │   │                   │   │   │   ├── AuthMetadataAPI.kt
 │       │   │                   │   │   │   ├── CapabilitiesAPI.kt
 │       │   │                   │   │   │   ├── DefaultHomeServerCapabilitiesService.kt
 │       │   │                   │   │   │   ├── GetCapabilitiesResult.kt
@@ -2854,6 +2857,8 @@
 │                               │   │   └── data
 │                               │   │       └── VersionsKtTest.kt
 │                               │   └── session
+│                               │       ├── homeserver
+│                               │       │   └── HomeServerCapabilitiesTest.kt
 │                               │       └── pushrules
 │                               │           ├── PushRuleActionsTest.kt
 │                               │           └── PushRulesConditionTest.kt
@@ -2893,6 +2898,8 @@
 │                               │   ├── session
 │                               │   │   ├── event
 │                               │   │   │   └── ValidDecryptedEventTest.kt
+│                               │   │   ├── homeserver
+│                               │   │   │   └── DefaultGetHomeServerCapabilitiesTaskTest.kt
 │                               │   │   ├── identity
 │                               │   │   │   └── Sha256Test.kt
 │                               │   │   ├── pushers
@@ -3333,7 +3340,6 @@
 │       │   │               │   ├── debug
 │       │   │               │   │   ├── DebugNavigator.kt
 │       │   │               │   │   ├── DebugReceiver.kt
-│       │   │               │   │   ├── FlipperProxy.kt
 │       │   │               │   │   └── LeakDetector.kt
 │       │   │               │   ├── device
 │       │   │               │   │   └── GetDeviceInfoUseCase.kt
@@ -3619,7 +3625,8 @@
 │       │   │               │   │       ├── ShieldImageView.kt
 │       │   │               │   │       ├── TypingMessageAvatar.kt
 │       │   │               │   │       ├── TypingMessageDotsView.kt
-│       │   │               │   │       └── TypingMessageView.kt
+│       │   │               │   │       ├── TypingMessageView.kt
+│       │   │               │   │       └── VerifyDeviceBanner.kt
 │       │   │               │   └── utils
 │       │   │               │       ├── AssetReader.kt
 │       │   │               │       ├── Base32.kt
@@ -4392,6 +4399,10 @@
 │       │   │                   │   ├── SpanUtils.kt
 │       │   │                   │   ├── SpoilerSpan.kt
 │       │   │                   │   └── VectorHtmlCompressor.kt
+│       │   │                   ├── importer
+│       │   │                   │   ├── ApplicationFingerprint.kt
+│       │   │                   │   ├── ImporterService.kt
+│       │   │                   │   └── SignaturePermissionChecker.kt
 │       │   │                   ├── invite
 │       │   │                   │   ├── AutoAcceptInvites.kt
 │       │   │                   │   ├── InviteButtonStateBinder.kt
@@ -5557,6 +5568,7 @@
 │       │       ├── drawable
 │       │       │   ├── background_checked_accent_color.xml
 │       │       │   ├── background_circle.xml
+│       │       │   ├── banner_background.xml
 │       │       │   ├── bg_*.xml  (37 files)
 │       │       │   ├── bottomsheet_handle.xml
 │       │       │   ├── btn_locate.xml
@@ -5773,7 +5785,7 @@
 │       │       │   ├── reaction_button.xml
 │       │       │   ├── typing_message_layout.xml
 │       │       │   ├── vector_*.xml  (7 files)
-│       │       │   └── view_*.xml  (53 files)
+│       │       │   └── view_*.xml  (54 files)
 │       │       ├── layout-land
 │       │       │   └── fragment_lock_screen.xml
 │       │       ├── menu
@@ -6419,8 +6431,6 @@
 │       │   │               │           ├── DebugPrivateSettingsViewState.kt
 │       │   │               │           ├── OverrideDropdownView.kt
 │       │   │               │           └── PrivateSettingOverrides.kt
-│       │   │               ├── flipper
-│       │   │               │   └── VectorFlipperProxy.kt
 │       │   │               ├── leakcanary
 │       │   │               │   └── LeakCanaryLeakDetector.kt
 │       │   │               └── receivers
@@ -6632,4 +6642,4 @@
                 └── values
                     ├── config-features.xml
                     └── config.xml
-1498 directories, 6528 files
+1500 directories, 6542 files
