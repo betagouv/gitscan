@@ -70,6 +70,7 @@
 │   │   ├── carte-exposition-2026
 │   │   │   └── carte-france-alea.png
 │   │   ├── home
+│   │   │   ├── carte-departements-pilotes.png
 │   │   │   ├── conseillers-locaux-aller-vers.png
 │   │   │   ├── en-savoir-plus-1.png
 │   │   │   ├── en-savoir-plus-2.svg
@@ -81,7 +82,6 @@
 │   │   │   ├── ministere_transition_ecologique.svg
 │   │   │   ├── plaquette.webp
 │   │   │   ├── quest-ce-que-rga.png
-│   │   │   ├── qui-peut-beneficier-aides.png
 │   │   │   └── savoir-si-concerne.webp
 │   │   ├── rga
 │   │   │   └── cta.png
@@ -149,6 +149,7 @@
 │   │       ├── 10-top-departements-dashboard.sql
 │   │       ├── 11-statistiques-demandes.sql
 │   │       ├── 12-donnees-eligibilite.sql
+│   │       ├── 13-amo-av-arrete-2026.sql
 │   │       ├── 99-verification.sql
 │   │       └── README.md
 │   └── verify-dashboard-stats.ts
@@ -369,16 +370,17 @@
 │   │   ├── (main)
 │   │   │   ├── (home)
 │   │   │   │   ├── components
+│   │   │   │   │   ├── CommentBeneficierAideEtatSection.tsx
 │   │   │   │   │   ├── CommentCaMarcheSection.tsx
 │   │   │   │   │   ├── ConseillersLocauxAllersVersSection.tsx
 │   │   │   │   │   ├── EtatAgitSection.tsx
 │   │   │   │   │   ├── FaqSection.tsx
 │   │   │   │   │   ├── LogementConcerneRgaSection.tsx
 │   │   │   │   │   ├── MontantDesAidesSection.tsx
+│   │   │   │   │   ├── PlafondsSubventionsTable.tsx
 │   │   │   │   │   ├── PourEnSavoirPlusSection.tsx
 │   │   │   │   │   ├── QuelsSontTravauxEligiblesSection.tsx
 │   │   │   │   │   ├── QuestCeQueLeRgaSection.tsx
-│   │   │   │   │   ├── QuiPeutBeneficierAidesSection.tsx
 │   │   │   │   │   ├── QuiSommesNousSection.tsx
 │   │   │   │   │   ├── SavoirSiConcerneSection.tsx
 │   │   │   │   │   └── SignesASurveiller.tsx
@@ -570,10 +572,12 @@
 │   │   │   │   │   ├── content
 │   │   │   │   │   │   └── content.json
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── test-permeabilite-sol
-│   │   │   │       ├── content
-│   │   │   │       │   └── content.json
-│   │   │   │       └── page.tsx
+│   │   │   │   ├── test-permeabilite-sol
+│   │   │   │   │   ├── content
+│   │   │   │   │   │   └── content.json
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── utils
+│   │   │   │       └── phase.utils.ts
 │   │   │   └── trouver-mon-conseiller-local
 │   │   │       ├── components
 │   │   │       │   ├── ConseillersClient.tsx
@@ -909,6 +913,7 @@
 │   │   ├── parcours
 │   │   │   ├── amo
 │   │   │   │   ├── actions
+│   │   │   │   │   ├── amo-auto.actions.ts
 │   │   │   │   │   ├── amo-disponibles.actions.test.ts
 │   │   │   │   │   ├── amo-disponibles.actions.ts
 │   │   │   │   │   ├── amo-selection.actions.ts
@@ -922,6 +927,7 @@
 │   │   │   │   │       ├── CalloutAmoLogementNonEligible.tsx
 │   │   │   │   │       ├── CalloutAmoTodo.test.tsx
 │   │   │   │   │       ├── CalloutAmoTodo.tsx
+│   │   │   │   │       ├── CalloutChoixAccompagnement.tsx
 │   │   │   │   │       ├── StepDetailAmo.tsx
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── domain
@@ -934,10 +940,18 @@
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── value-objects
 │   │   │   │   │       ├── constants.ts
+│   │   │   │   │       ├── departements-amo.test.ts
+│   │   │   │   │       ├── departements-amo.ts
 │   │   │   │   │       ├── index.ts
-│   │   │   │   │       └── statutValidation.ts
+│   │   │   │   │       ├── statutValidation.ts
+│   │   │   │   │       ├── step-list.test.ts
+│   │   │   │   │       └── step-list.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useAmoMode.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── services
+│   │   │   │   │   ├── amo-auto.service.test.ts
 │   │   │   │   │   ├── amo-mutations.service.ts
 │   │   │   │   │   ├── amo-query.service.test.ts
 │   │   │   │   │   ├── amo-query.service.ts
@@ -964,6 +978,7 @@
 │   │   │   │   │   ├── parcours-simulateur-rga-migration.actions.ts
 │   │   │   │   │   └── qualification-query.actions.ts
 │   │   │   │   ├── components
+│   │   │   │   │   ├── AllerVersLocal.tsx
 │   │   │   │   │   ├── ContactInfoModal.tsx
 │   │   │   │   │   ├── MonCompteClient.tsx
 │   │   │   │   │   ├── common
@@ -1180,6 +1195,7 @@
 │   │       │       │   ├── StepAdresse.tsx
 │   │       │       │   └── index.ts
 │   │       │       ├── StepAssurance.tsx
+│   │       │       ├── StepCatastrophesNaturelles.tsx
 │   │       │       ├── StepEtatMaison.tsx
 │   │       │       ├── StepIndemnisation.tsx
 │   │       │       ├── StepIntro.tsx
@@ -1198,8 +1214,8 @@
 │   │       │   │   ├── eligibility
 │   │       │   │   │   ├── assurance.rules.test.ts
 │   │       │   │   │   ├── assurance.rules.ts
-│   │       │   │   │   ├── etat-maison.rules.test.ts
-│   │       │   │   │   ├── etat-maison.rules.ts
+│   │       │   │   │   ├── catastrophes-naturelles.rules.test.ts
+│   │       │   │   │   ├── catastrophes-naturelles.rules.ts
 │   │       │   │   │   ├── indemnisation.rules.test.ts
 │   │       │   │   │   ├── indemnisation.rules.ts
 │   │       │   │   │   ├── index.ts
@@ -1356,6 +1372,7 @@
 │   │   │   │   ├── 0025_kind_whizzer.sql
 │   │   │   │   ├── 0026_postgis_rga_zones.sql
 │   │   │   │   ├── 0027_high_meteorite.sql
+│   │   │   │   ├── 0028_classy_thundra.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1385,6 +1402,7 @@
 │   │   │   │       ├── 0025_snapshot.json
 │   │   │   │       ├── 0026_snapshot.json
 │   │   │   │       ├── 0027_snapshot.json
+│   │   │   │       ├── 0028_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1428,6 +1446,7 @@
 │   │   │   │   └── rga-simulation.types.ts
 │   │   │   └── value-objects
 │   │   │       ├── agent-role.enum.ts
+│   │   │       ├── attribution-amo-mode.enum.ts
 │   │   │       ├── ds-status.enum.ts
 │   │   │       ├── index.ts
 │   │   │       ├── situation-particulier.enum.ts
@@ -1507,4 +1526,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-437 directories, 1072 files
+439 directories, 1089 files
