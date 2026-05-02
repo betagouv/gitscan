@@ -1,3 +1,31 @@
+## [6.17.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.17.0...v6.17.1) (2026-04-30)
+
+
+### Bug Fixes
+
+* gracefully handle invalid territoire_type query parameter ([d37f489](https://github.com/anct-cartographie-nationale/cartographie/commit/d37f4898c5e396bec73eecccd9b5112e79957a35))
+
+# [6.17.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.16.0...v6.17.0) (2026-04-30)
+
+
+### Features
+
+* update icon ([50c540d](https://github.com/anct-cartographie-nationale/cartographie/commit/50c540da50a0d1b7e1e176c31c6cf596055dd2b6))
+
+# [6.16.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.10...v6.16.0) (2026-04-30)
+
+
+### Features
+
+* add embed map button in navbar with Matomo tracking ([c339f1b](https://github.com/anct-cartographie-nationale/cartographie/commit/c339f1ba7d95b1dcdc9f55946125a8770c348270))
+
+## [6.15.10](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.9...v6.15.10) (2026-04-30)
+
+
+### Bug Fixes
+
+* use browser history for back navigation from lieu detail page ([91009c8](https://github.com/anct-cartographie-nationale/cartographie/commit/91009c871f278b3256b726334eabf8b895a67d86))
+
 ## [6.15.9](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.8...v6.15.9) (2026-04-26)
 
 
