@@ -1,33 +1,45 @@
-## Changelog : potentiel (30 derniers jours, au 2026-04-22)
+## Changelog : potentiel (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des documents, l'ajout de nouveaux rôles utilisateurs, la correction de bugs et l'optimisation de l'expérience utilisateur, notamment au niveau des garanties financières et des notifications. Des améliorations techniques ont également été apportées pour faciliter le développement et la maintenance du projet.
+Ce mois-ci, l'équipe a déployé des améliorations significatives sur la gestion des documents, les rôles utilisateurs et l'importation de données, notamment depuis le DN (Données Nationales). Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, en particulier concernant les notifications et les garanties financières. Plusieurs optimisations ont été réalisées pour améliorer la performance et la maintenance du code.
 
 ### Évolutions fonctionnelles
-
-*   **Rôles utilisateurs :** Ajout d'un nouveau rôle "admin" (anciennement DGEc) pour une gestion des permissions plus précise. [#4183](https://github.com/MTES-MCT/potentiel/issues/4183)
-*   **Garanties financières :** Refonte complète des pages de gestion des garanties financières pour une meilleure ergonomie. [#4175](https://github.com/MTES-MCT/potentiel/issues/4175)
-*   **Notifications :** Correction d'un bug empêchant l'envoi de notifications de rappel aux GRD. [#4180](https://github.com/MTES-MCT/potentiel/issues/4180)
-*   **Accessibilité :** Amélioration de l'accessibilité des listes (réclamations, documents, utilisateurs) avec l'ajout de liens ARIA. [#4186](https://github.com/MTES-MCT/potentiel/issues/4186)
-*   **Valeurs par défaut :** Intégration des valeurs par défaut pour le coefficient K. [#4160](https://github.com/MTES-MCT/potentiel/issues/4160)
-*   **Achèvement :** Ajout d'un bloc d'information lors de l'achèvement d'une étape. [#4132](https://github.com/MTES-MCT/potentiel/issues/4132)
-*   **Copie ID projet :** Possibilité pour les utilisateurs DREALS de copier l'identifiant du projet en production. [#4151](https://github.com/MTES-MCT/potentiel/issues/4151)
-*   **Import données :** Import des références de raccordement (DN) et des données de la région. [#4103](https://github.com/MTES-MCT/potentiel/issues/4103), [#4153](https://github.com/MTES-MCT/potentiel/issues/4153)
+- **Gestion des documents :**
+    - Correction d'un bug empêchant la suppression correcte des raccordements abandonnés [#4187](https://github.com/MTES-MCT/potentiel/issues/4187).
+    - Amélioration de l'importation des références de raccordement depuis le DN [#4103](https://github.com/MTES-MCT/potentiel/issues/4103).
+    - Correction d'un problème d'importation de la date d'échéance GF depuis le DN [#4197](https://github.com/MTES-MCT/potentiel/issues/4197), [#4162](https://github.com/MTES-MCT/potentiel/issues/4162).
+    - Correction d'un bug lié au téléchargement de documents [#4154](https://github.com/MTES-MCT/potentiel/issues/4154).
+    - Correction d'un problème avec la modification des DCR (Dépôt de Conformité Règlementaire) [#4171](https://github.com/MTES-MCT/potentiel/issues/4171).
+- **Rôles et permissions :**
+    - Ajout d'un nouveau rôle "admin" (anciennement DGEc) [#4183](https://github.com/MTES-MCT/potentiel/issues/4183).
+    - Ajout d'une permission spécifique pour exporter les dossiers de raccordement [#4169](https://github.com/MTES-MCT/potentiel/issues/4169).
+    - Les DREALS peuvent maintenant copier l'ID projet en production [#4151](https://github.com/MTES-MCT/potentiel/issues/4151).
+- **Garanties financières :**
+    - Refonte des pages "Garanties financières" pour une meilleure expérience utilisateur [#4175](https://github.com/MTES-MCT/potentiel/issues/4175).
+- **Attestations :**
+    - Modification et amélioration de l'attestation de conformité [#4159](https://github.com/MTES-MCT/potentiel/issues/4159), [#4102](https://github.com/MTES-MCT/potentiel/issues/4102).
+- **Notifications :**
+    - Correction d'un bug concernant l'envoi de notifications aux GRD (Gestionnaires de Réseau de Distribution) [#4180](https://github.com/MTES-MCT/potentiel/issues/4180).
+    - Suppression des notifications d'étapes de projet en cas de recours [#4179](https://github.com/MTES-MCT/potentiel/issues/4179).
+    - Correction d'un bug d'envoi de notifications pour les cocontractants hors de leur zone [#4178](https://github.com/MTES-MCT/potentiel/issues/4178).
+- **Autres améliorations UI/UX :**
+    - Ajout de liens ARIA pour l'accessibilité sur les listes de réclamations, documents et utilisateurs [#4186](https://github.com/MTES-MCT/potentiel/issues/4186).
+    - Amélioration de l'intégration des valeurs par défaut pour le coefficient K [#4160](https://github.com/MTES-MCT/potentiel/issues/4160).
 
 ### Évolutions techniques
-
-*   **Refactoring :** Simplification de la modélisation des Autorisations d'Opérer (AO). [#4147](https://github.com/MTES-MCT/potentiel/issues/4147)
-*   **Types de données :** Uniformisation et amélioration des types de données pour les documents (Délai, Actionnaire, Dispositif de Stockage, Représentant Légal, Installateur, Fournisseur, Achèvement, Recours, etc.). [#4119](https://github.com/MTES-MCT/potentiel/issues/4119), [#4124](https://github.com/MTES-MCT/potentiel/issues/4124), [#4121](https://github.com/MTES-MCT/potentiel/issues/4121), [#4126](https://github.com/MTES-MCT/potentiel/issues/4126)
-*   **Tests :** Implémentation des tests manquants pour les fonctionnalités Délai et Recours. [#4182](https://github.com/MTES-MCT/potentiel/issues/4182)
-*   **Cache GraphQL :** Mise en place d'un cache GraphQL pour améliorer les performances.
-*   **CI/CD :** Désactivation de l'envoi d'emails pendant les phases de CI. [#4138](https://github.com/MTES-MCT/potentiel/issues/4138)
-*   **Storybook :** Correction de build pour storybook et passage à vite. [#4108](https://github.com/MTES-MCT/potentiel/issues/4108)
+- **Infrastructure :**
+    - Ajout de la variable d'environnement `AWS_REGION` pour le schéma S3 de la partie CLI [#4188](https://github.com/MTES-MCT/potentiel/issues/4188).
+- **Données :**
+    - Ajout du champ "Région" manquant dans les données exportées vers data.gouv [#4153](https://github.com/MTES-MCT/potentiel/issues/4153).
+    - Mise à jour des données de test [#4181](https://github.com/MTES-MCT/potentiel/issues/4181).
+- **Code :**
+    - Simplification de la modélisation des Autorisations d'Opérer (AO) [#4114](https://github.com/MTES-MCT/potentiel/issues/4114).
+    - Refactorisation du code pour la gestion des domaines et des champs supplémentaires [#4147](https://github.com/MTES-MCT/potentiel/issues/4147).
+    - Amélioration de la gestion des types dans le fichier `tsconfig` [#4166](https://github.com/MTES-MCT/potentiel/issues/4166).
+    - Suppression de projections GF en attente et d'archives obsolètes [#4150](https://github.com/MTES-MCT/potentiel/issues/4150).
+    - Intégration des dernières modifications des versions 3.76 et 3.77 [#4199](https://github.com/MTES-MCT/potentiel/issues/4199), [#4177](https://github.com/MTES-MCT/potentiel/issues/4177), [#4170](https://github.com/MTES-MCT/potentiel/issues/4170), [#4155](https://github.com/MTES-MCT/potentiel/issues/4155).
 
 ### Autres changements
-
-*   **Documentation :** Mise à jour des données de test. [#4181](https://github.com/MTES-MCT/potentiel/issues/4181)
-*   **Nettoyage de code :** Suppression de scripts obsolètes et simplification du code.
-*   **Corrections de bugs :** Plusieurs corrections de bugs mineurs concernant l'affichage, l'import de données et la modification de documents.
-*   **Mise à jour des dépendances :** Mises à jour de dépendances (dompurify, picomatch, basic-ftp).
-*   **Suppression notification étapes :** Suppression de la notification des étapes du projet en cas de recours. [#4179](https://github.com/MTES-MCT/potentiel/issues/4179)
-*   **Harmonisation badges :** Harmonisation des marges des badges. [#4129](https://github.com/MTES-MCT/potentiel/issues/4129)
+- Mise à jour de la documentation.
+- Corrections de typos et améliorations de la lisibilité du code.
+- Mise à jour des dépendances (dompurify, basic-ftp) via Dependabot.
