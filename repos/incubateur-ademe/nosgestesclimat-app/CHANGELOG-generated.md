@@ -1,40 +1,36 @@
-## Changelog : nosgestesclimat-app (30 derniers jours, au 29 avril 2026)
+## Changelog : nosgestesclimat-app (30 derniers jours, au 2026-04-30)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur l'amélioration de l'infrastructure du projet avec une migration vers une architecture monorepo, des optimisations du déploiement et des corrections de bugs liés à la gestion des cookies et des tests. Des améliorations ont également été apportées à l'expérience utilisateur, notamment la suppression de simulations, l'ajout de bannières d'information et des corrections de suivi analytique.
+Ce mois-ci, l'application a bénéficié d'une refonte technique importante avec la migration vers une architecture monorepo, améliorant la structure du projet et facilitant le développement. De nombreuses corrections de bugs ont été apportées, notamment concernant le fonctionnement des tests, le déploiement et l'affichage des informations utilisateur. Des améliorations ont également été apportées au suivi des événements (tracking) et à l'accessibilité.
 
 ### Évolutions fonctionnelles
-- Suppression de la possibilité de supprimer une simulation depuis l'espace personnel [#1747](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1747).
-- Ajout d'une bannière JVA (Justice Verte et Agriculture) [#1748](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1748).
-- Ajout d'un bouton "Je ne sais pas" pour les questions du calculateur, avec un test A/B pour évaluer son impact [#1737](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1737).
-- Ajout d'un nouveau commutateur pour la question de la consommation d'électricité [#1701](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1701).
-- Correction de l'affichage de la bannière en fonction des règles définies [#1749](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1749).
-- Amélioration du suivi analytique (Matomo) avec récupération sécurisée des données [#1770](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1770).
-- Ajout d'un flag de fonctionnalité pour les actions [#1775](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1775).
-- Correction de l'affichage des nombres filtrés sur les pages d'actions [#1724](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1724).
+- Ajout d'un bouton "Je ne sais pas" pour certaines questions, dans le cadre d'un test A/B. [#1737](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1737)
+- Ajout d'une bannière JVA (Justice Verte et Accès). [#1748](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1748)
+- Possibilité de supprimer une simulation depuis l'espace personnel. [#1747](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1747)
+- Nouvelle option pour la question sur la consommation d'électricité. [#1701](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1701)
+- Suppression des balises meta hreflang si la page est uniquement en français. [#1719](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1719)
+- Amélioration du partage de données via iframe. [#1732](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1732)
+- Ajout de la documentation sur l'installation du projet. [#1733](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1733)
+- Améliorations d'accessibilité. [#1703](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1703)
 
 ### Évolutions techniques
-- Migration du projet vers une architecture monorepo [#1745](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1745).
-- Refactorisation des workflows CI/CD et configuration ESLint [#1765](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1765).
-- Mise en place de devcontainers pour faciliter le développement [#1751](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1751).
-- Amélioration de la gestion des erreurs et des logs, notamment lors des sessions utilisateurs.
-- Correction de problèmes de déploiement sur Scalingo et en environnement de préproduction.
+- Migration vers une architecture monorepo. [#1745](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1745)
+- Refonte de la configuration CI/CD et des workflows. [#1765](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1765)
 - Mise à jour de Prisma vers la version 7.0.
-- Optimisation de la gestion des cookies et ajout de la politique SameSite Strict pour la sécurité.
-- Refactorisation du code pour utiliser des composants serveur.
-- Amélioration de la configuration de Sentry pour une meilleure gestion des erreurs.
-- Suppression des buildpacks personnalisés pour garantir le déploiement même en cas de problème avec les miroirs Ubuntu.
-- Correction de la configuration de Next.js pour gérer correctement les origines.
+- Amélioration du suivi des événements (tracking) et de la gestion des cookies. [#1669](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1669)
+- Refactorisation de la configuration Sentry pour une meilleure gestion des releases et des stacktraces.
+- Mise en place de devcontainers pour faciliter le développement local. [#1751](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1751)
+- Correction de problèmes de déploiement sur Scalingo et en préproduction.
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de problèmes liés aux tests (E2E, unitaires).
+- Mise à jour des dépendances.
 
 ### Autres changements
-- Documentation sur l'installation du projet mise à jour [#1733](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1733).
-- Ajout de traductions [#1769](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1769).
-- Correction de l'opérateur `!=` dans les conditions des "funfacts" [#1755](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1755).
-- Suppression de fichiers inutiles et amélioration de la lisibilité du code.
-- Correction de problèmes liés aux tests E2E et aux tests unitaires.
-- Amélioration du contraste de l'interface utilisateur dans l'IDE.
-- Suppression des balises hreflang si la page est uniquement en français [#1719](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1719).
-- Correction d'un bug empêchant l'affichage de la page `/fin` sur Safari.
-- Correction de l'affichage des questions de services [#1717](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1717).
-- Ajout d'informations au schéma anonyme pour Posthog [#459](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/459).
-- Mise à jour du modèle de calcul vers la version 4.10.2 [#1722](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1722) et [#463](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/463).
+- Ajout de "feature flags" pour activer/désactiver certaines fonctionnalités (actions). [#1775](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1775)
+- Amélioration de la documentation README.
+- Correction de divers problèmes mineurs et améliorations de la qualité du code.
+- Ajout de la possibilité de récupérer uniquement les données Matomo avec un token sécurisé. [#1770](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1770)
+- Correction de l'affichage du nom des participants et des administrateurs. [#1773](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1773)
+- Correction d'un bug empêchant le bouton "Terminer" de fonctionner après avoir atteint la dernière question. [#1776](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1776)
+- Correction de l'opérateur `!=` dans les conditions des "funfacts". [#1755](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1755)
+- Ajout de traductions. [#1769](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1769)
