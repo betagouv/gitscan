@@ -3,13 +3,13 @@
 │   └── devcontainer.json
 ├── .env.example
 ├── .envrc
+├── .gitattributes
 ├── .github
 │   └── workflows
 │       ├── release.yml
 │       ├── tests.yml
 │       └── version.yml
 ├── .gitignore
-├── .mcp.json
 ├── .npmrc
 ├── .release-it.json
 ├── CLAUDE.md
@@ -60,22 +60,9 @@
 │   ├── routers.md
 │   └── workflow_authoring_pitfalls.md
 ├── e2e
-│   ├── REPORT_TODO_APP_FULL.md
 │   ├── SCENARIOS.md
+│   ├── claw_tool_coverage_live_test.go
 │   ├── e2e_test.go
-│   ├── live_results
-│   │   ├── code_review_roulette_2026-04-04
-│   │   │   ├── analysis.md
-│   │   │   ├── index_final.html
-│   │   │   ├── index_v1_implement.html
-│   │   │   ├── index_v2_codex_fix.html
-│   │   │   └── report.md
-│   │   └── kanban_2026-04-03
-│   │       ├── comparison.md
-│   │       ├── index_final.html
-│   │       ├── index_v1_claude_implement.html
-│   │       ├── index_v2_codex_implement.html
-│   │       └── report.md
 │   ├── live_test.go
 │   └── vibe_review_alternating_test.go
 ├── editor
@@ -85,6 +72,7 @@
 │   │   ├── App.tsx
 │   │   ├── api
 │   │   │   ├── client.ts
+│   │   │   ├── runs.ts
 │   │   │   ├── types.ts
 │   │   │   └── ws.ts
 │   │   ├── app.css
@@ -110,6 +98,7 @@
 │   │   │   ├── Diagnostics
 │   │   │   │   ├── DiagnosticBadge.tsx
 │   │   │   │   └── DiagnosticsPanel.tsx
+│   │   │   ├── EditorView.tsx
 │   │   │   ├── FilePicker
 │   │   │   │   └── FilePicker.tsx
 │   │   │   ├── Inspector
@@ -118,23 +107,42 @@
 │   │   │   │   ├── InspectorEditItem.tsx
 │   │   │   │   ├── InspectorEmpty.tsx
 │   │   │   │   ├── InspectorMulti.tsx
-│   │   │   │   └── InspectorNode.tsx
+│   │   │   │   ├── InspectorNode.tsx
+│   │   │   │   └── NodeRunsChip.tsx
 │   │   │   ├── Library
 │   │   │   │   ├── LibraryItemCard.tsx
 │   │   │   │   └── LibraryPanel.tsx
 │   │   │   ├── Panels
 │   │   │   │   ├── CommentsEditor.tsx
+│   │   │   │   ├── MCPServersEditor.tsx
 │   │   │   │   ├── PromptEditor.tsx
 │   │   │   │   ├── SchemaEditor.tsx
 │   │   │   │   ├── VarsEditor.tsx
 │   │   │   │   ├── WorkflowSettingsForm.tsx
 │   │   │   │   └── forms
 │   │   │   │       ├── AgentForm.tsx
+│   │   │   │       ├── CompactionFields.tsx
+│   │   │   │       ├── ComputeForm.tsx
 │   │   │   │       ├── EdgeForm.tsx
 │   │   │   │       ├── FormField.tsx
 │   │   │   │       ├── HumanForm.tsx
+│   │   │   │       ├── MCPConfigFields.tsx
 │   │   │   │       ├── RouterForm.tsx
 │   │   │   │       └── ToolForm.tsx
+│   │   │   ├── Runs
+│   │   │   │   ├── ArtifactDiff.tsx
+│   │   │   │   ├── EventLog.tsx
+│   │   │   │   ├── ExecutionNode.tsx
+│   │   │   │   ├── IRNode.tsx
+│   │   │   │   ├── LaunchView.tsx
+│   │   │   │   ├── NodeDetailPanel.tsx
+│   │   │   │   ├── RunCanvas.tsx
+│   │   │   │   ├── RunCanvasIR.tsx
+│   │   │   │   ├── RunHeader.tsx
+│   │   │   │   ├── RunListView.tsx
+│   │   │   │   ├── RunView.tsx
+│   │   │   │   ├── VarFieldInput.tsx
+│   │   │   │   └── runStatusClasses.ts
 │   │   │   ├── SourceView
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
@@ -178,7 +186,9 @@
 │   │   │   ├── useFileWatcher.ts
 │   │   │   ├── useFullscreen.ts
 │   │   │   ├── useGroupedDiagnostics.ts
-│   │   │   └── useInspectorMode.ts
+│   │   │   ├── useInspectorMode.ts
+│   │   │   ├── useRunWebSocket.ts
+│   │   │   └── useSchemaPromptCreators.ts
 │   │   ├── lib
 │   │   │   ├── autoLayout.ts
 │   │   │   ├── computeEdgeHandles.ts
@@ -188,6 +198,7 @@
 │   │   │   ├── diagnostics.ts
 │   │   │   ├── docMutations.ts
 │   │   │   ├── documentToGraph.ts
+│   │   │   ├── dslOptions.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── iterLanguage.ts
 │   │   │   ├── iterMonacoCompletion.ts
@@ -202,6 +213,7 @@
 │   │   │   ├── groups.ts
 │   │   │   ├── library.ts
 │   │   │   ├── recents.ts
+│   │   │   ├── run.ts
 │   │   │   ├── selection.ts
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
@@ -221,6 +233,7 @@
 │   ├── claw_read_image.iter
 │   ├── claw_reasoning_effort.iter
 │   ├── claw_subagents.iter
+│   ├── claw_tool_coverage.iter
 │   ├── dual_model_plan_implement_review.iter
 │   ├── exhaustive_dsl_coverage.iter
 │   ├── feature_dev_review_fix_dual.iter
@@ -240,6 +253,7 @@
 │   ├── pr_review_fix_dual.iter
 │   ├── pr_review_fix_dual.md
 │   ├── recipe_benchmark.iter
+│   ├── run_console_demo.iter
 │   ├── rust_to_go_port.iter
 │   ├── rust_to_go_port.md
 │   ├── session_fork.iter
@@ -251,7 +265,8 @@
 │   │   ├── minimal_linear.iter
 │   │   └── parallel_fan_out_join.iter
 │   ├── validate_syntax.js
-│   └── vibe_review_alternating.iter
+│   ├── vibe_review_alternating.iter
+│   └── vibe_review_alternating.md
 ├── go.mod
 ├── go.sum
 ├── marketplace.json
@@ -290,6 +305,7 @@
 │   │   ├── mcp
 │   │   │   ├── cache.go
 │   │   │   ├── cache_test.go
+│   │   │   ├── claw_adapter.go
 │   │   │   ├── config.go
 │   │   │   ├── config_test.go
 │   │   │   ├── fingerprint.go
@@ -319,6 +335,7 @@
 │   │   │   ├── generation_tool.go
 │   │   │   ├── generation_types.go
 │   │   │   ├── hooks.go
+│   │   │   ├── hooks_test.go
 │   │   │   ├── lifecycle_hooks.go
 │   │   │   ├── lifecycle_hooks_test.go
 │   │   │   ├── llm_tool.go
@@ -327,6 +344,8 @@
 │   │   │   ├── session.go
 │   │   │   ├── session_test.go
 │   │   │   ├── streaming_types.go
+│   │   │   ├── subagent.go
+│   │   │   ├── template_ctx.go
 │   │   │   └── validate.go
 │   │   ├── recipe
 │   │   │   ├── recipe.go
@@ -337,6 +356,7 @@
 │   │       ├── classifier_test.go
 │   │       ├── claw_builtins.go
 │   │       ├── claw_builtins_test.go
+│   │       ├── claw_smoke_test.go
 │   │       ├── policy.go
 │   │       ├── policy_test.go
 │   │       ├── registry.go
@@ -348,6 +368,8 @@
 │   ├── benchmark
 │   │   ├── benchmark_test.go
 │   │   ├── metrics.go
+│   │   ├── otlp.go
+│   │   ├── otlp_test.go
 │   │   ├── prometheus.go
 │   │   ├── prometheus_test.go
 │   │   ├── report.go
@@ -411,10 +433,10 @@
 │   │       ├── unparse.go
 │   │       └── unparse_test.go
 │   ├── internal
-│   │   ├── appinfo
-│   │   │   └── appinfo.go
-│   │   └── log
-│   │       └── log.go
+│   │   └── appinfo
+│   │       └── appinfo.go
+│   ├── log
+│   │   └── log.go
 │   ├── runtime
 │   │   ├── budget.go
 │   │   ├── budget_test.go
@@ -438,9 +460,25 @@
 │   │   ├── routing.go
 │   │   ├── session_test.go
 │   │   └── validation_test.go
+│   ├── runview
+│   │   ├── broker.go
+│   │   ├── broker_test.go
+│   │   ├── compile.go
+│   │   ├── executor.go
+│   │   ├── manager.go
+│   │   ├── manager_test.go
+│   │   ├── service.go
+│   │   ├── service_test.go
+│   │   ├── snapshot.go
+│   │   ├── snapshot_test.go
+│   │   └── workflow_export.go
 │   ├── server
 │   │   ├── filter.go
 │   │   ├── hub.go
+│   │   ├── runs.go
+│   │   ├── runs_test.go
+│   │   ├── runs_ws.go
+│   │   ├── runs_ws_test.go
 │   │   ├── server.go
 │   │   ├── static
 │   │   │   └── .gitkeep
@@ -736,11 +774,13 @@
     │   │       │   │   ├── sse.go
     │   │       │   │   ├── sseutil
     │   │       │   │   │   └── toolcall.go
+    │   │       │   │   ├── streamhttp.go
     │   │       │   │   └── types.go
     │   │       │   ├── apikit
     │   │       │   │   ├── doc.go
     │   │       │   │   ├── errors.go
     │   │       │   │   ├── model_registry.go
+    │   │       │   │   ├── model_registry_live.go
     │   │       │   │   ├── preflight.go
     │   │       │   │   ├── prompt_cache.go
     │   │       │   │   ├── prompt_cache_fingerprint.go
@@ -749,6 +789,10 @@
     │   │       │   │   ├── proxy.go
     │   │       │   │   ├── retry.go
     │   │       │   │   ├── session_tracer.go
+    │   │       │   │   ├── telemetry
+    │   │       │   │   │   └── otlpgrpc
+    │   │       │   │   │       ├── env.go
+    │   │       │   │   │       └── exporter.go
     │   │       │   │   ├── telemetry.go
     │   │       │   │   └── telemetry_sinks.go
     │   │       │   ├── config
@@ -777,6 +821,7 @@
     │   │       │   │   │   ├── broker.go
     │   │       │   │   │   ├── pkce.go
     │   │       │   │   │   └── storage.go
+    │   │       │   │   ├── provider.go
     │   │       │   │   ├── registry.go
     │   │       │   │   ├── resources.go
     │   │       │   │   ├── sdk_server.go
@@ -883,6 +928,7 @@
     │   │       │   │   │   ├── mcp.go
     │   │       │   │   │   └── oauth
     │   │       │   │   │       └── oauth.go
+    │   │       │   │   ├── pricing.go
     │   │       │   │   ├── provider.go
     │   │       │   │   ├── providers
     │   │       │   │   │   ├── anthropic
@@ -916,6 +962,11 @@
     │   │       │   │   ├── types.go
     │   │       │   │   └── worker
     │   │       │   │       └── worker.go
+    │   │       │   ├── apikit
+    │   │       │   │   ├── apikit.go
+    │   │       │   │   └── telemetry
+    │   │       │   │       └── otlpgrpc
+    │   │       │   │           └── otlpgrpc.go
     │   │       │   ├── permissions
     │   │       │   │   └── permissions.go
     │   │       │   └── runtime
@@ -1519,6 +1570,19 @@
     │   │       └── quantile
     │   │           ├── exampledata.txt
     │   │           └── stream.go
+    │   ├── cenkalti
+    │   │   └── backoff
+    │   │       └── v5
+    │   │           ├── .gitignore
+    │   │           ├── CHANGELOG.md
+    │   │           ├── LICENSE
+    │   │           ├── README.md
+    │   │           ├── backoff.go
+    │   │           ├── error.go
+    │   │           ├── exponential.go
+    │   │           ├── retry.go
+    │   │           ├── ticker.go
+    │   │           └── timer.go
     │   ├── cespare
     │   │   └── xxhash
     │   │       └── v2
@@ -1815,6 +1879,42 @@
     │   │       ├── tls_handshake_116.go
     │   │       ├── util.go
     │   │       └── x_net_proxy.go
+    │   ├── grpc-ecosystem
+    │   │   └── grpc-gateway
+    │   │       └── v2
+    │   │           ├── LICENSE
+    │   │           ├── internal
+    │   │           │   └── httprule
+    │   │           │       ├── BUILD.bazel
+    │   │           │       ├── compile.go
+    │   │           │       ├── fuzz.go
+    │   │           │       ├── parse.go
+    │   │           │       └── types.go
+    │   │           ├── runtime
+    │   │           │   ├── BUILD.bazel
+    │   │           │   ├── context.go
+    │   │           │   ├── convert.go
+    │   │           │   ├── doc.go
+    │   │           │   ├── errors.go
+    │   │           │   ├── fieldmask.go
+    │   │           │   ├── handler.go
+    │   │           │   ├── marshal_httpbodyproto.go
+    │   │           │   ├── marshal_json.go
+    │   │           │   ├── marshal_jsonpb.go
+    │   │           │   ├── marshal_proto.go
+    │   │           │   ├── marshaler.go
+    │   │           │   ├── marshaler_registry.go
+    │   │           │   ├── mux.go
+    │   │           │   ├── pattern.go
+    │   │           │   ├── proto2_convert.go
+    │   │           │   └── query.go
+    │   │           └── utilities
+    │   │               ├── BUILD.bazel
+    │   │               ├── doc.go
+    │   │               ├── pattern.go
+    │   │               ├── readerfactory.go
+    │   │               ├── string_array_flag.go
+    │   │               └── trie.go
     │   ├── inconshreveable
     │   │   └── mousetrap
     │   │       ├── LICENSE
@@ -2299,265 +2399,349 @@
     │   │       ├── span.go
     │   │       ├── tracer.go
     │   │       └── tracer_provider.go
-    │   └── otel
-    │       ├── .clomonitor.yml
-    │       ├── .codespellignore
-    │       ├── .codespellrc
-    │       ├── .gitattributes
-    │       ├── .gitignore
-    │       ├── .golangci.yml
-    │       ├── .lycheeignore
-    │       ├── .markdownlint.yaml
-    │       ├── CHANGELOG.md
-    │       ├── CODEOWNERS
-    │       ├── CONTRIBUTING.md
-    │       ├── LICENSE
-    │       ├── Makefile
-    │       ├── README.md
-    │       ├── RELEASING.md
-    │       ├── SECURITY-INSIGHTS.yml
-    │       ├── VERSIONING.md
-    │       ├── attribute
-    │       │   ├── README.md
-    │       │   ├── doc.go
-    │       │   ├── encoder.go
-    │       │   ├── filter.go
-    │       │   ├── hash.go
-    │       │   ├── internal
-    │       │   │   ├── attribute.go
-    │       │   │   └── xxhash
-    │       │   │       └── xxhash.go
-    │       │   ├── iterator.go
-    │       │   ├── key.go
-    │       │   ├── kv.go
-    │       │   ├── rawhelpers.go
-    │       │   ├── set.go
-    │       │   ├── type_string.go
-    │       │   └── value.go
-    │       ├── baggage
-    │       │   ├── README.md
-    │       │   ├── baggage.go
-    │       │   ├── context.go
-    │       │   └── doc.go
-    │       ├── codes
-    │       │   ├── README.md
-    │       │   ├── codes.go
-    │       │   └── doc.go
-    │       ├── dependencies.Dockerfile
-    │       ├── doc.go
-    │       ├── error_handler.go
-    │       ├── exporters
-    │       │   └── prometheus
-    │       │       ├── LICENSE
-    │       │       ├── README.md
-    │       │       ├── config.go
-    │       │       ├── doc.go
-    │       │       ├── errors.go
-    │       │       ├── exporter.go
-    │       │       └── internal
-    │       │           ├── counter
-    │       │           │   └── counter.go
-    │       │           ├── gen.go
-    │       │           ├── observ
-    │       │           │   └── instrumentation.go
-    │       │           ├── version.go
-    │       │           └── x
-    │       │               ├── README.md
-    │       │               ├── features.go
-    │       │               └── x.go
-    │       ├── handler.go
-    │       ├── internal
-    │       │   ├── baggage
-    │       │   │   ├── baggage.go
-    │       │   │   └── context.go
-    │       │   ├── errorhandler
-    │       │   │   └── errorhandler.go
-    │       │   └── global
-    │       │       ├── handler.go
-    │       │       ├── instruments.go
-    │       │       ├── internal_logging.go
-    │       │       ├── meter.go
-    │       │       ├── propagator.go
-    │       │       ├── state.go
-    │       │       └── trace.go
-    │       ├── internal_logging.go
-    │       ├── metric
-    │       │   ├── LICENSE
-    │       │   ├── README.md
-    │       │   ├── asyncfloat64.go
-    │       │   ├── asyncint64.go
-    │       │   ├── config.go
-    │       │   ├── doc.go
-    │       │   ├── embedded
-    │       │   │   ├── README.md
-    │       │   │   └── embedded.go
-    │       │   ├── instrument.go
-    │       │   ├── meter.go
-    │       │   ├── noop
-    │       │   │   ├── README.md
-    │       │   │   └── noop.go
-    │       │   ├── syncfloat64.go
-    │       │   └── syncint64.go
-    │       ├── metric.go
-    │       ├── propagation
-    │       │   ├── README.md
-    │       │   ├── baggage.go
-    │       │   ├── doc.go
-    │       │   ├── propagation.go
-    │       │   └── trace_context.go
-    │       ├── propagation.go
-    │       ├── renovate.json
-    │       ├── requirements.txt
-    │       ├── sdk
-    │       │   ├── LICENSE
-    │       │   ├── README.md
-    │       │   ├── instrumentation
-    │       │   │   ├── README.md
-    │       │   │   ├── doc.go
-    │       │   │   ├── library.go
-    │       │   │   └── scope.go
-    │       │   ├── internal
-    │       │   │   └── x
-    │       │   │       ├── README.md
-    │       │   │       ├── features.go
-    │       │   │       └── x.go
-    │       │   ├── metric
-    │       │   │   ├── LICENSE
-    │       │   │   ├── README.md
-    │       │   │   ├── aggregation.go
-    │       │   │   ├── cache.go
-    │       │   │   ├── config.go
-    │       │   │   ├── doc.go
-    │       │   │   ├── env.go
-    │       │   │   ├── exemplar
-    │       │   │   │   ├── README.md
-    │       │   │   │   ├── doc.go
-    │       │   │   │   ├── exemplar.go
-    │       │   │   │   ├── filter.go
-    │       │   │   │   ├── fixed_size_reservoir.go
-    │       │   │   │   ├── histogram_reservoir.go
-    │       │   │   │   ├── reservoir.go
-    │       │   │   │   ├── storage.go
-    │       │   │   │   └── value.go
-    │       │   │   ├── exemplar.go
-    │       │   │   ├── exporter.go
-    │       │   │   ├── instrument.go
-    │       │   │   ├── instrumentkind_string.go
-    │       │   │   ├── internal
-    │       │   │   │   ├── aggregate
-    │       │   │   │   │   ├── aggregate.go
-    │       │   │   │   │   ├── atomic.go
-    │       │   │   │   │   ├── doc.go
-    │       │   │   │   │   ├── drop.go
-    │       │   │   │   │   ├── exemplar.go
-    │       │   │   │   │   ├── exponential_histogram.go
-    │       │   │   │   │   ├── filtered_reservoir.go
-    │       │   │   │   │   ├── histogram.go
-    │       │   │   │   │   ├── lastvalue.go
-    │       │   │   │   │   ├── limit.go
-    │       │   │   │   │   └── sum.go
-    │       │   │   │   ├── observ
-    │       │   │   │   │   └── instrumentation.go
-    │       │   │   │   ├── reservoir
-    │       │   │   │   │   ├── concurrent_safe.go
-    │       │   │   │   │   └── doc.go
-    │       │   │   │   └── reuse_slice.go
-    │       │   │   ├── manual_reader.go
-    │       │   │   ├── meter.go
-    │       │   │   ├── metricdata
-    │       │   │   │   ├── README.md
-    │       │   │   │   ├── data.go
-    │       │   │   │   ├── temporality.go
-    │       │   │   │   └── temporality_string.go
-    │       │   │   ├── periodic_reader.go
-    │       │   │   ├── pipeline.go
-    │       │   │   ├── provider.go
-    │       │   │   ├── reader.go
-    │       │   │   ├── version.go
-    │       │   │   └── view.go
-    │       │   ├── resource
-    │       │   │   ├── README.md
-    │       │   │   ├── auto.go
-    │       │   │   ├── builtin.go
-    │       │   │   ├── config.go
-    │       │   │   ├── container.go
-    │       │   │   ├── doc.go
-    │       │   │   ├── env.go
-    │       │   │   ├── host_id.go
-    │       │   │   ├── host_id_bsd.go
-    │       │   │   ├── host_id_darwin.go
-    │       │   │   ├── host_id_exec.go
-    │       │   │   ├── host_id_linux.go
-    │       │   │   ├── host_id_readfile.go
-    │       │   │   ├── host_id_unsupported.go
-    │       │   │   ├── host_id_windows.go
-    │       │   │   ├── os.go
-    │       │   │   ├── os_release_darwin.go
-    │       │   │   ├── os_release_unix.go
-    │       │   │   ├── os_unix.go
-    │       │   │   ├── os_unsupported.go
-    │       │   │   ├── os_windows.go
-    │       │   │   ├── process.go
-    │       │   │   └── resource.go
-    │       │   └── version.go
-    │       ├── semconv
-    │       │   ├── v1.37.0
-    │       │   │   ├── MIGRATION.md
-    │       │   │   ├── README.md
-    │       │   │   ├── attribute_group.go
-    │       │   │   ├── doc.go
-    │       │   │   ├── error_type.go
-    │       │   │   ├── exception.go
-    │       │   │   └── schema.go
-    │       │   └── v1.40.0
-    │       │       ├── MIGRATION.md
-    │       │       ├── README.md
-    │       │       ├── attribute_group.go
-    │       │       ├── doc.go
-    │       │       ├── error_type.go
-    │       │       ├── exception.go
-    │       │       ├── genaiconv
-    │       │       │   └── metric.go
-    │       │       ├── otelconv
-    │       │       │   └── metric.go
-    │       │       └── schema.go
-    │       ├── trace
-    │       │   ├── LICENSE
-    │       │   ├── README.md
-    │       │   ├── auto.go
-    │       │   ├── config.go
-    │       │   ├── context.go
-    │       │   ├── doc.go
-    │       │   ├── embedded
-    │       │   │   ├── README.md
-    │       │   │   └── embedded.go
-    │       │   ├── hex.go
-    │       │   ├── internal
-    │       │   │   └── telemetry
-    │       │   │       ├── attr.go
-    │       │   │       ├── doc.go
-    │       │   │       ├── id.go
-    │       │   │       ├── number.go
-    │       │   │       ├── resource.go
-    │       │   │       ├── scope.go
-    │       │   │       ├── span.go
-    │       │   │       ├── status.go
-    │       │   │       ├── traces.go
-    │       │   │       └── value.go
-    │       │   ├── nonrecording.go
-    │       │   ├── noop
-    │       │   │   ├── README.md
-    │       │   │   └── noop.go
-    │       │   ├── noop.go
-    │       │   ├── provider.go
-    │       │   ├── span.go
-    │       │   ├── trace.go
-    │       │   ├── tracer.go
-    │       │   └── tracestate.go
-    │       ├── trace.go
-    │       ├── verify_released_changelog.sh
-    │       ├── version.go
-    │       └── versions.yaml
+    │   ├── otel
+    │   │   ├── .clomonitor.yml
+    │   │   ├── .codespellignore
+    │   │   ├── .codespellrc
+    │   │   ├── .gitattributes
+    │   │   ├── .gitignore
+    │   │   ├── .golangci.yml
+    │   │   ├── .lycheeignore
+    │   │   ├── .markdownlint.yaml
+    │   │   ├── CHANGELOG.md
+    │   │   ├── CODEOWNERS
+    │   │   ├── CONTRIBUTING.md
+    │   │   ├── LICENSE
+    │   │   ├── Makefile
+    │   │   ├── README.md
+    │   │   ├── RELEASING.md
+    │   │   ├── SECURITY-INSIGHTS.yml
+    │   │   ├── VERSIONING.md
+    │   │   ├── attribute
+    │   │   │   ├── README.md
+    │   │   │   ├── doc.go
+    │   │   │   ├── encoder.go
+    │   │   │   ├── filter.go
+    │   │   │   ├── hash.go
+    │   │   │   ├── internal
+    │   │   │   │   ├── attribute.go
+    │   │   │   │   └── xxhash
+    │   │   │   │       └── xxhash.go
+    │   │   │   ├── iterator.go
+    │   │   │   ├── key.go
+    │   │   │   ├── kv.go
+    │   │   │   ├── rawhelpers.go
+    │   │   │   ├── set.go
+    │   │   │   ├── type_string.go
+    │   │   │   └── value.go
+    │   │   ├── baggage
+    │   │   │   ├── README.md
+    │   │   │   ├── baggage.go
+    │   │   │   ├── context.go
+    │   │   │   └── doc.go
+    │   │   ├── codes
+    │   │   │   ├── README.md
+    │   │   │   ├── codes.go
+    │   │   │   └── doc.go
+    │   │   ├── dependencies.Dockerfile
+    │   │   ├── doc.go
+    │   │   ├── error_handler.go
+    │   │   ├── exporters
+    │   │   │   ├── otlp
+    │   │   │   │   └── otlplog
+    │   │   │   │       └── otlploggrpc
+    │   │   │   │           ├── LICENSE
+    │   │   │   │           ├── README.md
+    │   │   │   │           ├── client.go
+    │   │   │   │           ├── config.go
+    │   │   │   │           ├── doc.go
+    │   │   │   │           ├── exporter.go
+    │   │   │   │           ├── internal
+    │   │   │   │           │   ├── gen.go
+    │   │   │   │           │   ├── observ
+    │   │   │   │           │   │   ├── instrumentation.go
+    │   │   │   │           │   │   └── target.go
+    │   │   │   │           │   ├── partialsuccess.go
+    │   │   │   │           │   ├── retry
+    │   │   │   │           │   │   └── retry.go
+    │   │   │   │           │   ├── transform
+    │   │   │   │           │   │   └── log.go
+    │   │   │   │           │   ├── version.go
+    │   │   │   │           │   └── x
+    │   │   │   │           │       ├── README.md
+    │   │   │   │           │       ├── features.go
+    │   │   │   │           │       └── x.go
+    │   │   │   │           └── version.go
+    │   │   │   └── prometheus
+    │   │   │       ├── LICENSE
+    │   │   │       ├── README.md
+    │   │   │       ├── config.go
+    │   │   │       ├── doc.go
+    │   │   │       ├── errors.go
+    │   │   │       ├── exporter.go
+    │   │   │       └── internal
+    │   │   │           ├── counter
+    │   │   │           │   └── counter.go
+    │   │   │           ├── gen.go
+    │   │   │           ├── observ
+    │   │   │           │   └── instrumentation.go
+    │   │   │           ├── version.go
+    │   │   │           └── x
+    │   │   │               ├── README.md
+    │   │   │               ├── features.go
+    │   │   │               └── x.go
+    │   │   ├── handler.go
+    │   │   ├── internal
+    │   │   │   ├── baggage
+    │   │   │   │   ├── baggage.go
+    │   │   │   │   └── context.go
+    │   │   │   ├── errorhandler
+    │   │   │   │   └── errorhandler.go
+    │   │   │   └── global
+    │   │   │       ├── handler.go
+    │   │   │       ├── instruments.go
+    │   │   │       ├── internal_logging.go
+    │   │   │       ├── meter.go
+    │   │   │       ├── propagator.go
+    │   │   │       ├── state.go
+    │   │   │       └── trace.go
+    │   │   ├── internal_logging.go
+    │   │   ├── log
+    │   │   │   ├── DESIGN.md
+    │   │   │   ├── LICENSE
+    │   │   │   ├── README.md
+    │   │   │   ├── doc.go
+    │   │   │   ├── embedded
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── embedded.go
+    │   │   │   ├── keyvalue.go
+    │   │   │   ├── kind_string.go
+    │   │   │   ├── logger.go
+    │   │   │   ├── noop
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── noop.go
+    │   │   │   ├── provider.go
+    │   │   │   ├── record.go
+    │   │   │   ├── severity.go
+    │   │   │   └── severity_string.go
+    │   │   ├── metric
+    │   │   │   ├── LICENSE
+    │   │   │   ├── README.md
+    │   │   │   ├── asyncfloat64.go
+    │   │   │   ├── asyncint64.go
+    │   │   │   ├── config.go
+    │   │   │   ├── doc.go
+    │   │   │   ├── embedded
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── embedded.go
+    │   │   │   ├── instrument.go
+    │   │   │   ├── meter.go
+    │   │   │   ├── noop
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── noop.go
+    │   │   │   ├── syncfloat64.go
+    │   │   │   └── syncint64.go
+    │   │   ├── metric.go
+    │   │   ├── propagation
+    │   │   │   ├── README.md
+    │   │   │   ├── baggage.go
+    │   │   │   ├── doc.go
+    │   │   │   ├── propagation.go
+    │   │   │   └── trace_context.go
+    │   │   ├── propagation.go
+    │   │   ├── renovate.json
+    │   │   ├── requirements.txt
+    │   │   ├── sdk
+    │   │   │   ├── LICENSE
+    │   │   │   ├── README.md
+    │   │   │   ├── instrumentation
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── library.go
+    │   │   │   │   └── scope.go
+    │   │   │   ├── internal
+    │   │   │   │   └── x
+    │   │   │   │       ├── README.md
+    │   │   │   │       ├── features.go
+    │   │   │   │       └── x.go
+    │   │   │   ├── log
+    │   │   │   │   ├── DESIGN.md
+    │   │   │   │   ├── LICENSE
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── batch.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── exporter.go
+    │   │   │   │   ├── instrumentation.go
+    │   │   │   │   ├── internal
+    │   │   │   │   │   ├── observ
+    │   │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   │   └── simple_log_processor.go
+    │   │   │   │   │   └── x
+    │   │   │   │   │       ├── README.md
+    │   │   │   │   │       ├── features.go
+    │   │   │   │   │       └── x.go
+    │   │   │   │   ├── logger.go
+    │   │   │   │   ├── processor.go
+    │   │   │   │   ├── provider.go
+    │   │   │   │   ├── record.go
+    │   │   │   │   ├── ring.go
+    │   │   │   │   ├── setting.go
+    │   │   │   │   └── simple.go
+    │   │   │   ├── metric
+    │   │   │   │   ├── LICENSE
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── aggregation.go
+    │   │   │   │   ├── cache.go
+    │   │   │   │   ├── config.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── env.go
+    │   │   │   │   ├── exemplar
+    │   │   │   │   │   ├── README.md
+    │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   ├── exemplar.go
+    │   │   │   │   │   ├── filter.go
+    │   │   │   │   │   ├── fixed_size_reservoir.go
+    │   │   │   │   │   ├── histogram_reservoir.go
+    │   │   │   │   │   ├── reservoir.go
+    │   │   │   │   │   ├── storage.go
+    │   │   │   │   │   └── value.go
+    │   │   │   │   ├── exemplar.go
+    │   │   │   │   ├── exporter.go
+    │   │   │   │   ├── instrument.go
+    │   │   │   │   ├── instrumentkind_string.go
+    │   │   │   │   ├── internal
+    │   │   │   │   │   ├── aggregate
+    │   │   │   │   │   │   ├── aggregate.go
+    │   │   │   │   │   │   ├── atomic.go
+    │   │   │   │   │   │   ├── doc.go
+    │   │   │   │   │   │   ├── drop.go
+    │   │   │   │   │   │   ├── exemplar.go
+    │   │   │   │   │   │   ├── exponential_histogram.go
+    │   │   │   │   │   │   ├── filtered_reservoir.go
+    │   │   │   │   │   │   ├── histogram.go
+    │   │   │   │   │   │   ├── lastvalue.go
+    │   │   │   │   │   │   ├── limit.go
+    │   │   │   │   │   │   └── sum.go
+    │   │   │   │   │   ├── observ
+    │   │   │   │   │   │   └── instrumentation.go
+    │   │   │   │   │   ├── reservoir
+    │   │   │   │   │   │   ├── concurrent_safe.go
+    │   │   │   │   │   │   └── doc.go
+    │   │   │   │   │   └── reuse_slice.go
+    │   │   │   │   ├── manual_reader.go
+    │   │   │   │   ├── meter.go
+    │   │   │   │   ├── metricdata
+    │   │   │   │   │   ├── README.md
+    │   │   │   │   │   ├── data.go
+    │   │   │   │   │   ├── temporality.go
+    │   │   │   │   │   └── temporality_string.go
+    │   │   │   │   ├── periodic_reader.go
+    │   │   │   │   ├── pipeline.go
+    │   │   │   │   ├── provider.go
+    │   │   │   │   ├── reader.go
+    │   │   │   │   ├── version.go
+    │   │   │   │   └── view.go
+    │   │   │   ├── resource
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── auto.go
+    │   │   │   │   ├── builtin.go
+    │   │   │   │   ├── config.go
+    │   │   │   │   ├── container.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── env.go
+    │   │   │   │   ├── host_id.go
+    │   │   │   │   ├── host_id_bsd.go
+    │   │   │   │   ├── host_id_darwin.go
+    │   │   │   │   ├── host_id_exec.go
+    │   │   │   │   ├── host_id_linux.go
+    │   │   │   │   ├── host_id_readfile.go
+    │   │   │   │   ├── host_id_unsupported.go
+    │   │   │   │   ├── host_id_windows.go
+    │   │   │   │   ├── os.go
+    │   │   │   │   ├── os_release_darwin.go
+    │   │   │   │   ├── os_release_unix.go
+    │   │   │   │   ├── os_unix.go
+    │   │   │   │   ├── os_unsupported.go
+    │   │   │   │   ├── os_windows.go
+    │   │   │   │   ├── process.go
+    │   │   │   │   └── resource.go
+    │   │   │   └── version.go
+    │   │   ├── semconv
+    │   │   │   ├── v1.37.0
+    │   │   │   │   ├── MIGRATION.md
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── attribute_group.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── error_type.go
+    │   │   │   │   ├── exception.go
+    │   │   │   │   └── schema.go
+    │   │   │   └── v1.40.0
+    │   │   │       ├── MIGRATION.md
+    │   │   │       ├── README.md
+    │   │   │       ├── attribute_group.go
+    │   │   │       ├── doc.go
+    │   │   │       ├── error_type.go
+    │   │   │       ├── exception.go
+    │   │   │       ├── genaiconv
+    │   │   │       │   └── metric.go
+    │   │   │       ├── otelconv
+    │   │   │       │   └── metric.go
+    │   │   │       └── schema.go
+    │   │   ├── trace
+    │   │   │   ├── LICENSE
+    │   │   │   ├── README.md
+    │   │   │   ├── auto.go
+    │   │   │   ├── config.go
+    │   │   │   ├── context.go
+    │   │   │   ├── doc.go
+    │   │   │   ├── embedded
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── embedded.go
+    │   │   │   ├── hex.go
+    │   │   │   ├── internal
+    │   │   │   │   └── telemetry
+    │   │   │   │       ├── attr.go
+    │   │   │   │       ├── doc.go
+    │   │   │   │       ├── id.go
+    │   │   │   │       ├── number.go
+    │   │   │   │       ├── resource.go
+    │   │   │   │       ├── scope.go
+    │   │   │   │       ├── span.go
+    │   │   │   │       ├── status.go
+    │   │   │   │       ├── traces.go
+    │   │   │   │       └── value.go
+    │   │   │   ├── nonrecording.go
+    │   │   │   ├── noop
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── noop.go
+    │   │   │   ├── noop.go
+    │   │   │   ├── provider.go
+    │   │   │   ├── span.go
+    │   │   │   ├── trace.go
+    │   │   │   ├── tracer.go
+    │   │   │   └── tracestate.go
+    │   │   ├── trace.go
+    │   │   ├── verify_released_changelog.sh
+    │   │   ├── version.go
+    │   │   └── versions.yaml
+    │   └── proto
+    │       └── otlp
+    │           ├── LICENSE
+    │           ├── collector
+    │           │   └── logs
+    │           │       └── v1
+    │           │           ├── logs_service.pb.go
+    │           │           ├── logs_service.pb.gw.go
+    │           │           └── logs_service_grpc.pb.go
+    │           ├── common
+    │           │   └── v1
+    │           │       └── common.pb.go
+    │           ├── logs
+    │           │   └── v1
+    │           │       └── logs.pb.go
+    │           └── resource
+    │               └── v1
+    │                   └── resource.pb.go
     ├── go.yaml.in
     │   └── yaml
     │       └── v2
@@ -2650,13 +2834,19 @@
     │       │   │   ├── trie12.0.0.go
     │       │   │   ├── trie13.0.0.go
     │       │   │   └── trieval.go
-    │       │   └── internal
-    │       │       ├── httpcommon
-    │       │       │   ├── ascii.go
-    │       │       │   ├── headermap.go
-    │       │       │   └── request.go
-    │       │       └── httpsfv
-    │       │           └── httpsfv.go
+    │       │   ├── internal
+    │       │   │   ├── httpcommon
+    │       │   │   │   ├── ascii.go
+    │       │   │   │   ├── headermap.go
+    │       │   │   │   └── request.go
+    │       │   │   ├── httpsfv
+    │       │   │   │   └── httpsfv.go
+    │       │   │   └── timeseries
+    │       │   │       └── timeseries.go
+    │       │   └── trace
+    │       │       ├── events.go
+    │       │       ├── histogram.go
+    │       │       └── trace.go
     │       ├── oauth2
     │       │   ├── .travis.yml
     │       │   ├── CONTRIBUTING.md
@@ -2853,12 +3043,255 @@
     │                   ├── transform.go
     │                   └── trie.go
     ├── google.golang.org
+    │   ├── genproto
+    │   │   └── googleapis
+    │   │       ├── api
+    │   │       │   ├── LICENSE
+    │   │       │   └── httpbody
+    │   │       │       └── httpbody.pb.go
+    │   │       └── rpc
+    │   │           ├── LICENSE
+    │   │           ├── errdetails
+    │   │           │   └── error_details.pb.go
+    │   │           └── status
+    │   │               └── status.pb.go
+    │   ├── grpc
+    │   │   ├── AUTHORS
+    │   │   ├── CODE-OF-CONDUCT.md
+    │   │   ├── CONTRIBUTING.md
+    │   │   ├── GOVERNANCE.md
+    │   │   ├── LICENSE
+    │   │   ├── MAINTAINERS.md
+    │   │   ├── Makefile
+    │   │   ├── NOTICE.txt
+    │   │   ├── README.md
+    │   │   ├── SECURITY.md
+    │   │   ├── attributes
+    │   │   │   └── attributes.go
+    │   │   ├── backoff
+    │   │   │   └── backoff.go
+    │   │   ├── backoff.go
+    │   │   ├── balancer
+    │   │   │   ├── balancer.go
+    │   │   │   ├── base
+    │   │   │   │   ├── balancer.go
+    │   │   │   │   └── base.go
+    │   │   │   ├── conn_state_evaluator.go
+    │   │   │   ├── endpointsharding
+    │   │   │   │   └── endpointsharding.go
+    │   │   │   ├── grpclb
+    │   │   │   │   └── state
+    │   │   │   │       └── state.go
+    │   │   │   ├── pickfirst
+    │   │   │   │   ├── internal
+    │   │   │   │   │   └── internal.go
+    │   │   │   │   └── pickfirst.go
+    │   │   │   ├── roundrobin
+    │   │   │   │   └── roundrobin.go
+    │   │   │   └── subconn.go
+    │   │   ├── balancer_wrapper.go
+    │   │   ├── binarylog
+    │   │   │   └── grpc_binarylog_v1
+    │   │   │       └── binarylog.pb.go
+    │   │   ├── call.go
+    │   │   ├── channelz
+    │   │   │   └── channelz.go
+    │   │   ├── clientconn.go
+    │   │   ├── codec.go
+    │   │   ├── codes
+    │   │   │   ├── code_string.go
+    │   │   │   └── codes.go
+    │   │   ├── connectivity
+    │   │   │   └── connectivity.go
+    │   │   ├── credentials
+    │   │   │   ├── credentials.go
+    │   │   │   ├── insecure
+    │   │   │   │   └── insecure.go
+    │   │   │   └── tls.go
+    │   │   ├── dialoptions.go
+    │   │   ├── doc.go
+    │   │   ├── encoding
+    │   │   │   ├── encoding.go
+    │   │   │   ├── encoding_v2.go
+    │   │   │   ├── gzip
+    │   │   │   │   └── gzip.go
+    │   │   │   ├── internal
+    │   │   │   │   └── internal.go
+    │   │   │   └── proto
+    │   │   │       └── proto.go
+    │   │   ├── experimental
+    │   │   │   └── stats
+    │   │   │       ├── metricregistry.go
+    │   │   │       └── metrics.go
+    │   │   ├── grpclog
+    │   │   │   ├── component.go
+    │   │   │   ├── grpclog.go
+    │   │   │   ├── internal
+    │   │   │   │   ├── grpclog.go
+    │   │   │   │   ├── logger.go
+    │   │   │   │   └── loggerv2.go
+    │   │   │   ├── logger.go
+    │   │   │   └── loggerv2.go
+    │   │   ├── health
+    │   │   │   └── grpc_health_v1
+    │   │   │       ├── health.pb.go
+    │   │   │       └── health_grpc.pb.go
+    │   │   ├── interceptor.go
+    │   │   ├── internal
+    │   │   │   ├── backoff
+    │   │   │   │   └── backoff.go
+    │   │   │   ├── balancer
+    │   │   │   │   ├── gracefulswitch
+    │   │   │   │   │   ├── config.go
+    │   │   │   │   │   └── gracefulswitch.go
+    │   │   │   │   └── weight
+    │   │   │   │       └── weight.go
+    │   │   │   ├── balancerload
+    │   │   │   │   └── load.go
+    │   │   │   ├── binarylog
+    │   │   │   │   ├── binarylog.go
+    │   │   │   │   ├── binarylog_testutil.go
+    │   │   │   │   ├── env_config.go
+    │   │   │   │   ├── method_logger.go
+    │   │   │   │   └── sink.go
+    │   │   │   ├── buffer
+    │   │   │   │   └── unbounded.go
+    │   │   │   ├── channelz
+    │   │   │   │   ├── channel.go
+    │   │   │   │   ├── channelmap.go
+    │   │   │   │   ├── funcs.go
+    │   │   │   │   ├── logging.go
+    │   │   │   │   ├── server.go
+    │   │   │   │   ├── socket.go
+    │   │   │   │   ├── subchannel.go
+    │   │   │   │   ├── syscall_linux.go
+    │   │   │   │   ├── syscall_nonlinux.go
+    │   │   │   │   └── trace.go
+    │   │   │   ├── credentials
+    │   │   │   │   ├── credentials.go
+    │   │   │   │   ├── spiffe.go
+    │   │   │   │   ├── syscallconn.go
+    │   │   │   │   └── util.go
+    │   │   │   ├── envconfig
+    │   │   │   │   ├── envconfig.go
+    │   │   │   │   ├── observability.go
+    │   │   │   │   └── xds.go
+    │   │   │   ├── experimental.go
+    │   │   │   ├── grpclog
+    │   │   │   │   └── prefix_logger.go
+    │   │   │   ├── grpcsync
+    │   │   │   │   ├── callback_serializer.go
+    │   │   │   │   ├── event.go
+    │   │   │   │   └── pubsub.go
+    │   │   │   ├── grpcutil
+    │   │   │   │   ├── compressor.go
+    │   │   │   │   ├── encode_duration.go
+    │   │   │   │   ├── grpcutil.go
+    │   │   │   │   ├── metadata.go
+    │   │   │   │   ├── method.go
+    │   │   │   │   └── regex.go
+    │   │   │   ├── idle
+    │   │   │   │   └── idle.go
+    │   │   │   ├── internal.go
+    │   │   │   ├── mem
+    │   │   │   │   └── buffer_pool.go
+    │   │   │   ├── metadata
+    │   │   │   │   └── metadata.go
+    │   │   │   ├── pretty
+    │   │   │   │   └── pretty.go
+    │   │   │   ├── proxyattributes
+    │   │   │   │   └── proxyattributes.go
+    │   │   │   ├── resolver
+    │   │   │   │   ├── config_selector.go
+    │   │   │   │   ├── delegatingresolver
+    │   │   │   │   │   └── delegatingresolver.go
+    │   │   │   │   ├── dns
+    │   │   │   │   │   ├── dns_resolver.go
+    │   │   │   │   │   └── internal
+    │   │   │   │   │       └── internal.go
+    │   │   │   │   ├── passthrough
+    │   │   │   │   │   └── passthrough.go
+    │   │   │   │   └── unix
+    │   │   │   │       └── unix.go
+    │   │   │   ├── serviceconfig
+    │   │   │   │   ├── duration.go
+    │   │   │   │   └── serviceconfig.go
+    │   │   │   ├── stats
+    │   │   │   │   ├── labels.go
+    │   │   │   │   ├── metrics_recorder_list.go
+    │   │   │   │   └── stats.go
+    │   │   │   ├── status
+    │   │   │   │   └── status.go
+    │   │   │   ├── syscall
+    │   │   │   │   ├── syscall_linux.go
+    │   │   │   │   └── syscall_nonlinux.go
+    │   │   │   ├── tcp_keepalive_others.go
+    │   │   │   ├── tcp_keepalive_unix.go
+    │   │   │   ├── tcp_keepalive_windows.go
+    │   │   │   └── transport
+    │   │   │       ├── bdp_estimator.go
+    │   │   │       ├── client_stream.go
+    │   │   │       ├── controlbuf.go
+    │   │   │       ├── defaults.go
+    │   │   │       ├── flowcontrol.go
+    │   │   │       ├── handler_server.go
+    │   │   │       ├── http2_client.go
+    │   │   │       ├── http2_server.go
+    │   │   │       ├── http_util.go
+    │   │   │       ├── logging.go
+    │   │   │       ├── networktype
+    │   │   │       │   └── networktype.go
+    │   │   │       ├── proxy.go
+    │   │   │       ├── server_stream.go
+    │   │   │       └── transport.go
+    │   │   ├── keepalive
+    │   │   │   └── keepalive.go
+    │   │   ├── mem
+    │   │   │   ├── buffer_pool.go
+    │   │   │   ├── buffer_slice.go
+    │   │   │   └── buffers.go
+    │   │   ├── metadata
+    │   │   │   └── metadata.go
+    │   │   ├── peer
+    │   │   │   └── peer.go
+    │   │   ├── picker_wrapper.go
+    │   │   ├── preloader.go
+    │   │   ├── resolver
+    │   │   │   ├── dns
+    │   │   │   │   └── dns_resolver.go
+    │   │   │   ├── map.go
+    │   │   │   └── resolver.go
+    │   │   ├── resolver_wrapper.go
+    │   │   ├── rpc_util.go
+    │   │   ├── server.go
+    │   │   ├── service_config.go
+    │   │   ├── serviceconfig
+    │   │   │   └── serviceconfig.go
+    │   │   ├── stats
+    │   │   │   ├── handlers.go
+    │   │   │   ├── metrics.go
+    │   │   │   └── stats.go
+    │   │   ├── status
+    │   │   │   └── status.go
+    │   │   ├── stream.go
+    │   │   ├── stream_interfaces.go
+    │   │   ├── tap
+    │   │   │   └── tap.go
+    │   │   ├── trace.go
+    │   │   ├── trace_notrace.go
+    │   │   ├── trace_withtrace.go
+    │   │   └── version.go
     │   └── protobuf
     │       ├── LICENSE
     │       ├── PATENTS
     │       ├── encoding
     │       │   ├── protodelim
     │       │   │   └── protodelim.go
+    │       │   ├── protojson
+    │       │   │   ├── decode.go
+    │       │   │   ├── doc.go
+    │       │   │   ├── encode.go
+    │       │   │   └── well_known_types.go
     │       │   ├── prototext
     │       │   │   ├── decode.go
     │       │   │   ├── doc.go
@@ -2878,6 +3311,12 @@
     │       │   ├── encoding
     │       │   │   ├── defval
     │       │   │   │   └── default.go
+    │       │   │   ├── json
+    │       │   │   │   ├── decode.go
+    │       │   │   │   ├── decode_number.go
+    │       │   │   │   ├── decode_string.go
+    │       │   │   │   ├── decode_token.go
+    │       │   │   │   └── encode.go
     │       │   │   ├── messageset
     │       │   │   │   └── messageset.go
     │       │   │   ├── tag
@@ -3003,6 +3442,8 @@
     │       │   ├── size_gen.go
     │       │   ├── wrapperopaque.go
     │       │   └── wrappers.go
+    │       ├── protoadapt
+    │       │   └── convert.go
     │       ├── reflect
     │       │   ├── protoreflect
     │       │   │   ├── methods.go
@@ -3025,8 +3466,18 @@
     │       │       └── version.go
     │       └── types
     │           └── known
-    │               └── timestamppb
-    │                   └── timestamp.pb.go
+    │               ├── anypb
+    │               │   └── any.pb.go
+    │               ├── durationpb
+    │               │   └── duration.pb.go
+    │               ├── fieldmaskpb
+    │               │   └── field_mask.pb.go
+    │               ├── structpb
+    │               │   └── struct.pb.go
+    │               ├── timestamppb
+    │               │   └── timestamp.pb.go
+    │               └── wrapperspb
+    │                   └── wrappers.pb.go
     ├── modernc.org
     │   ├── libc
     │   │   ├── .gitignore
@@ -4255,4 +4706,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-594 directories, 4089 files
+720 directories, 4414 files

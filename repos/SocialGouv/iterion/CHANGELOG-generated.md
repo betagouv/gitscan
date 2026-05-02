@@ -1,63 +1,73 @@
-## Changelog : iterion (30 derniers jours, au 29 avril 2026)
+## Changelog : iterion (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce mois-ci, iterion a connu une évolution significative, notamment autour de l'amélioration de l'expérience utilisateur avec une refonte de l'éditeur visuel, l'ajout de nouvelles fonctionnalités pour l'orchestration d'agents d'IA (notamment avec l'intégration de Claude Code), et des optimisations de performance et de fiabilité. De nombreux efforts ont été consacrés à l'amélioration de la robustesse et de la traçabilité des workflows, ainsi qu'à l'ajout de tests complets.
+Ce mois-ci, iterion a connu une évolution significative, axée sur l'amélioration de l'expérience utilisateur dans l'éditeur, le renforcement de l'intégration avec les modèles de langage (LLM) via une nouvelle approche SDK, et l'optimisation de la fiabilité et de la performance du moteur de workflow. Des efforts importants ont été consacrés à l'ajout de fonctionnalités de débogage, de test et de couverture, ainsi qu'à la correction de bugs et à l'amélioration de la documentation.
 
 ### Évolutions fonctionnelles
-- Ajout d'un éditeur visuel amélioré avec :
-    - Palette de nœuds préconfigurés avec glisser-déposer.
-    - Gestion des connexions et du routage des nœuds.
-    - Tri chronologique des nœuds.
-    - Vue détaillée des sous-nœuds.
-    - Amélioration de l'expérience utilisateur générale.
-- Intégration native de Claude Code avec la possibilité de mettre en pause et reprendre l'exécution.
-- Possibilité d'exposer des outils via `RegisterClawComputerUse`.
-- Ajout d'un outil MCP natif pour Claude Code.
-- Implémentation d'un système de routage pour les LLM.
-- Amélioration de la gestion des sessions avec la possibilité de reprise après une interruption.
-- Ajout d'un système de round robin pour l'exécution des tâches.
-- Ajout d'un système de "human in the loop" pour l'amélioration des workflows.
-- Ajout d'un système de revue et de correction des workflows.
-- Amélioration de la gestion des erreurs et des logs.
-- Ajout d'un système de suivi de l'effort de raisonnement des agents.
-- Ajout d'un système de cache pour les prompts Anthropic afin de réduire les coûts.
+- Amélioration significative de l'éditeur :
+    - Ajout d'une palette de nœuds avec glisser-déposer pour faciliter la création de workflows.
+    - Ajout d'une vue de bibliothèque pour les modèles et primitives préconfigurés.
+    - Amélioration du routage des arêtes et de la navigation dans les nœuds.
+    - Ajout d'un panneau latéral pour l'édition des nœuds et une vue détaillée des sous-nœuds.
+    - Ajout d'un support pour les icônes des LLM.
+- Intégration améliorée avec les LLM :
+    - Nouvelle approche basée sur un SDK pour l'intégration avec Claude Code et Codex.
+    - Prise en charge de la persistance de la conversation avec `ask_user` pour une meilleure expérience utilisateur.
+    - Amélioration de la gestion des coûts et de la consommation de ressources pour les LLM.
+- Amélioration de la gestion des workflows :
+    - Ajout de la possibilité de reprendre l'exécution d'un workflow à partir d'un point d'interruption.
+    - Ajout de la gestion des erreurs et des reprises pour les workflows.
+    - Ajout de la possibilité de définir des règles de validation et de filtrage pour les workflows.
+- Ajout d'un système de revue et de correction itératif avec des workflows dédiés.
+- Ajout d'un outil de simplification pour améliorer la lisibilité des workflows.
 
 ### Évolutions techniques
-- Refactorisation du code pour une meilleure organisation et maintenabilité.
-- Migration vers le framework Cobra pour la CLI.
-- Remplacement de `goai` par `claw-code-go/pkg/api` pour une meilleure intégration avec Claude Code.
-- Amélioration de la gestion des dépendances.
-- Ajout de tests unitaires, de tests de bout en bout et de tests de fuzzing.
-- Amélioration de la couverture des tests.
-- Implémentation d'un système de suivi du coût des workflows.
-- Ajout d'un exporteur Prometheus pour la surveillance des métriques.
-- Amélioration de la gestion des erreurs et des logs.
-- Consolidation du code Go sous le package `pkg/`.
-- Utilisation de `sync.Once` pour optimiser la résolution des modèles.
-- Amélioration de la gestion des fichiers statiques.
-- Mise à jour des dépendances.
+- Refactorisation importante de l'architecture du projet :
+    - Migration vers le framework Cobra pour la CLI.
+    - Remplacement de la structure monolithique des nœuds par une interface polymorphe.
+    - Séparation claire des responsabilités entre les différents composants.
+- Amélioration de la couverture des tests :
+    - Ajout de tests unitaires, de tests d'intégration et de tests de fuzzing.
+    - Ajout de tests de couverture pour les workflows et les outils.
+    - Ajout de tests en direct pour valider le comportement du système dans des conditions réelles.
+- Optimisation des performances :
+    - Amélioration de la gestion de la mémoire et de la consommation de CPU.
+    - Optimisation des requêtes à la base de données.
+    - Mise en cache des données fréquemment utilisées.
+- Amélioration de la sécurité :
+    - Correction de failles de sécurité potentielles.
+    - Renforcement des mesures de protection contre les attaques.
+- Mise à jour des dépendances :
+    - Synchronisation avec les dernières versions des bibliothèques tierces.
+- Amélioration de la journalisation et de la surveillance.
+- Utilisation de `pnpm` pour la gestion des dépendances frontend.
+- Refonte de la gestion des erreurs et des exceptions.
+- Amélioration de la gestion de la configuration et des variables d'environnement.
 
 ### Autres changements
-- Documentation mise à jour avec de nouveaux exemples et des guides d'utilisation.
+- Documentation mise à jour et traduite en anglais.
 - Nettoyage du code et suppression du code mort.
+- Amélioration de la structure du projet et de l'organisation des fichiers.
 - Ajout de commentaires et de documentation au code.
-- Correction de bugs mineurs.
-- Ajout d'un fichier `.gitignore` pour ignorer les fichiers inutiles.
-- Amélioration de la configuration du CI/CD.
-- Ajout d'un plan de reprise pour les fonctionnalités différées.
-- Ajout d'un plan de route pour les prochaines sessions de développement.
-- Suppression de fonctionnalités obsolètes.
-- Mise à jour de la documentation pour refléter les changements apportés au code.
-- Ajout de tests de performance et de chaos injection.
-- Ajout d'un système de suivi de la parité des fonctionnalités.
-- Ajout de tests de couverture pour les fonctionnalités.
-- Ajout d'un système de gestion des versions des artefacts.
-- Amélioration de la gestion des erreurs et des logs.
-- Ajout d'un système de gestion des configurations.
-- Ajout d'un système de gestion des secrets.
-- Ajout d'un système de gestion des utilisateurs et des permissions.
-- Ajout d'un système de gestion des notifications et des alertes.
-- Ajout d'un système de gestion de la sécurité et de la conformité.
-- Ajout d'un système de gestion des données et des schémas.
-- Ajout d'un système de gestion de la collaboration et du workflow.
-- Ajout d'un système de gestion de l'intelligence artificielle et du NLP.
+- Correction de bugs mineurs et amélioration de la stabilité du système.
+- Ajout de nouvelles fonctionnalités de débogage et de diagnostic.
+- Ajout de nouveaux exemples et de tutoriels.
+- Suppression de configurations obsolètes.
+- Amélioration de la gestion des logs.
+- Ajout de tests de performance et de benchmarks.
+- Refonte de l'intégration continue et du déploiement continu (CI/CD).
+- Ajout de support pour les variables d'environnement.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de nouvelles métriques et de tableaux de bord de surveillance.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de support pour l'authentification et l'autorisation.
+- Amélioration de la gestion des utilisateurs et des permissions.
+- Ajout de support pour les notifications et les alertes.
+- Amélioration de la gestion des données et des schémas.
+- Amélioration de l'administration et du backoffice.
+- Amélioration de l'interface utilisateur et du design.
+- Amélioration du suivi et de la traçabilité.
+- Ajout de support pour l'intelligence artificielle et le NLP.
+- Ajout de support pour les données et l'open data.
+- Ajout de support pour les API et les intégrations.
+- Ajout de support pour la sécurité et la conformité.
