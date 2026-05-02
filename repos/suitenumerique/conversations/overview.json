@@ -1,19 +1,21 @@
 {
   "url": "https://github.com/suitenumerique/conversations",
   "name": "conversations",
-  "description": "Un chatbot IA open-source conçu pour être simple, sécurisé et respectueux de la vie privée.",
+  "description": "Conversations est un chatbot open-source conçu pour être simple, sécurisé et respectueux de la vie privée. Il vise à offrir un contrôle total sur les données et l'interaction avec l'IA, avec une interface conviviale et une personnalisation facile.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Authentification & Accès",
+    "Recherche & Filtres",
     "Notifications & Alertes",
+    "Sécurité & Conformité",
     "Intelligence Artificielle & NLP"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "Next.js",
+    "Vercel AI SDK",
     "Pydantic AI",
     "PostgreSQL",
     "Redis"
@@ -27,15 +29,23 @@
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "saml"
+      "sso"
     ],
-    "providers": []
+    "providers": [
+      "Google",
+      "GitHub",
+      "Microsoft"
+    ]
   },
   "tests": [
+    "Jest",
     "Pytest"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-04-29T10:57:37+02:00",
   "status": "active",
   "license": "MIT",
@@ -48,13 +58,7 @@
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "Intelligence Artificielle & LLM"
+    "Intelligence Artificielle & NLP",
+    "Sécurité & Conformité"
   ]
 }
