@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees",
   "name": "depenses-eclairees",
-  "description": "Ce projet vise à analyser et extraire des informations pertinentes à partir de documents financiers, tels que des factures et des contrats, afin de promouvoir la transparence des dépenses publiques. Il utilise des techniques d'OCR et de traitement du langage naturel pour identifier et structurer les données clés.",
+  "description": "Ce projet vise à analyser et extraire des informations pertinentes à partir de documents financiers, tels que des factures et des relevés bancaires, afin de faciliter la transparence et le suivi des dépenses publiques.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -16,8 +16,7 @@
   ],
   "audience": [
     "Agents de l'Administration",
-    "Professionnels",
-    "Associations"
+    "Professionnels"
   ],
   "dependencies": [
     "Django",
@@ -31,13 +30,10 @@
     "gunicorn",
     "django-dsfr",
     "mozilla-django-oidc",
+    "django-lasuite",
     "django-storages",
     "moto",
     "docx2txt",
-    "python-dotenv",
-    "jupyter",
-    "olefile",
-    "openai",
     "openpyxl",
     "pandas",
     "Pillow",
@@ -50,7 +46,8 @@
     "xlrd",
     "schwifty",
     "tabulate",
-    "odfpy"
+    "odfpy",
+    "pyxlsb"
   ],
   "components": [
     "API REST & GraphQL",
@@ -62,11 +59,10 @@
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "session"
     ],
     "providers": [
-      "Google",
-      "Microsoft"
+      "Google"
     ]
   },
   "tests": [
@@ -76,7 +72,7 @@
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-29T16:01:29+02:00",
+  "lastActivity": "2026-04-30T15:47:06+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
