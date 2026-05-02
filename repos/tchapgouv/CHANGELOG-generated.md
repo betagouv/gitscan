@@ -1,21 +1,23 @@
-# Synthèse d'activité : tchapgouv (du 13 avril 2026 au 23 avril 2026)
+# Synthèse d'activité : tchapgouv (du 2024-03-20 au 2024-05-13)
 
 ## Résumé de l'activité
-L'activité récente de tchapgouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la sécurité de la plateforme. L'application Android [tchap-x-android](/repos/tchapgouv/tchap-x-android) a bénéficié de nombreuses corrections et améliorations, notamment dans la gestion des espaces et des salons, ainsi que des ajustements d'interface.  tchap-web-v4 [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) a introduit la possibilité de créer des salons privés non chiffrés et a amélioré la gestion des appels groupés. Des optimisations de performance et des corrections de bugs ont également été apportées à Synapse [synapse](/repos/tchapgouv/synapse) et tchap-desktop [tchap-desktop](/repos/tchapgouv/tchap-desktop).
+La période a été marquée par des améliorations significatives sur l'ensemble des applications Tchap (iOS, Android, Web, Desktop) avec un focus sur la sécurité, la stabilité et l'expérience utilisateur.  Des correctifs de sécurité critiques ont été déployés sur le web, et des améliorations notables ont été apportées à l'authentification et à la gestion des comptes. Les applications mobiles bénéficient d'une meilleure gestion des liens profonds, d'une réinitialisation d'identité plus fiable et d'une harmonisation de la terminologie.  Des efforts importants ont également été consacrés à la modernisation de l'infrastructure de développement et de déploiement.
 
 ## Sécurité
-- Activation de l'expiration des comptes via MAS dans [synapse](/repos/tchapgouv/synapse).
-- Ajout de la possibilité de créer des salons privés non chiffrés dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4), avec un affichage clair de leur statut non chiffré.
-- Désactivation du certificat pinning pour les fonds de cartes dans [tchap-x-android](/repos/tchapgouv/tchap-x-android) sur l'environnement de développement.
+- Correction d'une faille de sécurité critique concernant l'ouverture de fichiers dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
+- Amélioration de la sécurité des cookies dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
+- Suppression de la création de comptes hérités sans MAS dans [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap) et [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright).
 
 ## Autres changements notables
-- Mise à jour du SDK Matrix Rust dans [tchap-x-android](/repos/tchapgouv/tchap-x-android).
-- Refonte du routage et suppression du code MAS obsolète dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
-- Mise en cache de l'introspection MAS dans [synapse](/repos/tchapgouv/synapse) pour améliorer les performances.
-- Correction du comportement de l'application sur macOS concernant l'ouverture des fenêtres depuis le dock dans [tchap-desktop](/repos/tchapgouv/tchap-desktop).
+- Renommage de "Tchap X" en "Tchap" sur Android [tchap-x-android](/repos/tchapgouv/tchap-x-android).
+- Refonte du flux de connexion/enregistrement dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
+- Migration du projet "TCHAP" vers "element-call-tchap" [element-call](/repos/tchapgouv/element-call).
+- Activation de l'expiration des comptes avec MAS [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
+- Mise à jour des SDK Matrix Rust et Kotlin dans plusieurs dépôts.
 
 ## Dépôts les plus actifs
-- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Amélioration significative de l'application Android avec de nombreuses corrections de bugs et améliorations de l'interface utilisateur.
-- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Ajout de nouvelles fonctionnalités et améliorations de la sécurité pour la version web de Tchap.
-- [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright) : Amélioration des tests d'authentification et de création de salles.
-- [synapse](/repos/tchapgouv/synapse) : Optimisations de performance et corrections de bugs pour le serveur Matrix.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Corrections de sécurité, ajout de thème haute contraste et amélioration des appels groupés.
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Renommage de l'application et améliorations de l'interface utilisateur.
+- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Amélioration de la gestion des espaces et des salons, notamment l'accès par lien.
+- [tchap-desktop](/repos/tchapgouv/tchap-desktop) : Amélioration de la gestion des liens profonds et des notifications.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Améliorations de la compatibilité, de la sécurité et de la gestion des comptes.

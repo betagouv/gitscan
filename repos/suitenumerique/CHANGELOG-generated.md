@@ -1,26 +1,25 @@
-# Synthèse d'activité : suitenumerique (du 17/04 au 24/04/2026)
+# Synthèse d'activité : suitenumerique (du 22 avril 2026 au 01 mai 2026)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une semaine riche en développement et améliorations sur ses différents projets. L'accent a été mis sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités dans [dictaphone](/repos/suitenumerique/dictaphone), [st-home](/repos/suitenumerique/st-home), [messages](/repos/suitenumerique/messages) et [meet](/repos/suitenumerique/meet). La sécurité a également été renforcée dans plusieurs dépôts, notamment [messages](/repos/suitenumerique/messages) et [people](/repos/suitenumerique/people). De nouveaux projets ont vu le jour, comme [meet-matting](/repos/suitenumerique/meet-matting), et des bases solides ont été posées pour des développements futurs, comme avec le [gallene-sdk](/repos/suitenumerique/gallene-sdk).
+La semaine écoulée a été marquée par une activité intense sur plusieurs dépôts de l'organisation SuiteNumérique. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec le développement d'une application mobile pour Dictaphone et l'ajout de nouvelles fonctionnalités à l'interface utilisateur de Drive. La sécurité a également été une priorité, avec des mises à jour de dépendances et des corrections de vulnérabilités dans plusieurs projets. Des améliorations significatives ont été apportées à l'infrastructure, avec la migration vers GitHub Actions pour la CI/CD et l'optimisation des performances de plusieurs services. L'intégration avec des services externes, comme Docs et Microsoft Outlook, a également progressé.
 
 ## Sécurité
-Plusieurs améliorations de sécurité ont été apportées :
-
-- [messages](/repos/suitenumerique/messages) : Renforcement de la sécurité DNS avec validation du temps d'envoi et vérification SPF récursive, factorisation du code SSRF et autorisation des redirections dans le proxy d'image.
-- [people](/repos/suitenumerique/people) : Passage à l'envoi de liens de connexion au lieu des mots de passe, correction d'une potentielle escalade de privilèges lors de l'invitation d'utilisateurs et mise à jour de bibliothèques avec des correctifs de sécurité.
+Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
+- Correction de vulnérabilités dans [people](/repos/suitenumerique/people) avec la mise à jour de plusieurs dépendances (Pillow, Django, lodash, Next.js, pytest).
+- Correction de vulnérabilités dans [meet](/repos/suitenumerique/meet) avec la mise à jour de plusieurs dépendances (Django, aiohttp, vite, pytest, Pillow).
+- Correction de vulnérabilités dans [conversations](/repos/suitenumerique/conversations) avec la mise à jour de ses dépendances.
+- Correction d'une vulnérabilité JavaScript dans [docs](/repos/suitenumerique/docs).
 
 ## Autres changements notables
-- [st-home](/repos/suitenumerique/st-home) : Remplacement de Nginx par Caddy comme reverse proxy pour améliorer la performance et la simplicité de configuration.
-- [menshen](/repos/suitenumerique/menshen) : Refonte de la structure des applications en préparation de l'implémentation de l'échange de jetons OAuth 2.0.
-- [cunningham](/repos/suitenumerique/cunningham) : Migration de l'infrastructure CI/CD vers GitHub Actions.
-- [gallene-deployment](/repos/suitenumerique/gallene-deployment) : Refonte majeure avec l'ajout d'un Dockerfile et de scripts de déploiement basés sur `deburau/galene-docker`.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Automatisation de la génération des icônes SVG à partir de Figma.
-- [conversations](/repos/suitenumerique/conversations) : Mise à jour de Next.js de la version 15 à la version 16.
+- Migration de CircleCI vers GitHub Actions pour la CI/CD dans [cunningham](/repos/suitenumerique/cunningham), améliorant la sécurité et la gestion des workflows.
+- Remplacement de Nginx par Caddy comme reverse proxy dans [st-home](/repos/suitenumerique/st-home), optimisant l'infrastructure.
+- Refonte de l'architecture des workers dans [messages](/repos/suitenumerique/messages) pour une meilleure séparation des tâches et une gestion plus efficace du reindex.
+- Ajout d'un support initial pour un add-in Microsoft Outlook dans [meet](/repos/suitenumerique/meet).
+- Création du projet [accounts](/repos/suitenumerique/accounts) pour la gestion des comptes utilisateurs.
 
 ## Dépôts les plus actifs
-- [dictaphone](/repos/suitenumerique/dictaphone) : Ajout de nouvelles fonctionnalités pour la transcription audio et la gestion des enregistrements.
-- [st-home](/repos/suitenumerique/st-home) : Amélioration de la carte de déploiement et ajout d'une page dédiée aux partenaires OPSN.
-- [messages](/repos/suitenumerique/messages) : Ajout de fonctionnalités de messagerie interne et d'amélioration de la sécurité.
-- [meet](/repos/suitenumerique/meet) : Amélioration du partage de documents et de la gestion des tâches de transcription.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Amélioration de la bibliothèque de composants UI avec de nouvelles fonctionnalités et corrections de bugs.
-- [people](/repos/suitenumerique/people) : Amélioration de la sécurité et de l'expérience utilisateur pour la gestion des utilisateurs.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nombreux nouveaux composants et fonctionnalités, améliorant l'interface utilisateur.
+- [st-home](/repos/suitenumerique/st-home) : Amélioration de la carte de déploiement et intégration de nouvelles données.
+- [meet](/repos/suitenumerique/meet) : Ajout d'un support initial pour un add-in Microsoft Outlook et amélioration de l'authentification.
+- [drive](/repos/suitenumerique/drive) : Amélioration de l'expérience utilisateur avec l'ajout de fonctionnalités comme la duplication d'éléments et la gestion des droits d'accès.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Développement d'une application mobile (iOS et Android) et intégration avec Docs.

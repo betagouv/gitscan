@@ -1,14 +1,14 @@
-# Synthèse d'activité : refugies-info (du 16/05 au 23/05)
+# Synthèse d'activité : refugies-info (du 15/05 au 22/05)
 
 ## Résumé de l'activité
-La semaine a été marquée par des améliorations significatives de l'expérience utilisateur sur les plateformes web et mobile. L'application [karfur](/repos/refugies-info/karfur) a bénéficié de corrections de bugs d'affichage et de synchronisation des favoris, tandis que le [playground](/repos/refugies-info/playground) a vu une refonte de la liste des documents avec de nouvelles fonctionnalités de recherche, de filtrage et de tri. Ces améliorations visent à faciliter l'accès à l'information et à optimiser le travail des utilisateurs, notamment les opérateurs AGIR et les traducteurs.
+Cette semaine, l'organisation refugies-info a concentré ses efforts sur l'amélioration de ses outils principaux, [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur).  [playground](/repos/refugies-info/playground) a bénéficié d'une refonte majeure de son interface utilisateur avec le design système DSFR, ainsi que de fonctionnalités de filtrage et de tri des documents améliorées, facilitant ainsi l'accès à l'information pour les utilisateurs.  [karfur](/repos/refugies-info/karfur) a quant à lui reçu des corrections de bugs importants, notamment concernant l'affichage des données et la gestion des traductions, améliorant la fiabilité et l'expérience utilisateur.
 
 ## Sécurité
-Plusieurs vulnérabilités de sécurité ont été corrigées dans [karfur](/repos/refugies-info/karfur) grâce à la mise à jour de Next.js, Expo SDK et l'intervention de Dependabot. L'implémentation d'un hook GitLeaks dans [karfur](/repos/refugies-info/karfur) et [playground](/repos/refugies-info/playground) renforce la protection contre la divulgation de secrets dans le code.
+Plusieurs vulnérabilités de sécurité dans les dépendances de [karfur](/repos/refugies-info/karfur) ont été corrigées, notamment dans les librairies lodash, path-to-regexp et @smithy/config-resolver. De plus, l'ajout de hooks GitLeaks dans [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur) permet une détection proactive des secrets potentiellement exposés dans le code.
 
 ## Autres changements notables
-Le [playground](/repos/refugies-info/playground) a bénéficié d'une refonte technique importante avec l'intégration du DSFR pour les icônes et l'implémentation d'un nouveau système de streaming éditorial basé sur Supabase Realtime. Des optimisations de performances ont également été apportées au serveur de [karfur](/repos/refugies-info/karfur) grâce à l'ajout d'index MongoDB et à l'optimisation de la récupération des statistiques de traduction.
+Une refactorisation de la gestion des rôles et des permissions (RBAC) a été réalisée dans [playground](/repos/refugies-info/playground) pour une meilleure sécurité et maintenabilité.  Des améliorations de performance ont été apportées à [karfur](/repos/refugies-info/karfur) grâce à l'ajout d'index MongoDB et à la refactorisation de la gestion des cartes Mongoose. L'accessibilité de [karfur](/repos/refugies-info/karfur) a également été améliorée pour une meilleure conformité RGAA.
 
 ## Dépôts les plus actifs
-- [karfur](/repos/refugies-info/karfur) : Correction de bugs, améliorations de la stabilité du serveur et mises à jour de sécurité.
-- [playground](/repos/refugies-info/playground) : Refonte de la liste des documents et implémentation de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+- [playground](/repos/refugies-info/playground) : Refonte de l'interface utilisateur et ajout de nouvelles fonctionnalités de filtrage et de gestion des documents.
+- [karfur](/repos/refugies-info/karfur) : Corrections de bugs, améliorations de la performance et renforcement de la sécurité.

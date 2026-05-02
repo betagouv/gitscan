@@ -1,21 +1,20 @@
-# Synthèse d'activité : proconnect-gouv (du 16/04 au 20/05)
+# Synthèse d'activité : proconnect-gouv (du 09 mai 2026 au 16 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, de la stabilité et de l'expérience utilisateur de ses différentes plateformes. Des efforts importants ont été déployés pour renforcer l'authentification et la gestion des sessions dans [federation](/repos/proconnect-gouv/federation), ainsi que pour améliorer la documentation et la gestion des erreurs dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) et [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).  L'outil [hyyypertool](/repos/proconnect-gouv/hyyypertool) a bénéficié d'une refonte de son interface utilisateur avec le passage à Tailwind CSS, améliorant ainsi l'expérience utilisateur. Enfin, [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring) a vu des améliorations significatives en termes d'observabilité et de robustesse.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la robustesse des services existants. Plusieurs dépôts ont bénéficié de corrections de bugs et d'ajouts de fonctionnalités, notamment concernant la gestion des identités, la surveillance des services et l'intégration avec des standards comme eIDAS. L'ajout d'une page de maintenance et l'amélioration de la documentation pour les partenaires sont également des points forts de cette période. Le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a connu une activité importante avec l'ajout de nouveaux validateurs et des améliorations de sécurité.
 
 ## Sécurité
-Plusieurs améliorations de sécurité ont été apportées :
-- Remplacement des cookies par des cookies de session dans [federation](/repos/proconnect-gouv/federation) pour renforcer la sécurité.
-- Correction d'un bug dans [hyyypertool](/repos/proconnect-gouv/hyyypertool) où un token API expiré affichait silencieusement une liste vide de responsables.
+Le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a bénéficié de mises à jour de dépendances corrigeant des vulnérabilités. Le dépôt [federation](/repos/proconnect-gouv/federation) a remplacé les cookies par des session cookies pour une meilleure sécurité.
 
 ## Autres changements notables
-- Refonte de l'interface utilisateur de [hyyypertool](/repos/proconnect-gouv/hyyypertool) avec le remplacement du framework DSFR par Tailwind CSS.
-- Ajout de points de terminaison de santé Kubernetes dans [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring) pour une meilleure intégration dans les environnements orchestrés.
-- Correction d'une fuite mémoire dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) en revenant à l'utilisation d'Axios pour la gestion des requêtes HTTP.
-- Extraction de la configuration de l'API Entreprise dans un provider dédié dans [federation](/repos/proconnect-gouv/federation) pour une meilleure modularité.
+- Le dépôt [federation](/repos/proconnect-gouv/federation) a implémenté un pattern ping/pong pour les healthchecks du broker et ajouté des routes `livez` et `readyz` pour une meilleure surveillance.
+- Le dépôt [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) a corrigé une fuite de mémoire et intégré des changements de version automatique via `changesets`.
+- Le dépôt [hyyypertool](/repos/proconnect-gouv/hyyypertool) a entamé le remplacement des composants DSFR par une nouvelle thématique Tailwind CSS.
+- Le dépôt [oidc2fer](/repos/proconnect-gouv/oidc2fer) a amélioré la configuration et la gestion des identifiants SIRET.
 
 ## Dépôts les plus actifs
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de l'authentification, ajout de bannière de maintenance et renforcement de la sécurité.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Refonte de l'interface utilisateur et corrections de bugs liés à la recherche et à la pagination.
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la stabilité, correction d'une fuite mémoire et optimisation de la gestion des dépendances.
-- [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring) : Amélioration de l'observabilité et de la robustesse avec l'ajout de points de terminaison de santé et l'intégration du tracing.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la robustesse, correction de fuites mémoire et ajout d'informations sur les effectifs des unités légales.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration de la surveillance, de la sécurité et de la gestion des erreurs.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Amélioration de l'interface utilisateur et correction de bugs.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et amélioration de la sécurité.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation et ajout d'une fonctionnalité de mode maintenance.

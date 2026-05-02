@@ -1,30 +1,28 @@
-# Synthèse d'activité : betagouv (du 22/04 au 22/05)
+# Synthèse d'activité : betagouv (du 26/04 au 03/05)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation betagouv a été particulièrement riche, avec des mises à jour significatives sur de nombreux dépôts. On observe une forte concentration sur l'amélioration de l'expérience utilisateur, notamment via des interfaces plus intuitives et des fonctionnalités de recherche optimisées (portail-rse, doctorat-gouv). La sécurité a également été un axe majeur, avec des corrections de vulnérabilités et des renforcements de l'authentification (api-subventions-asso, infomedicament).  De nombreux dépôts ont bénéficié de mises à jour techniques importantes, incluant des refactorings, des optimisations de performance et l'adoption de nouvelles technologies (dsfr-view-components, eva, sylvasan). L'intégration de nouvelles données et l'amélioration des processus de gestion des données sont également des thèmes récurrents (depots-sauvages, anssi-recommandations-cyber-data, diagbruit.beta.gouv.fr).
+L'activité récente de l'organisation betagouv est marquée par une forte concentration sur l'amélioration de la robustesse, la sécurité et l'expérience utilisateur de ses nombreux projets. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités et assurer la compatibilité avec les dernières versions de leurs environnements. Des efforts importants ont également été déployés pour optimiser les performances, notamment dans les projets *infomedicament*, *mon-suivi-justice* et *mle-front*.  De nouvelles fonctionnalités ont été implémentées dans *zacharie* (gestion des lésions, routage SVI) et *sylvasan* (gestion des réponses, authentification DSF-Ref), tandis que des améliorations significatives ont été apportées à la gestion du cycle de vie des données dans *euphrosyne*. Plusieurs projets ont également bénéficié d'une meilleure gestion des erreurs et d'une documentation plus complète.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
+Plusieurs dépôts ont reçu des mises à jour de sécurité :
 
-- Correction d'une vulnérabilité potentielle d'IDOR sur la soumission de notes avancées dans [infomedicament](/repos/betagouv/infomedicament).
-- Renforcement de la sécurité en désactivant le "device code grant" dans Passport dans [jeveuxaider-back](/repos/betagouv/jeveuxaider-back).
-- Correction d'une vulnérabilité (CVE) dans [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr).
+*   Correction d'une vulnérabilité potentielle d'IDOR sur la soumission de notes avancées dans [infomedicament](/repos/betagouv/infomedicament).
+*   Mise à jour de dépendances vulnérables dans [mes-aides-analytics](/repos/betagouv/mes-aides-analytics) et [mon-suivi-justice](/repos/betagouv/mon-suivi-justice).
+*   Correction d'une faille d'injection SQL dans [eva-serveur](/repos/betagouv/eva-serveur).
 
 ## Autres changements notables
-Plusieurs évolutions techniques majeures ont été déployées :
-
-- Mise à jour vers ViewComponent 4 dans [dsfr-view-components](/repos/betagouv/dsfr-view-components).
-- Refonte du modèle de calcul pour les travailleurs indépendants dans [mon-entreprise](/repos/betagouv/mon-entreprise).
-- Passage au crawler Playwright dans [agreste-crawler](/repos/betagouv/agreste-crawler).
-- Intégration de l'API Amethis dans [doctorat-gouv](/repos/betagouv/doctorat-gouv).
-- Mise en place d'une base de données réplica dans [jeveuxaider-back](/repos/betagouv/jeveuxaider-back).
-- Refactoring et optimisation des requêtes dans [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr).
+*   **Refactorings et migrations:** Refonte de l'architecture de [test-sme](/repos/betagouv/test-sme) et migration vers des versions plus récentes de Python et Django. Refactorisation de [maestro](/repos/betagouv/maestro) et [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng).
+*   **Améliorations d'infrastructure:** Passage à JDK 25 pour [metabase-scalingo](/repos/betagouv/metabase-scalingo) et modernisation de l'infrastructure de [euphrosyne-tools-api](/repos/betagouv/euphrosyne-tools-api).
+*   **Nouvelles fonctionnalités:** Implémentation de la gestion du cycle de vie des données dans [euphrosyne](/repos/betagouv/euphrosyne) et intégration de l'authentification DSF-Ref dans [sylvasan](/repos/betagouv/sylvasan).
 
 ## Dépôts les plus actifs
-- [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte majeure du modèle de calcul pour les travailleurs indépendants.
-- [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr) : Amélioration de l'expérience utilisateur et intégration de données scolaires.
-- [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Amélioration de la gestion des invitations, intégration France Travail et renforcement de la sécurité.
-- [anssi-recommandations-cyber-data](/repos/betagouv/anssi-recommandations-cyber-data) : Intégration de nouvelles sources de données et amélioration de la qualité des questions.
-- [euphrosyne](/repos/betagouv/euphrosyne) et [euphrosyne-tools-api](/repos/betagouv/euphrosyne-tools-api) : Gestion du cycle de vie des données de projet et améliorations techniques.
-- [portail-rse](/repos/betagouv/portail-rse) : Amélioration de la recherche et ajout du code postal des entreprises.
-- [infomedicament](/repos/betagouv/infomedicament) : Optimisation des performances et correction de vulnérabilités.
+*   [zacharie](/repos/betagouv/zacharie) : Améliorations significatives de l'interface utilisateur et de l'authentification.
+*   [test-sme](/repos/betagouv/test-sme) : Refonte de l'interface utilisateur et mise à jour des dépendances.
+*   [sylvasan](/repos/betagouv/sylvasan) : Ajout de nouvelles fonctionnalités pour la gestion des réponses et l'authentification.
+*   [infomedicament](/repos/betagouv/infomedicament) : Optimisation des performances et correction de failles de sécurité.
+*   [euphrosyne](/repos/betagouv/euphrosyne) : Implémentation de la gestion du cycle de vie des données.
+*   [eva-serveur](/repos/betagouv/eva-serveur) : Amélioration de la sécurité et de la gestion des droits d'accès.
+*   [euphrosyne-tools-api](/repos/betagouv/euphrosyne-tools-api) : Implémentation de la gestion du cycle de vie des données et amélioration de l'API.
+*   [maestro](/repos/betagouv/maestro) : Ajout de nouvelles fonctionnalités et amélioration de l'interface utilisateur.
+*   [france-chaleur-urbaine](/repos/betagouv/france-chaleur-urbaine) : Amélioration de l'expérience utilisateur et intégration de nouvelles fonctionnalités.
+*   [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) : Ajout de filtres et amélioration de l'affichage des données.

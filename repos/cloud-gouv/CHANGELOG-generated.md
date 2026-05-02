@@ -1,17 +1,22 @@
-# Synthèse d'activité : cloud-gouv (du 17/04 au 17/05)
+# Synthèse d'activité : cloud-gouv (du 16 avril 2026 au 29 avril 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la stabilité et de la flexibilité de ses outils. Les charts Helm ([common-helm-charts](/repos/cloud-gouv/common-helm-charts)) ont été enrichis de nouvelles fonctionnalités, notamment la gestion de secrets externes et la personnalisation des chemins d'accès.  Des améliorations significatives ont également été apportées à Securix ([securix](/repos/cloud-gouv/securix)) pour le support matériel et la simplification des mises à jour. Le portail ([portail](/repos/cloud-gouv/portail)) a bénéficié de corrections de bugs et de l'ajout de tests pour améliorer sa robustesse.
+L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, de la robustesse et de la flexibilité de ses outils et infrastructures. Des efforts significatifs ont été déployés pour corriger des vulnérabilités et améliorer la gestion des secrets, notamment avec [openbao](/repos/cloud-gouv/openbao). Les charts Helm ([common-helm-charts](/repos/cloud-gouv/common-helm-charts) et [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts)) ont été mis à jour pour offrir plus de contrôle sur la configuration et améliorer l'intégration avec des outils externes.  Des améliorations de l'expérience utilisateur ont également été apportées à [securix](/repos/cloud-gouv/securix), notamment pour la gestion des clés YubiKey.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Plusieurs correctifs de sécurité ont été déployés :
+- Correction de vulnérabilités dans la bibliothèque `go.opentelemetry.io/otel/sdk` dans [openbao](/repos/cloud-gouv/openbao).
+- Mise à jour vers Go 1.25.7 pour corriger une vulnérabilité (CVE-2025-68121 / GO-2026-4337) dans [openbao](/repos/cloud-gouv/openbao).
+- Amélioration de la sécurité des nœuds worker via l'injection de règles de sécurité (Security Groups) dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
 
 ## Autres changements notables
-- Refactorisation de la configuration dans [securix](/repos/cloud-gouv/securix) pour une meilleure lisibilité et cohérence, utilisant `mkDefault` et `mkForce`.
-- Suppression du module Openstack de [securix](/repos/cloud-gouv/securix).
-- Initialisation de la version 1 des règles d'accès (ACL) dans [portail](/repos/cloud-gouv/portail).
+- [portail](/repos/cloud-gouv/portail) a bénéficié d'améliorations du serveur RPC et de l'ajout de tests d'intégration.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) a vu des améliorations significatives dans la gestion des CIDR, des volumes snapshot et des secrets externes.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) a été mis à jour pour inclure l'outil `kustomize` dans l'image `k8s-tools`.
 
 ## Dépôts les plus actifs
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Amélioration des charts Helm avec de nouvelles fonctionnalités et corrections de bugs.
-- [securix](/repos/cloud-gouv/securix) : Ajout de support matériel et amélioration de l'outil de mise à jour.
-- [portail](/repos/cloud-gouv/portail) : Stabilisation et ajout de tests pour le proxy upstream Tinyproxy.
+- [securix](/repos/cloud-gouv/securix) : Amélioration de l'expérience utilisateur et de la gestion des clés YubiKey.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et améliorations de la sécurité liées à la gestion des baux et des secrets.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations de la configuration et de la flexibilité des clusters Kubernetes.
+- [portail](/repos/cloud-gouv/portail) : Amélioration de la robustesse et des fonctionnalités du serveur RPC.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de fonctionnalités et corrections de bugs pour faciliter le déploiement d'applications.

@@ -1,17 +1,32 @@
-# Synthèse d'activité : SocialGouv (du 10/04 au 17/04)
+# Synthèse d'activité : SocialGouv (du 22/04 au 22/05)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts de SocialGouv. On observe des efforts importants pour améliorer l'expérience utilisateur, notamment sur [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) avec l'ajout d'actualités et l'amélioration de la recherche, et sur [egapro](/repos/SocialGouv/egapro) avec le pré-remplissage des déclarations et une interface utilisateur améliorée.  Des mises à jour de données régulières ont également été effectuées sur [legi-data](/repos/SocialGouv/legi-data), [fiches-vdd](/repos/SocialGouv/fiches-vdd) et [fiches-travail-data](/repos/SocialGouv/fiches-travail-data) pour garantir l'exactitude des informations. Enfin, [srdt](/repos/SocialGouv/srdt) a bénéficié d'améliorations significatives en termes de performance et de fonctionnalités, avec l'ajout d'un tableau de bord public.
+L'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la qualité des données, la sécurité et l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour régulières de leurs données (legi-data, fiches-travail-data, fiches-vdd), assurant ainsi la pertinence des informations fournies. Des efforts significatifs ont également été déployés pour renforcer la sécurité de plusieurs applications (revu, archifiltre-mails, archifiltre-docs). Enfin, de nombreuses améliorations ont été apportées aux interfaces utilisateur (egapro, jardinmental, code-du-travail-numerique) et à l'automatisation des processus (token-bureau, repo-falcon, infra-apps). L'accent est mis sur la modernisation des outils et l'intégration de nouvelles technologies comme pnpm et l'utilisation de LLM.
 
 ## Sécurité
-[cdtn-admin](/repos/SocialGouv/cdtn-admin) a bénéficié d'améliorations de la sécurité, notamment par le renforcement des règles de sécurité côté backend dans [domifa](/repos/SocialGouv/domifa).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+- Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
+- Correction d'une vulnérabilité et ajout de suivi d'événements dans [archifiltre-docs](/repos/SocialGouv/archifiltre-docs).
+- Migration vers pnpm dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) pour corriger des vulnérabilités.
+- Amélioration de la sécurité et correction de vulnérabilités dans [claw-code-go](/repos/SocialGouv/claw-code-go).
 
 ## Autres changements notables
-Plusieurs dépôts ont connu des évolutions techniques majeures. [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) a migré ses tests E2E vers Playwright. [egapro](/repos/SocialGouv/egapro) a mis en place un cache Redis et une passerelle API, et a refactorisé sa base de données. [smart-allow](/repos/SocialGouv/smart-allow) a subi une refonte architecturale majeure avec le portage du classificateur en Go et l'adoption de nouveaux outils de build. [collecte-pro](/repos/SocialGouv/collecte-pro) a migré vers des versions plus récentes de Python et Django.
+Plusieurs évolutions techniques majeures ont été réalisées :
+
+- Migration vers pnpm dans plusieurs dépôts (revu, token-bureau, nos1000jours-blues-epds-pro, smart-allow, matomo-next) pour améliorer la gestion des dépendances.
+- Intégration d'Elasticsearch dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) pour améliorer la recherche.
+- Refonte de l'interface utilisateur de [egapro](/repos/SocialGouv/egapro) avec le DSFR.
+- Mise en place d'un système de journalisation avec OpenTelemetry dans [claw-code-go](/repos/SocialGouv/claw-code-go).
+- Migration vers Python 3.14 et Django 5.2.13 dans [collecte-pro](/repos/SocialGouv/collecte-pro).
+- Ajout d'un proxy de suivi côté serveur dans [matomo-next](/repos/SocialGouv/matomo-next) pour contourner les bloqueurs de publicités.
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration significative du processus de renouvellement d'agrément avec corrections et nouvelles fonctionnalités.
-*   [egapro](/repos/SocialGouv/egapro) : Ajout de nouvelles fonctionnalités pour les déclarations et amélioration de l'interface utilisateur.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de la gestion des actualités et amélioration de la recherche.
-*   [srdt](/repos/SocialGouv/srdt) : Amélioration des performances, ajout d'un tableau de bord public et corrections de bugs.
-*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Amélioration de l'expérience utilisateur avec l'ajout d'actualités et l'amélioration de la recherche.
+- [vao](/repos/SocialGouv/vao) : Amélioration de la gestion des agréments, ajout de mails de confirmation et d'accessibilité RGAA.
+- [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs liés à la migration vers pnpm et améliorations de la gestion des permissions.
+- [srdt](/repos/SocialGouv/srdt) : Optimisation des performances et ajout de nouvelles fonctionnalités à l'assistant virtuel.
+- [questions-ecrites](/repos/SocialGouv/questions-ecrites) : Intégration des questions écrites des Assemblées Nationale et du Sénat et extraction des réponses.
+- [infra-apps](/repos/SocialGouv/infra-apps) : Déploiement d'Elasticsearch, Kuik et Huginn et amélioration de l'observabilité.
+- [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de la gestion des actualités et migration vers Elasticsearch.
+- [egapro](/repos/SocialGouv/egapro) : Refonte de l'interface utilisateur et ajout de fonctionnalités d'administration.
+- [git-ai-trace](/repos/SocialGouv/git-ai-trace) : Initialisation du projet et ajout des premiers hooks Git pour le suivi de la collaboration IA/humain.
