@@ -27,10 +27,20 @@
 │       └── site-https-deploy-staging.yaml
 ├── .gitignore
 ├── AGENTS.md
+├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
 ├── bin
+│   ├── deploy-sandbox
+│   ├── sentry
+│   │   ├── README.md
+│   │   ├── events
+│   │   ├── events_lookup_legacy.rb
+│   │   ├── export
+│   │   ├── issue
+│   │   ├── issues
+│   │   └── sentry_client.rb
 │   ├── setup_worktree.sh
 │   └── test
 ├── commons
@@ -1326,6 +1336,7 @@
 │   │   │   │   │   └── france_connectable.rb
 │   │   │   │   ├── cacheable.rb
 │   │   │   │   ├── can_log_requests_info_for_debugging.rb
+│   │   │   │   ├── handle_editor_delegation.rb
 │   │   │   │   ├── handle_ping_providers.rb
 │   │   │   │   ├── handle_tokens.rb
 │   │   │   │   ├── organizers_methods_helpers.rb
@@ -1339,6 +1350,7 @@
 │   │   │   ├── abstract_generic_provider_error.rb
 │   │   │   ├── abstract_specific_provider_error.rb
 │   │   │   ├── acoss_error.rb
+│   │   │   ├── ambiguous_delegation_error.rb
 │   │   │   ├── application_error.rb
 │   │   │   ├── bad_file_from_provider_error.rb
 │   │   │   ├── bad_request_error.rb
@@ -1841,6 +1853,9 @@
 │   │   │   ├── authorization_request.rb
 │   │   │   ├── authorization_request_security_settings.rb
 │   │   │   ├── bundled_data.rb
+│   │   │   ├── editor.rb
+│   │   │   ├── editor_delegation.rb
+│   │   │   ├── editor_token.rb
 │   │   │   ├── resource.rb
 │   │   │   ├── rna_id.rb
 │   │   │   ├── scope.rb
@@ -2240,7 +2255,11 @@
 │   │   │   ├── api_entreprise_swagger_data.rb
 │   │   │   ├── app_config.rb
 │   │   │   ├── data_encryptor.rb
+│   │   │   ├── editor_delegation_resolver.rb
 │   │   │   ├── encrypted_cache.rb
+│   │   │   ├── error_registry.rb
+│   │   │   ├── errors
+│   │   │   │   └── http_status_for_kind.rb
 │   │   │   ├── errors_backend.rb
 │   │   │   ├── extract_provider_from_path.rb
 │   │   │   ├── generate_code_sample_from_path.rb
@@ -2320,14 +2339,6 @@
 │   │   ├── rate_limiting.rb
 │   │   ├── rspec
 │   │   ├── seeds.sh
-│   │   ├── sentry
-│   │   │   ├── README.md
-│   │   │   ├── events
-│   │   │   ├── events_lookup_legacy.rb
-│   │   │   ├── export
-│   │   │   ├── issue
-│   │   │   ├── issues
-│   │   │   └── sentry_client.rb
 │   │   ├── test_endpoints.rb
 │   │   ├── test_pings.rb
 │   │   └── test_swagger.sh
@@ -2452,6 +2463,7 @@
 │   │   │   ├── gestion_des_erreurs.md
 │   │   │   ├── gestion_des_scopes.md
 │   │   │   ├── integration_nouvelle_api.md
+│   │   │   ├── jeton_editeur_et_delegations.md
 │   │   │   └── utilisation_et_edition_credentials.md
 │   │   ├── fonctionnement_staging.md
 │   │   ├── liste_whitelisting.md
@@ -3440,6 +3452,8 @@
 │   │   │   └── transliterator_spec.rb
 │   │   ├── models
 │   │   │   ├── authorization_request_security_settings_spec.rb
+│   │   │   ├── editor_delegation_spec.rb
+│   │   │   ├── editor_token_spec.rb
 │   │   │   ├── resource_spec.rb
 │   │   │   ├── rna_id_spec.rb
 │   │   │   ├── scope_spec.rb
@@ -3818,6 +3832,7 @@
 │   │   │   ├── api_particulier_tracking_encrypted_params_spec.rb
 │   │   │   ├── cors_spec.rb
 │   │   │   ├── custom_rate_limit_spec.rb
+│   │   │   ├── editor_delegation_spec.rb
 │   │   │   ├── ip_whitelist_spec.rb
 │   │   │   ├── mockable_in_staging_spec.rb
 │   │   │   ├── not_found_page_spec.rb
@@ -3891,7 +3906,9 @@
 │   │   │           └── base_serializer_spec.rb
 │   │   ├── services
 │   │   │   ├── data_encryptor_spec.rb
+│   │   │   ├── editor_delegation_resolver_spec.rb
 │   │   │   ├── encrypted_cache_spec.rb
+│   │   │   ├── error_registry_spec.rb
 │   │   │   ├── errors_backend_spec.rb
 │   │   │   ├── extract_provider_from_path_spec.rb
 │   │   │   ├── generate_code_sample_from_path_spec.rb
@@ -3989,7 +4006,8 @@
 │   │   │   │   ├── retriever_organizer.rb
 │   │   │   │   └── route.rb
 │   │   │   ├── token_factory.rb
-│   │   │   └── token_helpers.rb
+│   │   │   ├── token_helpers.rb
+│   │   │   └── validate_response_emission_guard.rb
 │   │   ├── swagger_helper.rb
 │   │   ├── tools
 │   │   │   ├── dgfip
@@ -4852,6 +4870,7 @@
     │   │   ├── admin
     │   │   │   ├── api_requests_controller.rb
     │   │   │   ├── audit_notifications_controller.rb
+    │   │   │   ├── editor_tokens_controller.rb
     │   │   │   ├── editors_controller.rb
     │   │   │   ├── provider_dashboards_controller.rb
     │   │   │   ├── tokens
@@ -5054,10 +5073,12 @@
     │   │   ├── authorization_request_security_settings.rb
     │   │   ├── concerns
     │   │   │   ├── .keep
-    │   │   │   └── abstract_api_class.rb
+    │   │   │   ├── abstract_api_class.rb
+    │   │   │   └── jwt_token_lifecycle.rb
     │   │   ├── documentation_searchable_chunk.rb
     │   │   ├── editor.rb
     │   │   ├── editor_delegation.rb
+    │   │   ├── editor_token.rb
     │   │   ├── entreprise.rb
     │   │   ├── magic_link.rb
     │   │   ├── organization.rb
@@ -5628,7 +5649,9 @@
     │   │   ├── 20260305000001_add_index_on_authorization_requests_scopes.rb
     │   │   ├── 20260305100000_create_editor_delegations.rb
     │   │   ├── 20260305100001_add_delegations_enabled_to_editors.rb
-    │   │   └── 20260305100002_validate_editor_delegations_foreign_keys.rb
+    │   │   ├── 20260305100002_validate_editor_delegations_foreign_keys.rb
+    │   │   ├── 20260318100000_create_editor_tokens.rb
+    │   │   └── 20260318100001_validate_editor_tokens_foreign_keys.rb
     │   ├── schema.rb
     │   └── seeds.rb
     ├── docker
@@ -6311,6 +6334,7 @@
     │   │   ├── datapass_webhooks.rb
     │   │   ├── datapass_webhooks_v2.rb
     │   │   ├── editor_delegations.rb
+    │   │   ├── editor_tokens.rb
     │   │   ├── editors.rb
     │   │   ├── entreprises.rb
     │   │   ├── magic_links.rb
@@ -6478,6 +6502,7 @@
     │   │   ├── documentation_searchable_chunk_spec.rb
     │   │   ├── editor_delegation_spec.rb
     │   │   ├── editor_spec.rb
+    │   │   ├── editor_token_spec.rb
     │   │   ├── entreprise_spec.rb
     │   │   ├── magic_link_spec.rb
     │   │   ├── organization_spec.rb
@@ -6564,4 +6589,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1351 directories, 5484 files
+1352 directories, 5508 files

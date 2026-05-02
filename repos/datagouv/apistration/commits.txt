@@ -1,3 +1,20 @@
+2026-04-30T14:58:12+02:00 - ab95c0f1 - Delmaire Loïc : Merge pull request #74 from datagouv/features/enhance-errors-management
+2026-04-30T14:47:40+02:00 - 7185313f - Delmaire Loïc : Make ValidateResponseEmissionGuard easier to read
+2026-04-30T14:47:40+02:00 - 66d3c623 - Delmaire Loïc : Hide universal 502 generics from the fiche errors section
+2026-04-30T14:47:39+02:00 - efeb60b3 - Delmaire Loïc : Regenerate swagger after URSSAF pilot and 502 baseline expansion
+2026-04-30T14:46:24+02:00 - d40277c2 - Delmaire Loïc : Auto-injected emission guard for ValidateResponse specs
+2026-04-30T14:46:24+02:00 - b049f91f - Delmaire Loïc : Wire URSSAF pilot through the registry
+2026-04-30T14:46:18+02:00 - eaace21b - Delmaire Loïc : Introduce ErrorRegistry + raises DSL on ApplicationInteractor
+2026-04-30T14:46:18+02:00 - acd6f61a - Delmaire Loïc : Extend 502 baseline and feed it from ErrorRegistry
+2026-04-30T13:59:22+02:00 - 2cc046ca - Delmaire Loïc : Extract HTTP status mapping into Errors::HTTPStatusForKind
+2026-04-30T13:47:56+02:00 - 84200a2c - Samuel-Zacharie FAURE : Merge pull request #78 from datagouv/fix/data-subvention-authenticate-nil-jwt
+2026-04-30T13:29:18+02:00 - fd0895a2 - Delmaire Loïc : Document English commit message convention in root CLAUDE.md
+2026-04-30T13:29:09+02:00 - 4ca9edb3 - Delmaire Loïc : Fix NoMethodError when DataSubvention auth returns JSON without user/jwt
+2026-04-30T13:11:57+02:00 - ca49ce72 - Samuel-Zacharie FAURE : Merge pull request #75 from datagouv/chore/deploy-sandbox
+2026-04-30T13:11:03+02:00 - f4105dc0 - Samuel-Zacharie FAURE : Merge pull request #76 from datagouv/chore/sentry-cli-monorepo
+2026-04-30T11:11:50+02:00 - 70118fe9 - Delmaire Loïc : Generalize sentry CLI to siade-backend and siade-site
+2026-04-30T10:16:03+02:00 - 485b3ed9 - Delmaire Loïc : Introduce bin/deploy-sandbox
+2026-04-30T09:52:18+02:00 - 2f2d545e - Delmaire Loïc : Merge pull request #31 from datagouv/feat/editor-delegation-token
 2026-04-28T17:38:57+02:00 - b96c7219 - Samuel-Zacharie FAURE : Merge pull request #72 from datagouv/enhancements/doc-ping-routes
 2026-04-28T17:35:59+02:00 - 1dc9effe - Delmaire Loïc : Merge pull request #73 from datagouv/chore/budget-reporting-skill
 2026-04-28T17:10:35+02:00 - 0b62c099 - Delmaire Loïc : Add budget-reporting skill
@@ -6,10 +23,17 @@
 2026-04-28T09:13:22+02:00 - 7aff1e1b - Delmaire Loïc : Merge pull request #71 from datagouv/chore/agents
 2026-04-28T09:08:48+02:00 - d5c95a36 - Delmaire Loïc : Merge pull request #69 from datagouv/enhancements/api-p-cnous-statut-etudiant-boursier-campagne-year
 2026-04-28T08:58:26+02:00 - c24956ed - Delmaire Loïc : Make this repo more agentic
+2026-04-27T18:29:47+02:00 - 55520b76 - Delmaire Loïc : Site: Seed an EditorToken for UMAD Corp
 2026-04-27T18:02:47+02:00 - 5f67d847 - Delmaire Loïc : Add agent-vm sandbox setup for site/, siade/ and mocks/
 2026-04-27T16:34:01+02:00 - 9cbd29ab - Delmaire Loïc : Expose `campaignYear` parameter on CNOUS student scholarship API
 2026-04-27T14:49:26+02:00 - ab823ef9 - Samuel-Zacharie FAURE : Merge pull request #59 from datagouv/fix/refresh_mocks_when_deploy
 2026-04-27T14:07:50+02:00 - 85d279d2 - Samuelfaure : Feat: redeploy SIADE API when mocks change
+2026-04-27T13:45:00+02:00 - a6c01e90 - Delmaire Loïc : API: Support editor tokens in INPI proxy + documentation
+2026-04-27T13:45:00+02:00 - 52e41c95 - Delmaire Loïc : API: Resolve editor delegation in UserResolutionMiddleware
+2026-04-27T13:45:00+02:00 - 4522ba71 - Delmaire Loïc : API: Rate limit by authorization request instead of JWT signature
+2026-04-27T13:45:00+02:00 - 3f4b3a14 - Delmaire Loïc : API: Add editor delegation models and JwtUser enrichment
+2026-04-27T13:45:00+02:00 - 28d1f81d - Delmaire Loïc : Ban association tests in model specs
+2026-04-27T13:44:59+02:00 - cbafdec8 - Delmaire Loïc : Site: Add EditorToken model with lifecycle
 2026-04-27T13:03:36+02:00 - 4cc5cb2b - Samuelfaure : Feat: use mocks in local
 2026-04-27T12:51:31+02:00 - 34f2c936 - Samuel-Zacharie FAURE : Merge pull request #58 from datagouv/feature/api-6222-liens-faux-dans-la-doc-vers-ancienne-api-siren
 2026-04-27T12:48:26+02:00 - 1dc7f37c - Samuelfaure : ci: scope test workflows to their own directories
