@@ -1,25 +1,30 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Application cliente Matrix de nouvelle génération, réécrite avec le SDK Matrix Rust et utilisant Jetpack Compose pour l'interface utilisateur.",
+  "description": "Application cliente Matrix de nouvelle génération, réécrite avec le SDK Matrix Rust et utilisant Jetpack Compose pour l'interface utilisateur. Elle vise à remplacer l'ancienne application Element Classic.",
   "language": "Kotlin",
   "features": [
+    "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Authentification & Accès"
+    "Gestion des espaces",
+    "Gestion des messages",
+    "Appels audio"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix Rust SDK",
-    "Jetpack Compose"
+    "Jetpack Compose",
+    "Appyx"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
+    "Android",
     "Kotlin",
-    "Tests"
+    "Jetpack Compose",
+    "Rust"
   ],
   "auth": {
     "methods": [
@@ -28,16 +33,17 @@
     ]
   },
   "tests": [
-    "Compose tests",
-    "Maestro tests"
+    "Unit tests",
+    "UI tests",
+    "Integration tests"
   ],
   "workflows": [
     "build",
     "SonarCloud analysis"
   ],
-  "lastActivity": "2026-04-24T17:12:13+02:00",
+  "lastActivity": "2026-04-30T15:24:33+02:00",
   "status": "active",
-  "license": null,
+  "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -47,9 +53,10 @@
   },
   "tags": [
     "Sécurité & Conformité",
-    "Données & Open Data",
-    "JavaScript",
+    "Android",
     "Kotlin",
-    "Tests & QA"
+    "Matrix",
+    "Messagerie",
+    "Open Source"
   ]
 }
