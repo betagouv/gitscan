@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.15.0] - 2026-04-30
+
 ### Added
 
 - ✨(backend) add metadata collection of VAD, connection and chat events
@@ -22,6 +24,8 @@ and this project adheres to
 - 🐛(summary) support webm #1290
 - ⬆️(backend) bump django-lasuite to v0.0.26
 - 🩹(frontend) use a more standard (quality) rating scale
+- 🩹(frontend) fix access control for screen recording feature flag
+- 🩹(frontend) fix reconnect loop caused by connectionObserverStore updates
 
 ## [1.14.0] - 2026-04-16
 
