@@ -45,6 +45,7 @@
 │   │   ├── form_submit_controller.js
 │   │   ├── form_upload_controller.js
 │   │   ├── hidden_select_controller.js
+│   │   ├── location_preview_map_controller.js
 │   │   ├── modal_close_controller.js
 │   │   ├── notice_controller.js
 │   │   ├── polygon_map_controller.js
@@ -68,6 +69,7 @@
 │   │   └── util.js
 │   ├── lib.js
 │   ├── matomo.js
+│   ├── measure_type_styles.js
 │   └── styles
 │       ├── app.scss
 │       ├── components
@@ -86,6 +88,7 @@
 │       │   ├── landing-diagram.css
 │       │   ├── landing.css
 │       │   ├── list.css
+│       │   ├── location-preview-map.scss
 │       │   ├── map-filter-icons.css
 │       │   ├── modal.css
 │       │   ├── notification-dot.css
@@ -549,6 +552,7 @@
 │   │   │   ├── EmailSendingException.php
 │   │   │   ├── EmptyRoadBanIdException.php
 │   │   │   ├── EndAbscissaOutOfRangeException.php
+│   │   │   ├── GeocodingAddressNotFoundException.php
 │   │   │   ├── GeocodingFailureException.php
 │   │   │   ├── IntersectionGeocodingFailureException.php
 │   │   │   ├── LaneGeocodingFailureException.php
@@ -1180,6 +1184,7 @@
 │   │   │   │   │   ├── GetCityCompletionFragmentController.php
 │   │   │   │   │   ├── GetGeneralInfoController.php
 │   │   │   │   │   ├── GetIntersectionOptionsFragmentController.php
+│   │   │   │   │   ├── GetLocationGeometryController.php
 │   │   │   │   │   ├── GetMeasureController.php
 │   │   │   │   │   ├── GetNamedStreetCompletionFragmentController.php
 │   │   │   │   │   ├── GetNumberedRoadCompletionFragmentController.php
@@ -2051,10 +2056,13 @@
 │   │       ├── CRM
 │   │       │   └── GristClientTest.php
 │   │       ├── Controller
-│   │       │   └── Api
-│   │       │       ├── GetNearbyStreetsControllerTest.php
-│   │       │       └── Regulations
-│   │       │           └── GetRegulationsControllerTest.php
+│   │       │   ├── Api
+│   │       │   │   ├── GetNearbyStreetsControllerTest.php
+│   │       │   │   └── Regulations
+│   │       │   │       └── GetRegulationsControllerTest.php
+│   │       │   └── Regulation
+│   │       │       └── Fragments
+│   │       │           └── GetLocationGeometryControllerTest.php
 │   │       ├── Data
 │   │       │   └── StorageArea
 │   │       │       └── StorageAreaMigrationGeneratorTest.php
@@ -2159,4 +2167,4 @@
 │   ├── messages.fr.xlf
 │   └── validators.fr.xlf
 └── webpack.config.js
-428 directories, 1887 files
+430 directories, 1893 files
