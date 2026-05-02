@@ -1,13 +1,13 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 29 avril 2026)
+## Changelog : fiches-travail-data (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières des données fournies par le projet. Ces mises à jour, qui se produisent quotidiennement, permettent de maintenir à jour les informations disponibles via l'API et les fichiers JSON. Il n'y a pas eu de changements techniques ou fonctionnels autres que ces mises à jour de données.
+Ce projet a connu une activité soutenue au cours des 30 derniers jours, principalement axée sur la mise à jour régulière des données. Chaque jour, une nouvelle version des données a été publiée, apportant des modifications et des ajouts au jeu de données principal.
 
 ### Évolutions fonctionnelles
-- Mises à jour quotidiennes des données : Les données ont été mises à jour quotidiennement du 1er avril 2026 au 29 avril 2026, incluant les dates suivantes : 2026-04-01, 2026-04-02, 2026-04-03, 2026-04-04, 2026-04-05, 2026-04-06, 2026-04-07, 2026-04-08, 2026-04-09, 2026-04-10, 2026-04-11, 2026-04-12, 2026-04-13, 2026-04-14, 2026-04-15, 2026-04-16, 2026-04-17, 2026-04-18, 2026-04-19, 2026-04-20, 2026-04-22, 2026-04-23, 2026-04-24, 2026-04-25, 2026-04-26, 2026-04-27, 2026-04-28 et 2026-04-29.
+- Mise à jour quotidienne des données : De nouvelles données ont été intégrées quotidiennement, du 2 avril 2026 au 1 mai 2026, améliorant ainsi la couverture et la pertinence des informations disponibles. Chaque mise à jour est identifiée par une date spécifique (ex: 20260422_2146 update).
 
 ### Évolutions techniques
-- Aucune évolution technique n'a été apportée durant cette période.
+- Aucune évolution technique significative n'a été apportée durant cette période. L'activité s'est concentrée sur la mise à jour des données.
 
 ### Autres changements
-- Aucune autre modification n'a été effectuée.
+- Aucun autre changement significatif n'a été identifié.
