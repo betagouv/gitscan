@@ -1,49 +1,45 @@
-## Changelog : zacharie (30 derniers jours, au 29 avril 2026)
+## Changelog : zacharie (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application Zacharie a bénéficié d'une série d'améliorations axées sur l'expérience utilisateur, notamment dans les flux de création et de consultation des fiches, ainsi que sur la sécurité et la gestion des accès. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application. L'authentification via token a été implémentée pour les appels API.
+Ce mois-ci, l'application Zacharie a bénéficié d'une série d'améliorations axées sur l'expérience utilisateur, notamment au niveau de la navigation, de l'affichage des données et de la gestion des fiches. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application. Des travaux ont été réalisés sur les routes et l'authentification pour une meilleure gestion des accès.
 
 ### Évolutions fonctionnelles
-- Ajout d'une liste de lésions pour une meilleure description des animaux. [#331](https://github.com/betagouv/zacharie/issues/331)
-- Implémentation d'un token bearer pour l'authentification des appels API. [#336](https://github.com/betagouv/zacharie/issues/336)
-- Amélioration de l'interface utilisateur pour la consultation des carcasses, même avec un seul groupe. [#287](https://github.com/betagouv/zacharie/issues/287)
-- Ajout d'en-têtes spécifiques pour les interfaces SVI et FEI. [#323](https://github.com/betagouv/zacharie/issues/323), [#319](https://github.com/betagouv/zacharie/issues/319)
-- Amélioration du flux de création de fiches. [#281](https://github.com/betagouv/zacharie/issues/281)
+- Ajout de la liste des lésions sur les fiches. [#331](https://github.com/betagouv/zacharie/issues/331)
+- Amélioration de l'affichage des en-têtes des fiches chasseur et FEI/ETG. [#323](https://github.com/betagouv/zacharie/issues/323), [#319](https://github.com/betagouv/zacharie/issues/319), [#325](https://github.com/betagouv/zacharie/issues/325)
 - Ajout d'un bouton de connexion pour les utilisateurs administrateurs.
-- Ajout de la possibilité de se connecter en tant qu'utilisateur SVI. [#296](https://github.com/betagouv/zacharie/issues/296)
-- Amélioration de l'interface utilisateur pour l'affichage des fiches envoyées et des erreurs d'examinateur. [#306](https://github.com/betagouv/zacharie/issues/306), [#305](https://github.com/betagouv/zacharie/issues/305), [#301](https://github.com/betagouv/zacharie/issues/301)
-- Correction de l'affichage de la barre latérale pour les chasseurs. [#324](https://github.com/betagouv/zacharie/issues/324)
-- Correction du calcul du BPH. [#326](https://github.com/betagouv/zacharie/issues/326)
-- Correction du score BPH. [#318](https://github.com/betagouv/zacharie/issues/318)
+- Implémentation d'un nouveau routage pour les chasseurs et administrateurs, incluant la gestion de la connexion.
+- Possibilité d'afficher les carcasses même si elles appartiennent à un seul groupe. [#287](https://github.com/betagouv/zacharie/issues/287)
+- Ajout d'un routage pour les SVI. [#296](https://github.com/betagouv/zacharie/issues/296)
+- Amélioration de l'affichage des fiches envoyées. [#306](https://github.com/betagouv/zacharie/issues/306)
+- Correction de l'affichage des fiches examinateur. [#305](https://github.com/betagouv/zacharie/issues/305)
+- Correction de l'affichage des fiches. [#301](https://github.com/betagouv/zacharie/issues/301)
+- Amélioration de l'interface utilisateur pour la création de fiches. [#311](https://github.com/betagouv/zacharie/issues/311)
+- Amélioration du layout de l'administration. [#313](https://github.com/betagouv/zacharie/issues/313)
+- Amélioration de l'interface utilisateur pour la liste des fiches. [#302](https://github.com/betagouv/zacharie/issues/302)
 
 ### Évolutions techniques
-- Refonte des routeurs pour les chasseurs et l'administration, incluant la connexion.
-- Mise en place d'un nouveau routeur collecteur.
-- Amélioration de la gestion des erreurs et des codes de statut HTTP (correction de 404 et 500). [#316](https://github.com/betagouv/zacharie/issues/316)
+- Implémentation d'un système d'authentification avec un token Bearer pour les appels API. [#336](https://github.com/betagouv/zacharie/issues/336)
+- Refonte des routes de l'application.
 - Optimisation des images.
-- Ajout de tests E2E. [#315](https://github.com/betagouv/zacharie/issues/315)
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité. [#280](https://github.com/betagouv/zacharie/issues/280)
-- Amélioration du script de build. [#300](https://github.com/betagouv/zacharie/issues/300)
-- Refactoring des routeurs. [#295](https://github.com/betagouv/zacharie/issues/295)
-- Utilisation de `npm ci` pour une installation plus fiable des dépendances. [#285](https://github.com/betagouv/zacharie/issues/285)
-- Ajout de `prettier` pour formater le code. [#320](https://github.com/betagouv/zacharie/issues/320)
+- Mise en place de tests E2E plus complets. [#315](https://github.com/betagouv/zacharie/issues/315)
+- Utilisation de `npm ci` pour une installation plus propre et reproductible des dépendances. [#285](https://github.com/betagouv/zacharie/issues/285)
+- Correction de la pagination des carcasses pour éviter une limite de 100 lignes. [#329](https://github.com/betagouv/zacharie/issues/329)
+- Amélioration de la gestion des erreurs.
+- Refactoring des routes. [#295](https://github.com/betagouv/zacharie/issues/295)
 
 ### Autres changements
-- Correction de divers problèmes d'interface utilisateur (UI) et d'expérience utilisateur (UX).
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- Correction de divers bugs d'interface utilisateur (wording, défilement, etc.). [#345](https://github.com/betagouv/zacharie/issues/345), [#344](https://github.com/betagouv/zacharie/issues/344), [#342](https://github.com/betagouv/zacharie/issues/342), [#335](https://github.com/betagouv/zacharie/issues/335), [#338](https://github.com/betagouv/zacharie/issues/338), [#337](https://github.com/betagouv/zacharie/issues/337), [#317](https://github.com/betagouv/zacharie/issues/317), [#316](https://github.com/betagouv/zacharie/issues/316), [#284](https://github.com/betagouv/zacharie/issues/284), [#292](https://github.com/betagouv/zacharie/issues/292), [#293](https://github.com/betagouv/zacharie/issues/293), [#291](https://github.com/betagouv/zacharie/issues/291), [#286](https://github.com/betagouv/zacharie/issues/286)
+- Correction de la déconnexion. [#341](https://github.com/betagouv/zacharie/issues/341)
+- Correction de la cloture automatique des circuits courts. [#343](https://github.com/betagouv/zacharie/issues/343)
+- Mise à jour de la documentation E2E.
+- Nettoyage des logs.
 - Suppression d'une image volumineuse.
-- Désactivation de Claude.
-- Correction du chemin initial pour l'application Expo.
-- Ajout d'un fix pour le chemin initial.
-- Ajout d'un fix pour l'URL initiale d'Expo.
-- Correction d'un problème d'enum BPH.
-- Ajout d'un fix pour le scroll-to-top de la navbar.
-- Correction du wording.
-- Correction de la modification de la raison sociale.
-- Ajout de security headers. [#278](https://github.com/betagouv/zacharie/issues/278)
-- Correction du filtre multiselect. [#292](https://github.com/betagouv/zacharie/issues/292)
-- Correction du filtre responsive. [#289](https://github.com/betagouv/zacharie/issues/289)
-- Correction du flow d'ajout de carcasse. [#284](https://github.com/betagouv/zacharie/issues/284)
-- Correction de l'invitation. [#309](https://github.com/betagouv/zacharie/issues/309)
-- Ajout de logs plus clairs.
-- Correction du chemin vers /fei-carcasse.
+- Correction de l'initialisation du chemin dans l'application Expo.
+- Ajout de la gestion hors ligne avec Expo. [#327](https://github.com/betagouv/zacharie/issues/327)
+- Correction de messages d'erreur.
+- Correction du chargement initial dans Expo.
+- Correction de l'URL initiale dans Expo.
+- Suppression de Claude.
+- Correction du calcul du BPH. [#326](https://github.com/betagouv/zacharie/issues/326)
+- Ajout de prettier pour formater le code. [#320](https://github.com/betagouv/zacharie/issues/320)
+- Correction du chemin vers les carcasses.
