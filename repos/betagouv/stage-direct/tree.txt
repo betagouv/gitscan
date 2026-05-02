@@ -11,19 +11,20 @@
 │       ├── package.json
 │       ├── prisma
 │       │   ├── migrations
-│       │   │   ├── 20260423070136_init
-│       │   │   │   └── migration.sql
-│       │   │   ├── 20260423082404_user_role_nullable
-│       │   │   │   └── migration.sql
-│       │   │   ├── 20260423082644_mds_fonction_nullable
+│       │   │   ├── 20260430123639_init
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema.prisma
 │       │   └── seed.ts
 │       ├── prisma.config.ts
+│       ├── public
+│       │   ├── images
+│       │   │   └── 404.svg
+│       │   └── robots.txt
 │       ├── src
 │       │   ├── __tests__
 │       │   │   ├── auditeur.integration.test.ts
+│       │   │   ├── auth.integration.test.ts
 │       │   │   ├── dashboard.integration.test.ts
 │       │   │   ├── fixtures
 │       │   │   │   └── factories.ts
@@ -33,8 +34,10 @@
 │       │   │       └── test-db.ts
 │       │   ├── components
 │       │   │   ├── brand-top.tsx
+│       │   │   ├── default-catch-boundary.tsx
 │       │   │   ├── footer.tsx
 │       │   │   ├── header.tsx
+│       │   │   ├── main-navigation.tsx
 │       │   │   ├── ui
 │       │   │   │   ├── create-toast.tsx
 │       │   │   │   ├── dropdown.tsx
@@ -82,6 +85,8 @@
 │       │   │   │   ├── faq-content.tsx
 │       │   │   │   ├── faq-questions-answers.module.css
 │       │   │   │   ├── faq-questions-answers.tsx
+│       │   │   │   └── index.tsx
+│       │   │   ├── not-found
 │       │   │   │   └── index.tsx
 │       │   │   └── onboarding
 │       │   │       ├── index.tsx
@@ -134,10 +139,29 @@
 │       │   ├── lib
 │       │   │   ├── auth-client.ts
 │       │   │   ├── auth-session.ts
-│       │   │   └── route-guards.ts
+│       │   │   ├── dsfr-link.tsx
+│       │   │   ├── route-guards.ts
+│       │   │   └── session-query.ts
 │       │   ├── routeTree.gen.ts
 │       │   ├── router.tsx
 │       │   ├── routes
+│       │   │   ├── (authenticated)
+│       │   │   │   ├── _auth
+│       │   │   │   │   ├── apprenants.tsx
+│       │   │   │   │   ├── centre-d-aide.tsx
+│       │   │   │   │   ├── evaluations.tsx
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── onboarding.tsx
+│       │   │   │   │   ├── planning.tsx
+│       │   │   │   │   ├── ressources-enm.tsx
+│       │   │   │   │   └── tableau-de-bord.tsx
+│       │   │   │   └── _auth.tsx
+│       │   │   ├── (unauthenticated)
+│       │   │   │   ├── _public
+│       │   │   │   │   ├── mot-de-passe-oublie.tsx
+│       │   │   │   │   ├── s-inscrire.tsx
+│       │   │   │   │   └── se-connecter.tsx
+│       │   │   │   └── _public.tsx
 │       │   │   ├── __root.tsx
 │       │   │   ├── api
 │       │   │   │   ├── auth
@@ -145,16 +169,11 @@
 │       │   │   │   └── trpc
 │       │   │   │       └── $.ts
 │       │   │   ├── foire-aux-questions.tsx
-│       │   │   ├── index.tsx
-│       │   │   ├── mot-de-passe-oublie.tsx
-│       │   │   ├── onboarding.tsx
-│       │   │   ├── reinitialiser-son-mot-de-passe.tsx
-│       │   │   ├── s-inscrire.tsx
-│       │   │   └── se-connecter.tsx
+│       │   │   └── reinitialiser-son-mot-de-passe.tsx
 │       │   ├── server
 │       │   │   ├── handler.ts
 │       │   │   ├── providers
-│       │   │   │   ├── auth.ts
+│       │   │   │   ├── better-auth.ts
 │       │   │   │   ├── brevo.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── prisma.ts
@@ -170,6 +189,7 @@
 │       │   │   │   ├── promotion.ts
 │       │   │   │   └── stage.ts
 │       │   │   └── trpc.ts
+│       │   ├── start.ts
 │       │   ├── types
 │       │   │   └── tanstack-start-api.d.ts
 │       │   └── utils
@@ -182,12 +202,19 @@
 ├── docker-compose.yml
 ├── package.json
 ├── packages
-│   └── cli
+│   ├── cli
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   └── index.ts
+│   │   ├── tsconfig.json
+│   │   └── tsup.config.ts
+│   └── e2e
+│       ├── .gitignore
 │       ├── package.json
-│       ├── src
-│       │   └── index.ts
-│       ├── tsconfig.json
-│       └── tsup.config.ts
+│       ├── playwright.config.ts
+│       ├── tests
+│       │   └── auth-guards.spec.ts
+│       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-49 directories, 143 files
+56 directories, 163 files

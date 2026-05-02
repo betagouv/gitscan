@@ -1,22 +1,25 @@
-## Changelog : stage-direct (30 derniers jours, au 24 avril 2026)
+## Changelog : stage-direct (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'authentification et d'expérience utilisateur. Une page FAQ a été ajoutée pour répondre aux questions fréquentes, et des corrections ont été apportées aux formulaires. L'intégration avec Proconnect a été initiée, avec l'utilisation de composants de la DSFR pour une meilleure cohérence visuelle.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'authentification, de tests et de performance. L'ajout de pages d'authentification avec le bouton Proconnect, ainsi que la mise en place de tests end-to-end et d'intégration, renforcent la qualité et la fiabilité de la plateforme. Une refonte de la configuration TRPC et de la gestion des routes a également été effectuée pour optimiser l'architecture.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page FAQ pour aider les utilisateurs à trouver des réponses aux questions courantes. [#1](https://github.com/betagouv/stage-direct/pull/1)
-- Correction des erreurs de formulaire pour une meilleure expérience utilisateur. [#1](https://github.com/betagouv/stage-direct/pull/1)
-- Implémentation des pages d'authentification et intégration avec Proconnect, utilisant les composants de la DSFR pour l'apparence.
-- Préchargement des données pour une navigation plus rapide.
+- Ajout de pages d'authentification avec intégration du bouton Proconnect pour une expérience utilisateur simplifiée. [#1](https://github.com/betagouv/stage-direct/pull/1)
+- Création d'une page FAQ pour répondre aux questions fréquentes des utilisateurs.
+- Amélioration de la gestion des erreurs dans les formulaires.
+- Implémentation d'un système de session côté client pour une meilleure gestion de l'état de l'utilisateur.
 
 ### Évolutions techniques
-- Initialisation de la migration de la base de données.
+- Mise en place d'une suite de tests end-to-end (e2e) et d'intégration avec Playwright pour garantir la qualité du code et la couverture des fonctionnalités.
+- Refonte de la configuration TRPC pour une meilleure séparation des routes authentifiées et non authentifiées.
+- Initialisation et réinitialisation des migrations Prisma pour une gestion optimisée de la base de données.
+- Amélioration de la configuration de l'environnement avec la gestion des variables d'environnement (.dotenv).
+- Optimisation de la performance en supprimant les index inutiles.
 - Mise à jour des dépendances du projet.
-- Initialisation du stack technique du projet.
-- Configuration initiale de TRPC.
-- Utilisation du bouton Proconnect de la DSFR.
 
 ### Autres changements
 - Améliorations de l'UX/UI et corrections de style CSS.
-- Correction de la configuration du fichier `.env`.
-- Revue de code et nettoyage général.
+- Utilisation du bouton Proconnect de la DSFR pour une cohérence visuelle.
+- Préchargement des données pour une meilleure réactivité de l'application.
+- Initialisation du stack de l'application.
+- Corrections mineures et revue du code.
