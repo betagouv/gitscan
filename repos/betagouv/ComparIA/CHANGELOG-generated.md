@@ -1,36 +1,29 @@
-## Changelog : ComparIA (30 derniers jours, au 28 avril 2026)
+## Changelog : ComparIA (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de la plateforme ComparIA, notamment l'ajout de nouveaux modèles de langage (GPT-5.5, DeepSeek V4, Gemma 4), des corrections de bugs et des optimisations de performance, en particulier au niveau de la base de données.  Des efforts significatifs ont également été déployés pour améliorer la robustesse de la plateforme, notamment en matière de détection de spam et de gestion des erreurs. Enfin, l'infrastructure de déploiement a été simplifiée avec l'ajout d'une installation Docker simplifiée.
+Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de modèles de langage supportés, avec l'ajout de Gemma 4 (31B et 26B), GPT-5.5, DeepSeek V4 et la mise à jour de Kimi K2.6. Des corrections de bugs et des améliorations de la sécurité ont également été apportées, notamment concernant la détection de spams et la gestion des données. L'infrastructure a été renforcée avec l'ajout d'un outil CLI pour la gestion de la base de données et une simplification du processus d'installation via Docker.
 
 ### Évolutions fonctionnelles
-- Ajout des modèles de langage GPT-5.5 et GPT-5.5 Pro pour l'évaluation.
-- Ajout des modèles de langage DeepSeek V4 Pro et Flash.
-- Ajout du modèle Gemma 4 26B et 31B.
-- Amélioration de la détection de spam grâce à l'utilisation du modèle Gemini et à la persistance des résultats dans la base de données.
-- Implémentation d'un système de limitation de débit (rate limiting) pour l'utilisation des modèles personnalisés, afin de prévenir les abus.
-- Ajout d'un captcha Altcha pour protéger les endpoints de l'arène.
-- Ajout d'une commande CLI pour l'archivage des données corrompues.
-- Ajout d'une commande CLI pour l'export des datasets.
-- Ajout de la possibilité de construire des datasets pour un pays spécifique.
+
+*   **Nouveaux modèles de langage :** Ajout de Gemma 4 (31B et 26B) [#418, #425], GPT-5.5 [#461], DeepSeek V4 Pro et Flash [#455].
+*   **Mise à jour de modèles existants :** Mise à jour de Kimi K2.6 [#420].
+*   **Détection de spam améliorée :** Utilisation du modèle Gemini pour une détection plus précise du spam et du contenu inapproprié, avec persistance de cette information en base de données [#398, #424].
+*   **Archivage de modèles :** Archivage de plusieurs modèles obsolètes ou indisponibles (OLMO 3 32B, LFM2 8B A1B, Gemini 3 Pro) pour maintenir la pertinence de la liste [#424, #426, #428].
+*   **Amélioration de l'interface utilisateur :** Amélioration de l'accessibilité des boutons principaux avec des couleurs contrastées [#459].
 
 ### Évolutions techniques
-- Refactorisation importante de la gestion de la base de données, incluant la suppression de colonnes obsolètes et l'optimisation des requêtes.
-- Amélioration de la gestion des logs et des erreurs, avec une dégradation gracieuse en cas de problème avec le service Loki.
-- Simplification de l'infrastructure de déploiement avec l'ajout d'une installation Docker simplifiée.
-- Refactorisation des scripts Jenkins pour une meilleure maintenabilité.
-- Utilisation de `cyclopts` pour la gestion des arguments en ligne de commande dans les scripts de dataset.
-- Mise à jour des dépendances npm et pip.
-- Amélioration de la gestion des erreurs et des timeouts pour les appels à l'API Ordbogen.
-- Utilisation de `huggingface-hub` pour l'upload des datasets.
+
+*   **Outil CLI pour la base de données :** Ajout d'une interface en ligne de commande (CLI) pour faciliter la gestion et la maintenance de la base de données, incluant des commandes pour l'archivage, la correction de données corrompues et l'analyse des données [#423, #424].
+*   **Dockerisation simplifiée :** Simplification du processus d'installation avec Docker, incluant un fichier `docker-compose.yml` pour un déploiement plus facile [#429].
+*   **Refactoring de la base de données :** Nettoyage et refactoring de la base de données, suppression de colonnes obsolètes et amélioration des requêtes [#424].
+*   **Suppression de la journalisation de la base de données :** Suppression de la journalisation des requêtes SQL pour améliorer les performances et la sécurité [#454].
+*   **Utilisation d'OpenRouter :** Passage à OpenRouter pour l'analyse LLM, abandonnant Vertex AI [#454].
+*   **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (npm, eslint, jsdom, pip) pour bénéficier des dernières corrections de bugs et améliorations de sécurité [#417, #419, #421, #422, #427].
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'infrastructure.
-- Corrections de bugs mineurs et améliorations de la qualité du code.
-- Traduction de nouvelles chaînes de caractères en estonien via Weblate.
-- Suppression de modèles de langage obsolètes (OLMO 3.32B, LFM2 8B).
-- Archivage du modèle Gemini 3 Pro.
-- Suppression de l'utilisation de Vertex AI pour l'analyse LLM, au profit d'OpenRouter.
-- Suppression des jobs de vérification d'images dans Jenkins et GitHub.
-- Ajout de variables d'environnement pour la configuration de Hugging Face.
-- Suppression des logs PostgreSQL.
+
+*   **Documentation :** Amélioration de la documentation concernant l'installation avec Docker et le processus d'initialisation de la base de données.
+*   **Traduction :** Mise à jour des traductions en italien, norvégien Bokmål et norvégien Nynorsk via Weblate [#439, #443].
+*   **Roadmap :** Mise à jour de la roadmap du projet [#458].
+*   **Correction de bugs :** Correction de bugs mineurs liés à la détection de spams et à la gestion des sessions.
+*   **Amélioration de la configuration de Dependabot :** Configuration de Dependabot pour des mises à jour moins fréquentes et plus groupées.
