@@ -1,8 +1,15 @@
 .
 ├── .claude
+│   ├── commands
+│   │   ├── create-feature.md
+│   │   ├── execute-feature.md
+│   │   ├── quick-fix.md
+│   │   └── sync-docs.md
 │   └── settings.json
 ├── .github
-│   └── copilot-instructions.md
+│   ├── copilot-instructions.md
+│   └── workflows
+│       └── ci.yml
 ├── .gitignore
 ├── .npmrc
 ├── .nvmrc
@@ -10,6 +17,8 @@
 ├── .prettierrc
 ├── CLAUDE.md
 ├── LICENSE
+├── Makefile
+├── Procfile
 ├── README.md
 ├── apps
 │   └── cms
@@ -18,7 +27,7 @@
 │       ├── eslint.config.mjs
 │       ├── index.d.ts
 │       ├── next-env.d.ts
-│       ├── next.config.ts
+│       ├── next.config.js
 │       ├── package.json
 │       ├── payload.config.ts
 │       ├── playwright.config.ts
@@ -52,20 +61,55 @@
 │       │   │   ├── Media.ts
 │       │   │   ├── Operators.ts
 │       │   │   ├── Programs.ts
+│       │   │   ├── Projects.ts
 │       │   │   └── Users.ts
-│       │   ├── seed
-│       │   │   ├── programs
-│       │   │   │   ├── OperatorImporter.ts
-│       │   │   │   ├── ProgramImporter.ts
-│       │   │   │   ├── ProgramMapper.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── types.ts
-│       │   │   └── run.ts
+│       │   ├── components
+│       │   │   └── programs
+│       │   │       ├── WorkflowActionBar.tsx
+│       │   │       ├── WorkflowStatusBadge.tsx
+│       │   │       ├── WorkflowStatusCell.tsx
+│       │   │       └── WorkflowStatusPill.tsx
+│       │   ├── constants
+│       │   │   ├── nafSectionsOptions.ts
+│       │   │   └── themesOptions.ts
+│       │   ├── hooks
+│       │   │   └── programs
+│       │   │       ├── assignCreatorOnCreate.ts
+│       │   │       └── beforeChangeWorkflow.ts
+│       │   ├── scripts
+│       │   │   └── seed
+│       │   │       ├── programs
+│       │   │       │   ├── OperatorImporter.ts
+│       │   │       │   ├── ProgramImporter.ts
+│       │   │       │   ├── ProgramMapper.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   └── types.ts
+│       │   │       ├── projects
+│       │   │       │   ├── LinkedProjectsUpdater.ts
+│       │   │       │   ├── ProjectImporter.ts
+│       │   │       │   ├── ProjectMapper.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   └── types.ts
+│       │   │       ├── run.ts
+│       │   │       └── users
+│       │   │           ├── index.ts
+│       │   │           └── types.ts
+│       │   ├── services
+│       │   │   ├── access
+│       │   │   │   ├── AuthAccessPolicy.ts
+│       │   │   │   ├── OperatorAccessPolicy.ts
+│       │   │   │   └── ProgramAccessPolicy.ts
+│       │   │   └── workflow
+│       │   │       ├── WorkflowAutomation.ts
+│       │   │       └── WorkflowTransitionPolicy.ts
 │       │   └── utils
 │       │       ├── FrenchDateParser.ts
 │       │       ├── ProgressBar.ts
 │       │       ├── Slugify.ts
-│       │       └── ValueArrayConverter.ts
+│       │       ├── ValueArrayConverter.ts
+│       │       └── user
+│       │           └── UserRole.ts
+│       ├── tee-poc.db
 │       ├── test.env
 │       ├── tests
 │       │   ├── e2e
@@ -76,19 +120,42 @@
 │       │   ├── helpers
 │       │   │   ├── login.ts
 │       │   │   └── seedUser.ts
-│       │   └── int
-│       │       ├── api.int.spec.ts
-│       │       └── seed.int.spec.ts
+│       │   ├── int
+│       │   │   ├── api.int.spec.ts
+│       │   │   └── seed.int.spec.ts
+│       │   └── unit
+│       │       └── UserRole.spec.ts
 │       ├── tsconfig.json
 │       ├── vitest.config.mts
 │       ├── vitest.global-setup.ts
-│       └── vitest.setup.ts
+│       ├── vitest.setup.ts
+│       └── vitest.unit.config.mts
 ├── docs
 │   ├── adr
-│   │   └── 0001-programs-collection.md
-│   └── context
-│       ├── programs-model.md
-│       └── seed.md
+│   │   ├── 0001-programs-collection.md
+│   │   ├── 0002-user-roles-and-access-control.md
+│   │   ├── 0003-projects-collection.md
+│   │   ├── 0004-programs-workflow.md
+│   │   └── 0005-programs-workflow-extended.md
+│   ├── context
+│   │   ├── programs-model.md
+│   │   ├── projects-model.md
+│   │   └── seed.md
+│   ├── features
+│   │   ├── 001-projects-collection.md
+│   │   ├── 002-programs-workflow.md
+│   │   ├── 003-programs-workflow-extended.md
+│   │   ├── README.md
+│   │   └── TASKS.md
+│   └── sources
+│       ├── Cas d’usage du back-office 3036523d57d780358e71ea4df8ed6c26.md
+│       ├── Gestion des droits 3056523d57d780a8bce0c5aef392bac1.md
+│       ├── Réflexion produit backend.md
+│       ├── programs.json
+│       ├── projects.json
+│       ├── schema.svg
+│       ├── synthèse-backoffice.md
+│       └── workflow-programs.png
 ├── eslint.config.mjs
 ├── memory
 │   └── MEMORY.md
@@ -98,4 +165,4 @@
 ├── pnpm-workspace.yaml
 ├── tsconfig.base.json
 └── tsconfig.json
-30 directories, 70 files
+47 directories, 120 files

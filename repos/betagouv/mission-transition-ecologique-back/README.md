@@ -52,6 +52,40 @@ cp .env.example apps/cms/.env
 | `DATABASE_URI` | Chemin SQLite (défaut : `file:./tee-poc.db`) |
 | `PAYLOAD_SECRET` | Clé secrète de chiffrement Payload |
 
+## Fixtures (seed)
+
+La commande `pnpm seed` initialise la base de données avec des données de développement (idempotente — peut être relancée sans risque).
+
+```sh
+pnpm seed
+```
+
+Elle insère :
+- les **opérateurs** (fichier CSV source)
+- les **programmes d'aide** (fichier CSV source)
+- les **projets** (données exemples avec liaisons entre projets)
+- les **utilisateurs de développement** ci-dessous
+
+### Comptes utilisateurs de développement
+
+> Ces comptes sont uniquement disponibles après `pnpm seed`. Ils ne doivent pas être utilisés en production.
+
+| Email | Mot de passe | Rôle |
+|---|---|---|
+| `super.admin@tee.test` | `super.admin@tee.test` | `super-admin` |
+| `admin@tee.test` | `admin@tee.test` | `admin` |
+| `createur@tee.test` | `createur@tee.test` | `creator` |
+
+Les rôles suivent une hiérarchie : `super-admin` > `admin` > `creator`. Un rôle supérieur hérite des droits de tous les rôles inférieurs.
+
+| méthode `UserRole` | creator | admin | super-admin |
+|---|---|---|---|
+| `isSuperAdmin` | ❌ | ❌ | ✅ |
+| `isAdmin` | ❌ | ✅ | ✅ |
+| `isCreator` | ✅ | ✅ | ✅ |
+
+L'interface d'administration est accessible sur `http://localhost:3000/admin` après `pnpm nx run @tee-backoffice/cms:dev`.
+
 ## Commandes
 
 ```sh
