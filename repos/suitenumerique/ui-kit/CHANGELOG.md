@@ -1,5 +1,13 @@
 # @gouvfr-lasuite/ui-kit
 
+[UNRELEASED]
+
+## 0.20.1
+
+### Patch Changes
+
+- 🐛(dropdown) fix to hide icon when no icon prop is passed
+
 ## 0.20.1
 
 ### Patch Changes
