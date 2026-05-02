@@ -25,11 +25,16 @@
 │       ├── context.puml
 │       └── jeopardy_context.png
 ├── donnees
+│   ├── collection_reponses_maitrisees
+│   │   ├── faq_reponses_maitrisees.html
+│   │   └── faq_reponses_maitrisees.mapping.json
 │   ├── dataset_reformulation.csv
 │   ├── documents_distants.json
 │   ├── jointure-nom-guide.csv
+│   ├── jointure-nom-tous-documents.csv
 │   ├── questions_avec_verite_terrain.csv
-│   └── questions_avec_verite_terrain_3.csv
+│   ├── questions_avec_verite_terrain_3.csv
+│   └── questions_avec_verite_terrain_tous_documents.csv
 ├── pyproject.toml
 ├── scripts
 │   ├── clever-cloud
@@ -61,7 +66,8 @@
 │   │   ├── elements_filtres.py
 │   │   ├── generateur_de_pages.py
 │   │   ├── html
-│   │   │   └── document_html.py
+│   │   │   ├── document_html.py
+│   │   │   └── slugifie.py
 │   │   ├── indexe_documents_rag.py
 │   │   ├── indexeur
 │   │   │   ├── indexeur.py
@@ -158,15 +164,19 @@
 │   │   ├── conftest.py
 │   │   ├── docling
 │   │   │   ├── test_chunker_docling_mqc.py
+│   │   │   ├── test_document.py
 │   │   │   └── test_filtre_resultat.py
 │   │   ├── html
-│   │   │   └── test_document_html.py
+│   │   │   ├── test_document_html.py
+│   │   │   ├── test_document_qr.py
+│   │   │   └── test_slugifie.py
 │   │   ├── indexeur
 │   │   │   ├── test_indexeur_albert.py
 │   │   │   └── test_indexeur_docling.py
-│   │   └── pdf
-│   │       ├── test_categorise_le_contenu.py
-│   │       └── test_document_pdf.py
+│   │   ├── pdf
+│   │   │   ├── test_categorise_le_contenu.py
+│   │   │   └── test_document_pdf.py
+│   │   └── test_indexe_documents_rag.py
 │   ├── evaluation
 │   │   ├── conftest.py
 │   │   ├── mqc
@@ -246,4 +256,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-55 directories, 193 files
+56 directories, 202 files
