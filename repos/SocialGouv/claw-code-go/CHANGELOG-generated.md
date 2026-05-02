@@ -1,31 +1,40 @@
-## Changelog : claw-code-go (30 derniers jours, au 29 avril 2026)
+## Changelog : claw-code-go (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce changelog couvre une période d'intense développement pour claw-code-go, avec un focus sur l'implémentation de nouvelles fonctionnalités et l'amélioration de l'infrastructure existante. Les principaux changements incluent l'ajout de capacités de vision par ordinateur, la mise en place d'un marché de plugins distant, l'amélioration des outils d'interaction avec l'utilisateur et des corrections de sécurité. Le projet progresse rapidement vers la parité avec l'implémentation Rust originale.
+Ce changelog couvre une période d'intense développement sur claw-code-go, avec une concentration majeure sur l'implémentation de fonctionnalités en cours de portage depuis l'implémentation Rust originale. Les efforts se sont concentrés sur l'ajout de nouveaux outils, l'amélioration de l'intégration avec divers fournisseurs de modèles de langage, l'amélioration de la sécurité et la correction de nombreux bugs pour atteindre la parité avec la version Rust. De nouvelles fonctionnalités de gestion des plugins et d'interface utilisateur ont également été introduites.
 
 ### Évolutions fonctionnelles
-- **Vision par ordinateur :** Ajout de l'outil `computer_use` permettant de contrôler l'ordinateur (capture d'écran, clics, saisie de texte) via `xdotool` et ImageMagick sous Linux.
-- **Marché de plugins :** Implémentation d'un marché de plugins distant permettant de lister, télécharger et installer des plugins, avec vérification de signature (cosign). Nouvelle commande CLI `claw-code-go plugin install`.
-- **Interaction utilisateur :** Implémentation des outils `ask_user` (avec options structurées) et `remote_trigger` (déclenchement distant).
-- **Interface utilisateur (TUI) :** Amélioration de l'interface utilisateur en ligne de commande avec l'ajout d'une timeline des sessions, de la coloration syntaxique et de la possibilité de choisir le format de sortie.
-- **Fournisseurs de modèles :** Ajout de support pour les fournisseurs AWS Bedrock, Azure Foundry et Vertex AI.
-- **OAuth et authentification :** Implémentation d'un broker OAuth avec PKCE pour une authentification sécurisée.
-- **Gestion des sessions :** Ajout de la persistance des sessions et de la gestion de l'historique.
-- **Permissions et sécurité :** Implémentation d'un moteur de gestion des permissions et d'un classificateur LLM.
+- Ajout d'un outil `computer_use` permettant d'interagir avec le système d'exploitation (capture d'écran, clics de souris, saisie de texte) via `xdotool` et `ImageMagick`.
+- Implémentation d'un marché de plugins distant avec vérification de signature pour une installation sécurisée. Nouvelle commande CLI `claw-code-go plugin install`.
+- Ajout d'implémentations fonctionnelles des outils `ask_user` (avec options structurées) et `remote_trigger`.
+- Intégration de fournisseurs de modèles de langage réels : AWS Bedrock, Azure Foundry et Vertex AI.
+- Ajout de la prise en charge de DashScope et xAI.
+- Amélioration de l'interface utilisateur avec une commande `/timeline` pour visualiser l'historique des sessions et une commande `/lineage` pour suivre l'origine des données.
+- Ajout d'une commande `/store` pour gérer les plugins.
+- Prise en charge de l'authentification OAuth pour les fournisseurs de modèles de langage.
+- Ajout de la possibilité de spécifier des variables d'environnement pour l'exécution de commandes bash.
+- Ajout d'une fonctionnalité de recherche web avec la possibilité de personnaliser les URL de Brave et DuckDuckGo.
 
 ### Évolutions techniques
-- **Refactoring et simplification :** Simplification du code, suppression de code mort et amélioration de la structure du projet.
-- **Tests :** Ajout de tests unitaires et d'intégration pour couvrir les nouvelles fonctionnalités et améliorer la qualité du code. Ajout de tests de performance.
-- **Télémetrie :** Intégration de l'exportation des logs via OpenTelemetry avec les protocoles gRPC et HTTP.
-- **Architecture :** Amélioration de l'architecture avec l'ajout de hooks et d'événements de cycle de vie pour les plugins.
-- **Sécurité :** Correction de failles de sécurité identifiées lors de revues de code et de tests.
-- **Dépendances :** Ajout de nouvelles dépendances (OpenTelemetry, grpc) et mise à jour des dépendances existantes.
-- **Configuration :** Amélioration de la gestion de la configuration et des variables d'environnement.
-- **API :** Exposition de façades publiques pour les hooks, LSP, MCP, tâches, équipes, workers et outils.
+- Refactorisation importante du code pour améliorer la structure et la maintenabilité.
+- Ajout de tests unitaires et d'intégration pour assurer la qualité du code.
+- Mise en place d'un système de journalisation avec OpenTelemetry (OTLP) via gRPC et HTTP.
+- Amélioration de la gestion des erreurs et des timeouts HTTP.
+- Utilisation de SHA-256 pour la vérification de l'intégrité des plugins téléchargés.
+- Implémentation d'un système de cache pour les prix des modèles de langage.
+- Ajout de la prise en charge de la compression des messages pour optimiser les performances.
+- Amélioration de la sécurité avec la fermeture de plusieurs vulnérabilités identifiées lors de revues de code.
+- Mise à jour de la gestion des contextes pour assurer la propagation correcte de la cancellation.
+- Refonte de la gestion des configurations et des paramètres.
+- Ajout de tests de performance pour identifier les goulots d'étranglement.
+- Renommage du chemin du module en `github.com/SocialGouv/claw-code-go` pour faciliter l'importation.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation, notamment le README, avec des informations sur les nouvelles fonctionnalités et l'utilisation du projet.
-- **Logo :** Ajout d'un logo ASCII art au démarrage de l'interface TUI.
-- **Workflow :** Documentation du workflow de test en environnement cloud.
-- **Nettoyage du code :** Formatage du code avec `gofmt`.
-- **Correction de bugs :** Correction de divers bugs et améliorations de la stabilité.
+- Mise à jour de la documentation avec des exemples d'utilisation et des informations sur les nouvelles fonctionnalités.
+- Ajout d'un logo ASCII art à l'interface utilisateur en mode texte.
+- Amélioration de la lisibilité du code avec des commentaires et une mise en forme cohérente.
+- Correction de plusieurs bugs mineurs et améliorations de la stabilité.
+- Suppression de code mort et simplification de certaines parties du code.
+- Ajout d'un système de gestion des versions pour les plugins.
+- Ajout d'une fonctionnalité de recherche de plugins.
+- Amélioration de la gestion des dépendances.

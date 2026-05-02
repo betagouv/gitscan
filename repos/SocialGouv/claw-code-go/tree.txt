@@ -74,12 +74,16 @@
 │   │   ├── sseutil
 │   │   │   ├── toolcall.go
 │   │   │   └── toolcall_test.go
-│   │   └── types.go
+│   │   ├── streamhttp.go
+│   │   ├── types.go
+│   │   └── types_test.go
 │   ├── apikit
 │   │   ├── doc.go
 │   │   ├── errors.go
 │   │   ├── errors_test.go
 │   │   ├── model_registry.go
+│   │   ├── model_registry_live.go
+│   │   ├── model_registry_live_test.go
 │   │   ├── model_registry_test.go
 │   │   ├── preflight.go
 │   │   ├── preflight_test.go
@@ -197,6 +201,7 @@
 │   │   │   ├── pkce.go
 │   │   │   ├── pkce_test.go
 │   │   │   └── storage.go
+│   │   ├── provider.go
 │   │   ├── registry.go
 │   │   ├── resources.go
 │   │   ├── sdk_send_test.go
@@ -320,6 +325,7 @@
 │   │   ├── ask_user.go
 │   │   ├── ask_user_test.go
 │   │   ├── bash.go
+│   │   ├── bash_env_test.go
 │   │   ├── bash_pipeline.go
 │   │   ├── bash_validation.go
 │   │   ├── bash_validation_test.go
@@ -398,6 +404,8 @@
 │   │   │   ├── mcp.go
 │   │   │   └── oauth
 │   │   │       └── oauth.go
+│   │   ├── pricing.go
+│   │   ├── pricing_test.go
 │   │   ├── provider.go
 │   │   ├── providers
 │   │   │   ├── anthropic
@@ -433,12 +441,17 @@
 │   │   └── worker
 │   │       └── worker.go
 │   ├── apikit
-│   │   └── apikit.go
+│   │   ├── apikit.go
+│   │   └── telemetry
+│   │       └── otlpgrpc
+│   │           ├── otlpgrpc.go
+│   │           └── otlpgrpc_test.go
 │   ├── permissions
 │   │   ├── permissions.go
 │   │   └── permissions_test.go
 │   └── runtime
 │       ├── compact.go
+│       ├── compact_test.go
 │       ├── provider.go
 │       └── provider_test.go
 ├── plugin
@@ -469,4 +482,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-75 directories, 396 files
+77 directories, 407 files
