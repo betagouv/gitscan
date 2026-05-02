@@ -418,7 +418,8 @@
 │   │   │       ├── 20260225000000-update-ml-identifiant-normalise-unique-index.ts
 │   │   │       ├── 20260305120000-fix-ml-effectif-doublons.ts
 │   │   │       ├── 20260319120000-backfill-derniere-activite.ts
-│   │   │       └── 20260402120000-add-deca-cfa-list.ts
+│   │   │       ├── 20260402120000-add-deca-cfa-list.ts
+│   │   │       └── 20260423120000-activate-v2-and-deca-cma-hdf.ts
 │   │   ├── dev.ts
 │   │   ├── http
 │   │   │   ├── helpers
@@ -565,6 +566,8 @@
 │   │   │   │       ├── effectif_status.builder.test.ts
 │   │   │   │       └── effectif_status.builder.ts
 │   │   │   ├── jobs.ts
+│   │   │   ├── migration
+│   │   │   │   └── migrate-autre-situations.ts
 │   │   │   ├── migrations
 │   │   │   │   └── migrations.ts
 │   │   │   ├── organisations
@@ -1201,6 +1204,8 @@
 │   │   │   │   │   │   ├── MlCollaborationDetail.tsx
 │   │   │   │   │   │   ├── MlEffectifInfoColumn.tsx
 │   │   │   │   │   │   ├── MlSuiviDossierColumn.tsx
+│   │   │   │   │   │   ├── MlSuiviDossierColumn.utils.test.ts
+│   │   │   │   │   │   ├── MlSuiviDossierColumn.utils.ts
 │   │   │   │   │   │   ├── hooks.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── contact
@@ -1327,6 +1332,8 @@
 │   │   │   │   │   ├── RegionTable.tsx
 │   │   │   │   │   ├── SortableTableHeader.tsx
 │   │   │   │   │   ├── TraitementDetailsBar.tsx
+│   │   │   │   │   ├── TraitementDetailsBar.utils.test.ts
+│   │   │   │   │   ├── TraitementDetailsBar.utils.ts
 │   │   │   │   │   ├── TraitementMLTable.tsx
 │   │   │   │   │   ├── TraitementRegionTable.tsx
 │   │   │   │   │   ├── TraitementTable.module.css
@@ -2165,4 +2172,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-449 directories, 1718 files
+450 directories, 1724 files
