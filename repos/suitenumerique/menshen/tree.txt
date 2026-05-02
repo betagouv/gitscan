@@ -43,49 +43,132 @@
 ├── publiccode.yml
 ├── renovate.json
 └── src
-    └── backend
-        ├── .python-version
-        ├── Dockerfile
-        ├── demo
-        │   ├── forms.py
-        │   ├── management
-        │   │   └── commands
+    ├── backend
+    │   ├── .python-version
+    │   ├── Dockerfile
+    │   ├── demo
+    │   │   ├── forms.py
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       └── create_demo.py
+    │   │   ├── templates
+    │   │   │   └── demo
+    │   │   │       └── token_exchange_form.html
+    │   │   ├── urls.py
+    │   │   └── views.py
+    │   ├── locale
+    │   │   └── .keep
+    │   ├── manage.py
+    │   ├── menshen
+    │   │   ├── __init__.py
+    │   │   ├── asgi.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── pyproject.toml
+    │   ├── token_exchange
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── apps.py
+    │   │   ├── authentication.py
+    │   │   ├── factories.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── permissions.py
+    │   │   ├── serializers.py
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── conftest.py
+    │   │   │   └── test_views.py
+    │   │   ├── token_generator.py
+    │   │   ├── urls.py
+    │   │   └── views.py
+    │   └── uv.lock
+    └── playground
+        ├── source
+        │   ├── .python-version
+        │   ├── Dockerfile
+        │   ├── README.md
+        │   ├── apps
+        │   │   ├── auth
+        │   │   │   ├── __init__.py
+        │   │   │   └── backends.py
+        │   │   └── core
         │   │       ├── __init__.py
-        │   │       ├── create_demo.py
-        │   │       └── createsuperuser.py
-        │   ├── templates
-        │   │   └── demo
-        │   │       └── token_exchange_form.html
-        │   ├── urls.py
-        │   └── views.py
-        ├── locale
-        │   └── .keep
-        ├── manage.py
-        ├── menshen
-        │   ├── __init__.py
-        │   ├── asgi.py
-        │   ├── settings.py
-        │   ├── urls.py
-        │   └── wsgi.py
-        ├── pyproject.toml
-        ├── token_exchange
-        │   ├── __init__.py
-        │   ├── admin.py
-        │   ├── apps.py
-        │   ├── authentication.py
-        │   ├── factories.py
-        │   ├── migrations
-        │   │   ├── 0001_initial.py
-        │   │   └── __init__.py
-        │   ├── models.py
-        │   ├── permissions.py
-        │   ├── serializers.py
-        │   ├── tests
+        │   │       ├── admin.py
+        │   │       ├── apps.py
+        │   │       ├── fixtures
+        │   │       │   └── recordings.json
+        │   │       ├── forms.py
+        │   │       ├── migrations
+        │   │       │   ├── 0001_initial.py
+        │   │       │   └── __init__.py
+        │   │       ├── models.py
+        │   │       ├── templates
+        │   │       │   └── core
+        │   │       │       └── main.html
+        │   │       ├── tests.py
+        │   │       ├── urls.py
+        │   │       └── views.py
+        │   ├── manage.py
+        │   ├── pyproject.toml
+        │   ├── source
         │   │   ├── __init__.py
-        │   │   ├── conftest.py
-        │   │   └── test_views.py
-        │   ├── token_generator.py
-        │   ├── urls.py
-        │   └── views.py
-        └── uv.lock
-26 directories, 64 files
+        │   │   ├── asgi.py
+        │   │   ├── settings.py
+        │   │   ├── urls.py
+        │   │   └── wsgi.py
+        │   ├── static
+        │   │   └── css
+        │   │       └── styles.css
+        │   ├── templates
+        │   │   └── base.html
+        │   └── uv.lock
+        └── target
+            ├── .python-version
+            ├── Dockerfile
+            ├── README.md
+            ├── apps
+            │   ├── auth
+            │   │   ├── __init__.py
+            │   │   └── backends.py
+            │   └── core
+            │       ├── __init__.py
+            │       ├── admin.py
+            │       ├── api
+            │       │   ├── __init__.py
+            │       │   ├── authentication.py
+            │       │   ├── serializers.py
+            │       │   ├── views.py
+            │       │   └── viewsets.py
+            │       ├── apps.py
+            │       ├── fixtures
+            │       │   └── recordings.json
+            │       ├── migrations
+            │       │   ├── 0001_initial.py
+            │       │   └── __init__.py
+            │       ├── models.py
+            │       ├── templates
+            │       │   └── core
+            │       │       └── main.html
+            │       ├── tests.py
+            │       ├── urls.py
+            │       └── views.py
+            ├── manage.py
+            ├── pyproject.toml
+            ├── static
+            │   └── css
+            │       └── styles.css
+            ├── target
+            │   ├── __init__.py
+            │   ├── asgi.py
+            │   ├── settings.py
+            │   ├── urls.py
+            │   └── wsgi.py
+            ├── templates
+            │   └── base.html
+            └── uv.lock
+52 directories, 121 files
