@@ -57,8 +57,11 @@
 │   │   │   ├── adaptateurJWT.ts
 │   │   │   ├── configurationServeur.ts
 │   │   │   ├── favoris
+│   │   │   │   ├── ressourceFavori.schema.ts
 │   │   │   │   ├── ressourceFavori.ts
+│   │   │   │   ├── ressourceFavoris.schema.ts
 │   │   │   │   ├── ressourceFavoris.ts
+│   │   │   │   ├── ressourceFavorisPartages.schema.ts
 │   │   │   │   └── ressourceFavorisPartages.ts
 │   │   │   ├── fournisseurChemin.ts
 │   │   │   ├── gestionnaireRessourceCellar.ts
@@ -68,13 +71,17 @@
 │   │   │   │   ├── ressourceDocumentsGuide.schema.ts
 │   │   │   │   ├── ressourceDocumentsGuide.ts
 │   │   │   │   ├── ressourceGuide.ts
+│   │   │   │   ├── ressourceGuides.schema.ts
 │   │   │   │   ├── ressourceGuides.ts
+│   │   │   │   ├── ressourceGuidesMemesCollections.schema.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── mon-aide-cyber
+│   │   │   │   ├── ressourceDemandesAide.schema.ts
 │   │   │   │   └── ressourceDemandesAide.ts
 │   │   │   ├── msc.ts
 │   │   │   ├── nis2
+│   │   │   │   ├── ressourceExigencesNis2.schema.ts
 │   │   │   │   ├── ressourceExigencesNis2.ts
 │   │   │   │   ├── ressourceExigencesNis2Csv.ts
 │   │   │   │   ├── ressourceSimulateurNis2.schemas.ts
@@ -89,10 +96,12 @@
 │   │   │   ├── ressourceAbonnementInfolettre.schema.ts
 │   │   │   ├── ressourceAbonnementInfolettre.ts
 │   │   │   ├── ressourceAnnuaireDepartements.ts
+│   │   │   ├── ressourceAnnuaireOrganisations.schema.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.ts
 │   │   │   ├── ressourceAnnuaireRegions.ts
 │   │   │   ├── ressourceAnnuaireSecteursActivite.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
+│   │   │   ├── ressourceAvisUtilisateur.schema.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
 │   │   │   ├── ressourceDocumentRessource.ts
 │   │   │   ├── ressourceFinancement.ts
@@ -105,16 +114,19 @@
 │   │   │   ├── ressourcePagesJekyll.ts
 │   │   │   ├── ressourcePagesJekyllConnectees.ts
 │   │   │   ├── ressourceProfil.ts
+│   │   │   ├── ressourceRetoursExperience.schema.ts
 │   │   │   ├── ressourceRetoursExperience.ts
 │   │   │   ├── ressourceSanteGuides.ts
 │   │   │   ├── ressourceStatistiques.ts
 │   │   │   ├── ressourceStatistiquesDiagnostic.ts
+│   │   │   ├── ressourceUtilisateurs.schema.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourceVisa.ts
 │   │   │   ├── testMaturite
 │   │   │   │   ├── ressourceDernierResultatDeTest.ts
 │   │   │   │   ├── ressourceRepartitionDesResultatsDeTest.ts
 │   │   │   │   ├── ressourceResultatDeTest.ts
+│   │   │   │   ├── ressourceResultatsDeTest.schema.ts
 │   │   │   │   ├── ressourceResultatsDeTest.ts
 │   │   │   │   ├── ressourceResultatsSessionDeGroupe.ts
 │   │   │   │   ├── ressourceSessionDeGroupe.ts
@@ -721,7 +733,6 @@
 │   │   └── styles
 │   │       ├── accueil.scss
 │   │       ├── boutons.scss
-│   │       ├── carte-item.scss
 │   │       ├── catalogue.scss
 │   │       ├── commun.scss
 │   │       ├── connexion.scss
@@ -780,13 +791,13 @@
 │   │   │   │   ├── CarteItem.svelte
 │   │   │   │   ├── Catalogue.svelte
 │   │   │   │   ├── Catalogue.types.ts
-│   │   │   │   ├── ContenuCarteItem.svelte
 │   │   │   │   ├── EnteteFiltres.svelte
 │   │   │   │   ├── FiltreAccessibilite.svelte
 │   │   │   │   ├── FiltreBesoin.svelte
 │   │   │   │   ├── FiltreSource.svelte
 │   │   │   │   ├── FiltreTypologie.svelte
 │   │   │   │   ├── Guide.types.ts
+│   │   │   │   ├── HeaderBadge.svelte
 │   │   │   │   ├── fragmentDeNavigation.ts
 │   │   │   │   ├── guides
 │   │   │   │   │   ├── BadgesDeCollections.svelte
@@ -890,6 +901,7 @@
 │   │   │   ├── main-catalogue.ts
 │   │   │   ├── main-centre-aide.ts
 │   │   │   ├── main-collectivites.ts
+│   │   │   ├── main-composants-ui.ts
 │   │   │   ├── main-confirmation-abonnement-infolettre.ts
 │   │   │   ├── main-contacts.ts
 │   │   │   ├── main-creation-compte.ts
@@ -928,7 +940,7 @@
 │   │   │   │   ├── NavigationMobile.svelte
 │   │   │   │   └── NavigationTertiaire.svelte
 │   │   │   ├── nis2
-│   │   │   │   ├── Accordeon.svelte
+│   │   │   │   ├── AccordeonNis2.svelte
 │   │   │   │   ├── Avertissements.svelte
 │   │   │   │   ├── DocumentationNis2.svelte
 │   │   │   │   ├── ExigencesNis2.svelte
@@ -1075,6 +1087,7 @@
 │   │   │   │   └── stores
 │   │   │   │       └── questionnaire.store.ts
 │   │   │   ├── ui
+│   │   │   │   ├── Accordeon.svelte
 │   │   │   │   ├── Alerte.svelte
 │   │   │   │   ├── Bouton.svelte
 │   │   │   │   ├── BoutonFermerModale.svelte
@@ -1092,10 +1105,10 @@
 │   │   │   │   ├── Hero.svelte
 │   │   │   │   ├── Heros.svelte
 │   │   │   │   ├── Icone.svelte
+│   │   │   │   ├── Lien.svelte
 │   │   │   │   ├── MenuFlottant.svelte
 │   │   │   │   ├── Modale.svelte
 │   │   │   │   ├── Onglet.svelte
-│   │   │   │   ├── SectionAccordeon.svelte
 │   │   │   │   ├── Separateur.svelte
 │   │   │   │   ├── ZoneTexte.svelte
 │   │   │   │   ├── badge.type.ts
@@ -1106,7 +1119,8 @@
 │   │   │   │   └── quiScroll.attachment.ts
 │   │   │   ├── utils
 │   │   │   │   ├── arrondis.ts
-│   │   │   │   └── aseptisationDuHtml.ts
+│   │   │   │   ├── aseptisationDuHtml.ts
+│   │   │   │   └── erreurApi.ts
 │   │   │   └── vite-env.d.ts
 │   │   ├── svelte.config.js
 │   │   ├── test
@@ -1224,5 +1238,12 @@
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-└── prek.toml
-182 directories, 1088 files
+├── prek.toml
+└── regles-eslint
+    ├── eslint.config.mjs
+    ├── package.json
+    ├── src
+    │   ├── index.ts
+    │   └── route-sans-validation.ts
+    └── tsconfig.json
+184 directories, 1107 files

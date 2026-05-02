@@ -1,50 +1,44 @@
-## Changelog : anssi-portail (30 derniers jours, au 23 avril 2026)
+## Changelog : anssi-portail (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des guides (ajout, suppression, mise à jour), l'ajout d'une fonctionnalité d'abonnement à une newsletter, et l'amélioration de l'expérience utilisateur du simulateur NIS2. Des corrections de sécurité et des optimisations diverses ont également été apportées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration du Design System de la République Française (DSFR) pour une interface plus cohérente et accessible. Le simulateur NIS2 a été considérablement enrichi avec l'ajout de nouvelles étapes et fonctionnalités, et une fonctionnalité d'abonnement à une newsletter a été implémentée. Des corrections de sécurité et des améliorations de la gestion des guides ont également été apportées.
 
 ### Évolutions fonctionnelles
+- **Simulateur NIS2 :** Ajout de nombreuses étapes au simulateur (localisation des services numériques, type de structure, appartenance UE, etc.) et intégration d'une étape de résultat. Possibilité de tester l'éligibilité à NIS2.
+- **Newsletter :** Implémentation d'un formulaire d'abonnement à une newsletter avec validation et intégration à Brevo. Ajout d'une page de confirmation d'abonnement.
 - **Gestion des guides :**
-    - Ajout d'une interface pour ajouter des documents aux guides.
-    - Possibilité de supprimer des documents associés à un guide.
-    - Amélioration de l'affichage et de la gestion des guides dans l'interface d'administration.
-    - Récupération des anciens documents associés aux guides.
-- **Simulateur NIS2 :**
-    - Ajout de nouvelles étapes au simulateur pour une évaluation plus complète.
-    - Intégration d'une fonctionnalité de téléchargement de la documentation.
-    - Possibilité de sélectionner la langue du contenu du simulateur (français et anglais).
-    - Amélioration de l'expérience utilisateur avec des corrections d'affichage et de navigation.
-- **Newsletter :**
-    - Ajout d'un formulaire d'abonnement à une newsletter.
-    - Confirmation d'abonnement après soumission du formulaire.
-    - Intégration avec Brevo pour la gestion des abonnés.
-- **Comparateur :**
-    - Suppression de la date de publication dans le comparateur.
-- **Statistiques :**
-    - Mise à jour de la page des statistiques.
-    - Mise à jour de la fiche RC.
+    - Possibilité de copier le lien court d'un guide.
+    - Ajout d'une étape d'approbation pour les guides.
+    - Amélioration de la gestion des documents associés aux guides (ajout, suppression, affichage).
+    - Génération automatique de visuels pour les guides.
+- **Interface utilisateur :**
+    - Migration de nombreux composants vers le Design System de la République Française (DSFR) pour une meilleure cohérence visuelle et accessibilité.
+    - Amélioration de l'apparence des cartes et des boutons.
+    - Ajout de liens DSFR.
+- **Recherche :** Adaptation de la recherche d'entreprise.
 
 ### Évolutions techniques
 - **Sécurité :**
-    - Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (fast-xml-parser, yaml, picomatch, lodash).
-    - Ajout de la Content Security Policy (CSP) pour Sentry.
+    - Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (dompurify, fast-xml-parser, uuid, postcss, follow-redirects).
+    - Validation des entrées utilisateurs avec Zod pour renforcer la sécurité.
+    - Suppression de l'utilisation de `express-validator`.
 - **Infrastructure :**
-    - Mise à jour de la version de Node.js et des outils de build (vite).
-    - Utilisation de Svelte 5 pour le composant bouton.
-- **Architecture :**
-    - Refactorisation du code pour améliorer la modularité et la maintenabilité.
-    - Utilisation de Cellar pour la gestion des guides.
-    - Extraction de la logique métier dans des classes dédiées.
-- **Tests :**
+    - Mise à jour de Sentry pour la gestion des erreurs.
+    - Amélioration de la gestion des variables d'environnement.
+- **Code :**
+    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+    - Utilisation de TypeScript pour un typage plus strict.
+    - Suppression de code inutile.
+    - Amélioration du formattage du code.
     - Ajout de tests unitaires et d'intégration.
-- **Divers :**
-    - Amélioration de la gestion des assets.
-    - Optimisation des performances.
 
 ### Autres changements
-- Documentation mise à jour pour la nouvelle version de la demande de diagnostic.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout de documentation.
+- Correction de bugs mineurs.
+- Amélioration des messages d'erreur.
+- Mise à jour de la configuration du projet.
+- Ajout de sourcemaps pour Sentry.
+- Correction de l'étirement des images SVG.
+- Ajout de métadonnées SEO (descriptions, attributs alt).
+- Mise à jour de la version de l'UI Kit.
 - Ajout de commentaires et de documentation au code.
-- Amélioration de la gestion des erreurs et des messages d'alerte.
-- Suppression de code inutile et nettoyage du codebase.
-- Mise à jour des dépendances de développement.
