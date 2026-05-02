@@ -1,29 +1,28 @@
-## Changelog : karfur (30 derniers jours, au 22 avril 2026)
+## Changelog : karfur (30 derniers jours, au 2026-05-01)
 
 ### Résumé
-Cette période a été marquée par des corrections de bugs et des améliorations de la stabilité, notamment concernant la gestion des données des opérateurs AGIR, des dispositifs et des traductions. Des efforts ont également été déployés pour améliorer la sécurité en corrigeant des vulnérabilités et en ajoutant des outils de détection de secrets. Enfin, des optimisations de performance ont été apportées à la base de données.
+Cette version apporte des corrections de bugs et des améliorations de performance, notamment au niveau de la gestion des traductions, de la sauvegarde des données et de la stabilité générale de l'application. Des mises à jour de sécurité ont également été intégrées pour corriger des vulnérabilités identifiées. Des améliorations ont été apportées à l'interface utilisateur, notamment pour corriger des problèmes d'affichage et d'accessibilité.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'envoi des fiches à traduire. [#3712](https://github.com/refugies-info/karfur/pull/3712)
-- Correction de l'affichage des tirets dans les infocards. [#3706](https://github.com/refugies-info/karfur/pull/3706)
-- Correction de l'affichage des validations et publications dans l'interface de traduction. [#3721](https://github.com/refugies-info/karfur/pull/3721)
-- Correction d'un bug lié aux coordonnées des opérateurs AGIR. [#3728](https://github.com/refugies-info/karfur/pull/3728)
-- Correction d'un bug lié aux informations de contact de l'AFND dans le département de la Marne. [#3731](https://github.com/refugies-info/karfur/pull/3731)
-- Amélioration de la gestion des participants nuls pour éviter les erreurs. [#3722](https://github.com/refugies-info/karfur/pull/3722)
+- Correction d'un bug empêchant l'affichage correct des infocards (présence de tirets indésirables). [#3706](https://github.com/refugies-info/karfur/pull/3706)
+- Correction d'un problème où les fiches traduites étaient envoyées incorrectement sur l'interface de traduction. [#3712](https://github.com/refugies-info/karfur/pull/3712)
+- Correction d'un bug où le compteur de bénévoles était incorrectement initialisé à 0 sur la page de traduction. [#3736](https://github.com/refugies-info/karfur/pull/3736)
+- Correction d'un problème d'affichage des dates et de formatage des nombres en français, évitant ainsi des erreurs. [#3735](https://github.com/refugies-info/karfur/pull/3735)
+- Correction d'un bug lié à la gestion des opérateurs Agir, notamment au niveau des coordonnées de contact. [#3728](https://github.com/refugies-info/karfur/pull/3728) et [#3721](https://github.com/refugies-info/karfur/pull/3721)
+- Correction d'un bug empêchant la sauvegarde correcte des participants. [#3722](https://github.com/refugies-info/karfur/pull/3722)
 
 ### Évolutions techniques
-- Mise à jour de React en version 19.1.0 et mise à jour des snapshots. [#3650](https://github.com/refugies-info/karfur/pull/3650)
-- Ajout d'un outil de détection de secrets (GitLeaks) au pre-commit hook. [#3699](https://github.com/refugies-info/karfur/pull/3699)
-- Correction de vulnérabilités de sécurité dans les dépendances (next, axios, vite, lodash). [#3714](https://github.com/refugies-info/karfur/pull/3714), [#3694](https://github.com/refugies-info/karfur/pull/3694), [#3691](https://github.com/refugies-info/karfur/pull/3691)
-- Ajout d'index MongoDB pour améliorer les performances des requêtes sur les logs, indicateurs et dispositifs. [#3710](https://github.com/refugies-info/karfur/pull/3710)
-- Optimisation de la récupération du nombre de traducteurs actifs. [#3711](https://github.com/refugies-info/karfur/pull/3711)
-- Refactoring de la gestion des Mongoose Maps pour éviter les erreurs d'autosave. [#3725](https://github.com/refugies-info/karfur/pull/3725), [#3721](https://github.com/refugies-info/karfur/pull/3721)
+- Amélioration des performances de la récupération des statistiques de traduction en optimisant les requêtes. [#3711](https://github.com/refugies-info/karfur/pull/3711)
+- Ajout d'index MongoDB pour améliorer les performances des requêtes sur les logs, les indicateurs et les dispositifs. [#3710](https://github.com/refugies-info/karfur/pull/3710)
+- Refactor de la gestion des cartes (Map) Mongoose pour améliorer la robustesse et éviter les erreurs de sauvegarde. [#3725](https://github.com/refugies-info/karfur/pull/3725) et [#3721](https://github.com/refugies-info/karfur/pull/3721)
+- Mise en place d'un hook pre-commit avec GitLeaks pour détecter les secrets potentiellement exposés dans le code. [#3699](https://github.com/refugies-info/karfur/pull/3699)
+- Correction de plusieurs vulnérabilités de sécurité identifiées par Dependabot, notamment dans les dépendances `lodash`, `path-to-regexp` et `@smithy/config-resolver`. [#3694](https://github.com/refugies-info/karfur/pull/3694), [#3691](https://github.com/refugies-info/karfur/pull/3691) et [#3697](https://github.com/refugies-info/karfur/pull/3697)
 - Simplification du pipeline de release. [#3698](https://github.com/refugies-info/karfur/pull/3698)
 
 ### Autres changements
-- Mise à jour de la déclaration d'accessibilité pour indiquer une conformité partielle. [#3686](https://github.com/refugies-info/karfur/pull/3686)
-- Amélioration de la documentation et du code pour la gestion des erreurs.
-- Correction de problèmes de typage et de formatage du code.
-- Mise à jour des commentaires et de la documentation.
-- Suppression de code inutile et nettoyage du code.
-- Ajout d'un skill pour l'investigation des erreurs serveur. [#3670](https://github.com/refugies-info/karfur/pull/3670)
+- Mise à jour de la documentation pour refléter les changements apportés.
+- Amélioration de la conformité RGAA (accessibilité) de l'application. [#3704](https://github.com/refugies-info/karfur/pull/3704)
+- Suppression de suggestions invalides dans la collection `dispositifs_draft`. [#3718](https://github.com/refugies-info/karfur/pull/3718)
+- Amélioration de la gestion des erreurs et ajout de logs plus informatifs.
+- Correction de problèmes liés à la gestion des variables d'environnement et des configurations.
+- Nettoyage du code et refactoring de certaines parties de l'application.
