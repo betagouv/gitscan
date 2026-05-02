@@ -1,35 +1,40 @@
-## Changelog : reva (30 derniers jours, au 28 avril 2026)
+## Changelog : reva (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'authentification avec FranceConnect, la gestion des rôles et des permissions, ainsi que l'ajout de nouvelles fonctionnalités pour l'administration des jurys et la gestion des candidatures. Des corrections et optimisations ont également été apportées pour améliorer la performance et la sécurité de la plateforme.
+Cette période a été marquée par d'importantes améliorations de l'expérience utilisateur, notamment autour de l'intégration de FranceConnect et de la gestion des candidatures. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des refactorings techniques pour améliorer la maintenabilité du code. Un effort particulier a été fait pour améliorer la gestion des erreurs et fournir des messages plus clairs aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- Intégration améliorée de FranceConnect : simplification du processus de connexion et de gestion des informations utilisateur, notamment pour la gestion des lieux de naissance. [#9233d20](https://github.com/betagouv/reva/issues/9233d20)
-- Gestion des rôles et permissions : ajout de pages d'administration pour la gestion des accès et des rôles des utilisateurs.
-- Gestion des jurys :
-    - Ajout de la possibilité de visualiser et de gérer les résultats des jurys par blocs de compétences. [#851b337](https://github.com/betagouv/reva/issues/851b337)
-    - Amélioration de l'interface de saisie des résultats de jury, avec une meilleure gestion des validations et des incohérences.
-    - Ajout d'une page dédiée à la planification des dates de jury.
-- Amélioration de l'expérience utilisateur :
-    - Ajout de titres et de slogans de service dans les en-têtes des différentes applications (candidat, collectif, admin). [#f724232](https://github.com/betagouv/reva/issues/f724232)
-    - Amélioration de la gestion des erreurs d'authentification avec des messages plus clairs et des liens d'aide.
-- Ajout d'une page pour la gestion des comptes FranceConnect en sandbox.
-- Possibilité de supprimer une candidature (en mode projet). [#1d1c02e](https://github.com/betagouv/reva/issues/1d1c02e)
+- **FranceConnect :** Amélioration significative de l'intégration de FranceConnect, avec une gestion plus robuste des erreurs et des informations utilisateur. Ajout de pages de nettoyage pour les données de test FranceConnect.
+- **Gestion des candidatures :**
+    - Ajout de la possibilité d'abandonner une candidature si le dossier de recevabilité n'a pas été envoyé.
+    - Amélioration du flux d'abonnement aux AAP avec des alertes et des vérifications du SIRET.
+    - Possibilité de supprimer une candidature en cours de projet.
+    - Ajout de la gestion de l'archivage des candidatures.
+- **Administration :**
+    - Refonte de la page de gestion des dates de jury, avec une meilleure réactivité.
+    - Amélioration de l'interface de gestion des résultats de jury, avec affichage par blocs de compétences.
+    - Ajout d'une page pour gérer les comptes locaux des administrateurs.
+    - Ajout de la possibilité de masquer les certifications expirées.
+- **VAE Collective :** Suppression de l'URL avec code de la page cohorte.
+- **Interface utilisateur :** Amélioration de l'affichage des informations de la ville et du département dans les formulaires d'adresse.
 
 ### Évolutions techniques
-- Refonte de l'authentification : refactorisation du code d'authentification avec Keycloak, amélioration de la sécurité et de la gestion des tokens.
-- Amélioration des performances : optimisation des requêtes SQL et ajout d'index pour accélérer l'accès aux données.
-- Mise à jour des dépendances : mise à jour de nombreuses dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- Refactorisation du code : amélioration de la structure du code et suppression de code obsolète.
-- Amélioration des tests : ajout de nouveaux tests unitaires et d'intégration pour garantir la qualité du code.
-- Utilisation de feature flags pour activer/désactiver de nouvelles fonctionnalités de manière progressive.
-- Suppression de code lié à des fonctionnalités obsolètes (inscription candidat, etc.).
-- Amélioration de la gestion des erreurs et des logs.
+- **Refactoring :**
+    - Refactorisation du code d'authentification pour améliorer la sécurité et la maintenabilité.
+    - Suppression de code obsolète lié à d'anciennes fonctionnalités.
+    - Simplification de la logique de vérification des décisions.
+    - Organisation des routes de l'administration en groupes publics et privés.
+- **Performances :** Ajout d'index sur les tables de la base de données pour améliorer les performances des requêtes.
+- **Tests :** Ajout et mise à jour de nombreux tests unitaires et d'intégration.
+- **Dépendances :** Mise à jour de plusieurs dépendances, notamment `fastify`, `lodash`, `@graphql-codegen/*` et `vite`.
+- **Sécurité :** Amélioration de la sécurité en vérifiant l'ID client et le champ `aud` du JWT pour atténuer les attaques de type "confused deputy".
 
 ### Autres changements
 - Mise à jour de la documentation.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Suppression de tables inutilisées dans la base de données. [#67872a3](https://github.com/betagouv/reva/issues/67872a3)
-- Ajustements de la configuration pour améliorer la sécurité et la performance.
-- Amélioration de la gestion des cookies.
-- Correction de problèmes de compatibilité avec différentes versions de navigateurs.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Suppression de tables de base de données inutilisées.
+- Amélioration des messages d'erreur et des journaux.
+- Ajustements de style et de mise en page.
+- Correction de problèmes de compatibilité avec les navigateurs.
+- Ajout de commentaires et de documentation au code.
+- Suppression de feature flags obsolètes.

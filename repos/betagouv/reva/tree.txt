@@ -1916,6 +1916,7 @@
     │   │   │   │       │   │   │   └── appointmentUpdateConfirmation.spec.ts
     │   │   │   │       │   │   └── updateOrViewAppointment.spec.ts
     │   │   │   │       │   └── appointments.spec.ts
+    │   │   │   │       ├── archive-candidacy.spec.ts
     │   │   │   │       ├── feasibility
     │   │   │   │       │   └── dematerialized-feasibility-file
     │   │   │   │       │       ├── dematerialized-feasibility-file-aap-decision.spec.ts
@@ -4321,6 +4322,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260428135602_add_candidate_drop_out_v2_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260429122643_add_reasons_to_candidacy_archiving_reason
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260430134150_add_drop_out_by_candidate_to_candidacy_drop_out_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4794,6 +4799,9 @@
     │   │   │   │   │   │   │   │   │       ├── feasibility.hook.ts
     │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   ├── (general)
+    │   │   │   │   │   │   │   │   │   ├── archive
+    │   │   │   │   │   │   │   │   │   │   ├── archive.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── candidacy-deleted
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── candidacy-inactif
@@ -4813,6 +4821,9 @@
     │   │   │   │   │   │   │   │   │   │   │       └── ready-for-jury-estimated-date-tab
     │   │   │   │   │   │   │   │   │   │   │           └── ReadyForJuryEstimatedAtTab.tsx
     │   │   │   │   │   │   │   │   │   │   ├── dossierDeValidation.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── dropout
+    │   │   │   │   │   │   │   │   │   │   ├── dropout.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── end-accompagnement
     │   │   │   │   │   │   │   │   │   │   ├── end-accompagnement.hook.ts
@@ -5096,6 +5107,7 @@
     │   │       │   ├── create-candidacy-autonome.spec.ts
     │   │       │   ├── create-candidacy-vae.spec.ts
     │   │       │   ├── create-certification-page.spec.ts
+    │   │       │   ├── dropout-candidacy.spec.ts
     │   │       │   ├── project-certification-page.spec.ts
     │   │       │   └── select-candidacy.spec.ts
     │   │       ├── dashboard
@@ -5879,4 +5891,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1976 directories, 3905 files
+1980 directories, 3913 files
