@@ -1,3 +1,14 @@
+2026-04-30T10:16:26+02:00 - 0a5e4a84 - Raphaël Courivaud : remove old columns events
+2026-04-30T09:53:32+02:00 - 1d94937f - Raphaël Courivaud : Merge branch 'main' of github.com:MTES-MCT/zero-logement-vacant
+2026-04-30T09:53:19+02:00 - d992ac39 - Raphaël Courivaud : remove new column from events
+2026-04-26T11:27:36+02:00 - f38aa59d - Raphaël Courivaud : feat(dbt): add owner_uid (UUID) to owners and owner_housing tables
+2026-04-24T11:43:35+02:00 - a8ec0a3d - Raphaël Courivaud : fix(dbt): exclude 9 owner_housing rows with no idpersonne, idprodroit, or idprocpte
+2026-04-24T11:31:14+02:00 - 8d9ad4f5 - Raphaël Courivaud : fix(dbt): prefer rows with birth_date in owners dedup (ORDER BY NULLS LAST)
+2026-04-23T11:26:28+02:00 - 399797ce - Raphaël Courivaud : perf(dbt): split matching into 3 separate TABLE models to avoid OOM
+2026-04-23T11:21:24+02:00 - c3aa6a54 - Raphaël Courivaud : feat(dbt): add LOVAC internal matching as Phase 1 before FF25
+2026-04-22T11:47:11+02:00 - 77af55e1 - Raphaël Courivaud : perf(dbt): split owner matching into 3 tables to avoid OOM on Pulse tier
+2026-04-22T10:19:25+02:00 - 7000d604 - Raphaël Courivaud : perf(dbt): materialize gold tables + owner_matching as TABLE for memory efficiency
+2026-04-22T08:13:30+02:00 - 4b744e03 - Raphaël Courivaud : feat(dbt): add cascade matching T0-T2 for address-unmatched owners
 2026-04-21T17:31:12+02:00 - 944da2ce - Falinor : docs: add spec for old campaign flow removal
 2026-04-21T17:31:12+02:00 - 5cc58a80 - Falinor : docs: update spec with redis healthcheck removal
 2026-04-21T11:34:15+02:00 - c755b755 - Andrea Gueugnaut : Merge pull request #1706 from MTES-MCT/build/reduce-bundle-size
@@ -33,6 +44,7 @@
 2026-04-20T23:34:51+02:00 - 35802ea5 - Falinor : chore: record vite8 benchmark results
 2026-04-20T23:34:51+02:00 - 32a01c68 - Falinor : chore(frontend): replace plugin-react-swc with plugin-react (oxc)
 2026-04-20T23:34:49+02:00 - 8faf78c7 - Falinor : chore: fix knip config and clean up unlisted/unused dependencies
+2026-04-20T21:17:13+02:00 - 5fc692aa - Raphaël Courivaud : feat(dbt): improve address matching with normalization rules and lower threshold to 0.85
 2026-04-20T19:30:48+02:00 - 44dc3817 - Falinor : chore: add missing types back
 2026-04-20T19:30:46+02:00 - 535a97cd - Falinor : chore: remove unused dependencies
 2026-04-20T19:30:41+02:00 - e5affb69 - Falinor : chore: sync nx workspace
