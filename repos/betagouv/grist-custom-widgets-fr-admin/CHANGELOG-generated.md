@@ -1,12 +1,10 @@
-## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 31 mars 2026)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 14 avril 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour techniques concernant les dépendances du projet. Les versions de plusieurs librairies ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité. Aucune nouvelle fonctionnalité ou correction visible pour l'utilisateur n'a été déployée durant cette période.
+Ce changelog fait état d'une mise à jour de la version de Next.js, le framework utilisé pour construire l'interface utilisateur des widgets. Cette mise à jour vise à bénéficier des dernières corrections de bugs et améliorations de performance offertes par Next.js.
 
 ### Évolutions techniques
-- Mise à jour de Next.js vers la version 16.1.7.
-- Mise à jour de la librairie `flatted` vers la version 3.4.2.
-- Mise à jour de la librairie `picomatch`.
+- Mise à jour de Next.js de la version 16.1.7 à la version 16.2.3 [#175](https://github.com/betagouv/grist-custom-widgets-fr-admin/pull/175).
 
 ### Autres changements
-Aucun autre changement significatif n'a été apporté durant cette période.
+- Aucune autre modification significative n'a été apportée au projet durant cette période.
