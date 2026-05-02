@@ -1,22 +1,27 @@
-## Changelog : sill-deploy (30 derniers jours, au 17 mai 2026)
+## Changelog : sill-deploy (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion de la configuration de l'application, permettant une plus grande flexibilité et une meilleure propagation des paramètres. Des corrections ont également été apportées à l'interface web, notamment pour la gestion des systèmes d'exploitation et la résolution de problèmes liés à la politique de sécurité du contenu (CSP). Enfin, l'intégration de workflows de déploiement SILL a été ajoutée.
+Ce mois-ci, les améliorations se concentrent sur l'amélioration de la provenance des données, l'optimisation des performances de l'API et l'ajout de fonctionnalités de configuration. Des corrections ont également été apportées pour résoudre des problèmes de blocage de contenu par la politique de sécurité du contenu (CSP) et améliorer la robustesse de l'API face aux erreurs externes.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des systèmes d'exploitation dans l'interface web : ajout d'options pour les systèmes mobiles et typage plus précis. [#500](https://github.com/codegouvfr/sill-deploy/issues/500)
-- Possibilité de définir une configuration via des fichiers, permettant une gestion plus flexible des paramètres de l'application.
-- Propagation de la nouvelle gestion de configuration à travers l'application.
-- Correction du suivi des changements de route dans l'application monopage (SPA) pour l'analytics, précédemment bloqué par la CSP.
+- Ajout d'une table de comparaison pour afficher la provenance des sources dans la modale DSFR.
+- Possibilité de configurer l'application via des fichiers, permettant une gestion plus flexible de la configuration.
+- Ajout d'options pour les systèmes d'exploitation mobiles manquants et amélioration de la sécurité des types pour les systèmes d'exploitation dans l'interface web.
+- Amélioration du suivi des changements de route dans l'application web pour les outils d'analyse.
 
 ### Évolutions techniques
-- Ajout des workflows de déploiement SILL et synchronisation avec l'upstream.
-- Refactorisation de la gestion des fonctionnalités "gateway".
-- Modification de l'ordre des migrations.
-- Amélioration de la configuration de la CSP locale pour permettre l'affichage des images.
-- Ajout de `worker-src` à la CSP par défaut pour les workers Sentry.
+- Optimisation de la récupération et de l'affichage des logos Wikidata et des URL associées pour améliorer les performances de l'API.
+- Refactorisation du type `SoftwareData` et suppression des colonnes de contenu de la table `softwares` pour simplifier la structure de la base de données.
+- Amélioration de la gestion des erreurs et du cache pour l'API Wikidata afin d'éviter les erreurs 429 (limitation de débit).
+- Unification des modifications utilisateur en tant que source de données et affichage de la provenance des données.
+- Mise à jour de la politique de sécurité du contenu (CSP) pour autoriser les sources d'images HTTPS arbitraires et les workers Sentry.
+- Modification de la gestion des fonctionnalités du gateway.
+- Correction d'une incompatibilité de type GitBeaker.
+- Ajout de workflows de déploiement SILL et de synchronisation avec le dépôt upstream.
 
 ### Autres changements
-- Mise à jour de la version de l'application.
-- Correction des dépendances de test.
-- Documentation améliorée concernant la configuration de la CSP.
+- Amélioration de la documentation locale pour la configuration de la CSP.
+- Correction de tests et dépendances (voir [#500](https://github.com/codegouvfr/sill-deploy/issues/500)).
+- Nettoyage de code et suppression d'artefacts de provenance et de revue.
+- Plusieurs mises à jour de version (build bumps).
+- Réorganisation des migrations.
