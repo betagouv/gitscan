@@ -1,9 +1,14 @@
-## Changelog : aldo (30 derniers jours)
+## Changelog : aldo (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'expérience utilisateur, notamment en corrigeant un bug sur le bouton de réinitialisation et en améliorant l'ergonomie de l'application. Ces changements visent à faciliter l'utilisation d'Aldo pour l'évaluation du stock de carbone des sols et forêts.
+Cette mise à jour apporte des améliorations à l'expérience utilisateur, notamment un message d'information concernant un décalage de version pour les données Mélèze et une correction pour les communes sans surface forestière. Ces changements visent à améliorer la clarté des informations et la fiabilité des calculs.
 
 ### Évolutions fonctionnelles
-- Correction du comportement du bouton "réinitialiser" pour assurer son bon fonctionnement. (#147)
-- L'application reste sur la même page après la soumission d'un formulaire, améliorant ainsi la fluidité de l'expérience utilisateur. (#147)
-- Amélioration de l'ergonomie avec un regroupement de lignes pour une meilleure lisibilité. (#146)
+- Ajout d'un message d'annonce informant les utilisateurs d'un décalage de version pour les données Mélèze sur la page d'accueil. [#181](https://github.com/incubateur-ademe/aldo/pull/181)
+- Correction d'une erreur qui empêchait le bon fonctionnement de l'application pour les communes sans surface forestière. [#178](https://github.com/incubateur-ademe/aldo/issues/178)
+
+### Évolutions techniques
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Aucune autre modification notable.
