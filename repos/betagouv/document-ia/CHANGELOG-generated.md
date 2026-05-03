@@ -1,27 +1,21 @@
-## Changelog : document-ia (30 derniers jours, au 24 avril 2026)
+## Changelog : document-ia (30 derniers jours, au 28 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration de la précision de l'identification des informations sur les bulletins de salaire, l'ajout de nouvelles métriques pour évaluer les performances du système, et l'amélioration de la flexibilité du workflow de classification des documents. Une nouvelle page de playground pour les prompts a également été ajoutée à l'outil d'évaluation. Enfin, une version 1.0.2 a été publiée.
+Ce mois-ci, les améliorations se concentrent sur l'amélioration de la précision et de la flexibilité de l'extraction d'informations, notamment pour les bulletins de salaire. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'évaluation des prompts et restreindre le workflow de classification à certains types de documents. Des améliorations techniques ont également été apportées pour optimiser le CI/CD et la gestion des métriques.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'identification des informations relatives à l'identité salariale sur les bulletins de salaire. [#62](https://github.com/betagouv/document-ia/pull/62)
-- Ajout d'une page de playground pour les prompts dans l'outil d'évaluation Document IA Evals, permettant de tester et d'affiner les prompts utilisés. [#56](https://github.com/betagouv/document-ia/issues/56)
-- Le workflow de classification des documents est désormais restreint à des types de documents spécifiques. [#54](https://github.com/betagouv/document-ia/issues/54)
-- Correction d'un bug permettant au workflow de classification de retourner la valeur "autre". [#58](https://github.com/betagouv/document-ia/issues/58)
-- Correction d'un bug lié aux dates invalides après l'extraction. [#57](https://github.com/betagouv/document-ia/issues/57)
+- Amélioration de l'extraction des informations relatives à l'identité du salarié sur les bulletins de salaire. [#62](https://github.com/betagouv/document-ia/pull/62)
+- Ajout de champs `raw_data` et `doc_type` à tous les documents 2D, connus ou non, pour une meilleure gestion des données. [#64](https://github.com/betagouv/document-ia/pull/64)
+- Restriction du workflow de classification à des types de documents spécifiques. [#54](https://github.com/betagouv/document-ia/pull/54)
+- Ajout d'une nouvelle page "playground" pour tester et évaluer les prompts utilisés par le système. [#56](https://github.com/betagouv/document-ia/pull/56)
 
 ### Évolutions techniques
-- Ajout d'une nouvelle métrique `TOKEN_SET_EQUALITY` pour évaluer la similarité des tokens. [#61](https://github.com/betagouv/document-ia/pull/61)
-- Possibilité de définir une liste de métriques. [#59](https://github.com/betagouv/document-ia/pull/59)
-- Amélioration de la configuration du CI/CD, notamment l'ajout d'un workflow dispatch et la vérification des prompts rendus. [#60](https://github.com/betagouv/document-ia/pull/60)
-- Refactorisation des modèles d'extraction de documents pour supprimer les alias. [#60](https://github.com/betagouv/document-ia/pull/60)
-- Mise à jour de la librairie `zxing-cpp` dans le worker. [#59](https://github.com/betagouv/document-ia/pull/59)
-- Mise à jour de la librairie `2ddoc-parser`. [#55](https://github.com/betagouv/document-ia/pull/55)
+- Amélioration du CI/CD avec l'ajout de workflows dispatch et la déclenchement des tests sur les branches autres que `main` ou `develop`.
+- Introduction d'une nouvelle métrique `TOKEN_SET_EQUALITY` pour évaluer la qualité des prompts.
+- Refactorisation de la gestion des exemples pour les prompts, avec l'ajout d'un attribut `examples` à `BaseDocumentTypeSchema`.
+- Suppression des alias des modèles d'extraction de documents.
+- Support d'une liste de `Metric`. [#61](https://github.com/betagouv/document-ia/pull/61)
 
 ### Autres changements
-- Publication de la version 1.0.2.
-- Ajout d'exemples et correction de types de champs pour les schémas de documents.
-- Ajout de l'attribut `examples` aux schémas `BaseDocumentTypeSchema`.
-- Amélioration de la configuration du CI pour `document-ia-evals`.
-- Correction de linting.
-- Bump de `poetry.lock`.
+- Mise à jour de la version du projet à 1.0.3.
+- Corrections de linting et améliorations de la qualité du code.
