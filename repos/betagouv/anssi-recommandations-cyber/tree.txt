@@ -14,6 +14,8 @@
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
+├── donnees
+│   └── faq_reponses_maitrisees.mapping.json
 ├── migrations
 │   ├── 0001_initial_schema.sql
 │   ├── 0002_cree_table_conversation.sql
@@ -59,6 +61,7 @@
 │   │   ├── fast_api
 │   │   │   └── fabrique_adaptateur_base_de_donnees.py
 │   │   ├── logger.py
+│   │   ├── mapping_reponses_maitrisees.py
 │   │   ├── postgres
 │   │   │   ├── encodeurs_json.py
 │   │   │   └── execute_migration.py
@@ -107,8 +110,9 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── test_client_albert_api.py
 │   │   │   └── test_fabrique_client_albert.py
-│   │   └── chiffrement
-│   │       └── test_chiffrement.py
+│   │   ├── chiffrement
+│   │   │   └── test_chiffrement.py
+│   │   └── test_mapping_reponses_maitrisees.py
 │   ├── mocks
 │   │   ├── adaptateur_chiffrement.py
 │   │   ├── client_albert_de_test.py
@@ -125,6 +129,7 @@
 │   ├── services
 │   │   ├── conftest.py
 │   │   ├── test_fabrique_service_albert.py
+│   │   ├── test_filtre_reponses_maitrisees.py
 │   │   ├── test_service_albert.py
 │   │   ├── test_service_albert_chunk_api.py
 │   │   └── test_service_albert_jeopardy.py
@@ -140,13 +145,15 @@
 │   ├── .prettierrc
 │   ├── Dockerfile
 │   ├── README.md
-│   ├── cgu.html
 │   ├── eslint.config.js
 │   ├── index.html
 │   ├── package.json
+│   ├── pages
+│   │   ├── cgu.html
+│   │   ├── faq.html
+│   │   └── politique-confidentialite.html
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
-│   ├── politique-confidentialite.html
 │   ├── public
 │   │   ├── assets
 │   │   │   └── matomo.js
@@ -182,6 +189,7 @@
 │   ├── src
 │   │   ├── App.svelte
 │   │   ├── Cgu.svelte
+│   │   ├── Faq.svelte
 │   │   ├── PolitiqueConfidentialite.svelte
 │   │   ├── actions.svelte.ts
 │   │   ├── app.css
@@ -203,6 +211,7 @@
 │   │   │   └── validateur.ts
 │   │   ├── directives
 │   │   │   └── infobulle.ts
+│   │   ├── faq.ts
 │   │   ├── fonts.css
 │   │   ├── main.ts
 │   │   ├── politique-confidentialite.ts
@@ -221,4 +230,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-44 directories, 179 files
+46 directories, 186 files
