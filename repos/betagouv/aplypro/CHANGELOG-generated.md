@@ -1,35 +1,24 @@
-## Changelog : aplypro (30 derniers jours, au 24 avril 2026)
+## Changelog : aplypro (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur la page de rectification des PFMP (Primes de Formation en Milieu Professionnel), avec une attention particulière portée à la correction de bugs et à l'amélioration de l'expérience utilisateur. Des corrections liées à l'adresse et aux paiements MASA ont également été apportées, ainsi que des améliorations concernant la gestion des élèves et de leur scolarité.
+Ce mois-ci, les améliorations se concentrent sur la page de rectification des paiements (PFMP), avec des corrections de bugs, des améliorations de l'interface utilisateur et une meilleure gestion des erreurs. Des améliorations ont également été apportées à la gestion des adresses et à la robustesse du système, notamment en cas d'échec de la communication avec l'ASP.
 
 ### Évolutions fonctionnelles
-- Amélioration de la page de rectification des PFMP :
-    - Affichage des messages d'erreur du formulaire de rectification. [#1948]
-    - Correction de plusieurs problèmes mineurs sur cette page. [#1947]
-    - Correction du problème de réinitialisation du champ IBAN.
-    - Correction du bouton de suppression du RIB.
-    - Collage du titre de la page de rectification.
-- Déblocage des paiements MASA. [#1933]
-- Gestion de la double scolarité d'un élève dans une même classe. [#1923]
-- Affichage d'informations complémentaires sur la page de détail de l'élève.
-- Modification visuelle des informations de l'élève.
-- Modification de la logique et de l'affichage du bouton d'abrogation.
-- Correction d'un bug empêchant la recherche d'étudiants.
+- **Rectification PFMP :** Plusieurs corrections de bugs ont été apportées à la page de rectification, améliorant la stabilité et la fiabilité du processus.  Les champs RIB et IBAN sont maintenant gérés correctement, avec des corrections liées à leur effacement et à la recherche d'étudiants. [#1934](https://github.com/betagouv/aplypro/issues/1934), [#1947](https://github.com/betagouv/aplypro/issues/1947)
+- **Gestion des adresses :** Amélioration de la gestion des corrections d'adresse via l'ASP, avec l'ajout d'un modèle `ASP::AdresseCorrectionRequest` pour formaliser l'intégration et la gestion des retours. [#1941](https://github.com/betagouv/aplypro/issues/1941)
+- **Codes d'extension de voie :**  Gestion des codes d'extension de voie autorisés par l'ASP. [#1951](https://github.com/betagouv/aplypro/issues/1951)
+- **Validation :** Amélioration des messages d'erreur de validation sur la page de rectification, avec traduction en français. [#1948](https://github.com/betagouv/aplypro/issues/1948)
+- **Gestion des paiements :** Ajout d'un mécanisme de relance en cas d'échec de l'envoi d'une correction. [#1953](https://github.com/betagouv/aplypro/issues/1953)
 
 ### Évolutions techniques
-- Intégration de `ASP::AdresseCorrectionRequest` pour formaliser l'intégration et la gestion des retours de la correction d'adresse. [#1941]
-- Centralisation de la définition de la méthode `overpaid?`.
-- Pré-calcul du validateur pour la rectification PFMP afin d'optimiser les performances.
-- Amélioration de la logique de déduplication.
-- Correction de plusieurs erreurs de type dans le code.
-- Mise à jour de la logique de gestion des codes INSEE.
-- Amélioration de la gestion des majuscules/minuscules pour la correction d'adresse.
-- Correction de tests et ajout de tests fonctionnels sur la page de rectification.
-- Suppression de code inutile et nettoyage du code.
+- **Refactoring :** Centralisation de la logique de détermination du statut "overpaid?".
+- **Tests :** Ajout de tests unitaires et de tests fonctionnels pour la page de rectification, améliorant la couverture et la qualité du code.
+- **Optimisations :** Pré-calcul du validateur sur la page de rectification PFMP pour améliorer les performances.
+- **Adresseable :** Mise à jour de la gem `addressable` de la version 2.8.9 à la version 2.9.0.
+- **Rack-session :** Mise à jour de la gem `rack-session` de la version 2.1.1 à la version 2.1.2.
 
 ### Autres changements
-- Traduction des messages d'erreur en français.
-- Mise à jour de certaines dépendances : `addressable`, `rack-session`, `rack`.
-- Bump de version : 2.9.1, 2.9.2, 2.9.3, 2.9.4, 2.10.0.
-- Correction de Rubocop.
+- **Documentation :** Amélioration de la documentation et des commentaires dans le code.
+- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+- **Rubocop :** Correction de plusieurs avertissements Rubocop.
+- **Version :** La version de l'application a été mise à jour à 2.10.1.
