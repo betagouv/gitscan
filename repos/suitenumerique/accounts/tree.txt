@@ -48,6 +48,7 @@
 │   ├── update-git-submodule.sh
 │   ├── update_openapi_schema
 │   └── updatekeys.sh
+├── compose-e2e.yml
 ├── compose.yml
 ├── crowdin
 │   └── config.yml
@@ -70,7 +71,7 @@
 │               │   └── entrypoint
 │               └── etc
 │                   └── gunicorn
-│                       └── impress.py
+│                       └── accounts.py
 ├── docs
 │   ├── assets
 │   │   └── europe_opensource.png
@@ -98,6 +99,7 @@
     │   ├── __init__.py
     │   ├── accounts
     │   │   ├── __init__.py
+    │   │   ├── celery_app.py
     │   │   ├── configuration
     │   │   │   └── theme
     │   │   │       └── default.json
@@ -130,7 +132,8 @@
     │   │   ├── management
     │   │   │   ├── __init__.py
     │   │   │   └── commands
-    │   │   │       └── __init__.py
+    │   │   │       ├── __init__.py
+    │   │   │       └── setup_oidc_loadtest.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_initial.py
@@ -172,6 +175,9 @@
     │   │       ├── __init__.py
     │   │       └── test_commands_create_demo.py
     │   ├── locale
+    │   │   ├── de_DE
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
     │   │   ├── en_US
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
@@ -201,6 +207,741 @@
     │   ├── pyproject.toml
     │   ├── setup.py
     │   └── uv.lock
+    ├── frontend
+    │   ├── .prettierrc.js
+    │   ├── Dockerfile
+    │   ├── apps
+    │   │   ├── accounts
+    │   │   │   ├── .env
+    │   │   │   ├── .env.development
+    │   │   │   ├── .env.test
+    │   │   │   ├── .gitignore
+    │   │   │   ├── .prettierignore
+    │   │   │   ├── .stylelintignore
+    │   │   │   ├── README.md
+    │   │   │   ├── conf
+    │   │   │   │   └── default.conf
+    │   │   │   ├── cunningham.ts
+    │   │   │   ├── eslint.config.mjs
+    │   │   │   ├── next.config.js
+    │   │   │   ├── package.json
+    │   │   │   ├── public
+    │   │   │   │   ├── assets
+    │   │   │   │   │   ├── favicon-dark-dsfr.png
+    │   │   │   │   │   ├── favicon-dark.png
+    │   │   │   │   │   ├── favicon-dsfr.ico
+    │   │   │   │   │   ├── favicon-dsfr.png
+    │   │   │   │   │   ├── favicon-light.png
+    │   │   │   │   │   ├── fonts
+    │   │   │   │   │   │   └── emoji
+    │   │   │   │   │   │       └── fallback.png
+    │   │   │   │   │   ├── icon-docs-dsfr-v2.png
+    │   │   │   │   │   ├── icon-docs-dsfr-v2.svg
+    │   │   │   │   │   ├── icon-docs-dsfr.svg
+    │   │   │   │   │   ├── icon-docs.svg
+    │   │   │   │   │   ├── img-not-found.svg
+    │   │   │   │   │   ├── logo-gouv.png
+    │   │   │   │   │   ├── logo-gouv.svg
+    │   │   │   │   │   ├── logo-suite-numerique.png
+    │   │   │   │   │   └── mail-header-background.png
+    │   │   │   │   └── favicon.ico
+    │   │   │   ├── scripts
+    │   │   │   │   ├── copy-emoji.mjs
+    │   │   │   │   ├── postbuild.mjs
+    │   │   │   │   └── prebuild.mjs
+    │   │   │   ├── src
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── APIError.ts
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   ├── APIError.test.ts
+    │   │   │   │   │   │   ├── config.test.ts
+    │   │   │   │   │   │   ├── fetchApi.test.tsx
+    │   │   │   │   │   │   ├── helpers.test.tsx
+    │   │   │   │   │   │   └── utils.test.ts
+    │   │   │   │   │   ├── config.ts
+    │   │   │   │   │   ├── fetchApi.ts
+    │   │   │   │   │   ├── helpers.tsx
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   └── utils.ts
+    │   │   │   │   ├── assets
+    │   │   │   │   │   └── icons
+    │   │   │   │   │       ├── doc-all.svg
+    │   │   │   │   │       ├── error-coffee.png
+    │   │   │   │   │       ├── error-planetes.png
+    │   │   │   │   │       ├── icon-401.png
+    │   │   │   │   │       ├── icon-403.png
+    │   │   │   │   │       ├── icon-404.svg
+    │   │   │   │   │       ├── icon-docs.svg
+    │   │   │   │   │       ├── icon-group.svg
+    │   │   │   │   │       ├── icon-group2.svg
+    │   │   │   │   │       ├── icon-user.svg
+    │   │   │   │   │       └── ui-kit
+    │   │   │   │   │           ├── 1-circle-filled.svg
+    │   │   │   │   │           ├── 1-filled.svg
+    │   │   │   │   │           ├── 10-circle-filled.svg
+    │   │   │   │   │           ├── 11-circle-filled.svg
+    │   │   │   │   │           ├── 12-circle-filled.svg
+    │   │   │   │   │           ├── 13-circle-filled.svg
+    │   │   │   │   │           ├── 14-circle-filled.svg
+    │   │   │   │   │           ├── 15-circle-filled.svg
+    │   │   │   │   │           ├── 16-circle-filled.svg
+    │   │   │   │   │           ├── 17-circle-filled.svg
+    │   │   │   │   │           ├── 18-circle-filled.svg
+    │   │   │   │   │           ├── 19-circle-filled.svg
+    │   │   │   │   │           ├── 2-circle-filled.svg
+    │   │   │   │   │           ├── 20-circle-filled.svg
+    │   │   │   │   │           ├── 3-circle-filled.svg
+    │   │   │   │   │           ├── 4-circle-filled.svg
+    │   │   │   │   │           ├── 4k.svg
+    │   │   │   │   │           ├── 5-circle-filled.svg
+    │   │   │   │   │           ├── 6-circle-filled.svg
+    │   │   │   │   │           ├── 7-circle-filled.svg
+    │   │   │   │   │           ├── 8-circle-filled.svg
+    │   │   │   │   │           ├── 9-circle-filled.svg
+    │   │   │   │   │           ├── Rectangle 3467384.svg
+    │   │   │   │   │           ├── Vector 736.svg
+    │   │   │   │   │           ├── account_circle.svg
+    │   │   │   │   │           ├── account_tree.svg
+    │   │   │   │   │           ├── add.svg
+    │   │   │   │   │           ├── add_*.svg  (7 files)
+    │   │   │   │   │           ├── admin_panel_settings.svg
+    │   │   │   │   │           ├── all.svg
+    │   │   │   │   │           ├── apps.svg
+    │   │   │   │   │           ├── arrow-*.svg  (11 files)
+    │   │   │   │   │           ├── arrow_*.svg  (12 files)
+    │   │   │   │   │           ├── article.svg
+    │   │   │   │   │           ├── article_shortcut.svg
+    │   │   │   │   │           ├── attach_file.svg
+    │   │   │   │   │           ├── autorenew.svg
+    │   │   │   │   │           ├── back_hand-1.svg
+    │   │   │   │   │           ├── back_hand.svg
+    │   │   │   │   │           ├── background_replace.svg
+    │   │   │   │   │           ├── backup.svg
+    │   │   │   │   │           ├── bar_chart-filled.svg
+    │   │   │   │   │           ├── bento.svg
+    │   │   │   │   │           ├── block.svg
+    │   │   │   │   │           ├── blur.svg
+    │   │   │   │   │           ├── blur_on.svg
+    │   │   │   │   │           ├── bolt.svg
+    │   │   │   │   │           ├── book-filled.svg
+    │   │   │   │   │           ├── book.svg
+    │   │   │   │   │           ├── book_2-filled.svg
+    │   │   │   │   │           ├── bookmark-filled.svg
+    │   │   │   │   │           ├── bookmark_add.svg
+    │   │   │   │   │           ├── bookmark_remove.svg
+    │   │   │   │   │           ├── bubble-*.svg  (5 files)
+    │   │   │   │   │           ├── bubble.svg
+    │   │   │   │   │           ├── bug.svg
+    │   │   │   │   │           ├── building.svg
+    │   │   │   │   │           ├── burger.svg
+    │   │   │   │   │           ├── cable.svg
+    │   │   │   │   │           ├── calendar_clock.svg
+    │   │   │   │   │           ├── calendar_month-filled.svg
+    │   │   │   │   │           ├── calendar_view_month.svg
+    │   │   │   │   │           ├── call.svg
+    │   │   │   │   │           ├── call_end-filled.svg
+    │   │   │   │   │           ├── call_end.svg
+    │   │   │   │   │           ├── call_merge.svg
+    │   │   │   │   │           ├── cam-off-alert.svg
+    │   │   │   │   │           ├── cancel-filled.svg
+    │   │   │   │   │           ├── cancel.svg
+    │   │   │   │   │           ├── captive_portal.svg
+    │   │   │   │   │           ├── car-filled.svg
+    │   │   │   │   │           ├── chart-filled.svg
+    │   │   │   │   │           ├── chat.svg
+    │   │   │   │   │           ├── chat_bubble.svg
+    │   │   │   │   │           ├── chat_error.svg
+    │   │   │   │   │           ├── check.svg
+    │   │   │   │   │           ├── check_circle-filled.svg
+    │   │   │   │   │           ├── check_circle.svg
+    │   │   │   │   │           ├── checkmark-1.svg
+    │   │   │   │   │           ├── checkmark-filled.svg
+    │   │   │   │   │           ├── checkmark-shield.svg
+    │   │   │   │   │           ├── checkmark.svg
+    │   │   │   │   │           ├── chevron-double-up.svg
+    │   │   │   │   │           ├── chevron_backward.svg
+    │   │   │   │   │           ├── chevron_downward.svg
+    │   │   │   │   │           ├── chevron_forward.svg
+    │   │   │   │   │           ├── chevron_upward.svg
+    │   │   │   │   │           ├── clock-arrow-circlepath.svg
+    │   │   │   │   │           ├── clock.svg
+    │   │   │   │   │           ├── clock_*.svg  (6 files)
+    │   │   │   │   │           ├── close.svg
+    │   │   │   │   │           ├── cloud-arrow.svg
+    │   │   │   │   │           ├── cloud_off.svg
+    │   │   │   │   │           ├── co_present.svg
+    │   │   │   │   │           ├── compress.svg
+    │   │   │   │   │           ├── computer_arrow_up.svg
+    │   │   │   │   │           ├── content_copy.svg
+    │   │   │   │   │           ├── controls.svg
+    │   │   │   │   │           ├── copy.svg
+    │   │   │   │   │           ├── corporate_fare.svg
+    │   │   │   │   │           ├── crop_free.svg
+    │   │   │   │   │           ├── crop_square.svg
+    │   │   │   │   │           ├── csv-export.svg
+    │   │   │   │   │           ├── csv-import.svg
+    │   │   │   │   │           ├── cube.svg
+    │   │   │   │   │           ├── curlybraces.svg
+    │   │   │   │   │           ├── dangerous.svg
+    │   │   │   │   │           ├── dashboard.svg
+    │   │   │   │   │           ├── delete-filled.svg
+    │   │   │   │   │           ├── delete.svg
+    │   │   │   │   │           ├── desktop_mac-filled.svg
+    │   │   │   │   │           ├── directions_car-filled.svg
+    │   │   │   │   │           ├── divergence.svg
+    │   │   │   │   │           ├── doc-*.svg  (6 files)
+    │   │   │   │   │           ├── doc.svg
+    │   │   │   │   │           ├── dock_to_left.svg
+    │   │   │   │   │           ├── domain.svg
+    │   │   │   │   │           ├── download.svg
+    │   │   │   │   │           ├── draft.svg
+    │   │   │   │   │           ├── drag_indicator.svg
+    │   │   │   │   │           ├── drive-alert.svg
+    │   │   │   │   │           ├── drive.svg
+    │   │   │   │   │           ├── drive_folder_upload.svg
+    │   │   │   │   │           ├── eco-filled.svg
+    │   │   │   │   │           ├── edit.svg
+    │   │   │   │   │           ├── edit_off.svg
+    │   │   │   │   │           ├── empty.svg
+    │   │   │   │   │           ├── error.svg
+    │   │   │   │   │           ├── euro-filled.svg
+    │   │   │   │   │           ├── event_list.svg
+    │   │   │   │   │           ├── exclamation.svg
+    │   │   │   │   │           ├── exit_to_app.svg
+    │   │   │   │   │           ├── expand.svg
+    │   │   │   │   │           ├── face-remove.svg
+    │   │   │   │   │           ├── face.svg
+    │   │   │   │   │           ├── fast-backward.svg
+    │   │   │   │   │           ├── fast-forward.svg
+    │   │   │   │   │           ├── fast_forward.svg
+    │   │   │   │   │           ├── fast_rewind.svg
+    │   │   │   │   │           ├── feedback.svg
+    │   │   │   │   │           ├── file-*.svg  (5 files)
+    │   │   │   │   │           ├── file.svg
+    │   │   │   │   │           ├── filter-notification.svg
+    │   │   │   │   │           ├── filter_list.svg
+    │   │   │   │   │           ├── flag_2-filled.svg
+    │   │   │   │   │           ├── flex_wrap.svg
+    │   │   │   │   │           ├── folder-*.svg  (8 files)
+    │   │   │   │   │           ├── folder.svg
+    │   │   │   │   │           ├── food-*.svg  (8 files)
+    │   │   │   │   │           ├── format-text.svg
+    │   │   │   │   │           ├── format_*.svg  (15 files)
+    │   │   │   │   │           ├── forward_10.svg
+    │   │   │   │   │           ├── function.svg
+    │   │   │   │   │           ├── functions.svg
+    │   │   │   │   │           ├── gauge.svg
+    │   │   │   │   │           ├── gear-filled.svg
+    │   │   │   │   │           ├── gear-rounded-filled.svg
+    │   │   │   │   │           ├── gear-rounded-notif.svg
+    │   │   │   │   │           ├── gear-rounded.svg
+    │   │   │   │   │           ├── globe.svg
+    │   │   │   │   │           ├── grade-filled.svg
+    │   │   │   │   │           ├── grade.svg
+    │   │   │   │   │           ├── graphic_eq.svg
+    │   │   │   │   │           ├── group-filled.svg
+    │   │   │   │   │           ├── group.svg
+    │   │   │   │   │           ├── groups-1.svg
+    │   │   │   │   │           ├── groups-filled.svg
+    │   │   │   │   │           ├── groups.svg
+    │   │   │   │   │           ├── hand-tap.svg
+    │   │   │   │   │           ├── hands-clap.svg
+    │   │   │   │   │           ├── hangout_video.svg
+    │   │   │   │   │           ├── hd.svg
+    │   │   │   │   │           ├── headset.svg
+    │   │   │   │   │           ├── help.svg
+    │   │   │   │   │           ├── hide.svg
+    │   │   │   │   │           ├── hide_source.svg
+    │   │   │   │   │           ├── history.svg
+    │   │   │   │   │           ├── home-filled.svg
+    │   │   │   │   │           ├── house.svg
+    │   │   │   │   │           ├── how_to_vote.svg
+    │   │   │   │   │           ├── identity.svg
+    │   │   │   │   │           ├── image-1.svg
+    │   │   │   │   │           ├── image.svg
+    │   │   │   │   │           ├── info.svg
+    │   │   │   │   │           ├── insert_page_break.svg
+    │   │   │   │   │           ├── interests.svg
+    │   │   │   │   │           ├── inventory_2.svg
+    │   │   │   │   │           ├── justice-filled.svg
+    │   │   │   │   │           ├── keep-1.svg
+    │   │   │   │   │           ├── keep.svg
+    │   │   │   │   │           ├── keep_off.svg
+    │   │   │   │   │           ├── key-filled.svg
+    │   │   │   │   │           ├── key.svg
+    │   │   │   │   │           ├── keyboard.svg
+    │   │   │   │   │           ├── keyboard_hide.svg
+    │   │   │   │   │           ├── keyboard_return.svg
+    │   │   │   │   │           ├── language.svg
+    │   │   │   │   │           ├── lasuite-filled.svg
+    │   │   │   │   │           ├── left-panel.svg
+    │   │   │   │   │           ├── left_panel_close.svg
+    │   │   │   │   │           ├── left_panel_open.svg
+    │   │   │   │   │           ├── lightbulb-filled.svg
+    │   │   │   │   │           ├── lightbulb.svg
+    │   │   │   │   │           ├── link.svg
+    │   │   │   │   │           ├── list.svg
+    │   │   │   │   │           ├── lock-filled.svg
+    │   │   │   │   │           ├── lock.svg
+    │   │   │   │   │           ├── lock_person.svg
+    │   │   │   │   │           ├── login.svg
+    │   │   │   │   │           ├── logout.svg
+    │   │   │   │   │           ├── mail-check-filled.svg
+    │   │   │   │   │           ├── mail.svg
+    │   │   │   │   │           ├── manufacturing.svg
+    │   │   │   │   │           ├── mark_unread_chat_alt.svg
+    │   │   │   │   │           ├── markdown.svg
+    │   │   │   │   │           ├── markdown_copy.svg
+    │   │   │   │   │           ├── maximize.svg
+    │   │   │   │   │           ├── megaphone-filled.svg
+    │   │   │   │   │           ├── menu.svg
+    │   │   │   │   │           ├── mic-1.svg
+    │   │   │   │   │           ├── mic-off-alert.svg
+    │   │   │   │   │           ├── mic.svg
+    │   │   │   │   │           ├── mic_off.svg
+    │   │   │   │   │           ├── minus.svg
+    │   │   │   │   │           ├── mobiledata_off.svg
+    │   │   │   │   │           ├── mode_standby.svg
+    │   │   │   │   │           ├── mood.svg
+    │   │   │   │   │           ├── more-circle.svg
+    │   │   │   │   │           ├── more_horiz.svg
+    │   │   │   │   │           ├── more_vert.svg
+    │   │   │   │   │           ├── movie-filled.svg
+    │   │   │   │   │           ├── movie.svg
+    │   │   │   │   │           ├── music-filled.svg
+    │   │   │   │   │           ├── new_releases.svg
+    │   │   │   │   │           ├── numbers.svg
+    │   │   │   │   │           ├── open_in_new.svg
+    │   │   │   │   │           ├── palette-filled.svg
+    │   │   │   │   │           ├── palette.svg
+    │   │   │   │   │           ├── passkey.svg
+    │   │   │   │   │           ├── pause-filled.svg
+    │   │   │   │   │           ├── pause.svg
+    │   │   │   │   │           ├── pause_circle.svg
+    │   │   │   │   │           ├── perso-filled.svg
+    │   │   │   │   │           ├── perso.svg
+    │   │   │   │   │           ├── person-filled.svg
+    │   │   │   │   │           ├── person.svg
+    │   │   │   │   │           ├── person_add.svg
+    │   │   │   │   │           ├── phone-arrow-up-right-filled.svg
+    │   │   │   │   │           ├── phone-arrow-up-right.svg
+    │   │   │   │   │           ├── phone-filled.svg
+    │   │   │   │   │           ├── phone.svg
+    │   │   │   │   │           ├── picture-filled.svg
+    │   │   │   │   │           ├── picture-remove.svg
+    │   │   │   │   │           ├── picture.svg
+    │   │   │   │   │           ├── play.svg
+    │   │   │   │   │           ├── play_arrow.svg
+    │   │   │   │   │           ├── plus-dashed-edit.svg
+    │   │   │   │   │           ├── plus-dashed.svg
+    │   │   │   │   │           ├── present_to_all.svg
+    │   │   │   │   │           ├── print.svg
+    │   │   │   │   │           ├── priority_high.svg
+    │   │   │   │   │           ├── progress_activity.svg
+    │   │   │   │   │           ├── public.svg
+    │   │   │   │   │           ├── published_with_changes.svg
+    │   │   │   │   │           ├── puzzle-filled.svg
+    │   │   │   │   │           ├── puzzle.svg
+    │   │   │   │   │           ├── question-mark.svg
+    │   │   │   │   │           ├── radio_button_checked.svg
+    │   │   │   │   │           ├── radio_button_unchecked.svg
+    │   │   │   │   │           ├── rate_review.svg
+    │   │   │   │   │           ├── rectangle-rotate.svg
+    │   │   │   │   │           ├── replay_10.svg
+    │   │   │   │   │           ├── right-panel.svg
+    │   │   │   │   │           ├── right_panel_close.svg
+    │   │   │   │   │           ├── right_panel_open.svg
+    │   │   │   │   │           ├── role-up.svg
+    │   │   │   │   │           ├── schedule-filled.svg
+    │   │   │   │   │           ├── schedule.svg
+    │   │   │   │   │           ├── sd.svg
+    │   │   │   │   │           ├── search.svg
+    │   │   │   │   │           ├── send.svg
+    │   │   │   │   │           ├── server.svg
+    │   │   │   │   │           ├── settings-filled.svg
+    │   │   │   │   │           ├── settings.svg
+    │   │   │   │   │           ├── shared.svg
+    │   │   │   │   │           ├── shield-lock-filled.svg
+    │   │   │   │   │           ├── shield_person.svg
+    │   │   │   │   │           ├── shopping_cart-filled.svg
+    │   │   │   │   │           ├── signal_cellular_alt.svg
+    │   │   │   │   │           ├── sparkles-2.svg
+    │   │   │   │   │           ├── stack-template.svg
+    │   │   │   │   │           ├── star-filled.svg
+    │   │   │   │   │           ├── star-slash.svg
+    │   │   │   │   │           ├── star.svg
+    │   │   │   │   │           ├── stop_circle-filled.svg
+    │   │   │   │   │           ├── stop_circle.svg
+    │   │   │   │   │           ├── subdirectory_arrow_right.svg
+    │   │   │   │   │           ├── summarize.svg
+    │   │   │   │   │           ├── swap_vert.svg
+    │   │   │   │   │           ├── terminal-filled.svg
+    │   │   │   │   │           ├── thumb-down-filled.svg
+    │   │   │   │   │           ├── thumb-down.svg
+    │   │   │   │   │           ├── thumb-up-filled.svg
+    │   │   │   │   │           ├── thumb-up.svg
+    │   │   │   │   │           ├── tile_small-filled.svg
+    │   │   │   │   │           ├── tile_small.svg
+    │   │   │   │   │           ├── translate.svg
+    │   │   │   │   │           ├── trash.svg
+    │   │   │   │   │           ├── tune.svg
+    │   │   │   │   │           ├── undo-circle-filled.svg
+    │   │   │   │   │           ├── undo-circle.svg
+    │   │   │   │   │           ├── undo.svg
+    │   │   │   │   │           ├── unhide.svg
+    │   │   │   │   │           ├── update.svg
+    │   │   │   │   │           ├── upload.svg
+    │   │   │   │   │           ├── upload_file.svg
+    │   │   │   │   │           ├── v.svg
+    │   │   │   │   │           ├── video_file.svg
+    │   │   │   │   │           ├── videocam-filled.svg
+    │   │   │   │   │           ├── videocam.svg
+    │   │   │   │   │           ├── videocam_off.svg
+    │   │   │   │   │           ├── visibility-filled.svg
+    │   │   │   │   │           ├── visibility.svg
+    │   │   │   │   │           ├── visibility_off.svg
+    │   │   │   │   │           ├── volume-2.svg
+    │   │   │   │   │           ├── volume-x-1.svg
+    │   │   │   │   │           ├── volume-x.svg
+    │   │   │   │   │           ├── volume_off.svg
+    │   │   │   │   │           ├── volume_up.svg
+    │   │   │   │   │           ├── vpn_lock.svg
+    │   │   │   │   │           ├── wand-and-stars.svg
+    │   │   │   │   │           ├── wand_stars.svg
+    │   │   │   │   │           ├── warning-filled.svg
+    │   │   │   │   │           ├── warning.svg
+    │   │   │   │   │           ├── weight.svg
+    │   │   │   │   │           ├── workspaces-1.svg
+    │   │   │   │   │           ├── workspaces-filled-1.svg
+    │   │   │   │   │           ├── workspaces-filled.svg
+    │   │   │   │   │           ├── workspaces.svg
+    │   │   │   │   │           ├── x-mark.svg
+    │   │   │   │   │           ├── zoom-1.svg
+    │   │   │   │   │           ├── zoom-minus.svg
+    │   │   │   │   │           ├── zoom-plus.svg
+    │   │   │   │   │           ├── zoom_in.svg
+    │   │   │   │   │           ├── zoom_in_map.svg
+    │   │   │   │   │           ├── zoom_out.svg
+    │   │   │   │   │           └── zoom_out_map.svg
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── Box.tsx
+    │   │   │   │   │   ├── BoxButton.tsx
+    │   │   │   │   │   ├── Card.tsx
+    │   │   │   │   │   ├── DropButton.tsx
+    │   │   │   │   │   ├── Effect.tsx
+    │   │   │   │   │   ├── Emoji
+    │   │   │   │   │   │   ├── EmojiPicker.tsx
+    │   │   │   │   │   │   └── initEmojiCallout.ts
+    │   │   │   │   │   ├── ErrorPage.tsx
+    │   │   │   │   │   ├── Icon.tsx
+    │   │   │   │   │   ├── InfiniteScroll.tsx
+    │   │   │   │   │   ├── Link.tsx
+    │   │   │   │   │   ├── Loading.tsx
+    │   │   │   │   │   ├── Overlayer.tsx
+    │   │   │   │   │   ├── SkipToContent.tsx
+    │   │   │   │   │   ├── Text.tsx
+    │   │   │   │   │   ├── TextErrors.tsx
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── Box.spec.tsx
+    │   │   │   │   │   ├── dropdown-menu
+    │   │   │   │   │   │   ├── DropdownMenu.tsx
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── DropdownMenu.spec.tsx
+    │   │   │   │   │   │   └── hook
+    │   │   │   │   │   │       └── useDropdownKeyboardNav.ts
+    │   │   │   │   │   ├── filter
+    │   │   │   │   │   │   └── FilterDropdown.tsx
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── modal
+    │   │   │   │   │   │   ├── AlertModal.tsx
+    │   │   │   │   │   │   ├── ButtonCloseModal.tsx
+    │   │   │   │   │   │   ├── SideModal.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   ├── quick-search
+    │   │   │   │   │   │   ├── QuickSearch.tsx
+    │   │   │   │   │   │   ├── QuickSearchGroup.tsx
+    │   │   │   │   │   │   ├── QuickSearchInput.tsx
+    │   │   │   │   │   │   ├── QuickSearchItem.tsx
+    │   │   │   │   │   │   ├── QuickSearchItemContent.tsx
+    │   │   │   │   │   │   ├── QuickSearchStyle.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   └── separators
+    │   │   │   │   │       ├── HorizontalSeparator.tsx
+    │   │   │   │   │       ├── SeparatedSection.tsx
+    │   │   │   │   │       └── index.ts
+    │   │   │   │   ├── core
+    │   │   │   │   │   ├── AppProvider.tsx
+    │   │   │   │   │   ├── api
+    │   │   │   │   │   │   └── useUserUpdate.ts
+    │   │   │   │   │   ├── config
+    │   │   │   │   │   │   ├── ConfigProvider.tsx
+    │   │   │   │   │   │   ├── ThemeProvider.tsx
+    │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   └── useConfig.tsx
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   └── useMediaUrl.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── cunningham
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── useCunninghamTheme.spec.tsx
+    │   │   │   │   │   ├── cunningham-style.css
+    │   │   │   │   │   ├── cunningham-tokens.css
+    │   │   │   │   │   ├── cunningham-tokens.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   └── useCunninghamTheme.tsx
+    │   │   │   │   ├── custom-next.d.ts
+    │   │   │   │   ├── features
+    │   │   │   │   │   ├── auth
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── utils.test.tsx
+    │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   │   └── useAuthQuery.tsx
+    │   │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   │   ├── button-proconnect.svg
+    │   │   │   │   │   │   │   └── mail-check-filled.svg
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── Auth.tsx
+    │   │   │   │   │   │   │   ├── AvatarSvg.tsx
+    │   │   │   │   │   │   │   ├── ButtonLogin.tsx
+    │   │   │   │   │   │   │   ├── UserAvatar.tsx
+    │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   ├── conf.ts
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   │   └── useAuth.test.tsx
+    │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   └── useAuth.tsx
+    │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── footer
+    │   │   │   │   │   │   ├── Footer.tsx
+    │   │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   │   └── external-link.svg
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   ├── header
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── Header.tsx
+    │   │   │   │   │   │   │   ├── Title.tsx
+    │   │   │   │   │   │   │   ├── Waffle.tsx
+    │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   ├── conf.ts
+    │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   ├── home
+    │   │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   │   ├── SC1-responsive-en.png
+    │   │   │   │   │   │   │   ├── SC1-responsive-fr.png
+    │   │   │   │   │   │   │   ├── SC2-en.png
+    │   │   │   │   │   │   │   ├── SC2-fr.png
+    │   │   │   │   │   │   │   ├── SC3-en.png
+    │   │   │   │   │   │   │   ├── SC3-fr.png
+    │   │   │   │   │   │   │   ├── SC4-en.png
+    │   │   │   │   │   │   │   ├── SC4-fr.png
+    │   │   │   │   │   │   │   ├── SC4-responsive-en.png
+    │   │   │   │   │   │   │   ├── SC4-responsive-fr.png
+    │   │   │   │   │   │   │   ├── SC5.png
+    │   │   │   │   │   │   │   ├── banner.jpg
+    │   │   │   │   │   │   │   └── github.svg
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── HomeBanner.tsx
+    │   │   │   │   │   │   │   ├── HomeBottom.tsx
+    │   │   │   │   │   │   │   ├── HomeContent.tsx
+    │   │   │   │   │   │   │   ├── HomeHeader.tsx
+    │   │   │   │   │   │   │   ├── HomeSection.tsx
+    │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   └── language
+    │   │   │   │   │       ├── components
+    │   │   │   │   │       │   ├── LanguagePicker.tsx
+    │   │   │   │   │       │   └── index.ts
+    │   │   │   │   │       ├── hooks
+    │   │   │   │   │       │   ├── index.ts
+    │   │   │   │   │       │   ├── useCustomTranslations.ts
+    │   │   │   │   │       │   └── useSynchronizedLanguage.ts
+    │   │   │   │   │       ├── index.ts
+    │   │   │   │   │       └── utils
+    │   │   │   │   │           ├── index.ts
+    │   │   │   │   │           └── locale.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── useClipboard.tsx
+    │   │   │   │   │   ├── useCmdK.tsx
+    │   │   │   │   │   ├── useDate.tsx
+    │   │   │   │   │   ├── useKeyboardAction.ts
+    │   │   │   │   │   └── useRouteChangeCompleteFocus.tsx
+    │   │   │   │   ├── i18n
+    │   │   │   │   │   ├── config.ts
+    │   │   │   │   │   ├── initI18n.ts
+    │   │   │   │   │   ├── translations.json
+    │   │   │   │   │   └── useLocale.ts
+    │   │   │   │   ├── layouts
+    │   │   │   │   │   ├── MainLayout.tsx
+    │   │   │   │   │   ├── PageLayout.tsx
+    │   │   │   │   │   ├── conf.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   └── utils.ts
+    │   │   │   │   ├── libs
+    │   │   │   │   │   ├── Analytics.tsx
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── Analytics.spec.tsx
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── pages
+    │   │   │   │   │   ├── 401.tsx
+    │   │   │   │   │   ├── 404.tsx
+    │   │   │   │   │   ├── 500.tsx
+    │   │   │   │   │   ├── _app.tsx
+    │   │   │   │   │   ├── _document.tsx
+    │   │   │   │   │   ├── _error.tsx
+    │   │   │   │   │   ├── accounts
+    │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   ├── globals.css
+    │   │   │   │   │   ├── home
+    │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   └── login
+    │   │   │   │   │       └── index.tsx
+    │   │   │   │   ├── services
+    │   │   │   │   │   ├── Crisp.tsx
+    │   │   │   │   │   ├── PosthogAnalytic.tsx
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── stores
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── useBroadcastStore.tsx
+    │   │   │   │   │   ├── useFocusStore.tsx
+    │   │   │   │   │   ├── useResponsiveStore.tsx
+    │   │   │   │   │   └── useSentryStore.tsx
+    │   │   │   │   ├── tests
+    │   │   │   │   │   └── utils.tsx
+    │   │   │   │   ├── types
+    │   │   │   │   │   ├── @ag-media
+    │   │   │   │   │   │   └── react-pdf-table.d.ts
+    │   │   │   │   │   ├── components.ts
+    │   │   │   │   │   └── next.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── __tests__
+    │   │   │   │       │   ├── string.test.ts
+    │   │   │   │       │   └── url.test.tsx
+    │   │   │   │       ├── children.ts
+    │   │   │   │       ├── index.ts
+    │   │   │   │       ├── storages.ts
+    │   │   │   │       ├── string.ts
+    │   │   │   │       ├── styleBuilder.ts
+    │   │   │   │       ├── system.ts
+    │   │   │   │       ├── url.ts
+    │   │   │   │       └── userAgent.ts
+    │   │   │   ├── stylelint.config.js
+    │   │   │   ├── tsconfig.json
+    │   │   │   ├── vitest.config.ts
+    │   │   │   └── vitest.setup.ts
+    │   │   └── e2e
+    │   │       ├── .env
+    │   │       ├── .env.example
+    │   │       ├── .gitignore
+    │   │       ├── __tests__
+    │   │       │   ├── app-accounts
+    │   │       │   │   ├── 404.spec.ts
+    │   │       │   │   ├── assets
+    │   │       │   │   │   └── logo-suite-numerique.png
+    │   │       │   │   ├── auth.setup.ts
+    │   │       │   │   ├── config.spec.ts
+    │   │       │   │   ├── footer.spec.ts
+    │   │       │   │   ├── header.spec.ts
+    │   │       │   │   ├── home.spec.ts
+    │   │       │   │   ├── language.spec.ts
+    │   │       │   │   ├── login.spec.ts
+    │   │       │   │   ├── utils-common.ts
+    │   │       │   │   └── utils-signin.ts
+    │   │       │   └── helpers.ts
+    │   │       ├── eslint.config.mjs
+    │   │       ├── package.json
+    │   │       ├── playwright.config.ts
+    │   │       ├── tsconfig.json
+    │   │       └── type
+    │   │           └── convert-stream.d.ts
+    │   ├── package.json
+    │   ├── packages
+    │   │   ├── eslint-plugin-docs
+    │   │   │   ├── base.js
+    │   │   │   ├── eslint.config.mjs
+    │   │   │   ├── index.d.ts
+    │   │   │   ├── index.js
+    │   │   │   ├── package.json
+    │   │   │   ├── playwright.js
+    │   │   │   ├── test.js
+    │   │   │   └── typescript.js
+    │   │   └── i18n
+    │   │       ├── .gitignore
+    │   │       ├── __tests__
+    │   │       │   ├── i18n.test.ts
+    │   │       │   └── translations.test.ts
+    │   │       ├── eslint.config.mjs
+    │   │       ├── format-deploy.mjs
+    │   │       ├── i18next-parser.config.jest.mjs
+    │   │       ├── i18next-parser.config.mjs
+    │   │       ├── jest.config.ts
+    │   │       ├── package.json
+    │   │       ├── rebuild-translations.mjs
+    │   │       └── tsconfig.json
+    │   └── yarn.lock
+    ├── helm
+    │   ├── accounts
+    │   │   ├── Chart.yaml
+    │   │   ├── README.md
+    │   │   ├── generate-readme.sh
+    │   │   ├── templates
+    │   │   │   ├── _helpers.tpl
+    │   │   │   ├── backend_cronjob_list.yaml
+    │   │   │   ├── backend_deployment.yaml
+    │   │   │   ├── backend_job.yml
+    │   │   │   ├── backend_job_createsuperuser.yaml
+    │   │   │   ├── backend_job_migrate.yaml
+    │   │   │   ├── backend_svc.yaml
+    │   │   │   ├── celery_worker_deployment.yaml
+    │   │   │   ├── frontend_deployment.yaml
+    │   │   │   ├── frontend_svc.yaml
+    │   │   │   ├── ingress-redirects.yaml
+    │   │   │   ├── ingress.yaml
+    │   │   │   ├── ingress_admin.yaml
+    │   │   │   ├── ingress_posthog.yaml
+    │   │   │   ├── ingress_posthog_assets.yaml
+    │   │   │   ├── media_svc.yaml
+    │   │   │   ├── posthog_assets_svc.yaml
+    │   │   │   ├── posthog_svc.yaml
+    │   │   │   └── theme_customization_file_cm.yaml
+    │   │   └── values.yaml
+    │   ├── env.d
+    │   │   └── dev
+    │   │       ├── configuration
+    │   │       │   └── theme
+    │   │       │       └── demo.json
+    │   │       ├── values.accounts.yaml.gotmpl
+    │   │       └── values.dev-backend.yaml.gotmpl
+    │   └── helmfile.yaml.gotmpl
+    ├── loadtests
+    │   ├── README.md
+    │   ├── __init__.py
+    │   ├── assets
+    │   │   └── load-test-2026-04-29.png
+    │   └── oidc
+    │       ├── __init__.py
+    │       ├── check_slo_from_csv.py
+    │       ├── config.py
+    │       ├── locustfile.py
+    │       ├── mock_idp
+    │       │   ├── __init__.py
+    │       │   ├── run.py
+    │       │   ├── server.py
+    │       │   └── smoke_test.py
+    │       ├── preflight.py
+    │       ├── profiles.py
+    │       └── scenarios.py
     └── mail
         ├── bin
         │   ├── html-to-plain-text
@@ -212,4 +953,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-68 directories, 146 files
+157 directories, 871 files
