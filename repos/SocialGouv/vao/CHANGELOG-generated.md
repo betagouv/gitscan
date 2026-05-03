@@ -1,34 +1,28 @@
-## Changelog : vao (30 derniers jours, au 29 avril 2026)
+## Changelog : vao (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce changelog couvre une période d'un mois riche en améliorations et corrections, principalement axées sur la gestion des agréments (renouvellement, messagerie, et statut), ainsi que sur des corrections d'interface et des optimisations techniques. Plusieurs améliorations ont été apportées pour répondre aux retours d'utilisateurs et améliorer la conformité RGAA.
+Les dernières semaines ont été marquées par des améliorations significatives sur les parcours de renouvellement d'agrément, notamment au niveau de la gestion des fichiers, de la saisie d'informations et de l'envoi de notifications. Des corrections ont également été apportées pour améliorer l'accessibilité et la robustesse de l'application, ainsi que des évolutions sur le module Fusager.
 
 ### Évolutions fonctionnelles
-- **Agrément :**
-    - Implémentation de l'envoi de mails de confirmation pour les demandes d'agrément. [#1286](https://github.com/SocialGouv/vao/issues/1286)
-    - Ajout de la gestion des messages non lus dans la messagerie d'agrément côté Dreets.
-    - Amélioration de la gestion des activités et des fichiers lors du renouvellement d'agrément.
-    - Correction de bugs et améliorations de l'interface pour les étapes 1, 2, 3 et 4 du processus de renouvellement d'agrément. [#1256](https://github.com/SocialGouv/vao/issues/1256), [#1259](https://github.com/SocialGouv/vao/issues/1259), [#1265](https://github.com/SocialGouv/vao/issues/1265), [#1272](https://github.com/SocialGouv/vao/issues/1272)
-    - Ajout d'une fonctionnalité pour gérer les agréments refusés dans le back-office. [#1245](https://github.com/SocialGouv/vao/issues/1245)
-- **Fusager :**
-    - Ajout de fonctionnalités pour la gestion des listes JDMA et l'expression d'avis. [#1248](https://github.com/SocialGouv/vao/issues/1248), [#1268](https://github.com/SocialGouv/vao/issues/1268)
-    - Amélioration de l'affichage des informations et de la gestion des agréments dans l'interface Fusager. [#1266](https://github.com/SocialGouv/vao/issues/1266)
-- **RGAA :**
-    - Corrections pour améliorer l'accessibilité de l'application, notamment au niveau des labels et des boutons. [#1281](https://github.com/SocialGouv/vao/issues/1281)
-- **Autres :**
-    - Correction du formatage des adresses lors de la saisie. [#1284](https://github.com/SocialGouv/vao/issues/1284)
-    - Correction de l'affichage des dates et du statut dans l'interface OVA. [#1294](https://github.com/SocialGouv/vao/issues/1294)
-    - Correction de l'accès à la liste des usages. [#1293](https://github.com/SocialGouv/vao/issues/1293)
+- **Renouvellement d'agrément :** Amélioration de la gestion des fichiers lors du renouvellement d'agrément, notamment pour le casier judiciaire et les documents liés aux activités ([#1265](https://github.com/SocialGouv/vao/issues/1265), [#1256](https://github.com/SocialGouv/vao/issues/1256)).
+- **Renouvellement d'agrément :** Correction de bugs et amélioration de la saisie d'adresse et des informations de bilan dans le formulaire de renouvellement ([#1282](https://github.com/SocialGouv/vao/issues/1282), [#1279](https://github.com/SocialGouv/vao/issues/1279), [#1259](https://github.com/SocialGouv/vao/issues/1259), [#1258](https://github.com/SocialGouv/vao/issues/1258)).
+- **Notifications :** Implémentation de l'envoi de mails de confirmation pour les demandes d'agrément ([#1286](https://github.com/SocialGouv/vao/issues/1286)).
+- **Fusager :** Ajout de nouvelles fonctionnalités et corrections pour le module Fusager, incluant la gestion des messages, des listes JDMA et l'affichage des dossiers d'agrément ([#1268](https://github.com/SocialGouv/vao/issues/1268), [#1269](https://github.com/SocialGouv/vao/issues/1269), [#1248](https://github.com/SocialGouv/vao/issues/1248), [#1249](https://github.com/SocialGouv/vao/issues/1249)).
+- **Interface utilisateur :** Amélioration de l'accessibilité (RGAA) des boutons et labels, notamment pour les représentants légaux ([#1281](https://github.com/SocialGouv/vao/issues/1281), [#1266](https://github.com/SocialGouv/vao/issues/1266)).
+- **OVA :** Correction de l'affichage des dates et du statut dans l'interface OVA ([#1294](https://github.com/SocialGouv/vao/issues/1294)).
+- **OVA :** Correction de l'inversion du nom et prénom des personnes morales ([#1273](https://github.com/SocialGouv/vao/issues/1273)).
 
 ### Évolutions techniques
-- Mise en place de tests E2E pour la gestion des personnes physiques et la suppression des utilisateurs. [#1235](https://github.com/SocialGouv/vao/issues/1235), [#1244](https://github.com/SocialGouv/vao/issues/1244)
-- Refactoring et nettoyage du code, notamment dans la gestion des requêtes et des composants d'interface utilisateur.
-- Passage de certains composants en TypeScript.
-- Amélioration de la gestion des fichiers et des doublons lors de l'upload de documents. [#1295](https://github.com/SocialGouv/vao/issues/1295)
-- Optimisation de la construction des requêtes pour supprimer les paramètres vides. [#1285](https://github.com/SocialGouv/vao/issues/1285)
+- **Tests :** Ajout de tests unitaires et E2E pour améliorer la couverture et la qualité du code.
+- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans le cadre des corrections RGAA.
+- **Typescript :** Migration de certaines parties du code en Typescript.
+- **Suppression de code inutile :** Nettoyage du code dans le module `shared-ui` ([#1234](https://github.com/SocialGouv/vao/issues/1234)).
 
 ### Autres changements
+- Correction de divers bugs et améliorations mineures de l'interface utilisateur.
 - Mise à jour de la documentation.
-- Corrections mineures et améliorations de la qualité du code.
-- Ajout de tests unitaires.
-- Suppression de code inutile.
+- Amélioration de la gestion des doublons de fichiers ([#1295](https://github.com/SocialGouv/vao/issues/1295)).
+- Correction de la sauvegarde du dossier de candidature ([#1296](https://github.com/SocialGouv/vao/issues/1296)).
+- Correction de l'accès à la liste des usages ([#1293](https://github.com/SocialGouv/vao/issues/1293)).
+- Correction d'un problème de formatage d'adresse ([#1284](https://github.com/SocialGouv/vao/issues/1284)).
+- Suppression de documents "zombies" ([#115cfdc1](https://github.com/SocialGouv/vao/commit/115cfdc1)).
