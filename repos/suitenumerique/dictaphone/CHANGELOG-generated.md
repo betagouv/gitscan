@@ -1,41 +1,46 @@
 ## Changelog : dictaphone (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur le développement d'une application mobile (iOS et Android) pour Dictaphone, l'amélioration de l'intégration avec des services externes comme Docs, et l'ajout de fonctionnalités de gestion des enregistrements, notamment la corbeille et la suppression définitive. Des améliorations significatives ont également été apportées à l'interface utilisateur web et mobile, ainsi qu'à la robustesse et la sécurité du backend.
+Ce mois-ci, l'équipe a concentré ses efforts sur le développement d'une application mobile pour Dictaphone, en parallèle de l'amélioration de l'interface web et de la correction de bugs.  Une fonctionnalité clé est l'intégration de la transcription automatique des enregistrements vers des outils de documentation. Des améliorations significatives ont également été apportées à l'authentification et à la sécurité, notamment avec l'implémentation de JWT et PKCE pour l'application mobile.
 
 ### Évolutions fonctionnelles
-- Ajout d'une application mobile (iOS et Android) avec les fonctionnalités de base : enregistrement, liste des enregistrements, lecture, suppression et connexion utilisateur.
-- Intégration avec Docs pour la transcription et l'accès aux transcriptions.
-- Implémentation d'une corbeille pour les enregistrements supprimés, permettant leur restauration.
-- Possibilité de supprimer définitivement les enregistrements de la corbeille.
-- Ajout d'un lien "Ouvrir dans Docs" pour faciliter l'accès aux transcriptions.
-- Amélioration de la gestion des erreurs et des retours d'information à l'utilisateur (ex: retry upload).
-- Ajout d'un lien vers la documentation dans l'application mobile.
-- Possibilité de télécharger l'application mobile depuis le menu d'aide sur le web.
-- Ajout d'un indicateur de progression pendant le téléchargement des fichiers.
-- Amélioration de la gestion des autorisations sur Android.
-- Ajout d'une option pour supprimer un compte utilisateur depuis l'application mobile.
+- Ajout d'un lien "Supprimer le compte" sur l'écran d'informations de l'application mobile.
+- Possibilité de réessayer les uploads ayant échoué sur l'interface web.
+- Ajout d'un lien vers la documentation sur l'écran d'informations de l'application mobile.
+- Implémentation d'une fonctionnalité de suppression par glissement (swipe to delete) dans l'application mobile.
+- Ajout d'une fonctionnalité de copie du texte de la transcription dans le presse-papier sur l'interface web.
+- Intégration de la possibilité d'ouvrir la transcription dans un outil de documentation externe.
+- Ajout d'une fonctionnalité de téléchargement de l'application mobile depuis l'interface web.
+- Mise en place d'une logique d'authentification plus sécurisée avec JWT et PKCE pour l'application mobile.
+- Ajout d'un écran d'informations dans l'application mobile avec un lien vers la documentation.
+- Ajout d'une fonctionnalité de déconnexion (logout) dans l'application mobile.
+- Amélioration de la robustesse de l'enregistrement audio dans l'application mobile.
 
 ### Évolutions techniques
-- Refonte de l'authentification mobile avec JWT et PKCE pour une meilleure sécurité.
-- Mise à jour des dépendances backend et Dockerfiles.
-- Amélioration des tests backend et généralisation des tests.
-- Suppression de vérifications inutiles dans le CI.
-- Amélioration de la journalisation (logging) pour faciliter le débogage.
-- Support amélioré des formats audio m4a.
-- Mise en place d'un système d'analyse (PostHog) pour suivre l'utilisation de l'application.
-- Amélioration de la gestion des erreurs lors de l'appel à l'API Docs.
-- Mise en place d'un système de gestion des versions pour l'application mobile.
-- Amélioration de la gestion des configurations pour l'application mobile.
-- Utilisation de React Native Nitro Player pour la lecture audio sur mobile.
+- Mise à jour des dépendances backend et des fichiers Docker.
+- Généralisation des tests backend.
+- Suppression temporaire des vérifications liées au changelog et au linting dans le CI.
+- Correction d'un problème dans le fichier CI principal.
+- Intégration du linting mobile dans le CI.
+- Correction d'une indentation dans le fichier Helm pour le backend Celery.
+- Ajout de la gestion des jetons JWT avec PKCE pour l'authentification mobile.
+- Amélioration du logging en cas d'échec de la transcription.
+- Mise en place d'un système de publication des images Docker sur les branches d'intégration.
+- Ajout de la prise en charge du format audio `m4a` sur le backend.
+- Amélioration de la gestion des erreurs et des logs.
+- Refonte de la structure du code pour l'application mobile (React Native).
+- Mise en place de Prettier et ESLint pour le code mobile.
+- Configuration de l'orientation de l'écran sur Android pour l'application mobile.
+- Utilisation de la bibliothèque `react-native-nitro-player` pour la lecture audio sur mobile.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration de la structure du code et nettoyage.
-- Corrections de bugs mineurs dans l'interface utilisateur web et mobile.
-- Mise à jour des logos et des icônes.
-- Amélioration de la traduction en français.
-- Correction de problèmes de typographie et de formatage.
-- Suppression de l'écriture inclusive dans la documentation.
-- Amélioration des styles et des couleurs de l'interface utilisateur.
-- Mise à jour des dépendances React Native pour l'application mobile.
+- Publication des versions 1.0.2 (mobile), 0.5.3 (web/backend), 1.0.1 (mobile), 0.5.2 (web/backend), 0.5.1 (web/backend) et 1.0.0 (mobile).
+- Mise à jour des documents légaux sur l'interface web.
+- Correction de problèmes de typographie et de formatage dans le code.
+- Ajout de données de test pour faciliter la prise de captures d'écran.
+- Traduction de certains éléments de l'interface utilisateur en français.
+- Suppression de l'écriture inclusive dans le code.
+- Mise à jour du logo et des icônes de l'application mobile.
+- Amélioration de la gestion des erreurs et des logs.
+- Suppression de code obsolète.
+- Correction de bugs mineurs et améliorations de la performance.
