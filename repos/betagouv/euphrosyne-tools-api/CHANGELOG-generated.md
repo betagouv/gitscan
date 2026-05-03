@@ -1,27 +1,26 @@
-## Changelog : euphrosyne-tools-api (30 derniers jours, au 17 avril 2026)
+## Changelog : euphrosyne-tools-api (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'implémentation d'une gestion du cycle de vie des données de projet (passage du chaud au froid, restauration) avec une attention particulière à la robustesse et à l'idempotence des opérations. Des améliorations ont également été apportées à l'API pour supporter ces nouvelles fonctionnalités et à l'infrastructure avec des mises à jour de dépendances.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation d'une gestion de données "chaude" vers "froide" (Hot to Cool) pour les projets, permettant une transition des données actives vers un stockage moins coûteux.  Des améliorations ont également été apportées à la gestion des opérations de suppression de projets et à la robustesse générale de l'API, notamment en cas d'erreurs.  Enfin, de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout d'un endpoint pour supprimer un projet.
-- Implémentation du workflow de "refroidissement" (cool) des données de projet, permettant de les archiver sur un stockage moins coûteux.
-- Implémentation du workflow de restauration des données de projet.
-- Ajout d'endpoints pour obtenir le statut des opérations de "refroidissement" et de restauration.
-- L'API accepte désormais uniquement `project_slug` comme variable dans les endpoints liés aux données.
-- Ajout d'une gestion des erreurs pour les opérations de stockage en lecture seule.
+- Implémentation du workflow de transition des données "chaudes" vers "froides" pour les projets, incluant des endpoints pour démarrer, surveiller et gérer ces opérations. [#678](https://github.com/betagouv/euphrosyne-tools-api/issues/678)
+- Ajout d'un endpoint de suppression de projet, permettant de supprimer les données associées à un projet.
+- Amélioration de la gestion des erreurs lors de l'initialisation des projets et de l'exécution des endpoints.
+- Ajout d'un endpoint pour récupérer le rôle de stockage (storage role).
+- Possibilité de spécifier le `project_slug` dans les endpoints liés aux données.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des chemins de données pour une résolution déterministe entre les stockages "chaud" et "froid".
-- Amélioration de la gestion des erreurs et de la robustesse lors de l'utilisation d'AzCopy pour le transfert de données.
-- Ajout d'un script d'installation d'AzCopy.
-- Implémentation d'une abstraction "AzCopy runner" pour faciliter les tests et la maintenance.
-- Amélioration des tests avec une meilleure gestion des messages JSON et des mocks.
-- Persistance et idempotence des opérations de cycle de vie des données grâce à l'ajout d'un suivi des opérations.
-- Utilisation du rôle de stockage Euphrosyne pour initialiser les clients Azure.
-- Refactorisation du code pour une meilleure cohérence et lisibilité.
+- Refactorisation de l'implémentation de la gestion des chemins de données pour une meilleure cohérence et une plus grande flexibilité.
+- Amélioration de la gestion des erreurs et des exceptions, notamment pour les opérations de stockage.
+- Ajout d'une abstraction pour l'exécution d'AzCopy, facilitant les tests et la maintenance.
+- Mise en place d'un script d'installation d'AzCopy.
+- Amélioration des tests unitaires avec une meilleure gestion des messages JSON et des mocks.
+- Implémentation de la persistance et de l'idempotence des opérations de cycle de vie des données.
+- Renforcement de la sécurité en appliquant des permissions en lecture seule (readonly) sur le stockage "froid".
+- Amélioration de la gestion des états "annulé" et "inconnu" pour les opérations asynchrones.
 
 ### Autres changements
-- Ajout d'un fichier `EPIC.md` pour documenter les grandes étapes du projet.
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
-- Mises à jour de plusieurs dépendances (requests, ruff, sentry-sdk, aiohttp, fastapi, uvicorn, types-requests, types-python-jose, azure-mgmt-storage, pytest, anyio).
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et améliorations.
+- Correction de typos et amélioration de la lisibilité du code.
+- Mise à jour des dépendances suivantes : `ruff`, `mypy`, `pydantic-settings`, `uvicorn`, `fastapi`, `azure-keyvault-secrets`, `sentry-sdk`, `pytest`, `aiohttp`, `requests`, `types-requests`, `types-python-jose`, `anyio`.
