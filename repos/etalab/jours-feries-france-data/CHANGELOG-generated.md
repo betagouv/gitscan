@@ -1,7 +1,10 @@
-## Changelog : jours-feries-france-data (30 derniers jours)
+## Changelog : jours-feries-france-data (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce projet a été maintenu en production durant le mois dernier, assurant la disponibilité continue des données des jours fériés en France aux formats CSV, ICS et JSON. Les workflows d'automatisation ont fonctionné comme prévu, garantissant une mise à jour quotidienne des données.
+Ce changelog fait état d'une maintenance régulière du projet. L'action principale a été de s'assurer que le pipeline d'automatisation continue fonctionne correctement et que les données restent disponibles. Aucune modification des données de jours fériés n'a été effectuée durant cette période.
 
 ### Évolutions techniques
-- Maintien de l'activité des workflows GitHub Actions pour assurer la mise à jour quotidienne des données et la disponibilité du service. [#1](https://github.com/etalab/jours-feries-france-data/commit/47b7f9d) et [#2](https://github.com/etalab/jours-feries-france-data/commit/1372767)
+- Mise à jour du workflow `keepalive.yml` pour maintenir le dépôt actif via une action GitHub Actions. [#1](https://github.com/etalab/jours-feries-france-data/commit/0c55b24)
+
+### Autres changements
+- Aucune modification significative n'a été apportée au code ou aux données durant cette période.
