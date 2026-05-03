@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "La plateforme collaborative pour l’accessibilité. Ce projet vise à référencer l'accessibilité des Établissements Recevant du Public (ERP) en France et à fournir une plateforme collaborative pour améliorer cette accessibilité.",
+  "description": "La plateforme collaborative pour l’accessibilité. Elle vise à référencer l'accessibilité des Établissements Recevant du Public (ERP) en France et à faciliter l'accès pour tous.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -16,25 +16,25 @@
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@gouvfr/dsfr",
-    "@panoramax/web-viewer",
     "Django",
     "djangorestframework",
-    "psycopg2",
-    "redis",
-    "celery"
+    "PostgreSQL",
+    "Redis",
+    "Celery",
+    "Sentry",
+    "leaflet",
+    "panoramax"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "sso"
     ]
   },
   "tests": [
@@ -43,23 +43,24 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-04-29T09:04:06Z",
+  "lastActivity": "2026-05-02T14:36:45Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "contributors": 0,
-    "openIssues": 0
+    "stars": 116,
+    "forks": 41,
+    "contributors": 22,
+    "openIssues": 11
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Environnement & Énergie",
+    "JavaScript",
+    "Accessibilité"
   ]
 }
