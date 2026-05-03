@@ -33,131 +33,6 @@
 │   │   ├── docs
 │   │   │   └── adr
 │   │   │       └── 2025-10-22-sortie-hexa.md
-│   │   ├── drizzle
-│   │   │   ├── 0000_init_contexts.sql
-│   │   │   ├── 0001_reports_context_nullable_biography.sql
-│   │   │   ├── 0002_reports_context_more_transparency_enum_values.sql
-│   │   │   ├── 0003_add_created_at.sql
-│   │   │   ├── 0004_reports_context_add_reporter_names.sql
-│   │   │   ├── 0005_nomination_file_id_in_report_pm.sql
-│   │   │   ├── 0006_shared_kernel_context_add_domain_events_table.sql
-│   │   │   ├── 0007_reporters_context_add_observers.sql
-│   │   │   ├── 0008_reporters_context_nomination_file_id_not_nullable.sql
-│   │   │   ├── 0009_data_administration_context__null_observers_by_default.sql
-│   │   │   ├── 0010_shared_kernel_context__fix_snake_case.sql
-│   │   │   ├── 0011_reports_context__add_folder_number.sql
-│   │   │   ├── 0012_data_administration_context__null_folder_number_by_default.sql
-│   │   │   ├── 0013_reports_context__add_attached_files_table.sql
-│   │   │   ├── 0014_files_context__add_schema_and_files_table.sql
-│   │   │   ├── 0015_data_admin_context__add_pg_2024_to_transparencies.sql
-│   │   │   ├── 0016_reports_context__add_attached_file_name.sql
-│   │   │   ├── 0017_files_context__add_bucket.sql
-│   │   │   ├── 0018_reports_context__add_file_id.sql
-│   │   │   ├── 0019_reports_context__add_transparency_values.sql
-│   │   │   ├── 0020_files_context__rename_outscale_by_scaleway.sql
-│   │   │   ├── 0021_reports_context__rename_state_enum_value.sql
-│   │   │   ├── 0022_reports_context__all_reports_in_progress.sql
-│   │   │   ├── 0023_identity_and_access_context__init.sql
-│   │   │   ├── 0024_indentity_and_access_context__user_created_at.sql
-│   │   │   ├── 0025_identity_and_access_context_add_session_table.sql
-│   │   │   ├── 0026_indentity_and_access_context__add_session_invalidated_at.sql
-│   │   │   ├── 0027_identity_and_access_context__unique_user_email.sql
-│   │   │   ├── 0028_reports_context__add_reporter_id.sql
-│   │   │   ├── 0029_reports_context__replace_reporter_name_by_id.sql
-│   │   │   ├── 0030_identity_and_access_context__add_user_gender.sql
-│   │   │   ├── 0031_data_administration_context__add_cabinet_21_01_2025_to_transparency.sql
-│   │   │   ├── 0032_data_administration_context__remove_state.sql
-│   │   │   ├── 0033_data_administration_context__add_06_02_2025_to_transparency.sql
-│   │   │   ├── 0034_data_administration_context__add_20_02_2025_to_transparency.sql
-│   │   │   ├── 0035_reports_context__rename_transparency_march_2025.sql
-│   │   │   ├── 0036_data_administration__add_3_march_transparency.sql
-│   │   │   ├── 0037_reports_context__attached_files_value_objects.sql
-│   │   │   ├── 0038_reports__add_reports_versions.sql
-│   │   │   ├── 0039_reports__merge_rules_and_remove_old_ones.sql
-│   │   │   ├── 0040_reports__add_new_statutory_rule.sql
-│   │   │   ├── 0041_reports__add_nomination_ca_avant_4_ans.sql
-│   │   │   ├── 0042_iac__add_files.sql
-│   │   │   ├── 0043_reports__add_nomination_ca_avant_4_ans_to_all_reports.sql
-│   │   │   ├── 0044_iac__add_siege_to_file_type.sql
-│   │   │   ├── 0045_iac__gender_mandatory_migration.sql
-│   │   │   ├── 0046_data_administration__add_transpa_30_avril_2025.sql
-│   │   │   ├── 0047_nominations__create_context_and_migrate_data.sql
-│   │   │   ├── 0048_data_admin__text_nom_transparence.sql
-│   │   │   ├── 0049_iac__role-adjoint-secretaire-general.sql
-│   │   │   ├── 0050_nominations__add_session_content.sql
-│   │   │   ├── 0051_data_admin__add_transparence_dates.sql
-│   │   │   ├── 0052_data_admin__unique_name_formation_and_date.sql
-│   │   │   ├── 0053_data_admin__add_expected_session_content.sql
-│   │   │   ├── 0054_nominations_rename_session_name.sql
-│   │   │   ├── 0055_nominations__rename_session_automne_name.sql
-│   │   │   ├── 0056_data_admin__remove_empty_observants.sql
-│   │   │   ├── 0057_data-administration-context_add-transparences-files-table.sql
-│   │   │   ├── 0058_adds_jurisdiction_exclusion_tables.sql
-│   │   │   ├── 0059_add_affectation_versioning.sql
-│   │   │   ├── 0060_unique-index-affectation-version.sql
-│   │   │   └── meta
-│   │   │       ├── 0000_snapshot.json
-│   │   │       ├── 0001_snapshot.json
-│   │   │       ├── 0002_snapshot.json
-│   │   │       ├── 0003_snapshot.json
-│   │   │       ├── 0004_snapshot.json
-│   │   │       ├── 0005_snapshot.json
-│   │   │       ├── 0006_snapshot.json
-│   │   │       ├── 0007_snapshot.json
-│   │   │       ├── 0008_snapshot.json
-│   │   │       ├── 0009_snapshot.json
-│   │   │       ├── 0010_snapshot.json
-│   │   │       ├── 0011_snapshot.json
-│   │   │       ├── 0012_snapshot.json
-│   │   │       ├── 0013_snapshot.json
-│   │   │       ├── 0014_snapshot.json
-│   │   │       ├── 0015_snapshot.json
-│   │   │       ├── 0016_snapshot.json
-│   │   │       ├── 0017_snapshot.json
-│   │   │       ├── 0018_snapshot.json
-│   │   │       ├── 0019_snapshot.json
-│   │   │       ├── 0020_snapshot.json
-│   │   │       ├── 0021_snapshot.json
-│   │   │       ├── 0022_snapshot.json
-│   │   │       ├── 0023_snapshot.json
-│   │   │       ├── 0024_snapshot.json
-│   │   │       ├── 0025_snapshot.json
-│   │   │       ├── 0026_snapshot.json
-│   │   │       ├── 0027_snapshot.json
-│   │   │       ├── 0028_snapshot.json
-│   │   │       ├── 0029_snapshot.json
-│   │   │       ├── 0030_snapshot.json
-│   │   │       ├── 0031_snapshot.json
-│   │   │       ├── 0032_snapshot.json
-│   │   │       ├── 0033_snapshot.json
-│   │   │       ├── 0034_snapshot.json
-│   │   │       ├── 0035_snapshot.json
-│   │   │       ├── 0036_snapshot.json
-│   │   │       ├── 0037_snapshot.json
-│   │   │       ├── 0038_snapshot.json
-│   │   │       ├── 0039_snapshot.json
-│   │   │       ├── 0040_snapshot.json
-│   │   │       ├── 0041_snapshot.json
-│   │   │       ├── 0042_snapshot.json
-│   │   │       ├── 0043_snapshot.json
-│   │   │       ├── 0044_snapshot.json
-│   │   │       ├── 0045_snapshot.json
-│   │   │       ├── 0046_snapshot.json
-│   │   │       ├── 0047_snapshot.json
-│   │   │       ├── 0048_snapshot.json
-│   │   │       ├── 0049_snapshot.json
-│   │   │       ├── 0050_snapshot.json
-│   │   │       ├── 0051_snapshot.json
-│   │   │       ├── 0052_snapshot.json
-│   │   │       ├── 0053_snapshot.json
-│   │   │       ├── 0054_snapshot.json
-│   │   │       ├── 0055_snapshot.json
-│   │   │       ├── 0056_snapshot.json
-│   │   │       ├── 0057_snapshot.json
-│   │   │       ├── 0058_snapshot.json
-│   │   │       ├── 0059_snapshot.json
-│   │   │       ├── 0060_snapshot.json
-│   │   │       └── _journal.json
 │   │   ├── eslint.config.mjs
 │   │   ├── nest-cli.json
 │   │   ├── package.json
@@ -239,6 +114,12 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260424140130_session_soft_delete
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260428074329_full_text_search_magistrat
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260428144509_observation_file_link
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260428153844_missing_index
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -274,7 +155,9 @@
 │   │   │       ├── internalCountTotalDetailsMemberSessionRawQuery.sql
 │   │   │       ├── internalDetailsMemberSessionRawQuery.sql
 │   │   │       ├── listMemberGardeDesSceauxSessions.sql
-│   │   │       └── listMembersRawQuery.sql
+│   │   │       ├── listMembersRawQuery.sql
+│   │   │       ├── searchMagistratRawQuery.sql
+│   │   │       └── searchMagistratTotalCountRawQuery.sql
 │   │   ├── prisma.config.ts
 │   │   ├── scalingo
 │   │   │   ├── .buildpacks
@@ -352,6 +235,7 @@
 │   │   │   │   │       │   ├── find-presentation-plan-document-pdf.query.ts
 │   │   │   │   │       │   ├── find-presentation-plan-document.query.ts
 │   │   │   │   │       │   ├── find-session-docs.query.ts
+│   │   │   │   │       │   ├── internal-find-nomination-files-linked-docs.query.ts
 │   │   │   │   │       │   ├── is-session-ready-for-doc-generation.query.ts
 │   │   │   │   │       │   ├── list-non-presented-plans.query.ts
 │   │   │   │   │       │   ├── list-presented-plans.query.ts
@@ -468,15 +352,10 @@
 │   │   │   │   │       └── passthrough-hash.ts
 │   │   │   │   ├── maintenance
 │   │   │   │   │   ├── infrastructure
-│   │   │   │   │   │   ├── cli
-│   │   │   │   │   │   │   ├── ingest-magistrats.cli.ts
-│   │   │   │   │   │   │   └── maintenance-cli.module.ts
-│   │   │   │   │   │   ├── ingest-xml-jurisdiction.e2e-spec.ts
-│   │   │   │   │   │   ├── ingest-xml-jurisdiction.use-case.ts
-│   │   │   │   │   │   ├── ingest-xml-magistrat.use-case.ts
 │   │   │   │   │   │   └── maintenance.service.ts
 │   │   │   │   │   └── maintenance.module.ts
 │   │   │   │   ├── members
+│   │   │   │   │   ├── data.test-controller.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── jurisdiction.ts
 │   │   │   │   │   │   ├── member-enums.ts
@@ -514,15 +393,20 @@
 │   │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   │   ├── observation-member-comment.dto.ts
 │   │   │   │   │   │   │   └── observation.dto.ts
+│   │   │   │   │   │   ├── finders
+│   │   │   │   │   │   │   └── observation.finder.ts
 │   │   │   │   │   │   ├── magistrat.service.ts
+│   │   │   │   │   │   ├── observation.filter.ts
 │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   ├── get-observation-details.query.ts
 │   │   │   │   │   │   │   ├── get-observation-file-url.query.ts
+│   │   │   │   │   │   │   ├── list-observations-attachments.query.ts
 │   │   │   │   │   │   │   ├── list-observations.query.ts
 │   │   │   │   │   │   │   └── search-magistrats.query.ts
 │   │   │   │   │   │   └── repositories
 │   │   │   │   │   │       └── observation.repository.ts
 │   │   │   │   │   ├── magistrat.controller.ts
+│   │   │   │   │   ├── observation-attachments.controller.ts
 │   │   │   │   │   ├── observation.controller.ts
 │   │   │   │   │   ├── observation.module.ts
 │   │   │   │   │   └── observation.service.ts
@@ -606,7 +490,9 @@
 │   │   │   │   │   │   │   ├── sortable-targeted-grade.ts
 │   │   │   │   │   │   │   └── summary.repository.ts
 │   │   │   │   │   │   ├── session.filter.ts
+│   │   │   │   │   │   ├── session.test-controller.ts
 │   │   │   │   │   │   ├── sessions.service.ts
+│   │   │   │   │   │   ├── sessions.test-service.ts
 │   │   │   │   │   │   ├── summary.filter.ts
 │   │   │   │   │   │   └── summary.service.ts
 │   │   │   │   │   ├── session.controller.ts
@@ -616,6 +502,7 @@
 │   │   │   │   │   └── summary.module.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── formation-to-member-role.ts
+│   │   │   │   │   ├── formation-to-user-title.ts
 │   │   │   │   │   └── mappers
 │   │   │   │   │       ├── formation.mapper.ts
 │   │   │   │   │       ├── gender-enum.mapper.ts
@@ -660,10 +547,13 @@
 │   │   │   │   └── express.d.ts
 │   │   │   └── utils
 │   │   │       ├── assert-never.ts
+│   │   │       ├── assert-pg-params.ts
 │   │   │       ├── build-magistrat-lolfi-url.ts
 │   │   │       ├── capitalize.spec.ts
 │   │   │       ├── capitalize.ts
 │   │   │       ├── date-only.ts
+│   │   │       ├── fulltext-search.spec.ts
+│   │   │       ├── fulltext-search.ts
 │   │   │       ├── id.ts
 │   │   │       ├── is-defined.ts
 │   │   │       ├── iterables.ts
@@ -940,6 +830,7 @@
 │       │   │   │   │   │       │       ├── MemberMemo.css
 │       │   │   │   │   │       │       └── MemberMemo.tsx
 │       │   │   │   │   │       ├── nomination-file-outcome
+│       │   │   │   │   │       │   ├── NominationFileDocStatusBadge.tsx
 │       │   │   │   │   │       │   ├── NominationFileOutcome.tsx
 │       │   │   │   │   │       │   ├── NominationFileOutcomeBadge.tsx
 │       │   │   │   │   │       │   ├── NominationFileOutcomeCommentModal.tsx
@@ -1180,6 +1071,7 @@
 │       │   │   ├── get-initials.ts
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
+│       │   │   ├── multipart-json.ts
 │       │   │   ├── nomination-file.ts
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
@@ -1192,15 +1084,30 @@
 │       ├── tailwind.config.js
 │       ├── tests
 │       │   ├── e2e
+│       │   │   ├── file-affectation.spec.ts
 │       │   │   ├── login.spec.ts
-│       │   │   └── manage-session.spec.ts
+│       │   │   ├── manage-session-list.spec.ts
+│       │   │   ├── manage-session.spec.ts
+│       │   │   ├── members.spec.ts
+│       │   │   ├── observations.spec.ts
+│       │   │   └── sg-auth.setup.ts
+│       │   ├── fixtures
+│       │   │   ├── api.fixture.ts
+│       │   │   ├── auth.fixture.ts
+│       │   │   ├── data.fixture.ts
+│       │   │   └── sessions.fixture.ts
 │       │   ├── fixtures.ts
 │       │   ├── pages
 │       │   │   ├── create-session.page.ts
 │       │   │   ├── login.page.ts
 │       │   │   ├── manage-sessions.page.ts
 │       │   │   ├── manage-single-session.page.ts
-│       │   │   └── test-app.ts
+│       │   │   ├── members
+│       │   │   │   └── home.page.ts
+│       │   │   ├── members.page.ts
+│       │   │   ├── test-anonymous-app.ts
+│       │   │   ├── test-app.ts
+│       │   │   └── test-member-app.ts
 │       │   └── utils
 │       │       ├── lodam.util.ts
 │       │       ├── table.util.ts
@@ -1235,4 +1142,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-245 directories, 992 files
+248 directories, 896 files
