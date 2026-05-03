@@ -1,16 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 01 mai 2026)
+## Changelog : upptime (30 derniers jours, au 03 mai 2026)
 
 ### Résumé
-Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour régulières du statut des différents services surveillés par le bot Upptime. Ces mises à jour indiquent si les services sont opérationnels ou rencontrent des problèmes.
+Ce changelog résume les activités du projet upptime au cours des 30 derniers jours. La majorité des changements concernent les mises à jour automatiques des statuts de surveillance des différents services surveillés par upptime. Ces mises à jour indiquent si les services sont disponibles et leurs temps de réponse.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Le projet se concentre actuellement sur la surveillance continue et la notification de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée au cours de cette période. Les changements se concentrent sur la surveillance continue des services.
 
 ### Évolutions techniques
-Le projet est principalement maintenu par des mises à jour automatisées du bot Upptime. Il n'y a pas eu de changements techniques significatifs dans les commits récents.
+Aucune évolution technique significative n'a été identifiée dans les commits analysés. Les mises à jour concernent principalement les rapports d'état automatisés.
 
 ### Autres changements
-- Mises à jour régulières du fichier `README.md` pour refléter l'état actuel des services surveillés.
-- Mises à jour régulières du fichier de résumé du statut.
-- Génération de graphiques de statut.
-- Corrections mineures et améliorations continues du bot Upptime.
+- Mise à jour régulière du fichier `README` et du résumé du statut, probablement automatisée par le bot Upptime.
+- Mises à jour graphiques régulières.
+- Les commits sont principalement des mises à jour automatisées par le bot Upptime pour signaler l'état des différents services surveillés.
