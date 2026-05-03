@@ -972,7 +972,8 @@
 │   │   │       │   │   │   ├── V0.215__add_column_ums_gross_tonnage_vessels.sql
 │   │   │       │   │   │   ├── V0.216__migrate_infractions_vessel_id.sql
 │   │   │       │   │   │   ├── V0.217__ais_position_rename_sent_at.sql
-│   │   │       │   │   │   └── V0.218__add_vessel_batch_row_number_index.sql
+│   │   │       │   │   │   ├── V0.218__add_vessel_batch_row_number_index.sql
+│   │   │       │   │   │   └── V0.219__add_columns_action_diving_incident.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1834,11 +1835,15 @@
 │   │   │   ├── RegulatoryThemesFilter.tsx
 │   │   │   ├── RequireAuth.tsx
 │   │   │   ├── Table
-│   │   │   │   ├── DateCell.tsx
-│   │   │   │   ├── LocalizeCell.tsx
+│   │   │   │   ├── Cells
+│   │   │   │   │   ├── DateCell.tsx
+│   │   │   │   │   ├── HumanDateCell.tsx
+│   │   │   │   │   └── LocalizeCell.tsx
 │   │   │   │   ├── PaddingForVirtualizeTable.tsx
 │   │   │   │   ├── TableWithSelectableRows
 │   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── style.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── index.tsx
 │   │   │   │   └── style.ts
@@ -2254,7 +2259,6 @@
 │   │   │   │   ├── MissionsNavBar.tsx
 │   │   │   │   ├── MissionsSearch.tsx
 │   │   │   │   ├── components
-│   │   │   │   │   ├── CompletionStatusLabel.tsx
 │   │   │   │   │   ├── CompletionStatusTag.tsx
 │   │   │   │   │   ├── ControlInfractionsTags.tsx
 │   │   │   │   │   ├── Filters
@@ -2361,24 +2365,26 @@
 │   │   │   │   │   │   ├── sse.ts
 │   │   │   │   │   │   ├── style.ts
 │   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   ├── MissionStatusLabel.tsx
 │   │   │   │   │   ├── MissionStatusTag.tsx
 │   │   │   │   │   ├── MissionsButton
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── MissionsList
 │   │   │   │   │   │   ├── Cells
-│   │   │   │   │   │   │   ├── CellActionTags.tsx
-│   │   │   │   │   │   │   ├── CellActionThemes.tsx
-│   │   │   │   │   │   │   ├── CellCompletionStatus.tsx
-│   │   │   │   │   │   │   ├── CellEditMission.tsx
-│   │   │   │   │   │   │   ├── CellStatus.tsx
-│   │   │   │   │   │   │   ├── getMissionTypeCell.tsx
-│   │   │   │   │   │   │   ├── getNumberOfControlsCell.tsx
-│   │   │   │   │   │   │   └── getResourcesCell.tsx
+│   │   │   │   │   │   │   ├── ActionTagsCell.tsx
+│   │   │   │   │   │   │   ├── ActionsCell.tsx
+│   │   │   │   │   │   │   ├── CompletionStatusCell.tsx
+│   │   │   │   │   │   │   ├── ControlsCell.tsx
+│   │   │   │   │   │   │   ├── MissionTypeCell.tsx
+│   │   │   │   │   │   │   ├── NumberOfControlsCell.tsx
+│   │   │   │   │   │   │   ├── ResourcesCell.tsx
+│   │   │   │   │   │   │   ├── StatusCell.tsx
+│   │   │   │   │   │   │   ├── ThemesCell.tsx
+│   │   │   │   │   │   │   └── UnitCell.tsx
 │   │   │   │   │   │   ├── Columns
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── MissionsTable.tsx
 │   │   │   │   │   │   ├── MissionsTableSort.ts
+│   │   │   │   │   │   ├── Row.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── type.ts
 │   │   │   │   │   │   └── utils.ts
@@ -3310,4 +3316,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-598 directories, 2714 files
+599 directories, 2719 files
