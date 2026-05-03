@@ -1,70 +1,54 @@
 {
   "url": "https://github.com/betagouv/mon-indemnisation-justice",
   "name": "mon-indemnisation-justice",
-  "description": "Cette application vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduisant les délais de traitement et permettant des économies financières pour le ministère de la Justice.",
+  "description": "Cette application vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduisant les délais de traitement et permettant des économies financières.",
   "language": "PHP",
   "features": [
     "Formulaires & Démarches",
-    "Téléversement de pièces jointes",
-    "Gestion des brouillons de déclaration",
-    "Intelligence Artificielle & NLP"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Sécurité & Conformité"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Grand public",
   "dependencies": [
-    "Symfony",
-    "API Platform",
-    "Doctrine",
-    "PHPUnit",
-    "Playwright",
-    "React",
-    "Vite"
+    "@gouvfr/dsfr",
+    "puppeteer",
+    "react-dsfr",
+    "zod"
   ],
   "components": [
-    "Microservices & Architecture",
-    "React / Next.js",
-    "PostgreSQL & SQL",
     "API REST & GraphQL",
-    "Docker & Conteneurs",
-    "Tests"
+    "Frontend React",
+    "Base de données PostgreSQL",
+    "PHP (scripts & backend)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
-    ],
-    "providers": [
-      "FranceConnect"
+      "oauth2"
     ]
   },
   "tests": [
-    "PHPUnit",
+    "Vitest",
     "Playwright"
   ],
   "workflows": [
-    "build-docker-image.yml",
-    "deploy-develop.yml",
-    "deploy-prod.yml",
-    "merge-to-prod.yml",
     "test.yml"
   ],
-  "lastActivity": "2026-04-30T17:07:12+00:00",
+  "lastActivity": "2026-05-01T07:40:50+00:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 0,
-    "contributors": 1,
+    "contributors": null,
     "openIssues": 0
   },
   "tags": [
-    "indemnisation",
-    "justice",
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "PHP",
-    "Flask, Symfony & autres backend",
     "React & Next.js",
-    "Docker & Conteneurs",
-    "API Platform"
+    "PHP",
+    "Sécurité & Auth"
   ]
 }
