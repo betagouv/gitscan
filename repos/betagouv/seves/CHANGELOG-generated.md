@@ -1,44 +1,44 @@
-## Changelog : seves (30 derniers jours, au 28 avril 2026)
+## Changelog : seves (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'édition et de la visualisation des données, ainsi que sur la correction de bugs et l'optimisation de la performance. Des améliorations ont été apportées aux formulaires, aux tableaux de données et à la gestion des fichiers. Des corrections de sécurité et des mises à jour de dépendances ont également été effectuées.
+Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des documents (prévisualisation, téléchargement groupé, dates de publication), de la navigation et de l'accessibilité. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations techniques pour la robustesse et la maintenance du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'historique pour les Suivis Sanitaires (SV) [#5565d54](https://github.com/betagouv/seves/commit/5565d54).
-- Possibilité de prévisualiser les images et les fichiers PDF [#3bdeb05](https://github.com/betagouv/seves/commit/3bdeb05).
-- Ajout du numéro RASFF aux objets TIAC [#b6469bf](https://github.com/betagouv/seves/commit/b6469bf).
-- Ajout de la date de publication sur tous les objets "fiche" [#51fa26d](https://github.com/betagouv/seves/commit/51fa26d).
-- Amélioration de la précision des notifications dans le contexte des Situations Sanitaires Aggravées (SSA) [#107ac35](https://github.com/betagouv/seves/commit/107ac35).
-- Ajout d'un champ "Date de réception" avec une date maximale dans l'interface utilisateur [#16c371b](https://github.com/betagouv/seves/commit/16c371b).
-- Possibilité de mettre à jour une fiche ayant une relation avec un objet supprimé [#5289058](https://github.com/betagouv/seves/commit/5289058).
-- Ajout d'un indicateur d'accessibilité pour la "fiche zone délimitée" dans le tableau des événements SV [#bb0c0ad](https://github.com/betagouv/seves/commit/bb0c0ad).
-- Amélioration de l'affichage des dates des messages [#034ca53](https://github.com/betagouv/seves/commit/034ca53).
-- Correction de l'affichage pour l'éditeur de texte enrichi [#42a13ee](https://github.com/betagouv/seves/commit/42a13ee) et [#6debe44](https://github.com/betagouv/seves/commit/6debe44).
-- Ajout de l'option "ON" pour les SV [#6b49448](https://github.com/betagouv/seves/commit/6b49448).
-- Correction pour autoriser les lettres dans le numéro d'agrément des établissements [#2055cfe](https://github.com/betagouv/seves/commit/2055cfe).
-- Correction de la date utilisée pour les messages lors de l'export en Docx [#a4125dd](https://github.com/betagouv/seves/commit/a4125dd).
-- Correction de l'affichage pour l'ancien sélecteur d'arbre (Treeselect) [#e8f5590](https://github.com/betagouv/seves/commit/e8f5590).
-- Correction d'une régression avec GEA sur le nouveau Treeselect [#e8f5590](https://github.com/betagouv/seves/commit/e8f5590).
+- Ajout d'une page d'accessibilité pour améliorer l'utilisation de l'outil par tous les utilisateurs.
+- Possibilité de télécharger des documents en archive ZIP [#9a688f1](https://github.com/betagouv/seves/commit/9a688f1).
+- Amélioration de l'affichage et de la précision des dates dans diverses vues et exports.
+- Prévisualisation des images et des fichiers PDF directement dans l'interface.
+- Correction de l'affichage du rich text editor pour une meilleure expérience de saisie.
+- Ajout du numéro RASFF pour les objets TIAC.
+- Amélioration de l'historique des modifications pour les modèles avec des relations complexes.
+- Possibilité de télécharger des documents même sans date de publication [#cc771d9](https://github.com/betagouv/seves/commit/cc771d9).
+- Ajout d'un bouton d'annulation sur la page d'édition TIAC [#e0be778](https://github.com/betagouv/seves/commit/e0be778).
+- Amélioration de l'affichage des informations sur les prélèvements et les lieux.
+- Ajout de la possibilité de filtrer par année et numéro.
+- Correction de l'affichage des badges sur les modals de prélèvement et de lieu [#2668203](https://github.com/betagouv/seves/commit/2668203).
 
 ### Évolutions techniques
-- Mise à jour de Django vers la version 6 [#e760f3f](https://github.com/betagouv/seves/commit/e760f3f).
-- Ajout d'un timeout sur les requêtes OIDC pour éviter les interruptions des workers en production [#0d85baf](https://github.com/betagouv/seves/commit/0d85baf).
-- Refactorisation de l'implémentation du Treeselect, abandon de l'ancienne implémentation TIAC [#f0246ed](https://github.com/betagouv/seves/commit/f0246ed).
-- Amélioration de la performance de la vue de liste des SSA [#8e5af29](https://github.com/betagouv/seves/commit/8e5af29).
-- Ajout de la reconnection à Redis pour Celery [#9dab5ba](https://github.com/betagouv/seves/commit/9dab5ba).
-- Suppression des révisions ajoutées par les signaux dans SV [#c3a59b4](https://github.com/betagouv/seves/commit/c3a59b4).
-- Désactivation des warnings Python sur CI pour améliorer la lisibilité [#d067195](https://github.com/betagouv/seves/commit/d067195).
-- Remplacement de Clamav par une solution antivirus en ligne [#65c5b00](https://github.com/betagouv/seves/commit/65c5b00).
+- Refactorisation des actions pour les tests.
+- Correction d'un conflit de migration entre deux migrations (0121_lieu_site_inspection_new et 0121_add_on_phytophthora_kernoviae) [#ba0fb8a](https://github.com/betagouv/seves/commit/ba0fb8a).
+- Mise à jour de plusieurs dépendances : Django, Django-DSFR, Django-Post-Office, Sentry-SDK, Ruff, Psycopg2-binary, Pre-commit, Lxml, Pytest, Cryptography, Django-Debug-Toolbar.
+- Amélioration de la gestion des erreurs OIDC avec ajout d'un timeout pour éviter les blocages en production [#0d85baf](https://github.com/betagouv/seves/commit/0d85baf).
+- Correction d'un problème de test intermittent.
+- Utilisation de `and_more_ellipsis_tooltip` pour uniformiser l'affichage des ellipses.
+- Suppression de l'utilisation de SSA dans l'application core.
+- Amélioration des performances de la vue listant les SSA.
+- Correction d'un problème lié à l'affichage de textes longs sans retour à la ligne.
+- Ajout d'une gestion de la reconnexion à Redis pour Celery.
+- Correction d'un problème avec l'affichage des synthèses d'enregistrement simple.
+- Ajout d'un related name dans SV pour zone infestee.
+- Correction d'un problème d'affichage des dates de publication dans les formulaires TIAC.
+- Suppression de l'utilisation de placeholders "nc." et remplacement par un filtre plus générique.
 
 ### Autres changements
-- Correction de l'aperçu PDF pour le navigateur Brave [#5565d54](https://github.com/betagouv/seves/commit/5565d54).
-- Correction de l'ellipses tooltip sur TIAC [#6a09d39](https://github.com/betagouv/seves/commit/6a09d39).
-- Correction de l'affichage des noms de fichiers longs dans le tableau des documents [#5acac94](https://github.com/betagouv/seves/commit/5acac94).
-- Uniformisation des liens d'annulation sur les objets "fiche" [#98d3a21](https://github.com/betagouv/seves/commit/98d3a21).
-- Changement des formats des filtres "année" et "numéro" [#f6b7c47](https://github.com/betagouv/seves/commit/f6b7c47).
-- Ajout de boutons d'action du formulaire en bas de page [#8e96590](https://github.com/betagouv/seves/commit/8e96590).
-- Corrections de design sur SV [#e9b2045](https://github.com/betagouv/seves/commit/e9b2045) et [#8bda377](https://github.com/betagouv/seves/commit/8bda377).
-- Correction de l'affichage du menu de domaine sur la page de détails de l'événement [#ede7dea](https://github.com/betagouv/seves/commit/ede7dea).
-- Correction d'un assert flaky dans les tests [#1ff40d2](https://github.com/betagouv/seves/commit/1ff40d2).
-- Refactorisation de l'utilisation de `and_more_ellipsis_tooltip` [#b3d398d](https://github.com/betagouv/seves/commit/b3d398d).
-- Correction de l'état lors de la modification après clôture [#0e74ffa](https://github.com/betagouv/seves/commit/0e74ffa).
+- Ajout d'un ON pour SV.
+- Ajout d'un ON pour Phytophthora kernoviae.
+- Mise à jour de la documentation.
+- Corrections de style et de cohérence du code.
+- Désactivation des warnings Python dans le CI pour améliorer la lisibilité.
+- Migration du modèle SiteInspection vers un TextChoices.
+- Ajout de la possibilité d'autoriser des lettres dans le numéro d'agrément d'un établissement [#2055cfe](https://github.com/betagouv/seves/commit/2055cfe).
+- Amélioration de l'affichage des cartes d'établissement dans les tests.
