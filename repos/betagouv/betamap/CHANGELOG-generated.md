@@ -1,14 +1,14 @@
-## Changelog : betamap (30 derniers jours, au 25 avril 2026)
+## Changelog : betamap (30 derniers jours, au 2 mai 2026)
 
 ### Résumé
-Cette mise à jour se concentre principalement sur la mise à jour des données des startups d'état affichées sur la carte. Une correction a également été apportée pour éviter une erreur lors de l'affichage de données invalides.
+Cette mise à jour apporte principalement une correction pour éviter les erreurs lors de l'affichage de données invalides et une mise à jour des données des startups d'État. Les fichiers de données ont été mis à jour pour inclure tous les fichiers JSON nécessaires.
 
 ### Évolutions fonctionnelles
-- Correction d'une erreur qui pouvait survenir avec des données invalides, améliorant la stabilité de l'application. [#1234](https://github.com/betagouv/betamap/issues/1234) (estimation du numéro d'issue)
-- Mise à jour des données des startups d'état pour refléter les dernières informations.
+- Correction d'une erreur qui pouvait survenir lors de l'affichage de données invalides [#issue à investiguer si disponible].
+- Mise à jour des données des startups d'État pour refléter les dernières informations.
 
 ### Évolutions techniques
-- Mise à jour des chemins de fichiers pour inclure tous les fichiers JSON contenant les données des startups.
+- Mise à jour des chemins d'accès aux fichiers pour inclure tous les fichiers JSON nécessaires.
 
 ### Autres changements
-- Aucune information supplémentaire à signaler.
+- Mises à jour régulières des données des startups d'État (plusieurs commits de revolunet). Ces mises à jour sont automatiques et visent à maintenir l'application à jour avec les dernières informations disponibles.
