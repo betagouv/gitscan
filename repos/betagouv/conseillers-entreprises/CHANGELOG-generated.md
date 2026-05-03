@@ -1,100 +1,27 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 23 avril 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité du formulaire de sollicitation et de la gestion des statistiques pour les sponsors. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la documentation et de la sécurité.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité et de l'interface, ainsi que sur des corrections de bugs et des optimisations techniques. Des améliorations ont été apportées aux statistiques pour les sponsors et à la gestion des emails. La documentation et les processus de contribution ont également été mis à jour.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle question et d'une interface utilisateur associée pour la satisfaction des entreprises [#4392](https://github.com/betagouv/conseillers-entreprises/pull/4392).
-- Amélioration de l'affichage des statistiques pour les sponsors, avec la possibilité de filtrer les institutions et l'accès à des données plus précises.
-- Correction du calcul des taux d'échange dans les rapports.
-- Mise à jour du formulaire de sollicitation pour améliorer l'accessibilité, notamment avec des labels et des messages d'erreur plus clairs.
-- Correction de l'affichage des couleurs dans les paniers qualité.
-- Intégration de schémas SEO plus complets pour améliorer le référencement des pages thématiques et des sujets.
+- Ajout d'un questionnaire pour les enquêtes auprès des conseillers [#434](https://github.com/betagouv/conseillers-entreprises/issues/434).
+- Amélioration de l'accessibilité du formulaire de sollicitation, notamment en ciblant correctement les champs en cas d'erreur.
+- Ajout de nouvelles questions sur la satisfaction des entreprises et intégration des résultats dans les exports. [#4392](https://github.com/betagouv/conseillers-entreprises/pulls/4392)
+- Mise à jour de l'adresse email utilisée pour les envois, passant à `entreprises.service-public.gouv.fr`. [#4409](https://github.com/betagouv/conseillers-entreprises/pulls/4409)
+- Amélioration de l'affichage des statistiques pour les sponsors, avec une page dédiée et des filtres. [#4410](https://github.com/betagouv/conseillers-entreprises/pulls/4410)
+- Ajout d'une validation pour les droits d'accès des sponsors. [#439](https://github.com/betagouv/conseillers-entreprises/pulls/439)
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la clarté et l'efficacité, notamment dans la gestion des drapeaux de sollicitation et la logique de recherche d'entreprises similaires.
-- Optimisation des requêtes SQL pour réduire les temps de chargement et améliorer les performances.
-- Suppression de la logique de zone globale pour les experts, simplifiant ainsi le code et améliorant la maintenance.
-- Mise à jour des dépendances, incluant `addressable`, `rack`, `action_text-trix`, `lodash`, `mcp` et `picomatch`.
-- Amélioration de la gestion des cookies pour permettre le fonctionnement des iframes en local.
-- Migration du code Sass vers une syntaxe plus moderne.
-- Ajout de tests pour les corrections apportées, notamment pour les iframes et les statistiques.
-- Correction de la transmission des événements de conversion Google Ads.
-- Suppression de code inutile et simplification de certaines parties du code, notamment dans la gestion de la barre de navigation et des politiques Pundit.
+- Refactorisation du code pour supprimer des éléments inutilisés (support subject, bandeau info). [#4438](https://github.com/betagouv/conseillers-entreprises/pulls/4438), [#4440](https://github.com/betagouv/conseillers-entreprises/pulls/4440)
+- Optimisation des requêtes SQL pour améliorer les performances, notamment lors de l'affichage des sollicitations. [#4389](https://github.com/betagouv/conseillers-entreprises/pulls/4389)
+- Mise à jour de plusieurs dépendances : stimulus (v3.2.2), addressable (v2.9.0), rack (v3.2.6), lodash (v4.18.1), erb (v6.0.4), rack-session (v2.1.2), follow-redirects (v1.16.0).
+- Amélioration de la structure du code et suppression de code dupliqué dans la barre de navigation.
+- Refactorisation de la gestion des droits d'accès avec Pundit.
+- Utilisation de variables CSS pour une meilleure cohérence des couleurs.
+- Ajout d'un code de conduite (Contributor Covenant). [#4327](https://github.com/betagouv/conseillers-entreprises/pulls/4327)
 
 ### Autres changements
-- Ajout d'un fichier CONTRIBUTING.md pour définir les règles de contribution au projet.
-- Mise à jour de la documentation pour refléter les dernières modifications.
-- Correction de bugs mineurs et amélioration de la qualité du code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de l'affichage des couleurs des badges dans l'interface d'administration.
-- Mise à jour du domaine des emails pour utiliser `entreprises.service-public.gouv.fr`.
-- Correction de l'affichage des dates dans les rapports des antennes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques générées.
-- Correction de l'affichage des liens dans les statistiques.
-- Amélioration de la gestion des erreurs dans le formulaire de sollicitation.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
-- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
-- Correction de l'affichage des couleurs des icônes.
-- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
-- Correction de l'affichage des liens dans la barre de navigation.
+- Mise à jour de la documentation SEO avec l'ajout de schémas et de méta-données pour améliorer le référencement. [#4414](https://github.com/betagouv/conseillers-entreprises/pulls/4414)
+- Corrections de typographie et de formulation dans divers textes.
+- Amélioration des tests et de la qualité du code.
+- Suppression de code inutilisé et nettoyage général du codebase.

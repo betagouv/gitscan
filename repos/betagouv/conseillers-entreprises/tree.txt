@@ -348,7 +348,6 @@
 │   │   │   │   ├── controllers
 │   │   │   │   │   ├── autocomplete_controller.js
 │   │   │   │   │   ├── badges_controller.js
-│   │   │   │   │   ├── bandeau_info_controller.js
 │   │   │   │   │   ├── cgu_acceptance_controller.js
 │   │   │   │   │   ├── coverage_controller.js
 │   │   │   │   │   ├── diagnosis_needs_step_controller.js
@@ -357,9 +356,9 @@
 │   │   │   │   │   ├── feedback_form_controller.js
 │   │   │   │   │   ├── fr_header_controller.js
 │   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── modal_controller.js
 │   │   │   │   │   ├── password_visibility_controller.js
-│   │   │   │   │   └── toggle_block_controller.js
+│   │   │   │   │   ├── toggle_block_controller.js
+│   │   │   │   │   └── user_app_info_controller.js
 │   │   │   │   ├── feedbacks.js
 │   │   │   │   └── index.js
 │   │   │   ├── pages
@@ -409,6 +408,7 @@
 │   │   ├── nested_errors_helper.rb
 │   │   ├── page_infos_helper.rb
 │   │   ├── person_helper.rb
+│   │   ├── questionnaire_helper.rb
 │   │   ├── regions_helper.rb
 │   │   ├── reminders_helper.rb
 │   │   ├── scripts_snippets_helper.rb
@@ -498,7 +498,6 @@
 │   │   │   ├── with_effectif.rb
 │   │   │   ├── with_slug.rb
 │   │   │   ├── with_subject.rb
-│   │   │   ├── with_support_user.rb
 │   │   │   └── with_territorial_zones.rb
 │   │   ├── contact.rb
 │   │   ├── cooperation.rb
@@ -846,12 +845,12 @@
 │       │       ├── import.html.haml
 │       │       └── index.html.haml
 │       ├── application
-│       │   ├── _bandeau_info.html.haml
 │       │   ├── _footer.html.haml
 │       │   ├── _head.html.haml
 │       │   ├── _navbar.html.haml
 │       │   ├── _person.haml
 │       │   ├── _person_modal.html.haml
+│       │   ├── _questionnaire.html.haml
 │       │   ├── _tarteaucitron.html.erb
 │       │   ├── _user_admin_view.haml
 │       │   └── navbar
@@ -936,7 +935,8 @@
 │       │   │   └── new.html.haml
 │       │   ├── mailer
 │       │   │   ├── invitation_instructions.mjml
-│       │   │   ├── invitation_instructions.text.erb
+│       │   │   ├── invitation_instructions_cooperation_manager.mjml
+│       │   │   ├── invitation_instructions_sponsor.mjml
 │       │   │   ├── reset_password_instructions.mjml
 │       │   │   └── reset_password_instructions.text.erb
 │       │   ├── passwords
@@ -1319,7 +1319,8 @@
 │   │   ├── 20260310152231_remove_not_null_on_active_storage_blobs_checksum.active_storage.rb
 │   │   ├── 20260330132110_add_index_for_solicitation_email_and_siret.rb
 │   │   ├── 20260421130510_remove_is_global_zone_to_expert.rb
-│   │   └── 20260423101238_add_satisfaction_third_question.rb
+│   │   ├── 20260423101238_add_satisfaction_third_question.rb
+│   │   └── 20260423172541_remove_support_subject.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1810,4 +1811,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-313 directories, 1508 files
+313 directories, 1509 files

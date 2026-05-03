@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à améliorer l'accompagnement des entreprises.",
+  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -9,19 +9,18 @@
     "Notifications & Alertes",
     "Gestion des établissements & Structures",
     "Aides & Éligibilité",
-    "Gestion des signalements"
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Rails",
-    "Ruby",
+    "Ruby on Rails",
     "PostgreSQL",
-    "Puma",
     "Devise",
-    "Rswag",
-    "Sidekiq",
+    "Pundit",
     "Highcharts",
-    "ActiveAdmin"
+    "ActiveAdmin",
+    "Sidekiq",
+    "Redis"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,7 +28,9 @@
     "Ruby on Rails",
     "Microservices & Architecture",
     "Documentation & Schémas",
-    "CI/CD & Déploiement"
+    "CI/CD & Déploiement",
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -40,13 +41,12 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium-webdriver"
+    "Selenium"
   ],
   "workflows": [
-    "CircleCI",
-    "GitHub Actions"
+    "CI/CD"
   ],
-  "lastActivity": "2026-04-23T17:05:58+02:00",
+  "lastActivity": "2026-04-30T16:27:14+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
