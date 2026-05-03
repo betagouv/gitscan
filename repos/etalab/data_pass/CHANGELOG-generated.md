@@ -1,100 +1,50 @@
-## Changelog : data_pass (30 derniers jours, au 29 avril 2026)
+## Changelog : data_pass (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur les formulaires de demande et la gestion des droits. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la sécurité et de la conformité. L'API a été enrichie avec de nouvelles fonctionnalités et une meilleure documentation.
+Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités pour les demandes DGFIP, la gestion des droits utilisateurs et la simplification de l'interface. Des corrections de bugs et des optimisations de performance ont également été apportées. L'API s'enrichit de nouvelles fonctionnalités pour la création et la mise à jour de demandes.
 
 ### Évolutions fonctionnelles
 - Ajout d'une bannière de maintenance ProConnect visible sur toutes les pages.
-- Amélioration de l'affichage du statut des demandes (revendiquées/non revendiquées).
+- Amélioration de l'affichage du statut des demandes ("revendiqué" ou "non revendiqué").
 - Suppression du compteur de longlet "Demandes" pour les instructeurs.
-- Affichage du numéro de SIRET formaté dans les emails.
-- Ajout d'un accusé de réception lors du dépôt d'une demande.
+- Simplification de l'affichage des scopes sans groupes dans le formulaire.
+- Ajout d'un lien vers la création d'une demande dans la liste des demandes.
+- Amélioration de la gestion des CGU pour les types d'habilitation dynamiques.
+- Ajout d'un lien vers le formulaire de création d'habilitation dynamique.
+- Mise à jour des libellés liés à la tarification Eaje.
 - Possibilité de retirer complètement les droits d'un utilisateur.
-- Ajout d'un lien vers la création d'une demande dans la liste des habilitations.
-- Amélioration de l'affichage des scopes sans groupes dans les formulaires.
-- Correction d'un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
-- Ajout d'un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
-- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
-- Affichage d'un message d'erreur plus clair en cas d'échec de connexion.
-- Amélioration de l'affichage des scopes boursier MEN sur les formulaires CNAF.
+- Ajout d'informations sur les services CISIRH et mise à jour des scopes associés.
+- Amélioration de l'affichage des erreurs de vérification d'email lors de la soumission.
+- Ajout d'emails spécifiques pour les approbations DGFIP.
+- Amélioration de l'affichage des identifiants d'habilitation dans les routes.
+- Ajout de la possibilité de bannir un utilisateur via l'interface d'administration.
+- Ajout d'une raison au bannissement d'un utilisateur.
+- Amélioration de la gestion des erreurs lors de la soumission de demandes.
 - Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
-- Ajout de la gestion des CGU vides pour les types d'habilitation dynamiques.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des rôles avec l'introduction de `RoleHierarchy` et `RoleSet`.
-- Ajout de tests contractuels pour garantir la cohérence des définitions.
+- Refactorisation du code pour simplifier la gestion des événements et des diffs.
+- Introduction d'un service singleton `AnnouncementBanner` pour gérer la bannière de maintenance.
 - Amélioration de la gestion des erreurs et des exceptions.
-- Optimisation des requêtes SQL sur le dashboard demandeur pour améliorer les performances.
-- Mise à jour des dépendances (Rubocop, Rack-Session, Zlib, etc.).
-- Ajout de webhooks pour notifier les événements liés aux organisations (création, mise à jour).
-- Amélioration de la documentation de l'API et ajout de tutoriels pour les développeurs.
-- Ajout de contrôles pour forcer la définition du titre de chaque vue.
+- Ajout d'une page de documentation pour les webhooks.
 - Ajout d'un service `MarkdownRenderer` pour le rendu du Markdown.
-- Amélioration de la gestion des scopes OAuth2.
-- Ajout d'une page de documentation dédiée aux webhooks.
-- Amélioration de la gestion des erreurs lors de la soumission de formulaires.
-- Ajout de la raison du bannissement sur l'utilisateur.
-- Ajout d'événements pour les mises à jour des données.
-- Amélioration de la gestion des erreurs dans les emails.
+- Mise à jour des dépendances (Rubocop, Yard, Zlib, Rack-Session, Openapi_first).
+- Optimisation des tests CI/CD (parallélisation, suppression de dépendances Docker).
+- Amélioration de la gestion des requêtes N+1 sur le dashboard demandeur.
+- Ajout d'interacteurs et d'organizers pour l'API write.
+- Documentation des scopes OAuth2 par endpoint dans l'OpenAPI.
+- Ajout d'événements `create_by_api` et `update_by_api`.
+- Amélioration de la gestion des slugs.
+- Ajout de tests contractuels.
+- Migration des tables rails_pulse et lazy_load faker.
 
 ### Autres changements
 - Mise à jour de la documentation des rôles.
-- Correction de fautes de frappe dans les textes des emails.
-- Ajout d'instructions pour l'exécution des tests en CI.
-- Amélioration des descriptions de l'OpenAPI.
-- Ajout d'un guide de contribution avec CLAUDE.
-- Correction d'un problème de remplacement des apostrophes dans les tests.
-- Suppression de code inutile et nettoyage du code.
-- Correction d'un revert de mise à jour de dépendances.
-- Ajout d'un suffixe au slug des HabilitationType.
-- Correction d'un bug lié à l'affichage des scopes.
-- Ajout d'un message d'erreur plus clair en cas d'échec de connexion.
-- Correction d'un problème lié à l'affichage des habilitations FC.
-- Ajout de la gestion de l'erreur `EntityNotFoundError`.
-- Amélioration de la gestion des diffs des changelogs.
-- Correction d'un problème de timezone en CI.
-- Ajout de la gestion des erreurs à la soumission d'une demande avec turbo-stream.
-- Ajout de la gestion des scopes cnaf_adresse et cnaf_enfants pour le formulaire Solis.
-- Ajout de la gestion des scopes men_regime_pensionnat pour l'API Particulier.
-- Ajout de la gestion des scopes beneficiaires_effectifs_inpi pour l'API Entreprise Entrouvert.
-- Ajout de la possibilité d'afficher l'astérisque depuis les validators dsfr_file_field.
-- Ajout de la possibilité de remplir le champ `france_connect_authorization_id` lors de la validation d'une demande.
-- Ajout de la gestion des droits de niveau FD.
-- Ajout de la gestion des cas personne physique et organisation étrangère dans Organization#name.
-- Ajout de la gestion des erreurs à la soumission d'une demande avec turbo-stream.
-- Ajout de la gestion des scopes boursier MEN sur les formulaires CNAF.
-- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
-- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
-- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
-- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
-- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
-- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
-- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
-- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
-- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
-- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
-- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
-- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
-- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
-- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
-- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
-- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
-- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
-- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
-- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
-- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
-- Ajout de la possibilité de corriger un bug empêchant la soumission d'une demande avec une adresse email non vérifiée.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'habilitation API Entreprise Entrouvert.
-- Ajout de la possibilité de bannir un utilisateur et de bloquer son accès.
-- Ajout de la possibilité d'afficher un message d'erreur plus clair en cas d'échec de connexion.
-- Ajout de la possibilité d'améliorer l'affichage des scopes boursier MEN sur les formulaires CNAF.
-- Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
-- Ajout de la possibilité d'ajouter des webhooks sur create_by_api et update_by_api.
-- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
-- Ajout de la possibilité d'ajouter un lien vers le formulaire de création d'une demande dans la liste des habilitations.
-- Ajout de la possibilité d'améliorer l'affichage des scopes sans groupes dans les formulaires.
+- Correction de typos dans les sujets des emails.
+- Ajout de guidelines pour l'utilisation de CLAUDE pour la co-authoring des commits.
+- Clarification du message d'erreur de `SkipLinksImplementedChecker`.
+- Ajout d'instructions pour arrêter le remplacement des apostrophes par des guillemets simples dans les tests.
+- Suppression de code inutile et nettoyage général du code.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Mise à jour de la documentation.
+- Ajout de commentaires et de documentation au code.
