@@ -1,57 +1,50 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-identite",
   "name": "proconnect-identite",
-  "description": "ProConnect Identité est un fournisseur d'identité OpenId Connect géré par la DINUM. Il permet aux professionnels de s'authentifier au sein de la fédération ProConnect, notamment ceux qui n'ont pas de fournisseur d'identité désigné.",
+  "description": "ProConnect Identité est un fournisseur d'identité OpenId Connect géré par la DINUM. Il permet aux professionnels de s'authentifier au sein de la fédération ProConnect.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
     "PostgreSQL",
     "Redis",
-    "Axios",
-    "oidc-provider",
-    "nodemailer"
+    "nodemailer",
+    "jose",
+    "zod"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
-    "Node.js / NestJS"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
       "session"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
-    "Cypress"
+    "Cypress",
+    "Jest"
   ],
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-04-21T16:13:29+02:00",
+  "workflows": [],
+  "lastActivity": "2026-04-30T14:38:16+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
-    "Sécurité & Auth",
-    "Open Data",
+    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "TypeScript",
-    "JavaScript",
-    "SSO & Identité fédérée"
+    "Sécurité & Auth"
   ]
 }
