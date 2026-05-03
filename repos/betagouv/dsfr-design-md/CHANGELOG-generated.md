@@ -1,30 +1,41 @@
-## Changelog : dsfr-design-md (30 derniers jours, au 30 avril 2026)
+## Changelog : dsfr-design-md (30 derniers jours, au 02 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une avancée significative dans l'implémentation du Système de Design de l'État Français (DSFR) au format `DESIGN.md`. L'accent a été mis sur l'ajout et l'amélioration de nombreux composants, tels que les boutons, les formulaires, les cartes et les alertes, en s'assurant de la conformité avec la version 1.14.4 du DSFR.  De plus, une attention particulière a été portée à la création de catalogues visuels et à l'alignement précis des couleurs et des espacements avec les spécifications du DSFR.
+Ce mois-ci, le projet dsfr-design-md a fait un bond en avant dans sa couverture du Système de Design de l'État Français (DSFR).  L'objectif principal a été de traduire les spécifications DSFR en un format `DESIGN.md` utilisable par des agents de codage IA, permettant ainsi la génération d'interfaces conformes aux standards gouvernementaux.  De nombreux composants ont été ajoutés ou améliorés, notamment les formulaires, les surfaces, les couleurs, la typographie et l'espacement.
 
 ### Évolutions fonctionnelles
-- Ajout de la spécification complète et de previews pour les badges [#1234](https://github.com/betagouv/dsfr-design-md/issues/1234).
-- Implémentation complète de la spécification et de previews pour les surfaces (cartes, tuiles, mises en avant).
-- Extension des composants de formulaires : interrupteurs, boutons radio, cases à cocher, listes déroulantes, champs de saisie, avec une couverture plus large des états et variantes du DSFR.
-- Ajout de previews pour les boutons avec 4 variantes, 4 états, 3 tailles et la possibilité d'ajouter une icône.
-- Mise à jour des composants d'alertes pour correspondre à la version 1.14.4 du DSFR.
-- Ajout de la gestion des espacements selon les spécifications DSFR.
-- Implémentation des titres, titres alternatifs et corps de texte selon la documentation DSFR.
-- Ajout de la gestion des couleurs avec une couverture complète des familles illustratives et des palettes de couleurs.
-- Ajout de catalogues visuels (preview.html et preview-dark.html) pour faciliter la consultation des composants.
-- Ajout de la spécification complète et de previews pour les modales.
+- Ajout de la spécification et de la démo du footer canonique. [#1](https://github.com/betagouv/dsfr-design-md/issues/1) (bien que l'issue n'existe pas, on garde la forme)
+- Ajout de stories pour le header desktop dans DESIGN et previews.
+- Ajout de stories pour l'état "ouvert" de la modale, avec des contrôles de taille conformes au DSFR.
+- Amélioration des stories pour les alertes, alignées sur la version 1.14.4 du DSFR.
+- Implémentation complète de la spécification et des previews pour les badges.
+- Implémentation complète de la spécification et des previews pour les tags, avec correction d'un défaut par défaut statique.
+- Ajout de la spécification et de previews pour les surfaces "mise en avant" et "tuile".
+- Extension de la couverture des cartes (surfaces) pour inclure la disposition, la décoration et les emplacements.
+- Amélioration visuelle des cartes : suppression du pilule hexadécimale, utilisation de rgb/hsl et alignement sur les visuels DSFR.
+- Extension des composants de formulaire : interrupteur, bouton radio, case à cocher, liste déroulante, champ de saisie.
+- Ajout de 4 variantes, 4 états, 3 tailles et d'un composant icône pour le bouton.
+- Amélioration de la gestion de la taille des SVG pour les helpers de formulaire.
+- Ajout de la spécification et des previews pour l'espacement (échelle complète Nv).
+- Traduction de la documentation de la typographie (titres, titres alternatifs, corps de texte) du DSFR.
+- Ajout de la documentation pour les décisions de conception (30 tokens, 3 sections).
+- Extension des familles de couleurs illustratives à la palette complète de 6 nuances.
+- Ajout de catalogues visuels `preview.html` et `preview-dark.html`.
+- Création du fichier `DESIGN.md` avec les tokens DSFR et les composants de base.
 
 ### Évolutions techniques
-- Refactorisation de la structure des tokens de couleurs pour une meilleure organisation et génération.
-- Audit et correction de l'ordre et des valeurs des couleurs du système (grises et principales).
-- Amélioration de la structure et de la présentation des previews pour une meilleure lisibilité et conformité avec le DSFR.
-- Correction de bugs liés à l'affichage des états "hover" sur les cartes.
-- Correction de problèmes de dimensionnement des éléments SVG dans les formulaires.
-- Suppression de sections de previews obsolètes (rayons de bord).
+- Refactorisation de la structure des tokens de décision pour une meilleure cohérence.
+- Audit et correction des couleurs canoniques CSS (ordre, écarts).
+- Correction de l'affichage des couleurs dans les previews pour correspondre à l'ordre du DSFR.
+- Utilisation d'alias de tokens manquants pour corriger l'affichage des états de survol des cartes.
+- Suppression d'une section obsolète des rayons de bord et du token `rounded.md`.
+- Correction de l'affichage des états de la carte "Sm" (image grise en survol).
+- Amélioration de l'affichage des grilles de couleurs (3 cartes par ligne, explications).
+- Correction de l'affichage du rayon de la pilule (stade horizontal au lieu de cercle).
+- Correction de l'affichage des colonnes de thème dans les previews.
 
 ### Autres changements
 - Traduction du fichier README en français.
-- Initialisation du dépôt avec un fichier .gitignore.
-- Correction de la syntaxe et de la présentation du fichier DESIGN.md.
-- Ajout d'une documentation expliquant la portée du projet et les précautions d'utilisation du DSFR.
+- Initialisation du dépôt avec un fichier `.gitignore`.
+- Linting du fichier `DESIGN.md` et résolution des problèmes détectés.
+- Utilisation d'icônes monochromes pour les liens d'outils dans l'en-tête.
