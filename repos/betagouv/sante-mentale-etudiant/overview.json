@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/betagouv/sante-mentale-etudiant",
   "name": "sante-mentale-etudiant",
-  "description": "Ce projet est un gestionnaire de contenu permettant de créer et gérer un site internet basé sur le Système de design de l’État, accessible et sécurisé, basé sur Wagtail CMS.",
+  "description": "Ce projet est un gestionnaire de contenu permettant de créer et gérer un site internet basé sur le Système de design de l’État, accessible et sécurisé. Il est basé sur le CMS Wagtail.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Contenu éditorial",
-    "Sécurité & Conformité",
     "Accessibilité & i18n"
   ],
   "audience": "Agents de l'Administration",
@@ -15,16 +14,24 @@
     "Django",
     "Wagtail",
     "django-dsfr",
-    "PostgreSQL",
-    "tarteaucitronjs"
+    "psycopg2-binary",
+    "python-dotenv",
+    "dj-database-url",
+    "gunicorn",
+    "dj-static",
+    "whitenoise",
+    "wagtailmenus",
+    "wagtail-modeladmin",
+    "wagtail-markdown",
+    "icalendar",
+    "mozilla-django-oidc"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
-    "Python (scripts & backend)",
     "Django",
-    "Wagtail",
+    "Python (scripts & backend)",
+    "Design System (DSFR)",
     "Docker & Conteneurs"
   ],
   "auth": {
@@ -32,16 +39,9 @@
       "none"
     ]
   },
-  "tests": "Tests automatisés couvrant les versions de Python 3.12 à 3.14 et PostgreSQL 14 à 17.",
-  "workflows": [
-    "cd-docker.yml",
-    "ci-check-i18n.yml",
-    "ci-check-migrations.yml",
-    "ci-main.yml",
-    "ci-quality.yml",
-    "publiccode-yml-validation.yml"
-  ],
-  "lastActivity": "2026-03-26T11:34:59+01:00",
+  "tests": null,
+  "workflows": null,
+  "lastActivity": "2026-04-30T09:35:05+00:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -52,14 +52,10 @@
     "openIssues": 0
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "CMS",
     "Django",
+    "Wagtail",
     "DSFR",
-    "Wagtail"
+    "CMS"
   ]
 }

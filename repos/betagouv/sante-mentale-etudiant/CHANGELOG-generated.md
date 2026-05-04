@@ -1,25 +1,22 @@
-## Changelog : sante-mentale-etudiant (30 derniers jours, au 26 mars 2026)
+## Changelog : sante-mentale-etudiant (30 derniers jours, au 2026-04-30)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur et la maintenance technique du projet. On note une refonte des menus, des corrections de bugs sur l'affichage des cartes et des images, ainsi que des mises à jour des versions de Python et Django pour assurer la pérennité du site. La synchronisation avec Notion a été supprimée.
+Ce mois-ci, les améliorations se concentrent sur l'internationalisation du site, permettant une meilleure accessibilité pour les utilisateurs francophones et non-francophones. Des corrections et optimisations ont également été apportées à l'interface d'administration et à la gestion des pages, ainsi qu'une simplification du déploiement sur Scalingo.
 
 ### Évolutions fonctionnelles
-- **Menus :** Refonte complète des menus pour une meilleure navigation et expérience utilisateur. [#389](https://github.com/betagouv/sante-mentale-etudiant/pulls/389)
-- **Cartes Horizontales :** Correction d'une régression affectant l'affichage des cartes horizontales en version 2.5.2. [#443](https://github.com/betagouv/sante-mentale-etudiant/issues/443)
-- **Images et Tags :** Amélioration de l'affichage des images et de la pagination sur les pages de tags. [#432](https://github.com/betagouv/sante-mentale-etudiant/pulls/432)
-- **UserbarPageAPILinkItem :** Mise à jour du composant `UserbarPageAPILinkItem`. [#462](https://github.com/betagouv/sante-mentale-etudiant/pulls/462)
-- **Exclusion du Sitemap :** Ajout d'un champ permettant d'exclure des pages du sitemap. [#466](https://github.com/betagouv/sante-mentale-etudiant/pulls/466)
+- Ajout d'un sélecteur de langue dans l'interface d'administration pour faciliter la gestion du contenu multilingue. [#464](https://github.com/betagouv/sante-mentale-etudiant/issues/464)
+- Internationalisation des champs de formulaire pour une meilleure expérience utilisateur en fonction de la langue sélectionnée. [#481](https://github.com/betagouv/sante-mentale-etudiant/issues/481) et [#473](https://github.com/betagouv/sante-mentale-etudiant/issues/473)
+- Amélioration du menu utilisateur avec l'ajout d'une option appropriée. [#3b6f4d2](https://github.com/betagouv/sante-mentale-etudiant/commit/3b6f4d2)
+- Correction de l'URL des pages pour assurer un fonctionnement correct de la navigation. [#3733200](https://github.com/betagouv/sante-mentale-etudiant/commit/3733200)
+- Correction de l'affichage du header configurable. [#469](https://github.com/betagouv/sante-mentale-etudiant/issues/469)
 
 ### Évolutions techniques
-- **Versions Python et Django :** Mise à jour des versions minimum requises à Python 12 et Django 6.0 pour bénéficier des dernières améliorations et correctifs de sécurité. [#449](https://github.com/betagouv/sante-mentale-etudiant/pulls/449)
-- **CI/CD :** Ajout de nouvelles actions dans la CI pour améliorer la qualité du code et la gestion de l'internationalisation. [#431](https://github.com/betagouv/sante-mentale-etudiant/pulls/431)
-- **Suppression Notion Sync :** Suppression de la synchronisation avec Notion et de l'action GitHub associée. [#465](https://github.com/betagouv/sante-mentale-etudiant/pulls/465) et [#466](https://github.com/betagouv/sante-mentale-etudiant/pulls/466)
-- **Makefile :** Suppression du Makefile. [#460](https://github.com/betagouv/sante-mentale-etudiant/pulls/460)
-- **Git Blame :** Ajout d'une configuration pour ignorer certaines révisions dans `git blame`. [#440](https://github.com/betagouv/sante-mentale-etudiant/pulls/440)
-- **Suppression Locales :** Suppression des fichiers de locales inutiles.
+- Mise en place d'un déploiement en un clic sur la plateforme Scalingo, simplifiant le processus de publication du site. [#484](https://github.com/betagouv/sante-mentale-etudiant/issues/484)
+- Optimisation du panneau de tutoriel dans l'administration. [#473](https://github.com/betagouv/sante-mentale-etudiant/issues/473)
+- Correction d'une migration et suppression d'une migration inutile. [#f085b55](https://github.com/betagouv/sante-mentale-etudiant/commit/f085b55) et [#50e8757](https://github.com/betagouv/sante-mentale-etudiant/commit/50e8757)
+- Modification du nom d'une variable pour améliorer la cohérence du code. [#15bffb8](https://github.com/betagouv/sante-mentale-etudiant/commit/15bffb8)
 
 ### Autres changements
-- **Documentation :** Correction de problèmes de formatage Markdown dans la documentation. [#448](https://github.com/betagouv/sante-mentale-etudiant/pulls/448)
-- **Mise à jour des dépendances :** Mise à jour des numéros de version des dépendances du projet. [#447](https://github.com/betagouv/sante-mentale-etudiant/pulls/447)
-- **Corrections de clés de langues :** Mise à jour des clés de langues pour assurer la cohérence des traductions.
-- **Amélioration de la couverture de tests :** Augmentation de la couverture de tests pour garantir la qualité du code.
+- Ajout de commentaires pour améliorer la lisibilité du code. [#f58d720](https://github.com/betagouv/sante-mentale-etudiant/commit/f58d720)
+- Ajout d'un script pour le sélecteur de langue dans l'administration. [#4f787cd](https://github.com/betagouv/sante-mentale-etudiant/commit/4f787cd)
+- Ajout d'une gestion des erreurs lors de la validation. [#9fef8cc](https://github.com/betagouv/sante-mentale-etudiant/commit/9fef8cc)
