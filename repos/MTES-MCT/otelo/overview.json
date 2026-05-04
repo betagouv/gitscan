@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/otelo",
   "name": "otelo",
-  "description": "Monorepo pour la startup Otelo. L'application d'intelligence territoriale pour une stratégie de logement adaptée, durable et inclusive.",
+  "description": "Application d'intelligence territoriale pour une stratégie de logement adaptée, durable et inclusive.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,9 +10,12 @@
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Simulation & Calcul",
+    "Formulaires & Démarches",
+    "Notifications & Alertes"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
     "Prisma",
@@ -21,9 +24,9 @@
     "Puppeteer",
     "PapaParse",
     "React",
-    "Next.js",
     "DSFR",
-    "TanStack Query"
+    "TanStack Query",
+    "Leaflet"
   ],
   "components": [
     "API REST & GraphQL",
@@ -35,13 +38,19 @@
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
-    ],
-    "providers": []
+      "jwt",
+      "session"
+    ]
   },
-  "tests": "Jest",
-  "workflows": [],
-  "lastActivity": "2026-04-23T15:21:49Z",
+  "tests": [
+    "Jest"
+  ],
+  "workflows": [
+    "build",
+    "lint",
+    "test"
+  ],
+  "lastActivity": "2026-05-02T07:16:52+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -49,15 +58,15 @@
     "stars": 1,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 1
+    "openIssues": 2
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL"
+    "PostgreSQL",
+    "Sécurité & Auth",
+    "Environnement & Énergie"
   ]
 }
