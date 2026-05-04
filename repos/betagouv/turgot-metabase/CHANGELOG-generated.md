@@ -1,11 +1,12 @@
-## Changelog : turgot-metabase (derniers 30 jours)
+## Changelog : turgot-metabase (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, le script de réplication de la base de données pour Metabase a été mis à jour pour inclure une fonctionnalité d'anonymisation des données, améliorant ainsi la protection de la vie privée. De plus, une planification automatique (cron) a été ajoutée pour exécuter régulièrement la réplication, assurant ainsi la disponibilité des données les plus récentes dans Metabase.
+Ce mois-ci, le projet s'est concentré sur l'ajout de statistiques d'utilisation de Metabase, en particulier le nombre de visiteurs uniques quotidien, hebdomadaire et mensuel, ainsi que l'intégration d'informations provenant de Matomo pour un suivi plus précis de l'audience. Ces améliorations permettront de mieux comprendre l'utilisation de l'outil et d'optimiser son déploiement.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fonctionnalité d'anonymisation des données lors de la réplication de la base de données (#2cfb317).
-- Mise en place d'une planification automatique (cron) pour l'exécution du script de réplication (#cc94d9b).
+- Ajout de la récupération du nombre de visiteurs uniques quotidien, hebdomadaire et mensuel de Metabase.
+- Intégration des informations de Matomo pour compléter les statistiques d'utilisation.
 
 ### Évolutions techniques
-- Intégration d'un cron pour automatiser l'exécution du script.
+- Implémentation de la récupération des données Matomo.
+- Modification du script pour inclure et afficher les nouvelles statistiques.
