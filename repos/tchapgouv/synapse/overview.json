@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/tchapgouv/synapse",
   "name": "synapse",
-  "description": "Synapse est un serveur Matrix écrit en Python/Twisted. Il permet de communiquer de manière décentralisée et sécurisée.",
+  "description": "Synapse est un serveur Matrix écrit en Python/Twisted. Il permet de gérer une communication décentralisée et sécurisée.",
   "language": "Python",
   "features": [
-    "Authentification utilisateur",
     "Gestion documentaire & Fichiers",
-    "Notifications",
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Collaboration & Workflow",
-    "Communication & Messagerie"
+    "Collaboration & Workflow"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,26 +17,24 @@
     "PyYAML",
     "bcrypt",
     "Pillow",
-    "sortedcontainers",
     "prometheus-client",
     "attrs",
     "cryptography",
     "ijson",
-    "matrix-common",
-    "packaging"
+    "matrix-common"
   ],
   "components": [
     "API REST & GraphQL",
-    "Python (scripts & backend)",
     "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
       "saml",
-      "jwt"
+      "jwt",
+      "session"
     ]
   },
   "tests": "Pytest",
@@ -45,7 +43,7 @@
     "test",
     "release"
   ],
-  "lastActivity": "2026-04-25T14:09:39Z",
+  "lastActivity": "2026-04-28T13:51:47+02:00",
   "status": "active",
   "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,
