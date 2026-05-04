@@ -2,7 +2,9 @@
 ├── .devcontainer
 │   ├── Dockerfile
 │   ├── devcontainer.json
-│   └── docker-compose.yml
+│   ├── docker-compose.yml
+│   └── scripts
+│       └── import_pbdm_dump.sh
 ├── .env
 ├── .eslintrc.json
 ├── .github
@@ -45,10 +47,14 @@
 │       └── logo_white.svg
 ├── scalingo.json
 ├── scripts
+│   ├── aggregatePathoClasseClinique.ts
 │   ├── importNoticeRCP.integration.test.ts
 │   ├── importNoticeRCP.ts
-│   ├── seed-review-app.ts
-│   ├── seed-search-index.ts
+│   ├── scalingo
+│   │   └── import_pdbm.sh
+│   ├── seedInteractionsSearch.ts
+│   ├── seedReviewApp.ts
+│   ├── seedSearchIndex.ts
 │   ├── seed_cis_codes.txt
 │   ├── syncWithGrist.ts
 │   ├── test_data
@@ -66,14 +72,22 @@
 ├── src
 │   ├── app
 │   │   ├── (container)
+│   │   │   ├── @header
+│   │   │   │   ├── [...all]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── rechercher
+│   │   │   │       └── page.tsx
+│   │   │   ├── a-propos
+│   │   │   │   └── page.tsx
 │   │   │   ├── alpha_lists
 │   │   │   │   ├── generiques
 │   │   │   │   │   └── [letter]
 │   │   │   │   │       └── page.tsx
-│   │   │   │   ├── medicaments
+│   │   │   │   ├── indications
 │   │   │   │   │   └── [letter]
 │   │   │   │   │       └── page.tsx
-│   │   │   │   ├── pathologies
+│   │   │   │   ├── medicaments
 │   │   │   │   │   └── [letter]
 │   │   │   │   │       └── page.tsx
 │   │   │   │   └── substances
@@ -92,15 +106,25 @@
 │   │   │   ├── glossaire
 │   │   │   │   └── [letter]
 │   │   │   │       └── page.tsx
+│   │   │   ├── indications
+│   │   │   │   └── [code]
+│   │   │   │       └── page.tsx
+│   │   │   ├── interactions
+│   │   │   │   ├── InteractionsPage.tsx
+│   │   │   │   ├── lookup
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── niveauBadges.test.ts
+│   │   │   │   ├── niveauBadges.ts
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── search
+│   │   │   │       └── route.ts
 │   │   │   ├── layout.tsx
 │   │   │   ├── medicaments
 │   │   │   │   └── [CIS]
 │   │   │   │       └── page.tsx
 │   │   │   ├── mentions-legales
 │   │   │   │   └── page.tsx
-│   │   │   ├── pathologies
-│   │   │   │   └── [code]
-│   │   │   │       └── page.tsx
+│   │   │   ├── page.tsx
 │   │   │   ├── politique-de-confidentialite
 │   │   │   │   └── page.tsx
 │   │   │   ├── rating
@@ -121,27 +145,23 @@
 │   │   │   └── substances
 │   │   │       └── [id]
 │   │   │           └── page.tsx
-│   │   ├── @header
-│   │   │   ├── [...all]
-│   │   │   │   └── page.tsx
-│   │   │   ├── page.tsx
-│   │   │   └── rechercher
-│   │   │       └── page.tsx
 │   │   ├── StartDsfr.tsx
 │   │   ├── StartHotjar.tsx
-│   │   ├── a-propos
-│   │   │   └── page.tsx
 │   │   ├── api
 │   │   │   └── debug
 │   │   │       └── memory
 │   │   │           └── route.ts
 │   │   ├── defaultColorScheme.ts
 │   │   ├── global-error.tsx
+│   │   ├── interactions
+│   │   │   └── embed
+│   │   │       └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── not-found.tsx
-│   │   ├── page.tsx
 │   │   ├── robots.txt
-│   │   └── sanity.test.ts
+│   │   ├── sanity.test.ts
+│   │   ├── sitemap.integration.test.ts
+│   │   └── sitemap.ts
 │   ├── components
 │   │   ├── AlphabeticNav.tsx
 │   │   ├── AutocompleteSearch.test.tsx
@@ -150,6 +170,7 @@
 │   │   ├── DefinitionBanner.tsx
 │   │   ├── GenericAccordion.tsx
 │   │   ├── GreetingModal.tsx
+│   │   ├── InteractionSubstanceInput.tsx
 │   │   ├── Matomo.tsx
 │   │   ├── PresentationsList.tsx
 │   │   ├── ThemeProvider.tsx
@@ -167,8 +188,8 @@
 │   │   ├── definition
 │   │   │   ├── ATC1DefinitionContent.tsx
 │   │   │   ├── ATC2DefinitionContent.tsx
+│   │   │   ├── IndicationDefinitionContent.tsx
 │   │   │   ├── PageDefinitionContent.tsx
-│   │   │   ├── PathologyDefinitionContent.tsx
 │   │   │   └── SubstanceDefinitionContent.tsx
 │   │   ├── generic
 │   │   │   ├── ContentContainer.tsx
@@ -184,9 +205,9 @@
 │   │   │   └── WithGlossary.tsx
 │   │   ├── list
 │   │   │   ├── GenericsListContent.tsx
+│   │   │   ├── IndicationsListContent.tsx
 │   │   │   ├── MedicamentsListContent.tsx
 │   │   │   ├── PageListContent.tsx
-│   │   │   ├── PathologiesListContent.tsx
 │   │   │   └── SubstancesListContent.tsx
 │   │   ├── marr
 │   │   │   ├── MarrNotice.tsx
@@ -260,13 +281,18 @@
 │   │   │   ├── 20260217120000_search_refacto.ts
 │   │   │   ├── 20260226085540_presentations.ts
 │   │   │   ├── 20260311000000_create_asmr_smr.ts
-│   │   │   └── 20260324160509_resume_medicaments_pathos.ts
+│   │   │   ├── 20260324160509_resume_medicaments_pathos.ts
+│   │   │   ├── 20260402000000_create_triam_tables.ts
+│   │   │   ├── 20260408000000_add_triam_classe_grp_subst.ts
+│   │   │   ├── 20260408100000_add_class_ids_to_interactions_search.ts
+│   │   │   └── 20260430091940_classes_cliniques.ts
 │   │   ├── pdbmMySQL
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
 │   │   ├── seeds
 │   │   │   ├── 1722418158859_leaftletImages.ts
-│   │   │   └── 1725439927263_searchIndex.ts
+│   │   │   ├── 1725439927263_searchIndex.ts
+│   │   │   └── 1775001600000_interactionsSearch.ts
 │   │   ├── types.d.ts
 │   │   └── utils
 │   │       ├── articles.test.ts
@@ -278,11 +304,13 @@
 │   │       ├── generics.ts
 │   │       ├── glossary.ts
 │   │       ├── index.ts
+│   │       ├── indications.integration.test.ts
+│   │       ├── indications.ts
+│   │       ├── interactions.integration.test.ts
+│   │       ├── interactions.ts
 │   │       ├── letters.ts
 │   │       ├── marr.ts
 │   │       ├── notice.ts
-│   │       ├── pathologies.integration.test.ts
-│   │       ├── pathologies.ts
 │   │       ├── pediatrics.ts
 │   │       ├── pregnancy.ts
 │   │       ├── presentation.ts
@@ -313,6 +341,7 @@
 │   │   ├── DataTypes.tsx
 │   │   ├── FicheInfoTypes.tsx
 │   │   ├── GlossaireTypes.tsx
+│   │   ├── IndicationsTypes.tsx
 │   │   ├── MarrTypes.tsx
 │   │   ├── Matomo.tsx
 │   │   ├── NoticeTypes.tsx
@@ -343,4 +372,4 @@
 ├── utils
 │   └── network.tsx
 └── vitest.config.mts
-87 directories, 258 files
+94 directories, 280 files
