@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/zero-logement-vacant",
   "name": "zero-logement-vacant",
-  "description": "Zero Logement Vacant est une application web visant à recenser et à suivre les logements vacants pour faciliter leur mobilisation. Elle permet aux acteurs locaux de gérer les informations relatives aux logements et aux propriétaires, et de suivre l'état d'avancement des démarches de remobilisation.",
+  "description": "Zero Logement Vacant est une application web visant à identifier et à suivre les logements vacants pour lutter contre la crise du logement. Elle permet aux collectivités de gérer les informations sur les logements et les propriétaires, et de faciliter la mise en relation entre l'offre et la demande.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
     "Visualisation de données & Cartographie",
-    "Notifications & Alertes",
+    "API & Intégrations",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,7 +17,7 @@
     "PostgreSQL",
     "Docker",
     "Node.js",
-    "TypeScript",
+    "Yarn",
     "PostGIS",
     "Redis",
     "Elasticsearch"
@@ -27,20 +27,25 @@
     "API REST",
     "Base de données PostgreSQL",
     "Docker & Conteneurs",
-    "TypeScript / JavaScript"
+    "TypeScript / JavaScript",
+    "Python (scripts & backend)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
-    "Cypress",
     "Jest",
-    "Pytest"
+    "Cypress",
+    "Vitest"
   ],
   "workflows": [
-    "e2e.yml"
+    "e2e",
+    "build",
+    "test",
+    "coverage"
   ],
   "lastActivity": "2026-04-30T10:16:26+02:00",
   "status": "active",
