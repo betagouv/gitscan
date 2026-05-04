@@ -1,23 +1,21 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 22 avril 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la maintenance et la mise à jour des dépendances du projet, ainsi que sur la correction de quelques bugs et l'amélioration de la gestion des données. Des améliorations ont été apportées à la gestion des images, des données open data et des statistiques. La suppression de notebooks obsolètes et la mise à jour de la documentation contribuent également à l'amélioration continue du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'automatisation du processus de visa des compléments alimentaires, avec l'implémentation d'une approbation automatique et d'une interface utilisateur associée. De nombreuses mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de la plateforme. Des corrections et améliorations ont été apportées à l'export de données, à l'affichage des graphiques et à la gestion des données open data.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des images ([#2843](https://github.com/betagouv/complements-alimentaires/pull/2843)).
-- Correction d'un problème lié au format des données lors de l'exportation des données ouvertes ([#2855](https://github.com/betagouv/complements-alimentaires/pull/2855)).
-- Amélioration de la génération des statistiques et correction de bugs associés ([#2844](https://github.com/betagouv/complements-alimentaires/pull/2844), [#2846](https://github.com/betagouv/complements-alimentaires/pull/2846)).
-- Correction d'un problème lié à la gestion des certificats ([#2809](https://github.com/betagouv/complements-alimentaires/pull/2809)).
-- Ajout de données de référence pour les ingrédients dans les fixtures.
+- **Visa automatique :** Implémentation d'une approbation automatique du visa en backend et d'une interface utilisateur pour la gestion de cette fonctionnalité. [#2883](https://github.com/betagouv/complements-alimentaires/pull/2883)
+- **Export de données :** Ajout de l'email de l'entreprise à l'export avancé. [#2850](https://github.com/betagouv/complements-alimentaires/pull/2850)
+- **Correction Open Data :** Correction d'un problème de type de données bloquant l'export Open Data. [#2855](https://github.com/betagouv/complements-alimentaires/pull/2855)
+- **Amélioration des graphiques :** Corrections et améliorations concernant l'affichage des graphiques et des statistiques. [#2846](https://github.com/betagouv/complements-alimentaires/pull/2846), [#2847](https://github.com/betagouv/complements-alimentaires/pull/2847)
+- **Correction affichage frontend :** Correction d'un warning d'affichage sur le frontend. [#2852](https://github.com/betagouv/complements-alimentaires/pull/2852)
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances Python (Django, pypdf, lxml, cryptography, pillow, etc.) vers leurs dernières versions stables.
-- Mise à jour des dépendances JavaScript/Node.js (lodash, postcss, vue-dsfr, etc.) dans le frontend.
-- Suppression des notebooks obsolètes, le projet s'appuie désormais sur Metabase et la base de données pour l'analyse des données ([#2872](https://github.com/betagouv/complements-alimentaires/pull/2872)).
-- Amélioration de la configuration et de la gestion des environnements.
+- **Mises à jour de dépendances :** De nombreuses dépendances ont été mises à jour, notamment Django, PostgreSQL, Celery, Vue.js, Node.js, npm, ainsi que des bibliothèques Python (cryptography, pillow, faker, redis, tqdm, pygments, certifi, chardet, sqlfluff, pypdf, numpy, botocore, click, django-anymail) et des paquets npm (postcss, prettier, vue-router, brace-expansion, multi, path-to-regexp). Ces mises à jour visent à améliorer la sécurité, la performance et la stabilité de l'application.
+- **Suppression de notebooks :** Suppression des fichiers notebooks, car les données sont désormais gérées via Metabase et stockées en base de données. [#2872](https://github.com/betagouv/complements-alimentaires/pull/2872)
+- **Refactoring PDF :** Amélioration de la composition des PDF, notamment en remplaçant le symbole micro par une lettre "u" et en ajoutant un compteur de pages. [#2882](https://github.com/betagouv/complements-alimentaires/pull/2882)
 
 ### Autres changements
-- Mise à jour de la documentation et du fichier README.
-- Mise à jour de la déclaration d'accessibilité ([#2845](https://github.com/betagouv/complements-alimentaires/pull/2845)).
-- Nettoyage du code et suppression de fichiers inutiles.
-- Ajout d'une clé dans le fichier `.env`.
+- **Documentation :** Mise à jour du fichier README.
+- **Nettoyage de code :** Suppression de variables inutilisées.
+- **Configuration :** Ajout d'une clé dans le fichier `.env`.
