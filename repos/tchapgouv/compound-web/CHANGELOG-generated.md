@@ -1,17 +1,19 @@
-## Changelog : compound-web (30 derniers jours, au 13 mai 2026)
+## Changelog : compound-web (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations techniques liées à l'infrastructure de CI/CD et à la gestion des dépendances, notamment pour l'environnement TCHAP. Une amélioration visuelle a été apportée aux boutons, les rendant plus arrondis. La version du projet a été incrémentée à 1.0.5.
+Ce changelog couvre les mises à jour du mois d'avril 2026. Les efforts se sont concentrés sur la préparation et l'amélioration du processus de publication (release) ainsi que sur des ajustements de versions de dépendances pour assurer la compatibilité et la stabilité du projet. Une petite amélioration visuelle a également été apportée avec la fusion de la PR #8.
 
 ### Évolutions fonctionnelles
-- Les boutons sont maintenant plus arrondis, améliorant l'esthétique générale de l'interface. [#8](https://github.com/tchapgouv/compound-web/pull/8)
+- Amélioration visuelle : Fusion de la pull request [#8](https://github.com/tchapgouv/compound-web/pull/8) concernant les boutons ronds.
 
 ### Évolutions techniques
-- Mise à jour de la configuration CI/CD pour les releases TCHAP, incluant l'authentification npm. [#9](https://github.com/tchapgouv/compound-web/pull/9)
-- Spécification de la version 1 pour Yarn et ajout de résolutions pour Vite 7 afin d'assurer la stabilité des dépendances.
-- Mise à jour de la version de Yarn et des dépendances associées.
-- Correction du fichier `package.json`.
+- Préparation de la publication : Ajout d'une authentification npm dans le workflow de CI/CD pour faciliter les publications de paquets.
+- Mise à jour des versions :
+    - Mise à jour de la version de Yarn et des dépendances associées.
+    - Spécification de la version 1 pour Yarn et résolution de la version de Vite à 7.
+    - Mise à jour de la version de `cdt`.
+- Amélioration du workflow de release : Mise à jour du workflow de release CI pour une meilleure gestion des publications.
+- Correction du `package.json` pour assurer la cohérence des informations.
 
 ### Autres changements
-- Incrémentation de la version du projet à 1.0.5.
-- Bump de version à 5.0.5.
+- Bump de version : Publication des versions 5.0.5 et 1.0.5.
