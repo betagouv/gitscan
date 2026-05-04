@@ -13,6 +13,7 @@
 ├── .npmrc
 ├── .release-it.json
 ├── CLAUDE.md
+├── LICENSE
 ├── README.md
 ├── SKILL-run-and-refine.md
 ├── SKILL.md
@@ -100,7 +101,9 @@
 │   │   │   │   └── DiagnosticsPanel.tsx
 │   │   │   ├── EditorView.tsx
 │   │   │   ├── FilePicker
-│   │   │   │   └── FilePicker.tsx
+│   │   │   │   ├── FilePicker.tsx
+│   │   │   │   ├── searchResults.test.ts
+│   │   │   │   └── searchResults.ts
 │   │   │   ├── Inspector
 │   │   │   │   ├── Inspector.tsx
 │   │   │   │   ├── InspectorEdge.tsx
@@ -115,7 +118,9 @@
 │   │   │   ├── Panels
 │   │   │   │   ├── CommentsEditor.tsx
 │   │   │   │   ├── MCPServersEditor.tsx
+│   │   │   │   ├── PromptBodyEditor.tsx
 │   │   │   │   ├── PromptEditor.tsx
+│   │   │   │   ├── PromptEditorModal.tsx
 │   │   │   │   ├── SchemaEditor.tsx
 │   │   │   │   ├── VarsEditor.tsx
 │   │   │   │   ├── WorkflowSettingsForm.tsx
@@ -132,15 +137,21 @@
 │   │   │   ├── Runs
 │   │   │   │   ├── ArtifactDiff.tsx
 │   │   │   │   ├── EventLog.tsx
-│   │   │   │   ├── ExecutionNode.tsx
+│   │   │   │   ├── FileDiffDialog.tsx
+│   │   │   │   ├── FilesPanel.tsx
 │   │   │   │   ├── IRNode.tsx
 │   │   │   │   ├── LaunchView.tsx
 │   │   │   │   ├── NodeDetailPanel.tsx
-│   │   │   │   ├── RunCanvas.tsx
+│   │   │   │   ├── PauseForm.tsx
+│   │   │   │   ├── ReportTab.tsx
 │   │   │   │   ├── RunCanvasIR.tsx
 │   │   │   │   ├── RunHeader.tsx
 │   │   │   │   ├── RunListView.tsx
+│   │   │   │   ├── RunLogPanel.tsx
+│   │   │   │   ├── RunMetrics.tsx
 │   │   │   │   ├── RunView.tsx
+│   │   │   │   ├── Scrubber.tsx
+│   │   │   │   ├── VarFieldInput.test.ts
 │   │   │   │   ├── VarFieldInput.tsx
 │   │   │   │   └── runStatusClasses.ts
 │   │   │   ├── SourceView
@@ -149,7 +160,9 @@
 │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   └── ToolbarGroup.tsx
 │   │   │   ├── icons
+│   │   │   │   ├── BackendBadge.tsx
 │   │   │   │   ├── ProviderIcon.tsx
+│   │   │   │   ├── backendEmoji.ts
 │   │   │   │   └── providerDetect.ts
 │   │   │   ├── shared
 │   │   │   │   ├── ConfirmDialog.tsx
@@ -160,12 +173,16 @@
 │   │   │       ├── Button.tsx
 │   │   │       ├── Chip.tsx
 │   │   │       ├── Dialog.tsx
+│   │   │       ├── EffortBar.tsx
 │   │   │       ├── IconButton.tsx
 │   │   │       ├── Input.tsx
 │   │   │       ├── Popover.tsx
+│   │   │       ├── PromptOverlayHighlight.tsx
 │   │   │       ├── RefAwareInput.tsx
 │   │   │       ├── RefAwarePopup.tsx
 │   │   │       ├── Select.tsx
+│   │   │       ├── Skeleton.tsx
+│   │   │       ├── StatusBadge.tsx
 │   │   │       ├── Tabs.tsx
 │   │   │       ├── Textarea.tsx
 │   │   │       ├── ThemeToggle.tsx
@@ -182,11 +199,19 @@
 │   │   │   ├── useCanvasLayout.ts
 │   │   │   ├── useCanvasSearch.ts
 │   │   │   ├── useCaretPosition.ts
+│   │   │   ├── useEffortCapabilities.ts
 │   │   │   ├── useEscapeStack.ts
 │   │   │   ├── useFileWatcher.ts
 │   │   │   ├── useFullscreen.ts
 │   │   │   ├── useGroupedDiagnostics.ts
 │   │   │   ├── useInspectorMode.ts
+│   │   │   ├── useLayoutPersistence.ts
+│   │   │   ├── usePromptEditorMount.tsx
+│   │   │   ├── useRunFiles.ts
+│   │   │   ├── useRunKeyboard.ts
+│   │   │   ├── useRunMetrics.ts
+│   │   │   ├── useRunReport.ts
+│   │   │   ├── useRunToasts.ts
 │   │   │   ├── useRunWebSocket.ts
 │   │   │   └── useSchemaPromptCreators.ts
 │   │   ├── lib
@@ -194,19 +219,30 @@
 │   │   │   ├── computeEdgeHandles.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── defaults.ts
+│   │   │   ├── diagnosticHints.test.ts
 │   │   │   ├── diagnosticHints.ts
 │   │   │   ├── diagnostics.ts
 │   │   │   ├── docMutations.ts
 │   │   │   ├── documentToGraph.ts
 │   │   │   ├── dslOptions.ts
+│   │   │   ├── eventIter.ts
+│   │   │   ├── format.ts
 │   │   │   ├── groups.ts
+│   │   │   ├── inferMonacoLanguage.ts
 │   │   │   ├── iterLanguage.ts
 │   │   │   ├── iterMonacoCompletion.ts
 │   │   │   ├── library
 │   │   │   │   ├── presets.ts
 │   │   │   │   └── types.ts
+│   │   │   ├── localStorageFlag.ts
+│   │   │   ├── nodeDetailGraph.test.ts
 │   │   │   ├── nodeDetailGraph.ts
-│   │   │   └── refCompletion.ts
+│   │   │   ├── promptHighlight.test.ts
+│   │   │   ├── promptHighlight.ts
+│   │   │   ├── promptVarHeuristics.test.ts
+│   │   │   ├── promptVarHeuristics.ts
+│   │   │   ├── refCompletion.ts
+│   │   │   └── snapshotReducer.ts
 │   │   ├── main.tsx
 │   │   ├── store
 │   │   │   ├── document.ts
@@ -214,6 +250,7 @@
 │   │   │   ├── library.ts
 │   │   │   ├── recents.ts
 │   │   │   ├── run.ts
+│   │   │   ├── selection.test.ts
 │   │   │   ├── selection.ts
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
@@ -265,6 +302,7 @@
 │   │   ├── minimal_linear.iter
 │   │   └── parallel_fan_out_join.iter
 │   ├── validate_syntax.js
+│   ├── vibe_feature_dev.iter
 │   ├── vibe_review_alternating.iter
 │   └── vibe_review_alternating.md
 ├── go.mod
@@ -382,6 +420,7 @@
 │   │   ├── init.go
 │   │   ├── init_test.go
 │   │   ├── inspect.go
+│   │   ├── inspect_node.go
 │   │   ├── output.go
 │   │   ├── report.go
 │   │   ├── resume.go
@@ -432,10 +471,18 @@
 │   │       ├── roundtrip_test.go
 │   │       ├── unparse.go
 │   │       └── unparse_test.go
+│   ├── git
+│   │   ├── diff.go
+│   │   ├── git.go
+│   │   ├── git_test.go
+│   │   ├── safety.go
+│   │   └── status.go
 │   ├── internal
 │   │   └── appinfo
 │   │       └── appinfo.go
 │   ├── log
+│   │   ├── format.go
+│   │   ├── format_test.go
 │   │   └── log.go
 │   ├── runtime
 │   │   ├── budget.go
@@ -459,25 +506,43 @@
 │   │   ├── round_robin_test.go
 │   │   ├── routing.go
 │   │   ├── session_test.go
-│   │   └── validation_test.go
+│   │   ├── validation_test.go
+│   │   ├── worktree.go
+│   │   └── worktree_test.go
 │   ├── runview
 │   │   ├── broker.go
 │   │   ├── broker_test.go
 │   │   ├── compile.go
+│   │   ├── detached.go
+│   │   ├── detached_unix.go
+│   │   ├── detached_windows.go
 │   │   ├── executor.go
+│   │   ├── file_event_source.go
+│   │   ├── file_event_source_test.go
+│   │   ├── file_log_source.go
+│   │   ├── log_slice.go
 │   │   ├── manager.go
 │   │   ├── manager_test.go
+│   │   ├── reattach_test.go
+│   │   ├── runlog.go
+│   │   ├── runlog_test.go
 │   │   ├── service.go
+│   │   ├── service_drain_test.go
 │   │   ├── service_test.go
 │   │   ├── snapshot.go
 │   │   ├── snapshot_test.go
 │   │   └── workflow_export.go
 │   ├── server
+│   │   ├── effort.go
 │   │   ├── filter.go
 │   │   ├── hub.go
 │   │   ├── runs.go
+│   │   ├── runs_files.go
+│   │   ├── runs_files_test.go
+│   │   ├── runs_log.go
 │   │   ├── runs_test.go
 │   │   ├── runs_ws.go
+│   │   ├── runs_ws_logs.go
 │   │   ├── runs_ws_test.go
 │   │   ├── server.go
 │   │   ├── static
@@ -489,13 +554,51 @@
 │       ├── lock_test.go
 │       ├── lock_unix.go
 │       ├── lock_windows.go
+│       ├── pid.go
+│       ├── pid_test.go
 │       ├── run.go
+│       ├── runname.go
+│       ├── runname_test.go
 │       ├── store.go
-│       └── store_test.go
+│       ├── store_test.go
+│       ├── storedir.go
+│       └── storedir_test.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
 │   └── build.sh
+├── sdks
+│   └── typescript
+│       ├── .gitignore
+│       ├── .npmignore
+│       ├── README.md
+│       ├── package.json
+│       ├── src
+│       │   ├── answers.ts
+│       │   ├── binary.ts
+│       │   ├── client.ts
+│       │   ├── errors.ts
+│       │   ├── events.ts
+│       │   ├── exec.ts
+│       │   ├── index.ts
+│       │   ├── paths.ts
+│       │   ├── store.ts
+│       │   └── types.ts
+│       ├── tests
+│       │   ├── answers.test.ts
+│       │   ├── binary.test.ts
+│       │   ├── client.test.ts
+│       │   ├── errors.test.ts
+│       │   ├── events.test.ts
+│       │   ├── exec.test.ts
+│       │   ├── fixtures
+│       │   │   └── fake-iterion.mjs
+│       │   ├── helpers
+│       │   │   └── tmpStore.ts
+│       │   └── store.test.ts
+│       ├── tsconfig.json
+│       ├── tsconfig.test.json
+│       └── vitest.config.ts
 └── vendor
     ├── cloud.google.com
     │   └── go
@@ -778,6 +881,7 @@
     │   │       │   │   └── types.go
     │   │       │   ├── apikit
     │   │       │   │   ├── doc.go
+    │   │       │   │   ├── effort.go
     │   │       │   │   ├── errors.go
     │   │       │   │   ├── model_registry.go
     │   │       │   │   ├── model_registry_live.go
@@ -4706,4 +4810,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-720 directories, 4414 files
+727 directories, 4511 files
