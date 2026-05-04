@@ -1,10 +1,10 @@
-## Changelog : grist-docker-image (30 derniers jours, au 01 mai 2026)
+## Changelog : grist-docker-image (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette mise à jour met à jour l'image Docker de Grist vers la version 1.7.12. Cela permet de bénéficier des dernières corrections de bugs et améliorations apportées à l'application Grist elle-même, sans nécessiter d'intervention manuelle sur l'infrastructure.
+Cette mise à jour intègre la dernière version de l'application Grist (v1.7.13) dans l'image Docker, permettant aux utilisateurs de bénéficier des dernières fonctionnalités et corrections de bugs de Grist sans avoir à gérer manuellement la mise à jour de l'application.
 
 ### Évolutions fonctionnelles
-- Mise à jour de Grist vers la version 1.7.12, incluant les améliorations et corrections de bugs de cette version.
+- Mise à jour de Grist vers la version 1.7.13.  Cette version apporte les améliorations et corrections de bugs incluses dans cette release de Grist. Consultez les notes de version de Grist pour plus de détails : [https://github.com/gristgouv/grist/releases](https://github.com/gristgouv/grist/releases)
 
 ### Évolutions techniques
-- Mise à jour de l'image Grist utilisée dans le conteneur.
+- Mise à jour de l'image Grist via le workflow CI/CD automatisé [#65](https://github.com/gristgouv/grist-docker-image/pull/65).
