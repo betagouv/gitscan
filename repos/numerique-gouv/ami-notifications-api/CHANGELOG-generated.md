@@ -1,27 +1,29 @@
 ## Changelog : ami-notifications-api (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de la gestion des accès, notamment l'ajout d'une gestion des agents et des rôles, ainsi que l'intégration de l'agenda et des préférences de zones pour les notifications. Des corrections et optimisations ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de l'API.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur de l'application mobile, notamment avec l'ajout de la gestion des zones géographiques pour l'agenda et des corrections concernant l'affichage et le comportement de l'interface. Des améliorations techniques ont également été apportées, notamment pour la réplication de la base de données et la gestion des logs.
 
 ### Évolutions fonctionnelles
-- **Gestion des agents et des accès :** Ajout d'une page de gestion des accès avec la possibilité de créer, modifier et supprimer des agents et de leur attribuer des rôles (administrateur, agent, agent administrateur) [#609].
-- **Agenda et préférences de zones :** Implémentation de la gestion des préférences de zones pour l'agenda, permettant aux utilisateurs de filtrer les informations en fonction de leur localisation. Ajout de la possibilité de définir des zones préférées et d'afficher les vacances scolaires correspondantes [#508].
-- **Notifications :** Amélioration de la gestion des notifications, notamment l'ajout d'un lien vers l'élément concerné dans les notifications [#726] et la correction de problèmes liés à l'envoi de notifications planifiées [#782].
-- **Déconnexion :** Ajout d'une confirmation avant la déconnexion pour éviter les actions accidentelles [#753].
-- **Interface utilisateur :** Amélioration de l'interface utilisateur avec des en-têtes fixes, un défilement amélioré et une meilleure gestion de l'espace d'affichage [#568].
-- **FranceConnect :** Centrage vertical du bouton FranceConnect [#515] et suppression du proxy FranceConnect en production [#826].
+- **Agenda et zones géographiques :** Ajout de la gestion des zones géographiques (A, B, C) pour l'affichage des vacances scolaires dans l'agenda. L'utilisateur peut désormais définir ses préférences de zones et d'adresses. [#508](https://github.com/numerique-gouv/ami-notifications-api/issues/508)
+- **Notifications planifiées :** Amélioration de l'envoi des notifications planifiées avec l'ajout de l'URL interne. [#779](https://github.com/numerique-gouv/ami-notifications-api/issues/779)
+- **Confirmation de déconnexion :** Ajout d'une modal de confirmation lors de la déconnexion de l'utilisateur. [#753](https://github.com/numerique-gouv/ami-notifications-api/issues/753)
+- **Améliorations de l'interface utilisateur :**
+    - Correction du centrage vertical du bouton FranceConnect. [#515](https://github.com/numerique-gouv/ami-notifications-api/issues/515)
+    - Amélioration du défilement et de l'affichage des champs d'adresse. [#568](https://github.com/numerique-gouv/ami-notifications-api/issues/568)
+    - Correction des paddings sur la page d'accueil. [#764](https://github.com/numerique-gouv/ami-notifications-api/issues/764)
+- **Gestion des partenaires :**  Correction pour empêcher les identifiants de partenaires nuls ou vides. [#798](https://github.com/numerique-gouv/ami-notifications-api/issues/798)
 
 ### Évolutions techniques
-- **Réplication de la base de données :** Amélioration des tests de réplication de la base de données et ajout d'une commande Django pour répliquer les utilisateurs [#791].
-- **Cache :** Ajout de mécanismes de cache pour améliorer les performances, notamment pour les requêtes d'agenda et les vacances scolaires [#508].
-- **Configuration :** Migration des variables d'environnement vers le fichier de configuration pour une meilleure gestion et sécurité [#609].
-- **Logs :** Ajout d'en-têtes dans les logs des erreurs d'API Part pour faciliter le débogage.
-- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans la gestion des utilisateurs et des notifications.
-- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (Django, cryptography, uv, pytest, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
+- **Réplication de la base de données :** Amélioration des tests de réplication de la base de données et ajout d'une commande Django pour répliquer les utilisateurs. [#791](https://github.com/numerique-gouv/ami-notifications-api/issues/791)
+- **Logging :** Ajout des headers dans les logs des erreurs d'API Part.
+- **Refactoring :** Refactorisation de la méthode de réplication et ajout de tests d'interaction avec la base de données.
+- **Cache :** Ajout de cache pour les requêtes des vacances scolaires.
+- **API :** Déplacement des endpoints agenda et follow-p derrière `/api/v1`. [#762](https://github.com/numerique-gouv/ami-notifications-api/issues/762)
+- **Commandes planifiées :** Simplification des commandes et des tests pour les notifications planifiées. [#786](https://github.com/numerique-gouv/ami-notifications-api/issues/786)
+- **Suppression de django-admin :** Suppression de l'utilisation de `django-admin` et ajout d'une commande pour donner le rôle d'administrateur à un agent. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés.
-- **Linting :** Correction de plusieurs avertissements de linting dans le code front-end [#792].
-- **Tests :** Ajout et mise à jour de tests unitaires pour garantir la qualité du code.
-- **Suppression de code obsolète :** Suppression de code obsolète et de variables d'environnement inutilisées [#609].
-- **Audit :** Ajout de logs d'audit pour les changements de rôle des utilisateurs [#609].
+- **Documentation :** Mise à jour de la documentation CONTRIBUTING.
+- **Linting :** Corrections de linting pour l'application front-end (warnings noNonNullAssertion, noExplicitAny, noDescendingSpecificity, useTemplate, noImportantStyles). [#792](https://github.com/numerique-gouv/ami-notifications-api/issues/792)
+- **Correction de l'URL SECTOR_IDENTIFIER_URL :** Correction des usages de l'URL SECTOR_IDENTIFIER_URL. [#767](https://github.com/numerique-gouv/ami-notifications-api/issues/767)
+- **Correction de bugs mineurs :** Diverses corrections de bugs et améliorations de la qualité du code.
