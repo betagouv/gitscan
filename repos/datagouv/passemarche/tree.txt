@@ -193,6 +193,8 @@
 │   │   ├── candidate
 │   │   │   ├── application_controller.rb
 │   │   │   ├── attachments_controller.rb
+│   │   │   ├── company_identifications_controller.rb
+│   │   │   ├── dashboards_controller.rb
 │   │   │   ├── lot_selections_controller.rb
 │   │   │   ├── market_applications_controller.rb
 │   │   │   ├── sessions_controller.rb
@@ -204,6 +206,7 @@
 │   │   │   │   └── csv_import_handling.rb
 │   │   │   └── candidate
 │   │   │       ├── authentication.rb
+│   │   │       ├── market_application_guard.rb
 │   │   │       └── webhook_submission.rb
 │   │   ├── home_controller.rb
 │   │   └── robots_txt_controller.rb
@@ -461,6 +464,7 @@
 │   │   ├── buyer
 │   │   │   └── public_market_wizard_service.rb
 │   │   ├── candidate
+│   │   │   ├── enqueue_api_data_fetch.rb
 │   │   │   └── prefill_email_attribute_responses.rb
 │   │   ├── category_export_service.rb
 │   │   ├── clamav_service.rb
@@ -546,6 +550,13 @@
 │       ├── candidate
 │       │   ├── attestations
 │       │   │   └── show.html.erb
+│       │   ├── company_identifications
+│       │   │   └── show.html.erb
+│       │   ├── dashboards
+│       │   │   ├── _card.html.erb
+│       │   │   ├── _delete_modal.html.erb
+│       │   │   ├── _summary_tile.html.erb
+│       │   │   └── index.html.erb
 │       │   ├── lot_selections
 │       │   │   └── show.html.erb
 │       │   ├── market_applications
@@ -556,7 +567,6 @@
 │       │   │   ├── _wizard_nav.html.erb
 │       │   │   ├── api_data_recovery_status.html.erb
 │       │   │   ├── attestation_motifs_exclusion.html.erb
-│       │   │   ├── company_identification.html.erb
 │       │   │   ├── generic_step.html.erb
 │       │   │   ├── market_information.html.erb
 │       │   │   └── summary.html.erb
@@ -839,6 +849,7 @@
 │   ├── buyer_flow.feature
 │   ├── buyer_lot_config.feature
 │   ├── candidate_authentication.feature
+│   ├── candidate_dashboard.feature
 │   ├── candidate_file_deletion.feature
 │   ├── candidate_flow.feature
 │   ├── candidate_flow_comprehensive.feature
@@ -881,6 +892,7 @@
 │   │   ├── buyer_flow_steps.rb
 │   │   ├── buyer_lot_config_steps.rb
 │   │   ├── candidate_authentication_steps.rb
+│   │   ├── candidate_dashboard_steps.rb
 │   │   ├── candidate_flow_comprehensive_steps.rb
 │   │   ├── candidate_flow_steps.rb
 │   │   ├── candidate_lot_selection_steps.rb
@@ -1258,6 +1270,9 @@
 │   │   │   ├── public_markets_spec.rb
 │   │   │   └── sync_status_spec.rb
 │   │   ├── candidate
+│   │   │   ├── access_control_spec.rb
+│   │   │   ├── company_identifications_spec.rb
+│   │   │   ├── dashboards_spec.rb
 │   │   │   ├── market_applications_spec.rb
 │   │   │   ├── sessions_spec.rb
 │   │   │   └── sync_status_spec.rb
@@ -1269,6 +1284,8 @@
 │   │   ├── bug_tracker_service_spec.rb
 │   │   ├── buyer
 │   │   │   └── public_market_wizard_service_spec.rb
+│   │   ├── candidate
+│   │   │   └── enqueue_api_data_fetch_spec.rb
 │   │   ├── category_export_service_spec.rb
 │   │   ├── clamav_service_spec.rb
 │   │   ├── document_naming_service_spec.rb
@@ -1370,4 +1387,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-219 directories, 1153 files
+222 directories, 1167 files
