@@ -1,39 +1,26 @@
-## Changelog : rapportnav2 (30 derniers jours, au 28 avril 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de rapportnav2 se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la gestion des criées, l'intégration d'un service d'adresse et des améliorations de la gestion des infractions. Des corrections de bugs et des mises à jour de sécurité ont également été apportées pour améliorer la stabilité et la sécurité de l'application.
+Cette version apporte des améliorations significatives à l'application, notamment l'ajout de la gestion des criées, des corrections de bugs concernant l'analyse des données, l'authentification et la sécurité, ainsi que des mises à jour de dépendances pour maintenir la stabilité et la sécurité du système. Des améliorations de la configuration de publication ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des criées avec une liste, des endpoints associés et un panneau d'administration.
-- Intégration d'un service d'adresse provenant de data.gouv.fr avec une fonctionnalité d'autocomplétion dans l'interface utilisateur.
-- Amélioration de la gestion des infractions lors de la création de nouveaux contrôles.
-- Mise à jour de la règle AEM 4.1.3.
-- Ajout de la possibilité de récupérer les SATI avec un retour possible de null.
-- Implémentation de cas d'utilisation pour la gestion des SATI (GET/PUT).
-- Ajout d'attributs avec code pays pour les SATI.
-- Ajout d'un listener sur les modèles de données.
+- Ajout de la fonctionnalité de gestion des criées, incluant la liste des criées, les endpoints associés et l'interface d'administration. [#87347da](https://github.com/MTES-MCT/rapportnav2/commit/87347da58c97f5a9cf2fb406730f0494de19b785)
+- Amélioration de l'opération de plongée dans le module de contrôle environnemental. [#1568282](https://github.com/MTES-MCT/rapportnav2/commit/156828246f9b683e5dce0c424f812a82a917004a)
+- Correction d'un bug concernant l'ajout d'une nouvelle infraction lors de la création d'un nouveau contrôle. [#1325](https://github.com/MTES-MCT/rapportnav2/pull/1325)
+- Correction d'un problème où l'API ne renvoyait pas toujours un résultat nul pour les sati. [#779ea05](https://github.com/MTES-MCT/rapportnav2/commit/779ea0554695f762469b518492984936869b469f)
 
 ### Évolutions techniques
-- Refonte de la configuration de release-please pour optimiser le processus de publication.
-- Mise à jour de Spring Boot.
-- Amélioration de la validation des schémas pour les contrôles nautiques et de loisirs.
-- Mise à jour de la dépendance `tools.jackson.core:jackson-core`.
-- Correction d'une boucle infinie causée par `isLoggedIn` dans `use-auth.ts`.
-- Correction d'un problème de cache HTML avec CSP.
-- Mise à jour de la dépendance `monitor-ui`.
-- Correction de l'utilisation de l'API d'établissement en cas d'absence d'adresse.
-- Amélioration de l'architecture hexagonale pour les Vessels.
-- Ajout de stubs de ports.
-- Ajout de cache pour la configuration de Caffeine.
-- Utilisation du hash de commit au lieu du tag pour une meilleure sécurité.
-- Correction de problèmes de validation de schéma.
+- Refonte de la configuration `release-please-config.json` pour améliorer le processus de publication. [#55363a9](https://github.com/MTES-MCT/rapportnav2/commit/55363a9a0acb8691bfd3732b6fe02f357a8730c7), [#6a197bb](https://github.com/MTES-MCT/rapportnav2/commit/6a197bba656c74cd1d1d6d256f753ae9c199b34d), [#4e24402](https://github.com/MTES-MCT/rapportnav2/commit/4e2440284e72c410f6c1a09eb4fb52108c4097dd)
+- Mise à jour de Spring Boot. [#165e74b](https://github.com/MTES-MCT/rapportnav2/commit/165e74b528e1fb775fa31c35404085c825870f04)
+- Correction d'une boucle infinie causée par `isLoggedIn` dans `use-auth.ts`. [#6a09e0e](https://github.com/MTES-MCT/rapportnav2/commit/6a09e0e01b96be96b257788af02490b610d1381c)
+- Amélioration de la sécurité en utilisant le hash de commit au lieu du tag pour la défense en profondeur. [#7b7d5b4](https://github.com/MTES-MCT/rapportnav2/commit/7b7d5b445f29f446f124462f2f70c83163888244)
+- Correction d'un problème de troncature de la conversion en entier dans le calcul de la durée des analyses. [#27eaab8](https://github.com/MTES-MCT/rapportnav2/commit/27eaab87060f92329313f58f0f644c961110121f)
+- Correction d'un problème de validation du schéma lors de la création de mission. [#58a0b86](https://github.com/MTES-MCT/rapportnav2/commit/58a0b86369612651151284268914779946683471)
+- Correction d'un problème de fallback sur l'adresse pour l'utilisation de l'API d'établissement. [#d2edcf0](https://github.com/MTES-MCT/rapportnav2/commit/d2edcf067c68454537f5033a4c7340f62d686999)
 
 ### Autres changements
-- Ajout d'un fichier `.trivyignore.yml` pour ignorer certains résultats de l'analyse de vulnérabilités Trivy.
-- Correction de problèmes de sécurité identifiés par Snyk dans les dépendances frontend.
-- Mise à jour des snapshots de tests.
-- Désactivation temporaire de Trivy.
-- Mise à jour de la documentation.
-- Correction de problèmes liés à l'environnement InfractionEnvEntity.
-- Suppression de valeurs codées en dur pour le type d'action de pêche (FishActionType).
-- Ajout de `compliantSafeManningPermit` au type Control.
+- Ajout d'un fichier `.trivyignore.yml` pour ignorer certains résultats lors de l'analyse de vulnérabilités. [#8556563](https://github.com/MTES-MCT/rapportnav2/commit/85565637d666d360548aa76cfad4cb31de154028)
+- Mise à jour des dépendances frontend pour réduire les vulnérabilités. [#ffa4666](https://github.com/MTES-MCT/rapportnav2/commit/ffa4666895c94a228ce5d2000c31c96ead8dd485)
+- Mise à jour de la dépendance `tools.jackson.core:jackson-core`. [#923725c](https://github.com/MTES-MCT/rapportnav2/commit/923725c813576262747f69187f843f46a147845f)
+- Correction de problèmes liés à la configuration du cache HTML CSP. [#9239c35](https://github.com/MTES-MCT/rapportnav2/commit/9239c35cd4f628f91485f23129d3aa194d0c4c30)
+- Mise à jour de Monitor-UI. [#2934f9b](https://github.com/MTES-MCT/rapportnav2/commit/2934f9b9f266231631f9874697f64a8981666297)
