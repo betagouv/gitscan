@@ -1,29 +1,38 @@
-## Changelog : rdv-service-public (30 derniers jours, au 29 avril 2026)
+## Changelog : rdv-service-public (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse de la plateforme, la correction de bugs impactant l'expérience utilisateur (notamment sur l'agenda et la recherche d'usagers), et l'ajout de fonctionnalités pour faciliter l'administration et la gestion des comptes, en particulier pour les opérateurs de services publics (OPSN). Des améliorations de sécurité ont également été apportées avec le renforcement de l'authentification à deux facteurs pour certains comptes.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité avec le renforcement de l'authentification à deux facteurs (2FA) pour certains comptes, des corrections de bugs concernant la gestion des rendez-vous (plages, récurrences, jours fériés) et l'interface utilisateur, ainsi que des améliorations de la robustesse et de la performance du service. Des modifications ont également été apportées à l'API pour inclure des informations supplémentaires sur les usagers et les rendez-vous.
 
 ### Évolutions fonctionnelles
-- **Gestion des comptes OPSN :** Création automatique d'espace lors de l'activation de RDV-SP par un OPSN [#6304](https://github.com/betagouv/rdv-service-public/issues/6304).
-- **Authentification :** Renforcement de l'authentification à deux facteurs (2FA) pour certains comptes sensibles et IDP ProConnect [#6310](https://github.com/betagouv/rdv-service-public/issues/6310), [#6335](https://github.com/betagouv/rdv-service-public/issues/6335).
-- **Recherche d'usagers :** Possibilité de rechercher un usager dans une nouvelle organisation pour un territoire ayant déjà des usagers [#6327](https://github.com/betagouv/rdv-service-public/issues/6327).
+- **Sécurité :** Mise en place du 2FA pour les comptes sensibles ProConnect [#6310](https://github.com/betagouv/rdv-service-public/issues/6310) et pour certains IDP ProConnect.
+- **Gestion des rendez-vous :**
+    - Correction d'un bug empêchant l'affichage correct de la seconde période d'une plage horaire [#6326](https://github.com/betagouv/rdv-service-public/issues/6326).
+    - Correction de l'affichage des jours fériés dans l'agenda multi-agent [#6325](https://github.com/betagouv/rdv-service-public/issues/6325).
+    - Correction d'un bug lié aux récurrences sur les plages d'ouverture [#6329](https://github.com/betagouv/rdv-service-public/issues/6329).
+    - Gestion améliorée des événements Caldav externes déjà supprimés [#6348](https://github.com/betagouv/rdv-service-public/issues/6348).
 - **Interface utilisateur :**
-    - Amélioration de l'affichage de la sélection de date et heure pour les plages de rendez-vous [#6292](https://github.com/betagouv/rdv-service-public/issues/6292).
+    - Correction d'un bug où deux éléments du menu pouvaient être actifs simultanément [#6330](https://github.com/betagouv/rdv-service-public/issues/6330).
+    - Sélection automatique de la barre de recherche usager [#6332](https://github.com/betagouv/rdv-service-public/issues/6332).
+    - Mise en valeur du choix de date et heure d'une plage [#6292](https://github.com/betagouv/rdv-service-public/issues/6292).
     - Passage des formulaires de création/édition d'agent au Design System Français (DSFR) [#6309](https://github.com/betagouv/rdv-service-public/issues/6309).
-    - Ajout du SIRET sur l'espace d'administration [#6302](https://github.com/betagouv/rdv-service-public/issues/6302).
-    - Simplification de la désinscription de la liste d'attente [#6288](https://github.com/betagouv/rdv-service-public/issues/6288).
-- **Notifications :** Envoi d'un email en cas de refus de demande d'ouverture de compte [#6278](https://github.com/betagouv/rdv-service-public/issues/6278).
-- **API :** Ajout du champ `time_zone` dans l'API `rdvs` [#6340](https://github.com/betagouv/rdv-service-public/issues/6340) et des champs de géocodage dans le blueprint users pour l'API V1 [#6337](https://github.com/betagouv/rdv-service-public/issues/6337).
+- **API :**
+    - Ajout des champs de géocodage dans le blueprint users pour l'API V1 [#6337](https://github.com/betagouv/rdv-service-public/issues/6337).
+    - Ajout du champ `time_zone` dans l'API `rdvs` [#6340](https://github.com/betagouv/rdv-service-public/issues/6340).
 
 ### Évolutions techniques
-- **Sécurité :** Mise à jour de Node.js en version 24 pour corriger des vulnérabilités [#6296](https://github.com/betagouv/rdv-service-public/issues/6296), [#6299](https://github.com/betagouv/rdv-service-public/issues/6299).
-- **Performance :** Limitation de l'usage mémoire de `FileAttenteJob` en le séparant en plusieurs jobs [#6324](https://github.com/betagouv/rdv-service-public/issues/6324).
-- **Infrastructure :** Amélioration de la robustesse de `FileAttenteJob` [#6322](https://github.com/betagouv/rdv-service-public/issues/6322).
-- **Tests :** Correction de tests instables (flaky tests) grâce à l'utilisation de `travel_to` dans Playwright [#6312](https://github.com/betagouv/rdv-service-public/issues/6312) et correction d'un test instable lié aux jours fériés [#6315](https://github.com/betagouv/rdv-service-public/issues/6315).
-- **Dépendances :** Mises à jour de plusieurs dépendances : `rack-session` (2.1.1 -> 2.1.2), `rack` (3.2.5 -> 3.2.6), `addressable`, `erb` et `phonelib`.
+- Mise à jour de Node vers la version 24 dans les jobs GitHub Actions [#6331](https://github.com/betagouv/rdv-service-public/issues/6331).
+- Mise à jour de la librairie `connection_pool` en v3.0 [#6333](https://github.com/betagouv/rdv-service-public/issues/6333).
+- Amélioration de la robustesse de `FileAttenteJob` en limitant l'usage mémoire et en le séparant en plusieurs jobs [#6324](https://github.com/betagouv/rdv-service-public/issues/6324) et [#6322](https://github.com/betagouv/rdv-service-public/issues/6322).
+- Correction des tokens d'invitation en minuscule dans les liens [#6338](https://github.com/betagouv/rdv-service-public/issues/6338).
+- Suppression de la rétrocompatibilité du champ `notification_email` dans l'API [#6281](https://github.com/betagouv/rdv-service-public/issues/6281).
+- Mise à jour de la gem `addressable` [#6318](https://github.com/betagouv/rdv-service-public/issues/6318).
 
 ### Autres changements
-- **Documentation :** Documentation des cas d'erreur pour visioplainte [#6293](https://github.com/betagouv/rdv-service-public/issues/6293).
-- **Code :** Suppression du code de l'ancien calculateur de créneaux [#6295](https://github.com/betagouv/rdv-service-public/issues/6295) et nettoyage du champ `notification_email` [#6281](https://github.com/betagouv/rdv-service-public/issues/6281).
-- **Correction de bugs :** Correction de l'affichage de la seconde période d'une plage [#6326](https://github.com/betagouv/rdv-service-public/issues/6326), correction de l'affichage des jours fériés pour l'agenda multi-agent [#6325](https://github.com/betagouv/rdv-service-public/issues/6325), correction d'un bug où deux éléments du menu étaient actifs en même temps [#6330](https://github.com/betagouv/rdv-service-public/issues/6330) et correction des tokens d'invitation en minuscule [#6338](https://github.com/betagouv/rdv-service-public/issues/6338).
-- **Revert :** Annulation d'une modification concernant la distinction des erreurs Caldav sur Sentry [#6350](https://github.com/betagouv/rdv-service-public/issues/6350).
+- Ajout d'un lien vers l'annuaire des entreprises pour les espaces dans le SuperAdmin [#6352](https://github.com/betagouv/rdv-service-public/issues/6352).
+- Ajout du nombre d'habitants de la commune dans la demande d'ouverture de compte [#6321](https://github.com/betagouv/rdv-service-public/issues/6321).
+- Information des agents de la mise en place de la double authentification [#6314](https://github.com/betagouv/rdv-service-public/issues/6314).
+- Suppression du feature flag `new planning` et des bandeaux de nouveautés [#6316](https://github.com/betagouv/rdv-service-public/issues/6316).
+- Correction d'une flaky spec à cause du lundi férié [#6315](https://github.com/betagouv/rdv-service-public/issues/6315).
+- Correction de la création d’espace via les OPSN [#6336](https://github.com/betagouv/rdv-service-public/issues/6336).
+- Revert d'une modification concernant la distinction des erreurs Caldav sur Sentry [#6350](https://github.com/betagouv/rdv-service-public/issues/6350).
+- Éviter `Notion::Api::Errors::TooManyRequests` [#6342](https://github.com/betagouv/rdv-service-public/issues/6342).
