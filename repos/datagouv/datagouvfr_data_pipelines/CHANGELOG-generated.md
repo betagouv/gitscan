@@ -1,30 +1,24 @@
-## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 24 avril 2026)
+## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Ce changelog fait état d'une période d'activité principalement axée sur la correction de bugs, l'adaptation aux changements de sources de données et l'amélioration de la robustesse des pipelines existants. Des refactorings ont été effectués pour optimiser certains traitements et faciliter la maintenance du code. Une attention particulière a été portée à l'amélioration du monitoring et des notifications.
+Ce mois-ci, les améliorations se concentrent sur la robustesse et la fiabilité des pipelines de données, notamment concernant l'importation des données RNIC et la gestion des données de pétitions. Des corrections ont été apportées pour gérer les valeurs inattendues, les doublons et les changements dans les sources de données. Des optimisations ont également été réalisées pour améliorer l'efficacité de certains DAGs et réduire les notifications inutiles.
 
 ### Évolutions fonctionnelles
-- Correction de la récupération de l'ID maximum pour le pipeline des pétitions [#654](https://github.com/datagouv/datagouvfr_data_pipelines/issues/654).
-- Ajout de nouvelles colonnes dans les tables météo.
-- Correction du chemin vers le fichier geojson dans le pipeline IRVE.
-- Exclusion du JDD consolidé du PAN pour le pipeline IRVE [#645](https://github.com/datagouv/datagouvfr_data_pipelines/issues/645).
-- Ajout d'une nouvelle colonne dans un pipeline (détails non spécifiés).
+- Correction de la récupération de l'ID maximum pour les pétitions, améliorant ainsi le fonctionnement du pipeline associé. [#654](https://github.com/datagouv/datagouvfr_data_pipelines/issues/654)
+- Amélioration de la gestion des valeurs de type NA dans les données RNIC, assurant une importation plus fiable.
+- Correction de la gestion des doublons dans la colonne de clé primaire des données RNIC.
+- Adaptation aux changements de format des données sources, garantissant la continuité des pipelines.
 
 ### Évolutions techniques
-- Refactoring du pipeline météo postgres pour une vérification plus précoce de l'insertion des données [#650](https://github.com/datagouv/datagouvfr_data_pipelines/issues/650).
-- Déplacement de toutes les opérations liées au schéma dans un dossier dédié [#649](https://github.com/datagouv/datagouvfr_data_pipelines/issues/649).
-- Amélioration de l'efficacité de la vérification de l'existence du fichier postgres.
+- Refactoring du DAG météo postgres pour inclure une vérification précoce de l'insertion, améliorant ainsi l'efficacité. [#650](https://github.com/datagouv/datagouvfr_data_pipelines/issues/650)
+- Optimisation de la vérification de l'existence des fichiers PostgreSQL, rendant le processus plus rapide.
 - Suppression d'un DAG obsolète (SIRENE geocodage).
-- Gestion améliorée des erreurs lors des requêtes PUT vers datagouv.
-- Prévention des exécutions concurrentes de certains pipelines.
-- Refactoring pour pousser le nouveau fichier même en l'absence de changement.
+- Amélioration de la gestion des notifications pour éviter les alertes inutiles et concentrer l'attention sur les problèmes importants.
+- Correction de plusieurs typos et erreurs mineures dans le code.
+- Ajout d'une nouvelle colonne dans un pipeline (détails non spécifiés).
+- Prévention des exécutions concurrentes de certains DAGs pour éviter les conflits.
 
 ### Autres changements
-- Suppression d'une vérification de santé inutile.
-- Amélioration du linting du code.
-- Ajustements pour s'adapter aux changements des sources de données (plusieurs occurrences).
-- Ajout de notifications sur le canal simplifions.
-- Ping sur Tchap [#648](https://github.com/datagouv/datagouvfr_data_pipelines/issues/648).
-- Désactivation des notifications pour certains pipelines (tops).
-- Restauration de la conversion restore>html.
-- Suppression de l'utilisation de markdown temporaire.
+- Nettoyage du code et application de règles de linting pour améliorer la qualité et la maintenabilité.
+- Restauration de la conversion de messages en HTML.
+- Suppression d'une vérification de cohérence non essentielle.
