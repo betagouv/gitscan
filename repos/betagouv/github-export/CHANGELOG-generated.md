@@ -1,12 +1,12 @@
-## Changelog : github-export (30 derniers jours, au 26 avril 2026)
+## Changelog : github-export (30 derniers jours, au 3 mai 2026)
 
 ### Résumé
-Les récentes mises à jour se concentrent sur l'amélioration de la gestion de l'état de la migration, notamment après les phases de découverte et de traitement par lots. Ces améliorations visent à rendre le processus de migration plus fiable et à assurer un suivi précis de l'avancement.
+Les récentes modifications se concentrent sur l'amélioration de la gestion de l'état de la migration, notamment en mettant à jour l'état après les phases de découverte et de traitement par lots. Ces ajustements visent à assurer un suivi plus précis et fiable du processus de migration.
 
 ### Évolutions techniques
-- Amélioration de la mise à jour de l'état de la migration après le traitement par lots.
-- Amélioration de la mise à jour de l'état de la migration après la phase de découverte.
-- Ces mises à jour sont gérées par les workflows GitHub Actions `migrate-batch.yml` et `sync-orchestrator.yml`.
+- Mise à jour de l'état de la migration après le traitement par lots dans les workflows GitHub Actions.
+- Mise à jour de l'état de la migration après la phase de découverte dans les workflows GitHub Actions.
+- Ces mises à jour sont appliquées dans les workflows `migrate-batch.yml`, `discovery.yml` et `sync-orchestrator.yml`.
 
 ### Autres changements
-- Aucune autre modification significative n'a été apportée au projet durant cette période.
+Aucun autre changement significatif à signaler.
