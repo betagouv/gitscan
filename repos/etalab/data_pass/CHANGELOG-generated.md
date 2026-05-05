@@ -1,50 +1,41 @@
-## Changelog : data_pass (30 derniers jours, au 30 avril 2026)
+## Changelog : data_pass (30 derniers jours, au 4 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités pour les demandes DGFIP, la gestion des droits utilisateurs et la simplification de l'interface. Des corrections de bugs et des optimisations de performance ont également été apportées. L'API s'enrichit de nouvelles fonctionnalités pour la création et la mise à jour de demandes.
+Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment via des corrections de bugs et des ajustements d'interface. Des améliorations techniques ont également été apportées, incluant la gestion des droits utilisateurs, la robustesse du système et l'ajout de fonctionnalités pour l'API.
 
 ### Évolutions fonctionnelles
 - Ajout d'une bannière de maintenance ProConnect visible sur toutes les pages.
-- Amélioration de l'affichage du statut des demandes ("revendiqué" ou "non revendiqué").
-- Suppression du compteur de longlet "Demandes" pour les instructeurs.
-- Simplification de l'affichage des scopes sans groupes dans le formulaire.
+- Amélioration de l'affichage du statut "revendiqué" dans le processus de demande.
+- Suppression du compteur de longlet "demandes" pour les instructeurs, simplifiant l'interface.
 - Ajout d'un lien vers la création d'une demande dans la liste des demandes.
-- Amélioration de la gestion des CGU pour les types d'habilitation dynamiques.
-- Ajout d'un lien vers le formulaire de création d'habilitation dynamique.
-- Mise à jour des libellés liés à la tarification Eaje.
-- Possibilité de retirer complètement les droits d'un utilisateur.
+- Correction de l'affichage du message legacy lors de soumissions modernes.
+- Correction d'un bug empêchant l'affichage du bouton "Précédent" sur certaines étapes du wizard.
+- Amélioration de la gestion des erreurs lors de la soumission de demandes sans modifications.
 - Ajout d'informations sur les services CISIRH et mise à jour des scopes associés.
-- Amélioration de l'affichage des erreurs de vérification d'email lors de la soumission.
-- Ajout d'emails spécifiques pour les approbations DGFIP.
-- Amélioration de l'affichage des identifiants d'habilitation dans les routes.
-- Ajout de la possibilité de bannir un utilisateur via l'interface d'administration.
-- Ajout d'une raison au bannissement d'un utilisateur.
-- Amélioration de la gestion des erreurs lors de la soumission de demandes.
+- Amélioration de l'affichage des scopes pour les habilitations CNAF.
+- Correction d'un problème de N+1 queries sur le dashboard demandeur, améliorant les performances.
+- Ajout de la possibilité de retirer complètement les droits d'un utilisateur.
+- Ajout d'un message d'erreur plus clair en cas d'échec de connexion.
+- Amélioration des textes de l'accusé de réception de dépôt de demande.
 - Ajout de la possibilité d'exposer le numéro de téléphone de l'applicant via l'API.
+- Correction d'un bug empêchant l'affichage correct des scopes boursier MEN sur les formulaires éditeurs CNAF.
 
 ### Évolutions techniques
-- Refactorisation du code pour simplifier la gestion des événements et des diffs.
-- Introduction d'un service singleton `AnnouncementBanner` pour gérer la bannière de maintenance.
+- Refactorisation de la gestion des événements et des changelogs.
+- Amélioration de la gestion des rôles et des droits utilisateurs, notamment avec l'introduction de rôles de niveau FD.
+- Ajout d'une API pour la création et la mise à jour de demandes.
+- Amélioration de la documentation de l'API et ajout d'une section tutoriels.
+- Optimisation des tests CI/CD pour réduire le temps d'exécution.
+- Mise à jour de plusieurs dépendances (Rubocop, Yard, Rack-Session, etc.).
+- Ajout de tests contractuels pour garantir la cohérence des définitions.
 - Amélioration de la gestion des erreurs et des exceptions.
-- Ajout d'une page de documentation pour les webhooks.
-- Ajout d'un service `MarkdownRenderer` pour le rendu du Markdown.
-- Mise à jour des dépendances (Rubocop, Yard, Zlib, Rack-Session, Openapi_first).
-- Optimisation des tests CI/CD (parallélisation, suppression de dépendances Docker).
-- Amélioration de la gestion des requêtes N+1 sur le dashboard demandeur.
-- Ajout d'interacteurs et d'organizers pour l'API write.
-- Documentation des scopes OAuth2 par endpoint dans l'OpenAPI.
-- Ajout d'événements `create_by_api` et `update_by_api`.
-- Amélioration de la gestion des slugs.
-- Ajout de tests contractuels.
-- Migration des tables rails_pulse et lazy_load faker.
+- Ajout de webhooks pour les événements d'organisation.
+- Simplification de l'affichage des erreurs dans les emails.
+- Utilisation de l'ID formaté au lieu de l'ID brut dans les URLs.
 
 ### Autres changements
+- Ajout d'un guide de contribution (CLAUDE) pour encourager la collaboration.
 - Mise à jour de la documentation des rôles.
-- Correction de typos dans les sujets des emails.
-- Ajout de guidelines pour l'utilisation de CLAUDE pour la co-authoring des commits.
-- Clarification du message d'erreur de `SkipLinksImplementedChecker`.
-- Ajout d'instructions pour arrêter le remplacement des apostrophes par des guillemets simples dans les tests.
+- Correction de fautes de frappe et amélioration de la qualité du code.
+- Ajout de checks pour forcer la définition du titre de chaque vue.
 - Suppression de code inutile et nettoyage général du code.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Mise à jour de la documentation.
-- Ajout de commentaires et de documentation au code.
