@@ -91,6 +91,7 @@
 │   │   ├── 0035_align_data_tet_schema_v02.sql
 │   │   ├── 0036_add_content_hash_to_projets.sql
 │   │   ├── 0037_budget_previsionnel_bigint.sql
+│   │   ├── 0038_data_mec_schema.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -148,6 +149,8 @@
 │   │   │   └── services-import.csv
 │   │   ├── import-tc-opendata
 │   │   │   └── import-tc-opendata.ts
+│   │   ├── migrate-projets-to-data-mec-delta.sql
+│   │   ├── migrate-projets-to-data-mec.sql
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
 │   │   ├── seed-referentiel
@@ -204,6 +207,7 @@
 │   │   ├── database
 │   │   │   ├── database.module.ts
 │   │   │   ├── database.service.ts
+│   │   │   ├── mec-schema.ts
 │   │   │   ├── plans-fiches-schema.ts
 │   │   │   ├── referentiel-schema.ts
 │   │   │   ├── schema.ts
@@ -239,6 +243,12 @@
 │   │   │   ├── matomo.module.ts
 │   │   │   ├── matomo.service.ts
 │   │   │   └── serve-static-with-matomo.ts
+│   │   ├── mec
+│   │   │   ├── dto
+│   │   │   │   └── create-mec-projet.dto.ts
+│   │   │   ├── mec.controller.ts
+│   │   │   ├── mec.module.ts
+│   │   │   └── mec.service.ts
 │   │   ├── middleware
 │   │   │   ├── cors.middleware.spec.ts
 │   │   │   └── cors.middleware.ts
@@ -597,4 +607,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-111 directories, 488 files
+113 directories, 496 files
