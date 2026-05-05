@@ -1,57 +1,88 @@
 {
   "url": "https://github.com/SocialGouv/graal",
   "name": "graal",
-  "description": "GRAAL est un système d'analyse et de traitement automatisé des amendements législatifs, conçu pour simplifier et accélérer le travail des agents chargés de les traiter.",
+  "description": "GRAAL est un système automatisé de traitement des amendements législatifs. Il applique des traitements sur les exports Signale (JSON) : regroupement, attribution, similarité, résumés LLM, et produit un CSV enrichi.",
   "language": "Python",
   "features": [
-    "Traitement des amendements",
-    "Analyse des amendements",
-    "Regroupement d'amendements similaires",
-    "Attribution d'amendements",
-    "Génération de résumés",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "Données & Schémas",
     "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Interface utilisateur & Design",
+    "Intelligence Artificielle & NLP"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Poetry",
-    "PostgreSQL",
-    "FastAPI",
-    "React",
-    "TypeScript",
-    "DSFR",
     "Docker",
-    "S3",
-    "Ollama",
-    "Albert API"
+    "PostgreSQL",
+    "asyncpg",
+    "pandas",
+    "openpyxl",
+    "ollama",
+    "rapidfuzz",
+    "numpy",
+    "scikit-learn",
+    "scipy",
+    "python-levenshtein",
+    "pytest",
+    "beautifulsoup4",
+    "unidecode",
+    "nltk",
+    "pytest-cov",
+    "pytest-xdist",
+    "tabulate",
+    "openai",
+    "pytest-mock",
+    "colorlog",
+    "requests",
+    "xlsxwriter",
+    "pre-commit",
+    "detect-secrets",
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "aiofiles",
+    "boto3",
+    "aioboto3",
+    "pyarrow",
+    "dspy-ai",
+    "sentence-transformers",
+    "sqlalchemy",
+    "alembic",
+    "psycopg2-binary",
+    "authlib",
+    "itsdangerous",
+    "pydantic"
   ],
   "components": [
-    "Python (scripts & backend)",
-    "React / Next.js",
-    "PostgreSQL & SQL",
-    "Pipeline de traitement",
     "API REST & GraphQL",
-    "Microservices & Architecture",
-    "Stockage objet"
+    "PostgreSQL & SQL",
+    "Python (scripts & backend)",
+    "Docker & Conteneurs",
+    "Tests",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "session"
+      "sso"
     ]
   },
   "tests": [
     "pytest",
-    "pytest-cov",
-    "pytest-xdist"
+    "pytest-cov"
   ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-03-11T00:00:00Z",
+  "workflows": [],
+  "lastActivity": "2026-04-11T00:00:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -60,14 +91,11 @@
     "openIssues": null
   },
   "tags": [
-    "amendements législatifs",
-    "traitement de texte",
     "Données & Open Data",
-    "Intelligence Artificielle & LLM",
     "Écosystème beta.gouv / État",
     "Python",
-    "React & Next.js",
     "Bases de données SQL",
-    "Déploiement & Hosting"
+    "Sécurité & Auth",
+    "Intelligence Artificielle & LLM"
   ]
 }

@@ -1,3 +1,25 @@
+# [1.51.0](https://github.com/SocialGouv/graal/compare/v1.50.1...v1.51.0) (2026-04-11)
+
+
+### Features
+
+* Let users delete their own databases and config files ([36f58e7](https://github.com/SocialGouv/graal/commit/36f58e71fbf73506841093487371f20882e02163))
+
+## [1.50.1](https://github.com/SocialGouv/graal/compare/v1.50.0...v1.50.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* Allow accents for "projet d'origine" ([ce7412f](https://github.com/SocialGouv/graal/commit/ce7412f9d4fffe6a42dcfa14a76f47b666154329))
+
+# [1.50.0](https://github.com/SocialGouv/graal/compare/v1.49.1...v1.50.0) (2026-03-18)
+
+
+### Features
+
+* Add max concurrent LLM config to the DB ([22f6bd3](https://github.com/SocialGouv/graal/commit/22f6bd325f48b4c4c6c9712ec88589d484f3f67f))
+* Add max concurrent LLMs to the frontend ([0af4c4d](https://github.com/SocialGouv/graal/commit/0af4c4ddb2ae15d9b2e07582a09b28bd5ec9d785))
+
 ## [1.49.1](https://github.com/SocialGouv/graal/compare/v1.49.0...v1.49.1) (2026-03-11)
 
 
