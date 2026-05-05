@@ -8,6 +8,14 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.25.2] - 2026-04-29
+
+## [1.25.1] - 2026-04-29
+
+### Fixed
+- 🐛(dimail) fix login code sent to wrong dimail url
+
+
 ## [1.25.0] - 2026-04-20
 
 ### Added
@@ -543,7 +551,9 @@ and this project adheres to
 - ✨(domains) create and manage domains on admin + API
 - ✨(domains) mailbox creation + link to email provisioning API
 
-[unreleased]: https://github.com/suitenumerique/people/compare/v1.25.0...main
+[unreleased]: https://github.com/suitenumerique/people/compare/v1.25.2...main
+[1.25.2]: https://github.com/suitenumerique/people/releases/v1.25.2
+[1.25.1]: https://github.com/suitenumerique/people/releases/v1.25.1
 [1.25.0]: https://github.com/suitenumerique/people/releases/v1.25.0
 [1.24.0]: https://github.com/suitenumerique/people/releases/v1.24.0
 [1.23.1]: https://github.com/suitenumerique/people/releases/v1.23.1

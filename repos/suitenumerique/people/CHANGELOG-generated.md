@@ -1,25 +1,27 @@
-## Changelog : people (30 derniers jours, au 20 avril 2026)
+## Changelog : people (30 derniers jours, au 29 avril 2026)
 
-Ce mois-ci, les améliorations se concentrent sur la sécurité, l'expérience utilisateur et la gestion des invitations. Les utilisateurs bénéficieront notamment de l'envoi de liens de connexion au lieu de mots de passe, d'une meilleure gestion des erreurs et de corrections de vulnérabilités. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées.
+### Résumé
+Cette version apporte des améliorations à la sécurité, notamment en remplaçant l'envoi de mots de passe par des liens de connexion uniques via email et en corrigeant une potentielle escalade de privilèges lors des invitations. Des corrections de bugs et des mises à jour de traductions ont également été intégrées pour améliorer l'expérience utilisateur et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-
-- **Sécurité :** Envoi de liens de connexion au lieu de mots de passe pour une meilleure sécurité lors de l'invitation d'utilisateurs. [#1108](https://github.com/suitenumerique/people/issues/1108)
-- **Invitations :** Correction d'une potentielle escalade de privilèges lors de l'invitation d'utilisateurs.
-- **Gestion des erreurs :** Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
-- **Interface utilisateur :** Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page de domaine.
-- **Administration :** Possibilité d'exporter les informations de contact du domaine pour l'administration.
-- **Langues :** Correction de l'affichage de la langue actuelle dans le menu de profil.
+- ✨ Envoi de liens de connexion au lieu de mots de passe pour les nouvelles connexions via dimail.
+- 🔒 Correction d'une vulnérabilité potentielle d'escalade de privilèges lors de l'invitation d'utilisateurs.
+- 🐛 Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
+- 💬 Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page de domaine.
+- 🧑‍💻 Possibilité d'exporter les informations de contact du domaine depuis l'interface d'administration.
+- ✅ Les accès testés lors de la création d'invitations par email ont le rôle attendu.
+- 🌐 Mise à jour des chaînes de traduction.
 
 ### Évolutions techniques
-
-- **Sécurité :** Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (Pillow, Django, lodash, Next.js, pytest).
-- **Dimail :** Correction d'un problème d'importation des boîtes aux lettres fonctionnelles.
-- **Dimail :** Mise à jour de la documentation concernant dimail.
-- **Tests :** Vérification que les accès créés par email ont le rôle attendu.
+- ⬆️ Mise à jour de la dépendance `dimail` vers la version 0.6.5.
+- ⬆️ Mise à jour de la dépendance `pillow` vers la version 12.2.0 pour des raisons de sécurité.
+- ⬆️ Mise à jour de la dépendance `pytest` vers la version 9.0.3 pour corriger une vulnérabilité de sécurité.
+- ⬆️ Mise à jour de la dépendance `next` vers la version 15.5.15 pour corriger une vulnérabilité de sécurité.
+- ⬆️ Mise à jour de la dépendance `lodash` vers la version 4.18.1 pour corriger une vulnérabilité de sécurité.
+- ⬆️ Mise à jour de la dépendance `django` vers la version 6.0.4 pour corriger une vulnérabilité de sécurité.
+- 🐛 Correction d'une erreur d'importation pour les boîtes aux lettres fonctionnelles.
 
 ### Autres changements
-
-- **Internationalisation (i18n) :** Mise à jour des chaînes de caractères traduites.
-- **Version :** Publication de la version 1.25.0.
-- **UI :** Suppression d'une bordure inutile dans l'interface utilisateur.
+- 🐛 Correction d'un bug où le code de connexion était envoyé à une URL dimail incorrecte.
+- 🐛 Correction du nom de la langue affiché dans le menu de profil [#1108].
+- 💄 Suppression de la bordure du conteneur dans l'interface utilisateur [#1107].
