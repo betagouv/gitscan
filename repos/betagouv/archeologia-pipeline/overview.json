@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/archeologia-pipeline",
   "name": "archeologia-pipeline",
-  "description": "Ce pipeline permet de traiter des données LiDAR pour produire des rasters (MNT, densité, indices RVT) et détecter des éléments par computer vision. Il est conçu pour l'archéologie et l'analyse du territoire.",
+  "description": "Ce plugin QGIS permet d'exécuter un pipeline de traitement LiDAR pour produire des rasters (MNT, densité, indices RVT) et d'effectuer une détection/segmentation par computer vision.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -17,11 +17,13 @@
     "QGIS",
     "PDAL",
     "GDAL",
-    "ONNX",
-    "PyTorch",
+    "Processing",
     "shapely",
     "geopandas",
-    "fiona"
+    "fiona",
+    "onnxruntime",
+    "sahi",
+    "PIL"
   ],
   "components": [
     "API REST & GraphQL",
@@ -39,20 +41,17 @@
     ],
     "providers": []
   },
-  "tests": [
-    "Pytest",
-    "ruff"
-  ],
+  "tests": "Pytest",
   "workflows": [],
   "lastActivity": "2026-03-26T16:52:22+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 11,
-    "forks": 2,
-    "contributors": 2,
-    "openIssues": 0
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
   },
   "tags": [
     "Données & Open Data",
@@ -60,7 +59,6 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Intelligence Artificielle & LLM",
-    "SIG & Géospatial"
+    "Intelligence Artificielle & LLM"
   ]
 }
