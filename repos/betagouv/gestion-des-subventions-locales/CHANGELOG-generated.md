@@ -1,43 +1,36 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 29 avril 2026)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 04 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de performance, notamment sur les pages projets et simulations, ainsi que par l'ajout de nombreux filtres pour affiner la recherche et la gestion des données. Des corrections de bugs et des refactorings ont également été réalisés pour améliorer la stabilité et la maintenabilité de l'application. L'intégration avec Turgot a été renforcée, notamment en synchronisant les montants et en adaptant l'interface pour refléter ce changement.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la performance et de la stabilité de l'application, notamment au niveau de l'intégration avec les Démarches Numériques (DN) et de la synchronisation des données. Des améliorations ont également été apportées à l'interface utilisateur, avec l'ajout de filtres et l'amélioration de l'affichage des informations, ainsi que des corrections de bugs.
 
 ### Évolutions fonctionnelles
-- Ajout de filtres par catégorie DETR/DSIL sur les listes de projets. [#634](https://github.com/betagouv/gestion-des-subventions-locales/issues/634)
-- Ajout de filtres par date sur les listes projets, simulations et programmation. [#625](https://github.com/betagouv/gestion-des-subventions-locales/issues/625)
-- Ajout de filtres pour le budget vert, la dotation sollicitée et le dossier complet. [#640](https://github.com/betagouv/gestion-des-subventions-locales/issues/640)
-- Ajout d'une colonne "Taux sollicité" dans l'export. [#636](https://github.com/betagouv/gestion-des-subventions-locales/issues/636)
-- Affichage de la priorité du dossier si plusieurs ont été déposés par le même demandeur. [#675](https://github.com/betagouv/gestion-des-subventions-locales/issues/675)
-- Ajout d'un filtre EPCI sur les pages projet, programmation et simulation. [#673](https://github.com/betagouv/gestion-des-subventions-locales/issues/673)
-- Possibilité de changer le statut en masse des dossiers sur la page de simulation. [#661](https://github.com/betagouv/gestion-des-subventions-locales/issues/661)
-- Amélioration de l'affichage des cofinancements sur la page projet. [#643](https://github.com/betagouv/gestion-des-subventions-locales/issues/643)
-- Ajout de la possibilité de fermer la modale "Vous ne faites pas partie du groupe d'instructeurs". [#690](https://github.com/betagouv/gestion-des-subventions-locales/issues/690)
-- Mise à jour de l'enveloppe lorsqu'on modifie les montants des projets acceptés. [#674](https://github.com/betagouv/gestion-des-subventions-locales/issues/674)
-- Ajout d'une FAQ. [#672](https://github.com/betagouv/gestion-des-subventions-locales/issues/672)
-- Correction de l'affichage de la date de notification. [#695](https://github.com/betagouv/gestion-des-subventions-locales/issues/695)
-- Correction de l'affichage des documents. [#694](https://github.com/betagouv/gestion-des-subventions-locales/issues/694)
+- Ajout de filtres pour le cofinancement, le zonage et la contractualisation sur les pages projet, programmation et simulation. [#642](https://github.com/betagouv/gestion-des-subventions-locales/issues/642)
+- Amélioration de l'affichage des cofinancements sur la page de détail d'un projet. [#643](https://github.com/betagouv/gestion-des-subventions-locales/issues/643)
+- Affichage de la priorité du dossier si plusieurs ont été déposés par le même demandeur. [#654](https://github.com/betagouv/gestion-des-subventions-locales/issues/654)
+- Possibilité de changer le statut en masse des projets sur la page de simulation. [#661](https://github.com/betagouv/gestion-des-subventions-locales/issues/661)
+- Ajout d'une action pour déplacer les projets acceptés de 2026 vers l'enveloppe 2025. [#654](https://github.com/betagouv/gestion-des-subventions-locales/issues/654)
+- Correction du lien "Annulation" dans la création/modification d'un arrêté/lettre et affichage du statut du projet dans l'onglet notifications. [#655](https://github.com/betagouv/gestion-des-subventions-locales/issues/655)
+- Amélioration de la mise en page des arrêtés et lettres. [#659](https://github.com/betagouv/gestion-des-subventions-locales/issues/659)
+- Renommage de "Arrêté et lettre signés" en "Lettre et arrêté signés". [#693](https://github.com/betagouv/gestion-des-subventions-locales/issues/693)
 
 ### Évolutions techniques
-- Refactoring pour utiliser `personne_morale` au lieu de `projet demandeur`. [#1234](https://github.com/betagouv/gestion-des-subventions-locales/issues/1234)
-- Optimisation de la requête GraphQL pour le GroupeInstructeur afin de limiter les timeouts. [#691](https://github.com/betagouv/gestion-des-subventions-locales/issues/691)
-- Amélioration de la performance de la page projet (BO). [#637](https://github.com/betagouv/gestion-des-subventions-locales/issues/637)
-- Ajout de la librairie `django-query-counter`. [#671](https://github.com/betagouv/gestion-des-subventions-locales/issues/671)
-- Mise en place de tests CI avec SQLite en mémoire pour les PR et PostgreSQL pour la merge queue. [#596](https://github.com/betagouv/gestion-des-subventions-locales/issues/596)
-- Ajout de workflows de déploiement en production via GitHub Actions. [#647](https://github.com/betagouv/gestion-des-subventions-locales/issues/647)
-- Ajout d'un déploiement pour l'environnement de démo. [#653](https://github.com/betagouv/gestion-des-subventions-locales/issues/653)
-- Ajout d'une commande `just release-dry-run` pour prévisualiser un tag et ses notes de version. [#680](https://github.com/betagouv/gestion-des-subventions-locales/issues/680)
+- Implémentation d'un proxy GraphQL pour l'API DS, filtré par les instructeurs autorisés. [#641](https://github.com/betagouv/gestion-des-subventions-locales/issues/641)
+- Optimisation des requêtes GraphQL vers DN pour limiter les timeouts. [#691](https://github.com/betagouv/gestion-des-subventions-locales/issues/691)
+- Restriction des champs renvoyés par le proxy DN pour améliorer la performance. [#692](https://github.com/betagouv/gestion-des-subventions-locales/issues/692) et [#699](https://github.com/betagouv/gestion-des-subventions-locales/issues/699)
+- Amélioration de la gestion des erreurs lors de l'import de dossiers depuis DS. [#652](https://github.com/betagouv/gestion-des-subventions-locales/issues/652)
+- Ajout de tests CI avec SQLite pour accélérer les tests. [#596](https://github.com/betagouv/gestion-des-subventions-locales/issues/596)
+- Mise en place d'un workflow de déploiement en production via GitHub Actions. [#647](https://github.com/betagouv/gestion-des-subventions-locales/issues/647)
+- Ajout d'un déploiement pour l'environnement de démo.
+- Amélioration de la configuration CI pour limiter les permissions du token GitHub.
+- Utilisation d'une base de données SQLite en mémoire pour les tests CI.
+- Ajout d'un heartbeat streamé pour éviter les timeouts Scalingo du proxy DS.
 - Correction de l'URL du script HeatmapSessionRecording de Matomo. [#687](https://github.com/betagouv/gestion-des-subventions-locales/issues/687)
-- Ajout du script HeatmapSessionRecording de Matomo. [#666](https://github.com/betagouv/gestion-des-subventions-locales/issues/666)
-- Stream d'un heartbeat pour éviter les timeouts Scalingo du proxy DS. [#676](https://github.com/betagouv/gestion-des-subventions-locales/issues/676)
-- Proxy GraphQL DS filtré par instructeurs. [#641](https://github.com/betagouv/gestion-des-subventions-locales/issues/641)
-- Amélioration de la synchronisation des montants avec Turgot lors de l'acceptation d'un projet.
-- Refactoring du système de mentions de publipostage. [#632](https://github.com/betagouv/gestion-des-subventions-locales/issues/632)
 
 ### Autres changements
-- Mise à jour de la documentation pour les releases en production.
-- Changement des titres des pages pour refléter l'intégration avec Turgot. [#639](https://github.com/betagouv/gestion-des-subventions-locales/issues/639)
-- Correction de la réouverture des modales de statut avec contenu obsolète. [#621](https://github.com/betagouv/gestion-des-subventions-locales/issues/621)
+- Ajout d'une FAQ. [#672](https://github.com/betagouv/gestion-des-subventions-locales/issues/672)
+- Ajout de la librairie django-query-counter pour le profiling des requêtes. [#671](https://github.com/betagouv/gestion-des-subventions-locales/issues/671)
+- Documentation ajoutée pour les releases en production.
 - Suppression des logs verbeux de fontTools en production. [#684](https://github.com/betagouv/gestion-des-subventions-locales/issues/684)
-- Correction d'un problème de typo CSS. [#667](https://github.com/betagouv/gestion-des-subventions-locales/issues/667)
-- Correction de l'affichage des documents de l'autre dotation.
+- Suppression du demandeur en doublon pour ne conserver que le demandeur au niveau du dossier. [#670](https://github.com/betagouv/gestion-des-subventions-locales/issues/670)
+- Correction de typos et améliorations de la qualité du code.
+- MEP (Mise en Production) du 08/04/2026. [#645](https://github.com/betagouv/gestion-des-subventions-locales/issues/645)
