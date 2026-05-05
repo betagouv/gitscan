@@ -1,15 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 03 mai 2026)
+## Changelog : upptime (30 derniers jours, au 05 mai 2026)
 
 ### Résumé
-Ce changelog résume les activités du projet upptime au cours des 30 derniers jours. La majorité des changements concernent les mises à jour automatiques des statuts de surveillance des différents services surveillés par upptime. Ces mises à jour indiquent si les services sont disponibles et leurs temps de réponse.
+Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour automatiques du statut des différents services surveillés par le bot Upptime. Ces mises à jour indiquent si les services sont disponibles et leurs temps de réponse.  Il n'y a pas eu de changements majeurs concernant les fonctionnalités ou l'architecture du projet.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée au cours de cette période. Les changements se concentrent sur la surveillance continue des services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le bot Upptime continue de surveiller et de rapporter l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique significative n'a été identifiée dans les commits analysés. Les mises à jour concernent principalement les rapports d'état automatisés.
+Aucune évolution technique significative n'a été identifiée dans les commits analysés. Les changements se concentrent sur les rapports d'état réguliers des services surveillés.
 
 ### Autres changements
-- Mise à jour régulière du fichier `README` et du résumé du statut, probablement automatisée par le bot Upptime.
-- Mises à jour graphiques régulières.
-- Les commits sont principalement des mises à jour automatisées par le bot Upptime pour signaler l'état des différents services surveillés.
+- Mise à jour régulière du fichier `README.md` et du résumé du statut pour refléter l'état actuel des services.
+- Mise à jour des graphiques de performance.
+- Les commits de type "Update graphs" et "Update status summary" sont générés automatiquement par le bot Upptime.
