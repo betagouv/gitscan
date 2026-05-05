@@ -1,17 +1,15 @@
-## Changelog : espace_membre-ruby (30 derniers jours)
+## Changelog : espace_membre-ruby (30 derniers jours, au 29 avril 2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations à la détection de l'environnement Rails, notamment concernant l'utilisation de FactoryBot. Des corrections ont également été apportées pour une meilleure gestion des phases actives et une résolution de problèmes liés à la portée des tests. Enfin, la gem a été versionnée avec plusieurs mises à jour mineures.
+Ce mois-ci, la gem `espace_membre-ruby` a bénéficié d'améliorations significatives, notamment l'ajout de la gestion des organisations et l'utilisation d'UUID comme clés primaires pour une meilleure robustesse et scalabilité. Des corrections ont également été apportées pour améliorer la stabilité du serveur de test et faciliter l'exploration de la gem.
 
 ### Évolutions fonctionnelles
-- Correction de la détection de FactoryBot dans l'environnement Rails [#1234](https://github.com/betagouv/espace_membre-ruby/issues/1234).
-- Amélioration de la découverte de la phase active au démarrage.
-- Possibilité de passer plusieurs valeurs au scope `in_phase`.
+- Ajout de la gestion des organisations via un nouveau modèle `Organization` [#14](https://github.com/betagouv/espace_membre-ruby/pull/14).
+- Utilisation d'UUID comme clés primaires pour le modèle de base, améliorant la gestion des identifiants uniques [#13](https://github.com/betagouv/espace_membre-ruby/pull/13).
 
 ### Évolutions techniques
-- Refactorisation du scope FactoryBot pour une meilleure organisation.
-- Déplacement des factories vers les consommateurs pour une plus grande flexibilité.
-- Correction des tests pour assurer la cohérence et la fiabilité du code.
+- Mise en place d'un serveur HTTP factice pour faciliter l'exploration et le test de la gem [#12](https://github.com/betagouv/espace_membre-ruby/pull/12).
+- Corrections diverses concernant la configuration de la base de données dans l'environnement CI.
 
 ### Autres changements
-- Mises à jour de version : 0.2, 0.2.1, 0.2.2 et 0.3.
+- Refonte et clarification de la documentation README en français [#14](https://github.com/betagouv/espace_membre-ruby/commit/6cf3ff4).
