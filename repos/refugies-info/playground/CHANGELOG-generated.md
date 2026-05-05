@@ -1,34 +1,28 @@
-## Changelog : playground (30 derniers jours, au 23 avril 2026)
+## Changelog : playground (30 derniers jours, au 04 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une évolution significative avec l'introduction d'une barre latérale persistante, l'amélioration du filtrage des documents (type d'entrée, thèmes, besoins), et une refonte de l'interface utilisateur avec l'intégration du système d'icônes DSFR et l'implémentation de Storybook pour le développement des composants. Des améliorations de sécurité et de performance ont également été apportées, notamment concernant l'authentification Supabase et l'optimisation du chargement des données.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'interface utilisateur, en particulier la liste des fiches, avec un nouveau design et des fonctionnalités de filtrage plus performantes. Des corrections importantes ont également été apportées à l'authentification Supabase et à la gestion des traductions. Enfin, des optimisations de performance et des mesures de sécurité ont été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une barre latérale persistante avec un état replié mémorisable [#202](https://github.com/refugies-info/playground/pull/202).
-- Implémentation d'un filtre par type d'entrée dans la liste des documents [#198](https://github.com/refugies-info/playground/pull/198).
-- Ajout d'un filtre pour exclure les IDs de thèmes et de besoins "hallucinés" pour garantir l'intégrité des données [#197](https://github.com/refugies-info/playground/pull/197).
-- Amélioration de la gestion des liens d'invitation Supabase : affichage des erreurs et redirection correcte [#195](https://github.com/refugies-info/playground/pull/195).
-- Ajout d'un champ de recherche pour filtrer la liste des documents [#181](https://github.com/refugies-info/playground/pull/181).
-- Ajout d'un filtre pour les entrées "en cours" (brouillon) [#199](https://github.com/refugies-info/playground/pull/199).
-- Ajout d'un comptage de mots pour chaque document, avec affichage dans la liste et possibilité de tri [#193](https://github.com/refugies-info/playground/pull/193).
-- Refonte de l'habillage de la liste des fiches et de l'en-tête avec l'intégration du design système DSFR [#189](https://github.com/refugies-info/playground/pull/189), [#186](https://github.com/refugies-info/playground/pull/186), [#182](https://github.com/refugies-info/playground/pull/182).
+- **Liste des fiches :** Refonte complète de l'interface avec un nouveau design, incluant des en-têtes de colonnes améliorés, des couleurs actualisées et une pagination plus intuitive. [#186](https://github.com/refugies-info/playground/pull/186), [#192](https://github.com/refugies-info/playground/pull/192), [#193](https://github.com/refugies-info/playground/pull/193), [#189](https://github.com/refugies-info/playground/pull/189)
+- **Filtrage :** Ajout d'un filtre par type d'entrée (BOMO, etc.) dans la liste des documents. [#198](https://github.com/refugies-info/playground/pull/198)
+- **Liens de publication :** Ajout de liens de publication avec une popover interactive affichant l'URL externe et un indicateur de statut en ligne. [#208](https://github.com/refugies-info/playground/pull/208), [#209](https://github.com/refugies-info/playground/pull/209)
+- **Copie d'URL :** Amélioration de la gestion des erreurs et ajout d'une indication de succès lors de la copie de l'URL de la fiche. [#203](https://github.com/refugies-info/playground/pull/203)
+- **Authentification :** Correction du lien d'invitation Supabase qui redirige maintenant vers la page de connexion. [#195](https://github.com/refugies-info/playground/pull/195)
+- **Traduction :** Correction d'un problème empêchant le fonctionnement des traductions de fiches. [#191](https://github.com/refugies-info/playground/pull/191)
+- **Éditeur de document :** Ajout d'un panneau de comparaison côte à côte avec la source originale. [#210](https://github.com/refugies-info/playground/pull/210)
 
 ### Évolutions techniques
-- Refactorisation de la gestion des rôles et des permissions (RBAC) avec stockage dans la table `profiles` et utilisation de fonctions RLS centralisées [#196](https://github.com/refugies-info/playground/pull/196).
-- Mise en place d'un système d'icônes DSFR et intégration dans les composants de l'interface utilisateur [#180](https://github.com/refugies-info/playground/pull/180).
-- Implémentation de Storybook pour le développement et la documentation des composants UI [#182](https://github.com/refugies-info/playground/pull/182).
-- Migration de la configuration de Storybook vers TypeScript [#185](https://github.com/refugies-info/playground/pull/185).
-- Amélioration de la performance du chargement des données en limitant le nombre de requêtes simultanées pour les audits [#184](https://github.com/refugies-info/playground/pull/184).
-- Refactorisation de la gestion des états et des effets avec `useEffect` et `useUrlFilters`.
-- Utilisation de `Object.hasOwn` pour des vérifications de propriétés plus sûres.
-- Mise à jour de la configuration Supabase avec des URLs de redirection pour le développement local.
-- Ajout d'un hook personnalisé pour la gestion des tokens d'accès RBAC.
+- **Architecture :** Refactorisation de l'architecture de la sidebar pour une meilleure réutilisabilité et intégration avec le nouveau design global. [#204](https://github.com/refugies-info/playground/pull/204), [#206](https://github.com/refugies-info/playground/pull/206), [#207](https://github.com/refugies-info/playground/pull/207)
+- **Performance :** Ajout d'un index GIN trigram sur le champ ID des enregistrements d'ingestion pour optimiser les performances de recherche. [#205](https://github.com/refugies-info/playground/pull/205)
+- **Sécurité :** Implémentation d'un hook pre-commit GitLeaks pour la détection de secrets. [#188](https://github.com/refugies-info/playground/pull/188)
+- **RBAC :** Migration de la source de vérité pour le contrôle d'accès basé sur les rôles (RBAC) des métadonnées JWT vers la table `profiles` et implémentation d'un routage basé sur les rôles centralisé. [#195](https://github.com/refugies-info/playground/pull/195)
+- **Workflow :** Remplacement du streaming éditorial basé sur SSE par un workflow durable utilisant Supabase Realtime avec un fallback de polling. [#202](https://github.com/refugies-info/playground/pull/202)
+- **Supabase :** Mise à jour de la configuration Supabase avec des URL de redirection de développement locales et correction des permissions RBAC. [#195](https://github.com/refugies-info/playground/pull/195)
 
 ### Autres changements
-- Ajout d'un hook GitLeaks pour la détection de secrets dans le code [#188](https://github.com/refugies-info/playground/pull/188).
-- Amélioration de la documentation et de l'organisation des composants dans Storybook [#186](https://github.com/refugies-info/playground/pull/186).
-- Mise à jour des dépendances et des configurations de build.
-- Correction de bugs mineurs et amélioration de la qualité du code.
-- Ajout de tests unitaires avec Vitest et intégration avec Storybook.
-- Mise à jour de la configuration Chromatic pour les tests de régression visuelle.
-- Correction de labels et de textes d'interface pour une meilleure clarté.
+- **Documentation :** Amélioration de la documentation Storybook pour les composants UI. [#200](https://github.com/refugies-info/playground/pull/200)
+- **Refactoring :** Divers refactorings pour améliorer la lisibilité et la maintenabilité du code.
+- **Corrections :** Correction de divers bugs et améliorations mineures de l'interface utilisateur.
+- **Labels :** Mise à jour des labels pour les entrées permanentes dans la cellule ModalitesEntreesSortiesCell. [#200](https://github.com/refugies-info/playground/pull/200)
+- **Gestion des erreurs :** Ajout de la gestion des erreurs pour la mise à jour du workflow Supabase. [#203](https://github.com/refugies-info/playground/pull/203)

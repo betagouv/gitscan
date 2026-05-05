@@ -102,14 +102,24 @@
 │   │   │   │   │       └── page.tsx
 │   │   │   │   ├── (main)
 │   │   │   │   │   ├── documents
+│   │   │   │   │   │   ├── [id]
+│   │   │   │   │   │   │   ├── compliance
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   ├── metadata
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── columns.tsx
 │   │   │   │   │   │   ├── documents-list.tsx
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── error.tsx
 │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── page-shell.tsx
 │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   ├── translations
 │   │   │   │   │   │   ├── TranslationsList.tsx
+│   │   │   │   │   │   ├── [id]
+│   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── columns.tsx
 │   │   │   │   │   │   ├── error.tsx
 │   │   │   │   │   │   ├── loading.tsx
@@ -146,27 +156,14 @@
 │   │   │   │   │   └── workflow
 │   │   │   │   │       └── [id]
 │   │   │   │   │           └── route.ts
-│   │   │   │   ├── documents
-│   │   │   │   │   ├── [id]
-│   │   │   │   │   │   ├── compliance
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   ├── metadata
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   └── layout.tsx
 │   │   │   │   ├── error.tsx
 │   │   │   │   ├── global-error.tsx
 │   │   │   │   ├── globals.css
 │   │   │   │   ├── icon.svg
 │   │   │   │   ├── layout.tsx
-│   │   │   │   ├── service-unavailable
-│   │   │   │   │   └── page.tsx
-│   │   │   │   └── translations
-│   │   │   │       └── [id]
-│   │   │   │           └── page.tsx
+│   │   │   │   └── service-unavailable
+│   │   │   │       └── page.tsx
 │   │   │   ├── components
-│   │   │   │   ├── TopNav.tsx
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── LoginForm.tsx
 │   │   │   │   │   ├── PasswordConfirmForm.tsx
@@ -174,6 +171,7 @@
 │   │   │   │   │   ├── SignupForm.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── common
+│   │   │   │   │   ├── AppSidebar.tsx
 │   │   │   │   │   └── app-pagination.tsx
 │   │   │   │   ├── document-editor
 │   │   │   │   │   ├── DocumentContext.tsx
@@ -190,15 +188,12 @@
 │   │   │   │   │   │   ├── ArbitrationView.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── assistant
-│   │   │   │   │   │   ├── AssistantPanel.tsx
-│   │   │   │   │   │   ├── hooks
-│   │   │   │   │   │   │   └── useEditorialRealtime.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── hooks
+│   │   │   │   │   │       └── useEditorialRealtime.ts
 │   │   │   │   │   ├── editor
 │   │   │   │   │   │   ├── AiSuggestionBanner.tsx
 │   │   │   │   │   │   ├── EditionView.tsx
 │   │   │   │   │   │   ├── EditorTabs.tsx
-│   │   │   │   │   │   ├── OriginalContentView.tsx
 │   │   │   │   │   │   ├── RawMarkdownView.tsx
 │   │   │   │   │   │   ├── blocks
 │   │   │   │   │   │   │   ├── callout-block.tsx
@@ -240,13 +235,16 @@
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   └── shared
+│   │   │   │   │       ├── AIFloatingButton.tsx
 │   │   │   │   │       ├── DebugPanel.tsx
 │   │   │   │   │       ├── DocumentLayout.tsx
-│   │   │   │   │       ├── DocumentSidebar.tsx
+│   │   │   │   │       ├── DocumentPublicationStatus.tsx
 │   │   │   │   │       ├── DocumentStatus.tsx
 │   │   │   │   │       ├── EditorNavigation.tsx
+│   │   │   │   │       ├── HeaderFicheConnected.tsx
 │   │   │   │   │       ├── MarkdownViewer.tsx
-│   │   │   │   │       ├── TopBar.tsx
+│   │   │   │   │       ├── SourcePanel.tsx
+│   │   │   │   │       ├── SourceToggleButton.tsx
 │   │   │   │   │       ├── hooks
 │   │   │   │   │       │   └── useDocumentStatusRealtime.ts
 │   │   │   │   │       └── index.ts
@@ -272,6 +270,8 @@
 │   │   │   │           └── useTranslationPublicationRealtime.ts
 │   │   │   ├── config
 │   │   │   │   └── features.ts
+│   │   │   ├── contexts
+│   │   │   │   └── SidebarContext.tsx
 │   │   │   ├── hooks
 │   │   │   │   └── useUrlFilters.ts
 │   │   │   ├── lib
@@ -304,6 +304,7 @@
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── metadata-actions.ts
 │   │   │   │   ├── permission-helper.ts
+│   │   │   │   ├── publication-urls.ts
 │   │   │   │   ├── ri-reference-data.ts
 │   │   │   │   ├── translation-actions.ts
 │   │   │   │   └── translations.ts
@@ -556,10 +557,22 @@
 │   │   │   │   │   ├── data-table-toolbar.tsx
 │   │   │   │   │   ├── data-table.tsx
 │   │   │   │   │   └── table.tsx
+│   │   │   │   ├── header-fiche
+│   │   │   │   │   ├── HeaderFiche.stories.tsx
+│   │   │   │   │   ├── HeaderFiche.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── pagination-controls.tsx
 │   │   │   │   ├── pagination.stories.tsx
 │   │   │   │   ├── pagination.tsx
+│   │   │   │   ├── publication-links-popover
+│   │   │   │   │   ├── PublicationLinksPopover.stories.tsx
+│   │   │   │   │   ├── PublicationLinksPopover.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── publish-panel
+│   │   │   │   │   ├── PublishPanel.stories.tsx
+│   │   │   │   │   ├── PublishPanel.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── sidebar
 │   │   │   │   │   ├── Sidebar.stories.tsx
 │   │   │   │   │   ├── Sidebar.tsx
@@ -586,6 +599,8 @@
 │   │   │   │   ├── drawer
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── popover.stories.tsx
+│   │   │   │   ├── popover.tsx
 │   │   │   │   └── tooltip.tsx
 │   │   │   ├── primitives
 │   │   │   │   ├── avatar
@@ -676,6 +691,10 @@
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── indication-sauvegarde
+│   │   │   │   │   ├── IndicationSauvegarde.stories.tsx
+│   │   │   │   │   ├── IndicationSauvegarde.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── input
 │   │   │   │   │   ├── Input.stories.tsx
 │   │   │   │   │   ├── Input.tsx
@@ -690,6 +709,7 @@
 │   │   │   │       └── index.ts
 │   │   │   ├── styles
 │   │   │   │   ├── globals.css
+│   │   │   │   ├── tailwind-animations.css
 │   │   │   │   └── tailwind-theme.css
 │   │   │   └── utils
 │   │   │       ├── cn.ts
@@ -872,7 +892,8 @@
 │   │   ├── 20260416150000_add_word_count_to_workflows_enriched.sql
 │   │   ├── 20260416150001_add_publication_records_composite_index.sql
 │   │   ├── 20260421102209_rbac_custom_access_token_hook.sql
-│   │   └── 20260421144651_fix_grants_profiles_translation_records.sql
+│   │   ├── 20260421144651_fix_grants_profiles_translation_records.sql
+│   │   └── 20260428110000_add_gin_trgm_index_ingestion_metadata_id.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -889,4 +910,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-205 directories, 686 files
+208 directories, 704 files
