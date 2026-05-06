@@ -1,21 +1,21 @@
-## Changelog : tchap-android (30 derniers jours, au 29 avril 2026)
+## Changelog : tchap-android (30 derniers jours, au 4 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des corrections importantes concernant la réinitialisation de l'identité (signatures croisées et clé de récupération) et la gestion des secrets, améliorant ainsi la sécurité et la fiabilité de l'application.  Elle inclut également une réactivation de la bannière de vérification des appareils et des améliorations de la gestion des exceptions de sécurité. Enfin, l'application est mise à jour vers la version 1.6.54 d'Element Android.
+Cette version apporte des améliorations de sécurité, notamment la vérification des appareils avec les builds nightly d'Element X et la correction d'un problème lié à la réinitialisation des clés de chiffrement. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été implémentées, notamment concernant la réinitialisation de l'identité et la gestion des erreurs de stockage des secrets.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la réinitialisation complète de l'application en raison d'une erreur "Cannot find secrets in storage" [#1206](https://github.com/tchapgouv/tchap-android/pull/1206).
-- Réactivation de la bannière de vérification des appareils pour une meilleure sécurité des sessions. [#1199](https://github.com/tchapgouv/tchap-android/pull/1199)
-- Correction de la réinitialisation de l'identité, notamment pour les signatures croisées et la clé de récupération. [#1199](https://github.com/tchapgouv/tchap-android/pull/1199)
-- Mise à jour vers la version 1.6.54 d'Element Android, incluant les correctifs et améliorations de cette version. [#1203](https://github.com/tchapgouv/tchap-android/pull/1203)
+- **Vérification des appareils :** Ajout de la prise en charge de la vérification des appareils avec les builds nightly d'Element X, améliorant ainsi la sécurité de la communication. [#9137](https://github.com/tchapgouv/tchap-android/pull/9137)
+- **Réinitialisation de l'identité :** Correction d'un bug empêchant la réinitialisation correcte de l'identité, incluant la cross-signature et la clé de récupération. [#1199](https://github.com/tchapgouv/tchap-android/pull/1199)
+- **Réinitialisation de tout :** Correction d'une erreur "Cannot find secrets in storage" lors de la réinitialisation complète de l'application. [#1206](https://github.com/tchapgouv/tchap-android/pull/1206)
+- **Réactivation de la bannière de vérification d'appareil :** La bannière de vérification d'appareil est de nouveau affichée pour une meilleure sécurité. [#3aa4b16069](https://github.com/tchapgouv/tchap-android/commit/3aa4b16069)
 
 ### Évolutions techniques
-- Ajout d'une exception de sécurité pour OpenMapTiles. [#1204](https://github.com/tchapgouv/tchap-android/pull/1204)
-- Correction de problèmes liés aux constantes lint. [#1205](https://github.com/tchapgouv/tchap-android/pull/1205)
-- Ajout d'un fichier Fastlane pour la version 1.6.54, facilitant le processus de build et de publication.
+- **Mise à jour de la base de code :** Intégration des dernières modifications d'Element Android 1.6.58 et 1.6.54. [#1207](https://github.com/tchapgouv/tchap-android/pull/1207), [#1203](https://github.com/tchapgouv/tchap-android/pull/1203)
+- **Gestion des exceptions de sécurité :** Ajout d'une exception de sécurité pour OpenMapTiles. [#42a823b63b](https://github.com/tchapgouv/tchap-android/commit/42a823b63b)
+- **Correction de bugs et amélioration de la qualité du code :** Plusieurs corrections de lint et de bugs mineurs ont été apportées pour améliorer la qualité du code. [#1205](https://github.com/tchapgouv/tchap-android/pull/1205), [#1204](https://github.com/tchapgouv/tchap-android/pull/1204)
+- **Exportation de la version des clés de salle :** Exportation de la version des clés de salle pour une meilleure gestion. [#389bbd8d28](https://github.com/tchapgouv/tchap-android/commit/389bbd8d28)
+- **Correction de la gestion du stockage des secrets :** Correction d'un bug lié à la gestion du stockage des secrets lors de la réinitialisation. [#9128](https://github.com/tchapgouv/tchap-android/pull/9128)
 
 ### Autres changements
-- Mise à jour de la documentation et des libellés dans le code.
-- Ajout de changelogs pour les différentes modifications.
-- Résolution de conflits lors de la fusion de branches.
-- Correction de lint issues.
+- **Documentation :** Ajout de changelogs pour les différentes modifications.
+- **Mise à jour des wordings :** Mise à jour de certains textes dans l'application pour une meilleure clarté.
