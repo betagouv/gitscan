@@ -4,7 +4,7 @@
 
 Son objectif est de fournir une solution de calcul des impacts positifs de la reconversion de friches aux chargés d’opération d’aménagement pour favoriser la prise de décision (pour tout type de projet d’aménagement) et augmenter le nombre de reconversions.
 
-L'outil est actuellement en *phase de construction*.
+L'outil est actuellement en _phase de construction_.
 
 [Fiche produit](https://beta.gouv.fr/startups/benefriches.html)
 
@@ -21,29 +21,34 @@ Le projet est organisé en monorepo et géré avec le gestionnaire de packages `
 Le code commun au front-end et au back-end (types, fonctions de calculs, etc.) est placé dans le package `shared`.
 
 ### Pré-requis
-* node (version 24 ou supérieure)
-* pnpm (version 10.31.0 ou supérieure)
-* docker (optionnel)
-* postgresql (si docker non installé)
+
+- node (version 24 ou supérieure)
+- pnpm (version 10.31.0 ou supérieure)
+- docker (optionnel)
+- postgresql (si docker non installé)
 
 ### Installation des dépendances
+
 ```sh
 pnpm install
 ```
 
 ### Création des variables d'environnement
+
 - Utilisation des valeurs exposées dans `apps/web/.env.example` et `apps/api/.env.example`.
+
 ```sh
 cp apps/web/.env.example apps/web/.env
 cp apps/api/.env.example apps/api/.env
 ```
 
 - Modifier les valeurs de `DATABASE_USER` et `DATABASE_PASSWORD` en fonction de la méthode choisie pour lancer la base de données.
-Pour docker, utiliser `DATABASE_USER`=`postgres` et `DATABASE_PASSWORD`=`secret`.
+  Pour docker, utiliser `DATABASE_USER`=`postgres` et `DATABASE_PASSWORD`=`secret`.
 
 ### Lancement de la base de données
 
 #### avec Docker
+
 ```sh
 # à la racine du projet
 $ docker compose --env-file apps/api/.env -f docker-compose.db.yml up -d
@@ -52,9 +57,10 @@ $ docker compose --env-file apps/api/.env -f docker-compose.db.yml up -d
 #### avec PostgreSQL
 
 Lancer PostgreSQL et créer l’utilisateur et la base de données :
+
 ```sh
 postgres=\# CREATE USER <USERNAME> WITH ENCRYPTED PASSWORD '<YOUR_PASSWORD>';
-postgres=\# CREATE DATABASE benefriches_db WITH OWNER = claire;
+postgres=\# CREATE DATABASE benefriches_db WITH OWNER = <USERNAME>;
 ```
 
 ### Initialisation de la base de données
@@ -65,6 +71,9 @@ pnpm --filter api knex:seed-run # chargement des données nécessaires à l'appl
 ```
 
 ### Lancement de l'application en mode développement
+
+La commande `setup-env-vars` génère le fichier `public/js/env-vars.js` à partir des variables `WEBAPP_*` du `.env`, afin de les exposer au navigateur au runtime.
+
 ```sh
 pnpm --filter api dev
 pnpm --filter web setup-env-vars
@@ -84,6 +93,7 @@ docker compose --env-file .env.e2e -f docker-compose.e2e.yml down
 ```
 
 Services disponibles (configuration par défaut dans `.env.e2e`) :
+
 - Application web : `http://localhost:3001`
 - API : `http://localhost:4001`
 - Mailcatcher (emails envoyés par l'API) : `http://localhost:1080`
@@ -91,6 +101,7 @@ Services disponibles (configuration par défaut dans `.env.e2e`) :
 ## Lancement des tests
 
 ### Tests unitaires et d'intégration
+
 ```sh
 pnpm run -r test
 ```
@@ -114,9 +125,19 @@ docker compose --env-file .env.e2e -f docker-compose.e2e.yml down
 ```
 
 ## Build, lint et formattage
+
 ```sh
 pnpm run -r lint
 pnpm run -r format:check
 pnpm run -r typecheck
 pnpm run -r build
 ```
+
+## Documentation
+
+> **Convention linguistique** : ce README (orienté grand public et contributeurs externes) est en français. La documentation interne destinée aux développeurs et aux assistants IA — `CLAUDE.md`, ADR, specs — est rédigée en anglais.
+
+- [Architecture Decision Records](./docs/adr/) — décisions d'architecture importantes
+- [Spécifications](./docs/specs/) — spécifications de fonctionnalités
+- [Tâches planifiées](./docs/scheduled-tasks.md) — tâches programmées (cron) exécutées sur Scalingo
+- [Exemple de fonctionnalité de bout en bout](./docs/feature-example.md)

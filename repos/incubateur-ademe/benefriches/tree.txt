@@ -110,7 +110,8 @@
 │   │   ├── package.json
 │   │   ├── scalingo
 │   │   │   ├── .buildpacks
-│   │   │   └── Procfile
+│   │   │   ├── Procfile
+│   │   │   └── cron.json
 │   │   ├── scripts
 │   │   │   ├── build-for-scalingo-v2.sh
 │   │   │   └── build-for-scalingo.sh
@@ -201,13 +202,29 @@
 │   │   │   │   │   │   ├── loginSucceeded.handler.integration-spec.ts
 │   │   │   │   │   │   ├── loginSucceeded.handler.ts
 │   │   │   │   │   │   ├── marketing.module.ts
+│   │   │   │   │   │   ├── syncNewsletterSubscriptions.script.ts
 │   │   │   │   │   │   ├── userAccountCreated.handler.integration-spec.ts
 │   │   │   │   │   │   └── userAccountCreated.handler.ts
 │   │   │   │   │   └── secondary
+│   │   │   │   │       ├── ConnectCrm.spec.ts
 │   │   │   │   │       ├── ConnectCrm.ts
-│   │   │   │   │       └── FakeCrm.ts
+│   │   │   │   │       ├── FakeCrm.ts
+│   │   │   │   │       ├── users-query
+│   │   │   │   │       │   ├── InMemoryMarketingUsersQuery.ts
+│   │   │   │   │       │   ├── SqlMarketingUsersQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlMarketingUsersQuery.ts
+│   │   │   │   │       └── users-repository
+│   │   │   │   │           ├── InMemoryMarketingUsersRepository.ts
+│   │   │   │   │           ├── SqlMarketingUsersRepository.integration-spec.ts
+│   │   │   │   │           └── SqlMarketingUsersRepository.ts
 │   │   │   │   └── core
-│   │   │   │       └── CRMGateway.ts
+│   │   │   │       ├── CRMGateway.ts
+│   │   │   │       ├── gateways
+│   │   │   │       │   ├── MarketingUsersQuery.ts
+│   │   │   │       │   └── MarketingUsersRepository.ts
+│   │   │   │       └── usecases
+│   │   │   │           ├── syncNewsletterSubscriptions.usecase.spec.ts
+│   │   │   │           └── syncNewsletterSubscriptions.usecase.ts
 │   │   │   ├── photovoltaic-performance
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
@@ -300,6 +317,16 @@
 │   │   │   │       │   │   ├── ReconversionProjectImpactsServiceInterface.ts
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.spec.ts
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.ts
+│   │   │   │       │   │   ├── break-even-level
+│   │   │   │       │   │   │   ├── indirect-economic-impacts
+│   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.ts
+│   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.ts
+│   │   │   │       │   │   │   │   ├── rentalIncomeImpacts.ts
+│   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.ts
+│   │   │   │       │   │   │   │   └── urbanProjectImpacts.ts
+│   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.ts
+│   │   │   │       │   │   │   ├── projectIndirectEconomicImpacts.ts
+│   │   │   │       │   │   │   └── projectOperatingEconomicBalance.ts
 │   │   │   │       │   │   ├── economic-balance
 │   │   │   │       │   │   │   ├── economicBalanceImpact.spec.ts
 │   │   │   │       │   │   │   └── economicBalanceImpact.ts
@@ -362,6 +389,8 @@
 │   │   │   │           ├── archiveReconversionProject.usecase.ts
 │   │   │   │           ├── computeProjectUrbanSprawlImpactsComparison.usecase.spec.ts
 │   │   │   │           ├── computeProjectUrbanSprawlImpactsComparison.usecase.ts
+│   │   │   │           ├── computeReconversionProjectBreakEvenLevel.usecase.spec.ts
+│   │   │   │           ├── computeReconversionProjectBreakEvenLevel.usecase.ts
 │   │   │   │           ├── computeReconversionProjectImpacts.usecase.spec.ts
 │   │   │   │           ├── computeReconversionProjectImpacts.usecase.ts
 │   │   │   │           ├── createReconversionProject.usecase.spec.ts
@@ -398,7 +427,8 @@
 │   │   │   │   │   │   └── UidGenerator.ts
 │   │   │   │   │   ├── logger
 │   │   │   │   │   │   ├── NestJsAppLogger.ts
-│   │   │   │   │   │   └── SilentLogger.ts
+│   │   │   │   │   │   ├── SilentLogger.ts
+│   │   │   │   │   │   └── SpyLogger.ts
 │   │   │   │   │   └── sql-knex
 │   │   │   │   │       ├── knexConfig.ts
 │   │   │   │   │       ├── knexfile.ts
@@ -2032,6 +2062,7 @@
 │       │   │   │   │   │   ├── impactsOnboardingSkip.actions.ts
 │       │   │   │   │   │   ├── impactsOnboardingSkip.selectors.ts
 │       │   │   │   │   │   ├── impactsOnboardingSkip.ts
+│       │   │   │   │   │   ├── projectBreakEvenLevel.selectors.ts
 │       │   │   │   │   │   ├── projectImpacts.mock.ts
 │       │   │   │   │   │   ├── projectImpacts.reducer.ts
 │       │   │   │   │   │   ├── projectImpactsAreaChartsData.ts
@@ -2043,7 +2074,8 @@
 │       │   │   │   │   │   ├── projectImpactsSocial.selectors.ts
 │       │   │   │   │   │   ├── projectImpactsSocioEconomic.selectors.spec.ts
 │       │   │   │   │   │   ├── projectImpactsSocioEconomic.selectors.ts
-│       │   │   │   │   │   └── projectKeyImpactIndicators.selectors.ts
+│       │   │   │   │   │   ├── projectKeyImpactIndicators.selectors.ts
+│       │   │   │   │   │   └── projectSummary.selector.ts
 │       │   │   │   │   └── project-impacts-urban-sprawl-comparison
 │       │   │   │   │       ├── fetchUrbanSprawlImpactsComparison.action.ts
 │       │   │   │   │       ├── summary.selectors.ts
@@ -2080,6 +2112,21 @@
 │       │   │   │   │       ├── HttpUrbanSprawlImpactsComparisonService.ts
 │       │   │   │   │       └── MockUrbanSprawlImpactsComparisonService.ts
 │       │   │   │   └── views
+│       │   │   │       ├── project-break-even-level
+│       │   │   │       │   ├── ProjectBreakEvenLevelActionBar.tsx
+│       │   │   │       │   ├── ProjectBreakEvenLevelSection.tsx
+│       │   │   │       │   ├── ProjectBreakEvenLevelSummary.tsx
+│       │   │   │       │   ├── ProjectBreakEvenLevelTab.tsx
+│       │   │   │       │   ├── charts
+│       │   │   │       │   │   ├── BreakEvenLevelChart.css
+│       │   │   │       │   │   ├── BreakEvenLevelChart.tsx
+│       │   │   │       │   │   ├── EconomicBalanceChart.tsx
+│       │   │   │       │   │   ├── EconomicColumnChart.tsx
+│       │   │   │       │   │   ├── HumanityIndirectEconomicImpactsCharts.tsx
+│       │   │   │       │   │   ├── IndirectEconomicImpactsChart.tsx
+│       │   │   │       │   │   ├── LocalAuthorityIndirectEconomicImpactsCharts.tsx
+│       │   │   │       │   │   └── LocalPeopleOrCompanyIndirectEconomicImpactsCharts.tsx
+│       │   │   │       │   └── index.tsx
 │       │   │   │       ├── project-impacts-onboarding
 │       │   │   │       │   ├── MonetizedImpactInfoModal.tsx
 │       │   │   │       │   ├── ProjectImpactsOnboardingPage.tsx
@@ -2136,9 +2183,11 @@
 │       │   │   │       │   ├── features
 │       │   │   │       │   │   ├── DevelopmentPlanFeatures.tsx
 │       │   │   │       │   │   ├── DevelopmentPlanInstallationExpenses.tsx
+│       │   │   │       │   │   ├── ExpensesAndRevenues.spec.tsx
 │       │   │   │       │   │   ├── ExpensesAndRevenues.tsx
 │       │   │   │       │   │   ├── ProjectFeaturesView.tsx
 │       │   │   │       │   │   ├── SoilsDistribution.tsx
+│       │   │   │       │   │   ├── UrbanProjectBuildingsSection.spec.tsx
 │       │   │   │       │   │   ├── UrbanProjectBuildingsSection.tsx
 │       │   │   │       │   │   └── index.tsx
 │       │   │   │       │   ├── footer
@@ -2371,10 +2420,12 @@
 │       │   │   │       │       ├── project-features
 │       │   │   │       │       │   ├── ProjectFeaturesPdfPage.tsx
 │       │   │   │       │       │   ├── development-plan
+│       │   │   │       │       │   │   ├── DevelopmentPlanFeaturesPdf.spec.tsx
 │       │   │   │       │       │   │   ├── DevelopmentPlanFeaturesPdf.tsx
 │       │   │   │       │       │   │   └── SoilsDistributionPdf.tsx
 │       │   │   │       │       │   ├── expenses-and-incomes
 │       │   │   │       │       │   │   ├── DevelopmentExpenses.tsx
+│       │   │   │       │       │   │   ├── ProjectExpensesAndIncomesPdf.spec.tsx
 │       │   │   │       │       │   │   └── ProjectExpensesAndIncomesPdf.tsx
 │       │   │   │       │       │   ├── schedule
 │       │   │   │       │       │   │   └── ProjectSchedulePdf.tsx
@@ -2383,6 +2434,13 @@
 │       │   │   │       │       ├── site-features
 │       │   │   │       │       │   └── SiteFeaturesPdfPage.tsx
 │       │   │   │       │       └── styles.ts
+│       │   │   │       ├── project-summary
+│       │   │   │       │   ├── ProjectSummary.tsx
+│       │   │   │       │   ├── ProjectSummaryComparisonCard.tsx
+│       │   │   │       │   ├── ProjectSummaryImpactDetailsCard.tsx
+│       │   │   │       │   ├── ProjectSummaryMap.css
+│       │   │   │       │   ├── ProjectSummaryMap.tsx
+│       │   │   │       │   └── index.tsx
 │       │   │   │       ├── quick-impacts-embed-view
 │       │   │   │       │   ├── Callout.tsx
 │       │   │   │       │   ├── EmbedImpactsView.tsx
@@ -2893,7 +2951,6 @@
 │       │   │   │   │   └── sortByKey.ts
 │       │   │   │   ├── split-number
 │       │   │   │   │   └── splitNumber.ts
-│       │   │   │   ├── stakeholder.ts
 │       │   │   │   └── urbanProject.ts
 │       │   │   ├── infrastructure
 │       │   │   │   ├── administrative-division-service
@@ -3073,7 +3130,6 @@
 │       │   │       │   │   │   ├── reinstatement
 │       │   │       │   │   │   │   ├── ReinstatementExpensesForm.tsx
 │       │   │       │   │   │   │   ├── SustainableSoilsReinstatementInfoButton.tsx
-│       │   │       │   │   │   │   ├── index.tsx
 │       │   │       │   │   │   │   ├── mappers.spec.ts
 │       │   │       │   │   │   │   └── mappers.ts
 │       │   │       │   │   │   ├── site-purchase-amounts
@@ -3117,6 +3173,9 @@
 │       │   │       │   │   └── useBuildStepperNavigationItems.tsx
 │       │   │       │   ├── urban-project
 │       │   │       │   │   ├── buildings
+│       │   │       │   │   │   ├── components
+│       │   │       │   │   │   │   ├── BuildingsFloorSurfaceAreaAllocation.spec.tsx
+│       │   │       │   │   │   │   └── BuildingsFloorSurfaceAreaAllocation.tsx
 │       │   │       │   │   │   ├── demolition-info
 │       │   │       │   │   │   │   ├── BuildingsDemolitionInfo.tsx
 │       │   │       │   │   │   │   └── index.tsx
@@ -3145,6 +3204,7 @@
 │       │   │       │   │   │   │   ├── BuildingsReuseIntroduction.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   └── uses-floor-surface-area
+│       │   │       │   │   │       ├── UsesFloorSurfaceArea.spec.tsx
 │       │   │       │   │   │       ├── UsesFloorSurfaceArea.tsx
 │       │   │       │   │   │       └── index.tsx
 │       │   │       │   │   ├── expenses
@@ -3273,13 +3333,14 @@
 │   │   ├── 0007-move-api-only-domain-code-out-of-shared.md
 │   │   ├── 0008-static-per-parcel-type-step-ids-for-urban-zone.md
 │   │   ├── 0009-align-urban-project-engine-typing-with-urban-zone-patterns.md
+│   │   ├── 0010-scheduled-tasks-as-primary-adapters.md
 │   │   └── README.md
 │   ├── feature-example.md
-│   ├── plans
-│   │   ├── 2026-03-23-urban-project-engine-alignment.md
-│   │   └── 2026-03-25-buildings-reuse-and-construction-work-tracker.md
+│   ├── scheduled-tasks.md
 │   └── specs
-│       └── 2026-03-23-buildings-reuse-and-construction-design.md
+│       ├── 2026-03-23-buildings-reuse-and-construction-design.md
+│       ├── 2026-03-25-buildings-reuse-and-construction-work-tracker.md
+│       └── 2026-05-04-newsletter-subscription-sync.md
 ├── package.json
 ├── packages
 │   └── shared
@@ -3299,6 +3360,9 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   └── register.dto.ts
 │       │   │   ├── index.ts
+│       │   │   ├── reconversion-projects
+│       │   │   │   ├── getReconversionProjectFeatures.dto.ts
+│       │   │   │   └── index.ts
 │       │   │   ├── site-actions
 │       │   │   │   ├── index.ts
 │       │   │   │   └── updateSiteActionStatus.dto.ts
@@ -3377,6 +3441,7 @@
 │       │   │   │   ├── surfaceAreas.ts
 │       │   │   │   └── templates.ts
 │       │   │   └── urban-project
+│       │   │       ├── buildingsConstructionExpenses.ts
 │       │   │       ├── category.ts
 │       │   │       ├── expectedPostDevelopmentResale.ts
 │       │   │       ├── fullTimeJobs.ts
@@ -3440,6 +3505,7 @@
 │       │   │   │   ├── naturalAreaType.ts
 │       │   │   │   └── soilsDistribution.ts
 │       │   │   ├── site.ts
+│       │   │   ├── stakeholder.ts
 │       │   │   ├── statu-quo-impacts
 │       │   │   │   └── impacts.types.ts
 │       │   │   ├── urban-zone
@@ -3473,4 +3539,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-955 directories, 2520 files
+965 directories, 2576 files
