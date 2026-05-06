@@ -5,15 +5,18 @@
 │   ├── product-context.md
 │   └── rules
 │       ├── integration-tests.md
-│       └── typescript-best-practices.mdc
+│       ├── typescript-best-practices.mdc
+│       └── unit-tests.md
 ├── .dockerignore
 ├── .editorconfig
 ├── .env.dev.example.env
 ├── .eslintrc.json
 ├── .github
 │   ├── CODEOWNERS
+│   ├── copilot-instructions.md
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── build-database-init.yaml
 │       ├── deactivate.yaml
 │       ├── debug-kube.yaml
 │       ├── e2e.yaml
@@ -1270,7 +1273,6 @@
 │   │   │   │   ├── agrements
 │   │   │   │   │   ├── ActionsStatut.vue
 │   │   │   │   │   ├── Coordonnees.vue
-│   │   │   │   │   ├── DemandeComplements.vue
 │   │   │   │   │   ├── Dossier.vue
 │   │   │   │   │   ├── DossierCandidature.vue
 │   │   │   │   │   ├── ModaleConfirmations.vue
@@ -1438,7 +1440,7 @@
 │   │   │       ├── csv.js
 │   │   │       ├── debounce.js
 │   │   │       ├── demandes-sejours.js
-│   │   │       ├── demandes-sejours.spec.js
+│   │   │       ├── demandes-sejours.spec.ts
 │   │   │       ├── display-input.js
 │   │   │       ├── fetchBackend.ts
 │   │   │       ├── logger.js
@@ -1449,7 +1451,8 @@
 │   │   │       ├── territoires.js
 │   │   │       └── utils-eig.js
 │   │   ├── start.sh
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.mts
 │   ├── frontend-usagers
 │   │   ├── .gitignore
 │   │   ├── .prettierignore
@@ -1692,7 +1695,8 @@
 │   │   │       ├── protocoleTransport.js
 │   │   │       ├── random.js
 │   │   │       ├── regex.js
-│   │   │       └── telephoneValidators.js
+│   │   │       ├── telephoneValidators.js
+│   │   │       └── telephoneValidators.spec.ts
 │   │   ├── start.sh
 │   │   ├── tsconfig.json
 │   │   └── vitest.config.mts
@@ -1779,7 +1783,8 @@
 │   │   │   │   ├── 20260326094626_ front.agrement__add_completude.js
 │   │   │   │   ├── 20260413162607_increase_agrement_files_category_length.js
 │   │   │   │   ├── 20260420153912_front.agrement__add-sva.js
-│   │   │   │   └── 20260427_add_agrement_files_contrainte_unicite.js
+│   │   │   │   ├── 20260427_add_agrement_files_contrainte_unicite.js
+│   │   │   │   └── 20260430075044_ front.agrement__add_correction.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -2000,6 +2005,8 @@
 │       │       └── statusUser.ts
 │       └── tsconfig.json
 ├── pg
+│   ├── Dockerfile
+│   ├── entrypoint.sh
 │   ├── lancement.sh
 │   ├── scripts
 │   │   ├── 01-init.sql
@@ -2023,4 +2030,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-304 directories, 1726 files
+304 directories, 1733 files
