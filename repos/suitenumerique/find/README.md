@@ -26,6 +26,23 @@ $ docker compose version
 > avoided by assigning your user to the `docker` group. See docker 
 > [Documentation](https://docs.docker.com/engine/install/linux-postinstall/)
 
+#### Optional: pre-commit
+
+For local code quality checks before committing, you can install
+[pre-commit](https://pre-commit.com/) system-wide:
+
+```bash
+$ pip install pre-commit
+# or
+$ pipx install pre-commit
+```
+
+Then enable the hooks with:
+
+```bash
+$ make pre-commit-install
+```
+
 ### Project bootstrap
 
 The easiest way to start working on the project is to use GNU Make:
@@ -37,7 +54,7 @@ $ make bootstrap
 This command builds the `app` container, installs dependencies, performs
 database migrations and compile translations. It's a good idea to use this
 command each time you are pulling code from the project repository to avoid
-dependency-releated or migration-releated issues.
+dependency-related or migration-related issues.
 
 Your Docker services should now be up and running 🎉
 
