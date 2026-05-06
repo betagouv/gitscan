@@ -1,39 +1,44 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 29 avril 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment avec l'intégration d'un nouveau formulaire de contact via l'ADEME Connect et la simplification du simulateur de raccordement. Des efforts importants ont également été réalisés pour améliorer la gestion des données, avec l'ajout d'informations sur les écoréseaux et des corrections de typage pour une meilleure fiabilité. Enfin, des mises à jour de l'interface utilisateur et de la documentation ont été effectuées.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment sur le simulateur d'aide "Coup de pouce", la page "Qui sommes-nous" et la gestion des données des réseaux de chaleur et écoréseaux. Des corrections et optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Intégration du formulaire de contact ADEME Connect [#1238](https://github.com/betagouv/france-chaleur-urbaine/pull/1238).
-- Ajout d'un bouton "Réinitialiser" sur le formulaire de collecte d'informations.
-- Amélioration de la gestion de l'état du formulaire de collecte, avec des messages de soumission plus clairs.
-- Ajout d'un AB Test pour collecter des utilisateurs dans Airtable lors d'une demande de raccordement non éligible [#1234](https://github.com/betagouv/france-chaleur-urbaine/issues/1234).
-- Simplification et refonte de la landing page du simulateur simplifié [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215).
-- Ajout d'informations sur les écoréseaux, incluant leur source et un label spécifique sur la carte et la page réseau [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224) et [#1227](https://github.com/betagouv/france-chaleur-urbaine/pull/1227).
-- Ajout de liens vers les formulaires de contact et les adresses email dans l'administration [#1226](https://github.com/betagouv/france-chaleur-urbaine/pull/1226).
-- Amélioration de l'affichage des messages informatifs sur le simulateur coup de pouce.
-- Mise à jour des conditions d'éligibilité à l'aide "Coup de pouce".
+- Amélioration de l'affichage et de la gestion des messages d'information pour les utilisateurs provenant de pacoupa.
+- Modification du comportement du CTA (Call To Action) pour la collecte de contact, avec un ajustement de son taux d'apparition.
+- Intégration du formulaire ADEME Connect pour une meilleure expérience utilisateur.
+- Mise à jour des conditions d'attribution de l'aide "Coup de pouce" pour plus de clarté.
+- Ajout d'un message de confirmation lors de la soumission du formulaire de collecte de contact.
+- Ajout d'un bouton "Réinitialiser" sur les formulaires.
+- Amélioration de la gestion des cases à cocher dans les formulaires.
+- Mise à jour des statistiques mensuelles d'avril.
+- Amélioration de la page "Qui sommes-nous" avec des modifications de contenu et de mise en page.
+- Intégration d'un carrousel et de nouveaux articles de contenu sur la page d'accueil, notamment concernant les différents types de chauffage.
+- Amélioration de la landing page du simulateur simplifié.
+- Ajout de la source des données des écoréseaux sur la page des données.
+- Affichage de la source des données des écoréseaux sous la liste des réseaux.
+- Ajout de liens vers les formulaires de contact et les adresses e-mail dans les templates d'emails.
 
 ### Évolutions techniques
-- Passage à Tailwind CSS pour la page City et le simulateur.
-- Refactorisation du code du simulateur pour une meilleure maintenabilité.
-- Utilisation de la méthode tertiaire pour les calculs Publicodes.
-- Mise à jour du package Publicodes.
-- Amélioration du typage de plusieurs composants et variables.
-- Correction de conflits lors du chargement du popup via URL/LocalStorage [#1235](https://github.com/betagouv/france-chaleur-urbaine/pull/1235).
-- Correction d'un bug lié à l'état du formulaire.
-- Suppression de code inutile et simplification de certaines fonctions.
-- Amélioration de la gestion des dépendances.
-- Correction de tests unitaires.
-- Amélioration de la gestion des emails (envoi depuis une adresse no-reply beta.gouv, harmonisation du style).
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- Suppression de code inutile et optimisation des performances.
+- Mise à jour des dépendances.
+- Amélioration du typage et de la gestion des erreurs.
+- Migration vers Tailwind CSS pour la page City.
+- Factorisation du code du simulateur de calcul d'aide.
+- Utilisation de méthodes tertiaires pour la gestion des données publicodes.
+- Amélioration de la gestion des images (conversion en WebP).
+- Correction de bugs et amélioration de la stabilité de la plateforme.
+- Amélioration de la gestion des tests (correction d'un test en masse).
 
 ### Autres changements
-- Mise à jour de la documentation sur la procédure de mise à jour des statistiques mensuelles.
-- Correction de coquilles et amélioration du wording sur plusieurs pages.
-- Mise à jour des statistiques d'avril.
-- Suppression d'icônes de la section "Qui sommes-nous".
-- Modification du texte concernant le budget dans la section "Qui sommes-nous".
-- Ajout d'images et de nouveaux articles de contenu sur la page d'accueil.
-- Mise à jour des images des différents chauffages.
-- Ajout d'un script d'import des écoréseaux et des données correspondantes.
-- Correction de l'encodage Markdown.
+- Documentation mise à jour concernant la procédure de mise à jour des statistiques mensuelles.
+- Correction de coquilles et amélioration de la qualité du code.
+- Suppression de constantes inutiles.
+- Modification de l'image de fond de la landing page "chaleur-renouvelable".
+- Suppression du code postal d'Airtable.
+- Mise à jour du package publicodes.
+- Suppression d'un texte redondant sur l'écoréseau.
+- Modification du wording pour une meilleure cohérence.
+- Suppression d'icônes dans la section "équipe" de la page "Qui sommes-nous".
+- Correction de la typographie sur la page "Qui sommes-nous".
