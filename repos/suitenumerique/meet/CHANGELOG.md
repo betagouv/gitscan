@@ -8,6 +8,18 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 🔒️(backend) add validation of Room.configuration
+- ✨(helm) add support multiple transcribe worker / endpoint #1247
+- ✨(backend) make LiveKit Egress recording encoding configurable #1288
+
+### Fixed
+
+- ♻(frontend) standardize role terminology across localizations
+- 🐛(backend) make start-recording atomic and fault-tolerant
+- 🔒️(frontend) room ids are generated with non-cryptographic rand
+
 ## [1.15.0] - 2026-04-30
 
 ### Added
