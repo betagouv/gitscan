@@ -37,7 +37,8 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── ADR
-│   │   └── ADR-001-testing-strategy.md
+│   │   ├── ADR-001-testing-strategy.md
+│   │   └── ADR-002-testing-strategy-and-repository-mocking.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -142,6 +143,7 @@
         │       │   └── load_operation_type.py
         │       └── usecases
         │           ├── __init__.py
+        │           ├── archive_offers.py
         │           ├── clean_documents.py
         │           ├── load_documents.py
         │           ├── load_offers.py
@@ -467,12 +469,15 @@
         │   │   │   ├── __init__.py
         │   │   │   └── commands
         │   │   │       ├── __init__.py
+        │   │   │       ├── archive_offers.py
         │   │   │       ├── clean_documents.py
         │   │   │       ├── load_corps.py
         │   │   │       ├── load_metiers.py
         │   │   │       ├── load_offers.py
         │   │   │       └── vectorize_documents.py
+        │   │   ├── openapi.py
         │   │   ├── schemas.py
+        │   │   ├── serializers.py
         │   │   ├── tasks.py
         │   │   ├── urls.py
         │   │   └── views.py
@@ -561,17 +566,20 @@
         │   │   ├── __init__.py
         │   │   ├── integration
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_integration_initialize_cv_metadata.py
-        │   │   │   ├── test_integration_match_cv_to_opportunities.py
-        │   │   │   └── test_integration_process_uploaded_cv.py
+        │   │   │   ├── test_initialize_cv_metadata.py
+        │   │   │   ├── test_match_cv_to_opportunities.py
+        │   │   │   └── test_process_uploaded_cv.py
         │   │   ├── presentation
         │   │   │   ├── __init__.py
         │   │   │   ├── accessibility
+        │   │   │   │   ├── __init__.py
         │   │   │   │   ├── conftest.py
         │   │   │   │   └── test_home_a11y.py
         │   │   │   ├── tasks
+        │   │   │   │   ├── __init__.py
         │   │   │   │   └── test_process_cv_tasks.py
         │   │   │   └── views
+        │   │   │       ├── __init__.py
         │   │   │       ├── test_cv_results_view.py
         │   │   │       ├── test_cv_upload_view.py
         │   │   │       ├── test_drawer_views.py
@@ -579,57 +587,61 @@
         │   │   │       └── test_home_view.py
         │   │   └── unit
         │   │       ├── __init__.py
+        │   │       ├── test_initialize_cv_metadata.py
         │   │       ├── test_limit_date.py
-        │   │       ├── test_unit_initialize_cv_metadata.py
-        │   │       ├── test_unit_match_cv_to_opportunities.py
-        │   │       └── test_unit_process_uploaded_cv.py
+        │   │       ├── test_match_cv_to_opportunities.py
+        │   │       └── test_process_uploaded_cv.py
         │   ├── conftest.py
         │   ├── cov.md
         │   ├── factories
+        │   │   ├── __init__.py
         │   │   ├── concours_factory.py
+        │   │   ├── concours_row_factory.py
         │   │   ├── corps_factory.py
         │   │   ├── cv_metadata_factory.py
+        │   │   ├── document_factory.py
         │   │   ├── ingres_corps_factories.py
         │   │   ├── ingres_metiers_factories.py
         │   │   ├── offer_factory.py
-        │   │   ├── raw_document_factory.py
         │   │   ├── talentsoft_factories.py
         │   │   └── vectorized_document_factory.py
-        │   ├── fixtures
-        │   │   ├── __init__.py
-        │   │   ├── clean_test_factories.py
-        │   │   ├── concours_greco_2025.json
-        │   │   ├── corps_ingres_20251117.json
-        │   │   ├── embedding_fixtures.json
-        │   │   ├── fixture_loader.py
-        │   │   ├── shared_fixtures.py
-        │   │   └── vectorize_test_factories.py
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── integration
+        │   │   │   ├── __init__.py
         │   │   │   ├── repository
         │   │   │   │   ├── __init__.py
         │   │   │   │   └── test_postgres_document_repository.py
-        │   │   │   ├── test_integration_clean_documents.py
-        │   │   │   ├── test_integration_load_documents.py
-        │   │   │   └── test_integration_vectorize_documents.py
+        │   │   │   ├── test_archive_offers.py
+        │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_load_documents.py
+        │   │   │   └── test_vectorize_documents.py
         │   │   ├── presentation
         │   │   │   ├── management
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   ├── test_archive_offers.py
         │   │   │   │   ├── test_clean_documents_command.py
         │   │   │   │   ├── test_load_corps_command.py
         │   │   │   │   ├── test_load_offers_command.py
         │   │   │   │   └── test_vectorize_documents_command.py
         │   │   │   ├── tasks
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   ├── test_archive_offers.py
         │   │   │   │   └── test_ingestion_tasks.py
         │   │   │   └── views
+        │   │   │       ├── __init__.py
         │   │   │       └── test_ingestion_views.py
         │   │   └── unit
+        │   │       ├── __init__.py
         │   │       ├── external_gateways
+        │   │       │   ├── __init__.py
         │   │       │   ├── test_talentsoft_client.py
         │   │       │   ├── test_talentsoft_dtos.py
         │   │       │   └── utils.py
-        │   │       ├── test_unit_clean_documents.py
-        │   │       └── test_unit_load_documents.py
+        │   │       ├── test_archive_offers.py
+        │   │       ├── test_clean_documents.py
+        │   │       ├── test_load_documents.py
+        │   │       └── test_vectorize_documents.py
         │   ├── shared
         │   │   ├── __init__.py
         │   │   ├── integration
@@ -641,6 +653,7 @@
         │   │   │       ├── test_postgres_offers_repository.py
         │   │   │       └── test_qdrant_repository.py
         │   │   └── presentation
+        │   │       ├── __init__.py
         │   │       ├── api
         │   │       │   ├── __init__.py
         │   │       │   └── test_endpoints.py
@@ -649,18 +662,13 @@
         │   │           └── test_views.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
-        │       ├── cv_test_utils.py
         │       ├── form_test_utils.py
-        │       ├── in_memory_concours_repository.py
-        │       ├── in_memory_corps_repository.py
         │       ├── in_memory_cv_metadata_repository.py
-        │       ├── in_memory_document_repository.py
-        │       ├── in_memory_metier_repository.py
         │       ├── in_memory_offers_repository.py
-        │       ├── in_memory_vector_repository.py
+        │       ├── interface_aware_mock.py
         │       ├── mock_api_response_factory.py
         │       ├── mock_embedding_generator.py
         │       ├── pdf_test_utils.py
-        │       └── test_container_factory.py
+        │       └── shared_fixtures.py
         └── uv.lock
-136 directories, 529 files
+135 directories, 538 files
