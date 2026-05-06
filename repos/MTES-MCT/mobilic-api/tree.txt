@@ -36,6 +36,7 @@
 │   │   ├── employment.py
 │   │   ├── expenditure.py
 │   │   ├── holiday.py
+│   │   ├── impersonation.py
 │   │   ├── location_entry.py
 │   │   ├── misc.py
 │   │   ├── mission.py
@@ -88,6 +89,7 @@
 │   │   ├── gender.py
 │   │   ├── history.py
 │   │   ├── holidays.py
+│   │   ├── impersonation.py
 │   │   ├── log_activities.py
 │   │   ├── mission.py
 │   │   ├── mission_auto_validation.py
@@ -104,6 +106,7 @@
 │   │   ├── scenario_testing.py
 │   │   ├── team.py
 │   │   ├── third_party_employment.py
+│   │   ├── totp.py
 │   │   ├── user.py
 │   │   ├── user_survey_actions.py
 │   │   ├── validation.py
@@ -133,6 +136,7 @@
 │   │   ├── frozen_version_utils.py
 │   │   ├── graphene_types.py
 │   │   ├── graphql.py
+│   │   ├── impersonate_listener.py
 │   │   ├── insee_tranche_effectifs.py
 │   │   ├── livestorm.py
 │   │   ├── log_sql_queries_file.py
@@ -268,8 +272,10 @@
 │   │   ├── regulation_computation.py
 │   │   ├── regulatory_alert.py
 │   │   ├── scenario_testing.py
+│   │   ├── support_action_log.py
 │   │   ├── team.py
 │   │   ├── team_association_tables.py
+│   │   ├── totp_credential.py
 │   │   ├── user.py
 │   │   ├── user_agreement.py
 │   │   ├── user_read_token.py
@@ -300,6 +306,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── common.py
 │   │   │   ├── id_mapping_service.py
+│   │   │   ├── purge_support_action_logs.py
 │   │   │   ├── standalone
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── anonymization_executor.py
@@ -327,6 +334,7 @@
 │   │   ├── import_naf_codes.py
 │   │   ├── init_user_agreement.py
 │   │   ├── load_company_stats.py
+│   │   ├── natinf_search.py
 │   │   └── send_certificate_compute_end_notification.py
 │   ├── static
 │   │   └── images
@@ -456,6 +464,7 @@
 │       ├── test_helpers.py
 │       ├── test_holidays.py
 │       ├── test_idor_vulnerabilities.py
+│       ├── test_impersonation.py
 │       ├── test_invitations.py
 │       ├── test_livestorm.py
 │       ├── test_load_company_stats.py
@@ -468,6 +477,7 @@
 │       ├── test_read_activities.py
 │       ├── test_regulatory_alerts_summary.py
 │       ├── test_team.py
+│       ├── test_totp.py
 │       ├── test_transfers.py
 │       ├── test_validate_export_params.py
 │       ├── test_validation.py
@@ -562,6 +572,7 @@
 │       ├── 52434978c99e_fix_duplicate_addresses.py
 │       ├── 55e1f2f5d706_auto_validate_early_missions.py
 │       ├── 575d1a347d04_backfills_observed_infractions_for_.py
+│       ├── 584e53171959_add_totp_fields_to_user.py
 │       ├── 59d3ad8f0527_.py
 │       ├── 5b7ea22cbae2_clean_activity_model.py
 │       ├── 5b8a4d0e2cf4_add_snack_expenditure.py
@@ -617,6 +628,7 @@
 │       ├── a0c708394373_make_team_enrollment_revisable.py
 │       ├── a10c18f27735_merge_control_time_and_bulletin_email_.py
 │       ├── a1b289f48774_fix_activity_different_successive_types_.py
+│       ├── a1b2c3d4e5f6_add_custom_infractions_last_update_time.py
 │       ├── a318018bd9fb_replace_context_with_dismiss_prop_and_.py
 │       ├── a482261c5eb9_add_team_id_in_employment_table.py
 │       ├── a4be56f6b1a8_non_nullable_mailing_lists.py
@@ -673,6 +685,7 @@
 │       ├── eb2980d5acfe_update_employment_constraint.py
 │       ├── ec4e193da96a_adding_vehicle_and_company_columns_in_.py
 │       ├── ecc1e9f03ce8_fix_natinf_for_maximumworkeddaysinweek_.py
+│       ├── ed3f60d26a7a_add_support_action_log.py
 │       ├── ed79627ad659_unique_siren_on_company.py
 │       ├── eeed3eeec7de_nb_worker_info_snooze_date.py
 │       ├── f02e61a44fa3_add_exclude_constraint_for_simultaneous_.py
@@ -693,4 +706,4 @@
 │       ├── ff7b6a11d3e8_fix_log_ahead_margin.py
 │       └── ff7bf9a10e57_add_comments_table.py
 └── pyproject.toml
-46 directories, 649 files
+46 directories, 662 files
