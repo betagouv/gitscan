@@ -1,23 +1,25 @@
-## Changelog : mobilic (30 derniers jours, au 27 avril 2026)
+## Changelog : mobilic (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface d'administration, notamment la gestion des validations et l'affichage des informations relatives aux missions et aux temps de travail. L'intégration de Brevo Conversations remplace Crisp pour le support client via chat en direct. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les évolutions de Mobilic se concentrent sur l'amélioration de l'expérience utilisateur dans l'interface d'administration, notamment avec l'ajout de tags d'état pour les missions et une meilleure gestion de l'affichage des validations. L'intégration de Brevo en remplacement de Crisp pour le support client est également une avancée majeure. Des corrections de bugs et des optimisations techniques ont été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Administration :** Amélioration de l'affichage et de la logique des états de validation des missions et des temps de travail, avec des indications plus claires sur les validations en attente. [#830](https://github.com/MTES-MCT/mobilic/pull/830)
-- **Administration :** Correction de l'affichage des entrées de temps de travail pour les missions dont la date est en dehors de la période de 31 jours. [#839](https://github.com/MTES-MCT/mobilic/pull/839)
-- **Administration :** Ajout d'étiquettes d'état pour les missions dans l'onglet d'activité, facilitant leur identification et leur gestion. [#835](https://github.com/MTES-MCT/mobilic/pull/835) et [#829](https://github.com/MTES-MCT/mobilic/pull/829)
-- **Support Client :** Remplacement de Crisp par Brevo Conversations pour le chat en direct, avec une intégration améliorée et une meilleure gestion de l'affichage sur différentes pages. [#832](https://github.com/MTES-MCT/mobilic/pull/832)
-- **Administration :** Correction d'un problème d'ouverture du tiroir de détails de mission lors du clic sur une étiquette d'état. [#834](https://github.com/MTES-MCT/mobilic/pull/834)
+- **Administration :** Ajout de tags d'état pour les missions dans l'onglet "Activités", facilitant l'identification de leur statut ([#835](https://github.com/MTES-MCT/mobilic/pull/835), [#829](https://github.com/MTES-MCT/mobilic/pull/829)).
+- **Administration :** Amélioration de l'affichage des missions et des validations, notamment pour les missions antérieures à 31 jours ([#840](https://github.com/MTES-MCT/mobilic/pull/840), [#839](https://github.com/MTES-MCT/mobilic/pull/839)).
+- **Authentification :** Implémentation de l'authentification à deux facteurs (2FA) via TOTP ([#833](https://github.com/MTES-MCT/mobilic/pull/833)).
+- **Support Client :** Remplacement de Crisp par Brevo Conversations pour le support client, avec une intégration spécifique pour le contrôleur et les autres utilisateurs ([#832](https://github.com/MTES-MCT/mobilic/pull/832)).
+- **Recherche :** Ajout de la recherche d'infractions NATINF dans le contrôle ([#842](https://github.com/MTES-MCT/mobilic/pull/842)).
+- **Administration :** Possibilité pour un administrateur de se faire passer pour un autre utilisateur ([#826](https://github.com/MTES-MCT/mobilic/pull/826)).
 
 ### Évolutions techniques
-- **Refactoring :** Simplification de la logique de déduplication des employés dans le filtre de validation. [#831](https://github.com/MTES-MCT/mobilic/pull/831) et [#833](https://github.com/MTES-MCT/mobilic/pull/833)
-- **Dépendances :** Suppression de la dépendance à `crisp-sdk-web` suite au remplacement de Crisp par Brevo Conversations.
-- **Accessibilité :** Correction de problèmes d'accessibilité détectés par SonarCloud dans le widget de chat en direct Brevo.
-- **Conformité DSFR :** Utilisation des tokens DSFR pour l'alignement des couleurs dans les tableaux de l'administration.
-- **Amélioration du code :** Ajout de validations de props et de chaînage optionnel pour améliorer la robustesse du code.
+- **Refactoring :** Refactorisation du code dans l'onglet "Activités" pour améliorer la lisibilité et la maintenabilité.
+- **Optimisation :** Optimisation de la gestion des états et du rendu des composants dans l'interface d'administration.
+- **Sécurité :** Correction de vulnérabilités potentielles et amélioration de la sécurité de l'authentification.
+- **Dépendances :** Suppression de la dépendance à Crisp SDK et mise à jour des dépendances liées à Brevo.
+- **DSFR :** Remplacement de composants Material par des composants Design System Français (DSFR) pour une meilleure cohérence visuelle.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la politique de confidentialité pour refléter l'utilisation de Brevo et modifier les informations sur le ministère.
-- **Nettoyage du code :** Suppression de code inutilisé et de commentaires obsolètes.
-- **Corrections de style :** Amélioration de la lisibilité du code avec l'ajout de points-virgules manquants et la correction d'imports inutiles.
+- **Documentation :** Mise à jour de la politique de confidentialité pour refléter l'utilisation de Brevo.
+- **Corrections :** Correction de divers bugs et améliorations de l'interface utilisateur, notamment des problèmes d'affichage et de comportement des composants.
+- **Tests :** Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- **Sonarqube :** Correction des issues soulevées par Sonarqube.
