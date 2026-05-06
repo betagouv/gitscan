@@ -1,41 +1,36 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 30 avril 2026)
+## Changelog : zero-logement-vacant (30 derniers jours, au 05 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances et de la robustesse de l'application, notamment au niveau du traitement des données et de l'intégration avec les systèmes externes (CEREMA, Portail DF). Des améliorations significatives ont également été apportées à la documentation technique et à l'expérience utilisateur, avec des corrections de bugs et des optimisations de l'interface.
+Ce mois-ci, les améliorations se concentrent sur la performance, la suppression de code obsolète et la préparation du projet pour de futures évolutions. Des corrections ont été apportées pour améliorer la gestion des statuts de logement et l'affichage des informations, notamment concernant les périmètres. L'infrastructure et les outils de développement ont également été mis à jour.
 
 ### Évolutions fonctionnelles
-- Amélioration du matching d'adresses avec des règles de normalisation et un seuil abaissé à 0.85.
-- Ajout de notifications lors de la création d'une campagne et de la suppression d'un groupe.
-- Correction de l'affichage des pourcentages avec une décimale par défaut.
-- Correction de l'affichage des noms de filtres de périmètre.
-- Correction du comportement du bouton d'action de masse des groupes.
-- Correction de l'affichage des images en brouillon lors du téléversement.
-- Amélioration de la gestion des droits d'accès via le Portail DF, incluant la vérification des droits lors de la connexion et de la création de compte.
-- Correction de l'état actif de la navigation pour la section "Parc de logements".
-- Correction de l'affichage des informations sur les propriétaires principaux.
+- Correction de l'affichage du nom du périmètre dans l'interface utilisateur.
+- Amélioration de l'affichage des pourcentages et des taux de retour dans les tableaux de bord.
+- Correction d'un bug empêchant l'affichage correct des images téléchargées.
+- Ajout de notifications lors de la création de campagnes et de la suppression de groupes.
+- Amélioration de la gestion des statuts de logement, notamment pour les logements "jamais contactés".
+- Correction de l'alignement des boutons d'action dans la barre d'actions de groupe.
+- Ajout d'un lien vers la CNIL sur les avertissements concernant les données sensibles.
+- Possibilité de naviguer vers la liste des logements filtrée par campagne.
 
 ### Évolutions techniques
-- Refactorisation de la configuration du serveur avec l'utilisation de Zod pour la validation et la gestion des variables d'environnement.
-- Suppression de l'utilisation de Convict et remplacement par Zod.
-- Mise à jour de Vite en version 8 et des plugins associés.
-- Amélioration des performances des requêtes Dbt en optimisant le matching des propriétaires et en utilisant des tables matérialisées.
-- Ajout de pipelines pour la génération de données ZLOVAC.
-- Amélioration de la gestion des erreurs et de la robustesse du code.
-- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
-- Utilisation de statement-level triggers pour optimiser les mises à jour des comptages de groupes.
-- Refactorisation de l'API Geo pour améliorer les performances et la maintenabilité.
-- Mise en place d'un système de documentation automatique avec Swagger/OpenAPI.
-- Amélioration de la gestion des dépendances et des configurations CI/CD.
-- Ajout de l'outil Knip pour l'analyse des dépendances et la détection des dépendances inutilisées.
+- Optimisation significative du temps de calcul du nombre de logements, réduisant le temps d'exécution de 4 à 36% selon les filtres.
+- Refactorisation importante du code, avec suppression de code mort, de tables de bases de données inutilisées et de fonctionnalités obsolètes (ancien flux de campagne).
+- Migration de l'OpenAPI spec vers un format YAML et remplacement de Swagger UI par Scalar.
+- Remplacement de `convict` par `Zod` pour la gestion de la configuration du serveur.
+- Mise à jour des dépendances, notamment `axios` et les plugins Vite.
+- Amélioration de la couverture des tests, en particulier pour les modèles de données.
+- Mise en place d'un système de triggers pour précalculer les nombres de logements et de propriétaires par groupe, améliorant ainsi les performances.
+- Utilisation de `worktrunk` pour la gestion des branches et des environnements de développement.
+- Amélioration de la gestion des droits d'accès et de l'authentification, notamment avec l'intégration du Portail DF.
+- Passage à Node.js v24 pour les tests frontend.
 
 ### Autres changements
-- Mise à jour de la documentation technique avec des informations sur l'architecture, les API et les processus de déploiement.
-- Ajout de documentation sur l'implémentation des "superpowers".
-- Correction de problèmes de compatibilité avec macOS dans l'environnement CI.
-- Suppression de code mort et de dépendances inutilisées.
-- Amélioration de la qualité du code et de la lisibilité.
-- Mise à jour des dépendances et des outils de développement.
-- Ajout de badges Codecov pour le suivi de la couverture de test.
-- Ajout de configuration Worktrunk pour faciliter le développement et les tests.
-- Correction de problèmes liés à la génération de diagrammes Mermaid.
-- Ajout de commentaires et de documentation pour améliorer la compréhension du code.
+- Documentation technique mise à jour et complétée, incluant des diagrammes et des schémas.
+- Ajout de badges Codecov et amélioration de la configuration du CI/CD.
+- Ajout de documentation pour les nouvelles fonctionnalités et les changements d'architecture.
+- Correction de problèmes de compatibilité avec certains environnements de CI.
+- Amélioration de la configuration et des scripts de déploiement.
+- Ajout de documentation pour l'utilisation de `worktrunk`.
+- Ajout de plans et de spécifications pour les futures évolutions du projet.
+- Suppression de certaines variables d'environnement sensibles et remplacement par la configuration CleverCloud.
