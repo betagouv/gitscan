@@ -1,25 +1,23 @@
-## Changelog : domifa (30 derniers jours, au 30 avril 2026)
+## Changelog : domifa (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration de l'interface utilisateur (frontend) avec l'intégration de la bibliothèque DSFR (Design System for Government) et la correction de plusieurs bugs affectant les formulaires, les tests et l'affichage général. Des corrections ont également été apportées au backend, notamment concernant la gestion des SIRET et des référents. Des améliorations de sécurité et de performance ont été implémentées.
+Cette version apporte des améliorations significatives à l'interface utilisateur, notamment l'intégration de la bibliothèque DSFR, l'ajout d'une page de témoignages et des corrections pour améliorer l'accessibilité et la robustesse de l'application. Des corrections ont également été apportées au backend pour la gestion des SIRET et des référents.
 
 ### Évolutions fonctionnelles
-- Intégration de la bibliothèque DSFR pour une interface utilisateur plus cohérente et accessible.
-- Ajout d'une bannière DSFR à l'interface.
-- Correction de problèmes liés aux formulaires et à la page RGAA pour une meilleure accessibilité.
-- Correction de l'affichage des fiches pratiques.
-- Correction de l'assignation des référents.
-- Ajout de la documentation claude.md.
+- Ajout d'une page de témoignages pour mettre en avant les bénéfices de la plateforme.
+- Intégration de la bibliothèque DSFR (Design System for French administration) pour une interface utilisateur plus moderne et conforme aux standards gouvernementaux.
+- Ajout d'un détail réseau au backend.
+- Amélioration de la gestion des SIRET au backend.
 
 ### Évolutions techniques
-- Correction de bugs et amélioration des tests frontend.
-- Correction de bugs et amélioration des tests backend.
-- Ajout d'un mécanisme de "throttling" (limitation de débit) pour protéger le backend contre les requêtes excessives.
+- Mise à jour et correction de tests unitaires (frontend et backend).
 - Amélioration de la sécurité avec l'application de règles de sécurité renforcées.
-- Refactorisation de DTO (Data Transfer Object) pour améliorer la robustesse et la sécurité.
-- Ajout de logs pour faciliter le débogage et le suivi des performances.
+- Ajout d'un mécanisme de limitation de débit (throttling) pour protéger le backend contre les surcharges.
+- Refonte de la gestion des DTO (Data Transfer Object) pour améliorer la robustesse et la sécurité des données.
 
 ### Autres changements
-- Correction du fichier de configuration pour les releases (ajout de `[skip ci]` pour éviter des exécutions CI inutiles).
-- Amélioration du processus de release avec l'ajout d'une branche dédiée à la correction des problèmes de sécurité.
-- Mise à jour de la documentation.
+- Ajout d'un fichier CLA (Contributor License Agreement) pour les contributions externes.
+- Amélioration des logs pour faciliter le débogage et la surveillance de l'application.
+- Corrections diverses de l'interface utilisateur (étiquettes de boutons, champs de formulaire, etc.).
+- Suppression de l'ancien fichier changelog et remplacement par la gestion automatique via les commits.
+- Ajout de `[skip ci]` aux messages de commit de semantic-release pour éviter des boucles d'intégration continue.

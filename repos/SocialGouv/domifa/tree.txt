@@ -247,6 +247,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
+│   │   │   │   ├── 1778010700665-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -1346,20 +1347,20 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── functions
 │   │   │   │   │   ├── generateMotifLabel.service.ts
-│   │   │   │   │   ├── getEcheanceInfo.ts
+│   │   │   │   │   ├── getDecisionDeadline.ts
 │   │   │   │   │   ├── getPersonFullName.ts
 │   │   │   │   │   ├── getRdvInfo.service.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── tests
 │   │   │   │   │       ├── generateMotifLabel.service.spec.ts
-│   │   │   │   │       ├── getEcheanceInfo.spec.ts
+│   │   │   │   │       ├── getDecisionDeadline.spec.ts
 │   │   │   │   │       └── getRdvInfo.service.spec.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── interfaces
+│   │   │   │   │   ├── DecisionDeadline.interface.ts
 │   │   │   │   │   ├── Usager.interface.ts
 │   │   │   │   │   ├── UsagerAyantDroit.interface.ts
 │   │   │   │   │   ├── UsagerDecision.interface.ts
-│   │   │   │   │   ├── UsagerEcheanceInfo.interface.ts
 │   │   │   │   │   ├── UsagerEntretien.interface.ts
 │   │   │   │   │   ├── UsagerLastInteraction.interface.ts
 │   │   │   │   │   ├── UsagerNote.interface.ts
@@ -1494,7 +1495,6 @@
 │   │   │   │       │   └── index.ts
 │   │   │   │       ├── usager
 │   │   │   │       │   ├── HISTORY_ACTIONS.const.ts
-│   │   │   │       │   ├── UsagerEcheanceInfos.type.ts
 │   │   │   │       │   ├── UsagerLight.type.ts
 │   │   │   │       │   ├── decision
 │   │   │   │       │   │   ├── index.ts
@@ -1694,10 +1694,13 @@
 │   │   │   │   │   │   │       │   ├── politique.component.html
 │   │   │   │   │   │   │       │   ├── politique.component.spec.ts
 │   │   │   │   │   │   │       │   └── politique.component.ts
-│   │   │   │   │   │   │       └── rgaa
-│   │   │   │   │   │   │           ├── rgaa.component.html
-│   │   │   │   │   │   │           ├── rgaa.component.spec.ts
-│   │   │   │   │   │   │           └── rgaa.component.ts
+│   │   │   │   │   │   │       ├── rgaa
+│   │   │   │   │   │   │       │   ├── rgaa.component.html
+│   │   │   │   │   │   │       │   ├── rgaa.component.spec.ts
+│   │   │   │   │   │   │       │   └── rgaa.component.ts
+│   │   │   │   │   │   │       └── temoignages
+│   │   │   │   │   │   │           ├── temoignages.component.html
+│   │   │   │   │   │   │           └── temoignages.component.ts
 │   │   │   │   │   │   ├── general.module.spec.ts
 │   │   │   │   │   │   ├── general.module.ts
 │   │   │   │   │   │   └── services
@@ -2503,6 +2506,8 @@
 │   │   │   │   │   │   ├── structure-introuvable.svg
 │   │   │   │   │   │   ├── structure-paris.svg
 │   │   │   │   │   │   └── structure-samu-social-paris.svg
+│   │   │   │   │   ├── illustrations
+│   │   │   │   │   │   └── temoignages.svg
 │   │   │   │   │   ├── impact
 │   │   │   │   │   │   ├── fond-impact-humain.svg
 │   │   │   │   │   │   ├── impact-humain.svg
@@ -3132,9 +3137,6 @@
 │       │   ├── assets
 │       │   │   ├── .gitkeep
 │       │   │   ├── css
-│       │   │   │   ├── forms.css
-│       │   │   │   ├── icons.css
-│       │   │   │   ├── main.scss
 │       │   │   │   └── print.css
 │       │   │   ├── favicon
 │       │   │   │   ├── android-chrome-192x192.png
@@ -3178,4 +3180,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-720 directories, 2460 files
+722 directories, 2460 files
