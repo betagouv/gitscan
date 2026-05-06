@@ -1,44 +1,54 @@
-## Changelog : seves (30 derniers jours, au 30 avril 2026)
+## Changelog : seves (30 derniers jours, au 05 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des documents (prévisualisation, téléchargement groupé, dates de publication), de la navigation et de l'accessibilité. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations techniques pour la robustesse et la maintenance du code.
+Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans les modules SV (Surveillance Végétale) et SSA (Système de Surveillance Animale), avec des corrections de bugs, des améliorations de l'interface et l'ajout de nouvelles fonctionnalités comme la gestion des dates de publication et des documents. Des efforts ont également été faits pour améliorer la performance et la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page d'accessibilité pour améliorer l'utilisation de l'outil par tous les utilisateurs.
-- Possibilité de télécharger des documents en archive ZIP [#9a688f1](https://github.com/betagouv/seves/commit/9a688f1).
-- Amélioration de l'affichage et de la précision des dates dans diverses vues et exports.
-- Prévisualisation des images et des fichiers PDF directement dans l'interface.
-- Correction de l'affichage du rich text editor pour une meilleure expérience de saisie.
-- Ajout du numéro RASFF pour les objets TIAC.
-- Amélioration de l'historique des modifications pour les modèles avec des relations complexes.
-- Possibilité de télécharger des documents même sans date de publication [#cc771d9](https://github.com/betagouv/seves/commit/cc771d9).
-- Ajout d'un bouton d'annulation sur la page d'édition TIAC [#e0be778](https://github.com/betagouv/seves/commit/e0be778).
-- Amélioration de l'affichage des informations sur les prélèvements et les lieux.
-- Ajout de la possibilité de filtrer par année et numéro.
-- Correction de l'affichage des badges sur les modals de prélèvement et de lieu [#2668203](https://github.com/betagouv/seves/commit/2668203).
+- **SV (Surveillance Végétale):**
+  - Ajout de la gestion des "ON Phytophthora kernoviae".
+  - Amélioration de l'interface pour les sites d'inspection, avec des renommages et un regroupement des éléments.
+  - Correction de bugs et améliorations visuelles suite aux tests QA.
+  - Ajout de la possibilité de saisir des numéros d'agrément d'établissement contenant des lettres.
+  - Ajout d'un indicateur d'accessibilité pour les fiches de zone délimitée.
+  - Ajout du numéro RASFF pour les objets TIAC.
+  - Amélioration de l'affichage des dates dans les messages.
+  - Ajout de la date de publication dans le formulaire d'Investigation TIAC.
+  - Correction de l'affichage des badges sur les modals de prélèvement et de lieu.
+- **SSA (Système de Surveillance Animale):**
+  - Implémentation d'un nouveau sélecteur d'arbre (Treeselect) pour la vue de mise à jour des événements.
+  - Amélioration de la vue liste des SSA pour de meilleures performances.
+  - Ajout de la possibilité de télécharger des documents en archive ZIP.
+  - Amélioration de la vue historique pour les modèles avec des relations profondes.
+  - Ajout de la possibilité de mettre à jour une fiche ayant un lien vers un objet supprimé.
+- **Général:**
+  - Amélioration de la prévisualisation des images et des fichiers PDF.
+  - Ajout d'une page d'accessibilité.
+  - Amélioration de l'éditeur de texte enrichi pour les messages.
+  - Correction de problèmes de CSP (Content Security Policy) pour Brave/Chromium.
+  - Possibilité de télécharger des documents même sans date de publication.
+  - Correction d'un problème d'affichage pour l'éditeur de texte enrichi.
+  - Amélioration de la gestion des dates de réception.
+  - Ajout d'une option pour afficher "Fin de suivi" dans l'export CSV.
+  - Correction d'un bug empêchant le téléchargement de documents sur Chrome.
 
 ### Évolutions techniques
-- Refactorisation des actions pour les tests.
-- Correction d'un conflit de migration entre deux migrations (0121_lieu_site_inspection_new et 0121_add_on_phytophthora_kernoviae) [#ba0fb8a](https://github.com/betagouv/seves/commit/ba0fb8a).
-- Mise à jour de plusieurs dépendances : Django, Django-DSFR, Django-Post-Office, Sentry-SDK, Ruff, Psycopg2-binary, Pre-commit, Lxml, Pytest, Cryptography, Django-Debug-Toolbar.
-- Amélioration de la gestion des erreurs OIDC avec ajout d'un timeout pour éviter les blocages en production [#0d85baf](https://github.com/betagouv/seves/commit/0d85baf).
+- Refactoring des actions pour les tests.
+- Mise à jour de plusieurs dépendances : Django, Django-DSFR, Django-Post-Office, Ruff, Cryptography, Pytest, Psycopg2-binary, Pre-commit, Lxml, Sentry-SDK, Playwright.
+- Correction d'un conflit de migration entre les migrations 0121_lieu_site_inspection_new et 0121_add_on_phytophthora_kernoviae.
+- Amélioration de la robustesse des requêtes OIDC avec l'ajout d'un timeout.
 - Correction d'un problème de test intermittent.
-- Utilisation de `and_more_ellipsis_tooltip` pour uniformiser l'affichage des ellipses.
-- Suppression de l'utilisation de SSA dans l'application core.
-- Amélioration des performances de la vue listant les SSA.
-- Correction d'un problème lié à l'affichage de textes longs sans retour à la ligne.
-- Ajout d'une gestion de la reconnexion à Redis pour Celery.
-- Correction d'un problème avec l'affichage des synthèses d'enregistrement simple.
-- Ajout d'un related name dans SV pour zone infestee.
-- Correction d'un problème d'affichage des dates de publication dans les formulaires TIAC.
-- Suppression de l'utilisation de placeholders "nc." et remplacement par un filtre plus générique.
+- Désactivation des warnings Python sur CI pour améliorer la lisibilité.
+- Ajout de `related_name` dans SV pour `zone infestee`.
+- Amélioration de la connexion à Redis pour Celery.
+- Migration du modèle `SiteInspection` vers un `TextChoices`.
+- Utilisation du filtre `or_empty_value_tag` pour remplacer le placeholder 'nc.'.
+- Correction d'un bug lié à l'affichage des synthèses d'enregistrement simple.
 
 ### Autres changements
-- Ajout d'un ON pour SV.
-- Ajout d'un ON pour Phytophthora kernoviae.
-- Mise à jour de la documentation.
-- Corrections de style et de cohérence du code.
-- Désactivation des warnings Python dans le CI pour améliorer la lisibilité.
-- Migration du modèle SiteInspection vers un TextChoices.
-- Ajout de la possibilité d'autoriser des lettres dans le numéro d'agrément d'un établissement [#2055cfe](https://github.com/betagouv/seves/commit/2055cfe).
-- Amélioration de l'affichage des cartes d'établissement dans les tests.
+- Documentation mise à jour.
+- Nettoyage de code et refactoring divers.
+- Amélioration de la lisibilité des tests.
+- Correction de l'affichage des ellipses sur les éléments TIAC.
+- Ajout d'un bouton d'annulation sur la page d'édition TIAC.
+- Uniformisation des liens d'annulation sur les fiches objets.
+- Changement de format des filtres d'année et de numéro.
