@@ -20,6 +20,7 @@
 │       ├── api-https-deploy-sandbox.yaml
 │       ├── api-https-deploy-staging.yaml
 │       ├── api-regenerate_swagger.yaml
+│       ├── clients-ruby.yml
 │       ├── mocks-tests.yml
 │       ├── site-ci_cd.yml
 │       ├── site-https-deploy-production.yaml
@@ -43,6 +44,187 @@
 │   │   └── sentry_client.rb
 │   ├── setup_worktree.sh
 │   └── test
+├── clients
+│   ├── .agents
+│   │   └── skills -> ../.claude/skills
+│   ├── .claude
+│   │   └── skills
+│   │       └── release-new-version
+│   │           └── SKILL.md
+│   ├── CLAUDE.md
+│   ├── README.md
+│   ├── SPECS.md
+│   ├── TESTING.md
+│   └── ruby
+│       ├── README.md
+│       ├── api_entreprise
+│       │   ├── .rspec
+│       │   ├── CHANGELOG.md
+│       │   ├── Gemfile
+│       │   ├── Gemfile.lock
+│       │   ├── LICENSE
+│       │   ├── README.md
+│       │   ├── Rakefile
+│       │   ├── api_entreprise.gemspec
+│       │   ├── examples
+│       │   │   ├── basic.rb
+│       │   │   ├── error_handling.rb
+│       │   │   └── retry.rb
+│       │   ├── lib
+│       │   │   ├── api_entreprise
+│       │   │   │   ├── client.rb
+│       │   │   │   ├── commons
+│       │   │   │   │   ├── auth
+│       │   │   │   │   │   ├── bearer_token.rb
+│       │   │   │   │   │   └── strategy.rb
+│       │   │   │   │   ├── client_base.rb
+│       │   │   │   │   ├── configuration.rb
+│       │   │   │   │   ├── errors.rb
+│       │   │   │   │   ├── middleware
+│       │   │   │   │   │   ├── authentication.rb
+│       │   │   │   │   │   ├── envelope.rb
+│       │   │   │   │   │   ├── error_handler.rb
+│       │   │   │   │   │   ├── logging.rb
+│       │   │   │   │   │   └── rate_limit.rb
+│       │   │   │   │   ├── rate_limit.rb
+│       │   │   │   │   ├── response.rb
+│       │   │   │   │   ├── siren.rb
+│       │   │   │   │   ├── siret.rb
+│       │   │   │   │   ├── user_agent.rb
+│       │   │   │   │   └── version.rb
+│       │   │   │   ├── commons.rb
+│       │   │   │   ├── resources
+│       │   │   │   │   ├── ademe.rb
+│       │   │   │   │   ├── banque_de_france.rb
+│       │   │   │   │   ├── carif_oref.rb
+│       │   │   │   │   ├── cibtp.rb
+│       │   │   │   │   ├── cma_france.rb
+│       │   │   │   │   ├── cnetp.rb
+│       │   │   │   │   ├── data_subvention.rb
+│       │   │   │   │   ├── dgfip.rb
+│       │   │   │   │   ├── djepva.rb
+│       │   │   │   │   ├── douanes.rb
+│       │   │   │   │   ├── european_commission.rb
+│       │   │   │   │   ├── fabrique_numerique_ministeres_sociaux.rb
+│       │   │   │   │   ├── fntp.rb
+│       │   │   │   │   ├── gip_mds.rb
+│       │   │   │   │   ├── infogreffe.rb
+│       │   │   │   │   ├── inpi.rb
+│       │   │   │   │   ├── insee.rb
+│       │   │   │   │   ├── ministere_interieur.rb
+│       │   │   │   │   ├── msa.rb
+│       │   │   │   │   ├── opqibi.rb
+│       │   │   │   │   ├── probtp.rb
+│       │   │   │   │   ├── qualibat.rb
+│       │   │   │   │   ├── qualifelec.rb
+│       │   │   │   │   └── urssaf.rb
+│       │   │   │   └── version.rb
+│       │   │   └── api_entreprise.rb
+│       │   └── spec
+│       │       ├── client_spec.rb
+│       │       ├── resources
+│       │       │   └── scaffold_smoke_spec.rb
+│       │       └── spec_helper.rb
+│       ├── api_particulier
+│       │   ├── .rspec
+│       │   ├── CHANGELOG.md
+│       │   ├── Gemfile
+│       │   ├── Gemfile.lock
+│       │   ├── LICENSE
+│       │   ├── README.md
+│       │   ├── Rakefile
+│       │   ├── api_particulier.gemspec
+│       │   ├── examples
+│       │   │   ├── basic.rb
+│       │   │   ├── error_handling.rb
+│       │   │   └── retry.rb
+│       │   ├── lib
+│       │   │   ├── api_particulier
+│       │   │   │   ├── client.rb
+│       │   │   │   ├── commons
+│       │   │   │   │   ├── auth
+│       │   │   │   │   │   ├── bearer_token.rb
+│       │   │   │   │   │   └── strategy.rb
+│       │   │   │   │   ├── client_base.rb
+│       │   │   │   │   ├── configuration.rb
+│       │   │   │   │   ├── errors.rb
+│       │   │   │   │   ├── middleware
+│       │   │   │   │   │   ├── authentication.rb
+│       │   │   │   │   │   ├── envelope.rb
+│       │   │   │   │   │   ├── error_handler.rb
+│       │   │   │   │   │   ├── logging.rb
+│       │   │   │   │   │   └── rate_limit.rb
+│       │   │   │   │   ├── rate_limit.rb
+│       │   │   │   │   ├── response.rb
+│       │   │   │   │   ├── siren.rb
+│       │   │   │   │   ├── siret.rb
+│       │   │   │   │   ├── user_agent.rb
+│       │   │   │   │   └── version.rb
+│       │   │   │   ├── commons.rb
+│       │   │   │   ├── resources
+│       │   │   │   │   ├── ants.rb
+│       │   │   │   │   ├── cnous.rb
+│       │   │   │   │   ├── dsnj.rb
+│       │   │   │   │   ├── dss.rb
+│       │   │   │   │   ├── france_travail.rb
+│       │   │   │   │   ├── gip_mds.rb
+│       │   │   │   │   ├── men.rb
+│       │   │   │   │   ├── mesri.rb
+│       │   │   │   │   └── sdh.rb
+│       │   │   │   └── version.rb
+│       │   │   └── api_particulier.rb
+│       │   └── spec
+│       │       ├── client_spec.rb
+│       │       ├── resources
+│       │       │   └── scaffold_smoke_spec.rb
+│       │       └── spec_helper.rb
+│       ├── bin
+│       │   ├── scaffold_resources
+│       │   └── sync_commons
+│       └── commons
+│           ├── .rspec
+│           ├── Gemfile
+│           ├── Gemfile.lock
+│           ├── lib
+│           │   ├── api_gouv_commons
+│           │   │   ├── auth
+│           │   │   │   ├── bearer_token.rb
+│           │   │   │   └── strategy.rb
+│           │   │   ├── client_base.rb
+│           │   │   ├── configuration.rb
+│           │   │   ├── errors.rb
+│           │   │   ├── middleware
+│           │   │   │   ├── authentication.rb
+│           │   │   │   ├── envelope.rb
+│           │   │   │   ├── error_handler.rb
+│           │   │   │   ├── logging.rb
+│           │   │   │   └── rate_limit.rb
+│           │   │   ├── rate_limit.rb
+│           │   │   ├── response.rb
+│           │   │   ├── siren.rb
+│           │   │   ├── siret.rb
+│           │   │   ├── user_agent.rb
+│           │   │   └── version.rb
+│           │   └── api_gouv_commons.rb
+│           └── spec
+│               ├── auth
+│               │   └── bearer_token_spec.rb
+│               ├── client_base_spec.rb
+│               ├── configuration_spec.rb
+│               ├── errors_spec.rb
+│               ├── middleware
+│               │   ├── envelope_spec.rb
+│               │   ├── error_handler_spec.rb
+│               │   ├── logging_spec.rb
+│               │   └── retry_spec.rb
+│               ├── rate_limit_spec.rb
+│               ├── response_spec.rb
+│               ├── siren_spec.rb
+│               ├── siret_spec.rb
+│               ├── spec_helper.rb
+│               ├── support
+│               │   └── test_client.rb
+│               └── user_agent_spec.rb
 ├── commons
 │   ├── README.md
 │   ├── data
@@ -1488,6 +1670,7 @@
 │   │   │   │   │   └── build_resource.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_or_transcogage_params.rb
+│   │   │   │   ├── validate_code_cog_insee_pays_naissance.rb
 │   │   │   │   ├── validate_date_naissance.rb
 │   │   │   │   ├── validate_prenoms.rb
 │   │   │   │   ├── validate_request_id.rb
@@ -2566,6 +2749,7 @@
 │   │   │   ├── credentials_spec.rb
 │   │   │   ├── endpoints_with_test_case_spec.rb
 │   │   │   ├── errors_config_valid_spec.rb
+│   │   │   ├── expand_file_spec.rb
 │   │   │   ├── logstasher_custom_fields_spec.rb
 │   │   │   ├── maintenance_file_integrity_spec.rb
 │   │   │   ├── open_api_validation_spec.rb
@@ -3141,6 +3325,7 @@
 │   │   │   │   │   └── build_resource_spec.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_or_transcogage_params_spec.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_spec.rb
+│   │   │   │   ├── validate_code_cog_insee_pays_naissance_spec.rb
 │   │   │   │   ├── validate_date_naissance_spec.rb
 │   │   │   │   ├── validate_prenoms_spec.rb
 │   │   │   │   ├── validate_response_spec.rb
@@ -4832,6 +5017,7 @@
     │   │       ├── commons.scss
     │   │       ├── components
     │   │       │   ├── api_status.scss
+    │   │       │   ├── changelog.scss
     │   │       │   ├── circles.scss
     │   │       │   ├── code.scss
     │   │       │   ├── endpoint_card.scss
@@ -4888,6 +5074,7 @@
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   ├── blog_posts_controller.rb
     │   │   │   ├── cas_usages_controller.rb
+    │   │   │   ├── changelogs_controller.rb
     │   │   │   ├── delegations_controller.rb
     │   │   │   ├── documentation_controller.rb
     │   │   │   ├── download_attestations_controller.rb
@@ -4908,6 +5095,7 @@
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   ├── blog_posts_controller.rb
     │   │   │   ├── cas_usages_controller.rb
+    │   │   │   ├── changelogs_controller.rb
     │   │   │   ├── delegations_controller.rb
     │   │   │   ├── documentation_controller.rb
     │   │   │   ├── endpoints_controller.rb
@@ -5071,6 +5259,7 @@
     │   │   ├── audit_notification.rb
     │   │   ├── authorization_request.rb
     │   │   ├── authorization_request_security_settings.rb
+    │   │   ├── changelog_entry.rb
     │   │   ├── concerns
     │   │   │   ├── .keep
     │   │   │   ├── abstract_api_class.rb
@@ -5426,6 +5615,8 @@
     │           │   ├── _list-api.html.erb
     │           │   ├── _others.html.erb
     │           │   └── _show.html.erb
+    │           ├── changelogs
+    │           │   └── index.html.erb
     │           ├── editor
     │           │   └── _header.html.erb
     │           ├── endpoints
@@ -5512,6 +5703,7 @@
     │   ├── cable.yml
     │   ├── cache_redis.yml
     │   ├── cancelled_open_bureau_dates.yml
+    │   ├── changelogs.yml
     │   ├── credentials
     │   │   ├── development.key -> test.key
     │   │   ├── development.yml.enc -> test.yml.enc
@@ -6305,7 +6497,8 @@
     ├── spec
     │   ├── .rubocop.yml
     │   ├── acceptances
-    │   │   └── datapass_webhooks_config_format_spec.rb
+    │   │   ├── datapass_webhooks_config_format_spec.rb
+    │   │   └── expand_file_spec.rb
     │   ├── clients
     │   │   ├── hubee_api_client_spec.rb
     │   │   └── insee_sirene_api_client_spec.rb
@@ -6356,6 +6549,7 @@
     │   │   │   ├── access_spec.rb
     │   │   │   ├── blog_spec.rb
     │   │   │   ├── cas_usages_spec.rb
+    │   │   │   ├── changelogs_spec.rb
     │   │   │   ├── create_token_magic_link_spec.rb
     │   │   │   ├── documentation_spec.rb
     │   │   │   ├── download_attestations_spec.rb
@@ -6379,6 +6573,7 @@
     │   │   │   ├── authorization_request_show_spec.rb
     │   │   │   ├── blog_spec.rb
     │   │   │   ├── cas_usages_spec.rb
+    │   │   │   ├── changelogs_spec.rb
     │   │   │   ├── create_token_magic_link_spec.rb
     │   │   │   ├── documentation_spec.rb
     │   │   │   ├── endpoints
@@ -6499,6 +6694,7 @@
     │   │   ├── audit_notification_spec.rb
     │   │   ├── authorization_request_security_settings_spec.rb
     │   │   ├── authorization_request_spec.rb
+    │   │   ├── changelog_entry_spec.rb
     │   │   ├── documentation_searchable_chunk_spec.rb
     │   │   ├── editor_delegation_spec.rb
     │   │   ├── editor_spec.rb
@@ -6554,6 +6750,7 @@
     │           ├── features
     │           │   ├── blog.rb
     │           │   ├── cas_usages.rb
+    │           │   ├── changelogs.rb
     │           │   ├── create_token_magic_link.rb
     │           │   ├── documentation.rb
     │           │   ├── endpoints
@@ -6589,4 +6786,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1352 directories, 5508 files
+1390 directories, 5667 files

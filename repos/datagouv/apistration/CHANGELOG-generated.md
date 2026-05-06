@@ -1,36 +1,37 @@
-## Changelog : apistration (30 derniers jours, au 30 avril 2026)
+## Changelog : apistration (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des erreurs, la sécurisation de l'accès aux données via de nouveaux mécanismes d'authentification et de délégation, ainsi que sur l'amélioration de la robustesse et de la maintenabilité du code. Des améliorations ont également été apportées à la documentation et aux processus de déploiement.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de la maintenabilité de l'infrastructure, l'ajout de SDK Ruby pour faciliter l'intégration avec l'API, et l'amélioration de la documentation et des outils de développement. Des corrections de bugs et des améliorations de la gestion des erreurs ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion du paramètre `campaignYear` pour l'API CNOUS des bourses d'étudiants. [#69](https://github.com/datagouv/apistration/pull/69)
-- Implémentation d'un système de délégation d'éditeur avec des tokens, permettant un accès plus granulaire aux données. [#31](https://github.com/datagouv/apistration/pull/31)
-- Ajout de nouveaux scopes pour les données MEN (Ministère de l'Éducation Nationale) concernant les bourses. [#1](https://github.com/datagouv/apistration/pull/1)
-- Ajout d'une bannière d'annonce pour communiquer les maintenances planifiées (ProConnect). [#33](https://github.com/datagouv/apistration/pull/33)
-- Amélioration de la documentation des routes de ping pour le monitoring. [#72](https://github.com/datagouv/apistration/pull/72)
-- Mise à jour de l'URL SIRENE dans la documentation pour pointer vers la nouvelle API. [#58](https://github.com/datagouv/apistration/pull/58)
+- Ajout de la possibilité de rendre le lieu de naissance optionnel pour les endpoints CNAV [#91](https://github.com/datagouv/apistration/pull/91).
+- Ajout d'un indicateur de campagne pour l'API CNOUS sur la scolarité des étudiants [#69](https://github.com/datagouv/apistration/pull/69).
+- Publication de la version 0.1.1 de l'API Particulier et intégration des informations dans un skill pour faciliter la diffusion des informations. [#97](https://github.com/datagouv/apistration/pull/97)
+- Ajout d'une bannière d'annonce pour communiquer les maintenances planifiées (ProConnect) [#33](https://github.com/datagouv/apistration/pull/33).
+- Amélioration de la documentation pour les routes de ping de monitoring [#72](https://github.com/datagouv/apistration/pull/72).
 
 ### Évolutions techniques
-- Refonte de la gestion des erreurs avec un registre centralisé et une meilleure propagation des informations d'erreur. [#74](https://github.com/datagouv/apistration/pull/74)
-- Amélioration de la gestion des statuts HTTP et de leur mapping.
-- Refactorisation de l'authentification et de la résolution des utilisateurs avec un middleware centralisé.
-- Mise en place d'un système de limitation de débit (rate limiting) pour l'API GIP-MDS. [#48](https://github.com/datagouv/apistration/pull/48)
-- Mise en place d'un système de cache pour les réponses de l'API GIP-MDS. [#44](https://github.com/datagouv/apistration/pull/44)
-- Migration des informations d'identification vers des fichiers YAML pour une meilleure sécurité et gestion. [#4](https://github.com/datagouv/apistration/pull/4)
-- Refonte de la structure des fichiers d'endpoints pour une meilleure organisation et réutilisation. [#55](https://github.com/datagouv/apistration/pull/55)
-- Amélioration de la robustesse des tests et correction de tests aléatoires. [#17](https://github.com/datagouv/apistration/pull/17)
-- Mise en place d'un système de déploiement en sandbox. [#75](https://github.com/datagouv/apistration/pull/75)
-- Généralisation de l'utilisation de Sentry CLI pour la gestion des erreurs. [#76](https://github.com/datagouv/apistration/pull/76)
-- Amélioration de la gestion des fichiers temporaires pour éviter les erreurs EBADF. [#7](https://github.com/datagouv/apistration/pull/7)
+- Intégration de SDK Ruby officiels pour l'API Entreprise et l'API Particulier, incluant des workflows CI/CD pour leur publication et maintenance [#37](https://github.com/datagouv/apistration/pull/37).
+- Refactorisation de la gestion des erreurs avec un nouveau registre d'erreurs et une meilleure gestion des exceptions [#74](https://github.com/datagouv/apistration/pull/74).
+- Amélioration de la gestion des fichiers temporaires pour éviter les erreurs EBADF sous Puma [#2179](https://github.com/datagouv/apistration/pull/2179).
+- Refactorisation de l'authentification et de l'autorisation avec l'introduction d'un middleware de résolution d'utilisateur [#2179](https://github.com/datagouv/apistration/pull/2179).
+- Migration des credentials Rails chiffrés vers des fichiers YAML en clair pour une meilleure gestion et sécurité [#4](https://github.com/datagouv/apistration/pull/4).
+- Amélioration de la configuration et de la gestion des dépendances avec des mises à jour et des corrections de dépendances.
+- Refactorisation de la structure des fichiers d'endpoints pour une meilleure organisation et réutilisation [#35](https://github.com/datagouv/apistration/pull/35).
+- Ajout de tests d'acceptation pour les API SIADE et Site [#88](https://github.com/datagouv/apistration/pull/88).
+- Amélioration de la gestion des quotas pour l'API GIP-MDS [#44](https://github.com/datagouv/apistration/pull/44).
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les changements apportés.
-- Ajout d'un fichier `CONTRIBUTING.md` pour encourager les contributions et protéger les mainteneurs. [#35](https://github.com/datagouv/apistration/pull/35)
-- Mise à jour des dépendances.
-- Ajout de tests unitaires et d'intégration.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de mocks pour les tests, notamment pour les données CNAV.
-- Ajout d'une configuration pour le travail en worktree. [#61](https://github.com/datagouv/apistration/pull/61)
-- Ajout d'un cooldown de 7 jours pour les mises à jour de dépendances. [#29](https://github.com/datagouv/apistration/pull/29)
-- Mise à jour des références aux données de staging. [#14](https://github.com/datagouv/apistration/pull/14)
+- Ajout d'un workflow pour la génération automatique du changelog [#39](https://github.com/datagouv/apistration/pull/39).
+- Documentation du workflow de création du changelog dans un fichier CLAUDE.md.
+- Ajout d'une skill CLAUDE pour documenter les gotchas liés à la publication des SDK Ruby.
+- Ajout de documentation sur le flux de publication des SDK Ruby.
+- Mise à jour de la documentation pour refléter les changements et les nouvelles fonctionnalités.
+- Ajout d'un système de refroidissement (cooldown) pour les mises à jour de dépendances afin d'éviter les interruptions de CI/CD.
+- Amélioration des tests et correction de tests flaky.
+- Ajout de mocks pour les tests, notamment pour les cas spécifiques liés à la civilité et à l'année scolaire.
+- Import du projet site depuis admin_api_entreprise.
+- Mise à jour des credentials HubEE.
+- Ajout de tests pour les pings CNETP.
+- Ajout de la possibilité de configurer des variables d'environnement pour les tests.
+- Ajout de la documentation sur l'utilisation des mocks.
