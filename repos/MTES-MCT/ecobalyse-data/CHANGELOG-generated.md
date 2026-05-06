@@ -1,32 +1,33 @@
-## Changelog : ecobalyse-data (30 derniers jours, au 30 avril 2026)
+## Changelog : ecobalyse-data (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'enrichissement et la correction des données d'ingrédients et de processus, notamment dans les domaines de l'alimentation, de l'agriculture biologique, et des métaux. Des améliorations ont également été apportées à la gestion des alias et des catégories de fin de vie (EoL).
+Les 30 derniers jours ont été marqués par une importante mise à jour des données, notamment l'ajout de nouveaux ingrédients (UE, compléments laitiers, transformations de métaux), l'amélioration de la gestion des origines géographiques et des processus de fabrication, ainsi que des corrections et alignements de données existantes. Des efforts ont également été faits pour améliorer la structure des données et la clarté des tests.
 
 ### Évolutions fonctionnelles
 - Ajout de nouveaux ingrédients issus de l'Union Européenne [#262](https://github.com/MTES-MCT/ecobalyse-data/issues/262).
-- Ajout de métadonnées alimentaires dans les processus génériques [#263](https://github.com/MTES-MCT/ecobalyse-data/issues/263).
-- Correction d'erreurs sur les ingrédients [#256](https://github.com/MTES-MCT/ecobalyse-data/issues/256).
-- Correction de l'irrigation du coton biologique [#255](https://github.com/MTES-MCT/ecobalyse-data/issues/255).
+- Ajout de compléments laitiers aux données [#266](https://github.com/MTES-MCT/ecobalyse-data/issues/266).
+- Ajout de transformations de métaux et d'autres matériaux [#257](https://github.com/MTES-MCT/ecobalyse-data/issues/257).
+- Ajout de données pour les transformations d'ingrédients [#265](https://github.com/MTES-MCT/ecobalyse-data/issues/265).
+- Ajout de métadonnées alimentaires aux processus génériques [#263](https://github.com/MTES-MCT/ecobalyse-data/issues/263).
+- Ajout de transformations de cuisson [#260](https://github.com/MTES-MCT/ecobalyse-data/issues/260).
+- Correction de l'irrigation pour le coton biologique [#255](https://github.com/MTES-MCT/ecobalyse-data/issues/255).
+- Correction d'erreurs dans les ingrédients [#256](https://github.com/MTES-MCT/ecobalyse-data/issues/256).
 - Alignement des noms affichés (displayName) pour une meilleure cohérence [#258](https://github.com/MTES-MCT/ecobalyse-data/issues/258).
-- Ajout de processus de transformation des métaux et autres [#257](https://github.com/MTES-MCT/ecobalyse-data/issues/257).
-- Modification du type de matériaux [#253](https://github.com/MTES-MCT/ecobalyse-data/issues/253).
-- Ajout de processus de recyclage [#243](https://github.com/MTES-MCT/ecobalyse-data/issues/243).
 
 ### Évolutions techniques
-- Explosion du fichier `activities.json` en fichiers LCI atomiques pour une meilleure organisation et maintenabilité [#279](https://github.com/MTES-MCT/ecobalyse-data/issues/279).
-- Remplacement des chemins de données dans les tests par des chemins plus explicites [#278](https://github.com/MTES-MCT/ecobalyse-data/issues/278).
-- Resynchronisation des processus [#276](https://github.com/MTES-MCT/ecobalyse-data/issues/276).
+- Refactorisation de la structure des fichiers `activities.json` en fichiers LCI atomiques [#279](https://github.com/MTES-MCT/ecobalyse-data/issues/279).
+- Amélioration de l'explicitation des chemins d'accès aux données dans les tests [#278](https://github.com/MTES-MCT/ecobalyse-data/issues/278).
+- Synchronisation des processus [#276](https://github.com/MTES-MCT/ecobalyse-data/issues/276).
+- Nettoyage et alignement des alias de fin de vie (EoL) [#275](https://github.com/MTES-MCT/ecobalyse-data/issues/275), [#273](https://github.com/MTES-MCT/ecobalyse-data/issues/273), [#270](https://github.com/MTES-MCT/ecobalyse-data/issues/270).
+- Modification du type de matériau [#253](https://github.com/MTES-MCT/ecobalyse-data/issues/253).
 
 ### Autres changements
-- Ajout de packages CTPA pour les données alimentaires [#284](https://github.com/MTES-MCT/ecobalyse-data/issues/284).
-- Ajout d'origines "oversea" pour certains ingrédients [#282](https://github.com/MTES-MCT/ecobalyse-data/issues/282).
+- Renommage de la viande de porc [#285](https://github.com/MTES-MCT/ecobalyse-data/issues/285).
 - Définition de la France comme origine par défaut pour certains ingrédients biologiques [#281](https://github.com/MTES-MCT/ecobalyse-data/issues/281).
-- Définition du plan par défaut pour certains ingrédients [#283](https://github.com/MTES-MCT/ecobalyse-data/issues/283).
-- Ajout de transformations de cuisson [#260](https://github.com/MTES-MCT/ecobalyse-data/issues/260).
-- Ajout de compléments laitiers [#266](https://github.com/MTES-MCT/ecobalyse-data/issues/266).
-- Correction des catégories de fin de vie (EoL) [#273](https://github.com/MTES-MCT/ecobalyse-data/issues/273) et alignement des alias EoL [#275](https://github.com/MTES-MCT/ecobalyse-data/issues/275) et [#270](https://github.com/MTES-MCT/ecobalyse-data/issues/270).
-- Création de cellules de batterie [#272](https://github.com/MTES-MCT/ecobalyse-data/issues/272).
-- Remplissage des alias vides [#261](https://github.com/MTES-MCT/ecobalyse-data/issues/261).
+- Ajout de packages CTCP à food2 [#284](https://github.com/MTES-MCT/ecobalyse-data/issues/284).
+- Ajout d'une origine "outre-mer" [#282](https://github.com/MTES-MCT/ecobalyse-data/issues/282).
 - Suppression de la densité de bétail [#277](https://github.com/MTES-MCT/ecobalyse-data/issues/277).
-- Masquage des animaux vivants [#259](https://github.com/MTES-MCT/ecobalyse-data/issues/259).
+- Remplissage des alias vides [#261](https://github.com/MTES-MCT/ecobalyse-data/issues/261).
+- Suppression des animaux vivants de l'affichage [#259](https://github.com/MTES-MCT/ecobalyse-data/issues/259).
+- Nettoyage de code : suppression de transformations de métaux obsolètes [#288](https://github.com/MTES-MCT/ecobalyse-data/issues/288).
+- Création de cellules de batterie [#272](https://github.com/MTES-MCT/ecobalyse-data/issues/272).

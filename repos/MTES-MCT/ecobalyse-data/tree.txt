@@ -85,10 +85,10 @@
 │   ├── __init__.py
 │   ├── ecosystemic_services
 │   │   ├── README.md
-│   │   ├── animal_to_meat.json
 │   │   ├── ecosystemic_factors.csv
 │   │   ├── ecs_transformations.png
-│   │   └── feed.json
+│   │   ├── feed.json
+│   │   └── raw_to_transformed_ratios.json
 │   └── metadata
 │       ├── README.md
 │       ├── agb_inedible.csv
@@ -131,7 +131,6 @@
 │   │   ├── baby-250g-deserts-proxy-pack-rigid-plastic-other-than.json
 │   │   ├── baby-340g-biscuits-cereals-proxy-pack-rigid-plastic-other.json
 │   │   ├── baby-800g-food-powder-proxy-pack-steel.json
-│   │   ├── bacon-fr-2025.json
 │   │   ├── baguette-250g-proxy-pack-cardboard.json
 │   │   ├── balsamic-vinegar-2025.json
 │   │   ├── banana-non-eu-2025.json
@@ -431,8 +430,8 @@
 │   │   ├── pop-100g-corn-proxy-pack-plastic-film.json
 │   │   ├── pork-250g-sold-by-weight.json
 │   │   ├── pork-710g-eps-tray-film.json
+│   │   ├── pork-fr-2025.json
 │   │   ├── pork-fr.json
-│   │   ├── pork-liver-2025.json
 │   │   ├── potato-fr.json
 │   │   ├── potato-industry-fr-2025.json
 │   │   ├── potato-starch-2025.json
@@ -598,7 +597,6 @@
 │   │   ├── heat-row.json
 │   │   ├── heat-treatment.json
 │   │   ├── knitting-*.json  (5 files)
-│   │   ├── machining-metal-stamping-do-not-use.json
 │   │   ├── machining-metal-stamping.json
 │   │   ├── mercerization.json
 │   │   ├── microwaving.json
@@ -630,53 +628,225 @@
 │   │   └── weaving.json
 │   ├── ecobalyse
 │   │   ├── air-transport.json
+│   │   ├── almond-shelled-with-skin-organic.json
+│   │   ├── almond-shelled-with-skin.json
 │   │   ├── alu-*.json  (6 files)
 │   │   ├── aluminium-ingot-recycled-in-cff.json
 │   │   ├── aluminium-ingot-recycled-rer-cff.json
 │   │   ├── aluminium-ingot-recycled-row-cff.json
-│   │   ├── bacon-default-2025.json
-│   │   ├── bacon-fr-bbc-2025.json
-│   │   ├── bacon-organic-2025.json
-│   │   ├── beef-*.json  (7 files)
+│   │   ├── apple-pulp-raw-organic.json
+│   │   ├── apple-pulp-raw-wfldb.json
+│   │   ├── apple-pulp-raw.json
+│   │   ├── apricot-pitted-raw-organic.json
+│   │   ├── apricot-pitted-raw-wfldb.json
+│   │   ├── apricot-pitted-raw.json
+│   │   ├── avocado-pulp-raw-organic.json
+│   │   ├── avocado-pulp-raw.json
+│   │   ├── banana-pulp-raw-organic.json
+│   │   ├── banana-pulp-raw-wfldb.json
+│   │   ├── banana-pulp-raw.json
+│   │   ├── barley-flour-fr-energy-wfldb.json
+│   │   ├── barley-flour.json
+│   │   ├── beaufort-cheese-v1.json
+│   │   ├── beaufort-cheese-v2.json
+│   │   ├── beef-*.json  (10 files)
+│   │   ├── blackberry-juice-organic.json
+│   │   ├── blackberry-juice.json
+│   │   ├── blue-cheese-auvergne-v1.json
+│   │   ├── blue-cheese-auvergne-v2.json
+│   │   ├── brie-cheese-v1.json
+│   │   ├── brie-cheese-v2.json
 │   │   ├── broiler-*.json  (5 files)
-│   │   ├── butter-organic-2025.json
+│   │   ├── butter-*.json  (7 files)
+│   │   ├── camembert-cheese-v1.json
+│   │   ├── camembert-cheese-v2.json
+│   │   ├── cantal-cheese-v1.json
+│   │   ├── cantal-cheese-v2.json
+│   │   ├── carrot-cut-raw-organic.json
+│   │   ├── carrot-cut-raw-wfldb.json
+│   │   ├── carrot-cut-raw.json
+│   │   ├── chaource-cheese-v1.json
+│   │   ├── chaource-cheese-v2.json
+│   │   ├── cheddar-cheese-v1.json
+│   │   ├── cheddar-cheese-v2.json
+│   │   ├── cherry-pitted-raw-organic.json
+│   │   ├── cherry-pitted-raw-wfldb.json
+│   │   ├── cherry-pitted-raw.json
 │   │   ├── chicken-breast-br-max-2025.json
 │   │   ├── chicken-breast-fr-feed-2025.json
 │   │   ├── chicken-breast-fr-organic-2025.json
 │   │   ├── chicken-breast-organic-2025.json
+│   │   ├── comte-cheese-v1.json
+│   │   ├── comte-cheese-v2.json
 │   │   ├── cooked-ham-bbc-2025.json
 │   │   ├── cooked-ham-organic-2025.json
+│   │   ├── corn-flour-fr-energy.json
+│   │   ├── corn-flour-organic.json
+│   │   ├── corn-flour.json
+│   │   ├── cucumber-pulp-raw-organic.json
+│   │   ├── cucumber-pulp-raw-wfldb.json
+│   │   ├── cucumber-pulp-raw.json
 │   │   ├── cull-cow-organic-national-average-live.json
+│   │   ├── dairy-spread-20pct-fat-v1.json
+│   │   ├── dairy-spread-20pct-fat-v2.json
+│   │   ├── dairy-spread-25pct-fat-v1.json
+│   │   ├── dairy-spread-25pct-fat-v2.json
 │   │   ├── dibond.json
 │   │   ├── diesel-b7-euro4.json
 │   │   ├── diesel-b7-euro6.json
+│   │   ├── dry-goat-cheese-chabichou-type.json
+│   │   ├── dry-goat-cheese.json
+│   │   ├── egg-shelled-raw-v1.json
+│   │   ├── egg-shelled-raw-v2.json
+│   │   ├── egg-shelled-raw-wfldb.json
+│   │   ├── emmental-cheese-v1.json
+│   │   ├── emmental-cheese-v2.json
 │   │   ├── eol-*.json  (15 files)
+│   │   ├── faisselle-6pct-fat-v1.json
+│   │   ├── faisselle-6pct-fat-v2.json
+│   │   ├── feta-type-cheese-cow-milk-v1.json
+│   │   ├── feta-type-cheese-cow-milk-v2.json
+│   │   ├── feta-type-cheese-sheep-milk.json
+│   │   ├── fig-puree-fr-energy-wfldb.json
+│   │   ├── fig-puree-organic.json
+│   │   ├── fig-puree.json
+│   │   ├── flageolet-bean-frozen-organic.json
+│   │   ├── flageolet-bean-frozen-v1.json
+│   │   ├── flageolet-bean-frozen-v2.json
 │   │   ├── flour-organic-2025.json
+│   │   ├── fourme-dambert-cheese-v1.json
+│   │   ├── fourme-dambert-cheese-v2.json
+│   │   ├── fromage-*.json  (6 files)
 │   │   ├── galvanization.json
+│   │   ├── garlic-dried-powder-organic.json
+│   │   ├── garlic-dried-powder-wfldb.json
+│   │   ├── garlic-dried-powder.json
+│   │   ├── goat-cheese-fresh-to-aged.json
+│   │   ├── gorgonzola-cheese-v1.json
+│   │   ├── gorgonzola-cheese-v2.json
+│   │   ├── gouda-cheese-v1.json
+│   │   ├── gouda-cheese-v2.json
+│   │   ├── greek-yogurt-sheep-milk.json
+│   │   ├── green-*.json  (5 files)
 │   │   ├── ground-beef-feedlot-2025.json
 │   │   ├── ground-beef-grass-fed-2025.json
 │   │   ├── ground-beef-organic-2025.json
+│   │   ├── gruyere-cheese-v1.json
+│   │   ├── gruyere-cheese-v2.json
+│   │   ├── hazelnut-shelled-organic.json
+│   │   ├── hazelnut-shelled-wfldb.json
+│   │   ├── hazelnut-shelled.json
 │   │   ├── heat-europe-v2.json
 │   │   ├── heat-world-v2.json
+│   │   ├── hydrometallurgical-treatment-da.json
 │   │   ├── industrial-wood.json
 │   │   ├── lamb-meat-without-bone-organic-2025.json
 │   │   ├── lamb-organic-national-average-farm-gate-fr-u-live.json
 │   │   ├── lamb-organic.json
+│   │   ├── lemon-pulp-raw-organic.json
+│   │   ├── lemon-pulp-raw-wfldb.json
+│   │   ├── lemon-pulp-raw.json
+│   │   ├── lettuce-cut-washed-raw-organic.json
+│   │   ├── lettuce-cut-washed-raw-v1.json
+│   │   ├── lettuce-cut-washed-raw-v2.json
+│   │   ├── mango-pulp-raw-organic.json
+│   │   ├── mango-pulp-raw-wfldb.json
+│   │   ├── mango-pulp-raw.json
 │   │   ├── milk-organic-2025.json
+│   │   ├── mont-dor-cheese-v1.json
+│   │   ├── mont-dor-cheese-v2.json
+│   │   ├── mozzarella-cow-milk-v1.json
+│   │   ├── mozzarella-cow-milk-v2.json
+│   │   ├── munster-cheese-v1.json
+│   │   ├── munster-cheese-v2.json
+│   │   ├── oat-flour-organic.json
+│   │   ├── oat-flour-v1.json
+│   │   ├── oat-flour-v2.json
+│   │   ├── orange-pulp-raw-organic.json
+│   │   ├── orange-pulp-raw-v1.json
+│   │   ├── orange-pulp-raw-v2.json
 │   │   ├── organic-cotton-irrigated.json
+│   │   ├── parmesan-cheese-v1.json
+│   │   ├── parmesan-cheese-v2.json
+│   │   ├── parsley-dried.json
 │   │   ├── pasta-*.json  (5 files)
+│   │   ├── pea-shelled-raw-organic.json
+│   │   ├── pea-shelled-raw.json
+│   │   ├── peach-pulp-and-skin-raw-organic.json
+│   │   ├── peach-pulp-and-skin-raw-wfldb.json
+│   │   ├── peach-pulp-and-skin-raw.json
+│   │   ├── peanut-shelled-organic.json
+│   │   ├── peanut-shelled-wfldb.json
+│   │   ├── pear-pulp-raw-organic.json
+│   │   ├── pear-pulp-raw-wfldb.json
+│   │   ├── pear-pulp-raw.json
 │   │   ├── pet-recycled-cff.json
+│   │   ├── petit-suisse-10pct-fat-v1.json
+│   │   ├── petit-suisse-10pct-fat-v2.json
+│   │   ├── petit-suisse-4pct-fat-v1.json
+│   │   ├── petit-suisse-4pct-fat-v2.json
 │   │   ├── petrol-e10-euro6.json
-│   │   ├── pork-default.json
-│   │   ├── pork-organic.json
+│   │   ├── pineapple-pulp-raw-organic.json
+│   │   ├── pineapple-pulp-raw-v1.json
+│   │   ├── pineapple-pulp-raw-v2.json
+│   │   ├── plum-puree-fr-energy-wfldb.json
+│   │   ├── plum-puree-organic.json
+│   │   ├── plum-puree.json
+│   │   ├── pont-leveque-cheese-v1.json
+│   │   ├── pont-leveque-cheese-v2.json
+│   │   ├── pork-*.json  (8 files)
+│   │   ├── poultry-boneless-raw-eb-v1.json
+│   │   ├── poultry-boneless-raw-eb-v2.json
+│   │   ├── poultry-boneless-raw.json
+│   │   ├── processed-cheese-v1.json
+│   │   ├── processed-cheese-v2.json
+│   │   ├── pyrometallurgical-treatment-da.json
+│   │   ├── raclette-cheese-v1.json
+│   │   ├── raclette-cheese-v2.json
 │   │   ├── rapeseed-oil-organic-2025.json
+│   │   ├── raspberry-juice-organic.json
+│   │   ├── raspberry-juice.json
+│   │   ├── reblochon-cheese-v1.json
+│   │   ├── reblochon-cheese-v2.json
 │   │   ├── recycled-wood-shavings-post-consumer.json
+│   │   ├── red-berries-frozen-raw-organic.json
+│   │   ├── red-berries-frozen-raw.json
+│   │   ├── reduced-fat-firm-cheese-maasdam-type-v1.json
+│   │   ├── reduced-fat-firm-cheese-maasdam-type-v2.json
+│   │   ├── rice-flour-fr-energy-organic.json
+│   │   ├── rice-flour-fr-energy.json
+│   │   ├── rice-flour.json
+│   │   ├── roquefort-cheese-v1.json
+│   │   ├── roquefort-cheese-v2.json
+│   │   ├── saint-marcellin-cheese-v1.json
+│   │   ├── saint-marcellin-cheese-v2.json
+│   │   ├── soft-wheat-flour-fr-energy.json
+│   │   ├── soft-wheat-flour-organic.json
+│   │   ├── soft-wheat-flour.json
 │   │   ├── soup-*.json  (8 files)
+│   │   ├── soy-flour-fr-energy-organic.json
+│   │   ├── soy-flour-fr-energy.json
+│   │   ├── soy-flour.json
+│   │   ├── spread-cheese-20-40pct-fat-v1.json
+│   │   ├── spread-cheese-20-40pct-fat-v2.json
 │   │   ├── steel-low-alloyed-recycled-rer-cff.json
 │   │   ├── steel-low-alloyed-recycled-row-cff.json
 │   │   ├── steel-market-cn.json
 │   │   ├── steel-market-fr.json
-│   │   └── sunflower-oil-organic-2025.json
+│   │   ├── strawberry-frozen-raw-organic.json
+│   │   ├── strawberry-frozen-raw-wfldb.json
+│   │   ├── strawberry-frozen-raw.json
+│   │   ├── sunflower-oil-organic-2025.json
+│   │   ├── sweet-*.json  (6 files)
+│   │   ├── tomato-peeled-canned-drained-organic.json
+│   │   ├── tomato-peeled-canned-drained-wfldb.json
+│   │   ├── tomato-peeled-canned-drained.json
+│   │   ├── tomme-cheese-cow-milk-v1.json
+│   │   ├── tomme-cheese-cow-milk-v2.json
+│   │   ├── walnut-shelled-organic.json
+│   │   ├── walnut-shelled-wfldb.json
+│   │   ├── walnut-shelled.json
+│   │   └── white-*.json  (5 files)
 │   ├── ecoinvent-3-11
 │   │   ├── apple.json
 │   │   ├── apricot.json
@@ -736,7 +906,6 @@
 │   │   ├── lumber-softwood-pine.json
 │   │   ├── lumber-softwood-spruce.json
 │   │   ├── medium-*.json  (33 files)
-│   │   ├── metal-processing-medium-no-longer-in-use.json
 │   │   ├── organic-compound.json
 │   │   ├── panel-finish-melamine-paper.json
 │   │   ├── paraffin-wax.json
@@ -943,9 +1112,9 @@
 │   │   ├── activities.json
 │   │   ├── bw-project-forwast-with-patched-ef31.tar.gz
 │   │   ├── food
-│   │   │   ├── animal_to_meat.json
 │   │   │   ├── ecosystemic_factors.csv
-│   │   │   └── feed.json
+│   │   │   ├── feed.json
+│   │   │   └── raw_to_transformed_ratios.json
 │   │   ├── forwast.json
 │   │   ├── lci_catalog
 │   │   │   ├── custom
@@ -967,7 +1136,7 @@
 │   ├── processes-schema.json
 │   ├── snapshots
 │   │   ├── food
-│   │   │   ├── ecs_factors.json
+│   │   │   ├── es_factors.json
 │   │   │   └── ingredients.json
 │   │   ├── processes_generic.json
 │   │   ├── processes_generic_impacts.json
@@ -981,10 +1150,11 @@
 │   ├── test_export.py
 │   ├── test_json_consistency.py
 │   ├── test_json_format_encoder.py
-│   └── test_process_relationships.py
+│   ├── test_process_relationships.py
+│   └── test_raw_to_transformed_ratios.py
 ├── textile
 │   ├── README.md
 │   ├── __init__.py
 │   └── codes.json
 └── uv.lock
-50 directories, 1238 files
+50 directories, 1442 files
