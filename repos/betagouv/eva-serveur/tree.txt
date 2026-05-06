@@ -1019,6 +1019,7 @@
 │       │   │   ├── _bilan_evapro.erb
 │       │   │   ├── _communication_ecrite.arb
 │       │   │   ├── _competence_niveau1.arb
+│       │   │   ├── _continuer_evaluation_evapro.erb
 │       │   │   ├── _correspondance_anlci.arb
 │       │   │   ├── _deroulement_passation.arb
 │       │   │   ├── _details_evaluation.html.arb
@@ -1652,62 +1653,63 @@
 │   │   │   ├── 20241206064741_migre_score_et_metacompetence.rb
 │   │   │   ├── 20241211075936_rattrape_questions_saisies_prix_avec_centimes.rb
 │   │   │   └── 20241216134408_renomme_prix_avec_centimes_en_nombre_avec_virgule_sur_questions_saisie.rb
-│   │   ├── 20250103165108_rattrapage_metacompetences_pour_questions.rb
-│   │   ├── 20250103172005_rattrapage_metacompetences_pour_questions2.rb
-│   │   ├── 20250103173358_rattrapage_metacompetences_pour_questions3.rb
-│   │   ├── 20250203164111_ajoute_orientation_pour_question.rb
-│   │   ├── 20250227155027_change_pre_positionnement_en_diagnostique.rb
-│   │   ├── 20250304143153_change_diagnostique_en_diagnostic.rb
-│   │   ├── 20250305171337_ajoute_new_metacompetence_pour_questions.rb
-│   │   ├── 20250305171419_migre_metacompetence_pour_questions.rb
-│   │   ├── 20250305171746_supprime_metacompetence_pour_question.rb
-│   │   ├── 20250305173240_ajoute_index_pour_type_sur_questions.rb
-│   │   ├── 20250305180954_renomme_metacompetences_pour_questions.rb
-│   │   ├── 20250305182404_renomme_metacompetences_pour_evenements.rb
-│   │   ├── 20250401092516_supprime_score_de_questions.rb
-│   │   ├── 20250401100516_supprime_metacompetence_pour_questions.rb
-│   │   ├── 20250409091700_ajoute_archive_a_parcours_types.rb
-│   │   ├── 20250409101829_ajoute_position_a_parcours_types.rb
-│   │   ├── 20250416123529_renomme_type_structure_pole_emploi_en_france_travail.rb
-│   │   ├── 20250416125930_renome_nom_structure_pole_emploie_en_france_travail.rb
-│   │   ├── 20250515133456_supprime_table_questions_frequentes.rb
-│   │   ├── 20250521170412_actualise_email_support.rb
-│   │   ├── 20250526063034_ajoute_droit_creation_campagne_pour_conseiller.rb
-│   │   ├── 20250527075158_ajoute_active_pour_campagnes.rb
-│   │   ├── 20250530101743_ajoute_privee_pour_campagne.rb
-│   │   ├── 20250530143511_modifie_valeur_par_defaut_pour_autorisation_creation_campagne_de_structures.rb
-│   │   ├── 20250530145119_assigne_valeur_par_defaut_pour_structures_existantes.rb
-│   │   ├── 20250605090456_ajoute_code_pour_beneficiaires.rb
-│   │   ├── 20250606090458_renomme_code_en_code_personnel_pour_beneficiaires.rb
-│   │   ├── 20250606125210_renomme_code_personnel_en_code_beneficiaire_sur_beneficiaires.rb
-│   │   ├── 20250606163958_ajoute_code_pour_beneficiaires_existant.rb
-│   │   ├── 20250623092912_cree_affectations_comptes_externes.rb
-│   │   ├── 20250627085157_supprime_affectations_intervenants_externes.rb
-│   │   ├── 20250721122551_creation_autorisation_campagne_compte.rb
-│   │   ├── 20250918120000_optimize_evenements_jsonb_queries.rb
-│   │   ├── 20250925152637_ajoute_synthese_pour_parties.rb
-│   │   ├── 20250925154546_remove_nom_from_evaluations.rb
-│   │   ├── 20251001145843_supprime_les_informations_d_identite_des_evaluation.rb
-│   │   ├── 20251008130855_ajoute_redactions_a_evaluations.rb
-│   │   ├── 20251009110003_create_opcos.rb
-│   │   ├── 20251010093557_ajoute_usage_pour_structure_locale.rb
-│   │   ├── 20251010112114_ajoute_structure_pour_opco.rb
-│   │   ├── 20251010132454_passe_usage_avec_la_valeur_par_defaut.rb
-│   │   ├── 20251022084130_active_extension_unaccent.rb
-│   │   ├── 20251023095330_converti_nom_technique_des_situations.rb
-│   │   ├── 20251104145922_ajoute_compte_pour_beneficiaire.rb
-│   │   ├── 20251119094304_ajoute_statut_siret_et_date_verification_siret_pour_structures.rb
-│   │   ├── 20251220120000_ajoute_code_naf_et_idcc_pour_structures.rb
-│   │   ├── 20251220120001_create_structure_opcos.rb
-│   │   ├── 20251220120002_remove_opco_id_from_structures.rb
-│   │   ├── 20251220120003_ajoute_idcc_a_opcos.rb
-│   │   ├── 20251220120004_ajoute_raison_sociale_et_adresse_pour_structures.rb
-│   │   ├── 20251220120005_ajoute_index_unicite_pour_choix.rb
-│   │   ├── 20251220120006_ajoute_champs_pour_comptes.rb
-│   │   ├── 20251220120007_ajoute_etape_inscription_pour_comptes.rb
-│   │   ├── 20251220120008_assigne_etape_inscription_complet_pour_les_comptes_existants.rb
-│   │   ├── 20251220120009_add_usage_to_comptes.rb
-│   │   ├── 20251220120010_complete_compte_pro_existants.rb
+│   │   ├── 2025
+│   │   │   ├── 20250103165108_rattrapage_metacompetences_pour_questions.rb
+│   │   │   ├── 20250103172005_rattrapage_metacompetences_pour_questions2.rb
+│   │   │   ├── 20250103173358_rattrapage_metacompetences_pour_questions3.rb
+│   │   │   ├── 20250203164111_ajoute_orientation_pour_question.rb
+│   │   │   ├── 20250227155027_change_pre_positionnement_en_diagnostique.rb
+│   │   │   ├── 20250304143153_change_diagnostique_en_diagnostic.rb
+│   │   │   ├── 20250305171337_ajoute_new_metacompetence_pour_questions.rb
+│   │   │   ├── 20250305171419_migre_metacompetence_pour_questions.rb
+│   │   │   ├── 20250305171746_supprime_metacompetence_pour_question.rb
+│   │   │   ├── 20250305173240_ajoute_index_pour_type_sur_questions.rb
+│   │   │   ├── 20250305180954_renomme_metacompetences_pour_questions.rb
+│   │   │   ├── 20250305182404_renomme_metacompetences_pour_evenements.rb
+│   │   │   ├── 20250401092516_supprime_score_de_questions.rb
+│   │   │   ├── 20250401100516_supprime_metacompetence_pour_questions.rb
+│   │   │   ├── 20250409091700_ajoute_archive_a_parcours_types.rb
+│   │   │   ├── 20250409101829_ajoute_position_a_parcours_types.rb
+│   │   │   ├── 20250416123529_renomme_type_structure_pole_emploi_en_france_travail.rb
+│   │   │   ├── 20250416125930_renome_nom_structure_pole_emploie_en_france_travail.rb
+│   │   │   ├── 20250515133456_supprime_table_questions_frequentes.rb
+│   │   │   ├── 20250521170412_actualise_email_support.rb
+│   │   │   ├── 20250526063034_ajoute_droit_creation_campagne_pour_conseiller.rb
+│   │   │   ├── 20250527075158_ajoute_active_pour_campagnes.rb
+│   │   │   ├── 20250530101743_ajoute_privee_pour_campagne.rb
+│   │   │   ├── 20250530143511_modifie_valeur_par_defaut_pour_autorisation_creation_campagne_de_structures.rb
+│   │   │   ├── 20250530145119_assigne_valeur_par_defaut_pour_structures_existantes.rb
+│   │   │   ├── 20250605090456_ajoute_code_pour_beneficiaires.rb
+│   │   │   ├── 20250606090458_renomme_code_en_code_personnel_pour_beneficiaires.rb
+│   │   │   ├── 20250606125210_renomme_code_personnel_en_code_beneficiaire_sur_beneficiaires.rb
+│   │   │   ├── 20250606163958_ajoute_code_pour_beneficiaires_existant.rb
+│   │   │   ├── 20250623092912_cree_affectations_comptes_externes.rb
+│   │   │   ├── 20250627085157_supprime_affectations_intervenants_externes.rb
+│   │   │   ├── 20250721122551_creation_autorisation_campagne_compte.rb
+│   │   │   ├── 20250918120000_optimize_evenements_jsonb_queries.rb
+│   │   │   ├── 20250925152637_ajoute_synthese_pour_parties.rb
+│   │   │   ├── 20250925154546_remove_nom_from_evaluations.rb
+│   │   │   ├── 20251001145843_supprime_les_informations_d_identite_des_evaluation.rb
+│   │   │   ├── 20251008130855_ajoute_redactions_a_evaluations.rb
+│   │   │   ├── 20251009110003_create_opcos.rb
+│   │   │   ├── 20251010093557_ajoute_usage_pour_structure_locale.rb
+│   │   │   ├── 20251010112114_ajoute_structure_pour_opco.rb
+│   │   │   ├── 20251010132454_passe_usage_avec_la_valeur_par_defaut.rb
+│   │   │   ├── 20251022084130_active_extension_unaccent.rb
+│   │   │   ├── 20251023095330_converti_nom_technique_des_situations.rb
+│   │   │   ├── 20251104145922_ajoute_compte_pour_beneficiaire.rb
+│   │   │   ├── 20251119094304_ajoute_statut_siret_et_date_verification_siret_pour_structures.rb
+│   │   │   ├── 20251220120000_ajoute_code_naf_et_idcc_pour_structures.rb
+│   │   │   ├── 20251220120001_create_structure_opcos.rb
+│   │   │   ├── 20251220120002_remove_opco_id_from_structures.rb
+│   │   │   ├── 20251220120003_ajoute_idcc_a_opcos.rb
+│   │   │   ├── 20251220120004_ajoute_raison_sociale_et_adresse_pour_structures.rb
+│   │   │   ├── 20251220120005_ajoute_index_unicite_pour_choix.rb
+│   │   │   ├── 20251220120006_ajoute_champs_pour_comptes.rb
+│   │   │   ├── 20251220120007_ajoute_etape_inscription_pour_comptes.rb
+│   │   │   ├── 20251220120008_assigne_etape_inscription_complet_pour_les_comptes_existants.rb
+│   │   │   ├── 20251220120009_add_usage_to_comptes.rb
+│   │   │   └── 20251220120010_complete_compte_pro_existants.rb
 │   │   ├── 20260121150323_ajoute_passable_a_questions.rb
 │   │   ├── 20260122091642_passe_questions_numeratie2024_a_passable.rb
 │   │   ├── 20260128140400_ajoute_telephone_url_dans_opcos.rb
@@ -1730,7 +1732,8 @@
 │   │   ├── 20260402152415_rattache_parcours_type_aux_opcos.rb
 │   │   ├── 20260408100000_renomme_usage_eva_entreprises_en_evapro.rb
 │   │   ├── 20260409152506_ajoute_code_commune_a_structure.rb
-│   │   └── 20260421120000_initialise_usage_structures_administratives.rb
+│   │   ├── 20260421120000_initialise_usage_structures_administratives.rb
+│   │   └── 20260505084653_recalcule_evaluations_eva_pro.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -2306,4 +2309,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-332 directories, 2030 files
+333 directories, 2032 files
