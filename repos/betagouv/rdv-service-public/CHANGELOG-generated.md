@@ -1,38 +1,31 @@
-## Changelog : rdv-service-public (30 derniers jours, au 30 avril 2026)
+## Changelog : rdv-service-public (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité avec le renforcement de l'authentification à deux facteurs (2FA) pour certains comptes, des corrections de bugs concernant la gestion des rendez-vous (plages, récurrences, jours fériés) et l'interface utilisateur, ainsi que des améliorations de la robustesse et de la performance du service. Des modifications ont également été apportées à l'API pour inclure des informations supplémentaires sur les usagers et les rendez-vous.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des calendriers, la sécurité (notamment avec l'authentification à deux facteurs), et l'expérience utilisateur, avec des corrections de bugs et des améliorations de l'interface. Des optimisations ont également été apportées pour gérer plus efficacement les tâches en arrière-plan et l'utilisation de la mémoire.
 
 ### Évolutions fonctionnelles
-- **Sécurité :** Mise en place du 2FA pour les comptes sensibles ProConnect [#6310](https://github.com/betagouv/rdv-service-public/issues/6310) et pour certains IDP ProConnect.
-- **Gestion des rendez-vous :**
-    - Correction d'un bug empêchant l'affichage correct de la seconde période d'une plage horaire [#6326](https://github.com/betagouv/rdv-service-public/issues/6326).
-    - Correction de l'affichage des jours fériés dans l'agenda multi-agent [#6325](https://github.com/betagouv/rdv-service-public/issues/6325).
-    - Correction d'un bug lié aux récurrences sur les plages d'ouverture [#6329](https://github.com/betagouv/rdv-service-public/issues/6329).
-    - Gestion améliorée des événements Caldav externes déjà supprimés [#6348](https://github.com/betagouv/rdv-service-public/issues/6348).
-- **Interface utilisateur :**
-    - Correction d'un bug où deux éléments du menu pouvaient être actifs simultanément [#6330](https://github.com/betagouv/rdv-service-public/issues/6330).
-    - Sélection automatique de la barre de recherche usager [#6332](https://github.com/betagouv/rdv-service-public/issues/6332).
-    - Mise en valeur du choix de date et heure d'une plage [#6292](https://github.com/betagouv/rdv-service-public/issues/6292).
-    - Passage des formulaires de création/édition d'agent au Design System Français (DSFR) [#6309](https://github.com/betagouv/rdv-service-public/issues/6309).
-- **API :**
-    - Ajout des champs de géocodage dans le blueprint users pour l'API V1 [#6337](https://github.com/betagouv/rdv-service-public/issues/6337).
-    - Ajout du champ `time_zone` dans l'API `rdvs` [#6340](https://github.com/betagouv/rdv-service-public/issues/6340).
+- **Calendrier :** Indication du statut des synchronisations de calendrier pour une meilleure visibilité. [#6353](https://github.com/betagouv/rdv-service-public/issues/6353)
+- **Recherche d'usagers :** Possibilité de rechercher des usagers dans une nouvelle organisation pour un territoire ayant déjà des usagers. [#6327](https://github.com/betagouv/rdv-service-public/issues/6327)
+- **API :** Ajout du champ `time_zone` à l'API `rdvs` pour une gestion plus précise des fuseaux horaires. [#6340](https://github.com/betagouv/rdv-service-public/issues/6340)
+- **API :** Ajout des champs de géocodage dans le blueprint users pour l'API V1. [#6337](https://github.com/betagouv/rdv-service-public/issues/6337)
+- **Visio-conférence :** Ajout de `kmeet.infomaniak.com` aux domaines autorisés pour les visio-conférences personnalisées. [#6357](https://github.com/betagouv/rdv-service-public/issues/6357)
+- **SuperAdmin :** Ajout d'un lien vers l'annuaire des entreprises pour les espaces. [#6352](https://github.com/betagouv/rdv-service-public/issues/6352)
+- **Onboarding :** Correction du redirect lors de l'onboarding. [#6323](https://github.com/betagouv/rdv-service-public/issues/6323)
+- **Formulaires Agent :** Passage des formulaires de création/édition d'agent au DSFR (Design System FR). [#6309](https://github.com/betagouv/rdv-service-public/issues/6309)
 
 ### Évolutions techniques
-- Mise à jour de Node vers la version 24 dans les jobs GitHub Actions [#6331](https://github.com/betagouv/rdv-service-public/issues/6331).
-- Mise à jour de la librairie `connection_pool` en v3.0 [#6333](https://github.com/betagouv/rdv-service-public/issues/6333).
-- Amélioration de la robustesse de `FileAttenteJob` en limitant l'usage mémoire et en le séparant en plusieurs jobs [#6324](https://github.com/betagouv/rdv-service-public/issues/6324) et [#6322](https://github.com/betagouv/rdv-service-public/issues/6322).
-- Correction des tokens d'invitation en minuscule dans les liens [#6338](https://github.com/betagouv/rdv-service-public/issues/6338).
-- Suppression de la rétrocompatibilité du champ `notification_email` dans l'API [#6281](https://github.com/betagouv/rdv-service-public/issues/6281).
-- Mise à jour de la gem `addressable` [#6318](https://github.com/betagouv/rdv-service-public/issues/6318).
+- **Authentification :** Mise en place du 2FA (authentification à deux facteurs) pour certains IDP ProConnect et comptes sensibles. [#6310](https://github.com/betagouv/rdv-service-public/issues/6310), [#6335](https://github.com/betagouv/rdv-service-public/issues/6335)
+- **Infrastructure :** Passage à Node24 dans les jobs GitHub Actions pour bénéficier des dernières versions et correctifs de sécurité. [#6331](https://github.com/betagouv/rdv-service-public/issues/6331)
+- **Performance :** Limitation de l'usage mémoire par `FileAttenteJob` en le séparant en plusieurs jobs. [#6324](https://github.com/betagouv/rdv-service-public/issues/6324)
+- **Robustesse :** Amélioration de la robustesse de `FileAttenteJob`. [#6322](https://github.com/betagouv/rdv-service-public/issues/6322)
+- **Dépendances :** Mise à jour de la gem `connection_pool` en v3.0. [#6333](https://github.com/betagouv/rdv-service-public/issues/6333) et de la gem `addressable`. [#6318](https://github.com/betagouv/rdv-service-public/issues/6318)
+- **Devise :** Retour à la gem Devise officielle. [#6345](https://github.com/betagouv/rdv-service-public/issues/6345)
 
 ### Autres changements
-- Ajout d'un lien vers l'annuaire des entreprises pour les espaces dans le SuperAdmin [#6352](https://github.com/betagouv/rdv-service-public/issues/6352).
-- Ajout du nombre d'habitants de la commune dans la demande d'ouverture de compte [#6321](https://github.com/betagouv/rdv-service-public/issues/6321).
-- Information des agents de la mise en place de la double authentification [#6314](https://github.com/betagouv/rdv-service-public/issues/6314).
-- Suppression du feature flag `new planning` et des bandeaux de nouveautés [#6316](https://github.com/betagouv/rdv-service-public/issues/6316).
-- Correction d'une flaky spec à cause du lundi férié [#6315](https://github.com/betagouv/rdv-service-public/issues/6315).
-- Correction de la création d’espace via les OPSN [#6336](https://github.com/betagouv/rdv-service-public/issues/6336).
-- Revert d'une modification concernant la distinction des erreurs Caldav sur Sentry [#6350](https://github.com/betagouv/rdv-service-public/issues/6350).
-- Éviter `Notion::Api::Errors::TooManyRequests` [#6342](https://github.com/betagouv/rdv-service-public/issues/6342).
+- **Documentation :** Suppression du feature flag `new planning` et des bandeaux de nouveautés associés. [#6316](https://github.com/betagouv/rdv-service-public/issues/6316)
+- **Nettoyage :** Nettoyage du champ `notification_email` et suppression de la rétrocompatibilité API. [#6281](https://github.com/betagouv/rdv-service-public/issues/6281)
+- **Divers :** Correction de bugs mineurs concernant l'affichage des plages horaires, des jours fériés, et la sélection de la barre de recherche. [#6326](https://github.com/betagouv/rdv-service-public/issues/6326), [#6325](https://github.com/betagouv/rdv-service-public/issues/6325), [#6332](https://github.com/betagouv/rdv-service-public/issues/6332), [#6330](https://github.com/betagouv/rdv-service-public/issues/6330)
+- **Correction :** Correction des tokens d'invitation en minuscule dans les liens. [#6338](https://github.com/betagouv/rdv-service-public/issues/6338)
+- **Correction :** Correction d’une flaky spec à cause du lundi férié. [#6315](https://github.com/betagouv/rdv-service-public/issues/6315)
+- **Information :** Ajout du nombre d’habitants de la commune dans la demande d’ouverture de compte. [#6321](https://github.com/betagouv/rdv-service-public/issues/6321)
+- **Information :** Mise en valeur du choix de date et heure d'une plage. [#6292](https://github.com/betagouv/rdv-service-public/issues/6292)
