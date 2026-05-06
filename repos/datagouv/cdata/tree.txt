@@ -116,6 +116,9 @@
 │   │   └── EditButton.vue
 │   ├── Captchetat.client.vue
 │   ├── CdataLink.vue
+│   ├── Charts
+│   │   ├── ChartConfigurator.vue
+│   │   └── ChartFilterRow.vue
 │   ├── CommunityResources
 │   │   └── AdminCommunityResourcesPage.vue
 │   ├── ContactPoint.vue
@@ -289,6 +292,9 @@
 │   │   ├── OnboardingSection.vue
 │   │   ├── OnboardingTitle.vue
 │   │   └── SmallCapsLabel.vue
+│   ├── OpenApi
+│   │   ├── OpenApiProperties.vue
+│   │   └── OpenApiProperty.vue
 │   ├── Organization
 │   │   ├── AdminContactPointsPage.vue
 │   │   ├── ListPage.vue
@@ -560,6 +566,9 @@
 │   │   │   ├── BannerAction.vue
 │   │   │   ├── BouncingDots.vue
 │   │   │   ├── BrandedButton.vue
+│   │   │   ├── Chart
+│   │   │   │   ├── ChartViewer.vue
+│   │   │   │   └── ChartViewerWrapper.vue
 │   │   │   ├── ClientOnly.vue
 │   │   │   ├── CopyButton.vue
 │   │   │   ├── DataserviceCard.vue
@@ -592,6 +601,7 @@
 │   │   │   │   ├── GeozoneSelect.vue
 │   │   │   │   ├── GranularitySelect.vue
 │   │   │   │   ├── LicenseSelect.vue
+│   │   │   │   ├── Listbox.vue
 │   │   │   │   ├── OrganizationSelect.vue
 │   │   │   │   ├── OrganizationTypeSelect.vue
 │   │   │   │   ├── ReuseTopicSelect.vue
@@ -719,6 +729,7 @@
 │   │   │   ├── activities.ts
 │   │   │   ├── api.ts
 │   │   │   ├── api.types.ts
+│   │   │   ├── charts.ts
 │   │   │   ├── datasets.ts
 │   │   │   ├── dates.ts
 │   │   │   ├── description.ts
@@ -764,6 +775,7 @@
 │   │       ├── topics.ts
 │   │       ├── ui.ts
 │   │       ├── users.ts
+│   │       ├── visualizations.ts
 │   │       └── vue3-xml-viewer.d.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
@@ -943,9 +955,11 @@
 │   ├── design
 │   │   ├── buttons.vue
 │   │   ├── cards.vue
+│   │   ├── chart.vue
 │   │   ├── dataservice-search.vue
 │   │   ├── dataset-search.vue
 │   │   ├── index.vue
+│   │   ├── listbox.vue
 │   │   ├── logos.vue
 │   │   ├── oembeds.vue
 │   │   ├── organization-search.vue
@@ -1409,7 +1423,9 @@
 │   │   ├── [rid].spec.ts
 │   │   ├── creation.spec.ts
 │   │   └── search.spec.ts
-│   └── translation.spec.ts
+│   ├── translation.spec.ts
+│   └── visualizations
+│       └── chart-configurator.spec.ts
 ├── tsconfig.json
 ├── types
 │   ├── alert.ts
@@ -1438,10 +1454,12 @@
     ├── harvesters.ts
     ├── helpers.ts
     ├── navigation.ts
+    ├── openapi-bouquet.ts
+    ├── openapi-extract.ts
     ├── organizations.ts
     ├── owner.ts
     ├── pages.ts
     ├── paginate.ts
     ├── posts.ts
     └── reuses.ts
-216 directories, 1230 files
+220 directories, 1244 files
