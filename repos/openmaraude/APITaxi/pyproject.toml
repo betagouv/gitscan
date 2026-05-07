@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "APITaxi"
+authors = [
+  { name="Julien Castets", email="julien.castets@beta.gouv.fr" },
+  { name="Hervé Cauwelier", email="herve.cauwelier@beta.gouv.fr" },
+]
+readme = "README.md"
+description = "REST API of le.taxi"
+requires-python = ">=3.10"
+keywords = ["taxi transportation"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+license = { file = "LICENSE" }
+version = "0.1.0"
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+tests = [
+    'pytest>=8.3.1',
+    'pytest-celery',
+    'pytest-factoryboy',
+    'testing.postgresql',
+]
+
+[project.urls]
+Homepage = "https://github.com/openmaraude/APITaxi"
+Issues = "https://github.com/openmaraude/APITaxi/issues"
+
+[tool.setuptools]
+packages = [
+    "APITaxi",
+    "APITaxi2",
+    "APITaxi_models2",
+    "APITaxi2.commands",
+    "APITaxi2.processes",
+    "APITaxi2.tasks",
+    "APITaxi2.tests",
+    "APITaxi2.views",
+    "APITaxi2.views.internal",
+    "APITaxi_models2.unittest",
+]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
