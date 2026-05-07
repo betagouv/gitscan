@@ -1,14 +1,16 @@
-## Changelog : proconnect-maintenance (30 derniers jours, au 9 mai 2026)
+## Changelog : proconnect-maintenance (30 derniers jours, au 2026-05-05)
 
 ### Résumé
-Ce mois-ci, une page de maintenance a été implémentée pour ProConnect. Cette page permettra d'informer les utilisateurs en cas d'indisponibilité du service, améliorant ainsi la communication et l'expérience utilisateur pendant les opérations de maintenance.
+Ce changelog présente les récentes améliorations apportées à la page de maintenance de ProConnect. Les modifications incluent la création de la page initiale, des ajustements de configuration pour l'environnement de production et d'intégration, ainsi qu'une correction typographique. Une tentative d'amélioration de la configuration OpenID a été annulée.
 
 ### Évolutions fonctionnelles
-- Création de la page de maintenance pour ProConnect [#1](https://github.com/proconnect-gouv/proconnect-maintenance/pulls/1).
+- Création de la page de maintenance pour ProConnect. [#1](https://github.com/proconnect-gouv/proconnect-maintenance/pull/1)
+- Correction d'une coquille dans le texte de la page de maintenance. [#1](https://github.com/proconnect-gouv/proconnect-maintenance/pull/1)
 
 ### Évolutions techniques
-- Initialisation du projet avec TypeScript, Node.js et Express.
-- Mise en place d'une structure de base pour l'application de maintenance.
+- Ajout de la configuration OpenID.
+- Modifications de la configuration pour utiliser l'environnement de production puis d'intégration, et retour à la configuration précédente.
+- Annulation d'une modification visant à dériver les URLs de configuration OpenID de l'hôte de la requête.
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Aucun changement significatif à signaler.
