@@ -16,6 +16,8 @@
 │   └── no-direct-check.grit
 ├── biome.json
 ├── cron.json
+├── dex
+│   └── config.example.yaml
 ├── docker-compose.yml
 ├── docs
 │   ├── Makefile
@@ -27,6 +29,12 @@
 │   ├── dai-flow.svg
 │   ├── flow-sans-edi-sacha.puml
 │   ├── flow-sans-edi-sacha.svg
+│   ├── infra
+│   │   ├── Caddyfile
+│   │   ├── README.md
+│   │   ├── dex-config.yaml
+│   │   ├── docker-compose.yml
+│   │   └── generate-redirect-uris.sh
 │   ├── rai-flow-module-labo.puml
 │   ├── rai-flow-module-labo.svg
 │   ├── rai-flow.puml
@@ -38,8 +46,7 @@
 │   ├── .storybook
 │   │   ├── main.ts
 │   │   ├── preview.tsx
-│   │   ├── tsconfig.json
-│   │   └── vitest.setup.ts
+│   │   └── tsconfig.json
 │   ├── index.html
 │   ├── package.json
 │   ├── public
@@ -764,9 +771,12 @@
 │   │   │   └── user.router.test.ts
 │   │   └── unprotected.ts
 │   ├── scripts
+│   │   ├── __snapshots__
+│   │   │   └── updateSSD2Referential.test.ts.snap
 │   │   ├── searchBadLMR.ts
 │   │   ├── searchResidueComplexWithoutAnalyte.ts
 │   │   ├── sendDAI.ts
+│   │   ├── updateSSD2Referential.test.ts
 │   │   └── updateSSD2Referential.ts
 │   ├── sentry.mjs
 │   ├── server.test.ts
@@ -843,6 +853,7 @@
 │   │   │   └── pdfService.ts
 │   │   ├── s3Service.ts
 │   │   ├── supportDocumentProcessor.ts
+│   │   ├── userService.ts
 │   │   └── zipService.ts
 │   ├── templates
 │   │   ├── analysisRequest
@@ -912,6 +923,7 @@
 │   │   ├── sampleItemMissingError.ts
 │   │   ├── sampleMissingError.ts
 │   │   ├── sendEmailError.ts
+│   │   ├── syncContactError.ts
 │   │   ├── userMissingError.ts
 │   │   ├── userPermissionMissingError.ts
 │   │   └── userRoleMissingError.ts
@@ -1090,6 +1102,7 @@
 ├── tsconfig.json
 └── types
     ├── env.d.ts
-    └── express-jwt
-        └── index.d.ts
-207 directories, 887 files
+    ├── express-jwt
+    │   └── index.d.ts
+    └── knex-stringcase.d.ts
+210 directories, 897 files
