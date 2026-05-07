@@ -7,6 +7,14 @@
   "scripts": {
     "dev": "mastra dev",
     "build": "mastra build",
+    "rag:doctor": "tsx src/mastra/rag/doctor.ts",
+    "rag:build-chunks": "tsx src/mastra/rag/build-chunks.ts",
+    "rag:build-index": "tsx src/mastra/rag/build-index.ts",
+    "rag:test-retrieval": "tsx src/mastra/rag/test-retrieval.ts",
+    "rag:test-agent": "tsx src/mastra/rag/test-agent.ts",
+    "rag:workflow": "tsx src/mastra/rag/workflow-rag.ts",
+    "rag:run-eval": "tsx src/mastra/rag/run-eval.ts",
+    "rag:write-findings": "tsx src/mastra/rag/write-findings.ts",
     "slides:dev": "slidev slides/module-3.md",
     "slides:build": "slidev build slides/module-3.md --out slides/dist/module-3",
     "format": "biome check --write .",
@@ -16,17 +24,17 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@ai-sdk/openai-compatible": "^2.0.41",
-    "@ai-sdk/provider": "^3.0.8",
+    "@ai-sdk/openai-compatible": "^2.0.46",
+    "@ai-sdk/provider": "^3.0.10",
     "@mastra/core": "latest",
     "@mastra/libsql": "latest",
     "@mastra/rag": "^2.2.0",
-    "unpdf": "^1.6.0",
-    "zod": "^4.0.0"
+    "unpdf": "^1.6.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.12",
-    "@slidev/cli": "^52.14.2",
+    "@biomejs/biome": "^2.4.13",
+    "@slidev/cli": "^52.15.1",
     "@slidev/theme-default": "^0.25.0",
     "@types/node": "^25.6.0",
     "dotenv": "^17.4.2",
