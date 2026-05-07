@@ -10,9 +10,11 @@ and this project adheres to
 
 ### Added
 
+- ✨(onboarding) add onboarding modal
 - ✨(back) add ODT parsing support
 - ✨(back) add self-documentation tool
 - ✅(front) add tests for SourceItem component
+- ✨(documents) make document context hybrid
 
 ### Changed
 
@@ -27,9 +29,12 @@ and this project adheres to
 - ✨(tools): update descriptions
 - ✨(auth) add silent OIDC login
 - ⬆️(back) upgrade lxml and pypdf
+- ✨(back) set allow_smart_web_search to False for all users
+- ✨(back) make allow_conversation_analytics user setting readonly in admin
 
 ### Fixed
 
+- 💬(onboarding) fix wording step 1 img
 - 🐛(fix) new conversation in project button max size
 - 💄(ui) little fix margin top
 - 💄(ui) review ui for part of the project

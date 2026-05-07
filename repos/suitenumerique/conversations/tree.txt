@@ -165,6 +165,8 @@
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── pydantic_ai.py
 │   │   │   │   └── pydantic_ui_message_converter.py
+│   │   │   ├── constants.py
+│   │   │   ├── document_context_builder.py
 │   │   │   ├── factories.py
 │   │   │   ├── keepalive.py
 │   │   │   ├── llm_configuration.py
@@ -197,6 +199,9 @@
 │   │   │   │   │   │   ├── test_adaptive_pdf_parser.py
 │   │   │   │   │   │   ├── test_markitdown.py
 │   │   │   │   │   │   └── test_parser.py
+│   │   │   │   │   ├── document_rag_backends
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── test_albert_rag_backend.py
 │   │   │   │   │   ├── document_search
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   └── test_albert_api.py
@@ -215,6 +220,7 @@
 │   │   │   │   │   ├── pydantic_ai
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_add_document_rag_search_tool_from_setting.py
+│   │   │   │   │   │   ├── test_document_context_window.py
 │   │   │   │   │   │   ├── test_extract_co2_from_usage.py
 │   │   │   │   │   │   ├── test_langfuse_tracing.py
 │   │   │   │   │   │   ├── test_project_instructions.py
@@ -237,12 +243,14 @@
 │   │   │   │   │   ├── test_chat_conversation_request_serializer.py
 │   │   │   │   │   └── test_chat_project_serializer.py
 │   │   │   │   ├── test_ai_agent_service_co2.py
+│   │   │   │   ├── test_document_context_builder.py
 │   │   │   │   ├── test_llm_configuration.py
 │   │   │   │   ├── test_local_media_url_processors.py
 │   │   │   │   ├── test_malware_detection.py
 │   │   │   │   ├── tools
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_document_generic_search_rag.py
+│   │   │   │   │   ├── test_document_search_rag.py
 │   │   │   │   │   ├── test_document_summarize.py
 │   │   │   │   │   ├── test_self_documentation.py
 │   │   │   │   │   ├── test_utils.py
@@ -262,6 +270,8 @@
 │   │   │   │       │   │   ├── conftest.py
 │   │   │   │       │   │   ├── test_conversation.py
 │   │   │   │       │   │   ├── test_conversation_concatenate_system_messages.py
+│   │   │   │       │   │   ├── test_conversation_search_with_document_id.py
+│   │   │   │       │   │   ├── test_conversation_search_with_document_id_retry.py
 │   │   │   │       │   │   ├── test_conversation_with_document_upload.py
 │   │   │   │       │   │   ├── test_conversation_with_document_url.py
 │   │   │   │       │   │   ├── test_conversation_with_history.py
@@ -366,6 +376,7 @@
 │   │   │   │   ├── 0003_alter_user_short_name.py
 │   │   │   │   ├── 0004_user_allow_smart_web_search.py
 │   │   │   │   ├── 0005_siteconfiguration.py
+│   │   │   │   ├── 0006_user_allow_smart_web_search_default_false.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
@@ -510,11 +521,14 @@
 │   │   │   │   │   │   │       ├── car-filled.svg
 │   │   │   │   │   │   │       ├── chart-filled.svg
 │   │   │   │   │   │   │       ├── checkmark-filled.svg
+│   │   │   │   │   │   │       ├── doc.svg
 │   │   │   │   │   │   │       ├── euro-filled.svg
 │   │   │   │   │   │   │       ├── file-filled.svg
 │   │   │   │   │   │   │       ├── folder-filled.svg
 │   │   │   │   │   │   │       ├── folder-plus.svg
+│   │   │   │   │   │   │       ├── folder.svg
 │   │   │   │   │   │   │       ├── gear-rounded-filled.svg
+│   │   │   │   │   │   │       ├── gear-rounded.svg
 │   │   │   │   │   │   │       ├── justice-filled.svg
 │   │   │   │   │   │   │       ├── key-filled.svg
 │   │   │   │   │   │   │       ├── lasuite-filled.svg
@@ -524,6 +538,7 @@
 │   │   │   │   │   │   │       ├── perso-filled.svg
 │   │   │   │   │   │   │       ├── picture-filled.svg
 │   │   │   │   │   │   │       ├── puzzle-filled.svg
+│   │   │   │   │   │   │       ├── question-mark-circle.svg
 │   │   │   │   │   │   │       ├── star-filled.svg
 │   │   │   │   │   │   │       └── terminal-filled.svg
 │   │   │   │   │   │   ├── logo
@@ -787,6 +802,20 @@
 │   │   │   │   │   │   │   │   │   └── useModalHook.test.tsx
 │   │   │   │   │   │   │   │   └── useModalHook.tsx
 │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── onboarding
+│   │   │   │   │   │   │   ├── assets
+│   │   │   │   │   │   │   │   ├── step1-en.png
+│   │   │   │   │   │   │   │   ├── step1-fr.png
+│   │   │   │   │   │   │   │   ├── step2-en.png
+│   │   │   │   │   │   │   │   ├── step2-fr.png
+│   │   │   │   │   │   │   │   ├── step3-en.png
+│   │   │   │   │   │   │   │   ├── step3-fr.png
+│   │   │   │   │   │   │   │   ├── step4-en.png
+│   │   │   │   │   │   │   │   └── step4-fr.png
+│   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   ├── OnboardingButton.tsx
+│   │   │   │   │   │   │   │   └── OnboardingModal.tsx
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── settings
 │   │   │   │   │   │       ├── assets
 │   │   │   │   │   │       │   └── settings.svg
@@ -954,4 +983,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-212 directories, 744 files
+216 directories, 769 files
