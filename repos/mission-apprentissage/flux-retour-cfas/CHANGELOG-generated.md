@@ -1,25 +1,28 @@
-## Changelog : flux-retour-cfas (30 derniers jours, au 29 avril 2026)
+## Changelog : flux-retour-cfas (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration des fonctionnalités de collaboration, notamment avec l'intégration de nouvelles collaborations ML/OFA et l'adaptation des statistiques. Des améliorations ont également été apportées à l'export des données utilisateurs et à l'onboarding. Des corrections de sécurité et des mises à jour de dépendances ont également été effectuées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration des fonctionnalités liées aux collaborations, notamment avec l'ajout de nouvelles collaborations ML/OFA et l'intégration de données associées dans les exports utilisateurs. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, en particulier concernant la gestion des doublons et le processus de déploiement.
 
 ### Évolutions fonctionnelles
-- Activation de la version 2 de la collaboration et de la déclinaison pour 7 CMA HDF. [#4590](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4590)
-- Ajout de Crisp sur la page CFA pour améliorer le support utilisateur. [#4596](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4596)
-- Extension des colonnes d'export utilisateur pour plus de types d'organisations. [#4587](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4587)
-- Ajout d'un nouvel onboarding pour les utilisateurs. [#4586](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4586)
-- Ajout de la nouvelle collaboration ML/OFA. [#4558](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4558)
-- Amélioration de l'export utilisateur avec les données ML. [#4583](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4583)
-- Adaptation des statistiques pour la collaboration. [#4595](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4595)
-- Ajout de retours (feedbacks) pour la collaboration. [#4585](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4585)
+- Ajout de nouvelles collaborations ML/OFA. [#4558](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4558)
+- Activation des collaborations v2 pour les CMA de Nouvelle-Aquitaine (10) et des Hauts-de-France (7). [#4597](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4597), [#4590](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4590)
+- Intégration de Crisp sur la page CFA pour améliorer le support utilisateur. [#4596](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4596)
+- Extension des colonnes d'export utilisateur pour inclure des informations géographiques pour plus de types d'organisations. [#4587](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4587)
+- Ajout d'un nouveau processus d'onboarding. [#4586](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4586)
+- Ajout de la gestion des feedbacks pour les collaborations. [#4585](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4585)
+- Intégration des données ML dans les exports utilisateurs. [#4583](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4583)
+- Ajout de colonnes de collaboration aux exports de traitement ML. [#4584](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4584)
 
 ### Évolutions techniques
-- Correction de l'utilisation de la date pour l'ouverture de la collaboration. [#4591](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4591)
-- Suppression du modal de feedback du classifier et de la logique backend associée. [#4582](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4582)
-- Désactivation de l'effectif pour le ML sur les CFA sélectionnés. [#4581](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4581)
+- Correction de problèmes de doublons lors de la fusion des enregistrements ML avec les squatter. [#4601](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4601)
+- Correction d'une erreur de déduplication. [#4599](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4599)
+- Amélioration de l'homogénéisation de la chaîne de déploiement. [#4598](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4598)
+- Correction du workflow de release. [#4604](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4604), [#4603](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4603)
+- Correction de l'utilisation de la date pour l'ouverture des collaborations. [#4591](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4591)
 - Mise à jour des habilitations. [#4594](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4594)
-- Ajout de Lucas en tant qu'utilisateur. [#4592](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4592) et [#4593](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4593)
+- Suppression de la modal et de la logique backend liées au feedback du classificateur. [#4582](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4582)
 
 ### Autres changements
-- Correction de vulnérabilités critiques en épinglant les dépendances `handlebars` et `form-data`. [#4589](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4589)
-- Mise à jour des dépendances pour corriger les alertes de sécurité de Dependabot. [#4588](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4588)
+- Ajout de nouveaux utilisateurs (Lucas). [#4593](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4593), [#4592](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4592)
+- Correction de vulnérabilités de sécurité en mettant à jour les dépendances Handlebars et form-data. [#4589](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4589)
+- Mise à jour de dépendances pour corriger des alertes de sécurité (Dependabot). [#4588](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4588)
