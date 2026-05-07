@@ -6,6 +6,25 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ⚡️(frontend) add skeleton on content loading #2254
+
+### Fixed
+
+- 🐛(frontend) fix patch and comments #2273
+- 🐛(frontend) interlinking are exported correctly in print mode #2269
+- 💬(frontend) add missing link in onboarding description #2233
+- 🐛(frontend) sanitize pasted and dropped content in document title #2210
+- 🐛(frontend) Emoji menu doesn't display above comment box #2229
+- 🐛(frontend) Block menu doesn't stay open on 1st line #2229 
+- 🐛(frontend) The "+" on the first line of a new doc doesn't work #2229
+
+### Security
+
+- 🔒️(frontend) sanitize color during collaboration #2270
+
+
 ## [v5.0.0] - 2026-04-08
 
 ### Added
