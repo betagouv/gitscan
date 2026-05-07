@@ -1,0 +1,185 @@
+.
+├── .circleci
+│   └── config.yml
+├── .dockerignore
+├── .env
+├── .eslintrc.yml
+├── .gitignore
+├── Dockerfile
+├── Makefile
+├── README.md
+├── components
+│   ├── ButtonLink.jsx
+│   ├── DownloadLinks.jsx
+│   ├── ListPartners.jsx
+│   ├── Modal.jsx
+│   ├── QuestionSection.jsx
+│   ├── StyledNumberedList.jsx
+│   └── Tile.jsx
+├── jsconfig.json
+├── layouts
+│   ├── BaseLayout.jsx
+│   ├── PresentationLayout.jsx
+│   └── TextContentLayout.jsx
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── 404.jsx
+│   ├── _app.jsx
+│   ├── accessibilite.jsx
+│   ├── aom.jsx
+│   ├── client.jsx
+│   ├── contact.jsx
+│   ├── faq.jsx
+│   ├── index.jsx
+│   ├── partners
+│   │   └── driver
+│   │       └── profile
+│   │           ├── affilie.jsx
+│   │           ├── artisan.jsx
+│   │           ├── index.jsx
+│   │           ├── lgerant.jsx
+│   │           └── salarie.jsx
+│   ├── stats.jsx
+│   └── taxi.jsx
+├── public
+│   ├── assets
+│   │   └── documents
+│   │       ├── 22016_TAXI_maraude_flyerA5_BATweb.pdf
+│   │       ├── 22077_TAXI-livretA5-chauffeur_BATweb.pdf
+│   │       └── CGU.pdf
+│   ├── favicon.ico
+│   ├── fonts
+│   │   ├── marianne
+│   │   │   ├── Marianne-Bold.woff
+│   │   │   ├── Marianne-Bold.woff2
+│   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-ExtraBold_Italic.woff
+│   │   │   ├── Marianne-ExtraBold_Italic.woff2
+│   │   │   ├── Marianne-Light.woff
+│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   ├── Marianne-Medium.woff
+│   │   │   ├── Marianne-Medium.woff2
+│   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-Regular.woff
+│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   ├── Marianne-Thin.woff
+│   │   │   ├── Marianne-Thin.woff2
+│   │   │   ├── Marianne-Thin_Italic.woff
+│   │   │   └── Marianne-Thin_Italic.woff2
+│   │   └── spectral
+│   │       ├── OFL.txt
+│   │       ├── Spectral-Bold.ttf
+│   │       ├── Spectral-BoldItalic.ttf
+│   │       ├── Spectral-ExtraBold.ttf
+│   │       ├── Spectral-ExtraBoldItalic.ttf
+│   │       ├── Spectral-ExtraLight.ttf
+│   │       ├── Spectral-ExtraLightItalic.ttf
+│   │       ├── Spectral-Italic.ttf
+│   │       ├── Spectral-Light.ttf
+│   │       ├── Spectral-LightItalic.ttf
+│   │       ├── Spectral-Medium.ttf
+│   │       ├── Spectral-MediumItalic.ttf
+│   │       ├── Spectral-Regular.ttf
+│   │       ├── Spectral-SemiBold.ttf
+│   │       └── Spectral-SemiBoldItalic.ttf
+│   └── images
+│       ├── homepage
+│       │   ├── api_schema.svg
+│       │   ├── api_schema_vertical.svg
+│       │   ├── illustration-customer.svg
+│       │   ├── illustration-home.svg
+│       │   ├── maas.svg
+│       │   ├── marker.svg
+│       │   ├── news.jpg
+│       │   ├── taxi.svg
+│       │   ├── taxis_group.svg
+│       │   └── trip_planning_application.svg
+│       ├── icons
+│       │   ├── download-appstore.svg
+│       │   └── download-playstore.svg
+│       ├── page_aom
+│       │   ├── illustration-city.svg
+│       │   ├── illustration-client-app.svg
+│       │   ├── illustration-client-waiting.svg
+│       │   └── illustration-map.svg
+│       ├── page_maas
+│       │   └── illustration-application-customer.svg
+│       ├── page_partners
+│       │   ├── customer.svg
+│       │   └── taxi.svg
+│       ├── page_stats
+│       │   ├── grenoble.png
+│       │   ├── lyon.png
+│       │   ├── rouen.png
+│       │   ├── stetienne.png
+│       │   └── toulouse.png
+│       ├── page_taxi
+│       │   ├── illustration-client-waiting.svg
+│       │   ├── illustration-clock.svg
+│       │   ├── illustration-customer.svg
+│       │   └── illustration-taxi-on-map.svg
+│       ├── page_taxis_group
+│       │   ├── illustration-client-app.svg
+│       │   ├── illustration-clock.svg
+│       │   ├── illustration-customers.svg
+│       │   ├── illustration-map.svg
+│       │   └── illustration-road.svg
+│       └── partners
+│           ├── G7.png
+│           ├── LOGO-SAVOIES DRIVER ROUGE-INTEGRAL-TRANSPARENT.png
+│           ├── Logo_myCloudTaxi.png
+│           ├── alpha-taxi.png
+│           ├── appsolu.png
+│           ├── axygest.png
+│           ├── coursederue.png
+│           ├── geoway.png
+│           ├── grenoble-mobilite.png
+│           ├── logo-grenoble-alpes-metropole-630x630.jpg
+│           ├── logo-metropole-grand-lyon-1040x364.png
+│           ├── logo-opentaxis.png
+│           ├── logo-rouen-metropole-630x630.jpg
+│           ├── logo_ata.png
+│           ├── logo_gestav.svg
+│           ├── logo_jolitaxi.png
+│           ├── mob1taxi-pro.png
+│           ├── mob1taxi.png
+│           ├── moovit.png
+│           ├── only-moov.png
+│           ├── paris-taxis.png
+│           ├── simply-taxi.png
+│           ├── taximoove.png
+│           ├── taxis-jaunes.png
+│           ├── taxis-lyonnais.png
+│           ├── taxis-marseille.png
+│           ├── taxis-nantes-appclient.png
+│           └── tessa.png
+└── styles
+    ├── FAQ.module.css
+    ├── Homepage.api_description.module.css
+    ├── Homepage.challenges.module.css
+    ├── Homepage.goals.module.css
+    ├── Http404.module.css
+    ├── Partners.module.css
+    ├── Stats.module.css
+    ├── Taxi.two_sides.module.css
+    ├── TaxisGroup.two_sides.module.css
+    ├── components
+    │   ├── Button.module.css
+    │   ├── QuestionSection.module.css
+    │   └── StyledNumberedList.module.css
+    ├── globals.css
+    └── layouts
+        ├── Presentation.cards.module.css
+        ├── Presentation.landing.module.css
+        └── TextContent.module.css
+27 directories, 157 files
