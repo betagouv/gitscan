@@ -1,23 +1,19 @@
 ## Changelog : calendars (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application Calendars a bénéficié d'améliorations significatives concernant la gestion des canaux CalDAV, l'intégration avec des services de messagerie, et le partage d'événements. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur globale.
+Les dernières mises à jour se concentrent sur l'amélioration de l'intégration avec les canaux CalDAV et l'ajout de nouvelles fonctionnalités liées aux boîtes aux lettres et aux invitations. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant l'envoi d'invitations et l'affichage de l'interface.
 
 ### Évolutions fonctionnelles
-- **Canaux CalDAV :** Amélioration de l'interface utilisateur et ajout de niveaux de permission pour les canaux CalDAV [#50](https://github.com/suitenumerique/calendars/issues/50).
-- **Partage d'événements :** Introduction de différents niveaux de partage avec des corrections d'interface utilisateur correspondantes [#41](https://github.com/suitenumerique/calendars/issues/41).
-- **Intégration avec Messages :** Ajout de l'intégration avec des services de messagerie pour une meilleure communication autour des événements [#46](https://github.com/suitenumerique/calendars/issues/46).
-- **Envoi d'invitations :** Correction d'un bug empêchant l'envoi d'invitations depuis la boîte de réception sélectionnée [#42](https://github.com/suitenumerique/calendars/issues/42).
-- **URL de rappel :** Simplification de la logique des URL de rappel (callbacks) [#47](https://github.com/suitenumerique/calendars/issues/47).
-- **Gestion des boîtes de réception :** Amélioration de la gestion des boîtes de réception et des principaux utilisateurs dans SabreDAV [#49](https://github.com/suitenumerique/calendars/issues/49). Possibilité de transformer des calendriers en boîtes de réception.
+- **Canaux CalDAV :** Ajout de scopes pour les canaux CalDAV, amélioration de l'interface utilisateur et modification du format du mot de passe CalDAV. [#50](https://github.com/suitenumerique/calendars/issues/50) et [#51](https://github.com/suitenumerique/calendars/issues/51)
+- **Boîtes aux lettres :** Intégration avec Messages pour les boîtes aux lettres. [#46](https://github.com/suitenumerique/calendars/issues/46)
+- **Invitations :** Correction d'un bug empêchant l'envoi d'invitations depuis la boîte aux lettres sélectionnée.
+- **Callbacks :** Simplification de la logique des URLs de callback. [#47](https://github.com/suitenumerique/calendars/issues/47)
+- **Calendriers :** Possibilité de mettre à niveau des calendriers individuels en boîtes aux lettres.
 
 ### Évolutions techniques
-- **Audit :** Ajout de champs d'audit pour suivre les modifications apportées aux canaux et aux utilisateurs [#42](https://github.com/suitenumerique/calendars/issues/42).
-- **Tests :** Correction de tests aléatoires (flaky tests) [#43](https://github.com/suitenumerique/calendars/issues/43).
-- **Linting :** Correction des erreurs de linting [#44](https://github.com/suitenumerique/calendars/issues/44).
-- **Format du mot de passe :** Modification du format du mot de passe des canaux CalDAV [#51](https://github.com/suitenumerique/calendars/issues/51).
+- **SabreDAV :** Séparation de la boîte aux lettres et des principaux utilisateurs dans SabreDAV. [#49](https://github.com/suitenumerique/calendars/issues/49)
+- **Interface utilisateur :** Masquage de la case à cocher "disponibilités" dans la modale d'édition en fonction d'un flag de fonctionnalité.
+- **Affichage :** Correction de plusieurs problèmes d'affichage et amélioration de la verbosité des logs.
 
 ### Autres changements
-- Correction de plusieurs problèmes mineurs avant la première publication [#45](https://github.com/suitenumerique/calendars/issues/45).
-- Correction de divers problèmes d'affichage et amélioration de la verbosité des logs.
-- Masquage de la case à cocher "disponibilités" en fonction d'un indicateur de fonctionnalité.
+- Aucun changement significatif à signaler.
