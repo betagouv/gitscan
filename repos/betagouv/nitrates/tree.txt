@@ -97,8 +97,15 @@
 │   │   └── petitions
 │   │       └── instructor.spec.ts
 │   └── nitrates
+│       ├── branche_autres_cultures.spec.ts
+│       ├── branche_colza.spec.ts
+│       ├── branche_culture_hiver_hors_colza.spec.ts
+│       ├── branche_culture_printemps.spec.ts
+│       ├── branche_luzerne.spec.ts
+│       ├── branche_prairie_plus_6_mois.spec.ts
 │       ├── debug_view.spec.ts
-│       └── map_overlays.spec.ts
+│       ├── map_overlays.spec.ts
+│       └── simulateur.spec.ts
 ├── envergo
 │   ├── __init__.py
 │   ├── admin
@@ -588,6 +595,7 @@
 │   │   │   ├── 0110_alter_actiontotake_slug_and_more.py
 │   │   │   ├── 0111_confighaie_contacts_info.py
 │   │   │   ├── 0112_confighaie_aa_l3503_fields.py
+│   │   │   ├── 0113_alter_configamenagement_regulations_available_and_more.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -658,33 +666,104 @@
 │   ├── nitrates
 │   │   ├── README.md
 │   │   ├── __init__.py
+│   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── assets
-│   │   │   └── REF_CULTURES_GROUPES_CULTURES_2024.csv
+│   │   │   ├── REF_CULTURES_GROUPES_CULTURES_2024.csv
+│   │   │   └── zone_montagne_communes_2026-04-30.csv
 │   │   ├── bassins.py
+│   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── import_decision_tree.py
 │   │   │       ├── import_nitrates_departments.py
 │   │   │       ├── import_nitrates_rpg.py
 │   │   │       ├── import_nitrates_zv.py
 │   │   │       └── import_rpg_cultures.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_setup_moulinette_pattern.py
+│   │   │   ├── 0003_decisiontree.py
+│   │   │   ├── 0004_import_initial_decision_tree.py
+│   │   │   ├── 0005_decisiontree_lock.py
+│   │   │   ├── 0006_decisiontreerevision.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regions.py
+│   │   ├── regulations
+│   │   │   ├── __init__.py
+│   │   │   ├── arbre_decision.py
+│   │   │   └── directive_nitrates.py
+│   │   ├── specs
+│   │   │   ├── .gitkeep
+│   │   │   ├── arbre_decision_national.yaml
+│   │   │   ├── grammaire.yaml
+│   │   │   └── referentiels.yaml
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   ├── nitrates_tags.py
+│   │   │   └── yaml_admin_extras.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── test_admin_yaml_view.py
+│   │   │   ├── test_arbre_couverture.py
+│   │   │   ├── test_arbre_decision_evaluator.py
 │   │   │   ├── test_bassins.py
+│   │   │   ├── test_branche_autres_cultures.py
+│   │   │   ├── test_branche_colza.py
+│   │   │   ├── test_branche_culture_hiver_hors_colza.py
+│   │   │   ├── test_branche_culture_printemps.py
+│   │   │   ├── test_branche_luzerne.py
+│   │   │   ├── test_branche_prairie_plus_6_mois.py
+│   │   │   ├── test_create_draft_view.py
 │   │   │   ├── test_debug_view.py
+│   │   │   ├── test_decision_tree_lock.py
+│   │   │   ├── test_decision_tree_model.py
+│   │   │   ├── test_decision_tree_revision.py
+│   │   │   ├── test_edit_mode.py
+│   │   │   ├── test_edit_node_view.py
 │   │   │   ├── test_geojson_view.py
 │   │   │   ├── test_import_commands.py
+│   │   │   ├── test_import_decision_tree.py
 │   │   │   ├── test_import_rpg_cultures.py
-│   │   │   └── test_routing.py
+│   │   │   ├── test_moulinette.py
+│   │   │   ├── test_moulinette_view.py
+│   │   │   ├── test_referentiels_view.py
+│   │   │   ├── test_routing.py
+│   │   │   ├── test_templatetags_calendrier.py
+│   │   │   ├── test_yaml_admin_editor.py
+│   │   │   ├── test_yaml_admin_fold.py
+│   │   │   ├── test_yaml_admin_grammar.py
+│   │   │   ├── test_yaml_admin_modules.py
+│   │   │   ├── test_yaml_tree_parcours.py
+│   │   │   ├── test_yaml_tree_validator.py
+│   │   │   ├── test_zonage_montagne.py
+│   │   │   └── test_zonage_note_5.py
 │   │   ├── urls.py
-│   │   └── views.py
+│   │   ├── views.py
+│   │   ├── views_admin_yaml.py
+│   │   ├── views_admin_yaml_edit.py
+│   │   ├── views_yaml_browser.py
+│   │   ├── yaml_admin
+│   │   │   ├── __init__.py
+│   │   │   ├── editor.py
+│   │   │   ├── flatten.py
+│   │   │   ├── fold.py
+│   │   │   ├── grammar.py
+│   │   │   ├── loader.py
+│   │   │   └── tags.py
+│   │   ├── yaml_tree
+│   │   │   ├── __init__.py
+│   │   │   ├── loader.py
+│   │   │   ├── loader_db.py
+│   │   │   ├── parcours.py
+│   │   │   ├── schema.py
+│   │   │   └── validator.py
+│   │   ├── zonage_montagne.py
+│   │   └── zonage_note_5.py
 │   ├── pages
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -950,8 +1029,16 @@
 │   │   │   └── vendors
 │   │   │       └── geojson-rewind.js
 │   │   ├── nitrates
+│   │   │   ├── calendrier.css
+│   │   │   ├── cascade.js
 │   │   │   ├── home.css
-│   │   │   └── home.js
+│   │   │   ├── home.js
+│   │   │   ├── illu_nitrates.png
+│   │   │   ├── simulateur.css
+│   │   │   ├── simulator.js
+│   │   │   └── subsidiaires.js
+│   │   ├── nitrates_admin
+│   │   │   └── yaml_tree.css
 │   │   ├── pdfs
 │   │   │   ├── annexe_1_cerfa_14734_3.pdf
 │   │   │   ├── arrete_08042014.pdf
@@ -1035,6 +1122,9 @@
 │   │   │   │   │   └── change_form.html
 │   │   │   │   └── moulinetteconfig
 │   │   │   │       └── change_form.html
+│   │   │   ├── nitrates
+│   │   │   │   └── decisiontree
+│   │   │   │       └── change_list.html
 │   │   │   ├── submit_line.html
 │   │   │   ├── users
 │   │   │   │   └── user
@@ -1478,6 +1568,8 @@
 │   │   │   ├── debug.html
 │   │   │   ├── debug_result.html
 │   │   │   ├── debug_result_non_disponible.html
+│   │   │   ├── directive_nitrates
+│   │   │   │   └── .gitkeep
 │   │   │   ├── ep
 │   │   │   │   ├── ep_aisne_derogation_inventaire.html
 │   │   │   │   ├── ep_aisne_derogation_simplifiee.html
@@ -1687,7 +1779,39 @@
 │   │   │   ├── _header.html
 │   │   │   ├── base.html
 │   │   │   ├── contact_us.html
-│   │   │   └── home.html
+│   │   │   ├── form.html
+│   │   │   ├── fragments
+│   │   │   │   ├── _calendrier.html
+│   │   │   │   ├── _form_hidden_passthrough.html
+│   │   │   │   ├── _panneau_form.html
+│   │   │   │   ├── _panneau_resultat.html
+│   │   │   │   └── _questions_complementaires.html
+│   │   │   ├── home.html
+│   │   │   ├── result.html
+│   │   │   ├── simulateur.html
+│   │   │   └── yaml_browser
+│   │   │       ├── detail.html
+│   │   │       └── list.html
+│   │   ├── nitrates_admin
+│   │   │   ├── base.html
+│   │   │   ├── clone_confirm.html
+│   │   │   └── yaml_tree
+│   │   │       ├── _branche.html
+│   │   │       ├── _edit_banner.html
+│   │   │       ├── _items.html
+│   │   │       ├── _noeud.html
+│   │   │       ├── _regle.html
+│   │   │       ├── _status_banner.html
+│   │   │       ├── forms
+│   │   │       │   ├── _add_form.html
+│   │   │       │   ├── _add_form_kind_fields.html
+│   │   │       │   ├── _branche_block.html
+│   │   │       │   ├── _branche_form.html
+│   │   │       │   ├── _node_form.html
+│   │   │       │   ├── _node_row.html
+│   │   │       │   ├── _regle_block.html
+│   │   │       │   └── _regle_form.html
+│   │   │       └── tree.html
 │   │   ├── pages
 │   │   │   ├── about.html
 │   │   │   ├── accessibility.html
@@ -1834,4 +1958,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-231 directories, 1605 files
+245 directories, 1715 files
