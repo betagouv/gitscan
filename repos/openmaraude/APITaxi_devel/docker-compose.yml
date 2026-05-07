@@ -1,0 +1,148 @@
+volumes:
+  db: {}
+  # Warning: /venv is cached and won't like when Python version changes
+  python-venv-cache-api: {}
+  python-venv-cache-worker: {}
+  python-venv-cache-worker-beat: {}
+  python-venv-cache-flower: {}
+  python-venv-cache-geotaxi: {}
+  python-venv-cache-minimal-operateur-server: {}
+  python-venv-cache-minimal-operateur-server-worker: {}
+  fluentd-log: {}
+  redis-data: {}
+  npm-cache-console: {}
+
+
+services:
+  db:
+    image: timescale/timescaledb-ha:pg14-ts2.9-latest
+    volumes:
+      - db:/home/postgresql/pgdata/data
+    environment:
+      - POSTGRES_DB=taxis
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 55432:5432
+
+  redis:
+    image: redis
+    volumes:
+      - redis-data:/data
+
+  api:
+    image: openmaraude/api_taxi-devenv:latest
+    volumes:
+      - ./containers/api/settings.py:/settings.py:z
+      - python-venv-cache-api:/venv/
+      - ./projects/APITaxi:/git/APITaxi:z
+      - ./projects/ZUPC:/tmp/ZUPC:z
+    environment:
+      - NEUTRAL_OPERATOR=true
+      - FAKE_TAXI_ID=true
+    depends_on:
+      - redis
+      - db
+      - worker
+    ports:
+      - '5000:5000'
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - '4999:8080'
+    environment:
+      BASE_URL: /doc
+      URL: http://localhost:5000/swagger.json
+      DEFAULT_MODELS_EXPAND_DEPTH: -1
+
+  worker:
+    image: openmaraude/api_taxi-worker-devenv:latest
+    volumes:
+      - ./containers/api/settings.py:/settings.py:z
+      - python-venv-cache-worker:/venv/
+      - ./projects/APITaxi:/git/APITaxi:z
+    depends_on:
+      - db
+      - redis
+      - minimal-operateur-server
+      - worker-beat
+
+  worker-beat:
+    image: openmaraude/api_taxi-worker-beat-devenv:latest
+    volumes:
+      - ./containers/api/settings.py:/settings.py:z
+      - python-venv-cache-worker-beat:/venv/
+      - ./projects/APITaxi:/git/APITaxi:z
+    depends_on:
+      - db
+      - redis
+
+  flower:
+    image: openmaraude/api_taxi-worker-devenv:latest
+    command: ["celery", "-A", "APITaxi2.celery_worker", "flower"]
+    volumes:
+      - ./containers/api/settings.py:/settings.py:z
+      - python-venv-cache-flower:/venv/
+      - ./projects/APITaxi:/git/APITaxi:z
+    depends_on:
+      - worker
+    ports:
+      - '5555:5555'
+
+  geotaxi:
+    image: openmaraude/geotaxi-python-devenv:latest
+    volumes:
+      - ./projects/geotaxi-python:/git/geotaxi-python:z
+      - python-venv-cache-geotaxi:/venv/
+    depends_on:
+      - api
+      - redis
+      - fluentd
+    ports:
+      - '8080:8080/udp'
+
+  fluentd:
+    image: fluentd
+    volumes:
+      - ./containers/fluentd/fluent.conf:/fluentd/etc/fluent.conf:z
+      - fluentd-log:/fluentd/log
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3000:3000'
+
+  minimal-operateur-server:
+    image: openmaraude/minimal_operateur_server-devenv:latest
+    volumes:
+      - python-venv-cache-minimal-operateur-server:/venv/
+      - ./projects/minimal_operateur_server/:/git/minimal_operateur_server:z
+    ports:
+      - '5001:5000'
+    depends_on:
+      - redis
+      - db
+      - minimal-operateur-server-worker
+
+  minimal-operateur-server-worker:
+    image: openmaraude/minimal_operateur_server-devenv:latest
+    volumes:
+      - python-venv-cache-minimal-operateur-server:/venv/
+      - ./projects/minimal_operateur_server/:/git/minimal_operateur_server:z
+      - ./scripts/wait-for-redis.sh:/wait-for-redis.sh:z
+    depends_on:
+      - redis
+    command: ['/wait-for-redis.sh', 'redis', '6379', 'flask', 'rq', 'worker']
+
+  console:
+    build:
+      context: ./projects/console
+      dockerfile: dev.Dockerfile
+    env_file:
+      - ./projects/console/.env.local
+    restart: always
+    volumes:
+      - npm-cache-console:/root/.npm
+      - ./projects/console:/app:z
+    ports:
+      - '5103:5103'
