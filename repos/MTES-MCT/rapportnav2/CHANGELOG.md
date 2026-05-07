@@ -1,5 +1,46 @@
 # Changelog
 
+## [2.79.2](https://github.com/MTES-MCT/rapportnav2/compare/v2.79.1...v2.79.2) (2026-05-06)
+
+
+### Bug Fixes
+
+* bump kotlin ([3ca1f57](https://github.com/MTES-MCT/rapportnav2/commit/3ca1f5750262910a2c36f925b7a8a9c8ee6ab4af))
+
+## [2.79.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.79.0...v2.79.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* use different env var for DB_USER and DB_PASSWORD ([b6f37e4](https://github.com/MTES-MCT/rapportnav2/commit/b6f37e46335ccf31380417be258d50273d807e98))
+
+## [2.79.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.78.1...v2.79.0) (2026-05-05)
+
+
+### Features
+
+* **Vite:** upgrade to vite8 ([8937f8f](https://github.com/MTES-MCT/rapportnav2/commit/8937f8ff92695852f2364cb690fe43d963f1e142))
+
+## [2.78.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.78.0...v2.78.1) (2026-05-05)
+
+
+### Bug Fixes
+
+* **CI:** dependency-check artifact name ([fa06ef8](https://github.com/MTES-MCT/rapportnav2/commit/fa06ef8e1354d56b198bacc5b3ff201d1b23aa0b))
+* **CI:** update trivy command arguments ([b7f1cc9](https://github.com/MTES-MCT/rapportnav2/commit/b7f1cc938da7e5ea5957fedb7e5efabd999930c0))
+
+## [2.78.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.77.1...v2.78.0) (2026-05-05)
+
+
+### Features
+
+* **CI:** update CI to gitlab-forge ([7b6bf05](https://github.com/MTES-MCT/rapportnav2/commit/7b6bf053678d0989396071b7bc60b81c0b2b9111))
+
+
+### Bug Fixes
+
+* **Analytics:** fix truncating conversion to int too early in duration calculation ([27eaab8](https://github.com/MTES-MCT/rapportnav2/commit/27eaab8ba6d214c6f320051c0e7d318db8b01d3b))
+
 ## [2.77.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.77.0...v2.77.1) (2026-04-30)
 
 

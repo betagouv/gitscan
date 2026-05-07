@@ -21,8 +21,13 @@
 ├── .gitlab-ci
 │   ├── ansible
 │   │   └── playbook.yml
+│   ├── eco
+│   │   ├── dependency-check-template.yml
+│   │   └── suppression.xml
 │   ├── jobs
 │   │   ├── analyse_dependency-check.yml
+│   │   ├── analyse_sonar.yml
+│   │   ├── analyse_trivy.yml
 │   │   ├── build_projet_gradle.yml
 │   │   ├── build_projet_npm.yml
 │   │   └── construction_image.yml
@@ -2308,7 +2313,6 @@
 │   ├── vitest.config.ts
 │   └── vitest.setup.ts
 ├── infra
-│   ├── .env
 │   ├── configurations
 │   │   └── backend
 │   │       ├── application-int.properties
@@ -2324,4 +2328,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-463 directories, 1897 files
+464 directories, 1900 files
