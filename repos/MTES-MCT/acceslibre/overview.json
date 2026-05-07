@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "La plateforme collaborative pour l’accessibilité. Elle vise à référencer l'accessibilité des Établissements Recevant du Public (ERP) en France et à faciliter l'accès pour tous.",
+  "description": "La plateforme collaborative pour l’accessibilité. Elle permet de référencer l'accessibilité des Établissements Recevant du Public (ERP) en France.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,30 +11,28 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
     "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "@gouvfr/dsfr",
+    "@panoramax/web-viewer",
     "Django",
     "djangorestframework",
-    "PostgreSQL",
-    "Redis",
-    "Celery",
-    "Sentry",
-    "leaflet",
-    "panoramax"
+    "psycopg2",
+    "redis",
+    "celery"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "Frontend React",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "sso"
+      "email-password"
     ]
   },
   "tests": [
@@ -43,24 +41,25 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-02T14:36:45Z",
+  "lastActivity": "2026-05-06T15:57:45Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 116,
-    "forks": 41,
-    "contributors": 22,
-    "openIssues": 11
+    "stars": 16,
+    "forks": 6,
+    "contributors": 11,
+    "openIssues": 1
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie",
-    "JavaScript",
-    "Accessibilité"
+    "Environnement & Énergie"
   ]
 }
