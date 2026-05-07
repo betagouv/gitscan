@@ -507,6 +507,7 @@
 │   │   │   │                   │   │   │   ├── GetPriorNotificationUpload.kt
 │   │   │   │                   │   │   │   ├── GetPriorNotificationUploads.kt
 │   │   │   │                   │   │   │   ├── GetPriorNotifications.kt
+│   │   │   │                   │   │   │   ├── InvalidateOutdatedBFTSWOZeroPNOs.kt
 │   │   │   │                   │   │   │   ├── InvalidatePriorNotification.kt
 │   │   │   │                   │   │   │   ├── UpdateLogbookPriorNotification.kt
 │   │   │   │                   │   │   │   ├── UpdatePriorNotificationSubscriber.kt
@@ -1485,6 +1486,8 @@
 │   │       │                   │   │   │   ├── GetPriorNotificationUTests.kt
 │   │       │                   │   │   │   ├── GetPriorNotificationsITests.kt
 │   │       │                   │   │   │   ├── GetPriorNotificationsUTests.kt
+│   │       │                   │   │   │   ├── InvalidateOutdatedBFTSWOZeroPNOsITests.kt
+│   │       │                   │   │   │   ├── InvalidateOutdatedBFTSWOZeroPNOsUTests.kt
 │   │       │                   │   │   │   ├── TestUtils.kt
 │   │       │                   │   │   │   ├── UpdateLogbookPriorNotificationITests.kt
 │   │       │                   │   │   │   ├── UpdateLogbookPriorNotificationUTests.kt
@@ -5447,12 +5450,16 @@
 │       │   │   └── prior_notifications
 │       │   │       ├── expected_email_body_1.html
 │       │   │       ├── expected_email_body_2.html
+│       │   │       ├── expected_email_body_zero_1.html
 │       │   │       ├── expected_pno_1.html
 │       │   │       ├── expected_pno_1.pdf
 │       │   │       ├── expected_pno_2.html
 │       │   │       ├── expected_pno_2.pdf
+│       │   │       ├── expected_pno_zero_1.html
+│       │   │       ├── expected_pno_zero_1.pdf
 │       │   │       ├── expected_sms_1.txt
-│       │   │       └── expected_sms_2.txt
+│       │   │       ├── expected_sms_2.txt
+│       │   │       └── expected_sms_zero_1.txt
 │       │   ├── external
 │       │   │   └── README.md
 │       │   ├── logbook
@@ -5705,6 +5712,7 @@
 │       │   ├── test_emails.py
 │       │   ├── test_fao_areas.py
 │       │   ├── test_segments.py
+│       │   ├── test_snapshots.py
 │       │   ├── test_spatial.py
 │       │   └── test_vessels.py
 │       ├── test_main.py
@@ -5730,4 +5738,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-776 directories, 5270 files
+776 directories, 5278 files
