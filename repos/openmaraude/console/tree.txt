@@ -1,0 +1,192 @@
+.
+├── .circleci
+│   └── config.yml
+├── .dockerignore
+├── .eslintrc.json
+├── .gitignore
+├── Dockerfile
+├── Makefile
+├── README.md
+├── components
+│   ├── APIErrorAlert.jsx
+│   ├── APIListTable.jsx
+│   ├── AvailableTaxis.jsx
+│   ├── CreateIntegrationTaxi.jsx
+│   ├── HailCard.jsx
+│   ├── HailStatus.jsx
+│   ├── InfoBox.jsx
+│   ├── Legend.jsx
+│   ├── LogasTable.jsx
+│   ├── Login.jsx
+│   ├── Menu.jsx
+│   ├── ReverseAddress.jsx
+│   ├── SearchAddressDialog.jsx
+│   ├── TimeoutForm.jsx
+│   ├── integration
+│   │   ├── HailDetail.jsx
+│   │   ├── HailDetailActions.jsx
+│   │   └── HailRequestForm.jsx
+│   ├── layouts
+│   │   ├── BaseLayout.jsx
+│   │   └── MenuLayout.jsx
+│   ├── map
+│   │   ├── ADS.jsx
+│   │   ├── HailsHeatmap.jsx
+│   │   ├── HeatmapLayer.ts
+│   │   ├── Map.jsx
+│   │   ├── MapComponents.jsx
+│   │   ├── MapControl.jsx
+│   │   ├── MapLazyComponents.jsx
+│   │   ├── ReactLeafletCluster.jsx
+│   │   ├── SearchHeatmap.jsx
+│   │   ├── Station.jsx
+│   │   ├── TaxiMarker.jsx
+│   │   ├── TaxisHeatmap.jsx
+│   │   └── ZUPC.jsx
+│   └── theme.js
+├── dev.Dockerfile
+├── devenv
+│   └── entrypoint.sh
+├── docker-entrypoint.sh
+├── jsconfig.json
+├── next.config.mjs
+├── nginx.conf
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── _app.jsx
+│   ├── _document.jsx
+│   ├── account.jsx
+│   ├── activity_logs.jsx
+│   ├── admin.jsx
+│   ├── dashboards
+│   │   ├── hails
+│   │   │   └── [id].jsx
+│   │   ├── hails.jsx
+│   │   ├── index.jsx
+│   │   ├── map.jsx
+│   │   ├── sessions.jsx
+│   │   ├── stations.jsx
+│   │   ├── taxis.jsx
+│   │   └── zupc.jsx
+│   ├── documentation
+│   │   └── [[...slug]].jsx
+│   ├── integration
+│   │   ├── index.jsx
+│   │   ├── operator.jsx
+│   │   └── search.jsx
+│   ├── manager.jsx
+│   └── stats
+│       ├── adsmap.jsx
+│       ├── customers.jsx
+│       ├── groupements.jsx
+│       ├── hail_heatmap.jsx
+│       ├── hails.jsx
+│       ├── index.jsx
+│       ├── search_heatmap.jsx
+│       ├── searches.jsx
+│       ├── taxihail.jsx
+│       └── taxis.jsx
+├── public
+│   ├── assets
+│   │   ├── Modèle_application_chauffeur.xlsx
+│   │   └── Modèle_application_client.xlsx
+│   ├── documentation
+│   │   ├── howto_guides
+│   │   │   ├── ban.mdx
+│   │   │   ├── create_hail.mdx
+│   │   │   ├── create_taxi.mdx
+│   │   │   ├── declare_incident.mdx
+│   │   │   ├── geotaxi.mdx
+│   │   │   ├── help_taxi_map.mdx
+│   │   │   ├── poll_hail.mdx
+│   │   │   ├── search_taxis.mdx
+│   │   │   ├── status_hail.mdx
+│   │   │   ├── status_taxi.mdx
+│   │   │   ├── update.mdx
+│   │   │   └── vasp_handicap.mdx
+│   │   ├── howto_guides.mdx
+│   │   ├── introduction.mdx
+│   │   ├── reference_guides
+│   │   │   ├── glossary.mdx
+│   │   │   └── reference.mdx
+│   │   ├── reference_guides.mdx
+│   │   ├── topic_guides
+│   │   │   ├── client_poll_hail.mdx
+│   │   │   ├── customer_id.mdx
+│   │   │   ├── driver_poll_hail.mdx
+│   │   │   ├── legal_lom.mdx
+│   │   │   ├── radius.mdx
+│   │   │   ├── session_id.mdx
+│   │   │   ├── validation_client_app.mdx
+│   │   │   └── validation_driver_app.mdx
+│   │   ├── topic_guides.mdx
+│   │   ├── tutorials
+│   │   │   ├── create_client_app.mdx
+│   │   │   ├── create_driver_app.mdx
+│   │   │   ├── create_operator_app.mdx
+│   │   │   └── hail_details.mdx
+│   │   └── tutorials.mdx
+│   ├── favicon.ico
+│   └── images
+│       ├── banner.jpg
+│       ├── doc
+│       │   ├── Makefile
+│       │   ├── legend.gv
+│       │   ├── legend.png
+│       │   ├── trip-status-operator.gv
+│       │   ├── trip-status-operator.png
+│       │   ├── trip-status-search.gv
+│       │   ├── trip-status-search.png
+│       │   ├── trip-status.gv
+│       │   ├── trip-status.png
+│       │   └── tutorials
+│       │       ├── create_client_app
+│       │       │   ├── customer_info.png
+│       │       │   ├── express_homepage.png
+│       │       │   ├── hail_accepted_by_customer.png
+│       │       │   ├── hail_accepted_by_taxi.png
+│       │       │   ├── hail_customer_on_board.png
+│       │       │   ├── hail_finished.png
+│       │       │   ├── hail_received_by_operator.png
+│       │       │   ├── hail_timeout_customer.png
+│       │       │   ├── integration_customer_on_board.png
+│       │       │   ├── integration_finished.png
+│       │       │   ├── integration_hails_list.png
+│       │       │   ├── integration_taxi_details.png
+│       │       │   ├── integration_taxis_list.png
+│       │       │   ├── taxi_list_free.png
+│       │       │   ├── taxi_order_error.png
+│       │       │   └── taxis_list_empty.png
+│       │       ├── create_driver_app
+│       │       │   ├── driver_homepage.png
+│       │       │   ├── hail_accepted_by_customer.png
+│       │       │   ├── hail_customer_confirm.png
+│       │       │   ├── hail_customer_finished.png
+│       │       │   ├── hail_customer_incident.png
+│       │       │   ├── hail_customer_on_board.png
+│       │       │   ├── hail_finished.png
+│       │       │   ├── hail_received.png
+│       │       │   ├── hail_received_by_operator.png
+│       │       │   └── hail_received_by_taxi.png
+│       │       └── create_operator_app
+│       │           ├── ads_form.png
+│       │           ├── driver_form.png
+│       │           ├── operator_homepage.png
+│       │           ├── taxi_form.png
+│       │           └── vehicle_form.png
+│       ├── logo.svg
+│       ├── shadow.png
+│       └── station.png
+├── sentry.client.config.js
+├── sentry.edge.config.js
+├── sentry.properties
+├── sentry.server.config.js
+├── src
+│   ├── api.jsx
+│   ├── auth.js
+│   ├── createEmotionCache.jsx
+│   └── utils.js
+└── styles
+    └── styles.css
+28 directories, 163 files
