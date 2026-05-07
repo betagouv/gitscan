@@ -1,28 +1,30 @@
-## Changelog : trackdechets (30 derniers jours, au 30 avril 2026)
+## Changelog : trackdechets (30 derniers jours, au 06 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des déchets, notamment avec l'implémentation de nouvelles fonctionnalités pour les BSDD (Bon de Suivi Déchet Dangereux) et les BSFF (Bordereau de Suivi des Flux de Déchets). L'authentification a également été renforcée avec l'ajout de l'authentification à deux facteurs. Des corrections de bugs ont été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des déchets dangereux (BSFF/BSDA), avec l'ajout de fonctionnalités pour la gestion des intermédiaires, des installations d'entreposage provisoires et l'intégration avec le DSFR. L'authentification a également été renforcée avec l'implémentation de la double authentification. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **BSDD :** Possibilité de modifier les intermédiaires jusqu'à la signature de la réception par la destination. [#4741](https://github.com/MTES-MCT/trackdechets/pull/4741)
-- **BSDD :** Ajout de la possibilité d'ajouter 2 intermédiaires supplémentaires sur un BSDD. [#4738](https://github.com/MTES-MCT/trackdechets/pull/4738)
-- **Authentification :** Implémentation de l'authentification à deux facteurs (2FA) avec possibilité de l'activer et de la désactiver. [#4736](https://github.com/MTES-MCT/trackdechets/pull/4736), [#4739](https://github.com/MTES-MCT/trackdechets/pull/4739), [#4740](https://github.com/MTES-MCT/trackdechets/pull/4740)
-- **BSFF :** Implémentation de l'ajout de l'émetteur, du transporteur et de la destination sur les BSFF.
-- **BSFF :** Ajout d'un sélecteur de type BSFF.
-- **Codes déchets Bâle :** Création d'une liste de Codes déchets Bâle sur le même principe que la liste des codes déchets. [#4737](https://github.com/MTES-MCT/trackdechets/pull/4737)
+- **BSFF/BSDA :** Ajout de la possibilité de modifier les intermédiaires jusqu'à la signature de la réception par la destination. [#4741](https://github.com/MTES-MCT/trackdechets/issues/4741)
+- **BSFF/BSDA :** Correction d'une régression empêchant l'ajout/modification d'une installation d'entreposage provisoire (TTR) après signature de l’entreprise de travaux. [#4734](https://github.com/MTES-MCT/trackdechets/issues/4734)
+- **BSFF :** Implémentation de l'ajout d'émetteur, transporteur et destination dans le formulaire BSFF.
+- **BSFF :** Ajout d'un sélecteur de type de déchets Bâle. [#4737](https://github.com/MTES-MCT/trackdechets/issues/4737)
+- **Authentification :** Implémentation de la double authentification (2FA) avec la possibilité de la désactiver. [#4739](https://github.com/MTES-MCT/trackdechets/issues/4739), [#4736](https://github.com/MTES-MCT/trackdechets/issues/4736), [#4740](https://github.com/MTES-MCT/trackdechets/issues/4740)
+- **Interface utilisateur :** Correction de problèmes d'affichage de CRISP pour les politiques. [#4745](https://github.com/MTES-MCT/trackdechets/issues/4745)
 - **Interface utilisateur :** Correction de l'espacement entre les colonnes.
-- **Chatbot IA :** Implémentation d'un chatbot IA. [#4743](https://github.com/MTES-MCT/trackdechets/pull/4743)
-- **Bandeau :** Mise à jour du texte présent dans le bandeau. [#4733](https://github.com/MTES-MCT/trackdechets/pull/4733)
+- **Interface utilisateur :** Ajout d'un bandeau avec un texte mis à jour. [#4733](https://github.com/MTES-MCT/trackdechets/issues/4733)
+- **Registre :** Permettre à un établissement ayant le profil "Installation de valorisation de terres et sédiments" d’accéder à l’export du registre réglementaire entrant et sortant. [#4748](https://github.com/MTES-MCT/trackdechets/issues/4748)
 
 ### Évolutions techniques
-- **BSFF :** Intégration des règles BSFF au DSFR.
-- **BSFF :** Refactoring de la sauvegarde des données BSFF.
-- **Tests :** Ajout et correction de tests d'intégration.
-- **CodeQL :** Correction d'un problème potentiel de sécurité identifié par CodeQL.
-- **Modification BD :** Ajout de scripts pour modification de la base de données. [#4744](https://github.com/MTES-MCT/trackdechets/pull/4744)
+- Préparation de la recette et du déploiement en production (plusieurs commits de préparation).
+- Ajout d'un script pour la modification de la base de données.
+- Refactoring et corrections de code diverses.
+- Amélioration des tests d'intégration.
+- Correction d'un problème de découpage de la liste des codes Bâle.
 
 ### Autres changements
-- Correction d'une régression empêchant la modification des installations d'entreposage provisoire (TTR) après signature de l'entreprise de travaux. [#4734](https://github.com/MTES-MCT/trackdechets/pull/4734)
-- Correction de bugs d'affichage liés à CRISP pour les politiques.
-- Modifications diverses de l'interface utilisateur et du code pour améliorer la qualité et la maintenabilité.
-- Préparation de la recette du 28 avril 2026 et de la MEP du 07 avril 2026.
+- Mise à jour de la documentation.
+- Corrections de SonarQube.
+- Nettoyage de code et améliorations de la structure du projet.
+- Ajout d'un chatbot IA (en préparation de recette). [#4743](https://github.com/MTES-MCT/trackdechets/issues/4743)
+- Modification de la description du footer.
+- Ajout de styles CSS pour le modal.
