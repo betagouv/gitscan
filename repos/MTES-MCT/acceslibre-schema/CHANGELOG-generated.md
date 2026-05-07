@@ -1,10 +1,20 @@
 ## Changelog : acceslibre-schema (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, le schéma a été mis à jour pour supporter plusieurs fichiers de schéma distincts, permettant une modélisation plus précise et flexible des informations d'accessibilité.  Cette évolution facilite la gestion des données pour différents types de bâtiments (base, étage, hébergement, bureau de vote, école).
+Cette mise à jour majeure introduit la possibilité de gérer plusieurs schémas distincts pour différents types de bâtiments (base, étage, hébergement, bureau de vote, école) au sein d'un même *datapackage*. Cela permet une modélisation plus précise et flexible des informations d'accessibilité.
 
 ### Évolutions fonctionnelles
-- Introduction de la possibilité d'utiliser un *datapackage* pour gérer plusieurs schémas : schéma de base, schéma d'étage, schéma d'hébergement, schéma de bureau de vote et schéma d'école. [#33](https://github.com/MTES-MCT/acceslibre-schema/pull/33)
+- Introduction de schémas spécifiques pour différents types de bâtiments :
+  - `schema_base`
+  - `schema_floor`
+  - `schema_hosting`
+  - `schema_polling_station`
+  - `schema_school`
+- Utilisation du format *datapackage* pour regrouper ces schémas multiples.
 
 ### Évolutions techniques
-- Conversion du schéma vers un format *datapackage* pour supporter la fragmentation en plusieurs schémas. [#33](https://github.com/MTES-MCT/acceslibre-schema/pull/33)
+- Conversion du schéma vers un format *datapackage* pour supporter la gestion de schémas multiples [#33](https://github.com/MTES-MCT/acceslibre-schema/pull/33).
+- Implémentation de la conversion tableschema vers datapackage.
+
+### Autres changements
+- Aucune autre modification significative n'a été apportée durant cette période.
