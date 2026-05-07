@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre des outils pour la gestion, le suivi et la publication des informations RSE.",
+  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre un espace dédié pour la gestion et le suivi de ces obligations.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,19 +11,18 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Contenu éditorial",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Données & Schémas"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Redis",
-    "WeasyPrint",
-    "requests",
     "psycopg",
+    "requests",
+    "weasyprint",
+    "aiohttp",
     "dj-database-url",
     "whitenoise",
     "sentry-sdk",
@@ -36,19 +35,14 @@
     "openpyxl",
     "django-cors-headers",
     "django-storages",
-    "filetype",
-    "aiohttp",
-    "responses",
-    "geojson",
-    "django-lasuite"
+    "filetype"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Frontend React",
-    "Docker & Conteneurs",
-    "Tests"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
