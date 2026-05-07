@@ -1,7 +1,13 @@
-## Changelog : oauth2-deploy-demo (30 derniers jours, au 19 mars 2026)
+## Changelog : oauth2-deploy-demo (30 derniers jours, au 2026-05-06)
 
 ### Résumé
-Cette mise à jour apporte un ajustement de logging pour faciliter le débogage et la compréhension du fonctionnement de l'application. Plus précisément, les en-têtes JSON sont désormais affichés dans les logs, ce qui peut être utile pour diagnostiquer des problèmes liés à l'authentification ou à la communication avec le proxy OAuth2.
+Ce mois-ci, la documentation du projet a été mise à jour pour refléter les informations les plus récentes concernant les "custom claims" (revendications personnalisées) pour le fournisseur d'authentification ProConnect. Cette mise à jour permet aux utilisateurs de configurer plus facilement l'authentification avec ProConnect et d'accéder aux informations utilisateur nécessaires.
+
+### Évolutions fonctionnelles
+- Mise à jour de la documentation concernant les "custom claims" de ProConnect pour une configuration plus précise et efficace de l'authentification. [#1](https://github.com/betagouv/oauth2-deploy-demo/commit/7119653)
 
 ### Évolutions techniques
-- Activation du logging des en-têtes JSON dans `index.js` pour une meilleure traçabilité des requêtes et réponses. [#1](https://github.com/betagouv/oauth2-deploy-demo/commit/d441291)
+*Aucune évolution technique significative à signaler.*
+
+### Autres changements
+*Aucun autre changement à signaler.*
