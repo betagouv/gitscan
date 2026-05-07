@@ -1,15 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 05 mai 2026)
+## Changelog : upptime (30 derniers jours, au 07 mai 2026)
 
 ### Résumé
-Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour automatiques du statut des différents services surveillés par le bot Upptime. Ces mises à jour indiquent si les services sont disponibles et leurs temps de réponse.  Il n'y a pas eu de changements majeurs concernant les fonctionnalités ou l'architecture du projet.
+Ce changelog résume les activités récentes du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour automatiques des statuts de surveillance des différents services, indiquant leur disponibilité ou non. Des mises à jour de la documentation et du résumé du README ont également été effectuées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le bot Upptime continue de surveiller et de rapporter l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et le reporting de l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique significative n'a été identifiée dans les commits analysés. Les changements se concentrent sur les rapports d'état réguliers des services surveillés.
+*   Mise à jour de la version d'Upptime à v1.41.2.
+*   Mises à jour régulières des graphiques de statut.
 
 ### Autres changements
-- Mise à jour régulière du fichier `README.md` et du résumé du statut pour refléter l'état actuel des services.
-- Mise à jour des graphiques de performance.
-- Les commits de type "Update graphs" et "Update status summary" sont générés automatiquement par le bot Upptime.
+*   Mises à jour automatiques du résumé dans le fichier README.
+*   Mises à jour automatiques du résumé de l'état des services.
