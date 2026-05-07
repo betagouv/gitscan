@@ -1,51 +1,141 @@
 .
 ├── .github
 │   └── workflows
-│       └── deploy.yml
-├── autodiag
-│   ├── .gitignore
+│       ├── ci.yml
+│       ├── deploy-alert-widget.yml
+│       ├── deploy-api.yml
+│       ├── deploy-autodiag.yml
+│       ├── terraform-apply.yml
+│       └── terraform-plan.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── DEPLOY.md
+├── Justfile
+├── README.md
+├── TODO.md
+├── api
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── Dockerfile
 │   ├── README.md
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── public
-│   │   └── vite.svg
+│   ├── pyproject.toml
 │   ├── src
-│   │   ├── App.tsx
-│   │   ├── assets
-│   │   │   └── react.svg
-│   │   ├── components
-│   │   │   ├── ProgressHeader.tsx
-│   │   │   ├── QuestionCard.tsx
-│   │   │   ├── RadarChartComponent.tsx
-│   │   │   └── RecommendationCard.tsx
-│   │   ├── context
-│   │   │   ├── FormContext.tsx
-│   │   │   └── WagtailContext.tsx
-│   │   ├── data
-│   │   │   ├── contenu.ts
-│   │   │   └── questions.ts
-│   │   ├── embed.tsx
-│   │   ├── main.tsx
-│   │   ├── pages
-│   │   │   ├── QuestionPage.tsx
-│   │   │   ├── ResultsPage.tsx
-│   │   │   └── WelcomePage.tsx
-│   │   ├── styles
-│   │   │   └── index.css
-│   │   └── vite-env.d.ts
-│   ├── test-embed
+│   │   └── pfat_api
+│   │       ├── __init__.py
+│   │       ├── cache.py
+│   │       ├── config.py
+│   │       ├── departments.py
+│   │       ├── main.py
+│   │       ├── routes
+│   │       │   ├── __init__.py
+│   │       │   ├── alerts.py
+│   │       │   └── health.py
+│   │       ├── schemas.py
+│   │       └── sources
+│   │           ├── __init__.py
+│   │           ├── meteofrance.py
+│   │           └── rte.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_alerts.py
+│   │   ├── test_health.py
+│   │   ├── test_meteofrance.py
+│   │   └── test_rte.py
+│   └── uv.lock
+├── apps
+│   ├── alert-widget
+│   │   ├── README.md
 │   │   ├── index.html
-│   │   └── with-dsfr.html
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   ├── tsconfig.node.json
-│   └── vite.config.ts
-├── contenu.yaml
-├── questions.yaml
-├── sources
-│   ├── 2026_autoévaluation des capacités d'adaptation.xlsx
-│   └── diagram.png
-└── themes.yaml
-14 directories, 36 files
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── AlertWidget.tsx
+│   │   │   ├── demo.ts
+│   │   │   ├── embed.tsx
+│   │   │   ├── main.tsx
+│   │   │   └── vite-env.d.ts
+│   │   ├── test-embed
+│   │   │   ├── index.html
+│   │   │   └── with-dsfr.html
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│   └── autodiag
+│       ├── .gitignore
+│       ├── README.md
+│       ├── contenu.yaml
+│       ├── eslint.config.js
+│       ├── index.html
+│       ├── package.json
+│       ├── public
+│       │   └── vite.svg
+│       ├── questions.yaml
+│       ├── src
+│       │   ├── App.tsx
+│       │   ├── assets
+│       │   │   └── react.svg
+│       │   ├── components
+│       │   │   ├── ProgressHeader.tsx
+│       │   │   ├── QuestionCard.tsx
+│       │   │   ├── RadarChartComponent.tsx
+│       │   │   └── RecommendationCard.tsx
+│       │   ├── context
+│       │   │   ├── FormContext.tsx
+│       │   │   └── WagtailContext.tsx
+│       │   ├── data
+│       │   │   ├── contenu.ts
+│       │   │   └── questions.ts
+│       │   ├── embed.tsx
+│       │   ├── main.tsx
+│       │   ├── pages
+│       │   │   ├── QuestionPage.tsx
+│       │   │   ├── ResultsPage.tsx
+│       │   │   └── WelcomePage.tsx
+│       │   ├── styles
+│       │   │   └── index.css
+│       │   └── vite-env.d.ts
+│       ├── test-embed
+│       │   ├── index.html
+│       │   └── with-dsfr.html
+│       ├── themes.yaml
+│       ├── tsconfig.app.json
+│       ├── tsconfig.json
+│       ├── tsconfig.node.json
+│       └── vite.config.ts
+├── infra
+│   ├── README.md
+│   ├── envs
+│   │   └── prod
+│   │       ├── backend.tf
+│   │       ├── main.tf
+│   │       ├── outputs.tf
+│   │       ├── providers.tf
+│   │       ├── terraform.tfvars.example
+│   │       └── variables.tf
+│   └── modules
+│       ├── serverless-container
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       └── static-site
+│           ├── main.tf
+│           ├── outputs.tf
+│           └── variables.tf
+├── migration
+│   ├── restore_dump.sh
+│   └── s3_sync.sh
+├── package-lock.json
+├── package.json
+├── packages
+│   └── api-client
+│       ├── package.json
+│       ├── src
+│       │   └── index.ts
+│       └── tsconfig.json
+└── sources
+    ├── 2026_autoévaluation des capacités d'adaptation.xlsx
+    ├── diagram.png
+    ├── get_vigilance.py
+    └── notebooks_getVigilance.ipynb
+34 directories, 106 files
