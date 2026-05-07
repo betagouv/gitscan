@@ -171,6 +171,8 @@
 │   │   ├── source_badge_component.html.erb
 │   │   └── source_badge_component.rb
 │   ├── components.md
+│   ├── concerns
+│   │   └── market_presenter_concern.rb
 │   ├── controllers
 │   │   ├── admin
 │   │   │   ├── application_controller.rb
@@ -191,6 +193,7 @@
 │   │   │   ├── public_markets_controller.rb
 │   │   │   └── sync_status_controller.rb
 │   │   ├── candidate
+│   │   │   ├── application_consultations_controller.rb
 │   │   │   ├── application_controller.rb
 │   │   │   ├── attachments_controller.rb
 │   │   │   ├── company_identifications_controller.rb
@@ -231,8 +234,8 @@
 │   │   ├── category_label_helper.rb
 │   │   ├── dsfr_file_helper.rb
 │   │   ├── home_helper.rb
-│   │   ├── market_attribute_grouping.rb
 │   │   ├── market_attribute_responses_helper.rb
+│   │   ├── pagy_dsfr_helper.rb
 │   │   ├── sidemenu_helper.rb
 │   │   ├── siret_helpers.rb
 │   │   └── stepper_helper.rb
@@ -281,6 +284,9 @@
 │   │   │   ├── download_document.rb
 │   │   │   └── make_request.rb
 │   │   ├── download_document.rb
+│   │   ├── fetch_buyer_name
+│   │   │   ├── extract_name.rb
+│   │   │   └── make_request.rb
 │   │   ├── fntp
 │   │   │   ├── build_resource.rb
 │   │   │   ├── download_document.rb
@@ -364,6 +370,7 @@
 │   │   ├── fetch_insee_data_job.rb
 │   │   ├── fetch_opqibi_data_job.rb
 │   │   ├── fetch_probtp_data_job.rb
+│   │   ├── fetch_public_market_buyer_name_job.rb
 │   │   ├── fetch_qualibat_data_job.rb
 │   │   ├── fetch_qualifelec_data_job.rb
 │   │   ├── fetch_rge_data_job.rb
@@ -437,6 +444,7 @@
 │   │   ├── complete_market_application.rb
 │   │   ├── cotisation_retraite.rb
 │   │   ├── dgfip.rb
+│   │   ├── fetch_buyer_name.rb
 │   │   ├── fntp.rb
 │   │   ├── insee.rb
 │   │   ├── opqibi.rb
@@ -548,6 +556,8 @@
 │       │   └── sync_status
 │       │       └── show.html.erb
 │       ├── candidate
+│       │   ├── application_consultations
+│       │   │   └── show.html.erb
 │       │   ├── attestations
 │       │   │   └── show.html.erb
 │       │   ├── company_identifications
@@ -641,6 +651,7 @@
 │       │   └── service-worker.js
 │       └── shared
 │           ├── _application_lots_summary.html.erb
+│           ├── _application_status_badge.html.erb
 │           ├── _application_summary_content.html.erb
 │           ├── _candidate_attestation_motifs_exclusion.html.erb
 │           ├── _card_header.html.erb
@@ -772,7 +783,8 @@
 │   │   ├── 20260407000002_create_market_application_lots.rb
 │   │   ├── 20260407000003_add_lot_limit_to_public_markets.rb
 │   │   ├── 20260413110000_remove_lot_name_from_public_markets.rb
-│   │   └── 20260416154352_add_cpv_code_to_lots.rb
+│   │   ├── 20260416154352_add_cpv_code_to_lots.rb
+│   │   └── 20260429053004_add_buyer_name_to_public_markets.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -845,9 +857,12 @@
 │   ├── admin_socle_de_base_filters.feature
 │   ├── admin_socle_de_base_reorder.feature
 │   ├── api_public_markets.feature
+│   ├── application_consultation.feature
 │   ├── attestation_lots_display.feature
 │   ├── buyer_flow.feature
 │   ├── buyer_lot_config.feature
+│   ├── buyer_webhook_sync.feature
+│   ├── candidate_api_data_recovery_status.feature
 │   ├── candidate_authentication.feature
 │   ├── candidate_dashboard.feature
 │   ├── candidate_file_deletion.feature
@@ -855,6 +870,7 @@
 │   ├── candidate_flow_comprehensive.feature
 │   ├── candidate_flow_with_soft_deleted_attributes.feature
 │   ├── candidate_lot_selection.feature
+│   ├── candidate_webhook_sync.feature
 │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel.feature
 │   ├── capacite_economique_financiere_effectifs_moyens_annuels.feature
 │   ├── capacites_techniques_professionnelles_outillage_echantillons.feature
@@ -888,14 +904,18 @@
 │   │   ├── admin_socle_de_base_reorder_steps.rb
 │   │   ├── admin_socle_de_base_steps.rb
 │   │   ├── api_public_markets_steps.rb
+│   │   ├── application_consultation_steps.rb
 │   │   ├── attestation_lots_display_steps.rb
 │   │   ├── buyer_flow_steps.rb
 │   │   ├── buyer_lot_config_steps.rb
+│   │   ├── buyer_webhook_sync_steps.rb
+│   │   ├── candidate_api_data_recovery_status_steps.rb
 │   │   ├── candidate_authentication_steps.rb
 │   │   ├── candidate_dashboard_steps.rb
 │   │   ├── candidate_flow_comprehensive_steps.rb
 │   │   ├── candidate_flow_steps.rb
 │   │   ├── candidate_lot_selection_steps.rb
+│   │   ├── candidate_webhook_sync_steps.rb
 │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
 │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
 │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_steps.rb
@@ -921,6 +941,7 @@
 │   ├── support
 │   │   ├── active_job.rb
 │   │   ├── api_helpers.rb
+│   │   ├── api_stubs.rb
 │   │   ├── candidate_auth_helper.rb
 │   │   ├── capybara.rb
 │   │   ├── env.rb
@@ -1024,6 +1045,8 @@
 │   │   │       ├── text_input_component_preview.rb
 │   │   │       └── textarea_component_preview.rb
 │   │   └── source_badge_component_spec.rb
+│   ├── concerns
+│   │   └── market_presenter_concern_spec.rb
 │   ├── controllers
 │   │   └── concerns
 │   │       └── admin
@@ -1073,7 +1096,8 @@
 │   │   ├── category_label_helper_spec.rb
 │   │   ├── dsfr_file_helper_spec.rb
 │   │   ├── home_helper_spec.rb
-│   │   └── market_attribute_responses_helper_spec.rb
+│   │   ├── market_attribute_responses_helper_spec.rb
+│   │   └── pagy_dsfr_helper_spec.rb
 │   ├── interactors
 │   │   ├── actes_bilans
 │   │   │   ├── build_resource_spec.rb
@@ -1116,6 +1140,9 @@
 │   │   │   ├── download_document_spec.rb
 │   │   │   └── make_request_spec.rb
 │   │   ├── download_document_spec.rb
+│   │   ├── fetch_buyer_name
+│   │   │   ├── extract_name_spec.rb
+│   │   │   └── make_request_spec.rb
 │   │   ├── fntp
 │   │   │   ├── build_resource_spec.rb
 │   │   │   ├── download_document_spec.rb
@@ -1170,6 +1197,7 @@
 │   │   ├── fetch_insee_data_job_spec.rb
 │   │   ├── fetch_opqibi_data_job_spec.rb
 │   │   ├── fetch_probtp_data_job_spec.rb
+│   │   ├── fetch_public_market_buyer_name_job_spec.rb
 │   │   ├── fetch_qualibat_data_job_spec.rb
 │   │   ├── fetch_qualifelec_data_job_spec.rb
 │   │   ├── fetch_rge_data_job_spec.rb
@@ -1232,6 +1260,7 @@
 │   │   ├── complete_market_application_spec.rb
 │   │   ├── cotisation_retraite_spec.rb
 │   │   ├── dgfip_spec.rb
+│   │   ├── fetch_buyer_name_spec.rb
 │   │   ├── fntp_spec.rb
 │   │   ├── insee_spec.rb
 │   │   ├── opqibi_spec.rb
@@ -1271,6 +1300,7 @@
 │   │   │   └── sync_status_spec.rb
 │   │   ├── candidate
 │   │   │   ├── access_control_spec.rb
+│   │   │   ├── application_consultations_spec.rb
 │   │   │   ├── company_identifications_spec.rb
 │   │   │   ├── dashboards_spec.rb
 │   │   │   ├── market_applications_spec.rb
@@ -1387,4 +1417,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-222 directories, 1167 files
+227 directories, 1192 files
