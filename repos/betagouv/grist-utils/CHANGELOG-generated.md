@@ -1,11 +1,13 @@
-## Changelog : grist-utils (30 derniers jours, au 18 mars 2026)
+## Changelog : grist-utils (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce changelog couvre une période de maintenance technique sur le dépôt `grist-utils`. Les modifications se concentrent principalement sur la mise à jour des dépendances des outils de tests et de déploiement de Grist, assurant ainsi la compatibilité et la sécurité du processus.
+Ce changelog fait état d'une maintenance technique et d'une adaptation des tests. Les tests antivirus ont été désactivés à la demande de JCOP.  Plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+
+### Évolutions fonctionnelles
+- Désactivation des tests antivirus, suite à la demande de JCOP.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `undici` dans les tests de déploiement.
-- Mise à jour de la dépendance `fast-xml-parser` dans les tests de déploiement.
-- Mise à jour du groupe de dépendances de développement.
-- Mise à jour du groupe de dépendances de production.
-- Mise à jour de la dépendance `basic-ftp` dans les tests de déploiement.
+- Mise à jour de plusieurs dépendances de développement et de production, incluant `axios`, `lodash`, `fast-xml-parser`, `basic-ftp`, `picomatch`, `brace-expansion` et `follow-redirects`. Ces mises à jour concernent principalement le projet `grist-deployment-tests`.
+
+### Autres changements
+- Aucune information supplémentaire.
