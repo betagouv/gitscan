@@ -52,6 +52,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260422074603_svi_carcasse_relation
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260428100000_add_federation_roles_and_scope
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -125,6 +127,8 @@
 │   │   │   ├── feis.ts
 │   │   │   ├── index.ts
 │   │   │   └── utils.ts
+│   │   ├── data
+│   │   │   └── departements-regions.json
 │   │   ├── index.ts
 │   │   ├── middlewares
 │   │   │   ├── auth-rate-limit.ts
@@ -598,6 +602,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260422074603_svi_carcasse_relation
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260428100000_add_federation_roles_and_scope
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -674,6 +680,7 @@
 │   │   │   ├── CardFiche.tsx
 │   │   │   ├── Chargement.tsx
 │   │   │   ├── ConfirmModal.tsx
+│   │   │   ├── DepartementValorisationCard.tsx
 │   │   │   ├── DropDownMenu.tsx
 │   │   │   ├── FeiStepper.tsx
 │   │   │   ├── Filters.tsx
@@ -702,6 +709,7 @@
 │   │   │   ├── SelectCustom.tsx
 │   │   │   ├── TableFilterable.tsx
 │   │   │   ├── UnexpectedError.tsx
+│   │   │   ├── ValorisationTable.tsx
 │   │   │   └── VideoOverlay.tsx
 │   │   ├── data
 │   │   │   ├── etablissements-traitement-sanitaire.json
@@ -857,6 +865,10 @@
 │   │   │   │       ├── etg-notifications.tsx
 │   │   │   │       └── etg-partage-de-mes-donnees.tsx
 │   │   │   ├── faq.tsx
+│   │   │   ├── fdc
+│   │   │   │   ├── fdc-layout.tsx
+│   │   │   │   ├── fdc-router.tsx
+│   │   │   │   └── fdc-tableau-de-bord.tsx
 │   │   │   ├── fei
 │   │   │   │   ├── circuirt-court.tsx
 │   │   │   │   ├── current-owner-confirm.tsx
@@ -871,6 +883,14 @@
 │   │   │   │   ├── intermediaire-carcasse.tsx
 │   │   │   │   ├── intermediaire.tsx
 │   │   │   │   └── svi.tsx
+│   │   │   ├── fnc
+│   │   │   │   ├── fnc-layout.tsx
+│   │   │   │   ├── fnc-router.tsx
+│   │   │   │   └── fnc-tableau-de-bord.tsx
+│   │   │   ├── frc
+│   │   │   │   ├── frc-layout.tsx
+│   │   │   │   ├── frc-router.tsx
+│   │   │   │   └── frc-tableau-de-bord.tsx
 │   │   │   ├── landing-demarches.tsx
 │   │   │   ├── landing-pros.tsx
 │   │   │   ├── landing.tsx
@@ -1228,4 +1248,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-304 directories, 926 files
+310 directories, 940 files
