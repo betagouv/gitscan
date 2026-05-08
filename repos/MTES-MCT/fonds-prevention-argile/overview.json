@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/fonds-prevention-argile",
   "name": "fonds-prevention-argile",
-  "description": "Application web pour le Fonds de Prévention des Risques liés au Retrait-Gonflement des Argiles (RGA). Elle vise à aider à réduire la vulnérabilité des logements face à ces risques.",
+  "description": "Application web pour le Fonds de Prévention des Risques liés au Retrait-Gonflement des Argiles (RGA). Elle permet aux utilisateurs de se protéger contre les effets de la sécheresse.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,9 +9,12 @@
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,8 +25,8 @@
     "DSFR",
     "Vitest",
     "Matomo",
-    "drizzle-orm",
-    "argon2"
+    "Drizzle-ORM",
+    "PostgreSQL"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,14 +39,16 @@
     "methods": [
       "email-password",
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
-    "Vitest"
+    "Vitest",
+    "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-30T16:24:31+02:00",
+  "workflows": [
+    "cron-sync-parcours"
+  ],
+  "lastActivity": "2026-05-06T20:42:21+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -60,6 +65,8 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Environnement & Énergie"
   ]
 }

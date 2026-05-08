@@ -13,7 +13,8 @@
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       └── cron-sync-parcours.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
@@ -29,6 +30,8 @@
 ├── README.md
 ├── docker-compose.yml
 ├── docs
+│   ├── parcours
+│   │   └── FLOW-AND-SYNC.md
 │   ├── security
 │   │   └── snyk-accepted-vulnerabilities.md
 │   └── testing
@@ -123,6 +126,9 @@
 │   │   └── seed-agents-prod.sql
 │   ├── amo
 │   │   └── extend-expired-tokens.sql
+│   ├── audit-parcours-ds-integrity.ts
+│   ├── clean
+│   │   └── cleanup-staging.sql
 │   ├── demarches-simplifiees
 │   │   └── fetch-demarche-schema.ts
 │   ├── fix-missing-epci
@@ -222,6 +228,7 @@
 │   │   │   │   │   │   │   ├── DemandesArchiveesFullTable.tsx
 │   │   │   │   │   │   │   └── DemandesIneligiblesFullTable.tsx
 │   │   │   │   │   │   ├── details
+│   │   │   │   │   │   │   ├── SuperAdminDemarchesLinks.tsx
 │   │   │   │   │   │   │   ├── UserDetailAmo.tsx
 │   │   │   │   │   │   │   ├── UserDetailParcours.tsx
 │   │   │   │   │   │   │   ├── UserDetailSimulation.tsx
@@ -258,6 +265,14 @@
 │   │   │   │   │   ├── StatCard.tsx
 │   │   │   │   │   └── components
 │   │   │   │   │       └── AdminBreadcrumb.tsx
+│   │   │   │   ├── synchronisations
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── SyncRunDetailPanel.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── SynchronisationsPanel.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   └── tableau-de-bord
 │   │   │   │       ├── FiltresTableauDeBord.tsx
 │   │   │   │       ├── TableauDeBord.tsx
@@ -604,6 +619,9 @@
 │   │   │   │       │   └── route.ts
 │   │   │   │       └── logout
 │   │   │   │           └── route.ts
+│   │   │   ├── cron
+│   │   │   │   └── sync-parcours
+│   │   │   │       └── route.ts
 │   │   │   ├── health
 │   │   │   │   └── route.ts
 │   │   │   ├── rga
@@ -804,6 +822,11 @@
 │   │   │   │   │           └── admin-nav.config.ts
 │   │   │   │   ├── stores
 │   │   │   │   │   └── administration-filters.store.ts
+│   │   │   │   ├── synchronisations
+│   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── sync-runs.actions.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   └── tableau-de-bord
 │   │   │   │       ├── actions
 │   │   │   │       │   └── tableau-de-bord.actions.ts
@@ -986,10 +1009,10 @@
 │   │   │   │   │   │   └── StepDetailSection.tsx
 │   │   │   │   │   └── steps
 │   │   │   │   │       ├── devis
+│   │   │   │   │       │   ├── CalloutDevisTodo.tsx
 │   │   │   │   │       │   ├── StepDetailDevis.tsx
 │   │   │   │   │       │   └── index.ts
 │   │   │   │   │       ├── diagnostic
-│   │   │   │   │       │   ├── CalloutDiagnosticAccepte.tsx
 │   │   │   │   │       │   ├── CalloutDiagnosticEnInstruction.tsx
 │   │   │   │   │       │   ├── CalloutDiagnosticTodo.tsx
 │   │   │   │   │       │   ├── StepDetailDiagnostic.tsx
@@ -1078,7 +1101,9 @@
 │   │   │       │   ├── dossier-ds.service.ts
 │   │   │       │   ├── ds-prefill.service.ts
 │   │   │       │   ├── ds-sync.service.ts
-│   │   │       │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── parcours-sync-batch.service.test.ts
+│   │   │       │   └── parcours-sync-batch.service.ts
 │   │   │       └── utils
 │   │   │           ├── ds-field.utils.ts
 │   │   │           ├── ds-status.validators.ts
@@ -1373,6 +1398,7 @@
 │   │   │   │   ├── 0026_postgis_rga_zones.sql
 │   │   │   │   ├── 0027_high_meteorite.sql
 │   │   │   │   ├── 0028_classy_thundra.sql
+│   │   │   │   ├── 0029_kind_makkari.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1403,6 +1429,7 @@
 │   │   │   │       ├── 0026_snapshot.json
 │   │   │   │       ├── 0027_snapshot.json
 │   │   │   │       ├── 0028_snapshot.json
+│   │   │   │       ├── 0029_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1419,6 +1446,7 @@
 │   │   │   │   ├── parcours-prevention.repository.ts
 │   │   │   │   ├── prospect-qualifications.repository.ts
 │   │   │   │   ├── rga-zones.repository.ts
+│   │   │   │   ├── sync-run.repository.ts
 │   │   │   │   └── user.repository.ts
 │   │   │   └── schema
 │   │   │       ├── agent-permissions.ts
@@ -1438,6 +1466,8 @@
 │   │   │       ├── parcours-prevention.ts
 │   │   │       ├── prospect-qualifications.ts
 │   │   │       ├── rga-zones.ts
+│   │   │       ├── sync-run-entries.ts
+│   │   │       ├── sync-runs.ts
 │   │   │       └── users.ts
 │   │   ├── domain
 │   │   │   ├── types
@@ -1454,6 +1484,7 @@
 │   │   │       ├── status.enum.ts
 │   │   │       ├── statut-validation-amo.enum.ts
 │   │   │       ├── step.enum.ts
+│   │   │       ├── sync-run-status.enum.ts
 │   │   │       └── user-role.enum.ts
 │   │   ├── email
 │   │   │   ├── actions
@@ -1505,6 +1536,7 @@
 │   │   │   └── index.ts
 │   │   └── utils
 │   │       ├── async.utils.ts
+│   │       ├── crypto.utils.ts
 │   │       ├── date-diff.ts
 │   │       ├── date.test.ts
 │   │       ├── date.utils.ts
@@ -1526,4 +1558,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-439 directories, 1089 files
+449 directories, 1111 files
