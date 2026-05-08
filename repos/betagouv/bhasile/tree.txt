@@ -585,6 +585,7 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── selection
 │   │   │   │       ├── _components
+│   │   │   │       │   ├── BackButton.tsx
 │   │   │   │       │   ├── ValidationButton.tsx
 │   │   │   │       │   └── ValidationButtonWithHook.tsx
 │   │   │   │       └── page.tsx
@@ -741,9 +742,7 @@
 │   │   │   ├── forms
 │   │   │   │   ├── AddressWithValidation.tsx
 │   │   │   │   ├── AutoSave.tsx
-│   │   │   │   ├── Autocomplete.tsx
 │   │   │   │   ├── ContractualisationHuda.tsx
-│   │   │   │   ├── DepartementAutocomplete.tsx
 │   │   │   │   ├── DepartementsSelector.tsx
 │   │   │   │   ├── DropZone.tsx
 │   │   │   │   ├── FormWrapper.tsx
@@ -751,7 +750,6 @@
 │   │   │   │   ├── LeaveModificationModal.tsx
 │   │   │   │   ├── MaxSizeNotice.tsx
 │   │   │   │   ├── ModificationTitle.tsx
-│   │   │   │   ├── OperateurAutocomplete.tsx
 │   │   │   │   ├── PreviousPageLink.tsx
 │   │   │   │   ├── SelectWithValidation.tsx
 │   │   │   │   ├── Upload.tsx
@@ -767,6 +765,12 @@
 │   │   │   │   │   ├── FieldSetAdresseAdministrative.tsx
 │   │   │   │   │   ├── FieldSetAntennes.tsx
 │   │   │   │   │   └── ManualAddressInputs.tsx
+│   │   │   │   ├── autocomplete
+│   │   │   │   │   ├── Autocomplete.tsx
+│   │   │   │   │   ├── AutocompleteField.tsx
+│   │   │   │   │   ├── DepartementAutocomplete.tsx
+│   │   │   │   │   ├── OperateurAutocomplete.tsx
+│   │   │   │   │   └── OperateurAutocompleteRhf.tsx
 │   │   │   │   ├── calendrier
 │   │   │   │   │   └── FieldSetCalendrier.tsx
 │   │   │   │   ├── contacts
@@ -866,7 +870,6 @@
 │   │   │   │   ├── structuresPopup.ts
 │   │   │   │   └── structuresStyle.ts
 │   │   │   ├── structure-selection
-│   │   │   │   ├── BackButton.tsx
 │   │   │   │   ├── StructureSearch.tsx
 │   │   │   │   └── StructuresList.tsx
 │   │   │   └── ui
@@ -891,6 +894,7 @@
 │   │   │   ├── useAddressSuggestion.ts
 │   │   │   ├── useAgentFormHandling.ts
 │   │   │   ├── useAutocomplete.ts
+│   │   │   ├── useAutocompleteFieldUi.ts
 │   │   │   ├── useButtonsPanel.ts
 │   │   │   ├── useCpom.ts
 │   │   │   ├── useCpomFormHandling.ts
@@ -993,7 +997,6 @@
 │   │   └── forms
 │   │       ├── ajout
 │   │       │   ├── ajoutIdentification.schema.ts
-│   │       │   ├── ajoutStructure.schema.ts
 │   │       │   └── ajoutTypePlaces.schema.ts
 │   │       ├── base
 │   │       │   ├── acteAdministratif.schema.ts
@@ -1086,10 +1089,35 @@
 │   ├── api
 │   │   ├── actes-administratifs
 │   │   │   └── acte-administratif.util.test.ts
+│   │   ├── activites
+│   │   │   └── stats
+│   │   │       └── route.test.ts
+│   │   ├── cpoms
+│   │   │   ├── [id]
+│   │   │   │   └── route.test.ts
+│   │   │   └── route.test.ts
+│   │   ├── dna-codes
+│   │   │   └── route.test.ts
+│   │   ├── files
+│   │   │   ├── [key]
+│   │   │   │   └── route.test.ts
+│   │   │   └── route.test.ts
+│   │   ├── operateurs
+│   │   │   ├── [id]
+│   │   │   │   └── route.test.ts
+│   │   │   ├── route.test.ts
+│   │   │   └── suggestions
+│   │   │       └── route.test.ts
 │   │   └── structures
+│   │       ├── [id]
+│   │       │   ├── adresses
+│   │       │   │   └── route.test.ts
+│   │       │   └── route.test.ts
+│   │       ├── route.test.ts
+│   │       ├── stats
+│   │       │   └── route.test.ts
 │   │       ├── structure.repository.test.ts
-│   │       ├── structure.util.test.ts
-│   │       └── structures.route.test.ts
+│   │       └── structure.util.test.ts
 │   ├── components
 │   │   ├── Menu.test.tsx
 │   │   └── forms
@@ -1233,4 +1261,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-332 directories, 903 files
+346 directories, 917 files
