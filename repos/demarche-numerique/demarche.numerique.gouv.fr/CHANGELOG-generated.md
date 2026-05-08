@@ -1,100 +1,55 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 30 avril 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 07 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de la sécurité, notamment concernant la gestion des identités et des accès, ainsi que par des optimisations des performances et des corrections de bugs. Des améliorations ont également été apportées à l'expérience utilisateur, notamment au niveau des formulaires et des pièces justificatives. Enfin, des travaux de maintenance et de refactoring ont été réalisés pour améliorer la qualité du code et la stabilité de la plateforme.
+Cette période a été marquée par des améliorations de la sécurité, des optimisations de performance, et des évolutions fonctionnelles concernant la gestion des pièces justificatives, des procédures et des utilisateurs. Des corrections de bugs et des refactorings importants ont également été réalisés pour améliorer la stabilité et la maintenabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'ajouter une date de naissance comme champ obligatoire dans les formulaires. [#12890](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12890)
-- Amélioration de l'affichage des informations relatives aux dossiers liés, notamment en indiquant si un dossier a été supprimé ou est expiré. [#12932](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12932)
-- Possibilité pour les administrateurs de personnaliser la présentation par défaut des procédures pour les instructeurs.
-- Amélioration de la gestion des pièces justificatives, notamment en permettant l'upload de fichiers Markdown (.md) et Excel avec macros (.xlsm).
-- Ajout d'une notification aux administrateurs avant l'expiration des tokens d'API Entreprise.
-- Amélioration de la gestion des erreurs lors du téléchargement de fichiers.
-- Amélioration de l'interface utilisateur pour la gestion des pièces justificatives.
+- Amélioration de la gestion des pièces justificatives avec l'ajout de la prise en charge du format `.md` et `.xlsm`.
+- Possibilité pour les administrateurs de personnaliser les tableaux de dossiers pour les instructeurs.
+- Ajout de filtres "Authentification FranceConnect" pour les instructeurs.
+- Amélioration de l'affichage des informations de lien de dossier (état supprimé, expiration).
+- Amélioration de la gestion des erreurs d'upload avec des messages plus clairs et accessibles.
+- Ajout d'une notification aux administrateurs avant l'expiration des tokens API Entreprise.
+- Amélioration de la gestion des pièces justificatives avec la possibilité de lier des dossiers existants.
+- Amélioration de la gestion des utilisateurs et de leurs droits.
 
 ### Évolutions techniques
-- Refactorings importants du code pour améliorer la maintenabilité et la performance, notamment au niveau du traitement des images et des fichiers.
-- Optimisation des requêtes SQL pour améliorer les performances de recherche.
-- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles liées à l'injection SQL, à la falsification de requêtes intersites (CSRF) et à la divulgation d'informations.
-- Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Migration de certains composants vers une nouvelle architecture plus performante et scalable.
-- Amélioration de la gestion des tests pour garantir la qualité du code.
-- Suppression de code obsolète et simplification de certaines parties du code.
-- Amélioration de la gestion des configurations et des variables d'environnement.
-- Amélioration de la gestion des erreurs et de la journalisation.
+- Migration de nombreux jobs vers Sidekiq pour une meilleure gestion des tâches asynchrones et une meilleure résilience.
+- Optimisation des requêtes GraphQL pour améliorer les performances.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Mise à jour de plusieurs dépendances.
+- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles (injection, IDOR, CSRF).
+- Utilisation de Vips pour le traitement des images, améliorant les performances et la robustesse.
+- Migration de composants Haml vers ERB.
+- Amélioration de la gestion des erreurs et des logs.
+- Amélioration de la gestion des caches.
+- Ajout d'instrumentation pour le suivi des performances.
+- Amélioration de la gestion des tests.
+- Remplacement de l'authentification SAML.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les dernières modifications.
-- Corrections de bugs mineurs et améliorations de l'expérience utilisateur.
-- Nettoyage du code et amélioration de la lisibilité.
-- Mise à jour des outils de développement et de l'environnement de test.
-- Amélioration de la gestion des logs et du monitoring.
-- Correction de problèmes de compatibilité avec certaines versions de logiciels.
-- Amélioration de la sécurité en renforçant les mesures de protection contre les attaques.
+- Documentation mise à jour.
+- Corrections de bugs mineurs.
+- Amélioration de la qualité du code.
+- Ajout de tests unitaires et d'intégration.
+- Mise à jour des messages de traduction.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration de la configuration de l'environnement de développement.
+- Ajout de vérifications de sécurité supplémentaires.
+- Correction de problèmes de performance.
+- Amélioration de l'expérience utilisateur.
 - Correction de problèmes d'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Mise à jour des dépendances.
 - Amélioration de la documentation.
 - Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
+- Amélioration de la qualité du code.
 - Ajout de tests unitaires et d'intégration.
+- Mise à jour des messages de traduction.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration de la configuration de l'environnement de développement.
+- Ajout de vérifications de sécurité supplémentaires.
 - Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de performance.
-- Amélioration de la gestion des erreurs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs.
-- Mise à jour des dépendances.
-- Amélioration de la sécurité.
-- Amélioration de l'accessibilité.
-- Amélioration de la gestion des traductions.
-- Ajout de tests unitaires et d'intégration.
+- Amélioration de l'expérience utilisateur.
+- Correction de problèmes d'accessibilité.
+- Ajout de tests pour les nouvelles fonctionnalités.

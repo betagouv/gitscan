@@ -1,3 +1,135 @@
+2026-05-07T15:15:55Z - 99ea8b63e - LeSim : Merge pull request #13081 from demarche-numerique/addressable_columns_for_more_champs
+2026-05-07T14:41:37+02:00 - 2f00f4d1e - simon lehericey : spec: fix filter
+2026-05-07T14:41:37+02:00 - 19a21ea45 - simon lehericey : fix(commune/departement/region): deprecate default champ_column do avoid duplication with json_path
+2026-05-07T14:41:36+02:00 - c2a942d22 - simon lehericey : feat(admin_editor): update extra information list
+2026-05-07T14:41:35+02:00 - e74630f3c - simon lehericey : refactor(addressable_columns): add only options to filter columns
+2026-05-07T14:41:35+02:00 - ac43cb7f5 - simon lehericey : fix(communes): migrate legacy presentation columns to new format
+2026-05-07T14:41:35+02:00 - 153bf1d50 - simon lehericey : feat(departement/epci/region): add addressable_columns
+2026-05-07T14:41:34+02:00 - 5670af04d - simon lehericey : feat(communes): use addressable_columns
+2026-05-07T11:10:02+02:00 - bf79e9837 - simon lehericey : chore: add more log to fc errors
+2026-05-07T10:37:22+02:00 - 612097cae - Mathieu Magnin : Migrate all cron jobs to Sidekiq native retry via Cron::CronJob
+2026-05-07T10:19:18+02:00 - 95afa5030 - Mathieu Magnin : Migrate 6 jobs relying on RetryOnStandardError to Sidekiq native retry
+2026-05-07T10:00:33+02:00 - f94db6209 - Eric Leroy-Terquem : fix(attestation): Decode HTML entities in v1 PDF body
+2026-05-07T09:49:58Z - 90c2207c2 - Colin Darie : Merge pull request #13102 from demarche-numerique/tech/migrate-long-running-jobs-to-sidekiq-retry
+2026-05-07T09:24:51Z - dc2b30059 - Colin Darie : Merge pull request #13093 from demarche-numerique/add-more-batch-operations-to-au-total-ldu
+2026-05-07T09:23:56Z - 15b4ba70d - Colin Darie : Merge pull request #13092 from demarche-numerique/security/opendata-scope-to-public-fields
+2026-05-07T09:21:59Z - a218e83b3 - LeSim : Merge pull request #13103 from demarche-numerique/more_fc_log
+2026-05-07T09:18:09+02:00 - 32e1558fa - Colin Darie : perf(api_geo): memoize degraded-mode departements payload
+2026-05-07T09:18:08+02:00 - ec827a1a8 - Colin Darie : perf(api_geo): memoize countries lookup per locale
+2026-05-07T09:18:08+02:00 - c762e9027 - Colin Darie : perf(api_geo): memoize postal-code inverted index
+2026-05-07T09:18:07+02:00 - b7aaf1572 - Colin Darie : perf(api_geo): memoize per-departement epcis and communes
+2026-05-07T09:18:06+02:00 - accf966e6 - Colin Darie : perf(api_geo): memoize regions and departements lists
+2026-05-07T09:18:02+02:00 - 7f65f3898 - Colin Darie : perf(api_geo): introduce memoize helper and drop Rails.cache from JSON loader
+2026-05-07T09:06:48Z - ee6d9463b - Colin Darie : Merge pull request #13099 from demarche-numerique/fix/attestation-v1-lt-entity-in-pdf
+2026-05-07T09:05:03Z - f4a471b8c - Colin Darie : Merge pull request #13100 from colinux/graphql-perf
+2026-05-07T07:01:14Z - 0c3e262a5 - Mathieu Magnin : Merge pull request #13098 from demarche-numerique/fix/export-job-dir-chdir-race
+2026-05-07T03:33:13Z - 79727ee5b - mfo : Merge pull request #13039 from demarche-numerique/auto/i18n-hardcoded/m-user_mailer
+2026-05-06T18:16:02+02:00 - 88a73e8be - Mathieu Magnin : fix(export): avoid Dir.chdir race in DownloadableFileService
+2026-05-06T17:35:55+02:00 - 8ba8af345 - Mathieu Magnin : Merge remote-tracking branch 'origin/main' into fix/exports-cache-scoping
+2026-05-06T17:06:38+02:00 - c900d3409 - Colin Darie : chore(jobs): comments about retry specifics
+2026-05-06T17:06:37+02:00 - d63991cdb - Colin Darie : chore(sentry): remove ignored active_job_report_on_retry_error because of sentry-sidekiq override
+2026-05-06T17:06:37+02:00 - d409504d3 - Colin Darie : chore(jobs): more with sidekiq retries
+2026-05-06T16:59:41+02:00 - ba84a8416 - Colin Darie : fix(job): set 25 attempts instead of default of 5 when delayed purge job fail
+2026-05-06T16:55:28+02:00 - a910f3dd9 - Colin Darie : test: drop non working test with active job test adapter
+2026-05-06T16:48:48+02:00 - a3c7156cd - Colin Darie : chore(jobs): use sidekiq retry for export job instead of active job retries
+2026-05-06T16:44:22+02:00 - c8e67c936 - Colin Darie : fix(avis): enforce experts_require_administrateur_invitation server-side
+2026-05-06T16:32:27Z - 5de403a36 - Eric Leroy-Terquem : Merge pull request #12952 from demarche-numerique/fix-12529
+2026-05-06T16:03:48+02:00 - c77553ec8 - simon lehericey : fix: mailer preview
+2026-05-06T16:03:48+02:00 - b390d8282 - simon lehericey : refactor: add comments and move some instructions
+2026-05-06T16:03:48+02:00 - 940375035 - simon lehericey : refactor: remove unused branch
+2026-05-06T16:03:46+02:00 - 15ccc9dda - simon lehericey : refactor: remove useless instantiation
+2026-05-06T16:01:13Z - 8d5e2edd3 - Mathieu Magnin : Merge pull request #13046 from demarche-numerique/fix/exports-cache-scoping
+2026-05-06T15:59:57+02:00 - 5b5065483 - Lisa Durand : harmonize wording 'à archiver' in batch operation
+2026-05-06T15:58:14+02:00 - 1169b4811 - Lisa Durand : add all batch operations to au total
+2026-05-06T15:57:28+02:00 - 9c38a9ecd - simon lehericey : refactor: move more methods in avis_creation_concern
+2026-05-06T15:57:28+02:00 - 2542137fe - simon lehericey : fix: flash
+2026-05-06T15:57:26+02:00 - 35e8bb625 - simon lehericey : refactor: do not use emails attributes in avis
+2026-05-06T15:57:15+02:00 - 94a46ed82 - simon lehericey : refactor: extract 2 notice methods
+2026-05-06T15:57:13+02:00 - cc8f085eb - simon lehericey : refactor: remove create_avis_service dossier arg
+2026-05-06T15:57:01+02:00 - fb184891d - simon lehericey : refactor: remove extra dossier args in handle_create_avis
+2026-05-06T15:57:01+02:00 - d76c19a59 - simon lehericey : fixup
+2026-05-06T15:57:01+02:00 - 6c9611de2 - simon lehericey : refactor: i18n send email
+2026-05-06T15:57:01+02:00 - 43f1b39ed - simon lehericey : refactor: create_avis_service return simple [sent_emails, failed_emails]
+2026-05-06T15:56:59+02:00 - e715047c8 - simon lehericey : refactor: user -> claimant
+2026-05-06T15:56:33+02:00 - 1f1527495 - simon lehericey : refactor: extract avis initialization from active_creation_concern
+2026-05-06T15:54:09+02:00 - 9e0f72c95 - simon lehericey : refactor: externalize emails_blanks from create_avis_service
+2026-05-06T15:54:09+02:00 - 536775b1d - simon lehericey : refactor: spec
+2026-05-06T15:54:09+02:00 - 3300a3445 - simon lehericey : refactor: adjust batch_operations_controller
+2026-05-06T15:54:07+02:00 - 22c90d461 - simon lehericey : refactor: create_avis_service to work without avis.email
+2026-05-06T15:36:43+02:00 - 748e3b0f1 - simon lehericey : refactor: remove email from avis
+2026-05-06T15:36:31+02:00 - 09d165f62 - Eric Leroy-Terquem : feat(views): add content_for(:title) to views missing a page title
+2026-05-06T15:36:30+02:00 - 916c4a552 - Eric Leroy-Terquem : feat(layout): if available show procedure id and name in page tab title
+2026-05-06T15:36:30+02:00 - 8d4c9ea50 - Eric Leroy-Terquem : refactor(views): remove procedure libelle from content_for(:title)
+2026-05-06T15:19:53+02:00 - 2c8b8489f - simon lehericey : bump_netimap
+2026-05-06T15:15:28Z - 72755cacb - Mathieu Magnin : Merge pull request #13097 from colinux/fix-retry-delayed-purge-job
+2026-05-06T15:14:21+02:00 - e7ee9744a - mfo : refactor(haml): migrate BatchOperationComponent to ERB
+2026-05-06T15:12:30Z - dcbe99735 - Colin Darie : Merge pull request #13096 from colinux/migrate-job-to-sidekiq-retry
+2026-05-06T15:08:32+02:00 - cf4a99ada - simon lehericey : refactor: faster migration of departement geo json values
+2026-05-06T15:02:46Z - ec34cb986 - LeSim : Merge pull request #12999 from demarche-numerique/simplier_avis
+2026-05-06T14:56:30Z - dad47021f - Colin Darie : Merge pull request #13095 from demarche-numerique/update_net-imap
+2026-05-06T14:38:56+02:00 - 9cfe77263 - Mathieu Magnin : Use if instead of unless in super admin OTP password check
+2026-05-06T13:54:26Z - 33e5c4e6b - LeSim : Merge pull request #13094 from demarche-numerique/faster_departement_json_migration
+2026-05-06T13:42:54Z - 05d9764d5 - Eric Leroy-Terquem : Merge pull request #12987 from demarche-numerique/feat/procedure-tab-title
+2026-05-06T13:42:21Z - ea559e9d9 - LeSim : Merge pull request #12959 from demarche-numerique/api-part-quotient-familial-can-be-used-with-less-scopes
+2026-05-06T13:33:35Z - e3c50cbd3 - Paul Chavard : Merge pull request #13063 from demarche-numerique/push-nvvksllqywks
+2026-05-06T13:28:51Z - 746c3bc6a - Eric Leroy-Terquem : Merge pull request #13043 from demarche-numerique/fix/find-or-create-by-on-user-with-default-scope-eager-load
+2026-05-06T13:21:30Z - d789f40e7 - LeSim : Merge pull request #13089 from demarche-numerique/auto/haml-migration/c-d-b-batch_operation_c-09f5da
+2026-05-06T13:13:12Z - 577780707 - LeSim : Merge pull request #13059 from demarche-numerique/security/users-activate-2fa-bypass
+2026-05-06T13:13:00Z - 4c4f4f3a7 - LeSim : Merge pull request #13087 from demarche-numerique/fix-expired-dossiers-when-restore-procedure
+2026-05-06T12:46:07Z - 934de8cb7 - Mathieu Magnin : Merge pull request #13074 from demarche-numerique/security/super-admin-otp-reauth
+2026-05-06T12:00:30Z - 067c55e04 - LeSim : Merge pull request #13090 from demarche-numerique/faster_commune_geo_json_migration
+2026-05-06T11:31:16+02:00 - d280ffd68 - Mathieu Magnin : security: do not expose private annotations on opendata endpoints
+2026-05-06T10:16:56+02:00 - 1fb3d8909 - simon lehericey : refactor: faster migration of the geo key in commune value_json
+2026-05-06T08:29:21Z - 2d3596e81 - Benoit Queyron : Merge pull request #13001 from demarche-numerique/api-particulier-fetch-later
+2026-05-06T07:35:53Z - 80b049419 - Mathieu Magnin : Merge pull request #13072 from demarche-numerique/security/recoveries-siret-bypass
+2026-05-06T07:35:43Z - 1f10923ca - Mathieu Magnin : Merge pull request #13060 from demarche-numerique/security/users-dossiers-tiers-account-squat
+2026-05-05T17:46:29+02:00 - 1beb5d51f - mfo : Extract create_representations into dedicated job on ultra_low queue
+2026-05-05T16:01:32+02:00 - b2a2755e9 - mfo : refactor(haml): migrate AccuseLectureComponent to ERB
+2026-05-05T15:54:16Z - 742ad6f7a - mfo : Merge pull request #13085 from demarche-numerique/fix-mt-missing-antivirus-v2
+2026-05-05T14:07:22Z - 39e0ddf4f - mfo : Merge pull request #13042 from demarche-numerique/auto/haml-migration/c-d-a-accuse_lecture_component
+2026-05-05T12:15:26Z - 6d543f8f2 - Colin Darie : Merge pull request #13086 from colinux/email-critical
+2026-05-05T12:11:03+02:00 - a74ad0a15 - Colin Darie : perf: extend search terms debounce for light user brouillons
+2026-05-05T12:02:17+02:00 - 4af93bb47 - benoitqueyron : test: Procedure#restore
+2026-05-05T11:47:32+02:00 - 51f7e9991 - Colin Darie : tech: enqueue user invitation and transfer emails on critical queue
+2026-05-05T11:17:20+02:00 - 1568f270a - benoitqueyron : fix test on Procedure#discard_and_keep_track
+2026-05-05T11:01:20Z - 5e63bb535 - Colin Darie : Merge pull request #13088 from colinux/improve-dossier-index-search-terms
+2026-05-05T10:38:07+02:00 - 404fbdc53 - benoitqueyron : fix(procedure): restores only dossiers that are hidden by :procedure_removed when procedure is restored
+2026-05-04T17:39:25+02:00 - 68068e1bc - Paul Chavard : feat(champs): save source stream when champ change event is created
+2026-05-04T17:29:44+02:00 - 363456f84 - Eric Leroy-Terquem : test(system): add system specs for repetition min/max limits
+2026-05-04T17:29:44+02:00 - 0d819f8f5 - Eric Leroy-Terquem : feat(champ): display repetition limits on user form
+2026-05-04T17:29:43+02:00 - a62eaea36 - Eric Leroy-Terquem : feat(validator): add RepetitionValidator for procedure level config validation
+2026-05-04T17:29:43+02:00 - 759e1b913 - Eric Leroy-Terquem : feat(repetition type de champ): add limit, min and max repetitions to revision changes
+2026-05-04T17:29:43+02:00 - 36235418d - Eric Leroy-Terquem : feat(admin): add UI to configure min/max repetition limits in type de champ editor
+2026-05-04T16:48:08+02:00 - 14ec799d8 - Mathieu Magnin : test(rdv_oauth): lock in open-redirect protection on omniauth.origin
+2026-05-04T16:04:22+02:00 - da0d56cbb - benoitqueyron : fix: update url datagouv to DN
+2026-05-04T15:56:07+02:00 - bef89be1c - Mathieu Magnin : Restrict recovery to dossiers matching the requested siret
+2026-05-04T15:55:08+02:00 - 9261cd105 - Eric Leroy-Terquem : feat(type_de_champ): add min/max repetition options in model and controller
+2026-05-04T15:38:13Z - 0732ba4b3 - Eric Leroy-Terquem : Merge pull request #12896 from demarche-numerique/add-limit-to-blocs-repetables
+2026-05-04T15:32:08+02:00 - 99d24dbe7 - mfo : chore(data): backfillVirusScanBlobsTask works on a subset of active_storage_blob.where(virus_scan_result: :pending) using a composite index based on virus_scan_result and id. backfill data from most recent to least recent. skip blobs where record type is a ActiveStorage::Attachment (variants) & or name is preview_image. Also throttle this MT tasks process up to 1000
+2026-05-04T15:27:47Z - c313658cc - Mathieu Magnin : Merge pull request #13083 from demarche-numerique/security/rdv-oauth-open-redirect-regression-test
+2026-05-04T15:17:36+02:00 - 5408427aa - Mathieu Magnin : Allow super admin OTP re-enrollment when password is supplied
+2026-05-04T15:17:35+02:00 - e0e67cc4c - Mathieu Magnin : Require password and forbid re-enrollment in super admin OTP setup
+2026-05-04T15:13:10Z - 275189cac - Benoit Queyron : Merge pull request #13082 from demarche-numerique/fix-url-datagouv
+2026-05-04T15:01:27Z - 31e5acf27 - mfo : Merge pull request #13080 from demarche-numerique/fix-mt-missing-antivirus
+2026-05-04T14:29:42Z - f0c925056 - Colin Darie : Merge pull request #13077 from colinux/tech/remove-legacy-export-seen-cookies
+2026-05-04T13:32:17+02:00 - 2e08f45a7 - simon lehericey : migration: backfill std addressable keys
+2026-05-04T13:32:16+02:00 - ca8110992 - simon lehericey : refactor(logic): use new name in logic
+2026-05-04T13:32:16+02:00 - 18c930951 - simon lehericey : fix(region): double write of std addressable keys
+2026-05-04T13:32:15+02:00 - 605147132 - simon lehericey : fix(epci): double write of std addressable keys
+2026-05-04T13:32:15+02:00 - 42ab66ca7 - simon lehericey : fix(departement): double write of std addressable keys
+2026-05-04T13:32:14+02:00 - f0dafacae - simon lehericey : fix(commune): double write of standard addressable keys
+2026-05-04T12:51:37Z - 709d07ba1 - LeSim : Merge pull request #13078 from demarche-numerique/fix_departement_region_jsonpath
+2026-05-04T12:20:50Z - 34fc34d37 - Mathieu Magnin : Merge pull request #13061 from demarche-numerique/security/targeted-user-link-anonymous-bypass
+2026-05-04T11:17:51+02:00 - d559f8f84 - Colin Darie : tech: remove legacy cookie fallback for export notifications
+2026-05-04T09:38:50Z - 1f624b023 - LeSim : Merge pull request #13070 from demarche-numerique/fix_region_2
+2026-05-04T09:31:55+02:00 - 6443df928 - simon lehericey : refactor(addressable_columns): add a specific flag to enable deprecated_columns
+2026-05-04T09:31:55+02:00 - 4ecd067f3 - simon lehericey : fix: migrate procedure presentation to fix filter
+2026-05-04T09:31:54+02:00 - b195a638b - simon lehericey : spec: impact on graphql
+2026-05-04T09:31:54+02:00 - 3562c49ec - simon lehericey : fix(region_filter): add correct region_code column
+2026-05-04T07:24:21Z - 0474fb63a - LeSim : Merge pull request #13073 from demarche-numerique/security/super-admin-release-notes-otp
+2026-04-30T18:16:24+02:00 - 263e41ea6 - Mathieu Magnin : Require enrolled OTP on super admin stats CSV download
+2026-04-30T18:05:04+02:00 - de9b1d5b1 - Mathieu Magnin : tech: add otp_required_for_login in manager dashboard
+2026-04-30T17:41:39+02:00 - fc3c3d043 - Mathieu Magnin : Require enrolled OTP on super admin release notes endpoints
 2026-04-30T15:39:20+02:00 - 93623f287 - Colin Darie : document activation mail behavior on instructeur add
 2026-04-30T14:10:31Z - 7a1fcb989 - Colin Darie : Merge pull request #13068 from colinux/security/instructeur-add-existing-reset
 2026-04-30T11:49:05+02:00 - f15ac93bc - Paul Chavard : fix(drop_down_list): options should have unique values
@@ -12,9 +144,17 @@
 2026-04-29T16:51:23+02:00 - 6e384bf16 - Colin Darie : fix(maintenance): iterate blobs by id batches to avoid timeout
 2026-04-29T16:14:14Z - cb90db522 - Colin Darie : Merge pull request #13065 from colinux/security/france-connect-merge-email
 2026-04-29T14:16:41Z - 4f366ea72 - Colin Darie : Merge pull request #13056 from colinux/remove-migrate-old-csrf
+2026-04-29T12:08:19+02:00 - 7d9a4983f - Mathieu Magnin : fix(security): require auth on anonymous targeted user link for invites
+2026-04-29T12:06:31+02:00 - c8a8975d4 - Mathieu Magnin : fix(security): do not pre-confirm tiers user accounts from owner-submitted email
+2026-04-29T12:04:48+02:00 - 756cb3efe - Mathieu Magnin : fix(security): move device-trust off the GET activation link
 2026-04-29T12:02:20+02:00 - 13fd3d626 - Mathieu Magnin : fix(security): skip auto sign-in when confirmation token is replayed
 2026-04-29T11:16:10+02:00 - f808e74f1 - Colin Darie : chore: drop transitoire domain redirect and OIDC support
+2026-04-29T10:39:11+02:00 - 07e2e5977 - benoitqueyron : refactor(champ_external_data_concern): removes the ability to make synchronous calls
+2026-04-29T10:32:53+02:00 - 94edb6b56 - benoitqueyron : fix test
+2026-04-29T10:32:44+02:00 - b90f3d70f - benoitqueyron : feat(api part - quotient familial): calls API Part asynchronously
 2026-04-29T10:28:04+02:00 - 04d81a6d2 - Colin Darie : chore: remove old csrf token migration
+2026-04-29T10:06:12+02:00 - 5d96c532a - Eric Leroy-Terquem : fix : revert previous not working fix
+2026-04-29T10:06:11+02:00 - 4ffb58541 - Eric Leroy-Terquem : fix(user): unscope eager load on user in create_or_promote_to_expert
 2026-04-29T09:21:44+02:00 - 067a37ca4 - Mathieu Magnin : fix(security): reject non-scalar email param in user signup to prevent disclosure
 2026-04-29T09:14:13+02:00 - aad2967c0 - Mathieu Magnin : fix(security): use constant-time signature compare in Crisp webhook
 2026-04-29T09:10:29+02:00 - 1c052b0a3 - Mathieu Magnin : fix(security): anchor LEGIT_ADMIN_DOMAINS check on full domain to prevent suffix bypass
@@ -32,6 +172,7 @@
 2026-04-28T18:14:09+02:00 - 68e30753c - Mathieu Magnin : fix(security): scope label reorder to current procedure to prevent cross-procedure IDOR
 2026-04-28T17:19:41+02:00 - e5a21ec8d - Colin Darie : fix(security): prevent expert account takeover via NULL confirmation_token
 2026-04-28T17:03:14+02:00 - ad9f69e56 - Colin Darie : chore(bundle): bump erb 6.0.2 => 6.0.4
+2026-04-28T16:49:43+02:00 - b9d264ba7 - Mathieu Magnin : fix(exports): scope cached export lookup by groupe instructeurs and user profile
 2026-04-28T16:21:42+02:00 - 7daf4ea48 - Colin Darie : fix(active_storage): pre-mark blobs as analyzed to avoid sync UPDATE
 2026-04-28T16:15:28+02:00 - ead0265f0 - Mathieu Magnin : fix(exports): scope export template lookup to instructeur's groupe_instructeurs
 2026-04-28T15:33:04Z - 3f46a4b6b - Mathieu Magnin : Merge pull request #13048 from colinux/fix-experts-avis-controller
@@ -42,6 +183,9 @@
 2026-04-28T12:46:39Z - 353b4a614 - Colin Darie : Merge pull request #13038 from colinux/fix-toggle-data-attributes
 2026-04-28T12:37:46+02:00 - d0bc39a00 - Colin Darie : fix(security): prevent SQL injection in Zone.default_for
 2026-04-28T11:46:03+02:00 - cc44d6e3d - mfo : refactor(haml): migrate IneligibiliteRulesComponent to ERB
+2026-04-28T11:39:42+02:00 - 20b033fc8 - mfo : i18n(user_mailer): mark mailer subjects as used in i18n-tasks
+2026-04-28T11:39:41+02:00 - df63a87d6 - mfo : i18n(user_mailer): add English translations for mail subjects
+2026-04-28T11:39:41+02:00 - 9a62a5282 - mfo : i18n(user_mailer): extract hardcoded French subjects to YAML
 2026-04-28T11:03:01+02:00 - 6b926b8c2 - mfo : fix(mailer): use correct archive list URL for instructeurs
 2026-04-28T10:24:21+02:00 - ac450201c - Colin Darie : fix(toggle_component): forward opt: data attributes to the input
 2026-04-28T10:14:00+02:00 - aa8d34e52 - Mathieu Magnin : fix(manager): scope piece justificative template lookup to procedure
@@ -146,6 +290,8 @@
 2026-04-20T07:52:01Z - f2377c1fe - Kara Diaby : Merge pull request #12935 from demarche-numerique/feat/10914
 2026-04-20T07:32:33Z - 3478b6115 - LeSim : Merge pull request #12989 from demarche-numerique/fix-idor-groupe-gestionnaire
 2026-04-17T17:36:49+02:00 - e65b6b385 - Mathieu Magnin : fix(security): validate rdv external id format to prevent URL injection
+2026-04-17T16:02:13+02:00 - 8461cbdd2 - Eric Leroy-Terquem : fix(a11y): Remove auto-dismiss on upload error messages
+2026-04-17T16:02:12+02:00 - 4715e2823 - Eric Leroy-Terquem : fix(a11y): Link upload error messages to file input via aria-describedby
 2026-04-17T15:32:17+02:00 - 43e2bca2e - Mathieu Magnin : fix(security): scope administrateur lookup to groupe_gestionnaire on destroy and remove
 2026-04-17T15:32:16+02:00 - aeafefd61 - Mathieu Magnin : fix(security): scope gestionnaire lookup to groupe_gestionnaire on destroy
 2026-04-17T11:03:40+02:00 - 2f037c96c - Mathieu Magnin : fix(security): prevent IDOR in instructeur contact_information
@@ -235,6 +381,9 @@
 2026-04-14T07:29:08Z - 9830291ac - Mathieu Magnin : Merge pull request #12960 from demarche-numerique/fix-11167-aria-live-upload-error
 2026-04-13T18:41:41Z - 10c538b14 - Eric Leroy-Terquem : Merge pull request #12956 from demarche-numerique/fix-instant-email-new-expert-avis
 2026-04-13T18:09:57+02:00 - ba0616624 - Mathieu Magnin : fix(a11y): announce upload transfer errors to screen readers
+2026-04-13T17:16:16+02:00 - 7a1b254d4 - benoitqueyron : test
+2026-04-13T16:59:46+02:00 - 473d791ba - benoitqueyron : feat(api part - quotient familial): extracts value json regardless of the data content
+2026-04-13T16:34:05+02:00 - 5d80cb7d0 - benoitqueyron : feat(api part - quotient familial): validates the api response if there is at least one scope
 2026-04-13T16:17:08+02:00 - ab4ee8241 - Mathieu Magnin : fix: handle stale type_de_champ references in export template columns
 2026-04-13T15:31:56Z - a2ceb3eda - mfo : Merge pull request #12930 from mfo/cleanup-nature-step2
 2026-04-13T11:18:07Z - 5075e3796 - mfo : Merge pull request #12957 from mfo/US/somepatches

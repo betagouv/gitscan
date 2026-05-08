@@ -350,7 +350,7 @@
 │   │   │   ├── accuse_lecture_component
 │   │   │   │   ├── accuse_lecture_component.en.yml
 │   │   │   │   ├── accuse_lecture_component.fr.yml
-│   │   │   │   └── accuse_lecture_component.html.haml
+│   │   │   │   └── accuse_lecture_component.html.erb
 │   │   │   ├── accuse_lecture_component.rb
 │   │   │   ├── address_component
 │   │   │   │   ├── address_component.en.yml
@@ -374,7 +374,7 @@
 │   │   │   ├── batch_operation_component
 │   │   │   │   ├── batch_operation_component.en.yml
 │   │   │   │   ├── batch_operation_component.fr.yml
-│   │   │   │   └── batch_operation_component.html.haml
+│   │   │   │   └── batch_operation_component.html.erb
 │   │   │   ├── batch_operation_component.rb
 │   │   │   ├── batch_operation_inline_buttons_component
 │   │   │   │   ├── batch_operation_inline_buttons_component.en.yml
@@ -722,8 +722,6 @@
 │   │   │   │   └── regions_component.html.haml
 │   │   │   ├── regions_component.rb
 │   │   │   ├── repetition_component
-│   │   │   │   ├── repetition_component.en.yml
-│   │   │   │   ├── repetition_component.fr.yml
 │   │   │   │   └── repetition_component.html.erb
 │   │   │   ├── repetition_component.rb
 │   │   │   ├── repetition_row_component
@@ -1363,6 +1361,7 @@
 │   │   │   ├── nav_bar_profile_concern.rb
 │   │   │   ├── pro_connect_session_concern.rb
 │   │   │   ├── procedure_context_concern.rb
+│   │   │   ├── requires_enrolled_super_admin_otp.rb
 │   │   │   ├── simpliscore_concern.rb
 │   │   │   └── turbo_champs_concern.rb
 │   │   ├── contact_controller.rb
@@ -1911,6 +1910,7 @@
 │   │   ├── champ_fetch_external_data_job.rb
 │   │   ├── concerns
 │   │   │   └── datagouv_cron_schedulable_concern.rb
+│   │   ├── create_representations_job.rb
 │   │   ├── crisp_create_conversation_job.rb
 │   │   ├── crisp_mattermost_tech_notification_job.rb
 │   │   ├── crisp_update_people_data_job.rb
@@ -2668,6 +2668,12 @@
 │   │       ├── t20260408_backfill_referentiel_tiptap_columns_task.rb
 │   │       ├── t20260408lowercase_type_de_champ_nature_values_task.rb
 │   │       ├── t20260427backfill_virus_scan_blobs_task.rb
+│   │       ├── t20260430_migrate_legacy_region_column_in_procedure_presentation_task.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_commune_champs_task.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_departement_champs_task.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_epci_champs_task.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_region_champs_task.rb
+│   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -2702,7 +2708,8 @@
 │   │   │   ├── no_empty_block_validator.rb
 │   │   │   ├── no_empty_drop_down_validator.rb
 │   │   │   ├── number_validator.rb
-│   │   │   └── referentiel_ready_validator.rb
+│   │   │   ├── referentiel_ready_validator.rb
+│   │   │   └── repetition_validator.rb
 │   │   └── url_validator.rb
 │   └── views
 │       ├── active_storage
@@ -2907,6 +2914,7 @@
 │       │   ├── piece_justificative
 │       │   │   └── show.turbo_stream.haml
 │       │   ├── repetition
+│       │   │   ├── _actions.html.erb
 │       │   │   ├── add.turbo_stream.erb
 │       │   │   └── remove.turbo_stream.erb
 │       │   └── rna
@@ -3626,6 +3634,10 @@
 │   │   ├── api_entreprise.fr.yml
 │   │   ├── api_particulier.en.yml
 │   │   ├── api_particulier.fr.yml
+│   │   ├── avis_creation_concern.en.yml
+│   │   ├── avis_creation_concern.fr.yml
+│   │   ├── create_avis_service.en.yml
+│   │   ├── create_avis_service.fr.yml
 │   │   ├── devise.en.yml
 │   │   ├── devise.fr.yml
 │   │   ├── dynamics
@@ -4012,6 +4024,9 @@
 │   │       │   │   └── dossier_link
 │   │       │   │       ├── en.yml
 │   │       │   │       └── fr.yml
+│   │       │   ├── en.yml
+│   │       │   └── fr.yml
+│   │       ├── user_mailer
 │   │       │   ├── en.yml
 │   │       │   └── fr.yml
 │   │       └── users
@@ -4548,7 +4563,9 @@
 │   │   ├── 20260402182757_recreate_search_terms_indexes_with_unaccent.rb
 │   │   ├── 20260407120000_add_api_entreprise_token_expiration_notice_sent_at_to_procedures.rb
 │   │   ├── 20260421120000_add_partial_index_for_stalled_declarative_dossiers.rb
-│   │   └── 20260427100611_add_last_export_seen_at_to_instructeurs_procedures.rb
+│   │   ├── 20260427100611_add_last_export_seen_at_to_instructeurs_procedures.rb
+│   │   ├── 20260429133815_add_source_stream_to_champs.rb
+│   │   └── 20260504090452_add_partial_index_on_blobs_pending_virus_scan.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -4811,6 +4828,7 @@
 │   │   │   ├── administrateurs
 │   │   │   │   └── select_procedure_drop_down_list_component_preview.rb
 │   │   │   ├── dossiers
+│   │   │   │   ├── accuse_lecture_component_preview.rb
 │   │   │   │   ├── autosave_footer_component_preview
 │   │   │   │   │   └── error.html.erb
 │   │   │   │   ├── autosave_footer_component_preview.rb
@@ -5007,6 +5025,7 @@
 │   │   ├── stats_controller_spec.rb
 │   │   ├── super_admins
 │   │   │   └── release_notes_controller_spec.rb
+│   │   ├── super_admins_controller_spec.rb
 │   │   ├── targeted_user_links_controller_spec.rb
 │   │   ├── users
 │   │   │   ├── activate_controller_spec.rb
@@ -5289,8 +5308,6 @@
 │   │   ├── procedure_helper_spec.rb
 │   │   └── release_notes_helper_spec.rb
 │   ├── jobs
-│   │   ├── active_storage
-│   │   │   └── base_job_spec.rb
 │   │   ├── admin_update_default_zones_job_spec.rb
 │   │   ├── ami
 │   │   │   └── send_notification_job_spec.rb
@@ -5316,6 +5333,7 @@
 │   │   ├── blob_processor_job_spec.rb
 │   │   ├── bulk_route_job_spec.rb
 │   │   ├── champ_fetch_external_data_job_spec.rb
+│   │   ├── create_representations_job_spec.rb
 │   │   ├── crisp_create_conversation_job_spec.rb
 │   │   ├── crisp_mattermost_tech_notification_job_spec.rb
 │   │   ├── crisp_update_people_data_job_spec.rb
@@ -5372,8 +5390,6 @@
 │   │   ├── virus_scanner_job_spec.rb
 │   │   └── web_hook_job_spec.rb
 │   ├── lib
-│   │   ├── active_job
-│   │   │   └── retry_on_standard_error_spec.rb
 │   │   ├── active_storage
 │   │   │   └── downloadable_file_spec.rb
 │   │   ├── api
@@ -5660,7 +5676,9 @@
 │   │   ├── types_de_champ
 │   │   │   ├── address_type_de_champ_spec.rb
 │   │   │   ├── commune_type_de_champ_spec.rb
+│   │   │   ├── departement_type_de_champ_spec.rb
 │   │   │   ├── drop_down_list_type_de_champ_spec.rb
+│   │   │   ├── epci_type_de_champ_spec.rb
 │   │   │   ├── linked_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── multiple_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── piece_justificative_type_de_champ_spec.rb
@@ -5676,6 +5694,7 @@
 │   │   │   ├── prefill_repetition_type_de_champ_spec.rb
 │   │   │   ├── prefill_type_de_champ_spec.rb
 │   │   │   ├── quotient_familial_type_de_champ_spec.rb
+│   │   │   ├── region_type_de_champ_spec.rb
 │   │   │   └── siret_type_de_champ_spec.rb
 │   │   ├── user_spec.rb
 │   │   └── zone_spec.rb
@@ -5766,7 +5785,6 @@
 │   │   ├── mailer.rb
 │   │   ├── public_api_matchers.rb
 │   │   ├── shared_examples_for_boolean_champs.rb
-│   │   ├── shared_examples_for_jobs.rb
 │   │   ├── shared_examples_for_prefilled_dossier.rb
 │   │   ├── shared_exemples_for_dossier.rb
 │   │   ├── system_helpers.rb
@@ -5959,6 +5977,10 @@
 │   │       ├── t20260408_backfill_referentiel_tiptap_columns_task_spec.rb
 │   │       ├── t20260408lowercase_type_de_champ_nature_values_task_spec.rb
 │   │       ├── t20260427backfill_virus_scan_blobs_task_spec.rb
+│   │       ├── t20260430_migrate_legacy_region_column_in_procedure_presentation_task_spec.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_commune_champs_task_spec.rb
+│   │       ├── t20260504_backfill_canonical_keys_in_departement_champs_task_spec.rb
+│   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -5973,7 +5995,8 @@
 │   │       ├── date_validator_spec.rb
 │   │       ├── libelle_validator_spec.rb
 │   │       ├── number_validator_spec.rb
-│   │       └── referentiel_ready_validator_spec.rb
+│   │       ├── referentiel_ready_validator_spec.rb
+│   │       └── repetition_validator_spec.rb
 │   └── views
 │       ├── administrateurs
 │       │   ├── _mail_template_attestation_inconsistency_alert.html.haml_spec.rb
@@ -6011,6 +6034,7 @@
 │       │   └── send_notifications.html.haml_spec.rb
 │       ├── layouts
 │       │   ├── _header_spec.rb
+│       │   ├── application_html_spec.rb
 │       │   └── procedure_context.html.haml_spec.rb
 │       ├── prefill_descriptions
 │       │   └── _prefillable_entities.html.haml_spec.rb
@@ -6062,4 +6086,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-981 directories, 5399 files
+980 directories, 5424 files
