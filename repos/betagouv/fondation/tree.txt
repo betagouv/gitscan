@@ -17,6 +17,11 @@
 ├── .husky
 │   └── pre-push
 ├── .nvmrc
+├── .oxfmtrc.json
+├── .oxlintrc.json
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
 ├── CLAUDE.md
 ├── LICENSE
 ├── README.md
@@ -25,15 +30,14 @@
 │   │   ├── .env.e2e
 │   │   ├── .env.example
 │   │   ├── .gitignore
-│   │   ├── .prettierignore
-│   │   ├── .prettierrc
+│   │   ├── .oxfmtrc.json
+│   │   ├── .oxlintrc.json
 │   │   ├── .sqlfluff
 │   │   ├── .vscode
 │   │   │   └── settings.json
 │   │   ├── docs
 │   │   │   └── adr
 │   │   │       └── 2025-10-22-sortie-hexa.md
-│   │   ├── eslint.config.mjs
 │   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
@@ -579,15 +583,15 @@
 │   │   └── tsconfig.json
 │   └── client
 │       ├── .gitignore
-│       ├── .prettierignore
-│       ├── .prettierrc
+│       ├── .oxfmtrc.json
+│       ├── .oxlintrc.json
+│       ├── .vscode
+│       │   └── settings.json
 │       ├── README.md
-│       ├── eslint.config.js
 │       ├── index.html
 │       ├── openapi-ts.config.ts
 │       ├── package.json
 │       ├── playwright.config.ts
-│       ├── postcss.config.js
 │       ├── public
 │       │   ├── favicon.staging.svg
 │       │   ├── favicon.svg
@@ -639,8 +643,6 @@
 │       │   │   │   │   │   ├── ReportOverviewFileComment.tsx
 │       │   │   │   │   │   ├── ReportOverviewPage.tsx
 │       │   │   │   │   │   ├── ReportOverviewState.tsx
-│       │   │   │   │   │   ├── ReportRule.tsx
-│       │   │   │   │   │   ├── ReportRules.tsx
 │       │   │   │   │   │   ├── ReportSummaryCard.css
 │       │   │   │   │   │   ├── ReportSummaryCard.tsx
 │       │   │   │   │   │   ├── Summary.tsx
@@ -689,9 +691,7 @@
 │       │   │   │   └── labels
 │       │   │   │       ├── labels-mappers.ts
 │       │   │   │       ├── report-list-table-labels.ts
-│       │   │   │       ├── rules-labels.tsx
 │       │   │   │       ├── state-filter-labels.ts
-│       │   │   │       ├── state-label.mapper.ts
 │       │   │   │       └── summary-labels.ts
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── Dashboard.tsx
@@ -760,7 +760,6 @@
 │       │   │   │   ├── SortButton.tsx
 │       │   │   │   ├── StagingAppLayout.tsx
 │       │   │   │   ├── SuccessModal.tsx
-│       │   │   │   ├── TableControl.tsx
 │       │   │   │   ├── TextValue.tsx
 │       │   │   │   ├── UserChipsSelect.tsx
 │       │   │   │   ├── alerts
@@ -973,6 +972,7 @@
 │       │   │   │   └── users
 │       │   │   │       ├── AdminUserDetailPage.tsx
 │       │   │   │       ├── AdminUserListPage.tsx
+│       │   │   │       ├── AdminUserRole.tsx
 │       │   │   │       └── admin-user-enum.ts
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
@@ -1006,16 +1006,14 @@
 │       │   │   │   │       ├── OfficialReportPage.tsx
 │       │   │   │   │       ├── OfficialReportPreviewPage.tsx
 │       │   │   │   │       ├── components
-│       │   │   │   │       │   └── JusticeContactSelector.tsx
+│       │   │   │   │       │   ├── JusticeContactSelector.tsx
+│       │   │   │   │       │   └── OfficialReportForm.tsx
 │       │   │   │   │       ├── context
 │       │   │   │   │       │   ├── OfficialReportContext.tsx
 │       │   │   │   │       │   ├── OfficialReportContext.types.ts
 │       │   │   │   │       │   └── OfficialReportProvider.tsx
-│       │   │   │   │       ├── hooks
-│       │   │   │   │       │   └── useSelection.ts
-│       │   │   │   │       └── steps
-│       │   │   │   │           ├── OfficialReportMetadataStep.tsx
-│       │   │   │   │           └── OfficialReportSelectionsStep.tsx
+│       │   │   │   │       └── hooks
+│       │   │   │   │           └── useSelection.ts
 │       │   │   │   ├── membres
 │       │   │   │   │   └── DetailsMemberPage.tsx
 │       │   │   │   ├── observations
@@ -1056,23 +1054,15 @@
 │       │   │   └── AppRouter.tsx
 │       │   ├── tanstack-react-table.d.ts
 │       │   ├── types
-│       │   │   ├── date-only.types.ts
 │       │   │   ├── enums.types.ts
 │       │   │   ├── icons.types.ts
-│       │   │   ├── rules.types.ts
 │       │   │   ├── table.types.ts
 │       │   │   └── utils.types.ts
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
-│       │   │   ├── date-transparence-routes.utils.ts
-│       │   │   ├── deterministicUuidGenerator.ts
-│       │   │   ├── formations-routes.utils.ts
-│       │   │   ├── gds-transparencies-routes.utils.ts
-│       │   │   ├── get-initials.ts
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── multipart-json.ts
-│       │   │   ├── nomination-file.ts
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
@@ -1081,7 +1071,6 @@
 │       │   │   ├── types.util.ts
 │       │   │   └── user.utils.ts
 │       │   └── vite-env.d.ts
-│       ├── tailwind.config.js
 │       ├── tests
 │       │   ├── e2e
 │       │   │   ├── file-affectation.spec.ts
@@ -1122,6 +1111,7 @@
 ├── packages
 │   └── shared-models
 │       ├── .gitignore
+│       ├── .oxlintrc.json
 │       ├── .vscode
 │       │   └── settings.json
 │       ├── models
@@ -1142,4 +1132,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-248 directories, 896 files
+249 directories, 885 files
