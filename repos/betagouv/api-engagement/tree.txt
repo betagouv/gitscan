@@ -694,6 +694,9 @@
 │   │   │       ├── import.ts
 │   │   │       └── tracking.ts
 │   │   ├── middlewares
+│   │   │   ├── __tests__
+│   │   │   │   └── authorization.test.ts
+│   │   │   ├── authorization.ts
 │   │   │   ├── body-parser-error-handler.ts
 │   │   │   ├── cors.ts
 │   │   │   ├── error-handler.ts
@@ -824,6 +827,7 @@
 │   │   │   ├── normalize.ts
 │   │   │   ├── organization.ts
 │   │   │   ├── parser.ts
+│   │   │   ├── publisher-access.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── request-id.ts
 │   │   │   ├── request.ts
@@ -862,31 +866,40 @@
 │   │   │   └── widget.ts
 │   │   ├── integration
 │   │   │   ├── api
-│   │   │   │   ├── iframe
-│   │   │   │   │   ├── aggs.test.ts
-│   │   │   │   │   ├── search.test.ts
-│   │   │   │   │   └── widget.test.ts
-│   │   │   │   ├── metrics.test.ts
-│   │   │   │   ├── moderation.test.ts
-│   │   │   │   ├── rate-limit.test.ts
-│   │   │   │   ├── redirect
-│   │   │   │   │   ├── account.test.ts
-│   │   │   │   │   ├── apply.test.ts
-│   │   │   │   │   ├── campaign.test.ts
-│   │   │   │   │   ├── mission.test.ts
-│   │   │   │   │   ├── print.test.ts
-│   │   │   │   │   └── widget.test.ts
-│   │   │   │   ├── routing.test.ts
-│   │   │   │   ├── v0
-│   │   │   │   │   ├── mission.test.ts
-│   │   │   │   │   ├── mymission.test.ts
-│   │   │   │   │   ├── myorganization.test.ts
-│   │   │   │   │   └── view.test.ts
-│   │   │   │   └── v2
-│   │   │   │       ├── activity.test.ts
-│   │   │   │       └── mission.test.ts
-│   │   │   ├── dashboard
-│   │   │   │   └── user-access.test.ts
+│   │   │   │   ├── checks
+│   │   │   │   │   ├── metrics.test.ts
+│   │   │   │   │   ├── rate-limit.test.ts
+│   │   │   │   │   └── routing.test.ts
+│   │   │   │   └── endpoints
+│   │   │   │       ├── campaign.test.ts
+│   │   │   │       ├── iframe
+│   │   │   │       │   ├── aggs.test.ts
+│   │   │   │       │   ├── search.test.ts
+│   │   │   │       │   └── widget.test.ts
+│   │   │   │       ├── import.test.ts
+│   │   │   │       ├── mission.test.ts
+│   │   │   │       ├── moderation.test.ts
+│   │   │   │       ├── organization.test.ts
+│   │   │   │       ├── publisher.test.ts
+│   │   │   │       ├── redirect
+│   │   │   │       │   ├── account.test.ts
+│   │   │   │       │   ├── apply.test.ts
+│   │   │   │       │   ├── campaign.test.ts
+│   │   │   │       │   ├── mission.test.ts
+│   │   │   │       │   ├── print.test.ts
+│   │   │   │       │   └── widget.test.ts
+│   │   │   │       ├── stats.test.ts
+│   │   │   │       ├── user.test.ts
+│   │   │   │       ├── v0
+│   │   │   │       │   ├── mission.test.ts
+│   │   │   │       │   ├── mymission.test.ts
+│   │   │   │       │   ├── myorganization.test.ts
+│   │   │   │       │   └── view.test.ts
+│   │   │   │       ├── v2
+│   │   │   │       │   ├── activity.test.ts
+│   │   │   │       │   └── mission.test.ts
+│   │   │   │       ├── warning.test.ts
+│   │   │   │       └── widget.test.ts
 │   │   │   ├── docs
 │   │   │   │   ├── spec.test.ts
 │   │   │   │   └── testOpenApiApp.ts
@@ -1287,4 +1300,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-301 directories, 1074 files
+303 directories, 1085 files
