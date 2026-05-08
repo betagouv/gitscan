@@ -3,8 +3,11 @@
 ├── .claude
 │   ├── settings.json
 │   └── worktrees
+│       ├── add-import-plan-event
+│       ├── audit-checklist-view-update
 │       ├── download-preuves-archive
-│       └── fix-snbc-calculation
+│       ├── fix-snbc-calculation
+│       └── pdf-export
 ├── .cursor
 │   └── rules
 │       └── comply-adr.mdc
@@ -288,7 +291,6 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.types.ts
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.utils.ts
 │   │   │   │   │   │   │   │   │   │       │   │   └── use-action-information.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── pluralize.ts
 │   │   │   │   │   │   │   │   │   │       │   ├── score-indicatif
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.badge.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.donnees.tsx
@@ -317,7 +319,7 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.header.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── use-hash-from-url.ts
+│   │   │   │   │   │   │   │   │   │       │   │   └── use-scroll-to-hash.ts
 │   │   │   │   │   │   │   │   │   │       │   └── task
 │   │   │   │   │   │   │   │   │   │       │       ├── task-card.tsx
 │   │   │   │   │   │   │   │   │   │       │       └── task.cards-list.tsx
@@ -867,6 +869,9 @@
 │   │   │   │   └── valeurs
 │   │   │   │       ├── use-list-indicateur-valeurs.ts
 │   │   │   │       └── use-upsert-indicateur-valeur.ts
+│   │   │   ├── labels
+│   │   │   │   ├── catalog.ts
+│   │   │   │   └── plural.spec.ts
 │   │   │   ├── lib
 │   │   │   │   ├── crisp.widget.lazy-load.tsx
 │   │   │   │   └── crisp.widget.tsx
@@ -1777,6 +1782,7 @@
 │   │   │       │   ├── use-base-toast.tsx
 │   │   │       │   └── use-mutation-toast.tsx
 │   │   │       ├── use-api-client.ts
+│   │   │       ├── use-get-url-hash.ts
 │   │   │       ├── useDownloadFile.ts
 │   │   │       ├── useIntersectionObserver.ts
 │   │   │       ├── useWindowSize.ts
@@ -2364,6 +2370,13 @@
 │   │   │   │   │       ├── upsert-axe.router.ts
 │   │   │   │   │       └── upsert-axe.service.ts
 │   │   │   │   ├── fiches
+│   │   │   │   │   ├── add-annexe
+│   │   │   │   │   │   ├── add-annexe.errors.ts
+│   │   │   │   │   │   ├── add-annexe.input.ts
+│   │   │   │   │   │   ├── add-annexe.repository.ts
+│   │   │   │   │   │   ├── add-annexe.router.e2e-spec.ts
+│   │   │   │   │   │   ├── add-annexe.router.ts
+│   │   │   │   │   │   └── add-annexe.service.ts
 │   │   │   │   │   ├── axe.service.ts
 │   │   │   │   │   ├── bulk-edit
 │   │   │   │   │   │   ├── bulk-edit.input.ts
@@ -4296,6 +4309,7 @@
 │   │   │   │   ├── fiches@v4.43.0.sql
 │   │   │   │   ├── fiches@v4.45.0.sql
 │   │   │   │   ├── fiches@v4.9.0.sql
+│   │   │   │   ├── fix_save_fiche_action_modified_by.sql
 │   │   │   │   ├── historique.sql
 │   │   │   │   ├── historique@v4.19.0.sql
 │   │   │   │   ├── historique@v4.23.0.sql
@@ -4824,6 +4838,7 @@
 │   │   │   │   ├── fiches@v4.43.0.sql
 │   │   │   │   ├── fiches@v4.45.0.sql
 │   │   │   │   ├── fiches@v4.9.0.sql
+│   │   │   │   ├── fix_save_fiche_action_modified_by.sql
 │   │   │   │   ├── historique.sql
 │   │   │   │   ├── historique@v4.19.0.sql
 │   │   │   │   ├── historique@v4.23.0.sql
@@ -5351,6 +5366,7 @@
 │   │       │   ├── fiches@v4.43.0.sql
 │   │       │   ├── fiches@v4.45.0.sql
 │   │       │   ├── fiches@v4.9.0.sql
+│   │       │   ├── fix_save_fiche_action_modified_by.sql
 │   │       │   ├── historique.sql
 │   │       │   ├── historique@v4.19.0.sql
 │   │       │   ├── historique@v4.23.0.sql
@@ -5579,6 +5595,8 @@
 │       │   ├── fichier_preuve.sql
 │       │   ├── labellisation.sql
 │       │   └── preuve_v2.sql
+│       ├── plan_action
+│       │   └── fiche_action_historique.sql
 │       ├── referentiel
 │       │   ├── action_discussion.sql
 │       │   ├── action_precision_historique.sql
@@ -5965,6 +5983,7 @@
 │   │   │   │   ├── discussion.schema.ts
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── annexe-info.schema.ts
+│   │   │   │   │   ├── annexe.schema.ts
 │   │   │   │   │   ├── bibliotheque-fichier.schema.ts
 │   │   │   │   │   ├── preuve-audit-with-fichier.schema.ts
 │   │   │   │   │   ├── preuve-audit.schema.ts
@@ -6602,6 +6621,9 @@
 │       │   │   ├── useCopyToClipboard.ts
 │       │   │   └── useOnlineStatus.ts
 │       │   ├── index.ts
+│       │   ├── labels
+│       │   │   ├── catalog.ts
+│       │   │   └── plural.ts
 │       │   ├── shadcn
 │       │   │   ├── dropdown-menu.tsx
 │       │   │   ├── slider.stories.tsx
@@ -6900,4 +6922,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1219 directories, 5881 files
+1226 directories, 5896 files
