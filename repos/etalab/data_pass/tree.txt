@@ -1236,6 +1236,7 @@
 │   │   │   ├── message_template_selector_controller.js
 │   │   │   ├── modified_form_controller.js
 │   │   │   ├── name_with_uid_preview_controller.js
+│   │   │   ├── nested_form_focus_controller.js
 │   │   │   ├── remove_attached_file_controller.js
 │   │   │   ├── scroll_into_view_controller.js
 │   │   │   ├── scroll_to_controller.js
@@ -1760,6 +1761,7 @@
 │       │   │   │   └── _contacts.html.erb
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
+│       │   │   │   ├── _cnous_data_extraction_criteria.html.erb
 │       │   │   │   ├── _contacts.html.erb
 │       │   │   │   ├── _france_connect.html.erb
 │       │   │   │   ├── _france_connect_eidas.html.erb
@@ -1780,6 +1782,7 @@
 │       │   │   ├── _header.html.erb
 │       │   │   ├── _wizard_buttons.html.erb
 │       │   │   ├── basic_infos.html.erb
+│       │   │   ├── cnous_data_extraction_criteria.html.erb
 │       │   │   ├── contacts.html.erb
 │       │   │   ├── france_connect.html.erb
 │       │   │   ├── france_connect_eidas.html.erb
@@ -1928,6 +1931,7 @@
 │       │   │   │   └── _contacts.html.erb
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
+│       │   │   │   ├── _cnous_data_extraction_criteria.html.erb
 │       │   │   │   ├── _contacts.html.erb
 │       │   │   │   ├── _france_connect.html.erb
 │       │   │   │   ├── _france_connect_eidas.html.erb
@@ -2477,6 +2481,9 @@
 │   │   ├── 20260414070427_add_api_change_constraint_to_authorization_request_events.rb
 │   │   ├── 20260415134608_add_banned_at_and_ban_reason_to_users.rb
 │   │   ├── 20260416154456_add_ban_reason_check_constraint_to_users.rb
+│   │   ├── 20260417000001_add_diagnostic_fields.rb
+│   │   ├── 20260419000001_add_p95_p99_duration_to_rails_pulse_jobs.rb
+│   │   ├── 20260420000001_expand_normalized_sql_column.rb
 │   │   └── 20260421000000_migrate_roles_to_three_part_format.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
@@ -2489,33 +2496,37 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── README.md
-│   ├── admin_change.md
-│   ├── ajout_evenement.md
-│   ├── ajout_nouveau_bloc_de_formulaire.md
-│   ├── ajout_nouveau_form_non_tech.md
-│   ├── ajout_nouveau_provider.md
-│   ├── api.md
 │   ├── api_particulier
 │   │   └── france_connect
 │   │       └── editeurs_certifies.md
-│   ├── banniere_annonce.md
 │   ├── conception.md
-│   ├── dashboard-comportement-utilisateur.md
-│   ├── datagouv-habilitations-sync.md
-│   ├── design.md
 │   ├── developers
 │   │   └── tutorials
 │   │       ├── ecriture.md
 │   │       ├── lecture.md
 │   │       └── webhooks.md
-│   ├── lifecycle_documentation.md
-│   ├── lifecycle_documentation_with_stages.md
-│   ├── modification_scopes.md
-│   ├── nouveau_type_d_habilitation.md
-│   ├── scopes_config.md
+│   ├── metier
+│   │   ├── admin_change.md
+│   │   ├── ajout_nouveau_form_non_tech.md
+│   │   ├── banniere_annonce.md
+│   │   ├── configuration_type_habilitation_dynamique.md
+│   │   ├── dashboard-comportement-utilisateur.md
+│   │   ├── lifecycle_documentation.md
+│   │   └── lifecycle_documentation_with_stages.md
 │   ├── technique
-│   │   └── modal.md
-│   ├── templates_messages.md
+│   │   ├── ajout_block_dynamique.md
+│   │   ├── ajout_evenement.md
+│   │   ├── ajout_nouveau_bloc_de_formulaire.md
+│   │   ├── ajout_nouveau_provider.md
+│   │   ├── api.md
+│   │   ├── datagouv-habilitations-sync.md
+│   │   ├── design.md
+│   │   ├── habilitation_type_dynamique.md
+│   │   ├── modal.md
+│   │   ├── modification_scopes.md
+│   │   ├── nouveau_type_d_habilitation.md
+│   │   ├── scopes_config.md
+│   │   └── templates_messages.md
 │   └── webhooks.md
 ├── features
 │   ├── acces_espaces_en_fonction_des_roles.feature
@@ -2567,6 +2578,7 @@
 │   │   │   ├── soumission_avec_modalites.feature
 │   │   │   ├── soumission_multiples_etapes.feature
 │   │   │   └── soumission_single_page.feature
+│   │   ├── boursiers_test_cnous_data_extraction_criteria_block.feature
 │   │   ├── consultation_habilitation_avec_jeton.feature
 │   │   ├── dgfip
 │   │   │   ├── api_ficoba.feature
@@ -2643,6 +2655,7 @@
 │   │   ├── authorization_steps.rb
 │   │   ├── auto_france_connect_authorization_steps.rb
 │   │   ├── cgu_france_connect_steps.rb
+│   │   ├── cnous_data_extraction_criteria_steps.rb
 │   │   ├── data_providers_steps.rb
 │   │   ├── date_steps.rb
 │   │   ├── debug_steps.rb
@@ -2673,6 +2686,7 @@
 │   │   ├── applicant_authorization_request_helpers.rb
 │   │   ├── authorization_request_helpers.rb
 │   │   ├── bullet.rb
+│   │   ├── cnous_data_extraction_criteria.rb
 │   │   ├── data_providers.rb
 │   │   ├── env.rb
 │   │   ├── insee.rb
@@ -3279,4 +3293,4 @@
     ├── .keep
     └── javascript
         └── .keep
-447 directories, 2972 files
+448 directories, 2985 files
