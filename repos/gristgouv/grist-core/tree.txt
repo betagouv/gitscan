@@ -323,6 +323,7 @@
 │   │   │   └── rowuid.js
 │   │   ├── tsconfig.json
 │   │   ├── ui
+│   │   │   ├── AccountLeftPanel.ts
 │   │   │   ├── AccountPage.ts
 │   │   │   ├── AccountPageCss.ts
 │   │   │   ├── AccountWidget.ts
@@ -330,6 +331,7 @@
 │   │   │   ├── ActiveUserList.ts
 │   │   │   ├── AddNewButton.ts
 │   │   │   ├── AddNewTip.ts
+│   │   │   ├── AdminAccessDeniedCard.ts
 │   │   │   ├── AdminLeftPanel.ts
 │   │   │   ├── AdminPanel.ts
 │   │   │   ├── AdminPanelCss.ts
@@ -347,6 +349,9 @@
 │   │   │   ├── Automations
 │   │   │   │   └── TriggersPageUpsell.ts
 │   │   │   ├── AutomationsPageEntry.ts
+│   │   │   ├── BackupsSection.ts
+│   │   │   ├── BaseUrlSection.ts
+│   │   │   ├── BillingLogoEditor.ts
 │   │   │   ├── BootAPI.ts
 │   │   │   ├── BootKeyStatus.ts
 │   │   │   ├── BootPage.ts
@@ -379,7 +384,9 @@
 │   │   │   ├── DocTutorial.ts
 │   │   │   ├── DocTutorialRenderer.ts
 │   │   │   ├── DocumentSettings.ts
+│   │   │   ├── DraftChanges.ts
 │   │   │   ├── DuplicateTable.ts
+│   │   │   ├── EditionSection.ts
 │   │   │   ├── EmojiPicker.ts
 │   │   │   ├── ExampleCard.ts
 │   │   │   ├── ExampleInfo.ts
@@ -416,6 +423,7 @@
 │   │   │   ├── MultiSelector.ts
 │   │   │   ├── NewRecordButton.ts
 │   │   │   ├── NotifyUI.ts
+│   │   │   ├── OAuthAppsCore.ts
 │   │   │   ├── OnBoardingPopups.ts
 │   │   │   ├── OnboardingPage.ts
 │   │   │   ├── OpenAccessibilityModal.ts
@@ -424,10 +432,15 @@
 │   │   │   ├── PagePanels.ts
 │   │   │   ├── PageWidgetPicker.ts
 │   │   │   ├── Pages.ts
+│   │   │   ├── PermissionsSetupSection.ts
+│   │   │   ├── PermissionsToggleModel.ts
 │   │   │   ├── PinnedDocs.ts
 │   │   │   ├── PredefinedCustomSectionConfig.ts
 │   │   │   ├── ProposedChangesPage.ts
 │   │   │   ├── QuickSetup.ts
+│   │   │   ├── QuickSetupContinueButton.ts
+│   │   │   ├── QuickSetupServerStep.ts
+│   │   │   ├── QuickSetupStepHeader.ts
 │   │   │   ├── RelativeDatesOptions.ts
 │   │   │   ├── RenameDocModal.ts
 │   │   │   ├── RenamePopupStyles.ts
@@ -436,7 +449,10 @@
 │   │   │   ├── RightPanelUtils.ts
 │   │   │   ├── RowContextMenu.ts
 │   │   │   ├── RowHeightConfig.ts
+│   │   │   ├── SandboxSection.ts
 │   │   │   ├── ServiceStatus.ts
+│   │   │   ├── SettingsLayout.ts
+│   │   │   ├── SetupCard.ts
 │   │   │   ├── ShareMenu.ts
 │   │   │   ├── ShortcutKey.ts
 │   │   │   ├── SiteSwitcher.ts
@@ -444,6 +460,7 @@
 │   │   │   ├── SortFilterConfig.ts
 │   │   │   ├── SupportGristButton.ts
 │   │   │   ├── SupportGristPage.ts
+│   │   │   ├── TeamSettingsPage.ts
 │   │   │   ├── TemplateDocs.ts
 │   │   │   ├── ThemeConfig.ts
 │   │   │   ├── TimingPage.ts
@@ -634,6 +651,7 @@
 │   │   ├── DropdownCondition.ts
 │   │   ├── EncActionBundle.ts
 │   │   ├── ErrorWithCode.ts
+│   │   ├── ExternalStorage.ts
 │   │   ├── Features-ti.ts
 │   │   ├── Features.ts
 │   │   ├── FilterState.ts
@@ -769,6 +787,7 @@
 │   │   │   ├── Housekeeper.ts
 │   │   │   ├── NotifierTypes.ts
 │   │   │   ├── Permissions.ts
+│   │   │   ├── TeamSettings.ts
 │   │   │   ├── TypeORMPatches.ts
 │   │   │   ├── Usage.ts
 │   │   │   ├── homedb
@@ -900,6 +919,7 @@
 │   │   │   ├── DiscourseConnect.ts
 │   │   │   ├── DocApi.ts
 │   │   │   ├── DocApiTriggers.ts
+│   │   │   ├── DocApiUsageTracker.ts
 │   │   │   ├── DocApiUtils.ts
 │   │   │   ├── DocAuthorizer.ts
 │   │   │   ├── DocClients.ts
@@ -972,6 +992,8 @@
 │   │   │   ├── PubSubCache.ts
 │   │   │   ├── PubSubManager.ts
 │   │   │   ├── Requests.ts
+│   │   │   ├── RestartShell.ts
+│   │   │   ├── RestartShellWorker.ts
 │   │   │   ├── RowAccess.ts
 │   │   │   ├── SQLiteDB.ts
 │   │   │   ├── SafePythonComponent.ts
@@ -980,7 +1002,6 @@
 │   │   │   ├── SandboxPyodide.ts
 │   │   │   ├── ServerColumnGetters.ts
 │   │   │   ├── ServerLocale.ts
-│   │   │   ├── ServiceStatus.ts
 │   │   │   ├── Sessions.ts
 │   │   │   ├── Sharing.ts
 │   │   │   ├── SqliteCommon.ts
@@ -1015,6 +1036,7 @@
 │   │   │   ├── describeDocActions.ts
 │   │   │   ├── docUtils.d.ts
 │   │   │   ├── docUtils.js
+│   │   │   ├── expressLoginWrap.ts
 │   │   │   ├── expressWrap.ts
 │   │   │   ├── extractOrg.ts
 │   │   │   ├── filterUtils.ts
@@ -1025,6 +1047,7 @@
 │   │   │   ├── httpEncoding.ts
 │   │   │   ├── idUtils.ts
 │   │   │   ├── initialDocSql.ts
+│   │   │   ├── initializeAppSettings.ts
 │   │   │   ├── log.ts
 │   │   │   ├── loginSystemHelpers.ts
 │   │   │   ├── manifest.ts
@@ -1076,6 +1099,7 @@
 ├── buildtools
 │   ├── .grist-ee-version
 │   ├── build.sh
+│   ├── check_test_groups.js
 │   ├── checkout-ext-directory.sh
 │   ├── fly-deploy.js
 │   ├── fly-template.env
@@ -1152,6 +1176,8 @@
 │   ├── overview.md
 │   ├── translations.md
 │   └── urls.md
+├── eslint-rules
+│   └── local-rules.js
 ├── eslint.config.js
 ├── package.json
 ├── plugins
@@ -1274,12 +1300,17 @@
 │   │   ├── Makefile
 │   │   ├── README.md
 │   │   ├── build_packages.sh
+│   │   ├── check_version_change.sh
+│   │   ├── env.sh
 │   │   ├── package.json
 │   │   ├── package_filenames.json
 │   │   ├── packages.js
 │   │   ├── pipe.js
 │   │   ├── preparePackages.js
-│   │   └── setup.sh
+│   │   ├── setup.sh
+│   │   └── worker
+│   │       ├── package.json
+│   │       └── yarn.lock
 │   ├── requirements.in
 │   ├── requirements.txt
 │   ├── run.sh
@@ -1609,12 +1640,16 @@
 │           ├── UseSales.svg
 │           └── UseScience.svg
 ├── storybook
+│   ├── authenticationSection.stories.ts
+│   ├── baseUrlSection.stories.ts
 │   ├── buttons.stories.ts
 │   ├── checkboxes.stories.ts
+│   ├── editionSection.stories.ts
 │   ├── icons.stories.ts
 │   ├── links.stories.ts
 │   ├── menus.stories.ts
 │   ├── modals.stories.ts
+│   ├── settings-layout.stories.ts
 │   └── tsconfig.json
 ├── stubs
 │   └── app
@@ -1634,6 +1669,7 @@
 │       │   │   ├── MFAConfig.ts
 │       │   │   ├── NewDocMethods.ts
 │       │   │   ├── Notifications.ts
+│       │   │   ├── OAuthApps.ts
 │       │   │   └── ProductUpgrades.ts
 │       │   └── widgets
 │       │       └── AssistantPopup.ts
@@ -1718,6 +1754,7 @@
 │   │   ├── ChoiceListParser.ts
 │   │   ├── CircularArray.js
 │   │   ├── ColumnFilterFunc.ts
+│   │   ├── CustomWidget.ts
 │   │   ├── DocActions.ts
 │   │   ├── DocSchemaImport.ts
 │   │   ├── InactivityTimer.ts
@@ -1767,6 +1804,9 @@
 │   │   ├── ReferenceColumns.ts
 │   │   ├── ReferenceList.ts
 │   │   └── Smoke.ts
+│   ├── eslint-rules
+│   │   ├── index.ts
+│   │   └── makeT-rule.ts
 │   ├── fixtures
 │   │   ├── docs
 │   │   │   ├── ACL-Test.grist
@@ -2163,6 +2203,8 @@
 │   │   ├── ActionLog.ts
 │   │   ├── ActiveUserList.ts
 │   │   ├── AdminPanel.ts
+│   │   ├── AdminPanelPermissions.ts
+│   │   ├── AdminPanelServer.ts
 │   │   ├── AdminPanelTools.ts
 │   │   ├── AirtableImport.ts
 │   │   ├── ApiConsole.ts
@@ -2198,6 +2240,7 @@
 │   │   ├── CopyWithHeaders.ts
 │   │   ├── CursorSaving.ts
 │   │   ├── CustomView.ts
+│   │   ├── CustomWidgetLinking.ts
 │   │   ├── CustomWidgets.ts
 │   │   ├── CustomWidgetsConfig.ts
 │   │   ├── DateEditor.ts
@@ -2251,7 +2294,9 @@
 │   │   ├── LinkingErrors.ts
 │   │   ├── LinkingSelector.ts
 │   │   ├── Localization.ts
-│   │   ├── MultiColumn.ts
+│   │   ├── MultiColumn1.ts
+│   │   ├── MultiColumn2.ts
+│   │   ├── MultiColumn3.ts
 │   │   ├── NewDocument.ntest.js
 │   │   ├── NumericEditor.ts
 │   │   ├── OnDemand.ts
@@ -2259,6 +2304,9 @@
 │   │   ├── Printing.ts
 │   │   ├── Properties.ntest.js
 │   │   ├── ProposedChangesPage.ts
+│   │   ├── QuickSetupApply.ts
+│   │   ├── QuickSetupAuth.ts
+│   │   ├── QuickSetupSandbox.ts
 │   │   ├── RawData.ts
 │   │   ├── RecordCards.ts
 │   │   ├── RecordLayout.ts
@@ -2292,6 +2340,7 @@
 │   │   ├── SortPositions.ts
 │   │   ├── Summaries.ntest.js
 │   │   ├── SupportGrist.ts
+│   │   ├── TeamSite.ts
 │   │   ├── TermsOfService.ts
 │   │   ├── TextEditor.ntest.js
 │   │   ├── Themes.ts
@@ -2306,6 +2355,7 @@
 │   │   ├── UserManager2.ts
 │   │   ├── VersionUpdateBanner.ts
 │   │   ├── ViewConfigTab.ntest.js
+│   │   ├── ViewContextMenu.ts
 │   │   ├── ViewLayout.ts
 │   │   ├── ViewLayoutCollapse.ts
 │   │   ├── ViewLayoutUtils.ts
@@ -2327,6 +2377,7 @@
 │   │   ├── homeUtil.ts
 │   │   ├── importerTestUtils.ts
 │   │   ├── links.ts
+│   │   ├── multiColumnHelpers.ts
 │   │   ├── saveViewSection.ts
 │   │   ├── testServer.ts
 │   │   ├── testUtils.ts
@@ -2399,6 +2450,7 @@
 │   │   │   ├── CommentAccess.ts
 │   │   │   ├── CommentAccess2.ts
 │   │   │   ├── ConfigBackendAPI.ts
+│   │   │   ├── DocApiUsageTracker.ts
 │   │   │   ├── DocSnapshots.ts
 │   │   │   ├── DocStorage.js
 │   │   │   ├── DocStorageManager.ts
@@ -2424,6 +2476,7 @@
 │   │   │   ├── ProxyAgent.ts
 │   │   │   ├── PubSubCache.ts
 │   │   │   ├── PubSubManager.ts
+│   │   │   ├── RestartShell.ts
 │   │   │   ├── RowAccess.ts
 │   │   │   ├── SQLiteDB.ts
 │   │   │   ├── SamlConfig.ts
@@ -2470,6 +2523,7 @@
 │   │   │   │   └── TestServer.ts
 │   │   │   ├── idUtils.ts
 │   │   │   ├── requestUtils.ts
+│   │   │   ├── resolveIdentity.ts
 │   │   │   ├── sandboxUtil.ts
 │   │   │   ├── serverUtils.js
 │   │   │   ├── serverUtils2.ts
@@ -2502,4 +2556,4 @@
 ├── tsconfig.eslint.json
 ├── tsconfig.json
 └── yarn.lock
-176 directories, 2420 files
+179 directories, 2471 files
