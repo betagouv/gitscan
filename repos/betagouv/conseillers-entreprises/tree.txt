@@ -694,6 +694,7 @@
 │   │   ├── stats
 │   │   │   ├── acquisitions
 │   │   │   │   ├── base.rb
+│   │   │   │   ├── by_new_companies.rb
 │   │   │   │   ├── needs_base.rb
 │   │   │   │   ├── overall_distribution_needs_done_with_help.rb
 │   │   │   │   ├── overall_distribution_needs_done_with_help_column.rb
@@ -731,8 +732,8 @@
 │   │   │   │   ├── abandoned_total_count.rb
 │   │   │   │   ├── base.rb
 │   │   │   │   ├── concerns
+│   │   │   │   │   ├── response_time.rb
 │   │   │   │   │   ├── subjects.rb
-│   │   │   │   │   ├── taking_care_time.rb
 │   │   │   │   │   └── themes.rb
 │   │   │   │   ├── diagnosis_completed.rb
 │   │   │   │   ├── done.rb
@@ -740,6 +741,7 @@
 │   │   │   │   ├── done_not_reachable.rb
 │   │   │   │   ├── done_with_help_column.rb
 │   │   │   │   ├── exchange_with_expert.rb
+│   │   │   │   ├── helped_in_five_days.rb
 │   │   │   │   ├── not_for_me.rb
 │   │   │   │   ├── positioning.rb
 │   │   │   │   ├── quo.rb
@@ -1320,7 +1322,8 @@
 │   │   ├── 20260330132110_add_index_for_solicitation_email_and_siret.rb
 │   │   ├── 20260421130510_remove_is_global_zone_to_expert.rb
 │   │   ├── 20260423101238_add_satisfaction_third_question.rb
-│   │   └── 20260423172541_remove_support_subject.rb
+│   │   ├── 20260423172541_remove_support_subject.rb
+│   │   └── 20260427143545_add_excluded_insee_codes_to_match_filters.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1626,6 +1629,7 @@
 │   │   ├── shared_satisfaction_spec.rb
 │   │   ├── solicitation_spec.rb
 │   │   ├── spam_spec.rb
+│   │   ├── subject_answert_spec.rb
 │   │   ├── subject_spec.rb
 │   │   ├── territorial_zone_spec.rb
 │   │   ├── theme_spec.rb
@@ -1725,6 +1729,7 @@
 │   │   ├── effectif
 │   │   │   ├── code_effectif_spec.rb
 │   │   │   └── format_spec.rb
+│   │   ├── format_insee_codes_spec.rb
 │   │   ├── format_siret_spec.rb
 │   │   ├── get_provenance_details_spec.rb
 │   │   ├── institutions_subjects_sorter_spec.rb
@@ -1811,4 +1816,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-313 directories, 1509 files
+313 directories, 1514 files
