@@ -49,14 +49,14 @@
 │   │   ├── questions_qcm.rb
 │   │   ├── questions_saisie.rb
 │   │   ├── questions_sous_consigne.rb
-│   │   ├── recherche_structure.rb
 │   │   ├── restitutions.rb
 │   │   ├── situations.rb
 │   │   ├── situations_configurations.rb
 │   │   ├── source_aides.rb
 │   │   ├── structures.rb
 │   │   ├── structures_administratives.rb
-│   │   └── structures_locales.rb
+│   │   ├── structures_locales.rb
+│   │   └── structures_opcos.rb
 │   ├── assets
 │   │   ├── config
 │   │   │   └── manifest.js
@@ -225,7 +225,6 @@
 │   │   │   ├── actions_groupees.js
 │   │   │   ├── active_admin.js
 │   │   │   ├── aide.js
-│   │   │   ├── autocomplete_recherche.js
 │   │   │   ├── bouton_menu_actions.js
 │   │   │   ├── cgu.js
 │   │   │   ├── code_postal_input.js
@@ -280,7 +279,6 @@
 │   │       │   │   ├── _badge_acquisition.scss
 │   │       │   │   ├── _barre_segmentee.scss
 │   │       │   │   ├── _bilan_evapro.scss
-│   │       │   │   ├── _bouton_ajouter_une_structure.scss
 │   │       │   │   ├── _bouton_menu_action.scss
 │   │       │   │   ├── _card.scss
 │   │       │   │   ├── _card_diagnostique.scss
@@ -317,7 +315,6 @@
 │   │       │   │   ├── _qcm.scss
 │   │       │   │   ├── _recherche_structure.scss
 │   │       │   │   ├── _referentiel_anlci.scss
-│   │       │   │   ├── _rejoindre_structure.scss
 │   │       │   │   ├── _scopes.scss
 │   │       │   │   ├── _score_arrow.scss
 │   │       │   │   ├── _select2.scss
@@ -440,8 +437,6 @@
 │   │   ├── barre_segmentee_component.rb
 │   │   ├── bilan_eva_pro_component.html.erb
 │   │   ├── bilan_eva_pro_component.rb
-│   │   ├── bouton_ajouter_une_structure_component.html.erb
-│   │   ├── bouton_ajouter_une_structure_component.rb
 │   │   ├── bouton_copier_component.html.erb
 │   │   ├── bouton_copier_component.rb
 │   │   ├── bouton_dsfr_component.html.erb
@@ -552,12 +547,8 @@
 │   │   ├── pile_fleches_score_component.rb
 │   │   ├── qcm.html.erb
 │   │   ├── qcm.rb
-│   │   ├── recherche_structure_component.html.erb
-│   │   ├── recherche_structure_component.rb
 │   │   ├── referentiel_anlci_component.html.erb
 │   │   ├── referentiel_anlci_component.rb
-│   │   ├── rejoindre_structure_component.html.erb
-│   │   ├── rejoindre_structure_component.rb
 │   │   ├── siret_input_component.html.erb
 │   │   ├── siret_input_component.rb
 │   │   ├── sous_competence_component.erb
@@ -604,9 +595,7 @@
 │   │   │   ├── nouveaux_comptes_controller.rb
 │   │   │   ├── recherche_structures_controller.rb
 │   │   │   └── structures_controller.rb
-│   │   ├── nouvelles_structures_controller.rb
-│   │   ├── pro_connect_controller.rb
-│   │   └── structures_controller.rb
+│   │   └── pro_connect_controller.rb
 │   ├── decorators
 │   │   ├── evenement_evacob.rb
 │   │   ├── evenement_livraison.rb
@@ -628,6 +617,7 @@
 │   │   ├── etape_inscription_helper.rb
 │   │   ├── evaluation_helper.rb
 │   │   ├── evaluation_restitution_situations_helper.rb
+│   │   ├── formatage_siret_helper.rb
 │   │   ├── markdown_helper.rb
 │   │   ├── opco_helper.rb
 │   │   ├── prise_en_main_helper.rb
@@ -905,11 +895,11 @@
 │   │   │   └── helper.rb
 │   │   ├── statistiques_campagne.rb
 │   │   ├── statistiques_evaluation.rb
-│   │   ├── statistiques_opco.rb
 │   │   ├── statistiques_structure.rb
 │   │   ├── structure.rb
 │   │   ├── structure_administrative.rb
 │   │   ├── structure_locale.rb
+│   │   ├── structure_opco.rb
 │   │   ├── syntheses_evapro_pour_index.rb
 │   │   └── transcription.rb
 │   ├── params
@@ -926,8 +916,6 @@
 │       │       │   └── new.html.erb
 │       │       ├── passwords
 │       │       │   ├── edit.html.erb
-│       │       │   └── new.html.erb
-│       │       ├── registrations
 │       │       │   └── new.html.erb
 │       │       ├── sessions
 │       │       │   ├── new.html.erb
@@ -1099,8 +1087,6 @@
 │       │   ├── questions_saisies
 │       │   │   ├── _form.html.arb
 │       │   │   └── _show.html.arb
-│       │   ├── recherche_structure
-│       │   │   └── _recherche_structure.html.erb
 │       │   ├── restitutions
 │       │   │   ├── _controle_frise_pieces.html.erb
 │       │   │   ├── _informations_generales_sidebar.html.arb
@@ -1130,13 +1116,14 @@
 │       │   │   ├── _aide_filtres_sidebar.html.erb
 │       │   │   ├── _form.html.arb
 │       │   │   └── index.json.jbuilder
+│       │   ├── structures_opcos
+│       │   │   └── _form.html.arb
 │       │   ├── transcriptions
 │       │   │   └── _input_ecrit_audio.html.arb
 │       │   └── ui_kit
 │       │       ├── badge.html.erb
 │       │       ├── barre_segmentee.html.erb
 │       │       ├── bilan_eva_pro.html.erb
-│       │       ├── bouton_ajouter_une_structure.html.erb
 │       │       ├── bouton_copier.html.erb
 │       │       ├── boutons_dsfr.html.erb
 │       │       ├── card.html.erb
@@ -1161,9 +1148,7 @@
 │       │       ├── panel.html.erb
 │       │       ├── pastille.html.erb
 │       │       ├── qcm.html.erb
-│       │       ├── recherche_structure.html.erb
 │       │       ├── referentiel_anlci.html.erb
-│       │       ├── rejoindre_structure.html.erb
 │       │       ├── score_arrows.html.erb
 │       │       ├── sous_competence.html.erb
 │       │       ├── statut_campagne.html.erb
@@ -1208,7 +1193,6 @@
 │       │       ├── _etape_creation_campagne.html.arb
 │       │       ├── _etape_fin.html.arb
 │       │       ├── _etape_passations.html.arb
-│       │       ├── _etape_rejoindre_structure.html.arb
 │       │       └── _etape_test_campagne.html.arb
 │       ├── compte_mailer
 │       │   ├── alerte_admin.html.erb
@@ -1237,6 +1221,7 @@
 │       │       ├── _form_creer.html.erb
 │       │       ├── _form_rejoindre.html.erb
 │       │       ├── _form_usage.html.erb
+│       │       ├── _modal_confirmation_creation_structure.html.erb
 │       │       ├── _parametrage_section.html.erb
 │       │       ├── _structure_info_card.html.erb
 │       │       └── show.html.erb
@@ -1252,15 +1237,10 @@
 │       │   ├── inscription_v2.html.erb
 │       │   ├── mailer.html.erb
 │       │   └── mailer.text.erb
-│       ├── nouvelles_structures
-│       │   ├── _modal_confirmation_creation_structure.html.erb
-│       │   └── show.html.erb
-│       ├── structure_mailer
-│       │   ├── invitation_structure.html.erb
-│       │   ├── nouvelle_structure.html.erb
-│       │   └── relance_creation_campagne.erb
-│       └── structures
-│           └── index.html.erb
+│       └── structure_mailer
+│           ├── invitation_structure.html.erb
+│           ├── nouvelle_structure.html.erb
+│           └── relance_creation_campagne.erb
 ├── bin
 │   ├── bundle
 │   ├── lint_locale_opco
@@ -1308,7 +1288,6 @@
 │   │   ├── eva.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── formtastic.rb
-│   │   ├── geocoder.rb
 │   │   ├── health_check.rb
 │   │   ├── inflections.rb
 │   │   ├── mailjet.rb
@@ -1329,7 +1308,6 @@
 │   │   │   ├── badge_acquisition.yml
 │   │   │   ├── barre_segmentee.yml
 │   │   │   ├── bilan_eva_pro.yml
-│   │   │   ├── bouton_ajouter_une_structure.yml
 │   │   │   ├── evaluation
 │   │   │   │   ├── annexe_diagnostic_component.yml
 │   │   │   │   ├── annexe_positionnement_component.yml
@@ -1342,8 +1320,6 @@
 │   │   │   ├── header.yml
 │   │   │   ├── qcm.yml
 │   │   │   ├── recheche_compte.yml
-│   │   │   ├── recheche_structure.yml
-│   │   │   ├── rejoindre_structure.yml
 │   │   │   ├── sous_competences.yml
 │   │   │   └── tag.yml
 │   │   ├── controllers
@@ -1403,7 +1379,6 @@
 │   │       ├── litteratie.yml
 │   │       ├── mailer.yml
 │   │       ├── nouveaux_comptes.yml
-│   │       ├── nouvelle_structure.yml
 │   │       ├── numeratie.yml
 │   │       ├── parcours_type.yml
 │   │       ├── parties.yml
@@ -1411,7 +1386,6 @@
 │   │       ├── questions_clic_dans_image.yml
 │   │       ├── questions_glisser_deposer.yml
 │   │       ├── questions_saisies.yml
-│   │       ├── recherche_structure.yml
 │   │       ├── situations.yml
 │   │       ├── sous_competences.yml
 │   │       ├── structure_mailer.yml
@@ -1732,8 +1706,10 @@
 │   │   ├── 20260402152415_rattache_parcours_type_aux_opcos.rb
 │   │   ├── 20260408100000_renomme_usage_eva_entreprises_en_evapro.rb
 │   │   ├── 20260409152506_ajoute_code_commune_a_structure.rb
+│   │   ├── 20260415163933_remove_latitude_longitude_from_structures.rb
 │   │   ├── 20260421120000_initialise_usage_structures_administratives.rb
-│   │   └── 20260505084653_recalcule_evaluations_eva_pro.rb
+│   │   ├── 20260505084653_recalcule_evaluations_eva_pro.rb
+│   │   └── 20260505151143_cree_nouvelles_structures_opco.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1877,7 +1853,8 @@
 │   │   ├── header_component_spec.rb
 │   │   ├── lien_component_spec.rb
 │   │   ├── navigation_component_spec.rb
-│   │   └── numero_telephone_input_component_spec.rb
+│   │   ├── numero_telephone_input_component_spec.rb
+│   │   └── siret_input_component_spec.rb
 │   ├── config
 │   │   └── initializers
 │   │       └── ransack_spec.rb
@@ -1903,11 +1880,9 @@
 │   │   │       └── session_controller_spec.rb
 │   │   ├── evaluations_controller_spec.rb
 │   │   ├── evenements_controller_spec.rb
-│   │   ├── inscription
-│   │   │   ├── recherche_structures_controller_spec.rb
-│   │   │   └── structures_controller_spec.rb
-│   │   ├── nouvelles_structures_controller_spec.rb
-│   │   └── structures_controller_spec.rb
+│   │   └── inscription
+│   │       ├── recherche_structures_controller_spec.rb
+│   │       └── structures_controller_spec.rb
 │   ├── decorators
 │   │   └── evenement_evacob_spec.rb
 │   ├── factories
@@ -1962,12 +1937,11 @@
 │   │   │   ├── session_spec.rb
 │   │   │   ├── situation_spec.rb
 │   │   │   ├── structure_administrative_spec.rb
-│   │   │   └── structure_locale_spec.rb
+│   │   │   ├── structure_locale_spec.rb
+│   │   │   └── structure_opco_spec.rb
 │   │   ├── inscription_conseiller_spec.rb
 │   │   ├── inscription_nouveau_compte_spec.rb
 │   │   ├── inscription_recherche_structure_spec.rb
-│   │   ├── lien_invitation_spec.rb
-│   │   ├── nouvelle_structure_spec.rb
 │   │   ├── onboarding_resume_spec.rb
 │   │   └── structures_spec.rb
 │   ├── fixtures
@@ -1981,6 +1955,7 @@
 │   │   ├── compte_helper_spec.rb
 │   │   ├── erreur_helper_spec.rb
 │   │   ├── evaluation_helper_spec.rb
+│   │   ├── formatage_siret_helper_spec.rb
 │   │   ├── markdown_helper_spec.rb
 │   │   ├── pro_connect_helper_spec.rb
 │   │   ├── pro_connect_recupere_compte_helper_spec.rb
@@ -1991,7 +1966,8 @@
 │   ├── inputs
 │   │   ├── email_input_spec.rb
 │   │   ├── file_input_spec.rb
-│   │   └── image_file_input_spec.rb
+│   │   ├── image_file_input_spec.rb
+│   │   └── siret_input_spec.rb
 │   ├── integrations
 │   │   ├── ability_spec.rb
 │   │   ├── ability_utilisateur_spec.rb
@@ -2228,10 +2204,10 @@
 │   │   │   └── base_spec.rb
 │   │   ├── statistiques_campagne_spec.rb
 │   │   ├── statistiques_evaluation_spec.rb
-│   │   ├── statistiques_opco_spec.rb
 │   │   ├── statistiques_structure_spec.rb
 │   │   ├── structure_administrative_spec.rb
 │   │   ├── structure_locale_spec.rb
+│   │   ├── structure_opco_spec.rb
 │   │   ├── structure_spec.rb
 │   │   ├── syntheses_evapro_pour_index_spec.rb
 │   │   └── transcription_spec.rb
@@ -2242,6 +2218,9 @@
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires_spec.rb
 │   │   ├── campagnes_spec.rb
+│   │   ├── eva
+│   │   │   └── devise
+│   │   │       └── registrations_spec.rb
 │   │   ├── evaluations
 │   │   │   ├── collections_evenements_spec.rb
 │   │   │   └── fin_evaluations_spec.rb
@@ -2309,4 +2288,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-333 directories, 2032 files
+332 directories, 2012 files
