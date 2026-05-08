@@ -1,42 +1,34 @@
-## Changelog : monitorenv (30 derniers jours, au 30 avril 2026)
+## Changelog : monitorenv (30 derniers jours, au 07 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application monitorenv a bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment au niveau de la gestion des zones réglementaires, des aires de vigilances et des missions. Des corrections et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application, ainsi que des ajouts concernant les données des navires.
+Ce mois-ci, les évolutions de monitorenv se sont concentrées sur l'amélioration de la gestion des aires réglementaires, des zones de vigilance et des données des navires. Des corrections et des optimisations ont également été apportées à l'interface utilisateur et aux processus de données, notamment pour la gestion des AMP et des données de contrôle conchylicole.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bouton de réinitialisation sur les modales de mission, de rapports et du tableau de bord [#1234](https://github.com/MTES-MCT/monitorenv/issues/1234).
-- Refonte de la table des missions pour la rendre plus extensible.
-- Ajout de tags aux missions avec des informations sur l'action environnementale et la période.
-- Amélioration de la gestion des zones réglementaires :
-    - Ajout d'un filtre pour afficher les zones récentes.
-    - Mise en évidence des zones récemment mises à jour ou créées.
-    - Correction de bugs dans le formulaire de création/modification des zones réglementaires.
-- Amélioration de la gestion des aires de vigilance :
-    - Mise à jour du libellé "Drone".
-    - Ajout de colonnes épinglées et de filtres.
-    - Affichage des données dans un tableau avec des lignes extensibles.
-- Ajout de la jauge de tonnage brut UMS aux navires.
-- Amélioration de la visibilité de l'environnement sur les serveurs d'intégration ou de pré-production et suppression du feature flag associé.
-- Ajout de la possibilité de mettre en évidence les nouvelles AMP (Aires Marines Protégées).
+- **Aires réglementaires :** Suppression de fonctionnalités et de colonnes obsolètes liées aux aires réglementaires, simplification du formulaire et correction de bugs liés à la mise à jour des données.
+- **Zones de vigilance :** Refonte de la table des zones de vigilance avec des filtres améliorés, des colonnes épinglées et une présentation plus claire.
+- **Navires :** Ajout du tonnage brut des navires UMS et amélioration de la récupération des données des navires.
+- **AMP :** Mise en évidence des nouvelles AMP et correction du flux de données associé.
+- **Cartographie :** Correction d'un bug lié à la requête de recherche dans la carte.
+- **Tags :** Ajout d'un message d'avertissement pour les tags en cours de complétion.
+- **Contrôle conchylicole :** Ajout de colonnes liées à la plongée lors des opérations de contrôle conchylicole.
 
 ### Évolutions techniques
-- Ajout de colonnes liées à la plongée lors d'opérations de contrôles conchylicoles.
-- Ajout de tests unitaires pour les champs de plongée.
-- Refactorisation du code pour améliorer la récupération des données des navires.
-- Correction de type errors.
-- Optimisation de l'indexation des données d'identification.
-- Mise à jour de la gestion des timestamps pour les données des navires.
-- Suppression de l'import inutile.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Désactivation du rebasage automatique pour Dependabot.
-- Exclusions de `package.lock` de Dependabot.
+- **Cypress :** Mise à jour de Cypress en version 15.14.2 et remplacement de `Cypress.env` par `Cypress.expose`.
+- **Dépendances :** Mises à jour de plusieurs dépendances, notamment `@sentry/browser`, `docker/login-action`, `python-dotenv`, `pytest`, `cryptography`, `ol-mapbox-style` et `black`.
+- **CI/CD :** Configuration de dependabot pour exclure `package.lock` et désactiver le rebase automatique.
+- **Architecture :** Refactorisation de la table des missions pour la rendre extensible.
+- **Tests :** Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
+- **Base de données :** Ajout d'un index sur les données d'identification et refactorisation de la récupération des données des navires.
 
 ### Autres changements
-- Correction de tests E2E.
-- Mise à jour de la favicon en production.
-- Ajout d'un message d'avertissement pour les tags incomplets.
-- Ajout d'un message d'avertissement pour les tags incomplets.
-- Amélioration de la gestion des erreurs lors de la désérialisation des données.
-- Ajout de vérifications de la présence du claim `organizational_unit` pour la sécurité.
-- Correction de bugs mineurs et améliorations de la documentation.
-- Mises à jour de dépendances (ol-mapbox-style, python-dotenv, pytest, cryptography, black).
+- Amélioration de la visibilité de l'environnement (intégration/pré-production) dans l'interface utilisateur.
+- Suppression du feature flag "Regulatory areas".
+- Correction de la favicon en production.
+- Ajout d'un bouton de réinitialisation sur les modales de mission, de reporting et de tableau de bord.
+- Ajout d'un message d'avertissement pour les tags en cours de complétion.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout de validation sur les cas d'utilisation de patch.
+- Suppression de l'affichage du tag de période par défaut.
+- Ajout d'un titre aux options du sélecteur Natinf.
+- Correction de l'icône de tri des chevrons.
+- Mise à jour du libellé "Drone" dans l'unité de contrôle.

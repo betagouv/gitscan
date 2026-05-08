@@ -168,10 +168,8 @@
 │   │   │   │                   │   │   │   ├── InfractionEnum.kt
 │   │   │   │                   │   │   │   └── RecentControlActivityProperties.kt
 │   │   │   │                   │   │   ├── regulatoryArea
-│   │   │   │                   │   │   │   ├── RegulatoryAreaEntity.kt
-│   │   │   │                   │   │   │   └── v2
-│   │   │   │                   │   │   │       ├── AdditionalRefRegEntity.kt
-│   │   │   │                   │   │   │       └── RegulatoryAreaEntity.kt
+│   │   │   │                   │   │   │   ├── AdditionalRefRegEntity.kt
+│   │   │   │                   │   │   │   └── RegulatoryAreaEntity.kt
 │   │   │   │                   │   │   ├── reporting
 │   │   │   │                   │   │   │   ├── ControlStatusEnum.kt
 │   │   │   │                   │   │   │   ├── ReportingEntity.kt
@@ -231,7 +229,6 @@
 │   │   │   │                   │   │   ├── INatinfRepository.kt
 │   │   │   │                   │   │   ├── IPostgisFunctionRepository.kt
 │   │   │   │                   │   │   ├── IRapportNavMissionActionsRepository.kt
-│   │   │   │                   │   │   ├── IRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │   ├── IRegulatoryAreaRepository.kt
 │   │   │   │                   │   │   ├── IReportingRepository.kt
 │   │   │   │                   │   │   ├── IReportingSourceRepository.kt
@@ -343,10 +340,8 @@
 │   │   │   │                   │   │   ├── regulatoryAreas
 │   │   │   │                   │   │   │   ├── CreateOrUpdateRegulatoryArea.kt
 │   │   │   │                   │   │   │   ├── GetAllLayerNames.kt
-│   │   │   │                   │   │   │   ├── GetAllNewRegulatoryAreas.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreas.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreasToComplete.kt
-│   │   │   │                   │   │   │   ├── GetNewRegulatoryAreaById.kt
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreaById.kt
 │   │   │   │                   │   │   │   └── GetRegulatoryAreaByIds.kt
 │   │   │   │                   │   │   ├── reportings
@@ -400,6 +395,7 @@
 │   │   │   │                   │       ├── UseCaseValidationAspect.kt
 │   │   │   │                   │       ├── Validator.kt
 │   │   │   │                   │       ├── mission
+│   │   │   │                   │       │   ├── EnvActionValidator.kt
 │   │   │   │                   │       │   ├── MissionValidator.kt
 │   │   │   │                   │       │   └── MissionWithEnvActionsValidator.kt
 │   │   │   │                   │       ├── reporting
@@ -457,7 +453,6 @@
 │   │   │   │                   │   │   │   │       ├── LocalizedAreasDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── MissingParameterApiError.kt
 │   │   │   │                   │   │   │   │       ├── NatinfDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── RegulatoryAreaWithMetadataDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── SemaphoreDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── UserAuthorizationDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── actions
@@ -563,27 +558,25 @@
 │   │   │   │                   │   │   │   ├── README.md
 │   │   │   │                   │   │   │   ├── bff
 │   │   │   │                   │   │   │   │   ├── UserAuthorization.kt
-│   │   │   │                   │   │   │   │   ├── v1
-│   │   │   │                   │   │   │   │   │   ├── Amps.kt
-│   │   │   │                   │   │   │   │   │   ├── ControlUnits.kt
-│   │   │   │                   │   │   │   │   │   ├── Dashboards.kt
-│   │   │   │                   │   │   │   │   │   ├── DepartmentAreas.kt
-│   │   │   │                   │   │   │   │   │   ├── Infractions.kt
-│   │   │   │                   │   │   │   │   │   ├── LocalizedAreas.kt
-│   │   │   │                   │   │   │   │   │   ├── Missions.kt
-│   │   │   │                   │   │   │   │   │   ├── Natinfs.kt
-│   │   │   │                   │   │   │   │   │   ├── Positions.kt
-│   │   │   │                   │   │   │   │   │   ├── RecentActivity.kt
-│   │   │   │                   │   │   │   │   │   ├── RegulatoryAreas.kt
-│   │   │   │                   │   │   │   │   │   ├── Semaphores.kt
-│   │   │   │                   │   │   │   │   │   ├── Tags.kt
-│   │   │   │                   │   │   │   │   │   ├── Vessels.kt
-│   │   │   │                   │   │   │   │   │   ├── VigilanceAreas.kt
-│   │   │   │                   │   │   │   │   │   └── reportings
-│   │   │   │                   │   │   │   │   │       ├── Reportings.kt
-│   │   │   │                   │   │   │   │   │       └── SSEReporting.kt
-│   │   │   │                   │   │   │   │   └── v2
-│   │   │   │                   │   │   │   │       └── RegulatoryAreas.kt
+│   │   │   │                   │   │   │   │   └── v1
+│   │   │   │                   │   │   │   │       ├── Amps.kt
+│   │   │   │                   │   │   │   │       ├── ControlUnits.kt
+│   │   │   │                   │   │   │   │       ├── Dashboards.kt
+│   │   │   │                   │   │   │   │       ├── DepartmentAreas.kt
+│   │   │   │                   │   │   │   │       ├── Infractions.kt
+│   │   │   │                   │   │   │   │       ├── LocalizedAreas.kt
+│   │   │   │                   │   │   │   │       ├── Missions.kt
+│   │   │   │                   │   │   │   │       ├── Natinfs.kt
+│   │   │   │                   │   │   │   │       ├── Positions.kt
+│   │   │   │                   │   │   │   │       ├── RecentActivity.kt
+│   │   │   │                   │   │   │   │       ├── RegulatoryAreas.kt
+│   │   │   │                   │   │   │   │       ├── Semaphores.kt
+│   │   │   │                   │   │   │   │       ├── Tags.kt
+│   │   │   │                   │   │   │   │       ├── Vessels.kt
+│   │   │   │                   │   │   │   │       ├── VigilanceAreas.kt
+│   │   │   │                   │   │   │   │       └── reportings
+│   │   │   │                   │   │   │   │           ├── Reportings.kt
+│   │   │   │                   │   │   │   │           └── SSEReporting.kt
 │   │   │   │                   │   │   │   ├── log
 │   │   │   │                   │   │   │   │   ├── CorrelationInterceptor.kt
 │   │   │   │                   │   │   │   │   ├── CustomAuthenticationEntryPoint.kt
@@ -652,7 +645,6 @@
 │   │   │   │                   │   │   │   ├── NaflModel.kt
 │   │   │   │                   │   │   │   ├── NatinfModel.kt
 │   │   │   │                   │   │   │   ├── RegulatoryAreaModel.kt
-│   │   │   │                   │   │   │   ├── RegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── ReportingModel.kt
 │   │   │   │                   │   │   │   ├── ReportingSourceModel.kt
 │   │   │   │                   │   │   │   ├── ReportingsControlPlanSubThemeModel.kt
@@ -661,14 +653,12 @@
 │   │   │   │                   │   │   │   ├── TagEnvActionModel.kt
 │   │   │   │                   │   │   │   ├── TagModel.kt
 │   │   │   │                   │   │   │   ├── TagRegulatoryAreaModel.kt
-│   │   │   │                   │   │   │   ├── TagRegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── TagReportingModel.kt
 │   │   │   │                   │   │   │   ├── TagVigilanceAreaModel.kt
 │   │   │   │                   │   │   │   ├── ThemeEnvActionModel.kt
 │   │   │   │                   │   │   │   ├── ThemeModel.kt
 │   │   │   │                   │   │   │   ├── ThemeNatinfModel.kt
 │   │   │   │                   │   │   │   ├── ThemeRegulatoryAreaModel.kt
-│   │   │   │                   │   │   │   ├── ThemeRegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── ThemeReportingModel.kt
 │   │   │   │                   │   │   │   ├── ThemeVigilanceAreaModel.kt
 │   │   │   │                   │   │   │   ├── UserAuthorizationModel.kt
@@ -696,7 +686,6 @@
 │   │   │   │                   │   │       ├── JpaMissionRepository.kt
 │   │   │   │                   │   │       ├── JpaNatinfRepository.kt
 │   │   │   │                   │   │       ├── JpaPostgisFunctionRepository.kt
-│   │   │   │                   │   │       ├── JpaRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │       ├── JpaRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingSourceRepository.kt
@@ -732,7 +721,6 @@
 │   │   │   │                   │   │       │   ├── IDBMissionRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNafRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNatinfRepository.kt
-│   │   │   │                   │   │       │   ├── IDBRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │       │   ├── IDBRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingSourceRepository.kt
@@ -973,7 +961,8 @@
 │   │   │       │   │   │   ├── V0.216__migrate_infractions_vessel_id.sql
 │   │   │       │   │   │   ├── V0.217__ais_position_rename_sent_at.sql
 │   │   │       │   │   │   ├── V0.218__add_vessel_batch_row_number_index.sql
-│   │   │       │   │   │   └── V0.219__add_columns_action_diving_incident.sql
+│   │   │       │   │   │   ├── V0.219__add_columns_action_diving_incident.sql
+│   │   │       │   │   │   └── V0.220__delete_old_regulatory_areas_table.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1023,7 +1012,7 @@
 │   │   │       │       ├── V0.106.0__insert_dummy_missions_for_migration.sql
 │   │   │       │       ├── V666.01__insert_facade_areas.sql
 │   │   │       │       ├── V666.02__dummy_amp_cacem.sql
-│   │   │       │       ├── V666.03__insert_dummy_regulations_cacem.sql
+│   │   │       │       ├── V666.03__insert_dummy_regulatory_areas.sql
 │   │   │       │       ├── V666.04__insert_dummy_department_areas.sql
 │   │   │       │       ├── V666.05__insert_dummy_bases.sql
 │   │   │       │       ├── V666.06__insert_dummy_administrations.sql
@@ -1048,7 +1037,6 @@
 │   │   │       │       ├── V666.25__insert_vessels.sql
 │   │   │       │       ├── V666.26__insert_positions.sql
 │   │   │       │       ├── V666.27__insert_last_positions.sql
-│   │   │       │       ├── V666.28__insert_dummy_regulatory_areas.sql
 │   │   │       │       └── V666.29__insert_themes_natinfs.sql
 │   │   │       ├── log4j2-spring.xml
 │   │   │       └── template_export_brief.docx
@@ -1161,13 +1149,10 @@
 │   │       │                   │   │   │   ├── GetAllLayerNamesUTest.kt
 │   │       │                   │   │   │   ├── GetAllNewRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetAllRegulatoryAreasToCompleteUTest.kt
-│   │       │                   │   │   │   ├── GetAllRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetNewRegulatoryAreaByIdUTest.kt
-│   │       │                   │   │   │   ├── GetRegulatoryAreaByIdUTest.kt
 │   │       │                   │   │   │   ├── GetRegulatoryAreaByIdsUTest.kt
 │   │       │                   │   │   │   └── fixtures
-│   │       │                   │   │   │       ├── RegulatoryAreaFixture.kt
-│   │       │                   │   │   │       └── RegulatoryAreaNewFixture.kt
+│   │       │                   │   │   │       └── RegulatoryAreaFixture.kt
 │   │       │                   │   │   ├── reportings
 │   │       │                   │   │   │   ├── ArchiveOutdatedReportingsUTest.kt
 │   │       │                   │   │   │   ├── ArchiveReportingsUTest.kt
@@ -1221,6 +1206,7 @@
 │   │       │                   │   │           └── VigilanceAreaSourceFixture.kt
 │   │       │                   │   └── validators
 │   │       │                   │       ├── mission
+│   │       │                   │       │   ├── EnvActionValidatorUTest.kt
 │   │       │                   │       │   ├── MissionValidatorUTest.kt
 │   │       │                   │       │   └── MissionValidatorWithEnvActionsUTest.kt
 │   │       │                   │       ├── reporting
@@ -1246,7 +1232,6 @@
 │   │       │                       │       │   │   ├── MissionsITests.kt
 │   │       │                       │       │   │   ├── NatinfsITests.kt
 │   │       │                       │       │   │   ├── RecentActivityITests.kt
-│   │       │                       │       │   │   ├── RegulatoryAreasITests.kt
 │   │       │                       │       │   │   ├── ReportingsITests.kt
 │   │       │                       │       │   │   ├── SemaphoresITests.kt
 │   │       │                       │       │   │   ├── TagsITest.kt
@@ -1298,7 +1283,6 @@
 │   │       │                       │       ├── JpaMissionRepositoryITests.kt
 │   │       │                       │       ├── JpaNatinfRepositoryITests.kt
 │   │       │                       │       ├── JpaPostgisFunctionRepositoryITests.kt
-│   │       │                       │       ├── JpaRegulatoryAreaNewRepositoryITests.kt
 │   │       │                       │       ├── JpaRegulatoryAreaRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingSourceRepositoryITest.kt
@@ -3142,11 +3126,9 @@
 │   │   │   ├── marpol.py
 │   │   │   ├── ref_natinfs.py
 │   │   │   ├── refresh_materialized_view.py
-│   │   │   ├── regulations.py
 │   │   │   ├── regulatory_areas_open_data.py
 │   │   │   ├── remove_broken_missions_resources_links.py
 │   │   │   ├── semaphores.py
-│   │   │   ├── themes_and_tags.py
 │   │   │   ├── themes_natinfs.py
 │   │   │   ├── three_hundred_meters_areas.py
 │   │   │   ├── update_cacem_regulatory_areas.py
@@ -3172,21 +3154,13 @@
 │   │   │   │   │   ├── localized_areas.sql
 │   │   │   │   │   ├── low_water_line.sql
 │   │   │   │   │   ├── marpol.sql
-│   │   │   │   │   ├── regulations.sql
-│   │   │   │   │   ├── regulations_hashes.sql
 │   │   │   │   │   ├── regulatory_areas.sql
 │   │   │   │   │   ├── regulatory_areas_hashes_for_cacem.sql
 │   │   │   │   │   ├── regulatory_areas_hashes_for_env.sql
 │   │   │   │   │   ├── regulatory_areas_open_data.sql
 │   │   │   │   │   ├── semaphore.sql
 │   │   │   │   │   ├── straight_baseline.sql
-│   │   │   │   │   ├── tags.sql
-│   │   │   │   │   ├── tags_hashes.sql
-│   │   │   │   │   ├── tags_regulatory_areas.sql
 │   │   │   │   │   ├── territorial_seas.sql
-│   │   │   │   │   ├── themes.sql
-│   │   │   │   │   ├── themes_hashes.sql
-│   │   │   │   │   ├── themes_regulatory_areas.sql
 │   │   │   │   │   └── three_hundred_meters_areas.sql
 │   │   │   │   └── cnsp
 │   │   │   │       ├── 12_miles_areas.sql
@@ -3213,14 +3187,11 @@
 │   │   │       ├── env_actions_to_email.sql
 │   │   │       ├── natinfs.sql
 │   │   │       ├── previous_last_positions.sql
-│   │   │       ├── regulations_hashes.sql
 │   │   │       ├── regulatory_areas.sql
 │   │   │       ├── regulatory_areas_hashes_for_cacem.sql
 │   │   │       ├── regulatory_areas_hashes_for_env.sql
 │   │   │       ├── remove_broken_missions_resources_links.sql
-│   │   │       ├── tags_hashes.sql
 │   │   │       ├── themes.sql
-│   │   │       ├── themes_hashes.sql
 │   │   │       ├── update_actions_departments.sql
 │   │   │       ├── update_actions_facades.sql
 │   │   │       └── update_missions_facades.sql
@@ -3246,7 +3217,6 @@
 │       │   │   ├── V666.501__marpol.sql
 │       │   │   ├── V666.502__competence_cross_areas.sql
 │       │   │   ├── V666.503__threee_hundred_meters_areas.sql
-│       │   │   ├── V666.504__regulatory_areas_themes_and_tags.sql
 │       │   │   ├── V666.505__localized_areas.sql
 │       │   │   ├── V666.506__beaches.sql
 │       │   │   └── V666.507__regulatory_areas.sql
@@ -3295,9 +3265,7 @@
 │       │   ├── test_marpol.py
 │       │   ├── test_ref_natinfs.py
 │       │   ├── test_refresh_materialized_views.py
-│       │   ├── test_regulations.py
 │       │   ├── test_regulatory_areas_open_data.py
-│       │   ├── test_themes_and_tags.py
 │       │   ├── test_themes_natinfs.py
 │       │   ├── test_three_hundred_meters_areas.py
 │       │   ├── test_update_cacem_regulatory_areas.py
@@ -3316,4 +3284,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-599 directories, 2719 files
+597 directories, 2689 files
