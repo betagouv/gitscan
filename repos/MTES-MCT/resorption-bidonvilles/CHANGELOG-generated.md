@@ -1,29 +1,28 @@
-## Changelog : resorption-bidonvilles (30 derniers jours, au 20 avril 2026)
+## Changelog : resorption-bidonvilles (30 derniers jours, au 6 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives au suivi des financements DIHAL, avec l'ajout de filtres et d'indicateurs de mise à jour de population. Des corrections ont été apportées pour améliorer la précision des données affichées et la sécurité de l'application. L'interface utilisateur a également été améliorée avec des mises à jour de design et des corrections de bugs.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de la gestion des données, notamment concernant les adresses des Entreprises, Territoires et Intermédiaires (ETI) et le financement DIHAL. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer la stabilité et l'expérience utilisateur. Enfin, la préparation du reporting et du suivi des actions a été renforcée.
 
 ### Évolutions fonctionnelles
-- Ajout du filtre par année de financement DIHAL, permettant un affichage plus précis des actions financées. [#2659](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2659)
-- Affichage des indicateurs de mise à jour de population dans l'email récapitulatif hebdomadaire. [#2662](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2662)
-- Affichage de l'année de financement DIHAL sur les badges correspondants. [#2659](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2659)
-- Ajout du champ adresse email du demandeur d'accès. [#2661](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2661)
-- Correction du lien "demande d'info" qui redirigeait vers une mauvaise page (maintenant "demande d'accès"). [#2666](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2666)
-- Correction du calcul du taux d'actions financées par la DIHAL avec une mise à jour de moins de 3 mois. [#2649](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2649)
-- Correction du comportement de la page lors du clic sur un élément de la liste "Années avec financements renseignés" (évite le rechargement de la page). [#2657](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2657)
+- **Gestion des adresses ETI :** Amélioration significative de la gestion des adresses ETI avec la possibilité de gérer plusieurs adresses par ETI, d'afficher ces adresses sur une carte, et de détecter les doublons. [#2652](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2652)
+- **Filtre Financement DIHAL :** Ajout d'un filtre plus dynamique pour le financement DIHAL, permettant de filtrer par année. [#2659](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2659)
+- **Historique des actions :** Implémentation de l'historique des actions, incluant les modifications des adresses et des indicateurs, pour un meilleur suivi de l'évolution des données. [#2657](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2657) et [#2666](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2666)
+- **Indicateurs de mise à jour de population :** Ajout d'indicateurs de mise à jour de la population dans les rapports hebdomadaires et l'interface utilisateur. [#2662](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2662)
+- **Demande d'accès :** Correction du lien de demande d'information pour le rendre une demande d'accès. [#2661](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2661)
+- **Affichage des taux :** Amélioration de la formulation des taux de mises à jour. [#2662](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2662)
 
 ### Évolutions techniques
-- Changement de l'URL d'accès à Matomo pour utiliser le lien proxifié. [#2660](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2660)
-- Ajout du paramètre `trackerScriptUrl` pour une configuration plus flexible du suivi. [#2660](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2660)
-- Amélioration de la sécurité et transmission des données pour le header des actions.
-- Intégration du header des actions avec le taux calculé.
-- Correction de l'expiration du jeton d'activation (passée de 10 minutes à 168 heures). [#2658](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2658)
-- Refactoring et simplification du code pour améliorer la maintenabilité et la performance.
-- Amélioration du score du code suite à l'analyse SonarQube.
-- DSFRisation de l'affichage de l'erreur d'export.
+- **Refactoring du code :** Refactorings importants du code, notamment autour de la gestion des adresses ETI et de l'historique des actions, pour améliorer la lisibilité, la maintenabilité et la performance.
+- **Typage TypeScript :** Amélioration du typage TypeScript pour une meilleure sécurité et une meilleure détection des erreurs.
+- **Optimisation des performances :** Optimisations diverses pour améliorer les performances de l'application.
+- **Pré-bundling des librairies :** Pré-bundling des librairies nécessaires pour Nuxt 4.
+- **Sécurisation :** Correction de potentielles failles de sécurité (injection, interpolation de strings).
+- **Mise à jour des dépendances :** Mise à jour de certaines dépendances.
 
 ### Autres changements
-- Correction de plusieurs erreurs de linting. [#2659](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2659)
-- Correction de l'affichage du département dans l'onglet 'tous'.
-- Correction de quelques erreurs de typage et de logique dans le code.
-- Documentation mise à jour.
+- **Documentation :** Amélioration de la documentation.
+- **Corrections de style :** Corrections de style et de linting pour améliorer la qualité du code.
+- **Tests :** Ajout et amélioration des tests unitaires.
+- **DSFRisation :** Application des standards de design du DSFR pour l'affichage des erreurs d'export.
+- **Intégration Matomo :** Configuration de l'intégration avec Matomo via un proxy.
+- **Amélioration du header des actions :** Sécurisation et transmission des données pour le header des actions.
