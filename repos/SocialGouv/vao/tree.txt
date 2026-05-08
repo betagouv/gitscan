@@ -619,30 +619,46 @@
 │   │   │   │   │   ├── bo-user.test.ts
 │   │   │   │   │   ├── documents.static.test.ts
 │   │   │   │   │   ├── documents.test.ts
-│   │   │   │   │   └── herbergement.test.ts
-│   │   │   │   ├── helper
+│   │   │   │   │   ├── eig.test.ts
+│   │   │   │   │   ├── fo-user.test.ts
+│   │   │   │   │   ├── herbergement.test.ts
+│   │   │   │   │   ├── message.test.ts
+│   │   │   │   │   ├── organisme.test.ts
+│   │   │   │   │   ├── sejour.test.ts
+│   │   │   │   │   └── territoire.test.ts
+│   │   │   │   ├── debug-sentry.test.ts
+│   │   │   │   ├── fixtures
+│   │   │   │   │   ├── adresseFixture.ts
+│   │   │   │   │   ├── agrementsFixture.ts
+│   │   │   │   │   ├── agrementsMessageFixture.ts
+│   │   │   │   │   └── hebergementFixture.ts
+│   │   │   │   ├── healthz.test.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── adresseHelper.ts
+│   │   │   │   │   ├── agrementsHelper.ts
+│   │   │   │   │   ├── agrementsMessageHelper.ts
+│   │   │   │   │   ├── demandeSejourHelper.ts
+│   │   │   │   │   ├── documentHelper.ts
 │   │   │   │   │   ├── fileHelper.ts
-│   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   ├── adresseFixture.ts
-│   │   │   │   │   │   ├── adresseHelper.ts
-│   │   │   │   │   │   ├── agrementsFixture.ts
-│   │   │   │   │   │   ├── agrementsHelper.ts
-│   │   │   │   │   │   ├── agrementsMessageFixture.ts
-│   │   │   │   │   │   ├── agrementsMessageHelper.ts
-│   │   │   │   │   │   ├── documentHelper.ts
-│   │   │   │   │   │   ├── hebergementHelper.ts
-│   │   │   │   │   │   ├── organismeHelper.ts
-│   │   │   │   │   │   ├── territoireHelper.ts
-│   │   │   │   │   │   └── userHelper.ts
+│   │   │   │   │   ├── hebergementHelper.ts
 │   │   │   │   │   ├── organismeHelper.ts
-│   │   │   │   │   └── testContainer.ts
+│   │   │   │   │   ├── territoireHelper.ts
+│   │   │   │   │   ├── testContainer.ts
+│   │   │   │   │   └── userHelper.ts
 │   │   │   │   └── usagers
 │   │   │   │       ├── accept-cgu.test.ts
 │   │   │   │       ├── agrements.test.ts
 │   │   │   │       ├── authentification.test.ts
 │   │   │   │       ├── documents.static.test.ts
 │   │   │   │       ├── documents.test.ts
+│   │   │   │       ├── eig.test.ts
+│   │   │   │       ├── fo-user.test.ts
+│   │   │   │       ├── geo.test.ts
 │   │   │   │       ├── herbergement.test.ts
+│   │   │   │       ├── message.test.ts
+│   │   │   │       ├── organisme.test.ts
+│   │   │   │       ├── sejour.test.ts
+│   │   │   │       ├── siret.test.ts
 │   │   │   │       ├── territoire.test.ts
 │   │   │   │       └── users.test.ts
 │   │   │   ├── admin
@@ -655,14 +671,6 @@
 │   │   │   ├── app.js
 │   │   │   ├── config.js
 │   │   │   ├── controllers
-│   │   │   │   ├── __tests__
-│   │   │   │   │   ├── bo-user
-│   │   │   │   │   │   └── accept-cgu.test.js
-│   │   │   │   │   ├── demandeSejour
-│   │   │   │   │   │   ├── getAdminStats.test.ts
-│   │   │   │   │   │   └── getExtractFO.test.js
-│   │   │   │   │   └── fo-user
-│   │   │   │   │       └── accept-cgu.test.js
 │   │   │   │   ├── authentication
 │   │   │   │   │   ├── disconnect.js
 │   │   │   │   │   ├── email
@@ -760,12 +768,16 @@
 │   │   │   │   │   └── update-status.js
 │   │   │   │   ├── geo
 │   │   │   │   │   ├── adresse.js
+│   │   │   │   │   ├── adresse.spec.js
 │   │   │   │   │   ├── checkApiAdresse.js
+│   │   │   │   │   ├── checkApiAdresse.spec.js
 │   │   │   │   │   ├── commune.js
+│   │   │   │   │   ├── commune.spec.js
 │   │   │   │   │   ├── departement.js
+│   │   │   │   │   ├── departement.spec.js
 │   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── pays.js
-│   │   │   │   │   └── region.js
+│   │   │   │   │   ├── region.js
+│   │   │   │   │   └── region.spec.js
 │   │   │   │   ├── hebergement
 │   │   │   │   │   ├── activate.js
 │   │   │   │   │   ├── desactivate.js
@@ -788,8 +800,6 @@
 │   │   │   │   │   ├── postByFO.js
 │   │   │   │   │   └── read.js
 │   │   │   │   ├── organisme
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── getListeExtract.test.js
 │   │   │   │   │   ├── finalize.js
 │   │   │   │   │   ├── getByOrganismeId.js
 │   │   │   │   │   ├── getBySiret.js
@@ -804,7 +814,6 @@
 │   │   │   │   │   ├── checkApiEntreprise.js
 │   │   │   │   │   ├── checkApiInsee.js
 │   │   │   │   │   ├── get.js
-│   │   │   │   │   ├── getLienSuccession.spec.ts
 │   │   │   │   │   ├── getLienSuccession.ts
 │   │   │   │   │   └── index.js
 │   │   │   │   ├── territoire
@@ -890,35 +899,6 @@
 │   │   │   │       ├── EtablissementsSecondaires.ts
 │   │   │   │       └── Users.ts
 │   │   │   ├── routes
-│   │   │   │   ├── __hidden_test_eig__
-│   │   │   │   │   └── eig
-│   │   │   │   │       ├── delete.test_hide.js
-│   │   │   │   │       ├── get-admin-by-ds-id.test_hide.js
-│   │   │   │   │       ├── get-admin-by-id.test_hide.js
-│   │   │   │   │       ├── get-admin.test_hide.js
-│   │   │   │   │       ├── get-by-ds-id.test_hide.js
-│   │   │   │   │       ├── get-by-id.test_hide.js
-│   │   │   │   │       ├── get-me.test_hide.js
-│   │   │   │   │       ├── post-depose.test_hide.js
-│   │   │   │   │       ├── post-mark-as-read.test_hide.js
-│   │   │   │   │       ├── post.test_hide.js
-│   │   │   │   │       └── put-update.test_hide.js
-│   │   │   │   ├── __tests__
-│   │   │   │   │   ├── eig
-│   │   │   │   │   │   └── get-pdf.test.js
-│   │   │   │   │   ├── hebergement
-│   │   │   │   │   │   ├── FU-getById.test.ts
-│   │   │   │   │   │   ├── admin-getById.test.js
-│   │   │   │   │   │   ├── desactivate.test.js
-│   │   │   │   │   │   ├── post.test.js
-│   │   │   │   │   │   ├── reactivate.test.js
-│   │   │   │   │   │   └── update.test.js
-│   │   │   │   │   ├── organisme
-│   │   │   │   │   │   ├── finalize.test.js
-│   │   │   │   │   │   └── update.test.js
-│   │   │   │   │   ├── sejour
-│   │   │   │   │   │   └── get.test.js
-│   │   │   │   │   └── user.test.js
 │   │   │   │   ├── authentication.js
 │   │   │   │   ├── bo-authentication.js
 │   │   │   │   ├── bo-user.js
@@ -996,7 +976,6 @@
 │   │   │   │   ├── geo
 │   │   │   │   │   ├── Commune.js
 │   │   │   │   │   ├── Departement.js
-│   │   │   │   │   ├── Pays.js
 │   │   │   │   │   └── Region.js
 │   │   │   │   ├── hebergement
 │   │   │   │   │   ├── Hebergement.js
@@ -1505,6 +1484,7 @@
 │   │   │   │   ├── agrement
 │   │   │   │   │   ├── MenuAgrement.vue
 │   │   │   │   │   ├── Messagerie.vue
+│   │   │   │   │   ├── a-modifier.vue
 │   │   │   │   │   ├── agrement-read-only.vue
 │   │   │   │   │   ├── aide-contact.vue
 │   │   │   │   │   ├── alert-renouvellement.vue
@@ -1591,6 +1571,7 @@
 │   │   │   ├── layouts
 │   │   │   │   └── default.vue
 │   │   │   ├── middleware
+│   │   │   │   ├── check-agrement-readonly-statut.ts
 │   │   │   │   ├── check-demande-sejour-id-param.js
 │   │   │   │   ├── check-eig-id-param.js
 │   │   │   │   ├── check-feature-flags.ts
@@ -2030,4 +2011,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-304 directories, 1733 files
+292 directories, 1726 files
