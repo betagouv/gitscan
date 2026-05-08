@@ -141,6 +141,8 @@
 │   │   │   │   │   │   └── metadata
 │   │   │   │   │   │       └── stream
 │   │   │   │   │   │           └── route.ts
+│   │   │   │   │   ├── archive-document
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── classify
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── content
@@ -148,6 +150,10 @@
 │   │   │   │   │   ├── cron
 │   │   │   │   │   │   └── di-ingestion
 │   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── editorial-rewrite
+│   │   │   │   │   │   ├── [runId]
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── health
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── tools
@@ -181,7 +187,6 @@
 │   │   │   │   │   │   │   └── usePublicationRealtime.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── ui
-│   │   │   │   │   │       ├── DocumentActions.tsx
 │   │   │   │   │   │       ├── PublishConfirmationDialog.tsx
 │   │   │   │   │   │       └── PublishSuccessDialog.tsx
 │   │   │   │   │   ├── arbitration
@@ -191,9 +196,8 @@
 │   │   │   │   │   │   └── hooks
 │   │   │   │   │   │       └── useEditorialRealtime.ts
 │   │   │   │   │   ├── editor
-│   │   │   │   │   │   ├── AiSuggestionBanner.tsx
 │   │   │   │   │   │   ├── EditionView.tsx
-│   │   │   │   │   │   ├── EditorTabs.tsx
+│   │   │   │   │   │   ├── EditionViewDynamic.tsx
 │   │   │   │   │   │   ├── RawMarkdownView.tsx
 │   │   │   │   │   │   ├── blocks
 │   │   │   │   │   │   │   ├── callout-block.tsx
@@ -236,12 +240,14 @@
 │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   └── shared
 │   │   │   │   │       ├── AIFloatingButton.tsx
+│   │   │   │   │       ├── ContentContext.tsx
 │   │   │   │   │       ├── DebugPanel.tsx
 │   │   │   │   │       ├── DocumentLayout.tsx
 │   │   │   │   │       ├── DocumentPublicationStatus.tsx
 │   │   │   │   │       ├── DocumentStatus.tsx
 │   │   │   │   │       ├── EditorNavigation.tsx
 │   │   │   │   │       ├── HeaderFicheConnected.tsx
+│   │   │   │   │       ├── MarkdownViewer.inner.tsx
 │   │   │   │   │       ├── MarkdownViewer.tsx
 │   │   │   │   │       ├── SourcePanel.tsx
 │   │   │   │   │       ├── SourceToggleButton.tsx
@@ -691,6 +697,10 @@
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── indication-conformite
+│   │   │   │   │   ├── IndicationConformite.stories.tsx
+│   │   │   │   │   ├── IndicationConformite.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── indication-sauvegarde
 │   │   │   │   │   ├── IndicationSauvegarde.stories.tsx
 │   │   │   │   │   ├── IndicationSauvegarde.tsx
@@ -699,10 +709,22 @@
 │   │   │   │   │   ├── Input.stories.tsx
 │   │   │   │   │   ├── Input.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── papa-ia
+│   │   │   │   │   ├── PapaIA.stories.tsx
+│   │   │   │   │   ├── PapaIA.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── search-input
 │   │   │   │   │   ├── SearchInput.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── segmented-control
+│   │   │   │   │   ├── SegmentedControl.stories.tsx
+│   │   │   │   │   ├── SegmentedControl.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── spinner.tsx
+│   │   │   │   ├── switch
+│   │   │   │   │   ├── Switch.stories.tsx
+│   │   │   │   │   ├── Switch.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   └── tag
 │   │   │   │       ├── Tag.stories.tsx
 │   │   │   │       ├── Tag.tsx
@@ -893,7 +915,11 @@
 │   │   ├── 20260416150001_add_publication_records_composite_index.sql
 │   │   ├── 20260421102209_rbac_custom_access_token_hook.sql
 │   │   ├── 20260421144651_fix_grants_profiles_translation_records.sql
-│   │   └── 20260428110000_add_gin_trgm_index_ingestion_metadata_id.sql
+│   │   ├── 20260428110000_add_gin_trgm_index_ingestion_metadata_id.sql
+│   │   ├── 20260504170000_add_active_run_id_to_editorial_records.sql
+│   │   ├── 20260506100000_fix_claim_di_audit_targets_rate_cap.sql
+│   │   ├── 20260506110000_restrict_claim_di_audit_targets_to_service_role.sql
+│   │   └── 20260507140000_add_priority_to_translation_records.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -910,4 +936,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-208 directories, 704 files
+215 directories, 723 files
