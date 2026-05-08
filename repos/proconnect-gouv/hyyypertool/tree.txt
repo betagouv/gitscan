@@ -116,6 +116,8 @@
 │   │   │   ├── member_actions.feature
 │   │   │   ├── table_pagination.feature
 │   │   │   └── yes_we_hack_domain_verification.feature
+│   │   ├── response-templates
+│   │   │   └── list.feature
 │   │   ├── team
 │   │   │   ├── acces_equipe.feature
 │   │   │   └── gestion_equipe.feature
@@ -199,14 +201,65 @@
 │   │   ├── README.md
 │   │   ├── bin
 │   │   │   ├── migrate.ts
-│   │   │   └── seed.ts
+│   │   │   ├── seed
+│   │   │   │   └── 0000_response_types
+│   │   │   │       ├── README.md
+│   │   │   │       ├── context.ts
+│   │   │   │       ├── lib.test.ts
+│   │   │   │       ├── lib.ts
+│   │   │   │       ├── main.ts
+│   │   │   │       ├── responses
+│   │   │   │       │   ├── admin_centrale.ts
+│   │   │   │       │   ├── affiliation_institut_francais.test.ts
+│   │   │   │       │   ├── affiliation_institut_francais.ts
+│   │   │   │       │   ├── agent_comcom_comaglo.ts
+│   │   │   │       │   ├── agent_comcom_to_commune.ts
+│   │   │   │       │   ├── agent_outside_min_finance_chorus_pro.ts
+│   │   │   │       │   ├── association_ordinary_person.ts
+│   │   │   │       │   ├── association_with_staff_but_no_domain_name.ts
+│   │   │   │       │   ├── contractors.ts
+│   │   │   │       │   ├── domain_name_not_found.ts
+│   │   │   │       │   ├── enseignement_agricole.ts
+│   │   │   │       │   ├── evidence_between_chosen_org_and_domain_email_org.test.ts
+│   │   │   │       │   ├── evidence_between_chosen_org_and_domain_email_org.ts
+│   │   │   │       │   ├── existing_domain_name.ts
+│   │   │   │       │   ├── first_and_last_name_inversion.ts
+│   │   │   │       │   ├── gendarmerie_agent.ts
+│   │   │   │       │   ├── link_with_chosen_organization.ts
+│   │   │   │       │   ├── min_armees.ts
+│   │   │   │       │   ├── min_armees_pec.ts
+│   │   │   │       │   ├── min_armees_terre_marine_musee.ts
+│   │   │   │       │   ├── missing_name.ts
+│   │   │   │       │   ├── more_precise_existing_establishement_cnrs.ts
+│   │   │   │       │   ├── name_incorrectly_entered.ts
+│   │   │   │       │   ├── non_teaching_agent.ts
+│   │   │   │       │   ├── presta_email_admin_public.ts
+│   │   │   │       │   ├── presta_email_orga_public_beta_gouv.ts
+│   │   │   │       │   ├── public_or_private_organization.ts
+│   │   │   │       │   ├── refusal_france_travail.ts
+│   │   │   │       │   ├── refusal_interieur_gouv.ts
+│   │   │   │       │   ├── request_clarification_use_account.test.ts
+│   │   │   │       │   ├── request_clarification_use_account.ts
+│   │   │   │       │   ├── reservist_or_other_email_perso.ts
+│   │   │   │       │   ├── seconded_agent_min_interior.ts
+│   │   │   │       │   ├── student_host_organisation.ts
+│   │   │   │       │   ├── student_school_training_establishment.ts
+│   │   │   │       │   ├── teacher_academic_email.ts
+│   │   │   │       │   ├── university_email_cnrs.ts
+│   │   │   │       │   ├── use_official_email.ts
+│   │   │   │       │   └── user_with_existing_pc_account.ts
+│   │   │   │       └── stamp-timestamps.ts
+│   │   │   └── testing
+│   │   │       └── seed.ts
 │   │   ├── drizzle.config.ts
 │   │   ├── migrations
 │   │   │   ├── 0000_lethal_maggott.sql
 │   │   │   ├── 0001_abandoned_apocalypse.sql
+│   │   │   ├── 0002_clammy_dakota_north.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
+│   │   │       ├── 0002_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── package.json
 │   │   ├── src
@@ -216,7 +269,7 @@
 │   │   │   ├── schema.ts
 │   │   │   └── testing
 │   │   │       ├── index.ts
-│   │   │       ├── pg.ts
+│   │   │       ├── response_templates.ts
 │   │   │       └── users.ts
 │   │   └── tsconfig.json
 │   ├── identite-proconnect
@@ -288,6 +341,7 @@
 │       │   │   ├── __snapshots__
 │       │   │   │   ├── main.test.tsx.snap
 │       │   │   │   └── root.test.tsx.snap
+│       │   │   ├── dark.client.ts
 │       │   │   ├── index.ts
 │       │   │   ├── main.test.tsx
 │       │   │   ├── main.tsx
@@ -339,6 +393,10 @@
 │       │   │   │       ├── RemoveDomainEmailById.test.ts
 │       │   │   │       ├── RemoveDomainEmailById.ts
 │       │   │   │       └── index.ts
+│       │   │   ├── response-templates
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── render_template.test.ts
+│       │   │   │   └── render_template.ts
 │       │   │   └── users
 │       │   │       ├── entities
 │       │   │       │   └── User.ts
@@ -485,6 +543,7 @@
 │       │   │   │   ├── :id
 │       │   │   │   │   ├── ModerationExchanges.tsx
 │       │   │   │   │   ├── SuggestOrganizationDomains.ts
+│       │   │   │   │   ├── build_template_data.ts
 │       │   │   │   │   ├── duplicate_warning
 │       │   │   │   │   │   ├── DuplicateWarning.tsx
 │       │   │   │   │   │   ├── find_duplicate_users.query.ts
@@ -508,8 +567,9 @@
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── rejected
+│       │   │   │   │   │   ├── get_response_template_by_label.query.ts
 │       │   │   │   │   │   ├── index.test.ts
-│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   ├── reprocess
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.ts
@@ -571,6 +631,13 @@
 │       │   │   │   └── index.tsx
 │       │   │   ├── readyz
 │       │   │   │   └── index.ts
+│       │   │   ├── response-templates
+│       │   │   │   ├── detail.page.tsx
+│       │   │   │   ├── get_response_template.query.ts
+│       │   │   │   ├── get_response_templates.query.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── team
 │       │   │   │   ├── context.ts
 │       │   │   │   ├── get_team_list.query.ts
@@ -621,6 +688,8 @@
 │       │   │   ├── date_format.ts
 │       │   │   └── index.ts
 │       │   ├── ui
+│       │   │   ├── accordion
+│       │   │   │   └── index.ts
 │       │   │   ├── badge
 │       │   │   │   └── index.ts
 │       │   │   ├── button
@@ -698,102 +767,7 @@
 │       │   │   │   │   ├── Toolbar.tsx
 │       │   │   │   │   ├── context.ts
 │       │   │   │   │   ├── index.ts
-│       │   │   │   │   └── responses
-│       │   │   │   │       ├── __snapshots__
-│       │   │   │   │       │   ├── admin_centrale.test.tsx.snap
-│       │   │   │   │       │   ├── affiliation_institut_francais.test.tsx.snap
-│       │   │   │   │       │   ├── agent_comcom_comaglo.test.tsx.snap
-│       │   │   │   │       │   ├── agent_comcom_to_commune.test.tsx.snap
-│       │   │   │   │       │   ├── agent_outside_min_finance_chorus_pro.test.tsx.snap
-│       │   │   │   │       │   ├── association_ordinary_person.test.tsx.snap
-│       │   │   │   │       │   ├── association_with_staff_but_no_domain_name.test.tsx.snap
-│       │   │   │   │       │   ├── domain_name_not_found.test.tsx.snap
-│       │   │   │   │       │   ├── enseignement_agricole.test.tsx.snap
-│       │   │   │   │       │   ├── evidence_between_chosen_org_and_domain_email_org.test.tsx.snap
-│       │   │   │   │       │   ├── existing_domain_name.test.tsx.snap
-│       │   │   │   │       │   ├── first_and_last_name_inversion.test.tsx.snap
-│       │   │   │   │       │   ├── gendarmerie_agent.test.tsx.snap
-│       │   │   │   │       │   ├── link_with_chosen_organization.test.tsx.snap
-│       │   │   │   │       │   ├── min_armee_pec.test.tsx.snap
-│       │   │   │   │       │   ├── min_armees.test.tsx.snap
-│       │   │   │   │       │   ├── min_armees_terre_marine_musee.test.tsx.snap
-│       │   │   │   │       │   ├── missing_name.test.tsx.snap
-│       │   │   │   │       │   ├── more_precise_existing_establishement_cnrs.test.tsx.snap
-│       │   │   │   │       │   ├── name_incorrectly_entered.test.tsx.snap
-│       │   │   │   │       │   ├── non_teaching_agent.test.tsx.snap
-│       │   │   │   │       │   ├── presta_email_admin_public.test.tsx.snap
-│       │   │   │   │       │   ├── presta_email_orga_public_beta_gouv.test.tsx.snap
-│       │   │   │   │       │   ├── public_or_private_organization.test.tsx.snap
-│       │   │   │   │       │   ├── refusal_france_travail.test.tsx.snap
-│       │   │   │   │       │   ├── refusal_interieur_gouv.test.tsx.snap
-│       │   │   │   │       │   ├── request_clarification_use_account.test.tsx.snap
-│       │   │   │   │       │   ├── reservist_or_other_email_perso.test.tsx.snap
-│       │   │   │   │       │   ├── seconded_agent_min_interior.test.tsx.snap
-│       │   │   │   │       │   ├── student_host_organisation.test.tsx.snap
-│       │   │   │   │       │   ├── student_school_training_establishment.test.tsx.snap
-│       │   │   │   │       │   ├── teacher_academic_email.test.tsx.snap
-│       │   │   │   │       │   └── university_email_cnrs.test.tsx.snap
-│       │   │   │   │       ├── admin_centrale.test.tsx
-│       │   │   │   │       ├── admin_centrale.tsx
-│       │   │   │   │       ├── affiliation_institut_francais.test.tsx
-│       │   │   │   │       ├── affiliation_institut_francais.tsx
-│       │   │   │   │       ├── agent_*.tsx  (6 files)
-│       │   │   │   │       ├── association_ordinary_person.test.tsx
-│       │   │   │   │       ├── association_ordinary_person.tsx
-│       │   │   │   │       ├── association_with_staff_but_no_domain_name.test.tsx
-│       │   │   │   │       ├── association_with_staff_but_no_domain_name.tsx
-│       │   │   │   │       ├── contractors.tsx
-│       │   │   │   │       ├── domain_name_not_found.test.tsx
-│       │   │   │   │       ├── domain_name_not_found.tsx
-│       │   │   │   │       ├── enseignement_agricole.test.tsx
-│       │   │   │   │       ├── enseignement_agricole.tsx
-│       │   │   │   │       ├── evidence_between_chosen_org_and_domain_email_org.test.tsx
-│       │   │   │   │       ├── evidence_between_chosen_org_and_domain_email_org.tsx
-│       │   │   │   │       ├── existing_domain_name.test.tsx
-│       │   │   │   │       ├── existing_domain_name.tsx
-│       │   │   │   │       ├── first_and_last_name_inversion.test.tsx
-│       │   │   │   │       ├── first_and_last_name_inversion.tsx
-│       │   │   │   │       ├── gendarmerie_agent.test.tsx
-│       │   │   │   │       ├── gendarmerie_agent.tsx
-│       │   │   │   │       ├── index.ts
-│       │   │   │   │       ├── link_with_chosen_organization.test.tsx
-│       │   │   │   │       ├── link_with_chosen_organization.tsx
-│       │   │   │   │       ├── min_*.tsx  (6 files)
-│       │   │   │   │       ├── missing_name.test.tsx
-│       │   │   │   │       ├── missing_name.tsx
-│       │   │   │   │       ├── more_precise_existing_establishement_cnrs.test.tsx
-│       │   │   │   │       ├── more_precise_existing_establishement_cnrs.tsx
-│       │   │   │   │       ├── name_incorrectly_entered.test.tsx
-│       │   │   │   │       ├── name_incorrectly_entered.tsx
-│       │   │   │   │       ├── non_teaching_agent.test.tsx
-│       │   │   │   │       ├── non_teaching_agent.tsx
-│       │   │   │   │       ├── presta_email_admin_public.test.tsx
-│       │   │   │   │       ├── presta_email_admin_public.tsx
-│       │   │   │   │       ├── presta_email_orga_public_beta_gouv.test.tsx
-│       │   │   │   │       ├── presta_email_orga_public_beta_gouv.tsx
-│       │   │   │   │       ├── public_or_private_organization.test.tsx
-│       │   │   │   │       ├── public_or_private_organization.tsx
-│       │   │   │   │       ├── refusal_france_travail.test.tsx
-│       │   │   │   │       ├── refusal_france_travail.tsx
-│       │   │   │   │       ├── refusal_interieur_gouv.test.tsx
-│       │   │   │   │       ├── refusal_interieur_gouv.tsx
-│       │   │   │   │       ├── request_clarification_use_account.test.tsx
-│       │   │   │   │       ├── request_clarification_use_account.tsx
-│       │   │   │   │       ├── reservist_or_other_email_perso.test.tsx
-│       │   │   │   │       ├── reservist_or_other_email_perso.tsx
-│       │   │   │   │       ├── seconded_agent_min_interior.test.tsx
-│       │   │   │   │       ├── seconded_agent_min_interior.tsx
-│       │   │   │   │       ├── student_host_organisation.test.tsx
-│       │   │   │   │       ├── student_host_organisation.tsx
-│       │   │   │   │       ├── student_school_training_establishment.test.tsx
-│       │   │   │   │       ├── student_school_training_establishment.tsx
-│       │   │   │   │       ├── teacher_academic_email.test.tsx
-│       │   │   │   │       ├── teacher_academic_email.tsx
-│       │   │   │   │       ├── university_email_cnrs.test.tsx
-│       │   │   │   │       ├── university_email_cnrs.tsx
-│       │   │   │   │       ├── use_official_email.tsx
-│       │   │   │   │       ├── user_with_existing_pc_account.test.tsx
-│       │   │   │   │       └── user_with_existing_pc_account.tsx
+│       │   │   │   │   └── response-message-selector.client.tsx
 │       │   │   │   ├── AutoGoBack
 │       │   │   │   │   ├── AutoGoBack.tsx
 │       │   │   │   │   └── index.ts
@@ -842,6 +816,14 @@
 │       │   │   │   ├── OrganizationsByUser
 │       │   │   │   │   ├── OrganizationsByUser.tsx
 │       │   │   │   │   └── index.ts
+│       │   │   │   ├── TemplateEditor
+│       │   │   │   │   ├── TemplateEditorIsland.tsx
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── render.test.ts
+│       │   │   │   │   ├── render.ts
+│       │   │   │   │   ├── template-editor.client.test.tsx
+│       │   │   │   │   ├── template-editor.client.tsx
+│       │   │   │   │   └── templates-loader.tsx
 │       │   │   │   ├── UsersByOrganization
 │       │   │   │   │   ├── UsersByOrganization.tsx
 │       │   │   │   │   └── index.ts
@@ -875,6 +857,8 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── table
 │       │   │   │   └── index.ts
+│       │   │   ├── tabs
+│       │   │   │   └── index.ts
 │       │   │   ├── tag
 │       │   │   │   └── index.ts
 │       │   │   ├── tailwind.css
@@ -901,4 +885,4 @@
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-196 directories, 717 files
+204 directories, 683 files
