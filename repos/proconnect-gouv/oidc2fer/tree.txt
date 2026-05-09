@@ -62,6 +62,7 @@
 │   │   ├── env.d
 │   │   │   ├── dev
 │   │   │   │   ├── secrets.enc.yaml
+│   │   │   │   ├── values.oidc-test-client.yaml.gotmpl
 │   │   │   │   └── values.oidc2fer.yaml.gotmpl
 │   │   │   ├── outscale-production
 │   │   │   │   ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/oidc2fer/env/outscale-production/secrets.enc.yaml
@@ -69,11 +70,15 @@
 │   │   │   └── staging
 │   │   │       ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/oidc2fer/env/staging/secrets.enc.yaml
 │   │   │       └── values.oidc2fer.yaml.gotmpl
-│   │   ├── extra
-│   │   │   ├── Chart.yaml
-│   │   │   └── templates
-│   │   │       └── redis.yaml
 │   │   ├── helmfile.yaml.gotmpl
+│   │   ├── oidc-test-client
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   │   ├── _helpers.tpl
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   ├── ingress.yaml
+│   │   │   │   └── service.yaml
+│   │   │   └── values.yaml
 │   │   └── oidc2fer
 │   │       ├── Chart.yaml
 │   │       ├── templates
@@ -126,4 +131,4 @@
 │           │       └── test_flattening_processor.py
 │           └── test_e2e.py
 └── start-kind.sh
-47 directories, 81 files
+47 directories, 86 files

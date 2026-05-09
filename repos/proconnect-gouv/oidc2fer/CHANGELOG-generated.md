@@ -1,24 +1,14 @@
-## Changelog : oidc2fer (30 derniers jours)
+## Changelog : oidc2fer (30 derniers jours, au 13 avril 2026)
 
 ### Résumé
-Cette version apporte principalement des améliorations de la configuration et de la gestion des identifiants SIRET pour les établissements universitaires. Une nouvelle version (v1.0.12) a été publiée avec des mises à jour des dépendances et des corrections mineures. Des améliorations de l'environnement de développement local et de l'infrastructure ont également été apportées.
+Ce mois-ci, les mises à jour se concentrent sur l'ajout de nouvelles entités SIRET pour une meilleure compatibilité avec les établissements d'enseignement, ainsi que sur des corrections mineures de configuration et de syntaxe pour améliorer la stabilité et la qualité du code.
 
 ### Évolutions fonctionnelles
-- Correction de l'identification SIRET pour l'université d'Angers [#38](https://github.com/proconnect-gouv/oidc2fer/pull/38).
-- Ajout de nouveaux identifiants SIRET pour plusieurs entités.
-- Mise à jour de l'URL des métadonnées Renater pour assurer la synchronisation avec les informations les plus récentes.
+- Ajout de l'entité FUN MOOC au mapping SIRET, permettant une intégration avec ce service. [#8d4d5a4](https://github.com/proconnect-gouv/oidc2fer/commit/8d4d5a4)
+- Correction de l'EntityID pour l'établissement ens2m, améliorant ainsi l'identification et l'authentification. [#aef51f3](https://github.com/proconnect-gouv/oidc2fer/commit/aef51f3)
+- Ajout de nouvelles entités au mapping SIRET, étendant la compatibilité avec davantage d'établissements. [#0afd27e](https://github.com/proconnect-gouv/oidc2fer/commit/0afd27e)
 
 ### Évolutions techniques
-- Mise à jour et verrouillage des actions GitHub pour une meilleure stabilité et sécurité.
-- Mise à jour de Python vers la version 3.14.3.
-- Mise à jour des dépendances Python.
-- Suppression de `setup.py` et migration vers `pyproject.toml`.
-- Ajout d'un healthcheck à la configuration Docker Compose pour une meilleure surveillance de l'application.
-- Amélioration du script de démarrage du cluster local Kind.
-- Correction de la référence à l'image Bitnami Redis.
-- Publication de la version v1.0.12.
-
-### Autres changements
-- Mise à jour des secrets pour refléter les dernières modifications.
-- Suppression des dépendances `setuptools`, `wheel` et `pip` de l'image Docker de production.
-- Renommage du fichier `helmfile.yaml` pour la compatibilité avec helmfile 1.x.
+- Correction de la syntaxe `cp` dans les fichiers de configuration CI/CD pour assurer un fonctionnement correct des tests. [#8ad2d45](https://github.com/proconnect-gouv/oidc2fer/commit/8ad2d45)
+- Utilisation des secrets de staging pour le linting de l'environnement de production, améliorant la sécurité et la cohérence. [#c1efc43](https://github.com/proconnect-gouv/oidc2fer/commit/c1efc43)
+- Correction de la syntaxe `cp` dans le linter. [#db18300](https://github.com/proconnect-gouv/oidc2fer/commit/db18300)
