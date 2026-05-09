@@ -1,40 +1,37 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 04 mai 2026)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 08 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'enrichissement de l'API et du dashboard de la transition écologique, notamment avec l'ajout de nouvelles fonctionnalités pour le traitement des données MEC (Maîtrise Energétique des Collectivités) et l'amélioration des statistiques disponibles. Des optimisations ont été apportées pour gérer des volumes de données plus importants et améliorer la robustesse de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'enrichissement de l'API avec de nouveaux endpoints et filtres, notamment pour les données MEC et le dashboard de transition écologique. Des améliorations ont été apportées à la classification des projets, à la gestion des aides et à la robustesse de l'application, avec une attention particulière portée à la performance et à la gestion des erreurs. Des corrections de bugs et des optimisations ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un filtre source et de la date de signature CRTE sur les dispositifs et projets du dashboard de la transition écologique. [#1234](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/1234)
-- Amélioration des statistiques disponibles via les communes et les EPCI, avec ajout d'un endpoint d'export des projets.
-- Intégration des dispositifs territoriaux (COT ADEME) avec un nouvel endpoint dédié.
-- Ajout du nom de la collectivité et du code département à l'endpoint `/projets`.
-- Enrichissement de l'endpoint `/dashboard-te/stats/national` avec des colonnes communes et correction de données.
-- Ajout de filtres et d'endpoints pour le dashboard V3, incluant des filtres sur le type de cluster (duplicate/affinity).
-- Ajout des champs `normalizedScore` et `axesMatched` dans le matching des aides.
-- Ajout d'un endpoint pour la récupération des classifications batch interrompues (`/management/batch-classify/recover`).
-- Ajout d'un endpoint pour la classification batch via l'API Batch Anthropic pour les gros volumes.
-- Correction de l'auto-création du plan CRTE lors de la mise à jour d'un projet MEC.
-- Correction de l'inclusion du `MecModule` dans la spécification OpenAPI Swagger.
+- Ajout d'un endpoint pour signaler une aide non pertinente pour un projet [#3a4444b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3a4444b).
+- Intégration d'un filtre source et de la date de signature CRTE sur les dispositifs/projets du dashboard de transition écologique [#1fa06f6](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/1fa06f6).
+- Ajout d'un endpoint pour exporter les projets depuis le dashboard [#a95497c](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/a95497c).
+- Ajout d'endpoints dédiés pour les données MEC (data_mec) [#30353a1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/30353a1) et [#843a001](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/843a001).
+- Possibilité de filtrer par type (duplicate/affinity) sur les clusters du dashboard [#2aaf8c1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/2aaf8c1).
+- Ajout d'un endpoint pour récupérer les dispositifs territoriaux (COT ADEME) [#c7cfe7c](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c7cfe7c).
+- Amélioration des statistiques via communes et EPCI [#a95497c](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/a95497c).
+- Exposition du dashboard Swagger sur le hub public [#05242c0](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/05242c0).
 
 ### Évolutions techniques
-- Refactorisation du code pour déplacer les dispositifs du référentiel vers le dashboard de la transition écologique.
-- Amélioration de la gestion des erreurs en bulk dans l'API MEC.
-- Utilisation de `jsonb` au lieu de `text` pour stocker les métadonnées dans le référentiel.
-- Correction de la migration Drizzle pour le schéma `data_mec`.
-- Augmentation de la limite de taille du corps de requête pour l'endpoint `/projets/bulk` à 50MB.
-- Optimisation du batch classification pour éviter les erreurs de mémoire (OOM) en limitant le nombre de projets par job à 5000.
-- Ajout de retry avec backoff pour gérer les erreurs transitoires avec AT.
-- Utilisation de `perimeter_codes[]` au lieu de la résolution de périmètre.
-- Durcissement de la validation d'entrée pour l'endpoint `/analytics/trackEvent`.
-- Ajout de headers de sécurité sur les pages HTML servies.
-- Correction de la validation PATCH de l'API MEC.
-- Correction de la classification de l'API MEC.
-- Correction des noms de colonnes dans le dashboard-te (camelCase + JSONB llm_sites).
-- Correction du type de colonne `budget_previsionnel` en `bigint`.
-- Correction de l'utilisation de `ANY(array)` pour les statistiques des dispositifs.
+- Refactor de l'API pour déplacer les dispositifs du référentiel vers le dashboard-te [#02dc6fa](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/02dc6fa).
+- Mise en place d'une classification batch via l'API Batch Anthropic pour les gros volumes de projets [#08413bf](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/08413bf).
+- Amélioration de la gestion des erreurs transitoires avec ajout de retries et backoff [#5c8c0d1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/5c8c0d1).
+- Augmentation de la limite de taille du body pour l'endpoint `/projets/bulk` à 50MB [#8cd259c](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/8cd259c).
+- Correction d'un problème d'OOM (Out Of Memory) dans le processus de classification batch [#f9cbd45](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/f9cbd45).
+- Utilisation de types bigint pour le champ `budget_previsionnel` afin de supporter des valeurs supérieures à 2.1 milliards [#9082fea](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9082fea).
+- Mise à jour du schéma de données `data_mec` avec Drizzle [#7a86d84](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/7a86d84).
+- Ajout de headers de sécurité sur les pages HTML servies [#3144fb9](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3144fb9).
+- Correction de la validation d'entrée de l'endpoint `POST /analytics/trackEvent` [#bd4daac](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/bd4daac).
 
 ### Autres changements
-- Mise à jour de la version du widget à 0.4.0.
-- Correction de la configuration de l'environnement sandbox pour pointer vers l'API de production.
-- Diverses corrections et améliorations de la documentation et de la configuration.
-- Publication de plusieurs versions (0.1.50 à 0.1.74) avec des corrections et des améliorations mineures.
+- Documentation et corrections de migrations de base de données (plusieurs commits).
+- Corrections de typage et de noms de colonnes pour le dashboard-te [#634113d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/634113d).
+- Amélioration de la robustesse du processus de classification batch [#b62ae69](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/b62ae69).
+- Correction de la configuration CSP (Content Security Policy) [#10e2e09](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/10e2e09).
+- Alignement de l'API GET /aides sur projetId (camelCase) avec dépréciation progressive de projet_id [#c80923d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c80923d).
+- Validation du paramètre projetId sur GET /aides/feedback [#3a4444b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3a4444b).
+- Ajout de total sur les endpoints paginés du dashboard [#96d736e](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/96d736e).
+- Enrichissement de /projets avec collectiviteNom et codeDepartement [#bb3084d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/bb3084d).
+- Correction du fallback data_mec/data_tet sur les endpoints legacy /projets [#1b6f19b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/1b6f19b).
+- Correction des noms de colonnes dans le dashboard-te [#656d01b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/656d01b).
