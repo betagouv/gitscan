@@ -57,6 +57,7 @@
 │   ├── db.ts
 │   ├── dsApiCursor.ts
 │   ├── lastConnections.ts
+│   ├── lastConnectionsStudents.ts
 │   ├── loginToken.ts
 │   ├── patients.ts
 │   ├── psychologists.ts
@@ -163,6 +164,13 @@
 │   │   │   │   ├── instaBanner.png
 │   │   │   │   ├── journal-humeur.png
 │   │   │   │   ├── mieux-t-orienter.png
+│   │   │   │   ├── questionnaire
+│   │   │   │   │   ├── image_260.png
+│   │   │   │   │   ├── image_277.png
+│   │   │   │   │   ├── image_278.png
+│   │   │   │   │   ├── image_280.png
+│   │   │   │   │   ├── image_284.png
+│   │   │   │   │   └── image_298.png
 │   │   │   │   ├── student-space-history.png
 │   │   │   │   └── suivi-gestion-seances.png
 │   │   │   └── teleconsultation.png
@@ -412,7 +420,6 @@
 │   │   │   │   └── studentSpaceInfo.cssmodule.scss
 │   │   │   ├── Students
 │   │   │   │   ├── Certificate
-│   │   │   │   │   ├── CertificateSentSuccess.jsx
 │   │   │   │   │   ├── SendCertificate.jsx
 │   │   │   │   │   └── StudentSendCertificate.jsx
 │   │   │   │   ├── EmergencyNumbers
@@ -424,9 +431,12 @@
 │   │   │   │   │   ├── StudentHistory.jsx
 │   │   │   │   │   └── studentHistory.cssmodule.scss
 │   │   │   │   ├── StudentSignIn
+│   │   │   │   │   ├── StudentQuestionnaire.jsx
+│   │   │   │   │   ├── StudentSignInHeader.jsx
 │   │   │   │   │   ├── StudentSignInStepOne.jsx
 │   │   │   │   │   ├── StudentSignInStepTwo.jsx
 │   │   │   │   │   ├── StudentSignInSuccess.jsx
+│   │   │   │   │   ├── studentQuestionnaire.cssmodule.scss
 │   │   │   │   │   └── studentSignIn.cssmodule.scss
 │   │   │   │   └── homepage.cssmodule.scss
 │   │   │   └── Tutorial
@@ -495,6 +505,7 @@
 │   │   │   ├── googleAds
 │   │   │   │   └── useConsentAds.js
 │   │   │   ├── inactive.js
+│   │   │   ├── universities.js
 │   │   │   ├── useScreenSize.js
 │   │   │   ├── validateEmailFormat.js
 │   │   │   ├── validateIneFormat.js
@@ -568,7 +579,9 @@
 │   ├── 20260112120246_add_role_to_login_token.ts
 │   ├── 20260113192205_patient_email_can_be_null.ts
 │   ├── 20260203102606_add_student_lastname_dateOfBirth.ts
-│   └── 20260205151206_add_token_signin_attempts.ts
+│   ├── 20260205151206_add_token_signin_attempts.ts
+│   ├── 20260413144901_add_students_fields_questionnaire.ts
+│   └── 20260428124907_add_last_connection_student_table.ts
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -617,6 +630,8 @@
 │   │   ├── uploadDocument.ts
 │   │   └── verifyPsychologist.ts
 │   ├── distance.ts
+│   ├── email
+│   │   └── appointmentNotification.ts
 │   ├── getAddressCoordinates.ts
 │   ├── getAdeliErrors.ts
 │   ├── getAppointmentsCount.ts
@@ -624,6 +639,7 @@
 │   ├── getDiplomaErrors.ts
 │   ├── inesApi.ts
 │   ├── loginInformations.ts
+│   ├── notifications.ts
 │   ├── sanitizer.ts
 │   ├── sendSecondStepMail.ts
 │   ├── sendStudentMailTemplate.ts
@@ -761,6 +777,7 @@
 │   └── validation.ts
 └── views
     └── emails
+        ├── appointmentNotification.ejs
         ├── footer.ejs
         ├── header.ejs
         ├── loginNotAcceptedYet.ejs
@@ -779,4 +796,4 @@
         ├── studentSignInValidation.ejs
         ├── studentWelcome.ejs
         └── summaryUniversity.ejs
-117 directories, 664 files
+119 directories, 679 files

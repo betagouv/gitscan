@@ -1,12 +1,12 @@
-## Changelog : sante-psy (30 derniers jours, au 22 avril 2026)
+## Changelog : sante-psy (30 derniers jours, au 05 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité et la correction de bugs impactant l'authentification et l'affichage de la carte. L'accès à la plateforme est plus sécurisé et l'affichage des cartes OpenStreetMap a été corrigé.
+Ce mois-ci, les améliorations se concentrent sur l'espace étudiant avec le début du développement de la version 2, ainsi que sur des corrections de sécurité et de fonctionnement pour l'authentification et l'affichage des cartes.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'authentification et de gestion des tokens [#829](https://github.com/betagouv/sante-psy/issues/829).
-- Correction de l'affichage des tuiles de la carte OpenStreetMap en spécifiant l'origine stricte [#832](https://github.com/betagouv/sante-psy/issues/832).
+- Début du développement de la version 2 de l'espace étudiant. [#835](https://github.com/betagouv/sante-psy/issues/835)
+- Correction d'un problème de sécurité lié à l'origine des tuiles OpenStreetMap, améliorant la protection des données. [#832](https://github.com/betagouv/sante-psy/issues/832)
+- Correction du processus de connexion et de gestion des tokens d'authentification. [#829](https://github.com/betagouv/sante-psy/issues/829)
 
 ### Évolutions techniques
-- Mise à jour de la librairie Axios en version 1.15.0 [#827](https://github.com/betagouv/sante-psy/issues/827).
-- Blocage d'une adresse IP malveillante [#825](https://github.com/betagouv/sante-psy/issues/825).
+- Mise à jour de la librairie Axios vers la version 1.15.0. [#827](https://github.com/betagouv/sante-psy/issues/827)
