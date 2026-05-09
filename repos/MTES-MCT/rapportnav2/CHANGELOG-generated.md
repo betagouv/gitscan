@@ -1,33 +1,25 @@
-## Changelog : rapportnav2 (30 derniers jours, au 6 mai 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la modernisation des outils de développement et la correction de bugs. Une nouvelle fonctionnalité permettant la gestion des criées a été ajoutée, et des améliorations ont été apportées à l'API et à l'interface utilisateur. Des mises à jour de dépendances et des optimisations de l'infrastructure CI/CD ont également été réalisées.
+Cette version apporte des améliorations à la recherche d'établissements, des corrections de sécurité et de stabilité, ainsi que des mises à jour de l'infrastructure et des dépendances. L'outil a également bénéficié d'améliorations continues du pipeline CI/CD pour une meilleure qualité et rapidité des livraisons.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des criées avec l'ajout d'une liste, d'endpoints et d'un panneau d'administration dédié. [#1325](https://github.com/MTES-MCT/rapportnav2/pull/1325)
-- Amélioration de l'API pour corriger un problème lié à l'utilisation de l'adresse pour l'établissement.
-- Correction d'un bug dans le calcul de la durée des opérations de surveillance analytique.
-- Correction d'un bug dans l'interface utilisateur concernant le ciblage lors de l'ajout d'une nouvelle infraction.
+- Amélioration de la recherche d'établissements ([d6abde6](https://github.com/MTES-MCT/rapportnav2/commit/d6abde6d85e5ca95115d5069d1f551fa3afa3a5a)).
+- Ajout de la liste des criées et des endpoints associés, ainsi que de l'interface d'administration correspondante ([87347da](https://github.com/MTES-MCT/rapportnav2/commit/87347da7720f36301830795448367078726692f7)).
+- Correction pour permettre l'ajout de nouvelles infractions lors de la création d'un nouveau contrôle ([32f22a7](https://github.com/MTES-MCT/rapportnav2/commit/32f22a7c361f4053b1330b214817167233979185)).
 
 ### Évolutions techniques
-- Mise à jour de Vite vers la version 8.
-- Mise à jour de Spring Boot.
-- Mise à jour de Flyway.
-- Refonte de la configuration `release-please-config.json`.
-- Mise à jour de l'action CI pour utiliser GitLab Forge.
-- Amélioration de la configuration de l'analyse de sécurité (Trivy, dependency-check).
-- Suppression de fichiers `.env` inutilisés.
-- Suppression temporaire de SonarQube et de l'analyse SonarQube dans le pipeline CI.
-- Mise à jour de plusieurs dépendances (Monitor-UI, Gradle, Jackson Core).
+- Mise à jour de la version de Vite à la version 8 ([8937f8f](https://github.com/MTES-MCT/rapportnav2/commit/8937f8ff92695852f2364cb690fe43d963f1e142)).
+- Refonte du pipeline CI/CD pour utiliser gitlab-forge ([7b6bf05](https://github.com/MTES-MCT/rapportnav2/commit/7b6bf053678d0989396071b7bc60b81c0b2b9111)).
+- Mise à jour de plusieurs dépendances : Kotlin, Flyway, Spring Boot, Monitor-UI, Gradle.
+- Mise à jour du container PostgreSQL à la version 15.17 ([a627c05](https://github.com/MTES-MCT/rapportnav2/commit/a627c058cbc449cd19485d43d148e16d93a1baa1)).
+- Amélioration de la configuration de SonarQube et correction de problèmes liés à la couverture du code.
+- Mise à jour de la configuration de Trivy et de dependency-check pour améliorer la sécurité.
 
 ### Autres changements
-- Suppression de fausses positives dans la configuration de la suppression des CVE.
+- Suppression d'un fichier `.env` obsolète ([cc63919](https://github.com/MTES-MCT/rapportnav2/commit/cc6391941894949f59f4309859f2669954886f6b)).
+- Mise à jour des suppressions de CVE pour éviter les faux positifs ([46dabc6](https://github.com/MTES-MCT/rapportnav2/commit/46dabc691980f619331b7681458446201f215616)).
+- Correction de problèmes liés à la configuration de SonarQube et à l'analyse du code.
 - Mise à jour des snapshots de tests.
-- Correction de problèmes de vulnérabilités identifiés par Snyk dans les dépendances frontend.
-- Correction de problèmes d'audit npm dans le frontend.
-- Mise à jour de la version de l'action Trivy dans le workflow CI.
-- Mise à jour de la version de l'action dependency-check dans le workflow CI.
-- Correction de l'artefact de SonarQube dans le workflow CI.
-- Correction de l'artefact de dependency-check dans le workflow CI.
-- Mise à jour du conteneur PostgreSQL vers la version 15.17.
-- Mise à jour de la suppression XML SVE.
+- Correction de problèmes liés à la validation du schéma de création de mission.
+- Correction de l'utilisation de variables d'environnement pour l'utilisateur et le mot de passe de la base de données.

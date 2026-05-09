@@ -549,8 +549,6 @@
 │   │   │   │                       │   │   │       ├── TargetExternalData.kt
 │   │   │   │                       │   │   │       ├── UserInfos.kt
 │   │   │   │                       │   │   │       ├── Vessel.kt
-│   │   │   │                       │   │   │       ├── crew
-│   │   │   │                       │   │   │       │   └── ServiceWithAgents.kt
 │   │   │   │                       │   │   │       ├── env
 │   │   │   │                       │   │   │       │   ├── ControlUnit.kt
 │   │   │   │                       │   │   │       │   ├── ControlUnitResourceEnv.kt
@@ -978,6 +976,11 @@
 │   │       │                   │   │   │   ├── MissionEnvActionEntityTest.kt
 │   │       │                   │   │   │   ├── MissionFishActionEntityTest.kt
 │   │       │                   │   │   │   ├── MissionNavActionEntityTest.kt
+│   │       │                   │   │   │   ├── env
+│   │       │                   │   │   │   │   └── controlResources
+│   │       │                   │   │   │   │       ├── ControlResourceEntityTest.kt
+│   │       │                   │   │   │   │       ├── LegacyControlUnitEntityTest.kt
+│   │       │                   │   │   │   │       └── LegacyControlUnitResourceEntityTest.kt
 │   │       │                   │   │   │   └── nav
 │   │       │                   │   │   │       ├── generalinfo
 │   │       │                   │   │   │       │   └── MissionGeneralInfoEntityTest.kt
@@ -1080,6 +1083,9 @@
 │   │       │                   │   │   │   │   └── MapStatusDurationsTests.kt
 │   │       │                   │   │   │   ├── fish
 │   │       │                   │   │   │   │   └── GetFishAuctionsTest.kt
+│   │       │                   │   │   │   ├── generalInfo
+│   │       │                   │   │   │   │   ├── AddOrUpdateMissionGeneralInfoTest.kt
+│   │       │                   │   │   │   │   └── GetMissionGeneralInfoByMissionIdTest.kt
 │   │       │                   │   │   │   ├── sati
 │   │       │                   │   │   │   │   ├── GetComputeSatiTest.kt
 │   │       │                   │   │   │   │   └── ProcessSatiTest.kt
@@ -1165,19 +1171,41 @@
 │   │       │                   │   │   ├── adapters
 │   │       │                   │   │   │   └── ProblemDetailFactoryTest.kt
 │   │       │                   │   │   ├── admin
+│   │       │                   │   │   │   ├── AgentAdminControllerTest.kt
+│   │       │                   │   │   │   ├── AgentRoleAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ApiAdminControllerITest.kt
-│   │       │                   │   │   │   └── UserAdminControllerTest.kt
+│   │       │                   │   │   │   ├── FishAuctionAdminControllerTest.kt
+│   │       │                   │   │   │   ├── GeneralInfosAdminControllerTest.kt
+│   │       │                   │   │   │   ├── ServiceAdminControllerTest.kt
+│   │       │                   │   │   │   ├── UserAdminControllerTest.kt
+│   │       │                   │   │   │   └── models
+│   │       │                   │   │   │       └── AdminApiKeyTest.kt
 │   │       │                   │   │   ├── analytics
 │   │       │                   │   │   │   └── ApiAnalyticsControllerTests.kt
 │   │       │                   │   │   ├── auth
 │   │       │                   │   │   │   └── ApiAuthControllerTests.kt
 │   │       │                   │   │   ├── bff
+│   │       │                   │   │   │   ├── model
+│   │       │                   │   │   │   │   └── action
+│   │       │                   │   │   │   │       ├── PatchedEnvActionTest.kt
+│   │       │                   │   │   │   │       └── PatchedFishActionTest.kt
 │   │       │                   │   │   │   └── v2
 │   │       │                   │   │   │       └── MissionExportControllerTest.kt
-│   │       │                   │   │   └── model
-│   │       │                   │   │       └── sati
-│   │       │                   │   │           ├── SatiMapperTest.kt
-│   │       │                   │   │           └── SatiModelMapperTest.kt
+│   │       │                   │   │   ├── model
+│   │       │                   │   │   │   └── sati
+│   │       │                   │   │   │       ├── SatiMapperTest.kt
+│   │       │                   │   │   │       └── SatiModelMapperTest.kt
+│   │       │                   │   │   └── public_api
+│   │       │                   │   │       ├── VersionControllerTest.kt
+│   │       │                   │   │       └── v1
+│   │       │                   │   │           ├── ApiMissionControllerTest.kt
+│   │       │                   │   │           └── adapters
+│   │       │                   │   │               └── outputs
+│   │       │                   │   │                   ├── ApiMissionDataOutputTest.kt
+│   │       │                   │   │                   ├── AuthLoginDataOutputTest.kt
+│   │       │                   │   │                   ├── BackendInternalErrorDataOutputTest.kt
+│   │       │                   │   │                   ├── BackendRequestErrorDataOutputTest.kt
+│   │       │                   │   │                   └── BackendUsageErrorDataOutputTest.kt
 │   │       │                   │   ├── bff
 │   │       │                   │   │   ├── adapters
 │   │       │                   │   │   │   └── mission
@@ -1224,7 +1252,8 @@
 │   │       │                   │   │   └── repositories
 │   │       │                   │   │       ├── apikey
 │   │       │                   │   │       │   ├── JPAAdminApiKeyAuditRepositoryTest.kt
-│   │       │                   │   │       │   └── JPAAdminApiKeyRepositoryTest.kt
+│   │       │                   │   │       │   ├── JPAAdminApiKeyRepositoryTest.kt
+│   │       │                   │   │       │   └── JPAApiKeyRepositoryTest.kt
 │   │       │                   │   │       ├── mission
 │   │       │                   │   │       │   ├── JPAMissionNavRepositoryTest.kt
 │   │       │                   │   │       │   ├── action
@@ -1238,9 +1267,16 @@
 │   │       │                   │   │       │   │   └── JPAFishAuctionRepositoryTest.kt
 │   │       │                   │   │       │   ├── generalInfo
 │   │       │                   │   │       │   │   └── JPAMissionGeneralInfoRepositoryTest.kt
-│   │       │                   │   │       │   └── passenger
-│   │       │                   │   │       │       └── JPAMissionPassengerRepositoryTest.kt
+│   │       │                   │   │       │   ├── passenger
+│   │       │                   │   │       │   │   └── JPAMissionPassengerRepositoryTest.kt
+│   │       │                   │   │       │   ├── sati
+│   │       │                   │   │       │   │   └── JPASatiRepositoryTest.kt
+│   │       │                   │   │       │   └── target2
+│   │       │                   │   │       │       └── v2
+│   │       │                   │   │       │           ├── JPAInquiryRepositoryTest.kt
+│   │       │                   │   │       │           └── JPATargetRepositoryTest.kt
 │   │       │                   │   │       └── user
+│   │       │                   │   │           ├── JPAAuthenticationAuditRepositoryTest.kt
 │   │       │                   │   │           └── JPAUserRepositoryTest.kt
 │   │       │                   │   ├── monitorenv
 │   │       │                   │   │   ├── APIEnvMissionRepositoryTest.kt
@@ -2328,4 +2364,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-464 directories, 1900 files
+476 directories, 1924 files
