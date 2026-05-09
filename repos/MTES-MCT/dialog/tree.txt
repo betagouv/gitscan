@@ -39,6 +39,8 @@
 │   │   ├── condition_controller.js
 │   │   ├── copy_controller.js
 │   │   ├── datepicker_toggle_controller.js
+│   │   ├── draw_line_map_controller.js
+│   │   ├── export_download_controller.js
 │   │   ├── fetch_controller.js
 │   │   ├── form_collection_controller.js
 │   │   ├── form_reveal_controller.js
@@ -68,14 +70,21 @@
 │   │   ├── searchable_select.js
 │   │   └── util.js
 │   ├── lib.js
+│   ├── maps
+│   │   ├── geojson.js
+│   │   ├── geojson.test.js
+│   │   ├── layers.js
+│   │   ├── layers.test.js
+│   │   ├── measure_type_styles.js
+│   │   └── measure_type_styles.test.js
 │   ├── matomo.js
-│   ├── measure_type_styles.js
 │   └── styles
 │       ├── app.scss
 │       ├── components
 │       │   ├── autocomplete.scss
 │       │   ├── box.css
 │       │   ├── card.css
+│       │   ├── draw-line-map.css
 │       │   ├── dropdown.css
 │       │   ├── dsfr-extensions
 │       │   │   ├── button.css
@@ -359,6 +368,8 @@
 │   │   └── files
 │   │       ├── para_ouverture.geojson
 │   │       └── zones.geojson
+│   ├── pandoc
+│   │   └── pagebreak.lua
 │   └── regulation-order-template.docx
 ├── docker
 │   ├── bac_idf
@@ -469,6 +480,7 @@
 │   │   │   ├── critair.svg
 │   │   │   ├── desserte-locale.svg
 │   │   │   ├── dimensions.svg
+│   │   │   ├── draw-line.svg
 │   │   │   ├── emergency-services.svg
 │   │   │   ├── file-copy-line.svg
 │   │   │   ├── filter.svg
@@ -535,6 +547,8 @@
 │   └── storage
 │       └── .gitkeep
 ├── scalingo.json
+├── scripts
+│   └── render-regulation-map.cjs
 ├── src
 │   ├── Application
 │   │   ├── ApiClientSecretHasherInterface.php
@@ -685,6 +699,9 @@
 │   │   │   │   │   ├── SaveRawGeoJSONCommand.php
 │   │   │   │   │   ├── SaveRawGeoJSONCommandHandler.php
 │   │   │   │   │   └── UpdateNamedStreetsWithoutRoadBanIdsCommandResult.php
+│   │   │   │   ├── MapImage
+│   │   │   │   │   ├── WarmRegulationMapImageCacheCommand.php
+│   │   │   │   │   └── WarmRegulationMapImageCacheCommandHandler.php
 │   │   │   │   ├── Period
 │   │   │   │   │   ├── DeletePeriodCommand.php
 │   │   │   │   │   ├── DeletePeriodCommandHandler.php
@@ -965,6 +982,7 @@
 │   │   │   │   └── StorageArea.php
 │   │   │   ├── Measure.php
 │   │   │   ├── RegulationLocationsInterface.php
+│   │   │   ├── RegulationMapImageMakerInterface.php
 │   │   │   ├── RegulationMeasuresInterface.php
 │   │   │   ├── RegulationOrder.php
 │   │   │   ├── RegulationOrderHistory.php
@@ -1079,6 +1097,8 @@
 │   │   │   ├── OrganizationAdministrativeBoundariesGeometry.php
 │   │   │   ├── PasswordHasher.php
 │   │   │   ├── QueryBus.php
+│   │   │   ├── RegulationMapImageMaker.php
+│   │   │   ├── RegulationMeasureLegendBuilder.php
 │   │   │   ├── RoadSectionMaker.php
 │   │   │   ├── Storage.php
 │   │   │   └── StringUtils.php
@@ -1195,6 +1215,8 @@
 │   │   │   │   │   ├── SaveGeneralInfoController.php
 │   │   │   │   │   ├── StorageAreaOptionsFragmentController.php
 │   │   │   │   │   └── UpdateMeasureController.php
+│   │   │   │   ├── Internal
+│   │   │   │   │   └── MapPreviewController.php
 │   │   │   │   ├── ListRegulationsController.php
 │   │   │   │   ├── PublishRegulationController.php
 │   │   │   │   ├── RegulationDetailController.php
@@ -1588,6 +1610,7 @@
 │   ├── register.html.twig
 │   ├── regulation
 │   │   ├── _general_info_form.html.twig
+│   │   ├── _internal_map_preview.html.twig
 │   │   ├── _item_location.html.twig
 │   │   ├── _items.html.twig
 │   │   ├── _list_filters_form.html.twig
@@ -1809,9 +1832,10 @@
 │   │   │   ├── eudonet_paris.3400.mock.json
 │   │   │   └── eudonet_paris.auth.mock.json
 │   │   ├── IgnGeocoderMockClient.php
-│   │   └── Litteralis
-│   │       ├── LitteralisMockHttpClient.data.json
-│   │       └── LitteralisMockHttpClient.php
+│   │   ├── Litteralis
+│   │   │   ├── LitteralisMockHttpClient.data.json
+│   │   │   └── LitteralisMockHttpClient.php
+│   │   └── NullRegulationMapImageMaker.php
 │   ├── SessionHelper.php
 │   ├── TimezoneHelper.php
 │   ├── Unit
@@ -1883,6 +1907,8 @@
 │   │   │   │   │   │   ├── SaveNumberedRoadCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveNumberedRoadCommandTest.php
 │   │   │   │   │   │   └── SaveRawGeoJSONCommandHandlerTest.php
+│   │   │   │   │   ├── MapImage
+│   │   │   │   │   │   └── WarmRegulationMapImageCacheCommandHandlerTest.php
 │   │   │   │   │   ├── Period
 │   │   │   │   │   │   ├── DeletePeriodCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteTimeSlotCommandHandlerTest.php
@@ -2052,6 +2078,7 @@
 │   │       │   ├── IgnReportClientTest.php
 │   │       │   ├── LaneSectionMakerTest.php
 │   │       │   ├── MattermostTest.php
+│   │       │   ├── RegulationMapImageMakerTest.php
 │   │       │   ├── RoadSectionMakerTest.php
 │   │       │   ├── StorageTest.php
 │   │       │   └── StringUtilsTest.php
@@ -2168,5 +2195,6 @@
 │   ├── emails.fr.xlf
 │   ├── messages.fr.xlf
 │   └── validators.fr.xlf
+├── vitest.config.js
 └── webpack.config.js
-430 directories, 1895 files
+436 directories, 1917 files
