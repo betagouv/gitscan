@@ -170,6 +170,7 @@
 │   ├── 20260122144155_creationTableRevocationsJwt.js
 │   ├── 20260303153817_suppressionColonneIdResetMotDePasseUtilisateur.js
 │   ├── 20260304142822_suppressionMotDePasseDansDonneesUtilisateurs.js
+│   ├── 20260504130310_creationTableAdminsOrganisations.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -454,6 +455,7 @@
 │   │       ├── accueilInscription.css
 │   │       ├── activation.css
 │   │       ├── article.css
+│   │       ├── blocCommunaute.css
 │   │       ├── bouton.css
 │   │       ├── cgu.css
 │   │       ├── connexion.css
@@ -601,15 +603,18 @@
 │   │   ├── adaptateurPdf.configurationTamponHomologation.ts
 │   │   ├── adaptateurPdf.js
 │   │   ├── adaptateurPdf.puppeteer.ts
+│   │   ├── adaptateurPersistance.interface.ts
 │   │   ├── adaptateurPersistanceMemoire.js
 │   │   ├── adaptateurPostgres.js
 │   │   ├── adaptateurProfilAnssi.js
 │   │   ├── adaptateurProfilAnssiVide.js
 │   │   ├── adaptateurProtection.interface.ts
 │   │   ├── adaptateurProtection.js
+│   │   ├── adaptateurRechercheEntreprise.interface.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.js
 │   │   ├── adaptateurStatistiquesMetabase.js
-│   │   ├── adaptateurSupervisionMetabase.js
+│   │   ├── adaptateurSupervision.interface.ts
+│   │   ├── adaptateurSupervisionMetabase.ts
 │   │   ├── adaptateurTeleversementModelesMesureSpecifique.xls.js
 │   │   ├── adaptateurTeleversementServices.xls.js
 │   │   ├── adaptateurTrackingMemoire.js
@@ -624,7 +629,7 @@
 │   │   ├── fabriqueAdaptateurOidc.js
 │   │   ├── fabriqueAdaptateurPersistance.js
 │   │   ├── fabriqueAdaptateurProfilAnssi.js
-│   │   ├── fabriqueAdaptateurSupervision.js
+│   │   ├── fabriqueAdaptateurSupervision.ts
 │   │   └── fabriqueAdaptateurTracking.js
 │   ├── annuaire
 │   │   ├── serviceAnnuaire.interface.ts
@@ -650,7 +655,7 @@
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.ts
 │   │   │   ├── consigneTeleversementModelesMesureSpecifiqueRealiseDansJournal.js
 │   │   │   ├── consigneTeleversementServicesRealiseDansJournal.js
-│   │   │   ├── delieServiceEtSuperviseurs.js
+│   │   │   ├── delieServiceEtSuperviseurs.ts
 │   │   │   ├── envoieMailFelicitationHomologation.js
 │   │   │   ├── envoieTrackingDeCompletude.js
 │   │   │   ├── envoieTrackingDeConnexionUtilisateur.js
@@ -661,9 +666,11 @@
 │   │   │   ├── metAJourEstimationNombreServicesContactBrevo.js
 │   │   │   ├── metAJourParrainage.js
 │   │   │   ├── modifieLienEntrepriseEtContactBrevo.js
-│   │   │   ├── modifieLienServiceEtSuperviseurs.js
+│   │   │   ├── modifieLienServiceEtSuperviseurs.ts
+│   │   │   ├── modifieRattachementServiceEtAdmins.ts
+│   │   │   ├── rattacheServiceEtAdmins.ts
 │   │   │   ├── relieEntrepriseEtContactBrevo.js
-│   │   │   ├── relieServiceEtSuperviseurs.js
+│   │   │   ├── relieServiceEtSuperviseurs.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.js
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.js
@@ -699,6 +706,9 @@
 │   ├── depotDonnees.js
 │   ├── depots
 │   │   ├── depotDonneesActivitesMesure.ts
+│   │   ├── depotDonneesAdministrationOrganisations.interface.ts
+│   │   ├── depotDonneesAdministrationOrganisations.ts
+│   │   ├── depotDonneesAutorisations.interface.ts
 │   │   ├── depotDonneesAutorisations.js
 │   │   ├── depotDonneesBrouillonService.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.js
@@ -715,7 +725,8 @@
 │   │   ├── depotDonneesSession.ts
 │   │   ├── depotDonneesSimulationMigrationReferentiel.ts
 │   │   ├── depotDonneesSuggestionsActions.js
-│   │   ├── depotDonneesSuperviseurs.js
+│   │   ├── depotDonneesSuperviseurs.interface.ts
+│   │   ├── depotDonneesSuperviseurs.ts
 │   │   ├── depotDonneesTeleversementModelesMesureSpecifique.js
 │   │   ├── depotDonneesTeleversementServices.interface.ts
 │   │   ├── depotDonneesTeleversementServices.ts
@@ -865,14 +876,14 @@
 │   │   ├── sourceAuthentification.ts
 │   │   ├── statistiquesMesures.js
 │   │   ├── suggestionAction.ts
-│   │   ├── superviseur.js
+│   │   ├── superviseur.ts
 │   │   ├── televersement
 │   │   │   ├── correspondanceReferentielV2.ts
 │   │   │   ├── serviceTeleverseV2.ts
 │   │   │   ├── televersementModelesMesureSpecifique.js
 │   │   │   ├── televersementServicesV2.ts
 │   │   │   └── validationV2.ts
-│   │   ├── utilisateur.js
+│   │   ├── utilisateur.ts
 │   │   ├── utilisateur.types.ts
 │   │   └── versionService.ts
 │   ├── moteurRegles
@@ -980,6 +991,7 @@
 │   │   │   ├── routesConnecte.types.ts
 │   │   │   ├── routesConnecteApi.js
 │   │   │   ├── routesConnecteApi.schema.ts
+│   │   │   ├── routesConnecteApiAdmin.ts
 │   │   │   ├── routesConnecteApiBrouillonService.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.ts
@@ -1012,6 +1024,7 @@
 │   │   │   ├── routesConnecteApiUtilisateur.ts
 │   │   │   ├── routesConnecteApiVisiteGuidee.js
 │   │   │   ├── routesConnectePage.js
+│   │   │   ├── routesConnectePageAdmin.ts
 │   │   │   └── routesConnectePageService.js
 │   │   ├── mappeur
 │   │   │   └── utilisateur.ts
@@ -1030,7 +1043,8 @@
 │   ├── session
 │   │   └── serviceGestionnaireSession.ts
 │   ├── supervision
-│   │   └── serviceSupervision.js
+│   │   ├── serviceAdministrationOrganisations.ts
+│   │   └── serviceSupervision.ts
 │   ├── taches
 │   │   └── envoieMailsNotificationExpirationHomologation.js
 │   ├── tracking
@@ -1054,6 +1068,8 @@
 │       ├── accessibilite.pug
 │       ├── accueilInscription.pug
 │       ├── activation.pug
+│       ├── admin
+│       │   └── entites.pug
 │       ├── apresAuthentification.pug
 │       ├── article.pug
 │       ├── base.pug
@@ -1068,6 +1084,7 @@
 │       ├── erreurAccesRefuse.pug
 │       ├── fragments
 │       │   ├── avancementEtape.pug
+│       │   ├── blocCommunaute.pug
 │       │   ├── composantSvelte.pug
 │       │   ├── donneesPartagees.pug
 │       │   ├── elementsAjoutables
@@ -1125,6 +1142,10 @@
 │   │   │   ├── AccueilInscription.svelte
 │   │   │   ├── accueilInscription.d.ts
 │   │   │   └── accueilInscription.ts
+│   │   ├── adminEntites
+│   │   │   ├── AdminEntites.svelte
+│   │   │   ├── adminEntites.api.ts
+│   │   │   └── adminEntites.ts
 │   │   ├── bandeauReferentielV2
 │   │   │   ├── BandeauReferentielV2.svelte
 │   │   │   ├── bandeauReferentielV2.d.ts
@@ -1741,7 +1762,7 @@
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.spec.ts
 │   │   │   ├── consigneTeleversementModelesMesureSpecifiqueRealiseDansJournal.spec.js
 │   │   │   ├── consigneTeleversementServicesRealiseDansJournal.spec.js
-│   │   │   ├── delieServiceEtSuperviseurs.spec.js
+│   │   │   ├── delieServiceEtSuperviseurs.spec.ts
 │   │   │   ├── envoieMailFelicitationHomologation.spec.js
 │   │   │   ├── envoieTrackingDeCompletude.spec.js
 │   │   │   ├── envoieTrackingDeConnexionUtilisateur.spec.js
@@ -1752,9 +1773,11 @@
 │   │   │   ├── metAJourEstimationNombreServicesContactBrevo.spec.js
 │   │   │   ├── metAJourParrainage.spec.js
 │   │   │   ├── modifieLienEntrepriseEtContactBrevo.spec.js
-│   │   │   ├── modifieLienServiceEtSuperviseurs.spec.js
+│   │   │   ├── modifieLienServiceEtSuperviseurs.spec.ts
+│   │   │   ├── modifieRattachementServiceEtAdmins.spec.ts
+│   │   │   ├── rattacheServiceEtAdmins.spec.ts
 │   │   │   ├── relieEntrepriseEtContactBrevo.spec.js
-│   │   │   ├── relieServiceEtSuperviseurs.spec.js
+│   │   │   ├── relieServiceEtSuperviseurs.spec.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.spec.js
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.spec.js
@@ -1800,6 +1823,7 @@
 │   ├── depotDonnees.spec.js
 │   ├── depots
 │   │   ├── depotDonneesActivitesMesure.spec.ts
+│   │   ├── depotDonneesAdministrationOrganisations.spec.ts
 │   │   ├── depotDonneesAutorisations.spec.js
 │   │   ├── depotDonneesBrouillonService.spec.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.spec.js
@@ -1813,7 +1837,7 @@
 │   │   ├── depotDonneesSession.spec.ts
 │   │   ├── depotDonneesSimulationMigrationReferentiel.spec.ts
 │   │   ├── depotDonneesSuggestionsActions.spec.js
-│   │   ├── depotDonneesSuperviseurs.spec.js
+│   │   ├── depotDonneesSuperviseurs.spec.ts
 │   │   ├── depotDonneesTeleversementModelesMesureSpecifique.spec.js
 │   │   ├── depotDonneesTeleversementServices.spec.ts
 │   │   ├── depotDonneesUtilisateurs.spec.js
@@ -1933,7 +1957,7 @@
 │   │   │   ├── serviceTeleverseV2.spec.ts
 │   │   │   ├── televersementModelesMesureSpecifique.spec.js
 │   │   │   └── televersementServicesV2.spec.ts
-│   │   └── utilisateur.spec.js
+│   │   └── utilisateur.spec.ts
 │   ├── moteurRegles
 │   │   ├── simulationMigration
 │   │   │   ├── equivalencesMesuresV1V2.aide.ts
@@ -1983,6 +2007,7 @@
 │   ├── routes
 │   │   ├── connecte
 │   │   │   ├── routesConnecteApi.spec.js
+│   │   │   ├── routesConnecteApiAdmin.spec.ts
 │   │   │   ├── routesConnecteApiBrouillonService.spec.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.spec.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.spec.ts
@@ -2007,6 +2032,7 @@
 │   │   │   ├── routesConnecteApiUtilisateur.spec.ts
 │   │   │   ├── routesConnecteApiVisiteGuidee.spec.js
 │   │   │   ├── routesConnectePage.spec.js
+│   │   │   ├── routesConnectePageAdmin.spec.ts
 │   │   │   └── routesConnectePageService.spec.js
 │   │   ├── nonConnecte
 │   │   │   ├── routesNonConnecteApi.spec.ts
@@ -2020,7 +2046,8 @@
 │   ├── session
 │   │   └── serviceGestionnaireSession.spec.ts
 │   ├── supervision
-│   │   └── serviceSupervision.spec.js
+│   │   ├── serviceAdministrationOrganisations.spec.ts
+│   │   └── serviceSupervision.spec.ts
 │   ├── taches
 │   │   └── envoieMailsNotificationExpirationHomologation.spec.js
 │   ├── tracking
@@ -2054,4 +2081,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-278 directories, 1897 files
+280 directories, 1922 files
