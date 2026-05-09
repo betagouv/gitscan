@@ -1,26 +1,25 @@
 {
   "url": "https://github.com/SocialGouv/claw-code-go",
   "name": "claw-code-go",
-  "description": "Ce projet est une implémentation Go de Claude Code, un assistant de codage agentique d'Anthropic. Il vise à intégrer les fonctionnalités de l'implémentation Rust originale, offrant ainsi des capacités avancées telles que des hooks, des plugins et un moteur de permissions.",
+  "description": "claw-code-go est un environnement d'exécution natif Go pour les sessions de codage agentique de type Claude Code. Il offre une boucle de modèle en streaming, un moteur de permissions, un registre d'outils, l'intégration MCP, des plugins, un sandbox et la persistance, le tout appelable depuis Go et exécutable en tant que binaire CLI unique.",
   "language": "Go",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
     "Gestion des utilisateurs & Permissions",
-    "Visualisation de données & Cartographie",
-    "Gestion des équipes & Partenaires",
+    "Notifications & Alertes",
+    "Gestion métier générale",
     "Intelligence Artificielle & NLP"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Go",
-    "aws-sdk-go-v2",
     "xdotool",
     "ImageMagick",
-    "go.opentelemetry.io/otel"
+    "OpenTelemetry",
+    "aws-sdk-go-v2"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,20 +27,18 @@
     "Docker & Conteneurs",
     "Python (scripts & backend)",
     "Microservices & Architecture",
-    "CI/CD & Déploiement",
-    "Tests"
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "api-key"
-    ]
+    ],
+    "providers": []
   },
-  "tests": "Tests unitaires et d'intégration",
-  "workflows": [
-    "GitHub Actions"
-  ],
-  "lastActivity": "2026-05-05T23:26:58+02:00",
+  "tests": "Tests unitaires et d'intégration, tests de fumée pour les fournisseurs cloud.",
+  "workflows": [],
+  "lastActivity": "2026-05-07T19:47:03+02:00",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
