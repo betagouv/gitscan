@@ -3,6 +3,8 @@
 │   ├── agents
 │   │   ├── architect
 │   │   │   └── AGENT.md
+│   │   ├── bug-analyst
+│   │   │   └── AGENT.md
 │   │   ├── code-dev
 │   │   │   └── AGENT.md
 │   │   ├── design-validator
@@ -12,6 +14,8 @@
 │   │   ├── functional-validator
 │   │   │   └── AGENT.md
 │   │   ├── product-owner
+│   │   │   └── AGENT.md
+│   │   ├── review-fixer
 │   │   │   └── AGENT.md
 │   │   ├── rgaa-auditor
 │   │   │   └── AGENT.md
@@ -32,6 +36,7 @@
 │   │   ├── code-quality.md
 │   │   ├── database-drizzle.md
 │   │   ├── figma-workflow.md
+│   │   ├── git-artefact-hygiene.md
 │   │   ├── github-board.md
 │   │   ├── react-components.md
 │   │   ├── styling-dsfr.md
@@ -41,18 +46,16 @@
 │   │   └── visual-quality-validation.md
 │   ├── settings.json
 │   └── skills
-│       ├── code
+│       ├── analyse
 │       │   └── SKILL.md
-│       ├── epic
+│       ├── implement
 │       │   ├── SKILL-legacy.md.bak
 │       │   └── SKILL.md
 │       ├── open
 │       │   └── SKILL.md
 │       ├── report
 │       │   └── SKILL.md
-│       ├── review
-│       │   └── SKILL.md
-│       └── ticket
+│       └── review
 │           └── SKILL.md
 ├── .dockerignore
 ├── .github
@@ -198,6 +201,7 @@
 │       │   ├── 0028_add_cse_opinion_completed_at.sql
 │       │   ├── 0029_add_declaration_submitted_at.sql
 │       │   ├── 0030_drop_job_category_detail.sql
+│       │   ├── 0031_drop_quartile_threshold4.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
@@ -215,6 +219,7 @@
 │       │       ├── 0018_snapshot.json
 │       │       ├── 0019_snapshot.json
 │       │       ├── 0030_snapshot.json
+│       │       ├── 0031_snapshot.json
 │       │       └── _journal.json
 │       ├── drizzle.config.ts
 │       ├── next.config.js
@@ -334,19 +339,23 @@
 │       │   │   ├── declaration-accessibilite
 │       │   │   │   └── page.tsx
 │       │   │   ├── declaration-remuneration
-│       │   │   │   ├── etape
-│       │   │   │   │   └── [step]
+│       │   │   │   ├── (with-banner)
+│       │   │   │   │   ├── etape
+│       │   │   │   │   │   └── [step]
+│       │   │   │   │   │       └── page.tsx
+│       │   │   │   │   ├── layout.tsx
+│       │   │   │   │   ├── page.tsx
+│       │   │   │   │   └── parcours-conformite
+│       │   │   │   │       ├── confirmation
+│       │   │   │   │       │   └── page.tsx
+│       │   │   │   │       ├── etape
+│       │   │   │   │       │   └── [step]
+│       │   │   │   │       │       └── page.tsx
+│       │   │   │   │       ├── evaluation-conjointe
+│       │   │   │   │       │   └── page.tsx
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── layout.tsx
-│       │   │   │   ├── page.tsx
-│       │   │   │   └── parcours-conformite
-│       │   │   │       ├── confirmation
-│       │   │   │       │   └── page.tsx
-│       │   │   │       ├── etape
-│       │   │   │       │   └── [step]
-│       │   │   │       │       └── page.tsx
-│       │   │   │       ├── evaluation-conjointe
-│       │   │   │       │   └── page.tsx
+│       │   │   │   └── recapitulatif
 │       │   │   │       └── page.tsx
 │       │   │   ├── donnees-personnelles
 │       │   │   │   └── page.tsx
@@ -411,6 +420,7 @@
 │       │   │   ├── missing-info-modal.e2e.ts
 │       │   │   ├── previous-year-categories.e2e.ts
 │       │   │   ├── public-referents.e2e.ts
+│       │   │   ├── recapitulatif.e2e.ts
 │       │   │   └── rgaa-audit.spec.ts
 │       │   ├── env.js
 │       │   ├── instrumentation-client.ts
@@ -569,7 +579,19 @@
 │       │   │   │   ├── DeclarationLayout.tsx
 │       │   │   │   ├── MissingSiret.tsx
 │       │   │   │   ├── StepPageClient.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── schemas.test.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── recapitulatif
+│       │   │   │   │   ├── CategoryRecapTable.module.scss
+│       │   │   │   │   ├── CategoryRecapTable.tsx
+│       │   │   │   │   ├── IndicatorTables.module.scss
+│       │   │   │   │   ├── IndicatorTables.tsx
+│       │   │   │   │   ├── RecapitulatifPage.module.scss
+│       │   │   │   │   ├── RecapitulatifPage.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── RecapitulatifPage.test.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   ├── schemas.ts
 │       │   │   │   ├── shared
 │       │   │   │   │   ├── CompanyBanner.module.scss
@@ -613,11 +635,21 @@
 │       │   │   │   │   │   ├── devFillData.test.ts
 │       │   │   │   │   │   ├── gapBadge.test.ts
 │       │   │   │   │   │   ├── gipMdsMapping.test.ts
+│       │   │   │   │   │   ├── gipMdsMappingCsv.test.ts
 │       │   │   │   │   │   └── useComplianceCompletion.test.ts
 │       │   │   │   │   ├── common.module.scss
 │       │   │   │   │   ├── complianceNavigation.ts
 │       │   │   │   │   ├── constants.ts
 │       │   │   │   │   ├── devFillData.ts
+│       │   │   │   │   ├── draft
+│       │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   ├── computeDraftDiff.test.ts
+│       │   │   │   │   │   │   ├── draftStorage.test.ts
+│       │   │   │   │   │   │   └── useDeclarationDraft.test.tsx
+│       │   │   │   │   │   ├── computeDraftDiff.ts
+│       │   │   │   │   │   ├── draftSchema.ts
+│       │   │   │   │   │   ├── draftStorage.ts
+│       │   │   │   │   │   └── useDeclarationDraft.ts
 │       │   │   │   │   ├── gapBadge.module.scss
 │       │   │   │   │   ├── gapBadge.ts
 │       │   │   │   │   ├── gipMdsMapping.ts
@@ -651,13 +683,16 @@
 │       │   │   │   │   │   ├── Step3DevFill.test.tsx
 │       │   │   │   │   │   ├── Step3VariablePay.test.tsx
 │       │   │   │   │   │   ├── Step4DevFill.test.tsx
+│       │   │   │   │   │   ├── Step4QuartileDistribution.submit.test.tsx
 │       │   │   │   │   │   ├── Step4QuartileDistribution.test.tsx
+│       │   │   │   │   │   ├── Step4QuartileDistributionGip.test.tsx
 │       │   │   │   │   │   ├── Step5DevFill.test.tsx
 │       │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
 │       │   │   │   │   │   └── Step6Review.test.tsx
 │       │   │   │   │   ├── compliancePath
 │       │   │   │   │   │   ├── CompliancePathOption.module.scss
 │       │   │   │   │   │   ├── CompliancePathOption.tsx
+│       │   │   │   │   │   ├── CompliancePathOptions.tsx
 │       │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
 │       │   │   │   │   │   └── constants.ts
 │       │   │   │   │   ├── jointEvaluation
@@ -686,7 +721,10 @@
 │       │   │   │   │   ├── step4
 │       │   │   │   │   │   ├── QuartileInterpretationCallout.tsx
 │       │   │   │   │   │   ├── QuartileTable.tsx
-│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   │   ├── QuartileTableRow.tsx
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   ├── quartileErrors.ts
+│       │   │   │   │   │   └── quartileFormHelpers.ts
 │       │   │   │   │   ├── step5
 │       │   │   │   │   │   ├── CategoryDataTable.tsx
 │       │   │   │   │   │   ├── CategoryForm.tsx
@@ -703,6 +741,7 @@
 │       │   │   │   │       ├── GapBadge.tsx
 │       │   │   │   │       ├── GapColumn.tsx
 │       │   │   │   │       ├── GapSideBySide.tsx
+│       │   │   │   │       ├── IndicatorSections.tsx
 │       │   │   │   │       ├── QuartileColumn.tsx
 │       │   │   │   │       ├── index.ts
 │       │   │   │   │       └── parseStep5Categories.ts
@@ -741,6 +780,7 @@
 │       │   │   │   │   ├── formatLongDate.test.ts
 │       │   │   │   │   ├── gap.test.ts
 │       │   │   │   │   ├── number.test.ts
+│       │   │   │   │   ├── quartile.test.ts
 │       │   │   │   │   ├── regions.test.ts
 │       │   │   │   │   └── siren.test.ts
 │       │   │   │   ├── index.ts
@@ -753,6 +793,7 @@
 │       │   │   │   │   ├── format.ts
 │       │   │   │   │   ├── gap.ts
 │       │   │   │   │   ├── number.ts
+│       │   │   │   │   ├── quartile.ts
 │       │   │   │   │   ├── regions.ts
 │       │   │   │   │   └── siren.ts
 │       │   │   │   └── types.ts
@@ -967,6 +1008,7 @@
 │       │   │   │   │   ├── MonEspacePage.test.tsx
 │       │   │   │   │   ├── MyCompaniesPage.test.tsx
 │       │   │   │   │   ├── StatusBadge.test.tsx
+│       │   │   │   │   ├── VerticalStepper.test.tsx
 │       │   │   │   │   ├── ViewToggle.test.tsx
 │       │   │   │   │   ├── WelcomeBanner.test.tsx
 │       │   │   │   │   ├── buildDeclarationList.test.ts
@@ -1060,8 +1102,13 @@
 │       │   │   │   │   │   ├── company.test.ts
 │       │   │   │   │   │   ├── cseOpinion.finalize.test.ts
 │       │   │   │   │   │   ├── cseOpinion.test.ts
+│       │   │   │   │   │   ├── declaration.employeeCategories.test.ts
+│       │   │   │   │   │   ├── declaration.impersonation.test.ts
+│       │   │   │   │   │   ├── declaration.step4Loader.test.ts
 │       │   │   │   │   │   ├── declaration.test.ts
 │       │   │   │   │   │   ├── declarationHelpers.test.ts
+│       │   │   │   │   │   ├── helpers
+│       │   │   │   │   │   │   └── declarationTestHelpers.ts
 │       │   │   │   │   │   ├── jointEvaluation.test.ts
 │       │   │   │   │   │   └── publicReferents.test.ts
 │       │   │   │   │   ├── admin.ts
@@ -1152,18 +1199,27 @@
 ├── pnpm-workspace.yaml
 ├── scripts
 │   ├── orchestration
+│   │   ├── agent_drilldown.sh
+│   │   ├── agent_status.sh
 │   │   ├── cache_gh.sh
 │   │   ├── cleanup_terminal_worktrees.sh
+│   │   ├── compute_cost.sh
 │   │   ├── create_linked_branch.sh
 │   │   ├── dispatch_plan.sh
+│   │   ├── ensure_epic_branch.sh
 │   │   ├── epic_loop.sh
 │   │   ├── epic_state.sh
+│   │   ├── force_pr_issue_link.sh
 │   │   ├── log_event.sh
+│   │   ├── merge_validated_ticket.sh
+│   │   ├── open_epic_final_pr.sh
 │   │   ├── open_worktree.sh
 │   │   ├── process_tick_result.sh
+│   │   ├── rebase_epic_branch.sh
+│   │   ├── refresh_pr_link.sh
 │   │   ├── render_dashboard.sh
 │   │   └── set_ticket_status.sh
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-221 directories, 947 files
+230 directories, 994 files
