@@ -1,0 +1,72 @@
+source 'https://rubygems.org'
+
+rails_version = '~> 8.1'
+[
+  'activesupport',
+  'activemodel',
+  'activerecord',
+  'activejob',
+  'actionpack',
+  'railties'
+].each do |rails_subgem|
+  gem rails_subgem, rails_version
+end
+
+gem 'pg'
+
+gem 'puma'
+
+gem 'good_job', '~> 4.18'
+
+gem 'rest-client'
+
+gem 'connection_pool', '< 4.0'
+gem 'rack-attack'
+gem 'rack-cors'
+
+gem 'logstasher'
+
+gem 'oauth2', '~> 2.0'
+
+gem 'jwt', '~> 3.1'
+
+gem 'lockbox'
+
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
+gem 'interactor'
+
+gem 'bigdecimal'
+gem 'csv'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-json_expectations'
+  gem 'shoulda-matchers'
+  gem 'webmock', '~> 3.26'
+  gem 'timecop'
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura'
+  gem 'super_diff'
+  gem 'ammeter'
+  gem 'rails-controller-testing'
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'colorize'
+  gem 'dotenv-rails'
+end
+
+group :development do
+  gem 'brakeman', require: false
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+end
