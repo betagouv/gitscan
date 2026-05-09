@@ -1,17 +1,20 @@
-## Changelog : qualicharge (30 derniers jours, au 28 avril 2026)
+## Changelog : qualicharge (30 derniers jours, au 8 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de qualicharge se concentrent sur l'amélioration de la granularité des indicateurs de performance pour les unités opérationnelles, la suppression d'une fonctionnalité de cache utilisateur obsolète dans l'API, et la mise à jour de nombreuses dépendances pour bénéficier des dernières corrections de sécurité et améliorations.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la granularité des indicateurs de performance dans l'interface Prefect, ainsi que sur la suppression d'une fonctionnalité d'API obsolète. De nombreuses mises à jour de dépendances ont également été appliquées pour assurer la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Amélioration des indicateurs de performance : Extension des indicateurs de volume au niveau des unités opérationnelles. [#1527322](https://github.com/MTES-MCT/qualicharge/pull/1527322)
-- Suppression du cache utilisateur : Suppression des requêtes API mettant en cache les informations utilisateur. [#7149d5d](https://github.com/MTES-MCT/qualicharge/commit/7149d5d)
+
+- Extension des indicateurs de volume aux niveaux d'OperationalUnit dans Prefect. [#1527322](https://github.com/MTES-MCT/qualicharge/pull/1527322)
+- Suppression des requêtes API pour les utilisateurs mis en cache. [#7149d5d](https://github.com/MTES-MCT/qualicharge/commit/7149d5d)
 
 ### Évolutions techniques
-- Mises à jour de dépendances : De nombreuses dépendances ont été mises à jour vers leurs dernières versions, incluant des correctifs de sécurité pour `python-multipart`, `pygments`, `pytest`, `requests` et d'autres.
-- Mises à jour d'images Docker : Les images Docker de Keycloak, Metabase, Terraform, Curl et Locust ont été mises à jour.
-- Amélioration des actions CI/CD : Plusieurs actions utilisées dans les workflows CI/CD ont été mises à jour.
+
+- Mises à jour régulières des images Docker pour Metabase, Terraform, Curl, Locust et Keycloak afin de bénéficier des dernières corrections de bugs et améliorations de sécurité.
+- Mises à jour des actions GitHub (setup-uv, gh-action-pypi-publish, upload-artifact) pour bénéficier des dernières fonctionnalités et corrections.
+- Mises à jour de plusieurs dépendances Python (pytest, pygments, python-dotenv, python-multipart, requests) pour corriger des vulnérabilités de sécurité et améliorer la stabilité.
+- Mise à jour de l'outil de gestion d'environnement UV.
 
 ### Autres changements
-- Documentation : Aucune modification de la documentation n'a été apportée durant cette période.
-- Configuration : Aucune modification de la configuration n'a été apportée durant cette période.
+
+- Aucune modification significative de la documentation ou de la configuration n'a été apportée durant cette période.
