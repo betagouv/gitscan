@@ -1,3 +1,36 @@
+## [6.19.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.19.0...v6.19.1) (2026-05-07)
+
+
+### Performance Improvements
+
+* lazy OpeningHours parsing and two-pass filtering ([4f7f332](https://github.com/anct-cartographie-nationale/cartographie/commit/4f7f332b940c39b0a8479776ddabf64f2d446961))
+
+# [6.19.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.18.1...v6.19.0) (2026-05-07)
+
+
+### Bug Fixes
+
+* decouple OpeningHours cache from store init and fix timezone-dependent test ([203ef01](https://github.com/anct-cartographie-nationale/cartographie/commit/203ef0187c780c461df11618a3479c80a3b825db))
+
+
+### Features
+
+* add open now and open weekends availability filters with cached OpeningHours parsing ([5e43199](https://github.com/anct-cartographie-nationale/cartographie/commit/5e43199f3e4939fa0e925077adbd1f2d51f51b79))
+
+## [6.18.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.18.0...v6.18.1) (2026-05-07)
+
+
+### Bug Fixes
+
+* replace raw URL with "Site internet" label on lieu detail page ([2ae2aff](https://github.com/anct-cartographie-nationale/cartographie/commit/2ae2affe016c37e76fbfc7311987b6f7728e5599))
+
+# [6.18.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.17.1...v6.18.0) (2026-05-07)
+
+
+### Features
+
+* provision Scaleway TEM domain and inject SMTP config into container ([7728571](https://github.com/anct-cartographie-nationale/cartographie/commit/7728571b1af0e9ac9522baa8435942159ac7e821))
+
 ## [6.17.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.17.0...v6.17.1) (2026-04-30)
 
 
