@@ -1,10 +1,25 @@
+2026-05-08T11:39:31+02:00 - 2f3ffa3e - Redwane Zafari : Merge pull request #836 from MTES-MCT/feat/admin_home_page_rework
+2026-05-07T20:08:43+02:00 - a067894c - Gaspard Lonchampt : chore(admin): remove unused useWidth in Activities panel
+2026-05-07T16:35:28+02:00 - c94e1249 - Gaspard "Sarp" Lonchampt : Merge pull request #845 from MTES-MCT/fix/bulk_import_vehicle
+2026-05-07T16:30:52+02:00 - 4f2bf784 - Gaspard Lonchampt : fix(admin): apply recette feedback on bulk import vehicle modal
+2026-05-07T13:01:15+02:00 - cb477dac - Gaspard Lonchampt : refactor(theme): export MOBILIC_BLUE constant for shared use
+2026-05-07T13:01:15+02:00 - c1c5863f - Gaspard Lonchampt : refactor(time): add formatCompleteDateFromString helper
+2026-05-07T13:01:15+02:00 - 3ce52555 - Gaspard Lonchampt : refactor(common): introduce WarningBadge component
+2026-05-07T12:44:33+02:00 - 0f27ab95 - donia benharara : fix(control): add isctt to controleur user info
+2026-05-07T12:38:23+02:00 - 3b0e49b4 - Gaspard Lonchampt : chore(admin): track refresh-line.svg in public dsfr assets
+2026-05-06T11:10:18+02:00 - 1812b4ad - Gaspard "Sarp" Lonchampt : Merge pull request #837 from MTES-MCT/feat/bulk_import_vehicle
+2026-05-06T11:04:32+02:00 - cf49c19f - Gaspard Lonchampt : chore(admin): track delete-bin-line.svg in public dsfr assets
+2026-05-06T10:50:32+02:00 - d1483fb8 - Gaspard Lonchampt : fix(admin): use DSFR icons in table edit actions
 2026-05-05T12:39:54+02:00 - 245d5d84 - Doniaab : Merge pull request #842 from MTES-MCT/feat/search-natinf
 2026-05-05T12:38:19+02:00 - 8ccfae03 - donia benharara : fix(control): fix parameter reassign error
 2026-05-05T12:34:55+02:00 - 3abe4a5c - donia benharara : fix(control): fix sonarcloud duplication code
+2026-05-05T09:12:52+02:00 - 9227b182 - Gaspard Lonchampt : feat(vehicles): defer registration parsing until submit
+2026-05-05T09:12:52+02:00 - 43b06b67 - Gaspard Lonchampt : fix(vehicles): align separators and validation with hint text
 2026-05-05T08:34:48+02:00 - 4a24aa97 - Gaspard "Sarp" Lonchampt : Merge pull request #826 from MTES-MCT/feat/backoffice_support_admin
 2026-05-04T17:58:56+02:00 - 58f1e4c8 - donia benharara : fix(control): fix design and replace material by dsfr components
 2026-05-04T15:02:04+02:00 - 00d34e1c - Redwane Zafari : Merge pull request #840 from MTES-MCT/fix/activity-show-mission-older-than-thirty-one-days
 2026-05-04T14:45:01+02:00 - e180028a - Redwane : refactor(admin): extract repeated date picker config and refresh logic into shared constants
+2026-05-04T14:21:15+02:00 - 2aaa171e - Gaspard Lonchampt : fix(vehicles): tighten registration number validation
 2026-05-04T13:13:36+02:00 - 6bb8743e - Gaspard Lonchampt : fix(impersonation): fall back to full logout if stop impersonation fails
 2026-05-04T13:13:32+02:00 - 537eb72a - Gaspard Lonchampt : fix(account): guard userInfo in TotpSetup
 2026-05-04T13:13:29+02:00 - cf5e1d97 - Gaspard Lonchampt : fix(login): reset totp submitting ref on non-graphql errors
@@ -27,10 +42,18 @@
 2026-04-28T11:40:41+02:00 - de431817 - donia benharara : fix(control): update footer style
 2026-04-28T09:42:23+02:00 - 4c0112ef - donia benharara : feat(control): add search to add  custom infractions to the control
 2026-04-27T17:47:50+02:00 - 9211bc04 - Gaspard "Sarp" Lonchampt : Merge pull request #841 from MTES-MCT/prod
+2026-04-27T17:43:46+02:00 - 97debeaf - Gaspard Lonchampt : feat(vehicles): replace inline add with batch modal
 2026-04-27T15:36:04+02:00 - 8c793237 - Redwane : fix(admin): refetch missions when start date changes in Activities tab
 2026-04-25T14:55:03+02:00 - 8a79a8a0 - Gaspard "Sarp" Lonchampt : Merge pull request #839 from MTES-MCT/hotifx/show_past_activity
 2026-04-25T14:47:27+02:00 - 0fa0ce32 - Gaspard Lonchampt : fix(admin): show work day entries when missions are outside the 31-day window
 2026-04-23T01:38:31+02:00 - 72f2987e - Gaspard "Sarp" Lonchampt : Merge pull request #838 from MTES-MCT/master
+2026-04-22T15:06:55+02:00 - 14800991 - Gaspard Lonchampt : fix(admin): generalize BatchInviteModal for multi-entity batch operations
+2026-04-22T15:06:47+02:00 - 37d27a7a - Gaspard Lonchampt : fix(analytics): add vehicle-specific Matomo tracking
+2026-04-21T16:07:26+02:00 - 7d1b0fbb - Gaspard Lonchampt : style(admin): fix negated ternary condition for SonarCloud readability
+2026-04-21T15:46:40+02:00 - 8a4871b8 - Gaspard Lonchampt : perf(admin): cache dashboard data and show full date on last update
+2026-04-21T15:40:19+02:00 - 4abd5836 - Gaspard Lonchampt : feat(admin): add manager homepage with dashboard and infractions
+2026-04-21T15:40:19+02:00 - 1521880c - Gaspard Lonchampt : feat(admin): deep link to inactive employees dropdown from homepage
+2026-04-21T14:19:16+02:00 - 70071fcb - Gaspard Lonchampt : feat(admin): add Accueil route as default admin landing page
 2026-04-20T17:21:09+02:00 - 8d2bb068 - Redwane Zafari : Merge pull request #835 from MTES-MCT/feat/mission-status-tags-activity-tab
 2026-04-20T17:02:41+02:00 - 056a4360 - Redwane : fix(admin): validate openWorkDay prop in MissionStatusTagBtn
 2026-04-20T16:56:18+02:00 - 1b4d0588 - Redwane : fix(admin): open day drawer instead of mission drawer for validated days
