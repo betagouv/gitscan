@@ -1,45 +1,43 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 24 avril 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment au niveau de la gestion des conversations, des fichiers et des invitations. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de l'intégration avec les démarches numériques et la gestion des communes.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des organisations et des données géographiques, ainsi que sur la correction de bugs et l'amélioration de l'expérience utilisateur. Des améliorations ont été apportées à la gestion des fichiers, des notes, des communes et des traces d'activité. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- **Conversations :**
-    - Ajout d'un hash pour la navigation dans les conversations [#fd0f7bd49](https://github.com/betagouv/recommandations-collaboratives/commit/fd0f7bd49).
-    - Amélioration de l'affichage des documents dans les conversations avec ajout du titre [#f37e289aa](https://github.com/betagouv/recommandations-collaboratives/commit/f37e289aa).
-    - Possibilité de rouvrir le dernier onglet utilisé dans le panneau de partage de contenu [#fd20cfb3e](https://github.com/betagouv/recommandations-collaboratives/commit/fd20cfb3e).
-    - Ouverture automatique du panneau de brouillon après la création d'une recommandation brouillon [#4e8439dbf](https://github.com/betagouv/recommandations-collaboratives/commit/4e8439dbf).
-- **Fichiers :**
-    - Amélioration de la gestion des fichiers avec la possibilité de télécharger des fichiers et de les associer aux conversations [#9fbf7d227](https://github.com/betagouv/recommandations-collaboratives/commit/9fbf7d227).
-    - Ajout d'un indicateur du nombre de fichiers externes [#970183c55](https://github.com/betagouv/recommandations-collaboratives/commit/970183c55).
-- **Invitations :**
-    - Amélioration du formulaire d'acceptation d'invitation avec ajout de la validation du mot de passe et de l'adresse email [#df020ce30](https://github.com/betagouv/recommandations-collaboratives/commit/df020ce30).
-    - Amélioration des messages d'erreur liés aux mots de passe [#35e7ecf98](https://github.com/betagouv/recommandations-collaboratives/commit/35e7ecf98).
-- **Géomatique :**
-    - Amélioration du script `mergecommunes` pour créer, mettre à jour et supprimer les communes en fonction du fichier LaPoste, corrigeant ainsi les données manquantes [#0778db113](https://github.com/betagouv/recommandations-collaboratives/commit/0778db113).
-- **Autres :**
-    - Ajout d'une section pour les démarches numériques dans la fiche de recommandation [#a3d6a85f5](https://github.com/betagouv/recommandations-collaboratives/commit/a3d6a85f5).
-    - Possibilité de masquer l'onglet "Recommandations" [#bbba1972e](https://github.com/betagouv/recommandations-collaboratives/commit/bbba1972e).
+- Amélioration de la gestion des organisations : possibilité de fusionner des organisations en utilisant n'importe quel nom précédent. [#2032](https://github.com/betagouv/recommandations-collaboratives/issues/2032)
+- Gestion des données géographiques : mise à jour des scripts de gestion des communes pour prendre en compte les fusions et les mises à jour de la base de données La Poste. [#2033](https://github.com/betagouv/recommandations-collaboratives/issues/2033)
+- Gestion des fichiers : amélioration de l'affichage des fichiers dans les conversations, avec un affichage du nombre de fichiers externes.
+- Gestion des notes : suppression des documents liés lors de la suppression d'une note privée.
+- Ajout d'un indicateur pour masquer le bouton de suggestion de ressource. [#2091](https://github.com/betagouv/recommandations-collaboratives/issues/2091)
+- Amélioration de l'intégration de Sesame : ajout de traces de connexion pour les liens Sesame. [#2084](https://github.com/betagouv/recommandations-collaboratives/issues/2084)
+- Ajout de la possibilité de dupliquer les ressources avec les liens vers les données structurées associées. [#2069](https://github.com/betagouv/recommandations-collaboratives/issues/2069)
+- Ajout d'un bouton pour suggérer des ressources dans les conversations. [#2064](https://github.com/betagouv/recommandations-collaboratives/issues/2064)
+- Amélioration de l'affichage des documents dans les conversations. [#2062](https://github.com/betagouv/recommandations-collaboratives/issues/2062)
 
 ### Évolutions techniques
-- **Refactoring et corrections :**
-    - Refactor de la gestion des liens vers les démarches numériques [#ddb5c6cd4](https://github.com/betagouv/recommandations-collaboratives/commit/ddb5c6cd4).
-    - Suppression de code obsolète [#17c7e2149](https://github.com/betagouv/recommandations-collaboratives/commit/17c7e2149).
-    - Correction de bugs liés à la gestion des tâches et des URLs [#76828c399](https://github.com/betagouv/recommandations-collaboratives/commit/76828c399).
-- **Dépendances :**
-    - Mise à jour de plusieurs dépendances : Django (v5.2.13), uv, lxml, pillow, pytest, dompurify, axios, lodash, cryptography [#7f6d00273](https://github.com/betagouv/recommandations-collaboratives/commit/7f6d00273), [#794014aea](https://github.com/betagouv/recommandations-collaboratives/commit/794014aea), [#ed2b3b429](https://github.com/betagouv/recommandations-collaboratives/commit/ed2b3b429).
-- **Tests :**
-    - Mise à jour des tests pour refléter les nouvelles fonctionnalités et corrections [#1063c096c](https://github.com/betagouv/recommandations-collaboratives/commit/1063c096c).
-    - Adaptation des tests à la nouvelle syntaxe ORM.
-- **CI/CD :**
-    - Mise à jour de la configuration de l'intégration continue.
+- Mise à jour de Django en version 5.2.13.
+- Mise à jour de plusieurs dépendances npm et yarn (axios, postcss, jupyter-server, etc.) pour corriger des vulnérabilités et améliorer les performances.
+- Refactorisation du code pour supprimer du code mort et améliorer la lisibilité.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Utilisation de `uv` pour la gestion des dépendances Python et synchronisation des fichiers `requirements.txt`.
+- Mise à jour de la gestion des liens vers les données structurées (démarches numériques).
+- Amélioration de la gestion des tests pour éviter les interférences entre les tests de connexion.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Nettoyage du code et des fichiers de configuration.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Correction de typos et amélioration de la lisibilité du code.
-- Ajout de commentaires pour clarifier certaines parties du code.
-- Mise à jour des URLs de la documentation pour les administrateurs et les conseillers [#6440aeabe](https://github.com/betagouv/recommandations-collaboratives/commit/6440aeabe).
-- Suppression de références à `dsFolder` et synchronisation de la tâche pour charger le schéma.
-- Ajout d'un message lors de l'envoi d'une documentation traditionnelle [#61c12daab](https://github.com/betagouv/recommandations-collaboratives/commit/61c12daab).
+- Amélioration de la documentation.
+- Correction de typos et amélioration de la qualité du code.
+- Ajout de tests unitaires pour valider les nouvelles fonctionnalités et les corrections de bugs.
+- Nettoyage du code et suppression de configurations inutiles.
+- Mise à jour des dépendances de développement.
+- Ajout de traces d'activité pour les rappels dans le CRM.
+- Amélioration de la gestion des erreurs dans le CRM.
+- Correction de bugs liés à l'affichage des dates dans les conversations.
+- Correction de bugs liés à la redirection des actions.
+- Amélioration de la validation des numéros de téléphone.
+- Correction d'un bug empêchant la fusion correcte des organisations.
+- Correction d'un bug lié à l'affichage des ressources publiques.
+- Ajout d'un hash pour la navigation dans les conversations. [#2067](https://github.com/betagouv/recommandations-collaboratives/issues/2067)
+- Correction d'un bug lié à l'affichage des informations sur les ressources.
+- Amélioration de la gestion des erreurs lors de la suppression de documents.
+- Mise à jour des scripts de gestion des communes.
+- Amélioration de la gestion des erreurs dans les tests.

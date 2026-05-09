@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est multi-portails et permet d'héberger plusieurs thématiques.",
+  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Notifications & Alertes",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Collaboration & Workflow",
-    "Gestion métier générale"
+    "Authentification & Accès",
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,34 +20,57 @@
     "cryptography",
     "django-allauth",
     "django-filter",
+    "django-gravatar2",
+    "django-guardian",
+    "django-htmx",
     "django-leaflet",
     "django-magicauth",
     "django-markdownx",
     "django-multisite2",
+    "django-otp",
+    "django-phonenumber-field",
+    "django-polymorphic",
+    "django-reversion",
+    "django-rest-polymorphic",
     "djangorestframework",
-    "uv"
+    "djangorestframework-simplejwt",
+    "drf-spectacular",
+    "dynamic-django-forms",
+    "ipython",
+    "libsass",
+    "lxml",
+    "pillow",
+    "psycopg",
+    "requests",
+    "sentry-sdk",
+    "sib-api-v3-sdk",
+    "tqdm",
+    "urllib3",
+    "wagtail"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "Frontend React",
     "Django",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "saml"
     ]
   },
   "tests": [
     "pytest",
-    "django-coverage-plugin"
+    "coverage"
   ],
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-24T15:42:48+02:00",
+  "lastActivity": "2026-05-07T17:26:57+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
