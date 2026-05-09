@@ -1,23 +1,29 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo qui regroupe les API et applications France VAE ainsi que ses composants comme Keycloak, Metabase et Strapi.",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus de Validation des Acquis de l'Expérience (VAE) en France.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Authentification & Accès",
     "Notifications & Alertes",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Fastify",
+    "Next.js",
     "GraphQL",
     "Prisma",
-    "PostgreSQL",
     "Keycloak",
+    "React",
+    "PostgreSQL",
+    "Outscale",
     "Traefik",
     "Vitest",
     "Cypress",
@@ -32,27 +38,36 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
-    "Authentification (composant)"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
   "tests": [
     "Vitest",
     "Cypress",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-30T18:28:28+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-05-07T19:05:30+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",

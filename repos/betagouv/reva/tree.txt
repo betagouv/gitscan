@@ -1166,7 +1166,19 @@
     │   │   │   │   │   │   │   │   │   ├── ResultatCard.tsx
     │   │   │   │   │   │   │   │   │   ├── ResultatTab.tsx
     │   │   │   │   │   │   │   │   │   └── jury-aap.hook.ts
-    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── date
+    │   │   │   │   │   │   │   │   │   ├── DateDeJuryCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── jury-aap.hook.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   └── resultat
+    │   │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │   │       │   ├── FeasibilityCompetenceBlocksModal.tsx
+    │   │   │   │   │   │   │   │       │   ├── HistoryResultatView.tsx
+    │   │   │   │   │   │   │   │       │   ├── ResultatCard.tsx
+    │   │   │   │   │   │   │   │       │   └── ResultatCardWithBlocks.tsx
+    │   │   │   │   │   │   │   │       ├── jury-aap.hook.ts
+    │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   ├── layout.tsx
     │   │   │   │   │   │   │   ├── payment
     │   │   │   │   │   │   │   │   ├── _components
@@ -1426,6 +1438,9 @@
     │   │   │   │   │   │   │   ├── CertificationAuthority.tsx
     │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccount.tsx
     │   │   │   │   │   │   ├── [candidacyId]
+    │   │   │   │   │   │   │   ├── candidacy-drop-out
+    │   │   │   │   │   │   │   │   ├── dropout.hook.ts
+    │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   ├── dossier-de-validation
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── DossierDeValidationCard.tsx
@@ -1607,6 +1622,10 @@
     │   │   │   │   │   ├── forgot-password-confirmation
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── login
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   ├── CredentialsStep.tsx
+    │   │   │   │   │   │   │   ├── OtpStep.tsx
+    │   │   │   │   │   │   │   └── RegistrationLinks.tsx
     │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── logout-confirmation
@@ -1875,6 +1894,7 @@
     │   │   │   └── primitives.d.ts
     │   │   └── utils
     │   │       ├── calendarLinks.ts
+    │   │       ├── canAAPEditExperiences.ts
     │   │       ├── candidateTypology.util.ts
     │   │       ├── feasibilityIncompleteOutdated.util.ts
     │   │       ├── formatIso8601Date.ts
@@ -1928,10 +1948,12 @@
     │   │   │   │       │       ├── dematerialized-feasibility-file-prerequisites.spec.ts
     │   │   │   │       │       ├── dematerialized-feasibility-file.spec.ts
     │   │   │   │       │       └── dff-mocks.ts
-    │   │   │   │       └── summary
-    │   │   │   │           ├── candidate-contact-details.spec.ts
-    │   │   │   │           ├── candidate-information-address.spec.ts
-    │   │   │   │           └── candidate-information-fc-locking.spec.ts
+    │   │   │   │       ├── summary
+    │   │   │   │       │   ├── candidate-contact-details.spec.ts
+    │   │   │   │       │   ├── candidate-information-address.spec.ts
+    │   │   │   │       │   └── candidate-information-fc-locking.spec.ts
+    │   │   │   │       └── training
+    │   │   │   │           └── training.spec.ts
     │   │   │   └── certification-details
     │   │   │       └── certification-details.spec.ts
     │   │   ├── (aap-certificateur)
@@ -1970,6 +1992,8 @@
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
     │   │   │   │   └── candidacy
+    │   │   │   │       ├── dropout
+    │   │   │   │       │   └── dropout.spec.ts
     │   │   │   │       ├── feasibility
     │   │   │   │       │   └── feasibility-completion-form-modal.spec.ts
     │   │   │   │       └── jury
@@ -2125,7 +2149,8 @@
     │   │   │   │   ├── loginWithCredentials.ts
     │   │   │   │   ├── resetAccountPassword.ts
     │   │   │   │   ├── sendForgotPasswordEmail.ts
-    │   │   │   │   └── updateAccount.ts
+    │   │   │   │   ├── updateAccount.ts
+    │   │   │   │   └── verifyOtpChallenge.ts
     │   │   │   ├── mail
     │   │   │   │   ├── notify-new-email.ts
     │   │   │   │   └── notify-previous-email.ts
@@ -2133,7 +2158,10 @@
     │   │   │   │   └── isOwnerOfAccount.security.ts
     │   │   │   └── utils
     │   │   │       ├── input-sanitization.ts
-    │   │   │       └── keycloak.utils.ts
+    │   │   │       ├── keycloak.utils.test.ts
+    │   │   │       ├── keycloak.utils.ts
+    │   │   │       ├── otp-challenge.utils.test.ts
+    │   │   │       └── otp-challenge.utils.ts
     │   │   ├── appointment
     │   │   │   ├── appointment.graphql
     │   │   │   ├── appointment.resolvers.ts
@@ -2171,8 +2199,6 @@
     │   │   │   │       ├── updateCertificationOfCandidacy.ts
     │   │   │   │       ├── updateCertificationWithinOrganismScope.test.ts
     │   │   │   │       └── updateCertificationWithinOrganismScope.ts
-    │   │   │   ├── constants
-    │   │   │   │   └── candidacy-inactif.constant.ts
     │   │   │   ├── emails
     │   │   │   │   ├── sendAutoCandidacyDropOutConfirmationEmailToAap.ts
     │   │   │   │   ├── sendAutoCandidacyDropOutConfirmationEmailToCandidate.ts
@@ -2186,8 +2212,6 @@
     │   │   │   │   ├── sendEndAccompagnementConfirmedToAap.ts
     │   │   │   │   ├── sendEndAccompagnementRefusedToAap.ts
     │   │   │   │   ├── sendEndAccompagnementSubmittedToCandidate.ts
-    │   │   │   │   ├── sendInactifEnAttenteAfterFeasibilityAdmissibleToCandidate.ts
-    │   │   │   │   ├── sendInactifEnAttenteBeforeFeasibilityAdmissibleToCandidate.ts
     │   │   │   │   ├── sendNewCandidacyEmail.ts
     │   │   │   │   ├── sendNewEmailCandidateEmail.ts
     │   │   │   │   ├── sendPreviousEmailCandidateEmail.ts
@@ -2196,22 +2220,20 @@
     │   │   │   │   ├── audit-event.type.ts
     │   │   │   │   └── cancel-drop-out.audit-event.ts
     │   │   │   ├── features
+    │   │   │   │   ├── addExperienceToCandidacy.test.ts
     │   │   │   │   ├── addExperienceToCandidacy.ts
-    │   │   │   │   ├── archiveCandidacies.ts
     │   │   │   │   ├── archiveCandidacy.test.ts
     │   │   │   │   ├── archiveCandidacy.ts
+    │   │   │   │   ├── canAAPEditExperiences.ts
     │   │   │   │   ├── canAccessCandidacy.ts
     │   │   │   │   ├── canCandidateUpdateCandidacy.ts
     │   │   │   │   ├── canManageCandidacy.ts
     │   │   │   │   ├── cancelDropOutCandidacy.test.ts
     │   │   │   │   ├── cancelDropOutCandidacy.ts
-    │   │   │   │   ├── checkAndUpdateCandidaciesInactifConfirme.ts
-    │   │   │   │   ├── checkAndUpdateCandidaciesInactifEnAttente.ts
     │   │   │   │   ├── createCandidacy.test.ts
     │   │   │   │   ├── createCandidacy.ts
     │   │   │   │   ├── deleteExperienceFromCandidacy.test.ts
     │   │   │   │   ├── deleteExperienceFromCandidacy.ts
-    │   │   │   │   ├── deleteExpiredCandidacies.ts
     │   │   │   │   ├── dropOutCandidacies.test.ts
     │   │   │   │   ├── dropOutCandidacies.ts
     │   │   │   │   ├── dropOutCandidacy.test.ts
@@ -2843,8 +2865,6 @@
     │   │   │   │   ├── auth.helper.ts
     │   │   │   │   ├── getKeycloakAdmin.ts
     │   │   │   │   └── jwt.helper.ts
-    │   │   │   ├── batch
-    │   │   │   │   └── processInBatches.ts
     │   │   │   ├── config
     │   │   │   │   └── config.ts
     │   │   │   ├── date
@@ -4325,6 +4345,14 @@
     │   │   │   ├── 20260429122643_add_reasons_to_candidacy_archiving_reason
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260430134150_add_drop_out_by_candidate_to_candidacy_drop_out_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260504121059_update_reasons_available_in_dropout_reason_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260505090000_remove_automatic_inactivity_batches
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260505095759_update_reasons_available_in_dropout_reason_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260506163000_remove_expired_candidacies_batch
     │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
@@ -5891,4 +5919,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1980 directories, 3913 files
+1989 directories, 3932 files
