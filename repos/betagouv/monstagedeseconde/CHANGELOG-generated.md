@@ -1,49 +1,49 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 5 mai 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur la correction de bugs, l'amélioration de la stabilité de l'application et l'optimisation de l'expérience utilisateur, notamment au niveau des conventions et des candidatures. Des mises à jour de sécurité et de dépendances ont également été intégrées pour assurer la pérennité du projet.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs, l'amélioration de la stabilité et de la performance de l'application, ainsi que sur l'ajout de nouvelles fonctionnalités pour faciliter la gestion des stages et des candidatures, notamment pour les stages en internat et les offres d'entreprises. Des corrections ont également été apportées à l'interface et aux données affichées.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la comparaison correcte des semaines dans l'interface utilisateur [#1643](https://github.com/betagouv/monstagedeseconde/issues/1643).
-- Amélioration de la gestion des adresses des étudiants, avec une limitation du nombre de caractères pour éviter des erreurs.
-- Correction d'un problème lié à l'affichage de la description des offres QPV.
-- Les étudiants de seconde peuvent maintenant valider deux candidatures sur les semaines 1 et 2.
-- Correction d'un bug empêchant l'édition des conventions par les établissements avec les bonnes informations.
-- Amélioration de la gestion des établissements et des responsables d'établissement dans les conventions.
-- Possibilité pour les référents d'inviter des collègues.
-- Correction d'un bug empêchant la signature des accords pour les représentants légaux.
-- Amélioration de l'affichage des offres d'accueil.
-- Correction d'un bug empêchant la suppression logicielle des candidatures.
-- Correction d'un bug lors de l'export des candidatures.
-- Correction d'un bug lié à l'affichage des semaines vides lors de la recherche pour les étudiants.
-- Correction d'un bug empêchant l'évolution d'une candidature retenue.
-- Correction d'un bug lié à l'affichage de l'identifiant de groupe d'offre.
-- Correction d'un bug lié à la création de nouvelles offres.
-- Amélioration de la gestion des adresses dans les candidatures.
-- Correction d'un bug lié à la duplication de compte pour les employeurs et les étudiants.
-- Amélioration de l'affichage des informations sur les offres d'accueil.
+- Possibilité pour un élève d'avoir deux stages valides simultanément. [#836](https://github.com/betagouv/monstagedeseconde/pull/836)
+- Amélioration de la recherche pour ne pas être affectée par l'année en cours lors de la sélection des semaines. [#853](https://github.com/betagouv/monstagedeseconde/pull/853)
+- Correction du lien vers la FAQ qui ne fonctionnait pas. [#841](https://github.com/betagouv/monstagedeseconde/pull/841)
+- Amélioration du message de validation de candidature pour les élèves de lycée postulant sur une semaine spécifique. [#819](https://github.com/betagouv/monstagedeseconde/pull/819)
+- Ajout de statistiques pour les maisons d'accueil. [#848](https://github.com/betagouv/monstagedeseconde/pull/848)
+- Suppression de l'envoi de l'email de confirmation de candidature. [#838](https://github.com/betagouv/monstagedeseconde/pull/838)
+- Amélioration de l'affichage des offres d'entreprises. [#812](https://github.com/betagouv/monstagedeseconde/pull/812)
+- Possibilité pour les référents d'inviter des collègues. [#779](https://github.com/betagouv/monstagedeseconde/pull/779)
+- Correction de l'affichage des adresses des entreprises. [#825](https://github.com/betagouv/monstagedeseconde/pull/825)
+- Correction d'un bug empêchant la modification d'une candidature retenue. [#762](https://github.com/betagouv/monstagedeseconde/pull/762)
+- Correction d'un bug lié à l'export des candidatures. [#783](https://github.com/betagouv/monstagedeseconde/pull/783)
+- Correction d'un bug lié à l'affichage des semaines vides lors de la recherche pour les élèves. [#766](https://github.com/betagouv/monstagedeseconde/pull/766)
 
 ### Évolutions techniques
-- Mise à jour de Rails vers la version 8.1.
-- Refonte de la gestion des notifications et des permissions.
-- Amélioration de la gestion des erreurs Sentry, avec des corrections spécifiques pour divers problèmes (dialogue d'invitation, informations sur les offres, etc.).
-- Ajout de tests CodeQL pour améliorer la sécurité du code.
-- Amélioration de la configuration du serveur avec Clever Tools.
-- Optimisation des performances de l'application.
-- Simplification et débogage de la logique d'accès (ability).
-- Mise en place de workflows CI/CD améliorés.
-- Amélioration de la gestion des dépendances et des versions.
-- Ajout de la possibilité d'uploader des bases de données.
-- Amélioration de la gestion des logs Sentry.
+- Mise à jour de Rails en version 8.1. [#808](https://github.com/betagouv/monstagedeseconde/pull/808)
+- Amélioration de la gestion des erreurs Sentry avec mise en cache. [#843](https://github.com/betagouv/monstagedeseconde/pull/843) et [#826](https://github.com/betagouv/monstagedeseconde/pull/826)
+- Ajout de CodeQL pour l'analyse de la sécurité du code.
+- Amélioration de la configuration SSH pour les déploiements.
+- Refactorisation de la logique de validation des candidatures.
+- Amélioration de la gestion des permissions et des droits d'accès.
+- Correction de plusieurs vulnérabilités de sécurité identifiées par Sentry.
+- Mise à jour des dépendances (voir section "Autres changements").
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Suppression de code obsolète.
-- Amélioration de la configuration du projet (gitignore).
-- Corrections de style et de formatage du code.
-- Mise à jour des dépendances npm et bundler.
-- Amélioration de la gestion des tests.
-- Correction de l'ordre des offres dans le tableau de bord.
-- Correction d'un bug lié aux coordonnées des maisons d'accueil.
-- Suppression de l'affichage de la maison d'accueil dans le tableau de bord pour les statisticiens de l'académie.
-- Correction d'un bug lié à l'import des maisons d'accueil.
+- Mise à jour de plusieurs dépendances (gems et npm) via Dependabot.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration de la documentation.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la configuration du pipeline CI/CD.
+- Suppression de fonctionnalités anciennes et inutilisées.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des erreurs et des logs.
+- Suppression de l'affichage des maisons d'accueil dans le tableau de bord pour les statisticiens académiques.
+- Correction de l'import des maisons d'accueil.
+- Correction de l'affichage des coordonnées des maisons d'accueil.
+- Correction de l'affichage des titres dans le tableau de bord des offres.
+- Correction d'un problème lié aux champs d'adresse trop longs.
+- Ajout de validations pour le nombre minimum de caractères dans les champs de description.
+- Correction d'un bug lié à l'affichage des offres QPV.
+- Correction d'un bug lié à la signature des conventions par les représentants légaux.
+- Amélioration de la gestion des erreurs dans les logs Sentry.
+- Correction d'un bug lié à la suppression logique des données.

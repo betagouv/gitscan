@@ -771,8 +771,7 @@
 │   │   │   ├── single_application_reminder_job.rb
 │   │   │   ├── single_application_second_reminder_job.rb
 │   │   │   ├── student_expired_internship_applications_notification_job.rb
-│   │   │   ├── student_sms_internship_application_reminder_job.rb
-│   │   │   └── student_submitted_internship_application_confirmation_job.rb
+│   │   │   └── student_sms_internship_application_reminder_job.rb
 │   │   ├── unpublish_faulty_offers_job.rb
 │   │   └── user_anonymizer_job.rb
 │   ├── libs
@@ -923,6 +922,7 @@
 │   │   ├── application_record.rb
 │   │   ├── area_notification.rb
 │   │   ├── boarding_house.rb
+│   │   ├── boarding_house_view.rb
 │   │   ├── class_room.rb
 │   │   ├── concerns
 │   │   │   ├── .keep
@@ -1273,6 +1273,7 @@
 │       │   │       ├── _states_presenter.html.slim
 │       │   │       ├── _student_decisions.html.slim
 │       │   │       ├── _student_internship_application.html.slim
+│       │   │       ├── _submitted_confirmation_modal.html.slim
 │       │   │       ├── edit.html.slim
 │       │   │       ├── index.html.slim
 │       │   │       ├── making_decisions.html.slim
@@ -1486,8 +1487,6 @@
 │       │   │   ├── internship_application_rejected_email.text.erb
 │       │   │   ├── internship_application_requested_confirmation_email.html.slim
 │       │   │   ├── internship_application_requested_confirmation_email.text.erb
-│       │   │   ├── internship_application_submitted_email.html.slim
-│       │   │   ├── internship_application_submitted_email.text.erb
 │       │   │   ├── internship_application_validated_by_employer_email.html.slim
 │       │   │   ├── internship_application_validated_by_employer_email.text.erb
 │       │   │   ├── internship_application_validated_by_employer_reminder_email.html.slim
@@ -2330,7 +2329,8 @@
 │   │   ├── 20260126172713_create_letter_thief_email_messages.rb
 │   │   ├── 20260203214306_remove_internship_offer_infos_tables.rb
 │   │   ├── 20260309162833_create_boarding_houses.rb
-│   │   └── 20260420123136_reduce_student_address_size.rb
+│   │   ├── 20260420123136_reduce_student_address_size.rb
+│   │   └── 20260430082727_create_boarding_house_views.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
@@ -2342,6 +2342,7 @@
 │   │   ├── 07_populate_applications.rb
 │   │   ├── 08_populate_multi_activities.rb
 │   │   ├── 09_invitations.rb
+│   │   ├── 10_populate_boarding_houses.rb
 │   │   ├── 11_populate_agreements.rb
 │   │   └── 12_local_flipper.rb
 │   ├── seeds.rb
@@ -2892,6 +2893,7 @@
 │   │   │   └── school_test.rb
 │   │   ├── area_notification_test.rb
 │   │   ├── boarding_house_test.rb
+│   │   ├── boarding_house_view_test.rb
 │   │   ├── class_room_test.rb
 │   │   ├── corporation_internship_agreement_test.rb
 │   │   ├── corporation_test.rb
@@ -3036,4 +3038,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-406 directories, 2640 files
+406 directories, 2642 files
