@@ -747,7 +747,10 @@
 │   │   │   │       │   └── seed.ts
 │   │   │   │       ├── candidature
 │   │   │   │       │   ├── _helpers
-│   │   │   │       │   │   └── getAppelOffres.ts
+│   │   │   │       │   │   ├── getAppelOffres.ts
+│   │   │   │       │   │   ├── mapDétailToDétailFournisseur.test.ts
+│   │   │   │       │   │   ├── mapDétailToDétailFournisseur.ts
+│   │   │   │       │   │   └── mapDétailsToFournisseur.ts
 │   │   │   │       │   ├── candidatureCorrigée.projector.ts
 │   │   │   │       │   ├── candidatureCorrigéeV1.projector.ts
 │   │   │   │       │   ├── candidatureImportée.projector.ts
@@ -869,6 +872,10 @@
 │   │   │   │       │   │   ├── natureDeLExploitationImportée.projector.ts
 │   │   │   │       │   │   ├── natureDeLExploitationModifiée.projector.ts
 │   │   │   │       │   │   └── natureDeLExploitationRebuildTrigerred.projector.ts
+│   │   │   │       │   ├── power-purchase-agreement
+│   │   │   │       │   │   ├── index.ts
+│   │   │   │       │   │   ├── powerPurchaseAgreementRebuildTrigerred.projector.ts
+│   │   │   │       │   │   └── powerPurchaseAgreementSignalé.projector.ts
 │   │   │   │       │   ├── producteur
 │   │   │   │       │   │   ├── changementProducteurEnregistré.projector.ts
 │   │   │   │       │   │   ├── index.ts
@@ -1033,6 +1040,7 @@
 │   │   │   │   │   ├── installation.routes.ts
 │   │   │   │   │   ├── lauréat.routes.ts
 │   │   │   │   │   ├── natureDeLExploitation.routes.ts
+│   │   │   │   │   ├── powerPurchaseAgreement.routes.ts
 │   │   │   │   │   ├── producteur.routes.ts
 │   │   │   │   │   ├── puissance.routes.ts
 │   │   │   │   │   ├── raccordement.routes.ts
@@ -1063,7 +1071,8 @@
 │   │   ├── ssr
 │   │   │   ├── .env.template
 │   │   │   ├── .gitignore
-│   │   │   ├── next.config.js
+│   │   │   ├── eslint.config.mjs
+│   │   │   ├── next.config.ts
 │   │   │   ├── package.json
 │   │   │   ├── postcss.config.js
 │   │   │   ├── public
@@ -1119,7 +1128,7 @@
 │   │   │   │   │   │   ├── countries
 │   │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   │   ├── doc
-│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   │   └── openapi
 │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── auth
@@ -1160,9 +1169,9 @@
 │   │   │   │   │   │   │   ├── getCandidatureListActions.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── corriger-par-lot
-│   │   │   │   │   │   │   ├── CorrigerCandidaturesParLot.action.ts
 │   │   │   │   │   │   │   ├── CorrigerCandidaturesParLot.form.tsx
 │   │   │   │   │   │   │   ├── CorrigerCandidaturesParLot.page.tsx
+│   │   │   │   │   │   │   ├── corrigerCandidaturesParLot.action.ts
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── export-fournisseurs
 │   │   │   │   │   │   │   └── route.ts
@@ -1271,6 +1280,7 @@
 │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   ├── global-error.tsx
 │   │   │   │   │   ├── global.css
+│   │   │   │   │   ├── global.d.ts
 │   │   │   │   │   ├── go-to-user-dashboard
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── laureats
@@ -1812,6 +1822,17 @@
 │   │   │   │   │   │   │   │       ├── ModifierNomProjet.page.tsx
 │   │   │   │   │   │   │   │       ├── modifierNomProjet.action.ts
 │   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   │   │   └── signaler
+│   │   │   │   │   │   │   │       ├── (historique)
+│   │   │   │   │   │   │   │       │   ├── events
+│   │   │   │   │   │   │   │       │   │   ├── index.ts
+│   │   │   │   │   │   │   │       │   │   └── mapToPowerPurchaseAgreementSignaléTimelineItemProps.tsx
+│   │   │   │   │   │   │   │       │   └── mapToPowerPurchaseAgreementTimelineItemProps.tsx
+│   │   │   │   │   │   │   │       ├── SignalerPowerPurchaseAgreement.form.tsx
+│   │   │   │   │   │   │   │       ├── SignalerPowerPurchaseAgreement.page.tsx
+│   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │       └── signalerPowerPurchaseAgreement.action.ts
 │   │   │   │   │   │   │   ├── producteur
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -2224,6 +2245,7 @@
 │   │   │   │   │   │   ├── demande
 │   │   │   │   │   │   │   └── DisplayAuteur.tsx
 │   │   │   │   │   │   ├── form
+│   │   │   │   │   │   │   ├── CoordonnéesInput.tsx
 │   │   │   │   │   │   │   ├── Form.tsx
 │   │   │   │   │   │   │   ├── FormActionButtons.tsx
 │   │   │   │   │   │   │   ├── FormAlertError.tsx
@@ -2283,6 +2305,7 @@
 │   │   │   │   │   │   │   ├── ChiffresClésProjet.tsx
 │   │   │   │   │   │   │   ├── ProjetBanner.template.tsx
 │   │   │   │   │   │   │   ├── lauréat
+│   │   │   │   │   │   │   │   ├── PPABadge.tsx
 │   │   │   │   │   │   │   │   ├── ProjetLauréatBanner.tsx
 │   │   │   │   │   │   │   │   └── StatutLauréatBadge.tsx
 │   │   │   │   │   │   │   ├── liste
@@ -2345,12 +2368,12 @@
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   └── server-only-index.tsx
 │   │   │   │   ├── instrumentation.ts
-│   │   │   │   ├── middleware.ts
 │   │   │   │   ├── middlewares
 │   │   │   │   │   ├── chain.ts
 │   │   │   │   │   ├── middleware.ts
 │   │   │   │   │   ├── withAuth.ts
 │   │   │   │   │   └── withCSRF.ts
+│   │   │   │   ├── proxy.ts
 │   │   │   │   ├── server.ts
 │   │   │   │   ├── setupLogger.ts
 │   │   │   │   └── utils
@@ -2367,6 +2390,8 @@
 │   │   │   │       │   │   ├── candidatureCsv.schema.ts
 │   │   │   │       │   │   ├── candidatureCsvFields.schema.ts
 │   │   │   │       │   │   ├── commonCsv.schema.ts
+│   │   │   │       │   │   ├── coordonnéesCsv.test.ts
+│   │   │   │       │   │   ├── coordonnéesCsv.ts
 │   │   │   │       │   │   ├── fournisseurCsv.test.ts
 │   │   │   │       │   │   ├── fournisseurCsv.ts
 │   │   │   │       │   │   ├── getLocalité.ts
@@ -2454,6 +2479,7 @@
 │   │       │   │   │   │   ├── setupGarantiesFinancière.ts
 │   │       │   │   │   │   ├── setupInstallation.ts
 │   │       │   │   │   │   ├── setupNatureDeLExploitation.ts
+│   │       │   │   │   │   ├── setupPowerPurchaseAgreement.ts
 │   │       │   │   │   │   ├── setupProducteur.ts
 │   │       │   │   │   │   ├── setupPuissance.ts
 │   │       │   │   │   │   ├── setupRaccordement.ts
@@ -2622,6 +2648,8 @@
 │   │   │   │   │   ├── candidature.register.ts
 │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   └── consulterCandidature.query.ts
+│   │   │   │   │   ├── coordonnées.valueType.test.ts
+│   │   │   │   │   ├── coordonnées.valueType.ts
 │   │   │   │   │   ├── corriger
 │   │   │   │   │   │   ├── candidatureCorrigée.event.ts
 │   │   │   │   │   │   ├── corrigerCandidature.command.ts
@@ -2632,14 +2660,9 @@
 │   │   │   │   │   ├── détail
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterDétailCandidature.query.ts
-│   │   │   │   │   │   ├── csv
-│   │   │   │   │   │   │   └── fournisseurs
-│   │   │   │   │   │   │       └── _helpers
-│   │   │   │   │   │   │           ├── mapDétailToDétailFournisseur.test.ts
-│   │   │   │   │   │   │           ├── mapDétailToDétailFournisseur.ts
-│   │   │   │   │   │   │           └── mapDétailsToFournisseur.ts
 │   │   │   │   │   │   ├── détailCandidature.entity.ts
 │   │   │   │   │   │   ├── détailCandidature.valueType.ts
+│   │   │   │   │   │   ├── détailFournisseursCandidature.entity.ts
 │   │   │   │   │   │   └── importer
 │   │   │   │   │   │       ├── détailCandidatureImporté.event.ts
 │   │   │   │   │   │       └── importerDétailCandidature.options.ts
@@ -3192,7 +3215,7 @@
 │   │   │   │   │   │   ├── natureDeLExploitation.event.ts
 │   │   │   │   │   │   ├── natureDeLExploitation.register.ts
 │   │   │   │   │   │   └── typeDeNatureDeLExploitation.valueType.ts
-│   │   │   │   │   ├── nomProjet
+│   │   │   │   │   ├── nom-projet
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── changementNomProjet.entity.ts
 │   │   │   │   │   │   │   ├── consulter
@@ -3214,6 +3237,22 @@
 │   │   │   │   │   │   ├── lauréatNotifié.event.ts
 │   │   │   │   │   │   ├── notifierLauréat.command.ts
 │   │   │   │   │   │   └── notifierLauréat.option.ts
+│   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   ├── PowerPurchaseAgreement.errors.ts
+│   │   │   │   │   │   ├── PowerPurchaseAgreement.events.ts
+│   │   │   │   │   │   ├── PowerPurchaseAgreement.register.ts
+│   │   │   │   │   │   ├── consulter
+│   │   │   │   │   │   │   └── consulterPowerPurchaseAgreement.query.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── listerHistorique
+│   │   │   │   │   │   │   └── listerHistoriquePowerPurchaseAgreementProjet.query.ts
+│   │   │   │   │   │   ├── powerPurchaseAgreement.aggregate.ts
+│   │   │   │   │   │   ├── powerPurchaseAgreement.entity.ts
+│   │   │   │   │   │   └── signaler
+│   │   │   │   │   │       ├── PowerPurchaseAgreementSignalé.event.ts
+│   │   │   │   │   │       ├── signalerPowerPurchaseAgreement.command.ts
+│   │   │   │   │   │       ├── signalerPowerPurchaseAgreement.option.ts
+│   │   │   │   │   │       └── signalerPowerPurchaseAgreement.usecase.ts
 │   │   │   │   │   ├── producteur
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── changementProducteur.entity.ts
@@ -3592,10 +3631,9 @@
 │   │   │   │   │   │   └── consulterGestionnaireRéseau.query.ts
 │   │   │   │   │   ├── gestionnaireRéseau.aggregate.ts
 │   │   │   │   │   ├── gestionnaireRéseau.entity.ts
+│   │   │   │   │   ├── gestionnaireRéseau.errors.ts
 │   │   │   │   │   ├── gestionnaireRéseau.event.ts
 │   │   │   │   │   ├── gestionnaireRéseau.register.ts
-│   │   │   │   │   ├── gestionnaireRéseauDéjàExistant.error.ts
-│   │   │   │   │   ├── gestionnaireRéseauInconnu.error.ts
 │   │   │   │   │   ├── identifiantGestionnaireRéseau.valueType.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── lister
@@ -3699,6 +3737,8 @@
 │   │   │   │   ├── _helpers
 │   │   │   │   │   ├── getters
 │   │   │   │   │   │   ├── getAutorisation.ts
+│   │   │   │   │   │   ├── getCoordonnées.test.ts
+│   │   │   │   │   │   ├── getCoordonnées.ts
 │   │   │   │   │   │   ├── getDateConstitutionGarantiesFinancières.ts
 │   │   │   │   │   │   ├── getDateÉchéanceGarantiesFinancières.ts
 │   │   │   │   │   │   ├── getDispositifDeStockage.ts
@@ -3881,6 +3921,11 @@
 │   │       │   └── upsertProjection.ts
 │   │       └── tsconfig.json
 │   ├── libraries
+│   │   ├── csrf
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   └── index.ts
+│   │   │   └── tsconfig.json
 │   │   ├── csv
 │   │   │   ├── package.json
 │   │   │   ├── src
@@ -4037,6 +4082,9 @@
 │   │   │   ├── fixture.ts
 │   │   │   ├── gestionnaireRéseau
 │   │   │   │   ├── ajouterGestionnaireRéseau.feature
+│   │   │   │   ├── fixture
+│   │   │   │   │   ├── ajouterGestionnaireRéseau.fixture.ts
+│   │   │   │   │   └── modifierGestionnaireRéseau.fixture.ts
 │   │   │   │   ├── gestionnaireRéseau.world.ts
 │   │   │   │   ├── modifierGestionnaireRéseau.feature
 │   │   │   │   ├── stepDefinitions
@@ -4260,6 +4308,12 @@
 │   │   │   │   │   │   ├── modifierNomProjet.feature
 │   │   │   │   │   │   └── stepDefinitions
 │   │   │   │   │   │       └── nomProjet.when.ts
+│   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   ├── signalerPowerPurchaseAgreement.feature
+│   │   │   │   │   │   └── stepDefinitions
+│   │   │   │   │   │       ├── powerPurchaseAgreement.given.ts
+│   │   │   │   │   │       ├── powerPurchaseAgreement.then.ts
+│   │   │   │   │   │       └── powerPurchaseAgreement.when.ts
 │   │   │   │   │   ├── producteur
 │   │   │   │   │   │   ├── enregistrerChangementProducteur.feature
 │   │   │   │   │   │   ├── fixture
@@ -4529,4 +4583,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1105 directories, 3426 files
+1116 directories, 3469 files
