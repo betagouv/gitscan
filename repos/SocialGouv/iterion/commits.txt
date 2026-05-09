@@ -1,3 +1,98 @@
+2026-05-08T23:58:30+02:00 - fbac925 - devthejo : style(bench/asymptote): apply gofmt to aggregator + types
+2026-05-08T23:58:30+02:00 - 6316f91 - devthejo : feat(bench): add iterion bench asymptote — inter-session quality stabilisation
+2026-05-08T08:46:29Z - 018e6d2 - github-actions[bot] : chore(brew): update tap to v0.9.0 [skip ci]
+2026-05-08T08:41:00Z - a1896f0 - github-actions[bot] : chore: release v0.9.0
+2026-05-08T07:30:11Z - d1a5af0 - devthejo : fix(desktop): linux .deb triage + browser pane CDP + dev tooling
+2026-05-07T23:24:12+02:00 - 8039be2 - devthejo : refactor(browser-pane): /simplify pass — drop dead state, cap memory, dedupe
+2026-05-07T23:24:12+02:00 - 770dc7f - devthejo : feat(server,sandbox): browser session registry + CDP WS proxy (PR 3 — architecture)
+2026-05-07T23:24:12+02:00 - 1bd975d - devthejo : feat(editor,runtime): browser screenshots + scrubber time-travel (PR 2)
+2026-05-07T23:24:12+02:00 - 1ac2895 - devthejo : feat(editor,server): browser live mode + host Chromium runner (PR 4)
+2026-05-07T23:24:12+02:00 - 003c752 - devthejo : feat(editor,runtime): browser preview pane (PR 1 — passive iframe viewer)
+2026-05-07T22:51:53+02:00 - cd7c891 - devthejo : fix(cloud-e2e): bypass auth in smoke test via config.disableAuth instead of stale SESSION_TOKEN
+2026-05-07T22:26:19+02:00 - 1bf567e - devthejo : fix(detect): stub binary probes in tests so units pass without claude/codex CLI installed
+2026-05-07T22:26:03+02:00 - 081da08 - devthejo : fix(examples): playwright --headless + relax judge console_errors heuristic
+2026-05-07T21:21:08Z - 391d926 - github-actions[bot] : chore(brew): update tap to v0.8.0 [skip ci]
+2026-05-07T21:17:26Z - de2d685 - github-actions[bot] : chore: release v0.8.0
+2026-05-07T21:07:02Z - e1f0cc8 - devthejo : chore(deps): bump claw-code-go to v0.1.0
+2026-05-07T20:56:09Z - bfa98c2 - devthejo : fix(runview): flip human node from paused to finished on node_finished
+2026-05-07T20:51:35+02:00 - a630741 - devthejo : fix(secrets): pad dev master key to 32 bytes so AES-256-GCM sealer init succeeds
+2026-05-07T20:47:53Z - d329f04 - devthejo : feat(editor): summarize verdict/objective inline, fold the rest
+2026-05-07T20:38:07Z - a4fe412 - devthejo : fix(editor): force REST snapshot refresh after answer to recover canvas
+2026-05-07T20:19:54Z - 7237ed7 - devthejo : fix(examples): pin backend: claw on every LLM-driving node in playwright_visual_qa
+2026-05-07T19:41:48Z - 2efe767 - devthejo : feat(editor): modernize node visuals + auto-open diagnostics on error
+2026-05-07T19:05:14Z - e4ccd8c - devthejo : fix(detect): probe ~/.claude/.credentials.json + harden frontend nullable slices
+2026-05-07T18:55:09Z - 2d9ae2a - devthejo : feat(editor,backend): auto-detect LLM credentials + zero-config default template
+2026-05-07T17:46:45Z - 983d46b - devthejo : chore(taskfile): watch vendor/ in editor:dev so vendored fixes hot-reload
+2026-05-07T17:35:34Z - 927dc45 - devthejo : chore(gitignore): ignore .playwright-mcp/ scratch + stray screenshot drops
+2026-05-07T17:34:14Z - 0a667c2 - devthejo : fix: split mcp playwright command/args + vendor claw-code-go ConvertTools fix
+2026-05-07T17:19:18Z - dfe8333 - devthejo : docs(examples): warn about npx PATH for playwright_visual_qa
+2026-05-07T16:33:35Z - 039272b - devthejo : feat(examples): add playwright_visual_qa PoC
+2026-05-07T16:24:35Z - 1a6ce19 - devthejo : fix(editor): hide multitenant chrome chip in local / desktop mode
+2026-05-07T16:16:18Z - f6dbf88 - devthejo : fix(editor): bypass Login screen in local / DisableAuth deployments
+2026-05-07T16:06:21Z - d3a67c2 - devthejo : refactor(cloud-admin): simplify pass — fold dupes, derive over store, tighten hot paths
+2026-05-07T16:06:21Z - 7e9069d - devthejo : feat(byok): Phase C — multi-key BYOK + per-run sealed credentials
+2026-05-07T16:06:21Z - 63309b8 - devthejo : feat(multitenancy): Phase B — tenant_id everywhere (schema v2 + ctx scoping)
+2026-05-07T16:06:21Z - 596e670 - devthejo : feat(oauth): Phase D — Claude Code + Codex OAuth-forfait per-user
+2026-05-07T16:06:21Z - 2f5ee61 - devthejo : feat(auth): Phase A — multitenant auth foundation (email+pwd + Google + GitHub + OIDC)
+2026-05-07T16:06:21Z - 1736320 - devthejo : feat(deploy): Phase F — Helm/compose rewire + admin/user docs
+2026-05-07T16:06:21Z - 14d132c - devthejo : feat(editor): Phase E — admin UI SPA (login, BYOK, OAuth, teams)
+2026-05-07T15:44:44Z - 0f90eaf - devthejo : fix(editor): refresh WS subscription after Approve/Reject submit
+2026-05-07T15:38:09Z - e95aeae - devthejo : fix(examples): pipe task_description through workflow vars in human_gate
+2026-05-07T15:36:47Z - 636e905 - devthejo : fix(editor): hide _meta keys + unwrap single-level nesting in Review block
+2026-05-07T15:34:02Z - 3f07d6b - devthejo : fix(editor): show the human node's resolved input as the Review block
+2026-05-07T15:28:52Z - 883e67d - devthejo : fix(editor): polish HumanInteractionPanel — remove redundant header, hide approved checkbox, render review context inline
+2026-05-07T15:22:41Z - 47dd6a1 - devthejo : fix(editor): HumanInteractionPanel UX + auto-close + correct boolean answers
+2026-05-07T14:44:33Z - 74becf4 - devthejo : fix(examples): hardcode human_gate planner model to openai/gpt-5.4-mini
+2026-05-07T14:29:48Z - 9169324 - devthejo : fix(examples): default human_gate model to openai/gpt-5.4-mini
+2026-05-07T14:26:21Z - 3bd91eb - devthejo : test(e2e): add dogfood_editor_ui_loop to fixture compile suite
+2026-05-07T14:20:30Z - e06dbfa - devthejo : feat(editor): top-level HumanInteractionPanel for paused runs
+2026-05-07T14:20:30Z - 9dd4b07 - devthejo : refactor: trim narrative comments + tighten WireNode docstrings
+2026-05-07T14:20:30Z - 1adcdc3 - devthejo : feat(examples): add dogfood_editor_ui_loop with Playwright MCP
+2026-05-07T13:53:17+02:00 - 970dee9 - devthejo : docs: fix license to MIT (matches LICENSE file)
+2026-05-07T13:52:06+02:00 - 1087b67 - devthejo : fix(ci): correct DSL syntax for cloud-e2e inline smoke workflow
+2026-05-07T13:50:24+02:00 - 6c8695e - devthejo : docs: split README into per-topic pages under docs/
+2026-05-07T13:40:00+02:00 - 0ead041 - devthejo : fix(cloud-e2e): unblock end-to-end pipeline (6 chained fixes)
+2026-05-07T12:21:03+02:00 - 2255bcf - devthejo : fix(ci): pin subchart fullnameOverride so cloud-e2e ConfigMap URIs resolve
+2026-05-07T12:11:07Z - e7458b1 - github-actions[bot] : chore(brew): update tap to v0.7.0 [skip ci]
+2026-05-07T12:07:25Z - b26ed6d - github-actions[bot] : chore: release v0.7.0
+2026-05-07T12:06:00Z - 95a5b7c - devthejo : ci: add concurrency policy to image.yml and brew-update.yml
+2026-05-07T11:22:58+02:00 - b50984e - devthejo : ci(trivy): split scans into a dedicated, non-blocking workflow
+2026-05-07T11:10:44Z - 361bbc5 - devthejo : feat(editor): rotating "thinking" word footer in run Logs tab
+2026-05-07T11:09:21+02:00 - d80c66d - devthejo : fix(ci): unblock cloud-e2e — correct fullname + slim subchart deps
+2026-05-07T10:59:24Z - ef9645a - devthejo : feat(sandbox): bind-mount run attachments read-only into the container
+2026-05-07T10:59:24Z - add6f46 - devthejo : feat(store): persist per-run attachments via FS + S3 backends
+2026-05-07T10:59:24Z - a1dcacd - devthejo : feat(runtime): expose {{attachments.X}} refs through TemplateData
+2026-05-07T10:59:24Z - a044c12 - devthejo : feat(server): wire /api/runs/uploads, /api/server/info and launch attachments
+2026-05-07T10:59:24Z - 82c67f8 - devthejo : feat(dsl): add attachments: block for file/image inputs
+2026-05-07T10:59:24Z - 77734c1 - devthejo : refactor(attachments): single-pass prompt walk + N+1 fixes
+2026-05-07T10:59:24Z - 441157c - devthejo : feat(editor): file/image upload UI in the Launch modal
+2026-05-07T10:59:24Z - 43c06c3 - devthejo : feat(backend): multimodal claw + CLI fallbacks for image attachments
+2026-05-07T10:59:24Z - 21d3fae - devthejo : docs(attachments): example, reference docs and live e2e test
+2026-05-07T10:59:24Z - 1218b30 - devthejo : fix(runtime,e2e): preserve Run.Attachments past the post-promote SaveRun
+2026-05-07T10:38:03+02:00 - f100e35 - devthejo : fix: green up mongo-conformance + cloud-e2e CI jobs
+2026-05-07T10:16:38+02:00 - 487d15c - devthejo : chore(ci): harmonize workflow names with emoji + Title Case
+2026-05-07T09:57:27Z - d452534 - github-actions[bot] : chore(brew): update tap to v0.6.0 [skip ci]
+2026-05-07T09:52:12Z - 6fee242 - github-actions[bot] : chore: release v0.6.0
+2026-05-07T09:48:52+02:00 - 3650c1a - devthejo : fix(brew): grant id-token: write so token-bureau OIDC exchange works
+2026-05-07T09:16:26Z - 04f44e9 - devthejo : feat(editor): Git-Graph-style tree view with line counts in Files tab
+2026-05-07T09:08:29+02:00 - c68b550 - devthejo : fix(cloud): production-readiness pass — readyz, KEDA, runner, migrate, NetworkPolicy
+2026-05-07T09:08:29+02:00 - 188af38 - devthejo : fix(ci): repair YAML syntax errors in tests.yml
+2026-05-07T08:54:26Z - 4f422fd - github-actions[bot] : chore(brew): update tap to v0.5.4 [skip ci]
+2026-05-07T08:49:19Z - 68968f5 - github-actions[bot] : chore: release v0.5.4
+2026-05-07T08:48:57+02:00 - c361a60 - devthejo : feat(sandbox): default image fallback when sandbox: auto has no devcontainer
+2026-05-07T08:43:29Z - 4d8877c - devthejo : chore(chart): publish helm chart to OCI + relocate to charts/
+2026-05-07T08:39:55Z - 70a888f - devthejo : fix(brew): switch trigger from release:published to workflow_run
+2026-05-07T08:35:15Z - 6c2c5af - github-actions[bot] : chore: release v0.5.3
+2026-05-07T08:31:19Z - bcfe63f - devthejo : fix(version): release-it must use token-bureau token, not GITHUB_TOKEN
+2026-05-07T08:18:30Z - 5aa7ebb - devthejo : docs(readme): add Docker as a sixth way to use Iterion
+2026-05-07T08:18:02+02:00 - ab86061 - devthejo : feat(sandbox): V2 IPC + sandbox.build + sandbox.mounts (PVCs)
+2026-05-07T08:16:18Z - 2a8fad6 - github-actions[bot] : chore: release v0.5.2
+2026-05-07T07:29:23Z - 32445ba - github-actions[bot] : chore: release v0.5.1
+2026-05-07T07:27:03Z - bfd3900 - devthejo : fix(brew): trigger brew-update via token-bureau + workflow_dispatch backfill
+2026-05-07T07:19:14Z - d6730e1 - devthejo : chore(release): auto-sync Chart.yaml appVersion via release-it hook
+2026-05-07T07:05:32Z - d328072 - github-actions[bot] : chore: release v0.5.0
+2026-05-07T06:59:28Z - 885c5e3 - devthejo : feat(brew): add Homebrew tap for CLI + desktop with auto-update
+2026-05-07T06:39:10Z - 2f83f6a - devthejo : feat(cloud): wire metrics + OTel spans + cloud hardening from 2026-05-07 review
 2026-05-06T22:28:37+02:00 - 78d71a4 - devthejo : fix(deps): pin lodash/lodash-es to ^4.18.0 to clear CVE-2026-4800
 2026-05-06T20:52:21+02:00 - b37610f - devthejo : docs(readme): align with repo state + enrich Features section
 2026-05-06T20:45:30+02:00 - a219e09 - devthejo : feat(sandbox): cloud V1 e2e validated + V2-5 + V2-8

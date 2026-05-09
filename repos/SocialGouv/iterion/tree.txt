@@ -2,22 +2,29 @@
 ├── .devcontainer
 │   └── devcontainer.json
 ├── .dockerignore
+├── .env.cloud.example
 ├── .env.example
 ├── .envrc
 ├── .gitattributes
 ├── .github
 │   └── workflows
+│       ├── brew-update.yml
 │       ├── desktop-release.yml
 │       ├── image.yml
 │       ├── release.yml
 │       ├── tests.yml
+│       ├── trivy.yml
 │       └── version.yml
 ├── .gitignore
 ├── .npmrc
 ├── .release-it.json
 ├── .trivyignore
 ├── CLAUDE.md
+├── Cask
+│   └── iterion-desktop.rb
 ├── Dockerfile
+├── Formula
+│   └── iterion.rb
 ├── LICENSE
 ├── README.md
 ├── SKILL-run-and-refine.md
@@ -37,9 +44,36 @@
 │       ├── info.json
 │       └── installer
 │           └── project.nsi
+├── charts
+│   └── iterion
+│       ├── Chart.yaml
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── configmap.yaml
+│       │   ├── networkpolicy.yaml
+│       │   ├── prometheus-podmonitor.yaml
+│       │   ├── runner-deployment.yaml
+│       │   ├── runner-keda-scaledobject.yaml
+│       │   ├── runner-rbac.yaml
+│       │   ├── secret-auth.yaml
+│       │   ├── secret-llm.yaml
+│       │   ├── secret-storage.yaml
+│       │   ├── server-deployment.yaml
+│       │   ├── server-hpa.yaml
+│       │   ├── server-ingress.yaml
+│       │   ├── server-service.yaml
+│       │   ├── serviceaccount.yaml
+│       │   └── tests
+│       │       └── test-connection.yaml
+│       ├── values-dev.yaml
+│       ├── values-prod.yaml
+│       └── values.yaml
 ├── cmd
 │   ├── iterion
+│   │   ├── bench.go
 │   │   ├── claw_runner.go
+│   │   ├── claw_runner_proxy.go
+│   │   ├── claw_runner_proxy_test.go
 │   │   ├── diagram.go
 │   │   ├── editor.go
 │   │   ├── init_cmd.go
@@ -58,9 +92,7 @@
 │   └── iterion-desktop
 │       ├── app.go
 │       ├── asset_proxy.go
-│       ├── asset_proxy_test.go
 │       ├── bindings.go
-│       ├── bindings_project_test.go
 │       ├── build -> ../../build
 │       ├── config.go
 │       ├── config_test.go
@@ -102,19 +134,36 @@
 │   └── minio-init.sh
 ├── docker-compose.cloud.yml
 ├── docs
+│   ├── README.md
 │   ├── adr
 │   │   ├── 001-round-robin-router-mode.md
 │   │   ├── 002-desktop-assetserver-proxy.md
 │   │   ├── 002-editor-runview-separation.md
 │   │   └── 003-privacy-tools-pure-go.md
+│   ├── architecture.md
+│   ├── asymptote-bench.md
+│   ├── attachments.md
+│   ├── backends.md
+│   ├── browser-pane.md
+│   ├── cli-reference.md
+│   ├── cloud-admin.md
+│   ├── cloud-deployment.md
+│   ├── cloud-user.md
+│   ├── cloud.md
+│   ├── delegation.md
 │   ├── desktop-architecture.md
 │   ├── desktop-build.md
 │   ├── desktop-distribution.md
 │   ├── desktop-qa.md
+│   ├── desktop.md
+│   ├── development.md
+│   ├── dsl.md
 │   ├── e2e_coverage.md
+│   ├── examples.md
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
+│   ├── install.md
 │   ├── install.sh
 │   ├── observability
 │   │   ├── README.md
@@ -129,6 +178,7 @@
 │   │       └── iterion-workflow.json
 │   ├── persisted-formats.md
 │   ├── privacy_filter.md
+│   ├── recipes.md
 │   ├── references
 │   │   ├── diagnostics.md
 │   │   ├── dsl-grammar.md
@@ -136,6 +186,8 @@
 │   ├── resume.md
 │   ├── routers.md
 │   ├── sandbox.md
+│   ├── skill.md
+│   ├── visual-editor.md
 │   └── workflow_authoring_pitfalls.md
 ├── e2e
 │   ├── SCENARIOS.md
@@ -143,7 +195,8 @@
 │   ├── e2e_test.go
 │   ├── live_test.go
 │   ├── privacy_test.go
-│   └── vibe_review_alternating_test.go
+│   ├── vibe_review_alternating_test.go
+│   └── vision_attachments_live_test.go
 ├── editor
 │   ├── index.html
 │   ├── package.json
@@ -152,11 +205,16 @@
 │   │   ├── __tests__
 │   │   │   └── desktopBridge.test.ts
 │   │   ├── api
+│   │   │   ├── auth.ts
+│   │   │   ├── backends.ts
+│   │   │   ├── byok.ts
 │   │   │   ├── client.ts
 │   │   │   ├── runs.ts
 │   │   │   ├── types.ts
 │   │   │   └── ws.ts
 │   │   ├── app.css
+│   │   ├── auth
+│   │   │   └── AuthContext.tsx
 │   │   ├── components
 │   │   │   ├── Canvas
 │   │   │   │   ├── AuxiliaryNode.tsx
@@ -217,10 +275,16 @@
 │   │   │   │       └── ToolForm.tsx
 │   │   │   ├── Runs
 │   │   │   │   ├── ArtifactDiff.tsx
+│   │   │   │   ├── AttachmentFieldInput.tsx
+│   │   │   │   ├── BrowserLivePane.tsx
+│   │   │   │   ├── BrowserPane.tsx
 │   │   │   │   ├── CommitsPanel.tsx
 │   │   │   │   ├── EventLog.tsx
 │   │   │   │   ├── FileDiffDialog.tsx
 │   │   │   │   ├── FilesPanel.tsx
+│   │   │   │   ├── HumanInteractionField.tsx
+│   │   │   │   ├── HumanInteractionForm.tsx
+│   │   │   │   ├── HumanInteractionPanel.tsx
 │   │   │   │   ├── IRNode.tsx
 │   │   │   │   ├── InfoPanel.tsx
 │   │   │   │   ├── LaunchView.tsx
@@ -239,16 +303,19 @@
 │   │   │   │   ├── RunMetrics.tsx
 │   │   │   │   ├── RunView.tsx
 │   │   │   │   ├── Scrubber.tsx
+│   │   │   │   ├── ThinkingFooter.tsx
 │   │   │   │   ├── VarFieldInput.test.ts
 │   │   │   │   ├── VarFieldInput.tsx
 │   │   │   │   └── runStatusClasses.ts
 │   │   │   ├── SourceView
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
+│   │   │   │   ├── BackendStatusPill.tsx
 │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   └── ToolbarGroup.tsx
 │   │   │   ├── icons
 │   │   │   │   ├── BackendBadge.tsx
+│   │   │   │   ├── NodeIcon.tsx
 │   │   │   │   ├── ProviderIcon.tsx
 │   │   │   │   ├── backendEmoji.ts
 │   │   │   │   └── providerDetect.ts
@@ -281,6 +348,7 @@
 │   │   │   ├── useAddFromLibrary.ts
 │   │   │   ├── useAddNode.ts
 │   │   │   ├── useAddSubNode.ts
+│   │   │   ├── useAutoOpenDiagnosticsOnError.ts
 │   │   │   ├── useAutoValidation.ts
 │   │   │   ├── useCanvasConnections.ts
 │   │   │   ├── useCanvasKeyboard.ts
@@ -293,6 +361,7 @@
 │   │   │   ├── useFileWatcher.ts
 │   │   │   ├── useFullscreen.ts
 │   │   │   ├── useGroupedDiagnostics.ts
+│   │   │   ├── useHumanNodeSchema.ts
 │   │   │   ├── useInspectorMode.ts
 │   │   │   ├── useLayoutPersistence.ts
 │   │   │   ├── usePromptEditorMount.tsx
@@ -306,7 +375,10 @@
 │   │   │   ├── useRunWebSocket.ts
 │   │   │   └── useSchemaPromptCreators.ts
 │   │   ├── lib
+│   │   │   ├── attachmentValidation.test.ts
+│   │   │   ├── attachmentValidation.ts
 │   │   │   ├── autoLayout.ts
+│   │   │   ├── cdpClient.ts
 │   │   │   ├── computeEdgeHandles.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── defaults.ts
@@ -319,6 +391,8 @@
 │   │   │   ├── documentToGraph.ts
 │   │   │   ├── dslOptions.ts
 │   │   │   ├── eventIter.ts
+│   │   │   ├── fileTree.test.ts
+│   │   │   ├── fileTree.ts
 │   │   │   ├── format.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── inferMonacoLanguage.ts
@@ -338,6 +412,7 @@
 │   │   │   └── snapshotReducer.ts
 │   │   ├── main.tsx
 │   │   ├── store
+│   │   │   ├── backendDetect.ts
 │   │   │   ├── document.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── library.ts
@@ -348,6 +423,7 @@
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
 │   │   ├── views
+│   │   │   ├── Login.tsx
 │   │   │   ├── ProjectSwitcher
 │   │   │   │   └── index.tsx
 │   │   │   ├── Settings
@@ -357,19 +433,26 @@
 │   │   │   │   ├── ProjectsTab.tsx
 │   │   │   │   ├── UpdatesTab.tsx
 │   │   │   │   └── index.tsx
-│   │   │   └── Welcome
-│   │   │       ├── index.tsx
-│   │   │       └── steps
-│   │   │           ├── ApiKeys.tsx
-│   │   │           ├── CliCheck.tsx
-│   │   │           ├── Done.tsx
-│   │   │           ├── ProjectPicker.test.ts
-│   │   │           └── ProjectPicker.tsx
+│   │   │   ├── Welcome
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── steps
+│   │   │   │       ├── ApiKeys.tsx
+│   │   │   │       ├── CliCheck.tsx
+│   │   │   │       ├── Done.tsx
+│   │   │   │       ├── ProjectPicker.test.ts
+│   │   │   │       └── ProjectPicker.tsx
+│   │   │   ├── settings
+│   │   │   │   ├── ApiKeys.tsx
+│   │   │   │   ├── OAuthConnections.tsx
+│   │   │   │   └── SettingsPage.tsx
+│   │   │   └── teams
+│   │   │       └── TeamPage.tsx
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
 ├── examples
 │   ├── FIXTURES.md
+│   ├── browser_demo.iter
 │   ├── ci_fix_until_green.iter
 │   ├── claw_bedrock_provider.iter
 │   ├── claw_builtin_tools.iter
@@ -382,7 +465,14 @@
 │   ├── claw_reasoning_effort.iter
 │   ├── claw_subagents.iter
 │   ├── claw_tool_coverage.iter
+│   ├── devcontainer-devbox
+│   │   ├── .devcontainer
+│   │   │   └── devcontainer.json
+│   │   ├── README.md
+│   │   └── devbox.json
 │   ├── diff_showcase.iter
+│   ├── dogfood_editor_ui_loop.iter
+│   ├── dogfood_editor_ui_loop.md
 │   ├── dual_model_plan_implement_review.iter
 │   ├── exhaustive_dsl_coverage.iter
 │   ├── feature_dev_review_fix_dual.iter
@@ -394,6 +484,9 @@
 │   ├── llm_router_task_dispatch.iter
 │   ├── mcp_test_server
 │   │   └── main.go
+│   ├── playwright_demo.iter
+│   ├── playwright_visual_qa.iter
+│   ├── playwright_visual_qa.md
 │   ├── pr_refine_dual_model_parallel.iter
 │   ├── pr_refine_dual_model_parallel_compliance.iter
 │   ├── pr_refine_single_model.iter
@@ -401,11 +494,14 @@
 │   ├── pr_review_fix.iter
 │   ├── pr_review_fix_dual.iter
 │   ├── pr_review_fix_dual.md
+│   ├── preview_url_demo.iter
 │   ├── privacy_pipeline.iter
 │   ├── recipe_benchmark.iter
 │   ├── run_console_demo.iter
 │   ├── rust_to_go_port.iter
 │   ├── rust_to_go_port.md
+│   ├── sandbox_build.dockerfile
+│   ├── sandbox_build.iter
 │   ├── sandbox_cloud_observe.iter
 │   ├── sandbox_cloud_proxy.iter
 │   ├── sandbox_cloud_smoke.iter
@@ -420,35 +516,27 @@
 │   ├── validate_syntax.js
 │   ├── vibe_feature_dev.iter
 │   ├── vibe_review_alternating.iter
-│   └── vibe_review_alternating.md
+│   ├── vibe_review_alternating.md
+│   └── vision_attachments.iter
 ├── go.mod
 ├── go.sum
-├── helm
-│   └── iterion
-│       ├── Chart.yaml
-│       ├── templates
-│       │   ├── _helpers.tpl
-│       │   ├── configmap.yaml
-│       │   ├── networkpolicy.yaml
-│       │   ├── prometheus-podmonitor.yaml
-│       │   ├── runner-deployment.yaml
-│       │   ├── runner-keda-scaledobject.yaml
-│       │   ├── runner-rbac.yaml
-│       │   ├── secret-llm.yaml
-│       │   ├── secret-storage.yaml
-│       │   ├── server-deployment.yaml
-│       │   ├── server-hpa.yaml
-│       │   ├── server-ingress.yaml
-│       │   ├── server-service.yaml
-│       │   ├── serviceaccount.yaml
-│       │   └── tests
-│       │       └── test-connection.yaml
-│       ├── values-dev.yaml
-│       ├── values-prod.yaml
-│       └── values.yaml
 ├── marketplace.json
 ├── package.json
 ├── pkg
+│   ├── auth
+│   │   ├── identity.go
+│   │   ├── jwt.go
+│   │   ├── oidc
+│   │   │   ├── connector.go
+│   │   │   ├── generic.go
+│   │   │   ├── github.go
+│   │   │   ├── google.go
+│   │   │   └── pkce.go
+│   │   ├── oidc_service.go
+│   │   ├── password.go
+│   │   ├── refresh.go
+│   │   ├── service.go
+│   │   └── service_test.go
 │   ├── backend
 │   │   ├── cost
 │   │   │   ├── cost.go
@@ -477,14 +565,24 @@
 │   │   │   ├── codex_output_discipline.txt
 │   │   │   ├── delegate.go
 │   │   │   ├── delegate_test.go
+│   │   │   ├── envelope.go
+│   │   │   ├── envelope_test.go
 │   │   │   ├── io.go
 │   │   │   ├── io_test.go
+│   │   │   ├── multiplexer.go
+│   │   │   ├── multiplexer_test.go
 │   │   │   ├── parse.go
 │   │   │   ├── registry.go
 │   │   │   └── truncate.go
+│   │   ├── detect
+│   │   │   ├── detect.go
+│   │   │   ├── detect_test.go
+│   │   │   └── resolve.go
 │   │   ├── llmtypes
 │   │   │   └── llmtypes.go
 │   │   ├── mcp
+│   │   │   ├── browser.go
+│   │   │   ├── browser_test.go
 │   │   │   ├── cache.go
 │   │   │   ├── cache_test.go
 │   │   │   ├── claw_adapter.go
@@ -492,6 +590,7 @@
 │   │   │   ├── config_test.go
 │   │   │   ├── fingerprint.go
 │   │   │   ├── fingerprint_test.go
+│   │   │   ├── host_runner.go
 │   │   │   ├── manager.go
 │   │   │   ├── oauth.go
 │   │   │   ├── oauth_test.go
@@ -521,8 +620,11 @@
 │   │   │   ├── lifecycle_hooks.go
 │   │   │   ├── lifecycle_hooks_test.go
 │   │   │   ├── llm_tool.go
+│   │   │   ├── preview_url.go
+│   │   │   ├── preview_url_test.go
 │   │   │   ├── privacy_redaction_test.go
 │   │   │   ├── registry.go
+│   │   │   ├── resolve_backend_test.go
 │   │   │   ├── schema.go
 │   │   │   ├── session.go
 │   │   │   ├── session_test.go
@@ -566,6 +668,12 @@
 │   │       ├── schema.go
 │   │       └── schema_test.go
 │   ├── benchmark
+│   │   ├── asymptote
+│   │   │   ├── aggregator.go
+│   │   │   ├── asymptote_test.go
+│   │   │   ├── parser.go
+│   │   │   ├── report.go
+│   │   │   └── types.go
 │   │   ├── benchmark_test.go
 │   │   ├── metrics.go
 │   │   ├── otlp.go
@@ -576,6 +684,7 @@
 │   │   ├── runner.go
 │   │   └── store.go
 │   ├── cli
+│   │   ├── bench.go
 │   │   ├── cli_test.go
 │   │   ├── diagram.go
 │   │   ├── editor.go
@@ -599,8 +708,10 @@
 │   │   ├── validate.go
 │   │   └── version.go
 │   ├── cloud
-│   │   └── metrics
-│   │       └── metrics.go
+│   │   ├── metrics
+│   │   │   └── metrics.go
+│   │   └── tracing
+│   │       └── tracing.go
 │   ├── config
 │   │   ├── config.go
 │   │   ├── config_test.go
@@ -618,6 +729,7 @@
 │   │   │   ├── expr.go
 │   │   │   └── expr_test.go
 │   │   ├── ir
+│   │   │   ├── attachments_test.go
 │   │   │   ├── bench_test.go
 │   │   │   ├── compile.go
 │   │   │   ├── compile_test.go
@@ -650,12 +762,22 @@
 │   │   ├── git.go
 │   │   ├── git_test.go
 │   │   ├── log.go
+│   │   ├── numstat.go
+│   │   ├── numstat_test.go
 │   │   ├── range.go
 │   │   ├── safety.go
 │   │   └── status.go
+│   ├── identity
+│   │   ├── memory.go
+│   │   ├── memory_test.go
+│   │   ├── mongo.go
+│   │   ├── store.go
+│   │   └── types.go
 │   ├── internal
 │   │   ├── appinfo
 │   │   │   └── appinfo.go
+│   │   ├── mongoutil
+│   │   │   └── conflict.go
 │   │   └── proc
 │   │       ├── proc.go
 │   │       ├── proc_unix.go
@@ -699,6 +821,7 @@
 │   │   ├── round_robin_test.go
 │   │   ├── routing.go
 │   │   ├── sandbox.go
+│   │   ├── sandbox_default_image.go
 │   │   ├── sandbox_internal_test.go
 │   │   ├── session_test.go
 │   │   ├── validation_test.go
@@ -738,6 +861,8 @@
 │   │   │   ├── devcontainer_test.go
 │   │   │   └── spec.go
 │   │   ├── docker
+│   │   │   ├── build.go
+│   │   │   ├── build_test.go
 │   │   │   ├── driver.go
 │   │   │   ├── driver_test.go
 │   │   │   ├── integration_test.go
@@ -751,6 +876,8 @@
 │   │   │   ├── driver.go
 │   │   │   ├── driver_test.go
 │   │   │   ├── manifest.go
+│   │   │   ├── mounts.go
+│   │   │   ├── mounts_test.go
 │   │   │   ├── netpolicy.go
 │   │   │   ├── runtime.go
 │   │   │   └── strings.go
@@ -771,7 +898,23 @@
 │   │   │   └── registry.go
 │   │   ├── spec.go
 │   │   └── spec_test.go
+│   ├── secrets
+│   │   ├── byok.go
+│   │   ├── byok_test.go
+│   │   ├── claw_guard_test.go
+│   │   ├── credentials.go
+│   │   ├── fingerprint.go
+│   │   ├── oauth.go
+│   │   ├── oauth_refresh.go
+│   │   ├── oauth_test.go
+│   │   ├── run_secrets.go
+│   │   ├── sealer.go
+│   │   └── sealer_test.go
 │   ├── server
+│   │   ├── auth_routes.go
+│   │   ├── backends_routes.go
+│   │   ├── backends_routes_test.go
+│   │   ├── byok_routes.go
 │   │   ├── cloudpublisher
 │   │   │   └── publisher.go
 │   │   ├── effort.go
@@ -779,23 +922,32 @@
 │   │   ├── health.go
 │   │   ├── health_test.go
 │   │   ├── hub.go
+│   │   ├── middleware.go
+│   │   ├── oauth_routes.go
 │   │   ├── runs.go
+│   │   ├── runs_browser.go
 │   │   ├── runs_commits.go
 │   │   ├── runs_files.go
 │   │   ├── runs_files_test.go
 │   │   ├── runs_log.go
 │   │   ├── runs_merge.go
+│   │   ├── runs_preview.go
+│   │   ├── runs_preview_test.go
 │   │   ├── runs_test.go
+│   │   ├── runs_uploads.go
+│   │   ├── runs_uploads_test.go
 │   │   ├── runs_ws.go
 │   │   ├── runs_ws_logs.go
 │   │   ├── runs_ws_test.go
 │   │   ├── server.go
-│   │   ├── session.go
-│   │   ├── session_test.go
+│   │   ├── server_info.go
 │   │   ├── static
 │   │   │   └── .gitkeep
+│   │   ├── timefmt.go
 │   │   └── watcher.go
 │   └── store
+│       ├── attachments.go
+│       ├── attachments_test.go
 │       ├── blob
 │       │   ├── iface.go
 │       │   ├── key.go
@@ -817,11 +969,13 @@
 │       ├── lock_windows.go
 │       ├── mongo
 │       │   ├── artifacts.go
+│       │   ├── attachments.go
 │       │   ├── conformance_test.go
 │       │   ├── events.go
 │       │   ├── interactions.go
 │       │   ├── runs.go
-│       │   └── store.go
+│       │   ├── store.go
+│       │   └── tenant.go
 │       ├── pid.go
 │       ├── pid_test.go
 │       ├── run.go
@@ -831,23 +985,35 @@
 │       ├── store_test.go
 │       ├── storedir.go
 │       ├── storedir_test.go
-│       └── storetest
-│           └── conformance.go
+│       ├── storetest
+│       │   └── conformance.go
+│       └── tenant.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── sandbox
+│   ├── browser
+│   │   └── Dockerfile
+│   ├── full
+│   │   └── Dockerfile
+│   └── slim
+│       └── Dockerfile
 ├── scripts
 │   ├── build.sh
 │   ├── desktop
 │   │   ├── Dockerfile.appimage
 │   │   ├── build-appimage-in-docker.sh
 │   │   ├── build-appimage.sh
+│   │   ├── build-deb.sh
 │   │   ├── ed25519-keygen.sh
 │   │   ├── entrypoint.sh
 │   │   ├── generate-manifest.sh
+│   │   ├── install-linux-deps.sh
 │   │   ├── sign-release.sh
 │   │   └── verify-release.sh
-│   └── sandbox-e2e
-│       └── manifest.yaml
+│   ├── sandbox-e2e
+│   │   └── manifest.yaml
+│   ├── sync-chart-version.sh
+│   └── update-brew-tap.sh
 ├── sdks
 │   └── typescript
 │       ├── .gitignore
@@ -4479,30 +4645,70 @@
     │   │   ├── error_handler.go
     │   │   ├── exporters
     │   │   │   ├── otlp
-    │   │   │   │   └── otlplog
-    │   │   │   │       └── otlploggrpc
-    │   │   │   │           ├── LICENSE
-    │   │   │   │           ├── README.md
-    │   │   │   │           ├── client.go
-    │   │   │   │           ├── config.go
-    │   │   │   │           ├── doc.go
-    │   │   │   │           ├── exporter.go
-    │   │   │   │           ├── internal
-    │   │   │   │           │   ├── gen.go
-    │   │   │   │           │   ├── observ
-    │   │   │   │           │   │   ├── instrumentation.go
-    │   │   │   │           │   │   └── target.go
-    │   │   │   │           │   ├── partialsuccess.go
-    │   │   │   │           │   ├── retry
-    │   │   │   │           │   │   └── retry.go
-    │   │   │   │           │   ├── transform
-    │   │   │   │           │   │   └── log.go
-    │   │   │   │           │   ├── version.go
-    │   │   │   │           │   └── x
-    │   │   │   │           │       ├── README.md
-    │   │   │   │           │       ├── features.go
-    │   │   │   │           │       └── x.go
-    │   │   │   │           └── version.go
+    │   │   │   │   ├── otlplog
+    │   │   │   │   │   └── otlploggrpc
+    │   │   │   │   │       ├── LICENSE
+    │   │   │   │   │       ├── README.md
+    │   │   │   │   │       ├── client.go
+    │   │   │   │   │       ├── config.go
+    │   │   │   │   │       ├── doc.go
+    │   │   │   │   │       ├── exporter.go
+    │   │   │   │   │       ├── internal
+    │   │   │   │   │       │   ├── gen.go
+    │   │   │   │   │       │   ├── observ
+    │   │   │   │   │       │   │   ├── instrumentation.go
+    │   │   │   │   │       │   │   └── target.go
+    │   │   │   │   │       │   ├── partialsuccess.go
+    │   │   │   │   │       │   ├── retry
+    │   │   │   │   │       │   │   └── retry.go
+    │   │   │   │   │       │   ├── transform
+    │   │   │   │   │       │   │   └── log.go
+    │   │   │   │   │       │   ├── version.go
+    │   │   │   │   │       │   └── x
+    │   │   │   │   │       │       ├── README.md
+    │   │   │   │   │       │       ├── features.go
+    │   │   │   │   │       │       └── x.go
+    │   │   │   │   │       └── version.go
+    │   │   │   │   └── otlptrace
+    │   │   │   │       ├── LICENSE
+    │   │   │   │       ├── README.md
+    │   │   │   │       ├── clients.go
+    │   │   │   │       ├── doc.go
+    │   │   │   │       ├── exporter.go
+    │   │   │   │       ├── internal
+    │   │   │   │       │   └── tracetransform
+    │   │   │   │       │       ├── attribute.go
+    │   │   │   │       │       ├── instrumentation.go
+    │   │   │   │       │       ├── resource.go
+    │   │   │   │       │       └── span.go
+    │   │   │   │       ├── otlptracehttp
+    │   │   │   │       │   ├── LICENSE
+    │   │   │   │       │   ├── README.md
+    │   │   │   │       │   ├── client.go
+    │   │   │   │       │   ├── doc.go
+    │   │   │   │       │   ├── exporter.go
+    │   │   │   │       │   ├── internal
+    │   │   │   │       │   │   ├── counter
+    │   │   │   │       │   │   │   └── counter.go
+    │   │   │   │       │   │   ├── envconfig
+    │   │   │   │       │   │   │   └── envconfig.go
+    │   │   │   │       │   │   ├── gen.go
+    │   │   │   │       │   │   ├── observ
+    │   │   │   │       │   │   │   └── instrumentation.go
+    │   │   │   │       │   │   ├── otlpconfig
+    │   │   │   │       │   │   │   ├── envconfig.go
+    │   │   │   │       │   │   │   ├── options.go
+    │   │   │   │       │   │   │   ├── optiontypes.go
+    │   │   │   │       │   │   │   └── tls.go
+    │   │   │   │       │   │   ├── partialsuccess.go
+    │   │   │   │       │   │   ├── retry
+    │   │   │   │       │   │   │   └── retry.go
+    │   │   │   │       │   │   ├── version.go
+    │   │   │   │       │   │   └── x
+    │   │   │   │       │   │       ├── observ.go
+    │   │   │   │       │   │       └── x.go
+    │   │   │   │       │   └── options.go
+    │   │   │   │       └── version.go
     │   │   │   └── prometheus
     │   │   │       ├── LICENSE
     │   │   │       ├── README.md
@@ -4696,8 +4902,41 @@
     │   │   │   │   ├── os_windows.go
     │   │   │   │   ├── process.go
     │   │   │   │   └── resource.go
+    │   │   │   ├── trace
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── batch_span_processor.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── event.go
+    │   │   │   │   ├── evictedqueue.go
+    │   │   │   │   ├── id_generator.go
+    │   │   │   │   ├── internal
+    │   │   │   │   │   ├── env
+    │   │   │   │   │   │   └── env.go
+    │   │   │   │   │   └── observ
+    │   │   │   │   │       ├── batch_span_processor.go
+    │   │   │   │   │       ├── doc.go
+    │   │   │   │   │       ├── simple_span_processor.go
+    │   │   │   │   │       └── tracer.go
+    │   │   │   │   ├── link.go
+    │   │   │   │   ├── provider.go
+    │   │   │   │   ├── sampler_env.go
+    │   │   │   │   ├── sampling.go
+    │   │   │   │   ├── simple_span_processor.go
+    │   │   │   │   ├── snapshot.go
+    │   │   │   │   ├── span.go
+    │   │   │   │   ├── span_exporter.go
+    │   │   │   │   ├── span_limits.go
+    │   │   │   │   ├── span_processor.go
+    │   │   │   │   └── tracer.go
     │   │   │   └── version.go
     │   │   ├── semconv
+    │   │   │   ├── v1.26.0
+    │   │   │   │   ├── README.md
+    │   │   │   │   ├── attribute_group.go
+    │   │   │   │   ├── doc.go
+    │   │   │   │   ├── exception.go
+    │   │   │   │   ├── metric.go
+    │   │   │   │   └── schema.go
     │   │   │   ├── v1.37.0
     │   │   │   │   ├── MIGRATION.md
     │   │   │   │   ├── README.md
@@ -4759,20 +4998,28 @@
     │       └── otlp
     │           ├── LICENSE
     │           ├── collector
-    │           │   └── logs
+    │           │   ├── logs
+    │           │   │   └── v1
+    │           │   │       ├── logs_service.pb.go
+    │           │   │       ├── logs_service.pb.gw.go
+    │           │   │       └── logs_service_grpc.pb.go
+    │           │   └── trace
     │           │       └── v1
-    │           │           ├── logs_service.pb.go
-    │           │           ├── logs_service.pb.gw.go
-    │           │           └── logs_service_grpc.pb.go
+    │           │           ├── trace_service.pb.go
+    │           │           ├── trace_service.pb.gw.go
+    │           │           └── trace_service_grpc.pb.go
     │           ├── common
     │           │   └── v1
     │           │       └── common.pb.go
     │           ├── logs
     │           │   └── v1
     │           │       └── logs.pb.go
-    │           └── resource
+    │           ├── resource
+    │           │   └── v1
+    │           │       └── resource.pb.go
+    │           └── trace
     │               └── v1
-    │                   └── resource.pb.go
+    │                   └── trace.pb.go
     ├── go.yaml.in
     │   └── yaml
     │       └── v2
@@ -4810,6 +5057,13 @@
     │       │   │   ├── jws.go
     │       │   │   ├── rfc8555.go
     │       │   │   └── types.go
+    │       │   ├── argon2
+    │       │   │   ├── argon2.go
+    │       │   │   ├── blake2b.go
+    │       │   │   ├── blamka_amd64.go
+    │       │   │   ├── blamka_amd64.s
+    │       │   │   ├── blamka_generic.go
+    │       │   │   └── blamka_ref.go
     │       │   ├── blake2b
     │       │   │   ├── blake2b.go
     │       │   │   ├── blake2bAVX2_amd64.go
@@ -6853,4 +7107,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1037 directories, 6364 files
+1077 directories, 6578 files

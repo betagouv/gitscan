@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est un moteur de workflow déclaratif pour orchestrer des agents d'IA. Il permet de définir des workflows complexes avec des agents, des juges, des routeurs et des boucles, et de gérer l'exécution et le budget.",
+  "description": "Iterion est un moteur de workflow déclaratif pour l'orchestration d'agents d'IA. Il permet de définir des workflows complexes avec des agents, des juges et des routes, et d'automatiser l'exécution de ces workflows.",
   "language": "Go",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -12,15 +12,17 @@
     "Sécurité & Conformité",
     "Données & Schémas",
     "Collaboration & Workflow",
-    "Intelligence Artificielle & NLP"
+    "Intelligence Artificielle & NLP",
+    "Tests & QA"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Go",
     "Docker",
     "Kubernetes",
     "MongoDB",
-    "NATS"
+    "NATS",
+    "Prometheus",
+    "Go"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,26 +34,36 @@
   ],
   "auth": {
     "methods": [
-      "api-key",
-      "jwt",
-      "session"
+      "oauth2",
+      "email-password"
+    ],
+    "providers": [
+      "Google",
+      "GitHub"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2024-05-21T14:41:42Z",
-  "status": "experimental",
+  "tests": "Tests d'intégration et de couverture de code",
+  "workflows": [
+    "CI/CD avec GitHub Actions"
+  ],
+  "lastActivity": "2026-05-08T23:58:30+02:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "TypeScript",
-    "Python",
-    "Sécurité & Auth",
     "Intelligence Artificielle & LLM",
-    "Docker & Conteneurs",
-    "Kubernetes"
+    "JavaScript",
+    "Python",
+    "Docker",
+    "Kubernetes",
+    "Sécurité",
+    "Tests"
   ]
 }
