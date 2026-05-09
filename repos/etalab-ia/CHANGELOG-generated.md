@@ -1,23 +1,21 @@
-# Synthèse d'activité : etalab-ia (du 24 avril 2026 au 01 mai 2026)
+# Synthèse d'activité : etalab-ia (du 1er mai 2026 au 29 avril 2026)
 
 ## Résumé de l'activité
-L'organisation etalab-ia a connu une semaine riche en activités, avec des avancées significatives sur plusieurs fronts. Les efforts se sont concentrés sur l'amélioration des outils existants, notamment autour de la recherche d'informations (RAG) et des assistants IA. On note l'ajout de nouvelles compétences et l'intégration de données publiques, comme les données ANSSI, pour enrichir les capacités de ces outils. Plusieurs projets ont également bénéficié d'améliorations techniques importantes, comme la migration vers des architectures serverless et l'optimisation des pipelines de déploiement. Enfin, l'accent a été mis sur l'amélioration de l'expérience utilisateur, avec l'ajout d'assistants de configuration et la correction de bugs. Les dépôts [ragtime](/repos/etalab-ia/ragtime), [skills](/repos/etalab-ia/skills), [parcours-rag](/repos/etalab-ia/parcours-rag) et [lettabot](/repos/etalab-ia/lettabot) ont été particulièrement actifs.
+L'organisation etalab-ia a connu une semaine riche en activités, avec des avancées significatives sur plusieurs fronts. L'accent a été mis sur l'amélioration des capacités de recherche et de génération de langage, notamment avec l'intégration de nouvelles "skills" RAG et l'optimisation de l'API WhisperX. Plusieurs projets ont également bénéficié d'améliorations de l'infrastructure et de la sécurité, comme la migration vers des architectures serverless et l'intégration de Gitleaks pour la détection de secrets. Enfin, des efforts importants ont été consacrés à l'amélioration de l'expérience utilisateur, avec l'ajout d'assistants de configuration et de nouvelles fonctionnalités dans des projets comme lettabot et BlockNote. Les dépôts les plus actifs sont [skills](/repos/etalab-ia/skills), [ragtime](/repos/etalab-ia/ragtime), [mediatech](/repos/etalab-ia/mediatech) et [lettabot](/repos/etalab-ia/lettabot).
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+- Intégration de `gitleaks` au pre-commit dans [skills](/repos/etalab-ia/skills) pour détecter et prévenir la présence de secrets sensibles dans le code.
+- Amélioration de la sécurité du playground d'OpenGateLLM via une image Docker privée dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques notables :
 - Migration de la base de données de [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless pour une meilleure scalabilité.
-- Refactorisation de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité et maintenabilité.
-- Optimisation de l'image Docker de [marker-serve](/repos/etalab-ia/marker-serve) pour des déploiements plus rapides.
-- Refactorisation des modèles de configuration et des endpoints d'administration dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure architecture.
+- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité et maintenabilité.
+- Renommage complet du projet [ragtime](/repos/etalab-ia/ragtime) de "rag-facile" à "ragtime".
+- Mise en place d'un pipeline automatisé pour importer les données Mediatech de HuggingFace vers l'API Albert dans [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api).
 
 ## Dépôts les plus actifs
-- [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Développement initial d'une API pour la transcription et la diarisation de l'audio, compatible avec l'API OpenAI.
-- [skills](/repos/etalab-ia/skills) : Ajout de nouvelles compétences RAG et intégration de données de data.gouv.fr.
-- [ragtime](/repos/etalab-ia/ragtime) : Ajout d'une gestion complète des collections via la CLI et amélioration du processus d'installation.
-- [parcours-rag](/repos/etalab-ia/parcours-rag) : Création et développement du module 3 de l'atelier RAG, axé sur l'implémentation pratique de techniques RAG.
-- [lettabot](/repos/etalab-ia/lettabot) : Amélioration de l'expérience utilisateur avec un assistant de configuration interactif et une meilleure gestion des modèles d'IA.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Ajout du support de la transcription diarizée et intégration de Langfuse pour le suivi de l'utilisation des modèles.
+- [skills](/repos/etalab-ia/skills) : Ajout de nouvelles "skills" RAG et amélioration de la gestion des secrets.
+- [ragtime](/repos/etalab-ia/ragtime) : Amélioration de la gestion des collections via la CLI et refonte de l'architecture.
+- [mediatech](/repos/etalab-ia/mediatech) : Ajout de la gestion de nouveaux jeux de données et amélioration du traitement des données.
+- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de l'expérience utilisateur.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Ajout du support de nouveaux formats de transcription et intégration avec Langfuse.

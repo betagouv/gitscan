@@ -1,25 +1,15 @@
-# Synthèse d'activité : anct-cartographie-nationale (du 29/04/2024 au 30/04/2026)
+# Synthèse d'activité : anct-cartographie-nationale (du 16/04 au 29/04)
 
 ## Résumé de l'activité
-L'organisation a connu une période d'activité soutenue, axée sur l'amélioration des performances et de la sécurité de la plateforme cartographique. Des optimisations significatives ont été apportées au temps de chargement des pages, à la gestion du cache et à la protection contre les abus. Par ailleurs, des améliorations ont été apportées à l'outil en ligne de commande [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) pour une meilleure gestion des adresses et des lieux de médiation, notamment via l'optimisation de l'utilisation de l'API BAN et de l'API Cartographie Nationale.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la performance et de l'expérience utilisateur de la plateforme de cartographie. Des optimisations ont été apportées à la gestion des données d'adresses et de lieux de médiation, ainsi qu'à l'affichage et à la navigation de la carte. L'ajout de filtres de disponibilité et la possibilité d'intégrer la carte sur d'autres sites web élargissent les usages de la plateforme pour les utilisateurs finaux.
 
 ## Sécurité
-Des mesures de sécurité importantes ont été implémentées dans [cartographie](/repos/anct-cartographie-nationale/cartographie) :
-- Ajout de limitations de débit pour se protéger contre les attaques et les abus.
-- Blocage des bots malveillants sur les exports et configuration du pare-feu Nginx.
-- Implémentation d'un pare-feu géographique pour restreindre l'accès en fonction de la localisation.
-- Intégration de CrowdSec pour la détection collaborative des menaces.
+- Renforcement de la sécurité avec l'ajout d'un reverse proxy Nginx [cartographie](/repos/anct-cartographie-nationale/cartographie).
 
 ## Autres changements notables
-[cartographie](/repos/anct-cartographie-nationale/cartographie) a bénéficié de plusieurs évolutions techniques majeures :
-- Optimisation significative des performances via la mise en cache, le chargement paresseux de MapLibre et l'extraction du contenu LCP vers des composants serveur.
-- Réduction de la taille de l'image Docker de 42%.
-- Amélioration de la configuration des ressources conteneur Scaleway et ajout d'un endpoint de vérification de l'état de santé.
-- Refactorisation de la configuration Nginx et ajout de tests associés.
-- Ajout de logs d'accès Nginx avec l'adresse IP du client et le statut du cache.
-
-[mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a vu sa configuration CI/CD améliorée et l'URL de l'API Cartographie Nationale mise à jour pour utiliser CloudFront.
+- Migration vers un BFF (Backend For Frontend) en mémoire pour les appels à l'API PostgREST [cartographie](/repos/anct-cartographie-nationale/cartographie).
+- Mise à jour de l'URL de l'API Cartographie Nationale pour utiliser CloudFront [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), optimisant ainsi la distribution du contenu.
 
 ## Dépôts les plus actifs
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Améliorations majeures des performances, de la sécurité et de l'infrastructure de la plateforme cartographique.
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Optimisation de la gestion des adresses et des lieux de médiation, et amélioration du workflow CI/CD.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Amélioration de la gestion des adresses et des lieux de médiation, et optimisation des performances.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Ajout de nouvelles fonctionnalités de filtrage et d'intégration, ainsi que des optimisations de performance et de sécurité.

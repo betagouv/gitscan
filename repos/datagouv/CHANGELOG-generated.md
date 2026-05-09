@@ -1,26 +1,26 @@
-# Synthèse d'activité : datagouv (du 01/05 au 13/05)
+# Synthèse d'activité : datagouv (du 29 avril au 16 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation datagouv s'est concentrée sur l'amélioration de la qualité des données, la modernisation des infrastructures et l'amélioration de l'expérience utilisateur de ses différents services. Plusieurs dépôts ont bénéficié de mises à jour de données (cadastre, contours-administratifs, api-meteo), tandis que d'autres ont vu des refactorings techniques importants (ouverture.data.gouv.fr, hydra, api-tabular) pour améliorer la performance, la sécurité et la maintenabilité. L'ajout de nouvelles fonctionnalités, comme le système de notifications dans hubee et l'exploration tabulaire dans cdata, témoigne d'une volonté constante d'enrichir l'offre de services.
+L'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour importantes de plusieurs de ses projets clés. On observe une forte concentration sur l'amélioration de l'infrastructure et de la qualité des données, avec des refontes techniques majeures pour des projets comme `relais` et `ouverture.data.gouv.fr`.  Des améliorations significatives ont également été apportées aux APIs, notamment `apistration` et `api-tabular`, pour une meilleure performance et une plus grande robustesse. Plusieurs projets ont bénéficié de mises à jour de données, comme `cadastre` et `contours-administratifs`, assurant ainsi la pertinence et l'actualité des informations fournies aux utilisateurs. Enfin, des efforts ont été déployés pour améliorer l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités sur `cdata` et `hubee`.
 
 ## Sécurité
 Aucun changement lié à la sécurité n'a été spécifiquement mentionné dans les changelogs fournis.
 
 ## Autres changements notables
-Plusieurs projets ont entrepris des refactorings techniques majeurs :
-- [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr) a migré vers PNPM pour une meilleure gestion des dépendances.
-- [hydra](/repos/datagouv/hydra) a vu des améliorations significatives en termes de performance et de fonctionnalités, notamment l'ajout du support WMS et une meilleure gestion des fichiers temporaires.
-- [api-tabular](/repos/datagouv/api-tabular) a intégré une construction et une publication de l'image Docker directement depuis la chaîne CI d'Applicative.
-- [docker-ansible-git-crypt](/repos/datagouv/docker-ansible-git-crypt) a mis à niveau Ansible vers la version 13.6.0.
-- [apistration](/repos/datagouv/apistration) a refondu la gestion des erreurs et implémenté un système de délégation d'éditeur.
-- [csv-detective](/repos/datagouv/csv-detective) a amélioré la robustesse et la performance de la détection des types de données.
+Plusieurs projets ont subi des refontes techniques importantes :
+- **`relais`**: Migration vers Rails 8.1 aligné sur `apistration`, intégrant des outils de test et de linting.
+- **`ouverture.data.gouv.fr`**: Migration vers PNPM pour une meilleure gestion des dépendances et des performances.
+- **`api-tabular`**: Intégration continue et déploiement (CI/CD) avec la construction et la publication de l'image Docker directement depuis la chaîne CI d'Applicative.
+- **`apistration`**: Refactorisation de l'authentification et de l'autorisation.
+- **`csv-detective`**: Mise à jour de la version minimale de Python supportée.
 
 ## Dépôts les plus actifs
-- [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr) : Mises à jour régulières des recommandations de schémas de données.
-- [roles.data](/repos/datagouv/roles.data) : Améliorations de l'administration des groupes et des utilisateurs, refonte des emails.
-- [passemarche](/repos/datagouv/passemarche) : Amélioration significative de la gestion des lots pour les candidats.
-- [hydra](/repos/datagouv/hydra) : Optimisation des performances, ajout du support WMS, meilleure gestion des fichiers temporaires.
-- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Corrections de bugs, adaptation aux changements de sources de données, refactorings.
-- [cdata](/repos/datagouv/cdata) : Nouvelle exploration tabulaire des données, amélioration de la présentation des pages d'organisation.
-- [guides.data.gouv.fr](/repos/datagouv/guides.data.gouv.fr) : Amélioration de la documentation sur les compétences et les éditeurs partiels.
-- [fr-format](/repos/datagouv/fr-format) : Ajout du format IdRNB, traduction de la documentation en français, modernisation du code.
+- **`roles.data`**: Améliorations de l'administration des groupes et des utilisateurs, refonte des emails.
+- **`relais`**: Refonte de l'infrastructure et migration vers Rails 8.1.
+- **`passemarche`**: Ajout de fonctionnalités pour la gestion des candidatures aux marchés publics et amélioration de l'interface d'administration.
+- **`datagouvfr_data_pipelines`**: Amélioration de la robustesse et de la fiabilité des pipelines de données.
+- **`cdata`**: Ajout de filtres personnalisés, nouvelle mise en page pour les pages d'organisation et nouvelle interface pour l'exploration tabulaire des données.
+- **`cadastre`**: Mise à jour des données cadastrales et correction de problèmes de linting.
+- **`api-meteo`**: Correction de bugs liés à la gestion des années dans les requêtes.
+- **`fr-format`**: Ajout du format de validation IdRNB et documentation en français.
+- **`hydra`**: Optimisation de l'extraction de données et ajout du support des WMS.

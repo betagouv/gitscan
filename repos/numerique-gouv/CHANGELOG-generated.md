@@ -1,22 +1,24 @@
-# Synthèse d'activité : numerique-gouv (du 15 avril 2026 au 23 avril 2026)
+# Synthèse d'activité : numerique-gouv (du 22 avril 2026 au 07 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la sécurité de ses différentes plateformes. Plusieurs dépôts ont bénéficié d'améliorations d'accessibilité, d'internationalisation et de correction de bugs. Des efforts importants ont également été déployés pour renforcer la sécurité, notamment sur [francetransfert](/repos/numerique-gouv/francetransfert) avec la restriction des types de fichiers autorisés. L'application _La Suite_ ([lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage)) a vu l'ajout de la sélection de créneau pour la prise de rendez-vous et la correction d'un bug sur le formulaire de contact. Les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android) ont bénéficié d'améliorations de l'interface et de la gestion de l'authentification.
+L'activité récente de l'organisation "numerique-gouv" s'est concentrée sur l'amélioration de l'expérience utilisateur et de la sécurité de ses différentes applications. Plusieurs projets ont bénéficié d'améliorations d'accessibilité et d'internationalisation, notamment [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-conformes](/repos/numerique-gouv/sites-conformes), avec l'ajout de la gestion de plusieurs langues et de sélecteurs de langue.  Des efforts importants ont également été déployés pour renforcer la sécurité, avec des corrections de vulnérabilités dans [francetransfert](/repos/numerique-gouv/francetransfert) et des mises à jour de dépendances dans plusieurs dépôts. Les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-android) et [ami-app-android](/repos/numerique-gouv/ami-app-ios) ont reçu des améliorations significatives en termes d'interface utilisateur et de fonctionnalités.
 
 ## Sécurité
-- [francetransfert](/repos/numerique-gouv/francetransfert) : Restriction des types de fichiers autorisés (HTML et HTM) pour renforcer la sécurité.
-- [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage) : Mise à jour de Next.js incluant une correction de sécurité.
-- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Mises à jour de plusieurs dépendances pour bénéficier des dernières corrections de sécurité.
-- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Contournement de la vérification SSL en mode DEBUG (uniquement pour le développement).
+Plusieurs changements liés à la sécurité ont été effectués :
+
+- [francetransfert](/repos/numerique-gouv/francetransfert) : Restriction des types de fichiers autorisés pour prévenir des attaques potentielles.
+- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Mises à jour de dépendances pour corriger des vulnérabilités connues.
+- [action-trivy-cache](/repos/numerique-gouv/action-trivy-cache) : Mise à jour des actions utilisées pour une meilleure sécurité de l'analyse de vulnérabilités.
 
 ## Autres changements notables
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Internationalisation des plateformes avec gestion de plusieurs langues.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Migration des variables d'environnement vers un fichier de configuration pour une meilleure gestion et sécurité.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-conformes](/repos/numerique-gouv/sites-conformes) : Simplification du déploiement grâce à l'intégration de Scalingo.
+- [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy) : Amélioration du support des déploiements sur Scalingo.
+- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Intégration de la nouvelle identité visuelle du gouvernement français (DSFR).
 - [django-dsfr](/repos/numerique-gouv/django-dsfr) : Mise à jour du système de design DSFR vers la version 1.14.4.
 
 ## Dépôts les plus actifs
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Ajout de la gestion de plusieurs langues et déploiement en un clic sur Scalingo.
-- [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Internationalisation et optimisations de performance.
-- [b3desk](/repos/numerique-gouv/b3desk) : Implémentation de la délégation de réunions et corrections de bugs.
-- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Amélioration de l'expérience utilisateur avec le rafraîchissement par glissement et l'intégration de la DSFR.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Ajout de la gestion des agents et des rôles, intégration de l'agenda et amélioration des notifications.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Amélioration de l'internationalisation et simplification du déploiement.
+- [ami-app-ios](/repos/numerique-gouv/ami-app-ios) : Amélioration de la navigation et de l'expérience utilisateur.
+- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Intégration de la DSFR et amélioration de l'expérience utilisateur.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Ajout de la gestion des zones géographiques et amélioration de l'envoi des notifications.
+- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Mise à jour du système de design DSFR et correction de bugs.

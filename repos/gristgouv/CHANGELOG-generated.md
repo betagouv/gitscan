@@ -1,18 +1,16 @@
-# Synthèse d'activité : gristgouv (du 01/03 au 01/06)
+# Synthèse d'activité : gristgouv (du 13 mars 2026 au 9 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation gristgouv s'est concentrée sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités, notamment l'intégration de formulaires intra-administration ([widgets-config](/repos/gristgouv/widgets-config)) et l'amélioration de l'importation de données depuis Airtable ([grist-core](/repos/gristgouv/grist-core)). Des efforts importants ont également été déployés pour renforcer la sécurité des formulaires ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)) et améliorer la stabilité de la plateforme grâce à la correction de tests automatisés ([grist-core](/repos/gristgouv/grist-core)). La mise à jour de l'image Docker ([grist-docker-image](/repos/gristgouv/grist-docker-image)) permet de bénéficier des dernières améliorations de Grist sans intervention complexe. Enfin, le contenu de formation ([grist-mooc](/repos/gristgouv/grist-mooc)) a été mis à jour pour faciliter l'apprentissage de l'outil.
+L'activité récente de l'organisation gristgouv s'est concentrée sur l'amélioration continue de l'application Grist et de son écosystème. Des efforts significatifs ont été déployés pour enrichir l'offre de widgets, notamment avec l'ajout d'un widget de formulaire intra-administration via [widgets-config](/repos/gristgouv/widgets-config) et l'amélioration du widget calendrier dans [gristlabs-widgets](/repos/gristlabs-widgets).  Le projet [grist-mooc](/repos/grist-mooc) a été mis à jour avec de nouveaux contenus pédagogiques, facilitant l'apprentissage de l'outil. Enfin, l'image Docker [grist-docker-image](/repos/grist-docker-image) a été mise à jour avec la dernière version de Grist, simplifiant le déploiement et la mise à jour pour les utilisateurs.
 
 ## Sécurité
-- Renforcement de la sécurité du formulaire avec l'implémentation de DOMPurify pour la sanitisation du contenu HTML et la prévention des attaques XSS ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).
+Des améliorations de sécurité ont été apportées au dépôt [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) avec l'implémentation de DOMPurify pour la sanitisation du contenu HTML et la prévention des attaques XSS. De plus, le dépôt [grist-core](/repos/gristgouv/grist-core) a bénéficié d'une refactorisation des types `ISandbox` et d'une amélioration de la gestion des sessions pour renforcer la sécurité et la robustesse.
 
 ## Autres changements notables
-- Migration de l'interface de développement du formulaire vers Vue.js ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).
-- Refactorisation du code de [grist-core](/repos/gristgouv/grist-core) pour séparer les tests spécifiques à l'édition Enterprise du cœur du projet.
-- Mise en place d'une automatisation pour les clés de traduction dans [grist-core](/repos/gristgouv/grist-core).
+Le dépôt [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) a subi une migration complète de son interface vers Vue.js, modernisant ainsi sa base de code.  [grist-core](/repos/gristgouv/grist-core) a vu l'ajout d'un point de terminaison pour lister les enregistrements et des améliorations significatives de la gestion des autorisations, de l'interface de gestion des applications OAuth et de la recherche dans les documents.
 
 ## Dépôts les plus actifs
-- [grist-core](/repos/gristgouv/grist-core) : Amélioration de l'importation depuis Airtable, correction de tests automatisés et ajout de nouvelles fonctionnalités pour la version SaaS.
-- [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) : Ajout de nouvelles fonctionnalités et améliorations de la sécurité pour le formulaire.
-- [widgets-config](/repos/gristgouv/widgets-config) : Ajout d'un nouveau widget pour les formulaires intra-administration.
-- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour du contenu de formation avec de nouveaux exercices et documentation.
+- [grist-core](/repos/gristgouv/grist-core) : Ce dépôt a connu une activité intense avec des améliorations de la sécurité, de nouvelles fonctionnalités et des refactorisations importantes.
+- [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) : Ce dépôt a été marqué par une migration technologique majeure et des améliorations de la sécurité et de l'expérience utilisateur.
+- [gristlabs-widgets](/repos/gristlabs-widgets) : Ce dépôt s'est concentré sur l'amélioration de l'expérience utilisateur et la mise à jour des dépendances.
+- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Ce dépôt a permis de diffuser rapidement la dernière version de Grist aux utilisateurs via une image Docker mise à jour.

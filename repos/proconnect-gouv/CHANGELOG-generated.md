@@ -1,20 +1,19 @@
-# Synthèse d'activité : proconnect-gouv (du 09 mai 2026 au 16 mai 2026)
+# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 07 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la robustesse des services existants. Plusieurs dépôts ont bénéficié de corrections de bugs et d'ajouts de fonctionnalités, notamment concernant la gestion des identités, la surveillance des services et l'intégration avec des standards comme eIDAS. L'ajout d'une page de maintenance et l'amélioration de la documentation pour les partenaires sont également des points forts de cette période. Le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a connu une activité importante avec l'ajout de nouveaux validateurs et des améliorations de sécurité.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la stabilité, de la sécurité et des fonctionnalités de ses différents services. Plusieurs dépôts ont bénéficié de mises à jour pour supporter de nouveaux standards d'authentification (eIDAS), améliorer la gestion des erreurs et des logs, et enrichir les données disponibles (informations sur les établissements publics, rôles utilisateurs). Des efforts importants ont également été déployés pour améliorer l'expérience utilisateur, notamment avec l'ajout d'un mode sombre et des corrections d'interface. Les dépôts [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) et [federation](/repos/proconnect-gouv/federation) ont été particulièrement actifs.
 
 ## Sécurité
-Le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a bénéficié de mises à jour de dépendances corrigeant des vulnérabilités. Le dépôt [federation](/repos/proconnect-gouv/federation) a remplacé les cookies par des session cookies pour une meilleure sécurité.
+Plusieurs dépôts ont reçu des mises à jour de dépendances pour corriger des vulnérabilités et renforcer la sécurité. Notamment, le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a corrigé des failles de sécurité dans ses dépendances. Le dépôt [federation](/repos/proconnect-gouv/federation) a également renforcé la sécurité en utilisant HTTPS pour récupérer le core-fca.
 
 ## Autres changements notables
-- Le dépôt [federation](/repos/proconnect-gouv/federation) a implémenté un pattern ping/pong pour les healthchecks du broker et ajouté des routes `livez` et `readyz` pour une meilleure surveillance.
-- Le dépôt [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) a corrigé une fuite de mémoire et intégré des changements de version automatique via `changesets`.
-- Le dépôt [hyyypertool](/repos/proconnect-gouv/hyyypertool) a entamé le remplacement des composants DSFR par une nouvelle thématique Tailwind CSS.
-- Le dépôt [oidc2fer](/repos/proconnect-gouv/oidc2fer) a amélioré la configuration et la gestion des identifiants SIRET.
+- Le dépôt [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring) a implémenté un système de healthchecks pour améliorer la robustesse du monitoring.
+- Le dépôt [class-validator](/repos/proconnect-gouv/class-validator) a vu l'ajout de nouveaux validateurs pour les formats IBAN, ISO 639-1, ISO 3166-1 et UUID, offrant une validation plus complète des données.
+- Le dépôt [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) a corrigé une fuite mémoire et est revenu à l'utilisation d'Axios pour les requêtes HTTP, améliorant ainsi sa stabilité.
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la robustesse, correction de fuites mémoire et ajout d'informations sur les effectifs des unités légales.
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de la surveillance, de la sécurité et de la gestion des erreurs.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Amélioration de l'interface utilisateur et correction de bugs.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et amélioration de la sécurité.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation et ajout d'une fonctionnalité de mode maintenance.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la stabilité, ajout d'informations sur la taille des établissements publics et implémentation de points de terminaison de ping.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Ajout d'un mode maintenance et amélioration de la documentation pour l'authentification et la gestion des erreurs.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration des messages d'erreur, ajout d'un indicateur de maintenance, implémentation de healthchecks et renforcement de la sécurité.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Ajout du mode sombre et corrections d'interface utilisateur.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités de dépendances.

@@ -1,14 +1,17 @@
-# Synthèse d'activité : mte-dgpr (du 21/04 au 30/04/2026)
+# Synthèse d'activité : mte-dgpr (du 15/04 au 21/04/2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation mte-dgpr s'est concentrée sur l'amélioration de la qualité et de la robustesse du traitement des arrêtés préfectoraux. Les dépôts [ocapi](/repos/mte-dgpr/ocapi) et [arretify](/repos/mte-dgpr/arretify) ont bénéficié d'évolutions significatives, notamment dans la détection des éléments clés des documents (titres, dates, articles) et dans la gestion des formats issus de l'OCR. Ces améliorations se traduiront par une meilleure précision et une restitution plus fidèle des informations pour les utilisateurs finaux.
+L'organisation mte-dgpr a connu une semaine productive, axée sur l'amélioration de ses outils d'analyse de documents administratifs. Les efforts se sont concentrés sur [ocapi](/repos/mte-dgpr/ocapi) et [arretify](/repos/mte-dgpr/arretify), avec des avancées significatives dans la robustesse de la détection d'informations clés, la gestion des formats complexes (tableaux issus de l'OCR) et l'intégration de nouveaux fournisseurs de modèles de langage (Gemini). Ces améliorations se traduiront par une meilleure qualité de traitement des arrêtés et une traçabilité accrue des opérations pour les utilisateurs.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été identifié dans les changelogs fournis.
+Aucun changement lié à la sécurité n'a été signalé cette semaine.
 
 ## Autres changements notables
-Le dépôt [ocapi](/repos/mte-dgpr/ocapi) a été mis à jour pour supporter le fournisseur Google/Gemini pour les appels LLM, ouvrant la voie à de nouvelles possibilités d'intégration et d'analyse. De plus, une refonte du code a été effectuée pour utiliser `ErrorCode` au lieu de `status_code`, améliorant ainsi la clarté et la maintenabilité du code. Le dépôt [ocapi](/repos/mte-dgpr/ocapi) exige désormais Python 3.12 pour l'exécution.
+- Refonte de la gestion des codes de statut dans [ocapi](/repos/mte-dgpr/ocapi) pour une meilleure cohérence.
+- Remplacement des tests unitaires par des snapshots dans [ocapi](/repos/mte-dgpr/ocapi) pour une plus grande fiabilité des tests.
+- Intégration du support du fournisseur Google/Gemini et benchmarks LLM dans [ocapi](/repos/mte-dgpr/ocapi).
+- Amélioration de la détection de page headers et footers et traitement direct des tableaux en HTML grâce à l'intégration de Mistral OCR 3 dans [arretify](/repos/mte-dgpr/arretify).
 
 ## Dépôts les plus actifs
-- [ocapi](/repos/mte-dgpr/ocapi) : Amélioration du pipeline de traitement des arrêtés préfectoraux avec des corrections et des ajouts de fonctionnalités pour une meilleure précision et robustesse.
-- [arretify](/repos/mte-dgpr/arretify) : Amélioration de la conversion d'arrêtés préfectoraux en HTML, notamment la détection des titres et la gestion des tableaux issus de l'OCR, en préparation de la version 0.2.0.
+- [ocapi](/repos/mte-dgpr/ocapi) : Amélioration significative de la détection des dates, de la gestion des annexes et de la prise en charge de formats d'identifiants variés.
+- [arretify](/repos/mte-dgpr/arretify) : Préparation de la version 0.2.0 avec des améliorations majeures dans la conversion d'arrêtés préfectoraux en HTML, notamment la gestion des tableaux OCR et la détection des titres.
