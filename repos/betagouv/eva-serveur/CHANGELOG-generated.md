@@ -1,81 +1,100 @@
-## Changelog : eva-serveur (30 derniers jours, au 07 mai 2026)
+## Changelog : eva-serveur (30 derniers jours, au 8 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la gestion des structures, notamment des opérateurs de compétences (OPCO), et sur l'amélioration de l'expérience utilisateur, en particulier sur la gestion des accès et l'affichage des données. Des corrections de bugs et des améliorations de la performance ont également été apportées.
+Ce mois-ci, les évolutions d'eva-serveur se concentrent sur l'amélioration de la gestion des structures, notamment des opérateurs de compétences (OPCO), et sur l'expérience utilisateur. Des corrections de bugs et des améliorations de l'interface ont été apportées, ainsi que des optimisations techniques pour la géolocalisation et la sécurité.
 
 ### Évolutions fonctionnelles
-- Permet d'accéder à la liste des structures Operateurs de compétences. [#fd6c11b](https://github.com/betagouv/eva-serveur/issues/fd6c11b)
-- Ajout d'un dashboard pour les comptes OPCO avec les statistiques Metabase associées.
-- Possibilité de créer ou modifier une structure Opérateur de compétences.
-- Permet d'accéder au show d'une structure Opérateur de compétence.
-- Les pistes de solutions disponibles renvoient vers le widget de l'inclusion.
-- Amélioration de la gestion des invitations et des comptes en attente.
+- Ajout d'un filtre par SIRET pour la recherche de structures.
+- Possibilité de rechercher un SIRET avec des espaces.
+- Les comptes créés en démo peuvent être vidés même s'ils ont été invités.
+- Permet d'accéder à la liste des structures Opérateurs de compétences.
+- Les utilisateurs OPCO peuvent accéder à leur dashboard avec les statistiques Metabase.
+- Ajout de la gestion de l'usage et de l'OPCO pour les structures administratives.
 - Permet de consulter les explications de comparaison des évaluations littératie et numératie.
+- Les pistes de solutions disponibles renvoient vers le widget de l'inclusion.
 - Ajout de la fonctionnalité d'invitation pour les structures administratives.
-- Les utilisateurs OPCO ont un accès restreint à la navigation d'EVA.
-- Permet de ne pas scroller en dehors des modales et de continuer à naviguer au clavier dans les modales.
-- Permet de consulter les 8 étapes des incontournables dans la restitution pour les pros.
-- Permet d'enregistrer le numéro de téléphone lors de la création d'un compte lors de l'embarquement.
+- Permet de consulter les restitutions EVA Pro.
+- Ajout de la possibilité pour les employés d'OPCO d'avoir un accès restreint à la navigation d'EVA.
+- Les évaluations EVA Pro incomplètes s'affichent correctement.
+- Ajout d'un nouveau modèle StructureOpco pour gérer les opérateurs de compétences.
+- Possibilité de créer ou de modifier une structure Opérateur de compétence.
+- Accès au show d'une structure Opérateur de compétence.
 
 ### Évolutions techniques
-- Refactor de la logique de formatage du SIRET pour éviter les duplications de code et améliorer la maintenabilité. [#8821b19](https://github.com/betagouv/eva-serveur/issues/8821b19)
-- Remplacement de Nominatim par geo.api.gouv.fr pour la géolocalisation des structures, améliorant la fiabilité et la conformité.
-- Suppression de la librairie `geocoder` et des fonctionnalités associées à la recherche de structures par code postal.
-- Suppression des pages et fonctionnalités liées à la création et à la recherche de structures.
+- Remplacement de Nominatim par geo.api.gouv.fr pour la géolocalisation des structures, améliorant la précision et la fiabilité.
+- Refactor de la logique de formatage du SIRET pour éviter les duplications de code.
+- Suppression de la librairie `geocoder` et des pages associées à la recherche de structure par code postal.
+- Suppression de l'action `rejoindre_structure` et de la page 'structures'.
+- Suppression de la page 'nouvelle_structure'.
+- Amélioration de la gestion des invitations en attente.
 - Utilisation du validateur blob d’ActiveStorage pour valider le type audio des transcriptions.
-- Migration des fichiers de migration de 2025 dans un dossier dédié.
 - Mise à jour de Ruby et Nodejs.
-- Suppression des utilities Bootstrap au profit du DSFR.
 - Correction d'une vulnérabilité d'injection SQL dans CollectionsEvenementsController.
 - Correction d'une faille de sécurité sur TarteauCitronJS.
-- Amélioration de la configuration de Plausible pour le suivi des liens sortants.
-- Amélioration du cache de libvips dans la CI.
-- Refactor de la logique de calcul de la complétude des évaluations EVAPRO.
-- Utilisation du StatistiquesStructure pour l'intégration des statistiques Metabase OPCO.
+- Configuration de Plausible pour tracer les liens sortants.
+- Refactor de la logique de calcul de la complétude des évaluations EVA Pro.
+- Amélioration de la CI avec mise en cache de libvips et augmentation des timeouts.
 
 ### Autres changements
-- Correction de plusieurs problèmes de style et d'affichage, notamment sur les pages mobiles et les PDF.
-- Suppression de code mort et de configurations inutiles.
-- Ajout de tests unitaires et correction de tests existants.
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de plusieurs erreurs de linting.
-- Suppression du numéro de téléphone de Gaelle.
-- Mise à jour de certaines dépendances.
-- Correction des références à 'focus-incoutournable' en 'focus-incontournable'.
-- Renommage de l'usage 'Eva: entreprises' en 'EVAPRO'.
-- Correction du titre de la sidebar :responsable_de_suivi.
-- Suppression du code de l'ancien menu mobile.
-- Correction de l'affichage des évaluations EVAPRO incomplètes.
-- Correction des URL des restitutions EVA Pro.
-- Ajout d'un padding sur la version mobile du tableau des évaluations EVA.
-- Correction des marges entre le Header/Contenu et Contenu/footer sur l'ensemble des pages.
+- Correction de l'affichage des bulles vertes collées aux titres des situations.
+- Correction de l'affichage des restitutions EVA.
 - Correction du focus des boutons DSFR sur Firefox.
-- Correction du bug des accès.
-- Correction des comptes en attente dans /comptes.
+- Correction des classes bootstrap remplacées par le DSFR.
 - Correction de l'alignement des cards diagnostique sur le dashboard.
-- Correction du problème d'affichage sur les restitutions EVA.
-- Correction des classes bootstrap des utilities qui n'ont pas été converties pour utiliser le DSFR.
-- Correction des bulles vertes collées aux titres des situations.
-- Correction des erreurs 500 sur la page index Questionnaires.
-- Correction des erreurs de padding et de marges sur les pages.
-- Suppression des progress bar de bootstrap.
-- Suppression du background des forms.
-- Ajout de tests pour la méthode departement de geoloc_helper.
-- Ajout d'un test pour vérifier le bouton menu des actualités.
-- Ajout d'un test pour la méthode vue_opco_active?.
-- Correction des liens d'invitation avec structure_id.
-- Suppression de l'action rejoindre_structure.
-- Suppression de la page 'structures'.
-- Suppression de l'étape de prise en main 'Recherche structure'.
-- Suppression du bouton bouton_ajouter_une_structure.
-- Suppression de la page admin/recherche_structure.
-- Suppression de la page 'nouvelle_structure'.
+- Correction de bugs d'affichage sur mobile (page Ma structure, actualités, compte, aide, etc.).
+- Correction de problèmes de style et de padding sur diverses pages.
+- Ajout de tests unitaires pour certaines fonctionnalités.
+- Suppression de code mort et de fichiers inutiles.
+- Amélioration de la documentation et des commentaires.
+- Correction de plusieurs erreurs Rubocop.
+- Ajout de la gestion des liens d'invitation avec l'ID de structure.
+- Ajout d'un nouveau mailer pour les invitations de structure.
 - Suppression de la page 'admin/sign_up'.
-- Ajout de mailers/structure/invitation_structure.
-- Assigne l'etape d'inscription quand on crée un compte avec l'admin.
-- Linter sur un fichier css.
-- Vide les comptes créés en démo, même invités.
-- Change les invitations en attente.
-- Corrige les invitations en attente.
-- Corrige la redirection pour les comptes ProConnect sans structure.
-- Corrige les comptes en attente dans /comptes.
+- Ajout d'un helper pour le formatage du SIRET.
+- Suppression du bouton 'ajouter une structure'.
+- Suppression de la page 'admin/recherche_structure'.
+- Suppression de l'étape de prise en main 'Recherche structure'.
+- Ajout d'une migration pour créer les StructureOpco via les StructureAdministrative.
+- Ajout du bon layout et Header pour les comptes opco.
+- Suppression du code mort concernant le rattachement des structures administratives à un OPCO.
+- Utilisation de StatistiquesStructure pour l'intégration des statistiques Metabase OPCO.
+- Suppression des traits inutiles dans les factory de structures.
+- Renommage de la méthode `vue_opco_active?` en `utilisateur_opco?`.
+- Correction de l'affichage des actualités.
+- Correction de l'affichage des évaluations EVA.
+- Correction du bug des accès.
+- Ajout de styles pour l'impression et ajustement de la génération de PDF.
+- Tous les tableaux sont passés en `dsfr_table`.
+- Correction de l'url des restitutions EVA Pro.
+- Correction des marges entre le Header/Contenu et Contenu/footer sur l'ensemble des pages.
+- Ajout du logo de l'opco dans le header du pdf uniquement si il est financeur.
+- Ajustement du design du PDF de comparatifs bénéficiaire en DSFR.
+- Correction de la version petit écran.
+- Correction de la version pdf.
+- Le pro peut prendre connaissance des 8 étapes des incontournables dans sa restitution.
+- Ajout de la possibilité de vider les comptes créés en démo, même invités.
+- Correction de l'assignation de l'étape d'inscription lors de la création d'un compte par l'admin.
+- Ajout d'un test pour la méthode `departement` de `geoloc_helper`.
+- Correction de la purge des comptes référencés dans des invitations.
+- Correction du double soulignement du lien de l'email dans la recherche de structure dans l'onboarding.
+- Ajout du code commune dans la table structure.
+- Enregistrement du code_commune à la création d'une structure.
+- Correction du scroll horizontal sur les pages listes evapro (vues admin).
+- Correction de la redirection pour les comptes ProConnect sans structure.
+- Correction de la version mobile du contact opco dans l'évaluation.
+- Correction de l'affichage des actualités.
+- Correction du visuel des actualités.
+- Correction du bug des accès.
+- Correction de la modale d'invitation.
+- Correction du breadcrumb.
+- Correction du détail d'un bénéficiaire.
+- Correction de l'interface de la page actualités.
+- Correction de la modale d'invitation.
+- Correction de la page mon compte.
+- Correction de la page aide.
+- Correction de la page structure.
+- Correction de la page Ma structure.
+- Correction de l'index des comptes sur EvaPro.
+- Correction du padding left des radio button d'activeadmin.
+- Correction du padding left des commentaires dans les pages détails d'activeadmin.
+- Correction de la classe mx-auto.
