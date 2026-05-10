@@ -1,31 +1,31 @@
 ## Changelog : conseillers-entreprises (30 derniers jours, au 07 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment via l'ajout de statistiques plus fines, la correction de problèmes d'accessibilité et l'amélioration de la gestion des données. Des efforts ont également été faits pour moderniser l'infrastructure et la configuration du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans l'administration et le suivi des statistiques. Des corrections ont été apportées pour améliorer l'accessibilité et la robustesse de l'application, ainsi que des optimisations techniques pour la performance et la maintenance du code. L'intégration de nouvelles données et la mise à jour de l'infrastructure sont également notables.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles statistiques concernant les acquisitions d'entreprises et le temps de réponse. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
-- Possibilité de filtrer les experts par codes INSEE exclus. [#4454](https://github.com/betagouv/conseillers-entreprises/pull/4454)
+- Ajout d'une nouvelle question sur la satisfaction des entreprises, permettant de recueillir des informations plus précises sur les résultats obtenus. [#4392](https://github.com/betagouv/conseillers-entreprises/pull/4392)
+- Possibilité de visualiser et de modifier les drapeaux `app_info` des utilisateurs dans l'interface d'administration. [#4443](https://github.com/betagouv/conseillers-entreprises/pull/4443)
+- Ajout de nouvelles statistiques concernant les acquisitions et les prises en charge rapides. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
+- Amélioration de l'affichage des statistiques pour les sponsors, avec une page dédiée et des filtres plus précis. [#4410](https://github.com/betagouv/conseillers-entreprises/pull/4410)
+- Ajout d'un modal pour l'enquête auprès des conseillers. [#4434](https://github.com/betagouv/conseillers-entreprises/pull/4434)
+- Possibilité d'exporter les données de satisfaction des entreprises avec les nouveaux résultats. [#4459](https://github.com/betagouv/conseillers-entreprises/pull/4459)
 - Amélioration du tri des réponses aux sujets dans l'administration. [#4462](https://github.com/betagouv/conseillers-entreprises/pull/4462)
-- Ajout d'une nouvelle question sur la satisfaction des entreprises, avec la possibilité d'exporter les résultats en CSV. [#4392](https://github.com/betagouv/conseillers-entreprises/pull/4392)
-- Affichage d'un questionnaire pour les utilisateurs, avec une modal et un élément de navigation dédié. [#4434](https://github.com/betagouv/conseillers-entreprises/pull/4434)
-- Possibilité de modifier le statut des diagnostics. [#4435](https://github.com/betagouv/conseillers-entreprises/pull/4435)
-- Ajout d'informations sur les statistiques pour les institutions. [#4410](https://github.com/betagouv/conseillers-entreprises/pull/4410)
-- Mise à jour du domaine des emails vers `entreprises.service-public.gouv.fr`. [#4409](https://github.com/betagouv/conseillers-entreprises/pull/4409)
+- Ajout d'un filtre pour exclure certains codes INSEE lors de la recherche d'experts. [#4454](https://github.com/betagouv/conseillers-entreprises/pull/4454)
+- Correction d'un bug empêchant la mise à jour du statut des diagnostics. [#4435](https://github.com/betagouv/conseillers-entreprises/pull/4435)
 
 ### Évolutions techniques
-- Refactoring du code pour supprimer des méthodes inutilisées. [#4455](https://github.com/betagouv/conseillers-entreprises/pull/4455)
-- Remplacement de Baleen par Ubika dans la documentation. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
-- Renommage de "CE" en "SPCE" dans le code et la documentation. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Mise à jour de Stimulus de la version 2.0.0 à la version 3.2.2. [#4433](https://github.com/betagouv/conseillers-entreprises/pull/4433)
+- Refactoring du code pour supprimer des méthodes inutilisées et simplifier certaines logiques. [#4455](https://github.com/betagouv/conseillers-entreprises/pull/4455)
 - Amélioration de la gestion des couleurs dans les paniers qualité. [#4401](https://github.com/betagouv/conseillers-entreprises/pull/4401)
-- Mise à jour de Stimulus de 2.0.0 à 3.2.2. [#4433](https://github.com/betagouv/conseillers-entreprises/pull/4433)
-- Mise à jour des dépendances : `erb`, `addressable`, `rack-session`. [#4428](https://github.com/betagouv/conseillers-entreprises/pull/4428), [#4404](https://github.com/betagouv/conseillers-entreprises/pull/4404), [#4405](https://github.com/betagouv/conseillers-entreprises/pull/4405)
-- Amélioration de la performance en pré-calculant les flags de sollicitation. [#4439](https://github.com/betagouv/conseillers-entreprises/pull/4439)
-- Refactorisation de la gestion des schémas SEO et intégration de données structurées plus complètes. [#4409](https://github.com/betagouv/conseillers-entreprises/pull/4409)
+- Mise à jour des dépendances (erb, follow-redirects). [#4429](https://github.com/betagouv/conseillers-entreprises/pull/4429), [#4409](https://github.com/betagouv/conseillers-entreprises/pull/4409)
+- Remplacement de Baleen par Ubika dans la documentation. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Renommage de "Conseillers Entreprises" en "Service Public Conseillers Entreprises". [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Refactorisation de la gestion des emails pour utiliser le domaine `entreprises.service-public.gouv.fr`. [#4409](https://github.com/betagouv/conseillers-entreprises/pull/4409)
+- Optimisation de la performance de la recherche en précalculant les drapeaux de sollicitation. [#4439](https://github.com/betagouv/conseillers-entreprises/pull/4439)
 
 ### Autres changements
-- Correction de problèmes d'accessibilité liés au focus sur les champs de formulaire. [#4403](https://github.com/betagouv/conseillers-entreprises/pull/4403)
-- Ajout d'un point manquant dans un texte. [#4402](https://github.com/betagouv/conseillers-entreprises/pull/4402)
-- Suppression de code inutilisé (bandeau, support subject). [#4440](https://github.com/betagouv/conseillers-entreprises/pull/4440), [#4388](https://github.com/betagouv/conseillers-entreprises/pull/4388)
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la documentation et des noms des institutions. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Amélioration de l'accessibilité en corrigeant le focus sur les champs de formulaire. [#4403](https://github.com/betagouv/conseillers-entreprises/pull/4403)
+- Ajout de schémas SEO pour améliorer le référencement des pages thématiques et des sujets. [#4409](https://github.com/betagouv/conseillers-entreprises/pull/4409)
+- Correction de fautes de frappe et amélioration de la lisibilité du code. [#4421](https://github.com/betagouv/conseillers-entreprises/pull/4421), [#4431](https://github.com/betagouv/conseillers-entreprises/pull/4431)

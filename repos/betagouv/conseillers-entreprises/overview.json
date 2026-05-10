@@ -1,50 +1,53 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le Service Public Conseillers entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
+  "description": "Le Service Public Conseillers entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter l'accès des entreprises aux conseils et à l'accompagnement.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
     "Notifications & Alertes",
+    "Statistiques & Rapports",
     "Gestion des établissements & Structures",
-    "Aides & Éligibilité",
-    "Statistiques & Rapports"
+    "Aides & Éligibilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
-    "Ruby",
+    "Puma",
     "Devise",
-    "Pundit",
+    "Rswag",
     "Sidekiq",
+    "Stimulus",
+    "Turbo Rails",
     "Highcharts",
-    "ActiveAdmin",
-    "Turbo",
-    "Stimulus"
+    "ActiveAdmin"
   ],
   "components": [
-    "Ruby on Rails",
-    "PostgreSQL & SQL",
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Ruby (scripts & backend)",
     "Frontend React",
-    "Microservices & Architecture"
+    "Microservices & Architecture",
+    "Documentation & Schémas",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "saml"
     ]
   },
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium",
+    "Selenium-webdriver",
     "Simplecov"
   ],
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD"
   ],
   "lastActivity": "2026-05-07T09:36:17+02:00",
   "status": "active",
@@ -61,8 +64,7 @@
     "Écosystème beta.gouv / État",
     "Ruby",
     "Bases de données SQL",
-    "Déploiement & Hosting",
-    "Gestion des établissements & Structures",
-    "Aides & Éligibilité"
+    "Sécurité & Auth",
+    "Déploiement & Hosting"
   ]
 }
