@@ -1,17 +1,13 @@
-## Changelog : euphrosyne-digilab (30 derniers jours, au 7 avril 2026)
+## Changelog : euphrosyne-digilab (30 derniers jours, au 09 mai 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour d'Euphrosyne Digilab se sont principalement concentrées sur la maintenance et la mise à jour des dépendances du projet. Ces mises à jour assurent la sécurité, la stabilité et la compatibilité de la plateforme avec les dernières versions des outils et bibliothèques utilisés. Une correction mineure a été apportée au fichier de configuration d'automerge pour Dependabot.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+Ce mois-ci, les mises à jour d'Euphrosyne Digilab se sont principalement concentrées sur la maintenance et la sécurité du projet. De nombreuses dépendances ont été mises à jour vers leurs dernières versions stables, améliorant ainsi la stabilité et la sécurité de la plateforme. Aucune nouvelle fonctionnalité n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de Next.js de la version 16.1.7 à la version 16.2.1 [#319](https://github.com/betagouv/euphrosyne-digilab/pull/319).
-- Mise à jour de TypeScript de la version 5.8.3 à la version 5.9.3 [#294](https://github.com/betagouv/euphrosyne-digilab/pull/294).
-- Mise à jour de Rollup de la version 4.35.0 à la version 4.59.0 [#299](https://github.com/betagouv/euphrosyne-digilab/pull/299).
-- Mise à jour de Sentry/Next.js de la version 10.27.0 à la version 10.46.0 [#323](https://github.com/betagouv/euphrosyne-digilab/pull/323) et [#314](https://github.com/betagouv/euphrosyne-digilab/pull/314).
-- Mise à jour de plusieurs autres dépendances, incluant `eslint-config-next`, `brace-expansion`, `yaml`, `sass`, `@types/node`, `@types/react`, `flatted`, `immutable`, `ajv`, `minimatch`, `@emotion/styled`, `@codegouvfr/react-dsfr`, et d'autres bibliothèques de développement.
+- Mise à jour d'OpenSearch de la version 3.5.1 à la version 3.6.0.
+- Mise à jour du framework Next.js de la version 16.2.1 à la version 16.2.4.
+- Mise à jour de la librairie Sentry pour le suivi des erreurs de la version 10.46.0 à la version 10.49.0.
+- Mise à jour de React DOM de la version 19.2.4 à la version 19.2.5.
 
 ### Autres changements
-- Correction d'une faute de frappe dans le fichier `automerge-dependabot.yaml` [#309](https://github.com/betagouv/euphrosyne-digilab/pull/309).
+- Mise à jour de plusieurs dépendances de développement, incluant `eslint-config-next`, `prettier`, `slugify` et `@types/node`. Ces mises à jour visent à améliorer l'expérience de développement et la qualité du code.
