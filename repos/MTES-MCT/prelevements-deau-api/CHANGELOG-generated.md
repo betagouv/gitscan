@@ -1,15 +1,11 @@
 ## Changelog : prelevements-deau-api (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Cette mise à jour améliore l'exposition des données concernant les règles d'exploitation et les informations sur les préleveurs dans la liste d'exploitation. De plus, la taille limite des fichiers a été augmentée pour permettre le traitement de documents plus volumineux.
+Cette mise à jour apporte des améliorations à l'API concernant l'exposition d'informations sur les exploitants et les préleveurs, ainsi qu'une augmentation de la limite de taille pour certains traitements. Ces changements visent à faciliter l'accès aux données et à améliorer la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de l'exposition des règles d'exploitation dans l'API. [#92963db](https://github.com/MTES-MCT/prelevements-deau-api/commit/92963db)
-- Ajout de l'information du préleveur dans la liste d'exploitation. [#61fdb93](https://github.com/MTES-MCT/prelevements-deau-api/commit/61fdb93)
-- Augmentation de la taille limite des fichiers acceptés. [#13044a9](https://github.com/MTES-MCT/prelevements-deau-api/commit/13044a9)
+- L'API expose désormais les règles d'exploitation associées aux prélèvements.
+- L'information sur le préleveur est maintenant accessible dans la liste des exploitations.
 
 ### Évolutions techniques
-Aucune évolution technique majeure à signaler durant cette période.
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Augmentation de la limite de taille pour permettre le traitement de fichiers plus volumineux. [#13044](https://github.com/MTES-MCT/prelevements-deau-api/commit/13044a9)
