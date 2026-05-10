@@ -291,6 +291,7 @@
 │   │   │   │                   │   │   │   ├── ReportingPeriod.kt
 │   │   │   │                   │   │   │   ├── ReportingSource.kt
 │   │   │   │                   │   │   │   ├── ReportingType.kt
+│   │   │   │                   │   │   │   ├── ReportingValidityOption.kt
 │   │   │   │                   │   │   │   ├── SatelliteSource.kt
 │   │   │   │                   │   │   │   ├── ThreatSummary.kt
 │   │   │   │                   │   │   │   ├── VesselReportings.kt
@@ -1197,6 +1198,7 @@
 │   │   │       │   │   │   ├── V0.372__Migrate_infraction_suspicion_infractions_to_list.sql
 │   │   │       │   │   │   ├── V0.373__Add_number_of_vessels_to_inn_reportings.sql
 │   │   │       │   │   │   ├── V0.374__Update_facade_type.sql
+│   │   │       │   │   │   ├── V0.375__Add_validity_option_to_reportings.sql
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
@@ -3609,7 +3611,8 @@
 │   │   │   │   │   │   ├── InfractionRow.tsx
 │   │   │   │   │   │   ├── Loader.tsx
 │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   │   ├── schemas.test.ts
+│   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── schemas.ts
@@ -3672,6 +3675,7 @@
 │   │   │   │   │   ├── OtherSourceType.ts
 │   │   │   │   │   ├── ReportingOriginSource.ts
 │   │   │   │   │   ├── ReportingType.ts
+│   │   │   │   │   ├── ReportingValidityOption.ts
 │   │   │   │   │   └── SatelliteSource.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
@@ -3679,7 +3683,8 @@
 │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   └── dummyReporting.ts
 │   │   │   │   │   │   ├── archiveReporting.test.ts
-│   │   │   │   │   │   └── autoSaveReporting.test.ts
+│   │   │   │   │   │   ├── autoSaveReporting.test.ts
+│   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   ├── addOrEditReportingCoordinates.ts
 │   │   │   │   │   ├── addReporting.ts
 │   │   │   │   │   ├── archiveReporting.ts
@@ -5738,4 +5743,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-776 directories, 5278 files
+776 directories, 5283 files
