@@ -120,6 +120,32 @@
     │       │   └── env.j2
     │       └── monitoring
     │           └── compose_cadvisor.yaml.j2
+    ├── meet
+    │   ├── REFERENCE.md
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── meta
+    │   │   ├── argument_specs.yml
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   ├── deploy
+    │   │   │   ├── livekit.yml
+    │   │   │   └── meet.yml
+    │   │   ├── deploy.yml
+    │   │   └── main.yml
+    │   └── templates
+    │       ├── livekit
+    │       │   ├── caddy.default.yaml.j2
+    │       │   ├── compose.default.yaml.j2
+    │       │   ├── egress.default.yaml.j2
+    │       │   ├── livekit.default.yaml.j2
+    │       │   └── valkey.default.conf.j2
+    │       ├── meet
+    │       │   ├── backend_env.j2
+    │       │   ├── compose.yaml.j2
+    │       │   └── frontend_env.j2
+    │       └── monitoring
+    │           └── compose_cadvisor.yaml.j2
     ├── messages
     │   ├── REFERENCE.md
     │   ├── defaults
@@ -186,6 +212,7 @@
     │   │   └── main.yml
     │   ├── tasks
     │   │   ├── application
+    │   │   │   ├── directories.yml
     │   │   │   └── files.yml
     │   │   ├── application.yml
     │   │   ├── install.yml
@@ -221,4 +248,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-70 directories, 153 files
+79 directories, 171 files

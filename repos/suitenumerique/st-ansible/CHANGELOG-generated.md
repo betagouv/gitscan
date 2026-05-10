@@ -1,11 +1,17 @@
-## Changelog : st-ansible (30 derniers jours, au 2 mai 2026)
+## Changelog : st-ansible (30 derniers jours, au 09 mai 2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations sur le déploiement de RSPAMD, corrige un problème de gestion des permissions pour les applications Podman et optimise la structure des tâches Ansible pour les rôles drive, messages et keycloak, facilitant ainsi leur maintenance et leur réutilisation.
+Cette nouvelle version de st-ansible apporte un nouveau rôle pour le déploiement de l'outil de visioconférence Meet, ainsi que des corrections et améliorations concernant le rôle Podman, notamment pour la gestion des permissions des fichiers d'application et le démarrage des services via systemd. Une refactorisation du déploiement de RSPAMD a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Amélioration du déploiement de RSPAMD : refactorisation des messages pour une meilleure configuration. [#22](https://github.com/suitenumerique/st-ansible/issues/22)
-- Correction d'un problème de permissions : la gestion des permissions des fichiers d'applications déployées avec `st_podman_application_files` a été corrigée. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
+- Ajout d'un nouveau rôle Ansible pour déployer et configurer l'outil Meet. [#22](https://github.com/suitenumerique/st-ansible/issues/22)
+- Correction du script de démarrage systemd pour les applications Podman, assurant un bon fonctionnement des notifications.
+- Amélioration de la gestion des permissions des fichiers d'application dans le rôle Podman.
 
 ### Évolutions techniques
-- Refactorisation des tâches Ansible : séparation des tâches principales et importation des fichiers `deploy.yml` pour les rôles `drive`, `messages` et `keycloak`, améliorant la modularité et la lisibilité du code. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
+- Refactorisation des tâches de gestion des permissions et de structure des fichiers dans le rôle Podman.
+- Refactorisation du déploiement de RSPAMD pour améliorer la clarté et la maintenabilité du code.
+
+### Autres changements
+- Publication de la version 0.0.16.
+- Correction de la gestion du propriétaire des fichiers dans le rôle `st_podman_application_files`.
