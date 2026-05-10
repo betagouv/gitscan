@@ -673,11 +673,16 @@
 │   ├── participations
 │   │   ├── __init__.py
 │   │   ├── admin.py
+│   │   ├── employer_workflow.py
+│   │   ├── forms.py
+│   │   ├── middleware.py
 │   │   ├── models.py
-│   │   └── tests
-│   │       ├── __init__.py
-│   │       ├── test_institution_admiin.py
-│   │       └── test_models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_employer_completion.py
+│   │   │   ├── test_institution_admiin.py
+│   │   │   └── test_models.py
+│   │   └── views.py
 │   ├── permissions.py
 │   ├── project_immutability.py
 │   ├── projects
@@ -790,6 +795,9 @@
 │   │   │       └── selectwithfree_option.html
 │   │   ├── hdf5
 │   │   │   └── hdf5_viewer.html
+│   │   ├── lab
+│   │   │   └── participations
+│   │   │       └── employer_completion.html
 │   │   ├── long_lasting_vm_email.html
 │   │   ├── long_lasting_vm_email.txt
 │   │   ├── project_invitation_email.html
@@ -850,7 +858,8 @@
 │   │   │       ├── test_alert_end_run_embargos.py
 │   │   │       ├── test_check_long_running_vms.py
 │   │   │       ├── test_check_project_data_availability.py
-│   │   │       └── test_finish_runs.py
+│   │   │       ├── test_finish_runs.py
+│   │   │       └── test_run_checks.py
 │   │   ├── managers
 │   │   │   ├── __init__.py
 │   │   │   └── test_project_manager.py
@@ -1078,7 +1087,8 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
-│   │       └── send_electrical_signature_processes.py
+│   │       ├── send_electrical_signature_processes.py
+│   │       └── send_employer_information_reminders.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_initial.py
@@ -1095,6 +1105,10 @@
 │   │   └── radiation_protection
 │   │       └── email
 │   │           ├── document_notification.html
+│   │           ├── employer_information_reminder.html
+│   │           ├── employer_information_reminder.txt
+│   │           ├── employer_information_reminder_summary.html
+│   │           ├── employer_information_reminder_summary.txt
 │   │           ├── radioprotection_invitation.html
 │   │           └── radioprotection_success.html
 │   └── tests
@@ -1108,6 +1122,7 @@
 │       ├── test_email.py
 │       ├── test_goodflag.py
 │       ├── test_send_electrical_signature_processes_command.py
+│       ├── test_send_employer_information_reminders_command.py
 │       └── test_signals.py
 ├── requirements
 │   ├── base.txt
@@ -1201,4 +1216,4 @@
 │   └── global.d.ts
 ├── vite.config.ts
 └── webpack.config.js
-264 directories, 939 files
+266 directories, 952 files
