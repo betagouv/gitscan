@@ -1,27 +1,24 @@
-## Changelog : federation (30 derniers jours, au 29 avril 2026)
+## Changelog : federation (30 derniers jours, au 07 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de l'observabilité de la plateforme, notamment en ajoutant des vérifications de santé (healthchecks) et en améliorant la journalisation. Des corrections ont également été apportées pour améliorer la compatibilité et la gestion des erreurs, ainsi que des améliorations de la qualité du code et des dépendances.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de la surveillance de la plateforme, notamment en ajoutant des vérifications de santé (healthchecks) et en corrigeant des problèmes liés à la disponibilité des services. Des améliorations ont également été apportées à la configuration et à la flexibilité de certains composants, ainsi qu'à la validation des adresses email.
 
 ### Évolutions fonctionnelles
-- Amélioration des messages d'erreur pour les emails et OIDC, rendant les diagnostics plus clairs pour les utilisateurs et administrateurs. [#1064](https://github.com/proconnect-gouv/federation/pull/1064)
-- Ajout d'un indicateur de maintenance visible dans l'interface. [#1091](https://github.com/proconnect-gouv/federation/pull/1091)
-- Possibilité de désactiver la validation d'email via un flag de configuration. [#1144](https://github.com/proconnect-gouv/federation/pull/1144)
-- Ajout des champs `isEntraId` et `hyyyperbridge` dans Grist pour une meilleure visibilité des données. [#1115](https://github.com/proconnect-gouv/federation/pull/1115)
+- Ajout d'un indicateur pour activer ou désactiver la validation des adresses email via le flag `FEATURE_VALIDATE_EMAIL` [#1144](https://github.com/proconnect-gouv/federation/pull/1144).
+- Ajout d'une bannière d'avertissement pour l'environnement de test [#1141](https://github.com/proconnect-gouv/federation/pull/1141).
+- Ajout d'une bannière de maintenance [#1091](https://github.com/proconnect-gouv/federation/pull/1091).
 
 ### Évolutions techniques
-- Implémentation d'un système de healthchecks basé sur un pattern ping/pong pour vérifier la disponibilité du broker. [#1117](https://github.com/proconnect-gouv/federation/pull/1117)
-- Ajout de healthchecks spécifiques pour les composants CSM et Hyyyperbridge. [#1114](https://github.com/proconnect-gouv/federation/pull/1110)
-- Configuration des images Docker pour utiliser `/livez` comme healthcheck par défaut. [#1087](https://github.com/proconnect-gouv/federation/pull/1087)
-- Correction d'un problème de flaky tests ChangeStream avec Mongoose. [#1096](https://github.com/proconnect-gouv/federation/pull/1096)
-- Utilisation de HTTPS pour récupérer le core-fca. [#1118](https://github.com/proconnect-gouv/federation/pull/1118)
-- Suppression du proxy Axios pour CSM, permettant à l'environnement Node.js de gérer la connexion. [#1125](https://github.com/proconnect-gouv/federation/pull/1125)
-- Amélioration de la gestion des erreurs et ajout de logs pour les problèmes de rôles. [#1074](https://github.com/proconnect-gouv/federation/pull/1074)
-- Suppression des tests de santé API obsolètes. [#1120](https://github.com/proconnect-gouv/federation/pull/1120) et suppression des healthchecks de Dockerfile [#1119](https://github.com/proconnect-gouv/federation/pull/1119)
+- Implémentation d'un pattern ping/pong pour la vérification de l'état du broker de messages [#1117](https://github.com/proconnect-gouv/federation/pull/1117).
+- Ajout de vérifications de santé (healthchecks) pour les différents services (csmr, hyyyperbridge) avec des points de terminaison `/livez` et `/readyz` [#1114](https://github.com/proconnect-gouv/federation/pull/1114), [#1110](https://github.com/proconnect-gouv/federation/pull/1110), [#1111](https://github.com/proconnect-gouv/federation/pull/1111).
+- Suppression des healthchecks intégrés au Dockerfile et passage à la configuration via les points de terminaison dédiés [#1119](https://github.com/proconnect-gouv/federation/pull/1119).
+- Correction d'un problème de proxy axios dans le service csmr, permettant à l'environnement natif de gérer les requêtes [#1125](https://github.com/proconnect-gouv/federation/pull/1125).
+- Correction de tests ChangeStream Mongoose instables [#1096](https://github.com/proconnect-gouv/federation/pull/1096).
+- Utilisation de HTTPS pour récupérer les informations du core-fca [#1118](https://github.com/proconnect-gouv/federation/pull/1118).
+- Amélioration de la configuration du client OIDC pour utiliser `customFetch` dans les configurations sans découverte [#1143](https://github.com/proconnect-gouv/federation/pull/1143).
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances (axios, docker-login-action, etc.).
-- Amélioration de la journalisation pour les valeurs `acr_values`. [#1139](https://github.com/proconnect-gouv/federation/pull/1139)
-- Correction de la configuration de TypeScript pour assurer l'utilisation de la version interne dans VSCode. [#1086](https://github.com/proconnect-gouv/federation/pull/1086)
-- Suppression de la dépendance Axios dans le module admin. [#1088](https://github.com/proconnect-gouv/federation/pull/1088)
-- Autorisation de la connexion Redis sans TLS. [#1089](https://github.com/proconnect-gouv/federation/pull/1089)
+- Ajout des variables `isEntraId` et `hyyyperbridge` à Grist pour faciliter le suivi et la configuration [#1115](https://github.com/proconnect-gouv/federation/pull/1115).
+- Ajout de logs pour les valeurs `acr_values` [#1139](https://github.com/proconnect-gouv/federation/pull/1139).
+- Suppression d'un test API de santé obsolète [#1120](https://github.com/proconnect-gouv/federation/pull/1120).
+- Mises à jour de dépendances diverses (voir commits dependabot).
