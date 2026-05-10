@@ -1,27 +1,28 @@
-## Changelog : people (30 derniers jours, au 29 avril 2026)
+## Changelog : people (30 derniers jours, au 6 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la sécurité, notamment en remplaçant l'envoi de mots de passe par des liens de connexion uniques via email et en corrigeant une potentielle escalade de privilèges lors des invitations. Des corrections de bugs et des mises à jour de traductions ont également été intégrées pour améliorer l'expérience utilisateur et la stabilité de l'application.
+Ce mois-ci, les améliorations se concentrent sur l'intégration avec dimail, la sécurité et l'expérience utilisateur. Les utilisateurs bénéficient d'une meilleure gestion des invitations et des liens de connexion, ainsi que de corrections de bugs pour une utilisation plus fluide. Des améliorations de sécurité ont également été apportées, notamment la correction d'une potentielle élévation de privilèges et la mise à jour de dépendances vulnérables.
 
 ### Évolutions fonctionnelles
-- ✨ Envoi de liens de connexion au lieu de mots de passe pour les nouvelles connexions via dimail.
-- 🔒 Correction d'une vulnérabilité potentielle d'escalade de privilèges lors de l'invitation d'utilisateurs.
-- 🐛 Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
-- 💬 Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page de domaine.
-- 🧑‍💻 Possibilité d'exporter les informations de contact du domaine depuis l'interface d'administration.
-- ✅ Les accès testés lors de la création d'invitations par email ont le rôle attendu.
-- 🌐 Mise à jour des chaînes de traduction.
+- Les invitations envoient désormais des liens de connexion au lieu de mots de passe, améliorant la sécurité et la simplicité d'accès.
+- Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
+- L'export des informations de contact du domaine est maintenant disponible dans l'interface d'administration.
+- Correction de l'affichage de la langue actuelle dans le menu de profil [#1108].
+- Suppression de la bordure du conteneur dans l'interface utilisateur [#1107].
+- Possibilité de rafraîchir les invitations expirées.
 
 ### Évolutions techniques
-- ⬆️ Mise à jour de la dépendance `dimail` vers la version 0.6.5.
-- ⬆️ Mise à jour de la dépendance `pillow` vers la version 12.2.0 pour des raisons de sécurité.
-- ⬆️ Mise à jour de la dépendance `pytest` vers la version 9.0.3 pour corriger une vulnérabilité de sécurité.
-- ⬆️ Mise à jour de la dépendance `next` vers la version 15.5.15 pour corriger une vulnérabilité de sécurité.
-- ⬆️ Mise à jour de la dépendance `lodash` vers la version 4.18.1 pour corriger une vulnérabilité de sécurité.
-- ⬆️ Mise à jour de la dépendance `django` vers la version 6.0.4 pour corriger une vulnérabilité de sécurité.
-- 🐛 Correction d'une erreur d'importation pour les boîtes aux lettres fonctionnelles.
+- Passage à la version v2 des boîtes aux lettres (mailboxes) pour l'importation depuis dimail.
+- Correction d'un bug qui empêchait l'importation des boîtes aux lettres fonctionnelles depuis dimail.
+- Correction d'un bug qui envoyait le code de connexion à une URL dimail incorrecte.
+- Correction d'une potentielle élévation de privilèges lors de l'invitation d'utilisateurs.
+- Mise à jour de la dépendance `dimail` vers la version v0.6.5.
+- Mise à jour de la dépendance `pillow` vers la version 12.2.0 pour corriger une vulnérabilité de sécurité.
+- Mise à jour de la dépendance `pytest` vers la version 9.0.3 pour corriger une vulnérabilité de sécurité.
+- Mise à jour de la dépendance `next` vers la version 15.5.15 pour corriger une vulnérabilité de sécurité.
 
 ### Autres changements
-- 🐛 Correction d'un bug où le code de connexion était envoyé à une URL dimail incorrecte.
-- 🐛 Correction du nom de la langue affiché dans le menu de profil [#1108].
-- 💄 Suppression de la bordure du conteneur dans l'interface utilisateur [#1107].
+- Mise à jour des chaînes de caractères traduites pour l'internationalisation.
+- Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page du domaine.
+- Ajout d'informations de contact du domaine à l'export.
+- Correction d'un bug empêchant l'importation des boîtes aux lettres fonctionnelles depuis dimail.
