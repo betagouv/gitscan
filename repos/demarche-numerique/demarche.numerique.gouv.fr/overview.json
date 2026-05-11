@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet aux utilisateurs de contribuer à son développement.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet aux utilisateurs de réaliser des démarches administratives en ligne.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,44 +9,44 @@
     "Notifications & Alertes",
     "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "API & Intégrations"
+    "Gestion des utilisateurs & Permissions"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Grand public",
   "dependencies": [
     "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
     "Delayed Job",
-    "Chartkick",
-    "Prawn",
+    "Vips",
+    "Bun",
     "React",
-    "Sentry"
+    "GraphQL"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "HTML / CSS / Templates visuels",
-    "Django",
-    "Tests"
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "saml",
-      "mfa",
-      "sso"
+      "jwt",
+      "session"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
-    "Capybara",
     "Selenium",
+    "Cypress",
     "Playwright"
   ],
   "workflows": [
