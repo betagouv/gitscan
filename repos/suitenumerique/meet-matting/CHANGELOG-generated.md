@@ -1,29 +1,25 @@
-## Changelog : meet-matting (30 derniers jours, au 5 mai 2026)
+## Changelog : meet-matting (30 derniers jours, au 6 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet meet-matting a connu des avancées significatives en termes d'optimisation des performances, d'amélioration de la qualité du matting (segmentation de l'arrière-plan) et de l'ajout de nouvelles fonctionnalités pour faciliter l'évaluation et la configuration des pipelines de traitement vidéo. L'accent a été mis sur la réduction du temps d'inférence, la stabilisation de l'image et l'amélioration de l'expérience utilisateur via une interface plus flexible et informative.
+Ce mois-ci, le projet meet-matting a connu des améliorations significatives en termes de performance, de qualité de segmentation et d'expérience utilisateur. L'accent a été mis sur l'optimisation du traitement en temps réel, l'ajout de nouvelles méthodes de post-traitement pour réduire les artefacts visuels, et la mise en place d'une architecture de pipeline flexible pour tester différentes configurations. Des outils de benchmark ont également été introduits pour évaluer objectivement les performances des modèles.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface pour télécharger la configuration d'un pipeline en JSON [#7be7d2a](https://github.com/suitenumerique/meet-matting/issues/7be7d2a).
-- Amélioration de la qualité du matting avec l'ajout de méthodes anti-flickering et de post-processing en temps réel [#4baa2b5](https://github.com/suitenumerique/meet-matting/issues/4baa2b5), [#acdec57](https://github.com/suitenumerique/meet-matting/issues/acdec57).
-- Possibilité de choisir la couleur de l'arrière-plan [#164a81d](https://github.com/suitenumerique/meet-matting/issues/164a81d).
-- Implémentation d'une fonctionnalité de zoom sur la personne détectée, avec des améliorations de la pré-traitement et de la post-traitement [#82bc80f](https://github.com/suitenumerique/meet-matting/issues/82bc80f), [#a0e84ba](https://github.com/suitenumerique/meet-matting/issues/a0e84ba).
-- Amélioration de la détection des bords avec différentes méthodes d'upsampling [#2232d3b](https://github.com/suitenumerique/meet-matting/issues/2232d3b).
-- Possibilité de visualiser et sauvegarder l'intégralité du pipeline de traitement vidéo [#35e6642](https://github.com/suitenumerique/meet-matting/issues/35e6642), [#96b7693](https://github.com/suitenumerique/meet-matting/issues/96b7693).
-- Mise en place d'une détection instantanée de la vidéo [#bc8bfc1](https://github.com/suitenumerique/meet-matting/issues/bc8bfc1).
+- **Amélioration de la qualité de la segmentation :** Ajout de méthodes de post-traitement (CCA, EMA, filtres bilatéraux, CLAHE) pour améliorer la qualité de la segmentation et réduire les effets de flickering [#4baa2b5](https://github.com/suitenumerique/meet-matting/commit/4baa2b5).
+- **Optimisation de la performance :** Optimisation de la composition, du CCA et du sigmoid pour réduire le temps d'inférence en temps réel, divisant celui-ci par deux [#ba53273](https://github.com/suitenumerique/meet-matting/commit/ba53273).
+- **Pipeline de traitement :** Implémentation d'une architecture de pipeline pour tester différentes combinaisons de pré- et post-traitements [#687525c](https://github.com/suitenumerique/meet-matting/commit/687525c). Possibilité de visualiser et sauvegarder le résultat de chaque étape du pipeline [#82bc80f](https://github.com/suitenumerique/meet-matting/commit/82bc80f).
+- **Amélioration de la gestion des vidéos :** Possibilité de traiter des vidéos complètes et de sauvegarder les résultats [#96b7693](https://github.com/suitenumerique/meet-matting/commit/96b7693).
+- **Zoom sur la personne :** Ajout d'un pré-traitement pour zoomer sur la personne dans la scène [#8f2fe4b](https://github.com/suitenumerique/meet-matting/commit/8f2fe4b).
+- **Configuration via JSON :** Possibilité de télécharger une configuration JSON pour partager les paramètres du pipeline [#7be7d2a](https://github.com/suitenumerique/meet-matting/commit/7be7d2a).
 
 ### Évolutions techniques
-- Optimisation significative de la composition, de la CCA (Chromaticity Correction Algorithm) et de la fonction sigmoïde pour réduire le temps d'inférence en temps réel (divisé par deux) [#ba53273](https://github.com/suitenumerique/meet-matting/issues/ba53273), [#125006a](https://github.com/suitenumerique/meet-matting/issues/125006a).
-- Amélioration du calcul des FPS (images par seconde) pour une mesure plus précise des performances, en excluant le temps d'inférence du serveur Streamlit [#81c441b](https://github.com/suitenumerique/meet-matting/issues/81c441b), [#2c62ad5](https://github.com/suitenumerique/meet-matting/issues/2c62ad5).
-- Implémentation de stratégies de "frame skipping" (saut d'images) basées sur le "flow warping" pour améliorer les performances [#5c0b5fc](https://github.com/suitenumerique/meet-matting/issues/5c0b5fc), [#eac4525](https://github.com/suitenumerique/meet-matting/issues/eac4525), [#67dc4c8](https://github.com/suitenumerique/meet-matting/issues/67dc4c8).
-- Refactoring du code et mise à jour des dépendances avec des outils comme `ruff`, `mypy` et `uv` [#ceb9989](https://github.com/suitenumerique/meet-matting/issues/ceb9989).
-- Unification des paramètres d'arrière-plan et de "skip_frame" pour les vidéos en direct et enregistrées [#0ef1741](https://github.com/suitenumerique/meet-matting/issues/0ef1741).
-- Ajout d'un benchmark pour mesurer les performances et l'impact des différentes optimisations [#fc56379](https://github.com/suitenumerique/meet-matting/issues/fc56379), [#52aecbd](https://github.com/suitenumerique/meet-matting/issues/52aecbd).
-- Implémentation d'un pipeline pour tester différentes méthodes de pré-traitement et de post-traitement [#687525c](https://github.com/suitenumerique/meet-matting/issues/687525c).
+- **Refactoring du code :** Refactoring du code et application de linters (ruff, mypy, uv) pour améliorer la qualité et la maintenabilité du code [#ceb9989](https://github.com/suitenumerique/meet-matting/commit/ceb9989).
+- **Stratégies de skip frames :** Implémentation de différentes stratégies de skip frames basées sur le flow warping pour améliorer la performance [#eac4525](https://github.com/suitenumerique/meet-matting/commit/eac4525).
+- **Calcul du FPS :** Amélioration du calcul du FPS pour une mesure plus précise et un affichage unifié [#81c441b](https://github.com/suitenumerique/meet-matting/commit/81c441b).
+- **Benchmark :** Mise en place d'un système de benchmark pour évaluer les performances des modèles et des configurations [#52aecbd](https://github.com/suitenumerique/meet-matting/commit/52aecbd).
+- **Gestion des dépendances :** Mise à jour des dépendances.
 
 ### Autres changements
-- Ajout de documentation et de métriques pour l'évaluation des performances [#2991c71](https://github.com/suitenumerique/meet-matting/issues/2991c71).
-- Ajout d'un fichier `config.json` pour partager les résultats et les configurations [#2a4c73e](https://github.com/suitenumerique/meet-matting/issues/2a4c73e).
-- Suppression des fichiers de vidéos de sortie du suivi Git [#84eec18](https://github.com/suitenumerique/meet-matting/issues/84eec18).
-- Initialisation du projet par Samuel Paccoud [#cfaea70](https://github.com/suitenumerique/meet-matting/issues/cfaea70).
-- Initial commit par Léa BOUSSEKEYT [#2c8e2dc](https://github.com/suitenumerique/meet-matting/issues/2c8e2dc).
+- **Documentation :** Mise à jour de la documentation et ajout de métriques d'évaluation [#2991c71](https://github.com/suitenumerique/meet-matting/commit/2991c71).
+- **Gitignore :** Mise à jour du fichier .gitignore pour exclure les fichiers inutiles du dépôt [#20a648e](https://github.com/suitenumerique/meet-matting/commit/20a648e).
+- **Traduction :** Ajout de traductions.
+- **Correction de bugs :** Correction de divers bugs liés à l'affichage, au traitement vidéo et à la configuration.
