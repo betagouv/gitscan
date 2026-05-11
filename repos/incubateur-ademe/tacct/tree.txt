@@ -108,6 +108,13 @@
 │   │   ├── 2fd6523d-57d7-8003-870d-d142e6d0196f.png
 │   │   ├── 2fd6523d-57d7-8021-960c-d01d340b2343.png
 │   │   ├── 2fd6523d-57d7-8027-aad8-f865ac9db397.png
+│   │   ├── 3496523d-57d7-806b-a789-f37b7c8470cf.png
+│   │   ├── 3496523d-57d7-808b-90de-f53fba876403.png
+│   │   ├── 3496523d-57d7-80a6-8d18-f7aaa4065c83.png
+│   │   ├── 3496523d-57d7-80b4-b15e-dc4bc323ea07.png
+│   │   ├── 3496523d-57d7-80c5-a07a-da53690d95d4.png
+│   │   ├── 34b6523d-57d7-8023-99db-f221ae4bb6c8.png
+│   │   ├── 34f6523d-57d7-80de-a225-c4ea5c9d89ef.png
 │   │   ├── 3576523d-57d7-8358-9975-012d59670a4a-7711e2da.png
 │   │   ├── 3576523d-57d7-8358-9975-012d59670a4a.png
 │   │   ├── 3e46523d-57d7-8347-9a7e-8167d3deb3d7-0a9b57fe.png
@@ -253,6 +260,7 @@
 │   │   │   │   │   ├── Patch4Analyse.tsx
 │   │   │   │   │   ├── circleVisualization.tsx
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── DromAccordion.tsx
 │   │   │   │   │   │   ├── Patch4Maps.tsx
 │   │   │   │   │   │   ├── aleaExplications.tsx
 │   │   │   │   │   │   ├── analyseSensibilite.tsx
@@ -329,6 +337,10 @@
 │   │   │   │   │   └── modaleToutesCollections.module.scss
 │   │   │   │   ├── components
 │   │   │   │   │   └── FiltresNonTrouves.tsx
+│   │   │   │   ├── faq
+│   │   │   │   │   ├── FaqAccordionGroup.tsx
+│   │   │   │   │   ├── Sommaire.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── ressources.module.scss
 │   │   │   │   ├── sliderArticles.tsx
@@ -338,7 +350,6 @@
 │   │   │   ├── shared-metadata.ts
 │   │   │   ├── statistiques
 │   │   │   │   ├── page.tsx
-│   │   │   │   ├── query.ts
 │   │   │   │   ├── statistiques.module.scss
 │   │   │   │   └── stats.module.scss
 │   │   │   └── types.d.ts
@@ -360,7 +371,6 @@
 │   │   │   │   ├── HeroBlocMobile.tsx
 │   │   │   │   ├── Patch4Bloc.tsx
 │   │   │   │   ├── PatchEtRessourcesBloc.tsx
-│   │   │   │   ├── PremierBloc.tsx
 │   │   │   │   ├── RessourcesBloc.tsx
 │   │   │   │   ├── StepCard.tsx
 │   │   │   │   ├── StepCardMobile.tsx
@@ -502,9 +512,11 @@
 │   │   │   ├── formation_icon_green.svg
 │   │   │   ├── formation_icon_orange.svg
 │   │   │   ├── fr-*.png  (5 files)
+│   │   │   ├── france_icon_black.png
 │   │   │   ├── grid_icon_grey.svg
 │   │   │   ├── group_people_icon_black.svg
 │   │   │   ├── guillemet_icon_white.svg
+│   │   │   ├── guyane_icon_black.png
 │   │   │   ├── habitat_icon_black.svg
 │   │   │   ├── habitat_icon_green.svg
 │   │   │   ├── habitat_icon_white.svg
@@ -521,6 +533,7 @@
 │   │   │   ├── intensite_icon_green.svg
 │   │   │   ├── intensite_icon_white.svg
 │   │   │   ├── keyboard_arrow_next_icon_black.svg
+│   │   │   ├── la_reunion_icon_black.png
 │   │   │   ├── library_books_icon_orange.png
 │   │   │   ├── lightbulb_green_icon.svg
 │   │   │   ├── lightbulb_icon_black.svg
@@ -532,6 +545,7 @@
 │   │   │   ├── map_search_icon_blue.svg
 │   │   │   ├── markerHand_icon_green.svg
 │   │   │   ├── marker_icon_blue.svg
+│   │   │   ├── mayotte_icon_black.png
 │   │   │   ├── meeting_icon_green.svg
 │   │   │   ├── menu_book_icon_orange.png
 │   │   │   ├── menu_icon_lightgrey.svg
@@ -541,6 +555,7 @@
 │   │   │   ├── mixte_icon_green.svg
 │   │   │   ├── mixte_icon_white.svg
 │   │   │   ├── mon-compte-icon-green.svg
+│   │   │   ├── monde_icon_black.png
 │   │   │   ├── niveau_marin_icon_black.svg
 │   │   │   ├── partage_icon_black.svg
 │   │   │   ├── people_icon_lightgrey.svg
@@ -561,6 +576,7 @@
 │   │   │   ├── share_icon_white.svg
 │   │   │   ├── sun_icon_green.svg
 │   │   │   ├── sun_icon_white.svg
+│   │   │   ├── support_icon_blue.svg
 │   │   │   ├── tacct_icon1.svg
 │   │   │   ├── tacct_icon2.svg
 │   │   │   ├── tacct_icon3.svg
@@ -637,6 +653,7 @@
 │   │   │   ├── illustration_analyse_sensibilite.png
 │   │   │   ├── imageTuileArticle.png
 │   │   │   ├── imageTuileAutre.png
+│   │   │   ├── imageTuileMethodo.png
 │   │   │   ├── imageTuileQuiz.png
 │   │   │   ├── imageTuileRex.png
 │   │   │   ├── incondorthThermiqueIcon.png
@@ -822,7 +839,6 @@
 │   │   │   └── TagItem.tsx
 │   │   ├── searchbar
 │   │   │   ├── BarreDeRecherche.tsx
-│   │   │   ├── SearchInput.tsx
 │   │   │   ├── fonctions.ts
 │   │   │   ├── header
 │   │   │   │   ├── BoutonRechercher.tsx
@@ -855,6 +871,7 @@
 │   ├── config.ts
 │   ├── design-system
 │   │   ├── base
+│   │   │   ├── Accordion.tsx
 │   │   │   ├── BaseIcons.tsx
 │   │   │   ├── Boutons.tsx
 │   │   │   ├── Box.tsx
@@ -1035,6 +1052,7 @@
 │   │       ├── react.ts
 │   │       ├── regex.ts
 │   │       ├── reusableFunctions
+│   │       │   ├── MinuteToHours.ts
 │   │       │   ├── NormalizeTexts.ts
 │   │       │   ├── arrayDepth.ts
 │   │       │   ├── average.ts
@@ -1057,4 +1075,4 @@
 ├── tailwind.config.js
 ├── test2.json
 └── tsconfig.json
-139 directories, 948 files
+140 directories, 965 files

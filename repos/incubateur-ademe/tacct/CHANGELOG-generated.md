@@ -1,26 +1,26 @@
 ## Changelog : tacct (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise à jour des données (incendies de forêt, agriculture biologique, qualité des sites de baignade, confort thermique) et sur des améliorations techniques de l'application, notamment concernant le build, la configuration et le refactoring du code. Des corrections de bugs ont également été apportées, notamment concernant l'affichage de la modale "collections".
+Ce changelog présente les améliorations apportées à tacct au cours du dernier mois. Les principales évolutions concernent l'enrichissement des données disponibles (agriculture biologique, feux de forêt, âge du bâti), l'amélioration de l'interface utilisateur (nouvelles images, boutons, correction de bugs d'affichage) et l'ajout de nouvelles fonctionnalités pour la gestion des ressources et la navigation.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant le z-index de la modale "collections" [#1234](https://github.com/incubateur-ademe/tacct/issues/1234)
-- Mise à jour des données relatives aux feux de forêt.
-- Mise à jour des données relatives à l'agriculture biologique.
-- Mise à jour des données relatives à la qualité des sites de baignade.
-- Mise à jour des données relatives au confort thermique.
+- Amélioration de la navigation et des boutons du slider pour les articles et collections.
+- Ajout d'un design patch pour la gestion des DROM (Départements et Régions d'Outre-Mer).
+- Implémentation d'une barre de recherche, d'une section ressources, d'une FAQ et de guides méthodologiques.
+- Correction de l'affichage de la modale du slider des collections.
+- Ajout d'une fonctionnalité d'export/partage (correction d'un bug lié au bouton).
+- Mise à jour des données relatives aux surfaces en agriculture biologique [#1234](https://github.com/incubateur-ademe/tacct/issues/1234).
+- Mise à jour des données relatives aux incendies de forêt.
+- Ajout de données sur l'âge du bâti.
 - Ajout d'une notice sur la page d'accueil.
 
 ### Évolutions techniques
-- Refactoring du code pour supprimer les vieux sites de baignade.
-- Refactoring du code pour renommer les noms de tacct.
-- Refactoring du code pour supprimer des dossiers inutiles.
-- Modification de la commande de build.
-- Correction d'une erreur de configuration liée à `x-forwarded-host`.
-- Mise à jour du bucket RGA et de la table "grand age".
-- Refactoring des robots et du sitemap.
+- Import corrigé.
+- Refactoring : remplacement d'anciennes images et suppression de fichiers inutilisés.
+- Mise à jour de la base de données pour l'agriculture biologique.
+- Correction du `z-index` de la modale cookie.
 
 ### Autres changements
-- Ajout d'un iframe.
-- Migration de la qualité des sites de baignade dans la base de données.
-- Ajout d'un nouveau bouton (style).
+- Amélioration de la couleur du bandeau de la page d'accueil.
+- Merge de branches pour intégrer les modifications de `facili-tacct`.
+- Mise à jour de la base de données pour les sources d'incendies de forêt.
