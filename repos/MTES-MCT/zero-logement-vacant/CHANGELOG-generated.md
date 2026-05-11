@@ -1,42 +1,31 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 07 mai 2026)
+## Changelog : zero-logement-vacant (30 derniers jours, au 08 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives des performances, notamment au niveau du calcul du nombre de logements et de la gestion des propriétaires multiples. Des efforts importants ont également été consacrés à la documentation technique, à la suppression de code obsolète et à la modernisation de l'infrastructure, incluant l'intégration de nouveaux outils et la mise à jour des dépendances. Enfin, des corrections de bugs et des améliorations de l'expérience utilisateur ont été apportées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances, la refactorisation du code et l'intégration des droits d'accès via le Portail DF. Des corrections de bugs ont également été apportées, notamment concernant la gestion des statuts de logement et l'affichage des noms de périmètres. La documentation technique a été considérablement enrichie.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des propriétaires multiples : prise en charge des propriétaires multiples et affichage correct des informations associées. [#1798](https://github.com/MTES-MCT/zero-logement-vacant/issues/1798)
-- Correction du traitement du statut des logements : gestion améliorée des logements "jamais contactés" pour une meilleure cohérence des données. [#1794](https://github.com/MTES-MCT/zero-logement-vacant/issues/1794)
-- Amélioration de l'affichage des noms de périmètres : remplacement des noms de périmètres par des types plus clairs pour une meilleure compréhension. [#1757](https://github.com/MTES-MCT/zero-logement-vacant/issues/1757)
-- Ajout de notifications : notifications sur la création de campagnes et la suppression de groupes. [#74b243c7](https://github.com/MTES-MCT/zero-logement-vacant/commit/74b243c7)
-- Correction de l'affichage des images en brouillon : les images en brouillon sont maintenant correctement prévisualisées.
-- Correction de l'affichage des pourcentages : les pourcentages sont maintenant affichés avec un seul chiffre après la virgule.
+- Amélioration de l'affichage des noms de périmètres dans la liste des logements ([#1757](https://github.com/MTES-MCT/zero-logement-vacant/pull/1757)).
+- Intégration des droits d'accès via le Portail DF, permettant de filtrer les données en fonction des autorisations des utilisateurs ([#1649](https://github.com/MTES-MCT/zero-logement-vacant/pull/1649)).
+- Ajout de la navigation vers la liste des logements filtrée par campagne ([#1762](https://github.com/MTES-MCT/zero-logement-vacant/pull/1762)).
+- Correction de la gestion des statuts de logement "jamais contacté" ([#1794](https://github.com/MTES-MCT/zero-logement-vacant/pull/1794)).
 
 ### Évolutions techniques
-- **Performances:**
-    - Optimisation significative du temps de calcul du nombre de logements, réduisant le temps d'exécution de 4 à 36% selon les filtres. [#1793](https://github.com/MTES-MCT/zero-logement-vacant/issues/1793)
-    - Remplacement de l'index geo-code par une colonne `is_multi_owner` pour améliorer les performances des requêtes sur les propriétaires multiples.
-    - Utilisation de triggers au niveau des instructions pour les comptages de groupes, évitant ainsi des insertions en masse coûteuses.
-- **Infrastructure & Outils:**
-    - Mise à jour de Vite à la version 8 et des plugins associés.
-    - Intégration de Knip pour l'analyse des dépendances et la suppression des dépendances inutilisées.
-    - Mise à jour des actions GitHub pour bénéficier des dernières fonctionnalités et corrections de sécurité.
-    - Ajout de codecov pour le suivi de la couverture de tests.
-- **Architecture & Code:**
-    - Suppression de code obsolète, notamment les anciens flux de campagne et les paramètres d'établissement.
-    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-    - Migration de la spécification OpenAPI de TypeScript vers YAML et remplacement de Swagger UI par Scalar.
-    - Remplacement de convict par Zod pour la gestion de la configuration.
-    - Utilisation de p-memoize pour la mise en cache des résultats de l'API Geo.
-- **Tests:**
-    - Amélioration de la couverture des tests, notamment pour les DTOs partagés et les filtres geoCodes.
+- Optimisation des performances du comptage des logements, réduisant le temps d'exécution de 4 à 36% selon les filtres ([#1793](https://github.com/MTES-MCT/zero-logement-vacant/pull/1793)).
+- Refactorisation importante du code, incluant la suppression de code mort, la simplification de la configuration et la migration vers des outils plus modernes (Vite 8).
+- Remplacement de l'index `geo-code` par un index plus performant sur `owners_housing`.
+- Migration de l'OpenAPI spec vers un format YAML et remplacement de Swagger UI par Scalar.
+- Utilisation de Zod pour la validation de la configuration du serveur.
+- Amélioration de la couverture des tests, notamment pour les modèles de données.
+- Ajout de factories pour la création d'objets de test.
+- Refonte de l'authentification et de la gestion des droits d'accès.
+- Suppression de l'ancien flux de campagne.
 
 ### Autres changements
-- Ajout de documentation technique complète, incluant des diagrammes et des descriptions détaillées des différents composants.
-- Mise à jour de la documentation pour refléter les changements apportés au code.
-- Ajout d'une configuration Worktrunk pour faciliter le développement et les tests.
-- Ajout d'un plan d'implémentation pour les "superpowers" (fonctionnalités avancées).
-- Correction de plusieurs erreurs mineures et améliorations de la qualité du code.
-- Ajout de la gestion des variables d'environnement via `.env.example`.
-- Ajout de la prise en charge de l'authentification SSO.
-- Intégration de Claude pour l'analyse des données et l'amélioration de la qualité des données.
-- Ajout de la gestion des droits d'accès via Portail DF.
+- Mise à jour de la documentation technique, incluant des diagrammes et des descriptions détaillées des processus.
+- Ajout de badges Codecov et amélioration de la configuration CI/CD.
+- Correction de vulnérabilités de dépendances via Snyk.
+- Ajout de métriques et d'outils de suivi (PostHog).
+- Ajout de l'intégration avec Notion pour le suivi des MCP.
+- Ajout de l'intégration avec Claude pour l'analyse des données.
+- Amélioration de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
