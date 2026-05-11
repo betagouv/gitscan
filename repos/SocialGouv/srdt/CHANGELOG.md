@@ -1,3 +1,45 @@
+## [1.40.3](https://github.com/SocialGouv/srdt/compare/v1.40.2...v1.40.3) (2026-05-07)
+
+
+### Bug Fixes
+
+* **api:** use chatgpt for prod default model family ([1c6eb9f](https://github.com/SocialGouv/srdt/commit/1c6eb9f3993341c7101d06249a4c6f11adfa2480))
+
+## [1.40.2](https://github.com/SocialGouv/srdt/compare/v1.40.1...v1.40.2) (2026-05-07)
+
+
+### Bug Fixes
+
+* **api:** remove anonymization of locations ([#370](https://github.com/SocialGouv/srdt/issues/370)) ([c00c7e3](https://github.com/SocialGouv/srdt/commit/c00c7e3b6fe84a060ab344e72a123f49d7c15580))
+
+## [1.40.1](https://github.com/SocialGouv/srdt/compare/v1.40.0...v1.40.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* **web:** allow to swap models from kube config map ([#366](https://github.com/SocialGouv/srdt/issues/366)) ([f206b4b](https://github.com/SocialGouv/srdt/commit/f206b4b56ea3f982fe7ffa612d0a728faf6899a3))
+
+# [1.40.0](https://github.com/SocialGouv/srdt/compare/v1.39.7...v1.40.0) (2026-05-05)
+
+
+### Features
+
+* **web:** always display convention collective badge ([#365](https://github.com/SocialGouv/srdt/issues/365)) ([e35292d](https://github.com/SocialGouv/srdt/commit/e35292dfbc961931a1cf9f96c823e9956372e390))
+
+## [1.39.7](https://github.com/SocialGouv/srdt/compare/v1.39.6...v1.39.7) (2026-05-05)
+
+
+### Bug Fixes
+
+* **web:** swap hintText and label for idcc ([#364](https://github.com/SocialGouv/srdt/issues/364)) ([db4f699](https://github.com/SocialGouv/srdt/commit/db4f699877c10be13c18633767d942e7bb45f4d2))
+
+## [1.39.6](https://github.com/SocialGouv/srdt/compare/v1.39.5...v1.39.6) (2026-05-04)
+
+
+### Bug Fixes
+
+* **prompt:** prompt plus permissif ([#363](https://github.com/SocialGouv/srdt/issues/363)) ([4fdf3ec](https://github.com/SocialGouv/srdt/commit/4fdf3ec9de9db9d5e48bf27eb1f9e37ccda23113))
+
 ## [1.39.5](https://github.com/SocialGouv/srdt/compare/v1.39.4...v1.39.5) (2026-04-28)
 
 
