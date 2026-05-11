@@ -1,33 +1,18 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 16 mars 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, le site web a connu une refonte majeure avec l'ajout d'une section dédiée au France Cybersecurity Challenge (FCSC) 2026. Cette nouvelle section présente le déroulé de l'événement, les catégories d'épreuves, les bénéfices de la participation et inclut des témoignages. Des améliorations ont également été apportées à l'expérience utilisateur, notamment avec l'ajout d'un menu de navigation et des corrections de typographie et d'affichage. Enfin, de nombreuses mises à jour de sécurité des dépendances ont été effectuées pour assurer la robustesse du site.
+Ce mois-ci, les améliorations se concentrent sur la sécurité du site avec l'ajout d'une Content Security Policy (CSP) et la mise à jour de plusieurs dépendances pour corriger des vulnérabilités potentielles. Une amélioration visuelle a également été apportée avec le remplacement d'une illustration.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page dédiée au France Cybersecurity Challenge (FCSC) 2026, incluant des informations sur le déroulé, les épreuves et les bénéfices de la participation.
-- Ajout de témoignages pour illustrer l'intérêt de participer au FCSC.
-- Ajout d'un menu de navigation pour faciliter l'accès aux différentes sections du site.
-- Suppression des prénoms des témoignages pour une meilleure protection des données personnelles.
-- Correction de la typo "ECCS" en "ECSC".
-- Ajout d'une carte de participation et d'un résumé pour le FCSC.
-- Possibilité de rejoindre le serveur Discord du FCSC.
-- Ajout d'une marque de genre.
+- Remplacement de l'illustration des jeunes dans le cadre de la campagne FCSC. [#ce13c30](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/ce13c30)
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances pour corriger des failles de sécurité et améliorer la stabilité du site (axios, fast-xml-parser, immutable, multer, minimatch, ajv, qs, rollup, svelte, flatted, devalue, @lab-anssi/ui-kit).
-- Amélioration de la gestion des versions des dépendances en utilisant des révisions.
-- Correction d'avertissements Svelte.
-- Suppression de l'enveloppement de la sortie console de `pnpm dev`.
-- Correction de l'alignement de certains éléments.
-- Correction de l'affichage des icônes.
+- Ajout d'une Content Security Policy (CSP) pour renforcer la sécurité du site. [#a16310c](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/a16310c)
+- Intégration de Sentry pour le monitoring des erreurs frontales. [#6407b05](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/6407b05) et [#587a724](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/587a724)
+- Mise à jour de Vite en version 7.3.2 pour bénéficier des dernières corrections et améliorations de performance. [#fb9d5dd](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/fb9d5dd)
+- Mise à jour de Lodash en version 4.18.1. [#bb0ede3](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/bb0ede3)
+- Mise à jour de Axios en version 1.15.0. [#52f41e6](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/52f41e6)
 
 ### Autres changements
-- Suppression du lien vers le site de l'ECSC.
-- Correction du contenu de la carte.
-- Illustration des bénéfices de la participation au FCSC.
-- Illustration de la sélection et de la préparation pour le FCSC.
-- Ajout d'un menu latéral pour la page "Tout savoir".
-- Complétion de la section "Tout savoir…".
-- Présentation des catégories des épreuves du FCSC.
-- Formatage du héros de la page FCSC.
-- Correction du formatage Prettier.
+- Ajustement de la configuration ESLint pour améliorer la qualité du code. [#ed179f1](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/ed179f1)
+- Suppression d'une Content Security Policy (CSP) jugée inutile. [#0603c6b](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/0603c6b)
