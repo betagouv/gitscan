@@ -1,3 +1,72 @@
+2026-05-11T01:53:02+02:00 - 2c4de71 - devthejo : fix(examples/secured-renovacy): require detect_stack to verify its commands empirically before returning
+2026-05-11T01:39:45+02:00 - d8f142b - devthejo : fix(claw runner): execute filesystem builtins inside the sandbox, not back on the launcher
+2026-05-11T00:50:13+02:00 - 9619a65 - devthejo : fix(examples/secured-renovacy): default GPT reviewer effort to xhigh, not max
+2026-05-11T00:35:22+02:00 - 84a7fc2 - devthejo : feat(desktop): source ~/.iterion/env (or \$ITERION_ENV_FILE) at startup
+2026-05-11T00:25:55+02:00 - ce24c6b - devthejo : feat(backend/claw): forward provider credentials into the in-sandbox runner
+2026-05-10T23:14:32+02:00 - df68043 - devthejo : fix(backend/model): expand \${VAR:-default} in agent/judge/router model specs
+2026-05-10T23:07:01+02:00 - 2e3183d - devthejo : fix(backend/claw): keep stdin open on docker exec so the in-sandbox runner can read its task envelope
+2026-05-10T10:55:25+02:00 - 00cdf9c - devthejo : feat(runtime/sandbox): bind-mount host iterion binary so claw nodes work in slim images
+2026-05-10T10:48:14+02:00 - 2c75230 - devthejo : fix(examples/secured-renovacy): pin reviewer verdict to exact schema field names
+2026-05-10T10:37:30+02:00 - ce1e4ee - devthejo : fix(runtime/sandbox): bind-mount the parent .git so worktrees stay git-functional inside the container
+2026-05-10T10:30:26+02:00 - eadd383 - devthejo : fix(runtime): remap \${PROJECT_DIR} to in-container workspace when sandboxed
+2026-05-10T10:24:49+02:00 - 007114f - devthejo : fix(delegate/claude_code): two-pass falls back to Pass 1 parse when Pass 2 returns empty
+2026-05-10T09:56:09+02:00 - 5c3bf58 - devthejo : fix(delegate): treat empty structured_output as miss, fall through to text parse
+2026-05-10T07:19:36Z - 8c29418 - devthejo : fix(delegate/claude_code): backfill empty ResultMessage.Result with last assistant text
+2026-05-10T07:04:07Z - 6c8eeca - devthejo : feat(desktop,cli): iterion-control MCP — drive desktop runs from a peer claude session
+2026-05-10T06:53:25Z - 4bbc6b3 - devthejo : fix(examples/secured-renovacy): pin detect_stack output to exact schema field names
+2026-05-10T06:39:00Z - 20f5b65 - devthejo : fix(sandbox/docker): bind network proxy on 0.0.0.0 so containers can reach it
+2026-05-10T06:29:34Z - 0ab267c - devthejo : fix(sandbox/docker,delegate): forward stdin to claude in sandbox via --interactive
+2026-05-10T06:25:27Z - b837a06 - devthejo : feat(branding): use simplified logo for small favicons + desktop appicon
+2026-05-10T06:23:02Z - 42d96c8 - devthejo : feat(delegate/claude_code): surface CLI exit code in silent-failure path
+2026-05-10T06:13:33Z - 31c1266 - devthejo : feat(taskfile): add fast desktop .deb build for local iteration
+2026-05-10T06:13:26Z - 88d4589 - devthejo : feat(branding): add logo + favicon pack across web, desktop, README
+2026-05-10T06:01:44Z - f98512d - devthejo : fix(delegate/claude_code): skip native ask_user MCP server when sandboxed
+2026-05-10T05:51:14Z - b2af71e - devthejo : fix(claudesdk): skip host CLI validation when CommandBuilder routes via sandbox
+2026-05-10T05:31:57Z - 73e125d - devthejo : feat(editor): copy log button next to download
+2026-05-10T05:30:30Z - bb95150 - devthejo : fix(delegate/claude_code): use in-container claude path + bind-mount cwd
+2026-05-10T05:15:34Z - d037513 - devthejo : feat(delegate/claude_code): log resolved CLI invocation in sandbox path
+2026-05-09T20:26:47Z - 1ea43e6 - devthejo : feat(delegate/claude_code): forward CLI stderr to backend logger
+2026-05-09T20:11:34Z - a3f49b6 - devthejo : feat(sandbox,examples): inline image override + ${localEnv:VAR} expansion in inline blocks
+2026-05-09T20:03:23Z - 8782486 - devthejo : feat(sandbox): stream postCreate stdout/stderr live to the driver logger
+2026-05-09T19:45:34Z - 6f89d73 - devthejo : feat(runtime): wire sandbox driver logger + emit sandbox_started event
+2026-05-09T19:07:13Z - 055ca07 - devthejo : fix(desktop,editor): native Save-As dialog for run log download
+2026-05-09T19:06:45Z - 0c35d34 - devthejo : fix(sandbox): expand ${localEnv:VAR} / ${localWorkspaceFolder} before docker run
+2026-05-09T18:46:26Z - 4d3cb4d - devthejo : feat(examples/secured-renovacy): sandbox: auto for supply-chain isolation
+2026-05-09T18:38:35Z - a592866 - devthejo : fix(editor): download log via blob fetch instead of target="_blank"
+2026-05-09T18:35:38Z - c877354 - devthejo : fix(examples/secured-renovacy): drop git_* tools from claw backend nodes
+2026-05-09T18:18:35Z - 41eb87d - devthejo : fix(desktop): implement missing GetSessionToken binding
+2026-05-09T18:05:08Z - 8ddff98 - devthejo : feat(editor): surface why getDesktopWsBase falls through
+2026-05-09T17:24:10Z - e7d1ca7 - devthejo : perf(taskfile): drop wails -clean and parallelise linux deb sub-builds
+2026-05-09T17:21:46Z - 176d022 - devthejo : fix(taskfile): serialise CLI build after wails -clean in linux deb tasks
+2026-05-09T15:26:53+02:00 - 065716e - devthejo : feat(editor): typewriter reveal for ThinkingFooter words
+2026-05-09T15:21:24Z - 44cc809 - devthejo : fix(editor): clean up pre-existing TypeScript strict-mode errors
+2026-05-09T15:21:24Z - 2ff5246 - devthejo : fix(editor): never fall back to ws://wails/ when desktop bindings stall
+2026-05-09T14:43:33Z - dc32730 - devthejo : feat(desktop): bind F12 + Ctrl+Shift+I to WebKit inspector (vendor patch)
+2026-05-09T14:14:02Z - f1574da - devthejo : feat(desktop): enable WebView context menu in production builds
+2026-05-09T14:08:03Z - d2e762e - devthejo : fix(examples/secured-renovacy): unbreak jq filters + tr + printf JSON escapes
+2026-05-09T13:42:24Z - 46ad122 - devthejo : fix(examples/secured-renovacy): commit via files_lines + git commit -F -
+2026-05-09T13:41:57Z - d9046ad - devthejo : feat(dsl/expr): add join(arr, sep) string builtin
+2026-05-09T13:34:01+02:00 - a15236a - devthejo : feat(examples): embed shipped recipes for cwd-agnostic loading
+2026-05-09T13:34:01+02:00 - 94239eb - devthejo : fix(server): materialise inline source on launch to fix desktop import-then-run
+2026-05-09T13:34:01+02:00 - 8305ce1 - devthejo : fix(server): propagate WorkDir to engine + align inline-source cache with resolved store
+2026-05-09T13:34:01+02:00 - 3f82ed6 - devthejo : Revert "fix(store): bound ResolveStoreDir walk-up to the git repo root"
+2026-05-09T13:34:01+02:00 - 3ee9119 - devthejo : feat(store): per-project keyed global store, project-local opt-in
+2026-05-09T13:34:01+02:00 - 25f14f2 - devthejo : feat(examples): add secured-renovacy autonomous package upgrade recipe
+2026-05-09T13:34:01+02:00 - 1513d86 - devthejo : fix(store): bound ResolveStoreDir walk-up to the git repo root
+2026-05-09T13:20:31Z - 4b5622c - devthejo : fix(examples/secured-renovacy): rewrite broken tools using {{!}} + braced-only env
+2026-05-09T13:20:14Z - f762d03 - devthejo : feat(dsl,executor): {{!ref}} raw substitution + braced-only env expansion
+2026-05-09T12:48:44Z - 23b93e9 - devthejo : feat(examples/secured-renovacy): Opus 4.7 max + claw GPT-5.5 max across the board
+2026-05-09T12:46:03Z - 943ec27 - devthejo : fix(editor): retry initial run snapshot fetch on 404 race
+2026-05-09T12:36:50Z - bd8482c - devthejo : feat(server,editor): make embedded examples openable post-launch + auto-clean stale recents
+2026-05-09T12:24:55Z - 276f84c - devthejo : fix(taskfile): always rebuild cli:build:linux:* (no sources/generates cache)
+2026-05-09T12:22:14Z - dfc737d - devthejo : fix(desktop): stop warning when only codex CLI is missing
+2026-05-09T12:15:01Z - f015606 - devthejo : feat(server): expose embedded recipes via the examples HTTP API
+2026-05-09T11:47:57Z - 07dbaa9 - devthejo : feat(desktop): ship the iterion CLI inside the Linux .deb
+2026-05-09T10:17:22Z - 996dc1f - github-actions[bot] : chore(brew): update tap to v0.10.0 [skip ci]
+2026-05-09T10:13:55Z - f63ed95 - github-actions[bot] : chore: release v0.10.0
+2026-05-09T06:45:33Z - 44ec364 - devthejo : docs: add why-iterion manifesto
+2026-05-09T06:45:14Z - 7422faa - devthejo : docs(desktop): closeout — release QA matrix + sign-off checklist
+2026-05-09T06:44:39Z - 8e663fb - devthejo : chore(cloud): closeout — AppendEvent backoff + NetworkPolicy example + ops docs
 2026-05-08T23:58:30+02:00 - fbac925 - devthejo : style(bench/asymptote): apply gofmt to aggregator + types
 2026-05-08T23:58:30+02:00 - 6316f91 - devthejo : feat(bench): add iterion bench asymptote — inter-session quality stabilisation
 2026-05-08T08:46:29Z - 018e6d2 - github-actions[bot] : chore(brew): update tap to v0.9.0 [skip ci]

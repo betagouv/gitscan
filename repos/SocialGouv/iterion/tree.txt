@@ -47,6 +47,8 @@
 ├── charts
 │   └── iterion
 │       ├── Chart.yaml
+│       ├── examples
+│       │   └── networkpolicy-egress.yaml
 │       ├── templates
 │       │   ├── _helpers.tpl
 │       │   ├── configmap.yaml
@@ -80,6 +82,7 @@
 │   │   ├── inspect.go
 │   │   ├── main.go
 │   │   ├── mcp_ask_user.go
+│   │   ├── mcp_control.go
 │   │   ├── migrate.go
 │   │   ├── report.go
 │   │   ├── resume.go
@@ -97,6 +100,7 @@
 │       ├── config.go
 │       ├── config_test.go
 │       ├── doc.go
+│       ├── env_file.go
 │       ├── events.go
 │       ├── external_cli.go
 │       ├── external_cli_test.go
@@ -124,6 +128,7 @@
 │       ├── updater_apply_windows.go
 │       ├── updater_helpers.go
 │       ├── updater_test.go
+│       ├── url_file.go
 │       ├── wails.json
 │       └── window_state.go
 ├── devbox.json
@@ -148,13 +153,17 @@
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
 │   ├── cloud-deployment.md
+│   ├── cloud-public-exposure-checklist.md
+│   ├── cloud-troubleshooting.md
 │   ├── cloud-user.md
 │   ├── cloud.md
 │   ├── delegation.md
 │   ├── desktop-architecture.md
 │   ├── desktop-build.md
 │   ├── desktop-distribution.md
+│   ├── desktop-qa-checklist.md
 │   ├── desktop-qa.md
+│   ├── desktop-release-checklist.md
 │   ├── desktop.md
 │   ├── development.md
 │   ├── dsl.md
@@ -163,6 +172,8 @@
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
+│   ├── images
+│   │   └── iterion-logo.png
 │   ├── install.md
 │   ├── install.sh
 │   ├── observability
@@ -188,6 +199,7 @@
 │   ├── sandbox.md
 │   ├── skill.md
 │   ├── visual-editor.md
+│   ├── why-iterion.md
 │   └── workflow_authoring_pitfalls.md
 ├── e2e
 │   ├── SCENARIOS.md
@@ -200,6 +212,34 @@
 ├── editor
 │   ├── index.html
 │   ├── package.json
+│   ├── public
+│   │   ├── android-icon-144x144.png
+│   │   ├── android-icon-192x192.png
+│   │   ├── android-icon-36x36.png
+│   │   ├── android-icon-48x48.png
+│   │   ├── android-icon-72x72.png
+│   │   ├── android-icon-96x96.png
+│   │   ├── apple-icon-114x114.png
+│   │   ├── apple-icon-120x120.png
+│   │   ├── apple-icon-144x144.png
+│   │   ├── apple-icon-152x152.png
+│   │   ├── apple-icon-180x180.png
+│   │   ├── apple-icon-57x57.png
+│   │   ├── apple-icon-60x60.png
+│   │   ├── apple-icon-72x72.png
+│   │   ├── apple-icon-76x76.png
+│   │   ├── apple-icon-precomposed.png
+│   │   ├── apple-icon.png
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon-96x96.png
+│   │   ├── favicon.ico
+│   │   ├── manifest.json
+│   │   ├── ms-icon-144x144.png
+│   │   ├── ms-icon-150x150.png
+│   │   ├── ms-icon-310x310.png
+│   │   └── ms-icon-70x70.png
 │   ├── src
 │   │   ├── App.tsx
 │   │   ├── __tests__
@@ -474,6 +514,7 @@
 │   ├── dogfood_editor_ui_loop.iter
 │   ├── dogfood_editor_ui_loop.md
 │   ├── dual_model_plan_implement_review.iter
+│   ├── embed.go
 │   ├── exhaustive_dsl_coverage.iter
 │   ├── feature_dev_review_fix_dual.iter
 │   ├── feature_dev_review_fix_dual.md
@@ -505,6 +546,7 @@
 │   ├── sandbox_cloud_observe.iter
 │   ├── sandbox_cloud_proxy.iter
 │   ├── sandbox_cloud_smoke.iter
+│   ├── secured-renovacy.iter
 │   ├── session_fork.iter
 │   ├── session_inherit_validation.iter
 │   ├── session_review_fix.iter
@@ -559,6 +601,7 @@
 │   │   │   │   ├── process_unix.go
 │   │   │   │   ├── process_windows.go
 │   │   │   │   ├── protocol.go
+│   │   │   │   ├── resolve_cli_path_test.go
 │   │   │   │   ├── session.go
 │   │   │   │   └── uuid.go
 │   │   │   ├── codex.go
@@ -689,6 +732,7 @@
 │   │   ├── diagram.go
 │   │   ├── editor.go
 │   │   ├── editor_test.go
+│   │   ├── embedded_recipes.go
 │   │   ├── init.go
 │   │   ├── init_test.go
 │   │   ├── inspect.go
@@ -859,6 +903,8 @@
 │   │   ├── devcontainer
 │   │   │   ├── devcontainer.go
 │   │   │   ├── devcontainer_test.go
+│   │   │   ├── expand.go
+│   │   │   ├── expand_test.go
 │   │   │   └── spec.go
 │   │   ├── docker
 │   │   │   ├── build.go
@@ -7107,4 +7153,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1077 directories, 6578 files
+1080 directories, 6621 files

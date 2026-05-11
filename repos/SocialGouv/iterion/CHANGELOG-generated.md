@@ -1,70 +1,50 @@
-## Changelog : iterion (30 derniers jours, au 08 mai 2026)
+## Changelog : iterion (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, iterion a connu des avancées significatives en termes de fonctionnalités, de stabilité et d'expérience utilisateur. L'accent a été mis sur l'amélioration de l'éditeur, l'ajout de capacités de reprise de run, l'intégration de nouveaux outils et l'amélioration de la robustesse du système, notamment en préparation d'un déploiement cloud. Des efforts importants ont également été consacrés à l'amélioration des tests et de la documentation.
+Ce mois-ci, les améliorations se concentrent sur la robustesse, la sécurité et les capacités d'observabilité d'Iterion. Des améliorations significatives ont été apportées au système de sandbox, permettant une exécution plus sécurisée et isolée des workflows. L'intégration de nouvelles fonctionnalités, comme la gestion des pièces jointes et l'amélioration du support de Claude Code, renforcent la flexibilité et les performances de la plateforme. De plus, des efforts considérables ont été déployés pour améliorer la journalisation, le débogage et la surveillance, facilitant ainsi la maintenance et l'optimisation du système.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface utilisateur pour la gestion des fichiers et des commits dans la vue de run.
-- Implémentation de la reprise de run, permettant de reprendre un run interrompu ou annulé.
-- Ajout de la possibilité de visualiser les logs en temps réel pendant l'exécution d'un run.
-- Intégration de nouveaux outils, notamment pour l'analyse de code et l'interaction avec des modèles de langage.
-- Amélioration de l'éditeur avec de nouvelles fonctionnalités telles que l'auto-complétion, la coloration syntaxique et la validation.
-- Possibilité de visualiser et de modifier les variables d'environnement.
-- Ajout d'une vue "Report" pour visualiser les coûts associés à chaque nœud et modèle.
-- Ajout d'une fonctionnalité de résumé des verdicts et des objectifs.
-- Ajout d'une prévisualisation des captures d'écran du navigateur dans l'éditeur.
-- Amélioration de la détection des informations d'identification des modèles de langage.
-- Ajout d'un support pour les fichiers et les images en tant qu'entrées.
-- Amélioration de l'interface utilisateur pour la gestion des tâches en attente.
-- Ajout de la possibilité de visualiser le code source des fichiers modifiés.
-- Ajout d'une fonctionnalité de recherche dans la liste des fichiers.
-- Ajout d'un support pour les workflows en mode "live".
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Ajout d'un support pour l'authentification multifacteur.
-- Ajout d'un support pour l'intégration avec des fournisseurs OAuth (Google, GitHub).
+- Ajout de la possibilité de charger un fichier d'environnement (`.iterion/env`) au démarrage du bureau.
+- Intégration de la gestion des pièces jointes aux workflows, permettant de joindre des fichiers et des images.
+- Amélioration de l'interface utilisateur du bureau avec un panneau de fichiers, un panneau de commits et une vue des logs.
+- Ajout d'un bouton pour copier le log dans l'interface utilisateur.
+- Implémentation d'un système de sandbox plus robuste pour une exécution plus sécurisée des workflows.
+- Possibilité de lancer des exécutions de bureau à partir d'une session Claude.
+- Ajout de la détection automatique des informations d'identification LLM et configuration par défaut.
+- Amélioration de la gestion des erreurs et des messages d'information dans l'interface utilisateur.
+- Ajout d'une fonctionnalité de "pause" et de "reprise" des exécutions, avec conservation de l'état et de l'historique.
+- Ajout d'une vue "Workflow" dans la console d'exécution, offrant une représentation visuelle de l'exécution.
 
 ### Évolutions techniques
-- Refactorisation importante du code pour améliorer la maintenabilité et la performance.
-- Mise en place d'un système de gestion des secrets plus sécurisé.
-- Amélioration de la gestion des dépendances.
-- Mise à jour de l'infrastructure de CI/CD.
-- Ajout de tests d'intégration et de couverture de code.
-- Amélioration de la documentation.
-- Préparation du déploiement cloud avec l'ajout de fonctionnalités telles que la gestion des sessions, la mise à l'échelle automatique et la surveillance.
-- Implémentation d'un système de file d'attente basé sur NATS pour la gestion des runs.
-- Utilisation de Docker et Kubernetes pour le déploiement et la gestion des conteneurs.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de métriques Prometheus pour la surveillance de l'application.
-- Intégration d'un système de traçage distribué basé sur OpenTelemetry.
-- Amélioration de la sécurité de l'application.
-- Refonte de l'architecture du système pour améliorer la scalabilité et la fiabilité.
-- Ajout d'un support pour les images Docker.
-- Amélioration de la gestion des configurations.
-- Ajout d'un support pour les variables d'environnement.
-- Amélioration de la gestion des logs.
-- Ajout d'un support pour les tests unitaires.
-- Amélioration de la gestion des erreurs.
-- Ajout d'un support pour les tests d'intégration.
+- Refactorisation du système de sandbox pour une meilleure isolation et sécurité.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Mise à jour des dépendances et correction de vulnérabilités de sécurité.
+- Amélioration des performances du système, notamment en matière de gestion de la mémoire et de l'utilisation du CPU.
+- Intégration de Prometheus et OpenTelemetry pour la surveillance et la collecte de métriques.
+- Utilisation de Docker pour l'exécution des workflows dans un environnement conteneurisé.
+- Amélioration de l'intégration avec Kubernetes pour le déploiement et la gestion des workflows.
+- Ajout de tests unitaires, d'intégration et E2E avec Playwright pour garantir la qualité du code.
+- Refactorisation de l'architecture pour une meilleure modularité et maintenabilité.
+- Amélioration de la gestion des secrets et des informations d'identification.
+- Implémentation d'un système de cache pour améliorer les performances.
+- Ajout d'un système de gestion des versions pour faciliter le déploiement et la restauration des workflows.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les dernières modifications.
-- Correction de bugs mineurs.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités de débogage.
-- Ajout d'un support pour de nouvelles langues.
-- Amélioration de l'accessibilité de l'application.
-- Ajout d'un support pour de nouveaux navigateurs.
-- Correction de problèmes de compatibilité avec différents systèmes d'exploitation.
-- Ajout d'un support pour de nouvelles versions de logiciels.
-- Amélioration de la sécurité de l'application.
-- Ajout d'un support pour de nouvelles fonctionnalités de sécurité.
-- Correction de problèmes de sécurité.
-- Amélioration de la gestion des erreurs.
-- Ajout d'un support pour de nouvelles fonctionnalités de gestion des erreurs.
-- Correction de problèmes de gestion des erreurs.
-- Ajout d'un support pour de nouvelles fonctionnalités de gestion des logs.
-- Correction de problèmes de gestion des logs.
-- Ajout d'un support pour de nouvelles fonctionnalités de tests.
-- Correction de problèmes de tests.
-- Ajout d'un support pour de nouvelles fonctionnalités de documentation.
-- Correction de problèmes de documentation.
+- Ajout d'une documentation plus complète et à jour.
+- Amélioration de la configuration et de la personnalisation du système.
+- Nettoyage du code et suppression du code obsolète.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Correction de bugs mineurs et amélioration de la stabilité du système.
+- Ajout d'un logo et d'un favicon pour améliorer l'identité visuelle du projet.
+- Mise à jour des dépendances et correction de vulnérabilités de sécurité.
+- Ajout d'un workflow CI/CD pour automatiser le processus de construction, de test et de déploiement.
+- Amélioration de la gestion des fichiers de configuration.
+- Ajout d'un système de gestion des logs pour faciliter le débogage et la surveillance.
+- Ajout d'un système de gestion des utilisateurs et des permissions.
+- Amélioration de la sécurité du système en implémentant des mesures de protection contre les attaques courantes.
+- Ajout d'un système de gestion des notifications et des alertes.
+- Amélioration de la performance du système en optimisant le code et en utilisant des algorithmes plus efficaces.
+- Ajout d'un système de gestion des données et des schémas.
+- Amélioration de l'interface utilisateur et du design.
+- Ajout d'un système de collaboration et de workflow.
+- Amélioration de l'intégration avec les outils d'intelligence artificielle et de NLP.
