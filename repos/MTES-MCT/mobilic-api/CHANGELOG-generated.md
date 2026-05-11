@@ -1,30 +1,33 @@
-## Changelog : mobilic-api (30 derniers jours, au 05 mai 2026)
+## Changelog : mobilic-api (30 derniers jours, au 08 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de l'API Mobilic se concentrent sur l'amélioration de la sécurité (authentification multi-facteurs, protection contre les attaques DoS), l'ajout de fonctionnalités pour le back-office (support administrateur, recherche d'utilisateurs) et la correction de bugs liés à la gestion des timezones et à l'export de données. Des améliorations ont également été apportées à l'intégration avec Brevo et à la recherche NATINF.
+Ce mois-ci, l'API Mobilic a bénéficié d'améliorations significatives en matière de sécurité avec l'implémentation de l'authentification à deux facteurs (TOTP) et de la gestion de l'usurpation d'identité. Des corrections ont également été apportées à la gestion des fuseaux horaires dans les exports et à la gestion des noms dans les envois d'emails Brevo. L'interface administrateur a été remaniée et des recherches avancées sur les NATINF ont été ajoutées.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de l'authentification à deux facteurs (TOTP) avec génération de code via une application mobile. [#685](https://github.com/MTES-MCT/mobilic-api/pull/685)
-- Possibilité pour les administrateurs de se connecter en tant qu'autres utilisateurs pour support (impersonation) avec journalisation des actions. [#700](https://github.com/MTES-MCT/mobilic-api/pull/700)
-- Amélioration de la recherche NATINF avec la possibilité de créer et supprimer des NATINF personnalisés. [#671](https://github.com/MTES-MCT/mobilic-api/pull/671)
-- Ajout d'articles dans les exports PDF BDC. [#72cb185](https://github.com/MTES-MCT/mobilic-api/commit/72cb185)
-- Correction de l'affichage des timezones dans les exports et PDF. [#693](https://github.com/MTES-MCT/mobilic-api/pull/693)
-- Ajout d'une recherche d'utilisateurs pour la fonctionnalité d'impersonation. [#696](https://github.com/MTES-MCT/mobilic-api/pull/696)
+- **Authentification:** Ajout de la prise en charge de l'authentification à deux facteurs (TOTP) avec génération de code via application mobile. [#694](https://github.com/MTES-MCT/mobilic-api/issues/694)
+- **Interface Administrateur:** Refonte de la page d'accueil de l'interface administrateur pour une meilleure expérience utilisateur. [#698](https://github.com/MTES-MCT/mobilic-api/issues/698)
+- **Recherche NATINF:** Possibilité de rechercher des NATINF personnalisés via l'API. [#700](https://github.com/MTES-MCT/mobilic-api/issues/700)
+- **Exports:** Correction de l'application des fuseaux horaires dans les exports et les PDF. [#671](https://github.com/MTES-MCT/mobilic-api/issues/671)
+- **Alertes réglementaires:** Enrichissement des alertes réglementaires avec des informations sur le jour et l'ID utilisateur.
+- **Tableau de bord:** Ajout d'une nouvelle requête GraphQL pour obtenir un résumé du tableau de bord.
+- **Support Admin:** Amélioration du support administrateur avec la possibilité d'usurper l'identité d'un utilisateur. [#685](https://github.com/MTES-MCT/mobilic-api/issues/685)
 
 ### Évolutions techniques
-- Refactorisation de l'impersonation pour utiliser un JWT claim `impersonate_as` au lieu d'un cookie.
-- Ajout d'une protection contre les attaques par complexité de requête GraphQL (DoS). [#694](https://github.com/MTES-MCT/mobilic-api/pull/694)
-- Amélioration de la sécurité en désactivant GraphiQL en production et en ajoutant une limite de taille pour les requêtes GraphQL.
-- Suppression du contexte des accès aux données pour l'activité. [#693](https://github.com/MTES-MCT/mobilic-api/pull/693)
-- Correction de l'ordre des révisions de migrations.
-- Centralisation d'une fonction pour éviter la duplication de code.
-- Sanityzation du nom de l'entreprise Brevo avant la recherche de deal. [#696](https://github.com/MTES-MCT/mobilic-api/pull/696)
-- Mise à jour de pipenv et pipfile.lock.
-- Ajout de tests unitaires et d'intégration pour la sécurité (IDOR, etc.).
+- **Sécurité:**
+    - Ajout d'une journalisation d'audit pour l'usurpation d'identité.
+    - Blocage de l'usurpation d'identité sur soi-même et sur les administrateurs.
+    - Ajout de tests de sécurité pour la détection d'IDOR et d'autres vulnérabilités.
+    - Limitation de la complexité des requêtes GraphQL pour prévenir les attaques par déni de service (DoS).
+    - Désactivation de GraphiQL en production pour des raisons de sécurité.
+- **Refactoring:**
+    - Simplification du code lié aux alertes réglementaires pour réduire la complexité cognitive.
+    - Déduplication de requêtes pour les emails d'activation.
+    - Centralisation de fonctions pour éviter la duplication de code.
+- **Infrastructure:** Mise à jour de pipenv en CircleCI.
 
 ### Autres changements
-- Ajout de tests pour couvrir la révocation de jeton côté cible dans le middleware d'impersonation.
-- Ajout d'une purge RGPD pour la table `support_action_log`.
-- Correction de conflits de merge.
-- Correction du format du poids des véhicules BDC. [#691](https://github.com/MTES-MCT/mobilic-api/pull/691)
-- Suppression du contexte des accès aux données pour l'activité.
+- Correction de l'ordre des révisions de migrations.
+- Correction de la gestion des noms dans les envois d'emails Brevo.
+- Ajout d'un utilisateur super-administrateur dans les seeds.
+- Suppression du contexte des accès aux données d'activité.
+- Correction de bugs mineurs et améliorations de la documentation.
