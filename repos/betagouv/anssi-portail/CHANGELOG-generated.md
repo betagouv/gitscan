@@ -1,100 +1,52 @@
-## Changelog : anssi-portail (30 derniers jours, au 30 avril 2026)
+## Changelog : anssi-portail (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des guides et de la sécurité. Des mises à jour importantes ont été apportées à l'interface utilisateur avec l'adoption de composants DSFR, ainsi que des corrections de bugs et des améliorations de la sécurité, notamment la validation des entrées et la mise à jour des dépendances. L'ajout de la gestion de la langue anglaise pour le contenu NIS2 est également une nouveauté significative.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des guides (affichage, gestion des versions, liens) et de l'accessibilité. De nombreuses mises à jour techniques ont également été effectuées pour moderniser le code, améliorer la sécurité et optimiser les performances, avec une migration vers les composants DSFR.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de télécharger la documentation NIS2. [#1234](https://github.com/betagouv/anssi-portail/issues/1234)
-- Implémentation d'une recherche d'entreprise (en développement).
-- Amélioration de l'affichage des cartes dans le catalogue et les solutions.
-- Ajout d'un sélecteur de langue pour le contenu NIS2, permettant d'afficher le contenu en anglais.
-- Copie du lien court des guides dans le presse-papier.
-- Affichage des documents associés aux guides dans l'interface d'administration.
-- Possibilité de supprimer des documents associés à un guide depuis l'interface d'administration.
-- Correction de l'indication des filtres actifs dans la section "Financement".
-- Correction de la désactivation du bouton.
-- Amélioration de la gestion des entités HTML dans les titres des cartes.
-- Correction de certaines validations Zod dans la section "SOIN".
-- Correction de l'affichage des images dans le test de maturité.
+- **Guides :**
+    - Ajout de la possibilité de copier le lien court d'un guide.
+    - Amélioration de l'affichage des guides, notamment l'espacement et l'harmonisation mobile/bureau.
+    - Gestion des anciens documents et des liens associés.
+    - Ajout d'une étape d'approbation pour les guides.
+    - Affichage d'un encart informatif sur les guides.
+- **Interface utilisateur :**
+    - Mise à jour de nombreux composants pour utiliser la bibliothèque DSFR, améliorant la cohérence visuelle et l'accessibilité.
+    - Amélioration de la navigation avec l'affichage de l'élément de navigation courant.
+    - Correction de problèmes d'étirement des images.
+    - Ajout de liens d'évitement (skiplinks) pour une meilleure accessibilité.
+    - Amélioration de l'affichage des filtres actifs dans la section financements.
+- **NIS2 :**
+    - Ajout de la possibilité de sélectionner la langue (français/anglais) pour les exigences NIS2.
+    - Traduction des exports CSV pour les exigences NIS2.
+    - Ajout de la documentation NIS2 en téléchargement.
+- **Recherche :**
+    - Préparation d'un adaptateur pour la recherche d'entreprises.
+- **Autres :**
+    - Mise à jour de la page des statistiques.
 
 ### Évolutions techniques
-- Mise à jour de la librairie d'interface utilisateur UIKIT en version 1.49.0.
-- Migration vers les composants DSFR pour les boutons, les liens, les cartes et les accordéons.
-- Refonte du composant bouton en Svelte 5.
-- Utilisation de Zod pour la validation des entrées, remplaçant express-validator.
-- Amélioration du typage des objets validés.
-- Mise à jour de plusieurs dépendances de sécurité (dompurify, fast-xml-parser, uuid, postcss, follow-redirects).
-- Mise à jour de Sentry en version 10.
-- Ajout d'une règle ESLint pour vérifier l'utilisation de la validation de schéma dans les routes.
-- Suppression de la notion de nonce pour la sécurité.
-- Ajout de sourcemaps pour Sentry.
-- Amélioration de la gestion des secrets et des variables d'environnement.
-- Utilisation de la dernière version de la carte DSFR.
+- **Architecture & Composants :**
+    - Migration vers les composants DSFR pour l'ensemble de l'interface utilisateur (boutons, liens, accordéons, cartes, etc.).
+    - Refonte de la gestion des liens pour utiliser les composants DSFR.
+    - Suppression de code obsolète (ancien accordéon, styles CSS inutiles).
+- **Sécurité :**
+    - Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (axios, dompurify, uuid, postcss).
+    - Validation des entrées utilisateur avec Zod pour renforcer la sécurité.
+    - Suppression de l'utilisation de `express-validator`.
+    - Aseptisation des chaines de caractères utilisées dans les attributs HTML.
+- **Performance & Infrastructure :**
+    - Suppression de la mise en cache pour les guides.
+    - Amélioration de la gestion des ressources et des secrets.
+    - Optimisation du code pour réduire le CLS (Cumulative Layout Shift).
+- **Développement :**
+    - Mise à jour des versions de l'UI Kit.
+    - Amélioration des tests et de la qualité du code.
+    - Utilisation de sourcemaps pour Sentry.
 
 ### Autres changements
-- Ajout de tests unitaires avec Vitest.
-- Amélioration de la documentation.
-- Nettoyage du code et suppression de code inutile.
-- Correction de l'effet d'étirement des SVG.
-- Ajout d'attributs alt aux images pour l'optimisation SEO.
-- Ajout de meta descriptions aux URL manquantes pour l'optimisation SEO.
-- Harmonisation des cellules ISO dans le module NIS2.
-- Ajout de la référence ISO dans le badge NIS2.
-- Mise à jour du nombre de services cyber consultés.
-- Correction de la lecture des guides.
-- Suppression d'une branche inutile.
-- Initialisation des descriptions de sous-module.
-- Ajout de la gestion de l'export CSV en anglais.
-- Correction de l'accès aux variables d'environnement.
-- Amélioration de la gestion des erreurs et des alertes.
-- Ajout de la trace des clics sur les liens.
-- Suppression de l'aseptisation du middleware.
-- Suppression de l'ancien style des favoris.
-- Suppression de l'ancien accordéon.
-- Ajout de la gestion du gap des cartes.
-- Ajout de la gestion du wrapper Bouton.
-- Correction de l'affichage du séparateur sur fond blanc.
-- Ajout de la possibilité de lire les secrets.
-- Ajout de la gestion de la langue dans le nom du fichier exporté.
-- Ajout de la gestion des rôles.
-- Ajout de la gestion des documents dans les guides.
-- Ajout de la gestion de l'ajout de documents dans les guides.
-- Ajout de la gestion de la suppression de documents dans les guides.
-- Amélioration de la gestion des erreurs.
-- Ajout de la gestion de l'affichage des documents associés aux guides.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la copie du lien court des guides dans le presse-papier.
-- Ajout de la gestion de l'affichage des documents associés aux guides.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
-- Ajout de la gestion de la suppression de documents associés aux guides.
-- Ajout de la gestion de la vérification de l'existence du fichier avant de l'ajouter.
+- Documentation mise à jour.
+- Suppression de branches inutiles.
+- Corrections de bugs mineurs et améliorations de la qualité du code.
+- Ajout de règles ESLint pour renforcer la cohérence du code.
+- Mise à jour des métadonnées SEO (descriptions, attributs alt).
