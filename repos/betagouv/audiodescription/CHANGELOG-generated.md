@@ -1,21 +1,18 @@
-## Changelog : audiodescription (30 derniers jours)
+## Changelog : audiodescription (30 derniers jours, au 2026-05-09)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à la plateforme audiodescription au cours des 30 derniers jours. Les mises à jour se concentrent principalement sur la correction de bugs et l'amélioration de l'accessibilité, notamment au niveau des pages de recherche et des listes de films. Une fonctionnalité de désactivation de la page d'inscription a également été ajoutée.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la documentation du projet, la correction de bugs d'affichage et la mise à jour de la configuration technique. Ces changements visent à faciliter le développement et la maintenance de la plateforme, ainsi qu'à améliorer l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- La page d'inscription a été désactivée. [#1018a21](https://github.com/betagouv/audiodescription/commit/1018a21)
-- Correction de bugs sur les pages de films pour une meilleure expérience utilisateur. [#3523fdf](https://github.com/betagouv/audiodescription/commit/3523fdf)
-- Le bouton de réinitialisation a été corrigé sur la page de recherche. [#4075386](https://github.com/betagouv/audiodescription/commit/4075386)
-- Correction de l'affichage des puces dans les listes. [#a158ce0](https://github.com/betagouv/audiodescription/commit/a158ce0)
-- Correction de bugs généraux. [#83c5b09](https://github.com/betagouv/audiodescription/commit/83c5b09)
+- Correction d'un bug d'affichage : ajout d'une bordure aux tuiles de genres pour une meilleure visibilité. [#f17dc62](https://github.com/betagouv/audiodescription/commit/f17dc62)
+- Correction de bugs liés aux mises à jour des composants. [#dcbcc92](https://github.com/betagouv/audiodescription/commit/dcbcc92)
 
 ### Évolutions techniques
-- Mise à jour de la tâche cron pour une meilleure gestion des processus planifiés. [#15f41c2](https://github.com/betagouv/audiodescription/commit/15f41c2)
-- Correction d'une vérification de variable nulle pour éviter des erreurs potentielles. [#72365fc](https://github.com/betagouv/audiodescription/commit/72365fc)
+- Mise à jour de PHP et de Composer pour bénéficier des dernières améliorations et correctifs de sécurité. [#e262948](https://github.com/betagouv/audiodescription/commit/e262948)
+- Mise à jour de la configuration PHP (php.ini) et de la configuration générale de l'application. [#7da4877](https://github.com/betagouv/audiodescription/commit/7da4877), [#e235092](https://github.com/betagouv/audiodescription/commit/e235092)
+- Suppression d'une configuration inutilisée. [#f2ec321](https://github.com/betagouv/audiodescription/commit/f2ec321)
 
-### Évolutions d'accessibilité
-- Amélioration des titres dans les pages de résultats de recherche pour une meilleure lisibilité par les lecteurs d'écran (avec numéro de page et mot-clé). [#6edc6bf](https://github.com/betagouv/audiodescription/commit/6edc6bf)
-- Ajout de structures de listes manquantes pour améliorer l'accessibilité. [#d1d5fac](https://github.com/betagouv/audiodescription/commit/d1d5fac) et [#d8e9690](https://github.com/betagouv/audiodescription/commit/d8e9690)
-- Amélioration du focus sur la liste des genres pour une navigation plus aisée au clavier. [#3bf8019](https://github.com/betagouv/audiodescription/commit/3bf8019)
-- Correction de bugs sur les listes. [#6f702b7](https://github.com/betagouv/audiodescription/commit/6f702b7)
+### Autres changements
+- Ajout d'un guide de développement pour faciliter la contribution au projet. [#51c61a4](https://github.com/betagouv/audiodescription/commit/51c61a4)
+- Amélioration de la documentation et application de règles de linting pour assurer la cohérence du code. [#9273776](https://github.com/betagouv/audiodescription/commit/9273776)
+- Suppression de fichiers inutilisés et renommage de fichiers de documentation. [#0137c13](https://github.com/betagouv/audiodescription/commit/0137c13)

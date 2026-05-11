@@ -6,6 +6,7 @@
 ├── LICENSE.txt
 ├── Makefile
 ├── README.md
+├── agents.md
 ├── compose.prod.yml
 ├── compose.staging.yml
 ├── compose.yml
@@ -50,19 +51,63 @@
 │   └── postgres
 │       └── init-patrimony-db.sh
 ├── docs
-│   ├── 01_installation
-│   │   ├── 01_dev.md
-│   │   └── 02_prod.md
-│   ├── 02_technique
-│   │   ├── 01_matrice-partenaires.md
-│   │   └── 01_partenaires
-│   │       ├── 01_france-tv.md
-│   │       ├── 02_arte-tv.md
-│   │       ├── 03_tf1.md
-│   │       ├── 04_lacinetek.md
-│   │       ├── 05_mycanal.md
-│   │       ├── 06_canalvod.md
-│   │       └── 07_vodorange.md
+│   ├── 1.0-Introduction.md
+│   ├── 2.0-StructureStack.md
+│   ├── 3.0-Getting-Started.md
+│   ├── 4.0-Architecture.md
+│   ├── 5.0-Drupal.md
+│   ├── 5.1.0-Audiodescription-Module.md
+│   ├── 5.1.1-Services.md
+│   ├── 5.1.2-Importers.md
+│   ├── 5.1.3-Error-Handling.md
+│   ├── 5.2.0-Theme.md
+│   ├── 5.2.1-DSFR-Integration.md
+│   ├── 5.2.2-Theme-Preprocessing.md
+│   ├── 5.2.3-JavaScript-Components.md
+│   ├── 5.3.0-Movie-Display-System.md
+│   ├── 5.3.1-Movie-Node-Display.md
+│   ├── 5.3.2-Offer-Partner-Display.md
+│   ├── 5.4.0-Search-Filtering.md
+│   ├── 5.4.1-Search-Fom-Filters.md
+│   ├── 5.4.2-Search-Manager-Query-Building.md
+│   ├── 5.4.3-Search-API-Configuration.md
+│   ├── 5.5.0-Homepage-Collections.md
+│   ├── 5.5.1-Homepage.md
+│   ├── 5.5.2-Collections-Genres-Pages.md
+│   ├── 5.6.0-Navigation-Breadcrumbs.md
+│   ├── 5.6.1-Breadcrumb-Builders.md
+│   ├── 5.6.2-Header-Footer.md
+│   ├── 6.0-Patrimony.md
+│   ├── 6.1.0-Pipeline-Import.md
+│   ├── 6.1.1-Integration-API-partners.md
+│   ├── 6.1.2-Data-Transformation-Matching.md
+│   ├── 6.1.3-Matrice-Partenaires.md
+│   ├── 6.1.3-Partners
+│   │   ├── 1-FranceTv.md
+│   │   ├── 2-ArteTv.md
+│   │   ├── 3-Tf1.md
+│   │   ├── 4-LaCinetek.md
+│   │   ├── 5-myCanal.md
+│   │   ├── 6-CanalVod.md
+│   │   └── 7-VodOrange.md
+│   ├── 6.2.0-Data-Model.md
+│   ├── 6.3.0-Newsletter.md
+│   ├── 7.0-Deployment-Operations.md
+│   ├── 7.1.0-Docker-Setup.md
+│   ├── 7.2.0-Cron-Jobs-Automation.md
+│   ├── 7.3.0-Drupal-Config-Management.md
+│   ├── 7.4.0-Commands-Makefile.md
+│   ├── 8.0-Development-Guide.md
+│   ├── 8.1.0-Frontend-Development.md
+│   ├── 8.2.0-Backend-Developement.md
+│   ├── 8.3.0-Adding-New-Partners-Integrations.md
+│   ├── assets
+│   │   └── AD-schema-technique.jpg
+│   ├── dat
+│   │   ├── 1-ArchitectureLogique.md
+│   │   ├── 2-ArchitectureTechnique.md
+│   │   ├── 3-ArchitecturePhysique.md
+│   │   └── 4-Annexes.md
 │   └── index.md
 ├── drupal
 │   ├── .editorconfig
@@ -161,6 +206,7 @@
 │   │       ├── block_content.type.basic.yml
 │   │       ├── claro.settings.yml
 │   │       ├── config_*.yml  (8 files)
+│   │       ├── core.base_field_override.node.article.promote.yml
 │   │       ├── core.base_field_override.node.movie.promote.yml
 │   │       ├── core.base_field_override.node.page.promote.yml
 │   │       ├── core.date_format.fallback.yml
@@ -492,6 +538,9 @@
 │   │       ├── field.field.taxonomy_term.partner.field_taxo_order.yml
 │   │       ├── field.field.taxonomy_term.partner.field_taxo_pronunciation.yml
 │   │       ├── field.field.taxonomy_term.public.field_taxo_code.yml
+│   │       ├── field.field.user.user.field_last_password_reset.yml
+│   │       ├── field.field.user.user.field_password_expiration.yml
+│   │       ├── field.field.user.user.field_pending_expire_sent.yml
 │   │       ├── field.settings.yml
 │   │       ├── field.storage.block_content.body.yml
 │   │       ├── field.storage.config_pages.field_about_button_text.yml
@@ -630,6 +679,9 @@
 │   │       ├── field.storage.taxonomy_term.field_taxo_pronunciation.yml
 │   │       ├── field.storage.taxonomy_term.field_taxo_role.yml
 │   │       ├── field.storage.taxonomy_term.field_taxo_short_desc.yml
+│   │       ├── field.storage.user.field_last_password_reset.yml
+│   │       ├── field.storage.user.field_password_expiration.yml
+│   │       ├── field.storage.user.field_pending_expire_sent.yml
 │   │       ├── field_ui.settings.yml
 │   │       ├── file.settings.yml
 │   │       ├── filter.format.basic_html.yml
@@ -806,6 +858,8 @@
 │   │       ├── paragraphs.paragraphs_type.pg_quotes.yml
 │   │       ├── paragraphs.paragraphs_type.pg_video_iframe.yml
 │   │       ├── paragraphs.settings.yml
+│   │       ├── password_policy.password_policy.password.yml
+│   │       ├── password_policy.settings.yml
 │   │       ├── pathauto.pattern.article.yml
 │   │       ├── pathauto.pattern.collection.yml
 │   │       ├── pathauto.pattern.genre.yml
@@ -865,7 +919,6 @@
 │   │       ├── system.menu.tools.yml
 │   │       ├── system.menu.top-footer.yml
 │   │       ├── system.performance.yml
-│   │       ├── system.rss.yml
 │   │       ├── system.site.yml
 │   │       ├── system.theme.global.yml
 │   │       ├── system.theme.yml
@@ -880,7 +933,6 @@
 │   │       ├── taxonomy.vocabulary.partner.yml
 │   │       ├── taxonomy.vocabulary.public.yml
 │   │       ├── text.settings.yml
-│   │       ├── ui_patterns_settings.settings.yml
 │   │       ├── ui_suite_dsfr.settings.yml
 │   │       ├── update.settings.yml
 │   │       ├── user.flood.yml
@@ -946,6 +998,7 @@
 │       │           │   ├── search-ajax-live-update.js
 │       │           │   └── search-ajax-url-update.js
 │       │           ├── src
+│       │           │   ├── AudiodescriptionServiceProvider.php
 │       │           │   ├── Breadcrumb
 │       │           │   │   ├── CollectionBreadcrumbBuilder.php
 │       │           │   │   ├── DirectorBreadcrumbBuilder.php
@@ -1032,6 +1085,9 @@
 │       │           │   │       └── SearchContactBlock.php
 │       │           │   ├── Popo
 │       │           │   │   └── MovieSearchParametersBag.php
+│       │           │   ├── SearchAPI
+│       │           │   │   └── Query
+│       │           │   │       └── FilterBuilder.php
 │       │           │   └── TwigExtension
 │       │           │       ├── RemovePrefixNumberTwigFilter.php
 │       │           │       └── WysiwygChapoTwigFilter.php
@@ -1260,6 +1316,7 @@
 │   │   ├── packages
 │   │   │   ├── api_platform.yaml
 │   │   │   ├── cache.yaml
+│   │   │   ├── csrf.yaml
 │   │   │   ├── debug.yaml
 │   │   │   ├── doctrine.yaml
 │   │   │   ├── doctrine_migrations.yaml
@@ -1267,6 +1324,7 @@
 │   │   │   ├── monolog.yaml
 │   │   │   ├── nelmio_cors.yaml
 │   │   │   ├── patrimony.yaml
+│   │   │   ├── property_info.yaml
 │   │   │   ├── routing.yaml
 │   │   │   ├── security.yaml
 │   │   │   ├── translation.yaml
@@ -1275,6 +1333,7 @@
 │   │   │   ├── validator.yaml
 │   │   │   └── web_profiler.yaml
 │   │   ├── preload.php
+│   │   ├── reference.php
 │   │   ├── routes
 │   │   │   ├── api_platform.yaml
 │   │   │   ├── easyadmin.yaml
@@ -1311,7 +1370,6 @@
 │   │   │   ├── ImportCanalVodApiCommand.php
 │   │   │   ├── ImportCncPublicCommand.php
 │   │   │   ├── ImportFranceTvApiCommand.php
-│   │   │   ├── ImportFranceTvCsvCommand.php
 │   │   │   ├── ImportLaCinetekApiCommand.php
 │   │   │   ├── ImportOrangeVodCsvCommand.php
 │   │   │   ├── ImportTf1ApiCommand.php
@@ -1378,7 +1436,6 @@
 │   │   │   │   ├── CanalReplayApiImporter.php
 │   │   │   │   ├── CanalVodApiImporter.php
 │   │   │   │   ├── FranceTvApiImporter.php
-│   │   │   │   ├── FranceTvCsvImporter.php
 │   │   │   │   ├── ImporterFactory.php
 │   │   │   │   ├── LaCinetekApiImporter.php
 │   │   │   │   ├── MovieImporterInterface.php
@@ -1456,4 +1513,4 @@
     ├── logrotate
     ├── restore_drupal.sh
     └── restore_patrimony.sh
-156 directories, 1324 files
+158 directories, 1379 files
