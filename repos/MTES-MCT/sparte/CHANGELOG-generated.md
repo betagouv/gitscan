@@ -1,20 +1,17 @@
-## Changelog : sparte (30 derniers jours, au 17 avril 2026)
+## Changelog : sparte (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'interface utilisateur, notamment une refonte complète de la page d'accueil pour une meilleure présentation des fonctionnalités et des indicateurs clés. Des corrections ont également été apportées pour améliorer l'expérience utilisateur et la performance de l'application.
+Cette version apporte des améliorations significatives à l'interface utilisateur, notamment une refonte complète de la page d'accueil pour une meilleure présentation des fonctionnalités et des données. Des corrections ont également été apportées pour améliorer la lisibilité des indicateurs clés et résoudre des problèmes de cache et d'affichage.
 
 ### Évolutions fonctionnelles
-- **Page d'accueil refondue** : Nouvelle présentation des cartes produits et de la section "héros" avec un compteur du nombre total de diagnostics [#1534](https://github.com/MTES-MCT/sparte/issues/1534).
-- **Amélioration de l'affichage des indicateurs clés (KPI)** : Raccourcissement du libellé de l'indicateur "Consommation d'espaces NAF cible" pour une meilleure lisibilité.
-- **Amélioration de la chronologie ZAN** : Style amélioré des éléments passés dans la chronologie ZAN.
-- **Animation de la barre de recherche** : Ajout d'une animation de machine à écrire au texte d'espace réservé de la barre de recherche.
-- **Correction d'un dépassement** : Correction d'un problème de dépassement d'affichage [#1546](https://github.com/MTES-MCT/sparte/issues/1546).
-- **Suppression de la pagination des Règlements Secondaires** : Suppression de la pagination sur la page des Règlements Secondaires [#1542](https://github.com/MTES-MCT/sparte/issues/1542).
+- **Page d'accueil refondue :** Nouvelle présentation des cartes produits et de la section principale, améliorant l'expérience utilisateur.  [#1534](https://github.com/MTES-MCT/sparte/pull/1534)
+- **Amélioration de la lisibilité des indicateurs :** Le libellé de l'indicateur "Consommation d'espaces NAF cible" a été raccourci pour une meilleure lisibilité. [#1546](https://github.com/MTES-MCT/sparte/pull/1546)
+- **Correction d'un problème d'affichage :** Suppression des "r secondaires" qui posaient problème. [#1542](https://github.com/MTES-MCT/sparte/pull/1542)
 
 ### Évolutions techniques
-- **Cache busting corrigé** : Correction du mécanisme de cache busting pour s'assurer que les utilisateurs voient toujours la dernière version de l'application [#1545](https://github.com/MTES-MCT/sparte/issues/1545).
-- **Optimisation des images** : Suppression des images inutilisées et réduction de la taille des images pour améliorer les performances.
+- **Cache busting :** Correction d'un problème de cache pour s'assurer que les dernières versions des ressources sont utilisées. [#1545](https://github.com/MTES-MCT/sparte/pull/1545)
+- **Optimisation des images :** Suppression des images inutilisées et réduction de la taille des images pour améliorer les performances. [#1534](https://github.com/MTES-MCT/sparte/pull/1534)
 
 ### Autres changements
-- **Typographie corrigée** : Correction d'une faute de frappe.
-- **Mise à jour des badges de fonctionnalités et des libellés KPI** : Mise à jour des badges de fonctionnalités et des libellés KPI sur la page d'accueil.
+- Correction de fautes de frappe et améliorations de la qualité du code.
+- Suppression de code inutile.
