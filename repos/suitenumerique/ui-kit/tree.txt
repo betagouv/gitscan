@@ -27,22 +27,87 @@
 ├── cunningham.ts
 ├── docs
 │   └── deploy.md
+├── e2e
+│   ├── file-preview
+│   │   ├── audio-preview.spec.tsx
+│   │   ├── file-preview-actions.spec.tsx
+│   │   ├── heic-file-preview.spec.tsx
+│   │   ├── image-preview.spec.tsx
+│   │   ├── pdf-preview-error.spec.tsx
+│   │   ├── pdf-preview-links.spec.tsx
+│   │   ├── pdf-preview-mixed-sizes.spec.tsx
+│   │   ├── pdf-preview-security.spec.tsx
+│   │   ├── pdf-preview.spec.tsx
+│   │   ├── unsupported-file-preview.spec.tsx
+│   │   └── video-preview.spec.tsx
+│   └── helpers
+│       ├── fixtures.ts
+│       ├── mount-preview.tsx
+│       └── pdf-helpers.ts
 ├── eslint.config.js
 ├── package.json
+├── playwright
+│   ├── index.html
+│   └── index.tsx
+├── playwright.config.ts
 ├── public
 │   ├── storybook
 │   │   ├── hero-image.png
 │   │   ├── logo-fichiers.svg
 │   │   ├── logo-uikit-dark.svg
-│   │   └── logo-uikit-default.svg
+│   │   ├── logo-uikit-default.svg
+│   │   └── preview-files
+│   │       ├── Archive.7z
+│   │       ├── CR Conseil municipal vfvdef_maireok.pdf
+│   │       ├── Folders.iso
+│   │       ├── IMG_7665.heic
+│   │       ├── Rembrandt_Winterlandschap_1646.jpg
+│   │       ├── Tableau.xlsx
+│   │       ├── XFA-3_3.pdf
+│   │       ├── art-institute-of-chicago-ce0DXHdjbhw-unsplash 1.png
+│   │       ├── chantier.mp4
+│   │       ├── coucou.pages
+│   │       ├── mixed_page_sizes.pdf
+│   │       ├── monet_1.jpeg
+│   │       ├── nuissance_sonores.mp3
+│   │       ├── pdf_corrupted.pdf
+│   │       ├── pv_cm.pdf
+│   │       └── test-unsupported.bin
 │   └── vite.svg
 ├── renovate.json
 ├── scripts
 │   ├── generate-icons.config.ts
-│   └── generate-icons.ts
+│   ├── generate-icons.ts
+│   └── generate-test-pdfs.mjs
 ├── servers.conf.erb
 ├── src
 │   ├── assets
+│   │   ├── files
+│   │   │   └── icons
+│   │   │       ├── mime-archive-mini.svg
+│   │   │       ├── mime-archive.svg
+│   │   │       ├── mime-audio-mini.svg
+│   │   │       ├── mime-audio.svg
+│   │   │       ├── mime-calc-mini.svg
+│   │   │       ├── mime-calc.svg
+│   │   │       ├── mime-doc-mini.svg
+│   │   │       ├── mime-doc.svg
+│   │   │       ├── mime-folder-mini.svg
+│   │   │       ├── mime-grist-mini.svg
+│   │   │       ├── mime-grist.svg
+│   │   │       ├── mime-image-mini.svg
+│   │   │       ├── mime-image.svg
+│   │   │       ├── mime-other-mini.svg
+│   │   │       ├── mime-other.svg
+│   │   │       ├── mime-pdf-mini.svg
+│   │   │       ├── mime-pdf.svg
+│   │   │       ├── mime-powerpoint-mini.svg
+│   │   │       ├── mime-powerpoint.svg
+│   │   │       ├── mime-sqlite-mini.svg
+│   │   │       ├── mime-sqlite.svg
+│   │   │       ├── mime-video-mini.svg
+│   │   │       ├── mime-video.svg
+│   │   │       └── suspicious_file.svg
 │   │   ├── fonts
 │   │   │   └── Marianne
 │   │   │       ├── Marianne-Bold.woff
@@ -470,6 +535,72 @@
 │   │   │   ├── index.tsx
 │   │   │   ├── onboarding-modal.stories.tsx
 │   │   │   └── types.ts
+│   │   ├── preview
+│   │   │   ├── FilePreview.scss
+│   │   │   ├── FilePreview.tsx
+│   │   │   ├── components
+│   │   │   │   ├── ZoomControls
+│   │   │   │   │   └── ZoomControls.tsx
+│   │   │   │   ├── controls
+│   │   │   │   │   ├── PreviewControls.scss
+│   │   │   │   │   └── PreviewControls.tsx
+│   │   │   │   ├── duration-bar
+│   │   │   │   │   ├── DurationBar.scss
+│   │   │   │   │   └── DurationBar.tsx
+│   │   │   │   ├── preview-message
+│   │   │   │   │   ├── PreviewMessage.scss
+│   │   │   │   │   └── PreviewMessage.tsx
+│   │   │   │   └── volume-bar
+│   │   │   │       ├── VolumeBar.scss
+│   │   │   │       └── VolumeBar.tsx
+│   │   │   ├── icons
+│   │   │   │   ├── FileIcon.scss
+│   │   │   │   ├── FileIcon.tsx
+│   │   │   │   └── LeftSidebarIcon.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── preview.scss
+│   │   │   ├── stories
+│   │   │   │   ├── FilePreviewExample.tsx
+│   │   │   │   ├── file-icon.stories.tsx
+│   │   │   │   ├── file-preview.stories.tsx
+│   │   │   │   └── fixtures.ts
+│   │   │   ├── types.ts
+│   │   │   ├── utils
+│   │   │   │   ├── getExtensionFromName.ts
+│   │   │   │   ├── mimeTypes.ts
+│   │   │   │   └── printImage.ts
+│   │   │   └── viewers
+│   │   │       ├── audio-player
+│   │   │       │   ├── AudioPlayer.scss
+│   │   │       │   └── AudioPlayer.tsx
+│   │   │       ├── error
+│   │   │       │   └── ErrorPreview.tsx
+│   │   │       ├── image-viewer
+│   │   │       │   ├── ImageViewer.scss
+│   │   │       │   └── ImageViewer.tsx
+│   │   │       ├── not-supported
+│   │   │       │   └── NotSupportedPreview.tsx
+│   │   │       ├── pdf-preview
+│   │   │       │   ├── OutdatedBrowserPreview.tsx
+│   │   │       │   ├── PdfControls.tsx
+│   │   │       │   ├── PdfPageViewer.tsx
+│   │   │       │   ├── PdfPreview.scss
+│   │   │       │   ├── PdfPreview.tsx
+│   │   │       │   ├── PdfThumbnailSidebar.tsx
+│   │   │       │   ├── pdfConsts.tsx
+│   │   │       │   ├── pdfOptions.ts
+│   │   │       │   ├── pdfPolyfills.ts
+│   │   │       │   ├── useDebouncedResize.ts
+│   │   │       │   ├── usePdfNavigation.ts
+│   │   │       │   ├── usePdfPageDimensions.ts
+│   │   │       │   └── useRedirectDisclaimer.tsx
+│   │   │       ├── suspicious
+│   │   │       │   └── SuspiciousPreview.tsx
+│   │   │       ├── video-player
+│   │   │       │   ├── VideoPlayer.scss
+│   │   │       │   └── VideoPlayer.tsx
+│   │   │       └── wopi
+│   │   │           └── WopiOpenInEditor.tsx
 │   │   ├── quick-search
 │   │   │   ├── QuickSearch.tsx
 │   │   │   ├── QuickSearchGroup.tsx
@@ -605,7 +736,8 @@
 │   ├── locales
 │   │   ├── Locale.tsx
 │   │   ├── en-US.json
-│   │   └── fr-FR.json
+│   │   ├── fr-FR.json
+│   │   └── nl-NL.json
 │   ├── style-stories.scss
 │   ├── styles
 │   │   ├── _variables.scss
@@ -620,4 +752,4 @@
 ├── tsconfig.json
 ├── vite.config.ts
 └── yarn.lock
-80 directories, 542 files
+106 directories, 648 files

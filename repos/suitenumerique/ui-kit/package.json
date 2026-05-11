@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.20.2",
+  "version": "0.21.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -33,7 +33,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate-icons": "tsx scripts/generate-icons.ts",
-    "scalingo-postbuild": "yarn build && yarn build-storybook"
+    "scalingo-postbuild": "yarn build && yarn build-storybook",
+    "test:ct": "playwright test -c playwright.config.ts",
+    "test:ct:ui": "playwright test -c playwright.config.ts --ui",
+    "generate-test-pdfs": "node scripts/generate-test-pdfs.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
@@ -49,11 +52,14 @@
     "react-arborist": "3.4.3",
     "react-aria-components": "1.16.0",
     "react-resizable-panels": "2.1.7",
-    "react-stately": "3.37.0"
+    "react-stately": "3.37.0",
+    "react-virtualized": "9.22.6",
+    "react-pdf": "10.1.0"
   },
   "peerDependencies": {
     "react": "^19.1.2",
-    "react-dom": "^19.1.2"
+    "react-dom": "^19.1.2",
+    "@tanstack/react-query": "^5"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
@@ -74,8 +80,10 @@
     "@svgr/plugin-jsx": "8.1.0",
     "@svgr/plugin-prettier": "8.1.0",
     "@svgr/plugin-svgo": "8.1.0",
+    "@tanstack/react-query": "5.90.10",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
+    "@types/react-virtualized": "9.22.3",
     "@vitejs/plugin-react": "4.3.4",
     "@vitest/coverage-c8": "0.33.0",
     "@vitest/ui": "2.1.8",
@@ -106,7 +114,10 @@
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "2.1.8",
     "vitest-fetch-mock": "0.4.3",
-    "yup": "1.6.1"
+    "yup": "1.6.1",
+    "@playwright/experimental-ct-react": "1.52.0",
+    "@playwright/test": "1.52.0",
+    "pdf-lib": "1.17.1"
   },
   "eslintConfig": {
     "extends": [
