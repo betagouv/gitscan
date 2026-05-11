@@ -1,48 +1,32 @@
-## Changelog : docs (30 derniers jours, au 6 mai 2026)
+## Changelog : docs (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité et l'expérience utilisateur, avec des corrections de bugs significatives dans l'interface utilisateur, la gestion des documents et la collaboration. Des optimisations ont été apportées à la gestion du contenu, notamment avec l'introduction d'endpoints dédiés pour le streaming et la mise à jour du contenu, ainsi qu'une refonte de la gestion des threads. Une mise à niveau majeure de la spécification Docspec a également été intégrée.
+Ce changelog couvre les 30 derniers jours d'évolution du projet Docs. Les améliorations se concentrent sur la stabilité et la performance, notamment avec la migration vers de nouveaux outils de construction et de gestion des dépendances (uv et uv_build). Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées, en particulier concernant la collaboration en temps réel, la gestion des liens internes et la gestion des erreurs. Enfin, la sécurité a été renforcée avec des mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers la documentation dans le menu d'aide.
-- Intégration de Crisp (outil de chat) dans le menu d'aide.
-- Amélioration de l'expérience utilisateur des liens internes (interlinking) avec une nouvelle interface et correction de bugs liés à l'exportation et au focus.
-- Possibilité d'ouvrir les liens internes avec le bouton central de la souris ou les touches Ctrl/Cmd.
-- Amélioration de la gestion des documents épinglés, désormais triés par date de dernière modification.
-- Mise en place d'un endpoint dédié pour le streaming du contenu S3, améliorant les performances.
-- Création d'un endpoint dédié pour la mise à jour du contenu des documents.
-- Suppression de l'endpoint déprécié pour les descendants de documents.
-- Amélioration de la gestion des erreurs 5xx avec une structure d'alerte plus accessible.
-- Amélioration de l'accessibilité des étiquettes des résultats de recherche de documents pour les lecteurs d'écran.
+- Ajout d'un lien vers la documentation dans le menu d'aide. [#2222](https://github.com/suitenumerique/docs/issues/2222)
+- Amélioration de l'expérience utilisateur des liens internes (interlinking) avec une interface plus claire et des corrections de bugs. [#2213](https://github.com/suitenumerique/docs/issues/2213)
+- Ajout de la possibilité d'utiliser un nouveau service d'IA (Mistral) pour certaines fonctionnalités. [#2193](https://github.com/suitenumerique/docs/issues/2193)
+- Amélioration de la gestion des erreurs 5xx avec une structure d'alerte plus accessible. [#2128](https://github.com/suitenumerique/docs/issues/2128)
+- Ajout du support hors ligne pour le contenu.
+- Amélioration de la gestion des membres sur les petits écrans. [#2226](https://github.com/suitenumerique/docs/issues/2226)
 
 ### Évolutions techniques
-- Mise à niveau de Docspec vers la version 3.0.0, nécessitant des adaptations de l'API de conversion.
-- Refonte de la gestion des threads, avec suppression de la pagination.
-- Utilisation de Uvicorn pour exécuter l'application Django en environnement de développement.
-- Amélioration de la sécurité avec la validation des emojis pour les réactions.
-- Amélioration de la sécurité avec la mise à jour de la librairie Axios.
-- Amélioration de la sécurité avec la mise à jour de la librairie UUID.
-- Amélioration de la sécurité avec la mise à jour de la librairie LXML.
-- Amélioration de la sécurité avec la mise à jour de Next.js.
-- Factorisation des tests E2E dans un workflow séparé pour une meilleure organisation.
-- Ajout de permissions au workflow CI pour une sécurité accrue.
-- Mise à jour de l'image Nginx dans le Dockerfile.
-- Adaptation des types TypeScript pour les mises à jour de Cunningham, ui-kit, i18next et TypeScript.
-- Ajout de support hors ligne pour le contenu via Service Workers, incluant la mise en cache du contenu et des métadonnées.
-- Ajout de gestion des erreurs 401 avec redirection vers l'URL actuelle.
-- Amélioration de la gestion des erreurs et des exceptions dans le backend.
+- Migration de l'outil de construction de Python `setuptools` vers `uv_build` et de la gestion des dépendances `pip` vers `uv`. [#2276](https://github.com/suitenumerique/docs/issues/2276)
+- Mise à jour de plusieurs dépendances, incluant `axios`, `lxml`, `uuid` et les dépendances Python, pour corriger des failles de sécurité et bénéficier des dernières améliorations.
+- Refactorisation du code backend pour améliorer la performance et la maintenabilité, notamment en séparant le module `core/utils.py`.
+- Implémentation d'en-têtes `etag` et `last_modified` pour optimiser la récupération du contenu.
+- Utilisation de `uvicorn` pour exécuter l'application Django en environnement de développement.
+- Amélioration de la gestion des requêtes asynchrones et de la concurrence pour éviter les blocages lors de la création de documents.
+- Mise à jour de Docspec vers la version 3.0.x et adaptation de l'API du convertisseur. [#2220](https://github.com/suitenumerique/docs/issues/2220)
+- Refactorisation des tests E2E pour une meilleure organisation et fiabilité.
 
 ### Autres changements
+- Correction de fautes de frappe dans le fichier `contributing.md`.
 - Mise à jour des chaînes de traduction.
-- Amélioration du prompt pour la traduction IA legacy.
-- Ajout de la possibilité d'utiliser le SDK Mistral pour les fonctionnalités d'IA.
-- Corrections de typos dans la documentation (contributing.md).
-- Ajout d'une checklist IA au template de Pull Request.
-- Ajout d'une politique IA dans la documentation contributing.md.
-- Correction de problèmes de compatibilité des instances E2E.
-- Suppression de la chaîne de requête `without_content` des clients.
 - Ajout d'un favicon par défaut.
-- Ajout de tests pour vérifier la compatibilité des instances E2E.
-- Amélioration de la configuration Helm pour le niveau de log en debug.
-- Correction de bugs mineurs dans l'interface utilisateur et le backend.
-- Publication de la version 5.0.0 et 4.8.6.
+- Amélioration de la gestion des erreurs et des redirections après authentification.
+- Suppression de points de terminaison obsolètes.
+- Ajout d'une configuration pour l'URI de la requête d'authentification forward.
+- Amélioration de la gestion des tests et de l'intégration continue.
+- Correction de bugs mineurs et améliorations de la qualité du code.
