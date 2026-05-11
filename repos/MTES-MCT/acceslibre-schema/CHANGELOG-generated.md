@@ -1,20 +1,20 @@
 ## Changelog : acceslibre-schema (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Cette mise à jour majeure introduit la possibilité de gérer plusieurs schémas distincts pour différents types de bâtiments (base, étage, hébergement, bureau de vote, école) au sein d'un même *datapackage*. Cela permet une modélisation plus précise et flexible des informations d'accessibilité.
+Cette mise à jour majeure introduit la prise en charge de schémas multiples pour une meilleure organisation et flexibilité des données d'accessibilité. Le schéma est désormais divisé en plusieurs fichiers (base, étage, hébergement, bureau de vote, école) pour faciliter la gestion et l'utilisation des informations spécifiques à chaque type de bâtiment.
 
 ### Évolutions fonctionnelles
-- Introduction de schémas spécifiques pour différents types de bâtiments :
-  - `schema_base`
-  - `schema_floor`
-  - `schema_hosting`
-  - `schema_polling_station`
-  - `schema_school`
-- Utilisation du format *datapackage* pour regrouper ces schémas multiples.
+- Introduction de schémas distincts pour différents types de bâtiments :
+  - `schema_base` : Schéma de base commun à tous les types de bâtiments.
+  - `schema_floor` : Schéma pour les informations relatives aux étages.
+  - `schema_hosting` : Schéma pour les informations relatives aux hébergements.
+  - `schema_polling_station` : Schéma pour les informations relatives aux bureaux de vote.
+  - `schema_school` : Schéma pour les informations relatives aux écoles.
+- Conversion vers un format datapackage pour supporter ces multiples schémas.
 
 ### Évolutions techniques
-- Conversion du schéma vers un format *datapackage* pour supporter la gestion de schémas multiples [#33](https://github.com/MTES-MCT/acceslibre-schema/pull/33).
-- Implémentation de la conversion tableschema vers datapackage.
+- Implémentation de la conversion tableschema vers datapackage [#33](https://github.com/MTES-MCT/acceslibre-schema/pull/33).
+- Refonte de la structure des schémas pour permettre la modularité et la réutilisation.
 
 ### Autres changements
-- Aucune autre modification significative n'a été apportée durant cette période.
+- Aucun autre changement significatif à signaler.
