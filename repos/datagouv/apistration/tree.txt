@@ -15,7 +15,9 @@
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── _api-deploy.yml
 │       ├── api-ci_cd.yml
+│       ├── api-deploy-on-mocks-change.yml
 │       ├── api-https-deploy-production.yaml
 │       ├── api-https-deploy-sandbox.yaml
 │       ├── api-https-deploy-staging.yaml
@@ -1067,6 +1069,7 @@
 │   │   │   ├── 200-couple-2_enfants-qf_msa_150_sept2024.yaml
 │   │   │   ├── 200-etranger-celibataire-2_enfants-qf_cnaf_300_sept2024.yaml
 │   │   │   ├── 200-famille-4_enfants.yaml
+│   │   │   ├── 200-famille-avec_espace_dans_le_nom.yaml
 │   │   │   ├── 200-giraud-anne-3_enfants.yaml
 │   │   │   ├── 200-identite-cas-etranger.yaml
 │   │   │   ├── 200-identite-cas-limite-erreur-phonetique.yaml
@@ -1670,7 +1673,6 @@
 │   │   │   │   │   └── build_resource.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_or_transcogage_params.rb
-│   │   │   │   ├── validate_code_cog_insee_pays_naissance.rb
 │   │   │   │   ├── validate_date_naissance.rb
 │   │   │   │   ├── validate_prenoms.rb
 │   │   │   │   ├── validate_request_id.rb
@@ -1883,6 +1885,7 @@
 │   │   │   │   ├── metadonnees
 │   │   │   │   │   ├── make_request.rb
 │   │   │   │   │   └── validate_response.rb
+│   │   │   │   ├── renew_password.rb
 │   │   │   │   ├── siege_diffusable_unite_legale
 │   │   │   │   │   ├── build_unfiltered_resource.rb
 │   │   │   │   │   ├── filter_resource.rb
@@ -2447,6 +2450,8 @@
 │   │   │   ├── extract_provider_from_path.rb
 │   │   │   ├── generate_code_sample_from_path.rb
 │   │   │   ├── hyperping_api.rb
+│   │   │   ├── insee
+│   │   │   │   └── password_derivation.rb
 │   │   │   ├── jwt_token_service.rb
 │   │   │   ├── log_stasher_fields_builder.rb
 │   │   │   ├── maintenance_service.rb
@@ -3325,7 +3330,6 @@
 │   │   │   │   │   └── build_resource_spec.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_or_transcogage_params_spec.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_spec.rb
-│   │   │   │   ├── validate_code_cog_insee_pays_naissance_spec.rb
 │   │   │   │   ├── validate_date_naissance_spec.rb
 │   │   │   │   ├── validate_prenoms_spec.rb
 │   │   │   │   ├── validate_response_spec.rb
@@ -3486,6 +3490,7 @@
 │   │   │   │   ├── metadonnees
 │   │   │   │   │   ├── make_request_spec.rb
 │   │   │   │   │   └── validate_response_spec.rb
+│   │   │   │   ├── renew_password_spec.rb
 │   │   │   │   ├── siege_diffusable_unite_legale
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── siege_unite_legale
@@ -4098,6 +4103,8 @@
 │   │   │   ├── extract_provider_from_path_spec.rb
 │   │   │   ├── generate_code_sample_from_path_spec.rb
 │   │   │   ├── hyperping_api_spec.rb
+│   │   │   ├── insee
+│   │   │   │   └── password_derivation_spec.rb
 │   │   │   ├── jwt_token_service_spec.rb
 │   │   │   ├── maintenance_service_spec.rb
 │   │   │   ├── mcp
@@ -4988,10 +4995,13 @@
     │   │   │   │   ├── scopes_display_controller.js
     │   │   │   │   └── search_catalogue_controller.js
     │   │   │   ├── dsfr.module.js
-    │   │   │   └── utils
-    │   │   │       ├── auto_open_accordeon.js
-    │   │   │       ├── table_search.js
-    │   │   │       └── tooltip.js
+    │   │   │   ├── utils
+    │   │   │   │   ├── auto_open_accordeon.js
+    │   │   │   │   ├── table_search.js
+    │   │   │   │   └── tooltip.js
+    │   │   │   └── vendor
+    │   │   │       └── dsfr-chart
+    │   │   │           └── DSFRChart.js
     │   │   └── stylesheets
     │   │       ├── admin.scss
     │   │       ├── api_entreprise
@@ -5032,18 +5042,21 @@
     │   │       ├── dsfr-fonts.scss
     │   │       ├── dsfr-utility.scss
     │   │       ├── dsfr.scss
-    │   │       └── shared
-    │   │           └── pages
-    │   │               ├── cas_usage.scss
-    │   │               ├── cas_usages.scss
-    │   │               ├── documentation.scss
-    │   │               ├── endpoint.scss
-    │   │               ├── faq.scss
-    │   │               ├── home
-    │   │               │   ├── _section_access.scss
-    │   │               │   ├── _section_demonstrateur.scss
-    │   │               │   └── _section_developers.scss
-    │   │               └── redoc.scss
+    │   │       ├── shared
+    │   │       │   └── pages
+    │   │       │       ├── cas_usage.scss
+    │   │       │       ├── cas_usages.scss
+    │   │       │       ├── documentation.scss
+    │   │       │       ├── endpoint.scss
+    │   │       │       ├── faq.scss
+    │   │       │       ├── home
+    │   │       │       │   ├── _section_access.scss
+    │   │       │       │   ├── _section_demonstrateur.scss
+    │   │       │       │   └── _section_developers.scss
+    │   │       │       └── redoc.scss
+    │   │       └── vendor
+    │   │           └── dsfr-chart
+    │   │               └── DSFRChart.css
     │   ├── clients
     │   │   ├── abstract_hubee_api_client.rb
     │   │   ├── abstract_insee_api_client.rb
@@ -5074,6 +5087,7 @@
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   ├── blog_posts_controller.rb
     │   │   │   ├── cas_usages_controller.rb
+    │   │   │   ├── changelog_subscriptions_controller.rb
     │   │   │   ├── changelogs_controller.rb
     │   │   │   ├── delegations_controller.rb
     │   │   │   ├── documentation_controller.rb
@@ -5095,6 +5109,7 @@
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   ├── blog_posts_controller.rb
     │   │   │   ├── cas_usages_controller.rb
+    │   │   │   ├── changelog_subscriptions_controller.rb
     │   │   │   ├── changelogs_controller.rb
     │   │   │   ├── delegations_controller.rb
     │   │   │   ├── documentation_controller.rb
@@ -5117,10 +5132,12 @@
     │   │   │   ├── authenticated_user_management.rb
     │   │   │   ├── authorization_requests_management.rb
     │   │   │   ├── cas_usages_management.rb
+    │   │   │   ├── changelog_subscriptions_management.rb
     │   │   │   ├── datapass_webhooks.rb
     │   │   │   ├── delegations_management.rb
     │   │   │   ├── global_http_errors_management.rb
     │   │   │   ├── prolong_token_wizard_management.rb
+    │   │   │   ├── provider_dashboard_filtering.rb
     │   │   │   ├── public_token_magic_links_management.rb
     │   │   │   ├── sessions_management.rb
     │   │   │   ├── tokens_management.rb
@@ -5142,8 +5159,15 @@
     │   ├── facade
     │   │   ├── api_request_facade.rb
     │   │   ├── entreprise_with_attestations_facade.rb
-    │   │   ├── provider_stats_facade.rb
     │   │   └── token_stats_facade.rb
+    │   ├── formatters
+    │   │   ├── csv_formatter.rb
+    │   │   └── provider
+    │   │       ├── consumers_csv_formatter.rb
+    │   │       └── habilitations_csv_formatter.rb
+    │   ├── forms
+    │   │   └── provider
+    │   │       └── dashboard_filter.rb
     │   ├── helpers
     │   │   ├── active_links.rb
     │   │   ├── application_helper.rb
@@ -5152,6 +5176,8 @@
     │   │   ├── endpoint_helper.rb
     │   │   ├── external_url_helper.rb
     │   │   ├── friendly_date_helper.rb
+    │   │   ├── mailer_url_helper.rb
+    │   │   ├── provider_dashboard_helper.rb
     │   │   ├── scope_helper.rb
     │   │   ├── tag_color_helper.rb
     │   │   └── user_sessions_helper.rb
@@ -5206,7 +5232,8 @@
     │   │   ├── schedule_authorization_request_email_job.rb
     │   │   ├── schedule_expiration_notice_email_job.rb
     │   │   ├── token_expiration_notice_job.rb
-    │   │   └── update_organization_insee_payload_job.rb
+    │   │   ├── update_organization_insee_payload_job.rb
+    │   │   └── weekly_changelog_digest_job.rb
     │   ├── lib
     │   │   ├── access_token.rb
     │   │   ├── api_entreprise_domain_constraint.rb
@@ -5218,11 +5245,13 @@
     │   │   ├── api_entreprise
     │   │   │   ├── audit_mailer.rb
     │   │   │   ├── authorization_request_mailer.rb
+    │   │   │   ├── changelog_mailer.rb
     │   │   │   └── token_mailer.rb
     │   │   ├── api_entreprise_mailer.rb
     │   │   ├── api_particulier
     │   │   │   ├── audit_mailer.rb
     │   │   │   ├── authorization_request_mailer.rb
+    │   │   │   ├── changelog_mailer.rb
     │   │   │   ├── reporters_mailer.rb
     │   │   │   └── token_mailer.rb
     │   │   ├── api_particulier_mailer.rb
@@ -5260,10 +5289,12 @@
     │   │   ├── authorization_request.rb
     │   │   ├── authorization_request_security_settings.rb
     │   │   ├── changelog_entry.rb
+    │   │   ├── changelog_subscription.rb
     │   │   ├── concerns
     │   │   │   ├── .keep
     │   │   │   ├── abstract_api_class.rb
     │   │   │   └── jwt_token_lifecycle.rb
+    │   │   ├── consumption_summary.rb
     │   │   ├── documentation_searchable_chunk.rb
     │   │   ├── editor.rb
     │   │   ├── editor_delegation.rb
@@ -5297,6 +5328,9 @@
     │   │   ├── application_policy.rb
     │   │   ├── download_attestations_policy.rb
     │   │   └── token_policy.rb
+    │   ├── queries
+    │   │   └── provider
+    │   │       └── dashboard_query.rb
     │   ├── services
     │   │   ├── abstract_open_api_definition.rb
     │   │   ├── access_logs_counts.rb
@@ -5325,6 +5359,7 @@
     │   │   │   └── endpoints_store.rb
     │   │   ├── api_particulier
     │   │   │   └── endpoints_store.rb
+    │   │   ├── route_scopes_store.rb
     │   │   └── throttle_store.rb
     │   └── views
     │       ├── admin
@@ -5387,6 +5422,9 @@
     │       │   ├── cas_usages
     │       │   │   ├── index.html.erb
     │       │   │   └── show.html.erb
+    │       │   ├── changelog_mailer
+    │       │   │   ├── _block_unsubscribe_changelog.html.mjml
+    │       │   │   └── weekly.html.mjml
     │       │   ├── documentation
     │       │   │   ├── _banner.html.erb
     │       │   │   ├── _menu.html.erb
@@ -5476,6 +5514,9 @@
     │       │   ├── cas_usages
     │       │   │   ├── index.html.erb
     │       │   │   └── show.html.erb
+    │       │   ├── changelog_mailer
+    │       │   │   ├── _block_unsubscribe_changelog.html.mjml
+    │       │   │   └── weekly.html.mjml
     │       │   ├── documentation
     │       │   │   ├── _banner.html.erb
     │       │   │   ├── _menu.html.erb
@@ -5558,7 +5599,16 @@
     │       │   └── provider.html.erb
     │       ├── provider
     │       │   └── dashboard
+    │       │       ├── _consumers_table.html.erb
+    │       │       ├── _filter.html.erb
+    │       │       ├── _habilitations_table.html.erb
+    │       │       ├── _loading.html.erb
     │       │       ├── index.html.erb
+    │       │       ├── section_consumers.html.erb
+    │       │       ├── section_duration.html.erb
+    │       │       ├── section_global.html.erb
+    │       │       ├── section_habilitations.html.erb
+    │       │       ├── section_success.html.erb
     │       │       └── show.html.erb
     │       └── shared
     │           ├── _alerts.html.erb
@@ -5616,7 +5666,12 @@
     │           │   ├── _others.html.erb
     │           │   └── _show.html.erb
     │           ├── changelogs
+    │           │   ├── _subscription.html.erb
     │           │   └── index.html.erb
+    │           ├── dsfr_chart
+    │           │   ├── _bar.html.erb
+    │           │   ├── _kpi.html.erb
+    │           │   └── _line.html.erb
     │           ├── editor
     │           │   └── _header.html.erb
     │           ├── endpoints
@@ -5750,6 +5805,7 @@
     │   │   ├── logstasher.rb
     │   │   ├── mailjet.rb
     │   │   ├── mime_types.rb
+    │   │   ├── mjml.rb
     │   │   ├── new_framework_defaults_7_0.rb
     │   │   ├── omniauth.rb
     │   │   ├── permissions_policy.rb
@@ -5773,6 +5829,7 @@
     │   │   │   ├── fr.yml
     │   │   │   └── providers.fr.yml
     │   │   ├── errors.fr.yml
+    │   │   ├── formatters.fr.yml
     │   │   ├── fr.yml
     │   │   ├── mailers.fr.yml
     │   │   ├── models
@@ -5781,6 +5838,7 @@
     │   │   └── reporter_groups.fr.yml
     │   ├── puma.rb
     │   ├── redis.yml
+    │   ├── route_scopes.yml -> ../../commons/data/authorizations.yml
     │   ├── routes
     │   │   ├── api_entreprise.rb
     │   │   └── api_particulier.rb
@@ -5843,9 +5901,12 @@
     │   │   ├── 20260305100001_add_delegations_enabled_to_editors.rb
     │   │   ├── 20260305100002_validate_editor_delegations_foreign_keys.rb
     │   │   ├── 20260318100000_create_editor_tokens.rb
-    │   │   └── 20260318100001_validate_editor_tokens_foreign_keys.rb
+    │   │   ├── 20260318100001_validate_editor_tokens_foreign_keys.rb
+    │   │   └── 20260505100000_create_changelog_subscriptions.rb
     │   ├── schema.rb
-    │   └── seeds.rb
+    │   ├── seeds.rb
+    │   └── views
+    │       └── consumption_summary_v01.sql
     ├── docker
     │   ├── db
     │   │   └── init.sql
@@ -6524,6 +6585,7 @@
     │   │   ├── audit_notifications.rb
     │   │   ├── authorization_request_security_settings.rb
     │   │   ├── authorization_requests.rb
+    │   │   ├── changelog_subscriptions.rb
     │   │   ├── datapass_webhooks.rb
     │   │   ├── datapass_webhooks_v2.rb
     │   │   ├── editor_delegations.rb
@@ -6549,6 +6611,7 @@
     │   │   │   ├── access_spec.rb
     │   │   │   ├── blog_spec.rb
     │   │   │   ├── cas_usages_spec.rb
+    │   │   │   ├── changelog_subscriptions_spec.rb
     │   │   │   ├── changelogs_spec.rb
     │   │   │   ├── create_token_magic_link_spec.rb
     │   │   │   ├── documentation_spec.rb
@@ -6573,6 +6636,7 @@
     │   │   │   ├── authorization_request_show_spec.rb
     │   │   │   ├── blog_spec.rb
     │   │   │   ├── cas_usages_spec.rb
+    │   │   │   ├── changelog_subscriptions_spec.rb
     │   │   │   ├── changelogs_spec.rb
     │   │   │   ├── create_token_magic_link_spec.rb
     │   │   │   ├── documentation_spec.rb
@@ -6601,6 +6665,7 @@
     │   │   ├── prolong_token_start_spec.rb
     │   │   └── provider
     │   │       ├── access_spec.rb
+    │   │       ├── csv_exports_spec.rb
     │   │       └── navigation_spec.rb
     │   ├── fixtures
     │   │   ├── insee
@@ -6610,6 +6675,14 @@
     │   │   │   ├── 21340172201787.json
     │   │   │   └── 21750001600019.json
     │   │   └── insee_unite_legale_example.json
+    │   ├── formatters
+    │   │   ├── csv_formatter_spec.rb
+    │   │   └── provider
+    │   │       ├── consumers_csv_formatter_spec.rb
+    │   │       └── habilitations_csv_formatter_spec.rb
+    │   ├── forms
+    │   │   └── provider
+    │   │       └── dashboard_filter_spec.rb
     │   ├── helpers
     │   │   ├── feature_helper.rb
     │   │   └── specs_helper.rb
@@ -6650,7 +6723,8 @@
     │   │   ├── schedule_authorization_request_email_job_spec.rb
     │   │   ├── schedule_expiration_notice_email_job_spec.rb
     │   │   ├── token_expiration_notice_job_spec.rb
-    │   │   └── update_organization_insee_payload_job_spec.rb
+    │   │   ├── update_organization_insee_payload_job_spec.rb
+    │   │   └── weekly_changelog_digest_job_spec.rb
     │   ├── lib
     │   │   ├── access_token_spec.rb
     │   │   ├── authorization_request_condition_facade_spec.rb
@@ -6662,19 +6736,23 @@
     │   │   ├── api_entreprise
     │   │   │   ├── audit_mailer_spec.rb
     │   │   │   ├── authorization_request_mailer_spec.rb
+    │   │   │   ├── changelog_mailer_spec.rb
     │   │   │   └── token_mailer_spec.rb
     │   │   ├── api_particulier
     │   │   │   ├── authorization_request_mailer_spec.rb
+    │   │   │   ├── changelog_mailer_spec.rb
     │   │   │   ├── reporters_mailer_spec.rb
     │   │   │   └── token_mailer_spec.rb
     │   │   └── previews
     │   │       ├── api_entreprise
     │   │       │   ├── audit_mailer_preview.rb
     │   │       │   ├── authorization_request_mailer_preview.rb
+    │   │       │   ├── changelog_mailer_preview.rb
     │   │       │   └── token_mailer_preview.rb
     │   │       └── api_particulier
     │   │           ├── audit_mailer_preview.rb
     │   │           ├── authorization_request_mailer_preview.rb
+    │   │           ├── changelog_mailer_preview.rb
     │   │           ├── reporters_mailer_preview.rb
     │   │           └── token_mailer_preview.rb
     │   ├── models
@@ -6695,6 +6773,7 @@
     │   │   ├── authorization_request_security_settings_spec.rb
     │   │   ├── authorization_request_spec.rb
     │   │   ├── changelog_entry_spec.rb
+    │   │   ├── changelog_subscription_spec.rb
     │   │   ├── documentation_searchable_chunk_spec.rb
     │   │   ├── editor_delegation_spec.rb
     │   │   ├── editor_spec.rb
@@ -6722,6 +6801,9 @@
     │   │   └── token
     │   │       ├── deliver_magic_link_to_email_spec.rb
     │   │       └── send_expiration_notices_spec.rb
+    │   ├── queries
+    │   │   └── provider
+    │   │       └── dashboard_query_spec.rb
     │   ├── rails_helper.rb
     │   ├── services
     │   │   ├── admin_api_token_spec.rb
@@ -6750,6 +6832,7 @@
     │           ├── features
     │           │   ├── blog.rb
     │           │   ├── cas_usages.rb
+    │           │   ├── changelog_subscriptions.rb
     │           │   ├── changelogs.rb
     │           │   ├── create_token_magic_link.rb
     │           │   ├── documentation.rb
@@ -6786,4 +6869,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1390 directories, 5667 files
+1412 directories, 5728 files
