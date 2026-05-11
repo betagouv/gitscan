@@ -1,27 +1,20 @@
-## Changelog : impactco2 (30 derniers jours, au 22 avril 2026)
+## Changelog : impactco2 (30 derniers jours, au 5 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de fonctionnalités et de qualité. De nouveaux éléments de calcul ont été ajoutés, notamment des repas, et des corrections ont été apportées à l'affichage et à l'accessibilité de l'application. Des améliorations techniques ont également été réalisées pour optimiser les performances et la stabilité, notamment concernant l'intégration de tests visuels et la gestion des erreurs.
+Ce mois-ci, l'application impactco2 s'enrichit de nouvelles données et améliore ses tests. De nouveaux modes de transport et des repas ont été ajoutés pour affiner les comparaisons d'impact carbone. Des améliorations techniques ont également été apportées pour faciliter l'intégration et le suivi des performances de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux repas pour le calcul de l'impact carbone. [#879](https://github.com/incubateur-ademe/impactco2/issues/879)
-- Amélioration de l'affichage des étiquettes (étiquette LR, étiquette de livraison) avec des ajustements de hauteur, de libellés et de largeur maximale.
-- Correction de l'adresse du Bioparc. [#876](https://github.com/incubateur-ademe/impactco2/issues/876)
-- Ajout de nouvelles statistiques. [#873](https://github.com/incubateur-ademe/impactco2/issues/873)
-- Gestion du temps d'engagement en fonction du simulateur. [#873](https://github.com/incubateur-ademe/impactco2/issues/873)
+- Ajout de nouveaux modes de transport pour une comparaison plus précise de l'impact carbone. [#872](https://github.com/incubateur-ademe/impactco2/issues/872)
+- Intégration de nouveaux repas dans la base de données pour élargir les options de comparaison. [#879](https://github.com/incubateur-ademe/impactco2/issues/879)
+- Correction de l'adresse du Bioparc dans les données. [#872](https://github.com/incubateur-ademe/impactco2/issues/872)
 
 ### Évolutions techniques
-- Intégration d'Integrabook pour les tests d'intégration visuels. [#878](https://github.com/incubateur-ademe/impactco2/issues/878)
-- Amélioration de la gestion des erreurs dans les composants Notion avec l'ajout de *error boundaries*.
-- Optimisation de l'appel de la carte (callgmap) dans une fonction serveur. [#874](https://github.com/incubateur-ademe/impactco2/issues/874)
-- Suppression du rendu côté serveur (SSR) sur la page Notion.
-- Correction de valeurs dans le *iframe checker*.
-- Mise à jour de npm. [#875](https://github.com/incubateur-ademe/impactco2/issues/875)
+- Mise à jour de l'outil de vérification des iframes pour améliorer la sécurité et la compatibilité.
+- Amélioration des tests iframes pour une couverture plus complète.
+- Intégration d'Integrabook pour les tests d'intégration visuelle. [#878](https://github.com/incubateur-ademe/impactco2/issues/878)
+- Mise à jour de la version de TypeScript vers la version 7.0.
+- Ajout de logs sur le suivi des API pour faciliter le débogage et l'analyse des performances.
 
 ### Autres changements
-- Ajout de logs pour le suivi de l'API.
-- Suppression de logs inutiles.
-- Ajout de tests sur le Bioparc.
-- Correction du zoom sur les logos du footer.
-- Amélioration de l'accessibilité des étiquettes.
-- Correction de petits problèmes de wording sur les étiquettes.
+- Suppression de logs inutiles dans le code.
+- Fusion de la branche `origin/main` dans `develop`.
