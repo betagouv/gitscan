@@ -1,27 +1,27 @@
-## Changelog : projects (30 derniers jours, au 6 mai 2026)
+## Changelog : projects (30 derniers jours, au 8 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de gestion des tableaux de bord, notamment l'exportation des données, la duplication de tableaux et la gestion des filtres. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, en particulier concernant l'affichage et l'interaction avec les éléments de l'interface. Enfin, une API pour les statistiques a été implémentée.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de la gestion des tableaux de bord, notamment en ajoutant la possibilité d'exporter les données au format CSV, en améliorant la duplication des tableaux et en corrigeant plusieurs bugs liés à l'interface utilisateur et au comportement des cartes. Des améliorations ont également été apportées aux notifications et aux statistiques.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter les données des tableaux de bord au format CSV.
-- Les filtres appliqués sont maintenant inclus dans l'URL, permettant de les partager et de les conserver.
-- Après la duplication d'un tableau de bord, la nouvelle carte s'ouvre automatiquement.
+- Ajout de la possibilité d'exporter les données d'un tableau de bord au format CSV.
+- Les filtres appliqués à un tableau de bord sont désormais inclus dans l'URL, permettant de les partager facilement.
+- Après la duplication d'une carte, celle-ci s'ouvre automatiquement.
 - Amélioration de l'interface utilisateur des actions sur les tableaux de bord pour une meilleure harmonisation.
-- Les notifications ne sont plus automatiquement marquées comme lues lors d'un clic.
-- Implémentation d'une API pour les statistiques, accessible via un nouveau endpoint. [#67](https://github.com/suitenumerique/projects/issues/67)
+- Les notifications ne sont plus automatiquement marquées comme lues lorsqu'on clique dessus.
+- Une API pour les statistiques a été implémentée [#67](https://github.com/suitenumerique/projects/issues/67).
 
 ### Évolutions techniques
-- Correction de problèmes liés à la récupération des tableaux de bord lors de la duplication.
-- Correction de problèmes lors de la création de tableaux de bord à partir de modèles.
-- Correction de bugs liés à la mise à jour des tableaux de bord.
-- Correction de problèmes d'affichage des activités.
-- Correction de bugs concernant les droits d'accès dans les organisations. [#68](https://github.com/suitenumerique/projects/issues/68)
-- Correction de problèmes d'affichage des couleurs des dates d'échéance.
-- Correction d'un bug empêchant l'ouverture des cartes avec Cmd+Enter sur Mac.
-- Correction d'un bug qui pouvait entraîner la duplication d'utilisateurs dans la modale de partage.
-- Correction d'un problème d'affichage si le nom d'un tableau de bord est trop long.
+- Correction d'un problème d'affichage des activités.
+- Correction de plusieurs bugs liés à la duplication des tableaux de bord, notamment des problèmes de récupération et de création de modèles.
+- Correction d'un bug empêchant la mise à jour des tableaux de bord.
+- Correction d'un bug lié à l'ajout de doublons d'utilisateurs dans la fenêtre de partage.
+- Correction d'un bug lié à l'ouverture des cartes avec la combinaison de touches Cmd+Enter sur Mac.
+- Correction de la couleur de fond des badges de date d'échéance.
+- Correction d'un problème d'affichage des noms de tableaux de bord trop longs.
+- Correction des droits d'accès dans les organisations [#68](https://github.com/suitenumerique/projects/issues/68).
+- Intégration de la phase de staging [#69](https://github.com/suitenumerique/projects/issues/69).
 
 ### Autres changements
-- Mise en place d'une étape de staging dans le processus de déploiement. [#69](https://github.com/suitenumerique/projects/issues/69)
 - Le sélecteur de projet n'est plus affiché en mode organisation.
+- Amélioration de la documentation et du code.
