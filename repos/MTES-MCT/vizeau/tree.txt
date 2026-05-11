@@ -63,6 +63,7 @@
 │   │   ├── exploitation_policy.ts
 │   │   └── main.ts
 │   ├── services
+│   │   ├── aac_csv_service.ts
 │   │   ├── aac_service.ts
 │   │   ├── base_csv_service.ts
 │   │   ├── event_logger_service.ts
@@ -169,6 +170,7 @@
 │   │   └── ssr.tsx
 │   ├── components
 │   │   ├── aac-id
+│   │   │   ├── AacActionCard.tsx
 │   │   │   ├── aac-agriculture-section.tsx
 │   │   │   ├── aac-analyses-section.tsx
 │   │   │   ├── aac-captages.tsx
@@ -183,6 +185,12 @@
 │   │   │   └── aacs-search.tsx
 │   │   ├── analyses-section.tsx
 │   │   ├── authentification-bloc.tsx
+│   │   ├── captage
+│   │   │   ├── captage-analyses-header.tsx
+│   │   │   ├── chroniques-par-substances.tsx
+│   │   │   ├── dual-range-slider.tsx
+│   │   │   ├── substance-detail.tsx
+│   │   │   └── substance-scatter-chart.tsx
 │   │   ├── cultures-filters.tsx
 │   │   ├── exploitation-id
 │   │   │   ├── ExploitationActionCard.tsx
@@ -249,12 +257,15 @@
 │   │   ├── map.ts
 │   │   ├── size.ts
 │   │   └── string.ts
+│   ├── hooks
+│   │   └── use-fetch.ts
 │   ├── lib
 │   │   ├── communes.ts
 │   │   ├── exploitations.ts
 │   │   └── export_csv.ts
 │   ├── pages
 │   │   ├── aac
+│   │   │   ├── captage.tsx
 │   │   │   ├── id.tsx
 │   │   │   └── index.tsx
 │   │   ├── accueil.tsx
@@ -428,6 +439,8 @@
 │   │   └── visualisation
 │   │       └── assign_parcelles.spec.ts
 │   └── unit
+│       ├── aac
+│       │   └── aac_csv_service.spec.ts
 │       ├── contact
 │       │   └── contact.spec.ts
 │       ├── exploitation
@@ -446,9 +459,10 @@
 ├── tsconfig.json
 ├── types
 │   ├── aac.ts
+│   ├── captage.ts
 │   ├── flash_messages.ts
 │   └── models.ts
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-97 directories, 356 files
+100 directories, 367 files
