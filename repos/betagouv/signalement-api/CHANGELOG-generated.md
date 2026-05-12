@@ -1,11 +1,13 @@
-## Changelog : signalement-api (30 derniers jours, au 13 mai 2026)
+## Changelog : signalement-api (30 derniers jours, au 10 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations liées à l'export des données de signalement. Un identifiant est désormais inclus dans les exports, facilitant leur suivi et leur utilisation. De plus, une correction de formatage a été appliquée pour améliorer la lisibilité des données exportées. Enfin, une correction de nom de variable d'environnement a été effectuée.
+Ce changelog présente les récentes améliorations apportées à l'API SignalConso. Les modifications se concentrent sur la correction d'un problème lié au nom du répertoire d'exportation des données et sur la correction du nom d'une variable d'environnement. Ces ajustements visent à améliorer la stabilité et la fiabilité de l'API.
 
 ### Évolutions fonctionnelles
-- Ajout d'un identifiant aux exports de données de signalement. [#2032](https://github.com/betagouv/signalement-api/pull/2032)
-- Correction du formatage des données exportées. [#2032](https://github.com/betagouv/signalement-api/pull/2032)
+- Correction du nom du répertoire d'exportation des données [#2035](https://github.com/betagouv/signalement-api/pull/2035).
 
 ### Évolutions techniques
-- Correction du nom d'une variable d'environnement. [56b03ae](https://github.com/betagouv/signalement-api/commit/56b03ae)
+- Correction du nom d'une variable d'environnement.
+
+### Autres changements
+- Aucun changement significatif à signaler.
