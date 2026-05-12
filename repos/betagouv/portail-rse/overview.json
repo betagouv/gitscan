@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre un espace dédié pour la gestion et le suivi de ces obligations.",
+  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre des outils pour la qualification VSME et le suivi des réglementations.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -13,16 +13,18 @@
     "Notifications & Alertes",
     "Contenu éditorial",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "psycopg",
+    "Redis",
+    "WeasyPrint",
     "requests",
-    "weasyprint",
-    "aiohttp",
+    "psycopg",
     "dj-database-url",
     "whitenoise",
     "sentry-sdk",
@@ -35,20 +37,25 @@
     "openpyxl",
     "django-cors-headers",
     "django-storages",
-    "filetype"
+    "filetype",
+    "aiohttp",
+    "responses",
+    "geojson",
+    "django-lasuite"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "Python (scripts & backend)",
-    "Frontend React",
+    "Django",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml"
+      "sso"
     ],
     "providers": []
   },
@@ -71,9 +78,11 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Sécurité & Auth"
   ]
 }
