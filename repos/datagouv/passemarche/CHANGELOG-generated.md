@@ -1,25 +1,31 @@
-## Changelog : passemarche (30 derniers jours, au 6 mai 2026)
+## Changelog : passemarche (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration significative du parcours de candidature aux marchés publics, notamment en introduisant la gestion des lots multiples. Des améliorations ont également été apportées à l'interface utilisateur, à la gestion des erreurs et à la documentation. Plusieurs corrections de bugs et mises à jour de dépendances ont également été réalisées pour assurer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration du parcours de candidature aux marchés publics, notamment en gérant les marchés avec plusieurs lots. Des améliorations ont été apportées à l'interface utilisateur, à la gestion des erreurs et à la sécurité, ainsi qu'à l'ajout de tests pour garantir la qualité du code.
 
 ### Évolutions fonctionnelles
-- **Gestion des lots :** Introduction de la gestion des lots multiples pour les marchés publics, permettant aux candidats de sélectionner plusieurs lots lors de leur candidature. [#329](https://github.com/datagouv/passemarche/pull/329), [#326](https://github.com/datagouv/passemarche/pull/326), [#325](https://github.com/datagouv/passemarche/pull/325)
-- **Tableau de bord candidat :** Ajout d'un tableau de bord pour les candidats leur permettant de consulter leurs candidatures. Une bannière bleue informative a été ajoutée. [#372](https://github.com/datagouv/passemarche/pull/372), [#366](https://github.com/datagouv/passemarche/pull/366), [#364](https://github.com/datagouv/passemarche/pull/364)
-- **Consultation des candidatures :** Possibilité pour les candidats de consulter le détail de leurs candidatures. [#371](https://github.com/datagouv/passemarche/pull/371)
-- **Affichage du nom de l'acheteur :** Affichage du nom de l'acheteur (raison sociale) dans le tableau de bord des candidats. [#365](https://github.com/datagouv/passemarche/pull/365)
-- **Amélioration des motifs d'exclusion :** Amélioration de la formulation des motifs d'exclusion. [#328](https://github.com/datagouv/passemarche/pull/328), [#327](https://github.com/datagouv/passemarche/pull/327)
-- **Gestion des erreurs :** Amélioration de la gestion et de l'affichage des erreurs lors de la création de marché. [#362](https://github.com/datagouv/passemarche/pull/362)
+- Ajout d'un tableau de bord pour les candidats, permettant de consulter leurs candidatures et d'accéder à des informations sur les marchés ([#364](https://github.com/datagouv/passemarche/pull/364), [#372](https://github.com/datagouv/passemarche/pull/372)).
+- Possibilité de consulter une candidature spécifique depuis le tableau de bord ([#371](https://github.com/datagouv/passemarche/pull/371)).
+- Amélioration du parcours candidat avec gestion des lots :
+    - Ajout d'une étape de sélection des lots avec affichage de l'avancement ([#329](https://github.com/datagouv/passemarche/pull/329), [#331](https://github.com/datagouv/passemarche/pull/331), [#335](https://github.com/datagouv/passemarche/pull/335)).
+    - Gestion de la sélection de plusieurs lots de même type ([#346](https://github.com/datagouv/passemarche/pull/346)).
+    - Affichage des lots sélectionnés en synthèse et dans l'attestation ([#342](https://github.com/datagouv/passemarche/pull/342)).
+- Affichage du nom de l'acheteur (raison sociale) dans la liste des candidatures ([#365](https://github.com/datagouv/passemarche/pull/365)).
+- Ajout d'une bannière bleue informant les utilisateurs de l'accès à leurs candidatures ([#372](https://github.com/datagouv/passemarche/pull/372)).
+- Amélioration de la gestion des erreurs lors de la création d'un marché ([#344](https://github.com/datagouv/passemarche/pull/344)).
+- Correction d'un problème de double soumission après la sélection des lots ([#375](https://github.com/datagouv/passemarche/pull/375)).
+- Correction d'un problème de redirection après la transmission de la candidature ([#343](https://github.com/datagouv/passemarche/pull/343)).
+- Ajout de raccourcis cliquables pour les SIRET dans l'éditeur de test ([#368](https://github.com/datagouv/passemarche/pull/368)).
 
 ### Évolutions techniques
-- **Refactoring des Presenters :** Unification des presenters pour le label des types de marché. [#375](https://github.com/datagouv/passemarche/pull/375)
-- **Optimisation des Presenters :** Optimisation du `PublicMarketPresenter` avec mémoïsation et suppression d'appels directs aux modèles. [#355](https://github.com/datagouv/passemarche/pull/355)
-- **Tests :** Ajout de tests Cucumber pour les pages de synchronisation et le tableau de bord candidat. [#374](https://github.com/datagouv/passemarche/pull/374), [#367](https://github.com/datagouv/passemarche/pull/367)
-- **Architecture :** Refonte du flux de sélection des lots pour améliorer la persistance des sélections et l'expérience utilisateur. [#351](https://github.com/datagouv/passemarche/pull/351)
-- **Base de données :** Ajout de la colonne `buyer_name` à la table `public_markets`. [#360](https://github.com/datagouv/passemarche/pull/360)
-- **Webhook :** Déplacement de l'envoi des webhooks dans un organisateur dédié. [#354](https://github.com/datagouv/passemarche/pull/354)
+- Refactorisation de l'authentification candidat pour simplifier la gestion de session ([#376](https://github.com/datagouv/passemarche/pull/376)).
+- Unification des presenters pour les types de marché ([#375](https://github.com/datagouv/passemarche/pull/375)).
+- Amélioration des performances des presenters en utilisant la mémoïsation et en évitant les appels directs aux modèles ([#355](https://github.com/datagouv/passemarche/pull/355)).
+- Mise à jour des dépendances : Bootsnap, View Component, Devise, Puma, Pagy, Selenium-webdriver, Propshaft ([#357](https://github.com/datagouv/passemarche/pull/357), [#358](https://github.com/datagouv/passemarche/pull/358), [#359](https://github.com/datagouv/passemarche/pull/359), [#360](https://github.com/datagouv/passemarche/pull/360), [#361](https://github.com/datagouv/passemarche/pull/361), [#369](https://github.com/datagouv/passemarche/pull/369), [#370](https://github.com/datagouv/passemarche/pull/370)).
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation de l'API pour refléter les changements liés à la gestion des lots. [#326](https://github.com/datagouv/passemarche/pull/326)
-- **Clés API Brevo :** Ajout des clés API Brevo pour les environnements de production et pré-production. [#367](https://github.com/datagouv/passemarche/pull/367), [#339](https://github.com/datagouv/passemarche/pull/339)
-- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (bootsnap, rubyzip, puma, view_component, pagy, selenium-webdriver, propshaft).
+- Ajout de tests Cucumber pour les nouvelles fonctionnalités et les pages de synchronisation ([#362](https://github.com/datagouv/passemarche/pull/362), [#374](https://github.com/datagouv/passemarche/pull/374)).
+- Mise à jour des clés d'API Brevo pour les environnements de pré-production et de production ([#367](https://github.com/datagouv/passemarche/pull/367), [#339](https://github.com/datagouv/passemarche/pull/339)).
+- Suppression du champ `lot_name` obsolète ([#336](https://github.com/datagouv/passemarche/pull/336)).
+- Ajout de la colonne `buyer_name` à la table `public_markets` ([#365](https://github.com/datagouv/passemarche/pull/365)).
+- Ajout de scopes pour le tableau de bord dans `MarketApplication` ([#362](https://github.com/datagouv/passemarche/pull/362)).
