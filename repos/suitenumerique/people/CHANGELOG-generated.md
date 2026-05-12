@@ -1,28 +1,28 @@
-## Changelog : people (30 derniers jours, au 6 mai 2026)
+## Changelog : people (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'intégration avec dimail, la sécurité et l'expérience utilisateur. Les utilisateurs bénéficient d'une meilleure gestion des invitations et des liens de connexion, ainsi que de corrections de bugs pour une utilisation plus fluide. Des améliorations de sécurité ont également été apportées, notamment la correction d'une potentielle élévation de privilèges et la mise à jour de dépendances vulnérables.
+Les récentes mises à jour de l'application People se concentrent sur l'amélioration de l'intégration avec dimail, notamment en passant à la version 2 de mailboxes et en envoyant des liens de connexion plutôt que des mots de passe. Des corrections de sécurité et des améliorations de l'interface utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Les invitations envoient désormais des liens de connexion au lieu de mots de passe, améliorant la sécurité et la simplicité d'accès.
-- Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
-- L'export des informations de contact du domaine est maintenant disponible dans l'interface d'administration.
+- Passage à mailboxes v2 pour l'importation depuis dimail, améliorant la compatibilité et la stabilité.
+- Envoi de liens de connexion au lieu de mots de passe lors de l'utilisation de dimail, renforçant la sécurité.
+- Amélioration du message d'erreur affiché lorsqu'il n'y a pas d'adresse email secondaire.
+- Export des informations de contact du domaine depuis l'interface d'administration.
+- Correction d'un bug où le code de connexion était envoyé à une URL dimail incorrecte.
+- Correction d'un bug empêchant l'importation de certaines boîtes aux lettres fonctionnelles depuis dimail.
+- Amélioration de l'affichage du message "pas d'alias" dans la vue des domaines.
 - Correction de l'affichage de la langue actuelle dans le menu de profil [#1108].
 - Suppression de la bordure du conteneur dans l'interface utilisateur [#1107].
-- Possibilité de rafraîchir les invitations expirées.
 
 ### Évolutions techniques
-- Passage à la version v2 des boîtes aux lettres (mailboxes) pour l'importation depuis dimail.
-- Correction d'un bug qui empêchait l'importation des boîtes aux lettres fonctionnelles depuis dimail.
-- Correction d'un bug qui envoyait le code de connexion à une URL dimail incorrecte.
-- Correction d'une potentielle élévation de privilèges lors de l'invitation d'utilisateurs.
-- Mise à jour de la dépendance `dimail` vers la version v0.6.5.
-- Mise à jour de la dépendance `pillow` vers la version 12.2.0 pour corriger une vulnérabilité de sécurité.
-- Mise à jour de la dépendance `pytest` vers la version 9.0.3 pour corriger une vulnérabilité de sécurité.
-- Mise à jour de la dépendance `next` vers la version 15.5.15 pour corriger une vulnérabilité de sécurité.
+- Mise à jour de Django vers la version 6.0.5 (incluant des correctifs de sécurité).
+- Mise à jour de Pillow vers la version 12.2.0 (correctif de sécurité).
+- Mise à jour de pytest vers la version 9.0.3 (correctif de sécurité).
+- Mise à jour de next vers la version 15.5.15 (correctif de sécurité).
+- Correction d'une possible escalade de privilèges lors de l'invitation d'utilisateurs.
+- Correction d'un bug empêchant l'accès aux rôles attendus lors de la création d'invitations par email.
+- Correction d'un bug lié à la gestion des majuscules/minuscules lors de la recherche d'emails existants.
 
 ### Autres changements
 - Mise à jour des chaînes de caractères traduites pour l'internationalisation.
-- Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page du domaine.
-- Ajout d'informations de contact du domaine à l'export.
-- Correction d'un bug empêchant l'importation des boîtes aux lettres fonctionnelles depuis dimail.
+- Documentation mise à jour concernant l'utilisation de dimail.
