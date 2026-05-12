@@ -585,7 +585,6 @@
     │   │   │   │   │   │   │   │   │   └── SortColumnButton.tsx
     │   │   │   │   │   │   │   │   └── hooks.tsx
     │   │   │   │   │   │   │   ├── icons
-    │   │   │   │   │   │   │   │   ├── ItemIcon.scss
     │   │   │   │   │   │   │   │   └── ItemIcon.tsx
     │   │   │   │   │   │   │   ├── item-actions
     │   │   │   │   │   │   │   │   ├── ImportDropdown.tsx
@@ -658,7 +657,6 @@
     │   │   │   │   │   │   └── utils
     │   │   │   │   │   │       ├── __tests__
     │   │   │   │   │   │       │   ├── dropTraversal.test.ts
-    │   │   │   │   │   │       │   ├── mimeTypes.test.ts
     │   │   │   │   │   │       │   └── ordering.test.ts
     │   │   │   │   │   │       ├── dropTraversal.ts
     │   │   │   │   │   │       ├── mimeTypes.ts
@@ -724,20 +722,16 @@
     │   │   │   │   │   │   │   │   ├── ErrorIcon.tsx
     │   │   │   │   │   │   │   │   ├── FileIcon.tsx
     │   │   │   │   │   │   │   │   ├── Icon.tsx
-    │   │   │   │   │   │   │   │   ├── LeftSidebarIcon.tsx
     │   │   │   │   │   │   │   │   ├── MyFilesIcon.tsx
     │   │   │   │   │   │   │   │   ├── NewFolderIcon.tsx
     │   │   │   │   │   │   │   │   ├── PersoIcon.tsx
     │   │   │   │   │   │   │   │   ├── RecentIcon.tsx
-    │   │   │   │   │   │   │   │   ├── ResetZoomIcon.tsx
     │   │   │   │   │   │   │   │   ├── SharedWithMeIcon.tsx
     │   │   │   │   │   │   │   │   ├── StarredIcon.tsx
     │   │   │   │   │   │   │   │   ├── TrashIcon.tsx
     │   │   │   │   │   │   │   │   ├── WeightIcon.tsx
     │   │   │   │   │   │   │   │   ├── ZoomIn.tsx
-    │   │   │   │   │   │   │   │   ├── ZoomMinusIcon.tsx
     │   │   │   │   │   │   │   │   ├── ZoomOut.tsx
-    │   │   │   │   │   │   │   │   ├── ZoomPlusIcon.tsx
     │   │   │   │   │   │   │   │   ├── ZoomReset.tsx
     │   │   │   │   │   │   │   │   └── sorting
     │   │   │   │   │   │   │   │       ├── sort-asc.tsx
@@ -780,67 +774,15 @@
     │   │   │   │   │   │   ├── cunningham
     │   │   │   │   │   │   │   └── useCunninghamTheme.ts
     │   │   │   │   │   │   └── preview
-    │   │   │   │   │   │       ├── FilesPreview.scss
-    │   │   │   │   │   │       ├── FilesPreview.tsx
-    │   │   │   │   │   │       ├── components
-    │   │   │   │   │   │       │   ├── ZoomControls
-    │   │   │   │   │   │       │   │   └── ZoomControls.tsx
-    │   │   │   │   │   │       │   ├── controls
-    │   │   │   │   │   │       │   │   ├── PreviewControls.scss
-    │   │   │   │   │   │       │   │   └── PreviewControls.tsx
-    │   │   │   │   │   │       │   ├── duration-bar
-    │   │   │   │   │   │       │   │   ├── DurationBar.scss
-    │   │   │   │   │   │       │   │   └── DurationBar.tsx
-    │   │   │   │   │   │       │   ├── preview-message
-    │   │   │   │   │   │       │   │   ├── PreviewMessage.scss
-    │   │   │   │   │   │       │   │   └── PreviewMessage.tsx
-    │   │   │   │   │   │       │   └── volume-bar
-    │   │   │   │   │   │       │       ├── VolumeBar.scss
-    │   │   │   │   │   │       │       └── VolumeBar.tsx
-    │   │   │   │   │   │       ├── custom-files-preview
-    │   │   │   │   │   │       │   └── CustomFilesPreview.tsx
-    │   │   │   │   │   │       ├── preview.scss
-    │   │   │   │   │   │       ├── utils
-    │   │   │   │   │   │       │   └── printImage.ts
-    │   │   │   │   │   │       └── viewers
-    │   │   │   │   │   │           ├── audio-player
-    │   │   │   │   │   │           │   ├── AudioPlayer.scss
-    │   │   │   │   │   │           │   └── AudioPlayer.tsx
-    │   │   │   │   │   │           ├── error
-    │   │   │   │   │   │           │   └── ErrorPreview.tsx
-    │   │   │   │   │   │           ├── image-viewer
-    │   │   │   │   │   │           │   ├── ImageViewer.scss
-    │   │   │   │   │   │           │   └── ImageViewer.tsx
-    │   │   │   │   │   │           ├── not-supported
-    │   │   │   │   │   │           │   └── NotSupportedPreview.tsx
-    │   │   │   │   │   │           ├── pdf-preview
-    │   │   │   │   │   │           │   ├── OutdatedBrowserPreview.tsx
-    │   │   │   │   │   │           │   ├── PdfControls.tsx
-    │   │   │   │   │   │           │   ├── PdfPageViewer.tsx
-    │   │   │   │   │   │           │   ├── PdfPreview.scss
-    │   │   │   │   │   │           │   ├── PdfPreview.tsx
-    │   │   │   │   │   │           │   ├── PdfThumbnailSidebar.tsx
-    │   │   │   │   │   │           │   ├── pdfConsts.tsx
-    │   │   │   │   │   │           │   ├── pdfOptions.ts
-    │   │   │   │   │   │           │   ├── pdfPolyfills.ts
-    │   │   │   │   │   │           │   ├── useDebouncedResize.ts
-    │   │   │   │   │   │           │   ├── usePdfNavigation.ts
-    │   │   │   │   │   │           │   ├── usePdfPageDimensions.ts
-    │   │   │   │   │   │           │   └── useRedirectDisclaimer.tsx
-    │   │   │   │   │   │           ├── suspicious
-    │   │   │   │   │   │           │   └── SuspiciousPreview.tsx
-    │   │   │   │   │   │           ├── video-player
-    │   │   │   │   │   │           │   ├── VideoPlayer.scss
-    │   │   │   │   │   │           │   └── VideoPlayer.tsx
-    │   │   │   │   │   │           └── wopi
-    │   │   │   │   │   │               ├── WopiEditorFrame.scss
-    │   │   │   │   │   │               ├── WopiEditorFrame.tsx
-    │   │   │   │   │   │               ├── WopiOpenInEditor.tsx
-    │   │   │   │   │   │               └── openWopi.ts
-    │   │   │   │   │   └── users
-    │   │   │   │   │       ├── hooks
-    │   │   │   │   │       │   └── useUserQueries.tsx
-    │   │   │   │   │       └── types.ts
+    │   │   │   │   │   │       └── CustomFilesPreview.tsx
+    │   │   │   │   │   ├── users
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   └── useUserQueries.tsx
+    │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   └── wopi
+    │   │   │   │   │       ├── WopiEditorFrame.scss
+    │   │   │   │   │       ├── WopiEditorFrame.tsx
+    │   │   │   │   │       └── openWopi.ts
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useCopyToClipboard.tsx
     │   │   │   │   │   ├── useDefaultRoute.tsx
@@ -913,15 +855,7 @@
     │   │   │   │   │   ├── delete-item.spec.ts
     │   │   │   │   │   ├── duplicate-item.spec.ts
     │   │   │   │   │   ├── entitlement-disclaimers.spec.ts
-    │   │   │   │   │   ├── file-preview
-    │   │   │   │   │   │   ├── audio-preview.spec.ts
-    │   │   │   │   │   │   ├── file-preview-actions.spec.ts
-    │   │   │   │   │   │   ├── heic-file-preview.spec.ts
-    │   │   │   │   │   │   ├── image-preview.spec.ts
-    │   │   │   │   │   │   ├── pdf-preview-mixed-sizes.spec.ts
-    │   │   │   │   │   │   ├── pdf-preview.spec.ts
-    │   │   │   │   │   │   ├── unsupported-file-preview.spec.ts
-    │   │   │   │   │   │   └── video-preview.spec.ts
+    │   │   │   │   │   ├── file-preview-smoke.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
     │   │   │   │   │   ├── language-sync.spec.ts
@@ -1051,4 +985,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-251 directories, 802 files
+234 directories, 753 files
