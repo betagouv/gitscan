@@ -21,6 +21,9 @@
 ├── .github
 │   ├── CODEOWNERS
 │   ├── copilot-instructions.md
+│   ├── issue-assets
+│   │   ├── LBA-*.png  (108 files)
+│   │   └── LBA-3950-screenshot20260420121255chrome_14a8a5j.jpg
 │   ├── pr-title-checker-config.json
 │   └── workflows
 │       ├── _build.yml
@@ -706,7 +709,8 @@
 │   │   │   ├── 20260409135117-partner-job-id-taleez.ts
 │   │   │   ├── 20260421191642-add-10-seo-villes.ts
 │   │   │   ├── 20260422115041-reset-date-premium.ts
-│   │   │   └── 20260423095902-add-10-seo-villes-batch-2.ts
+│   │   │   ├── 20260423095902-add-10-seo-villes-batch-2.ts
+│   │   │   └── 20260427170242-initialisation-seo-diplome.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -1031,6 +1035,7 @@
 │   │   │   ├── roleManagement.model.ts
 │   │   │   ├── roleManagement360.model.ts
 │   │   │   ├── rome.model.ts
+│   │   │   ├── seoDiplome.model.ts
 │   │   │   ├── seoMetier.model.ts
 │   │   │   ├── seoVille.model.ts
 │   │   │   ├── session.model.ts
@@ -1241,8 +1246,26 @@
 │   │   │   │   ├── _components
 │   │   │   │   │   ├── CarteOffre.tsx
 │   │   │   │   │   ├── JobsCtaTracked.tsx
+│   │   │   │   │   ├── diplome_data.tsx
 │   │   │   │   │   ├── metier_data.tsx
 │   │   │   │   │   └── ville_data.tsx
+│   │   │   │   ├── diplome
+│   │   │   │   │   └── [slug]
+│   │   │   │   │       ├── _components
+│   │   │   │   │       │   ├── DescriptionDiplome.tsx
+│   │   │   │   │       │   ├── EcolesSection.tsx
+│   │   │   │   │       │   ├── ExplorerDiplomesSection.tsx
+│   │   │   │   │       │   ├── HeroDiplome.tsx
+│   │   │   │   │       │   ├── MetiersSection.tsx
+│   │   │   │   │       │   ├── OffresSection.tsx
+│   │   │   │   │       │   ├── PreparationSection.tsx
+│   │   │   │   │       │   ├── ProgrammeDiplome.tsx
+│   │   │   │   │       │   ├── SalaireSection.tsx
+│   │   │   │   │       │   ├── SectionTitle.tsx
+│   │   │   │   │       │   └── diplome_decoration.svg
+│   │   │   │   │       ├── _data
+│   │   │   │   │       │   └── constants.ts
+│   │   │   │   │       └── page.tsx
 │   │   │   │   ├── metier
 │   │   │   │   │   └── [metier]
 │   │   │   │   │       └── page.tsx
@@ -1710,11 +1733,9 @@
 │   │   │   │   ├── CandidatureLbaFailed.tsx
 │   │   │   │   ├── CandidatureLbaFileDropzone.tsx
 │   │   │   │   ├── CandidatureLbaMandataireMessage.tsx
-│   │   │   │   ├── CandidatureLbaMessage.tsx
 │   │   │   │   ├── CandidatureLbaModal.tsx
 │   │   │   │   ├── CandidatureLbaModalBody.tsx
 │   │   │   │   ├── CandidatureLbaWorked.tsx
-│   │   │   │   ├── CandidatureTasksChecklist.tsx
 │   │   │   │   ├── WidgetCandidatureLba.tsx
 │   │   │   │   ├── WidgetPostulerError.tsx
 │   │   │   │   └── services
@@ -2247,6 +2268,11 @@
 │   │   │   ├── recherche_cdd_cdi.svg
 │   │   │   ├── seo
 │   │   │   │   ├── candidature-spontanee.svg
+│   │   │   │   ├── diplome
+│   │   │   │   │   ├── card-left.png
+│   │   │   │   │   ├── card-right.png
+│   │   │   │   │   ├── icon-success.svg
+│   │   │   │   │   └── offre-emploi.svg
 │   │   │   │   ├── logement
 │   │   │   │   │   ├── studio.svg
 │   │   │   │   │   └── t2.svg
@@ -2269,14 +2295,13 @@
 │   │   │   │   │   ├── sports.svg
 │   │   │   │   │   ├── theatre.svg
 │   │   │   │   │   └── vie_nocturne.svg
+│   │   │   │   ├── malette.svg
 │   │   │   │   ├── metier
 │   │   │   │   │   ├── competence.svg
 │   │   │   │   │   ├── ecosystem.svg
 │   │   │   │   │   ├── france.svg
-│   │   │   │   │   ├── malette.svg
-│   │   │   │   │   ├── mission.svg
-│   │   │   │   │   ├── monnaie.svg
-│   │   │   │   │   └── usine.svg
+│   │   │   │   │   └── mission.svg
+│   │   │   │   ├── monnaie.svg
 │   │   │   │   ├── offre-emploi.svg
 │   │   │   │   ├── transports
 │   │   │   │   │   ├── avion.svg
@@ -2290,6 +2315,7 @@
 │   │   │   │   │   ├── velo.svg
 │   │   │   │   │   ├── voiture.svg
 │   │   │   │   │   └── walk.svg
+│   │   │   │   ├── usine.svg
 │   │   │   │   └── ville
 │   │   │   │       ├── amiens.png
 │   │   │   │       ├── angers.png
@@ -2426,4 +2452,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-467 directories, 1961 files
+473 directories, 2088 files
