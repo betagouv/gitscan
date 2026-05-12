@@ -60,39 +60,19 @@
 │   │   │   ├── docs
 │   │   │   │   └── generate-doc.sh
 │   │   │   ├── index.ts
-│   │   │   ├── migrations
-│   │   │   │   ├── 20251028120716_ngc_schema
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251110102425_simulation_verified_users
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20260130160713_remove_saved_via_email
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20260319110000_add_ngc_anon_schema_views
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20260331120000_nullable_userid_simulation
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20260407000000_add_poll_views_to_ngc_anon
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20260407103000_anon_verified_user_generated_id
-│   │   │   │   │   └── migration.sql
-│   │   │   │   └── migration_lock.toml
-│   │   │   ├── schema
-│   │   │   │   ├── ngc.prisma
-│   │   │   │   ├── ngc_anon.prisma
-│   │   │   │   └── schema.prisma
 │   │   │   └── scripts
 │   │   │       ├── add-integrations-api-scopes.ts
 │   │   │       ├── add-integrations-email-whitelist.ts
 │   │   │       ├── geolocation-countries.ts
 │   │   │       ├── geolocation-sorted-ips.ts
 │   │   │       └── grant-roles.ts
-│   │   ├── prisma.config.ts
 │   │   ├── scalingo.json
 │   │   ├── scripts
 │   │   │   ├── NGC-1784-20250331.ts
 │   │   │   ├── NGC-1961-20250602.ts
 │   │   │   ├── NGC-2329-20250909.ts
-│   │   │   └── NGC-2408-20250922.ts
+│   │   │   ├── NGC-2408-20250922.ts
+│   │   │   └── push-database-url-to-site.sh
 │   │   ├── src
 │   │   │   ├── adapters
 │   │   │   │   ├── 2tonnes
@@ -400,21 +380,21 @@
 │   │   │   ├── types
 │   │   │   │   └── types.d.ts
 │   │   │   └── worker.ts
-│   │   ├── tsconfig.build.json
 │   │   ├── tsconfig.json
 │   │   ├── vite.config.ts
 │   │   ├── vite.env.ts
 │   │   └── vite.setup.ts
 │   └── site
+│       ├── .buildpacks
 │       ├── .env.template
 │       ├── .gitignore
-│       ├── .slugignore
 │       ├── .storybook
 │       │   ├── main.github-pages.ts
 │       │   ├── main.ts
 │       │   ├── preview.github-pages.tsx
 │       │   ├── preview.tsx
 │       │   └── vitest.setup.ts
+│       ├── Procfile
 │       ├── README.md
 │       ├── check-memory.mjs
 │       ├── config
@@ -2173,13 +2153,42 @@
 │       ├── vitest-globals.d.ts
 │       ├── vitest.config.ts
 │       └── vitest.setup.ts
+├── docs
+│   └── fgp-routes.md
 ├── eslint.config.js
 ├── knip.json
 ├── package.json
 ├── packages
 │   ├── .gitkeep
 │   └── core
+│       ├── .env.template
+│       ├── .gitignore
+│       ├── .prettierignore
+│       ├── bin
+│       │   └── db-migrate.js
 │       ├── package.json
+│       ├── prisma
+│       │   ├── migrations
+│       │   │   ├── 20251028120716_ngc_schema
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20251110102425_simulation_verified_users
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260130160713_remove_saved_via_email
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260319110000_add_ngc_anon_schema_views
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260331120000_nullable_userid_simulation
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260407000000_add_poll_views_to_ngc_anon
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260407103000_anon_verified_user_generated_id
+│       │   │   │   └── migration.sql
+│       │   │   └── migration_lock.toml
+│       │   └── schema
+│       │       ├── ngc.prisma
+│       │       ├── ngc_anon.prisma
+│       │       └── schema.prisma
+│       ├── prisma.config.js
 │       ├── src
 │       │   ├── features
 │       │   │   ├── actions
@@ -2200,8 +2209,9 @@
 │       │   │       └── types
 │       │   │           └── language.ts
 │       │   └── index.ts
+│       ├── tsconfig.build.json
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-551 directories, 1700 files
+554 directories, 1707 files
