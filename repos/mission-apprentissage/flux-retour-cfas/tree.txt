@@ -9,6 +9,8 @@
 │   │   ├── buildkitd.toml
 │   │   ├── env-init.sh
 │   │   ├── get-version.sh
+│   │   ├── gitleaks-add-exceptions.sh
+│   │   ├── gitleaks-check.sh
 │   │   ├── sentry-deploy.sh
 │   │   └── sentry-release.sh
 │   └── shared
@@ -38,6 +40,7 @@
 │       ├── release.yml
 │       └── sync-preprod.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .gitmodules
 ├── .husky
 │   ├── commit-msg
@@ -107,7 +110,6 @@
 │   └── inventories
 ├── .node-version
 ├── .prettierignore
-├── .talismanrc
 ├── .vscode
 │   ├── extensions.json
 │   ├── launch.json
@@ -137,6 +139,7 @@
 │   │   └── manage.md
 │   ├── infrastructure.md
 │   └── securite.md
+├── gitleaks-fingerprints-baseline.txt
 ├── knip.json
 ├── package.json
 ├── release.config.js
@@ -738,6 +741,7 @@
 │   │   │       ├── hydrate
 │   │   │       │   ├── hydrate-formations-catalogue.test.ts
 │   │   │       │   ├── hydrate-organismes-relations.test.ts
+│   │   │       │   ├── migrate-orphan-ml-records-cross-family.test.ts
 │   │   │       │   └── migrate-orphan-ml-records.test.ts
 │   │   │       └── ingestion
 │   │   │           ├── mergeEffectif.test.ts
@@ -2174,4 +2178,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-450 directories, 1726 files
+450 directories, 1730 files
