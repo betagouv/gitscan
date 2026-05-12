@@ -1,23 +1,26 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Cette base de code gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose deux interfaces utilisateurs : un outil d’administration et d’édition des aides, et un parcours usager pour les exploitants agricoles.",
+  "description": "Cette base de code gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose deux interfaces utilisateurs : un outil d’administration et d’édition des aides et un parcours usager pour les exploitants agricoles.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Gestion métier générale",
+    "Aides & Éligibilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Brevo",
+    "Matomo",
     "Sentry",
+    "Scalingo",
     "StimulusJS",
     "htmx",
     "django-dsfr"
@@ -27,21 +30,20 @@
     "PostgreSQL & SQL",
     "Django",
     "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels"
+    "HTML / CSS / Templates visuels",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
+  "tests": "Pytest",
   "workflows": [
-    "dependabot",
-    "github-code-scanning"
+    "dependabot/dependabot-updates",
+    "github-code-scanning/codeql"
   ],
-  "lastActivity": "2026-05-05T19:47:48+02:00",
+  "lastActivity": "2026-05-11T11:37:04+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -56,7 +58,8 @@
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Aides & Éligibilité",
-    "Agriculture"
+    "Sécurité & Auth",
+    "Environnement & Énergie",
+    "Subventions & Finances publiques"
   ]
 }

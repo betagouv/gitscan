@@ -1,32 +1,30 @@
-## Changelog : aides-agri (30 derniers jours, au 05 mai 2026)
+## Changelog : aides-agri (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la v2 du parcours agri, la consolidation des informations légales des aides et des corrections de bugs d'affichage et de fonctionnement. Des optimisations techniques ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de l'application.
+Ce mois-ci, les évolutions se concentrent sur la préparation et le déploiement de la version 2 du parcours agri, avec des améliorations significatives de l'interface utilisateur et de la gestion des données. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de sécurité et de dépendances.
 
 ### Évolutions fonctionnelles
-- **Parcours agri v2 :** Déploiement de la version 2 du parcours agricole, améliorant l'expérience utilisateur pour les exploitants agricoles. [#418](https://github.com/betagouv/aides-agri/pull/418)
-- **Gestion des fiches d'aide :**
-    - Possibilité de créer une fiche mère à partir de plusieurs fiches filles. [#469](https://github.com/betagouv/aides-agri/pull/469)
-    - Modification d'une fiche mère impacte également ses fiches filles. [#468](https://github.com/betagouv/aides-agri/pull/468)
-- **Informations légales :** Déplacement des informations légales en bas de page des aides. [#466](https://github.com/betagouv/aides-agri/pull/466)
-- **Base juridique des aides :** Consolidation et amélioration de la gestion de la base juridique des aides. [#495](https://github.com/betagouv/aides-agri/pull/495), [#499](https://github.com/betagouv/aides-agri/pull/499)
-- **Outil d'édition des aides :** Améliorations apportées à l'outil d'édition des aides pour faciliter la gestion du contenu. [#498](https://github.com/betagouv/aides-agri/pull/498)
-- **Correction d'impression PDF :** Correction d'un bug empêchant l'impression correcte des PDF. [#525](https://github.com/betagouv/aides-agri/pull/525)
-- **Correction crash historique admin :** Correction d'un crash de l'historique dans l'interface d'administration. [#524](https://github.com/betagouv/aides-agri/pull/524)
-- **Correction bug d'affichage couleur :** Correction d'un bug d'affichage des couleurs sur la page des résultats. [#511](https://github.com/betagouv/aides-agri/pull/511)
-- **Correction alignement filtres :** Correction d'un problème d'alignement des filtres sur la page d'ensemble des aides. [#515](https://github.com/betagouv/aides-agri/pull/515)
-- **Correction slug des aides :** Correction d'un bug lié au slug des aides. [#497](https://github.com/betagouv/aides-agri/pull/497)
-- **Amélioration de la homepage :** Ajustements apportés à la page d'accueil. [#527](https://github.com/betagouv/aides-agri/pull/527)
+- **Parcours agri v2 :** Déploiement de la nouvelle version du parcours utilisateur pour les exploitants agricoles [#418].
+- **Filtres sur la page d'aides :** Possibilité de sélectionner toutes les filières sur la page d'ensemble des aides [#531].
+- **Informations sur les aides :** Ajout d'une information sur les aides réservées aux groupements de producteurs [#538].
+- **Export CSV (Admin) :** Ajout de la raison de désactivation lors de l'export CSV des aides dans l'interface d'administration [#532].
+- **Améliorations de l'outil d'édition :** Améliorations générales de l'outil d'édition des aides [#498].
+- **Base juridique des aides :** Consolidation de la gestion de la base juridique des aides [#495, #499, #504].
+- **Logos DDT(M) :** Ajout de scripts pour la création et l'association des logos des Directions Départementales des Territoires et de la Mer [#493].
 
 ### Évolutions techniques
-- **Optimisation des performances :** Tentative de réduction des latences de l'application. [#523](https://github.com/betagouv/aides-agri/pull/523)
-- **Workflow Github :** Optimisation du workflow Github pour une meilleure gestion des contributions. [#467](https://github.com/betagouv/aides-agri/pull/467)
-- **Déploiement simplifié :** Facilitation du déploiement en cas de changement de schéma de base de données. [#501](https://github.com/betagouv/aides-agri/pull/501)
-- **Mise à jour des dépendances :** Mises à jour de plusieurs dépendances (Django, Django-DSFR, Sentry, etc.) pour bénéficier des dernières corrections de sécurité et améliorations.
-- **Gestion des dépendances UV :** Correction du système de cooldown des dépendances UV. [#470](https://github.com/betagouv/aides-agri/pull/470)
-- **Verrouillage des dépendances UV :** Ajout de fichiers de verrouillage pour les dépendances UV. [#491](https://github.com/betagouv/aides-agri/pull/491), [#522](https://github.com/betagouv/aides-agri/pull/522)
+- **Performance :** Tentatives de réduction des latences de l'application et de limitation des fuites mémoire [#523, #537].
+- **Connexion BDD :** Correction du réglage de la connexion persistante à la base de données [#536].
+- **Gestion des schémas BDD :** Facilitation du déploiement en cas de changement de schéma de la base de données [#501].
+- **Accessibilité :** Amélioration de l'accessibilité de la validation de formulaire côté client [#530].
+- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances, notamment Django, django-dsfr, htmx.org, faker, et sentry-sdk (voir commits individuels).
+- **Uv lock :** Mise à jour et verrouillage des dépendances avec `uv` [#522, #491, #490].
 
 ### Autres changements
-- **Documentation :** Mise à jour de la date de validité du fichier `security.txt`. [#505](https://github.com/betagouv/aides-agri/pull/505)
-- **Scripts DDT(M) :** Ajout de scripts pour la création et l'association des logos des Directions Départementales des Territoires et de la Mer. [#493](https://github.com/betagouv/aides-agri/pull/493), [#507](https://github.com/betagouv/aides-agri/pull/507)
-- **Statistiques :** Ajout des statistiques pour le mois de mars 2026. [#477](https://github.com/betagouv/aides-agri/pull/477)
+- **Statistiques publiques :** Mise à jour des statistiques publiques pour avril 2026 [#533].
+- **Security.txt :** Mise à jour de la date de validité du fichier security.txt [#505].
+- **Correction PDF :** Correction d'un bug d'impression PDF [#525].
+- **Correction historique (Admin) :** Correction d'un crash de l'historique dans l'interface d'administration [#524].
+- **Tracking Matomo :** Ajout du tracking d'événement de clic sur lien externe pour le mode minimal [#535].
+- **Corrections d'affichage :** Correction de bugs d'affichage de couleur sur la page de résultats [#511].
+- **Corrections mineures :** Diverses corrections mineures et ajustements [#502, #503, #515].
