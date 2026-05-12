@@ -1,13 +1,13 @@
-## Changelog : proconnect-test-client (30 derniers jours, au 30 avril 2026)
+## Changelog : proconnect-test-client (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte une nouvelle fonctionnalité permettant de forcer l'authentification multi-facteur (MFA) avec des valeurs d'ACR (Authentication Context Class) spécifiques pour les environnements EIDAS 0 et 1. Cela permet de tester plus précisément les scénarios d'authentification avec MFA.
-
-### Évolutions fonctionnelles
-- Ajout de la possibilité de forcer l'authentification multi-facteur (MFA) avec les valeurs d'ACR `eidas0-mfa` et `eidas1-mfa` via l'endpoint `/force-2fa` [#180](https://github.com/proconnect-gouv/proconnect-test-client/issues/180).
+Ce changelog couvre une période de maintenance et de mise à jour des dépendances du projet. Les mises à jour concernent principalement des bibliothèques utilisées en développement et pour les tests, visant à maintenir la sécurité et la stabilité du client de test ProConnect.
 
 ### Évolutions techniques
-- Aucune évolution technique notable.
-
-### Autres changements
-- Mise à jour de la dépendance `lodash-es` de la version 4.17.23 à la version 4.18.1 [#179](https://github.com/proconnect-gouv/proconnect-test-client/issues/179).
+- Mise à jour de `cypress` de la version 15.13.0 à la version 15.14.2 pour les tests end-to-end. [#183](https://github.com/proconnect-gouv/proconnect-test-client/issues/183)
+- Mise à jour de `path-to-regexp` de la version 8.2.0 à la version 8.4.0. [#175](https://github.com/proconnect-gouv/proconnect-test-client/issues/175)
+- Mise à jour de `prettier` de la version 3.8.1 à la version 3.8.3. [#184](https://github.com/proconnect-gouv/proconnect-test-client/issues/184)
+- Mise à jour de `postcss` de la version 8.5.2 à la version 8.5.12 pour les tests end-to-end. [#186](https://github.com/proconnect-gouv/proconnect-test-client/issues/186)
+- Mise à jour de `ejs` de la version 4.0.1 à la version 5.0.2. [#182](https://github.com/proconnect-gouv/proconnect-test-client/issues/182)
+- Mise à jour de `openid-client` de la version 6.8.2 à la version 6.8.4. [#187](https://github.com/proconnect-gouv/proconnect-test-client/issues/187)
+- Mise à jour de `lodash-es` de la version 4.17.23 à la version 4.18.1. [#179](https://github.com/proconnect-gouv/proconnect-test-client/issues/179)
