@@ -1,14 +1,11 @@
-## Changelog : datagouv_client (30 derniers jours, au 01 mai 2026)
+## Changelog : datagouv_client (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Les récentes évolutions de `datagouv_client` se concentrent sur l'amélioration de la structure interne de la bibliothèque, notamment en rendant la classe de base abstraite pour une meilleure extensibilité. Une mise à jour de la version minimale de Python supportée a également été effectuée pour inclure la version 3.14, assurant ainsi la compatibilité avec les environnements de développement les plus récents.
+Cette version apporte des améliorations à l'API, notamment la correction d'un problème d'URL pour les tableaux sur la plateforme de démonstration et la possibilité de trier les ressources d'un jeu de données. Une reconstruction du fichier de verrouillage a également été effectuée pour assurer la cohérence des dépendances.
 
 ### Évolutions fonctionnelles
-Aucun changement fonctionnel visible pour les utilisateurs n'a été introduit durant cette période.
+- Correction de l'URL des tableaux sur la plateforme de démonstration. [#49](https://github.com/datagouv/datagouv_client/issues/49)
+- Ajout d'une méthode pour trier les ressources d'un jeu de données. [#45](https://github.com/datagouv/datagouv_client/issues/45)
 
 ### Évolutions techniques
-- La classe `BaseObject` a été rendue abstraite pour faciliter l'héritage et l'extension de la bibliothèque. [#44](https://github.com/datagouv/datagouv_client/pull/44)
-- La version minimale de Python requise a été mise à jour pour inclure la version 3.14, permettant d'utiliser les dernières fonctionnalités du langage. [#43](https://github.com/datagouv/datagouv_client/pull/43)
-
-### Autres changements
-Aucun autre changement significatif n'a été apporté durant cette période.
+- Reconstruction du fichier de verrouillage des dépendances. [#46](https://github.com/datagouv/datagouv_client/issues/46)
