@@ -1,19 +1,25 @@
-## Changelog : fisheries-and-environment-data-warehouse (30 derniers jours, au 29 avril 2026)
+## Changelog : fisheries-and-environment-data-warehouse (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la qualité des données et la correction de bugs liés aux requêtes et aux références réglementaires. Des ajustements ont été apportés aux données de patrouille et aux missions, ainsi qu'à la gestion des conflits d'exécution des tâches planifiées.
+Ce changelog présente les améliorations apportées à l'entrepôt de données dédié aux pêches et à l'environnement marin au cours du dernier mois. Les principales évolutions concernent l'ajout de nouveaux indicateurs de surveillance, des corrections de requêtes et des améliorations de la gestion des données, notamment pour les missions de patrouille et les données PAM (Plateforme d'Acquisition de données Marine).
 
 ### Évolutions fonctionnelles
-- Correction d'un bug dans les données de réglementations h3 [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
-- Amélioration des données de patrouille [#193](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/193).
-- Ajout de données relatives aux Plans d'Action Maritime (PAM) [#192](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/192).
+- Ajout d'indicateurs relatifs aux missions PAM (Plateforme d'Acquisition de données Marine) [#202](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/202).
+- Ajout d'un indicateur comptant le nombre de navires reconnus [#204](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/204).
+- Ajout d'heures de surveillance [#201](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/201).
+- Ajout de données relatives aux excp [#199](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/199).
+- Ajout de références réglementaires [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
+- Amélioration des données de patrouille [#198](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/198) et [#193](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/193).
+- Ajout de données PAM [#190](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/190).
 
 ### Évolutions techniques
-- Refactorisation de la clause `FROM` dans les requêtes relatives aux missions [#194](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/194).
-- Résolution de conflits d'exécution des tâches planifiées pour éviter les chevauchements [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
+- Optimisation des requêtes pour l'API de patrouille, ne requérant que les missions PAM nécessaires [#200](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/200).
+- Correction de la clause FROM dans la requête des missions [#194](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/194).
 - Correction d'un bug lié au type de géométrie [#189](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/189).
-- Ajout de dépendances (DEP messages) [#188](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/188).
+- Gestion des dates nulles et saut de chargement si les données sont vides [#200](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/200).
+- Correction d'un bug sur regulations_h3 [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
+- Rétractation d'une précédente fusion pour correction [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
 
 ### Autres changements
-- Préparation pour le déploiement (bump de version) [#196](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/196).
-- Revert d'une modification précédente concernant l'ajout de références réglementaires en raison d'un problème rencontré [#191](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/191).
+- Mise à jour de la version pour le déploiement [#196](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/196).
+- Correction d'une faute de frappe dans le nom d'une colonne [#203](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/203).
