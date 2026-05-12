@@ -1,27 +1,29 @@
-## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 2026-04-29)
+## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en optimisant la page d'accueil, en intégrant un suivi analytique via Matomo, et en corrigeant plusieurs bugs affectant l'interface et les performances. Des améliorations ont également été apportées à la médiathèque et à la gestion des diagnostics.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en intégrant un suivi analytique via Matomo, en optimisant l'interface utilisateur et en corrigeant des bugs liés à l'affichage et à la recherche. Des améliorations ont également été apportées à la gestion du contenu de la page d'accueil via Strapi.
 
 ### Évolutions fonctionnelles
-- **Page d'accueil :** Refonte complète de la page d'accueil avec l'ajout d'une barre de recherche d'adresse, de nouveaux composants d'information (statistiques, quiz), et une amélioration de la réactivité et de la mise en page.
-- **Médiathèque :** Ajout de la fonctionnalité de médiathèque, permettant la gestion et l'affichage de documents.
-- **Diagnostic :** Amélioration de la page de diagnostic avec une prévisualisation plus complète et une meilleure intégration des informations.
-- **Recherche de préconisations :** Correction de bugs et amélioration de la recherche de préconisations.
-- **Formulaire Tally :** Amélioration de l'apparence du formulaire Tally.
-- **Suivi analytique :** Intégration de Matomo pour le suivi des événements et l'analyse du comportement des utilisateurs.
-- **Images :** Ajout d'une image de remplacement par défaut et amélioration de la gestion des images (redimensionnement, URL).
+- Ajout d'un plugin Matomo pour le suivi des interactions utilisateurs via des heatmaps [#78](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/78).
+- Amélioration de la recherche par parcelle : suppression de l'adresse dans l'URL après la recherche [#76](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/76).
+- Refonte de la présentation des réglementations : suppression du lien sur la description et amélioration de la vérification de la catégorie et du texte [#72](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/72).
+- Ajout d'un indicateur de chargement pour l'onglet des recommandations.
+- Amélioration de la logique du bouton de recherche.
+- Optimisation de la prévisualisation du diagnostic (diagPreview) : chargement dynamique du contenu, optimisation des performances et ajout d'images de remplacement.
+- Intégration du contenu de la page d'accueil via Strapi, permettant une gestion plus facile du contenu éditorial [#61](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/61).
+- Ajout de trackers Matomo pour le suivi des recherches d'adresses et d'autres interactions utilisateurs [#61](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/61).
+- Correction d'un bug empêchant le fonctionnement des liens "FakeLinks".
+- Correction de problèmes d'alignement et de taille des éléments sur la page d'accueil.
 
 ### Évolutions techniques
-- **Refactoring :** Nettoyage et refactoring du code, notamment des composants de la page d'accueil et de la gestion des diagnostics.
-- **Optimisation des performances :** Ajout de squelettes (loaders) pour améliorer le CLS (Cumulative Layout Shift) et réduire les "pops" visuels.
-- **Sécurité :** Correction d'une vulnérabilité CVE.
-- **Strapi :** Mise à jour de la configuration de Strapi, notamment des options du plugin CKEditor et de la gestion des types de contenu.
-- **Tests :** Ajout de types pour les composants et amélioration de la couverture de tests.
+- Correction de problèmes de typage dans la classe RegulationCls [#77](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/77).
+- Suppression de la source PLU codée en dur pour la réglementation locale [#69](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/69).
+- Amélioration de la sécurité concernant la réception des emails de diagnostic [#65](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/65).
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Correction de problèmes liés au hoisting de CSS dans certains composants.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation.
-- **Configuration :** Modifications de la configuration pour améliorer la stabilité et la performance.
-- **Corrections de bugs :** Correction de nombreux bugs mineurs affectant l'interface utilisateur, la gestion des URL, et le rendu des composants.
-- **Accessibilité :** Amélioration de l'accessibilité de certains composants (liens, titres, etc.).
-- **Typographie :** Correction de fautes de frappe et amélioration de la typographie.
+- Mise à jour de la version du projet de 0.1.0 à 0.1.2.
+- Correction de fautes de frappe dans le contenu de la page d'accueil.
+- Amélioration de la gestion des images et des URLs.
+- Correction de bugs mineurs liés à l'affichage et au comportement de certains composants.
