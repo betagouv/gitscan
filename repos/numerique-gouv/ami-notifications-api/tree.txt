@@ -58,9 +58,11 @@
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       ├── test_auth_middleware.py
+│   │       ├── test_models.py
 │   │       └── test_promote-agent-to-admin.py
 │   ├── agent_admin
 │   │   ├── __init__.py
+│   │   ├── api_views.py
 │   │   ├── apps.py
 │   │   ├── forms.py
 │   │   ├── migrations
@@ -84,19 +86,42 @@
 │   │   │       │   └── header.html
 │   │   │       ├── home.html
 │   │   │       ├── login.html
-│   │   │       └── manage_access.html
+│   │   │       ├── manage_access.html
+│   │   │       └── send_notification.html
 │   │   ├── tests
-│   │   │   ├── conftest.py
+│   │   │   ├── api
+│   │   │   │   └── __init__.py
 │   │   │   ├── test_access_denied.py
 │   │   │   ├── test_audit_entry.py
 │   │   │   ├── test_home.py
 │   │   │   ├── test_login.py
 │   │   │   ├── test_logout.py
 │   │   │   ├── test_manage.py
+│   │   │   ├── test_send_notification.py
+│   │   │   ├── test_users.py
 │   │   │   └── utils.py
 │   │   ├── urls.py
 │   │   ├── utils.py
 │   │   └── views.py
+│   ├── amidsfr
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── static
+│   │   │   ├── css
+│   │   │   │   └── amidsfr-autocomplete.css
+│   │   │   └── js
+│   │   │       └── amidsfr-autocomplete.js
+│   │   ├── templates
+│   │   │   └── amidsfr
+│   │   │       ├── form_field_snippets
+│   │   │       │   ├── field_snippet.html
+│   │   │       │   └── toggle_snippet.html
+│   │   │       └── form_snippet.html
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── amidsfr_tags.py
+│   │   └── widgets.py
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -248,6 +273,7 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       └── generate-identity-tokens.py
+│   │   ├── middleware.py
 │   │   ├── schemas.py
 │   │   ├── sentry.py
 │   │   ├── serializers.py
@@ -483,4 +509,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-92 directories, 393 files
+101 directories, 410 files
