@@ -1,19 +1,18 @@
-## Changelog : calendars (30 derniers jours, au 20 avril 2026)
+## Changelog : calendars (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'amélioration de l'intégration avec les canaux CalDAV et l'ajout de nouvelles fonctionnalités liées aux boîtes aux lettres et aux invitations. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant l'envoi d'invitations et l'affichage de l'interface.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de la gestion des calendriers et des canaux CalDAV. Les utilisateurs bénéficieront d'une expérience plus fluide lors du déplacement d'événements, de la sélection de la langue et de la déconnexion. Des améliorations ont également été apportées à la sécurité et à la configuration des canaux CalDAV.
 
 ### Évolutions fonctionnelles
-- **Canaux CalDAV :** Ajout de scopes pour les canaux CalDAV, amélioration de l'interface utilisateur et modification du format du mot de passe CalDAV. [#50](https://github.com/suitenumerique/calendars/issues/50) et [#51](https://github.com/suitenumerique/calendars/issues/51)
-- **Boîtes aux lettres :** Intégration avec Messages pour les boîtes aux lettres. [#46](https://github.com/suitenumerique/calendars/issues/46)
-- **Invitations :** Correction d'un bug empêchant l'envoi d'invitations depuis la boîte aux lettres sélectionnée.
-- **Callbacks :** Simplification de la logique des URLs de callback. [#47](https://github.com/suitenumerique/calendars/issues/47)
-- **Calendriers :** Possibilité de mettre à niveau des calendriers individuels en boîtes aux lettres.
+- Correction du déplacement d'événements entre les calendriers. [#52](https://github.com/suitenumerique/calendars/issues/52)
+- Amélioration de la sélection de la langue et du processus de déconnexion.
+- Modification du format du mot de passe des canaux CalDAV pour une meilleure sécurité. [#51](https://github.com/suitenumerique/calendars/issues/51)
+- Ajout de scopes et de niveaux de scope aux canaux CalDAV, avec une interface utilisateur améliorée pour une gestion plus fine des permissions. [#50](https://github.com/suitenumerique/calendars/issues/50)
+- Possibilité de convertir des calendriers individuels en "mailboxes" CalDAV. [#49](https://github.com/suitenumerique/calendars/issues/49)
 
 ### Évolutions techniques
-- **SabreDAV :** Séparation de la boîte aux lettres et des principaux utilisateurs dans SabreDAV. [#49](https://github.com/suitenumerique/calendars/issues/49)
-- **Interface utilisateur :** Masquage de la case à cocher "disponibilités" dans la modale d'édition en fonction d'un flag de fonctionnalité.
-- **Affichage :** Correction de plusieurs problèmes d'affichage et amélioration de la verbosité des logs.
+- Séparation des mailbox et des principals individuels dans SabreDAV pour une meilleure organisation.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Le favicon est maintenant chargé à partir d'un fichier asset plutôt que d'un SVG en ligne.
+- Ajout du support de la plateforme ARM64 pour les builds d'images Docker.
