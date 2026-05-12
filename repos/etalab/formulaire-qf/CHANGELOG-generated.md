@@ -1,14 +1,12 @@
-## Changelog : formulaire-qf (30 derniers jours, au 8 mai 2026)
+## Changelog : formulaire-qf (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont principalement concentrés sur la maintenance et la mise à jour des dépendances du projet.  Plusieurs bibliothèques ont été mises à jour vers leurs dernières versions stables pour assurer la sécurité et la performance de l'application.
+Ce changelog fait état de mises à jour de dépendances de sécurité et de versions mineures des librairies utilisées par le projet. Ces mises à jour contribuent à la stabilité et à la sécurité de la plateforme, sans impact direct sur les fonctionnalités visibles par les utilisateurs.
 
 ### Évolutions techniques
-- Mise à jour de la bibliothèque `nokogiri` de la version 1.19.2 à la version 1.19.3.
-- Mise à jour de la bibliothèque `erb` de la version 6.0.2 à la version 6.0.4.
-- Mise à jour de la bibliothèque `zlib` de la version 3.2.2 à la version 3.2.3.
-- Mise à jour de `puma` de la version 7.2.0 à la version 8.0.0.
-- Mise à jour des dépendances de développement.
+- Mise à jour de la version de Puma de 7.2.0 à 8.0.0 [#331](https://github.com/etalab/formulaire-qf/pull/331)
+- Mise à jour de plusieurs dépendances de développement (spring, etc.) [#332](https://github.com/etalab/formulaire-qf/pull/332), [#335](https://github.com/etalab/formulaire-qf/pull/335)
+- Mise à jour de plusieurs dépendances de production (zlib, erb, nokogiri, net-imap) [#333](https://github.com/etalab/formulaire-qf/pull/333), [#334](https://github.com/etalab/formulaire-qf/pull/334), [#336](https://github.com/etalab/formulaire-qf/pull/337), [#338](https://github.com/etalab/formulaire-qf/pull/338)
 
 ### Autres changements
-- Aucune information significative à signaler.
+Aucun autre changement significatif à signaler.
