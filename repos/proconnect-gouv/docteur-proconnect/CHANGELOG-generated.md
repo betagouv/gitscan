@@ -1,14 +1,12 @@
-## Changelog : docteur-proconnect (30 derniers jours, au 30 avril 2026)
+## Changelog : docteur-proconnect (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la reconnaissance des différents niveaux d'authentification eIDAS et met à jour les scopes demandés pour inclure les informations sur l'unité organisationnelle et les rôles de l'utilisateur. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
+Cette version apporte une amélioration significative à l'interface utilisateur en affichant les rôles associés aux données inspectées. Cela permet une meilleure compréhension des permissions et des accès liés aux flux d'authentification ProConnect.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge des valeurs ACR `eidas0-mfa` et `eidas1-mfa` pour une meilleure reconnaissance des niveaux d'authentification eIDAS. [#54](https://github.com/proconnect-gouv/docteur-proconnect/issues/54)
-- Mise à jour des scopes ProConnect (`PC_SCOPES`) pour inclure les informations sur l'unité organisationnelle et les rôles de l'utilisateur. [#53](https://github.com/proconnect-gouv/docteur-proconnect/issues/53)
+- Ajout de l'affichage des rôles dans les informations détaillées des données inspectées. [#59](https://github.com/proconnect-gouv/docteur-proconnect/pull/59)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `zod` de la version 4.1.12 à la version 4.4.1. [#58](https://github.com/proconnect-gouv/docteur-proconnect/issues/58)
-- Mise à jour de la dépendance `openid-client` de la version 6.8.3 à la version 6.8.4. [#57](https://github.com/proconnect-gouv/docteur-proconnect/issues/57)
-- Mise à jour de la dépendance de développement `prettier` de la version 3.6.2 à la version 3.8.3. [#56](https://github.com/proconnect-gouv/docteur-proconnect/issues/56)
-- Mise à jour de plusieurs dépendances via Dependabot. [#55](https://github.com/proconnect-gouv/docteur-proconnect/issues/55)
+- Mise à jour de la librairie `zod` (de 4.1.12 à 4.4.1 puis à 4.4.3) pour bénéficier des dernières corrections et améliorations.
+- Mise à jour de la librairie `openid-client` (de 6.8.3 à 6.8.4).
+- Mise à jour de l'outil de formatage de code `prettier` (de 3.6.2 à 3.8.3).
