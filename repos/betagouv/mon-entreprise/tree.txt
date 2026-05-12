@@ -306,6 +306,9 @@
 │   │   └── preview.tsx
 │   ├── ACCESSIBILITY.md
 │   ├── README.md
+│   ├── app
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   ├── build
 │   │   ├── .eslintrc.yaml
 │   │   ├── build-sitemap.ts
@@ -422,9 +425,11 @@
 │   │   │   └── utils.ts
 │   │   └── tsconfig.json
 │   ├── cypress.config.ts
+│   ├── instrumentation.ts
 │   ├── mon-entreprise.fr
 │   │   └── netlify.toml
 │   ├── netlify.base.toml
+│   ├── next.config.mjs
 │   ├── package.json
 │   ├── scripts
 │   │   ├── .eslintrc.yaml
@@ -466,7 +471,8 @@
 │   │   │   ├── parser.config.js
 │   │   │   ├── translate-rules.js
 │   │   │   ├── translate-ui.js
-│   │   │   └── utils.js
+│   │   │   ├── utils.js
+│   │   │   └── yaml-to-json.ts
 │   │   ├── prepare.js
 │   │   ├── search
 │   │   │   ├── clean.js
@@ -815,6 +821,7 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── InfoButton.stories.tsx
 │   │   │   ├── InfoButton.tsx
+│   │   │   ├── StyledComponentsRegistry.tsx
 │   │   │   ├── accordion
 │   │   │   │   ├── chevron.svg
 │   │   │   │   ├── index.stories.tsx
@@ -1163,13 +1170,17 @@
 │   │   │       ├── NavigationAPI.ts
 │   │   │       ├── NavigationContext.ts
 │   │   │       ├── index.ts
+│   │   │       ├── pathUtils.test.ts
+│   │   │       ├── pathUtils.ts
 │   │   │       ├── providers
 │   │   │       │   ├── MockNavigationProvider.tsx
+│   │   │       │   ├── NextJsNavigationProvider.tsx
 │   │   │       │   └── ReactRouterNavigationProvider.tsx
 │   │   │       └── useNavigation.ts
 │   │   ├── locales
 │   │   │   ├── .editorconfig
 │   │   │   ├── .gitignore
+│   │   │   ├── i18n-server.ts
 │   │   │   ├── i18n.ts
 │   │   │   ├── rules-as-en.yaml
 │   │   │   ├── rules-en.yaml
@@ -1790,4 +1801,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-316 directories, 1476 files
+317 directories, 1486 files
