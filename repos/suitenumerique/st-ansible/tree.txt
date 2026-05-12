@@ -4,15 +4,75 @@
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
+├── .markdownlint.json
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
-├── examples
-│   └── monitoring
-│       ├── drive.config.alloy.j2
-│       └── messages.config.alloy.j2
+├── docs
+│   ├── 00-examples
+│   │   ├── full-high-availability
+│   │   │   ├── README.md
+│   │   │   ├── galaxy-requirements.yml
+│   │   │   ├── hosts
+│   │   │   ├── playbook_collabora.yml
+│   │   │   ├── playbook_drive.yml
+│   │   │   ├── playbook_drive_workers.yml
+│   │   │   ├── playbook_keycloak.yml
+│   │   │   ├── playbook_livekit.yml
+│   │   │   ├── playbook_meet.yml
+│   │   │   ├── playbook_messages.yml
+│   │   │   ├── playbook_messages_workers.yml
+│   │   │   ├── playbook_mpa.yml
+│   │   │   ├── playbook_mtain.yml
+│   │   │   └── playbook_socks_proxy.yml
+│   │   ├── meet
+│   │   │   ├── multi-host
+│   │   │   │   ├── README.md
+│   │   │   │   ├── galaxy-requirements.yml
+│   │   │   │   ├── hosts
+│   │   │   │   ├── playbook_livekit_egress.yml
+│   │   │   │   ├── playbook_livekit_multi.yml
+│   │   │   │   ├── playbook_meet.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── Dockerfile.caddy.j2
+│   │   │   │       ├── caddy.json.j2
+│   │   │   │       ├── compose.egress.yaml.j2
+│   │   │   │       ├── compose.yaml.j2
+│   │   │   │       ├── egress.yaml.j2
+│   │   │   │       └── livekit.yaml.j2
+│   │   │   └── single-host
+│   │   │       ├── README.md
+│   │   │       ├── galaxy-requirements.yml
+│   │   │       ├── hosts
+│   │   │       └── playbook_livekit_single.yml
+│   │   └── monitoring
+│   │       ├── drive.config.alloy.j2
+│   │       └── messages.config.alloy.j2
+│   ├── 01-fundamentals
+│   │   ├── 01-architecture.md
+│   │   ├── 02-deployment.md
+│   │   ├── 03-upgrade.md
+│   │   └── 04-podman-role.md
+│   ├── 02-messages
+│   │   ├── 01-messages.md
+│   │   ├── 02-workers.md
+│   │   ├── 03-mta-in.md
+│   │   ├── 04-socks-proxy.md
+│   │   └── 05-mpa.md
+│   ├── 03-drive
+│   │   ├── 01-drive.md
+│   │   ├── 02-workers.md
+│   │   └── 03-collabora.md
+│   ├── 04-keycloak
+│   │   └── 01-keycloak.md
+│   ├── 05-meet
+│   │   ├── 01-meet.md
+│   │   └── 02-livekit.md
+│   ├── 06-monitoring.md
+│   ├── 07-backup.md
+│   └── 08-troubleshooting.md
 ├── extensions
 │   ├── lima-driver
 │   │   ├── .gitignore
@@ -248,4 +308,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-79 directories, 171 files
+90 directories, 220 files
