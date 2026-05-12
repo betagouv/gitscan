@@ -95,13 +95,11 @@
 │   ├── dependencies.py
 │   ├── domain
 │   │   ├── __init__.py
-│   │   ├── bootstrap
-│   │   │   ├── __init__.py
-│   │   │   └── errors.py
 │   │   ├── key
 │   │   │   ├── __init__.py
 │   │   │   ├── _keyrepository.py
-│   │   │   └── entities.py
+│   │   │   ├── entities.py
+│   │   │   └── errors.py
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   ├── entities.py
@@ -127,16 +125,13 @@
 │   │   │   ├── _routerrepository.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
-│   │   ├── user
-│   │   │   ├── __init__.py
-│   │   │   ├── _userrepository.py
-│   │   │   ├── entities.py
-│   │   │   └── errors.py
-│   │   └── userinfo
+│   │   └── user
 │   │       ├── __init__.py
-│   │       ├── _userinforepository.py
+│   │       ├── _userrepository.py
+│   │       ├── _userwithrolequery.py
 │   │       ├── entities.py
-│   │       └── errors.py
+│   │       ├── errors.py
+│   │       └── views.py
 │   ├── endpoints
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -245,8 +240,8 @@
 │   │       ├── _postgresproviderrepository.py
 │   │       ├── _postgresrolesrepository.py
 │   │       ├── _postgresrouterrepository.py
-│   │       ├── _postgresuserinforepository.py
 │   │       ├── _postgresusersrepository.py
+│   │       ├── _postgresuserwithrolerepository.py
 │   │       └── decorators.py
 │   ├── main.py
 │   ├── routers
@@ -407,15 +402,19 @@
 │   │   │       │   ├── test_get_role_name.py
 │   │   │       │   ├── test_get_roles_page.py
 │   │   │       │   └── test_update_role.py
+│   │   │       ├── test_postgreskeyrepository.py
 │   │   │       ├── test_postgreslimitrepository.py
 │   │   │       ├── test_postgrespermissionrepository.py
 │   │   │       ├── test_postgresproviderrepository.py
 │   │   │       ├── test_postgresrolesrepository.py
 │   │   │       ├── test_postgresrouterrepository.py
-│   │   │       └── test_postgresusersrepository.py
+│   │   │       ├── test_postgresusersrepository.py
+│   │   │       └── test_postgresuserwithrolequery.py
 │   │   └── unit
 │   │       ├── __init__.py
 │   │       ├── infrastructure
+│   │       │   ├── fastapi
+│   │       │   │   └── test_access.py
 │   │       │   ├── http
 │   │       │   │   ├── model
 │   │       │   │   │   ├── factories.py
@@ -490,7 +489,7 @@
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
-│   │   │   ├── bootstrapadminusecase.py
+│   │   │   ├── _bootstrapadminusecase.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createproviderusecase.py
@@ -771,4 +770,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-163 directories, 610 files
+162 directories, 610 files
