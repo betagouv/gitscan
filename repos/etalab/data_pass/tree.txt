@@ -866,6 +866,8 @@
 │   │   ├── applicant
 │   │   │   └── demande_alerts_component.rb
 │   │   ├── application_component.rb
+│   │   ├── atoms
+│   │   │   └── color_badge_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
@@ -904,6 +906,14 @@
 │   │   │   │   └── scopes_editor_component.rb
 │   │   │   ├── duration_card_component.html.erb
 │   │   │   ├── duration_card_component.rb
+│   │   │   ├── instruction
+│   │   │   │   └── user_rights
+│   │   │   │       ├── readonly_rights_list_component.html.erb
+│   │   │   │       ├── readonly_rights_list_component.rb
+│   │   │   │       ├── right_field_component.html.erb
+│   │   │   │       ├── right_field_component.rb
+│   │   │   │       ├── table_row_component.html.erb
+│   │   │   │       └── table_row_component.rb
 │   │   │   ├── instructor_banner_notice_component.rb
 │   │   │   ├── stat_card_component.html.erb
 │   │   │   ├── stat_card_component.rb
@@ -915,6 +925,10 @@
 │   │       ├── authorization_request_forms
 │   │       │   ├── legal_framework_component.html.erb
 │   │       │   └── legal_framework_component.rb
+│   │       ├── instruction
+│   │       │   └── user_rights
+│   │       │       ├── table_component.html.erb
+│   │       │       └── table_component.rb
 │   │       └── stats
 │   │           ├── duration_cards_component.html.erb
 │   │           ├── duration_cards_component.rb
@@ -1012,7 +1026,8 @@
 │   │   │   ├── request_changes_on_authorization_requests_controller.rb
 │   │   │   ├── revoke_authorization_requests_controller.rb
 │   │   │   ├── revoke_authorizations_controller.rb
-│   │   │   └── transfer_authorization_requests_controller.rb
+│   │   │   ├── transfer_authorization_requests_controller.rb
+│   │   │   └── user_rights_controller.rb
 │   │   ├── instruction_controller.rb
 │   │   ├── manual_transfer_authorization_requests_controller.rb
 │   │   ├── messages_controller.rb
@@ -1073,6 +1088,9 @@
 │   │   ├── authorization_request_form_from_instructor_builder.rb
 │   │   ├── disabled_authorization_request_form_builder.rb
 │   │   └── dsfr_form_builder.rb
+│   ├── forms
+│   │   └── instruction
+│   │       └── user_right_form.rb
 │   ├── helpers
 │   │   ├── active_links.rb
 │   │   ├── application_helper.rb
@@ -1187,6 +1205,8 @@
 │   │   ├── find_or_create_user_through_pro_connect.rb
 │   │   ├── find_organization.rb
 │   │   ├── increment_authorization_request_unread_counter.rb
+│   │   ├── instruction
+│   │   │   └── merge_managed_roles.rb
 │   │   ├── link_applicant_to_organization.rb
 │   │   ├── mark_authorization_as_revoked.rb
 │   │   ├── mark_authorizations_as_revoked.rb
@@ -1414,6 +1434,11 @@
 │   │   ├── identity_provider.rb
 │   │   ├── impersonation.rb
 │   │   ├── impersonation_action.rb
+│   │   ├── instruction
+│   │   │   ├── manager_scope_options.rb
+│   │   │   ├── right_validator.rb
+│   │   │   ├── scope.rb
+│   │   │   └── user_rights_view.rb
 │   │   ├── instructor_draft_request.rb
 │   │   ├── instructor_draft_request_document.rb
 │   │   ├── instructor_modification_request.rb
@@ -1481,6 +1506,8 @@
 │   │   ├── execute_authorization_request_transition_with_callbacks.rb
 │   │   ├── export_datagouv_habilitations.rb
 │   │   ├── find_or_create_organization.rb
+│   │   ├── instruction
+│   │   │   └── update_user_rights.rb
 │   │   ├── invite_applicant_to_claim_instructor_draft_request.rb
 │   │   ├── refuse_authorization_request.rb
 │   │   ├── reopen_authorization.rb
@@ -1516,7 +1543,8 @@
 │   │   │   ├── authorization_policy.rb
 │   │   │   ├── authorization_request_policy.rb
 │   │   │   ├── instructor_draft_request_policy.rb
-│   │   │   └── message_template_policy.rb
+│   │   │   ├── message_template_policy.rb
+│   │   │   └── user_right_policy.rb
 │   │   └── organization_policy.rb
 │   ├── queries
 │   │   ├── authorization_request_events_query.rb
@@ -2088,7 +2116,16 @@
 │       │   ├── shared
 │       │   │   ├── _email_preview_accordion.html.erb
 │       │   │   └── _message_templates_section.html.erb
-│       │   └── transfer_authorization_requests
+│       │   ├── transfer_authorization_requests
+│       │   │   └── new.html.erb
+│       │   └── user_rights
+│       │       ├── _confirm_destroy.html.erb
+│       │       ├── _form.html.erb
+│       │       ├── _identity_card.html.erb
+│       │       ├── _page_header.html.erb
+│       │       ├── _roles_help.html.erb
+│       │       ├── edit.html.erb
+│       │       ├── index.html.erb
 │       │       └── new.html.erb
 │       ├── instructor_draft_request_mailer
 │       │   └── invite_applicant.text.erb
@@ -2204,6 +2241,7 @@
 │   ├── setup
 │   ├── stream-remote-logs
 │   ├── sync_identity_providers.rb
+│   ├── test-parallel
 │   └── worktree-build
 ├── config
 │   ├── announcement_banner.yml
@@ -2526,7 +2564,8 @@
 │   │   ├── modification_scopes.md
 │   │   ├── nouveau_type_d_habilitation.md
 │   │   ├── scopes_config.md
-│   │   └── templates_messages.md
+│   │   ├── templates_messages.md
+│   │   └── tests_paralleles.md
 │   └── webhooks.md
 ├── features
 │   ├── acces_espaces_en_fonction_des_roles.feature
@@ -2611,6 +2650,12 @@
 │   │   │   └── invitation_demandeur.feature
 │   │   ├── consultation_demande_lien_organisation.feature
 │   │   ├── consultation_habilitation.feature
+│   │   ├── gestion_des_droits
+│   │   │   ├── droits_fd_wildcard.feature
+│   │   │   ├── j_ajoute_des_droits.feature
+│   │   │   ├── je_modifie_des_droits.feature
+│   │   │   ├── je_supprime_tous_les_droits.feature
+│   │   │   └── liste_des_droits.feature
 │   │   ├── habilitations_france_connectees.feature
 │   │   ├── historique_admin_change.feature
 │   │   ├── historique_habilitation.feature
@@ -2676,6 +2721,7 @@
 │   │   ├── stats_steps.rb
 │   │   ├── summary_authorization_requests_steps.rb
 │   │   ├── tabs_steps.rb
+│   │   ├── user_rights_steps.rb
 │   │   ├── user_steps.rb
 │   │   ├── users_roles_steps.rb
 │   │   ├── web_steps.rb
@@ -2814,6 +2860,8 @@
 │   ├── components
 │   │   ├── applicant
 │   │   │   └── demande_alerts_component_spec.rb
+│   │   ├── atoms
+│   │   │   └── color_badge_component_spec.rb
 │   │   ├── authorization_header_component_spec.rb
 │   │   ├── dashboard
 │   │   │   └── blank_state_component_spec.rb
@@ -2828,10 +2876,16 @@
 │   │   ├── icon_component_spec.rb
 │   │   ├── instructor_menu_component_spec.rb
 │   │   ├── link_component_spec.rb
+│   │   ├── molecules
+│   │   │   └── instruction
+│   │   │       └── user_rights
+│   │   │           └── right_field_component_spec.rb
 │   │   └── previews
 │   │       ├── applicant
 │   │       │   └── demande_alerts_component_preview.rb
 │   │       ├── application_preview.rb
+│   │       ├── atoms
+│   │       │   └── color_badge_component_preview.rb
 │   │       ├── authorization_header_component_preview.rb
 │   │       ├── dashboard
 │   │       │   └── blank_state_component_preview.rb
@@ -2850,6 +2904,10 @@
 │   │       │   │   ├── name_with_uid_preview_component_preview.rb
 │   │       │   │   └── scopes_editor_component_preview.rb
 │   │       │   ├── duration_card_component_preview.rb
+│   │       │   ├── instruction
+│   │       │   │   └── user_rights
+│   │       │   │       ├── readonly_rights_list_component_preview.rb
+│   │       │   │       └── right_field_component_preview.rb
 │   │       │   ├── instructor_banner_notice_component_preview.rb
 │   │       │   ├── stat_card_component_preview.rb
 │   │       │   └── update_in_progress_notice_component_preview.rb
@@ -2858,6 +2916,9 @@
 │   │           │   └── habilitation_type_form_component_preview.rb
 │   │           ├── authorization_request_forms
 │   │           │   └── legal_framework_component_preview.rb
+│   │           ├── instruction
+│   │           │   └── user_rights
+│   │           │       └── table_component_preview.rb
 │   │           └── stats
 │   │               ├── duration_cards_component_preview.rb
 │   │               ├── filters_component_preview.rb
@@ -2968,6 +3029,9 @@
 │   ├── form_builders
 │   │   ├── authorization_request_form_builder_spec.rb
 │   │   └── dsfr_form_builder_spec.rb
+│   ├── forms
+│   │   └── instruction
+│   │       └── user_right_form_spec.rb
 │   ├── generator
 │   │   ├── definition_generator_spec.rb
 │   │   └── multi_stages_definition_generator_spec.rb
@@ -3015,6 +3079,8 @@
 │   │   ├── find_or_create_organization_through_pro_connect_spec.rb
 │   │   ├── find_or_create_user_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_user_through_pro_connect_spec.rb
+│   │   ├── instruction
+│   │   │   └── merge_managed_roles_spec.rb
 │   │   ├── link_applicant_to_organization_spec.rb
 │   │   ├── restore_authorization_request_to_latest_authorization_spec.rb
 │   │   ├── revoke_child_authorizations_spec.rb
@@ -3096,6 +3162,10 @@
 │   │   ├── identity_provider_spec.rb
 │   │   ├── impersonation_action_spec.rb
 │   │   ├── impersonation_spec.rb
+│   │   ├── instruction
+│   │   │   ├── manager_scope_options_spec.rb
+│   │   │   ├── scope_spec.rb
+│   │   │   └── user_rights_view_spec.rb
 │   │   ├── instructor_draft_request_document_spec.rb
 │   │   ├── instructor_draft_request_spec.rb
 │   │   ├── instructor_modification_request_spec.rb
@@ -3149,6 +3219,8 @@
 │   │   │   └── update_webhook_spec.rb
 │   │   ├── export_datagouv_habilitations_spec.rb
 │   │   ├── find_or_create_organization_spec.rb
+│   │   ├── instruction
+│   │   │   └── update_user_rights_spec.rb
 │   │   ├── invite_applicant_to_claim_instructor_draft_request_spec.rb
 │   │   ├── refuse_authorization_request_spec.rb
 │   │   ├── reopen_authorization_spec.rb
@@ -3168,7 +3240,9 @@
 │   │   ├── authorization_request_form_policy_spec.rb
 │   │   ├── authorization_request_policy_spec.rb
 │   │   ├── data_provider_policy_spec.rb
-│   │   └── habilitation_type_policy_spec.rb
+│   │   ├── habilitation_type_policy_spec.rb
+│   │   └── instruction
+│   │       └── user_right_policy_spec.rb
 │   ├── queries
 │   │   ├── authorization_request_events_query_spec.rb
 │   │   ├── authorization_requests_mentions_query_spec.rb
@@ -3293,4 +3367,4 @@
     ├── .keep
     └── javascript
         └── .keep
-448 directories, 2985 files
+475 directories, 3032 files
