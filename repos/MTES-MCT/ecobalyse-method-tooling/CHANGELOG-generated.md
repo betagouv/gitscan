@@ -1,35 +1,37 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours, au 8 mai 2026)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des données d'ingrédients transformés, notamment en intégrant de nouvelles variantes (NUE, HUE, UE) et en affinant les processus de correspondance et de fusion des données. Des corrections et améliorations ont également été apportées à la gestion des alias, des noms d'activités et des données sources.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des données, notamment l'intégration de nouvelles variantes de données (HUE, NUE, UE), la correction de problèmes liés à la correspondance des données et l'optimisation des processus de transformation et de fusion des données. Plusieurs améliorations ont été apportées à l'outil d'exportation et à la gestion des alias d'activités et d'ingrédients.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de la variante UE (Unités Économiques) avec des fichiers CSV sources et des mécanismes de fusion/orphelins pour garantir l'intégrité des données.
-- Intégration de la variante HUE (Human Use Efficiency) et régénération des ingrédients transformés.
-- Amélioration de la correspondance des groupes de cultures (cropGroup matcher) pour une meilleure précision et une meilleure information sur la confiance.
-- Ajout de la possibilité d'exporter les données sources à partir de Google Sheets via le script `export.py`.
+- Intégration de la variante HUE (High Uncertainty Estimation) pour les ingrédients.
+- Ajout de la variante NUE (Nouvelles Unités Énergétiques) et régénération des ingrédients transformés.
+- Intégration de la variante UE (Unités Économiques) avec ajout des fichiers CSV sources et des protections contre les erreurs de fusion/orphelins.
+- Amélioration de la correspondance des ingrédients et des activités, notamment en pénalisant les références multi-mots bruyantes et en exigeant un chevauchement textuel.
+- Correction de problèmes de correspondance pour certains ingrédients spécifiques (mangue, radis, viandes BIO).
+- Amélioration de la gestion des noms d'affichage des activités pour garantir leur unicité.
 - Ajout d'une colonne `is_byproduct` et actualisation des sorties avec les co-produits d'allocation.
 - Ajout d'une colonne `dummy_op` et actualisation des sorties à partir de la descente en couches.
-- Ajout de noms d'affichage en français pour les ingrédients, en utilisant un modèle de traduction.
-- Prédiction des métadonnées des ingrédients transformés via le script `predict.py`.
+- Possibilité de prédire les métadonnées des ingrédients transformés via le script `predict.py`.
 
 ### Évolutions techniques
+- Refactorisation du script `export.py` pour unifier la logique des variantes, typifier le flux de données et différer les effets secondaires.
+- Amélioration de la fusion du catalogue LCI, préservant l'identité des activités `-2025` et dédupliquant les alias inter-sources.
+- Adaptation aux dernières versions de la librairie pyvolca.
 - Refactorisation pour adopter les fonctionnalités `include_edges` et de filtrage de VoLCA.
-- Amélioration de la gestion des alias d'activités et d'ingrédients, avec suppression des marqueurs d'année et des suffixes inutiles.
-- Correction de la logique de fusion du catalogue LCI pour préserver l'identité des activités et dédupliquer les alias.
-- Adaptation à la dernière version de pyvolca.
-- Extraction des paramètres de transformation pour toutes les activités du preset transformé.
-- Amélioration de la gestion des collisions de noms d'affichage lors de la fusion des activités.
-- Correction de bugs liés à la gestion des noms d'activités et d'ingrédients (radis, mangue, viandes BIO).
-- Amélioration de la gestion des noms d'affichage pour éviter les doublons.
-- Modification de la stratégie de remplacement des mixes de consommation.
-- Utilisation des paramètres transformés côté serveur pour la recherche des consommateurs.
+- Extraction des primitives de fusion du catalogue LCI et intégration du générateur d'ingrédients transformés.
+- Suppression des ingrédients.json de l'entraînement du prédicteur et de la recherche finale des données.
+- Simplification de la gestion des alias d'activités et d'ingrédients en supprimant les marqueurs d'année et les marqueurs `{{archive-alias}}`.
+- Utilisation de la transformation des presets côté serveur pour la recherche des consommateurs.
+- Correction de la gestion des noms d'activités lors des collisions lors de la fusion.
+- Amélioration de la gestion des paramètres de transformation pour les activités transformées.
 
 ### Autres changements
 - Ajout d'un fichier README pour les scripts `transformed-ingredients`.
-- Documentation de la stratégie utilisée pour la gestion des données.
+- Documentation de la stratégie utilisée pour la gestion des noms d'affichage.
 - Conversion de fichiers texte en Markdown.
-- Ajout d'un fichier `.gitignore`.
-- Mise à jour du fichier README.
-- Correction de processus mal nommés.
-- Suppression d'ingrédients.json de l'entraînement du prédicteur et de la recherche finale des données.
+- Ajout d'un snapshot des ingrédients transformés générés comme base de référence.
+- Correction de noms de processus incorrects.
+- Mise à jour des fichiers sources.
+- Suppression de fichiers inutiles du `.gitignore`.
+- Amélioration de la gestion des espaces de noms des ingrédients.
