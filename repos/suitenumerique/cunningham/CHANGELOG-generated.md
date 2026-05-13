@@ -1,10 +1,10 @@
 ## Changelog : cunningham (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte une correction importante à l'état désactivé des liens dans les boutons, améliorant ainsi l'expérience utilisateur et la conformité aux standards d'accessibilité.
+Cette version apporte une correction importante à l'état désactivé des liens dans le composant Button, améliorant ainsi l'expérience utilisateur et la conformité aux standards d'accessibilité.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant le bon affichage de l'état désactivé des liens dans les boutons [#89a91e6](https://github.com/suitenumerique/cunningham/commit/89a91e6).
+- Correction d'un bug empêchant le composant `Button` de correctement afficher l'état désactivé lorsqu'il est utilisé comme un lien. [#89a91e6](https://github.com/suitenumerique/cunningham/commit/89a91e6)
 
 ### Évolutions techniques
 Aucune évolution technique significative à signaler durant cette période.
