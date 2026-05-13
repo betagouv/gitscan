@@ -52,8 +52,8 @@ Pour lancer l'app + le worker en parallèle :
 foreman start -f Procfile.dev   # ou overmind start -f Procfile.dev
 ```
 
-Variables d'env locales : copier `.env.example` vers `.env.local` et
-renseigner les valeurs (le fichier `.env.local` est gitignoré).
+Variables d'env locales : copier `.env.template` vers `.env` et
+renseigner les valeurs (le fichier `.env` est gitignoré).
 
 ## Tests / lint
 
@@ -77,6 +77,11 @@ bundle exec rubocop -A          # auto-fix
 | `RAILS_MAX_THREADS` | `15` | Pool Postgres + Puma |
 | `GOOD_JOB_MAX_THREADS` | `5` | Workers GoodJob |
 | `GOOD_JOB_POLL_INTERVAL` | `10` | Intervalle de poll (s) |
+| `CNOUS_AUTH_URL` | staging | URL OAuth2 CNOUS (`grant_type` dans la query string) |
+| `CNOUS_API_BASE_URL` | staging | Base URL API CNOUS (`/statut-boursier/...`) |
+| `CNOUS_CLIENT_ID` | _(requis)_ | Client ID OAuth2 (vault staging — DP-1669) |
+| `CNOUS_CLIENT_SECRET` | _(requis)_ | Client secret OAuth2 (vault staging — DP-1669) |
+| `CNOUS_POLL_MAX_WAIT_SECONDS` | `300` | Plafond du polling après POST create-export |
 
 Les secrets fournisseurs (CNOUS, DataPass webhook, master key Rails) ne
 sont jamais committés ni loggés (cf. `CLAUDE.md` — contraintes sécurité
@@ -86,6 +91,29 @@ R-005). Le canal de distribution dépend de l'arbitrage hébergeur en cours
 ## Healthcheck
 
 `GET /healthz` → `200 { "status": "ok" }`
+
+## Récupération CNOUS (CLI)
+
+`Cnous::FetchExport` est l'organizer qui orchestre auth + create + poll +
+parse. La rake task ci-dessous exécute la chaîne complète depuis la
+ligne de commande contre l'environnement de staging configuré dans
+`.env` (cf. variables CNOUS\_\* ci-dessus).
+
+```bash
+bundle exec rake "cnous:fetch[78590,0Bis]"
+# Petit COG → ~1 KB / ~14 records (cf. API-6710)
+# Sortie : tmp/cnous_<id>_<utc_ts>.csv + ligne récap
+
+bundle exec rake "cnous:fetch[75056,1]"
+# Paris → ~635 KB / ~6720 records
+```
+
+Le contenu CSV n'est jamais imprimé sur stdout (R-005). Seul le chemin
++ le nombre de boursiers + la durée d'exécution sont affichés.
+
+Le fichier écrit dans `tmp/` contient des données nominatives — le
+supprimer après usage (`rm tmp/cnous_*.csv`) conformément à R-005 #4
+(stockage nominatif temporaire, purge post-livraison).
 
 ## Déploiement
 

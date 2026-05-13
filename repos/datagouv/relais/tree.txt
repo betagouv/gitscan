@@ -1,5 +1,5 @@
 .
-├── .env.example
+├── .env.template
 ├── .gitignore
 ├── .rspec
 ├── .rubocop.yml
@@ -17,14 +17,36 @@
 │   │   ├── concerns
 │   │   │   └── .keep
 │   │   └── healthchecks_controller.rb
+│   ├── interactors
+│   │   ├── application_interactor.rb
+│   │   └── cnous
+│   │       ├── authenticate.rb
+│   │       ├── create_export.rb
+│   │       ├── download_export.rb
+│   │       └── parse_csv.rb
 │   ├── jobs
 │   │   └── application_job.rb
 │   ├── models
 │   │   ├── application_record.rb
-│   │   └── concerns
-│   │       └── .keep
-│   └── services
-│       └── .keep
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   └── proactivite_request.rb
+│   ├── organizers
+│   │   ├── application_organizer.rb
+│   │   └── cnous
+│   │       └── fetch_export.rb
+│   ├── parsers
+│   │   └── cnous
+│   │       ├── csv_parser.rb
+│   │       └── student.rb
+│   ├── services
+│   │   ├── .keep
+│   │   └── cnous
+│   │       ├── fetch_export_cli.rb
+│   │       └── http_connection.rb
+│   └── values
+│       └── cnous
+│           └── configuration.rb
 ├── bin
 │   ├── bundler-audit
 │   ├── ci
@@ -56,11 +78,16 @@
 │   └── routes.rb
 ├── config.ru
 ├── db
+│   ├── migrate
+│   │   ├── 20260511140417_create_proactivite_requests.rb
+│   │   └── 20260512094537_add_file_storage_to_proactivite_requests.rb
 │   ├── postgresql_setup.txt
+│   ├── schema.rb
 │   └── seeds.rb
 ├── lib
 │   └── tasks
-│       └── .keep
+│       ├── .keep
+│       └── cnous.rake
 ├── log
 │   └── .keep
 ├── public
@@ -68,10 +95,41 @@
 ├── script
 │   └── .keep
 ├── spec
+│   ├── config
+│   │   └── filter_parameters_spec.rb
+│   ├── fixtures
+│   │   ├── cnous
+│   │   │   └── boursiers_sample.csv
+│   │   └── proactivite_requests.yml
+│   ├── interactors
+│   │   ├── application_interactor_spec.rb
+│   │   └── cnous
+│   │       ├── authenticate_spec.rb
+│   │       ├── create_export_spec.rb
+│   │       ├── download_export_spec.rb
+│   │       └── parse_csv_spec.rb
+│   ├── models
+│   │   └── proactivite_request_spec.rb
+│   ├── organizers
+│   │   └── cnous
+│   │       └── fetch_export_spec.rb
+│   ├── parsers
+│   │   └── cnous
+│   │       └── csv_parser_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   └── healthchecks_spec.rb
-│   └── spec_helper.rb
+│   ├── services
+│   │   └── cnous
+│   │       └── fetch_export_cli_spec.rb
+│   ├── spec_helper.rb
+│   ├── support
+│   │   ├── provider_stubs
+│   │   │   └── cnous.rb
+│   │   └── provider_stubs.rb
+│   └── values
+│       └── cnous
+│           └── configuration_spec.rb
 └── vendor
     └── .keep
-22 directories, 54 files
+48 directories, 86 files

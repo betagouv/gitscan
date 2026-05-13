@@ -1,12 +1,19 @@
-## Changelog : relais (30 derniers jours, au 7 mai 2026)
+## Changelog : relais (30 derniers jours, au 2026-05-12)
 
 ### Résumé
-Le projet relais a connu une refonte significative de son infrastructure et de sa configuration.  Une nouvelle base de code, alignée sur le projet `apistration`, a été initialisée avec Rails 8.1.  Des outils de test et de linting ont été intégrés pour améliorer la qualité du code et faciliter les déploiements. La documentation a également été mise à jour pour refléter ces changements.
+Ce mois-ci, le projet relais a connu une refonte majeure de son infrastructure et de son architecture, passant à Rails 8.1 et intégrant GoodJob pour la gestion des tâches asynchrones.  De nouvelles fonctionnalités ont été ajoutées pour supporter l'intégration avec CNOUS et la gestion de demandes proactives, améliorant ainsi la capacité du service à répondre aux besoins des administrations.
+
+### Évolutions fonctionnelles
+- **Intégration CNOUS :** Ajout de l'intégration avec CNOUS, incluant l'authentification OAuth2, le téléchargement de données et le parsing des fichiers CSV avec des protections PII (données personnelles identifiables) [#1](https://github.com/datagouv/relais/pull/1).
+- **Demandes proactives :** Implémentation d'un modèle `ProactiviteRequest` et d'une machine d'état pour gérer les demandes proactives [#3](https://github.com/datagouv/relais/pull/3).
+- **Stockage de fichiers :** Amélioration du stockage des fichiers avec l'ajout de colonnes `file_bytes` et `file_purged_at` pour une gestion plus flexible des données [#4](https://github.com/datagouv/relais/pull/4).
 
 ### Évolutions techniques
-- Initialisation d'un squelette Rails 8.1 aligné avec `apistration` [ff8278b](https://github.com/datagouv/relais/commit/ff8278b)
-- Configuration de GoodJob pour la gestion des tâches asynchrones et documentation du processus de démarrage [895ea57](https://github.com/datagouv/relais/commit/895ea57)
-- Intégration de RSpec, Rubocop et d'un endpoint `/healthz` pour les tests et la vérification de l'état de l'application lors des déploiements [01e4282](https://github.com/datagouv/relais/commit/01e4282)
-- Réalignement de la documentation `CLAUDE.md` avec l'état actuel du projet et de l'API [9425745](https://github.com/datagouv/relais/commit/9425745)
-- Réalignement du squelette du projet en fonction de la portée de l'API [9c306e0](https://github.com/datagouv/relais/commit/9c306e0)
-- Initialisation du fichier `claude.md` [5844c4e](https://github.com/datagouv/relais/commit/5844c4e)
+- **Mise à jour de Rails :**  Le projet a été mis à jour vers Rails 8.1, offrant les dernières améliorations de performance et de sécurité.
+- **Intégration GoodJob :**  GoodJob a été intégré pour la gestion des tâches asynchrones, améliorant la réactivité et la scalabilité du service.
+- **Configuration CI/CD :**  Configuration de RSpec, Rubocop et d'un endpoint `/healthz` pour permettre des tests automatisés lors des déploiements.
+- **Refactoring de l'architecture :** Refonte de l'architecture du projet pour l'aligner avec apistration.
+
+### Autres changements
+- **Documentation :** Mise à jour de la documentation `CLAUDE.md` pour refléter l'état actuel du projet et les nouvelles fonctionnalités [#4](https://github.com/datagouv/relais/pull/4).
+- **Nettoyage de code :**  Améliorations générales du code et de la configuration.
