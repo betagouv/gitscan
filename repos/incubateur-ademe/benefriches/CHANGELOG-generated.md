@@ -1,38 +1,30 @@
-## Changelog : benefriches (30 derniers jours, au 7 mai 2026)
+## Changelog : benefriches (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la création et l'analyse de projets de reconversion de friches. Des améliorations ont été apportées au calcul des impacts économiques, à la visualisation des données et à la gestion des dépenses liées aux projets urbains. Des corrections de bugs et des optimisations techniques ont également été réalisées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les améliorations se concentrent sur l'amélioration du calcul des impacts économiques et environnementaux des projets de reconversion de friches, notamment en affinant les données prises en compte pour le calcul du seuil de rentabilité et en intégrant les coûts de construction et de réhabilitation. L'interface utilisateur a également été améliorée, avec l'ajout de nouvelles visualisations et la correction de bugs pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'un onglet "Score de développement" sur la page des impacts pour une évaluation plus fine des projets.
-- Amélioration de la visualisation de l'allocation des surfaces dans les formulaires de projets urbains.
-- Ajout de la prise en compte des coûts de construction et de réhabilitation dans le bilan économique des projets.
-- Affichage des dépenses liées à la réutilisation et à la construction de bâtiments dans la vue des caractéristiques des projets urbains.
-- Ajout d'un onglet "Résumé" sur la page des impacts, présentant une vue d'ensemble des indicateurs clés.
-- Utilisation de couleurs pour les graphiques de niveau de seuil de rentabilité pour une meilleure lisibilité.
-- Ajout d'un endpoint API pour calculer le coût de l'inaction sur une friche.
-- Amélioration de la gestion des données de réutilisation des bâtiments dans les projets urbains.
-- Ajout de tous les modèles de projets existants dans l'étape de sélection du modèle de projet de démonstration.
-- Correction du calcul dans l'onglet de seuil de rentabilité lors de la modification de la période d'évaluation.
-- Correction de l'affichage des coûts évités de décontamination des sols lorsque le total est nul.
+- Ajout d'une nouvelle vue "Résumé des impacts" avec des graphiques pour chaque bénéficiaire d'impact [#245d401](https://github.com/incubateur-ademe/benefriches/commit/245d401).
+- Affichage des dépenses de construction et de réhabilitation dans la vue des caractéristiques du projet urbain [#02a2613](https://github.com/incubateur-ademe/benefriches/commit/02a2613).
+- Ajout d'un onglet "Score de développement" (en version bêta) pour visualiser les impacts [#bcb431a](https://github.com/incubateur-ademe/benefriches/commit/bcb431a).
+- Calcul du seuil de rentabilité avec prise en compte des coûts de transfert de propriété et des revenus locatifs [#61ae910](https://github.com/incubateur-ademe/benefriches/commit/61ae910).
+- Ajout d'un endpoint pour calculer le coût de l'inaction sur une friche [#fae2976](https://github.com/incubateur-ademe/benefriches/commit/fae2976).
+- Amélioration de l'affichage des dépenses de décontamination du sol dans le résumé du projet [#a18382f](https://github.com/incubateur-ademe/benefriches/commit/a18382f).
+- Prise en compte des dépenses liées aux infrastructures routières et aux réseaux lors du calcul des impacts [#3a5c3e0](https://github.com/incubateur-ademe/benefriches/commit/3a5c3e0).
+- Affichage de la surface totale du site sur l'étape des espaces verts publics [#be075fb](https://github.com/incubateur-ademe/benefriches/commit/be075fb).
+- Pré-remplissage de la surface de plancher des nouveaux bâtiments lors de la création d'un projet urbain [#071dc5a](https://github.com/incubateur-ademe/benefriches/commit/071dc5a).
 
 ### Évolutions techniques
-- Refactorisation du code pour extraire et réutiliser des composants communs, notamment pour la gestion des surfaces.
-- Amélioration de la couverture des tests d'intégration pour l'API, notamment pour la gestion des fonctionnalités des projets de reconversion.
-- Mise à jour des dépendances (Vitest, Axios, etc.) pour bénéficier des dernières corrections et améliorations.
-- Amélioration de la configuration de l'environnement de développement avec des variables d'environnement plus claires.
-- Amélioration du pipeline CI/CD avec des contrôles de santé après le déploiement et une gestion des secrets plus sécurisée.
-- Utilisation de variables d'environnement standardisées pour les flags de fonctionnalités.
-- Ajout de commentaires et documentation pour faciliter la compréhension du code et de l'infrastructure.
+- Refactorisation de l'architecture API pour améliorer la maintenabilité et l'évolutivité [#3a3efa7](https://github.com/incubateur-ademe/benefriches/commit/3a3efa7).
+- Amélioration des tests unitaires et d'intégration pour garantir la qualité du code [#277485a](https://github.com/incubateur-ademe/benefriches/commit/277485a).
+- Mise en place d'un système de synchronisation quotidienne des abonnements à la newsletter à partir du CRM via un cron Scalingo [#91b0481](https://github.com/incubateur-ademe/benefriches/commit/91b0481).
+- Amélioration de la configuration CI/CD pour optimiser les temps de build et de déploiement [#f12d312](https://github.com/incubateur-ademe/benefriches/commit/f12d312).
+- Utilisation de variables d'environnement standardisées pour les flags de fonctionnalité dans l'application web [#f067c7f](https://github.com/incubateur-ademe/benefriches/commit/f067c7f).
+- Refactorisation du code pour extraire des composants réutilisables et améliorer la modularité [#92404ae](https://github.com/incubateur-ademe/benefriches/commit/92404ae).
 
 ### Autres changements
-- Mise à jour de la documentation pour inclure des informations sur les endpoints publics de l'API.
-- Correction de la configuration de la directive d'images CSP pour inclure OpenStreetMap.
-- Mise à jour de la page légale.
-- Suppression de fichiers inutiles et amélioration de la structure du projet.
-- Correction de problèmes mineurs d'importation de modules.
-- Ajout de tests unitaires pour la vue de résultat de création de projet.
-- Correction de bugs liés à la navigation inverse dans les dépenses des projets urbains.
-- Amélioration de la gestion des types de structures des parties prenantes dans la vue SQL des impacts.
-- Correction de l'affichage des marqueurs sur la carte dans l'onglet de résumé des impacts.
-- Correction de l'initialisation des données de réutilisation des bâtiments lors de la mise à jour des projets urbains.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées [#4995672](https://github.com/incubateur-ademe/benefriches/commit/4995672).
+- Correction de références de fichiers obsolètes dans la documentation CLAUDE.md [#8bf42b4](https://github.com/incubateur-ademe/benefriches/commit/8bf42b4).
+- Mise à jour des dépendances mineures et correctives [#047c413](https://github.com/incubateur-ademe/benefriches/commit/047c413), [#397c36b](https://github.com/incubateur-ademe/benefriches/commit/397c36b), [#e5745e1](https://github.com/incubateur-ademe/benefriches/commit/e5745e1).
+- Amélioration de la gestion des erreurs et des logs dans l'API [#ef5a2cd](https://github.com/incubateur-ademe/benefriches/commit/ef5a2cd).
+- Ajout de tests unitaires pour les nouveaux composants et fonctionnalités [#3b74413](https://github.com/incubateur-ademe/benefriches/commit/3b74413).

@@ -318,14 +318,23 @@
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.spec.ts
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.ts
 │   │   │   │       │   │   ├── break-even-level
+│   │   │   │       │   │   │   ├── documentation-calculs-impacts.md
 │   │   │   │       │   │   │   ├── indirect-economic-impacts
+│   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.ts
+│   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.ts
+│   │   │   │       │   │   │   │   ├── rentalIncomeImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── rentalIncomeImpacts.ts
+│   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.ts
+│   │   │   │       │   │   │   │   ├── urbanProjectImpacts.spec.ts
 │   │   │   │       │   │   │   │   └── urbanProjectImpacts.ts
+│   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.spec.ts
 │   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.ts
+│   │   │   │       │   │   │   ├── projectIndirectEconomicImpacts.spec.ts
 │   │   │   │       │   │   │   ├── projectIndirectEconomicImpacts.ts
+│   │   │   │       │   │   │   ├── projectOperatingEconomicBalance.spec.ts
 │   │   │   │       │   │   │   └── projectOperatingEconomicBalance.ts
 │   │   │   │       │   │   ├── economic-balance
 │   │   │   │       │   │   │   ├── economicBalanceImpact.spec.ts
@@ -2754,12 +2763,6 @@
 │       │   │   │   │           │   │   │   ├── buildingsDemolitionInfo.handler.ts
 │       │   │   │   │           │   │   │   ├── buildingsDemolitionInfo.selector.ts
 │       │   │   │   │           │   │   │   └── buildingsDemolitionInfo.stepperConfig.ts
-│       │   │   │   │           │   │   ├── buildings-existing-buildings-uses-floor-surface-area
-│       │   │   │   │           │   │   │   ├── buildingsExistingBuildingsUsesFloorSurfaceArea.handler.ts
-│       │   │   │   │           │   │   │   ├── buildingsExistingBuildingsUsesFloorSurfaceArea.schema.ts
-│       │   │   │   │           │   │   │   ├── buildingsExistingBuildingsUsesFloorSurfaceArea.selector.ts
-│       │   │   │   │           │   │   │   ├── buildingsExistingBuildingsUsesFloorSurfaceArea.step.spec.ts
-│       │   │   │   │           │   │   │   └── buildingsExistingBuildingsUsesFloorSurfaceArea.stepperConfig.ts
 │       │   │   │   │           │   │   ├── buildings-footprint-to-reuse
 │       │   │   │   │           │   │   │   ├── buildingsFootprintToReuse.handler.ts
 │       │   │   │   │           │   │   │   ├── buildingsFootprintToReuse.schema.ts
@@ -2769,11 +2772,6 @@
 │       │   │   │   │           │   │   ├── buildings-introduction
 │       │   │   │   │           │   │   │   ├── buildingsIntroduction.handler.ts
 │       │   │   │   │           │   │   │   └── buildingsIntroduction.stepperConfig.ts
-│       │   │   │   │           │   │   ├── buildings-new-buildings-uses-floor-surface-area
-│       │   │   │   │           │   │   │   ├── buildingsNewBuildingsUsesFloorSurfaceArea.handler.ts
-│       │   │   │   │           │   │   │   ├── buildingsNewBuildingsUsesFloorSurfaceArea.schema.ts
-│       │   │   │   │           │   │   │   ├── buildingsNewBuildingsUsesFloorSurfaceArea.selector.ts
-│       │   │   │   │           │   │   │   └── buildingsNewBuildingsUsesFloorSurfaceArea.stepperConfig.ts
 │       │   │   │   │           │   │   ├── buildings-new-construction-info
 │       │   │   │   │           │   │   │   ├── buildingsNewConstructionInfo.handler.ts
 │       │   │   │   │           │   │   │   ├── buildingsNewConstructionInfo.selector.ts
@@ -2790,7 +2788,19 @@
 │       │   │   │   │           │   │   │   ├── buildingsUsesFloorSurfaceArea.schema.ts
 │       │   │   │   │           │   │   │   ├── buildingsUsesFloorSurfaceArea.selector.ts
 │       │   │   │   │           │   │   │   └── buildingsUsesFloorSurfaceArea.stepperConfig.ts
-│       │   │   │   │           │   │   └── buildingsReaders.ts
+│       │   │   │   │           │   │   ├── buildingsReaders.ts
+│       │   │   │   │           │   │   ├── existing-buildings-uses-floor-surface-area
+│       │   │   │   │           │   │   │   ├── existingBuildingsUsesFloorSurfaceArea.handler.ts
+│       │   │   │   │           │   │   │   ├── existingBuildingsUsesFloorSurfaceArea.schema.ts
+│       │   │   │   │           │   │   │   ├── existingBuildingsUsesFloorSurfaceArea.selector.ts
+│       │   │   │   │           │   │   │   ├── existingBuildingsUsesFloorSurfaceArea.step.spec.ts
+│       │   │   │   │           │   │   │   └── existingBuildingsUsesFloorSurfaceArea.stepperConfig.ts
+│       │   │   │   │           │   │   └── new-buildings-uses-floor-surface-area
+│       │   │   │   │           │   │       ├── newBuildingsUsesFloorSurfaceArea.handler.ts
+│       │   │   │   │           │   │       ├── newBuildingsUsesFloorSurfaceArea.schema.ts
+│       │   │   │   │           │   │       ├── newBuildingsUsesFloorSurfaceArea.selector.ts
+│       │   │   │   │           │   │       ├── newBuildingsUsesFloorSurfaceArea.step.spec.ts
+│       │   │   │   │           │   │       └── newBuildingsUsesFloorSurfaceArea.stepperConfig.ts
 │       │   │   │   │           │   ├── expenses
 │       │   │   │   │           │   │   ├── expenses-buildings-construction-and-rehabilitation
 │       │   │   │   │           │   │   │   ├── expensesBuildingsConstructionAndRehabilitation.handler.ts
@@ -2898,6 +2908,7 @@
 │       │   │   │   │           │   │   │   ├── publicGreenSpacesSoilsDistribution.handler.ts
 │       │   │   │   │           │   │   │   ├── publicGreenSpacesSoilsDistribution.schema.ts
 │       │   │   │   │           │   │   │   ├── publicGreenSpacesSoilsDistribution.selector.ts
+│       │   │   │   │           │   │   │   ├── publicGreenSpacesSoilsDistribution.step.spec.ts
 │       │   │   │   │           │   │   │   └── publicGreenSpacesSoilsDistribution.stepperConfig.ts
 │       │   │   │   │           │   │   ├── spaces-introduction
 │       │   │   │   │           │   │   │   ├── spacesIntroduction.handler.ts
@@ -3191,8 +3202,8 @@
 │       │   │       │   │   │   │   ├── BuildingsDemolitionInfo.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── existing-buildings-uses-floor-surface-area
-│       │   │       │   │   │   │   ├── BuildingsExistingBuildingsUsesFloorSurfaceArea.spec.tsx
-│       │   │       │   │   │   │   ├── BuildingsExistingBuildingsUsesFloorSurfaceArea.tsx
+│       │   │       │   │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.spec.tsx
+│       │   │       │   │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── footprint-to-reuse
 │       │   │       │   │   │   │   ├── BuildingsFootprintToReuse.spec.tsx
@@ -3202,8 +3213,8 @@
 │       │   │       │   │   │   │   ├── BuildingsIntroduction.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── new-buildings-uses-floor-surface-area
-│       │   │       │   │   │   │   ├── BuildingsNewBuildingsUsesFloorSurfaceArea.spec.tsx
-│       │   │       │   │   │   │   ├── BuildingsNewBuildingsUsesFloorSurfaceArea.tsx
+│       │   │       │   │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.spec.tsx
+│       │   │       │   │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── new-construction-info
 │       │   │       │   │   │   │   ├── BuildingsNewConstructionInfo.tsx
@@ -3550,4 +3561,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-966 directories, 2586 files
+966 directories, 2597 files
