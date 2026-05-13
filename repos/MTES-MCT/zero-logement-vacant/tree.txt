@@ -6,6 +6,12 @@
 │   │   ├── analytics-reviewer.md
 │   │   ├── analytics-tester.md
 │   │   └── data-engineer.md
+│   ├── commands
+│   │   ├── pm-add-mart.md
+│   │   ├── pm-add-raw-table.md
+│   │   └── pm-fix-pipeline.md
+│   ├── hooks
+│   │   └── dbt_model_has_test.py
 │   ├── launch.json
 │   ├── rules
 │   │   ├── backend-conventions.md
@@ -46,6 +52,8 @@
 │   ├── git-commit-instructions.md
 │   └── workflows
 │       ├── codeql-analysis.yml
+│       ├── dagster-rerun.yml
+│       ├── dbt-test-coverage.yml
 │       ├── deploy-data-apps.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
@@ -84,6 +92,7 @@
 │   ├── .gitignore
 │   ├── .python-version
 │   ├── Dockerfile.metabase
+│   ├── PM_GUIDE.md
 │   ├── README.md
 │   ├── TODO.md
 │   ├── Untitled.ipynb
@@ -140,6 +149,13 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── assets
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── ban
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── _client.py
+│   │   │   │   │   ├── _queries.py
+│   │   │   │   │   ├── _upsert.py
+│   │   │   │   │   ├── sync_housings.py
+│   │   │   │   │   └── sync_owners.py
 │   │   │   │   ├── clever
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── restart.py
@@ -183,19 +199,12 @@
 │   │   │   │   │       ├── upload_metabase_db_to_cellar.py
 │   │   │   │   │       └── utils.py
 │   │   │   │   ├── notion.py
-│   │   │   │   ├── populate_edited_owners_ban_addresses.py
-│   │   │   │   ├── populate_housings_ban_addresses.py
-│   │   │   │   ├── populate_missing_ban_addresses_for_owners.py
-│   │   │   │   ├── populate_owners_ban_addresses.py
 │   │   │   │   ├── production_dbt.py
 │   │   │   │   └── production_dlt.py
 │   │   │   ├── config.py
 │   │   │   ├── definitions.py
 │   │   │   ├── jobs
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── edited_owners_ban_addresses_job.py
-│   │   │   │   ├── housings_ban_addresses_job.py
-│   │   │   │   └── owners_ban_addresses_job.py
+│   │   │   │   └── __init__.py
 │   │   │   ├── project.py
 │   │   │   ├── requirements.txt
 │   │   │   ├── resources
@@ -213,6 +222,7 @@
 │   │   ├── test_pipeline.sh
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_ban_upsert.py
 │   │   │   └── test_compilation.py
 │   │   ├── uv.lock
 │   │   └── workspace.yaml
@@ -1027,6 +1037,7 @@
 │   │   │   │   ├── header.module.scss
 │   │   │   │   └── small-header.module.scss
 │   │   │   ├── Housing
+│   │   │   │   ├── HousingAddressCell.tsx
 │   │   │   │   ├── HousingHeader.tsx
 │   │   │   │   └── OccupancyBadge.tsx
 │   │   │   ├── HousingCount
@@ -1499,6 +1510,7 @@
 │   │   │   ├── sentryEnhancer.ts
 │   │   │   ├── storeUtils.tsx
 │   │   │   ├── stringUtils.ts
+│   │   │   ├── tableSortUtils.ts
 │   │   │   └── test
 │   │   │       ├── arrayUtils.test.ts
 │   │   │       └── stringUtils.test.ts
@@ -2596,4 +2608,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-387 directories, 2211 files
+390 directories, 2220 files
