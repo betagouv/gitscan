@@ -376,6 +376,9 @@
 │   │   │   ├── admin.ts
 │   │   │   ├── api.ts
 │   │   │   ├── database.ts
+│   │   │   ├── env
+│   │   │   │   └── production
+│   │   │   │       └── middlewares.ts
 │   │   │   ├── middlewares.ts
 │   │   │   ├── plugins.ts
 │   │   │   └── server.ts
@@ -939,6 +942,8 @@
     │   │   │   │   │   │   │   │   │   │       └── OrganismVisibilityToggle.tsx
     │   │   │   │   │   │   │   │   │   ├── on-site
     │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── delete-lieu-accueil-tile
+    │   │   │   │   │   │   │   │   │   │   │   │   └── DeleteLieuAccueilTile.tsx
     │   │   │   │   │   │   │   │   │   │   │   └── onSiteOrganism.hook.ts
     │   │   │   │   │   │   │   │   │   │   ├── formacodes-ccns-degrees
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
@@ -2275,7 +2280,6 @@
     │   │   │   │   ├── updateCandidacyCertificationCompletion.ts
     │   │   │   │   ├── updateCandidacyEndAccompagnementDecision.ts
     │   │   │   │   ├── updateCandidacyFinanceModule.ts
-    │   │   │   │   ├── updateCandidacyInactifDecision.ts
     │   │   │   │   ├── updateCandidacyOrganism.ts
     │   │   │   │   ├── updateCandidacyStatus.ts
     │   │   │   │   ├── updateCandidacyTypeAccompagnement.ts
@@ -2374,7 +2378,6 @@
     │   │   │   │   ├── getHighestDegreeById.ts
     │   │   │   │   ├── getNiveauDeFormationLePlusEleve.ts
     │   │   │   │   ├── getTypologyAndCollectiveAgreementCompletedByCandidateId.ts
-    │   │   │   │   ├── updateAllCandidaciesDerniereDateActiviteByCandidateId.ts
     │   │   │   │   ├── updateCandidate.ts
     │   │   │   │   ├── updateCandidateContactDetails.ts
     │   │   │   │   ├── updateCandidateEmailAndSendNotifications.ts
@@ -2720,6 +2723,7 @@
     │   │   │   │   ├── createOrUpdateOnSiteOrganismGeneralInformation.ts
     │   │   │   │   ├── createOrUpdateRemoteOrganismGeneralInformation.ts
     │   │   │   │   ├── createOrganismAccount.ts
+    │   │   │   │   ├── deleteLieuAccueil.ts
     │   │   │   │   ├── deleteOldMaisonMereAAPLegalInformationDocuments.ts
     │   │   │   │   ├── disableCompteCollaborateur.ts
     │   │   │   │   ├── findOrganismOnDegreeByOrganismId.ts
@@ -4350,9 +4354,17 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260505090000_remove_automatic_inactivity_batches
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260505093000_add_candidacy_last_opened_at
+    │   │   │   │   └── migration.sql
     │   │   │   ├── 20260505095759_update_reasons_available_in_dropout_reason_table
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260505100000_remove_candidacy_inactivity_model
+    │   │   │   │   └── migration.sql
     │   │   │   ├── 20260506163000_remove_expired_candidacies_batch
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260511161926_update_organism_on_account_add_cascade_delete_to_account_id_and_organism_id_fields
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260512135607_add_end_accompagnement_reason_and_end_accompagnement_candidate_drop_out_reason_to_candidacy_table
     │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
@@ -4389,6 +4401,9 @@
     │   │       │   └── types-diplome.csv
     │   │       └── seed.ts
     │   ├── scripts
+    │   │   ├── anonymization
+    │   │   │   ├── anonymize-keycloak-db.sql
+    │   │   │   └── anonymize-reva-db.sql
     │   │   ├── csvToJSON.ts
     │   │   ├── document.pdf
     │   │   ├── dossier_validation.pdf
@@ -4477,10 +4492,9 @@
     │   ├── copy-assets.js
     │   ├── cypress
     │   │   ├── e2e
-    │   │   │   ├── dashboard
-    │   │   │   │   ├── dashboard-banner.cy.js
-    │   │   │   │   └── dashboard-tiles.cy.ts
-    │   │   │   └── organism.cy.ts
+    │   │   │   └── dashboard
+    │   │   │       ├── dashboard-banner.cy.js
+    │   │   │       └── dashboard-tiles.cy.ts
     │   │   ├── fixtures
     │   │   │   ├── auth
     │   │   │   │   ├── candidate-token.json
@@ -4494,9 +4508,7 @@
     │   │   │   ├── candidate1-for-candidates-guard.json
     │   │   │   ├── candidate1.json
     │   │   │   ├── candidate_loginWithToken.json
-    │   │   │   ├── features.json
-    │   │   │   ├── organism.json
-    │   │   │   └── selected-organism.json
+    │   │   │   └── features.json
     │   │   ├── global.d.ts
     │   │   ├── plugins
     │   │   │   └── index.js
@@ -4690,7 +4702,8 @@
     │   │   │   │   │       │   ├── DashboardBanner.tsx
     │   │   │   │   │       │   ├── DossierDeValidationBanner.tsx
     │   │   │   │   │       │   ├── FeasibilityBanner.tsx
-    │   │   │   │   │       │   └── JuryBanner.tsx
+    │   │   │   │   │       │   ├── JuryBanner.tsx
+    │   │   │   │   │       │   └── JuryWithBlocksBanner.tsx
     │   │   │   │   │       ├── dashboard-sidebar
     │   │   │   │   │       │   ├── DashboardSidebar.tsx
     │   │   │   │   │       │   ├── appointments
@@ -4712,6 +4725,9 @@
     │   │   │   │   │       │   ├── DashboardAutonomeTilesGroup.tsx
     │   │   │   │   │       │   ├── DashboardTilesSection.tsx
     │   │   │   │   │       │   └── DashboardVaeCollectiveTilesGroup.tsx
+    │   │   │   │   │       ├── personas-dashboard
+    │   │   │   │   │       │   ├── NonVaeCollectiveDashboard.tsx
+    │   │   │   │   │       │   └── VaeCollectiveDashboard.tsx
     │   │   │   │   │       └── tiles
     │   │   │   │   │           ├── CertificationTile.tsx
     │   │   │   │   │           ├── DossierValidationTile.tsx
@@ -4831,9 +4847,6 @@
     │   │   │   │   │   │   │   │   │   │   ├── archive.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── candidacy-deleted
-    │   │   │   │   │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   │   │   │   │   ├── candidacy-inactif
-    │   │   │   │   │   │   │   │   │   │   ├── candidacy-inactif.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── dossier-de-validation
     │   │   │   │   │   │   │   │   │   │   ├── _components
@@ -5112,6 +5125,8 @@
     │   │   │   │   │   ├── dossier-de-validation.handler.ts
     │   │   │   │   │   └── upload.ts
     │   │   │   │   ├── end-accompagnement.handler.ts
+    │   │   │   │   ├── set-organism
+    │   │   │   │   │   └── set-organism.handler.ts
     │   │   │   │   ├── type-accompagnement
     │   │   │   │   │   └── type-accompagnement.handler.ts
     │   │   │   │   ├── validate-feasibility
@@ -5154,7 +5169,10 @@
     │   │       │   ├── dossier-de-validation
     │   │       │   │   └── dossier-de-validation.spec.ts
     │   │       │   ├── end-accompagnement.spec.ts
+    │   │       │   ├── jury-with-blocks-banner.spec.ts
     │   │       │   ├── next-actions.spec.ts
+    │   │       │   ├── set-organism
+    │   │       │   │   └── set-organism.spec.ts
     │   │       │   ├── submit-candidacy-tile.spec.ts
     │   │       │   ├── type-accompagnement
     │   │       │   │   └── type-accompagnement.spec.ts
@@ -5919,4 +5937,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1989 directories, 3932 files
+1999 directories, 3940 files

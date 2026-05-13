@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus de Validation des Acquis de l'Expérience (VAE) en France.",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus liés à la Validation des Acquis de l'Expérience (VAE).",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,9 +10,8 @@
     "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Interface utilisateur & Design",
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,12 +21,9 @@
     "Prisma",
     "Keycloak",
     "React",
+    "URQL",
     "PostgreSQL",
     "Outscale",
-    "Traefik",
-    "Vitest",
-    "Cypress",
-    "Playwright",
     "Datadog",
     "Metabase",
     "Brevo",
@@ -47,7 +43,7 @@
       "session"
     ],
     "providers": [
-      "FranceConnect"
+      "Keycloak"
     ]
   },
   "tests": [
@@ -58,7 +54,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-07T19:05:30+02:00",
+  "lastActivity": "2026-05-12T18:07:56+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
