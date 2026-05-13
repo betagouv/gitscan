@@ -1,24 +1,26 @@
-## Changelog : domifa (30 derniers jours, au 7 mai 2026)
+## Changelog : domifa (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment avec l'intégration de la bibliothèque DSFR et l'ajout d'une nouvelle page "Témoignages". Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, tant côté frontend que backend. Des optimisations ont également été apportées pour améliorer les performances et la sécurité.
+Cette période a été marquée par des améliorations significatives en matière de sécurité avec l'ajout d'un système de blocage de bots et la gestion des comptes bloqués. Des fonctionnalités d'administration ont été ajoutées, notamment la liste des utilisateurs. L'interface utilisateur a également été améliorée avec l'ajout d'informations et de corrections de bugs, ainsi que l'intégration de la nouvelle charte graphique DSFR.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page "Témoignages" pour afficher les témoignages utilisateurs. [#b31e412](https://github.com/SocialGouv/domifa/commit/b31e4126f75371db179d2ce1247d6d1180ebd1ec)
-- Intégration de la bibliothèque DSFR (Design System for Government) pour améliorer l'accessibilité et l'apparence de l'interface utilisateur. [#f019654](https://github.com/SocialGouv/domifa/commit/f019654d14b8fe8141b12a35e94800f32c1675a9) et [#7e43c2a](https://github.com/SocialGouv/domifa/commit/7e43c2a10966424209a9042729289996f99a9114)
-- Ajout de détails sur le réseau dans le backend. [#fb8f7d7](https://github.com/SocialGouv/domifa/commit/fb8f7d72740679fb87893b5242fc1451a0904470)
-- Ajout d'un banner DSFR. [#b318698](https://github.com/SocialGouv/domifa/commit/b3186985639f19f0354621116b6941280415446f)
+- Ajout d'une page "Témoignages" en frontend. [#b31e412](https://github.com/SocialGouv/domifa/commit/b31e41297371b141798f26619988699d5764a157)
+- Ajout d'un indicateur d'information (news) en frontend. [#39dc89a](https://github.com/SocialGouv/domifa/commit/39dc89a4a8522c410957d1a25d58b9f864fcd77d)
+- Ajout d'une liste des utilisateurs dans l'interface d'administration. [#e74e9e9](https://github.com/SocialGouv/domifa/commit/e74e9e99960ad908d1760b16e1de04f47d195b0a)
+- Possibilité de bloquer et débloquer des comptes utilisateurs en backend. [#3dfc13a](https://github.com/SocialGouv/domifa/commit/3dfc13adb9906ebc28efd9856b80d319286802aa) et [#08d3851](https://github.com/SocialGouv/domifa/commit/08d385161e5470fcb8021a97b447a666b40644cb)
+- Ajout d'un statut pour les comptes bloqués en backend. [#c6a336b](https://github.com/SocialGouv/domifa/commit/c6a336b0619a182360f78a9a98d45588501b73d6)
+- Intégration de la charte graphique DSFR (Design System FR) en frontend, incluant la suppression du changelog et l'ajout de la bannière DSFR. [#7e43c2a](https://github.com/SocialGouv/domifa/commit/7e43c2a9753309b569f9496545f15475f6a6f21d) et [#b318698](https://github.com/SocialGouv/domifa/commit/b3186981634463949979377826c6980684561356)
+- Amélioration de l'affichage des statistiques Metabase. [#81a0863](https://github.com/SocialGouv/domifa/commit/81a08639850479e7e0cdd37e6707f80961d7dd85)
 
 ### Évolutions techniques
-- Refactorisation du code pour récupérer les statistiques Metabase. [#81a0863](https://github.com/SocialGouv/domifa/commit/81a08639850479e7e0cdd37e6707f80961d7dd85)
-- Ajout d'un mécanisme de limitation de débit (throttling) pour protéger le backend contre les requêtes excessives. [#e827fbc](https://github.com/SocialGouv/domifa/commit/e827fbc194459043886686254414966976434977)
-- Amélioration de la sécurité en appliquant des règles de sécurité plus strictes. [#f82ddc5](https://github.com/SocialGouv/domifa/commit/f82ddc5a436986961f75868444a9378948246925)
-- Ajout de logs pour faciliter le débogage et le suivi des performances. [#7ff4d66](https://github.com/SocialGouv/domifa/commit/7ff4d66d16f6096193994436944679396624b069)
-- Mise à jour des DTO (Data Transfer Objects) pour renforcer la validation des données. [#d514d0d](https://github.com/SocialGouv/domifa/commit/d514d0d6494f27708b1616966949832a5691f97f) et [#bfd5e15](https://github.com/SocialGouv/domifa/commit/bfd5e1560295846698a6123407a3667759983004)
-- Correction de problèmes liés aux tests unitaires. [#20fcd6b](https://github.com/SocialGouv/domifa/commit/20fcd6b5726926736a007f57f3186f749a390748)
+- Ajout d'un système de limitation de requêtes (throttling) pour prévenir les abus. [#e827fbc](https://github.com/SocialGouv/domifa/commit/e827fbc4988b96093f6666176b391254f270662e)
+- Refactorisation des DTO (Data Transfer Objects) pour améliorer la validation et la sécurité des données. [#bfd5e15](https://github.com/SocialGouv/domifa/commit/bfd5e156a599a649498f905b133f194319447b0a) et [#f76159a](https://github.com/SocialGouv/domifa/commit/f76159a32185430469f9426462f559795999b97f)
+- Amélioration des tests unitaires pour une meilleure couverture du code.
+- Mise à jour des dépendances et correction de problèmes liés aux mises à jour de packages. [#a4a6ac2](https://github.com/SocialGouv/domifa/commit/a4a6ac2242d23148f612123e9312d1071735c13f)
 
 ### Autres changements
-- Correction de divers bugs et améliorations de l'interface utilisateur.
-- Suppression du bootstrap dans l'administration. [#dbc638c](https://github.com/SocialGouv/domifa/commit/dbc638ce8e297920049b875bc473f359496b8d9d)
-- Correction de filtres backend. [#ccf2b29](https://github.com/SocialGouv/domifa/commit/ccf2b295e8a10ae738212d8a140db5758ea573b2)
-- Ajout de la documentation CLAUSE.md [#1353b33](https://github.com/SocialGouv/domifa/commit/1353b336424646137310d4234f296f69809f1923)
+- Correction de bugs mineurs dans l'interface utilisateur, notamment concernant l'impression et l'affichage des listes. [#cd3a592](https://github.com/SocialGouv/domifa/commit/cd3a5929920216f629505976f496656b2f967643) et [#827255d](https://github.com/SocialGouv/domifa/commit/827255d85594f5f2b05178b81760707637c66351)
+- Correction de problèmes liés à la configuration des filtres. [#ccf2b29](https://github.com/SocialGouv/domifa/commit/ccf2b295e8a10ae738212d8a140db5758ea573b2)
+- Suppression de Bootstrap dans l'interface d'administration. [#dbc638c](https://github.com/SocialGouv/domifa/commit/dbc638ce8e297920049b875bc473f359496b8d9d)
+- Correction de problèmes liés aux champs de formulaire et à la page RGAa. [#d3300cb](https://github.com/SocialGouv/domifa/commit/d3300cb539f477949a324599469642148f94771a)
+- Ajout d'un fichier CLAude.md. [#1353b33](https://github.com/SocialGouv/domifa/commit/1353b3354033429059265f7786f6676294f64b2a)

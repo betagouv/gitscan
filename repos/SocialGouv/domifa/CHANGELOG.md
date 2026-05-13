@@ -1,3 +1,37 @@
+## [2.239.1](https://github.com/SocialGouv/domifa/compare/v2.239.0...v2.239.1) (2026-05-12)
+
+
+### Bug Fixes
+
+* **backend:** add unit tests for block ([bc6056f](https://github.com/SocialGouv/domifa/commit/bc6056fdecaf154a9ce7ec9959644bb41c83a348))
+* **backend:** add user-agent block for session ([6cfa8a7](https://github.com/SocialGouv/domifa/commit/6cfa8a796a7cf8577eba3d0dde72dec466fdac8b))
+
+# [2.239.0](https://github.com/SocialGouv/domifa/compare/v2.238.1...v2.239.0) (2026-05-12)
+
+
+### Bug Fixes
+
+* **admin:** fix unit tests ([03ab15c](https://github.com/SocialGouv/domifa/commit/03ab15c062d8cf48fe9179127c68784db563f466))
+* **admin:** fix unit tests ([4b4d2e3](https://github.com/SocialGouv/domifa/commit/4b4d2e3d7a78edee32de7ea02e4cfb66bdc632e5))
+* **backend:** fix unblock user ([08d3851](https://github.com/SocialGouv/domifa/commit/08d385161e5470fcb8021a97b447a666b40644cb))
+* **backend:** fix unit tests ([91fc97b](https://github.com/SocialGouv/domifa/commit/91fc97bec928cb33d08327137b3ad9e37a0f26b1))
+* **backend:** fix unit tests ([8f2d5f9](https://github.com/SocialGouv/domifa/commit/8f2d5f95eaa8be1b376e3ebdcb4d13df7b7b1ed7))
+
+
+### Features
+
+* **admin:** add list of users ([e74e9e9](https://github.com/SocialGouv/domifa/commit/e74e9e99960ad908d1760b16e1de04f47d195b0a))
+* **backend:** add bot blocking ([3dfc13a](https://github.com/SocialGouv/domifa/commit/3dfc13adb9906ebc28efd9856b80d319286802aa))
+* **backend:** add status to block accounts ([c6a336b](https://github.com/SocialGouv/domifa/commit/c6a336b0619a182360f78a9a98d45588501b73d6))
+
+## [2.238.1](https://github.com/SocialGouv/domifa/compare/v2.238.0...v2.238.1) (2026-05-11)
+
+
+### Bug Fixes
+
+* **frontend:** add news ([39dc89a](https://github.com/SocialGouv/domifa/commit/39dc89a4a8522c410957d1a25d58b9f864fcd77d))
+* **frontend:** add tooltip in manage ([70b8ee5](https://github.com/SocialGouv/domifa/commit/70b8ee58cc71225c599f2b05b589a055bd72e85e))
+
 # [2.238.0](https://github.com/SocialGouv/domifa/compare/v2.237.0...v2.238.0) (2026-05-06)
 
 

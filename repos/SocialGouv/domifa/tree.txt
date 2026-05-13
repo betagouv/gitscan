@@ -163,9 +163,9 @@
 │   │   │   │   │   ├── POST_USER_STRUCTURE_BODY.mock.ts
 │   │   │   │   │   ├── POST_USER_STRUCTURE_BODY_WITH_MISSING_ATTRIBUTES.mock.ts
 │   │   │   │   │   ├── STRUCTURE_MOCK.const.ts
+│   │   │   │   │   ├── USERS_STRUCTURE_MOCK.const.ts
 │   │   │   │   │   ├── USER_STRUCTURE_AUTHENTIFICATED.mock.ts
 │   │   │   │   │   ├── USER_SUPERVISOR_AUTHENTIFICATED.mock.ts
-│   │   │   │   │   ├── VERIFIED_USERS_STRUCTURE.const.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── usagers
 │   │   │   │   │       ├── POST_USAGER.mock.ts
@@ -247,8 +247,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1778010700665-auto-migration.ts
-│   │   │   │   ├── 1778077375651-auto-migration.ts
+│   │   │   │   ├── 1778536908427-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -324,6 +323,7 @@
 │   │   │   │   │   ├── AppUserGuard.guard.ts
 │   │   │   │   │   ├── CanGetUserStructure.guard.ts
 │   │   │   │   │   ├── app-throttler
+│   │   │   │   │   │   ├── app-throttler.bot-guard.spec.ts
 │   │   │   │   │   │   ├── app-throttler.guard.ts
 │   │   │   │   │   │   ├── app-throttler.types.ts
 │   │   │   │   │   │   ├── app-throttler.utils.ts
@@ -675,9 +675,7 @@
 │   │   │   │   │   │       ├── structure-decision-email.service.spec.ts
 │   │   │   │   │   │       └── structure-decision-email.service.ts
 │   │   │   │   │   └── types
-│   │   │   │   │       ├── StructureAdminForList.type.ts
 │   │   │   │   │       ├── UserStructureWithSecurity.type.ts
-│   │   │   │   │       ├── UsersForAdminList.interface.ts
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── portail-usagers
 │   │   │   │   │   ├── constants
@@ -835,6 +833,7 @@
 │   │   │   │       │   ├── userSecurityPasswordUpdater.service.ts
 │   │   │   │       │   ├── userSecurityResetPasswordInitiator.service.ts
 │   │   │   │       │   ├── userSecurityResetPasswordUpdater.service.ts
+│   │   │   │       │   ├── userStatusManager.service.ts
 │   │   │   │       │   └── users-deletor.service.ts
 │   │   │   │       └── users.module.ts
 │   │   │   ├── run-app.ts
@@ -1416,8 +1415,11 @@
 │   │   │   └── users
 │   │   │       ├── common-user
 │   │   │       │   ├── index.ts
-│   │   │       │   └── interfaces
-│   │   │       │       ├── common-user.interface.ts
+│   │   │       │   ├── interfaces
+│   │   │       │   │   ├── common-user.interface.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   └── types
+│   │   │       │       ├── UserStatus.type.ts
 │   │   │       │       └── index.ts
 │   │   │       ├── index.ts
 │   │   │       ├── user-structure
@@ -1433,6 +1435,7 @@
 │   │   │       │   │   ├── UserStructure.interface.ts
 │   │   │       │   │   ├── UserStructureMails.interface.ts
 │   │   │       │   │   ├── UserStructureResume.interface.ts
+│   │   │       │   │   ├── UsersForAdminList.interface.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   └── types
 │   │   │       │       ├── TypeConsultationDocument.enum.ts
@@ -2660,11 +2663,6 @@
 │   │   │   │   │   │   │       ├── structure-form-refuse.component.html
 │   │   │   │   │   │   │       ├── structure-form-refuse.component.spec.ts
 │   │   │   │   │   │   │       └── structure-form-refuse.component.ts
-│   │   │   │   │   │   ├── resolvers
-│   │   │   │   │   │   │   ├── structure.resolver.spec.ts
-│   │   │   │   │   │   │   ├── structure.resolver.ts
-│   │   │   │   │   │   │   ├── structures-list.resolver.spec.ts
-│   │   │   │   │   │   │   └── structures-list.resolver.ts
 │   │   │   │   │   │   ├── types
 │   │   │   │   │   │   │   ├── UserNewAdmin.type.ts
 │   │   │   │   │   │   │   └── index.ts
@@ -2705,6 +2703,13 @@
 │   │   │   │   │   │   ├── general.module.spec.ts
 │   │   │   │   │   │   ├── general.module.ts
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── manage-structure-users
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── structure-users-list
+│   │   │   │   │   │   │       ├── structure-users-list.component.html
+│   │   │   │   │   │   │       └── structure-users-list.component.ts
+│   │   │   │   │   │   ├── manage-structure-users-routing.module.ts
+│   │   │   │   │   │   └── manage-structure-users.module.ts
 │   │   │   │   │   ├── manage-users
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── delete-user
@@ -2755,10 +2760,14 @@
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.scss
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.spec.ts
 │   │   │   │   │   │   │   │   └── table-head-sort.component.ts
-│   │   │   │   │   │   │   └── table-head-sort-icon
-│   │   │   │   │   │   │       ├── table-head-sort-icon.component.html
-│   │   │   │   │   │   │       ├── table-head-sort-icon.component.spec.ts
-│   │   │   │   │   │   │       └── table-head-sort-icon.component.ts
+│   │   │   │   │   │   │   ├── table-head-sort-icon
+│   │   │   │   │   │   │   │   ├── table-head-sort-icon.component.html
+│   │   │   │   │   │   │   │   ├── table-head-sort-icon.component.spec.ts
+│   │   │   │   │   │   │   │   └── table-head-sort-icon.component.ts
+│   │   │   │   │   │   │   └── users-table
+│   │   │   │   │   │   │       ├── users-table.component.html
+│   │   │   │   │   │   │       ├── users-table.component.ts
+│   │   │   │   │   │   │       └── users-table.types.ts
 │   │   │   │   │   │   ├── constants
 │   │   │   │   │   │   │   ├── animations.ts
 │   │   │   │   │   │   │   └── index.ts
@@ -2777,17 +2786,27 @@
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── api
 │   │   │   │   │   │   │   │   ├── admin-structures-api-client.service.ts
+│   │   │   │   │   │   │   │   ├── admin-users-api-client.service.ts
 │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   ├── custom-toast.service.spec.ts
 │   │   │   │   │   │   │   ├── custom-toast.service.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── shared.module.ts
 │   │   │   │   │   │   ├── store
-│   │   │   │   │   │   │   ├── AppStoreAction.type.ts
-│   │   │   │   │   │   │   ├── AppStoreModel.type.ts
-│   │   │   │   │   │   │   ├── appStore.service.ts
+│   │   │   │   │   │   │   ├── app-store.actions.ts
 │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   └── structuresCache.service.ts
+│   │   │   │   │   │   │   ├── structures
+│   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   ├── structures.actions.ts
+│   │   │   │   │   │   │   │   ├── structures.effects.ts
+│   │   │   │   │   │   │   │   ├── structures.reducer.ts
+│   │   │   │   │   │   │   │   └── structures.selectors.ts
+│   │   │   │   │   │   │   └── users
+│   │   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │   │       ├── users.actions.ts
+│   │   │   │   │   │   │       ├── users.effects.ts
+│   │   │   │   │   │   │       ├── users.reducer.ts
+│   │   │   │   │   │   │       └── users.selectors.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── CustomToast.type.ts
 │   │   │   │   │   │       ├── CustomToastClass.type.ts
@@ -3183,4 +3202,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-723 directories, 2462 files
+729 directories, 2475 files
