@@ -1,27 +1,25 @@
-## Changelog : vao (30 derniers jours, au 07 mai 2026)
+## Changelog : vao (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant le renouvellement des agréments, notamment au niveau de la saisie d'informations, de la gestion des fichiers et de l'accessibilité. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur. Des travaux ont été réalisés sur l'initialisation de la base de données avec l'ajout d'un Dockerfile dédié.
+Ce changelog présente les évolutions récentes de VAO, le système d'information pour la dématérialisation des procédures de séjours pour personnes handicapées. Les dernières mises à jour se concentrent sur l'amélioration de l'expérience utilisateur dans le back-office (BO) et l'administration des agréments, notamment en corrigeant des problèmes d'accessibilité, de validation de formulaires et de gestion des fichiers. Des améliorations techniques ont également été apportées, notamment concernant les tests et l'initialisation de la base de données.
 
 ### Évolutions fonctionnelles
-- **Renouvellement d'agréments :** Amélioration significative de l'étape 1 du processus de renouvellement d'agrément, incluant des correctifs sur les champs, les labels et la validation des données. [#1256, #1266, #1284]
-- **Gestion des fichiers :** Correction de problèmes liés à l'upload de documents pour le renouvellement des agréments, notamment la gestion des doublons et la persistance des fichiers. [#1295, #1303]
-- **Affichage des informations :** Correction de l'affichage des informations concernant les agréments (statut, dates) dans le back-office. [#1294]
-- **Accès et permissions :** Correction d'un problème d'accès à la liste des EIG. [#1293]
-- **Confirmation d'envoi :** Implémentation de l'envoi de mails de confirmation pour les demandes d'agrément. [#1286]
-- **Fonctionnalités Fusager :** Ajout de nouvelles fonctionnalités liées au module Fusager, incluant la gestion des messages, des listes JDMA et la suppression du menu de renouvellement d'agrément. [#1266, #1267, #1269, #1273]
-- **Gestion des activités :** Correction de la récupération des activités lors du renouvellement d'agrément. [#1265]
+- **Agrément :** Amélioration de la gestion des fichiers lors du renouvellement des agréments [#1295](https://github.com/SocialGouv/vao/issues/1295).
+- **Agrément :** Ajout de la possibilité de gérer les statuts "A_CORRIGER" des agréments dans le back-office [#1390](https://github.com/SocialGouv/vao/issues/1390).
+- **Agrément :** Ajout de l'envoi de mails de confirmation pour les demandes d'agrément [#1286](https://github.com/SocialGouv/vao/issues/1286).
+- **Interface utilisateur :** Corrections d'accessibilité (RGAA) sur les étapes 1 et 3 du processus d'agrément [#1281](https://github.com/SocialGouv/vao/issues/1281), [#1284](https://github.com/SocialGouv/vao/issues/1284), [#1296](https://github.com/SocialGouv/vao/issues/1296).
+- **Formulaires :** Corrections de validation et d'affichage sur les étapes 2, 3 et 4 du processus d'agrément [#1272](https://github.com/SocialGouv/vao/issues/1272), [#1279](https://github.com/SocialGouv/vao/issues/1279), [#1258](https://github.com/SocialGouv/vao/issues/1258), [#1259](https://github.com/SocialGouv/vao/issues/1259).
+- **Back-office :** Amélioration de l'affichage des dates et des informations relatives aux agréments [#1333](https://github.com/SocialGouv/vao/issues/1333).
+- **Fusager :** Ajout de fonctionnalités pour la gestion des JDMA et des messages [#1266](https://github.com/SocialGouv/vao/issues/1266), [#1273](https://github.com/SocialGouv/vao/issues/1273).
 
 ### Évolutions techniques
-- **Initialisation de la base de données :** Ajout d'un Dockerfile pour faciliter l'initialisation de la base de données. [#1283, #1304, #1305]
-- **Tests :** Amélioration de la couverture de tests, notamment avec l'ajout de tests frontend à la CI et l'amélioration des tests existants. [#1307, #1309]
-- **Refactoring :** Passage de certains composants en TypeScript pour une meilleure maintenabilité.
+- **Tests :** Amélioration de la couverture des tests d'intégration et ajout de tests frontend au CI [#1305](https://github.com/SocialGouv/vao/issues/1305), [#1307](https://github.com/SocialGouv/vao/issues/1307), [#1309](https://github.com/SocialGouv/vao/issues/1309), [#1315](https://github.com/SocialGouv/vao/issues/1315), [#1317](https://github.com/SocialGouv/vao/issues/1317), [#1319](https://github.com/SocialGouv/vao/issues/1319).
+- **Base de données :** Refonte du processus d'initialisation de la base de données avec l'ajout d'un Dockerfile dédié et correction des chemins [#1304](https://github.com/SocialGouv/vao/issues/1304), [#1324](https://github.com/SocialGouv/vao/issues/1324).
 - **CI/CD :** Corrections et améliorations des actions de build de l'image database-init.
-- **Sécurité :** Correction d'une vulnérabilité liée à la déconnexion et au refresh token. [#1310]
+- **Code :** Refactoring et passage en TypeScript de certaines parties du code.
 
 ### Autres changements
-- Amélioration de l'accessibilité de l'étape 1 du processus de demande d'agrément (RGAA). [#1183, #1281]
-- Corrections de coquilles et améliorations de la lisibilité du code.
-- Suppression de branches inutilisées.
-- Correction de problèmes de formattage d'adresse. [#1101]
-- Correction de problèmes de validation en brouillon. [#1085]
+- Correction de coquilles et amélioration de la lisibilité du code.
+- Suppression de branches inutiles.
+- Mise à jour de la documentation.
+- Amélioration de la gestion des erreurs et des logs.
