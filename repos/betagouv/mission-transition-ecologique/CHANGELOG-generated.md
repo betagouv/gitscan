@@ -1,16 +1,11 @@
 ## Changelog : mission-transition-ecologique (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la fiabilité des tests automatisés, notamment les tests de bout en bout (E2E), et sur la mise à jour régulière des données des programmes d'aides à la transition écologique. Des ajustements techniques ont également été apportés pour assurer la compatibilité et la bonne exécution des outils de test.
+Ce mois-ci, les mises à jour se sont principalement concentrées sur la mise à jour régulière des données des programmes et projets d'aides à la transition écologique. Une correction a également été apportée pour étendre la validité de certaines dates dans les tests des programmes.
 
 ### Évolutions fonctionnelles
-- Amélioration de la fiabilité des tests E2E grâce à l'utilisation de données de test générées dynamiquement et à la réduction des faux échecs dans l'environnement d'intégration continue. [#2590](https://github.com/betagouv/mission-transition-ecologique/issues/2590)
-- Extension des dates de validité des données de test dans le fichier `programs_tests.json` jusqu'en 2027 pour assurer la pérennité des tests.
+- Extension des dates de validité dans le fichier `programs_tests.json` pour assurer la continuité des tests jusqu'en 2027. [#2611](https://github.com/betagouv/mission-transition-ecologique/issues/2611)
 
 ### Évolutions techniques
-- Mise à jour de la commande Playwright pour utiliser `npx` afin d'assurer une exécution correcte des tests.
-- Amélioration de la configuration de Playwright et de la gestion des réponses des formulaires dans les tests.
-- Mise à jour des dépendances et des données des programmes et projets via les workflows automatisés.
-
-### Autres changements
-- Mises à jour régulières des données des programmes et des projets via les workflows automatisés (plusieurs mises à jour).
+- Mises à jour automatisées des données des programmes et projets via les workflows CI/CD. Ces mises à jour sont gérées par des bots et concernent les fichiers de données. [#2610](https://github.com/betagouv/mission-transition-ecologique/issues/2610), [#2608](https://github.com/betagouv/mission-transition-ecologique/issues/2608), [#2602](https://github.com/betagouv/mission-transition-ecologique/issues/2602), [#2599](https://github.com/betagouv/mission-transition-ecologique/issues/2599), [#2595](https://github.com/betagouv/mission-transition-ecologique/issues/2595), [#2589](https://github.com/betagouv/mission-transition-ecologique/issues/2589)
+- Mises à jour régulières des projets via les workflows CI/CD. [#2607](https://github.com/betagouv/mission-transition-ecologique/issues/2607), [#2603](https://github.com/betagouv/mission-transition-ecologique/issues/2603), [#2601](https://github.com/betagouv/mission-transition-ecologique/issues/2601), [#2597](https://github.com/betagouv/mission-transition-ecologique/issues/2597), [#2591](https://github.com/betagouv/mission-transition-ecologique/issues/2591)
