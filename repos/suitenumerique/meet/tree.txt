@@ -210,11 +210,13 @@
     │       │       └── transit.js
     │       └── webpack.config.js
     ├── agents
+    │   ├── .dockerignore
     │   ├── Dockerfile
     │   ├── exceptions.py
     │   ├── metadata_collector.py
     │   ├── multi_user_transcriber.py
-    │   └── pyproject.toml
+    │   ├── pyproject.toml
+    │   └── uv.lock
     ├── backend
     │   ├── .pylintrc
     │   ├── MANIFEST.in
@@ -1197,10 +1199,21 @@
             │   ├── test_api_health.py
             │   ├── test_api_tasks.py
             │   └── test_api_tasks_v2.py
+            ├── assets
+            │   ├── audio-sample-android-chrome.webm
+            │   ├── audio-sample-android-firefox.ogg
+            │   ├── audio-sample-android.m4a
+            │   ├── audio-sample-chromium.webm
+            │   ├── audio-sample-firefox.ogg
+            │   ├── audio-sample-ios-browser.webm
+            │   ├── audio-sample-ios.m4a
+            │   ├── audio-sample-mac-os-safari.webm
+            │   └── video-sample-visio.mp4
             ├── conftest.py
             ├── models
             │   ├── __init__.py
             │   └── test_whisper_x_response.py
             └── unit
+                ├── test_file_service.py
                 └── test_user_assign.py
-229 directories, 976 files
+230 directories, 988 files

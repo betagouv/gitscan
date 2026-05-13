@@ -18,12 +18,21 @@ and this project adheres to
 ### Changed
 
 - ♻️(summary) change tasks endpoint signature
+- ⬆️(dependencies) update urllib3 to v2.7.0 [SECURITY]
+
+### Changed
+
+- 🧑‍💻(agents) use `uv` for package management
+- ✨(summary) improve speaker-to-participant assignment
 
 ### Fixed
 
 - ♻(frontend) standardize role terminology across localizations
 - 🐛(backend) make start-recording atomic and fault-tolerant
 - 🔒️(frontend) room ids are generated with non-cryptographic rand
+- ⬆️(mail) fix dependencies not having resolved or integrity field #1321
+- 🐛(summary) complete webm support #1328
+- 🐛(backend) add link to "Open" text in recording email
 
 ## [1.15.0] - 2026-04-30
 
