@@ -97,11 +97,16 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
-    │   │   │   ├── models.py
+    │   │   │   ├── schemas.py
     │   │   │   ├── views.py
     │   │   │   └── webhooks.py
     │   │   ├── enums.py
     │   │   ├── factories.py
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── clean_pending_files.py
+    │   │   │       └── purge_deleted_files.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_create_pg_trgm_extension.py
@@ -133,6 +138,10 @@
     │   │   │   │   ├── test_backends.py
     │   │   │   │   ├── test_mobile_app_download_page.py
     │   │   │   │   └── test_pkce_views.py
+    │   │   │   ├── commands
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_clean_pending_files.py
+    │   │   │   │   └── test_purge_deleted_files.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
     │   │   │   │   ├── __init__.py
@@ -394,6 +403,7 @@
     │   │   ├── generate-readme.sh
     │   │   ├── templates
     │   │   │   ├── _helpers.tpl
+    │   │   │   ├── backend_cronjob_list.yaml
     │   │   │   ├── backend_deployment.yaml
     │   │   │   ├── backend_job_createsuperuser.yaml
     │   │   │   ├── backend_job_migrate.yaml
@@ -611,6 +621,7 @@
         │   │   ├── LoginWithProConnectButton.tsx
         │   │   ├── MainMenu.tsx
         │   │   ├── RecordingMenu.tsx
+        │   │   ├── UploadProgress.tsx
         │   │   └── colors.ts
         │   ├── features
         │   │   ├── ai-jobs
@@ -665,10 +676,18 @@
         │   │   ├── LoginScreen.tsx
         │   │   ├── RecordingDetailsScreen.tsx
         │   │   ├── RecordingScreen.tsx
-        │   │   └── RecordingsScreen.tsx
+        │   │   ├── RecordingsScreen.tsx
+        │   │   └── recordings
+        │   │       ├── components
+        │   │       │   ├── RecordingListItem.tsx
+        │   │       │   ├── RecordingsTopBar.tsx
+        │   │       │   └── StartRecordingSection.tsx
+        │   │       └── types.ts
         │   ├── services
         │   │   ├── authService.ts
-        │   │   └── storage.ts
+        │   │   ├── index.ts
+        │   │   ├── storage.ts
+        │   │   └── userStore.ts
         │   ├── types
         │   │   ├── localRecording.ts
         │   │   └── settings.ts
@@ -677,4 +696,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-172 directories, 507 files
+177 directories, 521 files
