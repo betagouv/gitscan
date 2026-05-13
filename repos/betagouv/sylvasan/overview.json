@@ -1,16 +1,19 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de gérer les enquêtes, les réponses et de visualiser les données collectées.",
+  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de gérer des enquêtes, des réponses et d'analyser les données collectées.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Visualisation de données & Cartographie",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Visualisation de données & Cartographie"
+    "Formulaires & Démarches",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,8 +21,9 @@
     "React",
     "Vue.js",
     "PostgreSQL",
+    "Vite",
     "Sentry",
-    "Vite"
+    "ruff"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,21 +31,23 @@
     "React / Next.js",
     "Python (scripts & backend)",
     "Frontend React",
-    "TypeScript / JavaScript"
+    "Frontend Vue.js",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "saml"
     ],
-    "providers": []
+    "providers": [
+      "DSF-ref"
+    ]
   },
-  "tests": "Pytest, Jest, Cypress",
+  "tests": "Tests unitaires et d'intégration (Pytest, Jest, Cypress)",
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-05-04T15:44:12+02:00",
+  "lastActivity": "2026-05-11T19:30:56+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
