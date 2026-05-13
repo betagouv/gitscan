@@ -1,3 +1,41 @@
+2026-05-11T20:27:02+02:00 - 8907829 - devthejo : fix(examples/secured-renovacy): review_commit_auto stdout hygiene
+2026-05-11T20:25:54+02:00 - 8dd18c1 - devthejo : fix(examples/secured-renovacy): commit_changes redirects git stdout to stderr
+2026-05-11T20:04:40+02:00 - 5448cd2 - devthejo : fix(runtime/executor): preserve \${X} when env unset (no default) — don't eat JS template literals
+2026-05-11T19:53:49+02:00 - 8950886 - devthejo : refactor(examples/secured-renovacy): write_audit_md drops maybeParse — JSON literal substitution is direct
+2026-05-11T19:52:59+02:00 - d1f7480 - devthejo : fix(runtime/executor): script tools use JSON literal rendering + JS template literals preserved
+2026-05-11T19:33:03+02:00 - bcf414d - devthejo : fix(examples/secured-renovacy): absorb row-field drift in bucket_patches + select_candidate
+2026-05-11T18:40:37+02:00 - 88f82ca - devthejo : fix(examples/secured-renovacy): write_audit_md uses shell-escape uniformly
+2026-05-11T18:23:40+02:00 - b4dd8d8 - devthejo : fix(runtime/executor): separate stdout/stderr capture for tool nodes
+2026-05-11T18:02:02+02:00 - ecd787a - devthejo : fix(examples/secured-renovacy): batch_upgrade_patches + batch_commit stdout hygiene
+2026-05-11T17:43:45+02:00 - 8eb7ce1 - devthejo : refactor(examples/secured-renovacy): drop batch_validate + batch_revert (JS-only rigid)
+2026-05-11T17:07:51+02:00 - 4a00b96 - devthejo : fix(runtime/executor): tool nodes use bash -c instead of sh -c
+2026-05-11T17:01:00+02:00 - 08ddbdc - devthejo : docs: zai-glm-byok
+2026-05-11T16:59:44+02:00 - acbe307 - devthejo : fix(runtime/executor): JSON-encode maps and complex slices in shell template substitution
+2026-05-11T16:46:41+02:00 - 57e3f40 - devthejo : fix(examples/secured-renovacy): bucket_patches handles object-keyed-by-name packages
+2026-05-11T16:37:12+02:00 - aa61129 - devthejo : fix(examples/secured-renovacy): harden patch fast-track tools
+2026-05-11T15:57:48+02:00 - a875fe1 - devthejo : feat(examples/secured-renovacy): patch fast-track + audit trail + parallel intel + done short-circuit + provider routing
+2026-05-11T15:21:24+02:00 - 40c58d7 - devthejo : fix(editor/runs): stale REST snapshot no longer regresses post-snap WS state
+2026-05-11T14:54:14+02:00 - 936f2e8 - devthejo : fix(examples/secured-renovacy): unblock upgrade phase + richer commit messages + done short-circuit
+2026-05-11T14:48:26+02:00 - 4dec8bc - devthejo : feat(dsl,backends): per-node provider override + env-var expansion on backend/provider
+2026-05-11T13:58:39+02:00 - 72bfb97 - devthejo : fix(runtime): re-bootstrap sandbox on resume so tool nodes don't fall back to host
+2026-05-11T13:24:26+02:00 - c973532 - devthejo : fix(vendor/claw): kill bash descendants on timeout to unblock cmd.Wait
+2026-05-11T12:14:02+02:00 - e9427b6 - devthejo : feat(backends): first-class ZAI_API_KEY support (auto-routes Claude Code + claw to z.ai/GLM)
+2026-05-11T11:58:07+02:00 - c835430 - devthejo : feat(backends): plumb ANTHROPIC_BASE_URL + OPENAI_BASE_URL through the claw registry; document z.ai/GLM pattern
+2026-05-11T11:35:15+02:00 - 0163b07 - devthejo : refactor(examples/secured-renovacy): adopt script:js for select_candidate; backtick raw for commit_changes + review_commit_auto
+2026-05-11T11:35:00+02:00 - 87b2fe1 - devthejo : fix(dsl/ir): correct language-without-script check (script == "", not command == "")
+2026-05-11T11:29:10+02:00 - cc8a328 - devthejo : fix(editor): close in-flight execs on run-terminal events (mirror snapshot.go)
+2026-05-11T11:28:48+02:00 - e4ca687 - devthejo : feat(dsl): strict-escape directive, block scalar |, and script:/language: tool fields
+2026-05-11T10:57:50+02:00 - 25c6a82 - devthejo : feat(editor/runs): auto re-engage follow-tail when scrolling back to bottom
+2026-05-11T10:45:02+02:00 - cffa606 - devthejo : feat(dsl): backtick-delimited raw strings + Node alternative for select_candidate
+2026-05-11T10:34:25+02:00 - 948bc52 - devthejo : chore(examples/secured-renovacy): open sandbox egress for R&D phase
+2026-05-11T10:24:26+02:00 - 5c6e869 - devthejo : fix(examples/secured-renovacy): route Phase 2 loop-exhaust to fail; document deferred refactors
+2026-05-11T10:20:41+02:00 - 94ac507 - devthejo : docs(examples/secured-renovacy): adjacent design notes + revert fix_loop workaround
+2026-05-11T10:09:41+02:00 - 29aa33e - devthejo : fix(runtime): reset loop counters on re-entry from outside the loop body
+2026-05-11T09:48:13+02:00 - 756e536 - devthejo : refactor(examples/secured-renovacy): agentify Phase 1 + harden commit tools + apply codex review
+2026-05-11T09:12:13+02:00 - 97f7c1a - devthejo : fix(runview): close in-flight executions on terminal run events
+2026-05-11T09:11:57+02:00 - 0c74aec - devthejo : fix(server): resume falls back to inline-source cache when safePath rejects
+2026-05-11T09:11:40+02:00 - 779a735 - devthejo : fix(delegate/claude_code): route Pass 2 formatOutput through sandbox
+2026-05-11T09:11:24+02:00 - a331f47 - devthejo : fix(backend/model): coerce reasoning_effort to provider-supported tier
 2026-05-11T01:53:02+02:00 - 2c4de71 - devthejo : fix(examples/secured-renovacy): require detect_stack to verify its commands empirically before returning
 2026-05-11T01:39:45+02:00 - d8f142b - devthejo : fix(claw runner): execute filesystem builtins inside the sandbox, not back on the launcher
 2026-05-11T00:50:13+02:00 - 9619a65 - devthejo : fix(examples/secured-renovacy): default GPT reviewer effort to xhigh, not max

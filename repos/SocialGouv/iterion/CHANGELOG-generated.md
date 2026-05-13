@@ -1,50 +1,68 @@
 ## Changelog : iterion (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la robustesse, la sécurité et les capacités d'observabilité d'Iterion. Des améliorations significatives ont été apportées au système de sandbox, permettant une exécution plus sécurisée et isolée des workflows. L'intégration de nouvelles fonctionnalités, comme la gestion des pièces jointes et l'amélioration du support de Claude Code, renforcent la flexibilité et les performances de la plateforme. De plus, des efforts considérables ont été déployés pour améliorer la journalisation, le débogage et la surveillance, facilitant ainsi la maintenance et l'optimisation du système.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse, de la sécurité et des capacités d'observabilité d'Iterion. Des améliorations significatives ont été apportées à l'exécution des workflows, notamment avec l'introduction d'un système de sandbox pour une meilleure isolation et sécurité. L'intégration de nouveaux outils et l'optimisation des performances ont également été des priorités. Des améliorations importantes ont été apportées à l'interface utilisateur, notamment dans la visualisation des logs et le suivi de l'exécution des tâches.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de charger un fichier d'environnement (`.iterion/env`) au démarrage du bureau.
-- Intégration de la gestion des pièces jointes aux workflows, permettant de joindre des fichiers et des images.
-- Amélioration de l'interface utilisateur du bureau avec un panneau de fichiers, un panneau de commits et une vue des logs.
-- Ajout d'un bouton pour copier le log dans l'interface utilisateur.
-- Implémentation d'un système de sandbox plus robuste pour une exécution plus sécurisée des workflows.
-- Possibilité de lancer des exécutions de bureau à partir d'une session Claude.
-- Ajout de la détection automatique des informations d'identification LLM et configuration par défaut.
-- Amélioration de la gestion des erreurs et des messages d'information dans l'interface utilisateur.
-- Ajout d'une fonctionnalité de "pause" et de "reprise" des exécutions, avec conservation de l'état et de l'historique.
-- Ajout d'une vue "Workflow" dans la console d'exécution, offrant une représentation visuelle de l'exécution.
+*   Ajout d'un système de sandbox pour l'exécution des workflows, améliorant la sécurité et l'isolation.
+*   Implémentation d'un système de logs plus détaillé et en temps réel, facilitant le débogage et le suivi de l'exécution.
+*   Ajout d'une interface utilisateur pour visualiser les fichiers modifiés pendant l'exécution d'un workflow.
+*   Possibilité de reprendre un workflow interrompu, en conservant l'état précédent.
+*   Amélioration de l'interface utilisateur pour afficher les coûts associés à chaque étape du workflow.
+*   Ajout d'un support pour les variables d'environnement dans les workflows.
+*   Intégration de nouveaux outils et modèles de langage, tels que Claude Code et GPT-5.5.
+*   Ajout d'une fonctionnalité de résumé des verdicts et des objectifs dans l'interface utilisateur.
+*   Possibilité de télécharger les logs d'exécution.
+*   Ajout d'une fonctionnalité de recherche dans les fichiers.
+*   Amélioration de la gestion des erreurs et des exceptions.
+*   Ajout d'un support pour les fichiers d'attachement.
+*   Ajout d'un support pour les workflows multi-tenant.
 
 ### Évolutions techniques
-- Refactorisation du système de sandbox pour une meilleure isolation et sécurité.
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Mise à jour des dépendances et correction de vulnérabilités de sécurité.
-- Amélioration des performances du système, notamment en matière de gestion de la mémoire et de l'utilisation du CPU.
-- Intégration de Prometheus et OpenTelemetry pour la surveillance et la collecte de métriques.
-- Utilisation de Docker pour l'exécution des workflows dans un environnement conteneurisé.
-- Amélioration de l'intégration avec Kubernetes pour le déploiement et la gestion des workflows.
-- Ajout de tests unitaires, d'intégration et E2E avec Playwright pour garantir la qualité du code.
-- Refactorisation de l'architecture pour une meilleure modularité et maintenabilité.
-- Amélioration de la gestion des secrets et des informations d'identification.
-- Implémentation d'un système de cache pour améliorer les performances.
-- Ajout d'un système de gestion des versions pour faciliter le déploiement et la restauration des workflows.
+*   Refactorisation de l'architecture pour améliorer la modularité et la maintenabilité.
+*   Mise à jour des dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performances.
+*   Amélioration de la gestion des erreurs et des exceptions.
+*   Optimisation des performances de l'exécution des workflows.
+*   Implémentation d'un système de cache pour les résultats des appels aux modèles de langage.
+*   Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+*   Amélioration de la documentation du code.
+*   Intégration de Prometheus pour la surveillance et l'alerte.
+*   Utilisation de Docker et Kubernetes pour le déploiement et la gestion des conteneurs.
+*   Implémentation d'un système de journalisation centralisé.
+*   Amélioration de la sécurité du code, notamment en corrigeant les vulnérabilités potentielles.
+*   Refonte de l'interface utilisateur avec React et Next.js.
+*   Amélioration de l'intégration avec les fournisseurs d'authentification OAuth.
+*   Mise en place d'un système de CI/CD pour automatiser le processus de déploiement.
+*   Utilisation de TypeScript pour améliorer la qualité du code et la maintenabilité.
 
 ### Autres changements
-- Ajout d'une documentation plus complète et à jour.
-- Amélioration de la configuration et de la personnalisation du système.
-- Nettoyage du code et suppression du code obsolète.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de bugs mineurs et amélioration de la stabilité du système.
-- Ajout d'un logo et d'un favicon pour améliorer l'identité visuelle du projet.
-- Mise à jour des dépendances et correction de vulnérabilités de sécurité.
-- Ajout d'un workflow CI/CD pour automatiser le processus de construction, de test et de déploiement.
-- Amélioration de la gestion des fichiers de configuration.
-- Ajout d'un système de gestion des logs pour faciliter le débogage et la surveillance.
-- Ajout d'un système de gestion des utilisateurs et des permissions.
-- Amélioration de la sécurité du système en implémentant des mesures de protection contre les attaques courantes.
-- Ajout d'un système de gestion des notifications et des alertes.
-- Amélioration de la performance du système en optimisant le code et en utilisant des algorithmes plus efficaces.
-- Ajout d'un système de gestion des données et des schémas.
-- Amélioration de l'interface utilisateur et du design.
-- Ajout d'un système de collaboration et de workflow.
-- Amélioration de l'intégration avec les outils d'intelligence artificielle et de NLP.
+*   Ajout de documentation sur l'utilisation des nouveaux outils et fonctionnalités.
+*   Correction de bugs mineurs et améliorations de l'expérience utilisateur.
+*   Mise à jour des fichiers de configuration.
+*   Nettoyage du code et suppression du code obsolète.
+*   Ajout de tests pour améliorer la couverture du code.
+*   Amélioration des messages d'erreur pour faciliter le débogage.
+*   Mise à jour de la documentation de l'API.
+*   Ajout de nouvelles images Docker.
+*   Amélioration de la gestion des secrets.
+*   Ajout de nouvelles métriques pour la surveillance.
+*   Correction de problèmes de sécurité.
+*   Ajout de nouvelles fonctionnalités de gestion des utilisateurs et des permissions.
+*   Amélioration de la gestion des données et des schémas.
+*   Ajout de nouvelles fonctionnalités d'administration et de backoffice.
+*   Amélioration de l'interface utilisateur et du design.
+*   Ajout de nouvelles fonctionnalités de suivi et de traçabilité.
+*   Amélioration de la collaboration et de la gestion des workflows.
+*   Ajout de nouvelles fonctionnalités d'intelligence artificielle et de NLP.
+*   Ajout d'un support pour les workflows déclaratifs.
+*   Amélioration de la gestion des fichiers et des documents.
+*   Ajout d'un support pour les API et les intégrations.
+*   Amélioration de l'authentification et de l'accès.
+*   Ajout d'un support pour les notifications et les alertes.
+*   Amélioration de la sécurité et de la conformité.
+*   Ajout d'un support pour les données et les schémas.
+*   Amélioration de l'administration et du backoffice.
+*   Amélioration de l'interface utilisateur et du design.
+*   Ajout de nouvelles fonctionnalités de suivi et de traçabilité.
+*   Amélioration de la collaboration et de la gestion des workflows.
+*   Ajout de nouvelles fonctionnalités d'intelligence artificielle et de NLP.
