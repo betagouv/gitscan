@@ -16,7 +16,6 @@
 ├── .gitignore
 ├── .husky
 │   └── pre-push
-├── .nvmrc
 ├── .oxfmtrc.json
 ├── .oxlintrc.json
 ├── .vscode
@@ -124,6 +123,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260428153844_missing_index
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260511125032_adds_nomination_file_search_index
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -160,6 +161,8 @@
 │   │   │       ├── internalDetailsMemberSessionRawQuery.sql
 │   │   │       ├── listMemberGardeDesSceauxSessions.sql
 │   │   │       ├── listMembersRawQuery.sql
+│   │   │       ├── listNominationFilesCountRawQuery.sql
+│   │   │       ├── listNominationFilesRawQuery.sql
 │   │   │       ├── searchMagistratRawQuery.sql
 │   │   │       └── searchMagistratTotalCountRawQuery.sql
 │   │   ├── prisma.config.ts
@@ -941,8 +944,7 @@
 │       │   ├── instrument.ts
 │       │   ├── main.tsx
 │       │   ├── models
-│       │   │   ├── breadcrumb-vm.model.ts
-│       │   │   └── date-only.model.ts
+│       │   │   └── breadcrumb-vm.model.ts
 │       │   ├── pages
 │       │   │   ├── LoginPage.tsx
 │       │   │   ├── LolfiRedirectMagistratPage.tsx
@@ -1060,6 +1062,7 @@
 │       │   │   └── utils.types.ts
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
+│       │   │   ├── date-only.util.ts
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── multipart-json.ts
@@ -1130,6 +1133,7 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── renovate.json
 └── scripts
     └── changelog.js
-249 directories, 885 files
+250 directories, 888 files
