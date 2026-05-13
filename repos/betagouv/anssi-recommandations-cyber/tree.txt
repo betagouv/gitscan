@@ -8,7 +8,8 @@
 │       ├── checkov.yml
 │       ├── ci.yml
 │       ├── codeql-analysis.yml
-│       └── deploiement.yml
+│       ├── deploiement.yml
+│       └── renovate.yaml
 ├── .gitignore
 ├── Dockerfile
 ├── LICENSE
@@ -101,6 +102,7 @@
 │   │   ├── test_conversation_initie_conversation.py
 │   │   ├── test_extraits_type_utilisateur.py
 │   │   ├── test_index.py
+│   │   ├── test_mode_maintenance.py
 │   │   ├── test_rate_limiting.py
 │   │   ├── test_recherche.py
 │   │   ├── test_retour_utilisatrice.py
@@ -125,7 +127,8 @@
 │   │   ├── conftest.py
 │   │   ├── test_ajoute_interaction.py
 │   │   ├── test_cree_conversation.py
-│   │   └── test_reformulateur.py
+│   │   ├── test_reformulateur.py
+│   │   └── test_supprime_retour_utilisatrice.py
 │   ├── schemas
 │   │   ├── test_reponse_conversation.py
 │   │   └── test_violations.py
@@ -154,6 +157,7 @@
 │   ├── pages
 │   │   ├── cgu.html
 │   │   ├── faq.html
+│   │   ├── mode-maintenance.html
 │   │   └── politique-confidentialite.html
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
@@ -193,6 +197,7 @@
 │   │   ├── App.svelte
 │   │   ├── Cgu.svelte
 │   │   ├── Faq.svelte
+│   │   ├── ModeMaintenance.svelte
 │   │   ├── PolitiqueConfidentialite.svelte
 │   │   ├── actions.svelte.ts
 │   │   ├── app.css
@@ -217,6 +222,7 @@
 │   │   ├── faq.ts
 │   │   ├── fonts.css
 │   │   ├── main.ts
+│   │   ├── modeMaintenance.ts
 │   │   ├── politique-confidentialite.ts
 │   │   └── stores
 │   │       ├── affichage.store.ts
@@ -233,4 +239,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-46 directories, 189 files
+46 directories, 195 files
