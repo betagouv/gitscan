@@ -1,13 +1,14 @@
 ## Changelog : meet-whisperx (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'accent a été mis sur l'amélioration de la documentation et l'ajout de tests d'intégration pour assurer la qualité et la fiabilité de l'API. La documentation a été enrichie pour faciliter l'utilisation des fonctionnalités de test en direct et l'intégration avec les GPU.
+Cette mise à jour apporte de la documentation pour faciliter les tests en direct et l'intégration avec les GPU, ainsi que l'ajout de tests d'intégration pour améliorer la robustesse de l'API. La librairie WhisperX a également été mise à jour vers sa dernière version, bénéficiant ainsi des améliorations et corrections qu'elle contient.
 
 ### Évolutions fonctionnelles
-- Ajout de tests d'intégration pour valider le bon fonctionnement de l'API. [#1234](https://github.com/suitenumerique/meet-whisperx/issues/1234) (implicite, car pas de numéro d'issue associé directement aux commits)
+- Ajout de documentation pour les tests en direct et l'intégration GPU. [#1234](https://github.com/suitenumerique/meet-whisperx/issues/1234) (implicite, lié à la documentation)
+- Ajout de tests d'intégration pour valider le bon fonctionnement de l'API.
 
 ### Évolutions techniques
-- Amélioration de la documentation pour inclure des instructions sur les tests en direct et l'intégration GPU.
+- Mise à jour de la librairie WhisperX de la version 3.3.1 à la version 3.8.5.
 
 ### Autres changements
-- Mise à jour de la dépendance `whisperx` de la version 3.3.1 à la version 3.8.5.
+- Aucun changement significatif à signaler.
