@@ -1,5 +1,57 @@
 # Changelog
 
+## [2026.5.5](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.4...2026.5.5) (2026-05-12)
+
+### Changements
+
+- 🐛 Correction de l'en-tête Cache-Control sur les assets statiques
+
+L'en-tête `Cache-Control: public, max-age=31536000, immutable` n'était jamais envoyé sur les ressources statiques en production. Le middleware `cache_immutable` vérifiait `c.finalized` après `serveStatic`, ce qui court-circuitait systématiquement l'ajout de l'en-tête. La note de version associée a été perdue lors d'une manipulation de l'historique git, d'où cette nouvelle release.
+
+### Corrigé
+
+- 🐛 cache: fix immutable middleware never setting cache-control header (#1603) (a1714f08)
+
+## [2026.5.4](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.3...2026.5.4) (2026-05-12)
+
+### Changements
+
+- 🐛 Correction de l'en-tête Cache-Control sur les assets statiques
+
+L'en-tête `Cache-Control: public, max-age=31536000, immutable` n'était jamais envoyé sur les ressources statiques en production, car le middleware vérifiait à tort `c.finalized` après la réponse de `serveStatic`. Les assets (polices, icônes, scripts) sont désormais correctement mis en cache côté navigateur.
+
+- 💄 Améliore le mode dark des templates de réponses + correction accents manquants
+- 🐛 Correction du seed des modèles de réponse
+
+Le pattern glob `[!index]*.ts` était interprété comme une classe de caractères et excluait silencieusement 6 modèles de réponse du seed. Ces 6 templates manquants sont désormais correctement chargés et insérés en base de données.
+
+### Modifié
+
+- 💄 Improves dark mode and adds missing accents (#1598) (2796e542)
+
+### Corrigé
+
+- 🐛 cache: fix immutable middleware never setting cache-control header (#1601) (828cfa50)
+- 🐛 seed: fix glob silently skipping 6 response templates (#1602) (5d24cead)
+
+## [2026.5.3](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.2...2026.5.3) (2026-05-12)
+
+### Ajouté
+
+- ✨ response-templates: add delete action (#1600) (b71adc6b)
+- ✨ filter moderations by decision status (is:accepted/rejected/reopened) (#1594) (9c7765db)
+- ✨ inapp editable response template (#1381) (5de929d6)
+
+### Modifié
+
+- 💄 avoid submiting empty content (#1597) (c0534389)
+- 💄 use alpha order on response type list (#1596) (3ac3e5eb)
+- 💄 use text xl on response type detail input title (#1595) (3ebc249d)
+
+### Corrigé
+
+- 🐛 use reason id as selector (#1599) (a6c5f055)
+
 ## [2026.5.2](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.1...2026.5.2) (2026-05-07)
 
 ### Changements

@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les demandes et les signalements liés aux comptes professionnels.",
+  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les modérations, d'automatiser certaines tâches et d'améliorer la sécurité.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -16,33 +16,32 @@
   "audience": "Agents de l'Administration",
   "dependencies": [
     "@gouvfr/dsfr",
+    "@preact/signals",
     "htmx.org",
-    "Preact",
-    "Zod",
-    "DrizzleORM",
-    "Hono"
+    "hyperscript.org",
+    "zod",
+    "bun"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Frontend React",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "email-password"
     ]
   },
   "tests": [
     "Cypress",
-    "E2E Tests"
+    "Jest"
   ],
   "workflows": [
     "Release it!"
   ],
-  "lastActivity": "2026-05-07T00:00:00Z",
+  "lastActivity": "2026-05-12T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -58,8 +57,6 @@
     "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
     "Sécurité & Auth"
   ]
 }
