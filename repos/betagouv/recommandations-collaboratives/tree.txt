@@ -226,8 +226,7 @@
 │   │   │       │   └── canEditTaskComments.cy.js
 │   │   │       └── tutorial
 │   │   │           ├── externalResourceTutorial.cy.js
-│   │   │           ├── onboardingAdvisorTutorial.cy.js
-│   │   │           └── projectOverviewTutorial.cy.js
+│   │   │           └── onboardingAdvisorTutorial.cy.js
 │   │   ├── fixtures
 │   │   │   ├── addressbook
 │   │   │   │   ├── contacts.json
@@ -460,11 +459,19 @@
 │   │   │   │   │   │   ├── action_account_request.html
 │   │   │   │   │   │   ├── action_invite.html
 │   │   │   │   │   │   ├── activity_action.html
+│   │   │   │   │   │   ├── banner_project_multiportal.html
+│   │   │   │   │   │   ├── banner_project_status.html
 │   │   │   │   │   │   ├── crm_icon_button.html
 │   │   │   │   │   │   ├── general_search_input.html
 │   │   │   │   │   │   ├── navigation.html
+│   │   │   │   │   │   ├── notes
+│   │   │   │   │   │   │   └── empty_state.html
+│   │   │   │   │   │   ├── project
+│   │   │   │   │   │   │   └── project_card.html
 │   │   │   │   │   │   ├── search_result_note.html
-│   │   │   │   │   │   └── sidebar.html
+│   │   │   │   │   │   ├── sidebar.html
+│   │   │   │   │   │   └── user
+│   │   │   │   │   │       └── user_card.html
 │   │   │   │   │   ├── note.html
 │   │   │   │   │   ├── note_create.html
 │   │   │   │   │   ├── note_update.html
@@ -1655,12 +1662,17 @@
 │   │   │   │   ├── corner-down-right-line.svg
 │   │   │   │   ├── delete.svg
 │   │   │   │   ├── file-copy-2-line.svg
+│   │   │   │   ├── hat-and-glasses.svg
 │   │   │   │   ├── line-chart-off-line.svg
 │   │   │   │   ├── line-chart-on-line.svg
+│   │   │   │   ├── link.svg
 │   │   │   │   ├── list-check.svg
 │   │   │   │   ├── magic-fill.svg
+│   │   │   │   ├── mail.svg
 │   │   │   │   ├── notification-off-line.svg
 │   │   │   │   ├── notification-on-line.svg
+│   │   │   │   ├── people.svg
+│   │   │   │   ├── pushpin-line.svg
 │   │   │   │   ├── reply-line.svg
 │   │   │   │   ├── send-message-paper-plan.svg
 │   │   │   │   ├── tag-line.svg
@@ -1683,11 +1695,18 @@
 │   │   │   │   │   └── banner.scss
 │   │   │   │   ├── contact_list.scss
 │   │   │   │   ├── crm
+│   │   │   │   │   ├── bannerProjectMultiportal.scss
+│   │   │   │   │   ├── bannerProjectStatus.scss
+│   │   │   │   │   ├── bannerUser.scss
+│   │   │   │   │   ├── crmCards.scss
 │   │   │   │   │   ├── crmNavigation.scss
+│   │   │   │   │   ├── noteCrm.scss
+│   │   │   │   │   ├── project.scss
+│   │   │   │   │   ├── projectCard.scss
 │   │   │   │   │   ├── projectList.scss
 │   │   │   │   │   ├── resourceList.scss
-│   │   │   │   │   └── table.scss
-│   │   │   │   ├── crm.css
+│   │   │   │   │   ├── table.scss
+│   │   │   │   │   └── user.scss
 │   │   │   │   ├── custom-bootstrap.scss
 │   │   │   │   ├── custom-icon.css
 │   │   │   │   ├── exceptions.css
@@ -1819,7 +1838,8 @@
 │   │   │       │   ├── CRM
 │   │   │       │   │   ├── crmNavigation.js
 │   │   │       │   │   ├── projectListCrm.js
-│   │   │       │   │   └── resourceListCrm.js
+│   │   │       │   │   ├── resourceListCrm.js
+│   │   │       │   │   └── userListCrm.js
 │   │   │       │   ├── actionPusher.js
 │   │   │       │   ├── actionsEmbed.js
 │   │   │       │   ├── advisorCreateProject.js
@@ -1875,6 +1895,7 @@
 │   │   │       │   ├── ContactList.js
 │   │   │       │   ├── Crisp.js
 │   │   │       │   ├── Crm.js
+│   │   │       │   ├── DepartmentsFilterWrapper.js
 │   │   │       │   ├── DepartmentsSelector.js
 │   │   │       │   ├── Documents.js
 │   │   │       │   ├── DsrcFormValidator.js
@@ -1966,7 +1987,11 @@
 │   │   │       ├── styles
 │   │   │       │   ├── account-layout-form.css.js
 │   │   │       │   ├── account-login.css.js
+│   │   │       │   ├── banner-project-multiportal.css.js
+│   │   │       │   ├── banner-project-status.css.js
+│   │   │       │   ├── banner-user-status.css.js
 │   │   │       │   ├── base.css.js
+│   │   │       │   ├── card-crm.css.js
 │   │   │       │   ├── consent-banner.css.js
 │   │   │       │   ├── contact-*.js  (6 files)
 │   │   │       │   ├── departments-selector.css.js
@@ -1981,10 +2006,13 @@
 │   │   │       │   ├── markdownx.css.js
 │   │   │       │   ├── menu-top.css.js
 │   │   │       │   ├── multi-select.css.js
+│   │   │       │   ├── note-crm.css.js
 │   │   │       │   ├── onboarding-prefill-user.css.js
 │   │   │       │   ├── pages-showcase-list.css.js
 │   │   │       │   ├── personnal-dashboard.css.js
 │   │   │       │   ├── project-banner.css.js
+│   │   │       │   ├── project-card-crm.css.js
+│   │   │       │   ├── project-crm.css.js
 │   │   │       │   ├── project-details.css.js
 │   │   │       │   ├── projects-*.js  (14 files)
 │   │   │       │   ├── resource-card.css.js
@@ -1996,7 +2024,8 @@
 │   │   │       │   ├── survey.css.js
 │   │   │       │   ├── switchtender-list.css.js
 │   │   │       │   ├── tasks-modal.css.js
-│   │   │       │   └── tools-editor.css.js
+│   │   │       │   ├── tools-editor.css.js
+│   │   │       │   └── user-crm.css.js
 │   │   │       └── utils
 │   │   │           ├── ajv
 │   │   │           │   └── schema
@@ -2134,6 +2163,7 @@
 │   │       ├── fragments
 │   │       │   └── new_feature_banner.html
 │   │       ├── header
+│   │       │   ├── dropdown-menu-notification-link.html
 │   │       │   ├── dropdown-menu-notifications.html
 │   │       │   ├── fragments
 │   │       │   │   ├── offline_menu_marianne.html
@@ -2227,4 +2257,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-367 directories, 1884 files
+370 directories, 1911 files

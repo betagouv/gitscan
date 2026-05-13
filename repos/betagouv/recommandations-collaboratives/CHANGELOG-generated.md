@@ -1,43 +1,38 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 7 mai 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des organisations et des données géographiques, ainsi que sur la correction de bugs et l'amélioration de l'expérience utilisateur. Des améliorations ont été apportées à la gestion des fichiers, des notes, des communes et des traces d'activité. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface CRM (gestion de la relation client) avec une refonte de la présentation des projets, des utilisateurs et des notes. Des corrections et des améliorations ont également été apportées à la gestion des fichiers, des notifications et des traces d'activité. Des mises à jour de dépendances ont été réalisées pour assurer la sécurité et la stabilité du système.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des organisations : possibilité de fusionner des organisations en utilisant n'importe quel nom précédent. [#2032](https://github.com/betagouv/recommandations-collaboratives/issues/2032)
-- Gestion des données géographiques : mise à jour des scripts de gestion des communes pour prendre en compte les fusions et les mises à jour de la base de données La Poste. [#2033](https://github.com/betagouv/recommandations-collaboratives/issues/2033)
-- Gestion des fichiers : amélioration de l'affichage des fichiers dans les conversations, avec un affichage du nombre de fichiers externes.
-- Gestion des notes : suppression des documents liés lors de la suppression d'une note privée.
-- Ajout d'un indicateur pour masquer le bouton de suggestion de ressource. [#2091](https://github.com/betagouv/recommandations-collaboratives/issues/2091)
-- Amélioration de l'intégration de Sesame : ajout de traces de connexion pour les liens Sesame. [#2084](https://github.com/betagouv/recommandations-collaboratives/issues/2084)
-- Ajout de la possibilité de dupliquer les ressources avec les liens vers les données structurées associées. [#2069](https://github.com/betagouv/recommandations-collaboratives/issues/2069)
-- Ajout d'un bouton pour suggérer des ressources dans les conversations. [#2064](https://github.com/betagouv/recommandations-collaboratives/issues/2064)
-- Amélioration de l'affichage des documents dans les conversations. [#2062](https://github.com/betagouv/recommandations-collaboratives/issues/2062)
+- **CRM :** Refonte de l'affichage des projets avec l'ajout d'informations sur les utilisateurs, les régions et les partenaires.
+- **CRM :** Ajout d'une section pour les notes liées aux projets, avec la possibilité de les épingler.
+- **CRM :** Amélioration de la présentation des utilisateurs dans la liste des membres du projet avec une nouvelle carte utilisateur.
+- **CRM :** Ajout d'un indicateur visuel pour le statut des projets.
+- **Notifications :** Amélioration de la gestion des notifications dans les conversations, avec un délai de consommation configurable.
+- **Fichiers :** Amélioration de l'affichage des documents dans les conversations.
+- **Interface utilisateur :** Ajout d'informations contextuelles (infobulles) sur les éléments de l'interface.
+- **Gestion des ressources :** Amélioration de la recherche et du filtrage des ressources.
+- **Comportement des actions :** Correction du comportement de certaines actions, notamment l'ouverture de panneaux et la gestion des accès.
+- **Gestion des Communes :** Amélioration de la synchronisation des données des communes avec la base de données LaPoste.
+- **Remontée d'informations :** Ajout d'un lien vers le compte utilisateur dans les emails.
 
 ### Évolutions techniques
-- Mise à jour de Django en version 5.2.13.
-- Mise à jour de plusieurs dépendances npm et yarn (axios, postcss, jupyter-server, etc.) pour corriger des vulnérabilités et améliorer les performances.
-- Refactorisation du code pour supprimer du code mort et améliorer la lisibilité.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Utilisation de `uv` pour la gestion des dépendances Python et synchronisation des fichiers `requirements.txt`.
-- Mise à jour de la gestion des liens vers les données structurées (démarches numériques).
-- Amélioration de la gestion des tests pour éviter les interférences entre les tests de connexion.
+- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans les sections CRM et de gestion des fichiers.
+- **Dépendances :** Mise à jour de plusieurs dépendances, notamment Django, Wagtail, pytest, Pillow, axios, lodash, et les dépendances frontend (vite, postcss, follow-redirects, dompurify).
+- **Tests :** Mise à jour des tests frontend (Cypress) pour s'adapter aux changements de l'interface utilisateur.
+- **CI/CD :** Amélioration du pipeline CI/CD pour automatiser les tests et le déploiement.
+- **Architecture :** Suppression de code obsolète et simplification de certaines parties de l'architecture.
+- **Sécurité :** Correction de vulnérabilités potentielles et amélioration de la sécurité du système.
+- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés.
 
 ### Autres changements
-- Amélioration de la documentation.
-- Correction de typos et amélioration de la qualité du code.
-- Ajout de tests unitaires pour valider les nouvelles fonctionnalités et les corrections de bugs.
-- Nettoyage du code et suppression de configurations inutiles.
-- Mise à jour des dépendances de développement.
-- Ajout de traces d'activité pour les rappels dans le CRM.
-- Amélioration de la gestion des erreurs dans le CRM.
-- Correction de bugs liés à l'affichage des dates dans les conversations.
-- Correction de bugs liés à la redirection des actions.
-- Amélioration de la validation des numéros de téléphone.
-- Correction d'un bug empêchant la fusion correcte des organisations.
-- Correction d'un bug lié à l'affichage des ressources publiques.
-- Ajout d'un hash pour la navigation dans les conversations. [#2067](https://github.com/betagouv/recommandations-collaboratives/issues/2067)
-- Correction d'un bug lié à l'affichage des informations sur les ressources.
-- Amélioration de la gestion des erreurs lors de la suppression de documents.
-- Mise à jour des scripts de gestion des communes.
-- Amélioration de la gestion des erreurs dans les tests.
+- Nettoyage du code et suppression de commentaires inutiles.
+- Amélioration de la gestion des erreurs et des logs.
+- Corrections de bugs mineurs et améliorations de l'expérience utilisateur.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Mise à jour des fichiers de configuration.
+- Amélioration de la performance de certaines requêtes.
+- Ajout de tests unitaires pour garantir la qualité du code.
+- Correction de problèmes d'accessibilité.
+- Amélioration de la gestion des dates et des formats.
+- Ajout de nouvelles variables d'environnement pour faciliter la configuration du système.
