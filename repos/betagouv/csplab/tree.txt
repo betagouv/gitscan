@@ -45,14 +45,38 @@
 │   ├── docker_compose_override.md
 │   ├── sass_configuration.md
 │   ├── scss_linting_and_formatting.md
-│   └── scss_style_guide.md
+│   ├── scss_style_guide.md
+│   ├── talentsoft_webhooks.md
+│   └── updating_API_schema.md
 ├── env.d
+│   ├── ingestion-example
 │   ├── notebook-example
 │   ├── ocr-example
 │   ├── postgresql-example
 │   ├── redis-example
 │   └── tycho-example
 └── src
+    ├── ingestion
+    │   ├── .envrc.sample
+    │   ├── .python-version
+    │   ├── Procfile
+    │   ├── README.md
+    │   ├── api
+    │   │   ├── __init__.py
+    │   │   ├── _sentry.py
+    │   │   ├── config.py
+    │   │   ├── main.py
+    │   │   ├── routes.py
+    │   │   └── talentsoft.py
+    │   ├── bin
+    │   │   └── start_web.sh
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   └── integration
+    │   │       ├── __init__.py
+    │   │       └── test_routes.py
+    │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
     │   ├── .python-version
@@ -67,6 +91,7 @@
     │   ├── ocr_cv_open_router.md
     │   ├── pipelines_cv.md
     │   ├── pyproject.toml
+    │   ├── rome_4.md
     │   ├── talentsoft.md
     │   └── uv.lock
     ├── ocr
@@ -139,12 +164,14 @@
         │       ├── __init__.py
         │       ├── interfaces
         │       │   ├── __init__.py
+        │       │   ├── list_offers_input.py
         │       │   ├── load_documents_input.py
         │       │   └── load_operation_type.py
         │       └── usecases
         │           ├── __init__.py
         │           ├── archive_offers.py
         │           ├── clean_documents.py
+        │           ├── list_offers.py
         │           ├── load_documents.py
         │           ├── load_offers.py
         │           └── vectorize_documents.py
@@ -476,6 +503,7 @@
         │   │   │       ├── load_offers.py
         │   │   │       └── vectorize_documents.py
         │   │   ├── openapi.py
+        │   │   ├── pagination.py
         │   │   ├── schemas.py
         │   │   ├── serializers.py
         │   │   ├── tasks.py
@@ -486,6 +514,8 @@
         │   │   ├── urls.py
         │   │   └── views.py
         │   ├── static
+        │   │   ├── api
+        │   │   │   └── schema.yaml
         │   │   ├── candidate
         │   │   │   ├── images
         │   │   │   │   ├── 299.Algorithm.svg
@@ -554,7 +584,10 @@
         │       │   ├── base.html
         │       │   └── error.html
         │       ├── pages
+        │       │   ├── accessibility.html
         │       │   ├── home.html
+        │       │   ├── legal_notices.html
+        │       │   ├── privacy.html
         │       │   └── terms.html
         │       └── partials
         │           ├── footer.html
@@ -594,7 +627,7 @@
         │   │   │       ├── test_cv_upload_view.py
         │   │   │       ├── test_drawer_views.py
         │   │   │       ├── test_error_views.py
-        │   │   │       └── test_home_view.py
+        │   │   │       └── test_static_pages_view.py
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       ├── test_initialize_cv_metadata.py
@@ -602,7 +635,6 @@
         │   │       ├── test_match_cv_to_opportunities.py
         │   │       └── test_process_uploaded_cv.py
         │   ├── conftest.py
-        │   ├── cov.md
         │   ├── factories
         │   │   ├── __init__.py
         │   │   ├── concours_factory.py
@@ -624,6 +656,7 @@
         │   │   │   │   └── test_postgres_document_repository.py
         │   │   │   ├── test_archive_offers.py
         │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_list_offers.py
         │   │   │   ├── test_load_documents.py
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── presentation
@@ -640,7 +673,8 @@
         │   │   │   │   └── test_ingestion_tasks.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
-        │   │   │       └── test_ingestion_views.py
+        │   │   │       ├── test_ingestion_views.py
+        │   │   │       └── test_list_offers.py
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       ├── external_gateways
@@ -681,4 +715,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-136 directories, 547 files
+142 directories, 575 files
