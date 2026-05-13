@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office, et un widget. Elle permet de gérer et d'afficher des informations sur l'engagement des utilisateurs.",
+  "description": "L'api engagement regroupe une API, un back office et un widget. Elle permet de gérer et d'afficher des informations sur l'engagement des utilisateurs.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
     "Statistiques & Rapports",
-    "Authentification & Accès"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -15,7 +15,8 @@
     "Express",
     "React",
     "PostgreSQL",
-    "MongoDB"
+    "MongoDB",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,13 +27,12 @@
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session"
+      "none"
     ]
   },
-  "tests": "Vitest",
+  "tests": "Jest, Vitest",
   "workflows": [
-    "CI/CD"
+    "CI/CD & Déploiement"
   ],
   "lastActivity": "2026-05-07T00:00:00Z",
   "status": "active",
@@ -51,6 +51,7 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }

@@ -1,29 +1,36 @@
-## Changelog : api-engagement (30 derniers jours, au 7 mai 2026)
+## Changelog : api-engagement (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la performance et la sécurité de l'API, avec des optimisations de recherche et l'ajout de limitations de débit. L'application (back office) bénéficie également de corrections d'affichage et d'améliorations de l'expérience utilisateur, notamment en matière de responsive design. Des travaux ont été réalisés pour faciliter l'intégration avec de nouveaux partenaires comme le SDIS.
+Ce changelog présente les améliorations apportées à l'API Engagement au cours des 30 derniers jours. Les principales évolutions concernent la sécurité (validation des webhooks Brevo, règles d'accès à l'API, limitation du débit), l'ajout de journaux d'audit, l'amélioration de l'interface utilisateur du back-office (gestion des clés API, affichage d'URL de test) et des optimisations techniques pour améliorer la performance et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des missions de Service Civique via GRIMPIO. [#977](https://github.com/betagouv/api-engagement/issues/977)
-- Amélioration de l'affichage de l'URL de l'API Sandbox dans l'exemple de commande cURL du broadcaster. [#1012](https://github.com/betagouv/api-engagement/issues/1012)
-- Correction de l'affichage et de la disposition du sélecteur de date dans l'application (back office). [#975](https://github.com/betagouv/api-engagement/issues/975)
-- Correction du problème de déconnexion lors d'erreurs réseau dans l'application (back office). [#976](https://github.com/betagouv/api-engagement/issues/976)
-- Amélioration du responsive design de l'application (back office) pour les petits écrans, en respectant les normes RGAA 10.11. [#930](https://github.com/betagouv/api-engagement/issues/930)
+- Ajout d'un onglet pour gérer les clés API des annonceurs dans le back-office. [#1015](https://github.com/betagouv/api-engagement/issues/1015)
+- Affichage de l'URL de l'environnement sandbox pour les testeurs de l'API dans le back-office. [#1012](https://github.com/betagouv/api-engagement/issues/1012)
+- Activation des missions de service civique dans le job Grimpio. [#977](https://github.com/betagouv/api-engagement/issues/977)
+- Correction de l'affichage des filtres de modération et des débordements dans le back-office. [#975](https://github.com/betagouv/api-engagement/issues/975)
+- Correction de l'alignement horizontal du sélecteur de date dans le back-office. [#976](https://github.com/betagouv/api-engagement/issues/976)
+- Correction d'un bug de déconnexion pour les utilisateurs accédant à la page "mes missions". [#799](https://github.com/betagouv/api-engagement/issues/799)
+- Amélioration de la conception réactive du back-office pour les petites vues. [#930](https://github.com/betagouv/api-engagement/issues/930)
 
 ### Évolutions techniques
-- Refactorisation du middleware de contrôle d'accès de l'API avec ajout de tests. [#1013](https://github.com/betagouv/api-engagement/issues/1013)
-- Optimisation de la recherche d'organisations dans l'API en utilisant `tsvector`. [#950](https://github.com/betagouv/api-engagement/issues/950)
-- Ajout de limitations de débit (rate limiting) pour l'API, avec des limites basées sur l'adresse IP et l'éditeur (publisher). [#932](https://github.com/betagouv/api-engagement/issues/932)
-- Suppression du magasin partagé pour les limites de débit (rate limit). [#959](https://github.com/betagouv/api-engagement/issues/959)
-- Refactorisation du traitement des missions avec exclusion des organisations publiantes. [#965](https://github.com/betagouv/api-engagement/issues/965)
-- Exécution séquentielle de l'agrégation des widgets pour améliorer la stabilité. [#966](https://github.com/betagouv/api-engagement/issues/966)
-- Ajout de jobs de sauvegarde de la base de données RDB. [#955](https://github.com/betagouv/api-engagement/issues/955)
-- Correction d'un bug empêchant le job de sauvegarde RDB de s'exécuter. [#957](https://github.com/betagouv/api-engagement/issues/957)
-- Suppression de la colonne `mission_id` dans la table `stat_events`. [#933](https://github.com/betagouv/api-engagement/issues/933)
-- Correction de l'échelle maximale de l'API. [#949](https://github.com/betagouv/api-engagement/issues/949)
+- Mise en place de règles de contrôle d'accès à l'API avec tests associés. [#1013](https://github.com/betagouv/api-engagement/issues/1013)
+- Refactorisation du middleware de contrôle d'accès pour une meilleure maintenabilité.
+- Ajout de journaux d'audit pour suivre les actions effectuées sur l'API. [#1019](https://github.com/betagouv/api-engagement/issues/1019)
+- Sécurisation des webhooks Brevo. [#1026](https://github.com/betagouv/api-engagement/issues/1026)
+- Suppression de la validation des adresses IP Brevo. [#1027](https://github.com/betagouv/api-engagement/issues/1027)
+- Implémentation de limiteurs de débit pour les requêtes API (publisherRateLimiter et ipRateLimiter). [#932](https://github.com/betagouv/api-engagement/issues/932)
+- Refactorisation de l'exécution des agrégations du widget pour une meilleure performance. [#966](https://github.com/betagouv/api-engagement/issues/966)
+- Refactorisation de la gestion des missions avec exclusion de l'organisation de l'annonceur. [#965](https://github.com/betagouv/api-engagement/issues/965)
+- Utilisation de `tsvector` pour la recherche d'organisations par texte. [#950](https://github.com/betagouv/api-engagement/issues/950)
+- Suppression du magasin partagé de limite de taux. [#959](https://github.com/betagouv/api-engagement/issues/959)
+- Ajout de configuration Mockoon pour les tests. [#978](https://github.com/betagouv/api-engagement/issues/978)
+- Correction de la construction du job. [#1018](https://github.com/betagouv/api-engagement/issues/1018)
+- Correction de la version de dbt pour les dépendances. [#1023](https://github.com/betagouv/api-engagement/issues/1023)
+- Déploiement de la spécification OpenAPI sur le CI. [#1014](https://github.com/betagouv/api-engagement/issues/1014)
 
 ### Autres changements
-- Ajout d'une configuration Mockoon pour les tests. [#978](https://github.com/betagouv/api-engagement/issues/978)
-- Amélioration du script de vérification des champs orphelins de `stat_event` pour les missions.
-- Correction d'un bug dans la page des organisations désactivées.
-- Publication des versions v1.4.0 et v1.4.1.
+- Mise à jour de plusieurs dépendances (actions/checkout, orhun/git-cliff-action, scaleway/action-scw, etc.).
+- Correction de la documentation et du changelog.
+- Amélioration du script de vérification des champs orphelins des événements statistiques.
+- Ajout d'un WAF proxy. [#795](https://github.com/betagouv/api-engagement/issues/795)
+- Suppression de la relation activity_id des missions. [#787](https://github.com/betagouv/api-engagement/issues/787)
