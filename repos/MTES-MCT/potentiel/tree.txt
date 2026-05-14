@@ -204,6 +204,8 @@
 │   │   │   │   │   │   └── notifier-candidatures.ts
 │   │   │   │   │   ├── monitoring
 │   │   │   │   │   │   └── pending-acknowledgement.ts
+│   │   │   │   │   ├── producteur
+│   │   │   │   │   │   └── importer-numero-identification.ts
 │   │   │   │   │   ├── projection
 │   │   │   │   │   │   └── rebuild.ts
 │   │   │   │   │   ├── raccordement
@@ -515,6 +517,12 @@
 │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   └── natureDeLExploitationModifiée.handler.ts
 │   │   │   │   │   │   │   └── nature-de-l-exploitation.notifications.ts
+│   │   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   │   ├── handlers
+│   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   ├── powerPurchaseAgreementSignalé.handler.ts
+│   │   │   │   │   │   │   │   └── signalementPowerPurchaseAgreementAnnulé.handler.ts
+│   │   │   │   │   │   │   └── powerPurchaseAgreement.notifications.ts
 │   │   │   │   │   │   ├── producteur
 │   │   │   │   │   │   │   ├── handlers
 │   │   │   │   │   │   │   │   ├── changementProducteurEnregistré.handler.ts
@@ -678,6 +686,9 @@
 │   │   │   │       │   │   ├── nom-projet
 │   │   │   │       │   │   │   ├── enregistrer_changement.md
 │   │   │   │       │   │   │   └── modifier.md
+│   │   │   │       │   │   ├── power-purchase-agreement
+│   │   │   │       │   │   │   ├── annuler_signalement.md
+│   │   │   │       │   │   │   └── signaler.md
 │   │   │   │       │   │   ├── producteur
 │   │   │   │       │   │   │   ├── enregistrer_changement.md
 │   │   │   │       │   │   │   └── modifier.md
@@ -875,7 +886,8 @@
 │   │   │   │       │   ├── power-purchase-agreement
 │   │   │   │       │   │   ├── index.ts
 │   │   │   │       │   │   ├── powerPurchaseAgreementRebuildTrigerred.projector.ts
-│   │   │   │       │   │   └── powerPurchaseAgreementSignalé.projector.ts
+│   │   │   │       │   │   ├── powerPurchaseAgreementSignalé.projector.ts
+│   │   │   │       │   │   └── signalementPowerPurchaseAgreementAnnulé.projector.ts
 │   │   │   │       │   ├── producteur
 │   │   │   │       │   │   ├── changementProducteurEnregistré.projector.ts
 │   │   │   │       │   │   ├── index.ts
@@ -1106,6 +1118,7 @@
 │   │   │   │   │   │   ├── getAutoritéCompétenteLabel.ts
 │   │   │   │   │   │   ├── getCahierDesCharges.ts
 │   │   │   │   │   │   ├── getCandidature.ts
+│   │   │   │   │   │   ├── getFeatureFlag.ts
 │   │   │   │   │   │   ├── getFiltresActifs.test.ts
 │   │   │   │   │   │   ├── getFiltresActifs.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitationTypeLabel.ts
@@ -1308,6 +1321,7 @@
 │   │   │   │   │   │   │   │   │   └── ÉtapesProjet.tsx
 │   │   │   │   │   │   │   │   ├── TableauDeBord.page.tsx
 │   │   │   │   │   │   │   │   ├── _helpers
+│   │   │   │   │   │   │   │   │   ├── Badges.tsx
 │   │   │   │   │   │   │   │   │   └── getLauréatMenuItems.tsx
 │   │   │   │   │   │   │   │   ├── documents
 │   │   │   │   │   │   │   │   │   ├── (sections)
@@ -1398,6 +1412,7 @@
 │   │   │   │   │   │   │   │   ├── getAchèvement.ts
 │   │   │   │   │   │   │   │   ├── getAction.ts
 │   │   │   │   │   │   │   │   ├── getDemandesEnCours.ts
+│   │   │   │   │   │   │   │   ├── getDélai.ts
 │   │   │   │   │   │   │   │   ├── getGarantiesFinancières.ts
 │   │   │   │   │   │   │   │   ├── getLauréat.ts
 │   │   │   │   │   │   │   │   ├── getMainlevéeGarantiesFinancières.ts
@@ -1587,11 +1602,12 @@
 │   │   │   │   │   │   │   │   │   └── rejeter
 │   │   │   │   │   │   │   │   │       ├── RejeterDemandeDélai.form.tsx
 │   │   │   │   │   │   │   │   │       └── rejeterDemandeDélai.action.ts
-│   │   │   │   │   │   │   │   └── demander
-│   │   │   │   │   │   │   │       ├── DemanderDélai.action.ts
-│   │   │   │   │   │   │   │       ├── DemanderDélai.form.tsx
-│   │   │   │   │   │   │   │       ├── DemanderDélai.page.tsx
-│   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   │   ├── demander
+│   │   │   │   │   │   │   │   │   ├── DemanderDélai.action.ts
+│   │   │   │   │   │   │   │   │   ├── DemanderDélai.form.tsx
+│   │   │   │   │   │   │   │   │   ├── DemanderDélai.page.tsx
+│   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── fournisseur
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -1823,12 +1839,19 @@
 │   │   │   │   │   │   │   │       ├── modifierNomProjet.action.ts
 │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   │   │   ├── (historique)
+│   │   │   │   │   │   │   │   │   ├── events
+│   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── mapToPowerPurchaseAgreementSignaléTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   └── mapToSignalementPowerPurchaseAgreementAnnuléTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   └── mapToPowerPurchaseAgreementTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   ├── annuler-signalement
+│   │   │   │   │   │   │   │   │   ├── AnnulerSignalementPowerPurchaseAgreement.form.tsx
+│   │   │   │   │   │   │   │   │   ├── AnnulerSignalementPowerPurchaseAgreement.page.tsx
+│   │   │   │   │   │   │   │   │   ├── DétailsPowerPurchaseAgreement.tsx
+│   │   │   │   │   │   │   │   │   ├── annulerSignalementPowerPurchaseAgreement.action.ts
+│   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   └── signaler
-│   │   │   │   │   │   │   │       ├── (historique)
-│   │   │   │   │   │   │   │       │   ├── events
-│   │   │   │   │   │   │   │       │   │   ├── index.ts
-│   │   │   │   │   │   │   │       │   │   └── mapToPowerPurchaseAgreementSignaléTimelineItemProps.tsx
-│   │   │   │   │   │   │   │       │   └── mapToPowerPurchaseAgreementTimelineItemProps.tsx
 │   │   │   │   │   │   │   │       ├── SignalerPowerPurchaseAgreement.form.tsx
 │   │   │   │   │   │   │   │       ├── SignalerPowerPurchaseAgreement.page.tsx
 │   │   │   │   │   │   │   │       ├── page.tsx
@@ -2425,6 +2448,7 @@
 │   │   │   │       │   ├── getEnCopies.ts
 │   │   │   │       │   └── mapToModèleRéponsePayload.ts
 │   │   │   │       ├── pagination.ts
+│   │   │   │       ├── redirectAvecSearchParams.ts
 │   │   │   │       ├── utilisateur
 │   │   │   │       │   └── format-role.ts
 │   │   │   │       ├── withErrorHandling.ts
@@ -3241,6 +3265,11 @@
 │   │   │   │   │   │   ├── PowerPurchaseAgreement.errors.ts
 │   │   │   │   │   │   ├── PowerPurchaseAgreement.events.ts
 │   │   │   │   │   │   ├── PowerPurchaseAgreement.register.ts
+│   │   │   │   │   │   ├── annulerSignalement
+│   │   │   │   │   │   │   ├── SignalementPowerPurchaseAgreementAnnulé.event.ts
+│   │   │   │   │   │   │   ├── annulerSignalementPowerPurchaseAgreement.command.ts
+│   │   │   │   │   │   │   ├── annulerSignalementPowerPurchaseAgreement.option.ts
+│   │   │   │   │   │   │   └── annulerSignalementPowerPurchaseAgreement.usecase.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterPowerPurchaseAgreement.query.ts
 │   │   │   │   │   │   ├── index.ts
@@ -3254,6 +3283,7 @@
 │   │   │   │   │   │       ├── signalerPowerPurchaseAgreement.option.ts
 │   │   │   │   │   │       └── signalerPowerPurchaseAgreement.usecase.ts
 │   │   │   │   │   ├── producteur
+│   │   │   │   │   │   ├── applyLuhnCheck.test.ts
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── changementProducteur.entity.ts
 │   │   │   │   │   │   │   ├── consulter
@@ -3279,6 +3309,7 @@
 │   │   │   │   │   │   │   ├── modifierProducteur.event.ts
 │   │   │   │   │   │   │   ├── modifierProducteur.option.ts
 │   │   │   │   │   │   │   └── modifierProducteur.usecase.ts
+│   │   │   │   │   │   ├── numéroIdentification.valueType.ts
 │   │   │   │   │   │   ├── producteur.aggregate.ts
 │   │   │   │   │   │   ├── producteur.entity.ts
 │   │   │   │   │   │   ├── producteur.error.ts
@@ -3747,6 +3778,7 @@
 │   │   │   │   │   │   ├── getHistoriqueAbandon.ts
 │   │   │   │   │   │   ├── getLocalité.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitation.ts
+│   │   │   │   │   │   ├── getNuméroIdentification.ts
 │   │   │   │   │   │   ├── getRaccordement.test.ts
 │   │   │   │   │   │   ├── getRaccordements.ts
 │   │   │   │   │   │   ├── getTypeActionnariat.ts
@@ -4103,6 +4135,7 @@
 │   │   │   │   │   ├── getFakeContent.ts
 │   │   │   │   │   ├── getFakeIdentifiantProjet.ts
 │   │   │   │   │   ├── getFakeLocation.ts
+│   │   │   │   │   ├── getFakeNuméroIdentification.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── getRôle.ts
 │   │   │   │   ├── index.ts
@@ -4309,6 +4342,7 @@
 │   │   │   │   │   │   └── stepDefinitions
 │   │   │   │   │   │       └── nomProjet.when.ts
 │   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   ├── annulerSignalementPowerPurchaseAgreement.feature
 │   │   │   │   │   │   ├── signalerPowerPurchaseAgreement.feature
 │   │   │   │   │   │   └── stepDefinitions
 │   │   │   │   │   │       ├── powerPurchaseAgreement.given.ts
@@ -4583,4 +4617,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1116 directories, 3469 files
+1122 directories, 3497 files
