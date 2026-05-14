@@ -11,6 +11,8 @@
 │   │   │   └── AGENT.md
 │   │   ├── designer
 │   │   │   └── AGENT.md
+│   │   ├── doc-writer
+│   │   │   └── AGENT.md
 │   │   ├── functional-validator
 │   │   │   └── AGENT.md
 │   │   ├── product-owner
@@ -48,6 +50,8 @@
 │   └── skills
 │       ├── analyse
 │       │   └── SKILL.md
+│       ├── doc
+│       │   └── SKILL.md
 │       ├── implement
 │       │   ├── SKILL-legacy.md.bak
 │       │   └── SKILL.md
@@ -74,7 +78,8 @@
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       ├── review.yaml
-│       └── rgaa-audit.yaml
+│       ├── rgaa-audit.yaml
+│       └── sync-docs-to-wiki.yaml
 ├── .gitignore
 ├── .kontinuous
 │   ├── Chart.yaml
@@ -153,7 +158,9 @@
 ├── README.md
 ├── docker-compose.yml
 ├── docs
-│   └── SUIT-API.md
+│   ├── SUIT-API.md
+│   ├── architecture.md
+│   └── features.md
 ├── package.json
 ├── packages
 │   └── app
@@ -202,6 +209,8 @@
 │       │   ├── 0029_add_declaration_submitted_at.sql
 │       │   ├── 0030_drop_job_category_detail.sql
 │       │   ├── 0031_drop_quartile_threshold4.sql
+│       │   ├── 0032_sparkling_monster_badoon.sql
+│       │   ├── 0033_add_cancelled_at.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
@@ -220,6 +229,8 @@
 │       │       ├── 0019_snapshot.json
 │       │       ├── 0030_snapshot.json
 │       │       ├── 0031_snapshot.json
+│       │       ├── 0032_snapshot.json
+│       │       ├── 0033_snapshot.json
 │       │       └── _journal.json
 │       ├── drizzle.config.ts
 │       ├── next.config.js
@@ -279,6 +290,8 @@
 │       │   │   │   │   ├── [...nextauth]
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── logout
+│       │   │   │   │       ├── callback
+│       │   │   │   │       │   └── route.ts
 │       │   │   │   │       └── route.ts
 │       │   │   │   ├── declaration-pdf
 │       │   │   │   │   └── route.ts
@@ -400,6 +413,7 @@
 │       │   │   ├── campaign-deadlines-gating.e2e.ts
 │       │   │   ├── compliance.e2e.ts
 │       │   │   ├── constants.ts
+│       │   │   ├── declaration-cancellation.e2e.ts
 │       │   │   ├── declaration-process-panel.e2e.ts
 │       │   │   ├── declaration.e2e.ts
 │       │   │   ├── error-pages.e2e.ts
@@ -410,6 +424,7 @@
 │       │   │   ├── helpers
 │       │   │   │   ├── axe-scan.ts
 │       │   │   │   ├── compliance-flows.ts
+│       │   │   │   ├── db-campaign.ts
 │       │   │   │   ├── db.ts
 │       │   │   │   ├── declaration-flows.ts
 │       │   │   │   ├── dsfr.ts
@@ -439,15 +454,19 @@
 │       │   │   │   ├── declarations
 │       │   │   │   │   ├── AdminDeclarationDetailPage.tsx
 │       │   │   │   │   ├── AdminDeclarationsPage.tsx
+│       │   │   │   │   ├── CancelDeclarationButton.tsx
 │       │   │   │   │   ├── DeclarationTable.tsx
 │       │   │   │   │   ├── DetailSections.tsx
 │       │   │   │   │   ├── SearchForm.tsx
+│       │   │   │   │   ├── SiblingDeclarationsSection.tsx
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── AdminDeclarationDetailPage.test.tsx
 │       │   │   │   │   │   ├── AdminDeclarationsPage.test.tsx
+│       │   │   │   │   │   ├── CancelDeclarationButton.test.tsx
 │       │   │   │   │   │   ├── DeclarationTable.test.tsx
 │       │   │   │   │   │   ├── DetailSections.test.tsx
 │       │   │   │   │   │   ├── SearchForm.test.tsx
+│       │   │   │   │   │   ├── SiblingDeclarationsSection.test.tsx
 │       │   │   │   │   │   ├── constants.test.ts
 │       │   │   │   │   │   └── schemas.test.ts
 │       │   │   │   │   ├── index.ts
@@ -580,6 +599,7 @@
 │       │   │   │   ├── MissingSiret.tsx
 │       │   │   │   ├── StepPageClient.tsx
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── computeIndicatorPercentages.test.ts
 │       │   │   │   │   └── schemas.test.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── recapitulatif
@@ -639,6 +659,7 @@
 │       │   │   │   │   │   └── useComplianceCompletion.test.ts
 │       │   │   │   │   ├── common.module.scss
 │       │   │   │   │   ├── complianceNavigation.ts
+│       │   │   │   │   ├── computeIndicatorPercentages.ts
 │       │   │   │   │   ├── constants.ts
 │       │   │   │   │   ├── devFillData.ts
 │       │   │   │   │   ├── draft
@@ -816,6 +837,7 @@
 │       │   │   │   │   ├── SwaggerUI.test.tsx
 │       │   │   │   │   ├── buildExportKey.test.ts
 │       │   │   │   │   ├── buildExportRows.test.ts
+│       │   │   │   │   ├── exportApi.integration.test.ts
 │       │   │   │   │   ├── exportApi.test.ts
 │       │   │   │   │   ├── fetchDeclarations.test.ts
 │       │   │   │   │   ├── filesApi.test.ts
@@ -824,6 +846,7 @@
 │       │   │   │   │   ├── mapIndicators.test.ts
 │       │   │   │   │   ├── openapi.test.ts
 │       │   │   │   │   ├── openapiRoute.test.ts
+│       │   │   │   │   ├── queries.test.ts
 │       │   │   │   │   └── schemas.test.ts
 │       │   │   │   ├── buildExportRows.ts
 │       │   │   │   ├── downloadExport.ts
@@ -1096,12 +1119,19 @@
 │       │   │   │   ├── root.ts
 │       │   │   │   ├── routers
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
+│       │   │   │   │   │   ├── adminDeclarations.getById.test.ts
+│       │   │   │   │   │   ├── adminDeclarations.search.test.ts
 │       │   │   │   │   │   ├── adminReferents.test.ts
 │       │   │   │   │   │   ├── adminSettings.test.ts
 │       │   │   │   │   │   ├── adminStats.test.ts
+│       │   │   │   │   │   ├── company.getWithDeclarations.test.ts
+│       │   │   │   │   │   ├── company.list.test.ts
 │       │   │   │   │   │   ├── company.test.ts
 │       │   │   │   │   │   ├── cseOpinion.finalize.test.ts
 │       │   │   │   │   │   ├── cseOpinion.test.ts
+│       │   │   │   │   │   ├── declaration.cancellation-flow.test.ts
+│       │   │   │   │   │   ├── declaration.cancellation.integration.test.ts
 │       │   │   │   │   │   ├── declaration.employeeCategories.test.ts
 │       │   │   │   │   │   ├── declaration.impersonation.test.ts
 │       │   │   │   │   │   ├── declaration.step4Loader.test.ts
@@ -1218,8 +1248,9 @@
 │   │   ├── rebase_epic_branch.sh
 │   │   ├── refresh_pr_link.sh
 │   │   ├── render_dashboard.sh
+│   │   ├── run_doc_writer.sh
 │   │   └── set_ticket_status.sh
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-230 directories, 994 files
+233 directories, 1022 files

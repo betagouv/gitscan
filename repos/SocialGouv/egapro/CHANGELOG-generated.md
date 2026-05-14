@@ -1,41 +1,34 @@
-## Changelog : egapro (30 derniers jours, au 07 mai 2026)
+## Changelog : egapro (30 derniers jours, au 7 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment dans le parcours de déclaration, ainsi que par des avancées importantes sur l'infrastructure et l'observabilité de la plateforme. Des efforts ont également été déployés pour renforcer la sécurité et l'administration de l'application.
+Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment sur les étapes de la déclaration et dans l'interface d'administration. Des efforts importants ont également été consacrés à l'amélioration de la robustesse et de l'observabilité de la plateforme, ainsi qu'à l'intégration de nouvelles fonctionnalités pour la gestion des campagnes et des référents.
 
 ### Évolutions fonctionnelles
-- Amélioration du parcours de déclaration :
-    - Pré-remplissage des données à partir de la déclaration précédente avec un indicateur clair. [#3246](https://github.com/SocialGouv/egapro/issues/3246)
-    - Alignement de l'interface utilisateur des étapes de déclaration (effectifs, récapitulatif, avis CSE) avec les maquettes Figma. [#3320](https://github.com/SocialGouv/egapro/issues/3320), [#3325](https://github.com/SocialGouv/egapro/issues/3325), [#3324](https://github.com/SocialGouv/egapro/issues/3324)
-    - Optimisation de l'étape 5 du formulaire de déclaration (UI, accessibilité, rendu côté serveur). [#3361](https://github.com/SocialGouv/egapro/issues/3361)
-    - Fusion des champs "Nom" et "Détail" en un seul champ "Libellé" dans la déclaration. [#3360](https://github.com/SocialGouv/egapro/issues/3360)
-- Amélioration de l'espace personnel ("Mon Espace") et de la page de connexion, alignées avec les dernières maquettes Figma. [#3344](https://github.com/SocialGouv/egapro/issues/3344), [#3340](https://github.com/SocialGouv/egapro/issues/3340)
-- Ajout d'une page de recherche publique des référents. [#3234](https://github.com/SocialGouv/egapro/issues/3234)
-- Implémentation de la gestion des variables globales de campagne dans l'administration. [#3229](https://github.com/SocialGouv/egapro/issues/3229)
-- Ajout d'un graphique de progression des campagnes dans l'administration. [#3286](https://github.com/SocialGouv/egapro/issues/3286)
-- Ajout d'un filtre par taille d'entreprise dans l'administration. [#3283](https://github.com/SocialGouv/egapro/issues/3283)
-- Ajout d'un lien "Déclarations" dans le menu latéral de l'administration. [#3275](https://github.com/SocialGouv/egapro/issues/3275)
-- Mise en place d'un système de "mimoquage" (impersonation) d'entreprises dans l'administration. [#3188](https://github.com/SocialGouv/egapro/issues/3188)
-- Ajout d'un contrôle d'accès basé sur les rôles dans l'administration (isAdmin). [#3187](https://github.com/SocialGouv/egapro/issues/3187)
-- Ajout d'un sitemap.xml et d'un robots.txt pour le SEO. [#3235](https://github.com/SocialGouv/egapro/issues/3235)
-- Blocage de la modification des déclarations après la date limite de la campagne. [#3162](https://github.com/SocialGouv/egapro/issues/3162)
+- Amélioration de l'interface utilisateur des étapes de déclaration (Effectifs, Récapitulatif, CSE) pour une meilleure conformité avec les maquettes Figma [#3320](https://github.com/SocialGouv/egapro/issues/3320), [#3325](https://github.com/SocialGouv/egapro/issues/3325), [#3324](https://github.com/SocialGouv/egapro/issues/3324).
+- Ajout de colonnes de pourcentages dans la déclaration [#3379](https://github.com/SocialGouv/egapro/issues/3379).
+- Implémentation de la gestion du statut "annulé" pour les déclarations [#3431](https://github.com/SocialGouv/egapro/issues/3133).
+- Ajout d'une page de recherche publique pour les référents [#3234](https://github.com/SocialGouv/egapro/issues/3198).
+- Mise en place d'un diagramme de progression de campagne dans l'interface d'administration [#3286](https://github.com/SocialGouv/egapro/issues/3286).
+- Amélioration du "mimoquage" (pré-remplissage) des données de déclaration, avec lecture seule et navigation entre les étapes [#3252](https://github.com/SocialGouv/egapro/issues/3252).
+- Ajout d'un cache de déclaration pour pré-remplir les données et permettre un retour en arrière [#3406](https://github.com/SocialGouv/egapro/issues/3205).
+- Ajout d'une fonctionnalité pour lier les déclarations à des fichiers d'évaluation conjointe [#3226](https://github.com/SocialGouv/egapro/issues/3145).
+- Amélioration de la gestion des avis du CSE avec un horodatage dédié [#3271](https://github.com/SocialGouv/egapro/issues/3271).
+- Ajout d'un sitemap et d'un fichier robots.txt pour le SEO [#3235](https://github.com/SocialGouv/egapro/issues/3235).
 
 ### Évolutions techniques
-- Mise en place d'une infrastructure d'audit logging pour suivre les actions des utilisateurs. [#3191](https://github.com/SocialGouv/egapro/issues/3191), [#3193](https://github.com/SocialGouv/egapro/issues/3193)
-- Intégration de Tipimail pour l'envoi des accusés de réception par email. [#3237](https://github.com/SocialGouv/egapro/issues/3237), [#3238](https://github.com/SocialGouv/egapro/issues/3238)
-- Ajout d'une couche de cache Redis avec Valkey pour améliorer les performances de Next.js. [#3228](https://github.com/SocialGouv/egapro/issues/3228)
-- Mise en place d'un proxy sécurisé pour le téléchargement de fichiers S3. [#3171](https://github.com/SocialGouv/egapro/issues/3171)
-- Refactoring de la recherche des référents pour supprimer les filtres inutiles. [#3281](https://github.com/SocialGouv/egapro/issues/3281), [#3282](https://github.com/SocialGouv/egapro/issues/3282), [#3276](https://github.com/SocialGouv/egapro/issues/3276)
-- Amélioration de la pipeline CI/CD pour l'observabilité (événements de phase, coût en direct, détection de blocages). [#3410](https://github.com/SocialGouv/egapro/issues/3410)
-- Ajout d'un gateway API. [#3304](https://github.com/SocialGouv/egapro/issues/3304)
+- Refactorisation de la recherche de référents pour supprimer les filtres inutiles [#3281](https://github.com/SocialGouv/egapro/issues/3281), [#3282](https://github.com/SocialGouv/egapro/issues/3282).
+- Mise en place d'une couche de cache Redis avec Valkey pour améliorer les performances [#3228](https://github.com/SocialGouv/egapro/issues/3228).
+- Amélioration de la pipeline CI/CD avec des événements de phase, une détection des blocages et un rapport automatique [#3410](https://github.com/SocialGouv/egapro/issues/3410), [#3423](https://github.com/SocialGouv/egapro/issues/3423).
+- Intégration d'un agent "doc-writer" pour la documentation et l'automatisation des tâches [#3409](https://github.com/SocialGouv/egapro/issues/3409).
+- Mise en place d'une pipeline d'IA pour automatiser certaines tâches [#3305](https://github.com/SocialGouv/egapro/issues/3305).
+- Amélioration de la gestion des logs et de l'observabilité [#3410](https://github.com/SocialGouv/egapro/issues/3410).
+- Mise en place de l'envoi d'accusés de réception par email via Tipimail [#3237](https://github.com/SocialGouv/egapro/issues/3177).
+- Correction de bugs liés à l'orchestration de la pipeline [#3403](https://github.com/SocialGouv/egapro/issues/3403).
+- Correction d'un problème de déconnexion OIDC [#3347](https://github.com/SocialGouv/egapro/issues/3347).
 
 ### Autres changements
-- Documentation de l'API SUIT. [#3284](https://github.com/SocialGouv/egapro/issues/3284)
-- Mise à jour des dépendances.
-- Nettoyage du code et corrections de bugs mineurs.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Ajout de constantes et d'helpers pour les quartiles. [#3359](https://github.com/SocialGouv/egapro/issues/3359)
-- Mise en place d'un script de post-processing pour les annotations SUIT/GIP-MDS. [#3341](https://github.com/SocialGouv/egapro/issues/3341)
-- Amélioration de la pipeline pour l'intégration des épics et l'enrichissement des tickets. [#3367](https://github.com/SocialGouv/egapro/issues/3367)
-- Correction de bugs d'orchestration de la pipeline épique. [#3403](https://github.com/SocialGouv/egapro/issues/3403)
-- Correction d'un bug lié à la variable d'environnement CLAUDECODE. [#3407](https://github.com/SocialGouv/egapro/issues/3407)
+- Documentation de l'architecture V2 d'EGAPRO [#3390](https://github.com/SocialGouv/egapro/issues/3390).
+- Documentation des fonctionnalités V2 d'EGAPRO [#3389](https://github.com/SocialGouv/egapro/issues/3389).
+- Synchronisation des documents de la documentation avec la wiki GitHub [#3408](https://github.com/SocialGouv/egapro/issues/3408).
+- Correction de problèmes d'alignement et d'accessibilité dans l'interface utilisateur [#3371](https://github.com/SocialGouv/egapro/issues/3320), [#3370](https://github.com/SocialGouv/egapro/issues/3325), [#3361](https://github.com/SocialGouv/egapro/issues/3324).
+- Correction de bugs divers liés à la navigation et à l'affichage des données [#3384](https://github.com/SocialGouv/egapro/issues/3266), [#3383](https://github.com/SocialGouv/egapro/issues/3383).
