@@ -110,6 +110,7 @@
 │   └── inventories
 ├── .node-version
 ├── .prettierignore
+├── .stylelintrc.json
 ├── .vscode
 │   ├── extensions.json
 │   ├── launch.json
@@ -227,6 +228,7 @@
 │   │   │   │   │   └── opcos.actions.ts
 │   │   │   │   ├── organisations.actions.ts
 │   │   │   │   ├── organismes
+│   │   │   │   │   ├── deca-cfa-eligibility.ts
 │   │   │   │   │   ├── mission-locale.actions.ts
 │   │   │   │   │   ├── organismes.actions.ts
 │   │   │   │   │   ├── organismes.admin.actions.ts
@@ -676,10 +678,13 @@
 │   │   │   ├── sampleEtablissements.ts
 │   │   │   └── sampleLibelles.ts
 │   │   ├── integration
+│   │   │   ├── admin
+│   │   │   │   └── deca-cfa-pilot.test.ts
 │   │   │   ├── common
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── cfa-effectifs-ruptures.actions.test.ts
 │   │   │   │   │   ├── cfa-effectifs.actions.test.ts
+│   │   │   │   │   ├── deca-cfa-eligibility.test.ts
 │   │   │   │   │   ├── effectifs.duplicates.actions.test.ts
 │   │   │   │   │   ├── effectifs.types.actions.test.ts
 │   │   │   │   │   ├── formations.actions.test.ts
@@ -709,6 +714,7 @@
 │   │   │   ├── http
 │   │   │   │   ├── admin-cfa-invite.routes.test.ts
 │   │   │   │   ├── admin-invitations.routes.test.ts
+│   │   │   │   ├── admin-organismes-deca-cfa-pilot.routes.test.ts
 │   │   │   │   ├── admin.routes.test.ts
 │   │   │   │   ├── authentication.routes.test.ts
 │   │   │   │   ├── brevo-whatsapp.routes.test.ts
@@ -1027,25 +1033,6 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   └── layout.tsx
-│   │   ├── (home)
-│   │   │   ├── HomeClient.tsx
-│   │   │   ├── auth
-│   │   │   │   ├── bienvenue
-│   │   │   │   │   ├── Bienvenue.module.css
-│   │   │   │   │   ├── BienvenueClient.tsx
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── connexion
-│   │   │   │   │   ├── ConnexionClient.tsx
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── inscription-cfa
-│   │   │   │   │   ├── InscriptionCfa.module.css
-│   │   │   │   │   ├── InscriptionCfaClient.tsx
-│   │   │   │   │   └── page.tsx
-│   │   │   │   └── mot-de-passe-oublie
-│   │   │   │       ├── ForgotPasswordClient.tsx
-│   │   │   │       └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   └── page.tsx
 │   │   ├── (mission-locale)
 │   │   │   ├── layout.tsx
 │   │   │   └── mission-locale
@@ -1066,6 +1053,92 @@
 │   │   │           ├── MissionLocaleDetailClient.tsx
 │   │   │           ├── error.tsx
 │   │   │           └── page.tsx
+│   │   ├── (public)
+│   │   │   ├── _components
+│   │   │   │   ├── ConnexionSection.tsx
+│   │   │   │   ├── FAQSection.tsx
+│   │   │   │   ├── FooterCTASection.tsx
+│   │   │   │   ├── HeroSection.tsx
+│   │   │   │   ├── SponsorsSection.tsx
+│   │   │   │   ├── connexion-section.module.scss
+│   │   │   │   ├── footer-cta-section.module.scss
+│   │   │   │   ├── hero-section.module.scss
+│   │   │   │   └── shared
+│   │   │   │       ├── BaseFAQSection.tsx
+│   │   │   │       ├── BaseFeaturesAccordionSection.tsx
+│   │   │   │       ├── BaseProcessusSection.tsx
+│   │   │   │       ├── BaseRupturesContratSection.tsx
+│   │   │   │       ├── BaseSponsorsSection.tsx
+│   │   │   │       ├── EtablissementsConnectesSection.tsx
+│   │   │   │       ├── FooterCTASection.tsx
+│   │   │   │       ├── PauseButton.tsx
+│   │   │   │       ├── TemoignagesSection.tsx
+│   │   │   │       ├── VideoSection.tsx
+│   │   │   │       ├── base-features-accordion-section.module.scss
+│   │   │   │       ├── base-processus-section.module.scss
+│   │   │   │       ├── base-ruptures-contrat-section.module.scss
+│   │   │   │       ├── base-sponsors-section.module.scss
+│   │   │   │       ├── etablissements-connectes-section.module.scss
+│   │   │   │       ├── faq-section.module.scss
+│   │   │   │       ├── footer-cta-section.module.scss
+│   │   │   │       ├── pause-button.module.scss
+│   │   │   │       ├── temoignages-section.module.scss
+│   │   │   │       └── video-section.module.scss
+│   │   │   ├── _hooks
+│   │   │   │   ├── useInViewOnce.ts
+│   │   │   │   ├── useInfiniteCarousel.ts
+│   │   │   │   ├── useReducedMotion.ts
+│   │   │   │   └── useVideoPause.ts
+│   │   │   ├── _landing-shared.scss
+│   │   │   ├── accueil-cfa
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── FAQSection.tsx
+│   │   │   │   │   ├── FeaturesSection.tsx
+│   │   │   │   │   ├── HeroSection.tsx
+│   │   │   │   │   ├── PourquoiCollaborerSection.tsx
+│   │   │   │   │   ├── ProcessusSection.tsx
+│   │   │   │   │   ├── SponsorsSection.tsx
+│   │   │   │   │   ├── hero-section.module.scss
+│   │   │   │   │   └── pourquoi-collaborer-section.module.scss
+│   │   │   │   └── page.tsx
+│   │   │   ├── accueil-mission-locale
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── FAQSection.tsx
+│   │   │   │   │   ├── FeaturesSection.tsx
+│   │   │   │   │   ├── HeroSection.tsx
+│   │   │   │   │   ├── ProcessusSection.tsx
+│   │   │   │   │   ├── SponsorsSection.tsx
+│   │   │   │   │   └── hero-section.module.scss
+│   │   │   │   └── page.tsx
+│   │   │   ├── accueil-territoire
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── AccesDonneesSection.tsx
+│   │   │   │   │   ├── FAQSection.tsx
+│   │   │   │   │   ├── HeroSection.tsx
+│   │   │   │   │   ├── MapStatsSection.tsx
+│   │   │   │   │   ├── acces-donnees-section.module.scss
+│   │   │   │   │   ├── hero-section.module.scss
+│   │   │   │   │   └── map-stats-section.module.scss
+│   │   │   │   └── page.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── bienvenue
+│   │   │   │   │   ├── Bienvenue.module.css
+│   │   │   │   │   ├── BienvenueClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── connexion
+│   │   │   │   │   ├── ConnexionClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── inscription-cfa
+│   │   │   │   │   ├── InscriptionCfa.module.css
+│   │   │   │   │   ├── InscriptionCfaClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── mot-de-passe-oublie
+│   │   │   │       ├── ForgotPasswordClient.tsx
+│   │   │   │       └── page.tsx
+│   │   │   ├── landing-page.module.scss
+│   │   │   ├── layout.module.scss
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
 │   │   ├── _components
 │   │   │   ├── ConnectedHeader.tsx
 │   │   │   ├── CrispChat.tsx
@@ -1402,6 +1475,7 @@
 │   │   │   ├── date.utils.ts
 │   │   │   ├── hooks.utils.ts
 │   │   │   ├── phone.utils.ts
+│   │   │   ├── routes.utils.ts
 │   │   │   ├── ruptures.utils.ts
 │   │   │   ├── session.utils.ts
 │   │   │   ├── user.utils.test.ts
@@ -1628,6 +1702,7 @@
 │   ├── modules
 │   │   ├── admin
 │   │   │   ├── DashboardAdministrateur.tsx
+│   │   │   ├── DecaCfaPilotAdminSection.tsx
 │   │   │   ├── InfosTransmissionEtParametrageOFA.tsx
 │   │   │   ├── InviteCfaAdminModal.tsx
 │   │   │   ├── OrganismeDetail.tsx
@@ -2025,9 +2100,76 @@
 │   │   │   ├── france-travail-select-secteur.png
 │   │   │   ├── france_relance.svg
 │   │   │   ├── home
+│   │   │   │   ├── cfa
+│   │   │   │   │   ├── avantage-cfa-collab.png
+│   │   │   │   │   ├── avantage-cfa-fiche-navette.png
+│   │   │   │   │   ├── avantage-cfa-ml.png
+│   │   │   │   │   ├── avantage-cfa-rupture.png
+│   │   │   │   │   ├── avantage-cfa-suivi.png
+│   │   │   │   │   ├── carousel-feature-decider-collaboration.png
+│   │   │   │   │   ├── carousel-feature-fiche-navette.png
+│   │   │   │   │   ├── carousel-feature-liste-effectifs.png
+│   │   │   │   │   ├── carousel-feature-ml-relai.png
+│   │   │   │   │   ├── carousel-feature-qualifier-dossier.png
+│   │   │   │   │   └── contrat-rompu-cfa.png
+│   │   │   │   ├── cfas.png
+│   │   │   │   ├── contrat-rompu-fade.png
+│   │   │   │   ├── etablissements
+│   │   │   │   │   ├── apprentis-auteuil.png
+│   │   │   │   │   ├── btp-cfa-picardie.png
+│   │   │   │   │   ├── campus-du-lac.png
+│   │   │   │   │   ├── ccca-btp.png
+│   │   │   │   │   ├── cci-auvergne-rhone-alpes.png
+│   │   │   │   │   ├── cma-nouvelle-aquitaine.png
+│   │   │   │   │   ├── creps-hauts-de-france.png
+│   │   │   │   │   ├── escg.png
+│   │   │   │   │   ├── greta-cfa.png
+│   │   │   │   │   ├── groupe-institut-de-genech.png
+│   │   │   │   │   ├── mfr.png
+│   │   │   │   │   ├── mission-locale-3-vallees.png
+│   │   │   │   │   └── mission-locale-antipolis.png
+│   │   │   │   ├── generique
+│   │   │   │   │   ├── minia-CFA.png
+│   │   │   │   │   ├── minia-ml.png
+│   │   │   │   │   └── minia-territoire.png
+│   │   │   │   ├── hero-cafe.png
+│   │   │   │   ├── hero-cfa-figure.png
+│   │   │   │   ├── hero-ml-figure.png
+│   │   │   │   ├── hero-plante.png
+│   │   │   │   ├── illustration-footer-cfa-ml.png
+│   │   │   │   ├── illustration-footer.png
+│   │   │   │   ├── illustration-hero.png
+│   │   │   │   ├── made-in-DGEFP.png
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   ├── avantage-ml-contact.png
+│   │   │   │   │   ├── avantage-ml-fiche-navette.png
+│   │   │   │   │   ├── avantage-ml-liste.png
+│   │   │   │   │   ├── avantage-ml-priorisation.png
+│   │   │   │   │   ├── avantage-ml-relance.png
+│   │   │   │   │   ├── carousel-feature-compte-rendu.png
+│   │   │   │   │   ├── carousel-feature-coordonnees-jeunes.png
+│   │   │   │   │   ├── carousel-feature-fiche-navette.png
+│   │   │   │   │   ├── carousel-feature-liste-jeunes.png
+│   │   │   │   │   └── carousel-feature-profils-prioritaires.png
+│   │   │   │   ├── ml-actives.png
+│   │   │   │   ├── qualiopi.png
 │   │   │   │   ├── slide1.png
 │   │   │   │   ├── slide2.png
-│   │   │   │   └── slide3.png
+│   │   │   │   ├── slide3.png
+│   │   │   │   ├── sponsor-ml.png
+│   │   │   │   ├── sponsor-ml.svg
+│   │   │   │   ├── temoignages
+│   │   │   │   │   ├── campus-du-lac.png
+│   │   │   │   │   ├── ccca-btp.png
+│   │   │   │   │   ├── groupe-institut-de-genech.png
+│   │   │   │   │   ├── mission-locale-3-vallees.png
+│   │   │   │   │   └── mission-locale-antipolis.png
+│   │   │   │   └── territoire
+│   │   │   │       ├── carte.png
+│   │   │   │       ├── dashboard-preview.png
+│   │   │   │       ├── fond-carte.webp
+│   │   │   │       ├── illustration-hero.png
+│   │   │   │       └── paul-boris-bouzin.png
 │   │   │   ├── illu-onboarding.png
 │   │   │   ├── info-nouveau-contrat.svg
 │   │   │   ├── landing-cards
@@ -2089,13 +2231,18 @@
 │   │   │   ├── formulaire-immatriculation-uai-pour-of_cfa.pdf
 │   │   │   ├── vademecum-rco.pdf
 │   │   │   └── vademecum.pdf
-│   │   └── sitemap.xml
+│   │   ├── sitemap.xml
+│   │   └── videos
+│   │       ├── hero-poster.webp
+│   │       ├── hero.mp4
+│   │       └── hero.webm
 │   ├── sentry.client.config.ts
 │   ├── sentry.edge.config.ts
 │   ├── sentry.properties
 │   ├── sentry.server.config.ts
 │   ├── styles
 │   │   ├── MonthSelect.css
+│   │   ├── _breakpoints.scss
 │   │   └── globals.css
 │   ├── tests
 │   │   └── setup.ts
@@ -2178,4 +2325,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-450 directories, 1730 files
+467 directories, 1860 files
