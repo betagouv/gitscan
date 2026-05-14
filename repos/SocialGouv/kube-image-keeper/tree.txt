@@ -1,0 +1,219 @@
+.
+├── .conform.yaml
+├── .dockerignore
+├── .github
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
+│   ├── lib.py
+│   └── workflows
+│       ├── build.yaml
+│       ├── conform.yaml
+│       ├── lint.yaml
+│       ├── release.yaml
+│       └── test.yaml
+├── .gitignore
+├── .golangci.yml
+├── .lefthook.yaml
+├── .markdownlint-cli2.yaml
+├── .releaserc.json
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── PROJECT
+├── README.md
+├── api
+│   └── kuik
+│       └── v1alpha1
+│           ├── clusterimagesetavailability_types.go
+│           ├── clusterimagesetmirror_types.go
+│           ├── clusterreplicatedimageset_types.go
+│           ├── groupversion_info.go
+│           ├── image_reference.go
+│           ├── imagesetmirror_types.go
+│           ├── replicatedimageset_types.go
+│           └── zz_generated.deepcopy.go
+├── cmd
+│   └── main.go
+├── config
+│   ├── certmanager
+│   │   ├── certificate-metrics.yaml
+│   │   ├── certificate-webhook.yaml
+│   │   ├── issuer.yaml
+│   │   ├── kustomization.yaml
+│   │   └── kustomizeconfig.yaml
+│   ├── crd
+│   │   ├── bases
+│   │   │   ├── kuik.enix.io_clusterimagesetavailabilities.yaml
+│   │   │   ├── kuik.enix.io_clusterimagesetmirrors.yaml
+│   │   │   ├── kuik.enix.io_clusterreplicatedimagesets.yaml
+│   │   │   ├── kuik.enix.io_imagesetmirrors.yaml
+│   │   │   └── kuik.enix.io_replicatedimagesets.yaml
+│   │   ├── kustomization.yaml
+│   │   └── kustomizeconfig.yaml
+│   ├── default
+│   │   ├── cert_metrics_manager_patch.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── manager_metrics_patch.yaml
+│   │   ├── manager_webhook_patch.yaml
+│   │   └── metrics_service.yaml
+│   ├── manager
+│   │   ├── kustomization.yaml
+│   │   └── manager.yaml
+│   ├── network-policy
+│   │   ├── allow-metrics-traffic.yaml
+│   │   ├── allow-webhook-traffic.yaml
+│   │   └── kustomization.yaml
+│   ├── prometheus
+│   │   ├── kustomization.yaml
+│   │   ├── monitor.yaml
+│   │   └── monitor_tls_patch.yaml
+│   ├── rbac
+│   │   ├── kuik_clusterimagesetavailability_admin_role.yaml
+│   │   ├── kuik_clusterimagesetavailability_editor_role.yaml
+│   │   ├── kuik_clusterimagesetavailability_viewer_role.yaml
+│   │   ├── kuik_clusterimagesetmirror_admin_role.yaml
+│   │   ├── kuik_clusterimagesetmirror_editor_role.yaml
+│   │   ├── kuik_clusterimagesetmirror_viewer_role.yaml
+│   │   ├── kuik_clusterreplicatedimageset_admin_role.yaml
+│   │   ├── kuik_clusterreplicatedimageset_editor_role.yaml
+│   │   ├── kuik_clusterreplicatedimageset_viewer_role.yaml
+│   │   ├── kuik_image_admin_role.yaml
+│   │   ├── kuik_image_editor_role.yaml
+│   │   ├── kuik_image_viewer_role.yaml
+│   │   ├── kuik_imagemonitor_admin_role.yaml
+│   │   ├── kuik_imagemonitor_editor_role.yaml
+│   │   ├── kuik_imagemonitor_viewer_role.yaml
+│   │   ├── kuik_imagesetmirror_admin_role.yaml
+│   │   ├── kuik_imagesetmirror_editor_role.yaml
+│   │   ├── kuik_imagesetmirror_viewer_role.yaml
+│   │   ├── kuik_registrymonitor_admin_role.yaml
+│   │   ├── kuik_registrymonitor_editor_role.yaml
+│   │   ├── kuik_registrymonitor_viewer_role.yaml
+│   │   ├── kuik_replicatedimageset_admin_role.yaml
+│   │   ├── kuik_replicatedimageset_editor_role.yaml
+│   │   ├── kuik_replicatedimageset_viewer_role.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── leader_election_role.yaml
+│   │   ├── leader_election_role_binding.yaml
+│   │   ├── metrics_auth_role.yaml
+│   │   ├── metrics_auth_role_binding.yaml
+│   │   ├── metrics_reader_role.yaml
+│   │   ├── role.yaml
+│   │   ├── role_binding.yaml
+│   │   └── service_account.yaml
+│   ├── samples
+│   │   ├── kuik_v1alpha1_clusterimagesetavailability.yaml
+│   │   ├── kuik_v1alpha1_clusterimagesetmirror.yaml
+│   │   ├── kuik_v1alpha1_clusterreplicatedimageset.yaml
+│   │   ├── kuik_v1alpha1_imagesetmirror.yaml
+│   │   ├── kuik_v1alpha1_replicatedimageset.yaml
+│   │   └── kustomization.yaml
+│   └── webhook
+│       ├── kustomization.yaml
+│       ├── kustomizeconfig.yaml
+│       ├── manifests.yaml
+│       └── service.yaml
+├── docs
+│   ├── configuration.md
+│   ├── crds.md
+│   ├── development.md
+│   ├── image-routing.md
+│   ├── use-case
+│   │   ├── automatically-route-images-to-a-proxy-cache-registry.md
+│   │   ├── better-performance-with-local-registry.md
+│   │   ├── detect-missing-images-before-outage.md
+│   │   ├── overcome-public-registry-limitations.md
+│   │   └── protect-images-from-garbage-collect.md
+│   └── v1-to-v2-migration-path.md
+├── go.mod
+├── go.sum
+├── helm
+│   └── kube-image-keeper
+│       ├── .helmignore
+│       ├── Chart.yaml
+│       ├── README.md.gotmpl
+│       ├── crds
+│       │   ├── kuik.enix.io_clusterimagesetavailabilities.yaml
+│       │   ├── kuik.enix.io_clusterimagesetmirrors.yaml
+│       │   ├── kuik.enix.io_clusterreplicatedimagesets.yaml
+│       │   ├── kuik.enix.io_imagesetmirrors.yaml
+│       │   └── kuik.enix.io_replicatedimagesets.yaml
+│       ├── files
+│       │   ├── clusterrole-leader-elec-rules.yaml
+│       │   └── clusterrole-rules.yaml
+│       ├── templates
+│       │   ├── NOTES.txt
+│       │   ├── _helpers.tpl
+│       │   ├── clusterrole.yaml
+│       │   ├── clusterrolebinding.yaml
+│       │   ├── manager-configmap.yaml
+│       │   ├── manager-deployment.yaml
+│       │   ├── manager-metrics-service.yaml
+│       │   ├── manager-poddisruptionbudget.yaml
+│       │   ├── manager-servicemonitor.yaml
+│       │   ├── mutatingwebhookconfiguration.yaml
+│       │   ├── serviceaccount.yaml
+│       │   ├── webhook-certificate.yaml
+│       │   └── webhook-service.yaml
+│       └── values.yaml
+├── internal
+│   ├── config
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   └── histogram.go
+│   ├── controller
+│   │   ├── collector.go
+│   │   ├── kuik
+│   │   │   ├── backfill_original.go
+│   │   │   ├── clusterimagesetavailability_controller.go
+│   │   │   ├── clusterimagesetavailability_controller_test.go
+│   │   │   ├── clusterimagesetmirror_controller.go
+│   │   │   ├── clusterimagesetmirror_controller_test.go
+│   │   │   ├── commonimagesetmirror.go
+│   │   │   ├── commonimagesetmirror_test.go
+│   │   │   ├── field_names.go
+│   │   │   ├── imagesetmirror_controller.go
+│   │   │   ├── imagesetmirror_controller_test.go
+│   │   │   ├── secretowner_controller.go
+│   │   │   └── suite_test.go
+│   │   ├── rbac_annotations.go
+│   │   └── status.go
+│   ├── filter
+│   │   ├── filter.go
+│   │   ├── include_exclude.go
+│   │   ├── include_exclude_test.go
+│   │   └── prefix_include_exclude.go
+│   ├── info
+│   │   └── info.go
+│   ├── internal.go
+│   ├── parallel
+│   │   ├── parallel.go
+│   │   └── parallel_test.go
+│   ├── registry
+│   │   ├── availability.go
+│   │   ├── credentialprovider
+│   │   │   ├── config.go
+│   │   │   ├── keyring.go
+│   │   │   └── secrets
+│   │   │       └── secrets.go
+│   │   ├── keychain.go
+│   │   ├── ratelimit.go
+│   │   ├── registry.go
+│   │   ├── registry_test.go
+│   │   └── transport.go
+│   ├── testsetup
+│   │   └── setup.go
+│   └── webhook
+│       └── core
+│           └── v1
+│               ├── pod_webhook.go
+│               ├── pod_webhook_test.go
+│               └── webhook_suite_test.go
+└── test
+    ├── e2e
+    │   ├── e2e_suite_test.go
+    │   └── e2e_test.go
+    └── utils
+        └── utils.go
+42 directories, 176 files
