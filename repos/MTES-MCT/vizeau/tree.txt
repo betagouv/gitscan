@@ -25,6 +25,7 @@
 │   │   ├── accueil_controller.ts
 │   │   ├── exploitations_controller.ts
 │   │   ├── log_entries_controller.ts
+│   │   ├── projects_controller.ts
 │   │   ├── session_controller.ts
 │   │   └── visualisation_controller.ts
 │   ├── dto
@@ -34,7 +35,8 @@
 │   │   ├── log_entry_document_dto.ts
 │   │   ├── log_entry_dto.ts
 │   │   ├── log_entry_tag_dto.ts
-│   │   └── parcelle_dto.ts
+│   │   ├── parcelle_dto.ts
+│   │   └── project_dto.ts
 │   ├── exceptions
 │   │   └── handler.ts
 │   ├── helpers
@@ -47,6 +49,7 @@
 │   │   ├── silent_auth_middleware.ts
 │   │   └── territoire_assignation_middleware.ts
 │   ├── models
+│   │   ├── captage.ts
 │   │   ├── contact.ts
 │   │   ├── culture.ts
 │   │   ├── culture_group.ts
@@ -57,6 +60,7 @@
 │   │   ├── log_entry_document.ts
 │   │   ├── log_entry_tag.ts
 │   │   ├── parcelle.ts
+│   │   ├── project.ts
 │   │   ├── territoire.ts
 │   │   └── user.ts
 │   ├── policies
@@ -75,13 +79,15 @@
 │   │   ├── log_entry_service.ts
 │   │   ├── log_entry_tag_service.ts
 │   │   ├── parcelle_csv_service.ts
-│   │   └── parcelle_service.ts
+│   │   ├── parcelle_service.ts
+│   │   └── project_service.ts
 │   └── validators
 │       ├── aac.ts
 │       ├── create_exploitation.ts
 │       ├── log_entry.ts
 │       ├── log_entry_tag.ts
-│       └── parcelle.ts
+│       ├── parcelle.ts
+│       └── project.ts
 ├── bin
 │   ├── console.ts
 │   ├── server.ts
@@ -107,12 +113,14 @@
 │   │   ├── codes_NAF.json
 │   │   └── cultures.json
 │   ├── factories
+│   │   ├── captage_factory.ts
 │   │   ├── contact_factory.ts
 │   │   ├── exploitation_factory.ts
 │   │   ├── exploitation_tag_factory.ts
 │   │   ├── log_entry_factory.ts
 │   │   ├── log_entry_tag_factory.ts
 │   │   ├── parcelle_factory.ts
+│   │   ├── project_factory.ts
 │   │   ├── territoire_factory.ts
 │   │   └── user_factory.ts
 │   ├── migrations
@@ -154,7 +162,12 @@
 │   │   ├── 1774284484370_create_territoire_user_relations_table.ts
 │   │   ├── 1774284767808_create_exploitation_territoire_relations_table.ts
 │   │   ├── 1774285176009_alter_exploitations_table.ts
-│   │   └── 1774449196042_alter_territoires_table.ts
+│   │   ├── 1774449196042_alter_territoires_table.ts
+│   │   ├── 1775000000000_create_captages_table.ts
+│   │   ├── 1775000000001_create_projects_table.ts
+│   │   ├── 1775000000002_create_project_parcelle_relations_table.ts
+│   │   ├── 1775000000003_create_project_exploitation_relations_table.ts
+│   │   └── 1775000000004_create_project_captage_relations_table.ts
 │   └── seeders
 │       ├── 1_user_seeder.ts
 │       ├── 2_exploitation_seeder.ts
@@ -162,7 +175,8 @@
 │       ├── 4_culture_seeder.ts
 │       ├── 6_exploitation_tag_seeder.ts
 │       ├── 7_territoire_seeder.ts
-│       └── 8_assign_territoire_seeder.ts
+│       ├── 8_assign_territoire_seeder.ts
+│       └── 9_captage_seeder.ts
 ├── eslint.config.js
 ├── inertia
 │   ├── app
@@ -436,6 +450,12 @@
 │   │   │   ├── exploitation_get.spec.ts
 │   │   │   ├── exploitation_update.spec.ts
 │   │   │   └── parcelle_note.spec.ts
+│   │   ├── project
+│   │   │   ├── projects_destroy.spec.ts
+│   │   │   ├── projects_index.spec.ts
+│   │   │   ├── projects_show.spec.ts
+│   │   │   ├── projects_store.spec.ts
+│   │   │   └── projects_update.spec.ts
 │   │   └── visualisation
 │   │       └── assign_parcelles.spec.ts
 │   └── unit
@@ -454,8 +474,10 @@
 │       │   ├── log_entry_document_service.spec.ts
 │       │   ├── log_entry_service.spec.ts
 │       │   └── log_entry_tag_service.spec.ts
-│       └── parcelle
-│           └── parcelle_csv_service.spec.ts
+│       ├── parcelle
+│       │   └── parcelle_csv_service.spec.ts
+│       └── project
+│           └── project_model.spec.ts
 ├── tsconfig.json
 ├── types
 │   ├── aac.ts
@@ -465,4 +487,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-100 directories, 367 files
+102 directories, 387 files

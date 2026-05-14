@@ -1,26 +1,29 @@
-## Changelog : vizeau (30 derniers jours, au 7 mai 2026)
+## Changelog : vizeau (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'export de données, notamment pour les données AAC et les exploitations agricoles. Des corrections ont été apportées à l'affichage des parcelles sur la carte, à l'import de graphiques et à l'accessibilité de certains composants. De nouvelles fonctionnalités sont disponibles pour l'analyse des installations de captage et le seeding des territoires aux utilisateurs.
+Ce mois-ci, Vizeau a bénéficié d'améliorations significatives en termes de gestion de projet, d'export de données, d'expérience utilisateur sur la carte et dans les recherches, ainsi que de corrections de bugs et d'optimisations techniques. Les utilisateurs peuvent désormais exporter des données AAC et d'exploitation, et bénéficier d'une interface cartographique plus fluide et informative.
 
 ### Évolutions fonctionnelles
-- **Export de données AAC :** Implémentation de l'export des données AAC, avec des améliorations de robustesse et de formatage des données exportées ([#386](https://github.com/MTES-MCT/vizeau/pull/386)).
-- **Export des exploitations :** Ajout de la fonctionnalité d'export des parcelles d'une exploitation ([#380](https://github.com/MTES-MCT/vizeau/pull/380), [#372](https://github.com/MTES-MCT/vizeau/pull/372)).
-- **Analyses des installations de captage :** Ajout des analyses pour les installations de captage ([#393](https://github.com/MTES-MCT/vizeau/pull/393)).
-- **Amélioration de l'affichage des parcelles :** Améliorations sur l'affichage des parcelles sur la carte ([#401](https://github.com/MTES-MCT/vizeau/issues/401)).
-- **Seeding des territoires aux utilisateurs :** Evolution du seeding des comptes animateurs avec attribution de territoire ([#375](https://github.com/MTES-MCT/vizeau/pull/375)).
-- **Correction de l'import de graphique :** Correction d'un bug lors de l'import d'un graphique ([#400](https://github.com/MTES-MCT/vizeau/issues/400)).
-- **Augmentation du z-index de la carte :** Augmentation du z-index pour assurer que la carte s'affiche au-dessus des contrôles ([#402](https://github.com/MTES-MCT/vizeau/issues/402)).
+- **Gestion de projet :** Ajout d'un module de gestion de projet avec des fonctionnalités CRUD complètes. [#405](https://github.com/MTES-MCT/vizeau/pull/405)
+- **Export de données :** Implémentation de l'export des données AAC au format CSV, avec des améliorations de robustesse et de formatage des données. [#386](https://github.com/MTES-MCT/vizeau/pull/386)
+- **Export d'exploitation :** Ajout de la fonctionnalité d'export des parcelles d'une exploitation. [#372](https://github.com/MTES-MCT/vizeau/pull/372)
+- **Carte :** Amélioration de l'affichage des parcelles sur la carte, avec une augmentation de la priorité d'affichage pour éviter les chevauchements. [#401](https://github.com/MTES-MCT/vizeau/pull/401)
+- **Recherche d'exploitations :** Mise à jour du service de recherche d'exploitations. [#404](https://github.com/MTES-MCT/vizeau/pull/404)
+- **Attribution de parcelles :** Ajout d'un toaster de confirmation lors de l'attribution des parcelles. [#403](https://github.com/MTES-MCT/vizeau/pull/403)
+- **Analyses des installations de captage :** Ajout des analyses des installations de captage. [#393](https://github.com/MTES-MCT/vizeau/pull/393)
+- **Page AAC :** Mise à jour de la page AAC. [#383](https://github.com/MTES-MCT/vizeau/pull/383)
+- **Seeding des comptes :** Evolution du seeding des comptes animateurs avec attribution de territoire. [#371](https://github.com/MTES-MCT/vizeau/pull/371)
 
 ### Évolutions techniques
-- **Composants Point de prélèvement :** Création de nouveaux composants pour le module Point de prélèvement ([#381](https://github.com/MTES-MCT/vizeau/pull/381)).
-- **Refactoring Autocomplete :** Correction de la transparence des résultats et des champs autocomplete ([#378](https://github.com/MTES-MCT/vizeau/pull/378), [#387](https://github.com/MTES-MCT/vizeau/pull/387)).
-- **Amélioration de l'accessibilité :** Corrections d'accessibilité sur certains composants, notamment la navigation au clavier et l'utilisation de labels ([#390](https://github.com/MTES-MCT/vizeau/pull/390), [#391](https://github.com/MTES-MCT/vizeau/pull/391), [#392](https://github.com/MTES-MCT/vizeau/pull/392)).
-- **Nouveaux composants UI :** Ajout des composants `CheckboxCard` et `SearchWithFilters` ([#391](https://github.com/MTES-MCT/vizeau/pull/391), [#392](https://github.com/MTES-MCT/vizeau/pull/392)).
-- **Mise à jour du .gitignore :** Mise à jour du fichier `.gitignore` ([#399](https://github.com/MTES-MCT/vizeau/issues/399)).
+- **Composants Point de prélèvement :** Création de nouveaux composants pour le module Point de prélèvement. [#381](https://github.com/MTES-MCT/vizeau/pull/381)
+- **Autocomplete :** Correction des champs autocomplete et amélioration de la transparence des résultats. [#378](https://github.com/MTES-MCT/vizeau/pull/378)
+- **Déboucement Autocomplete :** Correction du déboucement de l'input autocomplete. [#390](https://github.com/MTES-MCT/vizeau/pull/390)
+- **Composants UI :** Ajout des composants CheckboxCard et SearchWithFilters. [#391](https://github.com/MTES-MCT/vizeau/pull/391), [#392](https://github.com/MTES-MCT/vizeau/pull/392)
+- **Accessibilité :** Amélioration de l'accessibilité de la navigation au clavier.
+- **Corrections de bugs :** Correction d'un bug sur l'info-bulle du DSFR. [#395](https://github.com/MTES-MCT/vizeau/pull/395)
+- **Correction de crash :** Correction d'un crash lors de l'export.
 
 ### Autres changements
-- **Correction d'un bug sur l'info-bulle du DSFR :** Correction d'un bug d'affichage sur l'info-bulle du Design System Français (DSFR) ([#395](https://github.com/MTES-MCT/vizeau/issues/395)).
-- **Mise à jour de la page AAC :** Mise à jour de la page AAC ([#383](https://github.com/MTES-MCT/vizeau/pull/383)).
-- **Corrections diverses :** Plusieurs corrections mineures et améliorations du code.
-- **Mise à jour des dépendances :** Mises à jour de certaines dépendances (AdonisJS, npm/yarn).
+- **Documentation :** Mise à jour du fichier .gitignore. [#399](https://github.com/MTES-MCT/vizeau/pull/399)
+- **Nettoyage de code :** Plusieurs corrections et optimisations de code (copilot fixes).
+- **Mises à jour de dépendances :** Mises à jour mineures de certaines dépendances.
