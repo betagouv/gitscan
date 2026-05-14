@@ -1,32 +1,27 @@
-## Changelog : nosgestesclimat (30 derniers jours, au 06 mai 2026)
+## Changelog : nosgestesclimat (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de données, l'amélioration de l'expérience utilisateur avec un nouvel éditeur de situations et des ajustements de traduction. Une nouvelle version (4.10.5) a été publiée avec des corrections de bugs et des améliorations de la stabilité.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment via des ajustements de traduction, des corrections de wording et l'ajout de nouvelles fonctionnalités comme un éditeur de situations et un outil de sauvegarde. Des optimisations techniques ont également été apportées, incluant des mises à jour de packages et des corrections de workflows.
 
 ### Évolutions fonctionnelles
-- Suppression de l'action JVA.
-- Amélioration du wording concernant les transports et les piscines, suite à des validations avec l'équipe.
-- Modification du wording concernant les avions.
-- Suppression des marques dans certaines sections.
-- Mise à jour des chiffres relatifs à la consommation d'eau avec les données réglementaires.
-- Ajout d'un éditeur de situations avec vérification des erreurs et complétion automatique.
-- Possibilité de partager une situation.
-- Publication de la documentation accessible via `/doc`.
-- Correction de l'affichage des funfacts.
-- Mise à jour des données d'impact CO2 pour le transport.
+- **Traduction et Wording :** Améliorations significatives des traductions et du wording dans plusieurs sections de l'application, notamment concernant le transport, la piscine, l'avion et le chauffage. Ces modifications visent à rendre l'application plus claire et plus précise pour les utilisateurs.
+- **Éditeur de situations :** Ajout d'un éditeur de situations avec vérification des erreurs et complétion automatique [#2740](https://github.com/incubateur-ademe/nosgestesclimat/issues/2740).
+- **Partage de situations :** Possibilité de partager des situations configurées [#2740](https://github.com/incubateur-ademe/nosgestesclimat/issues/2740).
+- **Mode scolaire :** Corrections et améliorations du wording et des actions disponibles en mode scolaire. Suppression des actions "café" et "JVA" en mode scolaire.
+- **Calculs :** Mise à jour des chiffres relatifs à la consommation d'eau avec la version réglementaire.
+- **Funfacts :** Correction des conditions d'affichage des "funfacts".
+- **Suppression de marques :** Suppression de certaines marques dans les options de configuration.
 
 ### Évolutions techniques
-- Mise à jour des paquets et de la version de Node.js.
-- Amélioration du workflow de publication de la documentation.
-- Utilisation de l'environnement `GITHUB_OUTPUT` pour la configuration.
-- Utilisation d'un modèle depuis Scaleway.
-- Correction du workflow des pages GitHub.
-- Suppression du support de la langue espagnole.
-- Correction de l'utilisation du hash de commit.
+- **Mise à jour des packages et de Node.js :** Mise à jour des dépendances et de la version de Node.js pour améliorer la sécurité et les performances.
+- **Workflow CI/CD :** Correction du workflow de publication de la documentation.
+- **Infrastructure :** Utilisation d'un modèle depuis Scaleway.
+- **Publicodes :** Mise à jour de la base de données Publicodes ED-fr.
+- **Suppression du support de l'espagnol :** Suppression de la langue espagnole des langues supportées.
 
 ### Autres changements
-- Corrections de la ponctuation et de la description dans les traductions.
-- Ajout d'une commande "save" dans l'éditeur.
-- Correction de la valeur électrique non nécessaire.
-- Correction de l'affichage des conditions des funfacts.
-- Publication des versions 4.10.3, 4.10.4 et 4.10.5.
+- **Documentation :** Amélioration de la documentation et publication de la documentation rapide (quick-doc).
+- **Nettoyage du code :** Suppression de code de débogage et de lignes de sortie inutiles.
+- **Sauvegarde :** Ajout d'une commande "save" dans l'éditeur pour sauvegarder les configurations.
+- **Gestion des commits :** Utilisation du hash du commit pour la publication.
+- **Correction de bugs :** Correction de plusieurs bugs mineurs liés à l'affichage et au fonctionnement de l'application.
