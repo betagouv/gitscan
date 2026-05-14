@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet aux utilisateurs de réaliser des démarches administratives en ligne.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet de contribuer à son amélioration.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,50 +9,51 @@
     "Notifications & Alertes",
     "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "API & Intégrations"
   ],
-  "audience": "Grand public",
+  "audience": [
+    "Grand public",
+    "Agents de l'Administration"
+  ],
   "dependencies": [
     "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
     "Delayed Job",
-    "Vips",
-    "Bun",
+    "Chartkick",
+    "GraphQL",
     "React",
-    "GraphQL"
+    "Vite",
+    "lightgallery"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "Python (scripts & backend)",
+    "Microservices & Architecture",
+    "Documentation & Schémas",
+    "CI/CD & Déploiement",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Python (scripts & backend)",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml",
-      "jwt",
-      "session"
+      "sso"
     ],
-    "providers": [
-      "FranceConnect"
-    ]
+    "providers": []
   },
   "tests": [
     "RSpec",
     "Selenium",
-    "Cypress",
-    "Playwright"
+    "Capybara",
+    "Cypress"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-05-07T15:15:55Z",
+  "workflows": [],
+  "lastActivity": "2026-05-13T17:23:48+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,

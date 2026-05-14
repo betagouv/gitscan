@@ -28,6 +28,7 @@
 │       ├── claude-code-security-review.yml
 │       ├── codeql-analysis.yml
 │       ├── git.yml
+│       ├── publiccodeyml-check.yml
 │       └── rails_schema_check.yml
 ├── .gitignore
 ├── .gpg_authorized_keys
@@ -192,7 +193,6 @@
 │   │       ├── card.scss
 │   │       ├── card_admin.scss
 │   │       ├── carte.scss
-│   │       ├── cnaf.scss
 │   │       ├── code_blocks.scss
 │   │       ├── code_example.scss
 │   │       ├── combobox.scss
@@ -202,7 +202,6 @@
 │   │       ├── demande.scss
 │   │       ├── demarches_index.scss
 │   │       ├── devise_container.scss
-│   │       ├── dgfip.scss
 │   │       ├── direct_uploads.scss
 │   │       ├── dossier_*.scss  (5 files)
 │   │       ├── dossiers_headers.scss
@@ -211,6 +210,7 @@
 │   │       ├── errors_summary.scss
 │   │       ├── exports.scss
 │   │       ├── external_champ_component.scss
+│   │       ├── external_data_card_component.scss
 │   │       ├── filters.scss
 │   │       ├── flex.scss
 │   │       ├── forms.scss
@@ -229,7 +229,6 @@
 │   │       ├── map_info.scss
 │   │       ├── markdown-content.scss
 │   │       ├── menu_component.scss
-│   │       ├── mesri.scss
 │   │       ├── messagerie.scss
 │   │       ├── motivation.scss
 │   │       ├── new_alert.scss
@@ -242,12 +241,12 @@
 │   │       ├── patron.scss
 │   │       ├── personnes_impliquees.scss
 │   │       ├── pj_editor.scss
-│   │       ├── pole_emploi.scss
 │   │       ├── prefill_descriptions_edit.scss
 │   │       ├── print.scss
 │   │       ├── procedure_*.scss  (8 files)
 │   │       ├── proconnect.scss
 │   │       ├── profil.scss
+│   │       ├── referentiel_table.scss
 │   │       ├── rich_text.scss
 │   │       ├── routing_rules_component.scss
 │   │       ├── sections.scss
@@ -394,7 +393,7 @@
 │   │   │   ├── champs_rows_show_component
 │   │   │   │   ├── champs_rows_show_component.en.yml
 │   │   │   │   ├── champs_rows_show_component.fr.yml
-│   │   │   │   └── champs_rows_show_component.html.haml
+│   │   │   │   └── champs_rows_show_component.html.erb
 │   │   │   ├── champs_rows_show_component.rb
 │   │   │   ├── commentaire_list_component
 │   │   │   │   └── commentaire_list_component.html.erb
@@ -403,6 +402,7 @@
 │   │   │   │   ├── commune_component.en.yml
 │   │   │   │   └── commune_component.fr.yml
 │   │   │   ├── commune_component.rb
+│   │   │   ├── date_prefilled_from_france_connect_component.rb
 │   │   │   ├── degraded_identite_entreprise_component
 │   │   │   │   ├── degraded_identite_entreprise_component.en.yml
 │   │   │   │   └── degraded_identite_entreprise_component.fr.yml
@@ -442,15 +442,18 @@
 │   │   │   ├── external_champ_component
 │   │   │   │   ├── external_champ_component.en.yml
 │   │   │   │   └── external_champ_component.fr.yml
-│   │   │   ├── external_champ_component.html.haml
+│   │   │   ├── external_champ_component.html.erb
 │   │   │   ├── external_champ_component.rb
+│   │   │   ├── external_data_card_component.html.erb
+│   │   │   ├── external_data_card_component.rb
 │   │   │   ├── formatted_date_with_badge_component
 │   │   │   │   └── formatted_date_with_badge_component.html.haml
 │   │   │   ├── formatted_date_with_badge_component.rb
 │   │   │   ├── geo_area_component.html.haml
 │   │   │   ├── geo_area_component.rb
-│   │   │   ├── geo_areas_component.html.haml
+│   │   │   ├── geo_areas_component.html.erb
 │   │   │   ├── geo_areas_component.rb
+│   │   │   ├── geo_areas_component.yml
 │   │   │   ├── identite_entreprise_component.rb
 │   │   │   ├── identite_entreprise_for_usager_component
 │   │   │   │   ├── identite_entreprise_for_usager_component.en.yml
@@ -601,11 +604,6 @@
 │   │   │   ├── civilite_component
 │   │   │   │   └── civilite_component.html.haml
 │   │   │   ├── civilite_component.rb
-│   │   │   ├── cnaf_component
-│   │   │   │   ├── cnaf_component.en.yml
-│   │   │   │   ├── cnaf_component.fr.yml
-│   │   │   │   └── cnaf_component.html.haml
-│   │   │   ├── cnaf_component.rb
 │   │   │   ├── cojo_component
 │   │   │   │   ├── cojo_component.en.yml
 │   │   │   │   ├── cojo_component.fr.yml
@@ -627,11 +625,6 @@
 │   │   │   ├── departements_component
 │   │   │   │   └── departements_component.html.haml
 │   │   │   ├── departements_component.rb
-│   │   │   ├── dgfip_component
-│   │   │   │   ├── dgfip_component.en.yml
-│   │   │   │   ├── dgfip_component.fr.yml
-│   │   │   │   └── dgfip_component.html.haml
-│   │   │   ├── dgfip_component.rb
 │   │   │   ├── dossier_link_component
 │   │   │   │   ├── dossier_link_component.en.yml
 │   │   │   │   ├── dossier_link_component.fr.yml
@@ -679,11 +672,6 @@
 │   │   │   ├── linked_drop_down_list_component
 │   │   │   │   └── linked_drop_down_list_component.html.haml
 │   │   │   ├── linked_drop_down_list_component.rb
-│   │   │   ├── mesri_component
-│   │   │   │   ├── mesri_component.en.yml
-│   │   │   │   ├── mesri_component.fr.yml
-│   │   │   │   └── mesri_component.html.haml
-│   │   │   ├── mesri_component.rb
 │   │   │   ├── multiple_drop_down_list_component
 │   │   │   │   └── multiple_drop_down_list_component.html.haml
 │   │   │   ├── multiple_drop_down_list_component.rb
@@ -699,11 +687,6 @@
 │   │   │   ├── piece_justificative_component
 │   │   │   │   └── piece_justificative_component.html.haml
 │   │   │   ├── piece_justificative_component.rb
-│   │   │   ├── pole_emploi_component
-│   │   │   │   ├── pole_emploi_component.en.yml
-│   │   │   │   ├── pole_emploi_component.fr.yml
-│   │   │   │   └── pole_emploi_component.html.haml
-│   │   │   ├── pole_emploi_component.rb
 │   │   │   ├── quotient_familial_component
 │   │   │   │   ├── preview_quotient_familial_data.json
 │   │   │   │   ├── quotient_familial_component.en.yml
@@ -949,7 +932,12 @@
 │   │   ├── manager
 │   │   │   ├── dossier_champ_row_component
 │   │   │   │   └── dossier_champ_row_component.html.haml
-│   │   │   └── dossier_champ_row_component.rb
+│   │   │   ├── dossier_champ_row_component.rb
+│   │   │   ├── otp_attempt_input_component
+│   │   │   │   ├── otp_attempt_input_component.en.yml
+│   │   │   │   ├── otp_attempt_input_component.fr.yml
+│   │   │   │   └── otp_attempt_input_component.html.erb
+│   │   │   └── otp_attempt_input_component.rb
 │   │   ├── nested_forms
 │   │   │   ├── form_owner_component
 │   │   │   │   └── form_owner_component.html.haml
@@ -1232,7 +1220,7 @@
 │   │   │   ├── champ_component
 │   │   │   │   ├── champ_component.en.yml
 │   │   │   │   ├── champ_component.fr.yml
-│   │   │   │   └── champ_component.html.haml
+│   │   │   │   └── champ_component.html.erb
 │   │   │   ├── champ_component.rb
 │   │   │   ├── champ_drop_down_advanced_component
 │   │   │   │   ├── champ_drop_down_advanced_component.fr.yml
@@ -1316,7 +1304,6 @@
 │   │   │   ├── referentiels_controller.rb
 │   │   │   ├── routing_rules_controller.rb
 │   │   │   ├── services_controller.rb
-│   │   │   ├── sources_particulier_controller.rb
 │   │   │   ├── sva_svr_controller.rb
 │   │   │   └── types_de_champ_controller.rb
 │   │   ├── api
@@ -1362,6 +1349,7 @@
 │   │   │   ├── pro_connect_session_concern.rb
 │   │   │   ├── procedure_context_concern.rb
 │   │   │   ├── requires_enrolled_super_admin_otp.rb
+│   │   │   ├── requires_fresh_super_admin_otp.rb
 │   │   │   ├── simpliscore_concern.rb
 │   │   │   └── turbo_champs_concern.rb
 │   │   ├── contact_controller.rb
@@ -1499,6 +1487,7 @@
 │   │   ├── geopoint_field.rb
 │   │   ├── id_field.rb
 │   │   ├── mail_template_field.rb
+│   │   ├── otp_attempt_field.rb
 │   │   ├── procedure_link_field.rb
 │   │   ├── procedure_state_field.rb
 │   │   └── types_de_champ_collection_field.rb
@@ -1583,14 +1572,12 @@
 │   │       │   │   ├── carte_champ_descriptor_type.rb
 │   │       │   │   ├── checkbox_champ_descriptor_type.rb
 │   │       │   │   ├── civilite_champ_descriptor_type.rb
-│   │       │   │   ├── cnaf_champ_descriptor_type.rb
 │   │       │   │   ├── cojo_champ_descriptor_type.rb
 │   │       │   │   ├── commune_champ_descriptor_type.rb
 │   │       │   │   ├── date_champ_descriptor_type.rb
 │   │       │   │   ├── datetime_champ_descriptor_type.rb
 │   │       │   │   ├── decimal_number__champ_descriptor_type.rb
 │   │       │   │   ├── departement_champ_descriptor_type.rb
-│   │       │   │   ├── dgfip_champ_descriptor_type.rb
 │   │       │   │   ├── dossier_link_champ_descriptor_type.rb
 │   │       │   │   ├── drop_down_list_champ_descriptor_type.rb
 │   │       │   │   ├── email_champ_descriptor_type.rb
@@ -1602,13 +1589,11 @@
 │   │       │   │   ├── iban_champ_descriptor_type.rb
 │   │       │   │   ├── integer_number_champ_descriptor_type.rb
 │   │       │   │   ├── linked_drop_down_list_champ_descriptor_type.rb
-│   │       │   │   ├── mesri_champ_descriptor_type.rb
 │   │       │   │   ├── multiple_drop_down_list_champ_descriptor_type.rb
 │   │       │   │   ├── number_champ_descriptor_type.rb
 │   │       │   │   ├── pays_champ_descriptor_type.rb
 │   │       │   │   ├── phone_champ_descriptor_type.rb
 │   │       │   │   ├── piece_justificative_champ_descriptor_type.rb
-│   │       │   │   ├── pole_emploi_champ_descriptor_type.rb
 │   │       │   │   ├── quotient_familial_champ_descriptor_type.rb
 │   │       │   │   ├── referentiel_champ_descriptor_type.rb
 │   │       │   │   ├── region_champ_descriptor_type.rb
@@ -2042,15 +2027,7 @@
 │   │   ├── api_ign
 │   │   │   └── api.rb
 │   │   ├── api_particulier
-│   │   │   ├── api.rb
-│   │   │   ├── cnaf_adapter.rb
-│   │   │   ├── dgfip_adapter.rb
-│   │   │   ├── error.rb
-│   │   │   ├── mesri_adapter.rb
-│   │   │   ├── pole_emploi_adapter.rb
-│   │   │   ├── quotient_familial.rb
-│   │   │   └── services
-│   │   │       └── sources_service.rb
+│   │   │   └── quotient_familial.rb
 │   │   ├── api_tchap
 │   │   │   ├── api.rb
 │   │   │   └── hs_adapter.rb
@@ -2154,14 +2131,12 @@
 │   │   │   ├── carte_champ.rb
 │   │   │   ├── checkbox_champ.rb
 │   │   │   ├── civilite_champ.rb
-│   │   │   ├── cnaf_champ.rb
 │   │   │   ├── cojo_champ.rb
 │   │   │   ├── commune_champ.rb
 │   │   │   ├── date_champ.rb
 │   │   │   ├── datetime_champ.rb
 │   │   │   ├── decimal_number_champ.rb
 │   │   │   ├── departement_champ.rb
-│   │   │   ├── dgfip_champ.rb
 │   │   │   ├── dossier_link_champ.rb
 │   │   │   ├── drop_down_list_champ.rb
 │   │   │   ├── email_champ.rb
@@ -2173,13 +2148,11 @@
 │   │   │   ├── iban_champ.rb
 │   │   │   ├── integer_number_champ.rb
 │   │   │   ├── linked_drop_down_list_champ.rb
-│   │   │   ├── mesri_champ.rb
 │   │   │   ├── multiple_drop_down_list_champ.rb
 │   │   │   ├── number_champ.rb
 │   │   │   ├── pays_champ.rb
 │   │   │   ├── phone_champ.rb
 │   │   │   ├── piece_justificative_champ.rb
-│   │   │   ├── pole_emploi_champ.rb
 │   │   │   ├── quotient_familial_champ.rb
 │   │   │   ├── referentiel_champ.rb
 │   │   │   ├── region_champ.rb
@@ -2385,14 +2358,12 @@
 │   │   │   ├── carte_type_de_champ.rb
 │   │   │   ├── checkbox_type_de_champ.rb
 │   │   │   ├── civilite_type_de_champ.rb
-│   │   │   ├── cnaf_type_de_champ.rb
 │   │   │   ├── cojo_type_de_champ.rb
 │   │   │   ├── commune_type_de_champ.rb
 │   │   │   ├── date_type_de_champ.rb
 │   │   │   ├── datetime_type_de_champ.rb
 │   │   │   ├── decimal_number_type_de_champ.rb
 │   │   │   ├── departement_type_de_champ.rb
-│   │   │   ├── dgfip_type_de_champ.rb
 │   │   │   ├── dossier_link_type_de_champ.rb
 │   │   │   ├── drop_down_list_type_de_champ.rb
 │   │   │   ├── email_type_de_champ.rb
@@ -2404,13 +2375,11 @@
 │   │   │   ├── iban_type_de_champ.rb
 │   │   │   ├── integer_number_type_de_champ.rb
 │   │   │   ├── linked_drop_down_list_type_de_champ.rb
-│   │   │   ├── mesri_type_de_champ.rb
 │   │   │   ├── multiple_drop_down_list_type_de_champ.rb
 │   │   │   ├── number_type_de_champ.rb
 │   │   │   ├── pays_type_de_champ.rb
 │   │   │   ├── phone_type_de_champ.rb
 │   │   │   ├── piece_justificative_type_de_champ.rb
-│   │   │   ├── pole_emploi_type_de_champ.rb
 │   │   │   ├── prefill_*.rb  (13 files)
 │   │   │   ├── quotient_familial_type_de_champ.rb
 │   │   │   ├── referentiel_type_de_champ.rb
@@ -2436,15 +2405,11 @@
 │   │   ├── accreditation-cojo.json
 │   │   ├── adresse-ban.json
 │   │   ├── association.json
-│   │   ├── avis-imposition.json
-│   │   ├── composition-familiale.json
 │   │   ├── etablissement-annuaire-education.json
-│   │   ├── etudiants.json
 │   │   ├── geojson.json
 │   │   ├── quotient-familial.json
 │   │   ├── rnf.json
-│   │   ├── service-public.json
-│   │   └── situation-pole-emploi.json
+│   │   └── service-public.json
 │   ├── serializers
 │   │   ├── avis_serializer.rb
 │   │   ├── champ_serializer.rb
@@ -2872,8 +2837,6 @@
 │       │   │   ├── edit.html.haml
 │       │   │   ├── index.html.haml
 │       │   │   └── new.html.haml
-│       │   ├── sources_particulier
-│       │   │   └── show.html.haml
 │       │   ├── sva_svr
 │       │   │   └── edit.html.haml
 │       │   └── types_de_champ
@@ -3012,6 +2975,8 @@
 │       │   │   └── _show.html.erb
 │       │   ├── mail_template_field
 │       │   │   └── _show.html.erb
+│       │   ├── otp_attempt_field
+│       │   │   └── _form.html.erb
 │       │   ├── procedure_link_field
 │       │   │   ├── _index.html.erb
 │       │   │   └── _show.html.erb
@@ -3345,21 +3310,9 @@
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── carte
 │       │   │   │   └── _show.html.haml
-│       │   │   ├── cnaf
-│       │   │   │   ├── _adresse.html.haml
-│       │   │   │   ├── _personnes.html.haml
-│       │   │   │   ├── _quotient_familial.html.haml
-│       │   │   │   └── _show.html.haml
 │       │   │   ├── cojo
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── communes
-│       │   │   │   └── _show.html.haml
-│       │   │   ├── dgfip
-│       │   │   │   ├── _agregats_fiscaux.html.haml
-│       │   │   │   ├── _complements.html.haml
-│       │   │   │   ├── _declarant.html.haml
-│       │   │   │   ├── _echeance_avis.html.haml
-│       │   │   │   ├── _foyer_fiscal.html.haml
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── dossier_link
 │       │   │   │   └── _show.html.haml
@@ -3369,22 +3322,9 @@
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── iban
 │       │   │   │   └── _show.html.haml
-│       │   │   ├── mesri
-│       │   │   │   ├── _admissions.html.haml
-│       │   │   │   ├── _etablissements.html.haml
-│       │   │   │   ├── _identifiant.html.haml
-│       │   │   │   ├── _identite.html.haml
-│       │   │   │   ├── _inscriptions.html.haml
-│       │   │   │   └── _show.html.haml
 │       │   │   ├── multiple_drop_down_list
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── piece_justificative
-│       │   │   │   └── _show.html.haml
-│       │   │   ├── pole_emploi
-│       │   │   │   ├── _adresse.html.haml
-│       │   │   │   ├── _contact.html.haml
-│       │   │   │   ├── _identite.html.haml
-│       │   │   │   ├── _inscription.html.haml
 │       │   │   │   └── _show.html.haml
 │       │   │   ├── regions
 │       │   │   │   └── _show.html.haml
@@ -4837,6 +4777,7 @@
 │   │   │   │   │   └── default.html.haml
 │   │   │   │   ├── external_champ_component_preview.rb
 │   │   │   │   ├── fake_etablissement_concern.rb
+│   │   │   │   ├── geo_areas_component_preview.rb
 │   │   │   │   ├── identite_entreprise_component_preview.rb
 │   │   │   │   ├── identite_entreprise_for_usager_component_preview.rb
 │   │   │   │   ├── message_component_preview.rb
@@ -4929,7 +4870,6 @@
 │   │   │   ├── referentiels_controller_spec.rb
 │   │   │   ├── routing_rules_controller_spec.rb
 │   │   │   ├── services_controller_spec.rb
-│   │   │   ├── sources_particulier_controller_spec.rb
 │   │   │   └── types_de_champ_controller_spec.rb
 │   │   ├── api
 │   │   │   ├── public
@@ -5119,20 +5059,6 @@
 │   │   │   ├── api_geo_departements.yml
 │   │   │   ├── api_geo_epcis.yml
 │   │   │   ├── api_geo_regions.yml
-│   │   │   ├── api_particulier
-│   │   │   │   ├── success
-│   │   │   │   │   ├── avis_imposition.yml
-│   │   │   │   │   ├── avis_imposition_invalid.yml
-│   │   │   │   │   ├── composition_familiale.yml
-│   │   │   │   │   ├── composition_familiale_invalid.yml
-│   │   │   │   │   ├── etudiants.yml
-│   │   │   │   │   ├── etudiants_invalid.yml
-│   │   │   │   │   ├── introspect.yml
-│   │   │   │   │   ├── introspect_empty_scopes.yml
-│   │   │   │   │   ├── situation_pole_emploi.yml
-│   │   │   │   │   └── situation_pole_emploi_invalid.yml
-│   │   │   │   └── unauthorized
-│   │   │   │       └── introspect.yml
 │   │   │   ├── archive
 │   │   │   │   ├── new_file_to_get_200.yml
 │   │   │   │   ├── new_file_to_get_400_html.yml
@@ -5210,11 +5136,6 @@
 │   │   │   │   ├── ping.json
 │   │   │   │   ├── privileges.json
 │   │   │   │   └── tva.json
-│   │   │   ├── api_particulier
-│   │   │   │   ├── avis_imposition.json
-│   │   │   │   ├── composition_familiale.json
-│   │   │   │   ├── etudiants.json
-│   │   │   │   └── situation_pole_emploi.json
 │   │   │   ├── api_recherche_entreprises
 │   │   │   │   ├── col_ter_20006541500016.json
 │   │   │   │   └── dinum_13002526500013.json
@@ -5236,6 +5157,7 @@
 │   │   │   ├── dossierPDF.pdf
 │   │   │   ├── file.pdf
 │   │   │   ├── french-flag.gif
+│   │   │   ├── groupe-import-overwrite-two-groups.csv
 │   │   │   ├── groupe-instructeur-emails-invalides.csv
 │   │   │   ├── groupe-instructeur.csv
 │   │   │   ├── groupe_avec_caracteres_speciaux.csv
@@ -5414,14 +5336,7 @@
 │   │   │   ├── service_adapter_spec.rb
 │   │   │   └── tva_adapter_spec.rb
 │   │   ├── api_particulier
-│   │   │   ├── api_spec.rb
-│   │   │   ├── cnaf_adapter_spec.rb
-│   │   │   ├── dgfip_adapter_spec.rb
-│   │   │   ├── mesri_adapter_spec.rb
-│   │   │   ├── pole_emploi_adapter_spec.rb
-│   │   │   ├── quotient_familial_spec.rb
-│   │   │   └── services
-│   │   │       └── sources_service_spec.rb
+│   │   │   └── quotient_familial_spec.rb
 │   │   ├── api_tchap
 │   │   │   └── hs_adapter_spec.rb
 │   │   ├── asn1
@@ -5519,14 +5434,12 @@
 │   │   │   ├── annuaire_education_champ_spec.rb
 │   │   │   ├── carte_champ_spec.rb
 │   │   │   ├── checkbox_champ_spec.rb
-│   │   │   ├── cnaf_champ_spec.rb
 │   │   │   ├── cojo_champ_spec.rb
 │   │   │   ├── commune_champ_spec.rb
 │   │   │   ├── date_champ_spec.rb
 │   │   │   ├── datetime_champ_spec.rb
 │   │   │   ├── decimal_number_champ_spec.rb
 │   │   │   ├── departement_champ_spec.rb
-│   │   │   ├── dgfip_champ_spec.rb
 │   │   │   ├── dossier_link_champ_spec.rb
 │   │   │   ├── drop_down_list_champ_spec.rb
 │   │   │   ├── email_champ_spec.rb
@@ -5540,7 +5453,6 @@
 │   │   │   ├── pays_champ_spec.rb
 │   │   │   ├── phone_champ_spec.rb
 │   │   │   ├── piece_justificative_champ_spec.rb
-│   │   │   ├── pole_emploi_champ_spec.rb
 │   │   │   ├── quotient_familial_champ_spec.rb
 │   │   │   ├── referentiel_champ_cast_displayable_spec.rb
 │   │   │   ├── referentiel_champ_cast_value_spec.rb
@@ -5783,6 +5695,7 @@
 │   │   ├── download_helpers.rb
 │   │   ├── factory_bot.rb
 │   │   ├── mailer.rb
+│   │   ├── otp_helpers.rb
 │   │   ├── public_api_matchers.rb
 │   │   ├── shared_examples_for_boolean_champs.rb
 │   │   ├── shared_examples_for_prefilled_dossier.rb
@@ -5820,8 +5733,6 @@
 │   │   │   ├── simpliscore_spec.rb
 │   │   │   ├── sticky_procedure_title_spec.rb
 │   │   │   └── types_de_champ_spec.rb
-│   │   ├── api_particulier
-│   │   │   └── api_particulier_spec.rb
 │   │   ├── errors_spec.rb
 │   │   ├── experts
 │   │   │   └── expert_spec.rb
@@ -5854,6 +5765,7 @@
 │   │       ├── address_spec.rb
 │   │       ├── brouillon_spec.rb
 │   │       ├── change_email_spec.rb
+│   │       ├── date_prefill_france_connect_spec.rb
 │   │       ├── dossier_creation_spec.rb
 │   │       ├── dossier_details_spec.rb
 │   │       ├── dossier_ineligibilite_spec.rb
@@ -6086,4 +5998,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-980 directories, 5424 files
+966 directories, 5350 files
