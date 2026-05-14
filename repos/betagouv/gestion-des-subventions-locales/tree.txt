@@ -86,7 +86,8 @@
 │   │       │   ├── doubleDotation.js
 │   │       │   └── formUtils.js
 │   │       ├── gsl.js
-│   │       └── matomo.js
+│   │       ├── matomo.js
+│   │       └── sticky_table_headers.js
 │   ├── table_columns.py
 │   ├── tasks.py
 │   ├── templates
@@ -169,6 +170,7 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── ds_import_dossier.py
 │   │       ├── ds_save_demarche.py
 │   │       ├── ds_save_dossier.py
 │   │       ├── ds_test_upload_attachment.py
@@ -249,6 +251,7 @@
 │   │   ├── 0055_fieldmapping_is_active_deactivated_at.py
 │   │   ├── 0055_remove_dossier_demande_autre_numero_dossier_and_more.py
 │   │   ├── 0056_merge_20260427_1223.py
+│   │   ├── 0057_pg_trgm_search.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -260,9 +263,12 @@
 │   ├── templates
 │   │   ├── admin
 │   │   │   └── gsl_demarches_simplifiees
-│   │   │       └── demarche
+│   │   │       ├── demarche
+│   │   │       │   ├── change_list.html
+│   │   │       │   └── refresh_dossiers_depot.html
+│   │   │       └── dossier
 │   │   │           ├── change_list.html
-│   │   │           └── refresh_dossiers_depot.html
+│   │   │           └── import_dossier.html
 │   │   └── gsl_demarches_simplifiees
 │   │       ├── demarche_list.html
 │   │       ├── demarche_mapping.html
@@ -373,7 +379,12 @@
 │   │   │   │   ├── change_document.html
 │   │   │   │   ├── choose_generated_document_type.html
 │   │   │   │   ├── multiple
-│   │   │   │   │   ├── choose_generated_document_type.html
+│   │   │   │   │   ├── modal_form_step_body.html
+│   │   │   │   │   ├── modal_launch_error_body.html
+│   │   │   │   │   ├── modal_loading_body.html
+│   │   │   │   │   ├── modal_step2_body.html
+│   │   │   │   │   ├── modal_step_base.html
+│   │   │   │   │   ├── modal_success_body.html
 │   │   │   │   │   └── select_modele.html
 │   │   │   │   └── select_modele.html
 │   │   │   ├── modal
@@ -614,6 +625,7 @@
 │   │       ├── _filter_date_range.html
 │   │       ├── _filter_montant_demande.html
 │   │       ├── _filter_multiselect.html
+│   │       ├── _filter_search.html
 │   │       ├── _filter_select.html
 │   │       ├── _filter_territoire.html
 │   │       ├── _notes_detail.html
@@ -711,7 +723,6 @@
 │   │   └── js
 │   │       ├── controllers
 │   │       │   ├── bindAmountTields.js
-│   │       │   ├── bulkStatusChange.js
 │   │       │   └── dotationDropdown.js
 │   │       ├── handleInteractionInSimulationProjet.js
 │   │       ├── handleInteractionInSimulationProjetAnnotations.js
@@ -863,4 +874,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-152 directories, 713 files
+153 directories, 723 files
