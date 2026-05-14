@@ -395,18 +395,20 @@
 │   │   ├── schema-bdd-signalement-autres.png
 │   │   ├── schema-bdd-user.png
 │   │   └── schema-bdd.svg
-│   └── incident-response
-│       ├── README.md
-│       ├── procedure-database-deletion.md
-│       ├── procedure-dns-compromission.md
-│       ├── template-postmortem.md
-│       └── template-procedure.md
+│   ├── incident-response
+│   │   ├── README.md
+│   │   ├── procedure-database-deletion.md
+│   │   ├── procedure-dns-compromission.md
+│   │   ├── template-postmortem.md
+│   │   └── template-procedure.md
+│   └── postmortems
+│       └── postmortem-2026-05-signature-key.md
 ├── eslint.vanilla.config.mjs
 ├── eslint.vue.config.mjs
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (97 files)
+│   └── Version*.php  (98 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -1107,17 +1109,13 @@
 │   │   └── ZoneType.php
 │   ├── Kernel.php
 │   ├── Manager
-│   │   ├── AbstractManager.php
 │   │   ├── AffectationManager.php
-│   │   ├── CommuneManager.php
 │   │   ├── DesordreCritereManager.php
 │   │   ├── FailedEmailManager.php
 │   │   ├── FileManager.php
 │   │   ├── HistoryEntryManager.php
 │   │   ├── InterventionManager.php
 │   │   ├── JobEventManager.php
-│   │   ├── Manager.php
-│   │   ├── ManagerInterface.php
 │   │   ├── PartnerManager.php
 │   │   ├── PopNotificationManager.php
 │   │   ├── SignalementDraftManager.php
@@ -1125,7 +1123,6 @@
 │   │   ├── SignalementUsagerManager.php
 │   │   ├── SuiviManager.php
 │   │   ├── TagManager.php
-│   │   ├── TerritoryManager.php
 │   │   ├── UserManager.php
 │   │   └── UserSignalementSubscriptionManager.php
 │   ├── Messenger
@@ -1171,7 +1168,12 @@
 │   │   ├── BailleurRepository.php
 │   │   ├── BailleurTerritoryRepository.php
 │   │   ├── Behaviour
+│   │   │   ├── AffectationUpdater.php
+│   │   │   ├── ApiUserTokenCleaner.php
 │   │   │   ├── EntityCleanerRepositoryInterface.php
+│   │   │   ├── FailedEmailCleaner.php
+│   │   │   ├── FileDeleter.php
+│   │   │   ├── FileUpdater.php
 │   │   │   └── MessengerFailedCleaner.php
 │   │   ├── ClubEventRepository.php
 │   │   ├── CommuneRepository.php
@@ -1208,7 +1210,6 @@
 │   │   │   │   └── UserQueryService.php
 │   │   │   ├── SignalementList
 │   │   │   │   ├── ExportIterableQuery.php
-│   │   │   │   ├── ListPaginatorQuery.php
 │   │   │   │   ├── MapGeoDataQuery.php
 │   │   │   │   └── QueryBuilderFactory.php
 │   │   │   └── Statistics
@@ -1460,6 +1461,7 @@
 │   │   │   └── SearchZone.php
 │   │   ├── Mailer
 │   │   │   ├── AuthCodeMailer.php
+│   │   │   ├── ContextDateTimeNormalizer.php
 │   │   │   ├── Mail
 │   │   │   │   ├── AbstractNotificationMailer.php
 │   │   │   │   ├── Account
@@ -1557,6 +1559,8 @@
 │   │   │   ├── FileScanner.php
 │   │   │   ├── PartnerAuthorizedResolver.php
 │   │   │   └── TwoFactorCondition.php
+│   │   ├── ServiceSecours
+│   │   │   └── QrCodeGenerator.php
 │   │   ├── Signalement
 │   │   │   ├── AutoAssigner.php
 │   │   │   ├── CriticiteCalculator.php
@@ -1582,9 +1586,9 @@
 │   │   │   │   ├── ServiceSecoursPdfGenerator.php
 │   │   │   │   ├── SignalementExportFiltersDisplay.php
 │   │   │   │   ├── SignalementExportHeader.php
-│   │   │   │   ├── SignalementExportLoader.php
 │   │   │   │   ├── SignalementExportPdfGenerator.php
-│   │   │   │   └── SignalementExportSelectableColumns.php
+│   │   │   │   ├── SignalementExportSelectableColumns.php
+│   │   │   │   └── SignalementExporter.php
 │   │   │   ├── InputValue
 │   │   │   │   └── SituationFoyerProcessor.php
 │   │   │   ├── PhotoHelper.php
@@ -1678,6 +1682,7 @@
 │   │   ├── DictionaryProvider.php
 │   │   ├── Enum
 │   │   │   └── ExtensionAdresse.php
+│   │   ├── ExportFormat.php
 │   │   ├── FormHelper.php
 │   │   ├── HtmlCleaner.php
 │   │   ├── Json.php
@@ -1829,7 +1834,8 @@
 │   │   │   ├── _modal_config_service_secours_delete.html.twig
 │   │   │   ├── _title-and-table-list-results.html.twig
 │   │   │   ├── edit.html.twig
-│   │   │   └── index.html.twig
+│   │   │   ├── index.html.twig
+│   │   │   └── qr-code.html.twig
 │   │   ├── config_club_event
 │   │   │   ├── add.html.twig
 │   │   │   ├── edit.html.twig
@@ -2344,6 +2350,8 @@
 │   │   │   ├── AffectationRepositoryTest.php
 │   │   │   ├── AutoAffectationRuleRepositoryTest.php
 │   │   │   ├── BailleurRepositoryTest.php
+│   │   │   ├── Behaviour
+│   │   │   │   └── AffectationUpdaterTest.php
 │   │   │   ├── CommuneRepositoryTest.php
 │   │   │   ├── DesordreCritereRepositoryTest.php
 │   │   │   ├── EpciRepositoryTest.php
@@ -2626,6 +2634,7 @@
 │   │   │   ├── Intervention
 │   │   │   │   └── InterventionDescriptionGeneratorTest.php
 │   │   │   ├── Mailer
+│   │   │   │   ├── ContextDateTimeNormalizerTest.php
 │   │   │   │   ├── Error
 │   │   │   │   │   └── ErrorSignalementMailerTest.php
 │   │   │   │   └── NotificationMailerRegistryTest.php
@@ -2637,8 +2646,8 @@
 │   │   │   │   ├── DesordreTraitement
 │   │   │   │   │   └── DesordreTraitementProcessorTest.php
 │   │   │   │   ├── Export
-│   │   │   │   │   ├── SignalementExportLoaderTest.php
-│   │   │   │   │   └── SignalementExportPdfTest.php
+│   │   │   │   │   ├── SignalementExportPdfTest.php
+│   │   │   │   │   └── SignalementExporterTest.php
 │   │   │   │   ├── Qualification
 │   │   │   │   │   └── SignalementQualificationUpdaterTest.php
 │   │   │   │   ├── SignalementDraftHelperTest.php
@@ -2704,6 +2713,10 @@
 │   │   ├── sample.jpg
 │   │   ├── sample.pdf
 │   │   └── sample.png
+│   ├── lighthouse
+│   │   ├── auth.js
+│   │   ├── lighthouserc.auth.json
+│   │   └── lighthouserc.json
 │   └── phpstan-bootstrap.php
 ├── tmp
 │   └── .gitgnore
@@ -2810,4 +2823,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-467 directories, 2458 files
+471 directories, 2468 files
