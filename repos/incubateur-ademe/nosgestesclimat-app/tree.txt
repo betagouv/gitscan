@@ -363,9 +363,12 @@
 │   │   │   │       └── users.validator.ts
 │   │   │   ├── index.ts
 │   │   │   ├── jobs
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── sync-brevo-contacts.spec.ts
 │   │   │   │   ├── compute-poll-stats.ts
 │   │   │   │   ├── recover-matomo-stats.ts
-│   │   │   │   └── recover-newsletter-stats.ts
+│   │   │   │   ├── recover-newsletter-stats.ts
+│   │   │   │   └── sync-brevo-contacts.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── middlewares
 │   │   │   │   ├── __tests__
@@ -1133,12 +1136,21 @@
 │       │   │   │   └── index.tsx
 │       │   │   ├── Link.tsx
 │       │   │   ├── actions
-│       │   │   │   ├── ActionDetail.tsx
-│       │   │   │   ├── HowToAct.tsx
-│       │   │   │   └── howToAct
-│       │   │   │       ├── RecommendedActions.tsx
-│       │   │   │       └── recommendedActions
-│       │   │   │           └── RecommendedAction.tsx
+│       │   │   │   ├── ActionCard.tsx
+│       │   │   │   ├── ActionsCarousel
+│       │   │   │   │   ├── ActionsCarousel.css
+│       │   │   │   │   ├── ActionsCarousel.tsx
+│       │   │   │   │   └── ActionsCarouselClient.tsx
+│       │   │   │   ├── HighestImpactActionsSection.tsx
+│       │   │   │   ├── ThemeBadge.tsx
+│       │   │   │   ├── ThemeSection.tsx
+│       │   │   │   ├── howToAct
+│       │   │   │   │   ├── HowToAct.tsx
+│       │   │   │   │   ├── RecommendedActions.tsx
+│       │   │   │   │   └── recommendedActions
+│       │   │   │   │       └── RecommendedAction.tsx
+│       │   │   │   └── pages
+│       │   │   │       └── ActionsPage.tsx
 │       │   │   ├── charts
 │       │   │   │   ├── BilanChart.tsx
 │       │   │   │   ├── HorizontalBarChartItem.tsx
@@ -1379,6 +1391,7 @@
 │       │   │   │   ├── TendencyIndicator.tsx
 │       │   │   │   ├── actions
 │       │   │   │   │   ├── ActionAutoSave.tsx
+│       │   │   │   │   ├── ActionDetail.tsx
 │       │   │   │   │   ├── ActionsContent.tsx
 │       │   │   │   │   ├── ActionsTutorial.tsx
 │       │   │   │   │   └── actionsContent
@@ -2194,12 +2207,8 @@
 │       │   │   ├── actions
 │       │   │   │   ├── data
 │       │   │   │   │   ├── actions
-│       │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   └── meat-reduction-fr.ts
-│       │   │   │   │   ├── add-action.sh
-│       │   │   │   │   ├── add-theme.sh
+│       │   │   │   │   │   └── index.ts
 │       │   │   │   │   └── themes
-│       │   │   │   │       ├── food-fr.ts
 │       │   │   │   │       └── index.ts
 │       │   │   │   └── types
 │       │   │   │       ├── action-media.ts
@@ -2214,4 +2223,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-554 directories, 1707 files
+557 directories, 1713 files
