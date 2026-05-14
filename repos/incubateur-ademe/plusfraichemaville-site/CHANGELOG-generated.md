@@ -1,25 +1,28 @@
-## Changelog : plusfraichemaville-site (30 derniers jours, au 20 avril 2026)
+## Changelog : plusfraichemaville-site (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en repensant le parcours de création de projet et en ajoutant de nouvelles fonctionnalités de suivi des données. Des optimisations techniques ont également été apportées pour améliorer la performance et la sécurité de la plateforme.
+Ce mois-ci, le site plusfraichemaville-site a bénéficié d'améliorations significatives, notamment sur l'onglet "Financement" avec l'ajout d'incitations pour les espaces projets et une meilleure gestion des redirections. Des corrections ont été apportées pour l'affichage des données Climadiag, notamment pour les collectivités d'outre-mer, et la page d'accueil a été refactorisée. Des améliorations de l'expérience utilisateur ont également été apportées, comme la redirection vers la page de connexion lorsque l'accès à certaines fonctionnalités est restreint.
 
 ### Évolutions fonctionnelles
-- **Création de projet :** Refonte complète du flux de création de projet avec un formulaire étape par étape [#484](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/484), incluant un bouton d'annulation [#2d54ec06](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/2d54ec06) et une gestion améliorée des onglets [#65d6e48a](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/65d6e48a). Un avertissement est affiché si l'utilisateur quitte le formulaire en cours de création [#05829414](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/05829414).
-- **Page d'accueil :** Nouvelle page d'accueil [#487](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/487).
-- **Suivi des données :** Ajout du suivi des vues de projets dans l'annuaire [#39fb221a](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/39fb221a) et des informations sur les aides cliquées pour chaque projet utilisateur [#7bbba9ab](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/7bbba9ab).
-- **Fiche diagnostic :** Enregistrement des fiches diagnostics vues par chaque utilisateur [#f339fd92](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/f339fd92).
-- **Redirection :** Correction d'une redirection vers la page de connexion lorsque l'utilisateur n'est pas connecté [#0e65d4aa](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/0e65d4aa) et suppression de la redirection après la création d'un projet si l'utilisateur n'en a pas [#fe17bdb6](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/fe17bdb6).
-- **Page "Mes projets" :** Amélioration de la responsivité de la page "Mes projets" [#485](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/485).
+- **Financement :** Ajout d'une incitation pour les espaces projets dans l'onglet "Financement" [#492](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/492).
+- **Financement :** Correction d'une redirection lors de la création d'un projet depuis l'onglet "Financement" [#491](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/491).
+- **Statut personnel :** Redirection vers la page de connexion pour les utilisateurs non authentifiés accédant à la page "Statut personnel" [#491](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/491).
+- **Informations utilisateur :** Correction d'une redirection vers les informations utilisateur pour les utilisateurs non connectés [#488](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/488).
+- **Page d'accueil :** Refonte de la page d'accueil avec une nouvelle structure [#487](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/487).
+- **Climadiag :** Amélioration de l'affichage des données Climadiag pour les collectivités d'outre-mer, en utilisant des métriques différentes [#815d2194](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/815d2194).
+- **Climadiag :** Correction du libellé affiché pour Climadiag [#494](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/494).
+- **Climadiag :** Filtrage des aides territoires qui ne sont pas "live" [#07694e82](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/07694e82).
+- **Création de projet :** Ajout d'un bouton d'annulation au formulaire de création de projet [#2d54ec06](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/2d54ec06).
 
 ### Évolutions techniques
-- **Sentry :** Migration vers une nouvelle configuration de Sentry pour une meilleure gestion des erreurs [#480](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/480) et correction de problèmes liés à la migration [#481](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/481).
-- **Sécurité :** Mise à jour des dépendances pour corriger des vulnérabilités de sécurité [#479](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/479).
-- **Outils :** Passage à pnpm pour la gestion des dépendances [#844e687a](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/844e687a).
-- **Tailwind CSS :** Mise à jour de Tailwind CSS et suppression de code Sass inutilisé [#fd078cd3](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/fd078cd3).
+- **Dépendances :** Mise à jour de la version de `pnpm` [#dc786a11](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/dc786a11).
+- **CI/CD :** Mise à jour de la version de l'action `actions/setup-node` à 6.4.0 [#594b062a](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/594b062a).
+- **Scripts :** Amélioration du script d'importation des données Climadiag [#69132b24](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/69132b24).
+- **Prettier :** Mise à jour de la version de Prettier pour le CI [#ca346ebf](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/ca346ebf).
+- **Refactoring :** Refactorisation de la page d'accueil [#af3e0a82](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/af3e0a82).
 
 ### Autres changements
-- Amélioration des logs pour les erreurs 404 dans Sentry [#a0e34341](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/a0e34341).
-- Correction de typos [#45568df8](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/45568df8).
-- Suppression de librairies inutilisées [#c7c8535e](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/c7c8535e).
-- Ajout de métriques KR2.1 [#483](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/483).
-- Correction pour éviter d'afficher des erreurs Cartagene incorrectes [#dc3c5506](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/dc3c5506).
+- Suppression de l'attribut `lien_aides_territoires` [#ebc67a07](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/ebc67a07).
+- Correction de l'utilisation du seuil Climadiag dans tout le code [#81b90e03](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/81b90e03).
+- Suppression de la mention "Climadiag non disponible en outre-mer" [#c495f44c](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/c495f44c).
+- Correction du linting et du formattage du code avec Prettier [#20dc064d](https://github.com/incubateur-ademe/plusfraichemaville-site/commit/20dc064d).

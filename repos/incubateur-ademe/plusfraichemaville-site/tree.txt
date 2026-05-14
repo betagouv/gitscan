@@ -274,6 +274,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260409191348_add_annuaire_kr_metrics_field
 │   │   │   └── migration.sql
+│   │   ├── 20260505124708_ajouts_nouveaux_champ_de_seuil_dans_table_climadiag
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── public
@@ -371,6 +373,7 @@
 │   │   │   ├── viewer-mode.svg
 │   │   │   └── wave.svg
 │   │   ├── espace-projet-incentive
+│   │   │   ├── apercu-module-financement.png
 │   │   │   ├── apercu-prestation-diag.jpg
 │   │   │   ├── apercu-resultat-tribu.jpg
 │   │   │   ├── arrow-down.svg
@@ -438,7 +441,6 @@
 │   │   │   ├── parcours-indicateurs-environnementaux.svg
 │   │   │   └── parcours-prestation.svg
 │   │   ├── fiches-solutions
-│   │   │   ├── aides-territoires.svg
 │   │   │   ├── entretien.svg
 │   │   │   ├── oups.svg
 │   │   │   └── picto-thermometre.svg
@@ -453,6 +455,7 @@
 │   │   │   ├── subvention.svg
 │   │   │   └── zone-geo.svg
 │   │   ├── homepage
+│   │   │   ├── home-hero.jpg
 │   │   │   ├── home-start-1.jpg
 │   │   │   ├── home-start-2.svg
 │   │   │   ├── rex
@@ -464,7 +467,15 @@
 │   │   │   ├── solution-bleue.jpg
 │   │   │   ├── solution-douce.jpg
 │   │   │   ├── solution-grise.jpg
-│   │   │   └── solution-verte.jpg
+│   │   │   ├── solution-verte.jpg
+│   │   │   └── solutions
+│   │   │       ├── arbres-vegetaux-cour-ecole.jpg
+│   │   │       ├── batiment-ecole-adaptation-renovation-batiments.jpg
+│   │   │       ├── comportements-collectifs.jpg
+│   │   │       ├── facade-vegetalisee.jpg
+│   │   │       ├── revetement-albedo-eleve.jpeg
+│   │   │       ├── stockage-eau-de-pluie.jpeg
+│   │   │       └── stockage-eau-pluie-ecole.jpeg
 │   │   ├── lcz
 │   │   │   └── logo-cerema.svg
 │   │   ├── linkedin.svg
@@ -555,7 +566,6 @@
 │   │   └── epci_commune_2026.csv
 │   ├── fill-epci-commune-tables.ts
 │   └── fill-user-siren-field.tsx
-├── sentry.client.config.ts
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
 ├── src
@@ -941,6 +951,7 @@
 │   │   │   │   ├── generic-save-button-unauthenticated.tsx
 │   │   │   │   ├── generic-save-button.tsx
 │   │   │   │   ├── generic-save-estimation-modal-authenticated-outside-projet.tsx
+│   │   │   │   ├── generic-save-financement-modal-authenticated-outside-projet.tsx
 │   │   │   │   ├── generic-save-modal-authenticated-inside-projet.tsx
 │   │   │   │   ├── generic-save-modal-authenticated-outside-projet.tsx
 │   │   │   │   ├── generic-save-modal-unauthenticated.tsx
@@ -1062,6 +1073,7 @@
 │   │   │   ├── FicheSolutionTabSynthese.tsx
 │   │   │   ├── fiche-solution-card-with-fetcher.tsx
 │   │   │   ├── fiche-solution-card.tsx
+│   │   │   ├── fiche-solution-financements-incentive.tsx
 │   │   │   ├── fiche-solution-materiaux-estimation-incentive.tsx
 │   │   │   ├── fiche-solution-side-menu.tsx
 │   │   │   ├── fiche-solution-small-card-container.tsx
@@ -1131,17 +1143,17 @@
 │   │   │   └── types.ts
 │   │   ├── homepage
 │   │   │   ├── homepage-data.tsx
-│   │   │   ├── homepage-hero-cta.tsx
 │   │   │   ├── homepage-hero-pictos.tsx
 │   │   │   ├── homepage-hero.tsx
 │   │   │   ├── homepage-inspirer-card.tsx
 │   │   │   ├── homepage-inspirer.tsx
 │   │   │   ├── homepage-odd.tsx
+│   │   │   ├── homepage-projet.tsx
 │   │   │   ├── homepage-start.tsx
+│   │   │   ├── homepage-stories-controllers.tsx
+│   │   │   ├── homepage-stories.tsx
 │   │   │   ├── homepage-story.tsx
-│   │   │   ├── homepage.tsx
-│   │   │   ├── presentation-services-link.tsx
-│   │   │   └── presentation-services.tsx
+│   │   │   └── homepage.tsx
 │   │   ├── layout
 │   │   │   ├── AppFooter.tsx
 │   │   │   ├── AppHeader.tsx
@@ -1504,4 +1516,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-376 directories, 1130 files
+378 directories, 1140 files
