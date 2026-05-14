@@ -283,6 +283,7 @@
 │   │   │   │   ├── StructureController.php
 │   │   │   │   ├── StructureStateController.php
 │   │   │   │   ├── StructureTagController.php
+│   │   │   │   ├── StructureUnsubscribeController.php
 │   │   │   │   ├── SupportController.php
 │   │   │   │   ├── TemoignageController.php
 │   │   │   │   ├── TermController.php
@@ -293,6 +294,7 @@
 │   │   │   │   ├── UserAlertMissionController.php
 │   │   │   │   ├── UserArchivedDatasController.php
 │   │   │   │   ├── UserController.php
+│   │   │   │   ├── UserUnsubscribeController.php
 │   │   │   │   ├── VocabularyController.php
 │   │   │   │   └── WebhookController.php
 │   │   │   ├── Auth
@@ -401,6 +403,7 @@
 │   │   ├── GeolocaliseProfilesByZip.php
 │   │   ├── GoogleApiDeleteMissionUrlFromIndex.php
 │   │   ├── GoogleApiSubmitMissionUrlToIndex.php
+│   │   ├── HandleStructureUnsubscribedMissions.php
 │   │   ├── MissionCloseOutdatedJob.php
 │   │   ├── MissionGetQPV.php
 │   │   ├── MissionSetSearchable.php
@@ -409,6 +412,8 @@
 │   │   ├── NotifyMissionUserWaitingList.php
 │   │   ├── NotifyResponsablesAfterClosingTemplateToMinorsJob.php
 │   │   ├── NotifyResponsablesMissionUserWaitingListCreated.php
+│   │   ├── NotifySlackStructureUnsubscribed.php
+│   │   ├── NotifyStructureMembersUnsubscribed.php
 │   │   ├── NotifyUserOfCompletedExport.php
 │   │   ├── NotifyVolonteerOfUnreadMessage.php
 │   │   ├── ParticipationDeclineWhenUserIsBanned.php
@@ -438,9 +443,8 @@
 │   │   ├── UsersSetHardBouncedAt.php
 │   │   └── ValidateParticipation.php
 │   ├── Listeners
-│   │   ├── NotificationSendingListener.php
-│   │   ├── StructureCancelAndTerminateMissions.php
-│   │   └── StructureDetachMembers.php
+│   │   ├── HandleStructureUnsubscribed.php
+│   │   └── NotificationSendingListener.php
 │   ├── Mail
 │   │   └── TestMail.php
 │   ├── Models
@@ -598,6 +602,7 @@
 │   │   ├── StructureSubmitted.php
 │   │   ├── StructureSwitchResponsable.php
 │   │   ├── StructureUnsubscribed.php
+│   │   ├── StructureUnsubscribedSupport.php
 │   │   ├── StructureValidated.php
 │   │   ├── StructureWaitingValidation.php
 │   │   ├── StructureWithoutMissionFirstReminder.php
@@ -611,6 +616,7 @@
 │   │   ├── UserBannedYoungerThan16.php
 │   │   ├── UserHasExportedDatas.php
 │   │   ├── UserHasImportedDatas.php
+│   │   ├── UserUnsubscribedSupport.php
 │   │   └── VolunteerHasUnreadMessage.php
 │   ├── Observers
 │   │   ├── ConversationObserver.php
@@ -959,11 +965,22 @@
 │   │   ├── 2026_03_24_000002_restore_indexes_on_old_state_new_state_in_activity_log_table.php
 │   │   ├── 2026_04_03_000001_add_created_at_conversation_id_index_to_messages_table.php
 │   │   ├── 2026_04_07_000001_add_ft_rsa_beneficiary_to_profiles_table.php
+│   │   ├── 2026_04_22_170143_add_unsubscribe_fields_to_structures_table.php
+│   │   ├── 2026_04_27_000001_add_unsubscribed_at_to_structures_table.php
 │   │   ├── 2026_04_28_000001_add_partial_index_to_activity_log_for_participation_validations.php
 │   │   ├── 2026_04_28_000002_add_created_at_index_to_participations_table.php
 │   │   ├── 2026_04_28_000003_add_subject_type_index_to_activity_log_table.php
 │   │   ├── 2026_05_06_000001_add_statistics_moderations_indexes.php
-│   │   └── 2026_05_06_000002_add_user_id_role_id_index_to_rolables_table.php
+│   │   ├── 2026_05_06_000002_add_user_id_role_id_index_to_rolables_table.php
+│   │   ├── 2026_05_06_113600_add_unsubscribe_fields_to_users_table.php
+│   │   ├── 2026_05_12_000001_replace_rolables_user_id_role_id_index.php
+│   │   ├── 2026_05_12_000003_add_covering_index_to_statistics_moderations_activity_log.php
+│   │   ├── 2026_05_13_000001_add_partial_index_for_statistics_moderations_rolables.php
+│   │   ├── 2026_05_13_000001_restore_removed_moderation_and_rolables_indexes.php
+│   │   ├── 2026_05_14_000001_add_subject_specific_indexes_for_statistics_moderations_activity_log.php
+│   │   ├── 2026_05_14_000002_add_subject_id_first_indexes_for_statistics_moderations_activity_log.php
+│   │   ├── 2026_05_14_000003_add_mission_direct_aggregation_index_for_statistics_moderations_activity_log.php
+│   │   └── 2026_05_14_000004_set_conservative_autovacuum_settings_for_activity_log.php
 │   ├── seeders
 │   │   ├── DatabaseSeeder.php
 │   │   └── RoleSeeder.php
@@ -1562,4 +1579,4 @@
     ├── TestCase.php
     └── Unit
         └── ExampleTest.php
-118 directories, 1595 files
+118 directories, 1612 files
