@@ -1,3 +1,28 @@
+2026-05-13T18:09:28+02:00 - e80ccad2 - BenoitSerrano : ✨ use roles value to prevent non-public user to access SP (#1158)
+2026-05-13T13:43:00+02:00 - 972880c6 - Raphaël Dubigny : Merge pull request #1161 from proconnect-gouv/add-default-roles-in-admin
+2026-05-12T18:21:27+02:00 - adf0ed59 - BenoitSerrano : 🚸 add default roles in admin
+2026-05-12T17:38:32+02:00 - 014c98fc - Raphaël Dubigny : Merge pull request #1160 from proconnect-gouv/update-email-validation-feature-flag
+2026-05-12T17:22:49+02:00 - d7371a2a - Raphaël Dubigny : 🚩 Update email validation feature flag usage
+2026-05-12T14:35:40+02:00 - 6cd05a45 - dependabot[bot] : chore(deps): bump mongoose from 9.2.4 to 9.6.1 in /back (#1099)
+2026-05-12T14:32:02+02:00 - f9795201 - Raphaël Dubigny : Merge pull request #1090 from proconnect-gouv/dependabot/pip/pcdbapi/cryptography-46.0.7
+2026-05-12T14:29:26+02:00 - 4c8765e6 - Raphaël Dubigny : Merge pull request #1159 from proconnect-gouv/douglasduteil/email-validator-replace-resolveMx-with-DNS-over-HTTPS-fetch
+2026-05-12T13:38:20+02:00 - 141acdca - Gaétan : Merge pull request #1157 from proconnect-gouv/debug-admin-border
+2026-05-12T12:09:22+02:00 - 08495940 - Douglas DUTEIL : ♻️ email-validator: replace resolveMx with DNS-over-HTTPS fetch
+2026-05-11T17:52:12+02:00 - a0426f5d - gdarquie : 🚨 Fix lint in admin app.ts for HAS_RED_BORDER
+2026-05-11T17:25:23+02:00 - 870e3ee9 - gdarquie : 🚚 Rename `isProduction` into `hasRedBorder`
+2026-05-11T16:14:51+02:00 - ac487180 - Raphaël Dubigny : Merge pull request #1142 from proconnect-gouv/improved-accessibility
+2026-05-11T15:43:53+02:00 - 4fc40d97 - rebeccadumazert : ♿️ Add a link to the accessibility declaration page
+2026-05-11T15:43:48+02:00 - edab259c - rebeccadumazert : ♿️ Includes the service provider's name in span in the h1 tag, removes the h2
+2026-05-11T15:39:17+02:00 - 8eaddb8a - Raphaël Dubigny : Merge pull request #1154 from proconnect-gouv/douglasduteil/core-fca-low-support-multiple-excludes-on-readyz
+2026-05-11T15:38:05+02:00 - fbcc03a1 - Raphaël Dubigny : Merge pull request #1122 from proconnect-gouv/add-exception-if-no-acr-matching-expected
+2026-05-11T14:14:02+02:00 - 518f811f - BenoitSerrano : 🐛 do no assign acr field if acrs not recognized
+2026-05-11T11:41:36+02:00 - 3990fb5a - gdarquie : 🎨 Admin red border is displayed only when IS_PROD is true
+2026-05-11T11:40:44+02:00 - 914640af - gdarquie : 🎨 Remove duplicated red border for prod admin
+2026-05-11T10:49:40+02:00 - 34b5d730 - dependabot[bot] : chore(deps): bump @proconnect-gouv/proconnect.api_entreprise in /back (#1128)
+2026-05-11T10:09:58+02:00 - b7f11942 - dependabot[bot] : chore(deps): bump ejs from 5.0.1 to 5.0.2 in /quality (#1127)
+2026-05-11T10:09:42+02:00 - f054ae2d - dependabot[bot] : chore(deps): bump axe-core from 4.11.2 to 4.11.4 in /quality (#1129)
+2026-05-11T10:09:32+02:00 - e9823eef - dependabot[bot] : chore(deps): bump fast-uri from 3.0.2 to 3.1.2 in /back (#1156)
+2026-05-11T10:09:22+02:00 - de68d5cb - dependabot[bot] : chore(deps): bump uvicorn from 0.44.0 to 0.45.0 in /pcdbapi (#1147)
 2026-05-07T16:58:47+02:00 - c402ce22 - dependabot[bot] : chore(deps): bump @nestjs/typeorm from 11.0.0 to 11.0.1 in /admin (#1134)
 2026-05-07T16:58:34+02:00 - a34ca442 - dependabot[bot] : chore(deps): bump axios from 1.15.0 to 1.15.2 in /back (#1155)
 2026-05-07T16:26:10+02:00 - 7043e2fc - dependabot[bot] : chore(deps): bump fastapi from 0.135.3 to 0.136.0 in /pcdbapi (#1150)
@@ -10,6 +35,10 @@
 2026-05-07T16:20:42+02:00 - 45912ea7 - dependabot[bot] : chore(deps): bump amqplib from 0.10.9 to 1.0.3 in /admin (#1133)
 2026-05-07T16:20:31+02:00 - a0f94e9c - dependabot[bot] : chore(deps): bump postcss from 8.5.8 to 8.5.12 in /quality (#1152)
 2026-05-07T16:20:14+02:00 - 0deb305f - dependabot[bot] : chore(deps): bump uuid from 13.0.0 to 14.0.0 in /admin (#1153)
+2026-05-07T14:50:46Z - d8502be9 - dependabot[bot] : chore(deps): bump cryptography from 46.0.6 to 46.0.7 in /pcdbapi
+2026-05-07T09:25:20+02:00 - 600c79d3 - Douglas DUTEIL : ✨ (core-fca-low): support multiple excludes on readyz
+2026-05-07T09:19:14+02:00 - aa48e077 - Douglas DUTEIL : 🔥 remove test tag
+2026-05-07T08:45:17+02:00 - bffd7ca5 - Douglas DUTEIL : Revert "🗑️ delete api health test (#1120)"
 2026-05-06T10:23:30+02:00 - 129efdff - Raphaël Dubigny : Merge pull request #1141 from proconnect-gouv/add-test-env-warning
 2026-04-29T08:21:42+02:00 - d99fbdc4 - dependabot[bot] : chore(deps-dev): bump @nestjs/testing from 11.1.18 to 11.1.19 in /admin (#1145)
 2026-04-27T21:09:23+02:00 - 33835cda - Arnaud Robin : Merge pull request #1144 from proconnect-gouv/douglasduteil/core-add-FEATURE-VALIDATE-EMAIL-flag
