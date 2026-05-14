@@ -174,7 +174,8 @@
 │   │   │   │                   │   │   │   │   ├── control
 │   │   │   │                   │   │   │   │   │   ├── ControlMethod.kt
 │   │   │   │                   │   │   │   │   │   ├── ControlResult.kt
-│   │   │   │                   │   │   │   │   │   └── ControlType.kt
+│   │   │   │                   │   │   │   │   │   ├── ControlType.kt
+│   │   │   │                   │   │   │   │   │   └── LocationType.kt
 │   │   │   │                   │   │   │   │   ├── crew
 │   │   │   │                   │   │   │   │   │   ├── AgentEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── AgentRoleEntity.kt
@@ -912,7 +913,11 @@
 │   │   │       │       ├── V1.2026.03.17.10.00__move_legacy_tables_to_archived_schema.sql
 │   │   │       │       ├── V1.2026.03.23.15.39__create_sati_table_and_correspondance.sql
 │   │   │       │       ├── V1.2026.03.23.15.42__alter_mission_action_fix_training_type.sql
+│   │   │       │       ├── V1.2026.03.30.10.00__rename_shouted_to_fish_auction.sql
+│   │   │       │       ├── V1.2026.03.31.10.00__add_location_type_column.sql
+│   │   │       │       ├── V1.2026.04.01.10.00__add_port_locode_column.sql
 │   │   │       │       ├── V1.2026.04.22.10.00__create_facade_and_fish_auction_tables.sql
+│   │   │       │       ├── V1.2026.04.27.10.00__add_fish_auction_id_column.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1163,6 +1168,7 @@
 │   │       │                   │   │       └── FormatGeoCoordsTests.kt
 │   │       │                   │   └── utils
 │   │       │                   │       ├── ComputeDurationUtilsTest.kt
+│   │       │                   │       ├── EntityCompletenessValidatorTest.kt
 │   │       │                   │       └── UUIDUtilsTest.kt
 │   │       │                   ├── infrastructure
 │   │       │                   │   ├── api
@@ -1691,8 +1697,8 @@
 │   │   │   │   │   │       │   │   ├── dialog-question.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-coordonates-input-dmd.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-date-range-picker.test.tsx.snap
-│   │   │   │   │   │       │   │   ├── formik-search-port.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-search-vessel.test.tsx.snap
+│   │   │   │   │   │       │   │   ├── formik-select-location-type.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-select-status-reason.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-select-vessel-size.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-styled-toogle.test.tsx.snap
@@ -1722,6 +1728,7 @@
 │   │   │   │   │   │       │   ├── formik-number-input.test.tsx
 │   │   │   │   │   │       │   ├── formik-search-port.test.tsx
 │   │   │   │   │   │       │   ├── formik-search-vessel.test.tsx
+│   │   │   │   │   │       │   ├── formik-select-location-type.test.tsx
 │   │   │   │   │   │       │   ├── formik-select-status-reason.test.tsx
 │   │   │   │   │   │       │   ├── formik-select-vessel-size.test.tsx
 │   │   │   │   │   │       │   ├── formik-styled-toogle.test.tsx
@@ -1753,7 +1760,7 @@
 │   │   │   │   │   │       ├── action-*.tsx  (5 files)
 │   │   │   │   │   │       ├── dialog-question.tsx
 │   │   │   │   │   │       ├── foreign-establishment.tsx
-│   │   │   │   │   │       ├── formik-*.tsx  (15 files)
+│   │   │   │   │   │       ├── formik-*.tsx  (17 files)
 │   │   │   │   │   │       ├── general-information-header.tsx
 │   │   │   │   │   │       ├── icon-*.tsx  (6 files)
 │   │   │   │   │   │       ├── mission-*.tsx  (12 files)
@@ -1791,6 +1798,8 @@
 │   │   │   │   │   │   │   ├── use-offline-mode.test.tsx
 │   │   │   │   │   │   │   ├── use-offline-since.test.tsx
 │   │   │   │   │   │   │   ├── use-online-manager.test.tsx
+│   │   │   │   │   │   │   ├── use-password.test.tsx
+│   │   │   │   │   │   │   ├── use-sector.test.tsx
 │   │   │   │   │   │   │   ├── use-vehicule.test.tsx
 │   │   │   │   │   │   │   └── use-vessel.test.tsx
 │   │   │   │   │   │   ├── use-abstract-formik-form.tsx
@@ -1826,10 +1835,14 @@
 │   │   │   │   │   │   └── use-vessel.tsx
 │   │   │   │   │   ├── schemas
 │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   └── conditionally-required-helper.test.ts
+│   │   │   │   │   │   │   ├── conditionally-required-helper.test.ts
+│   │   │   │   │   │   │   ├── location-fields-cleaner.test.ts
+│   │   │   │   │   │   │   └── location-schema.test.ts
 │   │   │   │   │   │   ├── conditionally-required-helper.ts
 │   │   │   │   │   │   ├── dates-schema.ts
-│   │   │   │   │   │   └── geocoords-schema.ts
+│   │   │   │   │   │   ├── geocoords-schema.ts
+│   │   │   │   │   │   ├── location-fields-cleaner.ts
+│   │   │   │   │   │   └── location-schema.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── use-create-action.test.tsx
@@ -1850,6 +1863,7 @@
 │   │   │   │   │   │   ├── use-delete-action.tsx
 │   │   │   │   │   │   ├── use-delete-mission.tsx
 │   │   │   │   │   │   ├── use-etablishments-service.tsx
+│   │   │   │   │   │   ├── use-fish-auction-service.tsx
 │   │   │   │   │   │   ├── use-mission-export.tsx
 │   │   │   │   │   │   ├── use-mission.tsx
 │   │   │   │   │   │   ├── use-missions.tsx
@@ -1866,11 +1880,13 @@
 │   │   │   │   │       ├── abstract-formik-hook.ts
 │   │   │   │   │       ├── action-type.ts
 │   │   │   │   │       ├── address-type.ts
+│   │   │   │   │       ├── address.ts
 │   │   │   │   │       ├── control-unit-types.ts
 │   │   │   │   │       ├── crew-type.ts
 │   │   │   │   │       ├── etablishment.ts
 │   │   │   │   │       ├── inquiry.ts
 │   │   │   │   │       ├── leisure-fishing-gear-type.ts
+│   │   │   │   │       ├── location-type.ts
 │   │   │   │   │       ├── mission-action-data.ts
 │   │   │   │   │       ├── mission-action.ts
 │   │   │   │   │       ├── mission-export-types.ts
@@ -1984,8 +2000,10 @@
 │   │   │   │   │   │   │   └── mission-action-item-vigimer.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   ├── mission-action-control-sector-form.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-env-themes.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-formik-coordonate-input-dmd.test.tsx
+│   │   │   │   │   │       │   ├── mission-action-location-picker.test.tsx
 │   │   │   │   │   │       │   └── mission-action-nav-control-warning.test.tsx
 │   │   │   │   │   │       ├── mission-action-anti-pollution-warning.tsx
 │   │   │   │   │   │       ├── mission-action-control-nautical-leisure-form.tsx
@@ -1996,6 +2014,7 @@
 │   │   │   │   │   │       ├── mission-action-formik-coordonate-input-dmd.tsx
 │   │   │   │   │   │       ├── mission-action-formik-toogle-unit-has-confirm.tsx
 │   │   │   │   │   │       ├── mission-action-incident-download.tsx
+│   │   │   │   │   │       ├── mission-action-location-picker.tsx
 │   │   │   │   │   │       └── mission-action-nav-control-warning.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── use-mission-action-anti-pollution.tsx
@@ -2364,4 +2383,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-476 directories, 1924 files
+476 directories, 1945 files
