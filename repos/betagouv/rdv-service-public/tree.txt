@@ -83,10 +83,8 @@
 │   │       │   └── inscription-desinscription-participantes.png
 │   │       ├── rdv_mairie
 │   │       │   ├── api.svg
-│   │       │   ├── billet-0-euros.png
 │   │       │   ├── calendrier.png
 │   │       │   ├── carotte.png
-│   │       │   ├── collaboration-bras-ampoules.png
 │   │       │   ├── ecosystem.svg
 │   │       │   ├── homepage_hero.svg
 │   │       │   ├── partenaire-62.jpg
@@ -96,7 +94,6 @@
 │   │       │   ├── partenaire-ministere-justice.svg
 │   │       │   ├── partenaire-msa.png
 │   │       │   ├── partenaire-wavignies.jpg
-│   │       │   ├── republique-francaise-splash.png
 │   │       │   ├── self-training.svg
 │   │       │   └── stats-hero.png
 │   │       ├── sign_in_with_microsoft.svg
@@ -873,7 +870,9 @@
 │   │   │   ├── range.rb
 │   │   │   └── rdv_collectif_for_agent.rb
 │   │   ├── duplicate_users_finder_service.rb
-│   │   ├── espace_operateur_anct.rb
+│   │   ├── espace_operateur_anct
+│   │   │   ├── account_creation_router.rb
+│   │   │   └── api_client.rb
 │   │   ├── export_zones_service.rb
 │   │   ├── france_connect_v2_open_id_client
 │   │   │   ├── auth.rb
@@ -912,7 +911,6 @@
 │   │   ├── participants_csv.rb
 │   │   ├── participation_exporter.rb
 │   │   ├── plage_ouverture_overlap.rb
-│   │   ├── pro_connect_onboarding_router.rb
 │   │   ├── pro_connect_open_id_client
 │   │   │   ├── auth.rb
 │   │   │   ├── callback.rb
@@ -2016,6 +2014,8 @@
 │   │   ├── 20260319000001_add_siret_to_operators.rb
 │   │   ├── 20260320000001_add_address_without_geocoding_to_lieux.rb
 │   │   ├── 20260325000001_add_support_link_to_operators.rb
+│   │   ├── 20260325164307_add_agent_accueil_to_agent_roles.rb
+│   │   ├── 20260326073135_set_agent_accueil_to_agents.rb
 │   │   └── 20260401000001_add_siret_to_territories.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -2365,7 +2365,6 @@
 │   │   │   ├── anybody_can_see_legal_pages_spec.rb
 │   │   │   └── anybody_can_see_stats_spec.rb
 │   │   ├── autodoc
-│   │   │   ├── creation_espace_spec.rb
 │   │   │   ├── integration_demarches_simplifiees
 │   │   │   │   ├── configuration_par_administrateur_spec.rb
 │   │   │   │   ├── connexion_par_administrateur_spec.rb
@@ -2373,8 +2372,11 @@
 │   │   │   ├── liens_vers_rdv_aide_num_spec.rb
 │   │   │   ├── managing_dead_ends_for_new_accounts_spec.rb
 │   │   │   ├── migration_depuis_rdv_aide_num_spec.rb
-│   │   │   ├── ouverture_espace_autonomie_spec.rb
-│   │   │   ├── ouverture_espace_doublon_spec.rb
+│   │   │   ├── ouverture_espace
+│   │   │   │   ├── avec_operateur_spec.rb
+│   │   │   │   ├── avec_validation_spec.rb
+│   │   │   │   ├── en_autonomie_spec.rb
+│   │   │   │   └── en_doublon_spec.rb
 │   │   │   ├── produit
 │   │   │   │   ├── infos_de_contact_dans_reservation_en_ligne_spec.rb
 │   │   │   │   ├── planning_multi_agents_spec.rb
@@ -2808,7 +2810,9 @@
 │   │   │   └── range_spec.rb
 │   │   ├── cron_monitor_spec.rb
 │   │   ├── duplicate_users_finder_service_spec.rb
-│   │   ├── espace_operateur_anct_spec.rb
+│   │   ├── espace_operateur_anct
+│   │   │   ├── account_creation_router_spec.rb
+│   │   │   └── api_client_spec.rb
 │   │   ├── export_zones_service_spec.rb
 │   │   ├── ical
 │   │   │   ├── rrule_expander_spec.rb
@@ -2833,7 +2837,6 @@
 │   │   ├── participants_csv_spec.rb
 │   │   ├── participation_exporter_spec.rb
 │   │   ├── plage_ouverture_overlap_spec.rb
-│   │   ├── pro_connect_onboarding_router_spec.rb
 │   │   ├── rdv_exporter_spec.rb
 │   │   ├── rdv_start_coherence_spec.rb
 │   │   ├── rdvs_overlapping_spec.rb
@@ -2911,4 +2914,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-447 directories, 2466 files
+450 directories, 2466 files
