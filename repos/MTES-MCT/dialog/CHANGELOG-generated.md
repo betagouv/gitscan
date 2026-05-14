@@ -1,31 +1,32 @@
-## Changelog : dialog (30 derniers jours, au 7 mai 2026)
+## Changelog : dialog (30 derniers jours, au 2026-05-13)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités clés, notamment en ce qui concerne la cartographie, la gestion des arrêtés et l'intégration de données externes. Des optimisations ont également été apportées pour améliorer la performance et la stabilité de l'application.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la cartographie, de l'administration des arrêtés, et de l'API. Des fonctionnalités ont été ajoutées pour faciliter la modification des arrêtés après publication, l'ajout de types de restrictions (interdiction de dépasser), et l'amélioration de la recherche et du filtrage. Des optimisations de performance ont également été apportées à la carte.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de tracer librement des zones sur la carte GeoJSON [#1816](https://github.com/MTES-MCT/dialog/issues/1816).
-- Intégration de la cartographie dans l'export Word des arrêtés [#1837](https://github.com/MTES-MCT/dialog/issues/1837).
-- Ajout du type d'interdiction de dépasser pour les réglementations [#1835](https://github.com/MTES-MCT/dialog/issues/1835).
-- Affichage de l'utilisateur ayant modifié un arrêté dans l'historique [#1836](https://github.com/MTES-MCT/dialog/issues/1836).
-- Ajout de tris sur les colonnes de la liste des arrêtés [#1823](https://github.com/MTES-MCT/dialog/issues/1823).
-- Ajout de la possibilité de rechercher une organisation dans le sélecteur [#1824](https://github.com/MTES-MCT/dialog/issues/1824).
-- Amélioration de l'affichage du filtre par organisation (élargissement de la largeur) [#1827](https://github.com/MTES-MCT/dialog/issues/1827).
-- Ajout de la notion de desserte locale [#1817](https://github.com/MTES-MCT/dialog/issues/1817).
-- Affichage de la source de l'arrêté [#1812](https://github.com/MTES-MCT/dialog/issues/1812).
-- Affichage de l'heure de modification d'un arrêté [#1813](https://github.com/MTES-MCT/dialog/issues/1813).
-- Possibilité de modifier un arrêté après sa publication [#1793](https://github.com/MTES-MCT/dialog/issues/1793).
-- Prévisualisation de la localisation sur la carte [#1790](https://github.com/MTES-MCT/dialog/issues/1790).
-- Obtention des rues à proximité via l'API [#1809](https://github.com/MTES-MCT/dialog/issues/1809).
+- Ajout de la possibilité de tracer librement des zones géographiques sur la carte pour une localisation précise. [#1816](https://github.com/MTES-MCT/dialog/issues/1816)
+- Intégration de la cartographie dans l'export Word des arrêtés, permettant une visualisation contextuelle. [#1837](https://github.com/MTES-MCT/dialog/issues/1837)
+- Ajout du type de restriction "interdiction de dépasser". [#1835](https://github.com/MTES-MCT/dialog/issues/1835)
+- Possibilité de modifier un arrêté après sa publication. [#1793](https://github.com/MTES-MCT/dialog/issues/1793)
+- Ajout de la desserte locale. [#1817](https://github.com/MTES-MCT/dialog/issues/1817)
+- Amélioration de la recherche dans le sélecteur d'organisations. [#1824](https://github.com/MTES-MCT/dialog/issues/1824)
+- Amélioration du rendu du filtre par organisation (élargissement de la largeur). [#1827](https://github.com/MTES-MCT/dialog/issues/1827)
+- Ajout de tris sur les colonnes de la liste des arrêtés. [#1823](https://github.com/MTES-MCT/dialog/issues/1823)
+- Affichage de la source de l'arrêté. [#1812](https://github.com/MTES-MCT/dialog/issues/1812)
+- Affichage de l'heure de modification de l'arrêté. [#1813](https://github.com/MTES-MCT/dialog/issues/1813)
+- Ajout d'une prévisualisation de la localisation sur la carte. [#1790](https://github.com/MTES-MCT/dialog/issues/1790)
+- Ajout de la possibilité d'uploader un arrêté via l'API. [#1825](https://github.com/MTES-MCT/dialog/issues/1825)
+- Affichage de l'utilisateur ayant effectué la dernière modification de l'arrêté. [#1836](https://github.com/MTES-MCT/dialog/issues/1836)
 
 ### Évolutions techniques
-- Amélioration de la gestion des erreurs d'intersection sur l'API, retournant un message d'erreur plus explicite [#1814](https://github.com/MTES-MCT/dialog/issues/1814).
-- Correction de la numérotation inversée des Pull Requests [#1822](https://github.com/MTES-MCT/dialog/issues/1822).
-- Augmentation de la disponibilité de la source de données Datex [#1805](https://github.com/MTES-MCT/dialog/issues/1805).
-- Correction des problèmes de mémoire liés à la quantité de données DATEX [#1798](https://github.com/MTES-MCT/dialog/issues/1798).
-- Recréation des index de la base de données BDTOPO via une commande Symfony au lieu de migrations [#1806](https://github.com/MTES-MCT/dialog/issues/1806).
-- Amélioration de l'administration des utilisateurs pour les environnements de test [#1815](https://github.com/MTES-MCT/dialog/issues/1815).
+- Amélioration des performances de la carte. [#1842](https://github.com/MTES-MCT/dialog/issues/1842)
+- Refonte de la création des index BDTOPO via une commande Symfony au lieu de migrations. [#1806](https://github.com/MTES-MCT/dialog/issues/1806)
+- Amélioration de la disponibilité de Datex. [#1805](https://github.com/MTES-MCT/dialog/issues/1805)
+- Ajout de la récupération des rues à proximité via l'API. [#1809](https://github.com/MTES-MCT/dialog/issues/1809)
+- Correction de la numérotation inversée des Pull Requests. [#1822](https://github.com/MTES-MCT/dialog/issues/1822)
+- Amélioration de l'administration des utilisateurs pour les environnements de test. [#1815](https://github.com/MTES-MCT/dialog/issues/1815)
+- Retour d'une erreur explicite lors d'un problème d'intersection sur l'API. [#1814](https://github.com/MTES-MCT/dialog/issues/1814)
 
 ### Autres changements
-- Envoi de notifications d'intégration via Mattermost [#1797](https://github.com/MTES-MCT/dialog/issues/1797).
-- Améliorations diverses suite aux revues de code [#1839](https://github.com/MTES-MCT/dialog/issues/1839).
+- Mise à jour du workflow de l'équipe d'administration. [#1841](https://github.com/MTES-MCT/dialog/issues/1841)
+- Améliorations diverses suite aux revues de code. [#1839](https://github.com/MTES-MCT/dialog/issues/1839)

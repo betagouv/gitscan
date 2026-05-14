@@ -656,6 +656,7 @@
 │   │   │   │       └── GetSigningAuthorityByOrganizationQueryHandler.php
 │   │   │   └── View
 │   │   │       ├── GetOrCreateOrganizationView.php
+│   │   │       ├── MapBboxView.php
 │   │   │       └── OrganizationFetchedView.php
 │   │   ├── OrganizationAdministrativeBoundariesGeometryInterface.php
 │   │   ├── PasswordHasherInterface.php
@@ -1145,7 +1146,8 @@
 │   │   │   │   ├── Fragments
 │   │   │   │   │   ├── GetLocationController.php
 │   │   │   │   │   ├── MapDataController.php
-│   │   │   │   │   └── MapSearchController.php
+│   │   │   │   │   ├── MapSearchController.php
+│   │   │   │   │   └── MapTilesController.php
 │   │   │   │   └── MapController.php
 │   │   │   ├── MyArea
 │   │   │   │   ├── Organization
@@ -1402,7 +1404,7 @@
 │   │   │       │   ├── Version20260129110000.php
 │   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (155 files)
+│   │   │       │   └── Version*.php  (156 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
 │   │   │       │   │   └── ORMSchemaEventListener.php
@@ -1480,6 +1482,7 @@
 │   │   │   │   ├── LitteralisImportCommunicationCommand.php
 │   │   │   │   ├── LoadFrCityDataCommand.php
 │   │   │   │   ├── PurgeUserTokensCommand.php
+│   │   │   │   ├── RefreshTopPublishedOrganizationsCommand.php
 │   │   │   │   ├── RunMetabaseExportCommand.php
 │   │   │   │   ├── StorageAreaGenerateCommand.php
 │   │   │   │   ├── SyncLocationGeometriesCommand.php
@@ -1712,7 +1715,8 @@
 │   │       │   │   ├── Fragment
 │   │       │   │   │   ├── GetLocationControllerTest.php
 │   │       │   │   │   ├── MapDataControllerTest.php
-│   │       │   │   │   └── MapSearchControllerTest.php
+│   │       │   │   │   ├── MapSearchControllerTest.php
+│   │       │   │   │   └── MapTilesControllerTest.php
 │   │       │   │   └── MapControllerTest.php
 │   │       │   ├── MyArea
 │   │       │   │   ├── Organization
@@ -1797,6 +1801,7 @@
 │   │       ├── Persistence
 │   │       │   └── Doctrine
 │   │       │       └── Repository
+│   │       │           ├── OrganizationRepositoryTest.php
 │   │       │           └── UserRepositoryTest.php
 │   │       ├── Repository
 │   │       │   ├── AdministratorRepositoryTest.php
@@ -1809,6 +1814,7 @@
 │   │       │       ├── LitteralisImportCommandTest.php
 │   │       │       ├── LoadFrCityDataCommandTest.php
 │   │       │       ├── PurgeUserTokensCommandTest.php
+│   │       │       ├── RefreshTopPublishedOrganizationsCommandTest.php
 │   │       │       ├── RunMetabaseExportCommandTest.php
 │   │       │       ├── StorageAreaGenerateCommandTest.php
 │   │       │       ├── SyncLocationGeometriesCommandTest.php
@@ -2197,4 +2203,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-436 directories, 1917 files
+436 directories, 1924 files
