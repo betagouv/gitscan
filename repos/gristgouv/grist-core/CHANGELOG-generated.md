@@ -1,35 +1,28 @@
 ## Changelog : grist-core (30 derniers jours, au 2026-05-05)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de la stabilité et de la robustesse de Grist, notamment grâce à la correction de tests aléatoires et à l'amélioration de la gestion des erreurs. Des efforts ont également été déployés pour améliorer l'expérience utilisateur, en particulier dans la configuration initiale et la gestion des applications OAuth. Enfin, des traductions ont été mises à jour pour plusieurs langues.
+Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment dans la configuration initiale (Quick Setup) et la gestion des applications OAuth. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout d'un point de terminaison POST `/records/list` permettant de lister les enregistrements. [#2321](https://github.com/gristgouv/grist-core/issues/2321)
-- Amélioration de la gestion des autorisations par défaut dans le panneau d'administration. [#2314](https://github.com/gristgouv/grist-core/issues/2314)
-- Ajout de la possibilité d'ouvrir le menu contextuel via des raccourcis clavier dans les widgets. [#2226](https://github.com/gristgouv/grist-core/issues/2226)
-- Amélioration de la recherche dans les documents pour ignorer la casse des accents. [#2221](https://github.com/gristgouv/grist-core/issues/2221)
-- Ajout d'une section de sauvegarde dans le wizard de configuration initiale et le panneau d'administration. [#2283](https://github.com/gristgouv/grist-core/issues/2283)
-- Amélioration de l'interface utilisateur pour la gestion des applications OAuth. [#2246](https://github.com/gristgouv/grist-core/issues/2246)
-- Ajout d'une section "Serveur" dans le panneau d'administration et le wizard de configuration. [#2280](https://github.com/gristgouv/grist-core/issues/2280)
-- Amélioration de la gestion des erreurs lors du blocage de l'accès à la page de configuration rapide pour les utilisateurs non autorisés. [#2323](https://github.com/gristgouv/grist-core/issues/2323)
+- **Configuration initiale :** Amélioration du processus de configuration initiale avec l'ajout de sections pour les sauvegardes et la configuration du serveur. [#2283](https://github.com/gristlabs/grist-core/issues/2283), [#2293](https://github.com/gristlabs/grist-core/issues/2293)
+- **OAuth :** Implémentation de l'interface utilisateur et de l'API pour l'enregistrement et la gestion des applications OAuth, permettant une intégration plus facile avec d'autres services. [#2246](https://github.com/gristlabs/grist-core/issues/2246), [#2285](https://github.com/gristlabs/grist-core/issues/2285)
+- **API :** Ajout d'un endpoint POST `/records/list` pour la création de listes d'enregistrements. [#2299](https://github.com/gristlabs/grist-core/issues/2299)
+- **Widgets :** Le widget calendrier se charge maintenant à partir d'un plugin spécifique, favorisant les widgets intégrés. [#2262](https://github.com/gristlabs/grist-core/issues/2262)
+- **Recherche :** La recherche dans un document est désormais insensible à la casse et aux accents. [#2221](https://github.com/gristlabs/grist-core/issues/2221)
+- **Menu contextuel :** Possibilité d'ouvrir le menu contextuel via des raccourcis clavier dans les widgets. [#2226](https://github.com/gristlabs/grist-core/issues/2226)
+- **Permissions par défaut :** Affichage des options de permissions par défaut dans le panneau d'administration. [#2314](https://github.com/gristlabs/grist-core/issues/2314)
 
 ### Évolutions techniques
-- Mise à jour de Pyodide de la version 0.23.4 à la version 0.28.1. [#1754](https://github.com/gristgouv/grist-core/issues/1754)
-- Amélioration de la gestion des sessions pour éviter les modifications non autorisées dans le contexte `prefork-as-owner`. [#2297](https://github.com/gristgouv/grist-core/issues/2297)
-- Refactorisation des types `ISandbox` pour améliorer la sécurité et la robustesse. [#2211](https://github.com/gristgouv/grist-core/issues/2211)
-- Amélioration de la gestion des tests, notamment en corrigeant des tests aléatoires et en améliorant la synchronisation. [#2320](https://github.com/gristgouv/grist-core/issues/2320)
-- Amélioration de la gestion des dépendances et des mises à jour de packages.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Mise à jour de plusieurs dépendances (axios, fast-xml-parser, svgo, flatted, follow-redirects, dompurify, basic-ftp, @xmldom/xmldom, uuid)
+- **Pyodide :** Mise à jour de Pyodide de la version 0.23.4 à la version 0.28.1. [#1754](https://github.com/gristlabs/grist-core/issues/1754)
+- **Tests :** Amélioration de la robustesse des tests, notamment en corrigeant des problèmes de synchronisation et en ajustant les délais d'attente. [#2214](https://github.com/gristlabs/grist-core/issues/2214), [#2320](https://github.com/gristlabs/grist-core/issues/2320)
+- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment au niveau des types `ISandbox`. [#2211](https://github.com/gristlabs/grist-core/issues/2211)
+- **CI/CD :** Ajustements de la configuration CI/CD pour améliorer la stabilité et la performance des tests. [#2267](https://github.com/gristlabs/grist-core/issues/2267)
+- **Gestion des sessions :** Prévention des modifications de sessions provenant de sessions préforkées dans la vérification de l'accès granulaire. [#2297](https://github.com/gristlabs/grist-core/issues/2297)
+- **Docker :** Correction pour permettre à Grist de redémarrer sans supprimer le socket d'écoute. [#2265](https://github.com/gristlabs/grist-core/issues/2265)
 
 ### Autres changements
-- Mise à jour des traductions pour le suédois, le hongrois, le basque, le portugais brésilien et l'allemand.
-- Corrections de bugs mineurs et améliorations de la documentation.
-- Nettoyage du code et refactorisation de certaines parties du projet.
-- Amélioration de la gestion des tests et de l'intégration continue.
-- Ajout de la signature CLA pour certains contributeurs.
-- Correction de problèmes de test liés à Chrome.
-- Amélioration de la gestion des suggestions.
-- Correction de problèmes liés aux widgets et à la gestion des événements.
-- Amélioration de la gestion des erreurs dans les tests.
-- Ajout d'informations de liaison pour les widgets personnalisés.
+- **Traduction :** Mises à jour des traductions suédoises, basques et hongroises.
+- **Documentation :** Adaptation de la documentation pour exécuter les tests nbrowser localement. [#2214](https://github.com/gristlabs/grist-core/issues/2214)
+- **Dépendances :** Mises à jour de plusieurs dépendances, notamment `axios`, `fast-xml-parser`, `svgo`, `flatted`, `follow-redirects`, `dompurify`, `basic-ftp`, `@xmldom/xmldom` et `uuid`.
+- **Linting :** Ajout d'une règle ESLint pour s'assurer que les appels à la fonction de traduction `t` sont corrects. [#2237](https://github.com/gristlabs/grist-core/issues/2237)
+- **Nettoyage de code :** Diverses corrections et améliorations mineures du code.
