@@ -126,7 +126,8 @@
 │   │   │   ├── 20260109070500-add-data-log-source.js
 │   │   │   ├── 20260109083637-data-log-add-provider-name.js
 │   │   │   ├── 20260320072628-chorus-remove-indexed-informations.js
-│   │   │   └── 20260323195850-remove-overwriteAlert-deposit-log.js
+│   │   │   ├── 20260323195850-remove-overwriteAlert-deposit-log.js
+│   │   │   └── 20260428231703-osiris-request-raw-entity.js
 │   │   ├── nodemon.json
 │   │   ├── package.json
 │   │   ├── src
@@ -183,8 +184,19 @@
 │   │   │   │   │   │   │   ├── helios.mapper.ts
 │   │   │   │   │   │   │   ├── helios.parser.test.ts
 │   │   │   │   │   │   │   └── helios.parser.ts
-│   │   │   │   │   │   ├── osiris.cli.test.ts
-│   │   │   │   │   │   ├── osiris.cli.ts
+│   │   │   │   │   │   ├── osiris
+│   │   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   │   └── osiris-request.fixture.ts
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts.snap
+│   │   │   │   │   │   │   │   └── osiris.parser.test.ts.snap
+│   │   │   │   │   │   │   ├── osiris-request.dto.ts
+│   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts
+│   │   │   │   │   │   │   ├── osiris-request.mapper.ts
+│   │   │   │   │   │   │   ├── osiris.cli.test.ts
+│   │   │   │   │   │   │   ├── osiris.cli.ts
+│   │   │   │   │   │   │   ├── osiris.parser.test.ts
+│   │   │   │   │   │   │   └── osiris.parser.ts
 │   │   │   │   │   │   ├── scdl-batch.cli.test.ts
 │   │   │   │   │   │   ├── scdl-batch.cli.ts
 │   │   │   │   │   │   ├── scdl-deposit.cli.ts
@@ -943,18 +955,15 @@
 │   │   │   │   │   │   │   ├── osiris.action.fixtures.ts
 │   │   │   │   │   │   │   └── osiris.request.fixtures.ts
 │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── osiris.parser.test.ts.snap
+│   │   │   │   │   │   │   └── osiris.mapper.test.ts.snap
 │   │   │   │   │   │   ├── entities
 │   │   │   │   │   │   │   ├── OsirisActionEntity.ts
 │   │   │   │   │   │   │   └── OsirisRequestEntity.ts
-│   │   │   │   │   │   ├── mappers
-│   │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   │   └── osiris-request.mapper.test.ts.snap
-│   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts
-│   │   │   │   │   │   │   └── osiris-request.mapper.ts
+│   │   │   │   │   │   ├── osiris.helper.test.ts
+│   │   │   │   │   │   ├── osiris.helper.ts
+│   │   │   │   │   │   ├── osiris.mapper.test.ts
+│   │   │   │   │   │   ├── osiris.mapper.ts
 │   │   │   │   │   │   ├── osiris.migrations.ts
-│   │   │   │   │   │   ├── osiris.parser.test.ts
-│   │   │   │   │   │   ├── osiris.parser.ts
 │   │   │   │   │   │   ├── osiris.service.test.ts
 │   │   │   │   │   │   └── osiris.service.ts
 │   │   │   │   │   ├── provider.core.ts
@@ -1267,13 +1276,18 @@
 │   │   │   │   ├── cli
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   ├── 2023 subventions GISPO et TDB_test.xlsx
+│   │   │   │   │   │   ├── OsirisEntities.ts
+│   │   │   │   │   │   ├── SuiviActionsEvaluation_test.xlsx
+│   │   │   │   │   │   ├── SuiviActions_test.xls
+│   │   │   │   │   │   ├── SuiviDossiers_test.xls
 │   │   │   │   │   │   ├── dauphin-gispro.fixture.ts
 │   │   │   │   │   │   ├── demarche-simplifiees-seed.fixture.json
 │   │   │   │   │   │   ├── demarches-simplifiees.fixture.ts
 │   │   │   │   │   │   ├── fonjep-new.xlsx
 │   │   │   │   │   │   ├── fonjep-one-code-full.xlsx
 │   │   │   │   │   │   ├── fonjep.xlsx
-│   │   │   │   │   │   └── new-chorus-export.xlsx
+│   │   │   │   │   │   ├── new-chorus-export.xlsx
+│   │   │   │   │   │   └── test.xlsx
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts.snap
 │   │   │   │   │   │   ├── chorus.cli.spec.ts.snap
@@ -1332,16 +1346,8 @@
 │   │   │       ├── providers
 │   │   │       │   ├── api-entreprise
 │   │   │       │   │   └── api-entreprise.service.spec.ts
-│   │   │       │   ├── dauphin-gispro
-│   │   │       │   │   └── dauphin-gispro.adapter.spec.ts
-│   │   │       │   └── osiris
-│   │   │       │       ├── __fixtures__
-│   │   │       │       │   ├── OsirisEntities.ts
-│   │   │       │       │   ├── SuiviActionsEvaluation_test.xlsx
-│   │   │       │       │   ├── SuiviActions_test.xls
-│   │   │       │       │   ├── SuiviDossiers_test.xls
-│   │   │       │       │   └── test.xlsx
-│   │   │       │       └── osiris.parser.spec.ts
+│   │   │       │   └── dauphin-gispro
+│   │   │       │       └── dauphin-gispro.adapter.spec.ts
 │   │   │       ├── providers.spec.ts
 │   │   │       ├── rna-siren.spec.ts
 │   │   │       ├── search.spec.ts
@@ -2148,6 +2154,7 @@
 │       │   ├── OsirisPuppeteer
 │       │   │   ├── OsirisPuppeteer.js
 │       │   │   └── browser-script.js
+│       │   ├── README.md
 │       │   ├── cleaned_modules
 │       │   │   └── signalR
 │       │   │       └── jquery.signalR.js
@@ -2159,4 +2166,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-504 directories, 1657 files
+503 directories, 1665 files
