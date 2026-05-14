@@ -1,31 +1,24 @@
-## Changelog : espace-membre-next (30 derniers jours, au 06 mai 2026)
+## Changelog : espace-membre-next (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des startups et de l'onboarding/offboarding des membres. Des corrections ont été apportées pour améliorer la stabilité et la robustesse de l'application, ainsi que des optimisations techniques pour simplifier le code et améliorer les performances.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'accessibilité, la correction de bugs et l'ajout de nouvelles fonctionnalités pour faciliter la gestion des startups et des phases de projets. Des efforts ont également été faits pour simplifier le code et améliorer la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une recherche par combo pour les startups dans l'interface. [#1324](https://github.com/betagouv/espace-membre-next/issues/1324)
-- Les agents des startups peuvent désormais modifier les informations des membres. [#1303](https://github.com/betagouv/espace-membre-next/issues/1303)
-- Amélioration de l'email envoyé lors des départs d'une équipe, avec des instructions claires. [#1290](https://github.com/betagouv/espace-membre-next/issues/1290)
-- Affichage d'un panneau d'offboarding sur le tableau de bord lorsqu'un membre arrive à expiration. [#1289](https://github.com/betagouv/espace-membre-next/issues/1289)
-- Suppression de la création d'email pour les attributaires lors de l'onboarding. [#1305](https://github.com/betagouv/espace-membre-next/issues/1305)
-- Mise à jour des phases (statuts) des membres. [#1304](https://github.com/betagouv/espace-membre-next/issues/1304)
-- Correction d'un bug empêchant la création d'email si l'adresse email principale n'était pas définie. [#1342](https://github.com/betagouv/espace-membre-next/issues/1342)
+- **Recherche de startups :** Ajout d'un champ de recherche combiné pour faciliter la recherche de startups. [#1324](https://github.com/betagouv/espace-membre-next/issues/1324)
+- **Gestion des phases :** Amélioration de la gestion des phases de projet. [#1304](https://github.com/betagouv/espace-membre-next/issues/1304)
+- **Edition des membres par les agents startup :** Les agents des startups peuvent désormais éditer les informations des membres. [#1303](https://github.com/betagouv/espace-membre-next/issues/1303)
+- **Onboarding :**  Les attributaires ne se voient plus créer d'email lors de l'onboarding. [#1305](https://github.com/betagouv/espace-membre-next/issues/1305)
+- **Création d'email :** Correction d'un bug empêchant la création d'email lorsque l'email principal n'est pas défini. [#1342](https://github.com/betagouv/espace-membre-next/issues/1342)
 
 ### Évolutions techniques
-- Migration du système de templates d'emails de MJML. [#1350](https://github.com/betagouv/espace-membre-next/issues/1350)
-- Simplification du routage et utilisation accrue du rendu côté serveur (SSR) pour améliorer les performances. [#1326](https://github.com/betagouv/espace-membre-next/issues/1326)
-- Amélioration de la configuration et suppression de variables d'environnement inutiles. [#1329](https://github.com/betagouv/espace-membre-next/issues/1329)
-- Suppression des éléments liés à Mattermost. [#1325](https://github.com/betagouv/espace-membre-next/issues/1325)
-- Correction de problèmes liés à l'exportation de l'adresse email secondaire. [#1327](https://github.com/betagouv/espace-membre-next/issues/1327)
-- Amélioration du logging pour faciliter le débogage. [#1300](https://github.com/betagouv/espace-membre-next/issues/1300)
-- Correction de problèmes liés à l'utilisation de modules ECMAScript (ESM) en production. [#1337](https://github.com/betagouv/espace-membre-next/issues/1337)
-- Suppression d'un TODO lié à l'authentification obsolète. [#1354](https://github.com/betagouv/espace-membre-next/issues/1354)
-- Utilisation du composant `DataVisualization` de DSFR au lieu d'un asset SVG supprimé. [#1351](https://github.com/betagouv/espace-membre-next/issues/1351)
-- Activation du preset recommandé pour l'accessibilité JSX-A11Y (RGAA). [#1355](https://github.com/betagouv/espace-membre-next/issues/1355)
+- **Accessibilité (RGAA) :** Améliorations significatives de l'accessibilité, notamment l'ajout de l'attribut `lang` sur la balise `<html>`, la correction de problèmes d'accessibilité des labels et des éléments cliquables, et l'activation du preset recommandé `jsx-a11y`. [#1365](https://github.com/betagouv/espace-membre-next/issues/1365), [#1361](https://github.com/betagouv/espace-membre-next/issues/1361), [#1363](https://github.com/betagouv/espace-membre-next/issues/1363), [#1364](https://github.com/betagouv/espace-membre-next/issues/1364)
+- **Sécurité :** Renforcement de la sécurité en appliquant une vérification d'authentification dans la fonction `updateUserEvent`. [#1357](https://github.com/betagouv/espace-membre-next/issues/1357)
+- **Migration MJML :** Migration du système de template email vers MJML. [#1350](https://github.com/betagouv/espace-membre-next/issues/1350)
+- **Simplification du routage :** Simplification du routage et utilisation accrue du rendu côté serveur (SSR). [#1326](https://github.com/betagouv/espace-membre-next/issues/1326)
+- **Refactoring :** Suppression de code obsolète lié à Mattermost, de variables d'environnement inutiles et de composants DSFR obsolètes. [#1325](https://github.com/betagouv/espace-membre-next/issues/1325), [#1329](https://github.com/betagouv/espace-membre-next/issues/1329), [#1351](https://github.com/betagouv/espace-membre-next/issues/1351)
+- **Timeouts :** Augmentation du timeout pour la synchronisation des emails. [#1372](https://github.com/betagouv/espace-membre-next/issues/1372)
 
 ### Autres changements
-- Ajout de tests E2E pour le tableau de bord et les processus d'onboarding/offboarding. [#1299](https://github.com/betagouv/espace-membre-next/issues/1299)
-- Diverses mises à jour de dépendances. [#1331](https://github.com/betagouv/espace-membre-next/issues/1331)
-- Suppression de code inutile. [#1338](https://github.com/betagouv/espace-membre-next/issues/1338) et [#1339](https://github.com/betagouv/espace-membre-next/issues/1339)
-- Suppression de la possibilité de supprimer les comptes Matomo/Sentry. [#1322](https://github.com/betagouv/espace-membre-next/issues/1322)
+- **Tests E2E :** Ajout de tests end-to-end (E2E) pour le tableau de bord et les processus d'onboarding/offboarding. [#1299](https://github.com/betagouv/espace-membre-next/issues/1299)
+- **Nettoyage :** Suppression de code et de configurations inutiles. [#1331](https://github.com/betagouv/espace-membre-next/issues/1331), [#1337](https://github.com/betagouv/espace-membre-next/issues/1337), [#1338](https://github.com/betagouv/espace-membre-next/issues/1338), [#1339](https://github.com/betagouv/espace-membre-next/issues/1339), [#1374](https://github.com/betagouv/espace-membre-next/issues/1374), [#1375](https://github.com/betagouv/espace-membre-next/issues/1375)
+- **Logging :** Correction de problèmes de logging. [#1302](https://github.com/betagouv/espace-membre-next/issues/1302)
