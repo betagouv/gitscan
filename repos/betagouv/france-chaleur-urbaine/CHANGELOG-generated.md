@@ -1,29 +1,100 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 07 mai 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment avec l'ajout d'une FAQ, l'amélioration du simulateur d'aide "Coup de pouce", et la refonte de la page "Qui sommes-nous". Des corrections et optimisations techniques ont également été apportées pour améliorer la stabilité et la performance du site.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des permissions, la stabilisation et l'enrichissement des données, ainsi que sur l'amélioration de l'expérience utilisateur, notamment avec une refonte de la landing page du simulateur simplifié et l'ajout d'une FAQ. Des améliorations techniques importantes ont également été apportées, notamment au niveau de la surveillance et de la gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- **FAQ :** Initialisation et ajout de liens vers une nouvelle section FAQ pour répondre aux questions fréquentes des utilisateurs. [#1239](https://github.com/betagouv/france-chaleur-urbaine/pull/1239)
-- **Collecte de contact :** Amélioration du formulaire de collecte de contact, notamment pour les utilisateurs provenant de Pacoupa, avec l'ajout d'un message d'information spécifique. [#1236](https://github.com/betagouv/france-chaleur-urbaine/pull/1236)
-- **Simulateur "Coup de pouce" :** Refonte complète du simulateur "Coup de pouce" avec une nouvelle interface, une meilleure gestion des conditions d'éligibilité et une intégration des nouvelles formules CEE. [#1234](https://github.com/betagouv/france-chaleur-urbaine/pull/1234), [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215)
-- **Page "Qui sommes-nous" :** Mise à jour du contenu et du design de la page "Qui sommes-nous", avec suppression des icônes de l'équipe et clarification de la présentation du budget. [#1232](https://github.com/betagouv/france-chaleur-urbaine/pull/1232)
-- **Formulaire ADEME Connect :** Intégration du formulaire ADEME Connect. [#1238](https://github.com/betagouv/france-chaleur-urbaine/pull/1238)
-- **Affichage Écoréseau :** Amélioration de l'affichage de l'écoréseau. [#1227](https://github.com/betagouv/france-chaleur-urbaine/pull/1227)
-- **Formulaire de contact :** Ajout de liens et d'informations sur les emails de contact. [#1226](https://github.com/betagouv/france-chaleur-urbaine/pull/1226)
+- **Permissions :** Refonte complète du système de permissions, incluant la gestion des rôles, l'intégration avec les demandes et une interface d'administration améliorée pour l'attribution des permissions en masse [#1233](https://github.com/betagouv/france-chaleur-urbaine/pulls/1233).
+- **Gestion des données :**
+    - Ajout d'un dashboard pour la cohérence des données.
+    - Correction du backfill des demandes sur des réseaux inexistants.
+    - Ajout de la colonne "has_PDP" dans l'administration des demandes.
+    - Enregistrement du SIRET de l'entreprise de l'utilisateur.
+- **Interface utilisateur :**
+    - Suppression du bandeau de mise à jour.
+    - Amélioration de l'affichage des permissions réseaux en construction.
+    - Ajout d'un bouton pour réaffecter les demandes.
+    - Amélioration de la visibilité des demandes à traiter et affectées.
+    - Ajout d'un bouton "Clear" dans l'autocomplete.
+    - Amélioration de l'affichage des relances et des notes.
+    - Ajout d'un lien pour corriger les permissions d'un gestionnaire.
+- **FAQ :** Initialisation et ajout de contenu à la FAQ, avec des liens entrants depuis d'autres pages [#1239](https://github.com/betagouv/france-chaleur-urbaine/pulls/1239).
+- **Collecte de contact :** Ajout d'un formulaire de collecte de contact pour les utilisateurs non raccordables [#1236](https://github.com/betagouv/france-chaleur-urbaine/pulls/1236).
+- **Simulateur simplifié :** Refonte de la landing page du simulateur simplifié avec de nouvelles images, des articles de contenu et des améliorations de l'expérience utilisateur [#1234](https://github.com/betagouv/france-chaleur-urbaine/pulls/1234) et [#1215](https://github.com/betagouv/france-chaleur-urbaine/pulls/1215).
+- **Intégration Ademe Connect :** Intégration de l'authentification via Ademe Connect [#1238](https://github.com/betagouv/france-chaleur-urbaine/pulls/1238).
 
 ### Évolutions techniques
-- **Refactoring du code :** Refactorisation du code du simulateur et de la page City, avec passage à Tailwind CSS et suppression de composants inutiles.
-- **Optimisation des images :** Conversion des images au format WebP pour améliorer les performances.
-- **Mise à jour des dépendances :** Mise à jour des dépendances du projet. [#1229](https://github.com/betagouv/france-chaleur-urbaine/pull/1229)
-- **Typage :** Corrections et améliorations du typage TypeScript.
-- **Gestion des erreurs :** Amélioration de la gestion des erreurs et de l'affichage des messages d'erreur.
-- **Tests :** Ajout et mise à jour des tests unitaires et d'intégration.
-- **CI/CD :** Amélioration du pipeline CI/CD.
+- **Monitoring :** Ajout d'un module de métriques avec une API Prometheus.
+- **Logs :** Amélioration du tracking des événements et des erreurs.
+- **Architecture :** Refactoring du code autour des types d'entités et des services de demandes.
+- **CI/CD :** Améliorations diverses du processus de CI/CD.
+- **Base de données :** Ajout de commandes pour analyser et mettre à jour les réseaux via un répertoire.
+- **Tests :** Amélioration des tests unitaires et d'intégration.
+- **Dépendances :** Mise à jour des dépendances.
+- **Automatisation :** Ajout de scripts pour dropper des tables à distance et migrer des données.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour la procédure de mise à jour des statistiques mensuelles.
-- **Statistiques :** Mise à jour des statistiques d'avril.
-- **Nettoyage du code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Tracking :** Amélioration du tracking Matomo et Posthog.
-- **Wording :** Ajustements du wording sur différentes parties du site pour une meilleure clarté.
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration du typage du code TypeScript.
+- Ajout de commentaires et de documentation pour faciliter la maintenance.
+- Suppression de fichiers inutiles du `.gitignore`.
+- Correction de typos et amélioration de la lisibilité du code.
+- Mise à jour des statistiques mensuelles.
+- Amélioration de la gestion des erreurs et des logs.
+- Ajout de tests pour les routes territoires.
+- Suppression de presets inutiles.
+- Amélioration de la gestion des emails.
+- Ajout d'une commande pour analyser des réseaux.
+- Ajout d'un script de migration des notes de tags.
+- Correction de l'affichage des permissions réseaux en construction.
+- Ajout d'un bouton "Save" pour les notes de réseaux.
+- Ajout d'une commande pour mettre à jour les réseaux via un répertoire.
+- Ajout d'un script de migration des notes de tags.
+- Correction de la recherche par ID SNCU dans la page des statistiques.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de tests pour les routes territoires.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.
+- Ajout de l'ALEC à la structure et raccourcis de sélection de rôle.
+- Ajout de la gestion des comptes métropoles.

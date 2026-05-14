@@ -709,6 +709,7 @@
 │   ├── copyLocalTableToRemote.sh
 │   ├── copyRemoteTableToLocal.sh
 │   ├── db_sync_common.sh
+│   ├── dropRemoteTables.sh
 │   ├── dump-schema.sh
 │   ├── fetch-features-from-feature-server.sh
 │   ├── migrate.sh
@@ -907,7 +908,8 @@
 │   │   │   ├── map-events.tsx
 │   │   │   ├── map-layers.ts
 │   │   │   ├── osm.config.json
-│   │   │   └── satellite.config.json
+│   │   │   ├── satellite.config.json
+│   │   │   └── useMapController.ts
 │   │   ├── MarkdownWrapper
 │   │   │   ├── MarkdownWrapper.style.tsx
 │   │   │   ├── MarkdownWrapper.tsx
@@ -1029,6 +1031,7 @@
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── NewPasswordForm.tsx
 │   │   │   ├── ProfileForm.tsx
+│   │   │   ├── ProfileNewsletterForm.tsx
 │   │   │   ├── RegisterForm.tsx
 │   │   │   └── ResetPasswordForm.tsx
 │   │   ├── dashboard
@@ -1304,6 +1307,12 @@
 │   ├── module-declarations.d.ts
 │   ├── modules
 │   │   ├── AGENTS.md
+│   │   ├── ademe-connect
+│   │   │   ├── AGENTS.md
+│   │   │   ├── commands.ts
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       └── client.ts
 │   │   ├── analytics
 │   │   │   ├── .env.example
 │   │   │   ├── AGENTS.md
@@ -1396,9 +1405,23 @@
 │   │   │       │   └── zones-opportunite-froid.ts
 │   │   │       ├── service.ts
 │   │   │       └── trpc-routes.ts
+│   │   ├── data-diagnostic
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── DataDiagnosticPage.tsx
+│   │   │   ├── constants.ts
+│   │   │   ├── server
+│   │   │   │   ├── service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── types.ts
 │   │   ├── demands
 │   │   │   ├── client
+│   │   │   │   ├── AccessCountsCell.tsx
+│   │   │   │   ├── AccessDetailDialog.tsx
 │   │   │   │   ├── AdditionalInformation.tsx
+│   │   │   │   ├── AffectedNetwork.tsx
+│   │   │   │   ├── AffectedNetworkCell.tsx
 │   │   │   │   ├── Comment.tsx
 │   │   │   │   ├── Contact.tsx
 │   │   │   │   ├── Contacted.tsx
@@ -1407,17 +1430,38 @@
 │   │   │   │   ├── DemandsStatsPage.tsx
 │   │   │   │   ├── EmailHistory.tsx
 │   │   │   │   ├── Gestionnaire.tsx
+│   │   │   │   ├── NetworkSelectorDialog.tsx
+│   │   │   │   ├── ReseauxStatsPage.tsx
 │   │   │   │   └── Status.tsx
 │   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── constants.validation.spec.ts
 │   │   │   ├── server
+│   │   │   │   ├── account-linking.ts
+│   │   │   │   ├── admin-operations.integration.spec.ts
+│   │   │   │   ├── admin-operations.ts
+│   │   │   │   ├── assignment-change.integration.spec.ts
 │   │   │   │   ├── assignment-rules-service.spec.ts
 │   │   │   │   ├── assignment-rules-service.ts
-│   │   │   │   ├── demands-service.integration.spec.ts
-│   │   │   │   ├── demands-service.ts
+│   │   │   │   ├── creation-batch.ts
+│   │   │   │   ├── creation-user.integration.spec.ts
+│   │   │   │   ├── creation-user.ts
+│   │   │   │   ├── eligibility.integration.spec.ts
+│   │   │   │   ├── eligibility.ts
+│   │   │   │   ├── email-communication.ts
+│   │   │   │   ├── gestionnaire-operations.ts
+│   │   │   │   ├── helpers.integration.spec.ts
+│   │   │   │   ├── helpers.ts
+│   │   │   │   ├── legacy-values.ts
+│   │   │   │   ├── manager-notifications.integration.spec.ts
+│   │   │   │   ├── manager-notifications.ts
+│   │   │   │   ├── public-api.ts
+│   │   │   │   ├── relances.ts
+│   │   │   │   ├── stats.ts
+│   │   │   │   ├── tiles.ts
 │   │   │   │   ├── trpc-routes.integration.spec.ts
-│   │   │   │   └── trpc-routes.ts
+│   │   │   │   ├── trpc-routes.ts
+│   │   │   │   └── user-tracking.ts
 │   │   │   └── types.ts
 │   │   ├── diagnostic
 │   │   │   ├── AGENTS.md
@@ -1428,48 +1472,36 @@
 │   │   │       └── trpc-routes.ts
 │   │   ├── email
 │   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── admin
+│   │   │   │       └── EmailsPage.tsx
 │   │   │   ├── email.config.tsx
 │   │   │   ├── index.tsx
-│   │   │   └── react-email
-│   │   │       ├── components.tsx
-│   │   │       └── templates
-│   │   │           ├── auth
-│   │   │           │   ├── activation.tsx
-│   │   │           │   ├── inscription.tsx
-│   │   │           │   └── reset-password.tsx
-│   │   │           └── demands
-│   │   │               ├── _data.ts
-│   │   │               ├── admin-assignment-change.tsx
-│   │   │               ├── admin-gestionnaire-contact.tsx
-│   │   │               ├── admin-new.tsx
-│   │   │               ├── custom-email.tsx
-│   │   │               ├── gestionnaire-new.tsx
-│   │   │               ├── gestionnaire-old.tsx
-│   │   │               ├── tests
-│   │   │               │   ├── creation-demande_copropriete_collectif_inf100m.tsx
-│   │   │               │   ├── creation-demande_copropriete_collectif_inf200m.tsx
-│   │   │               │   ├── creation-demande_copropriete_collectif_sup200m.tsx
-│   │   │               │   ├── creation-demande_copropriete_individuel_inf200m.tsx
-│   │   │               │   ├── creation-demande_copropriete_individuel_sup200m.tsx
-│   │   │               │   ├── creation-demande_maison_individuel_inf200m.tsx
-│   │   │               │   ├── creation-demande_maison_individuel_sup200m.tsx
-│   │   │               │   ├── creation-demande_paris_copropriete_collectif_inf100m.tsx
-│   │   │               │   ├── creation-demande_paris_copropriete_collectif_inf60m.tsx
-│   │   │               │   ├── creation-demande_paris_copropriete_collectif_sup100m.tsx
-│   │   │               │   ├── creation-demande_paris_copropriete_individuel_inf100m.tsx
-│   │   │               │   ├── creation-demande_paris_copropriete_individuel_sup100m.tsx
-│   │   │               │   ├── creation-demande_paris_tertiaire_collectif_inf100m.tsx
-│   │   │               │   ├── creation-demande_paris_tertiaire_collectif_inf60m.tsx
-│   │   │               │   ├── creation-demande_paris_tertiaire_collectif_sup100m.tsx
-│   │   │               │   ├── creation-demande_paris_tertiaire_individuel_inf100m.tsx
-│   │   │               │   ├── creation-demande_paris_tertiaire_individuel_sup100m.tsx
-│   │   │               │   ├── creation-demande_tertiaire_collectif_inf100m.tsx
-│   │   │               │   ├── creation-demande_tertiaire_collectif_inf200m.tsx
-│   │   │               │   ├── creation-demande_tertiaire_collectif_sup200m.tsx
-│   │   │               │   ├── creation-demande_tertiaire_individuel_inf200m.tsx
-│   │   │               │   └── creation-demande_tertiaire_individuel_sup200m.tsx
-│   │   │               ├── user-new.tsx
-│   │   │               └── user-relance.tsx
+│   │   │   ├── react-email
+│   │   │   │   └── components.tsx
+│   │   │   ├── scenarios.ts
+│   │   │   ├── server
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── templates
+│   │   │       ├── auth
+│   │   │       │   ├── gestionnaire
+│   │   │       │   │   └── ouverture-espace.tsx
+│   │   │       │   └── utilisateur
+│   │   │       │       ├── confirmation-inscription.tsx
+│   │   │       │       └── reinitialisation-mot-de-passe.tsx
+│   │   │       └── demands
+│   │   │           ├── _data.ts
+│   │   │           ├── demandeur
+│   │   │           │   ├── confirmation-demande.tsx
+│   │   │           │   ├── enquete-satisfaction.tsx
+│   │   │           │   └── message-gestionnaire.tsx
+│   │   │           ├── equipe-fcu
+│   │   │           │   ├── demande-haut-potentiel.tsx
+│   │   │           │   ├── demande-reaffectation.tsx
+│   │   │           │   └── nouvelle-demande.tsx
+│   │   │           └── gestionnaire
+│   │   │               ├── nouvelles-demandes-a-traiter.tsx
+│   │   │               └── rappel-demandes-en-attente.tsx
 │   │   ├── events
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
@@ -1493,6 +1525,7 @@
 │   │   │   ├── AddressSearch.tsx
 │   │   │   ├── Autocomplete.spec.tsx
 │   │   │   ├── Autocomplete.tsx
+│   │   │   ├── EntrepriseField.tsx
 │   │   │   ├── useDebouncedSwitchMap.spec.ts
 │   │   │   └── useDebouncedSwitchMap.ts
 │   │   ├── geo
@@ -1514,6 +1547,12 @@
 │   │   │       ├── service.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
 │   │   │       └── trpc-routes.ts
+│   │   ├── metrics
+│   │   │   ├── .env.example
+│   │   │   ├── AGENTS.md
+│   │   │   └── server
+│   │   │       ├── api.ts
+│   │   │       └── registry.ts
 │   │   ├── notification
 │   │   │   ├── AGENTS.md
 │   │   │   └── index.tsx
@@ -1530,9 +1569,27 @@
 │   │   │   │   ├── image-optimize-last-date.txt
 │   │   │   │   └── image-optimize.sh
 │   │   │   └── commands.ts
+│   │   ├── permissions
+│   │   │   ├── client
+│   │   │   │   ├── BulkAddNetworksDialog.tsx
+│   │   │   │   ├── PermissionAutocomplete.tsx
+│   │   │   │   ├── PermissionsEditor.tsx
+│   │   │   │   ├── PermissionsInput.tsx
+│   │   │   │   ├── PermissionsMap.tsx
+│   │   │   │   └── PermissionsView.tsx
+│   │   │   ├── commands.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── server
+│   │   │   │   ├── demand-access.spec.ts
+│   │   │   │   ├── demand-access.ts
+│   │   │   │   ├── helpers.ts
+│   │   │   │   ├── map-data.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── service.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── types.ts
 │   │   ├── pro-eligibility-tests
 │   │   │   ├── AGENTS.md
-│   │   │   ├── ELIGIBILITY_TRACKING_PLAN.md
 │   │   │   ├── TRANSITION_TYPES.md
 │   │   │   ├── client
 │   │   │   │   ├── BatchDemandMultiStepForm.tsx
@@ -1559,16 +1616,23 @@
 │   │   │       └── xlsx.ts
 │   │   ├── reseaux
 │   │   │   ├── client
+│   │   │   │   ├── ReseauAutocomplete.tsx
 │   │   │   │   └── admin
-│   │   │   │       └── AdminReseauxPage.tsx
+│   │   │   │       ├── AdminReseauxPage.tsx
+│   │   │   │       ├── NotesCell.tsx
+│   │   │   │       └── RemindersCell.tsx
 │   │   │   ├── commands
 │   │   │   │   └── ecoreseau.ts
 │   │   │   ├── commands.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── server
 │   │   │   │   ├── download-network.ts
+│   │   │   │   ├── geometry-apply.ts
+│   │   │   │   ├── geometry-diff.ts
 │   │   │   │   ├── geometry-operations.ts
 │   │   │   │   ├── geometry-updates.ts
+│   │   │   │   ├── reminders.ts
+│   │   │   │   ├── service.integration.spec.ts
 │   │   │   │   ├── service.ts
 │   │   │   │   ├── sync-pg-to-airtable.ts
 │   │   │   │   ├── trpc-routes.eligibilityStatus.integration.spec.ts
@@ -1639,6 +1703,7 @@
 │   │   └── users
 │   │       ├── AGENTS.md
 │   │       ├── constants.ts
+│   │       ├── role-colors.ts
 │   │       └── server
 │   │           ├── service.ts
 │   │           ├── trpc-routes.integration.spec.ts
@@ -1653,13 +1718,17 @@
 │   │   │   └── index.tsx
 │   │   ├── admin
 │   │   │   ├── assignment-rules.tsx
+│   │   │   ├── data-diagnostic.tsx
 │   │   │   ├── demandes
 │   │   │   │   └── stats.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── diagnostic.tsx
+│   │   │   ├── emails.tsx
 │   │   │   ├── events.tsx
 │   │   │   ├── impostures.tsx
 │   │   │   ├── jobs.tsx
+│   │   │   ├── reseaux
+│   │   │   │   └── stats.tsx
 │   │   │   ├── reseaux.tsx
 │   │   │   ├── tags.tsx
 │   │   │   ├── tests-adresses.tsx
@@ -1694,6 +1763,7 @@
 │   │   │   │   ├── [type]
 │   │   │   │   │   └── [...tileCoordinates].ts
 │   │   │   │   └── network-limits.ts
+│   │   │   ├── metrics.ts
 │   │   │   ├── modification-reseau.ts
 │   │   │   ├── networks
 │   │   │   │   ├── [networkId]
@@ -1813,9 +1883,8 @@
 │   │   ├── authentication.ts
 │   │   ├── config.ts
 │   │   ├── cron
-│   │   │   ├── cron.ts
-│   │   │   ├── launch.ts
-│   │   │   └── saveStatsInDB.ts
+│   │   │   ├── aggregateMonthlyStats.ts
+│   │   │   └── cron.ts
 │   │   ├── db
 │   │   │   ├── airtable.ts
 │   │   │   ├── kysely
@@ -1830,20 +1899,28 @@
 │   │   │       ├── 20260226110000_create_batenr_table.ts
 │   │   │       ├── 20260330120000_fix_demand_assigned_events.ts
 │   │   │       ├── 20260401120000_add_ecoreseau_to_reseaux_de_chaleur.ts
-│   │   │       └── migrator.ts
+│   │   │       ├── 20260402000000_rename_user_created_to_user_registered.ts
+│   │   │       ├── 20260410000001_permissions_system.ts
+│   │   │       ├── 20260410000002_network_reminders_and_notes.ts
+│   │   │       ├── 20260410000003_drop_demo_users.ts
+│   │   │       ├── 20260410000004_pending_assignment_change.ts
+│   │   │       ├── 20260505120000_normalize_network_entity_types.ts
+│   │   │       ├── 20260512000000_rename_demand_assigned_to_demand_validated.ts
+│   │   │       ├── 20260512000001_split_demand_updated_events.ts
+│   │   │       ├── migrator.ts
+│   │   │       └── pending
+│   │   │           └── drop_legacy_tags_and_assignment_rules.ts
 │   │   ├── helpers
 │   │   │   ├── logger.ts
 │   │   │   └── server.ts
 │   │   └── services
 │   │       ├── addresseInformation.ts
-│   │       ├── airtable.ts
 │   │       ├── communeAPotentiel.ts
 │   │       ├── comparateur
 │   │       │   └── configuration.ts
 │   │       ├── emailTemplates.ts
 │   │       ├── export.config.ts
 │   │       ├── export.ts
-│   │       ├── manager.ts
 │   │       ├── matomo.ts
 │   │       ├── matomo_types.ts
 │   │       ├── pdp.ts
@@ -1910,6 +1987,8 @@
 │       ├── date.spec.ts
 │       ├── date.ts
 │       ├── debounce.ts
+│       ├── email.spec.ts
+│       ├── email.ts
 │       ├── env.ts
 │       ├── event-bus.tsx
 │       ├── events.ts
@@ -1938,4 +2017,4 @@
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── vitest.config.mts
-265 directories, 2033 files
+284 directories, 2093 files
