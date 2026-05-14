@@ -1,10 +1,13 @@
-## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 14 avril 2026)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce changelog fait état d'une mise à jour de la version de Next.js, le framework utilisé pour construire l'interface utilisateur des widgets. Cette mise à jour vise à bénéficier des dernières corrections de bugs et améliorations de performance offertes par Next.js.
+Ce changelog présente les récentes améliorations apportées aux widgets personnalisés pour Grist, destinés aux agents de l'administration française. Les modifications se concentrent principalement sur la maintenance technique et la préparation de futures évolutions, avec une mise à jour de la version de Next.js.
+
+### Évolutions fonctionnelles
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de Next.js de la version 16.1.7 à la version 16.2.3 [#175](https://github.com/betagouv/grist-custom-widgets-fr-admin/pull/175).
+- Mise à jour de Next.js vers la version 16.2.3 [#175](https://github.com/betagouv/grist-custom-widgets-fr-admin/pull/175). Cette mise à jour assure la compatibilité avec les dernières versions des dépendances et corrige potentiellement des vulnérabilités de sécurité.
 
 ### Autres changements
-- Aucune autre modification significative n'a été apportée au projet durant cette période.
+Aucun autre changement significatif à signaler.
