@@ -1,26 +1,20 @@
-## Changelog : sites-conformes (30 derniers jours, au 7 mai 2026)
+## Changelog : sites-conformes (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Sites Conformes au cours du dernier mois. Les principales évolutions concernent l'internationalisation de l'interface d'administration, des corrections de bugs liés aux formulaires et à la gestion des URLs, ainsi que la mise en place d'un déploiement simplifié sur Scalingo.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la flexibilité et de la robustesse de la plateforme. Les principales évolutions concernent l'ajout d'une alternative de stockage des médias en PostgreSQL, des corrections de bugs sur l'interface utilisateur, et des améliorations de l'internationalisation pour une meilleure adaptation aux différents contextes linguistiques.  Un déploiement en un clic sur Scalingo a également été mis en place pour faciliter le déploiement de l'application.
 
 ### Évolutions fonctionnelles
-- **Internationalisation:** Ajout de la gestion de l'internationalisation (i18n) pour les champs de formulaire dans l'administration, permettant d'afficher les formulaires dans différentes langues. [#481](https://github.com/numerique-gouv/sites-conformes/pull/481) et [#464](https://github.com/numerique-gouv/sites-conformes/pull/464)
-- **Sélecteur de langue:** Intégration d'un sélecteur de langue dans l'interface d'administration. [#473](https://github.com/numerique-gouv/sites-conformes/pull/473)
-- **Menu utilisateur:** Amélioration du menu utilisateur avec une implémentation plus appropriée. [#3b6f4d2](https://github.com/numerique-gouv/sites-conformes/commit/3b6f4d2)
-- **Correction de bug:** Résolution d'un problème où le nom des champs de formulaire pouvait être vide, causant des erreurs. [#492](https://github.com/numerique-gouv/sites-conformes/issues/492)
-- **Correction d'URL:** Correction d'un problème lié à l'URL des pages. [#3733200](https://github.com/numerique-gouv/sites-conformes/commit/3733200)
+- **Stockage des médias :** Possibilité de stocker les médias directement dans la base de données PostgreSQL, offrant une alternative au stockage sur S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
+- **Correction de bugs front-end :** Résolution de plusieurs bugs affectant l'interface utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
+- **Formulaires :** Correction d'un problème lié au nettoyage des noms de champs de formulaire, assurant un fonctionnement correct des formulaires. [#492](https://github.com/numerique-gouv/sites-conformes/issues/492)
+- **Internationalisation des champs de formulaire :** Les champs de formulaire sont maintenant internationalisables. [#473](https://github.com/numerique-gouv/sites-conformes/issues/473) et [#464](https://github.com/numerique-gouv/sites-conformes/issues/464) et [#481](https://github.com/numerique-gouv/sites-conformes/issues/481)
 
 ### Évolutions techniques
-- **Déploiement Scalingo:** Mise en place d'un déploiement en un clic sur la plateforme Scalingo, simplifiant le processus de mise en production. [#484](https://github.com/numerique-gouv/sites-conformes/pull/484)
-- **Optimisation tutoriel panel:** Optimisation du panel de tutoriel. [#473](https://github.com/numerique-gouv/sites-conformes/pull/473)
-- **Correction header configurable:** Correction du header configurable. [#469](https://github.com/numerique-gouv/sites-conformes/pull/469)
-- **Refactoring migrations:** Suppression et correction de migrations. [#f085b55](https://github.com/numerique-gouv/sites-conformes/commit/f085b55) et [#50e8757](https://github.com/numerique-gouv/sites-conformes/commit/50e8757)
+- **Déploiement simplifié :** Mise en place d'un déploiement en un clic sur la plateforme Scalingo, facilitant le déploiement et la gestion de l'application. [#484](https://github.com/numerique-gouv/sites-conformes/issues/484)
+- **Optimisation du tutoriel :** Amélioration du panneau du tutoriel pour une meilleure expérience utilisateur. [#473](https://github.com/numerique-gouv/sites-conformes/issues/473)
+- **Header configurable :** Correction d'un bug concernant le header configurable. [#469](https://github.com/numerique-gouv/sites-conformes/issues/469)
+- **Cache constant :** Modification du nom d'une variable pour améliorer la clarté du code lié au cache. [#469](https://github.com/numerique-gouv/sites-conformes/issues/469)
 
 ### Autres changements
-- Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/pull/493)
-- Mise à jour des dépendances. [#483](https://github.com/numerique-gouv/sites-conformes/pull/483) et [#1e7b552](https://github.com/numerique-gouv/sites-conformes/commit/1e7b552)
-- Modification du nom d'une variable de cache pour plus de clarté. [#15bffb8](https://github.com/numerique-gouv/sites-conformes/commit/15bffb8)
-- Ajout de commentaires pour améliorer la lisibilité du code. [#f58d720](https://github.com/numerique-gouv/sites-conformes/commit/f58d720)
-- Ajout de gestion d'erreur lors de la validation. [#9fef8cc](https://github.com/numerique-gouv/sites-conformes/commit/9fef8cc)
-- Ajout d'un script pour le sélecteur de langue dans l'administration. [#4f787cd](https://github.com/numerique-gouv/sites-conformes/commit/4f787cd)
-- Ajout d'un script pour le sélecteur de langue dans l'administration. [#154bec6](https://github.com/numerique-gouv/sites-conformes/commit/154bec6)
+- Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
+- Plusieurs mises à jour de dépendances Python ont été effectuées. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501) et [#483](https://github.com/numerique-gouv/sites-conformes/issues/483) et [#464](https://github.com/numerique-gouv/sites-conformes/issues/464)
