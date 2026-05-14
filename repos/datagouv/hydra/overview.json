@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/datagouv/hydra",
   "name": "hydra",
-  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il permet de collecter et d'analyser des données, de les convertir en formats appropriés et de les envoyer à une instance udata.",
+  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il analyse les URL, stocke les informations dans une base de données PostgreSQL, et peut convertir des ressources en tables PostgreSQL ou en PMTiles.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -17,17 +17,17 @@
     "asyncpg",
     "csv-detective",
     "python-magic",
-    "sqlalchemy",
-    "tippecanoe",
+    "pyarrow",
     "rq",
-    "redis"
+    "sqlalchemy",
+    "tippecanoe"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "RQ (Queue asynchrone)"
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
@@ -38,9 +38,10 @@
     "Pytest"
   ],
   "workflows": [
-    "CI/CD with CircleCI and GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Benchmark"
   ],
-  "lastActivity": "2026-04-16T00:00:00Z",
+  "lastActivity": "2026-05-06T00:00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,6 +56,7 @@
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Intelligence Artificielle & NLP"
   ]
 }
