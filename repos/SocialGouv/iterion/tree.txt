@@ -1,4 +1,62 @@
 .
+├── .archive
+│   └── examples
+│       ├── FIXTURES.md
+│       ├── browser_demo.iter
+│       ├── ci_fix_until_green.iter
+│       ├── claw_bedrock_provider.iter
+│       ├── claw_builtin_tools.iter
+│       ├── claw_comprehensive_coverage.iter
+│       ├── claw_hooks_observability.iter
+│       ├── claw_long_context.iter
+│       ├── claw_mcp.iter
+│       ├── claw_permission_safety.iter
+│       ├── claw_read_image.iter
+│       ├── claw_reasoning_effort.iter
+│       ├── claw_subagents.iter
+│       ├── claw_tool_coverage.iter
+│       ├── diff_showcase.iter
+│       ├── dogfood_editor_ui_loop.iter
+│       ├── dogfood_editor_ui_loop.md
+│       ├── dual_model_plan_implement_review.iter
+│       ├── exhaustive_dsl_coverage.iter
+│       ├── feature_dev_review_fix_dual.iter
+│       ├── feature_dev_review_fix_dual.md
+│       ├── feature_request_dual_model.iter
+│       ├── iterion_goai_to_claw_port.iter
+│       ├── llm_router_task_dispatch.iter
+│       ├── playwright_demo.iter
+│       ├── playwright_visual_qa.iter
+│       ├── playwright_visual_qa.md
+│       ├── pr_refine_dual_model_parallel.iter
+│       ├── pr_refine_dual_model_parallel_compliance.iter
+│       ├── pr_refine_single_model.iter
+│       ├── pr_review.iter
+│       ├── pr_review_fix.iter
+│       ├── pr_review_fix_dual.iter
+│       ├── pr_review_fix_dual.md
+│       ├── preview_url_demo.iter
+│       ├── privacy_pipeline.iter
+│       ├── recipe_benchmark.iter
+│       ├── run_console_demo.iter
+│       ├── rust_to_go_port.iter
+│       ├── rust_to_go_port.md
+│       ├── sandbox_build.dockerfile
+│       ├── sandbox_build.iter
+│       ├── sandbox_cloud_observe.iter
+│       ├── sandbox_cloud_proxy.iter
+│       ├── sandbox_cloud_smoke.iter
+│       ├── session_fork.iter
+│       ├── session_inherit_validation.iter
+│       ├── session_review_fix.iter
+│       ├── skill
+│       │   └── skill
+│       │       ├── human_gate.iter
+│       │       ├── loop_with_judge.iter
+│       │       ├── minimal_linear.iter
+│       │       └── parallel_fan_out_join.iter
+│       ├── validate_syntax.js
+│       └── vision_attachments.iter
 ├── .devcontainer
 │   └── devcontainer.json
 ├── .dockerignore
@@ -94,11 +152,16 @@
 │   │   └── version.go
 │   └── iterion-desktop
 │       ├── app.go
+│       ├── appicon.png
 │       ├── asset_proxy.go
 │       ├── bindings.go
 │       ├── build -> ../../build
 │       ├── config.go
 │       ├── config_test.go
+│       ├── daemon_discovery.go
+│       ├── daemon_spawn.go
+│       ├── daemon_spawn_unix.go
+│       ├── daemon_spawn_windows.go
 │       ├── doc.go
 │       ├── env_file.go
 │       ├── events.go
@@ -106,6 +169,7 @@
 │       ├── external_cli_test.go
 │       ├── gtk_theme_linux.go
 │       ├── gtk_theme_other.go
+│       ├── headless.go
 │       ├── keychain.go
 │       ├── main.go
 │       ├── main_stub.go
@@ -115,6 +179,8 @@
 │       ├── path_fix_darwin.go
 │       ├── path_fix_other.go
 │       ├── path_fix_test.go
+│       ├── prgname_linux.go
+│       ├── prgname_other.go
 │       ├── secrets_test.go
 │       ├── server_host.go
 │       ├── single_instance.go
@@ -130,6 +196,8 @@
 │       ├── updater_test.go
 │       ├── url_file.go
 │       ├── wails.json
+│       ├── window_icon.go
+│       ├── window_icon_linux.go
 │       └── window_state.go
 ├── devbox.json
 ├── devbox.lock
@@ -318,6 +386,7 @@
 │   │   │   │   ├── AttachmentFieldInput.tsx
 │   │   │   │   ├── BrowserLivePane.tsx
 │   │   │   │   ├── BrowserPane.tsx
+│   │   │   │   ├── CommitDetailDialog.tsx
 │   │   │   │   ├── CommitsPanel.tsx
 │   │   │   │   ├── EventLog.tsx
 │   │   │   │   ├── FileDiffDialog.tsx
@@ -329,6 +398,7 @@
 │   │   │   │   ├── InfoPanel.tsx
 │   │   │   │   ├── LaunchView.tsx
 │   │   │   │   ├── LeftPanel.tsx
+│   │   │   │   ├── LogLinesView.tsx
 │   │   │   │   ├── NodeDetailPanel.tsx
 │   │   │   │   ├── PauseForm.tsx
 │   │   │   │   ├── QueueDepthBar.tsx
@@ -336,6 +406,7 @@
 │   │   │   │   ├── ReportTab.tsx
 │   │   │   │   ├── ResumeDialog.tsx
 │   │   │   │   ├── RunCanvasIR.tsx
+│   │   │   │   ├── RunCanvasToolbar.tsx
 │   │   │   │   ├── RunHeader.tsx
 │   │   │   │   ├── RunListView.test.ts
 │   │   │   │   ├── RunListView.tsx
@@ -344,9 +415,12 @@
 │   │   │   │   ├── RunView.tsx
 │   │   │   │   ├── Scrubber.tsx
 │   │   │   │   ├── ThinkingFooter.tsx
+│   │   │   │   ├── ToolRunningFooter.tsx
 │   │   │   │   ├── VarFieldInput.test.ts
 │   │   │   │   ├── VarFieldInput.tsx
-│   │   │   │   └── runStatusClasses.ts
+│   │   │   │   ├── runStatusClasses.ts
+│   │   │   │   ├── toolFormatters.test.ts
+│   │   │   │   └── toolFormatters.ts
 │   │   │   ├── SourceView
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
@@ -361,12 +435,15 @@
 │   │   │   │   └── providerDetect.ts
 │   │   │   ├── shared
 │   │   │   │   ├── ConfirmDialog.tsx
+│   │   │   │   ├── ErrorBoundary.tsx
+│   │   │   │   ├── ProjectLabel.tsx
 │   │   │   │   ├── ShortcutsHelp.tsx
 │   │   │   │   └── Toast.tsx
 │   │   │   └── ui
 │   │   │       ├── Badge.tsx
 │   │   │       ├── Button.tsx
 │   │   │       ├── Chip.tsx
+│   │   │       ├── ContextUsageBar.tsx
 │   │   │       ├── Dialog.tsx
 │   │   │       ├── EffortBar.tsx
 │   │   │       ├── IconButton.tsx
@@ -396,6 +473,7 @@
 │   │   │   ├── useCanvasSearch.ts
 │   │   │   ├── useCaretPosition.ts
 │   │   │   ├── useDesktop.ts
+│   │   │   ├── useDocumentTitle.ts
 │   │   │   ├── useEffortCapabilities.ts
 │   │   │   ├── useEscapeStack.ts
 │   │   │   ├── useFileWatcher.ts
@@ -404,6 +482,7 @@
 │   │   │   ├── useHumanNodeSchema.ts
 │   │   │   ├── useInspectorMode.ts
 │   │   │   ├── useLayoutPersistence.ts
+│   │   │   ├── useProjectInfo.ts
 │   │   │   ├── usePromptEditorMount.tsx
 │   │   │   ├── useResolvedEffort.ts
 │   │   │   ├── useRunCommits.ts
@@ -422,6 +501,7 @@
 │   │   │   ├── computeEdgeHandles.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── defaults.ts
+│   │   │   ├── delegateMeta.ts
 │   │   │   ├── desktopBridge.ts
 │   │   │   ├── desktopEvents.ts
 │   │   │   ├── diagnosticHints.test.ts
@@ -449,6 +529,7 @@
 │   │   │   ├── promptVarHeuristics.test.ts
 │   │   │   ├── promptVarHeuristics.ts
 │   │   │   ├── refCompletion.ts
+│   │   │   ├── snapshotReducer.test.ts
 │   │   │   └── snapshotReducer.ts
 │   │   ├── main.tsx
 │   │   ├── store
@@ -461,6 +542,7 @@
 │   │   │   ├── run.ts
 │   │   │   ├── selection.test.ts
 │   │   │   ├── selection.ts
+│   │   │   ├── serverInfo.ts
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
 │   │   ├── views
@@ -492,77 +574,23 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 ├── examples
-│   ├── FIXTURES.md
-│   ├── browser_demo.iter
-│   ├── ci_fix_until_green.iter
-│   ├── claw_bedrock_provider.iter
-│   ├── claw_builtin_tools.iter
-│   ├── claw_comprehensive_coverage.iter
-│   ├── claw_hooks_observability.iter
-│   ├── claw_long_context.iter
-│   ├── claw_mcp.iter
-│   ├── claw_permission_safety.iter
-│   ├── claw_read_image.iter
-│   ├── claw_reasoning_effort.iter
-│   ├── claw_subagents.iter
-│   ├── claw_tool_coverage.iter
+│   ├── bots
+│   │   ├── vibe_feature_dev.bot
+│   │   ├── vibe_review_alternating.bot
+│   │   └── vibe_review_alternating.md
 │   ├── devcontainer-devbox
 │   │   ├── .devcontainer
 │   │   │   └── devcontainer.json
 │   │   ├── README.md
 │   │   └── devbox.json
-│   ├── diff_showcase.iter
-│   ├── dogfood_editor_ui_loop.iter
-│   ├── dogfood_editor_ui_loop.md
-│   ├── dual_model_plan_implement_review.iter
 │   ├── embed.go
-│   ├── exhaustive_dsl_coverage.iter
-│   ├── feature_dev_review_fix_dual.iter
-│   ├── feature_dev_review_fix_dual.md
-│   ├── feature_request_dual_model.iter
 │   ├── github-actions
 │   │   └── iterion-hitl.yml
-│   ├── iterion_goai_to_claw_port.iter
-│   ├── llm_router_task_dispatch.iter
 │   ├── mcp_test_server
 │   │   └── main.go
-│   ├── playwright_demo.iter
-│   ├── playwright_visual_qa.iter
-│   ├── playwright_visual_qa.md
-│   ├── pr_refine_dual_model_parallel.iter
-│   ├── pr_refine_dual_model_parallel_compliance.iter
-│   ├── pr_refine_single_model.iter
-│   ├── pr_review.iter
-│   ├── pr_review_fix.iter
-│   ├── pr_review_fix_dual.iter
-│   ├── pr_review_fix_dual.md
-│   ├── preview_url_demo.iter
-│   ├── privacy_pipeline.iter
-│   ├── recipe_benchmark.iter
-│   ├── run_console_demo.iter
-│   ├── rust_to_go_port.iter
-│   ├── rust_to_go_port.md
-│   ├── sandbox_build.dockerfile
-│   ├── sandbox_build.iter
-│   ├── sandbox_cloud_observe.iter
-│   ├── sandbox_cloud_proxy.iter
-│   ├── sandbox_cloud_smoke.iter
 │   ├── secured-renovacy.iter
 │   ├── secured-renovacy.md
-│   ├── secured-renovacy.select-candidate.js
-│   ├── session_fork.iter
-│   ├── session_inherit_validation.iter
-│   ├── session_review_fix.iter
-│   ├── skill
-│   │   ├── human_gate.iter
-│   │   ├── loop_with_judge.iter
-│   │   ├── minimal_linear.iter
-│   │   └── parallel_fan_out_join.iter
-│   ├── validate_syntax.js
-│   ├── vibe_feature_dev.iter
-│   ├── vibe_review_alternating.iter
-│   ├── vibe_review_alternating.md
-│   └── vision_attachments.iter
+│   └── secured-renovacy.select-candidate.js
 ├── go.mod
 ├── go.sum
 ├── marketplace.json
@@ -589,6 +617,8 @@
 │   │   ├── delegate
 │   │   │   ├── claude_code.go
 │   │   │   ├── claude_code_cred_test.go
+│   │   │   ├── claude_code_model_meta_test.go
+│   │   │   ├── claude_code_ratelimit_test.go
 │   │   │   ├── claudesdk
 │   │   │   │   ├── agent.go
 │   │   │   │   ├── channel.go
@@ -620,6 +650,7 @@
 │   │   │   ├── multiplexer_test.go
 │   │   │   ├── parse.go
 │   │   │   ├── registry.go
+│   │   │   ├── tooluse_log_test.go
 │   │   │   └── truncate.go
 │   │   ├── detect
 │   │   │   ├── detect.go
@@ -665,7 +696,7 @@
 │   │   │   ├── generation_tool.go
 │   │   │   ├── generation_types.go
 │   │   │   ├── hooks.go
-│   │   │   ├── hooks_test.go
+│   │   │   ├── iteration_ctx.go
 │   │   │   ├── lifecycle_hooks.go
 │   │   │   ├── lifecycle_hooks_test.go
 │   │   │   ├── llm_tool.go
@@ -675,8 +706,10 @@
 │   │   │   ├── registry.go
 │   │   │   ├── resolve_backend_test.go
 │   │   │   ├── schema.go
+│   │   │   ├── schema_test.go
 │   │   │   ├── session.go
 │   │   │   ├── session_test.go
+│   │   │   ├── stamp_delegate_meta_test.go
 │   │   │   ├── streaming_types.go
 │   │   │   ├── subagent.go
 │   │   │   ├── template_ctx.go
@@ -684,38 +717,41 @@
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
-│   │   └── tool
-│   │       ├── adapter.go
-│   │       ├── classifier.go
-│   │       ├── classifier_test.go
-│   │       ├── claw_builtins.go
-│   │       ├── claw_builtins_test.go
-│   │       ├── claw_smoke_test.go
-│   │       ├── policy.go
-│   │       ├── policy_test.go
-│   │       ├── privacy
-│   │       │   ├── detector
-│   │       │   │   ├── detector.go
-│   │       │   │   ├── detector_test.go
-│   │       │   │   ├── entropy.go
-│   │       │   │   ├── entropy_test.go
-│   │       │   │   ├── rules.go
-│   │       │   │   ├── rules_test.go
-│   │       │   │   ├── secret_rules.go
-│   │       │   │   └── testdata
-│   │       │   │       ├── secrets_negative.txt
-│   │       │   │       └── secrets_positive.txt
-│   │       │   ├── doc.go
-│   │       │   ├── register.go
-│   │       │   ├── register_test.go
-│   │       │   ├── vault.go
-│   │       │   └── vault_test.go
-│   │       ├── registry.go
-│   │       ├── registry_test.go
-│   │       ├── rule_policy.go
-│   │       ├── rule_policy_test.go
-│   │       ├── schema.go
-│   │       └── schema_test.go
+│   │   ├── tool
+│   │   │   ├── adapter.go
+│   │   │   ├── classifier.go
+│   │   │   ├── classifier_test.go
+│   │   │   ├── claw_builtins.go
+│   │   │   ├── claw_builtins_test.go
+│   │   │   ├── claw_smoke_test.go
+│   │   │   ├── policy.go
+│   │   │   ├── policy_test.go
+│   │   │   ├── privacy
+│   │   │   │   ├── detector
+│   │   │   │   │   ├── detector.go
+│   │   │   │   │   ├── detector_test.go
+│   │   │   │   │   ├── entropy.go
+│   │   │   │   │   ├── entropy_test.go
+│   │   │   │   │   ├── rules.go
+│   │   │   │   │   ├── rules_test.go
+│   │   │   │   │   ├── secret_rules.go
+│   │   │   │   │   └── testdata
+│   │   │   │   │       ├── secrets_negative.txt
+│   │   │   │   │       └── secrets_positive.txt
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── register.go
+│   │   │   │   ├── register_test.go
+│   │   │   │   ├── vault.go
+│   │   │   │   └── vault_test.go
+│   │   │   ├── registry.go
+│   │   │   ├── registry_test.go
+│   │   │   ├── rule_policy.go
+│   │   │   ├── rule_policy_test.go
+│   │   │   ├── schema.go
+│   │   │   └── schema_test.go
+│   │   └── tooldisplay
+│   │       ├── display.go
+│   │       └── display_test.go
 │   ├── benchmark
 │   │   ├── asymptote
 │   │   │   ├── aggregator.go
@@ -750,7 +786,7 @@
 │   │   ├── sandbox.go
 │   │   ├── templates
 │   │   │   ├── pr_refine_single_model.iter
-│   │   │   └── pr_refine_single_model_backend.iter
+│   │   │   └── pr_refine_single_model_backend.bot
 │   │   ├── tty.go
 │   │   ├── tty_darwin.go
 │   │   ├── tty_linux.go
@@ -784,6 +820,7 @@
 │   │   │   ├── compile.go
 │   │   │   ├── compile_test.go
 │   │   │   ├── compute_when_test.go
+│   │   │   ├── env_expand_test.go
 │   │   │   ├── ir.go
 │   │   │   ├── mermaid.go
 │   │   │   ├── mermaid_test.go
@@ -801,12 +838,25 @@
 │   │   │   ├── parser.go
 │   │   │   ├── parser_test.go
 │   │   │   └── token.go
+│   │   ├── testdata
+│   │   │   ├── ci_fix_until_green.iter
+│   │   │   ├── exhaustive_dsl_coverage.iter
+│   │   │   ├── pr_refine_dual_model_parallel.iter
+│   │   │   ├── pr_refine_dual_model_parallel_compliance.iter
+│   │   │   ├── pr_refine_single_model.iter
+│   │   │   ├── recipe_benchmark.iter
+│   │   │   ├── rust_to_go_port.iter
+│   │   │   └── skill
+│   │   │       └── minimal_linear.iter
 │   │   ├── types
 │   │   │   └── types.go
-│   │   └── unparse
-│   │       ├── roundtrip_test.go
-│   │       ├── unparse.go
-│   │       └── unparse_test.go
+│   │   ├── unparse
+│   │   │   ├── roundtrip_test.go
+│   │   │   ├── unparse.go
+│   │   │   └── unparse_test.go
+│   │   └── workflowfile
+│   │       ├── workflowfile.go
+│   │       └── workflowfile_test.go
 │   ├── git
 │   │   ├── diff.go
 │   │   ├── git.go
@@ -815,6 +865,7 @@
 │   │   ├── numstat.go
 │   │   ├── numstat_test.go
 │   │   ├── range.go
+│   │   ├── range_test.go
 │   │   ├── safety.go
 │   │   └── status.go
 │   ├── identity
@@ -918,6 +969,8 @@
 │   │   │   ├── driver.go
 │   │   │   ├── driver_test.go
 │   │   │   ├── integration_test.go
+│   │   │   ├── orphans.go
+│   │   │   ├── orphans_test.go
 │   │   │   └── runtime.go
 │   │   ├── exec_helpers.go
 │   │   ├── factory.go
@@ -979,6 +1032,7 @@
 │   │   ├── runs.go
 │   │   ├── runs_browser.go
 │   │   ├── runs_commits.go
+│   │   ├── runs_commits_test.go
 │   │   ├── runs_files.go
 │   │   ├── runs_files_test.go
 │   │   ├── runs_log.go
@@ -993,6 +1047,8 @@
 │   │   ├── runs_ws_test.go
 │   │   ├── server.go
 │   │   ├── server_info.go
+│   │   ├── spa.go
+│   │   ├── spa_test.go
 │   │   ├── static
 │   │   │   └── .gitkeep
 │   │   ├── timefmt.go
@@ -1031,6 +1087,8 @@
 │       ├── pid.go
 │       ├── pid_test.go
 │       ├── run.go
+│       ├── run_env.go
+│       ├── run_env_test.go
 │       ├── runname.go
 │       ├── runname_test.go
 │       ├── store.go
@@ -7159,4 +7217,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1080 directories, 6627 files
+1088 directories, 6677 files
