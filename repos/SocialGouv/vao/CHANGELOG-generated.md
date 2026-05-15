@@ -1,25 +1,28 @@
-## Changelog : vao (30 derniers jours, au 12 mai 2026)
+## Changelog : vao (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de VAO, le système d'information pour la dématérialisation des procédures de séjours pour personnes handicapées. Les dernières mises à jour se concentrent sur l'amélioration de l'expérience utilisateur dans le back-office (BO) et l'administration des agréments, notamment en corrigeant des problèmes d'accessibilité, de validation de formulaires et de gestion des fichiers. Des améliorations techniques ont également été apportées, notamment concernant les tests et l'initialisation de la base de données.
+Ce changelog présente les améliorations apportées à VAO au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de l'expérience utilisateur, notamment sur les formulaires d'agrément et la gestion des documents, ainsi que des optimisations techniques et des corrections de sécurité. Des améliorations ont également été apportées à l'initialisation de la base de données et aux tests.
 
 ### Évolutions fonctionnelles
-- **Agrément :** Amélioration de la gestion des fichiers lors du renouvellement des agréments [#1295](https://github.com/SocialGouv/vao/issues/1295).
-- **Agrément :** Ajout de la possibilité de gérer les statuts "A_CORRIGER" des agréments dans le back-office [#1390](https://github.com/SocialGouv/vao/issues/1390).
-- **Agrément :** Ajout de l'envoi de mails de confirmation pour les demandes d'agrément [#1286](https://github.com/SocialGouv/vao/issues/1286).
-- **Interface utilisateur :** Corrections d'accessibilité (RGAA) sur les étapes 1 et 3 du processus d'agrément [#1281](https://github.com/SocialGouv/vao/issues/1281), [#1284](https://github.com/SocialGouv/vao/issues/1284), [#1296](https://github.com/SocialGouv/vao/issues/1296).
-- **Formulaires :** Corrections de validation et d'affichage sur les étapes 2, 3 et 4 du processus d'agrément [#1272](https://github.com/SocialGouv/vao/issues/1272), [#1279](https://github.com/SocialGouv/vao/issues/1279), [#1258](https://github.com/SocialGouv/vao/issues/1258), [#1259](https://github.com/SocialGouv/vao/issues/1259).
-- **Back-office :** Amélioration de l'affichage des dates et des informations relatives aux agréments [#1333](https://github.com/SocialGouv/vao/issues/1333).
-- **Fusager :** Ajout de fonctionnalités pour la gestion des JDMA et des messages [#1266](https://github.com/SocialGouv/vao/issues/1266), [#1273](https://github.com/SocialGouv/vao/issues/1273).
+- **Agrément :** Correction du défilement des onglets dans le back-office ([#1325](https://github.com/SocialGouv/vao/issues/1325)).
+- **Agrément :** Amélioration de la validation des agréments et gestion des statuts (A_CORRIGER) ([#1327](https://github.com/SocialGouv/vao/issues/1327), [#1313](https://github.com/SocialGouv/vao/issues/1313)).
+- **Documents :** Correction de l'upload des documents pour le renouvellement des agréments ([#1320](https://github.com/SocialGouv/vao/issues/1320), [#1384](https://github.com/SocialGouv/vao/issues/1384)).
+- **Documents :** Ajout de la gestion des fichiers obligatoires et des contraintes sur les documents ([#1385](https://github.com/SocialGouv/vao/issues/1385)).
+- **Adresse :** Correction du formattage de l'adresse à l'étape 3 du processus ([#1282](https://github.com/SocialGouv/vao/issues/1282), [#1085](https://github.com/SocialGouv/vao/issues/1085)).
+- **Accessibilité :** Amélioration de l'accessibilité des boutons et labels ([#1281](https://github.com/SocialGouv/vao/issues/1281), [#1084](https://github.com/SocialGouv/vao/issues/1084)).
+- **Confirmation d'agrément :** Implémentation de l'envoi d'emails de confirmation pour les demandes d'agrément ([#1286](https://github.com/SocialGouv/vao/issues/1286), [#1149](https://github.com/SocialGouv/vao/issues/1149)).
+- **Fusager :** Modifications et transmission des agréments ([#1306](https://github.com/SocialGouv/vao/issues/1306), [#1318](https://github.com/SocialGouv/vao/issues/1318), [#1392](https://github.com/SocialGouv/vao/issues/1392)).
+- **Fusager :** Ajout de la liste des JDMA ([#1268](https://github.com/SocialGouv/vao/issues/1268)).
 
 ### Évolutions techniques
-- **Tests :** Amélioration de la couverture des tests d'intégration et ajout de tests frontend au CI [#1305](https://github.com/SocialGouv/vao/issues/1305), [#1307](https://github.com/SocialGouv/vao/issues/1307), [#1309](https://github.com/SocialGouv/vao/issues/1309), [#1315](https://github.com/SocialGouv/vao/issues/1315), [#1317](https://github.com/SocialGouv/vao/issues/1317), [#1319](https://github.com/SocialGouv/vao/issues/1319).
-- **Base de données :** Refonte du processus d'initialisation de la base de données avec l'ajout d'un Dockerfile dédié et correction des chemins [#1304](https://github.com/SocialGouv/vao/issues/1304), [#1324](https://github.com/SocialGouv/vao/issues/1324).
-- **CI/CD :** Corrections et améliorations des actions de build de l'image database-init.
-- **Code :** Refactoring et passage en TypeScript de certaines parties du code.
+- **Tests :** Ajout et amélioration des tests d'intégration et frontend ([#1307](https://github.com/SocialGouv/vao/issues/1307), [#1309](https://github.com/SocialGouv/vao/issues/1309), [#1315](https://github.com/SocialGouv/vao/issues/1315)).
+- **CI/CD :** Corrections pour les tests E2E en CI ([#1328](https://github.com/SocialGouv/vao/issues/1328)).
+- **Base de données :** Refonte du processus d'initialisation de la base de données avec l'ajout d'un Dockerfile dédié ([#1304](https://github.com/SocialGouv/vao/issues/1304), [#1324](https://github.com/SocialGouv/vao/issues/1324)).
+- **Refactoring :** Passage de certaines parties du code en TypeScript pour une meilleure maintenabilité ([#1385](https://github.com/SocialGouv/vao/issues/1385)).
+- **Sécurité :** Correction de vulnérabilités identifiées par SonarQube ([#1319](https://github.com/SocialGouv/vao/issues/1319)).
+- **Authentification :** Correction de la déconnexion et du refresh token ([#1310](https://github.com/SocialGouv/vao/issues/1310)).
 
 ### Autres changements
-- Correction de coquilles et amélioration de la lisibilité du code.
-- Suppression de branches inutiles.
+- Amélioration de la couverture des tests.
+- Corrections de style et de code.
 - Mise à jour de la documentation.
-- Amélioration de la gestion des erreurs et des logs.
