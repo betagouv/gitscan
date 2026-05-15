@@ -1,46 +1,41 @@
 ## Changelog : messages (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de Messages se concentrent sur l'amélioration de l'expérience utilisateur, notamment en permettant le redimensionnement des panneaux, l'assignation de threads, et en corrigeant des bugs liés à l'affichage et au traitement des messages. Des améliorations techniques ont également été apportées pour optimiser la recherche, la gestion des index et la sécurité.
+Les dernières mises à jour de Messages se concentrent sur l'amélioration de l'expérience utilisateur, notamment en permettant le redimensionnement des panneaux, l'assignation de threads, et l'ajout de fonctionnalités de rafraîchissement et de lecture/non-lecture des messages. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Possibilité d'assigner des threads à des utilisateurs [#659].
-- Amélioration de l'interface utilisateur : les sections des panneaux sont désormais redimensionnables.
-- Indication visuelle pour confirmer le rafraîchissement de la boîte de réception.
-- Possibilité d'inviter des utilisateurs qui ne se sont pas encore connectés [#644].
-- Ajout d'une action pour marquer les threads comme lus/non lus.
-- Amélioration de l'affichage des étiquettes imbriquées dans l'en-tête du panneau des threads [#658].
-- Possibilité d'utiliser un ID de canal spécifique pour le widget de feedback.
-- Information sur le délai de propagation DNS ajoutée à l'interface utilisateur [#654].
-- Permettre aux spectateurs de threads de poster des commentaires internes [#652].
-- Ajout de la possibilité d'assigner des étiquettes avec l'archivage et le widget d'étiquettes en masse.
+- Possibilité d'assigner des threads à des utilisateurs. [#2673725](https://github.com/suitenumerique/messages/issues/2673725)
+- Ajout d'une confirmation visuelle (tooltip) lors du rafraîchissement de la boîte de réception. [#858e995](https://github.com/suitenumerique/messages/commit/858e995)
+- Ajout des actions "Marquer comme lu/non lu" sur la barre d'actions des threads. [#659](https://github.com/suitenumerique/messages/issues/659)
+- Possibilité de redimensionner les sections des panneaux de l'interface utilisateur. [#8a7cb8e](https://github.com/suitenumerique/messages/commit/8a7cb8e)
+- Possibilité d'inviter des utilisateurs qui ne se sont pas encore connectés. [#644](https://github.com/suitenumerique/messages/issues/644)
+- Amélioration de l'affichage des étiquettes imbriquées dans l'en-tête du panneau des threads. [#658](https://github.com/suitenumerique/messages/issues/658)
 
 ### Évolutions techniques
-- Refactorisation de la gestion du cache des requêtes de threads [#642].
-- Optimisation de la recherche et de la réindexation : remplacement de `delete_by_query` par une suppression en masse par ID, gestion des erreurs de transport OpenSearch et report des tâches d'indexation.
-- Amélioration du payload en masse pour la recherche [#659].
-- Correction de problèmes de race condition dans la suppression du dernier éditeur.
-- Mise à jour de la logique du widget pour utiliser la dernière version [#649].
-- Correction de la configuration des noms de processus dans Procfile pour le déploiement.
-- Placement des imports et des files d'attente de worker de réindexation dans des conteneurs dédiés [#643].
-- Correction de la gestion des erreurs de tâches Celery non sérialisables et arrêt du polling infini [#633].
-- Correction de la gestion des caractères spéciaux dans les mots de passe générés [#640].
-- Amélioration de la gestion des erreurs lors de l'analyse des e-mails avec UTF-8 [#656].
-- Mise à jour de Keycloak vers la version 26.6.1 [#637].
-- Amélioration de la sécurité : factorisation du code SSRF et autorisation des redirections dans le proxy d'image [#631].
-- Ajout de backends d'authentification inbound configurables [#636].
+- Refactorisation de la gestion du cache des requêtes de threads. [#642](https://github.com/suitenumerique/messages/issues/642)
+- Amélioration de la performance de la recherche en utilisant des suppressions en masse par ID au lieu de requêtes de suppression.
+- Optimisation du chargement des tâches d'indexation pour améliorer la réactivité.
+- Correction de problèmes de gestion des erreurs de tâches Celery pour éviter les boucles infinies.
+- Correction de problèmes liés aux erreurs de transport OpenSearch.
+- Amélioration de la gestion des erreurs lors de la suppression des derniers éditeurs.
+- Correction de la gestion des caractères spéciaux dans les mots de passe générés pour renforcer la sécurité. [#640](https://github.com/suitenumerique/messages/issues/640)
+- Correction de la gestion des erreurs liées à la sérialisation Boto3.
+- Mise à jour de Keycloak vers la version 26.6.1. [#637](https://github.com/suitenumerique/messages/issues/637)
+- Amélioration de la gestion des erreurs SSRF et ajout de la possibilité de rediriger dans le proxy d'images. [#631](https://github.com/suitenumerique/messages/issues/631)
+- Ajout de backends d'authentification entrants configurables. [#636](https://github.com/suitenumerique/messages/issues/636)
 
 ### Autres changements
-- Localisation du séparateur de pièces jointes.
-- Correction de l'initialisation de l'entrée d'événement de thread lors de l'ouverture.
-- Correction de l'affichage des popups d'étiquettes avec le modal de création d'étiquette [#635].
-- Correction d'un bug empêchant l'utilisation de tous les droits d'édition sur les mutations de thread.
-- Alignement du bouton d'envoi sur la gauche.
-- Amélioration du format de date de l'événement de thread.
-- Mise à jour des dépendances Cunningham et ui-kit.
-- Application forcée de la langue par défaut [#647].
-- Correction d'un bug empêchant l'affichage correct des étiquettes imbriquées [#658].
-- Correction de la gestion des erreurs de tâches Celery non sérialisables et arrêt du polling infini [#633].
-- Ajout de logs pour le proxy SOCKS dans la livraison sortante [#626].
-- Désactivation du menu d'application lorsque aucune option n'est disponible.
-- Correction d'un bug lié à l'affichage des popups d'étiquettes avec le modal de création d'étiquette [#635].
+- Localisation du séparateur de pièces jointes. [#1b03e1d](https://github.com/suitenumerique/messages/commit/1b03e1d)
+- Ajout d'informations sur le délai de propagation DNS. [#654](https://github.com/suitenumerique/messages/issues/654)
+- Correction d'un bug empêchant l'affichage correct des commentaires internes sur les threads. [#632](https://github.com/suitenumerique/messages/issues/632)
+- Correction d'un bug lié à l'empilement des popups d'étiquettes. [#635](https://github.com/suitenumerique/messages/issues/635)
+- Correction d'un bug empêchant le focus sur le champ "à" lors d'un transfert.
+- Correction de la logique du widget pour utiliser la dernière version. [#649](https://github.com/suitenumerique/messages/issues/649)
+- Correction de la configuration des noms de processus dans Procfile. [#648](https://github.com/suitenumerique/messages/issues/648)
+- Placement des importations et des files d'attente de worker de réindexation dans des conteneurs dédiés. [#643](https://github.com/suitenumerique/messages/issues/643)
+- Suppression du marquage des emails "De=À" comme expéditeur. [#652](https://github.com/suitenumerique/messages/issues/652)
+- Ajout de la possibilité d'utiliser un ID de canal spécifique pour le widget de feedback. [#655](https://github.com/suitenumerique/messages/issues/655)
+- Forcer l'inclusion de caractères spéciaux dans les mots de passe générés.
+- Correction de la gestion des cas limites d'analyse d'e-mails avec UTF8. [#656](https://github.com/suitenumerique/messages/issues/656)
+- Forcer la langue par défaut. [#647](https://github.com/suitenumerique/messages/issues/647)
+- Support des attributs legacy et nouveaux pour le widget. [#650](https://github.com/suitenumerique/messages/issues/650)
