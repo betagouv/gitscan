@@ -1,100 +1,40 @@
-## Changelog : euphrosyne (30 derniers jours, au 8 mai 2026)
+## Changelog : euphrosyne (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'implémentation d'un nouveau système de gestion du cycle de vie des données des projets, permettant de gérer leur refroidissement (archivage) et leur disponibilité. Des améliorations ont également été apportées à l'interface utilisateur pour refléter ces changements et faciliter la gestion des projets. De plus, des mises à jour de dépendances et des corrections de bugs ont été intégrées pour améliorer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation d'une gestion du cycle de vie des données de projet, incluant des fonctionnalités de refroidissement (cooling) des données et une gestion des états de projet plus fine. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour la gestion des participations et des opérations de lifecycle, ainsi que des corrections de bugs et des mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout d'un support pour les watchers Goodflag, permettant de suivre l'état des fonctionnalités.
-- Amélioration de l'interface utilisateur pour afficher l'état du cycle de vie des projets et bloquer les mutations sur les projets dans des états immuables.
-- Implémentation d'un panneau d'administration pour gérer le cycle de vie des projets.
-- Possibilité pour les leaders de modifier leur propre participation aux projets.
-- Amélioration de l'interface utilisateur pour la liste des opérations de cycle de vie.
-- Correction d'un bug empêchant l'utilisation de l'API d'initialisation des outils avec le slug du projet.
-- Correction d'un bug dans le modal de planification pour éviter la soumission lors de la fermeture.
-- Les administrateurs peuvent maintenant modifier les participations.
-- Ajout d'une période de grâce avant de refroidir un projet.
+- Ajout de la possibilité pour les responsables de modifier leurs propres participations [#1866](https://github.com/betagouv/euphrosyne/pulls/1866).
+- Amélioration de l'interface utilisateur pour la liste des opérations de cycle de vie [#1851](https://github.com/betagouv/euphrosyne/pulls/1851).
+- Ajout d'une période de grâce avant le refroidissement d'un projet.
+- Amélioration de l'alignement des colonnes de participation dans l'interface utilisateur [#1897](https://github.com/betagouv/euphrosyne/pulls/1897).
+- Possibilité pour les administrateurs de modifier le workflow des employés.
+- Ajout d'un panneau d'administration pour la gestion du cycle de vie des projets dans l'interface utilisateur.
+- Implémentation de transitions d'état du cycle de vie des projets et de règles de protection [#1857](https://github.com/betagouv/euphrosyne/pulls/1857).
+- Ajout d'un planificateur automatique de refroidissement quotidien pour les projets éligibles.
+- Implémentation d'une commande pour calculer la taille et le nombre de fichiers d'une exécution.
+- Ajout d'un endpoint pour obtenir l'ID d'opération.
+- Implémentation d'un endpoint de rappel pour la gestion des données.
+- Amélioration de la documentation et des notes relatives au cycle de vie des données.
 
 ### Évolutions techniques
-- Implémentation d'un nouveau système de gestion du cycle de vie des données des projets (refroidissement, archivage).
-- Refactorisation de l'API de gestion des données pour supporter le nouveau cycle de vie.
-- Ajout d'une planification automatique quotidienne pour refroidir les projets éligibles.
-- Mise en place d'un workflow de déploiement sur Scalingo lors de la publication de nouvelles versions.
-- Mise à jour de nombreuses dépendances : Django (6.0.4), Pillow (12.2.0), axios (1.15.0), dotenv (17.4.0), mini-css-extract-plugin (2.10.2), vitest (4.1.5), typescript-eslint/eslint-plugin, jsdom, sentry/browser, webpack, cropperjs, prettier, etc.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
-- Amélioration de la gestion des erreurs et de la robustesse de l'application.
+- Refactorisation de la gestion du cycle de vie des données au niveau du projet, avec de nouveaux modèles et une logique d'éligibilité.
+- Mise en place d'un système de gestion des états de projet (HOT, COOL, COOLING) avec des restrictions d'accès et de modification.
+- Ajout d'un workflow de déploiement vers Scalingo lors de la publication d'une nouvelle version.
 - Utilisation du slug du projet pour le renommage du répertoire du projet.
-- Suppression du support Palissy pour POP.
-- Utilisation de la nouvelle API POP et du service IIIF.
+- Correction de l'analyse de l'ID d'exécution dans le middleware [#1895](https://github.com/betagouv/euphrosyne/pulls/1895).
+- Suppression de `downlevelIteration` du fichier `tsconfig.json`.
+- Mise à jour de plusieurs dépendances : Django, djangorestframework, django-debug-toolbar, typescript, jsdom, prettier, vitest, webpack, axios, sentry, psycopg2, ipython, pytest, reportlab, fast-uri, fast-xml-builder, django-stubs, social-auth-app-django, wheel, sentry-sdk, types-requests, cropperjs, @typescript-eslint/eslint-plugin.
+- Ajout de type ignore pour améliorer la compatibilité.
+- Correction de l'emplacement du décorateur `api_view`.
+- Ajout de tests pour la récupération du cycle de vie.
+- Amélioration de la gestion des erreurs lors de l'initialisation de l'application.
 
 ### Autres changements
-- Ajout de documentation pour les nouvelles fonctionnalités de gestion du cycle de vie des données.
-- Mise à jour des traductions françaises pour les nouveaux messages.
-- Nettoyage du code et amélioration de la lisibilité.
-- Ajout de variables d'environnement manquantes dans le fichier `.env.example`.
-- Correction de la compatibilité de la vue Workplace lorsque la gestion des données est désactivée.
-- Correction de l'appel de l'endpoint euphro tools avec le slug du projet.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Suppression de l'importation de POP.
-- Ajout de tests pour la récupération du cycle de vie.
-- Ajout d'un endpoint pour obtenir l'ID d'opération.
-- Ajout de la possibilité de restaurer des données.
-- Amélioration de la gestion des erreurs lors de l'absence de `EUPHROSYNE_TOOLS_API_URL`.
-- Ajout d'un plan initial pour la gestion du cycle de vie des données.
-- Ajout d'un plan initial pour l'épique.
-- Ajout de modèles RunData et LifecycleOperation.
-- Amélioration de la logique d'éligibilité au refroidissement.
-- Ajout de la possibilité de supprimer les données sources lors du refroidissement.
-- Ajout de la possibilité de calculer la taille des données de run et le nombre de fichiers.
-- Ajout de la commande `cool_project`.
-- Ajout de la commande `data_management`.
-- Ajout de la commande `restore`.
-- Amélioration de la gestion des erreurs de démarrage de la gestion des données.
-- Ajout de la possibilité de calculer la disponibilité des données du projet.
-- Ajout d'un endpoint backend-to-backend pour le rôle de stockage du projet.
-- Migration du bouton Virtual Office vers TypeScript.
-- Amélioration des messages d'erreur et des traductions françaises.
-- Correction de la compatibilité de la vue Workplace lorsque la gestion des données est désactivée.
-- Correction de l'appel de l'endpoint de callback du cycle de vie pour exiger une authentification.
-- Ajout de la possibilité de définir une date d'embargo pour le refroidissement.
-- Augmentation de la durée par défaut du refroidissement à 24 mois.
-- Ajout d'une gestion plus robuste des échecs de démarrage de la gestion des données.
-- Ajout de la possibilité de définir un ID d'opération.
-- Ajout de la possibilité de calculer la taille des données de run et le nombre de fichiers.
-- Ajout de la commande `cool_project`.
-- Ajout de la commande `data_management`.
-- Ajout de la commande `restore`.
-- Amélioration de la gestion des erreurs de démarrage de la gestion des données.
-- Ajout de la possibilité de calculer la disponibilité des données du projet.
-- Ajout d'un endpoint backend-to-backend pour le rôle de stockage du projet.
-- Migration du bouton Virtual Office vers TypeScript.
-- Amélioration des messages d'erreur et des traductions françaises.
-- Correction de la compatibilité de la vue Workplace lorsque la gestion des données est désactivée.
-- Correction de l'appel de l'endpoint de callback du cycle de vie pour exiger une authentification.
-- Ajout de la possibilité de définir une date d'embargo pour le refroidissement.
-- Augmentation de la durée par défaut du refroidissement à 24 mois.
-- Ajout d'une gestion plus robuste des échecs de démarrage de la gestion des données.
-- Ajout de la possibilité de définir un ID d'opération.
-- Ajout de la possibilité de calculer la taille des données de run et le nombre de fichiers.
-- Ajout de la commande `cool_project`.
-- Ajout de la commande `data_management`.
-- Ajout de la commande `restore`.
-- Amélioration de la gestion des erreurs de démarrage de la gestion des données.
-- Ajout de la possibilité de calculer la disponibilité des données du projet.
-- Ajout d'un endpoint backend-to-backend pour le rôle de stockage du projet.
-- Migration du bouton Virtual Office vers TypeScript.
-- Amélioration des messages d'erreur et des traductions françaises.
-- Correction de la compatibilité de la vue Workplace lorsque la gestion des données est désactivée.
-- Correction de l'appel de l'endpoint de callback du cycle de vie pour exiger une authentification.
-- Ajout de la possibilité de définir une date d'embargo pour le refroidissement.
-- Augmentation de la durée par défaut du refroidissement à 24 mois.
-- Ajout d'une gestion plus robuste des échecs de démarrage de la gestion des données.
-- Ajout de la possibilité de définir un ID d'opération.
-- Ajout de la possibilité de calculer la taille des données de run et le nombre de fichiers.
-- Ajout de la commande `cool_project`.
-- Ajout de la commande `data_management`.
-- Ajout de la commande `restore`.
-- Amélioration de la gestion des erreurs de démarrage de la gestion des données.
-- Ajout de la possibilité de calculer la disponibilité des données du projet.
-- Ajout d'un endpoint backend-to-backend pour le rôle de stockage du projet.
-- Migration du bouton Virtual Office vers TypeScript.
-- Amélioration des messages d'erreur et des traductions françaises.
+- Ajout de traductions manquantes.
+- Correction de l'utilisation du slug du projet pour les URL de présignature des documents.
+- Ajout de la variable d'environnement `DATA_COOLING_ENABLE` au fichier `env.example`.
+- Mise à jour de la documentation du projet.
+- Correction de l'utilisation d'IsLabAdminUser dans les vues API de gestion des données.
+- Ajout d'une documentation pour la gestion des données.
+- Ajout d'un fichier `epic.md` décrivant la gestion du cycle de vie des données.
