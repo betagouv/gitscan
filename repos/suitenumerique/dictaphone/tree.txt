@@ -116,6 +116,7 @@
     │   │   │   ├── 0006_alter_aifilejob_remote_job_id.py
     │   │   │   ├── 0007_aifilejob_docs_app_id.py
     │   │   │   ├── 0008_user_flag_show_mobile_app_popup.py
+    │   │   │   ├── 0009_aifilejob_language.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── static
@@ -132,6 +133,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_api_ai_jobs_open_in_docs.py
     │   │   │   │   ├── test_api_ai_jobs_results.py
+    │   │   │   │   ├── test_api_ai_jobs_retry.py
     │   │   │   │   └── test_api_files_ai_api_webhook.py
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
@@ -159,6 +161,7 @@
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_admin.py
     │   │   │   ├── test_api_frontend_configuration.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_models_ai_jobs.py
@@ -589,6 +592,8 @@
         ├── patches
         │   └── react-native-audio-api+0.11.7.patch
         ├── react-native.config.js
+        ├── scripts
+        │   └── release_bump.sh
         ├── src
         │   ├── api
         │   │   ├── ApiError.ts
@@ -621,6 +626,7 @@
         │   │   ├── LoginWithProConnectButton.tsx
         │   │   ├── MainMenu.tsx
         │   │   ├── RecordingMenu.tsx
+        │   │   ├── RetryTranscriptModal.tsx
         │   │   ├── UploadProgress.tsx
         │   │   └── colors.ts
         │   ├── features
@@ -629,6 +635,7 @@
         │   │   │   │   ├── fetch.ts
         │   │   │   │   ├── mockData.ts
         │   │   │   │   └── types.ts
+        │   │   │   ├── constants.ts
         │   │   │   └── utils
         │   │   │       ├── getMainAiJobs.test.ts
         │   │   │       ├── getMainAiJobs.ts
@@ -685,6 +692,7 @@
         │   │       └── types.ts
         │   ├── services
         │   │   ├── authService.ts
+        │   │   ├── configStore.ts
         │   │   ├── index.ts
         │   │   ├── storage.ts
         │   │   └── userStore.ts
@@ -696,4 +704,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-177 directories, 521 files
+178 directories, 528 files
