@@ -1,3 +1,48 @@
+## [2.241.3](https://github.com/SocialGouv/domifa/compare/v2.241.2...v2.241.3) (2026-05-14)
+
+
+### Bug Fixes
+
+* **backend:** add otp mail template for some purposes ([1c1f0d4](https://github.com/SocialGouv/domifa/commit/1c1f0d497bb1fd760250703f7b834a218ebaece1))
+
+## [2.241.2](https://github.com/SocialGouv/domifa/compare/v2.241.1...v2.241.2) (2026-05-14)
+
+
+### Bug Fixes
+
+* **admin:** add stats ([e90c22b](https://github.com/SocialGouv/domifa/commit/e90c22b120c65f680f385dfe00bc462b7516c161))
+* **backend:** fix typeorm for tests ([befa254](https://github.com/SocialGouv/domifa/commit/befa25499edd51367d979a15fc0ab184dd7d46c9))
+
+## [2.241.1](https://github.com/SocialGouv/domifa/compare/v2.241.0...v2.241.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **backend:** add OTP for some endpoints ([1bd6692](https://github.com/SocialGouv/domifa/commit/1bd66927f662df33ffb7c1245a56d4b261c670b6))
+* **backend:** add OTP for some endpoints ([b911628](https://github.com/SocialGouv/domifa/commit/b911628627c345aefc2b2b05ff4b4a7b95bc5d01))
+* **backend:** fix unit test ([0cd66be](https://github.com/SocialGouv/domifa/commit/0cd66be42080605f2b5a7a2ec876c5bc76724c61))
+* **frontend:** upgrade inlt-tel & unit tests ([2517b2c](https://github.com/SocialGouv/domifa/commit/2517b2c8edb225c0cb71dd431511c2316df7792f))
+
+# [2.241.0](https://github.com/SocialGouv/domifa/compare/v2.240.0...v2.241.0) (2026-05-14)
+
+
+### Features
+
+* **backend:** add OTP and mail for suspicious activity ([c95ff7d](https://github.com/SocialGouv/domifa/commit/c95ff7d526559308828d3d9606e26d1796225089))
+
+# [2.240.0](https://github.com/SocialGouv/domifa/compare/v2.239.1...v2.240.0) (2026-05-13)
+
+
+### Bug Fixes
+
+* **backend:** add fingerprint test ([e499d29](https://github.com/SocialGouv/domifa/commit/e499d2925cecaed2eb9ab8e5d21f7653df7bfaf2))
+
+
+### Features
+
+* **backend:** add fingerprint in sessions ([db8644f](https://github.com/SocialGouv/domifa/commit/db8644f118c932d471ad7f183901b7a737e35538))
+* **backend:** force one session ([9c980a9](https://github.com/SocialGouv/domifa/commit/9c980a949695898d07f0983bf35bb948b0bfe1a7))
+
 ## [2.239.1](https://github.com/SocialGouv/domifa/compare/v2.239.0...v2.239.1) (2026-05-12)
 
 

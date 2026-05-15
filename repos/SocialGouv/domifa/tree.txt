@@ -144,11 +144,9 @@
 │   │   │   │   │   │   ├── ParseRegion.pipe.ts
 │   │   │   │   │   │   ├── ParseString.pipe.ts
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── parse-hard-reset-token.pipe.ts
 │   │   │   │   │   │   └── parse-token.pipe.ts
 │   │   │   │   │   ├── tests
 │   │   │   │   │   │   ├── IsValidPasswordDecorator.spec.ts
-│   │   │   │   │   │   ├── parse-hard-reset-token-pipe.spec.ts
 │   │   │   │   │   │   └── parse-token-pipe.spec.ts
 │   │   │   │   │   └── transformers
 │   │   │   │   │       ├── LowerCaseDecorator.ts
@@ -227,6 +225,7 @@
 │   │   │   │           │   ├── UserSecurityEvent.interface.ts
 │   │   │   │           │   ├── UserSecurityEventType.type.ts
 │   │   │   │           │   ├── UserSecurityLogError.interface.ts
+│   │   │   │           │   ├── UserSessionRecord.interface.ts
 │   │   │   │           │   ├── UserTokenType.type.ts
 │   │   │   │           │   ├── UserTokens.interface.ts
 │   │   │   │           │   └── index.ts
@@ -247,7 +246,8 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1778536908427-auto-migration.ts
+│   │   │   │   ├── 1778582320186-add-otp-table.ts
+│   │   │   │   ├── 1778691703304-alter-otp-table-add-context-columns.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -342,6 +342,10 @@
 │   │   │   │   │   ├── auth-checker.service.ts
 │   │   │   │   │   ├── auth.checker.spec.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── session-cleaner.service.spec.ts
+│   │   │   │   │   ├── session-cleaner.service.ts
+│   │   │   │   │   ├── session-fingerprint.service.spec.ts
+│   │   │   │   │   ├── session-fingerprint.service.ts
 │   │   │   │   │   ├── structures-auth.service.spec.ts
 │   │   │   │   │   └── structures-auth.service.ts
 │   │   │   │   ├── structures-auth.controller.security-tests.ts
@@ -397,6 +401,9 @@
 │   │   │   │   │   │   ├── OpenDataCitiesTable.typeorm.ts
 │   │   │   │   │   │   ├── OpenDataPlacesTable.typeorm.ts
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── otp
+│   │   │   │   │   │   ├── OtpTable.typeorm.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── structure
 │   │   │   │   │   │   ├── StructureInformationTable.typeorm.ts
 │   │   │   │   │   │   ├── StructureStatsReportingQuestionsTable.typeorm.ts
@@ -435,10 +442,12 @@
 │   │   │   │       ├── _postgres
 │   │   │   │       │   ├── PG_CONNECT_OPTIONS.const.ts
 │   │   │   │       │   ├── PG_MIGRATION_CONFIG.const.ts
+│   │   │   │       │   ├── advisory-lock.helper.ts
 │   │   │   │       │   ├── appTypeormManager.service.ts
 │   │   │   │       │   ├── index.ts
-│   │   │   │       │   ├── pgRepository.service.ts
-│   │   │   │       │   └── postgresQueryBuilder.service.ts
+│   │   │   │       │   ├── postgresQueryBuilder.service.ts
+│   │   │   │       │   ├── sql-identifier.helper.spec.ts
+│   │   │   │       │   └── sql-identifier.helper.ts
 │   │   │   │       ├── app-log
 │   │   │   │       │   ├── appLogsRepository.service.ts
 │   │   │   │       │   ├── expiredTokenRepositiory.service.ts
@@ -469,6 +478,9 @@
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── open-data-cities-repository.ts
 │   │   │   │       │   └── open-data-place-repository.ts
+│   │   │   │       ├── otp
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── otpRepository.service.ts
 │   │   │   │       ├── structure
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── structureInformationRepository.service.ts
@@ -620,6 +632,25 @@
 │   │   │   │   │           ├── load-domifa.ts
 │   │   │   │   │           ├── load-mss.ts
 │   │   │   │   │           └── load-soliguide.ts
+│   │   │   │   ├── otp
+│   │   │   │   │   ├── decorators
+│   │   │   │   │   │   └── require-otp.decorator.ts
+│   │   │   │   │   ├── guards
+│   │   │   │   │   │   └── otp.guard.ts
+│   │   │   │   │   ├── otp-fingerprint.helper.ts
+│   │   │   │   │   ├── otp.constants.ts
+│   │   │   │   │   ├── otp.module.ts
+│   │   │   │   │   ├── otp.types.ts
+│   │   │   │   │   ├── otp.utils.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── otp-cleaner.service.ts
+│   │   │   │   │   │   ├── otp-email.service.spec.ts
+│   │   │   │   │   │   ├── otp-email.service.ts
+│   │   │   │   │   │   └── otp.service.ts
+│   │   │   │   │   └── templates
+│   │   │   │   │       ├── otp-action-email.template.ts
+│   │   │   │   │       └── otp-email.template.ts
 │   │   │   │   ├── portail-admin
 │   │   │   │   │   ├── constants
 │   │   │   │   │   │   └── STRUCTURE_LIGHT_ATTRIBUTES.const.ts
@@ -718,6 +749,16 @@
 │   │   │   │   │       ├── PortailUsagerStructure.type.ts
 │   │   │   │   │       ├── PortailUsagerUsager.type.ts
 │   │   │   │   │       └── index.ts
+│   │   │   │   ├── security-monitoring
+│   │   │   │   │   ├── security-monitoring.module.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── security-alert-email.service.ts
+│   │   │   │   │   │   └── security-monitoring.service.ts
+│   │   │   │   │   ├── templates
+│   │   │   │   │   │   └── security-alert-email.template.ts
+│   │   │   │   │   └── types
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       └── security-alert.types.ts
 │   │   │   │   ├── sms
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── generators
@@ -1032,6 +1073,7 @@
 │   │   │       ├── express
 │   │   │       │   ├── ExpressRequest.type.ts
 │   │   │       │   ├── ExpressResponse.type.ts
+│   │   │       │   ├── clientRequest.helper.ts
 │   │   │       │   └── index.ts
 │   │   │       ├── file-manager
 │   │   │       │   ├── FILES_SIZE_LIMIT.const.ts
@@ -1827,6 +1869,17 @@
 │   │   │   │   │   │   └── services
 │   │   │   │   │   │       ├── manage-users.service.spec.ts
 │   │   │   │   │   │       └── manage-users.service.ts
+│   │   │   │   │   ├── otp
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── otp-modal
+│   │   │   │   │   │   │       ├── otp-modal.component.html
+│   │   │   │   │   │   │       ├── otp-modal.component.scss
+│   │   │   │   │   │   │       └── otp-modal.component.ts
+│   │   │   │   │   │   ├── interceptors
+│   │   │   │   │   │   │   └── otp.interceptor.ts
+│   │   │   │   │   │   ├── otp.types.ts
+│   │   │   │   │   │   └── services
+│   │   │   │   │   │       └── otp-prompt.service.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── button
@@ -2527,6 +2580,7 @@
 │   │   │   │   │   ├── login
 │   │   │   │   │   │   └── login-container.svg
 │   │   │   │   │   ├── logo-dsfr.svg
+│   │   │   │   │   ├── logo-ministere.jpg
 │   │   │   │   │   ├── logo.png
 │   │   │   │   │   ├── logo.svg
 │   │   │   │   │   ├── modals
@@ -2755,6 +2809,10 @@
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
 │   │   │   │   │   │   │   │   └── fonction-selection.component.ts
+│   │   │   │   │   │   │   ├── stat-card
+│   │   │   │   │   │   │   │   ├── stat-card.component.html
+│   │   │   │   │   │   │   │   ├── stat-card.component.scss
+│   │   │   │   │   │   │   │   └── stat-card.component.ts
 │   │   │   │   │   │   │   ├── table-head-sort
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.html
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.scss
@@ -3202,4 +3260,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-729 directories, 2475 files
+746 directories, 2516 files
