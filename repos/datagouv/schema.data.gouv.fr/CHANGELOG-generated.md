@@ -1,14 +1,15 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 13 mai 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières du site schema.data.gouv.fr, incluant des actualisations des recommandations et du site web lui-même. Ces mises à jour visent à maintenir la pertinence et la fiabilité du catalogue de schémas de données publiques.
+Ce changelog fait état de mises à jour régulières du site schema.data.gouv.fr, principalement axées sur l'actualisation des recommandations et du site web lui-même.  Une amélioration technique a été apportée avec la mise à jour de pnpm en version 11 et la suppression d'une configuration obsolète. Enfin, un nouveau référentiel de données a été ajouté.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Les changements se concentrent sur des mises à jour de contenu et de site.
+- Ajout du référentiel de données "referentiel-donnees-communication-publique" [#60de980](https://github.com/datagouv/schema.data.gouv.fr/commit/60de980).
 
 ### Évolutions techniques
-Aucune évolution technique significative n'a été identifiée dans les commits récents. Les mises à jour semblent principalement concerner le contenu du site.
+- Mise à jour de pnpm vers la version 11 [#345](https://github.com/datagouv/schema.data.gouv.fr/pull/345).
+- Suppression de la configuration `allow-builds` [#346](https://github.com/datagouv/schema.data.gouv.fr/pull/346).
+- Mises à jour régulières des recommandations et du site web (automatisées).
 
 ### Autres changements
-- Mise à jour régulière des recommandations de schémas de données (plusieurs commits).
-- Mises à jour régulières du site web (plusieurs commits). Ces mises à jour peuvent inclure des corrections de bugs mineurs, des améliorations de la performance ou des ajustements de l'interface utilisateur.
+- Aucune information supplémentaire à signaler.
