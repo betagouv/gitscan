@@ -122,7 +122,8 @@
 │   │   ├── Version20260428133710.php
 │   │   ├── Version20260429031522.php
 │   │   ├── Version20260506072206.php
-│   │   └── Version20260507143021.php
+│   │   ├── Version20260507143021.php
+│   │   └── Version20260512125047.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -199,6 +200,8 @@
 │   │   │   │       │       ├── AjouterPieceJointeEndpoint.php
 │   │   │   │       │       ├── AttribuerDossierEndpoint.php
 │   │   │   │       │       ├── AttribuerDossierInput.php
+│   │   │   │       │       ├── CloturerDossierEndpoint.php
+│   │   │   │       │       ├── CloturerDossierInput.php
 │   │   │   │       │       ├── DemarrerInstructionDossierEndpoint.php
 │   │   │   │       │       ├── GenererArretePaiementEndpoint.php
 │   │   │   │       │       ├── GenererCourrierPropositionIndemnisationEndpoint.php
@@ -408,8 +411,8 @@
 │   │   ├── Repository
 │   │   │   ├── AdresseRepository.php
 │   │   │   ├── AgentRepository.php
-│   │   │   ├── BrisPorteRepository.php
 │   │   │   ├── DocumentRepository.php
+│   │   │   ├── DossierRepository.php
 │   │   │   ├── EtatDossierRepository.php
 │   │   │   ├── FournisseurIdentiteAgentRepository.php
 │   │   │   ├── GeoCodePostalRepository.php
@@ -427,7 +430,8 @@
 │   │   │   ├── Oidc
 │   │   │   │   └── OidcClient.php
 │   │   │   ├── Provider
-│   │   │   │   └── AgentProvider.php
+│   │   │   │   ├── AgentProvider.php
+│   │   │   │   └── UsagerProvider.php
 │   │   │   ├── UsagerChecker.php
 │   │   │   └── Voter
 │   │   │       └── FDODocumentVoter.php
@@ -576,6 +580,7 @@
 │   │   │   │           └── Endpoint
 │   │   │   │               ├── AjouterPieceJointeEndpointTest.php
 │   │   │   │               ├── AttribuerDossierEndpointTest.php
+│   │   │   │               ├── CloturerDossierEndpointTest.php
 │   │   │   │               ├── DemarrerInstructionDossierEndpointTest.php
 │   │   │   │               ├── GenererArretePaiementEndpointTest.php
 │   │   │   │               ├── GenererCourrierPropositionIndemnisationEndpointTest.php
@@ -980,4 +985,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-220 directories, 762 files
+220 directories, 767 files
