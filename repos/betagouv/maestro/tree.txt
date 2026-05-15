@@ -114,6 +114,8 @@
 │   │   │   │   └── DistributionCountCell.tsx
 │   │   │   ├── DocumentLink
 │   │   │   │   └── DocumentLink.tsx
+│   │   │   ├── DocumentsModal
+│   │   │   │   └── DocumentsModal.tsx
 │   │   │   ├── EditableNumberCell
 │   │   │   │   └── EditableNumberCell.tsx
 │   │   │   ├── FilterTags
@@ -283,6 +285,7 @@
 │   │   │   ├── address.service.ts
 │   │   │   ├── analysis.service.ts
 │   │   │   ├── analysisDai.service.ts
+│   │   │   ├── analysisRai.service.ts
 │   │   │   ├── api.builder.ts
 │   │   │   ├── api.service.ts
 │   │   │   ├── apiClient.ts
@@ -322,6 +325,9 @@
 │   │       │   ├── AnalysisDaiAdminView
 │   │       │   │   ├── AnalysisDaiAdminView.tsx
 │   │       │   │   └── AnalysisDaiFilters.tsx
+│   │       │   ├── AnalysisRaiAdminView
+│   │       │   │   ├── AnalysisRaiAdminView.tsx
+│   │       │   │   └── AnalysisRaiFilters.tsx
 │   │       │   ├── Notice
 │   │       │   │   ├── AdminViewDashboardNotice.tsx
 │   │       │   │   └── AdminViewRootNotice.tsx
@@ -480,7 +486,10 @@
 │   │       │   │   │   ├── AnalysisDaiHistory.scss
 │   │       │   │   │   ├── AnalysisDaiHistory.stories.tsx
 │   │       │   │   │   ├── AnalysisDaiHistory.tsx
-│   │       │   │   │   ├── DocumentsModal.tsx
+│   │       │   │   │   └── RetryModal.tsx
+│   │       │   │   ├── AnalysisRaiHistory
+│   │       │   │   │   ├── AnalysisRaiHistory.scss
+│   │       │   │   │   ├── AnalysisRaiHistory.tsx
 │   │       │   │   │   └── RetryModal.tsx
 │   │       │   │   ├── SampleAgreementOverview.tsx
 │   │       │   │   ├── SampleComplianceForm.tsx
@@ -522,6 +531,7 @@
 │   ├── controllers
 │   │   ├── analysisController.ts
 │   │   ├── analysisDaiController.ts
+│   │   ├── analysisRaiController.ts
 │   │   ├── analysisReportDocumentsController.ts
 │   │   ├── authController.ts
 │   │   ├── checkLaboratoryEmailsController.ts
@@ -756,6 +766,7 @@
 │   │   ├── test
 │   │   │   ├── analysis.router.test.ts
 │   │   │   ├── analysisDai.router.test.ts
+│   │   │   ├── analysisRai.router.test.ts
 │   │   │   ├── analysisReportDocuments.router.test.ts
 │   │   │   ├── auth.router.test.ts
 │   │   │   ├── companies.router.test.ts
@@ -956,6 +967,7 @@
 │   ├── routes
 │   │   ├── analysis.routes.ts
 │   │   ├── analysisDai.routes.ts
+│   │   ├── analysisRai.routes.ts
 │   │   ├── auth.routes.ts
 │   │   ├── companies.routes.ts
 │   │   ├── documents.routes.ts
@@ -992,7 +1004,9 @@
 │   │   │   ├── AnalysisDaiState.ts
 │   │   │   └── FindAnalysisDaiOptions.ts
 │   │   ├── AnalysisRai
-│   │   │   └── AnalysisRai.ts
+│   │   │   ├── AnalysisRai.ts
+│   │   │   ├── AnalysisRaiWithRelations.ts
+│   │   │   └── FindAnalysisRaiOptions.ts
 │   │   ├── AppRouteLinks
 │   │   │   └── AppRouteLinks.ts
 │   │   ├── Auth
@@ -1109,4 +1123,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-211 directories, 900 files
+214 directories, 911 files
