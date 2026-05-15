@@ -1,100 +1,100 @@
-## Changelog : eva-serveur (30 derniers jours, au 8 mai 2026)
+## Changelog : eva-serveur (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions d'eva-serveur se concentrent sur l'amélioration de la gestion des structures, notamment des opérateurs de compétences (OPCO), et sur l'expérience utilisateur. Des corrections de bugs et des améliorations de l'interface ont été apportées, ainsi que des optimisations techniques pour la géolocalisation et la sécurité.
+Les dernières mises à jour d'eva-serveur se concentrent sur l'amélioration de la gestion des structures, notamment avec l'ajout de la gestion des Opérateurs de Compétences (OPCO). Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées, ainsi que des optimisations de performance et de sécurité. L'intégration du Design System Fr (DSFR) continue d'avancer.
 
 ### Évolutions fonctionnelles
-- Ajout d'un filtre par SIRET pour la recherche de structures.
-- Possibilité de rechercher un SIRET avec des espaces.
-- Les comptes créés en démo peuvent être vidés même s'ils ont été invités.
-- Permet d'accéder à la liste des structures Opérateurs de compétences.
-- Les utilisateurs OPCO peuvent accéder à leur dashboard avec les statistiques Metabase.
-- Ajout de la gestion de l'usage et de l'OPCO pour les structures administratives.
-- Permet de consulter les explications de comparaison des évaluations littératie et numératie.
-- Les pistes de solutions disponibles renvoient vers le widget de l'inclusion.
-- Ajout de la fonctionnalité d'invitation pour les structures administratives.
-- Permet de consulter les restitutions EVA Pro.
-- Ajout de la possibilité pour les employés d'OPCO d'avoir un accès restreint à la navigation d'EVA.
-- Les évaluations EVA Pro incomplètes s'affichent correctement.
-- Ajout d'un nouveau modèle StructureOpco pour gérer les opérateurs de compétences.
-- Possibilité de créer ou de modifier une structure Opérateur de compétence.
-- Accès au show d'une structure Opérateur de compétence.
+- Ajout de la gestion des structures Opérateurs de Compétences (OPCO) : création, modification, affichage et accès à un dashboard dédié avec les statistiques Metabase. [#4564c9d](https://github.com/betagouv/eva-serveur/commit/4564c9d)
+- Les comptes OPCO ont désormais un accès restreint à la navigation d'EVA. [#4574aac](https://github.com/betagouv/eva-serveur/commit/4574aac)
+- Possibilité de filtrer les structures par numéro SIRET, avec recherche tolérante aux espaces. [#7efed90](https://github.com/betagouv/eva-serveur/commit/7efed90)
+- Ajout d'une fonctionnalité d'invitation pour les structures administratives. [#df967f4](https://github.com/betagouv/eva-serveur/commit/df967f4)
+- Affichage et filtrage du SIRET pour toutes les structures. [#9d7e987](https://github.com/betagouv/eva-serveur/commit/9d7e987)
+- Ajout d'une méthode pour calculer le niveau de complétude des évaluations EvaPro. [#8e02961](https://github.com/betagouv/eva-serveur/commit/8e02961)
+- Possibilité d'accéder à la liste des structures Opérateurs de Compétences. [#fd6c11b](https://github.com/betagouv/eva-serveur/commit/fd6c11b)
+- Ajout d'explications pour la comparaison des évaluations littératie et numératie. [#e19b0d8](https://github.com/betagouv/eva-serveur/commit/e19b0d8)
 
 ### Évolutions techniques
-- Remplacement de Nominatim par geo.api.gouv.fr pour la géolocalisation des structures, améliorant la précision et la fiabilité.
-- Refactor de la logique de formatage du SIRET pour éviter les duplications de code.
-- Suppression de la librairie `geocoder` et des pages associées à la recherche de structure par code postal.
-- Suppression de l'action `rejoindre_structure` et de la page 'structures'.
-- Suppression de la page 'nouvelle_structure'.
-- Amélioration de la gestion des invitations en attente.
-- Utilisation du validateur blob d’ActiveStorage pour valider le type audio des transcriptions.
-- Mise à jour de Ruby et Nodejs.
-- Correction d'une vulnérabilité d'injection SQL dans CollectionsEvenementsController.
-- Correction d'une faille de sécurité sur TarteauCitronJS.
-- Configuration de Plausible pour tracer les liens sortants.
-- Refactor de la logique de calcul de la complétude des évaluations EVA Pro.
-- Amélioration de la CI avec mise en cache de libvips et augmentation des timeouts.
+- Migration du script I18n vers une dépendance npm. [#c1cfc41](https://github.com/betagouv/eva-serveur/commit/c1cfc41)
+- Mise à jour de plusieurs dépendances : Devise, Fast-uri, Nokogiri, Postcss, Erb.
+- Refactorisation de la logique de formatage du SIRET pour éviter les duplications. [#8283a46](https://github.com/betagouv/eva-serveur/commit/8283a46)
+- Suppression de la librairie geocoder et de la page 'structures'. [#eedceec](https://github.com/betagouv/eva-serveur/commit/eedceec)
+- Suppression de plusieurs actions et pages liées à la recherche et à la création de structures. [#d32fe66](https://github.com/betagouv/eva-serveur/commit/d32fe66)
+- Utilisation de l'API geo.api.gouv.fr pour la géolocalisation des structures, remplaçant Nominatim. [#13c615d](https://github.com/betagouv/eva-serveur/commit/13c615d)
+- Amélioration de la configuration de la CI avec mise en cache de libvips. [#b887c0c](https://github.com/betagouv/eva-serveur/commit/b887c0c)
+- Correction d'une vulnérabilité d'injection SQL dans CollectionsEvenementsController. [#4a46488](https://github.com/betagouv/eva-serveur/commit/4a46488)
+- Correction d'une faille de sécurité sur TarteauCitronJS. [#d2d7555](https://github.com/betagouv/eva-serveur/commit/d2d7555)
+- Mise à jour de Ruby et Nodejs. [#e72dcbe](https://github.com/betagouv/eva-serveur/commit/e72dcbe)
 
 ### Autres changements
-- Correction de l'affichage des bulles vertes collées aux titres des situations.
-- Correction de l'affichage des restitutions EVA.
-- Correction du focus des boutons DSFR sur Firefox.
-- Correction des classes bootstrap remplacées par le DSFR.
-- Correction de l'alignement des cards diagnostique sur le dashboard.
-- Correction de bugs d'affichage sur mobile (page Ma structure, actualités, compte, aide, etc.).
-- Correction de problèmes de style et de padding sur diverses pages.
-- Ajout de tests unitaires pour certaines fonctionnalités.
-- Suppression de code mort et de fichiers inutiles.
-- Amélioration de la documentation et des commentaires.
-- Correction de plusieurs erreurs Rubocop.
-- Ajout de la gestion des liens d'invitation avec l'ID de structure.
-- Ajout d'un nouveau mailer pour les invitations de structure.
-- Suppression de la page 'admin/sign_up'.
-- Ajout d'un helper pour le formatage du SIRET.
-- Suppression du bouton 'ajouter une structure'.
-- Suppression de la page 'admin/recherche_structure'.
-- Suppression de l'étape de prise en main 'Recherche structure'.
-- Ajout d'une migration pour créer les StructureOpco via les StructureAdministrative.
-- Ajout du bon layout et Header pour les comptes opco.
-- Suppression du code mort concernant le rattachement des structures administratives à un OPCO.
-- Utilisation de StatistiquesStructure pour l'intégration des statistiques Metabase OPCO.
-- Suppression des traits inutiles dans les factory de structures.
-- Renommage de la méthode `vue_opco_active?` en `utilisateur_opco?`.
-- Correction de l'affichage des actualités.
-- Correction de l'affichage des évaluations EVA.
-- Correction du bug des accès.
-- Ajout de styles pour l'impression et ajustement de la génération de PDF.
-- Tous les tableaux sont passés en `dsfr_table`.
-- Correction de l'url des restitutions EVA Pro.
-- Correction des marges entre le Header/Contenu et Contenu/footer sur l'ensemble des pages.
-- Ajout du logo de l'opco dans le header du pdf uniquement si il est financeur.
-- Ajustement du design du PDF de comparatifs bénéficiaire en DSFR.
-- Correction de la version petit écran.
-- Correction de la version pdf.
-- Le pro peut prendre connaissance des 8 étapes des incontournables dans sa restitution.
-- Ajout de la possibilité de vider les comptes créés en démo, même invités.
-- Correction de l'assignation de l'étape d'inscription lors de la création d'un compte par l'admin.
-- Ajout d'un test pour la méthode `departement` de `geoloc_helper`.
-- Correction de la purge des comptes référencés dans des invitations.
-- Correction du double soulignement du lien de l'email dans la recherche de structure dans l'onboarding.
-- Ajout du code commune dans la table structure.
-- Enregistrement du code_commune à la création d'une structure.
-- Correction du scroll horizontal sur les pages listes evapro (vues admin).
-- Correction de la redirection pour les comptes ProConnect sans structure.
-- Correction de la version mobile du contact opco dans l'évaluation.
-- Correction de l'affichage des actualités.
-- Correction du visuel des actualités.
-- Correction du bug des accès.
-- Correction de la modale d'invitation.
-- Correction du breadcrumb.
-- Correction du détail d'un bénéficiaire.
-- Correction de l'interface de la page actualités.
-- Correction de la modale d'invitation.
-- Correction de la page mon compte.
-- Correction de la page aide.
-- Correction de la page structure.
-- Correction de la page Ma structure.
-- Correction de l'index des comptes sur EvaPro.
-- Correction du padding left des radio button d'activeadmin.
-- Correction du padding left des commentaires dans les pages détails d'activeadmin.
-- Correction de la classe mx-auto.
+- Intégration progressive du Design System Fr (DSFR) : remplacement des composants Bootstrap, correction des styles et des classes.
+- Amélioration de la gestion des invitations en attente. [#c2dbf45](https://github.com/betagouv/eva-serveur/commit/c2dbf45)
+- Suppression de code mort et de fonctionnalités obsolètes.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout de tests unitaires et corrections de tests existants.
+- Suppression de logs Capybara en production. [#47555cd](https://github.com/betagouv/eva-serveur/commit/47555cd)
+- Correction de problèmes d'affichage sur mobile et dans différents navigateurs.
+- Amélioration de la documentation et du code.
+- Suppression d'attributs `aria-hidden` inutiles. [#ba291e5](https://github.com/betagouv/eva-serveur/commit/ba291e5)
+- Suppression du bouton copier/coller dans la modal d'invitation. [#9915ed9](https://github.com/betagouv/eva-serveur/commit/9915ed9)
+- Correction de l'affichage de l'index compte sur EvaPro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
+- Correction de l'affichage de l'index des évaluations pour Eva Pro. [#5fc2f93](https://github.com/betagouv/eva-serveur/commit/5fc2f93)
+- Correction du menu DSFR. [#8f08f7d](https://github.com/betagouv/eva-serveur/commit/8f08f7d)
+- Correction d'un test aléatoire sur les actualités. [#fab15c0](https://github.com/betagouv/eva-serveur/commit/fab15c0)
+- Suppression de la triplication du formatage des SIRETs nil. [#752ca35](https://github.com/betagouv/eva-serveur/commit/752ca35)
+- Suppression de la hauteur fixe et troncature de la description. [#f3b6b52](https://github.com/betagouv/eva-serveur/commit/f3b6b52)
+- Correction de l'intégration du JS du DSFR. [#f71b7c3](https://github.com/betagouv/eva-serveur/commit/f71b7c3)
+- Suppression de l'accès aux structures Opco pour les administrateurs de structures administratives. [#4dcac60](https://github.com/betagouv/eva-serveur/commit/4dcac60)
+- Fixe la hauteur de la card et truncate la description si trop longue. [#6324774](https://github.com/betagouv/eva-serveur/commit/6324774)
+- Ajoute mailers/structure/invitation_structure. [#6a31478](https://github.com/betagouv/eva-serveur/commit/6a31478)
+- Corrige le focus des boutons DSFR sur firefox. [#025b852](https://github.com/betagouv/eva-serveur/commit/025b852)
+- Corrige les comptes en attente dans /comptes. [#de8e501](https://github.com/betagouv/eva-serveur/commit/de8e501)
+- Corrige la redirection pour les comptes ProConnect sans structure. [#39c2887](https://github.com/betagouv/eva-serveur/commit/39c2887)
+- Corrige les bulles vertes collées aux titres des situations. [#292ce1c](https://github.com/betagouv/eva-serveur/commit/292ce1c)
+- Corrige l'erreur 500 sur la page index Questionnaires. [#decfd09](https://github.com/betagouv/eva-serveur/commit/decfd09)
+- Corrige le double soulignement du lien de l'email dans la recherche de structure dans l'onboarding. [#eade2f0](https://github.com/betagouv/eva-serveur/commit/eade2f0)
+- Corrige la purge des comptes référencés dans des invitations. [#d3a1f19](https://github.com/betagouv/eva-serveur/commit/d3a1f19)
+- Corrige le visuel des actualités. [#783dc50](https://github.com/betagouv/eva-serveur/commit/783dc50)
+- Corrige le rendu de l'index des actualités. [#bc5a873](https://github.com/betagouv/eva-serveur/commit/bc5a873)
+- Corrige l'index des comptes sur EvaPro. [#6f4ec60](https://github.com/betagouv/eva-serveur/commit/6f4ec60)
+- Corrige l'intégration des actualités. [#6e14714](https://github.com/betagouv/eva-serveur/commit/6e14714)
+- Corrige un bug sur les select dans les filtres d'activeadmin. [#22d5f26](https://github.com/betagouv/eva-serveur/commit/22d5f26)
+- Corrige la page Ma structure. [#ba1742e](https://github.com/betagouv/eva-serveur/commit/ba1742e)
+- Corrige la page structure en mobile. [#abb138c](https://github.com/betagouv/eva-serveur/commit/abb138c)
+- Corrige la modale d'invitation. [#7697675](https://github.com/betagouv/eva-serveur/commit/7697675)
+- Corrige le padding left des radio button d'activeadmin. [#3a885db](https://github.com/betagouv/eva-serveur/commit/3a885db)
+- Corrige la page aide. [#18a8d05](https://github.com/betagouv/eva-serveur/commit/18a8d05)
+- Corrige la page actualités sur mobile. [#12cca18](https://github.com/betagouv/eva-serveur/commit/12cca18)
+- Corrige le breadcrumb sur mobile. [#105c237](https://github.com/betagouv/eva-serveur/commit/105c237)
+- Corrige le détail d'un bénéficiaire sur mobile. [#0cfc2d8](https://github.com/betagouv/eva-serveur/commit/0cfc2d8)
+- Corrige la page mon compte sur mobile. [#4cfc894](https://github.com/betagouv/eva-serveur/commit/4cfc894)
+- Corrige la modale du tableau de bord sur mobile. [#87738c9](https://github.com/betagouv/eva-serveur/commit/87738c9)
+- Corrige le hover du breadcrumb. [#7d61f03](https://github.com/betagouv/eva-serveur/commit/7d61f03)
+- Corrige le padding inutile dans les filtres. [#cddac2c](https://github.com/betagouv/eva-serveur/commit/cddac2c)
+- Corrige l'affiche des evaluations pour evapro incomplètes. [#9e888c2](https://github.com/betagouv/eva-serveur/commit/9e888c2)
+- Corrige le tableau Evaluation eva. [#8134748](https://github.com/betagouv/eva-serveur/commit/8134748)
+- Corrige la page détail d'un bénéficiaire sur mobile. [#89bd691](https://github.com/betagouv/eva-serveur/commit/89bd691)
+- Corrige le padding des labels des forms. [#4324711](https://github.com/betagouv/eva-serveur/commit/4324711)
+- Corrige le padding bottom. [#25c3cde](https://github.com/betagouv/eva-serveur/commit/25c3cde)
+- Corrige le pading. [#99313a0](https://github.com/betagouv/eva-serveur/commit/99313a0)
+- Corrige le pading. [#fa3d3da](https://github.com/betagouv/eva-serveur/commit/fa3d3da)
+- Corrige les comptes en attente. [#28fb600](https://github.com/betagouv/eva-serveur/commit/28fb600)
+- Corrige le bug des accès. [#5257b86](https://github.com/betagouv/eva-serveur/commit/5257b86)
+- Corrige la partie mobile du contact opco dans evalutaion. [#43754a6](https://github.com/betagouv/eva-serveur/commit/43754a6)
+- Corrige la redirection pour les comptes ProConnect sans structure. [#39c2887](https://github.com/betagouv/eva-serveur/commit/39c2887)
+- Corrige les invitations en attente. [#2370d7f](https://github.com/betagouv/eva-serveur/commit/2370d7f)
+- Corrige le padding left des radio button d'activeadmin. [#1501e5f](https://github.com/betagouv/eva-serveur/commit/1501e5f)
+- Corrige le padding left des commentaires dans les pages détails d'activeadmin. [#60630f4](https://github.com/betagouv/eva-serveur/commit/60630f4)
+- Corrige le padding left des radio button d'activeadmin. [#08c97b1](https://github.com/betagouv/eva-serveur/commit/08c97b1)
+- Corrige la page Ma structure. [#1bfa21f](https://github.com/betagouv/eva-serveur/commit/1bfa21f)
+- Corrige la page structure en mobile. [#6e9e9cc](https://github.com/betagouv/eva-serveur/commit/6e9e9cc)
+- Corrige la page mon compte sur mobile. [#3a885db](https://github.com/betagouv/eva-serveur/commit/3a885db)
+- Corrige la page aide. [#18a8d05](https://github.com/betagouv/eva-serveur/commit/18a8d05)
+- Corrige la page actualités sur mobile. [#12cca18](https://github.com/betagouv/eva-serveur/commit/12cca18)
+- Corrige le hover du breadcrumb. [#7d61f03](https://github.com/betagouv/eva-serveur/commit/7d61f03)
+- Corrige le padding inutile dans les filtres. [#cddac2c](https://github.com/betagouv/eva-serveur/commit/cddac2c)
+- Corrige l'affiche des evaluations pour evapro incomplètes. [#9e888c2](https://github.com/betagouv/eva-serveur/commit/9e888c2)
+- Corrige le tableau Evaluation eva. [#8134748](https://github.com/betagouv/eva-serveur/commit/8134748)
+- Corrige le visuel des actualités. [#783dc50](https://github.com/betagouv/eva-serveur/commit/783dc50)
+- Corrige l'index des actualités. [#bc5a873](https://github.com/betagouv/eva-serveur/commit/bc5a873)
+- Corrige l'index des comptes sur EvaPro. [#6f4ec60](https://github.com/betagouv/eva-serveur/commit/6f4ec60)
+- Corrige l'intégration des actualités. [#6e14714](https://github.com/betagouv/eva-serveur/commit/6e14714)

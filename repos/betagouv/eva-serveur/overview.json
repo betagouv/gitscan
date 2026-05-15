@@ -1,29 +1,29 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les structures, notamment les opérateurs de compétences (OPCO), et d'améliorer l'expérience utilisateur.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les structures, les utilisateurs et les évaluations.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "API & Intégrations",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des structures & Établissements",
-    "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Gestion des structures & établissements",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
+    "Puma",
     "PostgreSQL",
     "Redis",
-    "ActiveAdmin",
     "Devise",
-    "Sidekiq",
+    "ActiveAdmin",
     "DSFR",
-    "Nominatim",
-    "geo.api.gouv.fr"
+    "TarteaucitronJS",
+    "i18n-js"
   ],
   "components": [
     "API REST & GraphQL",
@@ -44,8 +44,10 @@
     "RSpec",
     "FactoryBot"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-08T11:31:40+02:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-05-13T18:19:39+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -61,6 +63,8 @@
     "Ruby",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Développement",
+    "Administration",
+    "Gestion des établissements & Structures"
   ]
 }
