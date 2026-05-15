@@ -1,15 +1,21 @@
-## Changelog : ami-design-system-ios (30 derniers jours, au 7 mai 2026)
+## Changelog : ami-design-system-ios (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations techniques au système de design, notamment la correction de problèmes de build et de linter, ainsi que la suppression de fichiers inutilisés. La documentation a également été mise à jour pour clarifier l'enregistrement des polices depuis le bundle Swift Package. Ces changements visent à améliorer la stabilité et la maintenabilité du projet pour les développeurs.
+Cette version apporte des améliorations significatives à la structure du projet et à l'exposition de ses composants. De nouveaux composants, comme la vue "TileView" et les "Pills", ont été ajoutés, et des ajustements ont été faits pour faciliter l'intégration du système de design dans d'autres projets.
 
 ### Évolutions fonctionnelles
-*   Mise à jour de la documentation pour l'enregistrement des polices depuis le bundle Swift Package, facilitant l'utilisation des polices du système de design. [#issue à créer si pertinent]
+- Ajout d'un nouveau composant "TileView" permettant d'afficher des informations structurées avec un titre et un texte multilignes alignés à gauche.
+- Migration des types de vues "Pills" dans le package, offrant une nouvelle option de style pour les éléments d'interface.
 
 ### Évolutions techniques
-*   Correction du build descriptor pour assurer une compilation correcte du projet.
-*   Correction des erreurs signalées par le linter, améliorant la qualité du code.
-*   Suppression des fichiers de ressources inutilisés, réduisant la taille du projet et simplifiant sa maintenance.
+- Refactorisation de la structure du projet : les fichiers Swift et les ressources du système de design ont été déplacés dans un sous-dossier "DesignSystem".
+- Les composants sont maintenant publics, facilitant leur utilisation et leur extension par les développeurs.
+- La propriété `body` des composants est désormais publique pour respecter le protocole `View`.
+- Modification de la structure du package pour que le fichier `Package.swift` se trouve à la racine du dépôt GitHub, simplifiant l'intégration dans d'autres projets.
+- Correction de la description du build.
+- Suppression des fichiers de ressources inutilisés.
 
 ### Autres changements
-*   Initial commit du projet.
+- Mise à jour du script de génération de projet d'exemple et du fichier README.
+- Ajout d'un initialisateur public pour les composants.
+- Correction de problèmes identifiés par le linter.
