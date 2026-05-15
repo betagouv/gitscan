@@ -43,7 +43,6 @@
 │   ├── extensions.json
 │   └── settings.json
 ├── AGENTS.md
-├── APPLICATION.md
 ├── CLAUDE.md -> AGENTS.md
 ├── LICENSE
 ├── Makefile
@@ -573,6 +572,8 @@
 │   │   │   │       ├── exposure_stats_acteur_siret_successeur.sql
 │   │   │   │       ├── exposure_stats_acteur_stacked_history.sql
 │   │   │   │       ├── exposure_stats_distance_nb_acteur_by_action.sql
+│   │   │   │       ├── exposure_stats_proposionservice_only_on_acteur.sql
+│   │   │   │       ├── exposure_stats_proposionservice_only_on_revision.sql
 │   │   │   │       └── schema.yml
 │   │   │   ├── intermediate
 │   │   │   │   ├── acteurs
@@ -603,7 +604,11 @@
 │   │   │   │       ├── int_acteur_with_siret.sql
 │   │   │   │       ├── int_ae_siren_in_acteur.sql
 │   │   │   │       ├── int_ae_siret_in_acteur.sql
+│   │   │   │       ├── int_propositionservice_sous_categories_with_revision.sql
+│   │   │   │       ├── int_propositonservices_with_revision.sql
 │   │   │   │       ├── int_revision_with_acteur.sql
+│   │   │   │       ├── int_revisionpropositonservice_sous_categories_with_acteur.sql
+│   │   │   │       ├── int_revisionpropositonservices_with_acteur.sql
 │   │   │   │       ├── int_stacked_location.sql
 │   │   │   │       ├── int_stacked_location_rounded.sql
 │   │   │   │       └── schema.yml
@@ -675,6 +680,7 @@
 │   │   │   │       ├── marts_acteur_siret_actif.sql
 │   │   │   │       ├── marts_acteur_stacked.sql
 │   │   │   │       ├── marts_acteur_stacked_rounded.sql
+│   │   │   │       ├── marts_acteur_vs_revision_propositon_services.sql
 │   │   │   │       ├── marts_ae_lien_succession_resolved_vueacteur.sql
 │   │   │   │       ├── marts_distance_first_action.sql
 │   │   │   │       └── schema.yml
@@ -881,7 +887,6 @@
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
 │       └── drop_all_tables.sql
-├── uv.lock
 └── webapp
     ├── .buildpacks
     ├── .env.template
@@ -1836,4 +1841,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-342 directories, 1496 files
+342 directories, 1501 files
