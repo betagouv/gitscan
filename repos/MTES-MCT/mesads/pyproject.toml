@@ -1,0 +1,110 @@
+[tool.poetry]
+name = "mesads"
+version = "0.1.0"
+description = ""
+authors = ["Julien Castets"]
+packages = [{include = "mesads"}]
+
+[tool.poetry.group.dev.dependencies]
+pytest-django = "~4.11"
+pytest-cov = "~7.0"
+pypdf2 = "^3.0.1"
+pytest-xdist = "^3.8.0"
+django-debug-toolbar = "~6.2"
+coverage = {version = "~7.13", extras = ["toml"]}
+requests-mock = "^1.9.3"
+djlint = "^1.36.4"
+django-query-counter = "^0.4.1"
+Faker = "^37.6.0"
+factory_boy = "^3.3.3"
+pytest-ruff = "^0.5"
+
+
+[tool.coverage.run]
+omit = [
+    "manage.py",
+    "mesads/settings.py",
+    "*/wsgi.py",
+    "*/asgi.py",
+    "*/migrations/*.py",
+    "*urls.py",
+    "*/tests/**",
+    "*/test_*.py",
+    "mesads/conftest.py",
+    "mesads/admin_views.py",
+    "*/unittest.py",
+    # We should probably keep admin.py in coverage, but since it's only for
+    # admins let's avoid over-engineering.
+    "*/admin.py",
+    "*/admin/*.py",
+    # This file is mostly a copy of django classes, to allow authentication
+    # with email. There's no value to add unittests here.
+    "mesads/users/models.py",
+    "mesads/app/crons.py",
+    # Commandes a destination de la preprod pour peupler des données
+    "mesads/app/management/commands/ads_donnees_test.py",
+    "mesads/app/management/commands/load_ads_managers.py",
+    "mesads/fradm/management/commands/load_*.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "raise NotImplementedError",
+    "pragma: nocover",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "~5.2"
+django-autocomplete-light = "^3.8.2"
+psycopg2 = "^2.9.3"
+requests = "^2.27.1"
+django-querysetsequence = "^0.17"
+sentry-sdk = "^2.3.1"
+boto3 = "^1.21.22"
+django-storages = "^1.12.3"
+django-reversion = "^5.0.1"
+djangorestframework = "^3.14.0"
+django-cleanup = "^8.1.0"
+dateparser = "^1.1.4"
+pyshp = "^2.3.1"
+django-cron = { git = "https://github.com/jorenham/django-cron.git"}
+django-mjml = "^1.0"
+docxtpl = "^0.17.0"
+django-formtools = "^2.4"
+django-reversion-compare = "^0.17.0"
+xlsxwriter = "^3.1.2"
+openpyxl = "^3.1.2"
+unidecode = "^1.3.7"
+pyyaml = "^6.0.1"
+django-markdownx = "^4.0.7"
+weasyprint = "^68.1"
+qrcode = "^7.4.2"
+pyotp = "^2.9.0"
+django-anymail = "^13.1"
+mozilla_django_oidc = "^4.0.1"
+python-dotenv = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "mesads.settings_test"
+addopts = "--ruff --ruff-format --reuse-db"
+
+[tool.ruff]
+exclude = [
+    "migrations",
+]
+
+[tool.ruff.lint]
+select = ["I", "F", "E", "DJ", "C90"]
+ignore = ["DJ008", "C901"]
+# TODO: refactor complex functions and remove C901
+
+[tool.ruff.lint.per-file-ignores]
+"*/settings.py" = ["E501"]

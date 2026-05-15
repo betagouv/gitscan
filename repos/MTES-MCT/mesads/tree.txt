@@ -1,0 +1,612 @@
+.
+├── .devcontainer
+│   ├── devcontainer.json
+│   └── docker-compose.yml
+├── .dockerignore
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       └── unittest.yml
+├── .gitignore
+├── .vscode
+│   ├── launch.json
+│   └── settings.json
+├── Dockerfile
+├── Makefile
+├── README.md
+├── doc
+│   └── index.html
+├── docker-compose.yml
+├── manage.py
+├── mesads
+│   ├── __init__.py
+│   ├── admin_views.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── resources
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   └── departements-20140306-100m-shp.zip
+│   │   ├── serializers.py
+│   │   ├── test_views.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── ads.py
+│   │   │   ├── ads_manager.py
+│   │   │   ├── ads_manager_administrator.py
+│   │   │   ├── ads_manager_request.py
+│   │   │   ├── ads_update_file.py
+│   │   │   ├── demande_acces_lecture_seule.py
+│   │   │   ├── demande_gestion_prefecture.py
+│   │   │   ├── inscription_liste_attente.py
+│   │   │   └── notifications.py
+│   │   ├── apps.py
+│   │   ├── crons.py
+│   │   ├── decorators.py
+│   │   ├── docs
+│   │   │   ├── arrete_changement_titulaire.docx
+│   │   │   ├── arrete_changement_vehicule_new.docx
+│   │   │   ├── arrete_changement_vehicule_old.docx
+│   │   │   ├── arrete_creation_ads.docx
+│   │   │   ├── arrete_location_gerance.docx
+│   │   │   ├── arrete_nombre_ads.docx
+│   │   │   └── arrete_renouvellement.docx
+│   │   ├── fields.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── ads_donnees_test.py
+│   │   │       ├── export_ads_managers.py
+│   │   │       ├── export_emails.py
+│   │   │       ├── import_ads.py
+│   │   │       ├── import_last_update_file_from_paris.py
+│   │   │       ├── liste_attente_donnees_test.py
+│   │   │       ├── liste_attente_mail_delai_depasse.py
+│   │   │       ├── load_ads_managers.py
+│   │   │       ├── remove_old_accounts.py
+│   │   │       ├── stats_ads_count_by_administration.py
+│   │   │       └── stats_ads_count_by_pmr.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20220117_1803.py
+│   │   │   ├── 0003_auto_20220127_1440.py
+│   │   │   ├── 0004_remove_adsmanager_users.py
+│   │   │   ├── 0005_alter_adsmanager_options.py
+│   │   │   ├── 0006_auto_20220425_1813.py
+│   │   │   ├── 0007_ads_unique_ads_number.py
+│   │   │   ├── 0008_ads_transaction_identifier.py
+│   │   │   ├── 0009_alter_ads_user_status.py
+│   │   │   ├── 0010_adsuser.py
+│   │   │   ├── 0011_ads_user_to_separate_table.py
+│   │   │   ├── 0012_remove_ads_user_name_remove_ads_user_siret.py
+│   │   │   ├── 0013_ads_owner_name.py
+│   │   │   ├── 0014_combine_owner_name.py
+│   │   │   ├── 0015_remove_ads_owner_firstname_remove_ads_owner_lastname.py
+│   │   │   ├── 0016_ads_owner_email_ads_owner_mobile_ads_owner_phone.py
+│   │   │   ├── 0017_adsmanager_administrator.py
+│   │   │   ├── 0018_fill_adsmanager_administrator.py
+│   │   │   ├── 0019_remove_adsmanageradministrator_ads_managers.py
+│   │   │   ├── 0020_adsupdatefile.py
+│   │   │   ├── 0021_adslegalfile.py
+│   │   │   ├── 0022_migrate_to_adslegalfile.py
+│   │   │   ├── 0023_remove_ads_legal_file.py
+│   │   │   ├── 0024_adslegalfile_creation_date.py
+│   │   │   ├── 0025_alter_adslegalfile_creation_date.py
+│   │   │   ├── 0026_alter_adslegalfile_creation_date.py
+│   │   │   ├── 0027_ads_epci_commune.py
+│   │   │   ├── 0028_adsuser_license_number.py
+│   │   │   ├── 0029_alter_adsuser_license_number.py
+│   │   │   ├── 0030_alter_ads_owner_siret_alter_adsuser_siret.py
+│   │   │   ├── 0031_alter_adslegalfile_file.py
+│   │   │   ├── 0032_adsmanager_no_ads_declared.py
+│   │   │   ├── 0033_remove_ads_ads_type.py
+│   │   │   ├── 0034_adsmanageradministrator_expected_count.py
+│   │   │   ├── 0035_adsmanager_is_locked.py
+│   │   │   ├── 0036_alter_ads_eco_vehicle_alter_ads_owner_name_and_more.py
+│   │   │   ├── 0037_alter_adsuser_license_number.py
+│   │   │   ├── 0038_alter_ads_accepted_cpam_alter_ads_ads_creation_date_and_more.py
+│   │   │   ├── 0039_alter_adsupdatefile_update_file.py
+│   │   │   ├── 0040_ads_ads_creation_date_before_attribution_date.py
+│   │   │   ├── 0041_remove_ads_ads_creation_date_before_attribution_date_and_more.py
+│   │   │   ├── 0042_adsmanagerdecree.py
+│   │   │   ├── 0043_alter_ads_transaction_identifier.py
+│   │   │   ├── 0044_ads_owner_license_number.py
+│   │   │   ├── 0045_alter_adslegalfile_options_and_more.py
+│   │   │   ├── 0046_alter_ads_attribution_type.py
+│   │   │   ├── 0047_alter_ads_attribution_date.py
+│   │   │   ├── 0048_alter_ads_attribution_reason.py
+│   │   │   ├── 0049_adsupdatefile_import_output.py
+│   │   │   ├── 0050_remove_attribution_date_for_new_ads.py
+│   │   │   ├── 0051_ads_attribution_date_null_for_new_ads.py
+│   │   │   ├── 0052_remove_used_by_owner_for_unknown_creation_date.py
+│   │   │   ├── 0053_ads_used_by_owner_null_for_new_ads.py
+│   │   │   ├── 0054_remove_ads_user_for_unknown_ads_creation_date.py
+│   │   │   ├── 0055_remove_hidden_data.py
+│   │   │   ├── 0056_ads_attribution_type_empty_for_new_ads_and_more.py
+│   │   │   ├── 0057_alter_adsuser_status.py
+│   │   │   ├── 0058_adsmanagerrequest_last_update_at.py
+│   │   │   ├── 0059_alter_adsmanagerrequest_last_update_at.py
+│   │   │   ├── 0060_alter_adslegalfile_file.py
+│   │   │   ├── 0061_alter_adsuser_options.py
+│   │   │   ├── 0062_adslegalfile_deleted_at_adsuser_deleted_at.py
+│   │   │   ├── 0063_alter_ads_number.py
+│   │   │   ├── 0064_alter_ads_ads_creation_date.py
+│   │   │   ├── 0065_ads_ads_renew_date_ads_renew_date_null_for_old_ads_and_more.py
+│   │   │   ├── 0066_adsmanager_epci_delegate.py
+│   │   │   ├── 0067_alter_adsmanager_epci_delegate_and_more.py
+│   │   │   ├── 0068_alter_ads_ads_creation_date_and_more.py
+│   │   │   ├── 0069_adsmanageradministrator_referent_emails.py
+│   │   │   ├── 0070_ads_ads_in_use.py
+│   │   │   ├── 0071_alter_ads_ads_creation_date.py
+│   │   │   ├── 0072_alter_ads_owner_name.py
+│   │   │   ├── 0073_alter_adsuser_status.py
+│   │   │   ├── 0074_fix_adsuser.py
+│   │   │   ├── 0075_remove_ads_used_by_owner_null_for_new_ads_and_more.py
+│   │   │   ├── 0076_adsuser_only_one_titulaire_exploitant.py
+│   │   │   ├── 0077_adsuser_name_empty_for_titulaire_exploitant_and_more.py
+│   │   │   ├── 0078_fix_adsuser_legal_representative.py
+│   │   │   ├── 0079_fix_adsuser_salarie.py
+│   │   │   ├── 0080_remove_adsuser_siret_empty_for_titulaire_exploitant_and_more.py
+│   │   │   ├── 0081_alter_adsuser_name_alter_adsuser_status.py
+│   │   │   ├── 0082_notification.py
+│   │   │   ├── 0083_notification_ads_created_or_updated_and_more.py
+│   │   │   ├── 0084_alter_adsmanager_administrator.py
+│   │   │   ├── 0085_ads_notes.py
+│   │   │   ├── 0086_remove_ads_attribution_type_empty_for_new_ads_and_more.py
+│   │   │   ├── 0087_alter_ads_creation_date_alter_ads_last_update.py
+│   │   │   ├── 0088_adsuser_date_location_gerance_and_more.py
+│   │   │   ├── 0089_alter_ads_attribution_date.py
+│   │   │   ├── 0090_remove_ads_unique_ads_number_ads_deleted_at_and_more.py
+│   │   │   ├── 0091_remove_ads_unique_ads_number_ads_unique_ads_number.py
+│   │   │   ├── 0092_alter_adsupdatefile_user.py
+│   │   │   ├── 0093_adsupdatelog.py
+│   │   │   ├── 0094_inscriptionlisteattente_and_more.py
+│   │   │   ├── 0095_alter_inscriptionlisteattente_motif_archivage.py
+│   │   │   ├── 0096_alter_inscriptionlisteattente_date_dernier_renouvellement_and_more.py
+│   │   │   ├── 0097_alter_inscriptionlisteattente_date_dernier_renouvellement.py
+│   │   │   ├── 0098_alter_inscriptionlisteattente_date_dernier_renouvellement.py
+│   │   │   ├── 0099_alter_inscriptionlisteattente_email.py
+│   │   │   ├── 0100_inscriptionlisteattente_unique_numero_licence.py
+│   │   │   ├── 0101_remove_inscriptionlisteattente_unique_numero_licence.py
+│   │   │   ├── 0102_alter_inscriptionlisteattente_exploitation_ads_and_more.py
+│   │   │   ├── 0103_remove_inscriptionlisteattente_exploitation_ads_and_more.py
+│   │   │   ├── 0104_adsmanager_liste_attente_publique.py
+│   │   │   ├── 0105_alter_inscriptionlisteattente_numero_licence.py
+│   │   │   ├── 0106_inscriptionlisteattente_date_creation.py
+│   │   │   ├── 0107_alter_ads_eco_vehicle_and_more.py
+│   │   │   ├── 0107_alter_adsmanager_content_type.py
+│   │   │   ├── 0108_alter_adsmanagerdecree_file_and_more.py
+│   │   │   ├── 0109_merge_20260112_1826.py
+│   │   │   ├── 0110_demandegestionprefecture.py
+│   │   │   ├── 0111_demandegestionprefecture_accepted_at_and_more.py
+│   │   │   ├── 0112_adsmanagerdecree_date_arrete.py
+│   │   │   ├── 0113_auto_20260304_1033.py
+│   │   │   ├── 0114_alter_adsmanagerdecree_date_arrete.py
+│   │   │   ├── 0115_adsmanagerdecree_nombre_ads.py
+│   │   │   ├── 0116_demandeacceslectureseule.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── reversion_diff.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── export.py
+│   │   │   └── liste_attente.py
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   ├── boolean_display.py
+│   │   │   ├── html_metadata.py
+│   │   │   ├── is_subpath.py
+│   │   │   ├── markdownify.py
+│   │   │   ├── meta.py
+│   │   │   ├── selectattr.py
+│   │   │   ├── show_pagination_links.py
+│   │   │   └── str_to_date.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── commands
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_command_mail_liste_attente.py
+│   │   │   ├── factories.py
+│   │   │   ├── template_tags
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_html_metadata.py
+│   │   │   │   ├── test_markdownify.py
+│   │   │   │   ├── test_meta.py
+│   │   │   │   ├── test_selectattr.py
+│   │   │   │   ├── test_show_pagination_links.py
+│   │   │   │   └── test_str_to_date.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_reversion_diff.py
+│   │   │   ├── test_service_exports.py
+│   │   │   └── views
+│   │   │       ├── __init__.py
+│   │   │       ├── test_ads.py
+│   │   │       ├── test_ads_consultation_views.py
+│   │   │       ├── test_ads_manager.py
+│   │   │       ├── test_ads_manager_admin.py
+│   │   │       ├── test_ads_manager_request.py
+│   │   │       ├── test_ads_verification_view.py
+│   │   │       ├── test_arrete.py
+│   │   │       ├── test_dashboards.py
+│   │   │       ├── test_liste_attente.py
+│   │   │       ├── test_notation_view.py
+│   │   │       └── test_public.py
+│   │   ├── urls.py
+│   │   ├── views
+│   │   │   ├── __init__.py
+│   │   │   ├── ads.py
+│   │   │   ├── ads_manager.py
+│   │   │   ├── ads_manager_admin.py
+│   │   │   ├── ads_manager_request.py
+│   │   │   ├── arretes.py
+│   │   │   ├── consultation_ads_views.py
+│   │   │   ├── dashboards.py
+│   │   │   ├── export.py
+│   │   │   ├── liste_attente.py
+│   │   │   ├── notation_view.py
+│   │   │   └── public.py
+│   │   └── widgets.py
+│   ├── asgi.py
+│   ├── conftest.py
+│   ├── context_processors.py
+│   ├── docs
+│   │   ├── courrier_archive_liste_attente.docx
+│   │   └── courrier_contact.docx
+│   ├── fradm
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── commands
+│   │   │   │   ├── fix_load_communes.py
+│   │   │   │   ├── load_communes.py
+│   │   │   │   ├── load_epci.py
+│   │   │   │   ├── load_prefectures.py
+│   │   │   │   └── update_communes.py
+│   │   │   └── files
+│   │   │       ├── communes.csv
+│   │   │       ├── epci.csv
+│   │   │       └── prefectures.csv
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_create_extension_unaccent.py
+│   │   │   ├── 0003_alter_commune_unique_together_commune_type_commune.py
+│   │   │   ├── 0004_alter_commune_insee_alter_commune_unique_together.py
+│   │   │   ├── 0005_alter_commune_unique_together_and_more.py
+│   │   │   ├── 0006_aeroport.py
+│   │   │   ├── 0006_alter_commune_options.py
+│   │   │   ├── 0007_merge_0006_aeroport_0006_alter_commune_options.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── factories.py
+│   │   │   ├── test_forms.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_views.py
+│   │   ├── unittest.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── html_metadata.yml
+│   ├── mesads_oidc
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   └── backends.py
+│   ├── middleware.py
+│   ├── newsletters
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── newsletter_section.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── factories.py
+│   │       └── test_template_tags.py
+│   ├── s3storage.py
+│   ├── settings.py
+│   ├── settings_test.py
+│   ├── static
+│   │   ├── Guide d'utilisation Préfectures.pdf
+│   │   ├── Guide d'utilisation.pdf
+│   │   ├── css
+│   │   │   ├── mesads.css
+│   │   │   └── pdf.css
+│   │   ├── images
+│   │   │   ├── Republique-francaise-logo.png
+│   │   │   ├── Republique-francaise-logo.svg
+│   │   │   └── banner.svg
+│   │   └── template-arrete-municipal.docx
+│   ├── templates
+│   │   ├── django
+│   │   │   ├── admin
+│   │   │   │   ├── app
+│   │   │   │   │   ├── ads_manager_administrator
+│   │   │   │   │   │   └── change_form.html
+│   │   │   │   │   ├── demande_acces_lecture_seule
+│   │   │   │   │   │   └── change_form.html
+│   │   │   │   │   └── demande_gestion_prefecture
+│   │   │   │   │       └── change_form.html
+│   │   │   │   ├── auth
+│   │   │   │   │   └── user
+│   │   │   │   │       ├── change_list_with_export.html
+│   │   │   │   │       └── table_proprietaire.html
+│   │   │   │   ├── index.html
+│   │   │   │   └── statistiques.html
+│   │   │   ├── base_mail.mjml
+│   │   │   ├── base_mail.txt
+│   │   │   ├── demande_gestion_prefecture
+│   │   │   │   ├── email_demande_gestion_prefecture_content.mjml
+│   │   │   │   ├── email_demande_gestion_prefecture_content.txt
+│   │   │   │   ├── email_demande_gestion_prefecture_result_content.mjml
+│   │   │   │   ├── email_demande_gestion_prefecture_result_content.txt
+│   │   │   │   ├── email_demande_gestion_prefecture_result_subject.txt
+│   │   │   │   └── email_demande_gestion_prefecture_subject.txt
+│   │   │   ├── footer.html
+│   │   │   ├── header.html
+│   │   │   ├── header_gestionnaire.html
+│   │   │   ├── header_prefecture.html
+│   │   │   ├── header_proprietaire.html
+│   │   │   ├── liste_attente
+│   │   │   │   ├── doublon_inscription_email_body.mjml
+│   │   │   │   └── doublon_inscription_email_body.txt
+│   │   │   ├── pages
+│   │   │   │   ├── email_ads_created_or_updated_content.mjml
+│   │   │   │   ├── email_ads_created_or_updated_content.txt
+│   │   │   │   ├── email_ads_created_or_updated_subject.txt
+│   │   │   │   ├── email_ads_manager_request_administrator_content.mjml
+│   │   │   │   ├── email_ads_manager_request_administrator_content.txt
+│   │   │   │   ├── email_ads_manager_request_administrator_subject.txt
+│   │   │   │   ├── email_ads_manager_request_result_content.mjml
+│   │   │   │   ├── email_ads_manager_request_result_content.txt
+│   │   │   │   ├── email_ads_manager_request_result_subject.txt
+│   │   │   │   ├── email_liste_attente_delai_depasse.mjml
+│   │   │   │   ├── email_liste_attente_delai_depasse.txt
+│   │   │   │   ├── email_send_otp_content.mjml
+│   │   │   │   ├── email_send_otp_content.txt
+│   │   │   │   └── email_send_otp_subject.txt
+│   │   │   └── skeleton.html
+│   │   └── webpack
+│   │       ├── 404.html
+│   │       ├── 500.html
+│   │       ├── base-sidemenu.html
+│   │       ├── base.css
+│   │       ├── base.html
+│   │       ├── base.ts
+│   │       ├── base_container.html
+│   │       ├── form_fields
+│   │       │   ├── bool.html
+│   │       │   ├── date.html
+│   │       │   ├── number.html
+│   │       │   ├── select-autocomplete.html
+│   │       │   ├── select.html
+│   │       │   ├── string.html
+│   │       │   └── textarea.html
+│   │       ├── history.html
+│   │       ├── history_empty.html
+│   │       ├── images
+│   │       │   ├── banner-notext.svg
+│   │       │   ├── carte_pro.png
+│   │       │   ├── faq
+│   │       │   │   ├── faq-1.png
+│   │       │   │   ├── faq-2.png
+│   │       │   │   ├── faq-3.png
+│   │       │   │   ├── faq-4.png
+│   │       │   │   ├── faq-5.png
+│   │       │   │   ├── faq-6.png
+│   │       │   │   └── faq-7.png
+│   │       │   ├── homepage
+│   │       │   │   ├── icone_reglementation.png
+│   │       │   │   └── icone_repertoire.png
+│   │       │   ├── logo_gestion.png
+│   │       │   ├── logo_homepage.png
+│   │       │   ├── logo_inspecteur.png
+│   │       │   ├── logo_prefecture.png
+│   │       │   ├── logo_proprietaire.png
+│   │       │   └── registration
+│   │       │       ├── profil_administration.png
+│   │       │       ├── profil_autre.png
+│   │       │       └── profil_pro.png
+│   │       ├── pages
+│   │       │   ├── accessibility.html
+│   │       │   ├── accueil
+│   │       │   │   ├── accueil_connecte.html
+│   │       │   │   ├── accueil_contact.html
+│   │       │   │   ├── accueil_gestionnaire.html
+│   │       │   │   ├── accueil_inspecteur.html
+│   │       │   │   ├── accueil_newsletter.html
+│   │       │   │   ├── accueil_newsletters.html
+│   │       │   │   ├── accueil_non_connecte.html
+│   │       │   │   ├── accueil_prefecture.html
+│   │       │   │   ├── accueil_proprietaire.html
+│   │       │   │   ├── accueil_statistiques.html
+│   │       │   │   └── modale_notation.html
+│   │       │   ├── ads_register
+│   │       │   │   ├── ads.html
+│   │       │   │   ├── ads.ts
+│   │       │   │   ├── ads_confirm_delete.html
+│   │       │   │   ├── ads_history.html
+│   │       │   │   ├── ads_history_empty.html
+│   │       │   │   ├── ads_lecture_seule.html
+│   │       │   │   ├── ads_manager.html
+│   │       │   │   ├── ads_manager_admin_requests.html
+│   │       │   │   ├── ads_manager_admin_updates.html
+│   │       │   │   ├── ads_manager_administrations.html
+│   │       │   │   ├── ads_manager_arretes.html
+│   │       │   │   ├── ads_verification.html
+│   │       │   │   ├── arretes_liste.html
+│   │       │   │   ├── consultation_ads
+│   │       │   │   │   ├── consultation_ads.html
+│   │       │   │   │   ├── consultation_ads_export.html
+│   │       │   │   │   └── consultation_ads_search.html
+│   │       │   │   ├── dashboards.html
+│   │       │   │   ├── demande_gestion_ads.html
+│   │       │   │   ├── demande_gestion_prefecture.html
+│   │       │   │   ├── formset_files.html
+│   │       │   │   ├── formset_files.ts
+│   │       │   │   ├── liste_attente.html
+│   │       │   │   ├── liste_attente_archivage_confirmation_inscription.html
+│   │       │   │   ├── liste_attente_archivage_inscription.html
+│   │       │   │   ├── liste_attente_archivees.html
+│   │       │   │   ├── liste_attente_attribution.html
+│   │       │   │   ├── liste_attente_attribution_etape_1.html
+│   │       │   │   ├── liste_attente_attribution_etape_2.html
+│   │       │   │   ├── liste_attente_attribution_etape_3.html
+│   │       │   │   ├── liste_attente_inscription.html
+│   │       │   │   ├── liste_attente_publique.html
+│   │       │   │   ├── liste_attente_publique_pdf.html
+│   │       │   │   ├── liste_attente_traitement_demande.html
+│   │       │   │   ├── listes_attentes_publiques.html
+│   │       │   │   ├── prefecture_liste_gestionnaires.html
+│   │       │   │   ├── prefecture_vehicule_relais_detail.html
+│   │       │   │   └── prefecture_vehicules_relais.html
+│   │       │   ├── cgu.html
+│   │       │   ├── faq.html
+│   │       │   ├── homepage.html
+│   │       │   ├── mentions-legales.html
+│   │       │   ├── plan_site.html
+│   │       │   ├── reglementation
+│   │       │   │   ├── delivrance_ads
+│   │       │   │   │   ├── arrete_delimitant_ads.html
+│   │       │   │   │   ├── attribution_ads.html
+│   │       │   │   │   ├── images
+│   │       │   │   │   │   └── creer-ads-supplementaire.png
+│   │       │   │   │   ├── notification_arrete.html
+│   │       │   │   │   └── retrait_ads.html
+│   │       │   │   ├── principes_generaux
+│   │       │   │   │   ├── qu_est_ce_qu_une_ads.html
+│   │       │   │   │   ├── qui_delivre_ads.html
+│   │       │   │   │   └── role_collectivites.html
+│   │       │   │   └── relais
+│   │       │   │       └── definition.html
+│   │       │   ├── reglementation.html
+│   │       │   ├── stats.html
+│   │       │   ├── stats.ts
+│   │       │   ├── stats_map_ads.ts
+│   │       │   ├── stats_map_vehicules_relais.ts
+│   │       │   ├── suivi.html
+│   │       │   └── vehicules_relais
+│   │       │       ├── proprietaire_confirm_delete.html
+│   │       │       ├── proprietaire_detail.html
+│   │       │       ├── proprietaire_edit.html
+│   │       │       ├── proprietaire_history.html
+│   │       │       ├── proprietaire_list.html
+│   │       │       ├── proprietaire_vehicule.html
+│   │       │       ├── proprietaire_vehicule_confirm_delete.html
+│   │       │       ├── proprietaire_vehicule_history.html
+│   │       │       ├── sidemenu.html
+│   │       │       ├── user_search.html
+│   │       │       └── user_vehicule.html
+│   │       ├── pagination_links.html
+│   │       ├── recepisse.html
+│   │       └── registration
+│   │           ├── login.html
+│   │           └── pre_register.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── test_admin_views.py
+│   │   ├── test_app.py
+│   │   ├── test_context_processors.py
+│   │   ├── test_middleware.py
+│   │   └── test_s3storage.py
+│   ├── unittest.py
+│   ├── urls.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── setup_2fa.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_user_email.py
+│   │   │   ├── 0003_user_unique_ci_email.py
+│   │   │   ├── 0004_remove_user_unique_ci_email_user_unique_ci_email.py
+│   │   │   ├── 0005_alter_user_email.py
+│   │   │   ├── 0006_remove_user_unique_ci_email.py
+│   │   │   ├── 0007_alter_user_email.py
+│   │   │   ├── 0008_userauditentry.py
+│   │   │   ├── 0009_alter_userauditentry_options.py
+│   │   │   ├── 0010_user_otp_secret.py
+│   │   │   ├── 0011_alter_userauditentry_user.py
+│   │   │   ├── 0012_user_proconnect_chorusdt_user_proconnect_idp_id_and_more.py
+│   │   │   ├── 0013_noteutilisateur.py
+│   │   │   ├── 0014_alter_user_email.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── factories.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_validators.py
+│   │   ├── unittest.py
+│   │   ├── urls.py
+│   │   ├── validators.py
+│   │   └── views.py
+│   ├── utils_psql.py
+│   ├── vehicules_relais
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── decorators.py
+│   │   ├── forms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_vehicule_departement.py
+│   │   │   ├── 0003_remove_vehicule_localisation.py
+│   │   │   ├── 0004_alter_vehicule_immatriculation.py
+│   │   │   ├── 0005_dispositionspecifique.py
+│   │   │   ├── 0006_alter_vehicule_motorisation.py
+│   │   │   ├── 0007_alter_vehicule_departement.py
+│   │   │   ├── 0008_alter_vehicule_departement_alter_vehicule_numero.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_views.py
+│   │   │   └── unittest.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── wsgi.py
+├── package-lock.json
+├── package.json
+├── poetry.lock
+├── postcss.config.js
+├── pyproject.toml
+├── resources
+│   ├── 2021
+│   │   └── README.md
+│   ├── 2022
+│   │   └── README.md
+│   ├── 2024
+│   │   ├── DATAFIX.yaml
+│   │   ├── README.md
+│   │   └── cog_ensemble_2024_csv.zip
+│   ├── 2025
+│   │   ├── DATAFIX.yml
+│   │   └── v_commune_2025.csv
+│   ├── 2026
+│   │   ├── DATAFIX.yml
+│   │   └── v_commune_2026.csv
+│   └── import_ads.xlsx
+├── scripts
+│   ├── restore-prod-db-local.sh
+│   └── s3cmd.sh
+├── setup.cfg
+├── tsconfig.json
+└── webpack.config.js
+83 directories, 528 files

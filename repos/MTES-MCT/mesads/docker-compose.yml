@@ -1,0 +1,32 @@
+volumes:
+  db: {}
+  app-poetry: {}
+
+services:
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - 1025:80
+
+  db:
+    image: postgres:15
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: mesads
+      POSTGRES_DB: mesads
+    ports:
+      - 9432:5432
+
+  app:
+    build:
+      context: .
+      target: local
+    volumes:
+      - .:/app
+      - app-poetry:/home/mesads/.cache/pypoetry
+    depends_on:
+      - db
+      - maildev
+    ports:
+      - '9400:8000'
