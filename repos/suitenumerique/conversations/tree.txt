@@ -148,6 +148,7 @@
 │   │   │   │   ├── document_search
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── albert_api.py
+│   │   │   │   ├── indexing.py
 │   │   │   │   └── web_search
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── albert_api.py
@@ -166,7 +167,8 @@
 │   │   │   │   ├── async_to_sync.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── pydantic_ai.py
-│   │   │   │   └── pydantic_ui_message_converter.py
+│   │   │   │   ├── pydantic_ui_message_converter.py
+│   │   │   │   └── schema.py
 │   │   │   ├── constants.py
 │   │   │   ├── document_context_builder.py
 │   │   │   ├── factories.py
@@ -181,6 +183,7 @@
 │   │   │   │   ├── 0004_chatconversationattachment_and_more.py
 │   │   │   │   ├── 0005_chatconversation_title_set_by_user_at.py
 │   │   │   │   ├── 0006_chatproject_chatconversation_project.py
+│   │   │   │   ├── 0007_chatconversationattachment_project_and_more.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── providers
@@ -208,6 +211,7 @@
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   └── test_albert_api.py
 │   │   │   │   │   ├── test_albert_api_constants.py
+│   │   │   │   │   ├── test_indexing.py
 │   │   │   │   │   └── web_search
 │   │   │   │   │       ├── __init__.py
 │   │   │   │   │       └── test_albert_api.py
@@ -216,12 +220,14 @@
 │   │   │   │   │   ├── test_albert_models.py
 │   │   │   │   │   ├── test_base_agent.py
 │   │   │   │   │   ├── test_build_conversation_agent.py
+│   │   │   │   │   ├── test_project_image_pinning.py
 │   │   │   │   │   └── test_title_generation_agent.py
 │   │   │   │   ├── clients
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── pydantic_ai
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_add_document_rag_search_tool_from_setting.py
+│   │   │   │   │   │   ├── test_check_should_enable_rag.py
 │   │   │   │   │   │   ├── test_document_context_window.py
 │   │   │   │   │   │   ├── test_extract_co2_from_usage.py
 │   │   │   │   │   │   ├── test_langfuse_tracing.py
@@ -264,7 +270,8 @@
 │   │   │   │       ├── attachments
 │   │   │   │       │   ├── __init__.py
 │   │   │   │       │   ├── test_attachments.py
-│   │   │   │       │   └── test_backend_upload.py
+│   │   │   │       │   ├── test_backend_upload.py
+│   │   │   │       │   └── test_project_attachments.py
 │   │   │   │       ├── chat
 │   │   │   │       │   ├── __init__.py
 │   │   │   │       │   ├── conversations
@@ -279,6 +286,7 @@
 │   │   │   │       │   │   ├── test_conversation_with_history.py
 │   │   │   │       │   │   ├── test_conversation_with_image_url.py
 │   │   │   │       │   │   ├── test_conversation_with_project.py
+│   │   │   │       │   │   ├── test_conversation_with_project_files.py
 │   │   │   │       │   │   ├── test_conversations_with_co2_impact.py
 │   │   │   │       │   │   ├── test_score_message.py
 │   │   │   │       │   │   └── test_stop_streaming.py
@@ -525,7 +533,10 @@
 │   │   │   │   │   │   │       ├── checkmark-filled.svg
 │   │   │   │   │   │   │       ├── doc.svg
 │   │   │   │   │   │   │       ├── euro-filled.svg
+│   │   │   │   │   │   │       ├── file-doc.svg
 │   │   │   │   │   │   │       ├── file-filled.svg
+│   │   │   │   │   │   │       ├── file-image.svg
+│   │   │   │   │   │   │       ├── file-pdf.svg
 │   │   │   │   │   │   │       ├── folder-filled.svg
 │   │   │   │   │   │   │       ├── folder-plus.svg
 │   │   │   │   │   │   │       ├── folder.svg
@@ -618,7 +629,10 @@
 │   │   │   │   │   │   ├── attachments
 │   │   │   │   │   │   │   ├── api
 │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   └── useCreateConversationAttachment.tsx
+│   │   │   │   │   │   │   │   ├── uploadProjectFiles.ts
+│   │   │   │   │   │   │   │   ├── useCreateConversationAttachment.tsx
+│   │   │   │   │   │   │   │   ├── useDeleteProjectAttachment.tsx
+│   │   │   │   │   │   │   │   └── useProjectAttachments.tsx
 │   │   │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   │   │   └── useUploadFile.tsx
 │   │   │   │   │   │   │   └── types.tsx
@@ -912,7 +926,8 @@
 │   │   │       ├── eslint.config.mjs
 │   │   │       ├── package.json
 │   │   │       ├── playwright.config.ts
-│   │   │       └── tsconfig.json
+│   │   │       ├── tsconfig.json
+│   │   │       └── tsconfig.tsbuildinfo
 │   │   ├── package.json
 │   │   ├── packages
 │   │   │   ├── eslint-config-conversations
@@ -985,4 +1000,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-216 directories, 771 files
+216 directories, 786 files
