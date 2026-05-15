@@ -210,8 +210,14 @@
     │   │   │   ├── .gitignore
     │   │   │   ├── __tests__
     │   │   │   │   └── app-hub
-    │   │   │   │       ├── home.spec.ts
-    │   │   │   │       └── utils-common.ts
+    │   │   │   │       ├── chat-conversation.spec.ts
+    │   │   │   │       ├── chat-pagination.spec.ts
+    │   │   │   │       ├── home-redirects.spec.ts
+    │   │   │   │       ├── left-panel.spec.ts
+    │   │   │   │       ├── utils-auth.ts
+    │   │   │   │       ├── utils-chat-conversation.ts
+    │   │   │   │       ├── utils-common.ts
+    │   │   │   │       └── utils-left-panel.ts
     │   │   │   ├── eslint.config.mjs
     │   │   │   ├── package.json
     │   │   │   ├── playwright.config.ts
@@ -255,8 +261,30 @@
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── LoginButton.tsx
     │   │       │   │   │   │   └── LogoutButton.tsx
+    │   │       │   │   │   ├── hooks
+    │   │       │   │   │   │   └── useRequireAuth.ts
     │   │       │   │   │   ├── silentLogin.ts
     │   │       │   │   │   └── types.ts
+    │   │       │   │   ├── chat
+    │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── ChatBubble.scss
+    │   │       │   │   │   │   ├── ChatBubble.tsx
+    │   │       │   │   │   │   ├── ChatComposer.scss
+    │   │       │   │   │   │   ├── ChatComposer.tsx
+    │   │       │   │   │   │   ├── ChatConversation.scss
+    │   │       │   │   │   │   ├── ChatConversation.tsx
+    │   │       │   │   │   │   ├── ChatVirtualList.scss
+    │   │       │   │   │   │   ├── ChatVirtualList.tsx
+    │   │       │   │   │   │   └── header
+    │   │       │   │   │   │       ├── ChatHeader.scss
+    │   │       │   │   │   │       └── ChatHeader.tsx
+    │   │       │   │   │   ├── formatTimestamp.ts
+    │   │       │   │   │   ├── hooks
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   └── useChatMessages.test.tsx
+    │   │       │   │   │   │   └── useChatMessages.ts
+    │   │       │   │   │   ├── mockChats.ts
+    │   │       │   │   │   └── mockMessages.ts
     │   │       │   │   ├── config
     │   │       │   │   │   ├── Config.ts
     │   │       │   │   │   ├── ConfigProvider.tsx
@@ -268,8 +296,27 @@
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── errors
     │   │       │   │   │   └── AppError.ts
-    │   │       │   │   └── layouts
-    │   │       │   │       └── HomeLayout.tsx
+    │   │       │   │   ├── layouts
+    │   │       │   │   │   ├── HubLayout.scss
+    │   │       │   │   │   ├── HubLayout.tsx
+    │   │       │   │   │   ├── LeftPanel
+    │   │       │   │   │   │   ├── LeftPanel.scss
+    │   │       │   │   │   │   └── LeftPanel.tsx
+    │   │       │   │   │   └── components
+    │   │       │   │   │       └── AccountSelector
+    │   │       │   │   │           ├── AccountSelector.scss
+    │   │       │   │   │           └── AccountSelector.tsx
+    │   │       │   │   └── ui
+    │   │       │   │       └── components
+    │   │       │   │           ├── avatar
+    │   │       │   │           │   ├── Avatar.scss
+    │   │       │   │           │   ├── Avatar.tsx
+    │   │       │   │           │   └── palette.ts
+    │   │       │   │           ├── gaufre
+    │   │       │   │           │   └── Gaufre.tsx
+    │   │       │   │           └── user-profile
+    │   │       │   │               ├── LanguagePickerUserMenu.tsx
+    │   │       │   │               └── UserProfile.tsx
     │   │       │   ├── hooks
     │   │       │   │   ├── useRedirectAfterLogin.tsx
     │   │       │   │   └── useThemeCustomization.tsx
@@ -283,6 +330,9 @@
     │   │       │   │   ├── 403.tsx
     │   │       │   │   ├── _app.tsx
     │   │       │   │   ├── _document.tsx
+    │   │       │   │   ├── chat
+    │   │       │   │   │   ├── [chatId].tsx
+    │   │       │   │   │   └── new.tsx
     │   │       │   │   ├── home.scss
     │   │       │   │   ├── home.tsx
     │   │       │   │   └── index.tsx
@@ -358,4 +408,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-106 directories, 254 files
+121 directories, 289 files
