@@ -271,6 +271,7 @@
 │   ├── dsfr
 │   │   ├── Accordion.vue
 │   │   ├── AccordionsGroup.vue
+│   │   ├── Alert.vue
 │   │   ├── Badge.vue
 │   │   ├── Breadcrumb.vue
 │   │   ├── Button.vue
@@ -339,13 +340,11 @@
 │   │   ├── FormLeadReseau.vue
 │   │   ├── FormMessageTemplate.vue
 │   │   ├── FormMissionDomains.vue
-│   │   ├── FormMissionParameters.vue
 │   │   ├── FormMissionTemplate.vue
 │   │   ├── FormMissionWrapper.vue
 │   │   ├── FormNote.vue
 │   │   ├── FormOrganisation.vue
 │   │   ├── FormParticipationDecline.vue
-│   │   ├── FormPassword.vue
 │   │   ├── FormProfile.vue
 │   │   ├── FormProfileRole.vue
 │   │   ├── FormReseau.vue
@@ -466,8 +465,6 @@
 │   │   ├── ModalSendMessage.vue
 │   │   ├── ModalStatisticsFilters.vue
 │   │   ├── ModalTagsManager.vue
-│   │   ├── ModalUnregisterOrganisation.vue
-│   │   ├── ModalUnregisterUser.vue
 │   │   ├── ModalUserBan.vue
 │   │   ├── ModalUserDispositifsCEJ.vue
 │   │   ├── ModalUserDispositifsFT.vue
@@ -716,6 +713,7 @@
 │   │   │   ├── BoxReseau.vue
 │   │   │   ├── BoxScore.vue
 │   │   │   ├── BoxScoreLight.vue
+│   │   │   ├── BoxUnsubscribedInformations.vue
 │   │   │   ├── Contact.vue
 │   │   │   ├── Details.vue
 │   │   │   ├── DisclosureModerationAI.vue
@@ -1070,6 +1068,8 @@
 │   ├── useFileValidation.ts
 │   ├── useFocusManagement.ts
 │   ├── useForm.ts
+│   ├── useFormMetatags.ts
+│   ├── useFormParagraphs.ts
 │   ├── useGeolocationFetcher.ts
 │   ├── useGeolocationSuggestions.ts
 │   ├── useHeadFaqPageJsonLd.ts
@@ -1080,6 +1080,7 @@
 │   ├── useMacroCompetenceSuggestions.ts
 │   ├── useMarketplaceMission.ts
 │   ├── useMedia.ts
+│   ├── useMediaUpload.ts
 │   ├── useMediaUploadHelper.ts
 │   ├── useMessageTemplateTokens.ts
 │   ├── useMission.ts
@@ -1232,6 +1233,10 @@
 │   │   ├── config
 │   │   │   └── operations.ts
 │   │   └── index.ts
+│   ├── organisations
+│   │   └── unsubscribe
+│   │       ├── Box.vue
+│   │       └── ModalOrganisationUnsubscribe.vue
 │   ├── participations
 │   │   └── components
 │   │       └── Badges.vue
@@ -1310,8 +1315,16 @@
 │   │   └── components
 │   │       └── TableRowTestimonial.vue
 │   └── users
-│       └── components
-│           └── TableRowProfile.vue
+│       ├── components
+│       │   └── TableRowProfile.vue
+│       └── unsubscribe
+│           ├── Box.vue
+│           ├── ModalUnsubscribeBenevole.vue
+│           ├── ModalUnsubscribeReferent.vue
+│           ├── ModalUnsubscribeReferentRegional.vue
+│           ├── ModalUnsubscribeResponsable.vue
+│           ├── ModalUnsubscribeResponsableTerritoire.vue
+│           └── ModalUnsubscribeTeteDeReseau.vue
 ├── layouts
 │   ├── admin-with-sidebar-menu.vue
 │   ├── default-without-header.vue
@@ -2544,4 +2557,4 @@
 │   ├── utils.ts
 │   └── yup.d.ts
 └── yarn.lock
-307 directories, 2623 files
+310 directories, 2633 files

@@ -1,27 +1,26 @@
-## Changelog : jeveuxaider-front (30 derniers jours, au 11 mai 2026)
+## Changelog : jeveuxaider-front (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment en améliorant la géolocalisation, l'affichage des missions et la gestion des utilisateurs. Des corrections de bugs ont également été apportées pour assurer la stabilité et la fiabilité de la plateforme. Des évolutions liées à France Travail ont été intégrées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment en facilitant la gestion des organisations et des missions. Des corrections et des améliorations techniques ont également été apportées pour optimiser la performance et la robustesse de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Géolocalisation :** Amélioration du support de la géolocalisation pour les villes multi-distribuées [#330](https://github.com/betagouv/jeveuxaider-front/pull/330). Ajout de Saint-Paul et d'Avignon à la liste des villes concernées [#329](https://github.com/betagouv/jeveuxaider-front/pull/329).
-- **Filtres des notes :** Ajout d'options de filtrage pour les notes autres que les miennes [#328](https://github.com/betagouv/jeveuxaider-front/pull/328).
-- **Exports :** Ajout de champs supplémentaires dans les exports de données [#327](https://github.com/betagouv/jeveuxaider-front/pull/327).
-- **Pagination :** Ajout d'une pagination simple pour l'index des activités [#323](https://github.com/betagouv/jeveuxaider-front/pull/323).
-- **Modals :** Refonte des composants modaux pour utiliser `useForm` pour la gestion et la validation des formulaires [#318](https://github.com/betagouv/jeveuxaider-front/pull/318).
-- **Informations missions :** Amélioration de l'affichage des missions avec des détails sur l'activité et la localisation [#321](https://github.com/betagouv/jeveuxaider-front/pull/321).
-- **France Travail :** Intégration d'évolutions spécifiques à France Travail [#310](https://github.com/betagouv/jeveuxaider-front/pull/310).
-- **Date PPP :** Correction de la plage de dates pour le PPP [#317](https://github.com/betagouv/jeveuxaider-front/pull/317).
-- **Affichage des dates :** Correction du formatage des dates pour les missions provenant de l'API "api_engagement" [#316](https://github.com/betagouv/jeveuxaider-front/pull/316).
-- **Z-index :** Correction du `z-index` pour l'image de fond du composant `LinkToCityAssociations` [#314](https://github.com/betagouv/jeveuxaider-front/pull/314).
+- Les organisations peuvent maintenant se désinscrire de manière autonome. [#322](https://github.com/betagouv/jeveuxaider-front/issues/322)
+- Amélioration de l'affichage du nom des établissements dans les statistiques de visites. [#337](https://github.com/betagouv/jeveuxaider-front/issues/337)
+- Ajout de Saint-Paul et d'Avignon à la liste des villes multi-distribuées, améliorant la géolocalisation. [#329](https://github.com/betagouv/jeveuxaider-front/issues/329)
+- Ajout d'options de filtrage pour les notes autres que les mines. [#328](https://github.com/betagouv/jeveuxaider-front/issues/328)
+- Ajout d'une pagination simple pour l'index des logs d'activité. [#323](https://github.com/betagouv/jeveuxaider-front/issues/323)
+- Ajout d'un modal pour les utilisateurs sans numéro de téléphone ou code postal. [#321](https://github.com/betagouv/jeveuxaider-front/issues/321)
+- Amélioration de la carte de mission avec des détails sur l'activité et la localisation. [#327](https://github.com/betagouv/jeveuxaider-front/issues/327)
+- Ajout de la possibilité de changer de rôle et amélioration de la gestion des erreurs liées à l'authentification. [#318](https://github.com/betagouv/jeveuxaider-front/issues/318)
+- Restriction de l'accès à l'index des réseaux à l'administrateur. [#320](https://github.com/betagouv/jeveuxaider-front/issues/320)
 
 ### Évolutions techniques
-- **Refactoring :** Refactoring des composants `CardMissionFull`, `mission preview` et `organization box` pour utiliser `BaseTextFormatted` pour le rendu des descriptions [#321](https://github.com/betagouv/jeveuxaider-front/pull/321).
-- **Authentification :** Restriction de l'accès au rôle administrateur pour l'index des réseaux [#320](https://github.com/betagouv/jeveuxaider-front/pull/320).
-- **Timezone :** Correction d'un décalage de fuseau horaire en SSR et côté client [#317](https://github.com/betagouv/jeveuxaider-front/pull/317).
-- **Typescript :** Mise à jour du type accepté par le composant `Select` pour autoriser `null` comme valeur valide [#321](https://github.com/betagouv/jeveuxaider-front/pull/321).
+- Refactorisation des composants modaux pour utiliser `useForm` pour la gestion des formulaires et la validation.
+- Refactorisation des composants de prévisualisation de mission et de la boîte d'organisation pour utiliser `BaseTextFormatted` pour le rendu des descriptions.
+- Mise à jour du composant `Select` pour accepter `null` comme valeur valide et nettoyage du code inutilisé dans les composants modaux.
+- Ajout du rôle 'responsable' à la condition de visibilité de l'ID de mission. [#318](https://github.com/betagouv/jeveuxaider-front/issues/318)
+- Optimisation de l'inclusion des dépendances dans la configuration Nuxt pour éviter les rechargements en développement. [#336](https://github.com/betagouv/jeveuxaider-front/issues/336)
 
 ### Autres changements
-- Suppression de code inutilisé dans les composants modaux.
-- Amélioration de la gestion des erreurs lors du changement de rôle utilisateur.
-- Remplacement d'emojis pour les tranches d'âge 16-18.
+- Correction de l'affichage du nom au lieu de la clé dans les statistiques de visites. [#337](https://github.com/betagouv/jeveuxaider-front/issues/337)
+- Ajout des dépendances `chartjs-plugin-annotation` et `chartjs-plugin-datalabels` pour corriger un problème avec les graphiques. [#336](https://github.com/betagouv/jeveuxaider-front/issues/336)
