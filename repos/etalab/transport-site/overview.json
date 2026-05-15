@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il vise à valoriser et améliorer les données de transport disponibles sur data.gouv.fr.",
+  "description": "Ce projet est le point d'accès national (NAP) français pour les données de mobilité. Il vise à centraliser et valoriser les données de transport hébergées sur data.gouv.fr.",
   "language": "Elixir",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,20 +11,17 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Contenu éditorial",
-    "Sécurité & Conformité",
+    "Gestion métier générale",
     "Données & Schémas"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Elixir",
-    "Node.js",
-    "Yarn",
-    "PostgreSQL",
     "Phoenix",
+    "PostgreSQL",
+    "JavaScript",
+    "Webpack",
     "Leaflet",
-    "Vega",
     "FontAwesome"
   ],
   "components": [
@@ -33,27 +30,21 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Elixir (scripts & backend)"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "oauth2"
     ],
     "providers": [
-      "Google",
-      "GitHub"
+      "Datagouvfr"
     ]
   },
-  "tests": [
-    "ExUnit",
-    "Jest"
-  ],
+  "tests": "Mix test, Jest",
   "workflows": [
-    "CI/CD",
-    "GitHub Actions"
+    "CI/CD"
   ],
-  "lastActivity": "2026-05-05T07:50:30Z",
+  "lastActivity": "2026-05-12T14:14:50Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -68,8 +59,8 @@
     "Écosystème beta.gouv / État",
     "Transport & Mobilité",
     "JavaScript",
-    "Elixir",
-    "Bases de données SQL",
-    "API & Intégrations"
+    "PostgreSQL",
+    "API & Intégrations",
+    "Visualisation de données & Cartographie"
   ]
 }
