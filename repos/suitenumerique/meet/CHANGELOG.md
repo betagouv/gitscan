@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-05-13
+
 ### Added
 
 - 🔒️(backend) add validation of Room.configuration
@@ -19,9 +21,6 @@ and this project adheres to
 
 - ♻️(summary) change tasks endpoint signature
 - ⬆️(dependencies) update urllib3 to v2.7.0 [SECURITY]
-
-### Changed
-
 - 🧑‍💻(agents) use `uv` for package management
 - ✨(summary) improve speaker-to-participant assignment
 
@@ -33,6 +32,7 @@ and this project adheres to
 - ⬆️(mail) fix dependencies not having resolved or integrity field #1321
 - 🐛(summary) complete webm support #1328
 - 🐛(backend) add link to "Open" text in recording email
+- 🩹(frontend) fix spacing regression in mobile control bar
 
 ## [1.15.0] - 2026-04-30
 
