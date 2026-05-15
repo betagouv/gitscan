@@ -1,30 +1,26 @@
-## Changelog : verseau2 (30 derniers jours, au 07 mai 2026)
+## Changelog : verseau2 (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de Verseau2 se concentrent sur l'amélioration de la stabilité, la correction de bugs et l'optimisation de l'expérience utilisateur, notamment au niveau de l'authentification et de la gestion des requêtes. Des améliorations ont également été apportées à la configuration pour le déploiement en production et à la documentation interne.
+Cette version apporte des améliorations significatives à l'application, notamment l'ajout de nouvelles colonnes au bilan, une meilleure gestion des erreurs lors de l'envoi de rapports, et des corrections pour la redirection de l'URL et la gestion des adresses email. Des optimisations ont également été apportées à la structure du code backend et à la documentation.
 
 ### Évolutions fonctionnelles
-- Mise à jour du titre de l'application et ajout de la gestion de l'environnement. [#74](https://github.com/MTES-MCT/verseau2/issues/74)
-- Ajout de la configuration pour le reverse proxy, facilitant le déploiement et la configuration du serveur. [#73](https://github.com/MTES-MCT/verseau2/issues/73)
-- Correction d'un bug empêchant l'affichage correct de la liste des ouvrages RMC. [#69](https://github.com/MTES-MCT/verseau2/issues/69)
-- Ajout d'un nouvel endpoint MASA. [#68](https://github.com/MTES-MCT/verseau2/issues/68)
-- Correction d'un problème de redirection de l'URL `https://www.saineau.beta.gouv.fr/verseau` vers une URL reconstruite par Nginx. [#80](https://github.com/MTES-MCT/verseau2/issues/80)
-- Correction d'un bug lié à la gestion des erreurs lors de la récupération des informations utilisateur. [#61](https://github.com/MTES-MCT/verseau2/issues/61)
+- Ajout de nouvelles colonnes au bilan, répondant aux besoins exprimés dans l'issue [#72](https://github.com/MTES-MCT/verseau2/issues/72).
+- Les rapports sont désormais envoyés même en cas d'erreur, améliorant la fiabilité du système [#76](https://github.com/MTES-MCT/verseau2/issues/76).
+- Correction d'un problème de redirection de l'URL `https://www.saineau.beta.gouv.fr/verseau` vers une URL reconstruite par Nginx [#80](https://github.com/MTES-MCT/verseau2/issues/80).
+- Mise à jour du titre de l'application et ajout de la gestion de l'environnement [#74](https://github.com/MTES-MCT/verseau2/issues/74).
+- Correction de la liste des ouvrages RMC [#69](https://github.com/MTES-MCT/verseau2/issues/69).
+- Correction d'un bug lié au trim des adresses email dans les requêtes [#70](https://github.com/MTES-MCT/verseau2/issues/70).
+- Ajout de la configuration du serveur pour Docker [#73](https://github.com/MTES-MCT/verseau2/issues/73).
+- Correction d'un correctif recette [#71](https://github.com/MTES-MCT/verseau2/issues/71).
 
 ### Évolutions techniques
-- Refactoring de la gestion des requêtes pour les API REST MASA, améliorant la performance et la maintenabilité.
-- Amélioration de la documentation et des commandes dans le fichier `AGENTS.md`.
-- Suppression de propriétés inutilisées dans les filtres backend, simplifiant le code et améliorant la performance. [#67](https://github.com/MTES-MCT/verseau2/issues/67)
-- Renommage des propriétés en utilisant la convention de domaine, améliorant la cohérence du code. [#65](https://github.com/MTES-MCT/verseau2/issues/65)
-- Augmentation de la durée de vie du cookie `access_token` et suppression de `idToken` dans les réponses, optimisant la gestion des sessions. [#64](https://github.com/MTES-MCT/verseau2/issues/64)
-- Suppression de `skipSubjectCheck` et ajustement des appels, améliorant la sécurité et la performance. [#62](https://github.com/MTES-MCT/verseau2/issues/62)
-- Correction du type de réponse pour le refresh token. [#61](https://github.com/MTES-MCT/verseau2/issues/61)
-- Amélioration du formatage des requêtes SQL dans les logs pour une meilleure lisibilité.
-- Limitation de la longueur des paramètres dans les logs de requête pour éviter les problèmes de performance.
-- Correction des règles ESLint et gestion des erreurs. [#75](https://github.com/MTES-MCT/verseau2/issues/75)
+- Amélioration de la structure des types et des sélections dans le backend [#81](https://github.com/MTES-MCT/verseau2/issues/81).
+- Refactoring de la gestion des requêtes pour les API REST MASA.
+- Amélioration du formatage des requêtes SQL dans les logs.
+- Limitation de la longueur des paramètres dans les logs de requête pour une meilleure lisibilité.
+- Fix des règles ESLint et gestion des erreurs dans le backend [#75](https://github.com/MTES-MCT/verseau2/issues/75).
+- Ajout de paths manquants.
 
 ### Autres changements
-- Désactivation temporaire de la synchronisation de la base de données pour maintenance. [#78](https://github.com/MTES-MCT/verseau2/issues/78)
-- Ajout de la configuration du serveur pour Docker.
-- Correction de tests en erreur liés au rafraîchissement des tokens. [#61](https://github.com/MTES-MCT/verseau2/issues/61)
-- Correction d'un correctif de recette. [#71](https://github.com/MTES-MCT/verseau2/issues/71)
+- Désactivation temporaire de la synchronisation de la base de données [#78](https://github.com/MTES-MCT/verseau2/issues/78).
+- Amélioration de la documentation et des commandes dans le fichier `AGENTS.md`.
