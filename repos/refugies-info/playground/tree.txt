@@ -150,6 +150,8 @@
 │   │   │   │   │   ├── cron
 │   │   │   │   │   │   └── di-ingestion
 │   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── debug-di
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── editorial-rewrite
 │   │   │   │   │   │   ├── [runId]
 │   │   │   │   │   │   │   └── route.ts
@@ -360,6 +362,7 @@
 │   ├── database
 │   │   ├── README.md
 │   │   ├── migrations.md
+│   │   ├── remote-dump.md
 │   │   ├── rls-policies.md
 │   │   ├── schema.md
 │   │   └── seed-data.md
@@ -919,7 +922,9 @@
 │   │   ├── 20260504170000_add_active_run_id_to_editorial_records.sql
 │   │   ├── 20260506100000_fix_claim_di_audit_targets_rate_cap.sql
 │   │   ├── 20260506110000_restrict_claim_di_audit_targets_to_service_role.sql
-│   │   └── 20260507140000_add_priority_to_translation_records.sql
+│   │   ├── 20260507140000_add_priority_to_translation_records.sql
+│   │   ├── 20260511160000_fix_di_versioning.sql
+│   │   └── 20260513110000_fix_service_role_grants_profiles.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -936,4 +941,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-215 directories, 723 files
+216 directories, 727 files
