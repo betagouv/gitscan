@@ -1,18 +1,25 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 20 avril 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité du site avec l'ajout d'une Content Security Policy (CSP) et la mise à jour de plusieurs dépendances pour corriger des vulnérabilités potentielles. Une amélioration visuelle a également été apportée avec le remplacement d'une illustration.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité du site, notamment en corrigeant une potentielle injection et en renforçant les mesures de protection contre les vulnérabilités. Des ajustements ont également été apportés pour l'intégration de Sentry, un outil de surveillance des erreurs, et des optimisations de configuration ont été réalisées.
 
 ### Évolutions fonctionnelles
-- Remplacement de l'illustration des jeunes dans le cadre de la campagne FCSC. [#ce13c30](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/ce13c30)
+- Intégration de Sentry pour le suivi des erreurs frontales, permettant une meilleure réactivité en cas de problèmes rencontrés par les utilisateurs.
+- Ajout d'informations pour Claude, sans précision sur la nature de ces informations.
 
 ### Évolutions techniques
-- Ajout d'une Content Security Policy (CSP) pour renforcer la sécurité du site. [#a16310c](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/a16310c)
-- Intégration de Sentry pour le monitoring des erreurs frontales. [#6407b05](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/6407b05) et [#587a724](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/587a724)
-- Mise à jour de Vite en version 7.3.2 pour bénéficier des dernières corrections et améliorations de performance. [#fb9d5dd](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/fb9d5dd)
-- Mise à jour de Lodash en version 4.18.1. [#bb0ede3](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/bb0ede3)
-- Mise à jour de Axios en version 1.15.0. [#52f41e6](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/52f41e6)
+- Correction d'une injection de nonce potentielle, améliorant la sécurité du site.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité :
+    - `postcss` vers la version 8.5.10
+    - `axios` vers la version 1.15.2
+    - `fast-xml-builder` vers la version 1.1.6
+    - `fast-xml-parser` vers la version 5.7.0
+    - `follow-redirects` vers la version 1.16.0
+- Ajout de Content Security Policy (CSP) pour renforcer la sécurité du site.
+- Suppression d'une CSP inutile.
+- Ajout de `@sentry/browser` comme dépendance du front-end.
+- Injection de Sentry dans les headers des pages pour le suivi des erreurs.
+- Ajustement de la configuration ESLint pour améliorer la qualité du code.
 
 ### Autres changements
-- Ajustement de la configuration ESLint pour améliorer la qualité du code. [#ed179f1](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/ed179f1)
-- Suppression d'une Content Security Policy (CSP) jugée inutile. [#0603c6b](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/0603c6b)
+- Suppression d'un fichier inutile.
