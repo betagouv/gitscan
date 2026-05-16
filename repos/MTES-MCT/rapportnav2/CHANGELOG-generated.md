@@ -1,43 +1,37 @@
 ## Changelog : rapportnav2 (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'infrastructure CI/CD, notamment en optimisant les temps de build et en intégrant des outils d'analyse de code plus performants. De nouvelles fonctionnalités ont été ajoutées, comme l'intégration d'un service d'adresse et l'ajout de la gestion des criées. Des corrections ont également été apportées, notamment concernant la gestion des règles AEM et la typage des données.
+Cette version apporte des améliorations significatives à l'infrastructure CI/CD, notamment en optimisant les temps de construction et en intégrant des analyses de sécurité plus robustes. De nouvelles fonctionnalités ont été ajoutées pour faciliter la saisie d'informations géographiques et pour la gestion des criées. Des corrections ont également été apportées pour améliorer la précision des données et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
 - Ajout d'un service d'adresse provenant de data.gouv.fr avec auto-complétion dans l'interface utilisateur.
-- Intégration de la gestion des criées avec l'ajout d'une liste, d'endpoints et d'un panneau d'administration.
+- Ajout de la gestion des criées avec une interface d'administration dédiée.
+- Amélioration de la recherche d'établissements.
 - Ajout du type de localisation pour les contrôles de navigation.
-- Amélioration de la recherche d'établissement.
-- Ajout d'opérations de plongée pour les contrôles environnementaux.
+- Correction de l'affichage des actions SEA et LAND pour les AEM 4.3.3.
+- Correction du comptage des cibles pour les AEM 7.4.
+- Correction de la gestion des résumés d'environnement dans les rapports de patrouille.
 
 ### Évolutions techniques
-- Optimisation de l'utilisation du cache lors des builds backend.
-- Refonte du processus de build et de test frontend pour une meilleure performance.
-- Intégration de SonarQube pour l'analyse du code frontend.
-- Mise à jour de l'image Gradle utilisée dans le CI.
-- Utilisation de bellsoft/liberica-openjdk-alpine:25 pour le CI.
-- Mise à jour de Vite vers la version 8.
-- Amélioration de la configuration de Release Please.
-- Mise à jour de plusieurs dépendances (Spring Boot, Flyway, Monitor-UI, Jackson Core).
-- Utilisation du hash de commit au lieu du tag pour renforcer la sécurité.
+- Optimisation de l'utilisation du cache lors de la construction du backend.
+- Refonte du pipeline CI/CD pour inclure des tests frontend plus complets et une intégration avec SonarQube.
+- Mise à jour de l'image Docker utilisée pour les builds CI/CD (utilisation de bellsoft/liberica-openjdk-alpine:25).
+- Amélioration de la configuration de SonarQube.
+- Mise à jour de plusieurs dépendances : Vite (version 8), Monitor-UI, Gradle, Spring Boot.
+- Utilisation du hash de commit pour renforcer la sécurité.
+- Suppression d'assets frontend inutilisés pour SonarQube.
 
 ### Autres changements
-- Correction de plusieurs problèmes identifiés par SonarQube.
-- Suppression d'assets frontend inutilisés.
-- Suppression de fichiers .env inutilisés.
-- Mise à jour des suppressions CVE.
-- Correction de problèmes mineurs et améliorations diverses.
+- Mise à jour des suppressions de CVE pour corriger des faux positifs.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la documentation et de la configuration du projet.
+- Suppression d'imports inutilisés.
+- Correction de problèmes liés à la validation du schéma de création de mission.
+- Correction d'un problème d'infinite loop dans l'authentification frontend.
 - Mise à jour des conteneurs PostgreSQL.
-- Correction d'une boucle infinie dans le code frontend.
-- Correction de problèmes de typage dans l'API.
-- Amélioration de la validation de la création de missions.
-- Suppression temporaire de Trivy.
-- Ajout de fichiers `.trivyignore.yml`.
-- Correction de problèmes liés à la gestion du cache HTML.
-- Correction de bugs dans les règles AEM 4.1.3, 4.1.4, 7.4.
-- Correction de la gestion de la durée des surveillances analytiques.
-- Correction d'un problème d'importation non utilisée.
-- Suppression de la dépendance à des versions spécifiques de certaines librairies.
-- Ajout de snapshots mis à jour.
-- Correction de problèmes liés à l'analyse Trivy.
-- Correction de problèmes liés à l'analyse de sécurité Snyk.
+- Suppression d'un ancien fichier .env inutilisé.
+- Amélioration de la configuration de release-please.
+- Correction de problèmes liés à la gestion des durées dans les analyses.
+- Correction de problèmes liés à l'analyse de sécurité Trivy.
+- Correction de problèmes liés à l'intégration de Snyk.
+- Mise à jour des snapshots de tests.
