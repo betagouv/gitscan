@@ -1,32 +1,28 @@
-## Changelog : st-home (30 derniers jours, au 30 avril 2026)
+## Changelog : st-home (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de st-home se concentrent sur l'amélioration de la carte de déploiement, l'intégration de nouvelles données (notamment de DILA), et l'optimisation de l'affichage des services et des partenaires. Des améliorations techniques ont également été apportées, notamment le remplacement de Nginx par Caddy et des ajustements de la planification des mises à jour de la base de données.
+Ce mois-ci, l'application st-home a bénéficié d'améliorations significatives, notamment une refonte de la carte de déploiement avec l'ajout de nouvelles données (services, EPCI), une mise à jour des données des collectivités et des corrections de bugs pour une meilleure expérience utilisateur. L'infrastructure a également été modernisée avec le remplacement de Nginx par Caddy.
 
 ### Évolutions fonctionnelles
-
-- **Carte de déploiement (Deploymap) v2 :** Nouvelle version de la carte de déploiement avec affichage des services, des EPCI et d'autres informations. [#56](https://github.com/suitenumerique/st-home/issues/56)
-- **Affichage des services :**
-    - Correction de l'affichage des services visibles dans la liste des services d'une commune. [#62](https://github.com/suitenumerique/st-home/issues/62)
-    - Séparation des services en deux catégories : socle et écosystème.
-    - Amélioration de la gestion des différents niveaux d'affichage des services.
-- **Partenaires :** Ajout d'une nouvelle page dédiée aux partenaires OPSN. [#58](https://github.com/suitenumerique/st-home/issues/58)
-- **Données :** Mise à jour pour utiliser le nouveau format d'export de données de DILA. [#64](https://github.com/suitenumerique/st-home/issues/64)
-- **Réorganisation des services :** Réorganisation de l'ordre des services provenant d'OPSNs.
-- **Textes :** Mise à jour des textes sur les pages RPNT et OPSN.
+- **Carte de déploiement (Deploymap) v2 :** Nouvelle version de la carte de déploiement avec affichage des services, des EPCI et d'autres informations pertinentes. [#56](https://github.com/suitenumerique/st-home/issues/56)
+- **Affichage des services :** Amélioration de l'affichage des services dans la liste des services d'une commune, ne montrant que les services visibles. [#62](https://github.com/suitenumerique/st-home/issues/62)
+- **Niveaux d'affichage :** Gestion des différents niveaux d'affichage sur la carte de déploiement. [#56](https://github.com/suitenumerique/st-home/issues/56)
+- **Page partenaires OPSN :** Ajout d'une nouvelle page dédiée aux partenaires OPSN.
+- **Ordre des services :** Réorganisation des services provenant des OPSN.
+- **Séparation des services :** Distinction entre les services de base et l'écosystème.
+- **Données DILA :** Mise à jour pour utiliser le nouveau format d'export de données de DILA.
+- **Export CSV des statistiques :** Correction de l'export CSV pour les niveaux groupés. [#59](https://github.com/suitenumerique/st-home/issues/59)
 
 ### Évolutions techniques
-
-- **Infrastructure :** Remplacement de Nginx par Caddy comme reverse proxy. [#58](https://github.com/suitenumerique/st-home/issues/58)
-- **Base de données :**
-    - Ajout d'une commande de restauration de base de données à distance.
-    - Mise à jour de la base de données toutes les 4 heures.
-- **Logs :** Désactivation des logs d'accès de Caddy et utilisation des logs du routeur Scalingo. [#59](https://github.com/suitenumerique/st-home/issues/59)
-- **Refactoring :** Regroupement des blocs de services en un seul bloc de service.
+- **Remplacement de Nginx par Caddy :** Nginx a été remplacé par Caddy comme reverse proxy pour améliorer les performances et la configuration. [#58](https://github.com/suitenumerique/st-home/issues/58)
+- **Refonte des services :** Regroupement des blocs de services en un seul bloc pour une meilleure organisation. [#64](https://github.com/suitenumerique/st-home/issues/64)
+- **Commande de restauration de la base de données :** Ajout d'une nouvelle commande pour restaurer la base de données à partir d'une sauvegarde distante.
+- **Mise à jour de la base de données :** La base de données est maintenant mise à jour toutes les 4 heures.
+- **Désactivation des logs d'accès Caddy :** Désactivation des logs d'accès de Caddy et utilisation des logs du routeur Scalingo.
 
 ### Autres changements
-
-- Correction d'un bug dans l'export CSV pour les niveaux groupés dans les statistiques.
-- Suppression d'un affichage prématuré des OPSN avant l'étape d'intention.
-- Suppression de `console.log` inutiles.
-- Utilisation des données du `deploycenter` pour la carte des partenaires.
+- **CMS :** Mise à jour vers la dernière version de Docs et correction des styles pour les blocs de citation et les résumés.
+- **CMS :** Assouplissement de la détection du frontmatter.
+- **Suppression de logs de débogage :** Suppression des `console.log` inutiles.
+- **Correction de l'affichage des OPSN :** Suppression de l'affichage des OPSN avant l'étape d'intention.
+- **Utilisation des données du Deploycenter :** Utilisation des données du Deploycenter pour la carte des partenaires.
