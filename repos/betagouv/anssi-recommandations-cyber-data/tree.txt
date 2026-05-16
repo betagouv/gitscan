@@ -1,6 +1,7 @@
 .
 ├── .env.template
 ├── .github
+│   ├── renovate.json
 │   └── workflows
 │       ├── checkov.yml
 │       ├── ci.yml
@@ -50,8 +51,10 @@
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── api.py
+│   │   ├── api_documents.py
 │   │   ├── api_evaluation.py
-│   │   └── api_jeopardy.py
+│   │   ├── api_jeopardy.py
+│   │   └── securite.py
 │   ├── configuration.py
 │   ├── documents
 │   │   ├── ajoute_document_a_la_collection.py
@@ -75,11 +78,12 @@
 │   │   │   └── indexeur_docling.py
 │   │   ├── options_guides.json
 │   │   ├── page.py
-│   │   └── pdf
-│   │       ├── __init__.py
-│   │       ├── categorise_le_contenu.py
-│   │       ├── cree_document_pdf.py
-│   │       └── document_pdf.py
+│   │   ├── pdf
+│   │   │   ├── __init__.py
+│   │   │   ├── categorise_le_contenu.py
+│   │   │   ├── cree_document_pdf.py
+│   │   │   └── document_pdf.py
+│   │   └── service_indexation_documents.py
 │   ├── evaluation
 │   │   ├── __init__.py
 │   │   ├── evaluateur_deepeval.py
@@ -128,6 +132,7 @@
 │   │   ├── interval.py
 │   │   ├── lecteur_csv.py
 │   │   ├── lecteur_dataset_reformulation.py
+│   │   ├── logger.py
 │   │   ├── memoire
 │   │   │   ├── ecrivain.py
 │   │   │   └── executeur_de_requete_memoire.py
@@ -155,9 +160,11 @@
 │   │   └── test_client_albert_indexation_reel.py
 │   ├── api
 │   │   ├── conftest.py
+│   │   ├── test_api_documents.py
 │   │   ├── test_api_evaluation.py
 │   │   ├── test_api_evaluation_reformulation.py
-│   │   └── test_api_jeopardy.py
+│   │   ├── test_api_jeopardy.py
+│   │   └── test_securite.py
 │   ├── conftest.py
 │   ├── documents
 │   │   ├── collecte
@@ -177,7 +184,8 @@
 │   │   ├── pdf
 │   │   │   ├── test_categorise_le_contenu.py
 │   │   │   └── test_document_pdf.py
-│   │   └── test_indexe_documents_rag.py
+│   │   ├── test_indexe_documents_rag.py
+│   │   └── test_service_d_indexation.py
 │   ├── evaluation
 │   │   ├── conftest.py
 │   │   ├── mqc
@@ -257,4 +265,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-56 directories, 203 files
+56 directories, 211 files
