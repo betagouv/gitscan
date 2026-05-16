@@ -54,6 +54,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260428100000_add_federation_roles_and_scope
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260508132844_add_quiz_result
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -65,7 +67,12 @@
 │   ├── src
 │   │   ├── __tests__
 │   │   │   ├── swagger-validation.test.ts
-│   │   │   └── user-entity.test.ts
+│   │   │   ├── sync-carcasse-intermediaire.test.ts
+│   │   │   ├── sync-carcasse.test.ts
+│   │   │   ├── sync-fei.test.ts
+│   │   │   ├── sync-route.test.ts
+│   │   │   ├── user-entity.test.ts
+│   │   │   └── user-invite.test.ts
 │   │   ├── assets
 │   │   │   ├── etablissements-traitement-sanitaire.json
 │   │   │   ├── fonts
@@ -98,7 +105,16 @@
 │   │   │   └── logo_zacharie_solo_small.svg
 │   │   ├── config.ts
 │   │   ├── controllers
-│   │   │   ├── admin.ts
+│   │   │   ├── admin
+│   │   │   │   ├── analytics.ts
+│   │   │   │   ├── api-key.ts
+│   │   │   │   ├── carcasse.ts
+│   │   │   │   ├── ccg.ts
+│   │   │   │   ├── entity.ts
+│   │   │   │   ├── fei.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── official-cfei.ts
+│   │   │   │   └── user.ts
 │   │   │   ├── api-key-approval.ts
 │   │   │   ├── carcasse-intermediaire.ts
 │   │   │   ├── carcasse.ts
@@ -106,6 +122,7 @@
 │   │   │   ├── entite.ts
 │   │   │   ├── fei.ts
 │   │   │   ├── log.ts
+│   │   │   ├── quiz-result.ts
 │   │   │   ├── search.ts
 │   │   │   ├── stats.ts
 │   │   │   ├── sync.ts
@@ -134,6 +151,7 @@
 │   │   │   ├── auth-rate-limit.ts
 │   │   │   ├── errors.ts
 │   │   │   ├── passport.ts
+│   │   │   ├── quiz-rate-limit.ts
 │   │   │   ├── rate-limit.ts
 │   │   │   ├── validateUser.ts
 │   │   │   └── version-check.ts
@@ -175,6 +193,7 @@
 │   │       ├── api.ts
 │   │       ├── carcasse-for-registry.ts
 │   │       ├── carcasse-side-effects.ts
+│   │       ├── clean-display-name.ts
 │   │       ├── cookie.ts
 │   │       ├── count-carcasses.ts
 │   │       ├── createUserId.ts
@@ -188,6 +207,9 @@
 │   │       ├── refreshMaterializedViews.ts
 │   │       ├── sanitize.ts
 │   │       ├── sort-things-by-type-and-id.server.ts
+│   │       ├── sync-carcasse-intermediaire.ts
+│   │       ├── sync-carcasse.ts
+│   │       ├── sync-fei.ts
 │   │       └── user.ts
 │   ├── tsconfig.json
 │   ├── vitest.config.ts
@@ -606,6 +628,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260428100000_add_federation_roles_and_scope
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260508132844_add_quiz_result
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -682,6 +706,7 @@
 │   │   │   ├── CardFiche.tsx
 │   │   │   ├── Chargement.tsx
 │   │   │   ├── ConfirmModal.tsx
+│   │   │   ├── ConnexionButton.tsx
 │   │   │   ├── DepartementValorisationCard.tsx
 │   │   │   ├── DropDownMenu.tsx
 │   │   │   ├── FederationTableauDeBord.tsx
@@ -734,6 +759,7 @@
 │   │   │   │   ├── list.json
 │   │   │   │   └── tree.json
 │   │   │   ├── petit-gibier.json
+│   │   │   ├── quiz-prelevement-assiette.json
 │   │   │   ├── refus-intermediaire.json
 │   │   │   ├── svi
 │   │   │   │   ├── lesions.json
@@ -758,6 +784,7 @@
 │   │   │   │   ├── entity-nouvelle.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── lesions.tsx
+│   │   │   │   ├── quiz.tsx
 │   │   │   │   ├── user-add.tsx
 │   │   │   │   ├── user.$userId.tsx
 │   │   │   │   └── users.tsx
@@ -906,18 +933,6 @@
 │   │   │   ├── landing.tsx
 │   │   │   ├── mentions-legales.tsx
 │   │   │   ├── modalites-d-utilisation.tsx
-│   │   │   ├── mon-profil
-│   │   │   │   ├── 1-mon-activite.tsx
-│   │   │   │   ├── 2-mes-coordonnees.tsx
-│   │   │   │   ├── 3-mes-associations-de-chasse.tsx
-│   │   │   │   ├── 3-mes-ccgs.tsx
-│   │   │   │   ├── 3-mes-informations-de-chasse.tsx
-│   │   │   │   ├── 3-mes-partenaires.tsx
-│   │   │   │   ├── 3-mon-entreprise.tsx
-│   │   │   │   ├── 3-utilisateurs-de-mon-entreprise.tsx
-│   │   │   │   ├── 4-mes-notifications.tsx
-│   │   │   │   ├── ccg-edit.tsx
-│   │   │   │   └── partage-de-mes-donnees.tsx
 │   │   │   ├── nouvelle-fiche.tsx
 │   │   │   ├── onboarding
 │   │   │   │   ├── 1-mon-activite.tsx
@@ -930,6 +945,8 @@
 │   │   │   │   ├── 3b-mes-informations-de-chasse.tsx
 │   │   │   │   └── 4-mes-notifications.tsx
 │   │   │   ├── politique-de-confidentialite.tsx
+│   │   │   ├── quiz-tv.tsx
+│   │   │   ├── quiz.tsx
 │   │   │   ├── registre-carcasses.tsx
 │   │   │   ├── stats.tsx
 │   │   │   ├── svi
@@ -988,6 +1005,7 @@
 │   │   │   ├── filter-carcasse.ts
 │   │   │   ├── filter-my-carcasses.ts
 │   │   │   ├── gert-fei-key-dates.tsx
+│   │   │   ├── get-carcasse-card-display.ts
 │   │   │   ├── get-carcasse-intermediaire-id.ts
 │   │   │   ├── get-carcasse-status.ts
 │   │   │   ├── get-carcasses-for-fei.ts
@@ -1006,6 +1024,7 @@
 │   │   │   ├── load-my-relations.ts
 │   │   │   ├── map-fei-fields-to-carcasse.ts
 │   │   │   ├── merge-fetched-items.ts
+│   │   │   ├── quiz-shuffle.ts
 │   │   │   ├── sort.ts
 │   │   │   ├── standalone.ts
 │   │   │   ├── useCarcasseStatusAndRefus.tsx
@@ -1122,6 +1141,7 @@
 │   │   │   ├── 07-edition-carcasse-depuis-detail.spec.ts
 │   │   │   ├── 08-examinateur-pd-self-handoff.spec.ts
 │   │   │   ├── 09-onboarding-complet.spec.ts
+│   │   │   ├── 09-pd-via-association-other-member-destinataire.spec.ts
 │   │   │   ├── 10-onboarding-incomplet-acces-restreint.spec.ts
 │   │   │   ├── 11-onboarding-partiel-formation-manquante.spec.ts
 │   │   │   ├── 12-profil-examinateur.spec.ts
@@ -1135,6 +1155,7 @@
 │   │   │   ├── 21-zero-carcasse-transmettre-disabled.spec.ts
 │   │   │   ├── 22-double-clic-transmettre.spec.ts
 │   │   │   ├── 23-deconnexion-pendant-formulaire.spec.ts
+│   │   │   ├── 24-tableau-de-bord-bouton-creer-fiche.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_examinateur.spec.ts
 │   │   ├── premier-detenteur
@@ -1182,6 +1203,7 @@
 │   │       ├── 109-session-expiree.spec.ts
 │   │       ├── 110-deep-link-fiche-inconnue.spec.ts
 │   │       ├── 129-logout-redirects-and-clears-user.spec.ts
+│   │       ├── 130-search-redirect-role-routes.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1258,4 +1280,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-311 directories, 949 files
+313 directories, 969 files
