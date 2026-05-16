@@ -1,38 +1,25 @@
-## Changelog : aplypro (30 derniers jours, au 01 mai 2026)
+## Changelog : aplypro (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce changelog couvre une période d'amélioration continue de l'application Aplypro, axée sur la correction de bogues, l'amélioration de la gestion des adresses et des corrections de paiements, ainsi que sur l'ajout de tests pour garantir la stabilité et la fiabilité de la plateforme. Des améliorations ont également été apportées à l'interface utilisateur et à la gestion des codes d'extension de voie.
+Ce mois-ci, les améliorations se concentrent sur la gestion des corrections d'allocations, la pagination des rapports et la robustesse du système. Des corrections de bugs ont été apportées à la page de rectification, notamment concernant les adresses et les validations. Une nouvelle fonctionnalité permet de relancer les corrections en cas d'échec.
 
 ### Évolutions fonctionnelles
-
-- **Gestion des adresses :** Amélioration de la gestion des corrections d'adresses avec l'intégration de `ASP::AdresseCorrectionRequest` et la gestion des retours d'intégration/rejets. [#1941](https://github.com/betagouv/aplypro/issues/1941)
-- **Gestion des codes d'extension de voie :** Ajout de la gestion des codes d'extension de voie autorisés par l'ASP. [#1951](https://github.com/betagouv/aplypro/issues/1951)
-- **Rectification des paiements :**
-    - Amélioration de la gestion des erreurs de validation sur la page de rectification. [#1948](https://github.com/betagouv/aplypro/issues/1948)
-    - Correction de plusieurs problèmes mineurs sur la page de rectification. [#1947](https://github.com/betagouv/aplypro/issues/1947)
-    - Ajout d'un mécanisme de relance pour les corrections rejetées. [#1953](https://github.com/betagouv/aplypro/issues/1953)
-- **Traduction :** Traduction des messages d'erreur en français. [#1944](https://github.com/betagouv/aplypro/issues/1944)
+- Amélioration de la gestion des codes d'extension de voie autorisés par l'ASP, en lien avec l'issue [#1951](https://github.com/betagouv/aplypro/issues/1951).
+- Pagination ajoutée à la page d'index des rapports pour une meilleure expérience utilisateur [#1956](https://github.com/betagouv/aplypro/issues/1956).
+- Possibilité de relancer l'envoi des corrections en cas de rejet, avec un mécanisme de retry [#1953](https://github.com/betagouv/aplypro/issues/1953).
+- Amélioration de la page de rectification :
+    - Masquage du numéro IBAN pour plus de sécurité.
+    - Corrections de plusieurs bugs mineurs [#1947](https://github.com/betagouv/aplypro/issues/1947).
+    - Amélioration des validations et affichage des erreurs [#1948](https://github.com/betagouv/aplypro/issues/1948).
+    - Correction de bugs liés aux mises à jour d'adresse [#1944](https://github.com/betagouv/aplypro/issues/1944).
 
 ### Évolutions techniques
-
-- **Refactoring :** Centralisation de la définition de la méthode `overpaid?`.
-- **Tests :**
-    - Ajout de tests unitaires.
-    - Ajout de tests fonctionnels sur la page de rectification.
-    - Ajout de spécifications pour les méthodes et la méthode `overpaid?`.
-- **Optimisations :** Pré-calcul du validateur sur la page de rectification PFMP.
-- **Architecture :** Formalisation de l'intégration et des rejets des retours de correction d'adresse.
-- **Correction d'adresses :** Ajout du modèle `ASP::AdresseCorrectionRequest`.
+- Centralisation de la définition de la méthode `overpaid?` pour une meilleure maintenabilité.
+- Pré-calcul du validateur sur la page de rectification pour optimiser les performances.
+- Ajout de tests unitaires et de tests fonctionnels pour améliorer la couverture et la qualité du code.
+- Refactoring et nettoyage du code, notamment suppression de conditions inutiles et nettoyage de l'abbreviator.
 
 ### Autres changements
-
-- Mise à jour de la version de l'application à 2.10.0 puis 2.10.1.
-- Correction de bugs liés aux mises à jour d'adresses. [#1944](https://github.com/betagouv/aplypro/issues/1944)
-- Amélioration de la gestion des doublons.
-- Nettoyage du code et correction de problèmes Rubocop.
-- Correction de type error.
-- Suppression de conditions inutiles.
-- Floutage du numéro IBAN sur la page de rectification.
-- Amélioration de l'affichage des accordéons.
-- Correction de la logique de déduplication.
-- Collage du titre de la page de rectification.
+- Mise à jour de la version de l'application à 2.10.1 et 2.10.0.
+- Correction du titre de la page de rectification.
+- Bump de version à 2.9.4.
