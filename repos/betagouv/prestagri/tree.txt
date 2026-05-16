@@ -11,30 +11,77 @@
 │   ├── .python-version
 │   ├── Procfile
 │   ├── README.md
-│   ├── __pycache__
-│   │   ├── main.cpython-313.pyc
-│   │   └── var.cpython-313.pyc
-│   ├── poetry.lock
+│   ├── app
+│   │   ├── __pycache__
+│   │   │   ├── config.cpython-313.pyc
+│   │   │   ├── main.cpython-313.pyc
+│   │   │   └── utils.cpython-313.pyc
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   ├── default.cpython-313.pyc
+│   │   │   │   └── openapi.cpython-313.pyc
+│   │   │   └── default.py
+│   │   ├── catala
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   └── aides.cpython-313.pyc
+│   │   │   ├── aides.py
+│   │   │   └── generated
+│   │   │       ├── Date_fr.py
+│   │   │       ├── Date_internal.py
+│   │   │       ├── Decimal_fr.py
+│   │   │       ├── Decimal_internal.py
+│   │   │       ├── Duration_fr.py
+│   │   │       ├── ImpotSimple.py
+│   │   │       ├── Integer_fr.py
+│   │   │       ├── List_fr.py
+│   │   │       ├── List_internal.py
+│   │   │       ├── Money_fr.py
+│   │   │       ├── Money_internal.py
+│   │   │       ├── MonthYear_fr.py
+│   │   │       ├── Period_fr.py
+│   │   │       ├── Period_internal.py
+│   │   │       ├── Stdlib_fr.py
+│   │   │       ├── __init__.py
+│   │   │       ├── __pycache__
+│   │   │       │   ├── Date_fr.cpython-313.pyc
+│   │   │       │   ├── Date_internal.cpython-313.pyc
+│   │   │       │   ├── Decimal_fr.cpython-313.pyc
+│   │   │       │   ├── Decimal_internal.cpython-313.pyc
+│   │   │       │   ├── Duration_fr.cpython-313.pyc
+│   │   │       │   ├── ImpotSimple.cpython-313.pyc
+│   │   │       │   ├── Integer_fr.cpython-313.pyc
+│   │   │       │   ├── List_fr.cpython-313.pyc
+│   │   │       │   ├── List_internal.cpython-313.pyc
+│   │   │       │   ├── Money_fr.cpython-313.pyc
+│   │   │       │   ├── Money_internal.cpython-313.pyc
+│   │   │       │   ├── MonthYear_fr.cpython-313.pyc
+│   │   │       │   ├── Period_fr.cpython-313.pyc
+│   │   │       │   ├── Period_internal.cpython-313.pyc
+│   │   │       │   ├── Stdlib_fr.cpython-313.pyc
+│   │   │       │   ├── __init__.cpython-313.pyc
+│   │   │       │   ├── catala_runtime.cpython-313.pyc
+│   │   │       │   └── dates.cpython-313.pyc
+│   │   │       ├── catala_runtime.py
+│   │   │       ├── dates.py
+│   │   │       └── py.typed
+│   │   ├── config.py
+│   │   ├── main.py
+│   │   └── utils.py
 │   ├── pyproject.toml
-│   └── src
-│       ├── __init__.py
-│       ├── __pycache__
-│       │   ├── __init__.cpython-313.pyc
-│       │   ├── config.cpython-313.pyc
-│       │   ├── main.cpython-313.pyc
-│       │   └── utils.cpython-313.pyc
-│       ├── api
-│       │   ├── __init__.py
-│       │   ├── __pycache__
-│       │   │   ├── __init__.cpython-313.pyc
-│       │   │   ├── default.cpython-313.pyc
-│       │   │   └── openapi.cpython-313.pyc
-│       │   └── default.py
-│       ├── config.py
-│       ├── grist
-│       │   └── grist.py
-│       ├── main.py
-│       └── utils.py
+│   └── uv.lock
+├── catala
+│   ├── Taskfile.yml
+│   ├── clerk.toml
+│   ├── src
+│   │   └── commun
+│   │       ├── personne.catala_fr
+│   │       └── quotient_familial.catala_fr
+│   └── tests
+│       └── tests_quotient_familial.catala_fr
 └── doc
     ├── .gitignore
     ├── README.md
@@ -58,9 +105,10 @@
     │   │       │   └── what_did_I_do_then.md
     │   │       └── tutorial
     │   │           ├── 1_first_run.md
-    │   │           └── 1_staging.md
+    │   │           ├── 1_staging.md
+    │   │           └── catala.md
     │   └── env.d.ts
     ├── static
     │   └── favicon.svg
     └── tsconfig.json
-19 directories, 46 files
+25 directories, 88 files

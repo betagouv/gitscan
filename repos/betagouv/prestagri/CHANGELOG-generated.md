@@ -1,18 +1,24 @@
-## Changelog : prestagri (30 derniers jours, au 30 avril 2026)
+## Changelog : prestagri (30 derniers jours, au 2026-05-13)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'infrastructure initiale du projet, incluant la configuration de l'environnement de développement, la documentation et l'intégration d'outils de surveillance (Sentry).  L'objectif est de poser les bases pour le développement futur de l'application Prestagri.
+Ce changelog couvre les premiers développements de Prest'Agri. Les efforts se sont concentrés sur la mise en place de l'infrastructure de base du projet, incluant la configuration de l'environnement de développement, la documentation initiale et la création d'une structure de base pour l'application. Les premières fonctionnalités, comme un brouillon de calcul du quotient familial et un exemple de données "catala", ont été implémentées.
+
+### Évolutions fonctionnelles
+- Ajout d'un premier brouillon de calcul du quotient familial.
+- Intégration d'un exemple de données "catala" pour la démonstration et les tests.
+- Mise en place d'une route d'éligibilité (en développement).
 
 ### Évolutions techniques
-- Mise en place d'un serveur Python basique pour l'application.
-- Configuration de Scalingo pour le déploiement et la gestion de l'application.
-- Intégration de Sentry pour la surveillance des erreurs et des performances.
-- Configuration initiale des GitHub Actions pour l'automatisation des tâches.
-- Ajout d'un fichier `Procfile` pour la gestion des processus de l'application.
+- Migration de la gestion des dépendances de Poetry à uv.
+- Mise en place d'un serveur Python basique.
+- Configuration de Scalingo pour le déploiement.
+- Intégration de Sentry pour la surveillance des erreurs.
+- Configuration des GitHub Actions pour l'automatisation.
+- Mise en place de la documentation locale.
 
 ### Autres changements
-- Ajout du fichier de licence Apache-2.0.
-- Mise à jour du lien vers le dépôt.
-- Initialisation de la documentation du projet.
-- Ajout d'une référence à la documentation.
-- Premier commit initial du projet.
+- Ajout du fichier LICENSE (Apache-2.0).
+- Mise à jour du lien dans le README.
+- Ajout de références à la documentation.
+- Ajout de la structure initiale du projet.
+- Correction du fichier `procfile`.
