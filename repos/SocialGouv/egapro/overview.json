@@ -1,25 +1,28 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "Plateforme gouvernementale de déclaration de l'index de l'égalité professionnelle femmes-hommes, en application de la directive européenne sur la transparence salariale.",
+  "description": "EgaPro est une plateforme gouvernementale pour la déclaration de l'index de l'égalité professionnelle femmes-hommes, en application de la directive européenne sur la transparence salariale.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Next.js",
     "PostgreSQL",
     "Drizzle ORM",
+    "DSFR",
+    "ProConnect",
     "Redis",
-    "Tipimail",
-    "DSFR"
+    "Tipimail"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,7 +33,8 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "ProConnect"
