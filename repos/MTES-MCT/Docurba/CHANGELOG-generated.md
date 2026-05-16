@@ -1,31 +1,40 @@
-## Changelog : Docurba (30 derniers jours, au 12 mai 2026)
+## Changelog : Docurba (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce mois-ci, Docurba a connu des améliorations significatives tant au niveau de l'interface utilisateur que de l'architecture backend. Des corrections ont été apportées pour améliorer la navigation et la gestion des utilisateurs. Des efforts ont également été déployés pour optimiser les tests et la gestion des données, notamment en ce qui concerne les procédures urbanistiques et les communes. Une nouvelle application interne (internal_api) a été créée et l'authentification a été revue.
+Ce mois-ci, Docurba a bénéficié d'améliorations significatives en termes de gestion des procédures et des données, notamment concernant la loi Huwart. L'interface utilisateur a également été améliorée avec un nouveau menu utilisateur et des corrections pour la navigation et la recherche. Des efforts importants ont été consacrés à l'amélioration de la qualité du code, des tests et de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Amélioration de la navigation : le département sélectionné est maintenant conservé lors des changements de filtres [#1868](https://github.com/MTES-MCT/Docurba/issues/1868).
-- Authentification : remplacement des boutons d'authentification dans l'en-tête par un menu déroulant utilisateur, avec déplacement du bouton "Tableau de bord" hors du menu.
-- Redirection après récupération de mot de passe : l'utilisateur est redirigé vers le tableau de bord après avoir cliqué sur le lien de récupération de mot de passe.
-- Administration Django : la colonne `soft_delete` des procédures est maintenant éditable.
-- Exposition de données : les thèmes des procédures sont maintenant exposés dans l'API SCoT et l'API des communes.
-- Ajout d'un champ `started_before_huwart_law` pour indiquer si une procédure a débuté avant la loi Huwart.
-- Ajout d'un type d'enum pour les procédures.
+- **Interface utilisateur :** Nouveau menu déroulant pour l'utilisateur, remplaçant les boutons d'authentification dans l'en-tête [#1868](https://github.com/MTES-MCT/Docurba/pull/1868).
+- **Navigation :** Le département sélectionné est maintenant conservé lors de la navigation.
+- **Recherche :** Synchronisation des champs de recherche avec les paramètres de l'URL.
+- **Gestion des procédures :**
+    - Ajout d'un indicateur pour identifier les procédures démarrées avant la loi Huwart.
+    - Mise à jour du type de procédure (PLU vers PLUi) en masse.
+    - Suppression des événements de fin d'échéance pour se conformer à la loi Huwart.
+    - Expose les thématiques des procédures dans l'API SCoT et communes.
+- **Authentification :** Redirection de l'utilisateur vers le tableau de bord après la récupération du mot de passe.
 
 ### Évolutions techniques
-- Création d'une nouvelle application Django `internal_api`.
-- Intégration de DRF (Django REST Framework).
-- Utilisation de FactoryBoy pour la création d'objets de test.
-- Refonte de la gestion des migrations et des index dans Django pour améliorer la robustesse et la performance.
-- Utilisation de venv pour la gestion des environnements virtuels.
-- Amélioration des tests de l'API SCoT.
-- Mise à jour des dépendances : Django (6.0.4 -> 6.0.5), urllib3 (2.6.3 -> 2.7.0), pre-commit (4.5.1 -> 4.6.0), ruff (0.15.11 -> 0.15.12), pytest (9.0.2 -> 9.0.3), django-debug-toolbar (6.2.0 -> 6.3.0).
-- Optimisation de la configuration du Makefile.
-- Correction de problèmes de mémoire dans les applications de revue.
+- **Architecture :** L'application `internal_api` a été déplacée dans le répertoire `docurba`.
+- **Tests :**
+    - Intégration de FactoryBoy pour la création d'objets de test.
+    - Création de factories pour les objets User, Profile, Procedure et CommuneProcedure.
+    - Amélioration des tests de l'API SCoT.
+    - Correction de tests instables.
+- **Infrastructure :**
+    - Augmentation du plan Supabase et de la taille du disque pour les applications de revue.
+    - Utilisation d'un environnement virtuel (venv).
+    - Mise à jour du Makefile pour simplifier les tâches.
+- **Code :**
+    - Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+    - Ajout d'annotations de type pour améliorer la sécurité du code.
+    - Correction de conflits de migration Django.
+    - Distinction du type de collectivité EPCI des autres.
+    - Ajout d'un dossier `exports` (ignoré par le contrôle de version).
+    - Ajout de noms de routes pour faciliter l'utilisation de `reverse`.
 
 ### Autres changements
-- Documentation : mise à jour de la documentation de l'API Nuxt pour inclure les thèmes des communes et des SCoT.
-- Amélioration de la gestion des erreurs dans les tests.
-- Correction de tests flakys.
-- Ajout de `CommuneType TextChoice`.
-- Mise à jour du README.
+- **Documentation :** Mise à jour de la documentation de l'API pour inclure les thématiques des communes et des SCoT.
+- **Configuration :** Ajout d'un choix de texte pour le type de commune.
+- **Nettoyage de code :** Suppression de code obsolète et amélioration de la structure du projet.
+- **Dépendances :** Mises à jour de dépendances (pytest, ruff, django-debug-toolbar, django, urllib3, pre-commit) (non listées individuellement).
