@@ -1,52 +1,48 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 12 mai 2026)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des filtres de recherche, de la génération de documents (arrêtés et lettres) et de la gestion des simulations. Des optimisations ont également été apportées au proxy de l'API Demarches Simplifiées (DS) pour améliorer la performance et la sécurité. Enfin, des corrections de bugs et des améliorations techniques ont été implémentées pour stabiliser l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des simulations et des notifications. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la gestion des documents et du proxy vers les Démarches Numériques.
 
 ### Évolutions fonctionnelles
-- **Filtres de recherche améliorés :** Ajout d'une recherche floue sur l'intitulé, la raison sociale et le numéro de dossier dans les listes de projets, simulations et programmations [#701]. Le champ de recherche est maintenant réordonné après la réinitialisation des filtres.
-- **Génération de documents :**
-    - Amélioration significative du processus de génération d'arrêtés et de lettres, avec la possibilité de générer les deux types de documents simultanément et de choisir le format d'exportation.
-    - Le parcours de génération de documents en masse a été déplacé dans une modale pour une meilleure expérience utilisateur [#697].
-    - Possibilité de gérer les erreurs lors de la génération de documents.
-    - Amélioration de la gestion des fichiers générés (nommage, caractères valides).
-- **Simulations :**
-    - Ajout de la possibilité de changer le statut de plusieurs simulations en masse.
-    - Persistance de l'ordre de tri des listes de simulations en plus des filtres.
-    - Correction d'un bug empêchant l'affichage correct des documents d'une autre dotation dans l'onglet Programmation.
-    - Amélioration de la logique pour ne pas sélectionner les projets programmés sur des enveloppes antérieures lors de la création de simulations.
-- **Proxy DS :**
-    - Amélioration de la sécurité du proxy DS en limitant la portée des tokens d'autorisation à une démarche spécifique.
-    - Ajout d'un proxy GraphQL pour l'API DS, filtré par les instructeurs.
-    - Optimisation du proxy DS pour éviter les timeouts Scalingo en streamant un heartbeat.
-- **Administration :**
-    - Ajout d'une action dans l'interface d'administration pour récupérer un dossier depuis DN [#696].
-    - Possibilité pour les utilisateurs DN de mettre à jour leur adresse email [#700].
-- **FAQ :** Création d'une première version de la FAQ [#672].
+- Possibilité de filtrer les projets, programmations et simulations par EPCI. [#673](https://github.com/betagouv/gestion-des-subventions-locales/issues/673)
+- Ajout d'une FAQ pour aider les utilisateurs. [#672](https://github.com/betagouv/gestion-des-subventions-locales/issues/672)
+- Amélioration de l'affichage des documents dans l'onglet "Notifications". [#665](https://github.com/betagouv/gestion-des-subventions-locales/issues/665)
+- Possibilité de changer le statut de plusieurs simulations en lot. [#661](https://github.com/betagouv/gestion-des-subventions-locales/issues/661)
+- Affichage de la priorité du dossier lorsqu'il est déposé plusieurs fois par le même demandeur. [#675](https://github.com/betagouv/gestion-des-subventions-locales/issues/675)
+- Autorisation des tabulations dans les arrêtés et lettres de notification. [#705](https://github.com/betagouv/gestion-des-subventions-locales/issues/705)
+- Amélioration de l'affichage des documents de l'autre dotation dans l'onglet Programmation. [#694](https://github.com/betagouv/gestion-des-subventions-locales/issues/694)
+- Correction de l'affichage de la date de notification. [#695](https://github.com/betagouv/gestion-des-subventions-locales/issues/695)
+- Possibilité de fermer la modale "Vous ne faites pas partie du groupe d'instructeurs". [#690](https://github.com/betagouv/gestion-des-subventions-locales/issues/690)
+- Ajout de titres de colonnes fixes lors du défilement des listes de projets, programmations et simulations. [#704](https://github.com/betagouv/gestion-des-subventions-locales/issues/704)
+- Ajout d'une recherche sur les intitulés, raisons sociales et numéros de dossier dans les listes de projets, programmations et simulations. [#701](https://github.com/betagouv/gestion-des-subventions-locales/issues/701)
+- Amélioration de l'interface pour la génération de documents en masse, avec déplacement dans une modale. [#697](https://github.com/betagouv/gestion-des-subventions-locales/issues/697)
+- Possibilité de générer des arrêtés et des lettres simultanément.
+- Choix du format d'exportation pour les documents (arrêté, lettre).
+- Ajout de QR codes pour rattacher automatiquement les scans signés aux documents. [#709](https://github.com/betagouv/gestion-des-subventions-locales/issues/709)
 
 ### Évolutions techniques
-- **Refactoring :** Plusieurs refactorings ont été effectués pour améliorer la qualité du code et la maintenabilité, notamment au niveau de la génération de documents et de la gestion des simulations.
-- **Performance :**
-    - Optimisation des requêtes GraphQL pour le proxy DS afin de réduire les timeouts.
-    - Évaluation paresseuse des choix dans les FilterSet [#703] pour améliorer la performance des filtres.
-- **Tests :**
-    - Ajout de tests pour la tâche de nettoyage des projets programmés sur des enveloppes antérieures.
-    - Empêchement des requêtes HTTP non mockées dans les tests pour une meilleure fiabilité.
-    - Rendre `dotation_not_treated` déterministe pour stabiliser un test flaky [#660].
-- **CI/CD :** Ajout d'une commande `just release-dry-run` pour prévisualiser un tag et ses notes de version [#680]. Exécution des tests sur les branches `hotfix/*` [#686].
-- **Sécurité :** Stockage du hash des tokens du proxy DS au lieu du texte en clair.
+- Refactorisation du proxy vers les Démarches Numériques pour améliorer la performance et la robustesse.
+- Amélioration de la gestion des erreurs et des timeouts dans le proxy DN.
+- Mise à jour des dépendances pour corriger des vulnérabilités. [#710](https://github.com/betagouv/gestion-des-subventions-locales/issues/710) et [#703](https://github.com/betagouv/gestion-des-subventions-locales/issues/703)
+- Amélioration de la performance des filtres en utilisant des requêtes paresseuses.
+- Ajout de tests pour empêcher les requêtes HTTP non mockées.
+- Correction de problèmes liés aux tags de release et aux notes de version.
+- Ajout d'une commande `just release-dry-run` pour prévisualiser les releases.
+- Amélioration de la gestion des statuts en masse pour les simulations.
+- Utilisation de managers pour les FieldMapping.
+- Ajout de la librairie django-query-counter.
 
 ### Autres changements
-- Mise à jour de l'URL du script HeatmapSessionRecording de Matomo [#687].
-- Correction de typos CSS [#690].
-- Ajout de la librairie `django-query-counter` pour le profilage des requêtes.
-- Amélioration de la mise en page des arrêtés et lettres.
-- Validation de l'assiette avant l'acceptation d'une dotation.
-- Suppression des logs verbeux de `fontTools` en production [#684].
-- Ajout de liens vers les dossiers dans l'interface d'administration pour les documents.
-- Suppression du Demandeur (doublon) pour ne conserver que le demandeur au niveau du dossier [#670].
-- Mise à jour de l'enveloppe lorsqu'on modifie les montants des projets acceptés [#674].
-- Utilisation des champs actifs d'une démarche DN [#668].
-- Correction de l'affichage de la date de notification [#695].
-- Suppression du `dotation_projet` des simulations hors-périmètre lorsque le périmètre du dossier a changé [#656].
-- Ajout de la possibilité de fermer la modale "Vous ne faites pas partie du groupe d'instructeurs" [#690].
+- Correction de typos et améliorations de la mise en page des arrêtés et lettres.
+- Mise à jour de la documentation.
+- Correction de l'URL du script HeatmapSessionRecording de Matomo. [#687](https://github.com/betagouv/gestion-des-subventions-locales/issues/687)
+- Correction de la récupération des profils DN en permettant la modification de l'adresse email. [#700](https://github.com/betagouv/gestion-des-subventions-locales/issues/700)
+- Ajout d'une action dans l'interface d'administration pour récupérer un dossier depuis DN. [#696](https://github.com/betagouv/gestion-des-subventions-locales/issues/696)
+- Suppression du Demandeur (doublon) pour ne conserver que le demandeur au niveau du dossier. [#670](https://github.com/betagouv/gestion-des-subventions-locales/issues/670)
+- Mise à jour de l'enveloppe lors de la modification des montants des projets acceptés. [#674](https://github.com/betagouv/gestion-des-subventions-locales/issues/674)
+- Correction de l'affichage du statut du projet dans l'onglet notifications.
+- Suppression des simulations hors-périmètre lorsque le périmètre du dossier a changé.
+- Correction de l'affichage des documents.
+- Correction de la date affichée.
+- Amélioration de la gestion des erreurs dans la génération de documents.
+- Correction d'un bug lié à l'ouverture du dropdown de statut. [#711](https://github.com/betagouv/gestion-des-subventions-locales/issues/711)

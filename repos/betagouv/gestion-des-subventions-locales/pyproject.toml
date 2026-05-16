@@ -1,7 +1,11 @@
 [project]
 name = "gsl"
 dynamic = ["version"]
-authors = [{ name = "Agnès Haasser", email = "agnes.haasser@beta.gouv.fr" }]
+authors = [
+    { name = "Agnès Haasser", email = "agnes.haasser@beta.gouv.fr" },
+    { name = "Maud Royer", email = "maud.royer@beta.gouv.fr" },
+    { name = "Maxime Allain", email = "maxime.allain@beta.gouv.fr" }
+]
 readme = "README.md"
 license = { file = "LICENSE" }
 dependencies = [
@@ -31,11 +35,13 @@ dependencies = [
     "mozilla-django-oidc",
     "pikepdf",
     "psycopg[binary]",
+    "pypdfium2",
     "python-dotenv",
     "redis",
     "requests",
     "segno",
     "sentry-sdk",
+    "zxing-cpp",
     "tablib[ods]",
     "tablib[xls]",
     "tablib[xlsx]",
@@ -69,6 +75,7 @@ dev = [
     "pytest",
     "responses",
     "ruff",
+    "tqdm",
 ]
 
 [tool.pytest.ini_options]
