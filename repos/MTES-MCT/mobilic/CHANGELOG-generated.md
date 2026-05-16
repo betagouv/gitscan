@@ -1,29 +1,28 @@
 ## Changelog : mobilic (30 derniers jours, au 08 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'interface administrateur, notamment avec l'ajout d'une page d'accueil dédiée et la refonte de la gestion des véhicules. L'intégration de Brevo Live Chat remplace Crisp pour le support utilisateur, et des corrections ont été apportées pour améliorer la stabilité et la performance de l'application. Des améliorations ont également été apportées à la gestion des activités et des missions.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface d'administration, notamment avec la refonte de la page d'accueil et l'ajout d'un tableau de bord. Des améliorations ont également été apportées à la gestion des véhicules et des missions, ainsi qu'à la sécurité avec l'implémentation de l'authentification à deux facteurs (TOTP). L'intégration d'un nouveau service de chat en direct (Brevo) a également été finalisée.
 
 ### Évolutions fonctionnelles
-- **Interface Administrateur :** Nouvelle page d'accueil pour les administrateurs avec un tableau de bord et un aperçu des infractions. [#826](https://github.com/MTES-MCT/mobilic/pulls/826)
-- **Gestion des Véhicules :** Ajout d'une fonctionnalité d'importation massive de véhicules. [#837](https://github.com/MTES-MCT/mobilic/pulls/837)
-- **Gestion des Missions :** Ajout d'étiquettes de statut pour les missions dans l'onglet "Activités", facilitant leur identification. [#834](https://github.com/MTES-MCT/mobilic/pulls/834), [#829](https://github.com/MTES-MCT/mobilic/pulls/829)
-- **Support Utilisateur :** Remplacement de Crisp par Brevo Live Chat pour une assistance en direct. [#832](https://github.com/MTES-MCT/mobilic/pulls/832)
-- **Impersonation :** Ajout de la fonctionnalité d'impersonation d'utilisateurs pour le support, avec recherche, menu et authentification à deux facteurs (TOTP). [#840](https://github.com/MTES-MCT/mobilic/pulls/840)
-- **Recherche Natinf :** Intégration de la recherche Natinf. [#842](https://github.com/MTES-MCT/mobilic/pulls/842)
-- **Affichage des Activités :** Correction pour afficher les activités passées, même si la mission est antérieure à 31 jours. [#841](https://github.com/MTES-MCT/mobilic/pulls/841)
+- **Administration :** Refonte complète de la page d'accueil de l'administration avec un nouveau tableau de bord présentant des informations clés et des infractions. [#826](https://github.com/MTES-MCT/mobilic/pulls/826)
+- **Administration :** Ajout de badges d'état pour les missions dans l'onglet "Activités", permettant d'identifier rapidement leur statut. [#834](https://github.com/MTES-MCT/mobilic/pulls/834)
+- **Administration :** Amélioration de la gestion des véhicules avec la possibilité d'importer en masse et une interface plus conviviale. [#836](https://github.com/MTES-MCT/mobilic/pulls/836), [#837](https://github.com/MTES-MCT/mobilic/pulls/837)
+- **Authentification :** Implémentation de l'authentification à deux facteurs (TOTP) pour une sécurité renforcée. [#840](https://github.com/MTES-MCT/mobilic/pulls/840)
+- **Support :** Intégration d'un widget de chat en direct (Brevo) pour faciliter le support aux utilisateurs. [#832](https://github.com/MTES-MCT/mobilic/pulls/832)
+- **Contrôle :** Ajout de la recherche d'articles natinf pour les contrôles. [#842](https://github.com/MTES-MCT/mobilic/pulls/842)
+- **Missions :** Possibilité de voir les missions même si elles sont plus anciennes que 31 jours. [#839](https://github.com/MTES-MCT/mobilic/pulls/839)
 
 ### Évolutions techniques
-- **Refactoring :** Extraction de constantes réutilisables pour la gestion des couleurs et des dates.
-- **Performances :** Mise en cache des données du tableau de bord administrateur pour améliorer la performance. [#848](https://github.com/MTES-MCT/mobilic/pulls/848)
+- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans les composants liés à l'administration.
+- **Performances :** Mise en cache des données du tableau de bord pour améliorer les performances. [#848](https://github.com/MTES-MCT/mobilic/pulls/848)
+- **Composants :** Introduction d'un nouveau composant `WarningBadge` pour afficher des alertes.
+- **Thème :** Exportation de la constante de couleur `MOBILIC_BLUE` pour une utilisation partagée.
 - **Validation :** Amélioration de la validation des numéros d'immatriculation des véhicules.
-- **Composants :** Introduction d'un nouveau composant `WarningBadge`.
-- **Authentification :** Ajout du support TOTP pour l'authentification à deux facteurs.
-- **DSFR :** Utilisation d'icônes DSFR dans les actions d'édition de tableau.
-- **Suppression de dépendances :** Suppression de la dépendance à `crisp-sdk-web`.
+- **Gestion des erreurs :** Amélioration de la gestion des erreurs et des messages d'erreur affichés à l'utilisateur.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la politique de confidentialité pour refléter l'utilisation de Brevo.
-- **Nettoyage de code :** Suppression de code inutilisé et correction de problèmes identifiés par SonarCloud.
-- **Configuration :** Mise à jour de la configuration du live chat.
-- **Assets :** Ajout de l'icône Mobilic au widget Brevo Live Chat.
-- **Tests :** Ajout de tests pour la nouvelle fonctionnalité d'impersonation.
+- **Documentation :** Mise à jour de la politique de confidentialité pour refléter les changements liés à l'intégration de Brevo.
+- **Dépendances :** Suppression de l'ancienne librairie de chat Crisp.
+- **Accessibilité :** Correction de problèmes d'accessibilité dans le widget de chat en direct.
+- **Tests :** Ajout de tests unitaires pour certains composants.
+- **CI/CD :** Mise à jour de la configuration de CircleCI.
