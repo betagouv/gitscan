@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet de contribuer à son amélioration.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet aux utilisateurs de réaliser des démarches administratives en ligne.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -22,10 +22,9 @@
     "Sidekiq",
     "Delayed Job",
     "Chartkick",
-    "GraphQL",
     "React",
-    "Vite",
-    "lightgallery"
+    "Vips",
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
@@ -42,18 +41,24 @@
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "saml",
+      "jwt",
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
   "tests": [
     "RSpec",
-    "Selenium",
     "Capybara",
-    "Cypress"
+    "Selenium",
+    "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-13T17:23:48+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-05-14T05:54:15Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
