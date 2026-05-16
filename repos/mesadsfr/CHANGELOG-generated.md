@@ -1,0 +1,14 @@
+# Synthèse d'activité : mesadsfr (du 02/05 au 12/05)
+
+## Résumé de l'activité
+L'organisation a connu une activité soutenue au cours des derniers jours, principalement axée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads). Les évolutions se concentrent sur l'ajout de fonctionnalités pour les inspecteurs et administrateurs, l'amélioration des statistiques et la correction de bugs. Une attention particulière a été portée à la sécurité avec la correction d'une vulnérabilité critique. L'ajout d'une page d'accessibilité démontre un engagement envers l'inclusion et la conformité légale.
+
+## Sécurité
+- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).
+
+## Autres changements notables
+- Mise à jour des données des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).
+- Suppression du bandeau d'appel à un sondage dans [mesads](/repos/mesadsfr/mesads).
+
+## Dépôts les plus actifs
+- [mesads](/repos/mesadsfr/mesads) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des améliorations de sécurité.

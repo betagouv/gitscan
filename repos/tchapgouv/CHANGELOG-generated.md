@@ -1,24 +1,22 @@
-# Synthèse d'activité : tchapgouv (du 23 mars 2026 au 10 mai 2026)
+# Synthèse d'activité : tchapgouv (du 23 mars 2026 au 7 mai 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation tchapgouv s'est concentrée sur l'amélioration de la sécurité, de l'accessibilité et de l'expérience utilisateur de ses applications et services. Des correctifs de sécurité critiques ont été déployés pour tchap-web-v4, et des améliorations significatives ont été apportées aux applications mobiles (iOS et Android) avec l'ajout de nouvelles fonctionnalités et la correction de bugs. L'authentification et la gestion des utilisateurs ont également été renforcées grâce à des mises à jour de matrix-authentication-service et de ses composants associés. Plusieurs dépôts ont bénéficié d'améliorations techniques, notamment des mises à jour de dépendances et des optimisations de configuration.
+Au cours des dernières semaines, l'organisation tchapgouv a concentré ses efforts sur l'amélioration de la sécurité, la correction de bugs et l'optimisation de l'expérience utilisateur. Des améliorations significatives ont été apportées à l'application Android (renommée simplement "Tchap" et avec un nouveau processus de release), à l'authentification (avec une meilleure gestion des utilisateurs et des liens profonds) et aux appels (avec une transition de nommage et des corrections de compatibilité).  L'accent a également été mis sur la préparation des releases et la modernisation des outils de développement, notamment avec l'intégration de npm et la mise à jour de dépendances critiques.
 
 ## Sécurité
-Plusieurs changements liés à la sécurité ont été implémentés :
-- Correction d'une faille de sécurité critique concernant l'ouverture de fichiers dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
-- Mise à jour de `opa-wasm` et `wasmtime` pour corriger des vulnérabilités de sécurité dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
-- Correction d'un bug lié à la réinitialisation des clés de chiffrement dans [tchap-android](/repos/tchapgouv/tchap-android).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- [tchap-desktop](/repos/tchapgouv/tchap-desktop) : Correction d'une vulnérabilité lors de l'ouverture de fichiers téléchargés.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Mise à jour de dépendances critiques (rustls-webpki, opa-wasm, wasmtime) pour corriger des vulnérabilités.
 
 ## Autres changements notables
-- Refonte du flux de connexion/enregistrement dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
-- Renommage de l'application "Tchap X" en "Tchap" dans [tchap-x-android](/repos/tchapgouv/tchap-x-android).
-- Transition du projet "TCHAP" à "element-call-tchap" dans [element-call](/repos/tchapgouv/element-call).
-- Introduction d'un répertoire utilisateur basique dans [synapse](/repos/tchapgouv/synapse).
-- Amélioration du contraste des gradients d'informations pour une meilleure accessibilité dans [compound-design-tokens](/repos/tchapgouv/compound-design-tokens).
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : L'application a été renommée de "Tchap X" à "Tchap" et un nouveau processus de release a été mis en place.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Suppression du code obsolète lié à l'ancienne fonctionnalité MAS et refonte de l'authentification.
+- [element-call](/repos/tchapgouv/element-call) : Renommage du projet en "element-call-tchap" et ajustements de l'environnement CI/CD.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Refonte de la construction de la configuration de MAS avec des templates Jinja2.
 
 ## Dépôts les plus actifs
-- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Corrections de sécurité, refonte du flux de connexion et ajout de nouvelles fonctionnalités.
-- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Ajout de l'accès par lien aux salons et améliorations de la gestion des espaces.
-- [tchap-android](/repos/tchapgouv/tchap-android) : Renommage de l'application, corrections de bugs et améliorations de la sécurité.
-- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de la gestion des utilisateurs et correction de vulnérabilités.
-- [tchap-desktop](/repos/tchapgouv/tchap-desktop) : Corrections de sécurité et amélioration de la gestion des liens profonds.
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Renommage de l'application et mise en place d'un nouveau processus de release.
+- [tchap-desktop](/repos/tchapgouv/tchap-desktop) : Améliorations de sécurité, gestion des liens profonds et préparation des releases.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Amélioration de l'invitation d'utilisateurs, implémentation d'une liste rouge et déploiement progressif des appels groupés.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de l'expérience administrateur et correction de bugs liés à l'intégration avec le serveur d'identité.
+- [tchap-ios](/repos/tchapgouv/tchap-ios) : Corrections de bugs et améliorations de la compatibilité avec les dernières versions d'iOS.

@@ -1,26 +1,29 @@
-# Synthèse d'activité : SocialGouv (du 28 avril 2026 au 07 mai 2026)
+# Synthèse d'activité : SocialGouv (du 07/05 au 14/05)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la qualité des données, la sécurité et la préparation de nouveaux services. Plusieurs projets ont bénéficié de mises à jour de données régulières (legi-data, fiches-travail-data, fiches-vdd), assurant ainsi la pertinence des informations fournies. Des efforts significatifs ont été déployés pour renforcer la sécurité de plusieurs applications (dsfr-mcp, archifiltre-mails) et pour intégrer de nouvelles fonctionnalités, notamment l'intelligence artificielle (git-ai-trace, iterion, repo-falcon).  Des améliorations de l'expérience utilisateur ont également été apportées à des services existants comme vao, domifa et cdtn-admin.
+Au cours des dernières semaines, l'organisation SocialGouv a connu une activité soutenue, avec des mises à jour significatives sur de nombreux dépôts. L'accent a été mis sur l'amélioration de la sécurité (correction de vulnérabilités dans `vao`, `nos1000jours-blues-epds-widget`, `archifiltre-mails` et `archifiltre-docs`), l'amélioration de l'expérience utilisateur (corrections de bugs et ajouts de fonctionnalités dans `vao`, `srdt`, `dashlord`, `domifa`, `cdtn-admin`), et la modernisation technique (migrations vers pnpm dans `token-bureau`, `revu`, `nos1000jours-blues-epds-widget`, `matomo-next`, et refonte de l'architecture dans `iterion`).  Plusieurs projets ont également progressé dans l'automatisation (workflows CI/CD améliorés dans `repo-falcon`, `kube-image-keeper`) et l'intégration de nouvelles technologies (Elasticsearch dans `cdtn-admin`, intégration de Claude dans `git-ai-trace` et `claw-code-go`). L'activité de mise à jour des données a été régulière dans `legi-data`, `kali-data` et `fiches-vdd`.
 
 ## Sécurité
-Plusieurs dépôts ont reçu des correctifs de sécurité :
-- Correction d'une vulnérabilité dans [vao](/repos/SocialGouv/vao).
-- Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-- Correction d'une vulnérabilité dans [archifiltre-docs](/repos/SocialGouv/archifiltre-docs).
-- Renforcement de la sécurité dans [domifa](/repos/SocialGouv/domifa).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+- Correction de vulnérabilités identifiées par SonarQube dans [vao](/repos/SocialGouv/vao).
+- Correction d'une vulnérabilité de sécurité dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget).
+- Correction d'une vulnérabilité de sécurité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
+- Correction d'une vulnérabilité de sécurité dans [archifiltre-docs](/repos/SocialGouv/archifiltre-docs).
 
 ## Autres changements notables
-- Migration vers pnpm pour une meilleure gestion des dépendances dans plusieurs dépôts : [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), [cdtn-admin](/repos/SocialGouv/cdtn-admin).
-- Mise à jour de versions majeures de Python et Django dans [collecte-pro](/repos/SocialGouv/collecte-pro).
-- Intégration de l'API Elasticsearch dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) et [dashlord](/repos/SocialGouv/dashlord).
-- Migration vers Playwright pour les tests E2E dans [cdtn-admin](/repos/SocialGouv/cdtn-admin).
-- Ajout d'une marketplace de plugins dans [claw-code-go](/repos/SocialGouv/claw-code-go).
+- Migration vers pnpm pour la gestion des dépendances dans plusieurs dépôts : [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), [matomo-next](/repos/SocialGouv/matomo-next).
+- Refonte de l'architecture de [iterion](/repos/SocialGouv/iterion) pour une meilleure modularité et maintenabilité.
+- Intégration d'Elasticsearch dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) pour améliorer la recherche.
+- Mise en place d'un système de sandbox basé sur Docker dans [iterion](/repos/SocialGouv/iterion) pour une exécution plus sécurisée des workflows.
+- Migration de Python et Django vers des versions plus récentes dans [collecte-pro](/repos/SocialGouv/collecte-pro).
 
 ## Dépôts les plus actifs
-- [vao](/repos/SocialGouv/vao) : Améliorations significatives du processus de renouvellement d'agréments et de la gestion des fichiers.
+- [vao](/repos/SocialGouv/vao) : Corrections de bugs et améliorations de l'expérience utilisateur sur les formulaires d'agrément.
+- [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs et améliorations de la gestion des permissions.
+- [srdt](/repos/SocialGouv/srdt) : Amélioration de la stabilité et de la performance de l'assistant virtuel.
+- [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi et prise en charge des tests A/B.
 - [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de la gestion des actualités et migration vers Elasticsearch.
-- [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données législatives.
-- [domifa](/repos/SocialGouv/domifa) : Amélioration de l'interface utilisateur avec l'intégration de DSFR et ajout d'une page "Témoignages".
-- [iterion](/repos/SocialGouv/iterion) : Développement d'une plateforme d'exécution de code avec intégration d'agents IA.
-- [repo-falcon](/repos/SocialGouv/repo-falcon) : Amélioration de l'intégration avec les agents de codage et automatisation des processus de publication.
+- [git-ai-trace](/repos/SocialGouv/git-ai-trace) : Développement d'un outil pour intégrer un résumé de la collaboration IA/humain dans les commits Git.
+- [claw-code-go](/repos/SocialGouv/claw-code-go) : Ajout de nouveaux outils et intégration de fournisseurs d'IA.
+- [domifa](/repos/SocialGouv/domifa) : Améliorations de la sécurité et de l'interface d'administration.

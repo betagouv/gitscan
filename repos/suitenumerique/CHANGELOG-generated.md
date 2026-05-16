@@ -1,25 +1,28 @@
-# Synthèse d'activité : suitenumerique (du 22 avril 2026 au 7 mai 2026)
+# Synthèse d'activité : suitenumerique (du 29 avril au 14 mai 2026)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation SuiteNumérique. Plusieurs projets ont bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités dans les applications "Gaufre" (via [projects](/repos/suitenumerique/projects)), "Conversations" ([conversations](/repos/suitenumerique/conversations)) et "Calendars" ([calendars](/repos/suitenumerique/calendars)). Des efforts importants ont également été consacrés à la refonte de l'infrastructure et à l'amélioration de la sécurité, avec notamment la migration vers Next.js et TypeScript pour le projet Hub ([hub](/repos/suitenumerique/hub)) et des mises à jour de sécurité pour plusieurs dépendances. L'émergence de nouveaux projets comme "accounts" ([accounts](/repos/suitenumerique/accounts)) et "encryption" ([encryption](/repos/suitenumerique/encryption)) témoigne de l'innovation continue au sein de l'organisation.
+L'organisation suitenumerique a connu une période d'activité intense, marquée par des améliorations significatives sur plusieurs de ses produits. st-home a bénéficié d'une refonte majeure de sa carte de déploiement et d'une modernisation de son infrastructure. L'application "Gaufre" (via les dépôts `docs` et `drive`) a vu des améliorations notables en termes d'expérience utilisateur, notamment avec l'ajout de la prévisualisation de fichiers PDF et un nouveau processus d'onboarding. Plusieurs dépôts ont également mis l'accent sur la sécurité, avec des mises à jour de dépendances et des corrections de vulnérabilités (notamment `people`, `find` et `calendars`). Enfin, des efforts importants ont été déployés pour améliorer la qualité du code et l'infrastructure de développement, en particulier avec la migration du frontend de `hub` vers Next.js et TypeScript.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- Correction de vulnérabilités dans `django-lasuite` ([django-lasuite](/repos/suitenumerique/django-lasuite)).
-- Mise à jour de dépendances vulnérables dans `conversations` ([conversations](/repos/suitenumerique/conversations)).
-- Correction d'une potentielle escalade de privilèges dans `people` ([people](/repos/suitenumerique/people)).
-- Mise à jour de Pillow dans `meet` ([meet](/repos/suitenumerique/meet)) pour corriger des CVEs.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+- Correction de vulnérabilités dans `people` via la mise à jour de plusieurs dépendances (urllib3, Django, Pillow, pytest, next).
+- Correction d'une vulnérabilité potentielle d'élévation de privilèges dans `people`.
+- Correction d'une vulnérabilité de sécurité dans `find` avec la mise à jour de `requests` et `pytest`.
+- Amélioration de la sécurité de l'authentification dans `dictaphone` avec l'implémentation de JWT/PKCE.
+- Modification du format du mot de passe des canaux CalDAV dans `calendars` pour une meilleure sécurité.
 
 ## Autres changements notables
-- Refonte complète du frontend du projet Hub avec Next.js et TypeScript ([hub](/repos/suitenumerique/hub)).
-- Remplacement de Nginx par Caddy comme reverse proxy dans `st-home` ([st-home](/repos/suitenumerique/st-home)).
-- Mise en place d'une étape de staging dans le processus de déploiement de `projects` ([projects](/repos/suitenumerique/projects)).
-- Refactorisation de l'infrastructure de déploiement de Gallene ([gallene-deployment](/repos/suitenumerique/gallene-deployment)).
-- Suppression de fonctionnalités expérimentales dans `find` ([find](/repos/suitenumerique/find)) pour se concentrer sur l'algorithme BM25.
+- Refonte majeure de l'infrastructure de `st-home` avec le remplacement de Nginx par Caddy.
+- Migration complète du frontend de `hub` vers Next.js et TypeScript, modernisant ainsi l'architecture et améliorant la maintenabilité.
+- Implémentation initiale de l'échange de jetons OAuth 2.0 dans `menshen`.
+- Refonte de l'interface d'administration dans `django-lasuite`.
+- Importation des scripts de déploiement et du Dockerfile de `deburau/galene-docker` dans `gallene-deployment`.
 
 ## Dépôts les plus actifs
-- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nombreux nouveaux composants et fonctionnalités pour l'interface utilisateur.
-- [st-home](/repos/suitenumerique/st-home) : Amélioration de la carte de déploiement et intégration de nouvelles données.
-- [projects](/repos/suitenumerique/projects) : Amélioration de la gestion des tableaux de bord et implémentation d'une API pour les statistiques.
-- [meet](/repos/suitenumerique/meet) : Ajout d'un sélecteur de police personnalisable et support initial d'un add-in Outlook.
-- [conversations](/repos/suitenumerique/conversations) : Ajout d'un tutoriel d'onboarding et amélioration de la recherche documentaire.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout d'un nouveau composant de prévisualisation de fichiers et amélioration de la couverture des tests.
+- [st-home](/repos/suitenumerique/st-home) : Refonte de la carte de déploiement et modernisation de l'infrastructure.
+- [hub](/repos/suitenumerique/hub) : Migration complète du frontend vers Next.js et TypeScript.
+- [conversations](/repos/suitenumerique/conversations) : Amélioration de la pertinence de la recherche et ajout de la gestion des fichiers de projet.
+- [drive](/repos/suitenumerique/drive) : Amélioration de la prévisualisation des fichiers PDF et de la gestion des téléchargements.
+- [docs](/repos/suitenumerique/docs) : Ajout d'un squelette de chargement et intégration de Crisp pour le support utilisateur.

@@ -1,23 +1,25 @@
-# Synthèse d'activité : mission-apprentissage (du 24/04 au 24/05)
+# Synthèse d'activité : mission-apprentissage (du 16/04 au 16/05/2026)
 
 ## Résumé de l'activité
-L'organisation mission-apprentissage a connu une période d'activité soutenue, axée sur l'amélioration de la sécurité, de la performance et des fonctionnalités de ses différentes plateformes. Des efforts importants ont été déployés pour renforcer la sécurité des données, notamment avec la migration vers SOPS pour la gestion des secrets et l'ajout d'une autorité de certification pour MongoDB [mongodb](/repos/mission-apprentissage/mongodb).  Les plateformes "La Bonne Alternance" [labonnealternance](/repos/mission-apprentissage/labonnealternance) et "Flux Retour CFAS" [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) ont bénéficié de nouvelles fonctionnalités et d'optimisations pour améliorer l'expérience utilisateur et l'efficacité des services. L'infrastructure [infra](/repos/mission-apprentissage/infra) a également été renforcée avec des mises à jour de sécurité et une meilleure gestion des accès.
+L'organisation mission-apprentissage a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses plateformes.  Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [labonnealternance](/repos/mission-apprentissage/labonnealternance) avec l'ajout de nouvelles fonctionnalités pour les recruteurs et l'optimisation du SEO, et sur [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) avec l'ajout de nouvelles pages et fonctionnalités d'onboarding. La sécurité a également été renforcée avec la migration de la gestion des secrets vers SOPS sur [infra](/repos/mission-apprentissage/infra) et [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).  Des améliorations techniques ont été apportées à l'infrastructure, aux bases de données et aux processus de développement pour une meilleure performance et maintenabilité.
 
 ## Sécurité
 Plusieurs changements ont été apportés pour améliorer la sécurité :
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS [infra](/repos/mission-apprentissage/infra).
-- Ajout d'une autorité de certification pour l'authentification des membres d'un cluster MongoDB [mongodb](/repos/mission-apprentissage/mongodb).
-- Correction de vulnérabilités de sécurité dans les dépendances Handlebars et form-data [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
-- Mise à jour des images Docker de Nginx et ModSecurity-CRS pour bénéficier des dernières corrections de sécurité [infra](/repos/mission-apprentissage/infra).
+- Migration de la gestion des secrets d'Ansible Vault vers SOPS sur [infra](/repos/mission-apprentissage/infra) et [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
+- Mise à jour des images Docker de Nginx et ModSecurity-CRS sur [infra](/repos/mission-apprentissage/infra) pour bénéficier des dernières corrections de sécurité.
+- Épinglage de `handlebars` et `form-data` sur [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) pour corriger des CVE critiques.
+- Migration de l'outil de scan de secrets de Talisman vers Gitleaks sur [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
 
 ## Autres changements notables
-- Refactorisation générale du code et correction de scripts de sauvegarde/restauration dans [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin).
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS et amélioration du processus de CI/CD dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
-- Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
+- Refactorisation et amélioration de la gestion des secrets avec SOPS sur plusieurs dépôts ([infra](/repos/mission-apprentissage/infra), [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab)).
+- Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` sur [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
+- Amélioration de la synchronisation avec Elasticsearch sur [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
+- Remplacement de Mailhog par Mailpit pour les tests SMTP sur [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
+- Ajout de la configuration d'une autorité de certification pour l'authentification des membres d'une grappe MongoDB sur [mongodb](/repos/mission-apprentissage/mongodb).
 
 ## Dépôts les plus actifs
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration de la recherche d'alternances, intégration de nouveaux flux d'offres et ajout de pages SEO.
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout de nouvelles collaborations, intégration de Crisp pour le support utilisateur et enrichissement des exports utilisateurs.
-- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections d'affichage et de périmètre, ajout d'options de configuration et amélioration de la synchronisation avec Elasticsearch.
-- [infra](/repos/mission-apprentissage/infra) : Amélioration de la sécurité et de la gestion des accès, migration vers SOPS et mises à jour de sécurité.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage, amélioration du processus de CI/CD et correction de bugs.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Ajout de nouvelles fonctionnalités pour les recruteurs, amélioration du SEO et implémentation de l'export de données vers France Travail.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout de nouvelles pages d'atterrissage, d'une fonctionnalité d'onboarding et amélioration de la collaboration ML/OFA.
+- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage et migration de la gestion des secrets vers SOPS.
+- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections d'affichage et de synchronisation avec Elasticsearch, ainsi qu'une mise à jour majeure de Mongoose.
+- [infra](/repos/mission-apprentissage/infra) : Amélioration de la sécurité avec la migration vers SOPS et mises à jour de sécurité pour Nginx et ModSecurity.
