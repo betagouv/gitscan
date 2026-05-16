@@ -1,22 +1,25 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification pour les professionnels, avec des fonctionnalités de gestion des utilisateurs et d'intégration avec divers services.",
+  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification pour les professionnels, avec des fonctionnalités d'administration et de gestion des rôles.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des rôles",
+    "Gestion documentaire & Fichiers"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "Yarn",
     "Docker",
-    "Express",
     "Mongoose",
+    "Express",
     "Passport",
+    "bcryptjs",
     "amqplib",
     "axios"
   ],
@@ -25,10 +28,12 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "MongoDB & NoSQL"
+    "MongoDB & NoSQL",
+    "Tests"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
       "saml"
     ]
@@ -40,7 +45,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-13T18:09:28+02:00",
+  "lastActivity": "2026-05-14T20:42:38+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,10 +58,11 @@
   "tags": [
     "Sécurité & Conformité",
     "Authentification",
-    "API",
     "TypeScript",
     "Docker",
     "Node.js",
-    "MongoDB"
+    "API",
+    "Administration",
+    "Open Data"
   ]
 }
