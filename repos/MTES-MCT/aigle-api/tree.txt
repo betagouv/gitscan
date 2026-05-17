@@ -4,7 +4,8 @@
 ├── .env.template
 ├── .github
 │   └── workflows
-│       └── deploy-to-scaleway.yml
+│       ├── deploy-to-scaleway.yml
+│       └── test.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── Aptfile
@@ -13,7 +14,6 @@
 ├── Makefile
 ├── Procfile
 ├── README.md
-├── TESTING_SETUP.md
 ├── aigle
 │   ├── __init__.py
 │   ├── asgi.py
@@ -203,6 +203,7 @@
 │   │   ├── 0114_email_alter_historicaluser_date_joined_and_more.py
 │   │   ├── 0115_add_calculate_surface_function.py
 │   │   ├── 0116_useractionlog.py
+│   │   ├── 0117_alter_tileset_date_to_datefield.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -293,7 +294,6 @@
 │   │   ├── tile_set.py
 │   │   └── user.py
 │   ├── tests
-│   │   ├── README.md
 │   │   ├── __init__.py
 │   │   ├── base.py
 │   │   ├── fixtures
@@ -303,15 +303,33 @@
 │   │   │   └── users.py
 │   │   └── views
 │   │       ├── __init__.py
+│   │       ├── test_detection_data.py
+│   │       ├── test_detection_geo.py
+│   │       ├── test_detection_list.py
 │   │       ├── test_detection_object.py
 │   │       ├── test_external_api.py
 │   │       ├── test_geo_commune.py
-│   │       └── test_user.py
+│   │       ├── test_geo_custom_zone.py
+│   │       ├── test_geo_custom_zone_category.py
+│   │       ├── test_geo_department.py
+│   │       ├── test_geo_region.py
+│   │       ├── test_map_settings.py
+│   │       ├── test_object_type.py
+│   │       ├── test_object_type_category.py
+│   │       ├── test_parcel.py
+│   │       ├── test_run_command.py
+│   │       ├── test_statistics.py
+│   │       ├── test_super_admin_scope.py
+│   │       ├── test_tile_set.py
+│   │       ├── test_user.py
+│   │       ├── test_user_action_log.py
+│   │       └── test_user_group.py
 │   ├── urls.py
 │   ├── urls_auth.py
 │   ├── utils
 │   │   ├── __init__.py
 │   │   ├── analytic_log.py
+│   │   ├── bulk_csv.py
 │   │   ├── code.py
 │   │   ├── email.py
 │   │   ├── filters.py
@@ -327,6 +345,7 @@
 │   │   ├── run_command.py
 │   │   ├── serializers.py
 │   │   ├── string.py
+│   │   ├── super_admin_scope.py
 │   │   ├── tasks.py
 │   │   └── user_action_log.py
 │   └── views
@@ -377,10 +396,13 @@
 ├── media
 │   └── templates
 │       └── prior_letter.odt
+├── pytest.ini
 ├── requirements.txt
 ├── ruff.toml
 ├── runtime.txt
+├── scripts
+│   └── extract_dev_data.py
 └── services
     ├── celery.service
     └── gunicorn_aigle.service
-36 directories, 349 files
+37 directories, 370 files
