@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/trackdechets",
   "name": "trackdechets",
-  "description": "Trackdéchets est une plateforme pour gérer la traçabilité des déchets en toute sécurité, incubée par la Fabrique Numérique du Ministère de la Transition Écologique.",
+  "description": "Trackdéchets est une plateforme pour gérer la traçabilité des déchets en toute sécurité. Elle vise à faciliter le suivi des déchets pour les acteurs concernés, en respectant les réglementations en vigueur.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,27 +10,31 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Suivi & Traçabilité"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration"
+  ],
   "dependencies": [
     "Node.js",
-    "TypeScript",
     "Express.js",
-    "Apollo Server",
-    "Prisma ORM",
     "PostgreSQL",
     "Elasticsearch",
+    "Redis",
     "React.js",
-    "Apollo Client"
+    "Typescript",
+    "Apollo Server",
+    "Prisma ORM"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript",
+    "TypeScript",
+    "Node.js / NestJS",
     "Docker & Conteneurs"
   ],
   "auth": {
@@ -41,12 +45,15 @@
       "session"
     ]
   },
-  "tests": "Intégration tests avec Github Actions",
-  "workflows": [
-    "build-and-test.yml",
-    "integration-tests.yml"
+  "tests": [
+    "Jest",
+    "Integration tests"
   ],
-  "lastActivity": "2026-05-07T14:35:23+02:00",
+  "workflows": [
+    "Build & Test",
+    "Integration tests"
+  ],
+  "lastActivity": "2026-05-15T11:11:13+02:00",
   "status": "active",
   "license": "GNU Affero General Public License v3.0",
   "hasDocumentation": true,
