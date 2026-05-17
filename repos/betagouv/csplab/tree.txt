@@ -12,7 +12,7 @@
 │       ├── dev.yml
 │       ├── notebook.yml
 │       ├── ocr.yml
-│       └── tycho.yml
+│       └── web.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .prettierrc.json
@@ -54,7 +54,7 @@
 │   ├── ocr-example
 │   ├── postgresql-example
 │   ├── redis-example
-│   └── tycho-example
+│   └── web-example
 └── src
     ├── ingestion
     │   ├── .envrc.sample
@@ -65,17 +65,33 @@
     │   │   ├── __init__.py
     │   │   ├── _sentry.py
     │   │   ├── config.py
+    │   │   ├── dependencies.py
     │   │   ├── main.py
     │   │   ├── routes.py
     │   │   └── talentsoft.py
+    │   ├── application
+    │   │   ├── __init__.py
+    │   │   └── use_cases
+    │   │       ├── __init__.py
+    │   │       └── archive_offer.py
     │   ├── bin
     │   │   └── start_web.sh
+    │   ├── presentation
+    │   │   ├── __init__.py
+    │   │   └── dtos
+    │   │       ├── __init__.py
+    │   │       └── talentsoft_webhook.py
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
-    │   │   └── integration
+    │   │   ├── integration
+    │   │   │   ├── __init__.py
+    │   │   │   ├── conftest.py
+    │   │   │   ├── test_routes.py
+    │   │   │   └── test_webhook_archive.py
+    │   │   └── unit
     │   │       ├── __init__.py
-    │   │       └── test_routes.py
+    │   │       └── test_archive_offer_use_case.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -143,7 +159,7 @@
     │   │       ├── __init__.py
     │   │       └── test_extract_text.py
     │   └── uv.lock
-    └── tycho
+    └── web
         ├── .envrc.sample
         ├── .python-version
         ├── CHANGELOG.md
@@ -156,6 +172,7 @@
         │   │   ├── __init__.py
         │   │   └── usecases
         │   │       ├── __init__.py
+        │   │       ├── get_opportunity_details.py
         │   │       ├── initialize_cv_metadata.py
         │   │       ├── match_cv_to_opportunities.py
         │   │       └── process_uploaded_cv.py
@@ -169,6 +186,7 @@
         │       │   └── load_operation_type.py
         │       └── usecases
         │           ├── __init__.py
+        │           ├── archive_offer_by_reference.py
         │           ├── archive_offers.py
         │           ├── clean_documents.py
         │           ├── list_offers.py
@@ -265,6 +283,9 @@
         │       └── verse.py
         ├── infrastructure
         │   ├── __init__.py
+        │   ├── authentication
+        │   │   ├── __init__.py
+        │   │   └── api_key_authentication.py
         │   ├── di
         │   │   ├── __init__.py
         │   │   ├── candidate
@@ -346,6 +367,7 @@
         │   │       │   ├── 0022_remove_metiermodel_competences.py
         │   │       │   ├── 0023_alter_metiermodel_external_id.py
         │   │       │   ├── 0024_alter_metiermodel_code_emploi_csp.py
+        │   │       │   ├── 0025_offermodel_code_emploi_csp_and_more.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
@@ -600,6 +622,7 @@
         │   │   ├── __init__.py
         │   │   ├── integration
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   └── test_process_uploaded_cv.py
@@ -630,6 +653,7 @@
         │   │   │       └── test_static_pages_view.py
         │   │   └── unit
         │   │       ├── __init__.py
+        │   │       ├── test_get_opportunity_details.py
         │   │       ├── test_initialize_cv_metadata.py
         │   │       ├── test_limit_date.py
         │   │       ├── test_match_cv_to_opportunities.py
@@ -644,9 +668,15 @@
         │   │   ├── document_factory.py
         │   │   ├── ingres_corps_factories.py
         │   │   ├── ingres_metiers_factories.py
+        │   │   ├── metier_factory.py
         │   │   ├── offer_factory.py
         │   │   ├── talentsoft_factories.py
         │   │   └── vectorized_document_factory.py
+        │   ├── infrastructure
+        │   │   ├── __init__.py
+        │   │   └── authentication
+        │   │       ├── __init__.py
+        │   │       └── test_api_key_authentication.py
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── integration
@@ -654,6 +684,7 @@
         │   │   │   ├── repository
         │   │   │   │   ├── __init__.py
         │   │   │   │   └── test_postgres_document_repository.py
+        │   │   │   ├── test_archive_offer_by_reference.py
         │   │   │   ├── test_archive_offers.py
         │   │   │   ├── test_clean_documents.py
         │   │   │   ├── test_list_offers.py
@@ -673,6 +704,7 @@
         │   │   │   │   └── test_ingestion_tasks.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
+        │   │   │       ├── test_archive_offers_view.py
         │   │   │       ├── test_ingestion_views.py
         │   │   │       └── test_list_offers.py
         │   │   └── unit
@@ -696,14 +728,17 @@
         │   │   │       ├── test_postgres_corps_repository.py
         │   │   │       ├── test_postgres_offers_repository.py
         │   │   │       └── test_qdrant_repository.py
-        │   │   └── presentation
+        │   │   ├── presentation
+        │   │   │   ├── __init__.py
+        │   │   │   ├── api
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── test_endpoints.py
+        │   │   │   └── views
+        │   │   │       ├── __init__.py
+        │   │   │       └── test_views.py
+        │   │   └── unit
         │   │       ├── __init__.py
-        │   │       ├── api
-        │   │       │   ├── __init__.py
-        │   │       │   └── test_endpoints.py
-        │   │       └── views
-        │   │           ├── __init__.py
-        │   │           └── test_views.py
+        │   │       └── test_interface_aware_mock.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── form_test_utils.py
@@ -715,4 +750,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-142 directories, 575 files
+151 directories, 601 files
