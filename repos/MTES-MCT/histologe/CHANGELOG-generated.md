@@ -1,50 +1,36 @@
 ## Changelog : histologe (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité de l'application, la correction de vulnérabilités de sécurité, l'optimisation des performances et la stabilisation des intégrations avec des services externes comme Esabora SCHS. Des améliorations ont également été apportées à l'interface utilisateur, notamment au niveau du tableau de bord et de la gestion des signalements.
+Les dernières semaines ont été marquées par des améliorations significatives en termes d'accessibilité, de performance et de correction de vulnérabilités. Des efforts ont été déployés pour améliorer l'expérience utilisateur dans l'interface d'administration (BO), notamment au niveau du tableau de bord et de la gestion des signalements. Des optimisations techniques ont également été réalisées pour renforcer la sécurité et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité de l'application pour les utilisateurs, notamment au niveau des tableaux de bord, des formulaires et des notifications. [#5734](https://github.com/MTES-MCT/histologe/issues/5734), [#5732](https://github.com/MTES-MCT/histologe/issues/5732), [#5793](https://github.com/MTES-MCT/histologe/issues/5793), [#5781](https://github.com/MTES-MCT/histologe/issues/5781), [#5770](https://github.com/MTES-MCT/histologe/issues/5770)
-- Ajout de rappels d'événements liés au widget du tableau de bord et modification du texte de la tuile du tableau de bord. [#5683](https://github.com/MTES-MCT/histologe/issues/5683)
-- Correction de la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse dans la gestion des signalements. [#5839](https://github.com/MTES-MCT/histologe/issues/5839)
-- Ajout d'une confirmation pour vider les notifications. [#5800](https://github.com/MTES-MCT/histologe/issues/5800)
-- Amélioration de l'affichage des dates des photos en préservant les données EXIF. [#5702](https://github.com/MTES-MCT/histologe/issues/5702)
-- Ajout de la date et de l'heure dans le suivi de visite programmée. [#5759](https://github.com/MTES-MCT/histologe/issues/5759)
-- Ajout de filtres pour les événements. [#5713](https://github.com/MTES-MCT/histologe/issues/5713)
+- Amélioration de l'accessibilité générale de l'application, notamment pour les utilisateurs API, les événements, les documents, les partenaires et le tableau de bord. [#5826, #5793, #5781, #5734, #5732]
+- Ajout d'une confirmation lors de la suppression des notifications dans l'interface d'administration. [#5800]
+- Ajout de l'heure dans le suivi des visites programmées. [#5759]
+- Ajout de filtres pour les événements. [#5713, #5740]
+- Amélioration de l'affichage de la date/heure des clubs dans les emails et le tableau de bord, en tenant compte du fuseau horaire de l'utilisateur. [#5778, #5785]
+- Correction de la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse dans l'interface de signalement. [#5839]
+- Correction de la conversion d'un tableau en chaîne de caractères pour l'envoi d'emails. [#5853]
+- Ajout du nom des documents et des photos lors de l'export des signalements. [#5710]
+- Correction de l'affichage du numéro de téléphone dans le tooltip des suivis. [#5786, #5788]
 
 ### Évolutions techniques
-- Mise à jour de la version de PHPUnit de 9 vers 13. [#5766](https://github.com/MTES-MCT/histologe/issues/5766)
-- Montée de version de Doctrine. [#5827](https://github.com/MTES-MCT/histologe/issues/5827)
-- Remplacement de phpspreadsheets dans tout le code. [#5836](https://github.com/MTES-MCT/histologe/issues/5836)
-- Mise à jour de PostCSS. [#5809](https://github.com/MTES-MCT/histologe/issues/5809)
-- Mise à jour de la version de MySQL et Redis. [#5700](https://github.com/MTES-MCT/histologe/issues/5700)
-- Suppression des persist et flush des managers d'entités pour optimiser les performances. [#5757](https://github.com/MTES-MCT/histologe/issues/5757)
-- Déplacement des méthodes de statistiques vers un service dédié. [#5711](https://github.com/MTES-MCT/histologe/issues/5711)
-- Déplacement des méthodes d'update et de nettoyage vers les classes Behaviour. [#5762](https://github.com/MTES-MCT/histologe/issues/5762)
-- Correction d'un bug lié à la pagination des connexions SI. [#5755](https://github.com/MTES-MCT/histologe/issues/5755)
-- Ajout de Lighthouse dans la CI pour l'audit de performance. [#5789](https://github.com/MTES-MCT/histologe/issues/5789)
+- Mise à jour de plusieurs dépendances : PHPUnit (version 9 vers 13), PostCSS, Axios, Doctrine. [#5766, #5809, #5827, #5824]
+- Remplacement de la librairie phpspreadsheets par une alternative. [#5836]
+- Suppression des persist et flush des managers d'entités pour optimiser les performances. [#5757]
+- Correction d'une vulnérabilité relevée par YesWeHack et ajout d'un postmortem. [#5847, #5838]
+- Mise à jour de la configuration Nginx. [#5739]
+- Suppression du répertoire `test` lors du déploiement. [#5818]
+- Déplacement de la logique d'update et de nettoyage vers les classes Behaviour dans plusieurs repositories. [#5762]
+- Ajout de Lighthouse dans la CI pour l'audit de performance. [#5789]
+- Optimisation du comptage pour le panneau des dossiers fermés par les communes. [#5735, #5736]
+- Désactivation des boutons de soumission lors des requêtes AJAX pour éviter les soumissions multiples. [#5782, #5790]
 
 ### Autres changements
-- Correction de la conversion array to string pour l'envoi de mails. [#5853](https://github.com/MTES-MCT/histologe/issues/5853)
-- Correction de la configuration du fichier .env suite à un rapport de vulnérabilité YesWeHack. [#5838](https://github.com/MTES-MCT/histologe/issues/5838)
-- Ajout d'un postmortem suite à une vulnérabilité YesWeHack. [#5847](https://github.com/MTES-MCT/histologe/issues/5847)
-- Mise à jour de la collection Postman. [#5830](https://github.com/MTES-MCT/histologe/issues/5830)
-- Correction du tri par code postal sur la liste des territoires. [#5811](https://github.com/MTES-MCT/histologe/issues/5811)
-- Suppression du manager. [#5787](https://github.com/MTES-MCT/histologe/issues/5787)
-- Correction du mapping des réponses Esabora SCHS. [#5821](https://github.com/MTES-MCT/histologe/issues/5821)
-- Ajout de la gestion des partenaires par défaut et de la resynchronisation en cas de doublon pour Esabora SCHS. [#5725](https://github.com/MTES-MCT/histologe/issues/5725)
-- Optimisation du comptage pour le panneau "Dossiers fermés par les communes". [#5735](https://github.com/MTES-MCT/histologe/issues/5735)
-- Désactivation des boutons submit pendant les soumissions AJAX. [#5782](https://github.com/MTES-MCT/histologe/issues/5782)
-- Ajustement du format du numéro de téléphone dans le tooltip des suivis et ajout de CSS. [#5786](https://github.com/MTES-MCT/histologe/issues/5786)
-- Ajout de la date et de l'heure des clubs en fonction du fuseau horaire de l'utilisateur sur les e-mails et le tableau de bord. [#5778](https://github.com/MTES-MCT/histologe/issues/5778)
-- Suppression des suivis automatiques. [#5795](https://github.com/MTES-MCT/histologe/issues/5795)
-- Correction de l'affichage de l'avatar et du libellé du lien vers les dossiers. [#5737](https://github.com/MTES-MCT/histologe/issues/5737)
-- Mise à jour de la librairie Axios. [#5816](https://github.com/MTES-MCT/histologe/issues/5816)
-- Mise à jour de la librairie phpspreadsheet. [#5712](https://github.com/MTES-MCT/histologe/issues/5712)
-- Ajout de variables d'environnement pour la CI. [#5670](https://github.com/MTES-MCT/histologe/issues/5670)
-- Ignorer le répertoire test lors du déploiement. [#5818](https://github.com/MTES-MCT/histologe/issues/5818)
-- Correction de l'affichage des documents et de leur ajout. [#5793](https://github.com/MTES-MCT/histologe/issues/5793)
-- Utilisation du champ dénormalisé `lastSuiviAt`. [#5777](https://github.com/MTES-MCT/histologe/issues/5777)
-- Configuration de `innodb-buffer-pool-size`. [#5791](https://github.com/MTES-MCT/histologe/issues/5791)
-- Ajout de la gestion des messages de resynchronisation. [#5754](https://github.com/MTES-MCT/histologe/issues/5754)
-- Mise à jour de la configuration Nginx. [#5739](https://github.com/MTES-MCT/histologe/issues/5739)
+- Mise à jour de la collection Postman. [#5830, #5831]
+- Correction de la pagination des connexions SI. [#5755, #5758]
+- Gestion des messages de resynchronisation. [#5754, #5756]
+- Préservation des données EXIF des photos. [#5702]
+- Suppression des auto-suivis cachés. [#5795, #5798]
+- Configuration de `innodb-buffer-pool-size`. [#5791, #5792]
+- Amélioration du formatage du code et correction de problèmes de CI/C. [#5765, #5770, #5812]
