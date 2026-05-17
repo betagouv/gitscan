@@ -1,100 +1,47 @@
-## Changelog : reva (30 derniers jours, au 12 mai 2026)
+## Changelog : reva (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment dans l'administration des candidatures et des jurys. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que des refactorings importants pour simplifier le code et préparer le terrain pour de futures évolutions. L'intégration de FranceConnect a été améliorée et sécurisée.
+Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment autour de la gestion des lieux d'accueil et des candidatures. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que des améliorations techniques pour faciliter le développement et la maintenance du projet. L'authentification via FranceConnect a été renforcée et des outils de nettoyage ont été ajoutés pour faciliter la gestion des données de test.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bouton de suppression pour les lieux d'accueil dans l'interface d'administration [#1006](https://github.com/betagouv/reva/issues/1006).
-- Possibilité de spécifier la raison de la fin d'un accompagnement et la raison de l'abandon d'un candidat.
-- Ajout de la gestion des résultats de jury par blocs de compétences, avec affichage de l'historique et d'une interface de saisie améliorée.
-- Amélioration de l'affichage des informations de la certification dans l'interface collective.
-- Ajout d'une page de suppression de candidature pour les candidats, avec prise en compte des règles métier liées à l'envoi de la demande de faisabilité.
-- Amélioration de la gestion des dates de jury et des informations associées.
-- Ajout d'une fonctionnalité permettant de masquer les adresses des candidats lors de la dématérialisation de la VAE.
-- Amélioration de l'expérience utilisateur pour les utilisateurs FranceConnect, notamment en permettant la modification de la ville et du département de naissance.
-- Ajout d'une fonctionnalité de suppression de candidature pour les certificateurs.
-- Ajout d'une page d'archivage des candidatures.
-- Amélioration de l'affichage des informations sur les cohortes dans l'interface VAE Collective.
-- Ajout d'une fonctionnalité de suppression des candidatures en sandbox pour FranceConnect.
+- Ajout d'une page squelette pour la gestion des informations de contact des organismes certificateurs [#f849ff2](https://github.com/betagouv/reva/pulls/f849ff2).
+- Possibilité de cliquer sur la tuile d'un organisme certificateur pour accéder à sa page d'informations de contact [#7f3b226](https://github.com/betagouv/reva/pulls/7f3b226).
+- Suppression des détails de contact du tableau de bord des contacts [#632f698](https://github.com/betagouv/reva/pulls/632f698).
+- Amélioration de la formulation dans l'administration, pour les candidats et pour les VAE collectives [#4dfc681](https://github.com/betagouv/reva/pulls/4dfc681).
+- Possibilité de réinitialiser une candidature si le candidat confirme la fin de l'accompagnement [#0c67f10](https://github.com/betagouv/reva/pulls/0c67f10).
+- Ajout d'une page de détails des résultats de jury pour les candidats [#b109b26](https://github.com/betagouv/reva/pulls/b109b26).
+- Amélioration de la lisibilité de la page de fin d'accompagnement en mode lecture seule [#afeb702](https://github.com/betagouv/reva/pulls/afeb702).
+- Ajout d'un bouton de suppression pour les lieux d'accueil dans la page de détails, avec une confirmation pour éviter les suppressions accidentelles [#bdb1342](https://github.com/betagouv/reva/pulls/bdb1342).
+- Ajout d'un avertissement lors de la suppression d'un lieu d'accueil ayant des candidatures associées [#bd214c5](https://github.com/betagouv/reva/pulls/bd214c5).
+- Possibilité de supprimer une candidature en tant que certificateur, même si elle a été confirmée par le candidat [#5f9bdb2](https://github.com/betagouv/reva/pulls/5f9bdb2).
+- Ajout d'une page d'archivage des candidatures et d'une fonctionnalité d'archivage correspondante [#331c34b](https://github.com/betagouv/reva/pulls/331c34b).
+- Ajout d'un bouton de suppression de candidature si le statut est "PROJET" [#6294271](https://github.com/betagouv/reva/pulls/6294271).
+- Amélioration de la page de gestion des dates de jury dans l'administration [#32977a0](https://github.com/betagouv/reva/pulls/32977a0).
+- Ajout d'une page de résultats par blocs pour les AAP [#9488e6e](https://github.com/betagouv/reva/pulls/9488e6e).
 
 ### Évolutions techniques
-- Mise à jour de Next.js en version 16.2.6 dans plusieurs packages.
-- Refactorisation de l'authentification avec Keycloak, notamment l'utilisation de cookies pour stocker les tokens et l'amélioration de la gestion des erreurs.
-- Suppression de plusieurs feature flags obsolètes (CANDIDATE_NEXT_ACTIONS, END_ACCOMPAGNEMENT, CERTIFICATEUR_CANDIDACIES_ANNUAIRE, AAP_HELP, CERTIFICATEUR_AIDE).
-- Amélioration de la sécurité de l'API, notamment en vérifiant l'algorithme utilisé pour la signature des JWT et en protégeant contre les attaques de type "confused deputy".
-- Suppression de code obsolète et simplification de l'architecture dans plusieurs modules.
-- Mise à jour des dépendances (axios, uuid, fast-uri, postcss, etc.).
-- Amélioration des tests unitaires et d'intégration, notamment pour les fonctionnalités liées à FranceConnect.
-- Ajout de scripts pour anonymiser les bases de données Reva et Keycloak.
-- Ajout de cascade delete sur les tables de la base de données.
-- Amélioration de la gestion des erreurs et des logs.
+- Refactorisation de l'authentification dans l'administration pour utiliser des cookies et améliorer la sécurité [#86d59df](https://github.com/betagouv/reva/pulls/86d59df).
+- Mise à jour de Next.js dans plusieurs packages (admin, candidate, vae-collective, website) [#c2e0cfb](https://github.com/betagouv/reva/pulls/c2e0cfb), [#93981f6](https://github.com/betagouv/reva/pulls/93981f6), [#31293dd](https://github.com/betagouv/reva/pulls/31293dd), [#725e92c](https://github.com/betagouv/reva/pulls/725e92c).
+- Amélioration de la gestion des tokens et des cookies pour une meilleure sécurité et une meilleure expérience utilisateur [#7c7b3cc](https://github.com/betagouv/reva/pulls/7c7b3cc), [#e9c7698](https://github.com/betagouv/reva/pulls/e9c7698), [#9c17500](https://github.com/betagouv/reva/pulls/9c17500).
+- Ajout de scripts pour anonymiser les bases de données Reva et Keycloak [#0061807](https://github.com/betagouv/reva/pulls/0061807).
+- Amélioration de la gestion des logs pour les suppressions de lieux d'accueil [#dc5971f](https://github.com/betagouv/reva/pulls/dc5971f).
+- Mise à jour des dépendances (axios, uuid, fastify, etc.) dans divers packages.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Documentation mise à jour.
-- Corrections de style et amélioration de la lisibilité du code.
-- Ajustements de l'interface utilisateur pour respecter les directives de design du système de design français (DSFR).
-- Amélioration de la performance de certaines requêtes API.
-- Corrections de bugs mineurs.
-- Suppression de tables de bases de données inutilisées.
-- Amélioration de la configuration de Strapi pour les déploiements en cloud.
-- Ajout de logging plus précis pour faciliter le débogage.
-- Correction de problèmes de boucles infinies dans l'interface d'administration.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de demande de mot de passe par email.
-- Suppression de la fonctionnalité d'inscription via email.
-- Amélioration de la gestion des erreurs et des logs.
-- Correction de problèmes de compatibilité avec certaines versions de Next.js.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Correction de problèmes d'affichage sur certains navigateurs.
-- Amélioration de la gestion des erreurs liées à FranceConnect.
-- Suppression de la fonctionnalité de magic link pour la connexion.
+- Suppression des logs de traçage de l'usurpation d'identité dans l'administration [#7c817ab](https://github.com/betagouv/reva/pulls/7c817ab).
+- Correction d'un problème avec l'attribut Domain du cookie d'usurpation d'identité [#6f6b2f2](https://github.com/betagouv/reva/pulls/6f6b2f2).
+- Correction d'un bug empêchant l'usurpation d'identité de fonctionner avec tous les rôles [#ce7041d](https://github.com/betagouv/reva/pulls/ce7041d).
+- Correction d'un problème d'hydratation de la carte de fin d'accompagnement [#7b14051](https://github.com/betagouv/reva/pulls/7b14051).
+- Ajout de tests pour la fonctionnalité de fin d'accompagnement [#3ce0de2](https://github.com/betagouv/reva/pulls/3ce0de2).
+- Amélioration de la configuration de Strapi pour le déploiement en cloud [#db8f98d](https://github.com/betagouv/reva/pulls/db8f98d).
+- Mise à jour de la configuration de Keycloak pour supporter la version 26.6.1 [#ddbf57a](https://github.com/betagouv/reva/pulls/ddbf57a).
+- Augmentation légère de la limite de débit d'interopérabilité Traefik [#f3bf3eb](https://github.com/betagouv/reva/pulls/f3bf3eb).
+- Ajout de margin sur le bouton de suppression d'un lieu d'accueil [#fc63b38](https://github.com/betagouv/reva/pulls/fc63b38).
+- Ajout d'un resolver `organism->hasCandidacies` [#cad5995](https://github.com/betagouv/reva/pulls/cad5995).
+- Prévention de la fin d'accompagnement si la faisabilité de la candidature est en attente [#e8d953b](https://github.com/betagouv/reva/pulls/e8d953b).
+- Ajout de tests pour la nouvelle page de détails des résultats de jury [#5eb9f4b](https://github.com/betagouv/reva/pulls/5eb9f4b).
+- Amélioration de la formulation du modal de confirmation de fin d'accompagnement [#63d6963](https://github.com/betagouv/reva/pulls/63d6963).
+- Ajout d'une protection contre les attaques de type "confused deputy" dans l'interop [#0078369](https://github.com/betagouv/reva/pulls/0078369).
+- Amélioration de la sécurité de la vérification des JWT [#a077cbd](https://github.com/betagouv/reva/pulls/a077cbd).
+- Suppression de code obsolète et nettoyage du code.

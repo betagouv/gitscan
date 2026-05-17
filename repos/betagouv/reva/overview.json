@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus liés à la Validation des Acquis de l'Expérience (VAE).",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il fournit une plateforme pour la gestion des VAE (Validation des Acquis de l'Expérience).",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,7 +11,8 @@
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Interface utilisateur & Design",
-    "Collaboration & Workflow"
+    "Collaboration & Workflow",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,22 +20,24 @@
     "Next.js",
     "GraphQL",
     "Prisma",
-    "Keycloak",
     "React",
-    "URQL",
+    "Keycloak",
     "PostgreSQL",
     "Outscale",
+    "Traefik",
     "Datadog",
     "Metabase",
-    "Brevo",
-    "Strapi"
+    "Strapi",
+    "URQL",
+    "graphql-request"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
@@ -42,19 +45,15 @@
       "jwt",
       "session"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
     "Vitest",
     "Cypress",
     "Playwright"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-05-12T18:07:56+02:00",
+  "workflows": [],
+  "lastActivity": "2026-05-15T16:12:24+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

@@ -1026,7 +1026,8 @@
     │   │   │   │   │   │   │   │   ├── end-accompagnement
     │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   ├── EndAccompagnementForm.tsx
-    │   │   │   │   │   │   │   │   │   │   └── EndAccompagnementReadOnly.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── EndAccompagnementReadOnly.tsx
+    │   │   │   │   │   │   │   │   │   │   └── EndAccompagnementUnavailable.tsx
     │   │   │   │   │   │   │   │   │   ├── end-accompagnement.hook.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   └── unarchive
@@ -1617,6 +1618,8 @@
     │   │   │   │   └── layout.tsx
     │   │   │   ├── (public)
     │   │   │   │   ├── (auth)
+    │   │   │   │   │   ├── _lib
+    │   │   │   │   │   │   └── post-login-cookie.ts
     │   │   │   │   │   ├── auth-error
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── client-auth-redirect
@@ -1636,6 +1639,8 @@
     │   │   │   │   │   ├── logout-confirmation
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── post-login
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   └── PostLoginClient.tsx
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── reset-password
     │   │   │   │   │   │   ├── _components
@@ -1942,6 +1947,7 @@
     │   │   │   │       │   │   └── updateOrViewAppointment.spec.ts
     │   │   │   │       │   └── appointments.spec.ts
     │   │   │   │       ├── archive-candidacy.spec.ts
+    │   │   │   │       ├── end-accompagnement.spec.ts
     │   │   │   │       ├── feasibility
     │   │   │   │       │   └── dematerialized-feasibility-file
     │   │   │   │       │       ├── dematerialized-feasibility-file-aap-decision.spec.ts
@@ -2759,6 +2765,7 @@
     │   │   │   │   ├── isUserGestionnaireMaisonMereAAPOfMaisonMereAAP.ts
     │   │   │   │   ├── isUserGestionnaireMaisonMereAAPOfOrganism.ts
     │   │   │   │   ├── isUserOwnerOfOrganism.ts
+    │   │   │   │   ├── organismHasCandidacies.ts
     │   │   │   │   ├── searchOrganisms.ts
     │   │   │   │   ├── submitMaisonMereAAPLegalInformationDocuments.ts
     │   │   │   │   ├── updateFermePourAbsenceOuConges.ts
@@ -4848,6 +4855,12 @@
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── candidacy-deleted
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── certification-authority-contact-info
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccountCard.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── certificationAuthorityContactInfo.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── dossier-de-validation
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   ├── ResourcesSection.tsx
@@ -4868,6 +4881,13 @@
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── end-accompagnement
     │   │   │   │   │   │   │   │   │   │   ├── end-accompagnement.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── jury-results
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── FeasibilityCompetenceBlocksModal.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── ResultatCard.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── ResultatCardWithBlocks.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── jury-results.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   └── jury-session
     │   │   │   │   │   │   │   │   │       ├── jury-session.hook.ts
@@ -5125,6 +5145,8 @@
     │   │   │   │   │   ├── dossier-de-validation.handler.ts
     │   │   │   │   │   └── upload.ts
     │   │   │   │   ├── end-accompagnement.handler.ts
+    │   │   │   │   ├── jury-results
+    │   │   │   │   │   └── jury-results.handler.ts
     │   │   │   │   ├── set-organism
     │   │   │   │   │   └── set-organism.handler.ts
     │   │   │   │   ├── type-accompagnement
@@ -5133,6 +5155,8 @@
     │   │   │   │   │   └── validate-feasibility.handler.ts
     │   │   │   │   └── validate-training
     │   │   │   │       └── validate-training.handler.ts
+    │   │   │   ├── jury-results
+    │   │   │   │   └── build-jury-results-candidacy.ts
     │   │   │   └── network
     │   │   │       ├── msw.ts
     │   │   │       └── requests.ts
@@ -5146,6 +5170,7 @@
     │   │       ├── candidacies
     │   │       │   ├── archive-candidacy.spec.ts
     │   │       │   ├── candidacies.spec.ts
+    │   │       │   ├── certification-authority-contact-info.spec.ts
     │   │       │   ├── create-candidacy-accompagne.spec.ts
     │   │       │   ├── create-candidacy-autonome.spec.ts
     │   │       │   ├── create-candidacy-vae.spec.ts
@@ -5169,6 +5194,8 @@
     │   │       │   ├── dossier-de-validation
     │   │       │   │   └── dossier-de-validation.spec.ts
     │   │       │   ├── end-accompagnement.spec.ts
+    │   │       │   ├── jury-results
+    │   │       │   │   └── jury-results.spec.ts
     │   │       │   ├── jury-with-blocks-banner.spec.ts
     │   │       │   ├── next-actions.spec.ts
     │   │       │   ├── set-organism
@@ -5421,6 +5448,8 @@
     │   │   │   │   └── layout.tsx
     │   │   │   ├── (public)
     │   │   │   │   ├── (auth)
+    │   │   │   │   │   ├── _lib
+    │   │   │   │   │   │   └── post-login-cookie.ts
     │   │   │   │   │   ├── client-auth-redirect
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── forgot-password
@@ -5436,6 +5465,8 @@
     │   │   │   │   │   ├── logout-confirmation
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── post-login
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   └── PostLoginClient.tsx
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── reset-password
     │   │   │   │   │   │   ├── _components
@@ -5937,4 +5968,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1999 directories, 3940 files
+2010 directories, 3960 files
