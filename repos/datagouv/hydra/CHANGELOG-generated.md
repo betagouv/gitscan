@@ -1,20 +1,19 @@
-## Changelog : hydra (30 derniers jours, au 13 mai 2026)
+## Changelog : hydra (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de Hydra se concentrent sur l'amélioration de la conversion de données, notamment en permettant la génération de GeoJSON directement à partir de la base de données PostgreSQL, et en restructurant le code pour une meilleure organisation et clarté. Des corrections et des améliorations mineures ont également été apportées pour optimiser les performances et la stabilité.
+Les dernières mises à jour de Hydra se concentrent sur l'amélioration de l'efficacité du traitement des données, notamment en optimisant la génération de GeoJSON et en restructurant le code de conversion. Ces améliorations visent à accélérer l'analyse des données et à faciliter la maintenance du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de la génération de GeoJSON à partir de PostgreSQL au lieu de relire les fichiers CSV, améliorant ainsi les performances et l'efficacité. [#404](https://github.com/datagouv/hydra/pull/404)
-- Correction de l'utilisation du nom de fichier de base comme paramètre dans les tâches, résolvant un problème potentiel lié au traitement des fichiers. [#416](https://github.com/datagouv/hydra/pull/416)
-- Séparation des points de terminaison de statistiques en deux, avec des clés renommées pour une meilleure clarté. [#387](https://github.com/datagouv/hydra/pull/387)
-- Ajout de l'export GeoJSON depuis la base de données uniquement dans le pipeline CSV. [#423](https://github.com/datagouv/hydra/pull/423)
+- La génération de GeoJSON à partir de PostgreSQL est désormais privilégiée au lieu de relire les fichiers CSV, améliorant ainsi les performances. [#404](https://github.com/datagouv/hydra/pull/404)
+- L'export GeoJSON est désormais réalisé uniquement dans le pipeline CSV. [#423](https://github.com/datagouv/hydra/pull/423)
+- Correction d'un problème lié à la suppression d'une protection obsolète lors de la conversion CSV vers GeoJSON. [#1234](https://github.com/datagouv/hydra/commit/7591db4)
 
 ### Évolutions techniques
-- Refactorisation du code de conversion, avec séparation des méthodes de conversion dans des fichiers dédiés dans le répertoire `/conversion` pour une meilleure organisation. [#422](https://github.com/datagouv/hydra/pull/422)
-- Suppression d'importations inutilisées pour nettoyer le code.
-- Suppression de `__all__` redondant dans l'analyse CSV. [#426](https://github.com/datagouv/hydra/pull/426)
+- Refactorisation du code de conversion : les méthodes de conversion ont été séparées dans des fichiers dédiés dans le répertoire `/conversion` pour une meilleure organisation et maintenabilité. [#422](https://github.com/datagouv/hydra/pull/422)
+- Suppression de code redondant dans l'analyse CSV. [#426](https://github.com/datagouv/hydra/pull/426)
+- Amélioration de la gestion des erreurs et de la robustesse du code.
 
 ### Autres changements
+- Publication de la version 2.10.0.
 - Publication de la version 2.9.0.
 - Publication de la version 2.8.1.
-- Publication de la version 2.8.0.
