@@ -19,7 +19,6 @@
 │   └── pre-commit
 ├── .lintstagedrc.json
 ├── .npmrc
-├── .nvmrc
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -108,6 +107,8 @@
 │   │   │   │   │   │   ├── count-simulations.usecase.ts
 │   │   │   │   │   │   ├── create.params.ts
 │   │   │   │   │   │   ├── create.usecase.ts
+│   │   │   │   │   │   ├── export-portal-contact-lines.usecase.ts
+│   │   │   │   │   │   ├── find-portal-contact-lines.usecase.ts
 │   │   │   │   │   │   ├── group-by-brs-knowledge.usecase.ts
 │   │   │   │   │   │   ├── group-by-departements.usecase.ts
 │   │   │   │   │   │   ├── group-by-eligibility-stats.usecase.ts
@@ -123,7 +124,8 @@
 │   │   │   │   │       ├── eligibility-simulation-group-by-regions.view.ts
 │   │   │   │   │       ├── eligibility-simulation-group-simulations-by-year-and-month.view.ts
 │   │   │   │   │       ├── eligibility-simulation.view.ts
-│   │   │   │   │       └── group-by-field.view.ts
+│   │   │   │   │       ├── group-by-field.view.ts
+│   │   │   │   │       └── portal-contact-line.view.ts
 │   │   │   │   ├── landbot-customer
 │   │   │   │   │   ├── usecases
 │   │   │   │   │   │   ├── create.params.ts
@@ -179,11 +181,28 @@
 │   │   │   │   │       └── relationnal.view.ts
 │   │   │   │   └── user
 │   │   │   │       ├── usecases
+│   │   │   │       │   ├── create-managed-user.params.ts
+│   │   │   │       │   ├── create-managed-user.usecase.ts
+│   │   │   │       │   ├── findAll.usecase.ts
+│   │   │   │       │   ├── findById.usecase.ts
 │   │   │   │       │   ├── findOneByEmail.params.ts
 │   │   │   │       │   ├── findOneByEmail.usecase.ts
+│   │   │   │       │   ├── request-password-reset.usecase.ts
+│   │   │   │       │   ├── reset-password-with-token.usecase.ts
+│   │   │   │       │   ├── reset-password.usecase.ts
 │   │   │   │       │   ├── save.params.ts
-│   │   │   │       │   └── save.usecase.ts
+│   │   │   │       │   ├── save.usecase.ts
+│   │   │   │       │   ├── set-active-status.params.ts
+│   │   │   │       │   ├── set-active-status.usecase.ts
+│   │   │   │       │   ├── update-managed-user.params.ts
+│   │   │   │       │   └── update-managed-user.usecase.ts
+│   │   │   │       ├── utils
+│   │   │   │       │   ├── generate-temporary-password.ts
+│   │   │   │       │   ├── hash-reset-token.ts
+│   │   │   │       │   └── normalize-email.ts
 │   │   │   │       └── views
+│   │   │   │           ├── admin-user-detail.view.ts
+│   │   │   │           ├── admin-user-list-item.view.ts
 │   │   │   │           └── user.view.ts
 │   │   │   ├── assets
 │   │   │   │   ├── fonts
@@ -263,6 +282,7 @@
 │   │   │   │   └── user
 │   │   │   │       ├── password
 │   │   │   │       │   └── password-hasher.interface.ts
+│   │   │   │       ├── user-role.enum.ts
 │   │   │   │       ├── user.interface.ts
 │   │   │   │       └── user.repository.interface.ts
 │   │   │   ├── infrastructure
@@ -284,18 +304,23 @@
 │   │   │   │   │       │   └── home.controller.ts
 │   │   │   │   │       └── home.module.ts
 │   │   │   │   ├── auth
+│   │   │   │   │   ├── auth-rate-limit.service.ts
 │   │   │   │   │   ├── auth.module.ts
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   ├── login.controller.ts
-│   │   │   │   │   │   └── logout.controller.ts
+│   │   │   │   │   │   ├── logout.controller.ts
+│   │   │   │   │   │   └── portal-auth.controller.ts
 │   │   │   │   │   ├── dtos
-│   │   │   │   │   │   └── login.dto.ts
+│   │   │   │   │   │   ├── forgot-password.dto.ts
+│   │   │   │   │   │   ├── login.dto.ts
+│   │   │   │   │   │   └── reset-password.dto.ts
 │   │   │   │   │   ├── filters
 │   │   │   │   │   │   └── local.requireAuth.filter.ts
 │   │   │   │   │   ├── guards
 │   │   │   │   │   │   ├── api-key.guard.ts
 │   │   │   │   │   │   ├── local.guard.ts
 │   │   │   │   │   │   ├── local.isAuthenticated.guard.ts
+│   │   │   │   │   │   ├── portal-api-authenticated.guard.ts
 │   │   │   │   │   │   └── redirectIfAuthenticated.guard.ts
 │   │   │   │   │   ├── serializers
 │   │   │   │   │   │   └── user.serializer.ts
@@ -398,7 +423,8 @@
 │   │   │   │   │   └── mailer.service.ts
 │   │   │   │   ├── middlewares
 │   │   │   │   │   ├── method-override.middleware.ts
-│   │   │   │   │   └── to-locals.middleware.ts
+│   │   │   │   │   ├── to-locals.middleware.ts
+│   │   │   │   │   └── trusted-origin.middleware.ts
 │   │   │   │   ├── municipality
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   └── api
@@ -422,11 +448,15 @@
 │   │   │   │   │   │   │   ├── get-ofss.controller.ts
 │   │   │   │   │   │   │   └── update-ofs.controller.ts
 │   │   │   │   │   │   └── api
-│   │   │   │   │   │       └── get-ofss.controller.ts
+│   │   │   │   │   │       ├── get-ofss.controller.ts
+│   │   │   │   │   │       └── portal-ofss.controller.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.ts
 │   │   │   │   │   │   ├── getOfss.dto.ts
+│   │   │   │   │   │   ├── portal-update.dto.ts
+│   │   │   │   │   │   ├── update-portal-simulation-metadata.dto.ts
 │   │   │   │   │   │   └── update.dto.ts
+│   │   │   │   │   ├── ofs-eligibility-simulation.entity.ts
 │   │   │   │   │   ├── ofs.entity.ts
 │   │   │   │   │   ├── ofs.module.ts
 │   │   │   │   │   └── ofs.repository.ts
@@ -455,7 +485,10 @@
 │   │   │   │   │   │   ├── 1772119754663-create_eligibility_simulation_and_location_table.ts
 │   │   │   │   │   │   ├── 1772536901988-alter_location_table.ts
 │   │   │   │   │   │   ├── 1772642156555-add_isFromLandbot_eligibility_simulation_table.ts
-│   │   │   │   │   │   └── 1773000000000-add_highest_eligibility_zone_to_eligibility_simulation.ts
+│   │   │   │   │   │   ├── 1773000000000-add_highest_eligibility_zone_to_eligibility_simulation.ts
+│   │   │   │   │   │   ├── 1774000000000-add_user_roles_ofs_links_and_password_reset_tokens.ts
+│   │   │   │   │   │   ├── 1775000000000-add_user_last_login_at.ts
+│   │   │   │   │   │   └── 1775000000000-create_ofs_eligibility_simulation_table.ts
 │   │   │   │   │   ├── seeds
 │   │   │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   │   │   ├── data.ts
@@ -510,13 +543,28 @@
 │   │   │   │   │   └── region.repository.ts
 │   │   │   │   ├── session
 │   │   │   │   │   ├── session.entity.ts
-│   │   │   │   │   └── session.middleware.ts
+│   │   │   │   │   ├── session.middleware.ts
+│   │   │   │   │   ├── session.module.ts
+│   │   │   │   │   └── user-session.service.ts
 │   │   │   │   └── user
+│   │   │   │       ├── controllers
+│   │   │   │       │   └── admin
+│   │   │   │       │       ├── create-user.controller.ts
+│   │   │   │       │       ├── get-users.controller.ts
+│   │   │   │       │       └── update-user.controller.ts
+│   │   │   │       ├── dtos
+│   │   │   │       │   └── admin
+│   │   │   │       │       ├── create-user.dto.ts
+│   │   │   │       │       ├── update-user.dto.ts
+│   │   │   │       │       └── users-filters.dto.ts
 │   │   │   │       ├── password
 │   │   │   │       │   └── password-hasher.ts
+│   │   │   │       ├── user-password-reset-token.entity.ts
 │   │   │   │       ├── user.entity.ts
 │   │   │   │       ├── user.module.ts
-│   │   │   │       └── user.repository.ts
+│   │   │   │       ├── user.repository.ts
+│   │   │   │       ├── users-page.builder.ts
+│   │   │   │       └── users.types.ts
 │   │   │   ├── instrument.ts
 │   │   │   ├── main.ts
 │   │   │   ├── types
@@ -574,12 +622,17 @@
 │   │   │       │   │   ├── logout.hbs
 │   │   │       │   │   ├── plus.hbs
 │   │   │       │   │   ├── store.hbs
-│   │   │       │   │   └── trash_bin.hbs
+│   │   │       │   │   ├── trash_bin.hbs
+│   │   │       │   │   └── user.hbs
 │   │   │       │   ├── menu.hbs
 │   │   │       │   ├── modal.hbs
 │   │   │       │   ├── page_header.hbs
 │   │   │       │   ├── scripts.hbs
 │   │   │       │   └── table.hbs
+│   │   │       ├── users
+│   │   │       │   ├── create.hbs
+│   │   │       │   ├── index.hbs
+│   │   │       │   └── update.hbs
 │   │   │       └── utils
 │   │   │           └── translations.ts
 │   │   ├── test
@@ -740,7 +793,8 @@
 │   │   │   │   ├── ofs
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   └── api
-│   │   │   │   │   │       └── get-ofss.controller.e2e-spec.ts
+│   │   │   │   │   │       ├── get-ofss.controller.e2e-spec.ts
+│   │   │   │   │   │       └── get-portal-ofs-eligibility-simulations.controller.e2e-spec.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   └── update.dto.unit-spec.ts
 │   │   │   │   │   ├── ofs.entity.unit-spec.ts
@@ -773,372 +827,436 @@
 │   │   │           └── user.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
-│   └── frontend
+│   ├── frontend
+│   │   ├── .env.example
+│   │   ├── .lighthouse-desktop.json
+│   │   ├── .lighthouse-mobile.json
+│   │   ├── .npmrc
+│   │   ├── .npmrc copy
+│   │   ├── .prettierignore
+│   │   ├── .prettierrc
+│   │   ├── Procfile
+│   │   ├── eslint.config.js
+│   │   ├── nginx.conf
+│   │   ├── package.json
+│   │   ├── playwright.config.ts
+│   │   ├── postcss.config.js
+│   │   ├── src
+│   │   │   ├── ambient.d.ts
+│   │   │   ├── app.d.ts
+│   │   │   ├── app.html
+│   │   │   ├── assets
+│   │   │   │   ├── icons
+│   │   │   │   │   ├── end-of-path.svg
+│   │   │   │   │   ├── euro.svg
+│   │   │   │   │   ├── mascotte-celebrating.svg
+│   │   │   │   │   ├── mascotte-showing.svg
+│   │   │   │   │   ├── mascotte-thinking.svg
+│   │   │   │   │   ├── mascotte-waving.svg
+│   │   │   │   │   ├── service.svg
+│   │   │   │   │   └── sofa.svg
+│   │   │   │   ├── illustrations
+│   │   │   │   │   ├── brs-etape-1.svg
+│   │   │   │   │   ├── brs-etape-2.svg
+│   │   │   │   │   ├── brs-etape-3.svg
+│   │   │   │   │   ├── brs-etape-4.svg
+│   │   │   │   │   ├── brs-etape-5.svg
+│   │   │   │   │   ├── home-hero-trim.svg
+│   │   │   │   │   └── logo.svg
+│   │   │   │   ├── images
+│   │   │   │   │   ├── amandine.jpg
+│   │   │   │   │   ├── arthur.jpg
+│   │   │   │   │   ├── benoit.jpg
+│   │   │   │   │   ├── bloc-marque.jpg
+│   │   │   │   │   ├── brs-1.jpg
+│   │   │   │   │   ├── brs-2.jpg
+│   │   │   │   │   ├── brs-3.jpg
+│   │   │   │   │   ├── brs-4.jpg
+│   │   │   │   │   ├── brs-5.jpg
+│   │   │   │   │   ├── home-card-1.jpg
+│   │   │   │   │   ├── home-card-2.jpg
+│   │   │   │   │   ├── home-card-3.jpg
+│   │   │   │   │   ├── home-hero.jpg
+│   │   │   │   │   ├── laure.jpg
+│   │   │   │   │   ├── map-ofs.jpg
+│   │   │   │   │   ├── mathieu.jpg
+│   │   │   │   │   ├── nathan.jpg
+│   │   │   │   │   └── simuler-eligibilite-hero.jpg
+│   │   │   │   └── styles
+│   │   │   │       ├── _icons.css
+│   │   │   │       ├── _vars.css
+│   │   │   │       ├── main.css
+│   │   │   │       └── map.css
+│   │   │   ├── hooks.client.ts
+│   │   │   ├── hooks.server.ts
+│   │   │   ├── lib
+│   │   │   │   ├── api
+│   │   │   │   │   └── ign.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   ├── Accordion.svelte
+│   │   │   │   │   │   ├── AdilSnippet.svelte
+│   │   │   │   │   │   ├── Alert.svelte
+│   │   │   │   │   │   ├── Autocomplete.svelte
+│   │   │   │   │   │   ├── Badge.svelte
+│   │   │   │   │   │   ├── Charts
+│   │   │   │   │   │   │   ├── ChartProvider.svelte
+│   │   │   │   │   │   │   ├── LineChart.svelte
+│   │   │   │   │   │   │   ├── MapChart.svelte
+│   │   │   │   │   │   │   └── PieChart.svelte
+│   │   │   │   │   │   ├── Consent.svelte
+│   │   │   │   │   │   ├── ContentPageSubtitle.svelte
+│   │   │   │   │   │   ├── Disclaimer.svelte
+│   │   │   │   │   │   ├── EligibilityTresholds.svelte
+│   │   │   │   │   │   ├── GradientBackgroundWrapper.svelte
+│   │   │   │   │   │   ├── Heros
+│   │   │   │   │   │   │   └── ContentPageHero.svelte
+│   │   │   │   │   │   ├── Highlight.svelte
+│   │   │   │   │   │   ├── HorizontalCard.svelte
+│   │   │   │   │   │   ├── Image.svelte
+│   │   │   │   │   │   ├── Input.svelte
+│   │   │   │   │   │   ├── KeyPoint.svelte
+│   │   │   │   │   │   ├── Loader.svelte
+│   │   │   │   │   │   ├── Notice.svelte
+│   │   │   │   │   │   ├── PageCta.svelte
+│   │   │   │   │   │   ├── Pagination.svelte
+│   │   │   │   │   │   ├── Panels
+│   │   │   │   │   │   │   └── CalloutPanel.svelte
+│   │   │   │   │   │   ├── Photograph.svelte
+│   │   │   │   │   │   ├── Pictogram.svelte
+│   │   │   │   │   │   ├── Radio.svelte
+│   │   │   │   │   │   ├── RadioFieldset.svelte
+│   │   │   │   │   │   ├── Section.svelte
+│   │   │   │   │   │   ├── Select.svelte
+│   │   │   │   │   │   ├── Seo.svelte
+│   │   │   │   │   │   ├── ShadowedBox.svelte
+│   │   │   │   │   │   ├── SideNavPage
+│   │   │   │   │   │   │   ├── Nav.svelte
+│   │   │   │   │   │   │   ├── Page.svelte
+│   │   │   │   │   │   │   ├── Step.svelte
+│   │   │   │   │   │   │   └── StepLink.svelte
+│   │   │   │   │   │   ├── Simulator
+│   │   │   │   │   │   │   ├── Action.svelte
+│   │   │   │   │   │   │   ├── Actions.svelte
+│   │   │   │   │   │   │   ├── Description.svelte
+│   │   │   │   │   │   │   ├── Form.svelte
+│   │   │   │   │   │   │   └── Wrapper.svelte
+│   │   │   │   │   │   ├── Stepper.svelte
+│   │   │   │   │   │   ├── Steppers
+│   │   │   │   │   │   │   └── VerticalStepper.svelte
+│   │   │   │   │   │   ├── Table.svelte
+│   │   │   │   │   │   ├── Tile.svelte
+│   │   │   │   │   │   └── Tooltip.svelte
+│   │   │   │   │   ├── layout
+│   │   │   │   │   │   ├── Analytics.svelte
+│   │   │   │   │   │   ├── Favicon.svelte
+│   │   │   │   │   │   ├── Footer.svelte
+│   │   │   │   │   │   ├── Header.svelte
+│   │   │   │   │   │   ├── NoScrollOnNavigation.svelte
+│   │   │   │   │   │   └── SkipLinks.svelte
+│   │   │   │   │   └── pages
+│   │   │   │   │       ├── accueil
+│   │   │   │   │       │   ├── Hero.svelte
+│   │   │   │   │       │   ├── Infos.svelte
+│   │   │   │   │       │   ├── Promesses.svelte
+│   │   │   │   │       │   └── Verbatims.svelte
+│   │   │   │   │       ├── annuaire
+│   │   │   │   │       │   ├── Card.svelte
+│   │   │   │   │       │   ├── Filters.svelte
+│   │   │   │   │       │   ├── ListView.svelte
+│   │   │   │   │       │   ├── MapView.svelte
+│   │   │   │   │       │   ├── NoResult.svelte
+│   │   │   │   │       │   ├── Radius.svelte
+│   │   │   │   │       │   └── Toggle.svelte
+│   │   │   │   │       ├── blog
+│   │   │   │   │       │   ├── ArticleCard.svelte
+│   │   │   │   │       │   └── ArticlePage.svelte
+│   │   │   │   │       ├── notre-mission
+│   │   │   │   │       │   ├── Chronology.svelte
+│   │   │   │   │       │   ├── Hero.svelte
+│   │   │   │   │       │   └── Team.svelte
+│   │   │   │   │       ├── organismes-de-foncier-solidaire
+│   │   │   │   │       │   ├── Definition.svelte
+│   │   │   │   │       │   ├── OfsList.svelte
+│   │   │   │   │       │   ├── Proximity.svelte
+│   │   │   │   │       │   ├── Role.svelte
+│   │   │   │   │       │   ├── Synthesis.svelte
+│   │   │   │   │       │   └── TitleWithMascotte.svelte
+│   │   │   │   │       ├── simulateur-acquisition
+│   │   │   │   │       │   ├── FeesSynthesis.svelte
+│   │   │   │   │       │   ├── GlobalSynthesis.svelte
+│   │   │   │   │       │   ├── LissageSynthesis.svelte
+│   │   │   │   │       │   ├── OperationSynthesis.svelte
+│   │   │   │   │       │   ├── Step1.svelte
+│   │   │   │   │       │   ├── Step2.svelte
+│   │   │   │   │       │   ├── Step3.svelte
+│   │   │   │   │       │   ├── Step4.svelte
+│   │   │   │   │       │   ├── Step5.svelte
+│   │   │   │   │       │   ├── Step6.svelte
+│   │   │   │   │       │   ├── Step7.svelte
+│   │   │   │   │       │   ├── Step8.svelte
+│   │   │   │   │       │   └── synthesis
+│   │   │   │   │       │       ├── Block.svelte
+│   │   │   │   │       │       ├── Row.svelte
+│   │   │   │   │       │       └── RowContainer.svelte
+│   │   │   │   │       ├── simulateur-eligibilite
+│   │   │   │   │       │   ├── Hero.svelte
+│   │   │   │   │       │   ├── SimulationCta.svelte
+│   │   │   │   │       │   └── steps
+│   │   │   │   │       │       ├── EligibilityDefinition
+│   │   │   │   │       │       │   ├── EligibilityDefinition.svelte
+│   │   │   │   │       │       │   ├── FiscalRevenues.svelte
+│   │   │   │   │       │       │   ├── HouseholdComposition.svelte
+│   │   │   │   │       │       │   └── PropertySituation.svelte
+│   │   │   │   │       │       ├── EligibilityResult
+│   │   │   │   │       │       │   ├── EligibilityDetail.svelte
+│   │   │   │   │       │       │   ├── EligibilityResult.svelte
+│   │   │   │   │       │       │   ├── ResultDetails.svelte
+│   │   │   │   │       │       │   └── UserDetails.svelte
+│   │   │   │   │       │       ├── SearchInformations
+│   │   │   │   │       │       │   ├── AdditionalInformations.svelte
+│   │   │   │   │       │       │   ├── FinancialInformations.svelte
+│   │   │   │   │       │       │   ├── HousingInformations.svelte
+│   │   │   │   │       │       │   └── SearchInformations.svelte
+│   │   │   │   │       │       └── Synthesis
+│   │   │   │   │       │           ├── Synthesis.svelte
+│   │   │   │   │       │           └── SynthesisContent.svelte
+│   │   │   │   │       └── statistiques
+│   │   │   │   │           ├── AcquisitionSimulationsConversionFunnel.svelte
+│   │   │   │   │           ├── ConversionFunnel.svelte
+│   │   │   │   │           ├── DepartementalConnectionCount.svelte
+│   │   │   │   │           ├── HousingTypesRepartition.svelte
+│   │   │   │   │           ├── RegionalConnectionCount.svelte
+│   │   │   │   │           ├── SimulationsCount.svelte
+│   │   │   │   │           ├── StatisticBox.svelte
+│   │   │   │   │           └── Stats.svelte
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── managers
+│   │   │   │   │   ├── acquisition-simulator.svelte.ts
+│   │   │   │   │   ├── annuaire.svelte.ts
+│   │   │   │   │   ├── consent.svelte.ts
+│   │   │   │   │   ├── dsfr.svelte.ts
+│   │   │   │   │   └── eligibility-simulator.svelte.ts
+│   │   │   │   ├── server
+│   │   │   │   │   └── cache.ts
+│   │   │   │   ├── types
+│   │   │   │   │   └── statistics.ts
+│   │   │   │   └── utils
+│   │   │   │       ├── api-types.ts
+│   │   │   │       ├── constants.ts
+│   │   │   │       ├── definitions.ts
+│   │   │   │       ├── eligibility-simulator.ts
+│   │   │   │       ├── eligibility-simulator.unit-spec.ts
+│   │   │   │       ├── formatters.ts
+│   │   │   │       ├── generated-address-datagouv-types.ts
+│   │   │   │       ├── generated-api-types.ts
+│   │   │   │       ├── helpers.ts
+│   │   │   │       ├── lissage-ptz.ts
+│   │   │   │       ├── mascottes.ts
+│   │   │   │       ├── pictograms.ts
+│   │   │   │       ├── sentry.ts
+│   │   │   │       └── seo.ts
+│   │   │   └── routes
+│   │   │       ├── (accueil)
+│   │   │       │   └── +page.svelte
+│   │   │       ├── +error.svelte
+│   │   │       ├── +layout.svelte
+│   │   │       ├── +layout.ts
+│   │   │       ├── accessibilite
+│   │   │       │   └── +page.svelte
+│   │   │       ├── action-logement
+│   │   │       │   └── +page.svelte
+│   │   │       ├── api
+│   │   │       │   ├── acquisition-simulations
+│   │   │       │   │   ├── +server.ts
+│   │   │       │   │   ├── [id]
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   └── conversion-funnel
+│   │   │       │   │       └── +server.ts
+│   │   │       │   ├── brs-diffusion-websites
+│   │   │       │   │   ├── +server.ts
+│   │   │       │   │   └── all
+│   │   │       │   │       └── +server.ts
+│   │   │       │   ├── eligibility-simulations
+│   │   │       │   │   ├── +server.ts
+│   │   │       │   │   ├── [id]
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   ├── brs-knowledge
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   ├── conversion-funnel
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   ├── eligibility
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   ├── real-estate-situation
+│   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   └── simulations
+│   │   │       │   │       ├── by-departements
+│   │   │       │   │       │   └── +server.ts
+│   │   │       │   │       ├── by-regions
+│   │   │       │   │       │   └── +server.ts
+│   │   │       │   │       └── monthly-summary
+│   │   │       │   │           └── +server.ts
+│   │   │       │   ├── municipalities
+│   │   │       │   │   └── [inseeCode]
+│   │   │       │   │       └── +server.ts
+│   │   │       │   └── ofss
+│   │   │       │       ├── +server.ts
+│   │   │       │       └── partner
+│   │   │       │           └── +server.ts
+│   │   │       ├── blog
+│   │   │       │   ├── +page.svelte
+│   │   │       │   ├── 5-idees-recues-sur-le-bail-reel-solidaire-brs
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── acheter-son-logement-sans-se-ruiner-3-solutions-a-connaitre-absolument
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── articles.ts
+│   │   │       │   ├── comment-savoir-si-je-suis-eligible-au-bail-reel-solidaire-brs
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── definitions.ts
+│   │   │       │   ├── la-succession-en-bail-reel-solidaire-brs
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── le-bail-reel-solidaire-brs-cest-quoi-exactement
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── les-inconvenients-ou-contreparties-du-bail-reel-solidaire-brs
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── puis-je-acheter-un-logement-en-brs-si-je-suis-deja-proprietaire
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   └── un-exemple-pour-vous-projeter-dans-votre-achat-en-brs
+│   │   │       │       └── +page.svelte
+│   │   │       ├── conditions-generales-d-utilisation
+│   │   │       │   └── +page.svelte
+│   │   │       ├── espace-presse
+│   │   │       │   └── +page.svelte
+│   │   │       ├── logements-brs-disponibles
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── +page.ts
+│   │   │       ├── mentions-legales
+│   │   │       │   └── +page.svelte
+│   │   │       ├── notre-mission
+│   │   │       │   ├── +page.server.ts
+│   │   │       │   └── +page.svelte
+│   │   │       ├── nous-contacter
+│   │   │       │   └── +page.svelte
+│   │   │       ├── organismes-de-foncier-solidaire
+│   │   │       │   ├── +page.server.ts
+│   │   │       │   └── +page.svelte
+│   │   │       ├── organismes-fonciers-solidaires
+│   │   │       │   └── +page.server.ts
+│   │   │       ├── politique-de-confidentialite
+│   │   │       │   └── +page.svelte
+│   │   │       ├── questionnaire
+│   │   │       │   └── +page.svelte
+│   │   │       ├── revendre-mon-bien-en-brs
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── content.ts
+│   │   │       ├── simulateur-acquisition
+│   │   │       │   └── +page.svelte
+│   │   │       ├── simulateur-eligibilite
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── steps
+│   │   │       │       └── +page.svelte
+│   │   │       ├── sitemap.xml
+│   │   │       │   └── +server.ts
+│   │   │       ├── statistiques
+│   │   │       │   ├── +page.server.ts
+│   │   │       │   └── +page.svelte
+│   │   │       └── tout-savoir-sur-le-bail-reel-solidaire-brs
+│   │   │           ├── +page.svelte
+│   │   │           ├── [slug]
+│   │   │           │   ├── +page.server.ts
+│   │   │           │   ├── +page.svelte
+│   │   │           │   └── content.ts
+│   │   │           └── content.ts
+│   │   ├── static
+│   │   │   ├── favicon.ico
+│   │   │   ├── og-image.svg
+│   │   │   ├── revenu-fiscal-de-reference.png
+│   │   │   └── robots.txt
+│   │   ├── svelte.config.js
+│   │   ├── tests
+│   │   │   ├── e2e
+│   │   │   │   ├── a11y.spec.ts
+│   │   │   │   ├── blog
+│   │   │   │   │   ├── [slug]
+│   │   │   │   │   │   └── blogPost.spec.ts
+│   │   │   │   │   └── blog.spec.ts
+│   │   │   │   └── simulateur-eligibilite
+│   │   │   │       ├── +page.spec.ts
+│   │   │   │       └── steps
+│   │   │   │           └── +page.spec.ts
+│   │   │   ├── mocks
+│   │   │   │   └── ofss.ts
+│   │   │   └── unit
+│   │   │       └── src
+│   │   │           └── lib
+│   │   │               └── utils
+│   │   │                   ├── eligibility-simulator.spec.ts
+│   │   │                   ├── formatters.spec.ts
+│   │   │                   └── lissage-ptz.spec.ts
+│   │   ├── tsconfig.json
+│   │   └── vite.config.ts
+│   └── ofs-portal
 │       ├── .env.example
-│       ├── .lighthouse-desktop.json
-│       ├── .lighthouse-mobile.json
-│       ├── .npmrc
-│       ├── .npmrc copy
-│       ├── .prettierignore
-│       ├── .prettierrc
 │       ├── Procfile
-│       ├── eslint.config.js
-│       ├── nginx.conf
 │       ├── package.json
-│       ├── playwright.config.ts
-│       ├── postcss.config.js
 │       ├── src
 │       │   ├── ambient.d.ts
 │       │   ├── app.d.ts
 │       │   ├── app.html
 │       │   ├── assets
-│       │   │   ├── icons
-│       │   │   │   ├── end-of-path.svg
-│       │   │   │   ├── euro.svg
-│       │   │   │   ├── mascotte-celebrating.svg
-│       │   │   │   ├── mascotte-showing.svg
-│       │   │   │   ├── mascotte-thinking.svg
-│       │   │   │   ├── mascotte-waving.svg
-│       │   │   │   ├── service.svg
-│       │   │   │   └── sofa.svg
-│       │   │   ├── illustrations
-│       │   │   │   ├── brs-etape-1.svg
-│       │   │   │   ├── brs-etape-2.svg
-│       │   │   │   ├── brs-etape-3.svg
-│       │   │   │   ├── brs-etape-4.svg
-│       │   │   │   ├── brs-etape-5.svg
-│       │   │   │   ├── home-hero-trim.svg
-│       │   │   │   └── logo.svg
-│       │   │   ├── images
-│       │   │   │   ├── amandine.jpg
-│       │   │   │   ├── arthur.jpg
-│       │   │   │   ├── benoit.jpg
-│       │   │   │   ├── bloc-marque.jpg
-│       │   │   │   ├── brs-1.jpg
-│       │   │   │   ├── brs-2.jpg
-│       │   │   │   ├── brs-3.jpg
-│       │   │   │   ├── brs-4.jpg
-│       │   │   │   ├── brs-5.jpg
-│       │   │   │   ├── home-card-1.jpg
-│       │   │   │   ├── home-card-2.jpg
-│       │   │   │   ├── home-card-3.jpg
-│       │   │   │   ├── home-hero.jpg
-│       │   │   │   ├── laure.jpg
-│       │   │   │   ├── map-ofs.jpg
-│       │   │   │   ├── mathieu.jpg
-│       │   │   │   ├── nathan.jpg
-│       │   │   │   └── simuler-eligibilite-hero.jpg
-│       │   │   └── styles
-│       │   │       ├── _icons.css
-│       │   │       ├── _vars.css
-│       │   │       ├── main.css
-│       │   │       └── map.css
-│       │   ├── hooks.client.ts
-│       │   ├── hooks.server.ts
+│       │   │   └── logo.svg
 │       │   ├── lib
-│       │   │   ├── api
-│       │   │   │   └── ign.ts
-│       │   │   ├── components
-│       │   │   │   ├── common
-│       │   │   │   │   ├── Accordion.svelte
-│       │   │   │   │   ├── AdilSnippet.svelte
-│       │   │   │   │   ├── Alert.svelte
-│       │   │   │   │   ├── Autocomplete.svelte
-│       │   │   │   │   ├── Badge.svelte
-│       │   │   │   │   ├── Charts
-│       │   │   │   │   │   ├── ChartProvider.svelte
-│       │   │   │   │   │   ├── LineChart.svelte
-│       │   │   │   │   │   ├── MapChart.svelte
-│       │   │   │   │   │   └── PieChart.svelte
-│       │   │   │   │   ├── Consent.svelte
-│       │   │   │   │   ├── ContentPageSubtitle.svelte
-│       │   │   │   │   ├── Disclaimer.svelte
-│       │   │   │   │   ├── EligibilityTresholds.svelte
-│       │   │   │   │   ├── GradientBackgroundWrapper.svelte
-│       │   │   │   │   ├── Heros
-│       │   │   │   │   │   └── ContentPageHero.svelte
-│       │   │   │   │   ├── Highlight.svelte
-│       │   │   │   │   ├── HorizontalCard.svelte
-│       │   │   │   │   ├── Image.svelte
-│       │   │   │   │   ├── Input.svelte
-│       │   │   │   │   ├── KeyPoint.svelte
-│       │   │   │   │   ├── Loader.svelte
-│       │   │   │   │   ├── Notice.svelte
-│       │   │   │   │   ├── PageCta.svelte
-│       │   │   │   │   ├── Pagination.svelte
-│       │   │   │   │   ├── Panels
-│       │   │   │   │   │   └── CalloutPanel.svelte
-│       │   │   │   │   ├── Photograph.svelte
-│       │   │   │   │   ├── Pictogram.svelte
-│       │   │   │   │   ├── Radio.svelte
-│       │   │   │   │   ├── RadioFieldset.svelte
-│       │   │   │   │   ├── Section.svelte
-│       │   │   │   │   ├── Select.svelte
-│       │   │   │   │   ├── Seo.svelte
-│       │   │   │   │   ├── ShadowedBox.svelte
-│       │   │   │   │   ├── SideNavPage
-│       │   │   │   │   │   ├── Nav.svelte
-│       │   │   │   │   │   ├── Page.svelte
-│       │   │   │   │   │   ├── Step.svelte
-│       │   │   │   │   │   └── StepLink.svelte
-│       │   │   │   │   ├── Simulator
-│       │   │   │   │   │   ├── Action.svelte
-│       │   │   │   │   │   ├── Actions.svelte
-│       │   │   │   │   │   ├── Description.svelte
-│       │   │   │   │   │   ├── Form.svelte
-│       │   │   │   │   │   └── Wrapper.svelte
-│       │   │   │   │   ├── Stepper.svelte
-│       │   │   │   │   ├── Steppers
-│       │   │   │   │   │   └── VerticalStepper.svelte
-│       │   │   │   │   ├── Table.svelte
-│       │   │   │   │   ├── Tile.svelte
-│       │   │   │   │   └── Tooltip.svelte
-│       │   │   │   ├── layout
-│       │   │   │   │   ├── Analytics.svelte
-│       │   │   │   │   ├── Favicon.svelte
-│       │   │   │   │   ├── Footer.svelte
-│       │   │   │   │   ├── Header.svelte
-│       │   │   │   │   ├── NoScrollOnNavigation.svelte
-│       │   │   │   │   └── SkipLinks.svelte
-│       │   │   │   └── pages
-│       │   │   │       ├── accueil
-│       │   │   │       │   ├── Hero.svelte
-│       │   │   │       │   ├── Infos.svelte
-│       │   │   │       │   ├── Promesses.svelte
-│       │   │   │       │   └── Verbatims.svelte
-│       │   │   │       ├── annuaire
-│       │   │   │       │   ├── Card.svelte
-│       │   │   │       │   ├── Filters.svelte
-│       │   │   │       │   ├── ListView.svelte
-│       │   │   │       │   ├── MapView.svelte
-│       │   │   │       │   ├── NoResult.svelte
-│       │   │   │       │   ├── Radius.svelte
-│       │   │   │       │   └── Toggle.svelte
-│       │   │   │       ├── blog
-│       │   │   │       │   ├── ArticleCard.svelte
-│       │   │   │       │   └── ArticlePage.svelte
-│       │   │   │       ├── notre-mission
-│       │   │   │       │   ├── Chronology.svelte
-│       │   │   │       │   ├── Hero.svelte
-│       │   │   │       │   └── Team.svelte
-│       │   │   │       ├── organismes-de-foncier-solidaire
-│       │   │   │       │   ├── Definition.svelte
-│       │   │   │       │   ├── OfsList.svelte
-│       │   │   │       │   ├── Proximity.svelte
-│       │   │   │       │   ├── Role.svelte
-│       │   │   │       │   ├── Synthesis.svelte
-│       │   │   │       │   └── TitleWithMascotte.svelte
-│       │   │   │       ├── simulateur-acquisition
-│       │   │   │       │   ├── FeesSynthesis.svelte
-│       │   │   │       │   ├── GlobalSynthesis.svelte
-│       │   │   │       │   ├── LissageSynthesis.svelte
-│       │   │   │       │   ├── OperationSynthesis.svelte
-│       │   │   │       │   ├── Step1.svelte
-│       │   │   │       │   ├── Step2.svelte
-│       │   │   │       │   ├── Step3.svelte
-│       │   │   │       │   ├── Step4.svelte
-│       │   │   │       │   ├── Step5.svelte
-│       │   │   │       │   ├── Step6.svelte
-│       │   │   │       │   ├── Step7.svelte
-│       │   │   │       │   ├── Step8.svelte
-│       │   │   │       │   └── synthesis
-│       │   │   │       │       ├── Block.svelte
-│       │   │   │       │       ├── Row.svelte
-│       │   │   │       │       └── RowContainer.svelte
-│       │   │   │       ├── simulateur-eligibilite
-│       │   │   │       │   ├── Hero.svelte
-│       │   │   │       │   ├── SimulationCta.svelte
-│       │   │   │       │   └── steps
-│       │   │   │       │       ├── EligibilityDefinition
-│       │   │   │       │       │   ├── EligibilityDefinition.svelte
-│       │   │   │       │       │   ├── FiscalRevenues.svelte
-│       │   │   │       │       │   ├── HouseholdComposition.svelte
-│       │   │   │       │       │   └── PropertySituation.svelte
-│       │   │   │       │       ├── EligibilityResult
-│       │   │   │       │       │   ├── EligibilityDetail.svelte
-│       │   │   │       │       │   ├── EligibilityResult.svelte
-│       │   │   │       │       │   ├── ResultDetails.svelte
-│       │   │   │       │       │   └── UserDetails.svelte
-│       │   │   │       │       ├── SearchInformations
-│       │   │   │       │       │   ├── AdditionalInformations.svelte
-│       │   │   │       │       │   ├── FinancialInformations.svelte
-│       │   │   │       │       │   ├── HousingInformations.svelte
-│       │   │   │       │       │   └── SearchInformations.svelte
-│       │   │   │       │       └── Synthesis
-│       │   │   │       │           ├── Synthesis.svelte
-│       │   │   │       │           └── SynthesisContent.svelte
-│       │   │   │       └── statistiques
-│       │   │   │           ├── AcquisitionSimulationsConversionFunnel.svelte
-│       │   │   │           ├── ConversionFunnel.svelte
-│       │   │   │           ├── DepartementalConnectionCount.svelte
-│       │   │   │           ├── HousingTypesRepartition.svelte
-│       │   │   │           ├── RegionalConnectionCount.svelte
-│       │   │   │           ├── SimulationsCount.svelte
-│       │   │   │           ├── StatisticBox.svelte
-│       │   │   │           └── Stats.svelte
-│       │   │   ├── index.ts
-│       │   │   ├── managers
-│       │   │   │   ├── acquisition-simulator.svelte.ts
-│       │   │   │   ├── annuaire.svelte.ts
-│       │   │   │   ├── consent.svelte.ts
-│       │   │   │   ├── dsfr.svelte.ts
-│       │   │   │   └── eligibility-simulator.svelte.ts
-│       │   │   ├── server
-│       │   │   │   └── cache.ts
-│       │   │   ├── types
-│       │   │   │   └── statistics.ts
-│       │   │   └── utils
-│       │   │       ├── api-types.ts
-│       │   │       ├── constants.ts
-│       │   │       ├── definitions.ts
-│       │   │       ├── eligibility-simulator.ts
-│       │   │       ├── eligibility-simulator.unit-spec.ts
-│       │   │       ├── formatters.ts
-│       │   │       ├── generated-address-datagouv-types.ts
-│       │   │       ├── generated-api-types.ts
-│       │   │       ├── helpers.ts
-│       │   │       ├── lissage-ptz.ts
-│       │   │       ├── mascottes.ts
-│       │   │       ├── pictograms.ts
-│       │   │       ├── sentry.ts
-│       │   │       └── seo.ts
+│       │   │   └── server
+│       │   │       ├── auth.ts
+│       │   │       ├── backend.ts
+│       │   │       ├── flash.ts
+│       │   │       └── session-cookie.ts
 │       │   └── routes
-│       │       ├── (accueil)
-│       │       │   └── +page.svelte
+│       │       ├── (app)
+│       │       │   ├── +layout.server.ts
+│       │       │   ├── +layout.svelte
+│       │       │   ├── ofs
+│       │       │   │   └── [id]
+│       │       │   │       ├── +page.server.ts
+│       │       │   │       ├── profil
+│       │       │   │       │   ├── +page.server.ts
+│       │       │   │       │   └── +page.svelte
+│       │       │   │       └── simulations
+│       │       │   │           ├── +page.server.ts
+│       │       │   │           ├── +page.svelte
+│       │       │   │           ├── [simulationId]
+│       │       │   │           │   └── metadata
+│       │       │   │           │       └── +server.ts
+│       │       │   │           └── export
+│       │       │   │               └── +server.ts
+│       │       │   └── selection-ofs
+│       │       │       ├── +page.server.ts
+│       │       │       └── +page.svelte
+│       │       ├── (auth)
+│       │       │   ├── +layout.server.ts
+│       │       │   ├── +layout.svelte
+│       │       │   ├── connexion
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   └── +page.svelte
+│       │       │   ├── mot-de-passe-oublie
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   └── +page.svelte
+│       │       │   └── reinitialisation-mot-de-passe
+│       │       │       ├── +page.server.ts
+│       │       │       └── +page.svelte
 │       │       ├── +error.svelte
+│       │       ├── +layout.server.ts
 │       │       ├── +layout.svelte
-│       │       ├── +layout.ts
-│       │       ├── accessibilite
-│       │       │   └── +page.svelte
-│       │       ├── action-logement
-│       │       │   └── +page.svelte
-│       │       ├── api
-│       │       │   ├── acquisition-simulations
-│       │       │   │   ├── +server.ts
-│       │       │   │   ├── [id]
-│       │       │   │   │   └── +server.ts
-│       │       │   │   └── conversion-funnel
-│       │       │   │       └── +server.ts
-│       │       │   ├── brs-diffusion-websites
-│       │       │   │   ├── +server.ts
-│       │       │   │   └── all
-│       │       │   │       └── +server.ts
-│       │       │   ├── eligibility-simulations
-│       │       │   │   ├── +server.ts
-│       │       │   │   ├── [id]
-│       │       │   │   │   └── +server.ts
-│       │       │   │   ├── brs-knowledge
-│       │       │   │   │   └── +server.ts
-│       │       │   │   ├── conversion-funnel
-│       │       │   │   │   └── +server.ts
-│       │       │   │   ├── eligibility
-│       │       │   │   │   └── +server.ts
-│       │       │   │   ├── real-estate-situation
-│       │       │   │   │   └── +server.ts
-│       │       │   │   └── simulations
-│       │       │   │       ├── by-departements
-│       │       │   │       │   └── +server.ts
-│       │       │   │       ├── by-regions
-│       │       │   │       │   └── +server.ts
-│       │       │   │       └── monthly-summary
-│       │       │   │           └── +server.ts
-│       │       │   ├── municipalities
-│       │       │   │   └── [inseeCode]
-│       │       │   │       └── +server.ts
-│       │       │   └── ofss
-│       │       │       ├── +server.ts
-│       │       │       └── partner
-│       │       │           └── +server.ts
-│       │       ├── blog
-│       │       │   ├── +page.svelte
-│       │       │   ├── 5-idees-recues-sur-le-bail-reel-solidaire-brs
-│       │       │   │   └── +page.svelte
-│       │       │   ├── acheter-son-logement-sans-se-ruiner-3-solutions-a-connaitre-absolument
-│       │       │   │   └── +page.svelte
-│       │       │   ├── articles.ts
-│       │       │   ├── comment-savoir-si-je-suis-eligible-au-bail-reel-solidaire-brs
-│       │       │   │   └── +page.svelte
-│       │       │   ├── definitions.ts
-│       │       │   ├── la-succession-en-bail-reel-solidaire-brs
-│       │       │   │   └── +page.svelte
-│       │       │   ├── le-bail-reel-solidaire-brs-cest-quoi-exactement
-│       │       │   │   └── +page.svelte
-│       │       │   ├── les-inconvenients-ou-contreparties-du-bail-reel-solidaire-brs
-│       │       │   │   └── +page.svelte
-│       │       │   ├── puis-je-acheter-un-logement-en-brs-si-je-suis-deja-proprietaire
-│       │       │   │   └── +page.svelte
-│       │       │   └── un-exemple-pour-vous-projeter-dans-votre-achat-en-brs
-│       │       │       └── +page.svelte
-│       │       ├── conditions-generales-d-utilisation
-│       │       │   └── +page.svelte
-│       │       ├── espace-presse
-│       │       │   └── +page.svelte
-│       │       ├── logements-brs-disponibles
-│       │       │   ├── +page.svelte
-│       │       │   └── +page.ts
-│       │       ├── mentions-legales
-│       │       │   └── +page.svelte
-│       │       ├── notre-mission
-│       │       │   ├── +page.server.ts
-│       │       │   └── +page.svelte
-│       │       ├── nous-contacter
-│       │       │   └── +page.svelte
-│       │       ├── organismes-de-foncier-solidaire
-│       │       │   ├── +page.server.ts
-│       │       │   └── +page.svelte
-│       │       ├── organismes-fonciers-solidaires
-│       │       │   └── +page.server.ts
-│       │       ├── politique-de-confidentialite
-│       │       │   └── +page.svelte
-│       │       ├── questionnaire
-│       │       │   └── +page.svelte
-│       │       ├── revendre-mon-bien-en-brs
-│       │       │   ├── +page.svelte
-│       │       │   └── content.ts
-│       │       ├── simulateur-acquisition
-│       │       │   └── +page.svelte
-│       │       ├── simulateur-eligibilite
-│       │       │   ├── +page.svelte
-│       │       │   └── steps
-│       │       │       └── +page.svelte
-│       │       ├── sitemap.xml
-│       │       │   └── +server.ts
-│       │       ├── statistiques
-│       │       │   ├── +page.server.ts
-│       │       │   └── +page.svelte
-│       │       └── tout-savoir-sur-le-bail-reel-solidaire-brs
-│       │           ├── +page.svelte
-│       │           ├── [slug]
-│       │           │   ├── +page.server.ts
-│       │           │   ├── +page.svelte
-│       │           │   └── content.ts
-│       │           └── content.ts
-│       ├── static
-│       │   ├── favicon.ico
-│       │   ├── og-image.svg
-│       │   ├── revenu-fiscal-de-reference.png
-│       │   └── robots.txt
+│       │       ├── +page.server.ts
+│       │       └── deconnexion
+│       │           └── +server.ts
 │       ├── svelte.config.js
 │       ├── tests
-│       │   ├── e2e
-│       │   │   ├── a11y.spec.ts
-│       │   │   ├── blog
-│       │   │   │   ├── [slug]
-│       │   │   │   │   └── blogPost.spec.ts
-│       │   │   │   └── blog.spec.ts
-│       │   │   └── simulateur-eligibilite
-│       │   │       ├── +page.spec.ts
-│       │   │       └── steps
-│       │   │           └── +page.spec.ts
-│       │   ├── mocks
-│       │   │   └── ofss.ts
 │       │   └── unit
 │       │       └── src
 │       │           └── lib
-│       │               └── utils
-│       │                   ├── eligibility-simulator.spec.ts
-│       │                   ├── formatters.spec.ts
-│       │                   └── lissage-ptz.spec.ts
+│       │               └── server
+│       │                   └── auth.spec.ts
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── docker-compose.yml
@@ -1146,4 +1264,4 @@
 ├── package-lock.json
 ├── package.json
 └── renovate.json
-339 directories, 809 files
+370 directories, 896 files

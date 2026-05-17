@@ -1,11 +1,16 @@
-## Changelog : boris (30 derniers jours, au 10 mai 2026)
+## Changelog : boris (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la simulation d'éligibilité au Bail Réel Solidaire, notamment au niveau des statistiques affichées. Des corrections ont également été apportées suite à des recommandations de revue de code pour améliorer la qualité et la maintenabilité du code.
+Cette version apporte des améliorations à l'infrastructure de déploiement et à la compatibilité avec l'environnement Scalingo, ainsi que l'ajout de comptes et d'un portail OFS. Des corrections de scripts et de configurations ont également été apportées pour assurer la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration des statistiques de simulation d'éligibilité au Bail Réel Solidaire.
+- Ajout de comptes et d'un portail OFS. [#504](https://github.com/MTES-MCT/boris/issues/504)
 
 ### Évolutions techniques
-- Refactorisation du code de la simulation d'éligibilité pour suivre les recommandations issues de la revue de code [#488](https://github.com/MTES-MCT/boris/issues/488).
-- Refactorisation des statistiques de simulation d'éligibilité [#487](https://github.com/MTES-MCT/boris/issues/487).
+- Mise à jour de la version de Node.js. [#507](https://github.com/MTES-MCT/boris/issues/507)
+- Scalingo supporte désormais Node.js 26.0. [#508](https://github.com/MTES-MCT/boris/issues/508)
+- Correction de scripts de déploiement et ajustement des Procfiles pour une meilleure compatibilité avec Scalingo. [#505](https://github.com/MTES-MCT/boris/issues/505), [#506](https://github.com/MTES-MCT/boris/issues/506), [#509](https://github.com/MTES-MCT/boris/issues/509)
+- Modifications pour améliorer le processus d'installation.
+
+### Autres changements
+- Diverses corrections et ajustements de configuration.
