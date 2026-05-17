@@ -299,6 +299,9 @@
 │   │   ├── session_jsonl_test.go
 │   │   ├── session_store.go
 │   │   ├── session_store_test.go
+│   │   ├── skill_manager.go
+│   │   ├── skill_state.go
+│   │   ├── skill_state_test.go
 │   │   ├── summary_compression.go
 │   │   ├── summary_compression_test.go
 │   │   ├── task
@@ -328,7 +331,204 @@
 │   │   ├── ask_user.go
 │   │   ├── ask_user_test.go
 │   │   ├── bash.go
-│   │   ├── bash_*.go  (5 files)
+│   │   ├── bash_env_test.go
+│   │   ├── bash_pipeline.go
+│   │   ├── bash_timeout_test.go
+│   │   ├── bash_validation.go
+│   │   ├── bash_validation_test.go
+│   │   ├── bundled_skills
+│   │   │   ├── claude-code-setup
+│   │   │   │   └── skills
+│   │   │   │       └── claude-automation-recommender
+│   │   │   │           ├── SKILL.md
+│   │   │   │           └── references
+│   │   │   │               ├── hooks-patterns.md
+│   │   │   │               ├── mcp-servers.md
+│   │   │   │               ├── plugins-reference.md
+│   │   │   │               ├── skills-reference.md
+│   │   │   │               └── subagent-templates.md
+│   │   │   ├── claude-md-management
+│   │   │   │   └── skills
+│   │   │   │       └── claude-md-improver
+│   │   │   │           ├── SKILL.md
+│   │   │   │           └── references
+│   │   │   │               ├── quality-criteria.md
+│   │   │   │               ├── templates.md
+│   │   │   │               └── update-guidelines.md
+│   │   │   ├── frontend-design
+│   │   │   │   └── skills
+│   │   │   │       └── frontend-design
+│   │   │   │           └── SKILL.md
+│   │   │   ├── hookify
+│   │   │   │   └── skills
+│   │   │   │       └── writing-rules
+│   │   │   │           └── SKILL.md
+│   │   │   ├── math-olympiad
+│   │   │   │   └── skills
+│   │   │   │       └── math-olympiad
+│   │   │   │           ├── SKILL.md
+│   │   │   │           ├── evals
+│   │   │   │           │   └── trigger_eval.json
+│   │   │   │           ├── references
+│   │   │   │           │   ├── adversarial_prompts.md
+│   │   │   │           │   ├── attempt_agent.md
+│   │   │   │           │   ├── known_constructions.md
+│   │   │   │           │   ├── model_tier_defaults.md
+│   │   │   │           │   ├── presentation_prompts.md
+│   │   │   │           │   ├── solver_heuristics.md
+│   │   │   │           │   └── verifier_patterns.md
+│   │   │   │           └── scripts
+│   │   │   │               ├── check_latex.sh
+│   │   │   │               └── compile_pdf.sh
+│   │   │   ├── mcp-server-dev
+│   │   │   │   └── skills
+│   │   │   │       ├── build-mcp-app
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   └── references
+│   │   │   │       │       ├── abuse-protection.md
+│   │   │   │       │       ├── apps-sdk-messages.md
+│   │   │   │       │       ├── directory-checklist.md
+│   │   │   │       │       ├── iframe-sandbox.md
+│   │   │   │       │       ├── payload-budgeting.md
+│   │   │   │       │       └── widget-templates.md
+│   │   │   │       ├── build-mcp-server
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   └── references
+│   │   │   │       │       ├── auth.md
+│   │   │   │       │       ├── deploy-cloudflare-workers.md
+│   │   │   │       │       ├── elicitation.md
+│   │   │   │       │       ├── remote-http-scaffold.md
+│   │   │   │       │       ├── resources-and-prompts.md
+│   │   │   │       │       ├── server-capabilities.md
+│   │   │   │       │       ├── tool-design.md
+│   │   │   │       │       └── versions.md
+│   │   │   │       └── build-mcpb
+│   │   │   │           ├── SKILL.md
+│   │   │   │           └── references
+│   │   │   │               ├── local-security.md
+│   │   │   │               └── manifest-schema.md
+│   │   │   ├── playground
+│   │   │   │   └── skills
+│   │   │   │       └── playground
+│   │   │   │           ├── SKILL.md
+│   │   │   │           └── templates
+│   │   │   │               ├── code-map.md
+│   │   │   │               ├── concept-map.md
+│   │   │   │               ├── data-explorer.md
+│   │   │   │               ├── design-playground.md
+│   │   │   │               ├── diff-review.md
+│   │   │   │               └── document-critique.md
+│   │   │   ├── plugin-dev
+│   │   │   │   └── skills
+│   │   │   │       ├── agent-development
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── agent-creation-prompt.md
+│   │   │   │       │   │   └── complete-agent-examples.md
+│   │   │   │       │   ├── references
+│   │   │   │       │   │   ├── agent-creation-system-prompt.md
+│   │   │   │       │   │   ├── system-prompt-design.md
+│   │   │   │       │   │   └── triggering-examples.md
+│   │   │   │       │   └── scripts
+│   │   │   │       │       └── validate-agent.sh
+│   │   │   │       ├── command-development
+│   │   │   │       │   ├── README.md
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── plugin-commands.md
+│   │   │   │       │   │   └── simple-commands.md
+│   │   │   │       │   └── references
+│   │   │   │       │       ├── advanced-workflows.md
+│   │   │   │       │       ├── documentation-patterns.md
+│   │   │   │       │       ├── frontmatter-reference.md
+│   │   │   │       │       ├── interactive-commands.md
+│   │   │   │       │       ├── marketplace-considerations.md
+│   │   │   │       │       ├── plugin-features-reference.md
+│   │   │   │       │       └── testing-strategies.md
+│   │   │   │       ├── hook-development
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── load-context.sh
+│   │   │   │       │   │   ├── validate-bash.sh
+│   │   │   │       │   │   └── validate-write.sh
+│   │   │   │       │   ├── references
+│   │   │   │       │   │   ├── advanced.md
+│   │   │   │       │   │   ├── migration.md
+│   │   │   │       │   │   └── patterns.md
+│   │   │   │       │   └── scripts
+│   │   │   │       │       ├── README.md
+│   │   │   │       │       ├── hook-linter.sh
+│   │   │   │       │       ├── test-hook.sh
+│   │   │   │       │       └── validate-hook-schema.sh
+│   │   │   │       ├── mcp-integration
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── http-server.json
+│   │   │   │       │   │   ├── sse-server.json
+│   │   │   │       │   │   └── stdio-server.json
+│   │   │   │       │   └── references
+│   │   │   │       │       ├── authentication.md
+│   │   │   │       │       ├── server-types.md
+│   │   │   │       │       └── tool-usage.md
+│   │   │   │       ├── plugin-settings
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── create-settings-command.md
+│   │   │   │       │   │   ├── example-settings.md
+│   │   │   │       │   │   └── read-settings-hook.sh
+│   │   │   │       │   ├── references
+│   │   │   │       │   │   ├── parsing-techniques.md
+│   │   │   │       │   │   └── real-world-examples.md
+│   │   │   │       │   └── scripts
+│   │   │   │       │       ├── parse-frontmatter.sh
+│   │   │   │       │       └── validate-settings.sh
+│   │   │   │       ├── plugin-structure
+│   │   │   │       │   ├── README.md
+│   │   │   │       │   ├── SKILL.md
+│   │   │   │       │   ├── examples
+│   │   │   │       │   │   ├── advanced-plugin.md
+│   │   │   │       │   │   ├── minimal-plugin.md
+│   │   │   │       │   │   └── standard-plugin.md
+│   │   │   │       │   └── references
+│   │   │   │       │       ├── component-patterns.md
+│   │   │   │       │       └── manifest-reference.md
+│   │   │   │       └── skill-development
+│   │   │   │           ├── SKILL.md
+│   │   │   │           └── references
+│   │   │   │               └── skill-creator-original.md
+│   │   │   ├── session-report
+│   │   │   │   └── skills
+│   │   │   │       └── session-report
+│   │   │   │           ├── SKILL.md
+│   │   │   │           ├── analyze-sessions.mjs
+│   │   │   │           └── template.html
+│   │   │   └── skill-creator
+│   │   │       └── skills
+│   │   │           └── skill-creator
+│   │   │               ├── LICENSE.txt
+│   │   │               ├── SKILL.md
+│   │   │               ├── agents
+│   │   │               │   ├── analyzer.md
+│   │   │               │   ├── comparator.md
+│   │   │               │   └── grader.md
+│   │   │               ├── assets
+│   │   │               │   └── eval_review.html
+│   │   │               ├── eval-viewer
+│   │   │               │   ├── generate_review.py
+│   │   │               │   └── viewer.html
+│   │   │               ├── references
+│   │   │               │   └── schemas.md
+│   │   │               └── scripts
+│   │   │                   ├── __init__.py
+│   │   │                   ├── aggregate_benchmark.py
+│   │   │                   ├── generate_report.py
+│   │   │                   ├── improve_description.py
+│   │   │                   ├── package_skill.py
+│   │   │                   ├── quick_validate.py
+│   │   │                   ├── run_eval.py
+│   │   │                   ├── run_loop.py
+│   │   │                   └── utils.py
+│   │   ├── bundled_skills.go
 │   │   ├── computer_use.go
 │   │   ├── computer_use_exec.go
 │   │   ├── computer_use_test.go
@@ -356,6 +556,9 @@
 │   │   ├── send_message.go
 │   │   ├── send_message_test.go
 │   │   ├── skill.go
+│   │   ├── skill_install.go
+│   │   ├── skill_install_test.go
+│   │   ├── skill_test.go
 │   │   ├── sleep.go
 │   │   ├── sleep_test.go
 │   │   ├── structured_output.go
@@ -470,6 +673,8 @@
 │   ├── tool.go
 │   ├── tool_test.go
 │   └── validate.go
+├── scripts
+│   └── sync_bundled_skills.sh
 └── testdata
     └── golden
         ├── fnv1a_vectors.json
@@ -482,4 +687,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-77 directories, 411 files
+147 directories, 542 files
