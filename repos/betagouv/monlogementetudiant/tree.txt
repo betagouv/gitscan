@@ -23,13 +23,17 @@
 │   │   │   ├── sync-stats.test.ts
 │   │   │   ├── sync-students.integration.test.ts
 │   │   │   └── sync-students.test.ts
+│   │   ├── compare-crous.ts
 │   │   ├── healthcheck.ts
 │   │   ├── import-arpej-ibail.ts
 │   │   ├── import-backup.ts
+│   │   ├── import-crous-rents.ts
+│   │   ├── import-crous-surfaces.ts
 │   │   ├── import-crous.ts
 │   │   ├── import-csv.ts
 │   │   ├── import-fac-habitat.ts
 │   │   ├── import-initiall.ts
+│   │   ├── import-utils.ts
 │   │   ├── migrate-users.ts
 │   │   ├── migrate.ts
 │   │   ├── sync-cities.ts
@@ -43,6 +47,7 @@
 │   │   ├── __tests__
 │   │   │   ├── geocoder.test.ts
 │   │   │   └── matomo.test.ts
+│   │   ├── crous-helpers.ts
 │   │   ├── db-utils.ts
 │   │   ├── matomo.ts
 │   │   └── scalingo-backup.ts
@@ -83,6 +88,10 @@
 │   ├── 0028_wild_punisher.sql
 │   ├── 0029_accommodation-addresses.sql
 │   ├── 0030_bailleur_roles_permissions.sql
+│   ├── 0031_kind_legion.sql
+│   ├── 0032_common_stellaris.sql
+│   ├── 0033_perf-indexes-multi-address.sql
+│   ├── 0034_owner_feedback.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -115,6 +124,10 @@
 │       ├── 0028_snapshot.json
 │       ├── 0029_snapshot.json
 │       ├── 0030_snapshot.json
+│       ├── 0031_snapshot.json
+│       ├── 0032_snapshot.json
+│       ├── 0033_snapshot.json
+│       ├── 0034_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -141,6 +154,7 @@
 │   │   ├── background.webp
 │   │   ├── caf.svg
 │   │   ├── compteur.png
+│   │   ├── cover.jpg
 │   │   ├── espacil.svg
 │   │   ├── etudiantgouv.svg
 │   │   ├── explore-cities.webp
@@ -202,6 +216,7 @@
 │   │   ├── bailleur.integration.test.ts
 │   │   ├── df-redirect.integration.test.ts
 │   │   ├── dossier-facile.integration.test.ts
+│   │   ├── email-verification-login.integration.test.ts
 │   │   ├── favorites.integration.test.ts
 │   │   ├── fixtures
 │   │   │   └── factories.ts
@@ -210,8 +225,8 @@
 │   │   │   ├── test-caller.ts
 │   │   │   ├── test-db-module.ts
 │   │   │   └── test-db.ts
-│   │   ├── mattermost.integration.test.ts
 │   │   ├── multi-address.integration.test.ts
+│   │   ├── owner-statistics.integration.test.ts
 │   │   ├── password-verify.integration.test.ts
 │   │   ├── resolve-city.integration.test.ts
 │   │   ├── role-isolation.integration.test.ts
@@ -256,6 +271,10 @@
 │   │   │   │       │   └── page.tsx
 │   │   │   │       ├── tableau-de-bord
 │   │   │   │       │   ├── chart.tsx
+│   │   │   │       │   ├── dashboard-residences.tsx
+│   │   │   │       │   ├── dashboard-tabs.tsx
+│   │   │   │       │   ├── engagement-statistics.module.css
+│   │   │   │       │   ├── engagement-statistics.tsx
 │   │   │   │       │   ├── get-bailleur-dashboard-page-context.ts
 │   │   │   │       │   ├── page.tsx
 │   │   │   │       │   └── tableau-de-bord.module.css
@@ -287,6 +306,9 @@
 │   │   │       │   │   └── page.tsx
 │   │   │       │   ├── owner-accounts-list.tsx
 │   │   │       │   └── page.tsx
+│   │   │       ├── feedback
+│   │   │       │   ├── feedback-list.tsx
+│   │   │       │   └── page.tsx
 │   │   │       ├── gestionnaires-stats
 │   │   │       │   ├── gestionnaires-stats.module.css
 │   │   │       │   └── page.tsx
@@ -307,6 +329,10 @@
 │   │   │       ├── tableau-de-bord
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── tableau-de-bord.module.css
+│   │   │       ├── taches-planifiees
+│   │   │       │   ├── [id]
+│   │   │       │   │   └── page.tsx
+│   │   │       │   └── page.tsx
 │   │   │       └── utilisateurs
 │   │   │           ├── [id]
 │   │   │           │   ├── page.tsx
@@ -357,9 +383,6 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── politique-de-confidentialite
 │   │   │   │       └── page.tsx
-│   │   │   ├── alerte-logement
-│   │   │   │   ├── alert-logement.module.css
-│   │   │   │   └── page.tsx
 │   │   │   ├── dossier-facile
 │   │   │   │   └── error
 │   │   │   │       └── page.tsx
@@ -413,6 +436,7 @@
 │   │   │                   ├── accommodation-map.tsx
 │   │   │                   ├── accommodation-residence.module.css
 │   │   │                   ├── accommodation-residence.tsx
+│   │   │                   ├── accommodation-view-tracker.tsx
 │   │   │                   ├── accommodation-virtual-tour.tsx
 │   │   │                   ├── get-accommodation-json-ld.ts
 │   │   │                   ├── get-accommodation-page-context.ts
@@ -502,9 +526,18 @@
 │   │   │   ├── owner-form.tsx
 │   │   │   ├── owner-logo-form.tsx
 │   │   │   ├── role-badge.tsx
+│   │   │   ├── shared
+│   │   │   │   ├── job-duration.tsx
+│   │   │   │   └── job-stat-cards.tsx
+│   │   │   ├── taches-planifiees
+│   │   │   │   ├── cron-job-defs.ts
+│   │   │   │   ├── cron-job-detail.tsx
+│   │   │   │   └── cron-overview-table.tsx
 │   │   │   └── user-form.tsx
-│   │   ├── alert-accommodation
-│   │   │   └── alert-accommodation-form.tsx
+│   │   ├── auth
+│   │   │   ├── login-required-button.tsx
+│   │   │   ├── login-required-inline-link.tsx
+│   │   │   └── login-required-modal.tsx
 │   │   ├── bailleur
 │   │   │   ├── calendly-link.tsx
 │   │   │   ├── candidatures
@@ -538,6 +571,8 @@
 │   │   │   │   ├── update-residence-form.module.css
 │   │   │   │   ├── update-residence-form.tsx
 │   │   │   │   └── update-residence-publication.tsx
+│   │   │   ├── owner-feedback-banner.module.css
+│   │   │   ├── owner-feedback-banner.tsx
 │   │   │   ├── residence-card.tsx
 │   │   │   ├── residence-filters.tsx
 │   │   │   ├── residence-list.tsx
@@ -557,6 +592,7 @@
 │   │   │   ├── forms.module.css
 │   │   │   └── income-form.tsx
 │   │   ├── credentials-sign-in
+│   │   │   ├── actions.ts
 │   │   │   └── credentials-sign-in.tsx
 │   │   ├── dossier-facile
 │   │   │   └── dossier-facile-success-toast.tsx
@@ -577,9 +613,12 @@
 │   │   │   ├── find-student-accommodation-banner.tsx
 │   │   │   ├── header
 │   │   │   │   ├── find-student-accessible-accomodation-switch.tsx
+│   │   │   │   ├── find-student-accommodation-active-filters.tsx
 │   │   │   │   ├── find-student-accommodation-availability-switch.module.css
 │   │   │   │   ├── find-student-accommodation-availability-switch.tsx
 │   │   │   │   ├── find-student-accommodation-crous-filter.tsx
+│   │   │   │   ├── find-student-accommodation-filters-modal.module.css
+│   │   │   │   ├── find-student-accommodation-filters-modal.tsx
 │   │   │   │   ├── find-student-accommodation-price.tsx
 │   │   │   │   ├── find-student-accommodation-title.tsx
 │   │   │   │   ├── find-student-accomodation-header.module.css
@@ -802,6 +841,7 @@
 │   │   ├── use-admin-create-user.ts
 │   │   ├── use-admin-delete-owner.ts
 │   │   ├── use-admin-delete-user.ts
+│   │   ├── use-admin-feedback.ts
 │   │   ├── use-admin-link-admin-to-owner.ts
 │   │   ├── use-admin-my-linked-owners.ts
 │   │   ├── use-admin-owner.ts
@@ -813,7 +853,6 @@
 │   │   ├── use-admin-update-user.ts
 │   │   ├── use-admin-user.ts
 │   │   ├── use-admin-users.ts
-│   │   ├── use-alert-accommodation.ts
 │   │   ├── use-bailleur-users.ts
 │   │   ├── use-candidatures.ts
 │   │   ├── use-cities.ts
@@ -824,8 +863,10 @@
 │   │   ├── use-delete-favorite.ts
 │   │   ├── use-favorites.ts
 │   │   ├── use-forgot-password.ts
+│   │   ├── use-is-admin.ts
 │   │   ├── use-matomo-stats.ts
 │   │   ├── use-my-accommodations.ts
+│   │   ├── use-owner-statistics.ts
 │   │   ├── use-owner-usage.ts
 │   │   ├── use-rent-search.ts
 │   │   ├── use-reset-password.ts
@@ -848,6 +889,7 @@
 │   │   ├── accommodations-expanded-search.ts
 │   │   ├── accommodations-search-params.ts
 │   │   ├── django-password.ts
+│   │   ├── features.ts
 │   │   ├── tracking.ts
 │   │   └── types.ts
 │   ├── providers
@@ -859,11 +901,6 @@
 │   │   │   ├── get-accommodations.ts
 │   │   │   ├── update-residence-list.ts
 │   │   │   └── update-residence.ts
-│   │   ├── alert-accommodation
-│   │   │   ├── alert-accommodation.ts
-│   │   │   └── autocomplete
-│   │   │       ├── alert-accomodation-autocomplete-input.tsx
-│   │   │       └── alert-accomodation-autocomplete-results.tsx
 │   │   ├── alerts
 │   │   │   ├── create-alert.ts
 │   │   │   ├── delete-alert.ts
@@ -874,7 +911,6 @@
 │   │   ├── credentials-sign-in
 │   │   │   └── credentials-sign-in.ts
 │   │   ├── dossier-facile
-│   │   │   ├── dossier-facile-env-var.ts
 │   │   │   ├── dossier-facile-profile.ts
 │   │   │   └── dossier-facile-webhook.ts
 │   │   ├── faq
@@ -887,6 +923,7 @@
 │   │   ├── import-jobs.ts
 │   │   ├── magic-link-sign-in
 │   │   │   └── magic-link-sign-in.ts
+│   │   ├── owner-feedback.ts
 │   │   ├── owner-form.ts
 │   │   ├── owner-logo-form.ts
 │   │   ├── questions-answers
@@ -925,11 +962,14 @@
 │   │   │       ├── import-jobs.ts
 │   │   │       ├── index.ts
 │   │   │       ├── newsletter-subscriptions.ts
+│   │   │       ├── owner-feedback.ts
 │   │   │       ├── owners.ts
 │   │   │       ├── questions-answers.ts
 │   │   │       ├── relations.ts
 │   │   │       ├── stats.ts
-│   │   │       └── student-alerts.ts
+│   │   │       ├── student-alerts.ts
+│   │   │       └── tracking-events.ts
+│   │   ├── env.ts
 │   │   ├── lib
 │   │   │   └── import
 │   │   │       ├── csv-importer.ts
@@ -947,9 +987,10 @@
 │   │   │   ├── dossier-facile
 │   │   │   │   ├── sync.ts
 │   │   │   │   └── webhook.ts
-│   │   │   ├── mattermost.ts
 │   │   │   ├── s3.test.ts
-│   │   │   └── s3.ts
+│   │   │   ├── s3.ts
+│   │   │   ├── tracking-event-logger.ts
+│   │   │   └── tracking-session.ts
 │   │   ├── student
 │   │   │   ├── get-alerts.ts
 │   │   │   └── get-favorites.ts
@@ -970,8 +1011,11 @@
 │   │   │   │   ├── bailleur.ts
 │   │   │   │   ├── dossier-facile.ts
 │   │   │   │   ├── favorites.ts
+│   │   │   │   ├── owner-feedback.ts
+│   │   │   │   ├── owner-statistics.ts
 │   │   │   │   ├── questions-answers.ts
-│   │   │   │   └── territories.ts
+│   │   │   │   ├── territories.ts
+│   │   │   │   └── tracking.ts
 │   │   │   ├── server.ts
 │   │   │   └── utils
 │   │   │       ├── accommodation-helpers.ts
@@ -1004,6 +1048,7 @@
 │       ├── is-per-person-typology.ts
 │       ├── normalize-accommodation-name.test.ts
 │       ├── normalize-accommodation-name.ts
+│       ├── normalize-text.ts
 │       ├── preserve-query-params.test.ts
 │       ├── preserve-query-params.ts
 │       ├── sPluriel.ts
@@ -1013,4 +1058,4 @@
 │       └── widget-resize.ts
 ├── tsconfig.json
 └── vitest.config.ts
-225 directories, 790 files
+227 directories, 833 files
