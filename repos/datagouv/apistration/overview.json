@@ -1,25 +1,30 @@
 {
   "url": "https://github.com/datagouv/apistration",
   "name": "apistration",
-  "description": "APIstration est une application et un site web pour les API Entreprise et Particulier du gouvernement français, fournissant des données certifiées sur les entreprises et les individus.  Elle est développée et maintenue par DINUM.",
+  "description": "APIstration est une application et un site web pour les API Entreprise et Particulier du gouvernement français, fournissant des données certifiées sur les entreprises et les individus.",
   "language": "Ruby",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Gestion des utilisateurs & Permissions"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration",
+    "Développeurs"
+  ],
   "dependencies": [
     "Ruby",
     "Rails",
     "PostgreSQL",
+    "Docker",
     "MJML",
-    "Docker"
+    "Faraday",
+    "RSpec",
+    "Webmock"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,19 +36,18 @@
   "auth": {
     "methods": [
       "jwt",
-      "api-key"
+      "session"
     ]
   },
   "tests": [
     "RSpec",
     "Webmock",
-    "Cypress"
+    "Vitest"
   ],
   "workflows": [
-    "CI/CD",
-    "GitHub Actions"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-05-13T19:14:31+02:00",
+  "lastActivity": "2026-05-15T22:47:57+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,9 +60,10 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "API",
+    "API & Intégrations",
+    "Sécurité & Conformité",
+    "JavaScript",
     "Ruby",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "PostgreSQL"
   ]
 }
