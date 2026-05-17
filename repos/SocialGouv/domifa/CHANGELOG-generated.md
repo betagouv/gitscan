@@ -1,35 +1,32 @@
-## Changelog : domifa (30 derniers jours, au 15 mai 2026)
+## Changelog : domifa (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives en matière de sécurité, avec l'ajout de l'authentification à deux facteurs (OTP) et de mécanismes de blocage des bots. L'interface d'administration a également été enrichie avec de nouvelles fonctionnalités de gestion des utilisateurs et de statistiques. Plusieurs corrections de bugs et améliorations de l'expérience utilisateur ont été apportées, notamment au niveau de l'interface et des tests.
+Ce mois-ci, les évolutions de DomiFa se concentrent sur la sécurité et l'amélioration de l'expérience utilisateur. L'ajout d'une authentification à deux facteurs (OTP) et de la détection d'empreinte digitale renforcent la protection des comptes. Des mises à jour de l'interface utilisateur et des corrections de bugs améliorent la fluidité et la fiabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de l'authentification à deux facteurs (OTP) pour certaines actions sensibles, renforçant la sécurité des comptes utilisateurs.
-- Implémentation d'un système de blocage des bots pour prévenir les abus et garantir la disponibilité du service.
-- Ajout de statistiques dans l'interface d'administration pour un meilleur suivi de l'activité.
-- Ajout d'une page de témoignages dans l'interface utilisateur.
-- Possibilité de visualiser le détail du réseau associé à un compte.
+- Ajout de l'authentification à deux facteurs (OTP) pour certains endpoints et pour l'administration, avec envoi d'un email pour la récupération.
+- Implémentation d'une détection d'empreinte digitale pour renforcer la sécurité des sessions utilisateurs.
+- Ajout d'une fonctionnalité de blocage des utilisateurs suspects (bots) basée sur l'agent utilisateur et l'analyse du comportement.
+- Ajout de statistiques dans l'interface d'administration.
+- Ajout d'une page de témoignages pour les utilisateurs.
+- Mise à jour de l'interface utilisateur avec la version 19, incluant des corrections liées à DSFR.
 - Ajout d'une liste d'utilisateurs dans l'interface d'administration.
-- Ajout d'un statut (bloqué/débloqué) aux comptes utilisateurs.
-- Amélioration de l'affichage des formulaires et de la page RGAA dans l'interface utilisateur.
-- Ajout d'un bandeau d'information DSFR (Design System FR) dans l'interface utilisateur.
-- Ajout d'un tooltip pour faciliter la compréhension des actions dans l'interface de gestion.
+- Ajout d'un statut pour bloquer les comptes utilisateurs.
+- Ajout de détails sur le réseau pour les utilisateurs.
+- Ajout d'un bandeau DSFR.
 
 ### Évolutions techniques
-- Ajout de tests unitaires pour les nouvelles fonctionnalités et corrections de bugs.
-- Refonte de la récupération des statistiques pour Metabase.
-- Amélioration de la gestion des tests avec TypeORM.
-- Mise à jour de la librairie `inlt-tel` et de ses tests unitaires.
-- Ajout d'un fingerprint pour améliorer la sécurité des sessions.
-- Limitation du nombre de sessions actives par utilisateur.
-- Ajout de la gestion de l'agent utilisateur pour le blocage des bots.
-- Correction de problèmes liés aux tests et aux migrations.
-- Suppression de Bootstrap dans l'interface d'administration.
-- Correction de problèmes liés aux filtres dans le backend.
+- Mise à jour des tests Angular pour la compatibilité avec la version 19.
+- Refactorisation du code pour l'intégration de statistiques Metabase.
+- Correction de bugs et améliorations des tests unitaires backend et frontend.
+- Amélioration des performances de la gestion des OTP.
+- Correction de problèmes de typage dans les tests TypeORM.
+- Ajout de tests unitaires pour la fonctionnalité de blocage.
 
 ### Autres changements
-- Ajout d'un fichier CLA (Contributor License Agreement) pour les contributions externes.
-- Correction de la configuration du CI/CD pour les releases.
-- Amélioration du changelog et de la gestion des versions.
-- Correction de problèmes de build et de tests frontend.
-- Mise à jour de la documentation.
+- Suppression de Bootstrap dans l'interface d'administration.
+- Mise à jour des dépendances et des configurations CI/CD.
+- Ajout de commentaires et documentation pour certaines fonctionnalités.
+- Correction de problèmes de linting dans l'interface d'administration.
+- Ajout de la possibilité de forcer une seule session par utilisateur.
+- Correction de bugs mineurs dans l'interface utilisateur (étiquettes, champs de formulaire, etc.).
