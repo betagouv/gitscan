@@ -57,16 +57,29 @@
 ├── comparia-cli
 ├── controller.py
 ├── devops
-│   ├── .env.dev
-│   ├── .env.dist
-│   ├── Dockerfile
-│   ├── Dockerfile.front
-│   ├── app.compose.override.yml
-│   ├── build-and-push-to-harbor.sh
-│   ├── db-prd-local.compose.yml
-│   ├── docker-bake.yml
-│   ├── docker-compose-dev.yml
-│   ├── generate-init-db.sh
+│   ├── docker
+│   │   ├── .env.dev
+│   │   ├── .env.dist
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.front
+│   │   ├── app.compose.override.yml
+│   │   ├── build-and-push-to-harbor.sh
+│   │   ├── docker-bake.yml
+│   │   ├── list-harbor-tags.sh
+│   │   └── restore-backup.sh
+│   ├── instances
+│   │   ├── da
+│   │   │   ├── .env.da.example
+│   │   │   └── app.compose.da.yml
+│   │   ├── fr
+│   │   │   ├── .env.fr.example
+│   │   │   └── app.compose.fr.yml
+│   │   ├── postgres
+│   │   │   ├── generate-init-db.sh
+│   │   │   ├── init.sh
+│   │   │   └── postgres-simple.compose.yml
+│   │   └── redis
+│   │       └── redis.compose.yml
 │   ├── jenkins
 │   │   ├── jenkins_common
 │   │   │   ├── __init__.py
@@ -75,8 +88,8 @@
 │   │   ├── trigger_deploy_dev.py
 │   │   ├── trigger_deploy_prd.py
 │   │   └── trigger_deploy_stg.py
-│   ├── list-harbor-tags.sh
-│   ├── restore-backup.sh
+│   ├── keepassxc
+│   │   └── load_env.py
 │   └── standalone_docker_install
 │       ├── .env.example
 │       ├── Caddyfile
@@ -639,4 +652,4 @@
 │   │   └── sv.json
 │   └── utils.py
 └── uv.lock
-96 directories, 545 files
+103 directories, 551 files
