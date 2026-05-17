@@ -1,46 +1,30 @@
 ## Changelog : recommandations-collaboratives (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de l'expérience utilisateur, notamment au niveau du CRM (gestion de la relation client) avec une refonte significative. Des corrections de bugs et des optimisations ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur du CRM (gestion de la relation client), notamment la refonte de la présentation des utilisateurs, des projets et des notes. Des corrections ont également été apportées pour améliorer la gestion des notifications et des liens vers les démarches numériques. Des optimisations de performance et des mises à jour de dépendances ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- **CRM :** Refonte majeure de l'interface utilisateur du CRM, incluant :
-    - Ajout d'une nouvelle carte utilisateur pour les conseillers.
-    - Amélioration de l'affichage des projets et des utilisateurs.
-    - Ajout de bannières d'information et de gestion des projets.
-    - Affichage du nombre de documents associés aux conversations.
-    - Ajout d'indicateurs visuels pour l'état des projets.
-    - Ajout de la possibilité de filtrer les utilisateurs.
-- **Recommandations :**
-    - Ajout d'un lien vers le compte utilisateur dans les notifications par email.
-    - Amélioration de l'affichage des recommandations dans les conversations.
-    - Possibilité de masquer l'onglet "Recommandations".
-- **Fichiers :** Amélioration du chargement de fichiers pour les conseillers.
-- **Interface Générale :**
-    - Ajout d'informations contextuelles (infobulles) sur les éléments de l'interface.
-    - Amélioration de l'accessibilité et de l'ergonomie de certains composants.
-    - Ajout d'un indicateur de nombre de projets dans les colonnes Kanban.
-- **Géomatique :** Amélioration de la synchronisation des données de communes avec la base de données LaPoste.
-- **Tâches :** Correction de l'affichage des tâches liées aux recommandations.
+- **CRM - Utilisateurs :** Nouvelle carte utilisateur pour le CRM, améliorant la présentation des informations. [#2056](https://github.com/betagouv/recommandations-collaboratives/pull/2056)
+- **CRM - Projets :** Refonte de l'affichage des projets dans le CRM, incluant l'ajout d'informations sur les participants, les notes et l'historique. [#2018](https://github.com/betagouv/recommandations-collaboratives/pull/2018)
+- **Notifications :** Correction du comportement des notifications de conversation, notamment le délai de consommation et l'ouverture du panneau associé. [#1989](https://github.com/betagouv/recommandations-collaboratives/pull/2024)
+- **Recommandations :** Ajout d'un lien vers la ressource suggérée dans les conversations. [#2025](https://github.com/betagouv/recommandations-collaboratives/pull/2025)
+- **Interface utilisateur :** Ajout d'informations contextuelles (infobulles) sur les éléments de l'interface, comme les boutons d'action et les en-têtes de colonnes.
+- **Demarches Numériques :** Intégration d'informations sur les démarches numériques dans les cartes de recommandation et les tâches.
+- **Gestion des fichiers :** Amélioration de la gestion des fichiers et ajout d'une fonctionnalité de téléchargement. [#1967](https://github.com/betagouv/recommandations-collaboratives/pull/2012)
+- **Comptage des documents :** Correction du comptage des documents dans le CRM pour inclure tous les documents, et non seulement ceux de la conversation actuelle.
+- **Suivi des activités :** Ajout d'informations sur les rappels et les prochaines actions.
 
 ### Évolutions techniques
-- **Dépendances :** Mises à jour de plusieurs dépendances, notamment Django, Wagtail, JupyterLab, et divers paquets npm, pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- **Tests :** Mise à jour des tests frontend (Cypress) pour assurer la couverture des nouvelles fonctionnalités et corrections de bugs.
-- **CI/CD :** Amélioration du processus de CI/CD.
-- **Refactoring :**
-    - Simplification du code et suppression de code obsolète.
-    - Amélioration de la structure du code pour une meilleure maintenabilité.
-    - Refactorisation de la gestion des rôles dans le CRM.
-- **Documentation :** Mise à jour de la documentation.
+- **Refactoring CRM :** Refactorisation du code du CRM pour améliorer la maintenabilité et la performance.
+- **Tests Frontend :** Mise à jour et correction des tests frontend, notamment pour la gestion des notifications et des actions.
+- **Dépendances :** Mise à jour de plusieurs dépendances, notamment Django, Wagtail, et les dépendances frontend (axios, postcss, dompurify, follow-redirects).
+- **CI/CD :** Améliorations continues du pipeline CI/CD.
+- **Sécurité :** Amélioration de la sanitisation des données pour prévenir les failles de sécurité.
+- **Suppression de code obsolète :** Suppression de code obsolète lié à l'ancienne gestion des dossiers de démarches numériques (dsFolder).
 
 ### Autres changements
-- Correction de bugs mineurs dans l'interface utilisateur.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Nettoyage du code et amélioration de la lisibilité.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Mise à jour des fichiers de configuration.
-- Amélioration de la gestion des URLs et des liens.
-- Correction de problèmes liés à l'affichage des dates et des heures.
-- Amélioration de la gestion des autorisations et des accès.
-- Ajout de tests unitaires pour certaines fonctionnalités.
-- Correction de problèmes de compatibilité avec différents navigateurs.
+- **Documentation :** Mise à jour de la documentation.
+- **Nettoyage de code :** Nettoyage général du code pour améliorer la lisibilité et la maintenabilité.
+- **Corrections de bugs mineurs :** Correction de plusieurs bugs mineurs liés à l'interface utilisateur et au comportement de l'application.
+- **Amélioration des messages de log :** Ajout de messages de log plus informatifs pour faciliter le débogage.
+- **Amélioration des tests :** Ajout de tests unitaires et d'intégration pour améliorer la couverture de code.
