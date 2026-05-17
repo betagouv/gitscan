@@ -1,21 +1,20 @@
-## Changelog : impactco2 (30 derniers jours, au 12 mai 2026)
+## Changelog : impactco2 (30 derniers jours, au 2026-05-15)
 
 ### Résumé
-Ce mois-ci, l'application impactco2 s'est enrichie de nouvelles données et a bénéficié d'améliorations de l'expérience utilisateur. Des moyens de transport supplémentaires ont été ajoutés, ainsi que de nouveaux repas pour affiner les comparaisons d'impact environnemental. Des corrections de données et de traductions ont également été apportées.
+Les dernières mises à jour d'impactco2 se concentrent sur l'ajout de nouvelles données et la correction de quelques problèmes d'affichage. De nouvelles options de transport et de repas ont été intégrées, enrichissant ainsi les possibilités de comparaison de l'impact carbone. Des améliorations ont également été apportées à la traduction de la FAQ et à l'affichage des informations sur les équivalents.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux moyens de transport pour une comparaison plus complète de l'impact carbone.  [#872](https://github.com/incubateur-ademe/impactco2/issues/872)
-- Ajout de nouveaux repas pour une meilleure granularité dans le calcul de l'impact environnemental de l'alimentation. [#879](https://github.com/incubateur-ademe/impactco2/issues/879)
-- Correction de l'adresse du Bioparc. [#879](https://github.com/incubateur-ademe/impactco2/issues/879)
-- Correction de l'affichage du nom complet sur les cartes d'équivalents. [#881](https://github.com/incubateur-ademe/impactco2/issues/881)
-- Correction de la traduction de la FAQ. [#880](https://github.com/incubateur-ademe/impactco2/issues/880)
+- Ajout de nouveaux modes de transport pour le calcul de l'impact carbone [#872](https://github.com/incubateur-ademe/impactco2/issues/872).
+- Ajout de nouveaux repas pour le calcul de l'impact carbone [#879](https://github.com/incubateur-ademe/impactco2/issues/879).
+- Correction d'un problème d'affichage du nom complet sur les cartes d'équivalents [#881](https://github.com/incubateur-ademe/impactco2/issues/881).
+- Correction d'une erreur de traduction dans la FAQ [#880](https://github.com/incubateur-ademe/impactco2/issues/880).
 
 ### Évolutions techniques
 - Mise à jour de TypeScript vers la version 7.0.
-- Amélioration des tests d'intégration avec des mises à jour des vérifications d'iframe.
-- Forçage de l'utilisation de pnpm version 10.
+- Amélioration des tests d'intégration avec les iframes.
+- Force l'utilisation de pnpm 10.
 
 ### Autres changements
 - Ajout de logs pour le suivi de l'API.
 - Suppression de logs inutiles.
-- Rétrogradation d'une mise à jour de paquets et de pnpm suite à des problèmes.
+- Mise à jour des paquets, de Node et de pnpm (partiellement revertée).
