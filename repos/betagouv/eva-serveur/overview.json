@@ -1,17 +1,14 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les structures, les utilisateurs et les évaluations.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les structures, les évaluations et les utilisateurs.",
   "language": "Ruby",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des structures & établissements",
-    "Gestion métier générale"
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,8 +19,7 @@
     "Devise",
     "ActiveAdmin",
     "DSFR",
-    "TarteaucitronJS",
-    "i18n-js"
+    "Sidekiq"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,18 +32,17 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "session"
+      "oauth2"
     ]
   },
   "tests": [
     "RSpec",
-    "FactoryBot"
+    "Capybara"
   ],
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-05-13T18:19:39+02:00",
+  "lastActivity": "2026-05-15T18:06:48+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -63,8 +58,6 @@
     "Ruby",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Développement",
-    "Administration",
-    "Gestion des établissements & Structures"
+    "Environnement & Énergie"
   ]
 }
