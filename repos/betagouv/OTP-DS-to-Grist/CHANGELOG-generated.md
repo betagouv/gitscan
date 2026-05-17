@@ -1,22 +1,19 @@
 ## Changelog : OTP-DS-to-Grist (30 derniers jours, au 4 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la synchronisation automatique des données vers Grist, avec l'ajout de fonctionnalités de contrôle et d'information pour l'utilisateur. Des corrections ont également été apportées à l'interface utilisateur pour améliorer la précision des informations affichées et la gestion des erreurs.
+Ce mois-ci, les améliorations se concentrent sur la synchronisation automatique des données vers Grist, avec l'ajout de fonctionnalités pour la contrôler et informer l'utilisateur de son état. Des corrections ont également été apportées à l'interface utilisateur pour améliorer la précision des informations affichées et la clarté des messages.
 
 ### Évolutions fonctionnelles
 - Ajout de la possibilité de désactiver la synchronisation automatique des données vers Grist. [#301](https://github.com/betagouv/OTP-DS-to-Grist/issues/301)
-- Correction du comptage des dossiers synchronisés affiché dans l'interface utilisateur. [#295](https://github.com/betagouv/OTP-DS-to-Grist/issues/295)
-- Amélioration des messages d'erreur affichés lors de la synchronisation automatique, notamment en cas d'échec. [#304](https://github.com/betagouv/OTP-DS-to-Grist/issues/304)
-- Ajout d'une bannière d'information pour indiquer que la synchronisation automatique est en cours. [#293](https://github.com/betagouv/OTP-DS-to-Grist/issues/293)
-- Correction de la formulation du pied de page. [#300](https://github.com/betagouv/OTP-DS-to-Grist/issues/300)
-- Correction de la suppression d'une date par défaut qui causait des problèmes. [#292](https://github.com/betagouv/OTP-DS-to-Grist/issues/292)
-- Correction de la conversion de date pour la synchronisation, permettant de gérer correctement les dates dans Grist. [#283](https://github.com/betagouv/OTP-DS-to-Grist/issues/283)
-- Ajout de la synchronisation de données provenant de deux nouvelles tables. [#278](https://github.com/betagouv/OTP-DS-to-Grist/issues/278)
+- Amélioration de l'affichage du nombre de dossiers synchronisés dans l'interface utilisateur. [#295](https://github.com/betagouv/OTP-DS-to-Grist/issues/295)
+- Ajout d'une notification (bandeau) pour indiquer le statut de la synchronisation automatique. [#293](https://github.com/betagouv/OTP-DS-to-Grist/issues/293)
+- Correction du texte du pied de page. [#300](https://github.com/betagouv/OTP-DS-to-Grist/issues/300)
+- Correction d'un bug où la date de modification n'était pas correctement utilisée. [#292](https://github.com/betagouv/OTP-DS-to-Grist/issues/292)
+- Correction de la conversion de la date `updated_since_cursor` pour la compatibilité avec Grist. [#283](https://github.com/betagouv/OTP-DS-to-Grist/issues/283)
+- Amélioration de l'affichage des messages d'erreur lors de la synchronisation automatique. [#304](https://github.com/betagouv/OTP-DS-to-Grist/issues/304)
 
 ### Évolutions techniques
-- Ajout d'un nouveau fichier README pour le dossier de synchronisation, améliorant la documentation du projet. [#282](https://github.com/betagouv/OTP-DS-to-Grist/issues/282)
-- Amélioration de la précision des messages d'erreur pour faciliter le débogage. [#281](https://github.com/betagouv/OTP-DS-to-Grist/issues/281)
-- Ajout de documentation sur la configuration et l'utilisation du projet. [#280](https://github.com/betagouv/OTP-DS-to-Grist/issues/280)
+- Aucune évolution technique majeure à signaler durant cette période.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Aucune autre modification significative n'a été apportée.

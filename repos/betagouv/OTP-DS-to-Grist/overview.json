@@ -1,28 +1,32 @@
 {
   "url": "https://github.com/betagouv/OTP-DS-to-Grist",
   "name": "OTP-DS-to-Grist",
-  "description": "Ce projet permet de synchroniser des données de Démarches Simplifiées vers Grist, offrant une solution pour gérer et visualiser les informations des démarches administratives.",
+  "description": "Ce projet permet de synchroniser des données de Démarches Simplifiées vers Grist, offrant aux utilisateurs ayant les droits appropriés la possibilité d'exporter et de gérer ces données dans un environnement Grist.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Notifications & Alertes",
-    "Recherche & Filtres"
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Flask",
+    "Flask-SocketIO",
     "Requests",
     "SQLAlchemy",
-    "APScheduler",
-    "psycopg2-binary"
+    "PostgreSQL",
+    "APScheduler"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Python (scripts & backend)"
+    "Python (scripts & backend)",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -30,7 +34,6 @@
     ]
   },
   "tests": [
-    "Jest",
     "Pytest"
   ],
   "workflows": [
@@ -50,6 +53,7 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
