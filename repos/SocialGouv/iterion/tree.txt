@@ -131,13 +131,16 @@
 ├── cmd
 │   ├── iterion
 │   │   ├── bench.go
+│   │   ├── bundle.go
 │   │   ├── claw_runner.go
 │   │   ├── claw_runner_proxy.go
 │   │   ├── claw_runner_proxy_test.go
+│   │   ├── conduct.go
 │   │   ├── diagram.go
 │   │   ├── editor.go
 │   │   ├── init_cmd.go
 │   │   ├── inspect.go
+│   │   ├── issue.go
 │   │   ├── main.go
 │   │   ├── mcp_ask_user.go
 │   │   ├── mcp_control.go
@@ -218,6 +221,7 @@
 │   ├── attachments.md
 │   ├── backends.md
 │   ├── browser-pane.md
+│   ├── bundles.md
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
 │   ├── cloud-deployment.md
@@ -225,6 +229,7 @@
 │   ├── cloud-troubleshooting.md
 │   ├── cloud-user.md
 │   ├── cloud.md
+│   ├── conductor.md
 │   ├── delegation.md
 │   ├── desktop-architecture.md
 │   ├── desktop-build.md
@@ -244,6 +249,7 @@
 │   │   └── iterion-logo.png
 │   ├── install.md
 │   ├── install.sh
+│   ├── native-tracker.md
 │   ├── observability
 │   │   ├── README.md
 │   │   ├── configs
@@ -271,12 +277,71 @@
 │   └── workflow_authoring_pitfalls.md
 ├── e2e
 │   ├── SCENARIOS.md
+│   ├── bundle_secured_renovacy_test.go
 │   ├── claw_tool_coverage_live_test.go
+│   ├── conductor_test.go
 │   ├── e2e_test.go
+│   ├── fixtures
+│   │   ├── feature-dev-go-service
+│   │   │   ├── README.md
+│   │   │   ├── devbox.json
+│   │   │   ├── go.mod
+│   │   │   ├── handlers
+│   │   │   │   ├── users.go
+│   │   │   │   └── users_test.go
+│   │   │   ├── internal
+│   │   │   │   └── store
+│   │   │   │       └── store.go
+│   │   │   ├── main.go
+│   │   │   └── middleware
+│   │   │       └── logger.go
+│   │   ├── protestware-node-ipc
+│   │   │   ├── README.md
+│   │   │   ├── index.js
+│   │   │   ├── package-lock.json
+│   │   │   └── package.json
+│   │   ├── renovacy-multi-stack
+│   │   │   ├── README.md
+│   │   │   ├── go-app
+│   │   │   │   ├── go.mod
+│   │   │   │   ├── go.sum
+│   │   │   │   └── main.go
+│   │   │   ├── npm-app
+│   │   │   │   ├── index.js
+│   │   │   │   ├── package-lock.json
+│   │   │   │   └── package.json
+│   │   │   ├── py-app
+│   │   │   │   ├── main.py
+│   │   │   │   └── requirements.txt
+│   │   │   └── rust-app
+│   │   │       ├── Cargo.lock
+│   │   │       ├── Cargo.toml
+│   │   │       └── src
+│   │   │           └── main.rs
+│   │   └── review-pr-mix
+│   │       ├── README.md
+│   │       ├── auth
+│   │       │   ├── token.go
+│   │       │   └── token_test.go
+│   │       ├── config
+│   │       │   └── config.go
+│   │       ├── devbox.json
+│   │       ├── go.mod
+│   │       ├── main.go
+│   │       ├── queue
+│   │       │   ├── queue.go
+│   │       │   └── queue_test.go
+│   │       ├── storage
+│   │       │   └── blob.go
+│   │       └── worker
+│   │           ├── worker.go
+│   │           └── worker_test.go
 │   ├── live_test.go
 │   ├── privacy_test.go
-│   ├── vibe_review_alternating_test.go
-│   └── vision_attachments_live_test.go
+│   ├── secured_renovacy_test.go
+│   ├── vibe_feature_dev_test.go
+│   ├── vision_attachments_live_test.go
+│   └── whole_improve_loop_test.go
 ├── editor
 │   ├── index.html
 │   ├── package.json
@@ -317,6 +382,9 @@
 │   │   │   ├── backends.ts
 │   │   │   ├── byok.ts
 │   │   │   ├── client.ts
+│   │   │   ├── conductor.ts
+│   │   │   ├── native.ts
+│   │   │   ├── projects.ts
 │   │   │   ├── runs.ts
 │   │   │   ├── types.ts
 │   │   │   └── ws.ts
@@ -350,6 +418,10 @@
 │   │   │   │   ├── FilePicker.tsx
 │   │   │   │   ├── searchResults.test.ts
 │   │   │   │   └── searchResults.ts
+│   │   │   ├── Home
+│   │   │   │   ├── HomeView.tsx
+│   │   │   │   ├── RecentFilesPanel.tsx
+│   │   │   │   └── RunsPanel.tsx
 │   │   │   ├── Inspector
 │   │   │   │   ├── Inspector.tsx
 │   │   │   │   ├── InspectorEdge.tsx
@@ -382,7 +454,9 @@
 │   │   │   │       ├── RouterForm.tsx
 │   │   │   │       └── ToolForm.tsx
 │   │   │   ├── Runs
+│   │   │   │   ├── ActiveFooter.tsx
 │   │   │   │   ├── ArtifactDiff.tsx
+│   │   │   │   ├── ArtifactFilesPanel.tsx
 │   │   │   │   ├── AttachmentFieldInput.tsx
 │   │   │   │   ├── BrowserLivePane.tsx
 │   │   │   │   ├── BrowserPane.tsx
@@ -399,6 +473,7 @@
 │   │   │   │   ├── LaunchView.tsx
 │   │   │   │   ├── LeftPanel.tsx
 │   │   │   │   ├── LogLinesView.tsx
+│   │   │   │   ├── LogSidePanel.tsx
 │   │   │   │   ├── NodeDetailPanel.tsx
 │   │   │   │   ├── PauseForm.tsx
 │   │   │   │   ├── QueueDepthBar.tsx
@@ -408,7 +483,6 @@
 │   │   │   │   ├── RunCanvasIR.tsx
 │   │   │   │   ├── RunCanvasToolbar.tsx
 │   │   │   │   ├── RunHeader.tsx
-│   │   │   │   ├── RunListView.test.ts
 │   │   │   │   ├── RunListView.tsx
 │   │   │   │   ├── RunLogPanel.tsx
 │   │   │   │   ├── RunMetrics.tsx
@@ -419,6 +493,7 @@
 │   │   │   │   ├── VarFieldInput.test.ts
 │   │   │   │   ├── VarFieldInput.tsx
 │   │   │   │   ├── runStatusClasses.ts
+│   │   │   │   ├── runStatusMeta.ts
 │   │   │   │   ├── toolFormatters.test.ts
 │   │   │   │   └── toolFormatters.ts
 │   │   │   ├── SourceView
@@ -434,11 +509,17 @@
 │   │   │   │   ├── backendEmoji.ts
 │   │   │   │   └── providerDetect.ts
 │   │   │   ├── shared
+│   │   │   │   ├── AppHeader.tsx
+│   │   │   │   ├── ConductorControlBar.tsx
 │   │   │   │   ├── ConfirmDialog.tsx
 │   │   │   │   ├── ErrorBoundary.tsx
+│   │   │   │   ├── NavLinks.tsx
+│   │   │   │   ├── PageShell.tsx
 │   │   │   │   ├── ProjectLabel.tsx
 │   │   │   │   ├── ShortcutsHelp.tsx
-│   │   │   │   └── Toast.tsx
+│   │   │   │   ├── Toast.tsx
+│   │   │   │   ├── UserTeamChip.tsx
+│   │   │   │   └── WSStatusDot.tsx
 │   │   │   └── ui
 │   │   │       ├── Badge.tsx
 │   │   │       ├── Button.tsx
@@ -478,11 +559,14 @@
 │   │   │   ├── useEscapeStack.ts
 │   │   │   ├── useFileWatcher.ts
 │   │   │   ├── useFullscreen.ts
+│   │   │   ├── useGlobalActiveRuns.ts
 │   │   │   ├── useGroupedDiagnostics.ts
 │   │   │   ├── useHumanNodeSchema.ts
 │   │   │   ├── useInspectorMode.ts
 │   │   │   ├── useLayoutPersistence.ts
 │   │   │   ├── useProjectInfo.ts
+│   │   │   ├── useProjectSwitchListener.ts
+│   │   │   ├── useProjects.ts
 │   │   │   ├── usePromptEditorMount.tsx
 │   │   │   ├── useResolvedEffort.ts
 │   │   │   ├── useRunCommits.ts
@@ -492,6 +576,8 @@
 │   │   │   ├── useRunReport.ts
 │   │   │   ├── useRunToasts.ts
 │   │   │   ├── useRunWebSocket.ts
+│   │   │   ├── useRuns.test.ts
+│   │   │   ├── useRuns.ts
 │   │   │   └── useSchemaPromptCreators.ts
 │   │   ├── lib
 │   │   │   ├── attachmentValidation.test.ts
@@ -535,6 +621,7 @@
 │   │   ├── store
 │   │   │   ├── backendDetect.ts
 │   │   │   ├── document.ts
+│   │   │   ├── downloads.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── library.ts
 │   │   │   ├── recents.ts
@@ -546,8 +633,15 @@
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
 │   │   ├── views
+│   │   │   ├── Board
+│   │   │   │   ├── IssueModal.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Conductor
+│   │   │   │   ├── SettingsDrawer.tsx
+│   │   │   │   └── index.tsx
 │   │   │   ├── Login.tsx
 │   │   │   ├── ProjectSwitcher
+│   │   │   │   ├── AddProjectDialog.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── Settings
 │   │   │   │   ├── AboutTab.tsx
@@ -575,9 +669,10 @@
 │   └── vite.config.ts
 ├── examples
 │   ├── bots
+│   │   ├── branch_improve_loop.bot
 │   │   ├── vibe_feature_dev.bot
-│   │   ├── vibe_review_alternating.bot
-│   │   └── vibe_review_alternating.md
+│   │   ├── whole_improve_loop.bot
+│   │   └── whole_improve_loop.md
 │   ├── devcontainer-devbox
 │   │   ├── .devcontainer
 │   │   │   └── devcontainer.json
@@ -588,9 +683,37 @@
 │   │   └── iterion-hitl.yml
 │   ├── mcp_test_server
 │   │   └── main.go
-│   ├── secured-renovacy.iter
+│   ├── secured-renovacy
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── attachments
+│   │   │   └── .gitkeep
+│   │   ├── bot.bot
+│   │   ├── manifest.yaml
+│   │   ├── prompts
+│   │   │   └── .gitkeep
+│   │   └── skills
+│   │       ├── .gitkeep
+│   │       └── package-managers.md
 │   ├── secured-renovacy.md
-│   └── secured-renovacy.select-candidate.js
+│   ├── secured-renovacy.select-candidate.js
+│   └── whats-next
+│       ├── .gitignore
+│       ├── README.md
+│       ├── attachments
+│       │   └── .gitkeep
+│       ├── bot.bot
+│       ├── manifest.yaml
+│       ├── prompts
+│       │   └── .gitkeep
+│       └── skills
+│           ├── .gitkeep
+│           ├── iterion-bot-catalog.md
+│           ├── iterion-dsl-quickref.md
+│           ├── priority-elicitation.md
+│           ├── repo-survey.md
+│           ├── roadmap-synthesis.md
+│           └── whats-next.md
 ├── go.mod
 ├── go.sum
 ├── marketplace.json
@@ -768,9 +891,20 @@
 │   │   ├── report.go
 │   │   ├── runner.go
 │   │   └── store.go
+│   ├── bundle
+│   │   ├── bundle.go
+│   │   ├── bundle_test.go
+│   │   ├── loader.go
+│   │   ├── manifest.go
+│   │   ├── tar.go
+│   │   ├── testbuild_test.go
+│   │   ├── writer.go
+│   │   └── writer_test.go
 │   ├── cli
 │   │   ├── bench.go
+│   │   ├── bundle.go
 │   │   ├── cli_test.go
+│   │   ├── conduct.go
 │   │   ├── diagram.go
 │   │   ├── editor.go
 │   │   ├── editor_test.go
@@ -779,12 +913,16 @@
 │   │   ├── init_test.go
 │   │   ├── inspect.go
 │   │   ├── inspect_node.go
+│   │   ├── issue.go
 │   │   ├── output.go
 │   │   ├── report.go
 │   │   ├── resume.go
 │   │   ├── run.go
 │   │   ├── sandbox.go
 │   │   ├── templates
+│   │   │   ├── bundle_README.md
+│   │   │   ├── bundle_bot.bot
+│   │   │   ├── bundle_manifest.yaml
 │   │   │   ├── pr_refine_single_model.iter
 │   │   │   └── pr_refine_single_model_backend.bot
 │   │   ├── tty.go
@@ -798,6 +936,51 @@
 │   │   │   └── metrics.go
 │   │   └── tracing
 │   │       └── tracing.go
+│   ├── conductor
+│   │   ├── commands.go
+│   │   ├── conductor.go
+│   │   ├── conductor_test.go
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── config_watcher.go
+│   │   ├── engine_runner.go
+│   │   ├── engine_runner_test.go
+│   │   ├── external.go
+│   │   ├── hooks.go
+│   │   ├── hooks_test.go
+│   │   ├── http.go
+│   │   ├── http_test.go
+│   │   ├── httpjson.go
+│   │   ├── loop.go
+│   │   ├── manager.go
+│   │   ├── native
+│   │   │   ├── adapter.go
+│   │   │   ├── adapter_test.go
+│   │   │   ├── board.go
+│   │   │   ├── board_test.go
+│   │   │   ├── event.go
+│   │   │   ├── http.go
+│   │   │   ├── http_test.go
+│   │   │   ├── issue.go
+│   │   │   ├── store.go
+│   │   │   └── store_test.go
+│   │   ├── retry.go
+│   │   ├── routing_runner.go
+│   │   ├── routing_runner_test.go
+│   │   ├── runner.go
+│   │   ├── state.go
+│   │   ├── sysinfo.go
+│   │   ├── template.go
+│   │   ├── template_test.go
+│   │   ├── tracker
+│   │   │   ├── forgejo.go
+│   │   │   ├── forgejo_test.go
+│   │   │   ├── github.go
+│   │   │   ├── github_test.go
+│   │   │   ├── labels.go
+│   │   │   └── tracker.go
+│   │   ├── workspace.go
+│   │   └── workspace_test.go
 │   ├── config
 │   │   ├── config.go
 │   │   ├── config_test.go
@@ -824,6 +1007,7 @@
 │   │   │   ├── ir.go
 │   │   │   ├── mermaid.go
 │   │   │   ├── mermaid_test.go
+│   │   │   ├── presets_test.go
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
 │   │   │   ├── sandbox.go
@@ -837,6 +1021,7 @@
 │   │   │   ├── lexer.go
 │   │   │   ├── parser.go
 │   │   │   ├── parser_test.go
+│   │   │   ├── presets_test.go
 │   │   │   └── token.go
 │   │   ├── testdata
 │   │   │   ├── ci_fix_until_green.iter
@@ -851,6 +1036,7 @@
 │   │   ├── types
 │   │   │   └── types.go
 │   │   ├── unparse
+│   │   │   ├── presets_test.go
 │   │   │   ├── roundtrip_test.go
 │   │   │   ├── unparse.go
 │   │   │   └── unparse_test.go
@@ -901,6 +1087,9 @@
 │   ├── runtime
 │   │   ├── budget.go
 │   │   ├── budget_test.go
+│   │   ├── bundle.go
+│   │   ├── bundle_attach_test.go
+│   │   ├── bundle_test.go
 │   │   ├── chaos_test.go
 │   │   ├── engine.go
 │   │   ├── engine_test.go
@@ -931,6 +1120,8 @@
 │   ├── runview
 │   │   ├── broker.go
 │   │   ├── broker_test.go
+│   │   ├── bundle_prompts.go
+│   │   ├── bundle_prompts_test.go
 │   │   ├── compile.go
 │   │   ├── detached.go
 │   │   ├── detached_unix.go
@@ -1023,18 +1214,24 @@
 │   │   ├── cloudpublisher
 │   │   │   └── publisher.go
 │   │   ├── effort.go
+│   │   ├── filesystem.go
 │   │   ├── filter.go
 │   │   ├── health.go
 │   │   ├── health_test.go
 │   │   ├── hub.go
 │   │   ├── middleware.go
 │   │   ├── oauth_routes.go
+│   │   ├── projects
+│   │   │   ├── prune_test.go
+│   │   │   └── registry.go
+│   │   ├── projects.go
 │   │   ├── runs.go
 │   │   ├── runs_browser.go
 │   │   ├── runs_commits.go
 │   │   ├── runs_commits_test.go
 │   │   ├── runs_files.go
 │   │   ├── runs_files_test.go
+│   │   ├── runs_global.go
 │   │   ├── runs_log.go
 │   │   ├── runs_merge.go
 │   │   ├── runs_preview.go
@@ -1044,6 +1241,7 @@
 │   │   ├── runs_uploads_test.go
 │   │   ├── runs_ws.go
 │   │   ├── runs_ws_logs.go
+│   │   ├── runs_ws_logs_cross_store.go
 │   │   ├── runs_ws_test.go
 │   │   ├── server.go
 │   │   ├── server_info.go
@@ -1108,6 +1306,9 @@
 │   └── slim
 │       └── Dockerfile
 ├── scripts
+│   ├── adhoc
+│   │   ├── whats-next-prompts-review.iter
+│   │   └── whats-next-skills-gen.iter
 │   ├── build.sh
 │   ├── desktop
 │   │   ├── Dockerfile.appimage
@@ -7217,4 +7418,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1088 directories, 6677 files
+1124 directories, 6842 files

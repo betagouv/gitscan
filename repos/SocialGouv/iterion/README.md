@@ -105,9 +105,10 @@ Same engine, six delivery modes — pick the one that fits your workflow:
 | 🪟 **Desktop app** | Native window, multi-project, OS keychain, auto-update | Download `iterion-desktop` from [Releases](https://github.com/SocialGouv/iterion/releases/latest) | [desktop.md](docs/desktop.md) |
 | 🐳 **Docker** | Zero-install runs, reproducible CI | `docker run --rm ghcr.io/socialgouv/iterion:latest` | [install.md#docker](docs/install.md#docker) |
 | ☁️ **Cloud / server** | Multi-tenant deployment, shared run store, REST/WS API | `helm install iterion oci://ghcr.io/socialgouv/charts/iterion` | [cloud.md](docs/cloud.md) |
+| 🎼 **Conductor** | Autonomous loop — poll a tracker, dispatch a workflow per issue | Bundled: `iterion conduct iterion.conductor.yaml` | [conductor.md](docs/conductor.md) |
 | 📦 **TypeScript SDK** | Programmatic invocation from Node/Deno/Bun | `npm install @iterion/sdk` | [sdks/typescript/](sdks/typescript/) |
 
-All six invoke the same Go core. The DSL, runtime, persistence and observability are identical — they only differ in how you reach them.
+All seven invoke the same Go core. The DSL, runtime, persistence and observability are identical — they only differ in how you reach them.
 
 ### Your first workflow
 
@@ -147,6 +148,8 @@ All run data (events, artifacts, interactions) is stored in `.iterion/runs/`.
 ## 🤖 `.iter` vs `.bot`
 
 Iterion accepts two interchangeable file extensions: **`.iter`** for raw or experimental DSL (didactic examples, coverage tests, single-purpose scripts) and **`.bot`** for productized, operational bots (with human gates, mitigation steps, reports, and a documented runbook). The parser, compiler, runtime, and editor treat them identically — the distinction is narrative only. `iterion init` produces a `.bot` file by default; the `examples/` directory ships both, with `.bot` reserved for examples meant to be run unmodified against real systems.
+
+Bots can also be shipped as **`.botz`** — a tar.gz packaging the workflow with adjacent resources (Claude Code skills, reusable prompts, default attachments, manifest). Scaffold with `iterion bundle init`, build with `iterion bundle pack`, run with `iterion run my.botz`. See [docs/bundles.md](docs/bundles.md).
 
 ---
 
