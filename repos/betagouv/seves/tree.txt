@@ -300,7 +300,8 @@
 │   │   ├── test_tasks.py
 │   │   ├── test_templatetags.py
 │   │   ├── test_update_contacts_structures_email.py
-│   │   └── test_users.py
+│   │   ├── test_users.py
+│   │   └── utils.py
 │   ├── urls.py
 │   ├── validators.py
 │   ├── versions.py
@@ -528,7 +529,6 @@
 │   │       ├── __init__.py
 │   │       └── create_espece_from_csv.py
 │   ├── managers.py
-│   ├── managers_mixins.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_insert_initial_data.py
@@ -654,21 +654,25 @@
 │   │   ├── 0122_add_on_phytophthora_kernoviae.py
 │   │   ├── 0123_alter_lieu_site_inspection.py
 │   │   ├── 0124_auto_20260504_1643.py
+│   │   ├── 0125_remove_evenement_date_derniere_mise_a_jour_and_more.py
+│   │   ├── 0126_elementinfeste.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── common.py
+│   │   ├── elements_infestes.py
 │   │   ├── evenements.py
 │   │   ├── fiches_detection.py
 │   │   ├── fiches_zone_delimitee.py
 │   │   ├── lieux.py
-│   │   ├── models_mixins.py
 │   │   └── prelevements.py
 │   ├── organismes_nuisibles.py
 │   ├── signals.py
 │   ├── static
 │   │   └── sv
 │   │       ├── common.css
+│   │       ├── element_infeste.css
+│   │       ├── elements_infestes.mjs
 │   │       ├── espece_search.mjs
 │   │       ├── evenement_details.css
 │   │       ├── evenement_details.js
@@ -716,6 +720,8 @@
 │   │       ├── fichezonedelimitee_detail.html
 │   │       ├── fichezonedelimitee_form.html
 │   │       ├── forms
+│   │       │   ├── element_infeste.html
+│   │       │   ├── element_infeste_base_set.html
 │   │       │   └── zone_infestee_base_set.html
 │   │       └── structure_add_to_visibilite_form.html
 │   ├── templatetags
@@ -937,4 +943,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-70 directories, 869 files
+70 directories, 875 files
