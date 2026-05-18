@@ -1,30 +1,32 @@
-## Changelog : benefriches (30 derniers jours, au 12 mai 2026)
+## Changelog : benefriches (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration du calcul des impacts économiques et environnementaux des projets de reconversion de friches, notamment en affinant les données prises en compte pour le calcul du seuil de rentabilité et en intégrant les coûts de construction et de réhabilitation. L'interface utilisateur a également été améliorée, avec l'ajout de nouvelles visualisations et la correction de bugs pour une meilleure expérience utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du calcul des impacts économiques et environnementaux des projets de reconversion de friches, notamment via l'ajout de nouveaux indicateurs et la correction de plusieurs erreurs de calcul. L'interface utilisateur a également été améliorée pour faciliter la saisie des données et la visualisation des résultats, en particulier concernant les dépenses liées aux bâtiments et les surfaces.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle vue "Résumé des impacts" avec des graphiques pour chaque bénéficiaire d'impact [#245d401](https://github.com/incubateur-ademe/benefriches/commit/245d401).
-- Affichage des dépenses de construction et de réhabilitation dans la vue des caractéristiques du projet urbain [#02a2613](https://github.com/incubateur-ademe/benefriches/commit/02a2613).
-- Ajout d'un onglet "Score de développement" (en version bêta) pour visualiser les impacts [#bcb431a](https://github.com/incubateur-ademe/benefriches/commit/bcb431a).
-- Calcul du seuil de rentabilité avec prise en compte des coûts de transfert de propriété et des revenus locatifs [#61ae910](https://github.com/incubateur-ademe/benefriches/commit/61ae910).
-- Ajout d'un endpoint pour calculer le coût de l'inaction sur une friche [#fae2976](https://github.com/incubateur-ademe/benefriches/commit/fae2976).
-- Amélioration de l'affichage des dépenses de décontamination du sol dans le résumé du projet [#a18382f](https://github.com/incubateur-ademe/benefriches/commit/a18382f).
-- Prise en compte des dépenses liées aux infrastructures routières et aux réseaux lors du calcul des impacts [#3a5c3e0](https://github.com/incubateur-ademe/benefriches/commit/3a5c3e0).
-- Affichage de la surface totale du site sur l'étape des espaces verts publics [#be075fb](https://github.com/incubateur-ademe/benefriches/commit/be075fb).
-- Pré-remplissage de la surface de plancher des nouveaux bâtiments lors de la création d'un projet urbain [#071dc5a](https://github.com/incubateur-ademe/benefriches/commit/071dc5a).
+- Ajout d'un onglet "Développement" sur la page des impacts (en beta) pour visualiser un score de développement. [#8bf42b4](https://github.com/incubateur-ademe/benefriches/commit/8bf42b4)
+- Affichage du coût de l'inaction sur une friche via un nouveau endpoint API. [#fae2976](https://github.com/incubateur-ademe/benefriches/commit/fae2976)
+- Ajout de graphiques pour visualiser la répartition des bénéfices par acteur dans l'onglet "Seuil de rentabilité". [#245d401](https://github.com/incubateur-ademe/benefriches/commit/245d401)
+- Amélioration de la pré-remplissage de la surface des bâtiments lors de la création d'un projet urbain. [#071dc5a](https://github.com/incubateur-ademe/benefriches/commit/071dc5a)
+- Affichage de la surface totale du site sur l'étape des espaces verts publics. [#be075fb](https://github.com/incubateur-ademe/benefriches/commit/be075fb)
+- Ajout de l'affichage des dépenses de construction et de réhabilitation des bâtiments dans les vues et l'export PDF. [#02a2613](https://github.com/incubateur-ademe/benefriches/commit/02a2613)
+- Calcul et affichage du seuil de rentabilité avec des indicateurs économiques améliorés. [#cb3b6ea](https://github.com/incubateur-ademe/benefriches/commit/cb3b6ea)
+- Correction de l'affichage des dépenses liées à la décontamination des sols lorsque la valeur est nulle. [#a18382f](https://github.com/incubateur-ademe/benefriches/commit/a18382f)
+- Correction du calcul des impacts liés à la nature et à la conservation dans le calcul du seuil de rentabilité. [#3a3efa7](https://github.com/incubateur-ademe/benefriches/commit/3a3efa7)
 
 ### Évolutions techniques
-- Refactorisation de l'architecture API pour améliorer la maintenabilité et l'évolutivité [#3a3efa7](https://github.com/incubateur-ademe/benefriches/commit/3a3efa7).
-- Amélioration des tests unitaires et d'intégration pour garantir la qualité du code [#277485a](https://github.com/incubateur-ademe/benefriches/commit/277485a).
-- Mise en place d'un système de synchronisation quotidienne des abonnements à la newsletter à partir du CRM via un cron Scalingo [#91b0481](https://github.com/incubateur-ademe/benefriches/commit/91b0481).
-- Amélioration de la configuration CI/CD pour optimiser les temps de build et de déploiement [#f12d312](https://github.com/incubateur-ademe/benefriches/commit/f12d312).
-- Utilisation de variables d'environnement standardisées pour les flags de fonctionnalité dans l'application web [#f067c7f](https://github.com/incubateur-ademe/benefriches/commit/f067c7f).
-- Refactorisation du code pour extraire des composants réutilisables et améliorer la modularité [#92404ae](https://github.com/incubateur-ademe/benefriches/commit/92404ae).
+- Refactorisation du code pour inclure les coûts de construction et de réhabilitation des bâtiments dans le calcul de l'équilibre économique. [#b9c3fd4](https://github.com/incubateur-ademe/benefriches/commit/b9c3fd4)
+- Refactorisation de la gestion des dépenses liées aux bâtiments pour utiliser un DTO partagé. [#c521574](https://github.com/incubateur-ademe/benefriches/commit/c521574)
+- Amélioration des tests d'intégration pour l'API, notamment pour la récupération des fonctionnalités d'un projet. [#277485a](https://github.com/incubateur-ademe/benefriches/commit/277485a)
+- Ajout d'une synchronisation quotidienne des abonnements à la newsletter depuis le CRM via un cron Scalingo. [#91b0481](https://github.com/incubateur-ademe/benefriches/commit/91b0481)
+- Mise à jour de plusieurs dépendances (Vitest, dependencies API et web). [#7f4ecd4](https://github.com/incubateur-ademe/benefriches/commit/7f4ecd4), [#397c36b](https://github.com/incubateur-ademe/benefriches/commit/397c36b), [#047c413](https://github.com/incubateur-ademe/benefriches/commit/047c413)
+- Correction de l'inclusion du fichier `cron.json` dans le build Scalingo. [#46beb3d](https://github.com/incubateur-ademe/benefriches/commit/46beb3d)
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées [#4995672](https://github.com/incubateur-ademe/benefriches/commit/4995672).
-- Correction de références de fichiers obsolètes dans la documentation CLAUDE.md [#8bf42b4](https://github.com/incubateur-ademe/benefriches/commit/8bf42b4).
-- Mise à jour des dépendances mineures et correctives [#047c413](https://github.com/incubateur-ademe/benefriches/commit/047c413), [#397c36b](https://github.com/incubateur-ademe/benefriches/commit/397c36b), [#e5745e1](https://github.com/incubateur-ademe/benefriches/commit/e5745e1).
-- Amélioration de la gestion des erreurs et des logs dans l'API [#ef5a2cd](https://github.com/incubateur-ademe/benefriches/commit/ef5a2cd).
-- Ajout de tests unitaires pour les nouveaux composants et fonctionnalités [#3b74413](https://github.com/incubateur-ademe/benefriches/commit/3b74413).
+- Amélioration de la documentation, notamment pour l'API et les tâches cron. [#db42605](https://github.com/incubateur-ademe/benefriches/commit/db42605)
+- Correction de références de fichiers obsolètes dans la documentation. [#8bf42b4](https://github.com/incubateur-ademe/benefriches/commit/8bf42b4)
+- Mise à jour des fichiers `.env.example` avec des commentaires. [#081d380](https://github.com/incubateur-ademe/benefriches/commit/081d380)
+- Suppression de fichiers inutilisés dans la documentation. [#3038b47](https://github.com/incubateur-ademe/benefriches/commit/3038b47)
+- Amélioration de la structure de la documentation README. [#3038b47](https://github.com/incubateur-ademe/benefriches/commit/3038b47)
+- Ajout d'un marqueur personnalisé Leaflet sur la page de résumé des impacts. [#058591e](https://github.com/incubateur-ademe/benefriches/commit/058591e)
+- Ajout d'OpenStreetMap à la directive CSP image et mise à jour de la page des mentions légales. [#ee919c7](https://github.com/incubateur-ademe/benefriches/commit/ee919c7)
