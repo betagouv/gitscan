@@ -437,12 +437,16 @@
 │   │   │       ├── Chart.yaml
 │   │   │       ├── charts
 │   │   │       │   ├── final-appset -> ../../../../../charts/final-appset/
-│   │   │       │   └── metabase -> ../../../../../charts/metabase
+│   │   │       │   ├── metabase -> ../../../../../charts/metabase
+│   │   │       │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │   │       ├── envs
 │   │   │       │   └── prod
 │   │   │       │       ├── config.yaml
 │   │   │       │       ├── templates
-│   │   │       │       │   └── metabase.sealedsecret.yaml
+│   │   │       │       │   ├── metabase.sealedsecret.yaml
+│   │   │       │       │   ├── metabase.traefik.yaml
+│   │   │       │       │   ├── oauth2-proxy.configmap.yml
+│   │   │       │       │   └── oauth2-proxy.sealed-secret.yaml
 │   │   │       │       └── values.yaml
 │   │   │       ├── templates
 │   │   │       │   └── appset-env.yaml
@@ -725,4 +729,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-299 directories, 428 files
+300 directories, 431 files
