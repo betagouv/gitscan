@@ -2,9 +2,26 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
-└── docker-root
-    ├── docker-init.d
-    │   ├── 80-checks.sh
-    │   └── 90-start-services.sh
-    └── docker-init.sh
-3 directories, 6 files
+├── docker-root
+│   ├── docker-init.d
+│   │   ├── 80-checks.sh
+│   │   └── 90-start-services.sh
+│   └── docker-init.sh
+└── helm
+    ├── .helmignore
+    ├── Chart.yaml
+    ├── templates
+    │   ├── NOTES.txt
+    │   ├── _helpers.tpl
+    │   ├── configmap.yaml
+    │   ├── deployment.yaml
+    │   ├── hpa.yaml
+    │   ├── ingress.yaml
+    │   ├── role.yaml
+    │   ├── rolebinding.yaml
+    │   ├── secrets.yaml
+    │   ├── service-turn.yaml
+    │   ├── service.yaml
+    │   └── serviceaccount.yaml
+    └── values.example.yaml
+5 directories, 21 files

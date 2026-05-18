@@ -1,16 +1,18 @@
-## Changelog : gallene-deployment (30 derniers jours, au 21 avril 2026)
+## Changelog : gallene-deployment (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet Gallene-deployment a connu une refonte majeure avec l'importation des scripts de déploiement et du Dockerfile originaux du projet `deburau/galene-docker`.  Ces changements permettent une meilleure base pour le déploiement de Gallene, notamment en facilitant son utilisation avec Kubernetes grâce à la configuration d'un fichier `.env`.
+Ce mois-ci, les efforts se sont concentrés sur la préparation du déploiement de Gallene via Helm, un gestionnaire de paquets pour Kubernetes.  Les modifications incluent l'adaptation de l'image Docker, l'ajout de la configuration nécessaire pour Kubernetes et la correction de quelques erreurs initiales.
 
 ### Évolutions fonctionnelles
-- Ajout de la source du fichier `.env` pour faciliter le déploiement Kubernetes.
+- Première version du chart Helm pour Gallene est disponible. [#1](https://github.com/suitenumerique/gallene-deployment/pull/1)
+- Possibilité de spécifier la source du fichier `.env` pour faciliter le déploiement Kubernetes.
 
 ### Évolutions techniques
-- Importation du Dockerfile et des scripts de déploiement du projet `deburau/galene-docker` [#1](https://github.com/suitenumerique/gallene-deployment/pull/1).
+- L'image Docker de base a été modifiée pour utiliser `galene-headless` et inclut l'argument `-headless`.
+- Intégration des scripts de `deburau/galene-docker` dans le dépôt.
 - Correction d'une erreur de syntaxe dans le Dockerfile.
+- La variable `VCS_REF` est maintenant correctement prise en compte lors de la construction de l'image Docker.
 - Modification du Dockerfile pour s'aligner sur la version originale de `deburau/galene-docker`.
-- Initialisation du dépôt avec un premier commit contenant le Dockerfile.
 
 ### Autres changements
-- Initialisation du dépôt par Samuel Paccoud.
+- Aucun changement significatif à signaler.
