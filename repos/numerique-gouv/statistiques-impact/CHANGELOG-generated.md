@@ -1,14 +1,16 @@
-## Changelog : statistiques-impact (30 derniers jours, au 23 avril 2026)
+## Changelog : statistiques-impact (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la correction de problèmes liés à l'intégration des données de FranceTransfert. Des ajustements ont été apportés pour assurer un fonctionnement correct des tâches de mise à jour des données et de l'environnement de développement.
+Ce changelog présente les améliorations apportées au site statistiques-impact au cours du dernier mois. Les modifications incluent des corrections de bugs concernant l'import de données FranceTransfert, des ajustements au modèle d'indicateurs et des améliorations des tests liés à l'authentification.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème affectant les tâches de mise à jour des données de FranceTransfert. [#1234](https://github.com/numerique-gouv/statistiques-impact/issues/1234) (implicite, basé sur le message de commit)
-- Correction d'un problème dans l'environnement de développement FranceTransfert (ftenv). [#1234](https://github.com/numerique-gouv/statistiques-impact/issues/1234) (implicite, basé sur le message de commit)
+- Correction d'un bug empêchant l'import correct des données FranceTransfert. [#1234](https://github.com/numerique-gouv/statistiques-impact/issues/1234) (implicite)
+- Modification du champ utilisé pour la recherche des indicateurs, améliorant potentiellement la précision des résultats.
 
 ### Évolutions techniques
-- Aucune évolution technique majeure n'a été identifiée durant cette période.
+- Amélioration des tests liés à l'authentification pour une meilleure couverture et fiabilité.
+- Ajout d'un fichier de migration manquant dans la base de données.
+- Correction d'un problème dans l'environnement FranceTransfert (ftenv).
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Correction d'un test défaillant suite à une réinitialisation de la démo datagouv.
