@@ -1,16 +1,13 @@
-## Changelog : dsfr-view-components (30 derniers jours, au 20 avril 2026)
+## Changelog : dsfr-view-components (30 derniers jours, au 2026-05-13)
 
 ### Résumé
-Cette nouvelle version apporte une mise à jour majeure vers ViewComponent 4, améliorant ainsi la compatibilité et les performances de la gem. De plus, le composant "tuile" a été enrichi avec l'ajout de badges, offrant ainsi plus de flexibilité pour la présentation de l'information. Des corrections et améliorations concernant le processus de CI/CD ont également été apportées.
+Ce changelog présente l'ajout d'un nouveau composant, la "Card", au Design Système de l'État (DSFR) via la gem dsfr-view-components. Ce composant permettra aux développeurs d'intégrer plus facilement des cartes d'information dans leurs applications web, améliorant ainsi la présentation et l'organisation du contenu pour les utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout de badges au composant "tuile" pour une meilleure présentation des informations. [#261](https://github.com/betagouv/dsfr-view-components/issues/261)
+- Ajout du composant "Card" permettant d'afficher des informations structurées dans une mise en page de carte. [#262](https://github.com/betagouv/dsfr-view-components/pull/262)
 
 ### Évolutions techniques
-- Mise à jour vers ViewComponent 4 et mise à jour des gems associées.
-- Suppression du `Gemfile.lock` pour permettre les tests avec différentes versions de Rails.
-- Corrections Rubocop pour améliorer la qualité du code.
-- Amélioration du processus de CI/CD pour assurer le déploiement du guide.
+- Intégration du nouveau composant "Card" dans la gem dsfr-view-components.
 
 ### Autres changements
-- Préparation de la version 5.0.0.pre.
+- Aucun autre changement significatif à signaler.
