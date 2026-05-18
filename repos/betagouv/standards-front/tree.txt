@@ -11,21 +11,17 @@
 │       └── test.yaml.template
 ├── .gitignore
 ├── .gitmodules
-├── .kamal
-│   ├── hooks
-│   │   ├── docker-setup.sample
-│   │   ├── post-app-boot.sample
-│   │   ├── post-deploy.sample
-│   │   ├── post-proxy-reboot.sample
-│   │   ├── pre-app-boot.sample
-│   │   ├── pre-build.sample
-│   │   ├── pre-connect.sample
-│   │   ├── pre-deploy.sample
-│   │   └── pre-proxy-reboot.sample
-│   └── secrets
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
+├── Makefile
+├── Procfile
+├── README.md
+├── Rakefile
 ├── app
 │   ├── api
 │   │   └── evaluations
@@ -68,14 +64,6 @@
 │   │   │   ├── .keep
 │   │   │   ├── ask_collection.rb
 │   │   │   └── category.rb
-│   │   ├── espace_membre
-│   │   │   ├── incubator.rb
-│   │   │   ├── mission_startup.rb
-│   │   │   ├── mission.rb
-│   │   │   ├── phase.rb
-│   │   │   ├── record.rb
-│   │   │   ├── startup.rb
-│   │   │   └── user.rb
 │   │   ├── evaluation
 │   │   │   ├── criterion.rb
 │   │   │   └── question.rb
@@ -123,7 +111,6 @@
 │   ├── docker-entrypoint
 │   ├── importmap
 │   ├── jobs
-│   ├── kamal
 │   ├── rails
 │   ├── rake
 │   ├── rubocop
@@ -138,7 +125,6 @@
 │   ├── credentials.yml.enc
 │   ├── cucumber.yml
 │   ├── database.yml
-│   ├── deploy.yml
 │   ├── environment.rb
 │   ├── environments
 │   │   ├── development.rb
@@ -178,7 +164,6 @@
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
-├── Dockerfile
 ├── features
 │   ├── page_d_accueil.feature
 │   ├── remplissage_evaluation.feature
@@ -189,9 +174,6 @@
 │   └── support
 │       ├── env.rb
 │       └── omniauth.rb
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
 ├── lib
 │   ├── tasks
 │   │   ├── .keep
@@ -200,8 +182,6 @@
 │       └── evaluation_questions_type.rb
 ├── log
 │   └── .keep
-├── Makefile
-├── Procfile
 ├── public
 │   ├── 400.html
 │   ├── 404.html
@@ -211,19 +191,13 @@
 │   ├── icon.png
 │   ├── icon.svg
 │   └── robots.txt
-├── Rakefile
-├── README.md
 ├── script
 │   ├── .keep
 │   └── import_emdb_backup.sh
 ├── spec
 │   ├── factories
 │   │   ├── evaluations.rb
-│   │   ├── incubators.rb
-│   │   ├── phases.rb
-│   │   ├── questions.rb
-│   │   ├── startups.rb
-│   │   └── users.rb
+│   │   └── questions.rb
 │   ├── fixtures
 │   │   └── files
 │   │       └── dev-standards.yml
@@ -237,8 +211,7 @@
 │   │   ├── evaluation
 │   │   │   ├── criterion_spec.rb
 │   │   │   └── question_spec.rb
-│   │   ├── evaluation_spec.rb
-│   │   └── startup_spec.rb
+│   │   └── evaluation_spec.rb
 │   ├── presenters
 │   │   ├── evaluation_presenter_spec.rb
 │   │   └── question_presenter_spec.rb
@@ -263,4 +236,4 @@
     ├── .keep
     └── javascript
         └── .keep
-66 directories, 199 files
+63 directories, 175 files
