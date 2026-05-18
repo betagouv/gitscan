@@ -1,31 +1,29 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 05 mai 2026)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'analyse des bulletins de salaire (payslips) et l'expérience utilisateur associée, notamment avec l'intégration d'une analyse documentaire intelligente (doc-ia). Des corrections ont également été apportées pour améliorer la validation des dossiers et la gestion des garants. Enfin, des améliorations de l'interface utilisateur et des corrections de bugs ont été implémentées.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment au niveau de la gestion des garants et de l'analyse des justificatifs de domicile. Des corrections de bugs ont également été apportées pour améliorer la stabilité de l'application et résoudre des problèmes spécifiques rencontrés par les utilisateurs, en particulier concernant la validation des dossiers et l'affichage des informations.
 
 ### Évolutions fonctionnelles
-- Ajout du nom préféré du garant dans le dossier. [#1953](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1953)
-- Intégration d'un support de lien vers la documentation de l'analyse IA sur les documents. [#1950](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1950)
+- Ajout du nom préféré du garant lors de la saisie des informations. [#1953](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1953)
+- Amélioration de la gestion des justificatifs de domicile : masquage des documents actuels lorsqu'ils sont vides lors de l'analyse des bulletins de paie. [#1949](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1949)
+- Ajout d'un lien d'aide contextuelle concernant les documents à fournir lors de l'analyse des bulletins de paie. [#1956](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1956)
 - Ajout d'un badge d'erreur au composant de récapitulatif financier (tenantv3). [#1947](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1947)
-- Ajout de l'analyse documentaire intelligente (doc-ia) pour les bulletins de salaire. [#1928](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1928)
-- Amélioration de l'affichage des messages d'erreur lors de l'analyse des bulletins de salaire. [#1940](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1940)
-- Masquage du bouton de réponse dans les messages lorsque le dossier est validé. [#1943](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1943)
-- Correction d'un bug empêchant la validation d'un dossier avec un garant personne morale. [#1952](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1952)
-- Correction d'un bug empêchant la validation d'un dossier avec un garant personne morale (hotfix). [#1952](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1952)
-- Correction de l'affichage des documents lors de la mise à jour d'un fichier de salaire. [#1935](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1935)
-- Correction du focus sur le champ somme lors de son état vide (formulaire de salaire). [#1941](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1941)
-- Correction de l'affichage des documents lors de l'analyse de la continuité de la fiche de paie. [#1949](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1949)
-- Ajout d'un message d'erreur plus clair lors du téléchargement de fichiers non supportés. [#1929](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1929)
-- Réinitialisation du formulaire de contact après soumission sur la page d'accueil. [#1945](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1945)
+- Correction d'un bug empêchant la validation d'un dossier avec un garant personne morale. [#1885a978](https://github.com/MTES-MCT/Dossier-Facile-Frontend/commit/1885a978)
+- Correction d'un bug empêchant la soumission d'une demande avec un garant vide. [#1952](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1952)
+- Ajout d'une enquête (survey) lors du téléchargement d'archives non vérifiées. [#1957](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1957)
+- Suppression de l'enquête pour les archives non vérifiées. [#1963](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1963)
+- Désactivation de l'autocomplétion incorrecte pour le nom préféré du garant. [#1955](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1955)
+- Réinitialisation du formulaire de contact après soumission. [#1945](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1945)
+- Masquage du bouton de réponse dans les messages lorsque le locataire est validé. [#1943](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1943)
 
 ### Évolutions techniques
 - Mise à jour des dépendances pour corriger des vulnérabilités (CVE). [#1954](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1954)
-- Ajout de la compatibilité avec la règle de feuille d'impôt. [#1946](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1946)
-- Refactorisation de la logique de sauvegarde des fichiers pour les salaires avec analyse. [#1939](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1939)
-- Amélioration de la gestion de la somme mensuelle dans le formulaire de salaire après suppression de fichier. [#1936](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1936)
-- Ajout de tests E2E pour le cas d'utilisation heureux de l'analyse des bulletins de salaire. [#1937](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1937)
+- Ajout de la compatibilité avec la règle de feuille d'impôt (tax leaf rule) pour l'analyse des justificatifs. [#1946](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1946)
+- Correction du type de contenu (contentType) récupéré depuis les headers. [#1958](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1958)
+- Correction de régressions des tests E2E. [#1959](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1959)
+- Remplacement du modal DSFR par un modal Typeform pour l'enquête. [#1961](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1961)
+- Nouvelle tentative d'intégration du modal Typeform. [#1960](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1960)
 
 ### Autres changements
-- Publication des versions 3.5.6 et 3.5.7.
-- Corrections de QA sur l'analyse des bulletins de salaire. [#1942](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1942)
-- Correction de tests QA sur les bulletins de salaire. [#1944](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1944)
+- Corrections et améliorations diverses pour la qualité du code et la maintenance du projet.
+- Publication des versions 3.5.6, 3.5.7, 3.5.8 et 3.5.9.
