@@ -171,6 +171,9 @@
 │   ├── 20260303153817_suppressionColonneIdResetMotDePasseUtilisateur.js
 │   ├── 20260304142822_suppressionMotDePasseDansDonneesUtilisateurs.js
 │   ├── 20260504130310_creationTableAdminsOrganisations.js
+│   ├── 20260507132939_ajouteSiretHashDonneesDansSuperviseurs.js
+│   ├── 20260507133356_migreDonneesEtSiretSuperviseurs.js
+│   ├── 20260507135337_ajouteContraintesSuperviseurs.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -706,8 +709,8 @@
 │   ├── depotDonnees.js
 │   ├── depots
 │   │   ├── depotDonneesActivitesMesure.ts
-│   │   ├── depotDonneesAdministrationOrganisations.interface.ts
-│   │   ├── depotDonneesAdministrationOrganisations.ts
+│   │   ├── depotDonneesAdminsOrganisations.interface.ts
+│   │   ├── depotDonneesAdminsOrganisations.ts
 │   │   ├── depotDonneesAutorisations.interface.ts
 │   │   ├── depotDonneesAutorisations.js
 │   │   ├── depotDonneesBrouillonService.ts
@@ -730,6 +733,7 @@
 │   │   ├── depotDonneesTeleversementModelesMesureSpecifique.js
 │   │   ├── depotDonneesTeleversementServices.interface.ts
 │   │   ├── depotDonneesTeleversementServices.ts
+│   │   ├── depotDonneesUtilisateurs.interface.ts
 │   │   ├── depotDonneesUtilisateurs.js
 │   │   └── modelesMesureSpecifique
 │   │       └── VerificationsUtilisateurPeutMuterModele.js
@@ -1069,7 +1073,8 @@
 │       ├── accueilInscription.pug
 │       ├── activation.pug
 │       ├── admin
-│       │   └── entites.pug
+│       │   ├── entites.pug
+│       │   └── utilisateurs.pug
 │       ├── apresAuthentification.pug
 │       ├── article.pug
 │       ├── base.pug
@@ -1146,6 +1151,10 @@
 │   │   │   ├── AdminEntites.svelte
 │   │   │   ├── adminEntites.api.ts
 │   │   │   └── adminEntites.ts
+│   │   ├── adminUtilisateurs
+│   │   │   ├── AdminUtilisateurs.svelte
+│   │   │   ├── adminUtilisateurs.api.ts
+│   │   │   └── adminUtilisateurs.ts
 │   │   ├── bandeauReferentielV2
 │   │   │   ├── BandeauReferentielV2.svelte
 │   │   │   ├── bandeauReferentielV2.d.ts
@@ -1823,7 +1832,7 @@
 │   ├── depotDonnees.spec.js
 │   ├── depots
 │   │   ├── depotDonneesActivitesMesure.spec.ts
-│   │   ├── depotDonneesAdministrationOrganisations.spec.ts
+│   │   ├── depotDonneesAdminsOrganisations.spec.ts
 │   │   ├── depotDonneesAutorisations.spec.js
 │   │   ├── depotDonneesBrouillonService.spec.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.spec.js
@@ -2081,4 +2090,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-280 directories, 1922 files
+281 directories, 1930 files

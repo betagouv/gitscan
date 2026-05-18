@@ -4,46 +4,48 @@
   "description": "MonServiceSécurisé est un service numérique développé par l'ANSSI et BetaGouv pour aider les collectivités territoriales et les entités publiques à sécuriser et homologuer leurs services numériques.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Sécurité & Conformité",
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "Gestion des établissements & Structures",
+    "Gestion métier générale",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Node.js",
     "Express",
     "PostgreSQL",
+    "bcrypt",
+    "jsonwebtoken",
+    "knex",
     "Svelte",
-    "TypeScript",
-    "Docker"
+    "axios",
+    "zod"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
-    "Frontend React",
-    "Svelte"
+    "Svelte",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Jest",
     "Vitest",
-    "Playwright",
-    "Cypress"
+    "Playwright"
   ],
   "workflows": [
-    "node.js",
-    "codeql-analysis",
-    "deploiement"
+    "node.js.yml",
+    "codeql-analysis.yml",
+    "deploiement.yml"
   ],
-  "lastActivity": "2026-05-07T11:24:48+02:00",
+  "lastActivity": "2026-05-13T14:03:07+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -59,6 +61,6 @@
     "TypeScript",
     "PostgreSQL",
     "Déploiement & Hosting",
-    "API & Intégrations"
+    "Écosystème beta.gouv / État"
   ]
 }
