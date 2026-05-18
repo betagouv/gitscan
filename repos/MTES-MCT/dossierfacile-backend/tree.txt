@@ -1441,7 +1441,6 @@
 │       │   │               │   ├── ImageMagickConfig.java
 │       │   │               │   ├── MailDependantBeanConfig.java
 │       │   │               │   ├── S3BucketConfig.java
-│       │   │               │   ├── ThreeDSOutscaleConfig.java
 │       │   │               │   └── filter
 │       │   │               │       └── AbstractDownloadRateLimitingFilter.java
 │       │   │               ├── constants
@@ -1579,8 +1578,7 @@
 │       │   │               │   ├── ApplicationLightMapper.java
 │       │   │               │   ├── MapDocumentCategories.java
 │       │   │               │   ├── log
-│       │   │               │   │   ├── DeletedOwnerMapper.java
-│       │   │               │   │   └── DeletedTenantMapper.java
+│       │   │               │   │   └── DeletedOwnerMapper.java
 │       │   │               │   └── mail
 │       │   │               │       ├── ApartmentSharingMapperForMail.java
 │       │   │               │       ├── TenantMapperForMail.java
@@ -1627,7 +1625,6 @@
 │       │   │               │   └── log
 │       │   │               │       ├── ApplicationTypeChange.java
 │       │   │               │       ├── DeletedOwnerModel.java
-│       │   │               │       ├── DeletedTenantModel.java
 │       │   │               │       ├── EditedDocument.java
 │       │   │               │       ├── EditedStep.java
 │       │   │               │       ├── EditionType.java
@@ -1681,7 +1678,6 @@
 │       │   │               │   ├── LogServiceImpl.java
 │       │   │               │   ├── MailCommonServiceImpl.java
 │       │   │               │   ├── MimeTypeDetectionServiceImpl.java
-│       │   │               │   ├── OutscaleFileStorageServiceImpl.java
 │       │   │               │   ├── OvhFileStorageServiceImpl.java
 │       │   │               │   ├── OwnerCommonServiceImpl.java
 │       │   │               │   ├── PartnerCallBackServiceImpl.java
@@ -1943,7 +1939,8 @@
 │       │       │       ├── 202604100000-add-indexes-document-ia-file-analysis.xml
 │       │       │       ├── 202604140000-add-index-operator-log-operator-action-creation-date.xml
 │       │       │       ├── 202604220000-add-preferred-name-to-guarantor.xml
-│       │       │       └── 202604290000-set-deployment_date_nullable.xml
+│       │       │       ├── 202604290000-set-deployment_date_nullable.xml
+│       │       │       └── 202605130000-drop-json-profile-from-tenant-log.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -1961,6 +1958,8 @@
 │           │               ├── mapper
 │           │               │   └── ApplicationFullMapperTest.java
 │           │               ├── model
+│           │               │   ├── ademe
+│           │               │   │   └── AdemeApiResultModelTest.java
 │           │               │   └── document_ia
 │           │               │       └── GenericPropertyTest.java
 │           │               ├── service
@@ -1973,9 +1972,7 @@
 │           │               │   ├── LinkLogServiceImplTest.java
 │           │               │   ├── LogServiceImplTest.java
 │           │               │   ├── MimeTypeDetectionServiceTest.java
-│           │               │   ├── OutscaleFileStorageServiceImplTest.java
-│           │               │   ├── PartnerCallBackServiceImplTest.java
-│           │               │   └── ThreeDSOutscaleFileStorageServiceImplTest.java
+│           │               │   └── PartnerCallBackServiceImplTest.java
 │           │               └── utils
 │           │                   ├── DateBasedFeatureToggleTest.java
 │           │                   ├── FileExtensionValidationTest.java
@@ -2087,6 +2084,7 @@
 │                       └── document
 │                           └── analysis
 │                               ├── rule
+│                               │   ├── BulletinSalaireRulesValidationServiceTest.java
 │                               │   └── validator
 │                               │       ├── document_ia
 │                               │       │   └── HasBeenDocumentIAAnalysedBITest.java
@@ -2365,4 +2363,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-584 directories, 1887 files
+585 directories, 1884 files
