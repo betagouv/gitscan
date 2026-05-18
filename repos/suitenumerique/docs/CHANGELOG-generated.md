@@ -1,36 +1,45 @@
-## Changelog : docs (30 derniers jours, au 12 mai 2026)
+## Changelog : docs (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité, la performance et l'expérience utilisateur. Des corrections de bugs ont été apportées pour améliorer la fiabilité de l'application, notamment en matière de gestion des documents, de collaboration et de chargement des commentaires. Des optimisations ont été réalisées pour améliorer la réactivité de l'interface et la gestion des ressources. De plus, la compatibilité avec les dernières versions de certaines dépendances a été assurée, et des améliorations d'accessibilité ont été implémentées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité, de la performance et de la sécurité de la plateforme. Des optimisations ont été apportées à la gestion des fichiers, à la collaboration en temps réel et à l'infrastructure sous-jacente. Une migration vers de nouveaux outils de gestion des dépendances et une mise à jour majeure de la spécification des documents (DocSpec) sont également notables.
 
 ### Évolutions fonctionnelles
-- Ajout d'un squelette de chargement pour le contenu afin d'améliorer l'expérience utilisateur pendant le chargement des documents [#2254].
-- Fermeture de la connexion WebSocket lorsque l'utilisateur change d'onglet, optimisant ainsi l'utilisation des ressources [#2264].
-- Ajout d'un lien vers la documentation dans le menu d'aide pour faciliter l'accès aux ressources d'aide [#2222].
-- Intégration de Crisp pour le support utilisateur, accessible depuis le menu d'aide [#2222].
-- Prise en charge de la création de sous-documents à partir de fichiers [#1987].
+- Ajout d'un lien vers la documentation dans le menu d'aide.
+- Amélioration de l'expérience utilisateur avec l'ajout de squelettes de chargement pour le contenu.
+- Correction de problèmes d'affichage et de fonctionnement des liens internes (interlinking).
+- Possibilité de créer des sous-documents à partir de fichiers.
+- Support de la création de sous-documents à partir de fichiers [#1987](https://github.com/suitenumerique/docs/issues/1987).
+- Amélioration de la gestion des commentaires et des transactions associées.
+- Ajout de la possibilité d'utiliser une nouvelle fonctionnalité d'IA via le SDK Mistral.
+- Amélioration de la gestion des accès et des invitations lors du déplacement de documents.
 
 ### Évolutions techniques
-- Migration de l'outil de construction de paquets de `pip` vers `uv` pour améliorer la gestion des dépendances et la performance de construction.
-- Mise à jour de l'image Nginx dans le Dockerfile vers la dernière version pour bénéficier des correctifs de sécurité et des améliorations de performance [#4fe508b].
-- Utilisation d'un runner `arm64` pour la construction des images pour l'architecture `arm64` [#c72336a].
-- Mise en place d'une stratégie de nouvelle tentative pour les verrous de table lors de la création de documents, améliorant ainsi la robustesse du système [#a47c351].
-- Implémentation des en-têtes `etag` et `last_modified` pour la récupération de contenu, permettant une meilleure gestion du cache et une réduction de la bande passante [#68f1600].
-- Refactorisation du module `core/utils.py` pour une meilleure organisation du code [#8f67b37].
-- Mise à jour de Docspec vers la version 3.0.x et adaptation de l'API du convertisseur [#2220].
-- Utilisation de Uvicorn pour exécuter l'application Django en environnement de développement [#ef93763].
+- Migration de la gestion des dépendances de `pip` à `uv` pour l'ensemble du projet (core, actions).
+- Mise à jour de la spécification des documents (DocSpec) vers la version 3.0.0, nécessitant une adaptation de l'API de conversion.
+- Utilisation de l'outil `trivy` pour l'analyse de vulnérabilités.
+- Amélioration de l'infrastructure CI/CD avec l'utilisation de runners `arm64` pour la construction d'images.
+- Refactorisation de certains modules backend pour une meilleure organisation et maintenabilité.
+- Mise en place d'une stratégie de retry pour la création de documents afin d'éviter les blocages.
+- Implémentation d'en-têtes `etag` et `last_modified` pour optimiser la récupération du contenu.
+- Utilisation de `uvicorn` pour exécuter l'application Django en environnement de développement.
+- Ajout de support pour le streaming du contenu des fichiers S3 via un endpoint dédié.
+- Suppression de contenu inutile dans les réponses de l'API.
+- Amélioration de la gestion des erreurs 5xx pour l'accessibilité.
+- Mise à jour des dépendances `axios`, `lxml` et `uuid` pour corriger des failles de sécurité.
 
 ### Autres changements
-- Mise à jour des chaînes de traduction (i18n) [#4d68f39].
-- Ignorer le fichier `uv.lock` dans la tâche de vérification orthographique [#325284c].
-- Correction de quelques problèmes de stabilité des tests de bout en bout [#c525694].
-- Amélioration de la gestion des erreurs 5xx et structuration des alertes pour une meilleure accessibilité [#31fea43, #9a5d81f].
-- Correction de typos dans le fichier `contributing.md` [#30ed563].
-- Ajout de tests pour vérifier la compatibilité avec les nouvelles versions des dépendances.
-- Mise à jour des dépendances : `next` (v16.2.6), `axios` (v1.15.2), `lxml` (v6.1.0), `uuid` (v14).
-- Suppression de la logique de suppression manuelle des accès depuis le hook de déplacement de document [#0a7aa58].
-- Correction de la gestion des interlinkings en mode impression [#3701fe5].
-- Amélioration de la gestion des couleurs en collaboration [#0f527a7].
-- Ajout d'un favicon par défaut [#ff176d6].
-- Factorisation des tests E2E dans un workflow séparé [#d933435].
-- Ajout du flag `last-failed` uniquement si `last-run` est renseigné dans le workflow CI [#d68d7ee].
+- Mise à jour des traductions.
+- Correction de problèmes de tests (flakiness).
+- Amélioration de la gestion des logs en mode debug.
+- Nettoyage du code et suppression de code obsolète.
+- Adaptation des types TypeScript aux dernières versions des bibliothèques utilisées (i18next, Cunningham, ui-kit).
+- Mise à jour de la configuration pour l'environnement Tilt.
+- Correction de problèmes de positionnement des éléments dans l'interface utilisateur.
+- Amélioration de la gestion des connexions WebSocket.
+- Ajout de la possibilité de configurer l'URI de la requête d'authentification forward.
+- Correction de problèmes liés à l'importation de fichiers CSV.
+- Amélioration de la gestion des accès lors de la création de documents.
+- Correction de problèmes de validation des emojis.
+- Suppression de la logique de suppression manuelle des accès depuis le hook de déplacement de document.
+- Correction de la gestion des espaces blancs dans les URLs des médias.
+- Ajout de la possibilité de définir un timeout d'inactivité pour les connexions WebSocket.
