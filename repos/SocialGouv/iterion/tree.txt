@@ -65,6 +65,8 @@
 ├── .envrc
 ├── .gitattributes
 ├── .github
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── brew-update.yml
 │       ├── desktop-release.yml
@@ -84,10 +86,15 @@
 ├── Formula
 │   └── iterion.rb
 ├── LICENSE
+├── PRODUCTION_READINESS.md
 ├── README.md
+├── SECURITY.md
 ├── SKILL-run-and-refine.md
 ├── SKILL.md
 ├── Taskfile.yml
+├── bots
+│   └── smoke
+│       └── board_smoke.bot
 ├── build
 │   ├── appicon.png
 │   ├── darwin
@@ -131,18 +138,20 @@
 ├── cmd
 │   ├── iterion
 │   │   ├── bench.go
+│   │   ├── bots.go
 │   │   ├── bundle.go
 │   │   ├── claw_runner.go
 │   │   ├── claw_runner_proxy.go
 │   │   ├── claw_runner_proxy_test.go
-│   │   ├── conduct.go
 │   │   ├── diagram.go
-│   │   ├── editor.go
+│   │   ├── dispatch.go
 │   │   ├── init_cmd.go
 │   │   ├── inspect.go
 │   │   ├── issue.go
 │   │   ├── main.go
 │   │   ├── mcp_ask_user.go
+│   │   ├── mcp_board.go
+│   │   ├── mcp_board_test.go
 │   │   ├── mcp_control.go
 │   │   ├── migrate.go
 │   │   ├── report.go
@@ -151,6 +160,7 @@
 │   │   ├── runner.go
 │   │   ├── sandbox.go
 │   │   ├── server.go
+│   │   ├── studio.go
 │   │   ├── validate.go
 │   │   └── version.go
 │   └── iterion-desktop
@@ -167,6 +177,7 @@
 │       ├── daemon_spawn_windows.go
 │       ├── doc.go
 │       ├── env_file.go
+│       ├── env_file_test.go
 │       ├── events.go
 │       ├── external_cli.go
 │       ├── external_cli_test.go
@@ -224,12 +235,12 @@
 │   ├── bundles.md
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
+│   ├── cloud-backup.md
 │   ├── cloud-deployment.md
 │   ├── cloud-public-exposure-checklist.md
 │   ├── cloud-troubleshooting.md
 │   ├── cloud-user.md
 │   ├── cloud.md
-│   ├── conductor.md
 │   ├── delegation.md
 │   ├── desktop-architecture.md
 │   ├── desktop-build.md
@@ -239,6 +250,7 @@
 │   ├── desktop-release-checklist.md
 │   ├── desktop.md
 │   ├── development.md
+│   ├── dispatcher.md
 │   ├── dsl.md
 │   ├── e2e_coverage.md
 │   ├── examples.md
@@ -269,17 +281,21 @@
 │   │   ├── dsl-grammar.md
 │   │   └── patterns.md
 │   ├── resume.md
+│   ├── reviews
+│   │   └── codebase-2026-05-17.md
 │   ├── routers.md
 │   ├── sandbox.md
 │   ├── skill.md
 │   ├── visual-editor.md
 │   ├── why-iterion.md
+│   ├── why-not-prompt-orchestration.md
 │   └── workflow_authoring_pitfalls.md
 ├── e2e
 │   ├── SCENARIOS.md
+│   ├── board_dispatcher_test.go
 │   ├── bundle_secured_renovacy_test.go
 │   ├── claw_tool_coverage_live_test.go
-│   ├── conductor_test.go
+│   ├── dispatcher_test.go
 │   ├── e2e_test.go
 │   ├── fixtures
 │   │   ├── feature-dev-go-service
@@ -342,331 +358,6 @@
 │   ├── vibe_feature_dev_test.go
 │   ├── vision_attachments_live_test.go
 │   └── whole_improve_loop_test.go
-├── editor
-│   ├── index.html
-│   ├── package.json
-│   ├── public
-│   │   ├── android-icon-144x144.png
-│   │   ├── android-icon-192x192.png
-│   │   ├── android-icon-36x36.png
-│   │   ├── android-icon-48x48.png
-│   │   ├── android-icon-72x72.png
-│   │   ├── android-icon-96x96.png
-│   │   ├── apple-icon-114x114.png
-│   │   ├── apple-icon-120x120.png
-│   │   ├── apple-icon-144x144.png
-│   │   ├── apple-icon-152x152.png
-│   │   ├── apple-icon-180x180.png
-│   │   ├── apple-icon-57x57.png
-│   │   ├── apple-icon-60x60.png
-│   │   ├── apple-icon-72x72.png
-│   │   ├── apple-icon-76x76.png
-│   │   ├── apple-icon-precomposed.png
-│   │   ├── apple-icon.png
-│   │   ├── browserconfig.xml
-│   │   ├── favicon-16x16.png
-│   │   ├── favicon-32x32.png
-│   │   ├── favicon-96x96.png
-│   │   ├── favicon.ico
-│   │   ├── manifest.json
-│   │   ├── ms-icon-144x144.png
-│   │   ├── ms-icon-150x150.png
-│   │   ├── ms-icon-310x310.png
-│   │   └── ms-icon-70x70.png
-│   ├── src
-│   │   ├── App.tsx
-│   │   ├── __tests__
-│   │   │   └── desktopBridge.test.ts
-│   │   ├── api
-│   │   │   ├── auth.ts
-│   │   │   ├── backends.ts
-│   │   │   ├── byok.ts
-│   │   │   ├── client.ts
-│   │   │   ├── conductor.ts
-│   │   │   ├── native.ts
-│   │   │   ├── projects.ts
-│   │   │   ├── runs.ts
-│   │   │   ├── types.ts
-│   │   │   └── ws.ts
-│   │   ├── app.css
-│   │   ├── auth
-│   │   │   └── AuthContext.tsx
-│   │   ├── components
-│   │   │   ├── Canvas
-│   │   │   │   ├── AuxiliaryNode.tsx
-│   │   │   │   ├── BreadcrumbBar.tsx
-│   │   │   │   ├── Canvas.tsx
-│   │   │   │   ├── CanvasEmpty.tsx
-│   │   │   │   ├── CanvasToolbar.tsx
-│   │   │   │   ├── ConditionalEdge.tsx
-│   │   │   │   ├── DetailSubNode.tsx
-│   │   │   │   ├── GroupNode.tsx
-│   │   │   │   ├── NodeContextMenu.tsx
-│   │   │   │   ├── QuickAddMenu.tsx
-│   │   │   │   ├── ReferenceEdge.tsx
-│   │   │   │   ├── SchemaRoleDialog.tsx
-│   │   │   │   ├── SearchOverlay.tsx
-│   │   │   │   ├── SubNodePalette.tsx
-│   │   │   │   ├── ToolPalette.tsx
-│   │   │   │   ├── WorkflowNode.tsx
-│   │   │   │   └── handlePositions.ts
-│   │   │   ├── Diagnostics
-│   │   │   │   ├── DiagnosticBadge.tsx
-│   │   │   │   └── DiagnosticsPanel.tsx
-│   │   │   ├── EditorView.tsx
-│   │   │   ├── FilePicker
-│   │   │   │   ├── FilePicker.tsx
-│   │   │   │   ├── searchResults.test.ts
-│   │   │   │   └── searchResults.ts
-│   │   │   ├── Home
-│   │   │   │   ├── HomeView.tsx
-│   │   │   │   ├── RecentFilesPanel.tsx
-│   │   │   │   └── RunsPanel.tsx
-│   │   │   ├── Inspector
-│   │   │   │   ├── Inspector.tsx
-│   │   │   │   ├── InspectorEdge.tsx
-│   │   │   │   ├── InspectorEditItem.tsx
-│   │   │   │   ├── InspectorEmpty.tsx
-│   │   │   │   ├── InspectorMulti.tsx
-│   │   │   │   ├── InspectorNode.tsx
-│   │   │   │   └── NodeRunsChip.tsx
-│   │   │   ├── Library
-│   │   │   │   ├── LibraryItemCard.tsx
-│   │   │   │   └── LibraryPanel.tsx
-│   │   │   ├── MissingCLIBanner.tsx
-│   │   │   ├── Panels
-│   │   │   │   ├── CommentsEditor.tsx
-│   │   │   │   ├── MCPServersEditor.tsx
-│   │   │   │   ├── PromptBodyEditor.tsx
-│   │   │   │   ├── PromptEditor.tsx
-│   │   │   │   ├── PromptEditorModal.tsx
-│   │   │   │   ├── SchemaEditor.tsx
-│   │   │   │   ├── VarsEditor.tsx
-│   │   │   │   ├── WorkflowSettingsForm.tsx
-│   │   │   │   └── forms
-│   │   │   │       ├── AgentForm.tsx
-│   │   │   │       ├── CompactionFields.tsx
-│   │   │   │       ├── ComputeForm.tsx
-│   │   │   │       ├── EdgeForm.tsx
-│   │   │   │       ├── FormField.tsx
-│   │   │   │       ├── HumanForm.tsx
-│   │   │   │       ├── MCPConfigFields.tsx
-│   │   │   │       ├── RouterForm.tsx
-│   │   │   │       └── ToolForm.tsx
-│   │   │   ├── Runs
-│   │   │   │   ├── ActiveFooter.tsx
-│   │   │   │   ├── ArtifactDiff.tsx
-│   │   │   │   ├── ArtifactFilesPanel.tsx
-│   │   │   │   ├── AttachmentFieldInput.tsx
-│   │   │   │   ├── BrowserLivePane.tsx
-│   │   │   │   ├── BrowserPane.tsx
-│   │   │   │   ├── CommitDetailDialog.tsx
-│   │   │   │   ├── CommitsPanel.tsx
-│   │   │   │   ├── EventLog.tsx
-│   │   │   │   ├── FileDiffDialog.tsx
-│   │   │   │   ├── FilesPanel.tsx
-│   │   │   │   ├── HumanInteractionField.tsx
-│   │   │   │   ├── HumanInteractionForm.tsx
-│   │   │   │   ├── HumanInteractionPanel.tsx
-│   │   │   │   ├── IRNode.tsx
-│   │   │   │   ├── InfoPanel.tsx
-│   │   │   │   ├── LaunchView.tsx
-│   │   │   │   ├── LeftPanel.tsx
-│   │   │   │   ├── LogLinesView.tsx
-│   │   │   │   ├── LogSidePanel.tsx
-│   │   │   │   ├── NodeDetailPanel.tsx
-│   │   │   │   ├── PauseForm.tsx
-│   │   │   │   ├── QueueDepthBar.tsx
-│   │   │   │   ├── QueuedBanner.tsx
-│   │   │   │   ├── ReportTab.tsx
-│   │   │   │   ├── ResumeDialog.tsx
-│   │   │   │   ├── RunCanvasIR.tsx
-│   │   │   │   ├── RunCanvasToolbar.tsx
-│   │   │   │   ├── RunHeader.tsx
-│   │   │   │   ├── RunListView.tsx
-│   │   │   │   ├── RunLogPanel.tsx
-│   │   │   │   ├── RunMetrics.tsx
-│   │   │   │   ├── RunView.tsx
-│   │   │   │   ├── Scrubber.tsx
-│   │   │   │   ├── ThinkingFooter.tsx
-│   │   │   │   ├── ToolRunningFooter.tsx
-│   │   │   │   ├── VarFieldInput.test.ts
-│   │   │   │   ├── VarFieldInput.tsx
-│   │   │   │   ├── runStatusClasses.ts
-│   │   │   │   ├── runStatusMeta.ts
-│   │   │   │   ├── toolFormatters.test.ts
-│   │   │   │   └── toolFormatters.ts
-│   │   │   ├── SourceView
-│   │   │   │   └── SourceView.tsx
-│   │   │   ├── Toolbar
-│   │   │   │   ├── BackendStatusPill.tsx
-│   │   │   │   ├── Toolbar.tsx
-│   │   │   │   └── ToolbarGroup.tsx
-│   │   │   ├── icons
-│   │   │   │   ├── BackendBadge.tsx
-│   │   │   │   ├── NodeIcon.tsx
-│   │   │   │   ├── ProviderIcon.tsx
-│   │   │   │   ├── backendEmoji.ts
-│   │   │   │   └── providerDetect.ts
-│   │   │   ├── shared
-│   │   │   │   ├── AppHeader.tsx
-│   │   │   │   ├── ConductorControlBar.tsx
-│   │   │   │   ├── ConfirmDialog.tsx
-│   │   │   │   ├── ErrorBoundary.tsx
-│   │   │   │   ├── NavLinks.tsx
-│   │   │   │   ├── PageShell.tsx
-│   │   │   │   ├── ProjectLabel.tsx
-│   │   │   │   ├── ShortcutsHelp.tsx
-│   │   │   │   ├── Toast.tsx
-│   │   │   │   ├── UserTeamChip.tsx
-│   │   │   │   └── WSStatusDot.tsx
-│   │   │   └── ui
-│   │   │       ├── Badge.tsx
-│   │   │       ├── Button.tsx
-│   │   │       ├── Chip.tsx
-│   │   │       ├── ContextUsageBar.tsx
-│   │   │       ├── Dialog.tsx
-│   │   │       ├── EffortBar.tsx
-│   │   │       ├── IconButton.tsx
-│   │   │       ├── Input.tsx
-│   │   │       ├── Popover.tsx
-│   │   │       ├── PromptOverlayHighlight.tsx
-│   │   │       ├── RefAwareInput.tsx
-│   │   │       ├── RefAwarePopup.tsx
-│   │   │       ├── Select.tsx
-│   │   │       ├── Skeleton.tsx
-│   │   │       ├── StatusBadge.tsx
-│   │   │       ├── Tabs.tsx
-│   │   │       ├── Textarea.tsx
-│   │   │       ├── ThemeToggle.tsx
-│   │   │       ├── Tooltip.tsx
-│   │   │       └── index.ts
-│   │   ├── hooks
-│   │   │   ├── useActiveWorkflow.ts
-│   │   │   ├── useAddFromLibrary.ts
-│   │   │   ├── useAddNode.ts
-│   │   │   ├── useAddSubNode.ts
-│   │   │   ├── useAutoOpenDiagnosticsOnError.ts
-│   │   │   ├── useAutoValidation.ts
-│   │   │   ├── useCanvasConnections.ts
-│   │   │   ├── useCanvasKeyboard.ts
-│   │   │   ├── useCanvasLayout.ts
-│   │   │   ├── useCanvasSearch.ts
-│   │   │   ├── useCaretPosition.ts
-│   │   │   ├── useDesktop.ts
-│   │   │   ├── useDocumentTitle.ts
-│   │   │   ├── useEffortCapabilities.ts
-│   │   │   ├── useEscapeStack.ts
-│   │   │   ├── useFileWatcher.ts
-│   │   │   ├── useFullscreen.ts
-│   │   │   ├── useGlobalActiveRuns.ts
-│   │   │   ├── useGroupedDiagnostics.ts
-│   │   │   ├── useHumanNodeSchema.ts
-│   │   │   ├── useInspectorMode.ts
-│   │   │   ├── useLayoutPersistence.ts
-│   │   │   ├── useProjectInfo.ts
-│   │   │   ├── useProjectSwitchListener.ts
-│   │   │   ├── useProjects.ts
-│   │   │   ├── usePromptEditorMount.tsx
-│   │   │   ├── useResolvedEffort.ts
-│   │   │   ├── useRunCommits.ts
-│   │   │   ├── useRunFiles.ts
-│   │   │   ├── useRunKeyboard.ts
-│   │   │   ├── useRunMetrics.ts
-│   │   │   ├── useRunReport.ts
-│   │   │   ├── useRunToasts.ts
-│   │   │   ├── useRunWebSocket.ts
-│   │   │   ├── useRuns.test.ts
-│   │   │   ├── useRuns.ts
-│   │   │   └── useSchemaPromptCreators.ts
-│   │   ├── lib
-│   │   │   ├── attachmentValidation.test.ts
-│   │   │   ├── attachmentValidation.ts
-│   │   │   ├── autoLayout.ts
-│   │   │   ├── cdpClient.ts
-│   │   │   ├── computeEdgeHandles.ts
-│   │   │   ├── constants.ts
-│   │   │   ├── defaults.ts
-│   │   │   ├── delegateMeta.ts
-│   │   │   ├── desktopBridge.ts
-│   │   │   ├── desktopEvents.ts
-│   │   │   ├── diagnosticHints.test.ts
-│   │   │   ├── diagnosticHints.ts
-│   │   │   ├── diagnostics.ts
-│   │   │   ├── docMutations.ts
-│   │   │   ├── documentToGraph.ts
-│   │   │   ├── dslOptions.ts
-│   │   │   ├── eventIter.ts
-│   │   │   ├── fileTree.test.ts
-│   │   │   ├── fileTree.ts
-│   │   │   ├── format.ts
-│   │   │   ├── groups.ts
-│   │   │   ├── inferMonacoLanguage.ts
-│   │   │   ├── iterLanguage.ts
-│   │   │   ├── iterMonacoCompletion.ts
-│   │   │   ├── library
-│   │   │   │   ├── presets.ts
-│   │   │   │   └── types.ts
-│   │   │   ├── localStorageFlag.ts
-│   │   │   ├── nodeDetailGraph.test.ts
-│   │   │   ├── nodeDetailGraph.ts
-│   │   │   ├── promptHighlight.test.ts
-│   │   │   ├── promptHighlight.ts
-│   │   │   ├── promptVarHeuristics.test.ts
-│   │   │   ├── promptVarHeuristics.ts
-│   │   │   ├── refCompletion.ts
-│   │   │   ├── snapshotReducer.test.ts
-│   │   │   └── snapshotReducer.ts
-│   │   ├── main.tsx
-│   │   ├── store
-│   │   │   ├── backendDetect.ts
-│   │   │   ├── document.ts
-│   │   │   ├── downloads.ts
-│   │   │   ├── groups.ts
-│   │   │   ├── library.ts
-│   │   │   ├── recents.ts
-│   │   │   ├── run.test.ts
-│   │   │   ├── run.ts
-│   │   │   ├── selection.test.ts
-│   │   │   ├── selection.ts
-│   │   │   ├── serverInfo.ts
-│   │   │   ├── theme.ts
-│   │   │   └── ui.ts
-│   │   ├── views
-│   │   │   ├── Board
-│   │   │   │   ├── IssueModal.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Conductor
-│   │   │   │   ├── SettingsDrawer.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Login.tsx
-│   │   │   ├── ProjectSwitcher
-│   │   │   │   ├── AddProjectDialog.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Settings
-│   │   │   │   ├── AboutTab.tsx
-│   │   │   │   ├── ApiKeysEditor.tsx
-│   │   │   │   ├── ApiKeysTab.tsx
-│   │   │   │   ├── ProjectsTab.tsx
-│   │   │   │   ├── UpdatesTab.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Welcome
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── steps
-│   │   │   │       ├── ApiKeys.tsx
-│   │   │   │       ├── CliCheck.tsx
-│   │   │   │       ├── Done.tsx
-│   │   │   │       ├── ProjectPicker.test.ts
-│   │   │   │       └── ProjectPicker.tsx
-│   │   │   ├── settings
-│   │   │   │   ├── ApiKeys.tsx
-│   │   │   │   ├── OAuthConnections.tsx
-│   │   │   │   └── SettingsPage.tsx
-│   │   │   └── teams
-│   │   │       └── TeamPage.tsx
-│   │   └── vite-env.d.ts
-│   ├── tsconfig.json
-│   └── vite.config.ts
 ├── examples
 │   ├── bots
 │   │   ├── branch_improve_loop.bot
@@ -678,6 +369,20 @@
 │   │   │   └── devcontainer.json
 │   │   ├── README.md
 │   │   └── devbox.json
+│   ├── doc-align
+│   │   ├── README.md
+│   │   ├── attachments
+│   │   │   └── .gitkeep
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   ├── prompts
+│   │   │   └── .gitkeep
+│   │   └── skills
+│   │       ├── anti-facade-fix-rules.md
+│   │       ├── doc-align.md
+│   │       ├── doc-mismatch-taxonomy.md
+│   │       ├── doc-scope-enumeration.md
+│   │       └── doc-verification-checklist.md
 │   ├── embed.go
 │   ├── github-actions
 │   │   └── iterion-hitl.yml
@@ -688,7 +393,7 @@
 │   │   ├── README.md
 │   │   ├── attachments
 │   │   │   └── .gitkeep
-│   │   ├── bot.bot
+│   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   ├── prompts
 │   │   │   └── .gitkeep
@@ -702,17 +407,19 @@
 │       ├── README.md
 │       ├── attachments
 │       │   └── .gitkeep
-│       ├── bot.bot
+│       ├── main.bot
 │       ├── manifest.yaml
 │       ├── prompts
 │       │   └── .gitkeep
 │       └── skills
 │           ├── .gitkeep
+│           ├── iterion-board.md
 │           ├── iterion-bot-catalog.md
 │           ├── iterion-dsl-quickref.md
 │           ├── priority-elicitation.md
 │           ├── repo-survey.md
 │           ├── roadmap-synthesis.md
+│           ├── session-continuity.md
 │           └── whats-next.md
 ├── go.mod
 ├── go.sum
@@ -745,6 +452,7 @@
 │   │   │   ├── claudesdk
 │   │   │   │   ├── agent.go
 │   │   │   │   ├── channel.go
+│   │   │   │   ├── channel_test.go
 │   │   │   │   ├── claude.go
 │   │   │   │   ├── content.go
 │   │   │   │   ├── doc.go
@@ -769,6 +477,7 @@
 │   │   │   ├── envelope_test.go
 │   │   │   ├── io.go
 │   │   │   ├── io_test.go
+│   │   │   ├── mcp_board.go
 │   │   │   ├── multiplexer.go
 │   │   │   ├── multiplexer_test.go
 │   │   │   ├── parse.go
@@ -819,10 +528,13 @@
 │   │   │   ├── generation_tool.go
 │   │   │   ├── generation_types.go
 │   │   │   ├── hooks.go
+│   │   │   ├── inbox_test.go
 │   │   │   ├── iteration_ctx.go
 │   │   │   ├── lifecycle_hooks.go
 │   │   │   ├── lifecycle_hooks_test.go
 │   │   │   ├── llm_tool.go
+│   │   │   ├── memory_tools.go
+│   │   │   ├── memory_tools_test.go
 │   │   │   ├── preview_url.go
 │   │   │   ├── preview_url_test.go
 │   │   │   ├── privacy_redaction_test.go
@@ -836,7 +548,8 @@
 │   │   │   ├── streaming_types.go
 │   │   │   ├── subagent.go
 │   │   │   ├── template_ctx.go
-│   │   │   └── validate.go
+│   │   │   ├── validate.go
+│   │   │   └── validate_test.go
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
@@ -844,6 +557,8 @@
 │   │   │   ├── adapter.go
 │   │   │   ├── classifier.go
 │   │   │   ├── classifier_test.go
+│   │   │   ├── claw_board_tools.go
+│   │   │   ├── claw_board_tools_test.go
 │   │   │   ├── claw_builtins.go
 │   │   │   ├── claw_builtins_test.go
 │   │   │   ├── claw_smoke_test.go
@@ -896,18 +611,20 @@
 │   │   ├── bundle_test.go
 │   │   ├── loader.go
 │   │   ├── manifest.go
+│   │   ├── openat_other.go
+│   │   ├── openat_unix.go
 │   │   ├── tar.go
 │   │   ├── testbuild_test.go
 │   │   ├── writer.go
 │   │   └── writer_test.go
 │   ├── cli
 │   │   ├── bench.go
+│   │   ├── bots.go
+│   │   ├── bots_test.go
 │   │   ├── bundle.go
 │   │   ├── cli_test.go
-│   │   ├── conduct.go
 │   │   ├── diagram.go
-│   │   ├── editor.go
-│   │   ├── editor_test.go
+│   │   ├── dispatch.go
 │   │   ├── embedded_recipes.go
 │   │   ├── init.go
 │   │   ├── init_test.go
@@ -919,9 +636,11 @@
 │   │   ├── resume.go
 │   │   ├── run.go
 │   │   ├── sandbox.go
+│   │   ├── studio.go
+│   │   ├── studio_test.go
 │   │   ├── templates
 │   │   │   ├── bundle_README.md
-│   │   │   ├── bundle_bot.bot
+│   │   │   ├── bundle_main.bot
 │   │   │   ├── bundle_manifest.yaml
 │   │   │   ├── pr_refine_single_model.iter
 │   │   │   └── pr_refine_single_model_backend.bot
@@ -933,16 +652,23 @@
 │   │   └── version.go
 │   ├── cloud
 │   │   ├── metrics
-│   │   │   └── metrics.go
+│   │   │   ├── metrics.go
+│   │   │   └── metrics_test.go
 │   │   └── tracing
-│   │       └── tracing.go
-│   ├── conductor
+│   │       ├── tracing.go
+│   │       └── tracing_test.go
+│   ├── config
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── env.go
+│   │   └── yaml.go
+│   ├── dispatcher
 │   │   ├── commands.go
-│   │   ├── conductor.go
-│   │   ├── conductor_test.go
 │   │   ├── config.go
 │   │   ├── config_test.go
 │   │   ├── config_watcher.go
+│   │   ├── dispatcher.go
+│   │   ├── dispatcher_test.go
 │   │   ├── engine_runner.go
 │   │   ├── engine_runner_test.go
 │   │   ├── external.go
@@ -958,6 +684,9 @@
 │   │   │   ├── adapter_test.go
 │   │   │   ├── board.go
 │   │   │   ├── board_test.go
+│   │   │   ├── boardops
+│   │   │   │   ├── ops.go
+│   │   │   │   └── ops_test.go
 │   │   │   ├── event.go
 │   │   │   ├── http.go
 │   │   │   ├── http_test.go
@@ -978,14 +707,10 @@
 │   │   │   ├── github.go
 │   │   │   ├── github_test.go
 │   │   │   ├── labels.go
-│   │   │   └── tracker.go
+│   │   │   ├── tracker.go
+│   │   │   └── validate.go
 │   │   ├── workspace.go
 │   │   └── workspace_test.go
-│   ├── config
-│   │   ├── config.go
-│   │   ├── config_test.go
-│   │   ├── env.go
-│   │   └── yaml.go
 │   ├── dsl
 │   │   ├── ast
 │   │   │   ├── ast.go
@@ -1005,6 +730,7 @@
 │   │   │   ├── compute_when_test.go
 │   │   │   ├── env_expand_test.go
 │   │   │   ├── ir.go
+│   │   │   ├── memory_validate_test.go
 │   │   │   ├── mermaid.go
 │   │   │   ├── mermaid_test.go
 │   │   │   ├── presets_test.go
@@ -1013,6 +739,9 @@
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_test.go
 │   │   │   ├── validate.go
+│   │   │   ├── validate_audit_test.go
+│   │   │   ├── validate_capabilities.go
+│   │   │   ├── validate_capabilities_test.go
 │   │   │   └── validate_test.go
 │   │   ├── parser
 │   │   │   ├── bench_test.go
@@ -1020,6 +749,8 @@
 │   │   │   ├── fuzz_test.go
 │   │   │   ├── lexer.go
 │   │   │   ├── parser.go
+│   │   │   ├── parser_capabilities_test.go
+│   │   │   ├── parser_keyword_names_test.go
 │   │   │   ├── parser_test.go
 │   │   │   ├── presets_test.go
 │   │   │   └── token.go
@@ -1036,6 +767,8 @@
 │   │   ├── types
 │   │   │   └── types.go
 │   │   ├── unparse
+│   │   │   ├── capabilities_test.go
+│   │   │   ├── memory_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── roundtrip_test.go
 │   │   │   ├── unparse.go
@@ -1065,16 +798,23 @@
 │   │   │   └── appinfo.go
 │   │   ├── mongoutil
 │   │   │   └── conflict.go
-│   │   └── proc
-│   │       ├── proc.go
-│   │       ├── proc_unix.go
-│   │       └── proc_windows.go
+│   │   ├── proc
+│   │   │   ├── proc.go
+│   │   │   ├── proc_unix.go
+│   │   │   └── proc_windows.go
+│   │   └── shellquote
+│   │       └── shellquote.go
 │   ├── log
 │   │   ├── format.go
 │   │   ├── format_test.go
 │   │   ├── json.go
 │   │   ├── log.go
 │   │   └── log_test.go
+│   ├── memory
+│   │   ├── index.go
+│   │   ├── index_test.go
+│   │   ├── memory.go
+│   │   └── memory_test.go
 │   ├── queue
 │   │   ├── nats
 │   │   │   ├── lock.go
@@ -1083,7 +823,8 @@
 │   │   ├── types.go
 │   │   └── types_test.go
 │   ├── runner
-│   │   └── loop.go
+│   │   ├── loop.go
+│   │   └── metrics_test.go
 │   ├── runtime
 │   │   ├── budget.go
 │   │   ├── budget_test.go
@@ -1091,6 +832,7 @@
 │   │   ├── bundle_attach_test.go
 │   │   ├── bundle_test.go
 │   │   ├── chaos_test.go
+│   │   ├── copy_outputs_test.go
 │   │   ├── engine.go
 │   │   ├── engine_test.go
 │   │   ├── errors.go
@@ -1162,7 +904,8 @@
 │   │   │   ├── integration_test.go
 │   │   │   ├── orphans.go
 │   │   │   ├── orphans_test.go
-│   │   │   └── runtime.go
+│   │   │   ├── runtime.go
+│   │   │   └── validate.go
 │   │   ├── exec_helpers.go
 │   │   ├── factory.go
 │   │   ├── factory_helper_test.go
@@ -1207,19 +950,25 @@
 │   │   ├── sealer.go
 │   │   └── sealer_test.go
 │   ├── server
+│   │   ├── auth_ratelimit.go
 │   │   ├── auth_routes.go
 │   │   ├── backends_routes.go
 │   │   ├── backends_routes_test.go
 │   │   ├── byok_routes.go
 │   │   ├── cloudpublisher
 │   │   │   └── publisher.go
+│   │   ├── cost_preview.go
+│   │   ├── cost_preview_test.go
 │   │   ├── effort.go
 │   │   ├── filesystem.go
 │   │   ├── filter.go
 │   │   ├── health.go
 │   │   ├── health_test.go
 │   │   ├── hub.go
+│   │   ├── mcp_board_handler.go
+│   │   ├── mcp_board_handler_test.go
 │   │   ├── middleware.go
+│   │   ├── middleware_test.go
 │   │   ├── oauth_routes.go
 │   │   ├── projects
 │   │   │   ├── prune_test.go
@@ -1281,7 +1030,10 @@
 │       │   ├── interactions.go
 │       │   ├── runs.go
 │       │   ├── store.go
-│       │   └── tenant.go
+│       │   ├── tenant.go
+│       │   └── user_messages.go
+│       ├── openat_other.go
+│       ├── openat_unix.go
 │       ├── pid.go
 │       ├── pid_test.go
 │       ├── run.go
@@ -1295,7 +1047,8 @@
 │       ├── storedir_test.go
 │       ├── storetest
 │       │   └── conformance.go
-│       └── tenant.go
+│       ├── tenant.go
+│       └── user_messages.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── sandbox
@@ -1357,6 +1110,376 @@
 │       ├── tsconfig.json
 │       ├── tsconfig.test.json
 │       └── vitest.config.ts
+├── studio
+│   ├── docs
+│   │   ├── design-system.md
+│   │   └── visual-identity.md
+│   ├── index.html
+│   ├── package.json
+│   ├── public
+│   │   ├── android-icon-144x144.png
+│   │   ├── android-icon-192x192.png
+│   │   ├── android-icon-36x36.png
+│   │   ├── android-icon-48x48.png
+│   │   ├── android-icon-72x72.png
+│   │   ├── android-icon-96x96.png
+│   │   ├── apple-icon-114x114.png
+│   │   ├── apple-icon-120x120.png
+│   │   ├── apple-icon-144x144.png
+│   │   ├── apple-icon-152x152.png
+│   │   ├── apple-icon-180x180.png
+│   │   ├── apple-icon-57x57.png
+│   │   ├── apple-icon-60x60.png
+│   │   ├── apple-icon-72x72.png
+│   │   ├── apple-icon-76x76.png
+│   │   ├── apple-icon-precomposed.png
+│   │   ├── apple-icon.png
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon-96x96.png
+│   │   ├── favicon.ico
+│   │   ├── manifest.json
+│   │   ├── ms-icon-144x144.png
+│   │   ├── ms-icon-150x150.png
+│   │   ├── ms-icon-310x310.png
+│   │   └── ms-icon-70x70.png
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── __tests__
+│   │   │   ├── a11y
+│   │   │   │   └── primitives.test.tsx
+│   │   │   └── desktopBridge.test.ts
+│   │   ├── api
+│   │   │   ├── auth.ts
+│   │   │   ├── backends.ts
+│   │   │   ├── byok.ts
+│   │   │   ├── client.ts
+│   │   │   ├── dispatcher.ts
+│   │   │   ├── native.ts
+│   │   │   ├── projects.ts
+│   │   │   ├── queueMessages.ts
+│   │   │   ├── runs.ts
+│   │   │   ├── types.ts
+│   │   │   └── ws.ts
+│   │   ├── app.css
+│   │   ├── auth
+│   │   │   └── AuthContext.tsx
+│   │   ├── components
+│   │   │   ├── Canvas
+│   │   │   │   ├── AuxiliaryNode.tsx
+│   │   │   │   ├── BreadcrumbBar.tsx
+│   │   │   │   ├── Canvas.tsx
+│   │   │   │   ├── CanvasEmpty.tsx
+│   │   │   │   ├── CanvasToolbar.tsx
+│   │   │   │   ├── ConditionalEdge.tsx
+│   │   │   │   ├── DetailSubNode.tsx
+│   │   │   │   ├── GroupNode.tsx
+│   │   │   │   ├── NodeContextMenu.tsx
+│   │   │   │   ├── QuickAddMenu.tsx
+│   │   │   │   ├── ReferenceEdge.tsx
+│   │   │   │   ├── SchemaRoleDialog.tsx
+│   │   │   │   ├── SearchOverlay.tsx
+│   │   │   │   ├── SubNodePalette.tsx
+│   │   │   │   ├── ToolPalette.tsx
+│   │   │   │   ├── WorkflowNode.tsx
+│   │   │   │   └── handlePositions.ts
+│   │   │   ├── Diagnostics
+│   │   │   │   ├── DiagnosticBadge.tsx
+│   │   │   │   └── DiagnosticsPanel.tsx
+│   │   │   ├── Dispatcher
+│   │   │   │   └── SettingsDrawer.tsx
+│   │   │   ├── EditorView.tsx
+│   │   │   ├── FilePicker
+│   │   │   │   ├── FilePicker.tsx
+│   │   │   │   ├── searchResults.test.ts
+│   │   │   │   └── searchResults.ts
+│   │   │   ├── Home
+│   │   │   │   ├── HomeView.tsx
+│   │   │   │   ├── RecentFilesPanel.tsx
+│   │   │   │   ├── RunsPanel.tsx
+│   │   │   │   └── WhatsNextCard.tsx
+│   │   │   ├── Inspector
+│   │   │   │   ├── Inspector.tsx
+│   │   │   │   ├── InspectorEdge.tsx
+│   │   │   │   ├── InspectorEditItem.tsx
+│   │   │   │   ├── InspectorEmpty.tsx
+│   │   │   │   ├── InspectorMulti.tsx
+│   │   │   │   ├── InspectorNode.tsx
+│   │   │   │   └── NodeRunsChip.tsx
+│   │   │   ├── Library
+│   │   │   │   ├── LibraryItemCard.tsx
+│   │   │   │   └── LibraryPanel.tsx
+│   │   │   ├── MissingCLIBanner.tsx
+│   │   │   ├── Panels
+│   │   │   │   ├── CommentsEditor.tsx
+│   │   │   │   ├── MCPServersEditor.tsx
+│   │   │   │   ├── PromptBodyEditor.tsx
+│   │   │   │   ├── PromptEditor.tsx
+│   │   │   │   ├── PromptEditorModal.tsx
+│   │   │   │   ├── SchemaEditor.tsx
+│   │   │   │   ├── VarsEditor.tsx
+│   │   │   │   ├── WorkflowSettingsForm.tsx
+│   │   │   │   └── forms
+│   │   │   │       ├── AgentForm.tsx
+│   │   │   │       ├── CompactionFields.tsx
+│   │   │   │       ├── ComputeForm.tsx
+│   │   │   │       ├── EdgeForm.tsx
+│   │   │   │       ├── FormField.tsx
+│   │   │   │       ├── HumanForm.tsx
+│   │   │   │       ├── MCPConfigFields.tsx
+│   │   │   │       ├── RouterForm.tsx
+│   │   │   │       └── ToolForm.tsx
+│   │   │   ├── Runs
+│   │   │   │   ├── ActiveFooter.tsx
+│   │   │   │   ├── ArtifactDiff.tsx
+│   │   │   │   ├── ArtifactFilesPanel.tsx
+│   │   │   │   ├── AttachmentFieldInput.tsx
+│   │   │   │   ├── BrowserLivePane.tsx
+│   │   │   │   ├── BrowserPane.tsx
+│   │   │   │   ├── CommitDetailDialog.tsx
+│   │   │   │   ├── CommitsPanel.tsx
+│   │   │   │   ├── CostPreviewChip.tsx
+│   │   │   │   ├── EventLog.tsx
+│   │   │   │   ├── FileDiffDialog.tsx
+│   │   │   │   ├── FilesPanel.tsx
+│   │   │   │   ├── HumanInteractionPanel.tsx
+│   │   │   │   ├── IRNode.tsx
+│   │   │   │   ├── InfoPanel.tsx
+│   │   │   │   ├── LaunchView.tsx
+│   │   │   │   ├── LeftPanel.tsx
+│   │   │   │   ├── LogLinesView.tsx
+│   │   │   │   ├── LogSidePanel.tsx
+│   │   │   │   ├── NodeDetailPanel.tsx
+│   │   │   │   ├── PauseForm.tsx
+│   │   │   │   ├── QueueDepthBar.tsx
+│   │   │   │   ├── QueuedBanner.tsx
+│   │   │   │   ├── ReportTab.tsx
+│   │   │   │   ├── ResumeDialog.tsx
+│   │   │   │   ├── RunCanvasIR.tsx
+│   │   │   │   ├── RunCanvasToolbar.tsx
+│   │   │   │   ├── RunHeader.tsx
+│   │   │   │   ├── RunListView.tsx
+│   │   │   │   ├── RunLogPanel.tsx
+│   │   │   │   ├── RunMetrics.tsx
+│   │   │   │   ├── RunView.tsx
+│   │   │   │   ├── Scrubber.tsx
+│   │   │   │   ├── ThinkingFooter.tsx
+│   │   │   │   ├── ToolRunningFooter.tsx
+│   │   │   │   ├── VarFieldInput.test.ts
+│   │   │   │   ├── VarFieldInput.tsx
+│   │   │   │   ├── runStatusClasses.ts
+│   │   │   │   ├── runStatusMeta.ts
+│   │   │   │   ├── toolFormatters.test.ts
+│   │   │   │   └── toolFormatters.ts
+│   │   │   ├── Settings
+│   │   │   │   └── ApiKeysEditor.tsx
+│   │   │   ├── SourceView
+│   │   │   │   └── SourceView.tsx
+│   │   │   ├── Toolbar
+│   │   │   │   ├── BackendStatusPill.tsx
+│   │   │   │   ├── Toolbar.tsx
+│   │   │   │   └── ToolbarGroup.tsx
+│   │   │   ├── WhatsNext
+│   │   │   │   ├── ChatTranscript.tsx
+│   │   │   │   ├── HumanChatTurn.tsx
+│   │   │   │   ├── IssuesSummaryCard.tsx
+│   │   │   │   ├── NodeBanner.tsx
+│   │   │   │   ├── PreFlightPanel.tsx
+│   │   │   │   ├── QuestionInput.tsx
+│   │   │   │   ├── RoadmapCard.tsx
+│   │   │   │   ├── SessionLauncher.tsx
+│   │   │   │   ├── SurveyCard.tsx
+│   │   │   │   └── WhatsNextView.tsx
+│   │   │   ├── icons
+│   │   │   │   ├── BackendBadge.tsx
+│   │   │   │   ├── NodeIcon.tsx
+│   │   │   │   ├── ProviderIcon.tsx
+│   │   │   │   ├── backendEmoji.ts
+│   │   │   │   └── providerDetect.ts
+│   │   │   ├── shared
+│   │   │   │   ├── AgentChatbox.tsx
+│   │   │   │   ├── AppHeader.tsx
+│   │   │   │   ├── CommandPalette.tsx
+│   │   │   │   ├── ConfirmDialog.tsx
+│   │   │   │   ├── DispatcherControlBar.tsx
+│   │   │   │   ├── ErrorBoundary.tsx
+│   │   │   │   ├── NavLinks.tsx
+│   │   │   │   ├── PageShell.tsx
+│   │   │   │   ├── ProjectLabel.tsx
+│   │   │   │   ├── ShortcutsHelp.tsx
+│   │   │   │   ├── Toast.tsx
+│   │   │   │   ├── TrackerErrorBanner.tsx
+│   │   │   │   ├── UserTeamChip.tsx
+│   │   │   │   └── WSStatusDot.tsx
+│   │   │   └── ui
+│   │   │       ├── Badge.tsx
+│   │   │       ├── Button.tsx
+│   │   │       ├── Chip.tsx
+│   │   │       ├── ContextUsageBar.tsx
+│   │   │       ├── CopyButton.tsx
+│   │   │       ├── DesktopOnlyNotice.tsx
+│   │   │       ├── Dialog.tsx
+│   │   │       ├── EffortBar.tsx
+│   │   │       ├── EmptyState.tsx
+│   │   │       ├── IconButton.tsx
+│   │   │       ├── Input.tsx
+│   │   │       ├── LiveDot.tsx
+│   │   │       ├── Popover.tsx
+│   │   │       ├── PromptOverlayHighlight.tsx
+│   │   │       ├── RefAwareInput.tsx
+│   │   │       ├── RefAwarePopup.tsx
+│   │   │       ├── Select.tsx
+│   │   │       ├── Skeleton.tsx
+│   │   │       ├── Spinner.tsx
+│   │   │       ├── StatusBadge.tsx
+│   │   │       ├── Tabs.tsx
+│   │   │       ├── Textarea.tsx
+│   │   │       ├── ThemeToggle.tsx
+│   │   │       ├── Tooltip.tsx
+│   │   │       ├── WizardForm.tsx
+│   │   │       └── index.ts
+│   │   ├── hooks
+│   │   │   ├── useActiveWorkflow.ts
+│   │   │   ├── useAddFromLibrary.ts
+│   │   │   ├── useAddNode.ts
+│   │   │   ├── useAddSubNode.ts
+│   │   │   ├── useAutoOpenDiagnosticsOnError.ts
+│   │   │   ├── useAutoValidation.ts
+│   │   │   ├── useBoardKeyboard.ts
+│   │   │   ├── useCanvasConnections.ts
+│   │   │   ├── useCanvasKeyboard.ts
+│   │   │   ├── useCanvasLayout.ts
+│   │   │   ├── useCanvasSearch.ts
+│   │   │   ├── useCaretPosition.ts
+│   │   │   ├── useConfirm.tsx
+│   │   │   ├── useDesktop.ts
+│   │   │   ├── useDocumentTitle.ts
+│   │   │   ├── useEffortCapabilities.ts
+│   │   │   ├── useEscapeStack.ts
+│   │   │   ├── useFileWatcher.ts
+│   │   │   ├── useFullscreen.ts
+│   │   │   ├── useGlobalActiveRuns.ts
+│   │   │   ├── useGroupedDiagnostics.ts
+│   │   │   ├── useHumanNodeSchema.ts
+│   │   │   ├── useInspectorMode.ts
+│   │   │   ├── useLayoutPersistence.ts
+│   │   │   ├── useProjectInfo.ts
+│   │   │   ├── useProjectSwitchListener.ts
+│   │   │   ├── useProjects.ts
+│   │   │   ├── usePromptEditorMount.tsx
+│   │   │   ├── useResolvedEffort.ts
+│   │   │   ├── useRunCommits.ts
+│   │   │   ├── useRunFiles.ts
+│   │   │   ├── useRunKeyboard.ts
+│   │   │   ├── useRunMetrics.ts
+│   │   │   ├── useRunReport.ts
+│   │   │   ├── useRunToasts.ts
+│   │   │   ├── useRunWebSocket.ts
+│   │   │   ├── useRuns.test.ts
+│   │   │   ├── useRuns.ts
+│   │   │   └── useSchemaPromptCreators.ts
+│   │   ├── lib
+│   │   │   ├── attachmentValidation.test.ts
+│   │   │   ├── attachmentValidation.ts
+│   │   │   ├── autoLayout.ts
+│   │   │   ├── cdpClient.ts
+│   │   │   ├── computeEdgeHandles.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── copy.ts
+│   │   │   ├── defaults.ts
+│   │   │   ├── delegateMeta.ts
+│   │   │   ├── desktopBridge.ts
+│   │   │   ├── desktopEvents.ts
+│   │   │   ├── diagnosticHints.test.ts
+│   │   │   ├── diagnosticHints.ts
+│   │   │   ├── diagnostics.ts
+│   │   │   ├── docMutations.ts
+│   │   │   ├── documentToGraph.ts
+│   │   │   ├── dslOptions.ts
+│   │   │   ├── eventIter.ts
+│   │   │   ├── fileTree.test.ts
+│   │   │   ├── fileTree.ts
+│   │   │   ├── format.ts
+│   │   │   ├── forms
+│   │   │   │   └── formSpecFromSchema.ts
+│   │   │   ├── groups.ts
+│   │   │   ├── inferMonacoLanguage.ts
+│   │   │   ├── iterLanguage.ts
+│   │   │   ├── iterMonacoCompletion.ts
+│   │   │   ├── keyboard.ts
+│   │   │   ├── library
+│   │   │   │   ├── presets.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── localStorageFlag.ts
+│   │   │   ├── nodeDetailGraph.test.ts
+│   │   │   ├── nodeDetailGraph.ts
+│   │   │   ├── promptHighlight.test.ts
+│   │   │   ├── promptHighlight.ts
+│   │   │   ├── promptVarHeuristics.test.ts
+│   │   │   ├── promptVarHeuristics.ts
+│   │   │   ├── refCompletion.ts
+│   │   │   ├── snapshotReducer.test.ts
+│   │   │   ├── snapshotReducer.ts
+│   │   │   ├── whats-next
+│   │   │   │   ├── firstClassBots.ts
+│   │   │   │   ├── messages.ts
+│   │   │   │   ├── messagesFromEvents.test.ts
+│   │   │   │   ├── messagesFromEvents.ts
+│   │   │   │   ├── questionForm.test.ts
+│   │   │   │   ├── questionForm.ts
+│   │   │   │   ├── sessionStorage.ts
+│   │   │   │   └── useWhatsNextSession.ts
+│   │   │   ├── wsUrl.test.ts
+│   │   │   └── wsUrl.ts
+│   │   ├── main.tsx
+│   │   ├── store
+│   │   │   ├── backendDetect.ts
+│   │   │   ├── document.ts
+│   │   │   ├── downloads.ts
+│   │   │   ├── groups.ts
+│   │   │   ├── library.ts
+│   │   │   ├── recents.ts
+│   │   │   ├── run.test.ts
+│   │   │   ├── run.ts
+│   │   │   ├── selection.test.ts
+│   │   │   ├── selection.ts
+│   │   │   ├── serverInfo.ts
+│   │   │   ├── theme.ts
+│   │   │   └── ui.ts
+│   │   ├── views
+│   │   │   ├── Board
+│   │   │   │   ├── IssueModal.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Dispatcher
+│   │   │   │   └── index.tsx
+│   │   │   ├── Login.tsx
+│   │   │   ├── ProjectSwitcher
+│   │   │   │   ├── AddProjectDialog.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Settings
+│   │   │   │   ├── AboutTab.tsx
+│   │   │   │   ├── ApiKeysTab.tsx
+│   │   │   │   ├── ProjectsTab.tsx
+│   │   │   │   ├── UpdatesTab.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Welcome
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── steps
+│   │   │   │       ├── ApiKeys.tsx
+│   │   │   │       ├── CliCheck.tsx
+│   │   │   │       ├── Done.tsx
+│   │   │   │       ├── ProjectPicker.test.ts
+│   │   │   │       └── ProjectPicker.tsx
+│   │   │   ├── settings
+│   │   │   │   ├── ApiKeys.tsx
+│   │   │   │   ├── OAuthConnections.tsx
+│   │   │   │   └── SettingsPage.tsx
+│   │   │   └── teams
+│   │   │       └── TeamPage.tsx
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
 └── vendor
     ├── cloud.google.com
     │   └── go
@@ -1765,6 +1888,8 @@
     │   │       │   │   ├── session.go
     │   │       │   │   ├── session_jsonl.go
     │   │       │   │   ├── session_store.go
+    │   │       │   │   ├── skill_manager.go
+    │   │       │   │   ├── skill_state.go
     │   │       │   │   ├── summary_compression.go
     │   │       │   │   ├── task
     │   │       │   │   │   └── task.go
@@ -1783,7 +1908,202 @@
     │   │       │   │   ├── ask_user.go
     │   │       │   │   ├── bash.go
     │   │       │   │   ├── bash_pipeline.go
+    │   │       │   │   ├── bash_unix.go
     │   │       │   │   ├── bash_validation.go
+    │   │       │   │   ├── bash_windows.go
+    │   │       │   │   ├── bundled_skills
+    │   │       │   │   │   ├── claude-code-setup
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── claude-automation-recommender
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           └── references
+    │   │       │   │   │   │               ├── hooks-patterns.md
+    │   │       │   │   │   │               ├── mcp-servers.md
+    │   │       │   │   │   │               ├── plugins-reference.md
+    │   │       │   │   │   │               ├── skills-reference.md
+    │   │       │   │   │   │               └── subagent-templates.md
+    │   │       │   │   │   ├── claude-md-management
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── claude-md-improver
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           └── references
+    │   │       │   │   │   │               ├── quality-criteria.md
+    │   │       │   │   │   │               ├── templates.md
+    │   │       │   │   │   │               └── update-guidelines.md
+    │   │       │   │   │   ├── frontend-design
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── frontend-design
+    │   │       │   │   │   │           └── SKILL.md
+    │   │       │   │   │   ├── hookify
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── writing-rules
+    │   │       │   │   │   │           └── SKILL.md
+    │   │       │   │   │   ├── math-olympiad
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── math-olympiad
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           ├── evals
+    │   │       │   │   │   │           │   └── trigger_eval.json
+    │   │       │   │   │   │           ├── references
+    │   │       │   │   │   │           │   ├── adversarial_prompts.md
+    │   │       │   │   │   │           │   ├── attempt_agent.md
+    │   │       │   │   │   │           │   ├── known_constructions.md
+    │   │       │   │   │   │           │   ├── model_tier_defaults.md
+    │   │       │   │   │   │           │   ├── presentation_prompts.md
+    │   │       │   │   │   │           │   ├── solver_heuristics.md
+    │   │       │   │   │   │           │   └── verifier_patterns.md
+    │   │       │   │   │   │           └── scripts
+    │   │       │   │   │   │               ├── check_latex.sh
+    │   │       │   │   │   │               └── compile_pdf.sh
+    │   │       │   │   │   ├── mcp-server-dev
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       ├── build-mcp-app
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   └── references
+    │   │       │   │   │   │       │       ├── abuse-protection.md
+    │   │       │   │   │   │       │       ├── apps-sdk-messages.md
+    │   │       │   │   │   │       │       ├── directory-checklist.md
+    │   │       │   │   │   │       │       ├── iframe-sandbox.md
+    │   │       │   │   │   │       │       ├── payload-budgeting.md
+    │   │       │   │   │   │       │       └── widget-templates.md
+    │   │       │   │   │   │       ├── build-mcp-server
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   └── references
+    │   │       │   │   │   │       │       ├── auth.md
+    │   │       │   │   │   │       │       ├── deploy-cloudflare-workers.md
+    │   │       │   │   │   │       │       ├── elicitation.md
+    │   │       │   │   │   │       │       ├── remote-http-scaffold.md
+    │   │       │   │   │   │       │       ├── resources-and-prompts.md
+    │   │       │   │   │   │       │       ├── server-capabilities.md
+    │   │       │   │   │   │       │       ├── tool-design.md
+    │   │       │   │   │   │       │       └── versions.md
+    │   │       │   │   │   │       └── build-mcpb
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           └── references
+    │   │       │   │   │   │               ├── local-security.md
+    │   │       │   │   │   │               └── manifest-schema.md
+    │   │       │   │   │   ├── playground
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── playground
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           └── templates
+    │   │       │   │   │   │               ├── code-map.md
+    │   │       │   │   │   │               ├── concept-map.md
+    │   │       │   │   │   │               ├── data-explorer.md
+    │   │       │   │   │   │               ├── design-playground.md
+    │   │       │   │   │   │               ├── diff-review.md
+    │   │       │   │   │   │               └── document-critique.md
+    │   │       │   │   │   ├── plugin-dev
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       ├── agent-development
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── agent-creation-prompt.md
+    │   │       │   │   │   │       │   │   └── complete-agent-examples.md
+    │   │       │   │   │   │       │   ├── references
+    │   │       │   │   │   │       │   │   ├── agent-creation-system-prompt.md
+    │   │       │   │   │   │       │   │   ├── system-prompt-design.md
+    │   │       │   │   │   │       │   │   └── triggering-examples.md
+    │   │       │   │   │   │       │   └── scripts
+    │   │       │   │   │   │       │       └── validate-agent.sh
+    │   │       │   │   │   │       ├── command-development
+    │   │       │   │   │   │       │   ├── README.md
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── plugin-commands.md
+    │   │       │   │   │   │       │   │   └── simple-commands.md
+    │   │       │   │   │   │       │   └── references
+    │   │       │   │   │   │       │       ├── advanced-workflows.md
+    │   │       │   │   │   │       │       ├── documentation-patterns.md
+    │   │       │   │   │   │       │       ├── frontmatter-reference.md
+    │   │       │   │   │   │       │       ├── interactive-commands.md
+    │   │       │   │   │   │       │       ├── marketplace-considerations.md
+    │   │       │   │   │   │       │       ├── plugin-features-reference.md
+    │   │       │   │   │   │       │       └── testing-strategies.md
+    │   │       │   │   │   │       ├── hook-development
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── load-context.sh
+    │   │       │   │   │   │       │   │   ├── validate-bash.sh
+    │   │       │   │   │   │       │   │   └── validate-write.sh
+    │   │       │   │   │   │       │   ├── references
+    │   │       │   │   │   │       │   │   ├── advanced.md
+    │   │       │   │   │   │       │   │   ├── migration.md
+    │   │       │   │   │   │       │   │   └── patterns.md
+    │   │       │   │   │   │       │   └── scripts
+    │   │       │   │   │   │       │       ├── README.md
+    │   │       │   │   │   │       │       ├── hook-linter.sh
+    │   │       │   │   │   │       │       ├── test-hook.sh
+    │   │       │   │   │   │       │       └── validate-hook-schema.sh
+    │   │       │   │   │   │       ├── mcp-integration
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── http-server.json
+    │   │       │   │   │   │       │   │   ├── sse-server.json
+    │   │       │   │   │   │       │   │   └── stdio-server.json
+    │   │       │   │   │   │       │   └── references
+    │   │       │   │   │   │       │       ├── authentication.md
+    │   │       │   │   │   │       │       ├── server-types.md
+    │   │       │   │   │   │       │       └── tool-usage.md
+    │   │       │   │   │   │       ├── plugin-settings
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── create-settings-command.md
+    │   │       │   │   │   │       │   │   ├── example-settings.md
+    │   │       │   │   │   │       │   │   └── read-settings-hook.sh
+    │   │       │   │   │   │       │   ├── references
+    │   │       │   │   │   │       │   │   ├── parsing-techniques.md
+    │   │       │   │   │   │       │   │   └── real-world-examples.md
+    │   │       │   │   │   │       │   └── scripts
+    │   │       │   │   │   │       │       ├── parse-frontmatter.sh
+    │   │       │   │   │   │       │       └── validate-settings.sh
+    │   │       │   │   │   │       ├── plugin-structure
+    │   │       │   │   │   │       │   ├── README.md
+    │   │       │   │   │   │       │   ├── SKILL.md
+    │   │       │   │   │   │       │   ├── examples
+    │   │       │   │   │   │       │   │   ├── advanced-plugin.md
+    │   │       │   │   │   │       │   │   ├── minimal-plugin.md
+    │   │       │   │   │   │       │   │   └── standard-plugin.md
+    │   │       │   │   │   │       │   └── references
+    │   │       │   │   │   │       │       ├── component-patterns.md
+    │   │       │   │   │   │       │       └── manifest-reference.md
+    │   │       │   │   │   │       └── skill-development
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           └── references
+    │   │       │   │   │   │               └── skill-creator-original.md
+    │   │       │   │   │   ├── session-report
+    │   │       │   │   │   │   └── skills
+    │   │       │   │   │   │       └── session-report
+    │   │       │   │   │   │           ├── SKILL.md
+    │   │       │   │   │   │           ├── analyze-sessions.mjs
+    │   │       │   │   │   │           └── template.html
+    │   │       │   │   │   └── skill-creator
+    │   │       │   │   │       └── skills
+    │   │       │   │   │           └── skill-creator
+    │   │       │   │   │               ├── LICENSE.txt
+    │   │       │   │   │               ├── SKILL.md
+    │   │       │   │   │               ├── agents
+    │   │       │   │   │               │   ├── analyzer.md
+    │   │       │   │   │               │   ├── comparator.md
+    │   │       │   │   │               │   └── grader.md
+    │   │       │   │   │               ├── assets
+    │   │       │   │   │               │   └── eval_review.html
+    │   │       │   │   │               ├── eval-viewer
+    │   │       │   │   │               │   ├── generate_review.py
+    │   │       │   │   │               │   └── viewer.html
+    │   │       │   │   │               ├── references
+    │   │       │   │   │               │   └── schemas.md
+    │   │       │   │   │               └── scripts
+    │   │       │   │   │                   ├── __init__.py
+    │   │       │   │   │                   ├── aggregate_benchmark.py
+    │   │       │   │   │                   ├── generate_report.py
+    │   │       │   │   │                   ├── improve_description.py
+    │   │       │   │   │                   ├── package_skill.py
+    │   │       │   │   │                   ├── quick_validate.py
+    │   │       │   │   │                   ├── run_eval.py
+    │   │       │   │   │                   ├── run_loop.py
+    │   │       │   │   │                   └── utils.py
+    │   │       │   │   ├── bundled_skills.go
     │   │       │   │   ├── computer_use.go
     │   │       │   │   ├── computer_use_exec.go
     │   │       │   │   ├── config_tool.go
@@ -1801,6 +2121,7 @@
     │   │       │   │   ├── repl.go
     │   │       │   │   ├── send_message.go
     │   │       │   │   ├── skill.go
+    │   │       │   │   ├── skill_install.go
     │   │       │   │   ├── sleep.go
     │   │       │   │   ├── structured_output.go
     │   │       │   │   ├── task_tools.go
@@ -6190,6 +6511,24 @@
     │               │   └── timestamp.pb.go
     │               └── wrapperspb
     │                   └── wrappers.pb.go
+    ├── gopkg.in
+    │   └── yaml.v3
+    │       ├── LICENSE
+    │       ├── NOTICE
+    │       ├── README.md
+    │       ├── apic.go
+    │       ├── decode.go
+    │       ├── emitterc.go
+    │       ├── encode.go
+    │       ├── parserc.go
+    │       ├── readerc.go
+    │       ├── resolve.go
+    │       ├── scannerc.go
+    │       ├── sorter.go
+    │       ├── writerc.go
+    │       ├── yaml.go
+    │       ├── yamlh.go
+    │       └── yamlprivateh.go
     ├── modernc.org
     │   ├── libc
     │   │   ├── .gitignore
@@ -7418,4 +7757,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1124 directories, 6842 files
+1212 directories, 7093 files

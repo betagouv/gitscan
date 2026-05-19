@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est un moteur de workflow déclaratif pour l'orchestration d'agents d'IA. Il permet de définir des workflows complexes impliquant plusieurs agents, juges, routeurs et boucles, et de les exécuter de manière déterministe.",
+  "description": "Iterion est un moteur de workflow déclaratif pour les agents d'IA. Il permet de définir des workflows complexes impliquant plusieurs agents, juges, routeurs et des interactions humaines.",
   "language": "Go",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Données & Schémas",
     "Collaboration & Workflow",
@@ -16,34 +16,40 @@
   ],
   "audience": "Développeurs",
   "dependencies": [
+    "Go",
     "Docker",
     "Kubernetes",
-    "Prometheus",
-    "OTLP",
     "MongoDB",
-    "S3",
-    "NATS JetStream",
-    "Go"
+    "NATS",
+    "Prometheus",
+    "OpenAI",
+    "Anthropic"
   ],
   "components": [
     "API REST & GraphQL",
-    "Docker & Conteneurs",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Microservices & Architecture",
-    "CI/CD & Déploiement"
+    "Docker & Conteneurs",
+    "Kubernetes & Helm"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "api-key",
+      "jwt"
+    ],
+    "providers": [
+      "GitHub",
+      "Google"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": "Pytest, Jest",
   "workflows": [
     "CI/CD",
     "GitHub Actions"
   ],
-  "lastActivity": "2026-05-16T21:01:27+02:00",
+  "lastActivity": "2026-05-18T23:02:47+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,12 +62,10 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL",
+    "Intelligence Artificielle & LLM",
     "Sécurité & Auth",
-    "Intelligence Artificielle & LLM"
+    "CI/CD & GitHub Actions"
   ]
 }

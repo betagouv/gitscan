@@ -1,100 +1,100 @@
-## Changelog : iterion (30 derniers jours, au 16 mai 2026)
+## Changelog : iterion (30 derniers jours, au 2026-05-18)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse, de la sécurité et des fonctionnalités de l'éditeur et de l'exécution des workflows. Des améliorations significatives ont été apportées à la gestion des erreurs, à la journalisation, à la gestion des fichiers et à l'intégration de nouveaux outils, notamment l'introduction d'un système de sandbox plus sécurisé et de fonctionnalités de gestion des fichiers. Une attention particulière a été accordée à l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles vues et d'options de configuration.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur (studio), la correction de bugs et l'optimisation des performances. Des améliorations significatives ont été apportées à l'éditeur, notamment des rafraîchissements visuels, une meilleure réactivité et une gestion plus fine des états. Des efforts importants ont également été consacrés à la stabilisation et à la sécurisation de l'infrastructure, ainsi qu'à la préparation du déploiement cloud.
 
 ### Évolutions fonctionnelles
-*   Ajout d'une vue "Files" avec possibilité de télécharger les fichiers associés à une exécution.
-*   Implémentation d'un panneau "Commits" pour visualiser et fusionner les modifications.
-*   Amélioration de l'interface utilisateur avec des barres d'outils modernisées et des panneaux latéraux repliables.
-*   Ajout d'une vue "Info" pour afficher des informations détaillées sur les exécutions.
-*   Possibilité de reprendre une exécution interrompue.
-*   Ajout d'un indicateur visuel pour les exécutions en cours.
-*   Amélioration de la gestion des erreurs et des messages d'information.
-*   Ajout d'un support pour les fichiers joints aux exécutions.
-*   Amélioration de la gestion des logs avec une option de suivi en temps réel.
-*   Ajout d'un support pour les variables d'environnement.
-*   Possibilité de télécharger les logs d'une exécution.
+*   **Interface Utilisateur (Studio):** Refonte visuelle de l'interface avec de nouveaux tokens de style, amélioration de la réactivité et de l'accessibilité.
+*   **Gestion des Runs:** Ajout de la possibilité de reprendre un run, affichage de l'historique des commits, et amélioration de la gestion des logs.
+*   **Sandbox:** Amélioration de la sécurité et de la flexibilité de l'environnement sandbox avec l'ajout de nouvelles fonctionnalités comme le montage de volumes et l'exécution de commandes.
+*   **Authentification:** Amélioration de la gestion de l'authentification avec l'ajout de nouvelles méthodes (OAuth) et la sécurisation des sessions.
+*   **Intégration Claude:** Amélioration de l'intégration avec Claude, notamment en termes de gestion des coûts et de la fiabilité.
+*   **Nouvelles fonctionnalités:** Ajout de la possibilité de télécharger des fichiers, d'afficher des informations sur les coûts d'exécution, et d'utiliser des outils en ligne de commande.
+*   **Amélioration de l'expérience utilisateur:** Ajout d'une barre de progression, d'un indicateur d'état, et d'une meilleure gestion des erreurs.
 
 ### Évolutions techniques
-*   Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-*   Amélioration de la sécurité avec la correction de plusieurs vulnérabilités potentielles.
-*   Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de performance.
-*   Implémentation d'un système de sandbox pour isoler les exécutions.
-*   Amélioration de la gestion des erreurs et de la journalisation.
-*   Optimisation des performances de l'interface utilisateur.
-*   Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-*   Intégration de Prometheus pour la surveillance et la collecte de métriques.
-*   Amélioration de l'architecture pour faciliter l'ajout de nouvelles fonctionnalités.
-*   Refonte de l'intégration avec l'API Claude Code.
-*   Mise en place d'un système de gestion des secrets plus sécurisé.
-*   Amélioration de la gestion des workflows avec l'ajout de nouvelles fonctionnalités.
-*   Migration vers une nouvelle version de Go.
-*   Implémentation d'un système de cache pour améliorer les performances.
-*   Amélioration de la gestion des ressources système.
-*   Refonte de l'infrastructure de déploiement.
+*   **Refonte de l'architecture:** Refactorisation du code pour améliorer la maintenabilité et la scalabilité.
+*   **Optimisation des performances:** Amélioration des performances de l'application, notamment en réduisant le temps de chargement et en optimisant l'utilisation de la mémoire.
+*   **Sécurité:** Correction de plusieurs failles de sécurité et amélioration de la protection contre les attaques.
+*   **Infrastructure:** Préparation du déploiement cloud avec l'ajout de nouvelles fonctionnalités comme la gestion des secrets et la mise en place d'une infrastructure scalable.
+*   **Dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Tests:** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la qualité du code.
+*   **CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Docker:** Amélioration de l'intégration avec Docker pour faciliter le déploiement et la gestion des conteneurs.
+*   **Kubernetes:** Préparation du déploiement sur Kubernetes avec l'ajout de nouvelles fonctionnalités comme la gestion des ressources et la mise en place d'une infrastructure scalable.
+*   **Migration vers claw-code-go:** Remplacement progressif de l'utilisation de `goai` par `claw-code-go` pour une meilleure intégration avec l'écosystème claw.
 
 ### Autres changements
-*   Mise à jour de la documentation pour refléter les dernières modifications.
-*   Correction de bugs mineurs.
-*   Amélioration de la configuration et des paramètres par défaut.
-*   Ajout de nouvelles options de personnalisation.
-*   Nettoyage du code et suppression du code obsolète.
-*   Amélioration des messages de log.
-*   Ajout de commentaires au code pour faciliter la compréhension.
-*   Mise à jour des exemples et des tutoriels.
-*   Correction de problèmes de compatibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de nouvelles fonctionnalités de débogage.
-*   Amélioration de la sécurité.
-*   Mise à jour des licences.
-*   Amélioration de la performance.
-*   Ajout de tests unitaires.
-*   Correction de bugs.
-*   Amélioration de la documentation.
-*   Refactorisation du code.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de problèmes de compatibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de nouvelles fonctionnalités de débogage.
-*   Amélioration de la sécurité.
-*   Mise à jour des licences.
-*   Amélioration de la performance.
-*   Ajout de tests unitaires.
-*   Correction de bugs.
-*   Amélioration de la documentation.
-*   Refactorisation du code.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de problèmes de compatibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de nouvelles fonctionnalités de débogage.
-*   Amélioration de la sécurité.
-*   Mise à jour des licences.
-*   Amélioration de la performance.
-*   Ajout de tests unitaires.
-*   Correction de bugs.
-*   Amélioration de la documentation.
-*   Refactorisation du code.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de problèmes de compatibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de nouvelles fonctionnalités de débogage.
-*   Amélioration de la sécurité.
-*   Mise à jour des licences.
-*   Amélioration de la performance.
-*   Ajout de tests unitaires.
-*   Correction de bugs.
-*   Amélioration de la documentation.
-*   Refactorisation du code.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de problèmes de compatibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de nouvelles fonctionnalités de débogage.
-*   Amélioration de la sécurité.
-*   Mise à jour des licences.
-*   Amélioration de la performance.
-*   Ajout de tests unitaires.
-*   Correction de bugs.
-*   Amélioration de la documentation.
-*   Refactorisation du code.
-*   Ajout de nouvelles fonctionnalités.
+*   **Documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Configuration:** Ajout de nouvelles options de configuration pour personnaliser le comportement de l'application.
+*   **Nettoyage du code:** Suppression du code obsolète et amélioration de la lisibilité du code.
+*   **Correction de bugs:** Correction de nombreux bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des logs:** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
+*   **Correction de bugs:** Correction de bugs mineurs pour améliorer la stabilité de l'application.
+*   **Amélioration des performances:** Optimisation des performances de l'application.
+*   **Mise à jour de la documentation:** Mise à jour de la documentation pour refléter les dernières évolutions de l'application.
+*   **Ajout de tests:** Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+*   **Refonte des workflows CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de déploiement.
+*   **Amélioration de la gestion des erreurs:** Ajout de messages d'erreur plus clairs et informatifs.
+*   **Ajout de commentaires:** Ajout de commentaires pour expliquer le fonctionnement du code.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la sécurité:** Correction de failles de sécurité et amélioration de la protection contre les attaques.
+*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.

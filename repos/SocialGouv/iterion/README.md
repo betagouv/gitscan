@@ -38,7 +38,7 @@ Iterion is a workflow engine that turns `.iter` files into executable AI pipelin
                                             │
                     ┌───────────────────────┐│
                     │  agents, judges,      ││
-                    │  routers, joins,      ││
+                    │  routers, await,      ││
                     │  humans, tools        ││
                     │  running in parallel  ││
                     │  with budget tracking ││
@@ -56,10 +56,10 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 ### Authoring & orchestration
 
 - 📝 **Declarative DSL** — Human-readable `.iter` files with indentation-based syntax
-- 🤖 **Multi-agent orchestration** — Chain agents, judges, routers, and joins into complex graphs
+- 🤖 **Multi-agent orchestration** — Chain agents, judges, routers, and await-based convergence into complex graphs
 - 🖥️ **Visual editor** — Browser-based workflow builder with drag-and-drop, live validation, and source view
 - 🙋 **Human-in-the-loop** — Pause for human input, auto-answer via LLM, or let the LLM decide when to ask
-- 🔀 **Parallel branching** — Fan-out via routers, converge with join nodes (`wait_all` / `best_effort`)
+- 🔀 **Parallel branching** — Fan-out via routers, converge at downstream nodes with `await: wait_all` / `await: best_effort`
 - 🧭 **4 routing modes** — `fan_out_all`, `condition`, `round_robin`, and `llm`-driven routing
 - 🔁 **Bounded loops** — Retry and refinement cycles with configurable iteration limits
 - 🔲 **Structured I/O** — Typed schemas for inputs and outputs with enum constraints
@@ -96,16 +96,16 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 
 ### Pick your install
 
-Same engine, six delivery modes — pick the one that fits your workflow:
+Same engine, seven delivery modes — pick the one that fits your workflow:
 
 | Mode | Best for | Install | Docs |
 |---|---|---|---|
 | 🖥️ **CLI** | Scripted runs, CI/CD pipelines | `curl -fsSL https://socialgouv.github.io/iterion/install.sh \| sh` | [install.md](docs/install.md) |
-| 🌐 **Web editor** | Visual workflow design (browser-based) | Bundled with the CLI: `iterion editor` | [visual-editor.md](docs/visual-editor.md) |
+| 🌐 **Studio (web app)** | Visual workflow design (browser-based) | Bundled with the CLI: `iterion studio` | [visual-editor.md](docs/visual-editor.md) |
 | 🪟 **Desktop app** | Native window, multi-project, OS keychain, auto-update | Download `iterion-desktop` from [Releases](https://github.com/SocialGouv/iterion/releases/latest) | [desktop.md](docs/desktop.md) |
 | 🐳 **Docker** | Zero-install runs, reproducible CI | `docker run --rm ghcr.io/socialgouv/iterion:latest` | [install.md#docker](docs/install.md#docker) |
 | ☁️ **Cloud / server** | Multi-tenant deployment, shared run store, REST/WS API | `helm install iterion oci://ghcr.io/socialgouv/charts/iterion` | [cloud.md](docs/cloud.md) |
-| 🎼 **Conductor** | Autonomous loop — poll a tracker, dispatch a workflow per issue | Bundled: `iterion conduct iterion.conductor.yaml` | [conductor.md](docs/conductor.md) |
+| 🎼 **Dispatcher** | Autonomous loop — poll a tracker, dispatch a workflow per issue | Bundled: `iterion dispatch iterion.dispatcher.yaml` | [dispatcher.md](docs/dispatcher.md) |
 | 📦 **TypeScript SDK** | Programmatic invocation from Node/Deno/Bun | `npm install @iterion/sdk` | [sdks/typescript/](sdks/typescript/) |
 
 All seven invoke the same Go core. The DSL, runtime, persistence and observability are identical — they only differ in how you reach them.
@@ -117,18 +117,20 @@ All seven invoke the same Go core. The DSL, runtime, persistence and observabili
 mkdir my-project && cd my-project
 iterion init
 
-# Configure your API key
+# Authenticate Claude Code (the scaffolded workflow's backend)
+claude login
+
+# Optional: copy .env.example to .env to override PROJECT_DIR
 cp .env.example .env
-# Edit .env → set ANTHROPIC_API_KEY (or OPENAI_API_KEY)
-source .env && export ANTHROPIC_API_KEY
 
 # Validate the workflow
-iterion validate pr_refine_single_model.iter
+iterion validate pr_refine_single_model_backend.bot
 
 # Run it
-iterion run pr_refine_single_model.iter \
+iterion run pr_refine_single_model_backend.bot \
   --var pr_title="Fix auth middleware" \
-  --var review_rules="No SQL injection, no hardcoded secrets"
+  --var review_rules="No SQL injection, no hardcoded secrets" \
+  --var compliance_rules="Must satisfy the review rules and keep tests passing"
 ```
 
 `iterion init` creates a complete PR refinement workflow (review → plan → compliance check → act → verify) that you can run immediately.
@@ -147,7 +149,7 @@ All run data (events, artifacts, interactions) is stored in `.iterion/runs/`.
 
 ## 🤖 `.iter` vs `.bot`
 
-Iterion accepts two interchangeable file extensions: **`.iter`** for raw or experimental DSL (didactic examples, coverage tests, single-purpose scripts) and **`.bot`** for productized, operational bots (with human gates, mitigation steps, reports, and a documented runbook). The parser, compiler, runtime, and editor treat them identically — the distinction is narrative only. `iterion init` produces a `.bot` file by default; the `examples/` directory ships both, with `.bot` reserved for examples meant to be run unmodified against real systems.
+Iterion accepts two interchangeable file extensions: **`.iter`** for raw or experimental DSL (didactic examples, coverage tests, single-purpose scripts) and **`.bot`** for productized, operational bots (with human gates, mitigation steps, reports, and a documented runbook). The parser, compiler, runtime, and studio treat them identically — the distinction is narrative only. `iterion init` produces a `.bot` file by default; the `examples/` directory ships both, with `.bot` reserved for examples meant to be run unmodified against real systems.
 
 Bots can also be shipped as **`.botz`** — a tar.gz packaging the workflow with adjacent resources (Claude Code skills, reusable prompts, default attachments, manifest). Scaffold with `iterion bundle init`, build with `iterion bundle pack`, run with `iterion run my.botz`. See [docs/bundles.md](docs/bundles.md).
 
@@ -198,7 +200,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 
 **Get going**
 - [docs/install.md](docs/install.md) — every install method (CLI, desktop, Docker, Helm, SDK)
-- [docs/visual-editor.md](docs/visual-editor.md) — browser-based workflow editor
+- [docs/visual-editor.md](docs/visual-editor.md) — studio (browser-based workflow editor)
 - [docs/desktop.md](docs/desktop.md) — native desktop app
 - [docs/examples.md](docs/examples.md) — workflows of increasing complexity (starter → advanced)
 - [docs/skill.md](docs/skill.md) — install Iterion as an AI agent skill (Claude Code, Cursor, Copilot…)
@@ -207,7 +209,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 - [docs/dsl.md](docs/dsl.md) — full `.iter` DSL reference
 - [docs/routers.md](docs/routers.md) — routing modes deep dive
 - [docs/recipes.md](docs/recipes.md) — preset-driven runs (benchmarking, prompt comparison)
-- [docs/delegation.md](docs/delegation.md) — `model:` vs `delegate:` (claude_code, codex)
+- [docs/delegation.md](docs/delegation.md) — `model:` vs `backend:` (claude_code, codex)
 - [docs/attachments.md](docs/attachments.md) — file/image attachments in prompts
 - [docs/privacy_filter.md](docs/privacy_filter.md) — built-in PII redaction tools
 - [docs/workflow_authoring_pitfalls.md](docs/workflow_authoring_pitfalls.md) — required reading before authoring workflows that commit code
@@ -227,7 +229,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 
 **References**
 - [docs/references/dsl-grammar.md](docs/references/dsl-grammar.md) — readable grammar
-- [docs/references/diagnostics.md](docs/references/diagnostics.md) — all C001–C043 codes
+- [docs/references/diagnostics.md](docs/references/diagnostics.md) — all C001–C082 codes (sparse)
 - [docs/references/patterns.md](docs/references/patterns.md) — 10 reusable workflow patterns
 - [docs/grammar/iterion_v1.ebnf](docs/grammar/iterion_v1.ebnf) — formal EBNF grammar
 
