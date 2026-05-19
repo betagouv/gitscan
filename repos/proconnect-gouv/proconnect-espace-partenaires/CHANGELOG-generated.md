@@ -1,18 +1,20 @@
-## Changelog : proconnect-espace-partenaires (30 derniers jours, au 13 mai 2026)
+## Changelog : proconnect-espace-partenaires (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'espace partenaires a bénéficié d'améliorations axées sur la documentation, la gestion des rôles et des organisations, ainsi que l'ajout d'un mode maintenance pour faciliter les opérations. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la documentation, la correction de problèmes d'intégration avec la fédération et la préparation de l'application pour la maintenance. Des ajustements ont également été apportés à la configuration des tests E2E et à la gestion des bases de données.
 
 ### Évolutions fonctionnelles
-- Ajout d'une mention de l'organisation et de son numéro SIRET pour les professionnels. [#330](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/330)
-- Implémentation d'un mode maintenance permettant de désactiver les modifications de l'espace partenaire. [#312](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/312)
-- Précision de la gestion des ACrs EIDAS1 lorsque ceux-ci ne sont pas gérés. [#323](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/323)
+- Ajout d'un mode maintenance pour désactiver les modifications de l'espace partenaire. [#312](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/312)
+- Amélioration de la documentation concernant la configuration de l'authentification multifactorielle (MFA) avec LemonLDAP::NG. [#316](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/316)
+- Clarification dans la documentation que les informations sur l'utilisateur (claims) sont renvoyées via l'endpoint `/user-info`. [#322](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/322)
+- Ajout d'une mention de l'organisation et du SIRET professionnel. [#330](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/330)
+- Ajout de précision concernant l'Eidas1 lorsque les ACrs ne sont pas gérés. [#323](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/323)
+- Ajout de documentation sur les scopes des rôles. [#331](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/331)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `proconnect-gouv/federation/api-partner` vers les versions `3af5769` et `4f05153`. [#315](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/315) et [#327](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/327)
-- Mises à jour de plusieurs dépendances de développement : `axios`, `fast-xml-builder`, `fast-uri`, `postcss`, `typescript`, `next`, `lodash`, `@playwright/test` et `follow-redirects`. (Ces mises à jour sont automatiques et visent à maintenir la sécurité et la stabilité du projet).
-
-### Autres changements
-- Amélioration de la documentation concernant les claims utilisateurs retournés par `/user-info`. [#322](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/322)
-- Ajout d'une section sur la configuration MFA (Multi-Factor Authentication) dans le guide LemonLDAP::NG. [#316](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/316)
-- Ajout de documentation sur les scopes des rôles. [#331](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/331)
+- Renommage de la base de données MongoDB en "corev2" et de l'utilisateur en "proconnect-app-api-partner". [#337](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/337)
+- Correction de la configuration du serveur web UUV dans les tests E2E et résolution d'un problème d'assertion de chargement intermittent.
+- Rétractation d'une mise à jour de la librairie `nodemailer`. [#335](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/335)
+- Mises à jour de dépendances : `axios`, `fast-xml-builder`, `fast-uri`, `postcss`, `typescript`, `next`.
+- Mise à jour de la dépendance `proconnect-gouv/federation/api-partner`. [#327](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/327), [#334](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/334), [#315](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/315)
+- Mise à jour de la librairie `@uuv/playwright`. [#333](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/333)
