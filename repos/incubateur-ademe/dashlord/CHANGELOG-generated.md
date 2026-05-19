@@ -1,27 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 10 mai 2026)
+## Changelog : dashlord (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Au cours des 30 derniers jours, l'activité principale de Dashlord a consisté à maintenir à jour la liste des sites web surveillés. Des mises à jour régulières ont été effectuées pour s'assurer que le tableau de bord continue de collecter des données pertinentes sur la qualité technique de ces sites.
+Ce mois-ci, les mises à jour de Dashlord se sont concentrées sur l'ajout et la mise à jour de la liste des sites web analysés. Ces ajouts permettent d'élargir la couverture du tableau de bord et d'offrir une vision plus complète des bonnes pratiques techniques sur différents sites web gérés par l'ADEME et ses partenaires.
 
 ### Évolutions fonctionnelles
-Aucune nouvelle fonctionnalité ou amélioration visible pour les utilisateurs n'a été implémentée durant cette période.
+- Ajout et mise à jour de plusieurs sites web dans le tableau de bord, incluant : france-chaleur-urbaine.beta.gouv.fr, pacoupa.ademe.fr, facilit-tacct.beta.gouv.fr, benefriches.ademe.fr, aldo.territoiresentransitions.fr, www.territoiresentransitions.fr, app.territoiresentransitions.fr, mission-transition-ecologique.beta.gouv.fr, plusfraichemaville.fr, impactco2.fr, nosgestesclimat.fr et quefairemesdechets.ademe.fr.
+- Mise à jour des endpoints d'API pour mission-transition-ecologique.beta.gouv.fr (endpoint `/api/health` inclus).
 
 ### Évolutions techniques
-Aucun changement technique significatif n'a été apporté au code source ou à l'infrastructure du projet.
+- Mises à jour régulières du rapport de Dashlord.
 
 ### Autres changements
-- Mise à jour régulière de la liste des sites web surveillés :
-    - https://france-chaleur-urbaine.beta.gouv.fr
-    - https://pacoupa.ademe.fr
-    - https://facili-tacct.beta.gouv.fr
-    - https://benefriches.ademe.fr
-    - https://aldo.territoiresentransitions.fr
-    - https://app.territoiresentransitions.fr
-    - https://www.territoiresentransitions.fr
-    - https://mission-transition-ecologique.beta.gouv.fr
-    - https://plusfraichemaville.fr
-    - https://mission-transition-ecologique.beta.gouv.fr/api/health
-    - https://impactco2.fr
-    - https://nosgestesclimat.fr
-    - https://quefairedemesdechets.ademe.fr
-- Mise à jour du rapport de Dashlord [#88117ec](https://github.com/incubateur-ademe/dashlord/commit/88117ec)
+- Aucun changement significatif à signaler.
