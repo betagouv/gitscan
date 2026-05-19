@@ -1,24 +1,25 @@
 ## Changelog : tchap-x-ios (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des espaces, notamment dans l'affichage et la création de salons. Des corrections ont été apportées pour résoudre des problèmes de connexion et d'affichage, ainsi qu'une gestion améliorée des erreurs de serveur. Une bannière d'alerte s'affiche désormais en cas d'indisponibilité du serveur.
+Cette version apporte des améliorations à la gestion des espaces, notamment dans l'affichage et la création de salons. Des corrections ont été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment en cas de perte de connexion au serveur et lors de l'utilisation de liens d'invitation. Des mises à jour de dépendances ont également été intégrées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des espaces et des salons : l'action par défaut pour les espaces est maintenant le filtrage des conversations. [#329](https://github.com/tchapgouv/tchap-x-ios/issues/329)
-- Possibilité d'accéder à un salon via un lien. [#309](https://github.com/tchapgouv/tchap-x-ios/issues/309)
-- Affichage d'une bannière d'alerte lorsque le serveur est inaccessible. [#338](https://github.com/tchapgouv/tchap-x-ios/issues/338)
-- Modification du libellé pour utiliser la terminologie spécifique à Tchap. [#323](https://github.com/tchapgouv/tchap-x-ios/issues/323)
-- Correction de l'affichage du gradient dans la timeline.
-- Suppression temporaire de l'épinglage des données géographiques. [#331](https://github.com/tchapgouv/tchap-x-ios/issues/331)
+- **Espaces :** Modification de l'action par défaut dans les espaces pour filtrer les conversations. [#329](https://github.com/tchapgouv/tchap-x-ios/issues/329)
+- **Création de salon :** Modifications de l'écran de création de salon pour les espaces, avec suppression temporaire de la sélection d'espace. [#309](https://github.com/tchapgouv/tchap-x-ios/issues/309)
+- **Liens d'invitation :** Correction d'un problème lié à l'accès par lien à un salon. [#309](https://github.com/tchapgouv/tchap-x-ios/issues/309)
+- **Affichage de la timeline :** Correction du gradient de la timeline.
+- **Bannière de déconnexion :** Affichage d'une bannière lorsque le serveur est inaccessible. [#338](https://github.com/tchapgouv/tchap-x-ios/issues/338)
+- **Taxonomie :** Amélioration de la taxonomie. [#323](https://github.com/tchapgouv/tchap-x-ios/issues/323)
 
 ### Évolutions techniques
-- Mise à jour de la bibliothèque `matrix-rust-components-swift` vers la version 26.03.10.
-- Mise à jour de `compound-design-token` vers la version 6.10-angelo.
-- Intégration de la version 26.03.3 d'ElementX-ios.
-- Correction de conflits de rebase lors de l'intégration d'ElementX-ios.
-- Correction d'un problème de CA (Certificate Authority) en environnement de staging. [#335](https://github.com/tchapgouv/tchap-x-ios/issues/335)
+- **Mise à jour des dépendances :**
+    - `matrix-rust-components-swift` mis à jour vers la version 26.03.10.
+    - `compound-design-token` mis à jour vers la version 6.10-angelo 65b1517530e9772bc656ac20b09b7ad733455008.
+- **Rebase :** Rebase de la branche ElementX-ios v26.03.3 dans la branche Tchap.
+- **Désactivation du pinning géolocalisation :** Désactivation du pinning des données géolocalisées. [#331](https://github.com/tchapgouv/tchap-x-ios/issues/331) et [#336](https://github.com/tchapgouv/tchap-x-ios/issues/336)
+- **Correction CA Staging :** Correction d'un problème avec le CA en environnement de staging. [#335](https://github.com/tchapgouv/tchap-x-ios/issues/335)
 
 ### Autres changements
-- Amélioration de la gestion des erreurs et de la robustesse de l'application.
-- Corrections diverses et optimisations du code.
-- Mise à jour de la configuration pour désactiver l'épinglage des données géographiques. [#336](https://github.com/tchapgouv/tchap-x-ios/issues/336)
+- Utilisation de la terminologie spécifique à Tchap.
+- Correction de conflits de rebase.
+- Tentative de correction du CI. [#325](https://github.com/tchapgouv/tchap-x-ios/issues/325)
