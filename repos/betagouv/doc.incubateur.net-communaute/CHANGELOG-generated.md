@@ -1,19 +1,16 @@
-## Changelog : doc.incubateur.net-communaute (30 derniers jours, au 30 avril 2026)
+## Changelog : doc.incubateur.net-communaute (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, la documentation de la communauté beta.gouv.fr a connu plusieurs mises à jour, principalement axées sur l'amélioration de la navigation et la mise à jour des informations concernant l'intégration et l'accompagnement des nouveaux membres. Des corrections ont également été apportées à la table des matières et des liens obsolètes ont été supprimés.
+Ce mois-ci, la documentation de la communauté beta.gouv.fr a été enrichie avec des mises à jour concernant les lieux de la communauté FabNum, des améliorations sur la documentation "Easy Checks" et des ajustements dans la section "Gestion de son équipe". Plusieurs petites modifications ont également été apportées à la documentation, notamment des ajouts de liens vers des ressources utiles comme Grist et des forums.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la section "Gestion de son équipe" pour une meilleure organisation de l'information. [#1769](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1769)
-- Ajout de documentation et de liens vers le forum Grist pour faciliter l'utilisation de cet outil.
-- Ajout d'informations concernant l'embarquement des membres "intras". [#1739](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1739)
-- Mise à jour de la documentation concernant l'accompagnement des nouveaux membres (coach). [#1705](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1705)
-- Correction des ancres de la table des matières pour une navigation plus fluide dans GitBook. [#233](https://github.com/betagouv/doc.incubateur.net-communaute/issues/233)
+- Correction de l'information concernant les lieux de la communauté FabNum. [#235](https://github.com/betagouv/doc.incubateur.net-communaute/issues/235)
+- Mise à jour et relecture de la documentation "Easy Checks" pour améliorer sa clarté et son exhaustivité. [#1782](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1782), [#1780](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1780)
+- Ajout de liens vers la documentation et le forum Grist pour faciliter l'accès à ces ressources. [#867fb18](https://github.com/betagouv/doc.incubateur.net-communaute/commit/867fb18)
+- Réorganisation de la section "Gestion de son équipe" pour une meilleure navigation et compréhension. [#1769](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1769)
 
 ### Évolutions techniques
-- Suppression d'un lien obsolète vers la charte de culture et ajout d'une redirection dans le fichier `.gitbook.yaml`.
-- Changement concernant l'embarquement "intra". [#1740](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1740)
+- Suppression du lien obsolète vers Metabase dans le README.md. [#464798c](https://github.com/betagouv/doc.incubateur.net-communaute/commit/464798c)
 
 ### Autres changements
-- Suppression du lien vers Metabase dans le fichier README.md.
-- Plusieurs commits sans description précise (GITBOOK-1750 à GITBOOK-1779) ont été effectués, indiquant probablement des modifications de contenu ou des corrections mineures.
+- Diverses petites mises à jour et corrections de contenu (identifiées par les numéros de tâches GITBOOK-1779, GITBOOK-1777, GITBOOK-1776, GITBOOK-1775, GITBOOK-1771, GITBOOK-1770, GITBOOK-1767, GITBOOK-1766, GITBOOK-1765, GITBOOK-1764, GITBOOK-1762, GITBOOK-1761, GITBOOK-1758, GITBOOK-1760)
