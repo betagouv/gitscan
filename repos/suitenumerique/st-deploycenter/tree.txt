@@ -85,13 +85,16 @@
     │   │   │       ├── __init__.py
     │   │   │       ├── access_entitlement_resolver.py
     │   │   │       ├── admin_entitlement_resolver.py
+    │   │   │       ├── calendars_access_entitlement_resolver.py
     │   │   │       ├── drive_access_entitlement_resolver.py
     │   │   │       ├── drive_storage_entitlement_resolver.py
     │   │   │       ├── entitlement_resolver.py
     │   │   │       ├── extended_admin_entitlement_resolver.py
     │   │   │       ├── meet_access_entitlement_resolver.py
     │   │   │       ├── messages_admin_entitlement_resolver.py
-    │   │   │       └── messages_storage_entitlement_resolver.py
+    │   │   │       ├── messages_storage_entitlement_resolver.py
+    │   │   │       ├── piggyback_access_entitlement_resolver.py
+    │   │   │       └── transfers_access_entitlement_resolver.py
     │   │   ├── enums.py
     │   │   ├── factories.py
     │   │   ├── forms.py
@@ -123,6 +126,7 @@
     │   │   │   ├── 0017_operator_name_with_article_operator_status_and_more.py
     │   │   │   ├── 0018_operator_org_role_admin_flag.py
     │   │   │   ├── 0019_external_management_api_key.py
+    │   │   │   ├── 0020_service_hidden.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -168,10 +172,12 @@
     │   │   │   │   ├── test_entitlements.py
     │   │   │   │   ├── test_entitlements_adc.py
     │   │   │   │   ├── test_entitlements_admin.py
+    │   │   │   │   ├── test_entitlements_calendars.py
     │   │   │   │   ├── test_entitlements_drive.py
     │   │   │   │   ├── test_entitlements_meet.py
     │   │   │   │   ├── test_entitlements_messages.py
     │   │   │   │   ├── test_entitlements_messages_admin.py
+    │   │   │   │   ├── test_entitlements_transfers.py
     │   │   │   │   ├── test_external_api.py
     │   │   │   │   ├── test_external_service_api.py
     │   │   │   │   ├── test_lagaufre.py
@@ -334,4 +340,4 @@
     │   └── realm.json
     └── nginx
         └── servers.conf.erb
-77 directories, 259 files
+77 directories, 265 files
