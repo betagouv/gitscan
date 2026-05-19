@@ -1,29 +1,24 @@
-## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 7 mai 2026)
+## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 12 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en intégrant un suivi analytique via Matomo, en optimisant l'interface utilisateur et en corrigeant des bugs liés à l'affichage et à la recherche. Des améliorations ont également été apportées à la gestion du contenu de la page d'accueil via Strapi.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la précision des données réglementaires, le suivi de l'utilisation via Matomo pour mieux comprendre le comportement des utilisateurs, et des corrections de bugs pour une meilleure expérience utilisateur. Des ajustements ont également été apportés à la recherche de parcelles et à la sécurité des emails.
 
 ### Évolutions fonctionnelles
-- Ajout d'un plugin Matomo pour le suivi des interactions utilisateurs via des heatmaps [#78](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/78).
-- Amélioration de la recherche par parcelle : suppression de l'adresse dans l'URL après la recherche [#76](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/76).
-- Refonte de la présentation des réglementations : suppression du lien sur la description et amélioration de la vérification de la catégorie et du texte [#72](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/72).
-- Ajout d'un indicateur de chargement pour l'onglet des recommandations.
-- Amélioration de la logique du bouton de recherche.
-- Optimisation de la prévisualisation du diagnostic (diagPreview) : chargement dynamique du contenu, optimisation des performances et ajout d'images de remplacement.
-- Intégration du contenu de la page d'accueil via Strapi, permettant une gestion plus facile du contenu éditorial [#61](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/61).
-- Ajout de trackers Matomo pour le suivi des recherches d'adresses et d'autres interactions utilisateurs [#61](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/61).
-- Correction d'un bug empêchant le fonctionnement des liens "FakeLinks".
-- Correction de problèmes d'alignement et de taille des éléments sur la page d'accueil.
+- Amélioration de la recherche de parcelles : suppression de l'adresse dans l'URL après la recherche [#76](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/76).
+- Précision des données réglementaires : modifications apportées au texte et à la vérification des catégories dans les réglementations [#72](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/72) et [#66](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/66).
+- Correction de l'affichage des risques sonores dans le résumé du diagnostic.
+- Amélioration de la gestion des sources de réglementation locale, suppression du PLU codé en dur [#69](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/69).
+- Ajout de paramètres de requête spécifiques pour cibler les références de parcelles [#42e3ca4](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/42e3ca4).
 
 ### Évolutions techniques
-- Correction de problèmes de typage dans la classe RegulationCls [#77](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/77).
-- Suppression de la source PLU codée en dur pour la réglementation locale [#69](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/69).
-- Amélioration de la sécurité concernant la réception des emails de diagnostic [#65](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/65).
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Correction de problèmes liés au hoisting de CSS dans certains composants.
+- Intégration de Matomo pour le suivi du parcours utilisateur et la création de heatmaps [#75](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/75).
+- Amélioration de l'isolation des fonctions de classification sonore avec des règles cumulatives [#09b3d69](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/09b3d69).
+- Correction d'une erreur React lors du rendu [#7ba8034](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/7ba8034).
+- Amélioration de la sécurité concernant la réception des emails de diagnostic [#99d23de](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/99d23de).
+- Correction du type source vers sound_category dans RegulationCls [#37f1034](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/37f1034).
 
 ### Autres changements
-- Mise à jour de la version du projet de 0.1.0 à 0.1.2.
-- Correction de fautes de frappe dans le contenu de la page d'accueil.
-- Amélioration de la gestion des images et des URLs.
-- Correction de bugs mineurs liés à l'affichage et au comportement de certains composants.
+- Mises à jour de version : passage de 0.1.0 à 0.1.1 puis à 0.1.2 [#73](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/73) et [#74](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/74).
+- Ajout de tests pour les fonctions d'isolation [#f1aebe1](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/f1aebe1).
+- Suppression de liens dans la description des réglementations [#12d81e9](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/12d81e9).
+- Nettoyage et suppression de trackers Matomo inutiles [#84f83e2](https://github.com/betagouv/diagbruit.beta.gouv.fr/commit/84f83e2).
