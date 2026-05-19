@@ -1,29 +1,32 @@
-## Changelog : nitrates (30 derniers jours, au 05 mai 2026)
+## Changelog : nitrates (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration significative de l'édition et de la gestion des arbres de décision, avec l'introduction d'un éditeur YAML en ligne, des fonctionnalités d'annulation/rétablissement, et une meilleure intégration des données. Des améliorations ont également été apportées à l'importation de données, à l'interface utilisateur et à la gestion des contacts.
+Ce mois-ci, le projet nitrates a connu une évolution majeure avec l'implémentation d'un éditeur YAML pour la configuration des règles, permettant une gestion plus flexible et intuitive.  Des améliorations significatives ont également été apportées à l'importation de données (zones vulnérables et RPG), à l'interface utilisateur (validation, cartographie) et à l'intégration avec ProConnect pour l'authentification.  Enfin, des corrections de bugs et des optimisations ont été réalisées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Édition des arbres de décision :** Introduction d'un éditeur YAML en ligne pour la création et la modification des arbres de décision, avec des fonctionnalités d'annulation/rétablissement, de verrouillage pour l'édition concurrente et d'historique des révisions. [#27](https://github.com/betagouv/nitrates/pull/27)
-- **Interface utilisateur :** Amélioration de l'interface utilisateur avec des boutons d'édition plus directs, une meilleure gestion des brouillons, et une intégration du cadastre IGN pour la zone d'activation.
-- **Importation de données :** Importation des données ZV depuis Sandre WFS, remplacement des étiquettes codées en dur par des recherches côté serveur pour les données RPG. [#17](https://github.com/betagouv/nitrates/pull/17)
-- **Gestion des contacts :** Amélioration de la gestion des informations de contact, avec un fallback sur la configuration la plus récente et des avertissements en cas de portail non activé.
-- **Simulateur :** Ajout d'une vue simulateur avec un formulaire HTML brut et un template de résultat pour le débogage.
-- **Cartographie :** Ajout de la possibilité de cliquer sur la carte pour pré-remplir les coordonnées de latitude/longitude.
-- **Haies :** Ajout de la validation de la longueur maximale des haies, avec une limite configurable et des tests associés.
+- **Éditeur YAML :** Implémentation d'un éditeur YAML en ligne pour la configuration des règles, incluant l'édition, la suppression, l'annulation et le verrouillage pour la gestion de la concurrence. [#28](https://github.com/betagouv/nitrates/issues/28)
+- **Authentification ProConnect :** Intégration de l'authentification via ProConnect, avec une page de connexion dédiée et une gestion des erreurs améliorée.
+- **Importation de données :** Amélioration de l'importation des zones vulnérables (ZV) et des référentiels parcellaire (RPG) depuis des sources externes.
+- **Interface de validation :** Refonte de l'interface de validation manuelle des règles, avec une présentation plus claire des informations et des fonctionnalités de recherche améliorées.
+- **Cartographie :** Amélioration de l'affichage des données cartographiques, avec la possibilité d'afficher les zones vulnérables et les RPG en superposition.
+- **Simulation :** Ajout d'une vue simulateur avec un formulaire HTML brut et un affichage des résultats.
+- **Gestion des brouillons :**  Possibilité de créer, renommer et archiver des brouillons de configurations.
+- **Aide contextuelle :** Ajout d'une aide contextuelle pour les champs de formulaire.
 
 ### Évolutions techniques
-- **Refactoring :** Refactoring du code pour améliorer la structure et la maintenabilité, notamment avec la séparation des préoccupations et l'utilisation de nouveaux helpers.
-- **Tests :** Ajout de tests E2E avec Playwright pour le simulateur et d'autres fonctionnalités.
-- **Dépendances :** Ajout des dépendances `ruamel.yaml` et `Pygments` pour l'édition YAML.
-- **Infrastructure :** Amélioration de la configuration Docker pour ARM64.
-- **API :** Création d'endpoints API pour la cascade JavaScript et la récupération des référentiels.
-- **Base de données :** Ajout d'un modèle `DecisionTreeRevision` pour le versionnement des arbres de décision.
-- **Configuration :** Ajout d'un paramètre `NITRATES_SPECS_DIR` pour la configuration des spécifications YAML.
+- **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- **Mise à jour des dépendances :** Mise à jour de plusieurs dépendances, notamment `ruamel.yaml` et `Pygments`.
+- **Docker :** Correction d'un problème de build Docker pour les architectures ARM64.
+- **Tests :** Ajout de tests fonctionnels (Playwright) et de tests d'intégration.
+- **CI/CD :** Amélioration des workflows CI/CD pour automatiser les tests et le déploiement.
+- **Configuration :**  Amélioration de la gestion de la configuration, notamment avec l'ajout de variables d'environnement.
+- **Sécurité :** Ajout d'une politique de sécurité de contenu (CSP) plus restrictive.
+- **Base de données :** Optimisation des requêtes à la base de données.
 
 ### Autres changements
-- **Documentation :** Migration de la FAQ vers Gitbook.
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Corrections de bugs :** Correction de plusieurs bugs, notamment liés à l'affichage des données, à la gestion des erreurs et à la validation des formulaires.
-- **Améliorations de performance :** Optimisation des requêtes et du code pour améliorer les performances.
-- **Mise à jour des dépendances :** Mise à jour de certaines dépendances. (Non listées individuellement)
+- **Documentation :** Mise à jour de la documentation pour refléter les changements récents.
+- **Nettoyage du code :** Suppression de code obsolète et amélioration de la qualité du code.
+- **Amélioration des messages d'erreur :** Amélioration des messages d'erreur pour faciliter le débogage.
+- **Correction de bugs :** Correction de plusieurs bugs mineurs.
+- **Ajout de commentaires :** Ajout de commentaires pour améliorer la compréhension du code.
+- **Suppression de code redondant :** Suppression de code redondant pour simplifier le code.

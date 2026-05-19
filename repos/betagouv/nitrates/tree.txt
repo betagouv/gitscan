@@ -76,6 +76,7 @@
 ├── docker-compose.e2e.yml
 ├── docker-compose.yml
 ├── docs
+│   ├── DEPLOYMENT.md
 │   ├── guh.md
 │   ├── moulinette.md
 │   └── services_externes.md
@@ -187,6 +188,7 @@
 │   │       │   ├── 0001_initial.py
 │   │       │   ├── 0002_add_haie.py
 │   │       │   ├── 0003_add_nitrates.py
+│   │       │   ├── 0004_set_nitrates_domain_from_settings.py
 │   │       │   └── __init__.py
 │   │       └── tests
 │   │           ├── __init__.py
@@ -671,17 +673,21 @@
 │   │   ├── assets
 │   │   │   ├── REF_CULTURES_GROUPES_CULTURES_2024.csv
 │   │   │   └── zone_montagne_communes_2026-04-30.csv
+│   │   ├── auth.py
 │   │   ├── bassins.py
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── attach_validation_screenshot.py
 │   │   │       ├── import_decision_tree.py
 │   │   │       ├── import_nitrates_departments.py
 │   │   │       ├── import_nitrates_rpg.py
 │   │   │       ├── import_nitrates_zv.py
-│   │   │       └── import_rpg_cultures.py
+│   │   │       ├── import_rpg_cultures.py
+│   │   │       ├── provision_admin.py
+│   │   │       └── seed_branches_validation.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_setup_moulinette_pattern.py
@@ -689,6 +695,9 @@
 │   │   │   ├── 0004_import_initial_decision_tree.py
 │   │   │   ├── 0005_decisiontree_lock.py
 │   │   │   ├── 0006_decisiontreerevision.py
+│   │   │   ├── 0007_alter_decisiontreerevision_action_branchevalidation.py
+│   │   │   ├── 0008_remove_branchevalidation_commentaire_and_more.py
+│   │   │   ├── 0009_alter_branchevalidation_options_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regions.py
@@ -696,11 +705,48 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── arbre_decision.py
 │   │   │   └── directive_nitrates.py
+│   │   ├── scripts
+│   │   │   └── validation
+│   │   │       ├── README.md
+│   │   │       ├── branches_full.json
+│   │   │       ├── branches_validation.json
+│   │   │       ├── capture_validation.mjs
+│   │   │       ├── capture_viewer.mjs
+│   │   │       └── capture_yaml.mjs
 │   │   ├── specs
 │   │   │   ├── .gitkeep
 │   │   │   ├── arbre_decision_national.yaml
 │   │   │   ├── grammaire.yaml
-│   │   │   └── referentiels.yaml
+│   │   │   ├── referentiels.yaml
+│   │   │   └── snapshot_miro
+│   │   │       ├── README.md
+│   │   │       ├── arbre_complet
+│   │   │       │   └── 2026-04-28
+│   │   │       │       ├── README.md
+│   │   │       │       ├── arbre_decision_complet.pdf
+│   │   │       │       └── arbre_decision_complet.svg
+│   │   │       ├── culture_principale
+│   │   │       │   └── 2026-05-08
+│   │   │       │       ├── README.md
+│   │   │       │       ├── autres_cultures.png
+│   │   │       │       ├── colza.png
+│   │   │       │       ├── culture_de_printemps.png
+│   │   │       │       ├── culture_hiver_autre_que_colza.png
+│   │   │       │       ├── index.yaml
+│   │   │       │       ├── luzerne_partie1.png
+│   │   │       │       ├── luzerne_partie2.png
+│   │   │       │       ├── luzerne_partie3.png
+│   │   │       │       └── prairies_implantees_plus_de_6_mois.png
+│   │   │       ├── cultures_formulaire
+│   │   │       │   └── 2026-05-08
+│   │   │       │       ├── README.md
+│   │   │       │       ├── cultures_formulaire.svg
+│   │   │       │       └── index.yaml
+│   │   │       └── types_fertilisant
+│   │   │           └── 2026-04-28
+│   │   │               ├── README.md
+│   │   │               ├── index.yaml
+│   │   │               └── types_fertilisant.pdf
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
 │   │   │   ├── nitrates_tags.py
@@ -731,11 +777,15 @@
 │   │   │   ├── test_import_rpg_cultures.py
 │   │   │   ├── test_moulinette.py
 │   │   │   ├── test_moulinette_view.py
+│   │   │   ├── test_phase_3bis_fonctionnel.py
+│   │   │   ├── test_proconnect_backend.py
 │   │   │   ├── test_referentiels_view.py
 │   │   │   ├── test_routing.py
 │   │   │   ├── test_templatetags_calendrier.py
+│   │   │   ├── test_templatetags_phrase.py
 │   │   │   ├── test_yaml_admin_editor.py
 │   │   │   ├── test_yaml_admin_fold.py
+│   │   │   ├── test_yaml_admin_forms.py
 │   │   │   ├── test_yaml_admin_grammar.py
 │   │   │   ├── test_yaml_admin_modules.py
 │   │   │   ├── test_yaml_tree_parcours.py
@@ -744,19 +794,23 @@
 │   │   │   └── test_zonage_note_5.py
 │   │   ├── urls.py
 │   │   ├── views.py
+│   │   ├── views_admin_validation.py
 │   │   ├── views_admin_yaml.py
 │   │   ├── views_admin_yaml_edit.py
 │   │   ├── views_yaml_browser.py
 │   │   ├── yaml_admin
 │   │   │   ├── __init__.py
+│   │   │   ├── catalogue_refs.py
 │   │   │   ├── editor.py
 │   │   │   ├── flatten.py
 │   │   │   ├── fold.py
+│   │   │   ├── forms.py
 │   │   │   ├── grammar.py
 │   │   │   ├── loader.py
 │   │   │   └── tags.py
 │   │   ├── yaml_tree
 │   │   │   ├── __init__.py
+│   │   │   ├── feuilles.py
 │   │   │   ├── loader.py
 │   │   │   ├── loader_db.py
 │   │   │   ├── parcours.py
@@ -898,6 +952,14 @@
 │   │   ├── urls_haie.py
 │   │   └── views.py
 │   ├── static
+│   │   ├── admin
+│   │   │   ├── css
+│   │   │   │   ├── nitrates_admin.css
+│   │   │   │   └── proconnect_button.css
+│   │   │   └── img
+│   │   │       └── proconnect
+│   │   │           ├── button-hover.svg
+│   │   │           └── button.svg
 │   │   ├── bs-recipes
 │   │   │   └── recipes
 │   │   │       └── grunt.sass
@@ -1031,6 +1093,7 @@
 │   │   ├── nitrates
 │   │   │   ├── calendrier.css
 │   │   │   ├── cascade.js
+│   │   │   ├── epandage_aujourdhui.js
 │   │   │   ├── home.css
 │   │   │   ├── home.js
 │   │   │   ├── illu_nitrates.png
@@ -1115,6 +1178,7 @@
 │   │   │   │       └── change_form.html
 │   │   │   ├── includes
 │   │   │   │   └── fieldset.html
+│   │   │   ├── login_with_proconnect.html
 │   │   │   ├── moulinette
 │   │   │   │   ├── confighaie
 │   │   │   │   │   └── demarche_simplifiee_pre_fill_config_help_text.html
@@ -1123,6 +1187,7 @@
 │   │   │   │   └── moulinetteconfig
 │   │   │   │       └── change_form.html
 │   │   │   ├── nitrates
+│   │   │   │   ├── app_index.html
 │   │   │   │   └── decisiontree
 │   │   │   │       └── change_list.html
 │   │   │   ├── submit_line.html
@@ -1782,10 +1847,13 @@
 │   │   │   ├── form.html
 │   │   │   ├── fragments
 │   │   │   │   ├── _calendrier.html
+│   │   │   │   ├── _epandage_header.html
 │   │   │   │   ├── _form_hidden_passthrough.html
 │   │   │   │   ├── _panneau_form.html
 │   │   │   │   ├── _panneau_resultat.html
-│   │   │   │   └── _questions_complementaires.html
+│   │   │   │   ├── _qc_recap.html
+│   │   │   │   ├── _questions_complementaires.html
+│   │   │   │   └── _resultat_questions.html
 │   │   │   ├── home.html
 │   │   │   ├── result.html
 │   │   │   ├── simulateur.html
@@ -1795,6 +1863,10 @@
 │   │   ├── nitrates_admin
 │   │   │   ├── base.html
 │   │   │   ├── clone_confirm.html
+│   │   │   ├── validation
+│   │   │   │   ├── _lightbox.html
+│   │   │   │   ├── detail.html
+│   │   │   │   └── index.html
 │   │   │   └── yaml_tree
 │   │   │       ├── _branche.html
 │   │   │       ├── _edit_banner.html
@@ -1802,6 +1874,7 @@
 │   │   │       ├── _noeud.html
 │   │   │       ├── _regle.html
 │   │   │       ├── _status_banner.html
+│   │   │       ├── _validation_panel.html
 │   │   │       ├── forms
 │   │   │       │   ├── _add_form.html
 │   │   │       │   ├── _add_form_kind_fields.html
@@ -1868,6 +1941,7 @@
 │   │   │   ├── 0009_remove_user_is_confirmed_by_admin.py
 │   │   │   ├── 0010_user_is_instructor.py
 │   │   │   ├── 0011_rename_is_instructor_for_departments_user_is_instructor.py
+│   │   │   ├── 0012_user_proconnect_sub.py
 │   │   │   └── __init__.py
 │   │   ├── mixins.py
 │   │   ├── models.py
@@ -1958,4 +2032,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-245 directories, 1715 files
+261 directories, 1773 files
