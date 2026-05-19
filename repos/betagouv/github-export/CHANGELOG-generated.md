@@ -1,10 +1,11 @@
-## Changelog : github-export (30 derniers jours, au 2026-05-10)
+## Changelog : github-export (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour internes concernant la gestion de l'état des migrations. Ces améliorations visent à optimiser le suivi et le traitement des migrations de données, sans impact direct sur l'utilisation de l'outil par les utilisateurs finaux.
+Les récentes mises à jour se concentrent principalement sur l'amélioration de la gestion de l'état de la migration, notamment lors des phases de découverte et de traitement par lots. Ces améliorations visent à rendre les processus de migration plus robustes et fiables.
 
 ### Évolutions techniques
-- Amélioration de la gestion de l'état des migrations après la découverte et le traitement par lots. Ces mises à jour concernent l'automatisation et la fiabilité du processus de migration.
+- Amélioration de la gestion de l'état de la migration dans les workflows GitHub Actions (discovery et batch processing) : plusieurs commits mettent à jour l'état de la migration après chaque étape, améliorant ainsi la robustesse et la traçabilité du processus.
+- Mise à jour du workflow `sync-orchestrator.yml` [#6c0dc88](https://github.com/betagouv/github-export/commit/6c0dc88) : modifications non spécifiées apportées au workflow d'orchestration de la synchronisation.
 
 ### Autres changements
-- Aucune autre modification significative à signaler.
+- Aucun autre changement significatif à signaler.
