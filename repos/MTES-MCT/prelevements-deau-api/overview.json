@@ -4,21 +4,24 @@
   "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit divers scripts pour récupérer les dossiers de prélèvements, extraire des données précises et générer des rapports.",
   "language": "JavaScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "npm",
     "Docker",
-    "MongoDB",
-    "Express",
+    "@bull-board/api",
+    "@bull-board/express",
+    "@bull-board/ui",
     "bullmq",
+    "mongodb",
+    "express",
     "nodemailer",
     "mjml"
   ],
@@ -33,12 +36,14 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
   "tests": "Ava, Jest",
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD & GitHub Actions"
   ],
   "lastActivity": "2026-04-22T15:13:34+02:00",
   "status": "active",
@@ -55,6 +60,6 @@
     "Écosystème beta.gouv / État",
     "JavaScript",
     "API & Intégrations",
-    "Sécurité & Conformité"
+    "Environnement & Énergie"
   ]
 }
