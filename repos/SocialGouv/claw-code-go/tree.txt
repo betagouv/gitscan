@@ -18,7 +18,9 @@
 ├── docs
 │   ├── parity.md
 │   ├── plugin_signing.md
-│   └── review_rationale.md
+│   ├── review_rationale.md
+│   └── reviews
+│       └── iterion-touching-audit-2026-05-17.md
 ├── go.mod
 ├── go.sum
 ├── hooks
@@ -59,11 +61,13 @@
 │   │   │   │   └── provider_test.go
 │   │   │   ├── openai
 │   │   │   │   ├── provider.go
+│   │   │   │   ├── provider_chatgpt_test.go
 │   │   │   │   ├── reasoning_test.go
 │   │   │   │   ├── responses.go
 │   │   │   │   └── responses_test.go
 │   │   │   ├── openaiwire
 │   │   │   │   ├── convert.go
+│   │   │   │   ├── convert_test.go
 │   │   │   │   ├── stream.go
 │   │   │   │   └── types.go
 │   │   │   └── vertex
@@ -334,8 +338,10 @@
 │   │   ├── bash_env_test.go
 │   │   ├── bash_pipeline.go
 │   │   ├── bash_timeout_test.go
+│   │   ├── bash_unix.go
 │   │   ├── bash_validation.go
 │   │   ├── bash_validation_test.go
+│   │   ├── bash_windows.go
 │   │   ├── bundled_skills
 │   │   │   ├── claude-code-setup
 │   │   │   │   └── skills
@@ -687,4 +693,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-147 directories, 542 files
+148 directories, 547 files

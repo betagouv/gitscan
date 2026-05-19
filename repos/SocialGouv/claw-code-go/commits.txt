@@ -1,3 +1,15 @@
+2026-05-18T19:34:05+02:00 - 795bbb4 - devthejo : fix(tools/bash): gate Setpgid + syscall.Kill behind !windows build tag
+2026-05-18T09:03:51Z - 6d5ae7a - devthejo : refactor(api/openai): trim WHAT-comment on Client struct OAuth fields
+2026-05-18T08:49:11Z - 09a648e - devthejo : fix(api/openai): force store=false + omit max_output_tokens in ChatGPT-OAuth mode
+2026-05-18T08:32:39Z - f334672 - devthejo : feat(api/openai): add ChatGPT-OAuth (forfait) auth mode
+2026-05-17T20:36:27+02:00 - e1a6fe0 - devthejo : fix(api/client): strip Message.IsInjected from Anthropic wire payload (F-CC-7)
+2026-05-17T20:00:56+02:00 - 0aef81a - devthejo : fix(api/openai, api/client): gate anthropic-beta on OAuth, reconcile function_call deltas, accept space-less SSE prefix (F-CC-1, F-CC-4, F-CC-5, F-CC-6)
+2026-05-17T19:41:18+02:00 - 81d56c1 - devthejo : fix(api/client, apikit/registry): typed APIError on transport-error retry exhaustion; don't bump TTL on failed live-cache refresh (F-CC-2, F-CC-3)
+2026-05-17T12:30:03Z - b4b2f7c - devthejo : fix(api/openai): surface SSE error/response.failed/response.incomplete as EventError
+2026-05-17T10:28:36Z - 98731b5 - devthejo : fix(api/openaiwire): omitempty on Property.Type so any-value props round-trip as {}
+2026-05-17T09:06:37Z - c67d13f - devthejo : fix(apikit): live registry refresh on TTL boundary + merge default registry
+2026-05-17T09:04:16Z - c1cdea5 - devthejo : fix(api/client): wrap non-retryable errors in typed APIError
+2026-05-17T09:03:32Z - 373d944 - devthejo : fix(api/client): pin anthropic-beta caching-scope token
 2026-05-15T14:08:52+02:00 - 1fa26b9 - devthejo : feat(tools/skill): YAML frontmatter, plugin namespace, bundled skills, install
 2026-05-15T12:05:45+02:00 - 35aa371 - devthejo : fix(api/client): retry transport errors with exponential backoff
 2026-05-13T16:49:22Z - 5b66c4f - devthejo : fix(tools/todo_write): add Items schema so OpenAI's strict validator accepts the call

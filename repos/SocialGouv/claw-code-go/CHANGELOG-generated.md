@@ -1,29 +1,35 @@
-## Changelog : claw-code-go (30 derniers jours, au 15 mai 2026)
+## Changelog : claw-code-go (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une avancée significative dans les fonctionnalités de claw-code-go, notamment avec l'ajout de la prise en charge de plugins via un marché distant, l'implémentation d'outils d'interaction avec l'utilisateur et de déclenchement distant, ainsi que l'intégration de nouveaux fournisseurs de modèles de langage (Bedrock, Vertex, Foundry). Des améliorations ont également été apportées à la sécurité, à la gestion des erreurs et à l'observabilité du projet.
+Les 30 derniers jours ont été marqués par une refonte importante de l'écosystème des outils et plugins de claw-code-go. De nouvelles fonctionnalités ont été ajoutées pour l'automatisation, la sécurité et l'intégration avec des services externes comme AWS Bedrock, Azure Foundry et Vertex AI. L'ajout d'un marché de plugins distant et d'outils d'interaction utilisateur (ask_user, remote_trigger) renforce la flexibilité et l'extensibilité de la plateforme. Des améliorations significatives ont également été apportées à la gestion des erreurs, à la performance et à la documentation.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'installer des plugins depuis un marché distant avec vérification de signature. [#8db196f](https://github.com/SocialGouv/claw-code-go/commit/8db196f)
-- Implémentation des outils `ask_user` et `remote_trigger` pour interagir avec l'utilisateur et déclencher des actions à distance. [#d438b99](https://github.com/SocialGouv/claw-code-go/commit/d438b99)
-- Intégration de nouveaux fournisseurs de modèles de langage : AWS Bedrock, Azure Foundry et Google Vertex AI. [#3ce3cea](https://github.com/SocialGouv/claw-code-go/commit/3ce3cea)
-- Ajout d'un outil `computer_use` permettant d'automatiser des actions sur l'interface graphique (capture d'écran, clics, saisie de texte) sous Linux. [#5985640](https://github.com/SocialGouv/claw-code-go/commit/5985640)
-- Possibilité d'utiliser des images comme source de données pour les modèles de langage via l'ajout du type `ImageSource`. [#52392bd](https://github.com/SocialGouv/claw-code-go/commit/52392bd)
-- Ajout de commandes CLI pour gérer les sessions (`/timeline`) et afficher l'historique (`/lineage`). [#05756be](https://github.com/SocialGouv/claw-code-go/commit/05756be)
+- Ajout d'un nouveau tool `computer_use` permettant l'automatisation d'actions sur l'interface graphique (clics, saisie de texte, captures d'écran) sous Linux.
+- Implémentation d'un marché de plugins distant permettant d'installer des plugins depuis une URL spécifiée, avec vérification de signature.
+- Ajout des outils `ask_user` et `remote_trigger` pour interagir avec l'utilisateur et déclencher des actions externes.
+- Intégration de nouveaux fournisseurs de modèles de langage : AWS Bedrock, Azure Foundry et Google Vertex AI.
+- Possibilité d'utiliser des modèles OpenAI avec différents niveaux d'effort de raisonnement (`reasoning_effort`).
+- Ajout d'un outil `timeline` en ligne de commande pour visualiser l'historique des sessions.
+- Ajout d'un outil `store` en ligne de commande pour gérer les plugins.
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la structure et la maintenabilité.
-- Mise en place d'un système de gestion des erreurs plus robuste avec des erreurs typées pour faciliter la gestion des erreurs et les tentatives de relance. [#2574d7f](https://github.com/SocialGouv/claw-code-go/commit/2574d7f)
-- Amélioration de la gestion des timeouts HTTP et de la taille des buffers SSE. [#cdc3f98](https://github.com/SocialGouv/claw-code-go/commit/cdc3f98)
-- Ajout d'un système de journalisation basé sur OpenTelemetry avec exporteurs OTLP/HTTP et gRPC. [#f53ccbb](https://github.com/SocialGouv/claw-code-go/commit/f53ccbb)
-- Implémentation d'un système de hooks pour étendre les fonctionnalités du projet. [#b5bbbd2](https://github.com/SocialGouv/claw-code-go/commit/b5bbbd2)
-- Ajout de tests unitaires et d'intégration pour améliorer la qualité du code.
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés au projet.
-- Renommage du module en `github.com/SocialGouv/claw-code-go` pour faciliter l'importation. [#ef4a4cd](https://github.com/SocialGouv/claw-code-go/commit/ef4a4cd)
+- Refactorisation importante du code pour améliorer la structure et la maintenabilité.
+- Ajout de tests unitaires et d'intégration pour couvrir les nouvelles fonctionnalités.
+- Mise en place d'un système de cache pour le registre des modèles de langage.
+- Amélioration de la gestion des erreurs et des timeouts.
+- Implémentation de l'exportation des logs au format OTLP/gRPC pour une meilleure observabilité.
+- Utilisation de cosign pour la vérification de la signature des plugins.
+- Amélioration de la sécurité avec la fermeture de plusieurs vulnérabilités identifiées lors de revues de code.
+- Refonte du système d'authentification OAuth pour MCP avec support de PKCE.
+- Ajout de la gestion des variables d'environnement pour les fournisseurs de modèles de langage.
+- Suppression de la dépendance à la librairie `goai`.
+- Modification du chemin du module pour faciliter l'importation distante.
 
 ### Autres changements
-- Ajout d'une licence MIT. [#4bab540](https://github.com/SocialGouv/claw-code-go/commit/4bab540)
-- Restructuration de la documentation README pour mettre en avant les principales fonctionnalités. [#146c3c0](https://github.com/SocialGouv/claw-code-go/commit/146c3c0)
-- Amélioration de la gestion des variables d'environnement pour les fournisseurs de modèles de langage. [#1692325](https://github.com/SocialGouv/claw-code-go/commit/1692325)
-- Correction de bugs et améliorations de la performance.
-- Mise à jour des dépendances.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés.
+- Restructuration du fichier README pour mettre en avant les principales fonctionnalités.
+- Ajout d'une matrice de parité pour suivre l'état d'avancement des fonctionnalités.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout d'une option pour désactiver la vérification de signature des plugins.
+- Ajout d'une option pour autoriser l'utilisation du marché de plugins en HTTPS non sécurisé.
+- Amélioration des messages d'erreur pour faciliter le débogage.
