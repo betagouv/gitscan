@@ -1,13 +1,13 @@
-## Changelog : dashlord (30 derniers jours, au 10 mai 2026)
+## Changelog : dashlord (30 derniers jours, au 2026-05-17)
 
 ### Résumé
-Ce changelog présente une mise à jour mineure du tableau de bord Dashlord, principalement axée sur la maintenance et la préparation des rapports. Aucune nouvelle fonctionnalité visible pour l'utilisateur n'a été ajoutée durant cette période.
+Ce changelog couvre une période de maintenance et de préparation des rapports. Les mises à jour récentes se concentrent sur l'automatisation de la génération de rapports, assurant ainsi une information actualisée sur l'état de la sécurité des sites web surveillés par Dashlord.
 
 ### Évolutions fonctionnelles
 Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de la génération des rapports. [#1234](https://github.com/MTES-MCT/dashlord/issues/1234)
+- Automatisation de la mise à jour des rapports : Les rapports sont désormais mis à jour automatiquement grâce à l'action `report.yml` [#1234](https://github.com/MTES-MCT/dashlord/issues/1234) (implémentation via DashlordBetaGouvBot).
 
 ### Autres changements
-- Mise à jour de la dépendance `report` via DashlordBetaGouvBot.
+Aucun autre changement significatif à signaler.
