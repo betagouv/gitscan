@@ -1,21 +1,16 @@
 ## Changelog : prelevements-deau-front (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives concernant l'export de données, notamment en termes de performance et de gestion des limites de taille. L'interface utilisateur a également été affinée pour une meilleure présentation des informations, en particulier concernant les prélèveurs, les exploitations et les documents associés.
+Cette mise à jour améliore significativement la fonctionnalité d'export de données, notamment pour les prélèvements d'eau. Des corrections ont été apportées pour assurer un affichage correct des noms des préleveurs et des libellés dans les sélecteurs multiples.
 
 ### Évolutions fonctionnelles
-- **Export de données :** Amélioration de la performance de l'export CSV, avec une gestion optimisée des données et une augmentation de la limite de taille des fichiers exportés. Correction de bugs liés à l'export et à l'affichage des métriques. [#1234](https://github.com/MTES-MCT/prelevements-deau-front/issues/1234) (numéro d'issue fictif)
-- **Affichage des informations :**
-    - Correction de l'affichage du nom du prélèvement.
-    - Amélioration de l'affichage des labels dans les champs de sélection multiple.
-    - Affichage de l'usage de l'exploitation dans le formulaire de téléchargement de documents.
-    - Affichage de la raison sociale ou, à défaut, du nom et prénom du civil dans les informations de l'exploitation.
-- **Gestion des documents :** Tri des documents par date de signature dans les exploitations pour une meilleure organisation.
+- Correction de l'affichage du nom des préleveurs [#29f0310](https://github.com/MTES-MCT/prelevements-deau-front/commit/29f0310)
+- Amélioration de l'export des données :
+    - Augmentation de la limite de taille des fichiers exportés [#2a180df](https://github.com/MTES-MCT/prelevements-deau-front/commit/2a180df)
+    - Correction de bugs liés à l'export [#dc08ff9](https://github.com/MTES-MCT/prelevements-deau-front/commit/dc08ff9)
+    - Optimisation du streaming de l'export CSV [#9664c52](https://github.com/MTES-MCT/prelevements-deau-front/commit/9664c52)
+    - Suppression de l'expansion des métriques lors de l'export [#065c8a1](https://github.com/MTES-MCT/prelevements-deau-front/commit/065c8a1)
+- Correction de l'affichage des libellés dans les sélecteurs multiples groupés [#0f5ef36](https://github.com/MTES-MCT/prelevements-deau-front/commit/0f5ef36)
 
 ### Évolutions techniques
-- Ajout d'une page d'export dédiée.
-- Correction d'un bug empêchant l'édition correcte des meso dans le formulaire de modification d'un point de prélèvement.
-- Correction de problèmes de linting.
-
-### Autres changements
-- Ajout de la possibilité d'exporter des documents.
+- Ajout de la documentation pour l'export [#dfe8a5d](https://github.com/MTES-MCT/prelevements-deau-front/commit/dfe8a5d)

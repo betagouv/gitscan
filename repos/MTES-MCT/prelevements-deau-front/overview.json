@@ -1,21 +1,25 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-front",
   "name": "prelevements-deau-front",
-  "description": "Cette application est le front-end du projet de gestion des prélèvements d'eau. Elle permet de gérer les informations relatives aux prélèvements d'eau et offre une interface utilisateur pour interagir avec les données.",
+  "description": "Cette application est l'interface frontale du projet de gestion des prélèvements d'eau. Elle permet de gérer et visualiser les données relatives aux prélèvements d'eau.",
   "language": "TypeScript",
   "features": [
-    "Gestion des documents & Fichiers",
+    "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion documentaire & Fichiers",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Next.js",
     "@codegouvfr/react-dsfr",
-    "NextAuth.js"
+    "React",
+    "NextAuth",
+    "date-fns",
+    "lodash-es",
+    "maplibre-gl"
   ],
   "components": [
     "Frontend React",
@@ -26,10 +30,11 @@
   "auth": {
     "methods": [
       "magic-link"
-    ]
+    ],
+    "providers": null
   },
   "tests": "Ava",
-  "workflows": [],
+  "workflows": null,
   "lastActivity": "2026-04-22T16:17:03+02:00",
   "status": "active",
   "license": "MIT",
@@ -45,6 +50,7 @@
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting"
+    "Déploiement & Hosting",
+    "Environnement & Énergie"
   ]
 }
