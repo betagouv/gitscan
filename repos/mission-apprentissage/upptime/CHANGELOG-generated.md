@@ -1,14 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 2026-05-17)
+## Changelog : upptime (30 derniers jours, au 2026-05-19)
 
 ### Résumé
-Ce changelog résume les mises à jour d'upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour automatiques du statut des différents services surveillés par le projet. Ces mises à jour indiquent si les services sont opérationnels ou non, et fournissent des informations sur le temps de réponse.  Il y a eu également des mises à jour régulières des graphiques et du résumé de statut.
+Ce changelog couvre les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent des mises à jour automatiques de l'état des différents services surveillés par le système (API Apprentissage, Percona, Sentry, etc.). Ces mises à jour indiquent que les services sont généralement opérationnels.  Il n'y a pas eu de changements majeurs au code du projet durant cette période.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et la mise à jour du statut des services.
+Aucune évolution fonctionnelle n'a été apportée durant cette période. Les changements sont principalement liés à la surveillance de l'uptime des différents services.
 
 ### Évolutions techniques
-*   Mise à jour de la version d'Upptime à v1.41.3.
-*   Mises à jour régulières des graphiques et du résumé de statut via les actions automatisées.
+Aucune évolution technique significative n'a été apportée durant cette période.
 
 ### Autres changements
-Aucun autre changement significatif n'a été observé durant cette période. Les commits concernent principalement les rapports d'état automatisés des différents services surveillés.
+- Mise à jour de la version de `@upptime` à v1.41.2 et v1.41.3.
+- Mises à jour régulières du fichier `README.md` et du résumé d'état.
+- Mises à jour automatiques des graphiques de statut.
