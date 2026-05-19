@@ -952,6 +952,7 @@
 │   │   │   ├── transfer_authorization_requests_controller.rb
 │   │   │   ├── unmark_user_organization_as_verified_controller.rb
 │   │   │   ├── user_organization_verifications_controller.rb
+│   │   │   ├── user_rights_controller.rb
 │   │   │   ├── users_with_roles_controller.rb
 │   │   │   └── whitelisted_verified_emails_controller.rb
 │   │   ├── admin_controller.rb
@@ -1108,6 +1109,7 @@
 │   │   ├── page_title_helper.rb
 │   │   ├── subdomains_helper.rb
 │   │   ├── tabs_helper.rb
+│   │   ├── user_rights_paths_helper.rb
 │   │   └── webhooks_helper.rb
 │   ├── interactors
 │   │   ├── add_user_to_organization.rb
@@ -1435,7 +1437,6 @@
 │   │   ├── impersonation.rb
 │   │   ├── impersonation_action.rb
 │   │   ├── instruction
-│   │   │   ├── manager_scope_options.rb
 │   │   │   ├── right_validator.rb
 │   │   │   ├── scope.rb
 │   │   │   └── user_rights_view.rb
@@ -1449,6 +1450,10 @@
 │   │   ├── organizations_user.rb
 │   │   ├── parsed_role.rb
 │   │   ├── revocation_of_authorization.rb
+│   │   ├── rights
+│   │   │   ├── admin_authority.rb
+│   │   │   ├── authority.rb
+│   │   │   └── manager_authority.rb
 │   │   ├── role_hierarchy.rb
 │   │   ├── role_set.rb
 │   │   ├── service_provider.rb
@@ -1526,6 +1531,8 @@
 │   │   ├── update_authorization_request_model.rb
 │   │   └── update_instructor_draft_request.rb
 │   ├── policies
+│   │   ├── admin
+│   │   │   └── user_right_policy.rb
 │   │   ├── application_policy.rb
 │   │   ├── authorization_definition_policy.rb
 │   │   ├── authorization_policy.rb
@@ -2185,6 +2192,7 @@
 │       │   └── shared
 │       │       └── unauthenticated_pages
 │       │           ├── _api_gouv.html.erb
+│       │           ├── _bypass_login_info.html.erb
 │       │           ├── _eligibility_illustration.html.erb
 │       │           ├── _pro_connect.html.erb
 │       │           └── _welcome_logo.html.erb
@@ -2575,6 +2583,10 @@
 │   │   ├── bannissements_session.feature
 │   │   ├── data_providers.feature
 │   │   ├── emails_verifies.feature
+│   │   ├── gestion_des_droits
+│   │   │   ├── j_ajoute_des_droits.feature
+│   │   │   ├── je_modifie_des_droits.feature
+│   │   │   └── liste_des_droits.feature
 │   │   ├── habilitation_types.feature
 │   │   ├── impersonation.feature
 │   │   ├── transfer_authorization_request.feature
@@ -3150,7 +3162,8 @@
 │   │   ├── code_naf_spec.rb
 │   │   ├── concerns
 │   │   │   └── authorization_core
-│   │   │       └── checkboxes_spec.rb
+│   │   │       ├── checkboxes_spec.rb
+│   │   │       └── documents_spec.rb
 │   │   ├── contact_definition_spec.rb
 │   │   ├── contact_spec.rb
 │   │   ├── data_provider_spec.rb
@@ -3162,7 +3175,6 @@
 │   │   ├── impersonation_action_spec.rb
 │   │   ├── impersonation_spec.rb
 │   │   ├── instruction
-│   │   │   ├── manager_scope_options_spec.rb
 │   │   │   ├── scope_spec.rb
 │   │   │   └── user_rights_view_spec.rb
 │   │   ├── instructor_draft_request_document_spec.rb
@@ -3174,6 +3186,9 @@
 │   │   ├── organization_spec.rb
 │   │   ├── organizations_user_spec.rb
 │   │   ├── parsed_role_spec.rb
+│   │   ├── rights
+│   │   │   ├── admin_authority_spec.rb
+│   │   │   └── manager_authority_spec.rb
 │   │   ├── role_hierarchy_spec.rb
 │   │   ├── role_set_spec.rb
 │   │   ├── service_provider_spec.rb
@@ -3236,6 +3251,8 @@
 │   │   ├── update_authorization_request_spec.rb
 │   │   └── update_instructor_draft_request_spec.rb
 │   ├── policies
+│   │   ├── admin
+│   │   │   └── user_right_policy_spec.rb
 │   │   ├── authorization_request_form_policy_spec.rb
 │   │   ├── authorization_request_policy_spec.rb
 │   │   ├── data_provider_policy_spec.rb
@@ -3366,4 +3383,4 @@
     ├── .keep
     └── javascript
         └── .keep
-475 directories, 3031 files
+480 directories, 3043 files
