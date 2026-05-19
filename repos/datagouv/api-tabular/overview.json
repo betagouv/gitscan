@@ -1,22 +1,22 @@
 {
   "url": "https://github.com/datagouv/api-tabular",
   "name": "api-tabular",
-  "description": "Une API pour accéder aux données tabulaires converties par Hydra et stockées dans les bases de données de data.gouv.fr. Elle offre une interface REST pour interroger les tables PostgreSQL contenant des données CSV, avec des capacités de requête HTTP, de pagination et de streaming.",
+  "description": "Une API pour accéder aux données tabulaires converties par Hydra, hébergées sur la plateforme data.gouv.fr. Elle offre une interface REST pour interroger des tables de base de données PostgreSQL contenant des données CSV.",
   "language": "Python",
   "features": [
     "API & Intégrations",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "aiohttp",
     "gunicorn",
     "PostgreSQL",
-    "PostgREST"
+    "PostgREST",
+    "sentry-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,25 +29,27 @@
       "none"
     ]
   },
-  "tests": "pytest",
+  "tests": [
+    "pytest"
+  ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-04-14T22:04:38+02:00",
+  "lastActivity": "2026-05-12T14:12:13Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 600390455,
-    "forks": null,
+    "stars": 8,
+    "forks": 0,
     "contributors": null,
     "openIssues": null
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
+    "API & Intégrations",
     "Python",
     "Bases de données SQL",
-    "API & Intégrations"
+    "Docker & Conteneurs"
   ]
 }
