@@ -98,6 +98,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260414105500_extend_user_type_enum
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260511131211_user_region
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -453,44 +455,49 @@
 │       ├── next.config.mjs
 │       ├── package.json
 │       ├── public
-│       │   └── assets
-│       │       ├── Etude de cas - Arras.pptx
-│       │       ├── centre-d-aide
-│       │       │   ├── otelo-cibler-la-vacance-de-longue-duree.jpg
-│       │       │   ├── otelo-cibler-le-taux-de-residences-secondaires.jpg
-│       │       │   ├── otelo-comment-est-calculee-la-resorption-de-la-vacance.jpg
-│       │       │   ├── otelo-comment-sont-calculees-les-projections-demographiques.jpg
-│       │       │   ├── otelo-comment-sont-calculees-les-projections-en-menage.jpg
-│       │       │   ├── otelo-creer-son-compte-otelo.jpg
-│       │       │   ├── otelo-creer-un-territoire-a-facon.jpg
-│       │       │   ├── otelo-debuter-l-elaboration-d-un-scenario.jpg
-│       │       │   ├── otelo-elaborer-un-scenario-de-a-a-z.jpg
-│       │       │   ├── otelo-generer-une-presentation-ppt-editable.jpg
-│       │       │   ├── otelo-importer-des-donnees-a-facon.jpg
-│       │       │   ├── otelo-je-suis-un-ddt.jpg
-│       │       │   ├── otelo-methodologie-et-donnees.jpg
-│       │       │   ├── otelo-parametrer-les-dynamiques-de-renouvellement-urbain.jpg
-│       │       │   ├── otelo-parametrer-les-projections-demographiques.jpg
-│       │       │   ├── otelo-que-repondre-aux-elus.jpg
-│       │       │   └── otelo-resorber-le-mal-logement.jpg
-│       │       ├── csv
-│       │       │   ├── template_import_a_facon.csv
-│       │       │   └── template_import_utilisateurs.csv
-│       │       ├── img
-│       │       │   ├── acces_collectivite.png
-│       │       │   ├── acces_ddt.png
-│       │       │   ├── arras.webp
-│       │       │   ├── book.svg
-│       │       │   ├── ecosystem.svg
-│       │       │   ├── faq-mailles.png
-│       │       │   ├── home-background.jpg
-│       │       │   ├── home-background.png
-│       │       │   ├── logo-cerema.svg
-│       │       │   ├── logo-ministere.svg
-│       │       │   └── methodologie.svg
-│       │       └── pdf
-│       │           ├── acte_engagement.pdf
-│       │           └── guide_projection_facon.pdf
+│       │   ├── assets
+│       │   │   ├── Etude de cas - Arras.pptx
+│       │   │   ├── centre-d-aide
+│       │   │   │   ├── otelo-cibler-la-vacance-de-longue-duree.jpg
+│       │   │   │   ├── otelo-cibler-le-taux-de-residences-secondaires.jpg
+│       │   │   │   ├── otelo-comment-est-calculee-la-resorption-de-la-vacance.jpg
+│       │   │   │   ├── otelo-comment-sont-calculees-les-projections-demographiques.jpg
+│       │   │   │   ├── otelo-comment-sont-calculees-les-projections-en-menage.jpg
+│       │   │   │   ├── otelo-creer-son-compte-otelo.jpg
+│       │   │   │   ├── otelo-creer-un-territoire-a-facon.jpg
+│       │   │   │   ├── otelo-debuter-l-elaboration-d-un-scenario.jpg
+│       │   │   │   ├── otelo-elaborer-un-scenario-de-a-a-z.jpg
+│       │   │   │   ├── otelo-generer-une-presentation-ppt-editable.jpg
+│       │   │   │   ├── otelo-importer-des-donnees-a-facon.jpg
+│       │   │   │   ├── otelo-je-suis-un-ddt.jpg
+│       │   │   │   ├── otelo-methodologie-et-donnees.jpg
+│       │   │   │   ├── otelo-parametrer-les-dynamiques-de-renouvellement-urbain.jpg
+│       │   │   │   ├── otelo-parametrer-les-projections-demographiques.jpg
+│       │   │   │   ├── otelo-que-repondre-aux-elus.jpg
+│       │   │   │   └── otelo-resorber-le-mal-logement.jpg
+│       │   │   ├── csv
+│       │   │   │   ├── template_import_a_facon.csv
+│       │   │   │   └── template_import_utilisateurs.csv
+│       │   │   ├── img
+│       │   │   │   ├── acces_collectivite.png
+│       │   │   │   ├── acces_ddt.png
+│       │   │   │   ├── arras.webp
+│       │   │   │   ├── book.svg
+│       │   │   │   ├── ecosystem.svg
+│       │   │   │   ├── faq-mailles.png
+│       │   │   │   ├── home-background.jpg
+│       │   │   │   ├── home-background.png
+│       │   │   │   ├── logo-cerema.svg
+│       │   │   │   ├── logo-ministere.svg
+│       │   │   │   └── methodologie.svg
+│       │   │   └── pdf
+│       │   │       ├── acte_engagement.pdf
+│       │   │       └── guide_projection_facon.pdf
+│       │   └── geojson
+│       │       ├── AU_regroupees.geojson
+│       │       ├── agence-urbanisme.geojson
+│       │       ├── epci-1000m.geojson
+│       │       └── scot.geojson
 │       ├── src
 │       │   ├── app
 │       │   │   ├── (authenticated)
@@ -781,9 +788,13 @@
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── statistics
 │       │   │   │   │   ├── pilotage
+│       │   │   │   │   │   ├── epcis-coverage
+│       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   ├── export
 │       │   │   │   │   │   │   └── route.ts
-│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   ├── route.ts
+│       │   │   │   │   │   └── scenarios-list
+│       │   │   │   │   │       └── route.ts
 │       │   │   │   │   ├── results
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── route.ts
@@ -821,6 +832,12 @@
 │       │   │   │   │   └── consumers-table.tsx
 │       │   │   │   ├── feedbacks
 │       │   │   │   │   └── feedbacks-content.tsx
+│       │   │   │   ├── pilotage-deployment-map-wrapper.tsx
+│       │   │   │   ├── pilotage-deployment-map.module.css
+│       │   │   │   ├── pilotage-deployment-map.tsx
+│       │   │   │   ├── pilotage-scenarios-table.module.css
+│       │   │   │   ├── pilotage-scenarios-table.tsx
+│       │   │   │   ├── pilotage-tab.module.css
 │       │   │   │   ├── pilotage-tab.tsx
 │       │   │   │   ├── statistics-export-buttons.tsx
 │       │   │   │   └── users
@@ -911,6 +928,8 @@
 │       │   │   │   │   ├── bad-housing-preview.tsx
 │       │   │   │   │   ├── creation-preview.tsx
 │       │   │   │   │   ├── demographic-preview.tsx
+│       │   │   │   │   ├── prefetch-creation-simulation-preview.tsx
+│       │   │   │   │   ├── prefetch-modify-simulation-preview.tsx
 │       │   │   │   │   └── simulation-preview.tsx
 │       │   │   │   ├── results
 │       │   │   │   │   ├── annual-needs
@@ -956,6 +975,7 @@
 │       │   │   │   │   ├── create-all-epcis-accommodation-range.tsx
 │       │   │   │   │   ├── create-all-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── create-long-term-accomodation-range.tsx
+│       │   │   │   │   ├── create-peak-year-horizon-alert.tsx
 │       │   │   │   │   ├── create-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── create-simulation-form.tsx
 │       │   │   │   │   ├── create-vacancy-accommodation-rates-input.tsx
@@ -1023,8 +1043,10 @@
 │       │   │   │   │   ├── modify-all-epcis-accommodation-range.tsx
 │       │   │   │   │   ├── modify-all-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── modify-long-term-accomodation-range.tsx
+│       │   │   │   │   ├── modify-peak-year-horizon-alert.tsx
 │       │   │   │   │   ├── modify-vacancy-accommodation-rates-input.tsx
 │       │   │   │   │   ├── next-step-link.tsx
+│       │   │   │   │   ├── peak-year-horizon-alert.tsx
 │       │   │   │   │   ├── previous-step-link.tsx
 │       │   │   │   │   ├── restructuration-disparition-rates
 │       │   │   │   │   │   ├── all-epcis-restructuration-rates-view.tsx
@@ -1090,6 +1112,8 @@
 │       │   │       ├── RedAsterisk.module.css
 │       │   │       ├── custom-highlight.module.scss
 │       │   │       ├── custom-highlight.tsx
+│       │   │       ├── loading-spinner.module.css
+│       │   │       ├── loading-spinner.tsx
 │       │   │       └── red-asterisk.tsx
 │       │   ├── dsfr
 │       │   │   ├── default-color-scheme.ts
@@ -1110,7 +1134,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (53 files)
+│       │   │   └── use-*.ts  (58 files)
 │       │   ├── lib
 │       │   │   └── auth
 │       │   │       ├── client.ts
@@ -1208,4 +1232,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-360 directories, 902 files
+364 directories, 927 files
