@@ -1,21 +1,17 @@
-## Changelog : qualicharge (30 derniers jours, au 11 mai 2026)
+## Changelog : qualicharge (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Les récentes mises à jour de qualicharge se concentrent sur la maintenance et la sécurité du système. Plusieurs dépendances ont été mises à jour pour corriger des vulnérabilités et bénéficier des dernières améliorations. Une évolution fonctionnelle permet d'étendre les indicateurs de volume au niveau des unités opérationnelles, améliorant ainsi la granularité des données disponibles.
+Ce mois-ci, les améliorations se concentrent sur l'automatisation de la mise à jour des unités opérationnelles via l'API, l'extension des indicateurs de volume au niveau des unités opérationnelles et la mise à jour de plusieurs dépendances pour améliorer la sécurité et la stabilité du système.
 
 ### Évolutions fonctionnelles
-- Extension des indicateurs de volume aux unités opérationnelles. [#1527322](https://github.com/MTES-MCT/qualicharge/pull/1527322)
+- Automatisation de la mise à jour des unités opérationnelles via l'API. [#42f10b9](https://github.com/MTES-MCT/qualicharge/commit/42f10b9)
+- Extension des indicateurs de volume aux unités opérationnelles, permettant une analyse plus granulaire. [#1527322](https://github.com/MTES-MCT/qualicharge/commit/1527322)
 
 ### Évolutions techniques
-- Mise à jour de Django vers la version 6.0.5, incluant des correctifs de sécurité.
-- Mise à jour de l'outil de gestion des dépendances `uv` vers les versions 0.11.8, 0.11.11, 0.11.12 et 0.11.13.
-- Mise à jour de l'image Docker Metabase vers les versions 0.60.2 et 0.60.4.
-- Mise à jour de l'image Docker curl vers la version 8.20.0.
-- Mise à jour de Terraform vers la version 1.14.9.
-- Mise à jour de urllib3 vers la version 2.7.0.
-- Mise à jour de python-dotenv vers la version 1.2.2.
-- Mise à jour de mako vers la version 1.3.12.
+- Mise à jour de Django vers la version 6.0.5 incluant des correctifs de sécurité. [#f7364a3](https://github.com/MTES-MCT/qualicharge/commit/f7364a3)
+- Mise à jour de la librairie Mako vers la version 1.3.12. [#41f2480](https://github.com/MTES-MCT/qualicharge/commit/41f2480)
+- Mises à jour des images Docker pour `curlimages/curl`, `astral-sh/uv` et `metabase/metabase` pour bénéficier des dernières corrections et améliorations.
+- Mise à jour de Terraform vers la version 1.14.9. [#d6abc19](https://github.com/MTES-MCT/qualicharge/commit/d6abc19)
 
 ### Autres changements
-- Application de correctifs de sécurité via Dependabot.
-- Mises à jour régulières des images Docker utilisées par le projet.
+- Mises à jour de dépendances mineures (urllib3, python-dotenv, astral-sh/uv) pour corriger des vulnérabilités et améliorer la stabilité. Ces mises à jour sont gérées automatiquement par Dependabot et Renovate.
