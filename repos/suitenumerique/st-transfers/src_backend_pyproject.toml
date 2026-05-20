@@ -1,0 +1,135 @@
+#
+# transferts backend package
+#
+
+[project]
+name = "transferts-backend"
+version = "0.1.0"
+authors = [{ "name" = "ANCT", "email" = "suiteterritoriale@anct.gouv.fr" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Django",
+    "Framework :: Django :: 5",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+description = "Sovereign file transfer service for La Suite territoriale"
+keywords = ["Django", "File Transfer", "S3"]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+
+dependencies = [
+    "boto3==1.42.53",
+    "botocore==1.42.53",
+    "celery[redis]==5.6.2",
+    "dj-database-url==3.1.2",
+    "django==5.2.11",
+    "django-celery-beat==2.8.1",
+    "django-celery-results==2.6.0",
+    "django-configurations==2.5.1",
+    "django-cors-headers==4.9.0",
+    "django-filter==25.2",
+    "django-lasuite[all]==0.0.24",
+    "django-redis==6.0.0",
+    "django-storages==1.14.6",
+    "django-timezone-field==7.2.1",
+    "djangorestframework==3.16.1",
+    "drf_spectacular==0.29.0",
+    "factory_boy==3.3.3",
+    "gunicorn==25.1.0",
+    "psycopg[binary]==3.3.3",
+    "PyJWT==2.11.0",
+    "redis==6.4.0",
+    "requests==2.32.5",
+    "sentry-sdk[django]==2.53.0",
+    "whitenoise==6.11.0",
+]
+
+[project.urls]
+"Repository" = "https://github.com/Nastaliss/transferts"
+
+[project.optional-dependencies]
+dev = [
+    "django-extensions==4.1",
+    "drf-spectacular-sidecar==2026.1.1",
+    "flower==2.0.1",
+    "moto[s3]==5.1.16",
+    "pip-audit==2.10.0",
+    "pylint-django==2.7.0",
+    "pylint==4.0.4",
+    "pytest-cov==7.0.0",
+    "pytest-django==4.12.0",
+    "pytest==9.0.2",
+    "pytest-icdiff==0.9",
+    "pytest-xdist==3.8.0",
+    "responses==0.26.0",
+    "ruff==0.15.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+source-include = ["core/**"]
+source-exclude = ["core/tests/**"]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "venv",
+    "__pycache__",
+    "*/migrations/*",
+]
+line-length = 88
+
+[tool.ruff.lint]
+ignore = ["DJ001", "PLC0415", "PLR2004", "PLR0915", "PLR0912", "PLR0913", "PLR0911", "BLE001"]
+select = [
+    "B", # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "C4", # flake8-comprehensions
+    "DJ", # flake8-django
+    "I", # isort
+    "PLC", # pylint-convention
+    "PLE", # pylint-error
+    "PLR", # pylint-refactoring
+    "PLW", # pylint-warning
+    "RUF100", # Ruff unused-noqa
+    "RUF200", # Ruff check pyproject.toml
+    "S", # flake8-bandit
+    "SLF", # flake8-self
+    "T20", # flake8-print
+    "F",  # pyflakes
+]
+
+[tool.ruff.lint.isort]
+section-order = ["future", "standard-library", "django", "third-party", "transferts", "first-party", "local-folder"]
+sections = { transferts = ["core"], django = ["django"] }
+extra-standard-library = ["tomllib"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S", "SLF"]
+# Dev-only seed command: ``random`` is fine for placeholder data — security
+# checks (S311) don't apply to fixtures that never reach production.
+"**/management/commands/seed_transfers.py" = ["S311"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-v",
+    "--cov-report",
+    "term-missing",
+    "--import-mode=importlib",
+]
+python_files = [
+    "test_*.py",
+    "tests.py",
+]

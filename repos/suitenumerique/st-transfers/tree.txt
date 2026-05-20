@@ -1,0 +1,245 @@
+.
+├── .cursor
+│   └── rules
+│       └── django-python.mdc
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── Procfile
+├── README.md
+├── SECURITY.md
+├── bin
+│   ├── _config.sh
+│   ├── compose
+│   ├── manage
+│   ├── pylint
+│   ├── pytest
+│   ├── scalingo_postcompile
+│   ├── scalingo_postfrontend
+│   ├── scalingo_run_web
+│   └── update_openapi_schema
+├── compose.yaml
+├── env.d
+│   └── development
+│       ├── backend.defaults
+│       ├── frontend.defaults
+│       └── postgresql.defaults
+└── src
+    ├── backend
+    │   ├── .pylintrc
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── conftest.py
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── permissions.py
+    │   │   │   ├── serializers.py
+    │   │   │   ├── utils.py
+    │   │   │   └── viewsets
+    │   │   │       ├── __init__.py
+    │   │   │       ├── config.py
+    │   │   │       ├── download.py
+    │   │   │       ├── draft.py
+    │   │   │       ├── transfer.py
+    │   │   │       └── user.py
+    │   │   ├── apps.py
+    │   │   ├── authentication
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends.py
+    │   │   │   ├── dev_bypass.py
+    │   │   │   └── urls.py
+    │   │   ├── enums.py
+    │   │   ├── factories.py
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── clean_orphan_s3_objects.py
+    │   │   │       ├── create_bucket.py
+    │   │   │       ├── createsuperuser.py
+    │   │   │       ├── drop_all_tables.py
+    │   │   │       ├── print_users.py
+    │   │   │       ├── seed_transfers.py
+    │   │   │       └── send_mail.py
+    │   │   ├── middlewares.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   ├── 0002_transfer_notifications_completed_at.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── services
+    │   │   │   ├── __init__.py
+    │   │   │   ├── email.py
+    │   │   │   ├── s3.py
+    │   │   │   └── s3_sweep.py
+    │   │   ├── tasks.py
+    │   │   ├── templates
+    │   │   │   └── core
+    │   │   │       └── emails
+    │   │   │           ├── _base.html
+    │   │   │           ├── recipient_invitation.html
+    │   │   │           └── recipient_invitation.txt
+    │   │   ├── templatetags
+    │   │   │   ├── __init__.py
+    │   │   │   └── humanize_size.py
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── _s3_live.py
+    │   │   │   ├── conftest.py
+    │   │   │   ├── test_api_config.py
+    │   │   │   ├── test_api_downloads.py
+    │   │   │   ├── test_api_drafts.py
+    │   │   │   ├── test_api_transfers.py
+    │   │   │   ├── test_clean_orphan_s3_command.py
+    │   │   │   ├── test_middlewares.py
+    │   │   │   ├── test_models.py
+    │   │   │   ├── test_s3_cleanup_drafts.py
+    │   │   │   ├── test_s3_cleanup_structural.py
+    │   │   │   ├── test_s3_cleanup_tasks.py
+    │   │   │   ├── test_s3_cleanup_transfer.py
+    │   │   │   └── test_s3_live_smoke.py
+    │   │   └── urls.py
+    │   ├── entrypoint
+    │   ├── gunicorn.conf.py
+    │   ├── manage.py
+    │   ├── pyproject.toml
+    │   ├── transferts
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── uv.lock
+    │   └── worker.py
+    └── frontend
+        ├── .dockerignore
+        ├── Dockerfile
+        ├── README.md
+        ├── caddy
+        │   └── Caddyfile
+        ├── cunningham.ts
+        ├── eslint.config.mjs
+        ├── i18next.config.ts
+        ├── instrumentation-client.ts
+        ├── next.config.ts
+        ├── package-lock.json
+        ├── package.json
+        ├── public
+        │   ├── images
+        │   │   ├── lasuite-territoriale.svg
+        │   │   ├── republique-francaise.svg
+        │   │   ├── transferts-favicon.svg
+        │   │   ├── transferts-icon.svg
+        │   │   ├── transferts-logo.svg
+        │   │   └── transferts-wordmark.svg
+        │   ├── locales
+        │   │   └── common
+        │   │       ├── en-US.json
+        │   │       └── fr-FR.json
+        │   └── manifest.json
+        ├── src
+        │   ├── features
+        │   │   ├── api
+        │   │   │   ├── client.ts
+        │   │   │   └── types.ts
+        │   │   ├── auth
+        │   │   │   └── index.tsx
+        │   │   ├── config
+        │   │   │   ├── constants.ts
+        │   │   │   └── index.ts
+        │   │   ├── i18n
+        │   │   │   ├── conf.ts
+        │   │   │   ├── initI18n.ts
+        │   │   │   └── utils.ts
+        │   │   ├── layouts
+        │   │   │   └── components
+        │   │   │       ├── main
+        │   │   │       │   ├── MainLayout.tsx
+        │   │   │       │   ├── _index.scss
+        │   │   │       │   ├── hooks
+        │   │   │       │   │   └── useControllableState.ts
+        │   │   │       │   └── language-picker.tsx
+        │   │   │       └── shell
+        │   │   │           ├── ShellLayout.tsx
+        │   │   │           ├── Sidebar.tsx
+        │   │   │           ├── TopBar.tsx
+        │   │   │           ├── _index.scss
+        │   │   │           └── index.ts
+        │   │   ├── providers
+        │   │   │   └── config.tsx
+        │   │   ├── transfers
+        │   │   │   ├── api
+        │   │   │   │   ├── useDeactivateTransfer.ts
+        │   │   │   │   ├── useDownload.ts
+        │   │   │   │   ├── useResendTransfer.ts
+        │   │   │   │   ├── useTransfer.ts
+        │   │   │   │   ├── useTransferDraft.ts
+        │   │   │   │   ├── useTransferEvents.ts
+        │   │   │   │   └── useTransfers.ts
+        │   │   │   ├── components
+        │   │   │   │   ├── DownloadView.tsx
+        │   │   │   │   ├── DriveAttachButton.tsx
+        │   │   │   │   ├── FileDropZone.tsx
+        │   │   │   │   ├── FileItem.tsx
+        │   │   │   │   ├── HomeLanding.tsx
+        │   │   │   │   ├── RecipientInput.tsx
+        │   │   │   │   ├── TransferDetail.tsx
+        │   │   │   │   ├── TransferFailed.tsx
+        │   │   │   │   ├── TransferForm.tsx
+        │   │   │   │   ├── TransferStatusBadge.tsx
+        │   │   │   │   ├── TransferSuccess.tsx
+        │   │   │   │   └── _transfers.scss
+        │   │   │   └── upload
+        │   │   │       ├── MultipartUploader.ts
+        │   │   │       └── uploadPart.ts
+        │   │   ├── ui
+        │   │   │   └── components
+        │   │   │       ├── badge
+        │   │   │       │   ├── _index.scss
+        │   │   │       │   └── index.tsx
+        │   │   │       └── toaster
+        │   │   │           ├── _index.scss
+        │   │   │           └── index.tsx
+        │   │   └── utils
+        │   │       ├── errors
+        │   │       │   └── index.ts
+        │   │       ├── string-helper
+        │   │       │   └── index.ts
+        │   │       └── use-debounced-value
+        │   │           └── index.ts
+        │   ├── pages
+        │   │   ├── _app.tsx
+        │   │   ├── _document.tsx
+        │   │   ├── _index.scss
+        │   │   ├── confirm
+        │   │   │   └── [id].tsx
+        │   │   ├── confirm-failed
+        │   │   │   └── [id].tsx
+        │   │   ├── index.tsx
+        │   │   ├── t
+        │   │   │   └── [token].tsx
+        │   │   └── transfers
+        │   │       └── [id].tsx
+        │   └── styles
+        │       ├── cunningham-tokens.css
+        │       ├── cunningham-tokens.scss
+        │       ├── cunningham-tokens.ts
+        │       ├── globals.scss
+        │       ├── main.scss
+        │       ├── reset.scss
+        │       └── utils
+        │           ├── _index.scss
+        │           └── breakpoints.scss
+        ├── tsconfig.json
+        └── vitest.config.ts
+62 directories, 182 files
