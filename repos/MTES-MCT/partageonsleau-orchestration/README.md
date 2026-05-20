@@ -53,14 +53,18 @@ Copier `.env.example` vers `.env` et renseigner les variables.
 | `WILLIE_API_TOKEN` | Bearer pour l’API Willie |
 | `ORANGE_LIVE_OBJECTS_API_KEY` | Clé API Orange Live Objects |
 | `SENTRY_DSN` / `SENTRY_ENV` | Télémétrie Sentry (optionnel) |
+| `BULLBOARD_PASSWORD` | Mot de passe pour activer BullBoard (dashboard BullMQ) |
 
 **Mode PLE** : si `PLE_BASE_URL`, `CLIENT_ID` et `CLIENT_SECRET` sont tous renseignés, le client appelle l’API réelle (tokens, déclarants, contextes, `ingest`). Sinon, les réponses sont tirées de `mock_responses.ts` et l’ingestion ne fait qu’un log (pas d’appel HTTP).
+<<<<<<< HEAD
+=======
 - `WILLIE_API_TOKEN`: token Bearer pour l'API Willie
 - `ORANGE_LIVE_OBJECTS_API_KEY`: cle API pour l'API Orange Live Objects
 - `PLE_BASE_URL`: URL de base de l'API Partageons l'eau (optionnel tant que le mode mock est actif)
 - `CLIENT_ID`: identifiant client pour generer le JWT service account
 - `CLIENT_SECRET`: secret client pour generer le JWT service account
 - `BULLBOARD_PASSWORD`: mot de passe pour activer BullBoard (dashboard BullMQ)
+>>>>>>> main
 
 ## Scripts
 
@@ -71,6 +75,13 @@ Copier `.env.example` vers `.env` et renseigner les variables.
 - `npm run lint` / `npm run lint:fix` — xo
 - `npm test` — alias sur le lint xo
 
+<<<<<<< HEAD
+## Monitoring BullMQ (optionnel)
+
+Le dashboard BullBoard est disponible sur `/admin/queues` si `BULLBOARD_PASSWORD` est renseigné.
+
+=======
+>>>>>>> main
 ## API HTTP
 
 | Méthode | Chemin | Description |
