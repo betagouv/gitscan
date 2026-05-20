@@ -230,6 +230,7 @@
 │   │   │   │   │   │   │   │   │   │   │   │   │   ├── axe.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   │   ├── filters.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   │   ├── list.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── referentiel-view-switcher.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │   │   └── tabs-wrapper.tsx
@@ -241,32 +242,6 @@
 │   │   │   │   │   │   │   │   │   │       │   ├── action
 │   │   │   │   │   │   │   │   │   │       │   │   └── action.justification-field.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── comments
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comment.empty-img.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-filters.constants.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-filters.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-header.input.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-panel.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-side-panel-content.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-tab.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.discussion.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.feed.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.input.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.item-edit.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.item.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.items-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.new.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments.types.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-new-discussion-input.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── hooks
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-add-discussion.ts
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-comment-panel.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-comments-content.ts
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-delete-discussion-message.ts
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-list-discussions.ts
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-update-discussion-message.ts
-│   │   │   │   │   │   │   │   │   │       │   │   │   └── use-update-discussion.ts
-│   │   │   │   │   │   │   │   │   │       │   │   └── rounded-vertical-border.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── header
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-side-panel-toolbar.tsx
@@ -281,12 +256,8 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   └── vertical-divider.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── information
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.item.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.types.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.utils.ts
-│   │   │   │   │   │   │   │   │   │       │   │   └── use-action-information.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   └── action-information.item.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── score-indicatif
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.badge.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.donnees.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.labels.ts
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.libelle.tsx
@@ -332,6 +303,10 @@
 │   │   │   │   │   │   │   │   │   │   ├── default.tsx
 │   │   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   │   └── layout.tsx
+│   │   │   │   │   │   │   │   ├── new
+│   │   │   │   │   │   │   │   │   └── [referentielId]
+│   │   │   │   │   │   │   │   │       └── audit-labellisation
+│   │   │   │   │   │   │   │   │           └── page.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   └── tableau-de-bord.show.tsx
 │   │   │   │   │   │   │   ├── tableau-de-bord
@@ -828,6 +803,7 @@
 │   │   │   │       ├── invalidate-fiche-queries-by-tag.ts
 │   │   │   │       ├── libre-tag.dropdown.tsx
 │   │   │   │       ├── partenaire-tag.dropdown.tsx
+│   │   │   │       ├── patch-service-tag-in-denormalized-caches.ts
 │   │   │   │       ├── personne-tag.dropdown.tsx
 │   │   │   │       ├── personnes.utils.ts
 │   │   │   │       ├── service-tag.dropdown.tsx
@@ -884,7 +860,8 @@
 │   │   │   │   │   │   ├── use-create-fiche-resume.ts
 │   │   │   │   │   │   ├── use-delete-fiche.ts
 │   │   │   │   │   │   ├── use-fiches-count-by.ts
-│   │   │   │   │   │   └── use-get-fiche.ts
+│   │   │   │   │   │   ├── use-get-fiche.ts
+│   │   │   │   │   │   └── use-list-fiches-grouped-by-action-id.ts
 │   │   │   │   │   ├── get-fiche
 │   │   │   │   │   │   └── fiche-no-access.page.tsx
 │   │   │   │   │   ├── list-all-fiches
@@ -1304,19 +1281,7 @@
 │   │   │   │   │   ├── filters.tsx
 │   │   │   │   │   ├── queries.tsx
 │   │   │   │   │   └── up.svg
-│   │   │   │   ├── DEPRECATED_scores.types.ts
-│   │   │   │   ├── DetailTaches
-│   │   │   │   │   ├── CellStatut.tsx
-│   │   │   │   │   ├── DetailTacheTable.tsx
-│   │   │   │   │   ├── FiltreStatut.stories.tsx
-│   │   │   │   │   ├── FiltreStatut.tsx
-│   │   │   │   │   ├── filters.tsx
-│   │   │   │   │   ├── fixture.json
-│   │   │   │   │   ├── queries.tsx
-│   │   │   │   │   ├── useTableData.helpers.ts
-│   │   │   │   │   ├── useTableData.test.ts
-│   │   │   │   │   └── useTableData.ts
-│   │   │   │   ├── ReferentielTable
+│   │   │   │   ├── DEPRECATED_ReferentielTable
 │   │   │   │   │   ├── CellAction.tsx
 │   │   │   │   │   ├── Row.tsx
 │   │   │   │   │   ├── index.tsx
@@ -1324,6 +1289,14 @@
 │   │   │   │   │   ├── use-row-expanded-reducer.ts
 │   │   │   │   │   ├── useModifierStateRef.ts
 │   │   │   │   │   └── useReferentiel.ts
+│   │   │   │   ├── DetailTaches
+│   │   │   │   │   ├── CellStatut.tsx
+│   │   │   │   │   ├── DetailTacheTable.tsx
+│   │   │   │   │   ├── FiltreStatut.stories.tsx
+│   │   │   │   │   ├── FiltreStatut.tsx
+│   │   │   │   │   ├── filters.tsx
+│   │   │   │   │   ├── fixture.json
+│   │   │   │   │   └── useTableData.ts
 │   │   │   │   ├── action.show
 │   │   │   │   │   ├── FichesActionLiees.tsx
 │   │   │   │   │   ├── IndicateurChartsGrid.tsx
@@ -1341,31 +1314,63 @@
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
 │   │   │   │   │   ├── action-preuve.panel.tsx
 │   │   │   │   │   ├── action-statut
+│   │   │   │   │   │   ├── action-statut-detaille-a-la-tache.modal.tsx
+│   │   │   │   │   │   ├── action-statut-detaille-au-pourcentage.modal.tsx
+│   │   │   │   │   │   ├── action-statut-detaille-au-pourcentage.slider.tsx
 │   │   │   │   │   │   ├── action-statut.badge.stories.tsx
 │   │   │   │   │   │   ├── action-statut.badge.tsx
-│   │   │   │   │   │   ├── action-statut.select.stories.tsx
-│   │   │   │   │   │   ├── action-statut.select.tsx
+│   │   │   │   │   │   ├── action-statut.dropdown.stories.tsx
+│   │   │   │   │   │   ├── action-statut.dropdown.tsx
+│   │   │   │   │   │   ├── open-action-statut-detaille-modal.button.tsx
+│   │   │   │   │   │   ├── open-action-statut-detaille.modal.tsx
 │   │   │   │   │   │   ├── use-action-statut.ts
-│   │   │   │   │   │   └── use-hide-action.ts
+│   │   │   │   │   │   ├── use-hide-action.ts
+│   │   │   │   │   │   └── use-update-action-statut.ts
+│   │   │   │   │   ├── action-statut-with-detaille-button.dropdown.tsx
 │   │   │   │   │   ├── action.card.tsx
 │   │   │   │   │   ├── action.linked-card.tsx
-│   │   │   │   │   ├── avancement-detaille
-│   │   │   │   │   │   ├── avancement-detaille.modal.tsx
-│   │   │   │   │   │   └── avancement-detaille.slider.tsx
 │   │   │   │   │   ├── comments
-│   │   │   │   │   │   └── helpers
-│   │   │   │   │   │       ├── action-comments-helper.spec.ts
-│   │   │   │   │   │       └── action-comments-helper.ts
+│   │   │   │   │   │   ├── action-comment.empty-img.tsx
+│   │   │   │   │   │   ├── action-comments-filters.constants.tsx
+│   │   │   │   │   │   ├── action-comments-filters.tsx
+│   │   │   │   │   │   ├── action-comments-header.input.tsx
+│   │   │   │   │   │   ├── action-comments-panel.header.tsx
+│   │   │   │   │   │   ├── action-comments-side-panel-content.tsx
+│   │   │   │   │   │   ├── action-comments-tab.header.tsx
+│   │   │   │   │   │   ├── action-comments.discussion.tsx
+│   │   │   │   │   │   ├── action-comments.feed.tsx
+│   │   │   │   │   │   ├── action-comments.input.tsx
+│   │   │   │   │   │   ├── action-comments.item-edit.tsx
+│   │   │   │   │   │   ├── action-comments.item.tsx
+│   │   │   │   │   │   ├── action-comments.items-list.tsx
+│   │   │   │   │   │   ├── action-comments.new.tsx
+│   │   │   │   │   │   ├── action-comments.types.ts
+│   │   │   │   │   │   ├── action-new-discussion-input.tsx
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   ├── action-comments-helper.spec.ts
+│   │   │   │   │   │   │   └── action-comments-helper.ts
+│   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   ├── use-add-discussion.ts
+│   │   │   │   │   │   │   ├── use-comment-panel.tsx
+│   │   │   │   │   │   │   ├── use-delete-discussion-message.ts
+│   │   │   │   │   │   │   ├── use-list-action-comments.ts
+│   │   │   │   │   │   │   ├── use-list-comments-grouped-by-action-id.ts
+│   │   │   │   │   │   │   ├── use-list-discussions.ts
+│   │   │   │   │   │   │   ├── use-update-discussion-message.ts
+│   │   │   │   │   │   │   └── use-update-discussion.ts
+│   │   │   │   │   │   └── rounded-vertical-border.tsx
+│   │   │   │   │   ├── get-prev-and-next-action-links.utils.tsx
 │   │   │   │   │   ├── sub-action
-│   │   │   │   │   │   ├── sub-action-preuves.accordion.tsx
-│   │   │   │   │   │   ├── sub-action.description.tsx
-│   │   │   │   │   │   └── sub-action.modal.tsx
-│   │   │   │   │   ├── sub-action-statut.dropdown.tsx
+│   │   │   │   │   │   └── sub-action.description.tsx
+│   │   │   │   │   ├── use-get-action-ancestors.tsx
+│   │   │   │   │   ├── use-get-action-children.tsx
+│   │   │   │   │   ├── use-get-action-with-descendants.tsx
+│   │   │   │   │   ├── use-get-action.tsx
+│   │   │   │   │   ├── use-list-actions-grouped-by-id.tsx
 │   │   │   │   │   ├── use-list-actions.ts
 │   │   │   │   │   ├── use-mesure-pilotes.ts
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
-│   │   │   │   │   └── use-prev-and-next-action-links.ts
-│   │   │   │   ├── actions.utils.ts
+│   │   │   │   │   └── use-update-action-explication.ts
 │   │   │   │   ├── audits
 │   │   │   │   │   ├── ActionAuditDetail.stories.tsx
 │   │   │   │   │   ├── ActionAuditDetail.tsx
@@ -1439,6 +1444,19 @@
 │   │   │   │   │   ├── MessageCompletudeECi.tsx
 │   │   │   │   │   ├── fixture.json
 │   │   │   │   │   ├── numLabels.tsx
+│   │   │   │   │   ├── start-audit
+│   │   │   │   │   │   ├── audit-selection.spec.ts
+│   │   │   │   │   │   ├── audit-selection.ts
+│   │   │   │   │   │   ├── audit-type.field.tsx
+│   │   │   │   │   │   ├── available-audit.types.spec.ts
+│   │   │   │   │   │   ├── available-audit.types.ts
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   └── use-request-audit.ts
+│   │   │   │   │   │   ├── start-audit.button.tsx
+│   │   │   │   │   │   ├── start-audit.form.spec.tsx
+│   │   │   │   │   │   ├── start-audit.form.tsx
+│   │   │   │   │   │   ├── start-audit.modal.tsx
+│   │   │   │   │   │   └── target-star.field.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── useAddPreuveToDemande.ts
 │   │   │   │   │   ├── useCycleLabellisation.ts
@@ -1490,11 +1508,40 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── PreuvesAction.stories.tsx
 │   │   │   │   │   ├── PreuvesAction.tsx
+│   │   │   │   │   ├── use-action-preuves-count.ts
 │   │   │   │   │   ├── useAddPreuveToAction.ts
 │   │   │   │   │   ├── useAddPreuves.ts
 │   │   │   │   │   └── usePreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
-│   │   │   │   ├── referentiel-hooks.ts
+│   │   │   │   ├── referentiel.table
+│   │   │   │   │   ├── referentiel-table.categorie.cell.tsx
+│   │   │   │   │   ├── referentiel-table.commentaires.cell.tsx
+│   │   │   │   │   ├── referentiel-table.comments.cell.tsx
+│   │   │   │   │   ├── referentiel-table.description.cell.tsx
+│   │   │   │   │   ├── referentiel-table.documents.cell.tsx
+│   │   │   │   │   ├── referentiel-table.explication.cell.tsx
+│   │   │   │   │   ├── referentiel-table.fiches.cell.tsx
+│   │   │   │   │   ├── referentiel-table.filters.form.tsx
+│   │   │   │   │   ├── referentiel-table.filters.utils.ts
+│   │   │   │   │   ├── referentiel-table.header-filters.tsx
+│   │   │   │   │   ├── referentiel-table.notification.cell.tsx
+│   │   │   │   │   ├── referentiel-table.personnes-pilotes.cell.tsx
+│   │   │   │   │   ├── referentiel-table.points.cell.tsx
+│   │   │   │   │   ├── referentiel-table.progression.cell.tsx
+│   │   │   │   │   ├── referentiel-table.score-ranges.ts
+│   │   │   │   │   ├── referentiel-table.services-pilotes.cell.tsx
+│   │   │   │   │   ├── referentiel-table.statut-detaille.cell.tsx
+│   │   │   │   │   ├── referentiel-table.statut-or-progression.cell.tsx
+│   │   │   │   │   ├── referentiel-table.statut.cell.tsx
+│   │   │   │   │   ├── referentiel-table.title.cell.tsx
+│   │   │   │   │   ├── referentiel-table.tsx
+│   │   │   │   │   ├── use-get-referentiel-table-filters-state.ts
+│   │   │   │   │   ├── use-list-referentiel-table-columns.tsx
+│   │   │   │   │   ├── use-referentiel-table-column-visibility.ts
+│   │   │   │   │   ├── use-referentiel-table-pending-cell-focus.ts
+│   │   │   │   │   ├── use-referentiel-table-row-expanded.ts
+│   │   │   │   │   ├── use-referentiel-view-mode.tsx
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── scores
 │   │   │   │   │   ├── progress-bar-with-tooltip.tsx
 │   │   │   │   │   ├── progress-bar.stories.tsx
@@ -1522,10 +1569,8 @@
 │   │   │   │   │   │   └── useMembres.ts
 │   │   │   │   │   ├── useProgressionReferentiel.ts
 │   │   │   │   │   └── utils.ts
-│   │   │   │   ├── use-action-commentaire.ts
 │   │   │   │   ├── use-referentiel-te-enabled.ts
 │   │   │   │   ├── use-snapshot.tsx
-│   │   │   │   ├── use-sub-action-definitions.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── shared
 │   │   │   │   └── thematiques
@@ -1560,6 +1605,7 @@
 │   │   │   │   └── referentiels
 │   │   │   │       ├── mesures.module-page.tsx
 │   │   │   │       └── mesures.module.tsx
+│   │   │   ├── tailwind-design-tokens.test.ts
 │   │   │   ├── types
 │   │   │   │   └── alias.ts
 │   │   │   ├── ui
@@ -1940,6 +1986,13 @@
 │   │   │   │   │   ├── document.service.ts
 │   │   │   │   │   ├── documents.router.ts
 │   │   │   │   │   ├── documents.test-fixture.ts
+│   │   │   │   │   ├── edit-preuve-document
+│   │   │   │   │   │   ├── edit-preuve-document.errors.ts
+│   │   │   │   │   │   ├── edit-preuve-document.input.ts
+│   │   │   │   │   │   ├── edit-preuve-document.repository.ts
+│   │   │   │   │   │   ├── edit-preuve-document.router.e2e-spec.ts
+│   │   │   │   │   │   ├── edit-preuve-document.router.ts
+│   │   │   │   │   │   └── edit-preuve-document.service.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── annexe.table.ts
 │   │   │   │   │   │   ├── bibliotheque-fichier.table.ts
@@ -1952,6 +2005,7 @@
 │   │   │   │   │   │   ├── preuve-rapport.table.ts
 │   │   │   │   │   │   ├── preuve-reglementaire-definition.table.ts
 │   │   │   │   │   │   ├── preuve-reglementaire.table.ts
+│   │   │   │   │   │   ├── preuve-tables.map.ts
 │   │   │   │   │   │   └── storage-object.table.ts
 │   │   │   │   │   ├── samples
 │   │   │   │   │   │   ├── document_test.pdf
@@ -2084,6 +2138,11 @@
 │   │   │   │   │   │   ├── personnalisation-consequences.service.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.spec.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.ts
+│   │   │   │   │   │   ├── personnalisation-questions-actives.service.e2e-spec.ts
+│   │   │   │   │   │   ├── personnalisation-questions-actives.service.spec.ts
+│   │   │   │   │   │   ├── personnalisation-questions-actives.service.ts
+│   │   │   │   │   │   ├── personnalisation-reponses-effectives.repository.e2e-spec.ts
+│   │   │   │   │   │   ├── personnalisation-reponses-effectives.repository.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.spec.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.ts
 │   │   │   │   │   │   └── personnalisations-service.ts
@@ -2695,6 +2754,11 @@
 │   │   │   │   │   ├── action-personnalisations.router.e2e-spec.ts
 │   │   │   │   │   ├── action-personnalisations.router.ts
 │   │   │   │   │   └── action-personnalisations.service.ts
+│   │   │   │   ├── actions
+│   │   │   │   │   ├── list-action-explications
+│   │   │   │   │   │   └── list-action-explications.repository.ts
+│   │   │   │   │   └── list-action-statuts
+│   │   │   │   │       └── list-action-statuts.repository.ts
 │   │   │   │   ├── compute-score
 │   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
@@ -2709,6 +2773,12 @@
 │   │   │   │   │   ├── get-action-origine.dto.ts
 │   │   │   │   │   ├── referentiel-action-origine-with-score.dto.ts
 │   │   │   │   │   └── referentiel-action-origine.dto.ts
+│   │   │   │   ├── count-preuve
+│   │   │   │   │   ├── count-preuves.input.ts
+│   │   │   │   │   ├── count-preuves.output.ts
+│   │   │   │   │   ├── count-preuves.router.e2e-spec.ts
+│   │   │   │   │   ├── count-preuves.router.ts
+│   │   │   │   │   └── count-preuves.service.ts
 │   │   │   │   ├── definitions
 │   │   │   │   │   └── get-referentiel-definition
 │   │   │   │   │       ├── get-referentiel-definition.output.ts
@@ -2835,13 +2905,13 @@
 │   │   │   │   │       └── validate-audit.service.ts
 │   │   │   │   ├── list-actions
 │   │   │   │   │   ├── list-action-summaries.request.ts
+│   │   │   │   │   ├── list-actions-grouped-by-id.input.ts
 │   │   │   │   │   ├── list-actions.router.e2e-spec.ts
 │   │   │   │   │   ├── list-actions.router.ts
 │   │   │   │   │   └── list-actions.service.ts
 │   │   │   │   ├── models
 │   │   │   │   │   ├── action-commentaire.table.ts
 │   │   │   │   │   ├── action-computed-points.table.ts
-│   │   │   │   │   ├── action-definition-summary.dto.ts
 │   │   │   │   │   ├── action-definition-tag.table.ts
 │   │   │   │   │   ├── action-definition.table.ts
 │   │   │   │   │   ├── action-node.view.ts
@@ -2885,7 +2955,8 @@
 │   │   │   │   │   ├── compute-referentiel-display.rules.ts
 │   │   │   │   │   ├── reset-display-preferences.router.e2e-spec.ts
 │   │   │   │   │   ├── reset-display-preferences.router.ts
-│   │   │   │   │   └── reset-display-preferences.service.ts
+│   │   │   │   │   ├── reset-display-preferences.service.ts
+│   │   │   │   │   └── reset-display-preferences.test-fixture.ts
 │   │   │   │   ├── score-indicatif
 │   │   │   │   │   ├── format-score-indicatif.utils.ts
 │   │   │   │   │   ├── get-score-indicatif.request.ts
@@ -2909,7 +2980,6 @@
 │   │   │   │   │   ├── snapshots.router.e2e-spec.ts
 │   │   │   │   │   ├── snapshots.router.ts
 │   │   │   │   │   ├── snapshots.service.ts
-│   │   │   │   │   ├── snapshots.utils.ts
 │   │   │   │   │   └── upsert-snapshot.input.ts
 │   │   │   │   ├── update-action-commentaire
 │   │   │   │   │   ├── update-action-commentaire-historique.repository.ts
@@ -2921,7 +2991,11 @@
 │   │   │   │   │   ├── update-action-fiches.router.e2e-spec.ts
 │   │   │   │   │   └── update-action-fiches.router.ts
 │   │   │   │   └── update-action-statut
+│   │   │   │       ├── action-statut-create-to-action-statut-in-database.adapter.spec.ts
+│   │   │   │       ├── action-statut-create-to-action-statut-in-database.adapter.ts
 │   │   │   │       ├── can-update-action-statut.rules.spec.ts
+│   │   │   │       ├── compute-cascading-statuts.rule.spec.ts
+│   │   │   │       ├── compute-cascading-statuts.rule.ts
 │   │   │   │       ├── get-action-status-create-to-complete-referentiel.spec.ts
 │   │   │   │       ├── referentiel-action-statut.test-fixture.ts
 │   │   │   │       ├── update-action-statut-historique.repository.ts
@@ -3376,19 +3450,19 @@
 │   │   │   │       ├── get-data.ts
 │   │   │   │       └── page.tsx
 │   │   │   ├── not-found.tsx
-│   │   │   ├── outil-numerique
-│   │   │   │   ├── Arrow.tsx
-│   │   │   │   ├── AvantagesPlateforme.tsx
-│   │   │   │   ├── EquipePlateforme.tsx
-│   │   │   │   ├── HeaderPlateforme.tsx
-│   │   │   │   ├── PanierActionsImpact.tsx
-│   │   │   │   ├── QuestionsPlateforme.tsx
-│   │   │   │   ├── TemoignagesPlateforme.tsx
-│   │   │   │   ├── Trajectoire.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── utils.ts
 │   │   │   ├── page.tsx
+│   │   │   ├── plateforme-numerique
+│   │   │   │   ├── TemoignagesPlateforme.tsx
+│   │   │   │   ├── apports-plateforme.section.tsx
+│   │   │   │   ├── distingue.section.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── plateforme-cta.section.tsx
+│   │   │   │   ├── plateforme-faq.section.tsx
+│   │   │   │   ├── plateforme-numerique.hero-section.tsx
+│   │   │   │   ├── qui-sommes-nous.section.tsx
+│   │   │   │   └── utils.ts
 │   │   │   ├── programme
+│   │   │   │   ├── Arrow.tsx
 │   │   │   │   ├── Benefices.tsx
 │   │   │   │   ├── CollectivitesEngagees.tsx
 │   │   │   │   ├── Compte.tsx
@@ -3757,7 +3831,9 @@
 │   │   │   │   ├── fiches-action.svg
 │   │   │   │   ├── formation.svg
 │   │   │   │   ├── france.svg
+│   │   │   │   ├── gouvernance.svg
 │   │   │   │   ├── human-cooperation.svg
+│   │   │   │   ├── locker.svg
 │   │   │   │   ├── plateforme-numerique.svg
 │   │   │   │   ├── programme.svg
 │   │   │   │   └── support.svg
@@ -3770,7 +3846,8 @@
 │   │   ├── src
 │   │   │   ├── strapi
 │   │   │   │   ├── StrapiItem.ts
-│   │   │   │   └── strapi.ts
+│   │   │   │   ├── strapi.ts
+│   │   │   │   └── types.ts
 │   │   │   └── utils
 │   │   │       ├── convertNameToSlug.ts
 │   │   │       ├── getFormattedNumber.ts
@@ -3994,7 +4071,6 @@
 │   │   │   ├── 12-acces_restreint.sql
 │   │   │   ├── 13-collectivite.sql
 │   │   │   ├── 14-groupements.sql
-│   │   │   ├── 80-types.sql
 │   │   │   ├── 89-1-confidentialite_vues.sql
 │   │   │   ├── 89-2-confidentialite_matrice.sql
 │   │   │   ├── 89-3-confidentialite_dataset.sql
@@ -4228,6 +4304,7 @@
 │   │   │   │   ├── demande@v2.11.0.sql
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
+│   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
 │   │   │   │   ├── fichier_preuve@v1.7.1.sql
@@ -4366,6 +4443,8 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
 │   │   │   │   ├── drop-action-historique-triggers.sql
+│   │   │   │   ├── drop_action_information_rpcs.sql
+│   │   │   │   ├── drop_comparaison_scores_audit_type_tabular_score.sql
 │   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
@@ -4757,6 +4836,7 @@
 │   │   │   │   ├── demande@v2.11.0.sql
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
+│   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
 │   │   │   │   ├── fichier_preuve@v1.7.1.sql
@@ -4895,6 +4975,8 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
 │   │   │   │   ├── drop-action-historique-triggers.sql
+│   │   │   │   ├── drop_action_information_rpcs.sql
+│   │   │   │   ├── drop_comparaison_scores_audit_type_tabular_score.sql
 │   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
@@ -5285,6 +5367,7 @@
 │   │       │   ├── demande@v2.11.0.sql
 │   │       │   ├── demande@v2.30.0.sql
 │   │       │   ├── demande@v2.95.0.sql
+│   │       │   ├── drop_preuve_count.sql
 │   │       │   ├── export.sql
 │   │       │   ├── fichier_preuve.sql
 │   │       │   ├── fichier_preuve@v1.7.1.sql
@@ -5423,6 +5506,8 @@
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v1.15.0.sql
 │   │       │   ├── drop-action-historique-triggers.sql
+│   │       │   ├── drop_action_information_rpcs.sql
+│   │       │   ├── drop_comparaison_scores_audit_type_tabular_score.sql
 │   │       │   ├── historique_modified_by.sql
 │   │       │   ├── justification_ajustement.sql
 │   │       │   ├── justification_ajustement@v4.38.0.sql
@@ -5736,6 +5821,9 @@
 │   │   │       ├── edit-plan
 │   │   │       │   ├── edit-plan.pom.ts
 │   │   │       │   └── edit-plan.spec.ts
+│   │   │       ├── import-plan
+│   │   │       │   ├── import-plan.pom.ts
+│   │   │       │   └── import-plan.spec.ts
 │   │   │       └── plans.fixture.ts
 │   │   ├── referentiels
 │   │   │   ├── historique
@@ -5746,6 +5834,8 @@
 │   │   │   │   ├── labellisation.pom.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
+│   │   │   │   ├── start-audit.pom.ts
+│   │   │   │   ├── start-audit.spec.ts
 │   │   │   │   ├── start-labellisation-cot.spec.ts
 │   │   │   │   └── validate-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
@@ -6119,6 +6209,8 @@
 │   │   │   │       ├── plan-type.schema.ts
 │   │   │   │       └── plan.schema.ts
 │   │   │   ├── referentiels
+│   │   │   │   ├── action-with-score-with-definition.schema.ts
+│   │   │   │   ├── action-with-score.schema.ts
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── action-categorie.enum.schema.ts
 │   │   │   │   │   ├── action-commentaire.schema.ts
@@ -6127,10 +6219,12 @@
 │   │   │   │   │   ├── action-origine.schema.ts
 │   │   │   │   │   ├── action-question.schema.ts
 │   │   │   │   │   ├── action-relation.schema.ts
+│   │   │   │   │   ├── action-statut
+│   │   │   │   │   │   └── is-action-statut-detaille.rule.ts
 │   │   │   │   │   ├── action-statut-avancement.enum.schema.ts
 │   │   │   │   │   ├── action-statut.schema.ts
 │   │   │   │   │   ├── action-type.enum.ts
-│   │   │   │   │   └── list-actions.request.ts
+│   │   │   │   │   └── list-actions.input.ts
 │   │   │   │   ├── historique
 │   │   │   │   │   ├── historique-item.schema.ts
 │   │   │   │   │   ├── historique-type.enum.ts
@@ -6163,7 +6257,6 @@
 │   │   │   │   ├── referentiels.utils.spec.ts
 │   │   │   │   └── scores
 │   │   │   │       ├── action-score.schema.ts
-│   │   │   │       ├── action-with-score.schema.ts
 │   │   │   │       ├── can-update-action-statut.rules-errors.ts
 │   │   │   │       ├── can-update-action-statut.rules.ts
 │   │   │   │       ├── export-score-comparison.request.ts
@@ -6234,7 +6327,8 @@
 │   │   │           └── webhook-message.schema.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.lib.json
-│   │   └── tsconfig.spec.json
+│   │   ├── tsconfig.spec.json
+│   │   └── vitest.config.mts
 │   ├── pdf-components
 │   │   ├── .swcrc
 │   │   ├── assets
@@ -6557,9 +6651,8 @@
 │       │   │   │   ├── RichTextEditor.stories.tsx
 │       │   │   │   ├── RichTextEditor.tsx
 │       │   │   │   ├── SuggestionMenu.tsx
-│       │   │   │   └── index.tsx
-│       │   │   ├── RichTextView
-│       │   │   │   └── index.tsx
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── rich-text-editor.css
 │       │   │   ├── Select
 │       │   │   │   ├── Select.stories.tsx
 │       │   │   │   ├── Select.tsx
@@ -6627,6 +6720,7 @@
 │       │   │       │   ├── table-full.tsx
 │       │   │       │   ├── table-full.with-editing.tsx
 │       │   │       │   └── table.stories.tsx
+│       │   │       ├── table.cell-rich-text-editor.tsx
 │       │   │       ├── table.cell-textarea.tsx
 │       │   │       ├── table.cell.tsx
 │       │   │       ├── table.empty.tsx
@@ -6655,6 +6749,7 @@
 │       │   └── utils
 │       │       ├── cn.ts
 │       │       ├── constants.ts
+│       │       ├── merge-refs.ts
 │       │       ├── naturalSort.ts
 │       │       └── types.ts
 │       ├── tailwind.config.ts
@@ -6893,9 +6988,6 @@
 │   │   ├── _shared
 │   │   │   ├── cors.ts
 │   │   │   ├── database.types.ts
-│   │   │   ├── exportUtils.ts
-│   │   │   ├── fetchActionsReferentiel.ts
-│   │   │   ├── formatActionStatut.ts
 │   │   │   ├── getSupabaseClient.ts
 │   │   │   ├── groupBy.ts
 │   │   │   ├── indexBy.ts
@@ -6904,11 +6996,6 @@
 │   │   ├── crm_sync
 │   │   │   ├── index.ts
 │   │   │   └── test.http
-│   │   ├── export_indicateur
-│   │   │   ├── exportXLSX.ts
-│   │   │   ├── fetchData.ts
-│   │   │   ├── index.ts
-│   │   │   └── types.ts
 │   │   ├── get_panier_data_from_directus
 │   │   │   ├── README.md
 │   │   │   ├── fetchData.ts
@@ -6943,4 +7030,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1226 directories, 5917 files
+1235 directories, 5995 files

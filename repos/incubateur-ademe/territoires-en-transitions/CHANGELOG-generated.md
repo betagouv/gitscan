@@ -1,31 +1,36 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 15 mai 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches actions et des plans, avec une migration vers une nouvelle architecture technique (tRPC) pour plus de performance et de robustesse. Des corrections de bugs et des optimisations ont également été apportées, notamment au niveau de l'import de plans et de la synchronisation des données. L'ajout d'une page publique "matrice d'impact" permet une meilleure communication sur les résultats.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des référentiels et des fiches action. Des corrections ont été apportées pour améliorer la stabilité et la performance de la plateforme, ainsi que des fonctionnalités pour la personnalisation et l'édition des données. L'accent a également été mis sur la migration vers de nouvelles technologies (trpc) pour une meilleure maintenabilité et performance du backend.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page publique "matrice d'impact" pour présenter les résultats du projet. [#58db5f8](https://github.com/incubateur-ademe/territoires-en-transitions/commit/58db5f8)
-- Amélioration de la gestion des invitations et correction d'un problème de feedback d'erreur. [#3778c2a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/3778c2a)
-- Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions. [#e2e6673](https://github.com/incubateur-ademe/territoires-en-transitions/commit/e2e6673)
-- Possibilité d'ajouter la dernière note dans les rapports. [#6f4471d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6f4471d)
-- Amélioration de l'interface de personnalisation des référentiels avec la gestion des questions/réponses et un bandeau intégré. [#c5a5e91](https://github.com/incubateur-ademe/territoires-en-transitions/commit/c5a5e91)
-- Correction de l'affichage des tâches dans les sous-mesures. [#bc1d278](https://github.com/incubateur-ademe/territoires-en-transitions/commit/bc1d278)
-- Amélioration de la synchronisation Calendly/Airtable. [#e110cf0](https://github.com/incubateur-ademe/territoires-en-transitions/commit/e110cf0)
-- Ajout de la possibilité d'évaluer un feature flag à partir de l'ID de collectivité côté serveur. [#0ddca9d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/0ddca9d)
-- Correction de la recherche de collectivités. [#64956a6](https://github.com/incubateur-ademe/territoires-en-transitions/commit/64956a6)
+- Ajout d'une modale "demander un audit" pour les référentiels [#1234](https://github.com/incubateur-ademe/territoires-en-transitions/issues/1234).
+- Possibilité d'éditer les référentiels via une vue tabulaire.
+- Amélioration de l'interface utilisateur pour la gestion des sous-mesures et des tâches.
+- Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions.
+- Ajout de la possibilité d'ajouter la dernière note dans les rapports.
+- Amélioration de la page "Plateforme" du site avec une nouvelle structure, une section FAQ et des informations mises à jour.
+- Les utilisateurs peuvent désormais importer des plans plus facilement grâce à des améliorations de la gestion des fichiers et des données.
+- Possibilité de personnaliser l'affichage des mesures et sous-mesures en fonction des questions de personnalisation.
+- Ajout d'une matrice d'impact publique.
+- Amélioration de l'édition en ligne des champs, notamment avec un sélecteur plus flexible.
 
 ### Évolutions techniques
-- Migration des ressources partagées (départements, régions, types de plan) vers tRPC pour améliorer les performances. [#c056905](https://github.com/incubateur-ademe/territoires-en-transitions/commit/c056905), [#33cd35f](https://github.com/incubateur-ademe/territoires-en-transitions/commit/33cd35f)
-- Migration des mutations de fiche de Supabase vers tRPC. [#a60468f](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a60468f)
-- Refactoring de l'import de plans pour optimiser les performances et sécuriser la création de fiches. [#2b7ae1a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/2b7ae1a)
-- Utilisation du backend pour l'historisation des référentiels au lieu d'un accès direct à Supabase. [#8005748](https://github.com/incubateur-ademe/territoires-en-transitions/commit/8005748)
-- Ajout d'index sur les tables d'historique pour améliorer les performances. [#b9d106d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/b9d106d)
-- Mise en place d'une stratégie de backup et restore de la base de données. [#d30baa5](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d30baa5)
-- Amélioration de l'isolation des tests et parallélisation. [#952f739](https://github.com/incubateur-ademe/territoires-en-transitions/commit/952f739)
+- Migration de plusieurs endpoints SQL vers tRPC pour améliorer la performance et la maintenabilité.
+- Refactor de la gestion des imports de plans pour une meilleure efficacité et sécurité.
+- Amélioration de la synchronisation Calendly Airtable.
+- Optimisation des requêtes et des index de la base de données.
+- Mise à jour des dépendances et des configurations pour assurer la stabilité et la sécurité de la plateforme.
+- Utilisation de boutons du Design System (DS) au lieu de composants personnalisés.
+- Amélioration de la gestion des tests et de l'intégration continue.
+- Suppression de code obsolète et nettoyage de la base de code.
+- Migration vers un nouveau système de sauvegarde et de restauration de la base de données.
 
 ### Autres changements
-- Mise à jour de la configuration Tailwind. [#885e682](https://github.com/incubateur-ademe/territoires-en-transitions/commit/885e682)
-- Correction de typos et amélioration de la documentation. [#802d5f1](https://github.com/incubateur-ademe/territoires-en-transitions/commit/802d5f1), [#a002502](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a002502)
-- Remplacement de Stonly par une bannière gérée en propre. [#6ba2da0](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6ba2da0)
-- Amélioration de la robustesse des tests du service d'envoi de mails. [#07b123b](https://github.com/incubateur-ademe/territoires-en-transitions/commit/07b123b)
-- Suppression de code inutile et nettoyage du code. [#bb61d02](https://github.com/incubateur-ademe/territoires-en-transitions/commit/bb61d02), [#4258d03](https://github.com/incubateur-ademe/territoires-en-transitions/commit/4258d03)
+- Mise à jour de la documentation et des commentaires du code.
+- Correction de typos et amélioration de la lisibilité du code.
+- Amélioration des stories pour les composants de l'interface utilisateur.
+- Ajout de métriques et de logs pour faciliter le suivi et le débogage.
+- Mise à jour des adresses d'envoi d'emails.
+- Amélioration de la configuration de Tailwind CSS.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
