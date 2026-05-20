@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Sèves est une application de gestion mutualisée de tous les événements sanitaires. Elle permet de gérer les données relatives aux événements, aux établissements et aux inspections.",
+  "description": "Sèves est une application de gestion mutualisée de tous les événements sanitaires. Elle permet de gérer les événements liés à la santé, notamment dans le contexte de la surveillance et de la lutte contre les maladies animales et végétales.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Recherche & Filtres",
     "Notifications & Alertes",
-    "Gestion des utilisateurs & Permissions",
     "Visualisation de données & Cartographie",
-    "Sécurité & Conformité"
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,7 +19,6 @@
     "Redis",
     "Celery",
     "Playwright",
-    "Ruff",
     "Sentry"
   ],
   "components": [
@@ -32,8 +32,8 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
+      "saml",
       "sso"
     ]
   },
