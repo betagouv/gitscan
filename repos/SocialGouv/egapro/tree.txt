@@ -147,7 +147,8 @@
 │   │   ├── apisix-suit.yaml
 │   │   ├── audit-cleanup-cron.yaml
 │   │   ├── export-cron.yaml
-│   │   └── gip-mds-import-cron.yaml
+│   │   ├── gip-mds-import-cron.yaml
+│   │   └── notifications-deployment.yaml
 │   └── values.yaml
 ├── .mcp.json
 ├── .nvmrc
@@ -160,1071 +161,1117 @@
 ├── docs
 │   ├── SUIT-API.md
 │   ├── architecture.md
-│   └── features.md
+│   ├── features.md
+│   └── parcours-utilisateurs.md
 ├── package.json
 ├── packages
-│   └── app
-│       ├── .env.example
-│       ├── .gitignore
-│       ├── .lighthouserc.json
-│       ├── CLAUDE.md
-│       ├── Dockerfile
-│       ├── biome.jsonc
-│       ├── cache-handler.cjs
-│       ├── data
-│       │   ├── companies.json
-│       │   ├── mock-gip-mds-edge-cases.csv
-│       │   └── mock-gip-mds.csv
-│       ├── drizzle
-│       │   ├── 0000_fuzzy_romulus.sql
-│       │   ├── 0001_worthless_dragon_lord.sql
-│       │   ├── 0002_lean_khan.sql
-│       │   ├── 0003_absurd_komodo.sql
-│       │   ├── 0004_next_jack_murdock.sql
-│       │   ├── 0005_standardize_snake_case.sql
-│       │   ├── 0006_lovely_korath.sql
-│       │   ├── 0007_gigantic_doctor_faustus.sql
-│       │   ├── 0008_powerful_omega_flight.sql
-│       │   ├── 0009_hot_vector.sql
-│       │   ├── 0010_gip_mds_data.sql
-│       │   ├── 0011_add_export_table.sql
-│       │   ├── 0012_export_date_to_year.sql
-│       │   ├── 0013_add_gip_quartile_threshold4.sql
-│       │   ├── 0014_drop_session_tables.sql
-│       │   ├── 0015_drop_account_table.sql
-│       │   ├── 0016_link_cse_joint_eval_to_declaration.sql
-│       │   ├── 0017_flatten-indicator-columns.sql
-│       │   ├── 0018_rare_next_avengers.sql
-│       │   ├── 0019_declaration_siren_fk.sql
-│       │   ├── 0020_clean-user-columns.sql
-│       │   ├── 0021_add-campaign-deadlines.sql
-│       │   ├── 0022_merge_file_tables.sql
-│       │   ├── 0023_add_admin_impersonation_events.sql
-│       │   ├── 0023_add_audit_action_log.sql
-│       │   ├── 0024_add_admin_impersonation_events.sql
-│       │   ├── 0025_add_user_is_admin.sql
-│       │   ├── 0026_add_referents_table.sql
-│       │   ├── 0027_add_global_settings.sql
-│       │   ├── 0028_add_cse_opinion_completed_at.sql
-│       │   ├── 0029_add_declaration_submitted_at.sql
-│       │   ├── 0030_drop_job_category_detail.sql
-│       │   ├── 0031_drop_quartile_threshold4.sql
-│       │   ├── 0032_sparkling_monster_badoon.sql
-│       │   ├── 0033_add_cancelled_at.sql
-│       │   └── meta
-│       │       ├── 0000_snapshot.json
-│       │       ├── 0001_snapshot.json
-│       │       ├── 0002_snapshot.json
-│       │       ├── 0003_snapshot.json
-│       │       ├── 0004_snapshot.json
-│       │       ├── 0005_snapshot.json
-│       │       ├── 0006_snapshot.json
-│       │       ├── 0007_snapshot.json
-│       │       ├── 0009_snapshot.json
-│       │       ├── 0010_snapshot.json
-│       │       ├── 0011_snapshot.json
-│       │       ├── 0014_snapshot.json
-│       │       ├── 0017_snapshot.json
-│       │       ├── 0018_snapshot.json
-│       │       ├── 0019_snapshot.json
-│       │       ├── 0030_snapshot.json
-│       │       ├── 0031_snapshot.json
-│       │       ├── 0032_snapshot.json
-│       │       ├── 0033_snapshot.json
-│       │       └── _journal.json
-│       ├── drizzle.config.ts
-│       ├── next.config.js
+│   ├── app
+│   │   ├── .env.example
+│   │   ├── .gitignore
+│   │   ├── .lighthouserc.json
+│   │   ├── CLAUDE.md
+│   │   ├── Dockerfile
+│   │   ├── biome.jsonc
+│   │   ├── cache-handler.cjs
+│   │   ├── data
+│   │   │   ├── companies.json
+│   │   │   ├── mock-gip-mds-edge-cases.csv
+│   │   │   └── mock-gip-mds.csv
+│   │   ├── drizzle
+│   │   │   ├── 0000_fuzzy_romulus.sql
+│   │   │   ├── 0001_worthless_dragon_lord.sql
+│   │   │   ├── 0002_lean_khan.sql
+│   │   │   ├── 0003_absurd_komodo.sql
+│   │   │   ├── 0004_next_jack_murdock.sql
+│   │   │   ├── 0005_standardize_snake_case.sql
+│   │   │   ├── 0006_lovely_korath.sql
+│   │   │   ├── 0007_gigantic_doctor_faustus.sql
+│   │   │   ├── 0008_powerful_omega_flight.sql
+│   │   │   ├── 0009_hot_vector.sql
+│   │   │   ├── 0010_gip_mds_data.sql
+│   │   │   ├── 0011_add_export_table.sql
+│   │   │   ├── 0012_export_date_to_year.sql
+│   │   │   ├── 0013_add_gip_quartile_threshold4.sql
+│   │   │   ├── 0014_drop_session_tables.sql
+│   │   │   ├── 0015_drop_account_table.sql
+│   │   │   ├── 0016_link_cse_joint_eval_to_declaration.sql
+│   │   │   ├── 0017_flatten-indicator-columns.sql
+│   │   │   ├── 0018_rare_next_avengers.sql
+│   │   │   ├── 0019_declaration_siren_fk.sql
+│   │   │   ├── 0020_clean-user-columns.sql
+│   │   │   ├── 0021_add-campaign-deadlines.sql
+│   │   │   ├── 0022_merge_file_tables.sql
+│   │   │   ├── 0023_add_admin_impersonation_events.sql
+│   │   │   ├── 0023_add_audit_action_log.sql
+│   │   │   ├── 0024_add_admin_impersonation_events.sql
+│   │   │   ├── 0025_add_user_is_admin.sql
+│   │   │   ├── 0026_add_referents_table.sql
+│   │   │   ├── 0027_add_global_settings.sql
+│   │   │   ├── 0028_add_cse_opinion_completed_at.sql
+│   │   │   ├── 0029_add_declaration_submitted_at.sql
+│   │   │   ├── 0030_drop_job_category_detail.sql
+│   │   │   ├── 0031_drop_quartile_threshold4.sql
+│   │   │   ├── 0032_sparkling_monster_badoon.sql
+│   │   │   ├── 0033_add_cancelled_at.sql
+│   │   │   ├── 0034_tranquil_catseye.sql
+│   │   │   ├── 0035_status_history.sql
+│   │   │   └── meta
+│   │   │       ├── 0000_snapshot.json
+│   │   │       ├── 0001_snapshot.json
+│   │   │       ├── 0002_snapshot.json
+│   │   │       ├── 0003_snapshot.json
+│   │   │       ├── 0004_snapshot.json
+│   │   │       ├── 0005_snapshot.json
+│   │   │       ├── 0006_snapshot.json
+│   │   │       ├── 0007_snapshot.json
+│   │   │       ├── 0009_snapshot.json
+│   │   │       ├── 0010_snapshot.json
+│   │   │       ├── 0011_snapshot.json
+│   │   │       ├── 0014_snapshot.json
+│   │   │       ├── 0017_snapshot.json
+│   │   │       ├── 0018_snapshot.json
+│   │   │       ├── 0019_snapshot.json
+│   │   │       ├── 0030_snapshot.json
+│   │   │       ├── 0031_snapshot.json
+│   │   │       ├── 0032_snapshot.json
+│   │   │       ├── 0033_snapshot.json
+│   │   │       ├── 0034_snapshot.json
+│   │   │       ├── 0035_snapshot.json
+│   │   │       └── _journal.json
+│   │   ├── drizzle.config.ts
+│   │   ├── next.config.js
+│   │   ├── package.json
+│   │   ├── playwright.config.ts
+│   │   ├── playwright.rgaa.config.ts
+│   │   ├── public
+│   │   │   └── assets
+│   │   │       ├── declaration-remuneration
+│   │   │       │   └── cloud-check.svg
+│   │   │       └── images
+│   │   │           ├── aide
+│   │   │           │   ├── indicateurs-remuneration.png
+│   │   │           │   ├── indicateurs-representation.png
+│   │   │           │   └── nouveau-site.png
+│   │   │           ├── home
+│   │   │           │   ├── help-illustration.svg
+│   │   │           │   └── search-illustration.svg
+│   │   │           ├── login-illustration.svg
+│   │   │           └── proconnect-logo.svg
+│   │   ├── scripts
+│   │   │   ├── audit-cleanup.mjs
+│   │   │   ├── copy-dsfr.mjs
+│   │   │   ├── copy-swagger-ui.mjs
+│   │   │   ├── entrypoint.sh
+│   │   │   ├── fetch-large-companies.ts
+│   │   │   ├── generate-edge-case-gip-data.ts
+│   │   │   ├── generate-mock-gip-data.ts
+│   │   │   ├── migrate.mjs
+│   │   │   └── post-process-schema-wiki.ts
+│   │   ├── src
+│   │   │   ├── __tests__
+│   │   │   │   └── middleware.test.ts
+│   │   │   ├── app
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── declarations
+│   │   │   │   │   │   ├── [declarationId]
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── impersonate
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── liste-referents
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── parametres
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── stats
+│   │   │   │   │       └── campagne
+│   │   │   │   │           └── page.tsx
+│   │   │   │   ├── aide
+│   │   │   │   │   ├── nous-contacter
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── api
+│   │   │   │   │   ├── auth
+│   │   │   │   │   │   ├── [...nextauth]
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   └── logout
+│   │   │   │   │   │       ├── callback
+│   │   │   │   │   │       │   └── route.ts
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── declaration-pdf
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── export
+│   │   │   │   │   │   ├── download
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   └── generate
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── gip-mds
+│   │   │   │   │   │   ├── import
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   └── mock
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── healthz
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── no-sanction-pdf
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── prefill-pdf
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── public
+│   │   │   │   │   │   └── referents-egalite-professionnelle
+│   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   └── route.test.ts
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── test-sentry
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── transmitted-pdf
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── trpc
+│   │   │   │   │   │   └── [trpc]
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── upload
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   └── v1
+│   │   │   │   │       ├── docs
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       ├── export
+│   │   │   │   │       │   └── declarations
+│   │   │   │   │       │       └── route.ts
+│   │   │   │   │       ├── files
+│   │   │   │   │       │   ├── [fileId]
+│   │   │   │   │       │   │   └── route.ts
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       └── openapi.json
+│   │   │   │   │           └── route.ts
+│   │   │   │   ├── avis-cse
+│   │   │   │   │   ├── confirmation
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── etape
+│   │   │   │   │   │   └── [step]
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── declaration-accessibilite
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── declaration-remuneration
+│   │   │   │   │   ├── (with-banner)
+│   │   │   │   │   │   ├── etape
+│   │   │   │   │   │   │   └── [step]
+│   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── parcours-conformite
+│   │   │   │   │   │       ├── confirmation
+│   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │       ├── etape
+│   │   │   │   │   │       │   └── [step]
+│   │   │   │   │   │       │       └── page.tsx
+│   │   │   │   │   │       ├── evaluation-conjointe
+│   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   └── recapitulatif
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── donnees-personnelles
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── error.tsx
+│   │   │   │   ├── faq
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── gestion-des-cookies
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── global-error.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── login
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── maintenance
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── mentions-legales
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── mon-espace
+│   │   │   │   │   ├── mes-entreprises
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── not-found.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── plan-du-site
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── referents
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── robots.ts
+│   │   │   │   ├── sitemap.ts
+│   │   │   │   ├── test-error
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── test-panel
+│   │   │   │       └── page.tsx
+│   │   │   ├── e2e
+│   │   │   │   ├── admin-declarations.e2e.ts
+│   │   │   │   ├── admin-impersonation-read-only.e2e.ts
+│   │   │   │   ├── admin-referents.e2e.ts
+│   │   │   │   ├── admin-stats-campagne.e2e.ts
+│   │   │   │   ├── admin.e2e.ts
+│   │   │   │   ├── auth.setup.ts
+│   │   │   │   ├── campaign-deadlines-gating.e2e.ts
+│   │   │   │   ├── compliance-path-change.e2e.ts
+│   │   │   │   ├── compliance.e2e.ts
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── declaration-cancellation.e2e.ts
+│   │   │   │   ├── declaration-process-panel.e2e.ts
+│   │   │   │   ├── declaration.e2e.ts
+│   │   │   │   ├── error-pages.e2e.ts
+│   │   │   │   ├── fileUpload.e2e.ts
+│   │   │   │   ├── fixtures
+│   │   │   │   │   └── dummy.pdf
+│   │   │   │   ├── global-setup.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── axe-scan.ts
+│   │   │   │   │   ├── compliance-flows.ts
+│   │   │   │   │   ├── db-campaign.ts
+│   │   │   │   │   ├── db.ts
+│   │   │   │   │   ├── declaration-flows.ts
+│   │   │   │   │   ├── dsfr.ts
+│   │   │   │   │   ├── login.ts
+│   │   │   │   │   ├── maildev.ts
+│   │   │   │   │   └── notifications-worker.ts
+│   │   │   │   ├── home.e2e.ts
+│   │   │   │   ├── login.e2e.ts
+│   │   │   │   ├── logout.e2e.ts
+│   │   │   │   ├── missing-info-modal.e2e.ts
+│   │   │   │   ├── notifications-email-flow.e2e.ts
+│   │   │   │   ├── previous-year-categories.e2e.ts
+│   │   │   │   ├── public-referents.e2e.ts
+│   │   │   │   ├── recapitulatif.e2e.ts
+│   │   │   │   └── rgaa-audit.spec.ts
+│   │   │   ├── env.js
+│   │   │   ├── instrumentation-client.ts
+│   │   │   ├── instrumentation.ts
+│   │   │   ├── middleware.ts
+│   │   │   ├── modules
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── AdminHomePage.tsx
+│   │   │   │   │   ├── AdminNavigation.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── AdminHomePage.test.tsx
+│   │   │   │   │   │   ├── AdminLayout.test.tsx
+│   │   │   │   │   │   ├── AdminNavigation.test.tsx
+│   │   │   │   │   │   ├── AdminPage.test.tsx
+│   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   ├── declarations
+│   │   │   │   │   │   ├── AdminDeclarationDetailPage.tsx
+│   │   │   │   │   │   ├── AdminDeclarationsPage.tsx
+│   │   │   │   │   │   ├── CancelDeclarationButton.tsx
+│   │   │   │   │   │   ├── DeclarationTable.tsx
+│   │   │   │   │   │   ├── DetailSections.tsx
+│   │   │   │   │   │   ├── SearchForm.tsx
+│   │   │   │   │   │   ├── SiblingDeclarationsSection.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── AdminDeclarationDetailPage.test.tsx
+│   │   │   │   │   │   │   ├── AdminDeclarationsPage.test.tsx
+│   │   │   │   │   │   │   ├── CancelDeclarationButton.test.tsx
+│   │   │   │   │   │   │   ├── DeclarationTable.test.tsx
+│   │   │   │   │   │   │   ├── DetailSections.test.tsx
+│   │   │   │   │   │   │   ├── SearchForm.test.tsx
+│   │   │   │   │   │   │   ├── SiblingDeclarationsSection.test.tsx
+│   │   │   │   │   │   │   ├── constants.test.ts
+│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   │   ├── shared
+│   │   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   ├── impersonate
+│   │   │   │   │   │   ├── CompanyPreviewCard.tsx
+│   │   │   │   │   │   ├── ImpersonateForm.tsx
+│   │   │   │   │   │   ├── ImpersonatePage.tsx
+│   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │       ├── CompanyPreviewCard.test.tsx
+│   │   │   │   │   │       ├── ImpersonateForm.test.tsx
+│   │   │   │   │   │       └── ImpersonatePage.test.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── referents
+│   │   │   │   │   │   ├── AdminReferentsPage.tsx
+│   │   │   │   │   │   ├── DeleteConfirmationModal.tsx
+│   │   │   │   │   │   ├── ImportReferentsModal.tsx
+│   │   │   │   │   │   ├── ReferentFormFields.tsx
+│   │   │   │   │   │   ├── ReferentFormModal.tsx
+│   │   │   │   │   │   ├── ReferentTable.tsx
+│   │   │   │   │   │   ├── SearchForm.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── AdminReferentsPage.test.tsx
+│   │   │   │   │   │   │   ├── DeleteConfirmationModal.test.tsx
+│   │   │   │   │   │   │   ├── ImportReferentsModal.test.tsx
+│   │   │   │   │   │   │   ├── ReferentTable.test.tsx
+│   │   │   │   │   │   │   ├── SearchForm.test.tsx
+│   │   │   │   │   │   │   ├── constants.test.ts
+│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   │   ├── shared
+│   │   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── settings
+│   │   │   │   │   │   ├── AdminSettingsPage.tsx
+│   │   │   │   │   │   ├── CampaignDeadlinesForm.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── AdminSettingsPage.test.tsx
+│   │   │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
+│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── schemas.ts
+│   │   │   │   │   └── stats
+│   │   │   │   │       ├── CampaignProgressionChart.module.scss
+│   │   │   │   │       ├── CampaignProgressionChart.tsx
+│   │   │   │   │       ├── CampaignProgressionTable.tsx
+│   │   │   │   │       ├── CampaignStatsPage.tsx
+│   │   │   │   │       ├── YearsFilter.tsx
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   ├── CampaignProgressionTable.test.tsx
+│   │   │   │   │       │   └── YearsFilter.test.tsx
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── schemas.ts
+│   │   │   │   │       └── types.ts
+│   │   │   │   ├── aide
+│   │   │   │   │   ├── AideCallout.tsx
+│   │   │   │   │   ├── AideIllustration.tsx
+│   │   │   │   │   ├── AideLayout.module.scss
+│   │   │   │   │   ├── AidePage.tsx
+│   │   │   │   │   ├── AideResourceCards.module.scss
+│   │   │   │   │   ├── AideResourceCards.tsx
+│   │   │   │   │   ├── AideTextesReference.tsx
+│   │   │   │   │   ├── ContactPage.tsx
+│   │   │   │   │   ├── CopyEmailButton.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── AidePage.test.tsx
+│   │   │   │   │   │   └── ContactPage.test.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── analytics
+│   │   │   │   │   ├── MatomoAnalytics.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── audit
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── actionKeys.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── actionKeys.ts
+│   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── ReadOnlyTooltip.tsx
+│   │   │   │   │   ├── SessionProviderWrapper.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── SessionProviderWrapper.test.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useIsImpersonating.ts
+│   │   │   │   │   └── useReadOnlyGuard.tsx
+│   │   │   │   ├── cseOpinion
+│   │   │   │   │   ├── ConfirmationPage.module.scss
+│   │   │   │   │   ├── ConfirmationPage.tsx
+│   │   │   │   │   ├── CseOpinionLayout.module.scss
+│   │   │   │   │   ├── CseOpinionLayout.tsx
+│   │   │   │   │   ├── Step1Opinions.module.scss
+│   │   │   │   │   ├── Step1Opinions.tsx
+│   │   │   │   │   ├── Step2Upload.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── AccuracyOpinionCard.test.tsx
+│   │   │   │   │   │   ├── ConfirmationPage.test.tsx
+│   │   │   │   │   │   ├── GapConsultationCard.test.tsx
+│   │   │   │   │   │   ├── OpinionSummaryBox.test.tsx
+│   │   │   │   │   │   ├── Step1Opinions.test.tsx
+│   │   │   │   │   │   ├── Step2Upload.test.tsx
+│   │   │   │   │   │   ├── SubmitConfirmationModal.test.tsx
+│   │   │   │   │   │   ├── confirmationHelpers.test.ts
+│   │   │   │   │   │   └── mapOpinionsFromDb.test.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AccuracyOpinionCard.tsx
+│   │   │   │   │   │   ├── CseStepIndicator.tsx
+│   │   │   │   │   │   ├── GapConsultationCard.tsx
+│   │   │   │   │   │   ├── OpinionCard.module.scss
+│   │   │   │   │   │   ├── OpinionSummaryBox.module.scss
+│   │   │   │   │   │   ├── OpinionSummaryBox.tsx
+│   │   │   │   │   │   ├── SubmissionBanner.module.scss
+│   │   │   │   │   │   ├── SubmissionBanner.tsx
+│   │   │   │   │   │   └── SubmitConfirmationModal.tsx
+│   │   │   │   │   ├── confirmationHelpers.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mapOpinionsFromDb.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   └── formActions.module.scss
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── declaration
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── schemas.ts
+│   │   │   │   ├── declaration-remuneration
+│   │   │   │   │   ├── DeclarationLayout.tsx
+│   │   │   │   │   ├── MissingSiret.tsx
+│   │   │   │   │   ├── StepPageClient.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── computeIndicatorPercentages.test.ts
+│   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── recapitulatif
+│   │   │   │   │   │   ├── CategoryRecapTable.module.scss
+│   │   │   │   │   │   ├── CategoryRecapTable.tsx
+│   │   │   │   │   │   ├── IndicatorTables.module.scss
+│   │   │   │   │   │   ├── IndicatorTables.tsx
+│   │   │   │   │   │   ├── RecapitulatifPage.module.scss
+│   │   │   │   │   │   ├── RecapitulatifPage.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── RecapitulatifPage.test.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── CompanyBanner.module.scss
+│   │   │   │   │   │   ├── CompanyBanner.tsx
+│   │   │   │   │   │   ├── DataTable.tsx
+│   │   │   │   │   │   ├── DefinitionAccordion.tsx
+│   │   │   │   │   │   ├── DevFillButton.tsx
+│   │   │   │   │   │   ├── EditDialog.module.scss
+│   │   │   │   │   │   ├── FormActions.module.scss
+│   │   │   │   │   │   ├── FormActions.tsx
+│   │   │   │   │   │   ├── FormErrors.tsx
+│   │   │   │   │   │   ├── GapInterpretationCallout.tsx
+│   │   │   │   │   │   ├── InterpretationCallout.module.scss
+│   │   │   │   │   │   ├── NextStepsBox.module.scss
+│   │   │   │   │   │   ├── NextStepsBox.tsx
+│   │   │   │   │   │   ├── PayGapTable.module.scss
+│   │   │   │   │   │   ├── PayGapTable.tsx
+│   │   │   │   │   │   ├── PrefillResetWarning.tsx
+│   │   │   │   │   │   ├── PrefillSource.tsx
+│   │   │   │   │   │   ├── SavedIndicator.module.scss
+│   │   │   │   │   │   ├── SavedIndicator.tsx
+│   │   │   │   │   │   ├── StepIndicator.tsx
+│   │   │   │   │   │   ├── StepTitleRow.tsx
+│   │   │   │   │   │   ├── SubmitDeclarationModal.tsx
+│   │   │   │   │   │   ├── TooltipButton.module.scss
+│   │   │   │   │   │   ├── TooltipButton.tsx
+│   │   │   │   │   │   ├── UpdateCseModal.module.scss
+│   │   │   │   │   │   ├── UpdateCseModal.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── CompanyBanner.test.tsx
+│   │   │   │   │   │   │   ├── DataTable.test.tsx
+│   │   │   │   │   │   │   ├── DevFillButton.test.tsx
+│   │   │   │   │   │   │   ├── FormActions.test.tsx
+│   │   │   │   │   │   │   ├── GapInterpretationCallout.test.tsx
+│   │   │   │   │   │   │   ├── PrefillResetWarning.test.tsx
+│   │   │   │   │   │   │   ├── PrefillSource.test.tsx
+│   │   │   │   │   │   │   ├── StepIndicator.test.tsx
+│   │   │   │   │   │   │   ├── complianceNavigation.test.ts
+│   │   │   │   │   │   │   ├── devFillData.test.ts
+│   │   │   │   │   │   │   ├── gapBadge.test.ts
+│   │   │   │   │   │   │   ├── gipMdsMapping.test.ts
+│   │   │   │   │   │   │   └── gipMdsMappingCsv.test.ts
+│   │   │   │   │   │   ├── common.module.scss
+│   │   │   │   │   │   ├── complianceNavigation.ts
+│   │   │   │   │   │   ├── computeIndicatorPercentages.ts
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── devFillData.ts
+│   │   │   │   │   │   ├── draft
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── computeDraftDiff.test.ts
+│   │   │   │   │   │   │   │   ├── draftStorage.test.ts
+│   │   │   │   │   │   │   │   └── useDeclarationDraft.test.tsx
+│   │   │   │   │   │   │   ├── computeDraftDiff.ts
+│   │   │   │   │   │   │   ├── draftSchema.ts
+│   │   │   │   │   │   │   ├── draftStorage.ts
+│   │   │   │   │   │   │   └── useDeclarationDraft.ts
+│   │   │   │   │   │   ├── gapBadge.module.scss
+│   │   │   │   │   │   ├── gapBadge.ts
+│   │   │   │   │   │   ├── gipMdsMapping.ts
+│   │   │   │   │   │   ├── gipToStepData.ts
+│   │   │   │   │   │   └── indicatorRowMapping.ts
+│   │   │   │   │   ├── steps
+│   │   │   │   │   │   ├── ComplianceConfirmation.tsx
+│   │   │   │   │   │   ├── CompliancePathChoice.tsx
+│   │   │   │   │   │   ├── CompliancePathPage.tsx
+│   │   │   │   │   │   ├── Step1Workforce.module.scss
+│   │   │   │   │   │   ├── Step1Workforce.tsx
+│   │   │   │   │   │   ├── Step2PayGap.tsx
+│   │   │   │   │   │   ├── Step3VariablePay.module.scss
+│   │   │   │   │   │   ├── Step3VariablePay.tsx
+│   │   │   │   │   │   ├── Step4QuartileDistribution.module.scss
+│   │   │   │   │   │   ├── Step4QuartileDistribution.tsx
+│   │   │   │   │   │   ├── Step5EmployeeCategories.module.scss
+│   │   │   │   │   │   ├── Step5EmployeeCategories.tsx
+│   │   │   │   │   │   ├── Step6Review.module.scss
+│   │   │   │   │   │   ├── Step6Review.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── ComplianceConfirmation.test.tsx
+│   │   │   │   │   │   │   ├── CompliancePathChoice.test.tsx
+│   │   │   │   │   │   │   ├── CompliancePathPage.test.ts
+│   │   │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
+│   │   │   │   │   │   │   ├── Step1DevFill.test.tsx
+│   │   │   │   │   │   │   ├── Step1Workforce.test.tsx
+│   │   │   │   │   │   │   ├── Step2DevFill.test.tsx
+│   │   │   │   │   │   │   ├── Step2PayGap.test.tsx
+│   │   │   │   │   │   │   ├── Step3DevFill.test.tsx
+│   │   │   │   │   │   │   ├── Step3VariablePay.test.tsx
+│   │   │   │   │   │   │   ├── Step4DevFill.test.tsx
+│   │   │   │   │   │   │   ├── Step4QuartileDistribution.submit.test.tsx
+│   │   │   │   │   │   │   ├── Step4QuartileDistribution.test.tsx
+│   │   │   │   │   │   │   ├── Step4QuartileDistributionGip.test.tsx
+│   │   │   │   │   │   │   ├── Step5DevFill.test.tsx
+│   │   │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
+│   │   │   │   │   │   │   └── Step6Review.test.tsx
+│   │   │   │   │   │   ├── compliancePath
+│   │   │   │   │   │   │   ├── CompliancePathOption.module.scss
+│   │   │   │   │   │   │   ├── CompliancePathOption.tsx
+│   │   │   │   │   │   │   ├── CompliancePathOptions.tsx
+│   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
+│   │   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   ├── jointEvaluation
+│   │   │   │   │   │   │   ├── JointEvaluationForm.tsx
+│   │   │   │   │   │   │   ├── JointEvaluationPage.tsx
+│   │   │   │   │   │   │   ├── JointEvaluationSubmitModal.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── JointEvaluationForm.test.tsx
+│   │   │   │   │   │   │   │   └── JointEvaluationPage.test.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── secondDeclaration
+│   │   │   │   │   │   │   ├── ReferencePeriodPicker.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationStep3Review.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationStepIndicator.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationStepPage.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.test.tsx
+│   │   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.test.tsx
+│   │   │   │   │   │   │   │   └── SecondDeclarationStep3Review.test.tsx
+│   │   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── step3
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── step4
+│   │   │   │   │   │   │   ├── QuartileInterpretationCallout.tsx
+│   │   │   │   │   │   │   ├── QuartileTable.tsx
+│   │   │   │   │   │   │   ├── QuartileTableRow.tsx
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── quartileErrors.ts
+│   │   │   │   │   │   │   └── quartileFormHelpers.ts
+│   │   │   │   │   │   ├── step5
+│   │   │   │   │   │   │   ├── CategoryDataTable.tsx
+│   │   │   │   │   │   │   ├── CategoryForm.tsx
+│   │   │   │   │   │   │   ├── CategoryImportExport.tsx
+│   │   │   │   │   │   │   ├── DeleteCategoryDialog.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── categoryFileHandler.test.ts
+│   │   │   │   │   │   │   ├── categoryFileHandler.ts
+│   │   │   │   │   │   │   ├── categorySerializer.ts
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── sources.ts
+│   │   │   │   │   │   └── step6
+│   │   │   │   │   │       ├── CardTitle.tsx
+│   │   │   │   │   │       ├── GapBadge.tsx
+│   │   │   │   │   │       ├── GapColumn.tsx
+│   │   │   │   │   │       ├── GapSideBySide.tsx
+│   │   │   │   │   │       ├── IndicatorSections.tsx
+│   │   │   │   │   │       ├── QuartileColumn.tsx
+│   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │       └── parseStep5Categories.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── declarationPdf
+│   │   │   │   │   ├── DeclarationPdfDocument.tsx
+│   │   │   │   │   ├── DownloadDeclarationPdfButton.tsx
+│   │   │   │   │   ├── PrefillPdfDocument.tsx
+│   │   │   │   │   ├── TransmittedPdfDocument.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── DeclarationPdfDocument.test.tsx
+│   │   │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
+│   │   │   │   │   │   ├── TransmittedPdfDocument.test.tsx
+│   │   │   │   │   │   ├── buildPdfData.test.ts
+│   │   │   │   │   │   └── buildTransmittedPdfData.test.ts
+│   │   │   │   │   ├── buildPdfData.ts
+│   │   │   │   │   ├── buildTransmittedPdfData.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── pdfFonts.ts
+│   │   │   │   │   ├── pdfStyles.ts
+│   │   │   │   │   ├── sections
+│   │   │   │   │   │   ├── CategorySection.tsx
+│   │   │   │   │   │   ├── GapCell.tsx
+│   │   │   │   │   │   ├── PayGapTable.tsx
+│   │   │   │   │   │   ├── QuartileSection.tsx
+│   │   │   │   │   │   ├── VariablePaySection.tsx
+│   │   │   │   │   │   └── WorkforceSection.tsx
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── domain
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── campaign.test.ts
+│   │   │   │   │   │   ├── companySize.test.ts
+│   │   │   │   │   │   ├── declarationDisplay.test.ts
+│   │   │   │   │   │   ├── declarationFlags.test.ts
+│   │   │   │   │   │   ├── declarationFsmStatus.test.ts
+│   │   │   │   │   │   ├── declarationPrerequisites.test.ts
+│   │   │   │   │   │   ├── declarationProcessStep.test.ts
+│   │   │   │   │   │   ├── declarationStatus.test.ts
+│   │   │   │   │   │   ├── declarationTrajectory.test.ts
+│   │   │   │   │   │   ├── format.test.ts
+│   │   │   │   │   │   ├── formatLongDate.test.ts
+│   │   │   │   │   │   ├── gap.test.ts
+│   │   │   │   │   │   ├── indicatorG.test.ts
+│   │   │   │   │   │   ├── number.test.ts
+│   │   │   │   │   │   ├── quartile.test.ts
+│   │   │   │   │   │   ├── regions.test.ts
+│   │   │   │   │   │   └── siren.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── campaign.ts
+│   │   │   │   │   │   ├── companySize.ts
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── declarationDisplay.ts
+│   │   │   │   │   │   ├── declarationFlags.ts
+│   │   │   │   │   │   ├── declarationPrerequisites.ts
+│   │   │   │   │   │   ├── declarationProcessStep.ts
+│   │   │   │   │   │   ├── declarationStatus.ts
+│   │   │   │   │   │   ├── declarationTrajectory.ts
+│   │   │   │   │   │   ├── format.ts
+│   │   │   │   │   │   ├── gap.ts
+│   │   │   │   │   │   ├── indicatorG.ts
+│   │   │   │   │   │   ├── number.ts
+│   │   │   │   │   │   ├── quartile.ts
+│   │   │   │   │   │   ├── regions.ts
+│   │   │   │   │   │   └── siren.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── error
+│   │   │   │   │   ├── ErrorArtwork.tsx
+│   │   │   │   │   ├── ErrorLayout.tsx
+│   │   │   │   │   ├── ErrorPage.tsx
+│   │   │   │   │   ├── MaintenancePage.tsx
+│   │   │   │   │   ├── NotFoundPage.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── ErrorArtwork.test.tsx
+│   │   │   │   │   │   ├── ErrorLayout.test.tsx
+│   │   │   │   │   │   ├── ErrorPage.test.tsx
+│   │   │   │   │   │   ├── MaintenancePage.test.tsx
+│   │   │   │   │   │   └── NotFoundPage.test.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── export
+│   │   │   │   │   ├── SwaggerUI.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── SwaggerUI.test.tsx
+│   │   │   │   │   │   ├── buildExportKey.test.ts
+│   │   │   │   │   │   ├── buildExportRows.test.ts
+│   │   │   │   │   │   ├── exportApi.integration.test.ts
+│   │   │   │   │   │   ├── exportApi.test.ts
+│   │   │   │   │   │   ├── fetchDeclarations.test.ts
+│   │   │   │   │   │   ├── filesApi.test.ts
+│   │   │   │   │   │   ├── generateXlsx.test.ts
+│   │   │   │   │   │   ├── generateYearlyExport.test.ts
+│   │   │   │   │   │   ├── mapIndicators.test.ts
+│   │   │   │   │   │   ├── openapi.test.ts
+│   │   │   │   │   │   ├── openapiRoute.test.ts
+│   │   │   │   │   │   ├── queries.test.ts
+│   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   ├── buildExportRows.ts
+│   │   │   │   │   ├── downloadExport.ts
+│   │   │   │   │   ├── fetchDeclarations.ts
+│   │   │   │   │   ├── generateXlsx.ts
+│   │   │   │   │   ├── generateYearlyExport.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mapIndicators.ts
+│   │   │   │   │   ├── openapi.ts
+│   │   │   │   │   ├── queries.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── apiLabels.ts
+│   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   ├── swagger-ui.d.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── faq
+│   │   │   │   │   ├── FaqAccordionGroup.tsx
+│   │   │   │   │   ├── FaqContent.module.scss
+│   │   │   │   │   ├── FaqContent.tsx
+│   │   │   │   │   ├── FaqPage.module.scss
+│   │   │   │   │   ├── FaqPage.tsx
+│   │   │   │   │   ├── FaqSummary.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── FaqPage.test.tsx
+│   │   │   │   │   ├── faqData.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── home
+│   │   │   │   │   ├── HomeHero.module.scss
+│   │   │   │   │   ├── HomeHero.tsx
+│   │   │   │   │   ├── HomeNotice.tsx
+│   │   │   │   │   ├── HomePage.module.scss
+│   │   │   │   │   ├── HomePage.tsx
+│   │   │   │   │   ├── HomePlaceholder.module.scss
+│   │   │   │   │   ├── HomePlaceholder.tsx
+│   │   │   │   │   ├── HomeSearch.module.scss
+│   │   │   │   │   ├── HomeSearch.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── HomeHero.test.tsx
+│   │   │   │   │   │   ├── HomeNotice.test.tsx
+│   │   │   │   │   │   ├── HomePage.test.tsx
+│   │   │   │   │   │   ├── HomePlaceholder.test.tsx
+│   │   │   │   │   │   └── HomeSearch.test.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── Breadcrumb.tsx
+│   │   │   │   │   ├── Footer
+│   │   │   │   │   │   ├── FooterBody.tsx
+│   │   │   │   │   │   ├── FooterBottom.tsx
+│   │   │   │   │   │   ├── ThemeModal.tsx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── Header
+│   │   │   │   │   │   ├── HeaderBrand.tsx
+│   │   │   │   │   │   ├── HeaderQuickAccess.tsx
+│   │   │   │   │   │   ├── HeaderQuickAccessLinks.tsx
+│   │   │   │   │   │   ├── MobileMenu.tsx
+│   │   │   │   │   │   ├── MobileUserBlock.module.scss
+│   │   │   │   │   │   ├── MobileUserBlock.tsx
+│   │   │   │   │   │   ├── Navigation.tsx
+│   │   │   │   │   │   ├── UserAccountMenu.module.scss
+│   │   │   │   │   │   ├── UserAccountMenu.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── HeaderQuickAccessLinks.test.tsx
+│   │   │   │   │   │   │   ├── MobileMenu.test.tsx
+│   │   │   │   │   │   │   ├── MobileUserBlock.test.tsx
+│   │   │   │   │   │   │   └── UserAccountMenu.test.tsx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── ImpersonateBanner.tsx
+│   │   │   │   │   ├── PublicChrome.tsx
+│   │   │   │   │   ├── ResourceBanner.module.scss
+│   │   │   │   │   ├── ResourceBanner.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── Breadcrumb.test.tsx
+│   │   │   │   │   │   ├── ImpersonateBanner.test.tsx
+│   │   │   │   │   │   ├── PublicChrome.test.tsx
+│   │   │   │   │   │   └── ResourceBanner.test.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── shared
+│   │   │   │   │       ├── DsfrPictogram.tsx
+│   │   │   │   │       ├── NavLink.tsx
+│   │   │   │   │       ├── NewTabNotice.tsx
+│   │   │   │   │       ├── SkipLinks.tsx
+│   │   │   │   │       └── __tests__
+│   │   │   │   │           ├── NavLink.test.tsx
+│   │   │   │   │           ├── NewTabNotice.test.tsx
+│   │   │   │   │           └── SkipLinks.test.tsx
+│   │   │   │   ├── legal
+│   │   │   │   │   ├── AccessibilityPage
+│   │   │   │   │   │   ├── AccessibilityCompliance.tsx
+│   │   │   │   │   │   ├── AccessibilityContact.tsx
+│   │   │   │   │   │   ├── AccessibilityEstablishment.tsx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── CookiesPage.tsx
+│   │   │   │   │   ├── LegalNoticePage.tsx
+│   │   │   │   │   ├── PrivacyPolicyPage
+│   │   │   │   │   │   ├── PrivacyCookies.tsx
+│   │   │   │   │   │   ├── PrivacyOverview.tsx
+│   │   │   │   │   │   ├── PrivacyRightsAndData.tsx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── SitemapPage.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── robots.test.ts
+│   │   │   │   │   │   └── sitemap.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── robots.ts
+│   │   │   │   │   └── sitemap.ts
+│   │   │   │   ├── login
+│   │   │   │   │   ├── LoginAccordion.module.scss
+│   │   │   │   │   ├── LoginAccordion.tsx
+│   │   │   │   │   ├── LoginForm.module.scss
+│   │   │   │   │   ├── LoginForm.tsx
+│   │   │   │   │   ├── LoginPage.module.scss
+│   │   │   │   │   ├── LoginPage.tsx
+│   │   │   │   │   ├── ProConnectButton.module.scss
+│   │   │   │   │   ├── ProConnectButton.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── LoginAccordion.test.tsx
+│   │   │   │   │   │   ├── LoginForm.test.tsx
+│   │   │   │   │   │   ├── LoginPage.test.tsx
+│   │   │   │   │   │   └── ProConnectButton.test.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── mail
+│   │   │   │   │   ├── ResendReceiptButton.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── enqueueReceipt.test.ts
+│   │   │   │   │   ├── buildReceiptAttachments.ts
+│   │   │   │   │   ├── enqueueReceipt.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── server.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── my-space
+│   │   │   │   │   ├── ArchivesSection.module.scss
+│   │   │   │   │   ├── ArchivesSection.tsx
+│   │   │   │   │   ├── CompanyCard.tsx
+│   │   │   │   │   ├── CompanyCardList.tsx
+│   │   │   │   │   ├── CompanyDeclarationsPage.tsx
+│   │   │   │   │   ├── CompanyEditModal.module.scss
+│   │   │   │   │   ├── CompanyEditModal.tsx
+│   │   │   │   │   ├── CompanyInfoBanner.module.scss
+│   │   │   │   │   ├── CompanyInfoBanner.tsx
+│   │   │   │   │   ├── CompanyListHeader.tsx
+│   │   │   │   │   ├── CompanyTable.tsx
+│   │   │   │   │   ├── DeclarationLink.tsx
+│   │   │   │   │   ├── DeclarationProcessPanel.module.scss
+│   │   │   │   │   ├── DeclarationProcessPanel.tsx
+│   │   │   │   │   ├── DeclarationStepLabel.ts
+│   │   │   │   │   ├── DeclarationsSection.module.scss
+│   │   │   │   │   ├── DeclarationsSection.tsx
+│   │   │   │   │   ├── DocumentsPanel.tsx
+│   │   │   │   │   ├── MissingInfoModal.tsx
+│   │   │   │   │   ├── MonEspacePage.tsx
+│   │   │   │   │   ├── MyCompaniesPage.tsx
+│   │   │   │   │   ├── PanelPlayground.tsx
+│   │   │   │   │   ├── StatusBadge.tsx
+│   │   │   │   │   ├── VerticalStepper.tsx
+│   │   │   │   │   ├── ViewToggle.tsx
+│   │   │   │   │   ├── WelcomeBanner.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── ArchivesSection.test.tsx
+│   │   │   │   │   │   ├── CompanyCard.test.tsx
+│   │   │   │   │   │   ├── CompanyCardList.test.tsx
+│   │   │   │   │   │   ├── CompanyDeclarationsPage.test.tsx
+│   │   │   │   │   │   ├── CompanyEditModal.test.tsx
+│   │   │   │   │   │   ├── CompanyInfoBanner.test.tsx
+│   │   │   │   │   │   ├── CompanyListHeader.test.tsx
+│   │   │   │   │   │   ├── CompanyTable.test.tsx
+│   │   │   │   │   │   ├── DeclarationLink.test.tsx
+│   │   │   │   │   │   ├── DeclarationProcessPanel.test.tsx
+│   │   │   │   │   │   ├── DeclarationStepLabel.test.ts
+│   │   │   │   │   │   ├── DeclarationsSection.test.tsx
+│   │   │   │   │   │   ├── MissingInfoModal.test.tsx
+│   │   │   │   │   │   ├── MonEspacePage.test.tsx
+│   │   │   │   │   │   ├── MyCompaniesPage.test.tsx
+│   │   │   │   │   │   ├── StatusBadge.test.tsx
+│   │   │   │   │   │   ├── VerticalStepper.test.tsx
+│   │   │   │   │   │   ├── ViewToggle.test.tsx
+│   │   │   │   │   │   ├── WelcomeBanner.test.tsx
+│   │   │   │   │   │   ├── buildDeclarationList.test.ts
+│   │   │   │   │   │   ├── declarationProcessState.test.ts
+│   │   │   │   │   │   ├── formatAddress.test.ts
+│   │   │   │   │   │   └── formatSiren.test.ts
+│   │   │   │   │   ├── buildDeclarationList.ts
+│   │   │   │   │   ├── declarationProcessState.ts
+│   │   │   │   │   ├── declarationStatus.ts
+│   │   │   │   │   ├── formatAddress.ts
+│   │   │   │   │   ├── formatSiren.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── noSanctionAttestation
+│   │   │   │   │   ├── NoSanctionPdfDocument.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── NoSanctionPdfDocument.test.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── pdfStyles.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── profile
+│   │   │   │   │   ├── ProfileModal.module.scss
+│   │   │   │   │   ├── ProfileModal.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── ProfileModal.test.tsx
+│   │   │   │   │   │   └── phone.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── phone.ts
+│   │   │   │   │   └── schemas.ts
+│   │   │   │   ├── referents
+│   │   │   │   │   ├── PublicReferentDetail.tsx
+│   │   │   │   │   ├── PublicReferentList.tsx
+│   │   │   │   │   ├── PublicReferentsPage.tsx
+│   │   │   │   │   ├── PublicReferentsSearchForm.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── PublicReferentDetail.test.tsx
+│   │   │   │   │   │   ├── PublicReferentList.test.tsx
+│   │   │   │   │   │   ├── PublicReferentsPage.test.tsx
+│   │   │   │   │   │   ├── PublicReferentsSearchForm.test.tsx
+│   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── ReferentsSearchForm.tsx
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── useReferentsSearchForm.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── shared
+│   │   │   │   │   ├── CompanySizeFilter.tsx
+│   │   │   │   │   ├── DsfrTable.tsx
+│   │   │   │   │   ├── FileUpload.module.scss
+│   │   │   │   │   ├── FileUpload.tsx
+│   │   │   │   │   ├── Pagination.tsx
+│   │   │   │   │   ├── PhoneField.tsx
+│   │   │   │   │   ├── SubmitModal.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
+│   │   │   │   │   │   ├── DsfrTable.test.tsx
+│   │   │   │   │   │   ├── Pagination.test.tsx
+│   │   │   │   │   │   ├── getDsfrModal.test.ts
+│   │   │   │   │   │   ├── uploadFile.test.ts
+│   │   │   │   │   │   ├── useFileUploadForm.test.tsx
+│   │   │   │   │   │   ├── useSortableTable.test.tsx
+│   │   │   │   │   │   └── useZodForm.test.ts
+│   │   │   │   │   ├── getDsfrModal.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parseSiren.ts
+│   │   │   │   │   ├── uploadConfig.ts
+│   │   │   │   │   ├── uploadFile.ts
+│   │   │   │   │   ├── useDsfrDialogOpen.ts
+│   │   │   │   │   ├── useDsfrModal.ts
+│   │   │   │   │   ├── useFileUploadForm.ts
+│   │   │   │   │   ├── useSortableTable.ts
+│   │   │   │   │   └── useZodForm.ts
+│   │   │   │   └── testError
+│   │   │   │       ├── ErrorTrigger.tsx
+│   │   │   │       └── index.ts
+│   │   │   ├── sentry.edge.config.ts
+│   │   │   ├── sentry.server.config.ts
+│   │   │   ├── server
+│   │   │   │   ├── api
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── adminProcedure.test.ts
+│   │   │   │   │   ├── root.ts
+│   │   │   │   │   ├── routers
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
+│   │   │   │   │   │   │   ├── adminDeclarations.getById.test.ts
+│   │   │   │   │   │   │   ├── adminDeclarations.search.test.ts
+│   │   │   │   │   │   │   ├── adminReferents.test.ts
+│   │   │   │   │   │   │   ├── adminSettings.test.ts
+│   │   │   │   │   │   │   ├── adminStats.test.ts
+│   │   │   │   │   │   │   ├── company.getWithDeclarations.test.ts
+│   │   │   │   │   │   │   ├── company.list.test.ts
+│   │   │   │   │   │   │   ├── company.test.ts
+│   │   │   │   │   │   │   ├── cseOpinion.finalize.test.ts
+│   │   │   │   │   │   │   ├── cseOpinion.test.ts
+│   │   │   │   │   │   │   ├── declaration.cancellation-flow.test.ts
+│   │   │   │   │   │   │   ├── declaration.cancellation.integration.test.ts
+│   │   │   │   │   │   │   ├── declaration.employeeCategories.test.ts
+│   │   │   │   │   │   │   ├── declaration.impersonation.test.ts
+│   │   │   │   │   │   │   ├── declaration.step4Loader.test.ts
+│   │   │   │   │   │   │   ├── declaration.test.ts
+│   │   │   │   │   │   │   ├── declarationHelpers.test.ts
+│   │   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   │   └── declarationTestHelpers.ts
+│   │   │   │   │   │   │   ├── jointEvaluation.test.ts
+│   │   │   │   │   │   │   └── publicReferents.test.ts
+│   │   │   │   │   │   ├── admin.ts
+│   │   │   │   │   │   ├── adminDeclarations.ts
+│   │   │   │   │   │   ├── adminReferents.ts
+│   │   │   │   │   │   ├── adminSettings.ts
+│   │   │   │   │   │   ├── adminStats.ts
+│   │   │   │   │   │   ├── company.ts
+│   │   │   │   │   │   ├── cseOpinion.ts
+│   │   │   │   │   │   ├── declaration.ts
+│   │   │   │   │   │   ├── declarationHelpers.ts
+│   │   │   │   │   │   ├── gipMds.ts
+│   │   │   │   │   │   ├── jointEvaluation.ts
+│   │   │   │   │   │   ├── mail.ts
+│   │   │   │   │   │   ├── profile.ts
+│   │   │   │   │   │   ├── publicReferents.ts
+│   │   │   │   │   │   └── statusHistoryHelpers.ts
+│   │   │   │   │   └── trpc.ts
+│   │   │   │   ├── audit
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── auditCleanupScript.integration.test.ts
+│   │   │   │   │   │   ├── cachedAuth.test.ts
+│   │   │   │   │   │   ├── log.test.ts
+│   │   │   │   │   │   ├── requestContext.test.ts
+│   │   │   │   │   │   ├── trpcMiddleware.test.ts
+│   │   │   │   │   │   └── withAuditedRoute.test.ts
+│   │   │   │   │   ├── cachedAuth.ts
+│   │   │   │   │   ├── log.ts
+│   │   │   │   │   ├── requestContext.ts
+│   │   │   │   │   ├── trpcMiddleware.ts
+│   │   │   │   │   └── withAuditedRoute.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── companyAccess.test.ts
+│   │   │   │   │   │   ├── config.test.ts
+│   │   │   │   │   │   ├── impersonation.test.ts
+│   │   │   │   │   │   ├── logout-route.test.ts
+│   │   │   │   │   │   ├── parseAdminEmails.test.ts
+│   │   │   │   │   │   └── proconnect-logout.test.ts
+│   │   │   │   │   ├── companyAccess.ts
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parseAdminEmails.ts
+│   │   │   │   │   └── proconnect-logout.ts
+│   │   │   │   ├── db
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── getGlobalSettings.test.ts
+│   │   │   │   │   │   └── schema-comments.test.ts
+│   │   │   │   │   ├── auditSchema.ts
+│   │   │   │   │   ├── getCampaignDeadlines.ts
+│   │   │   │   │   ├── getGlobalSettings.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schema-comments.ts
+│   │   │   │   │   └── schema.ts
+│   │   │   │   ├── rules
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── consistency.test.ts
+│   │   │   │   │   │   ├── matrix.v2027.1.test.ts
+│   │   │   │   │   │   └── schema.test.ts
+│   │   │   │   │   ├── engine.ts
+│   │   │   │   │   ├── schema.ts
+│   │   │   │   │   └── v2027.1.json
+│   │   │   │   └── services
+│   │   │   │       ├── __tests__
+│   │   │   │       │   ├── clamav.test.ts
+│   │   │   │       │   ├── fileStreaming.test.ts
+│   │   │   │       │   ├── fileUpload.test.ts
+│   │   │   │       │   ├── fileValidation.test.ts
+│   │   │   │       │   ├── gipMds.test.ts
+│   │   │   │       │   ├── s3.test.ts
+│   │   │   │       │   ├── suit.test.ts
+│   │   │   │       │   ├── uploadPipeline.test.ts
+│   │   │   │       │   └── weez.test.ts
+│   │   │   │       ├── clamav.ts
+│   │   │   │       ├── fileStreaming.ts
+│   │   │   │       ├── fileUpload.ts
+│   │   │   │       ├── fileValidation.ts
+│   │   │   │       ├── gatewaySource.ts
+│   │   │   │       ├── gipMds.ts
+│   │   │   │       ├── s3.ts
+│   │   │   │       ├── suit.ts
+│   │   │   │       ├── uploadPipeline.ts
+│   │   │   │       └── weez.ts
+│   │   │   ├── test
+│   │   │   │   ├── impersonationMock.ts
+│   │   │   │   ├── integration-per-file-setup.ts
+│   │   │   │   ├── integration-setup.ts
+│   │   │   │   └── setup.ts
+│   │   │   └── trpc
+│   │   │       ├── query-client.ts
+│   │   │       ├── react.tsx
+│   │   │       └── server.ts
+│   │   ├── tsconfig.json
+│   │   ├── vitest.config.ts
+│   │   └── vitest.integration.config.ts
+│   └── notifications
+│       ├── README.md
 │       ├── package.json
-│       ├── playwright.config.ts
-│       ├── playwright.rgaa.config.ts
-│       ├── public
-│       │   └── assets
-│       │       ├── declaration-remuneration
-│       │       │   └── cloud-check.svg
-│       │       └── images
-│       │           ├── aide
-│       │           │   ├── indicateurs-remuneration.png
-│       │           │   ├── indicateurs-representation.png
-│       │           │   └── nouveau-site.png
-│       │           ├── home
-│       │           │   ├── help-illustration.svg
-│       │           │   └── search-illustration.svg
-│       │           ├── login-illustration.svg
-│       │           └── proconnect-logo.svg
-│       ├── scripts
-│       │   ├── audit-cleanup.mjs
-│       │   ├── copy-dsfr.mjs
-│       │   ├── copy-swagger-ui.mjs
-│       │   ├── entrypoint.sh
-│       │   ├── fetch-large-companies.ts
-│       │   ├── generate-edge-case-gip-data.ts
-│       │   ├── generate-mock-gip-data.ts
-│       │   ├── migrate.mjs
-│       │   └── post-process-schema-wiki.ts
 │       ├── src
 │       │   ├── __tests__
-│       │   │   └── middleware.test.ts
-│       │   ├── app
-│       │   │   ├── admin
-│       │   │   │   ├── declarations
-│       │   │   │   │   ├── [declarationId]
-│       │   │   │   │   │   └── page.tsx
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── impersonate
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── layout.tsx
-│       │   │   │   ├── liste-referents
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── page.tsx
-│       │   │   │   ├── parametres
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── stats
-│       │   │   │       └── campagne
-│       │   │   │           └── page.tsx
-│       │   │   ├── aide
-│       │   │   │   ├── nous-contacter
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── page.tsx
-│       │   │   ├── api
-│       │   │   │   ├── auth
-│       │   │   │   │   ├── [...nextauth]
-│       │   │   │   │   │   └── route.ts
-│       │   │   │   │   └── logout
-│       │   │   │   │       ├── callback
-│       │   │   │   │       │   └── route.ts
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── declaration-pdf
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── export
-│       │   │   │   │   ├── download
-│       │   │   │   │   │   └── route.ts
-│       │   │   │   │   └── generate
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── gip-mds
-│       │   │   │   │   ├── import
-│       │   │   │   │   │   └── route.ts
-│       │   │   │   │   └── mock
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── healthz
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── no-sanction-pdf
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── route.test.ts
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── prefill-pdf
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── public
-│       │   │   │   │   └── referents-egalite-professionnelle
-│       │   │   │   │       ├── __tests__
-│       │   │   │   │       │   └── route.test.ts
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── test-sentry
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── transmitted-pdf
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── trpc
-│       │   │   │   │   └── [trpc]
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── upload
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── route.test.ts
-│       │   │   │   │   └── route.ts
-│       │   │   │   └── v1
-│       │   │   │       ├── docs
-│       │   │   │       │   └── route.ts
-│       │   │   │       ├── export
-│       │   │   │       │   └── declarations
-│       │   │   │       │       └── route.ts
-│       │   │   │       ├── files
-│       │   │   │       │   ├── [fileId]
-│       │   │   │       │   │   └── route.ts
-│       │   │   │       │   └── route.ts
-│       │   │   │       └── openapi.json
-│       │   │   │           └── route.ts
-│       │   │   ├── avis-cse
-│       │   │   │   ├── confirmation
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── etape
-│       │   │   │   │   └── [step]
-│       │   │   │   │       └── page.tsx
-│       │   │   │   ├── layout.tsx
-│       │   │   │   └── page.tsx
-│       │   │   ├── declaration-accessibilite
-│       │   │   │   └── page.tsx
-│       │   │   ├── declaration-remuneration
-│       │   │   │   ├── (with-banner)
-│       │   │   │   │   ├── etape
-│       │   │   │   │   │   └── [step]
-│       │   │   │   │   │       └── page.tsx
-│       │   │   │   │   ├── layout.tsx
-│       │   │   │   │   ├── page.tsx
-│       │   │   │   │   └── parcours-conformite
-│       │   │   │   │       ├── confirmation
-│       │   │   │   │       │   └── page.tsx
-│       │   │   │   │       ├── etape
-│       │   │   │   │       │   └── [step]
-│       │   │   │   │       │       └── page.tsx
-│       │   │   │   │       ├── evaluation-conjointe
-│       │   │   │   │       │   └── page.tsx
-│       │   │   │   │       └── page.tsx
-│       │   │   │   ├── layout.tsx
-│       │   │   │   └── recapitulatif
-│       │   │   │       └── page.tsx
-│       │   │   ├── donnees-personnelles
-│       │   │   │   └── page.tsx
-│       │   │   ├── error.tsx
-│       │   │   ├── faq
-│       │   │   │   └── page.tsx
-│       │   │   ├── gestion-des-cookies
-│       │   │   │   └── page.tsx
-│       │   │   ├── global-error.tsx
-│       │   │   ├── layout.tsx
-│       │   │   ├── login
-│       │   │   │   └── page.tsx
-│       │   │   ├── maintenance
-│       │   │   │   └── page.tsx
-│       │   │   ├── mentions-legales
-│       │   │   │   └── page.tsx
-│       │   │   ├── mon-espace
-│       │   │   │   ├── mes-entreprises
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── page.tsx
-│       │   │   ├── not-found.tsx
-│       │   │   ├── page.tsx
-│       │   │   ├── plan-du-site
-│       │   │   │   └── page.tsx
-│       │   │   ├── referents
-│       │   │   │   ├── [id]
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── page.tsx
-│       │   │   ├── robots.ts
-│       │   │   ├── sitemap.ts
-│       │   │   ├── test-error
-│       │   │   │   └── page.tsx
-│       │   │   └── test-panel
-│       │   │       └── page.tsx
-│       │   ├── e2e
-│       │   │   ├── admin-declarations.e2e.ts
-│       │   │   ├── admin-impersonation-read-only.e2e.ts
-│       │   │   ├── admin-referents.e2e.ts
-│       │   │   ├── admin-stats-campagne.e2e.ts
-│       │   │   ├── admin.e2e.ts
-│       │   │   ├── auth.setup.ts
-│       │   │   ├── campaign-deadlines-gating.e2e.ts
-│       │   │   ├── compliance.e2e.ts
-│       │   │   ├── constants.ts
-│       │   │   ├── declaration-cancellation.e2e.ts
-│       │   │   ├── declaration-process-panel.e2e.ts
-│       │   │   ├── declaration.e2e.ts
-│       │   │   ├── error-pages.e2e.ts
-│       │   │   ├── fileUpload.e2e.ts
-│       │   │   ├── fixtures
-│       │   │   │   └── dummy.pdf
-│       │   │   ├── global-setup.ts
-│       │   │   ├── helpers
-│       │   │   │   ├── axe-scan.ts
-│       │   │   │   ├── compliance-flows.ts
-│       │   │   │   ├── db-campaign.ts
-│       │   │   │   ├── db.ts
-│       │   │   │   ├── declaration-flows.ts
-│       │   │   │   ├── dsfr.ts
-│       │   │   │   └── login.ts
-│       │   │   ├── home.e2e.ts
-│       │   │   ├── login.e2e.ts
-│       │   │   ├── logout.e2e.ts
-│       │   │   ├── missing-info-modal.e2e.ts
-│       │   │   ├── previous-year-categories.e2e.ts
-│       │   │   ├── public-referents.e2e.ts
-│       │   │   ├── recapitulatif.e2e.ts
-│       │   │   └── rgaa-audit.spec.ts
-│       │   ├── env.js
-│       │   ├── instrumentation-client.ts
-│       │   ├── instrumentation.ts
-│       │   ├── middleware.ts
-│       │   ├── modules
-│       │   │   ├── admin
-│       │   │   │   ├── AdminHomePage.tsx
-│       │   │   │   ├── AdminNavigation.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── AdminHomePage.test.tsx
-│       │   │   │   │   ├── AdminLayout.test.tsx
-│       │   │   │   │   ├── AdminNavigation.test.tsx
-│       │   │   │   │   ├── AdminPage.test.tsx
-│       │   │   │   │   └── schemas.test.ts
-│       │   │   │   ├── declarations
-│       │   │   │   │   ├── AdminDeclarationDetailPage.tsx
-│       │   │   │   │   ├── AdminDeclarationsPage.tsx
-│       │   │   │   │   ├── CancelDeclarationButton.tsx
-│       │   │   │   │   ├── DeclarationTable.tsx
-│       │   │   │   │   ├── DetailSections.tsx
-│       │   │   │   │   ├── SearchForm.tsx
-│       │   │   │   │   ├── SiblingDeclarationsSection.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── AdminDeclarationDetailPage.test.tsx
-│       │   │   │   │   │   ├── AdminDeclarationsPage.test.tsx
-│       │   │   │   │   │   ├── CancelDeclarationButton.test.tsx
-│       │   │   │   │   │   ├── DeclarationTable.test.tsx
-│       │   │   │   │   │   ├── DetailSections.test.tsx
-│       │   │   │   │   │   ├── SearchForm.test.tsx
-│       │   │   │   │   │   ├── SiblingDeclarationsSection.test.tsx
-│       │   │   │   │   │   ├── constants.test.ts
-│       │   │   │   │   │   └── schemas.test.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── schemas.ts
-│       │   │   │   │   ├── shared
-│       │   │   │   │   │   └── constants.ts
-│       │   │   │   │   └── types.ts
-│       │   │   │   ├── impersonate
-│       │   │   │   │   ├── CompanyPreviewCard.tsx
-│       │   │   │   │   ├── ImpersonateForm.tsx
-│       │   │   │   │   ├── ImpersonatePage.tsx
-│       │   │   │   │   └── __tests__
-│       │   │   │   │       ├── CompanyPreviewCard.test.tsx
-│       │   │   │   │       ├── ImpersonateForm.test.tsx
-│       │   │   │   │       └── ImpersonatePage.test.tsx
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── referents
-│       │   │   │   │   ├── AdminReferentsPage.tsx
-│       │   │   │   │   ├── DeleteConfirmationModal.tsx
-│       │   │   │   │   ├── ImportReferentsModal.tsx
-│       │   │   │   │   ├── ReferentFormFields.tsx
-│       │   │   │   │   ├── ReferentFormModal.tsx
-│       │   │   │   │   ├── ReferentTable.tsx
-│       │   │   │   │   ├── SearchForm.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── AdminReferentsPage.test.tsx
-│       │   │   │   │   │   ├── DeleteConfirmationModal.test.tsx
-│       │   │   │   │   │   ├── ImportReferentsModal.test.tsx
-│       │   │   │   │   │   ├── ReferentTable.test.tsx
-│       │   │   │   │   │   ├── SearchForm.test.tsx
-│       │   │   │   │   │   ├── constants.test.ts
-│       │   │   │   │   │   └── schemas.test.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── schemas.ts
-│       │   │   │   │   ├── shared
-│       │   │   │   │   │   └── constants.ts
-│       │   │   │   │   └── types.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── settings
-│       │   │   │   │   ├── AdminSettingsPage.tsx
-│       │   │   │   │   ├── CampaignDeadlinesForm.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── AdminSettingsPage.test.tsx
-│       │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
-│       │   │   │   │   │   └── schemas.test.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   └── schemas.ts
-│       │   │   │   └── stats
-│       │   │   │       ├── CampaignProgressionChart.module.scss
-│       │   │   │       ├── CampaignProgressionChart.tsx
-│       │   │   │       ├── CampaignProgressionTable.tsx
-│       │   │   │       ├── CampaignStatsPage.tsx
-│       │   │   │       ├── YearsFilter.tsx
-│       │   │   │       ├── __tests__
-│       │   │   │       │   ├── CampaignProgressionTable.test.tsx
-│       │   │   │       │   └── YearsFilter.test.tsx
-│       │   │   │       ├── index.ts
-│       │   │   │       ├── schemas.ts
-│       │   │   │       └── types.ts
-│       │   │   ├── aide
-│       │   │   │   ├── AideCallout.tsx
-│       │   │   │   ├── AideIllustration.tsx
-│       │   │   │   ├── AideLayout.module.scss
-│       │   │   │   ├── AidePage.tsx
-│       │   │   │   ├── AideResourceCards.module.scss
-│       │   │   │   ├── AideResourceCards.tsx
-│       │   │   │   ├── AideTextesReference.tsx
-│       │   │   │   ├── ContactPage.tsx
-│       │   │   │   ├── CopyEmailButton.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── AidePage.test.tsx
-│       │   │   │   │   └── ContactPage.test.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── analytics
-│       │   │   │   ├── MatomoAnalytics.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── audit
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── actionKeys.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   ├── actionKeys.ts
-│       │   │   │   │   └── constants.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── auth
-│       │   │   │   ├── ReadOnlyTooltip.tsx
-│       │   │   │   ├── SessionProviderWrapper.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── SessionProviderWrapper.test.tsx
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── useIsImpersonating.ts
-│       │   │   │   └── useReadOnlyGuard.tsx
-│       │   │   ├── cseOpinion
-│       │   │   │   ├── ConfirmationPage.module.scss
-│       │   │   │   ├── ConfirmationPage.tsx
-│       │   │   │   ├── CseOpinionLayout.module.scss
-│       │   │   │   ├── CseOpinionLayout.tsx
-│       │   │   │   ├── Step1Opinions.module.scss
-│       │   │   │   ├── Step1Opinions.tsx
-│       │   │   │   ├── Step2Upload.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── AccuracyOpinionCard.test.tsx
-│       │   │   │   │   ├── ConfirmationPage.test.tsx
-│       │   │   │   │   ├── GapConsultationCard.test.tsx
-│       │   │   │   │   ├── OpinionSummaryBox.test.tsx
-│       │   │   │   │   ├── Step1Opinions.test.tsx
-│       │   │   │   │   ├── Step2Upload.test.tsx
-│       │   │   │   │   ├── SubmitConfirmationModal.test.tsx
-│       │   │   │   │   ├── confirmationHelpers.test.ts
-│       │   │   │   │   └── mapOpinionsFromDb.test.ts
-│       │   │   │   ├── components
-│       │   │   │   │   ├── AccuracyOpinionCard.tsx
-│       │   │   │   │   ├── CseStepIndicator.tsx
-│       │   │   │   │   ├── GapConsultationCard.tsx
-│       │   │   │   │   ├── OpinionCard.module.scss
-│       │   │   │   │   ├── OpinionSummaryBox.module.scss
-│       │   │   │   │   ├── OpinionSummaryBox.tsx
-│       │   │   │   │   ├── SubmissionBanner.module.scss
-│       │   │   │   │   ├── SubmissionBanner.tsx
-│       │   │   │   │   └── SubmitConfirmationModal.tsx
-│       │   │   │   ├── confirmationHelpers.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── mapOpinionsFromDb.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   └── formActions.module.scss
-│       │   │   │   └── types.ts
-│       │   │   ├── declaration-remuneration
-│       │   │   │   ├── DeclarationLayout.tsx
-│       │   │   │   ├── MissingSiret.tsx
-│       │   │   │   ├── StepPageClient.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── computeIndicatorPercentages.test.ts
-│       │   │   │   │   └── schemas.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── recapitulatif
-│       │   │   │   │   ├── CategoryRecapTable.module.scss
-│       │   │   │   │   ├── CategoryRecapTable.tsx
-│       │   │   │   │   ├── IndicatorTables.module.scss
-│       │   │   │   │   ├── IndicatorTables.tsx
-│       │   │   │   │   ├── RecapitulatifPage.module.scss
-│       │   │   │   │   ├── RecapitulatifPage.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── RecapitulatifPage.test.tsx
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   ├── CompanyBanner.module.scss
-│       │   │   │   │   ├── CompanyBanner.tsx
-│       │   │   │   │   ├── ComplianceCompletionEffect.tsx
-│       │   │   │   │   ├── DataTable.tsx
-│       │   │   │   │   ├── DefinitionAccordion.tsx
-│       │   │   │   │   ├── DevFillButton.tsx
-│       │   │   │   │   ├── EditDialog.module.scss
-│       │   │   │   │   ├── FormActions.module.scss
-│       │   │   │   │   ├── FormActions.tsx
-│       │   │   │   │   ├── FormErrors.tsx
-│       │   │   │   │   ├── GapInterpretationCallout.tsx
-│       │   │   │   │   ├── InterpretationCallout.module.scss
-│       │   │   │   │   ├── NextStepsBox.module.scss
-│       │   │   │   │   ├── NextStepsBox.tsx
-│       │   │   │   │   ├── PayGapTable.module.scss
-│       │   │   │   │   ├── PayGapTable.tsx
-│       │   │   │   │   ├── PrefillResetWarning.tsx
-│       │   │   │   │   ├── PrefillSource.tsx
-│       │   │   │   │   ├── SavedIndicator.module.scss
-│       │   │   │   │   ├── SavedIndicator.tsx
-│       │   │   │   │   ├── StepIndicator.tsx
-│       │   │   │   │   ├── StepTitleRow.tsx
-│       │   │   │   │   ├── SubmitDeclarationModal.tsx
-│       │   │   │   │   ├── TooltipButton.module.scss
-│       │   │   │   │   ├── TooltipButton.tsx
-│       │   │   │   │   ├── UpdateCseModal.module.scss
-│       │   │   │   │   ├── UpdateCseModal.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── CompanyBanner.test.tsx
-│       │   │   │   │   │   ├── ComplianceCompletionEffect.test.tsx
-│       │   │   │   │   │   ├── DataTable.test.tsx
-│       │   │   │   │   │   ├── DevFillButton.test.tsx
-│       │   │   │   │   │   ├── FormActions.test.tsx
-│       │   │   │   │   │   ├── GapInterpretationCallout.test.tsx
-│       │   │   │   │   │   ├── PrefillResetWarning.test.tsx
-│       │   │   │   │   │   ├── PrefillSource.test.tsx
-│       │   │   │   │   │   ├── StepIndicator.test.tsx
-│       │   │   │   │   │   ├── complianceNavigation.test.ts
-│       │   │   │   │   │   ├── devFillData.test.ts
-│       │   │   │   │   │   ├── gapBadge.test.ts
-│       │   │   │   │   │   ├── gipMdsMapping.test.ts
-│       │   │   │   │   │   ├── gipMdsMappingCsv.test.ts
-│       │   │   │   │   │   └── useComplianceCompletion.test.ts
-│       │   │   │   │   ├── common.module.scss
-│       │   │   │   │   ├── complianceNavigation.ts
-│       │   │   │   │   ├── computeIndicatorPercentages.ts
-│       │   │   │   │   ├── constants.ts
-│       │   │   │   │   ├── devFillData.ts
-│       │   │   │   │   ├── draft
-│       │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   ├── computeDraftDiff.test.ts
-│       │   │   │   │   │   │   ├── draftStorage.test.ts
-│       │   │   │   │   │   │   └── useDeclarationDraft.test.tsx
-│       │   │   │   │   │   ├── computeDraftDiff.ts
-│       │   │   │   │   │   ├── draftSchema.ts
-│       │   │   │   │   │   ├── draftStorage.ts
-│       │   │   │   │   │   └── useDeclarationDraft.ts
-│       │   │   │   │   ├── gapBadge.module.scss
-│       │   │   │   │   ├── gapBadge.ts
-│       │   │   │   │   ├── gipMdsMapping.ts
-│       │   │   │   │   ├── gipToStepData.ts
-│       │   │   │   │   ├── indicatorRowMapping.ts
-│       │   │   │   │   └── useComplianceCompletion.ts
-│       │   │   │   ├── steps
-│       │   │   │   │   ├── ComplianceConfirmation.tsx
-│       │   │   │   │   ├── CompliancePathChoice.tsx
-│       │   │   │   │   ├── CompliancePathPage.tsx
-│       │   │   │   │   ├── Step1Workforce.module.scss
-│       │   │   │   │   ├── Step1Workforce.tsx
-│       │   │   │   │   ├── Step2PayGap.tsx
-│       │   │   │   │   ├── Step3VariablePay.module.scss
-│       │   │   │   │   ├── Step3VariablePay.tsx
-│       │   │   │   │   ├── Step4QuartileDistribution.module.scss
-│       │   │   │   │   ├── Step4QuartileDistribution.tsx
-│       │   │   │   │   ├── Step5EmployeeCategories.module.scss
-│       │   │   │   │   ├── Step5EmployeeCategories.tsx
-│       │   │   │   │   ├── Step6Review.module.scss
-│       │   │   │   │   ├── Step6Review.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── ComplianceConfirmation.test.tsx
-│       │   │   │   │   │   ├── CompliancePathChoice.test.tsx
-│       │   │   │   │   │   ├── CompliancePathPage.test.ts
-│       │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
-│       │   │   │   │   │   ├── Step1DevFill.test.tsx
-│       │   │   │   │   │   ├── Step1Workforce.test.tsx
-│       │   │   │   │   │   ├── Step2DevFill.test.tsx
-│       │   │   │   │   │   ├── Step2PayGap.test.tsx
-│       │   │   │   │   │   ├── Step3DevFill.test.tsx
-│       │   │   │   │   │   ├── Step3VariablePay.test.tsx
-│       │   │   │   │   │   ├── Step4DevFill.test.tsx
-│       │   │   │   │   │   ├── Step4QuartileDistribution.submit.test.tsx
-│       │   │   │   │   │   ├── Step4QuartileDistribution.test.tsx
-│       │   │   │   │   │   ├── Step4QuartileDistributionGip.test.tsx
-│       │   │   │   │   │   ├── Step5DevFill.test.tsx
-│       │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
-│       │   │   │   │   │   └── Step6Review.test.tsx
-│       │   │   │   │   ├── compliancePath
-│       │   │   │   │   │   ├── CompliancePathOption.module.scss
-│       │   │   │   │   │   ├── CompliancePathOption.tsx
-│       │   │   │   │   │   ├── CompliancePathOptions.tsx
-│       │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
-│       │   │   │   │   │   └── constants.ts
-│       │   │   │   │   ├── jointEvaluation
-│       │   │   │   │   │   ├── JointEvaluationForm.tsx
-│       │   │   │   │   │   ├── JointEvaluationPage.tsx
-│       │   │   │   │   │   ├── JointEvaluationSubmitModal.tsx
-│       │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   ├── JointEvaluationForm.test.tsx
-│       │   │   │   │   │   │   └── JointEvaluationPage.test.tsx
-│       │   │   │   │   │   └── index.ts
-│       │   │   │   │   ├── secondDeclaration
-│       │   │   │   │   │   ├── ReferencePeriodPicker.tsx
-│       │   │   │   │   │   ├── SecondDeclarationStep1Info.tsx
-│       │   │   │   │   │   ├── SecondDeclarationStep2Form.tsx
-│       │   │   │   │   │   ├── SecondDeclarationStep3Review.tsx
-│       │   │   │   │   │   ├── SecondDeclarationStepIndicator.tsx
-│       │   │   │   │   │   ├── SecondDeclarationStepPage.tsx
-│       │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   ├── SecondDeclarationStep1Info.test.tsx
-│       │   │   │   │   │   │   ├── SecondDeclarationStep2Form.test.tsx
-│       │   │   │   │   │   │   └── SecondDeclarationStep3Review.test.tsx
-│       │   │   │   │   │   ├── constants.ts
-│       │   │   │   │   │   └── index.ts
-│       │   │   │   │   ├── step3
-│       │   │   │   │   │   └── index.ts
-│       │   │   │   │   ├── step4
-│       │   │   │   │   │   ├── QuartileInterpretationCallout.tsx
-│       │   │   │   │   │   ├── QuartileTable.tsx
-│       │   │   │   │   │   ├── QuartileTableRow.tsx
-│       │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   ├── quartileErrors.ts
-│       │   │   │   │   │   └── quartileFormHelpers.ts
-│       │   │   │   │   ├── step5
-│       │   │   │   │   │   ├── CategoryDataTable.tsx
-│       │   │   │   │   │   ├── CategoryForm.tsx
-│       │   │   │   │   │   ├── CategoryImportExport.tsx
-│       │   │   │   │   │   ├── DeleteCategoryDialog.tsx
-│       │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   └── categoryFileHandler.test.ts
-│       │   │   │   │   │   ├── categoryFileHandler.ts
-│       │   │   │   │   │   ├── categorySerializer.ts
-│       │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   └── sources.ts
-│       │   │   │   │   └── step6
-│       │   │   │   │       ├── CardTitle.tsx
-│       │   │   │   │       ├── GapBadge.tsx
-│       │   │   │   │       ├── GapColumn.tsx
-│       │   │   │   │       ├── GapSideBySide.tsx
-│       │   │   │   │       ├── IndicatorSections.tsx
-│       │   │   │   │       ├── QuartileColumn.tsx
-│       │   │   │   │       ├── index.ts
-│       │   │   │   │       └── parseStep5Categories.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── declarationPdf
-│       │   │   │   ├── DeclarationPdfDocument.tsx
-│       │   │   │   ├── DownloadDeclarationPdfButton.tsx
-│       │   │   │   ├── PrefillPdfDocument.tsx
-│       │   │   │   ├── TransmittedPdfDocument.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── DeclarationPdfDocument.test.tsx
-│       │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
-│       │   │   │   │   ├── TransmittedPdfDocument.test.tsx
-│       │   │   │   │   ├── buildPdfData.test.ts
-│       │   │   │   │   └── buildTransmittedPdfData.test.ts
-│       │   │   │   ├── buildPdfData.ts
-│       │   │   │   ├── buildTransmittedPdfData.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── pdfFonts.ts
-│       │   │   │   ├── pdfStyles.ts
-│       │   │   │   ├── sections
-│       │   │   │   │   ├── CategorySection.tsx
-│       │   │   │   │   ├── GapCell.tsx
-│       │   │   │   │   ├── PayGapTable.tsx
-│       │   │   │   │   ├── QuartileSection.tsx
-│       │   │   │   │   ├── VariablePaySection.tsx
-│       │   │   │   │   └── WorkforceSection.tsx
-│       │   │   │   └── types.ts
-│       │   │   ├── domain
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── campaign.test.ts
-│       │   │   │   │   ├── companySize.test.ts
-│       │   │   │   │   ├── declarationPrerequisites.test.ts
-│       │   │   │   │   ├── declarationStatus.test.ts
-│       │   │   │   │   ├── format.test.ts
-│       │   │   │   │   ├── formatLongDate.test.ts
-│       │   │   │   │   ├── gap.test.ts
-│       │   │   │   │   ├── number.test.ts
-│       │   │   │   │   ├── quartile.test.ts
-│       │   │   │   │   ├── regions.test.ts
-│       │   │   │   │   └── siren.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   ├── campaign.ts
-│       │   │   │   │   ├── companySize.ts
-│       │   │   │   │   ├── constants.ts
-│       │   │   │   │   ├── declarationPrerequisites.ts
-│       │   │   │   │   ├── declarationStatus.ts
-│       │   │   │   │   ├── format.ts
-│       │   │   │   │   ├── gap.ts
-│       │   │   │   │   ├── number.ts
-│       │   │   │   │   ├── quartile.ts
-│       │   │   │   │   ├── regions.ts
-│       │   │   │   │   └── siren.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── error
-│       │   │   │   ├── ErrorArtwork.tsx
-│       │   │   │   ├── ErrorLayout.tsx
-│       │   │   │   ├── ErrorPage.tsx
-│       │   │   │   ├── MaintenancePage.tsx
-│       │   │   │   ├── NotFoundPage.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── ErrorArtwork.test.tsx
-│       │   │   │   │   ├── ErrorLayout.test.tsx
-│       │   │   │   │   ├── ErrorPage.test.tsx
-│       │   │   │   │   ├── MaintenancePage.test.tsx
-│       │   │   │   │   └── NotFoundPage.test.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── export
-│       │   │   │   ├── SwaggerUI.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── SwaggerUI.test.tsx
-│       │   │   │   │   ├── buildExportKey.test.ts
-│       │   │   │   │   ├── buildExportRows.test.ts
-│       │   │   │   │   ├── exportApi.integration.test.ts
-│       │   │   │   │   ├── exportApi.test.ts
-│       │   │   │   │   ├── fetchDeclarations.test.ts
-│       │   │   │   │   ├── filesApi.test.ts
-│       │   │   │   │   ├── generateXlsx.test.ts
-│       │   │   │   │   ├── generateYearlyExport.test.ts
-│       │   │   │   │   ├── mapIndicators.test.ts
-│       │   │   │   │   ├── openapi.test.ts
-│       │   │   │   │   ├── openapiRoute.test.ts
-│       │   │   │   │   ├── queries.test.ts
-│       │   │   │   │   └── schemas.test.ts
-│       │   │   │   ├── buildExportRows.ts
-│       │   │   │   ├── downloadExport.ts
-│       │   │   │   ├── fetchDeclarations.ts
-│       │   │   │   ├── generateXlsx.ts
-│       │   │   │   ├── generateYearlyExport.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── mapIndicators.ts
-│       │   │   │   ├── openapi.ts
-│       │   │   │   ├── queries.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   ├── apiLabels.ts
-│       │   │   │   │   └── constants.ts
-│       │   │   │   ├── swagger-ui.d.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── faq
-│       │   │   │   ├── FaqAccordionGroup.tsx
-│       │   │   │   ├── FaqContent.module.scss
-│       │   │   │   ├── FaqContent.tsx
-│       │   │   │   ├── FaqPage.module.scss
-│       │   │   │   ├── FaqPage.tsx
-│       │   │   │   ├── FaqSummary.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── FaqPage.test.tsx
-│       │   │   │   ├── faqData.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── home
-│       │   │   │   ├── HomeHero.module.scss
-│       │   │   │   ├── HomeHero.tsx
-│       │   │   │   ├── HomeNotice.tsx
-│       │   │   │   ├── HomePage.module.scss
-│       │   │   │   ├── HomePage.tsx
-│       │   │   │   ├── HomePlaceholder.module.scss
-│       │   │   │   ├── HomePlaceholder.tsx
-│       │   │   │   ├── HomeSearch.module.scss
-│       │   │   │   ├── HomeSearch.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── HomeHero.test.tsx
-│       │   │   │   │   ├── HomeNotice.test.tsx
-│       │   │   │   │   ├── HomePage.test.tsx
-│       │   │   │   │   ├── HomePlaceholder.test.tsx
-│       │   │   │   │   └── HomeSearch.test.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── layout
-│       │   │   │   ├── Breadcrumb.tsx
-│       │   │   │   ├── Footer
-│       │   │   │   │   ├── FooterBody.tsx
-│       │   │   │   │   ├── FooterBottom.tsx
-│       │   │   │   │   ├── ThemeModal.tsx
-│       │   │   │   │   └── index.tsx
-│       │   │   │   ├── Header
-│       │   │   │   │   ├── HeaderBrand.tsx
-│       │   │   │   │   ├── HeaderQuickAccess.tsx
-│       │   │   │   │   ├── HeaderQuickAccessLinks.tsx
-│       │   │   │   │   ├── MobileMenu.tsx
-│       │   │   │   │   ├── MobileUserBlock.module.scss
-│       │   │   │   │   ├── MobileUserBlock.tsx
-│       │   │   │   │   ├── Navigation.tsx
-│       │   │   │   │   ├── UserAccountMenu.module.scss
-│       │   │   │   │   ├── UserAccountMenu.tsx
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── HeaderQuickAccessLinks.test.tsx
-│       │   │   │   │   │   ├── MobileMenu.test.tsx
-│       │   │   │   │   │   ├── MobileUserBlock.test.tsx
-│       │   │   │   │   │   └── UserAccountMenu.test.tsx
-│       │   │   │   │   └── index.tsx
-│       │   │   │   ├── ImpersonateBanner.tsx
-│       │   │   │   ├── PublicChrome.tsx
-│       │   │   │   ├── ResourceBanner.module.scss
-│       │   │   │   ├── ResourceBanner.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── Breadcrumb.test.tsx
-│       │   │   │   │   ├── ImpersonateBanner.test.tsx
-│       │   │   │   │   ├── PublicChrome.test.tsx
-│       │   │   │   │   └── ResourceBanner.test.tsx
-│       │   │   │   ├── index.ts
-│       │   │   │   └── shared
-│       │   │   │       ├── DsfrPictogram.tsx
-│       │   │   │       ├── NavLink.tsx
-│       │   │   │       ├── NewTabNotice.tsx
-│       │   │   │       ├── SkipLinks.tsx
-│       │   │   │       └── __tests__
-│       │   │   │           ├── NavLink.test.tsx
-│       │   │   │           ├── NewTabNotice.test.tsx
-│       │   │   │           └── SkipLinks.test.tsx
-│       │   │   ├── legal
-│       │   │   │   ├── AccessibilityPage
-│       │   │   │   │   ├── AccessibilityCompliance.tsx
-│       │   │   │   │   ├── AccessibilityContact.tsx
-│       │   │   │   │   ├── AccessibilityEstablishment.tsx
-│       │   │   │   │   └── index.tsx
-│       │   │   │   ├── CookiesPage.tsx
-│       │   │   │   ├── LegalNoticePage.tsx
-│       │   │   │   ├── PrivacyPolicyPage
-│       │   │   │   │   ├── PrivacyCookies.tsx
-│       │   │   │   │   ├── PrivacyOverview.tsx
-│       │   │   │   │   ├── PrivacyRightsAndData.tsx
-│       │   │   │   │   └── index.tsx
-│       │   │   │   ├── SitemapPage.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── robots.test.ts
-│       │   │   │   │   └── sitemap.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── robots.ts
-│       │   │   │   └── sitemap.ts
-│       │   │   ├── login
-│       │   │   │   ├── LoginAccordion.module.scss
-│       │   │   │   ├── LoginAccordion.tsx
-│       │   │   │   ├── LoginForm.module.scss
-│       │   │   │   ├── LoginForm.tsx
-│       │   │   │   ├── LoginPage.module.scss
-│       │   │   │   ├── LoginPage.tsx
-│       │   │   │   ├── ProConnectButton.module.scss
-│       │   │   │   ├── ProConnectButton.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── LoginAccordion.test.tsx
-│       │   │   │   │   ├── LoginForm.test.tsx
-│       │   │   │   │   ├── LoginPage.test.tsx
-│       │   │   │   │   └── ProConnectButton.test.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── mail
-│       │   │   │   ├── ResendReceiptButton.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── sendMail.test.ts
-│       │   │   │   │   └── templates.test.ts
-│       │   │   │   ├── buildReceiptAttachments.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── sendMail.ts
-│       │   │   │   ├── sendReceipt.ts
-│       │   │   │   ├── server.ts
-│       │   │   │   ├── templates
-│       │   │   │   │   ├── cseOpinionReceipt.ts
-│       │   │   │   │   ├── declarationReceipt.ts
-│       │   │   │   │   ├── secondDeclarationReceipt.ts
-│       │   │   │   │   └── shell.ts
-│       │   │   │   ├── transporter.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── my-space
-│       │   │   │   ├── ArchivesSection.module.scss
-│       │   │   │   ├── ArchivesSection.tsx
-│       │   │   │   ├── CompanyCard.tsx
-│       │   │   │   ├── CompanyCardList.tsx
-│       │   │   │   ├── CompanyDeclarationsPage.tsx
-│       │   │   │   ├── CompanyEditModal.module.scss
-│       │   │   │   ├── CompanyEditModal.tsx
-│       │   │   │   ├── CompanyInfoBanner.module.scss
-│       │   │   │   ├── CompanyInfoBanner.tsx
-│       │   │   │   ├── CompanyListHeader.tsx
-│       │   │   │   ├── CompanyTable.tsx
-│       │   │   │   ├── DeclarationLink.tsx
-│       │   │   │   ├── DeclarationProcessPanel.module.scss
-│       │   │   │   ├── DeclarationProcessPanel.tsx
-│       │   │   │   ├── DeclarationStepLabel.ts
-│       │   │   │   ├── DeclarationsSection.module.scss
-│       │   │   │   ├── DeclarationsSection.tsx
-│       │   │   │   ├── DocumentsPanel.tsx
-│       │   │   │   ├── MissingInfoModal.tsx
-│       │   │   │   ├── MonEspacePage.tsx
-│       │   │   │   ├── MyCompaniesPage.tsx
-│       │   │   │   ├── PanelPlayground.tsx
-│       │   │   │   ├── StatusBadge.tsx
-│       │   │   │   ├── VerticalStepper.tsx
-│       │   │   │   ├── ViewToggle.tsx
-│       │   │   │   ├── WelcomeBanner.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── ArchivesSection.test.tsx
-│       │   │   │   │   ├── CompanyCard.test.tsx
-│       │   │   │   │   ├── CompanyCardList.test.tsx
-│       │   │   │   │   ├── CompanyDeclarationsPage.test.tsx
-│       │   │   │   │   ├── CompanyEditModal.test.tsx
-│       │   │   │   │   ├── CompanyInfoBanner.test.tsx
-│       │   │   │   │   ├── CompanyListHeader.test.tsx
-│       │   │   │   │   ├── CompanyTable.test.tsx
-│       │   │   │   │   ├── DeclarationLink.test.tsx
-│       │   │   │   │   ├── DeclarationProcessPanel.test.tsx
-│       │   │   │   │   ├── DeclarationStepLabel.test.ts
-│       │   │   │   │   ├── DeclarationsSection.test.tsx
-│       │   │   │   │   ├── MissingInfoModal.test.tsx
-│       │   │   │   │   ├── MonEspacePage.test.tsx
-│       │   │   │   │   ├── MyCompaniesPage.test.tsx
-│       │   │   │   │   ├── StatusBadge.test.tsx
-│       │   │   │   │   ├── VerticalStepper.test.tsx
-│       │   │   │   │   ├── ViewToggle.test.tsx
-│       │   │   │   │   ├── WelcomeBanner.test.tsx
-│       │   │   │   │   ├── buildDeclarationList.test.ts
-│       │   │   │   │   ├── declarationProcessState.test.ts
-│       │   │   │   │   ├── formatAddress.test.ts
-│       │   │   │   │   └── formatSiren.test.ts
-│       │   │   │   ├── buildDeclarationList.ts
-│       │   │   │   ├── declarationProcessState.ts
-│       │   │   │   ├── declarationStatus.ts
-│       │   │   │   ├── formatAddress.ts
-│       │   │   │   ├── formatSiren.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── noSanctionAttestation
-│       │   │   │   ├── NoSanctionPdfDocument.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── NoSanctionPdfDocument.test.tsx
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── pdfStyles.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── profile
-│       │   │   │   ├── ProfileModal.module.scss
-│       │   │   │   ├── ProfileModal.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── ProfileModal.test.tsx
-│       │   │   │   │   └── phone.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── phone.ts
-│       │   │   │   └── schemas.ts
-│       │   │   ├── referents
-│       │   │   │   ├── PublicReferentDetail.tsx
-│       │   │   │   ├── PublicReferentList.tsx
-│       │   │   │   ├── PublicReferentsPage.tsx
-│       │   │   │   ├── PublicReferentsSearchForm.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── PublicReferentDetail.test.tsx
-│       │   │   │   │   ├── PublicReferentList.test.tsx
-│       │   │   │   │   ├── PublicReferentsPage.test.tsx
-│       │   │   │   │   ├── PublicReferentsSearchForm.test.tsx
-│       │   │   │   │   └── schemas.test.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── schemas.ts
-│       │   │   │   ├── shared
-│       │   │   │   │   ├── ReferentsSearchForm.tsx
-│       │   │   │   │   ├── constants.ts
-│       │   │   │   │   └── useReferentsSearchForm.ts
-│       │   │   │   └── types.ts
-│       │   │   ├── shared
-│       │   │   │   ├── CompanySizeFilter.tsx
-│       │   │   │   ├── DsfrTable.tsx
-│       │   │   │   ├── FileUpload.module.scss
-│       │   │   │   ├── FileUpload.tsx
-│       │   │   │   ├── Pagination.tsx
-│       │   │   │   ├── PhoneField.tsx
-│       │   │   │   ├── SubmitModal.tsx
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── CompanySizeFilter.test.tsx
-│       │   │   │   │   ├── DsfrTable.test.tsx
-│       │   │   │   │   ├── Pagination.test.tsx
-│       │   │   │   │   ├── getDsfrModal.test.ts
-│       │   │   │   │   ├── uploadFile.test.ts
-│       │   │   │   │   ├── useFileUploadForm.test.tsx
-│       │   │   │   │   ├── useSortableTable.test.tsx
-│       │   │   │   │   └── useZodForm.test.ts
-│       │   │   │   ├── getDsfrModal.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── parseSiren.ts
-│       │   │   │   ├── uploadConfig.ts
-│       │   │   │   ├── uploadFile.ts
-│       │   │   │   ├── useDsfrDialogOpen.ts
-│       │   │   │   ├── useDsfrModal.ts
-│       │   │   │   ├── useFileUploadForm.ts
-│       │   │   │   ├── useSortableTable.ts
-│       │   │   │   └── useZodForm.ts
-│       │   │   └── testError
-│       │   │       ├── ErrorTrigger.tsx
-│       │   │       └── index.ts
-│       │   ├── sentry.edge.config.ts
-│       │   ├── sentry.server.config.ts
-│       │   ├── server
-│       │   │   ├── api
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── adminProcedure.test.ts
-│       │   │   │   ├── root.ts
-│       │   │   │   ├── routers
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
-│       │   │   │   │   │   ├── adminDeclarations.getById.test.ts
-│       │   │   │   │   │   ├── adminDeclarations.search.test.ts
-│       │   │   │   │   │   ├── adminReferents.test.ts
-│       │   │   │   │   │   ├── adminSettings.test.ts
-│       │   │   │   │   │   ├── adminStats.test.ts
-│       │   │   │   │   │   ├── company.getWithDeclarations.test.ts
-│       │   │   │   │   │   ├── company.list.test.ts
-│       │   │   │   │   │   ├── company.test.ts
-│       │   │   │   │   │   ├── cseOpinion.finalize.test.ts
-│       │   │   │   │   │   ├── cseOpinion.test.ts
-│       │   │   │   │   │   ├── declaration.cancellation-flow.test.ts
-│       │   │   │   │   │   ├── declaration.cancellation.integration.test.ts
-│       │   │   │   │   │   ├── declaration.employeeCategories.test.ts
-│       │   │   │   │   │   ├── declaration.impersonation.test.ts
-│       │   │   │   │   │   ├── declaration.step4Loader.test.ts
-│       │   │   │   │   │   ├── declaration.test.ts
-│       │   │   │   │   │   ├── declarationHelpers.test.ts
-│       │   │   │   │   │   ├── helpers
-│       │   │   │   │   │   │   └── declarationTestHelpers.ts
-│       │   │   │   │   │   ├── jointEvaluation.test.ts
-│       │   │   │   │   │   └── publicReferents.test.ts
-│       │   │   │   │   ├── admin.ts
-│       │   │   │   │   ├── adminDeclarations.ts
-│       │   │   │   │   ├── adminReferents.ts
-│       │   │   │   │   ├── adminSettings.ts
-│       │   │   │   │   ├── adminStats.ts
-│       │   │   │   │   ├── company.ts
-│       │   │   │   │   ├── cseOpinion.ts
-│       │   │   │   │   ├── declaration.ts
-│       │   │   │   │   ├── declarationHelpers.ts
-│       │   │   │   │   ├── gipMds.ts
-│       │   │   │   │   ├── jointEvaluation.ts
-│       │   │   │   │   ├── mail.ts
-│       │   │   │   │   ├── profile.ts
-│       │   │   │   │   └── publicReferents.ts
-│       │   │   │   └── trpc.ts
-│       │   │   ├── audit
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── auditCleanupScript.integration.test.ts
-│       │   │   │   │   ├── cachedAuth.test.ts
-│       │   │   │   │   ├── log.test.ts
-│       │   │   │   │   ├── requestContext.test.ts
-│       │   │   │   │   ├── trpcMiddleware.test.ts
-│       │   │   │   │   └── withAuditedRoute.test.ts
-│       │   │   │   ├── cachedAuth.ts
-│       │   │   │   ├── log.ts
-│       │   │   │   ├── requestContext.ts
-│       │   │   │   ├── trpcMiddleware.ts
-│       │   │   │   └── withAuditedRoute.ts
-│       │   │   ├── auth
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── companyAccess.test.ts
-│       │   │   │   │   ├── config.test.ts
-│       │   │   │   │   ├── impersonation.test.ts
-│       │   │   │   │   ├── logout-route.test.ts
-│       │   │   │   │   ├── parseAdminEmails.test.ts
-│       │   │   │   │   └── proconnect-logout.test.ts
-│       │   │   │   ├── companyAccess.ts
-│       │   │   │   ├── config.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── parseAdminEmails.ts
-│       │   │   │   └── proconnect-logout.ts
-│       │   │   ├── db
-│       │   │   │   ├── __tests__
-│       │   │   │   │   ├── getGlobalSettings.test.ts
-│       │   │   │   │   └── schema-comments.test.ts
-│       │   │   │   ├── auditSchema.ts
-│       │   │   │   ├── getCampaignDeadlines.ts
-│       │   │   │   ├── getGlobalSettings.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── schema-comments.ts
-│       │   │   │   └── schema.ts
-│       │   │   └── services
-│       │   │       ├── __tests__
-│       │   │       │   ├── clamav.test.ts
-│       │   │       │   ├── fileStreaming.test.ts
-│       │   │       │   ├── fileUpload.test.ts
-│       │   │       │   ├── fileValidation.test.ts
-│       │   │       │   ├── gipMds.test.ts
-│       │   │       │   ├── s3.test.ts
-│       │   │       │   ├── suit.test.ts
-│       │   │       │   ├── uploadPipeline.test.ts
-│       │   │       │   └── weez.test.ts
-│       │   │       ├── clamav.ts
-│       │   │       ├── fileStreaming.ts
-│       │   │       ├── fileUpload.ts
-│       │   │       ├── fileValidation.ts
-│       │   │       ├── gatewaySource.ts
-│       │   │       ├── gipMds.ts
-│       │   │       ├── s3.ts
-│       │   │       ├── suit.ts
-│       │   │       ├── uploadPipeline.ts
-│       │   │       └── weez.ts
-│       │   ├── test
-│       │   │   ├── impersonationMock.ts
-│       │   │   ├── integration-per-file-setup.ts
-│       │   │   ├── integration-setup.ts
-│       │   │   └── setup.ts
-│       │   └── trpc
-│       │       ├── query-client.ts
-│       │       ├── react.tsx
-│       │       └── server.ts
+│       │   │   ├── publisher.test.ts
+│       │   │   └── queue.test.ts
+│       │   ├── db.ts
+│       │   ├── index.ts
+│       │   ├── mails
+│       │   │   ├── __tests__
+│       │   │   │   └── mails.test.ts
+│       │   │   ├── cseOpinionReceipt.ts
+│       │   │   ├── declarationConfirmation.ts
+│       │   │   ├── helpers.ts
+│       │   │   ├── index.ts
+│       │   │   ├── jointEvaluationSubmitted.ts
+│       │   │   ├── secondDeclarationConfirmation.ts
+│       │   │   ├── types.ts
+│       │   │   └── view
+│       │   │       ├── shell.ts
+│       │   │       └── tokens.ts
+│       │   ├── publisher.ts
+│       │   └── queue.ts
 │       ├── tsconfig.json
-│       ├── vitest.config.ts
-│       └── vitest.integration.config.ts
+│       └── vitest.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
@@ -1253,4 +1300,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-233 directories, 1022 files
+241 directories, 1061 files
