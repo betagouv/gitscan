@@ -1,34 +1,34 @@
-## Changelog : kube-image-keeper (30 derniers jours, au 7 mai 2026)
+## Changelog : kube-image-keeper (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Ce mois-ci, kube-image-keeper a bénéficié d'améliorations significatives en termes de documentation, de stabilité et de flexibilité. Les changements incluent une documentation plus complète des CRD, des corrections de bugs pour améliorer la fiabilité du mirroring et du routing des images, et la possibilité de configurer des plateformes cibles spécifiques lors du mirroring. Des améliorations de la CI/CD et des outils de linting ont également été apportées pour garantir la qualité du code.
+Cette version apporte des améliorations significatives à la flexibilité du mirroring d'images, notamment la possibilité de spécifier des plateformes cibles. La documentation a été largement revue et améliorée, avec des guides d'installation plus clairs et des informations actualisées. Plusieurs corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité du système, en particulier concernant le routage et le mirroring.
 
 ### Évolutions fonctionnelles
-- Possibilité de configurer une liste de plateformes cibles lors du mirroring d'images. [#586](https://github.com/SocialGouv/kube-image-keeper/issues/586)
+- Possibilité de configurer une liste de plateformes cibles lors du mirroring d'images [#586](https://github.com/SocialGouv/kube-image-keeper/issues/586).
 - Amélioration de la gestion des variables d'environnement complexes en utilisant `toYaml`.
-- Amélioration de la gestion des images alternatives, notamment en clarifiant la documentation et en corrigeant des limitations antérieures.
-- Correction du comportement de routing pour toujours privilégier l'image originale lorsque la politique de pull est définie sur `Always`, indépendamment des priorités.
-- Ajout de la possibilité de configurer l'ordre de priorité des routes.
-- Amélioration de la gestion des secrets utilisés pour l'authentification.
+- Amélioration de la documentation concernant l'installation et la configuration, notamment pour ISM (Image Stream Manager).
+- Ajout d'informations sur la migration depuis la version v1.
+- Ajout d'une table des matières à la documentation des CRD (Custom Resource Definitions).
 
 ### Évolutions techniques
-- Mise à jour de la version de Go à 1.26.2 et des dépendances.
-- Refonte de la documentation des CRD (Custom Resource Definitions) avec une table des matières et des informations détaillées sur chaque champ.
-- Amélioration de la CI/CD : ajout de tests, de vérifications de linting et de conformité aux conventions de commit.
-- Correction de problèmes de complexité cyclomatique dans le code.
-- Optimisation des goroutines et ajout de délais d'attente pour éviter les blocages.
-- Suppression de la génération du README du helm chart, désormais géré par la CI.
-- Amélioration de la gestion des conflits lors des opérations de finalisation dans l'ISM (Image Status Manager).
-- Suppression de la configuration par défaut dans le Helm chart, privilégiant la configuration via l'opérateur.
+- Mise à jour de la version de Go vers 1.26.2 et des dépendances.
 - Validation des expressions régulières utilisées dans les CRD `include/exclude`.
+- Ajout d'une option `routing.HonorPrioritiesOnAlwaysImagePullPolicy` pour contrôler le comportement du routage.
+- Limitation du nombre de goroutines et ajout d'un timeout dans `clearStaleMirrorStatus` pour améliorer la performance et la stabilité.
+- Amélioration de la gestion des conflits lors des opérations de finalisation ISM.
+- Correction de l'analyse des images conteneur dans le webhook.
+- Suppression du bloc de configuration par défaut dans le Helm chart, privilégiant les valeurs par défaut de l'opérateur.
+- Amélioration des tests, ajout de tests de non-régression.
+- Utilisation d'un parser `conventionalcommits` pour la validation des messages de commit.
+- Suppression de la génération du README dans le Helm chart, car il est généré par le CI.
+- Correction de l'utilisation de l'image originale dans ISM lors de la réécriture des pods.
+- Suppression des secrets `NotFound` de la liste des secrets de pull.
+- Ancrage des motifs d'expressions régulières pour une sémantique de correspondance complète correcte.
 
 ### Autres changements
-- Amélioration de la documentation générale, incluant des instructions d'installation et des exemples d'utilisation.
-- Correction de problèmes de linting dans la documentation.
-- Normalisation de la terminologie utilisée dans la documentation.
-- Ajout d'informations sur la migration depuis la version v1.
-- Ajout d'informations sur l'installation avec ISM (Image Security Manager).
+- Amélioration de la documentation, correction des erreurs de linting et normalisation des termes.
 - Suppression d'instructions d'installation obsolètes.
-- Ajout de tests de non-régression pour certaines corrections.
-- Backfill du champ `original` dans le statut des images pour améliorer le monitoring.
-- Suppression des images inutilisées du statut du CISA (Container Image Status Aggregator).
+- Correction de problèmes de linting Markdown.
+- Silence de l'outil `gocyclo` sur certaines fonctions complexes.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration du workflow CI/CD.
