@@ -51,7 +51,10 @@
 ├── data-platform
 │   ├── .gitignore
 │   ├── Makefile
+│   ├── airflow-dag-processor-start.sh
+│   ├── airflow-dag-processor.Dockerfile
 │   ├── airflow-scheduler.Dockerfile
+│   ├── airflow-webserver-start.sh
 │   ├── airflow-webserver.Dockerfile
 │   ├── config
 │   │   └── .gitkeep
@@ -88,7 +91,7 @@
 │   │   ├── clone
 │   │   │   ├── config
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── model.py
+│   │   │   │   ├── models.py
 │   │   │   │   ├── sql
 │   │   │   │   │   ├── creation
 │   │   │   │   │   │   ├── tables
@@ -166,7 +169,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── constants.py
 │   │   │   │   ├── metadata.py
-│   │   │   │   ├── model.py
+│   │   │   │   ├── models.py
 │   │   │   │   ├── tasks.py
 │   │   │   │   └── xcoms.py
 │   │   │   ├── dags
@@ -276,19 +279,30 @@
 │   │   │   │   ├── schedules.py
 │   │   │   │   ├── start_dates.py
 │   │   │   │   └── tags.py
-│   │   │   └── tasks
-│   │   │       ├── airflow_logic
-│   │   │       │   └── trigger_dag_task.py
-│   │   │       ├── business_logic
-│   │   │       │   └── normalize.py
-│   │   │       └── database_logic
-│   │   │           ├── db_manager.py
-│   │   │           └── db_tasks.py
+│   │   │   ├── tasks
+│   │   │   │   ├── airflow_logic
+│   │   │   │   │   └── trigger_dag_task.py
+│   │   │   │   ├── business_logic
+│   │   │   │   │   └── normalize.py
+│   │   │   │   └── database_logic
+│   │   │   │       ├── db_manager.py
+│   │   │   │       └── db_tasks.py
+│   │   │   ├── types
+│   │   │   │   └── serializers.py
+│   │   │   └── xcom
+│   │   │       ├── __init__.py
+│   │   │       ├── models.py
+│   │   │       ├── normalize.py
+│   │   │       ├── pull.py
+│   │   │       └── push.py
 │   │   ├── sources
 │   │   │   ├── config
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── airflow_params.py
-│   │   │   │   └── db_mapping.json
+│   │   │   │   ├── db_mapping.json
+│   │   │   │   ├── models.py
+│   │   │   │   ├── tasks.py
+│   │   │   │   └── xcoms.py
 │   │   │   ├── dags
 │   │   │   │   ├── source_aliapur.py
 │   │   │   │   ├── source_batribox.py
@@ -314,7 +328,6 @@
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
 │   │   │       │   ├── __init__.py
-│   │   │       │   ├── config_management.py
 │   │   │       │   ├── db_data_prepare_task.py
 │   │   │       │   ├── db_write_type_action_suggestions_task.py
 │   │   │       │   ├── keep_acteur_changed_task.py
@@ -339,6 +352,7 @@
 │   │   │           ├── formatter.py
 │   │   │           ├── opening_hours.py
 │   │   │           ├── read_mapping_from_postgres.py
+│   │   │           ├── sequence_utils.py
 │   │   │           ├── transform_column.py
 │   │   │           └── transform_df.py
 │   │   ├── stats
@@ -712,6 +726,10 @@
 │   ├── plugins
 │   │   └── .gitkeep
 │   ├── pyproject.toml
+│   ├── scripts
+│   │   ├── db_cleanup.sh
+│   │   └── infrastructure
+│   │       └── purge_db_logs.sh
 │   └── uv.lock
 ├── docker-compose.yml
 ├── docs
@@ -806,8 +824,21 @@
 ├── infrastructure
 │   ├── .gitignore
 │   ├── environments
+│   │   ├── airflowv3
+│   │   │   ├── airflow_containers
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
+│   │   │   ├── database
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
+│   │   │   └── object_storage
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── terraform.tfvars.example
+│   │   │       └── terragrunt.hcl
 │   │   ├── preprod
-│   │   │   ├── container
+│   │   │   ├── airflow_containers
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
@@ -829,7 +860,7 @@
 │   │   │       ├── terraform.tfvars.example
 │   │   │       └── terragrunt.hcl
 │   │   ├── prod
-│   │   │   ├── container
+│   │   │   ├── airflow_containers
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
@@ -847,6 +878,12 @@
 │   │   ├── root.hcl
 │   │   └── variables.tf
 │   └── modules
+│       ├── airflow_containers
+│       │   ├── airflow-dag-processor.tf
+│       │   ├── airflow-scheduler.tf
+│       │   ├── airflow-webserver.tf
+│       │   ├── namespace.tf
+│       │   └── variables.tf
 │       ├── container
 │       │   ├── airflow-scheduler.tf
 │       │   ├── airflow-webserver.tf
@@ -856,6 +893,7 @@
 │       │   ├── main.tf
 │       │   └── terraform.tfvars.example
 │       ├── database
+│       │   ├── .terraform.lock.hcl
 │       │   ├── main.tf
 │       │   ├── outputs.tf
 │       │   └── variables.tf
@@ -876,14 +914,15 @@
 │   │       └── test_schemas.py
 │   ├── infrastructure
 │   │   ├── backup-db.sh
-│   │   ├── delete_old_images.py
-│   │   └── purge_db_logs.sh
+│   │   └── delete_old_images.py
 │   ├── restore_prod_locally.sh
 │   ├── restore_prod_to_preprod.sh
 │   ├── restore_sample_locally.sh
 │   └── sql
 │       ├── create_databases.sql
 │       ├── create_extensions.sql
+│       ├── create_remote_warehouse_in_webapp.sql
+│       ├── create_remote_webapp_in_warehouse.sql
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
 │       └── drop_all_tables.sql
@@ -1157,6 +1196,7 @@
     │   │   ├── 0080_remove_synonyme_disabled.py
     │   │   ├── 0081_homepage.py
     │   │   ├── 0082_produitpagesearchterm_cascade_delete.py
+    │   │   ├── 0083_alter_produitindexpage_body_alter_produitpage_body.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── signals.py
@@ -1430,7 +1470,6 @@
     │   │   │       └── change_list.html
     │   │   └── revision_acteur
     │   │       └── change_form.html
-    │   ├── base.html
     │   ├── data
     │   │   └── _partials
     │   │       ├── ajout_suggestion_details.html
@@ -1467,6 +1506,8 @@
     │   │   └── blocks
     │   │       ├── breadcrumbs.html
     │   │       └── tabs.html
+    │   ├── sites_conformes_core
+    │   │   └── base.html
     │   ├── templatetags
     │   │   ├── acteur_pinpoint.html
     │   │   ├── acteur_pinpoint.md
@@ -1841,4 +1882,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-342 directories, 1501 files
+352 directories, 1532 files
