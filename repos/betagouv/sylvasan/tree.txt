@@ -33,21 +33,27 @@
 │   │   └── views.py
 │   ├── manage.py
 │   ├── organisation_specific
+│   │   ├── __init__.py
 │   │   └── dsf
 │   │       ├── __init__.py
 │   │       ├── admin.py
 │   │       ├── apps.py
-│   │       ├── auth_backend.py
 │   │       ├── management
 │   │       │   ├── __init__.py
 │   │       │   └── commands
 │   │       │       ├── __init__.py
+│   │       │       ├── sync_dsf_poles.py
 │   │       │       └── sync_dsf_vocabularies.py
 │   │       ├── migrations
 │   │       │   └── __init__.py
 │   │       ├── models.py
-│   │       ├── tests.py
-│   │       └── views.py
+│   │       ├── tests
+│   │       │   ├── __init__.py
+│   │       │   └── test_oauth.py
+│   │       ├── urls.py
+│   │       └── views
+│   │           ├── __init__.py
+│   │           └── oauth.py
 │   ├── organisations
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -64,6 +70,7 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_alter_membership_unique_together.py
+│   │   │   ├── 0003_pole_dsf_code.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
@@ -172,6 +179,7 @@
 │       ├── migrations
 │       │   ├── 0001_initial.py
 │       │   ├── 0002_user_external_id_user_source.py
+│       │   ├── 0003_user_dsf_last_claims.py
 │       │   └── __init__.py
 │       ├── models
 │       │   ├── __init__.py
@@ -274,7 +282,8 @@
 │   │   │       │       │   ├── strings.xml
 │   │   │       │       │   └── styles.xml
 │   │   │       │       └── xml
-│   │   │       │           └── file_paths.xml
+│   │   │       │           ├── file_paths.xml
+│   │   │       │           └── network_security_config.xml
 │   │   │       └── test
 │   │   │           └── java
 │   │   │               └── com
@@ -449,6 +458,7 @@
     │   ├── main.ts
     │   ├── pages
     │   │   ├── A11yPage.vue
+    │   │   ├── AccountPage.vue
     │   │   ├── CookiesPage.vue
     │   │   ├── DashboardPage.vue
     │   │   ├── HomePage.vue
@@ -484,4 +494,4 @@
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-147 directories, 339 files
+149 directories, 347 files
