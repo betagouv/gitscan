@@ -1,21 +1,24 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 12 mai 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'intégration et le traitement des données Helios, ainsi que sur des améliorations de l'automatisation et de la correction de bugs liés à l'importation des données Osiris et Proconnect. Des ajustements ont également été apportés à l'interface utilisateur pour une meilleure présentation des informations.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'intégration des données Osiris, avec une refonte de la gestion des entités brutes et l'ajout de nouveaux DTO. Des améliorations techniques ont été apportées pour moderniser l'infrastructure du projet, notamment le passage à pnpm workspaces et la suppression de code obsolète. L'interface utilisateur a également été mise à jour pour afficher les actions Osiris dans un modal.
 
 ### Évolutions fonctionnelles
-- Intégration et parsing des données Helios, permettant de nouvelles fonctionnalités liées à ces données (via [#3865](https://github.com/betagouv/api-subventions-asso/issues/3865) et [#3886](https://github.com/betagouv/api-subventions-asso/issues/3886)).
-- Amélioration de l'affichage du nom de l'allocataire dans l'instructeur pour les données Helios.
+- Ajout de l'affichage des actions Osiris dans un modal sur le front-end ([#3910](https://github.com/betagouv/api-subventions-asso/pull/3910)).
+- Amélioration de l'affichage des informations relatives aux données Helios sur le front-end, incluant le nom de l'allocataire et l'ID de paiement.
 - Correction d'un bug lié à la migration Proconnect ([#3898](https://github.com/betagouv/api-subventions-asso/issues/3898)).
+- Correction d'un bug dans le test unitaire du parser Osiris pour la date de mise à jour.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des requêtes Osiris pour stocker les entités imbriquées brutes, améliorant ainsi la flexibilité et la maintenabilité du code.
-- Déplacement des fichiers de parsing Osiris vers le dossier `adapters/inputs/cli/osiris` pour une meilleure organisation.
-- Amélioration des tests unitaires pour le parsing Osiris, notamment pour la date de mise à jour.
-- Suppression de code obsolète (méthode `validate` dans la CLI).
-- Amélioration du mapping des champs et correction des tests liés à Osiris.
+- Refonte de la gestion des entités brutes Osiris pour stocker les données imbriquées, améliorant ainsi la flexibilité et la robustesse de l'API ([#3887](https://github.com/betagouv/api-subventions-asso/pull/3887), [#3904](https://github.com/betagouv/api-subventions-asso/pull/3904)).
+- Création de nouveaux DTO et refactoring des mappings pour les providers et les détails Osiris ([#3908](https://github.com/betagouv/api-subventions-asso/pull/3908), [#3909](https://github.com/betagouv/api-subventions-asso/pull/3909)).
+- Migration du projet vers pnpm workspaces, remplaçant Lerna pour une meilleure gestion des dépendances et des builds ([#3917](https://github.com/betagouv/api-subventions-asso/pull/3917)).
+- Refactoring du code lié à l'analyse des données Osiris, incluant la suppression de code obsolète et l'amélioration des tests.
+- Suppression de routes de provider obsolètes ([#3911](https://github.com/betagouv/api-subventions-asso/pull/3911)).
+- Amélioration des tests et de la validation des données Osiris.
 
 ### Autres changements
-- Ajout d'un README pour le script de récupération LCA-OSIRIS ([#3901](https://github.com/betagouv/api-subventions-asso/issues/3901)).
-- Correction de l'indentation du fichier `pnpm-lock.yaml`.
-- Mise à jour de la version de l'API à v0.84.5.
+- Ajout d'un README pour le script de scrapping LCA-OSIRIS ([#3901](https://github.com/betagouv/api-subventions-asso/pull/3901)).
+- Suppression de code de validation inutilisé dans la CLI.
+- Déplacement des fichiers de parsing Osiris vers le dossier `adapters/inputs/cli/osiris`.
+- Mise à jour des versions du projet (v0.84.0, v0.84.1, v0.84.2, v0.84.3, v0.84.4, v0.84.5).

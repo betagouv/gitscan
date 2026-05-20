@@ -21,7 +21,6 @@
 ├── Procfile
 ├── README.md
 ├── build.bash
-├── lerna.json
 ├── nx.json
 ├── package.json
 ├── packages
@@ -127,7 +126,8 @@
 │   │   │   ├── 20260109083637-data-log-add-provider-name.js
 │   │   │   ├── 20260320072628-chorus-remove-indexed-informations.js
 │   │   │   ├── 20260323195850-remove-overwriteAlert-deposit-log.js
-│   │   │   └── 20260428231703-osiris-request-raw-entity.js
+│   │   │   ├── 20260428231703-osiris-request-raw-entity.js
+│   │   │   └── 20260512233618-osiris-action-raw-entity.js
 │   │   ├── nodemon.json
 │   │   ├── package.json
 │   │   ├── src
@@ -151,7 +151,10 @@
 │   │   │   │   ├── TSOAErrors.ts
 │   │   │   │   ├── WinstonLog.ts
 │   │   │   │   ├── XlsxPage.ts
-│   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── use-case
+│   │   │   │       ├── AsyncUseCase.ts
+│   │   │   │       └── UseCase.ts
 │   │   │   ├── adapters
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── abstract-parser.test.ts
@@ -186,10 +189,15 @@
 │   │   │   │   │   │   │   └── helios.parser.ts
 │   │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   │   ├── osiris-action.fixture.ts
 │   │   │   │   │   │   │   │   └── osiris-request.fixture.ts
 │   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   ├── osiris-action.mapper.test.ts.snap
 │   │   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts.snap
 │   │   │   │   │   │   │   │   └── osiris.parser.test.ts.snap
+│   │   │   │   │   │   │   ├── osiris-action.dto.ts
+│   │   │   │   │   │   │   ├── osiris-action.mapper.test.ts
+│   │   │   │   │   │   │   ├── osiris-action.mapper.ts
 │   │   │   │   │   │   │   ├── osiris-request.dto.ts
 │   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts
 │   │   │   │   │   │   │   ├── osiris-request.mapper.ts
@@ -223,6 +231,8 @@
 │   │   │   │   │   │   └── stats.cron.ts
 │   │   │   │   │   └── http
 │   │   │   │   │       ├── CONTRIBUTING.md
+│   │   │   │   │       ├── __fixtures__
+│   │   │   │   │       │   └── association.fixture.ts
 │   │   │   │   │       ├── admin.http.test.ts
 │   │   │   │   │       ├── admin.http.ts
 │   │   │   │   │       ├── adminStructure.http.ts
@@ -258,6 +268,9 @@
 │   │   │   │   │       └── user.http.ts
 │   │   │   │   └── outputs
 │   │   │   │       ├── api
+│   │   │   │       │   ├── api-asso
+│   │   │   │       │   │   ├── api-asso.adapter.ts
+│   │   │   │       │   │   └── api-asso.port.ts
 │   │   │   │       │   ├── data-bretagne
 │   │   │   │       │   │   ├── @types
 │   │   │   │       │   │   │   └── DataBretagneDto.ts
@@ -395,7 +408,6 @@
 │   │   │   │       │   │   │   └── helios.port.ts
 │   │   │   │       │   │   ├── osiris
 │   │   │   │       │   │   │   ├── index.ts
-│   │   │   │       │   │   │   ├── osiris-action.mapper.ts
 │   │   │   │       │   │   │   ├── osiris-action.port.ts
 │   │   │   │       │   │   │   ├── osiris-request.port.ts
 │   │   │   │       │   │   │   ├── osiris.action.adapter.test.ts
@@ -784,11 +796,19 @@
 │   │   │   │   │   │   │   ├── RnaStructureDto.ts
 │   │   │   │   │   │   │   ├── SirenStructureDto.ts
 │   │   │   │   │   │   │   └── StructureDto.ts
-│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── api-asso.dto.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── api-asso.dto.mapper.test.ts
+│   │   │   │   │   │   │   └── api-asso.dto.mapper.ts
+│   │   │   │   │   │   └── use-cases
 │   │   │   │   │   │       ├── __snapshots__
-│   │   │   │   │   │       │   └── api-asso-dto.mapper.test.ts.snap
-│   │   │   │   │   │       ├── api-asso-dto.mapper.test.ts
-│   │   │   │   │   │       └── api-asso-dto.mapper.ts
+│   │   │   │   │   │       │   └── api-asso.use-case.test.ts.snap
+│   │   │   │   │   │       ├── api-asso.use-case.factory.ts
+│   │   │   │   │   │       ├── api-asso.use-case.test.ts
+│   │   │   │   │   │       ├── find-rna-siren.use-case.ts
+│   │   │   │   │   │       ├── get-rna-asso.use-case.ts
+│   │   │   │   │   │       └── transform-rna-structure-to-asso.use-case.ts
 │   │   │   │   │   ├── api-entreprise
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── ApiEntrepriseExtraitRcs.ts
@@ -948,7 +968,6 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   ├── @types
-│   │   │   │   │   │   │   ├── OsirisActionsInformations.ts
 │   │   │   │   │   │   │   └── OsirisRequestInformations.ts
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
@@ -1434,8 +1453,8 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── associations
-│   │   │   │   ├── Association.ts
 │   │   │   │   ├── AssociationNature.ts
+│   │   │   │   ├── AssociationWithProviderValues.ts
 │   │   │   │   ├── BodaccRecordDto.ts
 │   │   │   │   ├── ExtraitRcsDto.ts
 │   │   │   │   ├── GetApplicationsFlatResponseDto.ts
@@ -1488,14 +1507,14 @@
 │   │   │   │   ├── UploadedFileInfosDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── documents
-│   │   │   │   ├── DocumentDto.ts
 │   │   │   │   ├── DocumentRequestDto.ts
+│   │   │   │   ├── DocumentWithProviderValueDto.ts
 │   │   │   │   ├── GetDocumentsResponseDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── establishments
-│   │   │   │   ├── Establishment.ts
 │   │   │   │   ├── EstablishmentDtoResponse.ts
-│   │   │   │   ├── EstablishmentSimplified.ts
+│   │   │   │   ├── EstablishmentSimplifiedWithProviderValues.ts
+│   │   │   │   ├── EstablishmentWithProviderValues.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── flat
 │   │   │   │   ├── application.ts
@@ -1516,7 +1535,12 @@
 │   │   │   │   ├── Payment.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── providers
-│   │   │   │   └── dataLog.ts
+│   │   │   │   ├── OsirisDetails.ts
+│   │   │   │   ├── ProviderDetails.ts
+│   │   │   │   ├── dataLog.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── osiris-details.ts
+│   │   │   │   └── provider-details.ts
 │   │   │   ├── rna-siren
 │   │   │   │   └── RnaSirenResponseDts.ts
 │   │   │   ├── scdl
@@ -1871,6 +1895,9 @@
 │   │   │   │   │   │       ├── geo.port.ts
 │   │   │   │   │   │       ├── geo.service.test.ts
 │   │   │   │   │   │       └── geo.service.ts
+│   │   │   │   │   ├── grant
+│   │   │   │   │   │   ├── grant.port.test.ts
+│   │   │   │   │   │   └── grant.port.ts
 │   │   │   │   │   ├── open-source
 │   │   │   │   │   │   └── rna-siren
 │   │   │   │   │   │       ├── rna-siren.port.test.ts
@@ -2150,7 +2177,8 @@
 │       │   │   ├── OsirisExtractDownloader.js
 │       │   │   ├── OsirisPosibilitiesBuilder.js
 │       │   │   ├── OsirisSignalrConnector.js
-│       │   │   └── jQueryNodeLoader.js
+│       │   │   ├── jQueryNodeLoader.js
+│       │   │   └── remove-empty-files.js
 │       │   ├── OsirisPuppeteer
 │       │   │   ├── OsirisPuppeteer.js
 │       │   │   └── browser-script.js
@@ -2166,4 +2194,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-503 directories, 1665 files
+509 directories, 1687 files
