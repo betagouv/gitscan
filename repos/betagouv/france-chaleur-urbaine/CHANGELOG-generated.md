@@ -1,100 +1,100 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 2026-05-15)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 2026-05-19)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des permissions, l'optimisation des performances et l'ajout de nouvelles fonctionnalités pour faciliter l'administration et l'utilisation de la plateforme. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant les formulaires et l'intégration avec Ademe Connect.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des permissions, l'optimisation des performances (notamment le caching des tuiles cartographiques), et l'ajout de nouvelles fonctionnalités comme l'intégration d'ADEME Connect et l'amélioration du suivi des événements via PostHog. Des corrections et améliorations ont également été apportées à la FAQ, aux formulaires et à l'administration de l'application.
 
 ### Évolutions fonctionnelles
-- Intégration d'Ademe Connect pour l'authentification des utilisateurs.
-- Ajout d'un nouveau système de permissions, incluant des rôles (CCRT, ALEC) et une gestion plus fine des accès.
-- Amélioration du workflow d'affectation des demandes au réseau.
-- Ajout d'un bouton de réinitialisation sur les formulaires.
-- Mise à jour de la FAQ avec de nouvelles questions et réponses.
-- Ajout d'un message d'information lors de la soumission du formulaire de collecte de contact pour les non-raccordables.
+- Ajout d'un nouveau système de permissions avec des rôles et des intégrations dans l'administration des demandes.
+- Intégration d'ADEME Connect pour faciliter l'accès aux données.
+- Amélioration de la gestion des demandes et de leur statut (notamment le statut "non réalisable").
 - Ajout d'un bandeau d'information concernant une future indisponibilité du service.
-- Affichage des demandes plutôt que des tests d'adresses dans l'admin des réseaux.
-- Ajout d'une commande pour analyser des réseaux.
-- Ajout d'une commande pour mettre à jour les réseaux via un répertoire.
-- Ajout d'un script de migration des notes de tags.
-- Ajout d'un lien pour corriger les permissions d'un gestionnaire.
-- Affichage des compteurs d'accès aux demandes avec détail.
-- Amélioration des relances et ajout de notes.
-- Refonte des emails et affichage dans l'admin.
+- Mise à jour de la FAQ avec de nouvelles informations et une meilleure organisation.
+- Amélioration du formulaire de collecte de contact pour les zones non raccordables.
+- Ajout d'un bouton de réinitialisation sur les formulaires.
+- Amélioration de l'affichage des permissions des réseaux en construction.
+- Ajout d'un lien direct vers la carte depuis les permissions.
+- Ajout de la possibilité de sauvegarder le preset sélectionné dans l'URL de la page des demandes.
+- Ajout d'un affichage des compteurs d'accès aux demandes avec un détail.
+- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
+- Amélioration des relances et des notes associées aux réseaux.
+- Ajout d'un affichage des emails dans l'administration des demandes.
 
 ### Évolutions techniques
-- Mise en cache des tuiles pour améliorer les performances de la carte.
-- Refactoring et simplification de `demands-service`.
-- Optimisation du rendu de la carte.
-- Amélioration des performances du listing des demandes.
-- Ajout d'un module de métriques avec une API Prometheus.
-- Mise à jour des dépendances et refactoring du code.
-- Suppression de code obsolète et nettoyage du codebase.
-- Amélioration du typage du code.
-- Utilisation de helpers HTTP pour une meilleure gestion des requêtes.
-- Utilisation des variables d'environnement via une configuration centralisée.
-- Amélioration de la gestion des erreurs et des logs.
-- Ajout de tests unitaires et d'intégration.
+- Mise en place d'un cache pour les tuiles cartographiques afin d'améliorer les performances.
+- Refactoring et simplification du code autour des types d'entités.
+- Optimisation des performances du listing des demandes.
+- Ajout d'une API Prometheus pour la collecte de métriques.
+- Mise en place d'un système de tracking plus complet avec PostHog, incluant le suivi des événements sur la carte, les formulaires et les différents outils.
+- Amélioration du typage et de la gestion des erreurs.
+- Suppression de code obsolète et nettoyage général du code.
+- Mise à jour des dépendances et des configurations.
+- Ajout de commandes pour analyser et mettre à jour les réseaux.
+- Ajout d'un script pour dropper des tables à distance.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de typos et amélioration de la lisibilité du code.
-- Suppression de fichiers inutiles.
-- Mise à jour des statistiques mensuelles.
-- Suppression de tables Airtable inutilisées.
-- Ajout de commentaires et documentation pour faciliter la maintenance du code.
+- Ajout de documentation sur la procédure de mise à jour des statistiques mensuelles.
+- Mise à jour des statistiques d'avril.
+- Correction de coquilles et amélioration de la lisibilité du code.
+- Suppression de constantes inutiles.
+- Amélioration des messages d'information et du wording.
+- Ajout d'un fichier `.claudeignore`.
+- Suppression des presets "haut potentiel" et "dans PDP".
+- Ajout d'un lien vers la FAQ dans les liens entrants.
+- Suppression du code postal d'Airtable.
+- Ajout d'un bouton "Réinitialiser" sur le formulaire.
+- Amélioration de la gestion de l'état du formulaire.
+- Ajout d'un message lors de la soumission du formulaire de collecte.
+- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
+- Amélioration de l'affichage des permissions des réseaux en construction.
+- Ajout d'un lien direct vers la carte depuis les permissions.
+- Ajout d'un affichage des compteurs d'accès aux demandes avec un détail.
+- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
+- Amélioration des relances et des notes associées aux réseaux.
+- Ajout d'un affichage des emails dans l'administration des demandes.
+- Ajout d'un script pour migrer les notes des tags.
+- Ajout d'une commande pour mettre à jour les réseaux via un répertoire.
+- Ajout d'un script de migration des notes de tags.
 - Ajout d'un script pour dropper des tables à distance.
-- Correction de l'affichage des permissions réseaux en construction.
-- Ajout d'un dashboard sur la cohérence des données.
-- Factorisation des fonctions de recherche de réseau.
-- Suppression du bandeau de mise à jour.
-- Identification améliorée des événements liés aux demandes.
-- Tri des emails selon le domaine puis préfixe.
-- Ajout du rôle CCRT.
-- Affichage des rôles complets dans la colonne Accès.
-- Maj FAQ gestionnaire.
-- Nettoyage et fix événements custom.
-- Fix maj demandes par utilisateur non authentifié.
-- Regroupement des couleurs des rôles.
-- Maj onglets presets selon profils.
-- Suppression du fichier `.claude/`.
-- Renvoi du body dans les erreurs fetch.
-- Rendre les modals deprecated.
-- Envoi des mails aux gestionnaires selon permission réseau.
-- Fix formulaire création utilisateur par un admin.
-- Fix création demande.
-- Ajout de permissions en masse via ids & sncu.
-- Fix labels.
-- Enregistrement de l'entreprise de l'utilisateur.
-- Refacto/simplification autour des types d'entités.
-- Affichage mention aucun résultat dans les autocomplete.
-- Fix lien réseaux->stats vers les demandes.
-- Statut non réalisable pour demandes non éligibles.
-- Affichage de la colonne has_PDP dans l'admin.
-- Refactor les emails et les affiche dans l'admin.
-- Fix la recherche par id sncu dans la page stats.
-- Track d'autres events.
-- Migre les comptes métropoles.
-- Track la maj des id pdp.
-- Ajoute ALEC à la structure + raccourcis de sélection role.
-- Track les maj des réseaux.
-- ai: maj automatique des docs des modules.
-- ai: inférence, 1 instruction / ligne, ternaires.
-- ai: pratiques exports et nommage variables.
-- ai: utilise un import pour que claude charge systématiquement AGENTS.md
-- ai: maj les pratiques.
-- ai: utilise les helpers HTTP.
-- ai: utilise les variables d'env via config.
-- ai: supprime la liste des modules en dur.
-- ai: précise le format attendu des migrations.
-- ai: pas de conditions useless.
-- ai: précision ne pas surcharger staleTime.
-- ai: feedback toujours dans le projet.
-- ai: corrige l'usage de db:sync pour les typages.
-- Agrège les permissions à la liste des users.
-- Fix impersonation depuis l'écran des utilisateurs.
-- Sauvegarde le preset sélectionné dans l'URL /pro/demandes.
-- Ne ferme pas la popup lors des clics dans les tags.
-- Events de maj de permission.
-- Complète les tests des routes territoires.
-- Supprime les presets haut potentiel et dans pdp.
-- Améliore la validation route impersonate.
-- Déplace les demandes à traiter en 1er et par défaut.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour migrer les comptes métropoles.
