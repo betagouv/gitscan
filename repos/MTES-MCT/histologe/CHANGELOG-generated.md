@@ -1,36 +1,37 @@
-## Changelog : histologe (30 derniers jours, au 13 mai 2026)
+## Changelog : histologe (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives en termes d'accessibilité, de performance et de correction de vulnérabilités. Des efforts ont été déployés pour améliorer l'expérience utilisateur dans l'interface d'administration (BO), notamment au niveau du tableau de bord et de la gestion des signalements. Des optimisations techniques ont également été réalisées pour renforcer la sécurité et la stabilité de la plateforme.
+Ce mois-ci, histologe a bénéficié d'améliorations significatives en termes d'accessibilité, de performance et de correction de vulnérabilités de sécurité. Des corrections ont été apportées à l'interface utilisateur pour faciliter l'utilisation, notamment dans les formulaires et les tableaux de bord. Des optimisations ont été réalisées sur la gestion des données et des fichiers, et des mesures de sécurité ont été mises en place suite à un audit.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité générale de l'application, notamment pour les utilisateurs API, les événements, les documents, les partenaires et le tableau de bord. [#5826, #5793, #5781, #5734, #5732]
-- Ajout d'une confirmation lors de la suppression des notifications dans l'interface d'administration. [#5800]
-- Ajout de l'heure dans le suivi des visites programmées. [#5759]
-- Ajout de filtres pour les événements. [#5713, #5740]
-- Amélioration de l'affichage de la date/heure des clubs dans les emails et le tableau de bord, en tenant compte du fuseau horaire de l'utilisateur. [#5778, #5785]
-- Correction de la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse dans l'interface de signalement. [#5839]
-- Correction de la conversion d'un tableau en chaîne de caractères pour l'envoi d'emails. [#5853]
-- Ajout du nom des documents et des photos lors de l'export des signalements. [#5710]
-- Correction de l'affichage du numéro de téléphone dans le tooltip des suivis. [#5786, #5788]
+- Amélioration de la gestion des événements avec l'ajout de filtres. [#5713](https://github.com/MTES-MCT/histologe/issues/5713)
+- Ajout de la date et de l'heure dans le suivi des visites programmées. [#5759](https://github.com/MTES-MCT/histologe/issues/5759)
+- Amélioration de l'affichage des dates des photos en préservant les données EXIF. [#5702](https://github.com/MTES-MCT/histologe/issues/5702)
+- Ajout d'une confirmation pour vider les notifications. [#5800](https://github.com/MTES-MCT/histologe/issues/5800)
+- Correction de la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse. [#5839](https://github.com/MTES-MCT/histologe/issues/5839)
+- Correction de la conversion array to string pour l'envoi de mails. [#5853](https://github.com/MTES-MCT/histologe/issues/5853)
+- Ajout de la reprise de commande dossier rejet. [#5877](https://github.com/MTES-MCT/histologe/issues/5877)
+- Amélioration de l'affichage du nom des documents et des photos dans l'export des signalements. [#5710](https://github.com/MTES-MCT/histologe/issues/5710)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances : PHPUnit (version 9 vers 13), PostCSS, Axios, Doctrine. [#5766, #5809, #5827, #5824]
-- Remplacement de la librairie phpspreadsheets par une alternative. [#5836]
-- Suppression des persist et flush des managers d'entités pour optimiser les performances. [#5757]
-- Correction d'une vulnérabilité relevée par YesWeHack et ajout d'un postmortem. [#5847, #5838]
-- Mise à jour de la configuration Nginx. [#5739]
-- Suppression du répertoire `test` lors du déploiement. [#5818]
-- Déplacement de la logique d'update et de nettoyage vers les classes Behaviour dans plusieurs repositories. [#5762]
-- Ajout de Lighthouse dans la CI pour l'audit de performance. [#5789]
-- Optimisation du comptage pour le panneau des dossiers fermés par les communes. [#5735, #5736]
-- Désactivation des boutons de soumission lors des requêtes AJAX pour éviter les soumissions multiples. [#5782, #5790]
+- Remplacement de phpspreadsheets par une alternative. [#5836](https://github.com/MTES-MCT/histologe/issues/5836)
+- Suppression des persist et flush des managers d'entités pour optimiser les performances. [#5757](https://github.com/MTES-MCT/histologe/issues/5757)
+- Montée de version de Doctrine. [#5827](https://github.com/MTES-MCT/histologe/issues/5827)
+- Mise à jour de PHPUnit de 9 vers 13. [#5766](https://github.com/MTES-MCT/histologe/issues/5766)
+- Déplacement de méthodes vers des classes Behaviour pour une meilleure organisation du code. [#5762](https://github.com/MTES-MCT/histologe/issues/5762)
+- Correction d'un problème lié à l'environnement variable relevé par YesWeHack. [#5838](https://github.com/MTES-MCT/histologe/issues/5838)
+- Ajout d'un postmortem suite à une vulnérabilité YesWeHack. [#5847](https://github.com/MTES-MCT/histologe/issues/5847)
+- Mise à jour des paquets npm. [#5846](https://github.com/MTES-MCT/histologe/issues/5846)
+- Mise à jour de PostCSS. [#5809](https://github.com/MTES-MCT/histologe/issues/5809)
+- Ajout de Lighthouse dans la CI pour l'audit de performance. [#5789](https://github.com/MTES-MCT/histologe/issues/5789)
 
 ### Autres changements
-- Mise à jour de la collection Postman. [#5830, #5831]
-- Correction de la pagination des connexions SI. [#5755, #5758]
-- Gestion des messages de resynchronisation. [#5754, #5756]
-- Préservation des données EXIF des photos. [#5702]
-- Suppression des auto-suivis cachés. [#5795, #5798]
-- Configuration de `innodb-buffer-pool-size`. [#5791, #5792]
-- Amélioration du formatage du code et correction de problèmes de CI/C. [#5765, #5770, #5812]
+- Améliorations de l'accessibilité pour les utilisateurs API, les services de secours, les bailleurs et les communes. [#5826](https://github.com/MTES-MCT/histologe/issues/5826), [#5832](https://github.com/MTES-MCT/histologe/issues/5832), [#5807](https://github.com/MTES-MCT/histologe/issues/5807)
+- Améliorations de l'accessibilité sur le tableau de bord (zoom sur l'avatar, libellé des liens). [#5737](https://github.com/MTES-MCT/histologe/issues/5737)
+- Mise à jour de la collection Postman. [#5831](https://github.com/MTES-MCT/histologe/issues/5831)
+- Suppression du manager. [#5787](https://github.com/MTES-MCT/histologe/issues/5787)
+- Correction de la pagination des connexions SI. [#5758](https://github.com/MTES-MCT/histologe/issues/5758)
+- Ajout de la gestion du message de resynchronisation. [#5756](https://github.com/MTES-MCT/histologe/issues/5756)
+- Désactivation des boutons submit lors des soumissions AJAX. [#5782](https://github.com/MTES-MCT/histologe/issues/5782)
+- Ajustement du format du numéro de téléphone dans le tooltip des suivis. [#5786](https://github.com/MTES-MCT/histologe/issues/5786)
+- Correction de bugs divers et amélioration de la qualité du code.
