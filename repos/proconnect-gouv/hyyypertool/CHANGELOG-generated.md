@@ -1,28 +1,27 @@
-## Changelog : hyyypertool (30 derniers jours, au 13 mai 2026)
+## Changelog : hyyypertool (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur avec l'ajout du mode sombre, des améliorations de l'interface et des corrections de bugs. Des améliorations techniques ont également été apportées, notamment la suppression de dépendances obsolètes et l'optimisation du cache. L'outil de gestion des réponses a été enrichi avec des fonctionnalités d'édition et de suppression.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de l'expérience utilisateur et de la robustesse de Hyyypertool. Les principales améliorations incluent l'ajout d'un système de limitation du débit par adresse IP pour se protéger contre les abus, l'implémentation du tri des colonnes dans la liste des modérations pour une meilleure organisation des données, et l'introduction d'un mode sombre pour une utilisation plus confortable. Des corrections de bugs et des optimisations ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout du mode sombre pour une meilleure lisibilité et un confort visuel accru.
-- Possibilité de filtrer les modérations par statut de décision (accepté, rejeté, réouvert).
-- Ajout d'une action de suppression pour les modèles de réponse.
-- Possibilité d'éditer les modèles de réponse directement dans l'interface.
-- Amélioration de l'interface utilisateur des modèles de réponse (tri alphabétique, taille du titre).
-- Correction d'un bug empêchant l'affichage correct de la liste des responsables.
-- Correction d'un bug lié au seed des modèles de réponse, assurant que tous les modèles sont correctement chargés.
-- Suppression de l'affichage des prénoms et noms dans les emails de rejet.
-- Correction d'un bug empêchant l'envoi correct de l'en-tête de cache pour les ressources statiques.
-- Amélioration de l'accessibilité et de la lisibilité avec l'ajout d'accents manquants.
-- Ajout de la possibilité de trier les colonnes dans la liste des modérations.
+- Ajout du tri des colonnes dans la liste des modérations, permettant de classer les données par différents critères.
+- Implémentation d'un mode sombre pour une meilleure lisibilité et une expérience utilisateur plus agréable.
+- Possibilité de filtrer les modérations par statut de décision (acceptées, rejetées, réouvertes).
+- Ajout de la possibilité de supprimer les modèles de réponse directement depuis l'interface.
+- Amélioration de l'interface utilisateur suite à la suppression de DSFR, notamment pour les menus et les boutons.
+- Correction d'un bug qui affichait un message d'erreur incorrect en cas de jeton API expiré.
+- Correction de l'affichage du menu "trois points" en mode sombre.
+- Suppression de l'affichage du nom et prénom dans les emails de rejet.
 
 ### Évolutions techniques
-- Suppression des mocks pour les services `entreprise.api.gouv.fr`, `api.crisp.chat`, `agentconnect` et `support.etalab.gouv.fr`, remplacés par des routes de développement.
-- Mise à jour de plusieurs dépendances : `hono`, `preact`, `drizzle-kit`, `jose`, `actions/upload-artifact`, `drizzle-orm`, `cypress`, `tailwindcss`, `sentry`, `@proconnect-gouv/proconnect.identite`, `@preact/signals`, `@csmith/release-it-calver-plugin`, `@types/bun`, `prettier-plugin-tailwindcss`, `type-fest`, `youch`.
-- Correction d'un problème empêchant le middleware de cache d'ajouter l'en-tête `Cache-Control`.
-- Amélioration de la gestion du nonce pour l'auto-chargement depuis le contexte de la requête.
+- Implémentation d'une limitation du débit par adresse IP pour protéger l'application contre les attaques et les abus.
+- Remplacement des mocks basés sur MockServer par des routes Hono pour simplifier le développement et les tests.
+- Clarification de l'ordre de tri par défaut dans la recherche de modérations.
+- Amélioration de la gestion du nonce pour la sécurité des requêtes.
+- Mise à jour et correction de plusieurs dépendances.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités et corrections.
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
 - Nettoyage du code et suppression de code obsolète.
-- Corrections mineures de style et d'interface utilisateur.
+- Amélioration de la configuration et des scripts de déploiement.
+- Correction de bugs mineurs et améliorations de la stabilité.

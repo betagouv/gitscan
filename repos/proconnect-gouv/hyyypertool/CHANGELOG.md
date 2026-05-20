@@ -1,5 +1,74 @@
 # Changelog
 
+## [2026.5.9](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.8...2026.5.9) (2026-05-18)
+
+### Changements
+
+- 💄 Amélioration du mode sombre sur les boutons et la liste déroulante
+
+Les boutons primaires, colorés (danger, succès, avertissement) et les variantes secondaires/tertiaires sont désormais correctement affichés en mode sombre. La liste déroulante du filtre de modération utilise maintenant les tokens du système de design pour s'adapter automatiquement au thème.
+
+### Modifié
+
+- 💄 button: add dark mode support and extract dropdown component (#1622) (5a9d516d)
+
+## [2026.5.8](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.7...2026.5.8) (2026-05-18)
+
+### Changements
+
+- 🔒 Limitation du débit par adresse IP
+
+Ajout d'un middleware de limitation du débit (rate limiting) basé sur l'adresse IP, afin de bloquer les scanners et scrapers malveillants. Les compteurs sont stockés dans une table PostgreSQL non journalisée (`UNLOGGED`) pour des performances optimales. La fonctionnalité est activée via le flag `FEATURE_RATE_LIMIT_BY_IP`.
+
+### Corrigé
+
+- 🔒️ rate-limit: add IP-based rate limiting via RateLimiterPostgres (#1621) (0e22a72d)
+
+## [2026.5.7](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.6...2026.5.7) (2026-05-18)
+
+### Changements
+
+- ✨ Tri par date de création explicite par défaut
+
+La recherche par défaut inclut désormais `sort:created-asc` afin de rendre explicite l'ordre de tri appliqué. Le filtre par défaut est maintenant `is:pending -type:non_verified_domain sort:created-asc`.
+
+### Ajouté
+
+- ✨ moderations: make default sort order explicit (#1620) (72117b7b)
+
+## [2026.5.6](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.5...2026.5.6) (2026-05-18)
+
+### Changements
+
+- ✨ Tri des colonnes dans la liste des modérations
+
+Il est désormais possible de trier la liste des modérations en cliquant sur l'en-tête de n'importe quelle colonne. Un second clic inverse l'ordre de tri. Le tri est persisté dans l'URL et se combine avec les filtres existants.
+
+### Ajouté
+
+- ✨ mocks: replace agentconnect MockServer with dev route (#1608) (97f94d33)
+- ✨ moderations: add column sort with SortHeaderIsland (2) (#1606) (976b3978)
+- ✨ moderations: add column sort with SortHeaderIsland (#1604) (e864945c)
+
+### Modifié
+
+- ♻️ island: auto-load nonce from request context (#1605) (6bdb3963)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump peaceiris/actions-gh-pages (#1615) (5e479219)
+- :arrow_upper_right: [patch](deps): Bump dotenv from 17.3.1 to 17.4.2 (#1616) (1f54707b)
+- :arrow_upper_right: [patch](deps-dev): Bump prettier from 3.8.1 to 3.8.3 (#1618) (39b0d0c4)
+
+### Divers
+
+- ↗️ [patch](deps-dev): Bump release-it from 19.2.4 to 20.0.1 (#1611) (2c882deb)
+- ↗️ [patch](deps): Bump oxc-parser from 0.117.0 to 0.129.0 (#1613) (cc5c7405)
+- ↗️ [patch](deps): Bump htmx.org from 2.0.8 to 2.0.10 (#1612) (0ca9d516)
+- 🧹 mock: replace entreprise.api.gouv.fr MockServer with **_dev_** Hono route (#1610) (b921fe6c)
+- 🧹 mock: replace api.crisp.chat MockServer with **_dev_** Hono route (#1609) (6e32fa74)
+- ⚰️ mocks: remove support.etalab.gouv.fr MockServer (#1607) (4107c1e2)
+
 ## [2026.5.5](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.4...2026.5.5) (2026-05-12)
 
 ### Changements

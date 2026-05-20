@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les modérations, d'automatiser certaines tâches et d'améliorer l'expérience utilisateur.",
+  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les modérations de manière efficace.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,24 +11,26 @@
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion métier générale",
-    "Collaboration & Workflow"
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "@gouvfr/dsfr",
+    "@preact/signals",
+    "bun",
     "htmx.org",
     "hyperscript.org",
-    "zod",
+    "nprogress",
     "preact",
-    "drizzle-orm"
+    "zod",
+    "hono"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Frontend React",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -39,13 +41,13 @@
     ]
   },
   "tests": [
-    "Jest",
-    "Cypress"
+    "Cypress",
+    "E2E Testing"
   ],
   "workflows": [
     "Release it!"
   ],
-  "lastActivity": "2026-05-12T00:00:00.000Z",
+  "lastActivity": "2026-05-18T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
