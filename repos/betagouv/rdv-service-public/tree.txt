@@ -224,6 +224,7 @@
 │   │   │   ├── rdv_plans_controller.rb
 │   │   │   ├── rdvs_controller.rb
 │   │   │   ├── registrations_controller.rb
+│   │   │   ├── sessions_by_code_controller.rb
 │   │   │   ├── sessions_controller.rb
 │   │   │   ├── territories_controller.rb
 │   │   │   ├── territory_creation_requests_controller.rb
@@ -654,6 +655,7 @@
 │   │   │   ├── absence_mailer.rb
 │   │   │   ├── account_deletion_mailer.rb
 │   │   │   ├── export_mailer.rb
+│   │   │   ├── login_code_mailer.rb
 │   │   │   ├── plage_ouverture_mailer.rb
 │   │   │   ├── rdv_mailer.rb
 │   │   │   ├── reply_transfer_mailer.rb
@@ -849,6 +851,8 @@
 │   │   ├── admin_updates_agent.rb
 │   │   ├── agent_prescription_search_context.rb
 │   │   ├── agent_removal.rb
+│   │   ├── agents
+│   │   │   └── login_code_sender.rb
 │   │   ├── annuaire_service_public.rb
 │   │   ├── base_service.rb
 │   │   ├── create_rdv_in_new_instance.rb
@@ -887,6 +891,7 @@
 │   │   │   └── rrule.rb
 │   │   ├── import_zone_rows_service.rb
 │   │   ├── invitation_search_context.rb
+│   │   ├── login_code_validator.rb
 │   │   ├── merge_users_service.rb
 │   │   ├── move_organisation_to_other_territory_service.rb
 │   │   ├── notifiers
@@ -915,6 +920,7 @@
 │   │   │   ├── auth.rb
 │   │   │   ├── callback.rb
 │   │   │   └── logout.rb
+│   │   ├── proconnect_identity_providers.rb
 │   │   ├── rdv_exporter.rb
 │   │   ├── rdv_start_coherence.rb
 │   │   ├── rdvs_overlapping.rb
@@ -925,7 +931,6 @@
 │   │   ├── users
 │   │   │   ├── contactable_organisations.rb
 │   │   │   ├── geo_search.rb
-│   │   │   ├── login_code_validator.rb
 │   │   │   └── rdv_builder.rb
 │   │   ├── verified_service_public_domain_names.rb
 │   │   ├── web_invitation_search_context.rb
@@ -1270,6 +1275,8 @@
 │       │   │   └── edit.html.slim
 │       │   ├── sessions
 │       │   │   └── new.html.slim
+│       │   ├── sessions_by_code
+│       │   │   └── new.html.slim
 │       │   ├── territories
 │       │   │   └── new.html.slim
 │       │   ├── territory_creation_requests
@@ -1400,6 +1407,8 @@
 │       │   │   ├── export_mailer
 │       │   │   │   ├── participations_export.html.slim
 │       │   │   │   └── rdv_export.html.slim
+│       │   │   ├── login_code_mailer
+│       │   │   │   └── login_code.html.slim
 │       │   │   ├── plage_ouverture_mailer
 │       │   │   │   ├── _plage_ouverture_overview.html.slim
 │       │   │   │   ├── plage_ouverture_created.html.slim
@@ -2016,7 +2025,9 @@
 │   │   ├── 20260325000001_add_support_link_to_operators.rb
 │   │   ├── 20260325164307_add_agent_accueil_to_agent_roles.rb
 │   │   ├── 20260326073135_set_agent_accueil_to_agents.rb
-│   │   └── 20260401000001_add_siret_to_territories.rb
+│   │   ├── 20260401000001_add_siret_to_territories.rb
+│   │   ├── 20260505142243_add_caldav_include_sensitive_data_to_agents.rb
+│   │   └── 20260518132616_add_online_booking_with_email_to_organisations.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2200,6 +2211,7 @@
 │   │   │   ├── caldav_sync_controller_spec.rb
 │   │   │   ├── inscription_via_operateur_controller_spec.rb
 │   │   │   ├── pages_controller_spec.rb
+│   │   │   ├── sessions_by_code_controller_spec.rb
 │   │   │   └── sessions_controller_spec.rb
 │   │   ├── concerns
 │   │   │   └── token_invitable_spec.rb
@@ -2821,6 +2833,7 @@
 │   │   │   ├── ics_spec.rb
 │   │   │   └── rrule_spec.rb
 │   │   ├── import_zone_rows_service_spec.rb
+│   │   ├── login_code_validator_spec.rb
 │   │   ├── merge_users_service_spec.rb
 │   │   ├── move_organisation_to_other_territory_service_spec.rb
 │   │   ├── notifiers
@@ -2845,8 +2858,7 @@
 │   │   ├── upsert_user_for_franceconnect_service_spec.rb
 │   │   ├── users
 │   │   │   ├── geo_search_cases_spec.rb
-│   │   │   ├── geo_search_spec.rb
-│   │   │   └── login_code_validator_spec.rb
+│   │   │   └── geo_search_spec.rb
 │   │   ├── verified_service_public_domain_names_spec.rb
 │   │   ├── web_invitation_search_context_spec.rb
 │   │   ├── web_search_context_spec.rb
@@ -2914,4 +2926,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-450 directories, 2466 files
+453 directories, 2475 files
