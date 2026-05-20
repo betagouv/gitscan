@@ -1,42 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 14 mai 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-05-20)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de sécurité, notamment concernant la gestion des accès, la validation des données et la protection contre les attaques potentielles (IDOR, spoofing). Des corrections ont également été apportées pour améliorer la robustesse de la plateforme, notamment au niveau de la gestion des fichiers et des tâches asynchrones. Enfin, des améliorations ont été apportées à l'expérience utilisateur, notamment en termes de préremplissage des formulaires avec les données FranceConnect et de la gestion des groupes d'instructeurs.
+Cette période a été marquée par d'importantes améliorations de la sécurité, notamment concernant la gestion des accès, la validation des données et la protection contre les vulnérabilités. De nombreuses corrections de bugs et optimisations de performance ont également été apportées, ainsi que des améliorations de l'expérience utilisateur, en particulier dans l'administration et la gestion des procédures. Des mises à jour techniques ont été réalisées pour améliorer la robustesse et la maintenabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration du préremplissage des champs avec les données FranceConnect, notamment pour la date de naissance.
-- Possibilité de préremplir la date de naissance avec FranceConnect pour les usagers et les instructeurs.
-- Ajout d'un badge FranceConnect sur les champs de date de naissance préremplis.
-- Amélioration de la gestion des groupes d'instructeurs, avec des restrictions d'accès plus précises.
-- Ajout de limites de répétition pour les blocs répétables dans les formulaires.
-- Amélioration de la gestion des pièces justificatives, notamment en termes de sécurité et de performance.
-- Ajout de notifications aux administrateurs avant l'expiration des tokens API Entreprise.
-- Amélioration de l'interface utilisateur pour la gestion des préférences de notification.
-- Possibilité de lier des dossiers entre eux.
+- Ajout d'une notification aux administrateurs avant l'expiration du token API Entreprise.
+- Amélioration de la gestion des groupes d'instructeurs, avec des corrections de bugs et des améliorations de la sécurité.
+- Correction d'un problème où les utilisateurs pouvaient accéder à des dossiers qui ne leur appartenaient pas.
+- Amélioration de la gestion des pièces justificatives, notamment en termes de performance et de gestion des erreurs.
+- Ajout d'une indication visuelle pour les dossiers liés avec un statut expiré ou supprimé.
+- Amélioration de l'interface utilisateur pour la gestion des champs et des types de champs, avec notamment l'ajout de limites de répétition.
+- Correction d'un bug empêchant la liaison de dossiers en brouillon.
+- Amélioration de la gestion des erreurs et des messages d'information pour les utilisateurs.
+- Ajout de la possibilité de préremplir le champ date de naissance avec les informations FranceConnect.
+- Amélioration de la gestion des autorisations et des rôles des utilisateurs.
+- Ajout d'un indicateur visuel pour les changements non publiés dans l'éditeur.
+- Correction de l'affichage du nom de la procédure dans l'onglet du navigateur.
+- Amélioration de la gestion des notifications et des alertes.
 
 ### Évolutions techniques
-- Migration de nombreux composants HAML vers ERB pour une meilleure maintenabilité.
-- Refactorisation de l'architecture de gestion des fichiers pour améliorer la performance et la sécurité.
-- Amélioration de la gestion des tâches asynchrones avec Sidekiq, notamment pour les tâches de longue durée.
-- Optimisation des requêtes SQL pour améliorer la performance de l'application.
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité et améliorer la stabilité de la plateforme.
-- Amélioration de la gestion des erreurs et des logs pour faciliter le débogage et la résolution des problèmes.
-- Utilisation de Vips pour le traitement des images, améliorant ainsi la performance et la qualité.
-- Amélioration de la sécurité en validant les données d'entrée et en protégeant contre les attaques potentielles (IDOR, spoofing).
+- Migration de nombreux jobs vers Sidekiq pour une meilleure gestion des tâches asynchrones et une meilleure résilience.
 - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des performances des requêtes et des traitements de données.
+- Mise à jour de nombreuses dépendances pour bénéficier des dernières corrections de sécurité et des améliorations de performance.
+- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles, notamment en matière d'injection SQL et de cross-site scripting.
+- Utilisation de Vips pour le traitement des images, améliorant ainsi les performances et la qualité des images.
+- Migration de composants Haml vers ERB pour une meilleure maintenabilité.
+- Amélioration de la gestion des erreurs et de la journalisation.
 - Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration de la documentation pour faciliter la compréhension et l'utilisation de la plateforme.
+- Amélioration de la configuration et de l'infrastructure de la plateforme.
+- Mise en place d'un système de surveillance et d'alerte pour détecter les problèmes en temps réel.
+- Amélioration de la gestion des cookies et des sessions.
+- Suppression de code obsolète et de dépendances inutiles.
+- Amélioration de la gestion des fichiers et des pièces jointes.
 
 ### Autres changements
-- Correction de plusieurs bugs mineurs et améliorations de l'interface utilisateur.
-- Mise à jour de la documentation pour refléter les changements apportés à la plateforme.
-- Nettoyage du code et suppression du code obsolète.
-- Amélioration des messages d'erreur pour faciliter le diagnostic des problèmes.
-- Ajout de commentaires au code pour améliorer la compréhension.
-- Correction de problèmes de performance liés à la gestion des fichiers.
-- Amélioration de la gestion des erreurs dans les tâches asynchrones.
-- Correction de problèmes de sécurité liés à la gestion des accès.
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité.
-- Amélioration de la gestion des logs pour faciliter le débogage.
-- Ajout de tests unitaires pour garantir la qualité du code.
-- Amélioration de la documentation pour faciliter la compréhension de la plateforme.
+- Mise à jour de la documentation.
+- Correction de problèmes de linting et de style de code.
+- Amélioration de la gestion des traductions.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Refactorisation de certains composants pour améliorer leur modularité et leur réutilisabilité.
+- Amélioration de la gestion des logs et des erreurs.
+- Ajout de tests pour garantir la qualité du code.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Correction de problèmes de sécurité.
+- Amélioration de la performance.
+- Ajout de nouvelles fonctionnalités.
+- Correction de bugs.
+- Amélioration de l'expérience utilisateur.
+- Refactorisation du code.

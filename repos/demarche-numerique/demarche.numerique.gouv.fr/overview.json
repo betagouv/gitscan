@@ -1,49 +1,43 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source et permet aux utilisateurs de réaliser des démarches administratives en ligne.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle vise à faciliter la dématérialisation des démarches publiques.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Notifications & Alertes",
     "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions",
     "API & Intégrations"
   ],
-  "audience": [
-    "Grand public",
-    "Agents de l'Administration"
-  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
-    "Delayed Job",
+    "Devise",
+    "DelayedJob",
     "Chartkick",
-    "React",
     "Vips",
     "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
+    "Ruby (scripts & backend)",
+    "Frontend React",
     "Microservices & Architecture",
-    "Documentation & Schémas",
     "CI/CD & Déploiement",
-    "TypeScript / JavaScript",
-    "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml",
-      "jwt",
-      "session"
+      "sso"
     ],
     "providers": [
       "FranceConnect"
@@ -52,13 +46,12 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium",
-    "Playwright"
+    "Selenium"
   ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-14T05:54:15Z",
+  "lastActivity": "2026-05-19T18:01:20Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
