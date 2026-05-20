@@ -66,10 +66,13 @@
 │   │   └── populate-test-db.ts
 │   ├── src
 │   │   ├── __tests__
+│   │   │   ├── permissions-carcasse-ownership.test.ts
+│   │   │   ├── soft-delete-cascade-e2e.test.ts
 │   │   │   ├── swagger-validation.test.ts
 │   │   │   ├── sync-carcasse-intermediaire.test.ts
 │   │   │   ├── sync-carcasse.test.ts
 │   │   │   ├── sync-fei.test.ts
+│   │   │   ├── sync-route-carcasse-primary.test.ts
 │   │   │   ├── sync-route.test.ts
 │   │   │   ├── user-entity.test.ts
 │   │   │   └── user-invite.test.ts
@@ -116,7 +119,6 @@
 │   │   │   │   ├── official-cfei.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── api-key-approval.ts
-│   │   │   ├── carcasse-intermediaire.ts
 │   │   │   ├── carcasse.ts
 │   │   │   ├── certificats.ts
 │   │   │   ├── entite.ts
@@ -221,6 +223,7 @@
 │   ├── .prettierignore
 │   ├── README.md
 │   ├── __tests__
+│   │   ├── carcasse-load-and-merge.test.ts
 │   │   ├── fei-steps.test.ts
 │   │   └── update-carcasse-status.test.ts
 │   ├── eslint.config.js
@@ -705,6 +708,7 @@
 │   │   │   ├── CardCarcasseSvi.tsx
 │   │   │   ├── CardFiche.tsx
 │   │   │   ├── Chargement.tsx
+│   │   │   ├── CollapsibleSection.tsx
 │   │   │   ├── ConfirmModal.tsx
 │   │   │   ├── ConnexionButton.tsx
 │   │   │   ├── DepartementValorisationCard.tsx
@@ -1087,7 +1091,8 @@
 │   │   │   ├── 94-profil.spec.ts
 │   │   │   ├── 95-fiche-recuperee-fin-de-chaine.spec.ts
 │   │   │   ├── 96-refus-carcasse.spec.ts
-│   │   │   └── 97-retransmission-interdite.spec.ts
+│   │   │   ├── 97-retransmission-interdite.spec.ts
+│   │   │   └── 98-readonly-enforcement.spec.ts
 │   │   ├── collecteur
 │   │   │   ├── 62-reception-fiche-depuis-pd.spec.ts
 │   │   │   ├── 63-transmission-a-etg.spec.ts
@@ -1106,7 +1111,6 @@
 │   │   │   ├── 118-dispatch-etg-plus-collecteur.spec.ts
 │   │   │   ├── 119-dispatch-3-destinataires.spec.ts
 │   │   │   ├── 120-vue-agregee-etg-carcasses.spec.ts
-│   │   │   ├── 121-carcasse-intermediaire-api-leak.spec.ts
 │   │   │   ├── 122-refus-etg1-ne-propage-pas.spec.ts
 │   │   │   ├── 123-transmission-svi-n-expose-pas-etg2.spec.ts
 │   │   │   ├── 124-deux-chaines-svi-paralleles.spec.ts
@@ -1114,6 +1118,7 @@
 │   │   │   ├── 126-decisions-svi-divergentes-par-branche.spec.ts
 │   │   │   ├── 127-url-directe-carcasse-autre-branche.spec.ts
 │   │   │   ├── 128-modification-api-cross-branche.spec.ts
+│   │   │   ├── 129-dispatch-partial-refusal-isolation.spec.ts
 │   │   │   └── fiche_dispatch_multi_destinataires.spec.ts
 │   │   ├── etg
 │   │   │   ├── 45-reception-avec-stockage-ccg.spec.ts
@@ -1280,4 +1285,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-313 directories, 969 files
+313 directories, 974 files
