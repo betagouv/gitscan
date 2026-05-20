@@ -1,18 +1,19 @@
-## Changelog : proconnect-identite (30 derniers jours, au 13 mai 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de ProConnect Identité se concentrent sur l'amélioration de l'expérience utilisateur en fournissant des informations plus claires en cas d'erreur OIDC et en affinant les messages d'erreur pour les certifications de dirigeants. Des optimisations techniques ont également été apportées, notamment au niveau des tests et de la gestion des dépendances.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur en cas d'erreur OIDC, la migration progressive des envois d'emails depuis MonComptePro, et la clarification des motifs de rejet lors des demandes de certification. Des optimisations techniques et des mises à jour de dépendances ont également été réalisées pour assurer la stabilité et la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration des messages d'erreur pour les rejets de certification de dirigeants, avec un conseil à l'utilisateur de consulter son email. [#1927](https://github.com/proconnect-gouv/proconnect-identite/pull/1927)
-- Ajout d'une description d'erreur OIDC pour une meilleure information des utilisateurs et des partenaires ProConnect. [#1914](https://github.com/proconnect-gouv/proconnect-identite/pull/1914)
-- Modification de la vue `close-match-error.ejs` pour la certification de dirigeant. [#1914](https://github.com/proconnect-gouv/proconnect-identite/pull/1914)
+- Amélioration des messages d'erreur OIDC : une description d'erreur plus détaillée est maintenant transmise à ProConnect Federation (PCF) pour une meilleure compréhension des problèmes d'authentification. [#1914](https://github.com/proconnect-gouv/proconnect-identite/pulls/1914)
+- Clarification du motif de rejet : le motif de rejet d'une demande de certification a été remplacé par un message invitant l'utilisateur à consulter son email pour plus d'informations. [#1927](https://github.com/proconnect-gouv/proconnect-identite/pulls/1927)
+- Migration des emails : début de la migration des envois d'emails depuis MonComptePro, avec l'ajout du nom de l'expéditeur. [#1930](https://github.com/proconnect-gouv/proconnect-identite/pulls/1930)
 
 ### Évolutions techniques
-- Refactorisation du "seed" de la base de données pour être exécuté avant les tests E2E, améliorant ainsi la fiabilité des tests. [#1926](https://github.com/proconnect-gouv/proconnect-identite/pull/1926)
-- Mise à jour de plusieurs dépendances : Redis (7.2.14), Prettier (3.8.3), Lodash (4.18.1), Hono (4.12.18), Cypress GitHub Action (7.3.0), actions/labeler (6.1.0).
-- Tentative de mise à jour de la version de Node (de 24-slim à 26-slim) puis annulation suite à des problèmes. [#1921](https://github.com/proconnect-gouv/proconnect-identite/pull/1921)
+- Refactoring des tests E2E : Utilisation de "before hook" pour initialiser la base de données avant la plupart des tests E2E, améliorant ainsi leur fiabilité et leur performance. [#1926](https://github.com/proconnect-gouv/proconnect-identite/pulls/1926)
+- Optimisation des dépendances : Mise à jour de plusieurs dépendances, incluant `redis`, `hono`, `prettier`, `systeminformation`, `brace-expansion`, `lodash`, `cypress-io/github-action` et `actions/labeler`.
+- Rétrogradation de la version de Node : Rétrogradation de la version de Node de 26-slim à 24-slim suite à des problèmes rencontrés. [#1925](https://github.com/proconnect-gouv/proconnect-identite/pulls/1925)
 
 ### Autres changements
-- Mise à jour des dépendances de développement Sentry. [#1908](https://github.com/proconnect-gouv/proconnect-identite/pull/1908)
-- Mise à jour de la dépendance dotenvx. [#1909](https://github.com/proconnect-gouv/proconnect-identite/pull/1909)
+- Documentation : Mise à jour de la vue `certification-dirigeant/close-match-error.ejs`.
+- Maintenance : Suppression d'une dépendance obsolète (`dotenvx`).
+- CI/CD : Mise à jour de la configuration du workflow CI/CD.
