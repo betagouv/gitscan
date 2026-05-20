@@ -1,15 +1,12 @@
 ## Changelog : accounts (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce changelog présente l'initialisation du projet "accounts", qui gère les comptes utilisateurs pour LaSuite. Les premiers pas ont été faits pour la construction, le test et la publication de l'image Docker. Une infrastructure de test de charge locale a également été mise en place.
+Ce mois-ci, le projet a connu une initialisation majeure avec la création du dépôt et la mise en place des bases du projet. Des améliorations ont été apportées au processus de publication Docker pour supporter les architectures multi-plateformes et des outils de tests de charge locaux ont été ajoutés pour faciliter l'évaluation des performances du backend.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle visible pour les utilisateurs à ce stade. Le projet est en phase d'initialisation.
+- Initialisation du projet avec une structure de base fonctionnelle. [#4975fb5](https://github.com/suitenumerique/accounts/commit/4975fb5)
+- Initialisation du projet avec une structure de base fonctionnelle. [#ffe0d9f](https://github.com/suitenumerique/accounts/commit/ffe0d9f)
 
 ### Évolutions techniques
-- Initialisation du projet avec une structure de base. [#4975fb5](https://github.com/suitenumerique/accounts/commit/4975fb5) et [#ffe0d9f](https://github.com/suitenumerique/accounts/commit/ffe0d9f)
-- Mise en place d'une infrastructure pour les tests de charge locaux, permettant de simuler des requêtes et d'évaluer les performances du backend. [#5690375](https://github.com/suitenumerique/accounts/commit/5690375)
-- Amélioration du processus de construction de l'image Docker pour supporter les architectures multiples (multi-arch). [#e9f4b70](https://github.com/suitenumerique/accounts/commit/e9f4b70)
-
-### Autres changements
-Aucun autre changement significatif à signaler pour le moment.
+- Amélioration du processus de build Docker pour supporter les architectures multi-plateformes (multi-arch). [#e9f4b70](https://github.com/suitenumerique/accounts/commit/e9f4b70)
+- Ajout d'un outil permettant de réaliser des tests de charge locaux du backend. [#5690375](https://github.com/suitenumerique/accounts/commit/5690375)
