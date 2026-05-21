@@ -1,15 +1,16 @@
-## Changelog : upptime (30 derniers jours, au 2026-05-19)
+## Changelog : upptime (30 derniers jours, au 2026-05-21)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent des mises à jour automatiques de l'état des différents services surveillés par le système (API Apprentissage, Percona, Sentry, etc.). Ces mises à jour indiquent que les services sont généralement opérationnels.  Il n'y a pas eu de changements majeurs au code du projet durant cette période.
+Ce changelog résume les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent les mises à jour régulières du statut des différents services surveillés par le système, signalées par le bot Upptime. Des mises à jour de la librairie `@upptime` ont également été effectuées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle n'a été apportée durant cette période. Les changements sont principalement liés à la surveillance de l'uptime des différents services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur le maintien de la surveillance et la notification de l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique significative n'a été apportée durant cette période.
+*   Mise à jour de la librairie `@upptime` vers la version 1.41.4 et 1.41.3.
+*   Mise à jour régulière des rapports de statut des différents services surveillés (API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance).
 
 ### Autres changements
-- Mise à jour de la version de `@upptime` à v1.41.2 et v1.41.3.
-- Mises à jour régulières du fichier `README.md` et du résumé d'état.
-- Mises à jour automatiques des graphiques de statut.
+*   Mise à jour du fichier README avec un résumé de l'état des services.
+*   Mise à jour du fichier de résumé du statut.
+*   Mise à jour des graphiques de surveillance.
