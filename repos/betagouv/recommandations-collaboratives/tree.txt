@@ -45,242 +45,6 @@
 │   ├── urls.rst
 │   └── workflows.rst
 ├── fabfile.py
-├── frontend_tests
-│   ├── .eslintrc.js
-│   ├── .prettierrc
-│   ├── README.md
-│   ├── cypress
-│   │   ├── e2e
-│   │   │   ├── auth
-│   │   │   │   ├── advisorSignup.cy.js
-│   │   │   │   ├── loginWithUi.cy.js
-│   │   │   │   ├── loginWithoutUi.cy.js
-│   │   │   │   └── signupWithUi.cy.js
-│   │   │   ├── dsrc
-│   │   │   │   └── form.basic.cy.js
-│   │   │   ├── explore
-│   │   │   │   └── canExploreAllUrls.cy.js
-│   │   │   ├── header
-│   │   │   │   ├── canAccessAdressBook.cy.js
-│   │   │   │   ├── canAccessDocumentation.cy.js
-│   │   │   │   ├── canAccessMenuAndContentInAllVIewportSizes.cy.js
-│   │   │   │   ├── canAccessNotificationMenuAndManageNotifications.cy.js
-│   │   │   │   └── canCreateANewProject.cy.js
-│   │   │   ├── project
-│   │   │   │   ├── Role
-│   │   │   │   │   ├── canSeeIfAProjectManagerHasAcceptAnInvite.cy.js
-│   │   │   │   │   └── canSelectARole.cy.js
-│   │   │   │   ├── collectivity
-│   │   │   │   │   ├── canAccessPublicNotes.cy.js
-│   │   │   │   │   ├── canAccessRecommandations.cy.js
-│   │   │   │   │   ├── canCreateAProject.cy.js
-│   │   │   │   │   ├── canFillProjectSurvey.cy.js
-│   │   │   │   │   ├── canInviteMember.cy.js
-│   │   │   │   │   ├── canPauseAProjectAsOwner.cy.js
-│   │   │   │   │   ├── canPublicShareAproject.cy.js
-│   │   │   │   │   ├── canQuitProjectAsProjectMember.cy.js
-│   │   │   │   │   ├── canSeeEmailReminderAsOwner.cy.js
-│   │   │   │   │   ├── canSeeGeneralInformation.cy.js
-│   │   │   │   │   ├── canSeeProjectActiveStatus.cy.js
-│   │   │   │   │   ├── cantAccessInlineTasks.cy.js
-│   │   │   │   │   ├── cantChangeTopics.cy.js
-│   │   │   │   │   ├── cantInviteASwitchtender.cy.js
-│   │   │   │   │   ├── cantQuitProjectAsProjectOwner.cy.js
-│   │   │   │   │   ├── cantSeePrivateNotes.cy.js
-│   │   │   │   │   └── cantSeeSynopsis.cy.js
-│   │   │   │   ├── multiportail
-│   │   │   │   │   └── canViewProjectShareBetweenPortal.cy.js
-│   │   │   │   ├── navigation
-│   │   │   │   │   ├── canAccessActions.cy.js
-│   │   │   │   │   ├── canAccessAdministration.cy.js
-│   │   │   │   │   ├── canAccessDocuments.cy.js
-│   │   │   │   │   ├── canAccessKnowledge.cy.js
-│   │   │   │   │   ├── canAccessOverview.cy.js
-│   │   │   │   │   ├── canAccessPrivateNotes.cy.js
-│   │   │   │   │   ├── canAccessPublicNotes.cy.js
-│   │   │   │   │   └── canSeeNotificationOnTabs.cy.js
-│   │   │   │   ├── onboarding
-│   │   │   │   │   ├── canCreateANewProject.cy.js
-│   │   │   │   │   ├── canCreateAProjectIfConnected.cy.js
-│   │   │   │   │   └── cantCreateAProjectIfEmptyPostalCities.cy.js
-│   │   │   │   ├── overview
-│   │   │   │   │   ├── canEditProjectTags.cy.js
-│   │   │   │   │   ├── canMarkDiagnosticAsDoneAsStaff.cy.js
-│   │   │   │   │   ├── canSeeANonActiveProjectOwnerProfile.cy.js
-│   │   │   │   │   ├── canSeeDisabledInvitationButton.cy.js
-│   │   │   │   │   ├── canSeeEDLResponseOnProjectOverview.cy.js
-│   │   │   │   │   ├── canSeeProjectPhoneIfNoOwnerPhone.cy.js
-│   │   │   │   │   └── cantSeeContactOfOwner.cy.js
-│   │   │   │   ├── staff
-│   │   │   │   │   ├── administration
-│   │   │   │   │   │   ├── canChangeProjectInformation.cy.js
-│   │   │   │   │   │   ├── canChangeProjectLocation.cy.js
-│   │   │   │   │   │   ├── canInviteAMember.cy.js
-│   │   │   │   │   │   ├── canInviteASwitchtender.cy.js
-│   │   │   │   │   │   ├── canPauseAProjectAsStaff.cy.js
-│   │   │   │   │   │   ├── canQuitOrJoinProjectAsAdvisorOrObserver.cy.js
-│   │   │   │   │   │   ├── canQuitProjectAsStaff.cy.js
-│   │   │   │   │   │   ├── canResendAMemberInvitation.cy.js
-│   │   │   │   │   │   ├── canResendASwitchtenderInvitation.cy.js
-│   │   │   │   │   │   ├── canRevokeAMemberInvitation.cy.js
-│   │   │   │   │   │   └── canRevokeASwitchtenderInvitation.cy.js
-│   │   │   │   │   ├── canApproveAProject.cy.js
-│   │   │   │   │   ├── canManageAdvisorDemands.cy.js
-│   │   │   │   │   ├── canRefuseAProject.cy.js
-│   │   │   │   │   ├── canSeeEmailReminderMessageAsStaff.cy.js
-│   │   │   │   │   ├── crm
-│   │   │   │   │   │   ├── canListProjectInCRM.cy.js
-│   │   │   │   │   │   └── canToggleProjectImpactTagInCRM.cy.js
-│   │   │   │   │   └── kanban
-│   │   │   │   │       ├── canDisplayOnlyMyProjects.cy.js
-│   │   │   │   │       └── canSearchAndDisplayProject.cy.js
-│   │   │   │   ├── survey
-│   │   │   │   │   └── canSeeCtaOnSurvey.cy.js
-│   │   │   │   ├── switchtender
-│   │   │   │   │   ├── assigned
-│   │   │   │   │   │   ├── administration
-│   │   │   │   │   │   │   ├── canResendAMemberInvitation.cy.js
-│   │   │   │   │   │   │   └── canRevokeAMemberInvitation.cy.js
-│   │   │   │   │   │   ├── canAccessAndUsePrivateNotes.cy.js
-│   │   │   │   │   │   ├── canAccessAndUsePublicNotes.cy.js
-│   │   │   │   │   │   ├── canInvitePeople.cy.js
-│   │   │   │   │   │   └── canSeeAndUpdateAdvisorNote.cy.js
-│   │   │   │   │   ├── other
-│   │   │   │   │   │   ├── canQuitOrJoinProjectAsAdvisorOrObserver.cy.js
-│   │   │   │   │   │   ├── canSeeEmailReminderMessageAsAdvisor.cy.js
-│   │   │   │   │   │   ├── canSeeProjectActiveStatus.cy.js
-│   │   │   │   │   │   └── cantChangeTopics.cy.js
-│   │   │   │   │   ├── otherTerritory
-│   │   │   │   │   │   ├── canInviteASwitchtender.cy.js
-│   │   │   │   │   │   ├── canReadOnlyOverviewPage.cy.js
-│   │   │   │   │   │   ├── canReadOnlyProjectState.cy.js
-│   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
-│   │   │   │   │   ├── readOnly
-│   │   │   │   │   │   ├── canReadOnlyOverviewPage.cy.js
-│   │   │   │   │   │   ├── canReadOnlyPublicNotes.cy.js
-│   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
-│   │   │   │   │   └── regionalUnassigned
-│   │   │   │   │       ├── adviseOrObserveAProject.cy.js
-│   │   │   │   │       └── cantAccessPrivateNotes.cy.js
-│   │   │   │   └── tasks
-│   │   │   │       ├── canDeleteTask.cy.js
-│   │   │   │       ├── canPublishDraftTask.cy.js
-│   │   │   │       ├── canPublishTaskWithRessource.cy.js
-│   │   │   │       ├── canSeeInlineTasks.cy.js
-│   │   │   │       ├── canSeeKanbanTasks.cy.js
-│   │   │   │       ├── canSeeSuggestTasks.cy.js
-│   │   │   │       ├── canSwitchBetweenTasksViews.cy.js
-│   │   │   │       ├── canUnpublishTask.cy.js
-│   │   │   │       ├── contact
-│   │   │   │       │   ├── canCreateContactOrgaAndGroup.cy.js
-│   │   │   │       │   ├── canEditAndShareContact.cy.js
-│   │   │   │       │   ├── canSuppressContact.cy.js
-│   │   │   │       │   └── canclickToSeeContact.cy.js
-│   │   │   │       ├── content
-│   │   │   │       │   └── canSeeTaskResourceInitialCommentTitleAndSubtitle.cy.js
-│   │   │   │       ├── kanban
-│   │   │   │       │   └── canDragnDropTaskToInProgressStatus.cy.js
-│   │   │   │       ├── newTasksBannerDisplayPluralOrSingularLabel.cy.js
-│   │   │   │       ├── position
-│   │   │   │       │   └── canMoveTask.cy.js
-│   │   │   │       ├── previewModal
-│   │   │   │       │   ├── canEditMessageDraftTask.cy.js
-│   │   │   │       │   ├── canOpenPreviewModal.cy.js
-│   │   │   │       │   ├── canPostAFollowup.cy.js
-│   │   │   │       │   └── cantCommentDraftTask.cy.js
-│   │   │   │       ├── status
-│   │   │   │       │   └── canChangeTaskStatus.cy.js
-│   │   │   │       └── topic
-│   │   │   │           └── canSeeKabanAndInlineTaskTopic.cy.js
-│   │   │   ├── public
-│   │   │   │   └── canAccessAWayToContactTheTeam.cy.js
-│   │   │   ├── resource
-│   │   │   │   ├── canAskQuestion.cy.js
-│   │   │   │   ├── canCreateResource.cy.js
-│   │   │   │   ├── canEditResource.cy.js
-│   │   │   │   ├── contactListVisibility.cy.js
-│   │   │   │   ├── seeDraftResource.cy.js
-│   │   │   │   ├── seeExpiredResource.cy.js
-│   │   │   │   └── seeNonExpiredResource.cy.js
-│   │   │   └── tools
-│   │   │       ├── conversation
-│   │   │       │   ├── canAddAFileInMessage.cy.js
-│   │   │       │   └── cantSendAnEmptyMessage.cy.js
-│   │   │       ├── documents
-│   │   │       │   ├── canAddALink.cy.js
-│   │   │       │   ├── canAddAfile.cy.js
-│   │   │       │   ├── canBookmarkAFile.cy.js
-│   │   │       │   ├── canDeleteAFile.cy.js
-│   │   │       │   ├── canDeleteALink.cy.js
-│   │   │       │   └── canSeePrivateFilesSection.cy.js
-│   │   │       ├── geolocation
-│   │   │       │   ├── canEditProjectLocationDetails.cy.js
-│   │   │       │   └── canSeeProjectLocationDetails.cy.js
-│   │   │       ├── searchableList
-│   │   │       │   ├── canAssignContactToAResource.cy.js
-│   │   │       │   ├── canAssignDepartmentsToAResource.cy.js
-│   │   │       │   ├── canUpdateContactOfAResource.cy.js
-│   │   │       │   └── canUpdateDeparmentsOfAResource.cy.js
-│   │   │       ├── task
-│   │   │       │   ├── canAddAfileInTask.cy.js
-│   │   │       │   └── canEditTaskComments.cy.js
-│   │   │       └── tutorial
-│   │   │           ├── externalResourceTutorial.cy.js
-│   │   │           └── onboardingAdvisorTutorial.cy.js
-│   │   ├── fixtures
-│   │   │   ├── addressbook
-│   │   │   │   ├── contacts.json
-│   │   │   │   └── organizations.json
-│   │   │   ├── documents
-│   │   │   │   ├── documents.json
-│   │   │   │   ├── file.json
-│   │   │   │   └── link.json
-│   │   │   ├── geomatics
-│   │   │   │   ├── commune.json
-│   │   │   │   ├── department.json
-│   │   │   │   └── region.json
-│   │   │   ├── images
-│   │   │   │   └── ui-screenshot.png
-│   │   │   ├── profiles
-│   │   │   │   └── profiles.json
-│   │   │   ├── projects
-│   │   │   │   ├── invites.json
-│   │   │   │   ├── project.json
-│   │   │   │   ├── projects.json
-│   │   │   │   ├── projectsMembers.json
-│   │   │   │   ├── projectsSites.json
-│   │   │   │   ├── reminders.json
-│   │   │   │   └── tasks.json
-│   │   │   ├── resources
-│   │   │   │   └── resources.json
-│   │   │   ├── settings
-│   │   │   │   ├── challenge.json
-│   │   │   │   ├── challengeDefinition.json
-│   │   │   │   ├── siteWithOnboardingAndSurvey.json
-│   │   │   │   └── tag.json
-│   │   │   ├── users
-│   │   │   │   ├── advisorAccessRequest.json
-│   │   │   │   ├── collectivity.json
-│   │   │   │   ├── contact.json
-│   │   │   │   └── users.json
-│   │   │   └── utils
-│   │   │       └── devices.json
-│   │   ├── plugins
-│   │   │   └── index.js
-│   │   └── support
-│   │       ├── commands.js
-│   │       ├── dsrc
-│   │       │   └── forms.tools.js
-│   │       ├── e2e.js
-│   │       ├── tools
-│   │       │   ├── editor.js
-│   │       │   └── geolocation.js
-│   │       └── views
-│   │           └── project.js
-│   ├── cypress.config.js
-│   ├── package.json
-│   ├── users.json
-│   └── yarn.lock
 ├── logo-squared.png
 ├── logo.png
 ├── makefile
@@ -1645,6 +1409,235 @@
 │   │   ├── config
 │   │   │   └── jest
 │   │   │       └── fileTransform.js
+│   │   ├── cypress
+│   │   │   ├── e2e
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── advisorSignup.cy.js
+│   │   │   │   │   ├── loginWithUi.cy.js
+│   │   │   │   │   ├── loginWithoutUi.cy.js
+│   │   │   │   │   └── signupWithUi.cy.js
+│   │   │   │   ├── dsrc
+│   │   │   │   │   └── form.basic.cy.js
+│   │   │   │   ├── explore
+│   │   │   │   │   └── canExploreAllUrls.cy.js
+│   │   │   │   ├── header
+│   │   │   │   │   ├── canAccessAdressBook.cy.js
+│   │   │   │   │   ├── canAccessDocumentation.cy.js
+│   │   │   │   │   ├── canAccessMenuAndContentInAllVIewportSizes.cy.js
+│   │   │   │   │   ├── canAccessNotificationMenuAndManageNotifications.cy.js
+│   │   │   │   │   └── canCreateANewProject.cy.js
+│   │   │   │   ├── project
+│   │   │   │   │   ├── Role
+│   │   │   │   │   │   ├── canSeeIfAProjectManagerHasAcceptAnInvite.cy.js
+│   │   │   │   │   │   └── canSelectARole.cy.js
+│   │   │   │   │   ├── collectivity
+│   │   │   │   │   │   ├── canAccessPublicNotes.cy.js
+│   │   │   │   │   │   ├── canAccessRecommandations.cy.js
+│   │   │   │   │   │   ├── canCreateAProject.cy.js
+│   │   │   │   │   │   ├── canFillProjectSurvey.cy.js
+│   │   │   │   │   │   ├── canInviteMember.cy.js
+│   │   │   │   │   │   ├── canPauseAProjectAsOwner.cy.js
+│   │   │   │   │   │   ├── canPublicShareAproject.cy.js
+│   │   │   │   │   │   ├── canQuitProjectAsProjectMember.cy.js
+│   │   │   │   │   │   ├── canSeeEmailReminderAsOwner.cy.js
+│   │   │   │   │   │   ├── canSeeGeneralInformation.cy.js
+│   │   │   │   │   │   ├── canSeeProjectActiveStatus.cy.js
+│   │   │   │   │   │   ├── cantAccessInlineTasks.cy.js
+│   │   │   │   │   │   ├── cantChangeTopics.cy.js
+│   │   │   │   │   │   ├── cantInviteASwitchtender.cy.js
+│   │   │   │   │   │   ├── cantQuitProjectAsProjectOwner.cy.js
+│   │   │   │   │   │   ├── cantSeePrivateNotes.cy.js
+│   │   │   │   │   │   └── cantSeeSynopsis.cy.js
+│   │   │   │   │   ├── multiportail
+│   │   │   │   │   │   └── canViewProjectShareBetweenPortal.cy.js
+│   │   │   │   │   ├── navigation
+│   │   │   │   │   │   ├── canAccessActions.cy.js
+│   │   │   │   │   │   ├── canAccessAdministration.cy.js
+│   │   │   │   │   │   ├── canAccessDocuments.cy.js
+│   │   │   │   │   │   ├── canAccessKnowledge.cy.js
+│   │   │   │   │   │   ├── canAccessOverview.cy.js
+│   │   │   │   │   │   ├── canAccessPrivateNotes.cy.js
+│   │   │   │   │   │   ├── canAccessPublicNotes.cy.js
+│   │   │   │   │   │   └── canSeeNotificationOnTabs.cy.js
+│   │   │   │   │   ├── onboarding
+│   │   │   │   │   │   ├── canCreateANewProject.cy.js
+│   │   │   │   │   │   ├── canCreateAProjectIfConnected.cy.js
+│   │   │   │   │   │   └── cantCreateAProjectIfEmptyPostalCities.cy.js
+│   │   │   │   │   ├── overview
+│   │   │   │   │   │   ├── canEditProjectTags.cy.js
+│   │   │   │   │   │   ├── canMarkDiagnosticAsDoneAsStaff.cy.js
+│   │   │   │   │   │   ├── canSeeANonActiveProjectOwnerProfile.cy.js
+│   │   │   │   │   │   ├── canSeeDisabledInvitationButton.cy.js
+│   │   │   │   │   │   ├── canSeeEDLResponseOnProjectOverview.cy.js
+│   │   │   │   │   │   ├── canSeeProjectPhoneIfNoOwnerPhone.cy.js
+│   │   │   │   │   │   └── cantSeeContactOfOwner.cy.js
+│   │   │   │   │   ├── staff
+│   │   │   │   │   │   ├── administration
+│   │   │   │   │   │   │   ├── canChangeProjectInformation.cy.js
+│   │   │   │   │   │   │   ├── canChangeProjectLocation.cy.js
+│   │   │   │   │   │   │   ├── canInviteAMember.cy.js
+│   │   │   │   │   │   │   ├── canInviteASwitchtender.cy.js
+│   │   │   │   │   │   │   ├── canPauseAProjectAsStaff.cy.js
+│   │   │   │   │   │   │   ├── canQuitOrJoinProjectAsAdvisorOrObserver.cy.js
+│   │   │   │   │   │   │   ├── canQuitProjectAsStaff.cy.js
+│   │   │   │   │   │   │   ├── canResendAMemberInvitation.cy.js
+│   │   │   │   │   │   │   ├── canResendASwitchtenderInvitation.cy.js
+│   │   │   │   │   │   │   ├── canRevokeAMemberInvitation.cy.js
+│   │   │   │   │   │   │   └── canRevokeASwitchtenderInvitation.cy.js
+│   │   │   │   │   │   ├── canApproveAProject.cy.js
+│   │   │   │   │   │   ├── canManageAdvisorDemands.cy.js
+│   │   │   │   │   │   ├── canRefuseAProject.cy.js
+│   │   │   │   │   │   ├── canSeeEmailReminderMessageAsStaff.cy.js
+│   │   │   │   │   │   ├── crm
+│   │   │   │   │   │   │   ├── canListProjectInCRM.cy.js
+│   │   │   │   │   │   │   └── canToggleProjectImpactTagInCRM.cy.js
+│   │   │   │   │   │   └── kanban
+│   │   │   │   │   │       ├── canDisplayOnlyMyProjects.cy.js
+│   │   │   │   │   │       └── canSearchAndDisplayProject.cy.js
+│   │   │   │   │   ├── survey
+│   │   │   │   │   │   └── canSeeCtaOnSurvey.cy.js
+│   │   │   │   │   ├── switchtender
+│   │   │   │   │   │   ├── assigned
+│   │   │   │   │   │   │   ├── administration
+│   │   │   │   │   │   │   │   ├── canResendAMemberInvitation.cy.js
+│   │   │   │   │   │   │   │   └── canRevokeAMemberInvitation.cy.js
+│   │   │   │   │   │   │   ├── canAccessAndUsePrivateNotes.cy.js
+│   │   │   │   │   │   │   ├── canAccessAndUsePublicNotes.cy.js
+│   │   │   │   │   │   │   ├── canInvitePeople.cy.js
+│   │   │   │   │   │   │   └── canSeeAndUpdateAdvisorNote.cy.js
+│   │   │   │   │   │   ├── other
+│   │   │   │   │   │   │   ├── canQuitOrJoinProjectAsAdvisorOrObserver.cy.js
+│   │   │   │   │   │   │   ├── canSeeEmailReminderMessageAsAdvisor.cy.js
+│   │   │   │   │   │   │   ├── canSeeProjectActiveStatus.cy.js
+│   │   │   │   │   │   │   └── cantChangeTopics.cy.js
+│   │   │   │   │   │   ├── otherTerritory
+│   │   │   │   │   │   │   ├── canInviteASwitchtender.cy.js
+│   │   │   │   │   │   │   ├── canReadOnlyOverviewPage.cy.js
+│   │   │   │   │   │   │   ├── canReadOnlyProjectState.cy.js
+│   │   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
+│   │   │   │   │   │   ├── readOnly
+│   │   │   │   │   │   │   ├── canReadOnlyOverviewPage.cy.js
+│   │   │   │   │   │   │   ├── canReadOnlyPublicNotes.cy.js
+│   │   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
+│   │   │   │   │   │   └── regionalUnassigned
+│   │   │   │   │   │       ├── adviseOrObserveAProject.cy.js
+│   │   │   │   │   │       └── cantAccessPrivateNotes.cy.js
+│   │   │   │   │   └── tasks
+│   │   │   │   │       ├── canDeleteTask.cy.js
+│   │   │   │   │       ├── canPublishDraftTask.cy.js
+│   │   │   │   │       ├── canPublishTaskWithRessource.cy.js
+│   │   │   │   │       ├── canSeeInlineTasks.cy.js
+│   │   │   │   │       ├── canSeeKanbanTasks.cy.js
+│   │   │   │   │       ├── canSeeSuggestTasks.cy.js
+│   │   │   │   │       ├── canSwitchBetweenTasksViews.cy.js
+│   │   │   │   │       ├── canUnpublishTask.cy.js
+│   │   │   │   │       ├── contact
+│   │   │   │   │       │   ├── canCreateContactOrgaAndGroup.cy.js
+│   │   │   │   │       │   ├── canEditAndShareContact.cy.js
+│   │   │   │   │       │   ├── canSuppressContact.cy.js
+│   │   │   │   │       │   └── canclickToSeeContact.cy.js
+│   │   │   │   │       ├── content
+│   │   │   │   │       │   └── canSeeTaskResourceInitialCommentTitleAndSubtitle.cy.js
+│   │   │   │   │       ├── kanban
+│   │   │   │   │       │   └── canDragnDropTaskToInProgressStatus.cy.js
+│   │   │   │   │       ├── newTasksBannerDisplayPluralOrSingularLabel.cy.js
+│   │   │   │   │       ├── position
+│   │   │   │   │       │   └── canMoveTask.cy.js
+│   │   │   │   │       ├── previewModal
+│   │   │   │   │       │   ├── canEditMessageDraftTask.cy.js
+│   │   │   │   │       │   ├── canOpenPreviewModal.cy.js
+│   │   │   │   │       │   ├── canPostAFollowup.cy.js
+│   │   │   │   │       │   └── cantCommentDraftTask.cy.js
+│   │   │   │   │       ├── status
+│   │   │   │   │       │   └── canChangeTaskStatus.cy.js
+│   │   │   │   │       └── topic
+│   │   │   │   │           └── canSeeKabanAndInlineTaskTopic.cy.js
+│   │   │   │   ├── public
+│   │   │   │   │   └── canAccessAWayToContactTheTeam.cy.js
+│   │   │   │   ├── resource
+│   │   │   │   │   ├── canAskQuestion.cy.js
+│   │   │   │   │   ├── canCreateResource.cy.js
+│   │   │   │   │   ├── canEditResource.cy.js
+│   │   │   │   │   ├── contactListVisibility.cy.js
+│   │   │   │   │   ├── seeDraftResource.cy.js
+│   │   │   │   │   ├── seeExpiredResource.cy.js
+│   │   │   │   │   └── seeNonExpiredResource.cy.js
+│   │   │   │   └── tools
+│   │   │   │       ├── conversation
+│   │   │   │       │   ├── canAddAFileInMessage.cy.js
+│   │   │   │       │   └── cantSendAnEmptyMessage.cy.js
+│   │   │   │       ├── documents
+│   │   │   │       │   ├── canAddALink.cy.js
+│   │   │   │       │   ├── canAddAfile.cy.js
+│   │   │   │       │   ├── canBookmarkAFile.cy.js
+│   │   │   │       │   ├── canDeleteAFile.cy.js
+│   │   │   │       │   ├── canDeleteALink.cy.js
+│   │   │   │       │   └── canSeePrivateFilesSection.cy.js
+│   │   │   │       ├── geolocation
+│   │   │   │       │   ├── canEditProjectLocationDetails.cy.js
+│   │   │   │       │   └── canSeeProjectLocationDetails.cy.js
+│   │   │   │       ├── searchableList
+│   │   │   │       │   ├── canAssignContactToAResource.cy.js
+│   │   │   │       │   ├── canAssignDepartmentsToAResource.cy.js
+│   │   │   │       │   ├── canUpdateContactOfAResource.cy.js
+│   │   │   │       │   └── canUpdateDeparmentsOfAResource.cy.js
+│   │   │   │       ├── task
+│   │   │   │       │   ├── canAddAfileInTask.cy.js
+│   │   │   │       │   └── canEditTaskComments.cy.js
+│   │   │   │       └── tutorial
+│   │   │   │           ├── externalResourceTutorial.cy.js
+│   │   │   │           └── onboardingAdvisorTutorial.cy.js
+│   │   │   ├── fixtures
+│   │   │   │   ├── addressbook
+│   │   │   │   │   ├── contacts.json
+│   │   │   │   │   └── organizations.json
+│   │   │   │   ├── documents
+│   │   │   │   │   ├── documents.json
+│   │   │   │   │   ├── file.json
+│   │   │   │   │   └── link.json
+│   │   │   │   ├── geomatics
+│   │   │   │   │   ├── commune.json
+│   │   │   │   │   ├── department.json
+│   │   │   │   │   └── region.json
+│   │   │   │   ├── images
+│   │   │   │   │   └── ui-screenshot.png
+│   │   │   │   ├── profiles
+│   │   │   │   │   └── profiles.json
+│   │   │   │   ├── projects
+│   │   │   │   │   ├── invites.json
+│   │   │   │   │   ├── project.json
+│   │   │   │   │   ├── projects.json
+│   │   │   │   │   ├── projectsMembers.json
+│   │   │   │   │   ├── projectsSites.json
+│   │   │   │   │   ├── reminders.json
+│   │   │   │   │   └── tasks.json
+│   │   │   │   ├── resources
+│   │   │   │   │   └── resources.json
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── challenge.json
+│   │   │   │   │   ├── challengeDefinition.json
+│   │   │   │   │   ├── siteWithOnboardingAndSurvey.json
+│   │   │   │   │   └── tag.json
+│   │   │   │   ├── users
+│   │   │   │   │   ├── advisorAccessRequest.json
+│   │   │   │   │   ├── collectivity.json
+│   │   │   │   │   ├── contact.json
+│   │   │   │   │   └── users.json
+│   │   │   │   └── utils
+│   │   │   │       └── devices.json
+│   │   │   ├── plugins
+│   │   │   │   └── index.js
+│   │   │   └── support
+│   │   │       ├── commands.js
+│   │   │       ├── dsrc
+│   │   │       │   └── forms.tools.js
+│   │   │       ├── e2e.js
+│   │   │       ├── tools
+│   │   │       │   ├── editor.js
+│   │   │       │   └── geolocation.js
+│   │   │       └── views
+│   │   │           └── project.js
+│   │   ├── cypress.config.js
 │   │   ├── jest.config.js
 │   │   ├── jsconfig.build.json
 │   │   ├── jsconfig.json
@@ -2086,8 +2079,8 @@
 │   │   ├── __init__.py
 │   │   ├── common.py
 │   │   ├── development.py.example
-│   │   ├── frontend_tests.py
-│   │   ├── frontend_tests_permissions.py
+│   │   ├── e2e_tests.py
+│   │   ├── e2e_tests_permissions.py
 │   │   ├── production.py
 │   │   └── testing.py
 │   ├── sql
@@ -2257,4 +2250,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-370 directories, 1911 files
+369 directories, 1905 files
