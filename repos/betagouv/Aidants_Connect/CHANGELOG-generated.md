@@ -1,30 +1,26 @@
 ## Changelog : Aidants_Connect (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans les parcours de gestion des aidants et des structures. Des corrections ont été apportées pour améliorer la robustesse de l'application et la clarté des messages affichés. De nouvelles fonctionnalités ont été ajoutées pour faciliter le téléchargement d'attestations de formation et l'accès à des informations pour les particuliers.
+Ce mois-ci, Aidants Connect a bénéficié d'une refonte significative du parcours de changement de structure pour les aidants, ainsi que d'améliorations de l'interface utilisateur et de corrections de bugs. Des fonctionnalités ont été ajoutées pour faciliter le téléchargement des attestations de formation et l'accès aux informations pour les particuliers. L'expérience utilisateur a été améliorée grâce à une simplification du menu et à l'ajout d'informations contextuelles.
 
 ### Évolutions fonctionnelles
-- Amélioration du parcours d'ajout d'aidant, incluant la gestion du changement de structure [#1736](https://github.com/betagouv/Aidants_Connect/issues/1736).
-- Simplification du menu de l'espace aidant et restructuration des URLs [#1751](https://github.com/betagouv/Aidants_Connect/issues/1751).
-- Ajout d'informations pour les particuliers sur la page de connexion [#1769](https://github.com/betagouv/Aidants_Connect/issues/1769).
-- Ajout d'un bouton pour les référents permettant de télécharger l'attestation de formation des aidants [#1770](https://github.com/betagouv/Aidants_Connect/issues/1770).
-- Affichage du nombre de résultats trouvés dans le titre des onglets [#1771](https://github.com/betagouv/Aidants_Connect/issues/1771).
-- Affichage d'un message d'erreur générique en cas d'échec de connexion [#1772](https://github.com/betagouv/Aidants_Connect/issues/1772).
-- Correction de l'URL de callback FranceConnect [#1776](https://github.com/betagouv/Aidants_Connect/issues/1776).
-- Ajout du budget 2025 [#1768](https://github.com/betagouv/Aidants_Connect/issues/1768).
-- Correction d'une faute de frappe dans l'attestation [#1767](https://github.com/betagouv/Aidants_Connect/issues/1767).
+- **Changement de structure :** Refonte complète du parcours de changement de structure pour les aidants, incluant des améliorations de la validation des emails et des messages d'erreur. [#1736](https://github.com/betagouv/Aidants_Connect/issues/1736)
+- **Téléchargement d'attestation :** Ajout d'un bouton permettant aux référents de télécharger l'attestation de formation des aidants qu'ils gèrent. [#1770](https://github.com/betagouv/Aidants_Connect/issues/1770)
+- **Page de connexion :** Amélioration de la page de connexion avec des informations supplémentaires pour les particuliers et une mise à jour du design. [#1769](https://github.com/betagouv/Aidants_Connect/issues/1769)
+- **Nombre de résultats :** Affichage du nombre de résultats trouvés dans le titre des onglets de recherche. [#1771](https://github.com/betagouv/Aidants_Connect/issues/1771)
+- **Message d'erreur de connexion :** Affichage d'un message d'erreur générique en cas d'échec de connexion. [#1772](https://github.com/betagouv/Aidants_Connect/issues/1772)
+- **Menu de l'espace aidant :** Simplification du menu de l'espace aidant et restructuration des URL. [#1751](https://github.com/betagouv/Aidants_Connect/issues/1751)
+- **Budget 2025 :** Ajout du budget 2025. [#1768](https://github.com/betagouv/Aidants_Connect/issues/1768)
 
 ### Évolutions techniques
-- Refactoring des URLs dans les templates et les tests pour utiliser les nouveaux espaces de noms.
-- Utilisation de `reverse()` et d'espaces de noms dans les tests.
-- Création d'espaces de noms d'URL pour l'espace aidant et le référent.
-- Amélioration de la validation de l'adresse e-mail dans le formulaire de demande de changement de structure, avec ajout de tests.
-- Refactorisation du template `aidant.html` pour une meilleure lisibilité et cohérence de la structure HTML.
-- Ajout de tests avec `wait until` pour éviter les tests instables.
+- **Refactoring URL :** Refactorisation des URLs dans les templates et les tests pour utiliser les nouveaux espaces de noms.
+- **Espaces de noms URL :** Création d'espaces de noms URL pour l'espace aidant et le référent.
+- **Tests :** Ajout de `wait until` pour éviter les tests instables.
+- **Amélioration du template aidant.html :** Refactorisation du template `aidant.html` pour une meilleure lisibilité et cohérence de la structure HTML.
+- **Correction URL de callback :** Correction d'une erreur d'URL de callback. [#1776](https://github.com/betagouv/Aidants_Connect/issues/1776)
 
 ### Autres changements
-- Petites modifications de formulation dans le parcours de changement de structure [#1774](https://github.com/betagouv/Aidants_Connect/issues/1774).
+- Correction de l'URL de la FAQ.
+- Petites modifications de formulation dans le parcours de changement de structure. [#1774](https://github.com/betagouv/Aidants_Connect/issues/1774)
 - Mise à jour du message de confirmation.
-- Correction de l'alignement d'éléments dans le DSFR en ajustant les propriétés flexbox.
-- Correction de la taille des icônes sur les petits écrans.
-- Suppression de l'ancienne page de connexion et mise à jour des styles de la nouvelle page.
+- Correction d'un problème d'alignement dans le DSFR en ajustant les propriétés flex pour les éléments fieldset.
