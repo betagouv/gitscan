@@ -1,49 +1,49 @@
-## Changelog : mon-service-securise (30 derniers jours, au 13 mai 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 2026-05-20)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur la migration vers une nouvelle architecture SPA (Single Page Application) pour améliorer l'expérience utilisateur et la performance de l'application.  De nombreuses pages ont été converties, notamment la page service, décrire V2, les mesures, et les contacts utiles. Des améliorations ont également été apportées à la gestion des administrateurs et des entités, ainsi qu'à l'interface utilisateur générale.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'accessibilité, la correction de bugs et l'implémentation de nouvelles fonctionnalités liées à la gestion des administrateurs d'organisations et au parcours d'homologation. Une migration vers les composants DSFR (Design System for French Administration) a également été initiée, notamment pour le header et la navigation.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des administrateurs :
-    - Possibilité d'ajouter des entités administrées via la console d'administration.
-    - Récupération des utilisateurs administrés et supervisés.
-    - Ajout d'une page listant les utilisateurs pour un administrateur d'organisation.
-- Amélioration de la gestion des entités :
-    - Ajout d'une route API pour lister les entités d'un administrateur ou superviseur.
-    - Spécialisation du dépôt de données pour l'administration.
-- Nouvelle fonctionnalité : Ajout d'une méthode pour lister les entités d'un administrateur ou superviseur.
-- Amélioration de l'export CSV des mesures : correction du traitement du département vide et navigation hors de la SPA pour l'export.
-- Ajout de la page "Communauté" sur la page d'accueil.
-- Ajout de landing pages pour "Sécurisez votre service numérique" et "Industrialisez vos homologations".
-- Ajout de la navigation au sein du parcours d'homologation.
-- Ajout de la page "Indice Cyber" dans la SPA.
-- Ajout des risques V1 à la SPA et à l'API du service complet.
-- Ajout de la possibilité de reprendre une homologation via une nouvelle route d'API.
-- Ajout de la page "Récapitulatif" au parcours d'homologation.
-- Ajout de la page "Avis" au parcours d'homologation.
-- Ajout de la page "Documents" au parcours d'homologation.
-- Ajout de la page "Téléchargement du dossier" au parcours d'homologation.
+
+*   **Gestion des Administrateurs :**
+    *   Implémentation de la lecture des administrateurs d'organisations.
+    *   Ajout d'une méthode pour lister les entités d'un administrateur ou superviseur.
+    *   Possibilité d'ajouter des entités administrées.
+    *   Affichage des utilisateurs administrés dans une nouvelle page dédiée.
+    *   Ajout d'un nouveau dépôt pour la gestion des administrateurs d'organisations.
+*   **Parcours d'Homologation :**
+    *   Implémentation du parcours d'homologation en SPA (Single Page Application).
+    *   Ajout des étapes "Avis", "Téléchargement du dossier", "Récapitulatif" et "Décision".
+    *   Possibilité de reprendre une homologation.
+    *   Affichage d'un étapier pour suivre la progression.
+    *   Ajout de boutons "Précédent" et "Suivant" pour naviguer dans le parcours.
+*   **Indice Cyber :**
+    *   Affichage de l'indice cyber personnalisé dans la page dédiée.
+    *   Affichage des valeurs d'indice cyber ANSSI et personnalisé dans le tableau de bord.
+*   **Améliorations diverses :**
+    *   Correction de liens et de l'affichage de la page de connexion.
+    *   Ajout d'une landing page pour "Sécurisez votre service numérique".
+    *   Ajout d'une landing page pour "Industrialisez vos homologations".
+    *   Ajout d'un bloc "Communauté" sur la page d'accueil.
 
 ### Évolutions techniques
-- Migration vers une architecture SPA pour plusieurs pages (Page Service, Décrire V2, Mesures, Contacts Utiles).
-- Conversion de nombreux composants et modèles en TypeScript pour une meilleure typage et maintenabilité.
-- Refonte de la navigation principale avec le composant `dsfr-navigation`.
-- Utilisation du `dsfr-header` pour l'en-tête de l'application.
-- Amélioration de la structure du code et extraction de méthodes privées.
-- Mise à jour de nombreuses dépendances (eslint, axios, basic-ftp, etc.).
-- Suppression de code obsolète (anciennes vues pug).
-- Utilisation du nouveau header dans la page service.
-- Suppression des fichiers d'entête.
-- Utilisation du dépôt de données dans la route /api/admin/entites.
-- Chiffrement des données des tables superviseur et admin_organisations.
+
+*   **Accessibilité :** Correction de nombreux problèmes d'accessibilité sur différentes pages (conseils cyber, statistiques, CGU, activation, mentions légales, à propos, accessibilité, politique de confidentialité, inscription, création de service).
+*   **Refactoring :**
+    *   Conversion de plusieurs modules en TypeScript (superviseur, utilisateur, dépôt de données admin).
+    *   Extraction de code réutilisable dans de nouvelles fonctions et composants.
+    *   Suppression de code obsolète.
+*   **DSFR :** Migration progressive vers les composants du Design System for French Administration (DSFR) pour le header et la navigation.
+*   **Infrastructure :** Suppression d'un ancien dépôt d'admins d'organisations.
+*   **Tests :** Correction de tests et ajout de tests d'accessibilité.
 
 ### Autres changements
-- Mise en avant de la formation sur l'interface.
-- Correction de typos et amélioration de la lisibilité du code.
-- Amélioration des styles et de la structure de certains blocs de la page d'accueil.
-- Ajout de tests unitaires et d'intégration.
-- Correction de bugs mineurs et améliorations de la performance.
-- Ajout de commentaires et documentation pour faciliter la compréhension du code.
-- Correction de problèmes de CSS et d'affichage.
-- Correction de problèmes liés à la gestion des états et des données.
-- Amélioration de la gestion des erreurs et des exceptions.
+
+*   Mise à jour de plusieurs dépendances (eslint, axe-core/playwright, vitest/eslint-plugin, electric-sql/pglite, uuid, @tiptap/*, @sentry/vite-plugin, basic-ftp, axios).
+*   Amélioration de la structure du code et de la documentation.
+*   Correction de typos et de problèmes de style.
+*   Ajout de commentaires et de documentation pour faciliter la maintenance.
+*   Correction de fuites CSS.
+*   Suppression de fichiers inutiles.
+*   Amélioration de la gestion des erreurs.
+*   Ajout de logs pour faciliter le débogage.
