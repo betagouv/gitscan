@@ -83,6 +83,7 @@
 │   │   │   ├── MissionsSetFullByTemplate.php
 │   │   │   ├── MissionsSetIsOnline.php
 │   │   │   ├── OneTime
+│   │   │   │   ├── AirtableSyncDeletedMissions.php
 │   │   │   │   ├── AutoCloseMissionsToMinors.php
 │   │   │   │   ├── CloseMissionsToMinorsFromClosedTemplates.php
 │   │   │   │   ├── InitializeMissionTemplateIsOpenToMinors.php
@@ -446,6 +447,7 @@
 │   │   ├── HandleStructureUnsubscribed.php
 │   │   └── NotificationSendingListener.php
 │   ├── Mail
+│   │   ├── NotificationRecipientContext.php
 │   │   └── TestMail.php
 │   ├── Models
 │   │   ├── Activity.php
@@ -508,6 +510,7 @@
 │   │   ├── BulkOperationsParticipationsDeclined.php
 │   │   ├── BulkOperationsParticipationsValidated.php
 │   │   ├── Channels
+│   │   │   ├── MailChannel.php
 │   │   │   └── SmsChannel.php
 │   │   ├── DocumentSubmitted.php
 │   │   ├── ExportReady.php
@@ -1472,6 +1475,7 @@
 │           │   │   │   ├── paragraph.blade.php
 │           │   │   │   ├── quiz.blade.php
 │           │   │   │   ├── quote.blade.php
+│           │   │   │   ├── recipient-banner.blade.php
 │           │   │   │   ├── space.blade.php
 │           │   │   │   ├── structure-score.blade.php
 │           │   │   │   ├── table-divider.blade.php
@@ -1515,6 +1519,7 @@
 │           │       │   ├── paragraph.blade.php
 │           │       │   ├── quiz.blade.php
 │           │       │   ├── quote.blade.php
+│           │       │   ├── recipient-banner.blade.php
 │           │       │   ├── space.blade.php
 │           │       │   ├── structure-score.blade.php
 │           │       │   ├── table-divider.blade.php
@@ -1573,10 +1578,11 @@
 └── tests
     ├── CreatesApplication.php
     ├── Feature
+    │   ├── RecipientEmailBannerTest.php
     │   ├── StructureTest.php
     │   └── UserTest.php
     ├── Pest.php
     ├── TestCase.php
     └── Unit
         └── ExampleTest.php
-118 directories, 1612 files
+118 directories, 1618 files
