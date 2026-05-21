@@ -42,8 +42,6 @@
 ├── .lintstagedrc
 ├── .npmrc
 ├── .nvmrc
-├── .prettierignore
-├── .prettierrc
 ├── .scripts
 │   ├── backup-3-2-1.sh
 │   ├── docker-down-test.sh
@@ -58,6 +56,7 @@
 ├── Procfile
 ├── Procfile.dev
 ├── README.md
+├── biome.jsonc
 ├── cron.json
 ├── docker-compose.yml
 ├── docs
@@ -100,7 +99,6 @@
 │   │           └── architecture-mise-en-service.odt
 │   └── team
 │       └── sprint-organization.md
-├── eslint.config.mjs
 ├── keycloak
 │   ├── import
 │   │   └── realm-dev.json
@@ -440,6 +438,7 @@
 │   │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   │   ├── achèvement.notifications.ts
 │   │   │   │   │   │   │   └── handlers
+│   │   │   │   │   │   │       ├── achèvementModifié.handler.ts
 │   │   │   │   │   │   │       ├── attestationConformitéModifiée.handler.ts
 │   │   │   │   │   │   │       ├── attestationConformitéTransmise.handler.ts
 │   │   │   │   │   │   │       ├── dateAchèvementTransmise.handler.ts
@@ -518,6 +517,8 @@
 │   │   │   │   │   │   │   │   └── natureDeLExploitationModifiée.handler.ts
 │   │   │   │   │   │   │   └── nature-de-l-exploitation.notifications.ts
 │   │   │   │   │   │   ├── power-purchase-agreement
+│   │   │   │   │   │   │   ├── _helper
+│   │   │   │   │   │   │   │   └── getRecipients.ts
 │   │   │   │   │   │   │   ├── handlers
 │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   ├── powerPurchaseAgreementSignalé.handler.ts
@@ -628,6 +629,7 @@
 │   │   │   │       │   │   └── rejeter.md
 │   │   │   │       │   ├── lauréat
 │   │   │   │       │   │   ├── achèvement
+│   │   │   │       │   │   │   ├── modifier.md
 │   │   │   │       │   │   │   ├── modifier_attestation.md
 │   │   │   │       │   │   │   ├── rappel_échéance_dreal.md
 │   │   │   │       │   │   │   ├── rappel_échéance_porteur.md
@@ -1085,7 +1087,6 @@
 │   │   ├── ssr
 │   │   │   ├── .env.template
 │   │   │   ├── .gitignore
-│   │   │   ├── eslint.config.mjs
 │   │   │   ├── next.config.ts
 │   │   │   ├── package.json
 │   │   │   ├── postcss.config.js
@@ -1200,8 +1201,6 @@
 │   │   │   │   │   │       ├── ImporterCandidatures.form.tsx
 │   │   │   │   │   │       ├── ImporterCandidatures.page.tsx
 │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   ├── csrf
-│   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── documents
 │   │   │   │   │   │   └── [documentKey]
 │   │   │   │   │   │       └── route.ts
@@ -2262,6 +2261,7 @@
 │   │   │   │   │   ├── atoms
 │   │   │   │   │   │   ├── CallOut.tsx
 │   │   │   │   │   │   ├── FormattedDate.tsx
+│   │   │   │   │   │   ├── FormattedNuméroIdentification.tsx
 │   │   │   │   │   │   ├── Icon.tsx
 │   │   │   │   │   │   ├── ImprimerButton.tsx
 │   │   │   │   │   │   ├── LinkNoPrefetch.tsx
@@ -2274,6 +2274,7 @@
 │   │   │   │   │   │   │   ├── Form.tsx
 │   │   │   │   │   │   │   ├── FormActionButtons.tsx
 │   │   │   │   │   │   │   ├── FormAlertError.tsx
+│   │   │   │   │   │   │   ├── FormCsrfInput.tsx
 │   │   │   │   │   │   │   ├── FormFeedback.tsx
 │   │   │   │   │   │   │   ├── FormFeedbackCsvColumnErrors.tsx
 │   │   │   │   │   │   │   ├── FormFeedbackCsvErrors.tsx
@@ -2436,6 +2437,10 @@
 │   │   │   │       │   ├── schemaBase.ts
 │   │   │   │       │   └── typologieInstallation.schema.ts
 │   │   │   │       ├── csp.ts
+│   │   │   │       ├── csrf
+│   │   │   │       │   ├── constants.ts
+│   │   │   │       │   ├── index.test.ts
+│   │   │   │       │   └── index.ts
 │   │   │   │       ├── decodeParameter.ts
 │   │   │   │       ├── feature-flag
 │   │   │   │       │   ├── FeatureFlagContext.tsx
@@ -3956,11 +3961,6 @@
 │   │       │   └── upsertProjection.ts
 │   │       └── tsconfig.json
 │   ├── libraries
-│   │   ├── csrf
-│   │   │   ├── package.json
-│   │   │   ├── src
-│   │   │   │   └── index.ts
-│   │   │   └── tsconfig.json
 │   │   ├── csv
 │   │   │   ├── package.json
 │   │   │   ├── src
@@ -4620,4 +4620,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1122 directories, 3500 files
+1121 directories, 3501 files
