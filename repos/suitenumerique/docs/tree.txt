@@ -34,12 +34,16 @@
 ├── Dockerfile
 ├── LICENSE
 ├── Makefile
+├── Procfile
 ├── README.md
 ├── SECURITY.md
 ├── UPGRADE.md
 ├── bin
 │   ├── Tiltfile
 │   ├── _config.sh
+│   ├── buildpack_postcompile.sh
+│   ├── buildpack_postfrontend.sh
+│   ├── buildpack_start.sh
 │   ├── compose
 │   ├── generate-oidc-store-refresh-token-key.sh
 │   ├── install-hooks.sh
@@ -56,6 +60,9 @@
 ├── compose.yml
 ├── crowdin
 │   └── config.yml
+├── deploy
+│   └── paas
+│       └── servers.conf.erb
 ├── docker
 │   ├── auth
 │   │   └── realm.json
@@ -114,7 +121,8 @@
 │   ├── installation
 │   │   ├── README.md
 │   │   ├── compose.md
-│   │   └── kubernetes.md
+│   │   ├── kubernetes.md
+│   │   └── scalingo.md
 │   ├── instances.md
 │   ├── languages-configuration.md
 │   ├── release.md
@@ -147,7 +155,6 @@
     ├── backend
     │   ├── .pylintrc
     │   ├── MANIFEST.in
-    │   ├── __init__.py
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
@@ -1064,7 +1071,6 @@
     │   │       │   │   │   │   │   │   ├── types.ts
     │   │       │   │   │   │   │   │   └── useComments.ts
     │   │       │   │   │   │   │   ├── custom-blocks
-    │   │       │   │   │   │   │   │   ├── AccessibleImageBlock.tsx
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
     │   │       │   │   │   │   │   │   ├── UploadLoaderBlock.tsx
@@ -1643,4 +1649,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-283 directories, 1435 files
+285 directories, 1439 files
