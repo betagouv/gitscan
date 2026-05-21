@@ -211,6 +211,7 @@
 │   │   │   │   ├── ban_config.py
 │   │   │   │   └── database_resources.py
 │   │   │   └── zlv_dbt
+│   │   │       ├── README.md
 │   │   │       ├── pyproject.toml
 │   │   │       ├── setup.py
 │   │   │       └── zlv_dbt
@@ -287,8 +288,10 @@
 │   │   │   ├── utils
 │   │   │   │   └── pivot_columns_by_year.sql
 │   │   │   └── zlovac
+│   │   │       ├── clean_display_address.sql
 │   │   │       ├── normalize_address.sql
-│   │   │       └── unique_users_handling_zlovac.sql
+│   │   │       ├── unique_users_handling_zlovac.sql
+│   │   │       └── zlovac_owner_uid.sql
 │   │   ├── models
 │   │   │   ├── intermediate
 │   │   │   │   ├── analysis
@@ -605,7 +608,27 @@
 │   │   │   │   ├── test_housing_geo_code_valid.sql
 │   │   │   │   ├── test_housing_living_area_reasonable.sql
 │   │   │   │   ├── test_housing_vacancy_year_reasonable.sql
+│   │   │   │   ├── test_zlovac_buildings_in_housing.sql
+│   │   │   │   ├── test_zlovac_buildings_rnb_footprint_geometry.sql
+│   │   │   │   ├── test_zlovac_dgfip_address_clean.sql
+│   │   │   │   ├── test_zlovac_geolocation_source_coverage.sql
+│   │   │   │   ├── test_zlovac_housing_building_year_reasonable.sql
+│   │   │   │   ├── test_zlovac_housing_coords_bounds.sql
+│   │   │   │   ├── test_zlovac_housing_geo_code_length.sql
+│   │   │   │   ├── test_zlovac_housing_latlon_consistency.sql
+│   │   │   │   ├── test_zlovac_housing_living_area_reasonable.sql
+│   │   │   │   ├── test_zlovac_housing_local_id_unique.sql
+│   │   │   │   ├── test_zlovac_housing_rooms_count_reasonable.sql
+│   │   │   │   ├── test_zlovac_housing_vacancy_year_reasonable.sql
+│   │   │   │   ├── test_zlovac_owner_address_clean.sql
+│   │   │   │   ├── test_zlovac_owner_housing_coverage.sql
 │   │   │   │   ├── test_zlovac_owner_housing_no_orphans.sql
+│   │   │   │   ├── test_zlovac_owner_housing_rank_uniqueness.sql
+│   │   │   │   ├── test_zlovac_owner_match_lovac_uses_ff_ddenom.sql
+│   │   │   │   ├── test_zlovac_owner_uid_deterministic.sql
+│   │   │   │   ├── test_zlovac_owner_uid_format.sql
+│   │   │   │   ├── test_zlovac_owners_fullname_not_empty.sql
+│   │   │   │   ├── test_zlovac_owners_md_invest_collapses.sql
 │   │   │   │   └── test_zlovac_owners_one_uid_per_dedup_key.sql
 │   │   │   ├── generic
 │   │   │   │   └── same_row_number.sql
@@ -2614,4 +2637,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-391 directories, 2225 files
+391 directories, 2248 files

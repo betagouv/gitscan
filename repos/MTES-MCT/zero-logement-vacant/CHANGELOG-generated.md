@@ -1,38 +1,28 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 13 mai 2026)
+## Changelog : zero-logement-vacant (30 derniers jours, au 2026-05-19)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration des performances, la refactorisation du code pour une meilleure maintenabilité, et l'enrichissement de la documentation technique. Des améliorations significatives ont également été apportées à la gestion des campagnes et à l'intégration des données, notamment avec le système BAN. L'interface utilisateur a été améliorée avec l'ajout d'une légende de carte plus conviviale.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances et de la robustesse de la plateforme, notamment au niveau du pipeline de données (dbt) et de l'application elle-même. Des corrections ont été apportées pour améliorer la qualité des données et résoudre des problèmes liés à l'importation des données LOVAC 2026.  Des refactorings importants ont été réalisés pour simplifier le code, supprimer des fonctionnalités obsolètes et préparer l'application pour de futures améliorations.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'expérience utilisateur de la légende de la carte, avec un affichage plus clair et une meilleure ergonomie. [#1698](https://github.com/MTES-MCT/zero-logement-vacant/issues/1698)
-- Possibilité de naviguer vers la liste des logements filtrée par campagne. [#1761](https://github.com/MTES-MCT/zero-logement-vacant/issues/1761)
-- Différenciation de l'export de données pour les groupes et les campagnes, avec ajout de la colonne "ville propriétaire" pour l'export de groupe. [#1761](https://github.com/MTES-MCT/zero-logement-vacant/issues/1761)
-- Correction du traitement des statuts de logement "jamais contacté". [#1794](https://github.com/MTES-MCT/zero-logement-vacant/issues/1794)
-- Amélioration de l'alignement des boutons d'action des campagnes. [#1798](https://github.com/MTES-MCT/zero-logement-vacant/issues/1798)
+- Amélioration de l'expérience utilisateur de la légende de la carte, avec une meilleure visibilité et un style plus clair [#1698](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1698).
+- Possibilité de naviguer vers la liste des logements filtrée par campagne directement depuis l'interface.
+- Amélioration de l'export des données de groupe, avec l'ajout de la colonne "ville propriétaire" et des ajustements de formatage.
+- Correction du traitement du statut des logements "jamais contacté".
+- Suppression de l'ancien flux de gestion des campagnes, simplifiant ainsi l'application et réduisant sa complexité.
 
 ### Évolutions techniques
-- Suppression du préfixe `/api` des appels API en frontend et backend, simplifiant ainsi la configuration et améliorant la lisibilité du code. [#1806](https://github.com/MTES-MCT/zero-logement-vacant/issues/1806)
-- Refactorisation du code lié aux campagnes, incluant la suppression de routes inutilisées et la simplification des gestionnaires. [#1810](https://github.com/MTES-MCT/zero-logement-vacant/issues/1810)
-- Mise à jour des dépendances, incluant le remplacement de `vite-plugin-dts` par `unplugin-dts`. [#1805](https://github.com/MTES-MCT/zero-logement-vacant/issues/1805)
-- Amélioration des performances du calcul du nombre de logements, réduisant le temps d'exécution de 4 à 36% selon les filtres. [#1793](https://github.com/MTES-MCT/zero-logement-vacant/issues/1793)
-- Optimisation de la gestion des propriétaires multiples, avec l'ajout d'un indicateur `is_multi_owner` précalculé.
-- Suppression du code obsolète lié à l'ancien flux de campagne.
-- Migration de la documentation OpenAPI vers un format YAML et remplacement de Swagger UI par Scalar.
-- Amélioration de la gestion des erreurs lors des appels à l'API BAN.
-- Refactorisation de la configuration du serveur avec l'utilisation de Zod pour la validation.
-- Amélioration des performances des requêtes de base de données liées aux propriétaires.
-- Suppression de la synchronisation quotidienne du BAN.
+- **dbt:** Optimisations significatives du pipeline de données pour améliorer les performances et la gestion de la mémoire, notamment lors de la phase de matching des propriétaires.
+- **dbt:** Ajout de l'identifiant UUID des propriétaires pour améliorer la traçabilité et la cohérence des données.
+- Suppression du préfixe `/api` des routes de l'API, simplifiant ainsi la configuration et l'utilisation de l'application.
+- Refactorings importants du code frontend et backend pour supprimer du code obsolète, améliorer la lisibilité et la maintenabilité.
+- Mise à jour des dépendances, incluant des corrections de version et l'utilisation de nouveaux outils de build.
+- Amélioration des tests, avec correction de tests existants et ajout de nouveaux tests pour garantir la qualité du code.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Suppression de code lié à des fonctionnalités abandonnées (anciens flux de campagne, établissement).
 
 ### Autres changements
-- Ajout de documentation technique complète, incluant des diagrammes et des explications détaillées des différents composants.
-- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
-- Mise à jour des compétences et des outils utilisés par l'équipe de développement.
-- Amélioration de la configuration du CI/CD pour une meilleure automatisation du processus de déploiement.
-- Ajout de métriques et d'alertes pour surveiller la santé de l'application.
-- Ajout de la gestion des propriétaires avec un identifiant UUID.
-- Ajout de la gestion des propriétaires CEREMA FF2025.
-- Ajout de la documentation sur l'importation des DPE.
-- Ajout de documentation sur la gestion des données.
-- Ajout de documentation sur les processus de DE et DI.
-- Ajout de documentation sur la génération automatique de la documentation.
-- Ajout de documentation sur l'architecture de l'application.
+- Documentation mise à jour pour refléter les changements apportés à l'application.
+- Ajout de spécifications pour la suppression de l'ancien flux de campagne.
+- Ajout de nouveaux agents et compétences Claude pour l'amélioration continue du data warehouse.
+- Amélioration de la configuration et de l'environnement de développement.
+- Corrections de linting et de style de code.
