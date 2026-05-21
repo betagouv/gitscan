@@ -1,38 +1,33 @@
-## Changelog : csplab (30 derniers jours, au 18 mai 2026)
+## Changelog : csplab (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a continué à améliorer l'ingestion et le traitement des offres d'emploi, notamment avec l'ajout de la vectorisation pour la recherche de métiers et la gestion des webhooks pour l'archivage des offres. Des améliorations significatives ont également été apportées à l'interface utilisateur, avec l'ajout de pages statiques (mentions légales, confidentialité, accessibilité) et l'amélioration de l'expérience utilisateur pour l'analyse de CV. Enfin, des efforts ont été déployés pour améliorer la robustesse et la documentation du code.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'ingestion et de l'archivage des offres d'emploi, l'ajout de nouvelles fonctionnalités pour la présentation des candidatures et l'amélioration de l'infrastructure et des outils de développement. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de la vectorisation pour la recherche de métiers lors de l'ingestion des offres ([#551](https://github.com/betagouv/csplab/issues/551)).
-- Affichage des offres d'emploi dans le tiroir (drawer) de présentation des candidats ([#550](https://github.com/betagouv/csplab/issues/550)).
-- Ajout de pages statiques pour les mentions légales ([#225](https://github.com/betagouv/csplab/issues/225)), la politique de confidentialité ([#226](https://github.com/betagouv/csplab/issues/226)) et l'accessibilité ([#224](https://github.com/betagouv/csplab/issues/224)).
-- Ajout de la possibilité de fermer le tiroir (drawer) modal de CV en utilisant la navigation du navigateur ([#444](https://github.com/betagouv/csplab/issues/444)).
-- Affichage de l'organisation ou du ministère dans les cartes et le tiroir des opportunités ([#443](https://github.com/betagouv/csplab/issues/443)).
-- Amélioration de l'affichage des filtres actifs sur la page de recherche ([#380](https://github.com/betagouv/csplab/issues/380)).
-- Ajout de la possibilité d'archiver les offres via des webhooks ([#512](https://github.com/betagouv/csplab/issues/512)).
-- Ajout d'un endpoint API pour lister les offres ([#440](https://github.com/betagouv/csplab/issues/440)).
-- Gestion de la catégorie A+ lors du filtrage des offres ([#482](https://github.com/betagouv/csplab/issues/482)).
+- Ajout de la possibilité d'afficher l'organisation ou le ministère sur les cartes et dans les détails des offres d'emploi. [#443](https://github.com/betagouv/csplab/issues/443)
+- Amélioration de l'affichage des offres d'emploi dans le tiroir (drawer) de candidature. [#550](https://github.com/betagouv/csplab/issues/550)
+- Ajout de pages statiques pour les mentions légales, la politique de confidentialité et l'accessibilité. [#225](https://github.com/betagouv/csplab/issues/225), [#226](https://github.com/betagouv/csplab/issues/226), [#224](https://github.com/betagouv/csplab/issues/224)
+- Implémentation de la vectorisation pour les métiers, permettant une recherche plus performante. [#551](https://github.com/betagouv/csplab/issues/551)
+- Ajout d'un endpoint API pour lister les offres d'emploi. [#440](https://github.com/betagouv/csplab/issues/440)
+- Possibilité d'archiver des offres d'emploi via des webhooks. [#512](https://github.com/betagouv/csplab/issues/512)
+- Amélioration du filtre de catégories pour inclure A+. [#482](https://github.com/betagouv/csplab/issues/482)
 
 ### Évolutions techniques
-- Refactorisation de l'API et des tests pour une meilleure organisation et maintenabilité.
-- Amélioration de la robustesse de la cartographie des ministères lors de l'ingestion ([#548](https://github.com/betagouv/csplab/issues/548)).
-- Renommage de colonnes pour le ConcoursCleaner ([#511](https://github.com/betagouv/csplab/issues/511)).
-- Mise à jour de la documentation OpenAPI ([#546](https://github.com/betagouv/csplab/issues/546)).
-- Refactorisation de l'OfferFactory ([#514](https://github.com/betagouv/csplab/issues/514)).
-- Ajout d'un usecase pour récupérer le détail d'une opportunité avec les métiers ([#487](https://github.com/betagouv/csplab/issues/487)).
-- Isolation et journalisation des documents bruts en cas d'erreur lors de l'ingestion ([#509](https://github.com/betagouv/csplab/issues/509)).
-- Mise en place d'un nouveau processus d'ingestion ([#493](https://github.com/betagouv/csplab/issues/493)).
-- Amélioration de la gestion des connexions aux bases de données dans les tests.
-- Suppression de la librairie pgvector.
-- Passage à des loggers pour une meilleure gestion des logs ([#413](https://github.com/betagouv/csplab/issues/413)).
-- Amélioration des tests et de la couverture de code.
-- Mise à jour des dépendances (pypdf, python-dateutil).
+- Standardisation des noms de méthodes pour la récupération de données (utilisation de `get_xxxx`). [#568](https://github.com/betagouv/csplab/issues/568)
+- Refactorisation de l'API et de la documentation. [#504](https://github.com/betagouv/csplab/issues/504), [#480](https://github.com/betagouv/csplab/issues/480)
+- Amélioration de la gestion des erreurs lors de l'ingestion de documents, en isolant et en loguant les documents problématiques. [#509](https://github.com/betagouv/csplab/issues/509)
+- Mise en place de tests E2E avec Playwright pour la présentation des CV. [#490](https://github.com/betagouv/csplab/issues/490)
+- Suppression de la dépendance pgvector. [#386](https://github.com/betagouv/csplab/issues/386)
+- Refactorisation de l'architecture pour séparer les applications "tycho" et "web". [#515](https://github.com/betagouv/csplab/issues/515)
+- Amélioration de la gestion des connexions dans les tests. [#478](https://github.com/betagouv/csplab/issues/478)
+- Ajout de tests de couverture. [#498](https://github.com/betagouv/csplab/issues/498)
+- Mise à jour des dépendances (pypdf, python-dateutil). [#401](https://github.com/betagouv/csplab/issues/401), [#402](https://github.com/betagouv/csplab/issues/402), [#425](https://github.com/betagouv/csplab/issues/425)
 
 ### Autres changements
-- Documentation de l'utilisation des webhooks Talentsoft ([#503](https://github.com/betagouv/csplab/issues/503)).
-- Mise à jour des instructions d'installation pour les hooks Git ([#472](https://github.com/betagouv/csplab/issues/472)).
-- Ajout de tests E2E avec Playwright pour l'analyse de CV ([#490](https://github.com/betagouv/csplab/issues/490)).
-- Ajout d'une tâche pour nettoyer les métiers ([#414](https://github.com/betagouv/csplab/issues/414)).
-- Amélioration de la configuration et de l'environnement de développement.
-- Mise à jour du CHANGELOG.md ([#418](https://github.com/betagouv/csplab/issues/418), [#375](https://github.com/betagouv/csplab/issues/375)).
+- Mise à jour de la documentation d'installation, notamment pour les hooks Git. [#472](https://github.com/betagouv/csplab/issues/472)
+- Amélioration de la configuration de la taille de la clé de chiffrement. [#474](https://github.com/betagouv/csplab/issues/474)
+- Mise à jour du CHANGELOG.md pour les versions 0.1.8 et 0.1.9. [#485](https://github.com/betagouv/csplab/issues/485), [#606](https://github.com/betagouv/csplab/issues/606)
+- Ajout de la gestion des caractères '+' non encodés dans les signatures. [#506](https://github.com/betagouv/csplab/issues/506)
+- Amélioration de la robustesse du mapping des ministères. [#548](https://github.com/betagouv/csplab/issues/548)
+- Renommage de colonnes pour ConcoursCleaner. [#511](https://github.com/betagouv/csplab/issues/511)
+- Correction de bugs divers et améliorations de la qualité du code.
