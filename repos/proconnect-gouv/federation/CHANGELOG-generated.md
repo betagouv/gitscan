@@ -1,27 +1,26 @@
-## Changelog : federation (30 derniers jours, au 14 mai 2026)
+## Changelog : federation (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la robustesse de la plateforme, notamment en renforçant la validation des emails, en affinant la gestion des rôles et des accès, et en optimisant les contrôles de santé de l'application. Des améliorations d'accessibilité et des corrections de bugs ont également été apportées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la flexibilité de la plateforme. Des ajustements ont été apportés à la gestion des rôles et des autorisations, notamment pour l'accès aux services publics. Des améliorations ont également été apportées à la validation des emails et à la configuration de l'authentification, ainsi qu'à la gestion des environnements de test.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des rôles : Seuls les utilisateurs ayant les rôles appropriés peuvent accéder aux informations sensibles via les SP [#1158](https://github.com/proconnect-gouv/federation/issues/1158).
-- Ajout de rôles par défaut dans l'interface d'administration [#1161](https://github.com/proconnect-gouv/federation/issues/1161).
-- Ajout d'une bannière d'avertissement pour l'environnement de test [#1141](https://github.com/proconnect-gouv/federation/issues/1141).
-- Amélioration de l'accessibilité : Ajout d'un lien vers la déclaration d'accessibilité et amélioration de la structure HTML [#1142](https://github.com/proconnect-gouv/federation/issues/1142).
-- Ajout d'un indicateur pour activer/désactiver la validation des emails via un flag de fonctionnalité [#1144](https://github.com/proconnect-gouv/federation/issues/1144).
+- Ajout d'un label "organisation" aux scopes retournés par l'API. [#1181](https://github.com/proconnect-gouv/federation/issues/1181)
+- Amélioration de l'accès aux services publics (SP) en utilisant les rôles de l'utilisateur. [#1158](https://github.com/proconnect-gouv/federation/issues/1158)
+- Ajout de rôles par défaut dans l'interface d'administration. [#1161](https://github.com/proconnect-gouv/federation/pulls/1161)
+- Mise en place d'un indicateur pour activer/désactiver la validation des adresses email. [#1144](https://github.com/proconnect-gouv/federation/pulls/1144)
+- Ajout d'une bannière d'avertissement pour l'environnement de test. [#1141](https://github.com/proconnect-gouv/federation/pulls/1141)
+- Amélioration de l'accessibilité : ajout d'un lien vers la déclaration d'accessibilité et amélioration du balisage HTML. [#1142](https://github.com/proconnect-gouv/federation/pulls/1142)
 
 ### Évolutions techniques
-- Refonte de la validation des emails pour utiliser DNS-over-HTTPS [#1159](https://github.com/proconnect-gouv/federation/issues/1159).
-- Amélioration des contrôles de santé (healthchecks) :
-    - Implémentation d'un pattern ping/pong pour le broker [#1117](https://github.com/proconnect-gouv/federation/issues/1117).
-    - Ajout de contrôles de santé spécifiques pour le CSM et le core-fca [#1114](https://github.com/proconnect-gouv/federation/issues/1114), [#1116](https://github.com/proconnect-gouv/federation/issues/1116).
-    - Suppression des healthchecks inutiles et simplification de la configuration [#1119](https://github.com/proconnect-gouv/federation/issues/1119), [#1120](https://github.com/proconnect-gouv/federation/issues/1120).
-- Correction d'un bug empêchant la reconnaissance correcte des valeurs ACR (Action Claim Request) [#1122](https://github.com/proconnect-gouv/federation/issues/1122).
-- Amélioration de la gestion des exclusions pour le readiness probe du core-fca [#1121](https://github.com/proconnect-gouv/federation/issues/1121), [#1154](https://github.com/proconnect-gouv/federation/issues/1154).
-- Utilisation de HTTPS pour la récupération du core-fca [#1118](https://github.com/proconnect-gouv/federation/issues/1118).
-- Mise à jour de diverses dépendances : Mongoose, FastAPI, Axios, etc.
+- Utilisation de DNS-over-HTTPS pour la résolution MX des adresses email, améliorant ainsi la confidentialité et la sécurité. [#1159](https://github.com/proconnect-gouv/federation/pulls/1159)
+- Correction d'un bug empêchant l'assignation correcte du champ `acr` lorsque les valeurs ACR ne sont pas reconnues. [#1122](https://github.com/proconnect-gouv/federation/pulls/1122)
+- Possibilité de configurer plusieurs exclusions pour le point de terminaison `readyz` dans le contexte `core-fca-low`. [#1154](https://github.com/proconnect-gouv/federation/pulls/1154)
+- Amélioration de la configuration du client OIDC pour permettre l'utilisation d'une fonction `fetch` personnalisée dans les configurations sans découverte. [#1143](https://github.com/proconnect-gouv/federation/pulls/1143)
+- Ajout de logs pour les valeurs `acr` afin de faciliter le débogage. [#1139](https://github.com/proconnect-gouv/federation/pulls/1139)
+- Suppression temporaire du test de l'API health, puis restauration. [#1120](https://github.com/proconnect-gouv/federation/pulls/1120)
 
 ### Autres changements
-- Ajout de logs pour faciliter le débogage des valeurs ACR [#1139](https://github.com/proconnect-gouv/federation/issues/1139).
-- Ajout des champs `isEntraId` et `hyyyperbridge` à Grist pour une meilleure traçabilité [#1115](https://github.com/proconnect-gouv/federation/issues/1115).
-- Corrections de linting et renommage de variables pour améliorer la lisibilité du code [#1157](https://github.com/proconnect-gouv/federation/issues/1157), [#1125](https://github.com/proconnect-gouv/federation/issues/1125).
+- Correction de linting dans l'application d'administration.
+- Refactorisation du code pour utiliser `HAS_RED_BORDER` au lieu de `isProduction`.
+- Ajout de logs pour faciliter le débogage.
+- Mises à jour de diverses dépendances (FastAPI, Mongoose, Uvicorn, etc.).
