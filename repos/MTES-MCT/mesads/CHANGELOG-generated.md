@@ -1,19 +1,21 @@
-## Changelog : mesads (30 derniers jours, au 13 mai 2026)
+## Changelog : mesads (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la sécurité, notamment une correction de vulnérabilité sur l'endpoint d'autocomplete des communes. De nouvelles fonctionnalités ont été ajoutées pour faciliter le travail des inspecteurs et permettre l'export des emails des taxis relais pour les administrateurs. Des corrections et améliorations diverses ont également été apportées à l'interface utilisateur et aux parcours utilisateurs.
+Ce mois-ci, l'application MesADS a bénéficié d'améliorations significatives, notamment l'ajout d'un parcours dédié aux inspecteurs, l'implémentation d'un module newsletter, et des corrections de sécurité et de bugs pour améliorer la stabilité et la fiabilité de la plateforme. Des améliorations ont également été apportées à l'interface d'administration pour faciliter la gestion des autorisations de stationnement.
 
 ### Évolutions fonctionnelles
-- Ajout d'un parcours dédié aux inspecteurs [#131](https://github.com/MTES-MCT/mesads/pull/131).
-- Possibilité d'exporter les adresses email des taxis relais pour les administrateurs [#84c4dbf](https://github.com/MTES-MCT/mesads/commit/84c4dbf).
-- Correction du comptage des ADS dans l'interface d'administration pour les gestionnaires [#99c819f](https://github.com/MTES-MCT/mesads/commit/99c819f).
-- Suppression du bandeau d'appel au sondage [#51ea5e8](https://github.com/MTES-MCT/mesads/commit/51ea5e8).
-- Ajout d'un module newsletter [#456891b](https://github.com/MTES-MCT/mesads/commit/456891b).
+- Ajout d'un parcours spécifique pour les inspecteurs [#131](https://github.com/MTES-MCT/mesads/pull/131).
+- Implémentation d'un module newsletter permettant l'envoi d'emails aux taxis relais depuis l'interface d'administration [#131](https://github.com/MTES-MCT/mesads/pull/131).
+- Export des emails des taxis relais disponibles dans l'administration [#131](https://github.com/MTES-MCT/mesads/pull/131).
+- Correction du comptage des Autorisations de Stationnement (ADS) dans l'interface d'administration pour les gestionnaires [#133](https://github.com/MTES-MCT/mesads/pull/133).
+- Suppression du bandeau d'appel au sondage [#131](https://github.com/MTES-MCT/mesads/pull/131).
 
 ### Évolutions techniques
-- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes [#133](https://github.com/MTES-MCT/mesads/pull/133).
-- Amélioration de la valeur par défaut du département et ajustements de style [#116fa0d](https://github.com/MTES-MCT/mesads/commit/116fa0d).
-- Corrections des tests et application de `ruff` pour améliorer la qualité du code [#4f46a1a](https://github.com/MTES-MCT/mesads/commit/4f46a1a).
+- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes [#132](https://github.com/MTES-MCT/mesads/pull/132).
+- Correction d'un problème de sérialisation des enums dans les tests, impactant les subtests [#135](https://github.com/MTES-MCT/mesads/pull/135).
+- Amélioration du style et correction de la valeur par défaut du département dans le parcours inspecteur [#131](https://github.com/MTES-MCT/mesads/pull/131).
+- Corrections liées à l'utilisation de `ruff` et amélioration de la qualité du code [#131](https://github.com/MTES-MCT/mesads/pull/131).
+- Correction d'un problème de CSS [#133](https://github.com/MTES-MCT/mesads/pull/133).
 
 ### Autres changements
-- Correction d'un problème de CSS [#04abb76](https://github.com/MTES-MCT/mesads/commit/04abb76).
+- Mise à jour des dépendances via Dependabot (non listées individuellement).
