@@ -17,6 +17,7 @@
 │       └── safety-check
 │           └── SKILL.md
 ├── .cz-config.js
+├── .dockerignore
 ├── .eslintignore
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE.md
@@ -28,6 +29,7 @@
 │       ├── docs-sync.yml
 │       ├── lint.yml
 │       ├── main-pipeline.yml
+│       ├── poc-pipeline.yml
 │       ├── pr-title-lint.yml
 │       ├── release.yml
 │       ├── terraform-deploy.yml
@@ -85,7 +87,9 @@
 │   │       ├── 20260319155046_add_publisher_mission_type.sql
 │   │       ├── 20260324104459_add_mission_jobboard.sql
 │   │       ├── 20260402074029_drop_organization_legacy_fields.sql
-│   │       └── 20260402083123_drop_mission_organization_client_id.sql
+│   │       ├── 20260402083123_drop_mission_organization_client_id.sql
+│   │       ├── 20260505074828_add_plateforme_engagement_schema.sql.sql
+│   │       └── 20260508092925_add_stat_event_source_email.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -134,15 +138,20 @@
 │   │       │   │   │   └── publisher_clicks_daily.sql
 │   │       │   │   ├── mission
 │   │       │   │   │   ├── __models.yml
+│   │       │   │   │   ├── matching_engine_result.sql
 │   │       │   │   │   ├── mission.sql
 │   │       │   │   │   ├── mission_active_department_monthly.sql
 │   │       │   │   │   ├── mission_active_monthly.sql
 │   │       │   │   │   ├── mission_address.sql
+│   │       │   │   │   ├── mission_enrichment.sql
+│   │       │   │   │   ├── mission_enrichment_value.sql
 │   │       │   │   │   ├── mission_event.sql
 │   │       │   │   │   ├── mission_events_yearly.sql
 │   │       │   │   │   ├── mission_jobboard.sql
 │   │       │   │   │   ├── mission_jobboard_daily.sql
 │   │       │   │   │   ├── mission_moderation_status.sql
+│   │       │   │   │   ├── mission_scoring.sql
+│   │       │   │   │   ├── mission_scoring_value.sql
 │   │       │   │   │   ├── mission_time_to_event_monthly.sql
 │   │       │   │   │   └── mission_time_to_event_weekly.sql
 │   │       │   │   ├── moderation
@@ -179,7 +188,9 @@
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   ├── login_history.sql
 │   │       │   │   │   ├── user.sql
-│   │       │   │   │   └── user_publisher.sql
+│   │       │   │   │   ├── user_publisher.sql
+│   │       │   │   │   ├── user_scoring.sql
+│   │       │   │   │   └── user_scoring_value.sql
 │   │       │   │   └── widget
 │   │       │   │       ├── __models.yml
 │   │       │   │       └── widget.sql
@@ -206,11 +217,16 @@
 │   │       │       │   ├── __models.yml
 │   │       │       │   ├── stg_activity.sql
 │   │       │       │   ├── stg_domain.sql
+│   │       │       │   ├── stg_matching_engine_result.sql
 │   │       │       │   ├── stg_mission.sql
 │   │       │       │   ├── stg_mission_activity.sql
 │   │       │       │   ├── stg_mission_address.sql
+│   │       │       │   ├── stg_mission_enrichment.sql
+│   │       │       │   ├── stg_mission_enrichment_value.sql
 │   │       │       │   ├── stg_mission_event.sql
-│   │       │       │   └── stg_mission_jobboard.sql
+│   │       │       │   ├── stg_mission_jobboard.sql
+│   │       │       │   ├── stg_mission_scoring.sql
+│   │       │       │   └── stg_mission_scoring_value.sql
 │   │       │       ├── moderation
 │   │       │       │   ├── __models.yml
 │   │       │       │   ├── stg_mission_moderation_status.sql
@@ -233,7 +249,9 @@
 │   │       │       ├── user
 │   │       │       │   ├── __models.yml
 │   │       │       │   ├── stg_login_history.sql
-│   │       │       │   └── stg_user.sql
+│   │       │       │   ├── stg_user.sql
+│   │       │       │   ├── stg_user_scoring.sql
+│   │       │       │   └── stg_user_scoring_value.sql
 │   │       │       ├── user_publisher
 │   │       │       │   ├── __models.yml
 │   │       │       │   └── stg_user_publisher.sql
@@ -286,6 +304,8 @@
 │   ├── CLAUDE.md -> AGENTS.md
 │   ├── Dockerfile
 │   ├── Dockerfile.production
+│   ├── Dockerfile.worker
+│   ├── Dockerfile.worker.production
 │   ├── README.md
 │   ├── docker-entrypoint.sh
 │   ├── docs
@@ -336,7 +356,6 @@
 │   │       │   └── v0-missions.json
 │   │       └── smoke-test.sh
 │   ├── nodemon.json
-│   ├── package-lock.json
 │   ├── package.json
 │   ├── prisma
 │   │   ├── migrations
@@ -466,11 +485,29 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260402104518_remove_stat_event_legacy_field
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260408141716_add_mission_enrichment
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260410075840_add_matching_engine_models
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260416000000_nullable_mission_scoring_value_enrichment
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260417130203_add_compensation_amount_max
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260421120000_add_organization_search_text_fts_index
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260421143329_add_mission_matching_result
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260424163500_add_taxonomy_key_columns
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260427124521_add_mission_publisher_organization_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260430074723_add_user_scoring_distinct_id_mission_alert
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260504123315_add_source_email
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260508124447_add_mission_enrichment_created_updated
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260518000000_add_publisher_self_hosted_script
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -483,20 +520,26 @@
 │   │   ├── backfill-publisher-organizations-exclusion.ts
 │   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
+│   │   ├── backfill-taxonomy-keys.ts
+│   │   ├── benchmark-matching-engine.ts
 │   │   ├── check-stat-event-orphan-mission-fields.ts
 │   │   ├── cleanup-duplicate-organizations.ts
 │   │   ├── cleanup-orphan-activities.ts
+│   │   ├── explain-matching-result.ts
 │   │   ├── fill-missions-type.ts
 │   │   ├── fill-stat-event-updated-at.ts
 │   │   ├── fixtures
 │   │   │   ├── README.md
 │   │   │   └── populate-stat-events-from-missions.ts
+│   │   ├── inspect-mission-scoring.ts
 │   │   ├── letudiant
 │   │   │   ├── README.md
 │   │   │   ├── archive-phantom-piloty-jobs.ts
 │   │   │   └── archive-piloty-jobs.ts
 │   │   ├── migrate-mission-activities.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
+│   │   ├── mission-enrichment
+│   │   │   └── export-dataset.ts
 │   │   ├── missions-sdis
 │   │   │   ├── addresses.csv
 │   │   │   ├── create-spv-missions.ts
@@ -539,6 +582,9 @@
 │   │   │       ├── normalize.ts
 │   │   │       └── options.ts
 │   │   ├── reconcile-apply-click-ids.ts
+│   │   ├── seed-fake-mission-enrichment.ts
+│   │   ├── seed-fake-user-scoring.ts
+│   │   ├── seed-taxonomy.ts
 │   │   ├── update-campaigns-trackers.ts
 │   │   ├── update-mission-moderation-status.ts
 │   │   └── update-sdis-publisher.ts
@@ -562,9 +608,12 @@
 │   │   │   │       ├── download-file.ts
 │   │   │   │       └── link-extractor.ts
 │   │   │   ├── campaign.ts
+│   │   │   ├── email.ts
 │   │   │   ├── iframe.ts
 │   │   │   ├── import.ts
 │   │   │   ├── metabase.ts
+│   │   │   ├── mission-browse.ts
+│   │   │   ├── mission-match.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── moderation.ts
@@ -576,6 +625,7 @@
 │   │   │   │   ├── controller.ts
 │   │   │   │   └── helper.ts
 │   │   │   ├── stats.ts
+│   │   │   ├── user-scoring.ts
 │   │   │   ├── user.ts
 │   │   │   ├── warning-bot.ts
 │   │   │   ├── warning.ts
@@ -675,6 +725,8 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   └── send.ts
 │   │   │   ├── run-job.ts
+│   │   │   ├── setup-search-collections
+│   │   │   │   └── handler.ts
 │   │   │   ├── talent
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── transformers.test.ts
@@ -685,6 +737,12 @@
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── types.ts
+│   │   │   ├── update-mission-enrichment
+│   │   │   │   └── handler.ts
+│   │   │   ├── update-mission-index
+│   │   │   │   └── handler.ts
+│   │   │   ├── update-mission-scoring
+│   │   │   │   └── handler.ts
 │   │   │   ├── verify-publisher-organization
 │   │   │   │   ├── handler.ts
 │   │   │   │   └── utils
@@ -719,9 +777,12 @@
 │   │   │   ├── login-history.ts
 │   │   │   ├── mission-activity.ts
 │   │   │   ├── mission-address.ts
+│   │   │   ├── mission-enrichment.ts
 │   │   │   ├── mission-event.ts
 │   │   │   ├── mission-job-board.ts
+│   │   │   ├── mission-matching-result.ts
 │   │   │   ├── mission-moderation-status.ts
+│   │   │   ├── mission-scoring.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── organization.ts
@@ -731,6 +792,7 @@
 │   │   │   ├── report.ts
 │   │   │   ├── stat-bot.ts
 │   │   │   ├── stat-event.ts
+│   │   │   ├── user-scoring.ts
 │   │   │   ├── user.ts
 │   │   │   ├── warning-bot.ts
 │   │   │   ├── warning.ts
@@ -740,8 +802,38 @@
 │   │   │   │   ├── moderation-event.test.ts
 │   │   │   │   └── organization.test.ts
 │   │   │   ├── activity.ts
+│   │   │   ├── ai
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── service.test.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── providers
+│   │   │   │   │   ├── albert
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── index.test.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── language-model.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   └── vercel-ai
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   └── index.test.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   └── service.ts
 │   │   │   ├── api-datasubvention.ts
-│   │   │   ├── brevo.ts
+│   │   │   ├── async-task
+│   │   │   │   ├── bus.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── providers
+│   │   │   │       ├── local.ts
+│   │   │   │       └── scaleway.ts
+│   │   │   ├── brevo
+│   │   │   │   ├── attachment.ts
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── contact.ts
+│   │   │   │   ├── email.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── campaign.ts
 │   │   │   ├── data-gouv
 │   │   │   │   ├── api.ts
@@ -752,10 +844,59 @@
 │   │   │   ├── import-rna.ts
 │   │   │   ├── import.ts
 │   │   │   ├── login-history.ts
+│   │   │   ├── matching-engine
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── matching-engine.test.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types.ts
 │   │   │   ├── metabase.ts
+│   │   │   ├── mission-browse
+│   │   │   │   ├── index.ts
+│   │   │   │   └── transformers.ts
+│   │   │   ├── mission-email
+│   │   │   │   └── index.ts
+│   │   │   ├── mission-enrichment
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   └── parser.test.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── parser.ts
+│   │   │   │   ├── prompts
+│   │   │   │   │   ├── builder.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── types.ts
+│   │   │   │   │   ├── v1.ts
+│   │   │   │   │   ├── v2.ts
+│   │   │   │   │   └── v3.ts
+│   │   │   │   └── providers
+│   │   │   │       ├── __tests__
+│   │   │   │       │   └── mock.test.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── llm.ts
+│   │   │   │       ├── mock.ts
+│   │   │   │       └── types.ts
 │   │   │   ├── mission-event.ts
+│   │   │   ├── mission-index
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── index.test.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── mission-jobboard.ts
+│   │   │   ├── mission-match
+│   │   │   │   ├── index.ts
+│   │   │   │   └── transformers.ts
 │   │   │   ├── mission-moderation-status.ts
+│   │   │   ├── mission-scoring
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── calculator.test.ts
+│   │   │   │   │   └── index.test.ts
+│   │   │   │   ├── calculator.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── data.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── scoring-rules.ts
+│   │   │   │   └── types.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── observability
@@ -772,9 +913,28 @@
 │   │   │   ├── reassign-stats.ts
 │   │   │   ├── report.ts
 │   │   │   ├── s3.ts
+│   │   │   ├── search
+│   │   │   │   ├── collections
+│   │   │   │   │   └── missions
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   └── client.test.ts
+│   │   │   │   │       ├── client.ts
+│   │   │   │   │       ├── fields.ts
+│   │   │   │   │       ├── schemas
+│   │   │   │   │       │   └── v1.ts
+│   │   │   │   │       └── types.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── providers
+│   │   │   │   │   └── typesense
+│   │   │   │   │       ├── client.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       └── utils.ts
+│   │   │   │   └── types.ts
 │   │   │   ├── slack.ts
 │   │   │   ├── stat-bot.ts
 │   │   │   ├── stat-event.ts
+│   │   │   ├── user-scoring
+│   │   │   │   └── index.ts
 │   │   │   ├── user.ts
 │   │   │   ├── warning-bot.ts
 │   │   │   ├── warning.ts
@@ -834,6 +994,7 @@
 │   │   │   ├── parser.ts
 │   │   │   ├── publisher-access.ts
 │   │   │   ├── publisher-organization.ts
+│   │   │   ├── redirect.ts
 │   │   │   ├── request-id.ts
 │   │   │   ├── request.ts
 │   │   │   ├── string.ts
@@ -853,16 +1014,30 @@
 │   │   │   ├── organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   └── view.ts
-│   │   └── v2
-│   │       ├── activity.ts
-│   │       ├── jobteaser.ts
-│   │       ├── leboncoin.ts
-│   │       └── mission
-│   │           ├── controller.ts
-│   │           └── helpers.ts
+│   │   ├── v2
+│   │   │   ├── activity.ts
+│   │   │   ├── jobteaser.ts
+│   │   │   ├── leboncoin.ts
+│   │   │   └── mission
+│   │   │       ├── controller.ts
+│   │   │       └── helpers.ts
+│   │   └── worker
+│   │       ├── __tests__
+│   │       │   ├── mission-enrichment.test.ts
+│   │       │   └── mission-scoring.test.ts
+│   │       ├── app.ts
+│   │       ├── handlers
+│   │       │   ├── mission-enrichment.ts
+│   │       │   ├── mission-index.ts
+│   │       │   └── mission-scoring.ts
+│   │       ├── index.ts
+│   │       ├── registry.ts
+│   │       ├── run-handler.ts
+│   │       └── types.ts
 │   ├── tests
 │   │   ├── fixtures
 │   │   │   ├── index.ts
+│   │   │   ├── mission-scoring.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
@@ -906,7 +1081,8 @@
 │   │   │   │   │   │   └── mission.test.ts
 │   │   │   │   │   ├── warning.test.ts
 │   │   │   │   │   └── widget.test.ts
-│   │   │   │   └── report.test.ts
+│   │   │   │   ├── report.test.ts
+│   │   │   │   └── user-scoring.test.ts
 │   │   │   ├── docs
 │   │   │   │   ├── spec.test.ts
 │   │   │   │   └── testOpenApiApp.ts
@@ -943,6 +1119,7 @@
 │   ├── vitest.integration.config.ts
 │   └── vitest.unit.config.ts
 ├── app
+│   ├── .dockerignore
 │   ├── .gitignore
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
@@ -1005,6 +1182,7 @@
 │   │   │   ├── AnalyticsViz.jsx
 │   │   │   ├── Autocomplete.jsx
 │   │   │   ├── Chart.jsx
+│   │   │   ├── ChartDetailsTable.jsx
 │   │   │   ├── DateRangePicker.jsx
 │   │   │   ├── ErrorAlert.jsx
 │   │   │   ├── Footer.jsx
@@ -1166,10 +1344,13 @@
 │   │   │   ├── mission.js
 │   │   │   ├── requestId.js
 │   │   │   ├── store.js
-│   │   │   ├── toast.jsx
-│   │   │   └── utils.js
+│   │   │   └── toast.jsx
 │   │   └── utils
+│   │       ├── chart.js
+│   │       ├── csv.js
+│   │       ├── date.js
 │   │       ├── publisher.js
+│   │       ├── string.js
 │   │       └── url.js
 │   ├── tests
 │   │   └── e2e
@@ -1192,6 +1373,170 @@
 ├── docker-compose.yml
 ├── package-lock.json
 ├── package.json
+├── packages
+│   ├── dto
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── index.ts
+│   │   │   └── resources
+│   │   │       ├── index.ts
+│   │   │       ├── mission-browse.ts
+│   │   │       ├── mission-match.ts
+│   │   │       └── user-scoring.ts
+│   │   └── tsconfig.json
+│   └── taxonomy
+│       ├── .gitignore
+│       ├── package.json
+│       ├── src
+│       │   ├── index.ts
+│       │   ├── taxonomy.ts
+│       │   ├── transformers
+│       │   │   ├── location.ts
+│       │   │   └── tranche-age.ts
+│       │   ├── types.ts
+│       │   └── utils.ts
+│       └── tsconfig.json
+├── plateform
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── Dockerfile.production
+│   ├── app
+│   │   ├── assets
+│   │   │   ├── images
+│   │   │   │   ├── asc-logo.png
+│   │   │   │   ├── humanitaire-02.jpeg
+│   │   │   │   ├── jva-logo.png
+│   │   │   │   ├── people-landing-mobile.png
+│   │   │   │   ├── people-landing.png
+│   │   │   │   ├── roc-logo.png
+│   │   │   │   └── spv-logo.png
+│   │   │   └── svg
+│   │   │       ├── long-trace.svg
+│   │   │       ├── trace.svg
+│   │   │       └── zig-zag-arrow.svg
+│   │   ├── components
+│   │   │   ├── landing
+│   │   │   │   ├── hero.tsx
+│   │   │   │   ├── how-it-works.tsx
+│   │   │   │   ├── mission-examples.tsx
+│   │   │   │   ├── pro-space.tsx
+│   │   │   │   └── testimonials.tsx
+│   │   │   ├── layout
+│   │   │   │   ├── footer.tsx
+│   │   │   │   ├── header.tsx
+│   │   │   │   ├── modal.tsx
+│   │   │   │   ├── newsletter.tsx
+│   │   │   │   └── partners.tsx
+│   │   │   ├── mission-detail
+│   │   │   │   ├── cta-panel.tsx
+│   │   │   │   ├── description-card.tsx
+│   │   │   │   ├── email-mission-details-modal.tsx
+│   │   │   │   ├── hero-card.tsx
+│   │   │   │   ├── location-card.tsx
+│   │   │   │   └── similar-missions.tsx
+│   │   │   ├── missions
+│   │   │   │   ├── filters.tsx
+│   │   │   │   └── mission-card.tsx
+│   │   │   ├── quiz
+│   │   │   │   ├── back-button.tsx
+│   │   │   │   ├── exit-modal.tsx
+│   │   │   │   ├── header.tsx
+│   │   │   │   ├── label.tsx
+│   │   │   │   ├── loading-recap.tsx
+│   │   │   │   ├── mission-card.tsx
+│   │   │   │   ├── multi-select-icon.tsx
+│   │   │   │   ├── next-button.tsx
+│   │   │   │   ├── single-select-icon.tsx
+│   │   │   │   └── single-select.tsx
+│   │   │   ├── results
+│   │   │   │   ├── email-missions-modal.tsx
+│   │   │   │   ├── matching-debug-modal.css
+│   │   │   │   ├── matching-debug-modal.tsx
+│   │   │   │   ├── mission-map.tsx
+│   │   │   │   ├── other-missions.tsx
+│   │   │   │   └── pinned-missions.tsx
+│   │   │   └── ui
+│   │   │       ├── combobox.tsx
+│   │   │       ├── gradient-bg.tsx
+│   │   │       ├── highlight.tsx
+│   │   │       ├── location-map.tsx
+│   │   │       ├── mail-illustration.tsx
+│   │   │       └── pagination.tsx
+│   │   ├── config
+│   │   │   ├── quiz-flow.ts
+│   │   │   └── quiz-options.ts
+│   │   ├── entry.client.tsx
+│   │   ├── entry.server.tsx
+│   │   ├── hooks
+│   │   │   └── useMissionResults.ts
+│   │   ├── main.css
+│   │   ├── root.tsx
+│   │   ├── routes
+│   │   │   ├── _index.tsx
+│   │   │   ├── mission-detail.tsx
+│   │   │   ├── missions.tsx
+│   │   │   ├── quiz
+│   │   │   │   ├── _index.tsx
+│   │   │   │   ├── _layout.tsx
+│   │   │   │   ├── age.tsx
+│   │   │   │   ├── duree.tsx
+│   │   │   │   ├── handicap.tsx
+│   │   │   │   ├── localisation.tsx
+│   │   │   │   ├── motivation.tsx
+│   │   │   │   ├── precision-competences.tsx
+│   │   │   │   ├── precision-domaine.tsx
+│   │   │   │   ├── precision-formation-onisep.tsx
+│   │   │   │   ├── precision-international.tsx
+│   │   │   │   ├── precision-parcoursup-formation-nom.tsx
+│   │   │   │   ├── precision-parcoursup-formation.tsx
+│   │   │   │   ├── precision-reprendre-activite.tsx
+│   │   │   │   ├── precision-servir-pays.tsx
+│   │   │   │   ├── precision-thematique.tsx
+│   │   │   │   └── statut.tsx
+│   │   │   └── results.tsx
+│   │   ├── routes.ts
+│   │   ├── services
+│   │   │   ├── api.ts
+│   │   │   ├── config.ts
+│   │   │   ├── email.ts
+│   │   │   ├── matching.ts
+│   │   │   ├── mission-browse.ts
+│   │   │   └── user-scoring.ts
+│   │   ├── stores
+│   │   │   └── quiz.ts
+│   │   ├── types
+│   │   │   └── quiz.ts
+│   │   └── utils
+│   │       ├── conditions.ts
+│   │       ├── domains.ts
+│   │       ├── mission.ts
+│   │       └── quiz.ts
+│   ├── eslint.config.cjs
+│   ├── package.json
+│   ├── react-router.config.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── poc-quiz
+│   ├── Dockerfile.production
+│   ├── docker-entrypoint.sh
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── api.ts
+│   │   ├── components
+│   │   │   ├── CityAutocomplete.tsx
+│   │   │   ├── MatchResults.tsx
+│   │   │   └── QuizForm.tsx
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── scripts
 │   ├── .gitignore
 │   ├── generate-changelog.ts
@@ -1199,10 +1544,12 @@
 │   ├── package.json
 │   └── tsconfig.json
 ├── terraform
+│   ├── .gitignore
 │   ├── containers.tf
 │   ├── data.tf
 │   ├── domains.tf
 │   ├── envs
+│   │   ├── poc.tfvars
 │   │   ├── production.tfvars
 │   │   ├── sandbox.tfvars
 │   │   └── staging.tfvars
@@ -1210,8 +1557,25 @@
 │   ├── jobs.tf
 │   ├── locals.tf
 │   ├── main.tf
-│   └── variables.tf
+│   ├── modules
+│   │   ├── mnq-sqs-queue
+│   │   │   ├── main.tf
+│   │   │   ├── outputs.tf
+│   │   │   └── variables.tf
+│   │   └── typesense
+│   │       ├── main.tf
+│   │       ├── templates
+│   │       │   ├── alloy-config.alloy.tftpl
+│   │       │   └── cloud-init.yaml.tftpl
+│   │       ├── variables.tf
+│   │       └── versions.tf
+│   ├── queues.tf
+│   ├── triggers.tf
+│   ├── typesense.tf
+│   ├── variables.tf
+│   └── vpc.tf
 └── widget
+    ├── .dockerignore
     ├── .gitignore
     ├── AGENTS.md
     ├── CLAUDE.md -> AGENTS.md
@@ -1310,4 +1674,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-304 directories, 1094 files
+388 directories, 1374 files
