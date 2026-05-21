@@ -125,6 +125,12 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260511125032_adds_nomination_file_search_index
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260513085151_docs_adds_meeting_session_end_time
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260519104612_docs_adds_nomination_file_snapshots_for_notice_and_pv
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260520000000_docs_adds_agenda_id_to_presentation_plan_nomination_file
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -144,7 +150,7 @@
 │   │   │       ├── findAgendaNominationFilesRawQuery.sql
 │   │   │       ├── findMagistratExternalIdByFullName.sql
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
-│   │   │       ├── findNominationFilesNotInAgendaRawQuery.sql
+│   │   │       ├── findReportedInAgendaNominationFilesRawQuery.sql
 │   │   │       ├── insertAdministrativePositionsRawQuery.sql
 │   │   │       ├── insertCandidateWishesRawQuery.sql
 │   │   │       ├── insertCandidatesRawQuery.sql
@@ -210,62 +216,70 @@
 │   │   │   │   │       └── repositories
 │   │   │   │   │           └── user.repository.ts
 │   │   │   │   ├── docs
+│   │   │   │   │   ├── docs.e2e-spec.ts
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── agenda-nomination-file.ts
+│   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   ├── agenda.ts
 │   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
 │   │   │   │   │   │   ├── justice-presentation-plan.ts
-│   │   │   │   │   │   └── official-report.ts
-│   │   │   │   │   └── infrastructure
-│   │   │   │   │       ├── docs.controller.ts
-│   │   │   │   │       ├── docs.dto.ts
-│   │   │   │   │       ├── docs.filter.ts
-│   │   │   │   │       ├── finders
-│   │   │   │   │       │   ├── agenda-nomination-files.finder.ts
-│   │   │   │   │       │   └── agenda.finder.ts
-│   │   │   │   │       ├── queries
-│   │   │   │   │       │   ├── details-agenda-metadata.query.ts
-│   │   │   │   │       │   ├── details-official-report.query.ts
-│   │   │   │   │       │   ├── details-presentation-plan-metadata.query.ts
-│   │   │   │   │       │   ├── details-presentation-plan-pdf-document.query.ts
-│   │   │   │   │       │   ├── details-session-agenda.query.ts
-│   │   │   │   │       │   ├── details-session-official-report.query.ts
-│   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-agenda-document.query.ts
-│   │   │   │   │       │   ├── find-chairmen.query.ts
-│   │   │   │   │       │   ├── find-justice-contacts.query.ts
-│   │   │   │   │       │   ├── find-members-for-new-official-report.query.ts
-│   │   │   │   │       │   ├── find-official-report-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-official-report-document.query.ts
-│   │   │   │   │       │   ├── find-presentation-plan-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-presentation-plan-document.query.ts
-│   │   │   │   │       │   ├── find-session-docs.query.ts
-│   │   │   │   │       │   ├── internal-find-nomination-files-linked-docs.query.ts
-│   │   │   │   │       │   ├── is-session-ready-for-doc-generation.query.ts
-│   │   │   │   │       │   ├── list-non-presented-plans.query.ts
-│   │   │   │   │       │   ├── list-presented-plans.query.ts
-│   │   │   │   │       │   └── list-secretaries-general.query.ts
-│   │   │   │   │       ├── repositories
-│   │   │   │   │       │   ├── agenda.repository.ts
-│   │   │   │   │       │   ├── justice-presentation-plan.repository.ts
-│   │   │   │   │       │   └── official-report.repository.ts
-│   │   │   │   │       └── services
-│   │   │   │   │           └── renderers
-│   │   │   │   │               ├── agenda.renderer.ts
-│   │   │   │   │               ├── helpers.ts
-│   │   │   │   │               ├── official-report.renderer.ts
-│   │   │   │   │               ├── pdf
-│   │   │   │   │               │   ├── pdf-renderer.service.ts
-│   │   │   │   │               │   └── pdf-worker.ts
-│   │   │   │   │               ├── presentation-plan.renderer.ts
-│   │   │   │   │               └── templates
-│   │   │   │   │                   ├── agenda.html.ts
-│   │   │   │   │                   ├── common.html.ts
-│   │   │   │   │                   ├── official-report.html.ts
-│   │   │   │   │                   ├── presentation-plan.html.ts
-│   │   │   │   │                   └── templates.types.ts
+│   │   │   │   │   │   ├── official-report.ts
+│   │   │   │   │   │   ├── reported-nomination-files-collection.spec.ts
+│   │   │   │   │   │   └── reported-nomination-files-collection.ts
+│   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   ├── docs.controller.ts
+│   │   │   │   │   │   ├── docs.dto.ts
+│   │   │   │   │   │   ├── docs.filter.ts
+│   │   │   │   │   │   ├── finders
+│   │   │   │   │   │   │   ├── agenda-nomination-files.finder.ts
+│   │   │   │   │   │   │   ├── agenda.finder.ts
+│   │   │   │   │   │   │   ├── docs-nomination-files.finder.ts
+│   │   │   │   │   │   │   └── reported-nomination-files.finder.ts
+│   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   ├── details-agenda-metadata.query.ts
+│   │   │   │   │   │   │   ├── details-official-report.query.ts
+│   │   │   │   │   │   │   ├── details-presentation-plan-metadata.query.ts
+│   │   │   │   │   │   │   ├── details-presentation-plan-pdf-document.query.ts
+│   │   │   │   │   │   │   ├── details-session-agenda.query.ts
+│   │   │   │   │   │   │   ├── details-session-official-report.query.ts
+│   │   │   │   │   │   │   ├── find-agenda-document-pdf.query.ts
+│   │   │   │   │   │   │   ├── find-agenda-document.query.ts
+│   │   │   │   │   │   │   ├── find-agenda-nomination-files.query.ts
+│   │   │   │   │   │   │   ├── find-chairmen.query.ts
+│   │   │   │   │   │   │   ├── find-justice-contacts.query.ts
+│   │   │   │   │   │   │   ├── find-members-for-new-official-report.query.ts
+│   │   │   │   │   │   │   ├── find-official-report-document-pdf.query.ts
+│   │   │   │   │   │   │   ├── find-official-report-document.query.ts
+│   │   │   │   │   │   │   ├── find-presentation-plan-document-pdf.query.ts
+│   │   │   │   │   │   │   ├── find-presentation-plan-document.query.ts
+│   │   │   │   │   │   │   ├── find-session-docs.query.ts
+│   │   │   │   │   │   │   ├── internal-find-nomination-files-linked-docs.query.ts
+│   │   │   │   │   │   │   ├── is-session-ready-for-doc-generation.query.ts
+│   │   │   │   │   │   │   ├── list-non-presented-plans.query.ts
+│   │   │   │   │   │   │   ├── list-presented-plans.query.ts
+│   │   │   │   │   │   │   └── list-secretaries-general.query.ts
+│   │   │   │   │   │   ├── repositories
+│   │   │   │   │   │   │   ├── agenda.repository.ts
+│   │   │   │   │   │   │   ├── justice-presentation-plan.repository.ts
+│   │   │   │   │   │   │   └── official-report.repository.ts
+│   │   │   │   │   │   └── services
+│   │   │   │   │   │       └── renderers
+│   │   │   │   │   │           ├── agenda.renderer.ts
+│   │   │   │   │   │           ├── helpers.ts
+│   │   │   │   │   │           ├── official-report.renderer.ts
+│   │   │   │   │   │           ├── pdf
+│   │   │   │   │   │           │   ├── pdf-renderer.service.ts
+│   │   │   │   │   │           │   └── pdf-worker.ts
+│   │   │   │   │   │           ├── presentation-plan.renderer.ts
+│   │   │   │   │   │           └── templates
+│   │   │   │   │   │               ├── agenda.html.ts
+│   │   │   │   │   │               ├── common.html.ts
+│   │   │   │   │   │               ├── official-report.html.ts
+│   │   │   │   │   │               ├── presentation-plan.html.ts
+│   │   │   │   │   │               └── templates.types.ts
+│   │   │   │   │   └── lolfi.e2e-spec.ts
 │   │   │   │   ├── framework
 │   │   │   │   │   ├── clock.ts
 │   │   │   │   │   ├── config
@@ -331,6 +345,7 @@
 │   │   │   │   │   │   │   └── list-jobs.query.ts
 │   │   │   │   │   │   └── runner
 │   │   │   │   │   │       ├── child-process-job-runner.ts
+│   │   │   │   │   │       ├── in-process-job-runner.ts
 │   │   │   │   │   │       ├── job-errors.ts
 │   │   │   │   │   │       ├── job-runner.ts
 │   │   │   │   │   │       ├── scalingo-http.ts
@@ -484,7 +499,7 @@
 │   │   │   │   │   │   │   ├── get-lolfi-magistrat-url.query.ts
 │   │   │   │   │   │   │   ├── get-summary-attachment-url.query.ts
 │   │   │   │   │   │   │   ├── internal-detail-member-session.query.ts
-│   │   │   │   │   │   │   ├── internal-find-agenda-nomination-files.query.ts
+│   │   │   │   │   │   │   ├── internal-find-docs-nomination-files.query.ts
 │   │   │   │   │   │   │   ├── internal-list-member-sessions.query.ts
 │   │   │   │   │   │   │   ├── list-currently-affected-reporters.query.ts
 │   │   │   │   │   │   │   ├── list-nomination-files-as-excel.query.ts
@@ -578,10 +593,12 @@
 │   │   │   │   └── lodam
 │   │   │   │       └── lodam_transparence.xlsx
 │   │   │   ├── docker-compose-test.yaml
-│   │   │   └── jest
-│   │   │       ├── jest-all.config.ts
-│   │   │       ├── jest-e2e.config.ts
-│   │   │       └── jest.config.ts
+│   │   │   ├── jest
+│   │   │   │   ├── jest-all.config.ts
+│   │   │   │   ├── jest-e2e.config.ts
+│   │   │   │   └── jest.config.ts
+│   │   │   └── utils
+│   │   │       └── lolfi.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
 │   └── client
@@ -991,6 +1008,7 @@
 │       │   │   │   │   │   ├── AgendaPage.tsx
 │       │   │   │   │   │   ├── AgendaPreviewPage.tsx
 │       │   │   │   │   │   ├── components
+│       │   │   │   │   │   │   ├── AgendaBreadcrumb.tsx
 │       │   │   │   │   │   │   ├── AgendaChairmanSelect.tsx
 │       │   │   │   │   │   │   ├── AgendaFileSearch.tsx
 │       │   │   │   │   │   │   ├── AgendaNominationFile.css
@@ -1008,7 +1026,9 @@
 │       │   │   │   │       ├── OfficialReportPage.tsx
 │       │   │   │   │       ├── OfficialReportPreviewPage.tsx
 │       │   │   │   │       ├── components
+│       │   │   │   │       │   ├── AbsentMemberSelector.tsx
 │       │   │   │   │       │   ├── JusticeContactSelector.tsx
+│       │   │   │   │       │   ├── OfficialReportBreadCrumb.tsx
 │       │   │   │   │       │   └── OfficialReportForm.tsx
 │       │   │   │   │       ├── context
 │       │   │   │   │       │   ├── OfficialReportContext.tsx
@@ -1030,7 +1050,10 @@
 │       │   │   │       ├── components
 │       │   │   │       │   └── PresentationAgendaSelecionList.tsx
 │       │   │   │       └── contexts
+│       │   │   │           ├── PresentatPlanModalProvider.tsx
 │       │   │   │           ├── PresentationPlanProvider.tsx
+│       │   │   │           ├── present-plan-modal.context.ts
+│       │   │   │           ├── present-plan-modal.type.ts
 │       │   │   │           ├── presentation-plan.context.ts
 │       │   │   │           └── presentation-plan.type.ts
 │       │   │   ├── summary
@@ -1100,6 +1123,8 @@
 │       │   │   ├── test-anonymous-app.ts
 │       │   │   ├── test-app.ts
 │       │   │   └── test-member-app.ts
+│       │   ├── unit
+│       │   │   └── time-only.spec.ts
 │       │   └── utils
 │       │       ├── lodam.util.ts
 │       │       ├── table.util.ts
@@ -1136,4 +1161,4 @@
 ├── renovate.json
 └── scripts
     └── changelog.js
-250 directories, 888 files
+255 directories, 908 files
