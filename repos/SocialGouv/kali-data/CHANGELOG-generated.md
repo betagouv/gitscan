@@ -1,28 +1,13 @@
-## Changelog : kali-data (30 derniers jours, au 14 mai 2026)
+## Changelog : kali-data (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce changelog résume les mises à jour des données des conventions collectives fournies par l'API DILA. Au cours des 30 derniers jours, le projet a été régulièrement mis à jour avec les dernières données disponibles, avec une nouvelle version publiée quotidiennement pour intégrer ces changements.
+Ce changelog fait état de mises à jour régulières des données des conventions collectives publiées par l'API DILA. Chaque mise à jour intègre les dernières informations disponibles, assurant ainsi la fraîcheur des données fournies par le projet.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière des données des conventions collectives : Les données ont été mises à jour quotidiennement avec les dernières informations disponibles via l'API DILA. Les dates de mise à jour sont les suivantes :
-    - 2026-05-14
-    - 2026-05-13
-    - 2026-05-12
-    - 2026-05-08
-    - 2026-05-07
-    - 2026-05-06
-    - 2026-05-01
-    - 2026-04-30
-    - 2026-04-29
-    - 2026-04-26
-    - 2026-04-24
-    - 2026-04-23
-    - 2026-04-22
-    - 2026-04-21
-    - 2026-04-16
+- Mise à jour des données des conventions collectives : les données ont été mises à jour quotidiennement du 21 avril 2026 au 20 mai 2026, incluant les modifications et ajouts les plus récents.  Les dates de mise à jour sont les suivantes : 21 avril, 22 avril, 23 avril, 24 avril, 26 avril, 29 avril, 30 avril, 1er mai, 6 mai, 7 mai, 8 mai, 12 mai, 13 mai, 14 mai, 19 mai et 20 mai 2026.
 
 ### Évolutions techniques
-- Publication automatisée des versions : Le processus de publication des versions a été automatisé via des workflows CI/CD.
+- Aucune évolution technique n'a été identifiée durant cette période.
 
 ### Autres changements
-- Aucune information supplémentaire n'est disponible.
+- Aucune autre modification n'a été apportée au projet durant cette période.
