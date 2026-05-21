@@ -3,6 +3,7 @@
 ├── .env.example
 ├── .github
 │   ├── .env.ci.example
+│   ├── .trivyignore
 │   ├── ISSUE_TEMPLATE
 │   │   ├── ⚙️-feature---improvements---chore.md
 │   │   └── 🐞-bug-report.md
@@ -24,7 +25,6 @@
 │       └── trivy-scan.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
-├── .trivyignore
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile
@@ -110,6 +110,7 @@
 │   │   ├── provider
 │   │   │   ├── __init__.py
 │   │   │   ├── _providergateway.py
+│   │   │   ├── _providermetricslogger.py
 │   │   │   ├── _providerrepository.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
@@ -194,9 +195,11 @@
 │   │   │   │   │   ├── routers.py
 │   │   │   │   │   └── users.py
 │   │   │   │   ├── exceptions.py
+│   │   │   │   ├── health.py
 │   │   │   │   └── models.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
+│   │   │       ├── health.py
 │   │   │       ├── models.py
 │   │   │       ├── providers.py
 │   │   │       ├── roles.py
@@ -206,7 +209,6 @@
 │   │   │   └── model
 │   │   │       ├── __init__.py
 │   │   │       ├── _modelhttpclient.py
-│   │   │       ├── _modelmetricslogger.py
 │   │   │       ├── _modeltokenizercomputer.py
 │   │   │       ├── _modelusagecomputer.py
 │   │   │       ├── adapters.py
@@ -232,17 +234,20 @@
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   └── _modelprovidergateway.py
-│   │   └── postgres
+│   │   ├── postgres
+│   │   │   ├── __init__.py
+│   │   │   ├── _postgreskeyrepository.py
+│   │   │   ├── _postgreslimitrepository.py
+│   │   │   ├── _postgrespermissionrepository.py
+│   │   │   ├── _postgresproviderrepository.py
+│   │   │   ├── _postgresrolesrepository.py
+│   │   │   ├── _postgresrouterrepository.py
+│   │   │   ├── _postgresusersrepository.py
+│   │   │   ├── _postgresuserwithrolerepository.py
+│   │   │   └── decorators.py
+│   │   └── redis
 │   │       ├── __init__.py
-│   │       ├── _postgreskeyrepository.py
-│   │       ├── _postgreslimitrepository.py
-│   │       ├── _postgrespermissionrepository.py
-│   │       ├── _postgresproviderrepository.py
-│   │       ├── _postgresrolesrepository.py
-│   │       ├── _postgresrouterrepository.py
-│   │       ├── _postgresusersrepository.py
-│   │       ├── _postgresuserwithrolerepository.py
-│   │       └── decorators.py
+│   │       └── _redisprovidermetricslogger.py
 │   ├── main.py
 │   ├── routers
 │   │   └── registry.py
@@ -351,7 +356,7 @@
 │   │   │   │   ├── lifespan
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_bootstrapadmin.py
-│   │   │   │   │   └── test_bootstrapmodel.py
+│   │   │   │   │   └── test_bootstrapmodels.py
 │   │   │   │   └── test_createapp.py
 │   │   │   ├── conftest.py
 │   │   │   ├── endpoints
@@ -380,6 +385,7 @@
 │   │   │   │   │       ├── test_get_routers.py
 │   │   │   │   │       └── test_update_router.py
 │   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   └── utils.py
 │   │   │   ├── factories
@@ -387,29 +393,32 @@
 │   │   │   │   ├── albert.py
 │   │   │   │   ├── mistral.py
 │   │   │   │   ├── openai.py
+│   │   │   │   ├── redis.py
 │   │   │   │   ├── sql.py
 │   │   │   │   ├── tei.py
 │   │   │   │   └── vllm.py
 │   │   │   ├── models
 │   │   │   │   └── test_modelprovidergateway.py
-│   │   │   └── postgres
-│   │   │       ├── __init__.py
-│   │   │       ├── role_repository
-│   │   │       │   ├── __init__.py
-│   │   │       │   ├── test_create_role.py
-│   │   │       │   ├── test_delete_role.py
-│   │   │       │   ├── test_get_role_by_id.py
-│   │   │       │   ├── test_get_role_name.py
-│   │   │       │   ├── test_get_roles_page.py
-│   │   │       │   └── test_update_role.py
-│   │   │       ├── test_postgreskeyrepository.py
-│   │   │       ├── test_postgreslimitrepository.py
-│   │   │       ├── test_postgrespermissionrepository.py
-│   │   │       ├── test_postgresproviderrepository.py
-│   │   │       ├── test_postgresrolesrepository.py
-│   │   │       ├── test_postgresrouterrepository.py
-│   │   │       ├── test_postgresusersrepository.py
-│   │   │       └── test_postgresuserwithrolequery.py
+│   │   │   ├── postgres
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── role_repository
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_create_role.py
+│   │   │   │   │   ├── test_delete_role.py
+│   │   │   │   │   ├── test_get_role_by_id.py
+│   │   │   │   │   ├── test_get_role_name.py
+│   │   │   │   │   ├── test_get_roles_page.py
+│   │   │   │   │   └── test_update_role.py
+│   │   │   │   ├── test_postgreskeyrepository.py
+│   │   │   │   ├── test_postgreslimitrepository.py
+│   │   │   │   ├── test_postgrespermissionrepository.py
+│   │   │   │   ├── test_postgresproviderrepository.py
+│   │   │   │   ├── test_postgresrolesrepository.py
+│   │   │   │   ├── test_postgresrouterrepository.py
+│   │   │   │   ├── test_postgresusersrepository.py
+│   │   │   │   └── test_postgresuserwithrolequery.py
+│   │   │   └── redis
+│   │   │       └── test_redisprovidermetricslogger.py
 │   │   └── unit
 │   │       ├── __init__.py
 │   │       ├── infrastructure
@@ -484,7 +493,13 @@
 │   │           │       ├── __init__.py
 │   │           │       └── test_createuserusecase.py
 │   │           ├── factories.py
-│   │           └── test_getmodelsusecase.py
+│   │           ├── health
+│   │           │   ├── __init__.py
+│   │           │   └── test_gethealthmodelsusecase.py
+│   │           └── models
+│   │               ├── __init__.py
+│   │               ├── test_getmodelsusecase.py
+│   │               └── test_getmodelusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -515,10 +530,14 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── _createuserusecase.py
 │   │   │       └── _updateuserusecase.py
+│   │   ├── health
+│   │   │   ├── __init__.py
+│   │   │   └── _gethealthmodelsusecase.py
 │   │   └── models
 │   │       ├── __init__.py
 │   │       ├── _bootstrapmodelsusecase.py
-│   │       └── _getmodelsusecase.py
+│   │       ├── _getmodelsusecase.py
+│   │       └── _getmodelusecase.py
 │   └── utils
 │       ├── __init__.py
 │       ├── carbon.py
@@ -770,4 +789,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-162 directories, 610 files
+167 directories, 624 files
