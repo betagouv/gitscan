@@ -1,39 +1,33 @@
 {
   "url": "https://github.com/betagouv/complements-alimentaires",
   "name": "complements-alimentaires",
-  "description": "Ce projet a pour objectif de gérer les informations relatives aux compléments alimentaires. Il permet notamment de suivre les déclarations et de contrôler leur conformité, et de les publier en open data.",
+  "description": "Ce projet permet de gérer les compléments alimentaires, notamment leur déclaration, leur suivi et leur publication en open data. Il offre des fonctionnalités d'administration, de gestion des utilisateurs et de reporting.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
-    "API & Intégrations",
-    "Gestion documentaire & Fichiers",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "API & Intégrations",
+    "Statistiques & Rapports",
+    "Gestion documentaire & Fichiers",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Celery",
+    "Redis",
     "Vue.js",
-    "pytest",
-    "pypdf",
-    "pillow",
-    "cryptography",
-    "lxml",
-    "pandas",
-    "ruff"
+    "tailwindcss"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "Python (scripts & backend)",
-    "Django",
     "Frontend React",
-    "Tests"
+    "Django"
   ],
   "auth": {
     "methods": [
@@ -41,10 +35,13 @@
     ]
   },
   "tests": [
-    "pytest"
+    "Pytest",
+    "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-14T10:13:25+02:00",
+  "workflows": [
+    "CI/CD & Déploiement"
+  ],
+  "lastActivity": "2026-05-20T22:54:57+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,6 +54,9 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth"
