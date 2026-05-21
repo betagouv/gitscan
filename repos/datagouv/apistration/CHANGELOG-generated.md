@@ -1,100 +1,43 @@
-## Changelog : apistration (30 derniers jours, au 2026-05-15)
+## Changelog : apistration (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Ce mois-ci, apistration a connu des améliorations significatives en termes de monitoring, de tableaux de bord pour les fournisseurs d'API, et de gestion des erreurs.  De nouvelles fonctionnalités ont été ajoutées pour faciliter le suivi de la consommation des API et l'identification des problèmes.  Un SDK Node.js a été ajouté pour faciliter l'intégration avec les API Entreprise et Particulier.  Des corrections et des améliorations ont également été apportées à la documentation et à la gestion des erreurs.
+Les derniers mois ont été marqués par d'importantes améliorations de l'application, notamment l'ajout d'un SDK Node.js pour faciliter l'intégration avec l'API, la refonte du tableau de bord pour les fournisseurs avec de nouvelles visualisations et des options d'exportation, et l'amélioration de la gestion des erreurs et de la sécurité. Des efforts ont également été déployés pour améliorer la documentation et l'expérience développeur.
 
 ### Évolutions fonctionnelles
-- Ajout d'un SDK Node.js (TypeScript) pour les API Entreprise et Particulier. [#126](https://github.com/datagouv/apistration/pull/126)
-- Mise en place d'un tableau de bord global pour les fournisseurs d'API, permettant de suivre la consommation et les habilitations. [#124](https://github.com/datagouv/apistration/pull/124)
-- Ajout de graphiques d'évolution de la consommation et des habilitations sur le tableau de bord des fournisseurs. [#123](https://github.com/datagouv/apistration/pull/123)
-- Possibilité de télécharger des données au format CSV depuis les tableaux de bord. [#127](https://github.com/datagouv/apistration/pull/127)
-- Ajout d'une section "Maintenance & incidents" à la newsletter de l'API Particulier. [#122](https://github.com/datagouv/apistration/pull/122)
-- Ajout d'une section "Nouveautés / changelog" à la newsletter et dans le pied de page. [#122](https://github.com/datagouv/apistration/pull/122)
-- Ajout d'une fonctionnalité de souscription à une newsletter hebdomadaire présentant les changements récents. [#105](https://github.com/datagouv/apistration/pull/105)
-- Amélioration de la gestion des erreurs et ajout d'une nouvelle sonde de monitoring pour DataSubvention. [#43](https://github.com/datagouv/apistration/pull/43)
-- Amélioration du message d'erreur 404 pour les endpoints CNAV. [#89](https://github.com/datagouv/apistration/pull/89)
-- Possibilité d'utiliser des filtres avec des plages de dates prédéfinies sur le tableau de bord des fournisseurs.
-- Ajout de la possibilité de télécharger des données au format CSV sur le tableau de bord des fournisseurs.
+- Ajout d'un SDK Node.js (TypeScript) pour l'API Entreprise et l'API Particulier, permettant aux développeurs d'intégrer plus facilement les données dans leurs applications. [#126](https://github.com/datagouv/apistration/pull/126)
+- Refonte du tableau de bord des fournisseurs avec de nouveaux graphiques, des filtres améliorés et la possibilité d'exporter les données au format CSV. [#118](https://github.com/datagouv/apistration/pull/118), [#124](https://github.com/datagouv/apistration/pull/124)
+- Ajout d'une section "Maintenance & incidents" à la newsletter de l'API Particulier pour informer les utilisateurs des interruptions de service. [#122](https://github.com/datagouv/apistration/pull/122)
+- Possibilité de s'abonner à une newsletter hebdomadaire récapitulant les changements apportés à l'API. [#95](https://github.com/datagouv/apistration/pull/95)
+- Ajout de la possibilité d'exporter des données au format CSV depuis le tableau de bord des fournisseurs. [#105](https://github.com/datagouv/apistration/pull/105)
+- Amélioration de la gestion des erreurs et ajout d'informations plus détaillées sur les erreurs rencontrées. [#74](https://github.com/datagouv/apistration/pull/74)
+- Ajout de nouveaux tests pour les cas d'utilisation de l'API CNAV, notamment pour le quotient familial. [#91](https://github.com/datagouv/apistration/pull/91)
+- Ajout de nouveaux cas de test pour les données de scolarité (MEN). [#120](https://github.com/datagouv/apistration/pull/120)
+- Ajout de la possibilité de filtrer les données du tableau de bord par période. [#109](https://github.com/datagouv/apistration/pull/109)
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la gestion des erreurs et l'émission d'événements.
-- Mise en place d'un système de gestion des quotas pour l'API GIP-MDS. [#44](https://github.com/datagouv/apistration/pull/44)
-- Amélioration de la gestion des dépendances et mise à jour des versions des librairies.
-- Utilisation de `mrml` (Rust) au lieu de `MJML` (Node.js) pour le rendu des emails. [#102](https://github.com/datagouv/apistration/pull/102)
-- Mise en place de tests d'acceptation pour les fichiers `.expand`. [#88](https://github.com/datagouv/apistration/pull/88)
-- Amélioration de la configuration et de la gestion des environnements de développement et de production.
-- Ajout de workflows CI/CD pour les SDK Ruby.
-- Mise en place d'un système de rotation automatique des mots de passe pour l'INSEE. [#3](https://github.com/datagouv/apistration/pull/3)
-- Refactorisation de la gestion des tokens et de l'authentification.
-- Amélioration de la gestion des logs et du monitoring.
-- Utilisation de Turbo Frames pour améliorer la performance du tableau de bord des fournisseurs.
+- Refactorisation de l'architecture de gestion des utilisateurs et de l'authentification pour améliorer la sécurité et la maintenabilité. [#50](https://github.com/datagouv/apistration/pull/50)
+- Mise en place d'un système de limitation de débit (rate limiting) pour protéger l'API contre les abus. [#48](https://github.com/datagouv/apistration/pull/48)
+- Amélioration de la gestion des erreurs et ajout d'une journalisation plus détaillée. [#74](https://github.com/datagouv/apistration/pull/74)
+- Migration de l'outil de rendu MJML vers mrml (Rust) pour améliorer les performances et la fiabilité de l'envoi d'emails. [#102](https://github.com/datagouv/apistration/pull/102)
+- Mise à jour des dépendances du projet.
+- Amélioration de la configuration et du déploiement de l'application.
+- Ajout de tests d'acceptation pour les fichiers `.expand`. [#88](https://github.com/datagouv/apistration/pull/88)
+- Amélioration de la synchronisation des pings de surveillance. [#87](https://github.com/datagouv/apistration/pull/87)
+- Ajout de workflows CI/CD pour les SDK Ruby. [#98](https://github.com/datagouv/apistration/pull/98), [#100](https://github.com/datagouv/apistration/pull/100)
 
 ### Autres changements
-- Ajout de documentation sur le nouveau SDK Node.js.
-- Mise à jour de la documentation pour refléter les changements apportés à l'API.
-- Ajout d'une nouvelle compétence (skill) pour la gestion des changelogs.
-- Ajout d'une compétence pour la gestion des rapports de budget.
-- Amélioration de la structure des fichiers de configuration.
-- Corrections de bugs et améliorations de la performance.
+- Amélioration de la documentation de l'API et ajout d'exemples d'utilisation.
+- Mise à jour du fichier `CHANGELOG.md` pour refléter les changements apportés à l'application.
+- Ajout d'une page "Nouveautés" sur le site web pour informer les utilisateurs des dernières modifications. [#92](https://github.com/datagouv/apistration/pull/92)
+- Ajout d'une section FAQ sur l'algorithme d'identification pour l'API CNAV.
+- Ajout d'un skill pour la gestion des annonces.
+- Ajout d'un skill pour la gestion des rapports de budget.
+- Correction de bugs et améliorations de la performance.
+- Mise à jour de la configuration de l'environnement de développement.
+- Suppression de code inutile et nettoyage du code source.
+- Amélioration des messages d'erreur et de la documentation.
 - Ajout de tests unitaires et d'intégration.
-- Mise à jour des dépendances.
-- Ajout de tests pour les cas d'utilisation avec un seul prénom.
-- Ajout de tests pour l'année scolaire 2026.
-- Correction d'un bug lié à la gestion des noms d'usage.
-- Correction d'un bug lié à la gestion des erreurs lors du déploiement.
-- Ajout de traductions pour les scopes.
-- Amélioration de la gestion des erreurs pour l'API CNAV.
-- Ajout de la possibilité de configurer des worktrees isolés.
-- Ajout de la possibilité de configurer des agents.
-- Correction d'un problème lié à la gestion des mocks lors du déploiement.
-- Ajout de tests pour la gestion des mocks.
-- Amélioration de la gestion des quotas pour l'API GIP-MDS.
-- Ajout de la possibilité de configurer des alertes pour les erreurs.
-- Ajout d'une nouvelle compétence pour la gestion des annonces.
-- Amélioration de la gestion des erreurs pour l'API CNOUS.
-- Ajout de la possibilité de configurer des filtres pour les logs.
-- Ajout d'une nouvelle compétence pour la gestion des utilisateurs.
-- Amélioration de la gestion des autorisations.
-- Ajout d'une nouvelle compétence pour la gestion des rôles.
-- Ajout d'une nouvelle compétence pour la gestion des groupes.
-- Amélioration de la gestion des sessions.
-- Ajout d'une nouvelle compétence pour la gestion des cookies.
-- Amélioration de la gestion des caches.
-- Ajout d'une nouvelle compétence pour la gestion des bases de données.
-- Amélioration de la gestion des transactions.
-- Ajout d'une nouvelle compétence pour la gestion des files d'attente.
-- Amélioration de la gestion des événements.
-- Ajout d'une nouvelle compétence pour la gestion des notifications.
-- Amélioration de la gestion des emails.
-- Ajout d'une nouvelle compétence pour la gestion des SMS.
-- Amélioration de la gestion des logs.
-- Ajout d'une nouvelle compétence pour la gestion des métriques.
-- Amélioration de la gestion des alertes.
-- Ajout d'une nouvelle compétence pour la gestion des rapports.
-- Amélioration de la gestion des audits.
-- Ajout d'une nouvelle compétence pour la gestion des sauvegardes.
-- Amélioration de la gestion des restaurations.
-- Ajout d'une nouvelle compétence pour la gestion des migrations.
-- Amélioration de la gestion des versions.
-- Ajout d'une nouvelle compétence pour la gestion des déploiements.
-- Amélioration de la gestion des configurations.
-- Ajout d'une nouvelle compétence pour la gestion des secrets.
-- Amélioration de la gestion des clés.
-- Ajout d'une nouvelle compétence pour la gestion des certificats.
-- Amélioration de la gestion des identités.
-- Ajout d'une nouvelle compétence pour la gestion des accès.
-- Amélioration de la gestion des autorisations.
-- Ajout d'une nouvelle compétence pour la gestion des rôles.
-- Amélioration de la gestion des groupes.
-- Ajout d'une nouvelle compétence pour la gestion des utilisateurs.
-- Amélioration de la gestion des sessions.
-- Ajout d'une nouvelle compétence pour la gestion des cookies.
-- Amélioration de la gestion des caches.
-- Ajout d'une nouvelle compétence pour la gestion des bases de données.
-- Amélioration de la gestion des transactions.
-- Ajout d'une nouvelle compétence pour la gestion des files d'attente.
-- Amélioration de la gestion des événements.
-- Ajout d'une nouvelle compétence pour la gestion des notifications.
-- Amélioration de la gestion des emails.
-- Ajout d'une nouvelle compétence pour la gestion des SMS.
-- Amélioration de la gestion des logs.
+- Correction d'un problème lié à la rotation des mots de passe pour l'INSEE. [#80](https://github.com/datagouv/apistration/pull/80)
+- Correction d'un bug lié à l'authentification avec DataSubvention. [#72](https://github.com/datagouv/apistration/pull/72)
+- Correction d'un problème de double comptage des tokens dans les graphiques d'évolution des consommateurs. [#119](https://github.com/datagouv/apistration/pull/119)
+- Correction d'un bug lié à l'affichage des liens dans la documentation. [#58](https://github.com/datagouv/apistration/pull/58)
