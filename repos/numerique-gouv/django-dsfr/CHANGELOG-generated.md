@@ -1,18 +1,15 @@
-## Changelog : django-dsfr (30 derniers jours, au 2026-05-12)
+## Changelog : django-dsfr (30 derniers jours, au 2026-05-20)
 
 ### Résumé
-Cette version apporte des améliorations à l'expérience utilisateur avec la possibilité de personnaliser la taille du texte dans les composants de citation. Des corrections et améliorations de la qualité du code ont également été apportées, ainsi qu'une préparation pour une nouvelle release.
+Cette version apporte des améliorations à la flexibilité du composant "Quote" en permettant de choisir la taille du texte cité. Des optimisations de code ont également été réalisées pour améliorer la qualité globale du projet. Enfin, des dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de choisir la taille du texte dans le composant "Quote" (citation) [#302](https://github.com/numerique-gouv/django-dsfr/issues/302).
+- Le composant "Quote" permet désormais de choisir la taille du texte cité, offrant plus de contrôle sur l'apparence visuelle. [#302](https://github.com/numerique-gouv/django-dsfr/issues/302)
 
 ### Évolutions techniques
-- Amélioration de la qualité du code, notamment pour une meilleure lisibilité et maintenabilité [#307](https://github.com/numerique-gouv/django-dsfr/issues/307).
-- Correction d'une exigence dans l'application `dsfr.extras.markdown` [#304](https://github.com/numerique-gouv/django-dsfr/issues/304).
-- Préparation de la release 3.4.2 [#305](https://github.com/numerique-gouv/django-dsfr/issues/305).
-
-### Autres changements
-- Mise à jour de la dépendance `urllib3` vers la version 2.7.0.
-- Mise à jour de la dépendance `django` vers la version 5.2.14.
-- Mise à jour de la dépendance de développement `lxml` vers la version 6.1.0 [#306](https://github.com/numerique-gouv/django-dsfr/issues/306).
-- Mise à jour de la dépendance de développement `pytest` vers la version 9.0.3 [#303](https://github.com/numerique-gouv/django-dsfr/issues/303).
+- Amélioration de la qualité du code pour une meilleure maintenabilité et performance. [#307](https://github.com/numerique-gouv/django-dsfr/issues/307)
+- Mise à jour de la librairie `lxml` en version 6.1.0. [#306](https://github.com/numerique-gouv/django-dsfr/issues/306)
+- Mise à jour de Django en version 5.2.14.
+- Mise à jour de `urllib3` en version 2.7.0.
+- Mise à jour de `idna` en version 3.15.
+- Mise à jour de `pymdown-extensions` en version 10.21.3.
