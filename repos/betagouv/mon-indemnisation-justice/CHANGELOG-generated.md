@@ -1,37 +1,33 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 15 mai 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la refonte de l'application, notamment l'implémentation d'un nouveau système de gestion des brouillons, l'amélioration de l'expérience utilisateur lors du dépôt de dossier, et la correction de plusieurs bugs critiques affectant la stabilité et la fiabilité de la plateforme. Des améliorations ont également été apportées à la gestion des erreurs et à la surveillance de l'application avec l'intégration de Sentry.
+Ce mois-ci, l'équipe a concentré ses efforts sur la refonte de l'application, notamment l'implémentation d'un nouveau système de gestion des brouillons de dossiers, l'amélioration de l'expérience utilisateur avec de nouvelles étapes de saisie et des corrections d'erreurs, et la mise à jour technique de l'application avec les dernières versions de Symfony et Doctrine. Des améliorations ont également été apportées à la gestion des erreurs et à la sécurité, notamment avec l'intégration de Sentry.
 
 ### Évolutions fonctionnelles
-- **Dépôt de dossier :** Refonte complète du processus de dépôt de dossier avec création d'étapes distinctes et amélioration de la navigation.
-- **Pièces jointes :** Ajout de la possibilité de prévisualiser les pièces jointes avant de les soumettre.
-- **Gestion des brouillons :** Implémentation d'un système de brouillons pour permettre aux utilisateurs de sauvegarder leur progression et de reprendre le dépôt plus tard.
-- **Types d'attestations :** Ajout du type d'attestation "Avis d'intervention".
-- **Informations requérant :** Amélioration de la gestion des informations relatives au requérant, notamment la distinction entre personne physique et morale.
-- **Autocomplete adresse :** Ajout d'une fonctionnalité d'autocomplétion pour le champ adresse.
-- **Page récapitulative :** Création d'une page récapitulative pour vérifier les informations avant la soumission.
+- **Gestion des dossiers :** Introduction d'un système de brouillons pour permettre aux utilisateurs de sauvegarder leurs données et de les reprendre plus tard.
+- **Interface utilisateur :** Création de nouvelles étapes de saisie pour le dépôt de dossier, avec une interface plus claire et intuitive.
+- **Pièces jointes :** Amélioration de la gestion des pièces jointes avec une prévisualisation et une intégration plus fluide dans le processus de dépôt.
+- **France Connect :** Amélioration de la gestion des erreurs et de l'intégration de France Connect, avec une meilleure remontée d'informations en cas de problème.
 - **Notifications :** La référence à rappeler est maintenant incluse dans l'email de confirmation de dépôt.
-- **France Connect :** Amélioration de la gestion des erreurs et ajout de la remontée des erreurs France Connect dans Sentry.
-- **Affichage dossier (espace rédacteur) :** Corrections d'affichage pour l'espace rédacteur.
+- **Types d'attestations :** Ajout du type "Avis d'intervention" à la liste des types d'attestation acceptés.
+- **Récapitulatif :** Création d'une page de récapitulatif pour permettre aux utilisateurs de vérifier leurs informations avant de soumettre leur dossier.
+- **Autocomplete :** Ajout d'une fonctionnalité d'autocomplétion pour le champ adresse.
+- **Affichage des dossiers :** Corrections d'affichage des dossiers dans l'espace rédacteur.
+- **Navigation :** Corrections de la navigation entre les étapes du dépôt de dossier.
 
 ### Évolutions techniques
-- **Mise à jour des dépendances :** Mise à jour de Symfony et Doctrine vers la version 8.0.
-- **Refactoring API :** Réorganisation de la route API listant les communes par code postal.
-- **Suppression API Platform :** Suppression de l'utilisation d'API Platform.
-- **Normalisation des données :** Amélioration de la normalisation des données.
-- **Docker :** Mise à jour de l'image Docker pour retirer `APP_RUNTIME`.
-- **Tests :** Correction des tests unitaires backend et adaptation des tests end-to-end.
-- **Sentry :** Intégration de Sentry pour la surveillance des erreurs et la collecte de logs.
-- **Architecture :** Utilisation de Tanstack Router pour l'espace requérant.
-- **Base de données :** Création d'une table dédiée pour les bris de porte.
-- **DTOs :** Création de Data Transfer Objects (DTOs) pour l'échange de données avec l'espace FIP6.
+- **Mise à jour des dépendances :** Mise à jour de Symfony et Doctrine vers les versions 8.x pour bénéficier des dernières fonctionnalités et correctifs de sécurité.
+- **Refactoring :** Simplification de la gestion des erreurs et du mapping des données.
+- **Architecture :** Suppression d'API Platform et migration vers un système de routes Tanstack Router.
+- **Base de données :** Création de nouvelles entités (Brouillon, Personne) et modification du schéma de base de données pour supporter les nouvelles fonctionnalités.
+- **Monitoring :** Intégration de Sentry pour la surveillance des erreurs et l'amélioration de la qualité du code.
+- **Docker :** Mise à jour de l'image Docker pour retirer APP_RUNTIME.
+- **Tests :** Correction des tests unitaires et end-to-end pour assurer la stabilité de l'application.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation concernant les nouveaux points d'intégration.
-- **Configuration :** Correction d'une configuration obsolète pour Doctrine en production.
-- **Nettoyage de code :** Suppression de classes de mapper inutilisées.
-- **Fixtures :** Correction des données de fixtures et des tests associés.
-- **Pages :** Création d'une page d'erreur 404.
-- **Crisp :** Installation de Crisp pour le support client.
+- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'architecture.
+- **Configuration :** Correction de la configuration Doctrine en production.
+- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Installation de Crisp :** Ajout de Crisp pour le support client.
 - **Schéma de base de données :** Documentation du schéma de base de données.
+- **Gestion des permissions :** Amélioration de la gestion des permissions pour les différents types d'utilisateurs.
