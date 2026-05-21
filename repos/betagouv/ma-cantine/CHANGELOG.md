@@ -6,6 +6,44 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.34.0](https://github.com/betagouv/ma-cantine/compare/v2026.33.4...v2026.34.0) (2026-05-20)
+
+
+### Nouveautés
+
+* **Ressources:** ajout des livrables GT sanitaire et médico-social ([#6733](https://github.com/betagouv/ma-cantine/issues/6733)) ([9f79e7a](https://github.com/betagouv/ma-cantine/commit/9f79e7ac8b82b5cfd8b916de17b998ea6b9b9d6d))
+
+
+### Améliorations
+
+* **Achats:** diverses améliorations sur le formulaire (wording, champs obligatoires, explications) ([#6734](https://github.com/betagouv/ma-cantine/issues/6734)) ([dce728a](https://github.com/betagouv/ma-cantine/commit/dce728a3a0f374637e99ee72dfa7f1611fd4e9d7))
+* **Cantines:** Données Géo: script dédié à la màj des données PAT ([#6725](https://github.com/betagouv/ma-cantine/issues/6725)) ([7cccd81](https://github.com/betagouv/ma-cantine/commit/7cccd814d735bb210f6305b87a16d0af684366fd))
+
+
+### Corrections (bugs, typos...)
+
+* **Achats:** API: ménage dans les champs renvoyés par l'endpoint canteenPurchasesPercentageSummary ([#6730](https://github.com/betagouv/ma-cantine/issues/6730)) ([87d4427](https://github.com/betagouv/ma-cantine/commit/87d4427c0fad79f8facbda6d5c200a9404ed764d))
+
+
+### Technique
+
+* **Achats:** Admin: petit ménage de printemps (lecture seule) ([#6727](https://github.com/betagouv/ma-cantine/issues/6727)) ([6ac0311](https://github.com/betagouv/ma-cantine/commit/6ac0311d7e2da9f8e39703d21357273377135823))
+* **Achats:** API: ménage dans les tests de l'endpoint createDiagnosticsFromPurchases ([#6728](https://github.com/betagouv/ma-cantine/issues/6728)) ([594f59f](https://github.com/betagouv/ma-cantine/commit/594f59fbc4a9dfcf3ea34009ff5f1fdf3faaf46f))
+* supprimer le script field_gen.py (pas utilisé) ([#6726](https://github.com/betagouv/ma-cantine/issues/6726)) ([5457dec](https://github.com/betagouv/ma-cantine/commit/5457decb36a7bb04d532c7c7a730bfd1d20dab6c))
+
+## [2026.33.4](https://github.com/betagouv/ma-cantine/compare/v2026.33.3...v2026.33.4) (2026-05-19)
+
+
+### Améliorations
+
+* **ETL:** désactiver les exports TD vers Metabase ([#6723](https://github.com/betagouv/ma-cantine/issues/6723)) ([f28a2ae](https://github.com/betagouv/ma-cantine/commit/f28a2ae57b5a4249030a1a5c7fde1629a9c68f48))
+* **ETL:** remettre les exports cantines (Open Data & Metabase) à une fréquence journalière ([#6724](https://github.com/betagouv/ma-cantine/issues/6724)) ([c7293ff](https://github.com/betagouv/ma-cantine/commit/c7293ff356a67cadf4a22dd9e0a8d12f487f41f1))
+
+
+### Corrections (bugs, typos...)
+
+* **ETL:** répare l'export open data (fix sur le paramètre datagouv) ([#6722](https://github.com/betagouv/ma-cantine/issues/6722)) ([ea3c7ec](https://github.com/betagouv/ma-cantine/commit/ea3c7ecc386628ecd4e48779b4ac515d05d94324))
+
 ## [2026.33.3](https://github.com/betagouv/ma-cantine/compare/v2026.33.2...v2026.33.3) (2026-05-18)
 
 
