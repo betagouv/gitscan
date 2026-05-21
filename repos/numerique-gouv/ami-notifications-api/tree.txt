@@ -64,7 +64,9 @@
 │   │   ├── __init__.py
 │   │   ├── api_views.py
 │   │   ├── apps.py
+│   │   ├── context_processors.py
 │   │   ├── forms.py
+│   │   ├── manage_urls.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_audit_entry.py
@@ -86,23 +88,36 @@
 │   │   │       │   └── header.html
 │   │   │       ├── home.html
 │   │   │       ├── login.html
-│   │   │       ├── manage_access.html
-│   │   │       └── send_notification.html
+│   │   │       └── manage
+│   │   │           ├── detail_user.html
+│   │   │           ├── list_access.html
+│   │   │           ├── search_user.html
+│   │   │           └── send_notification.html
 │   │   ├── tests
 │   │   │   ├── api
 │   │   │   │   └── __init__.py
+│   │   │   ├── manage
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_access.py
+│   │   │   │   ├── test_send_notification.py
+│   │   │   │   └── test_user.py
 │   │   │   ├── test_access_denied.py
+│   │   │   ├── test_api.py
 │   │   │   ├── test_audit_entry.py
 │   │   │   ├── test_home.py
 │   │   │   ├── test_login.py
 │   │   │   ├── test_logout.py
-│   │   │   ├── test_manage.py
-│   │   │   ├── test_send_notification.py
-│   │   │   ├── test_users.py
 │   │   │   └── utils.py
 │   │   ├── urls.py
 │   │   ├── utils.py
-│   │   └── views.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       ├── base_views.py
+│   │       └── manage
+│   │           ├── __init__.py
+│   │           ├── access_views.py
+│   │           ├── notification_views.py
+│   │           └── user_views.py
 │   ├── amidsfr
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -115,6 +130,7 @@
 │   │   ├── templates
 │   │   │   └── amidsfr
 │   │   │       ├── form_field_snippets
+│   │   │       │   ├── autocomplete_snippet.html
 │   │   │       │   ├── field_snippet.html
 │   │   │       │   └── toggle_snippet.html
 │   │   │       └── form_snippet.html
@@ -361,13 +377,23 @@
 │   │   │   │   │   ├── Navigation.svelte.test.ts
 │   │   │   │   │   ├── NotificationIcon.svelte
 │   │   │   │   │   ├── NotificationIcon.svelte.test.ts
+│   │   │   │   │   ├── PageWrapper.svelte
 │   │   │   │   │   ├── RequestItem.svelte
 │   │   │   │   │   ├── RequestItem.svelte.test.ts
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
 │   │   │   │   │   ├── Toasts.svelte.test.ts
-│   │   │   │   │   └── Toggle.svelte
+│   │   │   │   │   ├── Toggle.svelte
+│   │   │   │   │   └── modal
+│   │   │   │   │       ├── Logout.svelte
+│   │   │   │   │       ├── LogoutFooter.svelte
+│   │   │   │   │       ├── LogoutFooter.svelte.test.ts
+│   │   │   │   │       ├── Modal.svelte
+│   │   │   │   │       ├── Modal.svelte.test.ts
+│   │   │   │   │       ├── ZonePreferences.svelte
+│   │   │   │   │       ├── ZonePreferences.svelte.test.ts
+│   │   │   │   │       └── ZonePreferencesFooter.svelte
 │   │   │   │   ├── dsfr.ts
 │   │   │   │   ├── follow-up.test.ts
 │   │   │   │   ├── follow-up.ts
@@ -438,10 +464,7 @@
 │   │   │       │   ├── notifications
 │   │   │       │   │   ├── +page.svelte
 │   │   │       │   │   └── page.svelte.test.ts
-│   │   │       │   ├── pages.svelte.test.ts
-│   │   │       │   └── zones
-│   │   │       │       ├── +page.svelte
-│   │   │       │       └── page.svelte.test.ts
+│   │   │       │   └── pages.svelte.test.ts
 │   │   │       ├── procedure
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
@@ -513,4 +536,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-101 directories, 414 files
+105 directories, 433 files

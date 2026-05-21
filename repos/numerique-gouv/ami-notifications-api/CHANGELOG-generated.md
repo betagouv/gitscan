@@ -1,28 +1,27 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 12 mai 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur pour les agents, notamment avec l'ajout de fonctionnalités pour la gestion des notifications et des agendas, ainsi que des corrections de bugs et des optimisations de performance. Des travaux importants ont également été réalisés sur la réplication des données et la gestion des rôles d'administration.
+Ce changelog couvre les dernières améliorations apportées à l'API ami-notifications-api, avec un focus sur l'interface utilisateur web (agent-admin et front) et l'ajout de nouvelles fonctionnalités pour la gestion des utilisateurs et des notifications. Des améliorations de performance et de maintenance ont également été réalisées, notamment concernant la réplication des données et la gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- **Gestion des notifications (Agent Admin):** Ajout de la possibilité pour les agents d'envoyer des notifications directement depuis l'interface d'administration, incluant une recherche d'AMI partenaire via un autocomplete. [#773](https://github.com/numerique-gouv/ami-notifications-api/issues/773)
-- **Agenda et Suivi:** Intégration d'un agenda avec affichage des vacances scolaires, configurable par l'utilisateur en fonction de sa zone géographique.  Possibilité de définir des préférences de zone pour l'affichage des vacances. [#508](https://github.com/numerique-gouv/ami-notifications-api/issues/508)
-- **Confirmation de déconnexion:** Ajout d'une modal de confirmation lors de la déconnexion pour éviter les actions involontaires. [#753](https://github.com/numerique-gouv/ami-notifications-api/issues/753)
-- **Améliorations de l'interface:** Corrections de padding et d'alignement sur la page d'accueil. [#764](https://github.com/numerique-gouv/ami-notifications-api/issues/764)
-- **Gestion des rôles:** Ajout d'une commande pour attribuer le rôle d'administrateur à un agent. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
-- **Amélioration de l'expérience utilisateur:** Correction d'un problème de défilement sur la page d'adresse et ajout de sticky headers. [#568](https://github.com/numerique-gouv/ami-notifications-api/issues/568)
-- **FranceConnect:** Centrage vertical du bouton FranceConnect. [#515](https://github.com/numerique-gouv/ami-notifications-api/issues/515)
+- **Gestion des utilisateurs (agent-admin):** Ajout de vues pour la recherche, la consultation, la suppression et la gestion des rôles des utilisateurs. Une interface de recherche avec autocomplétion a été implémentée.
+- **Notifications:** Amélioration de l'affichage des notifications et ajout d'une confirmation de déconnexion via une modale.
+- **Agenda et Vacances Scolaires:**  L'application affiche désormais les vacances scolaires en fonction des préférences de l'utilisateur (zones géographiques).  La configuration des zones de préférences utilisateur a été revue et améliorée.
+- **Interface utilisateur:** Amélioration de la mise en page du bouton "gérer" dans l'écran des notifications et ajout d'un composant de wrapper de page pour une meilleure cohérence visuelle.
+- **Suivi Matomo:** Ajout du suivi des zones de vacances scolaires dans Matomo pour l'analyse des données.
 
 ### Évolutions techniques
-- **Réplication des données:** Refonte de la logique de réplication des utilisateurs avec ajout de tests et d'une commande Django pour la réplication. [#791](https://github.com/numerique-gouv/ami-notifications-api/issues/791)
-- **Mise à jour de Django:** Mise à jour de Django vers la version 6.0.5.
-- **Utilisation de mkcert:** Utilisation de `mkcert` pour la gestion des certificats SSL en local. [#828](https://github.com/numerique-gouv/ami-notifications-api/issues/828)
-- **Cache HTTPX:** Ajout de cache aux requêtes GET via httpx pour améliorer les performances.
-- **Linting Front:** Correction de plusieurs avertissements de linting dans le code front-end. [#792](https://github.com/numerique-gouv/ami-notifications-api/issues/792)
-- **Suppression de django-admin:** Suppression de la commande `django-admin` et remplacement par des commandes customisées. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
+- **Réplication des données:**  Refonte de la logique de réplication des données avec ajout de commandes et de tests pour assurer la cohérence des données entre les instances.
+- **Suppression de code obsolète:** Suppression de la fonctionnalité "requests enabled" qui n'était plus utilisée.
+- **Mises à jour de dépendances:**  Mise à jour de plusieurs dépendances, notamment Django (6.0.5), pytest, lxml, uv, postcss, et uuid.
+- **Amélioration de la gestion des erreurs:** Ajout de gestion des erreurs pour la réplication des données.
+- **Cache HTTP:** Implémentation d'un cache HTTP pour les requêtes concernant les vacances scolaires.
+- **Sécurité:** Utilisation de `mkcert` pour la gestion des certificats SSL en local.
+- **Linting:** Correction de plusieurs avertissements de linting dans le code frontend.
 
 ### Autres changements
-- **Documentation:** Mise à jour de la documentation CONTRIBUTING.
-- **Correction de bugs:** Correction de plusieurs bugs mineurs dans l'interface utilisateur et l'API.
-- **Amélioration du logging:** Amélioration des logs pour faciliter le débogage.
-- **Refactoring:** Refactoring de code pour améliorer la lisibilité et la maintenabilité.
-- **Gestion des dépendances:** Mises à jour de plusieurs dépendances (twisted, urllib3, uuid, @cucumber/cucumber, python-dotenv, lxml, uv, pytest, postcss, @sveltejs/kit).
+- **Documentation:** Mise à jour de la documentation CONTRIBUTING.md.
+- **Tests:** Amélioration des tests et ajout de fixtures pour les tests de réplication.
+- **Configuration:** Suppression de la variable d'environnement `PUBLIC_FC_PROXY` en production.
+- **Nettoyage de code:** Suppression de `django-admin` et simplification des commandes de notifications planifiées.
+- **Amélioration de l'UX:** Centrage vertical du bouton FranceConnect et défilement automatique du champ d'adresse lors de la focalisation.
