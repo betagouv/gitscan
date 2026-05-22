@@ -234,13 +234,9 @@
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── hotjar.js.erb
 │   │   │   ├── image_file_input_clear.js
-│   │   │   ├── invitation_modal.js
 │   │   │   ├── liens_evitement.js
-│   │   │   ├── modal_accessibilite.js
-│   │   │   ├── modal_dashboard_dsfr.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
-│   │   │   ├── modal_verification_ouverture_evapro.js
 │   │   │   ├── nouveau_compte.js
 │   │   │   ├── numero_telephone_input.js
 │   │   │   ├── plausible.js.erb
@@ -299,6 +295,7 @@
 │   │       │   │   ├── _header.scss
 │   │       │   │   ├── _image_file_input.scss
 │   │       │   │   ├── _impact_stepper.scss
+│   │       │   │   ├── _incontournables_etape_card.scss
 │   │       │   │   ├── _input_choix.scss
 │   │       │   │   ├── _input_choix_parcours.scss
 │   │       │   │   ├── _input_choix_type_programme.scss
@@ -395,8 +392,6 @@
 │   │       │   │   ├── layouts
 │   │       │   │   │   ├── _connexion_v2.scss
 │   │       │   │   │   └── _inscription_v2.scss
-│   │       │   │   ├── login
-│   │       │   │   │   └── _structures.scss
 │   │       │   │   └── restitution_globale
 │   │       │   │       ├── _aller_plus_loin.scss
 │   │       │   │       ├── _base.scss
@@ -516,6 +511,8 @@
 │   │   ├── header_component.rb
 │   │   ├── impact_stepper_component.erb
 │   │   ├── impact_stepper_component.rb
+│   │   ├── incontournables_etape_card_component.html.erb
+│   │   ├── incontournables_etape_card_component.rb
 │   │   ├── input_component.html.erb
 │   │   ├── input_component.rb
 │   │   ├── lien_component.html.erb
@@ -553,6 +550,8 @@
 │   │   ├── siret_input_component.rb
 │   │   ├── sous_competence_component.erb
 │   │   ├── sous_competence_component.rb
+│   │   ├── statistiques_structure_metabase_component.html.erb
+│   │   ├── statistiques_structure_metabase_component.rb
 │   │   ├── statut_campagne_component.html.erb
 │   │   ├── statut_campagne_component.rb
 │   │   ├── tableau_component.html.erb
@@ -976,7 +975,6 @@
 │       │   ├── dashboard
 │       │   │   ├── _bloc_resultats_entreprise.html.erb
 │       │   │   ├── _dashboard.html.arb
-│       │   │   ├── _metabase_dashboard_opco.html.erb
 │       │   │   ├── _modal_confirmation_cgu.html.erb
 │       │   │   ├── _modal_validation_comptes_en_attente.html.erb
 │       │   │   ├── _tableau_de_bord_eva.html.arb
@@ -1004,53 +1002,59 @@
 │       │   │   └── opco
 │       │   │       └── _sidebar_opco.html.erb
 │       │   ├── evaluations
-│       │   │   ├── _aller_plus_loin.erb
-│       │   │   ├── _beneficiaire.erb
-│       │   │   ├── _bilan_evapro.erb
-│       │   │   ├── _communication_ecrite.arb
-│       │   │   ├── _competence_niveau1.arb
-│       │   │   ├── _continuer_evaluation_evapro.erb
-│       │   │   ├── _correspondance_anlci.arb
-│       │   │   ├── _deroulement_passation.arb
-│       │   │   ├── _details_evaluation.html.arb
-│       │   │   ├── _donnees_sociodemographiques.arb
-│       │   │   ├── _entete_page.erb
-│       │   │   ├── _evaluation_eva.html.arb
-│       │   │   ├── _evaluation_evapro.html.arb
 │       │   │   ├── _form.html.arb
-│       │   │   ├── _impact_couts.erb
 │       │   │   ├── _index.html.arb
 │       │   │   ├── _informations_complementaires.arb
-│       │   │   ├── _litteratie.erb
-│       │   │   ├── _litteratie_numeratie_niveau1.arb
-│       │   │   ├── _litteratie_numeratie_synthese.arb
-│       │   │   ├── _menu_sidebar.html.arb
-│       │   │   ├── _mesure_des_impacts.erb
-│       │   │   ├── _mesure_des_impacts_chart.erb
-│       │   │   ├── _mesure_des_impacts_definitions.erb
-│       │   │   ├── _mesure_des_risques.erb
-│       │   │   ├── _metacompetences.arb
-│       │   │   ├── _opco_financeur.html.erb
 │       │   │   ├── _panel_administration.html.arb
-│       │   │   ├── _pied_page.arb
-│       │   │   ├── _prise_en_main.arb
-│       │   │   ├── _questionnaire_autopositionnement.arb
-│       │   │   ├── _questions.arb
-│       │   │   ├── _questions_reponses_autopositionnement.arb
-│       │   │   ├── _recherche_responsable_suivi.html.erb
-│       │   │   ├── _referentiel_europeen.arb
-│       │   │   ├── _restitution_globale.arb
-│       │   │   ├── _restitution_globale_evapro.arb
-│       │   │   ├── _sante.arb
 │       │   │   ├── _show.html.arb
-│       │   │   ├── _suivi_accompagnement_illettrisme.erb
-│       │   │   ├── _telechargement_reponses.erb
-│       │   │   ├── index_evapro
-│       │   │   │   ├── _lien.html.erb
-│       │   │   │   ├── _sidebar_opco.html.erb
-│       │   │   │   └── _tableau.arb
-│       │   │   ├── positionnement
-│       │   │   │   └── _sous_competences.erb
+│       │   │   ├── eva
+│       │   │   │   ├── _communication_ecrite.arb
+│       │   │   │   ├── _competence_niveau1.arb
+│       │   │   │   ├── _correspondance_anlci.arb
+│       │   │   │   ├── _deroulement_passation.arb
+│       │   │   │   ├── _details_evaluation.html.arb
+│       │   │   │   ├── _donnees_sociodemographiques.arb
+│       │   │   │   ├── _entete_page.erb
+│       │   │   │   ├── _evaluation_eva.html.arb
+│       │   │   │   ├── _litteratie.erb
+│       │   │   │   ├── _litteratie_numeratie_niveau1.arb
+│       │   │   │   ├── _litteratie_numeratie_synthese.arb
+│       │   │   │   ├── _menu_sidebar.html.arb
+│       │   │   │   ├── _metacompetences.arb
+│       │   │   │   ├── _pied_page.arb
+│       │   │   │   ├── _prise_en_main.arb
+│       │   │   │   ├── _questionnaire_autopositionnement.arb
+│       │   │   │   ├── _questions.arb
+│       │   │   │   ├── _questions_reponses_autopositionnement.arb
+│       │   │   │   ├── _recherche_responsable_suivi.html.erb
+│       │   │   │   ├── _referentiel_europeen.arb
+│       │   │   │   ├── _restitution_globale.arb
+│       │   │   │   ├── _sante.arb
+│       │   │   │   ├── _suivi_accompagnement_illettrisme.erb
+│       │   │   │   ├── _telechargement_reponses.erb
+│       │   │   │   └── positionnement
+│       │   │   │       └── _sous_competences.erb
+│       │   │   ├── evapro
+│       │   │   │   ├── _aller_plus_loin.erb
+│       │   │   │   ├── _beneficiaire.erb
+│       │   │   │   ├── _bilan_evapro.erb
+│       │   │   │   ├── _continuer_evaluation_evapro.erb
+│       │   │   │   ├── _definitions_des_impacts.erb
+│       │   │   │   ├── _evaluation_evapro.html.arb
+│       │   │   │   ├── _impact_couts.erb
+│       │   │   │   ├── _les_incontournables.erb
+│       │   │   │   ├── _les_incontournables_etapes.erb
+│       │   │   │   ├── _les_incontournables_intro.erb
+│       │   │   │   ├── _mesure_des_impacts.erb
+│       │   │   │   ├── _mesure_des_impacts_chart.erb
+│       │   │   │   ├── _mesure_des_impacts_definitions.erb
+│       │   │   │   ├── _mesure_des_risques.erb
+│       │   │   │   ├── _opco_financeur.html.erb
+│       │   │   │   ├── _restitution_globale_evapro.arb
+│       │   │   │   └── index_evapro
+│       │   │   │       ├── _lien.html.erb
+│       │   │   │       ├── _sidebar_opco.html.erb
+│       │   │   │       └── _tableau.arb
 │       │   │   └── show.pdf.erb
 │       │   ├── import_xls
 │       │   │   └── _form.html.erb
@@ -1140,6 +1144,7 @@
 │       │       ├── evaluation_incomplete.html.erb
 │       │       ├── header.html.erb
 │       │       ├── impact_stepper.html.erb
+│       │       ├── incontournables_etape_card.html.erb
 │       │       ├── index.html.erb
 │       │       ├── input.html.erb
 │       │       ├── lien.html.erb
@@ -1856,10 +1861,12 @@
 │   │   │   ├── alert_interpreter_resultats_component_spec.rb
 │   │   │   └── numeratie_component_spec.rb
 │   │   ├── header_component_spec.rb
+│   │   ├── incontournables_etape_card_component_spec.rb
 │   │   ├── lien_component_spec.rb
 │   │   ├── navigation_component_spec.rb
 │   │   ├── numero_telephone_input_component_spec.rb
-│   │   └── siret_input_component_spec.rb
+│   │   ├── siret_input_component_spec.rb
+│   │   └── statistiques_structure_metabase_component_spec.rb
 │   ├── config
 │   │   └── initializers
 │   │       └── ransack_spec.rb
@@ -1886,6 +1893,7 @@
 │   │   ├── evaluations_controller_spec.rb
 │   │   ├── evenements_controller_spec.rb
 │   │   └── inscription
+│   │       ├── nouveaux_comptes_controller_spec.rb
 │   │       ├── recherche_structures_controller_spec.rb
 │   │       └── structures_controller_spec.rb
 │   ├── decorators
@@ -2295,4 +2303,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-334 directories, 2017 files
+335 directories, 2024 files
