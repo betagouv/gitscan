@@ -3,6 +3,7 @@
 > Prototype beta.gouv.fr propulsé par Claude Code et le DSFR.
 
 <!-- TEMPLATE_ONLY_START -->
+
 > ⚠️ **Tu es sur le template, pas sur ton projet.**
 >
 > Pour créer ton propre prototype, suis cette section. Ton nouveau repo aura un README personnalisé qui prendra le relais.
@@ -12,7 +13,7 @@
 1. Clique sur **« Use this template »** (bouton vert en haut à droite de cette page) → **« Create a new repository »**.
 2. Dans le formulaire :
    - **Owner** : choisis **`betagouv-experimentations`** (pas ton compte perso, sinon le déploiement automatique ne se fera pas).
-   - **Repository name** : choisis un nom court, en minuscules, sans accents (ex : `partenariats-ademe`, `simulateur-rsa`). Ce nom deviendra l'URL publique de ton service : `https://<ton-nom>.proto-beta.fr`.
+   - **Repository name** : choisis un nom court, en minuscules, sans accents (ex : `partenariats-ademe`, `simulateur-rsa`). Ce nom deviendra l'URL publique de ton service : `https://<ton-nom>.coolify.incubateur.net`.
    - **Public** (par défaut beta.gouv).
 3. Clique **« Create repository »**.
 4. Patiente 30 à 60 secondes : un workflow GitHub Actions provisionne automatiquement la base de données et le déploiement. Tu peux suivre dans l'onglet **Actions** de ton nouveau repo.
@@ -23,6 +24,7 @@ Si tu n'as pas la permission de choisir `betagouv-experimentations` comme Owner,
 ---
 
 (La suite ci-dessous décrit le flow PM **après** bootstrap — affichée ici à titre informatif.)
+
 <!-- TEMPLATE_ONLY_END -->
 
 ## 🚀 Démarrer
@@ -47,6 +49,18 @@ Les flags `--memory 16 --disk 40 --cpus 6` ne sont nécessaires qu'au **premier 
 
 Première fois : agent-vm provisionne sa VM (Node, Playwright, gh CLI, …) et te demande de te connecter à GitHub via le navigateur. Compte 3-5 min.
 
+### 2.5 Cadrer ton produit (recommandé)
+
+Si tu hésites sur le périmètre ou que tu veux structurer ton idée avant de coder, tape :
+
+```
+/cadrer
+```
+
+Tu vas dialoguer 20-30 min avec un sous-agent qui te pose des questions produit (persona, problème, parcours, données, succès). En sortie : `specs/SPEC.md` (la version lisible par toi) et `specs/BACKLOG.md` (les tickets que /build implémentera dans l'ordre).
+
+Si tu as déjà ton idée bien claire, passe directement à l'étape 3.
+
 ### 3. Décrire ce que tu veux construire
 
 Une fois Claude lancé, tape :
@@ -56,6 +70,7 @@ Une fois Claude lancé, tape :
 ```
 
 Décris en français ton service. Sois précis sur :
+
 - qui sont les utilisateurs ;
 - les 3 actions principales qu'ils doivent pouvoir faire ;
 - les données manipulées (et si elles sont sensibles).
@@ -75,6 +90,7 @@ Pour modifier :
 ```
 
 Exemples :
+
 > Ajoute un champ « secteur » sur les partenaires.
 > Mets le titre principal en bleu DSFR.
 > Ajoute un export CSV de la liste des projets.
@@ -99,14 +115,15 @@ Claude lance les tests, commit, push, et suit le déploiement automatique. Ton s
 
 en environ 2 à 3 minutes. Claude te tient au courant pendant le build et te diagnostique tout échec éventuel.
 
-## Les 4 commandes à retenir
+## Les 5 commandes à retenir
 
-| Commande   | Quand l'utiliser                                  |
-|------------|---------------------------------------------------|
-| `/build`   | Créer le proto from scratch                       |
-| `/change`  | Modifier ce qui existe (feature, fix, design)     |
-| `/save`    | Tester + déployer en ligne                        |
-| `/preview` | Relancer le serveur local sur :3000               |
+| Commande   | Quand l'utiliser                              |
+| ---------- | --------------------------------------------- |
+| `/cadrer`  | Cadrer le périmètre du proto avant de coder   |
+| `/build`   | Créer le proto from scratch                   |
+| `/change`  | Modifier ce qui existe (feature, fix, design) |
+| `/save`    | Tester + déployer en ligne                    |
+| `/preview` | Relancer le serveur local sur :3000           |
 
 C'est tout. Tu n'as **pas besoin** de connaître Git, Docker, TypeScript, React, ou Postgres — Claude gère.
 

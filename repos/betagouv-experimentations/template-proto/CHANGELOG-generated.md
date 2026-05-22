@@ -1,25 +1,28 @@
-## Changelog : template-proto (30 derniers jours, au 26 mai 2026)
+## Changelog : template-proto (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'automatisation du déploiement et de la configuration initiale du prototype. L'intégration de Coolify a été grandement améliorée, permettant une provision automatique et une meilleure gestion des secrets. Des corrections et optimisations ont également été apportées pour assurer la compatibilité avec les dernières versions du Design System Fr et améliorer la stabilité générale.
+Ce mois-ci, les améliorations se concentrent sur l'intégration avec Coolify pour un déploiement simplifié, l'utilisation de l'IA via Claude, et l'amélioration de l'expérience de développement avec des ajustements de configuration et de l'infrastructure. Des corrections ont également été apportées pour assurer la compatibilité avec les dernières versions du Design System Fr et pour améliorer la robustesse du processus de déploiement.
 
 ### Évolutions fonctionnelles
-- **Provisionnement automatique de Coolify :** Le prototype provisionne maintenant automatiquement une instance Coolify lors du premier déploiement, simplifiant grandement la mise en route. Le statut de cette provision est rapporté dans l'interface `/save`.
-- **Compatibilité DSFR v1.32 :** Le prototype est maintenant compatible avec la version 1.32 du Design System Fr, incluant les changements d'API liés à l'App Router.
-- **Personnalisation du README :** Un README orienté PM est maintenant généré automatiquement, avec une personnalisation basée sur les informations du projet.
+- Intégration de l'auto-provisionnement de Coolify lors du premier déploiement, simplifiant la mise en production et rapportant l'état dans l'interface `/save`. [#4](https://github.com/betagouv-experimentations/template-proto/issues/4)
+- Ajout d'une étape `/cadrer` en amont de `/build` pour préparer l'utilisation des skills d'IA d'Etalab. [#1](https://github.com/betagouv-experimentations/template-proto/issues/1)
+- Amélioration de la gestion des migrations de la base de données : elles sont désormais exécutées automatiquement au démarrage du conteneur si le journal Drizzle n'existe pas.
+- Ajout d'un test de fumée avant de rendre le contrôle, assurant un minimum de fonctionnalité après le déploiement.
 
 ### Évolutions techniques
-- **Amélioration de l'agent VM :**
-    - La taille de la VM de l'agent a été ajustée à plusieurs reprises pour optimiser les performances (8GB/30GB/4 cpus, puis 16GiB/40GiB/6 cpus, et finalement retour aux valeurs par défaut).
-    - Suppression des installations npm globales inutiles dans la VM de l'agent.
-    - Refactorisation du script de runtime de la VM de l'agent (scripts/runtime.sh renommé en .agent-vm.runtime.sh).
-    - Utilisation de flags CLI pour passer les ressources à la VM de l'agent au lieu d'un fichier de configuration.
-- **Gestion des migrations Drizzle :** Le prototype ignore maintenant les migrations Drizzle si aucun journal Drizzle n'existe.
-- **Sécurité :** Renommage du secret `COOLIFY_TOKEN` en `COOLIFY_TOKEN_WRITE` pour plus de clarté.
-- **Assets DSFR :** Les assets statiques du Design System Fr sont maintenant servis depuis le dossier `public/` au lieu d'être inclus dans le bundle.
-- **Reproductibilité des builds :** Ajout du fichier `package-lock.json` pour garantir des builds reproductibles.
+- Utilisation explicite de l'invocation des skills de Claude dans les phases `/build` et `/build` pour une meilleure gestion de l'IA. [#2](https://github.com/betagouv-experimentations/template-proto/issues/2)
+- Mise à jour de l'URL Coolify pour refléter les changements récents. [#4](https://github.com/betagouv-experimentations/template-proto/issues/4)
+- Refonte de la configuration de l'environnement de développement avec l'utilisation de variables d'environnement pour les ressources de la machine virtuelle d'agent.
+- Suppression des installations npm globales dans le script de runtime de la machine virtuelle d'agent.
+- Passage à la version 1.32 du Design System Fr et adaptation du code en conséquence. [#11a6b3c](https://github.com/betagouv-experimentations/template-proto/commit/11a6b3c)
+- Ajout d'un fichier `package-lock.json` pour garantir des builds reproductibles.
+- Correction du nom du script de runtime de la machine virtuelle d'agent.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les changements apportés au script de runtime de la VM de l'agent.
-- Correction de la capture de l'URL de la base de données interne depuis la réponse de création de Coolify.
-- Scaffold initial du projet.
+- Documentation mise à jour pour aligner le fichier `CLAUDE.md` sur le modèle Etalab IA beta.gouv. [#3](https://github.com/betagouv-experimentations/template-proto/issues/3)
+- Ajout d'un fichier README orienté PM avec une personnalisation automatique lors du bootstrap.
+- Amélioration de la capture de l'URL de la base de données interne depuis la réponse de création de Coolify.
+- Renommage de la variable d'environnement `COOLIFY_TOKEN` en `COOLIFY_TOKEN_WRITE`.
+- Ajustement de la taille de la machine virtuelle d'agent (RAM, disque, CPU) pour optimiser les performances.
+- Service des assets statiques du Design System Fr depuis le dossier `public/`.
+- Corrections diverses et améliorations de la configuration de l'environnement de développement.
