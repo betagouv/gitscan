@@ -1,3 +1,46 @@
+# [2.245.0](https://github.com/SocialGouv/domifa/compare/v2.244.0...v2.245.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **backend:** add action labels ([db6f87c](https://github.com/SocialGouv/domifa/commit/db6f87c3f236f41a6da127599a10ce672621103a))
+* **backend:** add secret ([8fe12d7](https://github.com/SocialGouv/domifa/commit/8fe12d7d68d97e02642eb6ec5e197435376cf298))
+* **backend:** add structure logs ([4a845f7](https://github.com/SocialGouv/domifa/commit/4a845f731beb428a3e33e94d18ff6c876c9f1d82))
+* **backend:** fix end to end tests ([3c938f7](https://github.com/SocialGouv/domifa/commit/3c938f7ac5c3ea69100229789efe7655aef35f45))
+
+
+### Features
+
+* **backend:** add OTP for login ! ([e909910](https://github.com/SocialGouv/domifa/commit/e909910d27f4db142bdd5a1918f96b01fb800ae4))
+
+# [2.244.0](https://github.com/SocialGouv/domifa/compare/v2.243.4...v2.244.0) (2026-05-20)
+
+
+### Bug Fixes
+
+* **backend:** add elements to logs ([1a3a40c](https://github.com/SocialGouv/domifa/commit/1a3a40c7a03bb6de128c266f1f34efcb06dd3ae6))
+
+
+### Features
+
+* **backend:** add monitoring & unblock ([12568b7](https://github.com/SocialGouv/domifa/commit/12568b7cd9e4f33820d9314c66672d46669eb671))
+* **backend:** add userType to logs ([be264d9](https://github.com/SocialGouv/domifa/commit/be264d962771d6f5c91023571b9356b39f41860d))
+
+## [2.243.4](https://github.com/SocialGouv/domifa/compare/v2.243.3...v2.243.4) (2026-05-19)
+
+
+### Bug Fixes
+
+* **backend:** add filters & debug searching ([f376363](https://github.com/SocialGouv/domifa/commit/f3763631857f8ccbac07ef797ed5fcc62e068105))
+* **backend:** fix email of alerts ([03e23c1](https://github.com/SocialGouv/domifa/commit/03e23c1b501350a8db04e12f5225665dbfe199b8))
+
+## [2.243.3](https://github.com/SocialGouv/domifa/compare/v2.243.2...v2.243.3) (2026-05-19)
+
+
+### Bug Fixes
+
+* **backend:** fix mail of alert ([507803d](https://github.com/SocialGouv/domifa/commit/507803db957f73d83fb269cc4e53c1960888930b))
+
 ## [2.243.2](https://github.com/SocialGouv/domifa/compare/v2.243.1...v2.243.2) (2026-05-18)
 
 

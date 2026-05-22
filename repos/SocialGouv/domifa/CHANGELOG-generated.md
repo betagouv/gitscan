@@ -1,41 +1,42 @@
-## Changelog : domifa (30 derniers jours, au 19 mai 2026)
+## Changelog : domifa (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la sécurité et la performance de la plateforme DomiFa, notamment avec l'ajout d'une authentification à deux facteurs (OTP) et des mesures de limitation de débit. Des améliorations ont également été apportées à l'interface utilisateur et à l'administration, ainsi que des corrections de bugs et des mises à jour techniques.
+Cette période a été marquée par des améliorations significatives de la sécurité, notamment l'ajout de l'authentification à deux facteurs (OTP) pour la connexion et pour certaines actions sensibles. Des corrections de bugs et des améliorations de la stabilité ont également été apportées, ainsi que des mises à jour de l'interface utilisateur et des dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout d'une authentification à deux facteurs (OTP) pour certains endpoints et pour l'administration, renforçant la sécurité des accès.
-- Amélioration de l'interface utilisateur du portail administrateur avec l'ajout d'UUID, l'amélioration de l'UX des dropdowns et des titres de listes.
-- Ajout d'une page de témoignages pour le frontend.
-- Ajout d'une liste d'utilisateurs dans l'administration.
-- Ajout d'un statut pour bloquer les comptes dans le backend.
-- Ajout d'un panneau d'information avec des statistiques dans l'administration.
-- Ajout d'un détail réseau dans le backend.
-- Ajout d'un blocage de bots basé sur l'user-agent.
-- Possibilité de débloquer les utilisateurs.
-- Ajout d'un banner DSFR.
+- Ajout de l'authentification à deux facteurs (OTP) pour la connexion des utilisateurs.
+- Ajout de l'OTP pour certaines actions sensibles, renforçant la sécurité.
+- Amélioration de la recherche avec ajout de filtres et débogage.
+- Ajout d'une page de témoignages.
+- Amélioration de l'interface utilisateur pour la gestion des structures, avec affichage de l'UUID et amélioration des menus déroulants.
+- Ajout d'une liste d'utilisateurs dans l'espace administrateur.
+- Ajout d'un statut pour bloquer/débloquer les comptes utilisateurs.
+- Ajout d'informations sur le réseau (network) dans les détails d'une structure.
+- Correction de l'email des alertes.
+- Correction du chargement des utilisateurs.
+- Correction du modal de premier login.
+- Ajout d'un indicateur de statut pour les comptes bloqués.
+- Ajout de tooltips dans la gestion des structures.
+- Ajout d'un bandeau d'information (DSFR).
 
 ### Évolutions techniques
-- Mise à jour de l'ensemble des frontends vers la version 19 d'Angular.
-- Durcissement de la sécurité OTP avec ajout de limitations de débit et de contrôle d'accès.
-- Refactoring du code pour l'intégration de statistiques Metabase.
-- Amélioration des tests unitaires et correction de bugs associés.
-- Ajout de fingerprint dans les sessions pour une meilleure sécurité.
-- Force d'une seule session active par utilisateur.
-- Ajout de tests pour le blocage d'utilisateurs.
+- Mise à jour des dépendances Angular vers la version 19.
+- Amélioration de la journalisation (logs) avec ajout du type d'utilisateur et d'autres informations contextuelles.
+- Refactorisation du code pour améliorer la performance et la maintenabilité.
+- Ajout de tests unitaires pour les nouvelles fonctionnalités et corrections de bugs.
+- Amélioration de la sécurité en durcissant l'implémentation de l'OTP (limitation du nombre de tentatives, accès aux structures).
+- Ajout de fingerprinting pour améliorer la sécurité des sessions.
+- Limitation du nombre de sessions actives par utilisateur.
+- Ajout de blocage basé sur l'agent utilisateur (user-agent).
+- Amélioration des tests pour l'OTP.
+- Ajout de statistiques dans l'interface administrateur.
 
 ### Autres changements
-- Correction de problèmes de linting et de composants autonomes dans l'administration.
-- Mise à jour des dépendances et des packages.
-- Ajout de la documentation CLAude.md.
-- Correction de problèmes liés à la configuration de l'environnement CI.
-- Ajout de la directive `[skip ci]` aux messages de commit de semantic-release.
-- Correction de bugs mineurs dans l'interface utilisateur et le backend.
-- Suppression de Bootstrap dans l'administration.
-- Correction de filtres dans le backend.
-- Correction de problèmes avec les champs d'upload dans le frontend.
-- Correction de problèmes avec les fiches pratiques et les formulaires dans le frontend.
-- Ajout de champs requis dans les formulaires du frontend.
-- Correction de problèmes DSFR dans le frontend.
-- Ajout de tooltips dans l'interface de gestion.
-- Ajout d'actualités dans le frontend.
+- Correction de divers bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la documentation.
+- Suppression de Bootstrap dans l'interface administrateur.
+- Correction de problèmes liés à l'intégration avec DSFR.
+- Ajustement des limites de throttling.
+- Amélioration des tests unitaires.
+- Correction de problèmes de build.
+- Correction de labels de boutons.
