@@ -1,27 +1,22 @@
-## Changelog : hyyypertool (30 derniers jours, au 18 mai 2026)
+## Changelog : hyyypertool (30 derniers jours, au 2026-05-21)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de l'expérience utilisateur et de la robustesse de Hyyypertool. Les principales améliorations incluent l'ajout d'un système de limitation du débit par adresse IP pour se protéger contre les abus, l'implémentation du tri des colonnes dans la liste des modérations pour une meilleure organisation des données, et l'introduction d'un mode sombre pour une utilisation plus confortable. Des corrections de bugs et des optimisations ont également été apportées.
+Les dernières mises à jour de Hyyypertool se concentrent sur l'amélioration de la sécurité, de l'expérience utilisateur et de la maintenabilité du code. Des fonctionnalités de limitation de débit par adresse IP ont été ajoutées pour se protéger contre les abus, tandis que le mode sombre a été amélioré et le tri des colonnes a été implémenté dans la liste des modérations. De nombreuses dépendances ont également été mises à jour pour bénéficier des dernières corrections et améliorations.
 
 ### Évolutions fonctionnelles
-- Ajout du tri des colonnes dans la liste des modérations, permettant de classer les données par différents critères.
-- Implémentation d'un mode sombre pour une meilleure lisibilité et une expérience utilisateur plus agréable.
-- Possibilité de filtrer les modérations par statut de décision (acceptées, rejetées, réouvertes).
-- Ajout de la possibilité de supprimer les modèles de réponse directement depuis l'interface.
-- Amélioration de l'interface utilisateur suite à la suppression de DSFR, notamment pour les menus et les boutons.
-- Correction d'un bug qui affichait un message d'erreur incorrect en cas de jeton API expiré.
-- Correction de l'affichage du menu "trois points" en mode sombre.
-- Suppression de l'affichage du nom et prénom dans les emails de rejet.
+- Ajout de la possibilité de trier les modérations par colonne (date de création, etc.) en cliquant sur les en-têtes. [#1604](https://github.com/proconnect-gouv/hyyypertool/issues/1604) et [#1606](https://github.com/proconnect-gouv/hyyypertool/issues/1606)
+- Possibilité de filtrer les modérations par statut de décision (acceptées, rejetées, réouvertes). [#1594](https://github.com/proconnect-gouv/hyyypertool/issues/1594)
+- Ajout de la possibilité de supprimer des modèles de réponse. [#1600](https://github.com/proconnect-gouv/hyyypertool/issues/1600)
+- Amélioration du mode sombre pour les boutons et la liste déroulante. [#1622](https://github.com/proconnect-gouv/hyyypertool/issues/1622)
+- Suppression de l'affichage du prénom et du nom dans les emails de rejet. [#1576](https://github.com/proconnect-gouv/hyyypertool/issues/1576)
 
 ### Évolutions techniques
-- Implémentation d'une limitation du débit par adresse IP pour protéger l'application contre les attaques et les abus.
-- Remplacement des mocks basés sur MockServer par des routes Hono pour simplifier le développement et les tests.
-- Clarification de l'ordre de tri par défaut dans la recherche de modérations.
-- Amélioration de la gestion du nonce pour la sécurité des requêtes.
-- Mise à jour et correction de plusieurs dépendances.
+- Implémentation d'une limitation de débit par adresse IP via `RateLimiterPostgres` pour améliorer la sécurité. [#1621](https://github.com/proconnect-gouv/hyyypertool/issues/1621)
+- Configuration du seuil de limitation de débit via la variable d'environnement `RATE_LIMIT_POINTS` (valeur par défaut : 120). [#1626](https://github.com/proconnect-gouv/hyyypertool/issues/1626)
+- Remplacement des mocks de certains services externes (api.crisp.chat, agentconnect, support.etalab.gouv.fr) par des routes de développement Hono pour faciliter les tests et le développement local. [#1607](https://github.com/proconnect-gouv/hyyypertool/issues/1607), [#1608](https://github.com/proconnect-gouv/hyyypertool/issues/1608), [#1609](https://github.com/proconnect-gouv/hyyypertool/issues/1609), [#1610](https://github.com/proconnect-gouv/hyyypertool/issues/1610)
+- Mise à jour de nombreuses dépendances (Cypress, tailwindcss, sentry, etc.).
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
-- Nettoyage du code et suppression de code obsolète.
-- Amélioration de la configuration et des scripts de déploiement.
-- Correction de bugs mineurs et améliorations de la stabilité.
+- Amélioration du contraste et de la lisibilité en mode sombre. [#1577](https://github.com/proconnect-gouv/hyyypertool/issues/1577) et [#1578](https://github.com/proconnect-gouv/hyyypertool/issues/1578)
+- Corrections de bugs mineurs liés au cache et à la gestion des templates de réponse. [#1601](https://github.com/proconnect-gouv/hyyypertool/issues/1601), [#1602](https://github.com/proconnect-gouv/hyyypertool/issues/1602), [#1603](https://github.com/proconnect-gouv/hyyypertool/issues/1603)
+- Améliorations de l'interface utilisateur (UX) et corrections de problèmes d'affichage. [#1595](https://github.com/proconnect-gouv/hyyypertool/issues/1595), [#1596](https://github.com/proconnect-gouv/hyyypertool/issues/1596), [#1597](https://github.com/proconnect-gouv/hyyypertool/issues/1597), [#1598](https://github.com/proconnect-gouv/hyyypertool/issues/1598), [#1599](https://github.com/proconnect-gouv/hyyypertool/issues/1599)
