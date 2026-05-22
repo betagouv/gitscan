@@ -1,19 +1,20 @@
-## Changelog : st-ansible (30 derniers jours, au 11 mai 2026)
+## Changelog : st-ansible (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Cette nouvelle version apporte l'ajout d'un rôle pour le service Meet, des améliorations sur le rôle Podman (correction de démarrage et refactoring des permissions) et une refactorisation du déploiement de Rspamd. La documentation de la collection a également été complétée.
+Cette nouvelle version de st-ansible apporte l'ajout du rôle `meet`, permettant le déploiement de cette application. Des améliorations ont été apportées à la gestion des ports publiés et aux permissions des fichiers pour le rôle `podman`. De plus, la documentation de la collection a été complétée.
 
 ### Évolutions fonctionnelles
-- Ajout du rôle `meet` pour le déploiement du service Meet. [#22](https://github.com/suitenumerique/st-ansible/issues/22)
-- Correction du script de démarrage de l'application systemd dans le rôle `podman`, assurant un démarrage correct.
-- Refactorisation du déploiement de Rspamd pour une meilleure gestion des messages.
+- Ajout du rôle `meet` pour le déploiement de l'application Meet [#22](https://github.com/suitenumerique/st-ansible/issues/22).
+- Correction de la commande `compose` pour les workers.
+- Amélioration de la configuration des ports publiés et des valeurs par défaut dans différents rôles.
 
 ### Évolutions techniques
-- Rationalisation des variables et des valeurs par défaut des ports publiés à travers les différents rôles.
-- Refactorisation des tâches de gestion des permissions des fichiers et des répertoires dans le rôle `podman`.
-- Correction de la gestion de la propriété des fichiers dans le rôle `podman` ([8c2ebce](https://github.com/suitenumerique/st-ansible/commit/8c2ebce)).
+- Refactorisation des tâches de gestion des permissions des fichiers et des répertoires pour le rôle `podman`.
+- Correction du script de démarrage systemd pour les applications Podman afin d'assurer une configuration correcte des notifications.
+- Rationalisation des variables et des valeurs par défaut concernant les ports publiés à travers les rôles.
+- Refactorisation du déploiement de rspamd.
 
 ### Autres changements
-- Ajout de la documentation complète de la collection Ansible.
+- Ajout de la documentation complète de la collection.
 - Publication de la version 0.0.17.
 - Publication de la version 0.0.16.
