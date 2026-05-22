@@ -1,36 +1,43 @@
-## Changelog : cdata (30 derniers jours, au 15 mai 2026)
+## Changelog : cdata (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application cdata a bénéficié d'une refonte importante de l'interface utilisateur, notamment pour les pages d'organisation et l'exploration des données tabulaires.  De nouvelles fonctionnalités de recherche et de filtrage ont été ajoutées, améliorant l'expérience utilisateur et la découverte de données.  Des améliorations de performance et des corrections de bugs ont également été implémentées.
+Ce mois-ci, cdata a bénéficié d'améliorations significatives en termes de recherche, d'administration et d'expérience utilisateur. La plateforme a été mise à jour vers Nuxt 4.4 et 4.3, apportant des optimisations de performance et de nouvelles fonctionnalités. Des améliorations ont également été apportées à la gestion des organisations, des notifications et de la visualisation des données.
 
 ### Évolutions fonctionnelles
 - **Recherche :**
-    - Ajout de filtres personnalisés et intelligents pour affiner les recherches [#1067](https://github.com/datagouv/cdata/issues/1067).
-    - Possibilité de configurer le texte d'espace réservé dans la recherche [#1059](https://github.com/datagouv/cdata/issues/1059).
-    - Exportation de types supplémentaires pour faciliter l'utilisation de la recherche [#1062](https://github.com/datagouv/cdata/issues/1062).
-    - Correction du comportement des filtres personnalisés pour les effacer correctement [#1064](https://github.com/datagouv/cdata/issues/1064).
-- **Exploration des données :**
-    - Nouvelle interface pour l'exploration des données tabulaires, incluant une version responsive [#971](https://github.com/datagouv/cdata/issues/971) et [#1014](https://github.com/datagouv/cdata/issues/1014).
-    - Amélioration de la présentation des pages d'organisation avec un nouveau layout [#1051](https://github.com/datagouv/cdata/issues/1051).
-- **Guides :** Correction des URLs des guides [#1077](https://github.com/datagouv/cdata/issues/1077).
-- **Callbacks :** Affichage des callbacks en attente et ajout du sujet utilisateur [#1073](https://github.com/datagouv/cdata/issues/1073).
-- **Activité :** Affichage de l'activité pour les membres de l'organisation [#1052](https://github.com/datagouv/cdata/issues/1052).
-- **Swagger :** Affichage de la documentation Swagger [#1055](https://github.com/datagouv/cdata/issues/1055).
-- **SEO :** Améliorations du référencement naturel (SEO) [#1066](https://github.com/datagouv/cdata/issues/1066).
-- **Segment Tabulaire :** Ajout d'un segment tabulaire [#1072](https://github.com/datagouv/cdata/issues/1072).
+    - Amélioration des filtres personnalisés dans la recherche, avec la possibilité de configurer des placeholders et d'exporter des types pour une meilleure flexibilité [#1067, #1062, #1064, #1049].
+    - Correction d'un bug où la recherche ne réinitialisait pas la page [#1089].
+    - Correction d'un bug où le flash de recherche ne disparaissait pas après réinitialisation [#1083].
+- **Administration :**
+    - Possibilité de faire pivoter les mots de passe des utilisateurs dans l'interface d'administration [#1078].
+    - Réintroduction du lien entre les jeux de données et les sujets [#1082].
+    - Amélioration de l'affichage des contacts [#1075].
+    - Ajout de nouvelles notifications pour les administrateurs [#1076].
+- **Organisations :**
+    - Nouvelle mise en page pour les pages d'organisations [#1051].
+    - Affichage des activités pour les membres des organisations [#1052].
+- **Autres améliorations :**
+    - Ajout d'une section tabulaire [#1072].
+    - Ajout de données sénatoriales aux élections [#1091].
+    - Amélioration des textes d'aide pour l'URL de base de l'API [#1093].
+    - Correction de liens brisés dans la configuration [#1065].
+    - Amélioration du SEO [#1066].
+    - Affichage de Swagger [#1055].
+    - Correction de l'affichage des guides et liens vers le score de qualité [#1061, #1077].
 
 ### Évolutions techniques
-- **Nuxt :** Mise à jour vers Nuxt 4.4 et 4.3 [#1038](https://github.com/datagouv/cdata/issues/1038) et [#1037](https://github.com/datagouv/cdata/issues/1037).
-- **Dépendances :** Mise à jour des dépendances du projet [#1060](https://github.com/datagouv/cdata/issues/1060).
-- **Images SVG :** Utilisation d'images SVG simples et optimisation avec svgo [#1057](https://github.com/datagouv/cdata/issues/1057).
-- **Nitro Server :** Correction d'un problème avec le serveur Nitro de Nuxt [#1053](https://github.com/datagouv/cdata/issues/1053).
-- **README :** Alignement du README avec Nuxt 4 [#1068](https://github.com/datagouv/cdata/issues/1068).
-- **Ignorer le store pnpm :** Ignorer le répertoire du store pnpm local pour éviter les problèmes de versionnement [#1071](https://github.com/datagouv/cdata/issues/1071).
-- **No side effect :** Suppression des effets de bord dans le code [#1079](https://github.com/datagouv/cdata/issues/1079).
+- Mise à jour vers Nuxt 4.4 [#1038].
+- Mise à jour vers Nuxt 4.3 [#1037].
+- Mise à jour de `geopf-extensions-openlayers` vers la version 1.0.0-beta.10 [#1085].
+- Optimisation des dépendances [#1086].
+- Alignement du README avec Nuxt 4 [#1068].
+- Correction de side effects dans certaines mises à jour [#1079, #1080].
+- Ignorer le répertoire du cache pnpm local [#1071].
+- Utilisation d'images SVG optimisées avec svgo [#1057].
+- Ajout d'une première implémentation de visualisation (POC) [#963].
 
 ### Autres changements
-- Correction de redirections cassées dans la configuration [#1065](https://github.com/datagouv/cdata/issues/1065).
-- Correction d'un bug lié à la signature de `mobileVisibleFields` [#1058](https://github.com/datagouv/cdata/issues/1058).
-- Tentative de correction d'un problème avec la nouvelle page /explore tabulaire [#1056](https://github.com/datagouv/cdata/issues/1056).
-- Ajout d'un proof of concept pour la visualisation de données [#963](https://github.com/datagouv/cdata/issues/963).
-- Lien vers le score de qualité dans les guides [#1061](https://github.com/datagouv/cdata/issues/1061).
+- Correction de l'affichage des images SVG statiques [#1057].
+- Correction d'un bug lié à la visibilité des champs mobiles [#1058].
+- Correction d'un problème d'affichage sur la nouvelle page /explore [#1056].
+- Amélioration de l'affichage des callbacks en attente et ajout du sujet utilisateur [#1073].
