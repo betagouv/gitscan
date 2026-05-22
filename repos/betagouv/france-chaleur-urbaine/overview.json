@@ -4,13 +4,15 @@
   "description": "Le site officiel de france-chaleur-urbaine.beta.gouv.fr. Il permet de faciliter et d'accélérer les raccordements aux réseaux de chaleur.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Visualisation de données & Cartographie",
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Notifications & Alertes",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Sécurité & Conformité"
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,26 +21,29 @@
     "PostgreSQL",
     "MapLibre",
     "Airtable",
+    "PostHog",
     "Kysely"
   ],
   "components": [
-    "Frontend React",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "Vitest",
     "Playwright"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-05-19T18:56:43+02:00",
   "status": "active",
   "license": "AGPL-3.0",

@@ -1,100 +1,100 @@
 ## Changelog : france-chaleur-urbaine (30 derniers jours, au 2026-05-19)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des permissions, l'optimisation des performances (notamment le caching des tuiles cartographiques), et l'ajout de nouvelles fonctionnalités comme l'intégration d'ADEME Connect et l'amélioration du suivi des événements via PostHog. Des corrections et améliorations ont également été apportées à la FAQ, aux formulaires et à l'administration de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'une FAQ, l'intégration d'Ademe Connect, et des optimisations de performance. De nombreuses améliorations ont été apportées à l'administration et à la gestion des permissions, ainsi qu'un suivi analytique plus précis grâce à l'intégration de PostHog.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau système de permissions avec des rôles et des intégrations dans l'administration des demandes.
-- Intégration d'ADEME Connect pour faciliter l'accès aux données.
-- Amélioration de la gestion des demandes et de leur statut (notamment le statut "non réalisable").
+- Ajout d'une FAQ pour répondre aux questions fréquentes des utilisateurs. [#1236](https://github.com/betagouv/france-chaleur-urbaine/pull/1236)
+- Intégration d'Ademe Connect pour faciliter l'accès aux données. [#1238](https://github.com/betagouv/france-chaleur-urbaine/pull/1238)
+- Mise à jour du contenu de l'aide "Coup de pouce". [#1231](https://github.com/betagouv/france-chaleur-urbaine/pull/1231)
+- Amélioration du formulaire de collecte de contact pour les situations de non-raccordement.
 - Ajout d'un bandeau d'information concernant une future indisponibilité du service.
-- Mise à jour de la FAQ avec de nouvelles informations et une meilleure organisation.
-- Amélioration du formulaire de collecte de contact pour les zones non raccordables.
-- Ajout d'un bouton de réinitialisation sur les formulaires.
-- Amélioration de l'affichage des permissions des réseaux en construction.
-- Ajout d'un lien direct vers la carte depuis les permissions.
-- Ajout de la possibilité de sauvegarder le preset sélectionné dans l'URL de la page des demandes.
-- Ajout d'un affichage des compteurs d'accès aux demandes avec un détail.
-- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
-- Amélioration des relances et des notes associées aux réseaux.
-- Ajout d'un affichage des emails dans l'administration des demandes.
+- Ajout d'un bouton "Réinitialiser" au formulaire de collecte de contact.
+- Amélioration de la gestion de l'état du formulaire de collecte de contact.
+- Ajout d'un message de confirmation lors de la soumission du formulaire de collecte de contact.
+- Mise à jour des statistiques mensuelles pour Avril.
 
 ### Évolutions techniques
-- Mise en place d'un cache pour les tuiles cartographiques afin d'améliorer les performances.
-- Refactoring et simplification du code autour des types d'entités.
+- Mise en place d'un cache au niveau des tuiles pour améliorer les performances de la carte. [#1243](https://github.com/betagouv/france-chaleur-urbaine/pull/1243)
+- Refonte du système de permissions avec l'ajout de modules, migrations, rôles et intégration avec les demandes. [#1233](https://github.com/betagouv/france-chaleur-urbaine/pull/1233)
+- Ajout d'un dashboard pour la cohérence des données.
+- Ajout d'une API Prometheus pour les métriques.
 - Optimisation des performances du listing des demandes.
-- Ajout d'une API Prometheus pour la collecte de métriques.
-- Mise en place d'un système de tracking plus complet avec PostHog, incluant le suivi des événements sur la carte, les formulaires et les différents outils.
-- Amélioration du typage et de la gestion des erreurs.
-- Suppression de code obsolète et nettoyage général du code.
-- Mise à jour des dépendances et des configurations.
-- Ajout de commandes pour analyser et mettre à jour les réseaux.
-- Ajout d'un script pour dropper des tables à distance.
+- Refactoring et simplification de `demands-service`.
+- Lazy loading de la carte pour améliorer le temps de chargement initial.
+- Amélioration du typage du code.
+- Suppression de code obsolète et nettoyage du code.
+- Mise à jour des dépendances et correction des erreurs de build.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la gestion des erreurs et des logs.
 
 ### Autres changements
-- Ajout de documentation sur la procédure de mise à jour des statistiques mensuelles.
-- Mise à jour des statistiques d'avril.
-- Correction de coquilles et amélioration de la lisibilité du code.
-- Suppression de constantes inutiles.
-- Amélioration des messages d'information et du wording.
-- Ajout d'un fichier `.claudeignore`.
-- Suppression des presets "haut potentiel" et "dans PDP".
-- Ajout d'un lien vers la FAQ dans les liens entrants.
-- Suppression du code postal d'Airtable.
-- Ajout d'un bouton "Réinitialiser" sur le formulaire.
-- Amélioration de la gestion de l'état du formulaire.
-- Ajout d'un message lors de la soumission du formulaire de collecte.
-- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
-- Amélioration de l'affichage des permissions des réseaux en construction.
-- Ajout d'un lien direct vers la carte depuis les permissions.
-- Ajout d'un affichage des compteurs d'accès aux demandes avec un détail.
-- Ajout d'un bouton pour corriger les permissions d'un gestionnaire.
-- Amélioration des relances et des notes associées aux réseaux.
-- Ajout d'un affichage des emails dans l'administration des demandes.
-- Ajout d'un script pour migrer les notes des tags.
+- Ajout de tracking PostHog pour suivre le comportement des utilisateurs sur différentes parties du site (FAQ, simulateur d'aide, test d'adresse, etc.).
+- Ajout d'événements PostHog pour le suivi des demandes en masse et des mises à jour de permissions.
+- Amélioration de la documentation et des commentaires dans le code.
+- Correction de typos et amélioration de la lisibilité du code.
+- Suppression de tables inutiles dans Airtable.
+- Mise à jour des rôles et des permissions des utilisateurs.
+- Migration des comptes métropoles.
+- Ajout d'une commande pour analyser les réseaux.
 - Ajout d'une commande pour mettre à jour les réseaux via un répertoire.
 - Ajout d'un script de migration des notes de tags.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour migrer les comptes métropoles.
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Suppression du bandeau de mise à jour.
+- Ajout de la possibilité de sauvegarder le preset sélectionné dans l'URL /pro/demandes.
+- Amélioration de la visibilité des demandes à traiter et affectées.
+- Ajout d'un lien pour corriger les permissions pour un gestionnaire.
+- Ajout d'un bouton pour clear l'autocomplete.
+- Ajout d'un bouton save explicite pour les notes de réseaux.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
