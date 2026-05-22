@@ -212,12 +212,15 @@
     │   │   │   │   └── app-hub
     │   │   │   │       ├── chat-conversation.spec.ts
     │   │   │   │       ├── chat-pagination.spec.ts
+    │   │   │   │       ├── chat-tools-panel.spec.ts
     │   │   │   │       ├── home-redirects.spec.ts
     │   │   │   │       ├── left-panel.spec.ts
     │   │   │   │       ├── utils-auth.ts
     │   │   │   │       ├── utils-chat-conversation.ts
     │   │   │   │       ├── utils-common.ts
-    │   │   │   │       └── utils-left-panel.ts
+    │   │   │   │       ├── utils-file-preview.ts
+    │   │   │   │       ├── utils-left-panel.ts
+    │   │   │   │       └── utils-tools-panel.ts
     │   │   │   ├── eslint.config.mjs
     │   │   │   ├── package.json
     │   │   │   ├── playwright.config.ts
@@ -244,6 +247,9 @@
     │   │       │   │   ├── logo-icon.svg
     │   │       │   │   ├── logo-suite-numerique.png
     │   │       │   │   └── logo_text.svg
+    │   │       │   ├── mocks
+    │   │       │   │   └── tracemonkey.pdf
+    │   │       │   ├── pdf.worker.mjs
     │   │       │   └── robots.txt
     │   │       ├── src
     │   │       │   ├── features
@@ -273,15 +279,29 @@
     │   │       │   │   │   │   ├── ChatComposer.tsx
     │   │       │   │   │   │   ├── ChatConversation.scss
     │   │       │   │   │   │   ├── ChatConversation.tsx
+    │   │       │   │   │   │   ├── ChatView.scss
+    │   │       │   │   │   │   ├── ChatView.tsx
     │   │       │   │   │   │   ├── ChatVirtualList.scss
     │   │       │   │   │   │   ├── ChatVirtualList.tsx
-    │   │       │   │   │   │   └── header
-    │   │       │   │   │   │       ├── ChatHeader.scss
-    │   │       │   │   │   │       └── ChatHeader.tsx
+    │   │       │   │   │   │   ├── header
+    │   │       │   │   │   │   │   ├── ChatHeader.scss
+    │   │       │   │   │   │   │   └── ChatHeader.tsx
+    │   │       │   │   │   │   └── tools-panel
+    │   │       │   │   │   │       ├── ChatToolsPanel.scss
+    │   │       │   │   │   │       ├── ChatToolsPanel.tsx
+    │   │       │   │   │   │       ├── DocumentList.tsx
+    │   │       │   │   │   │       ├── DocumentListItem.tsx
+    │   │       │   │   │   │       ├── DocumentListItemActions.tsx
+    │   │       │   │   │   │       ├── DocumentSection.tsx
+    │   │       │   │   │   │       ├── DocumentsTool.tsx
+    │   │       │   │   │   │       ├── documentToPreviewFile.ts
+    │   │       │   │   │   │       └── mockDocuments.ts
     │   │       │   │   │   ├── formatTimestamp.ts
     │   │       │   │   │   ├── hooks
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── useChatDocuments.test.tsx
     │   │       │   │   │   │   │   └── useChatMessages.test.tsx
+    │   │       │   │   │   │   ├── useChatDocuments.ts
     │   │       │   │   │   │   └── useChatMessages.ts
     │   │       │   │   │   ├── mockChats.ts
     │   │       │   │   │   └── mockMessages.ts
@@ -408,4 +428,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-121 directories, 289 files
+123 directories, 307 files
