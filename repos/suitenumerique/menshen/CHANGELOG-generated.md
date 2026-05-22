@@ -5,15 +5,15 @@ Ce mois-ci, les efforts de développement se sont concentrés sur la mise en pla
 
 ### Évolutions fonctionnelles
 - Implémentation d'une première version de l'échange de jetons OAuth 2.0 [#9c84614](https://github.com/suitenumerique/menshen/commit/9c84614).
-- Refactorisation des applications pour organiser le code autour de la fonctionnalité d'échange de jetons [#cfdc37f](https://github.com/suitenumerique/menshen/commit/cfdc37f), [#2396221](https://github.com/suitenumerique/menshen/commit/2396221).
+- Refonte de l'organisation du code pour intégrer la fonctionnalité d'échange de jetons dans un module dédié (`token_exchange`) [#cfdc37f](https://github.com/suitenumerique/menshen/commit/cfdc37f), [#2396221](https://github.com/suitenumerique/menshen/commit/2396221).
 
 ### Évolutions techniques
-- Ajout d'un healthcheck pour le service Docker, permettant de vérifier la disponibilité du serveur [#6b242d2](https://github.com/suitenumerique/menshen/commit/6b242d2).
-- Le nom du service Docker a été renommé en `menshen` pour plus de clarté [#7fd622d](https://github.com/suitenumerique/menshen/commit/7fd622d).
-- Configuration du serveur pour créer un superutilisateur via les variables d'environnement [#07ab956](https://github.com/suitenumerique/menshen/commit/07ab956).
+- Ajout d'un healthcheck pour le service Docker afin de surveiller son état de fonctionnement [#6b242d2](https://github.com/suitenumerique/menshen/commit/6b242d2).
+- Modification du nom du service Docker en `menshen` pour plus de clarté [#7fd622d](https://github.com/suitenumerique/menshen/commit/7fd622d).
 - Suppression des paramètres liés à OIDC qui ne sont plus utilisés [#77bf3e4](https://github.com/suitenumerique/menshen/commit/77bf3e4).
+- Utilisation des variables d'environnement pour la création de l'utilisateur superutilisateur, améliorant la flexibilité du déploiement [#07ab956](https://github.com/suitenumerique/menshen/commit/07ab956).
 - Amélioration de l'affichage de l'aide de la commande `make` [#50e4ece](https://github.com/suitenumerique/menshen/commit/50e4ece).
-- Ajout d'un environnement de "playground" pour le projet [#2d94c9b](https://github.com/suitenumerique/menshen/commit/2d94c9b).
+- Ajout d'un "playground" pour le projet, facilitant les tests et l'exploration de l'API [#2d94c9b](https://github.com/suitenumerique/menshen/commit/2d94c9b).
 
 ### Autres changements
-- Mise à jour des dépendances Python et Docker (Keycloak, UV, GitHub Actions) via Renovate. Ces mises à jour sont automatiques et visent à maintenir la sécurité et la stabilité du projet.
+- Mise à jour des dépendances Python et Docker (Keycloak, UV, GitHub Actions) via Renovate Bot. Ces mises à jour sont automatiques et visent à maintenir la sécurité et la stabilité du projet.
