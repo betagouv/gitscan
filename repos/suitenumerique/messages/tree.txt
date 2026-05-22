@@ -35,6 +35,7 @@
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── scalingo_run_web
+│   ├── test-keycloak
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
 ├── compose.yaml
@@ -60,6 +61,7 @@
 │   ├── self-hosting.md
 │   ├── selfcheck.md
 │   ├── theme-customization.md
+│   ├── tiered-storage.md
 │   └── worker.md
 ├── env.d
 │   └── development
@@ -137,6 +139,7 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
     │   │   │   └── urls.py
+    │   │   ├── checks.py
     │   │   ├── entitlements
     │   │   │   ├── __init__.py
     │   │   │   ├── backends
@@ -154,19 +157,20 @@
     │   │   │       ├── bucket_cors.py
     │   │   │       ├── create_bucket.py
     │   │   │       ├── createsuperuser.py
-    │   │   │       ├── delete_orphan_attachments.py
     │   │   │       ├── dns_check.py
     │   │   │       ├── dns_provision.py
     │   │   │       ├── drop_all_tables.py
     │   │   │       ├── identity.py
     │   │   │       ├── print_sessions.py
     │   │   │       ├── print_users.py
+    │   │   │       ├── re_store_blobs.py
     │   │   │       ├── run_task.py
     │   │   │       ├── search_index_create.py
     │   │   │       ├── search_index_delete.py
     │   │   │       ├── search_reindex.py
     │   │   │       ├── selfcheck.py
-    │   │   │       └── send_mail.py
+    │   │   │       ├── send_mail.py
+    │   │   │       └── verify_blobs.py
     │   │   ├── mda
     │   │   │   ├── __init__.py
     │   │   │   ├── autoreply.py
@@ -216,10 +220,15 @@
     │   │   │   ├── 0023_threadevent.py
     │   │   │   ├── 0024_channel_encrypted_settings_scope_level.py
     │   │   │   ├── 0025_alter_threadevent_type_userevent.py
+    │   │   │   ├── 0026_userevent_usrevt_user_thread_assign_uniq.py
+    │   │   │   ├── 0027_blob_encryption_key_id_blob_storage_location_and_more.py
+    │   │   │   ├── 0028_split_attachment_messages.py
+    │   │   │   ├── 0029_attachment_message_not_null.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── ai_service.py
+    │   │   │   ├── blob_gc.py
     │   │   │   ├── dns
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── check.py
@@ -255,13 +264,18 @@
     │   │   │   │   ├── search.py
     │   │   │   │   └── tasks.py
     │   │   │   ├── ssrf.py
-    │   │   │   └── throttle.py
+    │   │   │   ├── thread_events.py
+    │   │   │   ├── throttle.py
+    │   │   │   ├── tiered_storage.py
+    │   │   │   └── tiered_storage_tasks.py
     │   │   ├── signals.py
     │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   └── admin
     │   │   │       ├── _object_tools_button_styles.html
     │   │   │       └── core
+    │   │   │           ├── blob
+    │   │   │           │   └── change_form.html
     │   │   │           ├── channel
     │   │   │           │   ├── change_form.html
     │   │   │           │   └── regenerated_api_key.html
@@ -285,10 +299,14 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (57 files)
+    │   │   │   │   └── test_*.py  (58 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
+    │   │   │   ├── commands
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_re_store_blobs.py
+    │   │   │   │   └── test_verify_blobs.py
     │   │   │   ├── conftest.py
     │   │   │   ├── dns
     │   │   │   │   ├── __init__.py
@@ -323,6 +341,7 @@
     │   │   │   │   ├── test_retry.py
     │   │   │   │   ├── test_rfc5322_address_fuzz.py
     │   │   │   │   ├── test_rfc5322_composer.py
+    │   │   │   │   ├── test_rfc5322_composer_fuzz.py
     │   │   │   │   ├── test_rfc5322_message_fuzz.py
     │   │   │   │   ├── test_rfc5322_parser.py
     │   │   │   │   ├── test_rfc5322_parser_structure.py
@@ -338,6 +357,7 @@
     │   │   │   │   ├── test_maildomain.py
     │   │   │   │   ├── test_maildomainaccess.py
     │   │   │   │   ├── test_message_template.py
+    │   │   │   │   ├── test_thread_event.py
     │   │   │   │   ├── test_user_abilities.py
     │   │   │   │   ├── test_user_event.py
     │   │   │   │   └── test_users.py
@@ -357,14 +377,20 @@
     │   │   │   │   └── test_search_reindex_command.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_identity_keycloak.py
     │   │   │   │   ├── test_ssrf.py
-    │   │   │   │   └── test_throttle.py
+    │   │   │   │   ├── test_thread_events.py
+    │   │   │   │   ├── test_throttle.py
+    │   │   │   │   └── test_tiered_storage.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
+    │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_task_importer.py
-    │   │   │   │   └── test_task_send_message.py
+    │   │   │   │   ├── test_task_send_message.py
+    │   │   │   │   └── test_tiered_storage_tasks.py
+    │   │   │   ├── test_checks.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_signals.py
     │   │   │   └── test_worker.py
@@ -650,7 +676,7 @@
     │   │   │   │   │   │   ├── labels_remove_threads_create_body.ts
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
-    │   │   │   │   │   │   ├── mailbox_*.ts  (13 files)
+    │   │   │   │   │   │   ├── mailbox_*.ts  (16 files)
     │   │   │   │   │   │   ├── mailboxes_*.ts  (8 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
@@ -659,9 +685,9 @@
     │   │   │   │   │   │   ├── message.ts
     │   │   │   │   │   │   ├── message_*.ts  (13 files)
     │   │   │   │   │   │   ├── messages_delivery_statuses_partial_update_body_one.ts
-    │   │   │   │   │   │   ├── paginated_*.ts  (6 files)
+    │   │   │   │   │   │   ├── paginated_*.ts  (5 files)
     │   │   │   │   │   │   ├── partial_drive_item.ts
-    │   │   │   │   │   │   ├── patched_*.ts  (10 files)
+    │   │   │   │   │   │   ├── patched_*.ts  (8 files)
     │   │   │   │   │   │   ├── placeholders_retrieve200.ts
     │   │   │   │   │   │   ├── read_message_template.ts
     │   │   │   │   │   │   ├── read_message_template_metadata.ts
@@ -677,7 +703,7 @@
     │   │   │   │   │   │   ├── task_status_response_result.ts
     │   │   │   │   │   │   ├── third_party_drive_retrieve_params.ts
     │   │   │   │   │   │   ├── thread.ts
-    │   │   │   │   │   │   ├── thread_*.ts  (14 files)
+    │   │   │   │   │   │   ├── thread_*.ts  (20 files)
     │   │   │   │   │   │   ├── threads_*.ts  (13 files)
     │   │   │   │   │   │   ├── tree_label.ts
     │   │   │   │   │   │   ├── user_*.ts  (5 files)
@@ -704,6 +730,8 @@
     │   │   │   │   ├── silent-login.ts
     │   │   │   │   └── types.ts
     │   │   │   ├── blocknote
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   └── block-factories.ts
     │   │   │   │   ├── blocknote-view-field
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
@@ -728,6 +756,7 @@
     │   │   │   │   ├── inline-template-variable
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── markdown-exporter.test.ts
     │   │   │   │   ├── message-template-block
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
@@ -738,6 +767,7 @@
     │   │   │   │   │   └── index.tsx
     │   │   │   │   ├── smart-trailing-block.ts
     │   │   │   │   ├── toolbar.tsx
+    │   │   │   │   ├── utils.test.ts
     │   │   │   │   └── utils.ts
     │   │   │   ├── config
     │   │   │   │   ├── constants.ts
@@ -756,6 +786,8 @@
     │   │   │   │   └── error-boundary.tsx
     │   │   │   ├── forms
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── admin-search-input
+    │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── combobox
     │   │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   │   ├── chip.tsx
@@ -929,6 +961,12 @@
     │   │   │   │       └── thread-view
     │   │   │   │           ├── _index.scss
     │   │   │   │           ├── components
+    │   │   │   │           │   ├── assignees-widget
+    │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   ├── index.tsx
+    │   │   │   │           │   │   └── quick-assign-popover
+    │   │   │   │           │   │       ├── _index.scss
+    │   │   │   │           │   │       └── index.tsx
     │   │   │   │           │   ├── calendar-invite
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── calendar-helper.tsx
@@ -938,6 +976,15 @@
     │   │   │   │           │   ├── message-reply-form
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
+    │   │   │   │           │   ├── share-modal-extensions
+    │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   ├── access-role-dropdown.tsx
+    │   │   │   │           │   │   ├── access-users-list.tsx
+    │   │   │   │           │   │   ├── assigned-users-section.tsx
+    │   │   │   │           │   │   ├── index.ts
+    │   │   │   │           │   │   ├── invitation-user-selector.tsx
+    │   │   │   │           │   │   ├── share-member-item.tsx
+    │   │   │   │           │   │   └── share-modal.tsx
     │   │   │   │           │   ├── thread-accesses-widget
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
@@ -953,6 +1000,9 @@
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── thread-event
     │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   ├── assignment-message.test.ts
+    │   │   │   │           │   │   ├── assignment-message.ts
+    │   │   │   │           │   │   ├── group-system-events.test.ts
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── thread-event-input
     │   │   │   │           │   │   ├── _index.scss
@@ -982,7 +1032,9 @@
     │   │   │   ├── message
     │   │   │   │   ├── use-add-label.tsx
     │   │   │   │   ├── use-archive.tsx
+    │   │   │   │   ├── use-assigned-users.ts
     │   │   │   │   ├── use-can-edit-threads.tsx
+    │   │   │   │   ├── use-copy-deep-link.tsx
     │   │   │   │   ├── use-delete-label.tsx
     │   │   │   │   ├── use-delete-thread-access.tsx
     │   │   │   │   ├── use-flag.tsx
@@ -992,6 +1044,7 @@
     │   │   │   │   ├── use-spam.tsx
     │   │   │   │   ├── use-split-thread.tsx
     │   │   │   │   ├── use-starred.tsx
+    │   │   │   │   ├── use-thread-assignment.ts
     │   │   │   │   └── use-trash.tsx
     │   │   │   ├── providers
     │   │   │   │   ├── admin-maildomain.tsx
@@ -1017,6 +1070,10 @@
     │   │   │   │           └── index.tsx
     │   │   │   ├── ui
     │   │   │   │   └── components
+    │   │   │   │       ├── assignees-avatar-group
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   ├── index.test.tsx
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── badge
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
@@ -1038,6 +1095,8 @@
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── dropdown-button
     │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── empty-cell
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── feedback-button
     │   │   │   │       │   ├── _index.scss
@@ -1116,9 +1175,11 @@
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-feature.ts
     │   │   │   ├── use-import-task.ts
+    │   │   │   ├── use-is-shared-context.ts
     │   │   │   ├── use-popup-position.ts
     │   │   │   ├── use-previous.ts
     │   │   │   ├── use-safe-router-push.ts
+    │   │   │   ├── use-searchable-pagination.ts
     │   │   │   └── use-visibility-observer.ts
     │   │   ├── pages
     │   │   │   ├── _app.tsx
@@ -1167,12 +1228,32 @@
     │   ├── buildpack
     │   │   ├── scalingo_env.sh
     │   │   └── scalingo_postcompile.sh
+    │   ├── bulk-role-membership
+    │   │   ├── .gitignore
+    │   │   ├── README.md
+    │   │   ├── bulk-role-membership.jar
+    │   │   ├── pom.xml
+    │   │   └── src
+    │   │       └── main
+    │   │           ├── java
+    │   │           │   └── messages
+    │   │           │       └── keycloak
+    │   │           │           └── bulkrolemembership
+    │   │           │               ├── BulkRoleMembershipResource.java
+    │   │           │               ├── BulkRoleMembershipResourceProvider.java
+    │   │           │               └── BulkRoleMembershipResourceProviderFactory.java
+    │   │           └── resources
+    │   │               └── META-INF
+    │   │                   └── services
+    │   │                       └── org.keycloak.services.resource.RealmResourceProviderFactory
     │   ├── realm.json
     │   ├── scripts
     │   │   ├── META-INF
     │   │   │   └── keycloak-scripts.json
     │   │   └── map-group-attribute.js
     │   ├── system.properties
+    │   ├── tests
+    │   │   └── test_bulk_role_membership.py
     │   └── themes
     │       └── dsfr-2.2.1.jar
     ├── mpa
@@ -1238,4 +1319,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-267 directories, 1129 files
+287 directories, 1197 files
