@@ -3,19 +3,48 @@
 │   └── config.yml
 ├── .claude
 │   └── skills
+│       ├── caveman
+│       │   └── SKILL.md
+│       ├── diagnose
+│       │   ├── SKILL.md
+│       │   └── scripts
+│       │       └── hitl-loop.template.sh
 │       ├── editor
 │       │   └── SKILL.md
 │       ├── grill-me
 │       │   └── SKILL.md
+│       ├── grill-with-docs
+│       │   ├── ADR-FORMAT.md
+│       │   ├── CONTEXT-FORMAT.md
+│       │   └── SKILL.md
 │       ├── handoff
 │       │   └── SKILL.md
+│       ├── improve-codebase-architecture
+│       │   ├── DEEPENING.md
+│       │   ├── HTML-REPORT.md
+│       │   ├── INTERFACE-DESIGN.md
+│       │   ├── LANGUAGE.md
+│       │   └── SKILL.md
+│       ├── prototype
+│       │   ├── LOGIC.md
+│       │   ├── SKILL.md
+│       │   └── UI.md
+│       ├── tdd
+│       │   ├── SKILL.md
+│       │   ├── deep-modules.md
+│       │   ├── interface-design.md
+│       │   ├── mocking.md
+│       │   ├── refactoring.md
+│       │   └── tests.md
 │       ├── to-issues
 │       │   └── SKILL.md
 │       ├── to-prd
 │       │   └── SKILL.md
 │       ├── ui-fidelity
 │       │   └── SKILL.md
-│       └── write-a-skill
+│       ├── write-a-skill
+│       │   └── SKILL.md
+│       └── zoom-out
 │           └── SKILL.md
 ├── .config
 │   ├── bun
@@ -102,6 +131,7 @@
 ├── .github
 │   ├── copilot
 │   │   └── mcp.json
+│   ├── copilot-instructions.md
 │   ├── skills
 │   │   ├── editor
 │   │   │   └── SKILL.md
@@ -260,6 +290,7 @@
 │   │   ├── reset_review_data_controller.rb
 │   │   ├── school_switches_controller.rb
 │   │   ├── schools_controller.rb
+│   │   ├── two_factor_challenges_controller.rb
 │   │   ├── url_shrinkers_controller.rb
 │   │   ├── users
 │   │   │   ├── confirmations_controller.rb
@@ -845,6 +876,7 @@
 │   │   │   ├── multi.rb
 │   │   │   └── weekly_framed.rb
 │   │   ├── jwt_auth.rb
+│   │   ├── magic_link_token.rb
 │   │   ├── message_box.rb
 │   │   ├── presenters
 │   │   │   ├── address.rb
@@ -968,6 +1000,7 @@
 │   │   │   ├── student_admin.rb
 │   │   │   ├── teamable.rb
 │   │   │   ├── tokenable.rb
+│   │   │   ├── two_factor_authenticatable.rb
 │   │   │   ├── user_admin.rb
 │   │   │   ├── user_with_school.rb
 │   │   │   ├── week_helpers.rb
@@ -1402,6 +1435,7 @@
 │       ├── layouts
 │       │   ├── _analytics.html.erb
 │       │   ├── _breadcrumb.html.slim
+│       │   ├── _crisp.html.erb
 │       │   ├── _dashboards_with_menu.html.slim
 │       │   ├── _extra_for_devs.html.slim
 │       │   ├── _flash.html.erb
@@ -1696,6 +1730,8 @@
 │       │   └── new.html.slim
 │       ├── shared
 │       │   └── _school_switch.html.slim
+│       ├── two_factor_challenges
+│       │   └── new.html.slim
 │       ├── users
 │       │   ├── _account_resume_fields.html.slim
 │       │   ├── _edit_api.html.slim
@@ -2347,7 +2383,8 @@
 │   │   ├── 20260203214306_remove_internship_offer_infos_tables.rb
 │   │   ├── 20260309162833_create_boarding_houses.rb
 │   │   ├── 20260420123136_reduce_student_address_size.rb
-│   │   └── 20260430082727_create_boarding_house_views.rb
+│   │   ├── 20260430082727_create_boarding_house_views.rb
+│   │   └── 20260515090000_add_totp_to_users.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
@@ -2742,6 +2779,7 @@
 │   │   │   └── schools_controller_test.rb
 │   │   ├── school_switches_controller_test.rb
 │   │   ├── schools_controller_test.rb
+│   │   ├── two_factor_challenges_controller_test.rb
 │   │   ├── url_shrinkers_controller_test.rb
 │   │   ├── users
 │   │   │   ├── confirmations_controller_test.rb
@@ -3055,4 +3093,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-415 directories, 2650 files
+424 directories, 2679 files
