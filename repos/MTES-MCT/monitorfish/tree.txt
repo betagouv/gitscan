@@ -89,6 +89,8 @@
 │   │   │   │                   │   ├── DatabaseProperties.kt
 │   │   │   │                   │   ├── HostProperties.kt
 │   │   │   │                   │   ├── JpaConfig.kt
+│   │   │   │                   │   ├── KafkaAisConsumerConfig.kt
+│   │   │   │                   │   ├── KafkaAisProperties.kt
 │   │   │   │                   │   ├── KeycloakProxyProperties.kt
 │   │   │   │                   │   ├── LoggingConfig.kt
 │   │   │   │                   │   ├── MapperConfiguration.kt
@@ -116,6 +118,8 @@
 │   │   │   │                   │   │   │   └── ActivityVisualization.kt
 │   │   │   │                   │   │   ├── administration
 │   │   │   │                   │   │   │   └── Administration.kt
+│   │   │   │                   │   │   ├── ais_position
+│   │   │   │                   │   │   │   └── AisPosition.kt
 │   │   │   │                   │   │   ├── alerts
 │   │   │   │                   │   │   │   ├── PendingAlert.kt
 │   │   │   │                   │   │   │   ├── PositionAlertSpecification.kt
@@ -180,6 +184,7 @@
 │   │   │   │                   │   │   ├── last_position
 │   │   │   │                   │   │   │   ├── Gear.kt
 │   │   │   │                   │   │   │   ├── LastPosition.kt
+│   │   │   │                   │   │   │   ├── LastPositionAIS.kt
 │   │   │   │                   │   │   │   └── Species.kt
 │   │   │   │                   │   │   ├── logbook
 │   │   │   │                   │   │   │   ├── EffortTargetSpeciesGroup.kt
@@ -353,6 +358,7 @@
 │   │   │   │                   │   │   └── PatchEntity.kt
 │   │   │   │                   │   ├── repositories
 │   │   │   │                   │   │   ├── ActivityVisualizationRepository.kt
+│   │   │   │                   │   │   ├── AisPositionRepository.kt
 │   │   │   │                   │   │   ├── BeaconMalfunctionActionsRepository.kt
 │   │   │   │                   │   │   ├── BeaconMalfunctionCommentsRepository.kt
 │   │   │   │                   │   │   ├── BeaconMalfunctionNotificationsRepository.kt
@@ -369,6 +375,7 @@
 │   │   │   │                   │   │   ├── GearCodeGroupRepository.kt
 │   │   │   │                   │   │   ├── GearRepository.kt
 │   │   │   │                   │   │   ├── InfractionRepository.kt
+│   │   │   │                   │   │   ├── LastPositionAisRepository.kt
 │   │   │   │                   │   │   ├── LastPositionRepository.kt
 │   │   │   │                   │   │   ├── LegacyControlUnitRepository.kt
 │   │   │   │                   │   │   ├── LogbookRawMessageRepository.kt
@@ -540,18 +547,21 @@
 │   │   │   │                   │   │   ├── vessel
 │   │   │   │                   │   │   │   ├── GetActiveVessels.kt
 │   │   │   │                   │   │   │   ├── GetDatesFromVesselTrackDepth.kt
+│   │   │   │                   │   │   │   ├── GetLastPositionsAIS.kt
 │   │   │   │                   │   │   │   ├── GetLogbookMessages.kt
 │   │   │   │                   │   │   │   ├── GetVessel.kt
+│   │   │   │                   │   │   │   ├── GetVesselAISPositions.kt
 │   │   │   │                   │   │   │   ├── GetVesselBeaconMalfunctions.kt
 │   │   │   │                   │   │   │   ├── GetVesselById.kt
 │   │   │   │                   │   │   │   ├── GetVesselContactToUpdateByVesselId.kt
-│   │   │   │                   │   │   │   ├── GetVesselPositions.kt
 │   │   │   │                   │   │   │   ├── GetVesselRiskFactor.kt
 │   │   │   │                   │   │   │   ├── GetVesselTripNumbers.kt
+│   │   │   │                   │   │   │   ├── GetVesselVMSAndAISPositions.kt
 │   │   │   │                   │   │   │   ├── GetVesselVoyage.kt
 │   │   │   │                   │   │   │   ├── GetVesselVoyageByDates.kt
 │   │   │   │                   │   │   │   ├── GetVessels.kt
 │   │   │   │                   │   │   │   ├── ParseAndSavePosition.kt
+│   │   │   │                   │   │   │   ├── SaveAisPositions.kt
 │   │   │   │                   │   │   │   ├── SaveVesselContactToUpdate.kt
 │   │   │   │                   │   │   │   ├── SearchVessels.kt
 │   │   │   │                   │   │   │   └── dtos
@@ -672,6 +682,7 @@
 │   │   │   │                   │   │   │   ├── InfractionSuspicionDataOutput.kt
 │   │   │   │                   │   │   │   ├── InfractionThreatCharacterizationDataOutput.kt
 │   │   │   │                   │   │   │   ├── IsInFrenchEezDataOutput.kt
+│   │   │   │                   │   │   │   ├── LastPositionAISDataOutput.kt
 │   │   │   │                   │   │   │   ├── LogbookMessageDataOutput.kt
 │   │   │   │                   │   │   │   ├── LogbookMessageFishingCatchDataOutput.kt
 │   │   │   │                   │   │   │   ├── LogbookMessageGearDataOutput.kt
@@ -754,6 +765,7 @@
 │   │   │   │                   │   ├── database
 │   │   │   │                   │   │   ├── entities
 │   │   │   │                   │   │   │   ├── ActivityVisualizationEntity.kt
+│   │   │   │                   │   │   │   ├── AisPositionEntity.kt
 │   │   │   │                   │   │   │   ├── BeaconEntity.kt
 │   │   │   │                   │   │   │   ├── BeaconMalfunctionActionEntity.kt
 │   │   │   │                   │   │   │   ├── BeaconMalfunctionCommentEntity.kt
@@ -770,6 +782,7 @@
 │   │   │   │                   │   │   │   ├── GearEntity.kt
 │   │   │   │                   │   │   │   ├── InfractionEntity.kt
 │   │   │   │                   │   │   │   ├── IsrEntity.kt
+│   │   │   │                   │   │   │   ├── LastPositionAisEntity.kt
 │   │   │   │                   │   │   │   ├── LastPositionEntity.kt
 │   │   │   │                   │   │   │   ├── LogbookRawMessageEntity.kt
 │   │   │   │                   │   │   │   ├── LogbookReportEntity.kt
@@ -807,6 +820,7 @@
 │   │   │   │                   │   │   │   └── ReportingMapper.kt
 │   │   │   │                   │   │   ├── repositories
 │   │   │   │                   │   │   │   ├── JpaActivityVisualizationRepository.kt
+│   │   │   │                   │   │   │   ├── JpaAisPositionRepository.kt
 │   │   │   │                   │   │   │   ├── JpaBeaconMalfunctionActionsRepository.kt
 │   │   │   │                   │   │   │   ├── JpaBeaconMalfunctionCommentsRepository.kt
 │   │   │   │                   │   │   │   ├── JpaBeaconMalfunctionNotificationsRepository.kt
@@ -822,6 +836,7 @@
 │   │   │   │                   │   │   │   ├── JpaGearCodeGroupRepository.kt
 │   │   │   │                   │   │   │   ├── JpaGearRepository.kt
 │   │   │   │                   │   │   │   ├── JpaInfractionRepository.kt
+│   │   │   │                   │   │   │   ├── JpaLastPositionAisRepository.kt
 │   │   │   │                   │   │   │   ├── JpaLastPositionRepository.kt
 │   │   │   │                   │   │   │   ├── JpaLogbookRawMessageRepository.kt
 │   │   │   │                   │   │   │   ├── JpaLogbookReportRepository.kt
@@ -852,6 +867,7 @@
 │   │   │   │                   │   │   │   ├── JpaVesselRepository.kt
 │   │   │   │                   │   │   │   ├── interfaces
 │   │   │   │                   │   │   │   │   ├── DBActivityVisualizationRepository.kt
+│   │   │   │                   │   │   │   │   ├── DBAisPositionRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBBeaconMalfunctionActionsRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBBeaconMalfunctionCommentsRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBBeaconMalfunctionNotificationsRepository.kt
@@ -867,6 +883,7 @@
 │   │   │   │                   │   │   │   │   ├── DBGearCodeGroupRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBGearRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBInfractionRepository.kt
+│   │   │   │                   │   │   │   │   ├── DBLastPositionAisRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBLastPositionRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBLogbookRawMessageRepository.kt
 │   │   │   │                   │   │   │   │   ├── DBLogbookReportRepository.kt
@@ -906,6 +923,10 @@
 │   │   │   │                   │   ├── exceptions
 │   │   │   │                   │   │   ├── BackendRequestErrorCode.kt
 │   │   │   │                   │   │   └── BackendRequestException.kt
+│   │   │   │                   │   ├── kafka
+│   │   │   │                   │   │   ├── AisPositionKafkaConsumer.kt
+│   │   │   │                   │   │   ├── AisPositionMessage.kt
+│   │   │   │                   │   │   └── AisPositionProducer.kt
 │   │   │   │                   │   ├── monitorenv
 │   │   │   │                   │   │   ├── APIControlUnitRepository.kt
 │   │   │   │                   │   │   ├── APILegacyControlUnitRepository.kt
@@ -1199,6 +1220,10 @@
 │   │   │       │   │   │   ├── V0.373__Add_number_of_vessels_to_inn_reportings.sql
 │   │   │       │   │   │   ├── V0.374__Update_facade_type.sql
 │   │   │       │   │   │   ├── V0.375__Add_validity_option_to_reportings.sql
+│   │   │       │   │   │   ├── V0.376__Create_sales_notes_tables.sql
+│   │   │       │   │   │   ├── V0.377__Create_ais_positions_table.sql
+│   │   │       │   │   │   ├── V0.378__Create_last_positions_ais_table.sql
+│   │   │       │   │   │   ├── V0.379__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
@@ -1344,6 +1369,8 @@
 │   │   │       │       ├── V666.39__Insert_dummy_risk_elements.sql
 │   │   │       │       ├── V666.3__Insert_dummy_last_positions.sql
 │   │   │       │       ├── V666.40__Insert_dummy_facades_zee_fr_shom.sql
+│   │   │       │       ├── V666.41__Insert_dummy_last_positions_ais.sql
+│   │   │       │       ├── V666.42__Insert_dummy_ais_positions.sql
 │   │   │       │       ├── V666.4__Insert_fishing_gear_codes.sql
 │   │   │       │       ├── V666.5.0__Insert_logbook_reports.sql
 │   │   │       │       ├── V666.5.1__Insert_logbook_raw_messages_and_reports.sql
@@ -1366,6 +1393,7 @@
 │   │   │       │           ├── V666.31__Insert_dummy_vessel_groups.jsonc
 │   │   │       │           ├── V666.35__Insert_isr_codes.jsonc
 │   │   │       │           ├── V666.37__Insert_dummy_infraction_threat_characterization.jsonc
+│   │   │       │           ├── V666.41__Insert_dummy_last_positions_ais.jsonc
 │   │   │       │           ├── V666.5.0__Insert_logbook_reports.jsonc
 │   │   │       │           ├── V666.5.2__Insert_more_pno_logbook_reports.jsonc
 │   │   │       │           ├── V666.5.3__Insert_dummy_manual_prior_notifications.jsonc
@@ -1429,6 +1457,7 @@
 │   │       │                   │   │   └── PendingAlertMapperUTests.kt
 │   │       │                   │   ├── use_cases
 │   │       │                   │   │   ├── AddControlObjectiveYearUTests.kt
+│   │       │                   │   │   ├── SaveAisPositionsUTests.kt
 │   │       │                   │   │   ├── TestUtils.kt
 │   │       │                   │   │   ├── UpdateControlObjectiveUTests.kt
 │   │       │                   │   │   ├── ValidatePendingAlertUTests.kt
@@ -1511,10 +1540,11 @@
 │   │       │                   │   │   ├── vessel
 │   │       │                   │   │   │   ├── GetActiveVesselsUTests.kt
 │   │       │                   │   │   │   ├── GetLogbookMessagesUTests.kt
+│   │       │                   │   │   │   ├── GetVesselAISPositionsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselContactToUpdateByVesselIdUTests.kt
-│   │       │                   │   │   │   ├── GetVesselPositionsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselTripNumbersUTests.kt
 │   │       │                   │   │   │   ├── GetVesselUTests.kt
+│   │       │                   │   │   │   ├── GetVesselVMSAndAISPositionsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselVoyageByDatesUTests.kt
 │   │       │                   │   │   │   ├── GetVesselVoyageUTests.kt
 │   │       │                   │   │   │   ├── GetVesselsUTests.kt
@@ -1601,7 +1631,9 @@
 │   │       │                   │   │   │   └── ReportingMapperUTests.kt
 │   │       │                   │   │   └── repositories
 │   │       │                   │   │       ├── AbstractDBTests.kt
+│   │       │                   │   │       ├── AbstractKafkaTests.kt
 │   │       │                   │   │       ├── JpaActivityVisualizationRepositoryITests.kt
+│   │       │                   │   │       ├── JpaAisPositionRepositoryITests.kt
 │   │       │                   │   │       ├── JpaBeaconMalfunctionActionsRepositoryITests.kt
 │   │       │                   │   │       ├── JpaBeaconMalfunctionCommentsRepositoryITests.kt
 │   │       │                   │   │       ├── JpaBeaconMalfunctionNotificationsRepositoryITests.kt
@@ -1615,6 +1647,7 @@
 │   │       │                   │   │       ├── JpaForeignFMCRepositoryITests.kt
 │   │       │                   │   │       ├── JpaGearRepositoryITests.kt
 │   │       │                   │   │       ├── JpaInfractionRepositoryITests.kt
+│   │       │                   │   │       ├── JpaLastPositionAisRepositoryITests.kt
 │   │       │                   │   │       ├── JpaLastPositionRepositoryITests.kt
 │   │       │                   │   │       ├── JpaLogbookRawMessageRepositoryITests.kt
 │   │       │                   │   │       ├── JpaLogbookReportRepositoryITests.kt
@@ -1644,6 +1677,10 @@
 │   │       │                   │   │       ├── TestUtils.kt
 │   │       │                   │   │       └── utils
 │   │       │                   │   │           └── ToSqlArrayStringUTests.kt
+│   │       │                   │   ├── kafka
+│   │       │                   │   │   ├── AisPositionKafkaConsumerITests.kt
+│   │       │                   │   │   ├── AisPositionKafkaConsumerUTests.kt
+│   │       │                   │   │   └── AisPositionMessageUTests.kt
 │   │       │                   │   ├── monitorenv
 │   │       │                   │   │   ├── APILegacyControlUnitRepositoryITests.kt
 │   │       │                   │   │   ├── APIMissionRepositoryITest.kt
@@ -1828,6 +1865,7 @@
 │   │   │   │   ├── getUtcizedDayjs.ts
 │   │   │   │   └── isDateCloseTo.ts
 │   │   │   └── vessels
+│   │   │       ├── ais_positions_overlay.spec.ts
 │   │   │       ├── vessel_groups.spec.ts
 │   │   │       ├── vessel_labels.spec.ts
 │   │   │       ├── vessel_overlays.spec.ts
@@ -2429,6 +2467,7 @@
 │   │   │   ├── Icone_controle_sans_infraction.svg
 │   │   │   ├── Observation.svg
 │   │   │   ├── Triple-cercle_alerte_et_avarie.png
+│   │   │   ├── ais_vessel_icons.png
 │   │   │   ├── arrow_blue.png
 │   │   │   ├── arrow_gray.png
 │   │   │   ├── arrow_green.png
@@ -2453,7 +2492,10 @@
 │   ├── scripts
 │   │   ├── .env.example
 │   │   ├── .gitignore
+│   │   ├── ais_vessels_shared.js
 │   │   ├── clean_wiremock_stubs.sh
+│   │   ├── generate_ais_positions.js
+│   │   ├── generate_last_positions_ais.js
 │   │   ├── generate_perf_data.js
 │   │   ├── generate_test_data_seeds.js
 │   │   └── generate_wiremock_stubs.js
@@ -2517,8 +2559,6 @@
 │   │   │   ├── LightContext.ts
 │   │   │   ├── MissionEventContext.ts
 │   │   │   └── UserAccountContext.ts
-│   │   ├── coordinates.test.ts
-│   │   ├── coordinates.ts
 │   │   ├── domain
 │   │   │   ├── entities
 │   │   │   │   ├── backoffice.ts
@@ -3004,7 +3044,6 @@
 │   │   │   │   │   │   ├── BaseLayerRow.tsx
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── BaseMap.tsx
-│   │   │   │   │   ├── CloseVesselTrackOverlay.jsx
 │   │   │   │   │   ├── ControlOverlay
 │   │   │   │   │   │   ├── ControlDetails.tsx
 │   │   │   │   │   │   ├── constants.ts
@@ -3014,6 +3053,7 @@
 │   │   │   │   │   ├── MapAttributionsBox.tsx
 │   │   │   │   │   ├── MapButtons
 │   │   │   │   │   │   ├── MapButton.tsx
+│   │   │   │   │   │   ├── VesselSearchButton.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── shared
 │   │   │   │   │   │       ├── MapToolBox.tsx
@@ -3026,7 +3066,6 @@
 │   │   │   │   │   │   ├── MapSettings.tsx
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   └── index.tsx
-│   │   │   │   │   ├── MapVesselClickAndAnimationHandler.tsx
 │   │   │   │   │   ├── Overlay
 │   │   │   │   │   │   ├── OverlayTrianglePointer.tsx
 │   │   │   │   │   │   ├── __tests__
@@ -3089,6 +3128,7 @@
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── hoverOnMapFeature.test.ts
+│   │   │   │   │   ├── animateMap.ts
 │   │   │   │   │   ├── clickOnMapFeature.ts
 │   │   │   │   │   ├── fitMultiPolygonToExtent.ts
 │   │   │   │   │   ├── getCoordinatesExtent.ts
@@ -3757,10 +3797,18 @@
 │   │   │   │   ├── slice.ts
 │   │   │   │   └── stationApi.ts
 │   │   │   ├── Vessel
+│   │   │   │   ├── AISVessel.types.ts
 │   │   │   │   ├── Vessel.types.ts
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── utils.test.ts
 │   │   │   │   ├── components
+│   │   │   │   │   ├── AISVesselCardOverlay
+│   │   │   │   │   │   ├── AISVesselCard.tsx
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── AISVesselsButton.tsx
+│   │   │   │   │   ├── CloseVesselTrackOverlay.tsx
 │   │   │   │   │   ├── ExportVesselListDialog
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── csvMap.ts
@@ -3875,6 +3923,10 @@
 │   │   │   │   ├── label.types.ts
 │   │   │   │   ├── label.utils.ts
 │   │   │   │   ├── layers
+│   │   │   │   │   ├── AISVesselsLayer
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── style.ts
 │   │   │   │   │   ├── SelectedVesselLayer
 │   │   │   │   │   │   ├── VesselSelectedLayer.tsx
 │   │   │   │   │   │   ├── constants.ts
@@ -3907,15 +3959,16 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── VesselsLayer
 │   │   │   │   │   │   ├── constants.ts
-│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── style.ts
 │   │   │   │   │   ├── VesselsTracksLayer
 │   │   │   │   │   │   ├── VesselsTracksLayer.tsx
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   └── vesselTrack.style.tsx
-│   │   │   │   │   ├── style.ts
 │   │   │   │   │   └── utils
 │   │   │   │   │       └── utils.ts
 │   │   │   │   ├── schemas
+│   │   │   │   │   ├── AISVesselSchema.ts
 │   │   │   │   │   ├── ActiveVesselSchema.ts
 │   │   │   │   │   ├── BeaconSchema.ts
 │   │   │   │   │   ├── ContactMethodSchema.ts
@@ -3947,10 +4000,12 @@
 │   │   │   │   │   ├── displayVesselEstimatedPositions.ts
 │   │   │   │   │   ├── displayVesselSidebarAndPositions.ts
 │   │   │   │   │   ├── downloadVesselList.ts
+│   │   │   │   │   ├── hideAISVesselTrack.ts
 │   │   │   │   │   ├── hideVesselTrack.ts
 │   │   │   │   │   ├── legacySearchVessels.ts
 │   │   │   │   │   ├── openVesselSidebarTab.ts
 │   │   │   │   │   ├── rendering
+│   │   │   │   │   │   ├── renderAISVesselFeatures.ts
 │   │   │   │   │   │   ├── renderLayersDependingOnVesselLayer.ts
 │   │   │   │   │   │   ├── renderVesselAlertAndBeaconMalfunctionFeatures.ts
 │   │   │   │   │   │   ├── renderVesselAlertFeatures.ts
@@ -3960,6 +4015,7 @@
 │   │   │   │   │   │   └── renderVesselInfractionSuspicionFeatures.ts
 │   │   │   │   │   ├── saveActiveVesselsAndDisplayLastPositions.ts
 │   │   │   │   │   ├── searchVessels.ts
+│   │   │   │   │   ├── showAISVesselTrack.ts
 │   │   │   │   │   ├── showAlertInSideWindow.ts
 │   │   │   │   │   ├── showVessel.ts
 │   │   │   │   │   ├── showVesselFromBeaconMalfunctionsKanban.ts
@@ -4374,6 +4430,28 @@
 │   ├── init
 │   │   ├── geoserver_init_layers.sh
 │   │   └── init.iml
+│   ├── kafka
+│   │   ├── certs
+│   │   │   ├── kafka
+│   │   │   │   ├── ca.crt
+│   │   │   │   ├── ca.key
+│   │   │   │   ├── ca.srl
+│   │   │   │   ├── kafka-truststore.p12
+│   │   │   │   ├── kafka.crt
+│   │   │   │   ├── kafka.csr
+│   │   │   │   ├── kafka.key
+│   │   │   │   ├── kafka.keypass
+│   │   │   │   ├── kafka.p12
+│   │   │   │   ├── monitorfish-truststore.p12
+│   │   │   │   └── monitorfish.p12
+│   │   │   └── monitorfish
+│   │   │       ├── monitorfish-truststore.p12
+│   │   │       ├── monitorfish.crt
+│   │   │       ├── monitorfish.csr
+│   │   │       ├── monitorfish.key
+│   │   │       └── monitorfish.p12
+│   │   └── scripts
+│   │       └── create_certificate.sh
 │   ├── local
 │   │   ├── README.md
 │   │   ├── backup
@@ -5132,6 +5210,7 @@
 │   │   │   ├── beacon_malfunctions.py
 │   │   │   ├── communication_means.py
 │   │   │   ├── control_units.py
+│   │   │   ├── data_exchange_standards.py
 │   │   │   ├── fleet_segments.py
 │   │   │   ├── missions.py
 │   │   │   ├── monitorfish_healthcheck.py
@@ -5170,7 +5249,6 @@
 │   │   │   ├── init_species_groups.py
 │   │   │   ├── isscaap_codes.py
 │   │   │   ├── last_positions.py
-│   │   │   ├── logbook.py
 │   │   │   ├── missing_dep_alerts.py
 │   │   │   ├── missing_far_alerts.py
 │   │   │   ├── missing_trip_numbers.py
@@ -5186,6 +5264,7 @@
 │   │   │   ├── regulations_open_data.py
 │   │   │   ├── risk_elements.py
 │   │   │   ├── risk_factors.py
+│   │   │   ├── sales_and_logbook.py
 │   │   │   ├── scrape_legipeche.py
 │   │   │   ├── species.py
 │   │   │   ├── suspicions_of_under_declaration_alerts.py
@@ -5212,12 +5291,14 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── childless_parsers.py
 │   │   │   │   ├── ers.py
-│   │   │   │   └── log_parsers.py
+│   │   │   │   ├── log_parsers.py
+│   │   │   │   └── sal_parsers.py
 │   │   │   ├── flux
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── childless_parsers.py
 │   │   │   │   ├── flux.py
 │   │   │   │   ├── log_parsers.py
+│   │   │   │   ├── sales_parsers.py
 │   │   │   │   └── utils.py
 │   │   │   └── utils.py
 │   │   ├── processing.py
@@ -5469,139 +5550,6 @@
 │       │   │       └── expected_sms_zero_1.txt
 │       │   ├── external
 │       │   │   └── README.md
-│       │   ├── logbook
-│       │   │   ├── xml_files
-│       │   │   │   ├── ers
-│       │   │   │   │   ├── FAC20211018001928.xml
-│       │   │   │   │   ├── FRA20200321502645.xml
-│       │   │   │   │   ├── OOE20200321003301.xml
-│       │   │   │   │   ├── OOE20200323034701.xml
-│       │   │   │   │   ├── OOE20200323034702.xml
-│       │   │   │   │   ├── OOE20200324042000.xml
-│       │   │   │   │   ├── OOE20200326032800.xml
-│       │   │   │   │   ├── OOE20200402018600.xml
-│       │   │   │   │   ├── OOF20200306070900.xml
-│       │   │   │   │   ├── OOF20200321016003.xml
-│       │   │   │   │   ├── OOF20200324001900.xml
-│       │   │   │   │   ├── OOF20200324011801.xml
-│       │   │   │   │   ├── OOF20200324066300.xml
-│       │   │   │   │   ├── OOF20200326013602.xml
-│       │   │   │   │   ├── OOF20200331006307.xml
-│       │   │   │   │   ├── OOF20200729010401.xml
-│       │   │   │   │   ├── OOF20230228013803.xml
-│       │   │   │   │   ├── OOY20200408047904.xml
-│       │   │   │   │   └── empty_message.xml
-│       │   │   │   └── flux
-│       │   │   │       ├── base64_encoded.xml
-│       │   │   │       ├── business
-│       │   │   │       │   ├── Deletion.xml
-│       │   │   │       │   ├── FLUX - Area entry declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710301 - Departure (Catch onboard).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710302 - Departure (No catch onboard).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710401 - Prior notification of area entry.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710501 - Daily fishing operation.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710511 - Haul by haul recording reported daily.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710521 - Nil catches EU.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710522 - Nil catches BFT.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710523 - Nil catches NEAFC.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710601 - Joint Fishing Operation (BFT).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710701 - Discard operation.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710801 - Relocation loading from keep net to main hold.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710811 - Relocation  BFT Transfer to tug reported by FV.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710901 - Notification of exit from area.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710911 - Area exit declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711001 - Prior notification of arrival to port (Reason=Landing).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Landing) - correction.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Shelter).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711101 - Arrival declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711102 - Arrival declaration (Reason = Landing).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711103 - Arrival declaration (UsedFishingGear).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711201 - Landing declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711301 - Transhipment (in port) declaration by receiver.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711302 - Transhipment (at sea) declaration by receiver (Catch onboard after loading).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711401 - Transhipment (in port) notification by donor.xml
-│       │   │   │       │   └── FLUX-FA-EU-711402 - Transhipment (at sea) notification by donor (Catch onboard prior to unloading).xml
-│       │   │   │       ├── business_BASE64
-│       │   │   │       │   ├── Deletion.xml
-│       │   │   │       │   ├── FLUX - Area entry declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710301 - Departure (Catch onboard).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710302 - Departure (No catch onboard).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710401 - Prior notification of area entry.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710501 - Daily fishing operation.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710511 - Haul by haul recording reported daily.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710521 - Nil catches EU.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710522 - Nil catches BFT.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710523 - Nil catches NEAFC.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710601 - Joint Fishing Operation (BFT).xml
-│       │   │   │       │   ├── FLUX-FA-EU-710701 - Discard operation.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710801 - Relocation loading from keep net to main hold.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710811 - Relocation  BFT Transfer to tug reported by FV.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710901 - Notification of exit from area.xml
-│       │   │   │       │   ├── FLUX-FA-EU-710911 - Area exit declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711001 - Prior notification of arrival to port (Reason=Landing).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Landing) - correction.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Shelter).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711101 - Arrival declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711102 - Arrival declaration (Reason = Landing).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711103 - Arrival declaration (UsedFishingGear).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711201 - Landing declaration.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711301 - Transhipment (in port) declaration by receiver.xml
-│       │   │   │       │   ├── FLUX-FA-EU-711302 - Transhipment (at sea) declaration by receiver (Catch onboard after loading).xml
-│       │   │   │       │   ├── FLUX-FA-EU-711401 - Transhipment (in port) notification by donor.xml
-│       │   │   │       │   └── FLUX-FA-EU-711402 - Transhipment (at sea) notification by donor (Catch onboard prior to unloading).xml
-│       │   │   │       ├── corrupt_message.xml
-│       │   │   │       └── not_base64_encoded.xml
-│       │   │   └── zipfiles
-│       │   │       ├── test_extract_xmls
-│       │   │       │   └── received
-│       │   │       │       ├── ERS3_ACK_JBE123456789012.zip
-│       │   │       │       ├── ERS3_JBE123456789012.zip
-│       │   │       │       ├── UN_JBE123456789012.zip
-│       │   │       │       └── unexpected.zip
-│       │   │       ├── test_extract_zipfiles
-│       │   │       │   ├── many_zipfiles
-│       │   │       │   │   └── received
-│       │   │       │   │       └── 2021
-│       │   │       │   │           ├── 09
-│       │   │       │   │           │   ├── ERS3_JBE202109123197.zip
-│       │   │       │   │           │   └── ERS3_JBE202109123198.zip
-│       │   │       │   │           ├── 1
-│       │   │       │   │           │   └── ERS3_JBE*.zip  (195 files)
-│       │   │       │   │           ├── 12
-│       │   │       │   │           │   ├── ERS3_JBE202112123199.zip
-│       │   │       │   │           │   └── ERS3_JBE202112123200.zip
-│       │   │       │   │           └── 9
-│       │   │       │   │               ├── ERS3_JBE202109123195.zip
-│       │   │       │   │               └── ERS3_JBE202109123196.zip
-│       │   │       │   └── sample_zipfiles
-│       │   │       │       └── received
-│       │   │       │           ├── 2021
-│       │   │       │           │   ├── 1
-│       │   │       │           │   │   ├── ERS3_ACK_JBE202101123003.zip
-│       │   │       │           │   │   ├── ERS3_JBE202101123000.zip
-│       │   │       │           │   │   ├── ERS3_JBE202101123001.zip
-│       │   │       │           │   │   ├── ERS3_JBE202101123002.zip
-│       │   │       │           │   │   ├── UN_JBE202101123004.zip
-│       │   │       │           │   │   ├── unexpected_non_zipfile.txt
-│       │   │       │           │   │   └── unexpected_zipfile_JBE123456789012.zip
-│       │   │       │           │   └── 13
-│       │   │       │           │       ├── ERS3_JBE202113123003.zip
-│       │   │       │           │       └── unexpected_month.zip
-│       │   │       │           └── 2080
-│       │   │       │               └── 1
-│       │   │       │                   └── unexpected_year.zip
-│       │   │       └── test_flow
-│       │   │           └── received
-│       │   │               └── 2021
-│       │   │                   ├── 01
-│       │   │                   │   ├── ERS3_ACK_JBE202101123456.zip
-│       │   │                   │   ├── ERS3_JBE202101123457.zip
-│       │   │                   │   ├── ERS3_JBE202101123458.zip
-│       │   │                   │   ├── UN_JBE202101123456.zip
-│       │   │                   │   └── UN_JBE202101123457.zip
-│       │   │                   └── 02
-│       │   │                       ├── ERS3_JBE202102123456.zip
-│       │   │                       └── ERS3_JBE202102123457.zip
 │       │   ├── remote_database
 │       │   │   ├── V666.0__Reset_test_vessels.sql
 │       │   │   ├── V666.10__Reset_test_fishing_gear_codes.sql
@@ -5653,6 +5601,160 @@
 │       │   │   ├── V666.8__Reset_test_pending_alerts.sql
 │       │   │   ├── V666.999__Refresh_materialized_views.sql
 │       │   │   └── V666.9__Reset_test_facade_areas_subdivided.sql
+│       │   ├── sales_and_logbook
+│       │   │   ├── xml_files
+│       │   │   │   ├── logbook
+│       │   │   │   │   ├── ers
+│       │   │   │   │   │   ├── FAC20211018001928.xml
+│       │   │   │   │   │   ├── FRA20200321502645.xml
+│       │   │   │   │   │   ├── OOE20200321003301.xml
+│       │   │   │   │   │   ├── OOE20200323034701.xml
+│       │   │   │   │   │   ├── OOE20200323034702.xml
+│       │   │   │   │   │   ├── OOE20200324042000.xml
+│       │   │   │   │   │   ├── OOE20200326032800.xml
+│       │   │   │   │   │   ├── OOE20200402018600.xml
+│       │   │   │   │   │   ├── OOF20200306070900.xml
+│       │   │   │   │   │   ├── OOF20200321016003.xml
+│       │   │   │   │   │   ├── OOF20200324001900.xml
+│       │   │   │   │   │   ├── OOF20200324011801.xml
+│       │   │   │   │   │   ├── OOF20200324066300.xml
+│       │   │   │   │   │   ├── OOF20200326013602.xml
+│       │   │   │   │   │   ├── OOF20200331006307.xml
+│       │   │   │   │   │   ├── OOF20200729010401.xml
+│       │   │   │   │   │   ├── OOF20230228013803.xml
+│       │   │   │   │   │   ├── OOY20200408047904.xml
+│       │   │   │   │   │   └── empty_message.xml
+│       │   │   │   │   └── flux
+│       │   │   │   │       ├── base64_encoded.xml
+│       │   │   │   │       ├── business
+│       │   │   │   │       │   ├── Deletion.xml
+│       │   │   │   │       │   ├── FLUX - Area entry declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710301 - Departure (Catch onboard).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710302 - Departure (No catch onboard).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710401 - Prior notification of area entry.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710501 - Daily fishing operation.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710511 - Haul by haul recording reported daily.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710521 - Nil catches EU.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710522 - Nil catches BFT.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710523 - Nil catches NEAFC.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710601 - Joint Fishing Operation (BFT).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710701 - Discard operation.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710801 - Relocation loading from keep net to main hold.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710811 - Relocation  BFT Transfer to tug reported by FV.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710901 - Notification of exit from area.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710911 - Area exit declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711001 - Prior notification of arrival to port (Reason=Landing).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Landing) - correction.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Shelter).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711101 - Arrival declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711102 - Arrival declaration (Reason = Landing).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711103 - Arrival declaration (UsedFishingGear).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711201 - Landing declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711301 - Transhipment (in port) declaration by receiver.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711302 - Transhipment (at sea) declaration by receiver (Catch onboard after loading).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711401 - Transhipment (in port) notification by donor.xml
+│       │   │   │   │       │   └── FLUX-FA-EU-711402 - Transhipment (at sea) notification by donor (Catch onboard prior to unloading).xml
+│       │   │   │   │       ├── business_BASE64
+│       │   │   │   │       │   ├── Deletion.xml
+│       │   │   │   │       │   ├── FLUX - Area entry declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710301 - Departure (Catch onboard).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710302 - Departure (No catch onboard).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710401 - Prior notification of area entry.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710501 - Daily fishing operation.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710511 - Haul by haul recording reported daily.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710521 - Nil catches EU.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710522 - Nil catches BFT.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710523 - Nil catches NEAFC.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710601 - Joint Fishing Operation (BFT).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710701 - Discard operation.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710801 - Relocation loading from keep net to main hold.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710811 - Relocation  BFT Transfer to tug reported by FV.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710901 - Notification of exit from area.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-710911 - Area exit declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711001 - Prior notification of arrival to port (Reason=Landing).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Landing) - correction.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711002 - Prior notification of arrival to port (Reason=Shelter).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711101 - Arrival declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711102 - Arrival declaration (Reason = Landing).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711103 - Arrival declaration (UsedFishingGear).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711201 - Landing declaration.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711301 - Transhipment (in port) declaration by receiver.xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711302 - Transhipment (at sea) declaration by receiver (Catch onboard after loading).xml
+│       │   │   │   │       │   ├── FLUX-FA-EU-711401 - Transhipment (in port) notification by donor.xml
+│       │   │   │   │       │   └── FLUX-FA-EU-711402 - Transhipment (at sea) notification by donor (Catch onboard prior to unloading).xml
+│       │   │   │   │       ├── corrupt_message.xml
+│       │   │   │   │       └── not_base64_encoded.xml
+│       │   │   │   └── sales_notes
+│       │   │   │       ├── ers
+│       │   │   │       │   ├── SN_00000000000001.xml
+│       │   │   │       │   └── TOD00000000000001.xml
+│       │   │   │       └── flux
+│       │   │   │           ├── Sample_Sales_Report_Message_from_real_life.xml
+│       │   │   │           ├── Samples_Sales_Report_Message_SN_Correction.xml
+│       │   │   │           ├── Samples_Sales_Report_Message_SN_Delete.xml
+│       │   │   │           ├── Samples_Sales_Report_Message_SN_Normal.xml
+│       │   │   │           └── Samples_Sales_Report_Message_TOD_Normal.xml
+│       │   │   └── zipfiles
+│       │   │       ├── test_extract_xmls
+│       │   │       │   └── received
+│       │   │       │       ├── ERS3_ACK_JBE123456789012.zip
+│       │   │       │       ├── ERS3_JBE123456789012.zip
+│       │   │       │       ├── ERS3_NVE123456789012.zip
+│       │   │       │       ├── ERS3_dummy_nve.txt
+│       │   │       │       ├── UN_JBE123456789012.zip
+│       │   │       │       ├── UN_NVE123456789012.zip
+│       │   │       │       ├── UN_dummy_nve.txt
+│       │   │       │       └── unexpected.zip
+│       │   │       ├── test_extract_zipfiles
+│       │   │       │   ├── many_zipfiles
+│       │   │       │   │   └── received
+│       │   │       │   │       └── 2021
+│       │   │       │   │           ├── 09
+│       │   │       │   │           │   ├── ERS3_JBE202109123197.zip
+│       │   │       │   │           │   └── ERS3_JBE202109123198.zip
+│       │   │       │   │           ├── 1
+│       │   │       │   │           │   └── ERS3_JBE*.zip  (195 files)
+│       │   │       │   │           ├── 12
+│       │   │       │   │           │   ├── ERS3_JBE202112123199.zip
+│       │   │       │   │           │   └── ERS3_JBE202112123200.zip
+│       │   │       │   │           └── 9
+│       │   │       │   │               ├── ERS3_JBE202109123195.zip
+│       │   │       │   │               └── ERS3_JBE202109123196.zip
+│       │   │       │   └── sample_zipfiles
+│       │   │       │       └── received
+│       │   │       │           ├── 2021
+│       │   │       │           │   ├── 1
+│       │   │       │           │   │   ├── ERS3_ACK_JBE202101123003.zip
+│       │   │       │           │   │   ├── ERS3_JBE202101123000.zip
+│       │   │       │           │   │   ├── ERS3_JBE202101123001.zip
+│       │   │       │           │   │   ├── ERS3_JBE202101123002.zip
+│       │   │       │           │   │   ├── ERS3_NVE202101123001.zip
+│       │   │       │           │   │   ├── UN_JBE202101123004.zip
+│       │   │       │           │   │   ├── UN_NVE202101123001.zip
+│       │   │       │           │   │   ├── unexpected_non_zipfile.txt
+│       │   │       │           │   │   └── unexpected_zipfile_JBE123456789012.zip
+│       │   │       │           │   └── 13
+│       │   │       │           │       ├── ERS3_JBE202113123003.zip
+│       │   │       │           │       └── unexpected_month.zip
+│       │   │       │           └── 2080
+│       │   │       │               └── 1
+│       │   │       │                   └── unexpected_year.zip
+│       │   │       └── test_flow
+│       │   │           └── received
+│       │   │               ├── 2021
+│       │   │               │   ├── 01
+│       │   │               │   │   ├── ERS3_ACK_JBE202101123456.zip
+│       │   │               │   │   ├── ERS3_JBE202101123457.zip
+│       │   │               │   │   ├── ERS3_JBE202101123458.zip
+│       │   │               │   │   ├── UN_JBE202101123456.zip
+│       │   │               │   │   └── UN_JBE202101123457.zip
+│       │   │               │   └── 02
+│       │   │               │       ├── ERS3_JBE202102123456.zip
+│       │   │               │       └── ERS3_JBE202102123457.zip
+│       │   │               └── 2024
+│       │   │                   └── 05
+│       │   │                       ├── ERS3_NVE202500000000.zip
+│       │   │                       └── UN_NVE202500000000.zip
 │       │   └── sms
 │       │       ├── END_OF_MALFUNCTION.txt
 │       │       ├── MALFUNCTION_AT_PORT_INITIAL_NOTIFICATION.txt
@@ -5688,7 +5790,6 @@
 │       │   ├── test_init_pno_types.py
 │       │   ├── test_init_segments_2025.py
 │       │   ├── test_last_positions.py
-│       │   ├── test_logbook.py
 │       │   ├── test_missing_dep_alerts.py
 │       │   ├── test_missing_far_alerts.py
 │       │   ├── test_missing_trip_numbers.py
@@ -5705,6 +5806,7 @@
 │       │   ├── test_regulations_open_data.py
 │       │   ├── test_risk_elements.py
 │       │   ├── test_risk_factors.py
+│       │   ├── test_sales_and_logbook.py
 │       │   ├── test_species.py
 │       │   ├── test_suspicions_of_under_declaration_alerts.py
 │       │   ├── test_trips_snapshot.py
@@ -5745,4 +5847,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-776 directories, 5285 files
+792 directories, 5371 files
