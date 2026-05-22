@@ -176,7 +176,6 @@
 │   │       ├── ds_save_dossier.py
 │   │       ├── ds_test_upload_attachment.py
 │   │       ├── gql_get_demarche.py
-│   │       ├── gql_get_demarche_dossiers.py
 │   │       └── gql_get_dossier.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -253,6 +252,7 @@
 │   │   ├── 0055_remove_dossier_demande_autre_numero_dossier_and_more.py
 │   │   ├── 0056_merge_20260427_1223.py
 │   │   ├── 0057_pg_trgm_search.py
+│   │   ├── 0058_demarche_deleted_cursor_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -312,12 +312,14 @@
 │   ├── filters.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
+│   │   ├── 0002_groupe_instructeur.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── query_guard.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
+│   │   ├── test_admin.py
 │   │   ├── test_filters.py
 │   │   ├── test_query_guard.py
 │   │   └── test_views.py
@@ -380,7 +382,8 @@
 │   │   └── js
 │   │       ├── deleteNotificationDocumentModal.js
 │   │       ├── modeleArreteForm.js
-│   │       └── notification.js
+│   │       ├── notification.js
+│   │       └── qrCodeToggle.js
 │   ├── tasks.py
 │   ├── templates
 │   │   ├── gsl_notification
@@ -397,7 +400,8 @@
 │   │   │   │   │   └── select_modele.html
 │   │   │   │   └── select_modele.html
 │   │   │   ├── modal
-│   │   │   │   └── ds_dossier_not_up_to_date.html
+│   │   │   │   ├── ds_dossier_not_up_to_date.html
+│   │   │   │   └── notify_refused_dismissed.html
 │   │   │   ├── modele
 │   │   │   │   ├── choose_type.html
 │   │   │   │   ├── generique
@@ -440,6 +444,7 @@
 │   │       ├── __init__.py
 │   │       ├── test_generate_document_for_multiple_projets_views.py
 │   │       ├── test_modele_views.py
+│   │       ├── test_refused_dismissed_notification.py
 │   │       ├── test_upload_document_views.py
 │   │       └── test_views.py
 │   ├── urls.py
@@ -547,6 +552,7 @@
 │   │   │   └── test_enveloppe_service.py
 │   │   ├── test_enveloppe_constraints.py
 │   │   ├── test_factories.py
+│   │   ├── test_notification_cell.py
 │   │   ├── test_programmation_projet_filters.py
 │   │   ├── test_urls.py
 │   │   ├── test_views.py
@@ -778,8 +784,7 @@
 │   │   │   ├── bulk_status_preflight_modal.html
 │   │   │   ├── go_back_to_simulation_state_modal.html
 │   │   │   ├── not_instructeur_error.html
-│   │   │   ├── notify_later_confirmation_modal.html
-│   │   │   ├── notify_project_confirmation_modal.html
+│   │   │   ├── programmation_status_change_modal.html
 │   │   │   ├── projet_note_update_form.html
 │   │   │   └── projet_update.html
 │   │   └── includes
@@ -885,4 +890,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-155 directories, 732 files
+155 directories, 737 files

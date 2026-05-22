@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les projets, les programmations et les simulations de subventions. Il s'intègre avec les Démarches Numériques.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subvention, les simulations, les programmations et de générer des documents (arrêtés, lettres). Il s'intègre avec les Démarches Numériques.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
-    "Notifications & Alertes",
     "Gestion des établissements & Structures",
     "Aides & Éligibilité",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,9 +22,9 @@
     "Redis",
     "Mozilla-django-oidc",
     "django-htmx",
-    "django-filter",
     "psycopg",
-    "requests"
+    "whitenoise",
+    "django-dsfr"
   ],
   "components": [
     "API REST & GraphQL",
@@ -42,9 +44,9 @@
     "pytest"
   ],
   "workflows": [
-    "GitHub Actions"
+    "django.yml"
   ],
-  "lastActivity": "2026-05-19T13:29:21Z",
+  "lastActivity": "2026-05-20T17:50:48+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,6 +63,6 @@
     "Django",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Territoire & Collectivités"
+    "Démarches Numériques"
   ]
 }
