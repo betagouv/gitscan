@@ -1,14 +1,14 @@
-## Changelog : roomkit-visio (30 derniers jours, au 19 mai 2026)
+## Changelog : roomkit-visio (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'infrastructure SIP initiale pour roomkit-visio, ainsi que sur l'amélioration de la documentation pour faciliter l'intégration et l'utilisation de la solution avec LiveKit.
+Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'infrastructure SIP initiale pour roomkit-visio, ainsi que sur la documentation et la configuration pour l'environnement de développement. Ces changements préparent le terrain pour la connexion des équipements SIP et RNIS aux salles WebRTC LiveKit.
 
 ### Évolutions fonctionnelles
-- Mise en place de l'infrastructure SIP initiale permettant la connexion des équipements SIP (Cisco, Poly, Aver, etc.) à LiveKit. [#556807b](https://github.com/suitenumerique/roomkit-visio/commit/556807b)
+- Mise en place initiale de l'infrastructure SIP pour roomkit-visio [#556807b](https://github.com/suitenumerique/roomkit-visio/commit/556807b).
 
 ### Évolutions techniques
-- Initialisation de l'infrastructure SIP pour roomkit-visio. [#556807b](https://github.com/suitenumerique/roomkit-visio/commit/556807b)
+- Mise à jour de la configuration `livekit-sip.yaml` pour affiner l'intégration avec LiveKit [#31c7d65](https://github.com/suitenumerique/roomkit-visio/commit/31c7d65).
+- Mise à jour de la documentation `livekit-sip-dev.md` pour refléter les derniers changements [#f427523](https://github.com/suitenumerique/roomkit-visio/commit/f427523).
 
 ### Autres changements
-- Mise à jour de la documentation README.md pour refléter les dernières évolutions. [#cc45029](https://github.com/suitenumerique/roomkit-visio/commit/cc45029)
-- Mise à jour de la documentation livekit-sip-dev.md pour une meilleure clarté. [#f427523](https://github.com/suitenumerique/roomkit-visio/commit/f427523)
+- Mise à jour du fichier `README.md` [#cc45029](https://github.com/suitenumerique/roomkit-visio/commit/cc45029).
