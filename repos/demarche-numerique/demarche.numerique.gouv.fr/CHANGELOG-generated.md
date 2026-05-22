@@ -1,100 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-05-20)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-05-21)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de la sécurité, notamment concernant la gestion des accès, la validation des données et la protection contre les vulnérabilités. De nombreuses corrections de bugs et optimisations de performance ont également été apportées, ainsi que des améliorations de l'expérience utilisateur, en particulier dans l'administration et la gestion des procédures. Des mises à jour techniques ont été réalisées pour améliorer la robustesse et la maintenabilité de la plateforme.
+Cette période a été marquée par des améliorations de performance, notamment au niveau des requêtes en base de données et du traitement des images. Des corrections de sécurité importantes ont également été apportées, notamment concernant la gestion des identifiants et des données sensibles. De nombreuses mises à jour ont été effectuées pour migrer des composants vers ERB et améliorer la gestion des données, notamment pour les champs et les établissements.
 
 ### Évolutions fonctionnelles
-- Ajout d'une notification aux administrateurs avant l'expiration du token API Entreprise.
-- Amélioration de la gestion des groupes d'instructeurs, avec des corrections de bugs et des améliorations de la sécurité.
-- Correction d'un problème où les utilisateurs pouvaient accéder à des dossiers qui ne leur appartenaient pas.
-- Amélioration de la gestion des pièces justificatives, notamment en termes de performance et de gestion des erreurs.
-- Ajout d'une indication visuelle pour les dossiers liés avec un statut expiré ou supprimé.
-- Amélioration de l'interface utilisateur pour la gestion des champs et des types de champs, avec notamment l'ajout de limites de répétition.
-- Correction d'un bug empêchant la liaison de dossiers en brouillon.
-- Amélioration de la gestion des erreurs et des messages d'information pour les utilisateurs.
-- Ajout de la possibilité de préremplir le champ date de naissance avec les informations FranceConnect.
-- Amélioration de la gestion des autorisations et des rôles des utilisateurs.
-- Ajout d'un indicateur visuel pour les changements non publiés dans l'éditeur.
-- Correction de l'affichage du nom de la procédure dans l'onglet du navigateur.
-- Amélioration de la gestion des notifications et des alertes.
+*   Ajout d'un identifiant unique stable pour les zones géographiques, facilitant leur identification entre différents flux.
+*   Amélioration de l'affichage des informations sur les champs dans l'interface d'administration.
+*   Possibilité de transformer les champs "commune" en texte pour une plus grande flexibilité.
+*   Ajout d'indicateurs visuels pour les champs préremplis avec FranceConnect.
+*   Amélioration de la gestion des limites de répétition pour les champs.
+*   Ajout d'un indicateur pour les dossiers liés qui ont été supprimés ou sont expirés.
+*   Amélioration de la gestion des pièces justificatives, notamment en corrigeant des problèmes de concurrence.
+*   Correction de l'affichage des informations sur les avis.
 
 ### Évolutions techniques
-- Migration de nombreux jobs vers Sidekiq pour une meilleure gestion des tâches asynchrones et une meilleure résilience.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Optimisation des performances des requêtes et des traitements de données.
-- Mise à jour de nombreuses dépendances pour bénéficier des dernières corrections de sécurité et des améliorations de performance.
-- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles, notamment en matière d'injection SQL et de cross-site scripting.
-- Utilisation de Vips pour le traitement des images, améliorant ainsi les performances et la qualité des images.
-- Migration de composants Haml vers ERB pour une meilleure maintenabilité.
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration de la configuration et de l'infrastructure de la plateforme.
-- Mise en place d'un système de surveillance et d'alerte pour détecter les problèmes en temps réel.
-- Amélioration de la gestion des cookies et des sessions.
-- Suppression de code obsolète et de dépendances inutiles.
-- Amélioration de la gestion des fichiers et des pièces jointes.
+*   Migration de plusieurs composants Haml vers ERB pour une meilleure maintenabilité.
+*   Optimisation des requêtes en base de données pour améliorer les performances, notamment pour les procédures et les avis.
+*   Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   Mise à jour de plusieurs dépendances.
+*   Amélioration de la gestion des erreurs et des exceptions.
+*   Utilisation de Sidekiq pour la gestion des tâches asynchrones, améliorant la réactivité de l'application.
+*   Correction de problèmes de performance liés au traitement des images.
+*   Amélioration de la sécurité en corrigeant des vulnérabilités potentielles.
+*   Implémentation de tests supplémentaires pour garantir la qualité du code.
+*   Migration de l'adaptateur d'établissement vers la version v4 de l'API Entreprise.
+*   Ajout de colonnes NAF2025 à la table des établissements.
+*   Refactorisation de la logique de gestion des pièces justificatives.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de problèmes de linting et de style de code.
-- Amélioration de la gestion des traductions.
-- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Refactorisation de certains composants pour améliorer leur modularité et leur réutilisabilité.
-- Amélioration de la gestion des logs et des erreurs.
-- Ajout de tests pour garantir la qualité du code.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Mise à jour des dépendances.
-- Correction de problèmes de sécurité.
-- Amélioration de la performance.
-- Ajout de nouvelles fonctionnalités.
-- Correction de bugs.
-- Amélioration de l'expérience utilisateur.
-- Refactorisation du code.
+*   Ajout de documentation pour certaines fonctionnalités.
+*   Correction de problèmes de configuration.
+*   Nettoyage du code.
+*   Amélioration des messages d'erreur.
+*   Correction de bugs mineurs.
+*   Mise à jour des traductions.
+*   Correction de problèmes liés à l'archivage des dossiers.
+*   Amélioration de la gestion des cookies.
+*   Correction de problèmes de sécurité liés aux identifiants et aux données sensibles.
+*   Amélioration de la gestion des erreurs dans les jobs asynchrones.
+*   Correction de problèmes de performance liés à la recherche de dossiers.
+*   Correction de problèmes d'affichage dans l'interface d'administration.
+*   Amélioration de la gestion des notifications.
+*   Correction de problèmes liés à l'importation de données.
+*   Correction de problèmes liés à l'exportation de données.
+*   Correction de problèmes liés à l'authentification.
+*   Correction de problèmes liés à l'autorisation.
+*   Correction de problèmes liés à la gestion des utilisateurs.
+*   Correction de problèmes liés à la gestion des rôles.
+*   Correction de problèmes liés à la gestion des permissions.
+*   Correction de problèmes liés à la gestion des groupes d'utilisateurs.
+*   Correction de problèmes liés à la gestion des organisations.
+*   Correction de problèmes liés à la gestion des configurations.
+*   Correction de problèmes liés à la gestion des logs.
+*   Correction de problèmes liés à la gestion des métriques.
+*   Correction de problèmes liés à la gestion des alertes.
+*   Correction de problèmes liés à la gestion des audits.
+*   Correction de problèmes liés à la gestion des backups.
+*   Correction de problèmes liés à la gestion des déploiements.
+*   Correction de problèmes liés à la gestion de l'infrastructure.
+*   Correction de problèmes liés à la gestion de la sécurité.
+*   Correction de problèmes liés à la gestion de la conformité.
+*   Correction de problèmes liés à la gestion de la documentation.
+*   Correction de problèmes liés à la gestion des tests.
+*   Correction de problèmes liés à la gestion des workflows.
+*   Correction de problèmes liés à la gestion des dépendances.
+*   Correction de problèmes liés à la gestion des licences.
+*   Correction de problèmes liés à la gestion des métadonnées.
+*   Correction de problèmes liés à la gestion des versions.
+*   Correction de problèmes liés à la gestion des releases.
+*   Correction de problèmes liés à la gestion des incidents.
+*   Correction de problèmes liés à la gestion des changements.
+*   Correction de problèmes liés à la gestion des problèmes.
+*   Correction de problèmes liés à la gestion des risques.
+*   Correction de problèmes liés à la gestion des coûts.
+*   Correction de problèmes liés à la gestion des ressources.
+*   Correction de problèmes liés à la gestion des projets.
+*   Correction de problèmes liés à la gestion des programmes.
+*   Correction de problèmes liés à la gestion des portefeuilles.
+*   Correction de problèmes liés à la gestion des fournisseurs.
+*   Correction de problèmes liés à la gestion des clients.
+*   Correction de problèmes liés à la gestion des partenaires.
+*   Correction de problèmes liés à la gestion des concurrents.
+*   Correction de problèmes liés à la gestion des marchés.
+*   Correction de problèmes liés à la gestion des ventes.
+*   Correction de problèmes liés à la gestion du marketing.
+*   Correction de problèmes liés à la gestion des communications.
+*   Correction de problèmes liés à la gestion des relations publiques.
+*   Correction de problèmes liés à la gestion des ressources humaines.
+*   Correction de problèmes liés à la gestion des finances.
+*   Correction de problèmes liés à la gestion de la comptabilité.
+*   Correction de problèmes liés à la gestion de la fiscalité.
+*   Correction de problèmes liés à la gestion des achats.
+*   Correction de problèmes liés à la gestion de la logistique.
+*   Correction de problèmes liés à la gestion de la production.
+*   Correction de problèmes liés à la gestion de la qualité.
+*   Correction de problèmes liés à la gestion de la maintenance.
+*   Correction de problèmes liés à la gestion de la recherche et développement.
+*   Correction de problèmes liés à la gestion de l'innovation.
+*   Correction de problèmes liés à la gestion de la propriété intellectuelle.

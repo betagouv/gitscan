@@ -25,7 +25,6 @@
 │   └── workflows
 │       ├── bundle_cache_warming.yml
 │       ├── ci.yml
-│       ├── claude-code-security-review.yml
 │       ├── codeql-analysis.yml
 │       ├── git.yml
 │       ├── publiccodeyml-check.yml
@@ -485,7 +484,7 @@
 │   │   │   ├── pending_correction_checkbox_component
 │   │   │   │   ├── pending_correction_checkbox_component.en.yml
 │   │   │   │   ├── pending_correction_checkbox_component.fr.yml
-│   │   │   │   └── pending_correction_checkbox_component.html.haml
+│   │   │   │   └── pending_correction_checkbox_component.html.erb
 │   │   │   ├── pending_correction_checkbox_component.rb
 │   │   │   ├── quotient_familial_component
 │   │   │   │   ├── quotient_familial_component.en.yml
@@ -495,9 +494,12 @@
 │   │   │   ├── region_component.rb
 │   │   │   ├── rna_component.rb
 │   │   │   ├── rnf_component.rb
-│   │   │   ├── row_component.html.haml
+│   │   │   ├── row_component.html.erb
 │   │   │   ├── row_component.rb
-│   │   │   ├── row_show_component.html.haml
+│   │   │   ├── row_show_component
+│   │   │   │   ├── row_show_component.en.yml
+│   │   │   │   └── row_show_component.fr.yml
+│   │   │   ├── row_show_component.html.erb
 │   │   │   ├── row_show_component.rb
 │   │   │   ├── short_identite_entreprise_component.html.haml
 │   │   │   ├── short_identite_entreprise_component.rb
@@ -2632,6 +2634,7 @@
 │   │       ├── t20260504_backfill_canonical_keys_in_epci_champs_task.rb
 │   │       ├── t20260504_backfill_canonical_keys_in_region_champs_task.rb
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task.rb
+│   │       ├── t20260521_backfill_geo_area_uuid_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -4496,7 +4499,9 @@
 │   │   ├── 20260429133815_add_source_stream_to_champs.rb
 │   │   ├── 20260504090452_add_partial_index_on_blobs_pending_virus_scan.rb
 │   │   ├── 20260505100000_remove_legacy_otp_columns_from_super_admins.rb
-│   │   └── 20260515085008_remove_api_particulier_columns_from_procedures.rb
+│   │   ├── 20260515085008_remove_api_particulier_columns_from_procedures.rb
+│   │   ├── 20260520122559_add_naf2025_to_etablissements.rb
+│   │   └── 20260521105001_add_uuid_to_geo_area.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -4774,7 +4779,8 @@
 │   │   │   │   ├── identite_entreprise_for_usager_component_preview.rb
 │   │   │   │   ├── message_component_preview.rb
 │   │   │   │   ├── old_identite_entreprise_component_preview.html.haml
-│   │   │   │   └── old_identite_entreprise_component_preview.rb
+│   │   │   │   ├── old_identite_entreprise_component_preview.rb
+│   │   │   │   └── pending_correction_checkbox_component_preview.rb
 │   │   │   ├── dsfr
 │   │   │   │   ├── radio_button_list_component_preview
 │   │   │   │   │   └── default.html.erb
@@ -4890,6 +4896,7 @@
 │   │   │   ├── repetition_controller_spec.rb
 │   │   │   └── rna_controller_spec.rb
 │   │   ├── concerns
+│   │   │   ├── csv_parsing_concern_spec.rb
 │   │   │   ├── devise_populated_resource_spec.rb
 │   │   │   ├── lockable_concern_spec.rb
 │   │   │   ├── pro_connect_session_concern_spec.rb
@@ -5161,6 +5168,7 @@
 │   │   │   ├── import-contact-informations-invalid.csv
 │   │   │   ├── import-contact-informations-not-found.csv
 │   │   │   ├── import-contact-informations.csv
+│   │   │   ├── import-tags.csv
 │   │   │   ├── instructeurs-emails-invalides.csv
 │   │   │   ├── instructeurs-file.csv
 │   │   │   ├── interlaced-black.png
@@ -5768,6 +5776,7 @@
 │   │       ├── dossier_prefill_get_spec.rb
 │   │       ├── dossier_prefill_post_spec.rb
 │   │       ├── dossier_shared_examples.rb
+│   │       ├── dropdown_rebase_spec.rb
 │   │       ├── dropdown_spec.rb
 │   │       ├── en_construction_spec.rb
 │   │       ├── invite_spec.rb
@@ -5888,6 +5897,7 @@
 │   │       ├── t20260504_backfill_canonical_keys_in_commune_champs_task_spec.rb
 │   │       ├── t20260504_backfill_canonical_keys_in_departement_champs_task_spec.rb
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task_spec.rb
+│   │       ├── t20260521_backfill_geo_area_uuid_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -5993,4 +6003,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-965 directories, 5346 files
+966 directories, 5355 files
