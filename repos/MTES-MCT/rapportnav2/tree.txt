@@ -62,10 +62,7 @@
 │   │   │   │               └── rapportnav
 │   │   │   │                   ├── RapportNavApplication.kt
 │   │   │   │                   ├── config
-│   │   │   │                   │   ├── ApiKeyAuthenticationFilter.kt
-│   │   │   │                   │   ├── AuditorAwareImpl.kt
 │   │   │   │                   │   ├── CorsConfig.kt
-│   │   │   │                   │   ├── CustomAuthenticationFilter.kt
 │   │   │   │                   │   ├── FlywayConfig.kt
 │   │   │   │                   │   ├── HttpClientFactory.kt
 │   │   │   │                   │   ├── JacksonConfig.kt
@@ -73,11 +70,9 @@
 │   │   │   │                   │   ├── JpaConfig.kt
 │   │   │   │                   │   ├── JwtEncodingConfig.kt
 │   │   │   │                   │   ├── MandatoryForStats.kt
-│   │   │   │                   │   ├── PasswordValidator.kt
 │   │   │   │                   │   ├── RequestLoggingConfig.kt
 │   │   │   │                   │   ├── SecurityConfig.kt
 │   │   │   │                   │   ├── SentryConfig.kt
-│   │   │   │                   │   ├── SentryUserContextFilter.kt
 │   │   │   │                   │   ├── UseCase.kt
 │   │   │   │                   │   └── WireMockConfig.kt
 │   │   │   │                   ├── domain
@@ -112,7 +107,6 @@
 │   │   │   │                   │   │   │   │   ├── controlResources
 │   │   │   │                   │   │   │   │   │   ├── ControlResourceEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── ControlUnitEntity.kt
-│   │   │   │                   │   │   │   │   │   ├── ControlUnitResourceEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── ControlUnitResourceType.kt
 │   │   │   │                   │   │   │   │   │   ├── LegacyControlUnitEntity.kt
 │   │   │   │                   │   │   │   │   │   └── LegacyControlUnitResourceEntity.kt
@@ -434,7 +428,8 @@
 │   │   │   │                   │   │   │   ├── GetCrewByServiceId.kt
 │   │   │   │                   │   │   │   ├── GetServiceById.kt
 │   │   │   │                   │   │   │   ├── GetServices.kt
-│   │   │   │                   │   │   │   └── MigrateAgent.kt
+│   │   │   │                   │   │   │   ├── MigrateAgent.kt
+│   │   │   │                   │   │   │   └── UpdateResource.kt
 │   │   │   │                   │   │   ├── user
 │   │   │   │                   │   │   │   ├── CreateUser.kt
 │   │   │   │                   │   │   │   ├── DisableUser.kt
@@ -458,6 +453,7 @@
 │   │   │   │                   │       ├── ComputeDurationUtils.kt
 │   │   │   │                   │       ├── EntityCompletenessValidator.kt
 │   │   │   │                   │       ├── FlagsUtils.kt
+│   │   │   │                   │       ├── PasswordValidator.kt
 │   │   │   │                   │       └── UUIDUtils.kt
 │   │   │   │                   └── infrastructure
 │   │   │   │                       ├── api
@@ -473,6 +469,7 @@
 │   │   │   │                       │   │   ├── FishAuctionAdminController.kt
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
+│   │   │   │                       │   │   ├── ServiceManageController.kt
 │   │   │   │                       │   │   ├── UserAdminController.kt
 │   │   │   │                       │   │   ├── adapters
 │   │   │   │                       │   │   │   ├── input
@@ -514,6 +511,7 @@
 │   │   │   │                       │   │   │   │   ├── AgentRole.kt
 │   │   │   │                       │   │   │   │   ├── MissionCrew.kt
 │   │   │   │                       │   │   │   │   ├── MissionPassenger.kt
+│   │   │   │                       │   │   │   │   ├── ResourceInput.kt
 │   │   │   │                       │   │   │   │   └── Service.kt
 │   │   │   │                       │   │   │   ├── generalInfo
 │   │   │   │                       │   │   │   │   ├── InterMinisterialService.kt
@@ -586,6 +584,10 @@
 │   │   │   │                       │   │       ├── NatinfStubs.kt
 │   │   │   │                       │   │       └── utils
 │   │   │   │                       │   │           └── LoadJsonData.kt
+│   │   │   │                       │   ├── filter
+│   │   │   │                       │   │   ├── ApiKeyAuthenticationFilter.kt
+│   │   │   │                       │   │   ├── CustomAuthenticationFilter.kt
+│   │   │   │                       │   │   └── SentryUserContextFilter.kt
 │   │   │   │                       │   └── public_api
 │   │   │   │                       │       ├── VersionController.kt
 │   │   │   │                       │       ├── analytics
@@ -607,6 +609,7 @@
 │   │   │   │                       ├── cache
 │   │   │   │                       │   └── CaffeineConfiguration.kt
 │   │   │   │                       ├── database
+│   │   │   │                       │   ├── AuditorAwareImpl.kt
 │   │   │   │                       │   ├── model
 │   │   │   │                       │   │   ├── apikey
 │   │   │   │                       │   │   │   ├── ApiKeyAuditModel.kt
@@ -720,8 +723,11 @@
 │   │   │   │                       │       ├── APIEnvControlUnitResourceRepository.kt
 │   │   │   │                       │       ├── APIEnvMissionRepositoryV2.kt
 │   │   │   │                       │       ├── APIEnvNatinfRepository.kt
+│   │   │   │                       │       ├── inputs
+│   │   │   │                       │       │   └── PatchResourceInput.kt
 │   │   │   │                       │       └── outputs
 │   │   │   │                       │           ├── ControlUnitDataOutput.kt
+│   │   │   │                       │           ├── ControlUnitResourceType.kt
 │   │   │   │                       │           ├── FullAdministrationDataOutput.kt
 │   │   │   │                       │           ├── LegacyControlUnitDataOutput.kt
 │   │   │   │                       │           └── LegacyControlUnitResourceDataOutput.kt
@@ -918,6 +924,8 @@
 │   │   │       │       ├── V1.2026.04.01.10.00__add_port_locode_column.sql
 │   │   │       │       ├── V1.2026.04.22.10.00__create_facade_and_fish_auction_tables.sql
 │   │   │       │       ├── V1.2026.04.27.10.00__add_fish_auction_id_column.sql
+│   │   │       │       ├── V1.2026.05.11.10.47__alter_role_type_add_values.sql
+│   │   │       │       ├── V1.2026.05.11.27.47__alter_agent_table_add_card_id.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1093,7 +1101,8 @@
 │   │       │                   │   │   │   │   └── GetMissionGeneralInfoByMissionIdTest.kt
 │   │       │                   │   │   │   ├── sati
 │   │       │                   │   │   │   │   ├── GetComputeSatiTest.kt
-│   │       │                   │   │   │   │   └── ProcessSatiTest.kt
+│   │       │                   │   │   │   │   ├── ProcessSatiTest.kt
+│   │       │                   │   │   │   │   └── UpdateResourceTest.kt
 │   │       │                   │   │   │   ├── status
 │   │       │                   │   │   │   │   ├── GetNbOfDaysAtSeaFromNavigationStatusTests.kt
 │   │       │                   │   │   │   │   ├── GetStatusDurationsTests.kt
@@ -1183,6 +1192,7 @@
 │   │       │                   │   │   │   ├── FishAuctionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfosAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ServiceAdminControllerTest.kt
+│   │       │                   │   │   │   ├── ServiceManageControllerTest.kt
 │   │       │                   │   │   │   ├── UserAdminControllerTest.kt
 │   │       │                   │   │   │   └── models
 │   │       │                   │   │   │       └── AdminApiKeyTest.kt
@@ -2383,4 +2393,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-476 directories, 1945 files
+478 directories, 1953 files

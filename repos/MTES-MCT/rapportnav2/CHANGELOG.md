@@ -1,5 +1,53 @@
 # Changelog
 
+## [2.81.6](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.5...v2.81.6) (2026-05-21)
+
+
+### Bug Fixes
+
+* cache bust ([678e834](https://github.com/MTES-MCT/rapportnav2/commit/678e8348e9daff03dfa848dd02feea3db1b09d32))
+
+## [2.81.5](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.4...v2.81.5) (2026-05-21)
+
+
+### Bug Fixes
+
+* **Env:** ControlUnitResource type missing and cache ([6ca5f2b](https://github.com/MTES-MCT/rapportnav2/commit/6ca5f2b547e243489e88031f56600f624de97478))
+
+## [2.81.4](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.3...v2.81.4) (2026-05-21)
+
+
+### Bug Fixes
+
+* **Env:** ControlUnitResource type missing ([887e39f](https://github.com/MTES-MCT/rapportnav2/commit/887e39fba1139f570a6f41d1b04676bb1a2ca71a))
+
+
+### Reverts
+
+* PatchMissionInput annotation ([c003d8c](https://github.com/MTES-MCT/rapportnav2/commit/c003d8c37a97f15007336b315f5c8ed3cf1974e2))
+
+## [2.81.3](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.2...v2.81.3) (2026-05-20)
+
+
+### Bug Fixes
+
+* **secu:** force org.apache.tomcat.embed ([48cbec6](https://github.com/MTES-MCT/rapportnav2/commit/48cbec69f425392204d3d59524a87a2c1d14bd7b))
+
+## [2.81.2](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.1...v2.81.2) (2026-05-20)
+
+
+### Bug Fixes
+
+* **secu:** force org.apache.tomcat.embed:tomcat-embed-core ([ff0ccf2](https://github.com/MTES-MCT/rapportnav2/commit/ff0ccf2518997e0da5ef8242dc59a67a919e0f9e))
+
+## [2.81.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.81.0...v2.81.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* **frontend:** show 400s correctly ([2714613](https://github.com/MTES-MCT/rapportnav2/commit/2714613578f5a59a5b8920317b5c7a30088e97cd))
+* **monitorenv:** exclude null fields from PATCH mission payload ([78c170a](https://github.com/MTES-MCT/rapportnav2/commit/78c170ad014c98328f5ca79cc4d68f5a91387198))
+
 ## [2.81.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.80.0...v2.81.0) (2026-05-13)
 
 
