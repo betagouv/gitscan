@@ -93,6 +93,7 @@
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
+├── DISCOVERED.md
 ├── Earthfile
 ├── LICENSE
 ├── README.md
@@ -305,8 +306,27 @@
 │   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   ├── new
 │   │   │   │   │   │   │   │   │   └── [referentielId]
-│   │   │   │   │   │   │   │   │       └── audit-labellisation
-│   │   │   │   │   │   │   │   │           └── page.tsx
+│   │   │   │   │   │   │   │   │       ├── (overview)
+│   │   │   │   │   │   │   │   │       │   ├── @tabs
+│   │   │   │   │   │   │   │   │       │   │   ├── audit-labellisation
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── commentaires
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── default.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── detail
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── evolutions
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── layout.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── priorisation
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── progression
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   └── tabs-wrapper.tsx
+│   │   │   │   │   │   │   │   │       │   ├── default.tsx
+│   │   │   │   │   │   │   │   │       │   └── layout.tsx
+│   │   │   │   │   │   │   │   │       └── layout.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   └── tableau-de-bord.show.tsx
 │   │   │   │   │   │   │   ├── tableau-de-bord
@@ -1173,6 +1193,8 @@
 │   │   │   │   │   │       ├── index.tsx
 │   │   │   │   │   │       ├── plan-card.list.tsx
 │   │   │   │   │   │       └── sorting-parameters.ts
+│   │   │   │   │   ├── plan-types-to-options.spec.ts
+│   │   │   │   │   ├── plan-types-to-options.ts
 │   │   │   │   │   ├── show-plan
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── delete-axe-or-plan.modal.tsx
@@ -1371,6 +1393,43 @@
 │   │   │   │   │   ├── use-mesure-pilotes.ts
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
 │   │   │   │   │   └── use-update-action-explication.ts
+│   │   │   │   ├── audit-labellisation
+│   │   │   │   │   ├── audit-badge-status
+│   │   │   │   │   │   ├── get-viewer-role.spec.ts
+│   │   │   │   │   │   ├── get-viewer-role.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── parcours-to-audit-badge-status.spec.ts
+│   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
+│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   ├── checklist
+│   │   │   │   │   │   ├── acte-engagement.section.tsx
+│   │   │   │   │   │   ├── ask-premiere-etoile.button.tsx
+│   │   │   │   │   │   ├── candidature-documents.section.tsx
+│   │   │   │   │   │   ├── cells
+│   │   │   │   │   │   │   ├── bordered-header.cell.tsx
+│   │   │   │   │   │   │   ├── bordered.cell.tsx
+│   │   │   │   │   │   │   ├── completion-icon.cell.tsx
+│   │   │   │   │   │   │   ├── criterion.cell.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── container.tsx
+│   │   │   │   │   │   ├── criterion.table.tsx
+│   │   │   │   │   │   ├── format-reponse-attendue.spec.ts
+│   │   │   │   │   │   ├── format-reponse-attendue.ts
+│   │   │   │   │   │   ├── header.tsx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── checklist-page-header
+│   │   │   │   │   │   ├── checklist-page-header.tsx
+│   │   │   │   │   │   ├── referentiel-menu.button.tsx
+│   │   │   │   │   │   ├── role-mesure.item.tsx
+│   │   │   │   │   │   ├── role-mesures-line.tsx
+│   │   │   │   │   │   └── use-role-mesure.ts
+│   │   │   │   │   ├── checklist-view-model.ts
+│   │   │   │   │   ├── checklist.context.tsx
+│   │   │   │   │   ├── criteres-labellisation.view.tsx
+│   │   │   │   │   ├── parcours-to-checklist.spec.ts
+│   │   │   │   │   ├── parcours-to-checklist.ts
+│   │   │   │   │   ├── referentiel.ts
+│   │   │   │   │   └── role-mesures.ts
 │   │   │   │   ├── audits
 │   │   │   │   │   ├── ActionAuditDetail.stories.tsx
 │   │   │   │   │   ├── ActionAuditDetail.tsx
@@ -1395,6 +1454,7 @@
 │   │   │   │   │   │   ├── Table.tsx
 │   │   │   │   │   │   ├── filters.tsx
 │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── mesure-row-link.spec.tsx
 │   │   │   │   │   │   ├── queries.tsx
 │   │   │   │   │   │   └── useTableData.ts
 │   │   │   │   │   ├── BadgeAuditStatut.tsx
@@ -1512,6 +1572,7 @@
 │   │   │   │   │   ├── useAddPreuveToAction.ts
 │   │   │   │   │   ├── useAddPreuves.ts
 │   │   │   │   │   └── usePreuves.ts
+│   │   │   │   ├── redirect-to-new-referentiel-layout.tsx
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel.table
 │   │   │   │   │   ├── referentiel-table.categorie.cell.tsx
@@ -1560,6 +1621,7 @@
 │   │   │   │   │   │   ├── Scores.tsx
 │   │   │   │   │   │   └── Star.tsx
 │   │   │   │   │   ├── referentiel-card.skeleton.tsx
+│   │   │   │   │   ├── referentiel-data.utils.ts
 │   │   │   │   │   ├── referentiel.card.tsx
 │   │   │   │   │   ├── referents
 │   │   │   │   │   │   ├── ModaleReferents.tsx
@@ -1567,8 +1629,9 @@
 │   │   │   │   │   │   ├── ReferentsDropdown.tsx
 │   │   │   │   │   │   ├── ReferentsList.tsx
 │   │   │   │   │   │   └── useMembres.ts
-│   │   │   │   │   ├── useProgressionReferentiel.ts
+│   │   │   │   │   ├── useTableauDeBordReferentielData.ts
 │   │   │   │   │   └── utils.ts
+│   │   │   │   ├── use-is-new-referentiel-layout-enabled.ts
 │   │   │   │   ├── use-referentiel-te-enabled.ts
 │   │   │   │   ├── use-snapshot.tsx
 │   │   │   │   └── utils.ts
@@ -1711,6 +1774,11 @@
 │   │   │   │   ├── logo
 │   │   │   │   │   ├── logoTerritoireEngage.png
 │   │   │   │   │   └── logoTerritoireEngage_big.png
+│   │   │   │   ├── metadata-line
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── metadata-item-personne.tsx
+│   │   │   │   │   ├── metadata-item.tsx
+│   │   │   │   │   └── metadata-line.tsx
 │   │   │   │   ├── pictogrammes
 │   │   │   │   │   ├── ActionPicto.tsx
 │   │   │   │   │   ├── PictoAction.tsx
@@ -2945,6 +3013,52 @@
 │   │   │   │   │       ├── eci-referentiel.ts
 │   │   │   │   │       ├── simple-referentiel-scoring.sample.ts
 │   │   │   │   │       └── simple-referentiel.ts
+│   │   │   │   ├── preuves-archive
+│   │   │   │   │   ├── build-archive
+│   │   │   │   │   │   ├── build-archive-manifests.spec.ts
+│   │   │   │   │   │   ├── build-archive-manifests.ts
+│   │   │   │   │   │   ├── build-archive-path.spec.ts
+│   │   │   │   │   │   ├── build-archive-path.ts
+│   │   │   │   │   │   ├── build-archive.service.ts
+│   │   │   │   │   │   ├── build-liens-csv.spec.ts
+│   │   │   │   │   │   ├── build-liens-csv.ts
+│   │   │   │   │   │   ├── map-with-concurrency.spec.ts
+│   │   │   │   │   │   ├── map-with-concurrency.ts
+│   │   │   │   │   │   ├── prepare-archive-entries.spec.ts
+│   │   │   │   │   │   └── prepare-archive-entries.ts
+│   │   │   │   │   ├── generate-preuves-archive
+│   │   │   │   │   │   ├── generate-archive-folder-arborescence.spec.ts
+│   │   │   │   │   │   ├── generate-archive-folder-arborescence.ts
+│   │   │   │   │   │   ├── generate-preuves-archive.service.spec.ts
+│   │   │   │   │   │   ├── generate-preuves-archive.service.ts
+│   │   │   │   │   │   ├── generate-preuves-archive.worker.spec.ts
+│   │   │   │   │   │   └── generate-preuves-archive.worker.ts
+│   │   │   │   │   ├── get-preuves-archive
+│   │   │   │   │   │   ├── get-preuves-archive.input.ts
+│   │   │   │   │   │   ├── get-preuves-archive.output.ts
+│   │   │   │   │   │   ├── get-preuves-archive.router.ts
+│   │   │   │   │   │   ├── get-preuves-archive.service.spec.ts
+│   │   │   │   │   │   └── get-preuves-archive.service.ts
+│   │   │   │   │   ├── list-audit-preuves
+│   │   │   │   │   │   ├── collect-preuves.repository.e2e-spec.ts
+│   │   │   │   │   │   ├── collect-preuves.repository.ts
+│   │   │   │   │   │   ├── list-audit-preuves.service.spec.ts
+│   │   │   │   │   │   └── list-audit-preuves.service.ts
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   └── audit-preuves-archive.table.ts
+│   │   │   │   │   ├── preuves-archive.constants.ts
+│   │   │   │   │   ├── preuves-archive.errors.ts
+│   │   │   │   │   ├── preuves-archive.full-pipeline.e2e-spec.ts
+│   │   │   │   │   ├── preuves-archive.queue.ts
+│   │   │   │   │   ├── preuves-archive.repository.ts
+│   │   │   │   │   ├── preuves-archive.router.e2e-spec.ts
+│   │   │   │   │   ├── preuves-archive.trpc-errors.ts
+│   │   │   │   │   └── request-preuves-archive
+│   │   │   │   │       ├── request-preuves-archive.input.ts
+│   │   │   │   │       ├── request-preuves-archive.output.ts
+│   │   │   │   │       ├── request-preuves-archive.router.ts
+│   │   │   │   │       ├── request-preuves-archive.service.spec.ts
+│   │   │   │   │       └── request-preuves-archive.service.ts
 │   │   │   │   ├── referentiel-id.column.ts
 │   │   │   │   ├── referentiels-core.module.ts
 │   │   │   │   ├── referentiels.module.ts
@@ -3217,6 +3331,8 @@
 │   │   │       ├── sleep.utils.ts
 │   │   │       ├── string.utils.ts
 │   │   │       ├── supabase
+│   │   │       │   ├── document-storage.errors.ts
+│   │   │       │   ├── document-storage.service.ts
 │   │   │       │   └── supabase-cookie-parser.ts
 │   │   │       ├── test-fixture.utils.ts
 │   │   │       ├── tracking
@@ -4148,6 +4264,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
 │   │   │   │   ├── toutes_les_collectivites.sql
@@ -4155,7 +4272,8 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
 │   │   │   │   ├── type_add_prefectures.sql
-│   │   │   │   └── type_add_service_public.sql
+│   │   │   │   ├── type_add_service_public.sql
+│   │   │   │   └── type_add_structure_sans_statut_juridique.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4435,6 +4553,7 @@
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
@@ -4680,6 +4799,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
 │   │   │   │   ├── toutes_les_collectivites.sql
@@ -4687,7 +4807,8 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
 │   │   │   │   ├── type_add_prefectures.sql
-│   │   │   │   └── type_add_service_public.sql
+│   │   │   │   ├── type_add_service_public.sql
+│   │   │   │   └── type_add_structure_sans_statut_juridique.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4967,6 +5088,7 @@
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
@@ -5212,13 +5334,15 @@
 │   │       │   ├── remove_supprimer_commentaire_via_table_tigger.sql
 │   │       │   ├── rename_commentaire_to_discussion.sql
 │   │       │   ├── rls.sql
+│   │       │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │       │   ├── tableau_de_bord.sql
 │   │       │   ├── tableau_de_bord@v4.36.0.sql
 │   │       │   ├── toutes_les_collectivites.sql
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │       │   ├── type.sql
-│   │       │   └── type_add_service_public.sql
+│   │       │   ├── type_add_service_public.sql
+│   │       │   └── type_add_structure_sans_statut_juridique.sql
 │   │       ├── creation_dune_table_instance_de_gouvernance.sql
 │   │       ├── cron
 │   │       │   ├── cron.sql
@@ -5498,6 +5622,7 @@
 │   │       │   ├── action_statut_historique@v1.14.0.sql
 │   │       │   ├── add_audit_etoiles.sql
 │   │       │   ├── add_demande_associated_collectivite_id.sql
+│   │       │   ├── audit_preuves_archive.sql
 │   │       │   ├── banatic_2025.sql
 │   │       │   ├── business_update.sql
 │   │       │   ├── clean-import-json-table.sql
@@ -5746,7 +5871,8 @@
 │   │   └── 0016-strategie-backup-database.md
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
-│   │   └── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
+│   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
+│   │   └── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
 │   └── solutions
 │       ├── architecture-patterns
 │       │   ├── extract-history-repository-from-service.md
@@ -5831,11 +5957,17 @@
 │   │   │   │   ├── historique-seed.ts
 │   │   │   │   └── historique.pom.ts
 │   │   │   ├── labellisations
+│   │   │   │   ├── checklist-acte-engagement.spec.ts
+│   │   │   │   ├── checklist-candidature-documents.spec.ts
+│   │   │   │   ├── checklist-demande-audit.spec.ts
+│   │   │   │   ├── checklist-role-mesures.spec.ts
+│   │   │   │   ├── checklist-score-minimum.spec.ts
+│   │   │   │   ├── checklist-statut-refresh.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
+│   │   │   │   ├── new-audit-labellisation.pom.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
+│   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
-│   │   │   │   ├── start-audit.pom.ts
-│   │   │   │   ├── start-audit.spec.ts
 │   │   │   │   ├── start-labellisation-cot.spec.ts
 │   │   │   │   └── validate-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
@@ -6247,9 +6379,13 @@
 │   │   │   │   │   ├── request-labellisation
 │   │   │   │   │   │   ├── request-labellisation.rules-errors.ts
 │   │   │   │   │   │   └── request-labellisation.rules.ts
-│   │   │   │   │   └── start-audit
-│   │   │   │   │       ├── start-audit.rules-errors.ts
-│   │   │   │   │       └── start-audit.rules.ts
+│   │   │   │   │   ├── start-audit
+│   │   │   │   │   │   ├── start-audit.rules-errors.ts
+│   │   │   │   │   │   └── start-audit.rules.ts
+│   │   │   │   │   └── start-new-audit-cycle
+│   │   │   │   │       ├── start-new-audit-cycle.rules-errors.ts
+│   │   │   │   │       ├── start-new-audit-cycle.rules.spec.ts
+│   │   │   │   │       └── start-new-audit-cycle.rules.ts
 │   │   │   │   ├── referentiel-definition.schema.ts
 │   │   │   │   ├── referentiel-id.enum.ts
 │   │   │   │   ├── referentiel-tag.schema.ts
@@ -6548,6 +6684,8 @@
 │       │   │   │   ├── button-menu.stories.tsx
 │       │   │   │   ├── button-menu.tsx
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── pill-button.stories.tsx
+│       │   │   │   ├── pill-button.tsx
 │       │   │   │   ├── theme.ts
 │       │   │   │   └── types.ts
 │       │   │   ├── Card
@@ -7030,4 +7168,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1235 directories, 5995 files
+1256 directories, 6112 files
