@@ -1,3 +1,20 @@
+2026-05-22T16:17:04+02:00 - f8e0ac0 - Thomas Ramé : chore(transform): revert figma "cap height" to the original text box size so text rendering is properly positionned, despite now the text box being different (since not a feature in penpot, trying to keep text box identical would bring more issues about real text alignment, since ui is the most important)
+2026-05-22T16:17:04+02:00 - 8ea96e5 - Thomas Ramé : chore(transform): handle figma slot nodes
+2026-05-22T16:17:04+02:00 - 8819813 - Thomas Ramé : fix(transform): figma intrinsic line height was wrongly converted, use same calculation since we have appropriate property for the three types
+2026-05-22T16:17:04+02:00 - 64a2409 - Thomas Ramé : fix(transform): strokes were not in the reverse order for penpot
+2026-05-22T16:17:04+02:00 - 5151159 - Thomas Ramé : chore(figma): their api may return text path nodes as broken, whereas it's working if they are recreated, so add a warning
+2026-05-22T12:43:23+02:00 - e64b5df - Thomas Ramé : fix(transform): paths had extra strokes once into penpot
+2026-05-22T12:43:23+02:00 - bb9784e - Thomas Ramé : fix(transform): some remaining paths had extra strokes once into penpot depending if outside/inside/center
+2026-05-22T12:43:23+02:00 - 9d06448 - Thomas Ramé : fix(transform): negative letter spacing was shifting to the right a text centered
+2026-05-22T02:12:45+02:00 - 44960aa - Thomas Ramé : fix(figma): support text path nodes as vectors
+2026-05-22T01:38:08+02:00 - 6ff34c7 - Thomas Ramé : fix(diff): work around node type that is not possible (in case of transform logic change)
+2026-05-22T01:36:44+02:00 - 0c9a2e1 - Thomas Ramé : fix(transform): forcing an arc shape as vector instead of circle penpot object
+2026-05-22T01:17:44+02:00 - 60f8b93 - Thomas Ramé : fix(transform): gradients were wrongly mapped
+2026-05-21T19:32:50+02:00 - 990623b - Thomas Ramé : fix(transform): gradient wrongly made on figma was rejected by penpot due to too high value
+2026-05-21T18:38:03+02:00 - a4da0d4 - Thomas Ramé : fix(transform): some figma paths are not filled
+2026-05-21T18:13:36+02:00 - c832a20 - Thomas Ramé : chore: update google fonts
+2026-05-21T17:55:59+02:00 - e001ef4 - Thomas Ramé : chore(transform): notify instead of throwing if the node type is not supported
+2026-05-21T17:38:45+02:00 - c1f1d98 - Thomas Ramé : fix(transform): color through variable alias was not supported
 2026-04-22T11:35:30+02:00 - f27e887 - Thomas Ramé : fix(windows): backslashes in paths were escaping
 2026-04-21T18:50:02+02:00 - 589aa6e - Thomas Ramé : chore(node): upgrade version for npm warning
 2026-04-21T18:24:47+02:00 - 1eaaf74 - Thomas Ramé : fix(npm): package.json format that was autocorrected
