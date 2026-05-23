@@ -1,21 +1,24 @@
-## Changelog : ecopass (30 derniers jours, au 13 mai 2026)
+## Changelog : ecopass (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en termes de performance, notamment lors de l'export de grandes quantités de données, et corrige des bugs liés à la gestion des prix et des exports en batch. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'accès aux données pour les utilisateurs Bercy et pour la création de produits anonymisés.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la performance et de la gestion des données, notamment pour les exports massifs et la création de produits anonymisés. Des améliorations ont également été apportées pour faciliter l'accès aux données pour les utilisateurs Bercy et pour une meilleure gestion des étiquettes complexes et des images de produits.
 
 ### Évolutions fonctionnelles
-- Les utilisateurs de Bercy peuvent désormais accéder aux données. [#147](https://github.com/incubateur-ademe/ecopass/issues/147)
-- Amélioration des performances lors de la création de produits anonymisés.
-- Correction d'un bug empêchant l'export correct de produits en batch. [#143](https://github.com/incubateur-ademe/ecopass/issues/143)
-- Correction d'un bug lié à la gestion des prix inférieurs à 1 pour les produits importés en batch. [#142](https://github.com/incubateur-ademe/ecopass/issues/142)
-- Amélioration de la documentation concernant le score environnemental. [#142](https://github.com/incubateur-ademe/ecopass/issues/142)
+- Ajout d'un rôle spécifique pour les utilisateurs de Bercy, leur permettant d'accéder aux données. [#144](https://github.com/incubateur-ademe/ecopass/issues/144)
+- Amélioration de la gestion des étiquettes complexes de produits. [#152](https://github.com/incubateur-ademe/ecopass/issues/152)
+- Correction de l'affichage des images de produits avec le GTIN et la comparaison. [#153](https://github.com/incubateur-ademe/ecopass/issues/153)
+- Amélioration des performances de la création de produits anonymisés.
+- Correction de l'affichage des quantités avec des nombres décimaux. [#148](https://github.com/incubateur-ademe/ecopass/issues/148)
 
 ### Évolutions techniques
-- Optimisation du streaming des produits lors des exports volumineux. [#146](https://github.com/incubateur-ademe/ecopass/issues/146)
-- Mise à jour de la configuration pnpm pour assurer la compatibilité avec la version 10.
-- Amélioration de la performance de la création de produits anonymisés.
+- Optimisation des performances lors de l'export de grands volumes de produits en utilisant le streaming. [#146](https://github.com/incubateur-ademe/ecopass/issues/146)
+- Amélioration de l'ordre des éléments dans l'API pour un tri par nom. [#151](https://github.com/incubateur-ademe/ecopass/issues/151)
+- Correction de problèmes liés à la compatibilité avec pnpm 10. [#93e4b74](https://github.com/incubateur-ademe/ecopass/commit/93e4b74)
+- Mise à jour des paquets, de Node.js et de pnpm. [#145](https://github.com/incubateur-ademe/ecopass/issues/145)
+- Amélioration de la gestion des exports en batch pour les administrateurs. [#143](https://github.com/incubateur-ademe/ecopass/issues/143)
 
 ### Autres changements
-- Mise à jour de la documentation README.
+- Mise à jour de la documentation. [#150](https://github.com/incubateur-ademe/ecopass/issues/150) et [#f8dc6c2](https://github.com/incubateur-ademe/ecopass/commit/f8dc6c2)
+- Mise à jour du fichier README.
 - Ajustement du timeout de Matomo.
-- Ajout d'un rôle "Bercy" pour la gestion des permissions. [#144](https://github.com/incubateur-ademe/ecopass/issues/144)
+- Ajout de la possibilité de tester la connexion à la base de données. [#149](https://github.com/incubateur-ademe/ecopass/issues/149)
