@@ -48,6 +48,7 @@
 │   │   │   ├── activities.js
 │   │   │   ├── backup-settings.js
 │   │   │   ├── categories.js
+│   │   │   ├── cokpit.js
 │   │   │   ├── csp.js
 │   │   │   ├── email.js
 │   │   │   ├── extractor.js
@@ -254,7 +255,8 @@
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
 │   │   │       │   ├── 202601191000-clean-users.js
-│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   ├── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   └── 202605201751-remove-ASA-to-indispo.js
 │   │   │       ├── production
 │   │   │       │   ├── 202110271703-add-hr-categories-fixed.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -345,7 +347,8 @@
 │   │   │       │   ├── 202511171228-clean-matricule-ano.js
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
-│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   ├── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   └── 202605201751-remove-ASA-to-indispo.js
 │   │   │       ├── sandbox
 │   │   │       │   ├── 202110271703-add-hr-categories.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -438,7 +441,8 @@
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
 │   │   │       │   ├── 202601191000-clean-users.js
-│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   ├── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   └── 202605201751-remove-ASA-to-indispo.js
 │   │   │       ├── staging
 │   │   │       │   ├── 202110271703-add-hr-categories.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -535,7 +539,8 @@
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
 │   │   │       │   ├── 202601191000-clean-users.js
-│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   ├── 202602241249-fix-JA-to-AJ.js
+│   │   │       │   └── 202605201751-remove-ASA-to-indispo.js
 │   │   │       └── test
 │   │   │           ├── 202110150958-add-users.js
 │   │   │           ├── 202110271703-add-hr-categories.js
@@ -569,7 +574,9 @@
 │   │   │           ├── 202511041041-update-user-function.js
 │   │   │           ├── 202511071222-update-users-access.js
 │   │   │           ├── 202511261700-add-e2e-test-user.js
-│   │   │           └── 202512041430-add-group-to-backup.js
+│   │   │           ├── 202512041430-add-group-to-backup.js
+│   │   │           ├── 202602231142-add-ventilation-for-extractor.js
+│   │   │           └── 202603181035-add-new-ventilation-for-extractor-test.js
 │   │   ├── index.js
 │   │   ├── locales
 │   │   │   ├── en.json
@@ -782,6 +789,7 @@
 │   │   │   ├── cockpit.cy.js
 │   │   │   ├── effectif-suite.cy.ts
 │   │   │   ├── extracteur-collecte-2026.cy.ts
+│   │   │   ├── extracteur-effectifs-tj-test-2026.cy.ts
 │   │   │   ├── extracteur-pre-collecte-2026.cy.ts
 │   │   │   ├── forgot-password.cy.js
 │   │   │   ├── login.cy.js
@@ -986,6 +994,7 @@
 │   │   │   │   ├── backup-settings.ts
 │   │   │   │   ├── calculator.ts
 │   │   │   │   ├── category.ts
+│   │   │   │   ├── cokpit.ts
 │   │   │   │   ├── colors.ts
 │   │   │   │   ├── documentation.ts
 │   │   │   │   ├── etpt-calculation.ts
@@ -1430,6 +1439,7 @@
 │   │   │       ├── js-pdf.ts
 │   │   │       ├── latency-detail.ts
 │   │   │       ├── numbers.ts
+│   │   │       ├── query-params.ts
 │   │   │       ├── referentiel.ts
 │   │   │       ├── sentry-before-transaction.ts
 │   │   │       ├── sentry-context.ts
@@ -1460,6 +1470,7 @@
 │   │   │   │   ├── check.svg
 │   │   │   │   ├── checkbox.svg
 │   │   │   │   ├── cockpit-down.svg
+│   │   │   │   ├── cockpit-equal.svg
 │   │   │   │   ├── cockpit-up.svg
 │   │   │   │   ├── download-line-blue.svg
 │   │   │   │   ├── download-line.svg
@@ -1772,4 +1783,4 @@
     ├── run-pre-collecte-2026-test.sh
     ├── section-mochawesome.js
     └── setup-sandbox-reference.sh
-257 directories, 1517 files
+257 directories, 1528 files
