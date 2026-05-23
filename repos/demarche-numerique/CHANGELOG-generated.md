@@ -1,17 +1,17 @@
 # Synthèse d'activité : demarche-numerique (du 17/03 au 27/03)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec un préremplissage plus précis des formulaires via FranceConnect et la gestion des relations entre dossiers. Des améliorations significatives de sécurité ont également été apportées, notamment en matière de validation des données et de protection contre les vulnérabilités. Enfin, des optimisations techniques ont été réalisées sur la gestion des fichiers et des images.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec des optimisations de performance, une migration technique vers des technologies plus maintenables (ERB, Sidekiq) et des corrections de bugs impactant l'expérience utilisateur, notamment dans la gestion des pièces justificatives et l'affichage des avis.  Parallèlement, le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) a bénéficié d'améliorations pour faciliter son utilisation et sa maintenance, notamment en simplifiant la construction des images Docker et en améliorant la gestion des mots de passe.
 
 ## Sécurité
-- Validation des données d'entrée renforcée sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour prévenir les attaques.
-- Protection contre les attaques IDOR et spoofing implémentée sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Correction de vulnérabilités potentielles et gestion des identifiants/données sensibles sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- Refactorisation de l'architecture de gestion des fichiers sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour améliorer la performance et la sécurité.
-- Adoption de Vips pour le traitement des images sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), améliorant la performance et la qualité.
-- Simplification du processus de construction des images Docker sur [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- Migration de composants Haml vers ERB sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour une meilleure maintenabilité.
+- Utilisation de Sidekiq pour la gestion des tâches asynchrones sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), améliorant la réactivité.
+- Refonte du processus de construction des images Docker sur [ds_proxy](/repos/demarche-numerique/ds_proxy) pour simplifier la création d'images à partir de packages.
+- Migration de l'adaptateur d'établissement vers l'API Entreprise v4 sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration de l'expérience utilisateur et renforcement de la sécurité de la plateforme principale.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Optimisation de la gestion des mots de passe et simplification de la construction des images Docker.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Améliorations significatives de la plateforme, incluant des optimisations de performance, des corrections de bugs et des migrations techniques.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Améliorations de la gestion des mots de passe et simplification du processus de construction des images Docker.

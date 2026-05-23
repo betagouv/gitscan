@@ -1,14 +1,13 @@
 # Synthèse d'activité : mesadsfr (du 02/05 au 12/05)
 
 ## Résumé de l'activité
-L'organisation a connu une activité soutenue au cours des derniers jours, principalement axée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads). Les évolutions se concentrent sur l'ajout de fonctionnalités pour les inspecteurs et administrateurs, l'amélioration des statistiques et la correction de bugs. Une attention particulière a été portée à la sécurité avec la correction d'une vulnérabilité critique. L'ajout d'une page d'accessibilité démontre un engagement envers l'inclusion et la conformité légale.
+L'organisation a connu une activité soutenue sur le dépôt [mesads](/repos/mesadsfr/mesads) au cours de la semaine écoulée, axée sur l'amélioration de la plateforme pour les utilisateurs métiers (inspecteurs et administrateurs) et la conformité légale. Des fonctionnalités dédiées aux inspecteurs ont été ajoutées, ainsi qu'un module de newsletter et la possibilité d'exporter des données pour les administrateurs. Une page d'accessibilité a été implémentée pour répondre aux obligations légales. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été réalisées.
 
 ## Sécurité
-- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).
+Une vulnérabilité sur l'endpoint d'autocomplete des communes a été corrigée dans [mesads](/repos/mesadsfr/mesads), renforçant la sécurité de la plateforme.
 
 ## Autres changements notables
-- Mise à jour des données des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).
-- Suppression du bandeau d'appel à un sondage dans [mesads](/repos/mesadsfr/mesads).
+La base de données des communes a été mise à jour pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads). Des corrections de tests et l'application de règles de linting avec Ruff ont également été effectuées dans le même dépôt, améliorant la qualité du code.
 
 ## Dépôts les plus actifs
-- [mesads](/repos/mesadsfr/mesads) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des améliorations de sécurité.
+- [mesads](/repos/mesadsfr/mesads) : Ce dépôt a été le plus actif, avec des améliorations fonctionnelles, des corrections de sécurité et des mises à jour de données.

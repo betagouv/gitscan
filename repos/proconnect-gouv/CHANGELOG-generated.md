@@ -1,23 +1,23 @@
-# Synthèse d'activité : proconnect-gouv (du 07 mai au 16 mai 2026)
+# Synthèse d'activité : proconnect-gouv (du 07 mai au 16 mars 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, de l'expérience utilisateur et de la robustesse des différents composants. Des efforts significatifs ont été déployés pour renforcer la validation des données (notamment avec [class-validator](/repos/proconnect-gouv/class-validator)), améliorer la gestion des erreurs et des statuts des IDP ([idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring), [proconnect-identite](/repos/proconnect-gouv/proconnect-identite)), et enrichir l'outil d'inspection des données ([docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect)). L'initialisation de nouveaux projets comme [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) et [mx-resolver](/repos/proconnect-gouv/mx-resolver) pose les bases pour de futurs développements. L'espace partenaires ([proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires)) a bénéficié d'améliorations fonctionnelles et de documentation.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la maintenance et l'ajout de nouvelles fonctionnalités à ses différents composants. Des efforts importants ont été déployés pour préparer la plateforme à la production et à la maintenance, notamment avec l'ajout d'une page de maintenance [proconnect-maintenance](/repos/proconnect-gouv/proconnect-maintenance) et l'implémentation d'un mode maintenance pour l'espace partenaires [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).  Des améliorations significatives ont également été apportées à la validation des données et à l'expérience utilisateur, en particulier dans les composants `docteur-proconnect` [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) et `federation` [federation](/repos/proconnect-gouv/federation). L'initialisation de nouveaux projets comme `proconnect-test-idp` [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) et `mx-resolver` [mx-resolver](/repos/proconnect-gouv/mx-resolver) pose les bases pour de futurs développements.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 - Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
-- Renforcement de la sécurité d'accès aux informations sensibles dans [federation](/repos/proconnect-gouv/federation).
-- Validation des emails renforcée via DNS-over-HTTPS dans [federation](/repos/proconnect-gouv/federation).
+- Mise à jour des dépendances dans [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+- Implémentation d'une limitation de débit par adresse IP dans [hyyypertool](/repos/proconnect-gouv/hyyypertool) pour renforcer la sécurité.
 
 ## Autres changements notables
-- Refonte des contrôles de santé dans [federation](/repos/proconnect-gouv/federation) pour une meilleure supervision.
-- Ajout du mode sombre et améliorations de l'interface utilisateur dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
-- Amélioration de la réactivité de la production des données de statut des IDP dans [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring).
-- Refactorisation de la préparation de la base de données pour les tests E2E dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Migration des emails de MonComptePro vers un nouveau système dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Refonte de la validation d'email et amélioration de la configuration OIDC dans [federation](/repos/proconnect-gouv/federation).
+- Rétrogradation de la version de Node dans les conteneurs Docker de [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) suite à des problèmes de compatibilité.
+- Ajout de nouveaux validateurs (IBAN, ISO 639-1, ISO 3166-1, UUID) et d'une option de validation conditionnelle dans [class-validator](/repos/proconnect-gouv/class-validator).
 
 ## Dépôts les plus actifs
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Amélioration significative de l'interface utilisateur avec l'ajout du mode sombre et de nouvelles fonctionnalités d'édition et de suppression.
-- [federation](/repos/proconnect-gouv/federation) : Améliorations de la sécurité, de l'accessibilité et de la supervision.
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de l'expérience utilisateur et refactorisation technique pour une meilleure maintenabilité.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Ajout d'un mode maintenance et amélioration de la documentation.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la sécurité, préparation de la migration des emails et ajustements pour la pré-production.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration de la sécurité, de la flexibilité et de la configuration OIDC.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Ajout d'un mode maintenance, amélioration de la documentation et correction de problèmes d'intégration.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités de dépendances.
+- [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) : Mise à jour des dépendances pour améliorer la sécurité et la stabilité.

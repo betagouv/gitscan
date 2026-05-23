@@ -1,23 +1,22 @@
-# Synthèse d'activité : datagouv (du 29 avril 2026 au 14 mai 2026)
+# Synthèse d'activité : datagouv (du 2026-04-23 au 2026-05-27)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation datagouv se concentre sur l'amélioration de l'infrastructure et des services existants, ainsi que sur l'ajout de nouvelles fonctionnalités pour répondre aux besoins des utilisateurs. Plusieurs projets ont bénéficié de mises à jour importantes, notamment [relais](/repos/datagouv/relais) avec une refonte majeure de son architecture et l'intégration de nouveaux services comme CNOUS, et [api-tabular](/repos/datagouv/api-tabular) avec l'amélioration de son processus de CI/CD.  Des efforts importants ont également été déployés pour actualiser les données et la documentation, comme on le voit avec [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr), [cadastre](/repos/datagouv/cadastre) et [guides.data.gouv.fr](/repos/datagouv/guides.data.gouv.fr). Enfin, l'amélioration de l'expérience utilisateur est au cœur de plusieurs projets, notamment avec l'ajout de tableaux de bord et de nouvelles fonctionnalités sur [cdata](/repos/datagouv/cdata) et [datagouv-mcp](/repos/datagouv/datagouv-mcp).
+L'organisation datagouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets clés.  Un effort important a été consacré à la modernisation des infrastructures (Rails 8.1, PNPM, Airflow 3) et à l'amélioration de la robustesse des pipelines de données.  De nouvelles fonctionnalités ont été introduites, notamment une API pour l'intégration avec CNOUS ([relais](/repos/datagouv/relais)), un système de notifications pour Hubee ([hubee](/repos/datagouv/hubee)), et un SDK Node.js pour apistration ([apistration](/repos/datagouv/apistration)).  Plusieurs projets ont également bénéficié de mises à jour de données (cadastre, ODM) et de corrections de bugs pour améliorer la qualité et la fiabilité des services.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Une vulnérabilité de sécurité a été corrigée dans [datagouv-mcp](/repos/datagouv/datagouv-mcp) en contraignant la version de la librairie `urllib3`.
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures :
-*   Migration vers PNPM sur [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr) pour améliorer la performance et la sécurité.
-*   Mise à jour de Rails vers la version 8.1 et intégration de GoodJob pour la gestion des tâches asynchrones sur [relais](/repos/datagouv/relais).
-*   Migration vers Nuxt 4.4 sur [cdata](/repos/datagouv/cdata) pour des performances améliorées.
-*   Mise à jour de la dépendance `frformat` sur [csv-detective](/repos/datagouv/csv-detective).
+Plusieurs projets ont subi des mises à jour techniques majeures :
+*   Migration vers Rails 8.1 et intégration de GoodJob dans [relais](/repos/datagouv/relais) pour une meilleure performance et scalabilité.
+*   Migration vers PNPM dans [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr) et [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr) pour une meilleure gestion des dépendances.
+*   Migration vers Airflow 3 dans [data-engineering-stack](/repos/datagouv/data-engineering-stack).
+*   Refactorisation de l'architecture d'authentification dans [apistration](/repos/datagouv/apistration).
+*   Migration de l'outil de rendu MJML vers mrml dans [apistration](/repos/datagouv/apistration).
 
 ## Dépôts les plus actifs
-*   [relais](/repos/datagouv/relais) : Refonte de l'architecture et intégration de nouveaux services (CNOUS, demandes proactives).
-*   [datagouv-mcp](/repos/datagouv/datagouv-mcp) : Ajout de nouveaux outils et amélioration de la gestion des erreurs pour l'API.
-*   [cdata](/repos/datagouv/cdata) : Ajout de tableaux de bord et amélioration de la recherche et de la présentation des données.
-*   [csv-detective](/repos/datagouv/csv-detective) : Amélioration de la robustesse et de la performance de la détection des types de données.
-*   [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr) : Actualisation des recommandations et ajout d'un nouveau référentiel de données.
-*   [hydra](/repos/datagouv/hydra) : Amélioration de la conversion de données et refactorisation du code.
-*   [roles.data](/repos/datagouv/roles.data) : Amélioration de l'administration des groupes et des utilisateurs et refonte des emails.
+*   [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et ajout de l'intégration avec CNOUS.
+*   [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Amélioration de la robustesse des pipelines de données et gestion des données sources changeantes.
+*   [apistration](/repos/datagouv/apistration) : Ajout d'un SDK Node.js, refonte du tableau de bord des fournisseurs et amélioration de la sécurité.
+*   [cdata](/repos/datagouv/cdata) : Amélioration de la recherche, de l'administration et de l'expérience utilisateur.
+*   [datagouv-mcp](/repos/datagouv/datagouv-mcp) : Ajout de nouveaux outils et correction d'une vulnérabilité de sécurité.

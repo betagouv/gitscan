@@ -1,21 +1,23 @@
-# Synthèse d'activité : cloud-gouv (du 24 avril 2026 au 02 mai 2026)
+# Synthèse d'activité : cloud-gouv (du 24/04 au 02/05/2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, la gestion des identités et l'optimisation des outils de déploiement Kubernetes. Des efforts significatifs ont été déployés pour renforcer la sécurité de l'authentification avec OpenBao et Securix, ainsi que pour faciliter la gestion des configurations Kubernetes avec les charts Helm et les outils associés. L'ajout de nouveaux charts et la correction de bugs dans les charts existants visent à simplifier le déploiement et la gestion des applications pour les utilisateurs.
+L'organisation cloud-gouv a connu une activité soutenue cette semaine, avec des améliorations significatives apportées à plusieurs de ses dépôts. Les efforts se sont concentrés sur la sécurité, notamment avec des mises à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités, et l'ajout de fonctionnalités de sécurité pour les nœuds worker dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts). Des améliorations de l'expérience utilisateur ont également été apportées, comme l'outil de gestion des clés YubiKey dans [securix](/repos/cloud-gouv/securix) et l'ajout de la prise en charge des groupes supplémentaires pour le serveur RPC dans [portail](/repos/cloud-gouv/portail). Enfin, de nouveaux outils et charts ont été ajoutés pour faciliter le déploiement et la gestion des applications, notamment avec l'ajout du chart pgbench dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts) et l'outil kustomize dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
 
 ## Sécurité
-Plusieurs dépôts ont reçu des mises à jour axées sur la sécurité :
-- [openbao](/repos/cloud-gouv/openbao) a été mis à jour vers Go 1.25.7 pour corriger une vulnérabilité de sécurité (CVE-2025-68121 / GO-2026-4337) et a également mis à jour des dépendances pour corriger d'autres vulnérabilités (CVE-2026-24051 / GO-2026-4394 / GHSA-9h8m-3fm2-qjrq).
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) a permis d'injecter des règles de sécurité supplémentaires (Security Groups) aux nœuds worker.
+Plusieurs correctifs de sécurité ont été déployés :
+- Mise à jour de Go dans [openbao](/repos/cloud-gouv/openbao) pour corriger une vulnérabilité (CVE-2025-68121 / GO-2026-4337).
+- Mise à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2026-24051 / GO-2026-4394 / GHSA-9h8m-3fm2-qjrq).
+- Amélioration de la sécurité des nœuds worker avec la possibilité d'injecter des règles de sécurité supplémentaires dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
 
 ## Autres changements notables
-- [securix](/repos/cloud-gouv/securix) a reçu des améliorations concernant l'expérience utilisateur et la gestion des clés YubiKey, notamment un outil de réinitialisation et de modification des utilisateurs.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) a implémenté un workflow de publication des charts au format OCI, facilitant leur distribution et leur utilisation.
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) a vu des corrections et améliorations de la gestion des CIDR, des volumes snapshot, des secrets externes et des règles de sécurité pour les nœuds worker.
+- Refactorisation du code dans [securix](/repos/cloud-gouv/securix) pour une meilleure cohérence et structure.
+- Ajout d'un chart pgbench pour les benchmarks PostgreSQL dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
+- Ajout de l'outil kustomize à l'image `k8s-tools` dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
+- Correction de bugs et améliorations de la gestion des CIDR et des volumes snapshot dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
 
 ## Dépôts les plus actifs
 - [securix](/repos/cloud-gouv/securix) : Amélioration de l'expérience utilisateur et de la gestion des clés YubiKey.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité pour la gestion des secrets.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouveaux charts (pgbench-job) et améliorations de la publication et de la sécurité.
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations de la gestion des configurations Kubernetes et de la sécurité des nœuds worker.
-- [portail](/repos/cloud-gouv/portail) : Ajout du support des groupes supplémentaires pour l'authentification RPC.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Amélioration de la sécurité et de la configuration des clusters Kubernetes.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouveaux charts et amélioration de la flexibilité de la configuration.
+- [portail](/repos/cloud-gouv/portail) : Ajout de la prise en charge des groupes supplémentaires pour une gestion plus fine des autorisations.
