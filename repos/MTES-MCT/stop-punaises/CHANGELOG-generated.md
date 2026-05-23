@@ -1,8 +1,16 @@
-## Changelog : stop-punaises (derniers 30 jours)
+## Changelog : stop-punaises (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application stop-punaises a bénéficié d'une mise à jour majeure de sa technologie sous-jacente avec le passage à Symfony 7.4, ce qui améliore sa stabilité et sa sécurité. De plus, l'URL de la bannière a été modifiée pour assurer son bon fonctionnement.
+Ce mois-ci, les améliorations se concentrent sur la maintenance technique du projet, incluant des mises à jour de dépendances et des optimisations de configuration. Une correction a également été apportée à la cartographie pour renforcer la sécurité en définissant une politique de référenceur (referrer policy).
+
+### Évolutions fonctionnelles
+- Amélioration de la sécurité de la cartographie en définissant une politique de référenceur pour Leaflet [#874](https://github.com/MTES-MCT/stop-punaises/pull/874).
 
 ### Évolutions techniques
-- Mise à jour de Symfony vers la version 7.4 (#856, #858).
-- Modification de l'URL de la bannière (#859, #860).
+- Mise à jour des dépendances PHP (PHP CS Fixer, PHPStan) [#875](https://github.com/MTES-MCT/stop-punaises/issues/875).
+- Mise à jour de la configuration Doctrine [#875](https://github.com/MTES-MCT/stop-punaises/issues/875).
+- Mise à jour de la configuration des actions GitHub [#875](https://github.com/MTES-MCT/stop-punaises/issues/875).
+- Mise à jour des dépendances générales du projet [#875](https://github.com/MTES-MCT/stop-punaises/issues/875).
+
+### Autres changements
+- Aucune information disponible.
