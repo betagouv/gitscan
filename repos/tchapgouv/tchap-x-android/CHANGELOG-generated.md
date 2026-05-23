@@ -1,21 +1,23 @@
-## Changelog : tchap-x-android (30 derniers jours, au 05 mai 2026)
+## Changelog : tchap-x-android (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application, notamment un changement de nom de "Tchap X" à "Tchap", une gestion améliorée des versions et des environnements de développement/préproduction, ainsi que des corrections de textes et de descriptions. La préparation pour la publication de nouvelles versions a également été améliorée.
+Cette version apporte des améliorations significatives à l'application, notamment un changement de nom de "Tchap X" à "Tchap", la préparation pour les releases avec un script dédié et des corrections de textes. Des ajustements ont également été faits pour faciliter la gestion des environnements de développement et de pré-production. L'interface utilisateur a été mise à jour avec le nouveau logo Tchap et des captures d'écran spécifiques.
 
 ### Évolutions fonctionnelles
-- L'application a été renommée de "Tchap X" à "Tchap".
+- Changement de nom de l'application : l'application est désormais nommée "Tchap" au lieu de "Tchap X" [#179](https://github.com/tchapgouv/tchap-x-android/pull/179).
+- Ajout du nouveau logo Tchap dans la liste des sessions.
+- Mise à jour des captures d'écran de l'application.
+- Correction de textes dans l'interface utilisateur.
 - Modification de la description de l'onglet "Espace".
-- Corrections de textes dans l'application.
 
 ### Évolutions techniques
-- Mise en place d'un script de génération de release pour faciliter la publication des versions de Tchap [#179](https://github.com/tchapgouv/tchap-x-android/pull/179).
-- Utilisation temporaire du format de version Major/Minor/Patch pour une meilleure gestion des versions.
+- Mise en place d'un script de génération de release pour Tchap [#179](https://github.com/tchapgouv/tchap-x-android/pull/179).
+- Utilisation temporaire du format de version Major/Minor/Patch.
 - Renommage des variants de build : `devTchap` et `bTchap` sont maintenant `tchapDev` et `tchapPreprod`.
-- Ajout d'un suffixe temporaire "beta" pour identifier les versions en cours de test.
-- Préparation pour la publication de la version 0.10.0 et 0.9.0.
+- Nettoyage des `access_rules` à la création de salons.
+- Préparation pour les releases 0.9.0 et 0.10.0.
 
 ### Autres changements
-- Mise à jour des screenshots de l'application.
 - Ajout de previews spécifiques à Tchap.
-- Création d'un changelog dédié aux modifications de Tchap.
+- Ajout d'un suffixe temporaire "beta".
+- Création d'un changelog spécifique pour les modifications Tchap.
