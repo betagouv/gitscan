@@ -263,6 +263,7 @@
 │   │   │   │   │       ├── provider.http.ts
 │   │   │   │   │       ├── rna-siren.http.ts
 │   │   │   │   │       ├── search.http.ts
+│   │   │   │   │       ├── subvention.http.ts
 │   │   │   │   │       ├── tools.http.test.ts
 │   │   │   │   │       ├── tools.http.ts
 │   │   │   │   │       └── user.http.ts
@@ -711,7 +712,10 @@
 │   │   │   │   │   ├── grant.mapper.test.ts
 │   │   │   │   │   ├── grant.mapper.ts
 │   │   │   │   │   ├── grant.service.test.ts
-│   │   │   │   │   └── grant.service.ts
+│   │   │   │   │   ├── grant.service.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── get-provider-details.use-case.test.ts
+│   │   │   │   │       └── get-provider-details.use-case.ts
 │   │   │   │   ├── index
 │   │   │   │   │   ├── index.service.test.ts
 │   │   │   │   │   └── index.service.ts
@@ -984,7 +988,10 @@
 │   │   │   │   │   │   ├── osiris.mapper.ts
 │   │   │   │   │   │   ├── osiris.migrations.ts
 │   │   │   │   │   │   ├── osiris.service.test.ts
-│   │   │   │   │   │   └── osiris.service.ts
+│   │   │   │   │   │   ├── osiris.service.ts
+│   │   │   │   │   │   └── use-cases
+│   │   │   │   │   │       ├── get-osiris-details.use-case.test.ts
+│   │   │   │   │   │       └── get-osiris-details.use-case.ts
 │   │   │   │   │   ├── provider.core.ts
 │   │   │   │   │   ├── providers.helper.test.ts
 │   │   │   │   │   ├── providers.helper.ts
@@ -1441,7 +1448,9 @@
 │   │   ├── eslint.config.mjs
 │   │   ├── index.ts
 │   │   ├── package.json
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── types
+│   │       └── IdentifierNames.ts
 │   ├── dto
 │   │   ├── .gitignore
 │   │   ├── .npmrc
@@ -1453,10 +1462,11 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── associations
+│   │   │   │   ├── Association.ts
 │   │   │   │   ├── AssociationNature.ts
 │   │   │   │   ├── AssociationWithProviderValues.ts
-│   │   │   │   ├── BodaccRecordDto.ts
-│   │   │   │   ├── ExtraitRcsDto.ts
+│   │   │   │   ├── BodaccRecord.ts
+│   │   │   │   ├── ExtraitRcs.ts
 │   │   │   │   ├── GetApplicationsFlatResponseDto.ts
 │   │   │   │   ├── GetAssociationResponseDto.ts
 │   │   │   │   ├── GetEstablishmentResponseDto.ts
@@ -1512,9 +1522,11 @@
 │   │   │   │   ├── GetDocumentsResponseDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── establishments
+│   │   │   │   ├── Establishment.ts
 │   │   │   │   ├── EstablishmentDtoResponse.ts
 │   │   │   │   ├── EstablishmentSimplifiedWithProviderValues.ts
 │   │   │   │   ├── EstablishmentWithProviderValues.ts
+│   │   │   │   ├── SimplifiedEstablishment.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── flat
 │   │   │   │   ├── application.ts
@@ -1556,6 +1568,7 @@
 │   │   │   │   ├── AssociationIdentifierDto.ts
 │   │   │   │   ├── EstablishementIdentifierDto.ts
 │   │   │   │   ├── FileDownloadUrlDto.ts
+│   │   │   │   ├── Identifiers.ts
 │   │   │   │   ├── InformationBancaire.ts
 │   │   │   │   ├── Personne.ts
 │   │   │   │   ├── ProviderData.ts
@@ -1934,8 +1947,7 @@
 │   │   │   │       ├── AppContext.ts
 │   │   │   │       ├── FieldOption.ts
 │   │   │   │       ├── ResourceType.ts
-│   │   │   │       ├── SearchHistory.ts
-│   │   │   │       └── jitbit-html-sanitizer.d.ts
+│   │   │   │       └── SearchHistory.ts
 │   │   │   ├── routes
 │   │   │   │   ├── (home)
 │   │   │   │   │   ├── +page.svelte
@@ -2194,4 +2206,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-509 directories, 1687 files
+512 directories, 1696 files

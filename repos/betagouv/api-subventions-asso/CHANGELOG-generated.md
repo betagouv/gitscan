@@ -1,24 +1,23 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 19 mai 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 2026-05-21)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'intégration des données Osiris, avec une refonte de la gestion des entités brutes et l'ajout de nouveaux DTO. Des améliorations techniques ont été apportées pour moderniser l'infrastructure du projet, notamment le passage à pnpm workspaces et la suppression de code obsolète. L'interface utilisateur a également été mise à jour pour afficher les actions Osiris dans un modal.
+Ce mois-ci, les évolutions se concentrent sur l'intégration et l'amélioration des données Osiris, avec un effort important de refactoring pour une meilleure structure et maintenabilité du code. Des corrections et des améliorations ont également été apportées à l'API et à l'interface utilisateur pour une expérience plus fluide.
 
 ### Évolutions fonctionnelles
-- Ajout de l'affichage des actions Osiris dans un modal sur le front-end ([#3910](https://github.com/betagouv/api-subventions-asso/pull/3910)).
-- Amélioration de l'affichage des informations relatives aux données Helios sur le front-end, incluant le nom de l'allocataire et l'ID de paiement.
-- Correction d'un bug lié à la migration Proconnect ([#3898](https://github.com/betagouv/api-subventions-asso/issues/3898)).
-- Correction d'un bug dans le test unitaire du parser Osiris pour la date de mise à jour.
+- Ajout de la possibilité de filtrer les actions Osiris sans intitulé. [#3840](https://github.com/betagouv/api-subventions-asso/issues/3840)
+- Affichage des actions Osiris dans le modal de détail des subventions. [#3841](https://github.com/betagouv/api-subventions-asso/issues/3841)
+- Ajout de nouvelles DTO (Data Transfer Objects) pour l'association et les détails des subventions Osiris. [#3913](https://github.com/betagouv/api-subventions-asso/issues/3913) et [#3908](https://github.com/betagouv/api-subventions-asso/issues/3908)
+- Ajout d'une route cachée pour les subventions et Osiris, ainsi qu'un use case pour récupérer les détails. [#3840](https://github.com/betagouv/api-subventions-asso/issues/3840)
+- Script pour supprimer les fichiers vides des téléchargements Osiris. [#3919](https://github.com/betagouv/api-subventions-asso/issues/3919)
 
 ### Évolutions techniques
-- Refonte de la gestion des entités brutes Osiris pour stocker les données imbriquées, améliorant ainsi la flexibilité et la robustesse de l'API ([#3887](https://github.com/betagouv/api-subventions-asso/pull/3887), [#3904](https://github.com/betagouv/api-subventions-asso/pull/3904)).
-- Création de nouveaux DTO et refactoring des mappings pour les providers et les détails Osiris ([#3908](https://github.com/betagouv/api-subventions-asso/pull/3908), [#3909](https://github.com/betagouv/api-subventions-asso/pull/3909)).
-- Migration du projet vers pnpm workspaces, remplaçant Lerna pour une meilleure gestion des dépendances et des builds ([#3917](https://github.com/betagouv/api-subventions-asso/pull/3917)).
-- Refactoring du code lié à l'analyse des données Osiris, incluant la suppression de code obsolète et l'amélioration des tests.
-- Suppression de routes de provider obsolètes ([#3911](https://github.com/betagouv/api-subventions-asso/pull/3911)).
-- Amélioration des tests et de la validation des données Osiris.
+- Refactoring important de la gestion des données Osiris, incluant la refactorisation des entités, des mappers et des parsers pour stocker les données brutes imbriquées. [#3887](https://github.com/betagouv/api-subventions-asso/issues/3887) et [#3904](https://github.com/betagouv/api-subventions-asso/issues/3904)
+- Migration du service API "asso" vers une architecture basée sur des adaptateurs et des ports. [#3549](https://github.com/betagouv/api-subventions-asso/issues/3549)
+- Remplacement de Lerna par pnpm workspaces pour la gestion des dépendances. [#3916](https://github.com/betagouv/api-subventions-asso/issues/3916)
+- Suppression de code obsolète et de validations inutiles dans le code lié à Osiris. [#3904](https://github.com/betagouv/api-subventions-asso/issues/3904)
+- Amélioration des tests unitaires et d'intégration pour les nouvelles fonctionnalités et les refactorings.
+- Mise à jour des dépendances vers les dernières versions mineures. [#3924](https://github.com/betagouv/api-subventions-asso/issues/3924)
 
 ### Autres changements
-- Ajout d'un README pour le script de scrapping LCA-OSIRIS ([#3901](https://github.com/betagouv/api-subventions-asso/pull/3901)).
-- Suppression de code de validation inutilisé dans la CLI.
-- Déplacement des fichiers de parsing Osiris vers le dossier `adapters/inputs/cli/osiris`.
-- Mise à jour des versions du projet (v0.84.0, v0.84.1, v0.84.2, v0.84.3, v0.84.4, v0.84.5).
+- Documentation mise à jour pour le script de suppression des fichiers vides Osiris. [#3920](https://github.com/betagouv/api-subventions-asso/issues/3920)
+- Dépréciation des routes de valeurs de provider. [#3911](https://github.com/betagouv/api-subventions-asso/issues/3911)
