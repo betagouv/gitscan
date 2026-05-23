@@ -1,19 +1,18 @@
-## Changelog : proconnect-identite (30 derniers jours, au 19 mai 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur en cas d'erreur OIDC, la migration progressive des envois d'emails depuis MonComptePro, et la clarification des motifs de rejet lors des demandes de certification. Des optimisations techniques et des mises à jour de dépendances ont également été réalisées pour assurer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la robustesse de la plateforme, notamment en préparant la migration des emails vers un nouveau système et en renforçant la gestion des erreurs. Des ajustements ont également été apportés pour supporter la pré-production et améliorer l'expérience utilisateur lors des rejets de certification.
 
 ### Évolutions fonctionnelles
-- Amélioration des messages d'erreur OIDC : une description d'erreur plus détaillée est maintenant transmise à ProConnect Federation (PCF) pour une meilleure compréhension des problèmes d'authentification. [#1914](https://github.com/proconnect-gouv/proconnect-identite/pulls/1914)
-- Clarification du motif de rejet : le motif de rejet d'une demande de certification a été remplacé par un message invitant l'utilisateur à consulter son email pour plus d'informations. [#1927](https://github.com/proconnect-gouv/proconnect-identite/pulls/1927)
-- Migration des emails : début de la migration des envois d'emails depuis MonComptePro, avec l'ajout du nom de l'expéditeur. [#1930](https://github.com/proconnect-gouv/proconnect-identite/pulls/1930)
+- Amélioration du message d'erreur affiché aux utilisateurs en cas de rejet de certification, avec un conseil de vérifier leur boîte email. [#1927](https://github.com/proconnect-gouv/proconnect-identite/pull/1927)
+- Ajout d'une description d'erreur OIDC pour une meilleure information lors de l'authentification avec PCF. [#1926](https://github.com/proconnect-gouv/proconnect-identite/pull/1926)
+- Début de la migration des emails de MonComptePro vers un nouveau système, avec ajout du nom de l'expéditeur pour une meilleure identification. [#1930](https://github.com/proconnect-gouv/proconnect-identite/pull/1930)
 
 ### Évolutions techniques
-- Refactoring des tests E2E : Utilisation de "before hook" pour initialiser la base de données avant la plupart des tests E2E, améliorant ainsi leur fiabilité et leur performance. [#1926](https://github.com/proconnect-gouv/proconnect-identite/pulls/1926)
-- Optimisation des dépendances : Mise à jour de plusieurs dépendances, incluant `redis`, `hono`, `prettier`, `systeminformation`, `brace-expansion`, `lodash`, `cypress-io/github-action` et `actions/labeler`.
-- Rétrogradation de la version de Node : Rétrogradation de la version de Node de 26-slim à 24-slim suite à des problèmes rencontrés. [#1925](https://github.com/proconnect-gouv/proconnect-identite/pulls/1925)
+- Création d'un client dédié pour l'environnement de pré-production de la fédération, incluant la mise à jour des identifiants et secrets correspondants. [#1937](https://github.com/proconnect-gouv/proconnect-identite/pull/1937), [#1938](https://github.com/proconnect-gouv/proconnect-identite/pull/1938), [#1939](https://github.com/proconnect-gouv/proconnect-identite/pull/1939)
+- Refactorisation de la logique de seed de la base de données pour les tests end-to-end, utilisant un hook `before` pour une meilleure gestion. [#1926](https://github.com/proconnect-gouv/proconnect-identite/pull/1926)
+- Rétrogradation de la version de Node dans les conteneurs Docker suite à des problèmes rencontrés avec la version 26. [#1925](https://github.com/proconnect-gouv/proconnect-identite/pull/1925)
 
 ### Autres changements
-- Documentation : Mise à jour de la vue `certification-dirigeant/close-match-error.ejs`.
-- Maintenance : Suppression d'une dépendance obsolète (`dotenvx`).
-- CI/CD : Mise à jour de la configuration du workflow CI/CD.
+- Mise à jour de plusieurs dépendances : `brace-expansion`, `systeminformation`, `prettier`, `hono`, `redis`, `cypress-io/github-action`, `actions/labeler`, `lodash`, `sentry`.
+- Correction d'un script d'update des annuaires. [#1941](https://github.com/proconnect-gouv/proconnect-identite/pull/1941)
