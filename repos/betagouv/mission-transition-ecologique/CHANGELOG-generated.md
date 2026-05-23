@@ -1,13 +1,14 @@
-## Changelog : mission-transition-ecologique (30 derniers jours, au 19 mai 2026)
+## Changelog : mission-transition-ecologique (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières des jeux de données des programmes et projets de transition écologique. Une correction a également été apportée pour étendre la validité des dates dans les tests des programmes, assurant ainsi la pérennité des tests automatisés.
+Ce mois-ci, les mises à jour se sont principalement concentrées sur la maintenance et la correction de bugs, notamment une correction pour éviter une potentielle fuite de mémoire en production. Les données des programmes et projets ont également été mises à jour régulièrement via des actions automatisées.
 
 ### Évolutions fonctionnelles
-- Extension de la validité des dates dans le fichier de tests `programs_tests.json` jusqu'en 2027, garantissant le bon fonctionnement des tests automatisés sur la durée. [#2617](https://github.com/betagouv/mission-transition-ecologique/issues/2617)
+- Correction d'un problème potentiel de fuite de mémoire en production. [#2622](https://github.com/betagouv/mission-transition-ecologique/issues/2622)
+- Extension des dates de validité des données de test des programmes jusqu'en 2027 pour faciliter les tests et le développement.
 
 ### Évolutions techniques
-- Mises à jour automatisées des jeux de données des programmes et projets de transition écologique via les workflows GitHub Actions. Ces mises à jour sont réalisées régulièrement pour maintenir l'application à jour avec les dernières informations disponibles. (Plusieurs commits, ex: [#2611](https://github.com/betagouv/mission-transition-ecologique/issues/2611), [#2610](https://github.com/betagouv/mission-transition-ecologique/issues/2610), [#2607](https://github.com/betagouv/mission-transition-ecologique/issues/2607), etc.)
+- Mises à jour régulières des données des programmes et projets via des workflows automatisés. (plusieurs PRs, voir l'historique des commits)
 
 ### Autres changements
-- Aucune information supplémentaire à signaler.
+- Mise à jour des dépendances et des projets via des actions automatisées. (plusieurs PRs, voir l'historique des commits)
