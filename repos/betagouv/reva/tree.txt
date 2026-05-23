@@ -2172,9 +2172,7 @@
     │   │   │   └── utils
     │   │   │       ├── input-sanitization.ts
     │   │   │       ├── keycloak.utils.test.ts
-    │   │   │       ├── keycloak.utils.ts
-    │   │   │       ├── otp-challenge.utils.test.ts
-    │   │   │       └── otp-challenge.utils.ts
+    │   │   │       └── keycloak.utils.ts
     │   │   ├── appointment
     │   │   │   ├── appointment.graphql
     │   │   │   ├── appointment.resolvers.ts
@@ -2369,10 +2367,13 @@
     │   │   │   │   ├── candidateFinalizeRegistrationWithPassword.test.ts
     │   │   │   │   ├── candidateFinalizeRegistrationWithPassword.ts
     │   │   │   │   ├── candidateForgotPassword.ts
+    │   │   │   │   ├── candidateLoginWithCredentials.test.ts
     │   │   │   │   ├── candidateLoginWithCredentials.ts
     │   │   │   │   ├── candidateLoginWithToken.ts
     │   │   │   │   ├── candidateResetPassword.test.ts
     │   │   │   │   ├── candidateResetPassword.ts
+    │   │   │   │   ├── candidateVerifyOtpChallenge.test.ts
+    │   │   │   │   ├── candidateVerifyOtpChallenge.ts
     │   │   │   │   ├── deleteFranceConnectSandboxCandidates.test.ts
     │   │   │   │   ├── deleteFranceConnectSandboxCandidates.ts
     │   │   │   │   ├── franceConnectSandboxEmails.constant.ts
@@ -2395,7 +2396,8 @@
     │   │   │   │   └── security.ts
     │   │   │   └── utils
     │   │   │       ├── candidate.helpers.ts
-    │   │   │       └── candidate.url.helpers.ts
+    │   │   │       ├── candidate.url.helpers.ts
+    │   │   │       └── keycloak.utils.ts
     │   │   ├── certification-authority
     │   │   │   ├── certification-authority.graphql
     │   │   │   ├── certification-authority.loaders.ts
@@ -2878,7 +2880,12 @@
     │   │   │   ├── auth
     │   │   │   │   ├── auth.helper.ts
     │   │   │   │   ├── getKeycloakAdmin.ts
-    │   │   │   │   └── jwt.helper.ts
+    │   │   │   │   ├── jwt.helper.ts
+    │   │   │   │   ├── keycloak-token.utils.test.ts
+    │   │   │   │   ├── keycloak-token.utils.ts
+    │   │   │   │   ├── otp-challenge.utils.test.ts
+    │   │   │   │   ├── otp-challenge.utils.ts
+    │   │   │   │   └── wrap-keycloak-unavailable.ts
     │   │   │   ├── config
     │   │   │   │   └── config.ts
     │   │   │   ├── date
@@ -4507,7 +4514,6 @@
     │   ├── cypress
     │   │   ├── e2e
     │   │   │   └── dashboard
-    │   │   │       ├── dashboard-banner.cy.js
     │   │   │       └── dashboard-tiles.cy.ts
     │   │   ├── fixtures
     │   │   │   ├── auth
@@ -4684,6 +4690,9 @@
     │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── layout.tsx
     │   │   │   │   ├── login
+    │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   ├── CredentialsStep.tsx
+    │   │   │   │   │   │   └── OtpStep.tsx
     │   │   │   │   │   ├── login.hooks.ts
     │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── logout-confirmation
@@ -5193,6 +5202,8 @@
     │   │       │   │   ├── candidacy-dropout-confirmation.spec.ts
     │   │       │   │   ├── candidacy-dropout-decision.spec.ts
     │   │       │   │   └── candidacy-dropout-warning.spec.ts
+    │   │       │   ├── dashboard-banners.spec.ts
+    │   │       │   ├── dashboard-project-setup-tiles.spec.ts
     │   │       │   ├── dashboard-sidebar-appointments-tile.spec.ts
     │   │       │   ├── dashboard-sidebar-contacts-tile.spec.ts
     │   │       │   ├── dashboard.spec.ts
@@ -5975,4 +5986,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2013 directories, 3964 files
+2014 directories, 3974 files

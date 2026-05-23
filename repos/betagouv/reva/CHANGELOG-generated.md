@@ -1,39 +1,43 @@
-## Changelog : reva (30 derniers jours, au 2026-05-19)
+## Changelog : reva (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment pour les administrateurs et les candidats. Des fonctionnalités ont été ajoutées pour la gestion des lieux d'accueil, des résultats de jury, et des informations sur les organismes certificateurs. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que des améliorations de l'infrastructure et de l'authentification.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de la sécurité avec l'implémentation de l'authentification à deux facteurs (2FA) via TOTP, l'ajout de nouvelles fonctionnalités pour les administrateurs (gestion des lieux d'accueil, tableaux de bord AAP, gestion des dates de jury), et des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des efforts ont également été faits pour moderniser l'infrastructure et les dépendances du projet.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de détails pour les organismes certificateurs avec les informations de contact. [#f849ff2](https://github.com/betagouv/reva/commit/f849ff2)
-- Possibilité pour les administrateurs de confirmer l'abandon d'une candidature par un candidat. [#f8b6247](https://github.com/betagouv/reva/commit/f8b6247)
-- Ajout d'un tableau de bord pour les gestionnaires d'AAP (Agents d'Accompagnement Personnalisés). [#eca9f8c](https://github.com/betagouv/reva/commit/eca9f8c)
-- Les organismes certificateurs peuvent accéder à leurs statistiques. [#477ca45](https://github.com/betagouv/reva/commit/477ca45)
-- Ajout d'une page de détails des résultats de jury pour les candidats. [#b109b26](https://github.com/betagouv/reva/commit/b109b26)
-- Amélioration de l'affichage des informations sur les lieux d'accueil dans l'interface administrateur. [#fc63b38](https://github.com/betagouv/reva/commit/fc63b38)
-- Possibilité de supprimer un lieu d'accueil avec une confirmation pour éviter les suppressions accidentelles. [#bd214c5](https://github.com/betagouv/reva/commit/bd214c5)
-- Amélioration du flux d'abonnement des AAP avec des messages d'avertissement pour l'email et le SIRET. [#30ac969](https://github.com/betagouv/reva/commit/30ac969)
-- Ajout d'une fonctionnalité permettant de verrouiller la modification des expériences pour les candidatures AAP une fois le dossier de faisabilité soumis. [#3317bc5](https://github.com/betagouv/reva/commit/3317bc5)
-- Ajout de la possibilité de renvoyer un email de formation confirmée. [#1e467aa](https://github.com/betagouv/reva/commit/1e467aa)
-- Amélioration de l'affichage du code département et de la ville dans le composant d'autocomplétion d'adresse. [#41980fc](https://github.com/betagouv/reva/commit/41980fc)
+- **Authentification:** Ajout de l'authentification à deux facteurs (TOTP) pour les candidats avec interface utilisateur dédiée et mutation API correspondante. [#027d26b](https://github.com/betagouv/reva/commit/027d26b)
+- **Administration:**
+    - Amélioration de la gestion des lieux d'accueil avec ajout d'un bouton de suppression et d'une confirmation pour éviter les suppressions accidentelles. [#bd214c5](https://github.com/betagouv/reva/commit/bd214c5)
+    - Ajout de nouveaux tableaux de bord pour les gestionnaires AAP, incluant des informations sur les résultats des jurys. [#0c7a996](https://github.com/betagouv/reva/commit/0c7a996)
+    - Possibilité pour les administrateurs de confirmer un abandon de candidature par un candidat. [#5f9bdb2](https://github.com/betagouv/reva/commit/5f9bdb2)
+    - Amélioration de l'interface et de l'expérience utilisateur de la page d'archivage des candidatures. [#36bd05d](https://github.com/betagouv/reva/commit/36bd05d)
+- **Candidatures:**
+    - Ajout d'un bouton de suppression de candidature pour les candidats (sous conditions). [#1d1c02e](https://github.com/betagouv/reva/commit/1d1c02e)
+    - Amélioration des messages d'information concernant l'abandon de candidature. [#27a0f41](https://github.com/betagouv/reva/commit/27a0f41)
+- **API:**
+    - Possibilité pour l'administrateur de confirmer un abandon de candidature. [#f8b6247](https://github.com/betagouv/reva/commit/f8b6247)
+    - Ajout d'une fonction pour corriger les codes INSEE des pays de naissance, notamment pour France Connect. [#10efe8c](https://github.com/betagouv/reva/commit/10efe8c)
+    - Amélioration des règles métier concernant la fin d'accompagnement. [#336a70d](https://github.com/betagouv/reva/commit/336a70d)
+    - Ajout de la possibilité de planifier une date de jury uniquement après l'envoi du dossier de validation. [#670237f](https://github.com/betagouv/reva/commit/670237f)
 
 ### Évolutions techniques
-- Refactorisation de l'authentification administrateur avec l'ajout de routes publiques/privées, de la gestion des cookies et de l'intégration de Keycloak. [#86d59df](https://github.com/betagouv/reva/commit/86d59df) et suivants
-- Mise à jour de Next.js dans plusieurs packages (admin, candidate, vae-collective, website). [#c2e0cfb](https://github.com/betagouv/reva/commit/c2e0cfb), [#93981f6](https://github.com/betagouv/reva/commit/93981f6), [#31293dd](https://github.com/betagouv/reva/commit/31293dd), [#60a1e4e](https://github.com/betagouv/reva/commit/60a1e4e)
-- Amélioration de la gestion des tokens et des cookies pour une meilleure sécurité. [#7c7b3cc](https://github.com/betagouv/reva/commit/7c7b3cc), [#38de2c3](https://github.com/betagouv/reva/commit/38de2c3), [#957a031](https://github.com/betagouv/reva/commit/957a031)
-- Suppression de variables d'environnement inutilisées. [#e08baa5](https://github.com/betagouv/reva/commit/e08baa5)
-- Mise à jour des dépendances (uuid, postcss, axios, fast-uri, etc.).
-- Amélioration de la gestion des erreurs Keycloak. [#75356d6](https://github.com/betagouv/reva/commit/75356d6)
-- Suppression de code obsolète lié à l'inactivité des candidatures. [#0cbd8a2](https://github.com/betagouv/reva/commit/0cbd8a2) et suivants
-- Ajout de scripts pour anonymiser les bases de données Reva et Keycloak. [#efc43f3](https://github.com/betagouv/reva/commit/efc43f3)
+- **Sécurité:**
+    - Refonte de l'authentification de l'administration avec Keycloak, incluant l'utilisation de cookies httpOnly pour une meilleure sécurité. [#7c7b3cc](https://github.com/betagouv/reva/commit/7c7b3cc)
+    - Amélioration de la gestion des tokens et des sessions. [#9c17500](https://github.com/betagouv/reva/commit/9c17500)
+- **Infrastructure:**
+    - Mise à jour de plusieurs dépendances (Next.js, Strapi, etc.).
+    - Amélioration de la configuration de Traefik pour augmenter la limite de débit. [#f3bf3eb](https://github.com/betagouv/reva/commit/f3bf3eb)
+- **Tests:**
+    - Augmentation du nombre de shards Playwright pour améliorer la performance des tests. [#537c1d9](https://github.com/betagouv/reva/commit/537c1d9)
+    - Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
+- **Refactoring:**
+    - Nettoyage et simplification du code dans divers modules. [#a45d459](https://github.com/betagouv/reva/commit/a45d459)
+    - Extraction de composants réutilisables.
 
 ### Autres changements
-- Amélioration de la documentation et des tests unitaires.
-- Corrections de style et de typographie.
+- Amélioration de la documentation et des messages d'erreur.
+- Mise à jour des dépendances pour corriger des vulnérabilités et améliorer la stabilité.
+- Corrections de typographie et d'accessibilité.
+- Suppression de code obsolète.
 - Ajout de logs pour faciliter le débogage.
-- Amélioration de la performance de certaines requêtes API.
-- Mise à jour de la configuration de Strapi. [#db8f98d](https://github.com/betagouv/reva/commit/db8f98d) et [#da9c36c](https://github.com/betagouv/reva/commit/da9c36c)
-- Suppression de traces de logs d'impersonation. [#7c817ab](https://github.com/betagouv/reva/commit/7c817ab)
-- Amélioration de la gestion des erreurs et des messages d'alerte.
-- Ajustements de l'interface utilisateur pour une meilleure expérience utilisateur.
-- Correction de bugs mineurs.
-- Suppression de la redirection URL pour le token et remplacement par un cookie httpOnly. [#38de2c3](https://github.com/betagouv/reva/commit/38de2c3) et suivants.
+- Amélioration des performances de certaines requêtes API.
+- Suppression de certaines fonctionnalités expérimentales.
