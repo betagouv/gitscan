@@ -1,4 +1,5 @@
 .
+├── .dockerignore
 ├── .env.template
 ├── .github
 │   ├── renovate.json
@@ -6,7 +7,7 @@
 │       ├── checkov.yml
 │       ├── ci.yml
 │       ├── codeql-analysis.yml
-│       ├── deploie_evaluation.yml
+│       ├── deploiement.yml
 │       ├── lance_evaluation_manuelle_mqc.yml
 │       └── lance_evaluation_manuelle_reformulation.yml
 ├── .gitignore
@@ -33,11 +34,20 @@
 │   ├── documents_distants.json
 │   ├── jointure-nom-guide.csv
 │   ├── jointure-nom-tous-documents.csv
+│   ├── pages_html
+│   │   ├── demainspecialiste.cyber.gouv.fr_.html
+│   │   ├── demainspecialiste.cyber.gouv.fr_cyber-en-jeux.html
+│   │   ├── messervices.cyber.gouv.fr_.html
+│   │   └── messervices.cyber.gouv.fr_nis2.html
 │   ├── questions_avec_verite_terrain.csv
 │   ├── questions_avec_verite_terrain_3.csv
 │   └── questions_avec_verite_terrain_tous_documents.csv
 ├── pyproject.toml
 ├── scripts
+│   ├── admin
+│   │   ├── genere_token.py
+│   │   ├── liste_les_collections.py
+│   │   └── supprime_collection.py
 │   ├── clever-cloud
 │   │   └── pre-run-clever.sh
 │   └── puppeteer.js
@@ -51,6 +61,7 @@
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── api.py
+│   │   ├── api_collections.py
 │   │   ├── api_documents.py
 │   │   ├── api_evaluation.py
 │   │   ├── api_jeopardy.py
@@ -74,7 +85,6 @@
 │   │   ├── indexe_documents_rag.py
 │   │   ├── indexeur
 │   │   │   ├── indexeur.py
-│   │   │   ├── indexeur_albert.py
 │   │   │   └── indexeur_docling.py
 │   │   ├── options_guides.json
 │   │   ├── page.py
@@ -83,6 +93,7 @@
 │   │   │   ├── categorise_le_contenu.py
 │   │   │   ├── cree_document_pdf.py
 │   │   │   └── document_pdf.py
+│   │   ├── service_indexation_collections.py
 │   │   └── service_indexation_documents.py
 │   ├── evaluation
 │   │   ├── __init__.py
@@ -160,6 +171,7 @@
 │   │   └── test_client_albert_indexation_reel.py
 │   ├── api
 │   │   ├── conftest.py
+│   │   ├── test_api_collections.py
 │   │   ├── test_api_documents.py
 │   │   ├── test_api_evaluation.py
 │   │   ├── test_api_evaluation_reformulation.py
@@ -179,13 +191,14 @@
 │   │   │   ├── test_document_qr.py
 │   │   │   └── test_slugifie.py
 │   │   ├── indexeur
-│   │   │   ├── test_indexeur_albert.py
 │   │   │   └── test_indexeur_docling.py
 │   │   ├── pdf
 │   │   │   ├── test_categorise_le_contenu.py
 │   │   │   └── test_document_pdf.py
 │   │   ├── test_indexe_documents_rag.py
-│   │   └── test_service_d_indexation.py
+│   │   ├── test_service_indexation_collection.py
+│   │   ├── test_service_indexation_collections.py
+│   │   └── test_service_indexation_document.py
 │   ├── evaluation
 │   │   ├── conftest.py
 │   │   ├── mqc
@@ -265,4 +278,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-56 directories, 211 files
+58 directories, 222 files

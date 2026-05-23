@@ -1,30 +1,31 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 15 mai 2026)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'indexation et de l'évaluation des documents, ainsi que sur la sécurité et la gestion des dépendances. De nouvelles fonctionnalités permettent la gestion de documents "maîtrisés" (questions/réponses) et l'utilisation d'OCR via Docling. Des corrections ont été apportées pour améliorer la robustesse et la fiabilité du système.
+Ce mois-ci, le projet a connu des améliorations significatives en matière de gestion des collections de documents, de sécurité et d'indexation. De nouvelles fonctionnalités permettent de créer des collections à partir de différents types de documents, d'indexer des documents distants et maîtrisés, et de gérer plus finement les accès via des tokens JWT. Des corrections de sécurité et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de supprimer des documents indexés. [#44a5bf3](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/44a5bf3)
-- Implémentation d'une route POST `/documents` pour l'indexation de documents. [#a59d534](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/a59d534)
-- Ajout d'une route POST `/evaluation` pour lancer une évaluation. [#53b8f3a](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/53b8f3a)
-- Possibilité de passer les fichiers d'évaluation et de mapping en argument à `evaluateur_mqc`. [#33efb0d](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/33efb0d)
-- Introduction de la gestion de documents contenant des questions/réponses maîtrisées, avec la possibilité de les indexer et de les ajouter à une collection. [#ff400c9](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/ff400c9)
-- Intégration d'un appel à un VLM (Vision Language Model) via ALBERT pour effectuer de l'OCR (reconnaissance optique de caractères) via Docling. [#e93409e](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/e93409e)
-- Ajout d'un dataset contenant tous les documents. [#471295a](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/471295a)
+- Ajout d'une route `/api/collections/` pour créer une nouvelle collection à partir de différents types de documents (maîtrisés, distants, etc.). [#83a9f80](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/83a9f80)
+- Possibilité de nommer la collection lors de sa création. [#4cc551d](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/4cc551d)
+- Implémentation de la gestion des documents maîtrisés (questions/réponses) et possibilité de les ajouter à une collection. [#ff400c9](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/ff400c9)
+- Ajout d'une route `/api/documents` pour l'indexation de documents. [#a59d534](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/a59d534)
+- Possibilité de modifier les documents déjà indexés. [#e14abbc](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/e14abbc)
+- Ajout d'une route `/evaluation` pour l'évaluation des documents via un VLM (Vision Language Model) et Docling. [#53b8f3a](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/53b8f3a)
+- Amélioration du prompt pour interdire les questions relatives aux Rx. [#b83f216](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/b83f216)
+- Ajout d'un script pour générer des tokens JWT. [#e7e9dfe](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/e7e9dfe)
 
 ### Évolutions techniques
-- Implémentation d'un *cooldown* d'une semaine pour l'installation des dépendances afin d'améliorer la sécurité. [#a7dd503](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/a7dd503)
-- L'indexation et l'évaluation sont maintenant exécutées dans des tâches en arrière-plan pour améliorer la réactivité de l'API. [#d0a1b78](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/d0a1b78) et [#b98730a](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/b98730a)
-- Correction d'une erreur de déploiement due à une dépendance manquante (pilote Postgres). [#6350851](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/6350851)
-- Renforcement du prompt pour interdire les questions relatives aux Rx. [#b83f216](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/b83f216)
-- Suppression de la notion de score de similarité. [#0650eee](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/0650eee)
-- Amélioration de la gestion des erreurs lors de l'évaluation, avec journalisation des erreurs d'origine. [#ab118ff](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/ab118ff)
-- Vérification de la signature du token JWT et fourniture du secret JWT en paramètre. [#ad2d80b](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/ad2d80b) et [#151a83b](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/151a83b)
+- Sécurisation de toutes les routes avec authentification JWT. [#972d73b](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/972d73b)
+- Refactorisation du service d'indexation. [#d482b79](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/d482b79)
+- Suppression de l'indexeur Albert. [#6358a5a](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/6358a5a)
+- Utilisation de tâches en arrière-plan pour l'indexation et l'évaluation afin d'améliorer la performance. [#d0a1b78](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/d0a1b78), [#b98730a](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/b98730a)
+- Déploiement en production automatisé via une GitHub Action. [#eb7c387](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/eb7c387)
+- Amélioration de la configuration Docker pour éviter d'embarquer tous les fichiers du projet dans l'image. [#be6498e](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/be6498e)
+- Correction d'alertes de sécurité Dependabot de haute sévérité. [#f8ce26d](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/f8ce26d)
 
 ### Autres changements
-- Correction de bugs et améliorations de la sortie de `deepeval`. [#5c38282](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/5c38282), [#b5871b0](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/b5871b0), [#46b4596](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/46b4596)
-- Slugification de la question de la réponse maîtrisée. [#da04f69](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/da04f69)
-- Refactoring du code pour introduire des documents contenant des questions/réponses maîtrisées. [#afdd7c6](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/afdd7c6)
-- Ajout d'un fichier de configuration minimal pour Renovate. [#4e0b91d](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/4e0b91d)
-- Les documents sont maintenant "jeopardisés" une fois indexés. [#cd27315](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/cd27315)
-- Correction d'un problème où l'exécution de `document_existe` et `supprime_document` pouvait interrompre le traitement. [#c05c69d](https://github.com/betagouv/anssi-recommandations-cyber-data/issues/c05c69d)
+- Ajout de logs lors de l'indexation. [#37e3b35](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/37e3b35)
+- Suppression de fichiers JSON obsolètes. [#b46b016](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/b46b016)
+- Correction de la CI pour MQC. [#32034cf](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/32034cf)
+- Ajout de documentation. [#0a63179](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/0a63179)
+- Configuration du logger. [#8d8db2e](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/8d8db2e)
+- Ajout d'un fichier de configuration minimal pour Renovate. [#4e0b91d](https://github.com/betagouv/anssi-recommandations-cyber-data/pulls/4e0b91d)
