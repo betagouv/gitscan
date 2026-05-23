@@ -215,6 +215,7 @@
 │   │   │   ├── 0033_add_cancelled_at.sql
 │   │   │   ├── 0034_tranquil_catseye.sql
 │   │   │   ├── 0035_status_history.sql
+│   │   │   ├── 0036_add_step_change_event_type.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -237,6 +238,7 @@
 │   │   │       ├── 0033_snapshot.json
 │   │   │       ├── 0034_snapshot.json
 │   │   │       ├── 0035_snapshot.json
+│   │   │       ├── 0036_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -262,14 +264,16 @@
 │   │   │   ├── copy-dsfr.mjs
 │   │   │   ├── copy-swagger-ui.mjs
 │   │   │   ├── entrypoint.sh
-│   │   │   ├── fetch-large-companies.ts
+│   │   │   ├── fetch-companies.ts
 │   │   │   ├── generate-edge-case-gip-data.ts
 │   │   │   ├── generate-mock-gip-data.ts
 │   │   │   ├── migrate.mjs
 │   │   │   └── post-process-schema-wiki.ts
 │   │   ├── src
 │   │   │   ├── __tests__
-│   │   │   │   └── middleware.test.ts
+│   │   │   │   ├── middleware.test.ts
+│   │   │   │   └── scripts
+│   │   │   │       └── generate-mock-gip-data.test.ts
 │   │   │   ├── app
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── declarations
@@ -525,13 +529,23 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── schemas.ts
 │   │   │   │   │   └── stats
+│   │   │   │   │       ├── AdminKpiTile.tsx
 │   │   │   │   │       ├── CampaignProgressionChart.module.scss
 │   │   │   │   │       ├── CampaignProgressionChart.tsx
 │   │   │   │   │       ├── CampaignProgressionTable.tsx
+│   │   │   │   │       ├── CampaignRateTile.tsx
 │   │   │   │   │       ├── CampaignStatsPage.tsx
+│   │   │   │   │       ├── StepDurationsChart.module.scss
+│   │   │   │   │       ├── StepDurationsChart.tsx
+│   │   │   │   │       ├── StepDurationsTable.tsx
 │   │   │   │   │       ├── YearsFilter.tsx
 │   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   ├── AdminKpiTile.test.tsx
 │   │   │   │   │       │   ├── CampaignProgressionTable.test.tsx
+│   │   │   │   │       │   ├── CampaignRateTile.test.tsx
+│   │   │   │   │       │   ├── CampaignStatsPage.test.tsx
+│   │   │   │   │       │   ├── StepDurationsChart.test.tsx
+│   │   │   │   │       │   ├── StepDurationsTable.test.tsx
 │   │   │   │   │       │   └── YearsFilter.test.tsx
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── schemas.ts
@@ -803,6 +817,7 @@
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── campaign.test.ts
+│   │   │   │   │   │   ├── companyObligation.test.ts
 │   │   │   │   │   │   ├── companySize.test.ts
 │   │   │   │   │   │   ├── declarationDisplay.test.ts
 │   │   │   │   │   │   ├── declarationFlags.test.ts
@@ -810,6 +825,7 @@
 │   │   │   │   │   │   ├── declarationPrerequisites.test.ts
 │   │   │   │   │   │   ├── declarationProcessStep.test.ts
 │   │   │   │   │   │   ├── declarationStatus.test.ts
+│   │   │   │   │   │   ├── declarationSteps.test.ts
 │   │   │   │   │   │   ├── declarationTrajectory.test.ts
 │   │   │   │   │   │   ├── format.test.ts
 │   │   │   │   │   │   ├── formatLongDate.test.ts
@@ -822,6 +838,7 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── campaign.ts
+│   │   │   │   │   │   ├── companyObligation.ts
 │   │   │   │   │   │   ├── companySize.ts
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── declarationDisplay.ts
@@ -829,6 +846,7 @@
 │   │   │   │   │   │   ├── declarationPrerequisites.ts
 │   │   │   │   │   │   ├── declarationProcessStep.ts
 │   │   │   │   │   │   ├── declarationStatus.ts
+│   │   │   │   │   │   ├── declarationSteps.ts
 │   │   │   │   │   │   ├── declarationTrajectory.ts
 │   │   │   │   │   │   ├── format.ts
 │   │   │   │   │   │   ├── gap.ts
@@ -879,8 +897,11 @@
 │   │   │   │   │   ├── queries.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── statusHistoryLabels.test.ts
 │   │   │   │   │   │   ├── apiLabels.ts
-│   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── statusHistoryLabels.ts
 │   │   │   │   │   ├── swagger-ui.d.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── faq
@@ -1152,7 +1173,8 @@
 │   │   │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   │   │   └── declarationTestHelpers.ts
 │   │   │   │   │   │   │   ├── jointEvaluation.test.ts
-│   │   │   │   │   │   │   └── publicReferents.test.ts
+│   │   │   │   │   │   │   ├── publicReferents.test.ts
+│   │   │   │   │   │   │   └── statusHistoryHelpers.test.ts
 │   │   │   │   │   │   ├── admin.ts
 │   │   │   │   │   │   ├── adminDeclarations.ts
 │   │   │   │   │   │   ├── adminReferents.ts
@@ -1300,4 +1322,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-241 directories, 1061 files
+243 directories, 1081 files
