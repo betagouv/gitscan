@@ -485,6 +485,7 @@
     │   │   │   ├── logo-suite-numerique.png
     │   │   │   ├── logo.svg
     │   │   │   ├── mustache.png
+    │   │   │   ├── pip.svg
     │   │   │   └── reactions
     │   │   │       ├── clapping-hands.png
     │   │   │       ├── face-with-open-mouth.png
@@ -583,6 +584,7 @@
     │   │   │   │   ├── MainNotificationToast.tsx
     │   │   │   │   ├── NotificationDuration.ts
     │   │   │   │   ├── NotificationPayload.ts
+    │   │   │   │   ├── NotificationProvider.tsx
     │   │   │   │   ├── NotificationType.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── Toast.tsx
@@ -603,6 +605,29 @@
     │   │   │   │   │   └── useSoundNotification.tsx
     │   │   │   │   ├── index.ts
     │   │   │   │   └── utils.ts
+    │   │   │   ├── pip
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── PictureInPictureConference.tsx
+    │   │   │   │   │   ├── PictureInPicturePortal.tsx
+    │   │   │   │   │   ├── PipControlBar.tsx
+    │   │   │   │   │   ├── PipFloatingReactions.tsx
+    │   │   │   │   │   ├── PipRoomPlaceholder.tsx
+    │   │   │   │   │   ├── PipView.tsx
+    │   │   │   │   │   ├── controls
+    │   │   │   │   │   │   ├── PipOptionsMenu.tsx
+    │   │   │   │   │   │   └── PipOptionsMenuItems.tsx
+    │   │   │   │   │   └── layout
+    │   │   │   │   │       ├── PipFocusLayout.tsx
+    │   │   │   │   │       ├── PipGridLayout.tsx
+    │   │   │   │   │       ├── PipStage.tsx
+    │   │   │   │   │       └── StageFrame.tsx
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   ├── useDismissOnEscape.ts
+    │   │   │   │   │   ├── usePictureInPicture.ts
+    │   │   │   │   │   └── usePipElementSize.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── pipGrid.ts
+    │   │   │   │       └── pipTrackSelection.ts
     │   │   │   ├── reactions
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ReactionPortals.tsx
@@ -732,6 +757,7 @@
     │   │   │   │   │   │   │   │   ├── FullScreenMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── OptionsButton.tsx
     │   │   │   │   │   │   │   │   ├── OptionsMenuItems.tsx
+    │   │   │   │   │   │   │   │   ├── PictureInPictureMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── ScreenRecordingMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── SettingsMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── SupportMenuItem.tsx
@@ -945,6 +971,7 @@
     │   │   │   ├── Box.tsx
     │   │   │   ├── Button.tsx
     │   │   │   ├── Checkbox.tsx
+    │   │   │   ├── CrossDocumentOverlaysContext.tsx
     │   │   │   ├── Dialog.tsx
     │   │   │   ├── Div.tsx
     │   │   │   ├── Field.tsx
@@ -986,6 +1013,7 @@
     │   │   │   ├── accessibility.ts
     │   │   │   ├── chat.ts
     │   │   │   ├── connectionObserver.ts
+    │   │   │   ├── documentPictureInPicture.ts
     │   │   │   ├── hints.ts
     │   │   │   ├── keyboardShortcuts.ts
     │   │   │   ├── konami.ts
@@ -1221,4 +1249,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-230 directories, 993 files
+236 directories, 1015 files
