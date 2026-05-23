@@ -1,11 +1,11 @@
-## Changelog : pitchou (30 derniers jours, au 01 avril 2026)
+## Changelog : pitchou (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la gestion des espèces protégées dans Pitchou. L'intégration des listes d'espèces ministérielles et CNPN enrichit la base de données, tandis que des corrections et améliorations de l'interface utilisateur améliorent l'expérience globale.
-
-### Évolutions fonctionnelles
-- Intégration des listes d'espèces ministérielles et CNPN, permettant une gestion plus complète des espèces protégées. [#534](https://github.com/betagouv/pitchou/issues/534)
-- Améliorations de la page de contrôle, optimisant l'interface utilisateur. [#546](https://github.com/betagouv/pitchou/issues/546)
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité, la qualité du code et la mise en place d'un environnement de développement plus robuste. Des tests unitaires ont été ajoutés et l'outil de formatage Prettier a été intégré pour garantir une meilleure cohérence du code.
 
 ### Évolutions techniques
-- Nettoyage du code lié à la tentative de téléchargement de fichiers en production, améliorant la stabilité et la maintenabilité. [#548](https://github.com/betagouv/pitchou/issues/548)
+- Ajout de tests unitaires avec Vitest pour la manipulation de chaînes de caractères. [#559](https://github.com/betagouv/pitchou/issues/559)
+- Mise en place d'un environnement de développement avec Nix et Direnv pour une meilleure reproductibilité. [#558](https://github.com/betagouv/pitchou/issues/558)
+- Renforcement de la sécurité de la connexion et du code d'accès. [#557](https://github.com/betagouv/pitchou/issues/557)
+- Correction dans les migrations : utilisation du paramètre Knex correctement passé. [#556](https://github.com/betagouv/pitchou/issues/556)
+- Intégration et application de Prettier pour le formatage automatique du code. [#555](https://github.com/betagouv/pitchou/issues/555)
