@@ -86,6 +86,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260226124519_add_versioning_datapack
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260310154754_add_historical_demographic_series
+│   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260325134047_add_no_insee_projection_flag
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260326133653_remove_free_sne
@@ -99,6 +101,8 @@
 │   │   │   │   ├── 20260414105500_extend_user_type_enum
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260511131211_user_region
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260520140000_rp_add_millesime
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
@@ -975,7 +979,6 @@
 │       │   │   │   │   ├── create-all-epcis-accommodation-range.tsx
 │       │   │   │   │   ├── create-all-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── create-long-term-accomodation-range.tsx
-│       │   │   │   │   ├── create-peak-year-horizon-alert.tsx
 │       │   │   │   │   ├── create-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── create-simulation-form.tsx
 │       │   │   │   │   ├── create-vacancy-accommodation-rates-input.tsx
@@ -1043,7 +1046,6 @@
 │       │   │   │   │   ├── modify-all-epcis-accommodation-range.tsx
 │       │   │   │   │   ├── modify-all-secondary-accommodation-rate-input.tsx
 │       │   │   │   │   ├── modify-long-term-accomodation-range.tsx
-│       │   │   │   │   ├── modify-peak-year-horizon-alert.tsx
 │       │   │   │   │   ├── modify-vacancy-accommodation-rates-input.tsx
 │       │   │   │   │   ├── next-step-link.tsx
 │       │   │   │   │   ├── peak-year-horizon-alert.tsx
@@ -1134,7 +1136,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (58 files)
+│       │   │   └── use-*.ts  (59 files)
 │       │   ├── lib
 │       │   │   └── auth
 │       │   │       ├── client.ts
@@ -1232,4 +1234,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-364 directories, 927 files
+366 directories, 928 files
