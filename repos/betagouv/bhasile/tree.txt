@@ -22,7 +22,9 @@
 │   ├── db.png
 │   ├── db.svg
 │   ├── ofii_referential.md
-│   └── scripts.md
+│   ├── scripts.md
+│   ├── structure_version.md
+│   └── structure_version.png
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
@@ -209,6 +211,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260430093540_add_two_quality_indicators_on_actes_administratifs
 │   │   │   └── migration.sql
+│   │   ├── 20260521143607_create_structure_version
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -228,6 +232,7 @@
 │   │   ├── operateur.prisma
 │   │   ├── reporting.prisma
 │   │   ├── schema.prisma
+│   │   ├── structure-version.prisma
 │   │   ├── structure.prisma
 │   │   └── user.prisma
 │   ├── seed.ts
@@ -289,7 +294,8 @@
 │   │   ├── 20260323-move-ofii-active-inactive-since-to-dna.ts
 │   │   ├── 20260407-normalize-dates-to-noon.ts
 │   │   ├── 20260410-migrate-structure-notes-to-note.ts
-│   │   └── 20260414-move-indicateurs-financiers.ts
+│   │   ├── 20260414-move-indicateurs-financiers.ts
+│   │   └── 20260521-backfill-structure-version.ts
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
@@ -403,9 +409,12 @@
 │   │   │   │       │   │   │   ├── ActiviteBlock.tsx
 │   │   │   │       │   │   │   ├── ActiviteDurations.tsx
 │   │   │   │       │   │   │   ├── ActiviteHistorique.tsx
+│   │   │   │       │   │   │   ├── ActiviteHistoriqueChart.tsx
+│   │   │   │       │   │   │   ├── ActiviteHistoriqueTable.tsx
 │   │   │   │       │   │   │   ├── ActiviteMotifsIndisponibilite.tsx
 │   │   │   │       │   │   │   ├── ActivitePlaces.tsx
-│   │   │   │       │   │   │   └── ActiviteTypes.tsx
+│   │   │   │       │   │   │   ├── ActiviteTypes.tsx
+│   │   │   │       │   │   │   └── activite.constants.ts
 │   │   │   │       │   │   ├── _calendrier
 │   │   │   │       │   │   │   ├── CalendrierBlock.tsx
 │   │   │   │       │   │   │   ├── DateBar.tsx
@@ -473,8 +482,6 @@
 │   │   │   │       │   │   ├── actes-administratifs
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── adresses
-│   │   │   │       │   │   │   └── page.tsx
-│   │   │   │       │   │   ├── calendrier
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── controle-qualite
 │   │   │   │       │   │   │   └── page.tsx
@@ -772,8 +779,6 @@
 │   │   │   │   │   ├── DepartementAutocomplete.tsx
 │   │   │   │   │   ├── OperateurAutocomplete.tsx
 │   │   │   │   │   └── OperateurAutocompleteRhf.tsx
-│   │   │   │   ├── calendrier
-│   │   │   │   │   └── FieldSetCalendrier.tsx
 │   │   │   │   ├── contacts
 │   │   │   │   │   ├── Contact.tsx
 │   │   │   │   │   └── FieldSetContacts.tsx
@@ -892,6 +897,7 @@
 │   │   ├── globals.css
 │   │   ├── hooks
 │   │   │   ├── useActiviteStats.ts
+│   │   │   ├── useAddressInteraction.ts
 │   │   │   ├── useAddressSuggestion.ts
 │   │   │   ├── useAgentFormHandling.ts
 │   │   │   ├── useAutocomplete.ts
@@ -907,6 +913,7 @@
 │   │   │   ├── useFileUpload.ts
 │   │   │   ├── useForm.ts
 │   │   │   ├── useHeaderHeight.ts
+│   │   │   ├── useHideOnScroll.ts
 │   │   │   ├── useLocalStorage.ts
 │   │   │   ├── useOperateur.ts
 │   │   │   ├── useOperateurFormHandling.ts
@@ -1008,7 +1015,6 @@
 │   │       │   │   ├── getFinanceSchema.ts
 │   │       │   │   └── validateAffectationReservesDetails.ts
 │   │       │   ├── budget.schema.ts
-│   │       │   ├── calendrier.schema.ts
 │   │       │   ├── contact.schema.ts
 │   │       │   ├── controle.schema.ts
 │   │       │   ├── cpom.schema.ts
@@ -1070,8 +1076,6 @@
 │   │       │       │   └── page.test.tsx
 │   │       │       ├── adresses
 │   │       │       │   └── page.test.tsx
-│   │       │       ├── calendrier
-│   │       │       │   └── page.test.tsx
 │   │       │       ├── controle-qualite
 │   │       │       │   └── page.test.tsx
 │   │       │       ├── description
@@ -1124,7 +1128,6 @@
 │   │   └── forms
 │   │       ├── DnaAndFiness.test.tsx
 │   │       ├── FieldSetAdresseAdministrative.test.tsx
-│   │       ├── FieldSetCalendrier.test.tsx
 │   │       ├── FieldSetContacts.test.tsx
 │   │       ├── FieldSetDescription.test.tsx
 │   │       ├── FieldSetNotes.test.tsx
@@ -1182,7 +1185,6 @@
 │   │   │   │   │   ├── FinalisationIdentificationPage.ts
 │   │   │   │   │   └── FinalisationNotesPage.ts
 │   │   │   │   ├── modification
-│   │   │   │   │   ├── ModificationCalendrierPage.ts
 │   │   │   │   │   ├── ModificationControlePage.ts
 │   │   │   │   │   ├── ModificationDescriptionPage.ts
 │   │   │   │   │   ├── ModificationDocumentsPage.ts
@@ -1262,4 +1264,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-346 directories, 918 files
+344 directories, 922 files

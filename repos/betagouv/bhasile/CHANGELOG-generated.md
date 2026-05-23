@@ -1,40 +1,47 @@
-## Changelog : bhasile (30 derniers jours, au 18 mai 2026)
+## Changelog : bhasile (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface utilisateur, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment concernant la gestion des opérateurs, des structures et des documents. Des tests ont été ajoutés pour améliorer la stabilité et la qualité du code. Une refonte architecturale a également été initiée pour améliorer la maintenabilité de l'application.
+Ce mois-ci, les évolutions de bhasile se concentrent sur l'amélioration de l'interface utilisateur, notamment au niveau de la gestion des adresses, des structures et des documents. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. L'ajout de tests et la refactorisation du code sont également des points importants de cette période.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de sélectionner plusieurs structures. [#1230](https://github.com/betagouv/bhasile/issues/1230)
-- Amélioration de l'interface utilisateur pour l'importation d'adresses. [#1206](https://github.com/betagouv/bhasile/issues/1206)
-- Possibilité d'étendre la date de fin des avenants. [#1211](https://github.com/betagouv/bhasile/issues/1211)
-- Ajout d'une recherche d'opérateurs. [#1182](https://github.com/betagouv/bhasile/issues/1182)
-- Amélioration de l'affichage des documents financiers. [#1181](https://github.com/betagouv/bhasile/issues/1181)
-- Ajout d'une modale de confirmation avant de quitter le formulaire de modification. [#1179](https://github.com/betagouv/bhasile/issues/1179)
-- Ajout d'un affichage dynamique du libellé pour les cases à cocher DNA/FINESS. [#1175](https://github.com/betagouv/bhasile/issues/1175)
-- Ajout d'indicateurs de qualité pour les actes administratifs. [#1218](https://github.com/betagouv/bhasile/issues/1218)
-- Ajout de la possibilité de gérer les contacts via des variables d'environnement. [#1208](https://github.com/betagouv/bhasile/issues/1208)
-- Correction de l'affichage de la nouvelle icône favicon. [#1248](https://github.com/betagouv/bhasile/issues/1248)
-- Correction du problème de redirection des opérateurs. [#1252](https://github.com/betagouv/bhasile/issues/1252) et [#1251](https://github.com/betagouv/bhasile/issues/1251)
+- **Gestion des adresses :** Nouvelle fonctionnalité permettant une interaction plus fluide avec les adresses, incluant un hook dédié (`useAddressInteraction`) [#1271].
+- **CPOM :** Ajout de la possibilité d'ajouter des "autres actes administratifs" dans le CPOM [#1266].
+- **Structure :** Migration vers `StructureVersion` pour une meilleure gestion des versions [#1258].
+- **Activité :** Nouveau bloc d'activité a été ajouté [#1262].
+- **Dates des actes administratifs :** Affichage des dates inférées à partir des actes administratifs [#1260].
+- **Documents financiers :** Ajout d'un commentaire pour les documents financiers [#1261].
+- **Interface utilisateur :**
+    - Masquage de l'en-tête collant lors du défilement vers le bas [#1265].
+    - Nouvelle structure de l'en-tête [#1264].
+    - Nouvelle interface pour l'importateur d'adresses [#1206].
+    - Amélioration du formatage de l'input "places autorisées" [#1194].
+- **Avenants :** Possibilité pour les avenants d'étendre la date de fin [#1211].
+- **Opérateur :**
+    - Ajout d'une recherche d'opérateur [#1182].
+    - Corrections et améliorations de l'interface opérateur [#1252, #1251, #1196].
+- **Carte :** Modification de la carte et correction d'un problème de build [#1192, #1212].
+- **Indicateurs de qualité :** Ajout de deux indicateurs de qualité pour les actes administratifs [#1218].
+- **Rapports :** Renommage de champs dans les rapports [#1189].
 
 ### Évolutions techniques
-- Refonte de l'architecture vers une architecture à 3 niveaux. [#1219](https://github.com/betagouv/bhasile/issues/1219)
-- Ajout de tests pour les routes. [#1210](https://github.com/betagouv/bhasile/issues/1210)
-- Ajout de tests pour la page des formulaires. [#1203](https://github.com/betagouv/bhasile/issues/1203)
-- Ajout de tests E2E et correction des tests existants. [#1197](https://github.com/betagouv/bhasile/issues/1197) et [#1184](https://github.com/betagouv/bhasile/issues/1184)
-- Ajout de tests pour le repository des structures. [#1202](https://github.com/betagouv/bhasile/issues/1202)
-- Suppression d'une option TypeScript obsolète. [#1235](https://github.com/betagouv/bhasile/issues/1235)
-- Mise à jour de TypeScript en version 6.0.3. [#1222](https://github.com/betagouv/bhasile/issues/1222)
-- Correction de la conversion latitude/longitude. [#1186](https://github.com/betagouv/bhasile/issues/1186)
-- Suppression d'indicateurs financiers du schéma de budget. [#1205](https://github.com/betagouv/bhasile/issues/1205)
+- **Routes REST :** Déplacement des gestionnaires PUT vers les routes `[id]` pour une meilleure conformité REST [#1270].
+- **Architecture :** Passage à une architecture à 3 niveaux complète [#1219].
+- **Tests :**
+    - Ajout de tests pour les routes [#1210].
+    - Ajout de nouveaux types de tests [#1178].
+    - Ajout de tests pour le repository des structures [#1202].
+    - Correction de tests et ajout de tests E2E [#1197, #1184].
+- **Dépendances :** Mise à jour de plusieurs dépendances (TypeScript, @casl/react, @xmldom/xmldom, next)
+- **Suppression de code obsolète :** Suppression d'une option TypeScript obsolète [#1235].
+- **Optimisation :** Déplacement de la logique `isSubventionee/isAutorisee` côté serveur [#1188].
+- **Logs :** Limitation des logs pour l'activité utilisateur [#1263].
 
 ### Autres changements
-- Mise à jour de l'image de la base de données. [#1253](https://github.com/betagouv/bhasile/issues/1253)
-- Améliorations mineures du style CSS. [#1249](https://github.com/betagouv/bhasile/issues/1249) et [#1213](https://github.com/betagouv/bhasile/issues/1213) et [#1214](https://github.com/betagouv/bhasile/issues/1214) et [#1194](https://github.com/betagouv/bhasile/issues/1194)
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de "aucun(e)" dans les champs de reporting. [#1187](https://github.com/betagouv/bhasile/issues/1187)
-- Ajout du suivi d'utilisation. [#1177](https://github.com/betagouv/bhasile/issues/1177)
-- Correction d'un problème de build pour la carte. [#1212](https://github.com/betagouv/bhasile/issues/1212)
-- Correction d'un problème de flash de loader. [#1195](https://github.com/betagouv/bhasile/issues/1195)
-- Correction d'un bug lié aux finesses nulles. [#1207](https://github.com/betagouv/bhasile/issues/1207)
-- Correction d'un bug lié à la granularité des documents financiers. [#1193](https://github.com/betagouv/bhasile/issues/1193) et [#1190](https://github.com/betagouv/bhasile/issues/1190)
-- Renommage de champs dans le reporting. [#1189](https://github.com/betagouv/bhasile/issues/1189)
+- **Documentation :** Mise à jour de l'image de la base de données [#1253].
+- **CSS :** Corrections mineures de style CSS [#1249, #1233, #1213, #0de3abc].
+- **Configuration :** Déplacement des contacts vers le fichier `.env` [#1208].
+- **Nettoyage de code :** Suppression de dépendances inutiles [#1191].
+- **Correction de bugs :** Correction d'un problème d'affichage de la favicon [#1248].
+- **Correction de conversion latitude/longitude :** Correction d'un bug de conversion de latitude et longitude [#1186].
+- **Correction de bug :** Correction d'un bug concernant les documents sans granularité [#1190, #1183].
+- **Suppression d'éléments inutiles :** Suppression de "aucun(e)" dans les rapports [#1187].
