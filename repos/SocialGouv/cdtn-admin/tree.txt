@@ -95,6 +95,8 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
+│   ├── clean-kali-vigueur-alerts
+│   │   └── package-lock.json
 │   ├── connect_db.sh
 │   ├── dump_db.sh
 │   ├── reset_from_dump.sh
@@ -745,13 +747,18 @@
     │   │   │   │   │   ├── MenuStyle.tsx
     │   │   │   │   │   ├── MenuTable.tsx
     │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   ├── Challenger.test.ts
     │   │   │   │   │   │   ├── Editor.test.tsx
     │   │   │   │   │   │   └── __snapshots__
     │   │   │   │   │   │       └── Editor.test.tsx.snap
     │   │   │   │   │   ├── component
-    │   │   │   │   │   │   └── AddInfographyDialog.tsx
+    │   │   │   │   │   │   ├── AddInfographyDialog.tsx
+    │   │   │   │   │   │   ├── BulkChallengerDialog.tsx
+    │   │   │   │   │   │   ├── ChallengerDialog.tsx
+    │   │   │   │   │   │   └── utils.ts
     │   │   │   │   │   ├── extensions
     │   │   │   │   │   │   ├── Alert.ts
+    │   │   │   │   │   │   ├── Challenger.ts
     │   │   │   │   │   │   ├── Infographic.ts
     │   │   │   │   │   │   ├── Titles.ts
     │   │   │   │   │   │   └── index.ts
@@ -1106,6 +1113,17 @@
     │   │   │   │   │   ├── prequalifiedList.tsx
     │   │   │   │   │   └── prequalifiedRow.tsx
     │   │   │   │   └── type.ts
+    │   │   │   ├── reference-value
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── SmicImpact
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   └── useImpact.ts
+    │   │   │   │   │   └── SmicPage
+    │   │   │   │   │       ├── index.tsx
+    │   │   │   │   │       ├── smic.mutation.ts
+    │   │   │   │   │       └── smic.query.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   └── type.ts
     │   │   │   ├── references
     │   │   │   │   ├── ContributionAnswerReferences.tsx
     │   │   │   │   └── useContributionReferencesQuery.tsx
@@ -1234,6 +1252,9 @@
     │   │   │   │   ├── index.tsx
     │   │   │   │   ├── new.tsx
     │   │   │   │   └── password.tsx
+    │   │   │   ├── valeurs-de-reference
+    │   │   │   │   ├── impact.tsx
+    │   │   │   │   └── index.tsx
     │   │   │   └── what-is-new
     │   │   │       └── index.tsx
     │   │   ├── theme.ts
@@ -1278,6 +1299,7 @@
     │   │   │           ├── news_news.yaml
     │   │   │           ├── news_news_cdtn_references.yaml
     │   │   │           ├── public_*.yaml  (19 files)
+    │   │   │           ├── reference_value_smic_values.yaml
     │   │   │           ├── search_prequalified.yaml
     │   │   │           ├── search_prequalified_documents.yaml
     │   │   │           ├── tables.yaml
@@ -2062,7 +2084,13 @@
     │           ├── 1774862298246_create_table_news_news_cdtn_references
     │           │   ├── down.sql
     │           │   └── up.sql
-    │           └── 1775113841000_delete_dismissals_information_page
+    │           ├── 1775113841000_delete_dismissals_information_page
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1778198400000_create_schema_reference_value
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           └── 1778198401000_create_table_reference_value_smic_values
     │               ├── down.sql
     │               └── up.sql
     └── ingester
@@ -2132,4 +2160,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-563 directories, 1611 files
+571 directories, 1631 files
