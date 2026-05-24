@@ -1,35 +1,36 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les structures associées.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les données associées.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
+    "Authentification & Accès",
     "Statistiques & Rapports",
-    "Gestion des structures & Établissements",
-    "Notifications & Alertes"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
+    "Puma",
     "PostgreSQL",
     "Redis",
     "Devise",
-    "Puma",
-    "Sass",
+    "ActiveAdmin",
     "DSFR",
-    "ActiveAdmin"
+    "Sidekiq"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Ruby (scripts & backend)",
     "Rails",
-    "Docker & Conteneurs",
-    "Tests"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -40,10 +41,12 @@
   },
   "tests": [
     "RSpec",
-    "Capybara"
+    "FactoryBot"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-21T20:38:38+02:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-05-22T16:42:03+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
