@@ -136,8 +136,10 @@
 │   ├── openapi3.yml
 │   ├── package.json
 │   ├── scripts
+│   │   ├── aides-labels-stats.ts
 │   │   ├── backfill-classification.ts
 │   │   ├── backfill-te.ts
+│   │   ├── diagnose-aides-geo.ts
 │   │   ├── generate-types.sh
 │   │   ├── import-projets-tet
 │   │   │   ├── import-projets-tet-data.csv
@@ -152,6 +154,7 @@
 │   │   │   └── import-tc-opendata.ts
 │   │   ├── migrate-projets-to-data-mec-delta.sql
 │   │   ├── migrate-projets-to-data-mec.sql
+│   │   ├── requalify-aides.ts
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
 │   │   ├── seed-referentiel
@@ -176,14 +179,19 @@
 │   │   │   ├── aides-matching.service.ts
 │   │   │   ├── aides-sync.processor.ts
 │   │   │   ├── aides-territoires.service.ts
+│   │   │   ├── aides-textual-matching.service.spec.ts
+│   │   │   ├── aides-textual-matching.service.ts
 │   │   │   ├── aides-warmup.service.spec.ts
 │   │   │   ├── aides-warmup.service.ts
 │   │   │   ├── aides.controller.spec.ts
 │   │   │   ├── aides.controller.ts
 │   │   │   ├── aides.module.ts
-│   │   │   └── dto
-│   │   │       ├── aide-feedback.dto.ts
-│   │   │       └── aides.dto.ts
+│   │   │   ├── const
+│   │   │   │   └── french-stopwords.ts
+│   │   │   ├── dto
+│   │   │   │   ├── aide-feedback.dto.ts
+│   │   │   │   └── aides.dto.ts
+│   │   │   └── textual-matching.bm25.ts
 │   │   ├── analytics
 │   │   │   ├── analytics.controller.ts
 │   │   │   ├── analytics.dto.ts
@@ -393,9 +401,11 @@
 │   │   │   ├── referentiel-doc.setup.ts
 │   │   │   ├── referentiel.module.ts
 │   │   │   ├── referentiel.spec.ts
-│   │   │   └── shared
-│   │   │       └── dto
-│   │   │           └── pagination-query.dto.ts
+│   │   │   ├── shared
+│   │   │   │   └── dto
+│   │   │   │       └── pagination-query.dto.ts
+│   │   │   └── taxonomies
+│   │   │       └── taxonomies.controller.ts
 │   │   ├── security
 │   │   │   ├── throttler.config.ts
 │   │   │   └── throttler.provider.ts
@@ -611,4 +621,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-113 directories, 500 files
+115 directories, 508 files

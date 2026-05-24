@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites",
   "name": "communs-de-la-transition-ecologique-des-collectivites",
-  "description": "Les Communs est un projet visant à centraliser les informations sur les projets de transition écologique des collectivités et à faciliter leur déploiement en les rendant accessibles sur différentes plateformes.",
+  "description": "Les Communs est un projet visant à centraliser les informations sur les projets de transition écologique et à faciliter leur déploiement en les rendant accessibles sur différentes plateformes.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,6 +11,7 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Contenu éditorial"
   ],
   "audience": "Agents de l'Administration",
@@ -19,7 +20,8 @@
     "Express",
     "PostgreSQL",
     "Redis",
-    "pnpm"
+    "BullMQ",
+    "Drizzle-ORM"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,11 +35,14 @@
       "api-key"
     ]
   },
-  "tests": "Jest",
-  "workflows": [
-    "CI/CD & GitHub Actions"
+  "tests": [
+    "Jest",
+    "Cypress"
   ],
-  "lastActivity": "2026-05-08T15:31:11Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-05-22T16:01:21Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
