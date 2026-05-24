@@ -61,6 +61,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260518092703_carcasse_modification_request
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260522060110_svi_automatic_closed_at
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260522062257_premier_detenteur_user_name_cache
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -235,6 +239,7 @@
 │   ├── .prettierignore
 │   ├── README.md
 │   ├── __tests__
+│   │   ├── create-new-carcasse.test.ts
 │   │   ├── fei-steps.test.ts
 │   │   └── update-carcasse-status.test.ts
 │   ├── eslint.config.js
@@ -646,6 +651,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260518092703_carcasse_modification_request
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260522060110_svi_automatic_closed_at
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260522062257_premier_detenteur_user_name_cache
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -853,7 +862,6 @@
 │   │   │   │           ├── HygieneScoreGauge.tsx
 │   │   │   │           ├── RefusalCausesCard.tsx
 │   │   │   │           ├── SeizureRateCard.tsx
-│   │   │   │           ├── SeizureRateCardPersonal.tsx
 │   │   │   │           └── TotalCarcassesCard.tsx
 │   │   │   ├── circuit-court
 │   │   │   │   ├── circuit-court-deactivated.tsx
@@ -1160,6 +1168,9 @@
 │   │   │   ├── 23-deconnexion-pendant-formulaire.spec.ts
 │   │   │   ├── 24-tableau-de-bord-bouton-creer-fiche.spec.ts
 │   │   │   ├── 25-modif-request-dashboard.spec.ts
+│   │   │   ├── 26-examinateur-to-external-pd.spec.ts
+│   │   │   ├── 27-examinateur-as-self-pd.spec.ts
+│   │   │   ├── 28-examinateur-to-association-step-advance.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_examinateur.spec.ts
 │   │   ├── premier-detenteur
@@ -1180,6 +1191,7 @@
 │   │   │   ├── 42-contact.spec.ts
 │   │   │   ├── 43-tableau-de-bord.spec.ts
 │   │   │   ├── 44-onboarding-associations-de-chasse.spec.ts
+│   │   │   ├── 45-dispatch-divergent-recipients.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_premier-detenteur.spec.ts
 │   │   ├── svi
@@ -1209,6 +1221,7 @@
 │   │       ├── 110-deep-link-fiche-inconnue.spec.ts
 │   │       ├── 129-logout-redirects-and-clears-user.spec.ts
 │   │       ├── 130-search-redirect-role-routes.spec.ts
+│   │       ├── 131-fiches-list-sorting.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1285,4 +1298,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-314 directories, 973 files
+318 directories, 982 files
