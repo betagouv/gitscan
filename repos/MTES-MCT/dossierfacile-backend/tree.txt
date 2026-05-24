@@ -5,8 +5,10 @@
 │       └── policy.xml
 ├── .cursor
 │   └── skills
-│       └── new-document-rule
-│           ├── README.md
+│       ├── new-document-rule
+│       │   ├── README.md
+│       │   └── SKILL.md
+│       └── sql-helper
 │           └── SKILL.md
 ├── .github
 │   ├── prompts
@@ -38,7 +40,10 @@
 │           └── Local.bru
 ├── docker-compose.dev.yml
 ├── docs
-│   └── infrastructure_diagram.jpg
+│   ├── export-db.sh
+│   ├── infrastructure_diagram.jpg
+│   └── sql-helper
+│       └── schema-current.sql
 ├── dossier-facile-logging-library
 │   ├── pom.xml
 │   └── src
@@ -673,6 +678,7 @@
 │           │                   │   ├── LinkBruteForceProtectionServiceImplTest.java
 │           │                   │   ├── ScheduledTasksServiceImplTest.java
 │           │                   │   ├── TenantPermissionsServiceImplTest.java
+│           │                   │   ├── TenantServiceImplTest.java
 │           │                   │   ├── UserApiServiceImplTest.java
 │           │                   │   └── UserServiceImplTest.java
 │           │                   ├── util
@@ -1940,7 +1946,8 @@
 │       │       │       ├── 202604140000-add-index-operator-log-operator-action-creation-date.xml
 │       │       │       ├── 202604220000-add-preferred-name-to-guarantor.xml
 │       │       │       ├── 202604290000-set-deployment_date_nullable.xml
-│       │       │       └── 202605130000-drop-json-profile-from-tenant-log.xml
+│       │       │       ├── 202605130000-drop-json-profile-from-tenant-log.xml
+│       │       │       └── 202605200000-add-document-ia-classify-residency-feature-flag.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2020,11 +2027,13 @@
 │       │   │                   │   ├── AvisImpositionRulesValidationService.java
 │       │   │                   │   ├── BulletinSalaireRulesValidationService.java
 │       │   │                   │   ├── CarteNationalIdentiteRulesValidationService.java
+│       │   │                   │   ├── ResidencyCommonRulesValidationService.java
 │       │   │                   │   ├── VisaleCertificateRulesValidationService.java
 │       │   │                   │   └── validator
 │       │   │                   │       ├── AbstractDocumentRuleValidator.java
 │       │   │                   │       ├── RuleValidatorOutput.java
 │       │   │                   │       ├── document_ia
+│       │   │                   │       │   ├── AtLeastOneClassificationValidatorB.java
 │       │   │                   │       │   ├── BaseDocumentIAValidator.java
 │       │   │                   │       │   ├── ClassificationValidatorB.java
 │       │   │                   │       │   ├── HasBeenDocumentIAAnalysedBI.java
@@ -2087,6 +2096,7 @@
 │                               │   ├── BulletinSalaireRulesValidationServiceTest.java
 │                               │   └── validator
 │                               │       ├── document_ia
+│                               │       │   ├── AtLeastOneClassificationValidatorBTest.java
 │                               │       │   └── HasBeenDocumentIAAnalysedBITest.java
 │                               │       ├── document_ia_model
 │                               │       │   ├── TestFullDiscriminatorModel.java
@@ -2363,4 +2373,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-585 directories, 1884 files
+587 directories, 1892 files
