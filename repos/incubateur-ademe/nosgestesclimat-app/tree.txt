@@ -33,6 +33,8 @@
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
+├── .zed
+│   └── settings.json
 ├── CONTRIBUTING.md
 ├── FICHEPRODUIT.md
 ├── LICENSE
@@ -102,7 +104,6 @@
 │   │   │   │   │   ├── client.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── prisma
-│   │   │   │   │   ├── client.ts
 │   │   │   │   │   ├── constant.ts
 │   │   │   │   │   ├── generated.ts
 │   │   │   │   │   ├── selection.ts
@@ -386,8 +387,8 @@
 │   │   │   └── worker.ts
 │   │   ├── tsconfig.json
 │   │   ├── vite.config.ts
-│   │   ├── vite.env.ts
-│   │   └── vite.setup.ts
+│   │   ├── vitest.env.ts
+│   │   └── vitest.setup.ts
 │   └── site
 │       ├── .buildpacks
 │       ├── .env.template
@@ -407,11 +408,10 @@
 │       │   ├── remoteImagesPatterns.ts
 │       │   └── urls.ts
 │       ├── e2e
-│       │   ├── constants
-│       │   │   └── categories.ts
 │       │   ├── features
 │       │   │   ├── cookies.spec.ts
 │       │   │   ├── groups.spec.ts
+│       │   │   ├── mode-scolaire.spec.ts
 │       │   │   ├── organisation-admin.spec.ts
 │       │   │   ├── poll-creation.ts
 │       │   │   ├── polls.spec.ts
@@ -420,19 +420,19 @@
 │       │   │   └── tutorial.spec.ts
 │       │   ├── fixtures
 │       │   │   ├── cookie-banner.ts
+│       │   │   ├── feature-flags.ts
 │       │   │   ├── groups.ts
 │       │   │   ├── index.ts
 │       │   │   ├── ngc-test.ts
 │       │   │   ├── options.ts
 │       │   │   ├── organisations.ts
 │       │   │   ├── polls.ts
+│       │   │   ├── scolaire-poll.ts
 │       │   │   ├── tutorial.ts
 │       │   │   ├── user-account.ts
 │       │   │   └── user.ts
 │       │   ├── helpers
 │       │   │   ├── carbon-footprint.ts
-│       │   │   ├── categories
-│       │   │   │   └── checkIfCategoryOrderIsRespected.ts
 │       │   │   ├── clipboard.ts
 │       │   │   ├── save-context.ts
 │       │   │   ├── skip-on-safari.ts
@@ -471,9 +471,9 @@
 │       │   ├── datashare
 │       │   │   └── index.js
 │       │   ├── demos
-│       │   │   ├── demo-iframe-datashare.html
 │       │   │   ├── demo-iframe.html
 │       │   │   ├── demo-iframeLazy.html
+│       │   │   ├── demo-iframeSimulation-datashare.html
 │       │   │   ├── demo-iframeSimulation-en.html
 │       │   │   ├── demo-iframeSimulation-fr.html
 │       │   │   ├── demo-iframeSimulation.html
@@ -649,23 +649,13 @@
 │       │   │   │   │   │       │   ├── Actions.tsx
 │       │   │   │   │   │       │   └── LinkList.tsx
 │       │   │   │   │   │       └── page.tsx
-│       │   │   │   │   ├── (narrow)
-│       │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   └── modele
-│       │   │   │   │   │       ├── _components
-│       │   │   │   │   │       │   ├── ModeleDemoBlock.tsx
-│       │   │   │   │   │       │   ├── ModeleIssuePreviews.tsx
-│       │   │   │   │   │       │   └── ModeleStatsBlock.tsx
-│       │   │   │   │   │       └── page.tsx
 │       │   │   │   │   └── layout.tsx
 │       │   │   │   ├── (server)
 │       │   │   │   │   ├── (large)
 │       │   │   │   │   │   ├── (user-account)
 │       │   │   │   │   │   │   ├── (login)
 │       │   │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   │   ├── ColourBlocks.tsx
-│       │   │   │   │   │   │   │   │   └── SigninSignupTabs
-│       │   │   │   │   │   │   │   │       └── index.tsx
+│       │   │   │   │   │   │   │   │   └── ColourBlocks.tsx
 │       │   │   │   │   │   │   │   ├── connexion
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   ├── inscription
@@ -730,6 +720,8 @@
 │       │   │   │   │   │   │       │   └── Section.tsx
 │       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── amis
+│       │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   └── getParticipantName.ts
 │       │   │   │   │   │   │   ├── creer
 │       │   │   │   │   │   │   │   ├── connexion
 │       │   │   │   │   │   │   │   │   └── page.tsx
@@ -742,6 +734,7 @@
 │       │   │   │   │   │   │   ├── invitation
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   ├── InvitationForm.tsx
+│       │   │   │   │   │   │   │   │   ├── InvitationPage.tsx
 │       │   │   │   │   │   │   │   │   └── LaconicRanking.tsx
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
@@ -752,8 +745,6 @@
 │       │   │   │   │   │   │   │   │   ├── GroupPage.tsx
 │       │   │   │   │   │   │   │   │   ├── GroupResults.tsx
 │       │   │   │   │   │   │   │   │   ├── UpdateSimulationUsed.tsx
-│       │   │   │   │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   │   │   │   └── UpdateSimulationUsed.test.tsx
 │       │   │   │   │   │   │   │   │   └── groupResults
 │       │   │   │   │   │   │   │   │       ├── InviteBlock.tsx
 │       │   │   │   │   │   │   │   │       ├── OwnerAdminSection.tsx
@@ -789,6 +780,14 @@
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   ├── organisations
+│       │   │   │   │   │   │   ├── (login)
+│       │   │   │   │   │   │   │   ├── _action
+│       │   │   │   │   │   │   │   │   └── redirectAfterLoginAction.ts
+│       │   │   │   │   │   │   │   ├── connexion
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   ├── inscription
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   └── layout.tsx
 │       │   │   │   │   │   │   ├── [orgaSlug]
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   ├── CTACard.tsx
@@ -820,14 +819,26 @@
 │       │   │   │   │   │   │   │   │           └── page.tsx
 │       │   │   │   │   │   │   │   ├── creer-campagne
 │       │   │   │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   │   │   ├── PollForm.tsx
+│       │   │   │   │   │   │   │   │   │   ├── CloseButton.tsx
+│       │   │   │   │   │   │   │   │   │   ├── PollModeForm.tsx
+│       │   │   │   │   │   │   │   │   │   ├── PollNameForm.tsx
 │       │   │   │   │   │   │   │   │   │   └── actions
 │       │   │   │   │   │   │   │   │   │       └── revalidationOrganisationPath.ts
+│       │   │   │   │   │   │   │   │   ├── _constants
+│       │   │   │   │   │   │   │   │   │   └── sessionStorage.ts
+│       │   │   │   │   │   │   │   │   ├── _hooks
+│       │   │   │   │   │   │   │   │   │   ├── createPollDraft.ts
+│       │   │   │   │   │   │   │   │   │   ├── useCreatePollStep1.ts
+│       │   │   │   │   │   │   │   │   │   └── useCreatePollStep2.ts
+│       │   │   │   │   │   │   │   │   ├── informations
+│       │   │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   │   │   ├── mode
+│       │   │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   ├── error.tsx
+│       │   │   │   │   │   │   │   ├── guard.tsx
 │       │   │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   │   ├── organisation-guard.tsx
 │       │   │   │   │   │   │   │   ├── page.tsx
 │       │   │   │   │   │   │   │   ├── parametres
 │       │   │   │   │   │   │   │   │   ├── _components
@@ -841,18 +852,22 @@
 │       │   │   │   │   │   │   │   ├── HeroSection.tsx
 │       │   │   │   │   │   │   │   ├── IllustratedPointsList.tsx
 │       │   │   │   │   │   │   │   └── VisuelIframe.tsx
-│       │   │   │   │   │   │   ├── connexion
-│       │   │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   ├── creer
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   └── CreationForm.tsx
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   ├── demander-demo
+│       │   │   │   │   │   │   │   ├── DemanderDemoPage.tsx
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── questions
+│       │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   ├── Questions.tsx
+│       │   │   │   │   │   │   │   └── questions
+│       │   │   │   │   │   │   │       └── Question.tsx
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   └── stats
 │       │   │   │   │   │       ├── _components
@@ -942,72 +957,6 @@
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   └── layout.tsx
-│       │   │   │   ├── (simulation)
-│       │   │   │   │   ├── (large)
-│       │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   ├── personas
-│       │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   ├── Persona.tsx
-│       │   │   │   │   │   │   │   ├── PersonaExplanations.tsx
-│       │   │   │   │   │   │   │   └── PersonaList.tsx
-│       │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   ├── questions
-│       │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   ├── Questions.tsx
-│       │   │   │   │   │   │   │   └── questions
-│       │   │   │   │   │   │   │       └── Question.tsx
-│       │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   └── simulateur
-│       │   │   │   │   │       ├── commencer
-│       │   │   │   │   │       │   ├── layout.tsx
-│       │   │   │   │   │       │   └── page.tsx
-│       │   │   │   │   │       └── email
-│       │   │   │   │   │           ├── layout.tsx
-│       │   │   │   │   │           └── page.tsx
-│       │   │   │   │   ├── layout.tsx
-│       │   │   │   │   ├── simulateur
-│       │   │   │   │   │   └── [root]
-│       │   │   │   │   │       ├── _actions
-│       │   │   │   │   │       │   └── endTestAction.ts
-│       │   │   │   │   │       ├── _components
-│       │   │   │   │   │       │   ├── Simulateur.tsx
-│       │   │   │   │   │       │   └── simulateur
-│       │   │   │   │   │       │       ├── Form.tsx
-│       │   │   │   │   │       │       ├── Summary.tsx
-│       │   │   │   │   │       │       ├── form
-│       │   │   │   │   │       │       │   ├── FunFact.tsx
-│       │   │   │   │   │       │       │   ├── ResultsBlockDesktop.tsx
-│       │   │   │   │   │       │       │   ├── ResultsBlockMobile.tsx
-│       │   │   │   │   │       │       │   └── resultsBlocksDesktop
-│       │   │   │   │   │       │       │       ├── CategoriesResultList.tsx
-│       │   │   │   │   │       │       │       └── categoriesResultList
-│       │   │   │   │   │       │       │           └── CategoryResult.tsx
-│       │   │   │   │   │       │       └── summary
-│       │   │   │   │   │       │           ├── CategoryIllustration.tsx
-│       │   │   │   │   │       │           └── Question.tsx
-│       │   │   │   │   │       ├── _hooks
-│       │   │   │   │   │       │   ├── useEndPage.ts
-│       │   │   │   │   │       │   └── useSimulatorGuard.ts
-│       │   │   │   │   │       ├── layout.tsx
-│       │   │   │   │   │       ├── page.tsx
-│       │   │   │   │   │       └── skeleton.tsx
-│       │   │   │   │   └── tutoriel
-│       │   │   │   │       ├── _components
-│       │   │   │   │       │   ├── AutresQuestions.tsx
-│       │   │   │   │       │   ├── AvantDeCommencer.tsx
-│       │   │   │   │       │   ├── ButtonBack.tsx
-│       │   │   │   │       │   ├── ButtonStart.tsx
-│       │   │   │   │       │   ├── autresQuestions
-│       │   │   │   │       │   │   └── OrganisationPrivacy.tsx
-│       │   │   │   │       │   └── avantDeCommencer
-│       │   │   │   │       │       └── OrganisationDisclaimer.tsx
-│       │   │   │   │       ├── jeune
-│       │   │   │   │       │   ├── _components
-│       │   │   │   │       │   │   └── YouthTutorial.tsx
-│       │   │   │   │       │   └── page.tsx
-│       │   │   │   │       ├── layout.tsx
-│       │   │   │   │       └── page.tsx
 │       │   │   │   ├── [...notFound]
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── _components
@@ -1124,6 +1073,81 @@
 │       │   │   │   │   │   └── RedirectLink.tsx
 │       │   │   │   │   ├── layout.tsx
 │       │   │   │   │   └── page.tsx
+│       │   │   │   ├── simulateur
+│       │   │   │   │   ├── (header)
+│       │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   ├── AutresQuestions.tsx
+│       │   │   │   │   │   │   ├── AvantDeCommencer.tsx
+│       │   │   │   │   │   │   ├── ButtonBack.tsx
+│       │   │   │   │   │   │   ├── PollTutorialButton.tsx
+│       │   │   │   │   │   │   ├── ReuseSimulationForPoll.tsx
+│       │   │   │   │   │   │   ├── Tutorial.tsx
+│       │   │   │   │   │   │   ├── YouthTutorial.tsx
+│       │   │   │   │   │   │   └── autresQuestions
+│       │   │   │   │   │   │       └── OrganisationPrivacy.tsx
+│       │   │   │   │   │   ├── campagne
+│       │   │   │   │   │   │   └── [pollIdOrSlug]
+│       │   │   │   │   │   │       ├── layout.tsx
+│       │   │   │   │   │   │       └── page.tsx
+│       │   │   │   │   │   ├── email
+│       │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   └── tutoriel
+│       │   │   │   │   │       ├── layout.tsx
+│       │   │   │   │   │       └── page.tsx
+│       │   │   │   │   ├── (simulator-flow)
+│       │   │   │   │   │   ├── (root)
+│       │   │   │   │   │   │   ├── bilan
+│       │   │   │   │   │   │   │   ├── _actions
+│       │   │   │   │   │   │   │   │   └── endTestAction.ts
+│       │   │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   │   ├── Form.tsx
+│       │   │   │   │   │   │   │   │   ├── SimulateurLayout.tsx
+│       │   │   │   │   │   │   │   │   ├── Summary.tsx
+│       │   │   │   │   │   │   │   │   ├── form
+│       │   │   │   │   │   │   │   │   │   ├── FunFact.tsx
+│       │   │   │   │   │   │   │   │   │   ├── ResultsBlockDesktop.tsx
+│       │   │   │   │   │   │   │   │   │   ├── ResultsBlockMobile.tsx
+│       │   │   │   │   │   │   │   │   │   └── resultsBlocksDesktop
+│       │   │   │   │   │   │   │   │   │       ├── CategoriesResultList.tsx
+│       │   │   │   │   │   │   │   │   │       └── categoriesResultList
+│       │   │   │   │   │   │   │   │   │           └── CategoryResult.tsx
+│       │   │   │   │   │   │   │   │   ├── skeleton.tsx
+│       │   │   │   │   │   │   │   │   └── summary
+│       │   │   │   │   │   │   │   │       ├── CategoryIllustration.tsx
+│       │   │   │   │   │   │   │   │       └── Question.tsx
+│       │   │   │   │   │   │   │   ├── _hooks
+│       │   │   │   │   │   │   │   │   └── useEndPage.ts
+│       │   │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   ├── intercalaire
+│       │   │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   │   ├── TransitionButtons.tsx
+│       │   │   │   │   │   │   │   │   ├── TransitionHeaderSection.tsx
+│       │   │   │   │   │   │   │   │   ├── TransitionInfoCard.tsx
+│       │   │   │   │   │   │   │   │   └── transitionInfoCard
+│       │   │   │   │   │   │   │   │       ├── CurvedArrowSvg.tsx
+│       │   │   │   │   │   │   │   │       ├── FunFactCard.tsx
+│       │   │   │   │   │   │   │   │       └── funFactCard
+│       │   │   │   │   │   │   │   │           └── TiltedBadge.tsx
+│       │   │   │   │   │   │   │   ├── alimentation
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   ├── divers
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   │   ├── logement
+│       │   │   │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   │   │   └── ClientLogementImpactCO2Iframe.tsx
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   └── transport
+│       │   │   │   │   │   │   │       └── page.tsx
+│       │   │   │   │   │   │   └── layout.tsx
+│       │   │   │   │   │   └── loading.tsx
+│       │   │   │   │   ├── _service
+│       │   │   │   │   │   └── getNewSimulationModelService.ts
+│       │   │   │   │   └── commencer
+│       │   │   │   │       └── page.tsx
 │       │   │   │   ├── sitemap.ts
 │       │   │   │   └── themes
 │       │   │   │       ├── [landingPageSlug]
@@ -1186,9 +1210,8 @@
 │       │   │   │   │   └── CookieFieldSet.tsx
 │       │   │   │   └── useCookieManagement.tsx
 │       │   │   ├── cta
+│       │   │   │   ├── CTAButtons.tsx
 │       │   │   │   ├── CTAButtonsPlaceholder.tsx
-│       │   │   │   ├── ClientCTAButtons.tsx
-│       │   │   │   ├── DynamicCTAButtons.tsx
 │       │   │   │   └── NewItemCardLink.tsx
 │       │   │   ├── dashboard
 │       │   │   │   └── NoResultsBlock.tsx
@@ -1275,6 +1298,7 @@
 │       │   │   │   ├── PlusIcon.tsx
 │       │   │   │   ├── PublicServicesIcon.tsx
 │       │   │   │   ├── RestartIcon.tsx
+│       │   │   │   ├── RotatingArrowIcon.tsx
 │       │   │   │   ├── SaveIcon.tsx
 │       │   │   │   ├── SearchIcon.tsx
 │       │   │   │   ├── SettingsIcon.tsx
@@ -1295,7 +1319,8 @@
 │       │   │   │       └── CheckIcon.tsx
 │       │   │   ├── iframe
 │       │   │   │   ├── IframeDataShareModal.test.tsx
-│       │   │   │   └── IframeDataShareModal.tsx
+│       │   │   │   ├── IframeDataShareModal.tsx
+│       │   │   │   └── ImpactCO2Iframe.tsx
 │       │   │   ├── images
 │       │   │   │   ├── SquareImageContainer.tsx
 │       │   │   │   └── partners
@@ -1309,7 +1334,6 @@
 │       │   │   │   ├── Background.tsx
 │       │   │   │   ├── DailyGestures.tsx
 │       │   │   │   ├── DidYouKnowSlider.tsx
-│       │   │   │   ├── DidYouKnowSliderServer.tsx
 │       │   │   │   ├── FAQ.tsx
 │       │   │   │   ├── Legend.tsx
 │       │   │   │   ├── MotivationSection.tsx
@@ -1382,7 +1406,6 @@
 │       │   │   │   └── list
 │       │   │   │       └── Item.tsx
 │       │   │   ├── providers
-│       │   │   │   ├── EngineProviders.tsx
 │       │   │   │   └── simulationProviders
 │       │   │   │       └── PRNumberHook.tsx
 │       │   │   ├── results
@@ -1405,6 +1428,7 @@
 │       │   │   │   │   ├── ActionDetail.tsx
 │       │   │   │   │   ├── ActionsContent.tsx
 │       │   │   │   │   ├── ActionsTutorial.tsx
+│       │   │   │   │   ├── MTaTerreBanner.tsx
 │       │   │   │   │   └── actionsContent
 │       │   │   │   │       ├── Actions.tsx
 │       │   │   │   │       ├── ActionsChosenIndicator.tsx
@@ -1477,6 +1501,8 @@
 │       │   │   │   ├── ShareSimulationButton.tsx
 │       │   │   │   └── __tests__
 │       │   │   │       └── QRCode.test.tsx
+│       │   │   ├── signIn
+│       │   │   │   └── SignInSignUpTabs.tsx
 │       │   │   ├── simulation
 │       │   │   │   ├── TopBar.tsx
 │       │   │   │   └── topBar
@@ -1506,7 +1532,10 @@
 │       │   │   │           └── journeysInputMobile
 │       │   │   │               └── AddJourneyMobile.tsx
 │       │   │   ├── tracking
+│       │   │   │   ├── ClientTrackers.tsx
+│       │   │   │   ├── CurrentSimulationTracker.tsx
 │       │   │   │   ├── DisablePosthogCheckbox.tsx
+│       │   │   │   ├── PollTracker.tsx
 │       │   │   │   └── Trackers.tsx
 │       │   │   ├── translation
 │       │   │   │   ├── LanguageSwitchButton.tsx
@@ -1530,8 +1559,6 @@
 │       │   │   ├── group.ts
 │       │   │   ├── ids.ts
 │       │   │   ├── localisation
-│       │   │   │   ├── countries.ts
-│       │   │   │   ├── defaultRegion.ts
 │       │   │   │   └── translation.ts
 │       │   │   ├── metadata.ts
 │       │   │   ├── model
@@ -1732,8 +1759,6 @@
 │       │   │   │   ├── getActions.ts
 │       │   │   │   ├── getCarbonFootprint.ts
 │       │   │   │   └── getIsActionDisabled.ts
-│       │   │   ├── api
-│       │   │   │   └── getGeolocation.ts
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
 │       │   │   │   └── getPageNumber.ts
@@ -1765,8 +1790,8 @@
 │       │   │   │   ├── getCommonMetadata.ts
 │       │   │   │   └── getMetadataObject.ts
 │       │   │   ├── modelFetching
+│       │   │   │   ├── getCachedRules.ts
 │       │   │   │   ├── getInitialExtendedSituation.ts
-│       │   │   │   ├── getModelVersion.ts
 │       │   │   │   ├── getPersonas.ts
 │       │   │   │   ├── getRules.ts
 │       │   │   │   ├── importPreviewFile.ts
@@ -1797,9 +1822,11 @@
 │       │   │   │   │   └── user.ts
 │       │   │   │   ├── error.ts
 │       │   │   │   ├── fetchServer.ts
+│       │   │   │   ├── getLinkToSimulateur.ts
 │       │   │   │   ├── getLocaleForNotFoundOrUnautorizedPage.ts
 │       │   │   │   ├── model
 │       │   │   │   │   ├── groups.ts
+│       │   │   │   │   ├── models.ts
 │       │   │   │   │   ├── newsletter.ts
 │       │   │   │   │   ├── organisations.ts
 │       │   │   │   │   ├── poll.ts
@@ -1849,8 +1876,7 @@
 │       │   │   ├── iframe
 │       │   │   │   └── useShouldHideIfIframe.ts
 │       │   │   ├── navigation
-│       │   │   │   ├── useGroupPagesGuard.ts
-│       │   │   │   └── useSimulateurPage.ts
+│       │   │   │   └── useGroupPagesGuard.ts
 │       │   │   ├── organisations
 │       │   │   │   ├── polls
 │       │   │   │   │   ├── useCreatePoll.ts
@@ -1879,14 +1905,12 @@
 │       │   │   ├── tracking
 │       │   │   │   ├── MatomoServerTracker.tsx
 │       │   │   │   ├── useGetTrackedUrl.ts
-│       │   │   │   ├── useTrackLocale.ts
 │       │   │   │   ├── useTrackPageview.ts
-│       │   │   │   ├── useTrackRegion.ts
 │       │   │   │   ├── useTrackSimulator.ts
 │       │   │   │   └── useTrackTimeOnSimulation.ts
 │       │   │   ├── useClientTranslation.ts
 │       │   │   ├── useDebug.ts
-│       │   │   ├── useFixedRegion.ts
+│       │   │   ├── useFeatureFlag.ts
 │       │   │   ├── useIframe.ts
 │       │   │   ├── useInitSimulationParam.ts
 │       │   │   ├── useIsClient.ts
@@ -1894,9 +1918,7 @@
 │       │   │   ├── useMagicKey.ts
 │       │   │   ├── usePRNumber.ts
 │       │   │   ├── usePersonas.ts
-│       │   │   ├── useQuestionInQueryParams.ts
 │       │   │   ├── useRedirectIfInAppBrowser.ts
-│       │   │   ├── useRules.ts
 │       │   │   ├── useSortedCategoriesByFootprint.ts
 │       │   │   └── useUserInfosParams.ts
 │       │   ├── i18nConfig.ts
@@ -2015,6 +2037,7 @@
 │       │   │   │   ├── googlebot.json
 │       │   │   │   ├── special-crawlers.json
 │       │   │   │   └── user-triggered-fetchers.json
+│       │   │   ├── featureFlagMiddleware.ts
 │       │   │   └── i18nMiddleware.ts
 │       │   ├── proxy.ts
 │       │   ├── publicodes-state
@@ -2047,6 +2070,8 @@
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   └── useNavigation.ts
 │       │   │   │   │   └── useFormState.ts
+│       │   │   │   ├── useGotoNextQuestion
+│       │   │   │   │   └── useGotoNextQuestion.ts
 │       │   │   │   ├── useRule
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   ├── useChoices.ts
@@ -2062,8 +2087,6 @@
 │       │   │   │   │   └── useTempEngine.ts
 │       │   │   │   └── useUser
 │       │   │   │       ├── hooks
-│       │   │   │       │   ├── __tests__
-│       │   │   │       │   │   └── useSimulations.test.ts
 │       │   │   │       │   ├── useActions.ts
 │       │   │   │       │   ├── useSimulations.ts
 │       │   │   │       │   ├── useTutorials.ts
@@ -2078,7 +2101,6 @@
 │       │   │   │   │   │   ├── useCategories.ts
 │       │   │   │   │   │   ├── useEngine.ts
 │       │   │   │   │   │   ├── useEngineSituation.ts
-│       │   │   │   │   │   ├── useInitializeSimulationWithEngine.ts
 │       │   │   │   │   │   └── useRules.ts
 │       │   │   │   │   └── provider.tsx
 │       │   │   │   ├── formProvider
@@ -2092,13 +2114,20 @@
 │       │   │   │       ├── context.ts
 │       │   │   │       ├── hooks
 │       │   │   │       │   ├── useMigrateAnonSession.ts
-│       │   │   │       │   ├── useOldLocalStorage.ts
-│       │   │   │       │   ├── usePersistentSimulations.ts
 │       │   │   │       │   ├── usePersistentTutorials.ts
 │       │   │   │       │   └── usePersistentUser.ts
 │       │   │   │       └── provider.tsx
 │       │   │   └── types.d.ts
 │       │   ├── services
+│       │   │   ├── actions
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── actions.dto.test.ts
+│       │   │   │   │   └── themes.dto.test.ts
+│       │   │   │   ├── actions.dto.ts
+│       │   │   │   ├── get-action.ts
+│       │   │   │   ├── get-actions.ts
+│       │   │   │   ├── get-themes.ts
+│       │   │   │   └── themes.dto.ts
 │       │   │   ├── cms
 │       │   │   │   ├── fetchAllArticleTitlesAndSlugs.ts
 │       │   │   │   ├── fetchArticlePageContent.ts
@@ -2116,6 +2145,13 @@
 │       │   │   │   ├── fetchThematicLandingPage.ts
 │       │   │   │   ├── fetchThematicLandingPageMetadata.ts
 │       │   │   │   └── fetchThematicLandingPages.ts
+│       │   │   ├── feature-flags
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── urlParams.test.ts
+│       │   │   │   ├── constants.ts
+│       │   │   │   ├── flags.ts
+│       │   │   │   ├── getFeatureFlag.ts
+│       │   │   │   └── urlParams.ts
 │       │   │   ├── groups
 │       │   │   │   └── updateGroupParticipant.ts
 │       │   │   ├── organisations
@@ -2131,6 +2167,7 @@
 │       │   │       └── posthogServer.ts
 │       │   ├── types
 │       │   │   ├── .gitignore
+│       │   │   ├── actions.d.ts
 │       │   │   ├── app-env.d.ts
 │       │   │   ├── authentication.d.ts
 │       │   │   ├── groups.d.ts
@@ -2140,11 +2177,14 @@
 │       │   │   ├── organisations.d.ts
 │       │   │   ├── posts.d.ts
 │       │   │   ├── quiz.d.ts
+│       │   │   ├── themes.d.ts
 │       │   │   ├── translation.ts
 │       │   │   ├── values.ts
 │       │   │   ├── worker-loader.d.ts
 │       │   │   └── yaml.d.ts
 │       │   └── utils
+│       │       ├── __tests__
+│       │       │   └── cookie.test.ts
 │       │       ├── analytics
 │       │       │   ├── trackEvent.ts
 │       │       │   └── trackGTMEvent.ts
@@ -2155,6 +2195,7 @@
 │       │       ├── capitalizeString.ts
 │       │       ├── cms
 │       │       │   └── getArticleHref.ts
+│       │       ├── cookie.ts
 │       │       ├── debounce.ts
 │       │       ├── decodeRuleNameFromPath.ts
 │       │       ├── format
@@ -2207,31 +2248,59 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260407103000_anon_verified_user_generated_id
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260414160000_add_poll_mode
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260515131211_add_actions_table
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
-│       │   └── schema
-│       │       ├── ngc.prisma
-│       │       ├── ngc_anon.prisma
-│       │       └── schema.prisma
+│       │   ├── schema
+│       │   │   ├── ngc.prisma
+│       │   │   ├── ngc_anon.prisma
+│       │   │   └── schema.prisma
+│       │   └── seed.ts
 │       ├── prisma.config.js
 │       ├── src
 │       │   ├── features
 │       │   │   ├── actions
 │       │   │   │   ├── data
-│       │   │   │   │   ├── actions
-│       │   │   │   │   │   └── index.ts
 │       │   │   │   │   └── themes
 │       │   │   │   │       └── index.ts
+│       │   │   │   ├── factories
+│       │   │   │   │   ├── action.factory.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── seo-metadata.factory.ts
+│       │   │   │   │   └── theme.factory.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   ├── action.mapper.ts
+│       │   │   │   │   ├── actions.repository.ts
+│       │   │   │   │   ├── seo-metadata.mapper.ts
+│       │   │   │   │   └── themes.repository.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── get-action.service.spec.ts
+│       │   │   │   │   │   ├── get-actions.service.spec.ts
+│       │   │   │   │   │   └── get-themes.service.spec.ts
+│       │   │   │   │   ├── get-action.service.ts
+│       │   │   │   │   ├── get-actions.service.ts
+│       │   │   │   │   └── get-themes.service.ts
 │       │   │   │   └── types
 │       │   │   │       ├── action-media.ts
 │       │   │   │       ├── action.ts
+│       │   │   │       ├── seo-metadata.ts
 │       │   │   │       └── theme.ts
 │       │   │   └── geo
 │       │   │       └── types
 │       │   │           └── language.ts
-│       │   └── index.ts
+│       │   ├── index.ts
+│       │   ├── prisma
+│       │   │   └── client.ts
+│       │   └── test-utils
+│       │       └── db.ts
 │       ├── tsconfig.build.json
-│       └── tsconfig.json
+│       ├── tsconfig.json
+│       ├── vitest.config.ts
+│       └── vitest.setup.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-561 directories, 1720 files
+581 directories, 1769 files
