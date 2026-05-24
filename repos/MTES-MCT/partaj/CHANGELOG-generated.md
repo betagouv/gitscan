@@ -1,18 +1,22 @@
-## Changelog : partaj (30 derniers jours, au 01 mai 2026)
+## Changelog : partaj (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des pièces jointes (appendices) et la notification des co-demandeurs lors de l'envoi d'une saisine. Des optimisations internes et des corrections de bugs ont également été apportées pour améliorer la stabilité et la qualité du code.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment en permettant aux demandeurs de voir la relation de parrainage et en corrigeant des blocages dans la validation des sous-saisines. Des mises à jour techniques importantes ont également été apportées, avec la modernisation des librairies React et React Router, ainsi que la synchronisation des versions de PostgreSQL, Elasticsearch et Django.
 
 ### Évolutions fonctionnelles
-- Amélioration de la fonctionnalité de gestion des pièces jointes : ajout des appendices aux publications et correction de problèmes liés à leur affichage et à leur enregistrement. [#10](https://github.com/MTES-MCT/partaj/issues/10)
-- Les co-demandeurs sont désormais notifiés lorsqu'une saisine leur est envoyée. [#N732](https://github.com/MTES-MCT/partaj/issues/N732)
+- Les demandeurs peuvent désormais voir la relation de parrainage.
+- Correction d'un blocage lors de la validation d'une sous-saisine [#15](https://github.com/MTES-MCT/partaj/issues/15).
+- Ajout d'une image manquante dans la politique de sécurité du contenu pour "jedonnemonavis".
 
 ### Évolutions techniques
-- Synchronisation des versions de PostgreSQL, Elasticsearch et Django pour assurer la cohérence de l'infrastructure.
-- Suppression d'imports inutiles pour alléger le code et améliorer sa lisibilité.
-- Ajout de tests pour la fonctionnalité de referral.
+- Mise à jour de React vers la version 18.
+- Mise à jour de React Router.
+- Migration de la librairie `react-query` vers `tanstack`.
+- Synchronisation des versions de PostgreSQL, Elasticsearch et Django.
+- Mise à niveau de Jest.
+- Ajout du tag GCP sur l'ensemble des jobs CI pour une meilleure identification de l'environnement.
 
 ### Autres changements
-- Préparation du déploiement sur l'environnement de staging.
-- Correction de la formulation concernant les appendices.
-- Amélioration du lien envoyé par email lors de la notification.
+- Ajout de tests pour les relations de parrainage.
+- Ajout d'un délai pour les tests front-end afin d'améliorer leur stabilité.
+- Correction d'un problème de test dans l'environnement de test.
