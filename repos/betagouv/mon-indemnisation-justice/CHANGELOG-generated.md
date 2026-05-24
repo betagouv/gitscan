@@ -1,33 +1,43 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 20 mai 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur la refonte de l'application, notamment l'implémentation d'un nouveau système de gestion des brouillons de dossiers, l'amélioration de l'expérience utilisateur avec de nouvelles étapes de saisie et des corrections d'erreurs, et la mise à jour technique de l'application avec les dernières versions de Symfony et Doctrine. Des améliorations ont également été apportées à la gestion des erreurs et à la sécurité, notamment avec l'intégration de Sentry.
+Ce mois-ci, l'équipe a concentré ses efforts sur la refonte de l'application, notamment la migration vers Symfony 8 et Doctrine, ainsi que sur l'amélioration de l'expérience utilisateur avec la création d'un nouveau formulaire de dépôt de dossier plus intuitif et la gestion des brouillons. De nombreuses corrections de bugs et améliorations de la sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Gestion des dossiers :** Introduction d'un système de brouillons pour permettre aux utilisateurs de sauvegarder leurs données et de les reprendre plus tard.
-- **Interface utilisateur :** Création de nouvelles étapes de saisie pour le dépôt de dossier, avec une interface plus claire et intuitive.
-- **Pièces jointes :** Amélioration de la gestion des pièces jointes avec une prévisualisation et une intégration plus fluide dans le processus de dépôt.
-- **France Connect :** Amélioration de la gestion des erreurs et de l'intégration de France Connect, avec une meilleure remontée d'informations en cas de problème.
-- **Notifications :** La référence à rappeler est maintenant incluse dans l'email de confirmation de dépôt.
-- **Types d'attestations :** Ajout du type "Avis d'intervention" à la liste des types d'attestation acceptés.
-- **Récapitulatif :** Création d'une page de récapitulatif pour permettre aux utilisateurs de vérifier leurs informations avant de soumettre leur dossier.
-- **Autocomplete :** Ajout d'une fonctionnalité d'autocomplétion pour le champ adresse.
-- **Affichage des dossiers :** Corrections d'affichage des dossiers dans l'espace rédacteur.
-- **Navigation :** Corrections de la navigation entre les étapes du dépôt de dossier.
+- Ajout d'un système de brouillons pour les dossiers, permettant aux utilisateurs de sauvegarder leurs informations et de les compléter ultérieurement.
+- Amélioration de l'affichage des pièces jointes et ajout d'une prévisualisation lors de l'ajout de fichiers.
+- Ajout de la possibilité de saisir le SIRET de l'administration pour les agents.
+- Intégration de nouveaux types d'attestations, incluant l'"Avis d'intervention".
+- Amélioration de la gestion des erreurs et affichage de messages plus clairs aux utilisateurs.
+- Correction de l'affichage de l'explication de la clôture sur la page "mes demandes".
+- Amélioration de l'affichage du badge "Déclaration FDO".
+- Ajout d'un message d'erreur plus clair en cas d'échec de l'inscription ou de la connexion via France Connect.
+- Ajout d'un autocomplete sur le champ adresse.
+- Mise à jour du courriel d'invitation à déposer sur décla FDO.
+- Ajout de la possibilité de modifier les informations du dossier.
 
 ### Évolutions techniques
-- **Mise à jour des dépendances :** Mise à jour de Symfony et Doctrine vers les versions 8.x pour bénéficier des dernières fonctionnalités et correctifs de sécurité.
-- **Refactoring :** Simplification de la gestion des erreurs et du mapping des données.
-- **Architecture :** Suppression d'API Platform et migration vers un système de routes Tanstack Router.
-- **Base de données :** Création de nouvelles entités (Brouillon, Personne) et modification du schéma de base de données pour supporter les nouvelles fonctionnalités.
-- **Monitoring :** Intégration de Sentry pour la surveillance des erreurs et l'amélioration de la qualité du code.
-- **Docker :** Mise à jour de l'image Docker pour retirer APP_RUNTIME.
-- **Tests :** Correction des tests unitaires et end-to-end pour assurer la stabilité de l'application.
+- Migration vers Symfony 8 et Doctrine pour bénéficier des dernières améliorations et corrections de sécurité.
+- Refonte de l'architecture de l'application avec l'utilisation de Tanstack Router.
+- Suppression de l'utilisation d'API Platform.
+- Amélioration de la gestion des entités et des DTOs pour l'échange de données avec l'espace FIP6.
+- Intégration de Sentry pour la surveillance des erreurs et la collecte d'informations de diagnostic.
+- Mise à jour de l'image Docker pour retirer `APP_RUNTIME`.
+- Correction de plusieurs erreurs et optimisations de performance liées à Doctrine.
+- Normalisation des adresses en base de données et en entrée.
+- Simplification de la gestion des erreurs.
+- Suppression des classes de mapper.
+- Utilisation du DossierManager pour la sauvegarde des données.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'architecture.
-- **Configuration :** Correction de la configuration Doctrine en production.
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Installation de Crisp :** Ajout de Crisp pour le support client.
-- **Schéma de base de données :** Documentation du schéma de base de données.
-- **Gestion des permissions :** Amélioration de la gestion des permissions pour les différents types d'utilisateurs.
+- Documentation du schéma de base de données.
+- Mise à jour des documents PN.
+- Installation de Crisp pour le support client.
+- Création d'un compte France Connect de bac à sable pour l'environnement de développement.
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout de tests unitaires et end-to-end pour garantir la qualité du code.
+- Correction de plusieurs tests unitaires backend.
+- Suppression de code obsolète.
+- Amélioration de la gestion des permissions.
+- Ajout de la transmission du contexte utilisateur à Sentry.
+- Remontée de la mention "Référence à rappeler" dans l'email de confirmation de dépôt.
