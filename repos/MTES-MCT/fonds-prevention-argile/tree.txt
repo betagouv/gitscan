@@ -123,44 +123,49 @@
 │       └── amo-exemple.xlsx
 ├── scalingo.json
 ├── scripts
-│   ├── agents
-│   │   ├── seed-agents-local-staging.sql
-│   │   └── seed-agents-prod.sql
-│   ├── amo
-│   │   └── extend-expired-tokens.sql
-│   ├── audit-parcours-ds-integrity.ts
-│   ├── clean
-│   │   └── cleanup-staging.sql
-│   ├── demarches-simplifiees
-│   │   └── fetch-demarche-schema.ts
-│   ├── fix-missing-epci
-│   │   └── fix-missing-epci.ts
-│   ├── import-rga-zones
-│   │   ├── ARCHITECTURE.md
+│   ├── README.md
+│   ├── import
 │   │   ├── README.md
-│   │   └── import-rga-zones.ts
-│   ├── matomo
-│   │   └── debug-matomo-events.ts
-│   ├── seed
-│   │   └── seed-fake-parcours
-│   │       ├── 00-init.sql
-│   │       ├── 01-users.sql
-│   │       ├── 01b-users-prospects.sql
-│   │       ├── 02-parcours.sql
-│   │       ├── 03-validations-amo.sql
-│   │       ├── 04-dossiers-ds.sql
-│   │       ├── 05-prospects-sans-amo.sql
-│   │       ├── 06-test-aucun-amo.sql
-│   │       ├── 07-commentaires.sql
-│   │       ├── 08-prospect-qualifications.sql
-│   │       ├── 09-archives-dashboard.sql
-│   │       ├── 10-top-departements-dashboard.sql
-│   │       ├── 11-statistiques-demandes.sql
-│   │       ├── 12-donnees-eligibilite.sql
-│   │       ├── 13-amo-av-arrete-2026.sql
-│   │       ├── 99-verification.sql
-│   │       └── README.md
-│   └── verify-dashboard-stats.ts
+│   │   └── rga-zones
+│   │       ├── ARCHITECTURE.md
+│   │       ├── README.md
+│   │       └── import-rga-zones.ts
+│   ├── ops
+│   │   ├── README.md
+│   │   ├── audit-parcours-ds-integrity.ts
+│   │   ├── cleanup-staging.sql
+│   │   ├── debug-matomo-events.ts
+│   │   ├── extend-expired-tokens.sql
+│   │   ├── fetch-demarche-schema.ts
+│   │   ├── fix-missing-epci.ts
+│   │   └── verify-dashboard-stats.ts
+│   └── seed
+│       ├── README.md
+│       ├── seed-staging.ts
+│       └── sql
+│           ├── agents
+│           │   ├── seed-agents-local-staging.sql
+│           │   └── seed-agents-prod.sql
+│           ├── amo-av
+│           │   └── seed-amo-av-fixtures.sql
+│           └── fake-parcours
+│               ├── 00-init.sql
+│               ├── 01-users.sql
+│               ├── 01b-users-prospects.sql
+│               ├── 02-parcours.sql
+│               ├── 03-validations-amo.sql
+│               ├── 04-dossiers-ds.sql
+│               ├── 05-prospects-sans-amo.sql
+│               ├── 06-test-aucun-amo.sql
+│               ├── 07-commentaires.sql
+│               ├── 08-prospect-qualifications.sql
+│               ├── 09-archives-dashboard.sql
+│               ├── 10-top-departements-dashboard.sql
+│               ├── 11-statistiques-demandes.sql
+│               ├── 12-donnees-eligibilite.sql
+│               ├── 13-amo-av-arrete-2026.sql
+│               ├── 99-verification.sql
+│               └── README.md
 ├── src
 │   ├── app
 │   │   ├── (backoffice)
@@ -325,6 +330,10 @@
 │   │   │   │   │   │   ├── DossiersSuivisHeader.tsx
 │   │   │   │   │   │   ├── DossiersSuivisTable.tsx
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── nouveau
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── simulation
+│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── edition-donnees-simulation
 │   │   │   │   │   └── [id]
@@ -335,6 +344,7 @@
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── ArchiveProspectButton.tsx
+│   │   │   │   │   │   │   ├── CalloutSimulationAEffectuer.tsx
 │   │   │   │   │   │   │   └── qualification
 │   │   │   │   │   │   │       ├── QualificationCallout.tsx
 │   │   │   │   │   │   │       ├── QualificationForm.tsx
@@ -420,6 +430,11 @@
 │   │   │   │   ├── content
 │   │   │   │   │   └── content.json
 │   │   │   │   └── page.tsx
+│   │   │   ├── claim-dossier
+│   │   │   │   ├── [token]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── invalide
+│   │   │   │       └── page.tsx
 │   │   │   ├── connexion
 │   │   │   │   ├── (particulier)
 │   │   │   │   │   ├── components
@@ -839,6 +854,29 @@
 │   │   │   │       └── services
 │   │   │   │           └── tableau-de-bord.service.ts
 │   │   │   ├── espace-agent
+│   │   │   │   ├── creation-dossier
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── create-dossier-aller-vers.action.ts
+│   │   │   │   │   │   └── post-creation-redirect.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AddressAutocompleteInput.tsx
+│   │   │   │   │   │   ├── CreationDossierWizard.tsx
+│   │   │   │   │   │   ├── ResultInvitation.tsx
+│   │   │   │   │   │   ├── SimulateurEditionInvitation.tsx
+│   │   │   │   │   │   └── steps
+│   │   │   │   │   │       ├── StepChoixMode.tsx
+│   │   │   │   │   │       ├── StepContact.tsx
+│   │   │   │   │   │       ├── StepEnvoiEmail.tsx
+│   │   │   │   │   │       └── StepIdentite.tsx
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── creation-dossier.service.test.ts
+│   │   │   │   │   │   ├── creation-dossier.service.ts
+│   │   │   │   │   │   └── inviter-name.service.ts
+│   │   │   │   │   └── stores
+│   │   │   │   │       └── creation-dossier.store.ts
 │   │   │   │   ├── demandes
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── demande-detail.actions.test.ts
@@ -909,7 +947,8 @@
 │   │   │   │   │       ├── agent-edit-info.service.ts
 │   │   │   │   │       ├── commentaires.service.test.ts
 │   │   │   │   │       ├── commentaires.service.ts
-│   │   │   │   │       └── edition-simulation.service.ts
+│   │   │   │   │       ├── edition-simulation.service.ts
+│   │   │   │   │       └── parcours-creator.service.ts
 │   │   │   │   └── statistiques
 │   │   │   │       ├── actions
 │   │   │   │       │   ├── get-amo-statistiques.action.test.ts
@@ -1274,6 +1313,9 @@
 │   │       │   │   ├── index.ts
 │   │       │   │   ├── rga-revenus.types.ts
 │   │       │   │   └── rga-simulation.types.ts
+│   │       │   ├── utils
+│   │       │   │   ├── eligibility-reason-to-raison.utils.test.ts
+│   │       │   │   └── eligibility-reason-to-raison.utils.ts
 │   │       │   └── value-objects
 │   │       │       ├── eligibility-reason.enum.ts
 │   │       │       ├── index.ts
@@ -1357,6 +1399,7 @@
 │   │   │   │   └── DebugRGA.tsx
 │   │   │   └── index.ts
 │   │   ├── config
+│   │   │   ├── env.config.test.ts
 │   │   │   └── env.config.ts
 │   │   ├── constants
 │   │   │   ├── departements.constants.test.ts
@@ -1402,6 +1445,7 @@
 │   │   │   │   ├── 0028_classy_thundra.sql
 │   │   │   │   ├── 0029_kind_makkari.sql
 │   │   │   │   ├── 0030_regular_caretaker.sql
+│   │   │   │   ├── 0031_solid_la_nuit.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1434,9 +1478,11 @@
 │   │   │   │       ├── 0028_snapshot.json
 │   │   │   │       ├── 0029_snapshot.json
 │   │   │   │       ├── 0030_snapshot.json
+│   │   │   │       ├── 0031_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
+│   │   │   │   ├── agents.repository.test.ts
 │   │   │   │   ├── agents.repository.ts
 │   │   │   │   ├── allers-vers.repository.ts
 │   │   │   │   ├── base.repository.ts
@@ -1451,6 +1497,7 @@
 │   │   │   │   ├── prospect-qualifications.repository.ts
 │   │   │   │   ├── rga-zones.repository.ts
 │   │   │   │   ├── sync-run.repository.ts
+│   │   │   │   ├── user.repository.test.ts
 │   │   │   │   └── user.repository.ts
 │   │   │   └── schema
 │   │   │       ├── agent-permissions.ts
@@ -1482,6 +1529,9 @@
 │   │   │   │   ├── brevo-webhook.types.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── rga-simulation.types.ts
+│   │   │   ├── utils
+│   │   │   │   ├── rga-simulation.utils.test.ts
+│   │   │   │   └── rga-simulation.utils.ts
 │   │   │   └── value-objects
 │   │   │       ├── agent-role.enum.ts
 │   │   │       ├── attribution-amo-mode.enum.ts
@@ -1497,6 +1547,7 @@
 │   │   ├── email
 │   │   │   ├── actions
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── send-claim-dossier.actions.ts
 │   │   │   │   └── send-email.actions.ts
 │   │   │   ├── config
 │   │   │   │   ├── email.config.ts
@@ -1507,9 +1558,12 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── templates
 │   │   │   │   ├── EmailLayout.tsx
+│   │   │   │   ├── claim-dossier.template.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   └── validation-amo.template.tsx
 │   │   │   └── utils
+│   │   │       ├── dev-redirect.utils.test.ts
+│   │   │       ├── dev-redirect.utils.ts
 │   │   │       ├── email.utils.ts
 │   │   │       ├── index.ts
 │   │   │       └── render-template.utils.tsx
@@ -1557,6 +1611,8 @@
 │   │       ├── geo.utils.ts
 │   │       ├── index.ts
 │   │       ├── object.utils.ts
+│   │       ├── phone.test.ts
+│   │       ├── phone.utils.ts
 │   │       ├── richTextParser.test.tsx
 │   │       └── richTextParser.utils.tsx
 │   └── styles
@@ -1566,4 +1622,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-451 directories, 1117 files
+464 directories, 1160 files
