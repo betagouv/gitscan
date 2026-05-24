@@ -1,45 +1,45 @@
-## Changelog : envergo (30 derniers jours, au 20 mai 2026)
+## Changelog : envergo (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations de la performance, notamment au niveau de l'affichage des haies et de la gestion des données, ainsi que par des corrections de bugs et des améliorations de l'expérience utilisateur, notamment concernant la gestion des jetons d'authentification et l'affichage des informations de responsabilité. Des efforts ont également été déployés pour améliorer la documentation et la clarté du code.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs, l'amélioration de l'expérience utilisateur, notamment dans la gestion des haies et des pétitions, ainsi que sur l'optimisation des performances et la maintenance technique du code. Des améliorations de la gestion des erreurs et de la sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des haies : optimisation de la requête et simplification de la topologie pour un affichage plus rapide [#1096](https://github.com/MTES-MCT/envergo/pull/1096).
-- Correction d'un bug empêchant l'affichage correct des longueurs de haies [#1097](https://github.com/MTES-MCT/envergo/pull/1097).
-- Amélioration de la gestion des jetons d'authentification : affichage de messages d'erreur plus clairs en cas de jeton expiré ou invalide, et ajout de tests pour garantir le bon fonctionnement [#1096](https://github.com/MTES-MCT/envergo/pull/1096).
-- Ajout d'informations de suivi concernant la responsabilité dans les résultats de simulation et les pages d'évaluation [#1098](https://github.com/MTES-MCT/envergo/pull/1098).
-- Correction d'un bug lié à l'affichage des champs de démarches simplifiées [#1105](https://github.com/MTES-MCT/envergo/pull/1105).
-- Correction d'un bug lié à la date dans un formulaire [#1105](https://github.com/MTES-MCT/envergo/pull/1105).
-- Correction d'un bug lié à la fin du dessin des haies [#1108](https://github.com/MTES-MCT/envergo/pull/1108).
-- Correction d'un bug lié à l'affichage des haies [#1109](https://github.com/MTES-MCT/envergo/pull/1109).
-- Amélioration de l'affichage des messages d'erreur et des informations contextuelles.
-- Ajout d'un lien vers la documentation Gitbook pour les instructeurs [#1098](https://github.com/MTES-MCT/envergo/pull/1098).
+- Amélioration de l'affichage des messages aux utilisateurs [#1096](https://github.com/MTES-MCT/envergo/issues/1096).
+- Correction d'un problème d'affichage des valeurs flottantes dans les tests liés aux pétitions [#1138](https://github.com/MTES-MCT/envergo/issues/1138).
+- Ajout d'informations de suivi pour les informations de responsabilité dans les simulations [#1092](https://github.com/MTES-MCT/envergo/issues/1092) et [#1098](https://github.com/MTES-MCT/envergo/issues/1098).
+- Amélioration de la notification de changement d'état dans les pétitions.
+- Ajout d'un lien vers la documentation Gitbook pour les instructeurs [#1101](https://github.com/MTES-MCT/envergo/issues/1101).
+- Correction de l'affichage des haies et de la fin du dessin.
+- Correction d'un bug lié à la suppression du coefficient de replantation existant [#1090](https://github.com/MTES-MCT/envergo/issues/1090).
+- Correction d'un problème de paramètre `is_alternative` dupliqué dans l'URL de plantation.
+- Amélioration de l'affichage des actions à prendre.
+- Ajout d'un lien vers Tally dans les pages d'erreur 403.
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Optimisation des requêtes pour améliorer les performances, notamment au niveau de la gestion des zones et des coefficients RU [#1086](https://github.com/MTES-MCT/envergo/pull/1086).
-- Simplification de la logique de calcul de la densité des haies.
-- Amélioration de la gestion des migrations de base de données.
-- Mise à jour des dépendances et correction de problèmes liés aux tests.
-- Utilisation d'une méthode plus précise pour les comparaisons de nombres à virgule flottante dans les tests.
-- Suppression de code obsolète et nettoyage du code.
-- Migration des champs d'identifiants vers des champs JSON pour plus de flexibilité.
-- Amélioration de la structure des tables de densité.
+- Optimisation de la requête pour accélérer l'affichage des haies [#1124](https://github.com/MTES-MCT/envergo/issues/1124).
+- Optimisation du calcul de la longueur des haies.
+- Simplification du code lié aux coefficients de ruissellement.
+- Refactoring du code lié aux champs DN pour une meilleure maintenance.
+- Correction de la gestion des octets NUL dans le champ département pour éviter les erreurs de données [#1115](https://github.com/MTES-MCT/envergo/issues/1115).
+- Gestion des erreurs `ValueError` lors de la récupération de l'ID du département.
+- Prévention des erreurs `TransactionManagementError` lors de la publication des évaluations.
+- Correction du comportement de l'API `HedgeConditionsView` pour renvoyer un code 405 pour les requêtes GET.
+- Amélioration de la gestion des cookies et des jetons d'invitation.
+- Ajout de tests pour la gestion des cookies.
+- Amélioration de la lisibilité du code.
+- Suppression de code obsolète.
+- Correction de problèmes liés à la compatibilité avec les anciennes évaluations.
 
 ### Autres changements
-- Amélioration de la documentation et ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Ajout de tests pour la gestion des cookies.
-- Correction de problèmes mineurs d'interface utilisateur.
-- Ajout de logs pour faciliter le débogage.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Modification de l'URL de la FAQ des instructeurs vers Gitbook.
-- Ajout d'un bouton pour obtenir un nouveau lien.
-- Ajout d'éléments Matomo pour le suivi des pages vues.
-- Amélioration de la gestion des permissions d'accès.
-- Correction de problèmes de validation des formulaires.
+- Mise à jour de la documentation.
+- Ajout de commentaires dans le code.
+- Amélioration des noms de classes.
+- Ajout de tests unitaires.
+- Correction de petites erreurs typographiques et de style.
 - Ajout de migrations pour les changements de schéma de base de données.
-- Amélioration de la gestion des erreurs de validation dans les tests.
-- Ajout de tests unitaires et d'intégration.
-- Correction de bugs liés à l'upload de fichiers [#1083](https://github.com/MTES-MCT/envergo/pull/1083).
-- Correction d'un bug lié à la configuration manquante [#1089](https://github.com/MTES-MCT/envergo/pull/1089).
+- Correction de problèmes d'affichage des messages d'erreur.
+- Ajout de logs pour faciliter le débogage.
+- Amélioration de la sécurité en vérifiant la validité des jetons.
+- Correction d'un problème d'affichage des messages d'expiration.
+- Ajout d'une documentation pour les dossiers.
+- Ajout de métriques Matomo pour le suivi des liens de responsabilité.
