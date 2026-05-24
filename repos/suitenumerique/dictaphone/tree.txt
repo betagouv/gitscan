@@ -246,7 +246,11 @@
     │   │       ├── logo-lasuite-assistant.svg
     │   │       ├── logo-multiline.svg
     │   │       ├── logo-picto.svg
-    │   │       └── logo-single-line.svg
+    │   │       ├── logo-single-line.svg
+    │   │       └── sounds
+    │   │           ├── source.md
+    │   │           ├── start_recording.ogg
+    │   │           └── stop_recording.ogg
     │   ├── src
     │   │   ├── App.tsx
     │   │   ├── api
@@ -287,7 +291,6 @@
     │   │   │   │   │   ├── fetchUser.ts
     │   │   │   │   │   ├── updateUserPreferences.ts
     │   │   │   │   │   └── useUser.tsx
-    │   │   │   │   ├── index.ts
     │   │   │   │   └── utils
     │   │   │   │       ├── authUrl.ts
     │   │   │   │       ├── logoutUrl.ts
@@ -312,10 +315,25 @@
     │   │   │   │   │   ├── ListRecordings.tsx
     │   │   │   │   │   ├── RecordComponent.scss
     │   │   │   │   │   ├── RecordComponent.tsx
+    │   │   │   │   │   ├── RecoverList.scss
+    │   │   │   │   │   ├── RecoverList.tsx
+    │   │   │   │   │   ├── SignalLevelMeter.scss
+    │   │   │   │   │   ├── SignalLevelMeter.tsx
     │   │   │   │   │   ├── Summary.tsx
     │   │   │   │   │   ├── Transcript.scss
     │   │   │   │   │   ├── Transcript.tsx
     │   │   │   │   │   └── TranscriptSegment.tsx
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   └── useRecordingController.ts
+    │   │   │   │   ├── recorder
+    │   │   │   │   │   ├── AudioInputManager.ts
+    │   │   │   │   │   ├── IndexedDbChunkStore.ts
+    │   │   │   │   │   ├── RecorderManager.ts
+    │   │   │   │   │   ├── UploadStreamManager.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   └── types.ts
+    │   │   │   │   ├── store
+    │   │   │   │   │   └── useLocalRecordingsStore.ts
     │   │   │   │   └── utils
     │   │   │   │       ├── formatFileSize.ts
     │   │   │   │       └── getAudioDuration.ts
@@ -705,4 +723,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-178 directories, 529 files
+182 directories, 543 files

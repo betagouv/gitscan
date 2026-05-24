@@ -1,30 +1,46 @@
-## Changelog : dictaphone (30 derniers jours, au 2026-05-21)
+## Changelog : dictaphone (30 derniers jours, au 2026-05-22)
 
 ### Résumé
-Cette période a été marquée par une série de corrections de bugs et d'améliorations de l'expérience utilisateur, tant sur le web que sur l'application mobile. Des fonctionnalités importantes comme la possibilité de relancer une transcription échouée et la gestion des erreurs d'upload ont été ajoutées. L'authentification mobile a été revue pour plus de robustesse et de sécurité. Plusieurs améliorations de l'interface utilisateur et de la gestion des fichiers ont également été apportées.
+Cette version apporte des améliorations significatives à l'expérience d'enregistrement et de gestion des transcriptions, notamment sur l'application mobile. De nouvelles fonctionnalités comme l'enregistrement hors ligne, la reprise d'enregistrement en cas de perte de connexion, et la possibilité de regénérer les transcriptions ont été ajoutées. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été implémentées pour une meilleure stabilité et ergonomie.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de relancer une transcription échouée via l'interface web et l'API. [#fd9b751](https://github.com/suitenumerique/dictaphone/commit/fd9b751)
-- Amélioration de la gestion des erreurs d'upload sur l'application mobile, avec des messages plus clairs pour l'utilisateur. [#dc7ca3f](https://github.com/suitenumerique/dictaphone/commit/dc7ca3f)
-- Possibilité de télécharger l'application mobile directement depuis l'interface web. [#724c874](https://github.com/suitenumerique/dictaphone/commit/724c874)
-- Ajout d'un lien vers la documentation dans l'application mobile. [#2f6f336](https://github.com/suitenumerique/dictaphone/commit/2f6f336)
-- Amélioration de l'expérience utilisateur lors de la réinitialisation du mot de passe sur l'application mobile. [#c084838](https://github.com/suitenumerique/dictaphone/commit/c084838)
-- Ajout d'une option pour contourner l'écran de connexion sur l'application mobile. [#16dd187](https://github.com/suitenumerique/dictaphone/commit/16dd187)
-- Possibilité de sélectionner directement le texte transcrit sur l'application mobile. [#211908c](https://github.com/suitenumerique/dictaphone/commit/211908c) et [#1c8606b](https://github.com/suitenumerique/dictaphone/commit/1c8606b)
-- Ajout d'un indicateur de progression lors de l'upload sur l'application mobile. [#6d46342](https://github.com/suitenumerique/dictaphone/commit/6d46342) et [#10dcb1f](https://github.com/suitenumerique/dictaphone/commit/10dcb1f)
-- Amélioration de la gestion des fichiers : ajout d'une commande pour nettoyer les fichiers en attente et supprimés. [#f270029](https://github.com/suitenumerique/dictaphone/commit/f270029) et [#69a917b](https://github.com/suitenumerique/dictaphone/commit/69a917b)
+- Ajout de la possibilité de regénérer une transcription depuis l'interface web et mobile. [#2345](https://github.com/suitenumerique/dictaphone/issues/2345)
+- Implémentation de l'enregistrement hors ligne sur l'application mobile, avec sauvegarde locale des enregistrements.
+- Amélioration de la gestion des erreurs et ajout d'une fonctionnalité de reprise automatique de l'enregistrement en cas de perte de connexion ou de problèmes de stockage.
+- Ajout d'une indication visuelle du niveau sonore pendant l'enregistrement.
+- Possibilité de sélectionner directement le texte transcrit.
+- Ajout d'un lien vers la documentation dans l'application mobile.
+- Ajout d'un bouton d'aide et de téléchargement de l'application mobile sur l'interface web.
+- Amélioration de l'accessibilité de l'application web.
+- Ajout d'un indicateur de progression lors du téléchargement des enregistrements sur l'application mobile.
+- Ajout d'une option pour n'autoriser l'upload que via Wifi sur l'application mobile.
+- Ajout d'un écran d'information avec un lien vers la documentation et la possibilité de supprimer son compte sur l'application mobile.
+- Amélioration de l'expérience utilisateur lors de la réinitialisation du mot de passe sur l'application mobile.
 
 ### Évolutions techniques
-- Migration de l'authentification mobile vers JWT et PKCE pour une meilleure sécurité. [#09702a1](https://github.com/suitenumerique/dictaphone/commit/09702a1) et [#1a44564](https://github.com/suitenumerique/dictaphone/commit/1a44564)
-- Refonte de l'architecture d'authentification pour plus de robustesse. [#8b81751](https://github.com/suitenumerique/dictaphone/commit/8b81751)
-- Mise à jour des dépendances backend et des fichiers Docker pour améliorer la sécurité. [#8a4ba91](https://github.com/suitenumerique/dictaphone/commit/8a4ba91)
-- Amélioration du logging en cas d'échec de la transcription. [#b1a1451](https://github.com/suitenumerique/dictaphone/commit/b1a1451)
-- Ajout de tests unitaires et d'intégration pour améliorer la qualité du code. [#27f5717](https://github.com/suitenumerique/dictaphone/commit/27f5717)
-- Amélioration de la configuration de l'application avec la prise en compte de variables d'environnement pour `SECURE_SSL_REDIRECT`. [#338a90a](https://github.com/suitenumerique/dictaphone/commit/338a90a)
+- Mise à jour des dépendances backend pour renforcer la sécurité.
+- Amélioration de la robustesse du système d'authentification avec JWT et PKCE sur l'application mobile.
+- Refactorisation du code frontend pour améliorer les performances et la maintenabilité.
+- Ajout d'un script pour automatiser la création des releases pour l'application mobile.
+- Ajout d'une commande pour nettoyer les fichiers temporaires et supprimés.
+- Amélioration de la gestion des erreurs et des logs.
+- Optimisation de la détection des périphériques audio.
+- Correction de problèmes liés à la gestion des états de l'enregistreur.
+- Amélioration de la robustesse de la logique d'enregistrement.
+- Mise en place de tests CI pour le linting du code mobile.
+- Correction de bugs liés à l'affichage de la durée des enregistrements.
+- Correction de problèmes de compatibilité avec certains navigateurs.
 
 ### Autres changements
-- Mise à jour de la documentation et des fichiers README. [#2d7695d](https://github.com/suitenumerique/dictaphone/commit/2d7695d), [#4f34e13](https://github.com/suitenumerique/dictaphone/commit/4f34e13), [#dcb19c8](https://github.com/suitenumerique/dictaphone/commit/dcb19c8)
-- Mise à jour des documents légaux. [#182a6a7](https://github.com/suitenumerique/dictaphone/commit/182a6a7) et [#e791c59](https://github.com/suitenumerique/dictaphone/commit/e791c59)
-- Correction de typos et amélioration de la lisibilité du code. [#09e35de](https://github.com/suitenumerique/dictaphone/commit/09e35de)
-- Amélioration de l'accessibilité de certains composants de l'application mobile. [#e8a970c](https://github.com/suitenumerique/dictaphone/commit/e8a970c)
-- Diverses corrections de bugs et améliorations de l'interface utilisateur sur le web et l'application mobile.
+- Mise à jour de la documentation.
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Mise à jour des fichiers de configuration pour l'environnement de développement.
+- Amélioration des badges dans le fichier README.
+- Mise à jour des documents légaux.
+- Configuration de l'agent utilisateur pour les requêtes HTTP.
+- Ajout d'un timeout plus élevé pour les requêtes backend.
+- Correction d'un bug qui provoquait un crash de la page lors du chargement avec des informations utilisateur manquantes.
+- Correction d'un bug lié à la gestion des jetons d'accès et de rafraîchissement en environnement de développement local.
+- Ajout de la possibilité de configurer l'affichage de l'application mobile.
+- Ajout de la possibilité de télécharger les applications mobiles.
