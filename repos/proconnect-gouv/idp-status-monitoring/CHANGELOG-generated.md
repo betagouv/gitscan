@@ -1,19 +1,15 @@
-## Changelog : idp-status-monitoring (30 derniers jours, au 11 mai 2026)
+## Changelog : idp-status-monitoring (30 derniers jours, au 2026-05-18)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la réactivité du producteur en streaming des résultats et sur la mise à jour des dépendances du projet pour bénéficier des dernières corrections et améliorations de sécurité.
-
-### Évolutions fonctionnelles
-- Le producteur stream désormais les résultats `/idp/internet` dès qu'ils sont disponibles, améliorant ainsi la réactivité du système. [#99](https://github.com/proconnect-gouv/idp-status-monitoring/pull/99)
+Ce changelog couvre les 30 derniers jours et met en évidence les mises à jour des dépendances du projet. L'application a bénéficié d'une série de mises à jour de ses composants, notamment Hono, Zod, amqplib, uuid et Bun, assurant ainsi la compatibilité avec les dernières versions et potentiellement des corrections de bugs ou des améliorations de performance.
 
 ### Évolutions techniques
-- Mise à jour de Hono (4.12.14 -> 4.12.18) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour de Zod (4.3.6 -> 4.4.3) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour d'amqplib (1.0.3 -> 1.0.7) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour de UUID (13.0.0 -> 14.0.0) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour de Bun (1.3.12-alpine -> 1.3.13-alpine) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour des dépendances de développement : @types/bun, prettier, typescript.
-- Mise à jour de l'action GitHub `actions/upload-artifact` (7.0.0 -> 7.0.1).
+- Mise à jour de la version de Bun (oven/bun) de 1.3.12-alpine à 1.3.13-alpine.
+- Mise à jour de la version de Hono de 4.12.14 à 4.12.18.
+- Mise à jour de la version de Zod de 4.3.6 à 4.4.3.
+- Mise à jour de la version d'amqplib de 1.0.3 à 2.0.1.
+- Mise à jour de la version de uuid de 13.0.0 à 14.0.0.
+- Mise à jour des types de Bun (@types/bun) de 1.3.12 à 1.3.13.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Mise à jour de la dépendance `@hono/zod-validator` (#110).
