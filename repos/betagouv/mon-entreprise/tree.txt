@@ -595,14 +595,6 @@
 │   │   │   │   ├── FeedbackRating.tsx
 │   │   │   │   ├── useFeedback.ts
 │   │   │   │   └── utils.ts
-│   │   │   ├── FicheDePaie
-│   │   │   │   ├── CotisationLine.tsx
-│   │   │   │   ├── Cotisations.tsx
-│   │   │   │   ├── FicheDePaie.css
-│   │   │   │   ├── FicheDePaie.tsx
-│   │   │   │   ├── Line.tsx
-│   │   │   │   ├── SalaireBrut.tsx
-│   │   │   │   └── SalaireNet.tsx
 │   │   │   ├── GuichetInfo.tsx
 │   │   │   ├── IframeResizer.ts
 │   │   │   ├── JeDonneMonAvis.tsx
@@ -716,6 +708,17 @@
 │   │   │   │   ├── SearchRulesAndSimulators.tsx
 │   │   │   │   └── SimulatorHits.tsx
 │   │   │   ├── simulationExplanation
+│   │   │   │   ├── FicheDePaie
+│   │   │   │   │   ├── CotisationLine.tsx
+│   │   │   │   │   ├── FicheDePaie.tsx
+│   │   │   │   │   ├── Line.tsx
+│   │   │   │   │   ├── SalaireLine.tsx
+│   │   │   │   │   ├── Section.tsx
+│   │   │   │   │   ├── SectionCotisations.tsx
+│   │   │   │   │   ├── SectionSalaireBrut.tsx
+│   │   │   │   │   ├── SectionSalaireNet.tsx
+│   │   │   │   │   ├── styledComponents.ts
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── InstitutionsPartenaires
 │   │   │   │   │   ├── CaisseRetraite.tsx
 │   │   │   │   │   ├── CotisationsUrssaf.tsx
@@ -1553,6 +1556,12 @@
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── Aides.tsx
 │   │   │   │   │   │   ├── Explications.tsx
+│   │   │   │   │   │   ├── FicheDePaie
+│   │   │   │   │   │   │   ├── Cotisations.tsx
+│   │   │   │   │   │   │   ├── FicheDePaie.tsx
+│   │   │   │   │   │   │   ├── SalaireBrut.tsx
+│   │   │   │   │   │   │   ├── SalaireNet.tsx
+│   │   │   │   │   │   │   └── TempsDeTravail.tsx
 │   │   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   │   └── TitresRestaurant.tsx
 │   │   │   │   │   ├── config.ts
@@ -1565,7 +1574,12 @@
 │   │   │   │   └── sasu
 │   │   │   │       ├── SASU.tsx
 │   │   │   │       ├── components
-│   │   │   │       │   └── Explications.tsx
+│   │   │   │       │   ├── Explications.tsx
+│   │   │   │       │   └── FicheDePaie
+│   │   │   │       │       ├── Cotisations.tsx
+│   │   │   │       │       ├── FicheDePaie.tsx
+│   │   │   │       │       ├── SalaireBrut.tsx
+│   │   │   │       │       └── SalaireNet.tsx
 │   │   │   │       ├── config.ts
 │   │   │   │       └── simulationConfig.ts
 │   │   │   ├── simulateurs-et-assistants
@@ -1713,12 +1727,14 @@
 │   │       ├── polyfill.ts
 │   │       ├── publicodes
 │   │       │   ├── EngineContext.ts
+│   │       │   ├── décideActionRègleInvalide.ts
 │   │       │   ├── engineFactory.ts
 │   │       │   ├── getStringOrNullFromPublicodesExpression.ts
 │   │       │   ├── publicodes.ts
 │   │       │   └── safeSetSituation.ts
 │   │       └── react-compound-components.ts
 │   ├── test
+│   │   ├── décideActionRègleInvalide.test.ts
 │   │   ├── fabrique-social.fixtures.ts
 │   │   ├── fabrique-social.test.ts
 │   │   ├── modele-social
@@ -1801,4 +1817,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-317 directories, 1486 files
+319 directories, 1500 files
