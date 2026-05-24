@@ -1,3 +1,5 @@
+2026-05-22T17:43:38+02:00 - 036c0bf - Redwane Zafari : Merge pull request #702 from MTES-MCT/fix/cgu-download-personal-data
+2026-05-11T19:49:26+02:00 - 4d4cd00 - Redwane : fix(exports): defer set_transferred_data_date outside atomic_transaction Calling set_transferred_data_date (which uses its own atomic_transaction) inside checkout_exports's atomic_transaction caused a nested transaction error (SQLAlchemy InvalidRequestError). Collect CGU user ids during the transaction and call set_transferred_data_date after the block closes.
 2026-05-08T11:39:44+02:00 - b1df384 - Redwane Zafari : Merge pull request #698 from MTES-MCT/feat/admin_home_page_rework
 2026-05-07T12:43:57+02:00 - d0cb65d - donia benharara : Merge branch 'master' of github.com:MTES-MCT/mobilic-api
 2026-05-07T12:43:29+02:00 - 0162266 - donia benharara : fix(control): add isCTT to controleur user info
