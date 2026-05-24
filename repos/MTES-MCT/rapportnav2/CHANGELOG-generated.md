@@ -1,32 +1,34 @@
 ## Changelog : rapportnav2 (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de rapportnav2 se concentrent sur l'amélioration de la gestion des ressources des agents, l'ajout de nouvelles fonctionnalités comme la recherche d'adresses via un service externe, et des optimisations significatives du processus d'intégration continue (CI) pour accélérer les tests et l'analyse du code. Des corrections de sécurité et des améliorations de la robustesse de l'application ont également été apportées.
+Cette version apporte des améliorations significatives à la gestion des ressources et des agents, ainsi que des corrections de bugs et des optimisations de performance, notamment au niveau du pipeline CI/CD. L'intégration d'un service d'adresse via data.gouv.fr améliore l'expérience utilisateur en offrant une fonctionnalité d'autocomplétion. Des efforts ont été faits pour renforcer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des ressources et de l'équipe associée aux agents.  Cela inclut la gestion des rôles et des types de ressources. ([#1364](https://github.com/MTES-MCT/rapportnav2/pull/1364))
-- Implémentation d'une recherche d'adresses avec autocomplétion, s'appuyant sur le service data.gouv.fr. ([ea7d759](https://github.com/MTES-MCT/rapportnav2/commit/ea7d75913664b3966a4c52b971d37cf38301fc6c))
-- Amélioration de la gestion des opérations de plongée dans le module EnvControl.
-- Correction de l'affichage des erreurs 400 sur le frontend.
-- Amélioration du calcul de la durée des surveillances environnementales dans l'API Analytics.
-- Mise à jour des règles AEM (Actions Environnementales Marines) pour une meilleure précision.
+- Ajout d'un service d'adresse provenant de data.gouv.fr avec autocomplétion dans l'interface utilisateur.
+- Amélioration de la gestion des ressources et des agents (ajout, suppression, modification).
+- Correction de l'affichage des erreurs 400 dans l'interface utilisateur.
+- Amélioration de la gestion des données d'environnement pour les contrôles.
+- Corrections et améliorations des règles AEM (Actions Environnementales Marines) pour différents types de missions.
+- Ajout de la gestion des opérations de plongée pour les contrôles environnementaux.
 
 ### Évolutions techniques
-- Refonte du pipeline CI pour utiliser des images Docker plus légères et optimiser la mise en cache des builds.
-- Intégration de l'analyse statique du code frontend avec SonarQube.
-- Amélioration de la configuration du pipeline CI pour une meilleure gestion des artefacts et des dépendances.
-- Mise à jour de plusieurs dépendances : Spring Boot, Flyway, Gradle, Monitor-UI, et des plugins Babel.
-- Mise à jour de l'image PostgreSQL utilisée dans les conteneurs.
-- Suppression d'éléments inutilisés dans la configuration du backend pour améliorer la couverture des tests.
-- Correction de problèmes de configuration liés à l'analyse de sécurité avec Trivy.
-- Utilisation du hash de commit au lieu du tag pour renforcer la sécurité.
+- Mise à jour de plusieurs dépendances (Spring Boot, Flyway, Gradle, Monitor-UI, etc.).
+- Refonte du pipeline CI/CD pour améliorer la performance et la fiabilité des builds et des tests.
+- Utilisation d'une image Docker plus légère (bellsoft/liberica-openjdk-alpine:25) pour les builds.
+- Amélioration de la configuration SonarQube et intégration de l'analyse du frontend.
+- Optimisation de la gestion du cache pour les ressources d'environnement.
+- Correction de problèmes liés à la configuration de Tomcat pour renforcer la sécurité.
+- Mise à jour de la version de Vite à la version 8.
 
 ### Autres changements
 - Suppression d'imports inutilisés.
-- Mise à jour des suppressions de vulnérabilités (CVE).
-- Correction de problèmes de configuration SonarQube.
-- Diverses corrections de bugs et améliorations de la robustesse du code.
+- Mise à jour des suppressions de CVE (Common Vulnerabilities and Exposures).
+- Suppression de fichiers `.env` inutilisés.
+- Amélioration de la documentation et des commentaires dans le code.
+- Correction de divers problèmes de configuration et de build.
+- Suppression de l'analyse temporaire de SonarQube.
 - Mise à jour des snapshots de tests.
-- Suppression d'un ancien fichier .env.
-- Correction de problèmes de validation du schéma lors de la création de missions.
-- Correction d'un problème d'infini loop dans le code.
+- Ajout de fichiers `.trivyignore.yml` pour ignorer certains problèmes de sécurité dans Trivy.
+- Correction de problèmes liés à la gestion des promesses rejetées dans SonarQube.
+- Suppression de l'artefact frontend dans SonarQube.
+- Correction de l'analyse des durées dans les rapports analytiques.
