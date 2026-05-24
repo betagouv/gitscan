@@ -1,46 +1,32 @@
 ## Changelog : resorption-bidonvilles (30 derniers jours, au 06 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment autour de la gestion des adresses des Établissements Temporaires d'Hébergement (ETI) et de l'historique des actions. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme. Enfin, l'intégration de nouveaux indicateurs de suivi de la résorption des bidonvilles a été initiée.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de la gestion des adresses des ETI (Établissements Travailleurs Itinérants), notamment dans le formulaire de déclaration d'action. Des corrections de typage et des optimisations de code ont également été apportées pour améliorer la robustesse et la maintenabilité de l'application. Enfin, des ajustements ont été faits pour une meilleure expérience utilisateur, comme l'ajustement automatique du zoom de la carte et l'ajout d'un indicateur d'état "En cours de résorption".
 
 ### Évolutions fonctionnelles
-- **Gestion des ETI :**
-    - Synchronisation des coordonnées lors du changement d'adresse d'une ETI.
-    - Ajustement automatique du zoom de la carte pour afficher toutes les ETI.
-    - Ajout d'un tag "En cours de résorption" sur la liste des sites existants.
-    - Possibilité de saisir et d'afficher plusieurs adresses pour une même ETI.
-    - Validation de l'adresse obligatoire lorsque le type de localisation est "ETI".
-    - Amélioration de l'affichage de l'historique des adresses et des sites.
-- **Historique des actions :**
-    - Implémentation de l'historique des actions, incluant l'affichage des modifications et des informations contextuelles.
-    - Affichage des thématiques sur plusieurs lignes dans l'historique.
-    - Ajout de filtres par année de financement DIHAL.
-    - Affichage de l'année de financement DIHAL dans un badge.
-- **Indicateurs de suivi :**
-    - Ajout d'indicateurs de mise à jour de la population sur 3 mois.
-    - Intégration de ces indicateurs dans l'email récapitulatif hebdomadaire.
-- **Améliorations générales :**
-    - Correction de la formulation des taux de mises à jour.
-    - Correction de l'affichage de plusieurs erreurs simultanées.
+- Ajout d'un tag "En cours de résorption" sur la liste des sites existants. [#2676](https://trello.com/c/v3T8gn3K/2676)
+- Ajout d'une option "toutes" au filtre de financement DIHAL. [#2672](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2672)
+- Synchronisation des coordonnées lors du changement d'adresse ETI.
+- Ajustement automatique du zoom de la carte pour afficher tous les marqueurs ETI.
+- Le champ adresse est maintenant obligatoire lorsque le type de localisation est "ETI". [#2652](https://trello.com/c/ZvoH4cJE/2652)
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Simplification et nettoyage du code, notamment dans les composants liés à la gestion des adresses ETI et à l'historique des actions.
-    - Suppression de code redondant et d'imports inutiles.
-    - Utilisation de types plus précis et de fonctions utilitaires partagées.
-- **Infrastructure :**
-    - Pré-bundle des librairies nécessaires pour Nuxt 4.
-    - Mise à jour de l'URL de Matomo pour utiliser un lien proxifié.
-- **Tests :**
-    - Ajout de tests unitaires pour certaines fonctionnalités.
-- **Sécurité :**
-    - Correction de potentielles failles d'injection.
-    - Amélioration de la validation des données.
+- Refactor important du formulaire de déclaration d'action (FormDeclarationAction) pour améliorer la lisibilité et la maintenabilité du code, incluant :
+    - Suppression de props drilling et utilisation de `useFormContext`.
+    - Extraction de la logique de parsing des coordonnées dans un helper partagé (`parseCoordinates`).
+    - Simplification de la déclaration des propriétés booléennes.
+    - Suppression d'imports inutiles.
+- Amélioration du typage dans l'API, notamment pour les fonctions `getHistory`, `historizeAddresses` et `resetAddresses`.
+- Centralisation des fonctions de conversion de date en timestamp.
+- Pré-bundle des librairies nécessaires à Nuxt 4 pour améliorer les performances.
+- Correction de plusieurs risques d'injection et de problèmes d'interpolation de chaînes de caractères.
+- Correction de typage erroné.
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de la lisibilité du code.
-- Mise à jour de la documentation.
-- Correction de problèmes de linting.
-- Amélioration de la gestion des erreurs.
-- Suppression de logs inutiles.
-- Renommage de certains filtres et composants pour une meilleure clarté.
+- Suppression d'un log inutile.
+- Ajout d'un HR et renommage d'un filtre dans l'interface utilisateur.
+- Correction du formatage de la date dans les dernières activités.
+- Ajout d'un garde-fou pour éviter d'itérer inutilement dans une boucle.
+- Correction d'un filtrage effectué deux fois.
+- Suppression d'un export inutile.
+- Corrections de linting (espaces inutiles).
