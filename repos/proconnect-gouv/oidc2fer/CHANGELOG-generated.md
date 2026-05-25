@@ -1,13 +1,16 @@
-## Changelog : oidc2fer (30 derniers jours, au 13 mai 2026)
+## Changelog : oidc2fer (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, une amélioration a été apportée pour rendre la correspondance des affiliations (eduPersonAffiliation) moins sensible à la casse. Cela permet une meilleure interopérabilité avec les fournisseurs d'identité OIDC qui peuvent renvoyer ces affiliations avec des majuscules ou des minuscules différentes.
+Cette version apporte des améliorations à la gestion des identifiants SIRET et corrige un problème de sensibilité à la casse pour l'attribut `eduPersonAffiliation`. Ces changements améliorent la compatibilité et la précision de l'identification des établissements d'enseignement supérieur. La version 1.0.14 a été déployée en production.
 
 ### Évolutions fonctionnelles
-- La correspondance de l'attribut `eduPersonAffiliation` est désormais insensible à la casse, améliorant ainsi la compatibilité avec différents fournisseurs d'identité OIDC. [#41](https://github.com/proconnect-gouv/oidc2fer/pull/41)
+- Correction : L'attribut `eduPersonAffiliation` est maintenant comparé sans tenir compte de la casse, améliorant ainsi la compatibilité avec certains fournisseurs d'identité. [#41](https://github.com/proconnect-gouv/oidc2fer/pull/41)
+- Ajout : Ajout de nouvelles entités à la correspondance SIRET, notamment pour EURECOM.
+- Ajout : Ajout d'autres entités à la correspondance SIRET.
 
 ### Évolutions techniques
-- Aucune évolution technique majeure n'a été apportée ce mois-ci.
+- Déploiement : La version 1.0.14 a été déployée en production.
+- Publication : Publication de la version 1.0.14.
 
 ### Autres changements
-- Aucune autre modification n'a été apportée.
+Aucun autre changement significatif à signaler.
