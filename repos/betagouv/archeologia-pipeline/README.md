@@ -3,7 +3,7 @@
 Plugin QGIS pour exécuter un pipeline de traitement LiDAR et produire des rasters de type MNT / densité / indices RVT, avec une étape optionnelle de détection / segmentation par *computer vision*.
 
 - Nom du plugin : **ArchéologIA**
-- Version : **0.1.0**
+- Version : **0.2.0**
 - QGIS minimum : **3.0**
 
 ## Fonctionnalités
@@ -11,25 +11,28 @@ Plugin QGIS pour exécuter un pipeline de traitement LiDAR et produire des raste
 - Génération de produits raster :
   - **MNT**
   - **Densité**
-  - Indices **RVT** (via *Processing*) : **M-HS**, **SVF**, **SLO**, **LD**, **VAT**
+  - Indices **RVT** (via *Processing*) : **M-HS**, **SVF**, **SLO**, **LD**, **SLRM**, **VAT**
 - Export optionnel en **JPG + world file (JGW)** pour certains produits.
 - (Optionnel) Détection / segmentation d'instances par computer vision à partir des JPG produits (via runner externe ou dépendances Python) :
   - **Multi-modèles** : plusieurs modèles peuvent être configurés en parallèle, chacun ciblant un RVT différent.
-  - **Sélection de classes** par modèle : cocher/décocher les classes à détecter.
+  - **Sélection de classes** par modèle : cocher/décocher les classes à détecter par modèle. Si toutes les classes d'un modèle sont décochées, l'inférence est ignorée pour ce modèle (court-circuit avant toute inférence).
   - **Filtrage par aire minimale** (`min_area_m2`) par modèle : les détections trop petites sont écartées dans un shapefile séparé (`detections_filtered_too_small.shp`).
   - **Post-processing global** (appliqué après toutes les inférences, avant génération des shapefiles) :
-    - Fusion des polygones de même classe qui se touchent ou sont séparés par ≤ 0.5 m (y compris **inter-dalles**), avec confiance = moyenne pondérée par l'aire des polygones sources.
-    - Suppression des superpositions inter-classes (le polygone le plus confiant conserve sa géométrie, les autres sont découpés).
+    - Fusion des polygones de même classe qui se touchent ou sont séparés par ≤ 0.5 m (y compris **inter-dalles**), avec confiance = moyenne pondérée par l'aire des polygones sources. **Optionnel par modèle** via `postprocess.merge_adjacent` dans `args.yaml`.
+    - Suppression des superpositions inter-classes (le polygone le plus confiant conserve sa géométrie, les autres sont découpés). **Optionnel par modèle** via `postprocess.remove_overlaps`.
+  - **Clustering spatial DBSCAN** (optionnel, par modèle) : regroupe les détections individuelles en zones (ex : `cratere_obus` → `zone_crateres`), configurable via `args.yaml` du modèle. Supporte hystérésis (`min_confidence_extend`), pondération par confiance (`confidence_weight`) et plusieurs géométries de sortie (`convex_hull`, `concave_hull`, `bounding_box`).
+  - **Nettoyage automatique** du workdir JPG (`detections/<modele>/jpg/`) si *Générer des images annotées* est désactivé.
+- **Projet QGIS consolidé** : un seul fichier `.qgs` multi-modèles est généré à la racine de `detections/` (`detections_validation.qgs`).
 - Option (configurable) : génération de **pyramides / overviews** GDAL pour les GeoTIFF de sortie.
 
 ## Modes de données supportés
 
 Le pipeline peut être lancé dans plusieurs modes (selon l’UI/config) :
 
-- `ign_laz` : téléchargement/consommation de tuiles LAZ depuis une liste IGN.
+- `ign_laz` : téléchargement/consommation de tuiles LAZ depuis l'IGN (à partir d'un polygone de zone ou d'une liste de dalles).
 - `local_laz` : consommation de tuiles LAZ/LAS déjà présentes localement.
-- `existing_mnt` : calcul d’indices RVT à partir d’un MNT existant.
-- `existing_rvt` : opérations sur RVT existants (selon fonctionnalités disponibles).
+- `existing_mnt` : calcul d'indices RVT à partir d'un MNT existant. Supporte les MNT au format dalle IGN 1 km (ex. `LHD_FXX_xxxx_yyyy_*`), les MNT plus petits (< 1 km, emprise native conservée) **et les MNT de grande emprise** (plusieurs km²) qui sont traités **d'un seul bloc** : les indices RVT sont calculés sur le raster complet et SAHI assure le slicing 640 × 640 à l'inférence CV. Voir la section [MNT / RVT non-IGN](#mnt--rvt-non-ign--traitement-des-grandes-emprises).
+- `existing_rvt` : opérations sur RVT existants (TIF). Dans ce mode, le dossier de sortie est `indices/RVT/` (nom générique) ; dans les autres modes, le nom du dossier correspond à l'indice cible (`LD`, `SVF`, etc.). Comme pour `existing_mnt`, les rasters RVT de grande emprise sont **traités sans pré-découpage** : la limite PIL `MAX_IMAGE_PIXELS` est désactivée et SAHI découpe l'image en mémoire au moment de l'inférence.
 
 ## Pré-requis
 
@@ -46,14 +49,14 @@ Le plugin s’exécute dans QGIS et s’appuie sur des outils externes. Un contr
 - **PDAL** (`pdal`) requis pour les modes `ign_laz` et `local_laz`
 - **GDAL** utilitaires :
   - `gdalwarp` requis pour `ign_laz`, `local_laz`, `existing_mnt`
-  - `gdal_translate` requis pour `existing_mnt` / `existing_rvt` (et utilisé dans d’autres modes)
-  - `gdaladdo` optionnel (pyramides / overviews) — si absent, la génération est ignorée
+  - `gdal_translate` requis pour `existing_mnt` / `existing_rvt`
+  - `gdaladdo` optionnel (pyramides / overviews). Si absent, la génération de pyramides est ignorée
 
 ### Computer vision (optionnel)
 
 Deux options pour l'**inférence** :
 
-- **Runner ONNX externe** (recommandé) : `third_party/cv_runner_onnx/windows/cv_runner_onnx.exe` (Windows) / `third_party/cv_runner_onnx/linux/cv_runner_onnx` (Linux)
+- **Runner ONNX externe** (recommandé) : `data/third_party/cv_runner_onnx/windows/cv_runner_onnx.exe` (Windows) / `data/third_party/cv_runner_onnx/linux/cv_runner_onnx` (Linux)
   - Le runner externe ne fait **que l'inférence** (JSON/TXT + images annotées). La génération des shapefiles et le post-processing global sont toujours réalisés côté plugin Python.
 - Ou dépendances Python dans l'environnement de QGIS (si pas de runner externe) :
   - `onnxruntime`, `sahi`, `PIL` (Pillow)
@@ -75,12 +78,14 @@ Ces dépendances sont disponibles dans l'environnement QGIS standard.
    - `Profils utilisateurs` → `Ouvrir le dossier du profil actif`
 3. Ouvrir le dossier :
    - `python/plugins`
-4. Dézipper le plugin : on obtient le dossier :
-   - `archeologia-pipeline-lidar-processing`
-5. Copier le dossier `archeologia-pipeline-lidar-processing` dans `python/plugins`.
+4. Dézipper le ZIP `main.zip` : on obtient le dossier :
+   - `archeologia`
+5. Copier le dossier `archeologia` dans `python/plugins`.
 6. Fermer puis relancer QGIS.
 7. Activer le plugin :
    - `Extensions` → `Installer/Gérer les extensions…` → rechercher **Archeolog'IA pipeline** → activer.
+
+> Le nom du dossier généré (`archeologia`) est défini par la constante `PLUGIN_NAME` dans `dev/package_plugin.py`.
 
 ### Où se trouve le dossier des plugins
 
@@ -106,7 +111,7 @@ Certaines étapes reposent sur des exécutables dans le `PATH` :
 - `pdal` requis pour `ign_laz` / `local_laz`
 - `gdalwarp` requis pour `ign_laz` / `local_laz` / `existing_mnt`
 - `gdal_translate` requis pour `existing_mnt` / `existing_rvt`
-- `gdaladdo` optionnel (pyramides / overviews). Si absent, la génération de pyramides est ignorée.
+- `gdaladdo` optionnel (pyramides / overviews). Si absent, la génération de pyramides est ignorée
 
 ## Computer vision : runner ONNX + modèles
 
@@ -123,6 +128,19 @@ Le plugin utilise un **runner ONNX unifié** qui supporte les types de modèles 
 | **RF-DETR Seg** | Segmentation d'instances | `.onnx` |
 | **SegFormer** | Segmentation sémantique | `.onnx` |
 | **SMP** (DeepLabV3+, Unet…) | Segmentation sémantique | `.onnx` |
+
+### Contrat des modèles
+
+Un dossier modèle dans `data/models/<nom>/` doit contenir **7 fichiers obligatoires** (`model_card.yaml`, `args.yaml`, `classes.txt`, `training_params.json`, `config.json`, `weights/best.onnx`, `weights/best.json`) + `evaluation_results.json` recommandé. Voir [`docs/model_contract.md`](docs/model_contract.md) pour les schémas détaillés et les règles de cohérence inter-fichiers (doublons de classes autorisés, divergences `imgsz`/SAHI documentées dans `model_card.inference_choices`).
+
+Pour valider un dossier modèle :
+
+```bash
+python scripts/validate_models_metadata.py                 # tous les modèles
+python scripts/validate_models_metadata.py data/models/X   # un seul modèle
+```
+
+Les tests pytest `tests/unit/test_models_metadata.py` et `tests/unit/test_models_connectivity.py` lancent automatiquement la même validation sur chaque modèle versionné et vérifient que les readers du pipeline (`ModelProfile.load`, `load_sahi_config_from_model`, …) restent compatibles.
 
 ### Export des modèles vers ONNX
 
@@ -202,7 +220,7 @@ Le script détecte automatiquement le type de modèle (YOLO, RF-DETR, RF-DETR Se
 Objectif : produire un exécutable :
 
 ```text
-third_party/cv_runner_onnx/windows/cv_runner_onnx.exe
+data/third_party/cv_runner_onnx/windows/cv_runner_onnx.exe
 ```
 
 #### Compilation automatique
@@ -226,7 +244,7 @@ Le script :
 1. Crée un environnement virtuel isolé (`.venv_onnx`)
 2. Installe les dépendances nécessaires
 3. Compile le runner avec PyInstaller
-4. Copie le binaire vers `third_party/cv_runner_onnx/windows/`
+4. Copie le binaire vers `data/third_party/cv_runner_onnx/windows/`
 
 **Taille du binaire** : ~100-150 MB (inclut les dépendances SAHI et ONNX Runtime)
 
@@ -238,25 +256,32 @@ python -m venv .venv_onnx
 .venv_onnx\Scripts\activate
 pip install pyinstaller onnxruntime sahi pillow numpy pyyaml
 python -m PyInstaller --clean cv_runner_onnx.spec
-copy dist\cv_runner_onnx.exe ..\third_party\cv_runner_onnx\windows\
+copy dist\cv_runner_onnx.exe ..\..\data\third_party\cv_runner_onnx\windows\
 ```
 
 > **Note** : `shapely`, `geopandas` et `fiona` ne sont **pas** nécessaires dans le runner. La génération de shapefiles et le post-processing sont réalisés côté plugin Python (QGIS).
 
-### Modèles (dossier `models/`)
+### Modèles (dossier `data/models/`)
 
-Structure attendue (1 modèle = 1 dossier) :
+Tous les modèles sont placés dans `data/models/` à la racine du plugin (dossier gitignored). Structure attendue (1 modèle = 1 dossier) :
 
 ```text
-models/
-  <nom_du_modele>/
-    args.yaml              # Paramètres du modèle (imgsz, task, sahi config…)
-    classes.txt            # Un nom de classe par ligne (sans background)
-    config.json            # Métadonnées entraînement (architecture, classes, hyperparamètres)
-    weights/
-      best.pt / best.pth   # Modèle PyTorch original
-      best.onnx            # Modèle exporté (requis pour le runner)
-      best.json            # Métadonnées ONNX (type, tâche, résolution, classes)
+data/
+  models/
+    <nom_du_modele>/
+      args.yaml              # Paramètres du modèle (imgsz, task, sahi config, clustering…)
+      classes.txt            # Un nom de classe par ligne (sans background)
+      config.json            # Métadonnées entraînement (architecture, classes, hyperparamètres)
+      weights/
+        best.pt / best.pth   # Modèle PyTorch original
+        best.onnx            # Modèle exporté (requis pour le runner)
+        best.json            # Métadonnées ONNX (type, tâche, résolution, classes)
+  third_party/
+    cv_runner_onnx/
+      windows/
+        cv_runner_onnx.exe   # Runner ONNX compilé (Windows)
+      linux/
+        cv_runner_onnx       # Runner ONNX compilé (Linux)
 ```
 
 Le fichier `classes.txt` doit contenir **un nom de classe par ligne** (sans classe background) :
@@ -267,105 +292,148 @@ nomclasse2
 ...
 ```
 
-Le fichier `args.yaml` décrit les paramètres d'inférence. Exemple pour un modèle RF-DETR Seg :
+Le fichier `args.yaml` décrit les paramètres d'inférence. Exemple pour un modèle RF-DETR Seg avec clustering et post-traitement personnalisé :
 
 ```yaml
 imgsz: 1032
 model: RF-DETR-Seg-Large
 task: instance_segmentation
+
 sahi:
   overlap_ratio: 0.2
   slice_height: 1032
   slice_width: 1032
+
+# (Optionnel) Désactiver certaines étapes de post-processing global.
+# Défauts : merge_adjacent=true, remove_overlaps=true.
+postprocess:
+  merge_adjacent: false   # ex. cratères disjoints → on ne fusionne pas
+  remove_overlaps: true
+
+clustering:
+  - target_classes: ["cratere_obus"]
+    eps_m: 25
+    min_cluster_size: 3
+    min_samples: 2
+    min_confidence: 0.3              # seuil "core" (initie/étend un cluster)
+    min_confidence_extend: 0.1       # (optionnel) hystérésis : seuil bas pour
+                                     # absorber des détections "border" sans
+                                     # qu'elles puissent initier un cluster.
+                                     # Défaut = min_confidence (DBSCAN classique).
+    output_class_name: "zone_crateres"
+    output_geometry: convex_hull     # convex_hull | concave_hull | bounding_box
+    concave_ratio: 0.3               # (optionnel, si concave_hull) 0=très concave, 1≈convex_hull
+    buffer_m: 5
+    min_area_m2: 500                 # (optionnel) écarte les clusters trop petits
+    confidence_weight: 0.5           # 0.0 = DBSCAN classique
 ```
 
 Valeurs possibles pour `task` : `detect`, `instance_segmentation`, `semantic_segmentation`.
 
+La section `postprocess` est optionnelle. Si elle est absente, les valeurs par défaut historiques s'appliquent (`merge_adjacent=true`, `remove_overlaps=true`). C'est utile pour des classes où la fusion intra-classe est indésirable (ex. détections ponctuelles disjointes telles que des cratères d'obus).
+
+Le clustering DBSCAN est optionnel. Si la section `clustering` est absente de `args.yaml`, il est désactivé. Les classes générées par clustering contournent le filtre `selected_classes` et sont toujours incluses dans les shapefiles. La logique se trouve dans `src/pipeline/cv/clustering.py` (DBSCAN avec hystérésis et pondération par confiance).
+
 ### Configuration
 
-Dans `config.json`, le modèle doit pointer vers le fichier `.onnx` :
+Dans `config.json`, la section computer vision est sous la clé `computer_vision`. Le format **multi-modèles** utilise un tableau `runs`, chaque entrée ciblant un RVT (`target_rvt`) avec son propre modèle :
 
 ```json
 {
-  "cv": {
+  "computer_vision": {
     "enabled": true,
-    "selected_model": "models/mon_modele/weights/best.onnx"
+    "runs": [
+      {
+        "model": "data/models/run_rfdetr_parcellaire/weights/best.onnx",
+        "target_rvt": "LD",
+        "min_area_m2": 0.0
+      },
+      {
+        "model": "data/models/formes_lineaires_rfdetr_seg/weights/best.onnx",
+        "target_rvt": "LD",
+        "selected_classes": ["parcellaire", "talus-fosse_fossebutte"],
+        "min_area_m2": 50.0
+      }
+    ],
+    "confidence_threshold": 0.3,
+    "iou_threshold": 0.5,
+    "generate_annotated_images": false,
+    "generate_shapefiles": true,
+    "models_dir": "data/models"
   }
 }
 ```
 
-Ou vers le dossier du modèle (le runner cherchera automatiquement `best.onnx`) :
+Le format historique mono-modèle est conservé pour rétrocompatibilité (sans `runs`) :
 
 ```json
 {
-  "cv": {
+  "computer_vision": {
     "enabled": true,
-    "selected_model": "mon_modele"
+    "selected_model": "data/models/mon_modele/weights/best.onnx",
+    "target_rvt": "LD"
   }
 }
 ```
 
-## Utilisation
+`selected_model` peut aussi être un nom de dossier modèle relatif à `models_dir` ; le runner cherchera alors automatiquement `weights/best.onnx`.
 
-1. Ouvrir le plugin : menu **ArchéologIA**.
-2. Choisir le **mode** de données (IGN / local / MNT existant / RVT existant).
-3. Configurer :
-   - le répertoire de sortie
-   - les paramètres de résolution
-   - les produits à générer
-   - (optionnel) la génération de pyramides
-4. (Optionnel) Activer la **Computer Vision** :
-   - Cocher *Activer la computer vision*.
-   - Dans la table des modèles, ajouter un ou plusieurs modèles via le bouton **+** :
-     - Sélectionner le modèle (dossier `models/<nom>/`).
-     - Choisir le **RVT cible** (LD, M-HS, SVF…) que ce modèle doit analyser.
-     - Définir l'**aire minimale** (`min_area_m2`) pour filtrer les petites détections.
-     - Cliquer sur **Classes…** pour sélectionner les classes à détecter.
-   - Activer *Générer les shapefiles* pour produire des fichiers vectoriels géoréférencés.
-5. Lancer le pipeline.
+## MNT / RVT non-IGN : traitement des grandes emprises
 
-## Configuration (`config.json`)
+Les modes `existing_mnt` et `existing_rvt` ne se limitent pas aux dalles IGN LiDAR HD 1 km. Le pipeline inspecte les **bornes géographiques** de chaque raster d'entrée (Lambert-93) puis choisit un flux adapté :
 
-Le plugin persiste sa configuration dans un fichier `config.json` à la racine du plugin.
+| Régime | Condition (tolérance 50 m) | Traitement |
+|---|---|---|
+| **standard** | ≈ 1 000 × 1 000 m **et** aligné sur la grille IGN | Comportement d'origine (crop 1 km, renommage `LHD_FXX_{x}_{y}_*`). |
+| **small** | < 1 km ou non aligné sur la grille | Aucun crop : l'emprise native est préservée (évite d'introduire du NoData). Nommage IGN conservé pour la dédup et la conversion shapefile. |
+| **large** | largeur **ou** hauteur > 1,05 km | **Pas de pré-découpage**. Les indices RVT sont calculés sur l'emprise complète, puis SAHI assure le slicing 640 × 640 en mémoire au moment de l'inférence CV. |
 
-### Structure (extraits)
+Conséquences pratiques pour le régime **large** :
 
-- `app.files.output_dir` : dossier de sortie
-- `app.files.data_mode` : mode (`ign_laz`, `local_laz`, `existing_mnt`, `existing_rvt`)
-- `app.files.input_file` : fichier de liste (IGN ou liste locale selon le mode)
-- `processing.mnt_resolution` : résolution du MNT (m)
-- `processing.density_resolution` : résolution densité (m)
-- `processing.tile_overlap` : recouvrement inter-tuiles (m)
-- `processing.filter_expression` : filtre de classes (expression PDAL)
-- `processing.products` : activation des produits (MNT/DENSITE/M_HS/SVF/SLO/LD/VAT)
-- `processing.output_formats.jpg` : exports JPG par produit
-- `processing.pyramids` : génération d’overviews GDAL
+- **Indices RVT continus** : un MNT 7 × 5 km produit un unique GeoTIFF `LD`, `SVF`, etc. couvrant toute la scène, sans discontinuités sur les bords de sous-dalles. Les algorithmes RVT (angle, voisinage) bénéficient ainsi de l'intégralité du contexte local.
+- **Pas de sous-dalles NoData** : on évite le problème des cellules 1 km à l'extérieur de la couverture réelle du LiDAR qui se retrouvaient sinon rendues en noir dans QGIS.
+- **Limite PIL désactivée** : `Image.MAX_IMAGE_PIXELS = None` est positionné dans `src/pipeline/ign/products/convert_tif_to_png.py` et `src/pipeline/cv/computer_vision_onnx.py` pour autoriser le chargement d'un grand TIF/PNG. À l'usage interne uniquement (rasters locaux maîtrisés).
+- **SAHI gère le slicing** : le raster est lu une fois en numpy, puis `sahi_lite.slice_image()` produit les tuiles 640 × 640 avec chevauchement (`overlap_ratio=0.2` par défaut). Les détections de chaque tuile sont décalées vers l'espace image global puis fusionnées (NMS). Le nom du fichier est conservé, donc une seule entrée apparaît dans `tif_transform_data` pour le géoréférencement des bounding boxes.
+- **Consommation RAM** : un PNG 20 000 × 20 000 RGB = 1,2 Go en numpy ; les slices SAHI ajoutent ~50-100 Mo selon l'overlap. Compter **~3 Go de pic** pour une scène 10 × 10 km à 0,5 m/px.
+- **Le nom de sortie reprend le stem du fichier source** : un MNT `mon_site.tif` produit `mon_site_LD.tif`, `mon_site_SVF.tif`, etc. (les caractères non alphanumériques sont convertis en `_` pour la compatibilité GDAL, et un éventuel suffixe `_MNT` est retiré pour éviter `*_MNT_MNT.tif`).
 
-Exemple pyramides :
-
-```json
-{
-  "processing": {
-    "pyramids": {
-      "enabled": true,
-      "levels": [2, 4, 8, 16, 32, 64]
-    }
-  }
-}
-```
+> La logique se trouve dans `src/pipeline/modes/existing_mnt.py` (`_classify_mnt_layout`, `_large_tile_name_for`) et `src/pipeline/modes/existing_rvt.py` (`_classify_rvt_layout`).
 
 ## Sorties
 
 Les sorties sont écrites dans le dossier `output_dir` configuré.
 
-Selon les produits et options, la structure typique est :
+Structure typique (modes `local_laz` / `ign_laz` / `existing_mnt`) :
 
-- `results/`
-  - `MNT/…/tif/*.tif`
-  - `RVT/<PRODUIT>/tif/*.tif`
-  - `RVT/<PRODUIT>/jpg/*.jpg` (+ `*.jgw` si activé)
+```text
+output_dir/
+  metadata.json                          # Résumé du run (version, dalles, produits, runs CV)
+  pipeline_log_<date>.txt               # Log complet du run
+  sources/
+    dalles/                             # Fichiers LAZ/LAS sources (mode local_laz)
+  indices/
+    MNT/
+      tif/                             # GeoTIFF MNT
+      jpg/                             # JPG + world files (si activé)
+    LD/                                # Nom = indice cible du run CV
+      tif/
+      jpg/
+    SVF/
+      tif/
+      jpg/
+  detections/
+    detections_validation.qgs          # Projet QGIS consolidé (unique, multi-modèles)
+    <nom_modele>/                      # Dossier par modèle
+      shapefiles/                      # Shapefiles par classe (avec clustering si activé)
+        detections_LD_parcellaire.shp
+        detections_LD_talus-fosse_fossebutte.shp
+        detections_filtered_too_small.shp
+      jpg/                             # Workdir inférence (supprimé si images annotées désactivées)
+```
 
-Les GeoTIFF peuvent contenir des **overviews** si l’option pyramides est activée et si `gdaladdo` est disponible.
+En mode `existing_rvt`, le dossier d'indices est `indices/RVT/` (nom générique).
+
+Les GeoTIFF peuvent contenir des **overviews** si l'option pyramides est activée et si `gdaladdo` est disponible.
 
 ## Développement
 
@@ -409,6 +477,13 @@ Ensuite, un `git push` déclenchera automatiquement Talisman et pourra bloquer l
 - **Détections bbox au lieu de polygones** : vérifier que le fichier `weights/best.json` du modèle contient bien `"task": "instance_segmentation"` pour les modèles RF-DETR Seg
 - **Pipeline bloqué au démarrage** : si beaucoup de fichiers TIF/JPG (>1000), la première exécution peut prendre plusieurs minutes pour créer les liens/copies vers les dossiers modèles — c'est normal
 - **Classes non filtrées** : vider les fichiers `.txt`/`.json` existants dans le dossier `jpg/` du modèle si les anciens résultats ont été générés sans filtrage de classes
+- **Inférence lancée malgré 0 classe cochée** : s'assurer que `selected_classes` est bien une liste vide `[]` dans la config et non `null` — le court-circuit dans `run_cv_on_folder` ne s'active que pour `[]` explicite
+- **Dossier `jpg/` persistant** : le workdir est supprimé après génération des shapefiles uniquement si *Générer des images annotées* est désactivé. Si le dossier persiste, vérifier que l'option est bien décochée
+- **Projet QGIS manquant** : `detections_validation.qgs` est généré par `finalize_service`. Si absent, vérifier que le pipeline s'est terminé sans erreur (section `PIPELINE TERMINÉ AVEC SUCCÈS` dans les logs)
+- **MNT/RVT de grande emprise** (plusieurs km²) : le régime `large` est déclenché dès que largeur ou hauteur > 1,05 km. Vérifier dans les logs la ligne `emprise > 1 km → RVT et CV sur le raster complet` (mode MNT) ou `SAHI assure le slicing à l'inférence (pas de pré-découpage)` (mode RVT). Le raster d'entrée **doit** être projeté en Lambert-93 (EPSG:2154) pour que `_classify_*_layout` puisse évaluer correctement l'emprise.
+- **PIL `DecompressionBombError`** sur un grand raster : la limite est désactivée via `Image.MAX_IMAGE_PIXELS = None` dans `convert_tif_to_png.py` et `computer_vision_onnx.py`. Si l'erreur réapparaît, vérifier qu'un autre module PIL importé plus tôt n'a pas réinitialisé la limite (ordre d'import).
+- **Pic de RAM élevé** sur un grand raster : prévoir ~3 Go de mémoire libre pour une scène 10 × 10 km à 0,5 m/px (PNG 20 000² en numpy + slices SAHI). Pour réduire, fermer les autres projets QGIS ou passer par `existing_rvt` après avoir pré-calculé les indices hors ligne (ex. via `rvt-py` en script).
+- **Détections décalées ou vides** sur un grand raster : vérifier que le TIF source contient un géoréférencement valide (un `gdalinfo mon_site.tif` doit afficher `Pixel Size`, `Origin`, `Coordinate System`). Sans geotransform, les bounding boxes ne peuvent pas être transformées en polygones Lambert-93 dans le shapefile.
 
 ## Architecture
 
@@ -428,11 +503,12 @@ flowchart TD
         G -->|"Lancer"| H["_on_run_clicked()"]
         G -->|"Annuler"| I["_cancel_event.set()"]
         G -->|"Sauvegarder préf."| J["_save_from_widgets()"]
-        G -->|"Nettoyer logs"| K["_clear_logs()"]
+        G -->|"Effacer logs"| K["logs_text.clear() (bouton inline)"]
         H --> H1["_sync_config_from_widgets()"]
         H1 --> H2{"CV activée ?"}
         H2 -->|"Oui, classes OK"| H3["Thread worker (daemon)"]
-        H2 -->|"Oui, 0 classes"| H2b["Avertissement → stop"]
+        H2 -->|"Oui, 0 classe"| H2b["Avertissement dans confirmation\n(run concerné court-circuité plus tard)"]
+        H2b --> H3
         H2 -->|"Non"| H3
     end
 
@@ -440,8 +516,11 @@ flowchart TD
         H3 --> W1["build_run_context(config)"]
         W1 --> W2["file_logging(output_dir)"]
         W2 --> W3["PipelineController.run()"]
-        W3 --> W4["StructuredLogger + run_preflight()"]
-        W4 --> W5{"Preflight OK ?"}
+        W3 --> W4["StructuredLogger + validate_run_context()"]
+        W4 --> W4b{"Config métier OK ?"}
+        W4b -->|"Non"| W6["end_pipeline(success=False)"]
+        W4b -->|"Oui"| W4c["run_preflight()"]
+        W4c --> W5{"Preflight OK ?"}
         W5 -->|"Non"| W6["end_pipeline(success=False)"]
         W5 -->|"Oui"| W7["get_runner(mode)"]
         W7 --> N{"Mode ?"}
@@ -453,7 +532,9 @@ flowchart TD
     subgraph IgnLocal["Mode ign_laz / local_laz"]
         O --> R0["clear_validation_cache()"]
         R0 --> R1{"ign_laz ?"}
-        R1 -->|"Oui"| R2["download_ign_dalles(max_workers)"]
+        R1 -->|"Oui, input vecteur (.shp/.geojson)"| R1b["tile_resolver.py → resolve_tiles_from_polygon() → dalles_urls.txt"]
+        R1b --> R2["download_ign_dalles(max_workers)"]
+        R1 -->|"Oui, input .txt"| R2
         R1 -->|"Non"| R3["run_local_laz() → fichier_tri.txt"]
         R2 --> R4["prepare_merged_tiles(overlap, max_workers)"]
         R3 --> R4
@@ -468,77 +549,92 @@ flowchart TD
         R11 --> R14["Dalle suivante"]
         R14 -->|"Reste des dalles"| R5
         R14 -->|"Fin boucle"| R17{"CV activée ?"}
-        R17 -->|"Oui"| R18["_run_post_cv() → _build_global_class_color_map() + run_existing_rvt() sur dossier RVT généré"]
+        R17 -->|"Oui"| R18["cv_post_service.run_cv_post_loop() → _build_global_class_color_map()\nboucle cv_runs → run_existing_rvt() par run"]
         R17 -->|"Non"| FIN1["finalize_pipeline()"]
         R18 --> FIN1
     end
 
     subgraph ExistingMnt["Mode existing_mnt"]
         P --> P1["run_existing_mnt() — boucle par MNT"]
-        P1 --> P1a["Copie/conversion MNT (TIF ou ASC→TIF via gdal_translate)"]
-        P1a --> P1b["create_visualization_products() (RVT)"]
-        P1b --> P1c["crop_final_products()"]
-        P1c --> P1d["copy_final_products_to_results() (+ pyramides)"]
+        P1 --> P1z["get_raster_bounds() + _classify_mnt_layout()"]
+        P1z --> PLAY{"layout ?"}
+        PLAY -->|"large (&gt; 1 km)"| P1aL["Copie MNT entier dans intermediaires/\n(nom = _large_tile_name_for(mnt_path))"]
+        P1aL --> P1b["create_visualization_products() (RVT) sur MNT complet"]
+        PLAY -->|"standard / small"| P1a["Copie/conversion MNT (TIF ou ASC→TIF via gdal_translate)"]
+        P1a --> P1b
+        P1b --> P1c{"layout == small ou large ?"}
+        P1c -->|"Oui"| P1cs["copy_products_without_crop()\n(emprise native conservée)"]
+        P1c -->|"Non"| P1cc["crop_final_products() (crop 1 km IGN)"]
+        P1cs --> P1d["copy_final_products_to_results() (+ pyramides)"]
+        P1cc --> P1d
         P1d --> P2{"CV activée ?"}
-        P2 -->|"Oui"| P3["_build_global_class_color_map() + run_existing_rvt() sur dossier RVT généré"]
+        P2 -->|"Oui"| P3["_build_global_class_color_map()\nboucle cv_runs → run_existing_rvt() par run"]
         P2 -->|"Non"| FIN2["finalize_pipeline()"]
         P3 --> FIN2
     end
 
-    subgraph ExistingRvt["Mode existing_rvt"]
-        Q --> Q1["run_existing_rvt()"]
-        Q1 --> Q1a["Copie TIF → results/RVT/type/tif/ (renommage normalisé via coords.py)"]
-        Q1a --> Q1b["Conversion TIF→JPG + world file (geo_utils)"]
-        Q1b --> Q1c["Nettoyage fichiers orphelins"]
+    subgraph ExistingRvt["Mode existing_rvt (ExistingRvtRunner)"]
+        Q --> Q0["_build_global_class_color_map()"]
+        Q0 --> Q1["Boucle cv_runs → run_existing_rvt() par run\nou 1 passe sans inférence si aucun modèle\n(indices_folder_name='RVT' forcé)"]
+        Q1 --> QPRE["Pour chaque TIF : get_raster_bounds() + _classify_rvt_layout()\n(log seulement si layout=='large')"]
+        QPRE --> Q1a["Copie TIF → indices/RVT/tif/ (renommage normalisé via coords.py)"]
+        Q1a --> Q1b["Conversion TIF→PNG + world file (PIL, limite désactivée)"]
+        Q1b --> Q1c["Nettoyage fichiers orphelins (_cleanup_orphans)"]
         Q1c --> Q1d{"CV activée ?"}
-        Q1d -->|"Oui"| Q1e["run_cv_on_folder() (inférence sur tous les JPG)"]
-        Q1d -->|"Non"| Q1f["build_vrt_index() (tif + jpg)"]
+        Q1d -->|"Oui"| Q1e["run_cv_on_folder() (cv_config=run_cfg, run_shapefile_dedup=True)"]
+        Q1d -->|"Non"| Q1f["Dalle suivante / fin boucle"]
         Q1e --> Q1f
-        Q1f --> Q1g{"CV + generate_shapefiles ?"}
-        Q1g -->|"Oui"| Q1h["deduplicate_cv_shapefiles_final()"]
-        Q1g -->|"Non"| FIN3["finalize_pipeline()"]
-        Q1h --> FIN3
+        Q1f --> FIN3["finalize_pipeline()"]
     end
 
     subgraph Finalize["finalize_pipeline() — service commun (finalize_service.py)"]
-        FIN1 --> F1["build_vrt_index() (tif/ jpg/ annotated_images/ — skip si VRT existant)"]
+        FIN1 --> F1["_collect_vrt_paths_and_build()\nVRT tif/ png/ annotated_images/ — skip si VRT existant"]
         FIN2 --> F1
         FIN3 --> F1
-        F1 --> F2["Collecte shapefiles CV (tous les runs)"]
+        F1 --> F2["_collect_shapefiles() — couches GeoPackage\n detections/**/shapefiles/*.gpkg"]
         F2 --> F3["_build_global_class_color_map() — mapping unique classe→couleur"]
-        F3 --> F3b["_generate_consolidated_qgs_project() → projet QGIS multi-modèles"]
-        F3b --> F4["Logs de fin de pipeline"]
+        F3 --> F3b{"shapefiles présents ?"}
+        F3b -->|"Oui"| F3c["_generate_consolidated_qgs_project() → detections_validation.qgs"]
+        F3b -->|"Non"| F3d["metadata.json"]
+        F3c --> F3d
+        F3d --> F4["Logs de fin de pipeline (slog.end_pipeline ou reporter)"]
         F4 --> F5["load_layers(VRT + shapefiles, global_color_map) → QGIS"]
     end
 
-    subgraph CV["Computer Vision (transversal — ONNX uniquement)"]
-        CV1["run_cv_on_folder(global_color_map) — runner.py (orchestration)"]
-        CV1 --> CV1a["resolve_model_weights_path() + classes.txt"]
-        CV1a --> CV2{"find_external_cv_runner() ?"}
-        CV2 -->|"Trouvé"| CV3["run_external_cv_runner(run_shapefile_dedup=False)"]
-        CV3 --> CV3a["subprocess Popen — inférence seule (JSON/TXT + images annotées)"]
-        CV3a --> CV3b["World files pour images annotées (geo_utils)"]
-        CV2 -->|"Absent / échec"| CV4["_run_fallback_inference(global_color_map) (runner.py)"]
-        CV4 --> CV5["computer_vision_onnx.py — ONNX image par image"]
-        CV3b --> CV6["Labels bruts (.txt/.json) + images annotées (cv_output.py)"]
-        CV5 --> CV6
-        CV6 --> CV7["deduplicate_cv_shapefiles_final() — côté plugin Python"]
-        CV7 --> CV7a["conversion_shp.py → charge toutes les détections"]
-        CV7a --> CV7pp["postprocessing.py → postprocess_geo_detections()"]
-        CV7pp --> CV7pp1["1. Validation géométries (shapely make_valid)"]
-        CV7pp1 --> CV7pp2["2. Fusion intra-classe (buffer 0.5m → unary_union → débuffer)"]
-        CV7pp2 --> CV7pp3["3. Suppression superpositions inter-classes (par confiance)"]
-        CV7pp3 --> CV7c["Écriture shapefiles par classe (geopandas)"]
-        CV7c --> CV7b["qgs_project.py → projet QGIS par modèle (.qgs)"]
+    subgraph CV["Computer Vision — runner.py (orchestration) + runner_cache / runner_inference / runner_shapefiles"]
+        CV0{"selected_classes = [] ?"}
+        CV0 -->|"Oui"| CVskip["return — inférence ignorée"]
+        CV0 -->|"Non"| CV1["runner_cache.prepare_model_workdir() → detections/<model>/raw_detections/\n+ classes.txt"]
+        CV1 --> CV2{"find_external_cv_runner() ?"}
+        CV2 -->|"Trouvé"| CV3["run_external_cv_runner(run_shapefile_dedup=False)\nsubprocess Popen — inférence seule (JSON/TXT)"]
+        CV3 --> CV3b["World files pour images annotées (geo_utils)"]
+        CV3b --> CV3c["runner_shapefiles.deduplicate_cv_shapefiles_final()"]
+        CV2 -->|"Absent / échec"| CV4["runner_inference.run_fallback_inference()"]
+        CV4 --> CV5["computer_vision_onnx.py — ONNX image par image (SAHI)\nProduit List[Detection] typé"]
+        CV5 --> CV5b["runner_shapefiles.deduplicate_cv_shapefiles_final() (si generate_shapefiles)"]
+    end
+
+    subgraph Dedup["runner_shapefiles.deduplicate_cv_shapefiles_final()"]
+        D0["ModelProfile.load(weights_path) — args.yaml + sidecar .json en une passe"]
+        D0 --> D1["conversion_shp.create_shapefile_from_detections()"]
+        D1 --> D2["postprocessing.postprocess_geo_detections()"]
+        D2 --> D2a["1. Validation géométries (shapely make_valid)"]
+        D2a --> D2b["2. Fusion intra-classe (buffer 0.5m → unary_union → débuffer)"]
+        D2b --> D2c["3. Suppression superpositions inter-classes (par confiance)"]
+        D2c --> D3["clustering.py → DBSCAN confidence-weighted (si config args.yaml)"]
+        D3 --> D4["Écriture shapefiles par classe (geopandas)\nFiltre selected_classes (None=tout, []=rien, [x,y]=filtre)"]
+        D4 --> D5["Écriture GeoPackage + _filter_gpkg_by_min_area() (si min_area_m2 > 0)"]
     end
 
     subgraph Shared["Modules utilitaires partagés"]
-        S1["types.py — LogFn, CancelCheckFn, CancelFn, ProgressFn"]
-        S2["subprocess_utils.py — subprocess_kwargs_no_window()"]
-        S3["geo_utils.py — extract_tif_geotransform(), write_world_file(), create_world_file_from_tif()"]
-        S4["coords.py — extract_xy_from_filename(), extract_xy_from_tile_name(), infer_xy_from_file()"]
-        S5["class_utils.py — resolve_model_weights_path(), load_class_names/colors, BASE_COLOR_PALETTE"]
-        S6["runners/helpers.py — log_section(), safe_float(), resolve_rvt_tif_dir()"]
+        S1["pipeline.types — LogFn, CancelFn… + safe_float()"]
+        S2["pipeline.constants — IGN_TILE_SIZE_M"]
+        S3["pipeline.subprocess_utils — subprocess_kwargs_no_window()"]
+        S4["pipeline.geo_utils — extract_tif_geotransform(), write_world_file()"]
+        S5["pipeline.coords — extract_xy_from_filename(), infer_xy_from_file()"]
+        S6["pipeline.cv.types — Detection (frozen dataclass)"]
+        S7["pipeline.cv.model_profile — ModelProfile (source unique args.yaml + sidecar)"]
+        S8["app.structured_logger — log_section() + StructuredLogger"]
     end
 ```
 
@@ -548,6 +644,22 @@ flowchart TD
 run_tests.py                        # Point d'entrée unique : python run_tests.py
 conftest.py                         # Config pytest (sys.path + fixtures)
 pytest.ini                          # Config pytest (testpaths, addopts, filters)
+last_ui_config.json                 # Dernière config UI sauvegardée automatiquement
+
+data/                               # Ressources statiques (gitignored sauf icon)
+├── icon.png                        #   Icône plugin
+├── models/                         #   Modèles ONNX (gitignored)
+│   └── <nom_modele>/
+│       ├── args.yaml               #   Paramètres inférence + clustering
+│       ├── classes.txt
+│       ├── config.json
+│       └── weights/best.onnx
+├── third_party/                    #   Runners compilés (gitignored)
+│   └── cv_runner_onnx/
+│       ├── windows/cv_runner_onnx.exe
+│       └── linux/cv_runner_onnx
+└── quadrillage_france/             #   Grille IGN LiDAR HD (gitignored, ~200 MB)
+    └── TA_diff_pkk_lidarhd_classe.shp
 
 dev/                                # Outillage développeur (exclu du ZIP distribué)
 ├── requirements.txt                #   Chapeau : inclut les 3 fichiers ci-dessous
@@ -555,7 +667,10 @@ dev/                                # Outillage développeur (exclu du ZIP distr
 │   ├── test.txt                    #   pytest, ruff
 │   ├── export.txt                  #   ultralytics, torch, onnx (export modèles)
 │   └── build.txt                   #   pyinstaller, onnxruntime (compilation runner)
-├── package_plugin.py               #   Packaging plugin → ZIP
+├── package_plugin.py               #   Packaging plugin → ZIP (PLUGIN_NAME="archeologia")
+├── docs/
+│   ├── generate_doc.py             #   Générateur de la doc utilisateur (.docx)
+│   └── documentation_utilisateur_v1.docx
 └── runner_onnx/
     ├── build.py                    #   Compilation runner ONNX (PyInstaller)
     ├── export_to_onnx.py           #   Export modèles → ONNX
@@ -563,12 +678,15 @@ dev/                                # Outillage développeur (exclu du ZIP distr
     └── cv_runner_onnx.spec         #   Spec PyInstaller
 
 tests/
-├── TESTS_MANUELS_QGIS.txt         # Checklist tests manuels dans QGIS
+├── TESTS_MANUELS_QGIS.md          # Checklist tests manuels dans QGIS (markdown)
+├── TESTS_MANUELS_QGIS.txt         # Version texte historique
 ├── unit/                           # Tests unitaires (sans dépendances externes)
 │   ├── test_cancel_token.py
+│   ├── test_detection.py           #   Detection (round-trip in-memory + disk)
 │   ├── test_existing_rvt.py        #   _cleanup_orphans
 │   ├── test_external_runner.py     #   RunnerPayload, find_external_cv_runner
-│   ├── test_helpers.py             #   safe_float, log_section
+│   ├── test_helpers.py             #   safe_float (pipeline.types), log_section (app.structured_logger)
+│   ├── test_model_profile.py       #   ModelProfile.load (args.yaml + sidecar + classes)
 │   ├── test_preflight.py           #   CheckResult, _check_input_path
 │   ├── test_progress_reporter.py
 │   ├── test_registry.py            #   get_runner (instanciation, modes)
@@ -591,41 +709,52 @@ src/
 │   ├── structured_logger.py        # Logs structurés avec sections visuelles
 │   ├── runners/
 │   │   ├── base.py                 # ModeRunner Protocol
-│   │   ├── helpers.py              # log_section(), safe_float(), resolve_rvt_tif_dir()
 │   │   ├── registry.py             # get_runner(mode)
-│   │   ├── ign_local_runner.py     # ign_laz + local_laz (_process_tile, _run_post_cv)
+│   │   ├── input_strategy.py       # IgnDownloadStrategy / LocalLazStrategy (acquisition LAZ + plan progression)
+│   │   ├── ign_local_runner.py     # ign_laz + local_laz (_process_tile + délégation à InputStrategy)
 │   │   ├── existing_mnt_runner.py  # existing_mnt
-│   │   └── existing_rvt_runner.py  # existing_rvt (fonctionne avec ou sans CV)
+│   │   └── existing_rvt_runner.py  # existing_rvt (indices_folder_name="RVT" forcé)
 │   └── services/
-│       └── finalize_service.py     # finalize_pipeline() — VRT, shapefiles, load_layers
+│       ├── cv_post_service.py      # run_cv_post_loop() — boucle CV partagée entre runners
+│       └── finalize_service.py     # finalize_pipeline() — VRT, .qgs consolidé, load_layers
 │
 ├── config/
-│   └── config_manager.py           # Lecture/écriture config.json
+│   └── config_manager.py           # Lecture/écriture config.json + last_ui_config.json
 │
 ├── pipeline/                       # Logique métier
 │   ├── types.py                    # Type aliases partagés (LogFn, CancelFn, etc.)
+│   ├── constants.py                # Constantes partagées (IGN_TILE_SIZE_M…)
 │   ├── subprocess_utils.py         # subprocess_kwargs_no_window() partagé
 │   ├── geo_utils.py                # Extraction geotransform, world files
 │   ├── coords.py                   # Extraction coordonnées (filename + metadata + tile name)
+│   ├── output_paths.py             # Chemins de sortie normalisés (indice_base_dir, detection_model_dir…)
 │   ├── preflight.py                # Vérification dépendances et chemins
 │   ├── cv/                         # Computer vision
-│   │   ├── class_utils.py          # Palette couleurs, résolution modèle, utilitaires classes
+│   │   ├── types.py                # Detection (dataclass) + (dé)sérialisation in-memory / disk
+│   │   ├── model_profile.py        # ModelProfile.load() — source unique args.yaml + sidecar .json
+│   │   ├── class_utils.py          # Palette couleurs, utilitaires classes (façade vers model_profile)
+│   │   ├── clustering.py           # DBSCAN spatial (scipy, confidence-weighted)
 │   │   ├── computer_vision_onnx.py # Inférence ONNX (YOLO / RF-DETR / RF-DETR Seg / SegFormer / SMP)
-│   │   ├── conversion_shp.py       # Conversion labels → shapefiles géoréférencés (+ appel post-processing global)
-│   │   ├── cv_output.py            # Gestion sorties CV (labels, annotations, légende)
+│   │   ├── conversion_shp.py       # Labels → shapefiles géoréférencés + clustering + filtre selected_classes
+│   │   ├── cv_output.py            # Gestion sorties CV (labels, annotations, légende) — consomme List[Detection]
 │   │   ├── external_runner.py      # Subprocess runner ONNX externe (inférence seule) + RunnerPayload
-│   │   ├── postprocessing.py       # Post-processing : validation, fusion intra-classe (buffer/union), suppression superpositions
-│   │   ├── qgs_project.py          # Génération projet QGIS (.qgs) pour validation
-│   │   ├── runner.py               # run_cv_on_folder, _prepare_model_workdir, deduplicate_cv_shapefiles_final
+│   │   ├── model_config.py         # resolve_cv_runs(), resolve_model_weights_path (façade legacy)
+│   │   ├── postprocessing.py       # Post-processing : validation, fusion intra-classe (optionnelle), suppression superpositions (optionnelle)
+│   │   ├── qgs_project.py          # Génération projet QGIS consolidé (.qgs)
+│   │   ├── runner.py               # run_cv_on_folder — orchestration pure (court-circuit si selected_classes=[])
+│   │   ├── runner_cache.py         # get_model_slug, prepare_model_workdir, has_cached_detection, list_candidate_pngs
+│   │   ├── runner_inference.py     # run_fallback_inference (fallback Python ONNX si runner externe absent)
+│   │   ├── runner_shapefiles.py    # deduplicate_cv_shapefiles_final (production GeoPackage + métadonnées modèle)
 │   │   └── sahi_lite.py            # Slicing SAHI léger (numpy-only)
 │   ├── ign/                        # Téléchargement + prétraitement
 │   │   ├── coords_fallback.py      # Fallback extraction coordonnées
 │   │   ├── downloader.py           # Téléchargement dalles IGN
 │   │   ├── pdal_validation.py      # Validation PDAL + cache
 │   │   ├── preprocess.py           # Fusion tuiles (voisins + merge)
+│   │   ├── tile_resolver.py        # Résolution tuiles depuis polygone (OGR + grille IGN)
 │   │   └── products/               # Génération produits
 │   │       ├── convert_tif_to_jpg.py
-│   │       ├── crop.py             # Découpe aux limites dalle
+│   │       ├── crop.py             # Découpe aux limites dalle + copy_products_without_crop (MNT < 1 km)
 │   │       ├── density.py          # Carte de densité
 │   │       ├── indices.py          # Indices RVT (M-HS, SVF, SLO, LD, SLRM, VAT)
 │   │       ├── mnt.py              # MNT (PDAL + gdalwarp)
@@ -634,11 +763,11 @@ src/
 │   │       └── rvt_naming.py       # Nommage dossiers RVT avec paramètres
 │   └── modes/                      # Modes spécifiques
 │       ├── existing_mnt.py         # Traitement MNT existants
-│       ├── existing_rvt.py         # Traitement RVT existants (avec ou sans CV)
+│       ├── existing_rvt.py         # Traitement RVT existants (indices_folder_name param)
 │       └── local_laz.py            # Indexation nuages locaux
 │
 └── ui/
-    └── main_dialog.py              # Interface Qt (config + logs + actions)
+    └── main_dialog.py              # Interface Qt (config + journal d'exécution + splitter)
 ```
 
 ## Environnement développeur
@@ -690,14 +819,15 @@ pip install -r dev/requirements/build.txt     # Compilation runner ONNX uniqueme
 ```bash
 pip install -r dev/requirements/test.txt
 
-python run_tests.py                       # Tous les tests (110 tests)
+python run_tests.py                       # Tous les tests (203 tests)
 python run_tests.py unit                  # Tests unitaires uniquement
 python run_tests.py integration           # Tests d'intégration uniquement
-python run_tests.py -k helpers            # Filtrer par nom
+python run_tests.py -k detection          # Filtrer par nom
 ruff check src/                           # Lint
 ```
 
-Les tests manuels dans QGIS sont documentés dans `tests/TESTS_MANUELS_QGIS.txt`.
+Les tests manuels dans QGIS sont documentés dans `tests/TESTS_MANUELS_QGIS.md`
+(une version `.txt` historique reste également disponible).
 
 ### Tâche 2 — Exporter un modèle vers ONNX
 

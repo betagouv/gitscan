@@ -4,12 +4,20 @@
 │   └── pre-push.cmd
 ├── .gitignore
 ├── .talismanrc
+├── CLAUDE.md
 ├── LICENSE.txt
 ├── README.md
 ├── __init__.py
 ├── config.json
 ├── conftest.py
+├── data
+│   ├── icon.png
+│   └── models
+│       └── .gitkeep
 ├── dev
+│   ├── docs
+│   │   ├── documentation_utilisateur_v1.docx
+│   │   └── generate_doc.py
 │   ├── package_plugin.py
 │   ├── requirements
 │   │   ├── build.txt
@@ -22,13 +30,15 @@
 │       ├── cv_runner_onnx.spec
 │       ├── cv_runner_onnx_cli.py
 │       └── export_to_onnx.py
-├── icon.png
+├── docs
+│   └── model_contract.md
 ├── main.py
 ├── metadata.txt
-├── models
-│   └── .gitkeep
 ├── pytest.ini
 ├── run_tests.py
+├── scripts
+│   ├── _apply_notebook_standardization.py
+│   └── validate_models_metadata.py
 ├── src
 │   ├── __init__.py
 │   ├── app
@@ -36,6 +46,7 @@
 │   │   ├── cancel_token.py
 │   │   ├── cancellable_feedback.py
 │   │   ├── pipeline_controller.py
+│   │   ├── plugin_metadata.py
 │   │   ├── progress_reporter.py
 │   │   ├── qt_progress_reporter.py
 │   │   ├── run_context.py
@@ -46,16 +57,20 @@
 │   │   │   ├── existing_rvt_runner.py
 │   │   │   ├── helpers.py
 │   │   │   ├── ign_local_runner.py
+│   │   │   ├── input_strategy.py
 │   │   │   └── registry.py
 │   │   ├── services
 │   │   │   ├── __init__.py
+│   │   │   ├── cv_post_service.py
 │   │   │   └── finalize_service.py
-│   │   └── structured_logger.py
+│   │   ├── structured_logger.py
+│   │   └── user_narrator.py
 │   ├── config
 │   │   ├── __init__.py
 │   │   └── config_manager.py
 │   ├── pipeline
 │   │   ├── __init__.py
+│   │   ├── constants.py
 │   │   ├── coords.py
 │   │   ├── cv
 │   │   │   ├── __init__.py
@@ -66,10 +81,15 @@
 │   │   │   ├── cv_output.py
 │   │   │   ├── external_runner.py
 │   │   │   ├── model_config.py
+│   │   │   ├── model_profile.py
 │   │   │   ├── postprocessing.py
 │   │   │   ├── qgs_project.py
 │   │   │   ├── runner.py
-│   │   │   └── sahi_lite.py
+│   │   │   ├── runner_cache.py
+│   │   │   ├── runner_inference.py
+│   │   │   ├── runner_shapefiles.py
+│   │   │   ├── sahi_lite.py
+│   │   │   └── types.py
 │   │   ├── geo_utils.py
 │   │   ├── ign
 │   │   │   ├── __init__.py
@@ -77,29 +97,34 @@
 │   │   │   ├── downloader.py
 │   │   │   ├── pdal_validation.py
 │   │   │   ├── preprocess.py
-│   │   │   └── products
-│   │   │       ├── __init__.py
-│   │   │       ├── convert_tif_to_jpg.py
-│   │   │       ├── crop.py
-│   │   │       ├── density.py
-│   │   │       ├── indices.py
-│   │   │       ├── mnt.py
-│   │   │       ├── qgis_processing.py
-│   │   │       ├── results.py
-│   │   │       └── rvt_naming.py
+│   │   │   ├── products
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── convert_tif_to_jpg.py
+│   │   │   │   ├── convert_tif_to_png.py
+│   │   │   │   ├── crop.py
+│   │   │   │   ├── density.py
+│   │   │   │   ├── indices.py
+│   │   │   │   ├── mnt.py
+│   │   │   │   ├── qgis_processing.py
+│   │   │   │   ├── results.py
+│   │   │   │   └── rvt_naming.py
+│   │   │   └── tile_resolver.py
 │   │   ├── modes
 │   │   │   ├── __init__.py
 │   │   │   ├── existing_mnt.py
 │   │   │   ├── existing_rvt.py
 │   │   │   └── local_laz.py
+│   │   ├── output_paths.py
 │   │   ├── preflight.py
 │   │   ├── subprocess_utils.py
 │   │   └── types.py
 │   └── ui
 │       ├── __init__.py
+│       ├── config_widget_adapter.py
+│       ├── cv_runs_table.py
 │       └── main_dialog.py
 └── tests
-    ├── TESTS_MANUELS_QGIS.txt
+    ├── TESTS_MANUELS_QGIS.md
     ├── __init__.py
     ├── conftest.py
     ├── fixtures
@@ -108,22 +133,33 @@
     ├── integration
     │   ├── __init__.py
     │   ├── conftest.py
-    │   ├── test_cv_service_integration.py
     │   ├── test_pipeline_controller_integration.py
     │   ├── test_preflight.py
     │   ├── test_run_context_integration.py
     │   └── test_runners_integration.py
-    ├── test_laz_corruption_detection.py
     └── unit
         ├── __init__.py
         ├── test_cancel_token.py
-        ├── test_cv_service.py
+        ├── test_config_manager.py
+        ├── test_config_widget_adapter.py
+        ├── test_cv_runs_table.py
+        ├── test_detection.py
+        ├── test_existing_mnt.py
         ├── test_existing_rvt.py
+        ├── test_existing_rvt_runner.py
         ├── test_external_runner.py
+        ├── test_finalize_service.py
+        ├── test_geometry_pipeline.py
         ├── test_helpers.py
+        ├── test_model_config.py
+        ├── test_model_profile.py
+        ├── test_models_connectivity.py
+        ├── test_models_metadata.py
+        ├── test_plugin_metadata.py
         ├── test_preflight.py
         ├── test_progress_reporter.py
         ├── test_registry.py
         ├── test_run_context.py
-        └── test_structured_logger.py
-21 directories, 107 files
+        ├── test_structured_logger.py
+        └── test_user_narrator.py
+25 directories, 139 files
