@@ -1,40 +1,44 @@
 ## Changelog : otelo (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application otelo a bénéficié d'une série d'améliorations significatives, notamment au niveau du tableau de bord avec une refonte complète et l'ajout de nouvelles fonctionnalités de comparaison de scénarios. Des améliorations ont également été apportées à l'importation de données via la CLI, à la gestion des utilisateurs et à la correction de bugs pour une meilleure expérience utilisateur.
+Le mois écoulé a été marqué par d'importantes améliorations fonctionnelles et techniques sur l'application otelo. Les utilisateurs bénéficieront notamment de nouvelles fonctionnalités de comparaison de données, d'une meilleure gestion des millésimes et de l'ajout de données historiques. Des optimisations ont également été apportées à l'interface utilisateur et à l'infrastructure pour une expérience plus fluide et performante.
 
 ### Évolutions fonctionnelles
-- **Tableau de bord :** Refonte complète du tableau de bord avec de nouvelles fonctionnalités de comparaison de scénarios et d'affichage de données historiques. [#42](https://github.com/MTES-MCT/otelo/pull/42)
-- **Comparaison de données :** Ajout de la comparaison en pourcentage entre les valeurs de logement vacant et de logements réservés.
-- **Importation de données :** Nouvelle fonctionnalité permettant d'importer des données via la CLI. [#40](https://github.com/MTES-MCT/otelo/pull/40)
-- **Gestion des utilisateurs :** Possibilité pour un administrateur d'usurper l'identité d'un autre utilisateur.
-- **Pilotage :** Ajout d'une fonctionnalité de pilotage cartographique.
-- **Nouvelle méthodologie :** Implémentation d'une nouvelle méthodologie sans hébergement. [#42](https://github.com/MTES-MCT/otelo/pull/42)
-- **Données historiques :** Ajout de séries démographiques historiques.
-- **Typologie utilisateur :** Ajout d'une typologie d'utilisateur.
-- **Partage en lecture seule :** Implémentation d'un partage en lecture seule.
-- **Gestion des clés API :** Ajout de la gestion des consommateurs de clés API.
-- **Guide :** Ajout d'un guide pour le parc de données.
+- Ajout de la comparaison en pourcentage entre les logements vacants et le parc résidentiel ([#42](https://github.com/MTES-MCT/otelo/pull/42)).
+- Implémentation de la possibilité pour un administrateur d'usurper l'identité d'un autre utilisateur.
+- Prévisualisation des résultats lors de la création ou de la mise à jour de formulaires.
+- Amélioration de la gestion des millésimes et mise en cache des résultats pour une meilleure performance.
+- Ajout de données historiques et du RP (Répertoire des Parc) pour le millésime 2022.
+- Nouvelle méthode de calcul pour l'absence d'accommodation.
+- Ajout d'une page de changelog pour une meilleure communication des évolutions.
+- Implémentation d'un CLI (Command Line Interface) pour l'import de données.
+- Ajout de la gestion des versions de données.
+- Ajout de la gestion des clés API et de leurs consommateurs.
+- Amélioration de la gestion des utilisateurs avec un nouveau type d'utilisateur.
+- Ajout de la fonctionnalité "readonly-share" pour le partage de données en lecture seule.
+- Amélioration de la page de pilotage avec l'ajout d'une carte.
+- Ajout de la gestion des typologies d'utilisateurs.
+- Amélioration de l'exportation des données au format Excel.
+- Ajout de la gestion des projections et des wordings associés.
+- Correction de l'affichage du taux de vacance.
+- Correction de l'affichage des taux de logement dans Excel.
+- Correction de la gestion des années de base dans les comparaisons.
 
 ### Évolutions techniques
-- **Mises à jour :** Mise à jour de Next.js et de pnpm.
-- **CLI :** Amélioration de l'injection de modules dans la CLI.
-- **Versioning des données :** Implémentation du versioning des données.
-- **Swagger :** Amélioration des enums dans Swagger.
-- **Cache :** Mise en cache des résultats pour améliorer les performances.
-- **Build :** Corrections diverses du build web.
+- Mise à jour de Next.js.
+- Amélioration de la gestion des erreurs et des injections de modules dans le CLI.
+- Correction de problèmes de build et de linting.
+- Amélioration de la gestion des configurations de millésime.
+- Amélioration de la gestion des dépendances et des locks pnpm.
+- Refonte de la structure de la disparition des données.
+- Ajout de tests unitaires et corrections de bugs associés.
+- Amélioration de la gestion des enums dans Swagger.
 
 ### Autres changements
-- Correction de divers bugs et améliorations de l'UX.
-- Amélioration des wordings et de la documentation.
-- Corrections de tests et de linting.
+- Corrections de typographie et d'UI.
+- Amélioration de la documentation.
 - Suppression de l'envoi d'emails en environnement local.
-- Correction de la gestion des années de millésime.
-- Ajout d'une page changelog.
-- Correction de la gestion des taux de vacance.
-- Correction de la gestion des pics de logements réservés.
-- Correction de la gestion des groupes EPCI.
-- Correction de la gestion des taux LV dans Excel.
-- Amélioration de la gestion des projections.
-- Correction de la gestion des taux de vacance.
-- Ajout de tests unitaires et corrections de tests existants.
+- Correction de bugs divers liés à l'interface utilisateur et à la construction de l'application.
+- Amélioration de la gestion des groupes EPCI.
+- Correction de problèmes de build web.
+- Amélioration de la gestion des tests et du linting.
