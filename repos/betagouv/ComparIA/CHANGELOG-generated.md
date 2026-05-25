@@ -1,31 +1,27 @@
-## Changelog : ComparIA (30 derniers jours, au 2026-05-20)
+## Changelog : ComparIA (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de modèles de langage supportés, avec l'ajout de GPT-5.5, DeepSeek V4 et Gemini 3.5 Flash. Des efforts importants ont été consacrés à la maintenance de la plateforme, notamment la correction de bugs liés à la détection de spam, l'amélioration de la gestion des données et la simplification de l'infrastructure de déploiement. Une nouvelle fonctionnalité de gestion des modèles archivés a également été introduite.
+Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de modèles de langage disponibles, avec l'ajout de GPT-5.5, GPT-5.5 Pro et DeepSeek V4. Des corrections de sécurité ont été apportées pour contrer les tentatives de spam et de jailbreak, et l'infrastructure a été revue pour supporter plus facilement de nouvelles instances et améliorer la configuration. L'accessibilité a également été améliorée avec l'ajustement des couleurs pour une meilleure lisibilité.
 
 ### Évolutions fonctionnelles
-- Ajout des modèles de langage GPT-5.5 et GPT-5.5 Pro. [#456](https://github.com/betagouv/ComparIA/pull/456)
-- Ajout du modèle de langage DeepSeek V4 Pro et Flash. [#455](https://github.com/betagouv/ComparIA/pull/455)
-- Ajout du modèle de langage Gemini 3.5 Flash et Grok 4.3, et archivage de 6 modèles. [#480](https://github.com/betagouv/ComparIA/pull/480)
-- Amélioration de la détection de spam en bloquant des motifs d'injection de code et des tentatives de "roleplay". [#473](https://github.com/betagouv/ComparIA/pull/473), [#468](https://github.com/betagouv/ComparIA/pull/468), [#467](https://github.com/betagouv/ComparIA/pull/467)
-- Correction d'un bug empêchant le calcul correct des intervalles de confiance pour le classement des modèles. [#470](https://github.com/betagouv/ComparIA/pull/470)
-- Suppression du tag "nouveau" des modèles de plus de deux mois. [#430](https://github.com/betagouv/ComparIA/pull/430)
-- Mise à jour du lien vers le formulaire du kit facilitateur. [#459](https://github.com/betagouv/ComparIA/pull/459)
+- Ajout des modèles de langage GPT-5.5 et GPT-5.5 Pro [#456](https://github.com/betagouv/ComparIA/pull/456)
+- Ajout des modèles de langage DeepSeek V4 Pro et DeepSeek V4 Flash [#455](https://github.com/betagouv/ComparIA/pull/455)
+- Amélioration de l'accessibilité en ajustant les couleurs du CTA principal pour un meilleur contraste [#460](https://github.com/betagouv/ComparIA/pull/460)
+- Mise à jour du lien vers le formulaire de kit facilitateur pour les duels [#459](https://github.com/betagouv/ComparIA/pull/459)
+- Suppression du tag "nouveau" des modèles de plus de deux mois [#430](https://github.com/betagouv/ComparIA/pull/430)
+- Correction de la gestion des modèles OpenRouter Nemotron et Trinity, désormais sur la tier payante [#461](https://github.com/betagouv/ComparIA/pull/461)
 
 ### Évolutions techniques
-- Refactorisation de l'infrastructure de déploiement pour supporter plusieurs instances (fr et da) avec une configuration simplifiée. [#481](https://github.com/betagouv/ComparIA/pull/481)
-- Suppression de l'utilisation de Vertex AI pour l'analyse des LLM, au profit d'OpenRouter.
-- Amélioration de la gestion des clés API via un coffre-fort (Keepass).
-- Simplification de la configuration de la base de données pour chaque instance.
-- Nettoyage et simplification du code, notamment dans les scripts de déploiement.
-- Ajout d'un outil en ligne de commande (CLI) pour la gestion de la base de données (archivage, nettoyage, analyse).
-- Amélioration de la gestion des logs et ajout de logs plus détaillés pour le débogage.
-- Refactorisation des requêtes SQL et amélioration des performances.
-- Suppression de code obsolète et de dépendances inutiles.
-- Correction de problèmes de typage dans les tests.
+- Refonte de l'infrastructure pour supporter plus facilement de multiples instances (française et danoise) et simplifier la configuration. Ceci inclut la séparation des fichiers Docker Compose et des variables d'environnement, l'utilisation de Keepass pour la gestion des secrets, et la configuration de l'URI de la base de données par instance [#480](https://github.com/betagouv/ComparIA/pull/480)
+- Simplification et uniformisation des paramètres d'export pour Hugging Face [#481](https://github.com/betagouv/ComparIA/pull/481)
+- Suppression de l'utilisation de Vertex AI dans Litellm [#467](https://github.com/betagouv/ComparIA/pull/467)
+- Amélioration de la gestion des erreurs et de la précision des intervalles de confiance dans le calcul du classement des modèles [#470](https://github.com/betagouv/ComparIA/pull/470)
+- Correction de problèmes de type dans le job de linting Polars [#473](https://github.com/betagouv/ComparIA/pull/473)
+- Correction de la gestion des ID de session pour bloquer les tentatives de spam [#468](https://github.com/betagouv/ComparIA/pull/468) et [#473](https://github.com/betagouv/ComparIA/pull/473)
+- Correction de la logique de filtrage de spam pour bloquer les salutations triviales et les injections de faux historiques [#473](https://github.com/betagouv/ComparIA/pull/473)
 
 ### Autres changements
-- Mise à jour de la documentation et du fichier README.
-- Corrections de traductions dans Weblate (Italien, Norvégien Bokmål, Norvégien Nynorsk, Anglais).
-- Mise à jour des dépendances (npm et pip).
-- Corrections mineures de style et de formatage du code.
+- Mise à jour de la documentation et du README avec la roadmap d'avril 2026 [#458](https://github.com/betagouv/ComparIA/pull/458)
+- Mise à jour des traductions italiennes, norvégien Bokmål et norvégien Nynorsk via Weblate [#443](https://github.com/betagouv/ComparIA/pull/443) et autres commits Weblate.
+- Diverses corrections et simplifications de la configuration et du code.
+- Mises à jour mineures de dépendances (npm et pip).
