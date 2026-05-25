@@ -1,53 +1,45 @@
-## Changelog : monlogementetudiant (30 derniers jours, au 15 mai 2026)
+## Changelog : monlogementetudiant (30 derniers jours, au 2026-05-21)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'import de données (CSV, CLI), l'ajout de fonctionnalités pour les administrateurs (gestion des typologies, suivi des jobs, statistiques), et l'optimisation de l'expérience utilisateur, notamment sur la page de recherche et la gestion des logements. Des corrections de bugs et des améliorations techniques ont également été apportées pour stabiliser la plateforme.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'import de données (CSV, CLI), l'ajout de nouvelles fonctionnalités pour les gestionnaires et les propriétaires (statistiques, export de comptes), ainsi que sur des corrections de bugs et des optimisations de l'interface utilisateur, notamment au niveau de la calculatrice de budget et des filtres de recherche. Des améliorations ont également été apportées à l'authentification et à la gestion des adresses.
 
 ### Évolutions fonctionnelles
-- **Import de données :**
-    - Amélioration de l'import CSV avec affichage de la progression via SSE, prévisualisation et résumé pour les propriétaires. [#2345](lien vers PR)
-    - Synchronisation du formulaire d'import CSV avec l'interface CLI.
-    - Validation du payload lors de l'import CSV.
-- **Interface administrateur :**
-    - Ajout de la possibilité pour les administrateurs d'ajouter des typologies aux logements importés.
-    - Création d'un écran d'administration pour suivre les jobs planifiés.
-    - Ajout de statistiques pour les propriétaires.
-- **Recherche et affichage des logements :**
-    - Ajout de filtres sur la page de recherche.
-    - Amélioration de la réactivité du widget de recherche.
-    - Ajout d'un widget affichant les logements à proximité avec des informations supplémentaires.
-    - Affichage d'un badge pour les disponibilités inconnues.
-- **Gestion des logements :**
-    - Amélioration du formulaire de mise à jour et de création des logements.
-    - Possibilité de gérer plusieurs adresses pour un logement.
-    - Ajout de champs pour la superficie et les besoins en logement social lors de l'import CSV.
-- **Authentification :**
-    - Amélioration de la gestion des erreurs d'authentification et des cookies.
-- **Autres :**
-    - Ajout d'une politique d'administration pour les gestionnaires.
-    - Ajout d'un bandeau NPS (Net Promoter Score).
-    - Ajout d'une fonctionnalité de calculatrice de budget et de simulateur d'aides.
+- Ajout d'aides à la mobilité CROUS ([#87edc53](https://github.com/betagouv/monlogementetudiant/pull/87edc53)).
+- Les administrateurs peuvent maintenant ajouter des typologies de logements lors de l'import de données ([#5cedac2](https://github.com/betagouv/monlogementetudiant/pull/5cedac2)).
+- Amélioration de l'import CSV avec une barre de progression, un aperçu et un résumé pour les propriétaires ([#00057f6](https://github.com/betagouv/monlogementetudiant/pull/00057f6)).
+- Ajout de statistiques pour les propriétaires.
+- Possibilité d'exporter la liste des comptes gestionnaires.
+- Ajout d'un filtre pour afficher les logements avec des actualités disponibles.
+- Ajout de la fréquence de calcul de budget dans la calculatrice.
+- Ajout d'une politique d'administration pour les gestionnaires.
+- Amélioration de la gestion des adresses multiples.
+- Ajout d'une bannière NPS (Net Promoter Score).
+- Ajout de métadonnées pour les pages génériques et souveraines, améliorant le SEO.
+- Envoi d'un email aux propriétaires lors de la création de leur compte.
+- Ajout d'un widget logement avec des logements à proximité.
+- Amélioration du formulaire de création/modification de résidences.
 
 ### Évolutions techniques
-- **Infrastructure :**
-    - Mise à jour de pnpm vers une version LTS.
-    - Mise à jour de Next.js.
-- **Base de données :**
-    - Optimisation de requêtes SQL.
-    - Ajout de contraintes `ON DELETE CASCADE` pour améliorer l'intégrité des données.
-- **Code :**
-    - Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-    - Nettoyage du code (suppression de code inutile).
-    - Utilisation de Zod pour la validation des variables d'environnement (Brevo, autres).
-    - Suppression des liens vers les sitemaps, désormais gérés par le CMS.
-    - Ajout de tests d'intégration.
-    - Mise à jour de la librairie Drizzle ORM.
+- Mise à jour de Drizzle ORM vers la version 0.45.2.
+- Amélioration de l'architecture pour gérer les métadonnées des pages.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des requêtes SQL.
+- Mise à jour de la version de Next.js.
+- Passage à une version LTS de pnpm.
+- Amélioration de la gestion des variables d'environnement avec Zod.
+- Correction de problèmes liés aux cookies d'authentification.
+- Amélioration de la gestion des erreurs d'authentification.
+- Ajout de tests d'intégration.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de typos et amélioration des wordings.
-- Correction de problèmes liés aux tests et à la construction du projet.
-- Mise à jour des dépendances.
-- Amélioration de la gestion des métadonnées pour le SEO.
-- Ajout de tests E2E.
-- Correction de problèmes de rendu sur mobile.
+- Correction de bugs mineurs liés à l'interface utilisateur (calculatrice, filtres, etc.).
+- Amélioration de la réactivité du widget.
+- Correction de problèmes liés aux littéraux romains.
+- Amélioration de la gestion des erreurs dans le CI/CD.
+- Suppression des liens vers les sitemaps (maintenus sur le CMS).
+- Correction de typos et amélioration de la documentation.
+- Suppression de colonnes inutilisées dans la base de données.
+- Correction de problèmes liés aux breadcrumbs.
+- Correction de problèmes liés à la vérification de la signature.
+- Amélioration de la gestion des images.
+- Correction de problèmes liés à la redirection après connexion.
