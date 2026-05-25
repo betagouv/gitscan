@@ -1,29 +1,28 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 13 mai 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 20 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la qualité des données, la correction de bugs et l'optimisation des performances. Des améliorations ont été apportées au suivi des statistiques, à la gestion des logs et à l'expérience utilisateur, notamment concernant la recherche d'entreprises et la gestion des enquêtes de satisfaction. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la robustesse de l'application, avec des corrections de bugs et des optimisations des logs. Des améliorations ont également été apportées à l'interface d'administration, notamment pour les statistiques et la gestion des utilisateurs, ainsi qu'une nouvelle fonctionnalité pour l'enquête auprès des conseillers. Enfin, des mises à jour de dépendances ont été effectuées pour assurer la stabilité et la sécurité du système.
 
 ### Évolutions fonctionnelles
-- **Recherche d'entreprises :** La recherche d'entreprises a été améliorée avec une limitation à 3 caractères pour éviter les requêtes inutiles et améliorer la performance.
-- **Enquêtes de satisfaction :** Ajout d'une nouvelle question sur les résultats obtenus suite à l'accompagnement, avec une interface utilisateur et des exports CSV améliorés.
-- **Questionnaire :** Intégration d'un questionnaire accessible via une nouvelle entrée de navigation.
-- **Statistiques :** Ajout de nouvelles statistiques concernant les acquisitions et les prises en charge rapides.
-- **Informations utilisateur :** Possibilité de visualiser et modifier les flags `app_info` des utilisateurs dans l'interface d'administration.
-- **Suivi Google Ads :** Correction de l'envoi des événements de conversion à Google Ads.
-- **Gestion des experts :** Amélioration de la gestion des zones géographiques des experts.
+- Ajout d'une fonctionnalité permettant d'afficher un questionnaire aux utilisateurs via une modale et un nouvel élément de navigation. [#4434](https://github.com/betagouv/conseillers-entreprises/pull/4434)
+- Amélioration de la gestion des statistiques avec l'ajout de nouvelles statistiques sur les acquisitions et les temps de réponse. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
+- Possibilité de visualiser et modifier les flags `app_info` des utilisateurs dans l'interface d'administration. [#4443](https://github.com/betagouv/conseillers-entreprises/pull/4443)
+- Amélioration de l'export CSV des satisfactions des entreprises dans l'interface d'administration. [#4459](https://github.com/betagouv/conseillers-entreprises/pull/4459)
+- Correction d'un bug empêchant la progression des étapes de diagnostic. [#4445](https://github.com/betagouv/conseillers-entreprises/pull/4445)
 
 ### Évolutions techniques
-- **Logs :** Amélioration de la journalisation des tentatives d'authentification, incluant l'adresse IP et les en-têtes `X-Forwarded-For`. Suppression de la journalisation des redirections d'accès non autorisées.
-- **Base de données :** Ajout d'index pour optimiser les requêtes et améliorer les performances.
-- **Dépendances :** Mise à jour de plusieurs dépendances, notamment Ruby (4.0.3), Stimulus (3.2.2), ERB (6.0.4) et Devise (5.0.4).
-- **Architecture :** Refactorisation du code pour supprimer des méthodes inutilisées et simplifier la logique existante.
-- **SEO :** Amélioration des données structurées pour le SEO, notamment en utilisant le type `ImageObject` pour le logo de l'organisation.
-- **Sécurité :** Correction d'une validation manquante pour les droits d'utilisateur "sponsor".
-- **Navbar :** Refonte de la navbar avec l'utilisation de Turbo et une simplification de la logique.
+- Mise à jour de Ruby en version 4.0.3. [#4449](https://github.com/betagouv/conseillers-entreprises/pull/4449)
+- Amélioration de la gestion des logs d'authentification, incluant l'IP, le port et les en-têtes `X-Forwarded-For`. [#4464](https://github.com/betagouv/conseillers-entreprises/pull/4464)
+- Correction de la gestion des emails dans les logs d'authentification. [#4479](https://github.com/betagouv/conseillers-entreprises/pull/4479)
+- Refactorisation du code pour supprimer des méthodes inutilisées dans `MatchFilter`. [#4455](https://github.com/betagouv/conseillers-entreprises/pull/4455)
+- Suppression de code obsolète lié au support utilisateur et à la gestion des bandeaux d'information. [#4438](https://github.com/betagouv/conseillers-entreprises/pull/4438) et [#4440](https://github.com/betagouv/conseillers-entreprises/pull/4440)
+- Synchronisation du schéma de la base de données. [#4468](https://github.com/betagouv/conseillers-entreprises/pull/4468)
+- Limitation de la longueur des requêtes de recherche d'entreprises à 3 caractères pour améliorer la performance. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
+- Amélioration de la gestion des erreurs liées à la recherche d'entreprises. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les changements de nom des institutions (Baleen remplacé par Ubika).
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Tests :** Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
-- **Configuration :** Mise à jour de la configuration pour gérer correctement les URL HTTPS en développement.
-- **Wording :** Modification du libellé "Taux de prise en charge" en "taux d'échange" dans les statistiques.
+- Mise à jour de plusieurs dépendances (webpack-dev-server, babel, fast-uri, devise, mjml, erb).
+- Correction de noms d'institutions et d'articles dans la documentation. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Ajout de tests unitaires et de specs pour les nouvelles fonctionnalités et corrections de bugs.
+- Amélioration de la configuration et du code pour une meilleure lisibilité et maintenabilité.
+- Correction de problèmes mineurs d'interface utilisateur et de traduction.
