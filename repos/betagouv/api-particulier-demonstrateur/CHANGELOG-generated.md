@@ -1,13 +1,12 @@
 ## Changelog : api-particulier-demonstrateur (30 derniers jours, au 2026-05-13)
 
 ### Résumé
-Ce changelog fait état de mises à jour techniques et de dépendances pour le démonstrateur d'API Particulier. Les principales modifications concernent la mise à jour de plusieurs dépendances du projet, notamment Next.js et next-intl, afin de bénéficier des dernières corrections de bugs et améliorations de performance.
+Ce démonstrateur d'API Particulier a bénéficié de mises à jour techniques pour maintenir la compatibilité et la stabilité de ses dépendances. Les versions de Next.js, next-intl et icu-minify ont été mises à jour vers leurs dernières versions stables.
 
 ### Évolutions techniques
-- Mise à jour de Next.js de la version 16.2.3 à la version 16.2.6.
-- Mise à jour de next-intl de la version 4.9.1 à la version 4.9.2.
-- Mise à jour de icu-minify de la version 4.9.1 à la version 4.11.0.
-- Mise à jour de plusieurs autres dépendances (lodash, multi) via Dependabot.
+- Mise à jour de Next.js de la version 16.2.3 vers la version 16.2.6.
+- Mise à jour de next-intl de la version 4.9.1 vers la version 4.9.2.
+- Mise à jour de icu-minify de la version 4.9.1 vers la version 4.11.0.
 
 ### Autres changements
-- Intégration des mises à jour de dépendances fournies par Dependabot pour assurer la sécurité et la stabilité du projet.
+Aucun autre changement significatif à signaler.
