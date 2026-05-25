@@ -1,17 +1,18 @@
-## Changelog : common-helm-charts (30 derniers jours, au 2026-05-13)
+## Changelog : common-helm-charts (30 derniers jours, au 2026-05-19)
 
 ### Résumé
-Ce mois-ci, le projet s'est enrichi d'un nouveau chart permettant de réaliser des benchmarks de performance sur PostgreSQL grâce à pgbench.  Une amélioration a également été apportée pour permettre l'utilisation de secrets externes, offrant ainsi plus de flexibilité dans la configuration des applications.
+Ce changelog présente l'ajout d'un nouveau chart Helm pour effectuer des benchmarks sur PostgreSQL avec pgbench. Ce chart permet de mesurer les performances de votre instance PostgreSQL et d'identifier d'éventuels goulots d'étranglement. Des améliorations ont également été apportées à la configuration et à la sécurité de ce chart.
 
 ### Évolutions fonctionnelles
-- Ajout du chart `pgbench-job` pour exécuter des tests de performance sur PostgreSQL. Ce chart permet de mesurer la capacité de votre instance PostgreSQL à gérer une charge de travail spécifique. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
-- Possibilité d'utiliser des secrets externes avec les charts, augmentant la flexibilité et la sécurité de la gestion des informations sensibles. [#15](https://github.com/cloud-gouv/common-helm-charts/issues/15)
+- Ajout du chart `pgbench-job` pour exécuter des tests de performance avec pgbench sur une instance PostgreSQL. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
+- Le chart `pgbench-job` permet de spécifier le namespace de déploiement. [#20](https://github.com/cloud-gouv/common-helm-charts/pull/20)
+- Documentation ajoutée pour le chart `pgbench-job`. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
 
 ### Évolutions techniques
-- Amélioration de la configuration de sécurité (securityContext) du chart `pgbench-job` pour permettre à l'utilisateur postgres d'écrire les résultats des benchmarks sur le système de fichiers.
-- Spécification du namespace pour le déploiement du chart `pgbench-job`.
-- Correction de la configuration du `securityContext` pour le déploiement `pgbench-job`.
+- Externalisation des scripts shell utilisés par `pgbench-job` pour une meilleure maintenabilité. [#21](https://github.com/cloud-gouv/common-helm-charts/pull/21)
+- Configuration du `securityContext` pour le déploiement `pgbench-job` afin de permettre à l'utilisateur postgres d'écrire les résultats sur le système de fichiers. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
+- Suppression de la limite de CPU par défaut pour `pgbench-job` afin d'optimiser les performances des benchmarks. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
 
 ### Autres changements
-- Ajout de documentation pour le chart `pgbench-job`.
-- Corrections mineures et ajustements pour le chart `pgbench-job` afin d'optimiser son fonctionnement.
+- Corrections mineures et améliorations de la configuration du chart `pgbench-job`. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
+- Travaux de développement. [#19](https://github.com/cloud-gouv/common-helm-charts/pull/19)
