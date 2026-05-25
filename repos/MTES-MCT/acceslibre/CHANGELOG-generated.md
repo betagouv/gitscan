@@ -1,24 +1,24 @@
-## Changelog : acceslibre (30 derniers jours, au 13 mai 2026)
+## Changelog : acceslibre (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la performance de la plateforme, notamment au niveau de la gestion des statistiques et de la pagination. Des corrections ont été apportées à la recherche et à la génération de PDF, et des optimisations ont été réalisées pour la gestion des événements de l'interface utilisateur. Plusieurs mises à jour de dépendances ont également été intégrées pour assurer la sécurité et la stabilité du système.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la collecte et de l'importation de données (notamment via APIDAE), l'optimisation des performances (cache Redis, statistiques) et l'ajout de nouvelles questions pour affiner le signalement de l'accessibilité des établissements. Des corrections et améliorations ont également été apportées à l'interface utilisateur et à la gestion des PDF RPA.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche "où" avec correction d'une erreur Sentry et support des combobox RGAAs. [#2609](https://github.com/MTES-MCT/acceslibre/issues/2609)
-- Possibilité de contourner les vérifications de doublons. [#2626](https://github.com/MTES-MCT/acceslibre/issues/2626)
+- Ajout de questions signalétiques et ajustement des questions existantes pour les établissements scolaires et les lieux de santé. [#2620](https://github.com/MTES-MCT/acceslibre/issues/2620)
+- Possibilité de contourner les vérifications de doublons lors de l'importation de données. [#2626](https://github.com/MTES-MCT/acceslibre/issues/2626)
+- Amélioration de la recherche avec correction d'une erreur Sentry et support des combobox RGAa. [#2609](https://github.com/MTES-MCT/acceslibre/issues/2609)
 - Utilisation de POST pour la génération des PDF RPA. [#2623](https://github.com/MTES-MCT/acceslibre/issues/2623)
-- Correction d'un problème lié à l'indexation des PDF RPA. [#2611](https://github.com/MTES-MCT/acceslibre/issues/2611)
-- Correction pour la question Pente. [#2600](https://github.com/MTES-MCT/acceslibre/issues/2600)
-- Correction pour les détails ERP. [#2599](https://github.com/MTES-MCT/acceslibre/issues/2599)
+- Import des données APIDAE. [#2641](https://github.com/MTES-MCT/acceslibre/issues/2641)
 
 ### Évolutions techniques
-- Utilisation de Redis pour stocker les événements des widgets, avec vidange vers la base de données toutes les heures, améliorant ainsi la performance. [#2624](https://github.com/MTES-MCT/acceslibre/issues/2624)
 - Mise à jour de Django. [#2625](https://github.com/MTES-MCT/acceslibre/issues/2625)
-- Mise en cache du nombre d'éléments pour la pagination, améliorant la performance des requêtes. [#2621](https://github.com/MTES-MCT/acceslibre/issues/2621)
-- Optimisation des performances des statistiques. [#2610](https://github.com/MTES-MCT/acceslibre/issues/2610)
-- Application de versions fixes pour les packages. [#2635](https://github.com/MTES-MCT/acceslibre/issues/2635)
+- Implémentation d'un cache Redis pour stocker les événements des widgets et les vider dans la base de données toutes les heures, améliorant ainsi les performances. [#2624](https://github.com/MTES-MCT/acceslibre/issues/2624)
+- Mise en cache du nombre d'éléments pour la pagination, améliorant les performances des requêtes. [#2621](https://github.com/MTES-MCT/acceslibre/issues/2621)
+- Application de correctifs pour forcer les versions des packages. [#2635](https://github.com/MTES-MCT/acceslibre/issues/2635)
+- Désactivation temporaire de l'acquisition via Scrapfly en attendant une réécriture. [#2640](https://github.com/MTES-MCT/acceslibre/issues/2640)
 
 ### Autres changements
-- Mises à jour de diverses dépendances (ruff, sentry-sdk, django-modeltranslation, @sentry/browser, psycopg2, pnpm, eslint, dompurify, scrapfly-sdk, phonenumbers, faker, requests, redis).
-- Nettoyage et refactoring du code.
-- Préparation et déploiement en production.
+- Suppression temporaire de la génération de PDF RPA et de son indexation. [#2622](https://github.com/MTES-MCT/acceslibre/issues/2622) et [#2611](https://github.com/MTES-MCT/acceslibre/issues/2611)
+- Amélioration des statistiques de performance. [#2610](https://github.com/MTES-MCT/acceslibre/issues/2610)
+- Correction d'un problème de login pour les contributeurs. [#2636](https://github.com/MTES-MCT/acceslibre/issues/2636)
+- Diverses mises à jour de dépendances (Sentry, frictionless, gunicorn, ruff, django-modeltranslation, psycopg2, pnpm, eslint, prettier, dompurify, scrapfly-sdk, phonenumbers, faker) ont été appliquées.

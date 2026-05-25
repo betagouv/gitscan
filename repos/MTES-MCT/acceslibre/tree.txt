@@ -214,6 +214,7 @@
 │   │   │   ├── generate_schema.py
 │   │   │   ├── import_RNB.py
 │   │   │   ├── import_annuaire_sante.py
+│   │   │   ├── import_apidae.py
 │   │   │   ├── import_arrondissements.py
 │   │   │   ├── import_auto_ecole.py
 │   │   │   ├── import_aveugles.py
@@ -288,6 +289,12 @@
 │   │   ├── 0182_accessibilite_accueil_isoloir_accessibilite_and_more.py
 │   │   ├── 0183_add_reversion_index.py
 │   │   ├── 0184_remove_reversion_index.py
+│   │   ├── 0185_accessibilite_accueil_signaletique_interieure_and_more.py
+│   │   ├── 0185_alter_erp_source_alter_externalsource_source.py
+│   │   ├── 0186_add_accessibilite_lieux_de_sante.py
+│   │   ├── 0187_add_accessibilite_lieux_de_sante_constraint.py
+│   │   ├── 0188_update_cheminement_ext_presence_constraint.py
+│   │   ├── 0189_merge_20260521_1520.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── provider
@@ -424,6 +431,7 @@
 │   │   ├── contact
 │   │   │   └── contact-background.png
 │   │   ├── contrib
+│   │   │   ├── accueil_signaletique_interieure.png
 │   │   │   ├── ampoule.png
 │   │   │   ├── appareil-facilitant-communication.png
 │   │   │   ├── arret-transport-en-commun.png
@@ -435,13 +443,8 @@
 │   │   │   ├── bureau-de-vote-isoloir.png
 │   │   │   ├── bureau-de-vote-urne.png
 │   │   │   ├── chambre-alarme.png
-│   │   │   ├── chemin-exterieur-entre-trottoire-et-entree-principale.png
-│   │   │   ├── chemin-instable.png
-│   │   │   ├── chemin-pente-importante.png
-│   │   │   ├── chemin-pente-legere.png
-│   │   │   ├── chemin-plain-pied.png
-│   │   │   ├── chemin-sans-rupture-brutale-de-niveau.png
-│   │   │   ├── chemin-stable.png
+│   │   │   ├── chemin-*.png  (7 files)
+│   │   │   ├── cheminement_signaletique_exterieure.png
 │   │   │   ├── colibri.png
 │   │   │   ├── completion-rate-illustration.png
 │   │   │   ├── devers-important.png
@@ -1030,6 +1033,7 @@
 │   │   │   │   ├── fixtures.py
 │   │   │   │   └── test_service_public.py
 │   │   │   ├── test_import_RNB.py
+│   │   │   ├── test_import_apidae.py
 │   │   │   ├── test_import_aveugles.py
 │   │   │   ├── test_import_laposte.py
 │   │   │   ├── test_import_th.py
@@ -1081,4 +1085,4 @@
 │   │   └── test_models.py
 │   └── utils.py
 └── uv.lock
-110 directories, 973 files
+110 directories, 983 files
