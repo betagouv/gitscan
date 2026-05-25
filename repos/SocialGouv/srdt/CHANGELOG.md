@@ -1,3 +1,31 @@
+# [1.43.0](https://github.com/SocialGouv/srdt/compare/v1.42.1...v1.43.0) (2026-05-22)
+
+
+### Features
+
+* **stats:** track response generation time for metabase ([#348](https://github.com/SocialGouv/srdt/issues/348)) ([7afd0e3](https://github.com/SocialGouv/srdt/commit/7afd0e3b0f5fcaba57e61ddea85d35c29c01b2df))
+
+## [1.42.1](https://github.com/SocialGouv/srdt/compare/v1.42.0...v1.42.1) (2026-05-22)
+
+
+### Bug Fixes
+
+* remove tally ([#376](https://github.com/SocialGouv/srdt/issues/376)) ([fb57fb9](https://github.com/SocialGouv/srdt/commit/fb57fb98fcd7299a3c287fa98903932424bb9d72))
+
+# [1.42.0](https://github.com/SocialGouv/srdt/compare/v1.41.0...v1.42.0) (2026-05-18)
+
+
+### Features
+
+* **web:** redesign convention collective status badge ([#374](https://github.com/SocialGouv/srdt/issues/374)) ([71d8c1e](https://github.com/SocialGouv/srdt/commit/71d8c1e3e0bd99fbd326a01c49c28bd8ba602915))
+
+# [1.41.0](https://github.com/SocialGouv/srdt/compare/v1.40.3...v1.41.0) (2026-05-12)
+
+
+### Features
+
+* **web:** add link to evaluation questionnaire on home page ([#372](https://github.com/SocialGouv/srdt/issues/372)) ([bf77991](https://github.com/SocialGouv/srdt/commit/bf7799137b560de608ce6439303564f4ef0806e8))
+
 ## [1.40.3](https://github.com/SocialGouv/srdt/compare/v1.40.2...v1.40.3) (2026-05-07)
 
 
