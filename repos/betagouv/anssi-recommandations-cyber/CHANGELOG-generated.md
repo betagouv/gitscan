@@ -1,29 +1,28 @@
-## Changelog : anssi-recommandations-cyber (30 derniers jours, au 12 mai 2026)
+## Changelog : anssi-recommandations-cyber (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse de l'application, la gestion des erreurs et la préparation du déploiement en production. Des refactorings importants ont été réalisés pour simplifier le code et améliorer la gestion des interactions avec le modèle Albert. Des corrections ont également été apportées pour améliorer l'expérience utilisateur, notamment en affichant des messages d'erreur plus clairs et en améliorant la gestion des documents sources.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse de l'application, la correction de vulnérabilités de sécurité et l'optimisation de la gestion des réponses et des sources de documents. Des refactorings importants ont été réalisés pour préparer l'application à de futures évolutions, notamment en simplifiant la gestion des conversations et des retours utilisateurs. L'intégration de Renovate pour la gestion des dépendances a également été finalisée.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des erreurs : des messages d'erreur plus clairs et génériques sont maintenant affichés à l'utilisateur.
-- Accès aux documents sources : une route GET a été ajoutée pour récupérer les documents sources demandés par l'utilisateur, avec gestion des erreurs 404 si le document n'est pas trouvé.
-- Page FAQ : initialisation de la page FAQ.
-- Consentement Matomo : ajout d'un mécanisme pour obtenir le consentement de l'utilisateur pour le suivi Matomo.
-- Reformulation obligatoire : la reformulation est maintenant obligatoire.
-- Possibilité de lister les documents d'une collection dans un dataframe via leurs noms.
-- Amélioration de la recherche : la recherche a été généralisée pour un comportement plus homogène.
-- Gestion des retours utilisateurs : refonte de la gestion des retours utilisateurs, avec utilisation de l'identifiant de conversation.
+- Permet de récupérer le document source demandé par l'utilisateur via une nouvelle route GET.
+- Amélioration de la gestion des réponses : priorisation des paragraphes "maîtrisés" et filtrage possible de ces derniers.
+- Ajout d'un singleton pour charger le fichier de mapping des réponses.
+- Implémentation d'une page FAQ (en cours de développement).
+- Ajout du tracking Matomo sur le bouton de copie de réponse pour suivre l'utilisation.
+- Retour d'une erreur 404 si l'interaction n'est pas trouvée ou si le document source n'est pas accessible.
 
 ### Évolutions techniques
-- Préparation du déploiement en production : ajout d'un workflow de déploiement et obligation de passer par la démo avant la production.
-- Refactoring : suppression de la notion d'id\_conversation obsolète et extraction d'un `ParagrapheReponseMaitrisee` pour faciliter les réponses.
-- Mise à jour des dépendances : plusieurs dépendances ont été mises à jour, notamment `pytest`, `dompurify`, `cryptography`, `python-dotenv`, `eslint`, `vite`, `svelte`, `prettier`, et `@lab-anssi/ui-kit`.
-- Intégration de Renovate : initialisation de Renovate pour la gestion automatisée des dépendances.
-- Journalisation : ajout de la journalisation du document source demandé.
-- Amélioration des tests : ajout d'une base de données mémoire et d'un Sentry mémoire pour les tests.
-- Passage à PostgreSQL 17 pour le développement local.
+- Refactorisation de la gestion des conversations : suppression de l'identifiant de conversation obsolète et utilisation de la conversation pour les retours utilisateurs.
+- Mise en place d'un mode de maintenance avec affichage d'une page statique 503.
+- Mise à jour de la version de PostgreSQL à 17 pour le développement local.
+- Intégration de Renovate pour la gestion automatisée des dépendances.
+- Mise en place d'un "cooldown" d'une semaine pour l'installation des dépendances afin d'éviter les instabilités.
+- Correction d'un problème de redirection temporaire lors de la création de la conversation.
+- Mise à jour de la version de DomPurify en 3.4.2 pour corriger des vulnérabilités.
 
 ### Autres changements
-- Ajout d'un notebook pour comparer les collections d'indexation et jeopardy.
-- Ajout du tracking Matomo sur le bouton de copie de réponse.
-- Suppression du tag conversation obsolète.
-- Mise à jour de la configuration de Renovate.
+- Correction de plusieurs alertes de sécurité Dependabot concernant les dépendances (pytest, dompurify, python-dotenv, cryptography).
+- Mise à jour de nombreuses dépendances (eslint, typescript, vite, svelte, etc.) via Renovate.
+- Suppression de code obsolète et nettoyage général du code.
+- Journalisation de la requête de document source.
+- Résolution d'un bug où l'ID de réponse était mal géré.
