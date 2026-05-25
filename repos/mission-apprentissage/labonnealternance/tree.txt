@@ -20,10 +20,22 @@
 ├── .gitguardian.yml
 ├── .github
 │   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   ├── feature_request.md
+│   │   └── task-request.md
 │   ├── copilot-instructions.md
 │   ├── issue-assets
-│   │   ├── LBA-*.png  (108 files)
-│   │   └── LBA-3950-screenshot20260420121255chrome_14a8a5j.jpg
+│   │   ├── LBA-*.png  (530 files)
+│   │   ├── LBA-*.jpg  (14 files)
+│   │   ├── LBA-2791-AD_4nXewZbDwMwU-p4GVi11rZm6o8lnrOCaiHgyExxrIIrN48W09gHkQMqpg6sMmNVl_3m8h7nI3taMOzHBeS8MrVxvnKHPyuQNwOCCUuqVEwpBd6tn8U042OFJoejOvNM0VOAKT7bhbjQ_key=5RCrrOjEbpoCIV9ku7z_aaZe
+│   │   ├── LBA-*.PNG  (27 files)
+│   │   ├── LBA-3432-Posts_de_citations-2.jpeg
+│   │   ├── LBA-3598-illu-plateformesjeunes.svg
+│   │   ├── LBA-3598-illu-votrebesoin.svg
+│   │   ├── LBA-3599-IMG_DF22D0001D50-1.jpeg
+│   │   ├── LBA-3600-la-carte-etudiant-des-metiers.svg
+│   │   └── LBA-3920-Logo_RCO_2012.svg
 │   ├── pr-title-checker-config.json
 │   └── workflows
 │       ├── _build.yml
@@ -387,6 +399,9 @@
 │   │   │   │   ├── importFichesRncp.ts
 │   │   │   │   ├── updateRomesForDomainesMetiers.ts
 │   │   │   │   └── validateDomaineMetiers.ts
+│   │   │   ├── engagementHandicap
+│   │   │   │   ├── refreshEntrepriseEngagementJobsPartners.test.ts
+│   │   │   │   └── refreshEntrepriseEngagementJobsPartners.ts
 │   │   │   ├── formationsCatalogue
 │   │   │   │   ├── formationsCatalogue.ts
 │   │   │   │   └── updateParcoursupAndAffelnetInfoOnFormationCatalogue.ts
@@ -710,7 +725,11 @@
 │   │   │   ├── 20260421191642-add-10-seo-villes.ts
 │   │   │   ├── 20260422115041-reset-date-premium.ts
 │   │   │   ├── 20260423095902-add-10-seo-villes-batch-2.ts
-│   │   │   └── 20260427170242-initialisation-seo-diplome.ts
+│   │   │   ├── 20260427170242-initialisation-seo-diplome.ts
+│   │   │   ├── 20260507120000-add-10-seo-metiers-batch-2.ts
+│   │   │   ├── 20260507130000-add-10-seo-metiers-batch-3.ts
+│   │   │   ├── 20260512182814-maj-handi-engagement-avril-2026.ts
+│   │   │   └── 20260518121500-remove-salaire-seo-diplome.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -810,6 +829,8 @@
 │   │   │   ├── 20260129 Liste handi engages LBA.csv
 │   │   │   ├── Flux FT Alternance_Table de transcodage des villes.xlsx - Table de transcodage des villes.csv
 │   │   │   ├── code_rome_sans_domaine_solution_13.01.26.csv
+│   │   │   ├── engagementHandicap
+│   │   │   │   └── siret_handimatch_ft.csv
 │   │   │   ├── labonnealternance.referentielromes_classification_new_21.01.26.csv
 │   │   │   ├── romes renommées_changement de sous-domaines.csv
 │   │   │   └── unix_referentiel_code_rome_v460_utf8.csv
@@ -1388,6 +1409,8 @@
 │   │   │       │   │   ├── FormulaireEditionOffre.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreButtons.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreFields.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreStep1.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreStep2.tsx
 │   │   │       │   │   ├── InformationLegaleEntreprise.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
@@ -2388,6 +2411,7 @@
 │   │   ├── fetchNotionPage.ts
 │   │   ├── fetchPartnerJobDetails.ts
 │   │   ├── generateMainSitemap.ts
+│   │   ├── getDepotCtaHref.ts
 │   │   ├── searchEntreprises.ts
 │   │   ├── simulateurAlternant.test.ts
 │   │   └── simulateurAlternant.ts
@@ -2452,4 +2476,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-473 directories, 2088 files
+476 directories, 2570 files
