@@ -1,13 +1,13 @@
-## Changelog : ami-app-android (30 derniers jours, au 16 avril 2026)
+## Changelog : ami-app-android (30 derniers jours, au 22 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte une amélioration de l'expérience utilisateur avec l'ajout d'un mécanisme de rafraîchissement par glissement vers le bas, permettant de mettre à jour le contenu de l'application plus facilement. Des corrections de couleurs et de polices ont également été apportées pour améliorer l'apparence visuelle.
+Cette mise à jour apporte des améliorations mineures à la configuration de l'application, notamment concernant l'URL des paramètres. Ces changements visent à garantir une meilleure stabilité et une configuration plus précise de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'un rafraîchissement par glissement vers le bas pour actualiser le contenu de l'application. [#49](https://github.com/numerique-gouv/ami-app-android/pull/49)
+- Correction d'un problème dans la logique de vérification de l'URL des paramètres, passant de `contains` à `endsWith` pour une correspondance plus précise.
 
 ### Évolutions techniques
-- Correction des couleurs et des polices pour une meilleure cohérence visuelle.
+- Modification de l'URL des paramètres pour une configuration plus robuste.
 
 ### Autres changements
 - Aucun changement significatif à signaler.
