@@ -1,32 +1,26 @@
-## Changelog : infomedicament (30 derniers jours, au 7 mai 2026)
+## Changelog : infomedicament (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'optimisation des performances, l'ajout de nouvelles fonctionnalités concernant les interactions médicamenteuses et la refonte de certains composants de l'interface utilisateur. Des améliorations de la structure du code et des scripts de déploiement ont également été apportées.
+Ce mois-ci, les améliorations se concentrent sur l'optimisation des performances du site, notamment en améliorant la mise en cache des données et en optimisant la génération du sitemap. Une nouvelle structure de menu a été implémentée et des améliorations ont été apportées à l'importation des données PDBM.
 
 ### Évolutions fonctionnelles
-- Ajout de classes cliniques avec pathos, améliorant la catégorisation des médicaments. [#212](https://github.com/betagouv/infomedicament/issues/212)
-- Mise en place d'une nouvelle fonctionnalité permettant de rechercher et d'afficher les interactions médicamenteuses, incluant une version intégrable (widget) pour d'autres sites.
-- Ajout de chapeaux et gestion des cas "autres..." pour les classes d'interactions.
-- Correction d'un problème sur la page médicament où toutes les données n'étaient pas affichées. [#192](https://github.com/betagouv/infomedicament/issues/192)
-- Refonte des menus d'en-tête et de pied de page pour une meilleure expérience utilisateur.
-- Ajout d'un sitemap.xml pour améliorer le référencement.
+- Ajout des classes cliniques avec pathos [#212](https://github.com/betagouv/infomedicament/issues/212).
+- Nouvelle structure de menu pour l'en-tête et le pied de page.
+- Ajout d'un sitemap.xml avec un test d'intégration.
+- Préchargement désactivé pour les interactions afin d'optimiser les performances.
 
 ### Évolutions techniques
-- Optimisation des performances en mettant en cache les requêtes statiques à la base de données avec `unstable_cache` pour réduire la charge lors de la génération statique des pages (SSG).
-- Amélioration de la gestion du cache pour éviter les collisions de clés.
-- Utilisation de `generateStaticParams` pour la génération statique des listes alpha et du glossaire.
-- Refactorisation du code pour déplacer la récupération des données vers des composants serveur.
-- Utilisation du compilateur SWC pour optimiser les styles en production.
-- Extraction de la logique de récupération des badges de niveau dans un module séparé avec ajout de tests unitaires.
-- Déplacement des composants d'en-tête et de pied de page vers un layout conteneur.
-- Ajout de scripts pour importer les données PDBM et initialiser la base de données, notamment pour les environnements de développement et de déploiement (Scalingo).
-- Mise à jour de la configuration du proxy pour limiter le nombre de requêtes par minute.
-- Correction de la sérialisation de l'arbre ATC complet dans le code HTML.
+- Amélioration des performances du sitemap : génération statique au moment de la construction avec une revalidation ISR de 24 heures.
+- Mise en cache statique des requêtes de base de données pour réduire la charge pendant la génération de sites statiques (SSG).
+- Correction d'une collision de clés dans le cache `unstable_cache` entre `getSubstanceSpecialitesCIS` et `getSubstanceAllSpecialites`.
+- Refactorisation du code pour déplacer la récupération des données vers des composants serveur pour `alpha_lists`.
+- Utilisation de `generateStaticParams` pour la SSG de `alpha_lists` et `glossaire`.
+- Optimisation de l'en-tête : remplacement de `getAtc` par `getAtcMenuItems` plus léger.
+- Utilisation de `Sec-Fetch-Dest` pour ignorer les requêtes RSC et de préchargement du proxy pour éviter les limitations de débit.
+- Suppression des artefacts `.next/cache` pour réduire la taille de l'image de l'application.
+- Ajout de `.next/server` à `slugignore` pour éviter des problèmes lors de la construction.
 
 ### Autres changements
-- Ajout de tests d'intégration pour les nouvelles API d'interactions.
-- Nettoyage et renommage de certains fichiers et variables pour améliorer la lisibilité du code.
-- Ajout de la possibilité de faire des frames de la page `/interactions/embed` par n'importe quelle origine.
-- Correction de la commande `db:seed-review-app` pour utiliser le script inclus.
-- Ajout de la configuration `.next/server` à la liste des fichiers à ignorer lors de la construction.
-- Suppression des artefacts `.next/cache` pour réduire la taille de l'image de l'application.
+- Ajout de scripts pour l'importation des données PDBM, incluant des commandes npm post-import pour les tables PostgreSQL dérivées et une configuration pour le devcontainer et Scalingo.
+- Réintroduction d'une limite de 200 requêtes par minute sur le proxy.
+- Augmentation temporaire de la limite de débit du proxy à 1000 requêtes par minute en environnement de staging.
