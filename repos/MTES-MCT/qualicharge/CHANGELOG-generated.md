@@ -1,16 +1,18 @@
-## Changelog : qualicharge (30 derniers jours, au 22 mai 2026)
+## Changelog : qualicharge (30 derniers jours, au 25 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'automatisation de la mise à jour des unités opérationnelles via l'API, l'ajout d'indicateurs de volume au niveau des unités opérationnelles et la correction de vulnérabilités de sécurité grâce à la mise à jour de plusieurs dépendances. Des mises à jour régulières de l'infrastructure (Docker, Metabase) et des librairies Python ont également été effectuées.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'automatisation de la mise à jour des entités opérationnelles via l'API, ainsi que sur la maintenance et la sécurité du système. De nombreuses mises à jour de dépendances ont été appliquées pour corriger des vulnérabilités et bénéficier des dernières améliorations.
 
 ### Évolutions fonctionnelles
-- L'API permet désormais d'automatiser la mise à jour des unités opérationnelles. [#42f10b9](https://github.com/MTES-MCT/qualicharge/pull/42f10b9)
-- Les indicateurs de volume sont désormais disponibles au niveau des unités opérationnelles, offrant une granularité accrue dans l'analyse des données. [#1527322](https://github.com/MTES-MCT/qualicharge/pull/1527322)
+- Automatisation de la mise à jour des entités opérationnelles via l'API. [#42f10b9](https://github.com/MTES-MCT/qualicharge/pull/42f10b9)
 
 ### Évolutions techniques
 - Mise à jour de Django vers la version 6.0.5, incluant des correctifs de sécurité. [#f7364a3](https://github.com/MTES-MCT/qualicharge/pull/f7364a3)
-- Mises à jour régulières des images Docker utilisées (uv, curl, metabase) pour bénéficier des dernières corrections et améliorations.
-- Mises à jour de plusieurs dépendances Python (urllib3, idna, mako, prefect) pour corriger des vulnérabilités de sécurité et améliorer la stabilité.
+- Mises à jour régulières de l'image Docker Metabase vers la version 0.60.4. [#ac0001d](https://github.com/MTES-MCT/qualicharge/pull/ac0001d)
+- Mises à jour de la librairie Mako vers la version 1.3.12. [#41f2480](https://github.com/MTES-MCT/qualicharge/pull/41f2480)
+- Mises à jour de l'outil `uv` et de son image Docker.
+- Application de correctifs de sécurité via Dependabot et Renovate pour plusieurs dépendances (idna, urllib3). [#172a8f5](https://github.com/MTES-MCT/qualicharge/pull/172a8f5)
 
 ### Autres changements
-- Aucune documentation ou configuration n'a été modifiée durant cette période.
+- Mises à jour de l'action Zizmor.
+- Mises à jour de l'image Docker curl.
