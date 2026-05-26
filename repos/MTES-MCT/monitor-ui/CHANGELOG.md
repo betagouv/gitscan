@@ -1,3 +1,33 @@
+## [24.50.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.50.0...v24.50.1) (2026-05-21)
+
+### Bug Fixes
+
+* **components:** fix export ([6ef0c8d](https://github.com/MTES-MCT/monitor-ui/commit/6ef0c8dfa22e38395f867dbf19d4c1c292ba68d6))
+
+## [24.50.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.49.2...v24.50.0) (2026-05-19)
+
+### Features
+
+* **icons:** add Lock icon ([96be3bf](https://github.com/MTES-MCT/monitor-ui/commit/96be3bf4b04eb27ea7b2fc724046a1c9e315c1ff))
+
+## [24.49.2](https://github.com/MTES-MCT/monitor-ui/compare/v24.49.1...v24.49.2) (2026-05-11)
+
+### Bug Fixes
+
+* **components:** move tableOptions to make it overridable ([258e232](https://github.com/MTES-MCT/monitor-ui/commit/258e232c0f7c65d4500182d42dea8a16f6a59f09))
+
+## [24.49.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.49.0...v24.49.1) (2026-05-05)
+
+### Bug Fixes
+
+* **libs:** bump cypress ([d195478](https://github.com/MTES-MCT/monitor-ui/commit/d195478eee3aaec96d322a85b5ce5268029d213f))
+
+## [24.49.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.48.1...v24.49.0) (2026-04-28)
+
+### Features
+
+* **components:** make datatable expandable with subrows ([dccb580](https://github.com/MTES-MCT/monitor-ui/commit/dccb5808595f5e12424f0207940ccc0098e6ff53))
+
 ## [24.48.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.48.0...v24.48.1) (2026-04-27)
 
 ### Bug Fixes
