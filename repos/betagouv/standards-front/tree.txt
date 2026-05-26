@@ -67,16 +67,20 @@
 │   │   ├── evaluation
 │   │   │   ├── criterion.rb
 │   │   │   └── question.rb
-│   │   └── evaluation.rb
+│   │   ├── evaluation.rb
+│   │   └── evaluation_upgrader.rb
 │   ├── presenters
 │   │   ├── evaluation_presenter.rb
 │   │   └── question_presenter.rb
 │   └── views
 │       ├── evaluations
+│       │   ├── _category_changes.html.haml
+│       │   ├── _upgrade_banner.html.haml
 │       │   ├── _version_information.html.haml
 │       │   ├── category.html.haml
 │       │   ├── question.html.haml
-│       │   └── show.html.haml
+│       │   ├── show.html.haml
+│       │   └── upgrade_preview.html.haml
 │       ├── home
 │       │   ├── _card.html.haml
 │       │   ├── faq.html.haml
@@ -165,6 +169,7 @@
 │   └── seeds.rb
 ├── docker-compose.yml
 ├── features
+│   ├── mise_a_jour_evaluation.feature
 │   ├── page_d_accueil.feature
 │   ├── remplissage_evaluation.feature
 │   ├── step_definitions
@@ -211,7 +216,8 @@
 │   │   ├── evaluation
 │   │   │   ├── criterion_spec.rb
 │   │   │   └── question_spec.rb
-│   │   └── evaluation_spec.rb
+│   │   ├── evaluation_spec.rb
+│   │   └── evaluation_upgrader_spec.rb
 │   ├── presenters
 │   │   ├── evaluation_presenter_spec.rb
 │   │   └── question_presenter_spec.rb
@@ -236,4 +242,4 @@
     ├── .keep
     └── javascript
         └── .keep
-63 directories, 175 files
+63 directories, 181 files
