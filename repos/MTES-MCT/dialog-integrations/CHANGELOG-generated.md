@@ -1,20 +1,20 @@
-## Changelog : dialog-integrations (30 derniers jours, au 29 avril 2026)
+## Changelog : dialog-integrations (30 derniers jours, au 2026-05-12)
 
 ### Résumé
-Ce mois-ci, le projet dialog-integrations a progressé significativement avec l'intégration de données pour les préfectures de Nantes et Rennes, ainsi que pour le département de la Sarthe. Des améliorations techniques ont été apportées pour optimiser le processus d'intégration et la qualité du code.
+Ce mois-ci, le projet dialog-integrations a progressé sur l'intégration de nouvelles sources de données, notamment pour les préfectures de Nantes et Rennes. Des améliorations ont été apportées à l'infrastructure CI/CD pour optimiser le processus d'intégration et de déploiement, ainsi que des corrections et améliorations générales du code.
 
 ### Évolutions fonctionnelles
-- Intégration des données des arrêtés préfectoraux pour Nantes [#11](https://github.com/MTES-MCT/dialog-integrations/pull/11).
-- Intégration des données des arrêtés préfectoraux pour Rennes [#10](https://github.com/MTES-MCT/dialog-integrations/pull/10).
-- Intégration des données des arrêtés préfectoraux pour la Sarthe [#5](https://github.com/MTES-MCT/dialog-integrations/pull/5).
+- Intégration des données de la préfecture de Rennes : la source de données de Rennes est maintenant prête à être intégrée. [#10](https://github.com/MTES-MCT/dialog-integrations/pull/10)
+- Intégration des données de la préfecture de Nantes : la source de données de Nantes est en phase de test et a été temporairement désactivée puis remise en brouillon. [#11](https://github.com/MTES-MCT/dialog-integrations/pull/11)
 
 ### Évolutions techniques
-- Amélioration du pipeline d'intégration continue (CI) pour éviter le déclenchement inutile des intégrations lors des *push* sur le dépôt.
-- Refonte du processus de capture des sorties des scripts.
-- Amélioration de la qualité du code avec des corrections de *linting* et ajout de typages.
-- Mise à jour des dépendances du projet (nbconvert, uv).
-- Fusion de la branche *main* dans les branches de fonctionnalités (co_rennes, co_nantes).
+- Amélioration de la gestion des environnements et ajout de notifications.
+- Optimisation du workflow CI/CD : l'intégration n'est plus déclenchée à chaque push pour éviter des exécutions inutiles.
+- Amélioration de la capture des sorties des processus.
+- Refonte de la gestion des identifiants pour une meilleure persistance.
+- Amélioration du linting et ajout de typage pour une meilleure qualité du code.
+- Mise à jour de certaines dépendances.
 
 ### Autres changements
-- Mise à jour de la documentation README.
-- Corrections mineures de formatage et suppression de lignes inutiles.
+- Correction de formatage et améliorations générales du code.
+- Nettoyage du code et amélioration de la lisibilité.
