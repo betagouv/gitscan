@@ -8,11 +8,18 @@ Restricts the access to a room based on the selected preset. Body:
 
 ```json
 {
-    "rule": "<rule>"
+    "rule": "<rule>",
+    "visibility": "<visibility>",
+    "force_unencrypted_at_creation": <bool>
 }
 ```
 
-`<rule>` is either `restricted`, `unrestricted` or `direct`.
+* `rule` (required): one of `restricted`, `unrestricted` or `direct`.
+* `visibility` (optional): either `public` or `private`. Indicates
+  whether the room is listed in the public room directory
+* `force_unencrypted_at_creation` (optional, at room creation only): boolean. When set to
+  `true` on a room created with the `private_chat` preset, prevents
+  the module from forcing end-to-end encryption on the room.
 
 The implementation of the different presets lives in the
 `synapse.third_party_rules.access_rules` module.
@@ -65,6 +72,32 @@ into the room:
 Also forbids sending an event of the type `m.room.name`, `m.room.avatar_url`
 or `m.room.topic` into the room.
 
+### Force unencryption at room creation
+
+At room creation, the module forces end-to-end encryption unless one of the following is true:
+
+* the room is being created with `join_rule = public` or with the
+  `public_chat` preset;
+* the room is being created with the `private_chat` preset **and** the
+  `im.vector.room.access_rules` event provided in `initial_state`
+  explicitly sets `force_unencrypted_at_creation` to `true`.
+
+This allows invite-only unencrypted rooms to be created, which isn't
+possible with Synapse's built-in
+`encryption_enabled_by_default_for_room_type` setting.
+
+The `force_unencrypted_at_creation` attribute of the `im.vector.room.access_rules` event
+is only meaningful at room creation time.
+
+### Room visibility
+
+The module tracks a `visibility` attribute inside the `im.vector.room.access_rules` event, which can be either `public` or `private` (defaults to `private`). This is distinct from `m.room.history_visibility` and is used to tell apart:
+
+* `visibility = public` room is listed in the server's public room directory;
+* `visibility = private` room is not listed in the server's public room directory;
+
+The `visibility` is set by the module at room creation from the `visibility` field of the `createRoom` request.
+
 ### Interaction with `m.room.join_rules`
 
 When the preset of the room is something other than `restricted`, changing the
@@ -96,6 +129,18 @@ modules:
         # Disable access rules for this list of users
         bypass_for_users: []
 ```
+
+### Configuration Flags
+
+The following boolean flags can be used to enable automatic fixes (jobs) for existing rooms:
+
+* `fix_admins_for_dm_power_levels` (default: `false`): When enabled, automatically sets all members of direct message rooms as admins (power level 100). This ensures both participants have equal administrative rights. Runs once on startup.
+
+* `add_live_location_power_levels` (default: `false`): When enabled, adds power level configuration for live location sharing events (`m.beacon_info` and `org.matrix.msc3672.beacon_info`) if missing, setting them to the default event power level. This allows normal users to use live location sharing by default. Runs once on startup.
+
+* `add_matrix_rtc_call_power_levels` (default: `false`): When enabled, adds power level configuration for Matrix RTC call events (`m.call.member` and `org.matrix.msc3401.call.member`) if missing, setting them to the default event power level. This allows normal users to participate in calls by default. Runs once on startup.
+
+* `fix_visibility_access_rules` (default: `false`): When enabled, automatically updates the `visibility` attribute in the `im.vector.room.access_rules` event for public rooms that are missing this attribute. Runs once on startup.
 
 ## Development and Testing
 
