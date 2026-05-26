@@ -255,10 +255,10 @@
 │   │   ├── candidate
 │   │   │   ├── delete_attached_file.rb
 │   │   │   ├── delete_unattached_blob.rb
+│   │   │   ├── find_market_application.rb
 │   │   │   ├── find_or_create_user.rb
 │   │   │   ├── generate_and_send_magic_link.rb
 │   │   │   ├── prepare_document_scan_status.rb
-│   │   │   ├── resolve_market_application_for_reconnection.rb
 │   │   │   ├── validate_email_format.rb
 │   │   │   └── validate_siret.rb
 │   │   ├── carif_oref
@@ -276,6 +276,7 @@
 │   │   │   └── merge_resources.rb
 │   │   ├── create_market_application.rb
 │   │   ├── create_public_market.rb
+│   │   ├── delete_market_application.rb
 │   │   ├── dgfip
 │   │   │   ├── build_resource.rb
 │   │   │   ├── chiffres_affaires
@@ -547,6 +548,7 @@
 │       │   │   ├── _category_accordion.html.erb
 │       │   │   ├── _field_checkbox.html.erb
 │       │   │   ├── _field_display.html.erb
+│       │   │   ├── _lot_type_badge.html.erb
 │       │   │   ├── _subcategory_section.html.erb
 │       │   │   ├── generic_step.html.erb
 │       │   │   ├── lot_config.html.erb
@@ -650,6 +652,7 @@
 │       │   ├── manifest.json.erb
 │       │   └── service-worker.js
 │       └── shared
+│           ├── _application_lots_annex.html.erb
 │           ├── _application_lots_summary.html.erb
 │           ├── _application_status_badge.html.erb
 │           ├── _application_summary_content.html.erb
@@ -785,7 +788,8 @@
 │   │   ├── 20260413110000_remove_lot_name_from_public_markets.rb
 │   │   ├── 20260416154352_add_cpv_code_to_lots.rb
 │   │   ├── 20260429053004_add_buyer_name_to_public_markets.rb
-│   │   └── 20260507093244_rename_redirect_url_to_buyer_return_url_and_add_candidate_return_url_on_editors.rb
+│   │   ├── 20260507093244_rename_redirect_url_to_buyer_return_url_and_add_candidate_return_url_on_editors.rb
+│   │   └── 20260515054753_add_market_type_to_lots.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -864,6 +868,7 @@
 │   ├── buyer_lot_config.feature
 │   ├── buyer_webhook_sync.feature
 │   ├── candidate_api_data_recovery_status.feature
+│   ├── candidate_application_deletion.feature
 │   ├── candidate_authentication.feature
 │   ├── candidate_dashboard.feature
 │   ├── candidate_file_deletion.feature
@@ -890,33 +895,14 @@
 │   ├── realisations_livraisons.feature
 │   ├── step_definitions
 │   │   ├── .keep
-│   │   ├── admin_archive_market_attribute_steps.rb
-│   │   ├── admin_audit_logs_steps.rb
-│   │   ├── admin_authorization_steps.rb
-│   │   ├── admin_categories_steps.rb
-│   │   ├── admin_dashboard_steps.rb
-│   │   ├── admin_edit_category_steps.rb
-│   │   ├── admin_edit_subcategory_steps.rb
-│   │   ├── admin_import_configuration_steps.rb
-│   │   ├── admin_socle_de_base_creation_steps.rb
-│   │   ├── admin_socle_de_base_export_steps.rb
-│   │   ├── admin_socle_de_base_field_detail_steps.rb
-│   │   ├── admin_socle_de_base_filters_steps.rb
-│   │   ├── admin_socle_de_base_reorder_steps.rb
-│   │   ├── admin_socle_de_base_steps.rb
+│   │   ├── admin_*.rb  (14 files)
 │   │   ├── api_public_markets_steps.rb
 │   │   ├── application_consultation_steps.rb
 │   │   ├── attestation_lots_display_steps.rb
 │   │   ├── buyer_flow_steps.rb
 │   │   ├── buyer_lot_config_steps.rb
 │   │   ├── buyer_webhook_sync_steps.rb
-│   │   ├── candidate_api_data_recovery_status_steps.rb
-│   │   ├── candidate_authentication_steps.rb
-│   │   ├── candidate_dashboard_steps.rb
-│   │   ├── candidate_flow_comprehensive_steps.rb
-│   │   ├── candidate_flow_steps.rb
-│   │   ├── candidate_lot_selection_steps.rb
-│   │   ├── candidate_webhook_sync_steps.rb
+│   │   ├── candidate_*.rb  (8 files)
 │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
 │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
 │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_steps.rb
@@ -1113,9 +1099,9 @@
 │   │   ├── candidate
 │   │   │   ├── delete_attached_file_spec.rb
 │   │   │   ├── delete_unattached_blob_spec.rb
+│   │   │   ├── find_market_application_spec.rb
 │   │   │   ├── prepare_document_scan_status_spec.rb
 │   │   │   ├── request_magic_link_spec.rb
-│   │   │   ├── resolve_market_application_for_reconnection_spec.rb
 │   │   │   ├── validate_email_format_spec.rb
 │   │   │   └── validate_siret_spec.rb
 │   │   ├── carif_oref
@@ -1136,6 +1122,7 @@
 │   │   │   └── merge_resources_spec.rb
 │   │   ├── create_market_application_spec.rb
 │   │   ├── create_public_market_spec.rb
+│   │   ├── delete_market_application_spec.rb
 │   │   ├── dgfip
 │   │   │   ├── build_resource_spec.rb
 │   │   │   ├── download_document_spec.rb
@@ -1418,4 +1405,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-227 directories, 1193 files
+227 directories, 1200 files
