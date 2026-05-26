@@ -1,13 +1,16 @@
-## Changelog : dashlord (30 derniers jours, au 2026-05-17)
+## Changelog : dashlord (30 derniers jours, au 24 mai 2026)
 
 ### Résumé
-Ce changelog couvre une période de maintenance et de préparation des rapports. Les mises à jour récentes se concentrent sur l'automatisation de la génération de rapports, assurant ainsi une information actualisée sur l'état de la sécurité des sites web surveillés par Dashlord.
+Ce mois-ci, les mises à jour de Dashlord se sont concentrées sur la synchronisation des URLs des différents services surveillés.  Un effort a été fait pour mettre à jour les adresses des sites hébergés sur beta.gouv.fr, ainsi que pour ajuster la configuration des outils de surveillance et des rapports.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Mise à jour des URLs de plusieurs services surveillés, incluant notamment : prelex, pitchou, mesads, boris, vigieau, zlv, dialog, zerologementvacant, emile, ecobalyse, transport.data.gouv.fr, api.trackdechets, trackdechets, oilhi, mondiagartif, api.resorption-bidonvilles, prelevements-deau, resorption-bidonvilles, potentiel, mission-transition, partaj, mon-devis-sans-oublis, mobilic, le.taxi, stop-punaises, signal-logement, haie, envergo, france-chaleur-urbaine, filigrane, bo.dossierfacile.fr, api.dossierfacile.logement.gouv.fr, proprietaire.dossierfacile.fr, locataire.dossierfacile.logement.gouv.fr, docurba, doc.covoiturage.beta.gouv.fr, tech.covoiturage.beta.gouv.fr, attestation.covoiturage.beta.gouv.fr, covoiturage.beta.gouv.fr, app.covoiturage.beta.gouv.fr, carbone, camino, api.camino.beta.gouv.fr, aquapreneur, acceslibre, aides-territoires, apilos.logement.gouv.fr [#45](https://github.com/MTES-MCT/dashlord/pull/45).
+- Ajout de Prelex aux services surveillés et basculement de l'URL d'Emile vers l'application (emile.beta.gouv.fr).
 
 ### Évolutions techniques
-- Automatisation de la mise à jour des rapports : Les rapports sont désormais mis à jour automatiquement grâce à l'action `report.yml` [#1234](https://github.com/MTES-MCT/dashlord/issues/1234) (implémentation via DashlordBetaGouvBot).
+- Mise à jour de l'URL de l'API dans le fichier `dashlord.yml` [#45](https://github.com/MTES-MCT/dashlord/pull/45).
+- Suppression de l'entrée a-dock du fichier `dashlord.yml`.
+- Ajustement de la configuration des outils de surveillance (désactivation des statistiques, du budget, de Dependabot et Codescan) et désactivation de BetaGouv pour Prelex.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Mise à jour régulière du rapport de Dashlord.
