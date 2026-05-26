@@ -82,6 +82,8 @@
 │   │   ├── application_job.rb
 │   │   ├── fetch_resources_job.rb
 │   │   ├── process_audit_job.rb
+│   │   ├── process_batch_sites_creation_job.rb
+│   │   ├── process_site_upload_job.rb
 │   │   ├── remove_inactive_sessions_job.rb
 │   │   ├── remove_inactive_teams_job.rb
 │   │   ├── remove_inactive_users_job.rb
@@ -127,8 +129,10 @@
 │   │   ├── team.rb
 │   │   └── user.rb
 │   ├── services
+│   │   ├── csv_site_parser.rb
 │   │   ├── fetch_home_page_service.rb
-│   │   └── find_accessibility_page_service.rb
+│   │   ├── find_accessibility_page_service.rb
+│   │   └── site_batch_creation_service.rb
 │   ├── validators
 │   │   ├── email_validator.rb
 │   │   └── url_validator.rb
@@ -301,7 +305,9 @@
 │   │   ├── 20251215140216_add_home_page_url_to_audits.rb
 │   │   ├── 20260127092803_rename_checked_at_to_completed_at_in_audits.rb
 │   │   ├── 20260420133945_add_urls_to_site.rb
-│   │   └── 20260420142312_backfill_site_urls.rb
+│   │   ├── 20260420142312_backfill_site_urls.rb
+│   │   ├── 20260521085323_add_last_audited_at_to_sites.rb
+│   │   └── 20260521085429_backfill_last_audited_at.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -382,6 +388,8 @@
 │   │   ├── application_job_spec.rb
 │   │   ├── fetch_resources_job_spec.rb
 │   │   ├── process_audit_job_spec.rb
+│   │   ├── process_batch_sites_creation_job_spec.rb
+│   │   ├── process_site_upload_job_spec.rb
 │   │   ├── remove_inactive_sessions_job_spec.rb
 │   │   ├── remove_inactive_users_job_spec.rb
 │   │   └── run_check_job_spec.rb
@@ -419,8 +427,10 @@
 │   │   ├── tags_controller_spec.rb
 │   │   └── users_controller_spec.rb
 │   ├── services
+│   │   ├── csv_site_parser_spec.rb
 │   │   ├── fetch_home_page_service_spec.rb
-│   │   └── find_accessibility_page_service_spec.rb
+│   │   ├── find_accessibility_page_service_spec.rb
+│   │   └── site_batch_creation_service_spec.rb
 │   ├── spec_helper.rb
 │   └── support
 │       ├── auth_helpers.rb
@@ -443,4 +453,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-78 directories, 367 files
+78 directories, 377 files

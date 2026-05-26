@@ -1,20 +1,18 @@
-## Changelog : acces-cible (30 derniers jours, au 21 mai 2026)
+## Changelog : acces-cible (30 derniers jours, au 25 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de performances, la maintenance technique et la préparation de futures évolutions. Des corrections de requêtes SQL inefficaces ont été apportées, ainsi que des ajustements pour la gestion des URLs et des migrations de données. L'interface utilisateur a également bénéficié de l'intégration d'un composant DSFR.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la stabilité et de la performance de l'application, notamment lors de l'importation de fichiers CSV et de l'exécution de requêtes SQL. Des améliorations de l'interface utilisateur ont également été apportées avec l'intégration d'un composant de menu latéral du DSFR.
 
 ### Évolutions fonctionnelles
-- Ajout du BOM UTF-8 aux exports CSV pour une meilleure compatibilité avec les logiciels de tableur. [#520](https://github.com/betagouv/acces-cible/issues/520)
+- Stabilisation des imports CSV : Le traitement des fichiers CSV a été amélioré en le déplaçant vers une tâche en arrière-plan, améliorant ainsi la réactivité de l'application. [#541](https://github.com/betagouv/acces-cible/issues/541)
 
 ### Évolutions techniques
-- Correction de requêtes SQL N+1 pour améliorer les performances. [#538](https://github.com/betagouv/acces-cible/issues/538)
-- Utilisation du composant DSFR Side Menu pour standardiser l'interface utilisateur. [#571](https://github.com/betagouv/acces-cible/issues/571)
-- Mise à jour de Puma vers la version 8.0.1. [#540](https://github.com/betagouv/acces-cible/issues/540)
-- Mise à jour de plusieurs dépendances mineures. [#549](https://github.com/betagouv/acces-cible/issues/549), [#546](https://github.com/betagouv/acces-cible/issues/546)
-- Sécurisation du rendu des URLs externes et suppression d'une exception Brakeman liée à une potentielle vulnérabilité XSS. [#508](https://github.com/betagouv/acces-cible/issues/508)
-- Remplacement de `client_max_limit` par `max_limit` dans la gem `pagy` pour corriger une dépréciation. [#533](https://github.com/betagouv/acces-cible/issues/533)
+- Optimisation des requêtes SQL : Correction de problèmes de requêtes SQL N+1 pour améliorer les performances. [#538](https://github.com/betagouv/acces-cible/issues/538)
+- Refactoring du navigateur : Refactorisation du code lié au navigateur. [#545](https://github.com/betagouv/acces-cible/issues/545)
+- Nettoyage du code : Suppression de code mort et de dépendances inutilisées pour simplifier la base de code. [#542](https://github.com/betagouv/acces-cible/issues/542)
+- Intégration du composant DSFR Side Menu : Utilisation du composant de menu latéral du Design System des Finances Publiques (DSFR) pour une meilleure cohérence visuelle. [#571](https://github.com/betagouv/acces-cible/issues/571)
+- Suppression de la logique `current` : Suppression de la logique liée à `current` dans le code. [#573](https://github.com/betagouv/acces-cible/issues/573)
 
 ### Autres changements
-- Nettoyage du code mort et des dépendances inutilisées. [#542](https://github.com/betagouv/acces-cible/issues/542)
-- Ajout et annulation de plusieurs migrations pour le backfill des URLs des sites, en raison de problèmes rencontrés lors de l'application. [#558](https://github.com/betagouv/acces-cible/issues/558), [#557](https://github.com/betagouv/acces-cible/issues/557), [#556](https://github.com/betagouv/acces-cible/issues/556), [#555](https://github.com/betagouv/acces-cible/issues/555), [#554](https://github.com/betagouv/acces-cible/issues/554), [#553](https://github.com/betagouv/acces-cible/issues/553), [#551](https://github.com/betagouv/acces-cible/issues/551), [#530](https://github.com/betagouv/acces-cible/issues/530)
-- Correction d'une faute de frappe dans le fichier `queue.yml`. [#567](https://github.com/betagouv/acces-cible/issues/567)
+- Migration pour compléter les URLs des sites : Ajout et annulation de plusieurs migrations pour compléter les URLs des sites dans la base de données. [#530](https://github.com/betagouv/acces-cible/issues/530), [#553](https://github.com/betagouv/acces-cible/issues/553), [#555](https://github.com/betagouv/acces-cible/issues/555), [#556](https://github.com/betagouv/acces-cible/issues/556), [#557](https://github.com/betagouv/acces-cible/issues/557), [#558](https://github.com/betagouv/acces-cible/issues/558), [#551](https://github.com/betagouv/acces-cible/issues/551), [#554](https://github.com/betagouv/acces-cible/issues/554)
+- Correction d'une faute de frappe dans `queue.yml`. [#567](https://github.com/betagouv/acces-cible/issues/567)
