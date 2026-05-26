@@ -1,29 +1,26 @@
-## Changelog : partageonsleau-orchestration (30 derniers jours, au 7 mai 2026)
+## Changelog : partageonsleau-orchestration (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'orchestrateur Partageons l'Eau a connu des améliorations significatives en termes de connectivité aux sources de données (Willie, Olo, Aquasys) et de gestion des tâches grâce à l'intégration de BullMQ.  Des travaux ont également été réalisés pour préparer l'intégration avec la plateforme PLE et améliorer la robustesse du projet via la dockerisation et la correction de problèmes de linting.
+Ce mois-ci, l'orchestrateur Partageons l'eau a bénéficié d'améliorations significatives concernant la gestion des connecteurs, l'importation de données et le calcul des volumes. Des corrections et des optimisations ont également été apportées pour améliorer la stabilité et la configuration du système.
 
 ### Évolutions fonctionnelles
-- Ajout de connecteurs pour les sources de données Olo et Aquasys [#4](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/4).
-- Implémentation d'un connecteur initial pour Willie en mode incrémental.
-- Prise en charge de la connexion à la plateforme PLE avec un service account et un token de déclarant [#6](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/6).
-- Possibilité de gérer plusieurs connecteurs [#9](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/9).
-- Gestion de plusieurs types de déclarations [#8](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/8).
-- Amélioration du calcul des volumes à partir de l'index pour Willie [#7](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/7).
+- Ajout d'un parser pour BV Tech, permettant l'intégration de nouvelles sources de données. [#9](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/9)
+- Prise en charge de multiples connecteurs simultanément, améliorant la capacité à traiter des données provenant de diverses sources. [#9](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/9)
+- Amélioration du lien entre l'orchestrateur et la plateforme Partageons l'eau pour une meilleure cohérence des données.
+- Implémentation du calcul des volumes à partir de l'index, permettant une analyse plus précise des données de consommation. [#7](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/7)
+- Possibilité de gérer différentes politiques de conflits lors de l'importation des données.
+- Prise en charge de plusieurs fichiers lors de l'importation de données.
 
 ### Évolutions techniques
-- Intégration de BullMQ pour la gestion des tâches [#5](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/5).
-- Dockerisation du projet pour faciliter le déploiement et la reproductibilité [#1](https://github.com/MTES-MCT/partageonsleau-orchestration/pulls/1).
-- Mise en place d'un pipeline CI/CD avec `deploy.yml`.
-- Amélioration de la gestion des certificats Redis.
-- Correction de problèmes de linting avec xo.
+- Correction d'une dépréciation de SCW (Service Cloud Waly).
+- Ajout d'une interface d'administration BullMQ pour la surveillance et la gestion des queues de tâches.
+- Amélioration de la gestion des variables d'environnement et des secrets pour une configuration plus sécurisée.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et améliorations.
+- Correction de plusieurs erreurs de linting et de build.
+- Utilisation d'une granularité quotidienne pour Willie afin d'éviter des consommations nulles.
 
 ### Autres changements
-- Mise à jour de la documentation et du fichier README.
-- Modification du port par défaut.
-- Ajout d'une administration BullMQ.
-- Correction de regex et suppression de flags inutiles.
-- Ajout de la possibilité de définir une politique de gestion des conflits.
-- Amélioration de la liaison entre l'orchestration et la plateforme.
-- Ajout d'un `pointId` pour l'envoi de données au backend.
-- Mise à jour de la granularité pour Willie afin d'éviter les valeurs nulles.
+- Mise à jour du fichier README pour une meilleure documentation du projet.
+- Modification du port par défaut de l'application.
+- Ajout d'un fichier `deploy.yml` pour faciliter le déploiement.
+- Ajout de certificats Redis pour une connexion sécurisée.
