@@ -1,16 +1,15 @@
-## Changelog : transport-base-nationale-covoiturage (30 derniers jours)
+## Changelog : transport-base-nationale-covoiturage (30 derniers jours, au 21 mai 2026)
 
 ### Résumé
-Cette mise à jour enrichit la base nationale de données de covoiturage avec de nouveaux lieux, notamment dans les départements de la Haute-Marne, du Haut-Berry et de l'Eure. Ces ajouts permettent d'améliorer la couverture géographique et la qualité des informations disponibles pour les applications et services de covoiturage.
+Ce changelog fait état de mises à jour régulières de la base nationale des lieux de covoiturage. Les modifications récentes concernent principalement l'ajout et la mise à jour de points de covoiturage, notamment dans les départements de Lot-et-Garonne et de la métropole de Clermont-Ferrand. Ces mises à jour permettent de maintenir la base de données à jour et d'améliorer la fiabilité des informations fournies aux applications de covoiturage.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux lieux de covoiturage dans le département de la Haute-Marne (#317).
-- Ajout de nouveaux lieux de covoiturage dans le département du Haut-Berry (#316).
-- Ajout de nouveaux lieux de covoiturage dans le département de l'Eure (#314).
-- Correction et ajout de données pour le département du Haut-Rhin (#315).
+- Mise à jour des points de covoiturage pour le département de Lot-et-Garonne [#318](https://github.com/etalab/transport-base-nationale-covoiturage/issues/318)
+- Ajout de points de covoiturage pour la métropole de Clermont-Ferrand [#319](https://github.com/etalab/transport-base-nationale-covoiturage/issues/319)
+- Mise à jour générale de la base de données bnlc-.csv [#320](https://github.com/etalab/transport-base-nationale-covoiturage/issues/320) et [#321](https://github.com/etalab/transport-base-nationale-covoiturage/issues/321)
 
 ### Évolutions techniques
-(Aucune évolution technique significative à signaler durant cette période.)
+Aucune évolution technique à signaler durant cette période.
 
 ### Autres changements
-(Aucun autre changement à signaler durant cette période.)
+Aucun autre changement à signaler.
