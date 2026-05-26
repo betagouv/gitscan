@@ -1,19 +1,17 @@
 ## Changelog : menshen (30 derniers jours, au 30 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de la fonctionnalité d'échange de jetons OAuth 2.0, qui constitue le cœur de métier de Menshen. Des améliorations ont également été apportées à l'infrastructure et aux outils de développement pour faciliter le déploiement et la maintenance du projet.
+Ce mois-ci, les améliorations se concentrent sur l'amélioration de l'expérience de développement et de la robustesse du projet. Des outils ont été ajoutés pour faciliter la mise en place et le test de l'application, notamment un playground et des vérifications de santé pour les conteneurs Docker. Des simplifications de configuration ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Implémentation d'une première version de l'échange de jetons OAuth 2.0 [#9c84614](https://github.com/suitenumerique/menshen/commit/9c84614).
-- Refonte de l'organisation du code pour intégrer la fonctionnalité d'échange de jetons dans un module dédié (`token_exchange`) [#cfdc37f](https://github.com/suitenumerique/menshen/commit/cfdc37f), [#2396221](https://github.com/suitenumerique/menshen/commit/2396221).
+- Ajout d'un "playground" pour faciliter l'exploration et le test de l'API.
+- La création d'un superutilisateur se fait désormais via les variables d'environnement, simplifiant le processus de configuration.
 
 ### Évolutions techniques
-- Ajout d'un healthcheck pour le service Docker afin de surveiller son état de fonctionnement [#6b242d2](https://github.com/suitenumerique/menshen/commit/6b242d2).
-- Modification du nom du service Docker en `menshen` pour plus de clarté [#7fd622d](https://github.com/suitenumerique/menshen/commit/7fd622d).
-- Suppression des paramètres liés à OIDC qui ne sont plus utilisés [#77bf3e4](https://github.com/suitenumerique/menshen/commit/77bf3e4).
-- Utilisation des variables d'environnement pour la création de l'utilisateur superutilisateur, améliorant la flexibilité du déploiement [#07ab956](https://github.com/suitenumerique/menshen/commit/07ab956).
-- Amélioration de l'affichage de l'aide de la commande `make` [#50e4ece](https://github.com/suitenumerique/menshen/commit/50e4ece).
-- Ajout d'un "playground" pour le projet, facilitant les tests et l'exploration de l'API [#2d94c9b](https://github.com/suitenumerique/menshen/commit/2d94c9b).
+- Ajout d'une vérification de santé (healthcheck) pour le service Docker, améliorant la résilience de l'application.
+- Refonte de l'affichage de l'aide de la commande `make` pour une meilleure lisibilité.
+- Renommage du service Docker en `menshen` pour plus de clarté.
+- Suppression des paramètres liés à OIDC qui n'étaient plus utilisés.
 
 ### Autres changements
-- Mise à jour des dépendances Python et Docker (Keycloak, UV, GitHub Actions) via Renovate Bot. Ces mises à jour sont automatiques et visent à maintenir la sécurité et la stabilité du projet.
+- Mise à jour des dépendances Docker (Keycloak, Python, UV, GitHub Actions) vers leurs dernières versions stables.
