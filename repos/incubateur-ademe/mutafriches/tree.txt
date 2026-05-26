@@ -63,6 +63,9 @@
 │   │   │   │   │   ├── datagouv-lovac
 │   │   │   │   │   │   ├── datagouv-lovac.service.ts
 │   │   │   │   │   │   └── datagouv-lovac.types.ts
+│   │   │   │   │   ├── datagouv-zonage-abc
+│   │   │   │   │   │   ├── datagouv-zonage-abc.service.ts
+│   │   │   │   │   │   └── datagouv-zonage-abc.types.ts
 │   │   │   │   │   ├── enedis
 │   │   │   │   │   │   ├── enedis.api.types.ts
 │   │   │   │   │   │   ├── enedis.constants.ts
@@ -139,6 +142,7 @@
 │   │   │   │   │   ├── ademe-sites-pollues.repository.ts
 │   │   │   │   │   ├── bpe.repository.ts
 │   │   │   │   │   ├── enrichissement.repository.ts
+│   │   │   │   │   ├── ite-fret.repository.ts
 │   │   │   │   │   ├── site.repository.ts
 │   │   │   │   │   └── transport-stops.repository.ts
 │   │   │   │   └── services
@@ -184,6 +188,8 @@
 │   │   │   │       ├── site
 │   │   │   │       │   └── site-geometry.service.ts
 │   │   │   │       ├── transport
+│   │   │   │       │   ├── ite-fret-enrichissement.service.spec.ts
+│   │   │   │       │   ├── ite-fret-enrichissement.service.ts
 │   │   │   │       │   ├── transport-enrichissement.calculator.ts
 │   │   │   │       │   ├── transport-enrichissement.constants.ts
 │   │   │   │       │   ├── transport-enrichissement.service.spec.ts
@@ -252,7 +258,9 @@
 │   │   │   │   │   │       ├── v1.3.ts
 │   │   │   │   │   │       ├── v1.4.ts
 │   │   │   │   │   │       ├── v1.5.ts
-│   │   │   │   │   │       └── v1.6.ts
+│   │   │   │   │   │       ├── v1.6.ts
+│   │   │   │   │   │       ├── v1.7.ts
+│   │   │   │   │   │       └── v1.8.ts
 │   │   │   │   │   ├── calcul-fixtures.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
@@ -289,11 +297,14 @@
 │   │   │   │   └── metabase.service.ts
 │   │   │   ├── scripts
 │   │   │   │   ├── data
+│   │   │   │   │   ├── base-ite-3000.geojson
 │   │   │   │   │   ├── donnees-ademe-sites-pollues.geojson
 │   │   │   │   │   └── donnees-bpe-2024-filtered.csv
 │   │   │   │   ├── filter-bpe.ts
 │   │   │   │   ├── import-ademe-sites.ts
 │   │   │   │   ├── import-bpe.ts
+│   │   │   │   ├── import-epci-communes.ts
+│   │   │   │   ├── import-ite-fret.ts
 │   │   │   │   ├── import-transport-stops.ts
 │   │   │   │   └── prefetch-cci92.ts
 │   │   │   ├── shared
@@ -322,6 +333,9 @@
 │   │   │   │   │   │   ├── 0014_rename_parcelle_to_site.sql
 │   │   │   │   │   │   ├── 0015_silent_black_panther.sql
 │   │   │   │   │   │   ├── 0016_rename_source_utilisation_to_source_campagne.sql
+│   │   │   │   │   │   ├── 0017_quiet_bucky.sql
+│   │   │   │   │   │   ├── 0018_adorable_screwball.sql
+│   │   │   │   │   │   ├── 0019_ite_fret_adresse.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -339,15 +353,21 @@
 │   │   │   │   │   │       ├── 0014_snapshot.json
 │   │   │   │   │   │       ├── 0015_snapshot.json
 │   │   │   │   │   │       ├── 0016_snapshot.json
+│   │   │   │   │   │       ├── 0017_snapshot.json
+│   │   │   │   │   │       ├── 0018_snapshot.json
+│   │   │   │   │   │       ├── 0019_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
+│   │   │   │   │       ├── communes.schema.ts
 │   │   │   │   │       ├── enrichissements.schema.ts
+│   │   │   │   │       ├── epci.schema.ts
 │   │   │   │   │       ├── evaluations.schema.ts
 │   │   │   │   │       ├── evenements.schema.ts
 │   │   │   │   │       ├── raw-ademe-sites-pollues.schema.ts
 │   │   │   │   │       ├── raw-bpe.schema.ts
 │   │   │   │   │       ├── raw-imports-log.schema.ts
+│   │   │   │   │       ├── raw-ite-fret.schema.ts
 │   │   │   │   │       ├── raw-transport-stops.schema.ts
 │   │   │   │   │       └── sites.schema.ts
 │   │   │   │   ├── guards
@@ -462,7 +482,6 @@
 │       │   │   │       └── enrichissment.mapper.ts
 │       │   │   ├── cci92
 │       │   │   │   ├── components
-│       │   │   │   │   ├── CCI92Accordion.tsx
 │       │   │   │   │   ├── CCI92AddSiteModal.tsx
 │       │   │   │   │   ├── CCI92DonneesForm.tsx
 │       │   │   │   │   ├── CCI92SiteDetail.tsx
@@ -598,6 +617,9 @@
 │       │   │   │   │   ├── LoadingCallout.tsx
 │       │   │   │   │   ├── ModalInfo.tsx
 │       │   │   │   │   └── ScrollToTop.tsx
+│       │   │   │   ├── dsfr
+│       │   │   │   │   ├── DsfrAccordion.css
+│       │   │   │   │   └── DsfrAccordion.tsx
 │       │   │   │   └── layout
 │       │   │   │       ├── Footer.tsx
 │       │   │   │       ├── Header.tsx
@@ -678,7 +700,8 @@
 │   │   ├── 0010-matrice-scoring-excel.md
 │   │   ├── 0011-securisation-origin-guard-sans-api-key.md
 │   │   ├── 0012-tracking-source-utilisation-vs-integrateur.md
-│   │   └── 0013-zaenr-affichage-granulaire-scoring-grossier.md
+│   │   ├── 0013-zaenr-affichage-granulaire-scoring-grossier.md
+│   │   └── 0014-referentiel-epci-communes-etalab.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
 │   └── integration
@@ -709,6 +732,7 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── enums
 │       │   │   │   ├── code-erreur.enum.ts
+│       │   │   │   ├── distance-ite.enum.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── risque-cavites-souterraines.enum.ts
 │       │   │   │   ├── risque-inondation.enum.ts
@@ -717,6 +741,7 @@
 │       │   │   │   ├── source.enum.ts
 │       │   │   │   ├── statut-enrichissement.enum.ts
 │       │   │   │   ├── trame-verte-bleue.enum.ts
+│       │   │   │   ├── zonage-abc-logement.enum.ts
 │       │   │   │   ├── zonage-environnemental.enum.ts
 │       │   │   │   ├── zonage-patrimonial.enum.ts
 │       │   │   │   ├── zonage-reglementaire.enum.ts
@@ -844,4 +869,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-208 directories, 638 files
+210 directories, 661 files
