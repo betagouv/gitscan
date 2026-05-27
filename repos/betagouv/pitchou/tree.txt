@@ -3,8 +3,11 @@
 ├── .envrc
 ├── .git-blame-ignore-revs
 ├── .github
+│   ├── actions
+│   │   └── setup
+│   │       └── action.yml
 │   └── workflows
-│       ├── qualité-de-code.yml
+│       ├── code-quality.yml
 │       └── tests.yml
 ├── .gitignore
 ├── .kanelrc.cjs
@@ -690,6 +693,7 @@
 ├── flake.lock
 ├── flake.nix
 ├── index.html
+├── justfile
 ├── knexfile.js
 ├── migrations
 │   ├── 20240521145459_init.js
@@ -779,9 +783,9 @@
 │       ├── téléchargerFichierDS.js
 │       ├── téléchargerNouveauxFichiers.js
 │       └── téléchargerNouveauxFichiersParType.js
-├── package-lock.json
 ├── package.json
 ├── playwright.config.js
+├── pnpm-lock.yaml
 ├── public
 │   ├── favicon
 │   │   ├── android-chrome-192x192.png
@@ -794,7 +798,6 @@
 │   │   └── file-copy-2-line.svg
 │   └── style
 │       └── custom-icons.css
-├── rollup.config.js
 ├── scripts
 │   ├── commun
 │   │   ├── DateToJSON.js
@@ -929,6 +932,8 @@
 │   │   ├── triDossiers.js
 │   │   └── triEspèces.js
 │   ├── server
+│   │   ├── auth.js
+│   │   ├── auth.test.ts
 │   │   ├── checkMemory.js
 │   │   ├── database
 │   │   │   ├── aarri
@@ -938,10 +943,13 @@
 │   │   │   ├── analyse_utilisation.js
 │   │   │   ├── arête_dossier__fichier_pièces_jointes_pétitionnaire.js
 │   │   │   ├── avis_expert.js
+│   │   │   ├── avis_expert.test.ts
 │   │   │   ├── capability-geomce.js
 │   │   │   ├── controle.js
+│   │   │   ├── controle.test.ts
 │   │   │   ├── dossier.js
 │   │   │   ├── décision_administrative.js
+│   │   │   ├── décision_administrative.test.ts
 │   │   │   ├── espèces_impactées.js
 │   │   │   ├── fakeDatabase.ts
 │   │   │   ├── fichier.js
@@ -952,6 +960,7 @@
 │   │   │   ├── personne.test.ts
 │   │   │   ├── pgErrors.ts
 │   │   │   ├── prescription.js
+│   │   │   ├── prescription.test.ts
 │   │   │   ├── relation_suivi.js
 │   │   │   ├── stats.js
 │   │   │   └── évènements_métriques.js
@@ -1018,6 +1027,7 @@
 │       ├── tools.d.ts
 │       ├── typeguards.js
 │       └── évènement.d.ts
+├── svelte.config.js
 ├── tests
 │   ├── README.md
 │   ├── e2e
@@ -1044,6 +1054,7 @@
 │       ├── saisie-espèces.md
 │       └── tableau-suivi.md
 ├── tsconfig.json
+├── vite.config.js
 ├── vitest.config.js
 └── vitest.setup.ts
-80 directories, 1009 files
+82 directories, 1018 files
