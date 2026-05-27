@@ -814,6 +814,7 @@
 │   │   │   └── README.md
 │   │   └── webapp
 │   │       ├── README.md
+│   │       ├── ab-testing.md
 │   │       ├── django.md
 │   │       ├── internationalization.md
 │   │       ├── javascript.md
@@ -981,6 +982,7 @@
     │   │   └── turbo_tags.py
     │   ├── test_routers.py
     │   ├── test_settings.py
+    │   ├── url_utils.py
     │   ├── urls.py
     │   ├── utils.py
     │   ├── validators.py
@@ -1061,12 +1063,14 @@
     │   ├── used_icons.js
     │   └── views.py
     ├── e2e_tests
+    │   ├── a11y_mineurs.spec.ts
     │   ├── accessibility.spec.ts
     │   ├── acteur.spec.ts
     │   ├── analytics.spec.ts
     │   ├── assistant.spec.ts
     │   ├── browser_version.spec.ts
     │   ├── carte.spec.ts
+    │   ├── carte_address_combobox.spec.ts
     │   ├── carte_config.spec.ts
     │   ├── copy_controller.spec.ts
     │   ├── django-admin.spec.ts
@@ -1197,6 +1201,7 @@
     │   │   ├── 0081_homepage.py
     │   │   ├── 0082_produitpagesearchterm_cascade_delete.py
     │   │   ├── 0083_alter_produitindexpage_body_alter_produitpage_body.py
+    │   │   ├── 0083_produitpage_ab_test_carte_default_view.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── signals.py
@@ -1324,6 +1329,7 @@
     │   ├── views
     │   │   ├── __init__.py
     │   │   ├── adresses.py
+    │   │   ├── autocomplete.py
     │   │   ├── carte.py
     │   │   ├── configurator.py
     │   │   └── formulaire.py
@@ -1383,6 +1389,7 @@
     │       │   │   ├── acteur_details.ts
     │       │   │   ├── address_autocomplete_controller.ts
     │       │   │   ├── autocomplete_controller.ts
+    │       │   │   ├── carte_address_autocomplete_controller.ts
     │       │   │   ├── map_controller.ts
     │       │   │   ├── pinpoint_controller.ts
     │       │   │   ├── responsive_controller.ts
@@ -1390,6 +1397,7 @@
     │       │   ├── formulaire
     │       │   │   └── ss_cat_object_autocomplete_controller.ts
     │       │   └── shared
+    │       │       ├── ab_test_controller.ts
     │       │       ├── analytics.ts
     │       │       ├── copy_controller.ts
     │       │       ├── generic_autocomplete_controller.ts
@@ -1443,6 +1451,7 @@
     │       │   ├── tools-fill.svg
     │       │   └── vendre.svg
     │       └── tests
+    │           ├── ab_test_controller.test.ts
     │           ├── choose_action_controller.test.ts
     │           ├── iframe_functions.test.ts
     │           └── map_search_controller.test.ts
@@ -1530,7 +1539,12 @@
     │       │   │   ├── P01_13_8.md
     │       │   │   ├── P01_3_3.md
     │       │   │   ├── P01_7_3.md
-    │       │   │   └── P02_7_1__P02_7_3.md
+    │       │   │   ├── P02_7_1__P02_7_3.md
+    │       │   │   ├── iframe_titles_demo.html
+    │       │   │   ├── landmarks_demo.html
+    │       │   │   ├── liens_explicites_demo.html
+    │       │   │   ├── skip_link_demo.html
+    │       │   │   └── svg_decoratifs_demo.html
     │       │   ├── acteur
     │       │   │   ├── _action.html
     │       │   │   ├── _action_mailto.html
@@ -1612,6 +1626,7 @@
     │       │   │   └── footer.html
     │       │   ├── formulaire
     │       │   │   ├── acteur_detail.html
+    │       │   │   ├── adresse_input_form.html
     │       │   │   ├── digital_acteur_actions.html
     │       │   │   ├── filtres
     │       │   │   │   ├── _label.html
@@ -1736,6 +1751,7 @@
     │       │       ├── _spinner.html
     │       │       ├── autocomplete
     │       │       │   ├── _results_item.html
+    │       │       │   ├── address_results.html
     │       │       │   ├── input.html
     │       │       │   ├── input.qf.html
     │       │       │   ├── results.html
@@ -1813,8 +1829,12 @@
     │   ├── core
     │   │   ├── templatetags
     │   │   │   ├── test_acteur_tags.py
+    │   │   │   ├── test_carte_tag.py
     │   │   │   └── test_qfdmo_tags.py
+    │   │   ├── test_accessibilite_mineurs_previews.py
+    │   │   ├── test_accessibilite_previews.py
     │   │   ├── test_robots.py
+    │   │   ├── test_url_utils.py
     │   │   └── test_utils.py
     │   ├── data
     │   │   ├── models
@@ -1862,6 +1882,8 @@
     │   │   ├── test_addresses_view.py
     │   │   ├── test_adresse_get_object_list.py
     │   │   ├── test_auto_submit_mixin.py
+    │   │   ├── test_autocomplete_address_view.py
+    │   │   ├── test_carte_address_widget.py
     │   │   ├── test_carte_config.py
     │   │   ├── test_categorie.py
     │   │   ├── test_get_form_mixin.py
@@ -1882,4 +1904,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-352 directories, 1532 files
+352 directories, 1554 files

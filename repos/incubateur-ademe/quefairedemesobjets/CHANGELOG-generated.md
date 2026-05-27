@@ -1,26 +1,29 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 21 mai 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité et la performance de la plateforme, notamment avec la migration vers Airflow v3. Des corrections ont été apportées à l'interface utilisateur et aux tests, et des fonctionnalités ont été ajoutées pour améliorer la recherche et la configuration des sources de données. Plusieurs mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la compatibilité.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité du site web, l'expérience utilisateur sur mobile et la stabilité de la plateforme. Des corrections de bugs et des mises à jour techniques ont également été apportées pour améliorer la performance et la sécurité. Des améliorations significatives ont été apportées à la recherche et à la gestion des données, notamment concernant les sources de données et les suggestions.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche : Ajout d'un filtre pour rechercher des suggestions ayant des corrections (#2801).
-- Amélioration de la recherche : Possibilité de filtrer les suggestions par groupe lorsqu'une suggestion unitaire existe sur un champ donné (#2796).
-- Amélioration de la carte : Affichage de la mini carte sur mobile dans la fiche détaillée (#2797).
-- Correction d'un bug : Correction de l'affichage dupliqué du nom dans les résultats de recherche Vélovélo (#2754).
-- Redirection de domaine : Redirection du domaine legacy vers le domaine principal (#2756).
-- Ajout d'une nouvelle source de données : Possibilité de configurer une source générique entièrement personnalisable (#2466).
-- Amélioration du clustering : Permet de clusteriser par distance exprimée en mètres (#2728).
+- **Recherche :** Correction d'une erreur 500 lors de l'import des synonymes de recherche (page vélo) [#2853](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2853).
+- **Recherche :** Affichage de la famille d'un objet dans les résultats de recherche pour tous les utilisateurs [#2827](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2827).
+- **Carte :** Utilisation du nouvel autocomplete pour le champ adresse sur la carte [#2793](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2793).
+- **Carte :** A/B test du mode carte/liste par défaut sur les pages produit en version mobile [#2795](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2795).
+- **Accessibilité :** Corrections des non-conformités RGAA (Référentiel Général d'Accessibilité) mineures et résolution des retours bloquants [#2777](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2777).
+- **Données :** Mise à jour des données "Sites Conformes" [#2825](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2825).
+- **Données :** Possibilité de clusteriser par distance exprimée en mètres [#2728](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2728).
+- **Sources de données :** Ajout d'une Source générique configurable pour répondre à des besoins spécifiques [#2466](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2466).
+- **Suggestions :** Amélioration de la gestion des suggestions de données, notamment pour éviter le remplacement des valeurs éditées [#2802](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2802) et ajout d'un filtre `has_correction` [#2801](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2801).
+- **Suggestions :** Ajout d'un filtre pour les suggestions groupées lorsque des suggestions unitaires existent sur un champ donné [#2796](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2796).
 
 ### Évolutions techniques
-- Migration vers Airflow v3 : Adaptation du code pour la compatibilité avec Airflow v3 (#2568, #2832).
-- Adaptation du déploiement : Adaptation du déploiement GitHub Actions à la version v1 du CLI SCW (#2855).
-- Mise à jour de la base de données : Mise à jour du mapping de la base de données (#2829).
-- Suppression de code inutile : Suppression de fichiers inutiles (#2823).
-- Correction des tests E2E : Correction de tests end-to-end (#2806).
-- Calcul des différences : Implémentation du calcul des différences entre les propositions de service d'un acteur et ses révisions (#2539).
-- Fiabilisation des tests : Fiabilisation de la résolution du frame iframe dans les tests analytics (#2760).
+- **Airflow :** Adaptation du code pour la version 3 d'Airflow [#2832](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2832).
+- **Déploiement :** Adaptation du pipeline CI/CD à la version v1 du CLI Scaleway [#2855](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2855).
+- **Scaleway CLI :** Fixation de la version de la CLI Scaleway dans la chaîne d'approvisionnement [#2856](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2856).
+- **Health Check :** Augmentation du nombre de tentatives de health check avant de déclarer une erreur [#2763](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2763).
+- **Calcul des différences :** Implémentation du calcul des différences entre les propositions de service d'un acteur et ses révisions [#2539](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2539).
+- **Tests :** Correction de tests e2e [#2806](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2806).
 
 ### Autres changements
-- Mise à jour de la documentation : Mise à jour des sites conformes (#2825).
-- Nombreuses mises à jour de dépendances : Mises à jour de diverses dépendances (pydantic, django-import-export, urllib3, protobufjs, prettier, posthog-js, etc.) pour améliorer la sécurité et la stabilité. Ces mises à jour sont gérées par Dependabot et Renovate.
+- Suppression d'un bouton "Infos" obsolète sur la carte [#2759](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2759).
+- Suppression d'un fichier inutile [#2823](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2823).
+- Diverses mises à jour de dépendances (PostgreSQL, Django, React, Airflow, etc.).
