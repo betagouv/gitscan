@@ -982,8 +982,12 @@
     │   │   │   │   │   │   │       │   └── gestionnaire-maison-mere-aap-user-account
     │   │   │   │   │   │   │       │       ├── GestionnaireMaisonMereAAPUserAccount.tsx
     │   │   │   │   │   │   │       │       └── gestionnaireMaisonMereAAPUserAccount.hook.ts
-    │   │   │   │   │   │   │       └── add-user-account
-    │   │   │   │   │   │   │           ├── addUserAccount.hook.ts
+    │   │   │   │   │   │   │       ├── add-user-account
+    │   │   │   │   │   │   │       │   ├── addUserAccount.hook.ts
+    │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │       └── list
+    │   │   │   │   │   │   │           ├── AccountsListEmptyState.tsx
+    │   │   │   │   │   │   │           ├── collaborateurAccountsList.hook.ts
     │   │   │   │   │   │   │           └── page.tsx
     │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   ├── AAPSettingsSectionOnSite.tsx
@@ -1224,6 +1228,8 @@
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── CandidacySummaryBottomButtons.tsx
     │   │   │   │   │   │   │   │   │   ├── CandidateExperiencesSectionCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCardV2.tsx
     │   │   │   │   │   │   │   │   │   ├── admin-action-zone
     │   │   │   │   │   │   │   │   │   │   ├── AdminActionZone.tsx
     │   │   │   │   │   │   │   │   │   │   ├── EndAccompagnementTile.tsx
@@ -1270,6 +1276,15 @@
     │   │   │   │   │   │   │   ├── MaisonMereAAP.tsx
     │   │   │   │   │   │   │   ├── SortByBar.tsx
     │   │   │   │   │   │   │   └── candidacies.hook.ts
+    │   │   │   │   │   │   ├── candidacies-for-aap
+    │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   ├── AnnuaireEmptyState.tsx
+    │   │   │   │   │   │   │   │   ├── CandidacyCard.tsx
+    │   │   │   │   │   │   │   │   ├── CandidacyCardSkeleton.tsx
+    │   │   │   │   │   │   │   │   ├── FiltersSection.tsx
+    │   │   │   │   │   │   │   │   ├── SortByBar.tsx
+    │   │   │   │   │   │   │   │   └── annuaire.hook.ts
+    │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── certification-details
     │   │   │   │   │   │   └── [certificationId]
@@ -1643,6 +1658,8 @@
     │   │   │   │   │   ├── post-login
     │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   └── PostLoginClient.tsx
+    │   │   │   │   │   │   ├── establish-sso
+    │   │   │   │   │   │   │   └── route.ts
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── reset-password
     │   │   │   │   │   │   ├── _components
@@ -1849,7 +1866,8 @@
     │   │   │   │   └── Tarteaucitron.ts
     │   │   │   ├── search
     │   │   │   │   └── search-list
-    │   │   │   │       └── SearchList.tsx
+    │   │   │   │       ├── SearchList.tsx
+    │   │   │   │       └── SearchListEmptyState.tsx
     │   │   │   ├── search-filter-bar
     │   │   │   │   └── SearchFilterBar.tsx
     │   │   │   ├── search-results-header
@@ -2144,6 +2162,8 @@
     │   │   │   │   ├── createAccount.ts
     │   │   │   │   ├── deleteAccount.ts
     │   │   │   │   ├── disableAccount.ts
+    │   │   │   │   ├── establishSsoSession.test.ts
+    │   │   │   │   ├── establishSsoSession.ts
     │   │   │   │   ├── france-connect-authorize.test.ts
     │   │   │   │   ├── france-connect-authorize.ts
     │   │   │   │   ├── france-connect-birthplace.test.ts
@@ -2205,7 +2225,10 @@
     │   │   │   │   ├── certification.security.ts
     │   │   │   │   └── features
     │   │   │   │       ├── getCertificationByCandidacyId.ts
+    │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.test.ts
+    │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertification.ts
+    │   │   │   │       ├── updateCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.test.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.ts
     │   │   │   │       ├── updateCertificationWithinOrganismScope.test.ts
@@ -2252,6 +2275,7 @@
     │   │   │   │   ├── existsCandidacyWithActiveStatus.ts
     │   │   │   │   ├── getActiveCandidaciesByCandidateId.ts
     │   │   │   │   ├── getCandicacies.ts
+    │   │   │   │   ├── getCandidaciesForAAP.ts
     │   │   │   │   ├── getCandidaciesForCertificationAuthority.test.ts
     │   │   │   │   ├── getCandidaciesForCertificationAuthority.ts
     │   │   │   │   ├── getCandidacy.ts
@@ -2430,6 +2454,7 @@
     │   │   │       ├── getCertificationAuthoritiesByStructureId.ts
     │   │   │       ├── getCertificationAuthoritiesToTransferCandidacy.ts
     │   │   │       ├── getCertificationAuthority.ts
+    │   │   │       ├── getCertificationAuthorityByCandidacyId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByAccountId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountById.ts
@@ -2761,6 +2786,7 @@
     │   │   │   │   ├── getOrganismCertificationsByOrganismId.ts
     │   │   │   │   ├── getOrganismFormacodesByOrganismId.ts
     │   │   │   │   ├── getOrganismsByMaisonAAPId.ts
+    │   │   │   │   ├── getPaginatedComptesCollaborateursByMaisonMereAAPId.ts
     │   │   │   │   ├── getPaginatedOrganismsByMaisonMereAAPId.ts
     │   │   │   │   ├── getRemoteZonesByOrganismId.ts
     │   │   │   │   ├── isCompanySiretAlreadyUsed.ts
@@ -4387,6 +4413,14 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260519094903_add_aap_metabase_dashboard_feature
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260520103625_add_aap_accounts_listing_page_feature
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260522122128_update_candidacy_tabel_add_certification_authority_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260525121408_add_new_candidacy_certification_authority_card_feature_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260526132438_add_candidacies_for_aap_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -5478,6 +5512,9 @@
     │   │   │   │   │   │   │   └── mail-polygon.svg
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── login
+    │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   ├── CredentialsStep.tsx
+    │   │   │   │   │   │   │   └── OtpStep.tsx
     │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── logout-confirmation
@@ -5986,4 +6023,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2014 directories, 3974 files
+2023 directories, 4002 files
