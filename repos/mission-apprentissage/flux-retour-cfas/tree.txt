@@ -164,6 +164,10 @@
 │   │   │   ├── actions
 │   │   │   │   ├── account.actions.ts
 │   │   │   │   ├── admin
+│   │   │   │   │   ├── collaborations
+│   │   │   │   │   │   ├── collaboration-export.actions.ts
+│   │   │   │   │   │   ├── collaboration-stats.actions.test.ts
+│   │   │   │   │   │   └── collaboration-stats.actions.ts
 │   │   │   │   │   ├── invitations.admin.actions.ts
 │   │   │   │   │   └── mission-locale
 │   │   │   │   │       └── mission-locale.admin.actions.ts
@@ -442,6 +446,7 @@
 │   │   │   ├── routes
 │   │   │   │   ├── admin.routes
 │   │   │   │   │   ├── affelnet.routes.ts
+│   │   │   │   │   ├── collaborations.routes.ts
 │   │   │   │   │   ├── effectifs.routes.ts
 │   │   │   │   │   ├── erps.routes.ts
 │   │   │   │   │   ├── invitations.routes.ts
@@ -712,6 +717,8 @@
 │   │   │   ├── external
 │   │   │   │   └── zod.test.ts
 │   │   │   ├── http
+│   │   │   │   ├── admin
+│   │   │   │   │   └── collaborations.routes.test.ts
 │   │   │   │   ├── admin-cfa-invite.routes.test.ts
 │   │   │   │   ├── admin-invitations.routes.test.ts
 │   │   │   │   ├── admin-organismes-deca-cfa-pilot.routes.test.ts
@@ -808,6 +815,7 @@
 │   │   └── organisations.actions.ts
 │   ├── constants
 │   │   ├── aide.ts
+│   │   ├── collaboration.ts
 │   │   ├── deployedRegions.ts
 │   │   ├── dossierApprenant.ts
 │   │   ├── effectifs.ts
@@ -891,6 +899,7 @@
 │   │   ├── fixtures
 │   │   │   ├── formation.v2.fixture.ts
 │   │   │   ├── formationsCatalogue.fixture.ts
+│   │   │   ├── missionLocaleEffectif.fixture.ts
 │   │   │   └── organisme.fixture.ts
 │   │   ├── index.ts
 │   │   ├── indicateurs.ts
@@ -901,6 +910,7 @@
 │   │   ├── routes
 │   │   │   ├── OrganismeSupportInfo.ts
 │   │   │   ├── admin
+│   │   │   │   ├── collaboration-stats.api.ts
 │   │   │   │   ├── organismes.api.ts
 │   │   │   │   └── users.api.ts
 │   │   │   ├── formations
@@ -1379,6 +1389,8 @@
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useCollaborationExport.ts
+│   │   │   │   │   ├── useCollaborationStats.ts
 │   │   │   │   │   ├── useLoadingVariation.ts
 │   │   │   │   │   ├── useSortableTable.ts
 │   │   │   │   │   ├── useStatsQueries.ts
@@ -1389,6 +1401,10 @@
 │   │   │   │   │   ├── AccompagnementConjointSection.module.css
 │   │   │   │   │   ├── AccompagnementConjointSection.tsx
 │   │   │   │   │   ├── ClassifierSection.tsx
+│   │   │   │   │   ├── CollaborationActivationSection.tsx
+│   │   │   │   │   ├── CollaborationUsageSection.tsx
+│   │   │   │   │   ├── CollaborationsAdminSection.module.css
+│   │   │   │   │   ├── CollaborationsAdminSection.tsx
 │   │   │   │   │   ├── CouvertureRegionsSection.tsx
 │   │   │   │   │   ├── DeploymentSection.module.css
 │   │   │   │   │   ├── DeploymentSection.tsx
@@ -1405,6 +1421,8 @@
 │   │   │   │   │   ├── WhatsAppSection.tsx
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── tables
+│   │   │   │   │   ├── CollaborationRegionTable.module.css
+│   │   │   │   │   ├── CollaborationRegionTable.tsx
 │   │   │   │   │   ├── NationalRegionTable.module.css
 │   │   │   │   │   ├── NationalRegionTable.tsx
 │   │   │   │   │   ├── RegionTable.module.css
@@ -2325,4 +2343,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-467 directories, 1860 files
+469 directories, 1876 files
