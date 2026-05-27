@@ -1,45 +1,57 @@
-## Changelog : monlogementetudiant (30 derniers jours, au 2026-05-21)
+## Changelog : monlogementetudiant (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'import de données (CSV, CLI), l'ajout de nouvelles fonctionnalités pour les gestionnaires et les propriétaires (statistiques, export de comptes), ainsi que sur des corrections de bugs et des optimisations de l'interface utilisateur, notamment au niveau de la calculatrice de budget et des filtres de recherche. Des améliorations ont également été apportées à l'authentification et à la gestion des adresses.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'administration de la plateforme, notamment avec l'ajout de statistiques pour les propriétaires et la gestion des typologies de logements. Des améliorations ont également été apportées à l'importation de données via CSV, à la recherche de logements et à la gestion des utilisateurs. Plusieurs corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'aides à la mobilité CROUS ([#87edc53](https://github.com/betagouv/monlogementetudiant/pull/87edc53)).
-- Les administrateurs peuvent maintenant ajouter des typologies de logements lors de l'import de données ([#5cedac2](https://github.com/betagouv/monlogementetudiant/pull/5cedac2)).
-- Amélioration de l'import CSV avec une barre de progression, un aperçu et un résumé pour les propriétaires ([#00057f6](https://github.com/betagouv/monlogementetudiant/pull/00057f6)).
-- Ajout de statistiques pour les propriétaires.
-- Possibilité d'exporter la liste des comptes gestionnaires.
-- Ajout d'un filtre pour afficher les logements avec des actualités disponibles.
-- Ajout de la fréquence de calcul de budget dans la calculatrice.
-- Ajout d'une politique d'administration pour les gestionnaires.
-- Amélioration de la gestion des adresses multiples.
-- Ajout d'une bannière NPS (Net Promoter Score).
-- Ajout de métadonnées pour les pages génériques et souveraines, améliorant le SEO.
-- Envoi d'un email aux propriétaires lors de la création de leur compte.
-- Ajout d'un widget logement avec des logements à proximité.
-- Amélioration du formulaire de création/modification de résidences.
+- Ajout de statistiques sur le nombre d'appartements par propriétaire dans l'interface d'administration. [#bf83abc](https://github.com/betagouv/monlogementetudiant/commit/bf83abc)
+- Ajout de statistiques sur les logements intégrés et les appartements, regroupés par CROUS et autres organismes. [#3d66bf2](https://github.com/betagouv/monlogementetudiant/commit/3d66bf2)
+- Possibilité pour les administrateurs d'ajouter des typologies de logements lors de l'importation de données. [#5cedac2](https://github.com/betagouv/monlogementetudiant/commit/5cedac2)
+- Ajout d'aides à la mobilité CROUS. [#87edc53](https://github.com/betagouv/monlogementetudiant/commit/87edc53)
+- Ajout de détails sur les charges d'hébergement. [#4fad87c](https://github.com/betagouv/monlogementetudiant/commit/4fad87c)
+- Ajout de filtres sur la page de recherche. [#9282d26](https://github.com/betagouv/monlogementetudiant/commit/9282d26)
+- Ajout d'indicateurs de performance (KPI) pour le nombre total d'appartements par propriétaire. [#bf83abc](https://github.com/betagouv/monlogementetudiant/commit/bf83abc)
+- Amélioration de la page d'importation avec une progression SSE, un aperçu et un résumé pour les propriétaires. [#00057f6](https://github.com/betagouv/monlogementetudiant/commit/00057f6)
+- Ajout d'une bannière NPS (Net Promoter Score). [#9ec3f72](https://github.com/betagouv/monlogementetudiant/commit/9ec3f72)
+- Ajout de la possibilité d'exporter les comptes gestionnaires. [#5d1bd96](https://github.com/betagouv/monlogementetudiant/commit/5d1bd96)
+- Ajout de la fréquence de calcul de la calculatrice de budget. [#3319cc2](https://github.com/betagouv/monlogementetudiant/commit/3319cc2)
+- Ajout d'une politique d'administration pour les gestionnaires. [#ee27f49](https://github.com/betagouv/monlogementetudiant/commit/ee27f49)
 
 ### Évolutions techniques
-- Mise à jour de Drizzle ORM vers la version 0.45.2.
-- Amélioration de l'architecture pour gérer les métadonnées des pages.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Optimisation des requêtes SQL.
-- Mise à jour de la version de Next.js.
-- Passage à une version LTS de pnpm.
-- Amélioration de la gestion des variables d'environnement avec Zod.
-- Correction de problèmes liés aux cookies d'authentification.
-- Amélioration de la gestion des erreurs d'authentification.
-- Ajout de tests d'intégration.
+- Refactorisation du code et nettoyage de divers éléments. [#d0c54dc](https://github.com/betagouv/monlogementetudiant/commit/d0c54dc), [#b538bef](https://github.com/betagouv/monlogementetudiant/commit/b538bef)
+- Mise à jour de la version de Drizzle ORM (0.45.1 -> 0.45.2).
+- Amélioration de l'optimisation SQL. [#785e051](https://github.com/betagouv/monlogementetudiant/commit/785e051)
+- Mise à jour de la version de pnpm vers la version LTS. [#c57b987](https://github.com/betagouv/monlogementetudiant/commit/c57b987)
+- Mise à jour de la version de Next.js. [#30675c7](https://github.com/betagouv/monlogementetudiant/commit/30675c7)
+- Ajout de tests d'intégration. [#ca39ee4](https://github.com/betagouv/monlogementetudiant/commit/ca39ee4)
+- Amélioration de la gestion des variables d'environnement avec Zod. [#fa9b5dc](https://github.com/betagouv/monlogementetudiant/commit/fa9b5dc)
+- Ajout de métadonnées pour les pages génériques et souveraines. [#2f836fe](https://github.com/betagouv/monlogementetudiant/commit/2f836fe)
 
 ### Autres changements
-- Correction de bugs mineurs liés à l'interface utilisateur (calculatrice, filtres, etc.).
-- Amélioration de la réactivité du widget.
-- Correction de problèmes liés aux littéraux romains.
-- Amélioration de la gestion des erreurs dans le CI/CD.
-- Suppression des liens vers les sitemaps (maintenus sur le CMS).
-- Correction de typos et amélioration de la documentation.
-- Suppression de colonnes inutilisées dans la base de données.
-- Correction de problèmes liés aux breadcrumbs.
-- Correction de problèmes liés à la vérification de la signature.
-- Amélioration de la gestion des images.
-- Correction de problèmes liés à la redirection après connexion.
+- Correction de bugs liés aux liens magiques pour les propriétaires. [#531ef07](https://github.com/betagouv/monlogementetudiant/commit/531ef07)
+- Correction de bugs liés au calculatrice de budget. [#3cae31f](https://github.com/betagouv/monlogementetudiant/commit/3cae31f), [#204084a](https://github.com/betagouv/monlogementetudiant/commit/204084a)
+- Correction de bugs liés au widget de recherche et aux filtres. [#e663c33](https://github.com/betagouv/monlogementetudiant/commit/e663c33), [#82d14a0](https://github.com/betagouv/monlogementetudiant/commit/82d14a0)
+- Correction de bugs liés à l'importation de données CSV. [#b71e9e1](https://github.com/betagouv/monlogementetudiant/commit/b71e9e1), [#b76af25](https://github.com/betagouv/monlogementetudiant/commit/b76af25)
+- Correction de bugs liés à l'affichage des adresses multiples. [#2fdfb7b](https://github.com/betagouv/monlogementetudiant/commit/2fdfb7b), [#edb6b47](https://github.com/betagouv/monlogementetudiant/commit/edb6b47)
+- Correction de bugs liés à la redirection des utilisateurs. [#b72318e](https://github.com/betagouv/monlogementetudiant/commit/b72318e)
+- Amélioration de la gestion des erreurs d'authentification. [#436f1c8](https://github.com/betagouv/monlogementetudiant/commit/436f1c8)
+- Correction de bugs liés à l'affichage des images. [#ae88b07](https://github.com/betagouv/monlogementetudiant/commit/ae88b07)
+- Correction de bugs liés à la langue de Day.js. [#ef3879e](https://github.com/betagouv/monlogementetudiant/commit/ef3879e)
+- Correction de bugs liés à la gestion des voisins dans le widget d'hébergement. [#9b8f319](https://github.com/betagouv/monlogementetudiant/commit/9b8f319)
+- Correction de bugs liés à la normalisation des littéraux romains. [#4cac809](https://github.com/betagouv/monlogementetudiant/commit/4cac809)
+- Correction de bugs liés à la gestion des cookies. [#6de3076](https://github.com/betagouv/monlogementetudiant/commit/6de3076)
+- Correction de bugs liés au comportement du slider. [#30ce143](https://github.com/betagouv/monlogementetudiant/commit/30ce143)
+- Correction de bugs liés au calculatrice. [#91f637c](https://github.com/betagouv/monlogementetudiant/commit/91f637c)
+- Correction de bugs liés à l'importation ARPEJ. [#3a81f5e](https://github.com/betagouv/monlogementetudiant/commit/3a81f5e)
+- Correction de bugs liés à la gestion des adresses. [#d5c6817](https://github.com/betagouv/monlogementetudiant/commit/d5c6817)
+- Correction de bugs liés à la gestion des villes dans les résultats de recherche. [#d949f31](https://github.com/betagouv/monlogementetudiant/commit/d949f31)
+- Correction de bugs liés à la vérification de la signature. [#5d1331a](https://github.com/betagouv/monlogementetudiant/commit/5d1331a)
+- Correction de bugs liés à la gestion des journaux Drizzle. [#2702c99](https://github.com/betagouv/monlogementetudiant/commit/2702c99)
+- Correction de bugs liés à la redirection des étudiants. [#11199dd](https://github.com/betagouv/monlogementetudiant/commit/11199dd)
+- Suppression des liens de sitemap. [#070d96a](https://github.com/betagouv/monlogementetudiant/commit/070d96a)
+- Correction de bugs liés à l'affichage des prix. [#7c40b82](https://github.com/betagouv/monlogementetudiant/commit/7c40b82)
+- Correction de bugs liés à l'audit S3. [#93608f8](https://github.com/betagouv/monlogementetudiant/commit/93608f8)
+- Correction de bugs liés au prefix S3. [#6c86a39](https://github.com/betagouv/monlogementetudiant/commit/6c86a39)
+- Correction de bugs liés à l'envoi d'emails. [#764bb38](https://github.com/betagouv/monlogementetudiant/commit/764bb38)
+- Correction de bugs liés à la gestion des propriétaires. [#50ba961](https://github.com/betagouv/monlogementetudiant/commit/50ba961)
+- Correction de bugs liés à la gestion des logements. [#60930fa](https://github.com/betagouv/monlogementetudiant/commit/60930fa)

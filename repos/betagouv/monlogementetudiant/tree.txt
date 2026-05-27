@@ -37,6 +37,11 @@
 │   │   ├── import-utils.ts
 │   │   ├── migrate-users.ts
 │   │   ├── migrate.ts
+│   │   ├── storage
+│   │   │   ├── auditStorage.ts
+│   │   │   ├── findStorageIssues.ts
+│   │   │   ├── fixStorageIssues.ts
+│   │   │   └── types.ts
 │   │   ├── sync-cities.ts
 │   │   ├── sync-rents.ts
 │   │   ├── sync-stats.ts
@@ -94,6 +99,7 @@
 │   ├── 0033_perf-indexes-multi-address.sql
 │   ├── 0034_owner_feedback.sql
 │   ├── 0035_pale_joshua_kane.sql
+│   ├── 0036_target_audience_enum.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -131,6 +137,7 @@
 │       ├── 0033_snapshot.json
 │       ├── 0034_snapshot.json
 │       ├── 0035_snapshot.json
+│       ├── 0036_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -441,6 +448,7 @@
 │   │   │                   ├── accommodation-residence.tsx
 │   │   │                   ├── accommodation-view-tracker.tsx
 │   │   │                   ├── accommodation-virtual-tour.tsx
+│   │   │                   ├── fjt-rsja-notice.tsx
 │   │   │                   ├── get-accommodation-json-ld.ts
 │   │   │                   ├── get-accommodation-page-context.ts
 │   │   │                   ├── logement.module.css
@@ -562,6 +570,7 @@
 │   │   │   │   ├── create-residence-pictures.tsx
 │   │   │   │   ├── create-residence-publication.tsx
 │   │   │   │   ├── residence-accommodation-list.tsx
+│   │   │   │   ├── residence-details.module.css
 │   │   │   │   ├── residence-details.tsx
 │   │   │   │   ├── residence-equipments.tsx
 │   │   │   │   ├── residence-location.module.css
@@ -1061,4 +1070,4 @@
 │       └── widget-resize.ts
 ├── tsconfig.json
 └── vitest.config.ts
-227 directories, 836 files
+228 directories, 844 files
