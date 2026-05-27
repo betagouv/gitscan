@@ -1,100 +1,47 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 2026-05-19)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 25 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'une FAQ, l'intégration d'Ademe Connect, et des optimisations de performance. De nombreuses améliorations ont été apportées à l'administration et à la gestion des permissions, ainsi qu'un suivi analytique plus précis grâce à l'intégration de PostHog.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des permissions et des accès, l'ajout de nouvelles fonctionnalités de suivi et d'analyse (notamment avec PostHog), et des corrections pour optimiser l'expérience utilisateur et la performance de la plateforme. Des améliorations ont également été apportées à la gestion des données et à l'intégration avec des services externes comme ADEME Connect.
 
 ### Évolutions fonctionnelles
-- Ajout d'une FAQ pour répondre aux questions fréquentes des utilisateurs. [#1236](https://github.com/betagouv/france-chaleur-urbaine/pull/1236)
-- Intégration d'Ademe Connect pour faciliter l'accès aux données. [#1238](https://github.com/betagouv/france-chaleur-urbaine/pull/1238)
-- Mise à jour du contenu de l'aide "Coup de pouce". [#1231](https://github.com/betagouv/france-chaleur-urbaine/pull/1231)
-- Amélioration du formulaire de collecte de contact pour les situations de non-raccordement.
+- Ajout d'un nouveau système de permissions plus granulaire, incluant des rôles (CCRT, ALEC) et une gestion des accès simplifiée.
+- Amélioration de l'interface d'administration pour la gestion des permissions et des utilisateurs.
+- Intégration d'ADEME Connect via iframe.
 - Ajout d'un bandeau d'information concernant une future indisponibilité du service.
-- Ajout d'un bouton "Réinitialiser" au formulaire de collecte de contact.
-- Amélioration de la gestion de l'état du formulaire de collecte de contact.
-- Ajout d'un message de confirmation lors de la soumission du formulaire de collecte de contact.
-- Mise à jour des statistiques mensuelles pour Avril.
+- Amélioration de la gestion des relances et des notes sur les réseaux.
+- Ajout d'une fonctionnalité de recherche par ID SNCU dans les statistiques.
+- Affichage de la colonne "has_PDP" dans l'administration des demandes.
+- Ajout d'une FAQ accessible depuis la page d'accueil.
+- Amélioration du formulaire de création d'utilisateur par un administrateur.
+- Ajout d'un bouton pour réaffecter facilement les demandes.
+- Ajout d'une fonctionnalité de sauvegarde des presets dans l'URL pour une expérience utilisateur plus cohérente.
+- Amélioration de la visibilité des demandes à traiter et affectées.
+- Ajout d'un lien direct vers la correction des permissions pour un gestionnaire.
 
 ### Évolutions techniques
-- Mise en place d'un cache au niveau des tuiles pour améliorer les performances de la carte. [#1243](https://github.com/betagouv/france-chaleur-urbaine/pull/1243)
-- Refonte du système de permissions avec l'ajout de modules, migrations, rôles et intégration avec les demandes. [#1233](https://github.com/betagouv/france-chaleur-urbaine/pull/1233)
-- Ajout d'un dashboard pour la cohérence des données.
-- Ajout d'une API Prometheus pour les métriques.
+- Mise en place d'un cache au niveau des tuiles pour améliorer la performance de la carte.
+- Refactor de la gestion des permissions et des routes.
+- Ajout d'un module de métriques avec une API Prometheus pour le monitoring.
+- Migration des comptes métropoles.
 - Optimisation des performances du listing des demandes.
-- Refactoring et simplification de `demands-service`.
-- Lazy loading de la carte pour améliorer le temps de chargement initial.
-- Amélioration du typage du code.
-- Suppression de code obsolète et nettoyage du code.
-- Mise à jour des dépendances et correction des erreurs de build.
-- Ajout de tests unitaires et d'intégration.
-- Amélioration de la gestion des erreurs et des logs.
+- Amélioration du typage et du code dans plusieurs composants.
+- Suppression de code obsolète et nettoyage général du code.
+- Ajout de tests pour les routes territoires.
+- Uniformisation du tracking PostHog entre différents composants (Card, Link, Button).
+- Ajout de nombreux événements de tracking PostHog pour mieux comprendre le comportement des utilisateurs.
+- Utilisation de composants UI/Link au lieu de next/link.
+- Mise à jour et simplification de la configuration des variables d'environnement.
 
 ### Autres changements
-- Ajout de tracking PostHog pour suivre le comportement des utilisateurs sur différentes parties du site (FAQ, simulateur d'aide, test d'adresse, etc.).
-- Ajout d'événements PostHog pour le suivi des demandes en masse et des mises à jour de permissions.
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de typos et amélioration de la lisibilité du code.
-- Suppression de tables inutiles dans Airtable.
-- Mise à jour des rôles et des permissions des utilisateurs.
-- Migration des comptes métropoles.
-- Ajout d'une commande pour analyser les réseaux.
-- Ajout d'une commande pour mettre à jour les réseaux via un répertoire.
+- Ajout d'un script pour dropper des tables à distance.
+- Ajout d'un script pour mettre à jour les réseaux via un répertoire.
 - Ajout d'un script de migration des notes de tags.
-- Amélioration de la gestion des erreurs et des logs.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Suppression du bandeau de mise à jour.
-- Ajout de la possibilité de sauvegarder le preset sélectionné dans l'URL /pro/demandes.
-- Amélioration de la visibilité des demandes à traiter et affectées.
-- Ajout d'un lien pour corriger les permissions pour un gestionnaire.
-- Ajout d'un bouton pour clear l'autocomplete.
-- Ajout d'un bouton save explicite pour les notes de réseaux.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
-- Ajout d'un message d'information pour les utilisateurs provenant de pacoupa.
+- Suppression des presets "haut potentiel" et "dans PDP".
+- Ajout d'un fichier `.claudeignore`.
+- Correction de plusieurs erreurs de typage et d'indentation.
+- Amélioration de la documentation et des commentaires.
+- Suppression de crons inutiles.
+- Ajout de commandes pour analyser les réseaux.
+- Ajout d'un message d'information pour les utilisateurs provenant de Pacoupa.
+- Amélioration du texte sous les liens pour plus de clarté.
+- Ajout d'un petit délai pour une meilleure gestion du scroll sur l'accordéon de la FAQ.
