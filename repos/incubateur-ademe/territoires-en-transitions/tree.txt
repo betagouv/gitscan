@@ -606,11 +606,9 @@
 │   │   │   │   │       │   │   ├── use-delete-indicateur-valeur.ts
 │   │   │   │   │       │   │   ├── use-indicateur-chart.ts
 │   │   │   │   │       │   │   ├── use-indicateur-moyenne.ts
-│   │   │   │   │       │   │   ├── use-indicateur-path.ts
 │   │   │   │   │       │   │   ├── use-indicateur-personnalisation.ts
 │   │   │   │   │       │   │   ├── use-indicateur-reference.ts
 │   │   │   │   │       │   │   ├── use-indicateur-sources.ts
-│   │   │   │   │       │   │   ├── use-indicateurs-favoris-count.ts
 │   │   │   │   │       │   │   └── use-source-filter.ts
 │   │   │   │   │       │   ├── detail
 │   │   │   │   │       │   │   ├── ActionsLiees.tsx
@@ -670,23 +668,17 @@
 │   │   │   │   │       │   │   └── private-mode-switch.tsx
 │   │   │   │   │       │   └── types.ts
 │   │   │   │   │       ├── PlansActions
-│   │   │   │   │       │   ├── ActionsGroupees
-│   │   │   │   │       │   │   ├── ActionsGroupeesMenu.tsx
-│   │   │   │   │       │   │   ├── ActionsGroupeesModale.tsx
-│   │   │   │   │       │   │   ├── EditionPilote.tsx
-│   │   │   │   │       │   │   ├── EditionPlanning.tsx
-│   │   │   │   │       │   │   ├── EditionPriorite.tsx
-│   │   │   │   │       │   │   ├── EditionReferent.tsx
-│   │   │   │   │       │   │   ├── EditionService.tsx
-│   │   │   │   │       │   │   ├── EditionStatut.tsx
-│   │   │   │   │       │   │   ├── EditionTagsLibres.tsx
-│   │   │   │   │       │   │   └── fiche-access-bulk-editor.modal.tsx
-│   │   │   │   │       │   ├── PlanAction
-│   │   │   │   │       │   │   └── data
-│   │   │   │   │       │   │       └── usePlanActionProfondeur.tsx
-│   │   │   │   │       │   └── components
-│   │   │   │   │       │       ├── BadgePriorite.tsx
-│   │   │   │   │       │       └── BadgeStatut.tsx
+│   │   │   │   │       │   └── ActionsGroupees
+│   │   │   │   │       │       ├── ActionsGroupeesMenu.tsx
+│   │   │   │   │       │       ├── ActionsGroupeesModale.tsx
+│   │   │   │   │       │       ├── EditionPilote.tsx
+│   │   │   │   │       │       ├── EditionPlanning.tsx
+│   │   │   │   │       │       ├── EditionPriorite.tsx
+│   │   │   │   │       │       ├── EditionReferent.tsx
+│   │   │   │   │       │       ├── EditionService.tsx
+│   │   │   │   │       │       ├── EditionStatut.tsx
+│   │   │   │   │       │       ├── EditionTagsLibres.tsx
+│   │   │   │   │       │       └── fiche-access-bulk-editor.modal.tsx
 │   │   │   │   │       ├── Referentiels
 │   │   │   │   │       │   ├── DownloadScore
 │   │   │   │   │       │   │   ├── download-score.button.tsx
@@ -907,11 +899,20 @@
 │   │   │   │   │   │   │   │   │   ├── fiches-list.cell-date-fin.tsx
 │   │   │   │   │   │   │   │   │   ├── fiches-list.cell-pilotes.tsx
 │   │   │   │   │   │   │   │   │   ├── fiches-list.cell-plans.tsx
-│   │   │   │   │   │   │   │   │   └── fiches-list.cell-title.tsx
-│   │   │   │   │   │   │   │   └── fiches-list.table.tsx
+│   │   │   │   │   │   │   │   │   ├── fiches-list.cell-title.tsx
+│   │   │   │   │   │   │   │   │   ├── fiches-list.priorite.cell.tsx
+│   │   │   │   │   │   │   │   │   └── fiches-list.statut.cell.tsx
+│   │   │   │   │   │   │   │   ├── fiches-list.table.tsx
+│   │   │   │   │   │   │   │   └── generic-cells
+│   │   │   │   │   │   │   │       ├── action.date.generic-cell.tsx
+│   │   │   │   │   │   │   │       ├── action.pilotes.generic-cell.tsx
+│   │   │   │   │   │   │   │       ├── action.priorite.generic-cell.tsx
+│   │   │   │   │   │   │   │       ├── action.statut.generic-cell.tsx
+│   │   │   │   │   │   │   │       └── types.ts
 │   │   │   │   │   │   │   ├── fiches-list.tsx
 │   │   │   │   │   │   │   ├── filter-badges.tsx
-│   │   │   │   │   │   │   └── header-fiche-list.tsx
+│   │   │   │   │   │   │   ├── header-fiche-list.tsx
+│   │   │   │   │   │   │   └── use-action-default-table-view.ts
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-bulk-fiches-edit.ts
 │   │   │   │   │   │   │   └── use-list-fiches.ts
@@ -922,8 +923,8 @@
 │   │   │   │   │   │   │   ├── count-active-fiche-filters.ts
 │   │   │   │   │   │   │   ├── fiche-action-filters-context.tsx
 │   │   │   │   │   │   │   ├── filter-converter.ts
-│   │   │   │   │   │   │   ├── filters-menu.button.tsx
 │   │   │   │   │   │   │   ├── filters-search-parameters-mapper.ts
+│   │   │   │   │   │   │   ├── filters.button-menu.tsx
 │   │   │   │   │   │   │   ├── format-to-printable-filters
 │   │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   │   ├── create-date-filter-label.test.ts
@@ -946,7 +947,6 @@
 │   │   │   │   │   │   └── toutes-les-fiches.view.tsx
 │   │   │   │   │   ├── share-fiche
 │   │   │   │   │   │   ├── fiche-share-bulk-editor.form-section.tsx
-│   │   │   │   │   │   ├── fiche-share-editor.form-section.tsx
 │   │   │   │   │   │   ├── fiche-share-info.tsx
 │   │   │   │   │   │   ├── fiche-share-properties.dto.ts
 │   │   │   │   │   │   ├── multiple-collectivite.selector.tsx
@@ -954,6 +954,7 @@
 │   │   │   │   │   │   ├── share-fiche.utils.ts
 │   │   │   │   │   │   ├── shared-fiche-linked-resources.alert.tsx
 │   │   │   │   │   │   ├── shared-fiche-update.alert.tsx
+│   │   │   │   │   │   ├── use-can-edit-action.ts
 │   │   │   │   │   │   └── use-share-fiche-enabled.tsx
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── delete-fiche.modal.tsx
@@ -961,19 +962,17 @@
 │   │   │   │   │   │   └── fiche-action-plans.utils.ts
 │   │   │   │   │   ├── show-fiche
 │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   ├── MoneyPicto.tsx
 │   │   │   │   │   │   │   ├── base-update-fiche.modal.tsx
 │   │   │   │   │   │   │   ├── completion.badge.tsx
-│   │   │   │   │   │   │   ├── priority.badge.tsx
-│   │   │   │   │   │   │   └── status.badge.tsx
+│   │   │   │   │   │   │   ├── fiche-priorite.badge.tsx
+│   │   │   │   │   │   │   └── fiche-statut.badge.tsx
 │   │   │   │   │   │   ├── content
 │   │   │   │   │   │   │   ├── actions-liees
 │   │   │   │   │   │   │   │   ├── actions-liees-view-switcher.tsx
 │   │   │   │   │   │   │   │   ├── actions-liees.view.tsx
 │   │   │   │   │   │   │   │   ├── card
 │   │   │   │   │   │   │   │   │   ├── fiche-action.card.tsx
-│   │   │   │   │   │   │   │   │   ├── fiche-action.footer.tsx
-│   │   │   │   │   │   │   │   │   └── fiche-action.skeleton.tsx
+│   │   │   │   │   │   │   │   │   └── fiche-action.footer.tsx
 │   │   │   │   │   │   │   │   ├── fiche.picto.tsx
 │   │   │   │   │   │   │   │   └── side-menu
 │   │   │   │   │   │   │   │       ├── fiches-selector.grid.tsx
@@ -986,15 +985,10 @@
 │   │   │   │   │   │   │   │   │   └── labels.ts
 │   │   │   │   │   │   │   │   ├── description
 │   │   │   │   │   │   │   │   │   ├── description-schema.ts
-│   │   │   │   │   │   │   │   │   ├── impact
-│   │   │   │   │   │   │   │   │   │   ├── FicheActionImpact.tsx
-│   │   │   │   │   │   │   │   │   │   ├── ModaleActionImpact.tsx
-│   │   │   │   │   │   │   │   │   │   └── useActionImpact.ts
 │   │   │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   │   │   └── labels.tsx
 │   │   │   │   │   │   │   │   ├── details.view.tsx
 │   │   │   │   │   │   │   │   ├── editable-item.tsx
-│   │   │   │   │   │   │   │   ├── field-labels.utils.ts
 │   │   │   │   │   │   │   │   ├── form-section.tsx
 │   │   │   │   │   │   │   │   └── planning
 │   │   │   │   │   │   │   │       ├── index.tsx
@@ -1013,7 +1007,6 @@
 │   │   │   │   │   │   │   │       ├── indicateurs-selector.grid.tsx
 │   │   │   │   │   │   │   │       └── link-indicateur.view.tsx
 │   │   │   │   │   │   │   ├── mesures-liees
-│   │   │   │   │   │   │   │   ├── mesures-liees.list.tsx
 │   │   │   │   │   │   │   │   ├── mesures-liees.modal.tsx
 │   │   │   │   │   │   │   │   └── mesures-liees.view.tsx
 │   │   │   │   │   │   │   ├── moyens
@@ -1028,7 +1021,6 @@
 │   │   │   │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   │   │   │   ├── summary-table
 │   │   │   │   │   │   │   │   │   │   └── index.tsx
-│   │   │   │   │   │   │   │   │   ├── types.ts
 │   │   │   │   │   │   │   │   │   └── use-budget-form.ts
 │   │   │   │   │   │   │   │   ├── budget.content.tsx
 │   │   │   │   │   │   │   │   ├── budget.tsx
@@ -1062,8 +1054,7 @@
 │   │   │   │   │   │   │   │   ├── note.year.cell.tsx
 │   │   │   │   │   │   │   │   ├── notes.picto.tsx
 │   │   │   │   │   │   │   │   ├── notes.table.tsx
-│   │   │   │   │   │   │   │   ├── notes.view.tsx
-│   │   │   │   │   │   │   │   └── notification.picto.tsx
+│   │   │   │   │   │   │   │   └── notes.view.tsx
 │   │   │   │   │   │   │   ├── services-widget
 │   │   │   │   │   │   │   │   └── ServicesWidgetTab.tsx
 │   │   │   │   │   │   │   ├── side-panel.config.tsx
@@ -1086,13 +1077,10 @@
 │   │   │   │   │   │   │   │   └── use-fiche-sous-actions.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
-│   │   │   │   │   │   │   ├── use-delete-fiche.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
-│   │   │   │   │   │   │   ├── useFicheActionImpactId.ts
 │   │   │   │   │   │   │   ├── useFichesActionLiees.ts
-│   │   │   │   │   │   │   ├── usePlanActionProfondeur.tsx
-│   │   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   │   │   └── usePlanActionProfondeur.tsx
 │   │   │   │   │   │   ├── fiche.view.tsx
 │   │   │   │   │   │   ├── header
 │   │   │   │   │   │   │   ├── actions
@@ -1139,16 +1127,10 @@
 │   │   │   │   │   │   │       └── status.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── share-fiche
-│   │   │   │   │   │       ├── fiche-share-bulk-editor.form-section.tsx
 │   │   │   │   │   │       ├── fiche-share-editor.form-section.tsx
 │   │   │   │   │   │       ├── fiche-share-info.tsx
-│   │   │   │   │   │       ├── fiche-share-properties.dto.ts
-│   │   │   │   │   │       ├── multiple-collectivite.selector.tsx
-│   │   │   │   │   │       ├── remove-sharing.modal.tsx
 │   │   │   │   │   │       ├── share-fiche.utils.ts
-│   │   │   │   │   │       ├── shared-fiche-linked-resources.alert.tsx
-│   │   │   │   │   │       ├── shared-fiche-update.alert.tsx
-│   │   │   │   │   │       └── use-share-fiche-enabled.tsx
+│   │   │   │   │   │       └── shared-fiche-linked-resources.alert.tsx
 │   │   │   │   │   ├── update-fiche
 │   │   │   │   │   │   └── data
 │   │   │   │   │   │       ├── use-delete-budgets.ts
@@ -1217,21 +1199,14 @@
 │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   │   ├── use-get-axe.ts
-│   │   │   │   │   │   │   ├── use-get-plan-budget.ts
 │   │   │   │   │   │   │   ├── use-get-plan.ts
 │   │   │   │   │   │   │   ├── use-list-axe-indicateurs.ts
 │   │   │   │   │   │   │   ├── use-update-axe.ts
 │   │   │   │   │   │   │   └── use-update-plan.ts
 │   │   │   │   │   │   ├── empty-plan.view.tsx
 │   │   │   │   │   │   ├── filters
-│   │   │   │   │   │   │   ├── Menu
-│   │   │   │   │   │   │   │   ├── Priorites.tsx
-│   │   │   │   │   │   │   │   ├── Statuts.tsx
-│   │   │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   │   │   ├── priorites.dropdown.tsx
-│   │   │   │   │   │   │   │   └── status.dropdown.tsx
 │   │   │   │   │   │   │   ├── filtered-results.tsx
-│   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   ├── filters.button-menu.tsx
 │   │   │   │   │   │   │   └── plan-filters.context.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── plan-actions.button-props.tsx
@@ -1332,7 +1307,6 @@
 │   │   │   │   │   ├── action-label.constants.ts
 │   │   │   │   │   ├── action-personnalisations
 │   │   │   │   │   │   └── ActionPersonnalisationInfo.tsx
-│   │   │   │   │   ├── action-preuve.panel.lazy.tsx
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
 │   │   │   │   │   ├── action-preuve.panel.tsx
 │   │   │   │   │   ├── action-statut
@@ -1355,13 +1329,11 @@
 │   │   │   │   │   │   ├── action-comment.empty-img.tsx
 │   │   │   │   │   │   ├── action-comments-filters.constants.tsx
 │   │   │   │   │   │   ├── action-comments-filters.tsx
-│   │   │   │   │   │   ├── action-comments-header.input.tsx
 │   │   │   │   │   │   ├── action-comments-panel.header.tsx
 │   │   │   │   │   │   ├── action-comments-side-panel-content.tsx
 │   │   │   │   │   │   ├── action-comments-tab.header.tsx
 │   │   │   │   │   │   ├── action-comments.discussion.tsx
 │   │   │   │   │   │   ├── action-comments.feed.tsx
-│   │   │   │   │   │   ├── action-comments.input.tsx
 │   │   │   │   │   │   ├── action-comments.item-edit.tsx
 │   │   │   │   │   │   ├── action-comments.item.tsx
 │   │   │   │   │   │   ├── action-comments.items-list.tsx
@@ -1373,7 +1345,6 @@
 │   │   │   │   │   │   │   └── action-comments-helper.ts
 │   │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   │   ├── use-add-discussion.ts
-│   │   │   │   │   │   │   ├── use-comment-panel.tsx
 │   │   │   │   │   │   │   ├── use-delete-discussion-message.ts
 │   │   │   │   │   │   │   ├── use-list-action-comments.ts
 │   │   │   │   │   │   │   ├── use-list-comments-grouped-by-action-id.ts
@@ -1386,7 +1357,6 @@
 │   │   │   │   │   │   └── sub-action.description.tsx
 │   │   │   │   │   ├── use-get-action-ancestors.tsx
 │   │   │   │   │   ├── use-get-action-children.tsx
-│   │   │   │   │   ├── use-get-action-with-descendants.tsx
 │   │   │   │   │   ├── use-get-action.tsx
 │   │   │   │   │   ├── use-list-actions-grouped-by-id.tsx
 │   │   │   │   │   ├── use-list-actions.ts
@@ -1397,7 +1367,6 @@
 │   │   │   │   │   ├── audit-badge-status
 │   │   │   │   │   │   ├── get-viewer-role.spec.ts
 │   │   │   │   │   │   ├── get-viewer-role.ts
-│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.spec.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
 │   │   │   │   │   │   └── types.ts
@@ -1576,7 +1545,6 @@
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel.table
 │   │   │   │   │   ├── referentiel-table.categorie.cell.tsx
-│   │   │   │   │   ├── referentiel-table.commentaires.cell.tsx
 │   │   │   │   │   ├── referentiel-table.comments.cell.tsx
 │   │   │   │   │   ├── referentiel-table.description.cell.tsx
 │   │   │   │   │   ├── referentiel-table.documents.cell.tsx
@@ -1585,14 +1553,12 @@
 │   │   │   │   │   ├── referentiel-table.filters.form.tsx
 │   │   │   │   │   ├── referentiel-table.filters.utils.ts
 │   │   │   │   │   ├── referentiel-table.header-filters.tsx
-│   │   │   │   │   ├── referentiel-table.notification.cell.tsx
 │   │   │   │   │   ├── referentiel-table.personnes-pilotes.cell.tsx
 │   │   │   │   │   ├── referentiel-table.points.cell.tsx
 │   │   │   │   │   ├── referentiel-table.progression.cell.tsx
 │   │   │   │   │   ├── referentiel-table.score-ranges.ts
 │   │   │   │   │   ├── referentiel-table.services-pilotes.cell.tsx
 │   │   │   │   │   ├── referentiel-table.statut-detaille.cell.tsx
-│   │   │   │   │   ├── referentiel-table.statut-or-progression.cell.tsx
 │   │   │   │   │   ├── referentiel-table.statut.cell.tsx
 │   │   │   │   │   ├── referentiel-table.title.cell.tsx
 │   │   │   │   │   ├── referentiel-table.tsx
@@ -1709,7 +1675,6 @@
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
 │   │   │   │   │   ├── MesuresReferentielsDropdown
 │   │   │   │   │   │   └── MesuresReferentielsDropdown.tsx
-│   │   │   │   │   ├── PeriodeDropdown.tsx
 │   │   │   │   │   ├── PlansActionDropdown.tsx
 │   │   │   │   │   ├── ficheAction
 │   │   │   │   │   │   ├── CiblesDropdown
@@ -1720,8 +1685,6 @@
 │   │   │   │   │   │   ├── MiseEnOeuvreDropdown
 │   │   │   │   │   │   │   ├── MiseEnOeuvreDropdown.tsx
 │   │   │   │   │   │   │   └── useMiseEnOeuvre.ts
-│   │   │   │   │   │   ├── ParticipationCitoyenneDropdown
-│   │   │   │   │   │   │   └── ParticipationCitoyenneDropdown.tsx
 │   │   │   │   │   │   ├── notes
 │   │   │   │   │   │   │   └── note-years.dropdown.tsx
 │   │   │   │   │   │   ├── priorites
@@ -1737,9 +1700,6 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   └── listesStatiques.ts
 │   │   │   │   ├── icons
-│   │   │   │   │   ├── IconDoubleCheck.tsx
-│   │   │   │   │   ├── IconDrag.tsx
-│   │   │   │   │   ├── IconFolderAddLine.tsx
 │   │   │   │   │   └── IconThreeDotHorizontal.tsx
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── HeaderSticky.tsx
@@ -1766,11 +1726,11 @@
 │   │   │   │   ├── lists
 │   │   │   │   │   ├── DEPRECATED_filter-badges
 │   │   │   │   │   │   ├── DEPRECATED_filter-badges.tsx
-│   │   │   │   │   │   ├── FiltersMenuButton.tsx
 │   │   │   │   │   │   ├── delete-filters.button.tsx
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── use-filters-to-badges.ts
-│   │   │   │   │   └── ListWithTooltip.tsx
+│   │   │   │   │   ├── ListWithTooltip.tsx
+│   │   │   │   │   └── filters.generic-button-menu.tsx
 │   │   │   │   ├── logo
 │   │   │   │   │   ├── logoTerritoireEngage.png
 │   │   │   │   │   └── logoTerritoireEngage_big.png
@@ -1782,28 +1742,19 @@
 │   │   │   │   ├── pictogrammes
 │   │   │   │   │   ├── ActionPicto.tsx
 │   │   │   │   │   ├── PictoAction.tsx
-│   │   │   │   │   ├── PictoBook.tsx
-│   │   │   │   │   ├── PictoCalendar.tsx
 │   │   │   │   │   ├── PictoCollectivite.tsx
-│   │   │   │   │   ├── PictoCommunity.tsx
 │   │   │   │   │   ├── PictoDashboard.tsx
 │   │   │   │   │   ├── PictoDataViz.tsx
 │   │   │   │   │   ├── PictoDocument.tsx
 │   │   │   │   │   ├── PictoEtatDesLieux.tsx
 │   │   │   │   │   ├── PictoEtatDesLieuxMonochrome.tsx
 │   │   │   │   │   ├── PictoExpert.tsx
-│   │   │   │   │   ├── PictoIndicateur.tsx
-│   │   │   │   │   ├── PictoIndicateurComplet.tsx
 │   │   │   │   │   ├── PictoIndicateurVide.tsx
 │   │   │   │   │   ├── PictoIndicateurs.tsx
-│   │   │   │   │   ├── PictoInformation.tsx
-│   │   │   │   │   ├── PictoLeaf.tsx
 │   │   │   │   │   ├── PictoPanierActions.tsx
 │   │   │   │   │   ├── PictoPlansAction.tsx
 │   │   │   │   │   └── PictoTrajectoire.tsx
 │   │   │   │   └── shared
-│   │   │   │       ├── Badge
-│   │   │   │       │   └── BadgeACompleter.tsx
 │   │   │   │       ├── Kbd
 │   │   │   │       │   ├── Kbd.css
 │   │   │   │       │   └── index.tsx
@@ -1811,10 +1762,6 @@
 │   │   │   │       ├── floating-ui
 │   │   │   │       │   ├── DropdownFloater.tsx
 │   │   │   │       │   └── ToastFloater.tsx
-│   │   │   │       ├── form
-│   │   │   │       │   ├── Textarea.tsx
-│   │   │   │       │   ├── TextareaControlled.tsx
-│   │   │   │       │   └── useAutoSizeTextarea.ts
 │   │   │   │       └── select
 │   │   │   │           ├── MultiSelectDropdown.stories.tsx
 │   │   │   │           ├── MultiSelectDropdown.tsx
@@ -1857,7 +1804,6 @@
 │   │   │       │   ├── use-get-banner-info.ts
 │   │   │       │   └── use-upsert-banner-info.ts
 │   │   │       ├── convert-file-to-base64.ts
-│   │   │       ├── diff.ts
 │   │   │       ├── error
 │   │   │       │   ├── error.card.tsx
 │   │   │       │   └── error.page.tsx
@@ -1867,8 +1813,6 @@
 │   │   │       ├── get-filename-from-response.test.ts
 │   │   │       ├── get-filename-from-response.ts
 │   │   │       ├── get-years-options.ts
-│   │   │       ├── indexBy.ts
-│   │   │       ├── lazy.ts
 │   │   │       ├── naturalSort.ts
 │   │   │       ├── nps
 │   │   │       │   ├── nps-tracker.tsx
@@ -1893,7 +1837,6 @@
 │   │   │       ├── use-get-url-hash.ts
 │   │   │       ├── useDownloadFile.ts
 │   │   │       ├── useIntersectionObserver.ts
-│   │   │       ├── useWindowSize.ts
 │   │   │       └── waitForMarkup.ts
 │   │   ├── svgr.d.ts
 │   │   ├── tailwind.config.ts
@@ -3546,7 +3489,6 @@
 │   │   │   │   ├── AccueilHeroSection.tsx
 │   │   │   │   ├── BeneficesPlateforme.tsx
 │   │   │   │   ├── ConstructionPlateforme.tsx
-│   │   │   │   ├── DemandeContact.tsx
 │   │   │   │   ├── HomeCTA.tsx
 │   │   │   │   ├── HomeCTA2.tsx
 │   │   │   │   ├── NosServices.tsx
@@ -3604,7 +3546,6 @@
 │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── page.tsx
-│   │   │   │   ├── types.ts
 │   │   │   │   ├── useConseillersCount.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── ressources
@@ -3645,16 +3586,9 @@
 │   │   │   │   ├── style.css
 │   │   │   │   └── useCarteCollectivitesEngagees.ts
 │   │   │   ├── charts
-│   │   │   │   ├── BarChart.tsx
-│   │   │   │   ├── BarChartTooltip.tsx
-│   │   │   │   ├── ChartWithLegend.tsx
 │   │   │   │   ├── DonutChart.tsx
 │   │   │   │   ├── DonutChartWithLegend.tsx
-│   │   │   │   ├── LineChart.tsx
-│   │   │   │   ├── LineChartTooltip.tsx
-│   │   │   │   ├── TooltipColor.tsx
-│   │   │   │   ├── chartsTheme.tsx
-│   │   │   │   └── utils.ts
+│   │   │   │   └── chartsTheme.tsx
 │   │   │   ├── floating-ui
 │   │   │   │   └── ToastFloater.tsx
 │   │   │   ├── galleries
@@ -3671,8 +3605,6 @@
 │   │   │   ├── layout
 │   │   │   │   ├── Footer.tsx
 │   │   │   │   └── Header.tsx
-│   │   │   ├── logo
-│   │   │   │   └── LogoRepubliqueFrancaise.tsx
 │   │   │   ├── markdown
 │   │   │   │   └── Markdown.tsx
 │   │   │   ├── react-icons
@@ -3932,11 +3864,7 @@
 │   │   │   │   └── ministeres-te.svg
 │   │   │   ├── pictogrammes
 │   │   │   │   ├── AstronautCat.tsx
-│   │   │   │   ├── CalendarPicto.tsx
-│   │   │   │   ├── CodingPicto.tsx
 │   │   │   │   ├── CommunityPicto.tsx
-│   │   │   │   ├── DocumentPicto.tsx
-│   │   │   │   ├── InformationPicto.tsx
 │   │   │   │   ├── PictoBackground.tsx
 │   │   │   │   ├── PictoWithBackground.tsx
 │   │   │   │   ├── code.svg
@@ -3978,7 +3906,6 @@
 │       ├── .env.default
 │       ├── Earthfile
 │       ├── eslint.config.mjs
-│       ├── jest.config.ts
 │       ├── nest-cli.json
 │       ├── package.json
 │       ├── project.json
@@ -4024,12 +3951,9 @@
 │       │   │   │   ├── base-crisp.response.ts
 │       │   │   │   ├── crisp-event.request.ts
 │       │   │   │   ├── crisp-message-received-event-data.dto.ts
-│       │   │   │   ├── crisp-session-event-data.dto.ts
 │       │   │   │   ├── get-crisp-operator.response.ts
 │       │   │   │   ├── get-crisp-session-messages.response.ts
-│       │   │   │   ├── get-crisp-session.response.ts
-│       │   │   │   └── samples
-│       │   │   │       └── crisp-message-received-event.sample.ts
+│       │   │   │   └── get-crisp-session.response.ts
 │       │   │   └── services
 │       │   │       └── crisp.service.ts
 │       │   ├── cron
@@ -4082,9 +4006,7 @@
 │       │   │   ├── controllers
 │       │   │   │   └── sentry-notification.controller.ts
 │       │   │   ├── models
-│       │   │   │   ├── SentryEventWebhookPayload.ts
-│       │   │   │   └── samples
-│       │   │   │       └── sampleSentryEventWebhookPayload.ts
+│       │   │   │   └── SentryEventWebhookPayload.ts
 │       │   │   ├── sentry-notification.module.ts
 │       │   │   └── services
 │       │   │       └── sentry-notification.service.ts
@@ -6246,7 +6168,6 @@
 │   │   │   │       ├── plan-type.schema.ts
 │   │   │   │       └── plan.schema.ts
 │   │   │   ├── referentiels
-│   │   │   │   ├── action-with-score-with-definition.schema.ts
 │   │   │   │   ├── action-with-score.schema.ts
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── action-categorie.enum.schema.ts
@@ -6401,38 +6322,27 @@
 │   │   │   │   ├── pdf-visual-compare.ts
 │   │   │   │   └── render-pdf-node.spec.tsx
 │   │   │   ├── assets
-│   │   │   │   ├── icons
-│   │   │   │   │   ├── ArrowRightIcon.tsx
-│   │   │   │   │   ├── BriefcaseIcon.tsx
-│   │   │   │   │   ├── Calendar2Icon.tsx
-│   │   │   │   │   ├── CalendarIcon.tsx
-│   │   │   │   │   ├── CalendarScheduleIcon.tsx
-│   │   │   │   │   ├── DiscussIcon.tsx
-│   │   │   │   │   ├── DownloadIcon.tsx
-│   │   │   │   │   ├── EditIcon.tsx
-│   │   │   │   │   ├── FileAddIcon.tsx
-│   │   │   │   │   ├── FileIcon.tsx
-│   │   │   │   │   ├── Focus3Icon.tsx
-│   │   │   │   │   ├── GovernmentIcon.tsx
-│   │   │   │   │   ├── Icon.tsx
-│   │   │   │   │   ├── LeafIcon.tsx
-│   │   │   │   │   ├── LinkIcon.tsx
-│   │   │   │   │   ├── LoopLeftIcon.tsx
-│   │   │   │   │   ├── ShieldUserIcon.tsx
-│   │   │   │   │   ├── TimeIcon.tsx
-│   │   │   │   │   ├── UserCommunityIcon.tsx
-│   │   │   │   │   ├── UserIcon.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── picto
-│   │   │   │       ├── CalendarPicto.tsx
-│   │   │   │       ├── CiblePicto.tsx
-│   │   │   │       ├── CitoyenPicto.tsx
-│   │   │   │       ├── CollaborateurPicto.tsx
-│   │   │   │       ├── EluPicto.tsx
-│   │   │   │       ├── PartenairePicto.tsx
-│   │   │   │       ├── PersonnePilotePicto.tsx
-│   │   │   │       ├── ServicePilotePicto.tsx
-│   │   │   │       ├── StructurePilotePicto.tsx
+│   │   │   │   └── icons
+│   │   │   │       ├── ArrowRightIcon.tsx
+│   │   │   │       ├── BriefcaseIcon.tsx
+│   │   │   │       ├── Calendar2Icon.tsx
+│   │   │   │       ├── CalendarIcon.tsx
+│   │   │   │       ├── CalendarScheduleIcon.tsx
+│   │   │   │       ├── DiscussIcon.tsx
+│   │   │   │       ├── DownloadIcon.tsx
+│   │   │   │       ├── EditIcon.tsx
+│   │   │   │       ├── FileAddIcon.tsx
+│   │   │   │       ├── FileIcon.tsx
+│   │   │   │       ├── Focus3Icon.tsx
+│   │   │   │       ├── GovernmentIcon.tsx
+│   │   │   │       ├── Icon.tsx
+│   │   │   │       ├── LeafIcon.tsx
+│   │   │   │       ├── LinkIcon.tsx
+│   │   │   │       ├── LoopLeftIcon.tsx
+│   │   │   │       ├── ShieldUserIcon.tsx
+│   │   │   │       ├── TimeIcon.tsx
+│   │   │   │       ├── UserCommunityIcon.tsx
+│   │   │   │       ├── UserIcon.tsx
 │   │   │   │       └── index.ts
 │   │   │   ├── fiche-action
 │   │   │   │   ├── ActionsLiees.tsx
@@ -6662,6 +6572,7 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   └── validateInputNumLength.ts
 │       │   │   ├── Modal
+│       │   │   │   ├── Modal.behavior.test.tsx
 │       │   │   │   ├── Modal.stories.tsx
 │       │   │   │   ├── Modal.tsx
 │       │   │   │   ├── ModalFooter.stories.tsx
@@ -6771,8 +6682,7 @@
 │       │   │       ├── table.header-cell.tsx
 │       │   │       ├── table.loading.tsx
 │       │   │       ├── table.row.tsx
-│       │   │       ├── table.tsx
-│       │   │       └── types.tsx
+│       │   │       └── table.tsx
 │       │   ├── global.css
 │       │   ├── hooks
 │       │   │   ├── use-open-state.ts
@@ -6799,7 +6709,9 @@
 │       ├── tsconfig.json
 │       ├── tsconfig.lib.json
 │       ├── tsconfig.spec.json
-│       └── tsconfig.storybook.json
+│       ├── tsconfig.storybook.json
+│       ├── vitest.config.mts
+│       └── vitest.setup.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── sqitch.conf
@@ -7073,4 +6985,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1233 directories, 6040 files
+1222 directories, 5963 files
