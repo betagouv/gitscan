@@ -1,3 +1,43 @@
+# [2.248.0](https://github.com/SocialGouv/domifa/compare/v2.247.2...v2.248.0) (2026-05-26)
+
+
+### Bug Fixes
+
+* **backend:** fix unit tests ([596cd80](https://github.com/SocialGouv/domifa/commit/596cd8081f75d92cc5b143fed3dd0150c56f04c7))
+
+
+### Features
+
+* **backend:** add brevo, add whitelist ([d45e0af](https://github.com/SocialGouv/domifa/commit/d45e0af612f42264c0e01320b5b6cd7a19d99bb6))
+
+## [2.247.2](https://github.com/SocialGouv/domifa/compare/v2.247.1...v2.247.2) (2026-05-26)
+
+
+### Bug Fixes
+
+* **backend:** fix fingerptin ([779120c](https://github.com/SocialGouv/domifa/commit/779120c4b732470215cbe07f6da1b8d4cf58b31e))
+
+## [2.247.1](https://github.com/SocialGouv/domifa/compare/v2.247.0...v2.247.1) (2026-05-25)
+
+
+### Bug Fixes
+
+* **backend:** add logs ([3bf128c](https://github.com/SocialGouv/domifa/commit/3bf128cc6cb386405565a1e8d786d985170d5d86))
+
+# [2.247.0](https://github.com/SocialGouv/domifa/compare/v2.246.0...v2.247.0) (2026-05-25)
+
+
+### Bug Fixes
+
+* **backend:** add session read ([5b97319](https://github.com/SocialGouv/domifa/commit/5b97319c09875fe0d51879f0d346bcd2fe818a90))
+* **backend:** fix unit test ([854a13c](https://github.com/SocialGouv/domifa/commit/854a13cdeb4838cd6df14410b24dd9709025298c))
+* **backend:** fix uuid ([c258793](https://github.com/SocialGouv/domifa/commit/c2587936028c4f725e31ba07feac8fea3b4ce11a))
+
+
+### Features
+
+* **backend:** add logs to back ([e3fd81c](https://github.com/SocialGouv/domifa/commit/e3fd81ca73b9f591bd3705dbe49fa625d771dc00))
+
 # [2.246.0](https://github.com/SocialGouv/domifa/compare/v2.245.1...v2.246.0) (2026-05-22)
 
 

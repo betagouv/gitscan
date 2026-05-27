@@ -246,7 +246,9 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1779316279014-backfill-app-log-user-type.ts
+│   │   │   │   ├── 1779831941536-auto-migration.ts
+│   │   │   │   ├── 1779996279014-app-log-target-user-on-security-actions.ts
+│   │   │   │   ├── 1780000086400-backfill-app-log-security.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -381,6 +383,9 @@
 │   │   │   │   │   │   ├── ExpiredTokenTable.typeorm.ts
 │   │   │   │   │   │   ├── PublicStatsCacheTable.typeorm.ts
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── app-log-security
+│   │   │   │   │   │   ├── AppLogSecurityTable.typeorm.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── contact-support
 │   │   │   │   │   │   ├── ContactSupportTable.typeorm.ts
 │   │   │   │   │   │   └── index.ts
@@ -454,6 +459,9 @@
 │   │   │   │       │   ├── expiredTokenRepositiory.service.ts
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   └── publicStatsCache.service.ts
+│   │   │   │       ├── app-log-security
+│   │   │   │       │   ├── appLogSecurityRepository.service.ts
+│   │   │   │       │   └── index.ts
 │   │   │   │       ├── contact
 │   │   │   │       │   ├── contactSupportRepository.service.ts
 │   │   │   │       │   └── index.ts
@@ -555,11 +563,13 @@
 │   │   │   ├── instrument.ts
 │   │   │   ├── modules
 │   │   │   │   ├── app-logs
+│   │   │   │   │   ├── app-log-security.service.ts
 │   │   │   │   │   ├── app-logs.helpers.ts
 │   │   │   │   │   ├── app-logs.module.ts
 │   │   │   │   │   ├── app-logs.service.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── AppLog.type.ts
+│   │   │   │   │       ├── AppLogSecurity.type.ts
 │   │   │   │   │       ├── LogAction.type.ts
 │   │   │   │   │       ├── app-log-context.types.ts
 │   │   │   │   │       └── index.ts
@@ -658,6 +668,8 @@
 │   │   │   │   │   ├── constants
 │   │   │   │   │   │   └── STRUCTURE_LIGHT_ATTRIBUTES.const.ts
 │   │   │   │   │   ├── controllers
+│   │   │   │   │   │   ├── admin-security
+│   │   │   │   │   │   │   └── admin-security.controller.ts
 │   │   │   │   │   │   ├── admin-structures
 │   │   │   │   │   │   │   ├── admin-structures.controller.spec.ts
 │   │   │   │   │   │   │   └── admin-structures.controller.ts
@@ -680,11 +692,14 @@
 │   │   │   │   │   │       └── is-social-gouv-email.decorator.spec.ts
 │   │   │   │   │   ├── dto
 │   │   │   │   │   │   ├── MetabaseStats.dto.ts
+│   │   │   │   │   │   ├── brevo-email-events-query.dto.ts
 │   │   │   │   │   │   ├── elevate-user-role.dto.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── patch-user-supervisor.dto.ts
 │   │   │   │   │   │   ├── register-user-structure-admin.dto.ts
 │   │   │   │   │   │   ├── register-user-supervisor.dto.ts
+│   │   │   │   │   │   ├── suspicious-activity-log.dto.ts
+│   │   │   │   │   │   ├── suspicious-activity-query.dto.ts
 │   │   │   │   │   │   ├── tests
 │   │   │   │   │   │   │   └── register-user-supervisor.dto.spec.ts
 │   │   │   │   │   │   ├── unblock-user.dto.ts
@@ -692,6 +707,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── portail-admin.module.ts
 │   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── admin-security
+│   │   │   │   │   │   │   └── admin-security.service.ts
 │   │   │   │   │   │   ├── admin-structures.service.ts
 │   │   │   │   │   │   ├── admin-superivor-users
 │   │   │   │   │   │   │   ├── admin-superivor-users.service.spec.ts
@@ -754,6 +771,8 @@
 │   │   │   │   │       ├── PortailUsagerUsager.type.ts
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── security-monitoring
+│   │   │   │   │   ├── constants
+│   │   │   │   │   │   └── SECURITY_LOG_ACTIONS.const.ts
 │   │   │   │   │   ├── security-monitoring.module.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── security-alert-email.service.ts
@@ -1155,6 +1174,11 @@
 │   │   │   ├── app-logs
 │   │   │   │   ├── LogAction.type.ts
 │   │   │   │   ├── LogActionLabels.const.ts
+│   │   │   │   ├── SecurityLogAction.type.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── brevo
+│   │   │   │   ├── BrevoContactStatus.type.ts
+│   │   │   │   ├── BrevoEmailEvent.type.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── import
 │   │   │   │   ├── constants
@@ -1465,6 +1489,7 @@
 │   │   │   │       └── index.ts
 │   │   │   └── users
 │   │   │       ├── common-user
+│   │   │       │   ├── StructureSessionRecord.type.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── common-user.interface.ts
@@ -1692,6 +1717,9 @@
 │   │   │   │   │   │   │   │   └── home.component.ts
 │   │   │   │   │   │   │   ├── navbar
 │   │   │   │   │   │   │   │   ├── fragments
+│   │   │   │   │   │   │   │   │   ├── alerte-2fa
+│   │   │   │   │   │   │   │   │   │   ├── alerte-2fa.component.html
+│   │   │   │   │   │   │   │   │   │   └── alerte-2fa.component.ts
 │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.html
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.spec.ts
@@ -2771,12 +2799,17 @@
 │   │   │   │   │   │   │   ├── structure-user-activity
 │   │   │   │   │   │   │   │   ├── structure-user-activity.component.html
 │   │   │   │   │   │   │   │   └── structure-user-activity.component.ts
+│   │   │   │   │   │   │   ├── structure-user-brevo
+│   │   │   │   │   │   │   │   ├── structure-user-brevo.component.html
+│   │   │   │   │   │   │   │   └── structure-user-brevo.component.ts
 │   │   │   │   │   │   │   ├── structure-user-detail-container
 │   │   │   │   │   │   │   │   ├── structure-user-detail-container.component.html
 │   │   │   │   │   │   │   │   └── structure-user-detail-container.component.ts
 │   │   │   │   │   │   │   ├── structure-user-info
 │   │   │   │   │   │   │   │   ├── structure-user-info.component.html
 │   │   │   │   │   │   │   │   └── structure-user-info.component.ts
+│   │   │   │   │   │   │   ├── structure-user-sessions
+│   │   │   │   │   │   │   │   └── structure-user-sessions.component.ts
 │   │   │   │   │   │   │   └── structure-users-list
 │   │   │   │   │   │   │       ├── structure-users-list.component.html
 │   │   │   │   │   │   │       └── structure-users-list.component.ts
@@ -2796,12 +2829,20 @@
 │   │   │   │   │   │   │   ├── supervisor-activity
 │   │   │   │   │   │   │   │   ├── supervisor-activity.component.html
 │   │   │   │   │   │   │   │   └── supervisor-activity.component.ts
+│   │   │   │   │   │   │   ├── supervisor-brevo
+│   │   │   │   │   │   │   │   ├── supervisor-brevo.component.html
+│   │   │   │   │   │   │   │   └── supervisor-brevo.component.ts
 │   │   │   │   │   │   │   ├── supervisor-detail-container
 │   │   │   │   │   │   │   │   ├── supervisor-detail-container.component.html
 │   │   │   │   │   │   │   │   └── supervisor-detail-container.component.ts
 │   │   │   │   │   │   │   ├── supervisor-info
 │   │   │   │   │   │   │   │   ├── supervisor-info.component.html
 │   │   │   │   │   │   │   │   └── supervisor-info.component.ts
+│   │   │   │   │   │   │   ├── supervisor-security-logs
+│   │   │   │   │   │   │   │   ├── supervisor-security-logs.component.html
+│   │   │   │   │   │   │   │   └── supervisor-security-logs.component.ts
+│   │   │   │   │   │   │   ├── supervisor-sessions
+│   │   │   │   │   │   │   │   └── supervisor-sessions.component.ts
 │   │   │   │   │   │   │   └── user-supervisor-list
 │   │   │   │   │   │   │       ├── supervisor-list.component.html
 │   │   │   │   │   │   │       ├── supervisor-list.component.spec.ts
@@ -2812,7 +2853,6 @@
 │   │   │   │   │   │   │   ├── manage-users.service.spec.ts
 │   │   │   │   │   │   │   └── manage-users.service.ts
 │   │   │   │   │   │   └── types
-│   │   │   │   │   │       ├── log-action-labels.ts
 │   │   │   │   │   │       ├── log-context-formatter.ts
 │   │   │   │   │   │       └── user-activity-log.ts
 │   │   │   │   │   ├── otp
@@ -2870,6 +2910,15 @@
 │   │   │   │   │   │   │   ├── user-activity-tab
 │   │   │   │   │   │   │   │   ├── user-activity-tab.component.html
 │   │   │   │   │   │   │   │   └── user-activity-tab.component.ts
+│   │   │   │   │   │   │   ├── user-brevo-tab
+│   │   │   │   │   │   │   │   ├── user-brevo-tab.component.html
+│   │   │   │   │   │   │   │   ├── user-brevo-tab.component.ts
+│   │   │   │   │   │   │   │   ├── user-brevo-tab.constants.ts
+│   │   │   │   │   │   │   │   └── user-brevo-tab.types.ts
+│   │   │   │   │   │   │   ├── user-sessions-tab
+│   │   │   │   │   │   │   │   ├── user-sessions-tab.component.html
+│   │   │   │   │   │   │   │   ├── user-sessions-tab.component.ts
+│   │   │   │   │   │   │   │   └── user-sessions.types.ts
 │   │   │   │   │   │   │   └── users-table
 │   │   │   │   │   │   │       ├── users-table.component.html
 │   │   │   │   │   │   │       ├── users-table.component.ts
@@ -2933,40 +2982,68 @@
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── StructureListForStats.type.ts
 │   │   │   │   │   │       └── index.ts
-│   │   │   │   │   └── structure
+│   │   │   │   │   ├── structure
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── admin-structure-container
+│   │   │   │   │   │   │   │   ├── admin-structure-container.component.css
+│   │   │   │   │   │   │   │   ├── admin-structure-container.component.html
+│   │   │   │   │   │   │   │   ├── admin-structure-container.component.spec.ts
+│   │   │   │   │   │   │   │   └── admin-structure-container.component.ts
+│   │   │   │   │   │   │   ├── register-user
+│   │   │   │   │   │   │   │   ├── register-user.component.html
+│   │   │   │   │   │   │   │   ├── register-user.component.spec.ts
+│   │   │   │   │   │   │   │   └── register-user.component.ts
+│   │   │   │   │   │   │   ├── structure-activity
+│   │   │   │   │   │   │   │   ├── structure-activity.component.html
+│   │   │   │   │   │   │   │   └── structure-activity.component.ts
+│   │   │   │   │   │   │   ├── structure-info
+│   │   │   │   │   │   │   │   ├── structure-info.component.css
+│   │   │   │   │   │   │   │   ├── structure-info.component.html
+│   │   │   │   │   │   │   │   ├── structure-info.component.spec.ts
+│   │   │   │   │   │   │   │   └── structure-info.component.ts
+│   │   │   │   │   │   │   ├── structure-security-logs
+│   │   │   │   │   │   │   │   ├── structure-security-logs.component.html
+│   │   │   │   │   │   │   │   └── structure-security-logs.component.ts
+│   │   │   │   │   │   │   ├── structure-sessions
+│   │   │   │   │   │   │   │   ├── structure-sessions.component.html
+│   │   │   │   │   │   │   │   └── structure-sessions.component.ts
+│   │   │   │   │   │   │   ├── structure-stats
+│   │   │   │   │   │   │   │   ├── structure-stats.component.css
+│   │   │   │   │   │   │   │   ├── structure-stats.component.html
+│   │   │   │   │   │   │   │   ├── structure-stats.component.spec.ts
+│   │   │   │   │   │   │   │   └── structure-stats.component.ts
+│   │   │   │   │   │   │   └── users
+│   │   │   │   │   │   │       ├── users.component.css
+│   │   │   │   │   │   │       ├── users.component.html
+│   │   │   │   │   │   │       ├── users.component.spec.ts
+│   │   │   │   │   │   │       └── users.component.ts
+│   │   │   │   │   │   ├── services
+│   │   │   │   │   │   │   ├── structure.service.spec.ts
+│   │   │   │   │   │   │   └── structure.service.ts
+│   │   │   │   │   │   ├── structure-routing.module.ts
+│   │   │   │   │   │   └── structure.module.ts
+│   │   │   │   │   └── suspicious-activity
 │   │   │   │   │       ├── components
-│   │   │   │   │       │   ├── admin-structure-container
-│   │   │   │   │       │   │   ├── admin-structure-container.component.css
-│   │   │   │   │       │   │   ├── admin-structure-container.component.html
-│   │   │   │   │       │   │   ├── admin-structure-container.component.spec.ts
-│   │   │   │   │       │   │   └── admin-structure-container.component.ts
-│   │   │   │   │       │   ├── register-user
-│   │   │   │   │       │   │   ├── register-user.component.html
-│   │   │   │   │       │   │   ├── register-user.component.spec.ts
-│   │   │   │   │       │   │   └── register-user.component.ts
-│   │   │   │   │       │   ├── structure-activity
-│   │   │   │   │       │   │   ├── structure-activity.component.html
-│   │   │   │   │       │   │   └── structure-activity.component.ts
-│   │   │   │   │       │   ├── structure-info
-│   │   │   │   │       │   │   ├── structure-info.component.css
-│   │   │   │   │       │   │   ├── structure-info.component.html
-│   │   │   │   │       │   │   ├── structure-info.component.spec.ts
-│   │   │   │   │       │   │   └── structure-info.component.ts
-│   │   │   │   │       │   ├── structure-stats
-│   │   │   │   │       │   │   ├── structure-stats.component.css
-│   │   │   │   │       │   │   ├── structure-stats.component.html
-│   │   │   │   │       │   │   ├── structure-stats.component.spec.ts
-│   │   │   │   │       │   │   └── structure-stats.component.ts
-│   │   │   │   │       │   └── users
-│   │   │   │   │       │       ├── users.component.css
-│   │   │   │   │       │       ├── users.component.html
-│   │   │   │   │       │       ├── users.component.spec.ts
-│   │   │   │   │       │       └── users.component.ts
+│   │   │   │   │       │   ├── sessions-history-table
+│   │   │   │   │       │   │   ├── sessions-history-table.component.html
+│   │   │   │   │       │   │   └── sessions-history-table.component.ts
+│   │   │   │   │       │   ├── suspicious-activity-filters
+│   │   │   │   │       │   │   ├── suspicious-activity-filters.component.html
+│   │   │   │   │       │   │   └── suspicious-activity-filters.component.ts
+│   │   │   │   │       │   ├── suspicious-activity-list
+│   │   │   │   │       │   │   ├── suspicious-activity-list.component.html
+│   │   │   │   │       │   │   └── suspicious-activity-list.component.ts
+│   │   │   │   │       │   └── suspicious-activity-user-detail
+│   │   │   │   │       │       ├── suspicious-activity-user-detail.component.html
+│   │   │   │   │       │       └── suspicious-activity-user-detail.component.ts
+│   │   │   │   │       ├── constants
+│   │   │   │   │       │   └── SUSPICIOUS_ACTIONS.const.ts
 │   │   │   │   │       ├── services
-│   │   │   │   │       │   ├── structure.service.spec.ts
-│   │   │   │   │       │   └── structure.service.ts
-│   │   │   │   │       ├── structure-routing.module.ts
-│   │   │   │   │       └── structure.module.ts
+│   │   │   │   │       │   └── suspicious-activity.service.ts
+│   │   │   │   │       ├── suspicious-activity-routing.module.ts
+│   │   │   │   │       ├── suspicious-activity.module.ts
+│   │   │   │   │       └── types
+│   │   │   │   │           └── suspicious-activity-log.ts
 │   │   │   │   └── shared
 │   │   │   │       ├── constants
 │   │   │   │       │   ├── MATOMO_INJECTORS.const.ts
@@ -3311,4 +3388,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-762 directories, 2551 files
+787 directories, 2603 files
