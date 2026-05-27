@@ -1,10 +1,13 @@
 ## Changelog : signalconso-website (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de l'expérience utilisateur lors de la sélection du pays. Une modification a également été apportée à l'endpoint des catégories pour supprimer une ancienne version.
+Cette mise à jour corrige un problème d'affichage sur la liste déroulante de sélection de pays, améliorant ainsi l'expérience utilisateur lors de la soumission d'un signalement.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant le combobox de sélection de pays. [#1123](https://github.com/betagouv/signalconso-website/pull/1123)
+- Correction du bug d'affichage de la liste déroulante de sélection de pays [#1123](https://github.com/betagouv/signalconso-website/pull/1123).
 
 ### Évolutions techniques
-- Suppression de l'ancienne version "v1" de l'endpoint des catégories. [#1121](https://github.com/betagouv/signalconso-website/pull/1121)
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Aucune autre modification n'a été apportée.
