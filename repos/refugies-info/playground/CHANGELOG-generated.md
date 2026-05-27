@@ -1,31 +1,32 @@
 ## Changelog : playground (30 derniers jours, au 2026-05-20)
 
 ### Résumé
-Ce mois-ci, les améliorations se sont concentrées sur l'amélioration de la gestion des documents, notamment en affinant le processus d'ingestion, en améliorant l'interface utilisateur pour la publication et la traduction, et en renforçant la robustesse de l'application. Des corrections de bugs et des optimisations de performance ont également été apportées pour une meilleure expérience utilisateur.
+Ce mois-ci, le projet a connu des améliorations significatives en termes de gestion des workflows documentaires, de performance et d'expérience utilisateur. Les principales évolutions concernent l'ajout d'indicateurs de conformité, l'amélioration de la gestion des publications, l'optimisation des recherches et la stabilisation de l'intégration avec l'IA pour la réécriture automatique. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une date d'arbitrage pour le suivi et le tri des documents [#233](https://github.com/refugies-info/playground/issues/233).
-- Affichage de la date de fin dans les tableaux de données. [#232](https://github.com/refugies-info/playground/issues/232)
-- Ajout du nombre de mots dans le tableau d'ingestion. [#230](https://github.com/refugies-info/playground/issues/230)
-- Possibilité d'activer/désactiver la génération automatique de métadonnées non conformes. [#229](https://github.com/refugies-info/playground/issues/229)
-- Ajout d'un indicateur de priorité "urgent" pour les traductions, avec un nouveau bouton et une colonne correspondante dans l'interface. [#221](https://github.com/refugies-info/playground/issues/221), [#219](https://github.com/refugies-info/playground/issues/219), [#218](https://github.com/refugies-info/playground/issues/218)
-- Amélioration de l'affichage des liens de publication avec un popover contenant les URLs. [#217](https://github.com/refugies-info/playground/issues/217), [#208](https://github.com/refugies-info/playground/issues/208)
-- Ajout d'un filtre par type d'entrée dans la liste des documents. [#198](https://github.com/refugies-info/playground/issues/198)
-- Correction des labels des modalités d'entrée/sortie. [#200](https://github.com/refugies-info/playground/issues/200), [#199](https://github.com/refugies-info/playground/issues/199)
-- Ajout d'une barre latérale globale persistante pour la navigation. [#206](https://github.com/refugies-info/playground/issues/206), [#205](https://github.com/refugies-info/playground/issues/205), [#204](https://github.com/refugies-info/playground/issues/204)
-- Refonte de l'en-tête de la fiche avec ajout d'une indication de sauvegarde et d'un bouton de copie du lien. [#203](https://github.com/refugies-info/playground/issues/203), [#202](https://github.com/refugies-info/playground/issues/202)
+- Ajout d'un indicateur de conformité pour les documents, permettant de restreindre l'édition et la publication des contenus non conformes [#229](https://github.com/refugies-info/playground/pull/229).
+- Affichage de la date de fin de validité des données dans les tableaux de workflows [#232](https://github.com/refugies-info/playground/pull/232).
+- Ajout du nombre de mots dans le tableau d'ingestion [#230](https://github.com/refugies-info/playground/pull/230).
+- Ajout d'un indicateur de priorité "urgent" pour les traductions, avec un bouton dédié et une colonne correspondante dans l'interface [#209](https://github.com/refugies-info/playground/pull/209), [#219](https://github.com/refugies-info/playground/pull/219).
+- Amélioration de l'affichage des liens de publication avec un popover contenant les URLs et des informations supplémentaires [#208](https://github.com/refugies-info/playground/pull/208).
+- Ajout d'un panneau de publication avec des options de confirmation et de partage [#210](https://github.com/refugies-info/playground/pull/210).
+- Ajout d'un panneau latéral global pour la navigation et l'accès aux fonctionnalités principales [#204](https://github.com/refugies-info/playground/pull/204).
+- Ajout d'un panneau source interactif pour comparer le contenu original et la version réécrite par l'IA [#203](https://github.com/refugies-info/playground/pull/203).
 
 ### Évolutions techniques
-- Refactorisation de la gestion de la génération de métadonnées pour optimiser l'utilisation de l'IA. [#228](https://github.com/refugies-info/playground/issues/228)
-- Amélioration de la gestion des versions d'ingestion pour éviter la duplication des workflows.
-- Mise en place d'un système de cron jobs pour l'ingestion de données, avec une planification flexible. [#227](https://github.com/refugies-info/playground/issues/227), [#215](https://github.com/refugies-info/playground/issues/215), [#214](https://github.com/refugies-info/playground/issues/214)
-- Correction de problèmes d'autorisation et de permissions sur la base de données. [#226](https://github.com/refugies-info/playground/issues/226), [#225](https://github.com/refugies-info/playground/issues/225)
-- Optimisation des requêtes SQL avec l'ajout d'index GIN. [#201](https://github.com/refugies-info/playground/issues/201)
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Utilisation de `Object.hasOwn` pour des vérifications de propriétés plus sûres. [#197](https://github.com/refugies-info/playground/issues/197)
+- Remplacement de la date d'importation par une date d'arbitrage pour un suivi et un tri plus précis des documents [#233](https://github.com/refugies-info/playground/pull/233).
+- Optimisation de la gestion des requêtes à l'API Letta pour éviter les limitations de débit [#214](https://github.com/refugies-info/playground/pull/214).
+- Amélioration de la gestion de l'état de l'IA lors de la réécriture automatique, avec une reprise possible en cas d'interruption [#211](https://github.com/refugies-info/playground/pull/211).
+- Refactorisation du code pour utiliser des composants Radix UI et shadcn/ui, améliorant la cohérence et l'accessibilité de l'interface utilisateur [#217](https://github.com/refugies-info/playground/pull/217).
+- Ajout d'un index GIN trigram sur la table `ingestion_records` pour accélérer les recherches [#205](https://github.com/refugies-info/playground/pull/205).
+- Utilisation de Zod pour la validation des données côté serveur dans la route `editorial-rewrite` [#209](https://github.com/refugies-info/playground/pull/209).
+- Amélioration de la gestion des erreurs et ajout de logs plus précis pour faciliter le débogage [#225](https://github.com/refugies-info/playground/pull/225).
+- Mise à jour de la configuration Vercel pour inclure des tâches cron planifiées pour l'ingestion de données [#228](https://github.com/refugies-info/playground/pull/228), [#231](https://github.com/refugies-info/playground/pull/231).
 
 ### Autres changements
-- Ajout d'une documentation pour l'export et l'import de bases de données Supabase. [#222](https://github.com/refugies-info/playground/issues/222)
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Mise à jour des dépendances.
+- Ajout d'une documentation pour l'exportation et l'importation de bases de données Supabase en local [#222](https://github.com/refugies-info/playground/pull/222).
+- Correction de problèmes d'autorisation et d'accès aux données dans Supabase [#225](https://github.com/refugies-info/playground/pull/225).
+- Suppression des tâches cron d'ingestion de données temporaires [#226](https://github.com/refugies-info/playground/pull/226).
+- Nettoyage du code et suppression de composants inutilisés.
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de bugs mineurs liés à l'interface utilisateur et à la gestion des états.
