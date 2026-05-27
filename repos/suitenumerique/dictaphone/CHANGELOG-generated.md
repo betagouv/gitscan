@@ -1,46 +1,46 @@
-## Changelog : dictaphone (30 derniers jours, au 2026-05-22)
+## Changelog : dictaphone (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience d'enregistrement et de gestion des transcriptions, notamment sur l'application mobile. De nouvelles fonctionnalités comme l'enregistrement hors ligne, la reprise d'enregistrement en cas de perte de connexion, et la possibilité de regénérer les transcriptions ont été ajoutées. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été implémentées pour une meilleure stabilité et ergonomie.
+Cette période a été marquée par d'importantes améliorations de l'application mobile, avec notamment la gestion de l'enregistrement hors ligne, la possibilité de relancer la transcription en cas d'échec, et une meilleure gestion des autorisations. L'application web a également bénéficié d'améliorations, notamment l'ajout de formats d'exportation avancés (SRT) et la possibilité de copier le texte des transcriptions. Des corrections de sécurité et des optimisations de performance ont été apportées à l'ensemble du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de regénérer une transcription depuis l'interface web et mobile. [#2345](https://github.com/suitenumerique/dictaphone/issues/2345)
-- Implémentation de l'enregistrement hors ligne sur l'application mobile, avec sauvegarde locale des enregistrements.
-- Amélioration de la gestion des erreurs et ajout d'une fonctionnalité de reprise automatique de l'enregistrement en cas de perte de connexion ou de problèmes de stockage.
-- Ajout d'une indication visuelle du niveau sonore pendant l'enregistrement.
-- Possibilité de sélectionner directement le texte transcrit.
-- Ajout d'un lien vers la documentation dans l'application mobile.
-- Ajout d'un bouton d'aide et de téléchargement de l'application mobile sur l'interface web.
+- Ajout de la possibilité de relancer la transcription d'un fichier en cas d'échec via l'interface web et l'API. [#issue-lien-si-disponible]
+- Implémentation de l'export de transcriptions au format SRT. [#issue-lien-si-disponible]
+- Ajout des actions "Copier le texte" et "Ouvrir dans Indocs" au menu contextuel des fichiers. [#issue-lien-si-disponible]
+- Amélioration de l'expérience utilisateur mobile avec la gestion de l'enregistrement hors ligne et la reprise automatique en cas de perte de connexion.
+- Ajout d'un indicateur visuel du niveau sonore pendant l'enregistrement sur mobile.
+- Possibilité de contourner l'écran de connexion sur mobile.
+- Ajout d'un lien vers la salle Matrix dans le README.
 - Amélioration de l'accessibilité de l'application web.
-- Ajout d'un indicateur de progression lors du téléchargement des enregistrements sur l'application mobile.
-- Ajout d'une option pour n'autoriser l'upload que via Wifi sur l'application mobile.
-- Ajout d'un écran d'information avec un lien vers la documentation et la possibilité de supprimer son compte sur l'application mobile.
-- Amélioration de l'expérience utilisateur lors de la réinitialisation du mot de passe sur l'application mobile.
+- Ajout d'une info-bulle sur le bouton d'upload.
+- Mise à jour du menu d'aide.
+- Ajout d'un son de démarrage/arrêt de l'enregistrement.
+- Ajout d'une option pour n'autoriser l'upload qu'en WiFi sur mobile.
+- Ajout d'un lien vers les mentions légales sur mobile.
+- Amélioration de l'interface de suppression de compte sur mobile.
 
 ### Évolutions techniques
-- Mise à jour des dépendances backend pour renforcer la sécurité.
-- Amélioration de la robustesse du système d'authentification avec JWT et PKCE sur l'application mobile.
-- Refactorisation du code frontend pour améliorer les performances et la maintenabilité.
-- Ajout d'un script pour automatiser la création des releases pour l'application mobile.
-- Ajout d'une commande pour nettoyer les fichiers temporaires et supprimés.
+- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest` pour la comparaison de chaînes sensibles.
+- Partage de l'adresse email de l'utilisateur avec le service de résumé.
+- Mise à jour des dépendances pour renforcer la sécurité.
+- Refactorisation du code pour améliorer la robustesse et la maintenabilité.
+- Optimisation des performances de l'application web et mobile.
 - Amélioration de la gestion des erreurs et des logs.
-- Optimisation de la détection des périphériques audio.
+- Mise en place d'un script d'automatisation des releases mobiles.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la configuration du pipeline CI/CD.
+- Ajout d'un mécanisme pour nettoyer les fichiers temporaires et supprimés.
 - Correction de problèmes liés à la gestion des états de l'enregistreur.
-- Amélioration de la robustesse de la logique d'enregistrement.
-- Mise en place de tests CI pour le linting du code mobile.
-- Correction de bugs liés à l'affichage de la durée des enregistrements.
-- Correction de problèmes de compatibilité avec certains navigateurs.
+- Amélioration de la gestion des permissions sur mobile.
+- Mise à jour des valeurs par défaut pour autoriser plus de types de fichiers.
 
 ### Autres changements
 - Mise à jour de la documentation.
-- Correction de typos et amélioration de la lisibilité du code.
-- Ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des fichiers de configuration pour l'environnement de développement.
-- Amélioration des badges dans le fichier README.
+- Correction de fautes de frappe et amélioration de la lisibilité du code.
+- Mise à jour des badges du README.
+- Ajout de commentaires pour clarifier le code.
+- Amélioration de la configuration Helm.
 - Mise à jour des documents légaux.
-- Configuration de l'agent utilisateur pour les requêtes HTTP.
-- Ajout d'un timeout plus élevé pour les requêtes backend.
-- Correction d'un bug qui provoquait un crash de la page lors du chargement avec des informations utilisateur manquantes.
-- Correction d'un bug lié à la gestion des jetons d'accès et de rafraîchissement en environnement de développement local.
-- Ajout de la possibilité de configurer l'affichage de l'application mobile.
-- Ajout de la possibilité de télécharger les applications mobiles.
+- Ajout de données mock pour faciliter la prise de captures d'écran.
+- Correction de problèmes de typographie dans l'application mobile.
+- Ajout de métriques de suivi des erreurs sur mobile avec PostHog.
