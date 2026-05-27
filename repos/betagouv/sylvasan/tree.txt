@@ -109,6 +109,7 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test_create_response.py
+│   │   │   ├── test_export_responses.py
 │   │   │   ├── test_get_responses.py
 │   │   │   └── test_retrieve_response.py
 │   │   ├── urls.py
@@ -198,7 +199,8 @@
 │   └── adr
 │       ├── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
 │       ├── 0002-architecture-multi-organisation-avec-extensions-specifiques.md
-│       └── 0003-partage-de-types-entre-applications-ts.md
+│       ├── 0003-partage-de-types-entre-applications-ts.md
+│       └── 0004-organisation-des-composants-et-des-pages-vue.md
 ├── mobile
 │   ├── .gitignore
 │   ├── .vscode
@@ -443,6 +445,11 @@
     │   │   ├── AppHeader.vue
     │   │   ├── ImageAttribution.vue
     │   │   ├── MapField.vue
+    │   │   ├── ProgressSpinner.vue
+    │   │   ├── ResponseListPage
+    │   │   │   ├── DateRangeFilter.vue
+    │   │   │   ├── OrderingFilter.vue
+    │   │   │   └── PaginationSizeSelect.vue
     │   │   ├── SurveyBuilder
     │   │   │   ├── CheckboxOption.vue
     │   │   │   ├── ChoiceCard.vue
@@ -467,16 +474,11 @@
     │   │   ├── LoginPage.vue
     │   │   ├── NotFoundPage.vue
     │   │   ├── PrivacyPolicyPage.vue
-    │   │   ├── ResponseListPage
-    │   │   │   └── index.vue
-    │   │   ├── ResponsePage
-    │   │   │   └── index.vue
-    │   │   ├── SurveyCreationPage
-    │   │   │   └── index.vue
-    │   │   ├── SurveyListPage
-    │   │   │   └── index.vue
-    │   │   ├── SurveyPage
-    │   │   │   └── index.vue
+    │   │   ├── ResponseListPage.vue
+    │   │   ├── ResponsePage.vue
+    │   │   ├── SurveyCreationPage.vue
+    │   │   ├── SurveyListPage.vue
+    │   │   ├── SurveyPage.vue
     │   │   └── index.vue
     │   ├── router
     │   │   └── root.ts
@@ -495,4 +497,4 @@
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-149 directories, 348 files
+145 directories, 354 files
