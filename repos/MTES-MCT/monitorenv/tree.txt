@@ -375,7 +375,8 @@
 │   │   │   │                   │   │   │       └── FullStationDTO.kt
 │   │   │   │                   │   │   ├── tags
 │   │   │   │                   │   │   │   ├── GetTags.kt
-│   │   │   │                   │   │   │   └── GetTagsByRegulatoryAreas.kt
+│   │   │   │                   │   │   │   ├── GetTagsByRegulatoryAreas.kt
+│   │   │   │                   │   │   │   └── SaveTag.kt
 │   │   │   │                   │   │   ├── themes
 │   │   │   │                   │   │   │   ├── GetThemes.kt
 │   │   │   │                   │   │   │   └── GetThemesByRegulatoryAreas.kt
@@ -431,6 +432,7 @@
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateReportingDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── ReportingSourceDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── tags
+│   │   │   │                   │   │   │   │   │   │   ├── CreaterOrUpdateTagInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── TagInput.kt
 │   │   │   │                   │   │   │   │   │   ├── themes
 │   │   │   │                   │   │   │   │   │   │   └── ThemeInput.kt
@@ -1181,6 +1183,7 @@
 │   │       │                   │   │   ├── tags
 │   │       │                   │   │   │   ├── GetTagsByRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetTagsUTest.kt
+│   │       │                   │   │   │   ├── SaveTagUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── TagFixture.kt
 │   │       │                   │   │   ├── themes
@@ -1339,7 +1342,10 @@
 │   │   │   │   │   ├── edit_regulatory_area.spec.ts
 │   │   │   │   │   └── filters.spec.ts
 │   │   │   │   ├── station_form.spec.ts
-│   │   │   │   └── station_table
+│   │   │   │   ├── station_table
+│   │   │   │   │   ├── filters.spec.ts
+│   │   │   │   │   └── row_actions.spec.ts
+│   │   │   │   └── tag_table
 │   │   │   │       ├── filters.spec.ts
 │   │   │   │       └── row_actions.spec.ts
 │   │   │   ├── constants.ts
@@ -1402,6 +1408,7 @@
 │   │   │   │   └── vigilance_areas_list
 │   │   │   │       └── filters.spec.ts
 │   │   │   └── utils
+│   │   │       ├── a11y.ts
 │   │   │       ├── createMissionWithAttachedReportingAndAttachedAction.ts
 │   │   │       ├── createPendingMission.ts
 │   │   │       ├── createReporting.ts
@@ -1437,6 +1444,8 @@
 │   │       │   └── loadPath.ts
 │   │       ├── commands.ts
 │   │       └── e2e.ts
+│   ├── feat__create_Tags_backoffice_and_display_tags.patch
+│   ├── feat__refacto_mission_table_to_make_it_expandable.patch
 │   ├── index.html
 │   ├── package-lock.json
 │   ├── package.json
@@ -2637,6 +2646,21 @@
 │   │   │   │   │       ├── types.ts
 │   │   │   │   │       └── utils.tsx
 │   │   │   │   └── slice.ts
+│   │   │   ├── Tags
+│   │   │   │   └── components
+│   │   │   │       ├── Table
+│   │   │   │       │   ├── Cells
+│   │   │   │       │   │   ├── EditableDateCell.tsx
+│   │   │   │       │   │   └── EditableTextCell.tsx
+│   │   │   │       │   ├── Columns
+│   │   │   │       │   │   └── constants.tsx
+│   │   │   │       │   ├── FilterBar.tsx
+│   │   │   │       │   ├── index.tsx
+│   │   │   │       │   ├── slice.ts
+│   │   │   │       │   ├── types.ts
+│   │   │   │       │   └── utils.tsx
+│   │   │   │       └── useCases
+│   │   │   │           └── saveTag.ts
 │   │   │   ├── Vessel
 │   │   │   │   ├── components
 │   │   │   │   │   ├── MissionVesselForm
@@ -3086,7 +3110,6 @@
 │   └── scripts
 │       ├── backup_dev_db.sh
 │       └── restore_dev_db.sh
-├── package-lock.json
 ├── pipeline
 │   ├── .env.template
 │   ├── .env.test
@@ -3289,4 +3312,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-598 directories, 2693 files
+605 directories, 2709 files
