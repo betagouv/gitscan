@@ -1,39 +1,41 @@
-## Changelog : fondation (30 derniers jours, au 22 mai 2026)
+## Changelog : fondation (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a continué d'améliorer la recherche et la gestion des documents, notamment les fichiers de nomination. Des corrections ont été apportées pour améliorer la stabilité et l'expérience utilisateur, et des outils de qualité de code ont été intégrés pour assurer la maintenabilité du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la recherche et de la gestion des documents, notamment les fichiers de nomination et les pièces jointes aux observations. Des améliorations ont également été apportées à l'interface utilisateur et à la gestion des agendas, ainsi que des corrections de bugs pour une meilleure stabilité. Des efforts ont été réalisés pour moderniser l'infrastructure et améliorer la sécurité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de la recherche en texte intégral des fichiers de nomination. [#336](https://github.com/betagouv/fondation/issues/336)
-- Possibilité de supprimer une session de nomination. [#315](https://github.com/betagouv/fondation/issues/315)
-- Ajout d'un tooltip pour le résultat d'une nomination. [#314](https://github.com/betagouv/fondation/issues/314)
+- Amélioration de la présélection des fichiers d'agenda. [#359](https://github.com/betagouv/fondation/issues/359)
+- Ajout de la possibilité de donner son avis. [#360](https://github.com/betagouv/fondation/issues/360)
+- Ajout des membres absents dans le plan de présentation. [#358](https://github.com/betagouv/fondation/issues/358)
+- Ajout d'un éditeur WYSIWYG pour les documents. [#352](https://github.com/betagouv/fondation/issues/352)
+- Correction de l'affichage des erreurs lors de l'importation de fichiers. [#355](https://github.com/betagouv/fondation/issues/355)
+- Ajout de la recherche en texte intégral dans les fichiers de nomination. [#336](https://github.com/betagouv/fondation/issues/336)
 - Ajout de la possibilité de lier une pièce jointe à une observation. [#317](https://github.com/betagouv/fondation/issues/317)
-- Ajout de l'état du document des fichiers de nomination. [#320](https://github.com/betagouv/fondation/issues/320)
 - Récupération des présidents de formation. [#324](https://github.com/betagouv/fondation/issues/324)
-- Ajout de plans de présentation de justice. [#311](https://github.com/betagouv/fondation/issues/311)
-- Amélioration de la recherche d'observations des magistrats. [#316](https://github.com/betagouv/fondation/issues/316)
+- Ajout du statut des documents des fichiers de nomination. [#320](https://github.com/betagouv/fondation/issues/320)
+- Correction du problème des fichiers suspendus qui continuaient de s'exécuter. [#338](https://github.com/betagouv/fondation/issues/338)
+- Correction de l'affichage des combobox vides.
+- Correction de la largeur du sélecteur de fichiers de nomination dans l'agenda.
 
 ### Évolutions techniques
-- Refactorisation du modèle de date pour simplifier son utilisation. [#332](https://github.com/betagouv/fondation/issues/332)
-- Suppression des modèles partagés du frontend pour alléger la codebase. [#331](https://github.com/betagouv/fondation/issues/331)
+- Mise en place d'un système de cache pour Playwright afin d'accélérer les tests. [#357](https://github.com/betagouv/fondation/issues/357)
+- Refactorisation du modèle de date pour une meilleure gestion. [#332](https://github.com/betagouv/fondation/issues/332)
+- Suppression des modèles partagés du frontend pour simplifier l'architecture. [#331](https://github.com/betagouv/fondation/issues/331)
 - Suppression des migrations Drizzle. [#322](https://github.com/betagouv/fondation/issues/322)
-- Introduction d'une utilitaire pour gérer les requêtes multipart/form-data. [#318](https://github.com/betagouv/fondation/issues/318)
-- Intégration des outils d'analyse de code Oxlint et Oxfmt pour améliorer la qualité du code. [#329](https://github.com/betagouv/fondation/issues/329)
+- Introduction d'une utilitaire pour gérer les requêtes multipart JSON. [#318](https://github.com/betagouv/fondation/issues/318)
+- Amélioration de la recherche des observations des magistrats. [#316](https://github.com/betagouv/fondation/issues/316)
 - Suppression de la dépendance `fast-xml-parser`. [#323](https://github.com/betagouv/fondation/issues/323)
-- Mise à jour de la version de TailwindCSS. [#330](https://github.com/betagouv/fondation/issues/330)
-- Mise à jour de la version de DSFR. [#321](https://github.com/betagouv/fondation/issues/321)
+- Mise à jour de TailwindCSS. [#330](https://github.com/betagouv/fondation/issues/330)
+- Intégration des outils d'analyse de code Oxlint et Oxfmt. [#329](https://github.com/betagouv/fondation/issues/329)
 
 ### Autres changements
-- Ajout d'une animation lors de la recherche de fichiers. [#337](https://github.com/betagouv/fondation/issues/337)
-- Correction d'un problème où les fichiers suspendus continuaient de s'exécuter. [#338](https://github.com/betagouv/fondation/issues/338)
-- Correction d'un problème empêchant l'ingestion des sessions LOLFI vides. [#326](https://github.com/betagouv/fondation/issues/326)
-- Correction d'un problème lié à la sélection de l'agenda du rapport officiel.
-- Amélioration de la configuration de l'interface Swagger UI. [#312](https://github.com/betagouv/fondation/issues/312)
-- Ajout de tests d'acceptation supplémentaires. [#325](https://github.com/betagouv/fondation/issues/325)
 - Mise à jour du fichier README. [#353](https://github.com/betagouv/fondation/issues/353)
-- Configuration de Renovate pour limiter à une PR par ouverture. [#350](https://github.com/betagouv/fondation/issues/350)
-- Initialisation de Renovate. [#334](https://github.com/betagouv/fondation/issues/334)
-- Déplacement du fichier Renovate à la racine du dépôt. [#335](https://github.com/betagouv/fondation/issues/335)
+- Configuration de Renovate pour limiter à une seule PR par mise à jour. [#350](https://github.com/betagouv/fondation/issues/350)
+- Initialisation et configuration de Renovate pour la gestion des dépendances. [#334](https://github.com/betagouv/fondation/issues/334)
+- Ajout d'une animation de recherche pour les fichiers. [#337](https://github.com/betagouv/fondation/issues/337)
+- Correction d'un problème empêchant l'ingestion des sessions LOLFI. [#328](https://github.com/betagouv/fondation/issues/328)
+- Ajout de tests d'acceptation. [#325](https://github.com/betagouv/fondation/issues/325)
+- Correction d'un bug empêchant la sélection de l'agenda du rapport officiel.
+- Correction d'un problème avec la session LOLFI.
+- Correction de problèmes de style sur l'agenda.
 - Audit de sécurité Zizmor. [#339](https://github.com/betagouv/fondation/issues/339)
-- Correction de problèmes de style sur la combobox vide et la largeur du sélecteur de fichiers de nomination.
-- Correction d'un bug nécessitant deux rapporteurs pour une fonction. [#313](https://github.com/betagouv/fondation/issues/313)

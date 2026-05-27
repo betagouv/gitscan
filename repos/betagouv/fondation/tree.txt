@@ -12,7 +12,8 @@
 │       ├── release-staging.yml
 │       ├── release.yml
 │       ├── tags.yml
-│       └── validates-pr.yml
+│       ├── validates-pr.yml
+│       └── warm-playwright-cache.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-push
@@ -131,6 +132,12 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260520000000_docs_adds_agenda_id_to_presentation_plan_nomination_file
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260520000001_docs_adds_is_manually_edited
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260521192922_mark_absent_members
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260526105302_adds_presentation_plan_members_table
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -220,11 +227,14 @@
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
 │   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── agenda-file-name.ts
 │   │   │   │   │   │   ├── agenda-nomination-file.ts
 │   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   ├── agenda.ts
 │   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
 │   │   │   │   │   │   ├── justice-presentation-plan.ts
+│   │   │   │   │   │   ├── official-report-file-name.ts
+│   │   │   │   │   │   ├── official-report.spec.ts
 │   │   │   │   │   │   ├── official-report.ts
 │   │   │   │   │   │   ├── reported-nomination-files-collection.spec.ts
 │   │   │   │   │   │   └── reported-nomination-files-collection.ts
@@ -238,6 +248,7 @@
 │   │   │   │   │   │   │   ├── docs-nomination-files.finder.ts
 │   │   │   │   │   │   │   └── reported-nomination-files.finder.ts
 │   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   ├── details-agenda-files.query.ts
 │   │   │   │   │   │   │   ├── details-agenda-metadata.query.ts
 │   │   │   │   │   │   │   ├── details-official-report.query.ts
 │   │   │   │   │   │   │   ├── details-presentation-plan-metadata.query.ts
@@ -395,8 +406,8 @@
 │   │   │   │   │   │   ├── members.service.ts
 │   │   │   │   │   │   └── queries
 │   │   │   │   │   │       ├── details-member.query.ts
+│   │   │   │   │   │       ├── internal-find-members-by-formation.query.ts
 │   │   │   │   │   │       ├── internal-find-members-by-full-name.query.ts
-│   │   │   │   │   │       ├── internal-find-members-by-ids.query.ts
 │   │   │   │   │   │       ├── internal-find-members.query.ts
 │   │   │   │   │   │       ├── internal-get-member.query.ts
 │   │   │   │   │   │       ├── list-members.query.ts
@@ -716,6 +727,9 @@
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── Dashboard.tsx
 │       │   │   │   ├── document-preview
+│       │   │   │   │   ├── DocumentEditor.css
+│       │   │   │   │   ├── DocumentEditor.tsx
+│       │   │   │   │   ├── DocumentIframe.tsx
 │       │   │   │   │   ├── DocumentPreview.tsx
 │       │   │   │   │   └── document-fonts.css
 │       │   │   │   ├── membres
@@ -995,6 +1009,7 @@
 │       │   │   │       └── admin-user-enum.ts
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
+│       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── ManageSessionPage.tsx
@@ -1022,40 +1037,42 @@
 │       │   │   │   │   │   └── steps
 │       │   │   │   │   │       ├── AgendaMetadataStep.tsx
 │       │   │   │   │   │       └── AgendaNominationFilesStep.tsx
-│       │   │   │   │   └── official-report
-│       │   │   │   │       ├── OfficialReportPage.tsx
-│       │   │   │   │       ├── OfficialReportPreviewPage.tsx
+│       │   │   │   │   ├── components
+│       │   │   │   │   │   ├── AbsentMemberSelector.tsx
+│       │   │   │   │   │   ├── ChairmanSelector.tsx
+│       │   │   │   │   │   └── JusticeContactSelector.tsx
+│       │   │   │   │   ├── official-report
+│       │   │   │   │   │   ├── OfficialReportPage.tsx
+│       │   │   │   │   │   ├── OfficialReportPreviewPage.tsx
+│       │   │   │   │   │   ├── components
+│       │   │   │   │   │   │   ├── OfficialReportBreadCrumb.tsx
+│       │   │   │   │   │   │   └── OfficialReportForm.tsx
+│       │   │   │   │   │   ├── context
+│       │   │   │   │   │   │   ├── OfficialReportContext.tsx
+│       │   │   │   │   │   │   ├── OfficialReportContext.types.ts
+│       │   │   │   │   │   │   └── OfficialReportProvider.tsx
+│       │   │   │   │   │   └── hooks
+│       │   │   │   │   │       └── useSelection.ts
+│       │   │   │   │   └── presentations
+│       │   │   │   │       ├── PresentationUpsertPage.tsx
+│       │   │   │   │       ├── PresentationsLayout.tsx
+│       │   │   │   │       ├── PresentationsPreviewPage.tsx
+│       │   │   │   │       ├── PresentationsTabPast.tsx
+│       │   │   │   │       ├── PresentationsTabReady.tsx
+│       │   │   │   │       ├── PresentationsTabsPage.tsx
 │       │   │   │   │       ├── components
-│       │   │   │   │       │   ├── AbsentMemberSelector.tsx
-│       │   │   │   │       │   ├── JusticeContactSelector.tsx
-│       │   │   │   │       │   ├── OfficialReportBreadCrumb.tsx
-│       │   │   │   │       │   └── OfficialReportForm.tsx
-│       │   │   │   │       ├── context
-│       │   │   │   │       │   ├── OfficialReportContext.tsx
-│       │   │   │   │       │   ├── OfficialReportContext.types.ts
-│       │   │   │   │       │   └── OfficialReportProvider.tsx
-│       │   │   │   │       └── hooks
-│       │   │   │   │           └── useSelection.ts
+│       │   │   │   │       │   └── PresentationAgendaSelectionList.tsx
+│       │   │   │   │       └── contexts
+│       │   │   │   │           ├── PresentatPlanModalProvider.tsx
+│       │   │   │   │           ├── PresentationPlanProvider.tsx
+│       │   │   │   │           ├── present-plan-modal.context.ts
+│       │   │   │   │           ├── present-plan-modal.type.ts
+│       │   │   │   │           ├── presentation-plan.context.ts
+│       │   │   │   │           └── presentation-plan.type.ts
 │       │   │   │   ├── membres
 │       │   │   │   │   └── DetailsMemberPage.tsx
-│       │   │   │   ├── observations
-│       │   │   │   │   └── ObservationDetailsPage.tsx
-│       │   │   │   └── presentations
-│       │   │   │       ├── PresentationUpsertPage.tsx
-│       │   │   │       ├── PresentationsLayout.tsx
-│       │   │   │       ├── PresentationsPreviewPage.tsx
-│       │   │   │       ├── PresentationsTabPast.tsx
-│       │   │   │       ├── PresentationsTabReady.tsx
-│       │   │   │       ├── PresentationsTabsPage.tsx
-│       │   │   │       ├── components
-│       │   │   │       │   └── PresentationAgendaSelecionList.tsx
-│       │   │   │       └── contexts
-│       │   │   │           ├── PresentatPlanModalProvider.tsx
-│       │   │   │           ├── PresentationPlanProvider.tsx
-│       │   │   │           ├── present-plan-modal.context.ts
-│       │   │   │           ├── present-plan-modal.type.ts
-│       │   │   │           ├── presentation-plan.context.ts
-│       │   │   │           └── presentation-plan.type.ts
+│       │   │   │   └── observations
+│       │   │   │       └── ObservationDetailsPage.tsx
 │       │   │   ├── summary
 │       │   │   │   ├── SummaryContext.ts
 │       │   │   │   ├── SummaryNotFound.tsx
@@ -1161,4 +1178,4 @@
 ├── renovate.json
 └── scripts
     └── changelog.js
-255 directories, 908 files
+259 directories, 921 files
