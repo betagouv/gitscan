@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/rapportnav2",
   "name": "rapportnav2",
-  "description": "RapportNav est un outil de gestion des rapports de mission développé par l'administration française. Il permet de faciliter la création, le suivi et l'analyse des rapports.",
+  "description": "RapportNav est un outil de gestion des rapports de mission développé par l'administration française. Il permet de gérer les ressources, les agents et les données environnementales.",
   "language": "Kotlin",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -17,12 +17,13 @@
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "PostgreSQL",
     "Spring-boot",
     "Flyway",
-    "React",
-    "Vite",
-    "Monitor-ui"
+    "Gradle",
+    "Monitor-ui",
+    "PostgreSQL",
+    "Docker",
+    "GitHub Actions"
   ],
   "components": [
     "API REST & GraphQL",
@@ -37,7 +38,9 @@
       "email-password"
     ]
   },
-  "tests": "Jest, Pytest, Cypress",
+  "tests": [
+    "Vitest"
+  ],
   "workflows": [
     "Build & Test Frontend",
     "Build & Test Backend"
@@ -60,6 +63,7 @@
     "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Environnement & Énergie"
   ]
 }
