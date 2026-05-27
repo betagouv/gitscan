@@ -1,42 +1,44 @@
-## Changelog : monitorfish (30 derniers jours, au 22 mai 2026)
+## Changelog : monitorfish (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de la cartographie et du suivi des navires, notamment avec l'intégration des données AIS. Des corrections et des améliorations ont également été apportées à la gestion des préavis, des signalements et des infractions, ainsi qu'à l'interface utilisateur pour une meilleure expérience. Des mises à jour de l'infrastructure et des dépendances ont également été réalisées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du suivi des navires, notamment avec l'intégration des données AIS (Automatic Identification System) pour afficher les positions des navires sur la carte. Des corrections et améliorations ont également été apportées aux préavis, aux signalements et à l'interface utilisateur, notamment pour la gestion des infractions et des informations sur les navires.
 
 ### Évolutions fonctionnelles
-- **Cartographie et suivi des navires :** Affichage des navires sous AIS avec récupération des positions AIS via l'API et intégration dans la carte. Possibilité de rechercher des navires AIS et de zoomer sur leur position.
+- **AIS :** Intégration de l'affichage des navires via le système AIS sur la carte, avec la possibilité de rechercher et de zoomer sur les navires AIS.  Les dernières positions AIS sont maintenant mises à jour via la pipeline.
 - **Préavis :**
-    - Ajout de la mention "zéro" dans les mails, PDF et SMS pour les préavis à zéro.
+    - Ajout de la mention "zéro" dans les emails, PDF et SMS pour les préavis nuls.
     - Affichage de la raison pour laquelle un préavis est "à vérifier" (note, signalement, port état tiers).
-    - Filtrage des préavis par type "préavis 0".
+    - Possibilité de filtrer les préavis par type "préavis zéro".
     - Suppression des champs bloquants pour les préavis de non-débarquement et ajout de la raison du préavis.
 - **Signalements :**
-    - Possibilité de faire des signalements "en lots" (plusieurs NATINF).
-    - Ajout du nombre de navires aux signalements INN.
-- **Infractions :**
-    - Ajout de la catégorie d'infraction NATINF 22204 (RUN FLOW).
-    - Affichage des infractions sous forme de tags dans le formulaire de signalement.
-- **Fiche navire :** Amélioration de l'interface utilisateur des modalités de contact.
-- **Unités :** Ajout d'une recherche dans les menus "type" et "base" lors de la création d'une nouvelle unité.
+    - Possibilité d'ajouter plusieurs NATINF (nature d'infraction) à un signalement.
+    - Possibilité de faire des signalements "en lots" pour les infractions INN.
+- **Fiche navire :** Amélioration de l'interface utilisateur pour les modalités de contact sur l'onglet identité.
+- **Catégories d'infraction :** Ajout de la catégorie d'infraction NATINF 22204.
+- **Gestion des unités :** Ajout d'une recherche dans les menus "type" et "base" lors de la création d'une nouvelle unité.
 
 ### Évolutions techniques
-- **Kafka :** Ajout d'une variable d'environnement `CERT_FOLDER` pour la configuration de Kafka.  Kafka n'est plus activé par défaut.
+- **Kafka :** Ajout d'une variable d'environnement `CERT_FOLDER` pour la configuration de Kafka. Désactivation de Kafka par défaut.
 - **Base de données :** Mise à jour de TimescaleDB et PostGIS.
-- **Tests :** Ajout et correction de tests Cypress pour assurer la qualité du code.
-- **Infrastructure :** Amélioration du workflow de déploiement de la base de données.
-- **Dépendances :** Mise à jour des dépendances backend non majeures.
-- **Docker :** Ajout de la variable d'environnement `CERT_FOLDER` dans les fichiers docker-compose.
-- **Correction de bugs :** Diverses corrections de bugs et améliorations de la performance.
+- **Backend :** Mise à jour des dépendances non majeures.
+- **Tests :** Ajout et correction de tests Cypress et backend.
+- **Docker :** Modifications de la configuration Docker pour la gestion de Kafka et de la base de données.
+- **Migrations :** Corrections et ajouts de migrations de base de données.
 
 ### Autres changements
+- Correction de bugs divers dans l'interface utilisateur (favicon, positionnement des boîtes à outils sur la carte).
+- Amélioration de la documentation et des commentaires.
 - Correction de typos et amélioration de la lisibilité du code.
-- Ajout de commentaires et documentation.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Correction de problèmes d'affichage et de mise en page.
-- Ajout d'une bannière d'erreur pour les échecs de téléchargement.
-- Mise en avant de l'environnement d'intégration avec une bannière.
-- Correction d'un problème d'overflow masquant la toolbox d'infraction.
-- Correction d'un bug dans le flow des catégories d'infractions.
-- Ajout de la possibilité d'ajouter plusieurs NATINF à un signalement.
-- Correction de problèmes de tests et d'assertions.
-- Ajout d'un favicon.
+- Ajout de la bannière d'environnement d'intégration.
+- Correction de l'affichage des coordonnées WKT pour les données AIS.
+- Amélioration de la gestion des erreurs lors du téléchargement de fichiers.
+- Correction de l'affichage des raisons de vérification des préavis.
+- Ajout de la gestion de la validité des périodes pour les signalements.
+- Suppression de configurations AIS inutiles.
+- Correction de l'affichage des noms de navires.
+- Ajout de la longueur des navires dans les positions AIS.
+- Ajout d'un filtre pour exclure les navires avec un CFR (Common Fisheries Register).
+- Ajout de la gestion des types de positions (VMS, AIS) dans la base de données.
+- Correction de l'affichage des infoboxes lors de l'ouverture d'un rapport IUU.
+- Amélioration des tests pour les formulaires de signalement.
+- Correction de problèmes liés à la construction de ReadTheDocs.
