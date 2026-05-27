@@ -3,6 +3,11 @@
 │   ├── ISSUE_TEMPLATE
 │   │   ├── demande-concernant-une-fonctionnalité.md
 │   │   └── rapport-d-incident.md
+│   ├── actions
+│   │   ├── setup-pnpm-node
+│   │   │   └── action.yml
+│   │   └── setup-uv-python
+│   │       └── action.yml
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── chore.yml
@@ -10,6 +15,7 @@
 │       ├── chore_create_release.yml
 │       ├── chore_require_labels.yml
 │       ├── dev.yml
+│       ├── ingestion.yml
 │       ├── notebook.yml
 │       ├── ocr.yml
 │       └── web.yml
@@ -72,11 +78,29 @@
     │   │   └── talentsoft.py
     │   ├── application
     │   │   ├── __init__.py
+    │   │   ├── interfaces
+    │   │   │   ├── __init__.py
+    │   │   │   └── talentsoft_client_interface.py
     │   │   └── use_cases
     │   │       ├── __init__.py
-    │   │       └── archive_offer.py
+    │   │       ├── archive_offer.py
+    │   │       └── load_offer_details.py
     │   ├── bin
     │   │   └── start_web.sh
+    │   ├── infrastructure
+    │   │   ├── __init__.py
+    │   │   ├── exceptions
+    │   │   │   ├── __init__.py
+    │   │   │   └── exceptions.py
+    │   │   ├── external_gateways
+    │   │   │   ├── __init__.py
+    │   │   │   ├── dtos
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── talentsoft_dtos.py
+    │   │   │   └── talentsoft_client.py
+    │   │   └── gateways
+    │   │       ├── __init__.py
+    │   │       └── async_http_client.py
     │   ├── presentation
     │   │   ├── __init__.py
     │   │   └── dtos
@@ -85,14 +109,27 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── factories
+    │   │   │   ├── __init__.py
+    │   │   │   └── talentsoft_factories.py
     │   │   ├── integration
     │   │   │   ├── __init__.py
     │   │   │   ├── conftest.py
     │   │   │   ├── test_routes.py
-    │   │   │   └── test_webhook_archive.py
+    │   │   │   ├── test_webhook_archive.py
+    │   │   │   └── test_webhook_load_offer.py
     │   │   └── unit
     │   │       ├── __init__.py
-    │   │       └── test_archive_offer_use_case.py
+    │   │       ├── external_gateways
+    │   │       │   ├── __init__.py
+    │   │       │   ├── test_talentsoft_client.py
+    │   │       │   ├── test_talentsoft_dtos.py
+    │   │       │   └── utils.py
+    │   │       ├── test_archive_offer_use_case.py
+    │   │       ├── test_async_http_client.py
+    │   │       ├── test_load_offer_details_use_case.py
+    │   │       ├── test_main.py
+    │   │       └── test_sentry.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -344,6 +381,7 @@
         │   │   │   │   ├── 0019_rawdocument_processing.py
         │   │   │   │   ├── 0020_alter_rawdocument_document_type.py
         │   │   │   │   ├── 0021_source.py
+        │   │   │   │   ├── 0022_alter_source_base_url.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -797,4 +835,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-161 directories, 638 files
+172 directories, 665 files
