@@ -103,6 +103,7 @@
     │   │   │   └── viewsets
     │   │   │       ├── __init__.py
     │   │   │       ├── blob.py
+    │   │   │       ├── calendar.py
     │   │   │       ├── channel.py
     │   │   │       ├── config.py
     │   │   │       ├── contacts.py
@@ -229,6 +230,10 @@
     │   │   ├── services
     │   │   │   ├── ai_service.py
     │   │   │   ├── blob_gc.py
+    │   │   │   ├── calendar
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── service.py
+    │   │   │   │   └── tasks.py
     │   │   │   ├── dns
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── check.py
@@ -299,7 +304,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (58 files)
+    │   │   │   │   └── test_*.py  (59 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
@@ -618,6 +623,8 @@
     │   │   │   │   │   │   └── admin-users-list.ts
     │   │   │   │   │   ├── blob
     │   │   │   │   │   │   └── blob.ts
+    │   │   │   │   │   ├── calendar
+    │   │   │   │   │   │   └── calendar.ts
     │   │   │   │   │   ├── channels
     │   │   │   │   │   │   └── channels.ts
     │   │   │   │   │   ├── config
@@ -645,6 +652,7 @@
     │   │   │   │   │   │   ├── attachment.ts
     │   │   │   │   │   │   ├── blob_upload_create201.ts
     │   │   │   │   │   │   ├── blob_upload_create_body.ts
+    │   │   │   │   │   │   ├── calendar_*.ts  (9 files)
     │   │   │   │   │   │   ├── change_flag_request_request.ts
     │   │   │   │   │   │   ├── channel.ts
     │   │   │   │   │   │   ├── channel_request.ts
@@ -677,7 +685,7 @@
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
     │   │   │   │   │   │   ├── mailbox_*.ts  (16 files)
-    │   │   │   │   │   │   ├── mailboxes_*.ts  (8 files)
+    │   │   │   │   │   │   ├── mailboxes_*.ts  (15 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
@@ -696,6 +704,7 @@
     │   │   │   │   │   │   ├── reset_password_internal_server_error.ts
     │   │   │   │   │   │   ├── reset_password_not_found.ts
     │   │   │   │   │   │   ├── reset_password_response.ts
+    │   │   │   │   │   │   ├── response_enum.ts
     │   │   │   │   │   │   ├── scope_level_enum.ts
     │   │   │   │   │   │   ├── send_*.ts  (5 files)
     │   │   │   │   │   │   ├── status_enum.ts
@@ -970,6 +979,9 @@
     │   │   │   │           │   ├── calendar-invite
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── calendar-helper.tsx
+    │   │   │   │           │   │   ├── calendar-select.tsx
+    │   │   │   │           │   │   ├── event-display.test.ts
+    │   │   │   │           │   │   ├── event-display.ts
     │   │   │   │           │   │   ├── ics-samples-check.test.ts
     │   │   │   │           │   │   ├── index.test.ts
     │   │   │   │           │   │   └── index.tsx
@@ -1174,12 +1186,12 @@
     │   │   │   ├── use-ability.ts
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-feature.ts
-    │   │   │   ├── use-import-task.ts
     │   │   │   ├── use-is-shared-context.ts
     │   │   │   ├── use-popup-position.ts
     │   │   │   ├── use-previous.ts
     │   │   │   ├── use-safe-router-push.ts
     │   │   │   ├── use-searchable-pagination.ts
+    │   │   │   ├── use-task-status.ts
     │   │   │   └── use-visibility-observer.ts
     │   │   ├── pages
     │   │   │   ├── _app.tsx
@@ -1319,4 +1331,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-287 directories, 1197 files
+289 directories, 1223 files
