@@ -632,6 +632,7 @@
     │   │       │   │           ├── bubble.svg
     │   │       │   │           ├── bug.svg
     │   │       │   │           ├── building.svg
+    │   │       │   │           ├── bulleted-list.svg
     │   │       │   │           ├── burger.svg
     │   │       │   │           ├── cable.svg
     │   │       │   │           ├── calendar_clock.svg
@@ -1063,12 +1064,14 @@
     │   │       │   │   │   │   │   │   └── ModalConfirmDownloadUnsafe.tsx
     │   │       │   │   │   │   │   ├── DocEditor.tsx
     │   │       │   │   │   │   │   ├── comments
+    │   │       │   │   │   │   │   │   ├── CommentSideBar.tsx
     │   │       │   │   │   │   │   │   ├── CommentToolbarButton.tsx
     │   │       │   │   │   │   │   │   ├── DocsThreadStore.tsx
     │   │       │   │   │   │   │   │   ├── DocsThreadStoreAuth.tsx
     │   │       │   │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   │   ├── styles.tsx
     │   │       │   │   │   │   │   │   ├── types.ts
+    │   │       │   │   │   │   │   │   ├── useCommentSidebarStore.ts
     │   │       │   │   │   │   │   │   └── useComments.ts
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
@@ -1099,8 +1102,7 @@
     │   │       │   │   │   │   ├── stores
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useEditorStore.tsx
-    │   │       │   │   │   │   │   ├── useHeadingStore.tsx
-    │   │       │   │   │   │   │   └── usePanelEditorStore.tsx
+    │   │       │   │   │   │   │   └── useHeadingStore.tsx
     │   │       │   │   │   │   ├── styles.tsx
     │   │       │   │   │   │   ├── types.tsx
     │   │       │   │   │   │   └── utils.ts
@@ -1269,7 +1271,7 @@
     │   │       │   │   │   ├── doc-table-content
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── Heading.tsx
-    │   │       │   │   │   │   │   ├── TableContent.tsx
+    │   │       │   │   │   │   │   ├── TableContentSideBar.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── doc-tree
@@ -1413,6 +1415,12 @@
     │   │       │   │   │   └── stores
     │   │       │   │   │       ├── index.ts
     │   │       │   │   │       └── useLeftPanelStore.tsx
+    │   │       │   │   ├── right-panel
+    │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── RightPanel.tsx
+    │   │       │   │   │   │   └── RightPanelCollapseButton.tsx
+    │   │       │   │   │   └── stores
+    │   │       │   │   │       └── useRightPanelStore.tsx
     │   │       │   │   ├── service-worker
     │   │       │   │   │   ├── DocsDB.ts
     │   │       │   │   │   ├── RequestSerializer.ts
@@ -1465,6 +1473,7 @@
     │   │       │   │   ├── PageLayout.tsx
     │   │       │   │   ├── conf.ts
     │   │       │   │   ├── index.ts
+    │   │       │   │   ├── usePanelCoordination.tsx
     │   │       │   │   └── utils.ts
     │   │       │   ├── libs
     │   │       │   │   ├── Analytics.tsx
@@ -1649,4 +1658,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-285 directories, 1439 files
+288 directories, 1445 files
