@@ -1071,6 +1071,7 @@
 │   │   │   ├── france_connect_extrait_immatriculation_vehicule_locataire.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_allocation_adulte_handicape_with_civility
+│   │   │   ├── 200-usager-base-france_connect.yml
 │   │   │   ├── 200_beneficiaire.yaml
 │   │   │   ├── 200_non_beneficiaire.yaml
 │   │   │   ├── 404.yaml
@@ -1087,6 +1088,7 @@
 │   │   │   ├── france_connect_cnaf.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_allocation_enfant_handicape_with_civility
+│   │   │   ├── 200-usager-base-france_connect.yml
 │   │   │   ├── 200_beneficiaire.yaml
 │   │   │   ├── 200_non_beneficiaire.yaml
 │   │   │   ├── 200_ouvrant_droit.yaml
@@ -1457,6 +1459,7 @@
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_civility
+│   │   │   ├── 200-usager-base-france_connect.yml
 │   │   │   ├── 200_boursier.yaml
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_non_boursier.yaml
@@ -1739,6 +1742,7 @@
 │   │   │   │   ├── api_particulier
 │   │   │   │   │   ├── civility_parameters.rb
 │   │   │   │   │   ├── france_connectable.rb
+│   │   │   │   │   ├── requires_france_connect.rb
 │   │   │   │   │   └── transcogage.rb
 │   │   │   │   ├── cacheable.rb
 │   │   │   │   ├── can_log_requests_info_for_debugging.rb
@@ -3008,6 +3012,7 @@
 │   │   │   │   │   └── pole_emploi
 │   │   │   │   │       └── statut_controller_spec.rb
 │   │   │   │   └── v3_and_more
+│   │   │   │       ├── base_controller_requires_france_connect_spec.rb
 │   │   │   │       ├── base_controller_spec.rb
 │   │   │   │       └── cnav
 │   │   │   │           └── abstract_civility_controller_spec.rb
@@ -4355,6 +4360,7 @@
 │   │   │   ├── custom_cops
 │   │   │   │   └── open_payload_file.rb
 │   │   │   ├── helpers
+│   │   │   │   ├── authentication_stub.rb
 │   │   │   │   ├── common_errors_messages_helpers.rb
 │   │   │   │   ├── credentials_helpers.rb
 │   │   │   │   ├── dgfip.rb
@@ -5366,6 +5372,10 @@
     │   │   │   ├── transfer_tokens_management.rb
     │   │   │   └── user_management.rb
     │   │   ├── editor
+    │   │   │   ├── api
+    │   │   │   │   ├── base_controller.rb
+    │   │   │   │   └── v1
+    │   │   │   │       └── delegations_controller.rb
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   └── delegations_controller.rb
     │   │   ├── editor_controller.rb
@@ -5461,6 +5471,11 @@
     │   │   ├── api_entreprise_domain_constraint.rb
     │   │   ├── api_particulier_domain_constraint.rb
     │   │   ├── authorization_request_condition_facade.rb
+    │   │   ├── editor
+    │   │   │   └── api
+    │   │   │       └── v1
+    │   │   │           └── delegation_serializer.rb
+    │   │   ├── editor_api_domain_constraint.rb
     │   │   ├── hub_signature.rb
     │   │   └── seeds.rb
     │   ├── mailers
@@ -5953,12 +5968,14 @@
     │   ├── brakeman
     │   ├── bundle
     │   ├── deploy
+    │   ├── generate_swagger.sh
     │   ├── install.sh
     │   ├── local.sh
     │   ├── rails
     │   ├── rake
     │   ├── rspec
     │   ├── setup
+    │   ├── test_swagger.sh
     │   └── update
     ├── commons -> ../commons
     ├── config
@@ -6034,6 +6051,8 @@
     │   │   ├── new_framework_defaults_7_0.rb
     │   │   ├── omniauth.rb
     │   │   ├── permissions_policy.rb
+    │   │   ├── rswag_api.rb
+    │   │   ├── rswag_ui.rb
     │   │   ├── sentry.rb
     │   │   ├── sitemap_generator.rb
     │   │   ├── strong_migrations.rb
@@ -6917,6 +6936,11 @@
     │   │   ├── external_url_helper_spec.rb
     │   │   └── scope_helper_spec.rb
     │   ├── i18n_spec.rb
+    │   ├── integration
+    │   │   └── editor
+    │   │       └── api
+    │   │           └── v1
+    │   │               └── delegations_spec.rb
     │   ├── interactors
     │   │   ├── admin
     │   │   │   ├── audit_notifications
@@ -6955,6 +6979,10 @@
     │   ├── lib
     │   │   ├── access_token_spec.rb
     │   │   ├── authorization_request_condition_facade_spec.rb
+    │   │   ├── editor
+    │   │   │   └── api
+    │   │   │       └── v1
+    │   │   │           └── delegation_serializer_spec.rb
     │   │   ├── hub_signature_spec.rb
     │   │   ├── seeds_spec.rb
     │   │   └── tasks
@@ -7032,6 +7060,12 @@
     │   │   └── provider
     │   │       └── dashboard_query_spec.rb
     │   ├── rails_helper.rb
+    │   ├── requests
+    │   │   └── editor
+    │   │       └── api
+    │   │           └── v1
+    │   │               ├── delegations_spec.rb
+    │   │               └── host_routing_spec.rb
     │   ├── services
     │   │   ├── admin_api_token_spec.rb
     │   │   ├── announcement_banner_spec.rb
@@ -7048,52 +7082,56 @@
     │   ├── stores
     │   │   └── api_entreprise
     │   │       └── endpoints_store_spec.rb
-    │   └── support
-    │       ├── hubee_api_mocks.rb
-    │       ├── insee_sirene_api_mocks.rb
-    │       └── shared_examples
-    │           ├── controllers
-    │           │   ├── authenticated_users_controller.rb
-    │           │   └── stats_controller.rb
-    │           ├── datapass_webhooks.rb
-    │           ├── features
-    │           │   ├── blog.rb
-    │           │   ├── cas_usages.rb
-    │           │   ├── changelog_subscriptions.rb
-    │           │   ├── changelogs.rb
-    │           │   ├── create_token_magic_link.rb
-    │           │   ├── documentation.rb
-    │           │   ├── endpoints
-    │           │   │   ├── index.rb
-    │           │   │   └── show.rb
-    │           │   ├── faq.rb
-    │           │   ├── logout.rb
-    │           │   ├── pages.rb
-    │           │   ├── show_token_from_magic_link.rb
-    │           │   ├── signin_process_datapass.rb
-    │           │   ├── stats.rb
-    │           │   └── user_profile.rb
-    │           ├── flash_notification.rb
-    │           ├── mailers
-    │           │   ├── authorization_request_mailer.rb
-    │           │   └── token_mailer.rb
-    │           ├── models
-    │           │   ├── blog_post.rb
-    │           │   ├── endpoint.rb
-    │           │   ├── faq_entry.rb
-    │           │   └── provider.rb
-    │           ├── organizers
-    │           │   ├── datapass_webhook
-    │           │   │   └── base.rb
-    │           │   └── user
-    │           │       └── o_auth_login.rb
-    │           └── token_magic_link.rb
+    │   ├── support
+    │   │   ├── hubee_api_mocks.rb
+    │   │   ├── insee_sirene_api_mocks.rb
+    │   │   └── shared_examples
+    │   │       ├── controllers
+    │   │       │   ├── authenticated_users_controller.rb
+    │   │       │   └── stats_controller.rb
+    │   │       ├── datapass_webhooks.rb
+    │   │       ├── features
+    │   │       │   ├── blog.rb
+    │   │       │   ├── cas_usages.rb
+    │   │       │   ├── changelog_subscriptions.rb
+    │   │       │   ├── changelogs.rb
+    │   │       │   ├── create_token_magic_link.rb
+    │   │       │   ├── documentation.rb
+    │   │       │   ├── endpoints
+    │   │       │   │   ├── index.rb
+    │   │       │   │   └── show.rb
+    │   │       │   ├── faq.rb
+    │   │       │   ├── logout.rb
+    │   │       │   ├── pages.rb
+    │   │       │   ├── show_token_from_magic_link.rb
+    │   │       │   ├── signin_process_datapass.rb
+    │   │       │   ├── stats.rb
+    │   │       │   └── user_profile.rb
+    │   │       ├── flash_notification.rb
+    │   │       ├── mailers
+    │   │       │   ├── authorization_request_mailer.rb
+    │   │       │   └── token_mailer.rb
+    │   │       ├── models
+    │   │       │   ├── blog_post.rb
+    │   │       │   ├── endpoint.rb
+    │   │       │   ├── faq_entry.rb
+    │   │       │   └── provider.rb
+    │   │       ├── organizers
+    │   │       │   ├── datapass_webhook
+    │   │       │   │   └── base.rb
+    │   │       │   └── user
+    │   │       │       └── o_auth_login.rb
+    │   │       └── token_magic_link.rb
+    │   └── swagger_helper.rb
     ├── storage
     │   └── .keep
+    ├── swagger
+    │   └── v1
+    │       └── openapi-editor.yaml
     ├── tmp
     │   └── .keep
     ├── token_export
     │   └── .gitkeep
     └── vendor
         └── .keep
-1433 directories, 5995 files
+1451 directories, 6015 files
