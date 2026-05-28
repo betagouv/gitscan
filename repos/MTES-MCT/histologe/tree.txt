@@ -148,6 +148,7 @@
 │   │   │       ├── bo_modales.js
 │   │   │       ├── component
 │   │   │       │   ├── component_autocomplete_bailleur.js
+│   │   │       │   ├── component_dialog_side_panel.js
 │   │   │       │   ├── component_json_response_handler.js
 │   │   │       │   ├── component_phone_number_row.js
 │   │   │       │   ├── component_search_address.js
@@ -322,7 +323,6 @@
 ├── config
 │   ├── app
 │   │   ├── competences.yaml
-│   │   ├── cron_scheduler.yaml
 │   │   ├── csp.yaml
 │   │   └── suivi_messages.yaml
 │   ├── bundles.php
@@ -408,7 +408,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (98 files)
+│   └── Version*.php  (101 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -544,12 +544,9 @@
 │   └── upload-s3.sh
 ├── src
 │   ├── Command
-│   │   ├── Clock
-│   │   │   └── ScheduledTaskCommand.php
 │   │   ├── CreateSignalementPhotoVariantsCommand.php
 │   │   ├── Cron
 │   │   │   ├── AbstractCronCommand.php
-│   │   │   ├── AbstractSynchronizeEsaboraCommand.php
 │   │   │   ├── AnonymizeExpiredAccountCommand.php
 │   │   │   ├── AskFeedbackUsagerCommand.php
 │   │   │   ├── ClearEntitiesCommand.php
@@ -583,8 +580,7 @@
 │   │   ├── ScanFilesCommand.php
 │   │   ├── SlugifyDocumentSignalementCommand.php
 │   │   ├── Temp
-│   │   │   ├── .gitignore
-│   │   │   └── SyncSishRejetCommand.php
+│   │   │   └── .gitignore
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateSignalementDocumentFieldsCommand.php
 │   │   └── UpdateSignalementGeolocalisationCommand.php
@@ -1035,6 +1031,7 @@
 │   │   ├── CoordonneesAgenceType.php
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── EditTagType.php
+│   │   ├── MessageBailleurType.php
 │   │   ├── MessageUsagerType.php
 │   │   ├── PartnerPerimetreType.php
 │   │   ├── PartnerType.php
@@ -1241,6 +1238,17 @@
 │   │   ├── UserSearchFilterRepository.php
 │   │   ├── UserSignalementSubscriptionRepository.php
 │   │   └── ZoneRepository.php
+│   ├── Scheduler
+│   │   ├── EsaboraScheduleProvider.php
+│   │   ├── Message
+│   │   │   ├── SyncEsaboraSCHSMessage.php
+│   │   │   ├── SyncEsaboraSISHInterventionMessage.php
+│   │   │   └── SyncEsaboraSISHMessage.php
+│   │   └── MessageHandler
+│   │       ├── AbstractSyncEsaboraMessageHandler.php
+│   │       ├── SyncEsaboraSCHSMessageHandler.php
+│   │       ├── SyncEsaboraSISHInterventionMessageHandler.php
+│   │       └── SyncEsaboraSISHMessageHandler.php
 │   ├── Security
 │   │   ├── Authenticator
 │   │   │   ├── CodeSuiviLoginAuthenticator.php
@@ -1265,6 +1273,7 @@
 │   │       ├── InjonctionBailleurVoter.php
 │   │       ├── InterventionVoter.php
 │   │       ├── PartnerVoter.php
+│   │       ├── SignalementBailleurVoter.php
 │   │       ├── SignalementFoVoter.php
 │   │       ├── SignalementVoter.php
 │   │       ├── SuiviVoter.php
@@ -1522,6 +1531,7 @@
 │   │   │   │   │   ├── SuiviDemandeAbandonProcedureToOtherUsagerMailer.php
 │   │   │   │   │   ├── SuiviDemandeAbandonProcedureToUsagerMailer.php
 │   │   │   │   │   ├── SuiviNewCommentBackMailer.php
+│   │   │   │   │   ├── SuiviNewCommentForBailleurMailer.php
 │   │   │   │   │   ├── SuiviNewCommentFrontMailer.php
 │   │   │   │   │   ├── SuiviVisiteAbortedToPartnerMailer.php
 │   │   │   │   │   ├── SuiviVisiteAbortedToUsagerMailer.php
@@ -1780,7 +1790,7 @@
 │   │   ├── metabase
 │   │   │   └── _iframe.html.twig
 │   │   └── signalement
-│   │       ├── add_suivi.html.twig
+│   │       ├── _panel-add-suivi.html.twig
 │   │       ├── conclude-procedure.html.twig
 │   │       ├── desordre-precision-label.html.twig
 │   │       ├── display_alert.html.twig
@@ -2124,6 +2134,7 @@
 │   │   ├── login_link_email.html.twig
 │   │   ├── lost_pass_email.html.twig
 │   │   ├── migration_pass_email.html.twig
+│   │   ├── new_comment_for_bailleur_email.html.twig
 │   │   ├── new_signalement_email.html.twig
 │   │   ├── notification_summary_email.html.twig
 │   │   ├── nouveau_*.twig  (14 files)
@@ -2152,7 +2163,8 @@
 │   │   │   ├── _suivi_signalement_card_right.html.twig
 │   │   │   ├── _suivi_signalement_card_status.html.twig
 │   │   │   ├── _suivi_signalement_inviter_tiers.html.twig
-│   │   │   └── _suivi_signalement_prevenir_bailleur.html.twig
+│   │   │   ├── _suivi_signalement_prevenir_bailleur.html.twig
+│   │   │   └── _suivi_signalement_suivi.html.twig
 │   │   ├── cgu_agents.html.twig
 │   │   ├── dossier_bailleur
 │   │   │   ├── dossier_bailleur.html.twig
@@ -2233,8 +2245,7 @@
 │   │   │   │   ├── RemindPendingDraftsCommandTest.php
 │   │   │   │   ├── ResetInjonctionNoResponseCommandTest.php
 │   │   │   │   ├── SendDailyEmailsCommandTest.php
-│   │   │   │   ├── SendSuiviWaitingNotificationCommandTest.php
-│   │   │   │   └── SynchronizeInterventionSISHCommandTest.php
+│   │   │   │   └── SendSuiviWaitingNotificationCommandTest.php
 │   │   │   ├── LoadEpciCommandTest.php
 │   │   │   ├── MergePartnersCommandTest.php
 │   │   │   └── NotifyVisitsCommandTest.php
@@ -2377,6 +2388,11 @@
 │   │   │   ├── SuiviRepositoryTest.php
 │   │   │   ├── UserRepositoryTest.php
 │   │   │   └── ZoneRepositoryTest.php
+│   │   ├── Scheduler
+│   │   │   └── MessageHandler
+│   │   │       ├── SyncEsaboraSCHSMessageHandlerTest.php
+│   │   │       ├── SyncEsaboraSISHInterventionMessageHandlerTest.php
+│   │   │       └── SyncEsaboraSISHMessageHandlerTest.php
 │   │   ├── Service
 │   │   │   ├── Esabora
 │   │   │   │   ├── AffectationEsaboraPolicyTest.php
@@ -2824,4 +2840,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-471 directories, 2469 files
+475 directories, 2484 files
