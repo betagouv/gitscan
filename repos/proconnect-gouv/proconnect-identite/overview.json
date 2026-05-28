@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-identite",
   "name": "proconnect-identite",
-  "description": "ProConnect Identité est un fournisseur d'identité OpenId Connect géré par la DINUM. Il permet aux professionnels de s'authentifier au sein de la fédération ProConnect.",
+  "description": "ProConnect Identité est un fournisseur d'identité OpenId Connect géré par la DINUM. Il permet aux professionnels de s'authentifier au sein de la fédération ProConnect, notamment ceux qui n'ont pas de fournisseur d'identité désigné.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,20 +23,25 @@
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Node.js / NestJS"
+    "Node.js / NestJS",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "saml",
-      "jwt"
+      "jwt",
+      "session"
     ]
   },
   "tests": [
-    "Cypress"
+    "Cypress",
+    "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-22T18:24:03+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-05-27T18:02:08+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -46,9 +52,11 @@
     "openIssues": null
   },
   "tags": [
-    "Sécurité & Auth",
-    "Open Data",
+    "Sécurité & Conformité",
+    "Authentification & Accès",
+    "API & Intégrations",
     "TypeScript",
-    "API & Intégrations"
+    "Docker",
+    "Node.js"
   ]
 }

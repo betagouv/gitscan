@@ -1,9 +1,7 @@
 .
 ├── .changeset
 │   ├── README.md
-│   ├── config.json
-│   ├── floppy-rivers-report.md
-│   └── upset-mails-know.md
+│   └── config.json
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -14,6 +12,7 @@
 │   ├── dependabot.yml
 │   ├── labeler.yml
 │   └── workflows
+│       ├── debug-npm-token.yml
 │       ├── docker.yml
 │       ├── end-to-end.yml
 │       ├── fixtures.yml
@@ -21,6 +20,7 @@
 │       ├── release.yml
 │       ├── test.yml
 │       ├── update-annuaire.yml
+│       ├── update-grist.yml
 │       └── update-lockfile.yml
 ├── .gitignore
 ├── .prettierignore
@@ -359,14 +359,17 @@
 │   │   ├── CHANGELOG.md
 │   │   ├── LICENSE
 │   │   ├── README.md
+│   │   ├── connectors
+│   │   │   └── administration-grist.ts
 │   │   ├── data
 │   │   │   ├── .commit
-│   │   │   ├── administration_nature_juridique.json
-│   │   │   ├── administration_siren_blacklist.json
-│   │   │   └── administration_siren_whitelist.json
+│   │   │   ├── administration-grist.json
+│   │   │   ├── administration_blacklist.json
+│   │   │   └── administration_whitelist.json
 │   │   ├── package.json
 │   │   ├── scripts
-│   │   │   └── build-data.ts
+│   │   │   ├── build-data.ts
+│   │   │   └── update-grist.ts
 │   │   ├── src
 │   │   │   └── index.ts
 │   │   ├── tsconfig.json
@@ -749,14 +752,14 @@
 │   │   │   │       └── upsert-franceconnect-userinfo.ts
 │   │   │   ├── services
 │   │   │   │   ├── organization
+│   │   │   │   │   ├── compute-service-public-info.test.ts
+│   │   │   │   │   ├── compute-service-public-info.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── is-domain-allowed-for-organization.ts
 │   │   │   │   │   ├── is-entreprise-unipersonnelle.test.ts
 │   │   │   │   │   ├── is-entreprise-unipersonnelle.ts
 │   │   │   │   │   ├── is-organization-covered-by-certification-dirigeant.test.ts
 │   │   │   │   │   ├── is-organization-covered-by-certification-dirigeant.ts
-│   │   │   │   │   ├── is-public-service.test.ts
-│   │   │   │   │   ├── is-public-service.ts
 │   │   │   │   │   ├── is-small-etablissement-public.test.ts
 │   │   │   │   │   └── is-small-etablissement-public.ts
 │   │   │   │   └── postgres
@@ -1183,4 +1186,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-209 directories, 1055 files
+210 directories, 1057 files

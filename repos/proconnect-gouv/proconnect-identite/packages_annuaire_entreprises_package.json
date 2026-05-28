@@ -1,6 +1,6 @@
 {
   "name": "@proconnect-gouv/proconnect.annuaire_entreprises",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "homepage": "https://github.com/proconnect-gouv/proconnect-identite/tree/main/packages/annuaire_entreprises#readme",
   "bugs": "https://github.com/proconnect-gouv/proconnect-identite/issues",
   "repository": {
@@ -34,8 +34,9 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.lib.json",
-    "prebuild:data": "npx --yes del-cli data/*.json",
     "build:data": "tsx scripts/build-data.ts",
+    "update:grist": "tsx scripts/update-grist.ts",
+    "postupdate:grist": "prettier --write data/administration-grist.json",
     "postbuild:data": "prettier --write data",
     "check": "npm run build -- --noEmit",
     "dev": "npm run build -- --watch --preserveWatchOutput",
