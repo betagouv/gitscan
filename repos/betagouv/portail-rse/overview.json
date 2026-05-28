@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre des outils de gestion, d'analyse et de reporting pour faciliter la démarche RSE.",
+  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre un espace pour la gestion et le suivi des réglementations RSE.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,11 +11,9 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Contenu éditorial",
     "Sécurité & Conformité",
     "Données & Schémas",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -24,16 +22,17 @@
     "psycopg",
     "requests",
     "django-weasyprint",
+    "sentry-sdk",
+    "django-vite",
     "aiohttp",
-    "openpyxl",
-    "django-cors-headers"
+    "geojson",
+    "django-lasuite"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Django",
-    "Frontend React",
     "Docker & Conteneurs"
   ],
   "auth": {
@@ -42,9 +41,13 @@
       "oauth2",
       "sso"
     ],
-    "providers": []
+    "providers": [
+      "Proconnect"
+    ]
   },
-  "tests": "Pytest",
+  "tests": [
+    "pytest"
+  ],
   "workflows": [
     "test.yml"
   ],
