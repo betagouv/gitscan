@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification et d'authentification pour les professionnels, facilitant l'accès aux services publics.",
+  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification pour les professionnels, avec des fonctionnalités d'authentification et d'intégration.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
@@ -9,7 +9,7 @@
     "Sécurité & Conformité",
     "Gestion des utilisateurs & Permissions"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Node.js",
     "Yarn",
@@ -19,7 +19,7 @@
     "Mongoose",
     "Passport",
     "amqplib",
-    "oidc-provider"
+    "jose"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,7 +32,9 @@
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "saml",
+      "jwt",
+      "session"
     ]
   },
   "tests": [
@@ -42,7 +44,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-22T18:21:33+02:00",
+  "lastActivity": "2026-05-27T15:38:24+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -54,10 +56,13 @@
   },
   "tags": [
     "Sécurité & Conformité",
-    "Authentification",
-    "Données & Open Data",
-    "JavaScript",
+    "Authentification & Accès",
+    "API & Intégrations",
     "TypeScript",
-    "API & Intégrations"
+    "Docker",
+    "Node.js",
+    "MongoDB",
+    "SSO",
+    "OpenID Connect"
   ]
 }

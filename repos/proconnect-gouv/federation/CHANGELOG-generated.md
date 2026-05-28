@@ -1,24 +1,23 @@
-## Changelog : federation (30 derniers jours, au 22 mai 2026)
+## Changelog : federation (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la flexibilité de la plateforme. Des ajustements ont été apportés à la gestion des rôles et des permissions, notamment dans l'interface d'administration, ainsi que des améliorations de la validation des emails et de la configuration OIDC. Des mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la performance du système.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, de la stabilité et de l'expérience utilisateur de la plateforme. Des mises à jour de dépendances ont été effectuées pour assurer la compatibilité et la sécurité du code. Des améliorations ont été apportées à l'administration, notamment la gestion des rôles et l'ajout d'un indicateur visuel pour l'environnement de production. L'accessibilité a également été améliorée avec l'ajout d'un lien vers la déclaration d'accessibilité.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bandeau d'avertissement pour l'environnement de test [#1141](https://github.com/proconnect-gouv/federation/pull/1141).
-- Amélioration de l'accessibilité : ajout d'un lien vers la déclaration d'accessibilité et amélioration du balisage HTML [#1142](https://github.com/proconnect-gouv/federation/pull/1142).
-- Ajout de l'étiquette `organization_label` par défaut lors de la création d'un fournisseur de services [#1159](https://github.com/proconnect-gouv/federation/pull/1159).
-- L'acr (autorisation claim) n'est plus assigné si les valeurs ne sont pas reconnues [#1122](https://github.com/proconnect-gouv/federation/pull/1122).
-- Ajout d'un indicateur pour afficher une bordure rouge en environnement de production dans l'admin [#1157](https://github.com/proconnect-gouv/federation/pull/1157).
+- Ajout d'un label par défaut pour les organisations lors de la création d'un prestataire de service. [#1159](https://github.com/proconnect-gouv/federation/pull/1159)
+- Amélioration de l'accessibilité : ajout d'un lien vers la déclaration d'accessibilité et modifications de la structure HTML pour une meilleure compatibilité avec les lecteurs d'écran. [#1142](https://github.com/proconnect-gouv/federation/pull/1142)
+- Ajout d'un avertissement pour l'environnement de test dans l'interface d'administration. [#1141](https://github.com/proconnect-gouv/federation/pull/1141)
+- Gestion des rôles : suppression des rôles de base de données et ajout de rôles par défaut dans l'administration pour une meilleure gestion des permissions. [#1184](https://github.com/proconnect-gouv/federation/pull/1184), [#1185](https://github.com/proconnect-gouv/federation/pull/1185), [#1161](https://github.com/proconnect-gouv/federation/pull/1161)
+- Correction d'un bug où le champ `acr` était assigné même si les `acrs` n'étaient pas reconnus. [#1122](https://github.com/proconnect-gouv/federation/pull/1122)
 
 ### Évolutions techniques
-- Suppression des rôles de base de données dans l'administration [#1184](https://github.com/proconnect-gouv/federation/pull/1184).
-- Mise à jour de Node.js vers la version 24.16 [#1186](https://github.com/proconnect-gouv/federation/pull/1186).
-- Refonte de la validation d'email avec l'ajout d'un flag `FEATURE_VALIDATE_EMAIL` [#1144](https://github.com/proconnect-gouv/federation/pull/1144).
-- Amélioration de la configuration OIDC pour permettre l'utilisation d'une fonction `customFetch` [#1143](https://github.com/proconnect-gouv/federation/pull/1143).
-- Utilisation de DNS-over-HTTPS pour la résolution MX dans la validation d'email [#1159](https://github.com/proconnect-gouv/federation/pull/1159).
-- Support de multiples exclusions dans la configuration `readyz` pour le core-fca-low [#1154](https://github.com/proconnect-gouv/federation/pull/1154).
-- Ajout de rôles par défaut dans l'interface d'administration [#1161](https://github.com/proconnect-gouv/federation/pull/1161).
+- Mise à jour de Node.js en version 24.16 dans l'application d'administration. [#1187](https://github.com/proconnect-gouv/federation/pull/1187), [#1186](https://github.com/proconnect-gouv/federation/pull/1186)
+- Amélioration de la gestion des exclusions dans le composant `core-fca-low` pour supporter plusieurs exclusions sur le endpoint `readyz`. [#1154](https://github.com/proconnect-gouv/federation/pull/1154)
+- Remplacement de `resolveMx` par une requête DNS-over-HTTPS dans le validateur d'email. [#1159](https://github.com/proconnect-gouv/federation/pull/1159)
+- Publication de l'image `core-fca-low-migrator` sur GitHub Container Registry. [#1195](https://github.com/proconnect-gouv/federation/pull/1195)
+- Refonte de l'indicateur d'environnement de production dans l'administration (remplacement de `isProduction` par `hasRedBorder`). [#1157](https://github.com/proconnect-gouv/federation/pull/1157)
 
 ### Autres changements
-- Ajout de logs pour les valeurs `acr` [#1139](https://github.com/proconnect-gouv/federation/pull/1139).
-- Plusieurs mises à jour de dépendances ont été effectuées pour améliorer la sécurité et la stabilité du système (cryptography, pydantic, systeminformation, uvicorn, fastapi, mongoose, axe-core, fast-uri, dotenv, cypress, globals, amqplib, postcss, uuid, @nestjs/testing, @proconnect-gouv/proconnect.api_entreprise, ejs).
+- Mises à jour de nombreuses dépendances (FastAPI, Pydantic, Mongoose, Cypress, etc.) pour améliorer la sécurité et la stabilité.
+- Corrections de linting dans l'application d'administration.
+- Suppression d'un test API santé obsolète.
