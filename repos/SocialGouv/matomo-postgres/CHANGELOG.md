@@ -1,3 +1,24 @@
+## [2.4.4](https://github.com/SocialGouv/matomo-postgres/compare/v2.4.3...v2.4.4) (2026-05-26)
+
+
+### Bug Fixes
+
+* mirror schema from MATOMO_TABLE_NAME onto a custom DESTINATION_TABLE after migrations ([fe7413b](https://github.com/SocialGouv/matomo-postgres/commit/fe7413bd9c2be580944113c4f8826d838373d503))
+
+## [2.4.3](https://github.com/SocialGouv/matomo-postgres/compare/v2.4.2...v2.4.3) (2026-05-26)
+
+
+### Bug Fixes
+
+* re-apply partition race-condition guard via new migration ([910ded4](https://github.com/SocialGouv/matomo-postgres/commit/910ded49feae6e992eb986fb362c34afbe07c739))
+
+## [2.4.2](https://github.com/SocialGouv/matomo-postgres/compare/v2.4.1...v2.4.2) (2026-05-26)
+
+
+### Bug Fixes
+
+* declare engines.node >=18 so npx fails fast on EOL Node ([ccc9f5c](https://github.com/SocialGouv/matomo-postgres/commit/ccc9f5c405647409ee6895c28facf6f92d8e80e8))
+
 ## [2.4.1](https://github.com/SocialGouv/matomo-postgres/compare/v2.4.0...v2.4.1) (2026-04-30)
 
 
