@@ -4,6 +4,7 @@
 │   └── workflows
 │       └── document-ia-ci.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .pre-commit-config.yaml
 ├── .run
 │   ├── API.run.xml
@@ -531,13 +532,19 @@
 │   ├── src
 │   │   └── document_ia_schemas
 │   │       ├── __init__.py
+│   │       ├── attestation_contrat_energie.py
+│   │       ├── attestation_hebergement.py
 │   │       ├── avis_imposition.py
 │   │       ├── base_document_type_schema.py
 │   │       ├── bulletin_salaire.py
 │   │       ├── cni.py
+│   │       ├── facture_energie.py
 │   │       ├── field_metrics.py
+│   │       ├── identity.py
 │   │       ├── passeport.py
 │   │       ├── permis_conduire.py
+│   │       ├── quittance_loyer.py
+│   │       ├── taxe_fonciere.py
 │   │       ├── utils
 │   │       │   ├── __init__.py
 │   │       │   └── pydantic_utils.py
@@ -688,11 +695,16 @@
 │       ├── snapshots
 │       │   └── prompts
 │       │       └── extraction
+│       │           ├── attestation_contrat_energie.txt
+│       │           ├── attestation_hebergement.txt
 │       │           ├── avis_imposition.txt
 │       │           ├── bulletin_salaire.txt
 │       │           ├── cni.txt
+│       │           ├── facture_energie.txt
 │       │           ├── passeport.txt
 │       │           ├── permis_conduire.txt
+│       │           ├── quittance_loyer.txt
+│       │           ├── taxe_fonciere.txt
 │       │           └── visale_certificate.txt
 │       └── unit
 │           ├── test_deepseek_ocr_service.py
@@ -712,4 +724,4 @@
 ├── pyrightconfig.json
 └── scripts
     └── init-s3-bucket.py
-185 directories, 529 files
+185 directories, 541 files
