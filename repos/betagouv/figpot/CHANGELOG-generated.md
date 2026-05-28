@@ -1,22 +1,27 @@
-## Changelog : figpot (30 derniers jours, au 22 mai 2026)
+## Changelog : figpot (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la fidélité de la conversion Figma vers Penpot, notamment au niveau du rendu du texte, des formes, des gradients et des couleurs. Plusieurs corrections ont été apportées pour gérer des cas spécifiques et améliorer la compatibilité entre les deux plateformes.
+Les dernières améliorations de figpot se concentrent sur l'amélioration de la fidélité de la conversion Figma vers Penpot, en particulier pour les éléments de texte, les formes vectorielles, les gradients et les remplissages. Des corrections ont été apportées pour gérer des cas spécifiques rencontrés lors de la conversion, améliorant ainsi la qualité globale de la migration et de la synchronisation des designs.
 
 ### Évolutions fonctionnelles
-- Amélioration de la conversion des textes : correction du calcul de la hauteur de ligne et gestion des espaces négatifs pour un rendu plus précis dans Penpot.
-- Gestion des chemins (paths) : correction de problèmes liés aux remplissages et aux traits, assurant une conversion plus fidèle des formes complexes.
-- Support des nœuds de texte sur un chemin (text path nodes) : conversion des textes sur un chemin en vecteurs pour une compatibilité avec Penpot.
-- Support des slots Figma : gestion des nœuds de slot Figma lors de la conversion.
-- Support des variables de couleur : correction de la conversion des couleurs via des alias de variables.
+- Amélioration de la conversion des textes :
+    - Correction du calcul de la hauteur de ligne pour une meilleure correspondance avec Figma.
+    - Gestion des espaces négatifs dans le texte pour un alignement correct.
+    - Support des chemins de texte (text paths) convertis en vecteurs.
+- Amélioration de la conversion des formes :
+    - Correction de l'ordre des traits (strokes) pour une apparence correcte dans Penpot.
+    - Gestion des arcs et des cercles, en les convertissant en vecteurs lorsque nécessaire.
+    - Correction de problèmes de remplissage pour certains chemins Figma.
+- Amélioration de la conversion des gradients :
+    - Correction du mapping des gradients pour éviter les erreurs de valeur trop élevée.
+    - Gestion correcte des gradients.
+- Support des "slots" Figma.
 
 ### Évolutions techniques
-- Correction de l'ordre des traits (strokes) pour correspondre à Penpot.
-- Gestion des erreurs : remplacement des exceptions par des notifications pour les types de nœuds non supportés, améliorant la robustesse du convertisseur.
-- Contournement d'un problème lié aux changements de logique de transformation qui pouvaient causer des erreurs de comparaison (diff).
-- Forçage de la conversion des arcs en vecteurs plutôt qu'en objets "cercle" Penpot.
-- Correction de la gestion des gradients : amélioration du mapping des gradients et gestion des valeurs trop élevées.
+- Gestion des erreurs : remplacement des exceptions par des notifications pour les types de nœuds non supportés, facilitant le débogage et l'identification des limitations.
+- Correction d'un contournement (workaround) dans la logique de diff pour gérer les changements de type de nœud.
+- Amélioration de la gestion des nœuds Figma potentiellement corrompus, avec un avertissement.
 
 ### Autres changements
 - Mise à jour des polices Google.
-- Ajout d'un avertissement pour les nœuds de texte sur un chemin qui pourraient être corrompus par l'API Figma (reconstruction automatique en vecteur).
+- Support des variables de couleur.
