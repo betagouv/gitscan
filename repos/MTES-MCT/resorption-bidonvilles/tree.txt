@@ -1547,6 +1547,7 @@
 │   │   │   │   │   ├── getHistory
 │   │   │   │   │   │   └── getHistory.ts
 │   │   │   │   │   ├── historize
+│   │   │   │   │   │   ├── historize.spec.ts
 │   │   │   │   │   │   ├── historize.ts
 │   │   │   │   │   │   ├── historizeAction.ts
 │   │   │   │   │   │   ├── historizeAddresses.ts
@@ -1559,6 +1560,7 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── update
 │   │   │   │   │       ├── resetAddresses.ts
+│   │   │   │   │       ├── resetAsideData.spec.ts
 │   │   │   │   │       ├── resetAsideData.ts
 │   │   │   │   │       ├── resetFinances.ts
 │   │   │   │   │       ├── resetManagers.ts
@@ -1607,6 +1609,7 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── closingSolutionModel
 │   │   │   │   │   ├── findAll.ts
+│   │   │   │   │   ├── findByShantytown.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── commentTagModel
 │   │   │   │   │   ├── find.ts
@@ -1785,6 +1788,7 @@
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── deleteComment.ts
 │   │   │   │   │   ├── findAll.ts
+│   │   │   │   │   ├── findByShantytown.ts
 │   │   │   │   │   ├── findOne.ts
 │   │   │   │   │   ├── getHistory.ts
 │   │   │   │   │   └── index.ts
@@ -1802,7 +1806,6 @@
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── SQL.ts
 │   │   │   │   │   │   ├── getAddressSimpleOf.ts
-│   │   │   │   │   │   ├── getComments.ts
 │   │   │   │   │   │   ├── getDiff.ts
 │   │   │   │   │   │   ├── getUsenameOf.ts
 │   │   │   │   │   │   ├── livingConditions
@@ -1877,8 +1880,24 @@
 │   │   │   │   │   │   │           │   └── access_type.ts
 │   │   │   │   │   │   │           └── water.ts
 │   │   │   │   │   │   ├── query.ts
+│   │   │   │   │   │   ├── queryHelpers
+│   │   │   │   │   │   │   ├── buildChangelog.ts
+│   │   │   │   │   │   │   ├── enrichTownsWithRelations.ts
+│   │   │   │   │   │   │   └── processPreparatoryPhases.ts
 │   │   │   │   │   │   ├── serializeComment.ts
-│   │   │   │   │   │   └── serializeShantytown.ts
+│   │   │   │   │   │   ├── serializeShantytown.ts
+│   │   │   │   │   │   ├── types
+│   │   │   │   │   │   │   ├── FIELD_MAPPING.md
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── ShantytownUpdateData.d.ts
+│   │   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │   │       └── type-consistency.spec.ts
+│   │   │   │   │   │   └── updateHelpers
+│   │   │   │   │   │       ├── archiveRelatedData.ts
+│   │   │   │   │   │       ├── archiveShantytownHistory.ts
+│   │   │   │   │   │       ├── partitionShantytownData.ts
+│   │   │   │   │   │       ├── updateMainShantytown.ts
+│   │   │   │   │   │       └── updateShantytownRelations.ts
 │   │   │   │   │   ├── anonymizeOwners.ts
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── delete.ts
@@ -2051,6 +2070,7 @@
 │   │   │   │   │   ├── exportActions.creerClasseurExcel.ts
 │   │   │   │   │   ├── exportActions.generateExportFile.ts
 │   │   │   │   │   ├── exportActions.ts
+│   │   │   │   │   ├── fetch.spec.ts
 │   │   │   │   │   ├── fetch.ts
 │   │   │   │   │   ├── findActionFinancesReadersByAction.spec.ts
 │   │   │   │   │   ├── findActionFinancesReadersByAction.ts
@@ -2063,6 +2083,7 @@
 │   │   │   │   │   ├── requestPilot.spec.ts
 │   │   │   │   │   ├── requestPilot.ts
 │   │   │   │   │   ├── sendAlert.ts
+│   │   │   │   │   ├── update.spec.ts
 │   │   │   │   │   ├── update.ts
 │   │   │   │   │   └── write.fetchAction.ts
 │   │   │   │   ├── activitySummary
@@ -2151,8 +2172,6 @@
 │   │   │   │   │   ├── findJusticeReadersByLocation
 │   │   │   │   │   │   └── findJusticeReadersByLocation.ts
 │   │   │   │   │   ├── listAll
-│   │   │   │   │   │   ├── listAll.integration.spec.ts
-│   │   │   │   │   │   ├── listAll.spec.ts
 │   │   │   │   │   │   └── listAll.ts
 │   │   │   │   │   ├── organizationService.ts
 │   │   │   │   │   ├── search
@@ -2874,6 +2893,7 @@
 │       │   │   │   │   │   ├── vide.svg
 │       │   │   │   │   │   └── visualisation.svg
 │       │   │   │   │   ├── logo
+│       │   │   │   │   │   ├── dihal.png
 │       │   │   │   │   │   └── logo.svg
 │       │   │   │   │   ├── map
 │       │   │   │   │   │   ├── cutlery.png
@@ -4136,106 +4156,61 @@
 │           │   │       ├── contactPage.json
 │           │   │       ├── index.js
 │           │   │       └── landingPage.json
-│           │   ├── img
-│           │   │   ├── LandingPage
-│           │   │   │   ├── FirstSection
-│           │   │   │   │   ├── cta_prendre_en_main.jpg
-│           │   │   │   │   ├── poster_video_landing.png
-│           │   │   │   │   └── resorption-bidonvilles-dessin.jpg
-│           │   │   │   ├── SecondSection
-│           │   │   │   │   ├── map-bg.jpg
-│           │   │   │   │   ├── map-en.jpg
-│           │   │   │   │   ├── map-fr.jpg
-│           │   │   │   │   ├── map-ro.jpg
-│           │   │   │   │   └── poster_rb_connaitre_partager_agir.png
-│           │   │   │   ├── ThirdSection
-│           │   │   │   │   └── temoignage_utilisateur_1.png
-│           │   │   │   ├── resorption-bidonvilles-1.jpg
-│           │   │   │   ├── resorption-bidonvilles-2.jpg
-│           │   │   │   ├── resorption-bidonvilles-3.jpg
-│           │   │   │   ├── resorption-bidonvilles-4.jpg
-│           │   │   │   └── resorption-bidonvilles-5.jpg
-│           │   │   └── Navbar
-│           │   │       ├── BG.svg
-│           │   │       ├── FR.svg
-│           │   │       ├── Marianne.svg
-│           │   │       ├── RO.svg
-│           │   │       └── UK.svg
-│           │   └── video
-│           │       ├── rb_connaitre_partager_agir_720.mp4
-│           │       └── video_landing_720_no_sound.mp4
+│           │   └── img
+│           │       ├── LandingPage
+│           │       │   ├── carte.png
+│           │       │   └── resorption-bidonvilles.png
+│           │       └── Layout
+│           │           ├── dihal-dark.png
+│           │           └── dihal-light.png
 │           ├── components
-│           │   ├── ButtonContact
-│           │   │   └── ButtonContact.vue
 │           │   ├── Error
 │           │   │   └── Error.vue
 │           │   ├── LandingPage
-│           │   │   ├── CreditWrapper.vue
-│           │   │   ├── FirstSection
-│           │   │   │   ├── LandingCTABanner.vue
-│           │   │   │   ├── LandingPageFeatureBlock.vue
-│           │   │   │   └── LandingPageFirstSection.vue
-│           │   │   ├── FourthSection
-│           │   │   │   └── LandingPageFourthSection.vue
-│           │   │   ├── LandingPage.vue
-│           │   │   ├── LandingPageBanner.vue
-│           │   │   ├── LandingPageContactForm.vue
-│           │   │   ├── LandingPageHero.vue
-│           │   │   ├── SecondSection
-│           │   │   │   ├── LandingPageBilanBlock.vue
-│           │   │   │   ├── LandingPageDataBlock.vue
-│           │   │   │   └── LandingPageSecondSection.vue
-│           │   │   └── ThirdSection
-│           │   │       ├── LandingPageFAQ.vue
-│           │   │       ├── LandingPageNewsletter.vue
-│           │   │       └── LandingPageThirdSection.vue
-│           │   ├── Layout
-│           │   │   ├── Container
-│           │   │   │   └── Container.vue
-│           │   │   ├── Layout.vue
-│           │   │   └── Navbar
-│           │   │       ├── NavBarLogo.vue
-│           │   │       ├── NavBarMobileButton.vue
-│           │   │       ├── NavBarMobileMenu.vue
-│           │   │       ├── NavBarSticky.vue
-│           │   │       └── Navbar.vue
-│           │   └── LinkContact
-│           │       └── LinkContact.vue
+│           │   │   └── LandingPage.vue
+│           │   └── Layout
+│           │       ├── Container
+│           │       │   └── Container.vue
+│           │       └── Layout.vue
 │           ├── entrypoint.sh
 │           ├── error.vue
 │           ├── layouts
 │           │   ├── default.vue
-│           │   ├── empty.vue
 │           │   └── home.vue
 │           ├── nuxt.config.ts
 │           ├── package.json
 │           ├── pages
-│           │   ├── 404.vue
 │           │   └── index.vue
 │           ├── plugins
+│           │   ├── debug-ssr.server.ts
+│           │   ├── dsfr.js
 │           │   ├── fontawesome.ts
 │           │   ├── i18n.ts
 │           │   └── matomo.client.ts
 │           ├── public
-│           │   ├── Temoignage-LeMinor-BD_mars2021.vtt
-│           │   ├── Temoignage-Leduc-BD_mars2021.vtt
-│           │   ├── assets
-│           │   │   └── images
-│           │   │       └── flags
-│           │   │           ├── BG.svg
-│           │   │           ├── EN.svg
-│           │   │           ├── FR.svg
-│           │   │           └── RO.svg
+│           │   ├── artwork
+│           │   │   ├── background
+│           │   │   │   └── ovoid.svg
+│           │   │   └── pictograms
+│           │   │       ├── environment
+│           │   │       │   ├── moon.svg
+│           │   │       │   └── sun.svg
+│           │   │       └── system
+│           │   │           ├── system.svg
+│           │   │           └── technical-error.svg
 │           │   ├── favicon.ico
 │           │   ├── matomo.js
-│           │   ├── piwik.js
-│           │   └── rb_connaitre_partager_agir_720.vtt
+│           │   └── piwik.js
+│           ├── server
+│           │   └── plugins
+│           │       └── debug-nitro.ts
 │           ├── tailwind.config.js
 │           ├── tsconfig.json
 │           └── utils
-│               ├── redirectToContact.js
-│               └── setWebappDevice.js
+│               ├── dsfr.js
+│               ├── openMail.js
+│               └── redirectToHome.js
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-740 directories, 3850 files
+737 directories, 3828 files
