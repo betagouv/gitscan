@@ -1,25 +1,25 @@
-## Changelog : patrinotes (30 derniers jours, au 10 mai 2026)
+## Changelog : patrinotes (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la synchronisation des données, notamment des rapports et de leurs pièces jointes, ainsi que sur l'expérience utilisateur lors de l'inscription et de la manipulation des rapports. Des corrections de bugs ont également été apportées pour améliorer la stabilité de l'application.
+Ce mois-ci, l'application patrinotes a bénéficié d'améliorations significatives concernant la synchronisation des données, la gestion des rapports d'état et l'expérience utilisateur lors de la création de compte. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration du formulaire d'inscription avec l'ajout d'un composant d'information pour l'utilisateur [#69](https://github.com/betagouv/patrinotes/issues/69).
-- Synchronisation des rapports d'état et de leurs pièces jointes.
+- Amélioration de la synchronisation des rapports d'état et de leurs pièces jointes.
+- Ajout d'une liste de personnes présentes et du comptage des services dans les rapports PDF.  [#70](https://github.com/betagouv/patrinotes/issues/70)
 - Redirection des utilisateurs depuis CRVIF.
-- Affichage du rapport après la sélection du MH (Maître d'Hôtel).
-- Amélioration de l'affichage des statistiques du service et ajout du nombre de "personnes_presentes" au PDF [#70](https://github.com/betagouv/patrinotes/issues/70).
-- Ajout des 2 derniers sprints au rapport.
+- Amélioration de la présentation du formulaire d'inscription avec l'ajout d'un composant d'information pour l'utilisateur. [#71](https://github.com/betagouv/patrinotes/issues/71)
+- Affichage conditionnel du rapport après la sélection du MH (Monument Historique).
+- Sélection du responsable de la mission et liste des personnes présentes dans le Compte Rendu.
 
 ### Évolutions techniques
-- Mise à jour de la gestion des identifiants utilisateurs, utilisant l'adresse email au lieu de l'ID interne.
+- Mise à jour des données de population (pop data).
 - Correction d'un crash du routeur frontend.
-- Correction de problèmes liés aux migrations de la base de données.
-- Correction de problèmes de réinitialisation des données locales.
+- Correction des migrations de la base de données.
+- Utilisation de l'email pour identifier les utilisateurs au lieu de l'ID interne.
+- Correction de problèmes liés à la réinitialisation des données locales.
 
 ### Autres changements
-- Correction de l'étiquette lors du dessin sur une image.
-- Correction de l'exclusion des pièces jointes PDF lors de la synchronisation.
-- Ajustement de la mise en page de la section "Clauses" dans le formulaire "ServiceInstructeurForm".
-- Correction d'un bug de duplication sans sections.
-- Mise à jour des données POP.
+- Amélioration de l'étiquette lors du dessin sur une image.
+- Correction de l'affichage des sections dans le formulaire `ServiceInstructeurForm`.
+- Correction d'un bug empêchant la duplication de rapports sans sections.
+- Exclusion des pièces jointes PDF des rapports lors de certaines opérations.
