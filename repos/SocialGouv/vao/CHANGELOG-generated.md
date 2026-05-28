@@ -1,36 +1,39 @@
-## Changelog : vao (30 derniers jours, au 22 mai 2026)
+## Changelog : vao (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'application, notamment sur la gestion des agréments (création, renouvellement, validation, et affichage des statuts). Des corrections d'accessibilité ont également été apportées, ainsi que des améliorations de la gestion des fichiers et des tests pour garantir une meilleure qualité et fiabilité de l'application. L'initialisation de la base de données a été revue avec l'ajout d'un Dockerfile dédié.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité (notamment via le RGAA), la correction de bugs et l'ajout de nouvelles fonctionnalités concernant la gestion des agréments et des documents, ainsi que des améliorations techniques pour la base de données et les tests.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des statuts des agréments, notamment l'ajout du statut "À CORRIGER" [#1202](https://github.com/SocialGouv/vao/issues/1202).
-- Correction de l'affichage des dates et des statuts dans l'application [#1383](https://github.com/SocialGouv/vao/issues/1383).
-- Correction du rafraîchissement des renouvellements d'agrément [#1335](https://github.com/SocialGouv/vao/issues/1335).
-- Amélioration de la gestion des représentants légaux : accès, étapes de saisie, et correction d'erreurs d'intitulé [#1183](https://github.com/SocialGouv/vao/issues/1183), [#1336](https://github.com/SocialGouv/vao/issues/1336).
-- Correction du bouton "Activer" du fusager lorsqu'il est en brouillon et que le SIRET est identique [#1352](https://github.com/SocialGouv/vao/issues/1352).
-- Amélioration de la gestion des fichiers : suppression des catégories de fichiers inutiles, gestion des doublons, et ajout de contraintes sur les fichiers obligatoires [#1346](https://github.com/SocialGouv/vao/issues/1346), [#1384](https://github.com/SocialGouv/vao/issues/1384), [#1385](https://github.com/SocialGouv/vao/issues/1385).
-- Ajout de l'envoi d'emails de confirmation pour les demandes d'agrément [#1149](https://github.com/SocialGouv/vao/issues/1149).
-- Correction de l'affichage des tabs agréments (scroll) [#1395](https://github.com/SocialGouv/vao/issues/1395).
-- Correction de la validation de la date du certificat [#1386](https://github.com/SocialGouv/vao/issues/1386).
-- Amélioration de la gestion des hébergements (création) [#1344](https://github.com/SocialGouv/vao/issues/1344).
-- Correction du chemin de téléchargement des documents en back-office [#1399](https://github.com/SocialGouv/vao/issues/1399).
+
+*   **Agrément :**
+    *   Amélioration du processus de renouvellement d'agrément avec prise en compte des retours RGAA [#1354](https://github.com/SocialGouv/vao/issues/1354).
+    *   Correction de bugs et amélioration de l'affichage des dates et statuts des agréments [#1353](https://github.com/SocialGouv/vao/issues/1353), [#1352](https://github.com/SocialGouv/vao/issues/1352), [#1350](https://github.com/SocialGouv/vao/issues/1350).
+    *   Ajout de la possibilité de modifier et transmettre un agrément via Fusager [#1348](https://github.com/SocialGouv/vao/issues/1348), [#1267](https://github.com/SocialGouv/vao/issues/1267).
+    *   Correction de problèmes de rafraîchissement lors du renouvellement d'un agrément [#1335](https://github.com/SocialGouv/vao/issues/1335).
+    *   Amélioration du contrôle des représentants légaux [#1339](https://github.com/SocialGouv/vao/issues/1339).
+*   **Documents :**
+    *   Correction de problèmes liés à l'upload de documents pour le renouvellement des agréments [#1384](https://github.com/SocialGouv/vao/issues/1384).
+    *   Gestion des fichiers obligatoires et suppression des catégories inutiles [#1385](https://github.com/SocialGouv/vao/issues/1385).
+*   **Notifications :**
+    *   Implémentation de l'envoi de mails de confirmation pour les demandes d'agrément [#1320](https://github.com/SocialGouv/vao/issues/1320), [#1286](https://github.com/SocialGouv/vao/issues/1286).
+*   **Accessibilité :**
+    *   Améliorations de l'accessibilité (RGAA) sur plusieurs étapes des formulaires, notamment pour les champs et les labels [#1351](https://github.com/SocialGouv/vao/issues/1351), [#1347](https://github.com/SocialGouv/vao/issues/1347), [#1336](https://github.com/SocialGouv/vao/issues/1336), [#1325](https://github.com/SocialGouv/vao/issues/1325), [#1183](https://github.com/SocialGouv/vao/issues/1183).
 
 ### Évolutions techniques
-- Ajout d'un Dockerfile pour l'initialisation de la base de données [#1283](https://github.com/SocialGouv/vao/issues/1283).
-- Amélioration de la couverture des tests d'intégration et des tests frontend [#1309](https://github.com/SocialGouv/vao/issues/1309), [#1315](https://github.com/SocialGouv/vao/issues/1315).
-- Refactoring du code pour supprimer les doublons et améliorer la lisibilité.
-- Mise en place d'un cron pour la gestion des DREETS en SVA [#1297](https://github.com/SocialGouv/vao/issues/1297).
-- Amélioration de la gestion des erreurs de validation des agréments [#1350](https://github.com/SocialGouv/vao/issues/1350).
-- Correction de problèmes liés à l'exécution des tests E2E en CI.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités et les corrections de bugs.
+
+*   **Base de données :**
+    *   Ajout d'un Dockerfile pour l'initialisation de la base de données [#1283](https://github.com/SocialGouv/vao/issues/1283).
+    *   Modification des actions de build de l'image database-init [#1305](https://github.com/SocialGouv/vao/issues/1305).
+*   **Tests :**
+    *   Ajout et amélioration des tests d'intégration et E2E [#1349](https://github.com/SocialGouv/vao/issues/1349), [#1344](https://github.com/SocialGouv/vao/issues/1344), [#1326](https://github.com/SocialGouv/vao/issues/1326), [#1315](https://github.com/SocialGouv/vao/issues/1315), [#1309](https://github.com/SocialGouv/vao/issues/1309).
+    *   Correction de problèmes liés à l'exécution des tests en CI [#1328](https://github.com/SocialGouv/vao/issues/1328).
+*   **CI/CD :**
+    *   Amélioration des workflows CI/CD pour les tests et le déploiement.
+*   **Divers :**
+    *   Mise à jour de certaines dépendances et corrections de code (SonarQube).
 
 ### Autres changements
-- Nettoyage du code et suppression de code obsolète.
-- Mise à jour de la documentation.
-- Correction de problèmes de style et de formatage.
-- Amélioration de la gestion des migrations de la base de données.
-- Correction de coquilles et d'erreurs mineures.
-- Suppression de la branche dans les actions de build de l'image database-init.
-- Correction de l'URL du fichier Dockerfile dans les actions de build.
-- Suppression de la catégorie `MOTIVATION` des fichiers.
+
+*   Nettoyage et refactoring du code.
+*   Correction de coquilles et amélioration de la documentation.
+*   Mise à jour de la configuration de l'application.
