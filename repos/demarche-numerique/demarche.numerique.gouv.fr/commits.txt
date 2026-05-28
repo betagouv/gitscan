@@ -1,3 +1,31 @@
+2026-05-27T14:29:35+02:00 - 72bdbd206 - Colin Darie : test(piece_justificative_champ): replace ASV matchers with direct valid? calls
+2026-05-27T14:29:35+02:00 - 6016b306d - Colin Darie : fix: yml standard formatting
+2026-05-27T14:29:34+02:00 - f285b6bbf - Colin Darie : fix(content_type): wrap AUTHORIZED_CONTENT_TYPES in a Proc for ASV v3
+2026-05-27T14:29:33+02:00 - afa42b731 - Colin Darie : chore(bundle): bump active_storage_validations from 1.1.4 to 3.0.5
+2026-05-27T14:29:33+02:00 - 35b4b2a7f - Colin Darie : i18n(piece_justificative): pluralize content_type_invalid for ASV v3
+2026-05-27T13:07:47+02:00 - a53435329 - Colin Darie : refactor(content_type): drop image/jpg from validators (duplicate of image/jpeg)
+2026-05-27T13:07:47+02:00 - 22368924c - Colin Darie : chore(bundle): bump ancestry from 4.3.3 to 5.1.0
+2026-05-27T13:07:41+02:00 - 2f9d7087c - Colin Darie : chore(bundle): bump gon from 6.5.0 to 7.0.0
+2026-05-27T12:43:25Z - 2375fa2b4 - Colin Darie : Merge pull request #13199 from colinux/bump-gems-2
+2026-05-27T12:10:00Z - 81e3954a9 - Mathieu Magnin : Merge pull request #13200 from demarche-numerique/fix-revoked-expert-residual-access
+2026-05-27T10:54:32+02:00 - ff1cd04d8 - mfo : infra: add rate limit throttle to APIEntreprise::Job
+2026-05-27T10:54:32+02:00 - ed74b13f1 - mfo : maintenance: add T20260522BackfillPartialEtablissementsTask
+2026-05-27T10:54:32+02:00 - 57d757007 - mfo : infra: per-pool rate limiting for API Entreprise
+2026-05-27T10:54:31+02:00 - aced0d482 - mfo : infra: wire rate limiter into APIEntreprise::API
+2026-05-27T10:54:27+02:00 - d63020d3f - mfo : infra: add APIEntreprise::RateLimiter module
+2026-05-27T10:35:47Z - 551af2b1f - Mathieu Magnin : Merge pull request #13128 from demarche-numerique/referentiel-scope-to-dossier
+2026-05-27T10:33:01+02:00 - c291ccbf3 - Mathieu Magnin : Defer Sentry reporting for API Entreprise jobs to the 8th attempt
+2026-05-27T10:07:15Z - 689e73dac - Mathieu Magnin : Merge pull request #13204 from demarche-numerique/reduce-api-entreprise-sentry-noise
+2026-05-27T10:06:39Z - c922eb5ca - Mathieu Magnin : Merge pull request #13203 from demarche-numerique/restreindre-labels-demarche-dossier
+2026-05-27T10:06:23Z - 7f2cf7fcf - Mathieu Magnin : Merge pull request #13202 from demarche-numerique/fix-idor-export-templates-cross-procedure
+2026-05-27T09:30:05+02:00 - 72fe379c5 - Mathieu Magnin : Scope assignable dossier labels to the dossier procedure
+2026-05-27T09:00:04Z - 0f1beda96 - mfo : Merge pull request #13180 from demarche-numerique/ratelimit-backfill-naf2025
+2026-05-26T18:43:01+02:00 - 8c0dba5a8 - Mathieu Magnin : Scope export templates lookup to the URL procedure
+2026-05-26T12:02:00+02:00 - 9fa4d18ee - Mathieu Magnin : Filter out revoked avis when resolving expert access
+2026-05-26T09:12:43Z - 1e78a686b - Colin Darie : Merge pull request #13185 from colinux/perf/discarded-dossiers-deletion-job-memory
+2026-05-26T09:12:15Z - 037e47165 - Colin Darie : Merge pull request #13137 from colinux/oidc-config-redis-cache
+2026-05-26T09:04:41Z - 02b49e01f - Mathieu Magnin : Merge pull request #13173 from demarche-numerique/worktree-streamed-purring-snail
+2026-05-26T08:58:17Z - 06386fcd5 - Mathieu Magnin : Merge pull request #13166 from demarche-numerique/fix-clipboard-catch
 2026-05-22T06:56:21Z - 416d9fe00 - LeSim : Merge pull request #13012 from demarche-numerique/reintroduce_pro_connect
 2026-05-21T18:24:51+02:00 - e115e1708 - simon lehericey : chore: remove unused trad
 2026-05-21T18:24:50+02:00 - cb5c59b8d - simon lehericey : feat(pro_connect): add pro connect button on user/sign_in
@@ -5,6 +33,16 @@
 2026-05-21T18:24:50+02:00 - 07c5af2e1 - simon lehericey : wording: avoid repetition
 2026-05-21T18:24:50+02:00 - 078ed720c - simon lehericey : wording(connexion): always use `vous êtes un particulier` before FC
 2026-05-21T18:06:20+02:00 - e1811093f - mfo : perf(procedures): fix N+1 on show and publication actions
+2026-05-21T17:34:05+02:00 - d3a6ae5fc - Colin Darie : perf(dossier): skip search terms indexing on destroy
+2026-05-21T17:34:04+02:00 - dcfaa1e9a - Colin Darie : refactor(dossier): remove unused Dossier.purge_discarded class method
+2026-05-21T17:34:04+02:00 - c4990a4cf - Colin Darie : refactor(jobs): remove monolithic DiscardedDossiersDeletionJob
+2026-05-21T17:34:03+02:00 - fc766739a - Colin Darie : feat(jobs): add DiscardedTermineDossiersDeletionJob (04:20)
+2026-05-21T17:34:03+02:00 - 600ddac46 - Colin Darie : feat(jobs): add DiscardedEnConstructionDossiersDeletionJob (03:10)
+2026-05-21T17:34:02+02:00 - 7a8dfff42 - Colin Darie : feat(jobs): add DiscardedBrouillonDossiersDeletionJob (02:00)
+2026-05-21T17:34:01+02:00 - 5872cc9f2 - Colin Darie : feat(jobs): add Cron::DiscardedDossiersDeletionBaseJob skeleton
+2026-05-21T17:34:01+02:00 - 2cc07a3d0 - Colin Darie : test(jobs): verify MAX_DOSSIERS_PER_RUN re-enqueue boundaries
+2026-05-21T17:34:00+02:00 - 06a0bcc24 - Colin Darie : fix(dossier): rollback purge_discarded transaction on error
+2026-05-21T17:33:56+02:00 - aed58abbe - Colin Darie : perf(dossier): batch champs destruction in purge_discarded
 2026-05-21T17:19:08+02:00 - d1db6d013 - mfo : feat: migrate EtablissementAdapter to v4 + extract unite_legale - Update ETABLISSEMENT_RESOURCE_NAME from v3 to v4 - Refactor process_params into extract_etablissement_params +   extract_enterprise_params to extract unite_legale data from   the same v4 API call - Add NAF2025 extraction (naf_2025, libelle_naf_2025) alongside   NAFRev2 retrocompat (naf, libelle_naf) - Add build_nom and map_etat_administratif methods - Update all 4 fixtures to v4 format (activite_principale as NAF2025,   activite_principale_naf_rev2 for retrocompat) - Update stubs v3→v4 in etablissement_adapter_spec and   service_adapter_spec
 2026-05-21T17:19:08+02:00 - 1388a04d6 - mfo : feat: remove EntrepriseAdapter call from create_etablissement + retire EntrepriseJob
 2026-05-21T17:19:07+02:00 - 15d22f240 - mfo : db: add naf_2025 columns to etablissements Add nullable naf_2025 and libelle_naf_2025 string columns to etablissements table for upcoming API Entreprise v4 migration.
@@ -32,6 +70,7 @@
 2026-05-21T07:52:19Z - c71f35f56 - mfo : Merge pull request #13182 from demarche-numerique/auto/haml-migration/c-d-row_component
 2026-05-21T07:47:31Z - e943d6894 - mfo : Merge pull request #13184 from demarche-numerique/auto/n1-query-fix/c-a-groupe_instructeurs_c-b2c47a
 2026-05-20T15:24:55Z - 7458a5abe - Colin Darie : Merge pull request #13158 from colinux/bump-puma
+2026-05-20T14:54:38+02:00 - 271741169 - Colin Darie : fix(pro_connect): show ProConnect error message on connection failure
 2026-05-20T14:34:05+02:00 - bc0819186 - mfo : remove claude-code-security-review workflow
 2026-05-20T14:25:52+02:00 - 372ac4aee - Colin Darie : chore: gem.coop is not enough reliable
 2026-05-20T13:40:06Z - 891f739ea - mfo : Merge pull request #13167 from demarche-numerique/auto/haml-migration/c-d-p-pending_correctio-39c4f3
@@ -40,6 +79,7 @@
 2026-05-20T12:57:17Z - 3a8fc9887 - Colin Darie : Merge pull request #13175 from colinux/rubygems
 2026-05-20T11:58:42Z - 6eb8489b6 - Eric Leroy-Terquem : Merge pull request #13170 from demarche-numerique/fix/csv-import-vulnerability
 2026-05-20T11:58:24Z - 42c6c2689 - Eric Leroy-Terquem : Merge pull request #13172 from demarche-numerique/communes-to-text
+2026-05-20T11:39:05+02:00 - da4e49727 - Mathieu Magnin : ETQ admin, conserve l'authentification au re-clonage d'un référentiel API
 2026-05-20T11:11:10+02:00 - c924918fc - Eric Leroy-Terquem : feat(champs): allow transforming a communes field to text types
 2026-05-20T10:33:51+02:00 - d1b889e04 - Eric Leroy-Terquem : fix(csv): harden manager tags import validation
 2026-05-20T10:33:51+02:00 - b036c8d08 - Eric Leroy-Terquem : fix(csv): harden groupe instructeurs imports validation
@@ -51,6 +91,11 @@
 2026-05-20T10:10:26+02:00 - a203796e4 - mfo : fix(multiple_drop_down): filter out removed options from React MultipleSelect
 2026-05-20T10:10:26+02:00 - 2ceb4c8f1 - mfo : style: fix trailing comma lint offense in dropdown rebase spec
 2026-05-20T10:10:22+02:00 - b20452705 - mfo : test(system): reproduce multiple dropdown rebase bug
+2026-05-19T18:52:39+02:00 - ef1398677 - Colin Darie : feat(oidc): re-fetch JWKS on unknown kid
+2026-05-19T18:52:39+02:00 - 3cf618fba - Colin Darie : refactor(oidc): use cached config layer in services and controller
+2026-05-19T18:52:38+02:00 - e6073b930 - Colin Darie : feat(oidc): refresh OIDC configs daily via cron
+2026-05-19T18:52:36+02:00 - fd5e42ba9 - Colin Darie : feat(oidc): add cached OIDC config layer for FC/PC
+2026-05-19T18:27:02+02:00 - 8f3e4d1d4 - Mathieu Magnin : Tech: capturer le rejet de navigator.clipboard.writeText
 2026-05-19T18:01:20Z - b34a934ac - Mathieu Magnin : Merge pull request #13164 from demarche-numerique/a11y-modal-synthesis
 2026-05-19T17:24:05+02:00 - 606aceb58 - Corinne Durrmeyer : fix(#synthese-content): Correct HTML order
 2026-05-19T17:21:54+02:00 - 063e3f81b - mfo : refactor(haml): migrate NotifiedToggleComponent to ERB
@@ -246,6 +291,7 @@
 2026-05-13T07:43:06+02:00 - c3f7e3319 - mfo : fix(archive): add archivable scope to exclude deleted dossiers from archive counts
 2026-05-13T05:48:44Z - 12c0e659b - mfo : Merge pull request #13126 from mfo/fix/archive-scope-archivable
 2026-05-12T18:04:33+02:00 - 85ef437a7 - benoitqueyron : refactor(api part v2): graphql
+2026-05-12T18:00:30+02:00 - c74f1215a - Mathieu Magnin : Scope referentiel autocomplete lookup to the current dossier
 2026-05-12T17:48:59+02:00 - baa4072bf - benoitqueyron : refactor(api part v2): removes mesri champ
 2026-05-12T17:48:59+02:00 - 5128778ac - benoitqueyron : refactor(api part v2): removes FF
 2026-05-12T17:48:58+02:00 - c954fd468 - benoitqueyron : refactor(api part v2): removes cnaf champ

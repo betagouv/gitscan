@@ -1923,8 +1923,11 @@
 │   │   │   │   ├── procedure_by_month_job.rb
 │   │   │   │   ├── procedure_closed_by_month_job.rb
 │   │   │   │   └── user_connected_with_france_connect_by_month_job.rb
-│   │   │   ├── discarded_dossiers_deletion_job.rb
+│   │   │   ├── discarded_brouillon_dossiers_deletion_job.rb
+│   │   │   ├── discarded_dossiers_deletion_base_job.rb
+│   │   │   ├── discarded_en_construction_dossiers_deletion_job.rb
 │   │   │   ├── discarded_procedures_deletion_job.rb
+│   │   │   ├── discarded_termine_dossiers_deletion_job.rb
 │   │   │   ├── dossier_operation_log_move_to_cold_storage_job.rb
 │   │   │   ├── enable_procedure_expires_when_termine_enabled_job.rb
 │   │   │   ├── expired_dossiers_brouillon_deletion_job.rb
@@ -1937,6 +1940,7 @@
 │   │   │   ├── instructeur_email_notification_job.rb
 │   │   │   ├── never_touched_dossiers_brouillon_deletion_job.rb
 │   │   │   ├── notify_draft_not_submitted_job.rb
+│   │   │   ├── oidc_config_refresh_job.rb
 │   │   │   ├── operations_signature_job.rb
 │   │   │   ├── procedure_external_url_check_job.rb
 │   │   │   ├── procedure_process_sva_svr_job.rb
@@ -2017,6 +2021,7 @@
 │   │   │   ├── exercices_adapter.rb
 │   │   │   ├── extrait_kbis_adapter.rb
 │   │   │   ├── privileges_adapter.rb
+│   │   │   ├── rate_limiter.rb
 │   │   │   ├── rna_adapter.rb
 │   │   │   ├── service_adapter.rb
 │   │   │   └── tva_adapter.rb
@@ -2046,7 +2051,10 @@
 │   │   │   ├── parallel_download_queue.rb
 │   │   │   └── procedure_attachments_export.rb
 │   │   ├── email_checker.rb
+│   │   ├── france_connect_config.rb
 │   │   ├── json_path_util.rb
+│   │   ├── oidc_config.rb
+│   │   ├── pro_connect_config.rb
 │   │   ├── recovery
 │   │   │   ├── exporter.rb
 │   │   │   ├── importer.rb
@@ -2635,6 +2643,7 @@
 │   │       ├── t20260504_backfill_canonical_keys_in_region_champs_task.rb
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task.rb
 │   │       ├── t20260521_backfill_geo_area_uuid_task.rb
+│   │       ├── t20260522_backfill_partial_etablissements_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -3523,7 +3532,6 @@
 │   │   ├── excon_setup.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── flipper.rb
-│   │   ├── france_connect.rb
 │   │   ├── geocoder.rb
 │   │   ├── groupdate.rb
 │   │   ├── helo.rb
@@ -3544,7 +3552,6 @@
 │   │   ├── passwords.rb
 │   │   ├── permissions_policy.rb
 │   │   ├── phonelib.rb
-│   │   ├── pro_connect.rb
 │   │   ├── rack.rb
 │   │   ├── rack_attack.rb
 │   │   ├── rack_attack_request.rb
@@ -5278,11 +5285,15 @@
 │   │   │   │   ├── procedure_by_month_job_spec.rb
 │   │   │   │   ├── procedure_closed_by_month_job_spec.rb
 │   │   │   │   └── user_connected_with_france_connect_by_month_job_spec.rb
-│   │   │   ├── discarded_dossiers_deletion_job_spec.rb
+│   │   │   ├── discarded_brouillon_dossiers_deletion_job_spec.rb
+│   │   │   ├── discarded_dossiers_deletion_base_job_spec.rb
+│   │   │   ├── discarded_en_construction_dossiers_deletion_job_spec.rb
+│   │   │   ├── discarded_termine_dossiers_deletion_job_spec.rb
 │   │   │   ├── enable_procedure_expires_when_termine_enabled_job_spec.rb
 │   │   │   ├── expired_users_deletion_job_spec.rb
 │   │   │   ├── fallback_fetch_cadastre_real_geometry_job_spec.rb
 │   │   │   ├── fix_missing_antivirus_analysis_job_spec.rb
+│   │   │   ├── oidc_config_refresh_job_spec.rb
 │   │   │   ├── operations_signature_job_spec.rb
 │   │   │   ├── procedure_process_sva_svr_job_spec.rb
 │   │   │   ├── purge_manager_administrateur_sessions_job_spec.rb
@@ -5333,6 +5344,7 @@
 │   │   │   ├── exercices_adapter_spec.rb
 │   │   │   ├── extrait_kbis_adapter_spec.rb
 │   │   │   ├── privileges_adapter_spec.rb
+│   │   │   ├── rate_limiter_spec.rb
 │   │   │   ├── rna_adapter_spec.rb
 │   │   │   ├── service_adapter_spec.rb
 │   │   │   └── tva_adapter_spec.rb
@@ -5353,8 +5365,11 @@
 │   │   ├── download_manager
 │   │   │   └── parallel_download_queue_spec.rb
 │   │   ├── email_checker_spec.rb
+│   │   ├── france_connect_config_spec.rb
 │   │   ├── json_path_util_spec.rb
+│   │   ├── oidc_config_spec.rb
 │   │   ├── priority_delivery_spec.rb
+│   │   ├── pro_connect_config_spec.rb
 │   │   ├── recovery
 │   │   │   ├── dossier_life_cycle_spec.rb
 │   │   │   ├── exporter_spec.rb
@@ -5510,6 +5525,7 @@
 │   │   ├── deleted_dossier_spec.rb
 │   │   ├── dossier_assignment_spec.rb
 │   │   ├── dossier_correction_spec.rb
+│   │   ├── dossier_label_spec.rb
 │   │   ├── dossier_notification_spec.rb
 │   │   ├── dossier_operation_log_spec.rb
 │   │   ├── dossier_pending_response_spec.rb
@@ -5898,6 +5914,7 @@
 │   │       ├── t20260504_backfill_canonical_keys_in_departement_champs_task_spec.rb
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task_spec.rb
 │   │       ├── t20260521_backfill_geo_area_uuid_task_spec.rb
+│   │       ├── t20260522_backfill_partial_etablissements_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -6003,4 +6020,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-966 directories, 5355 files
+966 directories, 5372 files
