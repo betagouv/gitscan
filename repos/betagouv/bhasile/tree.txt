@@ -213,6 +213,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260521143607_create_structure_version
 │   │   │   └── migration.sql
+│   │   ├── 20260525073455_documents_operateur
+│   │   │   └── migration.sql
+│   │   ├── 20260526081821_add_missing_flag_for_incomplete_history
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -275,6 +279,7 @@
 │   ├── matrice-impact-bhasile.png
 │   ├── ofii.webp
 │   ├── ovoid.svg
+│   ├── stats.svg
 │   ├── structure-marker.svg
 │   └── technical-error.svg
 ├── scripts
@@ -322,7 +327,8 @@
 │       ├── 004b_structures_places_quality.sql
 │       ├── 004c_structures_finance_quality.sql
 │       ├── 004d_structures_characteristics_quality.sql
-│       └── 004z_structures_global_quality.sql
+│       ├── 004z_structures_global_quality.sql
+│       └── 005_structures_missing_history.sql
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
 ├── setupTests.js
@@ -379,14 +385,17 @@
 │   │   │   │   │   ├── OperateursList.tsx
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── _components
+│   │   │   │   │   │   │   ├── ActesAdministratifsOperateur.tsx
 │   │   │   │   │   │   │   ├── DescriptionBlock.tsx
-│   │   │   │   │   │   │   ├── DocumentsBlock.tsx
-│   │   │   │   │   │   │   └── OperateurHeader.tsx
+│   │   │   │   │   │   │   ├── OperateurHeader.tsx
+│   │   │   │   │   │   │   └── StatsCta.tsx
 │   │   │   │   │   │   ├── _context
 │   │   │   │   │   │   │   ├── OperateurClientContext.tsx
 │   │   │   │   │   │   │   └── OperateurContext.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modification
+│   │   │   │   │   │   │   ├── actes-administratifs
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── description
 │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   └── page.tsx
@@ -402,9 +411,7 @@
 │   │   │   │       │   │   ├── Structure.tsx
 │   │   │   │       │   │   ├── StructureContent.tsx
 │   │   │   │       │   │   ├── _actes-administratifs
-│   │   │   │       │   │   │   ├── ActesAdministratifsBlock.tsx
-│   │   │   │       │   │   │   ├── ActesAdministratifsCategory.tsx
-│   │   │   │       │   │   │   └── ActesAdministratifsItem.tsx
+│   │   │   │       │   │   │   └── ActesAdministratifsStructure.tsx
 │   │   │   │       │   │   ├── _activite
 │   │   │   │       │   │   │   ├── ActiviteBlock.tsx
 │   │   │   │       │   │   │   ├── ActiviteDurations.tsx
@@ -618,7 +625,8 @@
 │   │   │   │   ├── adresse.service.ts
 │   │   │   │   └── adresse.util.ts
 │   │   │   ├── antennes
-│   │   │   │   └── antenne.repository.ts
+│   │   │   │   ├── antenne.repository.ts
+│   │   │   │   └── antenne.util.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...nextauth]
 │   │   │   │       └── route.ts
@@ -644,7 +652,8 @@
 │   │   │   │   └── route.ts
 │   │   │   ├── dna-structures
 │   │   │   │   ├── dna-structure.repository.ts
-│   │   │   │   └── dna-structure.service.ts
+│   │   │   │   ├── dna-structure.service.ts
+│   │   │   │   └── dna-structure.util.ts
 │   │   │   ├── documents-financiers
 │   │   │   │   └── documentFinancier.repository.ts
 │   │   │   ├── email-patterns
@@ -658,7 +667,8 @@
 │   │   │   │   ├── file.service.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── finesses
-│   │   │   │   └── finess.repository.ts
+│   │   │   │   ├── finess.repository.ts
+│   │   │   │   └── finess.util.ts
 │   │   │   ├── forms
 │   │   │   │   ├── form.repository.ts
 │   │   │   │   └── form.util.ts
@@ -669,6 +679,7 @@
 │   │   │   ├── operateurs
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── operateur.db.type.ts
 │   │   │   │   ├── operateur.repository.ts
 │   │   │   │   ├── operateur.service.ts
 │   │   │   │   ├── route.ts
@@ -713,6 +724,11 @@
 │   │   │   ├── Tracking.tsx
 │   │   │   ├── User.tsx
 │   │   │   ├── WorkInProgress.tsx
+│   │   │   ├── blocks
+│   │   │   │   └── actesAdministratifs
+│   │   │   │       ├── ActesAdministratifsBlock.tsx
+│   │   │   │       ├── ActesAdministratifsCategory.tsx
+│   │   │   │       └── ActesAdministratifsItem.tsx
 │   │   │   ├── common
 │   │   │   │   ├── Badge.tsx
 │   │   │   │   ├── BarChart.tsx
@@ -933,7 +949,6 @@
 │   │   └── utils
 │   │       ├── acteAdministratif.util.ts
 │   │       ├── adresse.util.ts
-│   │       ├── antenne.util.ts
 │   │       ├── bhasile.util.ts
 │   │       ├── budget.util.ts
 │   │       ├── classname.util.ts
@@ -944,12 +959,10 @@
 │   │       ├── date.util.ts
 │   │       ├── decimal.util.ts
 │   │       ├── defaultValues.util.ts
-│   │       ├── dna.util.ts
 │   │       ├── errorMail.util.ts
 │   │       ├── evaluation.util.ts
 │   │       ├── file-upload.util.ts
 │   │       ├── finalisationForm.util.ts
-│   │       ├── finess.util.ts
 │   │       ├── getErrorMessages.util.ts
 │   │       ├── indicateurFinancier.util.ts
 │   │       ├── math.util.ts
@@ -963,6 +976,8 @@
 │   │       ├── tutorials.util.ts
 │   │       ├── zodCustomFields.ts
 │   │       └── zodErrorMap.ts
+│   ├── config
+│   │   └── acte-administratif.config.ts
 │   ├── constants.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
@@ -1264,4 +1279,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-344 directories, 922 files
+350 directories, 931 files
