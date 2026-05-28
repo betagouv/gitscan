@@ -295,6 +295,7 @@
 │   │   │   ├── company.service.ts
 │   │   │   ├── document.service.ts
 │   │   │   ├── laboratory.service.ts
+│   │   │   ├── laboratoryResidueMapping.service.ts
 │   │   │   ├── localPrescription.service.ts
 │   │   │   ├── mascarade.service.ts
 │   │   │   ├── mockApiClient.ts
@@ -333,6 +334,8 @@
 │   │       │   ├── LaboratoriesAdminView
 │   │       │   │   ├── LaboratoriesAdminView.tsx
 │   │       │   │   └── LaboratoryConfigForm.tsx
+│   │       │   ├── LaboratoryResidueMappingsView
+│   │       │   │   └── LaboratoryResidueMappingsView.tsx
 │   │       │   ├── Notice
 │   │       │   │   ├── AdminViewDashboardNotice.tsx
 │   │       │   │   └── AdminViewRootNotice.tsx
@@ -502,6 +505,7 @@
 │   │       │   │   ├── SampleItemComplianceOverrideModal.tsx
 │   │       │   │   ├── SampleItemCopiesOverview.tsx
 │   │       │   │   ├── SampleOverview.scss
+│   │       │   │   ├── SampleOverview.stories.tsx
 │   │       │   │   └── SampleOverview.tsx
 │   │       │   ├── SampleView.scss
 │   │       │   ├── SampleView.tsx
@@ -543,6 +547,7 @@
 │   │   ├── companyController.ts
 │   │   ├── documentController.ts
 │   │   ├── laboratoryController.ts
+│   │   ├── laboratoryResidueMappingController.ts
 │   │   ├── localPrescriptionController.ts
 │   │   ├── mascaradeController.ts
 │   │   ├── noticeController.ts
@@ -734,6 +739,7 @@
 │   │   ├── laboratoryAnalyticalCompetenceRepository.ts
 │   │   ├── laboratoryRepository.test.ts
 │   │   ├── laboratoryRepository.ts
+│   │   ├── laboratoryResidueMappingRepository.test.ts
 │   │   ├── laboratoryResidueMappingRepository.ts
 │   │   ├── localPrescriptionCommentRepository.ts
 │   │   ├── localPrescriptionRepository.ts
@@ -778,6 +784,7 @@
 │   │   │   ├── company.router.test.ts
 │   │   │   ├── document.router.test.ts
 │   │   │   ├── laboratory.router.test.ts
+│   │   │   ├── laboratoryResidueMapping.router.test.ts
 │   │   │   ├── localPrescription.router.test.ts
 │   │   │   ├── notices.router.test.ts
 │   │   │   ├── notification.router.test.ts
@@ -826,6 +833,8 @@
 │   │   │   ├── sachaDAI.ts
 │   │   │   ├── sachaErrors.ts
 │   │   │   ├── sachaRAI.ts
+│   │   │   ├── sachaReferences.test.ts
+│   │   │   ├── sachaReferences.ts
 │   │   │   ├── sachaReferential.ts
 │   │   │   ├── sachaSender.ts
 │   │   │   ├── sachaToXML.test.ts
@@ -856,8 +865,6 @@
 │   │   │   │   ├── inovalys.test.ts
 │   │   │   │   └── inovalys.ts
 │   │   │   ├── script.ts
-│   │   │   ├── tryToFixUnknownLabels.integration.test.ts
-│   │   │   ├── tryToFixUnknownLabels.ts
 │   │   │   ├── utils.test.ts
 │   │   │   └── utils.ts
 │   │   ├── mailService
@@ -1036,6 +1043,7 @@
 │   │   │   ├── Laboratory.ts
 │   │   │   ├── LaboratoryAnalyticalCompetence.ts
 │   │   │   ├── LaboratoryAnalyticalMethod.ts
+│   │   │   ├── LaboratoryResidueMapping.ts
 │   │   │   ├── LaboratoryValidationMethod.ts
 │   │   │   └── SachaCommunicationMethod.ts
 │   │   ├── LocalPrescription
@@ -1128,4 +1136,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-215 directories, 915 files
+216 directories, 922 files
