@@ -1,14 +1,12 @@
-## Changelog : agora-cms-strapi (30 derniers jours, au 22 mai 2026)
+## Changelog : agora-cms-strapi (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'évolution majeure du projet concerne l'ajout d'une nouvelle collection "thème hebdo" permettant de gérer des thématiques hebdomadaires. Une amélioration a également été apportée pour rendre la période associée à ces thèmes optionnelle. Ces changements visent à offrir plus de flexibilité dans la gestion du contenu éditorial.
+Ce mois-ci, les améliorations se concentrent sur l'ajout d'une nouvelle collection pour les thèmes hebdomadaires et l'enrichissement des informations affichées sur les pages de détail des Questions d'Agora (QAG). Des corrections ont également été apportées pour améliorer la flexibilité de la configuration des thèmes hebdomadaires.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle collection "thème hebdo" pour la gestion des thématiques hebdomadaires. [#3683bc7](https://github.com/agora-gouv/agora-cms-strapi/commit/3683bc7)
-- La période associée à un thème hebdomadaire est désormais optionnelle. [#f2a0529](https://github.com/agora-gouv/agora-cms-strapi/commit/f2a0529) et [#dbc456f](https://github.com/agora-gouv/agora-cms-strapi/commit/dbc456f)
+- Ajout d'une nouvelle collection "theme_hebdo" permettant la gestion des thèmes hebdomadaires. [#3683bc7](https://github.com/agora-gouv/agora-cms-strapi/commit/3683bc7)
+- Ajout de deux nouveaux champs pour la page de détail des QAG, permettant d'afficher des informations supplémentaires. [#64fc3db](https://github.com/agora-gouv/agora-cms-strapi/commit/64fc3db)
+- La période d'un thème hebdomadaire est désormais optionnelle, offrant plus de flexibilité lors de la configuration. [#f2a0529](https://github.com/agora-gouv/agora-cms-strapi/commit/f2a0529)
 
 ### Évolutions techniques
-- (Aucun changement technique significatif à signaler)
-
-### Autres changements
-- (Aucun autre changement à signaler)
+- Correction du format de la photo pour le thème hebdomadaire. [#3fc966d](https://github.com/agora-gouv/agora-cms-strapi/commit/3fc966d) et [#b758ec0](https://github.com/agora-gouv/agora-cms-strapi/commit/b758ec0)
