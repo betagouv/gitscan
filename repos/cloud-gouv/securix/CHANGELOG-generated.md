@@ -1,26 +1,15 @@
-## Changelog : securix (30 derniers jours, au 28 avril 2026)
+## Changelog : securix (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations de securix se concentrent sur l'expérience utilisateur et la gestion des clés YubiKey, avec l'ajout d'un outil dédié pour la réinitialisation et la modification des utilisateurs. Des corrections ont également été apportées à la commande d'upgrade et à la configuration du système, notamment pour une meilleure compatibilité matérielle.
+Ce changelog présente des améliorations concernant la validation des commandes d'upgrade, la correction d'un bug empêchant l'option `--do-not-pull` de fonctionner correctement lors des mises à jour, et une petite mise à jour de la documentation. Une modification technique a également été apportée pour exposer un attribut dans `mkTerminal`.
 
 ### Évolutions fonctionnelles
-- Ajout d'un outil de réinitialisation et de modification des utilisateurs YubiKey [#1234](https://github.com/cloud-gouv/securix/issues/1234).
-- Amélioration de l'interface utilisateur pour faciliter le copier-coller de valeurs dans l'outil YubiKey.
-- Ajout de l'option `--securix-branch` à la commande d'upgrade pour spécifier la branche securix à utiliser [#1234](https://github.com/cloud-gouv/securix/issues/1234).
-- Correction d'un bug empêchant l'option `--do-not-pull` de fonctionner correctement dans le script d'upgrade.
-- Validation du verbe passé à la commande d'upgrade pour éviter des erreurs.
-- Ajout du support matériel pour le ThinkPad X13 Gen 1 AMD (20UF/20UG).
+- Correction d'un bug : L'option `--do-not-pull` fonctionne désormais correctement lors des mises à jour du système [#1593f03](https://github.com/cloud-gouv/securix/commit/1593f03).
+- Amélioration de la validation : Validation du verbe passé à la commande d'upgrade pour éviter des erreurs d'utilisation [#ff5c4de](https://github.com/cloud-gouv/securix/commit/ff5c4de).
 
 ### Évolutions techniques
-- Refactorisation du code dans `permissionless-upgrade.nix` pour supprimer une ligne inutile.
-- Suppression du parser Python dans l'outil YubiKey et remplacement par une fonction Nix pour une meilleure cohérence.
-- Amélioration de l'organisation des fichiers et ajout de nouveaux fichiers pour une meilleure structure du projet.
-- Mise à jour de l'attribut `postInstallScript` dans `mkTerminal` pour une plus grande flexibilité.
+- Refactoring : Suppression d'une ligne inutile dans `permissionless-upgrade.nix` [#64626fe](https://github.com/cloud-gouv/securix/commit/64626fe).
+- Modification de l'API : `mkTerminal` expose désormais l'attribut `postInstallScript` [#aeee115](https://github.com/cloud-gouv/securix/commit/aeee115).
 
 ### Autres changements
-- Mise à jour de la documentation README avec des informations plus claires et précises.
-- Amélioration du rendu HTML de l'outil YubiKey.
-- Suppression de l'importation de polices depuis internet pour une meilleure sécurité et performance.
-- Ajout d'un générateur d'inventaire pour faciliter la gestion des configurations.
-- Application du style `nixfmt-rfc` à plusieurs fichiers pour une meilleure cohérence du code.
-- Correction de la définition du chemin Nix pour utiliser une valeur statique.
+- Documentation : Mise à jour du fichier README [#bd2039a](https://github.com/cloud-gouv/securix/commit/bd2039a).
