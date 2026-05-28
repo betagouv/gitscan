@@ -4,11 +4,11 @@
   "description": "MonServiceSécurisé est un service numérique développé par l'ANSSI et BetaGouv pour aider les collectivités territoriales et les entités publiques à sécuriser et homologuer leurs services numériques.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Gestion des établissements & Structures",
-    "Gestion métier générale"
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,20 +20,23 @@
     "bcrypt",
     "jsonwebtoken",
     "pg",
-    "knex"
+    "pug",
+    "axios"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
     "Svelte",
-    "Frontend React"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
-    ]
+      "email-password",
+      "jwt",
+      "session"
+    ],
+    "providers": []
   },
   "tests": [
     "Jest",
@@ -45,23 +48,18 @@
     "codeql-analysis",
     "deploiement"
   ],
-  "lastActivity": "2026-05-22T16:21:13+02:00",
+  "lastActivity": "2026-05-27T10:38:17+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Sécurité & Conformité",
     "Données & Open Data",
     "TypeScript",
-    "PostgreSQL",
     "Déploiement & Hosting",
-    "JavaScript",
-    "API & Intégrations"
+    "PostgreSQL",
+    "Administration",
+    "Écosystème beta.gouv / État"
   ]
 }
