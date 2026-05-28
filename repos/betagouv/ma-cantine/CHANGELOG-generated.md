@@ -1,30 +1,40 @@
-## Changelog : ma-cantine (30 derniers jours, au 20 mai 2026)
+## Changelog : ma-cantine (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de ma-cantine se concentrent sur l'amélioration des données géo, la correction de bugs liés aux achats et aux télédéclarations, ainsi que des optimisations techniques pour une meilleure performance et maintenance du code. De nouvelles fonctionnalités ont été ajoutées concernant les ressources et les livrables GT sanitaire et médico-social.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des diagnostics et des achats, avec l'ajout de nouveaux champs pour un suivi plus précis et des corrections suite à des phases de recette. Des améliorations techniques ont également été apportées pour optimiser les requêtes et la gestion des données, notamment concernant les données géographiques et les exports.
 
 ### Évolutions fonctionnelles
-- Ajout des livrables GT sanitaire et médico-social dans la section Ressources. ([#6733](https://github.com/betagouv/ma-cantine/issues/6733))
-- Améliorations apportées au formulaire d'achats (libellés, champs obligatoires, explications). ([#6734](https://github.com/betagouv/ma-cantine/issues/6734))
-- Correction de l'affichage du pourcentage des valeurs durables et de qualité dans les télédéclarations. ([#6668](https://github.com/betagouv/ma-cantine/issues/6668))
-- Correction du lien vers les CGU dans le frontend. ([#6701](https://github.com/betagouv/ma-cantine/issues/6701))
-- Correction du non affichage de la police Marianne. ([#6669](https://github.com/betagouv/ma-cantine/issues/6669))
+- Ajout d'un champ `creation_user` pour identifier l'utilisateur ayant créé un achat, facilitant le suivi et l'audit.
+- Ajout d'un champ `creation_user` pour identifier l'utilisateur ayant créé un diagnostic, améliorant la traçabilité.
+- Introduction d'un nouveau champ `warning_reason_list` dans les diagnostics pour stocker des informations non bloquantes, permettant un signalement plus nuancé.
+- Ajout de la définition "PAT" comme produit local dans la gestion des achats.
+- Mise à jour de la documentation des achats avec un lien vers la documentation complète.
+- Ajout d'un script permettant de remplir le nouveau champ `warning_reason_list` pour les diagnostics.
+- Mise à jour du bandeau d'information concernant la campagne de correction.
+- Ajout de livrables GT sanitaire et médico-social dans les ressources.
 
 ### Évolutions techniques
-- Mise à jour du script dédié à la mise à jour des données PAT (données géo). ([#6725](https://github.com/betagouv/ma-cantine/issues/6725))
-- Optimisation de l'API des achats : nettoyage des champs renvoyés par l'endpoint `canteenPurchasesPercentageSummary`. ([#6730](https://github.com/betagouv/ma-cantine/issues/6730))
-- Refactoring de l'API et des tests liés à la création de diagnostics à partir des achats. ([#6728](https://github.com/betagouv/ma-cantine/issues/6728))
-- Suppression du script `field_gen.py` car il n'est plus utilisé. ([#6726](https://github.com/betagouv/ma-cantine/issues/6726))
-- Amélioration de la commande `diagnostic_fill_invalid_reason_list` (application et récapitulatif des statistiques). ([#6700](https://github.com/betagouv/ma-cantine/issues/6700))
-- Regroupement des statistiques d'agrégation des achats dans une queryset dédiée. ([#6706](https://github.com/betagouv/ma-cantine/issues/6706))
-- Lister les groupes de caractéristiques pour faciliter leur réutilisation. ([#6702](https://github.com/betagouv/ma-cantine/issues/6702))
-- Réorganisation des champs dans les modèles (Meta et timestamps en bas). ([#6703](https://github.com/betagouv/ma-cantine/issues/6703))
-- Amélioration de la sécurité : sanitisation du paramètre `next`. ([#6709](https://github.com/betagouv/ma-cantine/issues/6709))
-- Refactoring de l'API de recherche d'entreprises pour ne pas utiliser de camelCase dans la transformation des résultats. ([#6710](https://github.com/betagouv/ma-cantine/issues/6710))
+- Amélioration du script de remplissage du champ `warning_reason_list` dans les diagnostics (renommage de "gt" en "sup", ajout d'annotations).
+- Création de nouveaux querysets pour faciliter le filtrage des `warning_reason_list` dans les diagnostics.
+- Optimisation des querysets pour les diagnostics avec l'ajout de `with_label_sum` et `with_family_sum`.
+- Refactoring de l'API des achats : nettoyage des champs renvoyés par l'endpoint `canteenPurchasesPercentageSummary`.
+- Refactoring des tests de l'endpoint `createDiagnosticsFromPurchases` dans la gestion des achats.
+- Nettoyage du code de l'administration des achats (lecture seule).
+- Suppression du script `field_gen.py` car non utilisé.
+- Amélioration de la gestion des données géographiques (PAT) avec une mise à jour du fichier de référence.
+- Mise à jour des exports bruts (dbt) pour inclure les `WasteMeasurements`.
+- Amélioration de la commande `diagnostic_fill_invalid_reason_list` pour une meilleure performance et un récapitulatif des statistiques.
+- Correction de l'export Open Data suite à un problème de paramètre.
+- Réparation des tests liés à la télédéclaration suite à des modifications récentes.
+- Amélioration de la sécurité en sanitizant le paramètre 'next'.
+- Refactoring de l'API de recherche d'entreprises pour éviter l'utilisation de camelCase dans les résultats.
+- Mise à jour des dépendances Wagtail et Django.
 
 ### Autres changements
-- Mise à jour des fichiers de référence PAT (données géo). ([#6693](https://github.com/betagouv/ma-cantine/issues/6693))
-- Correction d'un bug dans l'export Open Data. ([#6722](https://github.com/betagouv/ma-cantine/issues/6722))
-- Suppression des tâches asynchrones liées à la récupération des données géo. ([#6691](https://github.com/betagouv/ma-cantine/issues/6691))
-- Diverses corrections et améliorations liées aux télédéclarations. ([#6671](https://github.com/betagouv/ma-cantine/issues/6671), [#6657](https://github.com/betagouv/ma-cantine/issues/6657), [#6656](https://github.com/betagouv/ma-cantine/issues/6656), [#6673](https://github.com/betagouv/ma-cantine/issues/6673))
-- Mise à jour des dépendances Wagtail et Django. ([#6696](https://github.com/betagouv/ma-cantine/issues/6696), [#6697](https://github.com/betagouv/ma-cantine/issues/6697))
+- Ajout d'une page de documentation expliquant les commandes liées à une campagne de télédéclaration.
+- Correction d'un lien vers les CGU du frontend.
+- Mise à jour du texte explicatif du bandeau de démonstration.
+- Correction d'un problème de caractères spéciaux dans les données géographiques PAT.
+- Suppression des tâches asynchrones liées à la récupération des données géographiques.
+- Réactivation des exports cantines (Open Data & Metabase) à une fréquence journalière.
+- Désactivation des exports de télédéclaration vers Metabase.
