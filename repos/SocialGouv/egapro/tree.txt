@@ -216,6 +216,7 @@
 │   │   │   ├── 0034_tranquil_catseye.sql
 │   │   │   ├── 0035_status_history.sql
 │   │   │   ├── 0036_add_step_change_event_type.sql
+│   │   │   ├── 0037_pale_mikhail_rasputin.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -239,6 +240,7 @@
 │   │   │       ├── 0034_snapshot.json
 │   │   │       ├── 0035_snapshot.json
 │   │   │       ├── 0036_snapshot.json
+│   │   │       ├── 0037_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -268,7 +270,8 @@
 │   │   │   ├── generate-edge-case-gip-data.ts
 │   │   │   ├── generate-mock-gip-data.ts
 │   │   │   ├── migrate.mjs
-│   │   │   └── post-process-schema-wiki.ts
+│   │   │   ├── post-process-schema-wiki.ts
+│   │   │   └── seed-dev.mjs
 │   │   ├── src
 │   │   │   ├── __tests__
 │   │   │   │   ├── middleware.test.ts
@@ -289,7 +292,9 @@
 │   │   │   │   │   ├── parametres
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── stats
-│   │   │   │   │       └── campagne
+│   │   │   │   │       ├── campagne
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       └── plateforme
 │   │   │   │   │           └── page.tsx
 │   │   │   │   ├── aide
 │   │   │   │   │   ├── nous-contacter
@@ -418,6 +423,7 @@
 │   │   │   │   ├── admin-impersonation-read-only.e2e.ts
 │   │   │   │   ├── admin-referents.e2e.ts
 │   │   │   │   ├── admin-stats-campagne.e2e.ts
+│   │   │   │   ├── admin-stats-plateforme.e2e.ts
 │   │   │   │   ├── admin.e2e.ts
 │   │   │   │   ├── auth.setup.ts
 │   │   │   │   ├── campaign-deadlines-gating.e2e.ts
@@ -427,6 +433,7 @@
 │   │   │   │   ├── declaration-cancellation.e2e.ts
 │   │   │   │   ├── declaration-process-panel.e2e.ts
 │   │   │   │   ├── declaration.e2e.ts
+│   │   │   │   ├── declarationDraft.e2e.ts
 │   │   │   │   ├── error-pages.e2e.ts
 │   │   │   │   ├── fileUpload.e2e.ts
 │   │   │   │   ├── fixtures
@@ -436,6 +443,7 @@
 │   │   │   │   │   ├── axe-scan.ts
 │   │   │   │   │   ├── compliance-flows.ts
 │   │   │   │   │   ├── db-campaign.ts
+│   │   │   │   │   ├── db-funnel.ts
 │   │   │   │   │   ├── db.ts
 │   │   │   │   │   ├── declaration-flows.ts
 │   │   │   │   │   ├── dsfr.ts
@@ -450,7 +458,8 @@
 │   │   │   │   ├── previous-year-categories.e2e.ts
 │   │   │   │   ├── public-referents.e2e.ts
 │   │   │   │   ├── recapitulatif.e2e.ts
-│   │   │   │   └── rgaa-audit.spec.ts
+│   │   │   │   ├── rgaa-audit.spec.ts
+│   │   │   │   └── step1-workforce-validation.e2e.ts
 │   │   │   ├── env.js
 │   │   │   ├── instrumentation-client.ts
 │   │   │   ├── instrumentation.ts
@@ -535,6 +544,14 @@
 │   │   │   │   │       ├── CampaignProgressionTable.tsx
 │   │   │   │   │       ├── CampaignRateTile.tsx
 │   │   │   │   │       ├── CampaignStatsPage.tsx
+│   │   │   │   │       ├── CompletionFunnelChart.module.scss
+│   │   │   │   │       ├── CompletionFunnelChart.tsx
+│   │   │   │   │       ├── CompletionFunnelTable.tsx
+│   │   │   │   │       ├── PlatformStatsPage.tsx
+│   │   │   │   │       ├── StagnationDaysFilter.tsx
+│   │   │   │   │       ├── StepDropoffChart.module.scss
+│   │   │   │   │       ├── StepDropoffChart.tsx
+│   │   │   │   │       ├── StepDropoffTable.tsx
 │   │   │   │   │       ├── StepDurationsChart.module.scss
 │   │   │   │   │       ├── StepDurationsChart.tsx
 │   │   │   │   │       ├── StepDurationsTable.tsx
@@ -544,12 +561,21 @@
 │   │   │   │   │       │   ├── CampaignProgressionTable.test.tsx
 │   │   │   │   │       │   ├── CampaignRateTile.test.tsx
 │   │   │   │   │       │   ├── CampaignStatsPage.test.tsx
+│   │   │   │   │       │   ├── CompletionFunnelChart.test.tsx
+│   │   │   │   │       │   ├── CompletionFunnelTable.test.tsx
+│   │   │   │   │       │   ├── StagnationDaysFilter.test.tsx
+│   │   │   │   │       │   ├── StepDropoffChart.test.tsx
+│   │   │   │   │       │   ├── StepDropoffTable.test.tsx
 │   │   │   │   │       │   ├── StepDurationsChart.test.tsx
 │   │   │   │   │       │   ├── StepDurationsTable.test.tsx
-│   │   │   │   │       │   └── YearsFilter.test.tsx
+│   │   │   │   │       │   ├── YearsFilter.test.tsx
+│   │   │   │   │       │   ├── formatters.test.ts
+│   │   │   │   │       │   └── useDebouncedValue.test.ts
+│   │   │   │   │       ├── formatters.ts
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── schemas.ts
-│   │   │   │   │       └── types.ts
+│   │   │   │   │       ├── types.ts
+│   │   │   │   │       └── useDebouncedValue.ts
 │   │   │   │   ├── aide
 │   │   │   │   │   ├── AideCallout.tsx
 │   │   │   │   │   ├── AideIllustration.tsx
@@ -656,6 +682,7 @@
 │   │   │   │   │   │   ├── NextStepsBox.tsx
 │   │   │   │   │   │   ├── PayGapTable.module.scss
 │   │   │   │   │   │   ├── PayGapTable.tsx
+│   │   │   │   │   │   ├── PrefillResetConfirmDialog.tsx
 │   │   │   │   │   │   ├── PrefillResetWarning.tsx
 │   │   │   │   │   │   ├── PrefillSource.tsx
 │   │   │   │   │   │   ├── SavedIndicator.module.scss
@@ -687,14 +714,20 @@
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── devFillData.ts
 │   │   │   │   │   │   ├── draft
+│   │   │   │   │   │   │   ├── DraftLoadingState.tsx
 │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── DraftLoadingState.test.tsx
 │   │   │   │   │   │   │   │   ├── computeDraftDiff.test.ts
-│   │   │   │   │   │   │   │   ├── draftStorage.test.ts
-│   │   │   │   │   │   │   │   └── useDeclarationDraft.test.tsx
+│   │   │   │   │   │   │   │   ├── useDeclarationDraft.lifecycle.test.tsx
+│   │   │   │   │   │   │   │   ├── useDeclarationDraft.test.tsx
+│   │   │   │   │   │   │   │   ├── useDraftAutoSave.test.tsx
+│   │   │   │   │   │   │   │   └── useDraftHydration.test.tsx
 │   │   │   │   │   │   │   ├── computeDraftDiff.ts
 │   │   │   │   │   │   │   ├── draftSchema.ts
-│   │   │   │   │   │   │   ├── draftStorage.ts
-│   │   │   │   │   │   │   └── useDeclarationDraft.ts
+│   │   │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   │   │   ├── useDeclarationDraft.ts
+│   │   │   │   │   │   │   ├── useDraftAutoSave.ts
+│   │   │   │   │   │   │   └── useDraftHydration.ts
 │   │   │   │   │   │   ├── gapBadge.module.scss
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
@@ -719,6 +752,7 @@
 │   │   │   │   │   │   │   ├── ComplianceConfirmation.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathChoice.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathPage.test.ts
+│   │   │   │   │   │   │   ├── DraftLoadingGate.test.tsx
 │   │   │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
 │   │   │   │   │   │   │   ├── Step1DevFill.test.tsx
 │   │   │   │   │   │   │   ├── Step1Workforce.test.tsx
@@ -1169,6 +1203,7 @@
 │   │   │   │   │   │   │   ├── declaration.impersonation.test.ts
 │   │   │   │   │   │   │   ├── declaration.step4Loader.test.ts
 │   │   │   │   │   │   │   ├── declaration.test.ts
+│   │   │   │   │   │   │   ├── declarationDraft.test.ts
 │   │   │   │   │   │   │   ├── declarationHelpers.test.ts
 │   │   │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   │   │   └── declarationTestHelpers.ts
@@ -1183,6 +1218,7 @@
 │   │   │   │   │   │   ├── company.ts
 │   │   │   │   │   │   ├── cseOpinion.ts
 │   │   │   │   │   │   ├── declaration.ts
+│   │   │   │   │   │   ├── declarationDraft.ts
 │   │   │   │   │   │   ├── declarationHelpers.ts
 │   │   │   │   │   │   ├── gipMds.ts
 │   │   │   │   │   │   ├── jointEvaluation.ts
@@ -1322,4 +1358,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-243 directories, 1081 files
+244 directories, 1116 files
