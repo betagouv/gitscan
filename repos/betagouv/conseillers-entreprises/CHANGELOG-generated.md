@@ -1,28 +1,29 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 20 mai 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la robustesse de l'application, avec des corrections de bugs et des optimisations des logs. Des améliorations ont également été apportées à l'interface d'administration, notamment pour les statistiques et la gestion des utilisateurs, ainsi qu'une nouvelle fonctionnalité pour l'enquête auprès des conseillers. Enfin, des mises à jour de dépendances ont été effectuées pour assurer la stabilité et la sécurité du système.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la maintenance de l'application, avec des corrections de bugs, la suppression de code obsolète et des optimisations techniques. Des améliorations ont également été apportées à l'administration, notamment pour les statistiques et la gestion des utilisateurs, ainsi qu'une refonte de l'affichage des besoins de diagnostic.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fonctionnalité permettant d'afficher un questionnaire aux utilisateurs via une modale et un nouvel élément de navigation. [#4434](https://github.com/betagouv/conseillers-entreprises/pull/4434)
-- Amélioration de la gestion des statistiques avec l'ajout de nouvelles statistiques sur les acquisitions et les temps de réponse. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
-- Possibilité de visualiser et modifier les flags `app_info` des utilisateurs dans l'interface d'administration. [#4443](https://github.com/betagouv/conseillers-entreprises/pull/4443)
-- Amélioration de l'export CSV des satisfactions des entreprises dans l'interface d'administration. [#4459](https://github.com/betagouv/conseillers-entreprises/pull/4459)
-- Correction d'un bug empêchant la progression des étapes de diagnostic. [#4445](https://github.com/betagouv/conseillers-entreprises/pull/4445)
+- Amélioration de l'affichage des éléments de besoin de diagnostic en utilisant une mise en page en grille. [#4483](https://github.com/betagouv/conseillers-entreprises/pull/4483)
+- Ajout d'une nouvelle statistique pour suivre les acquisitions par nouvelles entreprises. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
+- Ajout d'une statistique pour suivre les besoins traités en moins de cinq jours. [#4446](https://github.com/betagouv/conseillers-entreprises/pull/4446)
+- Possibilité de visualiser et modifier les flags `app_info` des utilisateurs dans l'administration. [#4443](https://github.com/betagouv/conseillers-entreprises/pull/4443)
+- Ajout d'un modal pour l'enquête auprès des conseillers. [#4434](https://github.com/betagouv/conseillers-entreprises/pull/4434)
+- Correction : Suppression du code lié à l'ancienne API adresse. [#4489](https://github.com/betagouv/conseillers-entreprises/pull/4489)
+- Correction : Suppression des jobs ayant échoué et suppression du mail associé. [#4488](https://github.com/betagouv/conseillers-entreprises/pull/4488) [#4472](https://github.com/betagouv/conseillers-entreprises/pull/4472)
+- Correction : Empêcher les recherches d'entreprises avec moins de 3 caractères. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
+- Correction : Correction d'un bug empêchant la mise à jour du statut de diagnostic. [#4435](https://github.com/betagouv/conseillers-entreprises/pull/4435)
 
 ### Évolutions techniques
 - Mise à jour de Ruby en version 4.0.3. [#4449](https://github.com/betagouv/conseillers-entreprises/pull/4449)
-- Amélioration de la gestion des logs d'authentification, incluant l'IP, le port et les en-têtes `X-Forwarded-For`. [#4464](https://github.com/betagouv/conseillers-entreprises/pull/4464)
-- Correction de la gestion des emails dans les logs d'authentification. [#4479](https://github.com/betagouv/conseillers-entreprises/pull/4479)
-- Refactorisation du code pour supprimer des méthodes inutilisées dans `MatchFilter`. [#4455](https://github.com/betagouv/conseillers-entreprises/pull/4455)
-- Suppression de code obsolète lié au support utilisateur et à la gestion des bandeaux d'information. [#4438](https://github.com/betagouv/conseillers-entreprises/pull/4438) et [#4440](https://github.com/betagouv/conseillers-entreprises/pull/4440)
+- Mise à jour de dépendances npm : `webpack-dev-server` (5.2.3 -> 5.2.4), `babel/plugin-transform-modules-systemjs` (7.29.0 -> 7.29.4), `fast-uri` (3.1.0 -> 3.1.2).
+- Suppression de code obsolète et nettoyage général du code. [#4455](https://github.com/betagouv/conseillers-entreprises/pull/4455) [#4440](https://github.com/betagouv/conseillers-entreprises/pull/4440) [#4438](https://github.com/betagouv/conseillers-entreprises/pull/4438)
+- Refactorisation de la gestion des erreurs et des logs d'authentification pour inclure l'IP et les en-têtes `X-Forwarded-For`. [#4468](https://github.com/betagouv/conseillers-entreprises/pull/4468)
 - Synchronisation du schéma de la base de données. [#4468](https://github.com/betagouv/conseillers-entreprises/pull/4468)
-- Limitation de la longueur des requêtes de recherche d'entreprises à 3 caractères pour améliorer la performance. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
-- Amélioration de la gestion des erreurs liées à la recherche d'entreprises. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
+- Amélioration de la gestion des liens vers les jobs Sidekiq dans l'interface d'administration. [#4487](https://github.com/betagouv/conseillers-entreprises/pull/4487)
+- Suppression de l'utilisation de `WithSupportUser` et factorisation des appels à `support_user`. [#4437](https://github.com/betagouv/conseillers-entreprises/pull/4437)
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances (webpack-dev-server, babel, fast-uri, devise, mjml, erb).
-- Correction de noms d'institutions et d'articles dans la documentation. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
-- Ajout de tests unitaires et de specs pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la configuration et du code pour une meilleure lisibilité et maintenabilité.
-- Correction de problèmes mineurs d'interface utilisateur et de traduction.
+- Mise à jour de la documentation et des noms d'institutions. [#4457](https://github.com/betagouv/conseillers-entreprises/pull/4457)
+- Ajout d'un workflow pour la revue des dépendances GitHub. [#4492](https://github.com/betagouv/conseillers-entreprises/pull/4492)
+- Amélioration des tests et correction de problèmes de linting.

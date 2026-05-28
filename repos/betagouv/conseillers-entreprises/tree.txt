@@ -12,6 +12,7 @@
 │   ├── config
 │   │   └── rubocop_linter_action.yml
 │   └── workflows
+│       ├── dependency-review.yml
 │       └── update-dependencies.yml
 ├── .gitignore
 ├── .haml-lint.yml
@@ -64,7 +65,6 @@
 │   │   │   └── scopes.rb
 │   │   ├── profil_picture.rb
 │   │   ├── reassign_matches.rb
-│   │   ├── sidekiq.rb
 │   │   ├── solicitation.rb
 │   │   ├── spam.rb
 │   │   ├── subject.rb
@@ -443,8 +443,7 @@
 │   │   ├── add_shared_satisfactions_job.rb
 │   │   ├── admin
 │   │   │   ├── create_reminders_registers_job.rb
-│   │   │   ├── purge_csv_exports_job.rb
-│   │   │   └── send_failed_jobs_job.rb
+│   │   │   └── purge_csv_exports_job.rb
 │   │   ├── api
 │   │   │   └── api_keys_revoke_job.rb
 │   │   ├── application_job.rb
@@ -585,8 +584,6 @@
 │   │   │   └── notify_cooperation_managers.rb
 │   │   ├── antenne_hierarchy.rb
 │   │   ├── api
-│   │   │   ├── adresse
-│   │   │   │   └── search_municipality.rb
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── entreprise.rb
 │   │   │   │   ├── entreprise_effectif_annuel.rb
@@ -1000,7 +997,6 @@
 │       │   ├── _footer.text.erb
 │       │   ├── _header.mjml
 │       │   ├── admin_mailer
-│       │   │   ├── failed_jobs.html.haml
 │       │   │   ├── send_csv.html.haml
 │       │   │   └── solicitation.haml
 │       │   ├── company_mailer
@@ -1507,7 +1503,6 @@
 │   │       ├── api_adapter_company_errors.json
 │   │       ├── api_adapter_facility.json
 │   │       ├── api_adapter_facility_errors.json
-│   │       ├── api_adresse_search_municipality.json
 │   │       ├── api_entreprise_401.json
 │   │       ├── api_entreprise_500.json
 │   │       ├── api_entreprise_effectifs_entreprise.json
@@ -1565,8 +1560,7 @@
 │   │   ├── add_shared_satisfactions_job_spec.rb
 │   │   ├── admin
 │   │   │   ├── create_reminders_registers_job_spec.rb
-│   │   │   ├── purge_csv_exports_job_spec.rb
-│   │   │   └── send_failed_jobs_job_spec.rb
+│   │   │   └── purge_csv_exports_job_spec.rb
 │   │   ├── api
 │   │   │   └── api_keys_revoke_job_spec.rb
 │   │   ├── archive_expired_matches_job_spec.rb
@@ -1585,7 +1579,6 @@
 │   │   ├── company_mailer_spec.rb
 │   │   ├── expert_mailer_spec.rb
 │   │   ├── previews
-│   │   │   ├── admin_mailer_preview.rb
 │   │   │   ├── company_mailer_preview.rb
 │   │   │   ├── devise_mailer_preview.rb
 │   │   │   ├── expert_mailer_preview.rb
@@ -1679,8 +1672,6 @@
 │   │   │   └── notify_cooperation_managers_spec.rb
 │   │   ├── antenne_hierarchy_spec.rb
 │   │   ├── api
-│   │   │   ├── adresse
-│   │   │   │   └── search_municipality_spec.rb
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── entreprise_spec.rb
 │   │   │   │   └── etablissement_spec.rb
@@ -1819,4 +1810,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-314 directories, 1516 files
+312 directories, 1509 files
