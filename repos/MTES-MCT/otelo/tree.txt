@@ -104,6 +104,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260520140000_rp_add_millesime
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260526000000_remove_historical_demographic_series
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260527000000_docurba_file_cache
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -197,6 +201,7 @@
 │   │   │   │   │   ├── import-backup.command.ts
 │   │   │   │   │   ├── import-csv.command.ts
 │   │   │   │   │   ├── recalculate-results.command.ts
+│   │   │   │   │   ├── sync-docurba.command.ts
 │   │   │   │   │   └── update-user-types.command.ts
 │   │   │   │   └── services
 │   │   │   │       └── scalingo-backup.service.ts
@@ -260,6 +265,10 @@
 │   │   │   │   └── demographic-evolution-custom.service.ts
 │   │   │   ├── docs
 │   │   │   │   └── API_EXTERNAL.md
+│   │   │   ├── docurba
+│   │   │   │   ├── docurba.controller.ts
+│   │   │   │   ├── docurba.module.ts
+│   │   │   │   └── docurba.service.ts
 │   │   │   ├── email
 │   │   │   │   ├── email.controller.spec.ts
 │   │   │   │   ├── email.controller.ts
@@ -745,6 +754,12 @@
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── upload
 │       │   │   │   │       └── route.ts
+│       │   │   │   ├── docurba
+│       │   │   │   │   ├── epci
+│       │   │   │   │   │   └── [code]
+│       │   │   │   │   │       └── route.ts
+│       │   │   │   │   └── epcis
+│       │   │   │   │       └── route.ts
 │       │   │   │   ├── epci
 │       │   │   │   │   ├── [code]
 │       │   │   │   │   │   ├── contiguous
@@ -954,6 +969,9 @@
 │       │   │   │   │   │   ├── simulation-demographic-parc-evolution-data-wrapper.tsx
 │       │   │   │   │   │   ├── simulation-demographic-parc-evolution-dropdown.tsx
 │       │   │   │   │   │   └── simulation-demographic-parc-evolution.tsx
+│       │   │   │   │   ├── docurba
+│       │   │   │   │   │   ├── epci-scot-info.tsx
+│       │   │   │   │   │   └── synthesis-scot-info.tsx
 │       │   │   │   │   ├── export-simulation-settings-button.tsx
 │       │   │   │   │   ├── header
 │       │   │   │   │   │   ├── simulation-header-segmented-controls.tsx
@@ -1136,7 +1154,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (59 files)
+│       │   │   └── use-*.ts  (61 files)
 │       │   ├── lib
 │       │   │   └── auth
 │       │   │       ├── client.ts
@@ -1234,4 +1252,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-366 directories, 928 files
+374 directories, 940 files

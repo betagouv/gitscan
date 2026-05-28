@@ -10,9 +10,10 @@
   },
   "scripts": {
     "build": "nest build",
-    "dev": "nest start --watch --exec \"node -r tsconfig-paths/register\"",
+    "postbuild": "[ \"$SYNC_DOCURBA_ON_BUILD\" = \"true\" ] && pnpm cli sync-docurba || true",
+    "dev": "pnpm cli sync-docurba && nest start --watch --exec \"node -r tsconfig-paths/register\"",
     "start": "node dist/main",
-    "start:dev": "nest start --watch --exec \"node -r tsconfig-paths/register\"",
+    "start:dev": "pnpm cli sync-docurba && nest start --watch --exec \"node -r tsconfig-paths/register\"",
     "start:debug": "nest start --debug --watch --exec \"node -r tsconfig-paths/register\"",
     "start:prod": "node dist/main",
     "cli": "ts-node -r tsconfig-paths/register --project tsconfig.cli.json src/cli/cli.ts",
