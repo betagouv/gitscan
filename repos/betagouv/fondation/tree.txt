@@ -138,6 +138,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260526105302_adds_presentation_plan_members_table
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260527082038_session_archival
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -151,6 +153,7 @@
 │   │   │   │   ├── observation.prisma
 │   │   │   │   └── reports.prisma
 │   │   │   └── sql
+│   │   │       ├── countUnreportedNominationFiles.sql
 │   │   │       ├── deleteReportsAfterAffectationPublicationRawQuery.sql
 │   │   │       ├── detailLolfiSessionRawQuery.sql
 │   │   │       ├── detailsMemberRawQuery.sql
@@ -222,6 +225,14 @@
 │   │   │   │   │       │   └── list-users.query.ts
 │   │   │   │   │       └── repositories
 │   │   │   │   │           └── user.repository.ts
+│   │   │   │   ├── archived-sessions
+│   │   │   │   │   ├── archived-sessions.controller.ts
+│   │   │   │   │   ├── archived-sessions.dto.ts
+│   │   │   │   │   ├── archived-sessions.module.ts
+│   │   │   │   │   ├── archived-sessions.service.ts
+│   │   │   │   │   └── infrastructure
+│   │   │   │   │       └── queries
+│   │   │   │   │           └── list-archived-nomination-sessions.query.ts
 │   │   │   │   ├── docs
 │   │   │   │   │   ├── docs.e2e-spec.ts
 │   │   │   │   │   ├── docs.module.ts
@@ -490,6 +501,7 @@
 │   │   │   │   │   │   ├── finders
 │   │   │   │   │   │   │   ├── affectation-version.finder.ts
 │   │   │   │   │   │   │   ├── auto-affectations.finder.ts
+│   │   │   │   │   │   │   ├── count-unreported-files.finder.ts
 │   │   │   │   │   │   │   ├── lolfi-nomination-files.finder.ts
 │   │   │   │   │   │   │   ├── lolfi-nomination-session.finder.ts
 │   │   │   │   │   │   │   ├── nomination-session-file.finder.ts
@@ -747,6 +759,7 @@
 │       │   │   │   │       ├── MemberListHeader.tsx
 │       │   │   │   │       └── MemberListStateCell.tsx
 │       │   │   │   ├── session
+│       │   │   │   │   ├── ManageArchivedSessions.tsx
 │       │   │   │   │   ├── ManageSession.tsx
 │       │   │   │   │   └── SessionStatusBadge.tsx
 │       │   │   │   └── transparence
@@ -828,7 +841,10 @@
 │       │   │   │   │   ├── BanneredLayout.tsx
 │       │   │   │   │   ├── ImpersonationBanner.tsx
 │       │   │   │   │   ├── PermanentBanner.tsx
-│       │   │   │   │   └── StagingBanner.tsx
+│       │   │   │   │   ├── StagingBanner.tsx
+│       │   │   │   │   └── archived-banner
+│       │   │   │   │       ├── ArchivedSessionBanner.tsx
+│       │   │   │   │       └── ArchivedSessionUpdater.tsx
 │       │   │   │   ├── loaders
 │       │   │   │   │   └── pulse
 │       │   │   │   │       ├── Pulse.css
@@ -961,6 +977,10 @@
 │       │   │       ├── sdk.ts
 │       │   │       └── types.ts
 │       │   ├── hooks
+│       │   │   ├── archive
+│       │   │   │   ├── ArchivedSessionContext.ts
+│       │   │   │   ├── ArchivedSessionProvider.tsx
+│       │   │   │   └── useArchivedSession.ts
 │       │   │   ├── roles.hook.ts
 │       │   │   ├── useBeforeUnload.ts
 │       │   │   ├── useConfirmation.hook.tsx
@@ -1012,6 +1032,7 @@
 │       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
 │       │   │   ├── secretariat-general
+│       │   │   │   ├── ArchivedSessionsPage.tsx
 │       │   │   │   ├── ManageSessionPage.tsx
 │       │   │   │   ├── MemberListPage.tsx
 │       │   │   │   ├── NouvelleTransparencePage.tsx
@@ -1083,6 +1104,7 @@
 │       │   ├── queries
 │       │   │   ├── administration.queries.ts
 │       │   │   ├── agenda.queries.ts
+│       │   │   ├── archived-nomination-sessions.queries.ts
 │       │   │   ├── auth.queries.ts
 │       │   │   ├── ingest.queries.ts
 │       │   │   ├── jobs.queries.ts
@@ -1176,6 +1198,9 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
-└── scripts
-    └── changelog.js
-259 directories, 921 files
+├── scripts
+│   ├── changelog.js
+│   └── sheetjs.sh
+└── vendor
+    └── .gitkeep
+266 directories, 939 files
