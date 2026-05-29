@@ -225,6 +225,7 @@
     │   │   │   ├── 0027_blob_encryption_key_id_blob_storage_location_and_more.py
     │   │   │   ├── 0028_split_attachment_messages.py
     │   │   │   ├── 0029_attachment_message_not_null.py
+    │   │   │   ├── 0030_remove_attachment__deprecated_messages_and_more.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -232,6 +233,7 @@
     │   │   │   ├── blob_gc.py
     │   │   │   ├── calendar
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── ics_rebuild.py
     │   │   │   │   ├── service.py
     │   │   │   │   └── tasks.py
     │   │   │   ├── dns
@@ -304,7 +306,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (59 files)
+    │   │   │   │   └── test_*.py  (60 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
@@ -437,6 +439,7 @@
     │   ├── playwright.config.ts
     │   ├── src
     │   │   ├── __tests__
+    │   │   │   ├── attachment-preview.spec.ts
     │   │   │   ├── login.spec.ts
     │   │   │   ├── message-import.spec.ts
     │   │   │   ├── message-inline-image.spec.ts
@@ -611,6 +614,7 @@
     │   │   │       ├── ru-RU.json
     │   │   │       └── uk-UA.json
     │   │   ├── manifest.json
+    │   │   ├── pdf.worker.min.mjs
     │   │   └── sounds
     │   │       └── mail-sent.ogg
     │   ├── src
@@ -685,7 +689,7 @@
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
     │   │   │   │   │   │   ├── mailbox_*.ts  (16 files)
-    │   │   │   │   │   │   ├── mailboxes_*.ts  (15 files)
+    │   │   │   │   │   │   ├── mailboxes_*.ts  (16 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
@@ -976,6 +980,11 @@
     │   │   │   │           │   │   └── quick-assign-popover
     │   │   │   │           │   │       ├── _index.scss
     │   │   │   │           │   │       └── index.tsx
+    │   │   │   │           │   ├── attachment-preview-modal
+    │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   ├── index.tsx
+    │   │   │   │           │   │   ├── sidebar-drive-action.tsx
+    │   │   │   │           │   │   └── sidebar.tsx
     │   │   │   │           │   ├── calendar-invite
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── calendar-helper.tsx
@@ -1009,7 +1018,8 @@
     │   │   │   │           │   │   ├── drive-preview-link.tsx
     │   │   │   │           │   │   ├── drive-upload-button.tsx
     │   │   │   │           │   │   ├── drive-upload-store.ts
-    │   │   │   │           │   │   └── index.tsx
+    │   │   │   │           │   │   ├── index.tsx
+    │   │   │   │           │   │   └── use-drive-upload.ts
     │   │   │   │           │   ├── thread-event
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── assignment-message.test.ts
@@ -1037,6 +1047,8 @@
     │   │   │   │           │   ├── thread-summary
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
+    │   │   │   │           │   ├── thread-view-empty
+    │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   └── thread-view-labels-list
     │   │   │   │           │       └── index.tsx
     │   │   │   │           ├── index.tsx
@@ -1060,6 +1072,7 @@
     │   │   │   │   └── use-trash.tsx
     │   │   │   ├── providers
     │   │   │   │   ├── admin-maildomain.tsx
+    │   │   │   │   ├── attachment-preview.tsx
     │   │   │   │   ├── config.tsx
     │   │   │   │   ├── fold.tsx
     │   │   │   │   ├── mailbox-cache.test.ts
@@ -1331,4 +1344,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-289 directories, 1223 files
+291 directories, 1236 files
