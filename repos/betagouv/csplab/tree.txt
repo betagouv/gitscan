@@ -8,8 +8,10 @@
 │   │   │   └── action.yml
 │   │   └── setup-uv-python
 │   │       └── action.yml
+│   ├── auto_assign.yml
 │   ├── pull_request_template.md
 │   └── workflows
+│       ├── auto_assign.yml
 │       ├── chore.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
@@ -49,6 +51,7 @@
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
 │   ├── docker_compose_override.md
+│   ├── frontend_conventions.md
 │   ├── frontend_vue.md
 │   ├── sass_configuration.md
 │   ├── scss_linting_and_formatting.md
@@ -72,7 +75,6 @@
     │   │   ├── __init__.py
     │   │   ├── _sentry.py
     │   │   ├── config.py
-    │   │   ├── dependencies.py
     │   │   ├── main.py
     │   │   ├── routes.py
     │   │   └── talentsoft.py
@@ -80,15 +82,23 @@
     │   │   ├── __init__.py
     │   │   ├── interfaces
     │   │   │   ├── __init__.py
+    │   │   │   ├── sources_repository.py
     │   │   │   └── talentsoft_client_interface.py
     │   │   └── use_cases
     │   │       ├── __init__.py
     │   │       ├── archive_offer.py
-    │   │       └── load_offer_details.py
+    │   │       ├── load_offer_details.py
+    │   │       └── load_sources.py
     │   ├── bin
     │   │   └── start_web.sh
+    │   ├── domain
+    │   │   ├── __init__.py
+    │   │   └── source.py
     │   ├── infrastructure
     │   │   ├── __init__.py
+    │   │   ├── di
+    │   │   │   ├── __init__.py
+    │   │   │   └── container.py
     │   │   ├── exceptions
     │   │   │   ├── __init__.py
     │   │   │   └── exceptions.py
@@ -98,9 +108,10 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── talentsoft_dtos.py
     │   │   │   └── talentsoft_client.py
-    │   │   └── gateways
-    │   │       ├── __init__.py
-    │   │       └── async_http_client.py
+    │   │   ├── gateways
+    │   │   │   ├── __init__.py
+    │   │   │   └── async_http_client.py
+    │   │   └── sources_repository.py
     │   ├── presentation
     │   │   ├── __init__.py
     │   │   └── dtos
@@ -109,15 +120,22 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── conftest.py
     │   │   ├── factories
     │   │   │   ├── __init__.py
     │   │   │   └── talentsoft_factories.py
     │   │   ├── integration
     │   │   │   ├── __init__.py
-    │   │   │   ├── conftest.py
-    │   │   │   ├── test_routes.py
+    │   │   │   ├── test_archive_offer_use_case.py
+    │   │   │   ├── test_health.py
+    │   │   │   └── test_load_sources_use_case.py
+    │   │   ├── presentation
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_load_sources.py
+    │   │   │   ├── test_talentsoft_webhook.py
     │   │   │   ├── test_webhook_archive.py
     │   │   │   └── test_webhook_load_offer.py
+    │   │   ├── shared_fixtures.py
     │   │   └── unit
     │   │       ├── __init__.py
     │   │       ├── external_gateways
@@ -125,11 +143,12 @@
     │   │       │   ├── test_talentsoft_client.py
     │   │       │   ├── test_talentsoft_dtos.py
     │   │       │   └── utils.py
-    │   │       ├── test_archive_offer_use_case.py
     │   │       ├── test_async_http_client.py
     │   │       ├── test_load_offer_details_use_case.py
+    │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
-    │   │       └── test_sentry.py
+    │   │       ├── test_sentry.py
+    │   │       └── test_sources_repository.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -137,6 +156,7 @@
     │   ├── cv_analysis.md
     │   ├── data
     │   │   └── README.md
+    │   ├── dila_organisme.md
     │   ├── greco.md
     │   ├── ingres_corps.md
     │   ├── ingres_rmfp.md
@@ -220,6 +240,7 @@
         │       ├── __init__.py
         │       ├── interfaces
         │       │   ├── __init__.py
+        │       │   ├── list_metiers_input.py
         │       │   ├── list_offers_input.py
         │       │   ├── load_documents_input.py
         │       │   └── load_operation_type.py
@@ -228,6 +249,7 @@
         │           ├── archive_offer_by_reference.py
         │           ├── archive_offers.py
         │           ├── clean_documents.py
+        │           ├── list_metiers.py
         │           ├── list_offers.py
         │           ├── list_sources.py
         │           ├── load_documents.py
@@ -306,6 +328,7 @@
         │   └── value_objects
         │       ├── __init__.py
         │       ├── access_modality.py
+        │       ├── area.py
         │       ├── category.py
         │       ├── competence.py
         │       ├── contract_type.py
@@ -382,6 +405,8 @@
         │   │   │   │   ├── 0020_alter_rawdocument_document_type.py
         │   │   │   │   ├── 0021_source.py
         │   │   │   │   ├── 0022_alter_source_base_url.py
+        │   │   │   │   ├── 0023_alter_source_source_id.py
+        │   │   │   │   ├── 0024_alter_sourcemodel_id_alter_sourcemodel_source_id.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -415,6 +440,8 @@
         │   │       │   ├── 0023_alter_metiermodel_external_id.py
         │   │       │   ├── 0024_alter_metiermodel_code_emploi_csp.py
         │   │       │   ├── 0025_offermodel_code_emploi_csp_and_more.py
+        │   │       │   ├── 0026_offermodel_area.py
+        │   │       │   ├── 0027_rename_code_domaine_fonctionnel_metiermodel_domaine_fonctionnel_code.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
@@ -466,8 +493,8 @@
         │   │       └── logger.py
         │   ├── mappers
         │   │   ├── __init__.py
-        │   │   ├── offer_queryset_page.py
-        │   │   └── qdrant_filters_mapper.py
+        │   │   ├── qdrant_filters_mapper.py
+        │   │   └── queryset_page.py
         │   └── repositories
         │       ├── __init__.py
         │       ├── candidate
@@ -570,6 +597,9 @@
         │   │       └── cv_flow.py
         │   ├── context_processors.py
         │   ├── frontend
+        │   │   ├── .storybook
+        │   │   │   ├── main.ts
+        │   │   │   └── preview.ts
         │   │   ├── eslint.config.js
         │   │   ├── package.json
         │   │   ├── src
@@ -577,9 +607,23 @@
         │   │   │   │   ├── App.vue
         │   │   │   │   └── main.ts
         │   │   │   ├── env.d.ts
-        │   │   │   └── features
-        │   │   │       └── ats
-        │   │   │           └── HomeView.vue
+        │   │   │   ├── features
+        │   │   │   │   └── ats
+        │   │   │   │       └── HomeView.vue
+        │   │   │   ├── stories
+        │   │   │   │   ├── 01-fondations
+        │   │   │   │   │   └── Tokens.stories.ts
+        │   │   │   │   ├── Introduction.mdx
+        │   │   │   │   └── ddr
+        │   │   │   │       ├── DDR-000.mdx
+        │   │   │   │       ├── DDR-001.mdx
+        │   │   │   │       └── content
+        │   │   │   │           ├── ddr-000-pourquoi-des-ddr.md
+        │   │   │   │           └── ddr-001-couches-design.md
+        │   │   │   └── styles
+        │   │   │       ├── dsfr-tokens.css
+        │   │   │       ├── index.css
+        │   │   │       └── theme.css
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
@@ -711,6 +755,7 @@
         │   │   │   ├── accessibility
         │   │   │   │   ├── __init__.py
         │   │   │   │   ├── conftest.py
+        │   │   │   │   ├── test_candidate_flow_a11y.py
         │   │   │   │   └── test_home_a11y.py
         │   │   │   ├── e2e
         │   │   │   │   ├── __init__.py
@@ -768,6 +813,7 @@
         │   │   │   ├── test_archive_offer_by_reference.py
         │   │   │   ├── test_archive_offers.py
         │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_list_metiers.py
         │   │   │   ├── test_list_offers.py
         │   │   │   ├── test_list_sources.py
         │   │   │   ├── test_load_documents.py
@@ -788,6 +834,7 @@
         │   │   │       ├── __init__.py
         │   │   │       ├── test_archive_offers_view.py
         │   │   │       ├── test_ingestion_views.py
+        │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
         │   │   │       └── test_list_sources.py
         │   │   └── unit
@@ -835,4 +882,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-172 directories, 665 files
+181 directories, 703 files
