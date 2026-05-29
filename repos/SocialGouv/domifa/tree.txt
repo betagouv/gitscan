@@ -222,8 +222,6 @@
 │   │   │   │           ├── index.ts
 │   │   │   │           ├── user-security
 │   │   │   │           │   ├── UserSecurity.interface.ts
-│   │   │   │           │   ├── UserSecurityEvent.interface.ts
-│   │   │   │           │   ├── UserSecurityEventType.type.ts
 │   │   │   │           │   ├── UserSecurityLogError.interface.ts
 │   │   │   │           │   ├── UserSessionRecord.interface.ts
 │   │   │   │           │   ├── UserTokenType.type.ts
@@ -246,9 +244,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1779831941536-auto-migration.ts
-│   │   │   │   ├── 1779996279014-app-log-target-user-on-security-actions.ts
-│   │   │   │   ├── 1780000086400-backfill-app-log-security.ts
+│   │   │   │   ├── 1780006352188-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -345,8 +341,6 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── login-otp.service.spec.ts
 │   │   │   │   │   ├── login-otp.service.ts
-│   │   │   │   │   ├── session-cleaner.service.spec.ts
-│   │   │   │   │   ├── session-cleaner.service.ts
 │   │   │   │   │   ├── session-fingerprint.service.spec.ts
 │   │   │   │   │   ├── session-fingerprint.service.ts
 │   │   │   │   │   ├── structures-auth.service.spec.ts
@@ -563,6 +557,9 @@
 │   │   │   ├── instrument.ts
 │   │   │   ├── modules
 │   │   │   │   ├── app-logs
+│   │   │   │   │   ├── app-log-security-counters.ts
+│   │   │   │   │   ├── app-log-security-user-resolver.ts
+│   │   │   │   │   ├── app-log-security-writer.ts
 │   │   │   │   │   ├── app-log-security.service.ts
 │   │   │   │   │   ├── app-logs.helpers.ts
 │   │   │   │   │   ├── app-logs.module.ts
@@ -717,9 +714,7 @@
 │   │   │   │   │   │   ├── admins-auth.service.ts
 │   │   │   │   │   │   ├── check-territories.spec.ts
 │   │   │   │   │   │   ├── check-territories.ts
-│   │   │   │   │   │   ├── get-structure-decision-motif.ts
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── portail-admin-profil-builder.service.ts
 │   │   │   │   │   │   ├── structure-decision
 │   │   │   │   │   │   │   ├── structure-decision.service.spec.ts
 │   │   │   │   │   │   │   └── structure-decision.service.ts
@@ -762,7 +757,6 @@
 │   │   │   │   │   │   ├── user-usager-login-password-generator.service.ts
 │   │   │   │   │   │   └── user-usager-security
 │   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │       ├── userUsagerSecurityEventHistoryManager.service.test.ts
 │   │   │   │   │   │       ├── userUsagerSecurityPasswordChecker.service.ts
 │   │   │   │   │   │       └── userUsagerSecurityPasswordUpdater.service.ts
 │   │   │   │   │   └── types
@@ -884,21 +878,21 @@
 │   │   │   │       │   └── user.dto.ts
 │   │   │   │       ├── services
 │   │   │   │       │   ├── crons
+│   │   │   │       │   │   ├── expired-temporary-block-cleaner.service.ts
 │   │   │   │       │   │   └── expired-token-cleaner.service.ts
 │   │   │   │       │   ├── get-user-repository.service.ts
 │   │   │   │       │   ├── index.ts
-│   │   │   │       │   ├── logUserSecurityEvent.service.ts
 │   │   │   │       │   ├── tests
-│   │   │   │       │   │   ├── user-structure-creator.service.spec.ts
-│   │   │   │       │   │   └── userSecurityEventHistoryManager.service.test.ts
+│   │   │   │       │   │   └── user-structure-creator.service.spec.ts
 │   │   │   │       │   ├── user-structure-creator.service.ts
+│   │   │   │       │   ├── userPasswordWriter.service.ts
 │   │   │   │       │   ├── userSecurityEventHistoryManager.service.ts
 │   │   │   │       │   ├── userSecurityPasswordChecker.service.ts
 │   │   │   │       │   ├── userSecurityPasswordUpdater.service.ts
 │   │   │   │       │   ├── userSecurityResetPasswordInitiator.service.ts
 │   │   │   │       │   ├── userSecurityResetPasswordUpdater.service.ts
-│   │   │   │       │   ├── userStatusManager.service.ts
-│   │   │   │       │   └── users-deletor.service.ts
+│   │   │   │       │   ├── userSessionTerminator.service.ts
+│   │   │   │       │   └── userStatusManager.service.ts
 │   │   │   │       └── users.module.ts
 │   │   │   ├── run-app.ts
 │   │   │   ├── run-migrate-down-last.ts
@@ -1307,6 +1301,7 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── functions
 │   │   │   │   │   ├── findNetwork.ts
+│   │   │   │   │   ├── getStructureDecisionMotif.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── isSiret.ts
 │   │   │   │   │   ├── matchFonctionUtilisateur.ts
@@ -2724,7 +2719,6 @@
 │   │   │   │   │   │       ├── PASSWORD_VALIDATOR.const.ts
 │   │   │   │   │   │       ├── PortailAdminAuthLoginForm.type.ts
 │   │   │   │   │   │       ├── UserStructureWithSecurity.type.ts
-│   │   │   │   │   │       ├── event-history.ts
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── admin-structures
 │   │   │   │   │   │   ├── admin-structures-routing.module.ts
@@ -2764,6 +2758,15 @@
 │   │   │   │   │   │       ├── structuresListModelBuilder.ts
 │   │   │   │   │   │       ├── structuresSearchStringFilter.ts
 │   │   │   │   │   │       └── structuresSorter.ts
+│   │   │   │   │   ├── brevo-blocklist
+│   │   │   │   │   │   ├── brevo-blocklist-routing.module.ts
+│   │   │   │   │   │   ├── brevo-blocklist.module.ts
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── brevo-blocklist
+│   │   │   │   │   │   │       ├── brevo-blocklist.component.html
+│   │   │   │   │   │   │       └── brevo-blocklist.component.ts
+│   │   │   │   │   │   └── services
+│   │   │   │   │   │       └── brevo-blocklist.service.ts
 │   │   │   │   │   ├── general
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── not-found
@@ -2808,6 +2811,9 @@
 │   │   │   │   │   │   │   ├── structure-user-info
 │   │   │   │   │   │   │   │   ├── structure-user-info.component.html
 │   │   │   │   │   │   │   │   └── structure-user-info.component.ts
+│   │   │   │   │   │   │   ├── structure-user-security-logs
+│   │   │   │   │   │   │   │   ├── structure-user-security-logs.component.html
+│   │   │   │   │   │   │   │   └── structure-user-security-logs.component.ts
 │   │   │   │   │   │   │   ├── structure-user-sessions
 │   │   │   │   │   │   │   │   └── structure-user-sessions.component.ts
 │   │   │   │   │   │   │   └── structure-users-list
@@ -2882,11 +2888,20 @@
 │   │   │   │   │   │   │   │   ├── custom-toastr.component.html
 │   │   │   │   │   │   │   │   ├── custom-toastr.component.scss
 │   │   │   │   │   │   │   │   └── custom-toastr.component.ts
+│   │   │   │   │   │   │   ├── display-ip
+│   │   │   │   │   │   │   │   ├── display-ip.component.html
+│   │   │   │   │   │   │   │   └── display-ip.component.ts
 │   │   │   │   │   │   │   ├── display-last-login
 │   │   │   │   │   │   │   │   ├── display-last-login.component.css
 │   │   │   │   │   │   │   │   ├── display-last-login.component.html
 │   │   │   │   │   │   │   │   ├── display-last-login.component.spec.ts
 │   │   │   │   │   │   │   │   └── display-last-login.component.ts
+│   │   │   │   │   │   │   ├── display-password-age
+│   │   │   │   │   │   │   │   ├── display-password-age.component.html
+│   │   │   │   │   │   │   │   └── display-password-age.component.ts
+│   │   │   │   │   │   │   ├── display-user-agent
+│   │   │   │   │   │   │   │   ├── display-user-agent.component.html
+│   │   │   │   │   │   │   │   └── display-user-agent.component.ts
 │   │   │   │   │   │   │   ├── fonction-selection
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
@@ -2965,7 +2980,6 @@
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── CustomToast.type.ts
 │   │   │   │   │   │       ├── CustomToastClass.type.ts
-│   │   │   │   │   │       ├── UserSecurityEvent.type.ts
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── components
@@ -3024,18 +3038,12 @@
 │   │   │   │   │   │   └── structure.module.ts
 │   │   │   │   │   └── suspicious-activity
 │   │   │   │   │       ├── components
-│   │   │   │   │       │   ├── sessions-history-table
-│   │   │   │   │       │   │   ├── sessions-history-table.component.html
-│   │   │   │   │       │   │   └── sessions-history-table.component.ts
 │   │   │   │   │       │   ├── suspicious-activity-filters
 │   │   │   │   │       │   │   ├── suspicious-activity-filters.component.html
 │   │   │   │   │       │   │   └── suspicious-activity-filters.component.ts
-│   │   │   │   │       │   ├── suspicious-activity-list
-│   │   │   │   │       │   │   ├── suspicious-activity-list.component.html
-│   │   │   │   │       │   │   └── suspicious-activity-list.component.ts
-│   │   │   │   │       │   └── suspicious-activity-user-detail
-│   │   │   │   │       │       ├── suspicious-activity-user-detail.component.html
-│   │   │   │   │       │       └── suspicious-activity-user-detail.component.ts
+│   │   │   │   │       │   └── suspicious-activity-list
+│   │   │   │   │       │       ├── suspicious-activity-list.component.html
+│   │   │   │   │       │       └── suspicious-activity-list.component.ts
 │   │   │   │   │       ├── constants
 │   │   │   │   │       │   └── SUSPICIOUS_ACTIONS.const.ts
 │   │   │   │   │       ├── services
@@ -3047,6 +3055,7 @@
 │   │   │   │   └── shared
 │   │   │   │       ├── constants
 │   │   │   │       │   ├── MATOMO_INJECTORS.const.ts
+│   │   │   │       │   ├── PAGE_SIZE.const.ts
 │   │   │   │       │   ├── animations.ts
 │   │   │   │       │   └── index.ts
 │   │   │   │       ├── index.ts
@@ -3388,4 +3397,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-787 directories, 2603 files
+793 directories, 2606 files
