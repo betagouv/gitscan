@@ -19,6 +19,8 @@
 │   └── element.png
 ├── tests
 │   ├── auth
+│   │   ├── deactivated
+│   │   │   └── tchap-deactivated-account.spec.ts
 │   │   ├── logout
 │   │   │   └── tchap-logout.spec.ts
 │   │   ├── oidc
@@ -32,12 +34,18 @@
 │   │       ├── tchap-login-password.spec.ts
 │   │       ├── tchap-register-password.spec.ts
 │   │       └── tchap-reset-password.spec.ts
-│   ├── minimal
-│   │   └── minimal-scenario.spec.ts
-│   ├── synapse
-│   │   └── email-account-validity
-│   │       ├── tchap-deactivated-account.spec.ts
-│   │       └── tchap-expiration.spec.ts
+│   ├── integration
+│   │   ├── email-account-validity
+│   │   │   └── tchap-expiration.spec.ts
+│   │   ├── minimal
+│   │   │   └── minimal-scenario.spec.ts
+│   │   └── room-access-rules
+│   │       ├── direct-room.spec.ts
+│   │       ├── private-encrypted-room.spec.ts
+│   │       ├── private-unencrypted-room.spec.ts
+│   │       ├── public-room.spec.ts
+│   │       ├── room-utils.ts
+│   │       └── room.spec.ts
 │   └── web
 │       └── create-room.spec.ts
 ├── tsconfig.json
@@ -49,5 +57,6 @@
     ├── keycloak-admin.ts
     ├── mailpit.ts
     ├── mas-admin.ts
+    ├── matrix-api.ts
     └── synapse-admin.ts
-13 directories, 39 files
+15 directories, 46 files
