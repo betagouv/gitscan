@@ -1,47 +1,45 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 25 mai 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des permissions et des accès, l'ajout de nouvelles fonctionnalités de suivi et d'analyse (notamment avec PostHog), et des corrections pour optimiser l'expérience utilisateur et la performance de la plateforme. Des améliorations ont également été apportées à la gestion des données et à l'intégration avec des services externes comme ADEME Connect.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des permissions et des accès, la correction de bugs liés à l'affectation des demandes et des réseaux, ainsi que l'ajout de nouvelles fonctionnalités de suivi et d'analyse des données. Des améliorations significatives ont également été apportées à l'expérience utilisateur, notamment au niveau de l'administration et de la cartographie. Enfin, le projet a bénéficié d'un effort important de documentation et de suivi des événements via PostHog.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau système de permissions plus granulaire, incluant des rôles (CCRT, ALEC) et une gestion des accès simplifiée.
-- Amélioration de l'interface d'administration pour la gestion des permissions et des utilisateurs.
-- Intégration d'ADEME Connect via iframe.
+- Ajout d'un nouveau système de permissions avec des rôles et une gestion plus fine des accès.
+- Amélioration du workflow d'affectation des demandes aux réseaux.
+- Ajout d'un lien pour corriger les permissions d'un gestionnaire directement depuis l'interface.
+- Affichage des demandes plutôt que des tests d'adresses dans l'administration des réseaux.
 - Ajout d'un bandeau d'information concernant une future indisponibilité du service.
-- Amélioration de la gestion des relances et des notes sur les réseaux.
-- Ajout d'une fonctionnalité de recherche par ID SNCU dans les statistiques.
-- Affichage de la colonne "has_PDP" dans l'administration des demandes.
 - Ajout d'une FAQ accessible depuis la page d'accueil.
-- Amélioration du formulaire de création d'utilisateur par un administrateur.
-- Ajout d'un bouton pour réaffecter facilement les demandes.
-- Ajout d'une fonctionnalité de sauvegarde des presets dans l'URL pour une expérience utilisateur plus cohérente.
-- Amélioration de la visibilité des demandes à traiter et affectées.
-- Ajout d'un lien direct vers la correction des permissions pour un gestionnaire.
+- Ajout de liens entrants vers la FAQ depuis d'autres pages.
+- Amélioration de la visibilité des demandes à traiter et affectées dans l'interface d'administration.
+- Ajout d'un bouton pour effacer la sélection dans les champs d'auto-complétion.
+- Ajout d'un indicateur visuel pour les réseaux en construction.
+- Ajout d'une fonctionnalité permettant de réaffecter une demande à un autre réseau.
+- Amélioration de la gestion des relances et ajout de notes.
+- Ajout d'une fonctionnalité pour afficher les emails dans l'administration.
+- Intégration de l'outil Ademe Connect via iframe.
 
 ### Évolutions techniques
-- Mise en place d'un cache au niveau des tuiles pour améliorer la performance de la carte.
-- Refactor de la gestion des permissions et des routes.
-- Ajout d'un module de métriques avec une API Prometheus pour le monitoring.
+- Mise en place d'un cache au niveau des tuiles cartographiques pour améliorer les performances.
+- Refactor de plusieurs composants et services pour améliorer la maintenabilité du code.
+- Ajout d'un système de métriques avec une API Prometheus pour le monitoring.
+- Amélioration du typage TypeScript dans plusieurs parties du code.
 - Migration des comptes métropoles.
-- Optimisation des performances du listing des demandes.
-- Amélioration du typage et du code dans plusieurs composants.
-- Suppression de code obsolète et nettoyage général du code.
-- Ajout de tests pour les routes territoires.
-- Uniformisation du tracking PostHog entre différents composants (Card, Link, Button).
-- Ajout de nombreux événements de tracking PostHog pour mieux comprendre le comportement des utilisateurs.
-- Utilisation de composants UI/Link au lieu de next/link.
-- Mise à jour et simplification de la configuration des variables d'environnement.
+- Ajout de tests unitaires et d'intégration.
+- Optimisation des requêtes en base de données pour améliorer les performances.
+- Mise en place d'un système de suivi des événements avec PostHog pour l'analyse du comportement utilisateur.
+- Suppression de code obsolète et nettoyage du codebase.
+- Amélioration de la gestion des erreurs et des logs.
+- Ajout de scripts pour faciliter l'analyse et la mise à jour des données.
 
 ### Autres changements
-- Ajout d'un script pour dropper des tables à distance.
-- Ajout d'un script pour mettre à jour les réseaux via un répertoire.
-- Ajout d'un script de migration des notes de tags.
-- Suppression des presets "haut potentiel" et "dans PDP".
+- Mise à jour de la documentation.
+- Correction de plusieurs erreurs de typographie et de style.
+- Amélioration de l'accessibilité du site web.
+- Ajout de commentaires dans le code pour faciliter la compréhension.
+- Suppression de fichiers inutiles du dépôt.
+- Amélioration de la configuration du projet.
 - Ajout d'un fichier `.claudeignore`.
-- Correction de plusieurs erreurs de typage et d'indentation.
-- Amélioration de la documentation et des commentaires.
-- Suppression de crons inutiles.
-- Ajout de commandes pour analyser les réseaux.
-- Ajout d'un message d'information pour les utilisateurs provenant de Pacoupa.
-- Amélioration du texte sous les liens pour plus de clarté.
-- Ajout d'un petit délai pour une meilleure gestion du scroll sur l'accordéon de la FAQ.
+- Correction de problèmes de linting.
+- Ajout de tests pour les routes territoires.
+- Mise à jour des dépendances.
