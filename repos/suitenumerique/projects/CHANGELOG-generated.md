@@ -1,24 +1,20 @@
-## Changelog : projects (30 derniers jours, au 2026-05-24)
+## Changelog : projects (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de gestion des tableaux de bord, notamment l'exportation des données, la duplication de tableaux et la correction de plusieurs bugs affectant l'interface utilisateur et le comportement de l'application. L'expérience utilisateur a été améliorée grâce à des corrections de bugs et des ajustements d'interface.
+Cette version apporte des améliorations significatives à la gestion des tableaux de bord, notamment la possibilité d'exporter les données au format CSV, de partager des filtres spécifiques et de supprimer des dossiers. Des corrections de bugs améliorent l'expérience utilisateur, notamment sur Mac et avec les noms de tableaux de bord longs.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter les données des tableaux de bord au format CSV. [#69](https://github.com/suitenumerique/projects/pull/69)
-- Les filtres appliqués sont désormais inclus dans l'URL, permettant de les partager et de les conserver.
-- Après la duplication d'une carte, celle-ci s'ouvre automatiquement.
-- Amélioration de l'interface utilisateur des actions sur les tableaux de bord pour une meilleure harmonisation.
+- Ajout de la possibilité d'exporter les données d'un tableau de bord au format CSV. [#60d5bb6](https://github.com/suitenumerique/projects/commit/60d5bb6)
+- Les filtres appliqués à un tableau de bord sont maintenant inclus dans l'URL, permettant de partager facilement un état de filtre spécifique. [#dd363f7](https://github.com/suitenumerique/projects/commit/dd363f7)
+- Possibilité de supprimer des dossiers. [#e7e14ab](https://github.com/suitenumerique/projects/commit/e7e14ab)
+- Après la duplication d'une carte, celle-ci s'ouvre automatiquement. [#77d5785](https://github.com/suitenumerique/projects/commit/77d5785)
+- Correction d'un bug empêchant l'ouverture d'une carte avec `Cmd+Enter` sur Mac. [#0d181e7](https://github.com/suitenumerique/projects/commit/0d181e7)
+- Correction d'un bug qui pouvait entraîner l'ajout de plusieurs fois le même utilisateur dans la fenêtre de partage. [#22e3814](https://github.com/suitenumerique/projects/commit/22e3814)
+- Correction d'un problème d'affichage des noms de tableaux de bord trop longs. [#d5a637e](https://github.com/suitenumerique/projects/commit/d5a637e)
 
 ### Évolutions techniques
-- Correction d'un problème empêchant la récupération correcte des tableaux de bord lors de la duplication.
-- Correction d'un problème lié à l'ID du projet cible lors de la duplication de modèles de tableaux de bord.
-- Correction de la création de tableaux de bord à partir de modèles.
-- Correction de la mise à jour des tableaux de bord.
-- Les notifications ne sont plus automatiquement marquées comme lues lors d'un clic.
-- Correction de problèmes d'affichage des activités.
+- Harmonisation de l'interface utilisateur des actions sur les tableaux de bord. [#04be840](https://github.com/suitenumerique/projects/commit/04be840)
+- Correction de la couleur de fond des badges de date d'échéance. [#045dc5e](https://github.com/suitenumerique/projects/commit/045dc5e)
 
 ### Autres changements
-- Correction d'un problème d'affichage si le nom d'un tableau de bord est trop long.
-- Correction d'un bug empêchant l'ajout de plusieurs utilisateurs dans la modale de partage.
-- Correction d'un bug lié à l'ouverture des cartes avec Cmd+Enter sur Mac.
-- Correction de la couleur de fond des badges de date d'échéance.
+- Publication de la version 1.3.0. [#5aa2996](https://github.com/suitenumerique/projects/commit/5aa2996)
