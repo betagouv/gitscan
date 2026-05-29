@@ -242,6 +242,7 @@
 │   │   │   │   │   │   │   │   │   │       ├── _components
 │   │   │   │   │   │   │   │   │   │       │   ├── action
 │   │   │   │   │   │   │   │   │   │       │   │   └── action.justification-field.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── action-hidden.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── header
@@ -1102,7 +1103,6 @@
 │   │   │   │   │   │   │   │   ├── edition-modal-manager-context.tsx
 │   │   │   │   │   │   │   │   ├── edition-modal-registry.tsx
 │   │   │   │   │   │   │   │   └── edition-modal-renderer.tsx
-│   │   │   │   │   │   │   ├── editable-title.tsx
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   ├── menu
 │   │   │   │   │   │   │   │   ├── actions
@@ -1320,7 +1320,6 @@
 │   │   │   │   │   │   ├── open-action-statut-detaille-modal.button.tsx
 │   │   │   │   │   │   ├── open-action-statut-detaille.modal.tsx
 │   │   │   │   │   │   ├── use-action-statut.ts
-│   │   │   │   │   │   ├── use-hide-action.ts
 │   │   │   │   │   │   └── use-update-action-statut.ts
 │   │   │   │   │   ├── action-statut-with-detaille-button.dropdown.tsx
 │   │   │   │   │   ├── action.card.tsx
@@ -1355,10 +1354,12 @@
 │   │   │   │   │   ├── get-prev-and-next-action-links.utils.tsx
 │   │   │   │   │   ├── sub-action
 │   │   │   │   │   │   └── sub-action.description.tsx
+│   │   │   │   │   ├── use-action-availability.ts
 │   │   │   │   │   ├── use-get-action-ancestors.tsx
 │   │   │   │   │   ├── use-get-action-children.tsx
 │   │   │   │   │   ├── use-get-action.tsx
 │   │   │   │   │   ├── use-list-actions-grouped-by-id.tsx
+│   │   │   │   │   ├── use-list-actions.spec.ts
 │   │   │   │   │   ├── use-list-actions.ts
 │   │   │   │   │   ├── use-mesure-pilotes.ts
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
@@ -1374,18 +1375,12 @@
 │   │   │   │   │   │   ├── acte-engagement.section.tsx
 │   │   │   │   │   │   ├── ask-premiere-etoile.button.tsx
 │   │   │   │   │   │   ├── candidature-documents.section.tsx
-│   │   │   │   │   │   ├── cells
-│   │   │   │   │   │   │   ├── bordered-header.cell.tsx
-│   │   │   │   │   │   │   ├── bordered.cell.tsx
-│   │   │   │   │   │   │   ├── completion-icon.cell.tsx
-│   │   │   │   │   │   │   ├── criterion.cell.tsx
-│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── container.tsx
-│   │   │   │   │   │   ├── criterion.table.tsx
 │   │   │   │   │   │   ├── format-reponse-attendue.spec.ts
 │   │   │   │   │   │   ├── format-reponse-attendue.ts
 │   │   │   │   │   │   ├── header.tsx
-│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── labellisation-checklist.table.tsx
 │   │   │   │   │   ├── checklist-page-header
 │   │   │   │   │   │   ├── checklist-page-header.tsx
 │   │   │   │   │   │   ├── referentiel-menu.button.tsx
@@ -1753,7 +1748,8 @@
 │   │   │   │   │   ├── PictoIndicateurs.tsx
 │   │   │   │   │   ├── PictoPanierActions.tsx
 │   │   │   │   │   ├── PictoPlansAction.tsx
-│   │   │   │   │   └── PictoTrajectoire.tsx
+│   │   │   │   │   ├── PictoTrajectoire.tsx
+│   │   │   │   │   └── mesure.picto.svg
 │   │   │   │   └── shared
 │   │   │   │       ├── Kbd
 │   │   │   │       │   ├── Kbd.css
@@ -2170,6 +2166,7 @@
 │   │   │   │   ├── recherches
 │   │   │   │   │   ├── collectivites.response.ts
 │   │   │   │   │   ├── contacts.response.ts
+│   │   │   │   │   ├── filters.request.spec.ts
 │   │   │   │   │   ├── filters.request.ts
 │   │   │   │   │   ├── filtre-intervalle.table.ts
 │   │   │   │   │   ├── plans.response.ts
@@ -6513,6 +6510,11 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── input-checkbox.tsx
 │       │   │   │   └── input-switch.tsx
+│       │   │   ├── ChecklistTable
+│       │   │   │   ├── ChecklistTable.behavior.test.tsx
+│       │   │   │   ├── ChecklistTable.stories.tsx
+│       │   │   │   ├── ChecklistTable.tsx
+│       │   │   │   └── index.ts
 │       │   │   ├── DEPRECATED_Table
 │       │   │   │   ├── Table.stories.tsx
 │       │   │   │   ├── Table.tsx
@@ -6521,6 +6523,11 @@
 │       │   │   ├── Divider
 │       │   │   │   ├── Divider.stories.tsx
 │       │   │   │   ├── Divider.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── EditableTitle
+│       │   │   │   ├── EditableTitle.behavior.test.tsx
+│       │   │   │   ├── EditableTitle.stories.tsx
+│       │   │   │   ├── EditableTitle.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── Field
 │       │   │   │   ├── Field.stories.tsx
@@ -6610,14 +6617,14 @@
 │       │   │   ├── Select
 │       │   │   │   ├── Select.stories.tsx
 │       │   │   │   ├── Select.tsx
-│       │   │   │   ├── SelectBadge.tsx
 │       │   │   │   ├── SelectFilter.tsx
 │       │   │   │   ├── SelectMultiple.tsx
 │       │   │   │   ├── components
 │       │   │   │   │   ├── DropdownFloater.tsx
 │       │   │   │   │   ├── OptionMenu.tsx
 │       │   │   │   │   ├── Options.tsx
-│       │   │   │   │   └── SelectBase.tsx
+│       │   │   │   │   ├── SelectBase.tsx
+│       │   │   │   │   └── select.base-button.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── modals
 │       │   │   │   │   ├── DeleteOptionModal.tsx
@@ -6985,4 +6992,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1222 directories, 5963 files
+1223 directories, 5969 files
