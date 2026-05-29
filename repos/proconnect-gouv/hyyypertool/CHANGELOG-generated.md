@@ -1,22 +1,25 @@
-## Changelog : hyyypertool (30 derniers jours, au 2026-05-21)
+## Changelog : hyyypertool (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de Hyyypertool se concentrent sur l'amélioration de la sécurité, de l'expérience utilisateur et de la maintenabilité du code. Des fonctionnalités de limitation de débit par adresse IP ont été ajoutées pour se protéger contre les abus, tandis que le mode sombre a été amélioré et le tri des colonnes a été implémenté dans la liste des modérations. De nombreuses dépendances ont également été mises à jour pour bénéficier des dernières corrections et améliorations.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec l'ajout du mode sombre, l'amélioration de la gestion des modérations (ajout de raisons de refus, tri des colonnes) et une sécurité renforcée grâce à la limitation du débit par adresse IP. Des corrections de bugs et des mises à jour de dépendances ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de trier les modérations par colonne (date de création, etc.) en cliquant sur les en-têtes. [#1604](https://github.com/proconnect-gouv/hyyypertool/issues/1604) et [#1606](https://github.com/proconnect-gouv/hyyypertool/issues/1606)
-- Possibilité de filtrer les modérations par statut de décision (acceptées, rejetées, réouvertes). [#1594](https://github.com/proconnect-gouv/hyyypertool/issues/1594)
-- Ajout de la possibilité de supprimer des modèles de réponse. [#1600](https://github.com/proconnect-gouv/hyyypertool/issues/1600)
-- Amélioration du mode sombre pour les boutons et la liste déroulante. [#1622](https://github.com/proconnect-gouv/hyyypertool/issues/1622)
-- Suppression de l'affichage du prénom et du nom dans les emails de rejet. [#1576](https://github.com/proconnect-gouv/hyyypertool/issues/1576)
+- Ajout d'un champ "raison du refus" pour les modérations, permettant de donner un contexte plus clair aux utilisateurs.
+- Possibilité de trier les colonnes dans la liste des modérations.
+- Ajout de la possibilité de supprimer des modèles de réponse.
+- Amélioration de l'interface utilisateur avec l'implémentation du mode sombre, incluant l'adaptation des boutons et des listes déroulantes.
+- Ajout d'un interrupteur pour autoriser ou non la modification de la demande par l'utilisateur.
 
 ### Évolutions techniques
-- Implémentation d'une limitation de débit par adresse IP via `RateLimiterPostgres` pour améliorer la sécurité. [#1621](https://github.com/proconnect-gouv/hyyypertool/issues/1621)
-- Configuration du seuil de limitation de débit via la variable d'environnement `RATE_LIMIT_POINTS` (valeur par défaut : 120). [#1626](https://github.com/proconnect-gouv/hyyypertool/issues/1626)
-- Remplacement des mocks de certains services externes (api.crisp.chat, agentconnect, support.etalab.gouv.fr) par des routes de développement Hono pour faciliter les tests et le développement local. [#1607](https://github.com/proconnect-gouv/hyyypertool/issues/1607), [#1608](https://github.com/proconnect-gouv/hyyypertool/issues/1608), [#1609](https://github.com/proconnect-gouv/hyyypertool/issues/1609), [#1610](https://github.com/proconnect-gouv/hyyypertool/issues/1610)
-- Mise à jour de nombreuses dépendances (Cypress, tailwindcss, sentry, etc.).
+- Implémentation d'une limitation du débit par adresse IP pour renforcer la sécurité.
+- Remplacement des mocks de certains services externes par des routes de développement locales pour une meilleure isolation et flexibilité.
+- Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections et améliorations de sécurité.
+- Refactorisation du code pour améliorer la maintenabilité et la performance.
+- Ajout d'une colonne `end_user_reason` à la table `response_templates`.
 
 ### Autres changements
-- Amélioration du contraste et de la lisibilité en mode sombre. [#1577](https://github.com/proconnect-gouv/hyyypertool/issues/1577) et [#1578](https://github.com/proconnect-gouv/hyyypertool/issues/1578)
-- Corrections de bugs mineurs liés au cache et à la gestion des templates de réponse. [#1601](https://github.com/proconnect-gouv/hyyypertool/issues/1601), [#1602](https://github.com/proconnect-gouv/hyyypertool/issues/1602), [#1603](https://github.com/proconnect-gouv/hyyypertool/issues/1603)
-- Améliorations de l'interface utilisateur (UX) et corrections de problèmes d'affichage. [#1595](https://github.com/proconnect-gouv/hyyypertool/issues/1595), [#1596](https://github.com/proconnect-gouv/hyyypertool/issues/1596), [#1597](https://github.com/proconnect-gouv/hyyypertool/issues/1597), [#1598](https://github.com/proconnect-gouv/hyyypertool/issues/1598), [#1599](https://github.com/proconnect-gouv/hyyypertool/issues/1599)
+- Mise à jour de la documentation.
+- Corrections de bugs mineurs liés à l'affichage en mode sombre et à la gestion du cache.
+- Amélioration des messages d'erreur et de l'expérience utilisateur globale.
+- Mise à jour des dépendances de développement (Cypress, Prettier, etc.).
+- Publication de nouvelles versions : 2026.5.1, 2026.5.2, 2026.5.3, 2026.5.4, 2026.5.5, 2026.5.6, 2026.5.7, 2026.5.8, 2026.5.9, 2026.5.10, 2026.5.11, 2026.5.12.
