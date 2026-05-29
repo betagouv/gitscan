@@ -1,27 +1,28 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 2026-05-19)
+## Changelog : zero-logement-vacant (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration des performances, la simplification de l'architecture et la préparation de nouvelles fonctionnalités pour l'import des données LOVAC 2026. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment au niveau de la gestion des campagnes et de la cartographie.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la performance, la refactorisation du code pour une meilleure maintenabilité, et l'intégration des données LOVAC 2026. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées, notamment au niveau de la gestion des campagnes et de la cartographie.
 
 ### Évolutions fonctionnelles
-- **Cartographie :** Amélioration de l'expérience utilisateur de la légende de la carte, avec un affichage plus clair et un style visuel amélioré [#1698](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1698).
-- **Campagnes :** Possibilité de naviguer vers la liste des logements filtrée par campagne [#1762](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1762).
-- **Export de données :** Différenciation de l'export des groupes et des campagnes, avec ajout de la colonne "ville propriétaire" pour l'export des groupes [#1761](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1761).
-- **Statut des logements :** Correction de la gestion du statut des logements "jamais contacté" pour assurer une cohérence des données.
+- Amélioration de l'UX de la légende de la carte : la légende est maintenant plus accessible et visuellement cohérente.  [#1825](https://github.com/MTES-MCT/zero-logement-vacant/issues/1825)
+- Ajout d'une colonne "Statut de suivi" aux destinataires de campagne pour un meilleur suivi. [#1820](https://github.com/MTES-MCT/zero-logement-vacant/issues/1820)
+- Redirection vers la vue tableau lors du clic sur le bouton de regroupement sur la carte. [#1823](https://github.com/MTES-MCT/zero-logement-vacant/issues/1823)
+- Possibilité de trier les destinataires de campagne. [#1762](https://github.com/MTES-MCT/zero-logement-vacant/issues/1762)
+- Suppression de l'ancien flux de campagne, simplifiant ainsi l'application. [#1783](https://github.com/MTES-MCT/zero-logement-vacant/issues/1783)
+- Amélioration de l'exportation des groupes, avec l'ajout de la ville propriétaire et la différenciation de l'exportation de campagne. [#1761](https://github.com/MTES-MCT/zero-logement-vacant/issues/1761)
 
 ### Évolutions techniques
-- **Architecture :** Suppression du préfixe `/api` des appels API, simplifiant ainsi l'architecture et les appels réseau [#1806](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1806).
-- **Performances :** Optimisation significative du temps de calcul du nombre de logements, réduisant les temps de réponse pour les filtres [#1793](https://github.com/MTES-MCT/zero-logement-vacant/pulls/1793).
-- **dbt :** Ajout de l'identifiant UUID des propriétaires (owner_uid) aux tables `owners` et `owner_housing` pour une meilleure gestion des données.
-- **Tests :** Amélioration de la couverture et de la fiabilité des tests, notamment pour les tests d'intégration et les tests E2E.
-- **Dépendances :** Mise à jour des dépendances npm et yarn.
-- **CI/CD :** Correction de problèmes liés à la compilation des tests Dagster et à la configuration des variables d'environnement.
-- **Suppression de code obsolète :** Suppression de code et de fonctionnalités obsolètes, notamment liées à l'ancien système de campagne.
-- **Refactoring :** Refactorisation du code pour améliorer la lisibilité, la maintenabilité et la performance.
+- Refactorisation importante du code, notamment suppression du préfixe `/api` sur les routes, suppression de code mort et amélioration de la structure des tests. [#1806](https://github.com/MTES-MCT/zero-logement-vacant/issues/1806), [#1790](https://github.com/MTES-MCT/zero-logement-vacant/issues/1790)
+- Optimisation des performances de la requête de comptage des logements. [#1788](https://github.com/MTES-MCT/zero-logement-vacant/issues/1788)
+- Amélioration de la gestion des statuts de logement, notamment pour les logements "jamais contactés". [#1804](https://github.com/MTES-MCT/zero-logement-vacant/issues/1804)
+- Mise à jour des dépendances.
+- Amélioration de la gestion des adresses BAN avec la synchronisation quotidienne et l'utilisation de Claude pour les changements dans l'entrepôt de données.
+- Correction de problèmes liés à l'import des données LOVAC 2026. [#1812](https://github.com/MTES-MCT/zero-logement-vacant/issues/1812), [#1814](https://github.com/MTES-MCT/zero-logement-vacant/issues/1814), [#1815](https://github.com/MTES-MCT/zero-logement-vacant/issues/1815), [#1816](https://github.com/MTES-MCT/zero-logement-vacant/issues/1817)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés à l'architecture et aux fonctionnalités.
-- **Configuration :** Mise à jour de la configuration du projet pour améliorer la sécurité et la performance.
-- **Analytics :** Ajout d'analytics pour suivre l'utilisation des nouvelles fonctionnalités et identifier les points d'amélioration.
-- **Claude :** Intégration de Claude pour l'automatisation de certaines tâches et l'amélioration de la qualité du code.
-- **Skills :** Ajout de nouvelles skills pour les agents Claude.
+- Documentation améliorée concernant la suppression du préfixe `/api`.
+- Ajout de compétences et documentation pour l'utilisation de Claude.
+- Amélioration de la configuration des tests et correction de problèmes liés à la compilation des tests Dagster.
+- Correction de problèmes de typographie dans l'interface utilisateur.
+- Suppression de colonnes d'événements obsolètes.
+- Mise à jour de la configuration de Nx.

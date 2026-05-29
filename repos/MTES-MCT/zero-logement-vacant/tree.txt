@@ -1,4 +1,56 @@
 .
+├── .agents
+│   └── skills
+│       ├── caveman
+│       │   └── SKILL.md
+│       ├── diagnose
+│       │   ├── SKILL.md
+│       │   └── scripts
+│       │       └── hitl-loop.template.sh
+│       ├── grill-me
+│       │   └── SKILL.md
+│       ├── grill-with-docs
+│       │   ├── ADR-FORMAT.md
+│       │   ├── CONTEXT-FORMAT.md
+│       │   └── SKILL.md
+│       ├── handoff
+│       │   └── SKILL.md
+│       ├── improve-codebase-architecture
+│       │   ├── DEEPENING.md
+│       │   ├── HTML-REPORT.md
+│       │   ├── INTERFACE-DESIGN.md
+│       │   ├── LANGUAGE.md
+│       │   └── SKILL.md
+│       ├── prototype
+│       │   ├── LOGIC.md
+│       │   ├── SKILL.md
+│       │   └── UI.md
+│       ├── setup-matt-pocock-skills
+│       │   ├── SKILL.md
+│       │   ├── domain.md
+│       │   ├── issue-tracker-github.md
+│       │   ├── issue-tracker-gitlab.md
+│       │   ├── issue-tracker-local.md
+│       │   └── triage-labels.md
+│       ├── tdd
+│       │   ├── SKILL.md
+│       │   ├── deep-modules.md
+│       │   ├── interface-design.md
+│       │   ├── mocking.md
+│       │   ├── refactoring.md
+│       │   └── tests.md
+│       ├── to-issues
+│       │   └── SKILL.md
+│       ├── to-prd
+│       │   └── SKILL.md
+│       ├── triage
+│       │   ├── AGENT-BRIEF.md
+│       │   ├── OUT-OF-SCOPE.md
+│       │   └── SKILL.md
+│       ├── write-a-skill
+│       │   └── SKILL.md
+│       └── zoom-out
+│           └── SKILL.md
 ├── .claude
 │   ├── ANALYTICS_SETUP.md
 │   ├── agents
@@ -20,18 +72,32 @@
 │   │   └── packages-conventions.md
 │   ├── settings.json
 │   └── skills
+│       ├── caveman -> ../../.agents/skills/caveman
 │       ├── dagster-asset
 │       │   └── SKILL.md
 │       ├── dbt-model
 │       │   └── SKILL.md
+│       ├── diagnose -> ../../.agents/skills/diagnose
 │       ├── external-source-onboarding
 │       │   └── SKILL.md
+│       ├── grill-me -> ../../.agents/skills/grill-me
+│       ├── grill-with-docs -> ../../.agents/skills/grill-with-docs
+│       ├── handoff -> ../../.agents/skills/handoff
 │       ├── implement-feature
 │       │   └── SKILL.md
+│       ├── improve-codebase-architecture -> ../../.agents/skills/improve-codebase-architecture
 │       ├── mise-en-production
 │       │   └── SKILL.md
-│       └── sql-explore
-│           └── SKILL.md
+│       ├── prototype -> ../../.agents/skills/prototype
+│       ├── setup-matt-pocock-skills -> ../../.agents/skills/setup-matt-pocock-skills
+│       ├── sql-explore
+│       │   └── SKILL.md
+│       ├── tdd -> ../../.agents/skills/tdd
+│       ├── to-issues -> ../../.agents/skills/to-issues
+│       ├── to-prd -> ../../.agents/skills/to-prd
+│       ├── triage -> ../../.agents/skills/triage
+│       ├── write-a-skill -> ../../.agents/skills/write-a-skill
+│       └── zoom-out -> ../../.agents/skills/zoom-out
 ├── .config
 │   └── wt.toml
 ├── .docker
@@ -401,6 +467,7 @@
 │   │   │   │       ├── README.md
 │   │   │   │       ├── int_zlovac.sql
 │   │   │   │       ├── int_zlovac_buildings.sql
+│   │   │   │       ├── int_zlovac_dedup_key_uid.sql
 │   │   │   │       ├── int_zlovac_evol_housing_owners.sql
 │   │   │   │       ├── int_zlovac_ff25_lookup.sql
 │   │   │   │       ├── int_zlovac_housing.sql
@@ -609,7 +676,6 @@
 │   │   │   │   ├── test_housing_living_area_reasonable.sql
 │   │   │   │   ├── test_housing_vacancy_year_reasonable.sql
 │   │   │   │   ├── test_zlovac_buildings_in_housing.sql
-│   │   │   │   ├── test_zlovac_buildings_rnb_footprint_geometry.sql
 │   │   │   │   ├── test_zlovac_dgfip_address_clean.sql
 │   │   │   │   ├── test_zlovac_geolocation_source_coverage.sql
 │   │   │   │   ├── test_zlovac_housing_building_year_reasonable.sql
@@ -958,9 +1024,9 @@
 │   │   │   │   ├── RequireAuth.tsx
 │   │   │   │   └── RequireGuest.tsx
 │   │   │   ├── Campaign
-│   │   │   │   ├── CampaignCreatedFromGroupNext.tsx
+│   │   │   │   ├── CampaignCreatedFromGroup.tsx
 │   │   │   │   ├── CampaignDeleteModal.tsx
-│   │   │   │   ├── CampaignRecipientsNext.tsx
+│   │   │   │   ├── CampaignRecipients.tsx
 │   │   │   │   ├── CampaignReturnCountStatCard.tsx
 │   │   │   │   ├── CampaignReturnRateStatCard.tsx
 │   │   │   │   ├── CampaignSentAtButton.tsx
@@ -2549,7 +2615,9 @@
 │   │   │   │   └── ownerDistanceService.test.ts
 │   │   │   └── twoFactorService.ts
 │   │   ├── test
+│   │   │   ├── factories.ts
 │   │   │   ├── global-setup.ts
+│   │   │   ├── knex-adapter.ts
 │   │   │   ├── sample.pdf
 │   │   │   ├── testFixtures.ts
 │   │   │   └── testUtils.ts
@@ -2637,4 +2705,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-391 directories, 2248 files
+422 directories, 2285 files
