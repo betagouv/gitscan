@@ -1,14 +1,16 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Application Android de messagerie sécurisée, réécriture complète de l'application précédente avec le SDK Matrix Rust et Jetpack Compose. Elle est destinée à remplacer l'ancienne application Tchap.",
+  "description": "Application Android de nouvelle génération pour le protocole Matrix, offrant une communication chiffrée et sécurisée. Elle est une réécriture complète de l'application précédente, utilisant le SDK Matrix Rust et Jetpack Compose.",
   "language": "Kotlin",
   "features": [
     "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des équipes & Partenaires"
+    "Notifications & Alertes",
+    "Gestion des espaces",
+    "Gestion des messages",
+    "Appels audio"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,7 +23,8 @@
     "TypeScript / JavaScript",
     "Android",
     "Kotlin",
-    "Jetpack Compose"
+    "Jetpack Compose",
+    "Rust"
   ],
   "auth": {
     "methods": [
@@ -31,14 +34,13 @@
   },
   "tests": [
     "JUnit",
-    "Roborazzi"
+    "Compose UI tests"
   ],
   "workflows": [
-    "build",
-    "test",
-    "release"
+    "Build",
+    "SonarCloud analysis"
   ],
-  "lastActivity": "2026-05-21T12:32:16+02:00",
+  "lastActivity": "2026-05-27T16:19:22+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -50,10 +52,11 @@
   },
   "tags": [
     "Sécurité & Conformité",
-    "Messagerie",
+    "Communication & Messagerie",
     "Android",
     "Kotlin",
     "Matrix",
+    "Chiffrement",
     "Open Source"
   ]
 }
