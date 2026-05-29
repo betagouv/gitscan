@@ -212,6 +212,7 @@
     │   │   │   │   └── app-hub
     │   │   │   │       ├── chat-conversation.spec.ts
     │   │   │   │       ├── chat-pagination.spec.ts
+    │   │   │   │       ├── chat-threads.spec.ts
     │   │   │   │       ├── chat-tools-panel.spec.ts
     │   │   │   │       ├── home-redirects.spec.ts
     │   │   │   │       ├── left-panel.spec.ts
@@ -220,6 +221,7 @@
     │   │   │   │       ├── utils-common.ts
     │   │   │   │       ├── utils-file-preview.ts
     │   │   │   │       ├── utils-left-panel.ts
+    │   │   │   │       ├── utils-threads.ts
     │   │   │   │       └── utils-tools-panel.ts
     │   │   │   ├── eslint.config.mjs
     │   │   │   ├── package.json
@@ -272,6 +274,10 @@
     │   │       │   │   │   ├── silentLogin.ts
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── chat
+    │   │       │   │   │   ├── ChatPanelContext.tsx
+    │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   ├── fluentEmoji.test.ts
+    │   │       │   │   │   │   └── reactions.test.ts
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── ChatBubble.scss
     │   │       │   │   │   │   ├── ChatBubble.tsx
@@ -279,10 +285,31 @@
     │   │       │   │   │   │   ├── ChatComposer.tsx
     │   │       │   │   │   │   ├── ChatConversation.scss
     │   │       │   │   │   │   ├── ChatConversation.tsx
+    │   │       │   │   │   │   ├── ChatConversationSkeleton.scss
+    │   │       │   │   │   │   ├── ChatConversationSkeleton.tsx
     │   │       │   │   │   │   ├── ChatView.scss
     │   │       │   │   │   │   ├── ChatView.tsx
     │   │       │   │   │   │   ├── ChatVirtualList.scss
     │   │       │   │   │   │   ├── ChatVirtualList.tsx
+    │   │       │   │   │   │   ├── EmojiPicker.scss
+    │   │       │   │   │   │   ├── EmojiPickerPanel.tsx
+    │   │       │   │   │   │   ├── EmojiPickerPopover.tsx
+    │   │       │   │   │   │   ├── FluentEmoji.scss
+    │   │       │   │   │   │   ├── FluentEmoji.tsx
+    │   │       │   │   │   │   ├── MessageHoverToolbar.scss
+    │   │       │   │   │   │   ├── MessageHoverToolbar.tsx
+    │   │       │   │   │   │   ├── MessageReactions.scss
+    │   │       │   │   │   │   ├── MessageReactions.tsx
+    │   │       │   │   │   │   ├── ThreadButton.scss
+    │   │       │   │   │   │   ├── ThreadButton.tsx
+    │   │       │   │   │   │   ├── UnreadThreadsBanner.scss
+    │   │       │   │   │   │   ├── UnreadThreadsBanner.tsx
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── FluentEmoji.test.tsx
+    │   │       │   │   │   │   │   ├── MessageHoverToolbar.test.tsx
+    │   │       │   │   │   │   │   ├── MessageReactions.test.tsx
+    │   │       │   │   │   │   │   ├── ThreadButton.test.tsx
+    │   │       │   │   │   │   │   └── UnreadThreadsBanner.test.tsx
     │   │       │   │   │   │   ├── header
     │   │       │   │   │   │   │   ├── ChatHeader.scss
     │   │       │   │   │   │   │   └── ChatHeader.tsx
@@ -294,17 +321,32 @@
     │   │       │   │   │   │       ├── DocumentListItemActions.tsx
     │   │       │   │   │   │       ├── DocumentSection.tsx
     │   │       │   │   │   │       ├── DocumentsTool.tsx
-    │   │       │   │   │   │       ├── documentToPreviewFile.ts
-    │   │       │   │   │   │       └── mockDocuments.ts
+    │   │       │   │   │   │       ├── ThreadDetail.tsx
+    │   │       │   │   │   │       ├── ThreadList.tsx
+    │   │       │   │   │   │       ├── ThreadListItem.tsx
+    │   │       │   │   │   │       ├── ThreadsTool.scss
+    │   │       │   │   │   │       ├── ThreadsTool.tsx
+    │   │       │   │   │   │       ├── ToolsPanelHeader.tsx
+    │   │       │   │   │   │       ├── __tests__
+    │   │       │   │   │   │       │   └── ThreadListItem.test.tsx
+    │   │       │   │   │   │       └── documentToPreviewFile.ts
+    │   │       │   │   │   ├── fluentEmoji.ts
     │   │       │   │   │   ├── formatTimestamp.ts
     │   │       │   │   │   ├── hooks
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── useChatDocuments.test.tsx
-    │   │       │   │   │   │   │   └── useChatMessages.test.tsx
+    │   │       │   │   │   │   │   ├── useChatMessages.test.tsx
+    │   │       │   │   │   │   │   ├── useChatThread.test.tsx
+    │   │       │   │   │   │   │   ├── useChatThreads.test.tsx
+    │   │       │   │   │   │   │   └── useToggleReaction.test.tsx
+    │   │       │   │   │   │   ├── useChat.ts
     │   │       │   │   │   │   ├── useChatDocuments.ts
-    │   │       │   │   │   │   └── useChatMessages.ts
-    │   │       │   │   │   ├── mockChats.ts
-    │   │       │   │   │   └── mockMessages.ts
+    │   │       │   │   │   │   ├── useChatMessages.ts
+    │   │       │   │   │   │   ├── useChatThread.ts
+    │   │       │   │   │   │   ├── useChatThreadActions.ts
+    │   │       │   │   │   │   ├── useChatThreads.ts
+    │   │       │   │   │   │   └── useToggleReaction.ts
+    │   │       │   │   │   └── reactions.ts
     │   │       │   │   ├── config
     │   │       │   │   │   ├── Config.ts
     │   │       │   │   │   ├── ConfigProvider.tsx
@@ -312,7 +354,15 @@
     │   │       │   │   ├── drivers
     │   │       │   │   │   ├── Driver.ts
     │   │       │   │   │   ├── implementations
-    │   │       │   │   │   │   └── StandardDriver.ts
+    │   │       │   │   │   │   ├── MockDriver.ts
+    │   │       │   │   │   │   ├── StandardDriver.ts
+    │   │       │   │   │   │   └── __tests__
+    │   │       │   │   │   │       └── MockDriver.test.ts
+    │   │       │   │   │   ├── mocks
+    │   │       │   │   │   │   ├── mockChats.ts
+    │   │       │   │   │   │   ├── mockDocuments.ts
+    │   │       │   │   │   │   ├── mockMessages.ts
+    │   │       │   │   │   │   └── mockThreads.ts
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── errors
     │   │       │   │   │   └── AppError.ts
@@ -322,6 +372,7 @@
     │   │       │   │   │   ├── LeftPanel
     │   │       │   │   │   │   ├── LeftPanel.scss
     │   │       │   │   │   │   └── LeftPanel.tsx
+    │   │       │   │   │   ├── NextPageWithLayout.ts
     │   │       │   │   │   └── components
     │   │       │   │   │       └── AccountSelector
     │   │       │   │   │           ├── AccountSelector.scss
@@ -428,4 +479,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-123 directories, 307 files
+128 directories, 353 files

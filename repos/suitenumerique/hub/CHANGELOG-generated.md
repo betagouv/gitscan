@@ -1,32 +1,39 @@
-## Changelog : hub (30 derniers jours, au 20 mai 2026)
+## Changelog : hub (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet Hub a connu une refonte majeure de son frontend, passant d'une codebase legacy à une nouvelle architecture basée sur Next.js et TypeScript. Cette refonte inclut l'implémentation d'une interface de chat avec une barre latérale et un panneau d'outils, ainsi que l'ajout de la prévisualisation de fichiers. Des améliorations ont également été apportées à l'infrastructure et aux tests.
+Ce mois-ci, le projet Hub a connu une refonte majeure de son interface utilisateur frontend, passant à une nouvelle architecture basée sur React et Next.js. Les principales nouveautés concernent l'implémentation d'une fonctionnalité de chat avec gestion des conversations, des threads, des réactions et un panneau d'outils pour la gestion des documents. L'infrastructure de test a également été revue et modernisée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface de chat avec une liste de conversations et une zone de conversation. [#236fb9c](https://github.com/suitenumerique/hub/commit/236fb9c)
-- Implémentation d'un panneau d'outils avec une liste de documents. [#e8b1ad0](https://github.com/suitenumerique/hub/commit/e8b1ad0)
-- Possibilité de prévisualiser des fichiers (PDF, images, vidéos, audio) dans le panneau d'outils. [#c3a9df4](https://github.com/suitenumerique/hub/commit/c3a9df4)
-- Ajout d'un sélecteur de compte avec support pour Gaufre et UserProfile. [#9d1cd7e](https://github.com/suitenumerique/hub/commit/9d1cd7e)
-- Ajout d'un composant Avatar. [#7a770db](https://github.com/suitenumerique/hub/commit/7a770db)
+- **Chat :** Implémentation d'une interface de chat complète avec :
+    - Affichage des conversations et gestion du chargement initial [#928eecf](https://github.com/suitenumerique/hub/commit/928eecf)
+    - Gestion des threads de messages avec affichage et actions associées [#1f344b8](https://github.com/suitenumerique/hub/commit/1f344b8)
+    - Possibilité de réagir aux messages avec des emojis [#538a83b](https://github.com/suitenumerique/hub/commit/538a83b)
+    - Barre d'outils pour les messages avec options (à venir) [#195a26d](https://github.com/suitenumerique/hub/commit/195a26d)
+- **Documents :** Ajout d'un panneau d'outils pour la gestion des documents avec :
+    - Affichage de la liste des documents [#e8b1ad0](https://github.com/suitenumerique/hub/commit/e8b1ad0)
+    - Prévisualisation des fichiers (PDF, image, vidéo, audio) [#c3a9df4](https://github.com/suitenumerique/hub/commit/c3a9df4)
+- **Interface utilisateur :**
+    - Ajout de composants d'interface utilisateur réutilisables (Avatar, etc.) [#7a770db](https://github.com/suitenumerique/hub/commit/7a770db)
+    - Amélioration de l'affichage avec des fonds contextuels et transparents [#4058a28](https://github.com/suitenumerique/hub/commit/4058a28)
+    - Ajout d'un sélecteur de compte utilisateur [#9d1cd7e](https://github.com/suitenumerique/hub/commit/9d1cd7e)
 
 ### Évolutions techniques
-- Refonte complète du frontend avec Next.js et TypeScript. [#b138a46](https://github.com/suitenumerique/hub/commit/b138a46)
-- Mise à jour de la configuration et des outils de build. [#a075378](https://github.com/suitenumerique/hub/commit/a075378)
-- Consolidation du stack Docker et de la base de données pour les tests E2E. [#6aa53a3](https://github.com/suitenumerique/hub/commit/6aa53a3)
-- Ajout de fixtures et de routes de test E2E pour le backend. [#4e888c5](https://github.com/suitenumerique/hub/commit/4e888c5)
-- Mise à jour de la configuration Playwright et des dépendances. [#7e6e6ae](https://github.com/suitenumerique/hub/commit/7e6e6ae)
-- Suppression de l'ancienne codebase frontend. [#88c31b5](https://github.com/suitenumerique/hub/commit/88c31b5)
-- Suppression des anciens tests E2E. [#f679994](https://github.com/suitenumerique/hub/commit/f679994)
-- Mise à jour des workflows CI/CD. [#fc4a041](https://github.com/suitenumerique/hub/commit/fc4a041)
-- Mise à jour de la configuration i18n et des traductions. [#f679e1d](https://github.com/suitenumerique/hub/commit/f679e1d)
+- **Frontend :** Refonte complète du frontend avec :
+    - Migration vers React et Next.js [#f1b318e](https://github.com/suitenumerique/hub/commit/f1b318e)
+    - Restructuration du code et ajout de hooks personnalisés [#c5d2ab1](https://github.com/suitenumerique/hub/commit/c5d2ab1)
+    - Mise en place d'une architecture "driver" pour l'accès aux données [#38f9904](https://github.com/suitenumerique/hub/commit/38f9904)
+- **Tests :**
+    - Mise à jour de la configuration de Playwright pour les tests E2E [#7e6e6ae](https://github.com/suitenumerique/hub/commit/7e6e6ae)
+    - Réécriture des tests E2E pour la page d'accueil et les nouvelles fonctionnalités [#afe89a6](https://github.com/suitenumerique/hub/commit/afe89a6)
+    - Suppression des anciens tests E2E [#f679994](https://github.com/suitenumerique/hub/commit/f679994)
+- **Infrastructure :**
+    - Consolidation de la stack Docker Compose et de la base de données pour les tests E2E [#6aa53a3](https://github.com/suitenumerique/hub/commit/6aa53a3)
+    - Mise à jour des workflows CI/CD [#fc4a041](https://github.com/suitenumerique/hub/commit/fc4a041)
 
 ### Autres changements
-- Ajout d'Architecture Decision Records (ADR). [#3c75b8c](https://github.com/suitenumerique/hub/commit/3c75b8c)
-- Ajustement du fichier README.md pour Docker. [#57adfb6](https://github.com/suitenumerique/hub/commit/57adfb6)
-- Ajout d'assets publics. [#da95319](https://github.com/suitenumerique/hub/commit/da95319)
-- Ajout de hooks, d'utilitaires et de styles globaux. [#c5d2ab1](https://github.com/suitenumerique/hub/commit/c5d2ab1)
-- Ajout des fonctionnalités de base (authentification, API, configuration, drivers, gestion des erreurs). [#b138a46](https://github.com/suitenumerique/hub/commit/b138a46)
-- Correction du routage Nginx pour l'export statique. [#48f818b](https://github.com/suitenumerique/hub/commit/48f818b)
-- Mise à jour des packages i18n et des dépendances root. [#43ea40f](https://github.com/suitenumerique/hub/commit/43ea40f)
-- Suppression du package eslint-plugin-docs. [#307582d](https://github.com/suitenumerique/hub/commit/307582d)
+- Mise à jour de la documentation pour l'utilisation d'Architecture Decision Records [#3c75b8c](https://github.com/suitenumerique/hub/commit/3c75b8c)
+- Mise à jour des dépendances et du fichier `.gitignore` [#669fa10](https://github.com/suitenumerique/hub/commit/669fa10)
+- Synchronisation de l'attribut `lang` des balises HTML avec la langue active [#57fce10](https://github.com/suitenumerique/hub/commit/57fce10)
+- Ajout de fichiers d'assets publics [#da95319](https://github.com/suitenumerique/hub/commit/da95319)
+- Correction d'un problème de routage Nginx pour l'export statique [#48f818b](https://github.com/suitenumerique/hub/commit/48f818b)
+- Initialisation du projet frontend [#c7ca997](https://github.com/suitenumerique/hub/commit/c7ca997)
