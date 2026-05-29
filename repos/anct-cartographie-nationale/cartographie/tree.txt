@@ -9,11 +9,13 @@
 │   ├── actions
 │   │   └── setup
 │   │       └── action.yml
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── deploy.yml
 │       ├── release-and-publish.yml
 │       └── validate-feature-branch.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
@@ -26,7 +28,7 @@
 ├── LICENSE.md
 ├── README.md
 ├── biome.json
-├── docker-compose.matomo.yml
+├── docker-compose.yml
 ├── docs
 │   ├── codes-territoires.md
 │   ├── integration-url.md
@@ -50,7 +52,6 @@
 │   │   ├── resources
 │   │   │   ├── cockpit.ts
 │   │   │   ├── container.ts
-│   │   │   ├── email.ts
 │   │   │   ├── image.ts
 │   │   │   ├── scaleway.provider.ts
 │   │   │   └── static.ts
@@ -157,6 +158,9 @@
 │   │   │   ├── layout.tsx
 │   │   │   ├── manifest.ts
 │   │   │   └── metadata.ts
+│   │   ├── _actions
+│   │   │   └── contact
+│   │   │       └── send-contact-message.action.ts
 │   │   ├── api
 │   │   │   ├── [region]
 │   │   │   │   ├── [departement]
@@ -307,6 +311,24 @@
 │   │   │           ├── index.ts
 │   │   │           ├── with-departement.ts
 │   │   │           └── with-region.ts
+│   │   ├── contact
+│   │   │   ├── abilities
+│   │   │   │   └── send-message
+│   │   │   │       ├── domain
+│   │   │   │       │   ├── contact-form.schema.ts
+│   │   │   │       │   └── send-contact-message.ts
+│   │   │   │       ├── implementations
+│   │   │   │       │   ├── contact-message.email.tsx
+│   │   │   │       │   └── send-contact-message.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── injection
+│   │   │   │       │   └── send-contact-message-action.key.ts
+│   │   │   │       └── ui
+│   │   │   │           ├── contact-action.tsx
+│   │   │   │           ├── contact-action.wc.tsx
+│   │   │   │           ├── contact-form-modal.tsx
+│   │   │   │           └── index.ts
+│   │   │   └── index.ts
 │   │   └── lieux-inclusion-numerique
 │   │       ├── abilities
 │   │       │   ├── count
@@ -423,9 +445,14 @@
 │   │   ├── form
 │   │   │   ├── fields
 │   │   │   │   ├── checkbox-group.field.tsx
+│   │   │   │   ├── error-message.field.tsx
+│   │   │   │   ├── field-group.field.tsx
 │   │   │   │   ├── has-error.spec.ts
 │   │   │   │   ├── has-error.ts
-│   │   │   │   └── label.field.tsx
+│   │   │   │   ├── input.field.tsx
+│   │   │   │   ├── label.field.tsx
+│   │   │   │   ├── select.field.tsx
+│   │   │   │   └── textarea.field.tsx
 │   │   │   ├── form-context.ts
 │   │   │   ├── index.ts
 │   │   │   └── use-app-form.ts
@@ -523,6 +550,7 @@
 │   │   │   │   ├── apply-providers.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── middlewares
+│   │   │   │   │   ├── client-binder.tsx
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── with-client-binder.tsx
 │   │   │   │   │   ├── with-pagination.ts
@@ -550,6 +578,8 @@
 │   │   │   │   ├── action.ts
 │   │   │   │   ├── handle-server-action-error.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── middlewares
+│   │   │   │   │   └── with-input.ts
 │   │   │   │   └── server-action-result.ts
 │   │   │   ├── shared
 │   │   │   │   ├── middlewares
@@ -567,6 +597,9 @@
 │   │   │       ├── navigation.wc.tsx
 │   │   │       ├── query-state.tsx
 │   │   │       └── query-state.wc.tsx
+│   │   ├── react-email
+│   │   │   ├── email-layout.tsx
+│   │   │   └── index.ts
 │   │   ├── reactivity
 │   │   │   ├── Subscribe.tsx
 │   │   │   └── index.ts
@@ -652,12 +685,15 @@
 │   │   │   │   ├── link.tsx
 │   │   │   │   ├── loading-button.tsx
 │   │   │   │   ├── loading.tsx
+│   │   │   │   ├── modal.tsx
 │   │   │   │   ├── options.tsx
 │   │   │   │   ├── placement.ts
 │   │   │   │   ├── popover.tsx
 │   │   │   │   ├── scale.ts
+│   │   │   │   ├── select.tsx
 │   │   │   │   ├── skeleton.tsx
 │   │   │   │   ├── tag.tsx
+│   │   │   │   ├── textarea.tsx
 │   │   │   │   └── tooltip.tsx
 │   │   │   └── theme
 │   │   │       └── providers
@@ -688,6 +724,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── keys
 │   │   │   │   ├── api-base-url.key.ts
+│   │   │   │   ├── contact-action.key.ts
 │   │   │   │   ├── map-config.key.ts
 │   │   │   │   ├── map-position.schema.ts
 │   │   │   │   ├── site-url.key.ts
@@ -750,4 +787,4 @@
 ├── vite.config.wc.ts
 ├── vitest.config.infra.mjs
 └── vitest.config.mjs
-200 directories, 552 files
+211 directories, 578 files

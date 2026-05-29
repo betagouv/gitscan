@@ -1,3 +1,28 @@
+## [6.20.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.20.0...v6.20.1) (2026-05-27)
+
+
+### Bug Fixes
+
+* **ci:** pass GITHUB_TOKEN to Pulumi deploy to avoid plugin rate limit ([1467087](https://github.com/anct-cartographie-nationale/cartographie/commit/14670874cd3e3f47148d515a755400bb91754373))
+* exclude server-only ConfigProvider from web component bundle ([667f1e1](https://github.com/anct-cartographie-nationale/cartographie/commit/667f1e1e7eb0b82b91034f74805953197333ef70))
+
+# [6.20.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.19.3...v6.20.0) (2026-05-27)
+
+
+### Bug Fixes
+
+* fix build errors and contact form behavior ([c8d8c44](https://github.com/anct-cartographie-nationale/cartographie/commit/c8d8c444af02ba11c7d32b05aff54620fe084d36))
+
+
+### Features
+
+* add contact form modal with SMTP email sending ([fca7f7d](https://github.com/anct-cartographie-nationale/cartographie/commit/fca7f7d15e4b6be20ece4a2b7c6fe384047f2752))
+* add HTML email template with react-email ([9f15cc6](https://github.com/anct-cartographie-nationale/cartographie/commit/9f15cc65177e717615ca01c5a1bb989708252e66))
+* add Modal, Select, Textarea primitives and form field components ([f6fa473](https://github.com/anct-cartographie-nationale/cartographie/commit/f6fa4730203231e70f48591e8f48f1ae4bab4767))
+* improve contact email template ([039e397](https://github.com/anct-cartographie-nationale/cartographie/commit/039e397cb489447bd53bc170a8f8eb911d950165))
+* improve contact form UX ([379c192](https://github.com/anct-cartographie-nationale/cartographie/commit/379c192795998d4e2df3fc1cbb3a19be3d728f7c))
+* update contact form intro text with documentation and video links ([546ff4a](https://github.com/anct-cartographie-nationale/cartographie/commit/546ff4afb583c179da44a4010dbae980f4006adc))
+
 ## [6.19.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.19.2...v6.19.3) (2026-05-11)
 
 
