@@ -8,9 +8,19 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) manage reconciliation requests for user accounts
+- ✨(backend) add recursive folder export as ZIP archive
+- ✨(frontend) add folder export action
+
 ### Changed
 
 - 🐛(backend) replace VersionId by Etag for WOPI
+
+### Removed
+
+- 🔥(backend) drop deprecated numchild columns from item
 
 ## [v0.18.0] - 2026-05-04
 
