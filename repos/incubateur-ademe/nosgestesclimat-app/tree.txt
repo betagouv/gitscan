@@ -367,11 +367,18 @@
 │   │   │   ├── index.ts
 │   │   │   ├── jobs
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── sync-brevo-contacts.spec.ts
+│   │   │   │   │   ├── sync-brevo-contacts.spec.ts
+│   │   │   │   │   └── sync-notion-actions.spec.ts
 │   │   │   │   ├── compute-poll-stats.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── convert-notion-rich-text-to-md.spec.ts
+│   │   │   │   │   │   └── notion-action-row-schema.spec.ts
+│   │   │   │   │   └── convert-notion-rich-text-to-md.ts
 │   │   │   │   ├── recover-matomo-stats.ts
 │   │   │   │   ├── recover-newsletter-stats.ts
-│   │   │   │   └── sync-brevo-contacts.ts
+│   │   │   │   ├── sync-brevo-contacts.ts
+│   │   │   │   └── sync-notion-actions.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── middlewares
 │   │   │   │   ├── __tests__
@@ -2218,7 +2225,9 @@
 │       ├── tsconfig.json
 │       ├── vitest-globals.d.ts
 │       ├── vitest.config.ts
-│       └── vitest.setup.ts
+│       ├── vitest.setup.ts
+│       └── worker
+│           └── worker.ts
 ├── docs
 │   └── fgp-routes.md
 ├── eslint.config.js
@@ -2255,35 +2264,48 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260526141102_add_actions_assessments_table
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260528105809_add_simulation_computation
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
-│       │   │   ├── ngc-jagis.prisma
 │       │   │   ├── ngc.prisma
 │       │   │   ├── ngc_anon.prisma
+│       │   │   ├── ngc_jagis.prisma
 │       │   │   └── schema.prisma
 │       │   └── seed.ts
 │       ├── prisma.config.js
 │       ├── src
+│       │   ├── exception.ts
 │       │   ├── features
 │       │   │   ├── actions
 │       │   │   │   ├── data
 │       │   │   │   │   └── themes
 │       │   │   │   │       └── index.ts
+│       │   │   │   ├── exceptions
+│       │   │   │   │   └── action-assessment.exception.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── action.factory.ts
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── seo-metadata.factory.ts
 │       │   │   │   │   └── theme.factory.ts
+│       │   │   │   ├── helpers
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── parse-impact-co2-script.test.ts
+│       │   │   │   │   └── parse-impact-co2-script.ts
 │       │   │   │   ├── repositories
+│       │   │   │   │   ├── action-assessment.mapper.ts
+│       │   │   │   │   ├── action-assessments.repository.ts
 │       │   │   │   │   ├── action.mapper.ts
 │       │   │   │   │   ├── actions.repository.ts
 │       │   │   │   │   ├── seo-metadata.mapper.ts
 │       │   │   │   │   └── themes.repository.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── assess-actions.service.spec.ts
 │       │   │   │   │   │   ├── get-action.service.spec.ts
 │       │   │   │   │   │   ├── get-actions.service.spec.ts
 │       │   │   │   │   │   └── get-themes.service.spec.ts
+│       │   │   │   │   ├── assess-actions.service.ts
 │       │   │   │   │   ├── get-action.service.ts
 │       │   │   │   │   ├── get-actions.service.ts
 │       │   │   │   │   └── get-themes.service.ts
@@ -2292,9 +2314,29 @@
 │       │   │   │       ├── action.ts
 │       │   │   │       ├── seo-metadata.ts
 │       │   │   │       └── theme.ts
-│       │   │   └── geo
-│       │   │       └── types
-│       │   │           └── language.ts
+│       │   │   ├── geo
+│       │   │   │   └── types
+│       │   │   │       └── language.ts
+│       │   │   ├── logger
+│       │   │   │   └── index.ts
+│       │   │   ├── publicodes-computation
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── coordination.service.spec.ts
+│       │   │   │   ├── exceptions
+│       │   │   │   │   └── coordination.exception.ts
+│       │   │   │   ├── factories
+│       │   │   │   │   ├── engine.factory.ts
+│       │   │   │   │   └── simulation.factory.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   ├── simulation-computations.repository.ts
+│       │   │   │   │   └── simulation.repository.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── coordination.service.ts
+│       │   │   │   │   └── simulation-computation.service.ts
+│       │   │   │   └── types
+│       │   │   │       └── computation.ts
+│       │   │   └── tracking
+│       │   │       └── schema.ts
 │       │   ├── index.ts
 │       │   ├── prisma
 │       │   │   └── client.ts
@@ -2307,4 +2349,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-582 directories, 1772 files
+598 directories, 1798 files
