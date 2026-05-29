@@ -4,6 +4,8 @@ Self-hosted conversational bot that answers natural language questions (in Frenc
 
 Runs fully on a private [Ollama](https://ollama.com) instance. No external API calls.
 
+Detailed specs : [./specs](./specs)
+
 ---
 
 ## What it can answer
@@ -45,6 +47,8 @@ Tool dispatcher
 
 Search tools use **hybrid retrieval**: dense cosine similarity on `Float32Array` `.bin` embedding matrices + BM25 sparse search, fused with Reciprocal Rank Fusion (RRF).
 
+Every bot response ends with a discrete link to [open a feedback issue](https://github.com/betagouv/betabot/issues/new).
+
 ---
 
 ## Requirements
@@ -85,7 +89,8 @@ DATA_DIR=./data
 
 MATRIX_HOMESERVER=https://matrix.example.org
 MATRIX_USER=@betabot:example.org
-MATRIX_ACCESS_TOKEN=syt_...
+MATRIX_ACCESS_TOKEN=syt_...       # or use MATRIX_PASSWORD instead
+# MATRIX_DEVICE_ID=ABCDEFGH      # optional — only needed before first start; ignored once credentials.json exists
 ```
 
 ### 3. Fetch data
@@ -106,24 +111,6 @@ Embeds chunks across 6 sources. Each job skips automatically if its `.bin` alrea
 
 ```sh
 npm run embed -- --force
-```
-
-**Outputs:**
-
-```
-data/index/members.embeddings.bin
-data/index/members.bm25.json
-data/index/startups.embeddings.bin
-data/index/startups.bm25.json
-data/gitscan/repos.embeddings.bin
-data/gitscan/repos.bm25.json
-data/gitscan/repos.index.json
-data/doc.incubateur.net/docs.embeddings.bin
-data/doc.incubateur.net/docs.bm25.json
-data/doc.incubateur.net/docs.index.json
-data/peertube/videos.embeddings.bin
-data/peertube/videos.bm25.json
-data/peertube/videos.index.json
 ```
 
 ### 5. Run
@@ -157,63 +144,6 @@ Run nightly or on demand:
 ```sh
 ./get-data.sh && npm run embed -- --force
 ```
-
-Then restart the bot (it loads embeddings into memory at startup).
-
----
-
-## Project structure
-
-```
-betabot/
-├── get-data.sh              # fetches all raw data
-├── build-embeddings.ts      # embedding pipeline (6 jobs: members, startups, repos, docs, videos, incubators)
-├── src/
-│   ├── config.ts            # env var loading
-│   ├── embed.ts             # OpenAI embeddings client + .bin I/O
-│   ├── search.ts            # hybrid search: cosine + BM25 + RRF
-│   ├── markdown.ts          # remark parser: front matter + section chunking
-│   ├── orchestrator.ts      # LLM conversation loop + tool dispatch
-│   ├── cli.ts               # local readline client
-│   ├── index.ts             # Matrix bot entry point
-│   ├── tools/
-│   │   ├── members.ts
-│   │   ├── startups.ts
-│   │   ├── repos.ts
-│   │   ├── docs.ts
-│   │   ├── calendar.ts
-│   │   └── videos.ts
-│   └── connectors/
-│       └── matrix.ts
-├── evals/
-│   ├── fixtures.json        # committed baseline fixtures
-│   ├── generate.ts          # generates fixtures from data/
-│   ├── results/             # gitignored — timestamped run snapshots
-│   └── run.ts               # eval runner with --compare support
-├── .env.example
-├── package.json
-└── tsconfig.json
-```
-
----
-
-## Tools reference
-
-| Tool                  | Description                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| `search_members`      | Hybrid search over members by skill, role, or domain                               |
-| `get_member_detail`   | Full profile by id (e.g. `julien.bouquillon`)                                      |
-| `get_member_startups` | Startups a member is/was active on                                                 |
-| `search_startups`     | Hybrid search over startups by theme or phase                                      |
-| `get_startup_detail`  | Full startup record (phases, repo, contact…)                                       |
-| `get_startup_members` | Active (and optionally previous) members of a startup                              |
-| `search_repos`        | Hybrid search over gitscan repos by tech or feature                                |
-| `get_repo_detail`     | Overview + recent commits for a repo                                               |
-| `search_docs`         | Hybrid search over doc.incubateur.net                                              |
-| `get_doc_page`        | Full content of a documentation page                                               |
-| `get_calendar`        | Upcoming community events (default: next 14 days)                                  |
-| `search_videos`       | Hybrid search over PeerTube video titles by topic or keyword                       |
-| `get_videos`          | Recent PeerTube videos by channel or all channels                                  |
 
 ---
 
@@ -257,11 +187,11 @@ tool definitions, the orchestrator, or the fixture set. It posts a sticky commen
 
 **Required secrets** (`Settings → Secrets → Actions`):
 
-| Secret | Example |
-|:--|:--|
+| Secret            | Example                     |
+| :---------------- | :-------------------------- |
 | `OPENAI_BASE_URL` | `https://api.openai.com/v1` |
-| `OPENAI_API_KEY` | `sk-...` |
-| `OPENAI_MODEL` | `gpt-4o-mini` |
+| `OPENAI_API_KEY`  | `sk-...`                    |
+| `OPENAI_MODEL`    | `gpt-4o-mini`               |
 
 ---
 
@@ -271,4 +201,3 @@ tool definitions, the orchestrator, or the fixture set. It posts a sticky commen
 npm run build   # outputs to dist/
 npm run start
 ```
-
