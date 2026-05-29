@@ -4,17 +4,22 @@
   "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Authentification & Accès",
     "Notifications & Alertes",
     "Recherche & Filtres",
-    "API & Intégrations"
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Redis",
-    "Wagtail"
+    "Celery",
+    "Wagtail",
+    "Sesame"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,17 +33,16 @@
       "email-password",
       "oauth2",
       "saml"
-    ],
-    "providers": [
-      "Sesame"
     ]
   },
   "tests": [
-    "Cypress",
-    "Pytest"
+    "Pytest",
+    "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-22T14:08:22+02:00",
+  "workflows": [
+    "CI/CD & Déploiement"
+  ],
+  "lastActivity": "2026-05-27T15:49:12+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
