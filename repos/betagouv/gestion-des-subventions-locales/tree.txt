@@ -40,6 +40,7 @@
 ├── gsl_core
 │   ├── __init__.py
 │   ├── admin.py
+│   ├── admin_alerts.py
 │   ├── apps.py
 │   ├── auth_backends.py
 │   ├── decorators.py
@@ -73,6 +74,7 @@
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
+│   ├── signals.py
 │   ├── static
 │   │   ├── css
 │   │   │   ├── gsl.css
@@ -136,6 +138,7 @@
 │   │   ├── conftest.py
 │   │   ├── factories.py
 │   │   ├── test_admin.py
+│   │   ├── test_admin_alerts.py
 │   │   ├── test_commands.py
 │   │   ├── test_exceptions.py
 │   │   ├── test_factories.py
@@ -158,8 +161,11 @@
 │   ├── exceptions.py
 │   ├── forms.py
 │   ├── graphql
+│   │   ├── dossier_fragments.gql
 │   │   ├── ds_mutations.gql
-│   │   ├── ds_queries.gql
+│   │   ├── get_demarche_dossiers.gql
+│   │   ├── get_demarche_metadata.gql
+│   │   ├── get_one_dossier.gql
 │   │   └── graphql.config.yml
 │   ├── importer
 │   │   ├── __init__.py
@@ -265,17 +271,14 @@
 │   │   ├── admin
 │   │   │   └── gsl_demarches_simplifiees
 │   │   │       ├── demarche
+│   │   │       │   ├── add_demarche.html
 │   │   │       │   ├── change_list.html
 │   │   │       │   └── refresh_dossiers_depot.html
 │   │   │       └── dossier
 │   │   │           ├── change_list.html
 │   │   │           └── import_dossier.html
 │   │   └── gsl_demarches_simplifiees
-│   │       ├── demarche_list.html
-│   │       ├── demarche_mapping.html
-│   │       ├── dossier_sans_piece_update.html
-│   │       ├── get_demarches_from_numbers.html
-│   │       └── get_ds_tasks_status.html
+│   │       └── dossier_sans_piece_update.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── ds_client
@@ -726,6 +729,7 @@
 │   │   ├── 0024_simulation_filters.py
 │   │   ├── 0025_simulation_downloaded_at.py
 │   │   ├── 0026_bulkstatusjob.py
+│   │   ├── 0027_alter_bulkstatusjob_target_status.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -890,4 +894,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-155 directories, 737 files
+155 directories, 741 files
