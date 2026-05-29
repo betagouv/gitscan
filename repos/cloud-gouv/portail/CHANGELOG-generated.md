@@ -1,15 +1,7 @@
-## Changelog : portail (30 derniers jours, au 02 mai 2026)
+## Changelog : portail (30 derniers jours, au 2 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de la prise en charge des groupes supplémentaires pour l'authentification RPC et la correction d'un test lié au multiplexage H2. Ces changements visent à renforcer la sécurité et la flexibilité du portail.
-
-### Évolutions fonctionnelles
-- Ajout de la prise en charge des groupes supplémentaires pour l'authentification RPC, permettant une gestion plus fine des permissions.  [#fa1ec87](https://github.com/cloud-gouv/portail/commit/fa1ec87)
+Cette mise à jour corrige un problème de non-déterminisme dans les tests du multiplexage H2, assurant une plus grande fiabilité des tests et, par conséquent, une meilleure stabilité du proxy.
 
 ### Évolutions techniques
-- Correction d'un test non déterministe lié au multiplexage H2 en utilisant un client Rust minimal. [#d04beda](https://github.com/cloud-gouv/portail/commit/d04beda)
-- Mise à jour de dépendances :
-    - `actions/checkout` vers la version 4.3.1
-    - `annotate-snippets` vers la version 0.12.15
-    - `tokio` vers la version 1.52.1
-    - `zlink` vers la version 0.4.2
+- Correction d'un test non déterministe dans le multiplexage H2 en utilisant un client tiny rust.  [#1](https://github.com/cloud-gouv/portail/commit/d04beda)
