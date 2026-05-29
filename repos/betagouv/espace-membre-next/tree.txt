@@ -183,7 +183,9 @@
 │   ├── 20250407133555_add_user_events.ts
 │   ├── 20251220131112_add_dinum_emails_columns.ts
 │   ├── 20260410000001_update_phases_enum_to_text.ts
-│   └── 20260507000001_update_phases_check.ts
+│   ├── 20260507000001_update_phases_check.ts
+│   ├── 20260512000001_add_matrix_accounts.ts
+│   └── 20260527000001_update_phase_perenisation_consolidation.ts
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
@@ -622,6 +624,9 @@
 │   │   │   │   └── users.ts
 │   │   │   └── queries.ts
 │   │   ├── matomo.ts
+│   │   ├── matrix
+│   │   │   ├── client.spec.ts
+│   │   │   └── client.ts
 │   │   ├── mdtohtml.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
@@ -684,6 +689,7 @@
 │   │   ├── import-from-www.ts
 │   │   ├── import-teams-from-www.ts
 │   │   ├── sync-dimail.ts
+│   │   ├── sync-matrix-accounts.ts
 │   │   ├── update-local-files.ts
 │   │   └── utils.ts
 │   ├── server
@@ -733,6 +739,8 @@
 │   │   │       ├── send-verification-email.ts
 │   │   │       ├── sync-dinum-emails.spec.ts
 │   │   │       ├── sync-dinum-emails.ts
+│   │   │       ├── sync-matrix-accounts.spec.ts
+│   │   │       ├── sync-matrix-accounts.ts
 │   │   │       ├── update-sentry-account.ts
 │   │   │       └── utils.ts
 │   │   ├── schedulers
@@ -807,4 +815,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-185 directories, 624 files
+186 directories, 631 files
