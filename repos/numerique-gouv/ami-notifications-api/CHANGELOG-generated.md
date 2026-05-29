@@ -1,29 +1,27 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 21 mai 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment concernant la gestion des zones géographiques et des préférences utilisateur dans l'agenda. Des corrections et des optimisations ont également été apportées à la gestion des notifications, à l'authentification FranceConnect et à l'infrastructure de réplication des données.
+Cette période a été marquée par d'importantes améliorations concernant l'intégration avec FranceConnect et l'implémentation d'une nouvelle fonctionnalité "FI" (probablement une intégration spécifique). Des corrections et améliorations ont également été apportées à l'interface utilisateur, notamment au niveau de la gestion des utilisateurs et des notifications, ainsi qu'à la robustesse et la configuration de l'application.
 
 ### Évolutions fonctionnelles
-- **Agenda :** Amélioration de l'affichage et de la gestion des zones géographiques (A, B, C) et des jours fériés en fonction des préférences de l'utilisateur. Possibilité de définir des préférences de zone et d'adresses pour filtrer les informations affichées. [#508](https://github.com/numerique-gouv/ami-notifications-api/issues/508)
-- **Notifications :** Désactivation des notifications lors de la déconnexion de l'utilisateur. [#721](https://github.com/numerique-gouv/ami-notifications-api/issues/721)
-- **Gestion des utilisateurs (Agent Admin) :** Implémentation de nouvelles fonctionnalités pour la gestion des utilisateurs dans l'interface d'administration : recherche, détails, suppression, et audit des actions. [#774](https://github.com/numerique-gouv/ami-notifications-api/issues/774)
-- **Notifications :** Ajout d'un champ `content_private_body` aux modèles de notification pour stocker du contenu privé. [#875](https://github.com/numerique-gouv/ami-notifications-api/issues/875)
-- **Interface utilisateur :** Amélioration de la disposition du bouton "gérer" dans l'écran des notifications. [#874](https://github.com/numerique-gouv/ami-notifications-api/issues/874)
-- **Interface utilisateur :** Ajout d'un composant `PageWrapper` pour améliorer la structure et le style des pages. [#801](https://github.com/numerique-gouv/ami-notifications-api/issues/801)
-- **FranceConnect :** Authentification des requêtes vers l'API Github. [#417](https://github.com/numerique-gouv/ami-notifications-api/issues/417)
+- **Gestion des utilisateurs (Agent Admin):** Ajout de fonctionnalités pour la gestion des utilisateurs dans l'interface d'administration, incluant la recherche, la consultation des détails, la suppression et la gestion des droits.  Des messages d'erreur plus clairs ont été ajoutés en cas d'échec de requête. [#773]
+- **Notifications:** Amélioration de l'affichage des notifications, notamment l'ajout d'un champ "corps privé" pour les notifications, permettant de stocker des informations sensibles. [#875]
+- **Intégration FranceConnect (FC) et "FI":** Implémentation d'une nouvelle intégration "FI" avec gestion de l'authentification, de l'autorisation, de la déconnexion et de la gestion des sessions utilisateurs.  Amélioration de la gestion de la déconnexion de FranceConnect avant la connexion "FI". [#708]
+- **Notifications OTV:**  Ajout de la date dans les paramètres des notifications planifiées pour les OTV (Objets de Transmission de Valeurs). [#852]
+- **Gestion des zones:** Amélioration de l'affichage et de la gestion des zones géographiques dans l'interface utilisateur, notamment pour les alertes et les notifications. [#802]
+- **Suppression des notifications:** Désactivation des notifications lors de la déconnexion de l'utilisateur. [#721]
 
 ### Évolutions techniques
-- **Réplication :** Refonte de la commande de réplication des données avec ajout de tests et de logs.  Amélioration de la gestion des erreurs et de la configuration. [#791](https://github.com/numerique-gouv/ami-notifications-api/issues/791)
-- **Infrastructure :** Utilisation de `mkcert` pour la gestion des certificats SSL en local. [#828](https://github.com/numerique-gouv/ami-notifications-api/issues/828)
-- **Dépendances :** Mise à jour de Django en version 6.0.5.
-- **Cache :** Ajout de cache pour les requêtes des jours fériés.
-- **HTTP Client :** Ajout d'un gestionnaire de contexte pour fermer les connexions HTTP.
-- **Suppression de code obsolète :** Suppression du "feature flag" "requests enabled" qui n'est plus utilisé. [#823](https://github.com/numerique-gouv/ami-notifications-api/issues/823)
+- **Réplication:** Amélioration de la gestion de la réplication des données, avec ajout de tests et de logs plus précis. [#791]
+- **Configuration:**  Simplification de la configuration de l'application, notamment en supprimant des variables d'environnement inutiles et en améliorant la gestion des certificats SSL locaux avec `mkcert`. [#826, #828]
+- **Dépendances:** Mise à jour de plusieurs dépendances, notamment Django (6.0.5), urllib3 et Twisted.
+- **Architecture Frontend:** Refonte de l'architecture frontend avec l'introduction de composants réutilisables comme `PageWrapper` pour une meilleure organisation et une mise en page plus cohérente. [#801]
+- **Matomo:** Ajout du suivi des zones de vacances (holiday zones) dans Matomo pour une meilleure analyse de l'utilisation. [#750]
+- **Suppression de code obsolète:** Suppression du code lié à la fonctionnalité "requests enabled" qui n'est plus utilisée. [#823]
 
 ### Autres changements
-- **Documentation :** Amélioration de la documentation et des commentaires.
-- **Tests :** Ajout et mise à jour de tests unitaires.
-- **Matomo :** Ajout du suivi des zones de jours fériés sur Matomo. [#750](https://github.com/numerique-gouv/ami-notifications-api/issues/750)
-- **Interface utilisateur :** Suppression de `target="_self"` dans le code Svelte. [#877](https://github.com/numerique-gouv/ami-notifications-api/issues/877)
-- **Interface utilisateur :** Refactorisation de code et simplification de méthodes dans le code front-end.
-- **Interface utilisateur :** Amélioration de l'affichage des toasts et des bannières. [#723](https://github.com/numerique-gouv/ami-notifications-api/issues/723)
+- **Interface utilisateur:** Amélioration de l'interface utilisateur avec des messages toast standardisés et un positionnement amélioré. [#723]
+- **Documentation:**  Amélioration de la documentation et des commentaires dans le code.
+- **Nettoyage du code:** Suppression de dossiers et fichiers inutiles.
+- **Tests:** Ajout et amélioration des tests unitaires et d'intégration.
+- **Audit:** Ajout d'entrées d'audit pour les actions de gestion des utilisateurs dans l'interface d'administration. [#774]
