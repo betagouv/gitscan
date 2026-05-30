@@ -1,9 +1,161 @@
+2026-05-29T20:25:22+02:00 - 10520ff5 - Elie Gavoty : Merge pull request #507 from betagouv/front-vote-animations
+2026-05-29T17:03:09+02:00 - a394567e - Simon : fix(front): make send/reveal area gradients dark-mode aware
+2026-05-29T16:00:51+02:00 - f789a63a - Elie Gavoty : Merge pull request #447 from betagouv/refactor-db-tables
+2026-05-29T15:57:31+02:00 - ebf26894 - Elie Gavoty : dataset: tolerate corrupted_not_equal_length
+2026-05-29T15:57:31+02:00 - e3e4b6a7 - Elie Gavoty : db: migration of llm_message duration to computed updated_at timestamp
+2026-05-29T15:57:31+02:00 - df7eac63 - Elie Gavoty : dataset: tolerate corrupted_no_model
+2026-05-29T15:57:31+02:00 - d5cd9e17 - Elie Gavoty : Revert "dataset: debug with more logging"
+2026-05-29T15:57:31+02:00 - cde299e9 - Elie Gavoty : Revert "dataset: log job database name for debug"
+2026-05-29T15:57:31+02:00 - abe63e6d - Elie Gavoty : dataset: tolerate multiple missing data to export dataset with non archived data
+2026-05-29T15:57:31+02:00 - ab018d21 - Elie Gavoty : db: fix inconsistent unique contraint + alembic migration
+2026-05-29T15:57:31+02:00 - a99a4df2 - Elie Gavoty : db: fix improve migration script
+2026-05-29T15:57:31+02:00 - a5056970 - Elie Gavoty : db : migrate - fix reasoning content migration edge cases
+2026-05-29T15:57:31+02:00 - 91a0b4e6 - Elie Gavoty : dataset: tolerate empty llm_id for some archived conv/comparisons
+2026-05-29T15:57:31+02:00 - 9141dbb8 - Elie Gavoty : dataset: debug with more logging
+2026-05-29T15:57:31+02:00 - 8a31ffb7 - Elie Gavoty : db : add incremental mode to migration scripts
+2026-05-29T15:57:31+02:00 - 829c94fa - Elie Gavoty : devops: implement migration data script in 7 steps
+2026-05-29T15:57:31+02:00 - 8249cc0a - Elie Gavoty : dataset: log job database name for debug
+2026-05-29T15:57:31+02:00 - 7e50b61f - Elie Gavoty : db: migrate- display skip reason
+2026-05-29T15:57:31+02:00 - 694a160c - Elie Gavoty : db: migrate - try fix the preceding mapping of conv_pair_id to handle duplicates archived and be more consistent
+2026-05-29T15:57:31+02:00 - 65eb07a5 - Elie Gavoty : db: simply remove archived conversation filtering
+2026-05-29T15:57:31+02:00 - 4bf8298e - Elie Gavoty : db: alembice reconciliation
+2026-05-29T15:57:31+02:00 - 4821f2f9 - Elie Gavoty : db : migration llm_message - estimate token count with tiktoken
+2026-05-29T15:57:31+02:00 - 3f1ada5b - Elie Gavoty : db : migrate hardcode created_at timestamp pour system_message
+2026-05-29T15:57:31+02:00 - 0c1e43dd - Elie Gavoty : db: migration keep empty content llm_message
 2026-05-26T15:15:28+02:00 - c1f3cbfc - Elie Gavoty : chore(models): update
 2026-05-26T15:07:11+02:00 - 07567ce7 - Elie Gavoty : Merge pull request #487 from betagouv/models/trinity-large-thinking
 2026-05-26T14:46:52+02:00 - 78c80b41 - Elie Gavoty : Merge pull request #484 from betagouv/i18n/da-gemini-grok
 2026-05-26T14:44:12+02:00 - bf5fe083 - Elie Gavoty : Merge pull request #475 from betagouv/dependabot/npm_and_yarn/frontend/typescript-6.0.3
 2026-05-26T14:43:53+02:00 - 834fdb07 - Elie Gavoty : Merge pull request #478 from betagouv/dependabot/pip/pip-minor-patch-9f43114502
 2026-05-26T14:43:33+02:00 - 540e6ae1 - Elie Gavoty : Merge pull request #471 from weblate/weblate-comparia-develop
+2026-05-26T09:31:00+02:00 - f77d73c0 - axolotle : refactor: move BOT_POS, BotPos, ErrorDetails to utils.database.models.comparison
+2026-05-26T09:31:00+02:00 - e7f62575 - axolotle : fix: missing import
+2026-05-26T09:31:00+02:00 - e5c99897 - Simon : refactor(front): VoteSelect 2x2 grid on mobile with A/B paired
+2026-05-26T09:31:00+02:00 - e3678cbf - axolotle : refactor(dataset): export raw and normal datasets
+2026-05-26T09:31:00+02:00 - dbb4ad73 - axolotle : migration: drop Comparison.session_hash db migration
+2026-05-26T09:31:00+02:00 - d7aa0413 - axolotle : chore: remove legacy db helpers
+2026-05-26T09:31:00+02:00 - d29deac9 - axolotle : chore: exclude alembic folder from format scripts
+2026-05-26T09:31:00+02:00 - d2215f7e - axolotle : refactor(back): reflect session_hash drop
+2026-05-26T09:31:00+02:00 - cc879219 - axolotle : refactor(db): Comparison.cohorts with StripAndEmptyAsNone
+2026-05-26T09:31:00+02:00 - cc0caea2 - axolotle : chore(lint): drop some archive_corrupted checks since this should no longer happen
+2026-05-26T09:31:00+02:00 - b94be2fb - axolotle : fix(dataset): fix logger name
+2026-05-26T09:31:00+02:00 - b156e031 - Simon : fix(db): allow null reasoning_content in LLMMessageCreate
+2026-05-26T09:31:00+02:00 - a8dc2964 - axolotle : feat(cli): add new 'generate' group command with rankings and datasets
+2026-05-26T09:31:00+02:00 - a8b821d0 - axolotle : refactor(dataset): rework count_dataset_rows
+2026-05-26T09:31:00+02:00 - a39b0d28 - axolotle : refactor(dataset): allow to define complete dataset names from env var HF_PUSH_DATASET_PATH
+2026-05-26T09:31:00+02:00 - 9a2ee5f6 - axolotle : chore(rankings): update command help
+2026-05-26T09:31:00+02:00 - 94485139 - axolotle : refactor(db): comment archived_reasons that should not happen anymore
+2026-05-26T09:31:00+02:00 - 878e9d28 - axolotle : fix(back): imports
+2026-05-26T09:31:00+02:00 - 84ffb77f - axolotle : feat(dataset): add dataset validation models
+2026-05-26T09:31:00+02:00 - 832f97bb - axolotle : refactor(lint): update lint command to async
+2026-05-26T09:31:00+02:00 - 7e21d2eb - Simon : fix(front): SideSwitcher mobile swipe and snap
+2026-05-26T09:31:00+02:00 - 7e18ad90 - axolotle : refactor(lint): adapt archive_unknown_llms helper
+2026-05-26T09:31:00+02:00 - 76cd5dd9 - axolotle : chore: remove old utils/schemas sql folder
+2026-05-26T09:31:00+02:00 - 74f18071 - axolotle : chore(lint): drop archive_not_archived since only Comparison has the 'archived' field now
+2026-05-26T09:31:00+02:00 - 7360325e - axolotle : refactor: remove some unused code
+2026-05-26T09:31:00+02:00 - 6d37e77c - Simon : fix(arena): return the new turn explicitly from add_comparison_turn
+2026-05-26T09:31:00+02:00 - 69282aa6 - Simon : refactor(front): cleanup vote/swipe animations after review
+2026-05-26T09:31:00+02:00 - 688e9d68 - axolotle : chore(lint): drop archive_duplicate since this should no longer happen
+2026-05-26T09:31:00+02:00 - 684d28a4 - Simon : fix(front): clear loading on stream end and surface empty SSE streams
+2026-05-26T09:31:00+02:00 - 5cba1ae9 - axolotle : refactor(dataset): add new dataset build logic
+2026-05-26T09:31:00+02:00 - 58461f96 - axolotle : refactor(db): drop Comparison.session_hash
+2026-05-26T09:31:00+02:00 - 52de8b2e - axolotle : refactor: update some comments and naming
+2026-05-26T09:31:00+02:00 - 52d848c1 - axolotle : refactor(front): reflect session_hash drop
+2026-05-26T09:31:00+02:00 - 52d1d3e0 - Simon : i18n(da): add missing translations for reveal header, vote turn and importance
+2026-05-26T09:31:00+02:00 - 4a845aa1 - axolotle : refactor(llm_analyze): use get_db_comparisons_counts
+2026-05-26T09:31:00+02:00 - 476e8e8a - axolotle : refactor(lint): adapt archive_spam helper
+2026-05-26T09:31:00+02:00 - 37ab8aa7 - axolotle : fix: misc
+2026-05-26T09:31:00+02:00 - 35ffa73e - axolotle : chore: remove old utils/database/migrations folder
+2026-05-26T09:31:00+02:00 - 34f6c707 - axolotle : refactor(lint): adapt archive_corrupted helper
+2026-05-26T09:31:00+02:00 - 2eb69860 - axolotle : refactor(lint): adapt log_archived command
+2026-05-26T09:31:00+02:00 - 27c69601 - Simon : feat(front): vote chip pulse and picked-choice confirmation
+2026-05-26T09:31:00+02:00 - 1ea147c3 - axolotle : chore(utils): drop legacy code
+2026-05-26T09:31:00+02:00 - 1cf6e47f - axolotle : feat(db): add get_db_comparisons_counts helper
+2026-05-26T09:31:00+02:00 - 18704c2e - axolotle : refactor(lint): add ComparisonUnarchiveUpdate model and update reset_archived helper
+2026-05-26T09:31:00+02:00 - 18563ca9 - Simon : feat(front): vote button press feedback and annotate fly-in
+2026-05-26T09:31:00+02:00 - 0f2bf0e7 - axolotle : refactor(dataset): add typing
+2026-05-26T09:31:00+02:00 - 0b951422 - axolotle : refactor(dataset): move get_llms_data
+2026-05-26T09:31:00+02:00 - 08d11d28 - axolotle : refactor(lint): add ComparisonArchiveUpdate model and update archive helper
+2026-05-26T09:31:00+02:00 - 07a08002 - axolotle : chore(dataset): drop legacy code
+2026-05-26T09:31:00+02:00 - 07730dbe - axolotle : fix(dataset): llm analysis data as optional since it may not have been ran for raw dataset
+2026-05-26T09:31:00+02:00 - 047303cd - axolotle : feat(dataset): add extra_metadata field in DatasetComparison
+2026-05-26T09:31:00+02:00 - 036bfb95 - axolotle : refactor(lint): adapt rename_llm helper
+2026-05-26T09:31:00+02:00 - 00ba5a36 - axolotle : refactor(lint): adapt set_not_archived helper
+2026-05-26T09:30:59+02:00 - fbc25faf - axolotle : refactor(redis): make REDIS_INSTANCE_PREFIX optional
+2026-05-26T09:30:59+02:00 - fb8e3f01 - axolotle : feat(front): rework ViewChat with new structure
+2026-05-26T09:30:59+02:00 - f9d31252 - axolotle : refactor(front): rework base arena page with new structure
+2026-05-26T09:30:59+02:00 - f70e779f - axolotle : feat(db): add db session context manager
+2026-05-26T09:30:59+02:00 - f2cb5d49 - axolotle : chore(back): remove no longer used code
+2026-05-26T09:30:59+02:00 - f0b4da90 - axolotle : feat(front): add SideSwitcher component
+2026-05-26T09:30:59+02:00 - eeef88b8 - axolotle : feat(front): add new VoteAnnotate component
+2026-05-26T09:30:59+02:00 - eebeb3c9 - axolotle : feat(front): add submit button to TextPrompt
+2026-05-26T09:30:59+02:00 - ede1e774 - axolotle : refactor(rankings): quick update of ranking computing with new models
+2026-05-26T09:30:59+02:00 - e30ff499 - axolotle : refactor(front): add prompt and reveal gradient
+2026-05-26T09:30:59+02:00 - dcb2b3da - axolotle : chore(front): clean locales
+2026-05-26T09:30:59+02:00 - d873b183 - axolotle : fix(back): ALL_PREFS
+2026-05-26T09:30:59+02:00 - d7032c57 - axolotle : refactor(db): add datetime fields on models
+2026-05-26T09:30:59+02:00 - d3f743fc - axolotle : refactor(front): add SideSwitcher in GroupedMessages and RevealArea
+2026-05-26T09:30:59+02:00 - cb6a599f - axolotle : refactor(front): rework ViewChat prompt
+2026-05-26T09:30:59+02:00 - c62c2e75 - axolotle : refactor(back): update vote count with new db models
+2026-05-26T09:30:59+02:00 - c00f5163 - axolotle : fix: missing import
+2026-05-26T09:30:59+02:00 - bbf531ff - axolotle : fix(llm_analyze): MAX_RETRIES = 3
+2026-05-26T09:30:59+02:00 - bba47bf0 - axolotle : fix(back): wrong import
+2026-05-26T09:30:59+02:00 - baac5a9e - axolotle : refactor(utils): add validation.py with reusable validators
+2026-05-26T09:30:59+02:00 - ba534003 - axolotle : refactor(back): reflect new db models changes to reveal data computation
+2026-05-26T09:30:59+02:00 - acbd017c - axolotle : feat(db): add Comparison model
+2026-05-26T09:30:59+02:00 - a81bde7d - axolotle : refactor(front): add blur event on TextPrompt
+2026-05-26T09:30:59+02:00 - a2d09373 - axolotle : refactor(back): rm react route
+2026-05-26T09:30:59+02:00 - 9db8b4c5 - axolotle : refactor(back): LLMMessage: track generation ts + remove duration field
+2026-05-26T09:30:59+02:00 - 9a04381f - axolotle : refactor(ranking): drop country_portal
+2026-05-26T09:30:59+02:00 - 993aad3b - axolotle : refactor(back): rough update of message streaming in views with new db models
+2026-05-26T09:30:59+02:00 - 9253a547 - axolotle : refactor(back): update streaming.py to use new models
+2026-05-26T09:30:59+02:00 - 9159bf22 - axolotle : feat(db): add AnyMessageRead type
+2026-05-26T09:30:59+02:00 - 8e93d3bd - axolotle : feat(front): add new component VoteModal
+2026-05-26T09:30:59+02:00 - 8da0cb98 - axolotle : feat(db): add LLM analysis Comparison update models
+2026-05-26T09:30:59+02:00 - 87fd6098 - axolotle : refactor(back): drop country_portal
+2026-05-26T09:30:59+02:00 - 85ea036d - axolotle : refactor: move ArchivedReason type to Comparison model file
+2026-05-26T09:30:59+02:00 - 8459b1bb - axolotle : refactor(db): split Comparison into base, table class, create and read
+2026-05-26T09:30:59+02:00 - 804d6315 - axolotle : refactor(llm_analyze): complete rework with SQLModel, async and error handling
+2026-05-26T09:30:59+02:00 - 7fcc4aee - axolotle : refactor(streaming): update streaming routes to yields more precise data depending on comparison state
+2026-05-26T09:30:59+02:00 - 76ad4b9b - axolotle : refactor(front): move ErrorDisplay to GroupedMessages
+2026-05-26T09:30:59+02:00 - 70665ef0 - axolotle : refactor(back): update conversation.py to use new models
+2026-05-26T09:30:59+02:00 - 6d0bc020 - axolotle : refactor(back): replace global OBJECTIVES with env var VOTES_OBJECTIVE
+2026-05-26T09:30:59+02:00 - 6c49744e - axolotle : feat(db): add Comparison & Turn Public classes
+2026-05-26T09:30:59+02:00 - 646cf339 - axolotle : refactor(back): update litellm_stream_iter to use and update an LLMMessageCreate
+2026-05-26T09:30:59+02:00 - 6357f73f - axolotle : refactor(db): split SystemMessage into base, table class, create and read
+2026-05-26T09:30:59+02:00 - 621c3685 - axolotle : refactor(db): use uuids for id in db models
+2026-05-26T09:30:59+02:00 - 5f2ada5d - axolotle : refactor(db): split LLMMessage into base, table class, create and read
+2026-05-26T09:30:59+02:00 - 5bba41b0 - axolotle : refactor(dataset): drop country_portal
+2026-05-26T09:30:59+02:00 - 5512e225 - axolotle : refactor(back): vote: rework vote route, data validation and db save
+2026-05-26T09:30:59+02:00 - 510bb818 - axolotle : fix(back): missing imports
+2026-05-26T09:30:59+02:00 - 4f4994f2 - axolotle : refactor(db): split UserMessage into base, table class, create and read
+2026-05-26T09:30:59+02:00 - 4c935137 - axolotle : feat(db): add country_portal and error attrs to Comparison model
+2026-05-26T09:30:59+02:00 - 4bedbd83 - axolotle : refactor(db): split Turn into base, table class, create and read
+2026-05-26T09:30:59+02:00 - 4bbc9c0e - axolotle : refactor(front): update step types and remove first step header
+2026-05-26T09:30:59+02:00 - 4a391926 - axolotle : refactor(front): rework MessageBot component with new vote and annotations
+2026-05-26T09:30:59+02:00 - 46ecd30e - axolotle : refactor(front): display mode infos on first user message
+2026-05-26T09:30:59+02:00 - 46683ecc - axolotle : refactor(front): remove no longer used components
+2026-05-26T09:30:59+02:00 - 45f6a5ae - Elie Gavoty : devops: add alembic migration tool + makefile entries
+2026-05-26T09:30:59+02:00 - 400e9e75 - axolotle : feat(front): add new component ErrorDisplay
+2026-05-26T09:30:59+02:00 - 3bd433c6 - axolotle : feat(front): add VoteModal to ViewChat
+2026-05-26T09:30:59+02:00 - 36ccf744 - axolotle : feat(db): add generic db streaming of comparisons
+2026-05-26T09:30:59+02:00 - 332add7d - axolotle : refactor(back): move reveal types to reveal file
+2026-05-26T09:30:59+02:00 - 2e1a0129 - axolotle : refactor(streaming): yield directly events and separate msg events from comparison events
+2026-05-26T09:30:59+02:00 - 2a253636 - axolotle : feat(front): rework ViewPrompt with new structure
+2026-05-26T09:30:59+02:00 - 29e4588e - axolotle : refactor(front): update RevealArea with data parsing
+2026-05-26T09:30:59+02:00 - 2763715c - axolotle : feat(db): add helper to properly format conversations from Comparison
+2026-05-26T09:30:59+02:00 - 268d4096 - axolotle : refactor(front): rework GroupedMessages with new turns structure
+2026-05-26T09:30:59+02:00 - 203068a4 - axolotle : refactor(dbhelpers): drop country_portal
+2026-05-26T09:30:59+02:00 - 1bb99e06 - axolotle : refactor(dbhelpers): drop country_portal and X-Locale header
+2026-05-26T09:30:59+02:00 - 17f19a92 - axolotle : refactor(front): rework the whole comparison/streaming logic
+2026-05-26T09:30:59+02:00 - 0b0ca1e8 - axolotle : refactor(front): add chat buttons to scroll from a llm message to another on mobile
+2026-05-26T09:30:59+02:00 - 02ba1fa0 - axolotle : feat(front): add new VoteSelect component
+2026-05-26T09:30:58+02:00 - d332350a - axolotle : feat(db): add UserMessage model
+2026-05-26T09:30:58+02:00 - 9580040a - axolotle : chore(deps): add sqlmodel
+2026-05-26T09:30:58+02:00 - 7c2593cf - axolotle : feat(db): add SystemMessage model
+2026-05-26T09:30:58+02:00 - 676d2dcb - axolotle : feat(db): add LLMMessage model
+2026-05-26T09:30:58+02:00 - 6384febf - axolotle : feat(db): add Turn model
+2026-05-26T09:30:58+02:00 - 20eda854 - axolotle : chore(deps): add psycopg
 2026-05-26T08:57:33+02:00 - 2bf59be9 - Simon : Update frontend/locales/messages/da.json
 2026-05-26T08:57:22+02:00 - ffe3e782 - Simon : Update frontend/locales/messages/da.json
 2026-05-25T21:31:05Z - 6fa7e803 - dependabot[bot] : chore(deps): bump litellm

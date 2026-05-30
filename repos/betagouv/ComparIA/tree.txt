@@ -23,6 +23,7 @@
 ├── LICENSE
 ├── Makefile
 ├── README.md
+├── alembic.ini
 ├── backend
 │   ├── __init__.py
 │   ├── arena
@@ -32,9 +33,9 @@
 │   │   ├── conversation.py
 │   │   ├── litellm.py
 │   │   ├── models.py
-│   │   ├── persistence.py
 │   │   ├── reveal.py
 │   │   ├── router.py
+│   │   ├── services.py
 │   │   ├── session.py
 │   │   ├── spam_detection.py
 │   │   ├── spam_patterns.json
@@ -155,6 +156,7 @@
 │   │   │   │   ├── RadioGroupCard.svelte
 │   │   │   │   ├── SEOHead.svelte
 │   │   │   │   ├── Selector.svelte
+│   │   │   │   ├── SideSwitcher.svelte
 │   │   │   │   ├── TextPrompt.svelte
 │   │   │   │   ├── ThemeSelector.svelte
 │   │   │   │   ├── Toaster.svelte
@@ -264,12 +266,9 @@
 │   │       ├── arene
 │   │       │   ├── +page.svelte
 │   │       │   └── components
-│   │       │       ├── ChatBot.svelte
-│   │       │       ├── CopyAll.svelte
+│   │       │       ├── ErrorDisplay.svelte
 │   │       │       ├── GroupedMessages.svelte
 │   │       │       ├── GuidedPromptSuggestions.svelte
-│   │       │       ├── LikeDislike.svelte
-│   │       │       ├── LikePanel.svelte
 │   │       │       ├── MessageBot.svelte
 │   │       │       ├── MessageUser.svelte
 │   │       │       ├── MiniCard.svelte
@@ -279,8 +278,9 @@
 │   │       │       ├── TOSModal.svelte
 │   │       │       ├── ViewChat.svelte
 │   │       │       ├── ViewPrompt.svelte
-│   │       │       ├── VoteArea.svelte
-│   │       │       ├── VoteRadioGroup.svelte
+│   │       │       ├── VoteAnnotate.svelte
+│   │       │       ├── VoteModal.svelte
+│   │       │       ├── VoteSelect.svelte
 │   │       │       └── index.ts
 │   │       └── metrics
 │   │           └── +server.ts
@@ -569,32 +569,51 @@
 │   └── models_errors.html
 ├── utils
 │   ├── __init__.py
-│   ├── add_token_count.py
 │   ├── database
 │   │   ├── __init__.py
 │   │   ├── actions
 │   │   │   ├── __init__.py
 │   │   │   ├── archive_corrupted.py
-│   │   │   ├── archive_duplicate.py
-│   │   │   ├── archive_not_archived.py
-│   │   │   ├── archive_or_fix_country_portal.py
 │   │   │   ├── archive_spam.py
 │   │   │   ├── archive_unknown_llms.py
 │   │   │   ├── llm_analyze.py
+│   │   │   ├── migrate_comparisons.py
+│   │   │   ├── migrate_llm_messages.py
+│   │   │   ├── migrate_reactions.py
+│   │   │   ├── migrate_reasoning_content.py
+│   │   │   ├── migrate_system_messages.py
+│   │   │   ├── migrate_turns.py
+│   │   │   ├── migrate_user_messages.py
+│   │   │   ├── migrate_utils.py
+│   │   │   ├── migrate_votes.py
 │   │   │   └── rename_llm.py
+│   │   ├── alembic
+│   │   │   ├── env.py
+│   │   │   ├── script.py.mako
+│   │   │   └── versions
+│   │   │       ├── 09abb45aa086_initial_schema.py
+│   │   │       ├── 137fbd6418e6_remove_unique_constraint_on_system_msg_.py
+│   │   │       ├── 67e629fed515_merge_drop_session_hash_and_remove_.py
+│   │   │       └── 88e025e5dbfa_drop_comparison_session_hash.py
 │   │   ├── cli.py
 │   │   ├── lint.py
-│   │   ├── migrations
-│   │   │   ├── 2026_04_archived.py
-│   │   │   ├── 2026_04_archived.sql
-│   │   │   └── 2026_04_simplify_db.sql
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── comparison.py
+│   │   │   ├── messages
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── llm.py
+│   │   │   │   ├── system.py
+│   │   │   │   └── user.py
+│   │   │   ├── turn.py
+│   │   │   └── utils.py
+│   │   ├── session.py
 │   │   └── utils.py
 │   ├── dataset
 │   │   ├── compute.py
 │   │   ├── export.py
-│   │   ├── queries.py
+│   │   ├── models.py
 │   │   └── run.py
-│   ├── ip_map.sql
 │   ├── leaderboard_cookbook.ipynb
 │   ├── local_dataset
 │   │   ├── README.md
@@ -603,7 +622,6 @@
 │   │   ├── start_duckdb.sh
 │   │   └── verify_dataset.sql
 │   ├── logger.py
-│   ├── merge_models.sql
 │   ├── models
 │   │   ├── README.md
 │   │   ├── __init__.py
@@ -633,23 +651,14 @@
 │   │   ├── monitor.py
 │   │   ├── queries.py
 │   │   └── run.py
-│   ├── schemas
-│   │   ├── conversations.sql
-│   │   ├── logs.sql
-│   │   ├── migrations
-│   │   │   ├── conversations_13102025.sql
-│   │   │   └── reactions_13102025.sql
-│   │   ├── reactions.sql
-│   │   └── votes.sql
 │   ├── storage
-│   │   ├── db.py
-│   │   ├── queries.py
 │   │   └── redis.py
 │   ├── suggestions
 │   │   ├── build_suggestions.py
 │   │   ├── da.json
 │   │   ├── fr.json
 │   │   └── sv.json
-│   └── utils.py
+│   ├── utils.py
+│   └── validation.py
 └── uv.lock
-103 directories, 551 files
+104 directories, 559 files
