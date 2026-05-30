@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/dossierfacile-backend",
   "name": "dossierfacile-backend",
-  "description": "Ce projet est le back-end de DossierFacile.fr, une application web conçue pour aider à la constitution de dossiers de location. Il fournit les API et la logique métier nécessaires au fonctionnement de la plateforme.",
+  "description": "Le projet DossierFacile a été créé par le Ministère de la Transition écologique pour aider à la réalisation de dossiers de location. Il fournit une API et des services pour faciliter la gestion de ces dossiers.",
   "language": "Java",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -13,27 +13,28 @@
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
-    "Redis",
-    "Keycloak",
-    "Docker"
+    "Maven",
+    "Docker",
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "Authentification (composant)"
+    "Java (scripts & backend)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "session"
+      "saml"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": null,
   "workflows": null,
-  "lastActivity": "2026-05-22T16:02:37+02:00",
+  "lastActivity": "2026-05-28T11:54:14+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
