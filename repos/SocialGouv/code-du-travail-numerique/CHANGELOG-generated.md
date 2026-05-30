@@ -1,24 +1,22 @@
-## Changelog : code-du-travail-numerique (30 derniers jours, au 21 mai 2026)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la recherche, la correction de bugs et l'ajout de nouvelles fonctionnalités comme un quizz sur le code du travail et un support pour les modifications du SMIC dans les contributions. Des optimisations techniques ont également été apportées, notamment concernant l'instance Elasticsearch utilisée par l'application.
+Ce mois-ci, le projet a vu des améliorations significatives concernant le SMIC, avec l'ajout de méthodes de calcul et un support amélioré pour les contributions. La recherche a également été optimisée, et un quizz a été ajouté à la page d'accueil, bien qu'il soit actuellement désactivé. Plusieurs corrections de bugs ont été apportées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Recherche :** Amélioration de la pertinence des résultats de recherche, notamment pour les définitions et les outils, avec un ajustement des seuils de "fuzziness" et de "boost". [#7265](https://github.com/SocialGouv/code-du-travail-numerique/issues/7265), [#7266](https://github.com/SocialGouv/code-du-travail-numerique/issues/7266), [#7229](https://github.com/SocialGouv/code-du-travail-numerique/issues/7229), [#7217](https://github.com/SocialGouv/code-du-travail-numerique/issues/7217), [#7246](https://github.com/SocialGouv/code-du-travail-numerique/issues/7246)
-- **Contributions :** Support du challenger pour les modifications du SMIC sur les contributions. [#7284](https://github.com/SocialGouv/code-du-travail-numerique/issues/7284)
-- **Outils :** Ajout de la prise en compte de l'inaptitude non professionnelle pour le préavis de licenciement. [#7275](https://github.com/SocialGouv/code-du-travail-numerique/issues/7275)
-- **Quizz :** Ajout d'un quizz sur le code du travail. [#7261](https://github.com/SocialGouv/code-du-travail-numerique/issues/7261)
-- **Page "Quoi de neuf" :** Mise en avant de la page "Quoi de neuf". [#7249](https://github.com/SocialGouv/code-du-travail-numerique/issues/7249)
-- **A/B Testing :** Mise en place d'un A/B testing sur les labels pour les contributions. [#7243](https://github.com/SocialGouv/code-du-travail-numerique/issues/7243)
+- **SMIC :** Ajout de méthodes de calcul du SMIC annuel, permettant d'obtenir des informations plus précises. [#7286](https://github.com/SocialGouv/code-du-travail-numerique/issues/7286)
+- **Contributions :** Support du "challenger" pour les modifications du SMIC lors de la soumission de contributions, facilitant la mise à jour des informations. [#7284](https://github.com/SocialGouv/code-du-travail-numerique/issues/7284)
+- **Recherche :** Amélioration de la pertinence des résultats de recherche en ajustant le seuil de "fuzziness" pour la correspondance des définitions. [#7265](https://github.com/SocialGouv/code-du-travail-numerique/issues/7265) et [#7283](https://github.com/SocialGouv/code-du-travail-numerique/issues/7283)
+- **Outils :** Ajout de la prise en compte de l'inaptitude non professionnelle dans le calcul du préavis de licenciement. [#7275](https://github.com/SocialGouv/code-du-travail-numerique/issues/7275)
+- **Page d'accueil :** Ajout d'un quizz sur le code du travail (actuellement désactivé). [#7261](https://github.com/SocialGouv/code-du-travail-numerique/issues/7261)
 
 ### Évolutions techniques
-- **Elasticsearch :** Migration vers une instance interne d'Elasticsearch pour améliorer la performance et la stabilité. [#7256](https://github.com/SocialGouv/code-du-travail-numerique/issues/7256)
-- **Elasticsearch (Preprod) :** Correction de l'URL d'Elasticsearch pour l'environnement de préproduction et utilisation de l'instance interne.
-- **Tests E2E :** Mise à jour des tests end-to-end (E2E). [#7267](https://github.com/SocialGouv/code-du-travail-numerique/issues/7267)
-- **Liens morts :** Correction de liens morts suite à la migration vers le DSFR de legifrance. [#7271](https://github.com/SocialGouv/code-du-travail-numerique/issues/7271)
+- **Corrections de liens :** Mise à jour des liens vers Légifrance suite à leur passage au DSFR (format de données). [#7271](https://github.com/SocialGouv/code-du-travail-numerique/issues/7271)
+- **Tests E2E :** Mise à jour des tests de bout en bout pour assurer la stabilité des fonctionnalités. [#7267](https://github.com/SocialGouv/code-du-travail-numerique/issues/7267)
+- **Recherche :** Ajustement du "boost" sur les outils dans la recherche pour améliorer la pertinence des résultats. [#7266](https://github.com/SocialGouv/code-du-travail-numerique/issues/7266)
 
 ### Autres changements
-- **Correction d'un bug :** Correction de l'ouverture incorrecte d'un accordéon dans la section des contributions. [#7278](https://github.com/SocialGouv/code-du-travail-numerique/issues/7278)
-- **Logs :** Ajout de logs pour la connexion à Elasticsearch.
-- **Navigation :** Sauvegarde du state de la recherche lors des navigations avant/arrière. [#7255](https://github.com/SocialGouv/code-du-travail-numerique/issues/7255)
-- **Recherche :** Amélioration de la correspondance exacte pour les thèmes de pré-recherche. [#7247](https://github.com/SocialGouv/code-du-travail-numerique/issues/7247)
+- Correction d'un bug empêchant l'affichage correct de l'astérisque sur le brut des contributions. [#7288](https://github.com/SocialGouv/code-du-travail-numerique/issues/7288)
+- Correction d'un problème d'ouverture incorrecte d'un accordéon dans la section des contributions. [#7278](https://github.com/SocialGouv/code-du-travail-numerique/issues/7278)
+- Ajout d'attributs à la "whitelist" du challenger SMIC pour les contributions.
+- Correction d'une valeur incorrecte du SMIC dans les contributions.
