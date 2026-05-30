@@ -1,43 +1,45 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle vise à faciliter la dématérialisation des démarches administratives pour les citoyens et les professionnels.",
+  "description": "Plateforme web développée pour répondre au besoin du gouvernement français de numériser 100% des procédures administratives. Elle est open source et permet de créer et gérer des démarches administratives en ligne.",
   "language": "Ruby",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Formulaires & Démarches",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des établissements & Structures",
+    "Gestion des utilisateurs & Permissions",
     "API & Intégrations"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
-    "DelayedJob",
+    "Delayed Job",
     "Devise",
-    "Puma",
+    "GraphQL",
     "React",
-    "GraphQL"
+    "Stimulus",
+    "Turbo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "Microservices & Architecture",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "saml",
+      "session"
     ],
     "providers": [
       "FranceConnect"
@@ -46,12 +48,13 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium"
+    "Selenium",
+    "System tests"
   ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-27T14:29:35+02:00",
+  "lastActivity": "2026-05-29T10:57:34+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -69,6 +72,7 @@
     "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "JavaScript"
   ]
 }
