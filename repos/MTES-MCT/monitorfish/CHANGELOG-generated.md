@@ -1,44 +1,33 @@
-## Changelog : monitorfish (30 derniers jours, au 26 mai 2026)
+## Changelog : monitorfish (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du suivi des navires, notamment avec l'intégration des données AIS (Automatic Identification System) pour afficher les positions des navires sur la carte. Des corrections et améliorations ont également été apportées aux préavis, aux signalements et à l'interface utilisateur, notamment pour la gestion des infractions et des informations sur les navires.
+Ce mois-ci, les évolutions de monitorfish se concentrent sur l'amélioration du suivi des navires avec l'intégration des données AIS, des corrections de bugs et des améliorations de l'interface utilisateur. Des améliorations ont également été apportées à la gestion des préavis et des signalements, notamment pour les cas de non-débarquement et les préavis "zéro". Enfin, des mises à jour de l'infrastructure et des dépendances ont été réalisées.
 
 ### Évolutions fonctionnelles
-- **AIS :** Intégration de l'affichage des navires via le système AIS sur la carte, avec la possibilité de rechercher et de zoomer sur les navires AIS.  Les dernières positions AIS sont maintenant mises à jour via la pipeline.
+- **AIS :** Intégration de l'affichage des navires sous AIS sur la carte, avec récupération des dernières positions et informations associées (type de navire, destination, etc.). Possibilité de rechercher des navires AIS directement depuis la barre de recherche. [#5090](https://github.com/MTES-MCT/monitorfish/issues/5090)
 - **Préavis :**
-    - Ajout de la mention "zéro" dans les emails, PDF et SMS pour les préavis nuls.
-    - Affichage de la raison pour laquelle un préavis est "à vérifier" (note, signalement, port état tiers).
-    - Possibilité de filtrer les préavis par type "préavis zéro".
-    - Suppression des champs bloquants pour les préavis de non-débarquement et ajout de la raison du préavis.
-- **Signalements :**
-    - Possibilité d'ajouter plusieurs NATINF (nature d'infraction) à un signalement.
-    - Possibilité de faire des signalements "en lots" pour les infractions INN.
-- **Fiche navire :** Amélioration de l'interface utilisateur pour les modalités de contact sur l'onglet identité.
-- **Catégories d'infraction :** Ajout de la catégorie d'infraction NATINF 22204.
-- **Gestion des unités :** Ajout d'une recherche dans les menus "type" et "base" lors de la création d'une nouvelle unité.
+    - Ajout de la mention "zéro" dans les notifications (mails, SMS, PDF) en cas de préavis nul. [#4981](https://github.com/MTES-MCT/monitorfish/issues/4981)
+    - Affichage de la raison pour laquelle un préavis est "à vérifier" (note, signalement, port état tiers). [#5108](https://github.com/MTES-MCT/monitorfish/issues/5108)
+    - Invalidation automatique des préavis "zéro" BFT ou SWO créés il y a plus de 24 heures. [#5069](https://github.com/MTES-MCT/monitorfish/issues/5069)
+- **Signalements INN :** Simplification de la mise à jour des signalements par le pôle INN, en lien avec Navpro. [#5113](https://github.com/MTES-MCT/monitorfish/issues/5113)
+- **Unités :** Ajout d'une recherche par type et base lors de la création d'une nouvelle unité. [#5110](https://github.com/MTES-MCT/monitorfish/issues/5110)
+- **Coordonnées :** Correction d'un bug dans la longitude lors de la saisie des coordonnées. [#5106](https://github.com/MTES-MCT/monitorfish/issues/5106)
+- **Catégories d'infractions :** Correction d'un bug dans le flux de gestion des catégories d'infractions. [#5082](https://github.com/MTES-MCT/monitorfish/issues/5082)
+- **Environnement :** Ajout d'une bannière indiquant l'environnement d'intégration. [#5024](https://github.com/MTES-MCT/monitorfish/issues/5024)
+- **Upload :** Affichage d'une bannière d'erreur en cas d'échec d'upload. [#5091](https://github.com/MTES-MCT/monitorfish/issues/5091)
 
 ### Évolutions techniques
-- **Kafka :** Ajout d'une variable d'environnement `CERT_FOLDER` pour la configuration de Kafka. Désactivation de Kafka par défaut.
-- **Base de données :** Mise à jour de TimescaleDB et PostGIS.
-- **Backend :** Mise à jour des dépendances non majeures.
-- **Tests :** Ajout et correction de tests Cypress et backend.
-- **Docker :** Modifications de la configuration Docker pour la gestion de Kafka et de la base de données.
-- **Migrations :** Corrections et ajouts de migrations de base de données.
+- **Kafka :** Ajout de la configuration et des variables d'environnement nécessaires pour l'intégration de Kafka, notamment pour la réception des données AIS. [#5115](https://github.com/MTES-MCT/monitorfish/issues/5115), [#5118](https://github.com/MTES-MCT/monitorfish/issues/5118)
+- **Base de données :** Mise à jour de TimescaleDB et PostGIS. [#5096](https://github.com/MTES-MCT/monitorfish/issues/5096)
+- **Docker :** Ajout de variables d'environnement manquantes et corrections de la configuration Docker Compose.
+- **Tests :** Amélioration et correction de nombreux tests (Cypress, Jest).
+- **Dépendances :** Mise à jour des dépendances backend. [#5064](https://github.com/MTES-MCT/monitorfish/issues/5064)
+- **Lecture coordonnées WKT :** Correction de la lecture des coordonnées WKT. [#5125](https://github.com/MTES-MCT/monitorfish/issues/5125)
 
 ### Autres changements
-- Correction de bugs divers dans l'interface utilisateur (favicon, positionnement des boîtes à outils sur la carte).
-- Amélioration de la documentation et des commentaires.
-- Correction de typos et amélioration de la lisibilité du code.
-- Ajout de la bannière d'environnement d'intégration.
-- Correction de l'affichage des coordonnées WKT pour les données AIS.
-- Amélioration de la gestion des erreurs lors du téléchargement de fichiers.
-- Correction de l'affichage des raisons de vérification des préavis.
-- Ajout de la gestion de la validité des périodes pour les signalements.
-- Suppression de configurations AIS inutiles.
-- Correction de l'affichage des noms de navires.
-- Ajout de la longueur des navires dans les positions AIS.
-- Ajout d'un filtre pour exclure les navires avec un CFR (Common Fisheries Register).
-- Ajout de la gestion des types de positions (VMS, AIS) dans la base de données.
-- Correction de l'affichage des infoboxes lors de l'ouverture d'un rapport IUU.
-- Amélioration des tests pour les formulaires de signalement.
-- Correction de problèmes liés à la construction de ReadTheDocs.
+- Ajout d'un README pour la génération du certificat .p12. [#5123](https://github.com/MTES-MCT/monitorfish/issues/5123)
+- Mise à jour des dernières positions par la pipeline. [#5127](https://github.com/MTES-MCT/monitorfish/issues/5127)
+- Correction de l'icône de favicon. [#5114](https://github.com/MTES-MCT/monitorfish/issues/5114)
+- Suppression de configurations AIS inutilisées.
+- Nettoyage du code et correction de typos.
+- Amélioration de la gestion des erreurs et des messages d'information.
