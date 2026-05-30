@@ -1,25 +1,29 @@
-## Changelog : mobilic-api (30 derniers jours, au 22 mai 2026)
+## Changelog : mobilic-api (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'API Mobilic a bénéficié d'améliorations significatives en matière de sécurité, notamment avec l'ajout de l'authentification à deux facteurs (TOTP) et des fonctionnalités d'impersonation pour le support utilisateur. Des corrections et améliorations ont également été apportées à la gestion des exports de données, à l'interface d'administration et à la recherche de données NATINF.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité de l'application avec l'ajout de l'authentification à deux facteurs (TOTP), ainsi que sur l'amélioration des outils d'administration et de support. Des corrections et des améliorations ont également été apportées à l'interface administrateur, notamment au tableau de bord et à la gestion des contrôles.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Ajout de l'authentification à deux facteurs (TOTP) pour une sécurité renforcée.  Les utilisateurs peuvent désormais configurer et utiliser des codes TOTP pour se connecter [#685](https://github.com/MTES-MCT/mobilic-api/pulls/685).
-- **Support Utilisateur :** Implémentation de fonctionnalités d'impersonation pour permettre aux administrateurs de support d'agir au nom d'un utilisateur, facilitant ainsi la résolution de problèmes [#685](https://github.com/MTES-MCT/mobilic-api/pulls/685).
-- **Exports de données :** Correction d'un problème empêchant la mise à jour correcte de la date de transfert des données lors des exports CGU [#4d4cd00](https://github.com/MTES-MCT/mobilic-api/commit/4d4cd00).
-- **Contrôles :** Ajout des articles dans les PDF BDC et intégration des NATINF personnalisés dans les exports [#72cb185](https://github.com/MTES-MCT/mobilic-api/commit/72cb185). Ajout de l'indicateur `isCTT` aux informations utilisateur pour les contrôles [#0162266](https://github.com/MTES-MCT/mobilic-api/commit/0162266).
-- **Recherche NATINF :**  Ajout d'une fonctionnalité de recherche NATINF [#8fdb147](https://github.com/MTES-MCT/mobilic-api/pulls/700) et création/suppression de NATINF personnalisés via l'API [#b7f036c](https://github.com/MTES-MCT/mobilic-api/commit/b7f036c).
-- **Page d'accueil Admin :** Refonte de la page d'accueil de l'interface d'administration pour une meilleure expérience utilisateur [#698](https://github.com/MTES-MCT/mobilic-api/pulls/698).
-- **Rappels d'activation :** Implémentation d'emails de rappel pour l'activation des comptes utilisateurs [#697](https://github.com/MTES-MCT/mobilic-api/pulls/697).
+- **Authentification:** Ajout de l'authentification à deux facteurs (TOTP) pour une sécurité renforcée. Cela inclut la configuration, la vérification et l'intégration dans le processus de connexion. [#685](https://github.com/MTES-MCT/mobilic-api/pull/685)
+- **Administration:** Refonte de la page d'accueil de l'administration avec de nouveaux indicateurs et informations. [#698](https://github.com/MTES-MCT/mobilic-api/pull/698)
+- **Administration:** Ajout d'un indicateur pour signaler les jours de multi-employeur sur les alertes réglementaires. [#703](https://github.com/MTES-MCT/mobilic-api/pull/703)
+- **Administration:** Exposition d'un indicateur `hasAnyMissionThisWeek` sur le résumé du tableau de bord. [#703](https://github.com/MTES-MCT/mobilic-api/pull/703)
+- **Contrôles:** Ajout de l'information `isCTT` aux informations utilisateur du contrôleur. [#700](https://github.com/MTES-MCT/mobilic-api/pull/700)
+- **Support Admin:** Ajout de fonctionnalités pour le support administrateur, incluant la possibilité d'impersonner des utilisateurs. [#685](https://github.com/MTES-MCT/mobilic-api/pull/685)
+- **Notifications:** Mise en place de rappels par email pour l'activation du compte. [#697](https://github.com/MTES-MCT/mobilic-api/pull/697)
 
 ### Évolutions techniques
-- **Sécurité :** Ajout d'un audit pour l'impersonation, incluant la journalisation des actions et la restriction des cibles d'impersonation.
-- **Refactoring :** Déduplication des requêtes pour les rappels d'activation afin d'améliorer les performances [#a7b2671](https://github.com/MTES-MCT/mobilic-api/commit/a7b2671).
-- **Architecture :** Utilisation du claim `impersonate_as` dans les JWT pour l'impersonation, remplaçant l'ancien cookie `admin_token`.
-- **Migrations :** Correction de l'ordre des révisions de migrations pour éviter des erreurs [#dd0f700](https://github.com/MTES-MCT/mobilic-api/commit/dd0f700), [#4997f34](https://github.com/MTES-MCT/mobilic-api/commit/4997f34).
-- **Code :** Centralisation d'une fonction pour éviter la duplication dans le module de contrôle [#bb5e9cc](https://github.com/MTES-MCT/mobilic-api/commit/bb5e9cc).
+- **Sécurité:** Implémentation d'un audit pour l'impersonation d'utilisateurs, incluant la journalisation des actions et la protection contre l'impersonation de soi-même ou d'administrateurs.
+- **Sécurité:** Ajout de tests de sécurité pour détecter les failles potentielles, notamment les IDOR (Insecure Direct Object Reference).
+- **Architecture:** Refactorisation de la logique d'impersonation pour utiliser un JWT claim `impersonate_as` au lieu d'un cookie `admin_token`.
+- **Base de données:** Ajout d'une table `support_action_log` pour stocker les informations relatives à l'impersonation.
+- **Emails:** Déduplication des requêtes pour les emails de rappel d'activation. [#697](https://github.com/MTES-MCT/mobilic-api/pull/697)
+- **Migrations:** Correction de l'ordre des révisions de migrations. [#700](https://github.com/MTES-MCT/mobilic-api/pull/700)
+- **Code:** Centralisation d'une fonction dans le module de contrôle pour éviter la duplication de code. [#700](https://github.com/MTES-MCT/mobilic-api/pull/700)
+- **Code:** Correction de code smells détectés par SonarLint dans le module d'impersonation.
 
 ### Autres changements
-- **Documentation :** Ajout de support pour la création d'un super-administrateur dans le script de seed.
-- **Tests :** Ajout de tests unitaires et d'intégration pour la sécurité (IDOR, etc.) et pour l'impersonation.
-- **Corrections :** Correction d'un problème de désynchronisation du nom des deals Brevo.
+- **Documentation:** Amélioration de la documentation pour supporter l'utilisateur super-admin.
+- **RGPD:** Ajout d'une purge RGPD pour la table `support_action_log`.
+- **Corrections:** Correction d'un problème de désynchronisation du nom de l'offre dans Brevo. [#696](https://github.com/MTES-MCT/mobilic-api/pull/696)
+- **Exports:** Correction d'une erreur de transaction imbriquée lors de l'export des données CGU. [#702](https://github.com/MTES-MCT/mobilic-api/pull/702)
