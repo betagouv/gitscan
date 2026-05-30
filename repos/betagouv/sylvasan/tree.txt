@@ -98,6 +98,8 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_historicalresponse.py
 │   │   │   ├── 0003_alter_historicalresponse_status_and_more.py
+│   │   │   ├── 0004_responseimage.py
+│   │   │   ├── 0005_remove_responseimage_name.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
@@ -108,6 +110,9 @@
 │   │   │   └── response.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── files
+│   │   │   │   ├── Blue.jpg
+│   │   │   │   └── Green.jpg
 │   │   │   ├── test_create_response.py
 │   │   │   ├── test_export_responses.py
 │   │   │   ├── test_get_responses.py
@@ -200,7 +205,8 @@
 │       ├── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
 │       ├── 0002-architecture-multi-organisation-avec-extensions-specifiques.md
 │       ├── 0003-partage-de-types-entre-applications-ts.md
-│       └── 0004-organisation-des-composants-et-des-pages-vue.md
+│       ├── 0004-organisation-des-composants-et-des-pages-vue.md
+│       └── 0005-champ-image-serialisation-stockage.md
 ├── mobile
 │   ├── .gitignore
 │   ├── .vscode
@@ -395,6 +401,7 @@
 │   │   ├── style.css
 │   │   └── utils
 │   │       ├── data-fetching.ts
+│   │       ├── imageStorage.ts
 │   │       └── ui.ts
 │   ├── tests
 │   │   ├── .keep
@@ -413,6 +420,8 @@
 │   │   ├── ArrayField.vue
 │   │   ├── AutocompleteField.vue
 │   │   ├── FieldRenderer.vue
+│   │   ├── ImageViewer.vue
+│   │   ├── ImagesField.vue
 │   │   └── SurveyRenderer.vue
 │   ├── types
 │   │   ├── api.d.ts
@@ -497,4 +506,4 @@
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-145 directories, 354 files
+146 directories, 362 files
