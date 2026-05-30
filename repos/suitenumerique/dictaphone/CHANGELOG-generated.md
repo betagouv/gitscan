@@ -1,46 +1,39 @@
-## Changelog : dictaphone (30 derniers jours, au 26 mai 2026)
+## Changelog : dictaphone (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'application mobile, avec notamment la gestion de l'enregistrement hors ligne, la possibilité de relancer la transcription en cas d'échec, et une meilleure gestion des autorisations. L'application web a également bénéficié d'améliorations, notamment l'ajout de formats d'exportation avancés (SRT) et la possibilité de copier le texte des transcriptions. Des corrections de sécurité et des optimisations de performance ont été apportées à l'ensemble du projet.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, en particulier sur l'application mobile, avec des fonctionnalités comme la reprise d'enregistrement en cas de perte de connexion, la gestion des téléchargements en WiFi uniquement, et une meilleure gestion des erreurs. Des améliorations significatives ont également été apportées à la gestion des transcriptions, avec la possibilité de les régénérer et d'exporter au format SRT. Plusieurs corrections de bugs et optimisations de sécurité ont été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de relancer la transcription d'un fichier en cas d'échec via l'interface web et l'API. [#issue-lien-si-disponible]
-- Implémentation de l'export de transcriptions au format SRT. [#issue-lien-si-disponible]
-- Ajout des actions "Copier le texte" et "Ouvrir dans Indocs" au menu contextuel des fichiers. [#issue-lien-si-disponible]
-- Amélioration de l'expérience utilisateur mobile avec la gestion de l'enregistrement hors ligne et la reprise automatique en cas de perte de connexion.
-- Ajout d'un indicateur visuel du niveau sonore pendant l'enregistrement sur mobile.
-- Possibilité de contourner l'écran de connexion sur mobile.
-- Ajout d'un lien vers la salle Matrix dans le README.
-- Amélioration de l'accessibilité de l'application web.
-- Ajout d'une info-bulle sur le bouton d'upload.
-- Mise à jour du menu d'aide.
-- Ajout d'un son de démarrage/arrêt de l'enregistrement.
-- Ajout d'une option pour n'autoriser l'upload qu'en WiFi sur mobile.
-- Ajout d'un lien vers les mentions légales sur mobile.
-- Amélioration de l'interface de suppression de compte sur mobile.
+- Ajout de la possibilité de régénérer une transcription échouée via l'interface d'administration et un nouvel endpoint dédié. [#issue à suivre]
+- Ajout de l'export des transcriptions au format SRT. [#issue à suivre]
+- Ajout de la possibilité de copier le texte de la transcription et d'ouvrir les documents associés (indocs) directement depuis le menu d'action du fichier. [#issue à suivre]
+- Amélioration de l'interface utilisateur pour afficher la source et la durée des fichiers audio dans l'administration Django. [#issue à suivre]
+- Ajout d'un indicateur visuel (tooltip) sur le bouton d'upload. [#issue à suivre]
+- Amélioration de l'expérience utilisateur lors de la réinitialisation du mot de passe sur l'application mobile.
+- Ajout de la possibilité de contourner l'écran de connexion sur l'application mobile.
+- Ajout d'un support pour le regroupement de textes consécutifs du même intervenant dans les transcriptions (frontend et mobile).
+- Amélioration de l'affichage des durées courtes dans l'interface utilisateur.
+- Ajout d'un indicateur de progression lors du téléchargement des fichiers sur l'application mobile.
+- Ajout d'une option pour n'autoriser les téléchargements qu'en WiFi sur l'application mobile.
+- Amélioration de la gestion des erreurs et des alertes sur l'application mobile.
+- Ajout d'un lien vers la salle Matrix pour la communauté. [#75733f8](https://github.com/suitenumerique/dictaphone/commit/75733f8)
 
 ### Évolutions techniques
-- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest` pour la comparaison de chaînes sensibles.
-- Partage de l'adresse email de l'utilisateur avec le service de résumé.
-- Mise à jour des dépendances pour renforcer la sécurité.
-- Refactorisation du code pour améliorer la robustesse et la maintenabilité.
-- Optimisation des performances de l'application web et mobile.
-- Amélioration de la gestion des erreurs et des logs.
-- Mise en place d'un script d'automatisation des releases mobiles.
-- Ajout de tests unitaires et d'intégration.
-- Amélioration de la configuration du pipeline CI/CD.
-- Ajout d'un mécanisme pour nettoyer les fichiers temporaires et supprimés.
-- Correction de problèmes liés à la gestion des états de l'enregistreur.
-- Amélioration de la gestion des permissions sur mobile.
-- Mise à jour des valeurs par défaut pour autoriser plus de types de fichiers.
+- Mise à jour de Python à la version 3.14.5 et de Django à la version 5.12.4. [#c41aac4](https://github.com/suitenumerique/dictaphone/commit/c41aac4)
+- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest` pour la comparaison de chaînes sensibles. [#4e8ce56](https://github.com/suitenumerique/dictaphone/commit/4e8ce56)
+- Ajout de logs plus détaillés dans le processus de connexion pour faciliter le débogage des problèmes d'authentification mobile. [#600e899](https://github.com/suitenumerique/dictaphone/commit/600e899)
+- Refactorisation du code mobile pour une meilleure organisation et lisibilité.
+- Mise en place d'un script pour automatiser les releases de l'application mobile.
+- Amélioration de la robustesse de la logique de gestion des enregistrements sur l'application mobile.
+- Ajout d'une commande pour nettoyer les fichiers en attente et supprimés. [#f270029](https://github.com/suitenumerique/dictaphone/commit/f270029)
+- Configuration de l'exécution de la commande de nettoyage des fichiers en tant que tâche cron. [#69a917b](https://github.com/suitenumerique/dictaphone/commit/69a917b)
+- Activation du support vidéo par défaut. [#1ff013e](https://github.com/suitenumerique/dictaphone/commit/1ff013e)
+- Amélioration de la gestion des erreurs et de la robustesse du code.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de fautes de frappe et amélioration de la lisibilité du code.
-- Mise à jour des badges du README.
-- Ajout de commentaires pour clarifier le code.
-- Amélioration de la configuration Helm.
+- Mise à jour de la documentation pour l'utilisation de linter sur le code mobile.
 - Mise à jour des documents légaux.
-- Ajout de données mock pour faciliter la prise de captures d'écran.
-- Correction de problèmes de typographie dans l'application mobile.
-- Ajout de métriques de suivi des erreurs sur mobile avec PostHog.
+- Ajout d'un user agent spécifique pour les requêtes de l'application.
+- Correction de typos et améliorations de la lisibilité de la documentation et du code.
+- Amélioration de l'accessibilité de l'application frontend.
+- Nettoyage et refactoring du code.
