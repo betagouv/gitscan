@@ -1,19 +1,20 @@
-## Changelog : histologe (30 derniers jours, au 27 mai 2026)
+## Changelog : histologe (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité de l'application, la correction de vulnérabilités de sécurité, et l'optimisation des performances, notamment au niveau de la liste des signalements. Des améliorations ont également été apportées à l'interface utilisateur pour faciliter l'utilisation au quotidien des agents.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité de l'application, la correction de vulnérabilités de sécurité, l'optimisation des performances et l'ajout de fonctionnalités pour faciliter le travail des agents, notamment dans la gestion des signalements et des suivis. Des améliorations techniques ont également été apportées pour moderniser l'infrastructure et améliorer la qualité du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité pour l'ajout et l'édition d'événements, de documents, de partenaires et de signalements. [#5765, #5781, #5793, #5823]
-- Ajout de la possibilité pour les bailleurs d'envoyer des suivis et des documents pendant la procédure de démarche accélérée. [#5819]
-- Ajout d'un message informatif pour les logements vacants lors de l'ajout d'un suivi. [#5897]
-- Enregistrement du nom du travailleur social dans le formulaire de signalement. [#5867]
-- Suppression du blocage du parcours Parc public si le bailleur n'a pas été prévenu ou l'a été trop récemment. [#5854]
-- Ajout d'une confirmation lors de la suppression des notifications. [#5800]
+- Amélioration de l'accessibilité pour l'ajout et l'édition d'événements, de documents, et pour les utilisateurs API. [#5765, #5793, #5826]
+- Ajout d'un message informatif pour les logements vacants lors de l'ajout d'un suivi de signalement. [#5897]
+- Enregistrement du nom du travailleur social lors de la création d'un signalement. [#5867]
+- Possibilité pour les bailleurs d'envoyer des suivis et des documents pendant la procédure de démarche accélérée. [#5819]
+- Suppression du blocage du parcours "Parc public" si le bailleur n'a pas été prévenu ou l'a été trop récemment. [#5854]
+- Ajout d'une confirmation pour vider les notifications dans le back-office. [#5800]
 - Ajout de liserets pour améliorer la lisibilité du récapitulatif de signalement. [#5865]
-- Amélioration de l'affichage des dates et heures des clubs en fonction du fuseau horaire de l'utilisateur sur les emails et le tableau de bord. [#5778]
-- Ajout d'un QR code et d'un nombre de recherches sur le service secours. [#5799]
-- Correction de la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse. [#5839]
+- Ajout du nombre de recherches et du QR code pour le service secours. [#5799]
+- Amélioration de l'affichage des affectations dans l'historique. [#5851]
+- Ajout d'une fonctionnalité pour masquer les suivis automatiques. [#5795]
+- Amélioration du format d'affichage du numéro de téléphone dans les tooltips des suivis. [#5786]
 
 ### Évolutions techniques
 - Mise à jour de Twig et Symfony pour corriger des vulnérabilités de sécurité (CVE). [#5887]
@@ -23,22 +24,24 @@ Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilit
 - Suppression ou limitation de l'utilisation des contextes de suivi et des types de suivi. [#5843, #5884]
 - Suppression du répertoire `test` lors du déploiement. [#5818]
 - Suppression des persist et flush des managers d'entités. [#5757]
-- Mise à jour des paquets npm. [#5845, #5893]
-- Suppression de la route de gestion des images du firewall principal. [#5891]
-- Ajout d'un postmortem pour une vulnérabilité YesWeHack. [#5847]
-- Correction d'une vulnérabilité relevée par YesWeHack dans le fichier `.env`. [#5838]
+- Mise à jour des paquets npm. [#5845, #5809]
 - Ajout de Lighthouse dans la CI pour l'audit de performance. [#5789]
-- Utilisation d'un champ dénormalisé `lastSuiviAt` pour améliorer les performances. [#5777]
-- Ajout d'un plugin heatmap. [#5718]
+- Mise à jour de PostCSS. [#5809]
+- Ajout d'un postmortem pour une vulnérabilité YesWeHack. [#5847]
+- Correction de l'environnement de configuration pour YesWeHack. [#5838]
+- Suppression de la route de gestion des images du firewall principal. [#5891]
+- Suppression d'une commande temporaire. [#5880]
 
 ### Autres changements
-- Amélioration de l'historique des affectations. [#5851]
-- Correction de la conversion array to string pour l'envoi de mails. [#5853]
+- Amélioration de la gestion des fixtures. [#5874]
+- Ajout d'une heatmap. [#5718]
+- Ancrage de la liste des signalements dans le back-office. [#5868]
 - Diverses modifications de contenu. [#5862]
-- Ajout de tests et corrections de fixtures. [#5874]
-- Amélioration du tri par code postal sur la liste des territoires. [#5811]
-- Ajout de commentaires et nettoyage de code.
-- Correction de problèmes d'accessibilité divers. [#5770]
-- Suppression de l'affichage de tous les suivis automatiques. [#5795]
-- Ajustement du format du numéro de téléphone dans le tooltip des suivis et correction CSS associée. [#5786]
-- Amélioration des performances de la liste des signalements et de l'export (ajout du nom des documents et photos). [#5710]
+- Correction de bugs et améliorations diverses de l'interface utilisateur. [#5807, #5811, #5770]
+- Correction de la conversion array to string pour l'envoi d'emails. [#5853]
+- Correction d'un bug lié à la réouverture de la modale de sélection de bâtiment lors d'un changement d'adresse. [#5839]
+- Ajout de tri par code postal sur la liste des territoires. [#5811]
+- Correction de l'utilisation du champ dénormalisé `lastSuiviAt`. [#5777]
+- Configuration de `innodb-buffer-pool-size`. [#5791]
+- Désactivation des boutons de soumission pendant les requêtes AJAX. [#5782]
+- Correction de problèmes de C/I. [#5765]
