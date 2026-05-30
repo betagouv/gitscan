@@ -12,6 +12,7 @@ and this project adheres to
 - ✨(frontend) comment side panel #2279
 - ✨(buildpack) add PaaS deployment support, tested with Scalingo #2293
 - 🔧(backend) allow configuring settings OIDC_OP_USER_ENDPOINT_FORMAT
+- ⚡️(helm) create a dedicated svc and deployment for yprovider converter #2368
 
 ### Changed
 
@@ -22,6 +23,8 @@ and this project adheres to
 
 - 🐛(docs) run migration 0027 without superuser role
 - 🐛(backend) prevent admins/owners from overwriting other users comments
+- 🐛(y-provider) return empty output when converting empty Yjs document
+- 🐛(backend) use computed_link_reach in handle_onboarding_document #2305
 
 ### Changed
 
@@ -92,6 +95,10 @@ and this project adheres to
 
 - 🔥(backend) remove deprecated descendants endpoint #2243
 - 🔥(backend) remove content in document responses #2171
+
+### Changed
+
+- ♻️(frontend) centralize allowed conversion formats in ContentTypes #2215
 
 ## [v4.8.6] - 2026-04-08
 
