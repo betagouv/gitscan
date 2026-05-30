@@ -1,35 +1,38 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 27 mai 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la robustesse de la plateforme, notamment en corrigeant des erreurs et en améliorant la gestion des erreurs Sygne. Des améliorations ont également été apportées à la gestion des autorisations, à la validation des candidatures et à l'expérience utilisateur globale, avec l'ajout d'un chatbot Crisp et des corrections de textes. Plusieurs mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la performance de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur et la correction de bugs, notamment concernant la gestion des candidatures, des offres et des établissements. Des améliorations de sécurité et des mises à jour techniques ont également été apportées pour assurer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un chatbot Crisp pour l'assistance utilisateur.
-- Amélioration de la validation des candidatures pour permettre à un élève de seconde de valider deux stages simultanément [#836](https://github.com/betagouv/monstagedeseconde/issues/836).
-- Correction de l'affichage du message de validation de candidature pour les élèves de seconde [#819](https://github.com/betagouv/monstagedeseconde/issues/819).
-- Amélioration de la gestion des offres d'entreprises, notamment pour l'affichage dans le tableau de bord des employeurs.
-- Correction de l'affichage des statistiques pour les maisons d'accueil [#848](https://github.com/betagouv/monstagedeseconde/issues/848).
-- Correction de l'affichage des informations relatives à la ville du SIRET dans Sentry [#845](https://github.com/betagouv/monstagedeseconde/issues/845).
-- Amélioration de la gestion des autorisations pour les statisticiens [#874](https://github.com/betagouv/monstagedeseconde/issues/874).
-- Correction de l'affichage des semaines dans la comparaison des offres [#1643](https://github.com/betagouv/monstagedeseconde/issues/1643).
-- Amélioration de la validation de l'adresse et de la géolocalisation des entreprises [#817](https://github.com/betagouv/monstagedeseconde/issues/817).
-- Ajout du préfixe téléphonique de la Guadeloupe [#859](https://github.com/betagouv/monstagedeseconde/issues/859).
+- Possibilité pour un élève d'avoir deux stages valides simultanément [#836](https://github.com/betagouv/monstagedeseconde/issues/836).
+- Correction du lien vers la FAQ [#841](https://github.com/betagouv/monstagedeseconde/issues/841).
+- Amélioration du message de validation de candidature pour les élèves de lycée [#819](https://github.com/betagouv/monstagedeseconde/issues/819).
+- Ajout de la possibilité de resoumettre une candidature [#898](https://github.com/betagouv/monstagedeseconde/issues/898).
+- Affichage de l'URL des ressources pour les offres de stage [#872](https://github.com/betagouv/monstagedeseconde/issues/872).
+- Ajout du préfixe téléphonique de la Guadeloupe pour une meilleure gestion des numéros de téléphone [#859](https://github.com/betagouv/monstagedeseconde/issues/859).
+- Correction d'un bug empêchant une seule candidature par étudiant et par offre [#886](https://github.com/betagouv/monstagedeseconde/issues/886).
+- Amélioration de la gestion des offres d'entreprise pour les opérateurs [#867](https://github.com/betagouv/monstagedeseconde/issues/867).
+- Ajout de statistiques pour les maisons d'accueil [#848](https://github.com/betagouv/monstagedeseconde/issues/848).
+- Correction de l'affichage des offres dans le tableau de bord pour les employeurs [#892](https://github.com/betagouv/monstagedeseconde/issues/892).
 
 ### Évolutions techniques
-- Mise à jour de Ruby à la version 3.4.9 [#884](https://github.com/betagouv/monstagedeseconde/issues/884).
-- Amélioration de la gestion des erreurs Sygne avec la création d'une classe `SygneApiError` pour documenter les différents cas d'échec et l'ajout de mécanismes de retry [#888](https://github.com/betagouv/monstagedeseconde/issues/888).
-- Refactorisation du modèle `InternshipApplication` pour améliorer la lisibilité et la maintenabilité.
-- Amélioration de la gestion des autorisations avec l'utilisation de CanCanCan.
-- Correction de plusieurs tests et suppression de tests obsolètes.
-- Mise à jour de plusieurs dépendances (webpack-dev-server, nokogiri, devise, babel, ip-address, etc.).
-- Amélioration de la gestion des jobs asynchrones pour éviter les interruptions.
-- Correction de problèmes de cache avec Sentry.
-- Amélioration de la sécurité en corrigeant des potentielles failles XSS [#860](https://github.com/betagouv/monstagedeseconde/issues/860), [#869](https://github.com/betagouv/monstagedeseconde/issues/869).
+- Mise à jour de plusieurs dépendances (faraday, devise, nokogiri, webpack-dev-server, ip-address, babel/plugin-transform-modules-systemjs, view_component) pour bénéficier des dernières corrections et améliorations de sécurité.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration de la gestion des erreurs Sygne avec la création d'une classe d'erreur spécifique et la mise en place de mécanismes de retry [#888](https://github.com/betagouv/monstagedeseconde/issues/888).
+- Mise à jour de la version de Ruby à 3.4.9 [#884](https://github.com/betagouv/monstagedeseconde/issues/884).
+- Amélioration de la gestion des tests et correction de plusieurs tests défaillants.
+- Correction de problèmes de sécurité XSS [#860](https://github.com/betagouv/monstagedeseconde/issues/860), [#869](https://github.com/betagouv/monstagedeseconde/issues/869).
+- Amélioration de la gestion des autorisations avec cancancan.
+- Correction de problèmes liés à la configuration de l'environnement.
 
 ### Autres changements
-- Correction de typos et amélioration de la formulation de certains textes.
+- Ajout d'un chatbot Crisp pour améliorer le support utilisateur [#879](https://github.com/betagouv/monstagedeseconde/issues/879).
+- Amélioration de la documentation et des commentaires dans le code.
 - Nettoyage du code et suppression de fichiers inutiles.
-- Mise à jour de la documentation.
-- Correction de problèmes liés à la configuration de l'environnement de développement.
-- Suppression de code obsolète.
-- Correction de problèmes liés à l'intégration continue.
+- Mise à jour de la configuration de l'environnement de développement.
+- Correction de typos et amélioration de la qualité du code.
+- Ajout de skills pour Claude (outil d'IA) pour améliorer l'assistance au développement.
+- Correction de la gestion des erreurs dans les jobs asynchrones.
+- Correction de problèmes liés au chargement des modèles.
+- Amélioration de la gestion des adresses et de la géolocalisation.
+- Correction de bugs mineurs et amélioration de la stabilité de la plateforme.

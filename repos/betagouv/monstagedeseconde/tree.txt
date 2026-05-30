@@ -397,6 +397,7 @@
 │   │   │   ├── select_*.js  (5 files)
 │   │   │   ├── share_button_controller.js
 │   │   │   ├── signup_controller.js
+│   │   │   ├── single_submit_controller.js
 │   │   │   ├── statistics_controller.js
 │   │   │   ├── students_controller.js
 │   │   │   ├── toggle_activate_controller.js
@@ -787,6 +788,7 @@
 │   │   ├── import_boarding_houses_job.rb
 │   │   ├── import_data_from_sygne_job.rb
 │   │   ├── migration_task_launch_job.rb
+│   │   ├── populate_naf_sector_mappings_job.rb
 │   │   ├── rebuild_review_job.rb
 │   │   ├── remove_idle_employers_job.rb
 │   │   ├── review_rebuild
@@ -1048,6 +1050,7 @@
 │   │   ├── multi_planning_grade.rb
 │   │   ├── multi_planning_reserved_school.rb
 │   │   ├── multi_planning_week.rb
+│   │   ├── naf_sector_mapping.rb
 │   │   ├── operator.rb
 │   │   ├── planning.rb
 │   │   ├── planning_grade.rb
@@ -2382,13 +2385,17 @@
 │   │   ├── 20260115112842_add_pre_selected_for_signature_to_internship_agreement.rb
 │   │   ├── 20260126172713_create_letter_thief_email_messages.rb
 │   │   ├── 20260203214306_remove_internship_offer_infos_tables.rb
+│   │   ├── 20260306100239_create_naf_sector_mappings.rb
 │   │   ├── 20260309162833_create_boarding_houses.rb
 │   │   ├── 20260420123136_reduce_student_address_size.rb
 │   │   ├── 20260430082727_create_boarding_house_views.rb
-│   │   └── 20260515090000_add_totp_to_users.rb
+│   │   ├── 20260515090000_add_totp_to_users.rb
+│   │   ├── 20260520214758_add_unique_index_on_internship_applications_user_offer.rb
+│   │   └── 20260526090153_add_unique_index_on_internship_agreements_application.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
+│   │   ├── 01b_populate_naf_sector_mappings.rb
 │   │   ├── 02_populate_months_and_weeks.rb
 │   │   ├── 03_populate_operators.rb
 │   │   ├── 04_populate_schools_and_classes.rb
@@ -2555,6 +2562,7 @@
 │       │   ├── checks.rake
 │       │   ├── create_data.rake
 │       │   ├── create_internship_offer_areas.rake
+│       │   ├── dedup_internship_applications.rake
 │       │   ├── geocode_internship_offers_entreprise_coordinates.rake
 │       │   ├── migrate_group_names.rake
 │       │   ├── mise_a_jour_ministeres_2022.rake
@@ -2587,6 +2595,7 @@
 │       │   ├── dedoubling.rake
 │       │   ├── doubling.rake
 │       │   ├── internship_agreements_creation.rake
+│       │   ├── internship_agreements_dedoubling.rake
 │       │   ├── mails_retrofit.rake
 │       │   ├── missing_objects.rake
 │       │   ├── removing_objects.rake
@@ -2828,6 +2837,7 @@
 │   │   ├── multi_coordinators.rb
 │   │   ├── multi_corporations.rb
 │   │   ├── multi_plannings.rb
+│   │   ├── naf_sector_mappings.rb
 │   │   ├── operators.rb
 │   │   ├── partners.rb
 │   │   ├── plannings.rb
@@ -2916,6 +2926,7 @@
 │   │   ├── tasks
 │   │   │   ├── anonymisation_test.rb
 │   │   │   ├── archiver_cron_jobs_test.rb
+│   │   │   ├── dedup_internship_applications_test.rb
 │   │   │   ├── migrate_school_employee_to_dasen_test.rb
 │   │   │   ├── support
 │   │   │   │   ├── update_internship_agreements_school_representative_test.rb
@@ -2979,6 +2990,7 @@
 │   │   ├── invitation_test.rb
 │   │   ├── multi_corporation_test.rb
 │   │   ├── multi_internship_agreement_test.rb
+│   │   ├── naf_sector_mapping_test.rb
 │   │   ├── reporting
 │   │   │   ├── internship_offer_aggregate_functions_test.rb
 │   │   │   ├── internship_offer_test.rb
@@ -3098,4 +3110,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-426 directories, 2682 files
+426 directories, 2694 files
