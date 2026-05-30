@@ -1,22 +1,22 @@
 # Synthèse d'activité : incubateur-ademe (du 07/05 au 07/06)
 
 ## Résumé de l'activité
-L'activité de l'incubateur-ademe au cours des dernières semaines a été marquée par des améliorations significatives de l'expérience utilisateur et de la robustesse de ses outils. Plusieurs projets ont bénéficié de mises à jour de leurs interfaces, comme [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) avec l'ajout d'alertes météo et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) avec une nouvelle page partenaires et une meilleure gestion des comptes utilisateurs. Des efforts importants ont également été consacrés à la correction de bugs et à l'amélioration de la performance, notamment sur [impactco2](/repos/incubateur-ademe/impactco2) et [facili-tacct](/repos/incubateur-ademe/facili-tacct). Enfin, des projets comme [dsfr-override](/repos/incubateur-ademe/dsfr-override) ont connu des refontes majeures, avec une migration vers TypeScript et la création d'une interface utilisateur pour faciliter la personnalisation du Design System Français.
+L'activité récente de l'organisation incubateur-ademe a été marquée par des améliorations significatives sur plusieurs de ses projets. Un effort important a été consenti pour améliorer l'expérience utilisateur, notamment sur [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) avec des simplifications d'options et des corrections de traductions, et sur [benefriches](/repos/incubateur-ademe/benefriches) avec l'ajout d'un onglet de développement et de nouvelles visualisations. La sécurité a également été renforcée avec la correction d'une vulnérabilité SQL sur [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions). Plusieurs projets ont bénéficié de mises à jour techniques importantes, comme la migration vers TypeScript sur [dsfr-override](/repos/incubateur-ademe/dsfr-override) et l'intégration de nouvelles données sur [impactco2](/repos/incubateur-ademe/impactco2). Enfin, des efforts ont été faits pour faciliter le déploiement et la maintenance de certains outils, comme [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo) et [cal.com](/repos/incubateur-ademe/cal.com).
 
 ## Sécurité
-Plusieurs projets ont bénéficié d'améliorations de sécurité, notamment [next-auth-espace-membre-provider](/repos/incubateur-ademe/next-auth-espace-membre-provider) et [dsfr-override](/repos/incubateur-ademe/dsfr-override) qui ont renforcé leur authentification et leur gestion des accès. [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy) a également bénéficié d'améliorations de sécurité avec l'ajout de tests et l'intégration d'outils de surveillance.
+Une vulnérabilité d'injection SQL a été corrigée sur [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions), renforçant la sécurité de l'application.
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques importantes :
-- Migration vers Airflow v3 sur [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) pour améliorer la stabilité et la performance.
-- Mise à niveau de n8n vers la version 2 sur [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo) pour bénéficier des dernières fonctionnalités.
-- Migration vers TypeScript sur [dsfr-override](/repos/incubateur-ademe/dsfr-override) pour une meilleure maintenabilité.
-- Refonte de l'infrastructure de déploiement vers OpenTofu et Scaleway pour [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail).
-- Intégration de FGP (Federated Grafana Proxy) pour l'authentification sur [grafana](/repos/incubateur-ademe/grafana).
+Plusieurs projets ont connu des refactorings importants et des mises à jour techniques :
+- Migration complète vers TypeScript sur [dsfr-override](/repos/incubateur-ademe/dsfr-override) pour une meilleure maintenabilité.
+- Refactoring de l'architecture sur [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) avec l'utilisation de TRPC et la migration vers `@tet/ui`.
+- Mise à jour majeure de n8n vers la version 2 sur [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
+- Intégration d'une interface d'administration spécifique pour l'incubateur Ademe sur [cal.com](/repos/incubateur-ademe/cal.com).
+- Mise à jour des données du mix électrique pour l'année 2025 sur [publicodes-commun](/repos/incubateur-ademe/publicodes-commun).
 
 ## Dépôts les plus actifs
-- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Amélioration continue de l'expérience utilisateur et ajout de nouvelles fonctionnalités pour le calcul de l'empreinte carbone.
-- [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) : Ajout de nouvelles fonctionnalités et refonte de l'infrastructure de déploiement.
-- [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Refonte majeure avec migration vers TypeScript et création d'une interface utilisateur.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Ajout de nouvelles fonctionnalités pour l'analyse des friches et amélioration de l'interface utilisateur.
-- [impactco2](/repos/incubateur-ademe/impactco2) : Corrections de bugs et améliorations de la performance pour le calcul de l'impact carbone.
+- [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Améliorations significatives de l'interface utilisateur et corrections de sécurité.
+- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Amélioration de l'expérience utilisateur et intégration de nouvelles données.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Ajout de nouvelles fonctionnalités pour l'analyse des friches urbaines.
+- [publicodes-commun](/repos/incubateur-ademe/publicodes-commun) : Mise à jour des données du mix électrique pour une meilleure précision des calculs.
+- [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Migration vers TypeScript et développement d'une interface utilisateur pour la personnalisation du DSFR.
