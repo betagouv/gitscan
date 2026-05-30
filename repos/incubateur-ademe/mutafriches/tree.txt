@@ -18,6 +18,7 @@
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── api-monitoring.yml
 │       ├── cci92-prefetch.yml
 │       └── ci.yml
 ├── .gitignore
@@ -42,6 +43,16 @@
 │   │   │   ├── app.controller.spec.ts
 │   │   │   ├── app.controller.ts
 │   │   │   ├── app.module.ts
+│   │   │   ├── donnees-externes
+│   │   │   │   ├── api-monitoring.config.ts
+│   │   │   │   ├── api-monitoring.service.spec.ts
+│   │   │   │   ├── api-monitoring.service.ts
+│   │   │   │   ├── api-refresh-token.guard.ts
+│   │   │   │   ├── donnees-externes.controller.ts
+│   │   │   │   ├── donnees-externes.module.ts
+│   │   │   │   ├── imports.registry.ts
+│   │   │   │   ├── imports.service.spec.ts
+│   │   │   │   └── imports.service.ts
 │   │   │   ├── enrichissement
 │   │   │   │   ├── __test-helpers__
 │   │   │   │   │   ├── enrichissement.mocks.ts
@@ -231,6 +242,7 @@
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── input
 │   │   │   │   │   │   ├── calculer-mutabilite.dto.ts
+│   │   │   │   │   │   ├── calculer-mutabilite.examples.ts
 │   │   │   │   │   │   └── donnees-complementaires.dto.ts
 │   │   │   │   │   └── output
 │   │   │   │   │       ├── evaluation.dto.ts
@@ -246,6 +258,7 @@
 │   │   │   │   │   └── evaluation.repository.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── algorithme
+│   │   │   │   │   │   ├── algorithme.config.spec.ts
 │   │   │   │   │   │   ├── algorithme.config.ts
 │   │   │   │   │   │   ├── algorithme.constants.ts
 │   │   │   │   │   │   ├── algorithme.types.ts
@@ -260,7 +273,8 @@
 │   │   │   │   │   │       ├── v1.5.ts
 │   │   │   │   │   │       ├── v1.6.ts
 │   │   │   │   │   │       ├── v1.7.ts
-│   │   │   │   │   │       └── v1.8.ts
+│   │   │   │   │   │       ├── v1.8.ts
+│   │   │   │   │   │       └── v1.9.ts
 │   │   │   │   │   ├── calcul-fixtures.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
@@ -336,6 +350,7 @@
 │   │   │   │   │   │   ├── 0017_quiet_bucky.sql
 │   │   │   │   │   │   ├── 0018_adorable_screwball.sql
 │   │   │   │   │   │   ├── 0019_ite_fret_adresse.sql
+│   │   │   │   │   │   ├── 0020_api_health_snapshots.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -359,6 +374,7 @@
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
+│   │   │   │   │       ├── api-health-snapshots.schema.ts
 │   │   │   │   │       ├── communes.schema.ts
 │   │   │   │   │       ├── enrichissements.schema.ts
 │   │   │   │   │       ├── epci.schema.ts
@@ -379,6 +395,15 @@
 │   │   │   │   │   ├── origine-detection.service.spec.ts
 │   │   │   │   │   └── origine-detection.service.ts
 │   │   │   │   ├── shared.module.ts
+│   │   │   │   ├── swagger
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── swagger.spec.ts.snap
+│   │   │   │   │   ├── decorators
+│   │   │   │   │   │   ├── api-origin-auth.decorator.ts
+│   │   │   │   │   │   └── api-standard-errors.decorator.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── swagger.config.ts
+│   │   │   │   │   └── swagger.spec.ts
 │   │   │   │   ├── types
 │   │   │   │   │   └── common.types.ts
 │   │   │   │   ├── utils
@@ -530,6 +555,12 @@
 │       │   │   │   │   └── DocumentationIframe.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── DocumentationIntegrationPage.tsx
+│       │   │   ├── donnees-externes
+│       │   │   │   ├── components
+│       │   │   │   │   ├── ApisExternesPanel.tsx
+│       │   │   │   │   └── ImportsPanel.tsx
+│       │   │   │   └── pages
+│       │   │   │       └── DonneesExternesPage.tsx
 │       │   │   ├── landing
 │       │   │   │   ├── components
 │       │   │   │   │   ├── CommentCaMarcheSection.tsx
@@ -619,7 +650,8 @@
 │       │   │   │   │   └── ScrollToTop.tsx
 │       │   │   │   ├── dsfr
 │       │   │   │   │   ├── DsfrAccordion.css
-│       │   │   │   │   └── DsfrAccordion.tsx
+│       │   │   │   │   ├── DsfrAccordion.tsx
+│       │   │   │   │   └── DsfrTabs.tsx
 │       │   │   │   └── layout
 │       │   │   │       ├── Footer.tsx
 │       │   │   │       ├── Header.tsx
@@ -655,6 +687,7 @@
 │       │   │   │   ├── api
 │       │   │   │   │   ├── api.client.ts
 │       │   │   │   │   ├── api.config.ts
+│       │   │   │   │   ├── api.donnees-externes.service.ts
 │       │   │   │   │   ├── api.enrichissement.service.ts
 │       │   │   │   │   ├── api.evaluation.service.ts
 │       │   │   │   │   ├── api.evenements.service.ts
@@ -720,6 +753,10 @@
 │   └── shared-types
 │       ├── package.json
 │       ├── src
+│       │   ├── donnees-externes
+│       │   │   ├── api-monitoring.types.ts
+│       │   │   ├── imports.types.ts
+│       │   │   └── index.ts
 │       │   ├── enrichissement
 │       │   │   ├── constants
 │       │   │   │   ├── enrichissement.constants.ts
@@ -869,4 +906,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-210 directories, 661 files
+218 directories, 690 files
