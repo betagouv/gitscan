@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "Référencement de l'accessibilité des ERP (Établissements Recevant du Public) en France. Ce projet vise à améliorer l'accessibilité des bâtiments publics en collectant et en diffusant des informations pertinentes.",
+  "description": "Référencement de l'accessibilité des ERP (Établissements Recevant du Public) en France. Ce projet vise à collecter et diffuser des informations sur l'accessibilité des bâtiments publics pour améliorer l'inclusion.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,35 +10,42 @@
     "Authentification & Accès",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes"
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@gouvfr/dsfr",
-    "@panoramax/web-viewer",
     "Django",
     "djangorestframework",
-    "psycopg2",
-    "redis",
-    "celery"
+    "PostgreSQL",
+    "Redis",
+    "Leaflet",
+    "Sentry",
+    "Celery",
+    "pandas",
+    "requests",
+    "psycopg2"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Frontend React",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "sso"
     ]
   },
-  "tests": [
-    "pytest"
+  "tests": "pytest",
+  "workflows": [
+    "CI/CD"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-21T15:28:07Z",
+  "lastActivity": "2026-05-28T16:29:38Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,9 +58,12 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Environnement & Énergie",
+    "JavaScript",
+    "Accessibilité",
+    "Territoire & Collectivités"
   ]
 }
