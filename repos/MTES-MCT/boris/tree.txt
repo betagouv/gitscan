@@ -162,9 +162,12 @@
 │   │   │   │   │   │   ├── findAll.usecase.ts
 │   │   │   │   │   │   ├── findById.params.ts
 │   │   │   │   │   │   ├── findById.usecase.ts
+│   │   │   │   │   │   ├── findMyOfs.params.ts
+│   │   │   │   │   │   ├── findMyOfs.usecase.ts
 │   │   │   │   │   │   ├── update.params.ts
 │   │   │   │   │   │   └── update.usecase.ts
 │   │   │   │   │   └── views
+│   │   │   │   │       ├── find-my-ofs-result.view.ts
 │   │   │   │   │       └── ofs.view.ts
 │   │   │   │   ├── region
 │   │   │   │   │   ├── usecases
@@ -448,10 +451,12 @@
 │   │   │   │   │   │   │   ├── get-ofss.controller.ts
 │   │   │   │   │   │   │   └── update-ofs.controller.ts
 │   │   │   │   │   │   └── api
+│   │   │   │   │   │       ├── find-my-ofs.controller.ts
 │   │   │   │   │   │       ├── get-ofss.controller.ts
 │   │   │   │   │   │       └── portal-ofss.controller.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.ts
+│   │   │   │   │   │   ├── find-my-ofs.dto.ts
 │   │   │   │   │   │   ├── getOfss.dto.ts
 │   │   │   │   │   │   ├── portal-update.dto.ts
 │   │   │   │   │   │   ├── update-portal-simulation-metadata.dto.ts
@@ -487,6 +492,7 @@
 │   │   │   │   │   │   ├── 1772642156555-add_isFromLandbot_eligibility_simulation_table.ts
 │   │   │   │   │   │   ├── 1773000000000-add_highest_eligibility_zone_to_eligibility_simulation.ts
 │   │   │   │   │   │   ├── 1774000000000-add_user_roles_ofs_links_and_password_reset_tokens.ts
+│   │   │   │   │   │   ├── 1774100000000-add_ofs_fk_to_brs_diffusion_website.ts
 │   │   │   │   │   │   ├── 1775000000000-add_user_last_login_at.ts
 │   │   │   │   │   │   └── 1775000000000-create_ofs_eligibility_simulation_table.ts
 │   │   │   │   │   ├── seeds
@@ -700,6 +706,7 @@
 │   │   │   │   │       ├── delete.usecase.unit-spec.ts
 │   │   │   │   │       ├── findAll.usecase.unit-spec.ts
 │   │   │   │   │       ├── findById.usecase.unit-spec.ts
+│   │   │   │   │       ├── findMyOfs.usecase.unit-spec.ts
 │   │   │   │   │       └── update.usecase.unit-spec.ts
 │   │   │   │   ├── region
 │   │   │   │   │   └── usecases
@@ -939,6 +946,7 @@
 │   │   │   │   │   │   │   ├── Actions.svelte
 │   │   │   │   │   │   │   ├── Description.svelte
 │   │   │   │   │   │   │   ├── Form.svelte
+│   │   │   │   │   │   │   ├── NextSteps.svelte
 │   │   │   │   │   │   │   └── Wrapper.svelte
 │   │   │   │   │   │   ├── Stepper.svelte
 │   │   │   │   │   │   ├── Steppers
@@ -981,6 +989,9 @@
 │   │   │   │   │       │   ├── Role.svelte
 │   │   │   │   │       │   ├── Synthesis.svelte
 │   │   │   │   │       │   └── TitleWithMascotte.svelte
+│   │   │   │   │       ├── revendre-mon-bien-en-brs
+│   │   │   │   │       │   ├── FindMyOfs.svelte
+│   │   │   │   │       │   └── ResaleFaq.svelte
 │   │   │   │   │       ├── simulateur-acquisition
 │   │   │   │   │       │   ├── FeesSynthesis.svelte
 │   │   │   │   │       │   ├── GlobalSynthesis.svelte
@@ -1095,6 +1106,8 @@
 │   │   │       │   │       │   └── +server.ts
 │   │   │       │   │       └── monthly-summary
 │   │   │       │   │           └── +server.ts
+│   │   │       │   ├── find-my-ofs
+│   │   │       │   │   └── +server.ts
 │   │   │       │   ├── municipalities
 │   │   │       │   │   └── [inseeCode]
 │   │   │       │   │       └── +server.ts
@@ -1267,4 +1280,4 @@
 └── scalingo
     ├── build.sh
     └── start.sh
-372 directories, 897 files
+374 directories, 908 files
