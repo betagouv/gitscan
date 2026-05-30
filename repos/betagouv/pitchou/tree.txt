@@ -19,7 +19,6 @@
 ├── README.md
 ├── backups
 │   └── readme.md
-├── compose-tests.yml
 ├── compose.yml
 ├── cron.json
 ├── data
@@ -692,7 +691,6 @@
 │       └── styles.css
 ├── flake.lock
 ├── flake.nix
-├── index.html
 ├── justfile
 ├── knexfile.js
 ├── migrations
@@ -761,7 +759,8 @@
 │   ├── 20260126143259_ajout-capability-geomce.js
 │   ├── 20260129095854_commentaire-libre-default-chaine-vide.js
 │   ├── 20260211120000_onagre-default-chaine-vide.js
-│   └── 20260223151046_ajout-notification.js
+│   ├── 20260223151046_ajout-notification.js
+│   └── 20260527182955_unique-dossier-fichier-pieces-jointes-petitionnaire.js
 ├── outils
 │   ├── aarri
 │   │   ├── donnees-pour-personne.js
@@ -784,20 +783,7 @@
 │       ├── téléchargerNouveauxFichiers.js
 │       └── téléchargerNouveauxFichiersParType.js
 ├── package.json
-├── playwright.config.js
 ├── pnpm-lock.yaml
-├── public
-│   ├── favicon
-│   │   ├── android-chrome-192x192.png
-│   │   ├── android-chrome-512x512.png
-│   │   ├── apple-touch-icon.png
-│   │   ├── favicon.ico
-│   │   ├── favicon.svg
-│   │   └── manifest.webmanifest
-│   ├── icons
-│   │   └── file-copy-2-line.svg
-│   └── style
-│       └── custom-icons.css
 ├── scripts
 │   ├── commun
 │   │   ├── DateToJSON.js
@@ -834,6 +820,7 @@
 │   │   ├── before-ses-lockdown.js
 │   │   ├── components
 │   │   │   ├── BadgePhase.svelte
+│   │   │   ├── BandeauEnvironnement.svelte
 │   │   │   ├── BarreRecherche.svelte
 │   │   │   ├── CarteDossier.svelte
 │   │   │   ├── CopyButton.svelte
@@ -878,6 +865,7 @@
 │   │   │   ├── SqueletteContenuVide.svelte
 │   │   │   ├── TagEnjeu.svelte
 │   │   │   ├── TagPhase.svelte
+│   │   │   ├── TagPhase.svelte.test.ts
 │   │   │   ├── TagRésultatContrôle.svelte
 │   │   │   ├── TrisDeTh.svelte
 │   │   │   ├── common
@@ -903,38 +891,18 @@
 │   │   │   └── stats
 │   │   │       ├── StatistiquesConformites.svelte
 │   │   │       └── StatsContenu.svelte
-│   │   ├── config.js
+│   │   ├── dataPaths.ts
 │   │   ├── espèceFieldset.js
 │   │   ├── filtresTexte.js
 │   │   ├── getDébutPhaseActuelle.js
-│   │   ├── getLinkURL.js
-│   │   ├── main.js
-│   │   ├── mapStateToSqueletteProps.js
 │   │   ├── rechercherDansDossier.js
-│   │   ├── routeComponentLifeCycle.svelte.js
-│   │   ├── routes
-│   │   │   ├── AARRI.js
-│   │   │   ├── Accessibilite.js
-│   │   │   ├── Accueil.js
-│   │   │   ├── DonnéesPersonnelles.js
-│   │   │   ├── Dossier.js
-│   │   │   ├── MesDossiers.js
-│   │   │   ├── PreremplissageDerogation.js
-│   │   │   ├── SaisieEspèces.js
-│   │   │   ├── Stats.js
-│   │   │   ├── TmpStats.js
-│   │   │   ├── TousLesDossiers.js
-│   │   │   ├── importDossierBFC.js
-│   │   │   ├── importDossierCorse.js
-│   │   │   └── montrerPageDAccueil.js
 │   │   ├── serveur.js
-│   │   ├── store.js
+│   │   ├── store.svelte.ts
 │   │   ├── triDossiers.js
 │   │   └── triEspèces.js
 │   ├── server
 │   │   ├── auth.js
 │   │   ├── auth.test.ts
-│   │   ├── checkMemory.js
 │   │   ├── database
 │   │   │   ├── aarri
 │   │   │   │   ├── constantes.js
@@ -975,7 +943,6 @@
 │   │   │   ├── recupérerGroupesInstructeurs.js
 │   │   │   └── recupérerListeDossiersSupprimés.js
 │   │   ├── emails.js
-│   │   ├── main.js
 │   │   └── évènements_métriques.js
 │   └── types
 │       ├── API_Pitchou.ts
@@ -1027,34 +994,166 @@
 │       ├── tools.d.ts
 │       ├── typeguards.js
 │       └── évènement.d.ts
+├── seeds
+│   └── dev
+│       └── 01_dev_user.js
+├── src
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── hooks.server.ts
+│   ├── lib
+│   │   └── server
+│   │       ├── auth.ts
+│   │       ├── fichier.ts
+│   │       └── staticFile.ts
+│   └── routes
+│       ├── +layout.svelte
+│       ├── +layout.ts
+│       ├── +page.svelte
+│       ├── aarri
+│       │   └── +page.svelte
+│       ├── accessibilite
+│       │   └── +page.svelte
+│       ├── api
+│       │   ├── aarri
+│       │   │   └── +server.ts
+│       │   ├── metriques
+│       │   │   └── evenements
+│       │   │       └── +server.ts
+│       │   └── stats-publiques
+│       │       └── +server.ts
+│       ├── avis-expert
+│       │   ├── +server.ts
+│       │   ├── [avisExpertId]
+│       │   │   └── +server.ts
+│       │   └── fichier
+│       │       └── [fichierId]
+│       │           └── +server.ts
+│       ├── caps
+│       │   └── +server.ts
+│       ├── controle
+│       │   ├── +server.ts
+│       │   └── [controleId]
+│       │       └── +server.ts
+│       ├── data
+│       │   └── [...path]
+│       │       └── +server.ts
+│       ├── decision-administrative
+│       │   ├── +server.ts
+│       │   ├── [decisionAdministrativeId]
+│       │   │   └── +server.ts
+│       │   └── fichier
+│       │       └── [fichierId]
+│       │           └── +server.ts
+│       ├── declaration-geomce
+│       │   └── +server.ts
+│       ├── docs
+│       │   └── [...path]
+│       │       └── +server.ts
+│       ├── donnees-personnelles
+│       │   └── +page.svelte
+│       ├── dossier
+│       │   └── [dossierId]
+│       │       ├── +page.svelte
+│       │       ├── +page.ts
+│       │       ├── +server.ts
+│       │       └── messages
+│       │           └── +server.ts
+│       ├── dossiers
+│       │   ├── +server.ts
+│       │   ├── evenements-phases
+│       │   │   └── +server.ts
+│       │   ├── notifications
+│       │   │   └── +server.ts
+│       │   └── relation-suivis
+│       │       └── +server.ts
+│       ├── envoi-email-connexion
+│       │   └── +server.ts
+│       ├── especes-impactees
+│       │   └── [fichierId]
+│       │       └── +server.ts
+│       ├── import-dossier-historique
+│       │   ├── bourgogne-franche-comte
+│       │   │   └── +page.svelte
+│       │   └── corse
+│       │       └── +page.svelte
+│       ├── lien-preremplissage
+│       │   └── +server.ts
+│       ├── mes-dossiers
+│       │   └── +page.svelte
+│       ├── piece-jointe-petitionnaire
+│       │   └── fichier
+│       │       └── [fichierId]
+│       │           └── +server.ts
+│       ├── preremplissage-derogation
+│       │   └── +page.svelte
+│       ├── prescription
+│       │   ├── +server.ts
+│       │   └── [prescriptionId]
+│       │       └── +server.ts
+│       ├── prescriptions-et-controles
+│       │   └── +server.ts
+│       ├── resultats-synchronisation
+│       │   └── +server.ts
+│       ├── saisie-especes
+│       │   └── +page.svelte
+│       ├── stats
+│       │   └── +page.svelte
+│       ├── tmp
+│       │   └── stats
+│       │       └── +page.svelte
+│       └── tous-les-dossiers
+│           └── +page.svelte
+├── static
+│   ├── favicon
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   └── manifest.webmanifest
+│   ├── icons
+│   │   └── file-copy-2-line.svg
+│   └── style
+│       └── custom-icons.css
 ├── svelte.config.js
 ├── tests
 │   ├── README.md
+│   ├── compose.yml
 │   ├── e2e
-│   │   ├── before-all.js
-│   │   ├── connexion-réussie
-│   │   │   ├── données.sql
-│   │   │   └── test.spec.js
-│   │   ├── connexion-échouée
-│   │   │   ├── données.sql
-│   │   │   └── test.spec.js
-│   │   ├── global.teardown.js
-│   │   ├── page-mes-dossiers
-│   │   │   ├── données.sql
-│   │   │   └── test.spec.js
-│   │   └── saisie-des-espèces.spec.js
-│   ├── env
+│   │   ├── failed-login.spec.ts
+│   │   ├── login-and-see-dossier.spec.ts
+│   │   ├── mes-dossiers.spec.ts
+│   │   ├── reload-dossier.spec.ts
+│   │   ├── saisie-especes.spec.ts
+│   │   └── secret-disappears-from-url.spec.ts
+│   ├── factories
+│   │   ├── _random.ts
+│   │   ├── cap.ts
+│   │   ├── dossier.ts
+│   │   ├── fichier.ts
+│   │   ├── index.ts
+│   │   ├── notification.ts
+│   │   └── personne.ts
 │   ├── fixtures
-│   │   ├── 01-schema.sql
-│   │   └── 02-knex.sql
-│   └── manuels
-│       ├── aide-pitchou.md
-│       ├── dossier.md
-│       ├── login.md
-│       ├── saisie-espèces.md
-│       └── tableau-suivi.md
+│   │   └── playwright.ts
+│   ├── integration
+│   │   ├── caps.test.ts
+│   │   └── telechargement-fichier.test.ts
+│   ├── manuels
+│   │   ├── aide-pitchou.md
+│   │   ├── dossier.md
+│   │   ├── login.md
+│   │   ├── saisie-espèces.md
+│   │   └── tableau-suivi.md
+│   ├── playwright.config.ts
+│   ├── setup
+│   │   ├── db.ts
+│   │   ├── e2e-global.ts
+│   │   ├── integration-each.ts
+│   │   ├── integration-global.ts
+│   │   └── truncate.ts
+│   └── vitest.config.ts
 ├── tsconfig.json
-├── vite.config.js
-├── vitest.config.js
-└── vitest.setup.ts
-82 directories, 1018 files
+└── vite.config.js
+139 directories, 1060 files
