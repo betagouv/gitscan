@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees",
   "name": "depenses-eclairees",
-  "description": "Ce projet vise à extraire et analyser des informations à partir de documents financiers, notamment des dépenses publiques, en utilisant l'IA et l'OCR pour améliorer la transparence et la compréhension des données.",
+  "description": "Ce projet vise à extraire des informations pertinentes des documents financiers, notamment les actes d'engagement, les conventions de commande et les devis, en utilisant l'IA et des techniques de post-traitement pour normaliser les données extraites.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,14 +10,14 @@
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
     "Données & Schémas"
   ],
   "audience": [
     "Agents de l'Administration",
-    "Professionnels",
-    "Associations"
+    "Professionnels"
   ],
   "dependencies": [
     "Poetry",
@@ -25,27 +25,52 @@
     "psycopg",
     "djangorestframework",
     "celery",
+    "redis",
+    "django-environ",
+    "whitenoise",
+    "django-celery-results",
+    "gunicorn",
+    "django-dsfr",
     "mozilla-django-oidc",
+    "django-lasuite",
+    "django-storages",
+    "moto",
+    "ipython",
+    "docx2txt",
+    "python-dotenv",
+    "olefile",
+    "openai",
+    "openpyxl",
+    "pandas",
     "Pillow",
     "PyMuPDF",
     "python-magic",
+    "tiktoken",
+    "tqdm",
     "tesserocr",
+    "unidecode",
     "xlrd",
-    "openpyxl",
-    "docx2txt",
-    "openai",
-    "pandas"
+    "schwifty",
+    "tabulate",
+    "odfpy",
+    "pyxlsb"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Django",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "saml"
+    ],
+    "providers": [
+      "Google",
+      "Microsoft"
     ]
   },
   "tests": [
@@ -53,9 +78,9 @@
     "pytest-cov"
   ],
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD"
   ],
-  "lastActivity": "2026-05-22T15:17:14+02:00",
+  "lastActivity": "2026-05-28T12:49:26+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

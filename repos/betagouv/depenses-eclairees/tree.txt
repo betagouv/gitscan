@@ -73,8 +73,10 @@
 │   │   │   ├── attributes_query.py
 │   │   │   ├── classifier.py
 │   │   │   ├── cleaner.py
+│   │   │   ├── constants.py
 │   │   │   ├── pdf_drawings.py
 │   │   │   ├── post_processing_llm.py
+│   │   │   ├── synthesis.py
 │   │   │   └── text_extraction
 │   │   │       ├── __init__.py
 │   │   │       ├── data.py
@@ -139,6 +141,8 @@
 │   │   ├── 0035_auto_20260507_1546.py
 │   │   ├── 0036_alter_engagement_table_and_more.py
 │   │   ├── 0037_document_analyze_completion_tokens_count_and_more.py
+│   │   ├── 0038_engagement_external_created_at.py
+│   │   ├── 0039_document_analyze_model_document_classification_model_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions
@@ -170,6 +174,8 @@
 │   │       │   └── documents
 │   │       │       ├── acte_engagement
 │   │       │       │   └── document_acte_engagement.html
+│   │       │       ├── avenant
+│   │       │       │   └── document_avenant.html
 │   │       │       ├── ccap
 │   │       │       │   ├── ccap_lot.html
 │   │       │       │   └── document_ccap.html
@@ -269,6 +275,10 @@
 │   │   │   │   │   ├── test_post_processing_siret.py
 │   │   │   │   │   ├── test_post_processing_societe_principale.py
 │   │   │   │   │   └── test_post_processing_subcontractors.py
+│   │   │   │   ├── synthesis
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_synthesis.py
+│   │   │   │   │   └── test_synthesis_django.py
 │   │   │   │   ├── test_classifier.py
 │   │   │   │   ├── test_pdf_drawings.py
 │   │   │   │   └── text_extraction
@@ -355,6 +365,7 @@
     ├── test_quality_fiche_navette.py
     ├── test_quality_pipeline_ae.py
     ├── test_quality_rib.py
+    ├── test_synthesis_pipeline.py
     ├── text_extraction
     │   ├── __init__.py
     │   ├── assets
@@ -362,4 +373,4 @@
     │   │   └── lettre.md
     │   └── test_ocr_api.py
     └── utils.py
-67 directories, 297 files
+69 directories, 306 files

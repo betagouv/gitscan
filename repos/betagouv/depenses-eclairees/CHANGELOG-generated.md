@@ -1,31 +1,37 @@
-## Changelog : depenses-eclairees (30 derniers jours, au 22 mai 2026)
+## Changelog : depenses-eclairees (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité de l'extraction d'informations à partir des documents financiers, notamment grâce à l'affinage des prompts utilisés par l'IA et à l'ajout de post-traitements pour normaliser les données extraites. Des améliorations ont également été apportées à l'infrastructure et aux tests pour une meilleure fiabilité et une meilleure évaluation des performances.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'extraction d'informations des documents financiers, en particulier pour les avenants et les documents DC4. Des améliorations ont été apportées aux prompts utilisés par l'IA, aux post-traitements des données extraites et aux tests de bout en bout pour garantir une meilleure qualité et précision. Des métriques de qualité ont également été ajoutées pour évaluer la performance du système.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'extraction d'informations pour les avenants, avec extraction enrichie, post-traitements et tests de qualité sur Grist. [#131](https://github.com/betagouv/depenses-eclairees/issues/131)
-- Amélioration des prompts d'extraction pour les actes d'engagement (AE), les conventions de commande (CCAP), les devis et les documents DC4, pour une meilleure précision. [#126](https://github.com/betagouv/depenses-eclairees/issues/126)
-- Amélioration du schéma de données pour les RIB des sous-traitants, aligné sur celui des mandataires. [#125](https://github.com/betagouv/depenses-eclairees/issues/125)
-- Ajout de post-traitements pour la normalisation des noms de sociétés et des RIB. [#127](https://github.com/betagouv/depenses-eclairees/issues/127)
-- Clarification des règles d'extraction pour les reconductions dans les actes d'engagement.
-- Ajout de la fonction `check_quality_by_error_type` pour évaluer la qualité de l'extraction en fonction des erreurs (faux négatifs, faux positifs). [#124](https://github.com/betagouv/depenses-eclairees/issues/124)
-- Ajout de métriques (rappel et précision) pour évaluer la qualité de l'extraction des valeurs présentes. [#110](https://github.com/betagouv/depenses-eclairees/issues/110)
+- Ajout d'un front-end pour la gestion des avenants [#132](https://github.com/betagouv/depenses-eclairees/issues/132).
+- Amélioration de l'extraction d'informations des avenants, incluant des post-traitements et des tests qualité sur Grist [#131](https://github.com/betagouv/depenses-eclairees/issues/131).
+- Ajout du champ `external_created_at` aux engagements et mise à jour de la logique de synchronisation [#133](https://github.com/betagouv/depenses-eclairees/issues/133).
+- Amélioration de l'extraction des numéros de compte (AE, DC4) et de la logique de post-traitement des RIB [#129](https://github.com/betagouv/depenses-eclairees/issues/129), [#186d898](https://github.com/betagouv/depenses-eclairees/commit/186d898).
+- Correction du schéma du DC4 [#125](https://github.com/betagouv/depenses-eclairees/issues/125).
+- Amélioration des prompts d'extraction pour les actes d'engagement, les CCAP, les devis et les DC4 [#126](https://github.com/betagouv/depenses-eclairees/issues/126).
+- Ajout de fonctions pour lister les erreurs de différents types (faux positifs, faux négatifs) [#124](https://github.com/betagouv/depenses-eclairees/issues/124).
 
 ### Évolutions techniques
-- Refactorisation des schémas de données pour une meilleure organisation et maintenabilité. [#120](https://github.com/betagouv/depenses-eclairees/issues/120)
-- Gestion améliorée des erreurs de décodage JSON dans le client LLM avec une logique de nouvelle tentative. [#123](https://github.com/betagouv/depenses-eclairees/issues/123)
-- Ajout de métriques pour évaluer le nombre de tokens utilisés et la date de traitement. [#128](https://github.com/betagouv/depenses-eclairees/issues/128)
-- Refactorisation des tests de bout en bout (e2e) pour une meilleure clarté et une meilleure gestion des colonnes et des valeurs nulles.
-- Amélioration de la gestion des fichiers Excel volumineux dans le pipeline, avec une limite de taille réduite à 2Mo.
-- Suppression de la dépendance à Jupyter et restauration de IPython pour une meilleure expérience en ligne de commande.
-- Suppression de la directive `--force-analyze` dans le cron.
-- Ajout de détails aux erreurs de l'API OCR.
-- Utilisation de la nouvelle API `list_ej_place` pour la synchronisation. [#117](https://github.com/betagouv/depenses-eclairees/issues/117)
+- Ajout du suivi des modèles utilisés pour l'OCR, la classification et l'analyse de contenu [#134](https://github.com/betagouv/depenses-eclairees/issues/134).
+- Refactorisation de la définition des schémas de données [#120](https://github.com/betagouv/depenses-eclairees/issues/120).
+- Amélioration de la gestion des erreurs de décodage JSON dans le client LLM avec une logique de nouvelle tentative [#123](https://github.com/betagouv/depenses-eclairees/issues/123).
+- Ajout de métriques pour évaluer la détection, la précision et les hallucinations [#110](https://github.com/betagouv/depenses-eclairees/issues/110).
+- Amélioration des tests de bout en bout avec des métriques de rappel et de précision [#110](https://github.com/betagouv/depenses-eclairees/issues/110).
+- Simplification du code pour un process unitaire par engagement sans pandas.
+- Une seule requête à la base de données pour tous les engagements/contrats.
+- Ajout d'un pipeline de synthèse et d'un script d'exécution de tests de bout en bout.
+- Refactorisation des prompts pour les champs communs.
+- Ajout de métriques pour évaluer la qualité des données extraites.
+- Suppression de la dépendance à Jupyter.
 
 ### Autres changements
-- Renommage de `DataEngagement` en `Engagement` et de `DataBatch` en `EngagementTag`. [#122](https://github.com/betagouv/depenses-eclairees/issues/122)
-- Nettoyage du code. [#118](https://github.com/betagouv/depenses-eclairees/issues/118)
-- Ajout de la dépendance `pyxlsb` pour la gestion des fichiers Excel au format `.xlsb`.
-- Suppression des répertoires `__MACOSX` lors de l'extraction des fichiers ZIP. [#119](https://github.com/betagouv/depenses-eclairees/issues/119)
-- Application d'un paramètre JSON strict et d'une température de 0 pour les tests e2e. [#121](https://github.com/betagouv/depenses-eclairees/issues/121)
+- Correction de l'import de Grist.
+- Amélioration de la gestion des fichiers ZIP (ignorance des dossiers `__MACOSX`).
+- Ajout de la possibilité d'utiliser `ipython` pour des commandes shell améliorées.
+- Mise à jour de la documentation et des commentaires pour une meilleure clarté.
+- Paramétrisation de la sérialisation JSON pour plus de rigueur.
+- Correction de la date de dernière signature dans les prompts DC4.
+- Alignement du schéma RIB pour les sous-traitants avec celui des mandataires.
+- Suppression d'importations inutiles (numpy).
+- Ajout de la dépendance `pyxlsb`.
