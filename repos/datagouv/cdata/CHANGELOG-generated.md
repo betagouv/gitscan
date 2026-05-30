@@ -1,40 +1,42 @@
-## Changelog : cdata (30 derniers jours, au 26 mai 2026)
+## Changelog : cdata (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'application data.gouv.fr a bénéficié d'améliorations significatives en termes de recherche, d'administration et d'expérience utilisateur. Des fonctionnalités ont été ajoutées pour faciliter la gestion des organisations, des utilisateurs et des mots de passe, tout en optimisant la recherche et l'affichage des données. La migration vers Nuxt 4 continue d'apporter des améliorations de performance et de stabilité.
+Ce mois-ci, les améliorations apportées à cdata se concentrent sur l'expérience utilisateur, notamment en améliorant la recherche, l'accessibilité et la gestion des utilisateurs. Des fonctionnalités ont été ajoutées pour faciliter l'administration du site, comme la rotation des mots de passe et la gestion des notifications. Des optimisations techniques ont également été réalisées pour améliorer la performance et la maintenance du code.
 
 ### Évolutions fonctionnelles
 - **Recherche :**
-    - Annonce du nombre de résultats de recherche et possibilité de focaliser le curseur directement sur le champ de recherche [#1096](https://github.com/datagouv/cdata/issues/1096).
-    - Correction d'un bug empêchant la réinitialisation du champ de recherche après une recherche vide [#1083](https://github.com/datagouv/cdata/issues/1083).
-    - Amélioration des filtres personnalisés dans la recherche, avec configuration du placeholder [#1062](https://github.com/datagouv/cdata/issues/1062), [#1059](https://github.com/datagouv/cdata/issues/1059), [#1067](https://github.com/datagouv/cdata/issues/1067).
+    - Amélioration de la recherche avec des filtres personnalisés plus précis et une meilleure gestion des résultats [#1062, #1067].
+    - Correction d'un bug empêchant la réinitialisation de la recherche après une requête [#1089].
+    - Annonce du nombre de résultats de recherche pour une meilleure accessibilité [#1096].
 - **Administration :**
-    - Réintroduction du lien entre les jeux de données et les sujets (topics) [#1082](https://github.com/datagouv/cdata/issues/1082).
-    - Possibilité de faire pivoter le mot de passe des utilisateurs en administration [#1078](https://github.com/datagouv/cdata/issues/1078).
-    - Correction d'un bug où la recherche "q" dans l'administration ne réinitialisait pas la pagination [#1089](https://github.com/datagouv/cdata/issues/1089).
-- **Utilisateurs et Notifications :**
-    - Ajout de nouvelles notifications [#1076](https://github.com/datagouv/cdata/issues/1076).
-    - Affichage des callbacks en attente et ajout d'un sujet utilisateur [#1073](https://github.com/datagouv/cdata/issues/1073).
-    - Affichage des activités pour les membres d'une organisation [#1052](https://github.com/datagouv/cdata/issues/1052).
-- **Affichage des données :**
-    - Amélioration de l'affichage des contacts [#1075](https://github.com/datagouv/cdata/issues/1075).
-    - Ajout d'un segment tabulaire pour l'affichage des données [#1072](https://github.com/datagouv/cdata/issues/1072).
-    - Ajout d'une preuve de concept de visualisation (viz poc) [#963](https://github.com/datagouv/cdata/issues/963).
-    - Ajout de données sénatoriales aux élections [#1091](https://github.com/datagouv/cdata/issues/1091).
-- **Guides :**
-    - Correction des URLs des guides [#1077](https://github.com/datagouv/cdata/issues/1077).
-    - Ajout d'un lien vers le score de qualité dans les guides [#1061](https://github.com/datagouv/cdata/issues/1061).
+    - Possibilité de faire pivoter le mot de passe des utilisateurs en tant qu'administrateur [#1078].
+    - Ajout de nouvelles notifications pour les administrateurs [#1076].
+    - Correction d'un bug dans la recherche d'utilisateurs en administration [#1089].
+    - Réintroduction du lien entre les réutilisations et les sujets [#1082].
+- **Authentification :**
+    - Amélioration de l'utilisation des codes QR pour l'authentification à deux facteurs [#1090].
+    - Correction de l'envoi des identifiants avec la nouvelle politique CORS [#1098].
+- **Données & Affichage :**
+    - Ajout de données sénatoriales aux élections [#1091].
+    - Amélioration de l'affichage des contacts [#1075].
+    - Ajout d'un segment tabulaire [#1072].
+    - Amélioration du SEO (Search Engine Optimization) [#1066].
+- **Divers :**
+    - Possibilité de définir le titre des cartes [#1092].
+    - Correction de liens vers les guides [#1077].
+    - Affichage des callbacks en attente et ajout d'un sujet utilisateur [#1073].
 
 ### Évolutions techniques
-- **Nuxt :** Mise à jour vers Nuxt 4.3 et 4.4 [#1037](https://github.com/datagouv/cdata/issues/1037), [#1038](https://github.com/datagouv/cdata/issues/1038).
-- **Dépendances :** Mise à jour de `geopf-extensions-openlayers` vers la version 1.0.0-beta.10 [#1085](https://github.com/datagouv/cdata/issues/1085).
-- **Optimisations :** Ajout de dépendances optimisées [#1086](https://github.com/datagouv/cdata/issues/1086).
-- **Documentation :** Alignement du README avec Nuxt 4 [#1068](https://github.com/datagouv/cdata/issues/1068).
-- **SEO :** Améliorations du référencement (SEO) [#1066](https://github.com/datagouv/cdata/issues/1066).
+- Mise à jour de la bibliothèque `geopf-extensions-openlayers` vers la version 1.0.0-beta.10 [#1085].
+- Optimisation des dépendances pour améliorer la performance [#1086].
+- Mise à jour des dépendances du projet [#1060].
+- Passage à Nuxt 4 et mise à jour de la documentation README correspondante [#1068].
+- Ajout d'un timestamp dans les logs pour faciliter le débogage [#1084].
+- Suppression des effets de bord dans certains composants [#1079, #1080].
+- Amélioration de la gestion des erreurs CORS [#1098].
 
 ### Autres changements
-- Correction de redirections cassées dans la configuration [#1065](https://github.com/datagouv/cdata/issues/1065).
-- Ignorer le répertoire du cache pnpm local [#1071](https://github.com/datagouv/cdata/issues/1071).
-- Correction d'un effet de bord dans le code [#1080](https://github.com/datagouv/cdata/issues/1080), [#1079](https://github.com/datagouv/cdata/issues/1079).
-- Correction de la signature `mobileVisibleFields` [#1058](https://github.com/datagouv/cdata/issues/1058).
-- Nouvelle disposition pour les pages d'organisation [#1051](https://github.com/datagouv/cdata/issues/1051).
+- Affichage de l'API Swagger [#1055].
+- Correction de redirections brisées dans la configuration [#1065].
+- Ajout d'une preuve de concept de visualisation (viz poc 1) [#963].
+- Ignorer le répertoire du cache pnpm local pour une meilleure gestion de l'espace disque [#1071].
