@@ -162,6 +162,19 @@
 │   ├── SUIT-API.md
 │   ├── architecture.md
 │   ├── features.md
+│   ├── mails
+│   │   ├── compliance-path-choice-reminder.md
+│   │   ├── cse-opinion-receipt.md
+│   │   ├── cse-opinion-reminder.md
+│   │   ├── cycle-opening-info.md
+│   │   ├── declaration-confirmation.md
+│   │   ├── declaration-deadline-reminder.md
+│   │   ├── joint-evaluation-reminder.md
+│   │   ├── joint-evaluation-submitted.md
+│   │   ├── next-cycle-handover.md
+│   │   ├── second-declaration-confirmation.md
+│   │   └── second-declaration-reminder.md
+│   ├── mails.md
 │   └── parcours-utilisateurs.md
 ├── package.json
 ├── packages
@@ -414,6 +427,8 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── robots.ts
 │   │   │   │   ├── sitemap.ts
+│   │   │   │   ├── stats
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── test-error
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── test-panel
@@ -457,6 +472,7 @@
 │   │   │   │   ├── notifications-email-flow.e2e.ts
 │   │   │   │   ├── previous-year-categories.e2e.ts
 │   │   │   │   ├── public-referents.e2e.ts
+│   │   │   │   ├── public-stats.e2e.ts
 │   │   │   │   ├── recapitulatif.e2e.ts
 │   │   │   │   ├── rgaa-audit.spec.ts
 │   │   │   │   └── step1-workforce-validation.e2e.ts
@@ -853,6 +869,7 @@
 │   │   │   │   │   │   ├── campaign.test.ts
 │   │   │   │   │   │   ├── companyObligation.test.ts
 │   │   │   │   │   │   ├── companySize.test.ts
+│   │   │   │   │   │   ├── computeGlobalScore.test.ts
 │   │   │   │   │   │   ├── declarationDisplay.test.ts
 │   │   │   │   │   │   ├── declarationFlags.test.ts
 │   │   │   │   │   │   ├── declarationFsmStatus.test.ts
@@ -868,12 +885,15 @@
 │   │   │   │   │   │   ├── number.test.ts
 │   │   │   │   │   │   ├── quartile.test.ts
 │   │   │   │   │   │   ├── regions.test.ts
-│   │   │   │   │   │   └── siren.test.ts
+│   │   │   │   │   │   ├── scoreBracket.test.ts
+│   │   │   │   │   │   ├── siren.test.ts
+│   │   │   │   │   │   └── submissionRate.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── campaign.ts
 │   │   │   │   │   │   ├── companyObligation.ts
 │   │   │   │   │   │   ├── companySize.ts
+│   │   │   │   │   │   ├── computeGlobalScore.ts
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── declarationDisplay.ts
 │   │   │   │   │   │   ├── declarationFlags.ts
@@ -888,7 +908,9 @@
 │   │   │   │   │   │   ├── number.ts
 │   │   │   │   │   │   ├── quartile.ts
 │   │   │   │   │   │   ├── regions.ts
-│   │   │   │   │   │   └── siren.ts
+│   │   │   │   │   │   ├── scoreBracket.ts
+│   │   │   │   │   │   ├── siren.ts
+│   │   │   │   │   │   └── submissionRate.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── error
 │   │   │   │   │   ├── ErrorArtwork.tsx
@@ -1129,6 +1151,25 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── phone.ts
 │   │   │   │   │   └── schemas.ts
+│   │   │   │   ├── publicStats
+│   │   │   │   │   ├── CurrentCampaignRateTile.tsx
+│   │   │   │   │   ├── PublicKpiTile.tsx
+│   │   │   │   │   ├── PublicStatsPage.tsx
+│   │   │   │   │   ├── ScoreDistributionChart.module.scss
+│   │   │   │   │   ├── ScoreDistributionChart.tsx
+│   │   │   │   │   ├── ScoreDistributionStates.tsx
+│   │   │   │   │   ├── ScoreDistributionTable.tsx
+│   │   │   │   │   ├── ScoreDistributionTile.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── CurrentCampaignRateTile.test.tsx
+│   │   │   │   │   │   ├── PublicKpiTile.test.tsx
+│   │   │   │   │   │   ├── PublicStatsPage.test.tsx
+│   │   │   │   │   │   ├── ScoreDistributionChart.test.tsx
+│   │   │   │   │   │   ├── ScoreDistributionStates.test.tsx
+│   │   │   │   │   │   ├── ScoreDistributionTable.test.tsx
+│   │   │   │   │   │   └── ScoreDistributionTile.test.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── referents
 │   │   │   │   │   ├── PublicReferentDetail.tsx
 │   │   │   │   │   ├── PublicReferentList.tsx
@@ -1148,16 +1189,19 @@
 │   │   │   │   │   │   └── useReferentsSearchForm.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── shared
+│   │   │   │   │   ├── CampaignRateTileStates.tsx
 │   │   │   │   │   ├── CompanySizeFilter.tsx
 │   │   │   │   │   ├── DsfrTable.tsx
 │   │   │   │   │   ├── FileUpload.module.scss
 │   │   │   │   │   ├── FileUpload.tsx
+│   │   │   │   │   ├── KpiBadge.tsx
 │   │   │   │   │   ├── Pagination.tsx
 │   │   │   │   │   ├── PhoneField.tsx
 │   │   │   │   │   ├── SubmitModal.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
 │   │   │   │   │   │   ├── DsfrTable.test.tsx
+│   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
 │   │   │   │   │   │   ├── getDsfrModal.test.ts
 │   │   │   │   │   │   ├── uploadFile.test.ts
@@ -1209,6 +1253,7 @@
 │   │   │   │   │   │   │   │   └── declarationTestHelpers.ts
 │   │   │   │   │   │   │   ├── jointEvaluation.test.ts
 │   │   │   │   │   │   │   ├── publicReferents.test.ts
+│   │   │   │   │   │   │   ├── publicStats.test.ts
 │   │   │   │   │   │   │   └── statusHistoryHelpers.test.ts
 │   │   │   │   │   │   ├── admin.ts
 │   │   │   │   │   │   ├── adminDeclarations.ts
@@ -1225,6 +1270,7 @@
 │   │   │   │   │   │   ├── mail.ts
 │   │   │   │   │   │   ├── profile.ts
 │   │   │   │   │   │   ├── publicReferents.ts
+│   │   │   │   │   │   ├── publicStats.ts
 │   │   │   │   │   │   └── statusHistoryHelpers.ts
 │   │   │   │   │   └── trpc.ts
 │   │   │   │   ├── audit
@@ -1305,29 +1351,80 @@
 │   │   ├── vitest.config.ts
 │   │   └── vitest.integration.config.ts
 │   └── notifications
+│       ├── .env.example
 │       ├── README.md
 │       ├── package.json
+│       ├── scripts
+│       │   └── smoke.ts
 │       ├── src
 │       │   ├── __tests__
 │       │   │   ├── publisher.test.ts
 │       │   │   └── queue.test.ts
 │       │   ├── db.ts
+│       │   ├── eligibility
+│       │   │   ├── client.ts
+│       │   │   ├── dedup.ts
+│       │   │   ├── index.ts
+│       │   │   └── queries.ts
 │       │   ├── index.ts
 │       │   ├── mails
 │       │   │   ├── __tests__
-│       │   │   │   └── mails.test.ts
-│       │   │   ├── cseOpinionReceipt.ts
-│       │   │   ├── declarationConfirmation.ts
-│       │   │   ├── helpers.ts
+│       │   │   │   ├── builders.test.ts
+│       │   │   │   └── template.test.tsx
+│       │   │   ├── builders
+│       │   │   │   ├── compliancePathChoiceReminder.tsx
+│       │   │   │   ├── cseOpinionReceipt.tsx
+│       │   │   │   ├── cseOpinionReminder.tsx
+│       │   │   │   ├── cycleOpeningInfo.tsx
+│       │   │   │   ├── declarationConfirmation.tsx
+│       │   │   │   ├── declarationDeadlineReminder.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── jointEvaluationReminder.tsx
+│       │   │   │   ├── jointEvaluationSubmitted.tsx
+│       │   │   │   ├── nextCycleHandover.tsx
+│       │   │   │   ├── secondDeclarationConfirmation.tsx
+│       │   │   │   └── secondDeclarationReminder.tsx
 │       │   │   ├── index.ts
-│       │   │   ├── jointEvaluationSubmitted.ts
-│       │   │   ├── secondDeclarationConfirmation.ts
-│       │   │   ├── types.ts
-│       │   │   └── view
-│       │   │       ├── shell.ts
-│       │   │       └── tokens.ts
+│       │   │   ├── shared
+│       │   │   │   ├── formatters.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── render.ts
+│       │   │   │   └── urls.ts
+│       │   │   ├── template
+│       │   │   │   ├── BlocMarque.tsx
+│       │   │   │   ├── EmailBody.tsx
+│       │   │   │   ├── EmailButton.tsx
+│       │   │   │   ├── EmailCtaWithLink.tsx
+│       │   │   │   ├── EmailDivider.tsx
+│       │   │   │   ├── EmailFooter.tsx
+│       │   │   │   ├── EmailGreeting.tsx
+│       │   │   │   ├── EmailHeader.tsx
+│       │   │   │   ├── EmailInfoList.tsx
+│       │   │   │   ├── EmailLayout.tsx
+│       │   │   │   ├── EmailLink.tsx
+│       │   │   │   ├── EmailParagraph.tsx
+│       │   │   │   ├── EmailShell.tsx
+│       │   │   │   ├── EmailSignature.tsx
+│       │   │   │   ├── InfoBar.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── tokens.ts
+│       │   │   └── types.ts
 │       │   ├── publisher.ts
-│       │   └── queue.ts
+│       │   ├── queue.ts
+│       │   ├── schedules
+│       │   │   ├── __tests__
+│       │   │   │   ├── dispatch.test.ts
+│       │   │   │   └── registerSchedules.test.ts
+│       │   │   ├── dates.ts
+│       │   │   ├── definitions.ts
+│       │   │   ├── dispatch.ts
+│       │   │   ├── handlers.ts
+│       │   │   └── index.ts
+│       │   └── worker
+│       │       ├── auditLog.ts
+│       │       ├── jobHandler.ts
+│       │       ├── lifecycle.ts
+│       │       └── transporter.ts
 │       ├── tsconfig.json
 │       └── vitest.config.ts
 ├── pnpm-lock.yaml
@@ -1358,4 +1455,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-244 directories, 1116 files
+255 directories, 1202 files
