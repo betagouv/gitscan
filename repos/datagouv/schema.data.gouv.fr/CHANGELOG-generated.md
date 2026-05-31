@@ -1,15 +1,15 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 29 mai 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 31 mai 2026)
 
 ### Résumé
-Le site schema.data.gouv.fr a connu une période de mises à jour régulières au cours des 30 derniers jours, principalement axées sur la mise à jour des recommandations et du site web lui-même.  Une amélioration technique a été apportée avec la mise à jour de pnpm, et un nouveau référentiel de données a été ajouté.
+Le site schema.data.gouv.fr a fait l'objet de nombreuses mises à jour au cours du dernier mois, principalement des actualisations régulières du site web et des recommandations de schémas.  Une amélioration technique a été apportée avec la mise à jour de l'outil de gestion de paquets pnpm vers la version 11 et la suppression d'une configuration obsolète. De plus, un nouveau schéma de données, "referentiel-donnees-communication-publique", a été ajouté au référentiel.
 
 ### Évolutions fonctionnelles
-- Ajout du référentiel de données "referentiel-donnees-communication-publique" [#60de980](https://github.com/datagouv/schema.data.gouv.fr/commit/60de980).
+- Ajout du schéma de données "referentiel-donnees-communication-publique" [#60de980](https://github.com/datagouv/schema.data.gouv.fr/commit/60de980).
 
 ### Évolutions techniques
-- Mise à jour de pnpm vers la version 11 [#345](https://github.com/datagouv/schema.data.gouv.fr/pull/345).
-- Suppression de `allow-builds` [#346](https://github.com/datagouv/schema.data.gouv.fr/pull/346).
-- Mises à jour régulières du site web et des recommandations (plusieurs commits, notamment par `etalab`).
+- Mise à jour de l'outil de gestion de paquets pnpm vers la version 11 [#a198331](https://github.com/datagouv/schema.data.gouv.fr/commit/a198331).
+- Suppression de la configuration `allow-builds` [#4139489](https://github.com/datagouv/schema.data.gouv.fr/commit/4139489).
+- Mises à jour régulières du site web et des recommandations de schémas (plusieurs commits par jour).
 
 ### Autres changements
-- Mises à jour régulières du site web et des recommandations (plusieurs commits, notamment par `etalab`). Ces mises à jour ne sont pas suffisamment détaillées dans les commits pour être listées individuellement.
+- Aucune information supplémentaire.
