@@ -1,0 +1,496 @@
+.
+├── .gitignore
+├── LICENSE
+├── README.md
+├── audios samples
+│   ├── eicar_test_virus.mp3
+│   ├── eicar_test_virus.wav
+│   ├── poemes013_agracedieu_ezwa_64kb.mp3
+│   ├── poemes013_chameaubatonsflottants_chj_128kb.mp3
+│   ├── poemes014_aambulance_ng_128kb.mp3
+│   ├── poemes014_confuciusrendaithonneurs_chj_128kb.mp3
+│   ├── poemes014_elleavaitpriscepli_jh_128kb.mp3
+│   ├── test_audio_reunion_12s.mp3
+│   └── test_audio_voix_simulee.wav
+├── bench
+│   ├── .gitignore
+│   ├── INDEX.csv
+│   ├── figures
+│   │   ├── diarization_der.png
+│   │   ├── wer_per_augmentation.png
+│   │   └── wer_per_preprocessing.png
+│   ├── metrics
+│   │   ├── ALL_RUNS.csv
+│   │   ├── baseline.csv
+│   │   ├── diarization.csv
+│   │   ├── meeting_intel.csv
+│   │   ├── postprocessing_ablation.csv
+│   │   └── preprocessing_ablation.csv
+│   ├── reports
+│   │   ├── EXECUTIVE_SUMMARY.md
+│   │   ├── FAILURES.md
+│   │   ├── RUN_LOG.md
+│   │   ├── STATUS.md
+│   │   └── SYNTHESE.md
+│   ├── samples
+│   │   └── meeting_intel
+│   │       └── multi_00
+│   │           ├── 1_naming.json
+│   │           ├── 2_cleaning.json
+│   │           ├── 3_reformulation.json
+│   │           └── 4_analysis.json
+│   └── scripts
+│       ├── augment.py
+│       ├── build_report.py
+│       ├── call_kevent.py
+│       ├── make_multispeaker.py
+│       ├── normalize_fr.py
+│       ├── pull_corpus.py
+│       ├── run_baseline.py
+│       ├── run_diarize.py
+│       ├── run_meeting_intel.py
+│       ├── run_postproc_ablation.py
+│       ├── run_preproc_ablation.py
+│       ├── summarize_baseline.py
+│       └── summarize_postproc.py
+├── configs
+│   └── .env.example
+├── deploy
+│   ├── docker
+│   │   ├── Dockerfile
+│   │   ├── README-shared-infra.md
+│   │   ├── bootstrap-shared-db.sql
+│   │   ├── docker-compose.shared-infra.yml
+│   │   ├── docker-compose.yml
+│   │   └── keycloak-realm.json
+│   ├── keycloak
+│   │   └── client-mes-reunions.json
+│   ├── kubernetes
+│   │   ├── environments
+│   │   │   ├── README.md
+│   │   │   ├── prod-beta
+│   │   │   │   ├── README.md
+│   │   │   │   ├── cluster-prereqs
+│   │   │   │   │   ├── bucket-policy-audio-processed.json
+│   │   │   │   │   └── letsencrypt-prod-numerique-interieur.yaml
+│   │   │   │   ├── external
+│   │   │   │   │   ├── kustomization.yaml
+│   │   │   │   │   └── private-endpoints.yaml
+│   │   │   │   └── internal
+│   │   │   │       ├── admin-console.yaml
+│   │   │   │       ├── ingress-mydevices.yaml
+│   │   │   │       ├── ingress-pull-trigger.yaml
+│   │   │   │       ├── kustomization.yaml
+│   │   │   │       ├── mesreunions-web.yaml
+│   │   │   │       ├── networkpolicies.yaml
+│   │   │   │       └── video-ingest.yaml
+│   │   │   └── staging
+│   │   │       └── README.md
+│   │   ├── kubeconfigs
+│   │   │   ├── .gitkeep
+│   │   │   └── README.md
+│   │   ├── scripts
+│   │   │   ├── check-cluster-sso.sh
+│   │   │   ├── create-keycloak-test-users.local.env.example
+│   │   │   ├── create-keycloak-test-users.sh
+│   │   │   └── sync-glossary-configmap.sh
+│   │   └── shared
+│   │       ├── namespaces.yaml
+│   │       └── secrets.yaml
+│   └── scripts
+│       ├── build-push-scw.sh
+│       ├── commit-push-build.sh
+│       ├── compose-up.sh
+│       ├── measure_normalization_impact.py
+│       └── setup.sh
+├── docs
+│   ├── ARCHITECTURE.md
+│   ├── BUG_SCW_LB_INTER_CLUSTER.md
+│   ├── COMPARAISON_DICTAPHONE.md
+│   ├── DEV_HMR.md
+│   ├── DIARIZATION_BACKEND.md
+│   ├── DIARIZATION_BENCHMARK.md
+│   ├── REVIEW_RESPONSE_PLAN.md
+│   ├── RUNBOOK_PIPELINE_RELIABILITY.md
+│   ├── SMTP_SECRET_PROVISIONING.md
+│   ├── TODO_revue_cycle_codes.md
+│   ├── adr
+│   │   ├── 0001-pipeline-liveness-vs-progress.md
+│   │   ├── 0002-pipeline-status-enum-source-of-truth.md
+│   │   └── 0003-meeting-source-connectors.md
+│   ├── architecture
+│   │   └── meeting-source-connectors.md
+│   ├── bench-kevent-execution-plan.md
+│   ├── benchmarks
+│   │   └── diarization
+│   │       ├── BASELINE_AUDIT.md
+│   │       ├── RECOMMENDATION.md
+│   │       ├── RESULTS.md
+│   │       └── benchmark_runs.jsonl
+│   ├── chantier-resilience-batch-processing.md
+│   ├── connectors
+│   │   └── youtube.md
+│   ├── contract
+│   │   └── meeting-source-connector-spec.md
+│   ├── debug-brief-drive-connection-reset.md
+│   ├── features-backlog-feedbacks-2026-05.md
+│   ├── import-from-mcr-deployment.md
+│   ├── import-from-mcr.md
+│   ├── integrate-with-kevent.md
+│   ├── integrate-with-mcr.md
+│   ├── mcr-bug-report-meeting-response-validator.md
+│   ├── mirai-ux-backlog.md
+│   ├── openrag-vm-build-howto.md
+│   ├── protocole_test_transcription_diarisation.md
+│   ├── refactor-mydevices-blockers-v2.md
+│   ├── refactor-mydevices-blockers.md
+│   ├── refactor-mydevices-followups.md
+│   ├── refactor-mydevices-mapping.md
+│   ├── refactor-mydevices-pr3v2-mapping.md
+│   ├── refactor-mydevices-pr4-mapping.md
+│   ├── refactor-mydevices-report-pr0-vite.md
+│   ├── refactor-mydevices-report-pr2c.md
+│   ├── refactor-mydevices-report-pr2d.md
+│   ├── refactor-mydevices-report-pr3.md
+│   ├── refactor-mydevices-report-pr3v2.md
+│   ├── refactor-mydevices-report-pr4.md
+│   ├── refactor-mydevices-report-prep-v2.md
+│   ├── refactor-mydevices-report-rebranding.md
+│   ├── refactor-mydevices-report-ux-devices.md
+│   ├── refactor-mydevices-report-ux-meetings.md
+│   ├── refactor-mydevices-report-ux-onglets.md
+│   ├── refactor-mydevices-report-ux-polish.md
+│   ├── refactor-mydevices-report-ux-preparations.md
+│   ├── refactor-mydevices-report-ux-refonte-3.md
+│   ├── refactor-mydevices-report-v2.md
+│   ├── refactor-mydevices-report.md
+│   ├── refactor-mydevices-ui-dsfr-mapping.md
+│   ├── screenshots
+│   │   ├── activity-follow.png
+│   │   ├── admin-panel.png
+│   │   ├── enter-small-code.png
+│   │   ├── install-android-button.png
+│   │   ├── install-android.png
+│   │   ├── mobile-app-android.png
+│   │   ├── mobile-application.jpeg
+│   │   ├── qr-code-gen.png
+│   │   └── upload-mobile.png
+│   └── upstream-asks
+│       └── kevent
+│           ├── 01-issue-job-leak-when-client-republishes.md
+│           ├── 02-feature-delete-jobs-endpoint.md
+│           ├── 03-feature-lease-based-job-cancellation.md
+│           └── README.md
+├── features-2-build
+│   └── FEATURE_video-ingest.md
+├── glossaire
+│   └── glossary.md
+├── libs
+│   └── shared
+│       ├── __init__.py
+│       └── app
+│           ├── __init__.py
+│           ├── config.py
+│           ├── database.py
+│           ├── device_fingerprint.py
+│           ├── device_token.py
+│           ├── filename_datetime.py
+│           ├── glossary_filter.py
+│           ├── mirai_oidc.py
+│           ├── models.py
+│           ├── oidc_refresh_store.py
+│           ├── queue_eta.py
+│           ├── queue_helper.py
+│           ├── s3_helper.py
+│           ├── secrets_crypto.py
+│           ├── security.py
+│           ├── trigger_url.py
+│           └── upload_helpers.py
+├── migrations
+│   ├── external
+│   │   ├── 001_normalization_impact.sql
+│   │   ├── 002_trashed_at.sql
+│   │   ├── 003_session_user_active_created_index.sql
+│   │   └── 004_preparation_generation_jobs.sql
+│   └── internal
+│       ├── 001_admin_readonly_role.sql
+│       ├── 002_device_enrollment_pending_status.sql
+│       ├── 003_oidc_refresh_tokens.sql
+│       ├── 004_kevent_transcription.sql
+│       ├── 005_kevent_glossary_correction.sql
+│       ├── 006_kevent_suggested_filename.sql
+│       ├── 007_user_audio_kevent_job_id.sql
+│       ├── 008_user_audio_meeting_datetime.sql
+│       ├── 009_kevent_absentee_summary.sql
+│       ├── 010_meeting_briefs.sql
+│       ├── 011_brief_audio_link_and_series.sql
+│       ├── 012_split_briefs.sql
+│       ├── 013_preparation_recurrence.sql
+│       ├── 014_preparation_themes_email.sql
+│       ├── 015_user_feedback.sql
+│       ├── 016_speaker_label_to_intervenant.sql
+│       ├── 017_transcription_words_json.sql
+│       ├── 018_pipeline_watchdog.sql
+│       ├── 019_user_audio_files_origin.sql
+│       ├── 019_video_ingest_initial.sql
+│       ├── 020_meetings_youtube_link.sql
+│       ├── 020_user_audio_last_error.sql
+│       ├── 021_transcription_forbidden_phrases.sql
+│       ├── 021_video_ingest_audit.sql
+│       ├── 022_user_audio_files_source_type.sql
+│       └── 022_user_audio_hidden_blocks.sql
+├── requirements.txt
+├── services
+│   ├── admin-console
+│   │   └── app
+│   │       ├── main.py
+│   │       └── static
+│   │           └── icons
+│   │               ├── pwa-icon-180.png
+│   │               ├── pwa-icon-192.png
+│   │               ├── pwa-icon-512.png
+│   │               └── pwa-icon.svg
+│   ├── audio-normalizer
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       └── main.py
+│   ├── clamav-scanner
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       └── main.py
+│   ├── device-token-authority
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       ├── main.py
+│   │       └── recurrence.py
+│   ├── dmz-to-internal-bridge
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       ├── audio_format.py
+│   │       ├── diarization_merger.py
+│   │       ├── doc_extractor.py
+│   │       ├── drive_client.py
+│   │       ├── external_source.py
+│   │       ├── forbidden_phrases.py
+│   │       ├── glossary_from_brief.py
+│   │       ├── glossary_loader.py
+│   │       ├── kevent_client.py
+│   │       ├── llm_client.py
+│   │       ├── main.py
+│   │       ├── mcr_client.py
+│   │       ├── mcr_importer.py
+│   │       ├── meeting_intelligence.py
+│   │       ├── pipeline_watchdog.py
+│   │       ├── prompts
+│   │       │   ├── absentee_summary.txt
+│   │       │   ├── glossary_correction.txt
+│   │       │   ├── meeting_analysis.txt
+│   │       │   ├── oob_cleaning.txt
+│   │       │   ├── reformulation.txt
+│   │       │   ├── speaker_names.txt
+│   │       │   └── suggest_metadata.txt
+│   │       └── puller.py
+│   ├── mesreunions-web
+│   │   ├── .gitignore
+│   │   ├── __init__.py
+│   │   ├── app
+│   │   │   ├── __init__.py
+│   │   │   ├── drive_brief_sync.py
+│   │   │   ├── mailer.py
+│   │   │   ├── main.py
+│   │   │   ├── meeting_prep.py
+│   │   │   ├── modules
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── routes.py
+│   │   │   │   ├── devices
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── routes.py
+│   │   │   │   ├── drive_sync
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── routes.py
+│   │   │   │   ├── glossary
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── mcr_import
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── routes.py
+│   │   │   │   ├── meetings
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── routes.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── preparations
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── exporters.py
+│   │   │   │   │   ├── generation_jobs.py
+│   │   │   │   │   ├── routes.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── sessions
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── routes.py
+│   │   │   │   │   └── service.py
+│   │   │   │   └── youtube_import
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── routes.py
+│   │   │   ├── prompts
+│   │   │   │   ├── brainstorm.txt
+│   │   │   │   ├── conductor_brief.txt
+│   │   │   │   ├── one_on_one.txt
+│   │   │   │   ├── project_update.txt
+│   │   │   │   └── steering_committee.txt
+│   │   │   ├── runtime.py
+│   │   │   ├── shared.py
+│   │   │   ├── static
+│   │   │   │   └── icons
+│   │   │   │       ├── pwa-icon-180.png
+│   │   │   │       ├── pwa-icon-192.png
+│   │   │   │       ├── pwa-icon-512.png
+│   │   │   │       └── pwa-icon.svg
+│   │   │   ├── templates
+│   │   │   │   ├── _vite_shell_loader.html
+│   │   │   │   └── index.html
+│   │   │   └── transcript_formats.py
+│   │   ├── frontend
+│   │   │   ├── README.md
+│   │   │   ├── legacy.js
+│   │   │   ├── lib
+│   │   │   │   ├── api.js
+│   │   │   │   ├── auth.js
+│   │   │   │   ├── bootstrap.js
+│   │   │   │   ├── detail-cache.js
+│   │   │   │   ├── export-formatter.js
+│   │   │   │   ├── mailto-builder.js
+│   │   │   │   ├── participants.js
+│   │   │   │   ├── prep-modal.js
+│   │   │   │   ├── rrule-builder.js
+│   │   │   │   ├── series-timeline.js
+│   │   │   │   ├── skeleton.js
+│   │   │   │   ├── tab-manager.js
+│   │   │   │   ├── themes-chips.js
+│   │   │   │   └── toast.js
+│   │   │   ├── shell.js
+│   │   │   ├── tabs
+│   │   │   │   ├── admin.js
+│   │   │   │   ├── devices.js
+│   │   │   │   ├── meetings.js
+│   │   │   │   ├── preparations.js
+│   │   │   │   ├── useful-data.js
+│   │   │   │   └── wizard.js
+│   │   │   └── utils
+│   │   │       └── format.js
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── scripts
+│   │   │   └── copy-dsfr-assets.mjs
+│   │   └── vite.config.js
+│   ├── mobile-upload-pwa
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       ├── main.py
+│   │       ├── static
+│   │       │   ├── icons
+│   │       │   │   ├── pwa-icon-180.png
+│   │       │   │   ├── pwa-icon-192.png
+│   │       │   │   ├── pwa-icon-512.png
+│   │       │   │   └── pwa-icon.svg
+│   │       │   └── sw.js
+│   │       └── templates
+│   │           ├── upload_error.html
+│   │           ├── upload_landing.html
+│   │           └── upload_page.html
+│   ├── transcription-relay
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       └── main.py
+│   └── video_ingest
+│       ├── Dockerfile
+│       ├── INTEGRATION_NOTES.md
+│       ├── README.md
+│       ├── SECURITY_REVIEW.md
+│       ├── __init__.py
+│       ├── app
+│       │   ├── __init__.py
+│       │   ├── api.py
+│       │   ├── audit.py
+│       │   ├── auth.py
+│       │   ├── chunking.py
+│       │   ├── db.py
+│       │   ├── jobs.py
+│       │   ├── mcp_server.py
+│       │   ├── orchestrator.py
+│       │   ├── providers
+│       │   │   ├── __init__.py
+│       │   │   ├── base.py
+│       │   │   └── youtube
+│       │   │       ├── __init__.py
+│       │   │       ├── _kevent.py
+│       │   │       ├── audio.py
+│       │   │       ├── metadata.py
+│       │   │       ├── subtitles.py
+│       │   │       └── url.py
+│       │   ├── quotas.py
+│       │   ├── repo.py
+│       │   ├── types.py
+│       │   └── worker.py
+│       └── requirements.txt
+├── tests
+│   ├── DISCOVERY_TEST_PLAN.md
+│   ├── TEST_COVERAGE_STATUS.md
+│   ├── regression
+│   │   ├── .last-passed-historical
+│   │   ├── __init__.py
+│   │   ├── campaigns
+│   │   │   ├── after-3-fixes-20260527-071850.txt
+│   │   │   ├── after-C0-20260527-023243.txt
+│   │   │   ├── after-C1-20260527-023408.txt
+│   │   │   ├── after-C2-20260527-023606.txt
+│   │   │   ├── after-C3-20260527-024346.txt
+│   │   │   ├── after-C4-20260527-060200.txt
+│   │   │   ├── after-C5-code-20260527-060515.txt
+│   │   │   ├── after-C6-code-20260527-060736.txt
+│   │   │   ├── after-C7-code-20260527-060926.txt
+│   │   │   ├── after-C8-20260527-061808.txt
+│   │   │   ├── after-api-hit-cache-materialize-20260527-090346.txt
+│   │   │   ├── after-delete-fix-20260527-065251.txt
+│   │   │   ├── after-delete-route-20260527-070854.txt
+│   │   │   ├── after-hit-cache-materialize-20260527-071726.txt
+│   │   │   ├── after-token-refresh-20260527-071312.txt
+│   │   │   ├── after-unified-delete-20260527-070343.txt
+│   │   │   └── before-C0-20260527-023218.txt
+│   │   ├── test_device_token_authority_preparations_meetings.py
+│   │   ├── test_dmz_to_internal_bridge_meetings_autolink.py
+│   │   ├── test_mesreunions_web_modules.py
+│   │   ├── test_mesreunions_web_modules_v2.py
+│   │   ├── test_preparations_email.py
+│   │   ├── test_preparations_export.py
+│   │   ├── test_preparations_glossary.py
+│   │   ├── test_preparations_recurrence.py
+│   │   └── test_preparations_themes.py
+│   ├── run-regression-campaign.sh
+│   ├── scenarios
+│   │   ├── device_enrollment_sequence.sh
+│   │   ├── kevent_quality_check.md
+│   │   ├── kevent_smoke.sh
+│   │   ├── mcr_auth_failure.sh
+│   │   ├── mcr_integration_smoke.sh
+│   │   ├── mcr_outage.sh
+│   │   ├── resilience_internal_pull.sh
+│   │   └── security_pull_trigger.sh
+│   └── unit
+│       ├── test_*.py  (54 files)
+│       └── test_format_utils.js
+└── tools
+    ├── backfill_meeting_datetime_from_filename.py
+    ├── mcr_fix_bad_meeting.py
+    └── preview_mydevices.py
+96 directories, 452 files
