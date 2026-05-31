@@ -1,25 +1,24 @@
-## Changelog : catalogi (30 derniers jours, au 28 mai 2026)
+## Changelog : catalogi (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'administration du catalogue, la robustesse de l'intégration avec Wikidata, et l'amélioration de la provenance des données. Des optimisations de performance ont également été apportées à l'API, notamment concernant la récupération des logos et l'actualisation des données Wikidata.
+Ce mois-ci, les améliorations de catalogi se concentrent sur l'administration du catalogue, l'importation automatique de données et la gestion des sources d'informations. Des corrections ont également été apportées pour améliorer la fiabilité des tests et la gestion des données Wikidata.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page d'administration accessible via `/admin` permettant de gérer les attributs personnalisés, restreints aux administrateurs. [#52bdc24](https://github.com/codegouvfr/catalogi/pull/52bdc24)
-- Amélioration de l'affichage de l'interface d'administration : largeur de page contrainte et troncature des labels d'attributs trop longs. [#b9f8d89](https://github.com/codegouvfr/catalogi/pull/b9f8d89)
-- Affichage de la provenance des données (source) dans une table comparative dans la modale DSFR. [#9058319](https://github.com/codegouvfr/catalogi/pull/9058319)
-- Unification des modifications utilisateur comme une source de données et affichage de la provenance des données. [#2999e51](https://github.com/codegouvfr/catalogi/pull/2999e51)
+- Ajout d'une page d'administration accessible avec un rôle dédié pour gérer les attributs personnalisés du catalogue. [#528](https://github.com/codegouvfr/catalogi/issues/528)
+- Restriction des attributs personnalisés à l'administration uniquement.
+- Amélioration de l'affichage de l'interface d'administration : largeur de page contrainte et troncature des étiquettes d'attributs trop longues.
+- Possibilité de récupérer tous les identifiants (IDs) lors d'une requête HAL. [#515](https://github.com/codegouvfr/catalogi/issues/515)
+- Amélioration de l'importation automatique de données : ne crée plus d'entrées utilisateur. [#528](https://github.com/codegouvfr/catalogi/issues/528)
 
 ### Évolutions techniques
-- Optimisation de la récupération des URLs des logos Wikidata et de l'actualisation des données Wikidata pour améliorer les performances de l'API. [#759cedb](https://github.com/codegouvfr/catalogi/pull/759cedb)
-- Amélioration de la robustesse de l'intégration avec Wikidata : utilisation de `Special:FilePath` pour les URLs d'images et mise en cache de l'autocomplétion pour éviter les erreurs 429. [#e06c5c5](https://github.com/codegouvfr/catalogi/pull/e06c5c5), [#04a9455](https://github.com/codegouvfr/catalogi/pull/04a9455)
-- Correction de la sélection de la dernière version disponible sur Wikidata. [#f7fc708](https://github.com/codegouvfr/catalogi/pull/f7fc708)
-- Refactorisation du type `SoftwareData` et suppression des colonnes `content` de la table `softwares`. [#4377664](https://github.com/codegouvfr/catalogi/pull/4377664)
-- Suivi du déréférencement de l'auteur et enregistrement de l'heure au format ISO dans l'API. [#d99ffe4](https://github.com/codegouvfr/catalogi/pull/d99ffe4)
-- Correction d'un problème de type dans `gitbeaker` lié à des résolutions pnpm en double. [#75c22f7](https://github.com/codegouvfr/catalogi/pull/75c22f7)
+- Amélioration de la gestion des données Wikidata : correction de la sélection de la dernière version et mise à jour du test associé.
+- Suivi du déréférencement de l'auteur via l'API et stockage de l'heure au format ISO.
+- Correction de l'encodage des valeurs par défaut issues des entrées utilisateur.
+- Mise en cache des navigateurs Playwright pour accélérer l'exécution des tests en CI.
+- Correction de l'installation et de l'exécution des tests Playwright en CI.
+- Refactorisation de l'entrée d'objet et renommage des références de variables. [#528](https://github.com/codegouvfr/catalogi/issues/528)
 
 ### Autres changements
-- Mise à jour de la configuration CSP de Vite. [#93dd20b](https://github.com/codegouvfr/catalogi/pull/93dd20b)
-- Nettoyage des artefacts de provenance et de revue. [#5c7d400](https://github.com/codegouvfr/catalogi/pull/5c7d400)
-- Mise à jour des tests d'actualisation Wikidata. [#efde4eb](https://github.com/codegouvfr/catalogi/pull/efde4eb)
-- Correction de bugs mineurs et améliorations de la stabilité. [#baf4f39](https://github.com/codegouvfr/catalogi/pull/baf4f39), [#762e377](https://github.com/codegouvfr/catalogi/pull/762e377)
-- Ajustement des assertions dans les tests E2E pour éviter des collisions avec la provenance des sources. [#3297648](https://github.com/codegouvfr/catalogi/pull/3297648)
+- Ajout d'un script pour initialiser la base de données racine.
+- Le nom du logiciel peut maintenant retomber sur les sources si nécessaire.
+- Mises à jour de version (build bumps).
