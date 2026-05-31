@@ -1,3 +1,24 @@
+# [6.21.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.20.2...v6.21.0) (2026-05-30)
+
+
+### Features
+
+* **analytics:** migrate Matomo to @arckit/telemetry ([118f113](https://github.com/anct-cartographie-nationale/cartographie/commit/118f113dec9391048a863303c11e63fca1e2b112))
+
+
+### Reverts
+
+* restore @arckit/resultset (required transitively by @arckit/nextjs) ([276fb23](https://github.com/anct-cartographie-nationale/cartographie/commit/276fb231e43299387b633007c9e6b40cf329610b))
+
+## [6.20.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.20.1...v6.20.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* **contact:** bump @arckit/form to 2.0.1, drop now-needless Suspense ([b2a74a8](https://github.com/anct-cartographie-nationale/cartographie/commit/b2a74a888d224cfe7760e7efdad3ca5f1c870da3))
+* **contact:** wrap modal form in Suspense to contain lazy field loading ([ea06d77](https://github.com/anct-cartographie-nationale/cartographie/commit/ea06d77da37386835399690b1451f9019d2b5705)), closes [hi#level](https://github.com/hi/issues/level)
+* **styles:** scan @arckit/form/dist for Tailwind classes ([0920804](https://github.com/anct-cartographie-nationale/cartographie/commit/0920804313caf6997f64e986bf220b41137b15da))
+
 ## [6.20.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.20.0...v6.20.1) (2026-05-27)
 
 

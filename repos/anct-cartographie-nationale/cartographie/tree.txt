@@ -238,6 +238,18 @@
 │   │   ├── favicon.svg
 │   │   ├── layout.tsx
 │   │   └── not-found.tsx
+│   ├── configuration
+│   │   ├── nextjs
+│   │   │   ├── client.ts
+│   │   │   └── index.ts
+│   │   └── telemetry
+│   │       └── event-tracker
+│   │           ├── event-tracker-config.key.ts
+│   │           ├── event-tracker.tsx
+│   │           ├── event-tracker.wc.tsx
+│   │           ├── index.ts
+│   │           ├── register.ts
+│   │           └── track-event.ts
 │   ├── content
 │   │   └── legal
 │   │       ├── declaration-d-accessibilite.mdx
@@ -411,16 +423,9 @@
 │   │           ├── index.ts
 │   │           ├── lieux-cache.key.ts
 │   │           └── lieux-for-chunk.key.ts
+│   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── libraries
-│   │   ├── analytics
-│   │   │   ├── index.ts
-│   │   │   ├── index.wc.ts
-│   │   │   ├── matomo-config.key.ts
-│   │   │   ├── matomo-tracker.tsx
-│   │   │   ├── matomo-tracker.wc.tsx
-│   │   │   └── tracking
-│   │   │       └── events.ts
 │   │   ├── api
 │   │   │   ├── index.ts
 │   │   │   ├── options.spec.ts
@@ -442,20 +447,6 @@
 │   │   │   ├── region.spec.ts
 │   │   │   ├── region.ts
 │   │   │   └── regions.json
-│   │   ├── form
-│   │   │   ├── fields
-│   │   │   │   ├── checkbox-group.field.tsx
-│   │   │   │   ├── error-message.field.tsx
-│   │   │   │   ├── field-group.field.tsx
-│   │   │   │   ├── has-error.spec.ts
-│   │   │   │   ├── has-error.ts
-│   │   │   │   ├── input.field.tsx
-│   │   │   │   ├── label.field.tsx
-│   │   │   │   ├── select.field.tsx
-│   │   │   │   └── textarea.field.tsx
-│   │   │   ├── form-context.ts
-│   │   │   ├── index.ts
-│   │   │   └── use-app-form.ts
 │   │   ├── inclusion-numerique-api
 │   │   │   ├── filter-templates
 │   │   │   │   ├── autres-formations-labels.ts
@@ -534,61 +525,12 @@
 │   │   │   ├── theme-colors.key.ts
 │   │   │   └── use-map-location.ts
 │   │   ├── nextjs
-│   │   │   ├── cache
-│   │   │   │   ├── cached.ts
-│   │   │   │   └── index.ts
 │   │   │   ├── href-with-search-params.spec.ts
 │   │   │   ├── href-with-search-params.ts
 │   │   │   ├── index.ts
-│   │   │   ├── layout
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── layout-builder.ts
-│   │   │   │   └── middlewares
-│   │   │   │       ├── index.ts
-│   │   │   │       └── with-search-params-from-headers.ts
-│   │   │   ├── page
-│   │   │   │   ├── apply-providers.tsx
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── middlewares
-│   │   │   │   │   ├── client-binder.tsx
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── with-client-binder.tsx
-│   │   │   │   │   ├── with-pagination.ts
-│   │   │   │   │   ├── with-params.ts
-│   │   │   │   │   ├── with-required.ts
-│   │   │   │   │   ├── with-search-params.ts
-│   │   │   │   │   └── with-url-search-params.ts
-│   │   │   │   ├── page-builder.ts
-│   │   │   │   └── page-props.ts
 │   │   │   ├── route
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── middlewares
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── with-error-handler.ts
-│   │   │   │   │   ├── with-path-params.ts
-│   │   │   │   │   ├── with-required.ts
-│   │   │   │   │   ├── with-search-params.ts
-│   │   │   │   │   └── with-static-bearer-auth.ts
-│   │   │   │   ├── response
-│   │   │   │   │   ├── csv-response.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── route-builder.ts
-│   │   │   ├── search.key.ts
-│   │   │   ├── server-action
-│   │   │   │   ├── action.ts
-│   │   │   │   ├── handle-server-action-error.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── middlewares
-│   │   │   │   │   └── with-input.ts
-│   │   │   │   └── server-action-result.ts
-│   │   │   ├── shared
-│   │   │   │   ├── middlewares
-│   │   │   │   │   ├── create-required-middleware.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── with-derive.ts
-│   │   │   │   │   ├── with-fetch.ts
-│   │   │   │   │   └── with-map.ts
-│   │   │   │   └── types.ts
+│   │   │   │   └── middlewares
+│   │   │   │       └── with-static-bearer-auth.ts
 │   │   │   └── shim
 │   │   │       ├── index.ts
 │   │   │       ├── link.tsx
@@ -607,10 +549,6 @@
 │   │   │   ├── backgrounds
 │   │   │   │   └── ovoid.background.tsx
 │   │   │   ├── blocks
-│   │   │   │   ├── breadcrumbs
-│   │   │   │   │   ├── breadcrumb-item.ts
-│   │   │   │   │   ├── breadcrumbs.tsx
-│   │   │   │   │   └── index.ts
 │   │   │   │   ├── clipboard-button.tsx
 │   │   │   │   ├── export-button.tsx
 │   │   │   │   ├── footer
@@ -626,20 +564,10 @@
 │   │   │   │   │   ├── lieux-list.skeleton.tsx
 │   │   │   │   │   ├── map.skeleton.tsx
 │   │   │   │   │   └── stats.skeleton.tsx
-│   │   │   │   ├── pagination
-│   │   │   │   │   ├── page-link.tsx
-│   │   │   │   │   ├── paginate.spec.ts
-│   │   │   │   │   ├── paginate.ts
-│   │   │   │   │   └── pagination.tsx
-│   │   │   │   ├── skip-links
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── skip-links-portal.tsx
-│   │   │   │   │   └── skip-links.tsx
-│   │   │   │   ├── theme-changer.tsx
-│   │   │   │   └── toaster.tsx
-│   │   │   ├── headless
-│   │   │   │   └── collapse-controller.tsx
-│   │   │   ├── index.ts
+│   │   │   │   └── skip-links
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── skip-links-portal.tsx
+│   │   │   │       └── skip-links.tsx
 │   │   │   ├── logos
 │   │   │   │   ├── conum.logo.tsx
 │   │   │   │   ├── france-services.logo.tsx
@@ -666,39 +594,13 @@
 │   │   │   │   │   └── TeacherIcon.tsx
 │   │   │   │   └── work
 │   │   │   │       └── PairIcon.tsx
-│   │   │   ├── primitives
-│   │   │   │   ├── alert.tsx
-│   │   │   │   ├── back-button-link.tsx
-│   │   │   │   ├── badge.tsx
-│   │   │   │   ├── button-link.tsx
-│   │   │   │   ├── button.tsx
-│   │   │   │   ├── card.tsx
-│   │   │   │   ├── checkbox.tsx
-│   │   │   │   ├── color.ts
-│   │   │   │   ├── combobox.tsx
-│   │   │   │   ├── direction.ts
-│   │   │   │   ├── dropdown.tsx
-│   │   │   │   ├── indicator-badge.tsx
-│   │   │   │   ├── indicator.tsx
-│   │   │   │   ├── input.tsx
-│   │   │   │   ├── kind.ts
-│   │   │   │   ├── link.tsx
-│   │   │   │   ├── loading-button.tsx
-│   │   │   │   ├── loading.tsx
-│   │   │   │   ├── modal.tsx
-│   │   │   │   ├── options.tsx
-│   │   │   │   ├── placement.ts
-│   │   │   │   ├── popover.tsx
-│   │   │   │   ├── scale.ts
-│   │   │   │   ├── select.tsx
-│   │   │   │   ├── skeleton.tsx
-│   │   │   │   ├── tag.tsx
-│   │   │   │   ├── textarea.tsx
-│   │   │   │   └── tooltip.tsx
-│   │   │   └── theme
-│   │   │       └── providers
-│   │   │           ├── index.ts
-│   │   │           └── theme.provider.tsx
+│   │   │   └── primitives
+│   │   │       ├── back-button-link.tsx
+│   │   │       ├── combobox.tsx
+│   │   │       ├── link.tsx
+│   │   │       ├── options.tsx
+│   │   │       ├── skeleton.tsx
+│   │   │       └── tag.tsx
 │   │   └── utils
 │   │       ├── app-page-title.util.ts
 │   │       ├── array
@@ -787,4 +689,4 @@
 ├── vite.config.wc.ts
 ├── vitest.config.infra.mjs
 └── vitest.config.mjs
-211 directories, 578 files
+196 directories, 495 files
