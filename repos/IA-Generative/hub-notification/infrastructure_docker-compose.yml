@@ -1,0 +1,68 @@
+services:
+  nats:
+    image: nats:2.10-alpine
+    container_name: nats
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    ports:
+      - "4222:4222"   # client
+      - "8222:8222"   # monitoring HTTP
+    volumes:
+      - ./nats/nats-server.conf:/etc/nats/nats-server.conf:ro
+      - ./nats/data:/data
+    restart: unless-stopped
+
+  # Toolbox pour tester (CLI nats + utilitaires)
+  nats-box:
+    image: natsio/nats-box:latest
+    container_name: nats-box
+    depends_on:
+      - nats
+    entrypoint: ["sleep", "infinity"]
+    restart: unless-stopped
+
+  # ------------------------------------------------------------------
+  # Exemples de commandes (shell) : variables d'environnement + tests
+  # (à exécuter dans le shell avant `docker compose up -d`)
+  #
+  # 1) Variables d'environnement nécessaires
+  # export NATS_SUBJECT="notifications.test"
+  # export OPENWEBUI_BASE_URL="https://openwebui.exemple.gouv.fr"
+  # Attention le token doit être généré dans OpenWebUI (API Keys) et le compte doit etre admin
+  # export OPENWEBUI_TOKEN="sk-xxxxxxxxxxxxxxxx"
+  # export OPENWEBUI_VERIFY_SSL="true"
+  #
+  # export BANNER_TYPE="info"        # info | warning | error | success
+  # export BANNER_TITLE="Notification"
+  # export BANNER_DISMISSIBLE="false"
+  #
+  # 2) Démarrer la stack
+  # docker compose up -d --build
+  #
+  # 3) Envoyer un message (script)
+  # ./scripts/post_banner_nats.sh "Titre" "Contenu" "info" "false"
+  #
+  # 4) Écouter les messages qui passent sur le sujet (dans nats-box)
+  # docker compose exec nats-box nats sub "$NATS_SUBJECT" -s nats://nats:4222
+  #
+  # 5) Voir les logs du listener (OpenWebUI banner listener)
+  # docker compose logs -f openwebui-banner-listener
+  #
+  # 6) Voir les logs NATS (optionnel)
+  # docker compose logs -f nats
+  # ------------------------------------------------------------------
+  openwebui-banner-listener:
+    build:
+      context: ./openwebui-banner-listener
+    container_name: openwebui-banner-listener
+    depends_on:
+      - nats
+    environment:
+      NATS_URL: nats://nats:4222
+      NATS_SUBJECT: ${NATS_SUBJECT:-notifications.test}
+      OPENWEBUI_BASE_URL: ${OPENWEBUI_BASE_URL:-https://openwebui.fake-domain.name}
+      OPENWEBUI_TOKEN: ${OPENWEBUI_TOKEN:-}
+      OPENWEBUI_VERIFY_SSL: ${OPENWEBUI_VERIFY_SSL:-true}
+      BANNER_TYPE: ${BANNER_TYPE:-info}
+      BANNER_TITLE: ${BANNER_TITLE:-Notification}
+      BANNER_DISMISSIBLE: ${BANNER_DISMISSIBLE:-false}
+    restart: unless-stopped
