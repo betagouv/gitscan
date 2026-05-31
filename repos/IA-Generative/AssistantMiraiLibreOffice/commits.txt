@@ -1,0 +1,81 @@
+2026-04-13T20:44:35Z - a4fa386 - 1545671 : bump v0.0.1.0.6 — fix enroll DGX (clock-skew, WAF, FK cascade)
+2026-04-13T19:33:05Z - 671bafe - 1545671 : feat(auth): WAF-safe token exchange via /auth/token JSON envelope
+2026-04-13T19:14:20Z - 357b086 - 1545671 : fix(auth): PKCE browser auth always uses keycloakIssuerUrl, token/refresh via relay
+2026-03-30T22:40:33+02:00 - 6a0413a - etiquet : fix: use SIGTERM instead of desktop.terminate() from background thread, share enrollment/update flags across instances, wait for config before trigger
+2026-03-30T21:33:56+02:00 - 9a4ba4b - etiquet : fix: delay update popup until after enrollment and improve message
+2026-03-30T21:32:01+02:00 - caf16e9 - etiquet : fix: reopen active document after auto-update instead of Start Center
+2026-03-29T23:47:01+02:00 - e6599b1 - etiquet : release: v0.0.1.0.4
+2026-03-29T23:46:43+02:00 - edef77f - etiquet : release: v0.0.1.0.3
+2026-03-29T23:44:14+02:00 - 6afa42b - etiquet : fix: launch update script only after user confirms restart
+2026-03-29T23:10:09+02:00 - d280536 - etiquet : docs: update README and DEPLOY with deployment, telemetry, auto-update
+2026-03-29T23:05:08+02:00 - a886387 - etiquet : fix: prevent update loop — skip if already at target version
+2026-03-29T22:44:07+02:00 - e57d277 - etiquet : fix: update script — stable OXT path, wait for LO quit, traces in log.txt
+2026-03-29T22:10:14+02:00 - b013215 - etiquet : docs: update DEPLOY.md with unified endpoint, rollout strategies, bump-version
+2026-03-29T22:03:13+02:00 - d74e6ac - etiquet : refactor: deploy script uses unified /api/plugins/{slug}/deploy endpoint
+2026-03-29T21:45:48+02:00 - 36a4eea - etiquet : release: v0.0.1.0.1
+2026-03-29T21:10:16+02:00 - cb53059 - etiquet : fix: use --force --suppress-license for unopkg (reliable install)
+2026-03-29T20:57:42+02:00 - 8b1bb5b - etiquet : fix: v0.0.8.0.0 — update flow, think filter, UI fixes
+2026-03-29T19:47:01+02:00 - 6c43da1 - etiquet : release: v0.0.8.0.0 — telemetry, deploy tooling, bug fixes
+2026-03-29T17:13:30+02:00 - a7687af - etiquet : Update LLM default model and add icons
+2026-03-29T17:11:32+02:00 - c4421d6 - etiquet : feat(telemetry): v0.2.1 — plugin.action, trigger.source, X-Client-UUID header
+2026-03-29T04:54:52+02:00 - c69b172 - etiquet : feat: add toolbar icons, fix redirect_uri fallback, improve dev scripts
+2026-03-29T03:26:45+02:00 - 6a277f0 - etiquet : fix: build script injects version from description.xml into dm-manifest.json
+2026-03-29T03:19:24+02:00 - 9987a38 - etiquet : feat: add dm-manifest.json with full plugin metadata for DM auto-extraction
+2026-03-28T22:34:53+01:00 - 6bcc4b3 - etiquet : feat: add dm-config.json to .oxt package for DM auto-registration
+2026-03-28T21:30:36+01:00 - e3cafd4 - etiquet : docs: add prompt for cleaning server-side config keys
+2026-03-28T21:15:40+01:00 - f231976 - etiquet : docs: update license with AI limitations, privacy notice, and credits
+2026-03-28T21:13:20+01:00 - 11c5481 - etiquet : refactor: remove dead config keys (api_type, is_openwebui, openai_compatibility, proxy check)
+2026-03-28T20:52:29+01:00 - 385d832 - etiquet : fix: connect simplify_selection keys + update keys_to_sync
+2026-03-28T20:48:47+01:00 - 8163220 - etiquet : feat: add toolbar buttons, rename config_path to mirai-libreoffice, add prompts
+2026-03-28T14:37:42+01:00 - d28efea - etiquet : feat: formula preview with explanation, functions reference, packaging docs
+2026-03-28T12:33:42+01:00 - 0e91122 - etiquet : feat: add About dialog, bump version to 0.2.0
+2026-03-28T10:35:46+01:00 - a3da712 - etiquet : feat: automated deployment system with rollout, simulator, and CLI
+2026-03-28T03:58:45+01:00 - 078cba7 - etiquet : fix: increase AnalyzeRange max_tokens and strip markdown from Calc output
+2026-03-28T03:41:19+01:00 - b9d95fe - etiquet : fix: reorder Writer menu, keep selection after resize, update docs
+2026-03-28T01:54:33+01:00 - c20dabd - etiquet : Add MIrAI user notice and generation prompt
+2026-03-27T14:43:06+01:00 - 4a5a457 - etiquet : feat: add "Ajuster la longueur" mini-dialog with −/+ resize buttons
+2026-03-27T08:11:50+01:00 - 5d54a55 - etiquet : fix: filter LLM reasoning from suggestions, force French, add loading animation
+2026-03-21T17:25:07+01:00 - 8c0fd53 - etiquet : Adjust wizard UI and expand success message
+2026-03-16T08:31:53+01:00 - 31dfe1b - etiquet : feat: replace browser-spoofing User-Agent with MIrAI-LibreOffice/<version> LibreOffice/<version>
+2026-03-16T00:36:22+01:00 - e05d345 - etiquet : Delete bench/gpt_oss_production_tokens.md
+2026-03-16T00:34:50+01:00 - 5407113 - etiquet : docs: add LLM benchmark reference with link to bench/scaleway_model_comparison.md
+2026-03-16T00:32:48+01:00 - 162c78e - etiquet : docs: remove ExtendSelection/EditSelection from Calc features (not exposed)
+2026-03-16T00:30:10+01:00 - 1f48671 - etiquet : docs: document all 5 Calc features (Extend, Edit, Transform, Formula, Analyze)
+2026-03-16T00:28:44+01:00 - 39a26b1 - etiquet : docs: fix attribution — localwriter (balisujohn/localwriter) not mirai
+2026-03-16T00:24:54+01:00 - 85a2f0d - etiquet : refactor: move bench results to bench/ at repo root
+2026-03-16T00:23:55+01:00 - 6827330 - etiquet : docs: restructure README with Calc features, recent fixes and benchmark summary
+2026-03-16T00:19:55+01:00 - 929c9ce - etiquet : Merge branch 'feature/calc-prompt'
+2026-03-16T00:19:44+01:00 - 8344923 - etiquet : feat: GenerateFormula with schema context, error feedback and multi-turn dialog
+2026-03-16T00:12:40+01:00 - 6778c7c - etiquet : bench: benchmark Scaleway models with Wikipedia texts + writer.py fixes
+2026-03-15T23:19:53+01:00 - d826db5 - etiquet : feat: auto-retry extend_selection with stronger prompt when model asks a question
+2026-03-15T23:14:44+01:00 - 61102c6 - etiquet : fix: detect conversational/question responses in extend_selection and abort stream
+2026-03-15T23:11:37+01:00 - 957016f - etiquet : fix: use summarize_selection_max_tokens from config instead of text-length heuristic
+2026-03-15T22:56:19+01:00 - 74cc90c - etiquet : fix: summarize/simplify empty result when stop phrase appears mid-stream
+2026-03-15T22:46:37+01:00 - 589b163 - etiquet : docs: update README and prompt-creation with enrollment wizard, Documentation menu, and URL propagation
+2026-03-15T22:40:06+01:00 - fceff01 - etiquet : feat: enrollment wizard UX, Documentation menu, doc_url/portal_url bootstrap propagation
+2026-03-15T19:42:44+01:00 - 770bccf - etiquet : feat: implement update & feature toggling in LibreOffice plugin (Prompt B)
+2026-03-15T12:13:31+01:00 - abab0e6 - etiquet : feat(calc): Calc actions – menus, shortcuts, transforms, formula gen, stream fix
+2026-03-15T08:33:25+01:00 - e7653a9 - etiquet : test(calc): 32 tests headless pour les nouvelles actions Calc
+2026-03-15T08:25:30+01:00 - eebc0d2 - etiquet : feat(calc): TransformToColumn, GenerateFormula, AnalyzeRange
+2026-03-15T08:22:22+01:00 - 53d5687 - etiquet : feat: auto-launch enrollment wizard on document open and persist bootstrap config
+2026-03-15T08:22:22+01:00 - 34b0727 - etiquet : feat: add =PROMPT() Calc Add-In function for LLM integration
+2026-03-15T08:12:33+01:00 - d338746 - etiquet : feat: refonte UI DSFR, thinking widget, édition document entier par blocs
+2026-03-15T08:00:11+01:00 - 9d295fe - etiquet : docs: convert remaining pseudo-diagrams to Mermaid in prompt-creation.md
+2026-03-15T07:54:12+01:00 - 12ec728 - etiquet : docs: add comprehensive creation prompt with full reverse engineering
+2026-03-14T19:37:21+01:00 - 13f8b92 - etiquet : Create settings.json
+2026-03-14T19:33:51+01:00 - a35b17d - etiquet : feat: add multi-env profiles, Keycloak export, dev-launch script and integration tests
+2026-03-14T10:46:39+01:00 - 8840032 - etiquet : test: add UNO stubs and unit tests for entrypoint logic
+2026-03-14T10:33:13+01:00 - 21532ef - etiquet : refactor: algorithmic fixes, security hardening, and code simplification
+2026-03-14T10:23:19+01:00 - afd53c5 - etiquet : chore: checkpoint before refactoring — algorithmic fixes and modularisation
+2026-03-07T23:59:20+01:00 - 37c3f18 - etiquet : fix: relax auth probe and improve token fallback behavior
+2026-03-07T22:22:36+01:00 - c714d80 - etiquet : fix: improve bootstrap telemetry fallback, token auth, and PKCE timeout handling
+2026-03-07T21:58:37+01:00 - e765e90 - etiquet : feat: bundle Scaleway CA chain for LibreOffice Python TLS trust
+2026-03-07T21:22:08+01:00 - 67b8add - etiquet : chore: rollback checkpoint before CA bundle integration
+2026-03-07T20:59:02+01:00 - ad26a46 - etiquet : fix: align plugin secure flow with current device-management endpoints
+2026-03-07T20:45:27+01:00 - a7297c2 - etiquet : chore: checkpoint before device-management alignment patch
+2026-03-07T16:56:40+01:00 - f81cb14 - etiquet : chore: temporal checkpoint for scale-architecture and grafana docs
+2026-03-06T18:58:01+01:00 - bedc17b - etiquet : Make auth callback cancelable and threaded
+2026-03-05T18:59:58+01:00 - 36f233c - HaroWana : refacto/style: améliorations de l'ui des menus
+2026-03-05T18:48:01+01:00 - 373f26d - etiquet : Add secure bootstrap flow and config profiles
+2026-03-05T17:34:49+01:00 - 49e1caa - Johann LORBER : style: améliorations de l'ui des menus
+2026-03-03T05:12:34+01:00 - 766b01c - etiquet : chore: checkpoint SSO flow and bootstrap fallback

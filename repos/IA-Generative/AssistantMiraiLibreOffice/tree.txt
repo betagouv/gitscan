@@ -1,0 +1,196 @@
+.
+├── .claude
+│   └── settings.json
+├── .gitattributes
+├── .gitignore
+├── CLAUDE.md
+├── README.md
+├── bench
+│   └── scaleway_model_comparison.md
+├── config
+│   ├── bootstrap.server.minimal.json
+│   ├── calc-functions.json
+│   ├── config.default.example.json
+│   ├── keycloak-client-export.example.json
+│   └── profiles
+│       ├── config.default.dev.json
+│       ├── config.default.dgx.json
+│       ├── config.default.docker.json
+│       ├── config.default.integration.example.json
+│       ├── config.default.kubernetes.example.json
+│       ├── config.default.local-llm.json
+│       └── config.default.production.example.json
+├── dist
+│   └── mirai.example.oxt
+├── dm-config.json
+├── dm-manifest.json
+├── docs
+│   ├── DEBUG.md
+│   ├── DEPLOY.md
+│   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── TELEMETRY.md
+│   ├── deploy-auto-update-report.md
+│   └── notice-utilisateur.md
+├── main.py
+├── oxt
+│   ├── Accelerators.xcu
+│   ├── Addons.xcu
+│   ├── CalcAddIn.xcu
+│   ├── Jobs.xcu
+│   ├── META-INF
+│   │   └── manifest.xml
+│   ├── assets
+│   │   └── logo.png
+│   ├── description.xml
+│   ├── icons
+│   │   ├── 3C085B2D-3011-4ECA-8B4B-717D0F16184D.png
+│   │   ├── iassistant.png
+│   │   ├── icon128.png
+│   │   ├── icon16.png
+│   │   ├── icon48.png
+│   │   ├── mascot16.png
+│   │   ├── mascot16_hover.png
+│   │   ├── plume.png
+│   │   ├── send.png
+│   │   ├── send_hover.png
+│   │   ├── small
+│   │   │   ├── toolbar-analyze.bmp
+│   │   │   ├── toolbar-analyze.png
+│   │   │   ├── toolbar-edit.bmp
+│   │   │   ├── toolbar-edit.png
+│   │   │   ├── toolbar-extend.bmp
+│   │   │   ├── toolbar-extend.png
+│   │   │   ├── toolbar-formula.bmp
+│   │   │   ├── toolbar-formula.png
+│   │   │   ├── toolbar-mirai.bmp
+│   │   │   ├── toolbar-mirai.png
+│   │   │   ├── toolbar-resize.bmp
+│   │   │   ├── toolbar-resize.png
+│   │   │   ├── toolbar-simplify.bmp
+│   │   │   ├── toolbar-simplify.png
+│   │   │   ├── toolbar-summarize.bmp
+│   │   │   ├── toolbar-summarize.png
+│   │   │   ├── toolbar-transform.bmp
+│   │   │   └── toolbar-transform.png
+│   │   ├── toolbar-analyze_16.png
+│   │   ├── toolbar-analyze_26.png
+│   │   ├── toolbar-edit_16.png
+│   │   ├── toolbar-edit_26.png
+│   │   ├── toolbar-extend_16.png
+│   │   ├── toolbar-extend_26.png
+│   │   ├── toolbar-formula.png
+│   │   ├── toolbar-formula_16.png
+│   │   ├── toolbar-formula_26.png
+│   │   ├── toolbar-mirai_16.png
+│   │   ├── toolbar-mirai_26.png
+│   │   ├── toolbar-resize_16.png
+│   │   ├── toolbar-resize_26.png
+│   │   ├── toolbar-simplify_16.png
+│   │   ├── toolbar-simplify_26.png
+│   │   ├── toolbar-summarize_16.png
+│   │   ├── toolbar-summarize_26.png
+│   │   ├── toolbar-transform_16.png
+│   │   └── toolbar-transform_26.png
+│   └── registration
+│       └── license.txt
+├── prompts
+│   ├── cleanup-config-keys.md
+│   ├── cleanup-server-config.md
+│   ├── create-notice.md
+│   ├── deploy-auto-update-system.md
+│   ├── dm-auto-extract-manifest.md
+│   ├── generate-toolbar-icons.md
+│   ├── prompt-creation.md
+│   └── scale-architecture.md
+├── scripts
+│   ├── 00-clean-install.sh
+│   ├── 01-init-default-config.sh
+│   ├── 02-build-oxt.sh
+│   ├── 03-test-local.sh
+│   ├── 04-repack-oxt.sh
+│   ├── 05-update-plugin.sh
+│   ├── 06-use-config-profile.sh
+│   ├── 07-package-release.sh
+│   ├── _make_sample_ods.py
+│   ├── _make_sample_odt.py
+│   ├── bump-version.sh
+│   ├── deploy-release.sh
+│   ├── dev-launch.sh
+│   └── test-update.sh
+├── src
+│   ├── __init__.py
+│   └── mirai
+│       ├── CAbundle
+│       │   ├── README.md
+│       │   └── scaleway-bootstrap-ca-chain.pem
+│       ├── __init__.py
+│       ├── calc_prompt_function.py
+│       ├── entrypoint.py
+│       ├── icons
+│       │   ├── icones.png
+│       │   ├── mascot16.png
+│       │   ├── mascot16_hover.png
+│       │   ├── mirai_toolbar_icons_cropped.zip
+│       │   ├── plume.png
+│       │   ├── send.png
+│       │   ├── send_hover.png
+│       │   ├── small
+│       │   │   ├── toolbar-analyze.bmp
+│       │   │   ├── toolbar-edit.bmp
+│       │   │   ├── toolbar-extend.bmp
+│       │   │   ├── toolbar-formula.bmp
+│       │   │   ├── toolbar-mirai.bmp
+│       │   │   ├── toolbar-resize.bmp
+│       │   │   ├── toolbar-simplify.bmp
+│       │   │   ├── toolbar-summarize.bmp
+│       │   │   └── toolbar-transform.bmp
+│       │   ├── toolbar-analyze.png
+│       │   ├── toolbar-edit.png
+│       │   ├── toolbar-extend.png
+│       │   ├── toolbar-formula.png
+│       │   ├── toolbar-mirai.png
+│       │   ├── toolbar-resize.png
+│       │   ├── toolbar-simplify.png
+│       │   ├── toolbar-summarize.png
+│       │   └── toolbar-transform.png
+│       ├── idl
+│       │   └── XPromptFunction.idl
+│       ├── menu_actions
+│       │   ├── __init__.py
+│       │   ├── calc.py
+│       │   ├── shared.py
+│       │   └── writer.py
+│       └── security_flow.py
+└── tests
+    ├── __init__.py
+    ├── fixtures
+    │   ├── formula_test.ods
+    │   ├── gen_formula_test.py
+    │   ├── sample.odt
+    │   └── sample_calc.ods
+    ├── integration
+    │   ├── __init__.py
+    │   ├── mock_http.py
+    │   └── test_full_enrollment_flow.py
+    ├── sim_scaleway_models.py
+    ├── sim_whole_doc_edit.py
+    ├── simulation
+    │   └── deploy_simulator.py
+    ├── stubs
+    │   ├── __init__.py
+    │   └── uno_stubs.py
+    └── unit
+        ├── __init__.py
+        ├── test_calc_menu_actions.py
+        ├── test_calc_prompt_function.py
+        ├── test_documentation_url.py
+        ├── test_enrollment.py
+        ├── test_models_fetch.py
+        ├── test_security_flow.py
+        ├── test_set_config.py
+        ├── test_summarize_writer.py
+        ├── test_token_logic.py
+        ├── test_update_directive.py
+        ├── test_update_features.py
+        └── test_user_agent.py
+28 directories, 167 files
