@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worker_vlm_value_extraction"
+version = "0.1.0"
+description = "A custom Arkindex worker that pre-annotates elements by extracting values from an image and its keys. Extraction is made by an API call to an Ollama"
+dependencies = [
+    "arkindex-base-worker==0.5.0",
+    "schema==0.7.8",
+    "openai==2.2.0",
+]
+authors = [
+    { name = "Paul-Elie Vallée", email = "paul-elie.vallee@protonmail.ch" },
+]
+maintainers = [
+    { name = "Paul-Elie Vallée", email = "paul-elie.vallee@protonmail.ch" },
+]
+requires-python = ">=3.10"
+readme = { file = "README.md", content-type = "text/markdown" }
+keywords = ["python"]
+classifiers = [
+    # Specify the Python versions you support here.
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.scripts]
+"worker-vlm-value-extraction" = "worker_vlm_value_extraction.worker:main"
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.ruff]
+exclude = [".git", "__pycache__"]
+target-version = "py312"
+
+[tool.ruff.lint]
+ignore = ["E501"]
+select = [
+    # pycodestyle
+    "E",
+    "W",
+    # Pyflakes
+    "F",
+    # Flake8 Debugger
+    "T1",
+    # Isort
+    "I",
+    # Implicit Optional
+    "RUF013",
+    # Invalid pyproject.toml
+    "RUF200",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # flake8-pytest-style
+    "PT",
+    # flake8-use-pathlib
+    "PTH",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore `pytest-composite-assertion` rules of `flake8-pytest-style` linter for non-test files
+"worker_vlm_value_extraction/**/*.py" = ["PT018"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["arkindex", "arkindex_worker"]
+known-third-party = ["pytest"]
