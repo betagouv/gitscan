@@ -1,0 +1,429 @@
+.
+├── .dockerignore
+├── .env
+├── .env.local
+├── .env.sample
+├── .flake8
+├── .github
+│   └── workflows
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── dso-auto-sync.yaml
+│       ├── lint.yml
+│       ├── release.yml
+│       └── unit-tests.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .pre-commit-config.yaml
+├── .release-please-manifest-prerelease.json
+├── .release-please-manifest.json
+├── CHANGELOG.md
+├── Makefile
+├── README.md
+├── apps
+│   ├── client
+│   │   ├── .editorconfig
+│   │   ├── .eslintrc-auto-import.json
+│   │   ├── .gitignore
+│   │   ├── Dockerfile
+│   │   ├── env.d.ts
+│   │   ├── eslint.config.js
+│   │   ├── index.html
+│   │   ├── nginx
+│   │   │   ├── 40x.html
+│   │   │   ├── 50x.html
+│   │   │   └── default.conf
+│   │   ├── package.json
+│   │   ├── playwright
+│   │   │   ├── e2e
+│   │   │   │   ├── login.spec.ts
+│   │   │   │   ├── logout.spec.ts
+│   │   │   │   └── summary.spec.ts
+│   │   │   └── login-helper.ts
+│   │   ├── playwright.config.ts
+│   │   ├── pnpm-lock.yaml
+│   │   ├── pnpm-workspace.yaml
+│   │   ├── public
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── browserconfig.xml
+│   │   │   ├── config.js
+│   │   │   ├── favicon-16x16.png
+│   │   │   ├── favicon-32x32.png
+│   │   │   └── favicon.ico
+│   │   ├── src
+│   │   │   ├── App.vue
+│   │   │   ├── api
+│   │   │   │   ├── http-client.ts
+│   │   │   │   └── types
+│   │   │   │       └── api.schema.d.ts
+│   │   │   ├── assets
+│   │   │   │   ├── pictograms
+│   │   │   │   │   ├── community.svg
+│   │   │   │   │   ├── document-search.svg
+│   │   │   │   │   └── pen.svg
+│   │   │   │   └── resume-card.png
+│   │   │   ├── auto-imports.d.ts
+│   │   │   ├── components
+│   │   │   │   ├── AppChatbot.vue
+│   │   │   │   ├── AppFooter.vue
+│   │   │   │   ├── AppHeader.vue
+│   │   │   │   ├── AppToaster.vue
+│   │   │   │   ├── ChatTaskFilterModal.vue
+│   │   │   │   ├── ClassificationTab.vue
+│   │   │   │   ├── CopiedTextTab.vue
+│   │   │   │   ├── CustomCard.vue
+│   │   │   │   ├── CustomTabs.vue
+│   │   │   │   ├── DsfrDropdown.vue
+│   │   │   │   ├── FileParamsModal.vue
+│   │   │   │   ├── LeaderboardModal.vue
+│   │   │   │   ├── OcrChatbot.vue
+│   │   │   │   ├── ParamsResume.vue
+│   │   │   │   ├── ProgressBar.vue
+│   │   │   │   ├── ResumeInfoBulle.vue
+│   │   │   │   ├── ResumeResult.vue
+│   │   │   │   ├── ResumeResultModal.vue
+│   │   │   │   ├── SideBar.vue
+│   │   │   │   ├── StatModel.vue
+│   │   │   │   ├── TaskTab.vue
+│   │   │   │   ├── UploadDocumentTab.vue
+│   │   │   │   └── UrlTab.vue
+│   │   │   ├── components.d.ts
+│   │   │   ├── composables
+│   │   │   │   ├── use-api-version.ts
+│   │   │   │   ├── use-chatbot.ts
+│   │   │   │   ├── use-parallel-file-processing.ts
+│   │   │   │   ├── use-parallel-url-processing.ts
+│   │   │   │   ├── use-resume-generator.ts
+│   │   │   │   └── use-toaster.ts
+│   │   │   ├── interfaces
+│   │   │   │   └── IUser.ts
+│   │   │   ├── main.css
+│   │   │   ├── main.ts
+│   │   │   ├── router
+│   │   │   │   └── index.ts
+│   │   │   ├── stores
+│   │   │   │   ├── abrege.ts
+│   │   │   │   └── user.ts
+│   │   │   ├── utils
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── keycloak.ts
+│   │   │   │   └── methods.ts
+│   │   │   └── views
+│   │   │       └── Index.vue
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   ├── tsconfig.vitest.json
+│   │   ├── vite.config.ts
+│   │   ├── vitest-setup.ts
+│   │   ├── vitest.config.ts
+│   │   └── vue.matomo.d.ts
+│   └── server
+│       ├── .python-version
+│       ├── abrege_service
+│       │   ├── Dockerfile
+│       │   ├── __init__.py
+│       │   ├── clients
+│       │   │   ├── ocr_client.py
+│       │   │   └── server.py
+│       │   ├── config
+│       │   │   ├── __init__.py
+│       │   │   └── openai.py
+│       │   ├── data
+│       │   │   └── models
+│       │   │       └── .gitkeep
+│       │   ├── main.py
+│       │   ├── models
+│       │   │   ├── __init__.py
+│       │   │   ├── base.py
+│       │   │   ├── chunking
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── model.py
+│       │   │   └── summary
+│       │   │       ├── __init__.py
+│       │   │       └── parallele_summary_chain.py
+│       │   ├── modules
+│       │   │   ├── __init__.py
+│       │   │   ├── audio.py
+│       │   │   ├── base.py
+│       │   │   ├── cache.py
+│       │   │   ├── doc.py
+│       │   │   ├── documents
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── openoffice.py
+│       │   │   ├── image.py
+│       │   │   ├── ocr.py
+│       │   │   ├── url.py
+│       │   │   └── video.py
+│       │   ├── prompts
+│       │   │   ├── __init__.py
+│       │   │   ├── prompting.py
+│       │   │   └── templates
+│       │   │       ├── custom_prompt.jinja2
+│       │   │       ├── final_summary_prompt.jinja2
+│       │   │       └── segement_summary_promt.jinja2
+│       │   ├── schemas
+│       │   │   ├── __init__.py
+│       │   │   └── content_type_categories.py
+│       │   ├── tasks
+│       │   │   ├── __init__.py
+│       │   │   ├── abrege_doc.py
+│       │   │   ├── abrege_pdf_images.py
+│       │   │   ├── abrege_text.py
+│       │   │   ├── abrege_url.py
+│       │   │   ├── base_task.py
+│       │   │   ├── chunk_task.py
+│       │   │   ├── errors.py
+│       │   │   ├── merge.py
+│       │   │   ├── tools.py
+│       │   │   └── update_task.py
+│       │   └── utils
+│       │       ├── __init__.py
+│       │       ├── content_type.py
+│       │       ├── file.py
+│       │       ├── images.py
+│       │       ├── lazy_pdf.py
+│       │       ├── text.py
+│       │       ├── tokenizer.py
+│       │       └── url_parser.py
+│       ├── api
+│       │   ├── Dockerfile
+│       │   ├── __init__.py
+│       │   ├── clients
+│       │   │   ├── __init__.py
+│       │   │   └── llm_guard.py
+│       │   ├── core
+│       │   │   ├── __init__.py
+│       │   │   └── security
+│       │   │       ├── __init__.py
+│       │   │       ├── factory.py
+│       │   │       └── token.py
+│       │   ├── main.py
+│       │   ├── routes
+│       │   │   ├── __init__.py
+│       │   │   ├── document_summary.py
+│       │   │   ├── health.py
+│       │   │   ├── summarize.py
+│       │   │   ├── task.py
+│       │   │   └── v1
+│       │   │       ├── __init__.py
+│       │   │       ├── chat.py
+│       │   │       ├── chunk.py
+│       │   │       └── leaderboard.py
+│       │   ├── schemas
+│       │   │   ├── __init__.py
+│       │   │   ├── content.py
+│       │   │   └── response.py
+│       │   └── utils
+│       │       ├── __init__.py
+│       │       ├── content_type.py
+│       │       ├── cors.py
+│       │       └── url.py
+│       ├── config
+│       │   └── logging.yaml
+│       ├── evaluation
+│       │   ├── Readme.md
+│       │   ├── __init__.py
+│       │   ├── client.py
+│       │   ├── evaluation_map_reduce.py
+│       │   ├── evaluation_naive_approach.py
+│       │   ├── mapreduce.py
+│       │   ├── metrics.md
+│       │   └── vulgarisation.md
+│       ├── llm-guard
+│       │   └── config
+│       │       └── scanners.yml
+│       ├── migration
+│       │   ├── Dockerfile
+│       │   ├── README
+│       │   ├── alembic.ini
+│       │   ├── env.py
+│       │   ├── script.py.mako
+│       │   └── versions
+│       │       ├── 27cd95557285_add_position.py
+│       │       ├── 6fdb21e394c9_add_group_id_and_content_hash.py
+│       │       ├── 7c2d9f69f1f3_initiate.py
+│       │       ├── eaa4e990d2ea_add_chunk_table.py
+│       │       ├── f3271d7e43ea_add_mergetask_table.py
+│       │       └── fee9b70a042f_feat_move_content_to_input_result_to_.py
+│       ├── pyproject.toml
+│       ├── src
+│       │   ├── __init__.py
+│       │   ├── clients
+│       │   │   └── __init__.py
+│       │   ├── config
+│       │   │   ├── __init__.py
+│       │   │   ├── celery.py
+│       │   │   ├── connector.py
+│       │   │   ├── minio.py
+│       │   │   ├── openai.py
+│       │   │   ├── redis.py
+│       │   │   └── s3.py
+│       │   ├── connector
+│       │   │   ├── __init__.py
+│       │   │   ├── base.py
+│       │   │   └── s3_connector.py
+│       │   ├── internal
+│       │   │   ├── __init__.py
+│       │   │   └── db.py
+│       │   ├── models
+│       │   │   ├── __init__.py
+│       │   │   ├── chunk.py
+│       │   │   ├── merge_task.py
+│       │   │   └── task.py
+│       │   ├── repositories
+│       │   │   ├── __init__.py
+│       │   │   ├── chunk_repo.py
+│       │   │   ├── merge_task_repo.py
+│       │   │   └── task_repo.py
+│       │   ├── schemas
+│       │   │   ├── __init__.py
+│       │   │   ├── chunk.py
+│       │   │   ├── code_error.py
+│       │   │   ├── content.py
+│       │   │   ├── health.py
+│       │   │   ├── merge_task.py
+│       │   │   ├── pagination.py
+│       │   │   ├── parameters.py
+│       │   │   ├── result.py
+│       │   │   └── task.py
+│       │   ├── services
+│       │   │   ├── __init__.py
+│       │   │   ├── chunk_service.py
+│       │   │   ├── merge_task_service.py
+│       │   │   └── task_service.py
+│       │   └── utils
+│       │       ├── __init__.py
+│       │       ├── logger.py
+│       │       └── url.py
+│       ├── tests
+│       │   ├── abrege_service
+│       │   │   ├── clients
+│       │   │   │   └── test_ocr_client.py
+│       │   │   ├── models
+│       │   │   │   ├── summary
+│       │   │   │   │   └── test_async_map_reduce.py
+│       │   │   │   └── test_base_service_model.py
+│       │   │   ├── modules
+│       │   │   │   ├── documents
+│       │   │   │   │   └── test_openoffice_documents.py
+│       │   │   │   ├── test_audio_module.py
+│       │   │   │   ├── test_base_module.py
+│       │   │   │   ├── test_doc_module.py
+│       │   │   │   ├── test_image_module.py
+│       │   │   │   ├── test_ocr_module.py
+│       │   │   │   ├── test_url_module.py
+│       │   │   │   └── test_video_module.py
+│       │   │   ├── prompt
+│       │   │   │   └── test_prompting_process.py
+│       │   │   ├── test_main.py
+│       │   │   └── utils
+│       │   │       ├── test_content_type_utils.py
+│       │   │       ├── test_text_utils.py
+│       │   │       └── test_tokenizer_utils.py
+│       │   ├── api
+│       │   │   ├── _fastapi.py
+│       │   │   ├── client
+│       │   │   │   └── test_llm_guard_client.py
+│       │   │   ├── core
+│       │   │   │   └── security
+│       │   │   │       └── test_security_token.py
+│       │   │   ├── routes
+│       │   │   │   ├── conftest.py
+│       │   │   │   ├── test_document_summarize.py
+│       │   │   │   ├── test_health_router.py
+│       │   │   │   ├── test_summarize.py
+│       │   │   │   └── test_task_routers.py
+│       │   │   └── utils
+│       │   │       ├── test_content_type.py
+│       │   │       └── test_url_utils.py
+│       │   ├── data
+│       │   │   ├── 2106.11520v2-markitdown.md
+│       │   │   ├── 2106.11520v2.md
+│       │   │   ├── Cadrage-markitdown.md
+│       │   │   ├── audio
+│       │   │   │   └── 1.wav
+│       │   │   └── video
+│       │   │       └── bonjour.mp4
+│       │   ├── src
+│       │   │   ├── repository
+│       │   │   │   └── test_chunk_repo.py
+│       │   │   ├── schemas
+│       │   │   │   ├── connector
+│       │   │   │   │   └── test_s3_connector.py
+│       │   │   │   ├── test_code_error_access.py
+│       │   │   │   ├── test_task.py
+│       │   │   │   └── test_task_schema_position.py
+│       │   │   └── utils
+│       │   │       └── test_url.py
+│       │   └── test_data
+│       │       ├── 2106.11520v2.pdf
+│       │       ├── CR1.odt
+│       │       ├── Cadrage.docx
+│       │       ├── Lettre_de_Camus.odt
+│       │       ├── Malo_Adler_Thesis.pdf
+│       │       ├── PDF-export-example-image.pdf
+│       │       ├── Séquence corpus albert camus.docx
+│       │       ├── albert_camus.txt
+│       │       ├── big_text.txt
+│       │       ├── elysee-module-24161-fr.pdf
+│       │       ├── file_csv.csv
+│       │       ├── minister-logo.jpg
+│       │       ├── minister-logo.png
+│       │       ├── pg5097.txt
+│       │       ├── tabFicSol2.doc
+│       │       └── test_text.txt
+│       └── uv.lock
+├── charts
+│   └── abrege
+│       ├── Chart.yaml
+│       ├── templates
+│       │   ├── deployment.yaml
+│       │   ├── ingress.yaml
+│       │   ├── service-api.yaml
+│       │   └── service-streamlit.yaml
+│       └── values.yaml
+├── commitlint.config.js
+├── docker-compose.frontend.yml
+├── docker-compose.yaml
+├── docs
+│   ├── diagram.md
+│   ├── images
+│   │   ├── abrege-url-ezgif.com-optimize.gif
+│   │   ├── document-abrege-ezgif.com-optimize.gif
+│   │   └── texte-abrege-ezgif.com-optimize.gif
+│   └── variables.md
+├── package.json
+├── pnpm-lock.yaml
+├── release-please-config-prerelease.json
+├── release-please-config-release.json
+├── release-please-manifest.json
+├── scripts
+│   └── wait-for-llm-guard.sh
+└── sdk
+    ├── .python-version
+    ├── README.md
+    ├── abrege_sdk
+    │   ├── __init__.py
+    │   ├── client_async.py
+    │   ├── client_sync.py
+    │   ├── exceptions.py
+    │   └── schemas
+    │       ├── __init__.py
+    │       ├── code_error.py
+    │       ├── content.py
+    │       ├── health.py
+    │       ├── parameters.py
+    │       ├── result.py
+    │       └── task.py
+    ├── pyproject.toml
+    ├── tests
+    │   └── abrege_sdk
+    │       └── test_sync_clinet.py
+    └── uv.lock
+97 directories, 331 files
