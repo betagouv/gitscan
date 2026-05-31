@@ -1,0 +1,1358 @@
+.
+├── .gitignore
+├── README.md
+├── callico
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .gitlab-ci.yml
+│   ├── .pre-commit-config.yaml
+│   ├── CONTRIBUTING.md
+│   ├── Dockerfile
+│   ├── LICENSE
+│   ├── MANIFEST.in
+│   ├── Makefile
+│   ├── README.md
+│   ├── antora-playbook.yml
+│   ├── callico
+│   │   ├── VERSION
+│   │   ├── __init__.py
+│   │   ├── annotations
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── forms.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_annotation.py
+│   │   │   │   ├── 0003_alter_taskuser_state.py
+│   │   │   │   ├── 0004_annotation_published.py
+│   │   │   │   ├── 0005_taskuser_is_preview.py
+│   │   │   │   ├── 0006_update_transcription_annotations_value.py
+│   │   │   │   ├── 0007_taskuser_comment.py
+│   │   │   │   ├── 0008_alter_taskuser_state.py
+│   │   │   │   ├── 0009_annotation_duration.py
+│   │   │   │   ├── 0010_annotation_entity_types.py
+│   │   │   │   ├── 0011_taskuser_has_uncertain_value.py
+│   │   │   │   ├── 0012_annotation_moderator_annotation_state.py
+│   │   │   │   ├── 0013_remove_taskuser_comment.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── signals.py
+│   │   │   ├── templates
+│   │   │   │   ├── task_discussion.html
+│   │   │   │   ├── user_task_details_base.html
+│   │   │   │   ├── user_task_details_element_group.html
+│   │   │   │   ├── user_task_details_elements.html
+│   │   │   │   ├── user_task_details_entity.html
+│   │   │   │   ├── user_task_details_entity_form.html
+│   │   │   │   ├── user_task_details_transcription.html
+│   │   │   │   ├── user_task_manage_base.html
+│   │   │   │   ├── user_task_manage_classification.html
+│   │   │   │   ├── user_task_manage_element_group.html
+│   │   │   │   ├── user_task_manage_elements.html
+│   │   │   │   ├── user_task_manage_entity.html
+│   │   │   │   ├── user_task_manage_entity_form.html
+│   │   │   │   └── user_task_manage_transcription.html
+│   │   │   ├── urls.py
+│   │   │   └── views
+│   │   │       ├── __init__.py
+│   │   │       ├── classification.py
+│   │   │       ├── element_group.py
+│   │   │       ├── elements.py
+│   │   │       ├── entity.py
+│   │   │       ├── entity_form.py
+│   │   │       └── transcription.py
+│   │   ├── base
+│   │   │   ├── __init__.py
+│   │   │   ├── api_v1.py
+│   │   │   ├── asgi.py
+│   │   │   ├── basefilters.py
+│   │   │   ├── celery.py
+│   │   │   ├── context_processors.py
+│   │   │   ├── db.py
+│   │   │   ├── fields.py
+│   │   │   ├── mixins.py
+│   │   │   ├── settings.py
+│   │   │   ├── static
+│   │   │   │   ├── favicon.ico
+│   │   │   │   └── logo.png
+│   │   │   ├── templates
+│   │   │   │   ├── 400.html
+│   │   │   │   ├── 403.html
+│   │   │   │   ├── 404.html
+│   │   │   │   ├── 500.html
+│   │   │   │   ├── base.html
+│   │   │   │   ├── breadcrumb.html
+│   │   │   │   ├── bulma_clearable_image_input.html
+│   │   │   │   ├── element_table.html
+│   │   │   │   ├── error_page.html
+│   │   │   │   ├── footer.html
+│   │   │   │   ├── formset.html
+│   │   │   │   ├── labels.html
+│   │   │   │   ├── messages.html
+│   │   │   │   ├── pagination.html
+│   │   │   │   ├── preview_task_button.html
+│   │   │   │   ├── progress_bar.html
+│   │   │   │   ├── request_tasks_button.html
+│   │   │   │   ├── task_card_assigned.html
+│   │   │   │   ├── task_card_available.html
+│   │   │   │   └── task_card_base.html
+│   │   │   ├── urls.py
+│   │   │   ├── views.py
+│   │   │   └── wsgi.py
+│   │   ├── locale
+│   │   │   └── fr
+│   │   │       └── LC_MESSAGES
+│   │   │           ├── django.mo
+│   │   │           └── django.po
+│   │   ├── manage.py
+│   │   ├── middleware.py
+│   │   ├── process
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── arkindex
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── exports.py
+│   │   │   │   ├── forms.py
+│   │   │   │   ├── imports.py
+│   │   │   │   ├── tasks.py
+│   │   │   │   └── views.py
+│   │   │   ├── exports.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_alter_process_name.py
+│   │   │   │   ├── 0003_process_logs.py
+│   │   │   │   ├── 0004_alter_process_mode.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── tasks.py
+│   │   │   ├── templates
+│   │   │   │   ├── arkindex
+│   │   │   │   │   ├── arkindex_export_process_create.html
+│   │   │   │   │   └── arkindex_import_process_create.html
+│   │   │   │   ├── process_details.html
+│   │   │   │   └── process_list.html
+│   │   │   ├── urls.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── projects
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── api.py
+│   │   │   ├── apps.py
+│   │   │   ├── forms.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── build_fixtures.py
+│   │   │   │       ├── cleanup_preview_tasks.py
+│   │   │   │       ├── clone_arkindex_campaign.py
+│   │   │   │       ├── fixtures
+│   │   │   │       │   ├── 33ce4ddb-023c-498d-991a-d3bca3ff0316.json
+│   │   │   │       │   ├── bf70b718-285a-4c87-b6d9-b314fdb1f055.json
+│   │   │   │       │   ├── d3484c8f-8106-42d6-9a08-db78014b7b61.json
+│   │   │   │       │   └── d97a57d4-f4ca-4ce4-8790-bb29d170ef8b.json
+│   │   │   │       ├── ingest_authority.py
+│   │   │   │       └── makemessages.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_arkindexinstance_image_element.py
+│   │   │   │   ├── 0003_campaign.py
+│   │   │   │   ├── 0004_alter_arkindexinstance_options_and_more.py
+│   │   │   │   ├── 0005_alter_arkindexinstance_name.py
+│   │   │   │   ├── 0006_alter_campaign_mode.py
+│   │   │   │   ├── 0007_element_transcription_arkindex_id_and_more.py
+│   │   │   │   ├── 0008_element_order.py
+│   │   │   │   ├── 0009_project_arkindex_instance_project_corpus_id_and_more.py
+│   │   │   │   ├── 0010_class_and_more.py
+│   │   │   │   ├── 0011_alter_element_unique_together_and_more.py
+│   │   │   │   ├── 0012_alter_class_unique_together.py
+│   │   │   │   ├── 0013_type_type_arkindex_fields_type_all_set_or_none_set_and_more.py
+│   │   │   │   ├── 0014_alter_element_parent.py
+│   │   │   │   ├── 0015_element_text_orientation.py
+│   │   │   │   ├── 0016_campaign_nb_tasks_auto_assignment.py
+│   │   │   │   ├── 0017_alter_element_unique_together.py
+│   │   │   │   ├── 0018_element_metadata.py
+│   │   │   │   ├── 0019_rename_model_fields_and_constraints.py
+│   │   │   │   ├── 0020_alter_campaign_mode.py
+│   │   │   │   ├── 0021_project_provider_extra_information.py
+│   │   │   │   ├── 0022_campaign_csv_export.py
+│   │   │   │   ├── 0023_type_folder.py
+│   │   │   │   ├── 0024_campaign_entity_types.py
+│   │   │   │   ├── 0025_campaign_max_user_tasks.py
+│   │   │   │   ├── 0026_element_add_new_type.py
+│   │   │   │   ├── 0027_element_remove_old_type.py
+│   │   │   │   ├── 0028_alter_element_options.py
+│   │   │   │   ├── 0029_project_description_project_illustration.py
+│   │   │   │   ├── 0030_provider_extra_information.py
+│   │   │   │   ├── 0031_alter_project_illustration.py
+│   │   │   │   ├── 0032_alter_project_illustration.py
+│   │   │   │   ├── 0033_alter_type_options.py
+│   │   │   │   ├── 0034_element_entities.py
+│   │   │   │   ├── 0035_project_invite_token.py
+│   │   │   │   ├── 0036_alter_campaign_state.py
+│   │   │   │   ├── 0037_campaign_xlsx_export.py
+│   │   │   │   ├── 0038_alter_image_iiif_url.py
+│   │   │   │   ├── 0039_type_color.py
+│   │   │   │   ├── 0040_new_arkindex_wv_payload.py
+│   │   │   │   ├── 0041_alter_element_type.py
+│   │   │   │   ├── 0042_fetch_arkindex_wr.py
+│   │   │   │   ├── 0043_element_transcription.py
+│   │   │   │   ├── 0044_authority_authorityvalue.py
+│   │   │   │   ├── 0045_entity_campaigns_display.py
+│   │   │   │   ├── 0046_entity_colors.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── mixins.py
+│   │   │   ├── models.py
+│   │   │   ├── permissions.py
+│   │   │   ├── serializers.py
+│   │   │   ├── signals.py
+│   │   │   ├── templates
+│   │   │   │   ├── campaign_configure
+│   │   │   │   │   ├── base.html
+│   │   │   │   │   ├── entity_form_field_row.html
+│   │   │   │   │   ├── entity_form_group_row.html
+│   │   │   │   │   ├── entity_form_object_confirm_delete.html
+│   │   │   │   │   ├── entity_form_object_manage.html
+│   │   │   │   │   └── entity_form_table.html
+│   │   │   │   ├── campaign_create.html
+│   │   │   │   ├── campaign_details.html
+│   │   │   │   ├── campaign_instructions.html
+│   │   │   │   ├── campaign_task_list_admin.html
+│   │   │   │   ├── campaign_task_list_contributor.html
+│   │   │   │   ├── campaign_tasks_create.html
+│   │   │   │   ├── campaign_tasks_unassign.html
+│   │   │   │   ├── collapsable_description.html
+│   │   │   │   ├── element_details.html
+│   │   │   │   ├── element_metadata.html
+│   │   │   │   ├── element_task_list.html
+│   │   │   │   ├── project_browse.html
+│   │   │   │   ├── project_create.html
+│   │   │   │   ├── project_details.html
+│   │   │   │   ├── project_invite_link_management.html
+│   │   │   │   ├── project_join.html
+│   │   │   │   ├── project_list.html
+│   │   │   │   ├── project_members
+│   │   │   │   │   ├── confirm_delete.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   └── manage.html
+│   │   │   │   └── project_update.html
+│   │   │   ├── urls.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   └── users
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── forms.py
+│   │       ├── managers.py
+│   │       ├── migrations
+│   │       │   ├── 0001_initial.py
+│   │       │   ├── 0002_user_is_active.py
+│   │       │   ├── 0003_user_translations.py
+│   │       │   ├── 0004_user_email_validated.py
+│   │       │   ├── 0005_user_is_staff.py
+│   │       │   ├── 0006_user_preferred_language.py
+│   │       │   ├── 0007_comment.py
+│   │       │   ├── 0008_user_display_name.py
+│   │       │   └── __init__.py
+│   │       ├── models.py
+│   │       ├── tasks.py
+│   │       ├── templates
+│   │       │   ├── login.html
+│   │       │   ├── mails
+│   │       │   │   ├── daily_statistics.html
+│   │       │   │   ├── email_confirmation.html
+│   │       │   │   ├── new_account.html
+│   │       │   │   ├── new_tasks.html
+│   │       │   │   ├── no_more_available_tasks.html
+│   │       │   │   └── update_on_followed_discussion.html
+│   │       │   ├── reset_password.html
+│   │       │   ├── reset_password_confirm.html
+│   │       │   ├── signup.html
+│   │       │   └── user_update.html
+│   │       ├── tokens.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── ci
+│   │   └── build.sh
+│   ├── deployment
+│   │   ├── callico.env
+│   │   ├── docker-compose.yml
+│   │   ├── host_vars
+│   │   │   └── staging-01
+│   │   ├── hosts
+│   │   ├── playbook.yml
+│   │   ├── roles
+│   │   │   └── callico
+│   │   │       └── tasks
+│   │   │           ├── cleanup.yml
+│   │   │           ├── deploy.yml
+│   │   │           └── main.yml
+│   │   └── traefik.toml
+│   ├── docker-compose.yml
+│   ├── docker.env
+│   ├── docs
+│   │   ├── antora.yml
+│   │   └── modules
+│   │       └── ROOT
+│   │           ├── images
+│   │           │   ├── BiDi.png
+│   │           │   ├── campaigns
+│   │           │   │   ├── configure
+│   │           │   │   │   ├── classification
+│   │           │   │   │   │   ├── available_classes.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── common
+│   │           │   │   │   │   ├── context_ancestor_type
+│   │           │   │   │   │   │   ├── no_ancestor.png
+│   │           │   │   │   │   │   └── with_ancestor.png
+│   │           │   │   │   │   └── request_tasks.png
+│   │           │   │   │   ├── element_group
+│   │           │   │   │   │   ├── carousel.png
+│   │           │   │   │   │   ├── element_types.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── elements
+│   │           │   │   │   │   ├── element_types.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── entity
+│   │           │   │   │   │   ├── configuration.png
+│   │           │   │   │   │   ├── image_and_text.png
+│   │           │   │   │   │   └── text_only.png
+│   │           │   │   │   ├── entity_form
+│   │           │   │   │   │   ├── allowed_annotations.png
+│   │           │   │   │   │   ├── confidence_threshold.png
+│   │           │   │   │   │   ├── create_entity.png
+│   │           │   │   │   │   ├── create_group.png
+│   │           │   │   │   │   ├── field_group_display.png
+│   │           │   │   │   │   ├── field_groups_table.png
+│   │           │   │   │   │   ├── field_labels.png
+│   │           │   │   │   │   ├── fields_table.png
+│   │           │   │   │   │   ├── regex.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   └── transcription
+│   │           │   │   │       ├── confidence_threshold.png
+│   │           │   │   │       ├── configuration.png
+│   │           │   │   │       ├── grouped_transcriptions.png
+│   │           │   │   │       ├── single_element.png
+│   │           │   │   │       └── ungrouped_transcriptions.png
+│   │           │   │   ├── configure.png
+│   │           │   │   ├── create.png
+│   │           │   │   ├── details.png
+│   │           │   │   └── export
+│   │           │   │       ├── also_export_entities_on_a_parent.png
+│   │           │   │       ├── arkindex.png
+│   │           │   │       └── sort_the_entities_to_export.png
+│   │           │   ├── get_started.png
+│   │           │   ├── projects
+│   │           │   │   ├── create.png
+│   │           │   │   ├── details.png
+│   │           │   │   ├── edit.png
+│   │           │   │   ├── elements
+│   │           │   │   │   ├── browse_folder.png
+│   │           │   │   │   ├── browse_non-folder.png
+│   │           │   │   │   └── import
+│   │           │   │   │       ├── arkindex.png
+│   │           │   │   │       ├── element_or_dataset.png
+│   │           │   │   │       ├── filter_the_class_to_import.png
+│   │           │   │   │       ├── filter_the_metadata_to_import.png
+│   │           │   │   │       ├── filter_the_transcription_entities_to_import.png
+│   │           │   │   │       ├── filter_the_transcriptions_to_import.png
+│   │           │   │   │       ├── filter_the_types_to_import.png
+│   │           │   │   │       ├── filter_the_worker_results_to_import.png
+│   │           │   │   │       └── process_name.png
+│   │           │   │   ├── invitation.png
+│   │           │   │   ├── invite.png
+│   │           │   │   ├── list.png
+│   │           │   │   ├── members
+│   │           │   │   │   ├── create.png
+│   │           │   │   │   ├── delete.png
+│   │           │   │   │   ├── edit.png
+│   │           │   │   │   └── list.png
+│   │           │   │   └── processes
+│   │           │   │       ├── list.png
+│   │           │   │       └── view_details.png
+│   │           │   ├── releases
+│   │           │   │   ├── 033-elements_draw_polygon.png
+│   │           │   │   ├── 035-annotation_report_problem.png
+│   │           │   │   ├── 040-arkindex_import_form.png
+│   │           │   │   ├── 050-homepage_new_design.png
+│   │           │   │   ├── 050-project_details_page.png
+│   │           │   │   ├── 050-project_edit_page.png
+│   │           │   │   ├── 051-invitation_page.png
+│   │           │   │   ├── 051-publication_options.png
+│   │           │   │   ├── 051-reported_uncertain_admin_list.png
+│   │           │   │   ├── 051-reported_uncertain_contrib_list.png
+│   │           │   │   ├── 053-campaign-details-menu.png
+│   │           │   │   ├── 053-entity-confidence.png
+│   │           │   │   ├── 053-project-details-menu.png
+│   │           │   │   ├── 053-task-list-filters-icon.png
+│   │           │   │   ├── 054-admin-task-list-filters.png
+│   │           │   │   ├── 054-ongoing-in-localstorage.png
+│   │           │   │   ├── 055-campaign-dashboard.png
+│   │           │   │   ├── 060-rotation-icons.png
+│   │           │   │   ├── 060-task-discussion.png
+│   │           │   │   ├── 061-form-fields-table.png
+│   │           │   │   ├── 062-open-new-tab-icon.png
+│   │           │   │   ├── 062-user-preferences.png
+│   │           │   │   └── 064-pre-filled-segmentation.png
+│   │           │   └── tasks
+│   │           │       ├── create.png
+│   │           │       ├── details.png
+│   │           │       ├── discuss.png
+│   │           │       ├── discuss_icon_button.png
+│   │           │       ├── list_admin.png
+│   │           │       ├── list_contributor.png
+│   │           │       ├── moderate.png
+│   │           │       ├── publish.png
+│   │           │       └── unassign.png
+│   │           ├── nav.adoc
+│   │           └── pages
+│   │               ├── campaigns
+│   │               │   ├── close_reopen_archive.adoc
+│   │               │   ├── configure
+│   │               │   │   ├── classification.adoc
+│   │               │   │   ├── element_group.adoc
+│   │               │   │   ├── elements.adoc
+│   │               │   │   ├── entity.adoc
+│   │               │   │   ├── entity_form.adoc
+│   │               │   │   ├── index.adoc
+│   │               │   │   └── transcription.adoc
+│   │               │   ├── create.adoc
+│   │               │   ├── export
+│   │               │   │   ├── arkindex.adoc
+│   │               │   │   ├── csv.adoc
+│   │               │   │   └── xlsx.adoc
+│   │               │   └── index.adoc
+│   │               ├── contributing
+│   │               │   ├── clone.adoc
+│   │               │   ├── develop.adoc
+│   │               │   ├── index.adoc
+│   │               │   ├── submit.adoc
+│   │               │   └── validate.adoc
+│   │               ├── deploy
+│   │               │   ├── index.adoc
+│   │               │   └── settings.adoc
+│   │               ├── get_started.adoc
+│   │               ├── index.adoc
+│   │               ├── languages.adoc
+│   │               ├── projects
+│   │               │   ├── create.adoc
+│   │               │   ├── edit.adoc
+│   │               │   ├── elements
+│   │               │   │   ├── browse.adoc
+│   │               │   │   ├── import
+│   │               │   │   │   └── arkindex.adoc
+│   │               │   │   └── index.adoc
+│   │               │   ├── index.adoc
+│   │               │   ├── invite_users.adoc
+│   │               │   ├── manage_members.adoc
+│   │               │   └── processes
+│   │               │       ├── index.adoc
+│   │               │       ├── list.adoc
+│   │               │       └── view_details.adoc
+│   │               ├── releases.adoc
+│   │               └── tasks
+│   │                   ├── create.adoc
+│   │                   ├── discuss.adoc
+│   │                   ├── index.adoc
+│   │                   ├── list.adoc
+│   │                   ├── moderate.adoc
+│   │                   ├── publish.adoc
+│   │                   └── unassign.adoc
+│   ├── front
+│   │   ├── .eslintrc.yml
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── ElementCarousel.vue
+│   │   │   ├── ElementGroupManager.vue
+│   │   │   ├── InteractiveImage.vue
+│   │   │   ├── css
+│   │   │   │   └── style.css
+│   │   │   ├── js
+│   │   │   │   ├── api.js
+│   │   │   │   ├── config.js
+│   │   │   │   ├── helpers.js
+│   │   │   │   ├── monitoring.js
+│   │   │   │   ├── store
+│   │   │   │   │   ├── element.js
+│   │   │   │   │   └── index.js
+│   │   │   │   └── vanilla
+│   │   │   │       ├── annotations
+│   │   │   │       │   ├── completion_time.js
+│   │   │   │       │   └── storage.js
+│   │   │   │       ├── classification
+│   │   │   │       │   └── annotate.js
+│   │   │   │       ├── element_group
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── elements
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   ├── table.js
+│   │   │   │       │   ├── types.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── entities
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   ├── labels.js
+│   │   │   │       │   ├── storage.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── entity_form
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── events
+│   │   │   │       │   ├── carousel.js
+│   │   │   │       │   ├── element_group_manager.js
+│   │   │   │       │   └── interactive_image.js
+│   │   │   │       ├── forms
+│   │   │   │       │   ├── arkindex_export.js
+│   │   │   │       │   ├── arkindex_import.js
+│   │   │   │       │   ├── create_tasks.js
+│   │   │   │       │   ├── entity_form_field.js
+│   │   │   │       │   └── update_campaign.js
+│   │   │   │       ├── transcription
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       └── utils
+│   │   │   │           ├── bidirectional_text.js
+│   │   │   │           ├── bulma_file_fields.js
+│   │   │   │           ├── carousel.js
+│   │   │   │           ├── confidence_tag.js
+│   │   │   │           ├── confirm_archive.js
+│   │   │   │           ├── copy_to_clipboard.js
+│   │   │   │           ├── dropdown.js
+│   │   │   │           ├── enter_key_submit.js
+│   │   │   │           ├── formset.js
+│   │   │   │           ├── handle_uncertainty.js
+│   │   │   │           ├── left_or_right.js
+│   │   │   │           └── resize_textareas.js
+│   │   │   ├── lib.js
+│   │   │   └── vue
+│   │   │       ├── ElementImage.vue
+│   │   │       ├── ElementZone.vue
+│   │   │       ├── ImageLayer.vue
+│   │   │       └── Slider.vue
+│   │   └── vue.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── redirections.yml
+│   ├── requirements-docker.txt
+│   ├── requirements.txt
+│   ├── ruff.toml
+│   ├── setup.py
+│   ├── tests
+│   │   ├── selenium
+│   │   │   ├── conftest.py
+│   │   │   ├── test_annotation.py
+│   │   │   ├── test_auth.py
+│   │   │   └── test_projects.py
+│   │   └── unit
+│   │       ├── __init__.py
+│   │       ├── annotations
+│   │       │   ├── __init__.py
+│   │       │   ├── models
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── test_annotation.py
+│   │       │   │   └── test_task.py
+│   │       │   ├── test_task_discussion.py
+│   │       │   ├── user_task_details
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── test_base.py
+│   │       │   │   ├── test_classification.py
+│   │       │   │   ├── test_element_group.py
+│   │       │   │   ├── test_elements.py
+│   │       │   │   ├── test_entity.py
+│   │       │   │   ├── test_entity_form.py
+│   │       │   │   └── test_transcription.py
+│   │       │   └── user_task_manage
+│   │       │       ├── __init__.py
+│   │       │       ├── test_annotate.py
+│   │       │       ├── test_base.py
+│   │       │       ├── test_classification.py
+│   │       │       ├── test_element_group.py
+│   │       │       ├── test_elements.py
+│   │       │       ├── test_entity.py
+│   │       │       ├── test_entity_form.py
+│   │       │       ├── test_moderate.py
+│   │       │       └── test_transcription.py
+│   │       ├── base
+│   │       │   ├── __init__.py
+│   │       │   ├── test_polygon.py
+│   │       │   └── test_prometheus_metrics.py
+│   │       ├── conftest.py
+│   │       ├── process
+│   │       │   ├── __init__.py
+│   │       │   ├── arkindex
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── exports
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── test_arkindex_export_classification.py
+│   │       │   │   │   ├── test_arkindex_export_common.py
+│   │       │   │   │   ├── test_arkindex_export_element_group.py
+│   │       │   │   │   ├── test_arkindex_export_elements.py
+│   │       │   │   │   ├── test_arkindex_export_entity.py
+│   │       │   │   │   ├── test_arkindex_export_entity_form.py
+│   │       │   │   │   ├── test_arkindex_export_entity_form_on_parent.py
+│   │       │   │   │   └── test_arkindex_export_transcription.py
+│   │       │   │   ├── imports
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── test_arkindex_fetch_extra_info.py
+│   │       │   │   │   ├── test_arkindex_import_with_filtering.py
+│   │       │   │   │   ├── test_arkindex_import_without_filtering.py
+│   │       │   │   │   └── test_arkindex_process_base.py
+│   │       │   │   ├── test_arkindex_export_process_create.py
+│   │       │   │   ├── test_arkindex_import_process_create.py
+│   │       │   │   └── test_tasks.py
+│   │       │   ├── test_csv_export_process_create.py
+│   │       │   ├── test_process_details.py
+│   │       │   ├── test_process_list.py
+│   │       │   ├── test_tasks.py
+│   │       │   └── test_xlsx_export_process_create.py
+│   │       ├── projects
+│   │       │   ├── __init__.py
+│   │       │   ├── commands
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── samples
+│   │       │   │   │   └── authority_with_header.csv
+│   │       │   │   ├── test_arkindex_command.py
+│   │       │   │   ├── test_build_fixtures.py
+│   │       │   │   ├── test_cleanup_preview_tasks.py
+│   │       │   │   ├── test_clone_arkindex_campaign.py
+│   │       │   │   └── test_ingest_authority.py
+│   │       │   ├── test_api.py
+│   │       │   ├── test_campaign_create.py
+│   │       │   ├── test_campaign_details.py
+│   │       │   ├── test_campaign_instructions.py
+│   │       │   ├── test_campaign_join.py
+│   │       │   ├── test_campaign_task_list_admin.py
+│   │       │   ├── test_campaign_task_list_contributor.py
+│   │       │   ├── test_campaign_tasks_create.py
+│   │       │   ├── test_campaign_tasks_unassign.py
+│   │       │   ├── test_campaign_update.py
+│   │       │   ├── test_campaign_update_state.py
+│   │       │   ├── test_class_model.py
+│   │       │   ├── test_element_details.py
+│   │       │   ├── test_element_model.py
+│   │       │   ├── test_entity_form_object_create.py
+│   │       │   ├── test_entity_form_object_delete.py
+│   │       │   ├── test_entity_form_object_update.py
+│   │       │   ├── test_invite_link_management.py
+│   │       │   ├── test_member_create.py
+│   │       │   ├── test_member_delete.py
+│   │       │   ├── test_member_list.py
+│   │       │   ├── test_member_update.py
+│   │       │   ├── test_project_browse.py
+│   │       │   ├── test_project_create.py
+│   │       │   ├── test_project_details.py
+│   │       │   ├── test_project_join.py
+│   │       │   ├── test_project_list.py
+│   │       │   ├── test_project_model.py
+│   │       │   ├── test_project_update.py
+│   │       │   ├── test_publish_draft_tasks.py
+│   │       │   ├── test_type_model.py
+│   │       │   └── test_utils.py
+│   │       └── users
+│   │           ├── __init__.py
+│   │           ├── test_admin_access.py
+│   │           ├── test_confirm_email.py
+│   │           ├── test_login.py
+│   │           ├── test_signup.py
+│   │           ├── test_tasks.py
+│   │           ├── test_user_manager.py
+│   │           └── test_user_update.py
+│   ├── tests-requirements.txt
+│   ├── tox.ini
+│   └── traefik
+│       ├── certs
+│       │   ├── ca.pem
+│       │   ├── default.crt
+│       │   ├── default.key
+│       │   └── traefik.toml
+│       └── config.toml
+├── callico-bck
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .gitlab-ci.yml
+│   ├── .pre-commit-config.yaml
+│   ├── CONTRIBUTING.md
+│   ├── Dockerfile
+│   ├── LICENSE
+│   ├── MANIFEST.in
+│   ├── Makefile
+│   ├── README.md
+│   ├── antora-playbook.yml
+│   ├── callico
+│   │   ├── VERSION
+│   │   ├── __init__.py
+│   │   ├── annotations
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── forms.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_annotation.py
+│   │   │   │   ├── 0003_alter_taskuser_state.py
+│   │   │   │   ├── 0004_annotation_published.py
+│   │   │   │   ├── 0005_taskuser_is_preview.py
+│   │   │   │   ├── 0006_update_transcription_annotations_value.py
+│   │   │   │   ├── 0007_taskuser_comment.py
+│   │   │   │   ├── 0008_alter_taskuser_state.py
+│   │   │   │   ├── 0009_annotation_duration.py
+│   │   │   │   ├── 0010_annotation_entity_types.py
+│   │   │   │   ├── 0011_taskuser_has_uncertain_value.py
+│   │   │   │   ├── 0012_annotation_moderator_annotation_state.py
+│   │   │   │   ├── 0013_remove_taskuser_comment.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── signals.py
+│   │   │   ├── templates
+│   │   │   │   ├── task_discussion.html
+│   │   │   │   ├── user_task_details_base.html
+│   │   │   │   ├── user_task_details_element_group.html
+│   │   │   │   ├── user_task_details_elements.html
+│   │   │   │   ├── user_task_details_entity.html
+│   │   │   │   ├── user_task_details_entity_form.html
+│   │   │   │   ├── user_task_details_transcription.html
+│   │   │   │   ├── user_task_manage_base.html
+│   │   │   │   ├── user_task_manage_classification.html
+│   │   │   │   ├── user_task_manage_element_group.html
+│   │   │   │   ├── user_task_manage_elements.html
+│   │   │   │   ├── user_task_manage_entity.html
+│   │   │   │   ├── user_task_manage_entity_form.html
+│   │   │   │   └── user_task_manage_transcription.html
+│   │   │   ├── urls.py
+│   │   │   └── views
+│   │   │       ├── __init__.py
+│   │   │       ├── classification.py
+│   │   │       ├── element_group.py
+│   │   │       ├── elements.py
+│   │   │       ├── entity.py
+│   │   │       ├── entity_form.py
+│   │   │       └── transcription.py
+│   │   ├── base
+│   │   │   ├── __init__.py
+│   │   │   ├── api_v1.py
+│   │   │   ├── asgi.py
+│   │   │   ├── basefilters.py
+│   │   │   ├── celery.py
+│   │   │   ├── context_processors.py
+│   │   │   ├── db.py
+│   │   │   ├── fields.py
+│   │   │   ├── mixins.py
+│   │   │   ├── settings.py
+│   │   │   ├── static
+│   │   │   │   ├── favicon.ico
+│   │   │   │   └── logo.png
+│   │   │   ├── templates
+│   │   │   │   ├── 400.html
+│   │   │   │   ├── 403.html
+│   │   │   │   ├── 404.html
+│   │   │   │   ├── 500.html
+│   │   │   │   ├── base.html
+│   │   │   │   ├── breadcrumb.html
+│   │   │   │   ├── bulma_clearable_image_input.html
+│   │   │   │   ├── element_table.html
+│   │   │   │   ├── error_page.html
+│   │   │   │   ├── footer.html
+│   │   │   │   ├── formset.html
+│   │   │   │   ├── labels.html
+│   │   │   │   ├── messages.html
+│   │   │   │   ├── pagination.html
+│   │   │   │   ├── preview_task_button.html
+│   │   │   │   ├── progress_bar.html
+│   │   │   │   ├── request_tasks_button.html
+│   │   │   │   ├── task_card_assigned.html
+│   │   │   │   ├── task_card_available.html
+│   │   │   │   └── task_card_base.html
+│   │   │   ├── urls.py
+│   │   │   ├── views.py
+│   │   │   └── wsgi.py
+│   │   ├── locale
+│   │   │   └── fr
+│   │   │       └── LC_MESSAGES
+│   │   │           ├── django.mo
+│   │   │           └── django.po
+│   │   ├── manage.py
+│   │   ├── middleware.py
+│   │   ├── process
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── arkindex
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── exports.py
+│   │   │   │   ├── forms.py
+│   │   │   │   ├── imports.py
+│   │   │   │   ├── tasks.py
+│   │   │   │   └── views.py
+│   │   │   ├── exports.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_alter_process_name.py
+│   │   │   │   ├── 0003_process_logs.py
+│   │   │   │   ├── 0004_alter_process_mode.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── tasks.py
+│   │   │   ├── templates
+│   │   │   │   ├── arkindex
+│   │   │   │   │   ├── arkindex_export_process_create.html
+│   │   │   │   │   └── arkindex_import_process_create.html
+│   │   │   │   ├── process_details.html
+│   │   │   │   └── process_list.html
+│   │   │   ├── urls.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── projects
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── api.py
+│   │   │   ├── apps.py
+│   │   │   ├── forms.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── build_fixtures.py
+│   │   │   │       ├── cleanup_preview_tasks.py
+│   │   │   │       ├── clone_arkindex_campaign.py
+│   │   │   │       ├── fixtures
+│   │   │   │       │   ├── 33ce4ddb-023c-498d-991a-d3bca3ff0316.json
+│   │   │   │       │   ├── bf70b718-285a-4c87-b6d9-b314fdb1f055.json
+│   │   │   │       │   ├── d3484c8f-8106-42d6-9a08-db78014b7b61.json
+│   │   │   │       │   └── d97a57d4-f4ca-4ce4-8790-bb29d170ef8b.json
+│   │   │   │       ├── ingest_authority.py
+│   │   │   │       └── makemessages.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_arkindexinstance_image_element.py
+│   │   │   │   ├── 0003_campaign.py
+│   │   │   │   ├── 0004_alter_arkindexinstance_options_and_more.py
+│   │   │   │   ├── 0005_alter_arkindexinstance_name.py
+│   │   │   │   ├── 0006_alter_campaign_mode.py
+│   │   │   │   ├── 0007_element_transcription_arkindex_id_and_more.py
+│   │   │   │   ├── 0008_element_order.py
+│   │   │   │   ├── 0009_project_arkindex_instance_project_corpus_id_and_more.py
+│   │   │   │   ├── 0010_class_and_more.py
+│   │   │   │   ├── 0011_alter_element_unique_together_and_more.py
+│   │   │   │   ├── 0012_alter_class_unique_together.py
+│   │   │   │   ├── 0013_type_type_arkindex_fields_type_all_set_or_none_set_and_more.py
+│   │   │   │   ├── 0014_alter_element_parent.py
+│   │   │   │   ├── 0015_element_text_orientation.py
+│   │   │   │   ├── 0016_campaign_nb_tasks_auto_assignment.py
+│   │   │   │   ├── 0017_alter_element_unique_together.py
+│   │   │   │   ├── 0018_element_metadata.py
+│   │   │   │   ├── 0019_rename_model_fields_and_constraints.py
+│   │   │   │   ├── 0020_alter_campaign_mode.py
+│   │   │   │   ├── 0021_project_provider_extra_information.py
+│   │   │   │   ├── 0022_campaign_csv_export.py
+│   │   │   │   ├── 0023_type_folder.py
+│   │   │   │   ├── 0024_campaign_entity_types.py
+│   │   │   │   ├── 0025_campaign_max_user_tasks.py
+│   │   │   │   ├── 0026_element_add_new_type.py
+│   │   │   │   ├── 0027_element_remove_old_type.py
+│   │   │   │   ├── 0028_alter_element_options.py
+│   │   │   │   ├── 0029_project_description_project_illustration.py
+│   │   │   │   ├── 0030_provider_extra_information.py
+│   │   │   │   ├── 0031_alter_project_illustration.py
+│   │   │   │   ├── 0032_alter_project_illustration.py
+│   │   │   │   ├── 0033_alter_type_options.py
+│   │   │   │   ├── 0034_element_entities.py
+│   │   │   │   ├── 0035_project_invite_token.py
+│   │   │   │   ├── 0036_alter_campaign_state.py
+│   │   │   │   ├── 0037_campaign_xlsx_export.py
+│   │   │   │   ├── 0038_alter_image_iiif_url.py
+│   │   │   │   ├── 0039_type_color.py
+│   │   │   │   ├── 0040_new_arkindex_wv_payload.py
+│   │   │   │   ├── 0041_alter_element_type.py
+│   │   │   │   ├── 0042_fetch_arkindex_wr.py
+│   │   │   │   ├── 0043_element_transcription.py
+│   │   │   │   ├── 0044_authority_authorityvalue.py
+│   │   │   │   ├── 0045_entity_campaigns_display.py
+│   │   │   │   ├── 0046_entity_colors.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── mixins.py
+│   │   │   ├── models.py
+│   │   │   ├── permissions.py
+│   │   │   ├── serializers.py
+│   │   │   ├── signals.py
+│   │   │   ├── templates
+│   │   │   │   ├── campaign_configure
+│   │   │   │   │   ├── base.html
+│   │   │   │   │   ├── entity_form_field_row.html
+│   │   │   │   │   ├── entity_form_group_row.html
+│   │   │   │   │   ├── entity_form_object_confirm_delete.html
+│   │   │   │   │   ├── entity_form_object_manage.html
+│   │   │   │   │   └── entity_form_table.html
+│   │   │   │   ├── campaign_create.html
+│   │   │   │   ├── campaign_details.html
+│   │   │   │   ├── campaign_instructions.html
+│   │   │   │   ├── campaign_task_list_admin.html
+│   │   │   │   ├── campaign_task_list_contributor.html
+│   │   │   │   ├── campaign_tasks_create.html
+│   │   │   │   ├── campaign_tasks_unassign.html
+│   │   │   │   ├── collapsable_description.html
+│   │   │   │   ├── element_details.html
+│   │   │   │   ├── element_metadata.html
+│   │   │   │   ├── element_task_list.html
+│   │   │   │   ├── project_browse.html
+│   │   │   │   ├── project_create.html
+│   │   │   │   ├── project_details.html
+│   │   │   │   ├── project_invite_link_management.html
+│   │   │   │   ├── project_join.html
+│   │   │   │   ├── project_list.html
+│   │   │   │   ├── project_members
+│   │   │   │   │   ├── confirm_delete.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   └── manage.html
+│   │   │   │   └── project_update.html
+│   │   │   ├── urls.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   └── users
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── forms.py
+│   │       ├── managers.py
+│   │       ├── migrations
+│   │       │   ├── 0001_initial.py
+│   │       │   ├── 0002_user_is_active.py
+│   │       │   ├── 0003_user_translations.py
+│   │       │   ├── 0004_user_email_validated.py
+│   │       │   ├── 0005_user_is_staff.py
+│   │       │   ├── 0006_user_preferred_language.py
+│   │       │   ├── 0007_comment.py
+│   │       │   ├── 0008_user_display_name.py
+│   │       │   └── __init__.py
+│   │       ├── models.py
+│   │       ├── tasks.py
+│   │       ├── templates
+│   │       │   ├── login.html
+│   │       │   ├── mails
+│   │       │   │   ├── daily_statistics.html
+│   │       │   │   ├── email_confirmation.html
+│   │       │   │   ├── new_account.html
+│   │       │   │   ├── new_tasks.html
+│   │       │   │   ├── no_more_available_tasks.html
+│   │       │   │   └── update_on_followed_discussion.html
+│   │       │   ├── reset_password.html
+│   │       │   ├── reset_password_confirm.html
+│   │       │   ├── signup.html
+│   │       │   └── user_update.html
+│   │       ├── tokens.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── ci
+│   │   └── build.sh
+│   ├── deployment
+│   │   ├── callico.env
+│   │   ├── docker-compose.yml
+│   │   ├── host_vars
+│   │   │   └── staging-01
+│   │   ├── hosts
+│   │   ├── playbook.yml
+│   │   ├── roles
+│   │   │   └── callico
+│   │   │       └── tasks
+│   │   │           ├── cleanup.yml
+│   │   │           ├── deploy.yml
+│   │   │           └── main.yml
+│   │   └── traefik.toml
+│   ├── docker-compose.yml
+│   ├── docker.env
+│   ├── docs
+│   │   ├── antora.yml
+│   │   └── modules
+│   │       └── ROOT
+│   │           ├── images
+│   │           │   ├── BiDi.png
+│   │           │   ├── campaigns
+│   │           │   │   ├── configure
+│   │           │   │   │   ├── classification
+│   │           │   │   │   │   ├── available_classes.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── common
+│   │           │   │   │   │   ├── context_ancestor_type
+│   │           │   │   │   │   │   ├── no_ancestor.png
+│   │           │   │   │   │   │   └── with_ancestor.png
+│   │           │   │   │   │   └── request_tasks.png
+│   │           │   │   │   ├── element_group
+│   │           │   │   │   │   ├── carousel.png
+│   │           │   │   │   │   ├── element_types.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── elements
+│   │           │   │   │   │   ├── element_types.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   ├── entity
+│   │           │   │   │   │   ├── configuration.png
+│   │           │   │   │   │   ├── image_and_text.png
+│   │           │   │   │   │   └── text_only.png
+│   │           │   │   │   ├── entity_form
+│   │           │   │   │   │   ├── allowed_annotations.png
+│   │           │   │   │   │   ├── confidence_threshold.png
+│   │           │   │   │   │   ├── create_entity.png
+│   │           │   │   │   │   ├── create_group.png
+│   │           │   │   │   │   ├── field_group_display.png
+│   │           │   │   │   │   ├── field_groups_table.png
+│   │           │   │   │   │   ├── field_labels.png
+│   │           │   │   │   │   ├── fields_table.png
+│   │           │   │   │   │   ├── regex.png
+│   │           │   │   │   │   └── task.png
+│   │           │   │   │   └── transcription
+│   │           │   │   │       ├── confidence_threshold.png
+│   │           │   │   │       ├── configuration.png
+│   │           │   │   │       ├── grouped_transcriptions.png
+│   │           │   │   │       ├── single_element.png
+│   │           │   │   │       └── ungrouped_transcriptions.png
+│   │           │   │   ├── configure.png
+│   │           │   │   ├── create.png
+│   │           │   │   ├── details.png
+│   │           │   │   └── export
+│   │           │   │       ├── also_export_entities_on_a_parent.png
+│   │           │   │       ├── arkindex.png
+│   │           │   │       └── sort_the_entities_to_export.png
+│   │           │   ├── get_started.png
+│   │           │   ├── projects
+│   │           │   │   ├── create.png
+│   │           │   │   ├── details.png
+│   │           │   │   ├── edit.png
+│   │           │   │   ├── elements
+│   │           │   │   │   ├── browse_folder.png
+│   │           │   │   │   ├── browse_non-folder.png
+│   │           │   │   │   └── import
+│   │           │   │   │       ├── arkindex.png
+│   │           │   │   │       ├── element_or_dataset.png
+│   │           │   │   │       ├── filter_the_class_to_import.png
+│   │           │   │   │       ├── filter_the_metadata_to_import.png
+│   │           │   │   │       ├── filter_the_transcription_entities_to_import.png
+│   │           │   │   │       ├── filter_the_transcriptions_to_import.png
+│   │           │   │   │       ├── filter_the_types_to_import.png
+│   │           │   │   │       ├── filter_the_worker_results_to_import.png
+│   │           │   │   │       └── process_name.png
+│   │           │   │   ├── invitation.png
+│   │           │   │   ├── invite.png
+│   │           │   │   ├── list.png
+│   │           │   │   ├── members
+│   │           │   │   │   ├── create.png
+│   │           │   │   │   ├── delete.png
+│   │           │   │   │   ├── edit.png
+│   │           │   │   │   └── list.png
+│   │           │   │   └── processes
+│   │           │   │       ├── list.png
+│   │           │   │       └── view_details.png
+│   │           │   ├── releases
+│   │           │   │   ├── 033-elements_draw_polygon.png
+│   │           │   │   ├── 035-annotation_report_problem.png
+│   │           │   │   ├── 040-arkindex_import_form.png
+│   │           │   │   ├── 050-homepage_new_design.png
+│   │           │   │   ├── 050-project_details_page.png
+│   │           │   │   ├── 050-project_edit_page.png
+│   │           │   │   ├── 051-invitation_page.png
+│   │           │   │   ├── 051-publication_options.png
+│   │           │   │   ├── 051-reported_uncertain_admin_list.png
+│   │           │   │   ├── 051-reported_uncertain_contrib_list.png
+│   │           │   │   ├── 053-campaign-details-menu.png
+│   │           │   │   ├── 053-entity-confidence.png
+│   │           │   │   ├── 053-project-details-menu.png
+│   │           │   │   ├── 053-task-list-filters-icon.png
+│   │           │   │   ├── 054-admin-task-list-filters.png
+│   │           │   │   ├── 054-ongoing-in-localstorage.png
+│   │           │   │   ├── 055-campaign-dashboard.png
+│   │           │   │   ├── 060-rotation-icons.png
+│   │           │   │   ├── 060-task-discussion.png
+│   │           │   │   ├── 061-form-fields-table.png
+│   │           │   │   ├── 062-open-new-tab-icon.png
+│   │           │   │   ├── 062-user-preferences.png
+│   │           │   │   └── 064-pre-filled-segmentation.png
+│   │           │   └── tasks
+│   │           │       ├── create.png
+│   │           │       ├── details.png
+│   │           │       ├── discuss.png
+│   │           │       ├── discuss_icon_button.png
+│   │           │       ├── list_admin.png
+│   │           │       ├── list_contributor.png
+│   │           │       ├── moderate.png
+│   │           │       ├── publish.png
+│   │           │       └── unassign.png
+│   │           ├── nav.adoc
+│   │           └── pages
+│   │               ├── campaigns
+│   │               │   ├── close_reopen_archive.adoc
+│   │               │   ├── configure
+│   │               │   │   ├── classification.adoc
+│   │               │   │   ├── element_group.adoc
+│   │               │   │   ├── elements.adoc
+│   │               │   │   ├── entity.adoc
+│   │               │   │   ├── entity_form.adoc
+│   │               │   │   ├── index.adoc
+│   │               │   │   └── transcription.adoc
+│   │               │   ├── create.adoc
+│   │               │   ├── export
+│   │               │   │   ├── arkindex.adoc
+│   │               │   │   ├── csv.adoc
+│   │               │   │   └── xlsx.adoc
+│   │               │   └── index.adoc
+│   │               ├── contributing
+│   │               │   ├── clone.adoc
+│   │               │   ├── develop.adoc
+│   │               │   ├── index.adoc
+│   │               │   ├── submit.adoc
+│   │               │   └── validate.adoc
+│   │               ├── deploy
+│   │               │   ├── index.adoc
+│   │               │   └── settings.adoc
+│   │               ├── get_started.adoc
+│   │               ├── index.adoc
+│   │               ├── languages.adoc
+│   │               ├── projects
+│   │               │   ├── create.adoc
+│   │               │   ├── edit.adoc
+│   │               │   ├── elements
+│   │               │   │   ├── browse.adoc
+│   │               │   │   ├── import
+│   │               │   │   │   └── arkindex.adoc
+│   │               │   │   └── index.adoc
+│   │               │   ├── index.adoc
+│   │               │   ├── invite_users.adoc
+│   │               │   ├── manage_members.adoc
+│   │               │   └── processes
+│   │               │       ├── index.adoc
+│   │               │       ├── list.adoc
+│   │               │       └── view_details.adoc
+│   │               ├── releases.adoc
+│   │               └── tasks
+│   │                   ├── create.adoc
+│   │                   ├── discuss.adoc
+│   │                   ├── index.adoc
+│   │                   ├── list.adoc
+│   │                   ├── moderate.adoc
+│   │                   ├── publish.adoc
+│   │                   └── unassign.adoc
+│   ├── front
+│   │   ├── .eslintrc.yml
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── ElementCarousel.vue
+│   │   │   ├── ElementGroupManager.vue
+│   │   │   ├── InteractiveImage.vue
+│   │   │   ├── css
+│   │   │   │   └── style.css
+│   │   │   ├── js
+│   │   │   │   ├── api.js
+│   │   │   │   ├── config.js
+│   │   │   │   ├── helpers.js
+│   │   │   │   ├── monitoring.js
+│   │   │   │   ├── store
+│   │   │   │   │   ├── element.js
+│   │   │   │   │   └── index.js
+│   │   │   │   └── vanilla
+│   │   │   │       ├── annotations
+│   │   │   │       │   ├── completion_time.js
+│   │   │   │       │   └── storage.js
+│   │   │   │       ├── classification
+│   │   │   │       │   └── annotate.js
+│   │   │   │       ├── element_group
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── elements
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   ├── table.js
+│   │   │   │       │   ├── types.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── entities
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   ├── labels.js
+│   │   │   │       │   ├── storage.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── entity_form
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   ├── base.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       ├── events
+│   │   │   │       │   ├── carousel.js
+│   │   │   │       │   ├── element_group_manager.js
+│   │   │   │       │   └── interactive_image.js
+│   │   │   │       ├── forms
+│   │   │   │       │   ├── arkindex_export.js
+│   │   │   │       │   ├── arkindex_import.js
+│   │   │   │       │   ├── create_tasks.js
+│   │   │   │       │   ├── entity_form_field.js
+│   │   │   │       │   └── update_campaign.js
+│   │   │   │       ├── transcription
+│   │   │   │       │   ├── annotate.js
+│   │   │   │       │   └── user_task_details.js
+│   │   │   │       └── utils
+│   │   │   │           ├── bidirectional_text.js
+│   │   │   │           ├── bulma_file_fields.js
+│   │   │   │           ├── carousel.js
+│   │   │   │           ├── confidence_tag.js
+│   │   │   │           ├── confirm_archive.js
+│   │   │   │           ├── copy_to_clipboard.js
+│   │   │   │           ├── dropdown.js
+│   │   │   │           ├── enter_key_submit.js
+│   │   │   │           ├── formset.js
+│   │   │   │           ├── handle_uncertainty.js
+│   │   │   │           ├── left_or_right.js
+│   │   │   │           └── resize_textareas.js
+│   │   │   ├── lib.js
+│   │   │   └── vue
+│   │   │       ├── ElementImage.vue
+│   │   │       ├── ElementZone.vue
+│   │   │       ├── ImageLayer.vue
+│   │   │       └── Slider.vue
+│   │   └── vue.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── redirections.yml
+│   ├── requirements-docker.txt
+│   ├── requirements.txt
+│   ├── ruff.toml
+│   ├── setup.py
+│   ├── tests
+│   │   ├── selenium
+│   │   │   ├── conftest.py
+│   │   │   ├── test_annotation.py
+│   │   │   ├── test_auth.py
+│   │   │   └── test_projects.py
+│   │   └── unit
+│   │       ├── __init__.py
+│   │       ├── annotations
+│   │       │   ├── __init__.py
+│   │       │   ├── models
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── test_annotation.py
+│   │       │   │   └── test_task.py
+│   │       │   ├── test_task_discussion.py
+│   │       │   ├── user_task_details
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── test_base.py
+│   │       │   │   ├── test_classification.py
+│   │       │   │   ├── test_element_group.py
+│   │       │   │   ├── test_elements.py
+│   │       │   │   ├── test_entity.py
+│   │       │   │   ├── test_entity_form.py
+│   │       │   │   └── test_transcription.py
+│   │       │   └── user_task_manage
+│   │       │       ├── __init__.py
+│   │       │       ├── test_annotate.py
+│   │       │       ├── test_base.py
+│   │       │       ├── test_classification.py
+│   │       │       ├── test_element_group.py
+│   │       │       ├── test_elements.py
+│   │       │       ├── test_entity.py
+│   │       │       ├── test_entity_form.py
+│   │       │       ├── test_moderate.py
+│   │       │       └── test_transcription.py
+│   │       ├── base
+│   │       │   ├── __init__.py
+│   │       │   ├── test_polygon.py
+│   │       │   └── test_prometheus_metrics.py
+│   │       ├── conftest.py
+│   │       ├── process
+│   │       │   ├── __init__.py
+│   │       │   ├── arkindex
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── exports
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── test_arkindex_export_classification.py
+│   │       │   │   │   ├── test_arkindex_export_common.py
+│   │       │   │   │   ├── test_arkindex_export_element_group.py
+│   │       │   │   │   ├── test_arkindex_export_elements.py
+│   │       │   │   │   ├── test_arkindex_export_entity.py
+│   │       │   │   │   ├── test_arkindex_export_entity_form.py
+│   │       │   │   │   ├── test_arkindex_export_entity_form_on_parent.py
+│   │       │   │   │   └── test_arkindex_export_transcription.py
+│   │       │   │   ├── imports
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── test_arkindex_fetch_extra_info.py
+│   │       │   │   │   ├── test_arkindex_import_with_filtering.py
+│   │       │   │   │   ├── test_arkindex_import_without_filtering.py
+│   │       │   │   │   └── test_arkindex_process_base.py
+│   │       │   │   ├── test_arkindex_export_process_create.py
+│   │       │   │   ├── test_arkindex_import_process_create.py
+│   │       │   │   └── test_tasks.py
+│   │       │   ├── test_csv_export_process_create.py
+│   │       │   ├── test_process_details.py
+│   │       │   ├── test_process_list.py
+│   │       │   ├── test_tasks.py
+│   │       │   └── test_xlsx_export_process_create.py
+│   │       ├── projects
+│   │       │   ├── __init__.py
+│   │       │   ├── commands
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── samples
+│   │       │   │   │   └── authority_with_header.csv
+│   │       │   │   ├── test_arkindex_command.py
+│   │       │   │   ├── test_build_fixtures.py
+│   │       │   │   ├── test_cleanup_preview_tasks.py
+│   │       │   │   ├── test_clone_arkindex_campaign.py
+│   │       │   │   └── test_ingest_authority.py
+│   │       │   ├── test_api.py
+│   │       │   ├── test_campaign_create.py
+│   │       │   ├── test_campaign_details.py
+│   │       │   ├── test_campaign_instructions.py
+│   │       │   ├── test_campaign_join.py
+│   │       │   ├── test_campaign_task_list_admin.py
+│   │       │   ├── test_campaign_task_list_contributor.py
+│   │       │   ├── test_campaign_tasks_create.py
+│   │       │   ├── test_campaign_tasks_unassign.py
+│   │       │   ├── test_campaign_update.py
+│   │       │   ├── test_campaign_update_state.py
+│   │       │   ├── test_class_model.py
+│   │       │   ├── test_element_details.py
+│   │       │   ├── test_element_model.py
+│   │       │   ├── test_entity_form_object_create.py
+│   │       │   ├── test_entity_form_object_delete.py
+│   │       │   ├── test_entity_form_object_update.py
+│   │       │   ├── test_invite_link_management.py
+│   │       │   ├── test_member_create.py
+│   │       │   ├── test_member_delete.py
+│   │       │   ├── test_member_list.py
+│   │       │   ├── test_member_update.py
+│   │       │   ├── test_project_browse.py
+│   │       │   ├── test_project_create.py
+│   │       │   ├── test_project_details.py
+│   │       │   ├── test_project_join.py
+│   │       │   ├── test_project_list.py
+│   │       │   ├── test_project_model.py
+│   │       │   ├── test_project_update.py
+│   │       │   ├── test_publish_draft_tasks.py
+│   │       │   ├── test_type_model.py
+│   │       │   └── test_utils.py
+│   │       └── users
+│   │           ├── __init__.py
+│   │           ├── test_admin_access.py
+│   │           ├── test_confirm_email.py
+│   │           ├── test_login.py
+│   │           ├── test_signup.py
+│   │           ├── test_tasks.py
+│   │           ├── test_user_manager.py
+│   │           └── test_user_update.py
+│   ├── tests-requirements.txt
+│   ├── tox.ini
+│   └── traefik
+│       ├── certs
+│       │   ├── ca.pem
+│       │   ├── default.crt
+│       │   ├── default.key
+│       │   └── traefik.toml
+│       └── config.toml
+└── install
+    ├── install.sh
+    ├── production.env.example
+    ├── traefik
+    │   ├── certs
+    │   │   └── tls.toml
+    │   └── traefik.toml
+    └── uninstall.sh
+210 directories, 1147 files
