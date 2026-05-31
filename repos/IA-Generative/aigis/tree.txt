@@ -1,0 +1,150 @@
+.
+├── .env.integ.example
+├── .github
+│   └── workflows
+│       ├── build.yml
+│       ├── ci.yaml
+│       ├── lint.yml
+│       └── release.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .release-please-manifest.json
+├── CHANGELOG.md
+├── Enroll.md
+├── README.md
+├── device
+│   ├── .air.toml
+│   ├── Dockerfile
+│   ├── cmd
+│   │   └── server
+│   │       └── main.go
+│   ├── entrypoint.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── internal
+│   │   ├── attestation
+│   │   │   ├── enclave.go
+│   │   │   ├── provider.go
+│   │   │   ├── software.go
+│   │   │   └── tpm.go
+│   │   ├── cache
+│   │   │   └── redis.go
+│   │   ├── config
+│   │   │   └── config.go
+│   │   ├── ctxkeys
+│   │   │   └── keys.go
+│   │   ├── db
+│   │   │   └── postgres.go
+│   │   ├── handler
+│   │   │   ├── attestation.go
+│   │   │   ├── device.go
+│   │   │   ├── discover.go
+│   │   │   └── probe.go
+│   │   ├── middleware
+│   │   │   ├── auth.go
+│   │   │   ├── cors.go
+│   │   │   ├── device.go
+│   │   │   ├── header.go
+│   │   │   └── token.go
+│   │   ├── model
+│   │   │   ├── device.go
+│   │   │   ├── discover.go
+│   │   │   ├── token.go
+│   │   │   └── trust.go
+│   │   ├── repository
+│   │   │   ├── device.go
+│   │   │   └── token.go
+│   │   └── service
+│   │       ├── attestation.go
+│   │       ├── device.go
+│   │       ├── email.go
+│   │       ├── risk.go
+│   │       └── token.go
+│   ├── migrations
+│   │   ├── 202603241817_init_schema.up.sql
+│   │   ├── 202603311516_add_api_key.down.sql
+│   │   ├── 202603311516_add_api_key.up.sql
+│   │   ├── 202604020202_alter_api_key.down.sql
+│   │   └── 202604020202_alter_api_key.up.sql
+│   └── templates
+│       └── ApprovalCode.html
+├── docker-compose.integ.yml
+├── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── components
+│   │   │   ├── ApiCallButton.vue
+│   │   │   ├── ApiKeyForm.vue
+│   │   │   ├── AppNav.vue
+│   │   │   ├── DebugPanel.vue
+│   │   │   ├── DeviceStatusBadge.vue
+│   │   │   ├── DeviceTable.vue
+│   │   │   ├── HeadersButton.vue
+│   │   │   ├── HwBadge.vue
+│   │   │   ├── HwLevelSelector.vue
+│   │   │   ├── PendingApprovalPanel.vue
+│   │   │   ├── RegisterButton.vue
+│   │   │   ├── StatusBanner.vue
+│   │   │   ├── StatusButton.vue
+│   │   │   ├── TrustBadge.vue
+│   │   │   └── VerifyButton.vue
+│   │   ├── composables
+│   │   │   ├── useDeviceApi.ts
+│   │   │   ├── useDeviceCrypto.ts
+│   │   │   ├── useExampleApi.ts
+│   │   │   └── useOAuth.ts
+│   │   ├── env.d.ts
+│   │   ├── lib
+│   │   │   ├── api.ts
+│   │   │   ├── crypto.ts
+│   │   │   ├── example-api.ts
+│   │   │   └── oauth.ts
+│   │   ├── main.js
+│   │   ├── router
+│   │   │   ├── index.js
+│   │   │   └── index.ts
+│   │   ├── stores
+│   │   │   ├── auth.ts
+│   │   │   ├── device.ts
+│   │   │   ├── home.ts
+│   │   │   └── settings.ts
+│   │   ├── style.css
+│   │   └── views
+│   │       ├── DevicesView.vue
+│   │       └── HomeView.vue
+│   ├── style.css
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── helm
+│   ├── .helmignore
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── adminer
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   └── service.yaml
+│   │   ├── configmap.yaml
+│   │   ├── deployment.yaml
+│   │   ├── hpa.yaml
+│   │   ├── ingress.yaml
+│   │   ├── secret.yaml
+│   │   ├── service.yaml
+│   │   ├── serviceaccount.yaml
+│   │   └── servicemonitor.yaml
+│   └── values.yaml
+├── keycloak
+│   └── realm.json
+├── realm.json
+├── release-please-config.json
+└── sequence-diagram.md
+31 directories, 118 files
