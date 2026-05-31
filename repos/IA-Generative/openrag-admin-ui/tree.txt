@@ -1,0 +1,109 @@
+.
+├── .env.example
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── docker-compose.yaml
+├── entrypoint.sh
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── src
+│   ├── app.css
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── lib
+│   │   ├── api
+│   │   │   ├── dashboard.ts
+│   │   │   ├── index.ts
+│   │   │   ├── indexer.ts
+│   │   │   └── users.ts
+│   │   ├── components
+│   │   │   ├── dashboard
+│   │   │   │   └── Header.svelte
+│   │   │   ├── indexer
+│   │   │   │   ├── ExtractModal.svelte
+│   │   │   │   ├── Header.svelte
+│   │   │   │   ├── TaskCategoryDropdown.svelte
+│   │   │   │   └── UploadModal
+│   │   │   │       ├── PartitionInput.svelte
+│   │   │   │       └── UploadModal.svelte
+│   │   │   ├── layout
+│   │   │   │   ├── Login.svelte
+│   │   │   │   ├── NavBar.svelte
+│   │   │   │   └── RegenerateTokenModal.svelte
+│   │   │   └── ui
+│   │   │       ├── Checkbox.svelte
+│   │   │       ├── Pip.svelte
+│   │   │       └── TernaryCheckbox.svelte
+│   │   ├── config.ts
+│   │   ├── i18n
+│   │   │   ├── en.json
+│   │   │   ├── fr.json
+│   │   │   └── index.ts
+│   │   ├── icons
+│   │   │   ├── Check.svelte
+│   │   │   ├── ChevronDown.svelte
+│   │   │   ├── Close.svelte
+│   │   │   ├── Collapse.svelte
+│   │   │   ├── Copy.svelte
+│   │   │   ├── Dashboard.svelte
+│   │   │   ├── Expand.svelte
+│   │   │   ├── EyeClosed.svelte
+│   │   │   ├── EyeOpened.svelte
+│   │   │   ├── File.svelte
+│   │   │   ├── FileStorage.svelte
+│   │   │   ├── Folder.svelte
+│   │   │   ├── Grid.svelte
+│   │   │   ├── HelpCircle.svelte
+│   │   │   ├── Home.svelte
+│   │   │   ├── Key.svelte
+│   │   │   ├── List.svelte
+│   │   │   ├── Lock.svelte
+│   │   │   ├── OpenRAG.svelte
+│   │   │   ├── PartialCircle.svelte
+│   │   │   ├── Refresh.svelte
+│   │   │   ├── Sort.svelte
+│   │   │   ├── Trash.svelte
+│   │   │   └── Upload.svelte
+│   │   ├── index.ts
+│   │   ├── persisted.svelte.ts
+│   │   ├── states.svelte.ts
+│   │   ├── types
+│   │   │   ├── actors.ts
+│   │   │   ├── files.ts
+│   │   │   ├── index.ts
+│   │   │   ├── partitions.ts
+│   │   │   ├── tasks.ts
+│   │   │   └── user.ts
+│   │   └── utils.ts
+│   └── routes
+│       ├── (home)
+│       │   └── +page.svelte
+│       ├── +layout.server.ts
+│       ├── +layout.svelte
+│       ├── api
+│       │   └── config
+│       │       └── +server.ts
+│       ├── dashboard
+│       │   ├── +layout.svelte
+│       │   └── +page.svelte
+│       └── indexer
+│           ├── +layout.svelte
+│           ├── +page.svelte
+│           └── partition
+│               └── [partition]
+│                   ├── +page.svelte
+│                   └── file
+│                       └── [file]
+│                           └── +page.svelte
+├── static
+│   ├── favicon.png
+│   └── fonts
+│       └── Inter.ttf
+├── svelte.config.js
+├── tests
+│   └── mock-backend.mjs
+├── tsconfig.json
+└── vite.config.ts
+26 directories, 82 files
