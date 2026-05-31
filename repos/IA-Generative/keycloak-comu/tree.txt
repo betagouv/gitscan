@@ -1,0 +1,156 @@
+.
+├── .env.example
+├── .github
+│   └── workflows
+│       ├── build.yml
+│       ├── ci.yaml
+│       ├── lint.yml
+│       └── release.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .release-please-manifest.json
+├── CHANGELOG.md
+├── Makefile
+├── backend
+│   ├── .air.toml
+│   ├── Dockerfile
+│   ├── cmd
+│   │   └── server
+│   │       └── main.go
+│   ├── config
+│   │   └── config.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   ├── internal
+│   │   ├── api
+│   │   │   ├── api.go
+│   │   │   ├── groups.go
+│   │   │   ├── notifications_stream.go
+│   │   │   └── users.go
+│   │   ├── config
+│   │   │   └── config.go
+│   │   ├── database
+│   │   │   └── postgres.go
+│   │   ├── featureflags
+│   │   │   └── featureflags.go
+│   │   ├── groups
+│   │   │   ├── README.md
+│   │   │   ├── application
+│   │   │   │   ├── notification_broker.go
+│   │   │   │   └── service.go
+│   │   │   ├── domain
+│   │   │   │   └── group.go
+│   │   │   └── ports
+│   │   │       └── ports.go
+│   │   ├── keycloak
+│   │   │   └── keycloak.go
+│   │   ├── logger
+│   │   │   └── logger.go
+│   │   ├── metrics
+│   │   │   └── service.go
+│   │   ├── middleware
+│   │   │   └── jwt.go
+│   │   └── repository
+│   │       ├── groups.go
+│   │       ├── mailer_impl.go
+│   │       ├── main.go
+│   │       ├── metrics.go
+│   │       └── user.go
+│   └── web
+│       ├── dist
+│       │   └── index.html
+│       └── embed.go
+├── docker-compose.prod.yml
+├── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── openapi-ts.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   └── robots.txt
+│   ├── scripts
+│   │   └── dev.mjs
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── components
+│   │   │   ├── Dashboard.vue
+│   │   │   ├── GroupSearchTable.vue
+│   │   │   ├── Header.vue
+│   │   │   ├── InviteAlert.vue
+│   │   │   ├── ManageGlobalRequest.vue
+│   │   │   ├── NotificationsBell.vue
+│   │   │   ├── NotificationsList.vue
+│   │   │   ├── SnackBar.vue
+│   │   │   ├── group
+│   │   │   │   ├── ActionMember.vue
+│   │   │   │   ├── DangerZone.vue
+│   │   │   │   ├── GroupAccess.vue
+│   │   │   │   ├── GroupBaseInfo.vue
+│   │   │   │   ├── GroupSettings.vue
+│   │   │   │   ├── InviteMember.vue
+│   │   │   │   ├── InvitesList.vue
+│   │   │   │   ├── LinkForm.vue
+│   │   │   │   ├── MembersTable.vue
+│   │   │   │   ├── SideMenu.vue
+│   │   │   │   └── TeamManager.vue
+│   │   │   └── profile
+│   │   │       ├── UserInfos.vue
+│   │   │       └── UserSettings.vue
+│   │   ├── composables
+│   │   │   ├── createGroup.ts
+│   │   │   ├── env.ts
+│   │   │   ├── feature-flags.ts
+│   │   │   ├── snackbarManager.ts
+│   │   │   ├── useAppConfig.ts
+│   │   │   ├── useBackend.ts
+│   │   │   └── useOidc.ts
+│   │   ├── env.d.ts
+│   │   ├── main.ts
+│   │   ├── pages
+│   │   │   ├── GroupLayout.vue
+│   │   │   ├── IndexPage.vue
+│   │   │   ├── ProfilePage.vue
+│   │   │   └── group
+│   │   │       ├── GroupBase.vue
+│   │   │       ├── GroupSettings.vue
+│   │   │       ├── GroupTeams.vue
+│   │   │       └── GroupUsers.vue
+│   │   ├── router.ts
+│   │   ├── shared
+│   │   │   ├── ErrorMessages.ts
+│   │   │   ├── MembershipLevel.ts
+│   │   │   ├── schemas.ts
+│   │   │   └── types.ts
+│   │   ├── stores
+│   │   │   ├── dashboard.ts
+│   │   │   ├── group.ts
+│   │   │   └── notifications.ts
+│   │   ├── style.css
+│   │   └── utils
+│   │       └── functions.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── helm
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── deployment.yaml
+│   │   ├── extraresources.yaml
+│   │   ├── hpa.yaml
+│   │   ├── ingress.yaml
+│   │   ├── secret.yaml
+│   │   ├── service.yaml
+│   │   ├── serviceaccount.yaml
+│   │   └── servicemonitor.yaml
+│   └── values.yaml
+├── keycloak
+│   └── realms
+│       └── dev.json
+└── release-please-config.json
+40 directories, 115 files
