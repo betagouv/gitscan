@@ -1,0 +1,83 @@
+---
+include:
+
+  - docker-compose.services.yml
+
+services:
+
+  backend:
+    container_name: ark-backend
+    image: registry.gitlab.teklia.com/arkindex/backend:1.9.0
+
+    depends_on:
+
+      - db
+      - redis
+      - lb
+
+    labels:
+      traefik.enable: true
+      traefik.http.routers.backend.rule: Host(`ark.${ARK_DOMAIN}`) && (PathPrefix(`/api/`) || PathPrefix(`/api-docs/`) || PathPrefix(`/admin/`) || PathPrefix(`/rq/`) || PathPrefix(`/static/`))
+      traefik.http.routers.backend.tls: true
+      traefik.http.routers.backend.tls.certresolver: letsencrypt
+
+    environment:
+      CONFIG_PATH: /arkindex.yml
+      REQUESTS_CA_BUNDLE: /etc/ssl/certs/arkindex-ca-bundle.pem
+      AWS_CA_BUNDLE: /etc/ssl/certs/arkindex-ca-bundle.pem
+
+    volumes:
+
+      - ./config.yml:/arkindex.yml:ro
+      - ./ssl/rootCA.pem:/etc/ssl/certs/arkindex-rootCA.pem:ro
+
+    healthcheck:
+      # start_interval is not fully implemented in Docker, until then we will use a short interval all the time
+      # https://github.com/moby/moby/issues/45897
+      interval: 5s
+
+  worker:
+    container_name: ark-worker
+    image: registry.gitlab.teklia.com/arkindex/backend:1.9.0
+    command: arkindex rqworker-pool --num-workers 2 -v 1 default high tasks export iiif
+
+    depends_on:
+
+      - db
+      - redis
+      - backend
+    environment:
+      CONFIG_PATH: /arkindex.yml
+      REQUESTS_CA_BUNDLE: /etc/ssl/certs/arkindex-ca-bundle.pem
+      AWS_CA_BUNDLE: /etc/ssl/certs/arkindex-ca-bundle.pem
+
+    volumes:
+
+      - ./config.yml:/arkindex.yml:ro
+      - ./ssl/rootCA.pem:/etc/ssl/certs/arkindex-rootCA.pem:ro
+
+      # Required to host temporary ponos data
+      # and share common paths between host and containers
+
+      - /tmp:/tmp
+
+      # Required to run process tasks
+
+      - /var/run/docker.sock:/var/run/docker.sock
+  front:
+    container_name: ark-front
+
+    build: ../frontend
+
+    depends_on:
+      - lb
+      - backend
+
+    ports:
+      - 127.0.0.1:8080:80
+
+    labels:
+      traefik.enable: true
+      traefik.http.routers.frontend.rule: Host(`ark.${ARK_DOMAIN}`)
+      traefik.http.routers.frontend.tls: true
+      traefik.http.routers.frontend.tls.certresolver: letsencrypt
