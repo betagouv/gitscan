@@ -1,0 +1,955 @@
+.
+├── .coderabbit.yaml
+├── .env.example
+├── .github
+│   ├── release.yml
+│   └── workflows
+│       ├── api_tests.yml
+│       ├── astro.yml
+│       ├── build.yml
+│       ├── build_dev.yml
+│       ├── helm.yaml
+│       ├── lint.yml
+│       └── unit_tests.yml
+├── .gitignore
+├── .gitmodules
+├── CLAUDE.md
+├── Dockerfile
+├── Dockerfile.ray
+├── LICENSE
+├── LINTING.md
+├── RAG_architecture.png
+├── README.md
+├── ansible
+│   ├── README.md
+│   ├── ansible.cfg
+│   ├── deploy.sh
+│   ├── inventory.ini.example
+│   └── playbooks
+│       ├── docker.yml
+│       ├── main-playbook.yml
+│       ├── nvidia-drivers-toolkit.yml
+│       └── openrag.yml
+├── astro.config.mjs
+├── automatic-evaluation-pipeline
+│   ├── README.md
+│   ├── assets
+│   │   ├── Hit_rate.png
+│   │   ├── Recall.png
+│   │   ├── documents_ranking.png
+│   │   ├── image-3.png
+│   │   ├── image.png
+│   │   ├── nDCG.png
+│   │   └── nDCG_formula.webp
+│   ├── benchmark.py
+│   ├── generate_questions.py
+│   └── upload_files.py
+├── benchmarks
+│   ├── marker
+│   │   └── marker_page_chunking.md
+│   └── workspace
+│       ├── README.md
+│       ├── docker-compose.yml
+│       ├── requirements.txt
+│       ├── results_workspace.md
+│       └── workspace.py
+├── charts
+│   └── openrag-stack
+│       ├── .helmignore
+│       ├── Chart.lock
+│       ├── Chart.yaml
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── configmap-env.yaml
+│       │   ├── indexer-ui.yaml
+│       │   ├── infinity.yaml
+│       │   ├── ingress.yaml
+│       │   ├── openrag.yaml
+│       │   ├── pvc.yaml
+│       │   ├── raycluster.yaml
+│       │   └── secrets-env.yaml
+│       └── values.yaml
+├── cluster.yaml
+├── conf
+│   └── config.yaml
+├── deploy
+│   ├── .env.example.vm
+│   ├── Caddyfile.example
+│   ├── PROPOSAL.md
+│   ├── SESSION_LOG_2026-04-25.md
+│   ├── docker-compose.override.yaml.example
+│   ├── keycloak
+│   │   ├── README.md
+│   │   └── openrag-client.json
+│   └── scripts
+│       └── dns_setup.sh
+├── docker-compose.yaml
+├── docs
+│   ├── assets
+│   │   ├── Chainlit_Login.png
+│   │   ├── OpenRAG-title.svg
+│   │   ├── RAG_architecture.png
+│   │   ├── compose_linux_gpu.yaml
+│   │   ├── compose_ollama_cpu.yaml
+│   │   ├── env_example.env
+│   │   ├── env_linux_gpu.env
+│   │   └── env_ollama_cpu.env
+│   ├── content
+│   │   └── docs
+│   │       ├── 404.md
+│   │       ├── documentation
+│   │       │   ├── API.mdx
+│   │       │   ├── backup_restore.md
+│   │       │   ├── chainlit_data_persistency.md
+│   │       │   ├── data_model.md
+│   │       │   ├── deploy_ray_cluster.md
+│   │       │   ├── env_vars.md
+│   │       │   ├── features_in_details.md
+│   │       │   ├── kubernetes.md
+│   │       │   ├── linked_files.md
+│   │       │   ├── milvus_migration.mdx
+│   │       │   ├── setup_chainlit_ui_auth.mdx
+│   │       │   ├── setup_glusterfs.md
+│   │       │   ├── setup_indexerui.md
+│   │       │   ├── setup_vpn.md
+│   │       │   ├── sql_migration.mdx
+│   │       │   ├── update_embeddings.md
+│   │       │   ├── user_auth.md
+│   │       │   └── workspaces.md
+│   │       ├── getting_started
+│   │       │   ├── quickstart.mdx
+│   │       │   ├── quickstart_mac.mdx
+│   │       │   └── usage.mdx
+│   │       ├── guides
+│   │       │   └── openwebui-keycloak.mdx
+│   │       ├── index.mdx
+│   │       ├── installation
+│   │       │   ├── ansible_setup.mdx
+│   │       │   └── docker.mdx
+│   │       ├── license.mdx
+│   │       ├── minimum-specifications.md
+│   │       └── support-and-contribute.mdx
+│   ├── content.config.ts
+│   ├── oidc.md
+│   ├── sso-quickstart.md
+│   └── styles
+│       ├── custom.css
+│       └── global.css
+├── entrypoint.sh
+├── extern
+│   ├── chainlit-datalayer
+│   ├── dummy.yaml
+│   ├── indexer-ui
+│   ├── reranker
+│   │   ├── infinity.yaml
+│   │   └── openai.yaml
+│   ├── transcriber.yaml
+│   └── vllm
+│       ├── Dockerfile.cpu
+│       └── Dockerfile.transcriber
+├── model_weights
+│   └── .gitkeep
+├── openrag
+│   ├── .chainlit
+│   │   └── translations
+│   │       └── en-US.json
+│   ├── __init__.py
+│   ├── api.py
+│   ├── app_front.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   ├── oidc.py
+│   │   ├── test_group_sync.py
+│   │   └── test_oidc.py
+│   ├── chainlit_api.py
+│   ├── components
+│   │   ├── __init__.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   ├── deps.py
+│   │   │   ├── middleware.py
+│   │   │   ├── oidc_client.py
+│   │   │   ├── refresh.py
+│   │   │   ├── session_tokens.py
+│   │   │   ├── state_cookie.py
+│   │   │   ├── test_middleware.py
+│   │   │   ├── test_oidc_client.py
+│   │   │   ├── test_session_tokens.py
+│   │   │   └── test_state_cookie.py
+│   │   ├── connectors
+│   │   │   ├── __init__.py
+│   │   │   └── drive.py
+│   │   ├── eval.py
+│   │   ├── files.py
+│   │   ├── indexer
+│   │   │   ├── __init__.py
+│   │   │   ├── chunker
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── chunker.py
+│   │   │   │   ├── test_chunking.py
+│   │   │   │   └── utils.py
+│   │   │   ├── embeddings
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   └── openai.py
+│   │   │   ├── indexer.py
+│   │   │   ├── loaders
+│   │   │   │   ├── CustomDocLoader.py
+│   │   │   │   ├── CustomHTMLLoader.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── audio
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── local_whisper.py
+│   │   │   │   │   ├── openai.py
+│   │   │   │   │   └── test_openai.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── doc.py
+│   │   │   │   ├── docx.py
+│   │   │   │   ├── eml_loader.py
+│   │   │   │   ├── image.py
+│   │   │   │   ├── pdf_loaders
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── docling.py
+│   │   │   │   │   ├── docling2.py
+│   │   │   │   │   ├── dotsocr.py
+│   │   │   │   │   ├── marker.py
+│   │   │   │   │   ├── openai.py
+│   │   │   │   │   └── pymupdf.py
+│   │   │   │   ├── pptx_loader.py
+│   │   │   │   ├── serializer.py
+│   │   │   │   ├── test_base_loader.py
+│   │   │   │   ├── test_doc_loader.py
+│   │   │   │   ├── test_docx_loader.py
+│   │   │   │   └── txt_loader.py
+│   │   │   ├── utils
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── files.py
+│   │   │   │   ├── test_files.py
+│   │   │   │   ├── test_text_sanitizer.py
+│   │   │   │   └── text_sanitizer.py
+│   │   │   └── vectordb
+│   │   │       ├── __init__.py
+│   │   │       ├── models.py
+│   │   │       ├── test_delete_workspace.py
+│   │   │       ├── test_oidc_sessions.py
+│   │   │       ├── utils.py
+│   │   │       └── vectordb.py
+│   │   ├── llm.py
+│   │   ├── map_reduce.py
+│   │   ├── notifications
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── email.py
+│   │   │   ├── tchap.py
+│   │   │   └── webhook.py
+│   │   ├── pipeline.py
+│   │   ├── prompts
+│   │   │   ├── __init__.py
+│   │   │   └── prompts.py
+│   │   ├── qa_override.py
+│   │   ├── ray_utils.py
+│   │   ├── reranker
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── infinity.py
+│   │   │   ├── openai.py
+│   │   │   └── test_rrf_reranking.py
+│   │   ├── reranker.py
+│   │   ├── retriever.py
+│   │   ├── test_files.py
+│   │   ├── test_llm.py
+│   │   ├── test_relationships.py
+│   │   ├── test_source_filtering.py
+│   │   ├── utils.py
+│   │   └── websearch
+│   │       ├── __init__.py
+│   │       ├── base.py
+│   │       ├── content_fetcher.py
+│   │       ├── providers
+│   │       │   ├── __init__.py
+│   │       │   └── staan.py
+│   │       ├── service.py
+│   │       └── test_content_fetcher.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── loader.py
+│   │   └── models.py
+│   ├── consts.py
+│   ├── models
+│   │   ├── indexer.py
+│   │   ├── openai.py
+│   │   └── user.py
+│   ├── public
+│   │   ├── avatars
+│   │   │   └── my_assistant.png
+│   │   ├── favicon.svg
+│   │   ├── logo_dark.png
+│   │   └── logo_light.png
+│   ├── routers
+│   │   ├── actors.py
+│   │   ├── admin.py
+│   │   ├── auth.py
+│   │   ├── extract.py
+│   │   ├── indexer.py
+│   │   ├── monitoring.py
+│   │   ├── openai.py
+│   │   ├── partition.py
+│   │   ├── queue.py
+│   │   ├── search.py
+│   │   ├── test_auth_router.py
+│   │   ├── test_workspace.py
+│   │   ├── tools.py
+│   │   ├── users.py
+│   │   ├── utils.py
+│   │   └── workspaces.py
+│   ├── scripts
+│   │   ├── backup.py
+│   │   ├── backup.sh.example
+│   │   ├── check_file_counts.py
+│   │   ├── embed.py
+│   │   ├── entrypoint-backup-mt.sh
+│   │   ├── entrypoint-backup.sh
+│   │   ├── entrypoint-restore-dry-run.sh
+│   │   ├── entrypoint-restore.sh
+│   │   ├── filter-logs.py
+│   │   ├── migrations
+│   │   │   ├── alembic
+│   │   │   │   ├── README
+│   │   │   │   ├── alembic.ini
+│   │   │   │   ├── env.py
+│   │   │   │   ├── script.py.mako
+│   │   │   │   └── versions
+│   │   │   │       ├── 4add4d260575_initial_migration.py
+│   │   │   │       ├── a1b2c3d4e5f6_add_document_relationships.py
+│   │   │   │       ├── c224d4befe71_add_file_count_and_file_quota.py
+│   │   │   │       ├── cd642e4502d8_create_users_memberships_tables.py
+│   │   │   │       ├── cd9b84278028_merge_heads.py
+│   │   │   │       ├── e1f2a3b4c5d6_add_oidc_support.py
+│   │   │   │       ├── e7f8a9b0c1d2_add_workspaces.py
+│   │   │   │       ├── f1a2b3c4d5e6_add_workspace_files_file_id_fk.py
+│   │   │   │       ├── f2a3b4c5d6e7_add_all_integration_tables.py
+│   │   │   │       └── f5b6c918f741_add_oidc_auth.py
+│   │   │   └── milvus
+│   │   │       ├── 1.add_created_at_temporal_fields.py
+│   │   │       └── migrate.py
+│   │   ├── restore.py
+│   │   └── restore.sh.example
+│   ├── test_token_validation.py
+│   ├── test_version.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── test_relationships_integration.py
+│   └── utils
+│       ├── __init__.py
+│       ├── dependencies.py
+│       ├── exceptions
+│       │   ├── __init__.py
+│       │   ├── base.py
+│       │   ├── embeddings.py
+│       │   └── vectordb.py
+│       ├── external_resource_errors.py
+│       ├── logger.py
+│       ├── monitoring.py
+│       ├── test_external_resource_errors.py
+│       └── test_logger.py
+├── openrag_metrics
+│   ├── docker-compose.yaml
+│   ├── grafana
+│   │   ├── dashboards
+│   │   │   ├── gpu-metrics.json
+│   │   │   ├── openrag-http.json
+│   │   │   └── system-overview.json
+│   │   └── provisioning
+│   │       ├── dashboards
+│   │       │   └── dashboard.yml
+│   │       └── datasources
+│   │           └── datasource.yml
+│   └── prometheus
+│       └── prometheus.yml
+├── package-lock.json
+├── package.json
+├── prompts
+│   └── example1
+│       ├── chunk_contextualizer_tmpl.txt
+│       ├── hyde.txt
+│       ├── image_captioning_tmpl.txt
+│       ├── multi_query_pmpt_tmpl.txt
+│       ├── query_contextualizer_tmpl.txt
+│       ├── spoken_style_answer_tmpl.txt
+│       └── sys_prompt_tmpl.txt
+├── prompts_integration.md
+├── pyproject.toml
+├── pytest.ini
+├── quick_start
+│   ├── docker-compose.yaml
+│   ├── extern
+│   │   ├── infinity.yaml
+│   │   └── vllm
+│   │       └── Dockerfile.cpu
+│   └── vdb
+│       └── milvus.yaml
+├── test_copilot.html
+├── tests
+│   ├── api
+│   │   ├── __init__.robot
+│   │   ├── actors.robot
+│   │   ├── indexer.robot
+│   │   ├── keywords.robot
+│   │   ├── main.robot
+│   │   ├── openai.robot
+│   │   ├── partition.robot
+│   │   ├── queue.robot
+│   │   ├── search.robot
+│   │   └── users.robot
+│   ├── api_tests
+│   │   ├── OIDC_TEST_COVERAGE.md
+│   │   ├── __init__.py
+│   │   ├── api_run
+│   │   │   ├── Dockerfile.mock-vllm
+│   │   │   ├── docker-compose.yaml
+│   │   │   ├── fixture
+│   │   │   │   └── sample.txt
+│   │   │   ├── mock_vllm.py
+│   │   │   └── scripts
+│   │   │       └── run_api_tests_local.sh
+│   │   ├── conftest.py
+│   │   ├── email_test_file.json
+│   │   ├── test_actors.py
+│   │   ├── test_extract.py
+│   │   ├── test_health.py
+│   │   ├── test_indexer.py
+│   │   ├── test_oidc_lifecycle.py
+│   │   ├── test_openai_compat.py
+│   │   ├── test_partition.py
+│   │   ├── test_queue.py
+│   │   ├── test_search.py
+│   │   ├── test_tools.py
+│   │   ├── test_users.py
+│   │   └── test_workspaces.py
+│   ├── deploy
+│   │   ├── run_all.sh
+│   │   ├── smoke_test.sh
+│   │   ├── test_chat_completion.py
+│   │   ├── test_indexing.py
+│   │   ├── test_llm_hub.py
+│   │   └── test_oidc_flow.py
+│   ├── resources
+│   │   ├── test_file.pdf
+│   │   ├── test_file.svg
+│   │   └── test_file.txt
+│   ├── smoke_test_data
+│   │   ├── README.md
+│   │   ├── run_backup_restore_test.sh
+│   │   ├── run_smoke_test.sh
+│   │   ├── simplewiki-500
+│   │   │   ├── 0.txt
+│   │   │   ├── 1 (number).txt
+│   │   │   ├── A.txt
+│   │   │   ├── Abbreviation.txt
+│   │   │   ├── Abrahamic religions.txt
+│   │   │   ├── Acceleration.txt
+│   │   │   ├── Ad hominem.txt
+│   │   │   ├── Addition.txt
+│   │   │   ├── Adobe Illustrator.txt
+│   │   │   ├── Afghanistan.txt
+│   │   │   ├── Africa.txt
+│   │   │   ├── Air.txt
+│   │   │   ├── Alan Turing.txt
+│   │   │   ├── Alanis Morissette.txt
+│   │   │   ├── Algebra.txt
+│   │   │   ├── American English.txt
+│   │   │   ├── Anatomy.txt
+│   │   │   ├── Andouille.txt
+│   │   │   ├── Angel.txt
+│   │   │   ├── Angola.txt
+│   │   │   ├── Animal.txt
+│   │   │   ├── Antarctica.txt
+│   │   │   ├── Apple Macintosh.txt
+│   │   │   ├── Apple.txt
+│   │   │   ├── Application.txt
+│   │   │   ├── April.txt
+│   │   │   ├── Aquaculture.txt
+│   │   │   ├── Archaeology.txt
+│   │   │   ├── Architecture.txt
+│   │   │   ├── Arctic Ocean.txt
+│   │   │   ├── Argentina.txt
+│   │   │   ├── Arithmetic.txt
+│   │   │   ├── Armenia.txt
+│   │   │   ├── Art.txt
+│   │   │   ├── Asia.txt
+│   │   │   ├── Asteroid.txt
+│   │   │   ├── Astronomy.txt
+│   │   │   ├── Atlantic Ocean.txt
+│   │   │   ├── Atom.txt
+│   │   │   ├── August.txt
+│   │   │   ├── Australia.txt
+│   │   │   ├── Austria.txt
+│   │   │   ├── Autonomous communities of Spain.txt
+│   │   │   ├── Bankruptcy.txt
+│   │   │   ├── Basket.txt
+│   │   │   ├── Beard.txt
+│   │   │   ├── Bed.txt
+│   │   │   ├── Beekeeping.txt
+│   │   │   ├── Beer.txt
+│   │   │   ├── Beijing.txt
+│   │   │   ├── Being.txt
+│   │   │   ├── Belgium.txt
+│   │   │   ├── Berry.txt
+│   │   │   ├── Biology.txt
+│   │   │   ├── Black pudding.txt
+│   │   │   ├── Black.txt
+│   │   │   ├── Boil.txt
+│   │   │   ├── Boot device.txt
+│   │   │   ├── Boot.txt
+│   │   │   ├── Botany.txt
+│   │   │   ├── Bottle.txt
+│   │   │   ├── Brazil.txt
+│   │   │   ├── Breakfast sausage.txt
+│   │   │   ├── British English.txt
+│   │   │   ├── Browser.txt
+│   │   │   ├── Bubonic plague.txt
+│   │   │   ├── Butter.txt
+│   │   │   ├── Calculus.txt
+│   │   │   ├── Capital city.txt
+│   │   │   ├── Capitalization.txt
+│   │   │   ├── Cartography.txt
+│   │   │   ├── Catharism.txt
+│   │   │   ├── Census of Marine Life.txt
+│   │   │   ├── Chat.txt
+│   │   │   ├── Cheese.txt
+│   │   │   ├── Chemical element.txt
+│   │   │   ├── Chemistry.txt
+│   │   │   ├── China.txt
+│   │   │   ├── Chinese language.txt
+│   │   │   ├── Chinese.txt
+│   │   │   ├── Chorizo.txt
+│   │   │   ├── Christian.txt
+│   │   │   ├── Church (building).txt
+│   │   │   ├── Circle.txt
+│   │   │   ├── City.txt
+│   │   │   ├── Civics.txt
+│   │   │   ├── Classic Mac OS.txt
+│   │   │   ├── Classical element.txt
+│   │   │   ├── Climate.txt
+│   │   │   ├── Coin.txt
+│   │   │   ├── Colchester.txt
+│   │   │   ├── Cold War.txt
+│   │   │   ├── Comedy.txt
+│   │   │   ├── Comet.txt
+│   │   │   ├── Compound.txt
+│   │   │   ├── Computer science.txt
+│   │   │   ├── Computer.txt
+│   │   │   ├── Conceptual metaphor.txt
+│   │   │   ├── Constitution.txt
+│   │   │   ├── Contact network.txt
+│   │   │   ├── Container.txt
+│   │   │   ├── Continent.txt
+│   │   │   ├── Cooking.txt
+│   │   │   ├── Coordinated Universal Time.txt
+│   │   │   ├── Copyright.txt
+│   │   │   ├── Cosmology.txt
+│   │   │   ├── Cost of living.txt
+│   │   │   ├── Country.txt
+│   │   │   ├── Creativity.txt
+│   │   │   ├── Creator.txt
+│   │   │   ├── Crime.txt
+│   │   │   ├── Crust.txt
+│   │   │   ├── Cuba.txt
+│   │   │   ├── Cube.txt
+│   │   │   ├── Cup.txt
+│   │   │   ├── Cytology.txt
+│   │   │   ├── Dance.txt
+│   │   │   ├── Deadline.txt
+│   │   │   ├── Death.txt
+│   │   │   ├── December.txt
+│   │   │   ├── Definition.txt
+│   │   │   ├── Denmark.txt
+│   │   │   ├── Depth.txt
+│   │   │   ├── Devil.txt
+│   │   │   ├── Diarrhea.txt
+│   │   │   ├── Dictionary.txt
+│   │   │   ├── Diesel-electric.txt
+│   │   │   ├── Dimension.txt
+│   │   │   ├── Dissolution of the monasteries.txt
+│   │   │   ├── Distance.txt
+│   │   │   ├── Dollar.txt
+│   │   │   ├── Dublin.txt
+│   │   │   ├── Dutton's Speedwords.txt
+│   │   │   ├── E Prime.txt
+│   │   │   ├── Earth science.txt
+│   │   │   ├── Earth.txt
+│   │   │   ├── Ebola virus.txt
+│   │   │   ├── Ecological yield.txt
+│   │   │   ├── Ecology.txt
+│   │   │   ├── Economics.txt
+│   │   │   ├── Editor.txt
+│   │   │   ├── Egypt.txt
+│   │   │   ├── Einstein on the Beach.txt
+│   │   │   ├── Embassy.txt
+│   │   │   ├── Encyclopedia.txt
+│   │   │   ├── English.txt
+│   │   │   ├── Et cetera.txt
+│   │   │   ├── Ethics.txt
+│   │   │   ├── Ethnic group.txt
+│   │   │   ├── Eurasia.txt
+│   │   │   ├── Europe.txt
+│   │   │   ├── Everything2.txt
+│   │   │   ├── Ewe.txt
+│   │   │   ├── Execution.txt
+│   │   │   ├── Experience economy.txt
+│   │   │   ├── Experiment.txt
+│   │   │   ├── FAQ.txt
+│   │   │   ├── Farm.txt
+│   │   │   ├── Farming.txt
+│   │   │   ├── February.txt
+│   │   │   ├── Fecund universes.txt
+│   │   │   ├── Financial capital.txt
+│   │   │   ├── Fine.txt
+│   │   │   ├── Finland.txt
+│   │   │   ├── First language.txt
+│   │   │   ├── Fish.txt
+│   │   │   ├── Fishing net.txt
+│   │   │   ├── Flame (disambiguation).txt
+│   │   │   ├── Flesch Reading Ease.txt
+│   │   │   ├── Fold (geology).txt
+│   │   │   ├── Food.txt
+│   │   │   ├── Foot (human).txt
+│   │   │   ├── France.txt
+│   │   │   ├── Fruit.txt
+│   │   │   ├── Frying.txt
+│   │   │   ├── GNU Free Documentation License.txt
+│   │   │   ├── Galaxy.txt
+│   │   │   ├── Gallon.txt
+│   │   │   ├── Geography.txt
+│   │   │   ├── Geometry.txt
+│   │   │   ├── Ghost.txt
+│   │   │   ├── Glass.txt
+│   │   │   ├── Goatee.txt
+│   │   │   ├── God's eye view.txt
+│   │   │   ├── God.txt
+│   │   │   ├── Google.txt
+│   │   │   ├── Government.txt
+│   │   │   ├── Grammar.txt
+│   │   │   ├── Graph theory.txt
+│   │   │   ├── Great Lakes.txt
+│   │   │   ├── Green.txt
+│   │   │   ├── Hair.txt
+│   │   │   ├── Harbor.txt
+│   │   │   ├── Hawaii (island).txt
+│   │   │   ├── Hawaii Ponoi.txt
+│   │   │   ├── Hawaii.txt
+│   │   │   ├── Healing.txt
+│   │   │   ├── Health.txt
+│   │   │   ├── Height.txt
+│   │   │   ├── Helium.txt
+│   │   │   ├── Herm.txt
+│   │   │   ├── Historian.txt
+│   │   │   ├── History of Australia.txt
+│   │   │   ├── History of Spain.txt
+│   │   │   ├── History.txt
+│   │   │   ├── Home page.txt
+│   │   │   ├── Honolulu.txt
+│   │   │   ├── Human body.txt
+│   │   │   ├── Hydrogen.txt
+│   │   │   ├── IELTS.txt
+│   │   │   ├── IP address.txt
+│   │   │   ├── ISO 19011.txt
+│   │   │   ├── Idiom.txt
+│   │   │   ├── If.txt
+│   │   │   ├── Immunology.txt
+│   │   │   ├── Inch.txt
+│   │   │   ├── India.txt
+│   │   │   ├── Indian Ocean.txt
+│   │   │   ├── Infinity.txt
+│   │   │   ├── Ink.txt
+│   │   │   ├── Insult.txt
+│   │   │   ├── Interim.txt
+│   │   │   ├── Internet slang.txt
+│   │   │   ├── Internet.txt
+│   │   │   ├── Inuit.txt
+│   │   │   ├── Ireland.txt
+│   │   │   ├── Islamic world.txt
+│   │   │   ├── Island.txt
+│   │   │   ├── Italian.txt
+│   │   │   ├── Italians.txt
+│   │   │   ├── Italy.txt
+│   │   │   ├── January.txt
+│   │   │   ├── Japan.txt
+│   │   │   ├── Jargon.txt
+│   │   │   ├── July.txt
+│   │   │   ├── June.txt
+│   │   │   ├── Jupiter.txt
+│   │   │   ├── Kahoʻolawe.txt
+│   │   │   ├── Kauai.txt
+│   │   │   ├── Killing.txt
+│   │   │   ├── Kilometer.txt
+│   │   │   ├── Kilometre.txt
+│   │   │   ├── King.txt
+│   │   │   ├── Knowledge.txt
+│   │   │   ├── L. L. Zamenhof.txt
+│   │   │   ├── Lanai.txt
+│   │   │   ├── Language.txt
+│   │   │   ├── Las Vegas.txt
+│   │   │   ├── Law.txt
+│   │   │   ├── Leap year.txt
+│   │   │   ├── Leather.txt
+│   │   │   ├── Legislature.txt
+│   │   │   ├── Leisure.txt
+│   │   │   ├── Library.txt
+│   │   │   ├── License.txt
+│   │   │   ├── Life.txt
+│   │   │   ├── Like.txt
+│   │   │   ├── Lime.txt
+│   │   │   ├── Linear algebra.txt
+│   │   │   ├── Link.txt
+│   │   │   ├── List of countries.txt
+│   │   │   ├── List of fruits.txt
+│   │   │   ├── List of mathematics topics.txt
+│   │   │   ├── Litre.txt
+│   │   │   ├── Live.txt
+│   │   │   ├── London.txt
+│   │   │   ├── Macadamia Nuts.txt
+│   │   │   ├── Macadamia nut.txt
+│   │   │   ├── Madrid.txt
+│   │   │   ├── Magnifying glass.txt
+│   │   │   ├── Mainland China.txt
+│   │   │   ├── Maize.txt
+│   │   │   ├── Mammal.txt
+│   │   │   ├── March.txt
+│   │   │   ├── Margarine.txt
+│   │   │   ├── Mars.txt
+│   │   │   ├── Mass.txt
+│   │   │   ├── Mathematics.txt
+│   │   │   ├── Maui.txt
+│   │   │   ├── May.txt
+│   │   │   ├── MediaWiki.txt
+│   │   │   ├── Mercury (element).txt
+│   │   │   ├── Mercury (planet).txt
+│   │   │   ├── Mercury.txt
+│   │   │   ├── Metabolism.txt
+│   │   │   ├── Metaphor.txt
+│   │   │   ├── Metre.txt
+│   │   │   ├── Mexico.txt
+│   │   │   ├── Microscope.txt
+│   │   │   ├── Microsoft Windows.txt
+│   │   │   ├── Microsoft.txt
+│   │   │   ├── Mile.txt
+│   │   │   ├── Milky Way.txt
+│   │   │   ├── Molecule.txt
+│   │   │   ├── Moloka'i.txt
+│   │   │   ├── Money.txt
+│   │   │   ├── Montreal.txt
+│   │   │   ├── Moral reasoning.txt
+│   │   │   ├── Mosque.txt
+│   │   │   ├── Movement.txt
+│   │   │   ├── Multiplication.txt
+│   │   │   ├── Multiverse.txt
+│   │   │   ├── Music.txt
+│   │   │   ├── Mustache.txt
+│   │   │   ├── Name.txt
+│   │   │   ├── National anthem.txt
+│   │   │   ├── Native American.txt
+│   │   │   ├── Natural resource.txt
+│   │   │   ├── Nature.txt
+│   │   │   ├── Nauru.txt
+│   │   │   ├── Negative.txt
+│   │   │   ├── Negentropy.txt
+│   │   │   ├── Neptune.txt
+│   │   │   ├── Network.txt
+│   │   │   ├── New York City.txt
+│   │   │   ├── Niihau.txt
+│   │   │   ├── North America.txt
+│   │   │   ├── North Pole.txt
+│   │   │   ├── Noun.txt
+│   │   │   ├── November.txt
+│   │   │   ├── Now.txt
+│   │   │   ├── Number.txt
+│   │   │   ├── Nēnē.txt
+│   │   │   ├── O Canada.txt
+│   │   │   ├── OK.txt
+│   │   │   ├── Oahu.txt
+│   │   │   ├── October.txt
+│   │   │   ├── Of.txt
+│   │   │   ├── Oil.txt
+│   │   │   ├── Open content.txt
+│   │   │   ├── Operating system.txt
+│   │   │   ├── Orthography.txt
+│   │   │   ├── Oxymoron.txt
+│   │   │   ├── PRC.txt
+│   │   │   ├── Pacific Ocean.txt
+│   │   │   ├── Page.txt
+│   │   │   ├── Paradox.txt
+│   │   │   ├── Peace.txt
+│   │   │   ├── People's Republic of China.txt
+│   │   │   ├── Periodic table.txt
+│   │   │   ├── Pet.txt
+│   │   │   ├── Philosophy.txt
+│   │   │   ├── Physics.txt
+│   │   │   ├── Physiology.txt
+│   │   │   ├── Pi.txt
+│   │   │   ├── Pint.txt
+│   │   │   ├── Planet.txt
+│   │   │   ├── Plant.txt
+│   │   │   ├── Plastic.txt
+│   │   │   ├── Platonic realism.txt
+│   │   │   ├── Plural.txt
+│   │   │   ├── Police.txt
+│   │   │   ├── Political divisions of China.txt
+│   │   │   ├── Political party.txt
+│   │   │   ├── Political problems of China.txt
+│   │   │   ├── Politics.txt
+│   │   │   ├── Potato.txt
+│   │   │   ├── Prediction.txt
+│   │   │   ├── Prison.txt
+│   │   │   ├── Probability experiment.txt
+│   │   │   ├── Probability.txt
+│   │   │   ├── Product stewardship.txt
+│   │   │   ├── Product.txt
+│   │   │   ├── Profanity.txt
+│   │   │   ├── Program.txt
+│   │   │   ├── Proof.txt
+│   │   │   ├── Proper noun.txt
+│   │   │   ├── Protein.txt
+│   │   │   ├── Provinces and territories of Canada.txt
+│   │   │   ├── Psychoneuroimmunology.txt
+│   │   │   ├── Quebec.txt
+│   │   │   ├── Ram.txt
+│   │   │   ├── Ranch.txt
+│   │   │   ├── Raw food.txt
+│   │   │   ├── Readability.txt
+│   │   │   ├── Reading.txt
+│   │   │   ├── Recreation.txt
+│   │   │   ├── Red.txt
+│   │   │   ├── Regime.txt
+│   │   │   ├── Religion.txt
+│   │   │   ├── Reward.txt
+│   │   │   ├── Right angle.txt
+│   │   │   ├── River.txt
+│   │   │   ├── Roman Empire.txt
+│   │   │   ├── Roman.txt
+│   │   │   ├── Rudyard Kipling.txt
+│   │   │   ├── SUV.txt
+│   │   │   ├── Sabbath in Christianity.txt
+│   │   │   ├── Sail.txt
+│   │   │   ├── Saint Lawrence River.txt
+│   │   │   ├── Salami.txt
+│   │   │   ├── Saturn.txt
+│   │   │   ├── Sausage.txt
+│   │   │   ├── Scarcity.txt
+│   │   │   ├── Science.txt
+│   │   │   ├── Scientist.txt
+│   │   │   ├── Search engine.txt
+│   │   │   ├── Seed.txt
+│   │   │   ├── Sense.txt
+│   │   │   ├── September.txt
+│   │   │   ├── Server log.txt
+│   │   │   ├── Server.txt
+│   │   │   ├── Service economy.txt
+│   │   │   ├── Seville.txt
+│   │   │   ├── Simile.txt
+│   │   │   ├── Simple English.txt
+│   │   │   ├── Site.txt
+│   │   │   ├── Skin.txt
+│   │   │   ├── Sky.txt
+│   │   │   ├── Slang.txt
+│   │   │   ├── Slavery.txt
+│   │   │   ├── Soap.txt
+│   │   │   ├── Soapbox.txt
+│   │   │   ├── Social capital.txt
+│   │   │   ├── Social contract.txt
+│   │   │   ├── Society.txt
+│   │   │   ├── Sociology.txt
+│   │   │   ├── Software.txt
+│   │   │   ├── Solar System.txt
+│   │   │   ├── Soul.txt
+│   │   │   ├── Sound.txt
+│   │   │   ├── South America.txt
+│   │   │   ├── South Pole.txt
+│   │   │   ├── Spache Readability Formula.txt
+│   │   │   ├── Spanish.txt
+│   │   │   ├── Special English.txt
+│   │   │   ├── Speed.txt
+│   │   │   ├── Spirit.txt
+│   │   │   ├── Sport.txt
+│   │   │   ├── State.txt
+│   │   │   ├── Statistics.txt
+│   │   │   ├── Stream.txt
+│   │   │   ├── String theory.txt
+│   │   │   ├── Substance.txt
+│   │   │   ├── Subtraction.txt
+│   │   │   ├── Suggestion.txt
+│   │   │   ├── Summary.txt
+│   │   │   ├── Supernatural.txt
+│   │   │   ├── Symbol.txt
+│   │   │   ├── Synagogue.txt
+│   │   │   ├── Table.txt
+│   │   │   ├── Taiwan.txt
+│   │   │   ├── Taxonomy.txt
+│   │   │   ├── Television.txt
+│   │   │   ├── Temple.txt
+│   │   │   ├── Ten Commandments.txt
+│   │   │   ├── Test.txt
+│   │   │   ├── The Sun.txt
+│   │   │   ├── Theatre.txt
+│   │   │   ├── Theft.txt
+│   │   │   ├── Time Cube.txt
+│   │   │   ├── Time horizon.txt
+│   │   │   ├── Time limit.txt
+│   │   │   ├── Tone language.txt
+│   │   │   ├── Trademark.txt
+│   │   │   ├── Tragedy (Greek theatre).txt
+│   │   │   ├── Tree.txt
+│   │   │   ├── USA.txt
+│   │   │   ├── Unit of measurement.txt
+│   │   │   ├── United Kingdom.txt
+│   │   │   ├── United States customary units.txt
+│   │   │   ├── Universe.txt
+│   │   │   ├── University.txt
+│   │   │   ├── Uranus.txt
+│   │   │   ├── Value (personal and cultural).txt
+│   │   │   ├── Value.txt
+│   │   │   ├── Vatican City.txt
+│   │   │   ├── Vegetable oil.txt
+│   │   │   ├── Velocity.txt
+│   │   │   ├── Venus.txt
+│   │   │   ├── Verb.txt
+│   │   │   ├── Virtual community.txt
+│   │   │   ├── Vocabulary.txt
+│   │   │   ├── Volapük.txt
+│   │   │   ├── Volcanism.txt
+│   │   │   ├── Volume.txt
+│   │   │   ├── Wall.txt
+│   │   │   ├── Want.txt
+│   │   │   ├── War.txt
+│   │   │   ├── Water.txt
+│   │   │   ├── Web browser.txt
+│   │   │   ├── Web.txt
+│   │   │   ├── Webpage.txt
+│   │   │   ├── Website.txt
+│   │   │   ├── Width.txt
+│   │   │   ├── Wiki.txt
+│   │   │   ├── WikiWiki.txt
+│   │   │   ├── Wiktionary.txt
+│   │   │   ├── Window.txt
+│   │   │   ├── Wine.txt
+│   │   │   ├── Word.txt
+│   │   │   ├── World Wide Web.txt
+│   │   │   ├── Yard (disambiguation).txt
+│   │   │   ├── Year.txt
+│   │   │   ├── Yiddish.txt
+│   │   │   ├── You.txt
+│   │   │   ├── Zebra.txt
+│   │   │   ├── Zinc.txt
+│   │   │   ├── Zoo.txt
+│   │   │   └── Zoology.txt
+│   │   ├── wait_for_healthy.sh
+│   │   └── wait_for_tasks_completed.sh
+│   └── test_vectordb.py
+├── tsconfig.json
+├── utility
+│   ├── data_indexer.py
+│   └── requirements.txt
+├── uv.lock
+└── vdb
+    └── milvus.yaml
+90 directories, 864 files
