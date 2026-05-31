@@ -1,0 +1,1090 @@
+.
+├── .claude
+│   ├── settings.json
+│   └── skills
+│       ├── andon
+│       │   ├── SKILL.md
+│       │   └── evals
+│       │       └── evals.json
+│       ├── commit
+│       │   └── SKILL.md
+│       └── grafana-sql
+│           ├── SKILL.md
+│           ├── evals
+│           │   └── evals.json
+│           └── scripts
+│               ├── .gitignore
+│               ├── extract_schema.py
+│               └── tests
+│                   ├── __init__.py
+│                   └── test_extract_schema.py
+├── .env.debug-capture
+├── .env.local.docker
+├── .env.local.host
+├── .env.local.testing
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_request.yml
+│   │   ├── feature_request.yml
+│   │   ├── us_request.yml
+│   │   └── user_return_request.yml
+│   ├── pull_request_template.md
+│   ├── slack-users.json
+│   └── workflows
+│       ├── mcr-ci.yml
+│       ├── slack-pr-notification.yml
+│       ├── trigger-dso.yml
+│       └── validate-pr-source.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
+├── .mcp.json
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── SECURITY.md
+├── dantotsus
+│   └── architecture
+│       └── transition-01-close-b2.md
+├── docker
+│   ├── auth
+│   │   ├── .env.kc.local
+│   │   └── kc-mcr-local-config.json
+│   └── drive
+│       ├── compose.override.yml.drive
+│       ├── docker-compose.override.yml.mcr
+│       └── setup-drive.sh
+├── docker-compose.yaml
+├── image
+│   └── schema-archi-fonctionnel.jpg
+├── mcr-capture-worker
+│   ├── .gitignore
+│   ├── .vscode
+│   │   └── settings.json
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── entrypoint.sh
+│   ├── mcr_capture_worker
+│   │   ├── __init__.py
+│   │   ├── clients
+│   │   │   ├── http_client.py
+│   │   │   └── meeting_transition_client.py
+│   │   ├── db
+│   │   │   ├── __init__.py
+│   │   │   └── db.py
+│   │   ├── meeting_repository.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── meeting_model.py
+│   │   │   └── user_model.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── audio_capture_schema.py
+│   │   │   └── meeting_schema.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── audio
+│   │   │   │   ├── inject_stream_strategy
+│   │   │   │   │   ├── config.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── recorderController.js
+│   │   │   │   │   ├── streamUtils.js
+│   │   │   │   │   ├── webrtcBridge.js
+│   │   │   │   │   └── webrtcMainReceiver.js
+│   │   │   │   └── wait_for_stream_strategy
+│   │   │   │       └── audioRecorder.js
+│   │   │   ├── connection_strategies
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── abstract_connection.py
+│   │   │   │   ├── comu_connection.py
+│   │   │   │   ├── visio_connection.py
+│   │   │   │   ├── webconf_connection.py
+│   │   │   │   ├── webex_connection.py
+│   │   │   │   └── webinaire_connection.py
+│   │   │   ├── meeting_audio_recorder.py
+│   │   │   ├── meeting_monitors
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── abstract_meeting_monitor.py
+│   │   │   │   ├── comu_monitor.py
+│   │   │   │   ├── visio_monitor.py
+│   │   │   │   ├── webconf_monitor.py
+│   │   │   │   ├── webex_monitor.py
+│   │   │   │   └── webinaire_monitor.py
+│   │   │   └── s3_service.py
+│   │   ├── settings
+│   │   │   └── settings.py
+│   │   ├── setup
+│   │   │   ├── logger.py
+│   │   │   └── sentry.py
+│   │   ├── utils
+│   │   │   ├── s3_client.py
+│   │   │   ├── s3_service.py
+│   │   │   └── upload_queue.py
+│   │   └── worker.py
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_handle_audio_chunks.py
+│   │   └── test_settings.py
+│   └── uv.lock
+├── mcr-core
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .vscode
+│   │   ├── extensions.json
+│   │   ├── launch.json
+│   │   └── settings.json
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── alembic.ini
+│   ├── docs
+│   │   └── archi-captation.png
+│   ├── mcr_meeting
+│   │   ├── __init__.py
+│   │   ├── app
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── evaluation_router.py
+│   │   │   │   ├── feature_flag_router.py
+│   │   │   │   ├── feedback_router.py
+│   │   │   │   ├── lookup_router.py
+│   │   │   │   ├── meeting
+│   │   │   │   │   ├── capture_bot_router.py
+│   │   │   │   │   ├── capture_router.py
+│   │   │   │   │   ├── deliverable_router.py
+│   │   │   │   │   ├── meeting_multipart_router.py
+│   │   │   │   │   ├── meeting_router.py
+│   │   │   │   │   └── transcription_router.py
+│   │   │   │   └── user_router.py
+│   │   │   ├── client
+│   │   │   │   ├── comu_client.py
+│   │   │   │   ├── drive_client.py
+│   │   │   │   ├── http_client.py
+│   │   │   │   ├── meeting_client.py
+│   │   │   │   └── smtp_client.py
+│   │   │   ├── configs
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── base.py
+│   │   │   ├── cr-templates
+│   │   │   │   ├── FCR_report_template.docx
+│   │   │   │   ├── FCR_transcription_template.docx
+│   │   │   │   └── detailed_synthesis_template.docx
+│   │   │   ├── db
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── db.py
+│   │   │   │   ├── deliverable_repository.py
+│   │   │   │   ├── feedback_repository.py
+│   │   │   │   ├── meeting_repository.py
+│   │   │   │   ├── meeting_transition_record_repository.py
+│   │   │   │   ├── migrations
+│   │   │   │   │   ├── env.py
+│   │   │   │   │   ├── script.py.mako
+│   │   │   │   │   └── versions
+│   │   │   │   │       ├── 0e8980438aa9_create_meeting_transition_record_table.py
+│   │   │   │   │       ├── 1b957c30ebe4_add_last_capture_audio_index.py
+│   │   │   │   │       ├── 1dfb13692257_add_vote_field_to_deliverable.py
+│   │   │   │   │       ├── 2183b593393d_merge_transition_estimation_capture_end_.py
+│   │   │   │   │       ├── 2391ddc44079_remove_member_table.py
+│   │   │   │   │       ├── 2eff96979526_remove_list_participants_table.py
+│   │   │   │   │       ├── 309fda53987a_remove_meeting_audio_index.py
+│   │   │   │   │       ├── 37e431c19a4d_add_webcconf_to_meeting_platform.py
+│   │   │   │   │       ├── 3b6b37018db1_transition_estimation_optional.py
+│   │   │   │   │       ├── 3fa81afe2947_remove_meeting_type_and_agenda.py
+│   │   │   │   │       ├── 4774a95810b3_add_transcription_in_progress_status.py
+│   │   │   │   │       ├── 5df0f2d291e0_mark_fields_as_non_null.py
+│   │   │   │   │       ├── 635bd3fef1bb_remove_user_password.py
+│   │   │   │   │       ├── 67abf415a659_rename_meeting_transcription_record_.py
+│   │   │   │   │       ├── 6b6d08a6f6e2_migrate_sqlenum_to_varchar.py
+│   │   │   │   │       ├── 6c36a5ed4c47_remove_index_on_transcription_text.py
+│   │   │   │   │       ├── 717de2b78c2e_create_deliverable_table.py
+│   │   │   │   │       ├── 7648031b6206_remove_end_date.py
+│   │   │   │   │       ├── 7996ad5c1d8d_merge_meeting_statuses.py
+│   │   │   │   │       ├── 82c5cdfb94fb_add_deleted_status_to_meetings_status_.py
+│   │   │   │   │       ├── 8eae6cd096cc_remove_audio_index.py
+│   │   │   │   │       ├── 91646abe1af2_.py
+│   │   │   │   │       ├── 96dbc7f32cba_add_meeting_status.py
+│   │   │   │   │       ├── 9aa89891354a_add_start_and_end_date.py
+│   │   │   │   │       ├── 9ad682c0d475_add_transcription_filename.py
+│   │   │   │   │       ├── a041171f7a91_create_feedback_table.py
+│   │   │   │   │       ├── a1b2c3d4e5f6_add_visio_to_meeting_platform.py
+│   │   │   │   │       ├── a64618d27ac5_add_webex_to_meeting_platform.py
+│   │   │   │   │       ├── ac554ef33c48_add_import_pending_status.py
+│   │   │   │   │       ├── ad716383829e_remove_transcription_version.py
+│   │   │   │   │       ├── b0cea6a22be0_add_keycloak_uuid.py
+│   │   │   │   │       ├── b6b97a4125c5_add_report_failed_status.py
+│   │   │   │   │       ├── bbf0d24b3bc4_add_cascade_delete.py
+│   │   │   │   │       ├── beec5d6f2075_baseline.py
+│   │   │   │   │       ├── c3a1f0d8e2b4_deliverable_type_and_status.py
+│   │   │   │   │       ├── ca74396de706_add_report_filename.py
+│   │   │   │   │       ├── d1fe6890d8a3_add_bot_is_connecting_status_to_meeting_.py
+│   │   │   │   │       ├── d7e3c0f4a8b1_deliverable_unique_meeting_type_active.py
+│   │   │   │   │       ├── e4d8594ebbcf_add_capture_end_status.py
+│   │   │   │   │       ├── e57b5e520610_add_notes_to_meeting.py
+│   │   │   │   │       ├── ed12f9c61fe4_constrain_name_platform.py
+│   │   │   │   │       └── f234bcd56789_add_capture_bot_connection_failed_status.py
+│   │   │   │   ├── unit_of_work.py
+│   │   │   │   └── user_repository.py
+│   │   │   ├── domain
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── authorize_meeting_access.py
+│   │   │   │   ├── deliverable_transitions.py
+│   │   │   │   ├── meeting_transitions.py
+│   │   │   │   └── report_rendering.py
+│   │   │   ├── exceptions
+│   │   │   │   ├── exception_handler.py
+│   │   │   │   └── exceptions.py
+│   │   │   ├── infrastructure
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── celery.py
+│   │   │   │   ├── email.py
+│   │   │   │   └── s3.py
+│   │   │   ├── models
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── deliverable_model.py
+│   │   │   │   ├── feedback_model.py
+│   │   │   │   ├── meeting_model.py
+│   │   │   │   ├── meeting_transition_record.py
+│   │   │   │   ├── transcription_model.py
+│   │   │   │   └── user_model.py
+│   │   │   ├── orchestrators
+│   │   │   │   ├── deliverable_orchestrator.py
+│   │   │   │   ├── feedback_orchestrator.py
+│   │   │   │   ├── lookup_orchestrator.py
+│   │   │   │   ├── meeting_multipart_orchestrator.py
+│   │   │   │   ├── meeting_orchestrator.py
+│   │   │   │   ├── meeting_transitions_orchestrator.py
+│   │   │   │   └── transcription_orchestrator.py
+│   │   │   ├── schemas
+│   │   │   │   ├── S3_types.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── celery_types.py
+│   │   │   │   ├── deliverable_schema.py
+│   │   │   │   ├── feedback_schema.py
+│   │   │   │   ├── lookup_schema.py
+│   │   │   │   ├── meeting_schema.py
+│   │   │   │   ├── platform_connection_validator_schema.py
+│   │   │   │   ├── report_generation.py
+│   │   │   │   ├── transcription_schema.py
+│   │   │   │   └── user_schema.py
+│   │   │   ├── services
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── audio_pre_transcription_processing_service.py
+│   │   │   │   ├── audio_upload_service.py
+│   │   │   │   ├── correct_acronyms
+│   │   │   │   │   ├── acronym_corrector.py
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   └── glossary.md
+│   │   │   │   │   └── prompt.py
+│   │   │   │   ├── correct_spelling_mistakes
+│   │   │   │   │   ├── prompt.py
+│   │   │   │   │   └── spelling_corrector.py
+│   │   │   │   ├── deliverable_service.py
+│   │   │   │   ├── deliverable_storage_service.py
+│   │   │   │   ├── docx_generation
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── templated_docx_generator.py
+│   │   │   │   ├── docx_report_generation_service.py
+│   │   │   │   ├── docx_transcription_generation_service.py
+│   │   │   │   ├── email
+│   │   │   │   │   ├── email_service.py
+│   │   │   │   │   ├── registry
+│   │   │   │   │   │   ├── base.html
+│   │   │   │   │   │   ├── footer.html
+│   │   │   │   │   │   ├── report_generation_success.html
+│   │   │   │   │   │   └── transcription_generation_success.html
+│   │   │   │   │   ├── templates.py
+│   │   │   │   │   └── types.py
+│   │   │   │   ├── feature_flag_service.py
+│   │   │   │   ├── feedback_service.py
+│   │   │   │   ├── llm_post_processing.py
+│   │   │   │   ├── lookup_service.py
+│   │   │   │   ├── meeting_audio_service.py
+│   │   │   │   ├── meeting_multipart_service.py
+│   │   │   │   ├── meeting_service.py
+│   │   │   │   ├── meeting_to_transcription_service.py
+│   │   │   │   ├── meeting_transition_record_service.py
+│   │   │   │   ├── redis_token_store.py
+│   │   │   │   ├── report_content
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── markdown_to_docx.py
+│   │   │   │   │   ├── template_renderer.py
+│   │   │   │   │   └── templates
+│   │   │   │   │       └── detailed_synthesis.md.jinja
+│   │   │   │   ├── report_task_service.py
+│   │   │   │   ├── s3_service.py
+│   │   │   │   ├── speech_to_text
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── diarization_processor.py
+│   │   │   │   │   ├── participants_naming
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── match_speakers_with_participants.py
+│   │   │   │   │   │   ├── participant_extraction.py
+│   │   │   │   │   │   └── prompts.py
+│   │   │   │   │   ├── speech_to_text.py
+│   │   │   │   │   ├── transcription_post_process.py
+│   │   │   │   │   ├── transcription_processor.py
+│   │   │   │   │   ├── types.py
+│   │   │   │   │   └── utils
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       ├── audio.py
+│   │   │   │   │       ├── chunking.py
+│   │   │   │   │       ├── models.py
+│   │   │   │   │       ├── types.py
+│   │   │   │   │       └── vad.py
+│   │   │   │   ├── token_exchange_service.py
+│   │   │   │   ├── transcription_task_service.py
+│   │   │   │   ├── transcription_waiting_time_service.py
+│   │   │   │   └── user_service.py
+│   │   │   ├── state_machine
+│   │   │   │   ├── graph
+│   │   │   │   │   ├── ImportMeetingStateMachine.png
+│   │   │   │   │   ├── RecordMeetingStateMachine.png
+│   │   │   │   │   └── VisioMeetingStateMachine.png
+│   │   │   │   ├── import_meeting_state_machine.py
+│   │   │   │   ├── record_meeting_state_machine.py
+│   │   │   │   └── visio_meeting_state_machine.py
+│   │   │   ├── statemachine_actions
+│   │   │   │   └── meeting_actions.py
+│   │   │   ├── use_cases
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── mark_deliverable_success.py
+│   │   │   │   └── request_deliverable.py
+│   │   │   └── utils
+│   │   │       ├── __init__.py
+│   │   │       ├── compute_devices.py
+│   │   │       ├── db_utils.py
+│   │   │       ├── deliverable_filename.py
+│   │   │       ├── file_validation.py
+│   │   │       ├── filename_header.py
+│   │   │       ├── langfuse_observability.py
+│   │   │       ├── load_speech_to_text_model.py
+│   │   │       ├── meeting.py
+│   │   │       ├── s3_client.py
+│   │   │       └── sentry_context.py
+│   │   ├── evaluation
+│   │   │   ├── __init__.py
+│   │   │   ├── acronyms
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── evaluation_script.py
+│   │   │   │   ├── loaders.py
+│   │   │   │   ├── types.py
+│   │   │   │   └── utils
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── counting.py
+│   │   │   │       ├── metrics.py
+│   │   │   │       └── persistence.py
+│   │   │   ├── asr
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── evaluation_pipeline.py
+│   │   │   │   ├── types.py
+│   │   │   │   └── utils
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── metrics_calculator.py
+│   │   │   │       └── result_manager.py
+│   │   │   ├── cli
+│   │   │   │   ├── cli.py
+│   │   │   │   ├── cli_generate_metrics.py
+│   │   │   │   └── utils.py
+│   │   │   ├── participant_naming
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __main__.py
+│   │   │   │   └── test_data
+│   │   │   │       ├── 0416_revue_de_sprint.expected.json
+│   │   │   │       ├── 0416_revue_de_sprint.txt
+│   │   │   │       ├── 0424_daily meeting_Comu.expected.json
+│   │   │   │       ├── 0424_daily meeting_Comu.txt
+│   │   │   │       ├── 0428_daily meeting_Visio.expected.json
+│   │   │   │       ├── 0428_daily meeting_Visio.txt
+│   │   │   │       ├── 0430_daily meeting_Comu.expected.json
+│   │   │   │       ├── 0430_daily meeting_Comu.txt
+│   │   │   │       ├── 0518_Cop PO PM_Visio.expected.json
+│   │   │   │       ├── 0518_Cop PO PM_Visio.txt
+│   │   │   │       ├── 0518_daily meeting_Visio.expected.json
+│   │   │   │       ├── 0518_daily meeting_Visio.txt
+│   │   │   │       ├── 0521_daily meetgin_Visio.expected.json
+│   │   │   │       ├── 0521_daily meetgin_Visio.txt
+│   │   │   │       ├── 15_pers_presentes.expected.json
+│   │   │   │       ├── 15_pers_presentes.txt
+│   │   │   │       ├── 3_pers_titre.expected.json
+│   │   │   │       ├── 3_pers_titre.txt
+│   │   │   │       ├── 40_pers.expected.json
+│   │   │   │       ├── 40_pers.txt
+│   │   │   │       ├── 5_pers_edge_cases.expected.json
+│   │   │   │       ├── 5_pers_edge_cases.txt
+│   │   │   │       ├── 5_pers_implicite.expected.json
+│   │   │   │       ├── 5_pers_implicite.txt
+│   │   │   │       ├── 5_pers_pas_de_pres.expected.json
+│   │   │   │       ├── 5_pers_pas_de_pres.txt
+│   │   │   │       ├── 6_pers_multiple_names.expected.json
+│   │   │   │       └── 6_pers_multiple_names.txt
+│   │   │   └── utils
+│   │   │       ├── __init__.py
+│   │   │       ├── math_utils.py
+│   │   │       └── text_normalization.py
+│   │   ├── main.py
+│   │   ├── setup
+│   │   │   ├── logger.py
+│   │   │   └── request_id_middleware.py
+│   │   └── transcription_worker.py
+│   ├── mcr_meeting.egg-info
+│   │   ├── PKG-INFO
+│   │   ├── SOURCES.txt
+│   │   ├── dependency_links.txt
+│   │   ├── requires.txt
+│   │   └── top_level.txt
+│   ├── notebooks
+│   │   ├── .gitignore
+│   │   └── explore_summre.py
+│   ├── pyproject.toml
+│   ├── scripts
+│   │   ├── dataset_standardisation
+│   │   │   ├── clean_dataset_standardisation.py
+│   │   │   ├── merge_individual_audios.py
+│   │   │   ├── noisy_dataset_standardisation.py
+│   │   │   └── utils.py
+│   │   ├── download_chunk.sh
+│   │   ├── generate_state_machine_graph.py
+│   │   ├── process_audio.sh
+│   │   ├── provisioning.py
+│   │   └── upload_file_S3.sh
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── test_deliverable_router.py
+│   │   │   ├── test_feature_flag_router.py
+│   │   │   ├── test_feedback_router.py
+│   │   │   ├── test_lookup_router.py
+│   │   │   ├── test_meeting_multipart_router.py
+│   │   │   ├── test_meeting_router.py
+│   │   │   ├── test_transcription_router.py
+│   │   │   └── test_user_router.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   └── test_env_vars.py
+│   │   ├── conftest.py
+│   │   ├── domain
+│   │   │   ├── __init__.py
+│   │   │   ├── test_deliverable_transitions.py
+│   │   │   └── test_report_rendering.py
+│   │   ├── factories
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── deliverable_factory.py
+│   │   │   ├── meeting_factory.py
+│   │   │   ├── meeting_transition_record_factory.py
+│   │   │   ├── test_factories.py
+│   │   │   ├── transcription_factory.py
+│   │   │   └── user_factory.py
+│   │   ├── integration
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   └── test_deliverable_storage.py
+│   │   ├── mocks
+│   │   │   ├── __init__.py
+│   │   │   ├── in_memory_drive.py
+│   │   │   ├── in_memory_email.py
+│   │   │   ├── in_memory_keycloak.py
+│   │   │   ├── in_memory_redis.py
+│   │   │   ├── in_memory_s3.py
+│   │   │   └── report_task_mocks.py
+│   │   ├── orchestrators
+│   │   │   ├── test_deliverable_orchestrator.py
+│   │   │   ├── test_deliverable_repository.py
+│   │   │   ├── test_meeting_repository.py
+│   │   │   └── test_transcription_orchestrator.py
+│   │   ├── schemas
+│   │   │   └── test_meeting_schema.py
+│   │   ├── services
+│   │   │   ├── conftest.py
+│   │   │   ├── speech_to_text_pipeline
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_integration_center_process.py
+│   │   │   │   ├── test_integration_full_process.py
+│   │   │   │   ├── test_integration_post_process.py
+│   │   │   │   ├── test_integration_pre_process.py
+│   │   │   │   └── test_silent_audio_detection.py
+│   │   │   ├── test_custom_report_generation.py
+│   │   │   ├── test_deliverable_service.py
+│   │   │   ├── test_detailed_synthesis_generation.py
+│   │   │   ├── test_meeting_audio_service.py
+│   │   │   ├── test_meeting_service.py
+│   │   │   ├── test_meeting_transitions_service.py
+│   │   │   ├── test_report_task_service.py
+│   │   │   ├── test_s3_multipart.py
+│   │   │   └── test_transcription_waiting_time_service.py
+│   │   ├── unit
+│   │   │   ├── __init__.py
+│   │   │   ├── evaluation
+│   │   │   │   ├── acronyms
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_counting.py
+│   │   │   │   │   ├── test_loaders.py
+│   │   │   │   │   ├── test_metrics.py
+│   │   │   │   │   └── test_persistence.py
+│   │   │   │   └── asr
+│   │   │   │       ├── test_evaluation_pipeline.py
+│   │   │   │       └── utils
+│   │   │   │           └── test_metrics_calculator.py
+│   │   │   ├── test_acronym_corrector.py
+│   │   │   ├── test_audio_chunk_download.py
+│   │   │   ├── test_compute_transcription_chunks.py
+│   │   │   ├── test_deliverable_filename.py
+│   │   │   ├── test_extract_transcription_task_args.py
+│   │   │   ├── test_match_speakers_with_participants.py
+│   │   │   ├── test_meeting_to_transcription_service.py
+│   │   │   ├── test_noise_detection.py
+│   │   │   ├── test_participant_extraction.py
+│   │   │   ├── test_s3_extension_extraction.py
+│   │   │   └── test_spelling_corrector.py
+│   │   └── use_cases
+│   │       ├── __init__.py
+│   │       ├── test_mark_deliverable_success.py
+│   │       └── test_request_deliverable.py
+│   └── uv.lock
+├── mcr-frontend
+│   ├── .dockerignore
+│   ├── .editorconfig
+│   ├── .eslintrc.cjs
+│   ├── .gitignore
+│   ├── .prettierignore
+│   ├── .prettierrc
+│   ├── .vscode
+│   │   ├── extensions.json
+│   │   ├── launch.json
+│   │   └── settings.json
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── docker
+│   │   └── nginx.conf
+│   ├── env.d.ts
+│   ├── eslint-local-rules
+│   │   ├── index.js
+│   │   ├── no-vi-fn-outside-hoisted.js
+│   │   └── package.json
+│   ├── index.html
+│   ├── knip.json
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── postcss.config.js
+│   ├── public
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon.ico
+│   │   ├── fcr-guide-utilisateur.pdf
+│   │   ├── manifest.json
+│   │   └── mockServiceWorker.js
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   │   └── pictograms
+│   │   │       ├── background
+│   │   │       │   └── ovoid.svg
+│   │   │       └── system
+│   │   │           └── technical-error.svg
+│   │   ├── auto-imports.d.ts
+│   │   ├── components
+│   │   │   ├── core
+│   │   │   │   ├── AppFooter.vue
+│   │   │   │   ├── AppHeader.vue
+│   │   │   │   ├── AppToaster.vue
+│   │   │   │   ├── AudioLevelMeter.vue
+│   │   │   │   ├── BaseModal.vue
+│   │   │   │   ├── DsfrDropdown.vue
+│   │   │   │   ├── PageFrontMatter.vue
+│   │   │   │   ├── ProgressBar.vue
+│   │   │   │   ├── RoundedActionButton.vue
+│   │   │   │   ├── SkeletonLoader.vue
+│   │   │   │   └── TipTapEditor.vue
+│   │   │   ├── feedback
+│   │   │   │   ├── FeedbackButton.vue
+│   │   │   │   └── FeedbackModal.vue
+│   │   │   ├── meeting
+│   │   │   │   ├── AddMeetingForm.spec.ts
+│   │   │   │   ├── AddMeetingForm.vue
+│   │   │   │   ├── CreateVisioMeetingForm.vue
+│   │   │   │   ├── DeliverableItem.vue
+│   │   │   │   ├── ImportMeetingForm.vue
+│   │   │   │   ├── ImportMeetingProgressBar.vue
+│   │   │   │   ├── LiveRecordingInProgress.vue
+│   │   │   │   ├── MeetingAudioCard.vue
+│   │   │   │   ├── MeetingDeliverableCard.vue
+│   │   │   │   ├── MeetingDeliverableList.vue
+│   │   │   │   ├── MeetingFrontMatterV2.spec.ts
+│   │   │   │   ├── MeetingFrontMatterV2.vue
+│   │   │   │   ├── MeetingNotesEditor.vue
+│   │   │   │   ├── RecordingCard.spec.ts
+│   │   │   │   ├── RecordingCard.vue
+│   │   │   │   ├── VisioRecordingCard.spec.ts
+│   │   │   │   ├── VisioRecordingCard.vue
+│   │   │   │   ├── forms
+│   │   │   │   │   ├── EditNameMeetingForm.vue
+│   │   │   │   │   ├── RecordMeetingForm.vue
+│   │   │   │   │   ├── import-meeting
+│   │   │   │   │   │   └── import-meeting.schema.ts
+│   │   │   │   │   ├── record-meeting
+│   │   │   │   │   │   ├── RecordMeetingFormNotice.vue
+│   │   │   │   │   │   ├── RecordMeetingStep1.spec.ts
+│   │   │   │   │   │   ├── RecordMeetingStep1.vue
+│   │   │   │   │   │   └── RecordMeetingStep2.vue
+│   │   │   │   │   └── record-meeting.schema.ts
+│   │   │   │   ├── meeting.schema.spec.ts
+│   │   │   │   ├── meeting.schema.ts
+│   │   │   │   ├── modals
+│   │   │   │   │   ├── CreateVisioMeetingModal.vue
+│   │   │   │   │   ├── CustomReportModal.spec.ts
+│   │   │   │   │   ├── CustomReportModal.vue
+│   │   │   │   │   ├── DeleteMeetingModal.vue
+│   │   │   │   │   ├── EditMeetingModal.vue
+│   │   │   │   │   ├── EndLiveMeetingModal.vue
+│   │   │   │   │   ├── ImportMeetingModal.vue
+│   │   │   │   │   ├── LiveMeetingAdvicesModal.vue
+│   │   │   │   │   ├── RecordMeetingModal.vue
+│   │   │   │   │   └── VisioAdvicesModal.vue
+│   │   │   │   ├── report
+│   │   │   │   │   ├── ReportDownload.vue
+│   │   │   │   │   ├── ReportFailed.vue
+│   │   │   │   │   ├── ReportFormatSelection.vue
+│   │   │   │   │   ├── ReportPending.vue
+│   │   │   │   │   └── TranscriptionNotReady.vue
+│   │   │   │   ├── table
+│   │   │   │   │   ├── MeetingCellDispatcher.vue
+│   │   │   │   │   ├── MeetingsDataTable.vue
+│   │   │   │   │   ├── StatusTag.spec.ts
+│   │   │   │   │   ├── StatusTag.vue
+│   │   │   │   │   ├── TableHeaderActions.spec.ts
+│   │   │   │   │   ├── TableHeaderActions.vue
+│   │   │   │   │   ├── TableTag.vue
+│   │   │   │   │   ├── cells
+│   │   │   │   │   │   ├── DataCellAction.vue
+│   │   │   │   │   │   ├── DataCellDeliverable.vue
+│   │   │   │   │   │   └── DataCellMeetingTitle.vue
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── visio-modal
+│   │   │   │   │   ├── ComuMeetingForm.vue
+│   │   │   │   │   ├── VisioConnectionSeparator.vue
+│   │   │   │   │   ├── VisioMeetingForm.vue
+│   │   │   │   │   ├── WebconfMeetingForm.vue
+│   │   │   │   │   ├── WebexMeetingForm.vue
+│   │   │   │   │   └── WebinaireMeetingForm.vue
+│   │   │   │   └── visio-recording
+│   │   │   │       ├── VisioConnecting.vue
+│   │   │   │       ├── VisioError.spec.ts
+│   │   │   │       ├── VisioError.vue
+│   │   │   │       └── VisioInProgress.vue
+│   │   │   ├── sign-in
+│   │   │   │   ├── use-auth.spec.ts
+│   │   │   │   ├── use-auth.test-utils.ts
+│   │   │   │   └── use-auth.ts
+│   │   │   └── table
+│   │   │       ├── BaseTable.vue
+│   │   │       ├── TableActions.vue
+│   │   │       └── TablePagination.vue
+│   │   ├── components.d.ts
+│   │   ├── composables
+│   │   │   ├── use-audio-chunk-cleanup.spec.ts
+│   │   │   ├── use-audio-chunk-cleanup.ts
+│   │   │   ├── use-audio-chunk-store.spec.ts
+│   │   │   ├── use-audio-chunk-store.ts
+│   │   │   ├── use-chunk-upload.spec.ts
+│   │   │   ├── use-chunk-upload.ts
+│   │   │   ├── use-feature-flag.ts
+│   │   │   ├── use-leave-guard.ts
+│   │   │   ├── use-meeting-peremption.spec.ts
+│   │   │   ├── use-meeting-peremption.ts
+│   │   │   ├── use-multipart.ts
+│   │   │   ├── use-network-status.spec.ts
+│   │   │   ├── use-network-status.ts
+│   │   │   ├── use-pagination.ts
+│   │   │   ├── use-random-id.ts
+│   │   │   ├── use-recorder.spec.ts
+│   │   │   ├── use-recorder.ts
+│   │   │   ├── use-recording-monitor.spec.ts
+│   │   │   ├── use-recording-monitor.ts
+│   │   │   ├── use-recording-session.ts
+│   │   │   ├── use-session-alert.spec.ts
+│   │   │   ├── use-session-alert.ts
+│   │   │   ├── use-toaster.ts
+│   │   │   └── use-unleash.ts
+│   │   ├── config
+│   │   │   ├── audioMonitor.ts
+│   │   │   ├── auto-cleanup.test.ts
+│   │   │   ├── meeting.ts
+│   │   │   └── yup.ts
+│   │   ├── env.d.ts
+│   │   ├── locales
+│   │   │   └── fr.json
+│   │   ├── main.css
+│   │   ├── main.ts
+│   │   ├── plugins
+│   │   │   ├── i18n.ts
+│   │   │   └── vue-query.ts
+│   │   ├── router
+│   │   │   ├── index.ts
+│   │   │   └── routes.ts
+│   │   ├── services
+│   │   │   ├── auth
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── auth.service.types.ts
+│   │   │   │   ├── keycloak.ts
+│   │   │   │   └── token-provider.ts
+│   │   │   ├── deliverables
+│   │   │   │   ├── deliverables.service.spec.ts
+│   │   │   │   ├── deliverables.service.ts
+│   │   │   │   ├── deliverables.types.ts
+│   │   │   │   └── use-deliverables.ts
+│   │   │   ├── feedback
+│   │   │   │   ├── feedback.service.ts
+│   │   │   │   ├── feedback.types.ts
+│   │   │   │   └── use-feedback.ts
+│   │   │   ├── http
+│   │   │   │   ├── http.interceptors.ts
+│   │   │   │   ├── http.service.ts
+│   │   │   │   └── http.utils.ts
+│   │   │   ├── lookup
+│   │   │   │   ├── lookup.service.ts
+│   │   │   │   └── lookup.types.ts
+│   │   │   ├── meetings
+│   │   │   │   ├── meetings-datetime.spec.ts
+│   │   │   │   ├── meetings-datetime.ts
+│   │   │   │   ├── meetings.service.spec.ts
+│   │   │   │   ├── meetings.service.ts
+│   │   │   │   ├── meetings.service.types.ts
+│   │   │   │   ├── meetings.types.ts
+│   │   │   │   ├── use-meeting-notes.ts
+│   │   │   │   └── use-meeting.ts
+│   │   │   ├── shared
+│   │   │   │   └── pagination.type.ts
+│   │   │   └── users
+│   │   │       └── users.service.types.ts
+│   │   ├── utils
+│   │   │   ├── audio-level-monitor.ts
+│   │   │   ├── auth.ts
+│   │   │   ├── file.spec.ts
+│   │   │   ├── file.ts
+│   │   │   ├── formatters.ts
+│   │   │   ├── meeting.ts
+│   │   │   ├── timeFormatting.spec.ts
+│   │   │   ├── timeFormatting.ts
+│   │   │   ├── types.ts
+│   │   │   └── video2audioConverter.ts
+│   │   ├── views
+│   │   │   ├── errors
+│   │   │   │   ├── LoginErrorPage.vue
+│   │   │   │   ├── NotBetaTesterPage.vue
+│   │   │   │   └── NotFoundPage.vue
+│   │   │   └── meeting
+│   │   │       ├── MeetingListPage.spec.ts
+│   │   │       ├── MeetingListPage.vue
+│   │   │       ├── MeetingPageAlert.vue
+│   │   │       ├── MeetingPageV2.vue
+│   │   │       └── MeetingTiles.vue
+│   │   └── vitest.setup.ts
+│   ├── tailwind.config.cjs
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── tsconfig.vitest.json
+│   └── vite.config.ts
+├── mcr-gateway
+│   ├── .gitignore
+│   ├── .vscode
+│   │   ├── launch.json
+│   │   └── settings.json
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── docs
+│   │   ├── Makefile
+│   │   ├── make.bat
+│   │   └── source
+│   │       ├── 01_about.rst
+│   │       ├── 02_usage.rst
+│   │       ├── 03_source.rst
+│   │       ├── 04_authors.rst
+│   │       ├── 05_contributing.rst
+│   │       ├── conf.py
+│   │       └── index.rst
+│   ├── mcr_gateway
+│   │   ├── __init__.py
+│   │   ├── app
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── authentification_router.py
+│   │   │   │   ├── deliverable_router.py
+│   │   │   │   ├── feedback_router.py
+│   │   │   │   ├── lookup_router.py
+│   │   │   │   ├── meeting_multipart_router.py
+│   │   │   │   └── meeting_router.py
+│   │   │   ├── configs
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── config.py
+│   │   │   ├── schemas
+│   │   │   │   ├── S3_types.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── deliverable_schema.py
+│   │   │   │   ├── feedback_schema.py
+│   │   │   │   ├── lookup_schema.py
+│   │   │   │   ├── meeting_schema.py
+│   │   │   │   ├── token_schema.py
+│   │   │   │   └── user_schema.py
+│   │   │   ├── services
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── authentification_service.py
+│   │   │   │   ├── deliverable_service.py
+│   │   │   │   ├── feedback_service.py
+│   │   │   │   ├── lookup_service.py
+│   │   │   │   ├── meeting_multipart_service.py
+│   │   │   │   ├── meeting_service.py
+│   │   │   │   └── user_service.py
+│   │   │   └── utils
+│   │   │       ├── __init__.py
+│   │   │       └── streaming_proxy.py
+│   │   ├── main.py
+│   │   └── setup
+│   │       ├── logger.py
+│   │       └── request_id_middleware.py
+│   ├── pyproject.toml
+│   ├── requirements
+│   │   ├── base.txt
+│   │   ├── dev.txt
+│   │   └── doc.txt
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── app
+│   │       ├── __init__.py
+│   │       ├── config
+│   │       │   ├── __init__.py
+│   │       │   └── test_config.py
+│   │       ├── services
+│   │       │   └── __init__.py
+│   │       ├── test_deliverable
+│   │       │   ├── __init__.py
+│   │       │   └── test_deliverable_service.py
+│   │       ├── test_feedback
+│   │       │   ├── __init__.py
+│   │       │   └── test_create_feedback.py
+│   │       └── test_meeting
+│   │           ├── __init__.py
+│   │           ├── test_create_meeting.py
+│   │           ├── test_delete_meeting.py
+│   │           ├── test_generate_transcription_document.py
+│   │           ├── test_get_all_meetings.py
+│   │           ├── test_get_meeting.py
+│   │           ├── test_meeting_date_format.py
+│   │           └── test_update_meeting.py
+│   └── uv.lock
+├── mcr-generation
+│   ├── .gitignore
+│   ├── .vscode
+│   │   ├── launch.json
+│   │   └── settings.json
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── README.pdf
+│   ├── certificate
+│   │   ├── cert-config.sh
+│   │   └── cert-ollama.pem
+│   ├── mcr_generation
+│   │   ├── __init__.py
+│   │   ├── app
+│   │   │   ├── __init__.py
+│   │   │   ├── client
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── core_api_client.py
+│   │   │   │   ├── http_client.py
+│   │   │   │   └── meeting_client.py
+│   │   │   ├── configs
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── settings.py
+│   │   │   ├── exceptions
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── exceptions.py
+│   │   │   ├── schemas
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── celery_types.py
+│   │   │   │   ├── custom_prompt.py
+│   │   │   │   └── meeting_schema.py
+│   │   │   ├── services
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── generic_pipeline
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── generic_map_reduce_pipeline.py
+│   │   │   │   │   └── prompts.py
+│   │   │   │   ├── metadata_collectors
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── base.py
+│   │   │   │   │   ├── detailed_discussions_collector.py
+│   │   │   │   │   ├── next_meeting_collector.py
+│   │   │   │   │   ├── participants_collector.py
+│   │   │   │   │   ├── title_collector.py
+│   │   │   │   │   └── topics_collector.py
+│   │   │   │   ├── notes
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── facets.py
+│   │   │   │   │   ├── notes_extractor.py
+│   │   │   │   │   └── prompts.py
+│   │   │   │   ├── report_generation_task_service.py
+│   │   │   │   ├── report_generator
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── base_report_generator.py
+│   │   │   │   │   ├── custom_report_generator.py
+│   │   │   │   │   ├── decision_record_generator.py
+│   │   │   │   │   └── detailed_synthesis_generator.py
+│   │   │   │   ├── rewriter
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── prompts.py
+│   │   │   │   │   └── rewriter.py
+│   │   │   │   ├── sections
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── base
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── init_then_refine.py
+│   │   │   │   │   │   └── map_reduce.py
+│   │   │   │   │   ├── detailed_discussions
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── map_reduce_detailed_discussions.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── types.py
+│   │   │   │   │   ├── discussions_synthesis
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── detailed_discussions_synthesizer.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── types.py
+│   │   │   │   │   ├── intent
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── refine_intent.py
+│   │   │   │   │   ├── next_meeting
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── format_section_for_report.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── refine_next_meeting.py
+│   │   │   │   │   ├── participants
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── refine_participants.py
+│   │   │   │   │   └── topics
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       ├── map_reduce_topics.py
+│   │   │   │   │       ├── prompts.py
+│   │   │   │   │       └── types.py
+│   │   │   │   └── utils
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── input_chunker.py
+│   │   │   │       ├── llm_helpers.py
+│   │   │   │       └── s3_service.py
+│   │   │   └── utils
+│   │   │       ├── __init__.py
+│   │   │       ├── celery_worker.py
+│   │   │       ├── function_execution_timer.py
+│   │   │       ├── langfuse_observability.py
+│   │   │       ├── s3_client.py
+│   │   │       └── sentry_context.py
+│   │   ├── docs
+│   │   │   └── generation_pipeline.md
+│   │   ├── evaluation
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── cli
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── report_eval.py
+│   │   │   ├── criteria.py
+│   │   │   ├── pipeline
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── csv_writer.py
+│   │   │   │   ├── docx_loader.py
+│   │   │   │   ├── evaluation_pipeline.py
+│   │   │   │   ├── layout.py
+│   │   │   │   ├── report_renderer.py
+│   │   │   │   ├── section_splitter.py
+│   │   │   │   └── types.py
+│   │   │   └── scorers
+│   │   │       ├── __init__.py
+│   │   │       ├── base.py
+│   │   │       └── g_eval.py
+│   │   ├── main.py
+│   │   └── setup
+│   │       └── logger.py
+│   ├── mkdocs.yml
+│   ├── mypy_error_report.txt
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── app
+│   │   │   ├── __init__.py
+│   │   │   ├── client
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_core_api_client.py
+│   │   │   ├── configs
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_settings.py
+│   │   │   ├── schemas
+│   │   │   │   └── __init__.py
+│   │   │   ├── services
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── generic_pipeline
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_pipeline.py
+│   │   │   │   ├── metadata_collectors
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_collectors.py
+│   │   │   │   ├── notes
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_notes_extractor.py
+│   │   │   │   ├── report_generator
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_base_report_generator.py
+│   │   │   │   │   ├── test_custom_report_generator.py
+│   │   │   │   │   ├── test_decision_record_generator.py
+│   │   │   │   │   ├── test_detailed_synthesis_generator.py
+│   │   │   │   │   └── test_report_generator_factory.py
+│   │   │   │   ├── sections
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── base
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── test_init_then_refine.py
+│   │   │   │   │   │   └── test_map_reduce.py
+│   │   │   │   │   ├── detailed_discussions
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── test_detailed_discussions_synthesizer.py
+│   │   │   │   │   └── topics
+│   │   │   │   │       └── __init__.py
+│   │   │   │   └── utils
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── test_input_chunker.py
+│   │   │   │       ├── test_llm_helpers.py
+│   │   │   │       └── test_s3_service.py
+│   │   │   └── test_report_generation_task_service.py
+│   │   ├── conftest.py
+│   │   ├── evaluation
+│   │   │   ├── __init__.py
+│   │   │   ├── test_criteria.py
+│   │   │   ├── test_csv_writer.py
+│   │   │   └── test_section_splitter.py
+│   │   └── mocks
+│   │       ├── __init__.py
+│   │       ├── docx_mocks.py
+│   │       ├── llm_mocks.py
+│   │       ├── s3_mocks.py
+│   │       └── task_service_mocks.py
+│   └── uv.lock
+├── mcr.code-workspace
+└── scripts
+    └── check_changed.py
+215 directories, 874 files
