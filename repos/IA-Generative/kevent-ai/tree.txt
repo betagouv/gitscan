@@ -1,0 +1,192 @@
+.
+├── .claude
+│   └── commands
+│       └── release.md
+├── .github
+│   └── workflows
+│       ├── build-pr.yml
+│       ├── ci.yml
+│       ├── deploy-dev.yml
+│       ├── docs.yml
+│       ├── helm-release.yml
+│       ├── release-gateway.yml
+│       ├── release-relay.yml
+│       └── smoke-tests.yml
+├── .gitignore
+├── ARCHITECTURE.md
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── README.md
+├── cmd
+│   └── gateway
+│       ├── gc.go
+│       ├── main.go
+│       └── main_test.go
+├── config.yaml
+├── dashboards
+│   ├── kevent-audit-trail.json
+│   ├── kevent-llm.json
+│   └── kevent.json
+├── docs
+│   ├── architecture
+│   │   ├── async-flow.drawio.png
+│   │   ├── llm-proxy.md
+│   │   ├── overview.drawio.png
+│   │   ├── overview.md
+│   │   ├── priority.md
+│   │   ├── rate-limiting.md
+│   │   ├── request-flows.md
+│   │   ├── routing.drawio.png
+│   │   ├── service-registry.md
+│   │   └── sync-kafka-flow.drawio.png
+│   ├── changelog.md
+│   ├── contributing
+│   │   ├── gitflow.md
+│   │   └── releasing.md
+│   ├── deployment
+│   │   ├── configuration.md
+│   │   ├── helm.md
+│   │   └── kafka.md
+│   ├── index.md
+│   ├── runbooks
+│   │   ├── KeventGatewayHighErrorRate.md
+│   │   ├── KeventGatewayKafkaPublishErrors.md
+│   │   ├── KeventGatewayRateLimitErrors.md
+│   │   ├── KeventGatewayRateLimitHighRejectionRate.md
+│   │   ├── KeventGatewayS3Errors.md
+│   │   ├── KeventGatewaySyncJobsInFlightHigh.md
+│   │   ├── KeventRelayInferenceSlow.md
+│   │   ├── KeventRelayJobFailureRate.md
+│   │   └── KeventRelayS3Errors.md
+│   └── superpowers
+│       ├── plans
+│       │   └── 2026-05-27-unified-gc.md
+│       └── specs
+│           └── 2026-05-27-unified-gc-design.md
+├── examples
+│   ├── inference-service.yaml
+│   ├── kafka-sources.yaml
+│   └── kafka-users.yaml
+├── go.mod
+├── go.sum
+├── helm
+│   └── gateway
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── configmap.yaml
+│       │   ├── deployment.yaml
+│       │   ├── ingress.yaml
+│       │   ├── prometheusrule.yaml
+│       │   ├── secret.yaml
+│       │   ├── service.yaml
+│       │   └── servicemonitor.yaml
+│       └── values.yaml
+├── internal
+│   ├── cache
+│   │   ├── cache.go
+│   │   ├── key.go
+│   │   ├── key_test.go
+│   │   ├── noop.go
+│   │   └── redis.go
+│   ├── config
+│   │   ├── config.go
+│   │   └── config_test.go
+│   ├── crypto
+│   │   ├── aes.go
+│   │   └── aes_test.go
+│   ├── guardrails
+│   │   ├── guardrails.go
+│   │   └── guardrails_test.go
+│   ├── handler
+│   │   ├── docs.go
+│   │   ├── health.go
+│   │   ├── jobs.go
+│   │   ├── jobs_test.go
+│   │   ├── middleware.go
+│   │   ├── misc_test.go
+│   │   ├── models.go
+│   │   ├── models_test.go
+│   │   ├── reload.go
+│   │   ├── swagger.go
+│   │   ├── swagger_test.go
+│   │   ├── sync.go
+│   │   ├── sync_test.go
+│   │   └── testdata
+│   │       └── whisper-api-openapi.json
+│   ├── kafka
+│   │   ├── auth.go
+│   │   ├── consumer.go
+│   │   └── producer.go
+│   ├── llmproxy
+│   │   ├── handler.go
+│   │   ├── handler_test.go
+│   │   └── provider
+│   │       ├── anthropic.go
+│   │       ├── anthropic_test.go
+│   │       ├── ollama.go
+│   │       ├── openai.go
+│   │       ├── openai_test.go
+│   │       ├── passthrough.go
+│   │       └── provider.go
+│   ├── metrics
+│   │   ├── consumer_tracker.go
+│   │   └── metrics.go
+│   ├── model
+│   │   └── job.go
+│   ├── ratelimit
+│   │   ├── ratelimit.go
+│   │   └── ratelimit_test.go
+│   ├── service
+│   │   ├── backend.go
+│   │   ├── backend_test.go
+│   │   ├── registry.go
+│   │   └── registry_test.go
+│   └── storage
+│       ├── redis.go
+│       ├── redis_gc_test.go
+│       ├── s3.go
+│       └── s3_gc_test.go
+├── mkdocs.yml
+├── relay
+│   ├── Dockerfile
+│   ├── cmd
+│   │   └── relay
+│   │       └── main.go
+│   ├── config.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   └── internal
+│       ├── adapter
+│       │   ├── adapter.go
+│       │   ├── multipart.go
+│       │   └── multipart_test.go
+│       ├── config
+│       │   ├── config.go
+│       │   └── config_test.go
+│       ├── crypto
+│       │   ├── aes.go
+│       │   └── aes_test.go
+│       ├── kafka
+│       │   ├── auth.go
+│       │   └── publisher.go
+│       ├── lifecycle
+│       │   └── annotator.go
+│       ├── metrics
+│       │   └── metrics.go
+│       ├── model
+│       │   └── event.go
+│       ├── relay
+│       │   ├── relay.go
+│       │   ├── relay_test.go
+│       │   └── sync.go
+│       └── storage
+│           ├── errors.go
+│           └── s3.go
+└── tests
+    └── smoke
+        └── smoke.sh
+50 directories, 141 files

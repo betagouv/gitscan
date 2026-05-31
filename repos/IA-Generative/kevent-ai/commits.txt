@@ -1,0 +1,313 @@
+2026-05-29T15:01:54+02:00 - c181295 - Bastian SOMON : release: gateway v0.12.1 / chart 0.12.1
+2026-05-29T14:56:04+02:00 - 3e3181f - bastiansmn : Merge pull request #74 from IA-Generative/release/gateway-v0.12.1
+2026-05-29T14:34:04+02:00 - c0ff8d3 - Bastian SOMON : fix: remove legacy doc
+2026-05-29T14:34:04+02:00 - aafc74d - Bastian SOMON : fix: model swagger spec
+2026-05-29T14:34:04+02:00 - fec423c - Bastian SOMON : fix: multi model choice
+2026-05-29T14:34:04+02:00 - 0776175 - Bastian SOMON : feat: add gateway overlay for models
+2026-05-28T10:22:28+02:00 - 21d28e8 - Ronan DUCAMP : docs: resolve merge conflicts — relay v0.5.4 fixes, v0.5.3 version bump, examples v0.5.4
+2026-05-28T10:21:34+02:00 - b1ada30 - Ronan DUCAMP : docs(changelog): fold gateway v0.11.1 into v0.11.0 to match tag structure
+2026-05-28T10:12:28+02:00 - 3987c05 - Ronan DUCAMP : docs(gateway): add missing v0.11.0 CHANGELOG entry (unified GC, lifecycle config)
+2026-05-28T10:07:57+02:00 - 0a567ae - Ronan DUCAMP : docs(relay): add v0.5.3 and v0.5.4 CHANGELOG entries; update example image tag
+2026-05-28T10:03:58+02:00 - f319cac - Ronan DUCAMP : Merge branch 'main' into develop
+2026-05-28T09:51:56+02:00 - 4aee29b - Ronan Ducamp : Merge pull request #70 from IA-Generative/release/relay/v0.5.3
+2026-05-28T09:49:44+02:00 - 575b0c4 - Ronan Ducamp : Merge branch 'main' into release/relay/v0.5.3
+2026-05-28T09:49:22+02:00 - e00cc13 - Ronan Ducamp : Merge pull request #68 from IA-Generative/release/gateway/v0.11.0
+2026-05-28T09:47:58+02:00 - 6c8799c - Ronan Ducamp : Merge branch 'main' into release/gateway/v0.11.0
+2026-05-28T09:43:20+02:00 - 2f275c5 - Ronan DUCAMP : chore(release): relay v0.5.3
+2026-05-28T09:37:30+02:00 - f532116 - Ronan Ducamp : Merge pull request #69 from IA-Generative/fix/relay-graceful-shutdown
+2026-05-27T14:21:41+02:00 - c70bf83 - Ronan DUCAMP : fix(relay): skip inference health probe when a job is in progress
+2026-05-27T14:10:38+02:00 - 5be4fb6 - Ronan DUCAMP : fix(relay): detach S3/Kafka from HTTP request context after inference
+2026-05-27T11:44:52+02:00 - 04cfd9d - Ronan DUCAMP : fix(relay): wait for in-flight jobs before process exit
+2026-05-27T10:57:37+02:00 - fb2c07b - Ronan DUCAMP : docs: update configuration reference and overview for v0.11.0 lifecycle/GC
+2026-05-27T10:49:20+02:00 - 5d0266d - Ronan DUCAMP : chore(release): gateway v0.11.0
+2026-05-27T10:44:34+02:00 - a8c8e57 - Ronan Ducamp : Merge pull request #67 from IA-Generative/fix/webhook-result-cleanup
+2026-05-27T10:07:38+02:00 - 188cfeb - Ronan DUCAMP : feat(config): add lifecycle.gc block, rename pending_max_age_hours to pending_max_age
+2026-05-27T10:07:35+02:00 - f02869d - Ronan DUCAMP : chore: tidy go.mod after adding storage tests
+2026-05-27T10:05:39+02:00 - e247754 - Ronan DUCAMP : feat(gc): unified GC goroutine — stale-pending sweep + S3 orphan cleanup
+2026-05-27T10:02:15+02:00 - daebc01 - Ronan DUCAMP : feat(storage): add Ping and JobsExistBatch for unified GC
+2026-05-27T09:58:53+02:00 - 4e779c1 - Ronan DUCAMP : feat(storage): add groupByJobID helper and ListJobObjects for S3 orphan GC
+2026-05-27T09:55:42+02:00 - b46b4d6 - Ronan DUCAMP : refactor(config): rename pending_max_age_hours to pending_max_age, add GCConfig
+2026-05-27T09:51:32+02:00 - 3923c80 - Ronan DUCAMP : docs: add unified GC implementation plan
+2026-05-27T09:43:35+02:00 - 897a060 - Ronan DUCAMP : docs: rename pending_max_age_hours → pending_max_age in GC spec
+2026-05-27T09:40:58+02:00 - 27a8e4c - Ronan DUCAMP : docs: add unified GC design spec
+2026-05-27T09:25:58+02:00 - 971aa0d - Ronan DUCAMP : refactor(config): rename job_ttl.success to job_ttl.completed
+2026-05-26T17:51:10+02:00 - 2de991b - Ronan DUCAMP : fix(reload): extend hot-reload to cover all config-driven parameters
+2026-05-26T16:57:33+02:00 - c194805 - Ronan Ducamp : Merge pull request #59 from IA-Generative/fix/webhook-result-cleanup
+2026-05-26T11:14:47+02:00 - 7799945 - Ronan DUCAMP : refactor(lifecycle): replace job_ttl with lifecycle config block
+2026-05-26T10:35:16+02:00 - f4802a5 - Quentin : fix(jobs): keep Redis record after GET, 24h TTL, S3 cleanup on webhook
+2026-05-22T15:02:07+02:00 - 15598d6 - Ronan Ducamp : Merge pull request #64 from IA-Generative/fix/relay-lifecycle-hostname
+2026-05-22T14:28:25+02:00 - b4300df - Ronan Ducamp : Merge pull request #63 from IA-Generative/feat/relay-rc-build
+2026-05-22T14:26:35+02:00 - 5026300 - Ronan DUCAMP : ci: add relay RC build job to build-pr workflow
+2026-05-22T14:23:54+02:00 - d7e3078 - Ronan DUCAMP : fix(relay): set pod-deletion-cost=0 at startup to confirm RBAC and make annotation visible
+2026-05-22T11:06:58+02:00 - 5824d41 - Ronan Ducamp : Merge pull request #62 from IA-Generative/fix/relay-lifecycle-hostname
+2026-05-22T11:06:16+02:00 - 1ed3137 - Ronan DUCAMP : fix(relay): read pod name/namespace from in-cluster files, not Downward API env vars
+2026-05-22T10:35:47+02:00 - 6f229c3 - Ronan Ducamp : Merge pull request #61 from IA-Generative/feat/relay-resilience
+2026-05-22T10:30:46+02:00 - 9af0825 - Ronan DUCAMP : feat(relay): retry logic, config timeouts, startup health check, pod-deletion-cost
+2026-05-19T17:29:13+02:00 - acdc8ce - bastiansmn : Update gateway image tag to v0.11.0
+2026-05-19T17:27:28+02:00 - 88515bf - Bastian SOMON : fix: helm version
+2026-05-19T17:08:24+02:00 - e8b62d5 - bastiansmn : Merge pull request #57 from IA-Generative/fix/rebase
+2026-05-18T16:19:04+02:00 - 7c4802e - Ronan Ducamp : Merge pull request #56 from IA-Generative/release/v0.10.0
+2026-05-18T16:18:33+02:00 - eeea142 - Ronan DUCAMP : chore(release): gateway v0.10.0 / relay v0.5.2
+2026-05-18T16:18:33+02:00 - 9ae2764 - Ronan DUCAMP : fix(sync): delete orphaned job on timeout; filter stale scan by pending status
+2026-05-18T16:18:33+02:00 - f014d55 - Quentin : test(handler): add Cancel and AdminPurge tests + async job metrics
+2026-05-18T16:18:33+02:00 - b00c910 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
+2026-05-18T16:18:33+02:00 - 48a428c - Quentin : fix(cancel): restrict to pending-only; add GC Prometheus counter
+2026-05-18T16:18:33+02:00 - 07b3c39 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
+2026-05-18T16:18:33+02:00 - fc90d05 - Bastian SOMON : feat: deploy infos endpoints and admin purge
+2026-05-18T16:18:33+02:00 - bef9057 - Ronan DUCAMP : test(ratelimit+models): unit tests for capabilities and X-RateLimit headers
+2026-05-18T16:18:33+02:00 - 2626e37 - Ronan DUCAMP : feat(dashboards): add kevent-audit-trail Grafana dashboard
+2026-05-18T16:18:33+02:00 - a6ee21a - Ronan DUCAMP : test(guardrails): add integration tests for PII blocking in SyncHandler
+2026-05-18T16:18:33+02:00 - 341c45d - Ronan DUCAMP : feat(metrics): add kevent_guardrails_pii_blocked_total counter
+2026-05-18T16:18:33+02:00 - 119b91a - Ronan DUCAMP : fix(guardrails): log PII-blocked requests as security events
+2026-05-18T16:18:33+02:00 - 57b11d6 - Ronan DUCAMP : feat: guardrails PII detection for LLM JSON requests
+2026-05-18T16:18:33+02:00 - 4647f41 - Ronan DUCAMP : test(audit-trail): add streaming and backend-error audit log coverage
+2026-05-18T16:18:33+02:00 - 2fe53df - Ronan DUCAMP : feat: structured audit trail for LLM requests (disabled by default)
+2026-05-18T16:18:33+02:00 - b5571ba - Ronan DUCAMP : fix(relay): treat S3 NoSuchKey as permanent failure to stop infinite retries
+2026-05-18T16:18:33+02:00 - 8506408 - Ronan DUCAMP : fix(relay): detach inference call from Knative request context
+2026-05-18T16:18:33+02:00 - 00352ca - Ronan DUCAMP : fix(relay): allow timeout: 0s to disable inference timeout
+2026-05-18T16:18:33+02:00 - 7723de9 - Ronan DUCAMP : feat: X-RateLimit-* response headers and /v1/models capability metadata
+2026-05-18T16:12:34+02:00 - 1c831b0 - Ronan Ducamp : Merge pull request #54 from IA-Generative/feat/endpoints-infos
+2026-05-18T15:14:00+02:00 - 5c6b2fc - Ronan DUCAMP : fix(sync): delete orphaned job on timeout; filter stale scan by pending status
+2026-05-18T12:46:19+02:00 - c17c2c5 - Quentin : test(handler): add Cancel and AdminPurge tests + async job metrics
+2026-05-18T12:46:19+02:00 - 1a13823 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
+2026-05-18T12:46:19+02:00 - 2c5a762 - Quentin : fix(cancel): restrict to pending-only; add GC Prometheus counter
+2026-05-18T12:38:10+02:00 - 8f6ba01 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
+2026-05-18T12:38:10+02:00 - ed5cf92 - Bastian SOMON : feat: deploy infos endpoints and admin purge
+2026-05-18T12:38:10+02:00 - f0079ba - etiquet : Update .gitignore
+2026-05-18T11:46:58+02:00 - 9f5c9fe - Ronan Ducamp : Merge pull request #48 from IA-Generative/test/ratelimit-models-capabilities
+2026-05-18T11:46:13+02:00 - bb757a0 - Ronan DUCAMP : test(ratelimit+models): unit tests for capabilities and X-RateLimit headers
+2026-05-18T11:40:10+02:00 - f024dd1 - Ronan Ducamp : Merge pull request #47 from IA-Generative/feat/audit-trail-dashboard
+2026-05-18T11:34:06+02:00 - 871affb - Ronan Ducamp : Merge pull request #45 from IA-Generative/feat/guardrails-pii
+2026-05-18T11:16:17+02:00 - 46f0570 - Ronan Ducamp : Merge pull request #44 from IA-Generative/feat/audit-trail
+2026-05-13T16:58:14+02:00 - b2f02b8 - Ronan Ducamp : Merge pull request #51 from IA-Generative/fix/relay-infinite-timeout
+2026-05-13T15:51:30+02:00 - d105d7a - Ronan DUCAMP : fix(relay): treat S3 NoSuchKey as permanent failure to stop infinite retries
+2026-05-13T15:10:46+02:00 - bf17537 - Ronan Ducamp : Merge pull request #40 from IA-Generative/fix/relay-infinite-timeout
+2026-05-13T15:09:33+02:00 - 51c7724 - Ronan DUCAMP : fix(relay): detach inference call from Knative request context
+2026-05-13T11:59:35+02:00 - 1022bab - Ronan DUCAMP : test(audit-trail): add streaming and backend-error audit log coverage
+2026-05-13T11:42:13+02:00 - 1945ed5 - Ronan DUCAMP : test(guardrails): add integration tests for PII blocking in SyncHandler
+2026-05-13T11:35:59+02:00 - c9aa402 - Ronan DUCAMP : feat(dashboards): add kevent-audit-trail Grafana dashboard
+2026-05-13T11:33:57+02:00 - a3bf7cb - Ronan DUCAMP : feat(metrics): add kevent_guardrails_pii_blocked_total counter
+2026-05-13T11:28:46+02:00 - 952298d - Ronan DUCAMP : fix(guardrails): log PII-blocked requests as security events
+2026-05-13T11:19:02+02:00 - b2b849f - Ronan DUCAMP : feat: guardrails PII detection for LLM JSON requests
+2026-05-13T11:16:11+02:00 - 516277a - Ronan DUCAMP : feat: structured audit trail for LLM requests (disabled by default)
+2026-05-13T11:12:29+02:00 - 54e53e4 - Ronan Ducamp : Merge pull request #42 from IA-Generative/feat/ratelimit-headers-models-capabilities
+2026-05-13T11:04:14+02:00 - 1dd7701 - Ronan DUCAMP : feat: X-RateLimit-* response headers and /v1/models capability metadata
+2026-05-12T15:40:40+02:00 - 18c8d0d - Ronan DUCAMP : fix(relay): allow timeout: 0s to disable inference timeout
+2026-05-12T14:54:21+02:00 - 0909b31 - etiquet : Update .gitignore
+2026-05-12T11:24:20+02:00 - d391d25 - Ronan DUCAMP : chore: sync develop with main (docs v0.9.0)
+2026-05-12T11:24:11+02:00 - 349f806 - Ronan DUCAMP : docs: document queue_position, rate:0 unlimited, and update image tag to v0.9.0
+2026-05-12T10:57:53+02:00 - 07148b6 - Ronan DUCAMP : docs: document queue_position, rate:0 unlimited, and update image tag to v0.9.0
+2026-05-12T10:55:30+02:00 - 8433608 - Ronan DUCAMP : chore: merge main into develop (release v0.9.0 + release process docs)
+2026-05-12T10:55:23+02:00 - 6924faf - Ronan DUCAMP : docs: document PR-based release process and update current tags to v0.9.0
+2026-05-12T10:53:21+02:00 - 0e053ca - Ronan DUCAMP : release: gateway v0.9.0
+2026-05-12T10:53:08+02:00 - c9befbc - Ronan DUCAMP : chore(release): gateway v0.9.0
+2026-05-12T10:51:48+02:00 - 856edf5 - Ronan Ducamp : Merge pull request #37 from IA-Generative/feat/unlimited-rate-limit
+2026-05-11T17:41:37+02:00 - 067b966 - Ronan DUCAMP : feat(ratelimit): add rate:0 sentinel for unlimited consumers
+2026-05-11T17:20:55+02:00 - a347c83 - Ronan Ducamp : Merge pull request #36 from IA-Generative/feat/queue-position
+2026-05-11T17:07:52+02:00 - fff705f - Ronan DUCAMP : feat(gateway): expose queue position in job status and list endpoints
+2026-05-11T14:54:42+02:00 - 2f18b86 - bastiansmn : Merge pull request #35 from IA-Generative/fix/rerank-endpoint
+2026-05-11T14:53:02+02:00 - 0d7ab73 - Bastian SOMON : fix: smoke test for reranker
+2026-05-11T13:09:44+02:00 - a6fc57a - bastiansmn : Merge pull request #34 from IA-Generative/fix/rerank-endpoint
+2026-05-11T13:09:15+02:00 - 6e04132 - Bastian SOMON : fix: smoke test for reranker
+2026-05-11T11:57:45+02:00 - 8cc231f - bastiansmn : Merge pull request #33 from IA-Generative/fix/rerank-endpoint
+2026-05-11T11:53:43+02:00 - e8bcae2 - Bastian SOMON : fix: reranker endpoint & dev build
+2026-05-11T11:45:14+02:00 - 48991dc - bastiansmn : Merge pull request #32 from IA-Generative/feat/add-retry
+2026-05-11T11:43:48+02:00 - 7a79c68 - Bastian SOMON : fix: rerank default endpoint
+2026-05-11T11:21:48+02:00 - 43e4de7 - bastiansmn : Merge pull request #31 from IA-Generative/feat/add-retry
+2026-05-11T11:05:31+02:00 - 44b3f3f - Bastian SOMON : fix: retry
+2026-05-05T12:22:54+02:00 - 4fb4e24 - Ronan DUCAMP : ci: trigger PR build
+2026-05-05T12:19:41+02:00 - 793e6a4 - Ronan DUCAMP : ci: build RC image and post tag on PRs targeting develop
+2026-05-05T12:11:10+02:00 - 114a2ce - Ronan DUCAMP : Merge branch 'main' into develop
+2026-05-05T11:56:58+02:00 - 73ad062 - Ronan Ducamp : Merge pull request #30 from IA-Generative/release/gateway-v0.8.0
+2026-05-05T11:56:13+02:00 - d7bb59d - Bastian SOMON : feat: add retry on gw
+2026-05-05T11:49:35+02:00 - ae1fe69 - Ronan DUCAMP : docs: update docs and Helm README for v0.8.0 multi-backend and backend_model label
+2026-05-05T11:17:18+02:00 - 067f9f2 - Ronan DUCAMP : fix(llmproxy): inject per-backend headers in ServeJSON and serveStream
+2026-05-05T11:05:24+02:00 - a48b503 - Ronan DUCAMP : Merge branch 'feat/multi-backend' into release/gateway-v0.8.0
+2026-05-05T11:05:19+02:00 - 56a1a39 - Ronan DUCAMP : fix(llmproxy): inject per-backend headers in ServeJSON and serveStream
+2026-05-04T16:17:50+02:00 - 69af60b - Ronan DUCAMP : release: gateway v0.8.0 / helm 0.8.0
+2026-05-04T16:03:19+02:00 - 5101a8a - Ronan Ducamp : Merge pull request #29 from IA-Generative/feat/multi-backend
+2026-05-04T15:59:45+02:00 - 1df04dc - Ronan DUCAMP : fix(llmproxy): update serveStream for multi-backend and backend_model label
+2026-05-04T15:58:35+02:00 - 7784a49 - Ronan DUCAMP : Merge remote-tracking branch 'origin/develop' into feat/multi-backend
+2026-05-04T15:57:01+02:00 - 591cc3c - Ronan DUCAMP : feat(metrics): add backend_model label to LLM metrics
+2026-05-04T15:31:25+02:00 - a13d911 - Ronan DUCAMP : feat(gateway): per-backend model override for canary routing
+2026-05-04T15:24:59+02:00 - a453e53 - Ronan DUCAMP : feat(gateway): per-backend headers in multi-backend config
+2026-05-04T11:41:04+02:00 - 7860f88 - Ronan DUCAMP : feat(gateway): multi-backend support — blue/green, canary, fallback
+2026-04-30T15:07:54+02:00 - b97d1b6 - Ronan Ducamp : Merge pull request #28 from IA-Generative/feat/llm-streaming
+2026-04-30T15:05:11+02:00 - d1aed95 - Ronan Ducamp : Merge pull request #27 from IA-Generative/feat/llm-dashboards
+2026-04-30T15:01:48+02:00 - 1d7ed69 - Ronan DUCAMP : feat(llmproxy): SSE streaming support and gateway metric coverage
+2026-04-30T15:01:45+02:00 - bd5ab04 - Ronan DUCAMP : feat(config): expose metrics.top_consumers and consumer_labels in config + Helm
+2026-04-30T15:01:45+02:00 - 6e0c00a - Ronan DUCAMP : feat(dashboards): add LLM proxy metrics and dedicated kevent-llm dashboard
+2026-04-28T17:03:48+02:00 - 04e1121 - Ronan DUCAMP : Merge branch 'main' into develop
+2026-04-28T16:39:20+02:00 - 041c427 - Ronan Ducamp : Merge pull request #26 from IA-Generative/release/gateway-v0.7.0
+2026-04-28T16:19:20+02:00 - 85ca6fc - Ronan DUCAMP : fix(ci): grant write permissions for reactions and PR comment on smoke job
+2026-04-28T16:13:03+02:00 - 7fcb83e - Ronan DUCAMP : fix(ci): grant write permissions for reactions and PR comments in smoke tests
+2026-04-28T16:09:31+02:00 - 5120c35 - Ronan DUCAMP : fix(smoke): show HTTP status and full response body on curl failures
+2026-04-28T15:52:32+02:00 - 6431635 - Ronan DUCAMP : docs: document LLM proxy, rate limiting, and v0.7.0 config changes
+2026-04-28T15:44:29+02:00 - 9105a8a - Ronan DUCAMP : release: gateway v0.7.0 / helm 0.7.0
+2026-04-28T15:43:43+02:00 - 2ccf3b5 - Ronan DUCAMP : fix(llmproxy): cardinality-safe metrics, billing context, and test robustness
+2026-04-28T15:39:48+02:00 - b8a2404 - Ronan Ducamp : Merge pull request #25 from IA-Generative/feature/llm-proxy-cache
+2026-04-28T15:39:17+02:00 - fd5f276 - Ronan Ducamp : Merge pull request #24 from IA-Generative/feat/gateway-ratelimit
+2026-04-27T17:44:33+02:00 - c668d31 - Quentin : feat: LLM proxy with response caching, consumer metrics, and dynamic routing
+2026-04-23T14:45:45+02:00 - e70152c - Ronan DUCAMP : feat(gateway): per-consumer rate limiting via Redis fixed-window
+2026-04-21T17:20:20+02:00 - 7a4c5ad - Ronan Ducamp : Merge pull request #23 from IA-Generative/release/gateway-v0.6.4
+2026-04-21T17:18:20+02:00 - df1e4c7 - Ronan DUCAMP : release: gateway v0.6.4 / helm 0.6.5
+2026-04-21T17:14:39+02:00 - 9746c61 - Ronan DUCAMP : Merge remote-tracking branch 'origin/main' into develop
+2026-04-21T17:13:47+02:00 - 2e4aabf - Ronan DUCAMP : ci: skip build and tests when unrelated files change
+2026-04-21T17:12:39+02:00 - b6f7c53 - Ronan DUCAMP : chore: ignore mempalace local files
+2026-04-21T17:12:29+02:00 - 3b8db19 - Ronan DUCAMP : Merge remote-tracking branch 'origin/main' into develop
+2026-04-15T15:46:56+02:00 - e7cd373 - Ronan Ducamp : Merge pull request #22 from IA-Generative/release/v0.6.3
+2026-04-15T15:20:50+02:00 - 28df317 - Ronan DUCAMP : release: gateway v0.6.3 / helm 0.6.4
+2026-04-15T15:20:11+02:00 - b8ec5a0 - Ronan DUCAMP : test(gateway): unit tests for reserved path guard + fix /-/ prefix bug
+2026-04-15T15:20:11+02:00 - 3f6ecf8 - Ronan DUCAMP : fix(gateway): guard reserved routes against config path override
+2026-04-15T15:20:11+02:00 - 8381a09 - Ronan DUCAMP : fix(gateway): register exact sync paths instead of prefix wildcards
+2026-04-15T15:20:11+02:00 - 29b755c - Ronan DUCAMP : docs: document inference_headers for authenticated backends
+2026-04-15T15:20:11+02:00 - 4253707 - Ronan DUCAMP : feat(gateway): add inference_headers per-service config (closes #18)
+2026-04-15T12:05:28+02:00 - 4a63b64 - Ronan Ducamp : Merge pull request #21 from IA-Generative/fix/ci-path-filters
+2026-04-15T12:05:07+02:00 - a5f3f0f - Ronan DUCAMP : ci: merge develop — use actions-runner-controller runner
+2026-04-15T12:02:44+02:00 - b4b1d29 - Ronan DUCAMP : ci: skip build and tests when unrelated files change
+2026-04-15T11:56:58+02:00 - 6cf1386 - Ronan Ducamp : Merge pull request #20 from IA-Generative/feat/sync-proxy-routing
+2026-04-15T11:51:21+02:00 - e7061d5 - Ronan DUCAMP : test(gateway): unit tests for reserved path guard + fix /-/ prefix bug
+2026-04-15T11:49:53+02:00 - c4bfeee - Ronan DUCAMP : fix(gateway): guard reserved routes against config path override
+2026-04-15T11:47:58+02:00 - 19db234 - Ronan DUCAMP : fix(gateway): register exact sync paths instead of prefix wildcards
+2026-04-15T09:28:54+02:00 - cf1fe25 - bastiansmn : Merge pull request #19 from IA-Generative/feat/inference-headers
+2026-04-14T17:23:16+02:00 - af1d04f - Ronan DUCAMP : docs: document inference_headers for authenticated backends
+2026-04-14T17:22:11+02:00 - 3f1b12e - Ronan DUCAMP : feat(gateway): add inference_headers per-service config (closes #18)
+2026-04-14T10:52:19+02:00 - d94bc16 - Ronan Ducamp : Merge pull request #17 from IA-Generative/release/v0.6.3
+2026-04-14T10:46:30+02:00 - 99855c1 - Ronan DUCAMP : Merge remote-tracking branch 'origin/main' into release/v0.6.3
+2026-04-14T10:44:25+02:00 - b176d07 - Ronan DUCAMP : release: helm 0.6.3 (CI-only — gateway binary unchanged at v0.6.2)
+2026-04-14T10:41:51+02:00 - 7d186f7 - Ronan Ducamp : Merge pull request #16 from IA-Generative/feat/smoke-tests
+2026-04-14T10:40:17+02:00 - cd1fd77 - Ronan DUCAMP : fix(ci): remove -race flag from go test (CGO not available on ARC runner)
+2026-04-14T10:35:45+02:00 - f3c9f97 - Ronan DUCAMP : fix(ci): separate API keys for Whisper and Rerank
+2026-04-14T10:31:43+02:00 - 0734c90 - Ronan DUCAMP : fix(ci): move GATEWAY_URL from variable to secret
+2026-04-14T10:29:01+02:00 - ceea29f - Ronan DUCAMP : ci: use organisation runner (actions-runner-controller) across all workflows
+2026-04-14T10:26:09+02:00 - 7a3c26d - Ronan DUCAMP : feat(ci): add /smoke-test PR comment trigger
+2026-04-14T10:24:56+02:00 - 9e8ad26 - Ronan DUCAMP : fix(ci): trigger smoke tests on deploy-dev completion, not cron
+2026-04-14T10:22:22+02:00 - 47d5519 - Ronan DUCAMP : feat(ci): add smoke tests for dev environment
+2026-04-14T09:42:00+02:00 - 734970a - Ronan Ducamp : Merge pull request #15 from IA-Generative/fix/docs-mkdocs-links
+2026-04-14T09:40:24+02:00 - bbbd631 - Ronan DUCAMP : fix(docs): replace unresolvable MkDocs cross-directory links
+2026-04-14T09:33:34+02:00 - ef251a3 - Ronan Ducamp : Merge pull request #14 from IA-Generative/release/v0.6.2
+2026-04-13T15:35:44+02:00 - 6769317 - Ronan DUCAMP : release: gateway v0.6.2 / helm 0.6.2
+2026-04-13T15:28:45+02:00 - 167c1f9 - Ronan Ducamp : Merge pull request #11 from IA-Generative/test/unit-coverage
+2026-04-13T15:25:07+02:00 - aafd365 - Ronan Ducamp : Merge pull request #10 from IA-Generative/fix/validate-operation-before-job-creation
+2026-04-13T15:24:50+02:00 - 7640764 - Ronan Ducamp : Merge pull request #12 from IA-Generative/docs/examples-manifests
+2026-04-13T15:24:25+02:00 - d21b660 - Ronan Ducamp : Merge pull request #13 from IA-Generative/fix/helm-configreloader-checksum
+2026-04-13T15:16:16+02:00 - 86e7424 - Ronan DUCAMP : test(handler): add unit tests for Submit — validate side-effect ordering
+2026-04-13T15:16:16+02:00 - 362b428 - Ronan DUCAMP : fix(gateway): validate operation before S3 upload and Redis save
+2026-04-13T15:15:50+02:00 - 04bc34d - Ronan DUCAMP : fix(helm): skip checksum/config annotation when configReloader is enabled
+2026-04-13T15:15:31+02:00 - a978f67 - Ronan DUCAMP : docs: replace k8s/ references with examples/, remove internal namespace names
+2026-04-13T15:15:10+02:00 - 8deb24c - Ronan DUCAMP : test: add unit tests for crypto, config, and missing handlers + fix EncryptedSize
+2026-04-13T12:23:31+02:00 - fcf37ec - Ronan DUCAMP : chore: merge main into develop after release v0.6.1
+2026-04-13T12:18:31+02:00 - 3619e15 - Ronan Ducamp : Merge pull request #8 from IA-Generative/release/v0.6.1
+2026-04-13T12:17:54+02:00 - 4736a44 - Ronan Ducamp : Merge pull request #7 from IA-Generative/feat/consumer-tracking
+2026-04-13T12:16:49+02:00 - b01add2 - Ronan DUCAMP : release: gateway v0.6.1 / helm 0.6.1
+2026-04-13T12:16:42+02:00 - 6f09fb2 - Ronan DUCAMP : docs: replace ASCII diagrams with drawio PNG exports
+2026-04-13T12:07:56+02:00 - 508924f - Ronan DUCAMP : docs: replace ASCII diagrams with drawio PNG exports
+2026-04-10T14:59:53+02:00 - 8e83ab4 - Ronan Ducamp : Merge pull request #5 from IA-Generative/feat/consumer-tracking
+2026-04-10T14:14:29+02:00 - 5825e07 - Ronan DUCAMP : docs: document consumer tracking, GET /jobs, ownership check, new metrics
+2026-04-10T11:58:07+02:00 - ae3e09f - Ronan DUCAMP : feat(dashboard): add Redis metrics and consumer tracking panels
+2026-04-10T11:53:59+02:00 - c871268 - Ronan DUCAMP : feat(gateway): consumer tracking, job listing, ownership check
+2026-04-10T11:28:57+02:00 - d33fa66 - Ronan Ducamp : Merge pull request #4 from IA-Generative/release/v0.6.0
+2026-04-10T11:18:35+02:00 - 67b08a4 - Ronan DUCAMP : release: gateway v0.6.0 / helm 0.6.0
+2026-04-10T11:11:02+02:00 - 731e6b3 - Ronan Ducamp : Merge pull request #3 from IA-Generative/feat/mkdocs
+2026-04-10T10:53:09+02:00 - f8b6583 - Ronan DUCAMP : docs: migrate to MkDocs Material theme
+2026-04-10T10:39:38+02:00 - 5fd0d06 - Ronan Ducamp : Merge pull request #2 from IA-Generative/feat/async-priority
+2026-04-10T10:34:08+02:00 - 505f903 - Ronan DUCAMP : feat(gateway): async priority routing for SA accounts
+2026-04-10T10:29:18+02:00 - f8cbab4 - Ronan Ducamp : Merge pull request #1 from IA-Generative/feat/redis-metrics
+2026-04-10T10:27:46+02:00 - f34fde4 - Ronan DUCAMP : feat(metrics): add Prometheus instrumentation for Redis operations
+2026-04-10T10:18:23+02:00 - c194675 - Ronan DUCAMP : fix(ci): lowercase ghcr.io owner in deploy-dev tags
+2026-04-10T10:14:15+02:00 - d340221 - Ronan DUCAMP : docs(gitflow): add CONTRIBUTING.md + enforce two-branch flow
+2026-04-09T10:19:59+02:00 - a912f2f - Ronan DUCAMP : release: gateway v0.5.3 / helm 0.5.17
+2026-04-09T10:19:40+02:00 - 53da27c - Ronan DUCAMP : fix(gateway): return 200 on /-/reload success (configmap-reload expects 200 not 204)
+2026-04-09T09:59:41+02:00 - a33d879 - Ronan DUCAMP : fix(ci): also remove .cr-release-packages before gh-pages checkout + bump chart 0.5.16
+2026-04-09T09:58:15+02:00 - 7383ddb - Ronan DUCAMP : fix(helm): move config-reloader sidecar from volumes to containers
+2026-04-09T09:40:09+02:00 - 63d679f - Ronan DUCAMP : docs(helm): document configReloader, extraEnvVars, swaggerHeaders, /-/reload
+2026-04-09T09:37:17+02:00 - 9147632 - Ronan DUCAMP : fix(ci): remove .cr-index before gh-pages checkout in helm-release workflow
+2026-04-09T09:34:48+02:00 - 7bbcd25 - Ronan DUCAMP : feat(gateway): hot reload via POST /-/reload + configReloader sidecar
+2026-04-08T11:13:25+02:00 - a9c5279 - Ronan DUCAMP : feat(gateway): swagger_headers config field for authenticated spec fetching
+2026-04-08T10:26:28+02:00 - bf6385d - Ronan DUCAMP : feat(helm): add extraEnvVars to gateway deployment
+2026-04-03T15:14:59+02:00 - a49a875 - Ronan DUCAMP : fix(relay): derive service_type from result_topic for proxy metrics
+2026-04-03T11:05:16+02:00 - 2fe04c1 - Ronan DUCAMP : fix(dashboard): migrate remaining queue-proxy panels to Knative OTel metrics
+2026-04-03T11:02:49+02:00 - 999f636 - Ronan DUCAMP : fix(dashboard): migrate queue-proxy panels to Knative OTel metrics
+2026-04-03T10:00:13+02:00 - 2dd0f7a - Ronan DUCAMP : release: relay v0.5.0
+2026-04-03T09:57:38+02:00 - 9bfcba0 - Ronan DUCAMP : release: gateway v0.5.0 / helm 0.5.12
+2026-04-03T09:20:31+02:00 - f5758ae - Ronan DUCAMP : fix(ci): copy docs before git checkout gh-pages
+2026-04-03T09:17:15+02:00 - 6f8a0d3 - Ronan DUCAMP : feat(helm): PrometheusRule alerts + runbooks on GitHub Pages
+2026-04-02T15:13:50+02:00 - 978edff - Ronan DUCAMP : release: gateway v0.4.18 / helm 0.5.11
+2026-04-02T15:13:29+02:00 - 5035b8b - Ronan DUCAMP : feat(docs): group inference endpoints by service type in Swagger UI
+2026-04-02T15:10:58+02:00 - 2990957 - Ronan DUCAMP : release: gateway v0.4.17 / helm 0.5.10
+2026-04-02T15:10:34+02:00 - d7903df - Ronan DUCAMP : feat(docs): add apikey header auth to Swagger UI (Authorize button)
+2026-04-02T15:01:24+02:00 - 9060ba8 - Ronan DUCAMP : release: gateway v0.4.16 / helm 0.5.9
+2026-04-02T15:01:01+02:00 - 4056eca - Ronan DUCAMP : fix(docs): serve service specs at /docs/spec/{type}/{model}
+2026-04-02T12:35:53+02:00 - bef892f - Ronan DUCAMP : release: gateway v0.4.15 / helm 0.5.8
+2026-04-02T12:35:31+02:00 - 851187a - Ronan DUCAMP : fix(docs): embed service specs as blob URLs to avoid /swagger/* fetches
+2026-04-02T12:28:30+02:00 - 7a15bc6 - Ronan DUCAMP : release: gateway v0.4.14 / helm 0.5.7
+2026-04-02T12:28:08+02:00 - d372efe - Ronan DUCAMP : fix(docs): load swagger-ui-standalone-preset.js separately
+2026-04-02T12:23:50+02:00 - 42ad046 - Ronan DUCAMP : release: gateway v0.4.13 / helm 0.5.6
+2026-04-02T12:22:47+02:00 - 9135762 - Ronan DUCAMP : fix(docs): use StandaloneLayout for multi-spec Swagger UI dropdown
+2026-04-02T11:52:40+02:00 - 70a037e - Ronan DUCAMP : release: gateway v0.4.12 / helm 0.5.5
+2026-04-02T11:51:19+02:00 - 0543ee4 - Ronan DUCAMP : feat(gateway): swagger specs per service + /release skill
+2026-04-02T10:20:49+02:00 - 3086b85 - Ronan DUCAMP : docs: update README and helm/gateway/README for v0.4.11 features
+2026-04-02T08:57:14+02:00 - f406e29 - Ronan DUCAMP : chore(helm): bump chart to 0.5.4
+2026-04-01T10:55:12+02:00 - fdd96ed - Ronan DUCAMP : chore: release gateway v0.4.11, helm 0.5.3
+2026-04-01T10:51:11+02:00 - 109f243 - Ronan DUCAMP : feat(gateway): add sync-direct only service mode (no Kafka)
+2026-04-01T10:38:07+02:00 - 0ae2865 - Ronan DUCAMP : feat(helm): add config.existingConfigMap option
+2026-03-31T11:33:14+02:00 - 8ac1544 - Ronan DUCAMP : feat(dashboards): add inference_service variable, queue-proxy panels, relay proxy metrics
+2026-03-31T11:18:48+02:00 - 7576795 - Ronan DUCAMP : chore: bump helm chart to 0.5.1 (gateway v0.4.10, relay v0.4.7)
+2026-03-31T11:16:58+02:00 - c3e60c9 - Ronan DUCAMP : feat(relay): instrument sync-direct proxy path with Prometheus metrics
+2026-03-31T10:08:26+02:00 - 6797c2d - Ronan DUCAMP : fix(gateway): instrument proxyToInference (sync-direct) with Prometheus metrics
+2026-03-30T16:27:59+02:00 - adc04e8 - Ronan DUCAMP : feat(dashboards): add Grafana dashboard for gateway & relay metrics
+2026-03-30T15:50:29+02:00 - 6688828 - Ronan DUCAMP : feat(gateway,relay): add Prometheus metrics + Helm ServiceMonitor
+2026-03-30T15:23:29+02:00 - b1185c2 - Ronan DUCAMP : delete: unused workflow
+2026-03-30T15:16:03+02:00 - 8480b87 - Ronan DUCAMP : chore: rename repo owner/name ronan-wescale/ai-kevent → IA-Generative/kevent-ai
+2026-03-30T10:40:47+02:00 - 151f827 - Ronan DUCAMP : chore: bump relay to v0.4.5
+2026-03-30T10:40:30+02:00 - 08e5b3f - Ronan DUCAMP : fix(relay): proxy direct inference requests to local model
+2026-03-24T15:39:20+01:00 - de9b637 - Ronan DUCAMP : chore: bump gateway to v0.4.8
+2026-03-24T15:39:02+01:00 - 94f9911 - Ronan DUCAMP : fix(gateway): remove WriteTimeout default, honour write_timeout: 0s from config
+2026-03-24T15:28:54+01:00 - 3bad6b8 - Ronan DUCAMP : chore: bump gateway to v0.4.7
+2026-03-24T15:28:37+01:00 - 573ebc9 - Ronan DUCAMP : fix(gateway): remove X-Accel-Buffering header to prevent HTTP/2 INTERNAL_ERROR
+2026-03-24T15:12:06+01:00 - ab93732 - Ronan DUCAMP : chore: bump gateway to v0.4.6
+2026-03-24T15:11:46+01:00 - f7e4918 - Ronan DUCAMP : fix(gateway): delay stream commit to first keepalive tick, preserve HTTP status codes
+2026-03-24T15:05:05+01:00 - 010fa09 - Ronan DUCAMP : chore(helm): drive image tag from Chart.appVersion instead of values.yaml
+2026-03-24T14:53:32+01:00 - 80178d5 - Ronan DUCAMP : chore: bump gateway to v0.4.5, relay to v0.4.4
+2026-03-24T14:52:44+01:00 - 7d2311a - Ronan DUCAMP : fix(gateway,relay): keepalive stream to prevent proxy idle-drop, use background ctx on failure
+2026-03-23T16:33:59+01:00 - 40aa85b - Ronan DUCAMP : update: chart version
+2026-03-23T16:23:57+01:00 - 82af29f - Ronan DUCAMP : feat(gateway,relay): forward extra form params end-to-end to inference API
+2026-03-19T09:22:17+01:00 - 4f3c80e - Ronan DUCAMP : add: sasl secretKey to chart
+2026-03-17T11:22:05+01:00 - 8765276 - Ronan DUCAMP : fix(relay,gateway): delete input file after 200, fix sync cleanup
+2026-03-17T10:01:16+01:00 - b9f5c9a - Ronan DUCAMP : fix(relay): use atomic counter for syncPriority instead of binary flag
+2026-03-16T18:08:38+01:00 - c9f8dbe - Ronan DUCAMP : docs: update README and CLAUDE.md for operations map, default model, dynamic spec
+2026-03-16T18:03:08+01:00 - e47f2bb - Ronan DUCAMP : feat(registry): add default model per service type
+2026-03-16T17:20:48+01:00 - fc17027 - Ronan DUCAMP : chore: bump gateway to v0.4.1
+2026-03-16T17:18:44+01:00 - 87f8954 - Ronan DUCAMP : feat(gateway): generate OpenAPI spec dynamically from service registry
+2026-03-16T17:09:13+01:00 - f4c5cac - Ronan DUCAMP : feat(gateway): replace openai_paths with named operations map
+2026-03-16T09:56:18+01:00 - 38335c4 - Ronan DUCAMP : docs(readme): full revision — fix sync diagrams, OCR endpoint, relay config, InputEvent schema
+2026-03-16T09:33:05+01:00 - 03aef8c - Ronan DUCAMP : chore: bump relay to v0.4.0
+2026-03-16T09:33:00+01:00 - 52141bc - Ronan DUCAMP : refactor: rename dispatcher → relay
+2026-03-16T08:56:20+01:00 - e69aa09 - Ronan DUCAMP : chore: bump dispatcher to v0.3.3
+2026-03-16T08:56:16+01:00 - 3f8a7da - Ronan DUCAMP : refactor(dispatcher): replace per-type adapters with single generic multipart adapter
+2026-03-16T08:48:41+01:00 - f9b654e - Ronan DUCAMP : chore: bump gateway and dispatcher to v0.3.2
+2026-03-16T08:48:07+01:00 - ca49764 - Ronan DUCAMP : chore: bump gateway and dispatcher to v0.3.1
+2026-03-16T08:47:31+01:00 - 02eb10b - Ronan DUCAMP : feat: propagate InferenceURL from gateway to dispatcher via InputEvent
+2026-03-13T15:43:49+01:00 - 467d026 - Ronan DUCAMP : chore: remove KServe v2/v1 paths, keep OpenAI endpoints only
+2026-03-13T15:31:02+01:00 - a612f66 - Ronan DUCAMP : feat: config-driven path patterns with {model} in URL
+2026-03-13T15:00:09+01:00 - 1755cc1 - Ronan DUCAMP : fix(dispatcher): handle structured CloudEvent from KafkaSource
+2026-03-13T14:43:31+01:00 - a924f9d - Ronan DUCAMP : feat(v0.3.0): add unit tests, race-enabled CI, and architecture docs
+2026-03-13T14:32:10+01:00 - 153be96 - Ronan DUCAMP : feat(sync): sync-over-Kafka with priority — v0.3.0
+2026-03-13T11:17:26+01:00 - 8c38fd6 - Ronan DUCAMP : perf(ci): drop arm64 — amd64-only build, removes QEMU emulation (~9 min → ~1 min)
+2026-03-13T10:54:33+01:00 - da7e1c4 - Ronan DUCAMP : chore: bump helm chart to 0.2.3, gateway/dispatcher to v0.2.7
+2026-03-13T10:52:01+01:00 - 707d65f - Ronan DUCAMP : feat: log encryption status at startup for both gateway and dispatcher
+2026-03-13T10:40:51+01:00 - b4eb8c0 - Ronan DUCAMP : fix(helm): add encryption.key to ConfigMap so ENCRYPTION_KEY env var is used
+2026-03-13T09:24:17+01:00 - 2f5636b - Ronan DUCAMP : fix(docker): upgrade base image to golang:1.24-alpine
+2026-03-12T11:35:49+01:00 - c57a271 - Ronan DUCAMP : chore: bump to v0.2.6 — fix S3 multipart upload
+2026-03-12T11:32:25+01:00 - ddf8db9 - Ronan DUCAMP : fix(s3): use multipart uploader to support non-seekable encrypted streams
+2026-03-11T16:48:39+01:00 - c48cc51 - Ronan DUCAMP : fix(ci): commit missing values.yaml and fix helm-release reruns
+2026-03-11T16:43:58+01:00 - fd937b3 - Ronan DUCAMP : fix(ci): add git identity for chart-releaser and helm repo for lint
+2026-03-11T16:35:55+01:00 - 2f06b7f - Ronan DUCAMP : ci: add GitHub Actions release pipeline and Helm GitHub Pages
+2026-03-11T16:11:52+01:00 - d5a2919 - Ronan DUCAMP : feat: AES-256-GCM at-rest encryption for S3 objects
+2026-03-11T16:01:11+01:00 - ba09579 - Ronan DUCAMP : feat: openai_paths list per model, inference_url as base URL
+2026-03-11T15:49:42+01:00 - cff4ef5 - Ronan DUCAMP : chore: remove binaries from git, add to .gitignore
+2026-03-11T15:44:52+01:00 - 65a037d - Ronan DUCAMP : feat: model param in job payload, model-based Kafka topics
+2026-03-10T14:45:41+01:00 - 5f1c6cc - Ronan DUCAMP : Configure dispatcher Kafka SASL/TLS via environment variables
+2026-03-10T14:38:57+01:00 - 5d3e2a4 - Ronan DUCAMP : Fix nil pointer panic when Kafka Transport is not configured
+2026-03-10T12:24:08+01:00 - ee0d1d7 - Ronan DUCAMP : Add SASL/TLS support for Kafka authentication on gateway and dispatcher
+2026-03-10T09:24:51+01:00 - b31c9b9 - Ronan DUCAMP : first commit
