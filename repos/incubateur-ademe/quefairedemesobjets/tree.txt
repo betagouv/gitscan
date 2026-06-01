@@ -434,11 +434,13 @@
 │   │   │   ├── shared
 │   │   │   │   ├── config
 │   │   │   │   │   └── test_shared_config_models.py
-│   │   │   │   └── tasks
-│   │   │   │       ├── airflow_logic
-│   │   │   │       │   └── test_packages_compatibility.py
-│   │   │   │       └── business_logic
-│   │   │   │           └── test_normalize.py
+│   │   │   │   ├── tasks
+│   │   │   │   │   ├── airflow_logic
+│   │   │   │   │   │   └── test_packages_compatibility.py
+│   │   │   │   │   └── business_logic
+│   │   │   │   │       └── test_normalize.py
+│   │   │   │   └── xcom
+│   │   │   │       └── test_xcom_normalize.py
 │   │   │   ├── sources
 │   │   │   │   └── tasks
 │   │   │   │       ├── airflow_logic
@@ -994,6 +996,11 @@
     │   ├── admin.py
     │   ├── apps.py
     │   ├── forms.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   └── commands
+    │   │       ├── __init__.py
+    │   │       └── resolve_su_ps_codes.py
     │   ├── migrations
     │   │   ├── 0001_bancache.py
     │   │   ├── 0002_tables_suggestion.py
@@ -1905,4 +1912,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-352 directories, 1555 files
+355 directories, 1559 files
