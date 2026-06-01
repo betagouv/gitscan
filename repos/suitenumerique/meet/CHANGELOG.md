@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.17.0] - 2026-05-31
+
 ### Added
 
 - ✨(fullstack) allow participants to mute others based on room configuration
@@ -15,7 +17,8 @@ and this project adheres to
 - ✨(frontend) make reaction toolbar responsive on small viewports
 - ✨(frontend) enable reactions on mobile devices
 - ✨(frontend) introduce picture-in-picture meeting
-- ✨(backend) add core.recording.event.parsers.S3Parser 
+- ✨(backend) add core.recording.event.parsers.S3Parser
+- ✨(summary) extended support for all video / audio files #1358
 
 ### Changed 
 
@@ -23,6 +26,11 @@ and this project adheres to
 - ✨(backend) expose room configuration to all API consumers
 - 🩹(frontend) improve reaction toolbar centering with dynamic positioning
 - 🚀 (paas) remove buildpack requirements.txt to use the new uv.lock #1349
+- ✨(backend) allow room configuration and access level via external api #1260
+- ♻️(backend) prefix Swagger routes with /api
+
+### Fixed
+- 🩹(backend) fix swagger and redoc documentation URLs
 
 ## [1.16.0] - 2026-05-13
 

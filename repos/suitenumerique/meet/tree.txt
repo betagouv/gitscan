@@ -389,7 +389,9 @@
     │   │   │   ├── test_models_rooms.py
     │   │   │   ├── test_models_users.py
     │   │   │   ├── test_utils.py
-    │   │   │   └── test_utils_detect_mimetype.py
+    │   │   │   ├── test_utils_build_telephony_config.py
+    │   │   │   ├── test_utils_detect_mimetype.py
+    │   │   │   └── test_utils_format_telephony_phone_number.py
     │   │   ├── urls.py
     │   │   └── utils.py
     │   ├── demo
@@ -486,6 +488,8 @@
     │   │   │   ├── logo.svg
     │   │   │   ├── mustache.png
     │   │   │   ├── pip.svg
+    │   │   │   ├── proconnect-button-hovered.svg
+    │   │   │   ├── proconnect-button.svg
     │   │   │   └── reactions
     │   │   │       ├── clapping-hands.png
     │   │   │       ├── face-with-open-mouth.png
@@ -514,7 +518,18 @@
     │   │   │   ├── queryKeys.ts
     │   │   │   └── useConfig.ts
     │   │   ├── assets
-    │   │   │   └── CameraIcon.tsx
+    │   │   │   ├── CameraIcon.tsx
+    │   │   │   └── icons
+    │   │   │       ├── article.svg
+    │   │   │       ├── chevron_forward.svg
+    │   │   │       ├── cloud_download.svg
+    │   │   │       ├── language.svg
+    │   │   │       ├── login.svg
+    │   │   │       ├── mail.svg
+    │   │   │       ├── mode_standby.svg
+    │   │   │       ├── person_raised_hand.svg
+    │   │   │       ├── screen_record.svg
+    │   │   │       └── speech_to_text.svg
     │   │   ├── components
     │   │   │   ├── AppInitialization.tsx
     │   │   │   ├── Avatar.tsx
@@ -546,10 +561,9 @@
     │   │   │   │   │   └── useUser.tsx
     │   │   │   │   ├── components
     │   │   │   │   │   └── UserAware.tsx
-    │   │   │   │   ├── index.ts
     │   │   │   │   └── utils
     │   │   │   │       ├── authUrl.ts
-    │   │   │   │       ├── logoutUrl.ts
+    │   │   │   │       ├── logout.ts
     │   │   │   │       └── silentLogin.ts
     │   │   │   ├── files
     │   │   │   │   └── api
@@ -559,11 +573,11 @@
     │   │   │   │       └── types.ts
     │   │   │   ├── home
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── CreateMeetingMenu.tsx
     │   │   │   │   │   ├── IntroSlider.tsx
     │   │   │   │   │   ├── JoinMeetingDialog.tsx
     │   │   │   │   │   ├── LaterMeetingDialog.tsx
     │   │   │   │   │   └── MoreLink.tsx
-    │   │   │   │   ├── index.ts
     │   │   │   │   └── routes
     │   │   │   │       └── Home.tsx
     │   │   │   ├── layout
@@ -652,6 +666,7 @@
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ControlsButton.tsx
     │   │   │   │   │   ├── ErrorAlertDialog.tsx
+    │   │   │   │   │   ├── LimitDescription.tsx
     │   │   │   │   │   ├── LimitReachedAlertDialog.tsx
     │   │   │   │   │   ├── LoginPrompt.tsx
     │   │   │   │   │   ├── NoAccessView.tsx
@@ -665,7 +680,6 @@
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useHasFeatureWithoutAdminRights.ts
     │   │   │   │   │   ├── useHasRecordingAccess.ts
-    │   │   │   │   │   ├── useHumanizeRecordingMaxDuration.ts
     │   │   │   │   │   ├── useIsRecordingModeEnabled.ts
     │   │   │   │   │   ├── useMetadataCollectorEnabled.ts
     │   │   │   │   │   ├── useMutateRecording.ts
@@ -695,6 +709,7 @@
     │   │   │   │   │   └── updateRaiseHand.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ActiveSpeaker.tsx
+    │   │   │   │   │   ├── AdminOrOwnerOnly.tsx
     │   │   │   │   │   ├── Conference.tsx
     │   │   │   │   │   ├── InviteDialog.tsx
     │   │   │   │   │   ├── Join.tsx
@@ -798,7 +813,6 @@
     │   │   │   │   │   │   ├── useNoiseReduction.ts
     │   │   │   │   │   │   ├── useNoiseReductionAvailable.ts
     │   │   │   │   │   │   ├── usePermissionsManager.ts
-    │   │   │   │   │   │   ├── usePersistentUserChoices.ts
     │   │   │   │   │   │   ├── usePublishSourcesManager.ts
     │   │   │   │   │   │   ├── useRaisedHand.ts
     │   │   │   │   │   │   ├── useResizeObserver.ts
@@ -895,6 +909,7 @@
     │   │   ├── hooks
     │   │   │   ├── useApplyA11yFonts.ts
     │   │   │   ├── useDelayUnmount.tsx
+    │   │   │   ├── useHumanizeDuration.ts
     │   │   │   ├── useLoginHint.ts
     │   │   │   ├── usePrevious.ts
     │   │   │   ├── useRateLimiter.ts
@@ -1249,4 +1264,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-236 directories, 1015 files
+237 directories, 1029 files
