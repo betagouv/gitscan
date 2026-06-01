@@ -25,7 +25,6 @@
 ├── bin
 │   ├── build_assets.sh
 │   ├── copy_catchmentarea.sh
-│   ├── copy_lines_to_prod.sh
 │   ├── copy_maps.sh
 │   ├── copy_polygons.sh
 │   ├── first_deploy.sh
@@ -313,16 +312,18 @@
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       ├── alti.py
-│   │   │       ├── batch_import_maps.py
-│   │   │       ├── import_alti.py
-│   │   │       ├── import_catchment_area_rasters.py
-│   │   │       ├── import_departments.py
-│   │   │       ├── import_shapefiles.py
-│   │   │       ├── process_hedge_maps.py
-│   │   │       └── update_zone_counts.py
+│   │   │   ├── commands
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── alti.py
+│   │   │   │   ├── batch_import_maps.py
+│   │   │   │   ├── copy_geometries_to_prod.py
+│   │   │   │   ├── import_alti.py
+│   │   │   │   ├── import_catchment_area_rasters.py
+│   │   │   │   ├── import_departments.py
+│   │   │   │   ├── import_shapefiles.py
+│   │   │   │   ├── process_pending_maps.py
+│   │   │   │   └── update_zone_counts.py
+│   │   │   └── helpers.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_map_imported_zones.py
@@ -356,12 +357,15 @@
 │   │   │   ├── 0028_alter_map_map_type.py
 │   │   │   ├── 0028_fix_terres_emergees_names.py
 │   │   │   ├── 0029_merge_20260413_1454.py
+│   │   │   ├── 0030_split_species_map_type.py
+│   │   │   ├── 0031_rename_species_to_legacy.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tasks.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
+│   │   │   ├── test_management_commands.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_utils.py
 │   │   │   └── test_zone_manager.py
@@ -379,7 +383,7 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       ├── import_pacage.py
-│   │   │       └── import_taxref.py
+│   │   │       └── update_species_from_taxref.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_species.py
@@ -412,22 +416,39 @@
 │   │   │   ├── 0027_rename_proximite_point_eau_to_ripisylve.py
 │   │   │   ├── 0028_hedgedata_length_fields.py
 │   │   │   ├── 0029_empty.py
+│   │   │   ├── 0030_species_ru_fields.py
+│   │   │   ├── 0031_rename_species_fields_and_models.py
+│   │   │   ├── 0032_alter_species_adhoc_group.py
+│   │   │   ├── 0033_alter_species_common_name.py
+│   │   │   ├── 0034_clear_common_name_stubs.py
+│   │   │   ├── 0035_alter_species_common_name_and_more.py
+│   │   │   ├── 0036_backfill_adhoc_group_display.py
+│   │   │   ├── 0037_alter_species_highly_sensitive_and_more.py
+│   │   │   ├── 0038_alter_species_adhoc_group_alter_species_group.py
 │   │   │   ├── __init__.py
 │   │   │   └── ep_aisne.csv
 │   │   ├── models.py
 │   │   ├── regulations.py
 │   │   ├── services.py
+│   │   ├── species_stubs.py
 │   │   ├── static
 │   │   │   └── hedge_input
 │   │   │       └── app.js
 │   │   ├── tasks.py
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── hedges.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
 │   │   │   ├── factories.py
 │   │   │   ├── test_calvados_quality_condition.py
+│   │   │   ├── test_import_taxref.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_regulations.py
+│   │   │   ├── test_ru_quality_condition.py
 │   │   │   ├── test_services.py
+│   │   │   ├── test_tasks.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   └── views.py
@@ -614,6 +635,7 @@
 │   │   │   ├── natura2000.py
 │   │   │   ├── natura2000_haie.py
 │   │   │   ├── protection_captages.py
+│   │   │   ├── regime_unique.py
 │   │   │   ├── regime_unique_haie.py
 │   │   │   ├── reserves_naturelles.py
 │   │   │   ├── sage.py
@@ -1168,6 +1190,8 @@
 │   │   │   ├── _footer.html
 │   │   │   ├── _header.html
 │   │   │   ├── _learn_more.html
+│   │   │   ├── _ru_coefficient_matrix.html
+│   │   │   ├── _ru_hedge_detail_table.html
 │   │   │   ├── _slim_header.html
 │   │   │   ├── base.html
 │   │   │   ├── emails
@@ -1288,6 +1312,7 @@
 │   │   │   │   ├── _procedure_modal.html
 │   │   │   │   ├── _regulation_form.html
 │   │   │   │   ├── _revoke_token_modal.html
+│   │   │   │   ├── _ru_plantation_condition_details.html
 │   │   │   │   ├── _summary_dossier.html
 │   │   │   │   ├── alignement_arbres
 │   │   │   │   │   ├── alignement_arbres_plantation_condition_details.html
@@ -1306,6 +1331,7 @@
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── ep_aisne_plantation_condition_details.html
 │   │   │   │   │   ├── ep_normandie_plantation_condition_details.html
+│   │   │   │   │   ├── ep_regime_unique_plantation_condition_details.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   ├── instructor_result_details.html
 │   │   │   │   │   └── key_elements.html
@@ -1343,7 +1369,8 @@
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── regime_unique_haie
-│   │   │   │   │   └── instructor_result_details.html
+│   │   │   │   │   ├── instructor_result_details.html
+│   │   │   │   │   └── regime_unique_haie_plantation_condition_details.html
 │   │   │   │   ├── reserves_naturelles
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
@@ -1388,6 +1415,7 @@
 │   │   │   ├── _hedges_properties.html
 │   │   │   ├── _plantation_conditions.html
 │   │   │   ├── _species_table.html
+│   │   │   ├── _species_table_ru.html
 │   │   │   ├── admin
 │   │   │   │   ├── _hedges_content.html
 │   │   │   │   ├── _hedges_species.html
@@ -1458,6 +1486,7 @@
 │   │   │   ├── debug_result.html
 │   │   │   ├── debug_result_non_disponible.html
 │   │   │   ├── ep
+│   │   │   │   ├── _species_cortege_ru.html
 │   │   │   │   ├── ep_aisne_derogation_inventaire.html
 │   │   │   │   ├── ep_aisne_derogation_simplifiee.html
 │   │   │   │   ├── ep_aisne_interdit.html
@@ -1806,4 +1835,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-223 directories, 1585 files
+224 directories, 1613 files
