@@ -1,49 +1,27 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 27 mai 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'interface CRM et de la gestion des projets. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la sécurité avec l'ajout de traçage des connexions via Sesame. Les tests frontend ont été mis à jour et de nombreuses dépendances ont été actualisées.
+Cette période a été marquée par une refonte significative de l'interface utilisateur du CRM (gestion des utilisateurs, des projets et des organisations), avec un accent sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités. Des corrections de bugs et des améliorations de performance ont également été apportées, notamment au niveau de la gestion des notifications et de l'authentification.
 
 ### Évolutions fonctionnelles
-
-*   **CRM :**
-    *   Refonte de l'interface utilisateur pour la gestion des utilisateurs CRM [#2081](https://github.com/betagouv/recommandations-collaboratives/pull/2081).
-    *   Amélioration de l'affichage des informations des utilisateurs et des projets dans le CRM.
-    *   Correction d'un bug empêchant l'accès aux boutons de recommandation dans l'éditeur de conversation [#2078](https://github.com/betagouv/recommandations-collaboratives/pull/2078).
-    *   Ajout de la possibilité de filtrer les utilisateurs par rôle dans le CRM.
-    *   Correction du comptage des documents liés à une conversation dans le CRM.
-*   **Gestion des projets :**
-    *   Possibilité d'afficher les projets supprimés avec les permissions appropriées [#2084](https://github.com/betagouv/recommandations-collaboratives/pull/2084).
-    *   Ajout de nouvelles colonnes Grist pour les projets [#2078](https://github.com/betagouv/recommandations-collaboratives/pull/2078).
-    *   Affichage du nombre de projets dans les colonnes Kanban [#2094](https://github.com/betagouv/recommandations-collaboratives/pull/2094).
-    *   Amélioration de l'API pour inclure des données supplémentaires pour Grist.
-*   **Authentification :**
-    *   Ajout du traçage des connexions via Sesame pour une meilleure sécurité [#2084](https://github.com/betagouv/recommandations-collaboratives/pull/2084).
-*   **Notifications :**
-    *   Correction du comportement de consommation des notifications de conversation [#2024](https://github.com/betagouv/recommandations-collaboratives/pull/2024).
-*   **Webhooks :**
-    *   Envoi de webhooks lors des modifications de l'organisation d'un utilisateur [#2078](https://github.com/betagouv/recommandations-collaboratives/pull/2078).
+- **CRM (Gestion des utilisateurs, projets et organisations):** Refonte complète de l'interface utilisateur, incluant l'affichage des utilisateurs, des organisations, des projets et des conversations [#2081](https://github.com/betagouv/recommandations-collaboratives/pull/2081), [#2070](https://github.com/betagouv/recommandations-collaboratives/pull/2070).
+- **CRM - Détails du projet:** Ajout d'informations sur les sujets associés aux projets, amélioration de l'affichage des données et ajout de filtres [#2078](https://github.com/betagouv/recommandations-collaboratives/pull/2078).
+- **Ordre des recommandations:** Possibilité de modifier l'ordre des recommandations en cours d'élaboration [#2131](https://github.com/betagouv/recommandations-collaboratives/pull/2131).
+- **Authentification:** Amélioration de la gestion des adresses e-mail inconnues lors de la réinitialisation du mot de passe et de la création de compte [#2145](https://github.com/betagouv/recommandations-collaboratives/pull/2145).
+- **Notifications:** Amélioration de la gestion et de l'affichage des notifications, notamment en supprimant un délai artificiel [#2024](https://github.com/betagouv/recommandations-collaboratives/pull/2024).
+- **Kanban:** Ajout du nombre de projets dans chaque colonne du Kanban [#2094](https://github.com/betagouv/recommandations-collaboratives/pull/2094).
+- **Interface utilisateur:** Amélioration de l'interface utilisateur générale, notamment au niveau des styles, des couleurs et de l'accessibilité.
 
 ### Évolutions techniques
-
-*   **Tests :**
-    *   Mise à jour des tests frontend (Cypress) pour une meilleure couverture et fiabilité [#2027](https://github.com/betagouv/recommandations-collaboratives/pull/2027).
-    *   Refactorisation et amélioration de la structure des tests.
-*   **Dépendances :**
-    *   Mise à jour de plusieurs dépendances : Django, Wagtail, js-cookie, systeminformation, postcss, jupyterlab, urllib, etc.
-*   **Refactoring :**
-    *   Optimisation des requêtes pour l'API des projets.
-    *   Séparation des préoccupations pour l'affichage des projets supprimés.
-    *   Amélioration de la lisibilité du code et suppression de code inutile.
-*   **CI/CD :**
-    *   Mise en place d'un workflow CI/CD plus robuste.
+- **Tests:** Ajout de nouveaux tests et mise à jour des tests existants, notamment pour l'interface utilisateur (Cypress) [#2141](https://github.com/betagouv/recommandations-collaboratives/pull/2141), [#2127](https://github.com/betagouv/recommandations-collaboratives/pull/2127).
+- **Dépendances:** Mise à jour de plusieurs dépendances, notamment Django, Wagtail, js-cookie, axios, postcss et jupyterlab.
+- **Refactoring:** Refactoring du code pour améliorer la lisibilité et la maintenabilité, notamment au niveau de la gestion des rôles utilisateurs dans le CRM et de la logique de recherche.
+- **CI/CD:** Amélioration de la configuration du CI/CD.
+- **API:** Optimisation des requêtes API pour améliorer les performances, notamment pour la récupération des projets.
 
 ### Autres changements
-
-*   Documentation :
-    *   Mise à jour de la documentation sur les webhooks.
-    *   Documentation des changements futurs pour la synchronisation Recoco.
-*   Correction de bugs mineurs et améliorations de l'interface utilisateur.
-*   Amélioration des messages de log.
-*   Correction de problèmes d'accessibilité.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de commentaires et de documentation au code.
+- **Documentation:** Mise à jour de la documentation, notamment pour les webhooks et les tests E2E.
+- **Configuration:** Ajustement de la configuration pour améliorer la sécurité et la performance.
+- **Nettoyage de code:** Suppression de code inutile et amélioration de la qualité du code.
+- **Corrections de bugs:** Correction de plusieurs bugs mineurs, notamment liés à l'affichage de l'interface utilisateur et à la gestion des permissions.
+- **Amélioration de l'accessibilité:** Amélioration de l'accessibilité de certains éléments de l'interface utilisateur.
