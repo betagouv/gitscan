@@ -1,13 +1,14 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet est en cours de développement et vise à faciliter l'ingestion, le traitement et la visualisation des données relatives aux offres d'emploi publiques.",
+  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet est en cours de développement et vise à faciliter l'analyse et le prototypage.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
@@ -16,23 +17,26 @@
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Django",
-    "PostgreSQL",
-    "Redis",
     "Docker",
     "Docker Compose",
+    "GNU Make",
     "uv",
+    "Direnv",
+    "Node.js",
     "pnpm",
     "poppler",
-    "tesseract"
+    "tesseract",
+    "Redis",
+    "PostgreSQL",
+    "pgvector"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Microservices & Architecture",
-    "Tests"
+    "Frontend React",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
@@ -40,13 +44,13 @@
     ]
   },
   "tests": [
-    "Pytest",
+    "pytest",
     "Playwright"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-05-28T19:38:05+02:00",
+  "lastActivity": "2026-05-29T15:44:10+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

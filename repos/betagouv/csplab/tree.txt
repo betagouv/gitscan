@@ -24,7 +24,6 @@
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .prettierrc.json
-├── .stylelintrc.json
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
@@ -54,10 +53,10 @@
 │   ├── frontend_conventions.md
 │   ├── frontend_vue.md
 │   ├── sass_configuration.md
-│   ├── scss_linting_and_formatting.md
 │   ├── scss_style_guide.md
 │   ├── talentsoft_webhooks.md
-│   └── updating_API_schema.md
+│   ├── updating_API_schema.md
+│   └── web_linting.md
 ├── env.d
 │   ├── ingestion-example
 │   ├── notebook-example
@@ -93,9 +92,11 @@
     │   │   └── start_web.sh
     │   ├── domain
     │   │   ├── __init__.py
+    │   │   ├── credentials.py
     │   │   └── source.py
     │   ├── infrastructure
     │   │   ├── __init__.py
+    │   │   ├── credentials_store.py
     │   │   ├── di
     │   │   │   ├── __init__.py
     │   │   │   └── container.py
@@ -111,7 +112,8 @@
     │   │   ├── gateways
     │   │   │   ├── __init__.py
     │   │   │   └── async_http_client.py
-    │   │   └── sources_repository.py
+    │   │   ├── sources_repository.py
+    │   │   └── talentsoft_client_repository.py
     │   ├── presentation
     │   │   ├── __init__.py
     │   │   └── dtos
@@ -144,11 +146,13 @@
     │   │       │   ├── test_talentsoft_dtos.py
     │   │       │   └── utils.py
     │   │       ├── test_async_http_client.py
+    │   │       ├── test_credentials_store.py
     │   │       ├── test_load_offer_details_use_case.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
     │   │       ├── test_sentry.py
-    │   │       └── test_sources_repository.py
+    │   │       ├── test_sources_repository.py
+    │   │       └── test_talentsoft_client_repository.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -348,6 +352,7 @@
         │       ├── source_type.py
         │       ├── type_competence.py
         │       └── verse.py
+        ├── eslint.config.mjs
         ├── infrastructure
         │   ├── __init__.py
         │   ├── authentication
@@ -603,6 +608,8 @@
         │   │   ├── eslint.config.js
         │   │   ├── package.json
         │   │   ├── src
+        │   │   │   ├── api
+        │   │   │   │   └── session.ts
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   └── main.ts
@@ -620,10 +627,15 @@
         │   │   │   │       └── content
         │   │   │   │           ├── ddr-000-pourquoi-des-ddr.md
         │   │   │   │           └── ddr-001-couches-design.md
-        │   │   │   └── styles
-        │   │   │       ├── dsfr-tokens.css
-        │   │   │       ├── index.css
-        │   │   │       └── theme.css
+        │   │   │   ├── styles
+        │   │   │   │   ├── dsfr-tokens.css
+        │   │   │   │   ├── index.css
+        │   │   │   │   └── theme.css
+        │   │   │   ├── types
+        │   │   │   │   └── config.ts
+        │   │   │   └── utils
+        │   │   │       ├── http.test.ts
+        │   │   │       └── http.ts
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
@@ -882,4 +894,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-181 directories, 703 files
+184 directories, 712 files
