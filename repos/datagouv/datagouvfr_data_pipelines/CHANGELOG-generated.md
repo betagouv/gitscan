@@ -1,26 +1,29 @@
-## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 28 mai 2026)
+## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse des pipelines existants, notamment en gérant mieux les erreurs et les limites de taille des messages. Plusieurs pipelines ont été migrés ou adaptés pour fonctionner avec Airflow 3, et des améliorations ont été apportées à la configuration et à l'exécution des notebooks. Enfin, des travaux ont été réalisés pour faciliter le déploiement et la surveillance des pipelines sur l'infrastructure OVH.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'optimisation de la consommation de mémoire des pipelines, la migration de nouveaux traitements vers Airflow (DVF geoloc, qualité de l'eau), et l'amélioration de la robustesse et de la surveillance des pipelines existants. Plusieurs corrections ont été apportées pour améliorer la stabilité et la gestion des erreurs, notamment concernant les notifications Tchap et l'API Airflow.
 
 ### Évolutions fonctionnelles
-- Migration du pipeline de géolocalisation des données DVF vers Airflow. [#653](https://github.com/datagouv/datagouvfr_data_pipelines/issues/653)
-- Amélioration de la présentation des notifications HVD. [#664](https://github.com/datagouv/datagouvfr_data_pipelines/issues/664)
-- Ajout de la pagination et d'un filtre d'état à l'API Airflow. [#662](https://github.com/datagouv/datagouvfr_data_pipelines/issues/662)
-- Gestion des messages trop longs pour Tchap, évitant ainsi des erreurs d'envoi. [#663](https://github.com/datagouv/datagouvfr_data_pipelines/issues/663)
+- Migration du traitement des géolocalisations DVF vers Airflow, permettant une meilleure gestion et automatisation. [#653](https://github.com/datagouv/datagouvfr_data_pipelines/issues/653)
+- Publication des données de qualité de l'eau dans un nouveau dataset, suite à un remaniement du pipeline associé. [#665](https://github.com/datagouv/datagouvfr_data_pipelines/issues/665)
+- Amélioration de la gestion des messages trop longs pour Tchap, évitant ainsi des erreurs de notification. [#663](https://github.com/datagouv/datagouvfr_data_pipelines/issues/663)
+- Ajout de la pagination et de filtres d'état à l'API Airflow pour une meilleure gestion des tâches. [#662](https://github.com/datagouv/datagouvfr_data_pipelines/issues/662)
+- Correction de l'affichage du layout des notifications HVD. [#664](https://github.com/datagouv/datagouvfr_data_pipelines/issues/664)
 
 ### Évolutions techniques
-- Utilisation de l'Airflow SDK pour supprimer les avertissements de dépréciation et améliorer la qualité du code. [#661](https://github.com/datagouv/datagouvfr_data_pipelines/issues/661)
-- Refactoring pour permettre l'utilisation de variables d'environnement dans la configuration, facilitant l'exécution des notebooks.
-- Modification de la manière dont les fonctions sont passées en paramètres aux notebooks pour éviter d'importer Airflow dans ces derniers.
-- Correction de plusieurs problèmes liés à l'importation de modules et à la configuration des tâches Airflow.
-- Adaptation des DAGs de maintenance et de métadonnées pour la compatibilité avec Airflow 3. [#658](https://github.com/datagouv/datagouvfr_data_pipelines/issues/658)
-- Déploiement des pipelines PNT (Points de Numérotation de Territoire) sur l'infrastructure OVH. [#655](https://github.com/datagouv/datagouvfr_data_pipelines/issues/655)
-- Correction de la configuration de la salle Tchap par défaut. [#657](https://github.com/datagouv/datagouvfr_data_pipelines/issues/657)
+- Optimisations significatives de la consommation de mémoire des pipelines, notamment en gérant plus efficacement les objets en mémoire et en optimisant le traitement des données (groupement/dégroupement OM parcelles, concaténation).
+- Refactorisation du code pour utiliser la nouvelle syntaxe Airflow et éviter les avertissements de dépréciation. [#661](https://github.com/datagouv/datagouvfr_data_pipelines/issues/661)
+- Utilisation de variables d'environnement pour la configuration des notebooks, permettant une exécution plus flexible et sécurisée.
+- Amélioration de la gestion des endpoints S3 pour pandas et logging.
+- Passage des PNT (Points de Nuisance Thématiques) sur l'infrastructure OVH. [#655](https://github.com/datagouv/datagouvfr_data_pipelines/issues/655)
+- Suppression de l'utilisation de `literal_eval` pour des raisons de sécurité. [#660](https://github.com/datagouv/datagouvfr_data_pipelines/issues/660)
 
 ### Autres changements
-- Correction de typos et nettoyage du code.
-- Mise à jour de la documentation concernant la mise hors service des anciens systèmes.
-- Ajout des endpoints S3 dans la configuration.
-- Suppression d'une liste d'IDs inutilisée.
+- Correction de références datagouv.
+- Mise à jour de la watchlist.
+- Correction de typos.
+- Ajout d'informations sur la mise hors service (decommission) dans la documentation.
+- Configuration des cibles de monitoring PNT pour OVH.
+- Correction de la configuration par défaut de la salle Tchap. [#657](https://github.com/datagouv/datagouvfr_data_pipelines/issues/657)
+- Correction de bugs mineurs et améliorations de la gestion des logs.
 - Mise à jour du fichier `config.py`.
