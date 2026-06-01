@@ -1,35 +1,30 @@
-## Changelog : claw-code-go (30 derniers jours, au 18 mai 2026)
+## Changelog : claw-code-go (30 derniers jours, au 30 mai 2026)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une refonte importante de l'écosystème des outils et plugins de claw-code-go. De nouvelles fonctionnalités ont été ajoutées pour l'automatisation, la sécurité et l'intégration avec des services externes comme AWS Bedrock, Azure Foundry et Vertex AI. L'ajout d'un marché de plugins distant et d'outils d'interaction utilisateur (ask_user, remote_trigger) renforce la flexibilité et l'extensibilité de la plateforme. Des améliorations significatives ont également été apportées à la gestion des erreurs, à la performance et à la documentation.
+Les dernières mises à jour de claw-code-go se concentrent sur l'amélioration de l'intégration avec les modèles d'IA, notamment Claude Opus 4.8, et l'ajout de nouvelles fonctionnalités comme l'automatisation de tâches sur l'ordinateur de l'utilisateur (prise de captures d'écran, clics de souris, saisie de texte). Des améliorations ont également été apportées à la gestion des outils et à la robustesse de l'API.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau tool `computer_use` permettant l'automatisation d'actions sur l'interface graphique (clics, saisie de texte, captures d'écran) sous Linux.
-- Implémentation d'un marché de plugins distant permettant d'installer des plugins depuis une URL spécifiée, avec vérification de signature.
-- Ajout des outils `ask_user` et `remote_trigger` pour interagir avec l'utilisateur et déclencher des actions externes.
-- Intégration de nouveaux fournisseurs de modèles de langage : AWS Bedrock, Azure Foundry et Google Vertex AI.
-- Possibilité d'utiliser des modèles OpenAI avec différents niveaux d'effort de raisonnement (`reasoning_effort`).
-- Ajout d'un outil `timeline` en ligne de commande pour visualiser l'historique des sessions.
-- Ajout d'un outil `store` en ligne de commande pour gérer les plugins.
+- Ajout du support pour le modèle Claude Opus 4.8 avec la possibilité de configurer l'effort de raisonnement (low, medium, high, xhigh, max).
+- Intégration d'un nouveau tool `computer_use` permettant d'automatiser des actions sur l'ordinateur (clics, saisie de texte, captures d'écran) via `xdotool` et `ImageMagick` (sous Linux).
+- Possibilité d'installer des skills (plugins) via un marketplace distant.
+- Ajout d'un nouveau tool `todo_write` avec une définition de schéma pour assurer la compatibilité avec l'API OpenAI.
+- Ajout de la variable d'environnement `ZAI_API_KEY` pour l'authentification auprès de fournisseurs tiers.
+- Amélioration de la présentation de la documentation (README) avec une mise en avant des fonctionnalités clés.
+- Ajout d'un mode d'authentification ChatGPT-OAuth pour l'API OpenAI.
 
 ### Évolutions techniques
-- Refactorisation importante du code pour améliorer la structure et la maintenabilité.
-- Ajout de tests unitaires et d'intégration pour couvrir les nouvelles fonctionnalités.
-- Mise en place d'un système de cache pour le registre des modèles de langage.
-- Amélioration de la gestion des erreurs et des timeouts.
-- Implémentation de l'exportation des logs au format OTLP/gRPC pour une meilleure observabilité.
-- Utilisation de cosign pour la vérification de la signature des plugins.
-- Amélioration de la sécurité avec la fermeture de plusieurs vulnérabilités identifiées lors de revues de code.
-- Refonte du système d'authentification OAuth pour MCP avec support de PKCE.
-- Ajout de la gestion des variables d'environnement pour les fournisseurs de modèles de langage.
-- Suppression de la dépendance à la librairie `goai`.
-- Modification du chemin du module pour faciliter l'importation distante.
+- Refactor de la gestion des erreurs dans l'API pour une meilleure gestion des erreurs de transport avec un système de retry exponentiel.
+- Amélioration de la gestion du cache du registre d'API avec un rafraîchissement automatique et la fusion du registre par défaut.
+- Correction de bugs liés à la gestion des paramètres et des réponses de l'API Anthropic, notamment la préservation des données et la gestion des erreurs SSE.
+- Amélioration de la gestion des processus avec la suppression des processus groupés lors d'un timeout pour éviter les blocages.
+- Suppression des propriétés vides dans les requêtes OpenAI pour une meilleure compatibilité.
+- Correction de problèmes liés à la gestion des tokens et des budgets sur les modèles Anthropic.
+- Ajout de la licence MIT au projet.
+- Exposition de la capacité de raisonnement par modèle dans l'API.
+- Suppression de commentaires inutiles dans le code.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés.
-- Restructuration du fichier README pour mettre en avant les principales fonctionnalités.
-- Ajout d'une matrice de parité pour suivre l'état d'avancement des fonctionnalités.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout d'une option pour désactiver la vérification de signature des plugins.
-- Ajout d'une option pour autoriser l'utilisation du marché de plugins en HTTPS non sécurisé.
-- Amélioration des messages d'erreur pour faciliter le débogage.
+- Ajout de frontmatter YAML aux skills pour faciliter leur gestion et leur installation.
+- Correction de la gestion des espaces dans les préfixes SSE.
+- Amélioration de la gestion des erreurs et des logs.
+- Mise à jour de la documentation interne.
