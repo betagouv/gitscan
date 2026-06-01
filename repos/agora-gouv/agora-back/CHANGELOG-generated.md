@@ -1,22 +1,29 @@
-## Changelog : agora-back (30 derniers jours, au 27 mai 2026)
+## Changelog : agora-back (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion et l'affichage des thèmes hebdomadaires, ainsi que sur des ajustements pour l'anonymisation des données et l'enrichissement des informations relatives aux questions/réponses gouvernementales. Plusieurs corrections et ajouts ont été effectués pour améliorer la robustesse et la flexibilité de l'application.
+Ce mois-ci, les améliorations se concentrent sur la gestion et l'affichage des thèmes hebdomadaires (thèmes "hebdo") ainsi que sur l'intégration avec Strapi (CMS). Des ajustements ont également été apportés à la page de détails des questions/réponses gouvernementales et à l'anonymisation des noms d'utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle API publique pour consulter les thèmes de la semaine : `GET /theme_hebdo` [#22b4642](https://github.com/agora-gouv/agora-back/commit/22b4642)
-- Amélioration de la gestion des périodes optionnelles pour les thèmes hebdomadaires, en intégrant les données depuis Strapi [#e5d55ca](https://github.com/agora-gouv/agora-back/commit/e5d55ca) et [#af34990](https://github.com/agora-gouv/agora-back/commit/af34990)
+- Ajout d'une nouvelle route API publique pour consulter les thèmes de la semaine : `GET /theme_hebdo` [#22b4642](https://github.com/agora-gouv/agora-back/commit/22b4642)
+- Amélioration de l'affichage des thèmes hebdomadaires :
+    - Sous-titre dynamique en fonction du type de thème (libre ou non).
+    - Filtrage des 3 prochains thèmes pour la tuile "thème hebdo".
+    - Gestion de la période optionnelle des thèmes hebdomadaires côté Strapi.
+    - Correction de l'affichage de la période des thèmes hebdomadaires (passage en majuscule).
 - Ajout de deux nouveaux champs pour la page de détails des questions/réponses gouvernementales [#6e24fe8](https://github.com/agora-gouv/agora-back/commit/6e24fe8)
-- Correction du champ "programme_du_mois" pour permettre l'utilisation de texte enrichi [#7bb4bd4](https://github.com/agora-gouv/agora-back/commit/7bb4bd4)
-- Filtrage des 3 prochains thèmes pour l'affichage de la tuile "thème de la semaine" [#8081d92](https://github.com/agora-gouv/agora-back/commit/8081d92)
-- Modification du format de la photo des thèmes hebdomadaires pour utiliser le type "media" [#72fb80f](https://github.com/agora-gouv/agora-back/commit/72fb80f)
+- Correction de la sélection pour l'anonymisation des noms d'utilisateurs [#c601629](https://github.com/agora-gouv/agora-back/commit/c601629)
+- Correction du champ "programme_du_mois" pour permettre l'utilisation de rich text [#7bb4bd4](https://github.com/agora-gouv/agora-back/commit/7bb4bd4)
 
 ### Évolutions techniques
-- Implémentation d'un contrôleur dédié pour le traitement hebdomadaire, permettant un lancement en mode administration [#3924dab](https://github.com/agora-gouv/agora-back/commit/3924dab)
-- Ajout d'un mécanisme d'anonymisation des noms d'utilisateur dans le traitement hebdomadaire [#41b8762](https://github.com/agora-gouv/agora-back/commit/41b8762) et [#c601629](https://github.com/agora-gouv/agora-back/commit/c601629)
-- Désactivation de l'anonymisation lors de l'archivage des données [#fcd5b70](https://github.com/agora-gouv/agora-back/commit/fcd5b70)
+- Préparation à la migration vers la version 5 de Strapi [#631f272](https://github.com/agora-gouv/agora-back/commit/631f272)
+- Ajout du header de compatibilité avec les clients Strapi V4 [#5bc6b05](https://github.com/agora-gouv/agora-back/commit/5bc6b05)
+- Ajout d'un contrôleur dédié au traitement hebdomadaire pour lancement en mode admin [#3924dab](https://github.com/agora-gouv/agora-back/commit/3924dab)
+- Modification du format de la photo des thèmes hebdomadaires en "media" [#72fb80f](https://github.com/agora-gouv/agora-back/commit/72fb80f)
 - Ajout d'un flag pour désactiver le cache sur les thèmes hebdomadaires en environnement de recette [#72e8c6c](https://github.com/agora-gouv/agora-back/commit/72e8c6c)
+- Ajout d'un boolean 'estThemeLibre' pour qualifier les thèmes libres [#bc11d7c](https://github.com/agora-gouv/agora-back/commit/bc11d7c)
 
 ### Autres changements
-- Correction d'un problème lié à la branche "theme_hebdo" [#68fb407](https://github.com/agora-gouv/agora-back/commit/68fb407)
+- L'anonymisation des noms d'utilisateurs est désactivée lors de l'archivage [#fcd5b70](https://github.com/agora-gouv/agora-back/commit/fcd5b70)
 - Ajustement des données de test pour la tuile "thème" [#7e13776](https://github.com/agora-gouv/agora-back/commit/7e13776)
+- Correction d'un problème lié à la branche "feat branch issue theme_hebdo" [#68fb407](https://github.com/agora-gouv/agora-back/commit/68fb407)
+- Changement de wording pour améliorer la clarté [#4534de7](https://github.com/agora-gouv/agora-back/commit/4534de7)
