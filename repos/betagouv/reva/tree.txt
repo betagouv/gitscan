@@ -1982,7 +1982,8 @@
     │   │   │   │       ├── summary
     │   │   │   │       │   ├── candidate-contact-details.spec.ts
     │   │   │   │       │   ├── candidate-information-address.spec.ts
-    │   │   │   │       │   └── candidate-information-fc-locking.spec.ts
+    │   │   │   │       │   ├── candidate-information-fc-locking.spec.ts
+    │   │   │   │       │   └── certification-authority-card.spec.ts
     │   │   │   │       └── training
     │   │   │   │           └── training.spec.ts
     │   │   │   └── certification-details
@@ -4421,6 +4422,8 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260526132438_add_candidacies_for_aap_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260527133148_add_new_end_of_accompagnement_reason
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4545,34 +4548,6 @@
     │   ├── README.md
     │   ├── codegen.ts
     │   ├── copy-assets.js
-    │   ├── cypress
-    │   │   ├── e2e
-    │   │   │   └── dashboard
-    │   │   │       └── dashboard-tiles.cy.ts
-    │   │   ├── fixtures
-    │   │   │   ├── auth
-    │   │   │   │   ├── candidate-token.json
-    │   │   │   │   ├── silent-check-sso.html
-    │   │   │   │   └── step1.html
-    │   │   │   ├── candidacies-with-candidacy-1.json
-    │   │   │   ├── candidacies-with-candidacy-3.json
-    │   │   │   ├── candidacy1.json
-    │   │   │   ├── candidacy3-organism-selected.json
-    │   │   │   ├── candidacy3.json
-    │   │   │   ├── candidate1-for-candidates-guard.json
-    │   │   │   ├── candidate1.json
-    │   │   │   ├── candidate_loginWithToken.json
-    │   │   │   └── features.json
-    │   │   ├── global.d.ts
-    │   │   ├── plugins
-    │   │   │   └── index.js
-    │   │   ├── support
-    │   │   │   ├── commands.js
-    │   │   │   └── e2e.js
-    │   │   ├── tsconfig.json
-    │   │   └── utils
-    │   │       └── graphql.js
-    │   ├── cypress.config.js
     │   ├── eslint.config.mjs
     │   ├── next.config.js
     │   ├── package-lock.json
@@ -5237,9 +5212,12 @@
     │   │       │   │   ├── candidacy-dropout-decision.spec.ts
     │   │       │   │   └── candidacy-dropout-warning.spec.ts
     │   │       │   ├── dashboard-banners.spec.ts
+    │   │       │   ├── dashboard-dossier-validation-tile.spec.ts
+    │   │       │   ├── dashboard-feasibility-tile.spec.ts
     │   │       │   ├── dashboard-project-setup-tiles.spec.ts
     │   │       │   ├── dashboard-sidebar-appointments-tile.spec.ts
     │   │       │   ├── dashboard-sidebar-contacts-tile.spec.ts
+    │   │       │   ├── dashboard-training-tile.spec.ts
     │   │       │   ├── dashboard.spec.ts
     │   │       │   ├── dossier-de-faisabilite
     │   │       │   │   └── dossier-de-faisabilite.spec.ts
@@ -6023,4 +6001,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2023 directories, 4002 files
+2016 directories, 3987 files
