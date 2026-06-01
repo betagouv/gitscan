@@ -1,43 +1,37 @@
 ## Changelog : maestro (30 derniers jours, au 27 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de la gestion des prélèvements, des analyses et des laboratoires, ainsi que par des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des efforts ont également été déployés pour optimiser l'infrastructure et les dépendances du projet.
+Cette version apporte des améliorations significatives à la gestion des prélèvements, des analyses et des laboratoires. Les utilisateurs bénéficieront d'une meilleure expérience grâce à des filtres plus précis, des corrections de bugs et de nouvelles fonctionnalités comme la synchronisation des utilisateurs avec Brevo et la gestion des RAI. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Possibilité de filtrer les prélèvements par département pour les administrations centrales [#980].
-- Ajout d'une interface administrateur pour visualiser toutes les RAI [#898].
-- Possibilité de modifier les analytes des laboratoires en PPV [#919].
-- Ajout d'un filtre sur les prélèvements avec plusieurs exemplaires [#850, #823].
-- Synchronisation des modifications d'utilisateurs de Maestro avec Brevo [#840].
-- Ajout d'un service OIDC local pour l'authentification [#841].
-- Gestion améliorée des agréments par type de plan pour les laboratoires [#832].
-- Possibilité de dupliquer les prélèvements sur les environnements de tests [#842].
-- Amélioration de la gestion des dates et des formats dans les exports DAI [#950].
-- Correction de l'affichage des prélèvements pour les administrateurs [#897].
-- Ajout du numéro DAP et du code barre échantillon sur les étiquettes [#951].
-- Prise en compte des non quantifiables pour Cereco [#945].
+- Ajout d'un filtre par département pour les administrations centrales dans la liste des prélèvements. [#980](https://github.com/betagouv/maestro/issues/980)
+- Possibilité de modifier les analytes des laboratoires en PPV. [#919](https://github.com/betagouv/maestro/issues/919)
+- Ajout d'une interface administrateur pour visualiser toutes les RAI (Requêtes d'Analyse Initiale). [#898](https://github.com/betagouv/maestro/issues/898)
+- Synchronisation des utilisateurs de Maestro avec Brevo pour une gestion centralisée. [#840](https://github.com/betagouv/maestro/issues/840)
+- Autorisation de la duplication des prélèvements sur les environnements de test. [#842](https://github.com/betagouv/maestro/issues/842)
+- Suppression de l'affichage de l'email du laboratoire dans les prélèvements. [#838](https://github.com/betagouv/maestro/issues/838)
+- Ajout d'un filtre sur les prélèvements avec plusieurs exemplaires. [#850](https://github.com/betagouv/maestro/issues/850)
+- Amélioration de la gestion de la conformité des prélèvements, qui n'est plus possible avant la validation de tous les échantillons. [#981](https://github.com/betagouv/maestro/issues/981)
+- Correction du statut des analyses lors du passage de "non recevable" à "notification non reçue". [#978](https://github.com/betagouv/maestro/issues/978)
+- Ajout du numéro DAP et du code barre échantillon sur les étiquettes. [#951](https://github.com/betagouv/maestro/issues/951)
+- Correction de l'affichage des prélèvements pour les administrateurs. [#897](https://github.com/betagouv/maestro/issues/897)
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances (React, TypeScript, Node.js, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
-- Amélioration de la gestion des erreurs Zod avec affichage de la valeur problématique [#820].
-- Téléversement automatique des sourcemaps sur Sentry pour faciliter le débogage [#821].
-- Refactor de l'API pour supprimer les coerces et améliorer le typage [#817].
-- Utilisation de `fast-xml-builder` pour la génération de fichiers XML [#829].
-- Amélioration du pipeline CI/CD pour garantir la qualité des releases [#822].
-- Ajout de cache pour Playwright afin d'accélérer les tests [#814].
-- Correction de l'alerte obsolète concernant le setup de Vitest [#867].
+- Ajout d'un service OIDC local pour une authentification plus flexible. [#841](https://github.com/betagouv/maestro/issues/841)
+- Refactorisation de la gestion des dates et ajout de coercions pour assurer la cohérence des données. [#946](https://github.com/betagouv/maestro/issues/946)
+- Amélioration de la gestion des erreurs et ajout de logs pour faciliter le débogage de l'API Brevo. [#886](https://github.com/betagouv/maestro/issues/886)
+- Mise à jour de nombreuses dépendances pour améliorer la sécurité et les performances.
+- Correction de la recherche de la programmation associée à une matrice de prélèvement. [#965](https://github.com/betagouv/maestro/issues/965)
+- Correction de la gestion des statuts suite à l'analyse des échantillons. [#947](https://github.com/betagouv/maestro/issues/947)
+- Correction de la duplication de la date du prélèvement dans la dernière étape. [#979](https://github.com/betagouv/maestro/issues/979)
+- Correction de la réinitialisation de la modale de recevabilité. [#977](https://github.com/betagouv/maestro/issues/977)
+- Correction de l'extraction du numéro d'exemplaire en PPV. [#937](https://github.com/betagouv/maestro/issues/937)
 
 ### Autres changements
-- Correction de bugs liés à la gestion des statuts d'analyse [#981, #978].
-- Correction de l'affichage de la date du prélèvement dans la dernière étape [#979].
-- Correction de la réinitialisation de la modale de recevabilité [#977].
-- Correction de l'affichage des identifiants de listes Brevo [#901].
-- Correction de la recherche de la programmation associée à une matrice [#965].
-- Correction du filtrage des prélèvements exportés par année [#964].
-- Correction de la gestion des doublons de document ID [#938].
-- Correction de l'extraction du numéro d'exemplaire [#937].
-- Correction de la gestion des dates dans les exports DAI [#948].
-- Correction de la gestion des statuts après l'analyse des échantillons [#947].
-- Correction de l'affichage des dates dans les exports XLS [#816].
-- Correction de la comparaison de dates [#813].
-- Correction de bugs mineurs et améliorations de la documentation.
+- Correction de l'export des prélèvements pour filtrer par année. [#964](https://github.com/betagouv/maestro/issues/964)
+- Correction des identifiants de listes Brevo. [#901](https://github.com/betagouv/maestro/issues/901)
+- Correction des document\_id dupliqués dans les DAI. [#938](https://github.com/betagouv/maestro/issues/938)
+- Correction de la gestion des non quantifiables dans Cereco. [#945](https://github.com/betagouv/maestro/issues/945)
+- Correction de l'affichage des dates DAI et RAI. [#948](https://github.com/betagouv/maestro/issues/948)
+- Suppression d'exceljs et ajout d'un test de non régression. [#863](https://github.com/betagouv/maestro/issues/863)
+- Mise à jour de la documentation et des configurations.
