@@ -1,39 +1,36 @@
-## Changelog : dictaphone (30 derniers jours, au 28 mai 2026)
+## Changelog : dictaphone (30 derniers jours, au 31 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, en particulier sur l'application mobile, avec des fonctionnalités comme la reprise d'enregistrement en cas de perte de connexion, la gestion des téléchargements en WiFi uniquement, et une meilleure gestion des erreurs. Des améliorations significatives ont également été apportées à la gestion des transcriptions, avec la possibilité de les régénérer et d'exporter au format SRT. Plusieurs corrections de bugs et optimisations de sécurité ont été implémentées.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en matière d'enregistrement et de gestion des fichiers audio et vidéo. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que l'ajout de nouvelles fonctionnalités comme la possibilité de régénérer les transcriptions et d'exporter les fichiers au format SRT. L'application mobile a bénéficié de nombreuses améliorations, notamment en matière de gestion des téléchargements et de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de régénérer une transcription échouée via l'interface d'administration et un nouvel endpoint dédié. [#issue à suivre]
-- Ajout de l'export des transcriptions au format SRT. [#issue à suivre]
-- Ajout de la possibilité de copier le texte de la transcription et d'ouvrir les documents associés (indocs) directement depuis le menu d'action du fichier. [#issue à suivre]
-- Amélioration de l'interface utilisateur pour afficher la source et la durée des fichiers audio dans l'administration Django. [#issue à suivre]
-- Ajout d'un indicateur visuel (tooltip) sur le bouton d'upload. [#issue à suivre]
-- Amélioration de l'expérience utilisateur lors de la réinitialisation du mot de passe sur l'application mobile.
-- Ajout de la possibilité de contourner l'écran de connexion sur l'application mobile.
-- Ajout d'un support pour le regroupement de textes consécutifs du même intervenant dans les transcriptions (frontend et mobile).
-- Amélioration de l'affichage des durées courtes dans l'interface utilisateur.
-- Ajout d'un indicateur de progression lors du téléchargement des fichiers sur l'application mobile.
-- Ajout d'une option pour n'autoriser les téléchargements qu'en WiFi sur l'application mobile.
-- Amélioration de la gestion des erreurs et des alertes sur l'application mobile.
-- Ajout d'un lien vers la salle Matrix pour la communauté. [#75733f8](https://github.com/suitenumerique/dictaphone/commit/75733f8)
+- Ajout du support pour la plupart des formats audio et vidéo. [#c19d9ce](https://github.com/suitenumerique/dictaphone/commit/c19d9ce)
+- Possibilité d'exporter les transcriptions au format SRT. [#f49ee75](https://github.com/suitenumerique/dictaphone/commit/f49ee75)
+- Ajout de boutons pour copier le texte et ouvrir les fichiers dans le menu d'actions des fichiers. [#2252469](https://github.com/suitenumerique/dictaphone/commit/2252469)
+- Affichage de la source du fichier audio et de sa durée en secondes dans l'interface d'administration Django. [#ac192c3](https://github.com/suitenumerique/dictaphone/commit/ac192c3)
+- Amélioration de l'interface utilisateur pour la gestion des enregistrements, avec notamment un indicateur de progression du téléchargement sur mobile. [#d8c4f88](https://github.com/suitenumerique/dictaphone/commit/d8c4f88)
+- Ajout d'une option pour n'autoriser le téléchargement que via Wi-Fi sur mobile. [#b350ff2](https://github.com/suitenumerique/dictaphone/commit/b350ff2)
+- Possibilité de regénérer une transcription échouée. [#fd9b751](https://github.com/suitenumerique/dictaphone/commit/fd9b751)
+- Ajout d'un bouton pour revenir à la liste des enregistrements après la suppression d'un fichier. [#66e5bf5](https://github.com/suitenumerique/dictaphone/commit/66e5bf5)
+- Amélioration de l'accessibilité de l'application. [#1c59be1](https://github.com/suitenumerique/dictaphone/commit/1c59be1)
+- Ajout d'un indicateur visuel du niveau sonore pendant l'enregistrement. [#c43f0b5](https://github.com/suitenumerique/dictaphone/commit/c43f0b5)
+- Ajout d'un son de démarrage et d'arrêt de l'enregistrement. [#2605113](https://github.com/suitenumerique/dictaphone/commit/2605113)
+- Possibilité de contourner l'écran de connexion sur mobile. [#16dd187](https://github.com/suitenumerique/dictaphone/commit/16dd187)
 
 ### Évolutions techniques
 - Mise à jour de Python à la version 3.14.5 et de Django à la version 5.12.4. [#c41aac4](https://github.com/suitenumerique/dictaphone/commit/c41aac4)
-- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest` pour la comparaison de chaînes sensibles. [#4e8ce56](https://github.com/suitenumerique/dictaphone/commit/4e8ce56)
-- Ajout de logs plus détaillés dans le processus de connexion pour faciliter le débogage des problèmes d'authentification mobile. [#600e899](https://github.com/suitenumerique/dictaphone/commit/600e899)
-- Refactorisation du code mobile pour une meilleure organisation et lisibilité.
-- Mise en place d'un script pour automatiser les releases de l'application mobile.
-- Amélioration de la robustesse de la logique de gestion des enregistrements sur l'application mobile.
+- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest`. [#4e8ce56](https://github.com/suitenumerique/dictaphone/commit/4e8ce56)
+- Refonte de la logique d'enregistrement sur mobile, avec gestion des erreurs et amélioration de la robustesse. [#a61d16e](https://github.com/suitenumerique/dictaphone/commit/a61d16e)
+- Ajout d'un script pour automatiser les releases sur mobile. [#3b401b6](https://github.com/suitenumerique/dictaphone/commit/3b401b6)
+- Amélioration de la gestion des états et des conditions de course lors du téléchargement de fichiers. [#c27e4ce](https://github.com/suitenumerique/dictaphone/commit/c27e4ce)
+- Optimisation de la gestion des imports et correction d'erreurs liées à Vite. [#7f23140](https://github.com/suitenumerique/dictaphone/commit/7f23140)
 - Ajout d'une commande pour nettoyer les fichiers en attente et supprimés. [#f270029](https://github.com/suitenumerique/dictaphone/commit/f270029)
-- Configuration de l'exécution de la commande de nettoyage des fichiers en tant que tâche cron. [#69a917b](https://github.com/suitenumerique/dictaphone/commit/69a917b)
-- Activation du support vidéo par défaut. [#1ff013e](https://github.com/suitenumerique/dictaphone/commit/1ff013e)
-- Amélioration de la gestion des erreurs et de la robustesse du code.
+- Mise en place d'un cronjob pour exécuter la commande de nettoyage des fichiers. [#69a917b](https://github.com/suitenumerique/dictaphone/commit/69a917b)
+- Amélioration de la robustesse de la logique JWT et PKCE. [#8b81751](https://github.com/suitenumerique/dictaphone/commit/8b81751)
 
 ### Autres changements
-- Mise à jour de la documentation pour l'utilisation de linter sur le code mobile.
-- Mise à jour des documents légaux.
-- Ajout d'un user agent spécifique pour les requêtes de l'application.
-- Correction de typos et améliorations de la lisibilité de la documentation et du code.
-- Amélioration de l'accessibilité de l'application frontend.
-- Nettoyage et refactoring du code.
+- Ajout d'un lien vers la salle Matrix dans le README. [#75733f8](https://github.com/suitenumerique/dictaphone/commit/75733f8)
+- Activation du suivi des erreurs PostHog sur mobile. [#9218d75](https://github.com/suitenumerique/dictaphone/commit/9218d75)
+- Mise à jour de la documentation et des fichiers de configuration. [#d640ad9](https://github.com/suitenumerique/dictaphone/commit/d640ad9)
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Publication des versions v0.6.0, v0.6.1, v0.6.2, v0.7.0 et v0.7.1. [#cb55612](https://github.com/suitenumerique/dictaphone/commit/cb55612)
