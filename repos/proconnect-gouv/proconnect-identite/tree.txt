@@ -350,7 +350,8 @@
 │   ├── 1770914423350_migrate-domain-not-verified-yet-to-domain-verification.ts
 │   ├── 1770980170968_migrate-small-association-to-domain-verification.ts
 │   ├── 1771430997456_remove-null-verification-type-in-email-domains.ts
-│   └── 1773400846752_add-sp-name-to-moderation-table.ts
+│   ├── 1773400846752_add-sp-name-to-moderation-table.ts
+│   └── 1779975576903_add-end-user-reason-and-allow-editing-to-moderations.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -365,6 +366,9 @@
 │   │   │   ├── .commit
 │   │   │   ├── administration-grist.json
 │   │   │   ├── administration_blacklist.json
+│   │   │   ├── administration_nature_juridique.json
+│   │   │   ├── administration_siren_blacklist.json
+│   │   │   ├── administration_siren_whitelist.json
 │   │   │   └── administration_whitelist.json
 │   │   ├── package.json
 │   │   ├── scripts
@@ -760,6 +764,7 @@
 │   │   │   │   │   ├── is-entreprise-unipersonnelle.ts
 │   │   │   │   │   ├── is-organization-covered-by-certification-dirigeant.test.ts
 │   │   │   │   │   ├── is-organization-covered-by-certification-dirigeant.ts
+│   │   │   │   │   ├── is-public-service.ts
 │   │   │   │   │   ├── is-small-etablissement-public.test.ts
 │   │   │   │   │   └── is-small-etablissement-public.ts
 │   │   │   │   └── postgres
@@ -1186,4 +1191,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-210 directories, 1057 files
+210 directories, 1062 files
