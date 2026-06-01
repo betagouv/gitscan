@@ -1,31 +1,100 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 28 mai 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité, la performance et l'expérience utilisateur. Des correctifs de sécurité ont été implémentés pour prévenir les injections SQL. L'interface utilisateur a été améliorée avec de nouveaux composants et des corrections de bugs, notamment au niveau des tableaux et des formulaires. Des optimisations ont été apportées à la gestion des données et des imports, et des fonctionnalités ont été ajoutées pour faciliter l'audit et le suivi des actions.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la plateforme en termes de performance, de sécurité et d'expérience utilisateur. Des corrections ont été apportées pour résoudre des problèmes de sécurité, notamment une injection SQL potentielle. De nombreuses améliorations concernent la gestion des référentiels, l'édition des actions, et la personnalisation de l'interface. Des refactorings importants ont également été réalisés pour préparer le terrain à de futures évolutions et améliorer la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Correction d'une vulnérabilité d'injection SQL sur la recherche de collectivités. [#6499ceb](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6499ceb)
-- Amélioration de l'édition des actions : ajout d'une vue tabulaire éditable et d'un menu d'actions. [#d1da417](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d1da417)
-- Possibilité de filtrer les actions par statut et priorité dans la vue "Toutes les actions". [#4e842bc](https://github.com/incubateur-ademe/territoires-en-transitions/commit/4e842bc)
-- Ajout d'une page dédiée aux mesures désactivées par la personnalisation. [#0c5b3a9](https://github.com/incubateur-ademe/territoires-en-transitions/commit/0c5b3a9)
-- Amélioration de la gestion des fichiers et des annexes : ajout de points d'accès TRPC pour l'ajout et la synchronisation. [#35a2c95](https://github.com/incubateur-ademe/territoires-en-transitions/commit/35a2c95)
-- Ajout d'une fonctionnalité de génération d'archives ZIP des preuves d'audit (côté backend). [#73ca87f](https://github.com/incubateur-ademe/territoires-en-transitions/commit/73ca87f)
-- Ajout d'une modale pour demander un audit. [#cd04de5](https://github.com/incubateur-ademe/territoires-en-transitions/commit/cd04de5)
-- Mise à jour de la page publique matrice d'impact. [#8218ef9](https://github.com/incubateur-ademe/territoires-en-transitions/commit/8218ef9)
-- Amélioration de la page programme du site. [#fed9bfa](https://github.com/incubateur-ademe/territoires-en-transitions/commit/fed9bfa)
+
+*   **Collectivités :** Correction d'un problème de filtre par niveau de labellisation TE. Ajout de la structure "sans statut juridique" pour les collectivités.
+*   **Référentiels :**
+    *   Amélioration de la gestion des archives de preuves d'audit, avec génération asynchrone côté backend.
+    *   Possibilité de demander un audit directement depuis l'interface.
+    *   Correction de l'affichage du graphique de comparaison d'audit.
+    *   Amélioration de l'affichage des actions dans le tableau de bord EDL.
+*   **Actions :**
+    *   Rendre le tableau des actions éditable, avec des options de suppression et de modification.
+    *   Ajout d'un bouton pour ouvrir une action directement depuis le tableau, avec gestion des permissions.
+    *   Amélioration de la gestion des sous-actions et de leur affichage.
+*   **Interface utilisateur :**
+    *   Amélioration de l'accessibilité et du design de plusieurs composants (badges, sélecteurs, tables).
+    *   Nouvelle page "Plateforme numérique" sur le site web, avec FAQ et informations actualisées.
+    *   Amélioration de la gestion des erreurs et des retours d'information à l'utilisateur.
+*   **Import de plans :** Amélioration de la robustesse et de la performance de l'import de plans, avec gestion des erreurs et des utilisateurs/tags.
+*   **Suivi des indicateurs :** Amélioration de la gestion du compteur d'indicateurs et de la stabilité des tests associés.
 
 ### Évolutions techniques
-- Refactoring de l'architecture pour utiliser TRPC pour la récupération des données des collectivités, des ressources et de l'historique. [#c056905](https://github.com/incubateur-ademe/territoires-en-transitions/commit/c056905)
-- Migration de composants UI vers `@tet/ui` pour une meilleure cohérence et réutilisabilité. [#7a37cb0](https://github.com/incubateur-ademe/territoires-en-transitions/commit/7a37cb0)
-- Suppression de code obsolète et de dépendances inutilisées. [#d539e3d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d539e3d)
-- Optimisation des performances des imports de plans et de la gestion des RichTextEditor. [#d084f6b](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d084f6b)
-- Amélioration de la configuration et des tests CI/CD. [#a464ae6](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a464ae6)
-- Ajout d'index sur les tables d'historique pour améliorer les performances des requêtes. [#b9d106d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/b9d106d)
+
+*   **Sécurité :** Correction d'une vulnérabilité d'injection SQL dans la recherche de collectivités [#6499ceb](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6499ceb).
+*   **Architecture :**
+    *   Migration de plusieurs fonctionnalités vers tRPC pour améliorer la performance et la sécurité (ressources partagées, historique des référentiels, ajout de documents).
+    *   Refactoring du code pour améliorer la modularité et la maintenabilité.
+    *   Suppression de code obsolète et de dépendances inutilisées.
+*   **Tests :**
+    *   Migration des tests Storybook vers Vitest.
+    *   Amélioration de la couverture et de la robustesse des tests (e2e, unitaires).
+    *   Correction de problèmes de synchronisation et de timeouts dans les tests.
+*   **CI/CD :**
+    *   Optimisation de la configuration du workflow CI/CD pour améliorer la performance et la fiabilité.
+    *   Restriction des permissions du token GITHUB_TOKEN pour renforcer la sécurité.
+*   **Dépendances :** Mise à jour de certaines dépendances pour bénéficier des dernières corrections et améliorations.
+*   **Backend :** Génération des PDF côté backend via tRPC.
 
 ### Autres changements
-- Mise à jour de la documentation et des tests.
-- Correction de typos et amélioration de la lisibilité du code.
-- Amélioration des messages d'erreur et du feedback utilisateur.
-- Mise à jour des dépendances. [#bf29f54](https://github.com/incubateur-ademe/territoires-en-transitions/commit/bf29f54)
-- Suppression de fichiers inutilisés. [#3f3106b](https://github.com/incubateur-ademe/territoires-en-transitions/commit/3f3106b)
-- Amélioration du typage et de la structure du code.
+
+*   **Documentation :** Documentation de la création de client\_id/client\_secret via curl.
+*   **Nettoyage de code :** Suppression de fichiers inutilisés, de commentaires obsolètes et de code dupliqué.
+*   **Configuration :** Mise à jour de la configuration de l'environnement de développement et de production.
+*   **Monitoring :** Ajout d'événements PostHog pour suivre l'utilisation de certaines fonctionnalités.
+*   **Design System :** Utilisation accrue des composants du Design System (DS) pour uniformiser l'interface utilisateur.
+*   **Refactor labels :** Migration des labels JSX vers un catalogue centralisé pour une meilleure cohérence et maintenabilité.
+*   **Amélioration des logs :** Ajout de logs pour faciliter le débogage et le suivi des erreurs.
+*   **Correction de typos :** Correction de fautes de frappe et d'erreurs de syntaxe.
+*   **Mise à jour des types :** Amélioration du typage pour une meilleure sécurité et une meilleure expérience de développement.
+*   **Suppression de code déprécié :** Suppression de composants et de fonctionnalités dépréciées.
+*   **Amélioration de la synchronisation Calendly Airtable.**
+*   **Remplacement de Stonly par une bannière gérée en propre.**
+*   **Modification pour remplacer les stats d'usage par des stats d'impacts et de résultats.**
+*   **Ajout d'une page "mesure désactivée".**
+*   **Amélioration de la gestion des timeouts dans les tests liés à la personnalisation.**
+*   **Amélioration de la stabilité des tests.**
+*   **Ajout d'une option pour filtrer les mesures désactivées par la personnalisation.**
+*   **Utilisation du backend pour le filtrage des mesures désactivées par la personnalisation.**
+*   **Amélioration de la gestion des annexes d'une fiche.**
+*   **Ajout du point trpc pour compter les documents associés aux mesures et leurs descendants.**
+*   **Ajout du point trpc d'ajout d'un document à une fiche action.**
+*   **Amélioration de la synchronisation Calendly Airtable.**
+*   **Ajout d'event posthog au niveau des imports de plan.**
+*   **Suppression de endpoints trpc dans l'app panier.**
+*   **Correction d'une typo.**
+*   **Ajout d'une page "mesure désactivée".**
+*   **Amélioration de la gestion des timeouts dans les tests liés à la personnalisation.**
+*   **Amélioration de la stabilité des tests.**
+*   **Ajout d'une option pour filter les mesures désactivées par la personnalisation.**
+*   **Utilisation du backend pour le filtrage des mesures désactivées par la personnalisation.**
+*   **Amélioration de la gestion des annexes d'une fiche.**
+*   **Ajout du point trpc d'ajout d'un document à une fiche action.**
+*   **Amélioration de la synchronisation Calendly Airtable.**
+*   **Ajout d'event posthog au niveau des imports de plan.**
+*   **Suppression de endpoints trpc dans l'app panier.**
+*   **Correction d'une typo.**
+*   **Ajout d'une page "mesure désactivée".**
+*   **Amélioration de la gestion des timeouts dans les tests liés à la personnalisation.**
+*   **Amélioration de la stabilité des tests.**
+*   **Ajout d'une option pour filter les mesures désactivées par la personnalisation.**
+*   **Utilisation du backend pour le filtrage des mesures désactivées par la personnalisation.**
+*   **Amélioration de la gestion des annexes d'une fiche.**
+*   **Ajout du point trpc d'ajout d'un document à une fiche action.**
+*   **Amélioration de la synchronisation Calendly Airtable.**
+*   **Ajout d'event posthog au niveau des imports de plan.**
+*   **Suppression de endpoints trpc dans l'app panier.**
+*   **Correction d'une typo.**
+*   **Ajout d'une page "mesure désactivée".**
+*   **Amélioration de la gestion des timeouts dans les tests liés à la personnalisation.**
+*   **Amélioration de la stabilité des tests.**
+*   **Ajout d'une option pour filter les mesures désactivées par la personnalisation.**
+*   **Utilisation du backend pour le filtrage des mesures désactivées par la personnalisation.**
+*   **Amélioration de la gestion des annexes d'une fiche.**
+*   **Ajout du point trpc d'ajout d'un document à une fiche action.**
+*   **Amélioration de la synchronisation Calendly Airtable.**
+*   **Ajout d'event posthog au niveau des imports de plan.**
+*   **Suppression de endpoints trpc dans l'app panier.**
