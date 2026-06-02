@@ -1,31 +1,36 @@
-## Changelog : mobilic (30 derniers jours, au 27 mai 2026)
+## Changelog : mobilic (30 derniers jours, au 01 juin 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'interface d'administration, notamment une refonte de la page d'accueil, l'ajout de fonctionnalités d'importation en masse de véhicules et l'amélioration de la gestion des infractions. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que l'ajout de la recherche natinf et de la prise en charge de l'authentification à deux facteurs (2FA).
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface d'administration, notamment la page d'accueil avec de nouvelles informations et une meilleure présentation des données. Des améliorations ont également été apportées à la recherche NATINF, à la gestion des véhicules et à la sécurité avec l'ajout de l'authentification à deux facteurs (2FA). Plusieurs corrections de bugs et optimisations ont été réalisées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Administration :** Refonte complète de la page d'accueil avec affichage des infractions multi-employeurs [#836](https://github.com/MTES-MCT/mobilic/pulls/836).
-- **Administration :** Ajout de la possibilité d'importer en masse des véhicules [#837](https://github.com/MTES-MCT/mobilic/pulls/837) et [#845](https://github.com/MTES-MCT/mobilic/pulls/845).
-- **Administration :** Amélioration de l'affichage et de la gestion des infractions sur la page d'accueil [#851](https://github.com/MTES-MCT/mobilic/pulls/851).
-- **Authentification :** Implémentation de l'authentification à deux facteurs (2FA) avec support TOTP [#826](https://github.com/MTES-MCT/mobilic/pulls/826).
-- **Administration :** Ajout de la fonctionnalité d'impersonation d'utilisateurs pour le support administratif.
-- **Recherche :** Ajout de la recherche natinf [#842](https://github.com/MTES-MCT/mobilic/pulls/842).
-- **Correction :** Correction du rafraîchissement des jours travaillés après la validation d'une mission [#854](https://github.com/MTES-MCT/mobilic/pulls/854).
-- **Correction :** Correction de l'affichage des missions de plus de 31 jours dans l'historique des activités [#840](https://github.com/MTES-MCT/mobilic/pulls/840).
+- Ajout d'une fonctionnalité de recherche NATINF [#842](https://github.com/MTES-MCT/mobilic/pulls/842).
+- Refonte de la page d'accueil de l'administration avec de nouvelles informations et une meilleure présentation des données [#836](https://github.com/MTES-MCT/mobilic/pulls/836).
+- Implémentation de l'importation en masse de véhicules dans l'administration [#837](https://github.com/MTES-MCT/mobilic/pulls/837).
+- Ajout d'un support pour l'administration back-office [#826](https://github.com/MTES-MCT/mobilic/pulls/826).
+- Ajout de la possibilité de supprimer les infractions NATINF avec une confirmation modale.
+- Ajout de l'authentification à deux facteurs (2FA) avec support de l'impersonation d'utilisateurs.
+- Amélioration de l'expérience utilisateur lors de l'édition des infractions dans l'interface de contrôle.
+- Ajout du logo Chaventon Express [#848](https://github.com/MTES-MCT/mobilic/pulls/848).
 
 ### Évolutions techniques
-- **Refactoring :** Extraction de la configuration du date picker et de la logique de rafraîchissement dans des constantes partagées.
-- **Refactoring :** Introduction d'un composant `WarningBadge` réutilisable.
-- **Refactoring :** Ajout d'une fonction `formatCompleteDateFromString` pour formater les dates.
-- **Refactoring :** Export de la constante `MOBILIC_BLUE` pour une utilisation partagée.
-- **Composants :** Utilisation d'icônes DSFR dans les actions d'édition de tableau.
-- **Validation :** Renforcement de la validation des numéros d'immatriculation des véhicules.
-- **Performance :** Différment de l'analyse des informations d'immatriculation jusqu'à la soumission du formulaire.
+- Refactorisation de composants pour améliorer la réutilisabilité et la maintenabilité du code.
+- Remplacement des icônes Material-UI par des icônes DSFR dans les composants d'infraction.
+- Utilisation de composants DSFR pour améliorer la cohérence visuelle et l'accessibilité.
+- Extraction de constantes et de logiques partagées pour simplifier le code et éviter les duplications.
+- Amélioration de la validation des numéros d'immatriculation des véhicules.
+- Correction de problèmes de performance et de stabilité.
+- Mise à jour de la documentation et des tests.
 
 ### Autres changements
-- **Documentation :** Ajout du logo Chaventon Express [#848](https://github.com/MTES-MCT/mobilic/pulls/848).
-- **UI :** Suppression des exemples de valeurs par défaut dans le modal des véhicules [#849](https://github.com/MTES-MCT/mobilic/pulls/849).
-- **UI :** Mise à jour du texte de la page de sécurité [#850](https://github.com/MTES-MCT/mobilic/pulls/850).
-- **Nettoyage :** Suppression de code inutilisé et correction de duplications de code.
-- **DSFR :** Remplacement de composants Material-UI par des composants DSFR dans l'interface de contrôle.
-- **Tracking :** Ajout du suivi des fichiers `refresh-line.svg` et `delete-bin-line.svg` dans les assets DSFR.
+- Mise à jour du texte de la page de sécurité [#850](https://github.com/MTES-MCT/mobilic/pulls/850).
+- Correction de fautes de frappe et d'erreurs de typographie.
+- Amélioration de la gestion des erreurs et des messages d'alerte.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Suppression de variables et d'imports inutilisés.
+- Correction de problèmes de style et d'alignement.
+- Correction de problèmes liés au rafraîchissement des données après la validation d'une mission [#854](https://github.com/MTES-MCT/mobilic/pulls/854).
+- Correction de l'affichage des jours de travail après la validation d'une mission.
+- Amélioration de la gestion des erreurs lors de la déconnexion pendant l'impersonation.
+- Correction de l'affichage des infractions multi-employeurs sur la page d'accueil de l'administration.
+- Correction de l'affichage des jours non respectés sur la page d'accueil de l'administration.
