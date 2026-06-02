@@ -1,16 +1,16 @@
-## Changelog : dashlord (30 derniers jours, au 24 mai 2026)
+## Changelog : dashlord (30 derniers jours, au 31 mai 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de Dashlord se sont concentrées sur la synchronisation des URLs des différents services surveillés.  Un effort a été fait pour mettre à jour les adresses des sites hébergés sur beta.gouv.fr, ainsi que pour ajuster la configuration des outils de surveillance et des rapports.
+Ce changelog fait état d'une mise à jour importante de la liste des sites web surveillés par Dashlord. De nombreux liens vers des services gouvernementaux ont été mis à jour ou ajoutés, améliorant ainsi la couverture de l'outil et sa capacité à surveiller la sécurité de ces plateformes. Une maintenance a également été effectuée sur la configuration de l'outil.
 
 ### Évolutions fonctionnelles
-- Mise à jour des URLs de plusieurs services surveillés, incluant notamment : prelex, pitchou, mesads, boris, vigieau, zlv, dialog, zerologementvacant, emile, ecobalyse, transport.data.gouv.fr, api.trackdechets, trackdechets, oilhi, mondiagartif, api.resorption-bidonvilles, prelevements-deau, resorption-bidonvilles, potentiel, mission-transition, partaj, mon-devis-sans-oublis, mobilic, le.taxi, stop-punaises, signal-logement, haie, envergo, france-chaleur-urbaine, filigrane, bo.dossierfacile.fr, api.dossierfacile.logement.gouv.fr, proprietaire.dossierfacile.fr, locataire.dossierfacile.logement.gouv.fr, docurba, doc.covoiturage.beta.gouv.fr, tech.covoiturage.beta.gouv.fr, attestation.covoiturage.beta.gouv.fr, covoiturage.beta.gouv.fr, app.covoiturage.beta.gouv.fr, carbone, camino, api.camino.beta.gouv.fr, aquapreneur, acceslibre, aides-territoires, apilos.logement.gouv.fr [#45](https://github.com/MTES-MCT/dashlord/pull/45).
-- Ajout de Prelex aux services surveillés et basculement de l'URL d'Emile vers l'application (emile.beta.gouv.fr).
+- Mise à jour des URLs de plusieurs sites web surveillés, incluant notamment : Pitchou, MesAds, Boris, Vigieau, ZLV, Dialog, Zero Logement Vacant, Emile, Ecobalyse, Transport Data, Track Déchets, Oilhi, Mondo Gartif, Resorption Bidonvilles, Prélevements d'Eau, Potentiel, Partaj, Mission Transition, Mon Devis Sans Oublis, Mobilic, Le Taxi, Stop Punaises, Signal Logement, Haie, Envergo, France Chaleur Urbaine, Filigrane, Dossier Facile (plusieurs URLs), Covoiturage (plusieurs URLs), Carbure, Camino, Aquapreneur, Aides Territoires, Acces Libre et Apilos Logement.
+- Ajout des sites Prelex et Emile (vers l'application) à la liste des sites surveillés [#45](https://github.com/MTES-MCT/dashlord/pull/45).
 
 ### Évolutions techniques
-- Mise à jour de l'URL de l'API dans le fichier `dashlord.yml` [#45](https://github.com/MTES-MCT/dashlord/pull/45).
+- Mise à jour de l'URL de l'API dans le fichier `dashlord.yml`.
 - Suppression de l'entrée a-dock du fichier `dashlord.yml`.
-- Ajustement de la configuration des outils de surveillance (désactivation des statistiques, du budget, de Dependabot et Codescan) et désactivation de BetaGouv pour Prelex.
+- Ajustement de la configuration de Dashlord : désactivation des statistiques, du budget, de Dependabot, de Codescan et de Betagouv pour Prelex.
 
 ### Autres changements
-- Mise à jour régulière du rapport de Dashlord.
+- Mise à jour régulière du rapport de l'outil (plusieurs occurrences).
