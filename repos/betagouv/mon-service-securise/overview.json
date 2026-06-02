@@ -4,23 +4,21 @@
   "description": "MonServiceSécurisé est un service numérique développé par l'ANSSI et BetaGouv pour aider les collectivités territoriales et les entités publiques à sécuriser et homologuer leurs services numériques.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Sécurité & Conformité",
-    "Gestion des établissements & Structures",
-    "Gestion documentaire & Fichiers"
+    "Gestion des établissements & Structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "Express",
     "PostgreSQL",
-    "Docker",
     "Svelte",
     "bcrypt",
     "jsonwebtoken",
     "pg",
-    "pug",
+    "knex",
     "axios"
   ],
   "components": [
@@ -32,11 +30,8 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "jwt",
-      "session"
-    ],
-    "providers": []
+      "email-password"
+    ]
   },
   "tests": [
     "Jest",
@@ -48,18 +43,22 @@
     "codeql-analysis",
     "deploiement"
   ],
-  "lastActivity": "2026-05-27T10:38:17+02:00",
+  "lastActivity": "2026-06-01T17:11:32+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Sécurité & Conformité",
     "Données & Open Data",
     "TypeScript",
     "Déploiement & Hosting",
     "PostgreSQL",
-    "Administration",
-    "Écosystème beta.gouv / État"
+    "Svelte"
   ]
 }
