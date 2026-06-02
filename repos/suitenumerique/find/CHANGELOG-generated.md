@@ -1,28 +1,24 @@
 ## Changelog : find (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une phase de nettoyage et de refonte technique importante. Des fonctionnalités expérimentales comme la recherche hybride et l'application d'évaluation ont été supprimées pour se concentrer sur la recherche BM25. L'infrastructure a été modernisée avec des mises à jour de dépendances et l'ajout d'outils d'analyse de code pour améliorer la qualité du code.
+Ce mois-ci, le projet find a connu une importante phase de nettoyage et de simplification. Des fonctionnalités expérimentales comme la recherche par embedding ont été supprimées pour se concentrer sur la recherche BM25.  De plus, la qualité du code a été améliorée grâce à l'ajout de hooks de pré-commit et la suppression de code mort. Plusieurs dépendances ont également été mises à jour, notamment Django, Redis et Pydantic.
 
 ### Évolutions fonctionnelles
 - Suppression de la recherche par embedding/hybride, maintenant uniquement la recherche BM25 est disponible.
 - Suppression de l'application d'évaluation.
 
 ### Évolutions techniques
+- Unification des indices de recherche avec une portée de service. [#104](https://github.com/suitenumerique/find/issues/104)
 - Mise à jour de Pydantic vers la version 2.13.4.
 - Mise à jour de Redis vers la version 6.
-- Mise à jour de Django vers la version 6.0.5 (incluant des correctifs de sécurité).
-- Mise à jour de plusieurs dépendances (OpenSearch-py, drf-spectacular-sidecar, psycopg, etc.).
-- Suppression du code mort identifié par l'outil Vulture.
-- Suppression d'un service Docker inutilisé.
-- Ajout de hooks pre-commit pour améliorer la qualité du code.
-- Simplification du fichier CHANGELOG.md pour la publication initiale.
-- Autorisation de l'utilisation de constantes en majuscules pour les paramètres Django dans Pylint.
-- Unification des indices de recherche avec la portée du service.
-- Renforcement des assertions de tests pour plus de clarté.
+- Suppression du code mort identifié par Vulture.
+- Suppression du service Dockerize non utilisé.
+- Ajout de hooks de pré-commit pour améliorer la qualité du code.
+- Suppression des dépendances inutilisées `url-normalize` et déplacement de `factory_boy` vers les dépendances de développement.
+- Amélioration des assertions des tests pour plus de clarté.
+- Correction de typos dans la documentation.
 
 ### Autres changements
-- Suppression des dépendances inutilisées url-normalize et factory_boy.
-- Correction de fautes de frappe dans la documentation.
-- Epinglage des dépendances pour une meilleure stabilité.
-- Séparation des Pull Requests de dépendances Python.
-- Mises à jour de sécurité pour Django, Requests, PyJWT, pytest et langchain-text-splitters.
+- Simplification du changelog pour la version initiale.
+- Autorisation des constantes en majuscules dans les paramètres Django pour Pylint.
+- Mises à jour de nombreuses dépendances (Django, drf-spectacular-sidecar, psycopg, opensearch-py, faker, dockerflow, ruff, pyjwt, pyfakefs, responses, sentry-sdk, pylint, whitenoise, ipython, djangorestframework, gunicorn, requests, pytest-cov, celery) via Dependabot/Renovate. Ces mises à jour incluent des correctifs de sécurité pour Django [#112](https://github.com/suitenumerique/find/issues/112) et d'autres améliorations.
