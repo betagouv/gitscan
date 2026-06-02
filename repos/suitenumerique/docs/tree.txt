@@ -217,6 +217,7 @@
     │   │   │   ├── 0029_userreconciliationcsvimport_userreconciliation.py
     │   │   │   ├── 0030_user_is_first_connection.py
     │   │   │   ├── 0031_clean_onboarding_accesses.py
+    │   │   │   ├── 0032_remove_linktrace_is_masked.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -281,10 +282,10 @@
     │   │   │   │   ├── test_api_documents_favorite.py
     │   │   │   │   ├── test_api_documents_favorite_list.py
     │   │   │   │   ├── test_api_documents_formatted_content.py
+    │   │   │   │   ├── test_api_documents_leave.py
     │   │   │   │   ├── test_api_documents_link_configuration.py
     │   │   │   │   ├── test_api_documents_list.py
     │   │   │   │   ├── test_api_documents_list_filters.py
-    │   │   │   │   ├── test_api_documents_mask.py
     │   │   │   │   ├── test_api_documents_media_auth.py
     │   │   │   │   ├── test_api_documents_media_check.py
     │   │   │   │   ├── test_api_documents_move.py
@@ -347,6 +348,7 @@
     │   │   │   ├── test_services_search_indexers.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_utils.py
+    │   │   │   ├── test_utils_analytics.py
     │   │   │   ├── test_utils_create_tree_node_with_retry.py
     │   │   │   ├── test_utils_filter_descendants.py
     │   │   │   ├── test_utils_users_sharing_documents_with.py
@@ -355,6 +357,7 @@
     │   │   ├── urls.py
     │   │   ├── utils
     │   │   │   ├── __init__.py
+    │   │   │   ├── analytics.py
     │   │   │   ├── dicts.py
     │   │   │   ├── paths.py
     │   │   │   ├── treebeard.py
@@ -754,6 +757,7 @@
     │   │       │   │           ├── hide_source.svg
     │   │       │   │           ├── history.svg
     │   │       │   │           ├── home-filled.svg
+    │   │       │   │           ├── house-rounded.svg
     │   │       │   │           ├── house.svg
     │   │       │   │           ├── how_to_vote.svg
     │   │       │   │           ├── identity.svg
@@ -834,6 +838,7 @@
     │   │       │   │           ├── play_arrow.svg
     │   │       │   │           ├── plus-dashed-edit.svg
     │   │       │   │           ├── plus-dashed.svg
+    │   │       │   │           ├── plus.svg
     │   │       │   │           ├── present_to_all.svg
     │   │       │   │           ├── print.svg
     │   │       │   │           ├── priority_high.svg
@@ -919,6 +924,7 @@
     │   │       │   │           ├── zoom-1.svg
     │   │       │   │           ├── zoom-minus.svg
     │   │       │   │           ├── zoom-plus.svg
+    │   │       │   │           ├── zoom-rounded.svg
     │   │       │   │           ├── zoom_in.svg
     │   │       │   │           ├── zoom_in_map.svg
     │   │       │   │           ├── zoom_out.svg
@@ -1152,14 +1158,11 @@
     │   │       │   │   │   │   └── utils_print.ts
     │   │       │   │   │   ├── doc-header
     │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   ├── DocHeaderInfo.spec.tsx
-    │   │       │   │   │   │   │   ├── DocToolBoxEmoji.spec.tsx
+    │   │       │   │   │   │   │   ├── DocHeaderEmoji.spec.tsx
     │   │       │   │   │   │   │   └── DocToolBoxLicence.spec.tsx
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── AlertNetwork.tsx
-    │   │       │   │   │   │   │   ├── AlertPublic.tsx
     │   │       │   │   │   │   │   ├── AlertRestore.tsx
-    │   │       │   │   │   │   │   ├── BoutonShare.tsx
     │   │       │   │   │   │   │   ├── DocHeader.tsx
     │   │       │   │   │   │   │   ├── DocHeaderInfo.tsx
     │   │       │   │   │   │   │   ├── DocTitle.tsx
@@ -1255,6 +1258,7 @@
     │   │       │   │   │   │   │   ├── DocShareAccessRequest.tsx
     │   │       │   │   │   │   │   ├── DocShareAddMemberList.tsx
     │   │       │   │   │   │   │   ├── DocShareAddMemberListItem.tsx
+    │   │       │   │   │   │   │   ├── DocShareButton.tsx
     │   │       │   │   │   │   │   ├── DocShareInvitation.tsx
     │   │       │   │   │   │   │   ├── DocShareMember.tsx
     │   │       │   │   │   │   │   ├── DocShareModal.tsx
@@ -1407,7 +1411,7 @@
     │   │       │   │   │   │   ├── LeftPanelFavoriteItem.tsx
     │   │       │   │   │   │   ├── LeftPanelFavorites.tsx
     │   │       │   │   │   │   ├── LeftPanelHeader.tsx
-    │   │       │   │   │   │   ├── LeftPanelHeaderButton.tsx
+    │   │       │   │   │   │   ├── LeftPanelHeaderNewDoc.tsx
     │   │       │   │   │   │   ├── LeftPanelToggleMobile.tsx
     │   │       │   │   │   │   ├── ResizableLeftPanel.tsx
     │   │       │   │   │   │   └── index.tsx
@@ -1519,6 +1523,8 @@
     │   │       │   │   ├── useResponsiveStore.tsx
     │   │       │   │   └── useSentryStore.tsx
     │   │       │   ├── tests
+    │   │       │   │   ├── __mocks__
+    │   │       │   │   │   └── svgMock.tsx
     │   │       │   │   └── utils.tsx
     │   │       │   ├── types
     │   │       │   │   ├── @ag-media
@@ -1660,4 +1666,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-288 directories, 1447 files
+289 directories, 1452 files
