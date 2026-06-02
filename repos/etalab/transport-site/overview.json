@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet est le point d'accès national (NAP) français pour les données de mobilité. Il vise à centraliser et valoriser les données de transport hébergées sur data.gouv.fr.",
+  "description": "Ce projet fournit un point d'accès national (NAP) aux données de mobilité en France. Il centralise et valorise les données de transport hébergées sur data.gouv.fr, offrant ainsi un accès facilité aux informations de mobilité.",
   "language": "Elixir",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,7 +11,9 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Gestion métier générale",
+    "Notifications & Alertes",
+    "Contenu éditorial",
+    "Sécurité & Conformité",
     "Données & Schémas"
   ],
   "audience": "Professionnels",
@@ -30,21 +32,30 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "HTML / CSS / Templates visuels"
+    "HTML / CSS / Templates visuels",
+    "Django",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
-      "Datagouvfr"
+      "Google",
+      "GitHub",
+      "Microsoft"
     ]
   },
-  "tests": "Mix test, Jest",
-  "workflows": [
-    "CI/CD"
+  "tests": [
+    "ExUnit",
+    "Jest"
   ],
-  "lastActivity": "2026-05-12T14:14:50Z",
+  "workflows": [
+    "CI/CD",
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-06-01T21:00:49Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,

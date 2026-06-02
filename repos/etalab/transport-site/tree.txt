@@ -909,11 +909,9 @@
 │       │   │   │   └── token_auth.ex
 │       │   │   ├── router.ex
 │       │   │   ├── shared.ex
-│       │   │   ├── siri.ex
 │       │   │   ├── telemetry.ex
-│       │   │   ├── views
-│       │   │   │   └── error_view.ex
-│       │   │   └── xml_helper.ex
+│       │   │   └── views
+│       │   │       └── error_view.ex
 │       │   ├── validators
 │       │   │   ├── enroute_chouette_valid_client.ex
 │       │   │   ├── gbfs_validator.ex
@@ -1458,7 +1456,6 @@
 │           │   ├── mocks.ex
 │           │   ├── netex_validation_report.ex
 │           │   ├── platform.ex
-│           │   ├── siri_queries.ex
 │           │   ├── tmp_file.ex
 │           │   └── zip_creator.ex
 │           ├── swoosh_assert_no_email_sent_test.exs
@@ -1711,7 +1708,6 @@
 │           │   ├── plugs
 │           │   │   └── token_auth_test.exs
 │           │   ├── shared_test.exs
-│           │   ├── siri_test.exs
 │           │   └── test_helper.exs
 │           ├── with_mock_must_not_use_async_check_test.exs
 │           ├── with_mox_verify_on_exit_test.exs
@@ -1722,17 +1718,16 @@
 ├── config
 │   ├── config.exs
 │   ├── data_sharing_pilot.exs
-│   ├── database.exs
 │   ├── datagouvfr.exs
 │   ├── dev.exs
 │   ├── dev.secret.template.exs
-│   ├── gbfs_validator.exs
-│   ├── gtfs_validator.exs
 │   ├── mail.exs
 │   ├── prod.exs
 │   ├── proxy-config.sample.yml
 │   ├── runtime.exs
 │   └── test.exs
+├── credo_checks
+│   └── no_system_env_at_compile_time.ex
 ├── dialyzer-plt
 │   └── .gitkeep
 ├── docker
@@ -1804,6 +1799,7 @@
     │   ├── difference.exs
     │   ├── dump-simple-consolidation.exs
     │   ├── dyn-analysis.exs
+    │   ├── dynamic-dedup-profile.exs
     │   ├── dynamic-irve.exs
     │   ├── horodatage-formats.exs
     │   ├── process-one.exs
@@ -1812,7 +1808,8 @@
     │   ├── report-on-simple-consolidation.exs
     │   ├── stats.exs
     │   ├── validate.exs
-    │   └── validate_and_import_local_file.exs
+    │   ├── validate_and_import_local_file.exs
+    │   └── validate_and_summarize.exs
     ├── irve_diff.livemd
     ├── memory.exs
     ├── netex-accessibilite.exs
@@ -1831,5 +1828,6 @@
     │   ├── siri_check.exs
     │   ├── siri_create_doc.exs
     │   └── siri_request_parsing.exs
+    ├── siri_check.exs
     └── subquery.exs
-182 directories, 1672 files
+183 directories, 1669 files
