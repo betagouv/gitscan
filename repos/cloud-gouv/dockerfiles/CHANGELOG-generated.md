@@ -1,11 +1,13 @@
-## Changelog : dockerfiles (30 derniers jours)
+## Changelog : dockerfiles (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce dépôt a récemment été mis à jour pour améliorer les outils disponibles pour le déploiement d'applications, notamment dans un contexte Kubernetes. Les changements se concentrent sur l'ajout de nouveaux outils et la mise à niveau de versions existantes pour bénéficier des dernières fonctionnalités et corrections de bugs.
+Ce mois-ci, les mises à jour se concentrent sur l'amélioration des images Docker pour GitLab Runner, en ajoutant le support de Go pour faciliter le développement et l'exécution de pipelines. Ces changements permettent aux utilisateurs de bénéficier d'un environnement de build plus flexible et complet.
 
 ### Évolutions fonctionnelles
-- Ajout de l'outil `kustomize` à l'image `k8s-tools` pour faciliter la personnalisation des configurations Kubernetes.
-- Mise à niveau majeure des versions des outils inclus dans l'image `k8s-tools`.
+- Ajout de Go à l'image Docker de GitLab Runner, permettant l'utilisation de Go dans les pipelines.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
 
 ### Évolutions techniques
 - Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Aucune autre modification notable.
