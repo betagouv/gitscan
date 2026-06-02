@@ -1,16 +1,16 @@
-## Changelog : dashlord (30 derniers jours, au 24 mai 2026)
+## Changelog : dashlord (30 derniers jours, au 31 mai 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de DashLord se sont concentrées sur la synchronisation et la mise à jour des sources de données externes. L'application reste à jour avec les informations provenant de divers sites web et API liés à la transition écologique, assurant ainsi la pertinence des rapports et des analyses proposés.
+Ce changelog fait état d'une série de mises à jour régulières des sites web surveillés par DashLord. Ces mises à jour permettent de maintenir la pertinence et la précision des données de surveillance de la qualité technique des sites. Aucune nouvelle fonctionnalité ou modification majeure n'a été implémentée durant cette période.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période. Les changements concernent principalement la mise à jour des données affichées.
+Aucune évolution fonctionnelle n'a été apportée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour régulière du script de génération de rapports (chore: report update) pour assurer sa stabilité et sa performance.
+- Mise à jour du script de génération de rapports [#88117ec](https://github.com/incubateur-ademe/dashlord/commit/88117ec) et [#b5bfbcc](https://github.com/incubateur-ademe/dashlord/commit/b5bfbcc).
 
 ### Autres changements
-- Mise à jour des URLs des sources de données suivantes :
+- Mise à jour des configurations de surveillance pour les sites suivants :
     - [france-chaleur-urbaine.beta.gouv.fr](https://france-chaleur-urbaine.beta.gouv.fr)
     - [pacoupa.ademe.fr](https://pacoupa.ademe.fr)
     - [facili-tacct.beta.gouv.fr](https://facili-tacct.beta.gouv.fr)
