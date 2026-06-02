@@ -1,15 +1,15 @@
-## Changelog : depenses-eclairees-metabase-scalingo (30 derniers jours, au 6 mai 2026)
+## Changelog : depenses-eclairees-metabase-scalingo (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurisation de l'accès à l'application Metabase via l'ajout d'une authentification OAuth2. Cela permet une connexion plus sécurisée et centralisée pour les utilisateurs. De plus, l'application est désormais configurée pour être privée, renforçant ainsi la protection des données.
+Ce mois-ci, le projet a bénéficié d'améliorations significatives concernant la sécurité et la configuration du déploiement. L'ajout d'un proxy OAuth2 renforce l'authentification et permet une intégration plus sécurisée avec des fournisseurs d'identité. Des ajustements ont également été effectués pour assurer la compatibilité avec les buildpacks Scalingo.
 
 ### Évolutions fonctionnelles
-- Ajout de l'authentification OAuth2 pour sécuriser l'accès à Metabase.
-- L'application Metabase est désormais configurée comme privée, limitant l'accès aux utilisateurs authentifiés.
+- Ajout de l'authentification OAuth2 via `oauth2-proxy` pour une meilleure sécurité et une intégration simplifiée avec des services d'authentification externes.
 
 ### Évolutions techniques
-- Intégration de `oauth2-proxy` pour gérer l'authentification OAuth2.
-- Configuration de l'application pour un accès privé.
+- Mise en place de `oauth2-proxy` et configuration associée pour gérer l'authentification OAuth2.
+- Correction de problèmes liés aux buildpacks pour assurer la compatibilité avec l'environnement Scalingo.
+- Configuration de l'application en mode privé (web privé).
 
 ### Autres changements
-- Aucun changement notable.
+- Aucun changement significatif à signaler.
