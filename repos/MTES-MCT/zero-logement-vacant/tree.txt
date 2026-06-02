@@ -2041,10 +2041,9 @@
 │   │   │   ├── database
 │   │   │   │   ├── data
 │   │   │   │   │   └── common
-│   │   │   │   │       ├── com_epci_dep_reg.csv
-│   │   │   │   │       ├── direction_territoriale.csv
-│   │   │   │   │       ├── nature_juridique.csv
-│   │   │   │   │       └── taxe.csv
+│   │   │   │   │       ├── establishments.csv
+│   │   │   │   │       ├── establishments_localities.csv
+│   │   │   │   │       └── localities.csv
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── knexfile.ts
 │   │   │   │   ├── migrations
@@ -2261,17 +2260,12 @@
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   └── 002-load-non-vacant-housing.sql
-│   │   │   │   ├── scripts
-│   │   │   │   │   ├── 001-load-establishments_com_epci_reg_dep.sql
-│   │   │   │   │   ├── 002-load-establishments_direction_territoriale.sql
-│   │   │   │   │   ├── 003-load-establishment_kinds.sql
-│   │   │   │   │   └── 006-load-locality-taxes.sql
 │   │   │   │   ├── seeds
 │   │   │   │   │   ├── development
 │   │   │   │   │   │   ├── 20240404234042_load-common-data.ts
 │   │   │   │   │   │   ├── 20240404235442_establishments.ts
+│   │   │   │   │   │   ├── 20240404235443_users.ts
 │   │   │   │   │   │   ├── 20240404235456_owners.ts
-│   │   │   │   │   │   ├── 20240404235457_users.ts
 │   │   │   │   │   │   ├── 20240404235458_buildings.ts
 │   │   │   │   │   │   ├── 20240404235459_housings.ts
 │   │   │   │   │   │   ├── 20240404235731_groups.ts
@@ -2647,6 +2641,7 @@
 ├── tools
 │   ├── analyze-shapefile.ts
 │   ├── backup.sh
+│   ├── check-env-example.sh
 │   ├── clever-cloud-cost
 │   │   ├── README.md
 │   │   └── clever_cloud_cost.py
@@ -2705,4 +2700,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-422 directories, 2285 files
+421 directories, 2281 files
