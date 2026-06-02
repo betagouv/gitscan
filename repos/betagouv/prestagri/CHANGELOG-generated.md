@@ -1,26 +1,21 @@
-## Changelog : prestagri (30 derniers jours, au 2026-05-20)
+## Changelog : prestagri (30 derniers jours, au 1er juin 2026)
 
 ### Résumé
-Ce mois-ci, le projet Prest'Agri a connu une avancée significative avec la mise en place d'une structure de base pour le calcul du quotient familial, ainsi que l'ajout d'un support initial pour la langue catalane.  Des améliorations ont également été apportées à l'infrastructure et à la documentation du projet.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'ajout et l'amélioration du calcul du quotient familial, une fonctionnalité essentielle pour déterminer l'éligibilité aux prestations sociales.  Des travaux ont également été réalisés pour intégrer et utiliser le module Catala, et pour moderniser l'environnement de gestion des dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout d'une première version du calcul du quotient familial. [#dd7d9c4](https://github.com/betagouv/prestagri/pull/dd7d9c4)
-- Ajout d'un exemple fonctionnel en catalan. [#db53988](https://github.com/betagouv/prestagri/pull/db53988)
-- Implémentation d'une route d'éligibilité. [#f066037](https://github.com/betagouv/prestagri/pull/f066037)
+- Ajout du calcul du quotient familial spécifique à l'aide scolaire [#8f54964](https://github.com/betagouv/prestagri/commit/8f54964).
+- Implémentation du calcul général du quotient familial [#ce6b60d](https://github.com/betagouv/prestagri/commit/ce6b60d).
+- Première version du calcul du quotient familial disponible [#dd7d9c4](https://github.com/betagouv/prestagri/commit/dd7d9c4).
+- Ajout d'une route d'éligibilité [#f066037](https://github.com/betagouv/prestagri/commit/f066037).
 
 ### Évolutions techniques
-- Migration du gestionnaire de dépendances de Poetry à uv. [#aadffc0](https://github.com/betagouv/prestagri/pull/aadffc0)
-- Mise en place de l'intégration avec Sentry pour la surveillance des erreurs. [#efa2431](https://github.com/betagouv/prestagri/pull/efa2431)
-- Configuration pour le déploiement sur Scalingo. [#4d8bdb2](https://github.com/betagouv/prestagri/pull/4d8bdb2)
-- Mise à jour des actions GitHub. [#0390b40](https://github.com/betagouv/prestagri/pull/0390b40)
-- Configuration de l'exécution de la documentation en local. [#ce30f1c](https://github.com/betagouv/prestagri/pull/ce30f1c)
-- Mise en place de la documentation du projet. [#29f5296](https://github.com/betagouv/prestagri/pull/29f5296)
+- Remplacement du package Catala par un module généré, améliorant ainsi la maintenabilité et la performance [#49d9263](https://github.com/betagouv/prestagri/commit/49d9263).
+- Utilisation du module Python généré dans l'application web [#37ebb2b](https://github.com/betagouv/prestagri/commit/37ebb2b).
+- Nettoyage et simplification du code lié au quotient familial [#e62698c](https://github.com/betagouv/prestagri/commit/e62698c).
+- Migration de la gestion des dépendances de Poetry à uv [#aadffc0](https://github.com/betagouv/prestagri/commit/aadffc0).
 
 ### Autres changements
-- Ajout du fichier LICENSE. [#2aec71d](https://github.com/betagouv/prestagri/pull/2aec71d)
-- Ajout de références de documentation. [#f2762b8](https://github.com/betagouv/prestagri/pull/f2762b8)
-- Ajout de la langue catalane aux références du projet. [#726b05b](https://github.com/betagouv/prestagri/pull/726b05b)
-- Correction du fichier `procfile`. [#cf00ce9](https://github.com/betagouv/prestagri/pull/cf00ce9)
-- Mise à jour du lien dans le README. [#5d87e4d](https://github.com/betagouv/prestagri/pull/5d87e4d)
-- Ajout d'une structure de base pour le serveur Python. [#b49c32d](https://github.com/betagouv/prestagri/pull/b49c32d)
-- Initialisation du dépôt avec un premier commit. [#302dadb](https://github.com/betagouv/prestagri/commit/302dadb)
+- Ajout de Catala aux références du projet [#726b05b](https://github.com/betagouv/prestagri/commit/726b05b).
+- Correction d'une erreur d'import [#f4bc0b9](https://github.com/betagouv/prestagri/commit/f4bc0b9).
+- Correction de la page Catala dans la documentation [#4c0fbf6](https://github.com/betagouv/prestagri/commit/4c0fbf6).
