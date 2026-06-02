@@ -1,21 +1,24 @@
-## Changelog : graal (30 derniers jours, au 11 avril 2026)
+## Changelog : graal (30 derniers jours, au 1er juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des bases de données et des configurations par les utilisateurs, notamment la possibilité de supprimer leurs propres bases de données et fichiers. Des corrections de bugs ont également été implémentées, améliorant la robustesse et l'expérience utilisateur. De nouvelles fonctionnalités concernant la configuration et la limitation de l'utilisation des modèles de langage (LLM) ont été ajoutées.
+Les dernières mises à jour de Graal se concentrent sur la correction de bugs et l'amélioration de la stabilité, notamment en ajustant les dépendances et en corrigeant des problèmes liés à l'interface utilisateur et à la gestion des tâches. Une nouvelle version a été publiée (1.51.1) intégrant ces corrections.
 
 ### Évolutions fonctionnelles
-- Les utilisateurs peuvent maintenant supprimer leurs propres bases de données et fichiers de configuration. [#36f58e7](https://github.com/SocialGouv/graal/commit/36f58e71fbf73506841093487371f20882e02163)
-- Correction d'un bug empêchant l'utilisation d'accents dans le champ "projet d'origine". [#ce7412f](https://github.com/SocialGouv/graal/commit/ce7412f9d4fffe6a42dcfa14a76f47b666154329)
-- Ajout de la possibilité de définir un nombre maximal de requêtes simultanées aux LLM, configurable par l'utilisateur. [#22f6bd3](https://github.com/SocialGouv/graal/commit/22f6bd325f48b4c4c6c9712ec88589d484f3f67f) et [#0af4c4d](https://github.com/SocialGouv/graal/commit/0af4c4ddb2ae15d9b2e07582a09b28bd5ec9d785)
-- Ajout d'une limite de taux (nombre de requêtes par minute) pour l'utilisation des LLM. [#d128676](https://github.com/SocialGouv/graal/commit/d1286766147de46d9a32cc8770a61d7de0719273)
-- Possibilité de supprimer des fichiers des bases de données d'amendements avec reconstruction. [#2cda56b](https://github.com/SocialGouv/graal/commit/2cda56b34ade40d22f6dc4c58ae81189e4617c74)
-- Ajout de boutons de connexion en mode développement pour faciliter les tests en environnements de revue. [#846fd14](https://github.com/SocialGouv/graal/commit/846fd14f2da9df411fc7e95713b8a6c0b8393a29)
-- Ajout de la configuration des LLM dans la base de données. [#93d95c5](https://github.com/SocialGouv/graal/commit/93d95c5c6409459d0af2a9fd22b7038f81cc9290)
+- Correction d'un bug empêchant la suppression de bases de données et de fichiers de configuration par les utilisateurs. [#229](https://github.com/SocialGouv/graal/issues/229)
+- Possibilité de supprimer les bases de données et les fichiers de configuration par les utilisateurs. [#36f58e7](https://github.com/SocialGouv/graal/commit/36f58e71fbf73506841093487371f20882e02163)
+- Autorisation des accents pour le champ "projet d'origine". [#ce7412f](https://github.com/SocialGouv/graal/commit/ce7412f9d4fffe6a42dcfa14a76f47b666154329)
+- Ajout de boutons de connexion en environnement de développement pour faciliter les tests et les revues. [#846fd14](https://github.com/SocialGouv/graal/commit/846fd14f2da9df41)
+- Correction de l'affichage du texte des boutons de connexion en environnement de développement. [#8d4350d](https://github.com/SocialGouv/graal/commit/8d4350d05aeb6079f0bf1a5075f47c3f7a94c2e1)
 
 ### Évolutions techniques
-- Amélioration de la couverture des tests de configuration. [#0dc3ee9](https://github.com/SocialGouv/graal/commit/0dc3ee945252016905562119901838990b604623)
-- Simplification du fichier README pour une meilleure clarté. [#5d487b9](https://github.com/SocialGouv/graal/commit/5d487b9636a982269669532f91649606d5354450)
-- Correction d'un problème de configuration de la variable d'environnement `VITE_ENABLE_DEV_LOGIN`. [#0190356](https://github.com/SocialGouv/graal/commit/019035628c3560996139d3536cbaab42baceeea0)
-- Correction d'un problème empêchant l'affichage du texte sur les boutons de connexion en développement. [#8d4350d](https://github.com/SocialGouv/graal/commit/8d4350d05aeb6079f0bf1a5075f47c3f7a94c2e1)
-- Correction d'un problème lié à la mise à jour du job store après l'exécution des tâches. [#71cbcfe](https://github.com/SocialGouv/graal/commit/71cbcfe52a3f34afcd4ac14921e4abe13a8c4c6f)
-- Diminution du niveau de log pour les messages d'authentification par requête de INFO à DEBUG. [#4069114](https://github.com/SocialGouv/graal/issues/236)
+- Mise à jour de la version de `rapidfuzz` pour corriger des problèmes de build. [#3fd7288](https://github.com/SocialGouv/graal/commit/3fd7288817791372763793f7f96a7d7614d43464)
+- Rétrogradation d'un package Python pour éviter les échecs de build. [#b4ee2f0](https://github.com/SocialGouv/graal/commit/b4ee2f016a020092326b2e120e4c8dcc23a58c15)
+- Mise à jour du tag Docker Python vers la version 3.14. [#602766c](https://github.com/SocialGouv/graal/commit/602766c99946815778a3325898638611c839112d)
+- Amélioration de la configuration de `VITE_ENABLE_DEV_LOGIN`. [#0190356](https://github.com/SocialGouv/graal/commit/019035628c3560996139d3536cbaab42baceeea0)
+- Correction de la mise à jour du job store après l'exécution des tâches. [#71cbcfe](https://github.com/SocialGouv/graal/commit/71cbcfe52a3f34afcd4ac14921e4abe13a8c4c6f)
+- Diminution du niveau de log pour les messages d'authentification par requête de INFO à DEBUG. [#4069114](https://github.com/SocialGouv/graal/commit/40691143b1b10a10c39a2cc214b18e58a0c2956c)
+
+### Autres changements
+- Publication de la version 1.51.1. [#7bc1a0a](https://github.com/SocialGouv/graal/commit/7bc1a0a6b25a169066941592673561034846687f)
+- Ajout de limites de taux et de concurrence pour les requêtes LLM. [#d128676](https://github.com/SocialGouv/graal/commit/d1286766147de46d9a32cc8770a61d7de0719273)
+- Ajout de la configuration du nombre maximum de requêtes LLM concurrentes à la base de données et à l'interface utilisateur. [#22f6bd3](https://github.com/SocialGouv/graal/commit/22f6bd325f48b4c4c6c9712ec88589d484f3f67f) et [#0af4c4d](https://github.com/SocialGouv/graal/commit/0af4c4ddb2ae15d9b2e07582a09b28bd5ec9d785)
