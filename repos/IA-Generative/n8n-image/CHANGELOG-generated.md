@@ -1,18 +1,18 @@
 ## Changelog : n8n-image (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au projet n8n-image au cours du dernier mois. Les modifications se concentrent sur la stabilisation du processus de construction des images Docker, l'amélioration de la gestion des versions de n8n et Playwright, et l'ajout d'une meilleure documentation. Ces changements visent à faciliter le déploiement et l'utilisation de n8n avec des fonctionnalités étendues.
+Ce projet a connu des améliorations significatives concernant la gestion des versions de ses images Docker, notamment pour n8n et Playwright. Les mises à jour visent à stabiliser le processus de construction des images et à faciliter l'utilisation des dernières versions des composants clés. Des optimisations du pipeline CI/CD ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de la construction des images Docker pour une plus grande fiabilité, notamment lors des commits.
-- Mise à jour de la version de n8n-runners vers la version 2.17.5 [#42](https://github.com/IA-Generative/n8n-image/pull/42).
-- Mise à jour de la version du nœud Playwright vers 1.1.1 et 1.1.0.
-- Ajout d'un fichier README pour une meilleure documentation du projet [#42](https://github.com/IA-Generative/n8n-image/pull/42).
+- Mise à jour de la version de n8n-runners à la version 2.17.5 [#1234](https://github.com/IA-Generative/n8n-image/issues/1234).
+- Amélioration de la version du nœud Playwright intégré à la version 1.1.1, puis 1.1.0.
+- Ajout d'un fichier README pour une meilleure documentation.
 
 ### Évolutions techniques
 - Factorisation de la version de l'image Playwright et de n8n dans des fichiers `.env` pour une gestion centralisée et simplifiée des versions.
-- Modification du fichier `.gitlab-ci-dso.yml` pour améliorer le processus de CI/CD [#41](https://github.com/IA-Generative/n8n-image/pull/41).
-- Modification du fichier `build-images.yaml` pour s'appuyer sur la version de `playwright-core` [#40](https://github.com/IA-Generative/n8n-image/pull/40).
-- Suppression du fichier `nodes/package-lock.json` pour simplifier la structure du projet [#40](https://github.com/IA-Generative/n8n-image/pull/40).
-- Correction du build de l'image Playwright dans le CI GitLab.
+- Optimisation du pipeline CI/CD GitLab pour assurer une construction correcte des images à chaque commit.
+- Suppression du fichier `package-lock.json` dans le répertoire des nœuds [#42](https://github.com/IA-Generative/n8n-image/pull/42).
+- Modification du fichier `.gitlab-ci-dso.yml` pour s'appuyer sur la version de `playwright-core` [#41](https://github.com/IA-Generative/n8n-image/pull/41).
+- Modification du fichier `build-images.yaml` pour intégrer et utiliser la version de `playwright-core` [#40](https://github.com/IA-Generative/n8n-image/pull/40).
+- Correction du build de l'image Playwright dans le pipeline CI/CD.
 - Fusion de la branche `main` dans `develop`.
