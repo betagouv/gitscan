@@ -173,7 +173,24 @@
 │   │   │   │   │       └── mission-locale.admin.actions.ts
 │   │   │   │   ├── affelnet.actions.ts
 │   │   │   │   ├── brevo
-│   │   │   │   │   └── brevo.actions.ts
+│   │   │   │   │   ├── brevo.actions.ts
+│   │   │   │   │   └── contacts
+│   │   │   │   │       ├── connexion-invitation-info.actions.test.ts
+│   │   │   │   │       ├── connexion-invitation-info.actions.ts
+│   │   │   │   │       ├── connexion-invitations.actions.test.ts
+│   │   │   │   │       ├── connexion-invitations.actions.ts
+│   │   │   │   │       ├── fixtures.ts
+│   │   │   │   │       ├── formatters.test.ts
+│   │   │   │   │       ├── formatters.ts
+│   │   │   │   │       ├── list.actions.test.ts
+│   │   │   │   │       ├── list.actions.ts
+│   │   │   │   │       ├── registry.ts
+│   │   │   │   │       ├── sync.ts
+│   │   │   │   │       ├── tba-contacts.test.ts
+│   │   │   │   │       ├── tba-contacts.ts
+│   │   │   │   │       ├── types.ts
+│   │   │   │   │       ├── utm.test.ts
+│   │   │   │   │       └── utm.ts
 │   │   │   │   ├── campagnes
 │   │   │   │   │   └── campagnes.actions.ts
 │   │   │   │   ├── cfa
@@ -293,6 +310,7 @@
 │   │   │   │   │       ├── messages.ts
 │   │   │   │   │       ├── notifications.ts
 │   │   │   │   │       ├── phone.ts
+│   │   │   │   │       ├── prequalif.ts
 │   │   │   │   │       └── types.ts
 │   │   │   │   ├── classifier
 │   │   │   │   │   ├── classifier.test.ts
@@ -318,6 +336,7 @@
 │   │   │   │   ├── jwtUtils.ts
 │   │   │   │   ├── mergeIgnoringNullPreferringNewArray.ts
 │   │   │   │   ├── miscUtils.ts
+│   │   │   │   ├── mlDeepLink.ts
 │   │   │   │   ├── mongoUtils.ts
 │   │   │   │   ├── passwordUtils.ts
 │   │   │   │   ├── regexUtils.ts
@@ -429,7 +448,8 @@
 │   │   │       ├── 20260319120000-backfill-derniere-activite.ts
 │   │   │       ├── 20260402120000-add-deca-cfa-list.ts
 │   │   │       ├── 20260423120000-activate-v2-and-deca-cma-hdf.ts
-│   │   │       └── 20260429150337-activate-v2-and-deca-cma-nouvelle-aquitaine.ts
+│   │   │       ├── 20260429150337-activate-v2-and-deca-cma-nouvelle-aquitaine.ts
+│   │   │       └── 20260520092021-add-souhaite-rdv.ts
 │   │   ├── dev.ts
 │   │   ├── http
 │   │   │   ├── helpers
@@ -446,6 +466,7 @@
 │   │   │   ├── routes
 │   │   │   │   ├── admin.routes
 │   │   │   │   │   ├── affelnet.routes.ts
+│   │   │   │   │   ├── brevo-contacts.routes.ts
 │   │   │   │   │   ├── collaborations.routes.ts
 │   │   │   │   │   ├── effectifs.routes.ts
 │   │   │   │   │   ├── erps.routes.ts
@@ -462,6 +483,8 @@
 │   │   │   │   │   └── mission-locale
 │   │   │   │   │       └── mission-locale-campagne.route.ts
 │   │   │   │   ├── emails.routes.ts
+│   │   │   │   ├── onboarding.routes
+│   │   │   │   │   └── connexion-info.route.ts
 │   │   │   │   ├── organisations.routes
 │   │   │   │   │   ├── france-travail
 │   │   │   │   │   │   └── france-travail.routes.ts
@@ -477,6 +500,7 @@
 │   │   │   │   │   ├── france-travail.routes.ts
 │   │   │   │   │   ├── mission-locale.routes.ts
 │   │   │   │   │   └── reseaux.routes.ts
+│   │   │   │   ├── redirect.routes.ts
 │   │   │   │   ├── specific.routes
 │   │   │   │   │   ├── affelnet.routes.ts
 │   │   │   │   │   ├── dossiers-apprenants.routes.ts
@@ -583,10 +607,16 @@
 │   │   │   │   └── migrations.ts
 │   │   │   ├── organisations
 │   │   │   │   └── organisation.job.ts
+│   │   │   ├── organismes
+│   │   │   │   ├── revoke-stale-api-keys.test.ts
+│   │   │   │   └── revoke-stale-api-keys.ts
 │   │   │   ├── territoire
 │   │   │   │   └── validationTerritoire.ts
+│   │   │   ├── tmp
+│   │   │   │   └── seed-ml-rdv-url.ts
 │   │   │   └── whatsapp
-│   │   │       └── send-whatsapp-injoignables.ts
+│   │   │       ├── send-whatsapp-injoignables.ts
+│   │   │       └── send-whatsapp-prequalif.ts
 │   │   ├── main.ts
 │   │   ├── services.ts
 │   │   └── types.d.ts
@@ -607,6 +637,7 @@
 │   │   │   ├── invitation_cfa_member.mjml.ejs
 │   │   │   ├── invitation_organisation.mjml.ejs
 │   │   │   ├── mission_locale_daily_recap.mjml.ejs
+│   │   │   ├── mission_locale_prequalif_yes.mjml.ejs
 │   │   │   ├── mission_locale_weekly_recap.mjml.ejs
 │   │   │   ├── notify_access_granted.mjml.ejs
 │   │   │   ├── notify_access_granted_ofa.mjml.ejs
@@ -624,6 +655,8 @@
 │   │   │   ├── modele-arml.xlsx
 │   │   │   ├── modele-inscrit-sans-contrat-ft.xlsx
 │   │   │   └── modele-rupturant-ml.xlsx
+│   │   ├── missions-locales
+│   │   │   └── ml-rdv-url.csv
 │   │   ├── opcos
 │   │   │   ├── 2i.csv
 │   │   │   ├── afdas.csv
@@ -697,6 +730,7 @@
 │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   └── flatPathsWithoutEmpty.test.ts
 │   │   │   │   │   ├── mission-locale-organisme.actions.test.ts
+│   │   │   │   │   ├── mission-locale-prequalif-stats.test.ts
 │   │   │   │   │   └── organismes.actions.test.ts
 │   │   │   │   ├── constants
 │   │   │   │   │   └── validation.test.ts
@@ -739,6 +773,7 @@
 │   │   │   │   ├── organisme.routes.test.ts
 │   │   │   │   ├── organismes.routes.test.ts
 │   │   │   │   ├── password.route.test.ts
+│   │   │   │   ├── redirect.routes.test.ts
 │   │   │   │   ├── rncp.routes.test.ts
 │   │   │   │   ├── users.routes.test.ts
 │   │   │   │   └── utils
@@ -848,9 +883,11 @@
 │   │   │   │   └── OffreFormation.ts
 │   │   │   ├── airbyteRawBalDeca.model.ts
 │   │   │   ├── auditLogs.model.ts
+│   │   │   ├── brevoContactList.model.ts
 │   │   │   ├── brevoMissionLocaleList.model.ts
 │   │   │   ├── brevoMissionLocaleTemplate.model.ts
 │   │   │   ├── common.ts
+│   │   │   ├── connexionInvitations.model.ts
 │   │   │   ├── effectifs
 │   │   │   │   ├── apprenant.part.ts
 │   │   │   │   ├── contrat.part.ts
@@ -1050,6 +1087,9 @@
 │   │   │       ├── MlContainer.tsx
 │   │   │       ├── error.tsx
 │   │   │       ├── page.tsx
+│   │   │       ├── parametres
+│   │   │       │   ├── ParametresClient.tsx
+│   │   │       │   └── page.tsx
 │   │   │       └── validation
 │   │   │           ├── ValidationClient.tsx
 │   │   │           ├── page.tsx
@@ -1136,7 +1176,11 @@
 │   │   │   │   │   ├── BienvenueClient.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── connexion
+│   │   │   │   │   ├── Connexion.module.scss
 │   │   │   │   │   ├── ConnexionClient.tsx
+│   │   │   │   │   ├── ConnexionInvitationLoginForm.tsx
+│   │   │   │   │   ├── StandardLoginForm.tsx
+│   │   │   │   │   ├── login.schema.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── inscription-cfa
 │   │   │   │   │   ├── InscriptionCfa.module.css
@@ -1223,6 +1267,22 @@
 │   │   │   │   ├── MLHeader.tsx
 │   │   │   │   └── modal
 │   │   │   │       └── ModalAdminSyncBrevo.tsx
+│   │   │   ├── onboarding
+│   │   │   │   ├── OnboardingError.module.scss
+│   │   │   │   ├── OnboardingError.tsx
+│   │   │   │   ├── OnboardingLayout.module.scss
+│   │   │   │   ├── OnboardingLayout.tsx
+│   │   │   │   ├── OnboardingSidePanel.module.scss
+│   │   │   │   ├── OnboardingSidePanel.tsx
+│   │   │   │   ├── OnboardingSkeleton.tsx
+│   │   │   │   ├── OrganismeCard.module.scss
+│   │   │   │   ├── OrganismeCard.tsx
+│   │   │   │   ├── cfa-invitation.types.ts
+│   │   │   │   ├── connexion-invitation.types.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── useCfaInvitationInfo.ts
+│   │   │   │   ├── useConnexionInvitationInfo.ts
+│   │   │   │   └── useOnboardingInfo.ts
 │   │   │   ├── ruptures
 │   │   │   │   ├── cfa
 │   │   │   │   │   ├── CfaCollaborationBadge.module.css
@@ -1282,10 +1342,9 @@
 │   │   │   │   ├── mission-locale
 │   │   │   │   │   ├── DownloadSection.tsx
 │   │   │   │   │   ├── EffectifParcoursMissionLocale.tsx
-│   │   │   │   │   ├── EffectifsListView.module.css
 │   │   │   │   │   ├── EffectifsListView.tsx
-│   │   │   │   │   ├── WhatsAppCallbackBanner.module.css
-│   │   │   │   │   ├── WhatsAppCallbackBanner.tsx
+│   │   │   │   │   ├── SouhaiteRdvBanner.module.css
+│   │   │   │   │   ├── SouhaiteRdvBanner.tsx
 │   │   │   │   │   ├── collaboration
 │   │   │   │   │   │   ├── CollaborationReceivedView.tsx
 │   │   │   │   │   │   ├── MlCollaborationColumn.tsx
@@ -1319,6 +1378,7 @@
 │   │   │   │       │   ├── ReferentCoordonnees.tsx
 │   │   │   │       │   ├── collaboration.utils.ts
 │   │   │   │       │   ├── timeline.utils.tsx
+│   │   │   │       │   ├── whatsapp-event-copy.ts
 │   │   │   │       │   └── withSharedStyles.ts
 │   │   │   │       ├── constants.ts
 │   │   │   │       ├── hooks
@@ -1371,14 +1431,14 @@
 │   │   │   │   │   ├── ChartLegend.tsx
 │   │   │   │   │   ├── ChartTooltip.module.css
 │   │   │   │   │   ├── ChartTooltip.tsx
-│   │   │   │   │   ├── ClassifierFeedbackCharts.tsx
-│   │   │   │   │   ├── ClassifierSituationsPieChart.tsx
 │   │   │   │   │   ├── DejaConnuMiniChart.module.css
 │   │   │   │   │   ├── DejaConnuMiniChart.tsx
 │   │   │   │   │   ├── DetailsDossiersTraitesPieChart.module.css
 │   │   │   │   │   ├── DetailsDossiersTraitesPieChart.tsx
 │   │   │   │   │   ├── MotifsBarChart.module.css
 │   │   │   │   │   ├── MotifsBarChart.tsx
+│   │   │   │   │   ├── PrequalifResponsesDonut.module.css
+│   │   │   │   │   ├── PrequalifResponsesDonut.tsx
 │   │   │   │   │   ├── RupturantsBarChart.tsx
 │   │   │   │   │   ├── RupturantsPieChart.module.css
 │   │   │   │   │   ├── RupturantsPieChart.tsx
@@ -1400,7 +1460,6 @@
 │   │   │   │   ├── sections
 │   │   │   │   │   ├── AccompagnementConjointSection.module.css
 │   │   │   │   │   ├── AccompagnementConjointSection.tsx
-│   │   │   │   │   ├── ClassifierSection.tsx
 │   │   │   │   │   ├── CollaborationActivationSection.tsx
 │   │   │   │   │   ├── CollaborationUsageSection.tsx
 │   │   │   │   │   ├── CollaborationsAdminSection.module.css
@@ -1412,6 +1471,8 @@
 │   │   │   │   │   ├── DossiersTraitesSection.tsx
 │   │   │   │   │   ├── IdentificationSuiviSection.module.css
 │   │   │   │   │   ├── IdentificationSuiviSection.tsx
+│   │   │   │   │   ├── PrequalifSection.module.css
+│   │   │   │   │   ├── PrequalifSection.tsx
 │   │   │   │   │   ├── RupturantsSection.module.css
 │   │   │   │   │   ├── RupturantsSection.tsx
 │   │   │   │   │   ├── StatisticsSection.module.css
@@ -1456,6 +1517,7 @@
 │   │   │   │   └── views
 │   │   │   │       ├── MissionLocaleDetailView.module.css
 │   │   │   │       ├── MissionLocaleDetailView.tsx
+│   │   │   │       ├── MlAdminRdvUrlEditor.tsx
 │   │   │   │       ├── NationalView.module.css
 │   │   │   │       ├── NationalView.tsx
 │   │   │   │       ├── RegionView.module.css
@@ -1499,6 +1561,19 @@
 │   │   │   ├── user.utils.test.ts
 │   │   │   └── user.utils.ts
 │   │   ├── admin
+│   │   │   ├── brevo-contacts
+│   │   │   │   ├── BrevoContactListCard.tsx
+│   │   │   │   ├── BrevoContactListsClient.tsx
+│   │   │   │   ├── BrevoHealthBanner.tsx
+│   │   │   │   ├── brevo-contacts.module.scss
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useBrevoContactListExisting.ts
+│   │   │   │   │   ├── useBrevoContactListSync.ts
+│   │   │   │   │   ├── useBrevoContactLists.ts
+│   │   │   │   │   ├── useBrevoHealth.ts
+│   │   │   │   │   └── useTbaContactsExport.ts
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── suivi-des-indicateurs
@@ -2343,4 +2418,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-469 directories, 1876 files
+478 directories, 1942 files
