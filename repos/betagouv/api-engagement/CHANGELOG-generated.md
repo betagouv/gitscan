@@ -1,38 +1,28 @@
-## Changelog : api-engagement (30 derniers jours, au 27 mai 2026)
+## Changelog : api-engagement (30 derniers jours, au 2 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de sécurité, de gestion des accès et d'accessibilité. Des corrections ont été apportées pour améliorer la stabilité et la fiabilité de l'application, notamment concernant les jobs et les règles de diffusion. L'ajout de tests et la refactorisation du code contribuent à une meilleure qualité globale du projet.
+Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de sécurité, de performance et d'expérience utilisateur. Des corrections ont été apportées pour améliorer l'accessibilité, notamment sur le formulaire d'authentification et le quiz. L'architecture interne a été refactorisée pour une meilleure gestion des règles de diffusion et une plus grande robustesse.
 
 ### Évolutions fonctionnelles
-- Ajout de règles de diffusion pour les publications des partenaires [#1061](https://github.com/betagouv/api-engagement/issues/1061).
-- Implémentation de la plateforme d'engagement [#934](https://github.com/betagouv/api-engagement/issues/934).
-- Possibilité d'ajouter des scripts auto-hébergés [#1039](https://github.com/betagouv/api-engagement/issues/1039).
-- Amélioration de l'affichage des missions Service Civique dans Grimpio [#977](https://github.com/betagouv/api-engagement/issues/977).
-- Ajout d'une tabulation API Key pour les annonceurs dans les paramètres de l'application [#1015](https://github.com/betagouv/api-engagement/issues/1015).
-- Correction pour obliger à commenter lors du refus de missions [#1037](https://github.com/betagouv/api-engagement/issues/1037).
-- Amélioration de l'affichage de l'URL de l'API sandbox pour les broadcasters [#1012](https://github.com/betagouv/api-engagement/issues/1012).
-- Correction de l'affichage des filtres de modération et des onglets pour éviter les débordements [#975](https://github.com/betagouv/api-engagement/issues/975).
-- Correction de l'alignement horizontal du sélecteur de date [#976](https://github.com/betagouv/api-engagement/issues/976).
+- **Authentification:** Amélioration de l'accessibilité des formulaires d'authentification et de gestion de compte, avec ajout d'attributs d'autocomplétion et d'associations de labels aux champs. [#1086](https://github.com/betagouv/api-engagement/issues/1086) [#1087](https://github.com/betagouv/api-engagement/issues/1087) [#1088](https://github.com/betagouv/api-engagement/issues/1088) [#1089](https://github.com/betagouv/api-engagement/issues/1089)
+- **Quiz:** Amélioration de l'interface utilisateur du quiz, notamment en termes d'accessibilité avec des patterns de barre de progression et de boîtes de dialogue accessibles. [#1053](https://github.com/betagouv/api-engagement/issues/1053) [#1054](https://github.com/betagouv/api-engagement/issues/1054) [#1055](https://github.com/betagouv/api-engagement/issues/1055) [#1057](https://github.com/betagouv/api-engagement/issues/1057) [#1058](https://github.com/betagouv/api-engagement/issues/1058) [#1084](https://github.com/betagouv/api-engagement/issues/1084)
+- **Plateforme:** Amélioration de l'affichage du nom du département. [#1072](https://github.com/betagouv/api-engagement/issues/1072)
+- **API:** Possibilité pour les diffuseurs d'utiliser l'endpoint `v2/activity`. [#1091](https://github.com/betagouv/api-engagement/issues/1091)
+- **Missions:** Ajout de la possibilité d'activer les missions de service civique dans Grimpio. [#977](https://github.com/betagouv/api-engagement/issues/977)
+- **Cartographie des missions:** Corrections pour améliorer l'accessibilité (RGAA). [#1103](https://github.com/betagouv/api-engagement/issues/1103)
 
 ### Évolutions techniques
-- Mise en place d'une suite de tests pour la plateforme [#1066](https://github.com/betagouv/api-engagement/issues/1066).
-- Refactorisation de la taxonomie "tranche d'âge" [#1069](https://github.com/betagouv/api-engagement/issues/1069).
-- Utilisation d'un proxy serveur pour signer les requêtes [#1059](https://github.com/betagouv/api-engagement/issues/1059).
-- Suppression d'un POC (Proof of Concept) [#1046](https://github.com/betagouv/api-engagement/issues/1046).
-- Amélioration de la gestion des règles d'accès et ajout de logs d'audit [#1019](https://github.com/betagouv/api-engagement/issues/1019).
-- Refactorisation de la gestion des règles de diffusion des publishers [#1056](https://github.com/betagouv/api-engagement/issues/1056).
-- Refactorisation des DTO (Data Transfer Object) liés aux emails des missions [#1064](https://github.com/betagouv/api-engagement/issues/1064).
-- Amélioration de la configuration de l'environnement pour l'URL de l'API [#1049](https://github.com/betagouv/api-engagement/issues/1049).
-- Correction de problèmes d'installation d'Alloy [#1051](https://github.com/betagouv/api-engagement/issues/1051).
-- Correction de problèmes liés au déploiement de la spécification OpenAPI [#1014](https://github.com/betagouv/api-engagement/issues/1014).
-- Amélioration de la gestion des accès avec un middleware dédié [#1013](https://github.com/betagouv/api-engagement/issues/1013).
-- Ajout de configuration Mockoon [#978](https://github.com/betagouv/api-engagement/issues/978).
+- **Refactorisation:** Remplacement du système d'exclusion de publication par un moteur basé sur des règles. [#1078](https://github.com/betagouv/api-engagement/issues/1078)
+- **Sécurité:** Implémentation d'une limitation du taux de requêtes (IP rate limit) sur les routes de l'API plateforme. [#1075](https://github.com/betagouv/api-engagement/issues/1075)
+- **Base de données:** Ajout d'un index unique pour `mission_enrichment` sur `missionId` et `promptVersion`. [#1092](https://github.com/betagouv/api-engagement/issues/1092)
+- **Infrastructure:** Configuration de Typesense pour la production. [#1068](https://github.com/betagouv/api-engagement/issues/1068)
+- **Tests:** Ajout de tests unitaires et de workflows linting pour le package plateforme. [#1085](https://github.com/betagouv/api-engagement/issues/1085)
+- **Architecture:** Suppression du modèle de taxonomie hérité. [#1079](https://github.com/betagouv/api-engagement/issues/1079)
+- **Performance:** Suppression de l'expiration du score utilisateur. [#1105](https://github.com/betagouv/api-engagement/issues/1105)
+- **CI/CD:** Correction de problèmes liés à la construction des jobs. [#1018](https://github.com/betagouv/api-engagement/issues/1018)
 
 ### Autres changements
-- Amélioration de l'accessibilité des composants de l'interface utilisateur (barre de progression, boîtes de dialogue, champs de saisie, etc.) [#1058](https://github.com/betagouv/api-engagement/issues/1058), [#1057](https://github.com/betagouv/api-engagement/issues/1057), [#1055](https://github.com/betagouv/api-engagement/issues/1055), [#1054](https://github.com/betagouv/api-engagement/issues/1054), [#1053](https://github.com/betagouv/api-engagement/issues/1053).
-- Mise à jour de certaines dépendances (actions/checkout, orhun/git-cliff-action, scaleway/action-scw, etc.).
-- Suppression de la validation des IPs Brevo [#1027](https://github.com/betagouv/api-engagement/issues/1027).
-- Amélioration de la sécurité des webhooks Brevo [#1026](https://github.com/betagouv/api-engagement/issues/1026).
-- Correction des dépendances Dbt pour les analyses [#1023](https://github.com/betagouv/api-engagement/issues/1023).
-- Ajout d'un WAF proxy [#795](https://github.com/betagouv/api-engagement/issues/795).
-- Suppression de la relation activity_id dans les missions [#787](https://github.com/betagouv/api-engagement/issues/787).
+- **Documentation:** Ajout d'un fichier `AGENTS.md`. [#1082](https://github.com/betagouv/api-engagement/issues/1082)
+- **Corrections:** Correction de variables manquantes dans la configuration Terraform. [#1106](https://github.com/betagouv/api-engagement/issues/1106)
+- **Versionning:** Publication des versions v1.5.0, v1.5.1, v1.6.0, v1.7.0 et v1.8.1.
+- **Divers:** Suppression de l'ancienne logique de validation d'adresse IP Brevo. [#1027](https://github.com/betagouv/api-engagement/issues/1027)

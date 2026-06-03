@@ -88,7 +88,8 @@
 │   │       ├── 20260402074029_drop_organization_legacy_fields.sql
 │   │       ├── 20260402083123_drop_mission_organization_client_id.sql
 │   │       ├── 20260505074828_add_plateforme_engagement_schema.sql.sql
-│   │       └── 20260508092925_add_stat_event_source_email.sql
+│   │       ├── 20260508092925_add_stat_event_source_email.sql
+│   │       └── 20260602131500_drop_user_scoring_expires_at.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -314,6 +315,10 @@
 │   │   ├── diffuseur
 │   │   │   ├── liste.md
 │   │   │   └── par-identifiant.md
+│   │   ├── diffusion-rule
+│   │   │   ├── creer.md
+│   │   │   ├── liste.md
+│   │   │   └── supprimer.md
 │   │   ├── errors.md
 │   │   ├── introduction.md
 │   │   ├── mes-missions
@@ -510,6 +515,16 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260521132812_add_publisher_diffusion_rule
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260528100000_add_publisher_diffusion_rule_combined_with
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260528113112_drop_taxonomy_models
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260528120000_publisher_diffusion_rule_unique_publisher_field_value
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260601131722_add_unique_mission_enrichment_mission_version
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260602130822_remove_user_scoring_expires_at
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -519,10 +534,8 @@
 │   │   ├── backfill-mission-jobboard-sync-status.ts
 │   │   ├── backfill-organization-search-text.ts
 │   │   ├── backfill-publisher-diffusion-rules.ts
-│   │   ├── backfill-publisher-organizations-exclusion.ts
 │   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
-│   │   ├── backfill-taxonomy-keys.ts
 │   │   ├── benchmark-matching-engine.ts
 │   │   ├── check-stat-event-orphan-mission-fields.ts
 │   │   ├── cleanup-duplicate-organizations.ts
@@ -539,6 +552,7 @@
 │   │   │   ├── archive-phantom-piloty-jobs.ts
 │   │   │   └── archive-piloty-jobs.ts
 │   │   ├── migrate-mission-activities.ts
+│   │   ├── migrate-publisher-diffusion-exclusion-to-rule.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
 │   │   ├── mission-enrichment
 │   │   │   └── export-dataset.ts
@@ -583,10 +597,9 @@
 │   │   │       ├── compare.ts
 │   │   │       ├── normalize.ts
 │   │   │       └── options.ts
+│   │   ├── purge-duplicate-mission-enrichments.ts
 │   │   ├── reconcile-apply-click-ids.ts
 │   │   ├── seed-fake-mission-enrichment.ts
-│   │   ├── seed-fake-user-scoring.ts
-│   │   ├── seed-taxonomy.ts
 │   │   ├── update-campaigns-trackers.ts
 │   │   ├── update-mission-moderation-status.ts
 │   │   └── update-sdis-publisher.ts
@@ -788,7 +801,7 @@
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── organization.ts
-│   │   │   ├── publisher-diffusion-exclusion.ts
+│   │   │   ├── publisher-diffusion-rule.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── report.ts
@@ -863,6 +876,7 @@
 │   │   │   │   │   ├── index.test.ts
 │   │   │   │   │   └── parser.test.ts
 │   │   │   │   ├── config.ts
+│   │   │   │   ├── errors.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── parser.ts
 │   │   │   │   ├── prompts
@@ -874,6 +888,7 @@
 │   │   │   │   │   └── v3.ts
 │   │   │   │   └── providers
 │   │   │   │       ├── __tests__
+│   │   │   │       │   ├── llm.test.ts
 │   │   │   │       │   └── mock.test.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── llm.ts
@@ -909,7 +924,6 @@
 │   │   │   │   ├── exceptions.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types.ts
-│   │   │   ├── publisher-diffusion-exclusion.ts
 │   │   │   ├── publisher-diffusion-rule
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── index.test.ts
@@ -965,7 +979,7 @@
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── organization.ts
 │   │   │   ├── passport.d.ts
-│   │   │   ├── publisher-diffusion-exclusion.ts
+│   │   │   ├── publisher-diffusion-rule.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── report.ts
@@ -1010,6 +1024,8 @@
 │   │   │   ├── url.ts
 │   │   │   └── widget.ts
 │   │   ├── v0
+│   │   │   ├── diffusion-rule
+│   │   │   │   └── controller.ts
 │   │   │   ├── mission
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── controller.ts
@@ -1035,6 +1051,7 @@
 │   │       │   ├── mission-enrichment.test.ts
 │   │       │   └── mission-scoring.test.ts
 │   │       ├── app.ts
+│   │       ├── errors.ts
 │   │       ├── handlers
 │   │       │   ├── mission-enrichment.ts
 │   │       │   ├── mission-index.ts
@@ -1081,6 +1098,7 @@
 │   │   │   │   │   ├── stats.test.ts
 │   │   │   │   │   ├── user.test.ts
 │   │   │   │   │   ├── v0
+│   │   │   │   │   │   ├── diffusion-rule.test.ts
 │   │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   │   ├── mymission.test.ts
 │   │   │   │   │   │   ├── myorganization.test.ts
@@ -1382,34 +1400,53 @@
 ├── package-lock.json
 ├── package.json
 ├── packages
+│   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── dto
 │   │   ├── .gitignore
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── README.md
+│   │   ├── eslint.config.cjs
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── index.ts
 │   │   │   └── resources
 │   │   │       ├── index.ts
 │   │   │       ├── mission-browse.ts
+│   │   │       ├── mission-domain.ts
 │   │   │       ├── mission-email.ts
 │   │   │       ├── mission-match.ts
 │   │   │       └── user-scoring.ts
 │   │   └── tsconfig.json
 │   └── taxonomy
 │       ├── .gitignore
+│       ├── AGENTS.md
+│       ├── CLAUDE.md -> AGENTS.md
+│       ├── eslint.config.cjs
 │       ├── package.json
 │       ├── src
+│       │   ├── __tests__
+│       │   │   └── utils.test.ts
 │       │   ├── index.ts
 │       │   ├── taxonomy.ts
 │       │   ├── transformers
+│       │   │   ├── __tests__
+│       │   │   │   ├── department-code.test.ts
+│       │   │   │   ├── location.test.ts
+│       │   │   │   └── tranche-age.test.ts
+│       │   │   ├── department-code.ts
 │       │   │   ├── location.ts
 │       │   │   └── tranche-age.ts
 │       │   ├── types.ts
 │       │   └── utils.ts
-│       └── tsconfig.json
+│       ├── tsconfig.json
+│       └── vitest.config.ts
 ├── plateform
 │   ├── .dockerignore
 │   ├── .gitignore
+│   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Dockerfile
 │   ├── Dockerfile.production
 │   ├── app
@@ -1462,6 +1499,7 @@
 │   │   │   │   └── radio-group.tsx
 │   │   │   ├── results
 │   │   │   │   ├── email-missions-modal.tsx
+│   │   │   │   ├── lazy-mission-map.tsx
 │   │   │   │   ├── matching-debug-modal.css
 │   │   │   │   ├── matching-debug-modal.tsx
 │   │   │   │   ├── mission-map.tsx
@@ -1480,6 +1518,7 @@
 │   │   ├── entry.client.tsx
 │   │   ├── entry.server.tsx
 │   │   ├── hooks
+│   │   │   ├── useIsMobile.ts
 │   │   │   └── useMissionResults.ts
 │   │   ├── main.css
 │   │   ├── root.tsx
@@ -1535,7 +1574,6 @@
 │   │       │   ├── mission.test.ts
 │   │       │   └── quiz.test.ts
 │   │       ├── conditions.ts
-│   │       ├── domains.ts
 │   │       ├── mission.ts
 │   │       └── quiz.ts
 │   ├── eslint.config.cjs
@@ -1680,4 +1718,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-391 directories, 1377 files
+400 directories, 1406 files

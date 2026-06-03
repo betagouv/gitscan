@@ -1,24 +1,26 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office, et un widget. Elle permet de gérer et de diffuser des informations sur l'engagement civique et associatif.",
+  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et diffuser des informations sur l'engagement.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Authentification & Accès",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Recherche & Filtres"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration"
+  ],
   "dependencies": [
-    "Express",
+    "NodeJs",
+    "ExpressJS",
     "PostgreSQL",
-    "React",
-    "Next.js",
-    "Typesense"
+    "Typesense",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,15 +31,14 @@
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "api-key"
+      "oauth2"
     ]
   },
   "tests": "Vitest",
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-05-22T00:00:00Z",
+  "lastActivity": "2026-05-27T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,7 +55,6 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Bases de données SQL"
   ]
 }
