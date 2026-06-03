@@ -1,37 +1,40 @@
-## Changelog : nosgestesclimat-app (30 derniers jours, au 28 mai 2026)
+## Changelog : nosgestesclimat-app (30 derniers jours, au 2 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'application a connu des avancées significatives dans l'intégration des actions individuelles pour réduire l'empreinte carbone, notamment avec l'implémentation d'une nouvelle version des actions et un mode scolaire dédié. Des améliorations ont également été apportées à l'expérience utilisateur, à la performance et au suivi des données.
+Ce mois-ci, l'application a connu des améliorations significatives concernant les actions individuelles pour réduire son impact carbone, avec l'intégration de nouvelles données et l'amélioration de leur affichage. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant le mode scolaire, les calculs d'empreinte et l'intégration avec Brevo. Des optimisations techniques ont été réalisées pour améliorer la performance et la flexibilité de l'application.
 
 ### Évolutions fonctionnelles
-- **Actions individuelles :** Intégration de la liste des actions v2 avec pagination et détails des actions [#1784](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1784), [#1791](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1791), [#1793](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1793), [#1812](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1812).
-- **Mode scolaire :** Ajout d'un mode scolaire dédié, permettant une utilisation spécifique dans un contexte pédagogique [#1758](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1758).
-- **Amélioration de l'interface utilisateur :**
-    - Le bloc des actions est désormais entièrement cliquable sur la page de résultats [#1805](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1805).
-    - Amélioration du texte dans le mode étudiant [#1803](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1803).
-    - Correction de l'unité d'affichage de l'empreinte hydrique [#1798](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1798), [#1797](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1797).
-    - Suppression de la définition du mois sur le calendrier de réservation de démos [#1795](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1795).
-    - Déplacement des boutons de langue pour corriger les pages de campagne [#1789](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1789).
-- **Intégration Brevo :** Sauvegarde de nouveaux attributs pour les contacts Brevo dans l'administration des organisations [#1774](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1774).
-- **Mise à jour du modèle :** Mise à jour de la version du modèle utilisé pour les calculs [#1810](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1810).
-- **Amélioration du texte :** Mise à jour de la formulation "empreinte moyenne" sur la page d'accueil [#1809](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1809).
+- **Actions individuelles :**
+    - Affichage de l'impact des actions individuelles [#1822](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1822).
+    - Synchronisation des actions depuis Notion [#1812](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1812).
+    - Détail des actions individuelles [#1791](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1791).
+    - Liste des pages d'actions v2 [#1784](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1784).
+    - Bloc d'actions entièrement cliquable sur la page de fin [#1805](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1805).
+- **Mode scolaire :** Implémentation et correction de bugs concernant le mode scolaire [#1758](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1758).
+- **Améliorations de l'interface utilisateur :**
+    - Amélioration du texte "empreinte moyenne" sur la page d'accueil [#1809](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1809).
+    - Amélioration du texte du mode étudiant [#1803](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1803).
+    - Suppression de la bannière JVA [#1779](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1779).
+- **Intégration Brevo :** Sauvegarde de nouveaux attributs pour les contacts Brevo dans l'administration de l'organisation [#1774](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1774).
+- **Partage :** Correction de l'URL de partage avec les paramètres UTM [#1821](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1821).
 
 ### Évolutions techniques
-- **Migration ORM :** Migration de l'ORM vers le core [#1771](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1771).
-- **Validation :** Migration de Zod vers Valibot pour la validation des données [#1801](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1801).
-- **Performance :** Amélioration du LCP (Largest Contentful Paint) en préchargeant l'illustration de la page d'accueil [#1802](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1802).
-- **Suivi :** Activation du suivi PostHog sur l'ensemble de l'application [#1800](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1800).
-- **Feature Flags :** Implémentation de overrides de feature flags via des paramètres d'URL et ajout de fixtures E2E [#1799](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1799).
-- **Déploiement :** Suppression du déploiement en preprod pendant les tests de pénétration [#1787](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1787).
-- **Correction d'un bug :** Empêcher la création d'un `VerifiedUser` sans `User` associé [#1792](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1792).
-- **Correction d'un bug :** Correction d'un script de synchronisation Brevo [#1794](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1794).
-- **Correction d'un bug :** Correction de l'ordre d'affichage des points sur les graphiques [#1780](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1780).
-- **Correction d'un bug :** Correction du blocage du bouton "Terminer" après avoir atteint la dernière question [#1776](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1776).
-- **Correction d'un bug :** Correction de l'affichage du nom des participants et des administrateurs [#1773](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1773).
-- **Correction d'un bug :** Correction du chargement des iframes en évitant les collisions avec les variables globales [#1786](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1786).
-- **Correction d'un bug :** Correction du suivi du site [#1783](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1783) et de l'iframe [#1782](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1782).
+- **Infrastructure :**
+    - Suppression du déploiement en pré-production pendant les tests de pentest [#1787](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1787).
+    - Activation du suivi Posthog sur l'ensemble de l'application [#1800](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1800).
+- **Architecture :**
+    - Migration de l'ORM vers Core [#1771](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1771).
+    - Migration de Zod vers Valibot pour la validation des données [#1801](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1801).
+    - Ajout d'une table `ActionAssessment` [#1808](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1808).
+- **Performance :**
+    - Amélioration du LCP (Largest Contentful Paint) en préchargeant l'illustration de la page d'accueil [#1802](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1802).
+    - Utilisation de workers pour le calcul des actions [#1811](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1811).
+- **Feature Flags :** Support des feature flags avec variantes (A/B tests) [#1816](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1816) et gestion des overrides via paramètres d'URL [#1799](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1799).
 
 ### Autres changements
-- Suppression de la bannière JVA [#1779](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1779).
-- Mise à jour du titre de la page d'accueil [#1815](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1815).
-- Ajout d'un worker de calcul pour les actions [#1811](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1811).
+- Mise à jour de la version du modèle [#1810](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1810).
+- Corrections de bugs mineurs concernant l'empreinte hydrique [#1798](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1798), [#1797](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1797), le calendrier de réservation de démonstration [#1795](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1795) et le script Brevo [#1794](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1794).
+- Correction d'un crash potentiel de `getClientCookie` pendant le rendu côté serveur (SSR) [#1819](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1819).
+- Correction du forcing de la région avec le paramètre `region` [#1824](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1824).
+- Correction d'un problème de création de `VerifiedUser` sans `User` [#1792](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1792).
+- Correction du tracking du site et de l'iframe [#1783](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1783) et [#1782](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1782).
