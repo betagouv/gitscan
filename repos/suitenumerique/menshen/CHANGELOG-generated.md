@@ -1,17 +1,15 @@
-## Changelog : menshen (30 derniers jours, au 30 avril 2026)
+## Changelog : menshen (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration de l'expérience de développement et de la robustesse du projet. Des outils ont été ajoutés pour faciliter la mise en place et le test de l'application, notamment un playground et des vérifications de santé pour les services Docker. Des simplifications de configuration ont également été apportées.
+Cette mise à jour apporte des améliorations techniques au serveur d'autorisation Menshen, notamment l'ajout de support pour les types de données et l'automatisation de la génération des variables d'environnement pour le développement et l'intégration continue. Une petite correction a également été effectuée pour supprimer des arguments inutilisés dans la génération des jetons JWT.
 
 ### Évolutions fonctionnelles
-- Ajout d'un "playground" pour faciliter l'exploration et le test de l'API.
-- La création d'un superutilisateur se fait désormais via les variables d'environnement, simplifiant la configuration initiale.
+Aucune évolution fonctionnelle visible pour l'utilisateur n'a été apportée durant cette période.
 
 ### Évolutions techniques
-- Ajout d'une vérification de santé (healthcheck) pour le service Docker, améliorant la résilience de l'application.
-- Refonte de l'affichage de l'aide de la commande `make` pour une meilleure lisibilité.
-- Renommage du service Docker en `menshen` pour une meilleure cohérence.
-- Suppression des paramètres liés à OIDC qui ne sont plus utilisés.
+- Ajout du support pour les types de données. [#a4a120f](https://github.com/suitenumerique/menshen/commit/a4a120f)
+- Automatisation de la génération des variables d'environnement pour les environnements de développement et d'intégration continue. [#449a218](https://github.com/suitenumerique/menshen/commit/449a218)
+- Suppression d'arguments inutilisés de la méthode `generate_jwt` dans la classe `TokenGenerator`. [#851d5b5](https://github.com/suitenumerique/menshen/commit/851d5b5)
 
 ### Autres changements
-- Mise à jour des dépendances Docker (Keycloak, Python, UV, GitHub Actions) vers leurs dernières versions stables. Ces mises à jour sont gérées automatiquement par Renovate.
+Aucun autre changement significatif à signaler.
