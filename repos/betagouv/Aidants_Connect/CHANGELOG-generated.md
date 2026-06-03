@@ -1,26 +1,23 @@
-## Changelog : Aidants_Connect (30 derniers jours, au 21 mai 2026)
+## Changelog : Aidants_Connect (30 derniers jours, au 01 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment pour les référents et les aidants.  Des améliorations ont été apportées aux parcours d'ajout et de changement de structure d'un aidant, ainsi qu'à la page de connexion et à la gestion des attestations de formation. Des corrections de bugs et des ajustements d'interface ont également été réalisés.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité et l'expérience utilisateur, notamment sur la page d'accueil et les parcours aidants. Des corrections ont également été apportées concernant les exports pour les Organismes de Formation (OF) et la gestion des URLs de callback. Une refonte du parcours d'ajout d'aidant avec le changement de structure a été réalisée.
 
 ### Évolutions fonctionnelles
-- **Gestion des aidants :** Refonte complète du parcours d'ajout d'un aidant, incluant la possibilité de changer la structure associée à un aidant [#1736].
-- **Exports :** Amélioration des exports des inscrits pour les Organismes de Formation (OF) [#1778] et pour la formation des aidants.
-- **Téléchargement d'attestations :** Ajout d'un bouton permettant aux référents de télécharger l'attestation de formation des aidants [#1770].
-- **Page de connexion :** Ajout d'informations pour les particuliers sur la page de connexion et amélioration de la mise en page et des icônes [#1769].
-- **Navigation :** Simplification du menu de l'espace aidant et restructuration des URLs [#1751].
-- **Affichage des résultats :** Ajout du nombre de résultats trouvés dans le titre des onglets de recherche [#1771].
-- **Correction d'URL :** Correction d'une erreur d'URL de callback [#1776].
-- **Formulaire de changement de structure :** Amélioration de la validation de l'email et ajout de tests pour le formulaire de changement de structure.
+- **Parcours d'ajout d'aidant :** Refonte complète du parcours d'ajout d'aidant avec intégration du changement de structure. [#1736](https://github.com/betagouv/Aidants_Connect/issues/1736)
+- **Exports OF :** Amélioration des exports des inscrits pour les Organismes de Formation, notamment pour les formations "Attendant". [#1778](https://github.com/betagouv/Aidants_Connect/issues/1778)
+- **Correction URL de callback :** Correction d'une erreur concernant l'URL de callback. [#1776](https://github.com/betagouv/Aidants_Connect/issues/1776)
+- **Menu espace aidant :** Simplification du menu de l'espace aidant et restructuration des URLs. [#1751](https://github.com/betagouv/Aidants_Connect/issues/1751)
+- **Parcours de changement de structure :** Amélioration des formulations et des messages du parcours de changement de structure. [#1774](https://github.com/betagouv/Aidants_Connect/issues/1774)
 
 ### Évolutions techniques
-- **Refactoring URLs :** Refactorisation des URLs dans les templates et les tests pour utiliser les nouveaux espaces de noms.
-- **Espaces de noms URL :** Création d'espaces de noms URL pour l'espace aidant et le référent.
-- **Tests :** Ajout de tests pour la validation de l'email lors d'une demande de changement de structure déjà en cours.
-- **Amélioration du code HTML :** Refactorisation du template `aidant.html` pour une meilleure lisibilité et cohérence de la structure HTML.
-- **DSFR :** Correction d'un problème d'alignement dans le DSFR en ajustant les propriétés flex pour les éléments fieldset.
+- **Accessibilité :** Amélioration significative de l'accessibilité générale de l'application, incluant la structure sémantique, l'utilisation d'ARIA roles, la gestion du focus et l'amélioration des titres et des listes. [#1773](https://github.com/betagouv/Aidants_Connect/issues/1773)
+- **Suppression iframe Brevo :** Suppression de l'iframe Brevo de la page d'accueil pour améliorer l'accessibilité et la réactivité.
+- **Mise à jour des dépendances :** Mise à jour de toutes les dépendances avant la mise à jour vers Django 5.2. [#1779](https://github.com/betagouv/Aidants_Connect/issues/1779)
+- **Refactoring templates :** Refactoring de plusieurs templates (accueil, statistiques, FAQ, habilitation) pour améliorer la structure sémantique et l'accessibilité.
+- **Correction alignement DSFR :** Correction d'un problème d'alignement dans le Design System FR (DSFR) en ajustant les propriétés flex.
 
 ### Autres changements
-- **Budget 2025 :** Ajout du budget 2025 [#1768].
-- **Correction FAQ URL:** Correction d'une URL de la FAQ [#1778].
-- **Amélioration des messages :** Petites modifications de formulation dans le parcours de changement de structure [#1774].
+- Suppression de meta tags et de code legacy inutiles.
+- Ajout de tests pour la validation des emails lors des demandes de changement de structure.
+- Amélioration de la validation des emails dans le formulaire de demande de changement de structure.
