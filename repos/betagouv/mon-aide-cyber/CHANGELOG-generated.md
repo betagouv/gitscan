@@ -1,17 +1,15 @@
-## Changelog : mon-aide-cyber (30 derniers jours, au 16 mai 2026)
+## Changelog : mon-aide-cyber (30 derniers jours, au 16 mai 2024)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la correction de bugs et l'amélioration de la robustesse de l'application, notamment en cas d'erreurs externes (API Géo). Des ajustements ont également été apportés à l'interface utilisateur et aux processus de build.
+Cette mise à jour apporte des améliorations de sécurité concernant la réception des données via le webhook Livestorm, notamment en validant les données reçues et en limitant la taille du payload. Ces changements visent à renforcer la robustesse du service face à des potentielles attaques.
 
 ### Évolutions fonctionnelles
-- Correction du calcul du nombre de jours pour le "cooldown" dans le module SOIN. [#issue à investiguer]
-- Correction de l'affichage des encarts d'homologations dans le module SOIN. [#issue à investiguer]
-- Amélioration de la gestion des erreurs lors de l'appel à l'API Géo pour l'EPCI, évitant ainsi des dysfonctionnements en cas de problème avec ce service externe. [#issue à investiguer]
+- Sécurité : Ajout d'une validation des données reçues via le webhook Livestorm grâce à un validateur Zod. [#issue à identifier]
+- Sécurité : Limitation de la taille du payload reçu via le webhook Livestorm pour prévenir des problèmes de surcharge ou d'attaques. [#issue à identifier]
 
 ### Évolutions techniques
-- Mise à jour de certaines dépendances pour améliorer la sécurité et la stabilité de l'application.
-- Suppression d'un UI Kit inutilisé, allégeant ainsi le code et simplifiant la maintenance.
-- Mise à jour du UI Kit vers la version 1.28.4.
+- Intégration : Implémentation de la validation Zod pour le webhook Livestorm.
+- Sécurité : Mise en place d'une limitation de taille du payload pour le webhook Livestorm.
 
 ### Autres changements
-- Mise à jour des tampons d'homologation MAC.
+- Aucun changement significatif à signaler.
