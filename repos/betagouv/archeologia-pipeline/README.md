@@ -3,7 +3,7 @@
 Plugin QGIS pour exécuter un pipeline de traitement LiDAR et produire des rasters de type MNT / densité / indices RVT, avec une étape optionnelle de détection / segmentation par *computer vision*.
 
 - Nom du plugin : **ArchéologIA**
-- Version : **0.2.0**
+- Version : **0.5.0**
 - QGIS minimum : **3.0**
 
 ## Fonctionnalités
@@ -11,11 +11,10 @@ Plugin QGIS pour exécuter un pipeline de traitement LiDAR et produire des raste
 - Génération de produits raster :
   - **MNT**
   - **Densité**
-  - Indices **RVT** (via *Processing*) : **M-HS**, **SVF**, **SLO**, **LD**, **SLRM**, **VAT**
+  - Indices **RVT** (via *Processing*) : **HS**, **M-HS**, **SVF**, **SLO**, **LD**, **SLRM**, **VAT**
 - Export optionnel en **JPG + world file (JGW)** pour certains produits.
 - (Optionnel) Détection / segmentation d'instances par computer vision à partir des JPG produits (via runner externe ou dépendances Python) :
-  - **Multi-modèles** : plusieurs modèles peuvent être configurés en parallèle, chacun ciblant un RVT différent.
-  - **Sélection de classes** par modèle : cocher/décocher les classes à détecter par modèle. Si toutes les classes d'un modèle sont décochées, l'inférence est ignorée pour ce modèle (court-circuit avant toute inférence).
+  - **Sélection par entités archéologiques** (UI étape 3) : on coche les entités à détecter (parcellaire, trous d'obus…) et un orchestrateur résout automatiquement quels modèles lancer, sur quel indice RVT, avec quelles classes. Plusieurs modèles peuvent ainsi tourner en parallèle, chacun ciblant un RVT. En interne, le filtrage par classes subsiste : si aucune classe n'est retenue pour un modèle, l'inférence est ignorée (court-circuit `selected_classes=[]` avant toute inférence).
   - **Filtrage par aire minimale** (`min_area_m2`) par modèle : les détections trop petites sont écartées dans un shapefile séparé (`detections_filtered_too_small.shp`).
   - **Post-processing global** (appliqué après toutes les inférences, avant génération des shapefiles) :
     - Fusion des polygones de même classe qui se touchent ou sont séparés par ≤ 0.5 m (y compris **inter-dalles**), avec confiance = moyenne pondérée par l'aire des polygones sources. **Optionnel par modèle** via `postprocess.merge_adjacent` dans `args.yaml`.
@@ -32,7 +31,7 @@ Le pipeline peut être lancé dans plusieurs modes (selon l’UI/config) :
 - `ign_laz` : téléchargement/consommation de tuiles LAZ depuis l'IGN (à partir d'un polygone de zone ou d'une liste de dalles).
 - `local_laz` : consommation de tuiles LAZ/LAS déjà présentes localement.
 - `existing_mnt` : calcul d'indices RVT à partir d'un MNT existant. Supporte les MNT au format dalle IGN 1 km (ex. `LHD_FXX_xxxx_yyyy_*`), les MNT plus petits (< 1 km, emprise native conservée) **et les MNT de grande emprise** (plusieurs km²) qui sont traités **d'un seul bloc** : les indices RVT sont calculés sur le raster complet et SAHI assure le slicing 640 × 640 à l'inférence CV. Voir la section [MNT / RVT non-IGN](#mnt--rvt-non-ign--traitement-des-grandes-emprises).
-- `existing_rvt` : opérations sur RVT existants (TIF). Dans ce mode, le dossier de sortie est `indices/RVT/` (nom générique) ; dans les autres modes, le nom du dossier correspond à l'indice cible (`LD`, `SVF`, etc.). Comme pour `existing_mnt`, les rasters RVT de grande emprise sont **traités sans pré-découpage** : la limite PIL `MAX_IMAGE_PIXELS` est désactivée et SAHI découpe l'image en mémoire au moment de l'inférence.
+- `existing_rvt` : opérations sur RVT existants (TIF). Dans ce mode, le dossier de sortie est `indices/RVT/` (nom générique) ; dans les autres modes, le nom du dossier combine le code de l'indice **et ses paramètres RVT** (`SVF_R10_D16_V1_N0`, `LD_A15_Rmin10_Rmax20_H1p7_V1`, etc.), si bien que relancer avec d'autres paramètres ne réécrit pas les dossiers existants (cf. la section *Sorties*). Comme pour `existing_mnt`, les rasters RVT de grande emprise sont **traités sans pré-découpage** : la limite PIL `MAX_IMAGE_PIXELS` est désactivée et SAHI découpe l'image en mémoire au moment de l'inférence.
 
 ## Pré-requis
 
@@ -100,7 +99,7 @@ Sous Windows (profil par défaut) :
 Le plugin exécute un **préflight** (contrôle des dépendances) au lancement.
 
 - **Processing** : doit être disponible (dans QGIS : `Traitement` → `Boîte à outils`).
-- **Algorithmes RVT via Processing** : nécessaires si tu actives des produits RVT (M-HS/SVF/SLO/LD/VAT).
+- **Algorithmes RVT via Processing** : nécessaires si tu actives des produits RVT (HS/M-HS/SVF/SLO/LD/VAT).
 
 Si un élément est manquant, le préflight affichera une erreur et empêchera le lancement.
 
@@ -112,6 +111,15 @@ Certaines étapes reposent sur des exécutables dans le `PATH` :
 - `gdalwarp` requis pour `ign_laz` / `local_laz` / `existing_mnt`
 - `gdal_translate` requis pour `existing_mnt` / `existing_rvt`
 - `gdaladdo` optionnel (pyramides / overviews). Si absent, la génération de pyramides est ignorée
+
+## Utilisation : l'assistant en 4 étapes
+
+Depuis la **v0.3.0**, le plugin s'utilise via un **assistant (wizard) en 4 étapes**. On navigue avec **Précédent / Suivant** ; un rail latéral indique l'étape courante et signale les erreurs bloquantes. La configuration est **auto-sauvegardée** entre deux sessions (`last_ui_config.json`) ; l'en-tête propose aussi **Charger / Enregistrer config** (profils `.json`).
+
+1. **Source** — Choix du mode de données (`ign_laz`, `local_laz`, `existing_mnt`, `existing_rvt`) et des chemins d'entrée (zone/liste IGN, dossier LAZ, dossier MNT ou dossier RVT selon le mode).
+2. **Indices** — Sélection des produits : **MNT / Densité** (modèle de base) + indices **RVT** (**HS, M-HS, SVF, SLO, LD, SLRM, VAT**). Le bouton **« Réglages avancés… »** ouvre une vue à onglets pour régler finement chaque indice (paramètres RVT : azimut/élévation solaire, directions, rayons, etc.) ainsi que le **filtre PDAL**, la **résolution de densité** et la **marge de tuilage**. *(HS = hillshade simple, mono-directionnel ; M-HS = multi-directionnel.)*
+3. **Détection IA** *(optionnelle)* — On coche les **entités archéologiques** à détecter (parcellaire, trous d'obus, talus/fossés…). L'orchestrateur choisit automatiquement le(s) modèle(s) ONNX adapté(s) et l'indice RVT cible. Les seuils de **confiance** et d'**aire minimale** sont réglables par entité. Le seuil de confiance est **filtrant** : les détections sous le seuil sont écartées du `.gpkg` de l'entité (après clustering, donc l'hystérésis de regroupement reste alimentée), et la **légende** du `.qgs` (tranches `conf_bin`) part du seuil propre à chaque entité — une entité dont rien ne dépasse son seuil donne une couche vide.
+4. **Lancer** — Un panneau **« État du système »** exécute le préflight en tâche de fond (outils CLI, Processing, runner ONNX, espace disque…) ; un **récapitulatif** résume les choix ; le nombre de **workers** parallèles est réglable dans les paramètres avancés repliables. Le bouton **▶ Lancer le pipeline** démarre le traitement : l'écran bascule alors sur la **vue d'exécution** (timeline 5 étapes + journal défilant avec auto-défilement / copier / effacer).
 
 ## Computer vision : runner ONNX + modèles
 
@@ -334,6 +342,26 @@ La section `postprocess` est optionnelle. Si elle est absente, les valeurs par d
 
 Le clustering DBSCAN est optionnel. Si la section `clustering` est absente de `args.yaml`, il est désactivé. Les classes générées par clustering contournent le filtre `selected_classes` et sont toujours incluses dans les shapefiles. La logique se trouve dans `src/pipeline/cv/clustering.py` (DBSCAN avec hystérésis et pondération par confiance).
 
+### Détection par entités (UI)
+
+Depuis la v0.3.0, l'utilisateur ne sélectionne plus des *modèles* puis filtre leurs *classes* : il coche des **entités** à détecter (étape 3 de l'assistant). Un **orchestrateur** (`src/app/services/model_orchestrator.py`) résout ce choix en *runs* concrets :
+
+- `data/entities_catalog.json` (versionné) fournit le **vocabulaire d'entités** présentable (id, libellé, description, ordre d'affichage) ;
+- le `model_card.yaml` de chaque modèle installé déclare sa **couverture** : son indice RVT (`preferred_rvt.type`) et ses `classes`, chacune pouvant pointer vers une entité du catalogue (`entity:` en alias, sinon le nom de classe fait foi). C'est une découverte **« drop-in »** : ajouter un modèle conforme suffit pour qu'il couvre ses entités.
+
+L'orchestrateur regroupe les entités cochées par couple `(modèle, target_rvt)` — chaque couple devient un *run* — et **peuple le tableau `computer_vision.runs`** ci-dessous. Ce format `config.json` reste donc le **contrat sous-jacent** du pipeline (auto-rempli par l'UI ; éditable à la main pour un usage avancé / scripté).
+
+**Cibles dérivées.** Une sortie de clustering peut aussi être présentée comme une **entité cochable à part entière** — une *cible dérivée*. Le modèle la déclare dans son `model_card.yaml` via une section `derived_targets` qui rattache l'`output_class` d'une règle de `args.yaml:clustering` à une entité du catalogue :
+
+```yaml
+derived_targets:
+  - output_class: zone_crateres          # sortie d'une règle args.yaml:clustering
+    entity: zones_extraction_materiaux   # entité du catalogue
+    include_source: true                 # inclure aussi les détections individuelles
+```
+
+Sélectionner une cible dérivée active le regroupement **d'office** : pas de case « Regrouper en clusters » mais un badge « regroupement automatique en zones ». C'est ainsi qu'est exposée l'entité **« Zones d'extraction de matériaux »** (regroupement des dépressions circulaires détectées par un modèle de cratères : le libellé nomme l'usage, la description reste honnête sur la méthode). L'orchestrateur replie la cible dans la couverture du modèle (`classes` = `output_class` + classes sources si `include_source`) — la résolution des runs et le pipeline CV restent inchangés.
+
 ### Configuration
 
 Dans `config.json`, la section computer vision est sous la clé `computer_vision`. Le format **multi-modèles** utilise un tableau `runs`, chaque entrée ciblant un RVT (`target_rvt`) avec son propre modèle :
@@ -407,38 +435,46 @@ Structure typique (modes `local_laz` / `ign_laz` / `existing_mnt`) :
 
 ```text
 output_dir/
-  metadata.json                          # Résumé du run (version, dalles, produits, runs CV)
-  pipeline_log_<date>.txt               # Log complet du run
+  metadata.json                          # Résumé du run (version, dalles, produits, runs CV, entités)
+  pipeline_log_<date>.txt                # Log complet du run
   sources/
-    dalles/                             # Fichiers LAZ/LAS sources (mode local_laz)
+    dalles/                              # Fichiers LAZ/LAS sources (modes local_laz / ign_laz)
   indices/
-    MNT/
-      tif/                             # GeoTIFF MNT
-      jpg/                             # JPG + world files (si activé)
-    LD/                                # Nom = indice cible du run CV
+    MNT/                                 # MNT/Densité : pas de paramètres → code brut
+      tif/                               # GeoTIFF MNT
+    LD_A15_Rmin10_Rmax20_H1p7_V1/        # Nom = code indice + paramètres RVT utilisés
       tif/
-      jpg/
-    SVF/
-      tif/
-      jpg/
-  detections/
-    detections_validation.qgs          # Projet QGIS consolidé (unique, multi-modèles)
-    <nom_modele>/                      # Dossier par modèle
-      shapefiles/                      # Shapefiles par classe (avec clustering si activé)
-        detections_LD_parcellaire.shp
-        detections_LD_talus-fosse_fossebutte.shp
-        detections_filtered_too_small.shp
-      jpg/                             # Workdir inférence (supprimé si images annotées désactivées)
+      png/                               # Images d'inférence (entrée Computer Vision)
+    SVF_R10_D16_V1_N0/  HS_Az315_E35_V1/  …
+  detections/                            # Organisé PAR ENTITÉ (vocabulaire utilisateur)
+    detections_validation.qgs            # Projet QGIS consolidé (point d'entrée)
+    parcellaire/                         # Un dossier PAR ENTITÉ cochée
+      parcellaire.gpkg                   # 1 GeoPackage par entité (couches par classe)
+    chemins_creux/  fours/  charbonnieres/  regroupement_de_crateres/  …
+    _technique/                          # Échafaudage non-livrable (traçabilité/debug)
+      <nom_modele>/
+        raw_detections/                  # Sorties brutes (JSON/TXT)
+        annotated_images/                # PNG annotés + legend.png (si option activée)
 ```
 
-En mode `existing_rvt`, le dossier d'indices est `indices/RVT/` (nom générique).
+**Routage des détections.** Un run UI normal (où l'utilisateur coche des entités à l'étape 3) écrit en **entité-centré** : un dossier `detections/<entity_slug>/` par entité cochée, avec un seul `.gpkg` à l'intérieur (couches par classe). Les sorties brutes du runner ONNX et les images annotées sont reléguées sous `detections/_technique/<modèle>/`. **Repli legacy** : un run construit programmatiquement sans champ `entities` retombe sur `detections/<modèle>/<modèle>.gpkg` (un seul `.gpkg` modèle-centré). Cf. `src/pipeline/output_paths.py` et `src/pipeline/cv/runner_shapefiles.py`.
+
+Le nom de chaque dossier d'indice RVT inclut les paramètres de génération (azimut, élévation,
+rayons, directions, etc.) sous forme de suffixe court (`SVF_R10_D16_V1_N0`,
+`LD_A15_Rmin10_Rmax20_H1p7_V1`…). Relancer le pipeline dans le **même** `output_dir` avec des
+paramètres différents crée donc un **nouveau** dossier au lieu d'écraser le précédent — les
+variantes coexistent. `MNT`/`DENSITE` (sans paramètres) gardent leur code brut, et un éventuel
+dossier hérité non suffixé (`indices/LD/`) n'est pas supprimé. Sur des `output_dir` très profonds,
+attention à la limite Windows MAX_PATH (260 caractères) avec ces noms plus longs.
+
+En mode `existing_rvt`, le dossier d'indices est `indices/RVT/` (nom générique, paramètres inconnus).
 
 Les GeoTIFF peuvent contenir des **overviews** si l'option pyramides est activée et si `gdaladdo` est disponible.
 
 ## Développement
 
 - Point d’entrée plugin : `main.py` (classe `ArcheologiaPipelinePlugin`)
-- UI : `src/ui/main_dialog.py`
+- UI : `src/ui/wizard_dialog.py` (assistant 4 étapes ; pages dans `src/ui/steps/`, vue d'exécution `src/ui/run_view.py`)
 - Pipeline : `src/pipeline/`
   - prérequis : `src/pipeline/preflight.py`
 
@@ -479,7 +515,7 @@ Ensuite, un `git push` déclenchera automatiquement Talisman et pourra bloquer l
 - **Classes non filtrées** : vider les fichiers `.txt`/`.json` existants dans le dossier `jpg/` du modèle si les anciens résultats ont été générés sans filtrage de classes
 - **Inférence lancée malgré 0 classe cochée** : s'assurer que `selected_classes` est bien une liste vide `[]` dans la config et non `null` — le court-circuit dans `run_cv_on_folder` ne s'active que pour `[]` explicite
 - **Dossier `jpg/` persistant** : le workdir est supprimé après génération des shapefiles uniquement si *Générer des images annotées* est désactivé. Si le dossier persiste, vérifier que l'option est bien décochée
-- **Projet QGIS manquant** : `detections_validation.qgs` est généré par `finalize_service`. Si absent, vérifier que le pipeline s'est terminé sans erreur (section `PIPELINE TERMINÉ AVEC SUCCÈS` dans les logs)
+- **Projet QGIS manquant** : `detections_validation.qgs` est écrit par `ui/qgs_writer.write_validation_project` (API QGIS, thread principal), déclenché depuis `run_view._on_load_layers` lors du chargement des couches — **pas** par `finalize_service` (qui tourne sur le thread worker et se contente d'émettre le signal `load_layers`). Si absent, vérifier que le pipeline s'est terminé sans erreur (section `PIPELINE TERMINÉ AVEC SUCCÈS` dans les logs) et que les couches ont bien été chargées dans QGIS
 - **MNT/RVT de grande emprise** (plusieurs km²) : le régime `large` est déclenché dès que largeur ou hauteur > 1,05 km. Vérifier dans les logs la ligne `emprise > 1 km → RVT et CV sur le raster complet` (mode MNT) ou `SAHI assure le slicing à l'inférence (pas de pré-découpage)` (mode RVT). Le raster d'entrée **doit** être projeté en Lambert-93 (EPSG:2154) pour que `_classify_*_layout` puisse évaluer correctement l'emprise.
 - **PIL `DecompressionBombError`** sur un grand raster : la limite est désactivée via `Image.MAX_IMAGE_PIXELS = None` dans `convert_tif_to_png.py` et `computer_vision_onnx.py`. Si l'erreur réapparaît, vérifier qu'un autre module PIL importé plus tôt n'a pas réinitialisé la limite (ordre d'import).
 - **Pic de RAM élevé** sur un grand raster : prévoir ~3 Go de mémoire libre pour une scène 10 × 10 km à 0,5 m/px (PNG 20 000² en numpy + slices SAHI). Pour réduire, fermer les autres projets QGIS ou passer par `existing_rvt` après avoir pré-calculé les indices hors ligne (ex. via `rvt-py` en script).
@@ -497,19 +533,14 @@ flowchart TD
         C --> D["initGui() → action menu + toolbar"]
     end
 
-    subgraph UI["Interface Utilisateur (MainDialog)"]
-        E["Clic sur plugin"] --> F["MainDialog"]
-        F --> G{"Action ?"}
-        G -->|"Lancer"| H["_on_run_clicked()"]
-        G -->|"Annuler"| I["_cancel_event.set()"]
-        G -->|"Sauvegarder préf."| J["_save_from_widgets()"]
-        G -->|"Effacer logs"| K["logs_text.clear() (bouton inline)"]
-        H --> H1["_sync_config_from_widgets()"]
-        H1 --> H2{"CV activée ?"}
-        H2 -->|"Oui, classes OK"| H3["Thread worker (daemon)"]
-        H2 -->|"Oui, 0 classe"| H2b["Avertissement dans confirmation\n(run concerné court-circuité plus tard)"]
-        H2b --> H3
-        H2 -->|"Non"| H3
+    subgraph UI["Interface (WizardDialog — assistant 4 étapes)"]
+        E["Clic sur plugin"] --> F["WizardDialog"]
+        F --> S1["Étape 1 · Source (mode + chemins)"]
+        S1 --> S2["Étape 2 · Indices (produits + réglages avancés RVT)"]
+        S2 --> S3["Étape 3 · Détection (entités → model_orchestrator → runs CV)"]
+        S3 --> S4["Étape 4 · Lancer (préflight + récap + workers)"]
+        S4 -->|"▶ Lancer le pipeline"| H3["Thread worker (daemon)"]
+        S4 -.->|"bascule l'affichage"| RV["RunView (timeline 5 étapes + journal)"]
     end
 
     subgraph Worker["Thread Worker"]
@@ -593,12 +624,10 @@ flowchart TD
         FIN3 --> F1
         F1 --> F2["_collect_shapefiles() — couches GeoPackage\n detections/**/shapefiles/*.gpkg"]
         F2 --> F3["_build_global_class_color_map() — mapping unique classe→couleur"]
-        F3 --> F3b{"shapefiles présents ?"}
-        F3b -->|"Oui"| F3c["_generate_consolidated_qgs_project() → detections_validation.qgs"]
-        F3b -->|"Non"| F3d["metadata.json"]
-        F3c --> F3d
+        F3 --> F3d["metadata.json"]
         F3d --> F4["Logs de fin de pipeline (slog.end_pipeline ou reporter)"]
-        F4 --> F5["load_layers(VRT + shapefiles, global_color_map) → QGIS"]
+        F4 --> F5["reporter.load_layers(VRT + shapefiles, global_color_map) → signal vers l'UI"]
+        F5 --> F6["UI thread principal : load_result_layers + qgs_writer.write_validation_project()\n→ detections_validation.qgs (API QGIS, symbologie conf_bin par entité)"]
     end
 
     subgraph CV["Computer Vision — runner.py (orchestration) + runner_cache / runner_inference / runner_shapefiles"]
@@ -646,8 +675,9 @@ conftest.py                         # Config pytest (sys.path + fixtures)
 pytest.ini                          # Config pytest (testpaths, addopts, filters)
 last_ui_config.json                 # Dernière config UI sauvegardée automatiquement
 
-data/                               # Ressources statiques (gitignored sauf icon)
+data/                               # Ressources statiques (gitignored sauf icon.png + entities_catalog.json)
 ├── icon.png                        #   Icône plugin
+├── entities_catalog.json           #   Catalogue d'entités (vocabulaire UI étape 3, versionné)
 ├── models/                         #   Modèles ONNX (gitignored)
 │   └── <nom_modele>/
 │       ├── args.yaml               #   Paramètres inférence + clustering
@@ -686,11 +716,14 @@ tests/
 │   ├── test_existing_rvt.py        #   _cleanup_orphans
 │   ├── test_external_runner.py     #   RunnerPayload, find_external_cv_runner
 │   ├── test_helpers.py             #   safe_float (pipeline.types), log_section (app.structured_logger)
+│   ├── test_indices_model.py       #   Catalogue produits / indices (étape 2)
+│   ├── test_model_orchestrator.py  #   Entités → modèles → runs (étape 3)
 │   ├── test_model_profile.py       #   ModelProfile.load (args.yaml + sidecar + classes)
-│   ├── test_preflight.py           #   CheckResult, _check_input_path
+│   ├── test_preflight.py           #   CheckResult, _check_input_path, collect_preflight_results
 │   ├── test_progress_reporter.py
 │   ├── test_registry.py            #   get_runner (instanciation, modes)
 │   ├── test_run_context.py
+│   ├── test_source_modes.py        #   Métadonnées des modes (étape 1)
 │   └── test_structured_logger.py
 └── integration/                    # Tests d'intégration (config réelle, fichiers temp)
     ├── test_pipeline_controller_integration.py
@@ -715,8 +748,11 @@ src/
 │   │   ├── existing_mnt_runner.py  # existing_mnt
 │   │   └── existing_rvt_runner.py  # existing_rvt (indices_folder_name="RVT" forcé)
 │   └── services/
+│       ├── model_orchestrator.py   # Entités → modèles → runs CV (catalogue + model_card)
+│       ├── indices_model.py        # Catalogue produits / indices RVT (étape 2)
+│       ├── source_modes.py         # Métadonnées des modes de données (étape 1)
 │       ├── cv_post_service.py      # run_cv_post_loop() — boucle CV partagée entre runners
-│       └── finalize_service.py     # finalize_pipeline() — VRT, .qgs consolidé, load_layers
+│       └── finalize_service.py     # finalize_pipeline() — VRT, metadata.json, signal load_layers (le .qgs est écrit côté UI)
 │
 ├── config/
 │   └── config_manager.py           # Lecture/écriture config.json + last_ui_config.json
@@ -735,12 +771,11 @@ src/
 │   │   ├── class_utils.py          # Palette couleurs, utilitaires classes (façade vers model_profile)
 │   │   ├── clustering.py           # DBSCAN spatial (scipy, confidence-weighted)
 │   │   ├── computer_vision_onnx.py # Inférence ONNX (YOLO / RF-DETR / RF-DETR Seg / SegFormer / SMP)
-│   │   ├── conversion_shp.py       # Labels → shapefiles géoréférencés + clustering + filtre selected_classes
+│   │   ├── conversion_shp.py       # Labels → shapefiles géoréférencés + clustering + filtre selected_classes + filtrage confiance < seuil (après clustering)
 │   │   ├── cv_output.py            # Gestion sorties CV (labels, annotations, légende) — consomme List[Detection]
 │   │   ├── external_runner.py      # Subprocess runner ONNX externe (inférence seule) + RunnerPayload
 │   │   ├── model_config.py         # resolve_cv_runs(), resolve_model_weights_path (façade legacy)
 │   │   ├── postprocessing.py       # Post-processing : validation, fusion intra-classe (optionnelle), suppression superpositions (optionnelle)
-│   │   ├── qgs_project.py          # Génération projet QGIS consolidé (.qgs)
 │   │   ├── runner.py               # run_cv_on_folder — orchestration pure (court-circuit si selected_classes=[])
 │   │   ├── runner_cache.py         # get_model_slug, prepare_model_workdir, has_cached_detection, list_candidate_pngs
 │   │   ├── runner_inference.py     # run_fallback_inference (fallback Python ONNX si runner externe absent)
@@ -756,7 +791,7 @@ src/
 │   │       ├── convert_tif_to_jpg.py
 │   │       ├── crop.py             # Découpe aux limites dalle + copy_products_without_crop (MNT < 1 km)
 │   │       ├── density.py          # Carte de densité
-│   │       ├── indices.py          # Indices RVT (M-HS, SVF, SLO, LD, SLRM, VAT)
+│   │       ├── indices.py          # Indices RVT (HS, M-HS, SVF, SLO, LD, SLRM, VAT)
 │   │       ├── mnt.py              # MNT (PDAL + gdalwarp)
 │   │       ├── qgis_processing.py  # Wrapper QGIS Processing
 │   │       ├── results.py          # Copie résultats, VRT, pyramides
@@ -766,8 +801,30 @@ src/
 │       ├── existing_rvt.py         # Traitement RVT existants (indices_folder_name param)
 │       └── local_laz.py            # Indexation nuages locaux
 │
-└── ui/
-    └── main_dialog.py              # Interface Qt (config + journal d'exécution + splitter)
+└── ui/                            # Interface Qt V2 (assistant 4 étapes)
+    ├── wizard_dialog.py            # Assistant : rail + 4 pages + navigation + validation
+    ├── run_view.py                 # Vue d'exécution : timeline 5 étapes + journal
+    ├── icons.py                    # Chargement / teinte des icônes SVG
+    ├── layer_loader.py             # Chargement live des couches dans QGIS + fabrique build_detection_vector_layer (symbologie conf_bin par couche)
+    ├── qgs_writer.py               # Écriture du .qgs consolidé via l'API QGIS (QgsProject.write, thread principal)
+    ├── log_bridge.py               # Pont logs → signaux Qt (QtLogEmitter / QtLogHandler)
+    ├── steps/                      # Pages du wizard
+    │   ├── step_1_source.py        #   Mode de données + chemins
+    │   ├── step_2_indices.py       #   Produits + réglages avancés RVT (onglets)
+    │   ├── step_3_detection.py     #   Sélection par entités
+    │   └── step_4_launch.py        #   Préflight + récap + workers + bascule run
+    ├── widgets/                    # Composants réutilisables
+    │   ├── card.py                 #   Carte « fieldset »
+    │   ├── collapsible.py          #   Section repliable
+    │   ├── entity_card.py          #   Carte d'entité (étape 3)
+    │   ├── no_wheel.py             #   Spinbox insensibles à la molette
+    │   ├── stage_button.py         #   Bouton de frise (étape 1)
+    │   ├── stepper_rail.py         #   Rail latéral du wizard
+    │   ├── toast.py                #   Notifications éphémères
+    │   └── toggle_switch.py        #   Interrupteur (étape 3)
+    └── theme/
+        ├── v2.qss                  # Thème QSS V2
+        └── icons/                  # Icônes SVG
 ```
 
 ## Environnement développeur
@@ -819,7 +876,7 @@ pip install -r dev/requirements/build.txt     # Compilation runner ONNX uniqueme
 ```bash
 pip install -r dev/requirements/test.txt
 
-python run_tests.py                       # Tous les tests (203 tests)
+python run_tests.py                       # Tous les tests
 python run_tests.py unit                  # Tests unitaires uniquement
 python run_tests.py integration           # Tests d'intégration uniquement
 python run_tests.py -k detection          # Filtrer par nom
