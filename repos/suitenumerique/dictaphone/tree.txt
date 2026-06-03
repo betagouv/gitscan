@@ -359,6 +359,7 @@
     │   │   │   ├── disablePageRegresh.ts
     │   │   │   └── useUpload.tsx
     │   │   ├── i18n
+    │   │   │   ├── i18next.d.ts
     │   │   │   └── init.ts
     │   │   ├── layout
     │   │   │   ├── BaseLayout.scss
@@ -370,9 +371,9 @@
     │   │   │   ├── HeaderRight.scss
     │   │   │   ├── HeaderRight.tsx
     │   │   │   ├── HelpMenu.tsx
-    │   │   │   ├── Layout.tsx
     │   │   │   ├── LogoApp.scss
-    │   │   │   └── LogoApp.tsx
+    │   │   │   ├── LogoApp.tsx
+    │   │   │   └── usePageTitle.ts
     │   │   ├── locales
     │   │   │   ├── en-US
     │   │   │   │   ├── home.json
@@ -529,10 +530,15 @@
         │   │               ├── mipmap-xxxhdpi
         │   │               │   ├── ic_launcher.png
         │   │               │   └── ic_launcher_round.png
-        │   │               └── values
-        │   │                   ├── colors.xml
-        │   │                   ├── strings.xml
-        │   │                   └── styles.xml
+        │   │               ├── raw
+        │   │               │   ├── end.wav
+        │   │               │   └── start.wav
+        │   │               ├── values
+        │   │               │   ├── colors.xml
+        │   │               │   ├── strings.xml
+        │   │               │   └── styles.xml
+        │   │               └── xml
+        │   │                   └── file_paths.xml
         │   ├── build.gradle
         │   ├── gradle
         │   │   └── wrapper
@@ -596,21 +602,23 @@
         │   │           └── AssistantTranscripts.xcscheme
         │   ├── AssistantTranscripts.xcworkspace
         │   │   └── contents.xcworkspacedata
+        │   ├── BundlePath.m
+        │   ├── BundlePath.swift
         │   ├── FileUploadModule.m
         │   ├── FileUploadModule.swift
         │   ├── Podfile
         │   ├── Podfile.lock
         │   ├── dictaphone-Briding-Header.h
+        │   ├── end.wav
         │   ├── link-assets-manifest.json
-        │   └── logo-app-assistant-transcript.icon
-        │       ├── Assets
-        │       │   └── Logomark Transcripts.png
-        │       └── icon.json
+        │   ├── logo-app-assistant-transcript.icon
+        │   │   ├── Assets
+        │   │   │   └── Logomark Transcripts.png
+        │   │   └── icon.json
+        │   └── start.wav
         ├── jest.config.js
         ├── metro.config.js
         ├── package.json
-        ├── patches
-        │   └── react-native-audio-api+0.11.7.patch
         ├── react-native.config.js
         ├── scripts
         │   └── release_bump.sh
@@ -637,7 +645,10 @@
         │   │   ├── logo-single-line.svg
         │   │   ├── logo-with-name.svg
         │   │   ├── logo.svg
-        │   │   └── proconnect-content.svg
+        │   │   ├── proconnect-content.svg
+        │   │   └── sounds
+        │   │       ├── end.wav
+        │   │       └── start.wav
         │   ├── components
         │   │   ├── AppInitialization.tsx
         │   │   ├── AppText.tsx
@@ -722,7 +733,8 @@
         │   └── utils
         │       ├── fileUpload.ts
         │       ├── omit.ts
+        │       ├── shareLocalRecording.ts
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-182 directories, 545 files
+184 directories, 555 files
