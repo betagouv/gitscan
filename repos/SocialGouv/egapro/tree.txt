@@ -273,6 +273,9 @@
 │   │   │           │   ├── help-illustration.svg
 │   │   │           │   └── search-illustration.svg
 │   │   │           ├── login-illustration.svg
+│   │   │           ├── mails
+│   │   │           │   ├── icon@2x.png
+│   │   │           │   └── republique-francaise@2x.png
 │   │   │           └── proconnect-logo.svg
 │   │   ├── scripts
 │   │   │   ├── audit-cleanup.mjs
@@ -305,10 +308,7 @@
 │   │   │   │   │   ├── parametres
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── stats
-│   │   │   │   │       ├── campagne
-│   │   │   │   │       │   └── page.tsx
-│   │   │   │   │       └── plateforme
-│   │   │   │   │           └── page.tsx
+│   │   │   │   │       └── page.tsx
 │   │   │   │   ├── aide
 │   │   │   │   │   ├── nous-contacter
 │   │   │   │   │   │   └── page.tsx
@@ -437,8 +437,7 @@
 │   │   │   │   ├── admin-declarations.e2e.ts
 │   │   │   │   ├── admin-impersonation-read-only.e2e.ts
 │   │   │   │   ├── admin-referents.e2e.ts
-│   │   │   │   ├── admin-stats-campagne.e2e.ts
-│   │   │   │   ├── admin-stats-plateforme.e2e.ts
+│   │   │   │   ├── admin-stats.e2e.ts
 │   │   │   │   ├── admin.e2e.ts
 │   │   │   │   ├── auth.setup.ts
 │   │   │   │   ├── campaign-deadlines-gating.e2e.ts
@@ -484,11 +483,14 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── AdminHomePage.tsx
 │   │   │   │   │   ├── AdminNavigation.tsx
+│   │   │   │   │   ├── AdminShell.module.scss
+│   │   │   │   │   ├── AdminShell.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── AdminHomePage.test.tsx
 │   │   │   │   │   │   ├── AdminLayout.test.tsx
 │   │   │   │   │   │   ├── AdminNavigation.test.tsx
 │   │   │   │   │   │   ├── AdminPage.test.tsx
+│   │   │   │   │   │   ├── AdminShell.test.tsx
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── declarations
 │   │   │   │   │   │   ├── AdminDeclarationDetailPage.tsx
@@ -559,12 +561,12 @@
 │   │   │   │   │       ├── CampaignProgressionChart.tsx
 │   │   │   │   │       ├── CampaignProgressionTable.tsx
 │   │   │   │   │       ├── CampaignRateTile.tsx
-│   │   │   │   │       ├── CampaignStatsPage.tsx
 │   │   │   │   │       ├── CompletionFunnelChart.module.scss
 │   │   │   │   │       ├── CompletionFunnelChart.tsx
 │   │   │   │   │       ├── CompletionFunnelTable.tsx
-│   │   │   │   │       ├── PlatformStatsPage.tsx
 │   │   │   │   │       ├── StagnationDaysFilter.tsx
+│   │   │   │   │       ├── StatsDashboard.module.scss
+│   │   │   │   │       ├── StatsDashboard.tsx
 │   │   │   │   │       ├── StepDropoffChart.module.scss
 │   │   │   │   │       ├── StepDropoffChart.tsx
 │   │   │   │   │       ├── StepDropoffTable.tsx
@@ -576,16 +578,19 @@
 │   │   │   │   │       │   ├── AdminKpiTile.test.tsx
 │   │   │   │   │       │   ├── CampaignProgressionTable.test.tsx
 │   │   │   │   │       │   ├── CampaignRateTile.test.tsx
-│   │   │   │   │       │   ├── CampaignStatsPage.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelChart.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelTable.test.tsx
 │   │   │   │   │       │   ├── StagnationDaysFilter.test.tsx
+│   │   │   │   │       │   ├── StatsDashboard.campaign.test.tsx
+│   │   │   │   │       │   ├── StatsDashboard.test.tsx
 │   │   │   │   │       │   ├── StepDropoffChart.test.tsx
 │   │   │   │   │       │   ├── StepDropoffTable.test.tsx
 │   │   │   │   │       │   ├── StepDurationsChart.test.tsx
 │   │   │   │   │       │   ├── StepDurationsTable.test.tsx
 │   │   │   │   │       │   ├── YearsFilter.test.tsx
 │   │   │   │   │       │   ├── formatters.test.ts
+│   │   │   │   │       │   ├── helpers
+│   │   │   │   │       │   │   └── statsDashboardMocks.ts
 │   │   │   │   │       │   └── useDebouncedValue.test.ts
 │   │   │   │   │       ├── formatters.ts
 │   │   │   │   │       ├── index.ts
@@ -1232,6 +1237,7 @@
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.getById.test.ts
+│   │   │   │   │   │   │   ├── adminDeclarations.getRecap.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.search.test.ts
 │   │   │   │   │   │   │   ├── adminReferents.test.ts
 │   │   │   │   │   │   │   ├── adminSettings.test.ts
@@ -1391,21 +1397,23 @@
 │       │   │   │   ├── render.ts
 │       │   │   │   └── urls.ts
 │       │   │   ├── template
-│       │   │   │   ├── BlocMarque.tsx
 │       │   │   │   ├── EmailBody.tsx
 │       │   │   │   ├── EmailButton.tsx
 │       │   │   │   ├── EmailCtaWithLink.tsx
 │       │   │   │   ├── EmailDivider.tsx
 │       │   │   │   ├── EmailFooter.tsx
+│       │   │   │   ├── EmailFrameRow.tsx
 │       │   │   │   ├── EmailGreeting.tsx
 │       │   │   │   ├── EmailHeader.tsx
+│       │   │   │   ├── EmailIllustration.tsx
 │       │   │   │   ├── EmailInfoList.tsx
 │       │   │   │   ├── EmailLayout.tsx
 │       │   │   │   ├── EmailLink.tsx
 │       │   │   │   ├── EmailParagraph.tsx
 │       │   │   │   ├── EmailShell.tsx
 │       │   │   │   ├── EmailSignature.tsx
-│       │   │   │   ├── InfoBar.tsx
+│       │   │   │   ├── MarianneLogoBlock.tsx
+│       │   │   │   ├── baseCss.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   └── tokens.ts
 │       │   │   └── types.ts
@@ -1455,4 +1463,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-255 directories, 1202 files
+255 directories, 1210 files
