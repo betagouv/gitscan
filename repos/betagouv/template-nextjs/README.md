@@ -29,8 +29,8 @@ Après avoir cloné le projet :
 ### Développement
 
 ```bash
-yarn # to install dependencies
-yarn dev # to run in dev mode
+npm install # to install dependencies
+npm run dev # to run in dev mode
 ```
 
 Point your browser to [http://127.0.0.1:3000/template](http://127.0.0.1:3000/template) and start playing.
@@ -39,10 +39,10 @@ Point your browser to [http://127.0.0.1:3000/template](http://127.0.0.1:3000/tem
 
 ```
 # run unit tests with vitest
-yarn test
+npm test
 
 # build, serve and launch playwright interactive end-to-end tests
-yarn e2e --ui
+npm run e2e -- --ui
 ```
 ## Projets connexes
 
@@ -58,3 +58,4 @@ yarn e2e --ui
 | [sneko/dsfr-connect](https://github.com/sneko/dsfr-connect)                                     | Themes DSFR pour bootstrap, vuetify, mui, infima, emails... |
 | [laruiss/create-vue-dsfr](https://github.com/laruiss/create-vue-dsfr)                           | Un starter Vue.js + Nuxt3 + DSFR                            |
 | [socialgouv/template](https://github.com/socialgouv/template)                                   | Version initiale de ce template                             |
+
