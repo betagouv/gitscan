@@ -1,37 +1,30 @@
-## Changelog : csplab (30 derniers jours, au 29 mai 2026)
+## Changelog : csplab (30 derniers jours, au 02 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'ingestion de données, notamment avec l'ajout de la gestion des webhooks Talensoft et l'archivage des offres. Des améliorations significatives ont également été apportées à l'interface utilisateur, avec l'ajout de tests E2E pour le parcours candidat et l'ajout de pages statiques importantes comme la politique de confidentialité et les mentions légales. Enfin, des optimisations et des corrections de bugs ont été réalisées dans l'ensemble du projet.
+Ce mois-ci, les évolutions de csplab se concentrent sur l'amélioration de l'ingestion des offres d'emploi, notamment via l'ajout de support pour les webhooks Talensoft et l'archivage des offres. L'authentification par email/mot de passe est désormais fonctionnelle. Des améliorations significatives ont également été apportées à l'interface utilisateur, avec l'ajout de tests E2E et de pages statiques importantes comme la politique de confidentialité et les mentions légales.
 
 ### Évolutions fonctionnelles
-- **Ingestion :** Ajout de la prise en charge des webhooks Talensoft pour la réception des offres d'emploi. [#592](https://github.com/betagouv/csplab/issues/592)
-- **Ingestion :** Possibilité d'archiver des offres d'emploi. [#455](https://github.com/betagouv/csplab/issues/455)
-- **Interface candidat :** Ajout de pages statiques pour les mentions légales, la politique de confidentialité et l'accessibilité. [#225](https://github.com/betagouv/csplab/issues/225), [#226](https://github.com/betagouv/csplab/issues/226), [#224](https://github.com/betagouv/csplab/issues/224)
-- **Recherche :** Intégration de la catégorie A+ dans le filtre de recherche. [#482](https://github.com/betagouv/csplab/issues/482)
-- **API :** Exposition d'un endpoint pour lister les métiers. [#569](https://github.com/betagouv/csplab/issues/569)
-- **API :** Ajout d'un endpoint pour lister les offres. [#440](https://github.com/betagouv/csplab/issues/440)
-- **Authentification :** Authentification des requêtes Vue Django. [#613](https://github.com/betagouv/csplab/issues/613)
+- **Authentification:** Mise en place de l'authentification par email et mot de passe pour les utilisateurs [#639](https://github.com/betagouv/csplab/issues/639).
+- **Ingestion des offres:** Ajout de la prise en charge des webhooks Talensoft pour l'importation des offres [#500](https://github.com/betagouv/csplab/issues/500).
+- **Archivage des offres:** Implémentation de la fonctionnalité d'archivage des offres [#455](https://github.com/betagouv/csplab/issues/455).
+- **Recherche d'opportunités:** Ajout des métiers dans le cas d'utilisation de mise en relation CV/opportunités [#637](https://github.com/betagouv/csplab/issues/637).
+- **Interface utilisateur:** Ajout des pages statiques "Mentions légales", "Politique de confidentialité" et "Accessibilité" [#224](https://github.com/betagouv/csplab/issues/224), [#225](https://github.com/betagouv/csplab/issues/225), [#226](https://github.com/betagouv/csplab/issues/226).
+- **Gestion des erreurs Frontend:** Interception et gestion des erreurs au niveau du frontend [#629](https://github.com/betagouv/csplab/issues/629).
+- **API:** Exposition d'un endpoint pour lister les offres [#440](https://github.com/betagouv/csplab/issues/440) et un endpoint pour importer les offres [#547](https://github.com/betagouv/csplab/issues/547).
+- **ATS Domain:** Ajout de l'organisme dans le contexte identité [#624](https://github.com/betagouv/csplab/issues/624).
 
 ### Évolutions techniques
-- **Tests :** Mise en place d'une suite de tests E2E avec Playwright pour le parcours candidat. [#490](https://github.com/betagouv/csplab/issues/490)
-- **CI/CD :** Ajout d'un workflow GitHub Actions pour l'auto-assignation des PR. [#606](https://github.com/betagouv/csplab/issues/606)
-- **Architecture :** Refonte de l'architecture frontend avec Storybook pour l'ATS. [#596](https://github.com/betagouv/csplab/issues/596)
-- **Ingestion :** Création d'une nouvelle application d'ingestion pour une meilleure organisation. [#493](https://github.com/betagouv/csplab/issues/493)
-- **Ingestion :** Utilisation d'enums pour les webhooks Talensoft. [#607](https://github.com/betagouv/csplab/issues/607)
-- **Ingestion :** Création d'un client Talensoft partagé. [#599](https://github.com/betagouv/csplab/issues/599)
-- **Ingestion :** Amélioration de la gestion des erreurs lors du chargement des documents. [#509](https://github.com/betagouv/csplab/issues/509)
-- **Ingestion :**  Standardisation des noms de méthodes (get_xxxx). [#568](https://github.com/betagouv/csplab/issues/568)
-- **OCR :** Mise à jour des dépendances. [#496](https://github.com/betagouv/csplab/issues/496)
-- **Notebook :** Mise à jour des dépendances. [#497](https://github.com/betagouv/csplab/issues/497)
-- **Typage :** Remplacement de `Config` Pydantic déprécié par `SettingsConfigDict`. [#489](https://github.com/betagouv/csplab/issues/489)
+- **Infrastructure:** Amélioration de la gestion des sources d'offres avec l'ajout d'une entité `Source` et d'une API associée [#574](https://github.com/betagouv/csplab/issues/574).
+- **Base de données:** Migration vers un modèle utilisateur personnalisé [#614](https://github.com/betagouv/csplab/issues/614), [#616](https://github.com/betagouv/csplab/issues/616), [#632](https://github.com/betagouv/csplab/issues/632).
+- **Tests:** Mise en place d'une suite de tests E2E avec Playwright pour l'interface utilisateur [#490](https://github.com/betagouv/csplab/issues/490).
+- **CI/CD:** Ajout d'une tâche pour l'analyse statique du code avec `djlint` [#584](https://github.com/betagouv/csplab/issues/584) et une workflow pour publier Storybook [#647](https://github.com/betagouv/csplab/issues/647).
+- **Refactoring:** Refactorisation du code pour préparer l'exposition de l'endpoint de liste des métiers [#603](https://github.com/betagouv/csplab/issues/603).
+- **Logging:** Mise en place d'un mécanisme de logging plus robuste [#578](https://github.com/betagouv/csplab/issues/578).
+- **Dépendances:** Mise à jour de certaines dépendances (notebook, ocr, tycho) [#497](https://github.com/betagouv/csplab/issues/497), [#496](https://github.com/betagouv/csplab/issues/496), [#495](https://github.com/betagouv/csplab/issues/495).
 
 ### Autres changements
-- **Documentation :** Traduction du template de PR en français. [#619](https://github.com/betagouv/csplab/issues/619)
-- **Documentation :** Documentation de l'architecture et des conventions du frontend. [#595](https://github.com/betagouv/csplab/issues/595)
-- **Documentation :** Mise à jour des instructions d'installation pour les Git hooks. [#472](https://github.com/betagouv/csplab/issues/472)
-- **Configuration :** Amélioration de la gestion des variables d'environnement pour Talensoft. [#600](https://github.com/betagouv/csplab/issues/600)
-- **Linting :** Ajout d'une tâche pour linter le schéma. [#608](https://github.com/betagouv/csplab/issues/608)
-- **Linting :** Ajout de djlint dans la CI. [#584](https://github.com/betagouv/csplab/issues/584)
-- **Tests :** Ajout de test d'accessibilité pour le parcours candidat. [#464](https://github.com/betagouv/csplab/issues/464)
-- **Refactoring :** Divers refactorings pour améliorer la qualité du code et la maintenabilité.
-- **Correction de bugs :** Correction de plusieurs bugs mineurs dans l'ensemble du projet.
+- **Documentation:** Traduction du template de Pull Request en français [#619](https://github.com/betagouv/csplab/issues/619).
+- **Configuration:** Mise à jour des instructions d'installation pour les Git hooks [#472](https://github.com/betagouv/csplab/issues/472).
+- **Notebook:** Exploration de Rome 4 pour la vectorisation des métiers [#507](https://github.com/betagouv/csplab/issues/507).
+- **Tooling:** Amélioration de la configuration ESLint et VSCode [#612](https://github.com/betagouv/csplab/issues/612).
+- **Nettoyage de code:** Suppression de tests View remplacés par des tests E2E [#462](https://github.com/betagouv/csplab/issues/462).

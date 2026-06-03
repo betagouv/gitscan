@@ -20,6 +20,7 @@
 │       ├── ingestion.yml
 │       ├── notebook.yml
 │       ├── ocr.yml
+│       ├── storybook_pages.yml
 │       └── web.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
@@ -45,7 +46,8 @@
 ├── docs
 │   ├── ADR
 │   │   ├── ADR-001-testing-strategy.md
-│   │   └── ADR-002-testing-strategy-and-repository-mocking.md
+│   │   ├── ADR-002-testing-strategy-and-repository-mocking.md
+│   │   └── ADR-003-ddd-aggregate-root-pattern.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -64,12 +66,17 @@
 │   ├── postgresql-example
 │   ├── redis-example
 │   └── web-example
+├── infra
+│   └── postgres
+│       ├── create-ingestion-db.sql
+│       └── create-ingestion-test-db.sql
 └── src
     ├── ingestion
     │   ├── .envrc.sample
     │   ├── .python-version
     │   ├── Procfile
     │   ├── README.md
+    │   ├── alembic.ini
     │   ├── api
     │   │   ├── __init__.py
     │   │   ├── _sentry.py
@@ -79,24 +86,37 @@
     │   │   └── talentsoft.py
     │   ├── application
     │   │   ├── __init__.py
-    │   │   ├── interfaces
-    │   │   │   ├── __init__.py
-    │   │   │   ├── sources_repository.py
-    │   │   │   └── talentsoft_client_interface.py
     │   │   └── use_cases
     │   │       ├── __init__.py
     │   │       ├── archive_offer.py
-    │   │       ├── load_offer_details.py
-    │   │       └── load_sources.py
+    │   │       ├── load_sources.py
+    │   │       └── save_raw_offer.py
     │   ├── bin
+    │   │   ├── run_migrations.sh
     │   │   └── start_web.sh
     │   ├── domain
     │   │   ├── __init__.py
-    │   │   ├── credentials.py
-    │   │   └── source.py
+    │   │   ├── entities
+    │   │   │   ├── __init__.py
+    │   │   │   └── raw_offer.py
+    │   │   ├── gateways
+    │   │   │   ├── __init__.py
+    │   │   │   ├── archive_gateway.py
+    │   │   │   ├── offers_gateway.py
+    │   │   │   └── sources_gateway.py
+    │   │   ├── repositories
+    │   │   │   ├── __init__.py
+    │   │   │   ├── raw_offer_repository.py
+    │   │   │   └── sources_repository.py
+    │   │   └── value_objects
+    │   │       ├── __init__.py
+    │   │       ├── credentials.py
+    │   │       ├── source.py
+    │   │       └── webhook_event.py
     │   ├── infrastructure
     │   │   ├── __init__.py
     │   │   ├── credentials_store.py
+    │   │   ├── database.py
     │   │   ├── di
     │   │   │   ├── __init__.py
     │   │   │   └── container.py
@@ -108,12 +128,23 @@
     │   │   │   ├── dtos
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── talentsoft_dtos.py
-    │   │   │   └── talentsoft_client.py
+    │   │   │   ├── talentsoft_client.py
+    │   │   │   ├── web_archive_gateway.py
+    │   │   │   └── web_sources_gateway.py
     │   │   ├── gateways
     │   │   │   ├── __init__.py
     │   │   │   └── async_http_client.py
+    │   │   ├── models
+    │   │   │   ├── __init__.py
+    │   │   │   └── raw_offer.py
+    │   │   ├── raw_offer_repository.py
     │   │   ├── sources_repository.py
     │   │   └── talentsoft_client_repository.py
+    │   ├── migrations
+    │   │   ├── env.py
+    │   │   ├── script.py.mako
+    │   │   └── versions
+    │   │       └── 20250529_0000_initial_raw_offers.py
     │   ├── presentation
     │   │   ├── __init__.py
     │   │   └── dtos
@@ -130,7 +161,9 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── test_archive_offer_use_case.py
     │   │   │   ├── test_health.py
-    │   │   │   └── test_load_sources_use_case.py
+    │   │   │   ├── test_load_sources_use_case.py
+    │   │   │   ├── test_raw_offer_repository.py
+    │   │   │   └── test_save_raw_offer_use_case.py
     │   │   ├── presentation
     │   │   │   ├── __init__.py
     │   │   │   ├── test_load_sources.py
@@ -147,9 +180,9 @@
     │   │       │   └── utils.py
     │   │       ├── test_async_http_client.py
     │   │       ├── test_credentials_store.py
-    │   │       ├── test_load_offer_details_use_case.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
+    │   │       ├── test_save_raw_offer_use_case.py
     │   │       ├── test_sentry.py
     │   │       ├── test_sources_repository.py
     │   │       └── test_talentsoft_client_repository.py
@@ -244,10 +277,12 @@
         │       ├── __init__.py
         │       ├── interfaces
         │       │   ├── __init__.py
+        │       │   ├── archive_offer_by_reference_input.py
         │       │   ├── list_metiers_input.py
         │       │   ├── list_offers_input.py
         │       │   ├── load_documents_input.py
-        │       │   └── load_operation_type.py
+        │       │   ├── load_operation_type.py
+        │       │   └── upsert_offers_input.py
         │       └── usecases
         │           ├── __init__.py
         │           ├── archive_offer_by_reference.py
@@ -258,6 +293,7 @@
         │           ├── list_sources.py
         │           ├── load_documents.py
         │           ├── load_offers.py
+        │           ├── upsert_offers.py
         │           └── vectorize_documents.py
         ├── cliff.toml
         ├── config
@@ -275,6 +311,16 @@
         │   └── wsgi.py
         ├── domain
         │   ├── __init__.py
+        │   ├── ddd
+        │   │   ├── __init__.py
+        │   │   ├── aggregate_root.py
+        │   │   ├── async_usecase_interface.py
+        │   │   ├── domain_event.py
+        │   │   ├── entity.py
+        │   │   ├── entity_interface.py
+        │   │   ├── mapper_interface.py
+        │   │   ├── page_interface.py
+        │   │   └── usecase_interface.py
         │   ├── entities
         │   │   ├── __init__.py
         │   │   ├── concours.py
@@ -285,6 +331,7 @@
         │   │   ├── metier.py
         │   │   ├── offer.py
         │   │   ├── source.py
+        │   │   ├── utilisateurs.py
         │   │   └── vectorized_document.py
         │   ├── exceptions
         │   │   ├── __init__.py
@@ -298,13 +345,19 @@
         │   ├── gateways
         │   │   ├── __init__.py
         │   │   └── document_gateway_interface.py
-        │   ├── interfaces
-        │   │   ├── __init__.py
-        │   │   ├── async_usecase_interface.py
-        │   │   ├── entity_interface.py
-        │   │   ├── mapper_interface.py
-        │   │   ├── page_interface.py
-        │   │   └── usecase_interface.py
+        │   ├── identite
+        │   │   ├── entities
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme.py
+        │   │   ├── errors
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme_errors.py
+        │   │   ├── events
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme_events.py
+        │   │   └── value_objects
+        │   │       ├── __init__.py
+        │   │       └── siret.py
         │   ├── repositories
         │   │   ├── __init__.py
         │   │   ├── async_cv_metadata_repository_interface.py
@@ -341,11 +394,14 @@
         │       ├── cv_processing_status.py
         │       ├── department.py
         │       ├── diploma.py
+        │       ├── experience_level.py
         │       ├── label.py
+        │       ├── language_level.py
         │       ├── limit_date.py
         │       ├── localisation.py
         │       ├── ministry.py
         │       ├── nor.py
+        │       ├── offer_conditions.py
         │       ├── opportunity_type.py
         │       ├── region.py
         │       ├── similarity_type.py
@@ -417,43 +473,55 @@
         │   │   │       ├── __init__.py
         │   │   │       ├── raw_document.py
         │   │   │       └── source.py
-        │   │   └── shared
-        │   │       ├── __init__.py
+        │   │   ├── shared
+        │   │   │   ├── __init__.py
+        │   │   │   ├── admin.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   ├── 0004_create_offers_table.py
+        │   │   │   │   ├── 0005_rename_titre_to_title.py
+        │   │   │   │   ├── 0006_rename_limit_date_offermodel_beginning_date_and_more.py
+        │   │   │   │   ├── 0007_remove_default_values.py
+        │   │   │   │   ├── 0008_make_publication_date_required.py
+        │   │   │   │   ├── 0009_remove_publication_date_default.py
+        │   │   │   │   ├── 0010_alter_offermodel_verse.py
+        │   │   │   │   ├── 0011_alter_offermodel_region.py
+        │   │   │   │   ├── 0012_alter_vectorizeddocumentmodel_options_and_more.py
+        │   │   │   │   ├── 0013_offermodel_archived_at_offermodel_processed_at.py
+        │   │   │   │   ├── 0014_concoursmodel_archived_at_concoursmodel_processed_at.py
+        │   │   │   │   ├── 0015_corpsmodel_archived_at_corpsmodel_processed_at.py
+        │   │   │   │   ├── 0016_remove_vectorizeddocumentmodel_unique_id_document_type_and_more.py
+        │   │   │   │   ├── 0017_populate_processed_at.py
+        │   │   │   │   ├── 0018_alter_vectorizeddocumentmodel_options_and_more.py
+        │   │   │   │   ├── 0019_remove_vectorizeddocumentmodel_embedding_hnsw_idx_and_more.py
+        │   │   │   │   ├── 0020_create_metiers_table.py
+        │   │   │   │   ├── 0021_update_metiers_table.py
+        │   │   │   │   ├── 0022_remove_metiermodel_competences.py
+        │   │   │   │   ├── 0023_alter_metiermodel_external_id.py
+        │   │   │   │   ├── 0024_alter_metiermodel_code_emploi_csp.py
+        │   │   │   │   ├── 0025_offermodel_code_emploi_csp_and_more.py
+        │   │   │   │   ├── 0026_offermodel_area.py
+        │   │   │   │   ├── 0027_rename_code_domaine_fonctionnel_metiermodel_domaine_fonctionnel_code.py
+        │   │   │   │   ├── 0028_offermodel_source_id.py
+        │   │   │   │   ├── 0029_populate_offer_source_id.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models
+        │   │   │       ├── __init__.py
+        │   │   │       ├── concours.py
+        │   │   │       ├── corps.py
+        │   │   │       ├── metier.py
+        │   │   │       └── offer.py
+        │   │   └── users
         │   │       ├── admin.py
         │   │       ├── apps.py
         │   │       ├── migrations
         │   │       │   ├── 0001_initial.py
-        │   │       │   ├── 0004_create_offers_table.py
-        │   │       │   ├── 0005_rename_titre_to_title.py
-        │   │       │   ├── 0006_rename_limit_date_offermodel_beginning_date_and_more.py
-        │   │       │   ├── 0007_remove_default_values.py
-        │   │       │   ├── 0008_make_publication_date_required.py
-        │   │       │   ├── 0009_remove_publication_date_default.py
-        │   │       │   ├── 0010_alter_offermodel_verse.py
-        │   │       │   ├── 0011_alter_offermodel_region.py
-        │   │       │   ├── 0012_alter_vectorizeddocumentmodel_options_and_more.py
-        │   │       │   ├── 0013_offermodel_archived_at_offermodel_processed_at.py
-        │   │       │   ├── 0014_concoursmodel_archived_at_concoursmodel_processed_at.py
-        │   │       │   ├── 0015_corpsmodel_archived_at_corpsmodel_processed_at.py
-        │   │       │   ├── 0016_remove_vectorizeddocumentmodel_unique_id_document_type_and_more.py
-        │   │       │   ├── 0017_populate_processed_at.py
-        │   │       │   ├── 0018_alter_vectorizeddocumentmodel_options_and_more.py
-        │   │       │   ├── 0019_remove_vectorizeddocumentmodel_embedding_hnsw_idx_and_more.py
-        │   │       │   ├── 0020_create_metiers_table.py
-        │   │       │   ├── 0021_update_metiers_table.py
-        │   │       │   ├── 0022_remove_metiermodel_competences.py
-        │   │       │   ├── 0023_alter_metiermodel_external_id.py
-        │   │       │   ├── 0024_alter_metiermodel_code_emploi_csp.py
-        │   │       │   ├── 0025_offermodel_code_emploi_csp_and_more.py
-        │   │       │   ├── 0026_offermodel_area.py
-        │   │       │   ├── 0027_rename_code_domaine_fonctionnel_metiermodel_domaine_fonctionnel_code.py
+        │   │       │   ├── 0002_alter_usermodel_options_alter_usermodel_email.py
+        │   │       │   ├── 0003_alter_usermodel_username.py
+        │   │       │   ├── 0004_alter_usermodel_table.py
         │   │       │   └── __init__.py
-        │   │       └── models
-        │   │           ├── __init__.py
-        │   │           ├── concours.py
-        │   │           ├── corps.py
-        │   │           ├── metier.py
-        │   │           └── offer.py
+        │   │       └── models.py
         │   ├── exceptions
         │   │   ├── __init__.py
         │   │   ├── exceptions.py
@@ -608,8 +676,6 @@
         │   │   ├── eslint.config.js
         │   │   ├── package.json
         │   │   ├── src
-        │   │   │   ├── api
-        │   │   │   │   └── session.ts
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   └── main.ts
@@ -617,6 +683,9 @@
         │   │   │   ├── features
         │   │   │   │   └── ats
         │   │   │   │       └── HomeView.vue
+        │   │   │   ├── shared
+        │   │   │   │   └── components
+        │   │   │   │       └── ErrorBoundary.vue
         │   │   │   ├── stories
         │   │   │   │   ├── 01-fondations
         │   │   │   │   │   └── Tokens.stories.ts
@@ -631,9 +700,9 @@
         │   │   │   │   ├── dsfr-tokens.css
         │   │   │   │   ├── index.css
         │   │   │   │   └── theme.css
-        │   │   │   ├── types
-        │   │   │   │   └── config.ts
         │   │   │   └── utils
+        │   │   │       ├── errors.test.ts
+        │   │   │       ├── errors.ts
         │   │   │       ├── http.test.ts
         │   │   │       └── http.ts
         │   │   ├── tsconfig.json
@@ -653,6 +722,7 @@
         │   │   │       ├── load_metiers.py
         │   │   │       ├── load_offers.py
         │   │   │       └── vectorize_documents.py
+        │   │   ├── mappers.py
         │   │   ├── openapi.py
         │   │   ├── pagination.py
         │   │   ├── schemas.py
@@ -699,58 +769,74 @@
         │   │       ├── redoc.standalone.js
         │   │       ├── redoc.standalone.js.map
         │   │       └── toast.js
-        │   └── templates
-        │       ├── 403.html
-        │       ├── 404.html
-        │       ├── 500.html
-        │       ├── api
-        │       │   └── redoc.html
-        │       ├── ats
-        │       │   └── base.html
-        │       ├── candidate
-        │       │   ├── components
-        │       │   │   ├── _filter_fieldset.html
-        │       │   │   ├── _filters_content.html
-        │       │   │   ├── _no_results_content.html
-        │       │   │   ├── _opportunity_body.html
-        │       │   │   ├── _opportunity_cta.html
-        │       │   │   ├── _opportunity_detail_content.html
-        │       │   │   ├── _opportunity_drawer.html
-        │       │   │   ├── _opportunity_drawer_content.html
-        │       │   │   ├── _opportunity_feedback.html
-        │       │   │   ├── _processing_content.html
-        │       │   │   ├── _result_card_concours.html
-        │       │   │   ├── _result_card_offer.html
-        │       │   │   ├── _results_content.html
-        │       │   │   ├── _results_list.html
-        │       │   │   ├── _tally_feedback.html
-        │       │   │   └── _tally_results_modal.html
-        │       │   ├── cv_no_results.html
-        │       │   ├── cv_processing.html
-        │       │   ├── cv_results.html
-        │       │   ├── cv_upload.html
-        │       │   └── opportunity_detail.html
-        │       ├── components
-        │       │   ├── cv_upload_actions.html
-        │       │   └── file_upload.html
-        │       ├── layouts
-        │       │   ├── base.html
-        │       │   └── error.html
-        │       ├── pages
-        │       │   ├── accessibility.html
-        │       │   ├── home.html
-        │       │   ├── legal_notices.html
-        │       │   ├── privacy.html
-        │       │   └── terms.html
-        │       └── partials
-        │           ├── footer.html
-        │           └── header.html
+        │   ├── templates
+        │   │   ├── 403.html
+        │   │   ├── 404.html
+        │   │   ├── 500.html
+        │   │   ├── api
+        │   │   │   └── redoc.html
+        │   │   ├── ats
+        │   │   │   └── base.html
+        │   │   ├── candidate
+        │   │   │   ├── components
+        │   │   │   │   ├── _filter_fieldset.html
+        │   │   │   │   ├── _filters_content.html
+        │   │   │   │   ├── _no_results_content.html
+        │   │   │   │   ├── _opportunity_body.html
+        │   │   │   │   ├── _opportunity_cta.html
+        │   │   │   │   ├── _opportunity_detail_content.html
+        │   │   │   │   ├── _opportunity_drawer.html
+        │   │   │   │   ├── _opportunity_drawer_content.html
+        │   │   │   │   ├── _opportunity_feedback.html
+        │   │   │   │   ├── _processing_content.html
+        │   │   │   │   ├── _result_card_concours.html
+        │   │   │   │   ├── _result_card_offer.html
+        │   │   │   │   ├── _results_content.html
+        │   │   │   │   ├── _results_list.html
+        │   │   │   │   ├── _tally_feedback.html
+        │   │   │   │   └── _tally_results_modal.html
+        │   │   │   ├── cv_no_results.html
+        │   │   │   ├── cv_processing.html
+        │   │   │   ├── cv_results.html
+        │   │   │   ├── cv_upload.html
+        │   │   │   └── opportunity_detail.html
+        │   │   ├── components
+        │   │   │   ├── cv_upload_actions.html
+        │   │   │   └── file_upload.html
+        │   │   ├── layouts
+        │   │   │   ├── base.html
+        │   │   │   └── error.html
+        │   │   ├── pages
+        │   │   │   ├── accessibility.html
+        │   │   │   ├── home.html
+        │   │   │   ├── legal_notices.html
+        │   │   │   ├── privacy.html
+        │   │   │   └── terms.html
+        │   │   ├── partials
+        │   │   │   ├── footer.html
+        │   │   │   └── header.html
+        │   │   └── registration
+        │   │       ├── login.html
+        │   │       └── profile.html
+        │   └── users
+        │       ├── __init__.py
+        │       ├── urls.py
+        │       └── views.py
         ├── pyproject.toml
         ├── start.sh
         ├── tests
         │   ├── __init__.py
         │   ├── ats
         │   │   ├── __init__.py
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   ├── factories
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── organisme_factory.py
+        │   │   │   └── unit
+        │   │   │       ├── __init__.py
+        │   │   │       ├── test_organisme_identite.py
+        │   │   │       └── test_siret.py
         │   │   └── presentation
         │   │       ├── __init__.py
         │   │       └── test_views.py
@@ -796,6 +882,9 @@
         │   │       ├── test_match_cv_to_opportunities.py
         │   │       └── test_process_uploaded_cv.py
         │   ├── conftest.py
+        │   ├── domain
+        │   │   ├── example_aggregate.py
+        │   │   └── test_aggregate_root.py
         │   ├── factories
         │   │   ├── __init__.py
         │   │   ├── concours_factory.py
@@ -803,12 +892,15 @@
         │   │   ├── corps_factory.py
         │   │   ├── cv_metadata_factory.py
         │   │   ├── document_factory.py
+        │   │   ├── example_aggregate_factory.py
         │   │   ├── ingres_corps_factories.py
         │   │   ├── ingres_metiers_factories.py
         │   │   ├── metier_factory.py
         │   │   ├── offer_factory.py
+        │   │   ├── offer_payload_factory.py
         │   │   ├── source_factory.py
         │   │   ├── talentsoft_factories.py
+        │   │   ├── utilisateur_factory.py
         │   │   └── vectorized_document_factory.py
         │   ├── infrastructure
         │   │   ├── __init__.py
@@ -829,6 +921,7 @@
         │   │   │   ├── test_list_offers.py
         │   │   │   ├── test_list_sources.py
         │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_upsert_offers.py
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── presentation
         │   │   │   ├── management
@@ -848,7 +941,8 @@
         │   │   │       ├── test_ingestion_views.py
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
-        │   │   │       └── test_list_sources.py
+        │   │   │       ├── test_list_sources.py
+        │   │   │       └── test_upsert_offers.py
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       ├── external_gateways
@@ -860,6 +954,7 @@
         │   │       ├── test_clean_documents.py
         │   │       ├── test_list_sources.py
         │   │       ├── test_load_documents.py
+        │   │       ├── test_upsert_offers.py
         │   │       └── test_vectorize_documents.py
         │   ├── shared
         │   │   ├── __init__.py
@@ -883,6 +978,14 @@
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       └── test_interface_aware_mock.py
+        │   ├── users
+        │   │   ├── __init__.py
+        │   │   ├── presentation
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_views.py
+        │   │   └── unit
+        │   │       ├── __init__.py
+        │   │       └── test_entities.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── form_test_utils.py
@@ -894,4 +997,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-184 directories, 712 files
+208 directories, 791 files
