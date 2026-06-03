@@ -1,15 +1,16 @@
-## Changelog : upptime (30 derniers jours, au 01 juin 2026)
+## Changelog : upptime (30 derniers jours, au 2026-06-03)
 
 ### Résumé
-Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour régulières du statut des différents services surveillés par le bot Upptime.  De plus, la version du projet a été mise à jour plusieurs fois.
+Ce changelog couvre les 30 derniers jours d'évolution du projet Upptime. La majorité des changements concernent les mises à jour régulières du statut des différents services surveillés par le bot Upptime.  Plusieurs mises à jour de la librairie `@upptime` ont également été déployées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Le projet se concentre actuellement sur la surveillance et le reporting de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le projet se concentre principalement sur la surveillance continue et la mise à jour du statut des services.
 
 ### Évolutions techniques
-*   Mise à jour de la version d'Upptime à v1.42.0, v1.41.10, v1.41.9, v1.41.8, v1.41.7, v1.41.6, v1.41.5, v1.41.4, v1.41.3.
-*   Mise à jour régulière des graphs de monitoring.
+*   Mise à jour de la librairie `@upptime` vers les versions 1.41.3, 1.41.4, 1.41.5, 1.41.6, 1.41.7, 1.41.8, 1.41.9 et 1.42.0.
+*   Mise à jour des graphs.
 
 ### Autres changements
-*   Mise à jour de la documentation README avec un résumé.
-*   Mise à jour régulière du résumé de l'état des services dans le README.
+*   Mise à jour régulière du résumé et du statut dans le fichier README.
+*   Mise à jour du résumé du statut.
+*   Les rapports d'état de tous les services surveillés (API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance) ont été mis à jour quotidiennement pour refléter leur disponibilité.
