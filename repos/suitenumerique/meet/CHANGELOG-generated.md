@@ -1,46 +1,46 @@
-## Changelog : meet (30 derniers jours, au 31 mai 2026)
+## Changelog : meet (30 derniers jours, au 2026-06-02)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration des performances frontend, notamment en optimisant le chargement des ressources et en réduisant la taille des bundles JavaScript. Des améliorations significatives ont également été apportées à la gestion des configurations de salle et à la synchronisation des états, permettant une plus grande flexibilité et un meilleur contrôle pour les administrateurs. Enfin, des fonctionnalités de picture-in-picture et de réactions ont été ajoutées, enrichissant l'expérience utilisateur.
+Les dernières mises à jour de Meet se concentrent sur l'amélioration de la gestion des utilisateurs, la correction de bugs et l'optimisation des performances, notamment au niveau du chargement des ressources frontend. De nouvelles fonctionnalités sont également introduites, comme la gestion du mutisme des participants basée sur la configuration de la salle et l'amélioration de la reconnaissance vocale avec l'assignation des intervenants.
 
 ### Évolutions fonctionnelles
-- Ajout du support pour tous les types de fichiers audio et vidéo. [#1358](https://github.com/suitenumerique/meet/issues/1358)
-- Implémentation d'une fonctionnalité Picture-in-Picture (PiP) pour les réunions, incluant une barre de contrôle basique et des notifications d'état de connexion.
-- Ajout de réactions pendant les réunions, avec une interface accessible et responsive.
-- Possibilité pour les administrateurs de configurer le droit de muter les autres participants en fonction de la configuration de la salle.
-- Amélioration de l'attribution des locuteurs grâce à l'analyse VAD (Voice Activity Detection).
-- Support de la configuration et du niveau d'accès des salles via l'API externe. [#1260](https://github.com/suitenumerique/meet/issues/1260)
-- Ajout d'un lien direct vers l'enregistrement dans l'email de notification de fin d'enregistrement.
-- Amélioration du logging de l'attribution des locuteurs.
+- Ajout de la possibilité de configurer le mutisme des participants en fonction de la configuration de la salle.
+- Amélioration de la reconnaissance vocale avec l'assignation des intervenants (speaker diarization).
+- Prise en charge de tous les formats de fichiers audio/vidéo.
+- Introduction d'une fonctionnalité Picture-in-Picture (PiP) pour les réunions, avec contrôle du volume, de la mise en sourdine et des options.
+- Amélioration de l'accessibilité avec l'ajout d'options de personnalisation de la police.
+- Ajout d'une synchronisation pour les mises à jour de la configuration de la salle.
+- Possibilité de configurer l'encodage des enregistrements LiveKit Egress.
+- Support de l'assignation des intervenants dans les résumés de réunion.
 
 ### Évolutions techniques
-- Optimisation du chargement des ressources frontend via le code splitting et le lazy loading des routes.
-- Utilisation de Rollup pour la visualisation des bundles et l'optimisation de la taille du code.
-- Remplacement des imports de styles LiveKit par un chargement dynamique.
-- Refactorisation du code frontend pour améliorer la modularité et la maintenabilité.
-- Utilisation de `uv` pour la gestion des dépendances dans les agents.
-- Validation de la configuration des salles avec un schéma Pydantic.
-- Amélioration de la robustesse du processus de démarrage de l'enregistrement.
-- Mise à jour des dépendances, incluant des correctifs de sécurité pour `webpack-dev-server`, `postcss`, `pytest` et `urllib3`.
-- Refactorisation de la gestion des variables d'environnement backend pour une meilleure organisation et cohérence.
-- Utilisation de fichiers YAML pour la configuration des composants communs.
-- Amélioration de la synchronisation des états de la configuration des salles.
+- Refactorisation du code frontend pour améliorer le code splitting et réduire la taille des bundles JavaScript.
+- Optimisation du chargement des dépendances frontend (lazy loading, isolation des composants).
+- Utilisation de `uv` pour la gestion des dépendances dans les agents et le backend.
+- Amélioration de la gestion des erreurs et de la robustesse du processus d'enregistrement.
+- Refactorisation de la gestion des variables d'environnement pour une meilleure organisation et cohérence.
+- Mise à jour des dépendances (webpack-dev-server, postcss, pytest, django, urllib3) pour corriger des failles de sécurité et bénéficier des dernières améliorations.
+- Ajout de tests pour la couverture du code backend.
+- Correction de problèmes de concurrence lors de la création d'utilisateurs.
+- Ajout d'une commande de gestion pour fusionner les utilisateurs en double.
+- Amélioration de la validation de la configuration des salles avec Pydantic.
+- Ajout de la gestion des logs.
 
 ### Autres changements
-- Mise à jour de la documentation de l'API externe pour refléter le support de la configuration des salles.
-- Correction de bugs mineurs liés à l'interface utilisateur, notamment le positionnement des tooltips et le recentrage de la barre de réactions.
-- Suppression des buildpacks obsolètes et utilisation de `uv` pour la gestion des dépendances.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et configurations.
+- Amélioration des messages de log pour faciliter le débogage.
+- Correction de la documentation des URLs Swagger et Redoc.
+- Ajout d'une commande Kubernetes pour la fusion des utilisateurs en double.
+- Mise à jour du chart Helm pour la version 0.0.22.
+- Amélioration de la gestion des variables d'environnement pour le développement.
+- Correction de la génération des IDs de salle pour plus de sécurité.
+- Ajout d'une gestion des erreurs pour l'échange de tokens d'application.
+- Suppression de buildpack requirements.txt pour utiliser uv.lock.
+- Amélioration de la gestion des erreurs lors de l'enregistrement.
+- Correction de l'affichage des titres de page dans la fenêtre PiP.
+- Correction de bugs d'affichage et de positionnement dans l'interface utilisateur.
+- Correction de bugs liés à la barre d'outils de réaction.
+- Correction de bugs liés à la barre de contrôle mobile.
 - Amélioration de la terminologie des rôles dans les localisations.
-- Correction de problèmes liés aux URLs de la documentation Swagger et Redoc.
-- Mise à jour de la version de la release à 1.17.0.
-- Correction de la génération des IDs de salle pour une meilleure sécurité.
-- Amélioration de la gestion des fontes pour l'accessibilité.
-- Correction de bugs liés au support du format WebM.
-- Correction de problèmes de boucle de reconnexion.
-- Amélioration de la gestion des erreurs et de la robustesse du système.
-- Correction de problèmes liés à l'affichage des enregistrements dans les emails.
-- Ajout de tests pour le support du format WebM.
-- Amélioration de la gestion des événements de transcription.
-- Correction de problèmes liés à l'authentification des add-ons.
-- Suppression de code inutile et amélioration de la lisibilité du code.
-- Mise à jour de la documentation du changelog.
+- Ajout de la gestion des fichiers SVG optimisés.
+- Ajout d'une synchronisation pour les mises à jour du niveau d'accès au lobby.

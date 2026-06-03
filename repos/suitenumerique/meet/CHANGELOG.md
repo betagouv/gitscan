@@ -8,6 +8,16 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 🔧(backend) backport logging configuration from docs
+- 🧑‍💻(backend) add management command to merge duplicate users
+- 👷(helm) add Kubernetes job for duplicate user merge command
+
+### Fixed
+
+- 🐛(backend) prevent duplicate pending users on concurrent requests
+
 ## [1.17.0] - 2026-05-31
 
 ### Added

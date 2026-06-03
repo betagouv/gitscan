@@ -248,6 +248,11 @@
     │   │   │   └── viewsets.py
     │   │   ├── factories.py
     │   │   ├── fields.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       └── merge_duplicate_users.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_create_pg_trgm_extension.py
@@ -267,6 +272,7 @@
     │   │   │   ├── 0016_recording_options.py
     │   │   │   ├── 0017_file.py
     │   │   │   ├── 0018_rename_active_application_is_active.py
+    │   │   │   ├── 0019_user_unique_email_when_sub_is_null.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -296,6 +302,7 @@
     │   │   │   ├── lobby.py
     │   │   │   ├── marketing.py
     │   │   │   ├── participants_management.py
+    │   │   │   ├── provisional_user_service.py
     │   │   │   ├── room_creation.py
     │   │   │   ├── room_management.py
     │   │   │   ├── subtitle.py
@@ -331,6 +338,9 @@
     │   │   │   │   ├── test_api_files_media_auth.py
     │   │   │   │   ├── test_api_files_update.py
     │   │   │   │   └── test_api_files_upload_ended.py
+    │   │   │   ├── management
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_management_merge_duplicate_users.py
     │   │   │   ├── recording
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── event
@@ -1101,6 +1111,7 @@
     │       │   ├── agent_subtitles_deployment.yaml
     │       │   ├── backend_deployment.yaml
     │       │   ├── backend_job_createsuperuser.yaml
+    │       │   ├── backend_job_merge_duplicate_users.yaml
     │       │   ├── backend_job_migrate.yaml
     │       │   ├── backend_svc.yaml
     │       │   ├── celery_backend_deployment.yaml
@@ -1264,4 +1275,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-237 directories, 1029 files
+240 directories, 1037 files
