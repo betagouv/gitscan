@@ -1,51 +1,61 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Application de catalogue logiciel. Permet de gérer et de consulter des logiciels, notamment ceux recommandés pour l'administration française.",
+  "description": "Application de catalogue logiciel. Permet de gérer et de référencer des logiciels, notamment pour l'administration française. Offre des fonctionnalités d'importation, de gestion des sources et de publication de données.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Recherche & Filtres",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "PostgreSQL"
+    "PostgreSQL",
+    "Docker",
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
-    "React / Next.js",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript"
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "saml"
     ],
     "providers": []
   },
   "tests": [
     "Playwright",
-    "Vitest"
+    "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-29T15:22:03+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-01T21:56:27+00:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 40,
     "forks": 11,
     "contributors": null,
-    "openIssues": 86
+    "openIssues": 85
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
+    "Déploiement & Hosting",
+    "Python",
     "Bases de données SQL"
   ]
 }
