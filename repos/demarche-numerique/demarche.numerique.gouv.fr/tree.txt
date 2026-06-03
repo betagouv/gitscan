@@ -1343,6 +1343,7 @@
 │   │   │   ├── bilans_bdf_concern.rb
 │   │   │   ├── csv_parsing_concern.rb
 │   │   │   ├── devise_populated_resource.rb
+│   │   │   ├── dossier_edit_concern.rb
 │   │   │   ├── france_connect_concern.rb
 │   │   │   ├── gc_tracking_concern.rb
 │   │   │   ├── groupe_instructeurs_signature_concern.rb
@@ -1360,6 +1361,7 @@
 │   │   ├── contact_controller.rb
 │   │   ├── data_sources
 │   │   │   ├── adresse_controller.rb
+│   │   │   ├── base_controller.rb
 │   │   │   ├── chorus_controller.rb
 │   │   │   ├── commune_controller.rb
 │   │   │   ├── education_controller.rb
@@ -1844,6 +1846,8 @@
 │   │   │   ├── form-validation.js
 │   │   │   └── instruction-button.ts
 │   │   ├── shared
+│   │   │   ├── accept-format.test.ts
+│   │   │   ├── accept-format.ts
 │   │   │   ├── activestorage
 │   │   │   │   ├── auto-upload.ts
 │   │   │   │   ├── file-upload-error.ts
@@ -2210,6 +2214,7 @@
 │   │   │   ├── dossier_searchable_concern.rb
 │   │   │   ├── dossier_sections_concern.rb
 │   │   │   ├── dossier_state_concern.rb
+│   │   │   ├── dossier_validate_concern.rb
 │   │   │   ├── email_sanitizable_concern.rb
 │   │   │   ├── initiation_procedure_concern.rb
 │   │   │   ├── mail_template_concern.rb
@@ -2774,7 +2779,7 @@
 │       │   │   ├── edit.html.haml
 │       │   │   ├── index.html.haml
 │       │   │   ├── new.html.haml
-│       │   │   └── order_positions.html.haml
+│       │   │   └── order_positions.html.erb
 │       │   ├── mail_templates
 │       │   │   ├── _apercu.html.haml
 │       │   │   ├── _form.html.haml
@@ -2797,7 +2802,7 @@
 │       │   │   ├── _suggest_expires_when_termine.html.haml
 │       │   │   ├── _unpublished_changes_sticky_header.html.erb
 │       │   │   ├── accuse_lecture.html.haml
-│       │   │   ├── administrateurs.html.haml
+│       │   │   ├── administrateurs.html.erb
 │       │   │   ├── all.html.haml
 │       │   │   ├── annotations.html.haml
 │       │   │   ├── apercu.html.haml
@@ -2877,17 +2882,15 @@
 │       │   └── show.html.erb
 │       ├── champs
 │       │   ├── carte
-│       │   │   └── index.turbo_stream.haml
-│       │   ├── options
-│       │   │   └── remove.turbo_stream.haml
+│       │   │   └── index.turbo_stream.erb
 │       │   ├── piece_justificative
-│       │   │   └── show.turbo_stream.haml
+│       │   │   └── show.turbo_stream.erb
 │       │   ├── repetition
 │       │   │   ├── _actions.html.erb
 │       │   │   ├── add.turbo_stream.erb
 │       │   │   └── remove.turbo_stream.erb
 │       │   └── rna
-│       │       └── show.turbo_stream.haml
+│       │       └── show.turbo_stream.erb
 │       ├── commencer
 │       │   └── show.html.haml
 │       ├── contact
@@ -3094,7 +3097,7 @@
 │       │   │   ├── rendez_vous
 │       │   │   │   └── _sidemenu.html.erb
 │       │   │   ├── rendez_vous.html.erb
-│       │   │   ├── show.html.haml
+│       │   │   ├── show.html.erb
 │       │   │   ├── show_submitted_revision.html.erb
 │       │   │   └── update_annotations.turbo_stream.haml
 │       │   ├── export_templates
@@ -3133,7 +3136,7 @@
 │       │   │   ├── history.html.haml
 │       │   │   ├── index.html.erb
 │       │   │   ├── notification_preferences.html.haml
-│       │   │   ├── order_positions.html.haml
+│       │   │   ├── order_positions.html.erb
 │       │   │   ├── polling_last_export.turbo_stream.haml
 │       │   │   ├── show.html.haml
 │       │   │   ├── stats.html.haml
@@ -3338,8 +3341,8 @@
 │       │   │       └── _show.html.haml
 │       │   ├── dossiers
 │       │   │   ├── _demande.html.erb
-│       │   │   ├── _edit.html.haml
-│       │   │   ├── _edit_annotations.html.haml
+│       │   │   ├── _edit.html.erb
+│       │   │   ├── _edit_annotations.html.erb
 │       │   │   ├── _france_connect_informations_notice.html.haml
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _identite_entreprise.html.haml
@@ -3350,8 +3353,11 @@
 │       │   │   ├── _messagerie.html.haml
 │       │   │   ├── _normalized_address.html.haml
 │       │   │   ├── _submit_is_over.html.haml
-│       │   │   ├── _update_champs.turbo_stream.haml
+│       │   │   ├── _update_champ.turbo_stream.erb
+│       │   │   ├── _update_champs.turbo_stream.erb
 │       │   │   ├── _update_contact_information.html.haml
+│       │   │   ├── _update_footer.turbo_stream.erb
+│       │   │   ├── _update_ineligibilite_rules.turbo_stream.erb
 │       │   │   ├── _user_infos.html.haml
 │       │   │   ├── create_commentaire.turbo_stream.erb
 │       │   │   └── messages
@@ -3459,7 +3465,7 @@
 │           │   ├── show_in_trash.html.haml
 │           │   ├── siret.html.haml
 │           │   ├── transferer.html.haml
-│           │   └── update.turbo_stream.haml
+│           │   └── update.turbo_stream.erb
 │           ├── passwords
 │           │   └── reset_link_sent.html.haml
 │           ├── profil
@@ -4914,6 +4920,8 @@
 │   │   ├── data_sources
 │   │   │   ├── adresse_controller_spec.rb
 │   │   │   ├── chorus_controller_spec.rb
+│   │   │   ├── commune_controller_spec.rb
+│   │   │   ├── education_controller_spec.rb
 │   │   │   └── referentiel_controller_spec.rb
 │   │   ├── devise
 │   │   │   └── store_location_extension_spec.rb
@@ -6024,4 +6032,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-966 directories, 5376 files
+965 directories, 5385 files
