@@ -239,6 +239,7 @@
 │   │   │   ├── 0008_partner_id.py
 │   │   │   ├── 0009_partner_id.py
 │   │   │   ├── 0010_add_content_private_body.py
+│   │   │   ├── 0011_remove_content_private_body_from_ScheduledNotification.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -279,8 +280,10 @@
 │   │   │   ├── 0003_populate_replication_id.py
 │   │   │   ├── 0004_set_replication_id_primary_key.py
 │   │   │   ├── 0005_anonymizednotification_anonymizedregistration.py
+│   │   │   ├── 0006_alter_anonymizeduser_replication_id.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── router.py
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       └── test_replication.py
@@ -501,8 +504,15 @@
 │   │   │       ├── requests
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
-│   │   │       └── technical-error
-│   │   │           └── +page.svelte
+│   │   │       ├── technical-error
+│   │   │       │   └── +page.svelte
+│   │   │       └── welcome
+│   │   │           ├── notifications
+│   │   │           │   ├── +page.svelte
+│   │   │           │   └── page.svelte.test.ts
+│   │   │           └── zones
+│   │   │               ├── +page.svelte
+│   │   │               └── page.svelte.test.ts
 │   │   ├── static
 │   │   │   ├── apple-touch-icon.png
 │   │   │   ├── favicon.ico
@@ -563,4 +573,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-110 directories, 455 files
+113 directories, 462 files
