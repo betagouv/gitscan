@@ -1,44 +1,51 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de gérer les enquêtes, les documents et les informations relatives à ces événements.",
+  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de centraliser et de suivre les informations relatives à ces événements.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
-    "API & Intégrations"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Pytest",
-    "Playwright",
-    "Ruff",
+    "Python",
+    "Celery",
+    "Redis",
     "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels",
     "Django",
-    "Tests"
+    "HTML / CSS / Templates visuels",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2",
+      "sso"
     ]
   },
   "tests": [
     "Pytest",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-26T18:33:48+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-02T10:31:37+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,6 +61,7 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Environnement & Énergie",
+    "Santé & Épidémiologie"
   ]
 }
