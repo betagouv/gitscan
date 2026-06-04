@@ -142,7 +142,8 @@
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── keycloak.ts
 │   │   │   │   ├── methods.ts
-│   │   │   │   └── uniqueId.ts
+│   │   │   │   ├── uniqueId.ts
+│   │   │   │   └── upload.ts
 │   │   │   └── views
 │   │   │       ├── AboutUs.vue
 │   │   │       ├── AppHome.vue
@@ -197,13 +198,17 @@
 │       │   │   ├── __init__.py
 │       │   │   ├── models
 │       │   │   │   ├── __init__.py
+│       │   │   │   ├── content_types.py
 │       │   │   │   ├── csv_extraction.py
 │       │   │   │   ├── docx_extraction.py
+│       │   │   │   ├── email_extraction.py
 │       │   │   │   ├── excel_extraction.py
+│       │   │   │   ├── file_extraction.py
 │       │   │   │   ├── inference.py
 │       │   │   │   └── libre_extraction.py
 │       │   │   └── worker
 │       │   │       ├── __init__.py
+│       │   │       ├── email_worker.py
 │       │   │       └── file_worker.py
 │       │   ├── forms
 │       │   │   ├── __init__.py
@@ -295,6 +300,7 @@
 │       │   │       ├── factory.py
 │       │   │       └── token.py
 │       │   ├── main.py
+│       │   ├── mcp_compat.py
 │       │   └── routers
 │       │       ├── __init__.py
 │       │       ├── annotations.py
@@ -348,6 +354,8 @@
 │       │   │   └── templating.py
 │       │   └── utils
 │       │       ├── __init__.py
+│       │       ├── lazy_email.py
+│       │       ├── lazy_file.py
 │       │       ├── lazy_pdf.py
 │       │       └── validation.py
 │       ├── src
@@ -494,6 +502,7 @@
 │       │   │       │   └── copie-bac-2021-2.jpg
 │       │   │       ├── identite.jpg
 │       │   │       ├── tableau.png
+│       │   │       ├── test-integration.eml
 │       │   │       └── test.csv
 │       │   ├── ocr_backend
 │       │   │   ├── conftest.py
@@ -522,6 +531,7 @@
 │       │   │   ├── test_main.py
 │       │   │   ├── test_pipeline_factory_integration.py
 │       │   │   └── utils
+│       │   │       ├── test_lazy_email.py
 │       │   │       └── test_validation.py
 │       │   └── src
 │       │       ├── conftest.py
@@ -631,4 +641,4 @@
     ├── docker-compose.yaml
     ├── pyproject.toml
     └── uv.lock
-143 directories, 490 files
+143 directories, 500 files
