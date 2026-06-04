@@ -201,7 +201,8 @@
     │   ├── setup.py
     │   └── uv.lock
     ├── frontend
-    │   ├── .prettierrc.js
+    │   ├── .prettierignore
+    │   ├── .prettierrc
     │   ├── Dockerfile
     │   ├── apps
     │   │   ├── e2e
@@ -216,11 +217,13 @@
     │   │   │   │       ├── chat-tools-panel.spec.ts
     │   │   │   │       ├── home-redirects.spec.ts
     │   │   │   │       ├── left-panel.spec.ts
+    │   │   │   │       ├── new-chat.spec.ts
     │   │   │   │       ├── utils-auth.ts
     │   │   │   │       ├── utils-chat-conversation.ts
     │   │   │   │       ├── utils-common.ts
     │   │   │   │       ├── utils-file-preview.ts
     │   │   │   │       ├── utils-left-panel.ts
+    │   │   │   │       ├── utils-new-chat.ts
     │   │   │   │       ├── utils-threads.ts
     │   │   │   │       └── utils-tools-panel.ts
     │   │   │   ├── eslint.config.mjs
@@ -287,6 +290,7 @@
     │   │       │   │   │   │   ├── ChatConversation.tsx
     │   │       │   │   │   │   ├── ChatConversationSkeleton.scss
     │   │       │   │   │   │   ├── ChatConversationSkeleton.tsx
+    │   │       │   │   │   │   ├── ChatRoute.tsx
     │   │       │   │   │   │   ├── ChatView.scss
     │   │       │   │   │   │   ├── ChatView.tsx
     │   │       │   │   │   │   ├── ChatVirtualList.scss
@@ -300,10 +304,16 @@
     │   │       │   │   │   │   ├── MessageHoverToolbar.tsx
     │   │       │   │   │   │   ├── MessageReactions.scss
     │   │       │   │   │   │   ├── MessageReactions.tsx
+    │   │       │   │   │   │   ├── NewChatPlaceholder.tsx
+    │   │       │   │   │   │   ├── NewChatSearchBar.tsx
+    │   │       │   │   │   │   ├── NewChatView.scss
+    │   │       │   │   │   │   ├── NewChatView.tsx
+    │   │       │   │   │   │   ├── SelectedUserChip.tsx
     │   │       │   │   │   │   ├── ThreadButton.scss
     │   │       │   │   │   │   ├── ThreadButton.tsx
     │   │       │   │   │   │   ├── UnreadThreadsBanner.scss
     │   │       │   │   │   │   ├── UnreadThreadsBanner.tsx
+    │   │       │   │   │   │   ├── UserSearchListBox.tsx
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── FluentEmoji.test.tsx
     │   │       │   │   │   │   │   ├── MessageHoverToolbar.test.tsx
@@ -341,10 +351,12 @@
     │   │       │   │   │   │   │   └── useToggleReaction.test.tsx
     │   │       │   │   │   │   ├── useChat.ts
     │   │       │   │   │   │   ├── useChatDocuments.ts
+    │   │       │   │   │   │   ├── useChatForUsers.ts
     │   │       │   │   │   │   ├── useChatMessages.ts
     │   │       │   │   │   │   ├── useChatThread.ts
     │   │       │   │   │   │   ├── useChatThreadActions.ts
     │   │       │   │   │   │   ├── useChatThreads.ts
+    │   │       │   │   │   │   ├── useChatUserSearch.ts
     │   │       │   │   │   │   └── useToggleReaction.ts
     │   │       │   │   │   └── reactions.ts
     │   │       │   │   ├── config
@@ -359,6 +371,7 @@
     │   │       │   │   │   │   └── __tests__
     │   │       │   │   │   │       └── MockDriver.test.ts
     │   │       │   │   │   ├── mocks
+    │   │       │   │   │   │   ├── mockChatUsers.ts
     │   │       │   │   │   │   ├── mockChats.ts
     │   │       │   │   │   │   ├── mockDocuments.ts
     │   │       │   │   │   │   ├── mockMessages.ts
@@ -479,4 +492,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-128 directories, 353 files
+128 directories, 366 files
