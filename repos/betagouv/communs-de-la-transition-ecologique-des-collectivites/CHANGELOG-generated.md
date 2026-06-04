@@ -1,31 +1,31 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 22 mai 2026)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 03 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration du tableau de bord de la transition écologique (dashboard-te) avec de nouvelles fonctionnalités de filtrage, de tri et d'agrégation des données. Des améliorations significatives ont également été apportées à la gestion des aides, notamment en termes de matching, de classification et de feedback utilisateur. Enfin, l'intégration des données du référentiel MEC (Mesures d'Accompagnement des Collectivités) progresse avec de nouveaux endpoints et une classification par LLM.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du tableau de bord de la transition écologique (Dashboard TE) avec de nouvelles fonctionnalités de filtrage, de tri et d'agrégation de données. L'API des aides a également été enrichie avec des fonctionnalités de feedback, de pondération et de matching plus précis. Plusieurs corrections et améliorations ont été apportées à l'API et aux tests pour une meilleure stabilité et performance.
 
 ### Évolutions fonctionnelles
-- Ajout d'un indicateur pour inclure les fiches action TE (Transition Écologique) dans les statistiques nationales du dashboard-te. [#963ac30](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/963ac30)
-- Possibilité de filtrer et synthétiser les projets du dashboard-te par probabilité de transition écologique. [#6dafb99](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/6dafb99)
-- Amélioration des filtres du dashboard-te avec des alias de tri plus intuitifs (budget, etc.). [#d07f1e3](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/d07f1e3)
-- Filtrage des projets du dashboard-te par financement et montant. [#8e71a3e](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/8e71a3e)
-- Ajout d'un endpoint pour obtenir un résumé des projets du dashboard-te. [#9d6df4b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9d6df4b)
-- Possibilité de filtrer les projets du dashboard-te par site, intervention et thématique, avec un score minimum. [#b14b0b2](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/b14b0b2)
-- Ajout d'un endpoint pour exporter les projets du dashboard-te. [#a95497c](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/a95497c)
-- Nouveau endpoint pour permettre aux utilisateurs de signaler une aide non pertinente pour un projet. [#fd753e2](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/fd753e2)
-- Exposition de l'API Swagger du dashboard-te sur le hub public. [#05242c0](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/05242c0)
-- Page "Dispositifs" sur data_mec avec classification LLM. [#843a001](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/843a001)
-- Endpoint dédié pour les projets MEC. [#30353a1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/30353a1)
+- **Dashboard TE :** Ajout de filtres multi-valeurs pour les sites, interventions et thématiques, avec options "match all" ou "match any". [#9d6df4b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9d6df4b)
+- **Dashboard TE :** Possibilité de trier la liste des projets. [#c4f6d12](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c4f6d12)
+- **Dashboard TE :** Ajout d'un endpoint `/projets/summary` pour obtenir un résumé des projets. [#9d6df4b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9d6df4b)
+- **Dashboard TE :**  Exposition de la probabilité de transition écologique (TE) par projet. [#50072aa](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/50072aa)
+- **Dashboard TE :** Agrégation des fiches action TE avec un flag `inclure_tet`. [#963ac30](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/963ac30)
+- **API Aides :** Ajout d'un endpoint `/aides/feedback` pour permettre aux utilisateurs de signaler une aide non pertinente pour un projet. [#fd753e2](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/fd753e2)
+- **API Aides :** Possibilité de rechercher des aides par classification et par communes. [#dd81e6b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/dd81e6b)
+- **API Aides :** Ajout de paramètres `cutoff` et `seuils de confiance` sur l'endpoint `/aides`. [#954785a](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/954785a)
+- **API Aides :**  Alignement de l'endpoint `GET /aides` sur l'utilisation de `projetId` (camelCase) avec une dépréciation progressive de `projet_id`. [#c80923d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c80923d)
+- **Data MEC :** Ajout d'une page dispositifs sur `data_mec` et classification via LLM. [#843a001](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/843a001)
 
 ### Évolutions techniques
-- Refactorisation du code pour séparer les dispositifs du référentiel vers le dashboard-te. [#02dc6fa](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/02dc6fa)
-- Mise en place d'un système de pondération des axes pour le matching aides/projets. [#f60ece9](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/f60ece9)
-- Amélioration du matching combiné pour le thématique des aides. [#583486d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/583486d)
-- Implémentation d'un matching textuel lexical (BM25) en complément du matching thématique pour les aides. [#b43e3f2](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/b43e3f2)
-- Utilisation de Drizzle pour les migrations de schéma data_mec. [#7a86d84](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/7a86d84)
-- Séparation des jobs de release et de déploiement en deux jobs ré-exécutables. [#cecc2b4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/cecc2b4)
+- **API :** Amélioration du typage OpenAPI sur les endpoints `/aides/feedback`. [#cdccc82](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/cdccc82)
+- **CI/CD :** Séparation des jobs de release et de déploiement en production pour une meilleure résilience. [#cecc2b4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/cecc2b4)
+- **Matching Aides :** Amélioration du matching combiné des aides vers le thématique. [#583486d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/583486d)
+- **Matching Aides :** Implémentation d'un matching textuel lexical (BM25) en complément du matching thématique. [#b43e3f2](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/b43e3f2)
+- **Dashboard TE :** Correction du filtre montantMin/Max sur le budget du projet. [#3d5def1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3d5def1)
+- **Dashboard TE :** Liaison des financements et projets via une table de jointure. [#f3d35e3](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/f3d35e3)
 
 ### Autres changements
-- Documentation : Masquage des détails d'implémentation dans le Swagger des aides. [#80e08b5](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/80e08b5)
-- Ajout de scripts de diagnostic pour les données géo, thématique et textuelles des aides. [#c01532d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c01532d)
-- Ajout d'un script de requalification du catalogue d'aides. [#0246da4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/0246da4)
-- Correction de plusieurs tests E2E et tests unitaires. [#ec89065](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/ec89065), [#2f5475e](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/2f5475e), [#9c9b4a5](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9c9b4a5)
+- **Documentation :** Masquage des détails d'implémentation dans le Swagger de l'API des aides. [#80e08b5](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/80e08b5)
+- **Tests :** Alignement des mocks des tests sur `findOneWithSource` et verrouillage du routing par source pour les tests des aides. [#9c9b4a5](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9c9b4a5)
+- **Scripts :** Ajout de scripts de diagnostic pour la qualité des données géo, thématique et textuelle des aides. [#c01532d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c01532d)
+- **Scripts :** Ajout d'un script de requalification du catalogue d'aides. [#0246da4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/0246da4)
+- **Swagger :** Exposition du Swagger du Dashboard TE sur le hub public `/api`. [#05242c0](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/05242c0)
