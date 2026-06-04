@@ -1,0 +1,217 @@
+.
+├── .env.registry.example
+├── .gitattributes
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── alembic
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions
+│       ├── 001_initial_schema.py
+│       └── 002_extension_update_metadata.py
+├── alembic.ini
+├── app
+│   ├── __init__.py
+│   ├── admin
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── helpers.py
+│   │   ├── router.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── artifacts.py
+│   │   │   ├── audit.py
+│   │   │   ├── campaigns.py
+│   │   │   ├── catalog.py
+│   │   │   ├── cohorts.py
+│   │   │   ├── communications.py
+│   │   │   ├── devices.py
+│   │   │   ├── flags.py
+│   │   │   └── keycloak.py
+│   │   ├── static
+│   │   │   └── dm-admin.css
+│   │   └── templates
+│   │       ├── artifacts.html
+│   │       ├── audit_log.html
+│   │       ├── base.html
+│   │       ├── campaign_detail.html
+│   │       ├── campaign_new.html
+│   │       ├── campaigns.html
+│   │       ├── catalog.html
+│   │       ├── catalog_plugin.html
+│   │       ├── catalog_plugin_new.html
+│   │       ├── catalog_preview.html
+│   │       ├── cohort_edit.html
+│   │       ├── cohorts.html
+│   │       ├── communication_detail.html
+│   │       ├── communication_new.html
+│   │       ├── communications.html
+│   │       ├── dashboard.html
+│   │       ├── debug.html
+│   │       ├── deploy_wizard.html
+│   │       ├── device_detail.html
+│   │       ├── devices.html
+│   │       ├── feature_flags.html
+│   │       ├── files.html
+│   │       └── flag_detail.html
+│   ├── catalog
+│   │   ├── __init__.py
+│   │   └── templates
+│   │       ├── catalog_base.html
+│   │       ├── catalog_detail.html
+│   │       └── catalog_index.html
+│   ├── main.py
+│   ├── postgres_queue.py
+│   ├── s3.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── crypto.py
+│   │   └── db.py
+│   ├── settings.py
+│   └── worker_main.py
+├── config
+│   └── config.json
+├── db
+│   └── schema.sql
+├── deploy
+│   ├── DEPLOY-RUNBOOK.md
+│   ├── docker
+│   │   ├── .env.example
+│   │   ├── .env.secrets.example
+│   │   ├── Dockerfile
+│   │   ├── docker-compose.yml
+│   │   └── relay-assistant.conf.template
+│   ├── k8s
+│   │   ├── NORMALIZATION-secrets.md
+│   │   ├── README.md
+│   │   ├── base
+│   │   │   ├── kustomization.yaml
+│   │   │   ├── manifests
+│   │   │   │   ├── 00-namespace.yaml
+│   │   │   │   ├── 10-configmap-device-management.yaml
+│   │   │   │   ├── 18-device-management-content-pvc.yaml
+│   │   │   │   ├── 19-device-management-enroll-pvc.yaml
+│   │   │   │   ├── 20-device-management-deployment.yaml
+│   │   │   │   ├── 21-device-management-service.yaml
+│   │   │   │   ├── 22-admin-content-pvc.yaml
+│   │   │   │   ├── 22-admin-deployment.yaml
+│   │   │   │   ├── 22-admin-service.yaml
+│   │   │   │   ├── 23-telemetry-relay-deployment.yaml
+│   │   │   │   ├── 24-telemetry-relay-service.yaml
+│   │   │   │   ├── 25-relay-assistant-configmap.yaml
+│   │   │   │   ├── 26-relay-assistant-deployment.yaml
+│   │   │   │   ├── 27-relay-assistant-service.yaml
+│   │   │   │   ├── 28-queue-worker-deployment.yaml
+│   │   │   │   ├── 29-postgres-pvc.yaml
+│   │   │   │   ├── 30-postgres-deployment.yaml
+│   │   │   │   ├── 31-postgres-service.yaml
+│   │   │   │   ├── 40-adminer-deployment.yaml
+│   │   │   │   ├── 41-adminer-service.yaml
+│   │   │   │   ├── 50-ingress.yaml
+│   │   │   │   ├── 60-device-management-hpa.yaml
+│   │   │   │   └── 61-queue-worker-hpa.yaml
+│   │   │   └── secrets
+│   │   │       └── all-secrets.yaml
+│   │   └── overlays
+│   │       ├── dgx
+│   │       │   ├── env-secrets.yaml.example
+│   │       │   ├── httproute.yaml
+│   │       │   ├── kustomization.yaml
+│   │       │   ├── proxy-patch-device-management-admin.yaml
+│   │       │   ├── proxy-patch-device-management.yaml
+│   │       │   ├── proxy-patch-queue-worker.yaml
+│   │       │   ├── proxy-patch-relay-assistant.yaml
+│   │       │   └── proxy-patch.yaml
+│   │       ├── local
+│   │       │   ├── env-secrets.yaml.example
+│   │       │   ├── ingress-extras.yaml
+│   │       │   ├── ingress-root.yaml
+│   │       │   └── kustomization.yaml
+│   │       ├── prod-beta
+│   │       │   ├── env-secrets.yaml.example
+│   │       │   └── kustomization.yaml
+│   │       └── scaleway
+│   │           ├── env-secrets.yaml.example
+│   │           ├── hpa-patch.yaml
+│   │           ├── ingress-extras.yaml
+│   │           ├── ingress-root.yaml
+│   │           ├── kustomization.yaml
+│   │           └── wireguard-proxy.yaml
+│   └── keycloak
+│       └── admin-dm-ui-client.json
+├── docs
+│   ├── DOC-UPDATE-PLAN.md
+│   ├── README.fr.md
+│   ├── architecture
+│   │   ├── README.md
+│   │   ├── adr-0001-vue-densemble.md
+│   │   ├── adr-dgx-deployment.md
+│   │   └── adr-product-architecture.md
+│   ├── operations
+│   │   ├── README.md
+│   │   ├── debug-campaign-not-serving.md
+│   │   ├── developer-readme.md
+│   │   ├── mode-operatoire-campagnes.md
+│   │   └── test-cahier.md
+│   ├── plugin-developer
+│   │   ├── README.md
+│   │   ├── config.default.example.json
+│   │   ├── consumer-readme.md
+│   │   ├── mirai-catalog-snippet.html
+│   │   ├── mirai-integration-README.md
+│   │   ├── packaging-guide.md
+│   │   ├── plugin-dm-protocol-update-features.md
+│   │   └── plugin-integration-2-4-5.md
+│   └── security
+│       ├── README.md
+│       └── audit-remediation-report.md
+├── keycloak
+│   ├── keycloak-bootstrap-client-example.json
+│   └── pkce-test.sh
+├── pyproject.toml
+├── reports
+│   └── postgres-queue-rollout-report.md
+├── requirements-dev.txt
+├── requirements.txt
+├── scripts
+│   ├── build-k8s.sh
+│   ├── build-local.sh
+│   ├── dgx-deploy
+│   │   ├── .env.config
+│   │   ├── .env.secrets.example
+│   │   ├── 08-package.sh
+│   │   ├── 09-connectivity-test.sh
+│   │   ├── 10-e2e-waf-test.sh
+│   │   └── dumb-deploy.sh
+│   ├── dm4-slug-migration.sql
+│   ├── k8s
+│   │   ├── create-registry-secret.sh
+│   │   ├── deploy.sh
+│   │   ├── lib.sh
+│   │   ├── render.sh
+│   │   ├── validate-all.sh
+│   │   └── validate.sh
+│   ├── repack-oxt.sh
+│   ├── reset-from-scratch.sh
+│   ├── setup-wireguard.sh
+│   └── test-all.sh
+└── tests
+    ├── conftest.py
+    ├── test_admin_playwright.py
+    ├── test_admin_ui.py
+    ├── test_e2e_deployment.py
+    ├── test_enriched_config.py
+    ├── test_enroll.py
+    ├── test_ops_metrics.py
+    ├── test_post_deploy.py
+    ├── test_queue_load.py
+    ├── test_queue_resilience_distributed.py
+    ├── test_queue_security.py
+    ├── test_queue_validation.py
+    ├── test_relay.py
+    └── test_telemetry.py
+38 directories, 178 files

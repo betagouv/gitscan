@@ -1,0 +1,144 @@
+2026-06-02T04:09:26+02:00 - 311c293 - etiquet : docs(readme): ajoute une section "Comment fonctionnent les mises à jour"
+2026-06-02T04:04:24+02:00 - 35b8148 - etiquet : docs: retire la mention de migration Nginx/Lua → FastAPI
+2026-06-02T03:55:04+02:00 - 000b4fa - etiquet : docs: restructuration par audience + sortie des artefacts internes du dépôt
+2026-06-02T03:38:09+02:00 - 8e180b8 - etiquet : fix(ingress): augmente proxy-buffer-size pour le gros Set-Cookie du callback admin
+2026-06-02T03:27:27+02:00 - b85f689 - etiquet : fix(admin): récupère le JWKS via l'URL interne (vérif ID token)
+2026-06-02T03:12:21+02:00 - 221c849 - etiquet : fix(admin): dérive le redirect OIDC admin de PUBLIC_BASE_URL
+2026-06-01T22:02:22+02:00 - 745eed3 - etiquet : docs: note de securite pour le depot public
+2026-06-01T21:58:33+02:00 - bb8b8e4 - etiquet : docs(security): rapport d'audit anonymisé (versions historiques purgées)
+2026-06-01T21:44:00+02:00 - 3c34791 - etiquet : chore(security): caviardage HEAD avant passage en public
+2026-06-01T08:15:15+02:00 - af8e3f7 - etiquet : Merge fix/security-imm-quickwins: Klaerenn audit remediation (IMM+CT), catalog slug->id, docs reorg
+2026-06-01T08:15:03+02:00 - 30754be - etiquet : docs: regroup ADR/reference docs under docs/adr/ + add DOC-UPDATE-PLAN
+2026-06-01T07:56:36+02:00 - 4cf65d4 - etiquet : feat(catalog): expose plugin id in public /catalog/api/plugins (slug->id)
+2026-06-01T00:58:34+02:00 - c66be0d - etiquet : fix(security): CT-1 admin relay revocation endpoint (VULN-003)
+2026-06-01T00:56:20+02:00 - adb4658 - etiquet : fix(security): CT-7 OIDC cache lock + CT-9 CI tooling + CT-12 dep bounds
+2026-06-01T00:14:43+02:00 - e6a9cb2 - etiquet : fix(security): immediate hardening of auth layer (Klaerenn audit IMM-1..8)
+2026-05-31T23:30:38+02:00 - 3b848f5 - etiquet : Merge pull request #9 from IA-Generative/chore/deploy-0.6.0
+2026-05-31T23:30:32+02:00 - 1f324de - etiquet : feat(k8s): câble les 5 vars DM-2 (optional) dans le deployment + bump image 0.6.0
+2026-05-31T13:43:00+02:00 - 66ed56b - etiquet : Merge pull request #8 from IA-Generative/chore/upload-interface-dx
+2026-05-31T13:42:41+02:00 - d259e01 - etiquet : feat(catalog): expose plugin id (slug->id) + config-template accepte le token de service
+2026-05-31T13:27:27+02:00 - 904bb69 - etiquet : Merge pull request #7 from IA-Generative/chore/normalize-secrets
+2026-05-31T13:26:30+02:00 - 950430a - etiquet : fix(k8s): retire les filebrowser-patch.yaml orphelins (overlays local + scaleway)
+2026-05-31T13:18:52+02:00 - 945aeeb - etiquet : docs(deploy): runbook de déploiement consolidé scaleway + dgx
+2026-05-31T13:17:36+02:00 - 3c8edb9 - etiquet : fix(db): ajoute extension_id/gecko_id via fixup ALTER au démarrage (bases existantes)
+2026-05-31T13:10:38+02:00 - 6e09f0e - etiquet : chore(secrets): renomme secret-patch.yaml -> env-secrets.yaml (plus auto-porteur)
+2026-05-31T12:54:43+02:00 - ed793b7 - etiquet : chore(secrets): retire les clés secrètes du base committé (uniquement dans overlay+example)
+2026-05-31T12:30:54+02:00 - 74941bf - etiquet : chore(secrets): normalise la gestion des secrets k8s (base sans secret, gitignore par env, prod-beta)
+2026-05-31T12:06:51+02:00 - 48a27c8 - etiquet : chore(catalog): script idempotent bascule slug + alias + override client_id extension
+2026-05-31T12:05:33+02:00 - cb68812 - etiquet : feat(updates): génère gupdate XML + Mozilla JSON multi-cible (dual-serve alias)
+2026-05-31T12:00:27+02:00 - ad6797d - etiquet : feat(catalog): versions/upload multi-variant + auth token de service
+2026-05-31T11:56:24+02:00 - 0723555 - etiquet : feat(db): metadata extension + lien version→artefacts 1:N (platform_variant)
+2026-05-31T11:51:24+02:00 - f49adde - etiquet : feat(config): support API_BASE/RELAY_ASSISTANT_BASE_URL/COMPTE_RENDU_URL/COMU_URL/TELEMETRY_ENDPOINT
+2026-05-31T11:40:34+02:00 - f4012b9 - etiquet : fix(keycloak): pose KEYCLOAK_REDIRECT_URI/ALLOWED par overlay (fix redirect_uri vide)
+2026-05-31T07:35:46+02:00 - b251851 - etiquet : Merge pull request #5 from IA-Generative/chore/gitignore-secrets
+2026-05-31T07:35:41+02:00 - 454de6d - etiquet : Merge pull request #4 from IA-Generative/fix/healthcheck-jwks-timeout
+2026-05-31T00:45:08+02:00 - 2b071c0 - etiquet : chore(secrets): sort .env et secret-patch.yaml du suivi git + .example
+2026-05-30T21:07:21+02:00 - b34d378 - etiquet : fix(scaleway): relay 401 à froid — keepalive nginx + warmer Keycloak
+2026-05-30T20:49:56+02:00 - a335a1f - etiquet : fix(ops): health-check /ops/health/full correct + timeout JWKS
+2026-05-29T17:42:27+02:00 - 2ba8dd5 - Johann LORBER : fix: increase relay health check interval from 3 to 10s
+2026-05-29T11:08:01+02:00 - b9408f3 - HaroWana : chore: code cleanup
+2026-05-27T14:11:46+02:00 - cf95cf6 - Johann LORBER : chore: remove dead code
+2026-04-28T15:54:16+02:00 - dea39d7 - Johann LORBER : Revert "fix(dgx): pansement clock skew via libfaketime sur les pods Python"
+2026-04-27T22:35:31Z - ddb63bb - 1545671 : fix(dgx): pansement clock skew via libfaketime sur les pods Python
+2026-04-27T21:50:36+02:00 - f4a0f92 - etiquet : chore(scaleway): bascule registry sur DockerHub + 1 replica
+2026-04-17T14:39:59Z - 876dae0 - 1545671 : fix(dgx): replace all placeholders with real DGX values
+2026-04-13T20:56:43Z - 57a7c8e - 1545671 : chore(dgx): bump image to 0.5.23
+2026-04-13T20:31:59Z - 780b855 - 1545671 : Fix FK constraint error when purging removed plugins
+2026-04-13T20:20:06Z - d49edd2 - 1545671 : fix(admin): use getAttribute('action') to avoid input name collision
+2026-04-13T20:14:31Z - 4d7f3db - 1545671 : fix(admin): WAF-safe chunked upload for version upload
+2026-04-13T19:49:20Z - e269d79 - 1545671 : fix(auth): add JWT verification logging, increase leeway tolerance
+2026-04-13T19:32:57Z - 1b0546b - 1545671 : fix(config): point keycloakTokenEndpoint to /auth/token WAF-safe proxy
+2026-04-13T19:28:42Z - 3f0507d - 1545671 : feat(auth): add /auth/token WAF-bypass endpoint for Keycloak token exchange
+2026-04-13T18:55:15Z - 08b19b1 - 1545671 : fix(relay): keep keycloakIssuerUrl as real SSO, only relay auth/token/userinfo
+2026-04-13T18:47:47Z - 6b10b04 - 1545671 : fix(relay): bypass nginx relay-assistant, proxy directly to external upstreams
+2026-04-12T22:31:39+02:00 - 38b5885 - etiquet : chore: gitignore .claude/, .DS_Store, Thumbs.db
+2026-04-12T22:29:36+02:00 - d63ec39 - etiquet : chore: move example configs from root to appropriate directories
+2026-04-12T22:23:45+02:00 - 1cef7f0 - etiquet : security: anonymize all production values in docs
+2026-04-12T22:20:06+02:00 - a0dbc1f - etiquet : docs: reorganize all documentation under docs/
+2026-04-12T14:37:38+02:00 - 0bcd2b7 - etiquet : feat(catalog): redesign public catalog pages with DSFR 1.12.1
+2026-04-12T03:27:08+02:00 - 98fa0f6 - etiquet : chore(dgx): bump image to 0.5.22
+2026-04-12T03:23:58+02:00 - 17feea8 - etiquet : fix(relay): bypass corporate proxy and fix env var name for K8s relay-assistant
+2026-04-12T02:18:53+02:00 - 63573ed - etiquet : fix(relay): publish Keycloak OIDC endpoints without auth_request gate
+2026-04-12T01:10:26+02:00 - 4ca7858 - etiquet : docs: update ADR and RUNBOOK with all fixes from DGX deployment
+2026-04-12T00:55:38+02:00 - 27cc4e7 - etiquet : fix(dgx): add K8s service names to no_proxy to prevent 407 on inter-pod calls
+2026-04-12T00:16:09+02:00 - fe35bea - etiquet : fix: align API pod binaries path with admin pod and DB s3_path
+2026-04-12T00:09:35+02:00 - a5f741b - etiquet : fix(dgx): mount PVCs for binaries and enrollments in device-management
+2026-04-11T23:50:07+02:00 - af8debe - etiquet : fix(dgx): set DEFAULT_MODEL_NAME=llama-3.3
+2026-04-11T23:34:43+02:00 - 8af85a2 - etiquet : fix(dgx): DATABASE_ADMIN_URL must point to bootstrap, not postgres
+2026-04-11T22:46:24+02:00 - 9d14e09 - etiquet : fix(admin): read ADMIN_SESSION_SECRET from K8s secret instead of hardcode
+2026-04-11T22:37:23+02:00 - 5c84e7f - etiquet : fix(dgx): auto-generate tokens, single replica, simplified secrets
+2026-04-11T21:55:10+02:00 - 0f3de56 - etiquet : fix: schema apply crash on empty DB + pg_isready in deploy Job
+2026-04-11T21:44:58+02:00 - 3397698 - etiquet : fix(dgx): wait for postgres TCP ready before applying schema
+2026-04-11T21:40:45+02:00 - 429f663 - etiquet : fix(dgx): read DB credentials from K8s secret in schema bootstrap Job
+2026-04-11T21:17:25+02:00 - 7625fea - etiquet : fix(admin): normalize stored binary filename to match download URL
+2026-04-11T20:56:07+02:00 - dbf2f04 - etiquet : fix(admin): send catalog creation as JSON instead of multipart
+2026-04-11T20:48:19+02:00 - 1a8a40b - etiquet : fix(admin): upload icon via chunk to bypass WAF body size limit
+2026-04-11T20:37:26+02:00 - 033f629 - etiquet : feat(admin): chunked file upload to bypass WAF body size limit
+2026-04-11T19:12:10+02:00 - a6cbe32 - etiquet : fix(dgx): include .env.secrets.example in deployment package
+2026-04-11T19:03:02+02:00 - 2014f2e - etiquet : docs: rewrite RUNBOOK-DGX with persistent credentials instructions
+2026-04-11T13:39:57+02:00 - 2b3a263 - etiquet : docs: update ADRs with implementation status
+2026-04-11T13:12:23+02:00 - d63c560 - etiquet : refactor: extract crypto helpers into app/services/crypto.py
+2026-04-11T13:10:08+02:00 - 00bdf45 - etiquet : refactor: extract DB helpers into app/services/db.py
+2026-04-11T12:01:02+02:00 - 5182b62 - etiquet : feat: add Alembic for versioned database migrations
+2026-04-11T11:53:58+02:00 - cf5685f - etiquet : fix(security): set CSRF cookie in OIDC callback + warn on insecure session secret
+2026-04-11T11:08:11+02:00 - b4afe9e - etiquet : docs: add product-level ADR covering full architecture
+2026-04-11T11:00:52+02:00 - 10c6e2c - etiquet : docs: add ADR for DGX on-premise deployment decisions
+2026-04-11T10:56:26+02:00 - 3e3eb7c - etiquet : feat: use owuicore shared PostgreSQL by default, local PG as opt-in
+2026-04-10T06:23:45+02:00 - ffca13b - etiquet : fix(dgx): persistent secrets in ~/.dm-secrets/ (survives redeploys)
+2026-04-10T06:18:59+02:00 - c44256e - etiquet : fix(dgx): separate secrets from manifests to prevent overwrite on redeploy
+2026-04-10T06:04:26+02:00 - b17886c - etiquet : test(dgx): add E2E test suite with WAF simulator + Envoy Gateway
+2026-04-10T05:42:06+02:00 - 5576d8a - etiquet : fix(admin): bypass WAF by submitting all POST forms via fetch
+2026-04-07T23:44:07+02:00 - c3ef363 - etiquet : fix(dgx): expose admin UI, fix proxy IP and OIDC config
+2026-04-07T22:36:59+02:00 - 7d18129 - etiquet : feat(dgx): on-prem deploy with DockerHub mirror, compte-rendu relay, proxy patches
+2026-04-02T15:09:17+02:00 - 29233fc - etiquet : feat: add Chrome/Edge self-hosted update XML endpoint
+2026-04-02T02:29:26+02:00 - 113effd - etiquet : fix: use .zip extension for Chrome/Edge downloads to avoid CRX interception
+2026-04-02T02:25:18+02:00 - 9368cef - etiquet : fix: force octet-stream for binary downloads to prevent CRX_header_invalid
+2026-04-02T02:21:46+02:00 - 4880417 - etiquet : fix: detect .crx files as Chrome instead of Firefox
+2026-04-02T01:56:55+02:00 - a7386f2 - etiquet : feat: migrate SSO to <SSO_HOSTNAME> with WireGuard tunnel
+2026-03-31T23:53:15+02:00 - 925ba60 - etiquet : fix: add Firefox, Chrome, Edge to device types list
+2026-03-31T23:46:08+02:00 - 1ab60bd - etiquet : fix: suppress README warning when dm-manifest.json is present
+2026-03-31T23:42:41+02:00 - 022c135 - etiquet : docs: plugin packaging guide for all platforms
+2026-03-31T20:40:08+02:00 - 1342bea - etiquet : test: post-deployment smoke tests (32 tests against live server)
+2026-03-31T20:03:10+02:00 - 4aafc9d - etiquet : chore: bump image tag to 0.5.6 across all k8s deployments
+2026-03-31T20:02:39+02:00 - 225db2f - etiquet : fix: skip admin DB init when no admin password is available
+2026-03-31T20:00:16+02:00 - 282deb5 - etiquet : chore: bump image tag to 0.5.5 across all k8s deployments
+2026-03-31T19:58:54+02:00 - 94cd64f - etiquet : fix: persist telemetry spans in direct forward path and add DATABASE_URL to telemetry-relay
+2026-03-31T19:50:57+02:00 - 3f96efd - etiquet : test: non-regression tests for ops/metrics/health/deploy endpoints
+2026-03-31T19:15:25+02:00 - e85cf02 - etiquet : fix: provisioning upsert ON CONFLICT with partial unique index
+2026-03-30T22:19:16+02:00 - b993d7d - etiquet : feat: purge buttons for old versions and deployments
+2026-03-30T00:14:10+02:00 - 52ad4b3 - etiquet : fix: version comparison N-segments, config cache bypass, README update
+2026-03-29T22:02:56+02:00 - 9d33d04 - etiquet : feat: unified deploy API endpoint, artifact upsert, version auto-deprecation
+2026-03-29T20:08:28+02:00 - 70fc611 - etiquet : fix: auto-complete old campaigns, pull-on-miss cleanup, deploy fixes
+2026-03-29T19:30:42+02:00 - c3af729 - etiquet : feat: public catalog pages, pull-on-miss binaries, admin persistent storage
+2026-03-29T17:13:44+02:00 - b2da899 - etiquet : Update .DS_Store
+2026-03-29T17:11:55+02:00 - acbb649 - etiquet : feat: v0.5.4 — perf config, admin catalog, icon DB storage, auto-versioning
+2026-03-28T22:34:44+01:00 - 2e70be3 - etiquet : feat: serve config from plugins.config_template (dm-config.json)
+2026-03-28T22:29:07+01:00 - 5cf5b7b - etiquet : chore: checkpoint before dm-config packaging
+2026-03-28T22:29:07+01:00 - 77c7285 - etiquet : chore: checkpoint before dm-config packaging
+2026-03-28T22:21:31+01:00 - f78bece - etiquet : docs: update all READMEs — environments, onboarding, dm-config, monitoring
+2026-03-28T22:08:30+01:00 - bd7a752 - etiquet : feat: free-form environments in dm-config.json + DB
+2026-03-28T22:02:34+01:00 - 509875d - etiquet : docs+feat: plugin onboarding — 4 envs, separate dm-config, binary cleanup
+2026-03-28T21:49:25+01:00 - 159beb5 - etiquet : feat: catalog v2 steps 14-23 — dashboard, debug, public API, monitoring
+2026-03-28T21:42:13+01:00 - 6716d74 - etiquet : feat: catalog v2 steps 7-13 — animations, logo, env, keycloak, access, alias
+2026-03-28T21:30:12+01:00 - 8172075 - etiquet : chore: remove access_token, refresh_token, enrolled from config templates
+2026-03-28T21:25:19+01:00 - 541abe3 - etiquet : feat: server config cleanup — remove obsolete keys (cleanup-server-config.md)
+2026-03-28T20:55:46+01:00 - a716646 - etiquet : fix: re-add telemetryKey to SECRET_CONFIG_KEYS + auth notice message
+2026-03-28T20:52:00+01:00 - 18ae7bd - etiquet : feat: cleanup config keys, rename config/libreoffice → config/mirai-libreoffice
+2026-03-28T20:33:55+01:00 - 7748e2e - etiquet : feat: implement device resolution pipeline (catalog v2 steps 3-6)
+2026-03-28T20:29:05+01:00 - 8a5b7df - etiquet : feat: fresh start DB + cleanup chrome/edge/firefox/misc (catalog v2 steps 1-2)
+2026-03-28T19:53:39+01:00 - 531bab7 - etiquet : docs: update READMEs and catalog v2 prompt
+2026-03-28T19:41:25+01:00 - f50c1b3 - etiquet : feat: deploy wizard, plugin catalog, communications, catalog v2 prompt
+2026-03-28T13:20:38+01:00 - 69ea46d - etiquet : docs: add deploy wizard prompt + rollout_config migration
+2026-03-28T04:01:58+01:00 - c2977c6 - etiquet : feat: fix telemetry relay, add relay proxy, optimize k8s probes
+2026-03-15T19:42:18+01:00 - 4dde654 - etiquet : feat: implement EnrichedConfigResponse — update & feature toggling (Prompt A)
+2026-03-15T18:34:25+01:00 - e1b49f8 - etiquet : docs: add test suites prompts, test cahier and operational runbook
+2026-03-15T18:28:03+01:00 - 92dfae9 - etiquet : docs: add plugin-DM protocol spec — update & feature toggling
+2026-03-14T20:00:37+01:00 - 5f12f74 - etiquet : fix: correct keycloak client_id typo and templatize int config
+2026-03-14T20:00:37+01:00 - f58eaee - etiquet : chore: reorganize repo — infra-minimal → deploy/docker, db/schema.sql
+2026-03-14T20:00:37+01:00 - 2e50ead - etiquet : chore(infra-minimal): keep only Docker files, remove k8s and CI scripts
+2026-03-14T20:00:37+01:00 - 74d61d6 - etiquet : refactor: simplify main.py — remove duplication and fix algorithmic issues
+2026-03-14T20:00:37+01:00 - 29ac245 - etiquet : checkpoint: secure JWT auth, scale tuning, and scaleway rollout updates
+2026-03-08T13:31:56+01:00 - 969108d - etiquet : .
+2026-03-07T15:32:24+01:00 - 1d3d4f0 - etiquet : feat: add metrics endpoint and autoscaling for docker/scaleway
+2026-03-06T19:55:43+01:00 - b5a7774 - etiquet : Add k8s base/overlays and deployment scripts
+2026-03-06T18:59:22+01:00 - d9d1f66 - etiquet : chore: checkpoint unified relay + dgx deployment updates
