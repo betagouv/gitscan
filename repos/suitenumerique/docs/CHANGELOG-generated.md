@@ -1,56 +1,38 @@
-## Changelog : docs (30 derniers jours, au 2026-06-01)
+## Changelog : docs (30 derniers jours, au 03 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur le suivi d'événements pour l'analyse, l'amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités comme la possibilité de quitter un document et des ajustements de l'interface, ainsi que des corrections de bugs et des optimisations techniques pour une meilleure performance et sécurité.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur avec l'ajout d'un mode présentateur, d'un panneau latéral pour les commentaires, et des corrections de bugs pour une meilleure stabilité. Des améliorations techniques ont également été apportées, notamment la migration vers de nouveaux outils de build et de gestion des dépendances, ainsi que l'ajout de métriques de suivi d'événements pour mieux comprendre l'utilisation de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de "quitter" un document. [#2365](https://github.com/suitenumerique/docs/issues/2365)
-- Ajout d'un panneau latéral droit pour les commentaires et le sommaire.
-- Amélioration de l'accessibilité du champ de titre du document.
-- Ajout d'un indicateur de chargement (skeleton) lors du chargement du contenu.
-- Ajout d'une action pour annuler la résolution d'un thread.
-- Ajout de la validation de l'ID du document lors de la création.
-- Amélioration de l'intégration de la recherche avec l'ajout de breadcrumbs dans les résultats.
-- Possibilité de créer un sous-document à partir d'un fichier.
-- Prise en charge du déploiement sur des plateformes PaaS comme Scalingo.
+- Ajout du **mode présentateur** pour faciliter la présentation de documents [#2321].
+- Implémentation d'un **panneau latéral dédié aux commentaires** pour une meilleure gestion et visibilité [#2379].
+- Possibilité de **quitter un document** [#2365].
+- Ajout d'une **breadcrumb** dans les résultats de recherche pour une navigation plus intuitive [#2310].
+- Amélioration de l'**accessibilité** avec l'alignement des labels ARIA pour le menu mobile [#2377] et l'ajout d'attributs `aria-hidden` aux avatars décoratifs dans la modale de partage [#2324].
+- Amélioration de la gestion des **permissions** pour empêcher les administrateurs de modifier les commentaires d'autres utilisateurs [#2323].
 
 ### Évolutions techniques
-- Migration de la gestion des dépendances de `pip` vers `uv`.
-- Refactorisation de la configuration de PostHog pour une meilleure organisation.
-- Utilisation de runners ARM64 pour la construction des images Docker.
-- Ajout d'une étape Trivy pour l'analyse de vulnérabilités dans les images Docker.
-- Mise à jour de plusieurs dépendances JavaScript, incluant des correctifs de sécurité pour `axios` et `next`.
-- Migration du build backend vers `uv_build`.
-- Amélioration de la gestion des connexions WebSocket pour éviter les fuites.
-- Mise à jour de Blocknote vers la version 0.51.1.
-- Adaptation aux nouvelles versions de Cunningham, ui-kit et TypeScript.
-- Correction d'une condition de concurrence lors de la récupération et de la modification du contenu des documents.
-- Amélioration de la gestion des verrous lors de la création de documents.
-- Ajout de la capture d'événements (document créé, supprimé, favori, etc.) avec PostHog pour l'analyse.
+- Migration du système de build de `setuptools` vers `uv_build` pour une meilleure performance et une gestion plus moderne des dépendances [#2274, #2362].
+- Migration de la gestion des dépendances de `pip` vers `uv` [#2362].
+- Mise à jour de plusieurs dépendances JavaScript, incluant `Blocknote` (0.51.4) et `Next.js` (v16.2.6) [SECURITY] [#2273].
+- Intégration de **métriques de suivi d'événements** avec PostHog pour analyser l'utilisation de la plateforme (création/suppression de documents, actions IA, accès, etc.) [#2363].
+- Amélioration de la gestion des connexions WebSocket pour éviter les problèmes d'inactivité [#2264].
+- Refonte de l'architecture pour séparer la configuration de PostHog [#2378].
+- Ajout de support pour le déploiement sur des plateformes PaaS comme Scalingo [#2293].
 
 ### Autres changements
-- Correction de bugs mineurs liés à l'accessibilité (aria-hidden, focus).
-- Mise à jour des icônes dans l'en-tête du panneau de gauche.
-- Suppression de code obsolète lié au masquage des documents.
-- Correction d'un problème de rendu des commentaires en mode impression.
-- Correction de problèmes de positionnement et de comportement du menu Blocknote.
-- Correction de problèmes de rendu du sommaire.
-- Mise à jour des chaînes de traduction.
-- Correction de problèmes de compatibilité avec MJML v5.
-- Suppression de la logique de suppression manuelle des accès lors du déplacement d'un document.
-- Amélioration de la gestion des erreurs 5xx avec des alertes structurées.
-- Amélioration de l'identification des étiquettes de résultats de recherche pour l'accessibilité.
-- Correction de problèmes de flakiness dans les tests E2E.
-- Correction d'un bug empêchant l'utilisation du "+" sur la première ligne d'un nouveau document.
-- Correction d'un problème de sanitisation du titre du document.
-- Correction d'un bug lié à l'affichage du menu emoji dans les commentaires.
-- Correction d'un bug lié au maintien ouvert du menu Blocknote.
-- Correction d'un bug lié au fonctionnement du "+" sur la première ligne d'un nouveau document.
-- Correction d'un problème de scroll du sommaire.
-- Correction d'un bug lié à l'exportation des liens en mode impression.
-- Correction d'un problème de sanitisation des couleurs en mode collaboration.
-- Suppression des commentaires du mode impression.
-- Suppression d'un patch suite à une mise à niveau de Cunningham.
-- Adaptation des types pour les mises à niveau de Cunningham, ui-kit et TypeScript.
-- Ajout de tests pour la validation de l'UUID du document.
-- Mise à jour de la documentation.
+- Correction de plusieurs bugs et améliorations de la stabilité, notamment concernant la gestion des erreurs, l'affichage des emojis, et le comportement du menu Blocknote.
+- Mise à jour de la documentation et des traductions [#2377].
+- Amélioration de la gestion des tests E2E pour réduire les faux positifs [#2373].
+- Suppression de code obsolète et nettoyage du code base.
+- Correction de problèmes liés à l'importation de fichiers [#1987].
+- Ajout de tests unitaires pour le mode présentateur [#2321].
+- Correction d'un problème de verrouillage de table lors de la création de documents [#2274].
+- Ajout de la validation de l'ID du document [#2323].
+- Correction de problèmes de rendu dans le mode d'impression [#2269].
+- Amélioration de la gestion des couleurs pour la sécurité [#2210].
+- Correction de problèmes de focus et de visibilité dans l'interface utilisateur [#2377].
+- Correction de problèmes de chargement des commentaires [#2269].
+- Correction de problèmes de positionnement des éléments de l'interface utilisateur [#2379].
+- Correction de problèmes de scroll dans la table des matières [#2233].
+- Correction de problèmes de compatibilité avec certaines versions de Cunningham et de l'UI Kit [#2273].

@@ -488,6 +488,7 @@
     │   │   │   │   │   ├── language.spec.ts
     │   │   │   │   │   ├── left-panel.spec.ts
     │   │   │   │   │   ├── login.spec.ts
+    │   │   │   │   │   ├── presenter-mode.spec.ts
     │   │   │   │   │   ├── utils-common.ts
     │   │   │   │   │   ├── utils-editor.ts
     │   │   │   │   │   ├── utils-export.ts
@@ -1031,6 +1032,21 @@
     │   │       │   │   │   ├── index.ts
     │   │       │   │   │   └── utils.ts
     │   │       │   │   ├── docs
+    │   │       │   │   │   ├── doc-comments
+    │   │       │   │   │   │   ├── api
+    │   │       │   │   │   │   │   ├── DocsThreadStore.tsx
+    │   │       │   │   │   │   │   └── DocsThreadStoreAuth.tsx
+    │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── CommentSideBar.tsx
+    │   │       │   │   │   │   │   └── CommentToolbarButton.tsx
+    │   │       │   │   │   │   ├── hooks
+    │   │       │   │   │   │   │   └── useComments.ts
+    │   │       │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   ├── stores
+    │   │       │   │   │   │   │   ├── useCommentSidebarStore.ts
+    │   │       │   │   │   │   │   └── useThreadStore.tsx
+    │   │       │   │   │   │   ├── styles.tsx
+    │   │       │   │   │   │   └── types.ts
     │   │       │   │   │   ├── doc-editor
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── DocEditor.spec.tsx
@@ -1069,16 +1085,6 @@
     │   │       │   │   │   │   │   │   ├── MarkdownButton.tsx
     │   │       │   │   │   │   │   │   └── ModalConfirmDownloadUnsafe.tsx
     │   │       │   │   │   │   │   ├── DocEditor.tsx
-    │   │       │   │   │   │   │   ├── comments
-    │   │       │   │   │   │   │   │   ├── CommentSideBar.tsx
-    │   │       │   │   │   │   │   │   ├── CommentToolbarButton.tsx
-    │   │       │   │   │   │   │   │   ├── DocsThreadStore.tsx
-    │   │       │   │   │   │   │   │   ├── DocsThreadStoreAuth.tsx
-    │   │       │   │   │   │   │   │   ├── index.ts
-    │   │       │   │   │   │   │   │   ├── styles.tsx
-    │   │       │   │   │   │   │   │   ├── types.ts
-    │   │       │   │   │   │   │   │   ├── useCommentSidebarStore.ts
-    │   │       │   │   │   │   │   │   └── useComments.ts
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
@@ -1223,6 +1229,23 @@
     │   │       │   │   │   │   │   └── useProviderStore.tsx
     │   │       │   │   │   │   ├── types.tsx
     │   │       │   │   │   │   └── utils.ts
+    │   │       │   │   │   ├── doc-presenter
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── useBrowserFullscreen.spec.ts
+    │   │       │   │   │   │   │   ├── useFitScale.spec.ts
+    │   │       │   │   │   │   │   ├── usePresenterShortcuts.spec.ts
+    │   │       │   │   │   │   │   └── useSlides.spec.ts
+    │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── PresenterFloatingBar.tsx
+    │   │       │   │   │   │   │   ├── PresenterOverlay.tsx
+    │   │       │   │   │   │   │   └── PresenterSlide.tsx
+    │   │       │   │   │   │   ├── constants.ts
+    │   │       │   │   │   │   ├── hooks
+    │   │       │   │   │   │   │   ├── useBrowserFullscreen.ts
+    │   │       │   │   │   │   │   ├── useFitScale.ts
+    │   │       │   │   │   │   │   ├── usePresenterShortcuts.ts
+    │   │       │   │   │   │   │   └── useSlides.ts
+    │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── doc-search
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   └── illustration-docs-empty.png
@@ -1666,4 +1689,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-289 directories, 1452 files
+297 directories, 1467 files
