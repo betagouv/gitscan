@@ -173,6 +173,7 @@
 │   │   ├── dossier.py
 │   │   ├── dossier_converter.py
 │   │   └── utils.py
+│   ├── locks.py
 │   ├── management
 │   │   ├── __init__.py
 │   │   └── commands
@@ -300,6 +301,7 @@
 │   │   │   └── test_personne_morale.py
 │   │   ├── test_factories.py
 │   │   ├── test_forms.py
+│   │   ├── test_locks.py
 │   │   ├── test_services.py
 │   │   └── views
 │   │       ├── __init__.py
@@ -328,6 +330,19 @@
 │   │   └── test_views.py
 │   ├── urls.py
 │   └── views.py
+├── gsl_historique
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── gsl_historique
+│   │       └── historique_table.html
+│   └── tests
+│       └── __init__.py
 ├── gsl_notification
 │   ├── __init__.py
 │   ├── admin.py
@@ -538,6 +553,7 @@
 │   │       ├── programmation_projet_detail.html
 │   │       ├── programmation_projet_list.html
 │   │       ├── tab_programmation_projet
+│   │       │   ├── tab_historique.html
 │   │       │   ├── tab_notes.html
 │   │       │   ├── tab_projet.html
 │   │       │   └── tabs.html
@@ -631,6 +647,7 @@
 │   ├── templates
 │   │   ├── gsl_projet
 │   │   │   ├── projet
+│   │   │   │   ├── tab_historique.html
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
 │   │   │   │   └── tabs.html
@@ -761,6 +778,7 @@
 │   │   │   ├── simulation_projet_detail.html
 │   │   │   ├── simulation_rename.html
 │   │   │   ├── tab_simulation_projet
+│   │   │   │   ├── tab_historique.html
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
 │   │   │   │   └── tabs.html
@@ -855,6 +873,7 @@
 │   └── views
 │       ├── bulk_status_job_views.py
 │       ├── decorators.py
+│       ├── simulation_projet_historique_views.py
 │       ├── simulation_projet_notes_views.py
 │       ├── simulation_projet_views.py
 │       └── simulation_views.py
@@ -894,4 +913,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-155 directories, 741 files
+160 directories, 755 files
