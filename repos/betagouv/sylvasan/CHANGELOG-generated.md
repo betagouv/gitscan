@@ -1,32 +1,27 @@
-## Changelog : sylvasan (30 derniers jours, au 29 mai 2026)
+## Changelog : sylvasan (30 derniers jours, au 03 juin 2026)
 
 ### Résumé
-Ce mois-ci, SylvaSan a bénéficié d'améliorations significatives en termes de gestion des images, d'authentification, et de fonctionnalités d'exportation et de filtrage des données. L'application a également été renforcée sur le plan de la sécurité et de la stabilité grâce à des mises à jour de dépendances. De nouvelles fonctionnalités comme le champ carte et les conditions d'affichage de champs ont été ajoutées, améliorant la flexibilité et la puissance de l'outil.
+Ce mois-ci, les évolutions de SylvaSan se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de la connexion via l'authentification DSF, l'implémentation d'un champ carte, et l'ajout de la possibilité d'exporter les réponses aux enquêtes. De nombreuses mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Implémentation de la connexion via OAuth2 avec DSF, permettant une authentification simplifiée et sécurisée. [#244](https://github.com/betagouv/sylvasan/pull/244)
-- **Gestion des images :** Ajout d'un champ image avec galérie de visualisation, compression et stockage optimisé. Possibilité de supprimer une observation avec des images non sauvegardées. [#283](https://github.com/betagouv/sylvasan/pull/283), [#284](https://github.com/betagouv/sylvasan/pull/284), [#285](https://github.com/betagouv/sylvasan/pull/285), [#286](https://github.com/betagouv/sylvasan/pull/286)
-- **Export des données :** Ajout de la fonctionnalité d'export des réponses avec un nombre de réponses affiché. [#262](https://github.com/betagouv/sylvasan/pull/262), [#263](https://github.com/betagouv/sylvasan/pull/263)
-- **Filtrage :** Ajout d'un filtre par enquête dans l'interface utilisateur et le backend. [#287](https://github.com/betagouv/sylvasan/pull/287)
-- **Champ carte :** Intégration d'un champ carte dans l'application web et mobile. [#226](https://github.com/betagouv/sylvasan/pull/226)
-- **Conditions d'affichage :** Ajout de la possibilité de définir des conditions d'affichage pour les champs, rendant les formulaires plus dynamiques et adaptatifs. [#261](https://github.com/betagouv/sylvasan/pull/261)
-- **Autocomplete :** Amélioration de l'autocomplétion pour ignorer les accents et les caractères spéciaux, et fermeture avec la touche Échap. [#262](https://github.com/betagouv/sylvasan/pull/262)
+- **Authentification :** Implémentation de la connexion via l'authentification DSF pour le web et l'application mobile. [#244](https://github.com/betagouv/sylvasan/pulls/244)
+- **Champ Carte :** Ajout d'un nouveau champ de type carte, permettant la visualisation et la saisie de données géographiques.  Implémentation sur le web et l'application mobile. [#226](https://github.com/betagouv/sylvasan/pulls/226)
+- **Export de réponses :** Possibilité d'exporter les réponses aux enquêtes. [#287](https://github.com/betagouv/sylvasan/pulls/287)
+- **Filtres :** Ajout d'un filtre par enquête pour affiner les résultats. [#287](https://github.com/betagouv/sylvasan/pulls/287)
+- **Autocomplete :** Amélioration de l'autocomplete pour ignorer les accents et caractères spéciaux. [#262](https://github.com/betagouv/sylvasan/pulls/262)
+- **Mon Compte :** Ajout d'une page "Mon Compte" affichant la source du compte utilisateur.
+- **Affichage Cartographique :** Affichage des données cartographiques dans le résumé.
 
 ### Évolutions techniques
-- **Django Storages :** Intégration de Django Storages pour une gestion plus flexible du stockage des fichiers. [#285](https://github.com/betagouv/sylvasan/pull/285)
-- **Mises à jour de dépendances :** Mises à jour régulières des dépendances (Django, React, Vue.js, PostgreSQL, npm, Python, Ruff) pour assurer la sécurité et la stabilité de l'application.
-- **Refactoring :** Restructuration de pages et composants web, ajout d'ADR (Architecture Decision Records) pour documenter les choix techniques.
-- **Tests :** Ajout de tests pour la connexion OAuth.
-- **Pre-commit :** Mise à jour du fichier pre-commit.
+- **Django Storages :** Intégration de Django Storages pour la gestion du stockage des fichiers. [#285](https://github.com/betagouv/sylvasan/pulls/285)
+- **Mise à jour des dépendances :** De nombreuses dépendances ont été mises à jour (Django, PostgreSQL, React, Vue.js, Python, npm, Django Storages, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- **Refactoring :** Restructuration des pages et composants web.
+- **Tests :** Ajout de tests pour la connexion OAuth et le champ carte.
+- **Pre-commit :** Mise à jour de la configuration de pre-commit avec la dernière version de ruff.
 
 ### Autres changements
-- Ajout de la page "Mon compte" avec l'affichage de la source du compte DSF.
-- Ajout de la synchronisation des pôles DSF.
-- Amélioration de l'affichage des labels pour les vocabulaires web.
-- Ajout de vocabulaires additionnels.
-- Correction de bugs et amélioration de l'expérience utilisateur.
-- Ajout d'informations sur la source du compte dans la page "Mon compte".
-- Affichage des données cartographiques dans le résumé.
-- Suppression de l'authentification par dump.
-- Ajout de spinners et désactivation des boutons pendant les opérations.
-- Ajout de l'affichage de la latitude et longitude.
+- **Vocabulaires :** Synchronisation des vocabulaires DSF et ajout de vocabulaires additionnels. [#225](https://github.com/betagouv/sylvasan/pulls/225)
+- **Documentation :** Mise à jour de la documentation.
+- **Correction de bugs :** Correction de bugs concernant l'affichage des champs, le type de champ lors de l'édition, et la gestion de la session après un redémarrage sans connexion.
+- **Améliorations UI :** Ajustements de l'interface utilisateur sur le web et l'application mobile.
+- **Version Android :** Publication de nouvelles versions de l'application Android (0.0.8 et 0.0.10).
