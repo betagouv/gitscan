@@ -1,16 +1,12 @@
-## Changelog : ami-app-ios (30 derniers jours, au 21 mai 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'affichage des bannières d'information sur l'écran d'accueil, corrige un problème lié à leur positionnement et met à jour l'URL d'accès aux réglages. Des ajustements techniques ont également été effectués pour une meilleure gestion des URLs spéciales.
+Cette mise à jour améliore l'affichage des bannières d'information et corrige un problème lié à l'URL d'accès aux réglages. L'application est plus claire et plus facile à utiliser grâce à ces modifications.
 
 ### Évolutions fonctionnelles
-- Réactivation de l'affichage des bannières d'information sur l'écran d'accueil. [#91](https://github.com/numerique-gouv/ami-app-ios/pull/91)
-- Correction du positionnement des bannières d'information, qui étaient affichées incorrectement. [#93](https://github.com/numerique-gouv/ami-app-ios/pull/93)
-- Mise à jour de l'URL d'accès aux réglages. [#86](https://github.com/numerique-gouv/ami-app-ios/pull/86)
+- Réactivation de l'affichage des bannières d'information. [#91](https://github.com/numerique-gouv/ami-app-ios/pull/91)
+- Correction de l'URL d'accès aux réglages. [#86](https://github.com/numerique-gouv/ami-app-ios/pull/86)
 
 ### Évolutions techniques
-- Introduction d'un `enum` pour la gestion des URLs spéciales (suffixe matching) afin de faciliter la détection des pages web spécifiques dans la vue d'accueil.
-- Refactorisation du code pour déplacer le conteneur des bannières hors de la `NavigationStack`.
-
-### Autres changements
-- Suppression d'un conteneur de bannières inutile dans la vue principale. [#93](https://github.com/numerique-gouv/ami-app-ios/pull/93)
+- Suppression d'un conteneur de bannières inutile dans la vue principale, simplifiant ainsi la structure de l'interface. [#93](https://github.com/numerique-gouv/ami-app-ios/pull/93)
+- Déplacement du conteneur de bannières hors de la NavigationStack pour un affichage plus correct.
