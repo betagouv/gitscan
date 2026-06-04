@@ -1,3 +1,42 @@
+2026-06-02T17:50:52+02:00 - de42047 - Alice Dahan : chore(artiste-auteur): màj guide IRCEC
+2026-06-02T10:06:05+02:00 - c3cd410 - Alice Dahan : a11y: ajoute un role status à AvertissementAnnéeDeSimulationModifiée
+2026-06-02T10:06:05+02:00 - c3830e1 - Alice Dahan : refactor: utilise la propriété dismissible de Message dans BetaBanner
+2026-06-02T10:06:05+02:00 - b72069b - Alice Dahan : style: améliore les couleurs de Button, Message, Chip et Tag
+2026-06-02T10:06:05+02:00 - b17d833 - Alice Dahan : refactor(date): affiche la date sélectionnée par défaut
+2026-06-02T10:06:05+02:00 - b15f718 - Alice Dahan : feat(cessation activité): affiche un message d'erreur en cas de date trop ancienne
+2026-06-02T10:06:05+02:00 - b04ad8e - Alice Dahan : fix: corrige la règle
+2026-06-02T10:06:05+02:00 - 9a90ce1 - Alice Dahan : fix(cessation activité): réinitialisation de la date de cessation
+2026-06-02T10:06:05+02:00 - 99a64a5 - Alice Dahan : feat(cessation activité): change l'année de simulation en fonction de la date de cessation
+2026-06-02T10:06:05+02:00 - 900f055 - Alice Dahan : refactor: utilise PublicodesAdapter dans DateCessationQuestion
+2026-06-02T10:06:05+02:00 - 6b29d11 - Alice Dahan : refactor: supprime propriété aria-hidden inutile
+2026-06-02T10:06:05+02:00 - 672c774 - Alice Dahan : fix(cessation activité): n'affiche pas l'avertissement de changement d'année en cas de réinitialisation
+2026-06-02T10:06:05+02:00 - 6697660 - Alice Dahan : i18n: clefs de traduction et points de suspension
+2026-06-02T10:06:05+02:00 - 3146ee5 - Alice Dahan : fix(cessation activité): masque l'avertissement de changement d'année à la réinitialisation
+2026-06-02T10:06:05+02:00 - 2590424 - Alice Dahan : refactor: supprime prop inutilisée de TagProps
+2026-06-02T10:06:05+02:00 - 1c896bb - Alice Dahan : style: corrige la teinte la plus sombre de 'success' (contraste avec blanc)
+2026-06-02T10:06:05+02:00 - 1bdff63 - Alice Dahan : fix(cessation activité): corrige boucle infinie
+2026-06-02T10:06:05+02:00 - 14ebf8c - Alice Dahan : feat: affiche un message d'erreur en cas de date de cessation invalide
+2026-06-02T10:06:05+02:00 - 11e3c95 - Alice Dahan : feat: rend les Message dismissibles
+2026-06-02T10:06:05+02:00 - 05395ea - Alice Dahan : feat: remet le bandeau de simulateur beta
+2026-06-01T15:19:55+02:00 - fcdf84b - Alice Dahan : feat(Mayotte): affiche un avertissement spécifique
+2026-06-01T15:19:55+02:00 - 66581c1 - Alice Dahan : feat(TI): ajoute les cotisations mahoraises
+2026-06-01T15:19:55+02:00 - 462c1c4 - Alice Dahan : feat(Mayotte): masque les points de retraite complémentaire pour les A/C/PLNR mahorais
+2026-06-01T15:19:55+02:00 - 0a20c78 - Alice Dahan : fix(Mayotte): corrige le revenu cotisé pour la retraite de base
+2026-05-28T15:03:18+02:00 - d852804 - Jalil Arfaoui : refactor(i18n): factorise la config server/client et passe langueParDéfaut depuis le serveur
+2026-05-28T15:03:18+02:00 - ce3e194 - Jalil Arfaoui : chore(domaine): renomme Quantité.ts et Unités.ts en Quantite/Unites pour contourner le crash SWC de Next.js sur les chemins d'alias TypeScript contenant un caractère non-ASCII (les identifiants exportés restent en français)
+2026-05-28T15:03:18+02:00 - b8c0d66 - Jalil Arfaoui : chore(next): consomme H1 et Body du design-system dans la page d'accueil pour valider le ThemeProvider
+2026-05-28T15:03:18+02:00 - b709f9c - Jalil Arfaoui : refactor(storage): décompose persistDarkMode en persistDarkModeForVite/ForNext (auto-documentant)
+2026-05-28T15:03:18+02:00 - 99b371a - Jalil Arfaoui : refactor(design-system): retire la désactivation CSSOM pour les bots devenue inutile avec le SSG (le HTML servi contient déjà tous les styles dans <style> via le ServerStyleSheet, plus besoin du fallback text-node) et la dépendance isbot qui ne servait que pour ça
+2026-05-28T15:03:18+02:00 - 98a61ee - Jalil Arfaoui : feat(next): branche le DarkModeProvider via cookie next/headers (sans flash ni hydration mismatch) + ajoute un bouton de bascule sur la page de démo (#4220)
+2026-05-28T15:03:18+02:00 - 919874c - Jalil Arfaoui : fix(ci): restaure next-env.d.ts dans .eslintignore (régression de 92f8d15) et exporte StyledComponentsRegistry depuis l'index design-system pour respecter l'ADR module-boundaries
+2026-05-28T15:03:18+02:00 - 8bb49e7 - Jalil Arfaoui : refactor(next): déplace la lecture du cookie darkMode dans Providers (server async) qui délègue à ClientProviders, le RootLayout n'a plus à connaître le mécanisme de persistance
+2026-05-28T15:03:18+02:00 - 7fcd750 - Jalil Arfaoui : chore(storage): guard SSR sur safeLocalStorage (retourne null si window est absent)
+2026-05-28T15:03:18+02:00 - 5fd2c45 - Jalil Arfaoui : feat(next): charge les fonts via next/font/local et utilise des CSS variables (avec fallback nom de famille pour Vite)
+2026-05-28T15:03:18+02:00 - 57094ae - Jalil Arfaoui : feat(next): branche react-i18next côté client via I18nextProvider dans ClientProviders
+2026-05-28T15:03:18+02:00 - 4ec3130 - Jalil Arfaoui : refactor(next): regroupe tous les Client Providers (Registry, Navigation, Embedded, DarkMode, Theme) dans ClientProviders pour ne laisser dans layout que la structure HTML déclarative
+2026-05-28T15:03:18+02:00 - 387b6e2 - Jalil Arfaoui : chore(storage): déplace darkModeStorage de components/utils/ vers storage/ pour cohérence avec safeLocalStorage
+2026-05-28T15:03:18+02:00 - 2ac9bf3 - Jalil Arfaoui : feat(next): branche EmbeddedContextProvider et DesignSystemThemeProvider dans le layout pour activer le thème styled-components côté SSR (#4220)
+2026-05-28T15:03:18+02:00 - 17f8f14 - Jalil Arfaoui : test(i18n): supprime le test de parseLangue (helper trivial qui cassait la CI)
 2026-05-22T18:06:17+02:00 - 9a53c13 - Jalil Arfaoui : fix(iframe): exclut integratorUrl/lang/couleur des règles ignorées (#4496)
 2026-05-22T09:37:37+02:00 - c2a43c2 - Alice Dahan : i18n: corrige les clefs de SalaireNet version Sasu
 2026-05-22T09:37:37+02:00 - c099998 - Alice Dahan : refactor: fiche de paie

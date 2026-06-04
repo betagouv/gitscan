@@ -1,30 +1,42 @@
-## Changelog : mon-entreprise (30 derniers jours, au 22 mai 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 02 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la précision des calculs pour les auto-entrepreneurs, la correction de vulnérabilités de sécurité dans les dépendances, et l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'une fiche de paie pour les SASU et des améliorations sur le questionnaire salarié. Des refactorings importants ont également été réalisés pour améliorer la maintenabilité du code et la robustesse de la simulation.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la simulation pour les entreprises basées à Mayotte, avec l'ajout des cotisations mahoraises et des ajustements spécifiques. Des corrections et améliorations ont également été apportées à la fiche de paie, notamment pour les cas salariés et SASU. Enfin, une refonte technique significative a été entreprise pour moderniser l'infrastructure Next.js et améliorer la gestion de l'internationalisation.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fiche de paie pour les SASU, incluant les cotisations et le calcul du net à payer. [#6de725e](https://github.com/betagouv/mon-entreprise/commit/6de725e)
-- Amélioration du questionnaire pour les salariés avec une liste de questions fixée et un réordonnancement des raccourcis. [#da62f90](https://github.com/betagouv/mon-entreprise/commit/da62f90), [#078441e](https://github.com/betagouv/mon-entreprise/commit/078441e)
-- Correction du calcul de l'IR (Impôt sur le Revenu) pour les auto-entrepreneurs. [#3670b6d](https://github.com/betagouv/mon-entreprise/commit/3670b6d)
-- Ajout de l'Acre au montant net social pour les MNS. [#76cd844](https://github.com/betagouv/mon-entreprise/commit/76cd844)
-- Correction de la présentation des frais professionnels dans la fiche de paie des salariés. [#9196de7](https://github.com/betagouv/mon-entreprise/commit/9196de7)
-- Correction de l'ordre des questions dans le questionnaire, notamment lorsque l'ordre est imposé. [#a578234](https://github.com/betagouv/mon-entreprise/commit/a578234)
-- Ajout de la cotisation Apec pour les SASU. [#be518df](https://github.com/betagouv/mon-entreprise/commit/be518df)
-- Suppression des frais professionnels de la rémunération brute pour les SASU. [#bb4fae1](https://github.com/betagouv/mon-entreprise/commit/bb4fae1)
+- Ajout d'un avertissement spécifique pour Mayotte lors de la simulation. [#4220](https://github.com/betagouv/mon-entreprise/issues/4220)
+- Ajout des cotisations mahoraises pour les travailleurs indépendants (TI).
+- Masquage des points de retraite complémentaire pour les travailleurs indépendants mahorais.
+- Correction du revenu cotisé pour la retraite de base à Mayotte.
+- Implémentation de la fiche de paie pour les SASU.
+- Amélioration de la présentation des frais professionnels dans la fiche de paie pour les salariés.
+- Correction de la liste des questions pour les salariés.
+- Correction de l'ordre des questions lorsque celui-ci est imposé.
+- Ajout d'un message d'erreur en cas de date de cessation d'activité invalide.
+- Possibilité de supprimer les messages d'alerte (Beta Banner, avertissements).
+- Amélioration des couleurs des composants (boutons, messages, badges, étiquettes) pour une meilleure accessibilité.
+- Affichage d'un message d'erreur en cas de date de cessation trop ancienne.
+- Réinitialisation correcte de la date de cessation d'activité.
+- Changement de l'année de simulation en fonction de la date de cessation d'activité.
+- Ajout d'un bandeau indiquant que le simulateur est en version beta.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (Koa, happy-dom, handlebars, form-data, axios, protobufjs, crisp-api, storybook, cypress). [#d0b0b68](https://github.com/betagouv/mon-entreprise/commit/d0b0b68), [#bcff703](https://github.com/betagouv/mon-entreprise/commit/bcff703), [#776a76f](https://github.com/betagouv/mon-entreprise/commit/776a76f), [#64bdcb5](https://github.com/betagouv/mon-entreprise/commit/64bdcb5), [#4fc3d93](https://github.com/betagouv/mon-entreprise/commit/4fc3d93), [#46158a5](https://github.com/betagouv/mon-entreprise/commit/46158a5), [#18e60aa](https://github.com/betagouv/mon-entreprise/commit/18e60aa), [#04fb200](https://github.com/betagouv/mon-entreprise/commit/04fb200)
-- Refactor de la gestion des règles d'identité de l'entreprise pour améliorer la robustesse de la simulation. [#4453998](https://github.com/betagouv/mon-entreprise/commit/4453998), [#65ec594](https://github.com/betagouv/mon-entreprise/commit/65ec594), [#6595a87](https://github.com/betagouv/mon-entreprise/commit/6595a87)
-- Amélioration de la gestion des erreurs dans la simulation, notamment en évitant de vider toute la situation en cas d'erreur sur une règle spécifique. [#ab25831](https://github.com/betagouv/mon-entreprise/commit/ab25831), [#bb40ba9](https://github.com/betagouv/mon-entreprise/commit/bb40ba9), [#ebdde02](https://github.com/betagouv/mon-entreprise/commit/ebdde02)
-- Migration vers Next.js 16 et implémentation de l'internationalisation (i18n) côté serveur (SSR). [#115ad14](https://github.com/betagouv/mon-entreprise/commit/115ad14)
-- Refactor de la fiche de paie pour améliorer la lisibilité et la maintenabilité du code. [#c099998](https://github.com/betagouv/mon-entreprise/commit/c099998), [#b917f26](https://github.com/betagouv/mon-entreprise/commit/b917f26), [#ad6437c](https://github.com/betagouv/mon-entreprise/commit/ad6437c), [#7cd1d4e](https://github.com/betagouv/mon-entreprise/commit/7cd1d4e)
+- Refonte de l'infrastructure Next.js (passage à la version 16 et implémentation de l'internationalisation SSR). [#4215](https://github.com/betagouv/mon-entreprise/issues/4215)
+- Utilisation de cookies pour la persistance du mode sombre.
+- Amélioration de la gestion des erreurs lors de la simulation, notamment en évitant de vider toute la situation en cas d'erreur sur une règle spécifique.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Mise à jour de nombreuses dépendances pour corriger des vulnérabilités de sécurité (Koa, handlebars, axios, cypress, etc.).
+- Utilisation de CSS variables et chargement des fonts via `next/font/local`.
+- Suppression de code inutile et de dépendances non utilisées.
 
 ### Autres changements
-- Correction de quelques erreurs de traduction dans la fiche de paie. [#c2a43c2](https://github.com/betagouv/mon-entreprise/commit/c2a43c2), [#0b31910](https://github.com/betagouv/mon-entreprise/commit/0b31910)
-- Correction d'un bug dans l'iframe qui ignorait incorrectement certaines règles. [#9a53c13](https://github.com/betagouv/mon-entreprise/commit/9a53c13)
-- Amélioration du pipeline CI/CD pour Algolia, avec une meilleure isolation des étapes et une simplification du processus de déploiement. [#e28a8a8](https://github.com/betagouv/mon-entreprise/commit/e28a8a8), [#daf4cc8](https://github.com/betagouv/mon-entreprise/commit/daf4cc8), [#cd3756b](https://github.com/betagouv/mon-entreprise/commit/cd3756b)
-- Suppression de code commenté inutile. [#3505989](https://github.com/betagouv/mon-entreprise/commit/3505989)
-- Correction de linter. [#a19f1b4](https://github.com/betagouv/mon-entreprise/commit/a19f1b4)
-- Correction d'une erreur d'envoi de l'échec de chargement Piano Analytics à Sentry. [#b306680](https://github.com/betagouv/mon-entreprise/commit/b306680)
-- Traduction de la page d'accueil "hello world". [#f496d1c](https://github.com/betagouv/mon-entreprise/commit/f496d1c)
+- Mise à jour du guide IRCEC pour les artistes-auteurs.
+- Ajout d'un rôle `status` pour améliorer l'accessibilité de l'avertissement concernant l'année de simulation.
+- Correction de clefs de traduction pour la fiche de paie (SalaireNet version Sasu).
+- Suppression de tests fragiles et de code commenté.
+- Amélioration de la configuration de l'environnement de développement.
+- Correction de fautes de linter.
+- Suppression de la désactivation CSSOM pour les bots.
+- Suppression de `next-env.d.ts` du `.gitignore`.
+- Traduction de la page d'accueil "hello world".
+- Correction de l'envoi des erreurs Piano Analytics à Sentry.

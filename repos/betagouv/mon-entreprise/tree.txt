@@ -307,6 +307,9 @@
 │   ├── ACCESSIBILITY.md
 │   ├── README.md
 │   ├── app
+│   │   ├── ClientProviders.tsx
+│   │   ├── Providers.tsx
+│   │   ├── fonts.ts
 │   │   ├── layout.tsx
 │   │   └── page.tsx
 │   ├── build
@@ -741,7 +744,6 @@
 │   │   │   │   ├── AnimatedTargetValue.tsx
 │   │   │   │   ├── Checklist
 │   │   │   │   │   └── index.tsx
-│   │   │   │   ├── FoldingMessage.tsx
 │   │   │   │   ├── Progress.tsx
 │   │   │   │   ├── Skeleton.tsx
 │   │   │   │   ├── WarningBlock.tsx
@@ -895,12 +897,12 @@
 │   │   │   ├── emoji
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── fonts.css
 │   │   │   ├── footer
 │   │   │   │   ├── column.tsx
 │   │   │   │   ├── container.tsx
 │   │   │   │   └── index.ts
 │   │   │   ├── global-style.ts
-│   │   │   ├── global.css
 │   │   │   ├── hooks.tsx
 │   │   │   ├── icons
 │   │   │   │   ├── Spinner.tsx
@@ -1032,16 +1034,17 @@
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.ts
 │   │   │   ├── types.ts
-│   │   │   └── typography
-│   │   │       ├── Ol.stories.tsx
-│   │   │       ├── TitreObjectif.tsx
-│   │   │       ├── TitreObjectifSaisissable.tsx
-│   │   │       ├── Ul.stories.tsx
-│   │   │       ├── heading.tsx
-│   │   │       ├── index.ts
-│   │   │       ├── link.tsx
-│   │   │       ├── list.tsx
-│   │   │       └── paragraphs.tsx
+│   │   │   ├── typography
+│   │   │   │   ├── Ol.stories.tsx
+│   │   │   │   ├── TitreObjectif.tsx
+│   │   │   │   ├── TitreObjectifSaisissable.tsx
+│   │   │   │   ├── Ul.stories.tsx
+│   │   │   │   ├── heading.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── link.tsx
+│   │   │   │   ├── list.tsx
+│   │   │   │   └── paragraphs.tsx
+│   │   │   └── utils.tsx
 │   │   ├── domaine
 │   │   │   ├── Adresse.ts
 │   │   │   ├── AssimiléSalariéContexte.ts
@@ -1061,13 +1064,13 @@
 │   │   │   ├── Montant.test.ts
 │   │   │   ├── Montant.ts
 │   │   │   ├── OuiNon.ts
-│   │   │   ├── Quantité.ts
+│   │   │   ├── Quantite.ts
 │   │   │   ├── RaccourciPublicodes.ts
 │   │   │   ├── SimulationConfig.ts
 │   │   │   ├── Siren.ts
 │   │   │   ├── Situation.ts
 │   │   │   ├── SituationPublicodes.ts
-│   │   │   ├── Unités.ts
+│   │   │   ├── Unites.ts
 │   │   │   ├── ValeurAnnuelle.test.ts
 │   │   │   ├── ValeurAnnuelle.ts
 │   │   │   ├── engine
@@ -1085,6 +1088,7 @@
 │   │   │   │   ├── AutoEntrepreneurContexteDansPublicodes.ts
 │   │   │   │   ├── DottedName.ts
 │   │   │   │   ├── EvaluatedRule.ts
+│   │   │   │   ├── Notification.ts
 │   │   │   │   ├── Rules.ts
 │   │   │   │   └── TravailleurIndependantContexteDansPublicodes.ts
 │   │   │   ├── relativeDottedName.ts
@@ -1183,8 +1187,10 @@
 │   │   ├── locales
 │   │   │   ├── .editorconfig
 │   │   │   ├── .gitignore
+│   │   │   ├── i18n-client.ts
 │   │   │   ├── i18n-server.ts
 │   │   │   ├── i18n.ts
+│   │   │   ├── i18nResources.ts
 │   │   │   ├── rules-as-en.yaml
 │   │   │   ├── rules-en.yaml
 │   │   │   ├── rules-ti-en.yaml
@@ -1385,8 +1391,10 @@
 │   │   │   │   ├── cessation-activité
 │   │   │   │   │   ├── CessationActivité.tsx
 │   │   │   │   │   ├── Goals.tsx
-│   │   │   │   │   ├── RégimeImpositionQuestion.tsx
-│   │   │   │   │   ├── Toggles.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AvertissementAnnéeDeSimulationModifiée.tsx
+│   │   │   │   │   │   ├── DateCessationQuestion.tsx
+│   │   │   │   │   │   └── RégimeImpositionQuestion.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── chirurgien-dentiste
@@ -1645,6 +1653,8 @@
 │   │   │   └── plausibleService.ts
 │   │   ├── sitePaths.ts
 │   │   ├── storage
+│   │   │   ├── darkModeStorage.test.ts
+│   │   │   ├── darkModeStorage.ts
 │   │   │   ├── persistCompanySituation.ts
 │   │   │   ├── persistSimulation.ts
 │   │   │   ├── readCookie.ts
@@ -1737,6 +1747,8 @@
 │   │   ├── décideActionRègleInvalide.test.ts
 │   │   ├── fabrique-social.fixtures.ts
 │   │   ├── fabrique-social.test.ts
+│   │   ├── matchers
+│   │   │   └── toEvaluate.ts
 │   │   ├── modele-social
 │   │   │   ├── ae-cotisations-cipav.test.ts
 │   │   │   ├── entreprise
@@ -1744,8 +1756,6 @@
 │   │   │   ├── helpers
 │   │   │   │   ├── PublicodesTypes.ts
 │   │   │   │   └── logValue.ts
-│   │   │   ├── matchers
-│   │   │   │   └── toEvaluate.ts
 │   │   │   └── salarié
 │   │   │       ├── RGDU.test.ts
 │   │   │       ├── apprentissage.test.ts
@@ -1761,6 +1771,8 @@
 │   │   │   │   ├── conjoint-collaborateur.test.ts
 │   │   │   │   ├── cotisations
 │   │   │   │   │   ├── allocations-familiales.test.ts
+│   │   │   │   │   ├── contribution-maladie-mayotte.test.ts
+│   │   │   │   │   ├── cotisation-maladie-mayotte.test.ts
 │   │   │   │   │   ├── début-activité.test.ts
 │   │   │   │   │   ├── indemnités-journalières.test.ts
 │   │   │   │   │   ├── invalidité-décès.test.ts
@@ -1817,4 +1829,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-319 directories, 1500 files
+320 directories, 1511 files
