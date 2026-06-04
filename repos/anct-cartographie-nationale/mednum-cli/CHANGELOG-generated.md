@@ -1,12 +1,19 @@
-## Changelog : mednum-cli (30 derniers jours, au 23 avril 2026)
+## Changelog : mednum-cli (30 derniers jours, au 02 juin 2024)
 
 ### Résumé
-Cette mise à jour améliore la gestion des adresses et des lieux de médiation numérique. Elle corrige un problème où l'API BAN était appelée inutilement avec des données incomplètes et introduit un filtrage pour éviter les doublons avec des identifiants trop volumineux. Enfin, les actions GitHub ont été mises à jour pour optimiser le processus de CI/CD.
+Cette version apporte des améliorations significatives à la gestion et à la publication des données de lieux de médiation numérique, notamment concernant la gestion des adresses, la prise en charge de nouvelles sources de données et l'optimisation du processus de géocodage. Des corrections ont également été apportées pour assurer la cohérence et la fiabilité des données publiées.
 
 ### Évolutions fonctionnelles
-- Correction : L'appel à l'API BAN est maintenant ignoré si la commune, le code postal ou l'adresse sont nuls, évitant ainsi des erreurs et optimisant les performances. [#343](https://github.com/anct-cartographie-nationale/mednum-cli/issues/343)
-- Amélioration : Les lieux de médiation numérique en doublon avec des identifiants excessivement longs sont maintenant filtrés, améliorant la qualité des données publiées. [#345](https://github.com/anct-cartographie-nationale/mednum-cli/issues/345)
-- Amélioration : Mise à jour du cache des adresses pour une meilleure performance et fiabilité. [#344](https://github.com/anct-cartographie-nationale/mednum-cli/issues/344)
+- Ajout de la source de données "Meuse" pour enrichir la base de données des lieux de médiation numérique. [#348](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/348)
+- Publication du jeu de données national à partir des données dédupliquées. [#354](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/354)
+- Renommage de "di resources" en "national" pour plus de clarté. [#355](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/355)
+- Amélioration de la gestion des dates de mise à jour (`date_maj`) pour plusieurs sources de données. [#349](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/349)
+- Actualisation des adresses dans les fichiers JSON. [#350](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/350)
 
 ### Évolutions techniques
-- Mise à jour des actions GitHub pour améliorer le workflow CI/CD. [#346](https://github.com/anct-cartographie-nationale/mednum-cli/issues/346)
+- Migration du géocodage BAN vers l'API batch CSV, améliorant ainsi les performances et la scalabilité. [#347](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/347)
+- Mise en cache des adresses pour optimiser les performances. [#353](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/353)
+
+### Autres changements
+- Correction d'un bug où les adresses invalides étaient ignorées. [#352](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/352)
+- Mise à jour de la configuration. [#351](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/351)
