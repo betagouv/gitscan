@@ -140,6 +140,7 @@
 │   │   │   ├── RecordLayoutEditor.js
 │   │   │   ├── RefSelect.ts
 │   │   │   ├── RegionFocusSwitcher.ts
+│   │   │   ├── ScreenReaderAnnouncer.ts
 │   │   │   ├── SearchBar.css
 │   │   │   ├── SelectionSummary.ts
 │   │   │   ├── TypeConversion.ts
@@ -206,6 +207,7 @@
 │   │   │   ├── browserInfo.ts
 │   │   │   ├── chartUtil.ts
 │   │   │   ├── clipboardUtils.ts
+│   │   │   ├── customCssParser.ts
 │   │   │   ├── dblclick.ts
 │   │   │   ├── dispose.d.ts
 │   │   │   ├── dispose.js
@@ -213,6 +215,7 @@
 │   │   │   ├── domAsync.ts
 │   │   │   ├── domUtils.ts
 │   │   │   ├── download.js
+│   │   │   ├── focusUtils.ts
 │   │   │   ├── formUtils.ts
 │   │   │   ├── formatUtils.ts
 │   │   │   ├── fromKoSave.ts
@@ -222,7 +225,6 @@
 │   │   │   ├── helpScout.ts
 │   │   │   ├── imports.d.ts
 │   │   │   ├── imports.js
-│   │   │   ├── isFocusable.ts
 │   │   │   ├── koArray.d.ts
 │   │   │   ├── koArray.js
 │   │   │   ├── koArrayWrap.ts
@@ -251,7 +253,6 @@
 │   │   │   ├── testState.ts
 │   │   │   ├── textUtils.ts
 │   │   │   ├── timeUtils.ts
-│   │   │   ├── trapTabKey.ts
 │   │   │   ├── uploads.ts
 │   │   │   └── urlUtils.ts
 │   │   ├── logo.css
@@ -424,6 +425,7 @@
 │   │   │   ├── NewRecordButton.ts
 │   │   │   ├── NotifyUI.ts
 │   │   │   ├── OAuthAppsCore.ts
+│   │   │   ├── OAuthFlowCore.ts
 │   │   │   ├── OnBoardingPopups.ts
 │   │   │   ├── OnboardingPage.ts
 │   │   │   ├── OpenAccessibilityModal.ts
@@ -450,6 +452,8 @@
 │   │   │   ├── RowContextMenu.ts
 │   │   │   ├── RowHeightConfig.ts
 │   │   │   ├── SandboxSection.ts
+│   │   │   ├── ScreenReaderConfig.ts
+│   │   │   ├── ScreenReaderFormatters.ts
 │   │   │   ├── ServiceStatus.ts
 │   │   │   ├── SettingsLayout.ts
 │   │   │   ├── SetupCard.ts
@@ -849,6 +853,7 @@
 │   │   │   ├── 1759256005608-Proposals.ts
 │   │   │   ├── 1759434763338-DocDisabledAt.ts
 │   │   │   ├── 1764872085347-OAuthClientsAndGrants.ts
+│   │   │   ├── 1777897588904-OAuthGrantSettingsAndLastUsedAt.ts
 │   │   │   └── README.md
 │   │   └── sqlUtils.ts
 │   ├── plugin
@@ -942,6 +947,7 @@
 │   │   │   ├── ExportXLSX.ts
 │   │   │   ├── ExternalStorage.ts
 │   │   │   ├── FileParserElement.ts
+│   │   │   ├── FilesystemExternalStorage.ts
 │   │   │   ├── FlexServer.ts
 │   │   │   ├── ForwardAuthLogin.ts
 │   │   │   ├── GetGristComConfig.ts
@@ -1019,6 +1025,7 @@
 │   │   │   ├── UserPresence.ts
 │   │   │   ├── WebhookQueue.ts
 │   │   │   ├── WidgetRepository.ts
+│   │   │   ├── adminPageConfig.ts
 │   │   │   ├── attachEarlyEndpoints.ts
 │   │   │   ├── backupSqliteDatabase.ts
 │   │   │   ├── checksumFile.ts
@@ -1026,6 +1033,7 @@
 │   │   │   ├── configCore.ts
 │   │   │   ├── configCoreFileFormats-ti.ts
 │   │   │   ├── configCoreFileFormats.ts
+│   │   │   ├── configureFilesystemExternalStorage.ts
 │   │   │   ├── configureMinIOExternalStorage.ts
 │   │   │   ├── configureOpenAIAssistantV1.ts
 │   │   │   ├── cookieUtils.ts
@@ -1622,6 +1630,7 @@
 │       │   ├── Video.svg
 │       │   ├── VideoPlay.svg
 │       │   ├── VideoPlay2.svg
+│       │   ├── VolumeUp.svg
 │       │   ├── Warning.svg
 │       │   ├── Warning2.svg
 │       │   ├── Widget.svg
@@ -1670,6 +1679,7 @@
 │       │   │   ├── NewDocMethods.ts
 │       │   │   ├── Notifications.ts
 │       │   │   ├── OAuthApps.ts
+│       │   │   ├── OAuthFlow.ts
 │       │   │   └── ProductUpgrades.ts
 │       │   └── widgets
 │       │       └── AssistantPopup.ts
@@ -1693,6 +1703,8 @@
 │   │       └── runCompletion_impl.ts
 │   ├── chai-as-promised.js
 │   ├── client
+│   │   ├── _helpers
+│   │   │   └── setupI18n.ts
 │   │   ├── clientUtil.js
 │   │   ├── components
 │   │   │   ├── Layout.js
@@ -1729,6 +1741,7 @@
 │   │   │   ├── timeUtils.ts
 │   │   │   └── urlUtils.ts
 │   │   ├── models
+│   │   │   ├── AdminChecks.ts
 │   │   │   ├── ColumnFilter.ts
 │   │   │   ├── TreeModel.ts
 │   │   │   ├── gristUrlState.ts
@@ -1740,6 +1753,7 @@
 │   │   │   └── gsMac.js
 │   │   ├── ui
 │   │   │   ├── DocumentSettings.ts
+│   │   │   ├── GetGristComProvider.ts
 │   │   │   ├── RelativeDatesOptions.ts
 │   │   │   └── UserImage.ts
 │   │   └── ui2018
@@ -1850,6 +1864,7 @@
 │   │   │   ├── FilterByComplexCellValues.grist
 │   │   │   ├── FilterLinkChain.grist
 │   │   │   ├── FilterTest.grist
+│   │   │   ├── GridWithAllFields.grist
 │   │   │   ├── Grist Basics.grist
 │   │   │   ├── GristNewUserInfo.grist
 │   │   │   ├── Hello.grist
@@ -1936,6 +1951,8 @@
 │   │   │   ├── Excel.xlsx
 │   │   │   ├── Exports.xlsx
 │   │   │   └── World-v0.xlsx
+│   │   ├── nbrowser
+│   │   │   └── custom.css
 │   │   ├── plugins
 │   │   │   ├── .jshintrc
 │   │   │   ├── browserInstalledPlugins
@@ -2321,6 +2338,7 @@
 │   │   ├── RowHeights.ts
 │   │   ├── RowMenu.ts
 │   │   ├── SavePosition.ntest.js
+│   │   ├── ScreenReader.ts
 │   │   ├── Search.ts
 │   │   ├── Search2.ts
 │   │   ├── Search3.ts
@@ -2378,6 +2396,8 @@
 │   │   ├── importerTestUtils.ts
 │   │   ├── links.ts
 │   │   ├── multiColumnHelpers.ts
+│   │   ├── oidcMockServer.ts
+│   │   ├── sandboxProbeFixture.ts
 │   │   ├── saveViewSection.ts
 │   │   ├── testServer.ts
 │   │   ├── testUtils.ts
@@ -2481,6 +2501,7 @@
 │   │   │   ├── SQLiteDB.ts
 │   │   │   ├── SamlConfig.ts
 │   │   │   ├── Scim.ts
+│   │   │   ├── ServerLocale.ts
 │   │   │   ├── TableMetadataLoader.ts
 │   │   │   ├── Telemetry.ts
 │   │   │   ├── TestingHooks.ts
@@ -2556,4 +2577,4 @@
 ├── tsconfig.eslint.json
 ├── tsconfig.json
 └── yarn.lock
-179 directories, 2471 files
+181 directories, 2490 files
