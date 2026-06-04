@@ -1,21 +1,21 @@
-## Changelog : sites-conformes (30 derniers jours, au 28 mai 2026)
+## Changelog : sites-conformes (30 derniers jours, au 1er juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la préparation de la version 3.2.0 avec une packagification du projet et une organisation des sources.  Une nouvelle fonctionnalité majeure permet désormais le stockage des médias directement en base de données PostgreSQL, offrant une alternative à l'utilisation de S3. Des corrections de bugs ont également été apportées, notamment sur le front-end et dans la gestion des noms de champs de formulaire. L'ajout de Sentry permettra un meilleur suivi des erreurs en production.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse de l'application, notamment avec l'ajout de Sentry pour la surveillance des erreurs, et des corrections de bugs sur le frontend. Une nouvelle fonctionnalité majeure permet le stockage des médias directement en base de données PostgreSQL, offrant une alternative à S3. Des travaux de packagification et de documentation ont également été réalisés.
 
 ### Évolutions fonctionnelles
-- **Stockage des médias en PostgreSQL :**  Il est maintenant possible de stocker les médias (images, documents, etc.) directement dans la base de données PostgreSQL, offrant une alternative à l'utilisation de services de stockage externes comme S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
-- **Correction de bugs front-end :** Des corrections de bugs ont été implémentées sur l'interface utilisateur pour améliorer l'expérience utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
-- **Correction du clean_name vide :**  Un bug empêchant le bon fonctionnement du nettoyage des noms de champs de formulaire a été résolu. [#492](https://github.com/numerique-gouv/sites-conformes/issues/492)
+- **Stockage des médias en PostgreSQL :** Possibilité de stocker les médias directement dans la base de données PostgreSQL, offrant une alternative à l'utilisation de S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
+- **Correction de bugs frontend :** Résolution de plusieurs bugs impactant l'interface utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
+- **Correction du problème `clean_name` vide :** Résolution d'un bug où le champ `clean_name` pouvait être vide sur les champs de formulaire. [#492](https://github.com/numerique-gouv/sites-conformes/issues/492)
 
 ### Évolutions techniques
-- **Packagification du projet :** Le projet a été packagé pour faciliter sa distribution et son installation. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506) et [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
-- **Organisation des sources :** Les sources du projet ont été réorganisées et renommées pour une meilleure structure.
-- **Ajout de Sentry :** L'outil de surveillance des erreurs Sentry a été intégré pour améliorer la détection et le suivi des problèmes en production. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
-- **Mise à jour des dépendances Python :** Les dépendances Python du projet ont été mises à jour pour bénéficier des dernières corrections et améliorations. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
-- **Préparation de la version 3.2.0 :**  Plusieurs modifications ont été apportées pour préparer la sortie de la version 3.2.0, incluant des corrections automatiques et des ajustements de noms.
+- **Intégration de Sentry :** Ajout de Sentry pour la surveillance et la gestion des erreurs en production. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
+- **Packagification :** Travaux de packagification pour améliorer la structure du projet. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506) et [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
+- **Mise à jour des dépendances Python :** Mise à jour des dépendances Python pour bénéficier des dernières corrections et améliorations. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
+- **Refactoring du code :** Déplacement des sources namespacées dans `sites_conformes/`.
+- **Préparation pour la version 3.2.0 :** Application des corrections automatiques de pre-commit et noms de packages.
 
 ### Autres changements
-- **Documentation mise à jour :** La documentation du projet a été mise à jour. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
-- **Changement de nom du dépôt :** Le nom du dépôt a été mis à jour. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
-- **Ajout de `demo` à `slugignore` :** Le mot `demo` a été ajouté à la liste des mots à ignorer lors de la génération des slugs.
+- **Documentation :** Mise à jour de la documentation. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
+- **Changement de nom du dépôt :** Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
+- **Annulation d'une migration :** Annulation d'une migration récente.
