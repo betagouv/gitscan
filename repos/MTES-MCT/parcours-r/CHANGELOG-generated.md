@@ -1,17 +1,20 @@
-## Changelog : parcours-r (30 derniers jours, au 29 mai 2026)
+## Changelog : parcours-r (30 derniers jours, au 3 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations techniques pour la construction et le déploiement des images Docker utilisées pour la formation R, notamment pour assurer la compatibilité avec l'infrastructure SSP Cloud. Un nouveau module de formation (M6) a également été ajouté et déployé.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du processus de construction et de déploiement des images Docker utilisées pour les supports de formation, notamment en vue de leur intégration avec le SSP Cloud. Des ajustements ont également été apportés pour assurer la compatibilité avec des versions spécifiques de R et pour faciliter la gestion des secrets utilisés par les workflows GitHub Actions.
 
 ### Évolutions fonctionnelles
-- Ajout du module de formation M6 au format R Markdown.
-- Mise à jour du fichier README généré.
+- Ajout du module M6 Rmd aux modules déployés.
+- Mise à jour du journal.
 
 ### Évolutions techniques
-- Mise à jour de la version de R pour assurer la compatibilité avec l'infrastructure SSP Cloud.
-- Correction d'erreurs dans la création des images R 4.6 sur GitHub Container Registry (GHCR).
-- Ajout d'un Personal Access Token (PAT) GitHub pour la construction des images Docker dans les actions GitHub.
-- Mise à jour de la version des actions GitHub.
+- Passage des GitHub Actions à l'utilisation d'un secret `GITHUB_PAT` fixe pour la réinstallation des images Docker dans le SSP Cloud. Ceci améliore la fiabilité du processus de déploiement.
+- Mise à jour de la version de `pak` dans les GitHub Actions pour assurer la compatibilité et la stabilité.
+- Modification de la version de R pour assurer la compatibilité avec le SSP Cloud.
+- Amélioration des workflows GitHub Actions pour la création des images R 4.6 sur `ghcr.io`.
+- Mise à jour des workflows GitHub Actions `bookdown-build-and-deploy.yml`, `rstudio-image-build.yml` et `update-readme.yml` pour optimiser le processus de construction et de déploiement.
 
 ### Autres changements
-- Résolution de conflits dans les fichiers.
+- Mise à jour du fichier `CONTRIBUTING.md` avec un lien mis à jour vers la documentation des tokens SSP Cloud.
+- Mise à jour du script `99_fork_parcours_r.sh`.
+- Mise à jour du fichier `README.md` généré.
