@@ -1,10 +1,14 @@
 .
 ├── .buildpacks
 ├── .claude
+│   ├── context
+│   │   └── security-rules.md
 │   ├── hooks
 │   │   └── format-on-write.sh
 │   ├── settings.json
 │   └── skills
+│       ├── adr
+│       │   └── SKILL.md
 │       └── verif
 │           └── SKILL.md
 ├── .dockerignore
@@ -30,11 +34,24 @@
 ├── README.md
 ├── docker-compose.yml
 ├── docs
+│   ├── ARCHITECTURE.md
+│   ├── adr
+│   │   ├── 0000-template.md
+│   │   ├── 0001-nextjs-15-app-router.md
+│   │   ├── 0002-postgresql-drizzle-orm.md
+│   │   ├── 0003-dsfr-tailwind-ui.md
+│   │   ├── 0004-demarches-simplifiees-backbone.md
+│   │   ├── 0005-auth-oidc-franceconnect-proconnect.md
+│   │   ├── 0006-architecture-ddd-lite-par-features.md
+│   │   ├── 0007-modele-etat-parcours-sync-ds.md
+│   │   └── README.md
 │   ├── parcours
-│   │   └── FLOW-AND-SYNC.md
+│   │   ├── FLOW-AND-SYNC.md
+│   │   └── INCIDENT-double-progression-amo.md
 │   ├── partners
 │   │   └── PARTNER-TRACKING.md
 │   ├── security
+│   │   ├── RBAC-ROLES.md
 │   │   └── snyk-accepted-vulnerabilities.md
 │   └── testing
 │       ├── TESTING-AUTH.md
@@ -132,12 +149,16 @@
 │   │       └── import-rga-zones.ts
 │   ├── ops
 │   │   ├── README.md
+│   │   ├── audit-epci-fallback.ts
 │   │   ├── audit-parcours-ds-integrity.ts
 │   │   ├── cleanup-staging.sql
 │   │   ├── debug-matomo-events.ts
 │   │   ├── extend-expired-tokens.sql
 │   │   ├── fetch-demarche-schema.ts
+│   │   ├── fix-double-progression-amo.ts
 │   │   ├── fix-missing-epci.ts
+│   │   ├── lib
+│   │   │   └── double-progression.ts
 │   │   └── verify-dashboard-stats.ts
 │   └── seed
 │       ├── README.md
@@ -326,9 +347,14 @@
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ColumnFilterButton.test.tsx
+│   │   │   │   │   │   ├── ColumnFilterButton.tsx
+│   │   │   │   │   │   ├── ColumnSortButton.tsx
+│   │   │   │   │   │   ├── DossiersKpiCards.tsx
 │   │   │   │   │   │   ├── DossiersPanel.tsx
 │   │   │   │   │   │   ├── DossiersSuivisHeader.tsx
 │   │   │   │   │   │   ├── DossiersSuivisTable.tsx
+│   │   │   │   │   │   ├── HeaderIconButton.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── nouveau
 │   │   │   │   │   │   ├── page.tsx
@@ -350,25 +376,20 @@
 │   │   │   │   │   │   │       ├── QualificationForm.tsx
 │   │   │   │   │   │   │       └── QualificationSection.tsx
 │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── ProspectsHeader.tsx
-│   │   │   │   │   │   ├── ProspectsPanel.tsx
-│   │   │   │   │   │   └── ProspectsTable.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AFaire.tsx
 │   │   │   │   │   │   ├── ActionMenu.tsx
+│   │   │   │   │   │   ├── Actions
+│   │   │   │   │   │   │   ├── ActionForm.tsx
+│   │   │   │   │   │   │   ├── ActionItem.tsx
+│   │   │   │   │   │   │   ├── ActionsRealisees.tsx
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── ArchiveModal.tsx
 │   │   │   │   │   │   ├── GagnezDuTemps.tsx
 │   │   │   │   │   │   ├── InfoDemandeur.tsx
 │   │   │   │   │   │   ├── InfoLogement.tsx
-│   │   │   │   │   │   ├── NotesPartagees
-│   │   │   │   │   │   │   ├── NoteForm.tsx
-│   │   │   │   │   │   │   ├── NoteItem.tsx
-│   │   │   │   │   │   │   ├── NotesPartagees.css
-│   │   │   │   │   │   │   ├── NotesPartagees.tsx
-│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
 │   │   │   │   │   │   ├── QualificationAllersVers.tsx
 │   │   │   │   │   │   ├── RepartitionCardTile.tsx
@@ -716,8 +737,11 @@
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── permissions.service.test.ts
 │   │   │   │       ├── permissions.service.ts
+│   │   │   │       ├── rbac-actions-access.test.ts
 │   │   │   │       ├── rbac.service.test.ts
-│   │   │   │       └── rbac.service.ts
+│   │   │   │       ├── rbac.service.ts
+│   │   │   │       ├── responsable-permissions.service.test.ts
+│   │   │   │       └── responsable-permissions.service.ts
 │   │   │   ├── server.ts
 │   │   │   ├── services
 │   │   │   │   ├── index.ts
@@ -882,7 +906,6 @@
 │   │   │   │   │   │   ├── demande-detail.actions.test.ts
 │   │   │   │   │   │   ├── demande-detail.actions.ts
 │   │   │   │   │   │   ├── get-amo-accueil-data.action.ts
-│   │   │   │   │   │   ├── get-nombre-demandes-en-attente.action.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── index.ts
@@ -899,24 +922,28 @@
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── archive-dossier.actions.ts
-│   │   │   │   │   │   ├── get-amo-dossiers-data.action.ts
+│   │   │   │   │   │   ├── get-dossiers-territoire-data.action.ts
+│   │   │   │   │   │   ├── get-nombre-dossiers.action.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── responsable-presentation.test.ts
+│   │   │   │   │   │   ├── responsable-presentation.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── amo-dossiers.types.ts
 │   │   │   │   │   │       ├── dossier-detail.types.ts
+│   │   │   │   │   │       ├── dossiers-territoire.types.ts
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── services
-│   │   │   │   │       ├── amo-dossiers.service.test.ts
-│   │   │   │   │       ├── amo-dossiers.service.ts
 │   │   │   │   │       ├── dossier-detail.service.ts
-│   │   │   │   │       └── index.ts
+│   │   │   │   │       ├── dossiers-territoire.service.test.ts
+│   │   │   │   │       ├── dossiers-territoire.service.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── responsable-resolver.service.test.ts
+│   │   │   │   │       └── responsable-resolver.service.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── prospects
 │   │   │   │   │   ├── actions
-│   │   │   │   │   │   ├── archive-prospect.actions.ts
-│   │   │   │   │   │   ├── get-prospects-list.actions.ts
 │   │   │   │   │   │   └── qualify-prospect.actions.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   └── types
@@ -925,28 +952,27 @@
 │   │   │   │   │   │       └── qualification.types.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── prospect-detail.service.ts
-│   │   │   │   │       ├── prospects-list.service.ts
 │   │   │   │   │       └── qualification.service.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── actions
-│   │   │   │   │   │   ├── commentaires.actions.test.ts
-│   │   │   │   │   │   ├── commentaires.actions.ts
+│   │   │   │   │   │   ├── dossier-actions.actions.test.ts
+│   │   │   │   │   │   ├── dossier-actions.actions.ts
 │   │   │   │   │   │   └── update-simulation-data.action.ts
 │   │   │   │   │   ├── context
 │   │   │   │   │   │   └── AmoContext.tsx
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── types
+│   │   │   │   │   │   │   ├── action.types.ts
 │   │   │   │   │   │   │   ├── amo-tab.types.ts
-│   │   │   │   │   │   │   ├── commentaire.types.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── value-objects
 │   │   │   │   │   │       └── amo-tabs.config.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── services
+│   │   │   │   │       ├── actions.service.test.ts
+│   │   │   │   │       ├── actions.service.ts
 │   │   │   │   │       ├── agent-edit-info.service.ts
-│   │   │   │   │       ├── commentaires.service.test.ts
-│   │   │   │   │       ├── commentaires.service.ts
 │   │   │   │   │       ├── edition-simulation.service.ts
 │   │   │   │   │       └── parcours-creator.service.ts
 │   │   │   │   └── statistiques
@@ -1079,6 +1105,11 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── parcours.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── dossier-etat.service.test.ts
+│   │   │   │   │   │   ├── dossier-etat.service.ts
+│   │   │   │   │   │   ├── responsable.service.test.ts
+│   │   │   │   │   │   └── responsable.service.ts
 │   │   │   │   │   ├── types
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── parcours-query.types.ts
@@ -1148,6 +1179,7 @@
 │   │   │       └── utils
 │   │   │           ├── ds-field.utils.ts
 │   │   │           ├── ds-status.validators.ts
+│   │   │           ├── ds-url.utils.test.ts
 │   │   │           ├── ds-url.utils.ts
 │   │   │           └── index.ts
 │   │   ├── rga-map
@@ -1446,6 +1478,7 @@
 │   │   │   │   ├── 0029_kind_makkari.sql
 │   │   │   │   ├── 0030_regular_caretaker.sql
 │   │   │   │   ├── 0031_solid_la_nuit.sql
+│   │   │   │   ├── 0032_rename_commentaires_to_actions.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1479,6 +1512,7 @@
 │   │   │   │       ├── 0029_snapshot.json
 │   │   │   │       ├── 0030_snapshot.json
 │   │   │   │       ├── 0031_snapshot.json
+│   │   │   │       ├── 0032_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1490,8 +1524,8 @@
 │   │   │   │   ├── dossiers-demarches-simplifiees.repository.ts
 │   │   │   │   ├── entreprises-amo.repository.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── parcours-commentaires.repository.test.ts
-│   │   │   │   ├── parcours-commentaires.repository.ts
+│   │   │   │   ├── parcours-actions.repository.test.ts
+│   │   │   │   ├── parcours-actions.repository.ts
 │   │   │   │   ├── parcours-prevention.repository.test.ts
 │   │   │   │   ├── parcours-prevention.repository.ts
 │   │   │   │   ├── prospect-qualifications.repository.ts
@@ -1512,8 +1546,8 @@
 │   │   │       ├── entreprises-amo-epci.ts
 │   │   │       ├── entreprises-amo.ts
 │   │   │       ├── index.ts
+│   │   │       ├── parcours-actions.ts
 │   │   │       ├── parcours-amo-validations.ts
-│   │   │       ├── parcours-commentaires.ts
 │   │   │       ├── parcours-prevention.ts
 │   │   │       ├── prospect-qualifications.ts
 │   │   │       ├── rga-zones.ts
@@ -1603,6 +1637,7 @@
 │   │       ├── date.test.ts
 │   │       ├── date.utils.ts
 │   │       ├── debug.utils.ts
+│   │       ├── departements.utils.test.ts
 │   │       ├── departements.utils.ts
 │   │       ├── evolution-temporelle.test.ts
 │   │       ├── evolution-temporelle.ts
@@ -1622,4 +1657,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-464 directories, 1160 files
+468 directories, 1191 files
