@@ -1,41 +1,38 @@
-## Changelog : rapportnav2 (30 derniers jours, au 01 juin 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 03 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des ressources et des agents, notamment l'ajout de fonctionnalités pour gérer l'affectation des ressources aux missions. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des optimisations de l'infrastructure CI/CD.
+Ce mois-ci, les évolutions de rapportnav2 se concentrent sur l'amélioration de la gestion des ressources et des agents, l'ajout de nouvelles fonctionnalités pour les contrôles environnementaux (notamment la plongée), et des optimisations techniques pour la CI/CD et la sécurité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des ressources et des agents : possibilité de gérer l'affectation des ressources (matériel, personnel) aux missions. [#1364](https://github.com/MTES-MCT/rapportnav2/pull/1364)
-- Restauration de la fonctionnalité de "diving" (exploration détaillée) pour les contrôles environnementaux.
-- Amélioration de l'affichage des erreurs 400 sur le frontend.
-- Ajout d'un service d'adresse via data.gouv.fr avec auto-complétion sur le frontend.
-- Ajout du type de localisation pour les contrôles de navigation.
-- Correction de l'affichage des dropdown dans les dialogues d'administration.
-- Correction du type de ressource ControlUnitResource manquant dans l'environnement.
-- Correction de l'affichage des actions SEA et LAND pour AEM 4.3.3.
-- Correction du comptage des cibles pour AEM 7.4.
-- Correction du typage de `operationalSummary.envSummary` pour une meilleure compatibilité avec `otherActionsSummary.envSurveillances`.
+- Ajout de la gestion des ressources et des agents dans l'interface d'administration ([#1381](https://github.com/MTES-MCT/rapportnav2/issues/1381)).
+- Possibilité d'ajouter des informations de plongée aux contrôles environnementaux.
+- Mise à jour de l'action "entretien des moyens" avec l'ajout d'une table `mission_action_resource` [#1390](https://github.com/MTES-MCT/rapportnav2/issues/1390).
+- Amélioration de la recherche d'établissements.
+- Utilisation d'un service d'adresse de data.gouv.fr avec auto-complétion dans l'interface.
+- Ajout du type de localisation pour les contrôles environnementaux.
+- Remplacement des champs de texte par des zones de texte pour les observations des contrôles environnementaux.
+- Correction de l'affichage des codes d'erreur 400.
 
 ### Évolutions techniques
-- Mise à jour de l'infrastructure CI/CD :
-    - Utilisation de `bellsoft/liberica-openjdk-alpine:25` pour les builds.
-    - Amélioration de la mise en cache des builds backend.
-    - Refonte de l'exclusion de fichiers dans le CI.
-    - Ajout de rapports frontend à SonarQube.
-    - Mise à jour des versions de Gradle et Vite.
-- Mise à jour de la version de Flyway.
-- Mise à jour de Kotlin.
-- Amélioration de la configuration backend et exclusion des fichiers de configuration de la couverture de test.
-- Correction de problèmes liés à SonarQube (analyse, artefacts, couverture).
-- Mise à jour des dépendances npm et yarn.
-- Suppression de l'analyse OSS Index.
-- Correction de problèmes de sécurité liés à Tomcat (forcer la version `tomcat-embed-core`).
-- Suppression de fichiers `.env` inutilisés.
-- Mise à jour de la version de PostgreSQL.
+- Mise à jour de la version de Vite à la version 8.
+- Amélioration du pipeline CI/CD :
+    - Utilisation d'une image Docker plus légère pour les builds (bellsoft/liberica-openjdk-alpine:25).
+    - Optimisation de la mise en cache des builds backend.
+    - Refonte de la configuration du pipeline.
+    - Ajout de rapports SonarQube pour le frontend.
+    - Intégration de Trivy pour l'analyse de vulnérabilités.
+- Mise à jour des dépendances : Flyway, Monitor-ui, Gradle, et divers paquets npm.
+- Amélioration de la couverture de tests.
+- Suppression d'artefacts inutiles dans SonarQube.
+- Correction de problèmes liés à la configuration de SonarQube.
+- Renforcement de la sécurité en forçant l'utilisation d'une version spécifique de `tomcat-embed-core`.
+- Suppression de suppressions de CVE obsolètes.
+- Ajout de validations côté backend.
+- Générateur de documentation pour les règles de validation.
 
 ### Autres changements
-- Mise à jour de la documentation et des suppressions de CVE.
-- Correction de divers problèmes de fiabilité détectés par SonarQube.
-- Ajout de snapshots pour les tests.
+- Correction de divers problèmes de typage et de configuration.
 - Suppression d'imports inutilisés.
-- Mise à jour des suppressions de vulnérabilités (SVE suppression.xml).
-- Correction de problèmes liés à la gestion des promesses rejetées dans SonarQube.
+- Mise à jour de la documentation.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour des conteneurs PostgreSQL.

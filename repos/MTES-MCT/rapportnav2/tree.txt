@@ -69,11 +69,11 @@
 │   │   │   │                   │   ├── JacksonGeoConfig.kt
 │   │   │   │                   │   ├── JpaConfig.kt
 │   │   │   │                   │   ├── JwtEncodingConfig.kt
-│   │   │   │                   │   ├── MandatoryForStats.kt
 │   │   │   │                   │   ├── RequestLoggingConfig.kt
 │   │   │   │                   │   ├── SecurityConfig.kt
 │   │   │   │                   │   ├── SentryConfig.kt
 │   │   │   │                   │   ├── UseCase.kt
+│   │   │   │                   │   ├── ValidationConfig.kt
 │   │   │   │                   │   └── WireMockConfig.kt
 │   │   │   │                   ├── domain
 │   │   │   │                   │   ├── entities
@@ -393,6 +393,7 @@
 │   │   │   │                   │   │   │       ├── GetGeneralInfo2.kt
 │   │   │   │                   │   │   │       ├── GetMissionActionControls.kt
 │   │   │   │                   │   │   │       ├── GetMissionCrew.kt
+│   │   │   │                   │   │   │       ├── GetMissionDates.kt
 │   │   │   │                   │   │   │       ├── GetMissions.kt
 │   │   │   │                   │   │   │       ├── GetNavMissionById2.kt
 │   │   │   │                   │   │   │       ├── GetNavMissions.kt
@@ -448,13 +449,24 @@
 │   │   │   │                   │   │       ├── FillAEMExcelRow.kt
 │   │   │   │                   │   │       ├── FormatDateTime.kt
 │   │   │   │                   │   │       └── FormatGeoCoords.kt
-│   │   │   │                   │   └── utils
-│   │   │   │                   │       ├── AEMUtils.kt
-│   │   │   │                   │       ├── ComputeDurationUtils.kt
-│   │   │   │                   │       ├── EntityCompletenessValidator.kt
-│   │   │   │                   │       ├── FlagsUtils.kt
-│   │   │   │                   │       ├── PasswordValidator.kt
-│   │   │   │                   │       └── UUIDUtils.kt
+│   │   │   │                   │   ├── utils
+│   │   │   │                   │   │   ├── AEMUtils.kt
+│   │   │   │                   │   │   ├── ComputeDurationUtils.kt
+│   │   │   │                   │   │   ├── FlagsUtils.kt
+│   │   │   │                   │   │   ├── MissionDateUtils.kt
+│   │   │   │                   │   │   ├── PasswordValidator.kt
+│   │   │   │                   │   │   └── UUIDUtils.kt
+│   │   │   │                   │   └── validation
+│   │   │   │                   │       ├── EndAfterStart.kt
+│   │   │   │                   │       ├── EndAfterStartValidator.kt
+│   │   │   │                   │       ├── EntityValidityValidator.kt
+│   │   │   │                   │       ├── ReflectionFieldUtils.kt
+│   │   │   │                   │       ├── RequiredFields.kt
+│   │   │   │                   │       ├── RequiredFieldsValidator.kt
+│   │   │   │                   │       ├── ValidationGroups.kt
+│   │   │   │                   │       ├── ValidationRulesDocGenerator.kt
+│   │   │   │                   │       ├── WithinMissionDateRange.kt
+│   │   │   │                   │       └── WithinMissionDateRangeValidator.kt
 │   │   │   │                   └── infrastructure
 │   │   │   │                       ├── api
 │   │   │   │                       │   ├── ControllersExceptionHandler.kt
@@ -926,6 +938,7 @@
 │   │   │       │       ├── V1.2026.04.27.10.00__add_fish_auction_id_column.sql
 │   │   │       │       ├── V1.2026.05.11.10.47__alter_role_type_add_values.sql
 │   │   │       │       ├── V1.2026.05.11.27.47__alter_agent_table_add_card_id.sql
+│   │   │       │       ├── V1.2026.05.28.10.00__create_mission_action_resource_table.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -951,6 +964,15 @@
 │   │       ├── kotlin
 │   │       │   └── fr
 │   │       │       └── gouv
+│   │       │           ├── dgampa
+│   │       │           │   └── rapportnav
+│   │       │           │       └── domain
+│   │       │           │           ├── utils
+│   │       │           │           │   └── EntityValidityValidatorTest.kt
+│   │       │           │           └── validation
+│   │       │           │               ├── EndAfterStartValidatorTest.kt
+│   │       │           │               ├── RequiredFieldsValidatorTest.kt
+│   │       │           │               └── WithinMissionDateRangeValidatorTest.kt
 │   │       │           └── gmampa
 │   │       │               └── rapportnav
 │   │       │                   ├── RapportNavApplicationTests.kt
@@ -995,6 +1017,8 @@
 │   │       │                   │   │   │   │       ├── LegacyControlUnitEntityTest.kt
 │   │       │                   │   │   │   │       └── LegacyControlUnitResourceEntityTest.kt
 │   │       │                   │   │   │   └── nav
+│   │       │                   │   │   │       ├── crew
+│   │       │                   │   │   │       │   └── MissionPassengerEntityTest.kt
 │   │       │                   │   │   │       ├── generalinfo
 │   │       │                   │   │   │       │   └── MissionGeneralInfoEntityTest.kt
 │   │       │                   │   │   │       └── v2
@@ -1123,6 +1147,7 @@
 │   │       │                   │   │   │       ├── GetGeneralInfo2Test.kt
 │   │       │                   │   │   │       ├── GetMissionActionControlsTest.kt
 │   │       │                   │   │   │       ├── GetMissionCrewTest.kt
+│   │       │                   │   │   │       ├── GetMissionDatesTest.kt
 │   │       │                   │   │   │       ├── GetMissionGeneralInfoByMissionIdTest.kt
 │   │       │                   │   │   │       ├── GetMissionsTest.kt
 │   │       │                   │   │   │       ├── GetNavMissionById2Test.kt
@@ -1177,7 +1202,7 @@
 │   │       │                   │   │       └── FormatGeoCoordsTests.kt
 │   │       │                   │   └── utils
 │   │       │                   │       ├── ComputeDurationUtilsTest.kt
-│   │       │                   │       ├── EntityCompletenessValidatorTest.kt
+│   │       │                   │       ├── MissionDateUtilsTest.kt
 │   │       │                   │       └── UUIDUtilsTest.kt
 │   │       │                   ├── infrastructure
 │   │       │                   │   ├── api
@@ -1391,7 +1416,8 @@
 │   │   │   ├── index.md
 │   │   │   ├── mission-completion.md
 │   │   │   ├── missions-and-actions.md
-│   │   │   └── roles.md
+│   │   │   ├── roles.md
+│   │   │   └── validation-rules.md
 │   │   ├── images
 │   │   │   ├── hexa-archi.png
 │   │   │   ├── portainer.png
@@ -1600,12 +1626,12 @@
 │   │   │   │   │   │       ├── admin-agent-form.tsx
 │   │   │   │   │   │       ├── admin-agent-role.tsx
 │   │   │   │   │   │       ├── admin-apikey-form.tsx
+│   │   │   │   │   │       ├── admin-basic-item-header.tsx
 │   │   │   │   │   │       ├── admin-fish-auction-form.tsx
 │   │   │   │   │   │       ├── admin-general-infos-form.tsx
 │   │   │   │   │   │       ├── admin-service-form.tsx
 │   │   │   │   │   │       ├── admin-user-form.tsx
-│   │   │   │   │   │       ├── admin-user-password-form.tsx
-│   │   │   │   │   │       └── dialog-form.tsx
+│   │   │   │   │   │       └── admin-user-password-form.tsx
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── use-admin-agents-service.tsx
 │   │   │   │   │   │   ├── use-admin-apikey-logging-service.tsx
@@ -1634,7 +1660,6 @@
 │   │   │   │   │   │   ├── use-admin-user-auth-logging-service.tsx
 │   │   │   │   │   │   └── use-admin-user-service.tsx
 │   │   │   │   │   └── types
-│   │   │   │   │       ├── admin-action.ts
 │   │   │   │   │       ├── admin-agent-types.ts
 │   │   │   │   │       ├── admin-apikey-logging-types.ts
 │   │   │   │   │       ├── admin-apikey-types.ts
@@ -1646,10 +1671,10 @@
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   ├── admin-guard.test.tsx
-│   │   │   │   │   │   │   └── auth-guard.test.tsx
-│   │   │   │   │   │   ├── admin-guard.tsx
-│   │   │   │   │   │   └── auth-guard.tsx
+│   │   │   │   │   │   │   ├── auth-guard.test.tsx
+│   │   │   │   │   │   │   └── role-guard.test.tsx
+│   │   │   │   │   │   ├── auth-guard.tsx
+│   │   │   │   │   │   └── role-guard.tsx
 │   │   │   │   │   └── hooks
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   └── use-auth.test.tsx
@@ -1659,6 +1684,8 @@
 │   │   │   │   │   │   ├── elements
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── export-file-button.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-bound-formik-date-picker.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-bound-formik-date-range-picker.test.tsx
 │   │   │   │   │   │   │   │   ├── mission-completeness-for-stats-tag.test.tsx
 │   │   │   │   │   │   │   │   ├── mission-list-daterange-navigator.test.tsx
 │   │   │   │   │   │   │   │   ├── offline-tag.test.tsx
@@ -1666,6 +1693,8 @@
 │   │   │   │   │   │   │   ├── action-header-action.tsx
 │   │   │   │   │   │   │   ├── export-file-button.tsx
 │   │   │   │   │   │   │   ├── item-list-daterange-navigator.tsx
+│   │   │   │   │   │   │   ├── mission-bound-formik-date-picker.tsx
+│   │   │   │   │   │   │   ├── mission-bound-formik-date-range-picker.tsx
 │   │   │   │   │   │   │   ├── mission-completeness-for-stats-tag.tsx
 │   │   │   │   │   │   │   ├── mission-natinfs.tsx
 │   │   │   │   │   │   │   ├── offline-tag.tsx
@@ -1768,6 +1797,8 @@
 │   │   │   │   │   │       │   ├── vessel-name.test.tsx
 │   │   │   │   │   │       │   └── yes-no-toogle.test.tsx
 │   │   │   │   │   │       ├── action-*.tsx  (5 files)
+│   │   │   │   │   │       ├── basic-dialog-form.tsx
+│   │   │   │   │   │       ├── basic-item-table.tsx
 │   │   │   │   │   │       ├── dialog-question.tsx
 │   │   │   │   │   │       ├── foreign-establishment.tsx
 │   │   │   │   │   │       ├── formik-*.tsx  (17 files)
@@ -1776,6 +1807,7 @@
 │   │   │   │   │   │       ├── mission-*.tsx  (12 files)
 │   │   │   │   │   │       ├── search-city.tsx
 │   │   │   │   │   │       ├── search-establishment.tsx
+│   │   │   │   │   │       ├── styled-tab.tsx
 │   │   │   │   │   │       ├── text-by-cacem.tsx
 │   │   │   │   │   │       ├── text-by-cnsp.tsx
 │   │   │   │   │   │       ├── time-conversion.tsx
@@ -1794,8 +1826,11 @@
 │   │   │   │   │   │   │   ├── use-date.test.tsx
 │   │   │   │   │   │   │   ├── use-delay-formik.test.tsx
 │   │   │   │   │   │   │   ├── use-delay.test.tsx
+│   │   │   │   │   │   │   ├── use-form-validation-reporter.test.tsx
 │   │   │   │   │   │   │   ├── use-global-sync-status.test.tsx
+│   │   │   │   │   │   │   ├── use-handle-dialog-form.test.tsx
 │   │   │   │   │   │   │   ├── use-mission-completeness-for-stats.test.tsx
+│   │   │   │   │   │   │   ├── use-mission-dates.test.tsx
 │   │   │   │   │   │   │   ├── use-mission-finished.test.tsx
 │   │   │   │   │   │   │   ├── use-mission-interservices.test.tsx
 │   │   │   │   │   │   │   ├── use-mission-list.test.tsx
@@ -1810,6 +1845,8 @@
 │   │   │   │   │   │   │   ├── use-online-manager.test.tsx
 │   │   │   │   │   │   │   ├── use-password.test.tsx
 │   │   │   │   │   │   │   ├── use-sector.test.tsx
+│   │   │   │   │   │   │   ├── use-table-basic-item.test.tsx
+│   │   │   │   │   │   │   ├── use-timeline-action.test.tsx
 │   │   │   │   │   │   │   ├── use-vehicule.test.tsx
 │   │   │   │   │   │   │   └── use-vessel.test.tsx
 │   │   │   │   │   │   ├── use-abstract-formik-form.tsx
@@ -1825,8 +1862,11 @@
 │   │   │   │   │   │   ├── use-delay-formik.tsx
 │   │   │   │   │   │   ├── use-delay.tsx
 │   │   │   │   │   │   ├── use-download-file.tsx
+│   │   │   │   │   │   ├── use-form-validation-reporter.tsx
 │   │   │   │   │   │   ├── use-global-sync-status.tsx
+│   │   │   │   │   │   ├── use-handle-dialog-form.tsx
 │   │   │   │   │   │   ├── use-mission-completeness-for-stats.tsx
+│   │   │   │   │   │   ├── use-mission-dates.tsx
 │   │   │   │   │   │   ├── use-mission-finished.tsx
 │   │   │   │   │   │   ├── use-mission-interservices.tsx
 │   │   │   │   │   │   ├── use-mission-list.tsx
@@ -1840,12 +1880,14 @@
 │   │   │   │   │   │   ├── use-online-manager.tsx
 │   │   │   │   │   │   ├── use-password.tsx
 │   │   │   │   │   │   ├── use-sector.tsx
+│   │   │   │   │   │   ├── use-table-basic-item.tsx
 │   │   │   │   │   │   ├── use-timeline-action.tsx
 │   │   │   │   │   │   ├── use-vehicule.tsx
 │   │   │   │   │   │   └── use-vessel.tsx
 │   │   │   │   │   ├── schemas
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── conditionally-required-helper.test.ts
+│   │   │   │   │   │   │   ├── dates-schema.test.ts
 │   │   │   │   │   │   │   ├── location-fields-cleaner.test.ts
 │   │   │   │   │   │   │   └── location-schema.test.ts
 │   │   │   │   │   │   ├── conditionally-required-helper.ts
@@ -1891,6 +1933,7 @@
 │   │   │   │   │       ├── action-type.ts
 │   │   │   │   │       ├── address-type.ts
 │   │   │   │   │       ├── address.ts
+│   │   │   │   │       ├── basic-action.ts
 │   │   │   │   │       ├── control-unit-types.ts
 │   │   │   │   │       ├── crew-type.ts
 │   │   │   │   │       ├── etablishment.ts
@@ -1921,7 +1964,8 @@
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   │   │   └── inquiry-action-header.test.tsx.snap
-│   │   │   │   │   │   │   │   └── inquiry-action-header.test.tsx
+│   │   │   │   │   │   │   │   ├── inquiry-action-header.test.tsx
+│   │   │   │   │   │   │   │   └── inquiry-general-information-form.test.tsx
 │   │   │   │   │   │   │   ├── inquiry-action-body.tsx
 │   │   │   │   │   │   │   ├── inquiry-action-header.tsx
 │   │   │   │   │   │   │   ├── inquiry-action-item.tsx
@@ -1968,12 +2012,28 @@
 │   │   │   │   │       ├── use-inquiries.tsx
 │   │   │   │   │       ├── use-inquiry.tsx
 │   │   │   │   │       └── use-update-inquiry.tsx
+│   │   │   │   ├── manage
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── elements
+│   │   │   │   │   │   │   ├── manage-basic-item-generic.tsx
+│   │   │   │   │   │   │   ├── manage-crew-item.tsx
+│   │   │   │   │   │   │   └── manage-resource-item.tsx
+│   │   │   │   │   │   └── ui
+│   │   │   │   │   │       ├── manage-agent-delete-form.tsx
+│   │   │   │   │   │       ├── manage-agent-form.tsx
+│   │   │   │   │   │       └── manage-resource-form.tsx
+│   │   │   │   │   └── services
+│   │   │   │   │       ├── use-manage-agent-service.tsx
+│   │   │   │   │       ├── use-manage-delete-agent-service.tsx
+│   │   │   │   │       ├── use-manage-upsert-agent-service.tsx
+│   │   │   │   │       └── use-manage-upsert-resource-service.tsx
 │   │   │   │   ├── mission-action
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── mission-action-item-env-control.test.tsx
-│   │   │   │   │   │   │   │   └── mission-action-item-fish-control.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-action-item-fish-control.test.tsx
+│   │   │   │   │   │   │   │   └── mission-action-item-nav-control.test.tsx
 │   │   │   │   │   │   │   ├── mission-action-item-anti-pollution.tsx
 │   │   │   │   │   │   │   ├── mission-action-item-baaem-performance.tsx
 │   │   │   │   │   │   │   ├── mission-action-item-communication.tsx
@@ -2027,6 +2087,8 @@
 │   │   │   │   │   │       ├── mission-action-location-picker.tsx
 │   │   │   │   │   │       └── mission-action-nav-control-warning.tsx
 │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── use-mission-action-nav-control.test.tsx
 │   │   │   │   │   │   ├── use-mission-action-anti-pollution.tsx
 │   │   │   │   │   │   ├── use-mission-action-env-control.tsx
 │   │   │   │   │   │   ├── use-mission-action-fish-control.tsx
@@ -2044,8 +2106,7 @@
 │   │   │   │   │   └── validation-schema
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   └── control-nautical-leisure.test.ts
-│   │   │   │   │       ├── conrtol-nautical-leisure.ts
-│   │   │   │   │       └── date-validation.ts
+│   │   │   │   │       └── conrtol-nautical-leisure.ts
 │   │   │   │   ├── mission-control
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
@@ -2308,6 +2369,7 @@
 │   │   │   │       │   │   ├── mission-general-information-ulam-form-extend.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam-form-main.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam-form.tsx
+│   │   │   │       │   │   ├── mission-general-information-ulam-initial-form.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam.tsx
 │   │   │   │       │   │   ├── mission-header-ulam.tsx
 │   │   │   │       │   │   ├── mission-list
@@ -2338,6 +2400,7 @@
 │   │   │   │       │   ├── use-ulam-crew-for-mission-list.tsx
 │   │   │   │       │   ├── use-ulam-home-unit-resources.tsx
 │   │   │   │       │   ├── use-ulam-mission-general-information-form.tsx
+│   │   │   │       │   ├── use-ulam-mission-general-informations-initial-form.tsx
 │   │   │   │       │   └── use-ulam-timeline-registry.tsx
 │   │   │   │       └── services
 │   │   │   │           └── use-create-mission.tsx
@@ -2354,6 +2417,7 @@
 │   │   │   │   ├── inquiry-list-page.tsx
 │   │   │   │   ├── inquiry-page.tsx
 │   │   │   │   ├── login-page.tsx
+│   │   │   │   ├── manage-page.tsx
 │   │   │   │   ├── mission-list-pam-page.tsx
 │   │   │   │   ├── mission-list-ulam-page.tsx
 │   │   │   │   ├── mission-pam-page.tsx
@@ -2362,9 +2426,12 @@
 │   │   │   └── store
 │   │   │       ├── index.ts
 │   │   │       └── slices
+│   │   │           ├── __tests__
+│   │   │           │   └── form-validation-reducer.test.ts
 │   │   │           ├── action-reducer.ts
 │   │   │           ├── connectivity-reducer.ts
 │   │   │           ├── delay-query-reducer.ts
+│   │   │           ├── form-validation-reducer.ts
 │   │   │           ├── general-infos-complete-for-stats-reducer.ts
 │   │   │           ├── mission-reducer.ts
 │   │   │           ├── module-reducer.ts
@@ -2393,4 +2460,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-478 directories, 1953 files
+492 directories, 2006 files
