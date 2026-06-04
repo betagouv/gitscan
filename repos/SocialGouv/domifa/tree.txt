@@ -245,6 +245,10 @@
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
 │   │   │   │   ├── 1780006352188-auto-migration.ts
+│   │   │   │   ├── 1780321080015-backfill-login-unknown-user.ts
+│   │   │   │   ├── 1780394854888-auto-migration.ts
+│   │   │   │   ├── 1780500000000-unblock-all-brevo-blocklist.ts
+│   │   │   │   ├── 1780500000003-backfill-user-structure-email-status.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -695,6 +699,7 @@
 │   │   │   │   │   │   ├── patch-user-supervisor.dto.ts
 │   │   │   │   │   │   ├── register-user-structure-admin.dto.ts
 │   │   │   │   │   │   ├── register-user-supervisor.dto.ts
+│   │   │   │   │   │   ├── sessions-stats.dto.ts
 │   │   │   │   │   │   ├── suspicious-activity-log.dto.ts
 │   │   │   │   │   │   ├── suspicious-activity-query.dto.ts
 │   │   │   │   │   │   ├── tests
@@ -1273,6 +1278,9 @@
 │   │   │   │       ├── UsagersFilterCriteriaEntretien.enum.ts
 │   │   │   │       ├── UsagersFilterCriteriaStatut.enum.ts
 │   │   │   │       └── index.ts
+│   │   │   ├── sessions
+│   │   │   │   ├── SessionsStats.type.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── stats
 │   │   │   │   ├── classes
 │   │   │   │   │   ├── PublicStats.class.ts
@@ -1496,10 +1504,16 @@
 │   │   │       ├── index.ts
 │   │   │       ├── user-structure
 │   │   │       │   ├── constants
+│   │   │       │   │   ├── ALL_USER_STRUCTURE_EMAIL_STATUSES.const.ts
 │   │   │       │   │   ├── ALL_USER_STRUCTURE_ROLES.const.ts
 │   │   │       │   │   ├── USER_FONCTIONS.const.ts
 │   │   │       │   │   ├── USER_FONCTION_LABELS.const.ts
+│   │   │       │   │   ├── USER_STRUCTURE_EMAIL_STATUS_LABELS.const.ts
 │   │   │       │   │   ├── USER_STRUCTURE_ROLES_LABELS.const.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── functions
+│   │   │       │   │   ├── getUserStructureEmailStatus.spec.ts
+│   │   │       │   │   ├── getUserStructureEmailStatus.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
@@ -1513,6 +1527,7 @@
 │   │   │       │       ├── TypeConsultationDocument.enum.ts
 │   │   │       │       ├── UserFonction.enum.ts
 │   │   │       │       ├── UserStructureCreatedBy.type.ts
+│   │   │       │       ├── UserStructureEmailStatus.type.ts
 │   │   │       │       ├── UserStructureProfile.type.ts
 │   │   │       │       ├── UserStructureRole.type.ts
 │   │   │       │       └── index.ts
@@ -1720,6 +1735,9 @@
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.html
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.spec.ts
 │   │   │   │   │   │   │   │   │   │   └── alerte-confidentialite.component.ts
+│   │   │   │   │   │   │   │   │   ├── alerte-mail-generique
+│   │   │   │   │   │   │   │   │   │   ├── alerte-mail-generique.component.html
+│   │   │   │   │   │   │   │   │   │   └── alerte-mail-generique.component.ts
 │   │   │   │   │   │   │   │   │   └── login-dropdown
 │   │   │   │   │   │   │   │   │       ├── login-dropdown.component.html
 │   │   │   │   │   │   │   │   │       ├── login-dropdown.component.scss
@@ -2873,6 +2891,13 @@
 │   │   │   │   │   │   ├── otp.types.ts
 │   │   │   │   │   │   └── services
 │   │   │   │   │   │       └── otp-prompt.service.ts
+│   │   │   │   │   ├── sessions-stats
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── sessions-stats-page
+│   │   │   │   │   │   │       ├── sessions-stats-page.component.html
+│   │   │   │   │   │   │       └── sessions-stats-page.component.ts
+│   │   │   │   │   │   ├── sessions-stats-routing.module.ts
+│   │   │   │   │   │   └── sessions-stats.module.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── admin-structures-export
@@ -2907,6 +2932,9 @@
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
 │   │   │   │   │   │   │   │   └── fonction-selection.component.ts
+│   │   │   │   │   │   │   ├── sessions-stats-tiles
+│   │   │   │   │   │   │   │   ├── sessions-stats-tiles.component.html
+│   │   │   │   │   │   │   │   └── sessions-stats-tiles.component.ts
 │   │   │   │   │   │   │   ├── stat-card
 │   │   │   │   │   │   │   │   ├── stat-card.component.html
 │   │   │   │   │   │   │   │   ├── stat-card.component.scss
@@ -2956,6 +2984,7 @@
 │   │   │   │   │   │   │   └── uc-first.pipe.ts
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── api
+│   │   │   │   │   │   │   │   ├── admin-security-api-client.service.ts
 │   │   │   │   │   │   │   │   ├── admin-structures-api-client.service.ts
 │   │   │   │   │   │   │   │   ├── admin-users-api-client.service.ts
 │   │   │   │   │   │   │   │   └── index.ts
@@ -3398,4 +3427,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-793 directories, 2607 files
+800 directories, 2629 files

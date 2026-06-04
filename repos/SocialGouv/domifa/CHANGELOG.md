@@ -1,3 +1,35 @@
+## [2.249.8](https://github.com/SocialGouv/domifa/compare/v2.249.7...v2.249.8) (2026-06-03)
+
+
+### Bug Fixes
+
+* **backend:** add session stats ([ac1dba4](https://github.com/SocialGouv/domifa/commit/ac1dba439d756904e1b267f175554b3d5518d430))
+
+## [2.249.7](https://github.com/SocialGouv/domifa/compare/v2.249.6...v2.249.7) (2026-06-02)
+
+
+### Bug Fixes
+
+* **frontend:** fix building app ([3b5876d](https://github.com/SocialGouv/domifa/commit/3b5876d875351049f4926f2e287236a74f6027c9))
+
+## [2.249.6](https://github.com/SocialGouv/domifa/compare/v2.249.5...v2.249.6) (2026-06-02)
+
+
+### Bug Fixes
+
+* **backend:** disable button in otp ([6771c32](https://github.com/SocialGouv/domifa/commit/6771c320a0c449b463cb05c71c881acd04aff303))
+* **frontend:** fix arobase in text ([75c839c](https://github.com/SocialGouv/domifa/commit/75c839cb815b41c12dd7f5730c0c236d98ae62e8))
+
+## [2.249.5](https://github.com/SocialGouv/domifa/compare/v2.249.4...v2.249.5) (2026-06-02)
+
+
+### Bug Fixes
+
+* **backend:** add generic mail tester ([c4f0bdc](https://github.com/SocialGouv/domifa/commit/c4f0bdce48edc1c037f796717af8a6c9020ec93d))
+* **backend:** fix blocked users ([56c4b3e](https://github.com/SocialGouv/domifa/commit/56c4b3e7f7d5462f1621dc207405672d13ead217))
+* **backend:** fix logs for unknown logins ([7ee02b7](https://github.com/SocialGouv/domifa/commit/7ee02b71e00a788c9cf913d9c060c618daa32bad))
+* **backend:** fix typing ([adc22b0](https://github.com/SocialGouv/domifa/commit/adc22b0962cfc85d5f6bb03e3da184a8fcccc77d))
+
 ## [2.249.4](https://github.com/SocialGouv/domifa/compare/v2.249.3...v2.249.4) (2026-05-31)
 
 
