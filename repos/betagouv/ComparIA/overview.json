@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est une plateforme open source pour collecter des données de préférences humaines pour les modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser à la diversité des modèles, aux biais et à l'impact environnemental.",
+  "description": "ComparIA est une plateforme open source pour collecter des données de préférence humaine pour l'évaluation des modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser à la diversité des modèles, aux biais et à l'impact environnemental.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -14,45 +14,60 @@
     "Notifications & Alertes",
     "Intelligence Artificielle & NLP"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration",
+    "Associations"
+  ],
   "dependencies": [
     "ecologits",
     "fastapi",
     "litellm",
+    "numpy",
     "psycopg2-binary",
     "pydantic",
     "sqlalchemy",
     "redis",
-    "numpy",
-    "pandas",
-    "polars",
-    "huggingface_hub"
+    "requests",
+    "rich",
+    "sentry-sdk",
+    "uvicorn",
+    "altcha",
+    "sqlmodel",
+    "psycopg",
+    "alembic"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Frontend React",
-    "TypeScript / JavaScript"
+    "Tests"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-05-29T20:25:22+02:00",
+  "tests": "Pytest",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-06-02T20:02:52+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Intelligence Artificielle & LLM",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Intelligence Artificielle & LLM"
   ]
 }
