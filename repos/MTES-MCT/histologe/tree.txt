@@ -408,7 +408,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (101 files)
+│   └── Version*.php  (102 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -1172,7 +1172,9 @@
 │   │   │   ├── FailedEmailCleaner.php
 │   │   │   ├── FileDeleter.php
 │   │   │   ├── FileUpdater.php
-│   │   │   └── MessengerFailedCleaner.php
+│   │   │   ├── JobEventCleaner.php
+│   │   │   ├── MessengerFailedCleaner.php
+│   │   │   └── SignalementDraftCleaner.php
 │   │   ├── ClubEventRepository.php
 │   │   ├── CommuneRepository.php
 │   │   ├── CritereRepository.php
@@ -1206,6 +1208,8 @@
 │   │   │   ├── EmailAlert
 │   │   │   │   ├── PartnerQueryService.php
 │   │   │   │   └── UserQueryService.php
+│   │   │   ├── Interconnection
+│   │   │   │   └── JobEventQuery.php
 │   │   │   ├── SignalementList
 │   │   │   │   ├── ExportIterableQuery.php
 │   │   │   │   ├── MapGeoDataQuery.php
@@ -2368,7 +2372,6 @@
 │   │   │   ├── DesordreCritereRepositoryTest.php
 │   │   │   ├── EpciRepositoryTest.php
 │   │   │   ├── FileRepositoryTest.php
-│   │   │   ├── JobEventRepositoryTest.php
 │   │   │   ├── PartnerRepositoryTest.php
 │   │   │   ├── Query
 │   │   │   │   ├── Dashboard
@@ -2379,6 +2382,8 @@
 │   │   │   │   │   ├── DossiersSuivisUsagerQueryTest.php
 │   │   │   │   │   ├── KpiQueryTest.php
 │   │   │   │   │   └── SignalementsSansAffectationAccepteeQueryTest.php
+│   │   │   │   ├── Interconnection
+│   │   │   │   │   └── JobEventRepositoryTest.php
 │   │   │   │   ├── SignalementList
 │   │   │   │   │   ├── MapGeoDataQueryTest.php
 │   │   │   │   │   └── QueryBuilderFactoryTest.php
@@ -2840,4 +2845,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-475 directories, 2484 files
+477 directories, 2488 files
