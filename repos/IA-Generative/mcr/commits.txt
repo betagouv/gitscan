@@ -1,13 +1,13 @@
 2026-05-27T12:01:26+02:00 - d9c99e9 - Thibault Foucart : Merge pull request #749 from IA-Generative/dev
 2026-05-27T11:08:44+02:00 - 75af509 - Théodore de Leusse : Merge pull request #746 from IA-Generative/feat/727/notes_custom_sections
 2026-05-27T11:06:58+02:00 - d96e4ea - theodore2leusse : :loud_sound: (727): surface degraded-state record events as logger.warning for local debug
+2026-05-27T11:06:58+02:00 - aa952be - theodore2leusse : :sparkles: (727): add notes_hint_present kwarg to record_empty_map_phase_event
+2026-05-27T11:06:58+02:00 - 9748372 - theodore2leusse : :sparkles: (727): inject notes_facts into GenericMapReducePipeline reduce
 2026-05-27T11:06:58+02:00 - 92fcb03 - theodore2leusse : :recycle: (727): restructure generic_pipeline prompts with ## headings + symmetric notes_section spacing
 2026-05-27T11:06:58+02:00 - 6c5f910 - theodore2leusse : :memo: (727): update generation_pipeline.md for US10 custom notes flow
-2026-05-27T11:06:58+02:00 - 5be32da - theodore2leusse : :sparkles: (727): wire CustomSection notes through CustomReportGenerator
-2026-05-27T11:06:58+02:00 - 9748372 - theodore2leusse : :sparkles: (727): inject notes_facts into GenericMapReducePipeline reduce
-2026-05-27T11:06:58+02:00 - 2ae9211 - theodore2leusse : :sparkles: (727): support custom instructions in NotesExtractor
-2026-05-27T11:06:58+02:00 - aa952be - theodore2leusse : :sparkles: (727): add notes_hint_present kwarg to record_empty_map_phase_event
 2026-05-27T11:06:58+02:00 - 5ed5fb2 - theodore2leusse : :recycle: (727): migrate NOTES_SECTION_TEMPLATE to notes/prompts.py with neutral {notes_block} placeholder
+2026-05-27T11:06:58+02:00 - 5be32da - theodore2leusse : :sparkles: (727): wire CustomSection notes through CustomReportGenerator
+2026-05-27T11:06:58+02:00 - 2ae9211 - theodore2leusse : :sparkles: (727): support custom instructions in NotesExtractor
 2026-05-26T16:29:26+02:00 - 7932c34 - Thibault Foucart : Merge pull request #717 from IA-Generative/fix/704-silent-recording-detected
 2026-05-26T16:21:26+02:00 - e8cd5b8 - Thibault Foucart : :loud_sound: (704): add log of selected device on sentry
 2026-05-26T16:09:29+02:00 - 238a8a0 - Théodore de Leusse : Merge pull request #738 from IA-Generative/feat/726/use-notes-in-collector-sections
@@ -24,14 +24,14 @@
 2026-05-26T11:21:46+02:00 - 2a42649 - Titouan : Merge pull request #702 from IA-Generative/feat/add_new_transcripts_to_dataset
 2026-05-26T11:16:16+02:00 - 67babb4 - Titouan Mendiharat : :monocle_face: (698): Added new transcripts to participants dataset
 2026-05-26T10:09:37+02:00 - 5b3cb3d - Théodore de Leusse : Merge pull request #737 from IA-Generative/refacto/725/notes_extractor_facets
-2026-05-26T10:07:29+02:00 - 64e073d - theodore2leusse : :recycle: (725): switch NotesExtractor.extract_all to facets-based API
 2026-05-26T10:07:29+02:00 - c2d7a84 - theodore2leusse : :sparkles: (725): add notes/facets module with NotesFacet enum and report-type mapping
+2026-05-26T10:07:29+02:00 - 64e073d - theodore2leusse : :recycle: (725): switch NotesExtractor.extract_all to facets-based API
 2026-05-25T16:14:58+02:00 - a8ce1b2 - ugodimini : Merge pull request #734 from IA-Generative/feat/712/cleanup-feature-flags
-2026-05-25T16:08:46+02:00 - 0f616fd - Ugo : :wastebasket: (712): remove speaker_identification ff
-2026-05-25T16:08:46+02:00 - c7bb8b7 - Ugo : :wastebasket: (712): remove offline-recording ff
-2026-05-25T16:08:46+02:00 - 6e91f86 - Ugo : :wastebasket: (712): remove get_meeting_audio ff
 2026-05-25T16:08:46+02:00 - fa9396d - Ugo : :wastebasket: (712): remove ux-modal-v2 ff
+2026-05-25T16:08:46+02:00 - c7bb8b7 - Ugo : :wastebasket: (712): remove offline-recording ff
 2026-05-25T16:08:46+02:00 - 866116a - Ugo : :wastebasket: (712): remove acronym_correction ff
+2026-05-25T16:08:46+02:00 - 6e91f86 - Ugo : :wastebasket: (712): remove get_meeting_audio ff
+2026-05-25T16:08:46+02:00 - 0f616fd - Ugo : :wastebasket: (712): remove speaker_identification ff
 2026-05-25T15:44:21+02:00 - bf0c09d - Thibault Foucart : Merge pull request #735 from IA-Generative/fix/732-update-meeting-platform-validator
 2026-05-25T15:39:11+02:00 - d34fc6b - Thibault Foucart : :white_check_mark: (732): update tests
 2026-05-25T15:39:11+02:00 - 5ce5d49 - Thibault Foucart : :bug: (732): visio meeting accepts meeting id
@@ -40,11 +40,11 @@
 2026-05-25T12:29:59+02:00 - c0e6980 - Thibault Foucart : Merge pull request #709 from IA-Generative/fix/409-audio-listener
 2026-05-25T12:25:38+02:00 - 969a666 - Léo Germain : :bug: (409): recover audio duration on Chromium for chunked WebM
 2026-05-25T11:31:35+02:00 - 0628999 - Théodore de Leusse : Merge pull request #703 from IA-Generative/refacto/636/map_reduce_mother_class
-2026-05-25T11:27:17+02:00 - 3d80b2b - theodore2leusse : :recycle: (636): hide chunk_id from LLM schema via LLM-facing vs internal model split
-2026-05-25T11:27:17+02:00 - 5d761f6 - theodore2leusse : :recycle: (636): refactor MapReduceDetailedDiscussions to inherit BaseMapReduce
-2026-05-25T11:27:17+02:00 - a73999d - theodore2leusse : :recycle: (636): refactor MapReduceTopics to inherit BaseMapReduce
-2026-05-25T11:27:17+02:00 - 4680f55 - theodore2leusse : :recycle: (636): TopicsContent uses default_factory=list to enable empty fallback
 2026-05-25T11:27:17+02:00 - da0fb73 - theodore2leusse : :sparkles: (636): add BaseMapReduce with Protocol-typed item bound
+2026-05-25T11:27:17+02:00 - a73999d - theodore2leusse : :recycle: (636): refactor MapReduceTopics to inherit BaseMapReduce
+2026-05-25T11:27:17+02:00 - 5d761f6 - theodore2leusse : :recycle: (636): refactor MapReduceDetailedDiscussions to inherit BaseMapReduce
+2026-05-25T11:27:17+02:00 - 4680f55 - theodore2leusse : :recycle: (636): TopicsContent uses default_factory=list to enable empty fallback
+2026-05-25T11:27:17+02:00 - 3d80b2b - theodore2leusse : :recycle: (636): hide chunk_id from LLM schema via LLM-facing vs internal model split
 2026-05-25T10:28:09+02:00 - 420a602 - Titouan : Merge pull request #721 from IA-Generative/fix/add_langfuse_to_transcription_worker
 2026-05-25T10:26:35+02:00 - 4258513 - Titouan Mendiharat : :ambulance: Added langfuse to transcription worker to repair local env
 2026-05-25T10:08:48+02:00 - a48e165 - ugodimini : Merge pull request #722 from IA-Generative/feat/696/remove-report-api-routes
@@ -54,55 +54,55 @@
 2026-05-22T18:39:01+02:00 - 2237b9f - Thomas Metzger : :sparkles: add Drive setup and lifecycle scripts
 2026-05-22T18:38:01+02:00 - d4d8856 - Thomas Metzger : :wrench: add Drive client and token-exchange to Keycloak config
 2026-05-22T18:24:22+02:00 - 4705513 - ThomasMetzger : Merge pull request #687 from IA-Generative/feat/view-in-drive-button
-2026-05-22T17:50:53+02:00 - 7e921a8 - Thomas Metzger : :recycle: remove the hardcoded transcriptionItem to use the deliverable instead
 2026-05-22T17:50:53+02:00 - d13e954 - Thomas Metzger : :sparkles: split DeliverableItem actions and surface Drive link
+2026-05-22T17:50:53+02:00 - 7e921a8 - Thomas Metzger : :recycle: remove the hardcoded transcriptionItem to use the deliverable instead
 2026-05-21T18:45:04+02:00 - b36f528 - ThomasMetzger : Merge pull request #711 from IA-Generative/dev
 2026-05-21T17:44:43+02:00 - 2331aac - Thibault Foucart : Merge pull request #716 from IA-Generative/fix/715-add-notes-to-report-generation-that-refacto-erased
 2026-05-21T17:30:28+02:00 - d5f30ea - Thibault Foucart : :white_check_mark: (715): add tests to avoid regression
 2026-05-21T17:14:22+02:00 - 4777995 - Thibault Foucart : :bug: (715): add meetings notes to celery kwargs
 2026-05-21T15:56:52+02:00 - e7f1168 - Titouan : Merge pull request #701 from IA-Generative/fix/pariticipants_lost_across_chunks
-2026-05-21T15:18:24+02:00 - 1da09a2 - Titouan Mendiharat : :loud_sound: (697): Added langfuse observability to participants extraction
-2026-05-21T15:18:24+02:00 - 5b60949 - Titouan Mendiharat : :loud_sound: (697): Added warnings when a participant disapeears or their name becomes None. Created tests
 2026-05-21T15:18:24+02:00 - dede8d3 - Titouan Mendiharat : :bug: (697): Modified participants' prompt so that they are no longer lost across chunks. Added a make rule to run the eval.
+2026-05-21T15:18:24+02:00 - 5b60949 - Titouan Mendiharat : :loud_sound: (697): Added warnings when a participant disapeears or their name becomes None. Created tests
+2026-05-21T15:18:24+02:00 - 1da09a2 - Titouan Mendiharat : :loud_sound: (697): Added langfuse observability to participants extraction
 2026-05-21T15:15:02+02:00 - e78202d - Léo Germain : Merge pull request #713 from IA-Generative/feat/710-change-custom-prompt-suggestions
 2026-05-21T14:36:08+02:00 - ffa6d15 - Léo Germain : :lipstick: (710): make suggestion tile unisized
 2026-05-21T14:36:08+02:00 - 10e3046 - Léo Germain : :sparkles: (710): update custom prompt suggestions
 2026-05-21T14:35:13+02:00 - cfbcd92 - ugodimini : Merge pull request #689 from IA-Generative/feat/685/remove-front-v1-dead-code
-2026-05-21T14:33:08+02:00 - 3ab4915 - Ugo : :wastebasket: (685): remove GenerateReportAction.vue
 2026-05-21T14:33:08+02:00 - 65f0053 - Ugo : :memo: (685): add knip command in frontend README
 2026-05-21T14:33:08+02:00 - 4db1d75 - Ugo : :wastebasket: (685): remove v1 dead code
+2026-05-21T14:33:08+02:00 - 3ab4915 - Ugo : :wastebasket: (685): remove GenerateReportAction.vue
 2026-05-21T14:33:08+02:00 - 000ad4a - Ugo : :wrench: (685): setup knip
 2026-05-21T11:26:37+02:00 - ac3bfd5 - Thibault Foucart : Merge pull request #708 from IA-Generative/fix/706-cant-generate-custom-report-if-all-other-are-already-generated
 2026-05-21T11:08:03+02:00 - 65b560e - Thibault Foucart : :bug: (706): remove allGenerated condition
 2026-05-21T10:17:04+02:00 - f42a24e - ThomasMetzger : Merge pull request #695 from IA-Generative/fix/deliverable-success-status-mismatch
-2026-05-21T09:50:57+02:00 - 05446df - Thomas Metzger : :bug: (694): fix deliverable stuck in pending on /success route error
+2026-05-21T09:50:57+02:00 - c675729 - Thomas Metzger : :bug: (mcr-core): swap /deliverables/{id}/success router to use case
 2026-05-21T09:50:57+02:00 - ae7ffa8 - Thomas Metzger : :recycle: (mcr-core): replace remaining email + s3 mocks with in-memory fakes
 2026-05-21T09:50:57+02:00 - a710b5e - Thomas Metzger : :fire: (mcr-core): remove dead deliverable orchestrator + service functions
-2026-05-21T09:50:57+02:00 - c675729 - Thomas Metzger : :bug: (mcr-core): swap /deliverables/{id}/success router to use case
-2026-05-21T09:50:57+02:00 - 6bc1356 - Thomas Metzger : :bug: (mcr-core): close B2 via mark_deliverable_success use case
-2026-05-21T09:50:57+02:00 - 1ec78f7 - Thomas Metzger : :test_tube: (mcr-core): add InMemoryS3 and InMemoryEmail test fakes
 2026-05-21T09:50:57+02:00 - a1eda8b - Thomas Metzger : :sparkles: (mcr-core): add s3 and email infrastructure adapters
-2026-05-21T09:50:57+02:00 - 38a2849 - Thomas Metzger : :sparkles: (mcr-core): add domain layer for deliverable transitions and report rendering
 2026-05-21T09:50:57+02:00 - 7fb123c - Thomas Metzger : :sparkles: (mcr-core): add DeliverableStateConflictException
+2026-05-21T09:50:57+02:00 - 6bc1356 - Thomas Metzger : :bug: (mcr-core): close B2 via mark_deliverable_success use case
+2026-05-21T09:50:57+02:00 - 38a2849 - Thomas Metzger : :sparkles: (mcr-core): add domain layer for deliverable transitions and report rendering
+2026-05-21T09:50:57+02:00 - 1ec78f7 - Thomas Metzger : :test_tube: (mcr-core): add InMemoryS3 and InMemoryEmail test fakes
+2026-05-21T09:50:57+02:00 - 05446df - Thomas Metzger : :bug: (694): fix deliverable stuck in pending on /success route error
 2026-05-21T09:49:03+02:00 - a6692ff - Thomas Metzger : :bug: fix celery task params
 2026-05-21T09:09:31+02:00 - 7f00f47 - ThomasMetzger : Merge pull request #691 from IA-Generative/fix/676-report-not-generated-if-asked-before-end-of-transcription
 2026-05-20T20:26:07+02:00 - cd062a3 - Thomas Metzger : :recycle: remove RESET_REPORT calls in the stack
 2026-05-20T19:21:51+02:00 - f7907e8 - Thibault Foucart : :recycle: simplify use_cases logic
-2026-05-20T19:21:51+02:00 - 1189f67 - Thibault Foucart : :white_check_mark: update tests
-2026-05-20T19:21:51+02:00 - 45b316d - Thibault Foucart : :recycle: simplify transition code
-2026-05-20T19:21:51+02:00 - 9ebecdd - Thibault Foucart : :truck: rename domain file
-2026-05-20T19:21:51+02:00 - c529ea1 - Thibault Foucart : :fire: remove side effect of START_REPORT transition
-2026-05-20T19:21:51+02:00 - a78da1d - Thibault Foucart : :coffin: remove POST /report route of report_generation_router
 2026-05-20T19:21:51+02:00 - e19a9f2 - Thibault Foucart : :bug: (676): add front safeguard for custom report generation
-2026-05-20T19:21:51+02:00 - 2c07347 - Thibault Foucart : :coffin: (676): remove old request deliverable
+2026-05-20T19:21:51+02:00 - c529ea1 - Thibault Foucart : :fire: remove side effect of START_REPORT transition
 2026-05-20T19:21:51+02:00 - c4b7217 - Thibault Foucart : :white_check_mark: (676): update tests
+2026-05-20T19:21:51+02:00 - a78da1d - Thibault Foucart : :coffin: remove POST /report route of report_generation_router
+2026-05-20T19:21:51+02:00 - 9ebecdd - Thibault Foucart : :truck: rename domain file
+2026-05-20T19:21:51+02:00 - 45b316d - Thibault Foucart : :recycle: simplify transition code
 2026-05-20T19:21:51+02:00 - 33efb89 - Thibault Foucart : :bug: (676): keep from creating deliverable if sm forbids it
+2026-05-20T19:21:51+02:00 - 2c07347 - Thibault Foucart : :coffin: (676): remove old request deliverable
+2026-05-20T19:21:51+02:00 - 1189f67 - Thibault Foucart : :white_check_mark: update tests
 2026-05-20T19:11:46+02:00 - e769a47 - Thibault Foucart : :truck: (676): create infra celery and refacto
 2026-05-20T19:11:46+02:00 - b4f1811 - Thibault Foucart : :recycle: (676): create infra s3 and refacto all
 2026-05-20T16:26:14+02:00 - 91c06cb - Léo Germain : Merge pull request #690 from IA-Generative/feat/658-fix-deliverable-filename
 2026-05-20T15:35:56+02:00 - 95188ec - Léo Germain : :sparkles: (658): read download filenames from Content-Disposition
-2026-05-20T15:35:56+02:00 - 3f09eb4 - Léo Germain : :sparkles: (658): forward upstream Content-Disposition through gateway
 2026-05-20T15:35:56+02:00 - 8ae45b3 - Léo Germain : :sparkles: (658): build deliverable filenames in mcr-core
+2026-05-20T15:35:56+02:00 - 3f09eb4 - Léo Germain : :sparkles: (658): forward upstream Content-Disposition through gateway
 2026-05-20T14:41:27+02:00 - 7fafa51 - Théodore de Leusse : Merge pull request #700 from IA-Generative/refacto/remove_redundant_apikey_header_from_transcription_client
 2026-05-20T11:18:48+02:00 - 1db6f58 - theodore2leusse : :fire: remove obsolete apikey header from transcription client
 2026-05-19T19:37:57+02:00 - 02780dd - ThomasMetzger : Merge pull request #686 from IA-Generative/fix/allow-table-in-reports
@@ -112,8 +112,8 @@
 2026-05-19T15:07:47+02:00 - d497cc6 - ugodimini : Merge pull request #663 from IA-Generative/fix/readme-local-project-start-instructions
 2026-05-19T15:07:10+02:00 - 532a6dd - Ugo : :books: update README with local project start instructions
 2026-05-19T14:51:35+02:00 - bc2f655 - Théodore de Leusse : Merge pull request #682 from IA-Generative/feat/639-640/use_notes_in_mapreduce_classes
-2026-05-19T14:47:11+02:00 - 9e2dee6 - theodore2leusse : :books: (639-640): document notes reduce-hint mechanism in generation_pipeline
 2026-05-19T14:47:11+02:00 - e9fa411 - theodore2leusse : :sparkles: (640): inject notes hint into MapReduceDetailedDiscussions reduce and rebrand observe spans
+2026-05-19T14:47:11+02:00 - 9e2dee6 - theodore2leusse : :books: (639-640): document notes reduce-hint mechanism in generation_pipeline
 2026-05-19T14:47:11+02:00 - 91fc951 - theodore2leusse : :sparkles: (639): inject notes hint into MapReduceTopics reduce and rebrand observe spans
 2026-05-19T14:47:11+02:00 - 0e6774f - theodore2leusse : :sparkles: (639-640): add shared NOTES_SECTION_TEMPLATE prompt fragment
 2026-05-19T12:16:07+02:00 - 19f256d - ThomasMetzger : Merge pull request #683 from IA-Generative/feat/add-new-member-to-slack
@@ -131,20 +131,20 @@
 2026-05-18T15:10:30+02:00 - f0603b5 - Thomas Metzger : :adhesive_bandage: remove docker-compose.override.yaml added by error
 2026-05-18T14:57:47+02:00 - d76b931 - Thibault Foucart : :sparkles: (611): add meeting notes to celery task kwargs
 2026-05-18T14:57:26+02:00 - c64f9dd - Thibault Foucart : Merge pull request #665 from IA-Generative/feat/609-add-meeting-note-component-and-register-notes
-2026-05-18T14:52:43+02:00 - 491c5dc - Thibault Foucart : :art: (609): from update notes to update meeting optimistically
 2026-05-18T14:52:43+02:00 - e039820 - Thibault Foucart : :lipstick: (609): update vh instead of px
-2026-05-18T14:52:43+02:00 - 43a1d1a - Thibault Foucart : :white_check_mark: (609): update tests
 2026-05-18T14:52:43+02:00 - 63b404b - Thibault Foucart : :sparkles: (609): add meeting notes component
+2026-05-18T14:52:43+02:00 - 491c5dc - Thibault Foucart : :art: (609): from update notes to update meeting optimistically
+2026-05-18T14:52:43+02:00 - 43a1d1a - Thibault Foucart : :white_check_mark: (609): update tests
 2026-05-18T14:52:43+02:00 - 3affa1e - Thibault Foucart : :truck: (609): create mutations for notes
 2026-05-18T14:14:06+02:00 - 7c82bb4 - Titouan : Merge pull request #657 from IA-Generative/feat/create_rewriter_with_routing
-2026-05-18T12:21:56+02:00 - 282db40 - Titouan Mendiharat : :recycle: (622): Removed unwanted test and _sanitize
-2026-05-18T12:21:56+02:00 - 5539cd6 - Titouan Mendiharat : :recycle: (622): Added a field_validator to _ReduceResponse and added tests
-2026-05-18T12:21:56+02:00 - 394eb2c - Titouan Mendiharat : :test_tube: (622): Fixed tests and typing error
+2026-05-18T12:21:56+02:00 - fce2732 - Titouan Mendiharat : :sparkles: (622): Created the prompt rewriter
+2026-05-18T12:21:56+02:00 - f4f2f7d - Titouan Mendiharat : :sparkles: (622): Added the rewriter in the orchestrator
 2026-05-18T12:21:56+02:00 - d566bef - Titouan Mendiharat : :recycle: (622): Created CollectorSection and CustomSection. Modified the prompt accordingly.
 2026-05-18T12:21:56+02:00 - b43338d - Titouan Mendiharat : :recycle: (622): Removed double titles and fixed tests
 2026-05-18T12:21:56+02:00 - a48a102 - Titouan Mendiharat : :test_tube: (622): Fixed tests
-2026-05-18T12:21:56+02:00 - f4f2f7d - Titouan Mendiharat : :sparkles: (622): Added the rewriter in the orchestrator
-2026-05-18T12:21:56+02:00 - fce2732 - Titouan Mendiharat : :sparkles: (622): Created the prompt rewriter
+2026-05-18T12:21:56+02:00 - 5539cd6 - Titouan Mendiharat : :recycle: (622): Added a field_validator to _ReduceResponse and added tests
+2026-05-18T12:21:56+02:00 - 394eb2c - Titouan Mendiharat : :test_tube: (622): Fixed tests and typing error
+2026-05-18T12:21:56+02:00 - 282db40 - Titouan Mendiharat : :recycle: (622): Removed unwanted test and _sanitize
 2026-05-18T12:21:36+02:00 - bfce572 - Titouan : Merge pull request #677 from IA-Generative/fix/fix_type_errors_in_collectors
 2026-05-18T12:16:24+02:00 - e7344bb - theodore2leusse : :ambulance: use the to_public method for RefineParticipants outputs
 2026-05-15T18:36:08+02:00 - 5a059b8 - ThomasMetzger : Merge pull request #674 from IA-Generative/dev
@@ -159,9 +159,9 @@
 2026-05-13T15:48:00+02:00 - e3951c7 - Théodore de Leusse : Merge pull request #661 from IA-Generative/refacto/635/init_then_refine_classes
 2026-05-13T14:42:24+02:00 - 9cd0e01 - theodore2leusse : :pushpin: (635): pin langfuse<4 to keep update_current_trace API
 2026-05-13T12:26:11+02:00 - e168da3 - theodore2leusse : :books: (635): document BaseInitThenRefine in generation_pipeline.md
-2026-05-13T12:26:11+02:00 - 46a239b - theodore2leusse : :recycle: (635): migrate RefineParticipants and move .to_public() into generate_header
-2026-05-13T12:26:11+02:00 - 762ba2f - theodore2leusse : :recycle: (635): migrate RefineIntent and RefineNextMeeting onto BaseInitThenRefine
 2026-05-13T12:26:11+02:00 - a03eb1e - theodore2leusse : :sparkles: (635): introduce BaseInitThenRefine[T] with TDD tests
+2026-05-13T12:26:11+02:00 - 762ba2f - theodore2leusse : :recycle: (635): migrate RefineIntent and RefineNextMeeting onto BaseInitThenRefine
+2026-05-13T12:26:11+02:00 - 46a239b - theodore2leusse : :recycle: (635): migrate RefineParticipants and move .to_public() into generate_header
 2026-05-13T11:48:55+02:00 - b40501c - Titouan : Merge pull request #650 from IA-Generative/feat/create_metadatacollectors
 2026-05-13T10:59:59+02:00 - 5de866f - Titouan Mendiharat : :test_tube: (614): Added and fixed tests
 2026-05-13T10:59:59+02:00 - 2a0239f - Titouan Mendiharat : :sparkles: (614): Created MetadataCollectors
@@ -173,73 +173,73 @@
 2026-05-12T16:19:34+02:00 - b13c8f7 - Léo Germain : Merge pull request #655 from IA-Generative/feat/626-custom-report-frontend
 2026-05-12T16:12:01+02:00 - c5aaf83 - Léo Germain : :white_check_mark: (626): add CustomReportModal tests
 2026-05-12T16:12:01+02:00 - 47393e3 - Léo Germain : :sparkles: (626): integrate custom report in MeetingDeliverableCard
-2026-05-12T16:12:01+02:00 - 298fce8 - Léo Germain : :sparkles: (626): add CustomReportModal component
 2026-05-12T16:12:01+02:00 - 456f37d - Léo Germain : :speech_balloon: (626): add custom report French labels
+2026-05-12T16:12:01+02:00 - 298fce8 - Léo Germain : :sparkles: (626): add CustomReportModal component
 2026-05-12T15:47:42+02:00 - 71a5c06 - Théodore de Leusse : Merge pull request #656 from IA-Generative/chore/update_glossary_428_acronyms
 2026-05-12T15:43:05+02:00 - c451283 - theodore2leusse : :arrow_up: new glossary.md file with 428 acronyms
 2026-05-12T15:02:55+02:00 - 3c942cc - Thibault Foucart : Merge pull request #631 from IA-Generative/feat/606-modify-route-to-register-notes
 2026-05-12T14:57:04+02:00 - 873b4d1 - Thibault Foucart : :fire: (606): remove try catch, one is already existing
-2026-05-12T14:57:03+02:00 - 3b1ec63 - Thibault Foucart : :truck: (606): from put to patch on frontend
 2026-05-12T14:57:03+02:00 - aff74fb - Thibault Foucart : :white_check_mark: (606): from put to patch in mcr gateway
-2026-05-12T14:57:03+02:00 - 14b4a3f - Thibault Foucart : :truck: (606): from put to patch in mcr gateway
-2026-05-12T14:57:03+02:00 - 357bf50 - Thibault Foucart : :art: (606): make fields optionnal in mcr-gateway
-2026-05-12T14:57:03+02:00 - 12f91a3 - Thibault Foucart : :white_check_mark: (606): update mcr-core tests
 2026-05-12T14:57:03+02:00 - 7bf102c - Thibault Foucart : :truck: (606): from put to patch mcr core
+2026-05-12T14:57:03+02:00 - 3b1ec63 - Thibault Foucart : :truck: (606): from put to patch on frontend
+2026-05-12T14:57:03+02:00 - 357bf50 - Thibault Foucart : :art: (606): make fields optionnal in mcr-gateway
 2026-05-12T14:57:03+02:00 - 19c4712 - Thibault Foucart : :art: (606): refacto platform infos & make meeting fields optionnal
+2026-05-12T14:57:03+02:00 - 14b4a3f - Thibault Foucart : :truck: (606): from put to patch in mcr gateway
+2026-05-12T14:57:03+02:00 - 12f91a3 - Thibault Foucart : :white_check_mark: (606): update mcr-core tests
 2026-05-12T12:20:22+02:00 - 5f08bee - Théodore de Leusse : Merge pull request #648 from IA-Generative/feat/634/notes_extractor
 2026-05-12T12:17:48+02:00 - 573ddd6 - theodore2leusse : :recycle: (634): move notes extraction out of celery task into extract_notes helper
+2026-05-12T12:07:21+02:00 - f0d7331 - theodore2leusse : :books: (634): add missing R2 -> OUT edge in pipeline diagram
 2026-05-12T12:07:21+02:00 - 95a8911 - theodore2leusse : :recycle: (634): factor LLM mocks into reusable fixtures and drop redundant package mocks
+2026-05-12T12:07:21+02:00 - 8912473 - theodore2leusse : :bell: (634): add Langfuse events for notes extraction
 2026-05-12T12:07:21+02:00 - 75e9d5e - theodore2leusse : :books: (634): document notes_content input and NotesExtractor stage
-2026-05-12T12:07:21+02:00 - 06818f4 - theodore2leusse : :white_check_mark: (634): cover notes_content branches in the Celery task
-2026-05-12T12:07:21+02:00 - 2cf21e0 - theodore2leusse : :sparkles: (634): wire notes_content kwarg into the Celery task
-2026-05-12T12:07:21+02:00 - 2e8d453 - theodore2leusse : :white_check_mark: (634): cover NotesExtractor with unit tests
-2026-05-12T12:07:21+02:00 - 13bf689 - theodore2leusse : :sparkles: (634): add NotesExtractor async class with ExtractedNotes
+2026-05-12T12:07:21+02:00 - 5e176b6 - theodore2leusse : :recycle: (634): rename Content classes per section
 2026-05-12T12:07:21+02:00 - 526464d - theodore2leusse : :sparkles: (634): add notes extraction prompts
 2026-05-12T12:07:21+02:00 - 3063d4d - theodore2leusse : :white_check_mark: (634): cover async_call_llm_with_structured_output
-2026-05-12T12:07:21+02:00 - f0d7331 - theodore2leusse : :books: (634): add missing R2 -> OUT edge in pipeline diagram
-2026-05-12T12:07:21+02:00 - 8912473 - theodore2leusse : :bell: (634): add Langfuse events for notes extraction
-2026-05-12T12:07:21+02:00 - 5e176b6 - theodore2leusse : :recycle: (634): rename Content classes per section
+2026-05-12T12:07:21+02:00 - 2e8d453 - theodore2leusse : :white_check_mark: (634): cover NotesExtractor with unit tests
+2026-05-12T12:07:21+02:00 - 2cf21e0 - theodore2leusse : :sparkles: (634): wire notes_content kwarg into the Celery task
+2026-05-12T12:07:21+02:00 - 13bf689 - theodore2leusse : :sparkles: (634): add NotesExtractor async class with ExtractedNotes
+2026-05-12T12:07:21+02:00 - 06818f4 - theodore2leusse : :white_check_mark: (634): cover notes_content branches in the Celery task
 2026-05-12T11:55:11+02:00 - 349b777 - Titouan : Merge pull request #654 from IA-Generative/fix/mypy_error
 2026-05-12T11:54:09+02:00 - b111b86 - Titouan Mendiharat : :ambulance: Fixed make pre-commit error
 2026-05-12T11:43:28+02:00 - d76960c - Léo Germain : Merge pull request #647 from IA-Generative/feat/627-celery-callback-to-generate-docx
-2026-05-12T11:38:56+02:00 - 9cf888f - Léo Germain : :white_check_mark: (627): add custom report DOCX generation and persist tests
 2026-05-12T11:38:56+02:00 - dace33b - Léo Germain : :sparkles: (627): add CustomReportResponse schema and DOCX generation pipeline
+2026-05-12T11:38:56+02:00 - 9cf888f - Léo Germain : :white_check_mark: (627): add custom report DOCX generation and persist tests
 2026-05-12T11:24:10+02:00 - 98d35f8 - ThomasMetzger : Merge pull request #645 from IA-Generative/feat/participants-thinking
 2026-05-12T11:17:56+02:00 - 5c601f3 - Thomas Metzger : :white_check_mark: tests: drop association_justification from fixtures
 2026-05-12T11:17:56+02:00 - 36876c5 - Thomas Metzger : :sparkles: refine_participants: thread thinking through refine loop
 2026-05-12T11:17:55+02:00 - 5e12d47 - Thomas Metzger : :recycle: schemas: split public Participant from LLM-internal
 2026-05-12T11:15:25+02:00 - f7fb877 - Titouan : Merge pull request #644 from IA-Generative/feat/create_custom_report_orchestrator
-2026-05-12T11:11:46+02:00 - 3ec9c36 - Titouan Mendiharat : :test_tube: (619): Fixed tests
-2026-05-12T11:11:46+02:00 - 0666618 - Titouan Mendiharat : :art: (619): Added a new exception and modified variable name
 2026-05-12T11:11:46+02:00 - b6ad2ef - Titouan Mendiharat : :fire: (619): Deleted custom_markdown_report and moved CustomMarkdownReport to base.py
 2026-05-12T11:11:46+02:00 - b5fc037 - Titouan Mendiharat : :recycle: (619): Removed hardcoded prompt
-2026-05-12T11:11:46+02:00 - 31ecd75 - Titouan Mendiharat : :test_tube: (619): Added tests
 2026-05-12T11:11:46+02:00 - 99d2163 - Titouan Mendiharat : :sparkles: (619): Created CustomReportGenerator to generate a custom report
+2026-05-12T11:11:46+02:00 - 3ec9c36 - Titouan Mendiharat : :test_tube: (619): Fixed tests
+2026-05-12T11:11:46+02:00 - 31ecd75 - Titouan Mendiharat : :test_tube: (619): Added tests
+2026-05-12T11:11:46+02:00 - 0666618 - Titouan Mendiharat : :art: (619): Added a new exception and modified variable name
 2026-05-11T17:26:12+02:00 - 77338de - Léo Germain : Merge pull request #646 from IA-Generative/feat/625-create-celery-task-for-custom-report
 2026-05-11T17:14:33+02:00 - cb75aa0 - Léo Germain : :wrench: (625): pin pnpm version
 2026-05-11T17:14:33+02:00 - 81e73fa - Léo Germain : :white_check_mark: (625): add CUSTOM_REPORT tests and update TRANSCRIPTION rejection to 422
 2026-05-11T17:14:33+02:00 - 27f57fe - Léo Germain : :sparkles: (625): propagate custom_prompt through SM chain to Celery task kwargs
 2026-05-11T17:14:33+02:00 - 0d280be - Léo Germain : :sparkles: (625): add CUSTOM_REPORT enum and discriminated union schema
 2026-05-11T16:06:10+02:00 - 8f6c8b6 - Titouan : Merge pull request #593 from IA-Generative/feat/implement_report_eval
+2026-05-11T15:58:57+02:00 - f9226fa - Titouan Mendiharat : :recycle: (560): Modified types.py to use Pydantic instead of dataclass
+2026-05-11T15:58:57+02:00 - bdd2b85 - Titouan Mendiharat : :sparkles: (560): Added cli, pipeline and makerule to run evaluation
+2026-05-11T15:58:57+02:00 - ad3767e - Titouan Mendiharat : :memo: (560): Defined criterias
 2026-05-11T15:58:57+02:00 - 6c58d83 - Titouan Mendiharat : :recycle: (560): Added a retry logic when criterion is not met
 2026-05-11T15:58:57+02:00 - 5c94279 - Titouan Mendiharat : :recycle: (560): Modified evaluation pipeline and implemented suggested changes
-2026-05-11T15:58:57+02:00 - f9226fa - Titouan Mendiharat : :recycle: (560): Modified types.py to use Pydantic instead of dataclass
-2026-05-11T15:58:57+02:00 - 4d6f699 - Titouan Mendiharat : :truck: (560): Renamed cli -> report_eval
 2026-05-11T15:58:57+02:00 - 54eefcd - Titouan Mendiharat : :test_tube: (560): Added documentation and tests
-2026-05-11T15:58:57+02:00 - bdd2b85 - Titouan Mendiharat : :sparkles: (560): Added cli, pipeline and makerule to run evaluation
+2026-05-11T15:58:57+02:00 - 4d6f699 - Titouan Mendiharat : :truck: (560): Renamed cli -> report_eval
 2026-05-11T15:58:57+02:00 - 0c8b2fb - Titouan Mendiharat : :memo: (560): Defined g-eval scorers
-2026-05-11T15:58:57+02:00 - ad3767e - Titouan Mendiharat : :memo: (560): Defined criterias
 2026-05-11T11:15:40+02:00 - 0840703 - Théodore de Leusse : Merge pull request #642 from IA-Generative/feat/generic_map_reduce_pipeline
 2026-05-11T11:07:19+02:00 - b90b1e4 - Titouan Mendiharat : :recycle: (613): Renamed pipeline.py, added EmptyChunksError and adapted tests
-2026-05-07T17:25:28+02:00 - 5f57f27 - Titouan Mendiharat : :test_tube: (613): Added tests, updated toml and lock. Removed useless mock that broke the decorator in the tests
-2026-05-07T17:25:28+02:00 - cea3cb7 - Titouan Mendiharat : :sparkles: (613): Defined GenericMapReducePipeline
 2026-05-07T17:25:28+02:00 - d45aad7 - Titouan Mendiharat : :sparkles: (613): Created async_call_llm_with_structured_output and made log_execution_time async compatible
+2026-05-07T17:25:28+02:00 - cea3cb7 - Titouan Mendiharat : :sparkles: (613): Defined GenericMapReducePipeline
+2026-05-07T17:25:28+02:00 - 5f57f27 - Titouan Mendiharat : :test_tube: (613): Added tests, updated toml and lock. Removed useless mock that broke the decorator in the tests
 2026-05-07T17:04:54+02:00 - 5effe73 - Théodore de Leusse : Merge pull request #596 from IA-Generative/feat/594/langfuse-observabiility-mcr-generation-part2
+2026-05-07T16:47:30+02:00 - fddfa82 - theodore2leusse : :bell: (594): emit low-confidence Langfuse events from map phase
 2026-05-07T16:47:30+02:00 - fc2bb1c - theodore2leusse : :recycle: (594): extract parallel map and low-confidence helpers
+2026-05-07T16:47:30+02:00 - cb9d68f - theodore2leusse : :bell: (594): surface tenacity retries and empty map outputs as Langfuse warnings
 2026-05-07T16:47:30+02:00 - 9c740f3 - theodore2leusse : :white_check_mark: (594): cover _emit_retry_event + class attrs
 2026-05-07T16:47:30+02:00 - 64cf53a - theodore2leusse : :sparkles: (594): degrade gracefully when individual map-phase chunks fail
-2026-05-07T16:47:30+02:00 - fddfa82 - theodore2leusse : :bell: (594): emit low-confidence Langfuse events from map phase
-2026-05-07T16:47:30+02:00 - cb9d68f - theodore2leusse : :bell: (594): surface tenacity retries and empty map outputs as Langfuse warnings
 2026-05-06T18:18:03+02:00 - e71cfee - ThomasMetzger : Merge pull request #633 from IA-Generative/dev
 2026-05-06T17:53:22+02:00 - 8b998c0 - ThomasMetzger : Merge pull request #632 from IA-Generative/fix/transcription-deliverable
 2026-05-06T17:46:10+02:00 - d3f0613 - Thomas Metzger : :ambulance: fix download path
@@ -248,27 +248,27 @@
 2026-05-06T16:58:04+02:00 - 1e1253c - ThomasMetzger : Merge pull request #616 from IA-Generative/feat/one-deliverable-per-type
 2026-05-06T16:57:04+02:00 - db9dbad - Thomas Metzger : :recycle: rename type -> deliverable_type to avoid shadowing python builtin
 2026-05-06T16:57:04+02:00 - c697316 - Thomas Metzger : :sparkles: deliverable: idempotent request and AVAILABLE-gated download
-2026-05-06T16:57:04+02:00 - 06bfcff - Thomas Metzger : :sparkles: report_task_service: persist_report_docx + type-aware S3 lookup
 2026-05-06T16:57:04+02:00 - 9c48b7a - Thomas Metzger : :sparkles: deliverable: add find_active_deliverable service helper
-2026-05-06T16:57:04+02:00 - 46788ec - Thomas Metzger : :sparkles: deliverable: add find_active_by_meeting_and_type repository helper
 2026-05-06T16:57:04+02:00 - 52792f9 - Thomas Metzger : :card_file_box: deliverable: enforce one active deliverable per (meeting, type)
+2026-05-06T16:57:04+02:00 - 46788ec - Thomas Metzger : :sparkles: deliverable: add find_active_by_meeting_and_type repository helper
+2026-05-06T16:57:04+02:00 - 06bfcff - Thomas Metzger : :sparkles: report_task_service: persist_report_docx + type-aware S3 lookup
 2026-05-06T16:41:51+02:00 - 0b29ca4 - Léo Germain : Merge pull request #630 from IA-Generative/fix/628-remove-deliverable-card-during-capture
-2026-05-06T16:40:12+02:00 - 1a675af - Léo Germain : :truck: (628): set default meeting page to V2
 2026-05-06T16:40:12+02:00 - 2f26d1b - Léo Germain : :sparkles: (628): hide MeetingDeliverableCard during capture phase
+2026-05-06T16:40:12+02:00 - 1a675af - Léo Germain : :truck: (628): set default meeting page to V2
 2026-05-06T16:38:32+02:00 - dd6f138 - Thibault Foucart : Merge pull request #624 from IA-Generative/feat/605-add-notes-field-to-meetings
-2026-05-06T16:27:50+02:00 - e00adf8 - Thibault Foucart : :card_file_box: (605): add migration
 2026-05-06T16:27:50+02:00 - f4a8b7d - Thibault Foucart : :card_file_box: (605): add field to model
+2026-05-06T16:27:50+02:00 - e00adf8 - Thibault Foucart : :card_file_box: (605): add migration
 2026-05-06T16:20:43+02:00 - 8b3b844 - Thibault Foucart : Merge pull request #623 from IA-Generative/fix/602-detect-misuses-of-feature-flags-front
-2026-05-06T16:17:12+02:00 - 0069a8a - Thibault Foucart : :white_check_mark: (602): fix all tests
 2026-05-06T16:17:12+02:00 - 7184391 - Thibault Foucart : :art: (602): add linter rule to detect not hoisted vi fn
+2026-05-06T16:17:12+02:00 - 0069a8a - Thibault Foucart : :white_check_mark: (602): fix all tests
 2026-05-06T14:25:25+02:00 - 5204fb2 - Léo Germain : Merge pull request #621 from IA-Generative/feat/550-visio-advices-modal
 2026-05-06T14:23:31+02:00 - c92f4e4 - Léo Germain : :white_check_mark: (550): update RecordingCard test for visio advices link
-2026-05-06T14:23:31+02:00 - 0d026cc - Léo Germain : :sparkles: (550): add visio advices link in RecordingCard
 2026-05-06T14:23:31+02:00 - 82ebbef - Léo Germain : :sparkles: (550): add VisioAdvicesModal component
+2026-05-06T14:23:31+02:00 - 0d026cc - Léo Germain : :sparkles: (550): add visio advices link in RecordingCard
 2026-05-06T14:22:53+02:00 - e765e4e - Léo Germain : Merge pull request #618 from IA-Generative/feat/552-end-visio-recording
-2026-05-06T14:20:23+02:00 - 71da2e4 - Léo Germain : :lipstick: (552): remove footer border in endMeetingModal
-2026-05-06T14:20:23+02:00 - 992e985 - Léo Germain : :speech_balloon: (552): add stop-button i18n key for visio recording
 2026-05-06T14:20:23+02:00 - d624188 - Léo Germain : :sparkles: (552): add stop recording button with confirmation modal in VisioInProgress
+2026-05-06T14:20:23+02:00 - 992e985 - Léo Germain : :speech_balloon: (552): add stop-button i18n key for visio recording
+2026-05-06T14:20:23+02:00 - 71da2e4 - Léo Germain : :lipstick: (552): remove footer border in endMeetingModal
 2026-05-06T11:11:20+02:00 - 34618b4 - Théodore de Leusse : Merge pull request #620 from IA-Generative/doc/mermaid_mcr_generation
 2026-05-06T11:09:45+02:00 - f742451 - theodore2leusse : :memo: add documentation for the CR generation
 2026-05-06T09:54:48+02:00 - 0305ff7 - Léo Germain : Merge pull request #617 from IA-Generative/feat/551-visio-recording-card
@@ -278,138 +278,138 @@
 2026-05-06T09:51:12+02:00 - 3ff03fb - Léo Germain : :recycle: (551): conditionally display meeting duration in front matter
 2026-05-05T16:24:53+02:00 - bb89818 - Léo Germain : Merge pull request #599 from IA-Generative/feat/546-new-meeting-pages-deliverables
 2026-05-05T15:53:51+02:00 - a88c10a - Léo Germain : :truck: (546): refactor deliverable item list in another component
-2026-05-05T15:53:50+02:00 - 1b03f89 - Léo Germain : :art: (546): rename variables & use tailwind config
-2026-05-05T15:53:50+02:00 - 00d7823 - Léo Germain : :sparkles: (546): link deliverableCard to backend routes
-2026-05-05T15:53:50+02:00 - 4698672 - Léo Germain : :sparkles: (546): make frontend consume deliverable routes
+2026-05-05T15:53:50+02:00 - c1ded76 - Léo Germain : :lipstick: (546): call MeetingDeliverableCard in new meeting page
 2026-05-05T15:53:50+02:00 - 7e3e7bc - Léo Germain : :sparkles: (546): create deliverable types in frontend
 2026-05-05T15:53:50+02:00 - 6842c67 - Léo Germain : :truck: (546): replace DONE statusTag with AVAILABLE to match deliverable backend
-2026-05-05T15:53:50+02:00 - c1ded76 - Léo Germain : :lipstick: (546): call MeetingDeliverableCard in new meeting page
-2026-05-05T15:53:50+02:00 - 0d7f131 - Léo Germain : :lipstick: (546): create MeetingDeliverableCard
+2026-05-05T15:53:50+02:00 - 4698672 - Léo Germain : :sparkles: (546): make frontend consume deliverable routes
 2026-05-05T15:53:50+02:00 - 201b7ca - Léo Germain : :lipstick: (546): create DeliverableItem
+2026-05-05T15:53:50+02:00 - 1b03f89 - Léo Germain : :art: (546): rename variables & use tailwind config
+2026-05-05T15:53:50+02:00 - 0d7f131 - Léo Germain : :lipstick: (546): create MeetingDeliverableCard
+2026-05-05T15:53:50+02:00 - 00d7823 - Léo Germain : :sparkles: (546): link deliverableCard to backend routes
 2026-05-05T15:53:40+02:00 - b4f3c0d - Léo Germain : :speech_balloon: (546): update labels for deliverable tile
 2026-05-05T12:30:43+02:00 - ce53676 - ThomasMetzger : Merge pull request #601 from IA-Generative/feat/deliverable-callback-after-generation
 2026-05-05T12:06:08+02:00 - d698f72 - Thomas Metzger : :sparkles: core: dispatch deliverable_id through start_report state machine flow
-2026-05-05T12:06:08+02:00 - 8aaa02c - Thomas Metzger : :sparkles: generation: route signal callbacks by deliverable_id
 2026-05-05T12:06:08+02:00 - b86aa32 - Thomas Metzger : :sparkles: generation: add deliverable success/failure callback methods
+2026-05-05T12:06:08+02:00 - 8aaa02c - Thomas Metzger : :sparkles: generation: route signal callbacks by deliverable_id
 2026-05-05T12:06:08+02:00 - 1fb1785 - Thomas Metzger : :recycle: generation: extract report callbacks into CoreApiClient
 2026-05-04T17:56:25+02:00 - bd7d3fb - Thibault Foucart : Merge pull request #604 from IA-Generative/feat/555-update-end-meeting-modal
 2026-05-04T17:41:32+02:00 - 0333193 - Thibault Foucart : :lipstick: (555): change end live meeting modal
 2026-05-04T15:05:52+02:00 - 3e9f0e0 - Théodore de Leusse : Merge pull request #595 from IA-Generative/feat/582/langfuse_observability_mcr_genration_part1
-2026-05-04T15:03:57+02:00 - 8f3d8ec - theodore2leusse : :recycle: (582): isolate Langfuse instrumentation behind tolerant helpers
-2026-05-04T15:03:57+02:00 - dedcb71 - theodore2leusse : :white_check_mark: (582): cover usage_details extraction
-2026-05-04T15:03:57+02:00 - 1f333dd - theodore2leusse : :white_check_mark: (582): feed Chunk-shaped objects to generate_report_from_docx test
-2026-05-04T15:03:57+02:00 - c2e4fcf - theodore2leusse : :zap: (582): propagate Langfuse context into map-phase worker threads
 2026-05-04T15:03:57+02:00 - e0b4ec2 - theodore2leusse : :sparkles: (582): log readable prompts and outputs on Langfuse generations
+2026-05-04T15:03:57+02:00 - dedcb71 - theodore2leusse : :white_check_mark: (582): cover usage_details extraction
+2026-05-04T15:03:57+02:00 - c2e4fcf - theodore2leusse : :zap: (582): propagate Langfuse context into map-phase worker threads
 2026-05-04T15:03:57+02:00 - a5a3b60 - theodore2leusse : :sparkles: (582): ground Langfuse traces in mcr-generation with session, metadata, flush
+2026-05-04T15:03:57+02:00 - 8f3d8ec - theodore2leusse : :recycle: (582): isolate Langfuse instrumentation behind tolerant helpers
+2026-05-04T15:03:57+02:00 - 1f333dd - theodore2leusse : :white_check_mark: (582): feed Chunk-shaped objects to generate_report_from_docx test
 2026-05-04T12:03:01+02:00 - 90fc7aa - Thibault Foucart : Merge pull request #603 from IA-Generative/feat/554-add-recording-advice-modal
 2026-05-04T11:40:59+02:00 - 1c3f283 - Thibault Foucart : :lipstick: (554): add advices modal
 2026-05-04T10:43:06+02:00 - 461dd65 - Thibault Foucart : Merge pull request #590 from IA-Generative/feat/553-create-new-recording-in-progress
-2026-05-04T09:55:02+02:00 - 7953cae - Thibault Foucart : :art: (553): remove over fault
 2026-05-04T09:55:02+02:00 - 97c94f9 - Thibault Foucart : :lipstick: (559): update tailwindfig and all its uses
+2026-05-04T09:55:02+02:00 - 7953cae - Thibault Foucart : :art: (553): remove over fault
 2026-05-04T09:55:02+02:00 - 0fbecce - Thibault Foucart : :coffin: (553): clean unused component
 2026-05-04T09:55:01+02:00 - 16ac29d - Thibault Foucart : :sparkles: (553): create live recording in progress component
 2026-05-04T09:43:58+02:00 - 2889bd5 - Léo Germain : Merge pull request #592 from IA-Generative/feat/581-relisten-audio-new-ux
-2026-04-30T15:20:18+02:00 - 6a2037e - Léo Germain : :art: (581): change alert to match relistening audio feature
+2026-04-30T15:20:18+02:00 - bf2148c - Léo Germain : :speech_balloon: (581): add relisten audio labels
 2026-04-30T15:20:18+02:00 - 9498f80 - Léo Germain : :sparkles: (581): add meeting audio card to meeting page
 2026-04-30T15:20:18+02:00 - 6ef6000 - Léo Germain : :sparkles: (581): create meeting audio card
-2026-04-30T15:20:18+02:00 - bf2148c - Léo Germain : :speech_balloon: (581): add relisten audio labels
+2026-04-30T15:20:18+02:00 - 6a2037e - Léo Germain : :art: (581): change alert to match relistening audio feature
 2026-04-30T12:15:33+02:00 - 8b44ac9 - ThomasMetzger : Merge pull request #591 from IA-Generative/feat/add-deliverable-router
-2026-04-30T12:04:44+02:00 - 854b84b - Thomas Metzger : :sparkles: gateway: proxy deliverable API to mcr-core
+2026-04-30T12:04:44+02:00 - fec2dee - Thomas Metzger : :sparkles: deliverable: add BadRequestException mapped to 400
 2026-04-30T12:04:44+02:00 - d998461 - Thomas Metzger : :white_check_mark: deliverable: cover repository, orchestrator, and router
-2026-04-30T12:04:44+02:00 - 2f863f4 - Thomas Metzger : :sparkles: deliverable: HTTP router and schemas (mcr-core)
+2026-04-30T12:04:44+02:00 - c9bba60 - Thomas Metzger : :sparkles: deliverable: repository helpers for list / get / set / soft delete
+2026-04-30T12:04:44+02:00 - 854b84b - Thomas Metzger : :sparkles: gateway: proxy deliverable API to mcr-core
 2026-04-30T12:04:44+02:00 - 8468ddd - Thomas Metzger : :sparkles: deliverable: orchestrator coordinating auth, SM, and service
 2026-04-30T12:04:44+02:00 - 4ce916b - Thomas Metzger : :sparkles: deliverable: service wrapping repo writes in UnitOfWork
-2026-04-30T12:04:44+02:00 - c9bba60 - Thomas Metzger : :sparkles: deliverable: repository helpers for list / get / set / soft delete
+2026-04-30T12:04:44+02:00 - 2f863f4 - Thomas Metzger : :sparkles: deliverable: HTTP router and schemas (mcr-core)
 2026-04-30T12:04:44+02:00 - 1f4d2bc - Thomas Metzger : :white_check_mark: deliverable: exclude meeting SubFactory from model kwargs
-2026-04-30T12:04:44+02:00 - fec2dee - Thomas Metzger : :sparkles: deliverable: add BadRequestException mapped to 400
 2026-04-29T13:58:26+02:00 - 6b59ffd - Léo Germain : Merge pull request #578 from IA-Generative/feat/471-meeting-page-edit-delete-buttons
-2026-04-29T13:46:59+02:00 - 17ada71 - Léo Germain : :art: (471): use i18n to avoid magic strings
-2026-04-29T13:46:59+02:00 - 07f6831 - Léo Germain : :lipstick: (471): reduce meeting title size to fit with new buttons
-2026-04-29T13:46:59+02:00 - 1628c44 - Léo Germain : :sparkles: (471): add edit/delete buttons to new meeting page
 2026-04-29T13:46:59+02:00 - 6523631 - Léo Germain : :speech_balloon: (471): add edit/delete buttons labels
+2026-04-29T13:46:59+02:00 - 17ada71 - Léo Germain : :art: (471): use i18n to avoid magic strings
+2026-04-29T13:46:59+02:00 - 1628c44 - Léo Germain : :sparkles: (471): add edit/delete buttons to new meeting page
+2026-04-29T13:46:59+02:00 - 07f6831 - Léo Germain : :lipstick: (471): reduce meeting title size to fit with new buttons
 2026-04-29T12:52:13+02:00 - 90e5674 - ThomasMetzger : Merge pull request #586 from IA-Generative/feat/improve-deliverable-logic
-2026-04-29T12:28:19+02:00 - 9870eed - Thomas Metzger : :white_check_mark: tests: cover Deliverable type+status and old-frontend JSON contract
 2026-04-29T12:28:19+02:00 - db274fd - Thomas Metzger : :sparkles: DeliverableResponse: expose type/status, keep file_type for old-frontend compat
-2026-04-29T12:28:19+02:00 - 33788c8 - Thomas Metzger : :sparkles: deliverable: introduce DeliverableType+DeliverableStatus and adopt them in the writer
 2026-04-29T12:28:19+02:00 - a31ae49 - Thomas Metzger : :card_file_box: deliverable: rename file_type→type, add status, backfill REPORT→DECISION_RECORD
+2026-04-29T12:28:19+02:00 - 9870eed - Thomas Metzger : :white_check_mark: tests: cover Deliverable type+status and old-frontend JSON contract
+2026-04-29T12:28:19+02:00 - 33788c8 - Thomas Metzger : :sparkles: deliverable: introduce DeliverableType+DeliverableStatus and adopt them in the writer
 2026-04-29T12:23:18+02:00 - 9c12ae6 - Léo Germain : Merge pull request #574 from IA-Generative/feat/470-meeting-page-deletion-warning
-2026-04-29T12:21:38+02:00 - 36522f3 - Léo Germain : :lipstick: (470): allow meeting page background to cover all the page
-2026-04-29T12:21:38+02:00 - 013f8c6 - Léo Germain : :lipstick: (470): setup peremption alert in new meeting page
-2026-04-29T12:21:38+02:00 - 22371a7 - Léo Germain : :white_check_mark: (470): meeting peremption date tests update
 2026-04-29T12:21:38+02:00 - 9b21b49 - Léo Germain : :sparkles: (470): meeting peremption date computation in composable
-2026-04-29T12:21:38+02:00 - 7588bd2 - Léo Germain : :white_check_mark: (470): update meeting page tests
 2026-04-29T12:21:38+02:00 - 87c7ca4 - Léo Germain : :white_check_mark: (470): test new composable
+2026-04-29T12:21:38+02:00 - 7588bd2 - Léo Germain : :white_check_mark: (470): update meeting page tests
 2026-04-29T12:21:38+02:00 - 4249c7d - Léo Germain : :sparkles: (470): sessionStoraged alert info in a composable
+2026-04-29T12:21:38+02:00 - 36522f3 - Léo Germain : :lipstick: (470): allow meeting page background to cover all the page
+2026-04-29T12:21:38+02:00 - 22371a7 - Léo Germain : :white_check_mark: (470): meeting peremption date tests update
 2026-04-29T12:21:38+02:00 - 21facf0 - Léo Germain : :speech_balloon: (470): add pluralized label
+2026-04-29T12:21:38+02:00 - 013f8c6 - Léo Germain : :lipstick: (470): setup peremption alert in new meeting page
 2026-04-29T11:08:25+02:00 - 9aabddc - ThomasMetzger : Merge pull request #589 from IA-Generative/dev
 2026-04-29T10:33:09+02:00 - 6d8a1ed - Théodore de Leusse : Merge pull request #588 from IA-Generative/5S/documentation_acronym_script
 2026-04-29T10:24:20+02:00 - edb9c96 - theodore2leusse : :memo: add documentation for the acronym evaluation script
 2026-04-29T10:20:20+02:00 - 1bb092e - ThomasMetzger : Merge pull request #587 from IA-Generative/dev
 2026-04-29T10:13:30+02:00 - e8daa5c - Théodore de Leusse : Merge pull request #575 from IA-Generative/chore/add_acronyms_in_glossary
-2026-04-29T10:07:05+02:00 - 28d22f4 - theodore2leusse : :truck: rename glossary markdown file
 2026-04-29T10:07:05+02:00 - 43a1e3a - theodore2leusse : :wrench: add new acronyms in the glossary markdown file
+2026-04-29T10:07:05+02:00 - 28d22f4 - theodore2leusse : :truck: rename glossary markdown file
 2026-04-29T10:04:40+02:00 - aa5547b - ThomasMetzger : Merge pull request #571 from IA-Generative/feat/remove-grist-from-header
 2026-04-28T19:06:17+02:00 - 143a53c - Thomas Metzger : :lipstick: remove grist link from Header
 2026-04-27T16:34:48+02:00 - 2a72af3 - Léo Germain : Merge pull request #573 from IA-Generative/feat/544-new-meeting-page-header
+2026-04-27T16:20:24+02:00 - 7c184f5 - Léo Germain : :sparkles: (544): create new meeting page with header
 2026-04-27T16:20:24+02:00 - 617cd43 - Léo Germain : :white_check_mark: (544): test new meeting page header methods
 2026-04-27T16:20:24+02:00 - 26e80b6 - Léo Germain : :sparkles: (544): create new meeting page route
-2026-04-27T16:20:24+02:00 - 7c184f5 - Léo Germain : :sparkles: (544): create new meeting page with header
 2026-04-27T16:20:24+02:00 - 1344197 - Léo Germain : :speech_balloon: (544): add header subtitle labels
 2026-04-27T16:00:07+02:00 - 3cd0e5e - Thibault Foucart : Merge pull request #572 from IA-Generative/feat/563-add-dsfr-pagination-for-meeting-page
 2026-04-27T15:49:41+02:00 - d494d6d - Thibault Foucart : :art: (563): moove into meeting v2
 2026-04-27T15:49:13+02:00 - 474e82b - Thibault Foucart : :lipstick: (563): truncate nb of shown pages
 2026-04-27T15:01:12+02:00 - c73f107 - Thibault Foucart : :lipstick: (563): add dsfr pagination
 2026-04-27T11:09:34+02:00 - d7159fe - Léo Germain : Merge pull request #568 from IA-Generative/feat/554-set-new-ux-as-default
-2026-04-27T10:59:05+02:00 - 56604fc - Léo Germain : :fire: (554): delete former UX homepage components
 2026-04-27T10:59:05+02:00 - a13dfb7 - Léo Germain : :truck: (554): remove V2 in new UX homepage components name
+2026-04-27T10:59:05+02:00 - 56604fc - Léo Germain : :fire: (554): delete former UX homepage components
 2026-04-27T10:34:17+02:00 - bc7c179 - Théodore de Leusse : Merge pull request #569 from IA-Generative/iteration/PP_LLM_acronyms_2
 2026-04-27T10:24:57+02:00 - 48bc11a - theodore2leusse : :zap: (562) improve acronym correction prompt
 2026-04-27T10:24:57+02:00 - 266e721 - theodore2leusse : :sparkles: add new data file that lists the acronyms that are in the dataset but not in the glossary
 2026-04-27T09:39:36+02:00 - 43f6dba - Léo Germain : Merge pull request #567 from IA-Generative/feat/553-link-meeting-modals-to-tiles
 2026-04-24T15:04:04+02:00 - 91fe875 - Léo Germain : :sparkles: (553): open meeting creation modals on click on tiles
 2026-04-24T14:59:20+02:00 - e3b77f3 - Léo Germain : Merge pull request #566 from IA-Generative/feat/556-report-failed-status
-2026-04-24T14:39:27+02:00 - 6d927a9 - Léo Germain : :card_file_box: (556): migrate sqlenum to varchar for meetingPlatform/meetingStatus
-2026-04-24T14:39:27+02:00 - 7bb6fde - Léo Germain : :sparkles: (556): frontend handles REPORT_FAILED status
-2026-04-24T14:39:27+02:00 - 875eb02 - Léo Germain : :lipstick: (556): create ReportFailed component
-2026-04-24T14:39:27+02:00 - b719ed7 - Léo Germain : :sparkles: (556): add REPORT_FAILED status to gateway
-2026-04-24T14:39:27+02:00 - 285744b - Léo Germain : :white_check_mark: (556): test report celery task failure handling
 2026-04-24T14:39:27+02:00 - fcbeb88 - Léo Germain : :white_check_mark: (556): test new fail_report transition
-2026-04-24T14:39:27+02:00 - 3daf8f5 - Léo Germain : :sparkles: (556): handle report celery task error
-2026-04-24T14:39:27+02:00 - 7ffa956 - Léo Germain : :sparkles: (556): handle report/failure http request
-2026-04-24T14:39:27+02:00 - 154f9cc - Léo Germain : :card_file_box: (556): report failed status migration
+2026-04-24T14:39:27+02:00 - b719ed7 - Léo Germain : :sparkles: (556): add REPORT_FAILED status to gateway
 2026-04-24T14:39:27+02:00 - 9a3faa8 - Léo Germain : :bento: (556): update state machine graphs with new REPORT_FAILED status
+2026-04-24T14:39:27+02:00 - 875eb02 - Léo Germain : :lipstick: (556): create ReportFailed component
+2026-04-24T14:39:27+02:00 - 7ffa956 - Léo Germain : :sparkles: (556): handle report/failure http request
+2026-04-24T14:39:27+02:00 - 7bb6fde - Léo Germain : :sparkles: (556): frontend handles REPORT_FAILED status
+2026-04-24T14:39:27+02:00 - 6d927a9 - Léo Germain : :card_file_box: (556): migrate sqlenum to varchar for meetingPlatform/meetingStatus
+2026-04-24T14:39:27+02:00 - 3daf8f5 - Léo Germain : :sparkles: (556): handle report celery task error
 2026-04-24T14:39:27+02:00 - 3386f02 - Léo Germain : :sparkles: (556): add REPORT_FAILED status
+2026-04-24T14:39:27+02:00 - 285744b - Léo Germain : :white_check_mark: (556): test report celery task failure handling
+2026-04-24T14:39:27+02:00 - 154f9cc - Léo Germain : :card_file_box: (556): report failed status migration
 2026-04-24T11:59:23+02:00 - 010bf73 - Léo Germain : Merge pull request #544 from IA-Generative/fix/541-overconstrained-recording-media
 2026-04-24T10:04:24+02:00 - 394e10d - Léo Germain : :loud_sound: (541): add sentry logs for startRecording errors
-2026-04-24T09:45:31+02:00 - 9116690 - Léo Germain : :white_check_mark: (541): allow fallback in tests mock
 2026-04-24T09:45:31+02:00 - f17cf2a - Léo Germain : :bug: (541): allow firefox fallback when chosen microphone isn't available anymore
+2026-04-24T09:45:31+02:00 - 9116690 - Léo Germain : :white_check_mark: (541): allow fallback in tests mock
 2026-04-24T09:44:42+02:00 - 8a49b20 - Léo Germain : Merge pull request #546 from IA-Generative/feat/524-log-empty-recordings
 2026-04-24T09:42:52+02:00 - e47719e - Léo Germain : :white_check_mark: (524): test recording monitor
-2026-04-24T09:42:52+02:00 - 5d7b08b - Léo Germain : :sparkles: (524): use monitor in recording methods
 2026-04-24T09:42:52+02:00 - d50fed7 - Léo Germain : :speech_balloon: (524): create silent audio errors labels
 2026-04-24T09:42:52+02:00 - 739a1b0 - Léo Germain : :sparkles: (524): create recording monitor
+2026-04-24T09:42:52+02:00 - 5d7b08b - Léo Germain : :sparkles: (524): use monitor in recording methods
 2026-04-22T17:48:56+02:00 - ad110c9 - ThomasMetzger : Merge pull request #561 from IA-Generative/feat/mcr-generation-sentry
-2026-04-22T11:36:31+02:00 - 09e2ec6 - Thomas Metzger : :sparkles: (mcr-generation) enrich Sentry with meeting context on report prerun
-2026-04-22T11:36:31+02:00 - 61caa42 - Thomas Metzger : :sparkles: (mcr-core) pass meeting owner keycloak UUID to report generation task
-2026-04-22T11:36:31+02:00 - dfc4710 - Thomas Metzger : :sparkles: (mcr-generation) extract report task args from Celery signal kwargs
-2026-04-22T11:36:31+02:00 - 16592fe - Thomas Metzger : :sparkles: (mcr-generation) add meeting API client and response schema
 2026-04-22T11:36:31+02:00 - fd85a7a - Thomas Metzger : :sparkles: (mcr-generation) add HTTP client with keycloak-UUID header auth
+2026-04-22T11:36:31+02:00 - dfc4710 - Thomas Metzger : :sparkles: (mcr-generation) extract report task args from Celery signal kwargs
 2026-04-22T11:36:31+02:00 - cb50bec - Thomas Metzger : :sparkles: (mcr-generation) enable Sentry Celery integration
+2026-04-22T11:36:31+02:00 - 61caa42 - Thomas Metzger : :sparkles: (mcr-core) pass meeting owner keycloak UUID to report generation task
+2026-04-22T11:36:31+02:00 - 16592fe - Thomas Metzger : :sparkles: (mcr-generation) add meeting API client and response schema
+2026-04-22T11:36:31+02:00 - 09e2ec6 - Thomas Metzger : :sparkles: (mcr-generation) enrich Sentry with meeting context on report prerun
 2026-04-22T11:35:56+02:00 - 8c142a6 - ThomasMetzger : Merge pull request #558 from IA-Generative/feat/mcr-generation-custom-exceptions
-2026-04-22T11:34:33+02:00 - 6c1655b - Thomas Metzger : :white_check_mark: (mcr-generation) add unit tests for custom exception propagation
 2026-04-22T11:34:33+02:00 - 73b27de - Thomas Metzger : :recycle: (mcr-generation) centralize test mocks into reusable fixtures
-2026-04-22T11:34:33+02:00 - 1ba87c3 - Thomas Metzger : :recycle: (mcr-generation) raise domain-specific exceptions across services
+2026-04-22T11:34:33+02:00 - 6c1655b - Thomas Metzger : :white_check_mark: (mcr-generation) add unit tests for custom exception propagation
 2026-04-22T11:34:33+02:00 - 6018376 - Thomas Metzger : :sparkles: (mcr-generation) add custom exception hierarchy
+2026-04-22T11:34:33+02:00 - 1ba87c3 - Thomas Metzger : :recycle: (mcr-generation) raise domain-specific exceptions across services
 2026-04-22T11:05:48+02:00 - 054f924 - Thibault Foucart : Merge pull request #555 from IA-Generative/feat/504-add-sitcky-button-and-model-for-feedback
-2026-04-22T10:08:52+02:00 - 83da252 - Thibault Foucart : :lipstick: (504): add front components
 2026-04-22T10:08:52+02:00 - 9e405bb - Thibault Foucart : :construction: (504): add services for feedback
+2026-04-22T10:08:52+02:00 - 83da252 - Thibault Foucart : :lipstick: (504): add front components
 2026-04-21T17:50:39+02:00 - 991dd74 - Théodore de Leusse : Merge pull request #540 from IA-Generative/iteration/475/PP_LLM_acronymes
 2026-04-21T16:02:01+02:00 - b7f1709 - theodore2leusse : :see_no_evil: (475) add bin folder to gitignore
 2026-04-21T16:02:01+02:00 - 5fe1e48 - theodore2leusse : :sparkles: (475): integrate acronym correction in speech-to-text pipeline
 2026-04-21T16:02:01+02:00 - 1d70746 - theodore2leusse : :triangular_flag_on_post: (475): add acronym_correction feature flag
 2026-04-21T16:01:46+02:00 - 062dab8 - theodore2leusse : :white_check_mark: (475): add unit tests for acronym corrector
-2026-04-21T15:58:09+02:00 - 2e4ea40 - theodore2leusse : :sparkles: (475): add acronym corrector module with glossary and prompt
 2026-04-21T15:58:09+02:00 - 3542c77 - theodore2leusse : :pencil2: (475) typo acronyms without the e
+2026-04-21T15:58:09+02:00 - 2e4ea40 - theodore2leusse : :sparkles: (475): add acronym corrector module with glossary and prompt
 2026-04-21T12:10:18+02:00 - ea370b2 - Léo Germain : Merge pull request #551 from IA-Generative/fix/529-replace-all-fcr-by-mcr
 2026-04-21T11:00:31+02:00 - 98a9630 - Léo Germain : :speech_balloon: (529): update core labels
 2026-04-21T10:56:06+02:00 - ac45161 - Léo Germain : :memo: (529): update readme & contributing
@@ -433,14 +433,14 @@
 2026-04-17T09:38:29+02:00 - 5dac649 - Thibault Foucart : :truck: (502): remoove voteType to create it into feedback later
 2026-04-17T09:36:40+02:00 - 265c3cb - Thibault Foucart : Merge pull request #523 from IA-Generative/feat/379-add-report-status-tag
 2026-04-17T09:30:08+02:00 - 74cae8c - Thibault Foucart : :art: (379): clean to take into account latest comments
-2026-04-17T09:14:22+02:00 - 4bdc8ca - Thibault Foucart : :white_check_mark: (379): add tests
 2026-04-17T09:14:22+02:00 - 55abc04 - Thibault Foucart : :sparkles: (379): add report status tag
+2026-04-17T09:14:22+02:00 - 4bdc8ca - Thibault Foucart : :white_check_mark: (379): add tests
 2026-04-16T18:10:17+02:00 - 7119890 - ThomasMetzger : Merge pull request #535 from IA-Generative/feat/534-disable-bot-auto-disconnection
 2026-04-16T17:52:48+02:00 - 5106bde - Léo Germain : :wrench: (534): make CI point to a specific ffmpeg version
 2026-04-16T17:41:57+02:00 - 6fc6aa0 - Léo Germain : :ambulance: (534): disable bot auto disconnection feature
 2026-04-16T11:10:44+02:00 - 5bfcf0f - Théodore de Leusse : Merge pull request #516 from IA-Generative/feat/509/add_input_files_acronymes_evaluation
-2026-04-16T09:50:25+02:00 - f2c4ba4 - theodore2leusse : :recycle: (509) move _safe_ratio function to an utils file
 2026-04-16T09:50:25+02:00 - fce8119 - theodore2leusse : :recycle: (509): replace hardcoded acronym constant with glossary + per-audio reference, add count-aware tn and accuracy
+2026-04-16T09:50:25+02:00 - f2c4ba4 - theodore2leusse : :recycle: (509) move _safe_ratio function to an utils file
 2026-04-16T09:50:25+02:00 - d94c514 - theodore2leusse : :sparkles: (509): add loaders for acronym glossary and per-audio reference
 2026-04-15T18:01:02+02:00 - 5fb435f - Thibault Foucart : Merge pull request #513 from IA-Generative/feat/378-add-transcription-status-tag
 2026-04-15T17:51:30+02:00 - 7a7ec76 - Thibault Foucart : :sparkles: (378): add transcription status tag
@@ -449,103 +449,103 @@
 2026-04-15T14:46:15+02:00 - d22483c - Thibault Foucart : :art: (377): update imports
 2026-04-15T14:46:15+02:00 - 83ba3ee - Thibault Foucart : :sparkles: (377): add hoverable tooltip for soon to be expired meeting
 2026-04-15T14:42:59+02:00 - e57990c - Titouan : Merge pull request #499 from IA-Generative/feat/enrich_sentry_errors
-2026-04-15T12:31:35+02:00 - 0669826 - Titouan Mendiharat : :recycle: (480): Renamed the tags meeting_id -> meeting.id and name_platform -> meeting.platform
 2026-04-15T12:31:35+02:00 - 79f640d - Titouan Mendiharat : :recycle: (480): Moved gather_meeting_context to sentry_context.py
+2026-04-15T12:31:35+02:00 - 0669826 - Titouan Mendiharat : :recycle: (480): Renamed the tags meeting_id -> meeting.id and name_platform -> meeting.platform
 2026-04-15T12:31:33+02:00 - fe6fe00 - Titouan Mendiharat : :recycle: (480): Added a try to get the name_platform
 2026-04-15T12:30:58+02:00 - ddb9fa7 - Titouan Mendiharat : :goal_net: (480): Added user, meeting _id and name_platform to errors on sentry
 2026-04-15T10:35:55+02:00 - 90ae213 - Titouan : Merge pull request #491 from IA-Generative/feat/error_on_silent_audio
-2026-04-15T10:28:08+02:00 - 4b3563b - Titouan Mendiharat : :test_tube: (473): Modified conftest and made tests match our use case better
-2026-04-15T10:28:08+02:00 - 833ee48 - Titouan Mendiharat : :recycle: (473): Removed meeting_id from STT pipeline
-2026-04-15T10:28:08+02:00 - df6f623 - Titouan Mendiharat : :test_tube: (473): Fixed and added tests
 2026-04-15T10:28:08+02:00 - f265b2d - Titouan Mendiharat : :sparkles: (473): Created SilentAudioError and implemented the detection logic
+2026-04-15T10:28:08+02:00 - df6f623 - Titouan Mendiharat : :test_tube: (473): Fixed and added tests
+2026-04-15T10:28:08+02:00 - 833ee48 - Titouan Mendiharat : :recycle: (473): Removed meeting_id from STT pipeline
+2026-04-15T10:28:08+02:00 - 4b3563b - Titouan Mendiharat : :test_tube: (473): Modified conftest and made tests match our use case better
 2026-04-15T10:15:32+02:00 - 7b0bf20 - ThomasMetzger : Merge pull request #506 from IA-Generative/dev
 2026-04-15T10:10:30+02:00 - 9ce437a - ThomasMetzger : Merge pull request #508 from IA-Generative/fix/broken-frontend-tests
 2026-04-15T10:02:18+02:00 - c71a76e - Thomas Metzger : :white_check_mark: (frontend): mock use-meetings in Meeting list page
 2026-04-15T10:01:03+02:00 - e699e4e - Thomas Metzger : :hammer: (frontend): improve useMeetings global mock to include queries
 2026-04-14T18:15:53+02:00 - 1c3e3f7 - Théodore de Leusse : Merge pull request #498 from IA-Generative/feat/477/script_acronymes
 2026-04-14T18:06:46+02:00 - f611ddd - theodore2leusse : :white_check_mark: (477): add tests for acronyme evaluation utils
-2026-04-14T18:06:46+02:00 - 887ef76 - theodore2leusse : :hammer: (477) add evaluation script and associated utils to evaluate acronyme transcription
 2026-04-14T18:06:46+02:00 - e68796c - theodore2leusse : :rotating_light: (477) linting fix
 2026-04-14T18:06:46+02:00 - cc40f65 - theodore2leusse : :building_construction: (477) add participant_naming evaluation in our evaluation folder
+2026-04-14T18:06:46+02:00 - 887ef76 - theodore2leusse : :hammer: (477) add evaluation script and associated utils to evaluate acronyme transcription
 2026-04-14T18:06:46+02:00 - 05bbd30 - theodore2leusse : :building_construction: (477) organise evaluation codes with distinct folders in the evaluation folder
 2026-04-14T17:29:34+02:00 - 7ccd96f - Titouan : Merge pull request #505 from IA-Generative/feat/improve_noise_filter
 2026-04-14T17:03:58+02:00 - 63018bf - Titouan Mendiharat : :zap: (440): Modified noise filter to have better performances
 2026-04-14T15:51:55+02:00 - 5676fa3 - Thibault Foucart : Merge pull request #485 from IA-Generative/feat/376-create-meetings-table
 2026-04-14T15:32:34+02:00 - 05a773c - Thibault Foucart : :lipstick: (376): set the max width of column
-2026-04-14T11:13:10+02:00 - 495051a - Thibault Foucart : :art: (376): define types of props
-2026-04-14T11:13:10+02:00 - 2b6a62b - Thibault Foucart : :art: (376): clean imports
-2026-04-14T11:13:10+02:00 - 43341d0 - Thibault Foucart : :art: (376): change the logic to avoid 100% sum
-2026-04-14T11:13:10+02:00 - b710fed - Thibault Foucart : :art: (376): update names and imports
-2026-04-14T11:13:10+02:00 - c467348 - Thibault Foucart : :art: (376): put table logic in MeetingDataTable
 2026-04-14T11:13:10+02:00 - f8f5d17 - Thibault Foucart : :art: (376): remove useless import
-2026-04-14T11:13:10+02:00 - 133c4dc - Thibault Foucart : :art: (376): add case logic for cells
-2026-04-14T11:13:10+02:00 - c3b89cf - Thibault Foucart : :art: (376): remove useless imports
-2026-04-14T11:13:10+02:00 - b028d69 - Thibault Foucart : :art: (376): gather label & tooltip into report
-2026-04-14T11:13:10+02:00 - 0221d65 - Thibault Foucart : :art: (376): run prettier
-2026-04-14T11:13:10+02:00 - 627e13e - Thibault Foucart : :bug: (376): fix hoisted mock
 2026-04-14T11:13:10+02:00 - e0e0419 - Thibault Foucart : :art: (376): set the page size to 10
-2026-04-14T11:13:10+02:00 - 31ae161 - Thibault Foucart : :art: (376): add sortable row
+2026-04-14T11:13:10+02:00 - c467348 - Thibault Foucart : :art: (376): put table logic in MeetingDataTable
+2026-04-14T11:13:10+02:00 - c3b89cf - Thibault Foucart : :art: (376): remove useless imports
+2026-04-14T11:13:10+02:00 - b710fed - Thibault Foucart : :art: (376): update names and imports
+2026-04-14T11:13:10+02:00 - b028d69 - Thibault Foucart : :art: (376): gather label & tooltip into report
 2026-04-14T11:13:10+02:00 - a9d311c - Thibault Foucart : :art: (376): tooltip is now clickable
-2026-04-14T11:13:10+02:00 - 15453fe - Thibault Foucart : :sparkle: (376): add tooltip & pagination
+2026-04-14T11:13:10+02:00 - 627e13e - Thibault Foucart : :bug: (376): fix hoisted mock
+2026-04-14T11:13:10+02:00 - 495051a - Thibault Foucart : :art: (376): define types of props
+2026-04-14T11:13:10+02:00 - 43341d0 - Thibault Foucart : :art: (376): change the logic to avoid 100% sum
+2026-04-14T11:13:10+02:00 - 31ae161 - Thibault Foucart : :art: (376): add sortable row
+2026-04-14T11:13:10+02:00 - 2b6a62b - Thibault Foucart : :art: (376): clean imports
 2026-04-14T11:13:10+02:00 - 2ac34cb - Thibault Foucart : :sparkles: 376: add new meeting table
+2026-04-14T11:13:10+02:00 - 15453fe - Thibault Foucart : :sparkle: (376): add tooltip & pagination
+2026-04-14T11:13:10+02:00 - 133c4dc - Thibault Foucart : :art: (376): add case logic for cells
+2026-04-14T11:13:10+02:00 - 0221d65 - Thibault Foucart : :art: (376): run prettier
 2026-04-13T17:53:34+02:00 - c6af927 - ThomasMetzger : Merge pull request #496 from IA-Generative/feat/add-skill-evals
-2026-04-13T17:53:06+02:00 - 3fdeace - Thomas Metzger : :technologist: add eval to andon skill
 2026-04-13T17:53:06+02:00 - fe780af - Thomas Metzger : :technologist: create grafana-sql skill
+2026-04-13T17:53:06+02:00 - 3fdeace - Thomas Metzger : :technologist: add eval to andon skill
 2026-04-13T15:59:56+02:00 - 1508b8f - Léo Germain : Merge pull request #488 from IA-Generative/fix/487-chunk-size-based-auto-disconnect
-2026-04-13T14:12:33+02:00 - 2b1c856 - Léo Germain : :white_check_mark: (487): mock new auto disconnection method
 2026-04-13T14:12:33+02:00 - 4919265 - Léo Germain : :sparkles: (487): auto disconnect when audio chunks are empty in visio and comu
+2026-04-13T14:12:33+02:00 - 2b1c856 - Léo Germain : :white_check_mark: (487): mock new auto disconnection method
 2026-04-10T16:49:01+02:00 - 214c2d0 - Titouan : Merge pull request #486 from IA-Generative/feat/create_NoAudioFoundError
-2026-04-10T16:43:15+02:00 - dca68ed - Titouan Mendiharat : :recycle: (476): Update docstring and modified empty list error
 2026-04-10T16:43:15+02:00 - f6e6bd4 - Titouan Mendiharat : :test_tube: (476): Fixed tests
+2026-04-10T16:43:15+02:00 - dca68ed - Titouan Mendiharat : :recycle: (476): Update docstring and modified empty list error
 2026-04-10T16:43:15+02:00 - 2049612 - Titouan Mendiharat : :goal_net: (476): Improved error detection
 2026-04-10T14:50:29+02:00 - b699e25 - ThomasMetzger : Merge pull request #494 from IA-Generative/dev
 2026-04-10T14:48:55+02:00 - d5f63e9 - ThomasMetzger : Merge branch 'main' into dev
 2026-04-10T13:52:48+02:00 - 1053d0a - Thibault Foucart : Merge pull request #493 from IA-Generative/fix/373-show-imgs-on-staging
 2026-04-10T13:41:57+02:00 - b9d3d5a - Thibault Foucart : :bug: (373): use img src instead of svg path
 2026-04-10T12:12:00+02:00 - 59a0435 - ThomasMetzger : Merge pull request #492 from IA-Generative/fix/revert-chromium-changes
-2026-04-10T12:04:12+02:00 - 07c055d - Thomas Metzger : :ambulance: (core): fix drive missing settings
 2026-04-10T12:04:12+02:00 - 397bc7a - Thomas Metzger : :ambulance: (capture): revert to chromium browser
+2026-04-10T12:04:12+02:00 - 07c055d - Thomas Metzger : :ambulance: (core): fix drive missing settings
 2026-04-09T11:07:29+02:00 - f110818 - Léo Germain : Merge pull request #483 from IA-Generative/fix/481-add-deleted-to-all-meeting-status
 2026-04-09T10:47:12+02:00 - 82634b0 - Léo Germain : :sparkles: (481): add fallback to disconnect bot in unusual process (ex: becomes DELETED during capture)
-2026-04-09T10:47:12+02:00 - 341a1e2 - Léo Germain : :speech_balloon: (481): change wording in DELETED status docstring
 2026-04-09T10:47:12+02:00 - 4de7fe3 - Léo Germain : :sparkles: (481): update all meeting status schema to add DELETED status
+2026-04-09T10:47:12+02:00 - 341a1e2 - Léo Germain : :speech_balloon: (481): change wording in DELETED status docstring
 2026-04-08T16:46:05+02:00 - cbd238c - ThomasMetzger : Merge pull request #484 from IA-Generative/fix/update-issue-templates
 2026-04-08T16:00:54+02:00 - b7e4516 - Thomas Metzger : :wrench: update issue template to inclue task types
 2026-04-08T15:05:49+02:00 - 5e0329d - ThomasMetzger : Merge pull request #443 from IA-Generative/feat/add-claude-md
-2026-04-08T14:55:28+02:00 - 6bb325c - Thomas Metzger : :technologist: (366): add lint-changed script and Claude Code hooks
 2026-04-08T14:55:28+02:00 - b9b85b4 - Thomas Metzger : :rotating_light: (366): enforce banned imports via ruff TID251
 2026-04-08T14:55:28+02:00 - a52ce28 - Thomas Metzger : :memo: (366): add CLAUDE.md with directory structure and constraints
+2026-04-08T14:55:28+02:00 - 6bb325c - Thomas Metzger : :technologist: (366): add lint-changed script and Claude Code hooks
 2026-04-08T11:07:02+02:00 - 91ccc7e - Titouan : Merge pull request #436 from IA-Generative/feat/improve_naming_prompts
 2026-04-08T11:00:36+02:00 - 9564eec - Titouan Mendiharat : :monocle_face: (383): Added a new transcript to dataset, fixed an expected.
 2026-04-08T11:00:36+02:00 - 35e5726 - Titouan Mendiharat : :recycle: (383): Updated prompt and fixed participant extraction bug
 2026-04-08T10:41:40+02:00 - b0c2106 - Léo Germain : Merge pull request #431 from IA-Generative/feat/324-webex-bot-disconnects-when-alone
 2026-04-08T10:31:56+02:00 - 2add91c - Léo Germain : :sparkles: (324): get webex participants count
 2026-04-08T09:13:18+02:00 - 132a9f1 - ThomasMetzger : Merge pull request #424 from IA-Generative/feat/lookup-comu
-2026-04-08T08:08:35+02:00 - 54dddba - Alexandre Morin : :bug: add comu url/passcode verication
 2026-04-08T08:08:35+02:00 - 7de7090 - Alexandre Morin : :art: move lookup logic
+2026-04-08T08:08:35+02:00 - 54dddba - Alexandre Morin : :bug: add comu url/passcode verication
 2026-04-08T08:08:35+02:00 - 539c9bf - Alexandre Morin : :sparkles: create lookup route
 2026-04-07T18:59:20+02:00 - 9bb34a6 - Alexandre Morin : Merge pull request #479 from IA-Generative/fix/comment-drive-feature
 2026-04-07T18:51:39+02:00 - 60c2a46 - Alexandre Morin : :bulb: comment the drive feature
 2026-04-07T18:45:48+02:00 - 526d4aa - Alexandre Morin : Merge pull request #453 from IA-Generative/fix/316-capture-worker-downloads-firefox
 2026-04-07T18:41:42+02:00 - d199a46 - Alexandre Morin : :pencil2: remove get_js_execution_target call
-2026-04-07T18:31:30+02:00 - aa4a920 - Thomas Metzger : :sparkles: rewrite Webex connection for WebRTC bridge audio capture
-2026-04-07T18:31:30+02:00 - a4ea3b6 - Thomas Metzger : :recycle: improve audio stream utilities and recorder
 2026-04-07T18:31:30+02:00 - d32a8ed - Thomas Metzger : :sparkles: add WebRTC bridge for cross-origin iframe audio capture
 2026-04-07T18:31:30+02:00 - b9d849e - Thomas Metzger : :wrench: configure Firefox for headless WebRTC audio in Docker
+2026-04-07T18:31:30+02:00 - aa4a920 - Thomas Metzger : :sparkles: rewrite Webex connection for WebRTC bridge audio capture
+2026-04-07T18:31:30+02:00 - a4ea3b6 - Thomas Metzger : :recycle: improve audio stream utilities and recorder
 2026-04-07T10:33:07+02:00 - 74896f3 - Thibault Foucart : Merge pull request #452 from IA-Generative/feat/375-add-my-reunion-mcr-div
 2026-04-07T10:18:23+02:00 - 516c50b - Thibault Foucart : :art: (375): only one key for jours
 2026-04-03T17:38:29+02:00 - 4467fa4 - Thibault Foucart : :white_check_mark: (375): avoid getting name of span
 2026-04-03T16:36:48+02:00 - f87606b - Thibault Foucart : :art: (375): run prettier
 2026-04-03T16:36:45+02:00 - 29dc6f4 - Thibault Foucart : :art: (375): run prettier
 2026-04-03T16:35:30+02:00 - a1a7f22 - Thibault Foucart : :art: (375): apply color to the whole width of background
-2026-04-03T16:35:09+02:00 - 0704a01 - Thibault Foucart : :art: (375): change bg to other div to avoid padding application
 2026-04-03T16:35:09+02:00 - 176f0c4 - Thibault Foucart : :art: (375): capitalize closed alert value const
+2026-04-03T16:35:09+02:00 - 0704a01 - Thibault Foucart : :art: (375): change bg to other div to avoid padding application
 2026-04-03T16:35:07+02:00 - 1f7147f - Thibault Foucart : :art: (375): add bold to text, change color of icon & use name of colors
 2026-04-03T16:34:40+02:00 - 7eddea2 - Thibault Foucart : :art: (375): make value delay to fetch audio reusable
 2026-04-03T16:34:01+02:00 - 31fb1ac - Thibault Foucart : :sparkles: (375): add alert info & description div
 2026-04-03T15:45:54+02:00 - 40d09e6 - Léo Germain : Merge pull request #451 from IA-Generative/feat/374-visio&record-tiles-ui
-2026-04-03T14:48:14+02:00 - 5a84fdf - Léo Germain : :white_check_mark: (374): update main page tests
 2026-04-03T14:48:14+02:00 - d8c39d7 - Léo Germain : :lipstick: (374): adjust tiles to screen size
+2026-04-03T14:48:14+02:00 - 5a84fdf - Léo Germain : :white_check_mark: (374): update main page tests
 2026-04-03T14:33:34+02:00 - 872c61d - Léo Germain : :sparkles: (374): add tiles to frontend
 2026-04-03T14:32:58+02:00 - 37d446e - Léo Germain : :speech_balloon: (374): add tiles labels
 2026-04-01T14:04:45+02:00 - 4de20e5 - Léo Germain : Merge pull request #442 from IA-Generative/feat/add-new-user-slack
@@ -553,27 +553,27 @@
 2026-04-01T13:59:14+02:00 - 22e20c9 - Thibault Foucart : Merge pull request #441 from IA-Generative/feat/add_vote_field_migration
 2026-04-01T10:57:50+02:00 - 97735a7 - Thibault Foucart : :sparkles: (427) : add vote field to deliverable & migrate
 2026-03-31T16:07:18+02:00 - be5fa01 - Titouan : Merge pull request #390 from IA-Generative/feat/create_a_script_to_evaluate_naming
-2026-03-31T15:52:12+02:00 - 67f3bdd - Titouan Mendiharat : :zap: (382): Created evaluation script for participants naming
 2026-03-31T15:52:12+02:00 - 90f1126 - Titouan Mendiharat : :zap: (382): Created dataset
+2026-03-31T15:52:12+02:00 - 67f3bdd - Titouan Mendiharat : :zap: (382): Created evaluation script for participants naming
 2026-03-31T12:39:06+02:00 - 6d408c7 - ThomasMetzger : Merge pull request #387 from IA-Generative/feat/366/drive-integration-story
-2026-03-31T12:20:14+02:00 - bc77ad8 - Thomas Metzger : :zap: (366): faster test by auto-using mocks
-2026-03-31T12:20:14+02:00 - c346f1e - Thomas Metzger : :wrench: (366): add Drive integration env vars and Keycloak client config
-2026-03-31T12:20:14+02:00 - 7a68781 - Thomas Metzger : :white_check_mark: (366): add integration tests for deliverable storage
-2026-03-31T12:20:14+02:00 - b504cf6 - Thomas Metzger : :white_check_mark: (366): add in-memory mocks for external clients
-2026-03-31T12:20:14+02:00 - 1974a83 - Thomas Metzger : :lipstick: (366): show Drive link in transcription done screen
-2026-03-31T12:20:14+02:00 - 6b3da5e - Thomas Metzger : :label: (366): add DeliverableDto and MeetingDetailDto frontend types
-2026-03-31T12:20:14+02:00 - 6e9cfa7 - Thomas Metzger : :building_construction: (366): forward bearer token and expose deliverables in gateway
-2026-03-31T12:20:14+02:00 - 21b6a79 - Thomas Metzger : :building_construction: (366): return deliverables in meeting detail endpoint
-2026-03-31T12:20:14+02:00 - 9843dd3 - Thomas Metzger : :building_construction: (366): store offline token on capture stop and transcription init
-2026-03-31T12:20:14+02:00 - 3c90fae - Thomas Metzger : :necktie: (366): upload transcription to Drive on completion
-2026-03-31T12:20:14+02:00 - 7bbfbbd - Thomas Metzger : :sparkles: (366): add deliverable storage orchestrator
-2026-03-31T12:20:14+02:00 - afb5f40 - Thomas Metzger : :sparkles: (366): add Drive upload client
-2026-03-31T12:20:14+02:00 - 02a48a9 - Thomas Metzger : :sparkles: (366): add Keycloak token exchange service
-2026-03-31T12:20:14+02:00 - 392ebcb - Thomas Metzger : :sparkles: (366): add Redis token store
-2026-03-31T12:20:14+02:00 - 0a0972e - Thomas Metzger : :label: (366): add DeliverableResponse and MeetingDetailResponse schemas
 2026-03-31T12:20:14+02:00 - eafc5ed - Thomas Metzger : :card_file_box: (366): add deliverable repository and meeting detail query
+2026-03-31T12:20:14+02:00 - c346f1e - Thomas Metzger : :wrench: (366): add Drive integration env vars and Keycloak client config
 2026-03-31T12:20:14+02:00 - bec6b61 - Thomas Metzger : :card_file_box: (366): add Deliverable model and migration
+2026-03-31T12:20:14+02:00 - bc77ad8 - Thomas Metzger : :zap: (366): faster test by auto-using mocks
+2026-03-31T12:20:14+02:00 - b504cf6 - Thomas Metzger : :white_check_mark: (366): add in-memory mocks for external clients
+2026-03-31T12:20:14+02:00 - afb5f40 - Thomas Metzger : :sparkles: (366): add Drive upload client
 2026-03-31T12:20:14+02:00 - 9b9047d - Thomas Metzger : :heavy_plus_sign: (366): add redis and python-keycloak dependencies
+2026-03-31T12:20:14+02:00 - 9843dd3 - Thomas Metzger : :building_construction: (366): store offline token on capture stop and transcription init
+2026-03-31T12:20:14+02:00 - 7bbfbbd - Thomas Metzger : :sparkles: (366): add deliverable storage orchestrator
+2026-03-31T12:20:14+02:00 - 7a68781 - Thomas Metzger : :white_check_mark: (366): add integration tests for deliverable storage
+2026-03-31T12:20:14+02:00 - 6e9cfa7 - Thomas Metzger : :building_construction: (366): forward bearer token and expose deliverables in gateway
+2026-03-31T12:20:14+02:00 - 6b3da5e - Thomas Metzger : :label: (366): add DeliverableDto and MeetingDetailDto frontend types
+2026-03-31T12:20:14+02:00 - 3c90fae - Thomas Metzger : :necktie: (366): upload transcription to Drive on completion
+2026-03-31T12:20:14+02:00 - 392ebcb - Thomas Metzger : :sparkles: (366): add Redis token store
+2026-03-31T12:20:14+02:00 - 21b6a79 - Thomas Metzger : :building_construction: (366): return deliverables in meeting detail endpoint
+2026-03-31T12:20:14+02:00 - 1974a83 - Thomas Metzger : :lipstick: (366): show Drive link in transcription done screen
+2026-03-31T12:20:14+02:00 - 0a0972e - Thomas Metzger : :label: (366): add DeliverableResponse and MeetingDetailResponse schemas
+2026-03-31T12:20:14+02:00 - 02a48a9 - Thomas Metzger : :sparkles: (366): add Keycloak token exchange service
 2026-03-31T11:20:19+02:00 - f267ba9 - Alexandre Morin : Merge pull request #397 from IA-Generative/5S/add_claude_commit_skill
 2026-03-31T11:19:52+02:00 - e8c6d81 - theodore2leusse : :wrench:: add claude commit skill
 2026-03-31T11:08:59+02:00 - ee0a158 - Alexandre Morin : Merge pull request #435 from IA-Generative/fix/transcription-refacto
@@ -581,30 +581,30 @@
 2026-03-31T10:57:55+02:00 - bfe0a39 - Alexandre Morin : Merge pull request #433 from IA-Generative/fix/transcription-refacto
 2026-03-31T10:50:23+02:00 - cb4ac50 - Alexandre Morin : :bug: update the data of mark_transcription_as_success route
 2026-03-30T18:25:46+02:00 - 932152f - Titouan : Merge pull request #386 from IA-Generative/feat/detect_noisy_audios
-2026-03-30T18:07:11+02:00 - 4831e4f - Titouan Mendiharat : :loud_sound: (137): Changed logs from info to debug
-2026-03-30T18:07:11+02:00 - 55735e2 - Titouan Mendiharat : :test_tube: (137): Modified patches in tests
-2026-03-30T18:07:11+02:00 - 0ee140c - Titouan Mendiharat : :recycle: (137): Created NormalizedAudioVolumeSettings, renamed _normalize_volume, created _seconds_to_samples
 2026-03-30T18:07:11+02:00 - f01aed6 - Titouan Mendiharat : :recycle: (137): Split NoiseDetectionSettings into constants and parameters. Modified logging logic.
-2026-03-30T18:07:11+02:00 - 664fae6 - Titouan Mendiharat : :test_tube: (137): Added tests for the functions implemented
 2026-03-30T18:07:11+02:00 - df01f7a - Titouan Mendiharat : :sparkles: (137): Implemented compute_spectral_flatness_on_silences
+2026-03-30T18:07:11+02:00 - 664fae6 - Titouan Mendiharat : :test_tube: (137): Added tests for the functions implemented
+2026-03-30T18:07:11+02:00 - 55735e2 - Titouan Mendiharat : :test_tube: (137): Modified patches in tests
+2026-03-30T18:07:11+02:00 - 4831e4f - Titouan Mendiharat : :loud_sound: (137): Changed logs from info to debug
+2026-03-30T18:07:11+02:00 - 0ee140c - Titouan Mendiharat : :recycle: (137): Created NormalizedAudioVolumeSettings, renamed _normalize_volume, created _seconds_to_samples
 2026-03-30T17:46:49+02:00 - 566f39d - Léo Germain : Merge pull request #411 from IA-Generative/feat/319-create-webex-meeting-ui
+2026-03-30T17:43:30+02:00 - e1fc69f - Léo Germain : :speech_balloon: (319): update labels for webex
 2026-03-30T17:43:30+02:00 - 322c1df - Léo Germain : :sparkles: (319): add webex to visio modal
 2026-03-30T17:43:30+02:00 - 277520b - Léo Germain : :sparkles: (319): create webex meeting form
-2026-03-30T17:43:30+02:00 - e1fc69f - Léo Germain : :speech_balloon: (319): update labels for webex
 2026-03-30T17:42:57+02:00 - 41b30a7 - Léo Germain : Merge pull request #408 from IA-Generative/feat/316-bot-connection-to-webex
-2026-03-30T17:40:22+02:00 - 72c553f - Léo Germain : :fire: (316): remove fake audio capture file
-2026-03-30T17:40:22+02:00 - a47d291 - Léo Germain : :art: (316): prettier
 2026-03-30T17:40:22+02:00 - dd8af66 - Léo Germain : :boom: (316): replace chromium with firefox for headless capture worker
-2026-03-30T17:40:22+02:00 - 337216e - Léo Germain : :sparkles: (316): add webex to meeting model
 2026-03-30T17:40:22+02:00 - c0747af - Léo Germain : :sparkles: (316): create webex connection strategy & monitor
+2026-03-30T17:40:22+02:00 - a47d291 - Léo Germain : :art: (316): prettier
+2026-03-30T17:40:22+02:00 - 72c553f - Léo Germain : :fire: (316): remove fake audio capture file
+2026-03-30T17:40:22+02:00 - 337216e - Léo Germain : :sparkles: (316): add webex to meeting model
 2026-03-30T14:04:40+02:00 - 5cd0711 - Théodore de Leusse : Merge pull request #396 from IA-Generative/iteration/245/do_not_transcribe_very_short_audio_chunk
+2026-03-30T11:54:52+02:00 - ee3d2dd - theodore2leusse : :sparkles: (245) add compute_transcription_chunks algorithm
 2026-03-30T11:54:52+02:00 - a7563a6 - theodore2leusse : :recycle: (245) better usage of the dataclass TimeSpan
+2026-03-30T11:54:52+02:00 - 83d2443 - theodore2leusse : :wrench: (245) add MAX_CHUNK_DURATION and SPLIT_SEARCH_WINDOW_RATIO to WhisperTranscriptionSettings, remove VADSettings
 2026-03-30T11:54:52+02:00 - 81c5a97 - theodore2leusse : :white_check_mark: (245) add chunking unit tests and update integration tests for multi-chunk fixtures
 2026-03-30T11:54:52+02:00 - 5d974dc - theodore2leusse : :fire: (245) remove get_vad_segments_from_diarization and VADSettings usage
-2026-03-30T11:54:52+02:00 - 3554c34 - theodore2leusse : :recycle: (245) rename vad_spans to chunk_spans in TranscriptionProcessor
 2026-03-30T11:54:52+02:00 - 4da634b - theodore2leusse : :recycle: (245) use compute_transcription_chunks in speech-to-text pipeline
-2026-03-30T11:54:52+02:00 - 83d2443 - theodore2leusse : :wrench: (245) add MAX_CHUNK_DURATION and SPLIT_SEARCH_WINDOW_RATIO to WhisperTranscriptionSettings, remove VADSettings
-2026-03-30T11:54:52+02:00 - ee3d2dd - theodore2leusse : :sparkles: (245) add compute_transcription_chunks algorithm
+2026-03-30T11:54:52+02:00 - 3554c34 - theodore2leusse : :recycle: (245) rename vad_spans to chunk_spans in TranscriptionProcessor
 2026-03-30T09:44:44+02:00 - 8be1ecd - Alexandre Morin : Merge pull request #426 from IA-Generative/fix/remove-dependabot
 2026-03-30T09:37:39+02:00 - d655b0b - Alexandre Morin : :fire: remove dependabot
 2026-03-27T16:02:57+01:00 - bd2204f - Titouan : Merge pull request #412 from IA-Generative/dev
@@ -614,13 +614,13 @@
 2026-03-27T12:07:34+01:00 - cf0257c - Alexandre Morin : Merge pull request #406 from IA-Generative/fix/disconnection_comu
 2026-03-27T10:55:39+01:00 - 1aa69e0 - Alexandre Morin : :bug: get the first participants badge for COMU
 2026-03-27T09:15:55+01:00 - 229be43 - Alexandre Morin : Merge pull request #388 from IA-Generative/feat/remove_db_worker
-2026-03-26T18:33:34+01:00 - f67873b - Alexandre Morin : :white_check_mark: add transcription task args helper test
-2026-03-26T18:33:34+01:00 - 4878196 - Alexandre Morin : :art: add transcription task args helper
-2026-03-26T18:33:34+01:00 - 7d66055 - Alexandre Morin : :art: rename handle transcription success function
-2026-03-26T18:33:34+01:00 - 203d681 - Alexandre Morin : :art: create mock folder
 2026-03-26T18:33:34+01:00 - fb6eb78 - Alexandre Morin : :zap: remove the db connection
-2026-03-26T18:33:34+01:00 - 7efeb76 - Alexandre Morin : :white_check_mark: add transcription orchestractor test
+2026-03-26T18:33:34+01:00 - f67873b - Alexandre Morin : :white_check_mark: add transcription task args helper test
 2026-03-26T18:33:34+01:00 - c0165f6 - Alexandre Morin : :zap: add the transcription docx creation in transcription/success route
+2026-03-26T18:33:34+01:00 - 7efeb76 - Alexandre Morin : :white_check_mark: add transcription orchestractor test
+2026-03-26T18:33:34+01:00 - 7d66055 - Alexandre Morin : :art: rename handle transcription success function
+2026-03-26T18:33:34+01:00 - 4878196 - Alexandre Morin : :art: add transcription task args helper
+2026-03-26T18:33:34+01:00 - 203d681 - Alexandre Morin : :art: create mock folder
 2026-03-26T18:33:34+01:00 - 0c65cca - Alexandre Morin : :zap: remove the save transcription into worker
 2026-03-26T18:28:02+01:00 - 4be96b1 - Alexandre Morin : Merge pull request #403 from IA-Generative/feat/change-type-user-return
 2026-03-26T18:26:09+01:00 - 26dfcec - Alexandre Morin : :memo: change the type of user request template
@@ -629,13 +629,13 @@
 2026-03-26T17:57:21+01:00 - bded29b - Théodore de Leusse : Merge pull request #392 from IA-Generative/fix/remove_timestamp_granularities
 2026-03-26T16:31:30+01:00 - f078e64 - Titouan Mendiharat : :bug: (391): Removed timestamp_granularities
 2026-03-25T09:53:52+01:00 - 59f0ccf - Léo Germain : Merge pull request #344 from IA-Generative/feat/317-add-webex-to-schema
-2026-03-25T09:48:50+01:00 - 7982e31 - Léo Germain : :recycle: (317): use early return for visio/webconf url validation methods
-2026-03-25T09:48:50+01:00 - 5a70734 - Léo Germain : :white_check_mark: (317): webex url validator tests
 2026-03-25T09:48:50+01:00 - c1cea72 - Léo Germain : :sparkles: (317): webex url validator
+2026-03-25T09:48:50+01:00 - 7982e31 - Léo Germain : :recycle: (317): use early return for visio/webconf url validation methods
 2026-03-25T09:48:50+01:00 - 61229c1 - Léo Germain : :sparkles: (317): add webex to meeting platforms in meeting schema
+2026-03-25T09:48:50+01:00 - 5a70734 - Léo Germain : :white_check_mark: (317): webex url validator tests
 2026-03-24T11:52:05+01:00 - f2875d4 - Alexandre Morin : Merge pull request #364 from IA-Generative/feat/evaluation_from_s3
-2026-03-24T11:38:08+01:00 - 9ea3ff0 - Alexandre Morin : :hammer: add upload file script
 2026-03-24T11:38:08+01:00 - a025f5a - Alexandre Morin : :sparkles: add new evaluate from s3 route
+2026-03-24T11:38:08+01:00 - 9ea3ff0 - Alexandre Morin : :hammer: add upload file script
 2026-03-24T11:38:08+01:00 - 6e473d0 - Alexandre Morin : :sparkles: add evaluate from s3 worker
 2026-03-24T09:48:12+01:00 - e7e1486 - Théodore de Leusse : Merge pull request #345 from IA-Generative/fix/243/vad_merging
 2026-03-23T17:27:03+01:00 - 8256e8c - theodore2leusse : :white_check_mark: (243) update integration tests
@@ -645,25 +645,25 @@
 2026-03-23T11:52:02+01:00 - 400df27 - Thomas Metzger : :zap: add mutation retry on specific network error by default
 2026-03-23T11:51:20+01:00 - 9c87ce2 - ThomasMetzger : Merge pull request #349 from IA-Generative/fix/login-redirect-on-online
 2026-03-20T17:08:31+01:00 - 71400be - Thomas Metzger : :recycle: simplify online logic using tanstack build it
-2026-03-20T16:52:55+01:00 - 929ba04 - Thomas Metzger : :hammer: update make file
 2026-03-20T16:52:55+01:00 - ca8e204 - Thomas Metzger : :heavy_minus_sign: remove pinia
-2026-03-20T16:52:55+01:00 - 9d65cd8 - Thomas Metzger : :fire: remove useless user store
 2026-03-20T16:52:55+01:00 - a1052e6 - Thomas Metzger : :fire: (frontend): remove dead code
+2026-03-20T16:52:55+01:00 - 9d65cd8 - Thomas Metzger : :fire: remove useless user store
+2026-03-20T16:52:55+01:00 - 929ba04 - Thomas Metzger : :hammer: update make file
 2026-03-20T16:52:27+01:00 - eb623fd - Thomas Metzger : :sparkles: add fetch token guard on http.interceptor
 2026-03-20T16:52:24+01:00 - 037c528 - Thomas Metzger : :bug: no reauth on reconnect
 2026-03-20T16:44:02+01:00 - 9f1d083 - Léo Germain : Merge pull request #348 from IA-Generative/dev
 2026-03-19T15:58:28+01:00 - 8885242 - Théodore de Leusse : Merge pull request #296 from IA-Generative/bug/chunk_overlap_in_llm_postprocessing
-2026-03-19T15:50:11+01:00 - 94e1ac1 - theodore2leusse : :loud_sound: update and clean logs
-2026-03-19T15:50:11+01:00 - 4b320d5 - theodore2leusse : :bug: fix the overlapping bug
-2026-03-19T15:50:11+01:00 - 873e4df - theodore2leusse : :wrench: update the launch.json to be able to use the debug mode over a test script
 2026-03-19T15:50:11+01:00 - 995da18 - theodore2leusse : :pushpin: update uv lock
+2026-03-19T15:50:11+01:00 - 94e1ac1 - theodore2leusse : :loud_sound: update and clean logs
+2026-03-19T15:50:11+01:00 - 873e4df - theodore2leusse : :wrench: update the launch.json to be able to use the debug mode over a test script
+2026-03-19T15:50:11+01:00 - 4b320d5 - theodore2leusse : :bug: fix the overlapping bug
 2026-03-19T13:49:16+01:00 - fb74abe - Alexandre Morin : Merge pull request #330 from IA-Generative/feat/issue_template
-2026-03-19T13:48:51+01:00 - bfd67d0 - Alexandre Morin : :memo: add bug template
 2026-03-19T13:48:51+01:00 - f51c276 - Alexandre Morin : :memo: update feature template
+2026-03-19T13:48:51+01:00 - bfd67d0 - Alexandre Morin : :memo: add bug template
 2026-03-19T13:48:51+01:00 - 57f4459 - Alexandre Morin : :memo: add user return template
 2026-03-19T13:48:07+01:00 - fb6f6f8 - Alexandre Morin : Merge pull request #321 from IA-Generative/fix/transcription-success-email
-2026-03-19T13:47:56+01:00 - 503aa39 - Alexandre Morin : :white_check_mark: update complete transcription test
 2026-03-19T13:47:56+01:00 - 7bdd6ee - Alexandre Morin : :recycle: move transcribe logic into celery event handler
+2026-03-19T13:47:56+01:00 - 503aa39 - Alexandre Morin : :white_check_mark: update complete transcription test
 2026-03-19T13:47:56+01:00 - 379a65b - Alexandre Morin : :sparkles: add the transcription success email in complete transcription handler
 2026-03-19T13:46:58+01:00 - 3c93e16 - Titouan : Merge pull request #341 from IA-Generative/feat/remove_repetitions
 2026-03-19T09:26:35+01:00 - a2b3d3b - Titouan Mendiharat : :recycle: (285): Modified prompt to remove repetitions
@@ -675,41 +675,41 @@
 2026-03-17T17:33:33+01:00 - 1220a72 - Léo Germain : :sparkles: (224): add proper audio player in frontend
 2026-03-17T15:27:48+01:00 - 1262924 - Léo Germain : :speech_balloon: (224): add audio player labels
 2026-03-17T09:28:42+01:00 - 7581828 - ThomasMetzger : Merge pull request #300 from IA-Generative/feat/229/fix-local-audio-edge-cases
-2026-03-17T09:25:47+01:00 - 798c220 - Thomas Metzger : :bug: (229): stop user from missing part of their recording
-2026-03-17T09:25:47+01:00 - c3851c8 - Thomas Metzger : :bug: (229): avoid leaving the page on token refresh
 2026-03-17T09:25:47+01:00 - f7a1bb0 - Thomas Metzger : :lipstick: (229): align recording buttons
+2026-03-17T09:25:47+01:00 - c3851c8 - Thomas Metzger : :bug: (229): avoid leaving the page on token refresh
+2026-03-17T09:25:47+01:00 - 798c220 - Thomas Metzger : :bug: (229): stop user from missing part of their recording
 2026-03-16T16:36:34+01:00 - eac128e - Alexandre Morin : Merge pull request #303 from IA-Generative/feat/add-mailpit
 2026-03-16T16:27:33+01:00 - 7224520 - Alexandre Morin : :sparkles: update SMTP client to use ssl
-2026-03-16T16:27:33+01:00 - 4f52841 - Alexandre Morin : :wrench: add optional SMTP values
 2026-03-16T16:27:33+01:00 - 58a8674 - Alexandre Morin : :building_construction: add mailpit services
+2026-03-16T16:27:33+01:00 - 4f52841 - Alexandre Morin : :wrench: add optional SMTP values
 2026-03-16T16:23:56+01:00 - ca8ad55 - Léo Germain : Merge pull request #302 from IA-Generative/feat/222-query-audio-from-s3
 2026-03-16T15:34:37+01:00 - 41d6775 - Léo Germain : :white_check_mark: (222): update iterator tests
 2026-03-16T15:32:18+01:00 - 0c9cc0c - Léo Germain : :recycle: (222): separate iterator validation from iterator extraction
 2026-03-13T15:02:08+01:00 - 15be60f - Léo Germain : :poop: (222): temporary front to test the feature
 2026-03-13T14:07:52+01:00 - e28fd99 - Léo Germain : :white_check_mark: (222): update test_get_meeting_audio with new methods
 2026-03-13T14:06:49+01:00 - 0906e56 - Léo Germain : :white_check_mark: (222): mock s3 methods for meeting audio fetching tests
-2026-03-13T14:05:57+01:00 - 76c462d - Léo Germain : :wrench: (222): update local minio files expiration date to 7 dates
 2026-03-13T14:05:57+01:00 - bb5a6b9 - Léo Germain : :sparkles: (222): methods to get meetings audio from s3
+2026-03-13T14:05:57+01:00 - 76c462d - Léo Germain : :wrench: (222): update local minio files expiration date to 7 dates
 2026-03-13T11:26:35+01:00 - a577330 - Léo Germain : Merge pull request #295 from IA-Generative/feat/211-audio-listening-routes
 2026-03-13T10:35:22+01:00 - 9b3c8c2 - Léo Germain : :wrench: (211): enable gateway testing on pre-commit
-2026-03-13T10:35:21+01:00 - df07425 - Léo Germain : :memo: (211): add doc on gateway swagger
 2026-03-13T10:35:21+01:00 - e14a7c7 - Léo Germain : :truck: (211): move gateway swagger to api/docs
-2026-03-13T10:35:21+01:00 - 9bf3430 - Léo Germain : :white_check_mark: (211): test gateway's feature flag service
+2026-03-13T10:35:21+01:00 - df07425 - Léo Germain : :memo: (211): add doc on gateway swagger
 2026-03-13T10:35:21+01:00 - cd55329 - Léo Germain : :sparkles: (211): enable route on ff value
+2026-03-13T10:35:21+01:00 - 9bf3430 - Léo Germain : :white_check_mark: (211): test gateway's feature flag service
 2026-03-13T10:35:14+01:00 - a1a1dfc - Léo Germain : :white_check_mark: (211): test audio fetching error cases
 2026-03-13T10:27:38+01:00 - 111f7aa - Léo Germain : :sparkles: (211): enable core route
 2026-03-13T10:22:18+01:00 - 39a791b - Léo Germain : :sparkles: (211): enable gateway route
 2026-03-13T09:18:14+01:00 - 2f3aab9 - Alexandre Morin : Merge pull request #291 from IA-Generative/dev
 2026-03-12T18:31:49+01:00 - ad0d032 - ThomasMetzger : Merge pull request #289 from IA-Generative/feat/228/cleanup-local-chunks
 2026-03-12T18:29:43+01:00 - 5612f09 - Thomas Metzger : :mute: (228): remove log
-2026-03-12T18:29:43+01:00 - 01a16af - Thomas Metzger : :sparkles: (228): cleanup local chunks on upload or stale
 2026-03-12T18:29:43+01:00 - 1c3f6fc - Thomas Metzger : :construction: (228): add cleanup composable
+2026-03-12T18:29:43+01:00 - 01a16af - Thomas Metzger : :sparkles: (228): cleanup local chunks on upload or stale
 2026-03-12T18:29:32+01:00 - 3ac25da - ThomasMetzger : Merge pull request #288 from IA-Generative/feat/227/upload-local-pending-chunks
-2026-03-12T18:26:54+01:00 - 092c4b6 - Thomas Metzger : :adhesive_bandage: fix timing issue where deleted meeting was still visible in the meeting list
-2026-03-12T18:26:54+01:00 - 26b32e1 - Thomas Metzger : :sparkles: (227): upload chunks on wifi back on
-2026-03-12T18:26:54+01:00 - 0167753 - Thomas Metzger : :children_crossing: (227): audio record should pause on page refresh
 2026-03-12T18:26:54+01:00 - 7302ed4 - Thomas Metzger : :bug: (227): fix recording not working on page refresh
 2026-03-12T18:26:54+01:00 - 6c8a614 - Thomas Metzger : :sparkles: (227): add upload on stop recorder event
+2026-03-12T18:26:54+01:00 - 26b32e1 - Thomas Metzger : :sparkles: (227): upload chunks on wifi back on
+2026-03-12T18:26:54+01:00 - 092c4b6 - Thomas Metzger : :adhesive_bandage: fix timing issue where deleted meeting was still visible in the meeting list
+2026-03-12T18:26:54+01:00 - 0167753 - Thomas Metzger : :children_crossing: (227): audio record should pause on page refresh
 2026-03-12T18:05:31+01:00 - cb39b12 - Léo Germain : Merge pull request #299 from IA-Generative/feat/add-frontend-precommit
 2026-03-12T17:56:16+01:00 - 60cb4d8 - Léo Germain : :wrench: (5s): add pre-commit command in frontend
 2026-03-12T17:47:39+01:00 - 4dd4d50 - Alexandre Morin : Merge pull request #292 from IA-Generative/fix/pagination_page_size
@@ -723,67 +723,67 @@
 2026-03-11T18:15:53+01:00 - c8e1f60 - Alexandre Morin : :bug: include search parameter in meetings service request
 2026-03-11T18:15:26+01:00 - 8edf565 - Alexandre Morin : :bug: add pageSize and currentPage
 2026-03-11T13:51:31+01:00 - 492e4fb - Alexandre Morin : Merge pull request #219 from IA-Generative/fix/mute-bot-webinaire
-2026-03-11T13:43:14+01:00 - 7891779 - Alexandre Morin : :sparkles: Change the audio bot file
 2026-03-11T13:43:14+01:00 - a218b99 - Alexandre Morin : :bento: add audio
 2026-03-11T13:43:14+01:00 - 85d98d4 - Alexandre Morin : :sparkles: mute bot when the mic is open
+2026-03-11T13:43:14+01:00 - 7891779 - Alexandre Morin : :sparkles: Change the audio bot file
 2026-03-11T12:39:34+01:00 - c9f289b - ThomasMetzger : Merge pull request #283 from IA-Generative/feat/226/save-audio-locally
-2026-03-11T11:20:03+01:00 - 44673e7 - Thomas Metzger : :fire: (226): remove old local time recording setup
 2026-03-11T11:20:03+01:00 - f07059f - Thomas Metzger : :construction: (226): wire composables with frontend
 2026-03-11T11:20:03+01:00 - 92a409e - Thomas Metzger : :construction: (226): add idb and chunk handling composables
+2026-03-11T11:20:03+01:00 - 44673e7 - Thomas Metzger : :fire: (226): remove old local time recording setup
 2026-03-11T11:17:46+01:00 - 696ba66 - Thomas Metzger : :package: (226): add indexdb
 2026-03-11T11:17:27+01:00 - f7c3e1c - ThomasMetzger : Merge pull request #264 from IA-Generative/feat/225/display-offline-mode
-2026-03-11T11:04:52+01:00 - 88fdee0 - Thomas Metzger : :triangular_flag_on_post: (225): add feature flag
-2026-03-11T11:04:52+01:00 - 9dc9092 - Thomas Metzger : :lipstick: (225): rename stop recording button
 2026-03-11T11:04:52+01:00 - c307e94 - Thomas Metzger : :sparkles: (225): change ui based on network status
 2026-03-11T11:04:52+01:00 - be2dee6 - Thomas Metzger : :construction: (225): add network detection composable
-2026-03-11T11:04:52+01:00 - 336e3b9 - Thomas Metzger : :recycle: (225): refactor pause indicator for in recording in progress state
 2026-03-11T11:04:52+01:00 - bd095de - Thomas Metzger : :construction: (225): add disable state to round button
+2026-03-11T11:04:52+01:00 - 9dc9092 - Thomas Metzger : :lipstick: (225): rename stop recording button
+2026-03-11T11:04:52+01:00 - 88fdee0 - Thomas Metzger : :triangular_flag_on_post: (225): add feature flag
+2026-03-11T11:04:52+01:00 - 336e3b9 - Thomas Metzger : :recycle: (225): refactor pause indicator for in recording in progress state
 2026-03-11T11:03:57+01:00 - 99a0cf9 - ThomasMetzger : Merge pull request #231 from IA-Generative/fix/non-docx-transcription-error
 2026-03-11T10:59:00+01:00 - f847437 - Thomas Metzger : :green_heart: (ci): publish message when pr base is changed or when pr is opened
-2026-03-11T10:59:00+01:00 - 60204c8 - Thomas Metzger : :children_crossing: better error message on docx failed upload
-2026-03-11T10:59:00+01:00 - 4e74749 - Thomas Metzger : :bug: stop rewriting headers in gateway
 2026-03-11T10:59:00+01:00 - c531f57 - Thomas Metzger : :goal_net: better docx validation
 2026-03-11T10:59:00+01:00 - 9d4ab09 - Thomas Metzger : :truck: rename util file
+2026-03-11T10:59:00+01:00 - 60204c8 - Thomas Metzger : :children_crossing: better error message on docx failed upload
+2026-03-11T10:59:00+01:00 - 4e74749 - Thomas Metzger : :bug: stop rewriting headers in gateway
 2026-03-11T10:34:42+01:00 - 40ed253 - Titouan : Merge pull request #259 from IA-Generative/feat/keep_corrected_segments
+2026-03-11T10:28:48+01:00 - ff2d996 - Titouan Mendiharat : :test_tube: (212): Implemented new and fixed tests
 2026-03-11T10:28:48+01:00 - eec9d34 - Titouan Mendiharat : :test_tube: (262): Fixed tests
 2026-03-11T10:28:48+01:00 - c7a8c57 - Titouan Mendiharat : :recycle: (262): Removed the self.separator attribute, split _assign_and_invalidate_segment_texts into 2
-2026-03-11T10:28:48+01:00 - ff2d996 - Titouan Mendiharat : :test_tube: (212): Implemented new and fixed tests
 2026-03-11T10:28:48+01:00 - 5c4a959 - Titouan Mendiharat : :zap: (212): Modified spliting logic
 2026-03-11T10:27:56+01:00 - fd180f8 - Alexandre Morin : Merge pull request #237 from IA-Generative/feat/remove_ff
 2026-03-11T09:34:41+01:00 - 89e3947 - Alexandre Morin : :fire: remove 200mo FF
 2026-03-11T09:34:41+01:00 - 63fd0a1 - Alexandre Morin : :fire: remove beta FF
 2026-03-10T09:47:23+01:00 - d137de5 - ThomasMetzger : Merge pull request #203 from IA-Generative/refactor/5s/fix-frontend-test-setup
 2026-03-10T09:44:22+01:00 - c61e320 - Thomas Metzger : :white_check_mark: (5s): fix warning about null router
-2026-03-10T09:44:22+01:00 - c372290 - Thomas Metzger : :white_check_mark: (5s): removed useless mock and update test to follow business logic
 2026-03-10T09:44:22+01:00 - c4ace82 - Thomas Metzger : :white_check_mark: (5s): fix broken tests
+2026-03-10T09:44:22+01:00 - c372290 - Thomas Metzger : :white_check_mark: (5s): removed useless mock and update test to follow business logic
 2026-03-10T09:44:22+01:00 - 9ab4c17 - Thomas Metzger : :white_check_mark: (5s): remove auto-imports of files in ./src/src when running tests
 2026-03-10T09:43:55+01:00 - fd80f88 - Théodore de Leusse : Merge pull request #208 from IA-Generative/feat/166/evaluation_text_standardization_3
 2026-03-09T17:47:27+01:00 - 32c4022 - theodore2leusse : :adhesive_bandage: (166) add parametre remove_repetitions in french_text_normalizer function
 2026-03-09T17:47:20+01:00 - 42301d1 - theodore2leusse : :arrow_down: (166) num2words become a worker dependencies
 2026-03-09T16:05:18+01:00 - 610face - theodore2leusse : :bulb: (166) suppress useless comments
+2026-03-09T15:48:58+01:00 - cee5342 - theodore2leusse : :white_check_mark: (166) tests repetitions in the text
+2026-03-09T15:48:58+01:00 - c59778a - theodore2leusse : :sparkles: (166) manage interjections and numbers for text normalization
 2026-03-09T15:48:58+01:00 - 8e73781 - theodore2leusse : :adhesive_bandage: (166) linting fixes
 2026-03-09T15:48:58+01:00 - 7ecf091 - theodore2leusse : :white_check_mark: (166) test with examples from the dataset
 2026-03-09T15:48:58+01:00 - 54e384a - theodore2leusse : :sparkles: (166) manage repetitions in the text
-2026-03-09T15:48:58+01:00 - cee5342 - theodore2leusse : :white_check_mark: (166) tests repetitions in the text
-2026-03-09T15:48:58+01:00 - c59778a - theodore2leusse : :sparkles: (166) manage interjections and numbers for text normalization
 2026-03-09T15:48:58+01:00 - 540fc77 - theodore2leusse : :white_check_mark: (166) tests for intejections and numerical numbers
 2026-03-09T15:48:58+01:00 - 4ecff67 - theodore2leusse : :heavy_plus_sign: (166) add dependency num2words
 2026-03-06T16:42:10+01:00 - 79de2e4 - Alexandre Morin : Merge pull request #233 from IA-Generative/dev
 2026-03-06T15:58:12+01:00 - 58e4eea - Titouan : Merge pull request #207 from IA-Generative/feat/optimize_llm_calls
-2026-03-06T15:42:03+01:00 - 8dd8452 - Titouan Mendiharat : :test_tube: (199): Added tests
-2026-03-06T15:42:03+01:00 - e3c5ea4 - Titouan Mendiharat : :sparkles: (199): Added an id to separators, updated prompt
 2026-03-06T15:42:03+01:00 - ffd0a85 - Titouan Mendiharat : :recycle: (199): Removed a useless test file and small changes to _chunk_text from LLMPostProcessing
-2026-03-06T15:42:03+01:00 - b94d8b8 - Titouan Mendiharat : :heavy_plus_sign: (199): Fixed dependencies
+2026-03-06T15:42:03+01:00 - e3c5ea4 - Titouan Mendiharat : :sparkles: (199): Added an id to separators, updated prompt
 2026-03-06T15:42:03+01:00 - d8ab743 - Titouan Mendiharat : :test_tube: (199): Fixed and added tests
-2026-03-06T15:42:03+01:00 - 11d9392 - Titouan Mendiharat : :hammer: (199): Modified LLM calls logic in SpellingCorrector and updated prompt
+2026-03-06T15:42:03+01:00 - b94d8b8 - Titouan Mendiharat : :heavy_plus_sign: (199): Fixed dependencies
 2026-03-06T15:42:03+01:00 - ae3be25 - Titouan Mendiharat : :recycle: (199): Created LLMPostProcessing and adapted ParticipantsExtraction
+2026-03-06T15:42:03+01:00 - 8dd8452 - Titouan Mendiharat : :test_tube: (199): Added tests
+2026-03-06T15:42:03+01:00 - 11d9392 - Titouan Mendiharat : :hammer: (199): Modified LLM calls logic in SpellingCorrector and updated prompt
 2026-03-06T11:59:23+01:00 - 0b2285b - Léo Germain : Merge pull request #220 from IA-Generative/feat/1129-disjoin-comu-fields
 2026-03-06T11:57:36+01:00 - 7c60ccc - Léo Germain : :lipstick: (1129): disable url and id/password simultaneous filling
 2026-03-05T14:32:25+01:00 - 51640c7 - Léo Germain : Merge pull request #202 from IA-Generative/feat/1131-update-form-modal-logic
 2026-03-05T13:58:04+01:00 - c3fcac7 - Léo Germain : :sparkles: (1131): visio meeting children forms give up validation and submission to parent
 2026-03-05T13:58:04+01:00 - 64b9535 - Léo Germain : :sparkles: (1131): visio meeting parent form handles validation and submission
-2026-03-05T13:58:04+01:00 - 29a27e1 - Léo Germain : :sparkles: (1131): update visio meeting validation schema
 2026-03-05T13:58:04+01:00 - 5e717a7 - Léo Germain : :speech_balloon: (1131): add validation error labels
+2026-03-05T13:58:04+01:00 - 29a27e1 - Léo Germain : :sparkles: (1131): update visio meeting validation schema
 2026-03-05T11:30:37+01:00 - e6daf59 - Alexandre Morin : Merge pull request #218 from IA-Generative/fix/broken-open-import
 2026-03-05T11:09:53+01:00 - 080c845 - Thomas Metzger : :adhesive_bandage: fix broken openai import
 2026-03-05T11:06:36+01:00 - d633b2e - ThomasMetzger : Merge pull request #210 from IA-Generative/fix/770/allow-different-microphone-usage
@@ -793,8 +793,8 @@
 2026-03-03T18:28:44+01:00 - cdfb986 - Thomas Metzger : :adhesive_bandage: (1124): use initial prompt in both local and api
 2026-03-03T18:28:43+01:00 - 4c9afbb - Thomas Metzger : :goal_net: (1124): add retry config to call to the diarization and transcription api
 2026-03-03T17:17:06+01:00 - ebeda85 - Théodore de Leusse : Merge pull request #206 from IA-Generative/feat/164/evaluation_text_standardization_2
-2026-03-03T15:37:49+01:00 - a0637d0 - theodore2leusse : :sparkles: (164) 2nd version text standardization
 2026-03-03T15:37:49+01:00 - e47e5d4 - theodore2leusse : :white_check_mark: (164) add tests for the 2nd version of the text standardisation function
+2026-03-03T15:37:49+01:00 - a0637d0 - theodore2leusse : :sparkles: (164) 2nd version text standardization
 2026-03-03T15:36:16+01:00 - 9966910 - ThomasMetzger : Merge pull request #205 from IA-Generative/fix/use-proxy-in-ci
 2026-03-03T15:17:53+01:00 - 97fa614 - Thomas Metzger : :green_heart: add possibilty to rebuild the app manually
 2026-03-03T15:12:01+01:00 - 3dddda6 - Thomas Metzger : :green_heart: add possibility to a use a registry-mirror
@@ -806,60 +806,60 @@
 2026-03-03T10:38:34+01:00 - 39d9bff - Léo Germain : Merge pull request #196 from IA-Generative/feat/1130-switch-comu-fields
 2026-03-03T10:13:02+01:00 - 53647b9 - Léo Germain : :truck: (1130): switch comu id and password fields
 2026-03-03T10:11:18+01:00 - dcb418c - Léo Germain : Merge pull request #192 from IA-Generative/feat/1118-start-transcription-from-modalv2
-2026-03-03T10:09:04+01:00 - 01ad9fd - Léo Germain : :white_check_mark: (1118): mock start capture mutation
 2026-03-03T10:09:04+01:00 - bfba07f - Léo Germain : :sparkles: (1118): launch capture from new modal
-2026-03-03T10:09:03+01:00 - a5b55a3 - Léo Germain : :fire: (1118): remove access code webinaire
-2026-03-03T10:09:03+01:00 - b2c5a04 - Léo Germain : :sparkles: (1118): submit for webconf
-2026-03-03T10:09:03+01:00 - 86f7d1d - Léo Germain : :sparkles: (1118): submit for visio
+2026-03-03T10:09:04+01:00 - 01ad9fd - Léo Germain : :white_check_mark: (1118): mock start capture mutation
 2026-03-03T10:09:03+01:00 - d687534 - Léo Germain : :sparkles: (1118): submit for webinaire
+2026-03-03T10:09:03+01:00 - b2c5a04 - Léo Germain : :sparkles: (1118): submit for webconf
+2026-03-03T10:09:03+01:00 - a5b55a3 - Léo Germain : :fire: (1118): remove access code webinaire
 2026-03-03T10:09:03+01:00 - 89add4b - Léo Germain : :sparkles: (1118): submit for comu
+2026-03-03T10:09:03+01:00 - 86f7d1d - Léo Germain : :sparkles: (1118): submit for visio
 2026-03-03T10:09:03+01:00 - 48a43d6 - Léo Germain : :speech_balloon: (1118): add submit label
 2026-03-03T10:09:03+01:00 - 38530f9 - Léo Germain : :sparkles: (1118): create modal submit event & form types
 2026-03-03T09:34:42+01:00 - beb1fef - Théodore de Leusse : Merge pull request #190 from IA-Generative/feat/179/synthesize_detailed_discussions
-2026-03-03T09:33:21+01:00 - aebe45d - theodore2leusse : :adhesive_bandage: (179) remove useless indentation that increase the number of token
-2026-03-03T09:33:21+01:00 - ef5d2cd - theodore2leusse : :recycle: (179) use a class rather than a function
-2026-03-03T09:33:21+01:00 - 80de47d - theodore2leusse : :adhesive_bandage: (179) manage the difference list[Participant] and Participants
-2026-03-03T09:33:21+01:00 - bad316a - theodore2leusse : 🗑️  (179) erase useless code in test file
-2026-03-03T09:33:21+01:00 - 652a021 - theodore2leusse : 🗑️  (179) delete example files, that were not necesary
-2026-03-03T09:33:21+01:00 - 07af970 - theodore2leusse : ✏️  (179) fix typo synthetise in synthesize
-2026-03-03T09:33:21+01:00 - 8987c8e - theodore2leusse : :white_check_mark: (179) add test file for synthesise_detailed_discussions
 2026-03-03T09:33:21+01:00 - f433ac4 - theodore2leusse : 📝 (179) update documentation
+2026-03-03T09:33:21+01:00 - ef5d2cd - theodore2leusse : :recycle: (179) use a class rather than a function
+2026-03-03T09:33:21+01:00 - bad316a - theodore2leusse : 🗑️  (179) erase useless code in test file
 2026-03-03T09:33:21+01:00 - b9d1a93 - theodore2leusse : 🏗️  (179) upgrade prompts in map reduce features
+2026-03-03T09:33:21+01:00 - aebe45d - theodore2leusse : :adhesive_bandage: (179) remove useless indentation that increase the number of token
+2026-03-03T09:33:21+01:00 - 8987c8e - theodore2leusse : :white_check_mark: (179) add test file for synthesise_detailed_discussions
+2026-03-03T09:33:21+01:00 - 80de47d - theodore2leusse : :adhesive_bandage: (179) manage the difference list[Participant] and Participants
+2026-03-03T09:33:21+01:00 - 652a021 - theodore2leusse : 🗑️  (179) delete example files, that were not necesary
 2026-03-03T09:33:21+01:00 - 5e5907a - theodore2leusse : 🏗️  (179)synthesise the detailed discussions
 2026-03-03T09:33:21+01:00 - 219e64a - theodore2leusse : 🏗️  (179) add prompt and extraction class
+2026-03-03T09:33:21+01:00 - 07af970 - theodore2leusse : ✏️  (179) fix typo synthetise in synthesize
 2026-03-02T18:29:45+01:00 - 72edd66 - Alexandre Morin : Merge pull request #69 from IA-Generative/feat/coverage
+2026-03-02T18:15:40+01:00 - f1d1b26 - Alexandre Morin : :arrow_up: post coverage comment on PR
 2026-03-02T18:15:40+01:00 - b465001 - Alexandre Morin : :arrow_up: report only changed files
+2026-03-02T18:15:40+01:00 - b1dc84b - Alexandre Morin : :construction_worker: add coverage job
 2026-03-02T18:15:40+01:00 - 93a52cd - Alexandre Morin : :arrow_up: remove hide_report option
 2026-03-02T18:15:40+01:00 - 80fccc4 - Alexandre Morin : :arrow_up: rename step
-2026-03-02T18:15:40+01:00 - f1d1b26 - Alexandre Morin : :arrow_up: post coverage comment on PR
-2026-03-02T18:15:40+01:00 - 19a5a8c - Alexandre Morin : :arrow_up: add pytest-cov for dev env
 2026-03-02T18:15:40+01:00 - 21dc3e7 - Alexandre Morin : :hammer: update makefile to add the coverage command
-2026-03-02T18:15:40+01:00 - b1dc84b - Alexandre Morin : :construction_worker: add coverage job
+2026-03-02T18:15:40+01:00 - 19a5a8c - Alexandre Morin : :arrow_up: add pytest-cov for dev env
 2026-03-02T18:14:54+01:00 - b21382e - ThomasMetzger : Merge pull request #201 from IA-Generative/feat/131/allow-different-report-creation
 2026-03-02T17:58:15+01:00 - 393a2dd - Thomas Metzger : :camera_flash: (131): update state machine graph
 2026-03-02T17:58:15+01:00 - 270bf0d - Thomas Metzger : :recycle: (131): add update_transcription transition
 2026-03-02T17:57:40+01:00 - 7c9be92 - Thomas Metzger : :test_tube: (131): add update transcription transition test
+2026-03-02T17:57:40+01:00 - 78e05cc - Thomas Metzger : :construction: (131): add reset report button
 2026-03-02T17:57:40+01:00 - 36b6f21 - Thomas Metzger : :sparkles: (131): add reset report route and transition
 2026-03-02T17:57:40+01:00 - 25ceae8 - Thomas Metzger : :construction: (131): add reset report route in gateway
-2026-03-02T17:57:40+01:00 - 78e05cc - Thomas Metzger : :construction: (131): add reset report button
 2026-03-02T17:57:10+01:00 - 51e6bd2 - ThomasMetzger : Merge pull request #189 from IA-Generative/feat/141/request-different-report-types
-2026-03-02T16:35:36+01:00 - 0b357c3 - Thomas Metzger : :white_check_mark: (141): fix flaky test on user generation
-2026-03-02T16:35:36+01:00 - 28e3936 - Thomas Metzger : :sparkles: (141): update frontend to request different report types
+2026-03-02T16:35:36+01:00 - c2f4b76 - Thomas Metzger : :label: (141): add ReportType enum and ReportGenerationRequest type
 2026-03-02T16:35:36+01:00 - bc1d471 - Thomas Metzger : :construction: (141): update gateway routes
 2026-03-02T16:35:36+01:00 - bc16adc - Thomas Metzger : :sparkles: (141): allow generation of different report types
-2026-03-02T16:35:36+01:00 - 13d1f0f - Thomas Metzger : :test_tube: (141): add report generation router tests
-2026-03-02T16:35:36+01:00 - c2f4b76 - Thomas Metzger : :label: (141): add ReportType enum and ReportGenerationRequest type
+2026-03-02T16:35:36+01:00 - 28e3936 - Thomas Metzger : :sparkles: (141): update frontend to request different report types
 2026-03-02T16:35:36+01:00 - 27ea874 - Thomas Metzger : :lipstick: (154): split download and generate button
+2026-03-02T16:35:36+01:00 - 13d1f0f - Thomas Metzger : :test_tube: (141): add report generation router tests
+2026-03-02T16:35:36+01:00 - 0b357c3 - Thomas Metzger : :white_check_mark: (141): fix flaky test on user generation
 2026-03-02T16:31:24+01:00 - 75b6a50 - Titouan : Merge pull request #175 from IA-Generative/feat/implement_spelling_corrector
 2026-03-02T15:54:21+01:00 - f5b578f - Titouan Mendiharat : :truck: (175): Moved text correction in post_process and removed a useless test
+2026-03-02T15:54:21+01:00 - b745486 - Titouan Mendiharat : :sparkles: (174): Implemented SpellingCorrector and a FF.
 2026-03-02T15:54:21+01:00 - a7732e6 - Titouan Mendiharat : :goal_net: (174): Found a new hallucination and added it to the forbidden list
 2026-03-02T15:54:21+01:00 - 775418c - Titouan Mendiharat : :test_tube: (174): Implemented tests for SpellingCorrector
-2026-03-02T15:54:21+01:00 - b745486 - Titouan Mendiharat : :sparkles: (174): Implemented SpellingCorrector and a FF.
 2026-03-02T15:06:07+01:00 - 57ae8c8 - ThomasMetzger : Merge pull request #198 from IA-Generative/refactor/add-python-lint-rules
-2026-03-02T12:23:53+01:00 - fc1e635 - Thomas Metzger : :rotating_light: (capture): run ruff lint safe fix
-2026-03-02T12:23:53+01:00 - 5a189be - Thomas Metzger : :hammer: (capture): add UP rules to linter
-2026-03-02T12:23:53+01:00 - 5b083aa - Thomas Metzger : :rotating_light: (generation): run ruff lint safe fix
-2026-03-02T12:23:53+01:00 - bc40f1b - Thomas Metzger : :hammer: (generation): add UP rules to linter
 2026-03-02T12:23:53+01:00 - fe016f3 - Thomas Metzger : :rotating_light: (gateway): run ruff lint safe fix
+2026-03-02T12:23:53+01:00 - fc1e635 - Thomas Metzger : :rotating_light: (capture): run ruff lint safe fix
+2026-03-02T12:23:53+01:00 - bc40f1b - Thomas Metzger : :hammer: (generation): add UP rules to linter
 2026-03-02T12:23:53+01:00 - a74d38e - Thomas Metzger : :hammer: (gateway): add UP rules to linter
+2026-03-02T12:23:53+01:00 - 5b083aa - Thomas Metzger : :rotating_light: (generation): run ruff lint safe fix
+2026-03-02T12:23:53+01:00 - 5a189be - Thomas Metzger : :hammer: (capture): add UP rules to linter
 2026-03-02T12:23:53+01:00 - 4edcc48 - Thomas Metzger : :rotating_light: (core): run ruff lint safe fix
