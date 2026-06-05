@@ -1,35 +1,18 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 26 mai 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 01 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des mises à jour de dépendances pour assurer la sécurité et la stabilité du projet. Des améliorations fonctionnelles ont été apportées concernant la gestion des informations sur les compléments alimentaires, notamment en affinant l'affichage des champs pour les plantes et en permettant l'export des contacts. Des corrections et refactorisations ont également été effectuées pour améliorer la qualité du code.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur pour la gestion des décisions de visa, notamment en termes de pré-remplissage, de persistance des données et d'affichage. Des corrections ont également été apportées pour améliorer l'expérience utilisateur et la conformité aux standards d'accessibilité (RGAA). Enfin, de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et améliorations de performance.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des champs relatifs aux plantes : les informations additionnelles pour les plantes inactives sont désormais optionnelles [#2884](https://github.com/betagouv/complements-alimentaires/pull/2884).
-- Implémentation de l'export des contacts par email [#2870](https://github.com/betagouv/complements-alimentaires/pull/2870).
-- Mise en place d'un système de visa automatique [#2883](https://github.com/betagouv/complements-alimentaires/pull/2883).
-- Possibilité de générer un PDF de la composition d'un complément alimentaire [#2854](https://github.com/betagouv/complements-alimentaires/pull/2854).
+- Amélioration de l'interface de modification des décisions de visa : pré-remplissage des valeurs, persistance de la décision lors de la navigation et affichage du délai de réponse. [#2945](https://github.com/betagouv/complements-alimentaires/issues/2945), [#2946](https://github.com/betagouv/complements-alimentaires/issues/2946), [#2947](https://github.com/betagouv/complements-alimentaires/issues/2947)
+- Suppression de l'affichage des champs relatifs aux plantes pour les produits qui n'en sont pas. [#2921](https://github.com/betagouv/complements-alimentaires/issues/2921), [#2896](https://github.com/betagouv/complements-alimentaires/issues/2896)
+- Amélioration de l'accessibilité : utilisation de listes pour certains éléments de l'interface. [#2942](https://github.com/betagouv/complements-alimentaires/issues/2942)
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances :
-    - `cryptography` vers la version 48.0.0
-    - `requests` vers la version 2.34.2
-    - `pytz` vers la version 2026.2
-    - `psycopg2` vers la version 2.9.12
-    - `vue` vers la version 3.5.34
-    - `vue-router` vers la version 5.0.7
-    - `tailwindcss` vers la version 4.3.0
-    - `numpy` vers la version 2.4.4
-    - `django` vers la version 6.0.5
-    - `botocore` vers la version 1.42.97
-    - `redis` vers la version 7.4.0
-    - `filelock` vers la version 3.29.0
-    - et d'autres (voir commits pour détails).
-- Suppression de l'utilisation de `ipdb` et ajout des dépendances manquantes [#2932](https://github.com/betagouv/complements-alimentaires/pull/2932).
-- Refactorisation des tests unitaires pour une meilleure granularité.
+- Mises à jour de nombreuses dépendances (Django, Python, Node.js, React, Vue.js, PostgreSQL, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Suppression de la dépendance `ipdb` et ajout de dépendances manquantes. [#2932](https://github.com/betagouv/complements-alimentaires/issues/2932)
+- Refactorisation et renommage de composants React liés à la modification des décisions de visa. [#2925](https://github.com/betagouv/complements-alimentaires/issues/2925)
 
 ### Autres changements
-- Mise à jour de la documentation et des commentaires de code.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Mise à jour des actions GitHub pour la CI/CD.
-- Amélioration de la gestion des polices d'affichage.
-- Correction d'un problème de mélange de paramètres lors de l'activation du visa automatique.
+- Ajustements de marges et d'espacement dans l'interface utilisateur. [#2941](https://github.com/betagouv/complements-alimentaires/issues/2941)
+- Amélioration de la réactivité de la grille de colonnes dans le segment de validation de visa. [#2940](https://github.com/betagouv/complements-alimentaires/issues/2940)
