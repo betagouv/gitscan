@@ -1,8 +1,7 @@
-## Changelog : transport-validator (30 derniers jours, au 27 avril 2026)
+## Changelog : transport-validator (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour du validateur de données GTFS se concentrent sur la maintenance et l'amélioration de la stabilité du système. Des dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et optimisations de performance.
+Cette mise à jour améliore la performance et la stabilité du validateur de données GTFS en production. Plus précisément, elle introduit un allocateur mémoire plus efficace par défaut, ce qui permet de réduire la consommation de mémoire et d'optimiser les performances globales.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `actix-http` de la version 3.9.0 à la version 3.12.1 pour bénéficier des dernières améliorations et corrections de bugs.
-- Mise à jour de la dépendance `rand` de la version 0.8.5 à la version 0.8.6 pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+- Passage à l'allocateur mémoire `jemalloc` par défaut pour améliorer la consommation mémoire en production. [#241](https://github.com/etalab/transport-validator/issues/241)
