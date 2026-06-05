@@ -1,36 +1,36 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 01 juin 2026)
+## Changelog : zero-logement-vacant (30 derniers jours, au 04 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances, la refactorisation du code pour une meilleure maintenabilité et la correction de bugs. Des améliorations significatives ont été apportées à la gestion des campagnes, notamment la suppression de l'ancien flux de campagne et l'ajout de nouvelles fonctionnalités pour l'exportation de données. L'application a également bénéficié d'une mise à jour de ses dépendances et d'optimisations pour l'importation des données LOVAC.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'intégration avec Metabase pour l'analyse de données, l'optimisation des performances (notamment au niveau de la base de données et du chargement initial de l'application), et l'ajout de nouvelles fonctionnalités comme l'affichage des statuts des destinataires de campagnes et l'amélioration de l'export de données. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une colonne "Statut de réception" aux destinataires de campagne, permettant de suivre l'état de la communication. [#1820](https://github.com/MTES-MCT/zero-logement-vacant/issues/1820)
-- Amélioration de l'UX et du style visuel de la légende de la carte, avec un bouton pour l'afficher/masquer. [#1791](https://github.com/MTES-MCT/zero-logement-vacant/issues/1791)
-- Possibilité de cliquer sur les noms de campagne dans les détails du logement pour accéder directement à la page de la campagne. [#1830](https://github.com/MTES-MCT/zero-logement-vacant/issues/1830)
-- Redirection vers la vue tableau lors du clic sur le bouton de regroupement sur la carte. [#1829](https://github.com/MTES-MCT/zero-logement-vacant/issues/1829)
-- Amélioration de l'alignement des boutons d'action des campagnes. [#1762](https://github.com/MTES-MCT/zero-logement-vacant/issues/1762)
-- Ajout d'une différenciation pour l'exportation des groupes et des campagnes. [#1783](https://github.com/MTES-MCT/zero-logement-vacant/issues/1783)
+- Ajout d'une nouvelle vue "Analyse" utilisant des graphiques natifs de Metabase (DSFR) pour la visualisation des données. [#1834](https://github.com/MTES-MCT/zero-logement-vacant/issues/1834)
+- Possibilité de lier les noms de campagne directement aux logements dans la vue de détail. [#1830](https://github.com/MTES-MCT/zero-logement-vacant/issues/1830)
+- Ajout d'une colonne "Statut" dans le tableau des destinataires de campagne, affichant le statut de suivi. [#1820](https://github.com/MTES-MCT/zero-logement-vacant/issues/1820)
+- Amélioration de l'UX de la légende de la carte, avec un bouton dédié et un style DSFR. [#1823](https://github.com/MTES-MCT/zero-logement-vacant/issues/1823)
+- Possibilité de passer à la vue tableau depuis la carte en cliquant sur un groupe de logements. [#1832](https://github.com/MTES-MCT/zero-logement-vacant/issues/1832)
+- Simplification de la création de campagnes en rendant la description optionnelle. [#1824](https://github.com/MTES-MCT/zero-logement-vacant/issues/1824)
 - Ajout d'un état de chargement au bouton de connexion. [#1829](https://github.com/MTES-MCT/zero-logement-vacant/issues/1829)
 
 ### Évolutions techniques
 - Mise à jour de React Router vers la version 7. [#1733](https://github.com/MTES-MCT/zero-logement-vacant/issues/1733)
-- Suppression du préfixe `/api` des routes et des appels API pour simplifier l'architecture. [#1806](https://github.com/MTES-MCT/zero-logement-vacant/issues/1806)
-- Refactorisation de la gestion des campagnes, avec suppression de l'ancien flux et simplification du code. [#1783](https://github.com/MTES-MCT/zero-logement-vacant/issues/1783)
-- Optimisation des performances de la requête de comptage des logements. [#1793](https://github.com/MTES-MCT/zero-logement-vacant/issues/1793)
-- Amélioration de la performance de l'importation des données LOVAC en utilisant `COPY FROM STDIN` au lieu de `psql`. [#1832](https://github.com/MTES-MCT/zero-logement-vacant/issues/1832)
-- Mise à jour des dépendances npm et yarn. [#1808](https://github.com/MTES-MCT/zero-logement-vacant/issues/1808)
-- Suppression du code mort et des dépendances inutilisées. [#1806](https://github.com/MTES-MCT/zero-logement-vacant/issues/1806)
-- Amélioration de la gestion des statuts de logement "jamais contacté". [#1804](https://github.com/MTES-MCT/zero-logement-vacant/issues/1804)
+- Refactorisation importante pour supprimer le préfixe `/api` des routes, simplifiant ainsi l'architecture. [#1806](https://github.com/MTES-MCT/zero-logement-vacant/issues/1806)
+- Optimisation des performances du chargement initial de l'application en utilisant `React.lazy` pour diviser les bundles de routes. Réduction de 73% de la taille du JavaScript initial. [#1833](https://github.com/MTES-MCT/zero-logement-vacant/issues/1833)
+- Amélioration des performances de la base de données en remplaçant un index géographique par un index combiné `(owner_id, rank)` sur la table `owners_housing`.
+- Remplacement de la requête dynamique pour déterminer si un logement a plusieurs propriétaires par une colonne `is_multi_owner` précalculée.
+- Utilisation de `pg COPY FROM STDIN` pour un chargement plus rapide des données en masse.
+- Refactorisation du script d'importation des propriétaires pour exporter les données au format Parquet.
+- Amélioration de la gestion des erreurs et de la résolution des dépendances pour le worker PDF.
+- Mise à jour des dépendances et correction de problèmes liés à la configuration.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles instructions d'installation et de configuration. [#1828](https://github.com/MTES-MCT/zero-logement-vacant/issues/1828)
-- Ajout de règles de workflow pour l'étiquetage et l'assignation des pull requests.
-- Ajout de tests pour améliorer la couverture du code.
-- Ajout de compétences et amélioration de la documentation pour l'utilisation de Claude.
-- Correction de problèmes de typographie dans les exports.
-- Amélioration de la documentation pour les jobs Dagster.
-- Ajout de skills et mise à jour de la documentation pour l'utilisation de Claude.
-- Mise à jour de la configuration du projet nx.
-- Ajout de la gestion des erreurs et des logs.
-- Suppression de fichiers inutiles.
-- Correction de problèmes de linting.
+- Documentation mise à jour pour refléter les changements de configuration et d'installation.
+- Corrections de tests et amélioration de la couverture de tests.
+- Ajout de règles de workflow pour l'étiquetage et l'attribution des pull requests.
+- Amélioration de la gestion des typographies françaises (apostrophes).
+- Ajout de la skill "mise-en-production" dans le fichier de configuration.
+- Suppression de code inutile et amélioration de la lisibilité du code.
+- Correction de problèmes de linting et de style.
+- Ajout de documentation pour l'intégration avec Metabase.
+- Suppression de l'export de la feuille des propriétaires dans l'export de groupe.
+- Correction de problèmes liés à l'importation des données LOVAC 2026.

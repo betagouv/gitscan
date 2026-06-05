@@ -930,13 +930,16 @@
 │   │   │   ├── 2026-04-14-import-lovac-owner-eetl.md
 │   │   │   ├── 2026-04-14-vite8-upgrade.md
 │   │   │   ├── 2026-04-20-convict-to-zod.md
-│   │   │   └── 2026-05-11-remove-api-prefix.md
+│   │   │   ├── 2026-05-11-remove-api-prefix.md
+│   │   │   ├── 2026-05-14-owners-birth-date-online-migration.md
+│   │   │   └── 2026-06-02-analysis-page-next.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
 │   │       ├── 2026-04-14-vite8-upgrade-design.md
 │   │       ├── 2026-04-21-remove-old-campaign-flow-design.md
-│   │       └── 2026-05-11-remove-api-prefix-design.md
+│   │       ├── 2026-05-11-remove-api-prefix-design.md
+│   │       └── 2026-06-02-analysis-page-next-design.md
 │   └── technical
 │       ├── .gitignore
 │       ├── DAT-Dossier-Architecture-Technique.md
@@ -1018,6 +1021,10 @@
 │   │   │   │   ├── AdvancedTable.tsx
 │   │   │   │   ├── AdvancedTableHeader.tsx
 │   │   │   │   └── SortButton.tsx
+│   │   │   ├── Analysis
+│   │   │   │   ├── AnalysisCard.tsx
+│   │   │   │   └── test
+│   │   │   │       └── AnalysisCard.test.tsx
 │   │   │   ├── Aside
 │   │   │   │   └── Aside.tsx
 │   │   │   ├── Auth
@@ -1483,6 +1490,7 @@
 │   │   │   │   ├── auth-helpers.ts
 │   │   │   │   ├── ban-handlers.ts
 │   │   │   │   ├── campaign-handlers.ts
+│   │   │   │   ├── dashboard-handlers.ts
 │   │   │   │   ├── data.ts
 │   │   │   │   ├── datafoncier-handlers.ts
 │   │   │   │   ├── document-handlers.ts
@@ -1635,7 +1643,10 @@
 │   │   │   │   ├── account-side-menu.module.scss
 │   │   │   │   └── forgotten-password-view.module.scss
 │   │   │   ├── Analysis
-│   │   │   │   └── AnalysisView.tsx
+│   │   │   │   ├── AnalysisView.tsx
+│   │   │   │   ├── AnalysisViewNext.tsx
+│   │   │   │   └── test
+│   │   │   │       └── AnalysisViewNext.test.tsx
 │   │   │   ├── Campaign
 │   │   │   │   ├── CampaignListView.tsx
 │   │   │   │   ├── CampaignView.tsx
@@ -1934,6 +1945,8 @@
 │       ├── tsconfig.spec.json
 │       ├── vitest.config.ts
 │       └── vitest.setup.ts
+├── scripts
+│   └── bundle-metrics.mjs
 ├── server
 │   ├── .env.example
 │   ├── README.md
@@ -1982,6 +1995,7 @@
 │   │   │   │   ├── auth-controller.test.ts
 │   │   │   │   ├── buildingController.test.ts
 │   │   │   │   ├── campaign-api.test.ts
+│   │   │   │   ├── dashboard-api.test.ts
 │   │   │   │   ├── document-api.test.ts
 │   │   │   │   ├── draft-api.test.ts
 │   │   │   │   ├── establishment-api.test.ts
@@ -2002,6 +2016,7 @@
 │   │   │   ├── badRequestError.ts
 │   │   │   ├── buildingMissingError.ts
 │   │   │   ├── campaignMissingError.ts
+│   │   │   ├── dashcardMissingError.ts
 │   │   │   ├── documentMissingError.ts
 │   │   │   ├── draftMissingError.ts
 │   │   │   ├── establishmentMissingError.ts
@@ -2526,7 +2541,7 @@
 │   │   │   ├── import-owners-datafoncier
 │   │   │   │   ├── README.md
 │   │   │   │   ├── import_owners.py
-│   │   │   │   └── requirements.txt
+│   │   │   │   └── pyproject.toml
 │   │   │   ├── logs
 │   │   │   │   └── export-monthly-logs.sh
 │   │   │   ├── owner-housing-distances
@@ -2602,6 +2617,9 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mailService.ts
 │   │   │   │   └── nodemailerService.ts
+│   │   │   ├── metabase
+│   │   │   │   ├── metabase-api.ts
+│   │   │   │   └── metabase-service.ts
 │   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── posthogService.ts
 │   │   │   ├── test
@@ -2700,4 +2718,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-421 directories, 2281 files
+426 directories, 2294 files
