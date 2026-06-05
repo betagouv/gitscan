@@ -4,6 +4,8 @@
 │   │   ├── demande-concernant-une-fonctionnalité.md
 │   │   └── rapport-d-incident.md
 │   ├── actions
+│   │   ├── scalingo-deploy
+│   │   │   └── action.yml
 │   │   ├── setup-pnpm-node
 │   │   │   └── action.yml
 │   │   └── setup-uv-python
@@ -15,10 +17,11 @@
 │       ├── chore.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
-│       ├── chore_require_labels.yml
+│       ├── chore_require_pr_fields.yml
 │       ├── dev.yml
 │       ├── ingestion.yml
 │       ├── notebook.yml
+│       ├── notebook_pages.yml
 │       ├── ocr.yml
 │       ├── storybook_pages.yml
 │       └── web.yml
@@ -36,6 +39,8 @@
 │   ├── git-commit-msg-hook
 │   ├── git-pre-commit-hook
 │   ├── manage
+│   ├── publish-notebooks
+│   ├── restore-web-db
 │   └── sass
 ├── csplab.code-workspace
 ├── dev
@@ -54,11 +59,16 @@
 │   ├── docker_compose_override.md
 │   ├── frontend_conventions.md
 │   ├── frontend_vue.md
+│   ├── notebook
+│   │   ├── .gitkeep
+│   │   └── dila_organisme.html
 │   ├── sass_configuration.md
 │   ├── scss_style_guide.md
 │   ├── talentsoft_webhooks.md
 │   ├── updating_API_schema.md
 │   └── web_linting.md
+├── dumps
+│   └── .gitkeep
 ├── env.d
 │   ├── ingestion-example
 │   ├── notebook-example
@@ -86,9 +96,13 @@
     │   │   └── talentsoft.py
     │   ├── application
     │   │   ├── __init__.py
+    │   │   ├── pipelines
+    │   │   │   ├── __init__.py
+    │   │   │   └── ingest_offer_pipeline.py
     │   │   └── use_cases
     │   │       ├── __init__.py
     │   │       ├── archive_offer.py
+    │   │       ├── clean_raw_offer.py
     │   │       ├── load_sources.py
     │   │       └── save_raw_offer.py
     │   ├── bin
@@ -98,10 +112,15 @@
     │   │   ├── __init__.py
     │   │   ├── entities
     │   │   │   ├── __init__.py
+    │   │   │   ├── offer.py
     │   │   │   └── raw_offer.py
+    │   │   ├── exceptions
+    │   │   │   ├── __init__.py
+    │   │   │   └── offer_errors.py
     │   │   ├── gateways
     │   │   │   ├── __init__.py
     │   │   │   ├── archive_gateway.py
+    │   │   │   ├── offers_cleaner.py
     │   │   │   ├── offers_gateway.py
     │   │   │   └── sources_gateway.py
     │   │   ├── repositories
@@ -110,8 +129,17 @@
     │   │   │   └── sources_repository.py
     │   │   └── value_objects
     │   │       ├── __init__.py
+    │   │       ├── area.py
+    │   │       ├── category.py
+    │   │       ├── contract_type.py
+    │   │       ├── country.py
     │   │       ├── credentials.py
+    │   │       ├── department.py
+    │   │       ├── limit_date.py
+    │   │       ├── localisation.py
+    │   │       ├── region.py
     │   │       ├── source.py
+    │   │       ├── verse.py
     │   │       └── webhook_event.py
     │   ├── infrastructure
     │   │   ├── __init__.py
@@ -133,7 +161,8 @@
     │   │   │   └── web_sources_gateway.py
     │   │   ├── gateways
     │   │   │   ├── __init__.py
-    │   │   │   └── async_http_client.py
+    │   │   │   ├── async_http_client.py
+    │   │   │   └── offers_cleaner.py
     │   │   ├── models
     │   │   │   ├── __init__.py
     │   │   │   └── raw_offer.py
@@ -160,6 +189,7 @@
     │   │   ├── integration
     │   │   │   ├── __init__.py
     │   │   │   ├── test_archive_offer_use_case.py
+    │   │   │   ├── test_clean_raw_offer_use_case.py
     │   │   │   ├── test_health.py
     │   │   │   ├── test_load_sources_use_case.py
     │   │   │   ├── test_raw_offer_repository.py
@@ -178,14 +208,20 @@
     │   │       │   ├── test_talentsoft_client.py
     │   │       │   ├── test_talentsoft_dtos.py
     │   │       │   └── utils.py
+    │   │       ├── gateways
+    │   │       │   ├── __init__.py
+    │   │       │   └── test_offers_cleaner.py
     │   │       ├── test_async_http_client.py
+    │   │       ├── test_clean_raw_offer_use_case.py
     │   │       ├── test_credentials_store.py
+    │   │       ├── test_ingest_offer_pipeline.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
     │   │       ├── test_save_raw_offer_use_case.py
     │   │       ├── test_sentry.py
     │   │       ├── test_sources_repository.py
-    │   │       └── test_talentsoft_client_repository.py
+    │   │       ├── test_talentsoft_client_repository.py
+    │   │       └── test_value_objects.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -258,6 +294,7 @@
         ├── .buildpacks
         ├── .envrc.sample
         ├── .python-version
+        ├── .slugignore
         ├── CHANGELOG.md
         ├── Procfile
         ├── Procfile.dev
@@ -505,6 +542,8 @@
         │   │   │   │   ├── 0027_rename_code_domaine_fonctionnel_metiermodel_domaine_fonctionnel_code.py
         │   │   │   │   ├── 0028_offermodel_source_id.py
         │   │   │   │   ├── 0029_populate_offer_source_id.py
+        │   │   │   │   ├── 0030_alter_offermodel_source_id_not_null.py
+        │   │   │   │   ├── 0031_offermodel_reference.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -675,10 +714,36 @@
         │   │   │   └── preview.ts
         │   │   ├── eslint.config.js
         │   │   ├── package.json
+        │   │   ├── public
+        │   │   │   └── fonts
+        │   │   │       ├── Marianne-Bold.woff
+        │   │   │       ├── Marianne-Bold.woff2
+        │   │   │       ├── Marianne-Bold_Italic.woff
+        │   │   │       ├── Marianne-Bold_Italic.woff2
+        │   │   │       ├── Marianne-Light.woff
+        │   │   │       ├── Marianne-Light.woff2
+        │   │   │       ├── Marianne-Light_Italic.woff
+        │   │   │       ├── Marianne-Light_Italic.woff2
+        │   │   │       ├── Marianne-Medium.woff
+        │   │   │       ├── Marianne-Medium.woff2
+        │   │   │       ├── Marianne-Medium_Italic.woff
+        │   │   │       ├── Marianne-Medium_Italic.woff2
+        │   │   │       ├── Marianne-Regular.woff
+        │   │   │       ├── Marianne-Regular.woff2
+        │   │   │       ├── Marianne-Regular_Italic.woff
+        │   │   │       └── Marianne-Regular_Italic.woff2
         │   │   ├── src
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   └── main.ts
+        │   │   │   ├── components
+        │   │   │   │   └── base
+        │   │   │   │       ├── CspButton
+        │   │   │   │       │   ├── CspButton.stories.ts
+        │   │   │   │       │   └── CspButton.vue
+        │   │   │   │       └── CspIcon
+        │   │   │   │           ├── CspIcon.stories.ts
+        │   │   │   │           └── CspIcon.vue
         │   │   │   ├── env.d.ts
         │   │   │   ├── features
         │   │   │   │   └── ats
@@ -688,7 +753,8 @@
         │   │   │   │       └── ErrorBoundary.vue
         │   │   │   ├── stories
         │   │   │   │   ├── 01-fondations
-        │   │   │   │   │   └── Tokens.stories.ts
+        │   │   │   │   │   ├── Tokens.stories.ts
+        │   │   │   │   │   └── colors.ts
         │   │   │   │   ├── Introduction.mdx
         │   │   │   │   └── ddr
         │   │   │   │       ├── DDR-000.mdx
@@ -697,7 +763,10 @@
         │   │   │   │           ├── ddr-000-pourquoi-des-ddr.md
         │   │   │   │           └── ddr-001-couches-design.md
         │   │   │   ├── styles
-        │   │   │   │   ├── dsfr-tokens.css
+        │   │   │   │   ├── csp-variables.css
+        │   │   │   │   ├── dsfr-tokens-decisions.css
+        │   │   │   │   ├── dsfr-tokens-options.css
+        │   │   │   │   ├── fonts.css
         │   │   │   │   ├── index.css
         │   │   │   │   └── theme.css
         │   │   │   └── utils
@@ -729,7 +798,12 @@
         │   │   ├── serializers.py
         │   │   ├── tasks.py
         │   │   ├── urls.py
-        │   │   └── views.py
+        │   │   └── views
+        │   │       ├── __init__.py
+        │   │       ├── concours.py
+        │   │       ├── metiers.py
+        │   │       ├── offers.py
+        │   │       └── sources.py
         │   ├── pages
         │   │   ├── __init__.py
         │   │   ├── urls.py
@@ -997,4 +1071,4 @@
         │       ├── pdf_test_utils.py
         │       └── shared_fixtures.py
         └── uv.lock
-208 directories, 791 files
+221 directories, 852 files
