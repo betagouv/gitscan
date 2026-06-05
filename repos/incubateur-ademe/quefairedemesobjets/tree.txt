@@ -827,19 +827,6 @@
 ├── infrastructure
 │   ├── .gitignore
 │   ├── environments
-│   │   ├── airflowv3
-│   │   │   ├── airflow_containers
-│   │   │   │   ├── .terraform.lock.hcl
-│   │   │   │   ├── terraform.tfvars.example
-│   │   │   │   └── terragrunt.hcl
-│   │   │   ├── database
-│   │   │   │   ├── .terraform.lock.hcl
-│   │   │   │   ├── terraform.tfvars.example
-│   │   │   │   └── terragrunt.hcl
-│   │   │   └── object_storage
-│   │   │       ├── .terraform.lock.hcl
-│   │   │       ├── terraform.tfvars.example
-│   │   │       └── terragrunt.hcl
 │   │   ├── preprod
 │   │   │   ├── airflow_containers
 │   │   │   │   ├── .terraform.lock.hcl
@@ -1346,6 +1333,11 @@
     │   ├── __init__.py
     │   ├── apps.py
     │   ├── constants.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   └── commands
+    │   │       ├── __init__.py
+    │   │       └── purge_orphan_searchterm_index.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
     │   │   ├── 0002_searchterm_disabled.py
@@ -1907,9 +1899,10 @@
     │   │       └── test_carte_icon_display.py
     │   ├── search_tests
     │   │   ├── __init__.py
+    │   │   ├── test_purge_orphan_searchterm_index.py
     │   │   ├── test_search_term.py
     │   │   └── test_search_view.py
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-355 directories, 1559 files
+353 directories, 1554 files
