@@ -318,6 +318,7 @@
 │   │   │   └── store.tsx
 │   │   ├── utils
 │   │   │   ├── config.ts
+│   │   │   ├── fetchUtils.test.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── stringUtils.test.ts
 │   │   │   └── stringUtils.ts
@@ -345,20 +346,21 @@
 │   │       │   │   ├── PlanKindFieldItem.tsx
 │   │       │   │   ├── PlanKindFieldList.tsx
 │   │       │   │   └── PlanKindSpecificDataView.tsx
-│   │       │   └── SpecificDataFields
-│   │       │       ├── FieldCreateForm.tsx
-│   │       │       ├── FieldDeleteConfirm.tsx
-│   │       │       ├── FieldForm.tsx
-│   │       │       ├── FieldOptionFormModal.tsx
-│   │       │       ├── FieldOptionsSection.tsx
-│   │       │       ├── FieldOptionsTable.tsx
-│   │       │       ├── FieldsTable.stories.tsx
-│   │       │       ├── FieldsTable.tsx
-│   │       │       ├── SachaCommemoratifsUpload.tsx
-│   │       │       ├── SpecificDataFieldsView.stories.tsx
-│   │       │       ├── SpecificDataFieldsView.tsx
-│   │       │       ├── fieldInputTypeLabels.ts
-│   │       │       └── storyFixtures.ts
+│   │       │   ├── SpecificDataFields
+│   │       │   │   ├── FieldCreateForm.tsx
+│   │       │   │   ├── FieldDeleteConfirm.tsx
+│   │       │   │   ├── FieldForm.tsx
+│   │       │   │   ├── FieldOptionFormModal.tsx
+│   │       │   │   ├── FieldOptionsSection.tsx
+│   │       │   │   ├── FieldOptionsTable.tsx
+│   │       │   │   ├── FieldsTable.stories.tsx
+│   │       │   │   ├── FieldsTable.tsx
+│   │       │   │   ├── SachaCommemoratifsUpload.tsx
+│   │       │   │   ├── SpecificDataFieldsView.stories.tsx
+│   │       │   │   ├── SpecificDataFieldsView.tsx
+│   │       │   │   ├── fieldInputTypeLabels.ts
+│   │       │   │   └── storyFixtures.ts
+│   │       │   └── adminSections.tsx
 │   │       ├── DashboardView
 │   │       │   ├── Dashboard.scss
 │   │       │   ├── DashboardNoticeAndActions.tsx
@@ -537,6 +539,8 @@
 │   └── backup_db.sh
 ├── server
 │   ├── .npmrc
+│   ├── constants
+│   │   └── httpStatus.ts
 │   ├── controllers
 │   │   ├── analysisController.ts
 │   │   ├── analysisDaiController.ts
@@ -677,7 +681,8 @@
 │   │   │   ├── 092-analysis-dai-daoa.ts
 │   │   │   ├── 093-laboratory-sacha-config.ts
 │   │   │   ├── 094-analysis-rai.ts
-│   │   │   └── 094-laboratory-agreements.ts
+│   │   │   ├── 094-laboratory-agreements.ts
+│   │   │   └── 095-laboratory-sacha-gpg-email.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -1020,6 +1025,7 @@
 │   │   │   ├── AnalysisRaiWithRelations.ts
 │   │   │   └── FindAnalysisRaiOptions.ts
 │   │   ├── AppRouteLinks
+│   │   │   ├── AppRouteLinks.test.ts
 │   │   │   └── AppRouteLinks.ts
 │   │   ├── Auth
 │   │   │   └── AuthRedirectUrl.ts
@@ -1122,6 +1128,8 @@
 │   │   ├── date.test.ts
 │   │   ├── date.ts
 │   │   ├── typescript.ts
+│   │   ├── url.test.ts
+│   │   ├── url.ts
 │   │   ├── utils.test.ts
 │   │   ├── utils.ts
 │   │   ├── zod.ts
@@ -1136,4 +1144,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-216 directories, 922 files
+217 directories, 929 files
