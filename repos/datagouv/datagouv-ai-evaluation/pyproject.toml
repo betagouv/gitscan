@@ -1,0 +1,44 @@
+[project]
+name = "datagouv-ai-evaluation"
+dynamic = ["version"]
+description = "Utils to evaluate Data Gouv's implementation of AI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "opik>=1.0.0",
+    "asyncio>=4.0.0",
+    "mcp>=1.26.0",
+    "numpy>=2.4.2",
+    "openai>=2.24.0",
+    "pydantic-ai>=0.8.1",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "pandas>=3.0.1",
+    "jsonschema>=4.0.0",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.0",
+    "logfire>=4.32.1",
+    "packaging>=24.0",
+    "ddgs>=9.14.4",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+web = ["ddgs>=9.0"]
+
+[dependency-groups]
+dev = ["ruff>=0.15.4"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+log_cli = true
+log_cli_level = "INFO"
+
+[tool.ruff.lint]
+# Match CI: `ruff check --select I .` — default Ruff select does not include isort (I).
+extend-select = ["I"]
+
+[tool.setuptools_scm]
