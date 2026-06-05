@@ -103,6 +103,8 @@
 │   │   ├── argocd
 │   │   │   ├── argocd-apps.json
 │   │   │   └── argocd-metrics.json
+│   │   ├── haproxy
+│   │   │   └── haproxy.json
 │   │   ├── kube-mixins
 │   │   │   ├── cluster-total.json
 │   │   │   ├── controller-manager.json
@@ -228,11 +230,18 @@
 │   │   ├── service.yaml
 │   │   └── serviceaccount.yaml
 │   └── values.yaml
-└── secrets
+├── secrets
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   └── secret.yaml
+│   └── values.yaml
+└── secrets-provisioning
     ├── .helmignore
     ├── Chart.yaml
     ├── templates
-    │   ├── _helpers.tpl
-    │   └── secret.yaml
+    │   ├── job.yaml.gotmpl
+    │   └── rbac.yaml.gotmpl
     └── values.yaml
-51 directories, 186 files
+54 directories, 192 files
