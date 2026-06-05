@@ -80,6 +80,7 @@
 │   ├── installation.md
 │   ├── llm-configuration.md
 │   ├── release.md
+│   ├── service_status.md
 │   ├── system-requirements.md
 │   ├── theming.md
 │   ├── tilt.md
@@ -175,6 +176,11 @@
 │   │   │   ├── keepalive.py
 │   │   │   ├── llm_configuration.py
 │   │   │   ├── malware_detection.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── fetch_model_health.py
 │   │   │   ├── mcp_servers.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
@@ -184,7 +190,9 @@
 │   │   │   │   ├── 0005_chatconversation_title_set_by_user_at.py
 │   │   │   │   ├── 0006_chatproject_chatconversation_project.py
 │   │   │   │   ├── 0007_chatconversationattachment_project_and_more.py
+│   │   │   │   ├── 0008_modelhealth.py
 │   │   │   │   └── __init__.py
+│   │   │   ├── model_health.py
 │   │   │   ├── models.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
@@ -245,6 +253,11 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_chat_conversation_factory.py
 │   │   │   │   │   └── test_chat_project_factory.py
+│   │   │   │   ├── management
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── commands
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       └── test_fetch_model_health.py
 │   │   │   │   ├── serializers
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_chat_conversation_input_serializer.py
@@ -255,6 +268,7 @@
 │   │   │   │   ├── test_llm_configuration.py
 │   │   │   │   ├── test_local_media_url_processors.py
 │   │   │   │   ├── test_malware_detection.py
+│   │   │   │   ├── test_model_health.py
 │   │   │   │   ├── tools
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_document_generic_search_rag.py
@@ -306,7 +320,8 @@
 │   │   │   │       │   ├── test_retrieve.py
 │   │   │   │       │   └── test_update.py
 │   │   │   │       ├── test_file_stream.py
-│   │   │   │       └── test_llm_configuration_view.py
+│   │   │   │       ├── test_llm_configuration_view.py
+│   │   │   │       └── test_model_health_view.py
 │   │   │   ├── tools
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── descriptions.py
@@ -330,7 +345,10 @@
 │   │   │   │   └── encoder
 │   │   │   │       ├── __init__.py
 │   │   │   │       └── encoder.py
-│   │   │   └── views.py
+│   │   │   └── views
+│   │   │       ├── __init__.py
+│   │   │       ├── llm_config.py
+│   │   │       └── model_health.py
 │   │   ├── conftest.py
 │   │   ├── conversations
 │   │   │   ├── __init__.py
@@ -380,6 +398,7 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       └── bucket_cors.py
+│   │   │   ├── middleware.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_user_allow_conversation_analytics.py
@@ -388,6 +407,9 @@
 │   │   │   │   ├── 0005_siteconfiguration.py
 │   │   │   │   ├── 0006_user_allow_smart_web_search_default_false.py
 │   │   │   │   ├── 0007_siteconfiguration_status_banner_content_and_more.py
+│   │   │   │   ├── 0008_maintenancemode.py
+│   │   │   │   ├── 0009_modelhealthsettings.py
+│   │   │   │   ├── 0010_alter_maintenancemode_updated_by.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
@@ -415,6 +437,7 @@
 │   │   │   │   ├── test_api_config.py
 │   │   │   │   ├── test_api_users.py
 │   │   │   │   ├── test_enums.py
+│   │   │   │   ├── test_maintenance.py
 │   │   │   │   ├── test_models_users.py
 │   │   │   │   └── test_settings.py
 │   │   │   └── urls.py
@@ -642,8 +665,7 @@
 │   │   │   │   │   │   │   └── types.tsx
 │   │   │   │   │   │   ├── auth
 │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   ├── silentLogin.test.ts
-│   │   │   │   │   │   │   │   └── utils.test.tsx
+│   │   │   │   │   │   │   │   └── silentLogin.test.ts
 │   │   │   │   │   │   │   ├── api
 │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   ├── types.ts
@@ -826,6 +848,14 @@
 │   │   │   │   │   │   │   │   │   └── useModalHook.test.tsx
 │   │   │   │   │   │   │   │   └── useModalHook.tsx
 │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── maintenance
+│   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   ├── MaintenanceIllustration.tsx
+│   │   │   │   │   │   │   │   ├── MaintenancePage.tsx
+│   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   └── MaintenancePage.test.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── onboarding
 │   │   │   │   │   │   │   ├── assets
 │   │   │   │   │   │   │   │   ├── step1-en.png
@@ -880,7 +910,6 @@
 │   │   │   │   │   │   └── login
 │   │   │   │   │   │       └── index.tsx
 │   │   │   │   │   ├── services
-│   │   │   │   │   │   ├── Crisp.tsx
 │   │   │   │   │   │   ├── PosthogAnalytic.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── stores
@@ -967,6 +996,7 @@
 │   │   │   ├── generate-readme.sh
 │   │   │   ├── templates
 │   │   │   │   ├── _helpers.tpl
+│   │   │   │   ├── backend_cronjob_model_health.yaml
 │   │   │   │   ├── backend_deployment.yaml
 │   │   │   │   ├── backend_job.yml
 │   │   │   │   ├── backend_job_createsuperuser.yaml
@@ -1010,4 +1040,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-218 directories, 794 files
+226 directories, 816 files

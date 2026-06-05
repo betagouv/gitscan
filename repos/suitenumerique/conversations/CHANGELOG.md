@@ -6,11 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased] - 2026-05-21
+## [unreleased]
+
+### Added
+
+- ✨(back) add cron job to poll Albert models health
+
+### Changed
+
+- 🧱(helm) bump chart to v0.0.6
+
+## [0.0.17] - 2026-06-02
+
+### Added
+
+- ✨(maintenance) add maintenance mode
 
 ### Changed
 
 - 🔒️(front) disable yarn install scripts in docker build
+- ⬆️(dependencies) update back and front dependencies
+- 🚸(back) improve chat admin filtering, search and display columns
+
+### Fixed
+
+- 🐛(backend) remove user list endpoint
 
 ## [0.0.16] - 2026-05-21
 
@@ -309,7 +329,8 @@ and this project adheres to
 - ✨(onboarding) add activation code logic for launch #62
 - 💄(chat) add code highlighting for LLM responses #67
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.16...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.17...main
+[0.0.17]: https://github.com/suitenumerique/conversations/releases/v0.0.17
 [0.0.16]: https://github.com/suitenumerique/conversations/releases/v0.0.16
 [0.0.15]: https://github.com/suitenumerique/conversations/releases/v0.0.15
 [0.0.14]: https://github.com/suitenumerique/conversations/releases/v0.0.14
