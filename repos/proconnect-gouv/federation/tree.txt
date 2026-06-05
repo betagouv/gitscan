@@ -434,45 +434,6 @@
 │   │   ├── erreurs.md
 │   │   └── tracked-event.md
 │   ├── apps
-│   │   ├── bridge-http-proxy-rie
-│   │   │   ├── src
-│   │   │   │   ├── app.module.ts
-│   │   │   │   ├── bridge-http-proxy.module.spec.ts
-│   │   │   │   ├── bridge-http-proxy.module.ts
-│   │   │   │   ├── config
-│   │   │   │   │   ├── app.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── logger-legacy.ts
-│   │   │   │   │   ├── logger.ts
-│   │   │   │   │   └── rie-broker.ts
-│   │   │   │   ├── controllers
-│   │   │   │   │   ├── bridge-http-proxy.controller.spec.ts
-│   │   │   │   │   ├── bridge-http-proxy.controller.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── dto
-│   │   │   │   │   ├── app-config.dto.ts
-│   │   │   │   │   ├── bridge-http-proxy-config.dto.ts
-│   │   │   │   │   ├── bridge-http-proxy-error.dto.ts
-│   │   │   │   │   ├── bridge-http-proxy-protocol.dto.ts
-│   │   │   │   │   ├── bridge-http-proxy-response.dto.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── enums
-│   │   │   │   │   ├── bridge-http-proxy-routes.enum.ts
-│   │   │   │   │   ├── error-code.enum.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── exceptions
-│   │   │   │   │   ├── bridge-http-proxy-base.exception.ts
-│   │   │   │   │   ├── bridge-http-proxy-csmr.exception.ts
-│   │   │   │   │   ├── bridge-http-proxy-rabbitmq.exception.ts
-│   │   │   │   │   ├── bridge-http-proxy-variable-missing.exception.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── main.ts
-│   │   │   │   └── services
-│   │   │   │       ├── bridge-http-proxy.service.spec.ts
-│   │   │   │       ├── bridge-http-proxy.service.ts
-│   │   │   │       └── index.ts
-│   │   │   └── tsconfig.app.json
 │   │   ├── core-fca-low
 │   │   │   ├── src
 │   │   │   │   ├── app.module.ts
@@ -637,22 +598,12 @@
 │   │   │   │   │   ├── health.controller.spec.ts
 │   │   │   │   │   ├── health.controller.ts
 │   │   │   │   │   └── index.ts
-│   │   │   │   ├── csmr-http-proxy.module.spec.ts
-│   │   │   │   ├── csmr-http-proxy.module.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── bridge-payload.dto.ts
 │   │   │   │   │   ├── csmr-http-proxy.config.ts
 │   │   │   │   │   └── index.ts
-│   │   │   │   ├── http
-│   │   │   │   │   ├── http-module.config.spec.ts
-│   │   │   │   │   ├── http-module.config.ts
-│   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── main.ts
-│   │   │   │   └── services
-│   │   │   │       ├── csmr-http-proxy.service.spec.ts
-│   │   │   │       ├── csmr-http-proxy.service.ts
-│   │   │   │       └── index.ts
+│   │   │   │   └── main.ts
 │   │   │   └── tsconfig.app.json
 │   │   ├── mock-data-provider
 │   │   │   ├── src
@@ -933,22 +884,17 @@
 │   │   │   │       ├── index.ts
 │   │   │   │       └── runner-exception.type.ts
 │   │   │   └── tsconfig.lib.json
-│   │   ├── hybridge-http-proxy
+│   │   ├── hyyyperbridge
 │   │   │   ├── src
-│   │   │   │   ├── enums
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── message-type.enum.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── interface
-│   │   │   │   │   ├── bridge-error.interface.ts
-│   │   │   │   │   ├── bridge-payload.interface.ts
-│   │   │   │   │   ├── bridge-protocol.interface.ts
-│   │   │   │   │   ├── bridge-response.interface.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── hyyyperbridge-enveloppe.dto.ts
+│   │   │   │   │   ├── hyyyperbridge-error.dto.ts
+│   │   │   │   │   ├── hyyyperbridge-response.dto.ts
 │   │   │   │   │   └── index.ts
-│   │   │   │   └── validator
-│   │   │   │       ├── http-headers.validator.spec.ts
-│   │   │   │       ├── http-headers.validator.ts
-│   │   │   │       └── index.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── hyyyperbridge-message-type.enum.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── index.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── identity-provider-adapter-mongo
 │   │   │   ├── src
@@ -1094,10 +1040,15 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── oidc-client-config.dto.ts
 │   │   │   │   ├── enums
-│   │   │   │   │   ├── error-code.ts
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   ├── hyyyperbridge-error-code.enum.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── exceptions
 │   │   │   │   │   ├── authorization-response-error.exception.ts
+│   │   │   │   │   ├── hyyyperbridge-base.exception.ts
+│   │   │   │   │   ├── hyyyperbridge-csmr.exception.ts
+│   │   │   │   │   ├── hyyyperbridge-missing-variable.exception.ts
+│   │   │   │   │   ├── hyyyperbridge-rabbitmq.exception.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── oidc-client-base.exception.ts
 │   │   │   │   │   ├── oidc-client-idp-disabled.exception.ts
@@ -1262,7 +1213,9 @@
 │   │       └── tsconfig.lib.json
 │   ├── migrate-mongo-config.js
 │   ├── migrations
-│   │   └── 20250203155216-remove_alt_field_from_provider_collection.ts
+│   │   ├── 20250203155216-remove_alt_field_from_provider_collection.ts
+│   │   ├── 20260526121027-delete_available_scopes_in_database.ts
+│   │   └── 20260526122818-set_roles_and_organization_label_for_every_sp.ts
 │   ├── nest-cli.json
 │   ├── package.json
 │   ├── scripts
@@ -1326,7 +1279,6 @@
 │   │   │   │   ├── fsa1-low.env
 │   │   │   │   ├── fsa2-low.env
 │   │   │   │   ├── fsa3-low.env
-│   │   │   │   ├── hybridge-internet.env
 │   │   │   │   ├── hybridge-rie.env
 │   │   │   │   ├── moncomptepro.env
 │   │   │   │   └── mongo-fca-low.env
@@ -1402,8 +1354,6 @@
 │       │   ├── pg_hba.conf
 │       │   ├── postgresql.conf
 │       │   └── start.sh
-│       ├── rp-bridge-proxy
-│       │   └── vhost.conf
 │       └── ssl
 │           ├── README.md
 │           ├── app.crt
@@ -1630,4 +1580,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-369 directories, 1263 files
+357 directories, 1225 files
