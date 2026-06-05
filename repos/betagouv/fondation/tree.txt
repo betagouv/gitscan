@@ -140,6 +140,12 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260527082038_session_archival
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260603152128_adds_member_sort
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260603164132_normalize_magistrat_grade
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260604100341_adds_renunciation_to_presentation_plans
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -239,10 +245,10 @@
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
 │   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── agenda-file-name.ts
 │   │   │   │   │   │   ├── agenda-nomination-file.ts
 │   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   ├── agenda.ts
+│   │   │   │   │   │   ├── doc-file-name.ts
 │   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
 │   │   │   │   │   │   ├── justice-presentation-plan.ts
 │   │   │   │   │   │   ├── official-report-file-name.ts
@@ -612,6 +618,8 @@
 │   │   │       ├── time.ts
 │   │   │       ├── types.ts
 │   │   │       ├── unaccent.ts
+│   │   │       ├── user.util.spec.ts
+│   │   │       ├── user.util.ts
 │   │   │       └── zod-to-xml-schema.ts
 │   │   ├── test
 │   │   │   ├── assets
@@ -1131,6 +1139,7 @@
 │       │   │   ├── http.config.ts
 │       │   │   ├── multipart-json.ts
 │       │   │   ├── route-path.utils.ts
+│       │   │   ├── session.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
 │       │   │   ├── time-only.util.ts
@@ -1205,4 +1214,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-266 directories, 941 files
+269 directories, 947 files
