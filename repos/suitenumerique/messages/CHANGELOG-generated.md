@@ -1,36 +1,29 @@
-## Changelog : messages (30 derniers jours, au 29 mai 2026)
+## Changelog : messages (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a apporté des améliorations significatives à l'expérience utilisateur, notamment avec l'ajout de prévisualisation des pièces jointes et l'amélioration de la composition des messages. Des corrections de bugs ont également été implémentées pour améliorer la stabilité et la performance, en particulier concernant le calendrier et l'importation de données. Des optimisations techniques ont été réalisées pour améliorer la gestion des pièces jointes et la performance globale.
+Ce mois-ci, les améliorations se concentrent sur la stabilité, la performance et l'expérience utilisateur. Des corrections de bugs ont été apportées concernant l'affichage des événements récurrents, l'importation de PST, et la gestion des accès aux threads. De nouvelles fonctionnalités ont été ajoutées, notamment la prévisualisation des pièces jointes, l'intégration CalDAV pour l'acceptation directe des événements, et l'amélioration de l'expérience d'envoi de messages. Des optimisations de performance ont également été réalisées, notamment pour les recherches avec un grand nombre de destinataires.
 
 ### Évolutions fonctionnelles
-- **Pièces jointes :** Ajout d'une prévisualisation des pièces jointes pour une meilleure expérience utilisateur. [#676](https://github.com/suitenumerique/messages/issues/676)
-- **Calendrier :** Possibilité de lier une instance CalDAV pour accepter directement les événements. [#584](https://github.com/suitenumerique/messages/issues/584)
-- **Composition de messages :** Amélioration de l'expérience de composition des messages, notamment avec l'ajout de liens profonds vers les threads. [#664](https://github.com/suitenumerique/messages/issues/664)
-- **Assignation de threads :** Possibilité d'assigner des threads à des utilisateurs. [#645](https://github.com/suitenumerique/messages/issues/645)
-- **Actions sur les threads :** Ajout d'actions de lecture/non-lu sur la barre d'actions des threads. [#659](https://github.com/suitenumerique/messages/issues/659)
-- **Interface utilisateur :** Les sections du panneau sont maintenant redimensionnables.
-- **Notifications :** Ajout de notifications de mention via `UserEvent`.
+- **Pièces jointes :** Ajout de la prévisualisation des pièces jointes [#676](https://github.com/suitenumerique/messages/issues/676).
+- **Calendrier :** Possibilité de lier une instance CalDAV pour accepter directement les événements [#584](https://github.com/suitenumerique/messages/issues/584).
+- **Envoi de messages :** Amélioration de l'expérience d'envoi de messages [#681](https://github.com/suitenumerique/messages/issues/681).
+- **Assignation de threads :** Ajout de la possibilité d'assigner un thread [#645](https://github.com/suitenumerique/messages/issues/645).
+- **Liens profonds :** Ajout de liens profonds vers les threads [#664](https://github.com/suitenumerique/messages/issues/664).
+- **Actions sur les threads :** Ajout d'actions "lu/non lu" sur la barre d'actions des threads [#659](https://github.com/suitenumerique/messages/issues/659).
 
 ### Évolutions techniques
-- **Stockage des pièces jointes :** Implémentation d'un stockage en plusieurs niveaux (tiered storage) et refactorisation de la gestion des pièces jointes et des blobs.
-- **Performance :** Correction d'un problème de performance lié au grand nombre de destinataires. [#672](https://github.com/suitenumerique/messages/issues/672)
-- **Optimisation de la base de données :** Éviter les requêtes N+1 dans l'administration et accélérer les recherches.
-- **Refactorisation :** Suppression des champs de modèle dépréciés. [#678](https://github.com/suitenumerique/messages/issues/678)
-- **Bibliothèques :** Ajout de `defusedxml` comme dépendance pour une meilleure sécurité. [#677](https://github.com/suitenumerique/messages/issues/677)
-- **Email :** Retour à l'utilisation de la bibliothèque standard Python pour la composition des emails.
-- **Cache :** Refactorisation de la gestion du cache des requêtes de threads. [#642](https://github.com/suitenumerique/messages/issues/642)
+- **Backend :** Retour à la bibliothèque standard Python pour la composition des emails.
+- **Performance :** Correction d'un problème de performance lié au grand nombre de destinataires [#672](https://github.com/suitenumerique/messages/issues/672).
+- **Optimisation :** Éviter les requêtes N+1 dans l'administration et accélérer les recherches.
+- **Architecture :** Implémentation d'un stockage en plusieurs niveaux (tiered storage) et refactorisation des blobs/attachments.
+- **Sécurité :** Ajout de champs TOTP obligatoires et d'un champ de recherche dans l'administration.
+- **Dépendances :** Mise à jour de `django-lasuite` vers la version 0.0.26 [#689](https://github.com/suitenumerique/messages/issues/689).
+- **Milter :** Correction d'une condition de concurrence concernant les permissions du socket Milter au démarrage [#693](https://github.com/suitenumerique/messages/issues/693).
+- **Selfcheck :** Rapport de l'état du selfcheck à Sentry [#694](https://github.com/suitenumerique/messages/issues/694).
 
 ### Autres changements
-- Correction de bugs mineurs concernant l'affichage des événements récurrents avec exceptions. [#686](https://github.com/suitenumerique/messages/issues/686)
-- Correction d'un bug empêchant la suppression des brouillons de messages de déclencher une actualisation inutile.
-- Utilisation de l'adresse email OIDC au lieu de l'adresse email de la boîte aux lettres pour CalDAV. [#679](https://github.com/suitenumerique/messages/issues/679)
-- Correction de l'utilisation de l'identifiant `obs-id-left` dans l'en-tête `In-Reply-To`. [#1234](https://github.com/suitenumerique/messages/issues/1234)
-- Suppression des messages internes à tout moment. [#669](https://github.com/suitenumerique/messages/issues/669)
-- Ajout de la possibilité d'ajouter un champ TOTP obligatoire et un champ de recherche dans l'administration. [#667](https://github.com/suitenumerique/messages/issues/667)
-- Correction de problèmes d'encodage UTF-8 dans l'analyse des emails. [#656](https://github.com/suitenumerique/messages/issues/656)
-- Amélioration de la logique d'importation des fichiers PST.
-- Correction de bugs d'affichage de l'en-tête du panneau de threads.
-- Correction de problèmes de superposition de fenêtres contextuelles d'étiquettes.
-- Ajout d'informations sur le délai de propagation DNS.
-- Possibilité de spécifier un ID de canal pour le widget de feedback.
+- **Documentation :** Suppression des champs de modèle dépréciés.
+- **Développement :** Ajout de `defusedxml` comme dépendance [#677](https://github.com/suitenumerique/messages/issues/677).
+- **Frontend :** Amélioration de l'interface utilisateur, notamment pour la composition des messages et la gestion des panneaux.
+- **Correction :** Correction de l'affichage des événements récurrents avec exceptions [#686](https://github.com/suitenumerique/messages/issues/686).
+- **CalDAV :** Utilisation de l'email OIDC au lieu de l'email de la boîte aux lettres [#679](https://github.com/suitenumerique/messages/issues/679).
