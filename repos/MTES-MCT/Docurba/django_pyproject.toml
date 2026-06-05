@@ -6,13 +6,18 @@ requires-python = ">=3.13"
 dependencies = [
     "django",
     "django-environ",
-    "django-revproxy",
+    "django-filter",
     "gunicorn[gevent]",
     "psycopg[binary,pool]",
     "sentry-sdk[django]",
-    "whitenoise[brotli]",
     "django-datadog-logger", # https://github.com/namespace-ee/django-datadog-logger
     "djangorestframework>=3.17.1",
+    "supabase>=2.30.0",
+]
+
+[project.optional-dependencies]
+deploy = [
+    "supervisor>=4.3.0", # https://www.supervisord.org/index.html : manage nginx & gunicorn processes
 ]
 
 # Scalingo command: `uv sync --locked --no-default-groups`
@@ -21,6 +26,7 @@ dev = [
     "django-browser-reload",
     "django-debug-toolbar",
     "django-extensions",
+    "django-cors-headers",
     "ptpython",
     "pytest-cov",
     "pytest>=9.0.3",
