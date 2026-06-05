@@ -1,0 +1,43 @@
+{
+  "name": "fi-example",
+  "version": "0.0.17",
+  "main": "lib/server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/france-connect/identity-provider-example"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --ignore bin/ --copy-files",
+    "dev": "node ./bin/www",
+    "start": "[ -d ./lib ] && node ./lib/app.js || echo 'Error: Directory `./lib` is missing.\nUse `npm run build` to build app for production.\nUse `npm run dev` for development.'",
+    "test": "NODE_ENV=test mocha -R spec ./test/* --exit --require babel-polyfill --require babel-register",
+    "lint": "eslint test/ src/",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "cookie-parser": "~1.4.3",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "helmet": "^3.21.2",
+    "lodash": "^4.17.19",
+    "morgan": "~1.9.0",
+    "node-csv-query": "^0.1.0",
+    "oidc-provider": "^4.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "^1.3.1",
+    "mocha": "^5.2.0"
+  }
+}
