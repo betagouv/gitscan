@@ -273,6 +273,7 @@
     │   │   │   ├── 0017_file.py
     │   │   │   ├── 0018_rename_active_application_is_active.py
     │   │   │   ├── 0019_user_unique_email_when_sub_is_null.py
+    │   │   │   ├── 0020_alter_file_upload_state.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -445,7 +446,6 @@
     ├── frontend
     │   ├── .env.development
     │   ├── .env.production
-    │   ├── .eslintrc.cjs
     │   ├── .gitignore
     │   ├── .prettierrc
     │   ├── @types
@@ -454,6 +454,7 @@
     │   ├── Dockerfile
     │   ├── README.md
     │   ├── default.conf
+    │   ├── eslint.config.js
     │   ├── i18next-parser.config.json
     │   ├── index.html
     │   ├── package-lock.json
@@ -611,6 +612,8 @@
     │   │   │   │   ├── NotificationProvider.tsx
     │   │   │   │   ├── NotificationType.ts
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── StyledToast.tsx
+    │   │   │   │   │   ├── StyledToastContainer.tsx
     │   │   │   │   │   ├── Toast.tsx
     │   │   │   │   │   ├── ToastAnyRecording.tsx
     │   │   │   │   │   ├── ToastJoined.tsx
@@ -1020,6 +1023,7 @@
     │   │   │   ├── Select.tsx
     │   │   │   ├── Separator.tsx
     │   │   │   ├── Spinner.tsx
+    │   │   │   ├── StyledPopover.tsx
     │   │   │   ├── Switch.tsx
     │   │   │   ├── Tabs.tsx
     │   │   │   ├── Text.tsx
@@ -1251,28 +1255,29 @@
         │   │   ├── user_assign.py
         │   │   └── webhook_service.py
         │   └── main.py
-        └── tests
-            ├── __init__.py
-            ├── api
-            │   ├── __init__.py
-            │   ├── test_api_health.py
-            │   ├── test_api_tasks.py
-            │   └── test_api_tasks_v2.py
-            ├── assets
-            │   ├── audio-sample-android-chrome.webm
-            │   ├── audio-sample-android-firefox.ogg
-            │   ├── audio-sample-android.m4a
-            │   ├── audio-sample-chromium.webm
-            │   ├── audio-sample-firefox.ogg
-            │   ├── audio-sample-ios-browser.webm
-            │   ├── audio-sample-ios.m4a
-            │   ├── audio-sample-mac-os-safari.webm
-            │   └── video-sample-visio.mp4
-            ├── conftest.py
-            ├── models
-            │   ├── __init__.py
-            │   └── test_whisper_x_response.py
-            └── unit
-                ├── test_file_service.py
-                └── test_user_assign.py
-240 directories, 1037 files
+        ├── tests
+        │   ├── __init__.py
+        │   ├── api
+        │   │   ├── __init__.py
+        │   │   ├── test_api_health.py
+        │   │   ├── test_api_tasks.py
+        │   │   └── test_api_tasks_v2.py
+        │   ├── assets
+        │   │   ├── audio-sample-android-chrome.webm
+        │   │   ├── audio-sample-android-firefox.ogg
+        │   │   ├── audio-sample-android.m4a
+        │   │   ├── audio-sample-chromium.webm
+        │   │   ├── audio-sample-firefox.ogg
+        │   │   ├── audio-sample-ios-browser.webm
+        │   │   ├── audio-sample-ios.m4a
+        │   │   ├── audio-sample-mac-os-safari.webm
+        │   │   └── video-sample-visio.mp4
+        │   ├── conftest.py
+        │   ├── models
+        │   │   ├── __init__.py
+        │   │   └── test_whisper_x_response.py
+        │   └── unit
+        │       ├── test_file_service.py
+        │       └── test_user_assign.py
+        └── uv.lock
+240 directories, 1042 files
