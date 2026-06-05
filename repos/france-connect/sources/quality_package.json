@@ -1,0 +1,84 @@
+{
+  "root": true,
+  "name": "fc-system-testing",
+  "version": "1.0.0",
+  "description": "Cypress/Cucumber Framework Dependencies",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "data",
+      "fcp",
+      "partners",
+      "plugins",
+      "scripts"
+    ]
+  },
+  "keywords": [
+    "Cypress",
+    "QA",
+    "Cucumber"
+  ],
+  "engines": {
+    "node": ">=22",
+    "npm": "DO-NOT-USE-NPM"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@badeball/cypress-cucumber-preprocessor": "24.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "@elastic/elasticsearch": "^9.0.1",
+    "@simonsmith/cypress-image-snapshot": "^10.0.3",
+    "amqplib": "^0.10.9",
+    "axe-core": "^4.11.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.3",
+    "commander": "^14.0.2",
+    "csv-parser": "^3.2.0",
+    "cypress": "15.8.2",
+    "cypress-axe": "^1.7.0",
+    "cypress-maildev": "^1.3.5",
+    "cypress-on-fix": "^1.1.0",
+    "cypress-plugin-api": "^2.11.2",
+    "ejs": "^3.1.10",
+    "esbuild": "^0.27.2",
+    "jose": "^6.1.3",
+    "luxon": "^3.7.2",
+    "mongodb": "^6.21.0",
+    "otplib": "^12.0.1",
+    "postgres": "^3.4.8"
+  },
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
+    "@eslint/compat": "^1.4.0",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.22.0",
+    "@types/amqplib": "^0.10.7",
+    "@types/ejs": "^3.1.2",
+    "@types/jest": "^30.0.0",
+    "@types/luxon": "^3.3.1",
+    "@types/node": "^22.18.8",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.48.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-chai-friendly": "^1.1.0",
+    "eslint-plugin-cypress": "^5.2.1",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-sort-destructure-keys": "^2.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "globals": "^16.0.0",
+    "jest": "^30.2.0",
+    "jest-extended": "^7.0.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "prettier": "^3.7.4",
+    "ts-jest": "^29.4.4",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "prettier": "prettier --no-parallel --experimental-cli -c \"{.,data,fcp,partners,plugins,scripts}/{.,cypress,scripts}/**/*.ts\" --config-path .prettierrc",
+    "lint": "eslint --concurrency=off '**/*.ts'",
+    "test": "jest"
+  }
+}
