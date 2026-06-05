@@ -1,23 +1,36 @@
-## Changelog : monitorenv (30 derniers jours, au 26 mai 2026)
+## Changelog : monitorenv (30 derniers jours, au 3 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur, notamment au niveau de la gestion des tags, des zones de vigilance et des missions. Des corrections de données et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les améliorations se concentrent sur l'interface utilisateur et la gestion des données, notamment au niveau des zones de vigilance et des aires réglementaires. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application. L'ajout de tags et la refonte de certains composants contribuent à une meilleure organisation et accessibilité des informations.
 
 ### Évolutions fonctionnelles
-- **Tags :** Création d'un backoffice pour la gestion des tags et affichage des tags dans l'interface utilisateur. Possibilité de filtrer les couches de la carte par tags [#29fd525](https://github.com/MTES-MCT/monitorenv/pulls/29fd525).
-- **Zones de vigilance :** Amélioration de l'affichage du planning des zones de vigilance en vue liste, avec ajout d'infobulles pour les périodes [#9f3c08d](https://github.com/MTES-MCT/monitorenv/pulls/9f3c08d). Correction du nom de la source de l'unité de contrôle sur le survol [#4c8b7b3](https://github.com/MTES-MCT/monitorenv/pulls/4c8b7b3).
-- **Missions :** Refonte de la table des missions pour la rendre extensible, avec affichage des tags associés et des actions environnementales [#d225a21](https://github.com/MTES-MCT/monitorenv/pulls/d225a21). Ajout d'un bouton de réinitialisation dans les modales de mission, de reporting et de tableau de bord [#153e04a](https://github.com/MTES-MCT/monitorenv/pulls/153e04a).
-- **Cartographie :** Correction de la requête de recherche dans l'input de la carte [#ad1ef22](https://github.com/MTES-MCT/monitorenv/pulls/ad1ef22).
-- **Données CACEM :** Correction de la gestion des hachages CACEM [#dc4b4a5](https://github.com/MTES-MCT/monitorenv/pulls/dc4b4a5).
+- Ajout de la possibilité de mettre le focus sur une ligne lors d'un clic dans les tableaux de données.
+- Amélioration du filtrage des ressources `controlUnit` par rapport aux ressources de contrôle de mission [#1234](https://github.com/MTES-MCT/monitorenv/issues/1234).
+- Correction de l'affichage du nom de la source `controlUnit` dans le survol des zones de vigilance.
+- Implémentation de la création et de l'affichage de tags dans l'interface backoffice.
+- Ajout d'une table éditable avec un formulaire et un rechargement des données lors de la sauvegarde.
+- Affichage du planning dans une vue liste pour les zones de vigilance.
+- Ajout d'un infobulle pour la période sur le planning des zones de vigilance.
+- Correction de l'affichage des notes sur la timeline des missions.
+- Correction des filtres de tags dans la recherche de couches.
+- Amélioration de l'affichage des périodes dans la liste des zones de vigilance, notamment en termes d'accessibilité.
+- Ajout d'un cercle indiquant la période dans le nom des lignes des zones de vigilance et correction de l'interface utilisateur dans la ligne étendue.
 
 ### Évolutions techniques
-- **Node et NPM :** Mise à niveau vers Node 24 et NPM 11 [#84ee855](https://github.com/MTES-MCT/monitorenv/pulls/84ee855).
-- **Dépendances :** Mise à jour de plusieurs dépendances frontend (Cypress, @sentry/browser, ol-mapbox-style, etc.) et pipeline (python-dotenv, pytest, cryptography, black) via Dependabot.
-- **Tests :** Ajout de tests E2E pour les tags et les zones réglementaires [#9ca8ed3](https://github.com/MTES-MCT/monitorenv/pulls/9ca8ed3). Corrections de tests unitaires et E2E.
-- **Architecture :** Refactorisation de MonthBox [#f4e7cc7](https://github.com/MTES-MCT/monitorenv/pulls/f4e7cc7). Suppression de code obsolète pour les zones réglementaires [#f92eefc](https://github.com/MTES-MCT/monitorenv/pulls/f92eefc).
-- **CI/CD :** Configuration de Dependabot pour exclure `package.lock` et désactiver le rebase automatique [#22391f0](https://github.com/MTES-MCT/monitorenv/pulls/22391f0) et [#5ec9a44](https://github.com/MTES-MCT/monitorenv/pulls/5ec9a44).
+- Mise à jour de Node.js vers la version 24 et de npm vers la version 11, avec ajout de logs pour les tests RGAA.
+- Refactorisation du composant `MonthBox`.
+- Correction de problèmes de typage suite à la mise à jour des dépendances.
+- Suppression de code obsolète pour les aires réglementaires.
+- Amélioration du flux de mise à jour des aires réglementaires environnementales.
+- Suppression des flux de mise à jour des thèmes et des tags depuis le CACEM.
+- Suppression des anciennes tables et correction des données de test pour les aires réglementaires.
+- Correction de requêtes SQL pour les hashes CACEM.
+- Suppression du trigger de mise à jour du hash des lignes des aires réglementaires.
 
 ### Autres changements
-- **Documentation :** Correction d'une faute de frappe dans le README [#5bd4eb4](https://github.com/MTES-MCT/monitorenv/pulls/5bd4eb4).
-- **Accessibilité :** Amélioration de l'accessibilité de la liste des périodes dans les zones de vigilance [#83c688b](https://github.com/MTES-MCT/monitorenv/pulls/83c688b).
-- **Divers :** Ajout de colonnes liées à la plongée pour les contrôles conchylicoles [#29b6535](https://github.com/MTES-MCT/monitorenv/pulls/29b6535). Correction de l'icône UI [#a5d8c0b](https://github.com/MTES-MCT/monitorenv/pulls/a5d8c0b).
+- Correction de fautes de frappe dans le fichier README.
+- Correction de tests unitaires et E2E.
+- Suppression de code inutile.
+- Mise à jour des icônes de l'interface utilisateur.
+- Mise à jour du survol des zones de vigilance.
+- Correction de la variable name.
