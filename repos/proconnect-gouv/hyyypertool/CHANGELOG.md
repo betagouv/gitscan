@@ -1,5 +1,56 @@
 # Changelog
 
+## [2026.6.1](https://github.com/proconnect-gouv/hyyypertool/compare/2026.6.0...2026.6.1) (2026-06-04)
+
+### Changements
+
+- 💬 Corrige coquille dans email automatique + ajoute "ProConnect" devant lien ProConnect Identité
+- ✨ Ajoute un lien sur l'email d'un membre de l'organisation qui vers le profil du membre
+
+### Ajouté
+
+- ✨ Add end_user_reason and allow_editing fields to moderation (#1652) (71b4d380)
+- ✨ Make member email a link to user profile (#1653) (e8ab071b)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump oxc-parser (#1659) (a8456778)
+- :arrow_upper_right: [patch](deps): Bump cypress-io/github-action (#1655) (19db1c6a)
+- :arrow_upper_right: [patch](deps): Bump actions/checkout (#1656) (192a8f50)
+- :arrow_upper_right: [patch](deps): Bump hono from 4.12.21 to 4.12.23 (#1660) (97ce6566)
+- :arrow_upper_right: [patch](deps): Bump the sentry group with 4 updates (#1658) (438d5e40)
+- :arrow_upper_right: [patch](deps): Bump tsx from 4.21.0 to 4.22.3 (#1648) (9c68391d)
+
+### Divers
+
+- 💬 Corrects typo in the automated email (#1654) (bf09e6d7)
+- ↗️ [patch](deps): Bump preact-render-to-string from 6.6.7 to 6.7.0 (#1645) (6720a912)
+
+## [2026.6.0](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.12...2026.6.0) (2026-06-01)
+
+### Ajouté
+
+- ✨ create-island: add children support (#1641) (0c4d3831)
+- ✨ create-island: add children support (74087f04)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump @proconnect-gouv/proconnect.identite (#1643) (a7fe42c3)
+
+### Divers
+
+- 📦️ Upgrade @proconnect-gouv/proconnect.identite (#1651) (4be473ce)
+- Revert "✨ create-island: add children support" (e4664e76)
+- ↗️ [patch](deps): Bump hono from 4.12.18 to 4.12.21 (#1644) (678569aa)
+- ↗️ [patch](deps-dev): Bump typescript from 6.0.2 to 6.0.3 (#1642) (9e53015d)
+- ↗️ [patch](deps): Bump pg from 8.20.0 to 8.21.0 (#1639) (eb396231)
+- ↗️ [patch](deps): Bump preact from 10.29.1 to 10.29.2 (#1637) (2aff0e53)
+- ↗️ [patch](deps): Bump openid-client from 6.8.2 to 6.8.4 (#1640) (7318dd2f)
+- ↗️ [patch](deps): Bump tailwind-merge from 3.5.0 to 3.6.0 (#1638) (9241f2a9)
+- ↗️ [patch](deps): Bump @preact/signals-core from 1.13.0 to 1.14.2 (#1635) (2b36e760)
+- ↗️ [patch](deps): Bump zod from 4.3.6 to 4.4.3 (#1614) (5c03b042)
+- ↗️ [patch](deps-dev): Bump prettier-plugin-gherkin from 3.1.3 to 4.0.0 (#1636) (f16c91e5)
+
 ## [2026.5.12](https://github.com/proconnect-gouv/hyyypertool/compare/2026.5.11...2026.5.12) (2026-05-28)
 
 ### Dépendances
