@@ -68,6 +68,7 @@
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
+│   │   ├── 20260526_backfill_carcasse_svi_closed_at.sql
 │   │   ├── 251203-clean-old-users.js
 │   │   ├── copy-schema-to-app-side.js
 │   │   ├── fill-ccg-db.ts
@@ -80,6 +81,7 @@
 │   │       └── seed-villettes-preprod.ts
 │   ├── src
 │   │   ├── __tests__
+│   │   │   ├── carcasse-side-effects.test.ts
 │   │   │   ├── cronjob-feis.test.ts
 │   │   │   ├── entite-partenaires.test.ts
 │   │   │   ├── entite-working-for.test.ts
@@ -164,6 +166,7 @@
 │   │   ├── cronjobs
 │   │   │   ├── feis.ts
 │   │   │   ├── index.ts
+│   │   │   ├── relance-inscription.ts
 │   │   │   └── utils.ts
 │   │   ├── data
 │   │   │   └── departements-regions.json
@@ -198,8 +201,7 @@
 │   │   │   ├── brevo.ts
 │   │   │   ├── matomo.ts
 │   │   │   ├── sendToTchap.ts
-│   │   │   ├── sentry.ts
-│   │   │   └── tipimail.ts
+│   │   │   └── sentry.ts
 │   │   ├── types
 │   │   │   ├── assets.d.ts
 │   │   │   ├── carcasse.ts
@@ -220,12 +222,15 @@
 │   │       ├── disease-suspicions.ts
 │   │       ├── federation-stats.ts
 │   │       ├── fei-side-effects.ts
+│   │       ├── format-inscription-email.ts
 │   │       ├── formatCarcasseEmail.ts
 │   │       ├── generate-certificats.ts
 │   │       ├── get-carcasse-status.ts
 │   │       ├── invite-user.ts
+│   │       ├── is-carcasse-done.ts
 │   │       ├── refreshMaterializedViews.ts
 │   │       ├── sanitize.ts
+│   │       ├── send-onboarding-email.ts
 │   │       ├── sort-things-by-type-and-id.server.ts
 │   │       ├── sync-carcasse-intermediaire.ts
 │   │       ├── sync-carcasse-modification-request.ts
@@ -674,6 +679,7 @@
 │   │   │   ├── laptop-scene-2.webp
 │   │   │   ├── morceaux-de-viande.webp
 │   │   │   └── testimonials-bg.webp
+│   │   ├── logo-zacharie.png
 │   │   ├── logo_zacharie.svg
 │   │   ├── logo_zacharie_solo.svg
 │   │   ├── logo_zacharie_solo_small.svg
@@ -730,11 +736,13 @@
 │   │   │   ├── BottomNavigation.tsx
 │   │   │   ├── CCGNouveau.tsx
 │   │   │   ├── CarcasseModificationRequest.tsx
+│   │   │   ├── CarcassesEspeceSummary.tsx
 │   │   │   ├── CardCarcasse.tsx
 │   │   │   ├── CardCarcasseSvi.tsx
 │   │   │   ├── CardFiche.tsx
 │   │   │   ├── Chargement.tsx
 │   │   │   ├── CollapsibleSection.tsx
+│   │   │   ├── CompteEnAttenteValidation.tsx
 │   │   │   ├── ConfirmModal.tsx
 │   │   │   ├── ConnexionButton.tsx
 │   │   │   ├── DateHeureValidationAlerts.tsx
@@ -766,6 +774,7 @@
 │   │   │   ├── RootDisplay.tsx
 │   │   │   ├── SchemaPros.tsx
 │   │   │   ├── SchemaProsMobile.tsx
+│   │   │   ├── ScrollToTop.tsx
 │   │   │   ├── SearchInput.tsx
 │   │   │   ├── Section.tsx
 │   │   │   ├── SelectCustom.tsx
@@ -816,6 +825,8 @@
 │   │   │   │   ├── entities.tsx
 │   │   │   │   ├── entity-$entityId.tsx
 │   │   │   │   ├── entity-nouvelle.tsx
+│   │   │   │   ├── fei-detail.tsx
+│   │   │   │   ├── feis.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── lesions.tsx
 │   │   │   │   ├── quiz.tsx
@@ -926,6 +937,7 @@
 │   │   │   │   ├── etg-layout.tsx
 │   │   │   │   ├── etg-navigation-menu.ts
 │   │   │   │   ├── etg-router.tsx
+│   │   │   │   ├── etg-utilisateurs.tsx
 │   │   │   │   ├── onboarding
 │   │   │   │   │   ├── 1-coordonnees.tsx
 │   │   │   │   │   └── 2-entreprise.tsx
@@ -1023,8 +1035,10 @@
 │   │   │   ├── get-fei-sorted.ts
 │   │   │   ├── get-landing-page-navigation-menu.ts
 │   │   │   ├── get-ongoing-cell.tsx
+│   │   │   ├── get-saison.ts
 │   │   │   ├── get-user-roles-label.ts
 │   │   │   ├── get-vulgarisation-saisie.ts
+│   │   │   ├── is-carcasse-done.ts
 │   │   │   ├── lesions.ts
 │   │   │   ├── load-carcasses.ts
 │   │   │   ├── load-data.ts
@@ -1068,7 +1082,8 @@
 │   │   ├── img1.png
 │   │   ├── img2.png
 │   │   └── project_overview.md
-│   └── remix pwa offline
+│   ├── remix pwa offline
+│   └── trichine.md
 ├── e2e
 │   ├── .gitignore
 │   ├── .npmrc
@@ -1302,4 +1317,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-318 directories, 986 files
+318 directories, 1001 files
