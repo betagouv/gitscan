@@ -1,31 +1,45 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 02 juin 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 05 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur pour l'administration des notifications, notamment avec l'ajout de nouvelles fonctionnalités pour la gestion des utilisateurs et l'envoi de notifications. Des travaux importants ont également été réalisés sur la réplication de la base de données et l'intégration de FranceConnect. Enfin, des corrections et optimisations diverses ont été apportées pour améliorer la stabilité et la performance de l'API.
+Les dernières mises à jour de l'API ami-notifications-api se concentrent sur l'amélioration de l'expérience utilisateur de l'application mobile interministérielle (AMI), notamment en permettant une gestion plus fine des préférences de localisation et des notifications. Des travaux importants ont également été réalisés sur l'administration des utilisateurs et la réplication de la base de données. Enfin, des améliorations techniques ont été apportées pour la sécurité et la maintenance du code.
 
 ### Évolutions fonctionnelles
-- **Gestion des utilisateurs (Agent Admin):** Ajout de vues pour la recherche, la consultation des détails, la suppression et la création d'utilisateurs. Des audits sont désormais enregistrés pour les actions de consultation et de suppression d'utilisateurs. [#774](https://github.com/numerique-gouv/ami-notifications-api/issues/774)
-- **Notifications:** Possibilité de demander l'envoi de notifications en tant que partenaire AMI. Ajout de messages d'erreur plus clairs en cas d'échec. [#773](https://github.com/numerique-gouv/ami-notifications-api/issues/773)
-- **OTV (Objectifs de Travail):** Amélioration de la gestion de la date dans les notifications OTV, avec une date par défaut si nécessaire et un paramètre de date correct. [#852](https://github.com/numerique-gouv/ami-notifications-api/issues/852)
-- **Préférences de zone:** Navigation vers les préférences de zone lors de la première connexion. [#788](https://github.com/numerique-gouv/ami-notifications-api/issues/788)
-- **Déconnexion:** Désactivation des notifications lors de la déconnexion. [#721](https://github.com/numerique-gouv/ami-notifications-api/issues/721)
-- **Toasts:** Amélioration de l'affichage des toasts (messages d'information) pour une meilleure expérience utilisateur. [#723](https://github.com/numerique-gouv/ami-notifications-api/issues/723)
-- **Autocomplete:** Ajout d'un champ d'autocomplete pour la recherche d'identifiants FranceConnect. [#773](https://github.com/numerique-gouv/ami-notifications-api/issues/773)
+- **Gestion des préférences de localisation :** Amélioration significative de la gestion des zones et des adresses dans l'application mobile :
+    - Possibilité de supprimer une adresse depuis les préférences (#789).
+    - Ajout de la recherche de villes au format BAN (#789).
+    - Sélection de zone par ville (#789).
+    - Affichage et gestion des zones de vacances (#802).
+    - Navigation vers les préférences de zone lors de la première connexion (#788).
+- **Notifications :**
+    - Mise à jour du lien des notifications pour rediriger vers la page de suivi correspondante (#794).
+    - Désactivation des notifications lors de la déconnexion (#721).
+- **Administration des utilisateurs :**
+    - Ajout de vues et d'une logique pour la recherche, la consultation et la suppression d'utilisateurs dans l'interface d'administration (#774).
+    - Ajout d'entrées d'audit pour les actions de consultation et de suppression d'utilisateurs (#774).
+- **Notifications planifiées :**
+    - Ajout du champ `content_private_body` aux modèles de notification et de suivi pour permettre le stockage d'informations sensibles (#875).
+    - Amélioration de l'interface pour la gestion des notifications planifiées, notamment la gestion de la date (#852).
+- **FranceConnect et FISession :** Implémentation d'un nouveau flux d'authentification avec FranceConnect et gestion des sessions FISession (#708).
 
 ### Évolutions techniques
-- **Réplication de la base de données:** Travaux importants sur la réplication de la base de données, incluant la gestion des identifiants, l'ajout de commandes de migration et l'amélioration de la journalisation. [#791](https://github.com/numerique-gouv/ami-notifications-api/issues/791)
-- **Mise à jour Django:** Mise à jour de Django vers la version 6.0.5.
-- **Sécurité:** Utilisation de `mkcert` pour la gestion des certificats SSL locaux.
-- **Environnement:** Chargement de la variable d'environnement `DEBUG` à partir du fichier `.env.local`.
-- **Optimisation:** Limitation du stockage des enregistrements de registration pour un même appareil mobile. [#893](https://github.com/numerique-gouv/ami-notifications-api/issues/893)
-- **Refactoring:** Suppression du code lié à la fonctionnalité "requests enabled" qui n'est plus utilisée. [#823](https://github.com/numerique-gouv/ami-notifications-api/issues/823)
-- **Architecture Frontend:** Introduction d'un composant `PageWrapper` pour uniformiser la structure des pages et gérer le header. [#801](https://github.com/numerique-gouv/ami-notifications-api/issues/801)
-- **Route replication:** Routage des accès à la base de données de réplication vers le datawarehouse. [#904](https://github.com/numerique-gouv/ami-notifications-api/issues/904)
+- **Réplication de la base de données :** Mise en place d'un mécanisme de réplication de la base de données vers un datawarehouse (#904, #791).
+- **Sécurité :**
+    - Utilisation de `mkcert` pour la gestion des certificats SSL locaux (#828).
+    - Suppression du `target="_self"` dans le code Svelte pour améliorer la sécurité (#877).
+- **Infrastructure :**
+    - Chargement de la variable d'environnement `DEBUG` à partir du fichier `.env.local` (#905).
+    - Amélioration de la gestion des certificats SSL pour les environnements locaux.
+- **Refactoring et maintenance :**
+    - Suppression de code obsolète et de fonctionnalités inutilisées (#823).
+    - Amélioration de la structure du code et de la lisibilité.
+    - Mise à jour de plusieurs dépendances (uv, twisted, urllib3, svelte, vitest, idna, ujson, @sveltejs/kit, ws).
+    - Suppression d'un champ inutile dans le modèle `ScheduledNotification` (#914).
 
 ### Autres changements
-- **Documentation:** Renommage des textes d'aide pour les notifications planifiées. [#708](https://github.com/numerique-gouv/ami-notifications-api/issues/708)
-- **FranceConnect (FI):** Ajout de la gestion de la session FranceConnect, incluant l'authentification, l'autorisation, la gestion des cookies et la déconnexion. [#708](https://github.com/numerique-gouv/ami-notifications-api/issues/708)
-- **Nettoyage de code:** Suppression d'un dossier `.claude` inutile.
-- **Configuration:** Mise à jour de la variable d'environnement `PUBLIC_FC_PROXY_BASE_URL`.
-- **Matomo:** Ajout du suivi des zones de vacances sur Matomo. [#750](https://github.com/numerique-gouv/ami-notifications-api/issues/750)
-- **Suppression d'un revert:** Suppression d'un revert inutile sur le modèle `ScheduledNotification`. [#914](https://github.com/numerique-gouv/ami-notifications-api/issues/914)
+- Amélioration des messages de confirmation (toasts) et des bannières (#723).
+- Ajout de tests et correction de bugs mineurs.
+- Mise à jour de la documentation.
+- Amélioration du logging.
+- Ajout de suivi Matomo pour les zones de vacances (#750).
+- Amélioration de la mise en page du bouton "gérer" dans l'écran des notifications (#874).
+- Ajout d'un composant `PageWrapper` pour une mise en page cohérente (#801).

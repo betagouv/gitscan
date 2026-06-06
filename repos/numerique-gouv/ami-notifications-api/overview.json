@@ -1,17 +1,21 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push pour les clients web et mobiles.",
+  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push. Elle fournit des points d'entrée pour ces opérations.",
   "language": "Python",
   "features": [
     "Notifications",
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "postgresql",
     "asyncpg",
+    "uv",
+    "ruff",
+    "Biome",
     "webpush",
     "mozilla-django-oidc",
     "firebase-admin"
@@ -20,7 +24,8 @@
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django"
+    "Django",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -32,8 +37,10 @@
     ]
   },
   "tests": "Pytest",
-  "workflows": [],
-  "lastActivity": "2026-06-02T16:16:38+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-05T10:54:03+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -44,10 +51,10 @@
     "openIssues": null
   },
   "tags": [
-    "Notifications",
-    "Sécurité & Conformité",
+    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
-    "Django",
-    "API & Intégrations"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
