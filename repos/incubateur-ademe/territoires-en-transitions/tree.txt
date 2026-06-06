@@ -377,7 +377,8 @@
 │   │   │   │   │   │   │       │   └── badge-acces.tsx
 │   │   │   │   │   │   │       ├── default.tsx
 │   │   │   │   │   │   │       ├── layout.tsx
-│   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │       └── users-header.tsx
 │   │   │   │   │   │   ├── accueil
 │   │   │   │   │   │   │   ├── _components
 │   │   │   │   │   │   │   │   ├── accueil.page.tsx
@@ -620,7 +621,6 @@
 │   │   │   │   │       │   │   │   ├── EditModal.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurHeader.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurInfos.tsx
-│   │   │   │   │       │   │   │   ├── IndicateurTitle.tsx
 │   │   │   │   │       │   │   │   └── IndicateurToolbar.tsx
 │   │   │   │   │       │   │   ├── IndicateurDetail.tsx
 │   │   │   │   │       │   │   ├── IndicateurLayout.tsx
@@ -1145,7 +1145,6 @@
 │   │   │   │   │   │   │   ├── plan.card.tsx
 │   │   │   │   │   │   │   └── statuts.tsx
 │   │   │   │   │   │   ├── france-icon.svg
-│   │   │   │   │   │   ├── header.tsx
 │   │   │   │   │   │   └── pilote-icon.svg
 │   │   │   │   │   ├── create-plan
 │   │   │   │   │   │   ├── components
@@ -1171,7 +1170,6 @@
 │   │   │   │   │   │   ├── list-plans.empty-card.tsx
 │   │   │   │   │   │   └── plan-card-with-filters.list
 │   │   │   │   │   │       ├── filters.tsx
-│   │   │   │   │   │       ├── index.tsx
 │   │   │   │   │   │       ├── plan-card.list.tsx
 │   │   │   │   │   │       └── sorting-parameters.ts
 │   │   │   │   │   ├── plan-types-to-options.spec.ts
@@ -1664,6 +1662,7 @@
 │   │   │   │   │   │   └── ChartCard.tsx
 │   │   │   │   │   ├── useChartDownloader.ts
 │   │   │   │   │   └── utils.ts
+│   │   │   │   ├── colon.tsx
 │   │   │   │   ├── dropdownLists
 │   │   │   │   │   ├── FichesActionsDropdown
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
@@ -2615,6 +2614,12 @@
 │   │   │   │   │   └── shared
 │   │   │   │   │       └── panier.repository.ts
 │   │   │   │   ├── plans
+│   │   │   │   │   ├── ai-plan-import
+│   │   │   │   │   │   └── generate-import-draft
+│   │   │   │   │   │       ├── __fixtures__
+│   │   │   │   │   │       │   └── sample.pdf
+│   │   │   │   │   │       ├── extract-text.spec.ts
+│   │   │   │   │   │       └── extract-text.ts
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
 │   │   │   │   │   │   └── compute-budget.rules.ts
@@ -2667,11 +2672,12 @@
 │   │   │   │   │   │   ├── factories
 │   │   │   │   │   │   │   ├── create-plan-import-input.factory.spec.ts
 │   │   │   │   │   │   │   └── create-plan-import-input.factory.ts
-│   │   │   │   │   │   ├── import-plan.application-service.ts
+│   │   │   │   │   │   ├── import-excel-plan.application-service.ts
 │   │   │   │   │   │   ├── import-plan.input.ts
 │   │   │   │   │   │   ├── import-plan.module.ts
 │   │   │   │   │   │   ├── import-plan.router.e2e-spec.ts
 │   │   │   │   │   │   ├── import-plan.router.ts
+│   │   │   │   │   │   ├── import-plan.service.ts
 │   │   │   │   │   │   ├── import.errors.ts
 │   │   │   │   │   │   ├── parsers
 │   │   │   │   │   │   │   ├── excel-parser.spec.ts
@@ -3082,6 +3088,8 @@
 │   │   │   │       ├── sous-thematique.table.ts
 │   │   │   │       ├── thematique.service.ts
 │   │   │   │       └── thematique.table.ts
+│   │   │   ├── types
+│   │   │   │   └── pdf-parse-debugging-disabled.d.ts
 │   │   │   ├── users
 │   │   │   │   ├── apikeys
 │   │   │   │   │   ├── apikeys.controller.e2e-spec.ts
@@ -3235,6 +3243,14 @@
 │   │   │       │   ├── sheet-options.models.ts
 │   │   │       │   ├── sheet.module.ts
 │   │   │       │   └── sheet.service.ts
+│   │   │       ├── llm
+│   │   │       │   ├── gemini.repository.ts
+│   │   │       │   ├── llm.errors.ts
+│   │   │       │   ├── llm.module.ts
+│   │   │       │   ├── llm.repository.ts
+│   │   │       │   ├── llm.service.ts
+│   │   │       │   ├── parse-json-response.spec.ts
+│   │   │       │   └── parse-json-response.ts
 │   │   │       ├── log
 │   │   │       │   ├── custom-logger.service.ts
 │   │   │       │   └── log.dto.ts
@@ -6443,6 +6459,14 @@
 │       │   │   ├── InfoActionImpact
 │       │   │   │   ├── InfoActionImpact.tsx
 │       │   │   │   └── index.ts
+│       │   │   ├── PageHeader
+│       │   │   │   ├── EditableTitle.behavior.test.tsx
+│       │   │   │   ├── EditableTitle.tsx
+│       │   │   │   ├── PageHeader.behavior.test.tsx
+│       │   │   │   ├── PageHeader.stories.tsx
+│       │   │   │   ├── PageHeader.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── page-header.context.ts
 │       │   │   ├── layout
 │       │   │   │   ├── FooterTeT.stories.tsx
 │       │   │   │   ├── FooterTeT.tsx
@@ -6523,11 +6547,6 @@
 │       │   │   ├── Divider
 │       │   │   │   ├── Divider.stories.tsx
 │       │   │   │   ├── Divider.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── EditableTitle
-│       │   │   │   ├── EditableTitle.behavior.test.tsx
-│       │   │   │   ├── EditableTitle.stories.tsx
-│       │   │   │   ├── EditableTitle.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── Field
 │       │   │   │   ├── Field.stories.tsx
@@ -6995,4 +7014,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1223 directories, 5972 files
+1228 directories, 5986 files
