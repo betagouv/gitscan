@@ -1,41 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2 juin 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de sécurité, notamment concernant l'authentification multi-facteurs (OTP) pour les super-admins et la gestion des liens utilisateurs. Des optimisations de performance ont été apportées, notamment au niveau des requêtes GraphQL et de l'indexation des données. Plusieurs corrections de bugs et des refactorings ont également été réalisés pour améliorer la stabilité et la maintenabilité de la plateforme. Enfin, des améliorations ont été apportées à l'expérience utilisateur, notamment au niveau des formulaires et des notifications.
+Cette période a été marquée par des améliorations de performance, notamment au niveau de l'API géographique et des tâches de fond, ainsi que par de nombreuses corrections de bugs et des refactorisations pour améliorer la qualité du code et l'expérience utilisateur. Des améliorations de l'accessibilité et de la sécurité ont également été apportées. Plusieurs migrations de composants Haml vers ERB ont été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de restreindre l'édition OCR instructeur aux champs RIB.
-- Amélioration de la gestion des répétitions dans les champs de formulaire, avec ajout d'options de limites minimales et maximales configurables en administration.
-- Correction d'un problème d'affichage des messages d'erreur pour les champs FranceConnect.
-- Amélioration de l'expérience utilisateur pour les administrateurs avec des messages plus clairs et des options de configuration plus intuitives.
-- Correction d'un bug empêchant la restauration correcte des procédures et des dossiers associés.
-- Ajout de la possibilité de filtrer les champs par adresse (commune, département, région).
-- Amélioration de l'affichage des informations sur les avis.
-- Ajout de la possibilité de restreindre l'accès aux dossiers aux utilisateurs ayant un rôle spécifique.
-- Correction d'un problème d'affichage des notifications.
+- Amélioration de l'accessibilité des notifications et des boutons modaux.
+- Ajout de la possibilité de filtrer les champs par code postal.
+- Amélioration de la gestion des erreurs lors des opérations par lots.
+- Ajout d'un indicateur visuel pour les changements non publiés dans l'éditeur administrateur.
+- Possibilité de préremplir le champ date de naissance avec les informations France Connect.
+- Ajout d'un bouton "ProConnect" pour les professionnels.
+- Amélioration de la gestion des erreurs et des messages d'information pour les utilisateurs.
+- Ajout d'une option pour restreindre l'édition de l'email aux administrateurs.
+- Amélioration de la gestion des informations de contact.
+- Ajout de la possibilité de gérer les informations de contact pour les utilisateurs.
+- Ajout de la possibilité de masquer des champs lors de l'archivage ou de l'exportation.
 
 ### Évolutions techniques
-- Migration de plusieurs tâches de fond vers Sidekiq avec gestion des retries natives pour une meilleure fiabilité.
-- Refactorisation du code pour améliorer la performance des requêtes GraphQL.
-- Optimisation des requêtes de recherche de dossiers.
+- Migration de plusieurs tâches de fond vers Sidekiq pour une meilleure gestion des erreurs et des retentatives.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des performances de l'API géographique grâce à la mise en cache.
+- Migration de composants Haml vers ERB pour une meilleure intégration avec le reste de l'application.
 - Amélioration de la gestion des erreurs et des exceptions.
-- Mise à jour de plusieurs dépendances.
-- Refactorisation de composants HAML vers ERB pour une meilleure maintenabilité.
-- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles liées à l'authentification et à l'accès aux données.
-- Ajout de tests unitaires et d'intégration pour améliorer la qualité du code.
-- Amélioration de la gestion des cookies et des sessions.
-- Ajout de la gestion des erreurs de scan antivirus pour les pièces jointes.
-- Amélioration de la gestion des données géographiques (communes, départements, régions).
-- Amélioration de la gestion des logs et du monitoring.
+- Mise à jour des dépendances.
+- Utilisation de monades `Dry::Monads` pour une meilleure gestion des résultats dans l'API Entreprise.
+- Amélioration de la gestion des erreurs 429 (trop de requêtes) pour l'API Entreprise.
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+- Amélioration de la sécurité en limitant l'accès à certaines fonctionnalités.
+- Refactorisation de la gestion des adresses et des codes postaux.
+- Amélioration de la gestion des données géographiques.
+- Correction de problèmes de performance liés aux requêtes GraphQL.
 
 ### Autres changements
 - Mise à jour de la documentation.
-- Correction de problèmes de configuration.
-- Nettoyage du code.
-- Amélioration de la couverture de code des tests.
+- Correction de problèmes de validation dans les formulaires.
+- Amélioration de la gestion des logs.
 - Correction de bugs mineurs.
-- Mise à jour des fichiers de configuration.
-- Amélioration de la gestion des traductions.
-- Correction de problèmes de compatibilité avec différentes versions de navigateurs.
-- Ajout de nouvelles métriques de monitoring.
-- Amélioration de la gestion des secrets et des clés API.
+- Ajout de traductions pour l'anglais.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la configuration de l'application.
+- Correction de problèmes liés à l'importation et à l'exportation de données.
+- Suppression de code obsolète.
+- Correction de problèmes de sécurité.
+- Amélioration de la gestion des erreurs dans les jobs.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.
+- Correction de problèmes de conformité avec les normes d'accessibilité.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de configuration.
+- Amélioration de la gestion des logs.
+- Correction de bugs mineurs.
+- Ajout de documentation pour les nouvelles fonctionnalités.

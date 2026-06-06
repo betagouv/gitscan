@@ -501,7 +501,7 @@
 │   │   │   │   └── row_show_component.fr.yml
 │   │   │   ├── row_show_component.html.erb
 │   │   │   ├── row_show_component.rb
-│   │   │   ├── short_identite_entreprise_component.html.haml
+│   │   │   ├── short_identite_entreprise_component.html.erb
 │   │   │   ├── short_identite_entreprise_component.rb
 │   │   │   ├── user_filter_component
 │   │   │   │   ├── user_filter_component.en.yml
@@ -1763,6 +1763,7 @@
 │   │   │   ├── application_controller.ts
 │   │   │   ├── attestation_controller.ts
 │   │   │   ├── auto_open_modal_controller.ts
+│   │   │   ├── auto_remove_controller.ts
 │   │   │   ├── autofocus_controller.ts
 │   │   │   ├── autoresize_controller.ts
 │   │   │   ├── autosave_controller.ts
@@ -2176,6 +2177,7 @@
 │   │   ├── chorus_configuration.rb
 │   │   ├── column.rb
 │   │   ├── columns
+│   │   │   ├── address_column.rb
 │   │   │   ├── attached_many_column.rb
 │   │   │   ├── champ_column.rb
 │   │   │   ├── dossier_column.rb
@@ -2290,6 +2292,7 @@
 │   │   ├── logic
 │   │   │   ├── and.rb
 │   │   │   ├── binary_operator.rb
+│   │   │   ├── champ_column_value.rb
 │   │   │   ├── champ_value.rb
 │   │   │   ├── constant.rb
 │   │   │   ├── empty.rb
@@ -2892,7 +2895,7 @@
 │       │   └── rna
 │       │       └── show.turbo_stream.erb
 │       ├── commencer
-│       │   └── show.html.haml
+│       │   └── show.html.erb
 │       ├── contact
 │       │   ├── _form.html.haml
 │       │   ├── admin.html.haml
@@ -3120,14 +3123,14 @@
 │       │   │   ├── _email_preferences.html.haml
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _last_export_alert.html.haml
-│       │   │   ├── _notifications_button.html.haml
-│       │   │   ├── _notifications_list.html.haml
+│       │   │   ├── _notifications_disclosure.html.erb
+│       │   │   ├── _notifications_list_body.html.erb
 │       │   │   ├── _tabs.html.haml
 │       │   │   ├── administrateurs.html.haml
 │       │   │   ├── apercu.html.haml
 │       │   │   ├── counters.turbo_stream.erb
 │       │   │   ├── deleted_dossiers.html.haml
-│       │   │   ├── display_notifications.turbo_stream.haml
+│       │   │   ├── display_notifications.turbo_stream.erb
 │       │   │   ├── download_export.turbo_stream.haml
 │       │   │   ├── email_usagers.html.haml
 │       │   │   ├── export_templates.html.haml
@@ -3495,6 +3498,7 @@
 │   └── vite
 ├── bors.toml
 ├── bun.lock
+├── bunfig.toml
 ├── codecov.yml
 ├── config
 │   ├── application.rb
@@ -4515,6 +4519,7 @@
 │   │   ├── 20260504090452_add_partial_index_on_blobs_pending_virus_scan.rb
 │   │   ├── 20260505100000_remove_legacy_otp_columns_from_super_admins.rb
 │   │   ├── 20260515085008_remove_api_particulier_columns_from_procedures.rb
+│   │   ├── 20260519131906_add_message_error_to_dossier_batch_operations.rb
 │   │   ├── 20260520122559_add_naf2025_to_etablissements.rb
 │   │   └── 20260521105001_add_uuid_to_geo_area.rb
 │   ├── schema.rb
@@ -4795,7 +4800,8 @@
 │   │   │   │   ├── message_component_preview.rb
 │   │   │   │   ├── old_identite_entreprise_component_preview.html.haml
 │   │   │   │   ├── old_identite_entreprise_component_preview.rb
-│   │   │   │   └── pending_correction_checkbox_component_preview.rb
+│   │   │   │   ├── pending_correction_checkbox_component_preview.rb
+│   │   │   │   └── short_identite_entreprise_component_preview.rb
 │   │   │   ├── dsfr
 │   │   │   │   ├── radio_button_list_component_preview
 │   │   │   │   │   └── default.html.erb
@@ -5572,6 +5578,7 @@
 │   │   ├── logic
 │   │   │   ├── and_spec.rb
 │   │   │   ├── binary_operator_spec.rb
+│   │   │   ├── champ_column_value_spec.rb
 │   │   │   ├── champ_value_spec.rb
 │   │   │   ├── constant_spec.rb
 │   │   │   ├── empty_operator_spec.rb
@@ -6032,4 +6039,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-965 directories, 5385 files
+965 directories, 5392 files
