@@ -1,94 +1,100 @@
-## Changelog : eva-serveur (30 derniers jours, au 28 mai 2026)
+## Changelog : eva-serveur (30 derniers jours, au 04 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la gestion des structures, notamment avec l'introduction des structures Opco et des modifications sur la recherche et l'invitation de structures. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées, ainsi que des optimisations techniques et des mises à jour de dépendances.
+Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment en matière de recherche et de gestion des structures, avec la suppression de certaines fonctionnalités obsolètes liées à la création et à la recherche de structures. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de l'interface utilisateur pour une meilleure conformité au Design System Fr (DSFR).
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des structures Opco : création, modification, affichage et accès via une nouvelle interface. [#6283553](https://github.com/betagouv/eva-serveur/commit/6283553)
-- Possibilité de filtrer les structures par SIRET, avec une recherche tolérant les espaces.
+- Ajout d'un filtre par SIRET pour les structures, permettant une recherche plus précise. [#7efed90](https://github.com/betagouv/eva-serveur/commit/7efed90)
+- Possibilité de rechercher un SIRET avec des espaces. [#348179c](https://github.com/betagouv/eva-serveur/commit/348179c)
 - Restauration des fonctions d'autocomplétion pour la recherche de compte. [#db01108](https://github.com/betagouv/eva-serveur/commit/db01108)
-- Affichage du SIRET pour toutes les structures.
-- Amélioration de la gestion des invitations : correction des comptes créés en démo et des invitations en attente. [#f1b739f](https://github.com/betagouv/eva-serveur/commit/f1b739f)
-- Ajout d'un indicateur de complétude des évaluations Evapro. [#73f5787](https://github.com/betagouv/eva-serveur/commit/73f5787)
-- Affichage des liens vers les étapes dans les restitutions.
-- Amélioration de l'affichage des restitutions EvaPro.
-- Ajout d'URL officielles pour les compétences transversales.
-- Possibilité de fermer la modale de validation en attente en cliquant sur le fond.
-- Suppression des cadres superflus dans l'interface.
-- Correction de l'affichage de l'index des évaluations pour EvaPro.
+- Reactive l'autocomplete de recherche sur les campagnes privées. [#12743ab](https://github.com/betagouv/eva-serveur/commit/12743ab)
+- Ajout d'URL officielles pour les compétences transversales. [#e3cb723](https://github.com/betagouv/eva-serveur/commit/e3cb723)
+- Possibilité de fermer la modale de validation en attente en cliquant sur le fond. [#d28aa70](https://github.com/betagouv/eva-serveur/commit/d28aa70)
+- Ajout d'une colonne SIRET à la table des comptes. [#0955357](https://github.com/betagouv/eva-serveur/commit/0955357)
 
 ### Évolutions techniques
-- Refactorisation du code pour le formatage du SIRET, avec création d'un helper pour éviter la duplication. [#8821b19](https://github.com/betagouv/eva-serveur/commit/8821b19)
-- Suppression de code mort lié à l'ancien système de rattachement des structures administratives aux Opco.
-- Migration des anciennes migrations de 2025 dans un dossier dédié.
+- Refonte de l'interface utilisateur avec le Design System Fr (DSFR), incluant des corrections de rendu et des mises à jour. [#f71b7c3](https://github.com/betagouv/eva-serveur/commit/f71b7c3), [#28bef9e](https://github.com/betagouv/eva-serveur/commit/28bef9e), [#47555cd](https://github.com/betagouv/eva-serveur/commit/47555cd)
+- Suppression de code obsolète lié à la recherche et à la création de structures, simplifiant ainsi l'application. [#eedceec](https://github.com/betagouv/eva-serveur/commit/eedceec), [#e7fb475](https://github.com/betagouv/eva-serveur/commit/e7fb475), [#d32fe66](https://github.com/betagouv/eva-serveur/commit/d32fe66), [#bbe3e45](https://github.com/betagouv/eva-serveur/commit/bbe3e45), [#aa38103](https://github.com/betagouv/eva-serveur/commit/aa38103), [#8ebe09d](https://github.com/betagouv/eva-serveur/commit/8ebe09d), [#36accb2](https://github.com/betagouv/eva-serveur/commit/36accb2), [#33f48d7](https://github.com/betagouv/eva-serveur/commit/33f48d7)
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité, notamment concernant le formatage du SIRET. [#8821b19](https://github.com/betagouv/eva-serveur/commit/8821b19), [#6a1a910](https://github.com/betagouv/eva-serveur/commit/6a1a910)
 - Mise à jour de la dépendance `jwt` vers la version 3.2.0. [#7ee913d](https://github.com/betagouv/eva-serveur/commit/7ee913d)
-- Mise à jour du DSFR.
-- Suppression de la bibliothèque `geocoder`.
-- Suppression des pages et actions obsolètes liées à la recherche et à la création de structures.
-- Suppression de la méthode `initCopierLienInvitation`.
-- Déplacement des fichiers par type d'évaluation.
-- Création d'un composant Metabase iframe pour les structures.
-- Actualisation des dépendances JS.
-- Suppression de classes CSS inutilisées.
-- Suppression de l'utilisation des utilities Bootstrap au profit du DSFR.
-- Amélioration de la gestion des erreurs et des tests.
+- Suppression de la méthode inutilisée. [#c1faf90](https://github.com/betagouv/eva-serveur/commit/c1faf90)
+- Suppression du code lié à la géolocalisation. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
 
 ### Autres changements
-- Documentation de la variable d'environnement du tableau Metabase des Opco.
-- Correction de linter sur un fichier CSS.
-- Correction de l'affichage des bulles vertes sur les restitutions.
-- Correction du focus des boutons DSFR sur Firefox.
-- Suppression des fichiers `.pgsql` de la gestion de version.
-- Ajout d'un nouveau modèle `StructureOpco`.
-- Correction de l'affichage des actualités.
-- Correction de l'intégration du JS du DSFR.
-- Suppression des fichiers de cartes inutilisés.
-- Correction de l'affichage du menu DSFR.
-- Cache des logs Capybara lors de l'exécution des tests.
-- Ajout de tests pour la génération de codes campagne.
-- Correction de bugs mineurs d'interface utilisateur et de rendu.
-- Suppression des informations de géolocalisation inutilisées.
-- Suppression du bouton "ajouter une structure".
-- Correction de l'affichage des comptes en attente.
-- Suppression de la méthode inutilisée.
-- Suppression de la page admin/sign_up.
-- Correction du lien d'invitation avec structure_id.
-- Correction de l'affichage du lien vers les métiers dans la restitution.
-- Changement de libellé d'un bouton pour éviter un retour à la ligne.
-- Correction de la vue partielle manquante restitution pdf positionnement numeratie.
-- Correction de la position des éléments dans l'interface.
-- Correction de l'affichage des actualités.
-- Correction de l'affichage du menu déroulant.
-- Ajout de commentaires et de documentation.
-- Suppression de la bordure superflue.
-- Correction de l'affichage des invitations en attente.
-- Ajout d'effets de transition et de survol aux cartes incontournables.
-- Création du composant "les incontournables".
-- Suppression de la hauteur fixe et troncature de la description.
-- Correction du DoubleRenderError de nouveaux_comptes_controller.
-- Déplacement du menu « Opérateurs de compétences » dans le menu accompagnement.
-- Correction des tests suite à la montée de version de jwt.
-- Ajout de mailers/structure/invitation_structure.
-- Aligne le breakpoint @media 768px sur celui du DSFR (48em).
-- Permet de générer les PDF en dev.
-- Ajoute les liens vers les etapes.
-- Ajoute des effets de transition et de survol aux cartes incontournables.
-- Crée le composant les incontournables et le place dans la vue.
-- Range par ordre alphabetique les ui_kits.
-- Permet aux incontournables d'etre comme avant dans le pdf.
-- Reactive l'autocomplete de recherche sur les campagne prive.
-- Renomme les svg correctement.
-- Ajoute un test manquant lors de la génération de code campagne.
-- Ne permet plus de générer des codes campagne génants.
-- Corrige margin/padding suite à la suppression des utilities de bootstrap.
-- Renomme les svg correctement.
-- Ajoute les liens vers les etapes.
-- Ajoute des effets de transition et de survol aux cartes incontournables.
-- Crée le composant les incontournables et le place dans la vue.
-- Range par ordre alphabetique les ui_kits.
-- Permet aux incontournables d'etre comme avant dans le pdf.
-- Corrige un test qui échoue aléatoirement.
-- Corrige le rendu de l'index compte sur EvaPro.
-- Corrige l'affichage de l'index des évaluations pour eva pro.
-- Corrige le problème d'affichage sur les restitutions eva.
-- Corrige les classes bootstrap des utilities qui n'ont pas été converties pour utiliser le DSFR.
+- Correction de divers bugs d'affichage et de comportement. [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae), [#93859d4](https://github.com/betagouv/eva-serveur/commit/93859d4), [#0d9bd60](https://github.com/betagouv/eva-serveur/commit/0d9bd60), [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320), [#ee22e3c](https://github.com/betagouv/eva-serveur/commit/ee22e3c), [#0014bd5](https://github.com/betagouv/eva-serveur/commit/0014bd5), [#aebae62](https://github.com/betagouv/eva-serveur/commit/aebae62), [#742eccf](https://github.com/betagouv/eva-serveur/commit/742eccf), [#234ffce](https://github.com/betagouv/eva-serveur/commit/234ffce), [#9f6fb99](https://github.com/betagouv/eva-serveur/commit/9f6fb99), [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b), [#5fc2f93](https://github.com/betagouv/eva-serveur/commit/5fc2f93), [#f3b6b52](https://github.com/betagouv/eva-serveur/commit/f3b6b52), [#292ce1c](https://github.com/betagouv/eva-serveur/commit/292ce1c)
+- Amélioration de la documentation. [#038260f](https://github.com/betagouv/eva-serveur/commit/038260f)
+- Corrections de style et de mise en page. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d), [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0), [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Ajout de tests unitaires et corrections de tests existants. [#234ffce](https://github.com/betagouv/eva-serveur/commit/234ffce), [#fab15c0](https://github.com/betagouv/eva-serveur/commit/fab15c0), [#441e269](https://github.com/betagouv/eva-serveur/commit/441e269)
+- Suppression de l'utilisation de Bootstrap utilities. [#ee22e3c](https://github.com/betagouv/eva-serveur/commit/ee22e3c)
+- Correction d'un `DoubleRenderError`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
+- Ajout d'un composant Metabase iframe. [#323a686](https://github.com/betagouv/eva-serveur/commit/323a686)
+- Correction de l'affichage des actualités. [#0014bd5](https://github.com/betagouv/eva-serveur/commit/0014bd5)
+- Correction du menu déroulant. [#087f6ca](https://github.com/betagouv/eva-serveur/commit/087f6ca)
+- Ajout d'effets de transition et de survol aux cartes incontournables. [#db37918](https://github.com/betagouv/eva-serveur/commit/db37918)
+- Ajout du composant incontournables. [#a57da7c](https://github.com/betagouv/eva-serveur/commit/a57da7c)
+- Correction de l'affichage des évaluations pour Eva Pro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
+- Correction du lien vers l'accueil. [#02cfbb0](https://github.com/betagouv/eva-serveur/commit/02cfbb0)
+- Correction des ouvertures de modales. [#89221aa](https://github.com/betagouv/eva-serveur/commit/89221aa)
+- Correction de l'affichage des bulles vertes. [#292ce1c](https://github.com/betagouv/eva-serveur/commit/292ce1c)
+- Ajout de mailers pour l'invitation de structure. [#66386c2](https://github.com/betagouv/eva-serveur/commit/66386c2)
+- Correction de l'affichage de la page compte sur EvaPro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
+- Correction du rendu des liens dans la restitution. [#20ea8a6](https://github.com/betagouv/eva-serveur/commit/20ea8a6)
+- Correction de l'alignement des breakpoints. [#66386c2](https://github.com/betagouv/eva-serveur/commit/66386c2)
+- Suppression de classes CSS inutilisées. [#2b84131](https://github.com/betagouv/eva-serveur/commit/2b84131)
+- Correction de la gestion des invitations. [#33f48d7](https://github.com/betagouv/eva-serveur/commit/33f48d7)
+- Correction de l'affichage des liens dans la restitution. [#0d9bd60](https://github.com/betagouv/eva-serveur/commit/0d9bd60)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction du libellé d'un bouton. [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320)
+- Correction de la restitution PDF. [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae)
+- Correction de l'erreur `DoubleRenderError`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
+- Correction de la suppression des réponses à l'import. [#79a5bfe](https://github.com/betagouv/eva-serveur/commit/79a5bfe)
+- Correction de la suppression des choix retirés d'une question. [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0)
+- Correction du cas d'un compte dont la structure a été supprimée. [#64ad99c](https://github.com/betagouv/eva-serveur/commit/64ad99c)
+- Correction de l'utilisation de Plausible. [#082e502](https://github.com/betagouv/eva-serveur/commit/082e502)
+- Ajout de la possibilité de générer les PDF en dev. [#e1a4388](https://github.com/betagouv/eva-serveur/commit/e1a4388)
+- Suppression des informations de géoloc. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
+- Correction de l'affichage des cartes de choix d'usage. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction de l'affichage des actualités. [#0014bd5](https://github.com/betagouv/eva-serveur/commit/0014bd5)
+- Correction du menu du DSFR. [#8f08f7d](https://github.com/betagouv/eva-serveur/commit/8f08f7d)
+- Correction de l'intégration du JS du DSFR. [#f71b7c3](https://github.com/betagouv/eva-serveur/commit/f71b7c3)
+- Correction du lien vers l'accueil. [#02cfbb0](https://github.com/betagouv/eva-serveur/commit/02cfbb0)
+- Correction de l'affichage des cartes incontournables. [#db37918](https://github.com/betagouv/eva-serveur/commit/db37918)
+- Correction de l'affichage des évaluations pour eva pro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
+- Correction de l'affichage des bulles vertes. [#292ce1c](https://github.com/betagouv/eva-serveur/commit/292ce1c)
+- Correction de l'affichage des liens dans la restitution. [#0d9bd60](https://github.com/betagouv/eva-serveur/commit/0d9bd60)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction du libellé d'un bouton. [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320)
+- Correction de la restitution PDF. [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae)
+- Correction de l'erreur `DoubleRenderError`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
+- Correction de la suppression des réponses à l'import. [#79a5bfe](https://github.com/betagouv/eva-serveur/commit/79a5bfe)
+- Correction de la suppression des choix retirés d'une question. [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0)
+- Correction du cas d'un compte dont la structure a été supprimée. [#64ad99c](https://github.com/betagouv/eva-serveur/commit/64ad99c)
+- Correction de l'utilisation de Plausible. [#082e502](https://github.com/betagouv/eva-serveur/commit/082e502)
+- Ajout de la possibilité de générer les PDF en dev. [#e1a4388](https://github.com/betagouv/eva-serveur/commit/e1a4388)
+- Suppression des informations de géoloc. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
+- Correction de l'affichage des cartes de choix d'usage. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction du libellé d'un bouton. [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320)
+- Correction de la restitution PDF. [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae)
+- Correction de l'erreur `DoubleRenderError`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
+- Correction de la suppression des réponses à l'import. [#79a5bfe](https://github.com/betagouv/eva-serveur/commit/79a5bfe)
+- Correction de la suppression des choix retirés d'une question. [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0)
+- Correction du cas d'un compte dont la structure a été supprimée. [#64ad99c](https://github.com/betagouv/eva-serveur/commit/64ad99c)
+- Correction de l'utilisation de Plausible. [#082e502](https://github.com/betagouv/eva-serveur/commit/082e502)
+- Ajout de la possibilité de générer les PDF en dev. [#e1a4388](https://github.com/betagouv/eva-serveur/commit/e1a4388)
+- Suppression des informations de géoloc. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
+- Correction de l'affichage des cartes de choix d'usage. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction du libellé d'un bouton. [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320)
+- Correction de la restitution PDF. [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae)
+- Correction de l'erreur `DoubleRenderError`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
+- Correction de la suppression des réponses à l'import. [#79a5bfe](https://github.com/betagouv/eva-serveur/commit/79a5bfe)
+- Correction de la suppression des choix retirés d'une question. [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0)
+- Correction du cas d'un compte dont la structure a été supprimée. [#64ad99c](https://github.com/betagouv/eva-serveur/commit/64ad99c)
+- Correction de l'utilisation de Plausible. [#082e502](https://github.com/betagouv/eva-serveur/commit/082e502)
+- Ajout de la possibilité de générer les PDF en dev. [#e1a4388](https://github.com/betagouv/eva-serveur/commit/e1a4388)
+- Suppression des informations de géoloc. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
+- Correction de l'affichage des cartes de choix d'usage. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d)
+- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
+- Correction du libellé d'un bouton. [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320)
