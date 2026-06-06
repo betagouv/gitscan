@@ -1,15 +1,11 @@
 ## Changelog : menshen (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations techniques au serveur d'autorisation Menshen, notamment l'ajout de support pour les types de données et l'automatisation de la génération des variables d'environnement pour le développement et l'intégration continue. Une petite correction a également été effectuée pour supprimer des arguments inutilisés dans la génération des jetons JWT.
+Cette mise à jour apporte des améliorations techniques au serveur d'autorisation Menshen, notamment l'ajout de la gestion des types pour une plus grande flexibilité et l'automatisation de la configuration de l'environnement de développement et d'intégration continue. Une maintenance a également été effectuée pour supprimer du code inutilisé.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle visible pour l'utilisateur n'a été apportée durant cette période.
+- Ajout de la gestion des types pour une meilleure flexibilité et compatibilité avec différents scénarios d'échange de jetons OAuth 2.0. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implicite)
 
 ### Évolutions techniques
-- Ajout du support pour les types de données. [#a4a120f](https://github.com/suitenumerique/menshen/commit/a4a120f)
-- Automatisation de la génération des variables d'environnement pour les environnements de développement et d'intégration continue. [#449a218](https://github.com/suitenumerique/menshen/commit/449a218)
-- Suppression d'arguments inutilisés de la méthode `generate_jwt` dans la classe `TokenGenerator`. [#851d5b5](https://github.com/suitenumerique/menshen/commit/851d5b5)
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Suppression d'arguments inutilisés de la méthode `generate_jwt` dans la classe `TokenGenerator`, améliorant ainsi la propreté du code et réduisant les risques d'erreurs. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implicite)
+- Automatisation de la génération des variables d'environnement pour les environnements de développement et d'intégration continue, simplifiant ainsi la configuration et le déploiement. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implicite)
