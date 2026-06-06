@@ -351,7 +351,8 @@
 │   ├── 1770980170968_migrate-small-association-to-domain-verification.ts
 │   ├── 1771430997456_remove-null-verification-type-in-email-domains.ts
 │   ├── 1773400846752_add-sp-name-to-moderation-table.ts
-│   └── 1779975576903_add-end-user-reason-and-allow-editing-to-moderations.ts
+│   ├── 1779975576903_add-end-user-reason-and-allow-editing-to-moderations.ts
+│   └── 1780326942627_set-allow-editing-on-rejection-reason-moderations.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -369,7 +370,8 @@
 │   │   │   ├── administration_nature_juridique.json
 │   │   │   ├── administration_siren_blacklist.json
 │   │   │   ├── administration_siren_whitelist.json
-│   │   │   └── administration_whitelist.json
+│   │   │   ├── administration_whitelist.json
+│   │   │   └── operateurs_lolf.json
 │   │   ├── package.json
 │   │   ├── scripts
 │   │   │   ├── build-data.ts
@@ -879,8 +881,10 @@
 │       │   │       │   │   ├── 1*.json  (11 files)
 │       │   │       │   │   ├── 2*.json  (59 files)
 │       │   │       │   │   ├── 31723624800017.json
+│       │   │       │   │   ├── 33156427800017.json
 │       │   │       │   │   ├── 38529030900454.json
 │       │   │       │   │   ├── 39234600300198.json
+│       │   │       │   │   ├── 41782415800014.json
 │       │   │       │   │   ├── 44137965800012.json
 │       │   │       │   │   ├── 45334017600024.json
 │       │   │       │   │   ├── 49430870300052.json
@@ -890,7 +894,7 @@
 │       │   │       │   │   ├── 66204244933106.json
 │       │   │       │   │   ├── 77730636600058.json
 │       │   │       │   │   ├── 79271377800019.json
-│       │   │       │   │   ├── 8*.json  (8 files)
+│       │   │       │   │   ├── 8*.json  (10 files)
 │       │   │       │   │   ├── 94957325700019.json
 │       │   │       │   │   ├── discover.page.tsx
 │       │   │       │   │   └── index.ts
@@ -1073,8 +1077,6 @@
 │   │   ├── is-expired.ts
 │   │   ├── json-parse-with-date.ts
 │   │   ├── log.ts
-│   │   ├── moderation.test.ts
-│   │   ├── moderation.ts
 │   │   ├── must-return-one-organization-in-payload.ts
 │   │   ├── normalize-official-contact-email-verification-token.ts
 │   │   ├── oidc-account-adapter.ts
@@ -1191,4 +1193,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-210 directories, 1062 files
+210 directories, 1066 files
