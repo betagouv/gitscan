@@ -25,6 +25,8 @@
 │   │   │   └── AGENT.md
 │   │   ├── structural-auditor
 │   │   │   └── AGENT.md
+│   │   ├── tu-dev
+│   │   │   └── AGENT.md
 │   │   └── validator
 │   │       └── AGENT.md
 │   ├── hooks
@@ -37,6 +39,7 @@
 │   │   ├── bug-fix-workflow.md
 │   │   ├── code-quality.md
 │   │   ├── database-drizzle.md
+│   │   ├── e2e.md
 │   │   ├── figma-workflow.md
 │   │   ├── git-artefact-hygiene.md
 │   │   ├── github-board.md
@@ -414,6 +417,10 @@
 │   │   │   │   ├── mentions-legales
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── mon-espace
+│   │   │   │   │   ├── historique
+│   │   │   │   │   │   └── [siren]
+│   │   │   │   │   │       └── [year]
+│   │   │   │   │   │           └── page.tsx
 │   │   │   │   │   ├── mes-entreprises
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── page.tsx
@@ -445,6 +452,7 @@
 │   │   │   │   ├── compliance.e2e.ts
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── declaration-cancellation.e2e.ts
+│   │   │   │   ├── declaration-history.e2e.ts
 │   │   │   │   ├── declaration-process-panel.e2e.ts
 │   │   │   │   ├── declaration.e2e.ts
 │   │   │   │   ├── declarationDraft.e2e.ts
@@ -460,6 +468,7 @@
 │   │   │   │   │   ├── db-funnel.ts
 │   │   │   │   │   ├── db.ts
 │   │   │   │   │   ├── declaration-flows.ts
+│   │   │   │   │   ├── declaration-history.ts
 │   │   │   │   │   ├── dsfr.ts
 │   │   │   │   │   ├── login.ts
 │   │   │   │   │   ├── maildev.ts
@@ -845,6 +854,18 @@
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       └── parseStep5Categories.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── declarationHistory
+│   │   │   │   │   ├── DeclarationHistoryPage.tsx
+│   │   │   │   │   ├── HistoryEntry.tsx
+│   │   │   │   │   ├── HistoryListSection.module.scss
+│   │   │   │   │   ├── HistoryListSection.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── DeclarationHistoryPage.test.tsx
+│   │   │   │   │   │   ├── HistoryEntry.test.tsx
+│   │   │   │   │   │   ├── HistoryListSection.test.tsx
+│   │   │   │   │   │   └── eventDisplay.test.ts
+│   │   │   │   │   ├── eventDisplay.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── declarationPdf
 │   │   │   │   │   ├── DeclarationPdfDocument.tsx
 │   │   │   │   │   ├── DownloadDeclarationPdfButton.tsx
@@ -1463,4 +1484,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-255 directories, 1210 files
+261 directories, 1225 files
