@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/datagouv/passemarche",
   "name": "passemarche",
-  "description": "Passe Marché est une application Rails qui simplifie les candidatures aux marchés publics pour les PME en réduisant les formalités administratives et en fournissant des attestations officielles.",
+  "description": "Passe Marché est une application Rails qui simplifie les candidatures aux marchés publics pour les PME en réduisant les formalités administratives et en automatisant l'identification des entreprises.",
   "language": "Ruby",
   "features": [
     "Authentification OAuth",
@@ -15,20 +15,18 @@
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Rails",
     "Ruby",
+    "Rails",
     "PostgreSQL",
+    "Doorkeeper",
+    "Puma",
     "Solid Cable",
     "Solid Cache",
     "Solid Queue",
-    "DSFR",
     "Turbo",
     "Stimulus",
     "Importmap",
-    "Pagy",
-    "PaperTrail",
-    "Devise",
-    "Doorkeeper"
+    "DSFR"
   ],
   "components": [
     "API REST & GraphQL",
@@ -41,13 +39,11 @@
   "auth": {
     "methods": [
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "RSpec",
     "Cucumber",
-    "FactoryBot",
     "Capybara + Selenium"
   ],
   "workflows": [],
@@ -68,7 +64,6 @@
     "Rails",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Gestion documentaire",
-    "Marchés publics"
+    "Déploiement & Hosting"
   ]
 }
