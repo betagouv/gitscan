@@ -2,23 +2,25 @@
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
   "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir un outil pour la gestion et l'analyse des données relatives à la justice.",
-  "language": "JavaScript",
+  "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Visualisation de données & Cartographie",
-    "Statistiques & Rapports",
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "Notifications & Alertes",
+    "Gestion des établissements & Structures",
+    "Aides & Éligibilité",
+    "Suivi & Traçabilité",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Koa",
     "PostgreSQL",
     "Redis",
-    "Node.js",
-    "Koa",
-    "Sequelize",
+    "jsonwebtoken",
     "bcryptjs",
-    "jsonwebtoken"
+    "sequelize",
+    "axios"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,17 +33,16 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "saml"
     ]
   },
   "tests": [
     "Mocha",
     "Cypress"
   ],
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-06-02T18:08:58+02:00",
+  "workflows": [],
+  "lastActivity": "2026-06-05T18:04:04+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,9 +55,10 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "JavaScript",
-    "API & Intégrations",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "TypeScript",
+    "Déploiement & Hosting",
+    "PostgreSQL",
+    "Sécurité & Auth",
+    "JavaScript"
   ]
 }
