@@ -75,7 +75,7 @@
 │   │   │   ├── NGC-2329-20250909.ts
 │   │   │   ├── NGC-2408-20250922.ts
 │   │   │   ├── NGC-3379-20260513.ts
-│   │   │   └── push-database-url-to-site.sh
+│   │   │   └── review-app-postdeploy.sh
 │   │   ├── src
 │   │   │   ├── adapters
 │   │   │   │   ├── 2tonnes
@@ -104,7 +104,6 @@
 │   │   │   │   │   ├── client.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── prisma
-│   │   │   │   │   ├── constant.ts
 │   │   │   │   │   ├── generated.ts
 │   │   │   │   │   ├── selection.ts
 │   │   │   │   │   └── transaction.ts
@@ -145,7 +144,6 @@
 │   │   │   │   ├── ts-rest.ts
 │   │   │   │   └── typeguards
 │   │   │   │       ├── isAuthenticated.ts
-│   │   │   │       ├── isPrismaError.ts
 │   │   │   │       ├── isPromiseAllSettled.ts
 │   │   │   │       ├── isRetryableAxiosError.ts
 │   │   │   │       └── isScalewayError.ts
@@ -326,6 +324,7 @@
 │   │   │   │   │   │   └── SimulationUpserted.event.ts
 │   │   │   │   │   ├── handlers
 │   │   │   │   │   │   ├── compute-poll-stats.ts
+│   │   │   │   │   │   ├── program-computation.ts
 │   │   │   │   │   │   ├── publish-redis-event.ts
 │   │   │   │   │   │   ├── send-simulation-upserted.ts
 │   │   │   │   │   │   ├── sync-user-data-after-simulation-upserted.ts
@@ -417,6 +416,7 @@
 │       │   └── urls.ts
 │       ├── e2e
 │       │   ├── features
+│       │   │   ├── age.spec.ts
 │       │   │   ├── cookies.spec.ts
 │       │   │   ├── groups.spec.ts
 │       │   │   ├── mode-scolaire.spec.ts
@@ -722,11 +722,12 @@
 │       │   │   │   │   │   │       │       └── unauthorized.tsx
 │       │   │   │   │   │   │       └── unauthorized.tsx
 │       │   │   │   │   │   ├── actions
-│       │   │   │   │   │   │   └── [slug]
-│       │   │   │   │   │   │       ├── _components
-│       │   │   │   │   │   │       │   ├── ActionMedia.tsx
-│       │   │   │   │   │   │       │   └── Section.tsx
-│       │   │   │   │   │   │       └── page.tsx
+│       │   │   │   │   │   │   └── [themeSlug]
+│       │   │   │   │   │   │       └── [actionSlug]
+│       │   │   │   │   │   │           ├── _components
+│       │   │   │   │   │   │           │   ├── ActionMedia.tsx
+│       │   │   │   │   │   │           │   └── Section.tsx
+│       │   │   │   │   │   │           └── page.tsx
 │       │   │   │   │   │   ├── amis
 │       │   │   │   │   │   │   ├── _helpers
 │       │   │   │   │   │   │   │   └── getParticipantName.ts
@@ -1093,6 +1094,13 @@
 │       │   │   │   │   │   │   ├── YouthTutorial.tsx
 │       │   │   │   │   │   │   └── autresQuestions
 │       │   │   │   │   │   │       └── OrganisationPrivacy.tsx
+│       │   │   │   │   │   ├── age
+│       │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   └── AgeForm.tsx
+│       │   │   │   │   │   │   ├── _hooks
+│       │   │   │   │   │   │   │   ├── useAgeForm.ts
+│       │   │   │   │   │   │   │   └── useUpdateUserAgeRange.ts
+│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── campagne
 │       │   │   │   │   │   │   └── [pollIdOrSlug]
 │       │   │   │   │   │   │       ├── layout.tsx
@@ -1102,6 +1110,8 @@
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── tutoriel
+│       │   │   │   │   │       ├── _components
+│       │   │   │   │   │       │   └── ButtonNext.tsx
 │       │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │       └── page.tsx
 │       │   │   │   │   ├── (simulator-flow)
@@ -1173,17 +1183,17 @@
 │       │   │   │   │   ├── VerificationContent.tsx
 │       │   │   │   │   └── index.tsx
 │       │   │   │   └── index.tsx
-│       │   │   ├── ImpactCO2Widget.tsx
 │       │   │   ├── Link.tsx
 │       │   │   ├── actions
 │       │   │   │   ├── ActionCard
 │       │   │   │   │   ├── ActionCard.module.css
 │       │   │   │   │   └── ActionCard.tsx
+│       │   │   │   ├── ActionTracker.tsx
 │       │   │   │   ├── ActionsCarousel
 │       │   │   │   │   ├── ActionsCarousel.css
 │       │   │   │   │   ├── ActionsCarousel.tsx
 │       │   │   │   │   └── ActionsCarouselClient.tsx
-│       │   │   │   ├── EmojiBadge.tsx
+│       │   │   │   ├── BetaBanner.tsx
 │       │   │   │   ├── HighestImpactActionsSection.tsx
 │       │   │   │   ├── ThemeBadge.tsx
 │       │   │   │   ├── ThemeSection.tsx
@@ -1314,6 +1324,7 @@
 │       │   │   │   ├── ShieldIcon.tsx
 │       │   │   │   ├── SparklesIcon.tsx
 │       │   │   │   ├── TrashIcon.tsx
+│       │   │   │   ├── TrophyIcon.tsx
 │       │   │   │   ├── WaterDropIcon.tsx
 │       │   │   │   ├── share
 │       │   │   │   │   ├── CopyIcon.tsx
@@ -1771,6 +1782,8 @@
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
 │       │   │   │   └── getPageNumber.ts
+│       │   │   ├── client
+│       │   │   │   └── fetchClient.ts
 │       │   │   ├── date
 │       │   │   │   └── getFormattedDate.ts
 │       │   │   ├── foldEveryQuestionsUntil.ts
@@ -1849,6 +1862,8 @@
 │       │   │   │   │       ├── getTendency.ts
 │       │   │   │   │       └── setDefaultExtendedSituation.ts
 │       │   │   │   └── revalidate.ts
+│       │   │   ├── shared
+│       │   │   │   └── handleApiResponse.ts
 │       │   │   ├── simulation
 │       │   │   │   ├── generateSimulation.ts
 │       │   │   │   ├── postSimulation.ts
@@ -2134,7 +2149,9 @@
 │       │   │   ├── actions
 │       │   │   │   ├── __tests__
 │       │   │   │   │   └── themes.dto.test.ts
+│       │   │   │   ├── get-personalized-actions-catalogue.ts
 │       │   │   │   ├── get-themes.ts
+│       │   │   │   ├── has-action-v2-rollout.ts
 │       │   │   │   └── themes.dto.ts
 │       │   │   ├── cms
 │       │   │   │   ├── fetchAllArticleTitlesAndSlugs.ts
@@ -2167,12 +2184,15 @@
 │       │   │   ├── partners
 │       │   │   │   ├── exportSituation.ts
 │       │   │   │   └── verifyPartner.ts
-│       │   │   └── tracking
-│       │   │       ├── GoogleTagManager.ts
-│       │   │       ├── Posthog.ts
-│       │   │       ├── cookieStateStore.ts
-│       │   │       ├── iframeInformation.ts
-│       │   │       └── posthogServer.ts
+│       │   │   ├── tracking
+│       │   │   │   ├── GoogleTagManager.ts
+│       │   │   │   ├── Posthog.ts
+│       │   │   │   ├── cookieStateStore.ts
+│       │   │   │   ├── iframeInformation.ts
+│       │   │   │   └── posthogServer.ts
+│       │   │   └── users
+│       │   │       ├── get-user-age-range.ts
+│       │   │       └── revalidate-age-page.ts
 │       │   ├── types
 │       │   │   ├── .gitignore
 │       │   │   ├── app-env.d.ts
@@ -2259,11 +2279,15 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260414160000_add_poll_mode
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260415000000_add_user_age_range
+│       │   │   │   └── migration.sql
 │       │   │   ├── 20260515131211_add_actions_table
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260526141102_add_actions_assessments_table
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260528105809_add_simulation_computation
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260604120000_alter_model_domain_accept_pr
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
@@ -2321,30 +2345,54 @@
 │       │   │   │       └── language.ts
 │       │   │   ├── logger
 │       │   │   │   └── index.ts
-│       │   │   ├── publicodes-computation
-│       │   │   │   ├── __tests__
-│       │   │   │   │   └── coordination.service.spec.ts
+│       │   │   ├── simulation-computation
 │       │   │   │   ├── exceptions
-│       │   │   │   │   └── coordination.exception.ts
+│       │   │   │   │   └── simulation-computation.exception.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── engine.factory.ts
 │       │   │   │   │   └── simulation.factory.ts
 │       │   │   │   ├── repositories
-│       │   │   │   │   ├── simulation-computations.repository.ts
-│       │   │   │   │   └── simulation.repository.ts
+│       │   │   │   │   └── simulation-computations.repository.ts
 │       │   │   │   ├── services
-│       │   │   │   │   ├── coordination.service.ts
-│       │   │   │   │   └── simulation-computation.service.ts
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── process-next-pending-computation.service.spec.ts
+│       │   │   │   │   │   └── program-simulation-computation.service.spec.ts
+│       │   │   │   │   ├── process-next-pending-computation.service.ts
+│       │   │   │   │   └── program-simulation-computation.ts
 │       │   │   │   └── types
 │       │   │   │       └── computation.ts
+│       │   │   ├── simulations
+│       │   │   │   ├── exceptions
+│       │   │   │   │   └── simulations.exception.ts
+│       │   │   │   ├── repository
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── model.mapper.spec.ts
+│       │   │   │   │   ├── model.mapper.ts
+│       │   │   │   │   ├── simulation.mapper.ts
+│       │   │   │   │   └── simulation.repository.ts
+│       │   │   │   └── types
+│       │   │   │       ├── model.ts
+│       │   │   │       └── simulation.ts
 │       │   │   ├── tracking
 │       │   │   │   └── schema.ts
 │       │   │   └── users
-│       │   │       └── factories
-│       │   │           └── user.factory.ts
+│       │   │       ├── factories
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── user.factory.ts
+│       │   │       │   └── verified-user.factory.ts
+│       │   │       ├── repositories
+│       │   │       │   └── users.repository.ts
+│       │   │       ├── services
+│       │   │       │   ├── __tests__
+│       │   │       │   │   └── get-full-user.spec.ts
+│       │   │       │   └── get-full-user.service.ts
+│       │   │       └── types
+│       │   │           ├── age-range.ts
+│       │   │           └── user.ts
 │       │   ├── index.ts
 │       │   ├── prisma
-│       │   │   └── client.ts
+│       │   │   ├── client.ts
+│       │   │   └── utils.ts
 │       │   └── test-utils
 │       │       └── db.ts
 │       ├── tsconfig.build.json
@@ -2354,4 +2402,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-601 directories, 1800 files
+620 directories, 1829 files
