@@ -1,17 +1,12 @@
-## Changelog : mna-shared-bin (30 derniers jours)
+## Changelog : mna-shared-bin (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Ce dépôt a connu des améliorations significatives concernant les scripts de sauvegarde et de restauration de base de données, ainsi qu'une refactorisation générale du code pour une meilleure maintenabilité et une mutualisation des fonctionnalités. Ces changements visent à faciliter l'administration et la gestion de l'infrastructure.
+Cette mise à jour apporte des améliorations significatives à la gestion des fonctions partagées et de la configuration des dépôts consommateurs.  Les changements permettent une plus grande flexibilité dans la déclaration des fonctions et une meilleure gestion des clés PGP pour une sécurité accrue.
 
 ### Évolutions fonctionnelles
-- Correction de la mise à jour des scripts de sauvegarde et de restauration de la base de données. [#1](https://github.com/mission-apprentissage/mna-shared-bin/issues/1)
-- Mutualisation de la sous-commande `_help` pour une meilleure cohérence et réutilisation du code.
+- Modification du paradigme de déclaration des fonctions partagées, offrant une nouvelle approche pour définir et utiliser les fonctions communes. [#265dec1](https://github.com/mission-apprentissage/mna-shared-bin/commit/265dec1)
+- Ajout d'une condition permettant à un dépôt consommateur de ne pas enregistrer de fonction partagée, offrant plus de contrôle sur le comportement des dépôts. [#72b3009](https://github.com/mission-apprentissage/mna-shared-bin/commit/72b3009)
+- Amélioration de la découverte du fichier `.openpgp-keyid` avec l'ajout d'une condition. [#fcdd148](https://github.com/mission-apprentissage/mna-shared-bin/commit/fcdd148)
 
 ### Évolutions techniques
-- Refactorisation des commandes `seed:apply` et `seed:update` pour améliorer leur structure et leur lisibilité.
-- Correction de la commande `git submodule update` pour supprimer l'option `--recursive` non nécessaire.
-- Refactorisation générale du code pour une meilleure organisation et maintenabilité.
-
-### Autres changements
-- Correction d'une faute de frappe.
-- Initialisation du dépôt.
+- Correction de typos et de mineurs problèmes. [#4fecf2b](https://github.com/mission-apprentissage/mna-shared-bin/commit/4fecf2b) et [#334a60e](https://github.com/mission-apprentissage/mna-shared-bin/commit/334a60e)
