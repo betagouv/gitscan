@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/datagouv/hydra",
   "name": "hydra",
-  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il permet de collecter, analyser et convertir des ressources de données, notamment en détectant les changements, en convertissant les fichiers CSV en tables PostgreSQL et en générant des tuiles PMTiles pour les GeoJSON.",
+  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il permet de collecter, analyser et convertir des données provenant de différentes sources, et de les rendre disponibles via une API.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,29 +11,23 @@
     "Notifications & Alertes",
     "Sécurité & Conformité"
   ],
-  "audience": [
-    "Professionnels",
-    "Agents de l'Administration"
-  ],
+  "audience": "Professionnels",
   "dependencies": [
     "aiohttp",
-    "PostgreSQL",
-    "libmagic",
-    "uv",
-    "boto3",
     "asyncpg",
+    "PostgreSQL",
+    "Redis",
+    "boto3",
     "csv-detective",
-    "python-magic",
-    "redis",
-    "rq",
-    "sqlalchemy"
+    "tippecanoe",
+    "rq"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "CI/CD & Déploiement"
+    "RQ (Queue)"
   ],
   "auth": {
     "methods": [
@@ -41,14 +35,13 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Coverage"
+    "Pytest"
   ],
   "workflows": [
     "CircleCI",
     "GitHub Actions"
   ],
-  "lastActivity": "2026-05-27T00:00:00Z",
+  "lastActivity": "2026-06-02T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -60,10 +53,8 @@
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Intelligence Artificielle & NLP"
+    "API & Intégrations"
   ]
 }

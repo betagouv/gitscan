@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.12 (2026-06-02)
+
+- feat(status): include python version in health endpoint ([#433](https://github.com/datagouv/hydra/pull/433))
+- perf: use Python 3.14 ([#378](https://github.com/datagouv/hydra/pull/378))
+
+
+## 2.11.1 (2026-06-02)
+
+- Add `header` field to parquet analysis ([#431](https://github.com/datagouv/hydra/pull/431))
+- fix(cli): apply --quiet to all loggers globally ([#432](https://github.com/datagouv/hydra/pull/432))
+
+
 ## 2.11.0 (2026-05-27)
 
 - feat(csv): parquet and GeoJSON exports on dedicated RQ queues ([#425](https://github.com/datagouv/hydra/pull/425))

@@ -1,18 +1,27 @@
-## Changelog : hydra (30 derniers jours, au 27 mai 2026)
+## Changelog : hydra (30 derniers jours, au 04 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'optimisation des exportations de données, notamment en permettant la génération de formats comme Parquet et GeoJSON directement à partir de la base de données, réduisant ainsi la nécessité de relire les fichiers CSV sources. L'intégration de S3 pour le stockage d'objets a également été améliorée.
+Ce mois-ci, les évolutions de Hydra se concentrent sur l'amélioration des performances, l'ajout de nouvelles fonctionnalités d'export de données (Parquet et GeoJSON) et l'intégration du stockage S3. Des corrections et des refactorings ont également été effectués pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter au format Parquet et GeoJSON à partir de la base de données, via des files d'attente RQ dédiées. [#425](https://github.com/datagouv/hydra/pull/425)
-- Génération de GeoJSON directement à partir de PostgreSQL au lieu de relire les CSV, améliorant ainsi les performances. [#404](https://github.com/datagouv/hydra/pull/404)
-- Possibilité d'exporter au format Parquet uniquement à partir de la base de données. [#424](https://github.com/datagouv/hydra/pull/424)
-- Intégration du stockage d'objets S3 via `boto3`, avec gestion des buckets par environnement et préfixes basés sur l'extension des fichiers. [#415](https://github.com/datagouv/hydra/pull/415), [#428](https://github.com/datagouv/hydra/pull/428), [#429](https://github.com/datagouv/hydra/pull/429)
+- Ajout de l'export GeoJSON à partir de la base de données uniquement dans le pipeline CSV. [#423](https://github.com/datagouv/hydra/pull/423)
+- Possibilité d'exporter des fichiers Parquet directement à partir de la base de données. [#424](https://github.com/datagouv/hydra/pull/424)
+- Ajout d'un champ `header` aux analyses Parquet. [#431](https://github.com/datagouv/hydra/pull/431)
+- Intégration du stockage d'objets S3 via boto3, permettant de stocker les données sur Amazon S3. [#415](https://github.com/datagouv/hydra/pull/415)
+- L'endpoint de santé inclut maintenant la version de Python utilisée. [#433](https://github.com/datagouv/hydra/pull/433)
 
 ### Évolutions techniques
-- Refactorisation du code de conversion des données, avec séparation des méthodes dans des fichiers dédiés dans le dossier `/conversion`. [#422](https://github.com/datagouv/hydra/pull/422)
-- Amélioration de la gestion des erreurs et suppression de code obsolète dans le pipeline CSV. [#423](https://github.com/datagouv/hydra/pull/423), [#426](https://github.com/datagouv/hydra/pull/426), [#427](https://github.com/datagouv/hydra/pull/427)
+- Passage à Python 3.14 pour améliorer les performances. [#378](https://github.com/datagouv/hydra/pull/378)
+- Refactorisation du code de conversion, séparant les méthodes dans des fichiers dédiés dans le répertoire `/conversion`. [#422](https://github.com/datagouv/hydra/pull/422)
+- Les exports Parquet et GeoJSON sont maintenant gérés par des queues RQ dédiées, améliorant la gestion des tâches asynchrones. [#425](https://github.com/datagouv/hydra/pull/425)
+- Correction de problèmes d'upload sur S3. [#428](https://github.com/datagouv/hydra/pull/428)
+- Amélioration de la configuration des buckets S3 avec un bucket par environnement et des préfixes basés sur l'extension des fichiers. [#429](https://github.com/datagouv/hydra/pull/429)
+- Refactorisation des tests pour aligner la structure avec le package de conversion. [#427](https://github.com/datagouv/hydra/pull/427)
 
 ### Autres changements
-- Correction d'une erreur mineure dans la documentation concernant l'enfilement des tâches.
-- Suppression d'une protection inutile dans le helper de conversion CSV vers GeoJSON.
+- Correction d'une erreur mineure dans la docstring de la fonction `enqueue`. [#782ecaa](https://github.com/datagouv/hydra/commit/782ecaa)
+- Application de l'option `--quiet` à tous les loggers en ligne de commande. [#432](https://github.com/datagouv/hydra/pull/432)
+- Suppression d'un `__all__` redondant dans l'analyse CSV. [#426](https://github.com/datagouv/hydra/pull/426)
+- Suppression d'une protection obsolète dans l'helper de conversion CSV vers GeoJSON. [#7591db4](https://github.com/datagouv/hydra/commit/7591db4)
+- Correction de la publication dans CI lors des releases. [#398](https://github.com/datagouv/hydra/pull/398)
+- Mise à jour de la dépendance `urllib3` pour corriger une vulnérabilité de sécurité. [#420](https://github.com/datagouv/hydra/pull/420)
