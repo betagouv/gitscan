@@ -20,6 +20,7 @@
 │   ├── database.md
 │   ├── db.png
 │   ├── db.svg
+│   ├── dependabot.md
 │   ├── ofii_referential.md
 │   ├── scripts.md
 │   ├── structure_version.md
@@ -216,6 +217,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260526081821_add_missing_flag_for_incomplete_history
 │   │   │   └── migration.sql
+│   │   ├── 20260603144301_contacts_operateur
+│   │   │   └── migration.sql
+│   │   ├── 20260604134603_logo_operateur
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -381,10 +386,12 @@
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── operateurs
 │   │   │   │   │   ├── OperateurItem.tsx
+│   │   │   │   │   ├── OperateurLogo.tsx
 │   │   │   │   │   ├── OperateursList.tsx
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── _components
 │   │   │   │   │   │   │   ├── ActesAdministratifsOperateur.tsx
+│   │   │   │   │   │   │   ├── ContactsBlock.tsx
 │   │   │   │   │   │   │   ├── DescriptionBlock.tsx
 │   │   │   │   │   │   │   ├── OperateurHeader.tsx
 │   │   │   │   │   │   │   └── StatsCta.tsx
@@ -394,6 +401,8 @@
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modification
 │   │   │   │   │   │   │   ├── actes-administratifs
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── contacts
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── description
 │   │   │   │   │   │   │       └── page.tsx
@@ -485,6 +494,8 @@
 │   │   │   │       │   │       └── Tabs.tsx
 │   │   │   │       │   ├── layout.tsx
 │   │   │   │       │   ├── modification
+│   │   │   │       │   │   ├── _components
+│   │   │   │       │   │   │   └── ModificationGuard.tsx
 │   │   │   │       │   │   ├── actes-administratifs
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── adresses
@@ -495,6 +506,7 @@
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── finances
 │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │       │   │   ├── layout.tsx
 │   │   │   │       │   │   ├── notes
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   └── type-places
@@ -632,7 +644,8 @@
 │   │   │   ├── budgets
 │   │   │   │   └── budget.repository.ts
 │   │   │   ├── contacts
-│   │   │   │   └── contact.repository.ts
+│   │   │   │   ├── contact.repository.ts
+│   │   │   │   └── contact.util.ts
 │   │   │   ├── controles
 │   │   │   │   ├── controle.repository.ts
 │   │   │   │   └── controle.util.ts
@@ -871,7 +884,8 @@
 │   │   │   │   │   └── NoteDisclaimer.tsx
 │   │   │   │   ├── operateur
 │   │   │   │   │   ├── FieldSetDescription.tsx
-│   │   │   │   │   └── FieldSetDirectionGenerale.tsx
+│   │   │   │   │   ├── FieldSetDirectionGenerale.tsx
+│   │   │   │   │   └── FieldSetSiegeSocial.tsx
 │   │   │   │   ├── ouvertureFermeture
 │   │   │   │   │   └── FieldSetOuvertureFermeture.tsx
 │   │   │   │   └── typePlace
@@ -918,6 +932,7 @@
 │   │   │   ├── useAutocomplete.ts
 │   │   │   ├── useAutocompleteFieldUi.ts
 │   │   │   ├── useButtonsPanel.ts
+│   │   │   ├── useCanUpdateStructure.ts
 │   │   │   ├── useCpom.ts
 │   │   │   ├── useCpomFormHandling.ts
 │   │   │   ├── useCpomsSearch.ts
@@ -1278,4 +1293,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-350 directories, 930 files
+354 directories, 941 files
