@@ -1,38 +1,38 @@
-## Changelog : docs (30 derniers jours, au 03 juin 2026)
+## Changelog : docs (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur avec l'ajout d'un mode présentateur, d'un panneau latéral pour les commentaires, et des corrections de bugs pour une meilleure stabilité. Des améliorations techniques ont également été apportées, notamment la migration vers de nouveaux outils de build et de gestion des dépendances, ainsi que l'ajout de métriques de suivi d'événements pour mieux comprendre l'utilisation de la plateforme.
+Ce mois-ci, les améliorations se concentrent sur la stabilité et l'expérience utilisateur, avec des corrections de bugs concernant la gestion des documents, l'interface utilisateur et les tests. Des améliorations significatives ont été apportées à la gestion des événements pour le suivi analytique, ainsi qu'à l'infrastructure de construction et de déploiement. Une nouvelle fonctionnalité de mode présentateur a été ajoutée.
 
 ### Évolutions fonctionnelles
-- Ajout du **mode présentateur** pour faciliter la présentation de documents [#2321].
-- Implémentation d'un **panneau latéral dédié aux commentaires** pour une meilleure gestion et visibilité [#2379].
-- Possibilité de **quitter un document** [#2365].
-- Ajout d'une **breadcrumb** dans les résultats de recherche pour une navigation plus intuitive [#2310].
-- Amélioration de l'**accessibilité** avec l'alignement des labels ARIA pour le menu mobile [#2377] et l'ajout d'attributs `aria-hidden` aux avatars décoratifs dans la modale de partage [#2324].
-- Amélioration de la gestion des **permissions** pour empêcher les administrateurs de modifier les commentaires d'autres utilisateurs [#2323].
+- Ajout du mode présentateur pour faciliter les présentations de documents [#2321].
+- Possibilité de quitter un document [#2365].
+- Amélioration de la recherche avec l'ajout de breadcrumbs dans les résultats [#2310].
+- Prise en charge de la création de sous-documents à partir de fichiers [#1987].
+- Ajout d'un utilitaire pour capturer des événements avec PostHog pour un meilleur suivi analytique.
+- Ajout d'une option pour activer/désactiver l'accès à tous les documents via un paramètre de configuration [#2378].
 
 ### Évolutions techniques
-- Migration du système de build de `setuptools` vers `uv_build` pour une meilleure performance et une gestion plus moderne des dépendances [#2274, #2362].
-- Migration de la gestion des dépendances de `pip` vers `uv` [#2362].
-- Mise à jour de plusieurs dépendances JavaScript, incluant `Blocknote` (0.51.4) et `Next.js` (v16.2.6) [SECURITY] [#2273].
-- Intégration de **métriques de suivi d'événements** avec PostHog pour analyser l'utilisation de la plateforme (création/suppression de documents, actions IA, accès, etc.) [#2363].
-- Amélioration de la gestion des connexions WebSocket pour éviter les problèmes d'inactivité [#2264].
-- Refonte de l'architecture pour séparer la configuration de PostHog [#2378].
-- Ajout de support pour le déploiement sur des plateformes PaaS comme Scalingo [#2293].
+- Migration de l'outil de gestion des dépendances de `pip` à `uv` pour améliorer la performance et la fiabilité de la construction [#2363].
+- Refonte de l'infrastructure de construction avec l'utilisation de `uv_build` comme backend de construction.
+- Amélioration de la gestion des connexions de base de données pour éviter les erreurs de verrouillage.
+- Utilisation de runners ARM64 pour la construction d'images pour l'architecture ARM64.
+- Mise à jour de Next.js vers la version 16.2.6 (correction de sécurité) [#2386].
+- Amélioration de la gestion des erreurs et des conditions de concurrence dans le backend.
+- Mise à jour de Blocknote vers la version 0.51.4 [#2399].
 
 ### Autres changements
-- Correction de plusieurs bugs et améliorations de la stabilité, notamment concernant la gestion des erreurs, l'affichage des emojis, et le comportement du menu Blocknote.
-- Mise à jour de la documentation et des traductions [#2377].
-- Amélioration de la gestion des tests E2E pour réduire les faux positifs [#2373].
-- Suppression de code obsolète et nettoyage du code base.
-- Correction de problèmes liés à l'importation de fichiers [#1987].
-- Ajout de tests unitaires pour le mode présentateur [#2321].
-- Correction d'un problème de verrouillage de table lors de la création de documents [#2274].
-- Ajout de la validation de l'ID du document [#2323].
-- Correction de problèmes de rendu dans le mode d'impression [#2269].
-- Amélioration de la gestion des couleurs pour la sécurité [#2210].
-- Correction de problèmes de focus et de visibilité dans l'interface utilisateur [#2377].
-- Correction de problèmes de chargement des commentaires [#2269].
-- Correction de problèmes de positionnement des éléments de l'interface utilisateur [#2379].
-- Correction de problèmes de scroll dans la table des matières [#2233].
-- Correction de problèmes de compatibilité avec certaines versions de Cunningham et de l'UI Kit [#2273].
+- Corrections de bugs concernant l'affichage du titre dans la table des matières [#2399].
+- Correction de problèmes de crash liés aux threads orphelins [#2395].
+- Amélioration de l'accessibilité de l'interface utilisateur, notamment pour le menu mobile et les avatars décoratifs [#2324, #2377].
+- Ajout de tests E2E pour le mode présentateur [#2377].
+- Mise à jour des traductions [#2396].
+- Suppression de code inutilisé et nettoyage du code.
+- Ajout de la prise en charge du déploiement sur PaaS (Scalingo) [#2293].
+- Amélioration de la gestion des événements lors de la création, suppression, duplication et importation de documents.
+- Correction de problèmes d'affichage et de comportement de l'interface utilisateur (barre flottante, panneaux latéraux).
+- Correction de problèmes liés à l'impression des documents (commentaires).
+- Ajout de la configuration de PostHog dans l'environnement Helm.
+- Correction de problèmes de verrouillage lors de la création de documents.
+- Amélioration de la gestion des erreurs lors de la migration de la base de données.
+- Correction de problèmes de compatibilité avec GTranslate.
+- Correction de problèmes d'exportation des liens lors de l'impression.
