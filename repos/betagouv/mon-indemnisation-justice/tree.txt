@@ -82,6 +82,7 @@
 │   │   │   ├── monolog.yaml
 │   │   │   ├── nelmio_cors.yaml
 │   │   │   ├── notifier.yaml
+│   │   │   ├── opctim_csp_bundle.yaml
 │   │   │   ├── pentatrion_vite.yaml
 │   │   │   ├── property_info.yaml
 │   │   │   ├── rate_limiter.yaml
@@ -192,6 +193,7 @@
 │   │   │   │       │   │   ├── EditerAgentEndpoint.php
 │   │   │   │       │   │   ├── EditerAgentInput.php
 │   │   │   │       │   │   ├── ListerAgentsActifsEndpoint.php
+│   │   │   │       │   │   ├── ListerRedacteurEndpoint.php
 │   │   │   │       │   │   └── MoiEndpoint.php
 │   │   │   │       │   ├── Document
 │   │   │   │       │   │   ├── ImprimerDocumentEndpoint.php
@@ -204,6 +206,8 @@
 │   │   │   │       │       ├── AttribuerDossierInput.php
 │   │   │   │       │       ├── CloturerDossierEndpoint.php
 │   │   │   │       │       ├── CloturerDossierInput.php
+│   │   │   │       │       ├── ConsulterDossierEndpoint.php
+│   │   │   │       │       ├── DecompterDossierEndpoint.php
 │   │   │   │       │       ├── DemarrerInstructionDossierEndpoint.php
 │   │   │   │       │       ├── GenererArretePaiementEndpoint.php
 │   │   │   │       │       ├── GenererCourrierPropositionIndemnisationEndpoint.php
@@ -218,8 +222,12 @@
 │   │   │   │       │       ├── ListerDossierAVerifierEndpoint.php
 │   │   │   │       │       ├── ListerDossierArreteASignerEndpoint.php
 │   │   │   │       │       ├── ListerDossierEnAttenteIndemnisationEndpoint.php
+│   │   │   │       │       ├── ListerDossierEnInstructionEndpoint.php
 │   │   │   │       │       ├── ListerDossierPropositionASignerEndpoint.php
-│   │   │   │       │       └── ListerDossierRejetASignerEndpoint.php
+│   │   │   │       │       ├── ListerDossierRejetASignerEndpoint.php
+│   │   │   │       │       ├── ListerDossierUsagerEndpoint.php
+│   │   │   │       │       ├── RechercherDossiersEndpoint.php
+│   │   │   │       │       └── RechercherDossiersInput.php
 │   │   │   │       ├── Output
 │   │   │   │       │   ├── AdresseOutput.php
 │   │   │   │       │   ├── AgentOutput.php
@@ -236,13 +244,16 @@
 │   │   │   │       │   ├── DossierDetailOutput.php
 │   │   │   │       │   ├── DossierDetailleOutput.php
 │   │   │   │       │   ├── DossierEnAttenteIndemnisationOutput.php
+│   │   │   │       │   ├── DossierEnInstructionOutput.php
 │   │   │   │       │   ├── DossierPropositionASignerOutput.php
 │   │   │   │       │   ├── DossierRejetASignerOutput.php
 │   │   │   │       │   ├── EtatDossierOutput.php
 │   │   │   │       │   ├── PieceJointeOutput.php
 │   │   │   │       │   ├── ProcedureJudiciaireOutput.php
+│   │   │   │       │   ├── RedacteurOutput.php
 │   │   │   │       │   ├── RequerantOutput.php
-│   │   │   │       │   └── TestEligibiliteOutput.php
+│   │   │   │       │   ├── TestEligibiliteOutput.php
+│   │   │   │       │   └── UsagerOutput.php
 │   │   │   │       ├── Transformers
 │   │   │   │       │   ├── AgentIdTransformer.php
 │   │   │   │       │   ├── DossierEtatTransformer.php
@@ -277,7 +288,6 @@
 │   │   │       │   ├── PublierBrouillonEndpoint.php
 │   │   │       │   └── TeleverserPiecesJointesEndpoint.php
 │   │   │       ├── Moi
-│   │   │       │   ├── MoiDto.php
 │   │   │       │   └── MoiEndpoint.php
 │   │   │       ├── Request
 │   │   │       │   └── Attribute
@@ -313,6 +323,7 @@
 │   │   │   ├── BrisPorteController.php
 │   │   │   ├── HomeController.php
 │   │   │   ├── InscriptionController.php
+│   │   │   ├── MetaController.php
 │   │   │   ├── Requerant
 │   │   │   │   ├── DocumentController.php
 │   │   │   │   └── HomeController.php
@@ -450,7 +461,8 @@
 │   │   │   ├── DocumentManager.php
 │   │   │   ├── DossierManager.php
 │   │   │   ├── ImprimanteCourrier.php
-│   │   │   └── Mailer.php
+│   │   │   ├── Mailer.php
+│   │   │   └── MontantAfficheur.php
 │   │   ├── Twig
 │   │   │   ├── AppExtension.php
 │   │   │   ├── AppRuntime.php
@@ -469,19 +481,13 @@
 │   │   ├── _vite_hmr_extra.html.twig
 │   │   ├── accessibilite-numerique.html.twig
 │   │   ├── agent
-│   │   │   ├── _header.html.twig
-│   │   │   ├── base.html.twig
 │   │   │   ├── dossier
 │   │   │   │   ├── consulter_bris_porte.html.twig
 │   │   │   │   ├── dossiers_a_transmettre.html.twig
 │   │   │   │   ├── dossiers_en_attente_indemnisation.html.twig
-│   │   │   │   ├── recherche_dossiers.html.twig
 │   │   │   │   └── tableau_de_bord.html.twig
 │   │   │   ├── fdo.html.twig
-│   │   │   ├── fip6.html.twig
-│   │   │   ├── gestion_agents
-│   │   │   │   └── index.html.twig
-│   │   │   └── mon_compte.html.twig
+│   │   │   └── fip6.html.twig
 │   │   ├── attestations.html.twig
 │   │   ├── base.html.twig
 │   │   ├── base_pdf.html.twig
@@ -548,7 +554,6 @@
 │   │   ├── politique-de-confidentialite.html.twig
 │   │   ├── qui-sommes-nous.html.twig
 │   │   ├── requerant
-│   │   │   ├── _header.html.twig
 │   │   │   └── requerant.html.twig
 │   │   └── security
 │   │       ├── connexion.html.twig
@@ -571,7 +576,8 @@
 │   │   │   │       ├── AbstractEndpointTestCase.php
 │   │   │   │       ├── Agent
 │   │   │   │       │   └── Endpoint
-│   │   │   │       │       └── DeclarerNouvelAgentEndpointTest.php
+│   │   │   │       │       ├── DeclarerNouvelAgentEndpointTest.php
+│   │   │   │       │       └── ListerRedacteurEndpointTest.php
 │   │   │   │       ├── Document
 │   │   │   │       │   └── Endpoint
 │   │   │   │       │       ├── ImprimerDocumentEndpointTest.php
@@ -581,6 +587,8 @@
 │   │   │   │               ├── AjouterPieceJointeEndpointTest.php
 │   │   │   │               ├── AttribuerDossierEndpointTest.php
 │   │   │   │               ├── CloturerDossierEndpointTest.php
+│   │   │   │               ├── ConsulterDossierEndpointTest.php
+│   │   │   │               ├── DecompterDossierEndpointTest.php
 │   │   │   │               ├── DemarrerInstructionDossierEndpointTest.php
 │   │   │   │               ├── GenererArretePaiementEndpointTest.php
 │   │   │   │               ├── GenererCourrierPropositionIndemnisationEndpointTest.php
@@ -594,7 +602,10 @@
 │   │   │   │               ├── ListerDossierATransmettreEndpointTest.php
 │   │   │   │               ├── ListerDossierAVerifierEndpointTest.php
 │   │   │   │               ├── ListerDossierArreteASignerEndpointTest.php
-│   │   │   │               └── ListerDossierEnAttenteIndemnisationEndpointTest.php
+│   │   │   │               ├── ListerDossierEnAttenteIndemnisationEndpointTest.php
+│   │   │   │               ├── ListerDossierEnInstructionEndpointTest.php
+│   │   │   │               ├── ListerDossierUsagerEndpointTest.php
+│   │   │   │               └── RechercherDossierEndpointTest.php
 │   │   │   └── Requerant
 │   │   │       └── Dossier
 │   │   │           ├── AmenderDossierEndpointTest.php
@@ -615,7 +626,8 @@
 │   │   │   ├── DataGouv
 │   │   │   │   └── ImporteurGeoCodeTest.php
 │   │   │   ├── DocumentManagerTest.php
-│   │   │   └── DossierManagerTest.php
+│   │   │   ├── DossierManagerTest.php
+│   │   │   └── MontantAfficheurTest.php
 │   │   ├── bootstrap.php
 │   │   └── ressources
 │   │       └── pieces_jointes
@@ -645,6 +657,7 @@
 │   │   │       ├── lister-dossiers-a-categoriser.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-instruire.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-transmettre.e2e.test.ts
+│   │   │       ├── lister-dossiers-en-intruction.e2e.test.ts
 │   │   │       ├── lister-dossiers-rejet-a-signer.e2e.test.ts
 │   │   │       └── rechercher-un-dossier.e2e.test.ts
 │   │   ├── connexion.e2e.test.ts
@@ -662,6 +675,7 @@
 │   │   │   ├── contrat_location.pdf
 │   │   │   ├── facture-1.png
 │   │   │   ├── photo-porte-2.jpeg
+│   │   │   ├── releve_bancaire_2.png
 │   │   │   ├── rib.jpg
 │   │   │   └── sample-4.pdf
 │   │   └── test-eligibilite.e2e.test.ts
@@ -678,18 +692,16 @@
     │   │   ├── _init.ts
     │   │   ├── agent
     │   │   │   ├── _commun
+    │   │   │   │   ├── composants
+    │   │   │   │   │   └── MonCompte.tsx
     │   │   │   │   └── contexts
     │   │   │   │       ├── AgentContext.ts
     │   │   │   │       └── index.ts
     │   │   │   ├── fdo
-    │   │   │   │   ├── _init
-    │   │   │   │   │   ├── _container.ts
-    │   │   │   │   │   ├── _queryClient.ts
-    │   │   │   │   │   ├── _router.ts
-    │   │   │   │   │   └── index.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ModaleAjoutPieceJointe.tsx
     │   │   │   │   │   └── ModalePrévisualiserPieceJointe.tsx
+    │   │   │   │   ├── container.ts
     │   │   │   │   ├── fdo.tsx
     │   │   │   │   ├── fichiers
     │   │   │   │   │   └── documents
@@ -699,89 +711,90 @@
     │   │   │   │   │       └── guide-de-remise-de-l-avis-d-intervention-apres-un-bris-de-porte.pdf
     │   │   │   │   ├── models
     │   │   │   │   │   └── DeclarationFDOBrisPorte.ts
+    │   │   │   │   ├── query.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── __root.tsx
-    │   │   │   │   │   └── agent
-    │   │   │   │   │       └── fdo
-    │   │   │   │   │           ├── bris-de-porte
-    │   │   │   │   │           │   ├── $reference
-    │   │   │   │   │           │   │   ├── 1-bris-de-porte.tsx
-    │   │   │   │   │           │   │   ├── 2-service-enqueteur.tsx
-    │   │   │   │   │           │   │   ├── 3-usager.tsx
-    │   │   │   │   │           │   │   └── index.tsx
-    │   │   │   │   │           │   ├── index.tsx
-    │   │   │   │   │           │   ├── mes-declarations.tsx
-    │   │   │   │   │           │   └── nouvelle-declaration.tsx
-    │   │   │   │   │           ├── foire-aux-questions.tsx
-    │   │   │   │   │           ├── index.tsx
-    │   │   │   │   │           ├── les-documents.tsx
-    │   │   │   │   │           └── requisition-serrurier.tsx
+    │   │   │   │   │   ├── bris-de-porte
+    │   │   │   │   │   │   ├── $reference
+    │   │   │   │   │   │   │   ├── 1-bris-de-porte.tsx
+    │   │   │   │   │   │   │   ├── 2-service-enqueteur.tsx
+    │   │   │   │   │   │   │   ├── 3-usager.tsx
+    │   │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   ├── mes-declarations.tsx
+    │   │   │   │   │   │   └── nouvelle-declaration.tsx
+    │   │   │   │   │   ├── foire-aux-questions.tsx
+    │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   ├── les-documents.tsx
+    │   │   │   │   │   ├── mon-compte.tsx
+    │   │   │   │   │   └── requisition-serrurier.tsx
     │   │   │   │   ├── routeur
+    │   │   │   │   │   ├── index.ts
     │   │   │   │   │   └── routeur-fdo.gen.ts
-    │   │   │   │   └── services
-    │   │   │   │       ├── declaration.ts
-    │   │   │   │       └── index.ts
+    │   │   │   │   ├── services
+    │   │   │   │   │   ├── declaration.ts
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   └── tsconfig.json
     │   │   │   └── fip6
     │   │   │       ├── _init
-    │   │   │       │   ├── _container.ts
-    │   │   │       │   ├── _queryClient.ts
-    │   │   │       │   ├── _router.ts
     │   │   │       │   └── index.ts
+    │   │   │       ├── composants
+    │   │   │       │   ├── dossiers
+    │   │   │       │   │   └── ListeDossiers.tsx
+    │   │   │       │   └── pages
+    │   │   │       │       └── RechercherDossierPage.tsx
+    │   │   │       ├── container.ts
     │   │   │       ├── dossiers
-    │   │   │       │   ├── components
-    │   │   │       │   │   ├── BadgesDossier.tsx
-    │   │   │       │   │   ├── ConsultationDossierApp.tsx
-    │   │   │       │   │   ├── ListeDossierAAttribuer.tsx
-    │   │   │       │   │   ├── ListeDossierACategoriser.tsx
-    │   │   │       │   │   ├── ListeDossierAInstruire.tsx
-    │   │   │       │   │   ├── ListeDossierATransmettre.tsx
-    │   │   │       │   │   ├── ListeDossierAVerifier.tsx
-    │   │   │       │   │   ├── ListeDossierArreteASigner.tsx
-    │   │   │       │   │   ├── ListeDossierEnAttenteIndemnisation.tsx
-    │   │   │       │   │   ├── ListeDossierPropositionASigner.tsx
-    │   │   │       │   │   ├── ListeDossierRejetASigner.tsx
-    │   │   │       │   │   ├── RechercheDossierApp.tsx
-    │   │   │       │   │   ├── consultation
-    │   │   │       │   │   │   ├── InfosDossier.tsx
-    │   │   │       │   │   │   ├── PiecesJointes.tsx
-    │   │   │       │   │   │   ├── action
-    │   │   │       │   │   │   │   ├── AttributionAction.tsx
-    │   │   │       │   │   │   │   ├── CloturerAction.tsx
-    │   │   │       │   │   │   │   ├── DeciderIndemnisationAction.tsx
-    │   │   │       │   │   │   │   ├── DeciderRejetAction.tsx
-    │   │   │       │   │   │   │   ├── DemarrerInstructionAction.tsx
-    │   │   │       │   │   │   │   ├── DossierActions.tsx
-    │   │   │       │   │   │   │   ├── EnvoyerPourIndemnisationActionModale.tsx
-    │   │   │       │   │   │   │   ├── GenererArretePaiementAction.tsx
-    │   │   │       │   │   │   │   ├── MarquerIndemniseActionModale.tsx
-    │   │   │       │   │   │   │   ├── SignerArretePaiementAction.tsx
-    │   │   │       │   │   │   │   ├── SignerCourrierAction.tsx
-    │   │   │       │   │   │   │   └── index.ts
-    │   │   │       │   │   │   ├── document
-    │   │   │       │   │   │   │   └── EditeurDocument.tsx
-    │   │   │       │   │   │   ├── editor
-    │   │   │       │   │   │   │   ├── QuillEditor.tsx
-    │   │   │       │   │   │   │   └── index.ts
-    │   │   │       │   │   │   └── piecejointe
-    │   │   │       │   │   │       ├── AjoutPieceJointe.tsx
-    │   │   │       │   │   │       ├── ChampPieceJointe.tsx
-    │   │   │       │   │   │       ├── MenuPieceJointe.tsx
-    │   │   │       │   │   │       ├── SuppressionPieceJointe.tsx
-    │   │   │       │   │   │       ├── TelechargerPieceJointe.tsx
-    │   │   │       │   │   │       └── index.ts
-    │   │   │       │   │   └── liste
-    │   │   │       │   │       ├── DossierAAttribuer.ts
-    │   │   │       │   │       ├── DossierACategoriser.ts
-    │   │   │       │   │       ├── DossierAInstruire.ts
-    │   │   │       │   │       ├── DossierATransmettre.ts
-    │   │   │       │   │       ├── DossierAVerifier.ts
-    │   │   │       │   │       ├── DossierArreteASigner.ts
-    │   │   │       │   │       ├── DossierEnAttenteIndemnisation.ts
-    │   │   │       │   │       ├── DossierPropositionASigner.ts
-    │   │   │       │   │       ├── DossierRejetASigner.ts
-    │   │   │       │   │       └── dossier-liste-element.css
-    │   │   │       │   ├── consultation_app.tsx
-    │   │   │       │   └── recherche_app.tsx
+    │   │   │       │   └── components
+    │   │   │       │       ├── BadgesDossier.tsx
+    │   │   │       │       ├── ListeDossierAAttribuer.tsx
+    │   │   │       │       ├── ListeDossierACategoriser.tsx
+    │   │   │       │       ├── ListeDossierAInstruire.tsx
+    │   │   │       │       ├── ListeDossierATransmettre.tsx
+    │   │   │       │       ├── ListeDossierAVerifier.tsx
+    │   │   │       │       ├── ListeDossierArreteASigner.tsx
+    │   │   │       │       ├── ListeDossierEnAttenteIndemnisation.tsx
+    │   │   │       │       ├── ListeDossierPropositionASigner.tsx
+    │   │   │       │       ├── ListeDossierRejetASigner.tsx
+    │   │   │       │       ├── consultation
+    │   │   │       │       │   ├── InfosDossier.tsx
+    │   │   │       │       │   ├── PiecesJointes.tsx
+    │   │   │       │       │   ├── action
+    │   │   │       │       │   │   ├── AttributionAction.tsx
+    │   │   │       │       │   │   ├── CloturerAction.tsx
+    │   │   │       │       │   │   ├── DeciderIndemnisationAction.tsx
+    │   │   │       │       │   │   ├── DeciderRejetAction.tsx
+    │   │   │       │       │   │   ├── DemarrerInstructionAction.tsx
+    │   │   │       │       │   │   ├── DossierActions.tsx
+    │   │   │       │       │   │   ├── EnvoyerPourIndemnisationActionModale.tsx
+    │   │   │       │       │   │   ├── GenererArretePaiementAction.tsx
+    │   │   │       │       │   │   ├── MarquerIndemniseActionModale.tsx
+    │   │   │       │       │   │   ├── SignerArretePaiementAction.tsx
+    │   │   │       │       │   │   ├── SignerCourrierAction.tsx
+    │   │   │       │       │   │   └── index.ts
+    │   │   │       │       │   ├── document
+    │   │   │       │       │   │   └── EditeurDocument.tsx
+    │   │   │       │       │   ├── editor
+    │   │   │       │       │   │   ├── QuillEditor.tsx
+    │   │   │       │       │   │   └── index.ts
+    │   │   │       │       │   └── piecejointe
+    │   │   │       │       │       ├── AjoutPieceJointe.tsx
+    │   │   │       │       │       ├── ChampPieceJointe.tsx
+    │   │   │       │       │       ├── MenuPieceJointe.tsx
+    │   │   │       │       │       ├── SuppressionPieceJointe.tsx
+    │   │   │       │       │       ├── TelechargerPieceJointe.tsx
+    │   │   │       │       │       └── index.ts
+    │   │   │       │       └── liste
+    │   │   │       │           ├── DossierAAttribuer.ts
+    │   │   │       │           ├── DossierACategoriser.ts
+    │   │   │       │           ├── DossierAInstruire.ts
+    │   │   │       │           ├── DossierATransmettre.ts
+    │   │   │       │           ├── DossierAVerifier.ts
+    │   │   │       │           ├── DossierArreteASigner.ts
+    │   │   │       │           ├── DossierEnAttenteIndemnisation.ts
+    │   │   │       │           ├── DossierPropositionASigner.ts
+    │   │   │       │           ├── DossierRejetASigner.ts
+    │   │   │       │           └── dossier-liste-element.css
     │   │   │       ├── fip6.tsx
     │   │   │       ├── gestion_agents
     │   │   │       │   ├── components
@@ -795,9 +808,18 @@
     │   │   │       │       ├── RequeteValidationAgent.ts
     │   │   │       │       ├── RoleAgent.ts
     │   │   │       │       └── index.ts
+    │   │   │       ├── modeles
+    │   │   │       │   ├── dossier.ts
+    │   │   │       │   └── index.ts
+    │   │   │       ├── query.ts
     │   │   │       ├── routes
+    │   │   │       │   ├── __root.tsx
     │   │   │       │   ├── agents
     │   │   │       │   │   └── gestion.tsx
+    │   │   │       │   ├── dossier
+    │   │   │       │   │   ├── $id
+    │   │   │       │   │   │   └── index.tsx
+    │   │   │       │   │   └── index.tsx
     │   │   │       │   ├── dossiers
     │   │   │       │   │   ├── a-attribuer.tsx
     │   │   │       │   │   ├── a-categoriser.tsx
@@ -806,12 +828,23 @@
     │   │   │       │   │   ├── a-verifier.tsx
     │   │   │       │   │   ├── arrete-a-signer.tsx
     │   │   │       │   │   ├── en-attente-indemnisation.tsx
+    │   │   │       │   │   ├── en-instruction.tsx
+    │   │   │       │   │   ├── index.tsx
+    │   │   │       │   │   ├── mes-dossiers.tsx
     │   │   │       │   │   ├── proposition-a-signer.tsx
-    │   │   │       │   │   └── rejet-a-signer.tsx
-    │   │   │       │   └── root-fip6.tsx
-    │   │   │       └── routeur
-    │   │   │           ├── routeur-fip6.gen.ts
-    │   │   │           └── routeur-fip6.ts
+    │   │   │       │   │   ├── rechercher.tsx
+    │   │   │       │   │   ├── rejet-a-signer.tsx
+    │   │   │       │   │   └── usager
+    │   │   │       │   │       └── $id.tsx
+    │   │   │       │   ├── index.tsx
+    │   │   │       │   └── mon-compte.tsx
+    │   │   │       ├── routeur
+    │   │   │       │   ├── index.ts
+    │   │   │       │   ├── routeur-fip6.gen.ts
+    │   │   │       │   └── routeur-fip6.ts
+    │   │   │       ├── services
+    │   │   │       │   └── dossier.ts
+    │   │   │       └── tsconfig.json
     │   │   ├── requerant
     │   │   │   ├── composants
     │   │   │   │   ├── IconeLigne.tsx
@@ -836,12 +869,10 @@
     │   │   │   │   │   │   ├── FormUpload.tsx
     │   │   │   │   │   │   └── TanstackFormField.d.ts
     │   │   │   │   │   └── pays.json
-    │   │   │   │   ├── piecesJointes
-    │   │   │   │   │   ├── AjouterPiecesJointesModale.tsx
-    │   │   │   │   │   ├── PieceJointePanelNavigation.tsx
-    │   │   │   │   │   └── PrevisualiserFichier.tsx
-    │   │   │   │   └── routeur
-    │   │   │   │       └── NonTrouveComposant.tsx
+    │   │   │   │   └── piecesJointes
+    │   │   │   │       ├── AjouterPiecesJointesModale.tsx
+    │   │   │   │       ├── PieceJointePanelNavigation.tsx
+    │   │   │   │       └── PrevisualiserFichier.tsx
     │   │   │   ├── container.ts
     │   │   │   ├── dossier
     │   │   │   │   ├── components
@@ -904,22 +935,31 @@
     │   │   │   │   ├── AdresseManager.ts
     │   │   │   │   ├── DossierManager.ts
     │   │   │   │   └── UsagerManager.ts
-    │   │   │   └── style
-    │   │   │       ├── composants
-    │   │   │       │   ├── IconeLigne.module.css
-    │   │   │       │   ├── SuggestedInput.module.css
-    │   │   │       │   └── piecesJointes
-    │   │   │       │       └── PieceJointePanelNavigation.module.css
-    │   │   │       └── form.module.css
+    │   │   │   ├── style
+    │   │   │   │   ├── composants
+    │   │   │   │   │   ├── IconeLigne.module.css
+    │   │   │   │   │   ├── SuggestedInput.module.css
+    │   │   │   │   │   └── piecesJointes
+    │   │   │   │   │       └── PieceJointePanelNavigation.module.css
+    │   │   │   │   └── form.module.css
+    │   │   │   └── tsconfig.json
     │   │   └── sentry.ts
     │   ├── common
     │   │   ├── composants
     │   │   │   ├── ListeEtapes.tsx
     │   │   │   ├── Loader.tsx
     │   │   │   ├── dsfr
+    │   │   │   │   ├── Chargement.css
+    │   │   │   │   ├── Chargement.tsx
     │   │   │   │   ├── MiseEnAvant.tsx
     │   │   │   │   ├── Modale.tsx
-    │   │   │   │   └── Requis.tsx
+    │   │   │   │   ├── Requis.tsx
+    │   │   │   │   ├── Tableau.tsx
+    │   │   │   │   ├── Tourniquet.css
+    │   │   │   │   └── Tourniquet.tsx
+    │   │   │   ├── erreur
+    │   │   │   │   ├── ErreurComposant.tsx
+    │   │   │   │   └── NonTrouveComposant.tsx
     │   │   │   └── loader.css
     │   │   ├── models
     │   │   │   ├── Adresse.ts
@@ -929,12 +969,12 @@
     │   │   │   ├── EtatDossier.ts
     │   │   │   ├── InstitutionSecuritePublique.ts
     │   │   │   ├── RapportAuLogement.ts
-    │   │   │   ├── RechercheDossier.ts
     │   │   │   ├── Redacteur.ts
     │   │   │   ├── Requerant.ts
     │   │   │   ├── TestEligibilite.ts
     │   │   │   ├── TypeAttestation.ts
     │   │   │   ├── TypePersonneMorale.ts
+    │   │   │   ├── Usager.ts
     │   │   │   └── index.ts
     │   │   ├── normalisation
     │   │   │   └── transformers
@@ -946,7 +986,6 @@
     │   │   │   ├── agent
     │   │   │   │   ├── agent.ts
     │   │   │   │   ├── document.ts
-    │   │   │   │   ├── dossier.ts
     │   │   │   │   └── index.ts
     │   │   │   ├── courriel.ts
     │   │   │   ├── date.ts
@@ -978,11 +1017,12 @@
     │   │   │   └── object.test.ts
     │   │   └── validation
     │   │       └── index.test.ts
-    │   └── helpers.ts
+    │   ├── helpers.ts
+    │   └── tsconfig.json
     ├── tsconfig.json
     ├── types
     │   └── index.d.ts
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-220 directories, 767 files
+225 directories, 802 files
