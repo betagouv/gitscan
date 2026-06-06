@@ -1,36 +1,43 @@
-## Changelog : dictaphone (30 derniers jours, au 2026-06-02)
+## Changelog : dictaphone (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment une interface utilisateur remaniée pour la liste des enregistrements et la page de lecture, ainsi que des corrections d'accessibilité.  Des améliorations ont également été apportées à l'application mobile, avec la prise en charge de nouveaux formats de fichiers, des corrections de bugs et des fonctionnalités de téléchargement améliorées.  Enfin, des corrections de sécurité et des optimisations internes ont été réalisées.
+Cette version apporte des améliorations significatives à l'application mobile, notamment en termes de gestion des enregistrements hors ligne, de robustesse et d'expérience utilisateur. Des corrections de bugs et des optimisations ont également été apportées au backend et à l'interface web, avec un focus particulier sur l'accessibilité et la gestion des transcriptions.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur (Frontend):** Refonte de l'interface de la liste des enregistrements pour une meilleure lisibilité et ergonomie. [#6cc6254](https://github.com/suitenumerique/dictaphone/commit/6cc6254)
-- **Interface utilisateur (Frontend):** Augmentation de la largeur de la liste des enregistrements pour afficher plus d'informations. [#779eba1](https://github.com/suitenumerique/dictaphone/commit/779eba1)
-- **Interface utilisateur (Frontend):** Nettoyage et amélioration de l'interface de la page de lecture d'un enregistrement. [#efe3e71](https://github.com/suitenumerique/dictaphone/commit/efe3e71)
-- **Interface utilisateur (Frontend):** Ajout d'un indicateur de durée maximale dans l'infobulle de téléchargement. [#f53fef5](https://github.com/suitenumerique/dictaphone/commit/f53fef5)
-- **Interface utilisateur (Frontend):** Ajout de la possibilité de copier le texte de la transcription et d'ouvrir les documents associés. [#2252469](https://github.com/suitenumerique/dictaphone/commit/2252469)
-- **Interface utilisateur (Frontend):** Ajout de l'exportation de transcriptions au format SRT. [#f49ee75](https://github.com/suitenumerique/dictaphone/commit/f49ee75)
-- **Application Mobile:** Prise en charge de nouveaux formats audio/vidéo. [#fe272df](https://github.com/suitenumerique/dictaphone/commit/fe272df)
-- **Application Mobile:** Possibilité de télécharger un fichier non uploadé. [#fe272df](https://github.com/suitenumerique/dictaphone/commit/fe272df)
-- **Application Mobile:** Amélioration de l'expérience utilisateur lors du téléchargement, avec une barre de progression. [#10dcb1f](https://github.com/suitenumerique/dictaphone/commit/10dcb1f)
-- **Application Mobile:** Ajout d'une option pour n'autoriser le téléchargement qu'en Wi-Fi. [#b350ff2](https://github.com/suitenumerique/dictaphone/commit/b350ff2)
-- **Application Mobile:** Amélioration de la gestion des erreurs et des notifications. [#f36dc15](https://github.com/suitenumerique/dictaphone/commit/f36dc15)
-- **Backend:** Ajout d'un endpoint pour relancer une génération de transcription en cas d'échec. [#fd9b751](https://github.com/suitenumerique/dictaphone/commit/fd9b751)
-- **Backend:** Prise en charge de formats audio/vidéo plus variés. [#c19d9ce](https://github.com/suitenumerique/dictaphone/commit/c19d9ce)
+- L'application mobile permet désormais de supprimer les enregistrements locaux si le fichier correspondant n'existe plus sur le serveur.
+- L'application mobile gère les liens profonds pour la déconnexion.
+- L'application mobile affiche une raison plus explicite en cas de blocage de l'upload (ex: pas de wifi).
+- L'application mobile propose une gestion améliorée des erreurs et des retours en arrière.
+- L'application mobile permet de télécharger un fichier non uploadé.
+- L'application mobile permet de contourner l'écran de connexion.
+- L'interface web permet d'exporter les transcriptions au format SRT.
+- L'interface web permet de copier le texte de la transcription et d'ouvrir le document dans Indoc.
+- L'interface web affiche la source et la durée des fichiers dans l'administration.
+- L'interface web affiche correctement la durée des enregistrements.
+- L'interface web propose une nouvelle interface pour la liste des enregistrements.
+- Le backend permet de relancer la génération d'une transcription en cas d'échec.
+- Le backend supporte désormais plus de formats audio/vidéo.
+- Le backend stocke la source de l'enregistrement audio pour l'analyse.
 
 ### Évolutions techniques
-- **Backend:** Mise à jour de Python vers la version 3.14.5 et de Django vers la version 5.12.4. [#c41aac4](https://github.com/suitenumerique/dictaphone/commit/c41aac4)
-- **Frontend:** Amélioration de l'accessibilité de l'application web, avec des corrections d'attributs ARIA et de balises HTML. [#f427600](https://github.com/suitenumerique/dictaphone/commit/f427600) et autres commits liés.
-- **Frontend:** Refactoring du composant `SignalLevelMeter` pour une meilleure performance et une visualisation plus fluide. [#0386260](https://github.com/suitenumerique/dictaphone/commit/0386260)
-- **Backend:** Ajout d'une commande pour nettoyer les fichiers temporaires et supprimés. [#f270029](https://github.com/suitenumerique/dictaphone/commit/f270029)
-- **Mobile:** Mise à jour de la librairie React Native Audio API. [#5b915ac](https://github.com/suitenumerique/dictaphone/commit/5b915ac)
-- **Mobile:** Amélioration de la robustesse de la gestion des notifications sur iOS. [#f307f3c](https://github.com/suitenumerique/dictaphone/commit/f307f3c)
-- **Sécurité:** Utilisation de `secrets.compare_digest` pour une comparaison de chaînes de caractères plus sécurisée. [#4e8ce56](https://github.com/suitenumerique/dictaphone/commit/4e8ce56)
-- **Sécurité:** Mise à jour des dépendances avec des correctifs de sécurité (via Dependabot/Snyk). [#060cc31](https://github.com/suitenumerique/dictaphone/commit/060cc31), [#25cb521](https://github.com/suitenumerique/dictaphone/commit/25cb521), [#1fbdb00](https://github.com/suitenumerique/dictaphone/commit/1fbdb00), [#c673daf](https://github.com/suitenumerique/dictaphone/commit/c673daf), [#8ab4ab7](https://github.com/suitenumerique/dictaphone/commit/8ab4ab7)
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (React, i18next, formatjs, tanstack/react-query).
+- Mise à jour de Python à la version 3.14.5 et Django à la version 5.12.4.
+- Amélioration de la robustesse de l'authentification avec JWT et PKCE.
+- Refactoring du code mobile pour une meilleure organisation.
+- Ajout d'un script pour automatiser les releases mobiles.
+- Amélioration des logs pour faciliter le débogage des problèmes de connexion mobile.
+- Ajout d'une commande pour nettoyer les fichiers temporaires et supprimés.
+- Configuration du nettoyage des fichiers en tant que tâche cron.
+- Amélioration de la configuration du logging.
+- Backport de la configuration du logging depuis la documentation.
 
 ### Autres changements
-- **Documentation:** Mise à jour de la documentation pour l'utilisation locale en développement. [#d640ad9](https://github.com/suitenumerique/dictaphone/commit/d640ad9)
-- **README:** Ajout d'un lien vers la salle Matrix du projet. [#75733f8](https://github.com/suitenumerique/dictaphone/commit/75733f8)
-- **README:** Complétion du README pour la première release publique. [#2d7695d](https://github.com/suitenumerique/dictaphone/commit/2d7695d)
-- Diverses corrections de bugs et améliorations de code.
-- Mise à jour des dépendances.
+- Amélioration de l'accessibilité de l'interface web (titres, labels, contraste).
+- Mise à jour de la documentation et des fichiers README.
+- Ajout d'un lien vers la salle Matrix du projet.
+- Corrections de typos et améliorations de la lisibilité du code.
+- Ajout de tests Posthog pour le suivi des erreurs sur mobile.
+- Amélioration des messages d'alerte et des indications visuelles sur mobile.
+- Ajout de sons pour le démarrage et l'arrêt de l'enregistrement sur mobile.
+- Amélioration du rendu du niveau sonore sur l'interface web.
+- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
