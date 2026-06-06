@@ -18,6 +18,7 @@
 ├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── Dockerfile
+├── LICENSE
 ├── README.md
 ├── cmd
 │   └── gateway
@@ -31,16 +32,15 @@
 │   └── kevent.json
 ├── docs
 │   ├── architecture
-│   │   ├── async-flow.drawio.png
+│   │   ├── async-flow.png
 │   │   ├── llm-proxy.md
-│   │   ├── overview.drawio.png
 │   │   ├── overview.md
+│   │   ├── overview.png
 │   │   ├── priority.md
 │   │   ├── rate-limiting.md
 │   │   ├── request-flows.md
-│   │   ├── routing.drawio.png
-│   │   ├── service-registry.md
-│   │   └── sync-kafka-flow.drawio.png
+│   │   ├── routing.png
+│   │   └── service-registry.md
 │   ├── changelog.md
 │   ├── contributing
 │   │   ├── gitflow.md
@@ -48,26 +48,28 @@
 │   ├── deployment
 │   │   ├── configuration.md
 │   │   ├── helm.md
-│   │   └── kafka.md
+│   │   └── queue.md
 │   ├── index.md
 │   ├── runbooks
 │   │   ├── KeventGatewayHighErrorRate.md
-│   │   ├── KeventGatewayKafkaPublishErrors.md
 │   │   ├── KeventGatewayRateLimitErrors.md
 │   │   ├── KeventGatewayRateLimitHighRejectionRate.md
 │   │   ├── KeventGatewayS3Errors.md
-│   │   ├── KeventGatewaySyncJobsInFlightHigh.md
 │   │   ├── KeventRelayInferenceSlow.md
 │   │   ├── KeventRelayJobFailureRate.md
 │   │   └── KeventRelayS3Errors.md
-│   └── superpowers
-│       ├── plans
-│       │   └── 2026-05-27-unified-gc.md
-│       └── specs
-│           └── 2026-05-27-unified-gc-design.md
+│   └── schema
+│       ├── README.md
+│       ├── async-flow.excalidraw
+│       ├── async-flow.md
+│       ├── async-flow.png
+│       ├── overview.excalidraw
+│       ├── overview.md
+│       ├── overview.png
+│       ├── routing.excalidraw
+│       ├── routing.md
+│       └── routing.png
 ├── examples
-│   ├── inference-service.yaml
-│   ├── kafka-sources.yaml
 │   └── kafka-users.yaml
 ├── go.mod
 ├── go.sum
@@ -92,9 +94,15 @@
 │   │   ├── key_test.go
 │   │   ├── noop.go
 │   │   └── redis.go
+│   ├── concurrency
+│   │   └── semaphore.go
 │   ├── config
 │   │   ├── config.go
 │   │   └── config_test.go
+│   ├── consumer
+│   │   ├── manager.go
+│   │   ├── subscriber.go
+│   │   └── webhook.go
 │   ├── crypto
 │   │   ├── aes.go
 │   │   └── aes_test.go
@@ -117,10 +125,6 @@
 │   │   ├── sync_test.go
 │   │   └── testdata
 │   │       └── whisper-api-openapi.json
-│   ├── kafka
-│   │   ├── auth.go
-│   │   ├── consumer.go
-│   │   └── producer.go
 │   ├── llmproxy
 │   │   ├── handler.go
 │   │   ├── handler_test.go
@@ -148,6 +152,7 @@
 │   └── storage
 │       ├── redis.go
 │       ├── redis_gc_test.go
+│       ├── redis_test.go
 │       ├── s3.go
 │       └── s3_gc_test.go
 ├── mkdocs.yml
@@ -170,23 +175,22 @@
 │       ├── crypto
 │       │   ├── aes.go
 │       │   └── aes_test.go
-│       ├── kafka
-│       │   ├── auth.go
-│       │   └── publisher.go
-│       ├── lifecycle
-│       │   └── annotator.go
 │       ├── metrics
 │       │   └── metrics.go
 │       ├── model
-│       │   └── event.go
+│       │   └── job.go
+│       ├── queue
+│       │   ├── queue.go
+│       │   └── queue_test.go
 │       ├── relay
 │       │   ├── relay.go
-│       │   ├── relay_test.go
-│       │   └── sync.go
-│       └── storage
-│           ├── errors.go
-│           └── s3.go
+│       │   └── relay_test.go
+│       ├── storage
+│       │   ├── errors.go
+│       │   └── s3.go
+│       └── store
+│           └── redis.go
 └── tests
     └── smoke
         └── smoke.sh
-50 directories, 141 files
+49 directories, 146 files

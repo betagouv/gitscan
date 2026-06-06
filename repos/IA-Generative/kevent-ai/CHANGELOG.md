@@ -16,6 +16,62 @@ Versioning: each component is versioned independently — see tag conventions be
 
 ## Gateway
 
+### [v0.14.1] — 2026-06-05
+
+#### Added
+
+- **Priority queue** (`server.priority_header`): jobs are inserted at the head of the Redis queue (`LPUSH relay:<model>:pending`) when the configured header is present. No dedicated relay Deployment required — the relay's `BLMOVE LEFT RIGHT` naturally dequeues priority jobs first.
+- `kevent_async_jobs_submitted_total` counter (labels: `service_type`, `model`, `mode=async|async-priority`) — emitted at submission time.
+
+#### Changed
+
+- **Grafana dashboard**: removed Kafka/Knative/relay panels; added "Jobs async — Vue d'ensemble" row and "Relay — K8s" row (kube-state-metrics + redis_exporter). Bargauge/stat panels use raw counter values instead of `rate()`/`increase()`.
+
+#### Removed
+
+- `kevent_kafka_publish_duration_seconds` and `kevent_kafka_publish_errors_total` Prometheus metrics (Kafka was removed in v0.14.0; these counters were never emitted).
+
+---
+
+### [v0.14.0] — 2026-06-04
+
+#### Changed
+
+- **Kafka removed entirely** (`internal/kafka/` deleted, `kafka-go` dropped): the gateway no longer publishes `InputEvent` to Kafka. Jobs are now pushed directly to the relay Redis queue (`relay:<model>:pending` via `RPUSH` inside `SaveJob`).
+- **Redis-based completion notifications**: a new `internal/consumer` package replaces the Kafka `ConsumerManager`. A `Subscriber` listens on `jobs:<model>:completed` Redis pub/sub channels; a `WebhookSender` delivers results to `callback_url` with 3-attempt exponential backoff (2 s → 4 s → 8 s).
+- **Sync client disconnect propagation**: cancelling the HTTP client during a sync request now cancels the in-flight inference call. Cancelled jobs are kept in Redis (status `cancelled`) for GC instead of being deleted immediately.
+- **Distributed sync semaphore** via Redis — replaces the previous in-process atomic counter.
+
+#### Added
+
+- `job_ttl.cancelled` config field — dedicated TTL for cancelled jobs (default falls back to `global`).
+
+#### Removed
+
+- All Kafka config fields (`kafka.*`, `sync_topic`, `priority_topic`, `input_topic`, `result_topic`) and the `kafka-go` dependency.
+- Kafka Secret, env vars, and TLS volume from the Helm chart (`helm/gateway/templates/`).
+- `async_workers`, `cold_start_time`, `async_inference_url` config fields (async dispatch is now handled by the relay).
+- Prometheus counters tied to Kafka publish operations.
+
+---
+
+### [v0.13.0] — 2026-06-01
+
+#### Removed
+
+**Sync-over-Kafka path** (`internal/handler/sync.go`, `internal/config/`, `internal/metrics/`)
+- `sync_topic` config field removed — all `POST /v1/*` requests now always use direct proxy to `inference_url`, regardless of content type
+- `syncPriority` mechanism removed — the relay no longer acts as a Knative sidecar with priority deferral; it is now a standalone Kafka pull consumer (see relay v0.6.0)
+- Associated Prometheus counters for sync-over-Kafka removed
+
+Sync routing is now always:
+
+| Request | Path |
+|---|---|
+| Any `POST /v1/*` | Direct proxy to `inference_url` |
+
+---
+
 ### [v0.12.1] - 2026-05-29
 
 ### [v0.11.0] — 2026-05-27
@@ -504,6 +560,59 @@ New `lifecycle.gc` config block:
 ---
 
 ## Relay
+
+### [v0.6.2] — 2026-06-05
+
+#### Changed
+
+- **Prometheus metrics**: replaced `kevent_relay_kafka_publish_errors_total` (removed with Kafka) by two Redis-specific counters:
+  - `kevent_relay_redis_publish_errors_total` — failures publishing the completion notification to `jobs:<model>:completed` (Redis pub/sub)
+  - `kevent_relay_redis_done_errors_total` — failures removing the job from `relay:<model>:processing` after completion
+
+---
+
+### [v0.6.1] — 2026-06-04
+
+#### Changed
+
+- **Kafka consumer replaced by Redis queue** (`relay/internal/queue/`): relay now pops jobs from `relay:<model>:pending` via `BLMOVE` instead of consuming a Kafka topic. Eliminates the `kafka-go` dependency and Kafka credentials from the relay config.
+- **One job per pod lifecycle**: relay processes a single job then exits cleanly, letting Kubernetes restart it for the next job. `queue_pop_timeout` (default `30s`) controls how long the relay waits for a job before exiting with code 0.
+
+#### Added
+
+- `queue_pop_timeout` config field — duration the relay waits on the Redis queue before exiting (e.g. `"30s"`). Exit code 0 when the queue is empty after the timeout.
+
+#### Fixed
+
+- `context.Canceled` from inference is now propagated correctly instead of publishing a failed result event — avoids spurious failures on clean shutdowns.
+- Context propagated to the inference HTTP call (`relay/internal/adapter/`) — cancellation now reaches the in-flight request.
+
+#### Removed
+
+- `PodAnnotator` / pod-deletion-cost mechanism — no longer needed since the relay processes one job and exits; Kubernetes does not need to deprioritise pods mid-inference.
+- All Kafka config fields (`kafka.*`, `input_topic`, `consumer_group`) — replaced by `redis.addr` / `redis.queue_pop_timeout`.
+
+---
+
+### [v0.6.0] — 2026-06-01
+
+#### Changed
+
+- **Rewritten as Kafka pull consumer** (`relay/internal/kafka/`): relay now pulls jobs directly from the Kafka input topic using a `kafka-go` consumer group instead of being invoked by Knative KafkaSource. Eliminates the KafkaSource and Knative dependency from the inference deployment.
+
+#### Added
+
+- `kafka.input_topic` and `kafka.consumer_group` config fields.
+- `kafka.Consumer` pull-based reader with SASL/TLS support (reuses `buildDialer` from auth.go).
+- `PodAnnotator`: sets `controller.kubernetes.io/pod-deletion-cost` during inference to deprioritise the pod for deletion under load.
+- Graceful shutdown: waits for the in-flight job to complete before exiting.
+- Readiness gate: relay waits for the local inference service to become healthy before consuming the first message.
+
+#### Fixed
+
+- Defers now run on Kafka fetch errors instead of calling `os.Exit` directly.
+
+---
 
 ### [v0.5.4] — 2026-05-28
 

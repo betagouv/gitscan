@@ -1,9 +1,83 @@
+2026-06-05T15:09:09+02:00 - 6a8ffb8 - Ronan DUCAMP : Add: License
+2026-06-05T14:42:54+02:00 - ab0447d - Ronan DUCAMP : fix(docs): update mkdocs nav — replace kafka with queue, remove deleted runbook
+2026-06-05T14:36:33+02:00 - 785279a - Ronan DUCAMP : fix release command
+2026-06-05T14:34:54+02:00 - 29e48e7 - Ronan Ducamp : Merge pull request #87 from IA-Generative/release/gateway/v0.14.1
+2026-06-05T14:34:09+02:00 - 8ddc767 - Ronan DUCAMP : chore(release): gateway v0.14.1
+2026-06-05T14:34:02+02:00 - 7737b05 - Ronan Ducamp : Merge pull request #86 from IA-Generative/release/relay/v0.6.2
+2026-06-05T14:32:51+02:00 - 1103e58 - Ronan DUCAMP : chore(release): relay v0.6.2
+2026-06-05T14:25:08+02:00 - 188cfb1 - Ronan Ducamp : Merge pull request #84 from IA-Generative/docs/kafka-to-redis
+2026-06-05T14:24:18+02:00 - 16857ef - Ronan DUCAMP : docs: migrate documentation from Kafka to Redis queue
+2026-06-05T11:48:34+02:00 - 256e1f2 - Ronan Ducamp : Merge pull request #83 from IA-Generative/feat/remove-kafka-metrics-update-dashboard
+2026-06-05T10:53:56+02:00 - 9c24b58 - Ronan DUCAMP : fix(dashboard): use raw counters instead of rate() for bargauge/stat totals
+2026-06-05T10:50:23+02:00 - 2b17e71 - Ronan DUCAMP : fix(dashboard): replace increase() with rate() in all panels
+2026-06-05T10:36:13+02:00 - 9bbe1b9 - Ronan Ducamp : Merge pull request #82 from IA-Generative/feat/priority-queue-lpush
+2026-06-05T09:50:35+02:00 - fad6f4f - Ronan DUCAMP : feat(metrics,dashboard): replace Kafka metrics with Redis, update Grafana
+2026-06-05T09:13:32+02:00 - c9bfe56 - Ronan DUCAMP : feat(gateway): implement priority queue via LPUSH
+2026-06-04T17:50:11+02:00 - 5b6a466 - Ronan DUCAMP : Merge branch 'develop' of github.com:IA-Generative/kevent-ai into develop
+2026-06-04T17:50:02+02:00 - 207118a - Ronan DUCAMP : chore: back-merge gateway v0.14.0 / relay v0.6.1 into develop
+2026-06-04T17:49:21+02:00 - e65d6f1 - Ronan DUCAMP : docs: remove stale Kafka references for v0.14.0 / relay v0.6.1
+2026-06-04T17:43:34+02:00 - 3c5fd33 - Ronan Ducamp : Merge pull request #81 from IA-Generative/release/gateway/v0.14.0
+2026-06-04T17:43:15+02:00 - 0f69ffc - Ronan Ducamp : Merge pull request #80 from IA-Generative/release/relay/v0.6.1
+2026-06-04T17:39:32+02:00 - 16616d1 - Ronan DUCAMP : chore(release): gateway v0.14.0
+2026-06-04T17:38:35+02:00 - cf4686f - Ronan DUCAMP : chore(release): relay v0.6.1
+2026-06-04T11:59:11+02:00 - 0e30c7d - Ronan Ducamp : Merge pull request #79 from IA-Generative/feat/remove-relay-async-worker
+2026-06-04T11:27:12+02:00 - fa08c52 - Ronan DUCAMP : feat(relay): make queue pop timeout configurable via queue_pop_timeout
+2026-06-04T11:22:09+02:00 - eb9f0c1 - Ronan DUCAMP : fix(relay): exit 0 when queue is empty after pop timeout
+2026-06-04T11:03:51+02:00 - d6d1a65 - Ronan DUCAMP : fix(relay): propagate context.Canceled from inference instead of publishing failed
+2026-06-04T10:06:12+02:00 - 66b55d7 - Ronan DUCAMP : feat(relay): remove PodAnnotator (pod-deletion-cost no longer needed)
+2026-06-04T09:45:56+02:00 - 0242747 - Ronan DUCAMP : chore: remove async_workers/cold_start_time/async_inference_url config fields
+2026-06-04T09:41:13+02:00 - 99786bc - Ronan DUCAMP : revert(gateway): restore consumer.Manager, remove asyncworker wiring
+2026-06-03T16:39:52+02:00 - 8813aae - Ronan DUCAMP : feat(concurrency): distribute sync semaphore and async dispatcher via Redis
+2026-06-03T16:23:51+02:00 - 6fd7c36 - Ronan DUCAMP : feat(config): add dedicated cancelled TTL in job_ttl
+2026-06-03T15:29:43+02:00 - de9c4a5 - Ronan DUCAMP : feat(asyncworker): add cold_start_time stagger and async_inference_url
+2026-06-03T11:25:47+02:00 - 4c7c5fc - Ronan Ducamp : Merge pull request #78 from IA-Generative/feat/kafka-to-redis-queue
+2026-06-03T11:23:15+02:00 - 3d716d2 - Ronan DUCAMP : feat: remove relay, gateway handles async jobs directly
+2026-06-03T10:03:40+02:00 - 496b17b - Ronan DUCAMP : refactor(cancel): keep cancelled jobs in Redis, let GC clean up
+2026-06-03T09:59:12+02:00 - 23a92a5 - Ronan DUCAMP : fix(relay/adapter): propagate context to inference HTTP call
+2026-06-03T09:40:44+02:00 - def3afc - Ronan DUCAMP : feat: cancel in-progress jobs and propagate sync client disconnect
+2026-06-02T17:54:32+02:00 - 446fcee - Ronan DUCAMP : test(relay/queue): add queue behaviour tests with miniredis
+2026-06-02T17:21:28+02:00 - 6807258 - Ronan DUCAMP : feat(relay): process one job per pod lifecycle
+2026-06-02T16:48:09+02:00 - 2d75a1e - Ronan DUCAMP : fix(test): make TestSyncHandler_MultiBackend_4xx_NotRetried deterministic
+2026-06-02T16:41:48+02:00 - e99a9d3 - Ronan DUCAMP : chore(merge): resolve conflicts with develop (remove Kafka topics)
+2026-06-02T15:43:00+02:00 - 8af4038 - Ronan DUCAMP : feat(gateway): remove Kafka entirely, wire Redis subscriber as consumer
+2026-06-02T15:42:28+02:00 - 9e9b08a - Ronan DUCAMP : feat(relay): replace Kafka consumer with Redis queue (BLMOVE)
+2026-06-02T14:53:51+02:00 - 154010d - Ronan DUCAMP : feat(gateway): add Redis subscriber and webhook sender to replace Kafka ConsumerManager
+2026-06-02T14:49:08+02:00 - a4f772d - Ronan DUCAMP : feat(gateway): SaveJob pushes to relay queue; handler no longer publishes to Kafka
+2026-06-02T14:44:25+02:00 - 3aef644 - Ronan DUCAMP : feat(model): add InferenceURL and Params to Job for Redis-only relay
+2026-06-02T12:00:33+02:00 - d8d8591 - Ronan Ducamp : Merge pull request #76 from IA-Generative/fix/remove-sync-topic-priority-topic
+2026-06-01T17:09:20+02:00 - e644373 - Ronan DUCAMP : fix: remove sync_topic and priority_topic from docs, config and helm
+2026-06-01T16:30:12+02:00 - 1d70db2 - Ronan DUCAMP : Merge branch 'develop'
+2026-06-01T16:30:07+02:00 - 0e0fd7b - Ronan DUCAMP : docs(diagrams): update architecture diagrams for v0.13.0
+2026-06-01T16:22:56+02:00 - 14c9ec2 - Ronan DUCAMP : Merge branch 'main' into develop
+2026-06-01T16:22:03+02:00 - 46bec0e - Ronan DUCAMP : docs: update site docs for v0.13.0 (relay pull consumer, remove sync-over-Kafka)
+2026-06-01T16:09:02+02:00 - 5afbc54 - Ronan Ducamp : Merge pull request #75 from IA-Generative/release/gateway/v0.13.0
+2026-06-01T15:59:27+02:00 - 242c2b2 - Ronan DUCAMP : chore(release): gateway v0.13.0
+2026-06-01T15:47:33+02:00 - 1694db3 - Ronan Ducamp : Merge pull request #73 from IA-Generative/worktree-feature+jobsink-async-direct-sync
+2026-05-29T15:57:28+02:00 - e134b29 - Ronan DUCAMP : chore: untrack k8s/ files (local, covered by .gitignore)
+2026-05-29T15:50:00+02:00 - 757cf10 - Ronan DUCAMP : docs: update CLAUDE.md references to new k8s deployment manifest
+2026-05-29T15:49:50+02:00 - ccc4137 - Ronan DUCAMP : docs(relay): fix stale Processor doc comment
+2026-05-29T15:49:40+02:00 - 6b850c1 - Ronan DUCAMP : fix(relay): let defers run on kafka fetch error instead of os.Exit
+2026-05-29T15:49:29+02:00 - 75f0965 - Ronan DUCAMP : fix(relay): wait for inference service to be ready before consuming Kafka
+2026-05-29T15:35:07+02:00 - b7004cc - Ronan DUCAMP : chore(k8s): remove KServe InferenceService and KafkaSources (replaced by Deployment + KEDA)
+2026-05-29T15:33:27+02:00 - 3a68760 - Ronan DUCAMP : feat(k8s): add KEDA ScaledObject for whisper-large-v3 Kafka lag scaling
+2026-05-29T15:32:22+02:00 - 70886cf - Ronan DUCAMP : feat(k8s): add Deployment + Service + RBAC for whisper-large-v3
+2026-05-29T15:31:52+02:00 - 44f195c - Ronan DUCAMP : feat(k8s): rename relay ConfigMap to kevent-relay, add consumer fields
+2026-05-29T15:28:57+02:00 - 413fdfa - Ronan DUCAMP : feat(relay): rewrite as Kafka pull consumer with graceful shutdown
+2026-05-29T15:27:13+02:00 - e692a38 - Ronan DUCAMP : feat(relay): add pod-deletion-cost annotator to processor
+2026-05-29T15:25:18+02:00 - d79b57d - Ronan DUCAMP : feat(relay/kafka): add Consumer pull-based reader
+2026-05-29T15:24:10+02:00 - df17ba3 - Ronan DUCAMP : feat(relay/kafka): add buildDialer for consumer readers
+2026-05-29T15:23:28+02:00 - 663346e - Ronan DUCAMP : docs(relay): add example comments for input_topic and consumer_group
+2026-05-29T15:21:02+02:00 - 18ec218 - Ronan DUCAMP : feat(relay): add input_topic and consumer_group to kafka config
+2026-05-29T15:11:30+02:00 - b81af7d - Ronan DUCAMP : docs: add relay Kafka consumer + KEDA deployment implementation plan
+2026-05-29T15:04:31+02:00 - 9546e98 - Ronan DUCAMP : docs: add relay Kafka consumer + KEDA deployment design spec
 2026-05-29T15:01:54+02:00 - c181295 - Bastian SOMON : release: gateway v0.12.1 / chart 0.12.1
 2026-05-29T14:56:04+02:00 - 3e3181f - bastiansmn : Merge pull request #74 from IA-Generative/release/gateway-v0.12.1
+2026-05-29T14:34:04+02:00 - fec423c - Bastian SOMON : fix: multi model choice
 2026-05-29T14:34:04+02:00 - c0ff8d3 - Bastian SOMON : fix: remove legacy doc
 2026-05-29T14:34:04+02:00 - aafc74d - Bastian SOMON : fix: model swagger spec
-2026-05-29T14:34:04+02:00 - fec423c - Bastian SOMON : fix: multi model choice
 2026-05-29T14:34:04+02:00 - 0776175 - Bastian SOMON : feat: add gateway overlay for models
+2026-05-29T14:12:58+02:00 - 8753676 - Ronan DUCAMP : fix(relay): delete input file synchronously after job success
+2026-05-29T10:32:00+02:00 - b3c4fc2 - Ronan DUCAMP : feat(relay): replace sidecar+sync-over-Kafka with JobSink one-shot binary
 2026-05-28T10:22:28+02:00 - 21d28e8 - Ronan DUCAMP : docs: resolve merge conflicts — relay v0.5.4 fixes, v0.5.3 version bump, examples v0.5.4
 2026-05-28T10:21:34+02:00 - b1ada30 - Ronan DUCAMP : docs(changelog): fold gateway v0.11.1 into v0.11.0 to match tag structure
 2026-05-28T10:12:28+02:00 - 3987c05 - Ronan DUCAMP : docs(gateway): add missing v0.11.0 CHANGELOG entry (unified GC, lifecycle config)
@@ -47,33 +121,33 @@
 2026-05-19T17:27:28+02:00 - 88515bf - Bastian SOMON : fix: helm version
 2026-05-19T17:08:24+02:00 - e8b62d5 - bastiansmn : Merge pull request #57 from IA-Generative/fix/rebase
 2026-05-18T16:19:04+02:00 - 7c4802e - Ronan Ducamp : Merge pull request #56 from IA-Generative/release/v0.10.0
-2026-05-18T16:18:33+02:00 - eeea142 - Ronan DUCAMP : chore(release): gateway v0.10.0 / relay v0.5.2
-2026-05-18T16:18:33+02:00 - 9ae2764 - Ronan DUCAMP : fix(sync): delete orphaned job on timeout; filter stale scan by pending status
-2026-05-18T16:18:33+02:00 - f014d55 - Quentin : test(handler): add Cancel and AdminPurge tests + async job metrics
-2026-05-18T16:18:33+02:00 - b00c910 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
-2026-05-18T16:18:33+02:00 - 48a428c - Quentin : fix(cancel): restrict to pending-only; add GC Prometheus counter
-2026-05-18T16:18:33+02:00 - 07b3c39 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
 2026-05-18T16:18:33+02:00 - fc90d05 - Bastian SOMON : feat: deploy infos endpoints and admin purge
+2026-05-18T16:18:33+02:00 - f014d55 - Quentin : test(handler): add Cancel and AdminPurge tests + async job metrics
+2026-05-18T16:18:33+02:00 - eeea142 - Ronan DUCAMP : chore(release): gateway v0.10.0 / relay v0.5.2
 2026-05-18T16:18:33+02:00 - bef9057 - Ronan DUCAMP : test(ratelimit+models): unit tests for capabilities and X-RateLimit headers
-2026-05-18T16:18:33+02:00 - 2626e37 - Ronan DUCAMP : feat(dashboards): add kevent-audit-trail Grafana dashboard
-2026-05-18T16:18:33+02:00 - a6ee21a - Ronan DUCAMP : test(guardrails): add integration tests for PII blocking in SyncHandler
-2026-05-18T16:18:33+02:00 - 341c45d - Ronan DUCAMP : feat(metrics): add kevent_guardrails_pii_blocked_total counter
-2026-05-18T16:18:33+02:00 - 119b91a - Ronan DUCAMP : fix(guardrails): log PII-blocked requests as security events
-2026-05-18T16:18:33+02:00 - 57b11d6 - Ronan DUCAMP : feat: guardrails PII detection for LLM JSON requests
-2026-05-18T16:18:33+02:00 - 4647f41 - Ronan DUCAMP : test(audit-trail): add streaming and backend-error audit log coverage
-2026-05-18T16:18:33+02:00 - 2fe53df - Ronan DUCAMP : feat: structured audit trail for LLM requests (disabled by default)
 2026-05-18T16:18:33+02:00 - b5571ba - Ronan DUCAMP : fix(relay): treat S3 NoSuchKey as permanent failure to stop infinite retries
+2026-05-18T16:18:33+02:00 - b00c910 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
+2026-05-18T16:18:33+02:00 - a6ee21a - Ronan DUCAMP : test(guardrails): add integration tests for PII blocking in SyncHandler
+2026-05-18T16:18:33+02:00 - 9ae2764 - Ronan DUCAMP : fix(sync): delete orphaned job on timeout; filter stale scan by pending status
 2026-05-18T16:18:33+02:00 - 8506408 - Ronan DUCAMP : fix(relay): detach inference call from Knative request context
-2026-05-18T16:18:33+02:00 - 00352ca - Ronan DUCAMP : fix(relay): allow timeout: 0s to disable inference timeout
 2026-05-18T16:18:33+02:00 - 7723de9 - Ronan DUCAMP : feat: X-RateLimit-* response headers and /v1/models capability metadata
+2026-05-18T16:18:33+02:00 - 57b11d6 - Ronan DUCAMP : feat: guardrails PII detection for LLM JSON requests
+2026-05-18T16:18:33+02:00 - 48a428c - Quentin : fix(cancel): restrict to pending-only; add GC Prometheus counter
+2026-05-18T16:18:33+02:00 - 4647f41 - Ronan DUCAMP : test(audit-trail): add streaming and backend-error audit log coverage
+2026-05-18T16:18:33+02:00 - 341c45d - Ronan DUCAMP : feat(metrics): add kevent_guardrails_pii_blocked_total counter
+2026-05-18T16:18:33+02:00 - 2fe53df - Ronan DUCAMP : feat: structured audit trail for LLM requests (disabled by default)
+2026-05-18T16:18:33+02:00 - 2626e37 - Ronan DUCAMP : feat(dashboards): add kevent-audit-trail Grafana dashboard
+2026-05-18T16:18:33+02:00 - 119b91a - Ronan DUCAMP : fix(guardrails): log PII-blocked requests as security events
+2026-05-18T16:18:33+02:00 - 07b3c39 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
+2026-05-18T16:18:33+02:00 - 00352ca - Ronan DUCAMP : fix(relay): allow timeout: 0s to disable inference timeout
 2026-05-18T16:12:34+02:00 - 1c831b0 - Ronan Ducamp : Merge pull request #54 from IA-Generative/feat/endpoints-infos
 2026-05-18T15:14:00+02:00 - 5c6b2fc - Ronan DUCAMP : fix(sync): delete orphaned job on timeout; filter stale scan by pending status
 2026-05-18T12:46:19+02:00 - c17c2c5 - Quentin : test(handler): add Cancel and AdminPurge tests + async job metrics
-2026-05-18T12:46:19+02:00 - 1a13823 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
 2026-05-18T12:46:19+02:00 - 2c5a762 - Quentin : fix(cancel): restrict to pending-only; add GC Prometheus counter
-2026-05-18T12:38:10+02:00 - 8f6ba01 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
-2026-05-18T12:38:10+02:00 - ed5cf92 - Bastian SOMON : feat: deploy infos endpoints and admin purge
+2026-05-18T12:46:19+02:00 - 1a13823 - Quentin : fix(purge): add limit param to AdminPurge; document GC/S3 TTL dependency
 2026-05-18T12:38:10+02:00 - f0079ba - etiquet : Update .gitignore
+2026-05-18T12:38:10+02:00 - ed5cf92 - Bastian SOMON : feat: deploy infos endpoints and admin purge
+2026-05-18T12:38:10+02:00 - 8f6ba01 - Quentin : fix(gc): prevent ghost resurrection and clean S3 on stale sweep
 2026-05-18T11:46:58+02:00 - 9f5c9fe - Ronan Ducamp : Merge pull request #48 from IA-Generative/test/ratelimit-models-capabilities
 2026-05-18T11:46:13+02:00 - bb757a0 - Ronan DUCAMP : test(ratelimit+models): unit tests for capabilities and X-RateLimit headers
 2026-05-18T11:40:10+02:00 - f024dd1 - Ronan Ducamp : Merge pull request #47 from IA-Generative/feat/audit-trail-dashboard
@@ -158,10 +232,10 @@
 2026-04-15T15:46:56+02:00 - e7cd373 - Ronan Ducamp : Merge pull request #22 from IA-Generative/release/v0.6.3
 2026-04-15T15:20:50+02:00 - 28df317 - Ronan DUCAMP : release: gateway v0.6.3 / helm 0.6.4
 2026-04-15T15:20:11+02:00 - b8ec5a0 - Ronan DUCAMP : test(gateway): unit tests for reserved path guard + fix /-/ prefix bug
-2026-04-15T15:20:11+02:00 - 3f6ecf8 - Ronan DUCAMP : fix(gateway): guard reserved routes against config path override
 2026-04-15T15:20:11+02:00 - 8381a09 - Ronan DUCAMP : fix(gateway): register exact sync paths instead of prefix wildcards
-2026-04-15T15:20:11+02:00 - 29b755c - Ronan DUCAMP : docs: document inference_headers for authenticated backends
 2026-04-15T15:20:11+02:00 - 4253707 - Ronan DUCAMP : feat(gateway): add inference_headers per-service config (closes #18)
+2026-04-15T15:20:11+02:00 - 3f6ecf8 - Ronan DUCAMP : fix(gateway): guard reserved routes against config path override
+2026-04-15T15:20:11+02:00 - 29b755c - Ronan DUCAMP : docs: document inference_headers for authenticated backends
 2026-04-15T12:05:28+02:00 - 4a63b64 - Ronan Ducamp : Merge pull request #21 from IA-Generative/fix/ci-path-filters
 2026-04-15T12:05:07+02:00 - a5f3f0f - Ronan DUCAMP : ci: merge develop — use actions-runner-controller runner
 2026-04-15T12:02:44+02:00 - b4b1d29 - Ronan DUCAMP : ci: skip build and tests when unrelated files change
