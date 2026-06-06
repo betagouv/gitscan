@@ -1,21 +1,20 @@
-## Changelog : sites-conformes (30 derniers jours, au 1er juin 2026)
+## Changelog : sites-conformes (30 derniers jours, au 7 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse de l'application, notamment avec l'ajout de Sentry pour la surveillance des erreurs, et des corrections de bugs sur le frontend. Une nouvelle fonctionnalité majeure permet le stockage des médias directement en base de données PostgreSQL, offrant une alternative à S3. Des travaux de packagification et de documentation ont également été réalisés.
+Ce changelog présente les améliorations apportées à Sites Conformes au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de Sentry pour la surveillance des erreurs, des améliorations de la documentation, la possibilité de stocker les médias directement en base de données (PostgreSQL) et des corrections de bugs sur l'interface utilisateur. Des travaux de packagification et de préparation de la release v3.2.0 ont également été réalisés.
 
 ### Évolutions fonctionnelles
-- **Stockage des médias en PostgreSQL :** Possibilité de stocker les médias directement dans la base de données PostgreSQL, offrant une alternative à l'utilisation de S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
-- **Correction de bugs frontend :** Résolution de plusieurs bugs impactant l'interface utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
-- **Correction du problème `clean_name` vide :** Résolution d'un bug où le champ `clean_name` pouvait être vide sur les champs de formulaire. [#492](https://github.com/numerique-gouv/sites-conformes/issues/492)
+- **Stockage des médias :** Possibilité de stocker les médias directement en PostgreSQL, offrant une alternative au stockage sur S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
+- **Corrections de bugs front-end :** Résolution de plusieurs bugs affectant l'interface utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
 
 ### Évolutions techniques
-- **Intégration de Sentry :** Ajout de Sentry pour la surveillance et la gestion des erreurs en production. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
-- **Packagification :** Travaux de packagification pour améliorer la structure du projet. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506) et [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
+- **Intégration de Sentry :** Ajout de Sentry pour la surveillance et le suivi des erreurs applicatives. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
+- **Packagification :** Travaux de packagification du projet, incluant la récupération de la documentation et la préparation de la release v3.2.0. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506), [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
 - **Mise à jour des dépendances Python :** Mise à jour des dépendances Python pour bénéficier des dernières corrections et améliorations. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
-- **Refactoring du code :** Déplacement des sources namespacées dans `sites_conformes/`.
-- **Préparation pour la version 3.2.0 :** Application des corrections automatiques de pre-commit et noms de packages.
+- **Refactoring :** Déplacement des sources namespacées dans le répertoire `sites_conformes/` en préparation de la release v3.2.0.
+- **Préparation release v3.2.0 :** Application automatique des corrections proposées par `pre-commit` pour la version 3.2.0.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
-- **Changement de nom du dépôt :** Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
-- **Annulation d'une migration :** Annulation d'une migration récente.
+- **Documentation :** Mise à jour de la documentation du projet. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
+- **Nom du dépôt :** Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
+- **Configuration :** Ajout de `demo` à `slugignore`.
