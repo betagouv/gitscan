@@ -153,6 +153,8 @@
     │   │   │   │           ├── change_form.html
     │   │   │   │           └── regenerated_tokens.html
     │   │   │   ├── emails
+    │   │   │   │   ├── _invitation_layout.html
+    │   │   │   │   ├── _rsvp_buttons.html
     │   │   │   │   ├── calendar_invitation.html
     │   │   │   │   ├── calendar_invitation.txt
     │   │   │   │   ├── calendar_invitation_cancel.html
@@ -162,6 +164,7 @@
     │   │   │   │   ├── calendar_invitation_update.html
     │   │   │   │   └── calendar_invitation_update.txt
     │   │   │   └── rsvp
+    │   │   │       ├── _common_styles.html
     │   │   │       ├── confirm.html
     │   │   │       └── response.html
     │   │   ├── templatetags
@@ -228,7 +231,10 @@
     │   └── worker.py
     ├── caldav
     │   ├── Dockerfile
+    │   ├── bin
+    │   │   └── patch-sabredav-max-date.php
     │   ├── composer.json
+    │   ├── composer.lock
     │   ├── init-database.sh
     │   ├── php-fpm.conf
     │   ├── sabredav.conf
@@ -275,28 +281,24 @@
     │   │   │   ├── .env.development
     │   │   │   ├── .gitignore
     │   │   │   ├── README.md
-    │   │   │   ├── __mocks__
-    │   │   │   │   └── fileMock.js
     │   │   │   ├── cunningham.ts
     │   │   │   ├── eslint.config.mjs
-    │   │   │   ├── jest.config.ts
-    │   │   │   ├── next.config.ts
+    │   │   │   ├── index.html
     │   │   │   ├── package.json
     │   │   │   ├── public
-    │   │   │   │   ├── assets
-    │   │   │   │   │   ├── 401-background.png
-    │   │   │   │   │   ├── 403-background.png
-    │   │   │   │   │   ├── anct_favicon.png
-    │   │   │   │   │   ├── anct_logo-icon.svg
-    │   │   │   │   │   ├── anct_logo_alpha.svg
-    │   │   │   │   │   ├── anct_logo_beta.svg
-    │   │   │   │   │   ├── cal_icon_no_number.svg
-    │   │   │   │   │   ├── cal_logotype_text_no_number.svg
-    │   │   │   │   │   ├── favicon.png
-    │   │   │   │   │   ├── logo-icon_alpha.svg
-    │   │   │   │   │   ├── logo-icon_beta.svg
-    │   │   │   │   │   ├── logo-suite-numerique.png
-    │   │   │   │   │   └── logo_alpha.svg
+    │   │   │   │   ├── 401-background.png
+    │   │   │   │   ├── 403-background.png
+    │   │   │   │   ├── anct_favicon.png
+    │   │   │   │   ├── anct_logo-icon.svg
+    │   │   │   │   ├── anct_logo_alpha.svg
+    │   │   │   │   ├── anct_logo_beta.svg
+    │   │   │   │   ├── cal_icon_no_number.svg
+    │   │   │   │   ├── cal_logotype_text_no_number.svg
+    │   │   │   │   ├── favicon.png
+    │   │   │   │   ├── logo-icon_alpha.svg
+    │   │   │   │   ├── logo-icon_beta.svg
+    │   │   │   │   ├── logo-suite-numerique.png
+    │   │   │   │   ├── logo_alpha.svg
     │   │   │   │   └── mime-video.svg
     │   │   │   ├── src
     │   │   │   │   ├── assets
@@ -325,6 +327,8 @@
     │   │   │   │   │   │   ├── fetchApi.ts
     │   │   │   │   │   │   ├── types.ts
     │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── app
+    │   │   │   │   │   │   └── AppContext.tsx
     │   │   │   │   │   ├── auth
     │   │   │   │   │   │   ├── Auth.tsx
     │   │   │   │   │   │   ├── components
@@ -374,6 +378,7 @@
     │   │   │   │   │   │   │       ├── SchedulerToolbar.scss
     │   │   │   │   │   │   │       ├── SchedulerToolbar.tsx
     │   │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │   │       │   ├── RecurrenceEditor.helpers.test.ts
     │   │   │   │   │   │   │       │   ├── attendees-utils.test.ts
     │   │   │   │   │   │   │       │   └── organizer-for-calendar.test.ts
     │   │   │   │   │   │   │       ├── attendees-utils.ts
@@ -415,6 +420,7 @@
     │   │   │   │   │   │   │       │   ├── MobileToolbar.tsx
     │   │   │   │   │   │   │       │   ├── WeekDayBar.scss
     │   │   │   │   │   │   │       │   └── WeekDayBar.tsx
+    │   │   │   │   │   │   │       ├── partstatBadge.ts
     │   │   │   │   │   │   │       ├── scheduler-theme.scss
     │   │   │   │   │   │   │       ├── types.ts
     │   │   │   │   │   │   │       └── utils
@@ -433,6 +439,7 @@
     │   │   │   │   │   │   │       ├── EventCalendarAdapter.ts
     │   │   │   │   │   │   │       ├── __tests__
     │   │   │   │   │   │   │       │   ├── CalDavService.connect.test.ts
+    │   │   │   │   │   │   │       │   ├── CalDavService.deleteEvent.test.ts
     │   │   │   │   │   │   │       │   ├── CalDavService.moveEvent.test.ts
     │   │   │   │   │   │   │       │   ├── caldav-helpers.test.ts
     │   │   │   │   │   │   │       │   ├── freebusy-builder.test.ts
@@ -559,31 +566,36 @@
     │   │   │   │   │   ├── useFeatureFlag.ts
     │   │   │   │   │   ├── useIsMobile.ts
     │   │   │   │   │   └── useThemeCustomization.tsx
-    │   │   │   │   ├── pages
+    │   │   │   │   ├── main.tsx
+    │   │   │   │   ├── routes
     │   │   │   │   │   ├── 401.tsx
     │   │   │   │   │   ├── 403.tsx
-    │   │   │   │   │   ├── _app.tsx
-    │   │   │   │   │   ├── _document.tsx
-    │   │   │   │   │   ├── calendar.scss
+    │   │   │   │   │   ├── __root.tsx
+    │   │   │   │   │   ├── availabilities.tsx
     │   │   │   │   │   ├── calendar.tsx
-    │   │   │   │   │   ├── index.scss
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   ├── integrations.tsx
     │   │   │   │   │   ├── no-access.tsx
-    │   │   │   │   │   ├── resources.tsx
-    │   │   │   │   │   └── settings.tsx
+    │   │   │   │   │   └── resources.tsx
     │   │   │   │   ├── styles
     │   │   │   │   │   ├── cunningham-tokens-sass.scss
     │   │   │   │   │   ├── cunningham-tokens.css
     │   │   │   │   │   ├── cunningham-tokens.ts
-    │   │   │   │   │   └── globals.scss
-    │   │   │   │   └── utils
-    │   │   │   │       ├── date.ts
-    │   │   │   │       └── useQueries.ts
+    │   │   │   │   │   ├── globals.scss
+    │   │   │   │   │   └── views
+    │   │   │   │   │       ├── calendar.scss
+    │   │   │   │   │       └── index.scss
+    │   │   │   │   ├── utils
+    │   │   │   │   │   ├── date.ts
+    │   │   │   │   │   └── useQueries.ts
+    │   │   │   │   └── vite-env.d.ts
     │   │   │   ├── svg.d.ts
     │   │   │   ├── test-dst.js
     │   │   │   ├── tsconfig.json
-    │   │   │   └── types.d.ts
+    │   │   │   ├── tsr.config.json
+    │   │   │   ├── types.d.ts
+    │   │   │   ├── vite.config.mts
+    │   │   │   └── vitest.config.ts
     │   │   └── e2e
     │   │       ├── .gitignore
     │   │       ├── __tests__
@@ -598,4 +610,4 @@
     │   └── package.json
     └── proxy
         └── Caddyfile
-131 directories, 469 files
+132 directories, 480 files
