@@ -12,7 +12,24 @@ Ce site est construit avec Jekyll.
 > Nous ne sommes pas développeurs Ruby et nous découvrons son écosystème.
 > Il se peut que les instructions ci-dessous semblent mauvaises à une personne connaissant bien Ruby 🙏
 
-- Installer les [pré-requis Jekyll](https://jekyllrb.com/docs/#prerequisites) (suivre les pages détaillées de prérequis pour chaque OS)
+#### Ruby
+
+Ruby est installé avec `rbenv`, ce qui permet de sélectionner la version indépendamment de celui proposé par le système d’exploitation, qui peut parfois avoir du retard sur les dernières versions stables.
+
+```shell
+sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev libyaml-dev libffi-dev libgdbm-dev libncurses-dev curl git
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
+source ~/.bashrc
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+rbenv install 4.0.5
+```
+
+#### Bundler
 
 - Installer `bundler`
 
@@ -22,6 +39,8 @@ $ export GEM_HOME="$HOME/gems/" # Pointer vers un dossier sur lequel vous avez d
 # Ne pas installer avec `sudo`
 $ gem install bundler -V
 ```
+
+#### Dépendances
 
 - Installer les dépendances Jekyll de ce projet
 
@@ -115,11 +134,12 @@ Pour celà, on procède en plusieurs étapes :
 
 1. Faire un dump de la base au cas où
 2. Redémarre le portail en mode maintenance (variable d'environnement MODE_MAINTENANCE=true)
-3. lancer la console d'administration (`pnpm admin`)
-4. exécuter la commande de migration de hache (`> await admin.migreToutLesHaches(2, 'leNouveauSel')`)
-   > Où le premier paramètre est la nouvelle version du hache, et le deuxième paramètre est le nouveau
-5. Rajouter la nouvelle variable d'environnement contenant le nouveau sel (ici, puisque la nouvelle version est la 2, on aura la variable d'env `HACHAGE_SECRET_DE_HACHAGE_2=leNouveauSel`)
-6. Redémarre le portail en désactivant le mode maintenance
+3. Assurez vous que les bases msc et msc-journal soient démarrées
+4. lancer la console d'administration (`pnpm admin`)
+5. exécuter la commande de migration de hache (`> await admin.migreTousLesHaches(2, 'leNouveauSel')`)
+   > Où le premier paramètre est la nouvelle version du hache, et le deuxième paramètre est le nouveau sel
+6. Rajouter la nouvelle variable d'environnement contenant le nouveau sel (ici, puisque la nouvelle version est la 2, on aura la variable d'env `HACHAGE_SECRET_DE_HACHAGE_2=leNouveauSel`)
+7. Redémarre le portail en désactivant le mode maintenance
 
 ### Rotation de clé de chiffrement
 

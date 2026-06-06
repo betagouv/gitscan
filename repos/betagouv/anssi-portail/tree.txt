@@ -1,4 +1,7 @@
 .
+├── .claude
+│   └── skills
+│       └── nouvelle-migration-knex.md
 ├── .env.template
 ├── .github
 │   └── workflows
@@ -16,6 +19,7 @@
 ├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc.cjs
+├── .ruby-version
 ├── CLAUDE.md
 ├── LICENSE
 ├── README.md
@@ -46,6 +50,10 @@
 │   │   ├── 20251203141105_migreFavorisDeGuides.ts
 │   │   ├── 20260320151226_supprimeFavorisMonEspaceNIS2.ts
 │   │   ├── 20260327095732_ajouteRolesUtilisateur.ts
+│   │   ├── 20260522133520_initialise-mesures.ts
+│   │   ├── 20260602115153_nettoyePrefixeBonneNouvelleMesures.ts
+│   │   ├── 20260604071303_convertitMarkdownEnHtmlMesures.ts
+│   │   ├── 20260604075323_ajouteLiensMesures.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -56,6 +64,7 @@
 │   │   ├── api
 │   │   │   ├── adaptateurJWT.ts
 │   │   │   ├── configurationServeur.ts
+│   │   │   ├── erreurs.ts
 │   │   │   ├── favoris
 │   │   │   │   ├── ressourceFavori.schema.ts
 │   │   │   │   ├── ressourceFavori.ts
@@ -75,6 +84,10 @@
 │   │   │   │   ├── ressourceGuides.ts
 │   │   │   │   ├── ressourceGuidesMemesCollections.schema.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.ts
+│   │   │   ├── mesures
+│   │   │   │   ├── mesurePresentation.ts
+│   │   │   │   ├── ressourceMesure.ts
+│   │   │   │   └── ressourceMesuresDeModule.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
@@ -103,6 +116,7 @@
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
 │   │   │   ├── ressourceAvisUtilisateur.schema.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
+│   │   │   ├── ressourceControleContenuListeConfiance.ts
 │   │   │   ├── ressourceDocumentRessource.ts
 │   │   │   ├── ressourceFinancement.ts
 │   │   │   ├── ressourceFinancements.ts
@@ -139,6 +153,7 @@
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.ts
+│   │   │   ├── consigneEvenementMesureConsulteeDansJournal.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
@@ -149,6 +164,7 @@
 │   │   │   ├── evenements
 │   │   │   │   ├── avisUtilisateurDonne.ts
 │   │   │   │   ├── compteCree.ts
+│   │   │   │   ├── mesureConsultee.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
@@ -183,6 +199,7 @@
 │   │   │   ├── entrepotGrist.ts
 │   │   │   ├── entrepotGuideGrist.ts
 │   │   │   ├── entrepotGuideTravailGrist.ts
+│   │   │   ├── entrepotMesurePostgres.ts
 │   │   │   ├── entrepotResultatTestPostgres.ts
 │   │   │   ├── entrepotSecretHachagePostgres.ts
 │   │   │   ├── entrepotUtilisateurMPAPostgres.ts
@@ -202,6 +219,7 @@
 │   │   │   ├── entrepotFinancement.ts
 │   │   │   ├── entrepotGuide.ts
 │   │   │   ├── entrepotGuideTravail.ts
+│   │   │   ├── entrepotMesure.ts
 │   │   │   ├── entrepotResultatTest.ts
 │   │   │   ├── entrepotSessionDeGroupe.ts
 │   │   │   ├── entrepotUtilisateur.ts
@@ -210,6 +228,7 @@
 │   │   │   ├── generateurCodeSessionDeGroupe.ts
 │   │   │   ├── guide.ts
 │   │   │   ├── messagerieInstantanee.ts
+│   │   │   ├── mesure.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── entrepotExigence.ts
 │   │   │   │   └── exigence.ts
@@ -280,6 +299,7 @@
 │   │   │   │   ├── ressourceFavori.spec.ts
 │   │   │   │   ├── ressourceFavoris.spec.ts
 │   │   │   │   └── ressourceFavorisPartages.spec.ts
+│   │   │   ├── fournisseurChemin.spec.ts
 │   │   │   ├── guides
 │   │   │   │   ├── constructeurGuideGrist.ts
 │   │   │   │   ├── ressourceDocumentGuide.spec.ts
@@ -287,6 +307,9 @@
 │   │   │   │   ├── ressourceGuide.spec.ts
 │   │   │   │   ├── ressourceGuides.spec.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.spec.ts
+│   │   │   ├── mesures
+│   │   │   │   ├── ressourceMesure.spec.ts
+│   │   │   │   └── ressourceMesuresDeModule.spec.ts
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
@@ -340,6 +363,7 @@
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
+│   │   │   ├── consigneEvenementMesureConsulteeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
@@ -399,6 +423,7 @@
 │   │   │   ├── entrepotGuideMemoire.ts
 │   │   │   ├── entrepotGuideTravailMemoire.ts
 │   │   │   ├── entrepotMemoire.ts
+│   │   │   ├── entrepotMesureMemoire.ts
 │   │   │   ├── entrepotResultatTestMemoire.ts
 │   │   │   └── entrepotUtilisateurMemoire.ts
 │   │   └── ressources
@@ -562,7 +587,8 @@
 │   │   ├── icones
 │   │   │   ├── icone-check-line.svg
 │   │   │   ├── icone-danger.svg
-│   │   │   └── icone-fleche-gauche.svg
+│   │   │   ├── icone-fleche-gauche.svg
+│   │   │   └── icone-recompense.svg
 │   │   ├── images
 │   │   │   ├── apercu-faq-nis2-dans-laptop.avif
 │   │   │   ├── approfondir-cyber.avif
@@ -581,6 +607,8 @@
 │   │   │   │   ├── encartHomologation.desktop.avif
 │   │   │   │   ├── encartHomologation.mobile.avif
 │   │   │   │   └── encartHomologation.tablette.avif
+│   │   │   ├── erreur-404.avif
+│   │   │   ├── erreur-404.webp
 │   │   │   ├── erreur.svg
 │   │   │   ├── floriane-bizdev.avif
 │   │   │   ├── homme-cherchant-avec-loupe.svg
@@ -703,6 +731,20 @@
 │   │   │   ├── motif-fond-service-opacite-16.avif
 │   │   │   ├── motif-fond-service.avif
 │   │   │   ├── nis2.svg
+│   │   │   ├── parcours-securisation
+│   │   │   │   ├── mesure-ANNUAIRE.1.svg
+│   │   │   │   ├── mesure-AUTH.1.svg
+│   │   │   │   ├── mesure-AUTH.4.svg
+│   │   │   │   ├── mesure-AUTH.5.svg
+│   │   │   │   ├── mesure-COMPADMIN.10.svg
+│   │   │   │   ├── mesure-CONTINU.1.svg
+│   │   │   │   ├── mesure-CRISE.8.svg
+│   │   │   │   ├── mesure-EXO.1.svg
+│   │   │   │   ├── mesure-FILTRE.8.svg
+│   │   │   │   ├── mesure-MALWARE.3.svg
+│   │   │   │   ├── mesure-MCO_MCS.5.svg
+│   │   │   │   ├── mesure-RECENSEMENT.1.svg
+│   │   │   │   └── mesure-RH.2.svg
 │   │   │   ├── personne-avec-laptop-entoure-de-diagrammes.svg
 │   │   │   ├── personne-avec-micro-consultant-sites-cyber.svg
 │   │   │   ├── personne-qui-cogite.svg
@@ -735,6 +777,7 @@
 │   │   │   ├── trois-mains-croisees.svg
 │   │   │   └── trouver-parcours.avif
 │   │   └── styles
+│   │       ├── 404.scss
 │   │       ├── accueil.scss
 │   │       ├── boutons.scss
 │   │       ├── catalogue.scss
@@ -926,6 +969,8 @@
 │   │   │   ├── main-guide.ts
 │   │   │   ├── main-identification.ts
 │   │   │   ├── main-maturite-utilisateur.ts
+│   │   │   ├── main-mesure.ts
+│   │   │   ├── main-module-cyberdepart.ts
 │   │   │   ├── main-navigation.ts
 │   │   │   ├── main-niveaux-maturite.ts
 │   │   │   ├── main-page-crisp.ts
@@ -1033,6 +1078,13 @@
 │   │   │   ├── parcours
 │   │   │   │   ├── ActionParcoursAvecItems.svelte
 │   │   │   │   └── itemDuParcours.ts
+│   │   │   ├── parcours-securisation
+│   │   │   │   ├── CarteMesure.svelte
+│   │   │   │   ├── GrilleCartesMesures.svelte
+│   │   │   │   ├── Mesure.svelte
+│   │   │   │   ├── ModuleCyberdepart.svelte
+│   │   │   │   ├── Progression.svelte
+│   │   │   │   └── mesure.ts
 │   │   │   ├── protection
 │   │   │   │   ├── Proteger.svelte
 │   │   │   │   ├── associations
@@ -1175,10 +1227,12 @@
 │   │   │   │       └── questionnaireAvecUndo.store.spec.ts
 │   │   │   ├── stores
 │   │   │   │   └── profil.store.spec.ts
-│   │   │   └── test-maturite
-│   │   │       ├── repartitions.spec.ts
-│   │   │       └── stores
-│   │   │           └── questionnaire.store.spec.ts
+│   │   │   ├── test-maturite
+│   │   │   │   ├── repartitions.spec.ts
+│   │   │   │   └── stores
+│   │   │   │       └── questionnaire.store.spec.ts
+│   │   │   └── utils
+│   │   │       └── erreurApi.spec.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
 │   │   ├── vite.config.ts
@@ -1186,6 +1240,8 @@
 │   ├── ma-maturite.html
 │   ├── maintenance.html
 │   ├── mentionsLegales.html
+│   ├── mesure.html
+│   ├── module-cyberdepart.html
 │   ├── nis2.html
 │   ├── niveaux-maturite.html
 │   ├── package.json
@@ -1246,11 +1302,13 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── prek.toml
-└── regles-eslint
-    ├── eslint.config.mjs
-    ├── package.json
-    ├── src
-    │   ├── index.ts
-    │   └── route-sans-validation.ts
-    └── tsconfig.json
-184 directories, 1114 files
+├── regles-eslint
+│   ├── eslint.config.mjs
+│   ├── package.json
+│   ├── src
+│   │   ├── index.ts
+│   │   └── route-sans-validation.ts
+│   └── tsconfig.json
+└── scripts
+    └── get-node-version.sh
+192 directories, 1164 files
