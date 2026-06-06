@@ -1,27 +1,30 @@
-# Synthèse d'activité : betagouv (du 10/05 au 07/06)
+# Synthèse d'activité : betagouv (du 23 mai au 03 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation betagouv s'est concentrée sur l'amélioration de la robustesse et de la sécurité de ses outils, avec de nombreuses mises à jour de dépendances et corrections de vulnérabilités.  Plusieurs projets ont bénéficié d'améliorations significatives de l'expérience utilisateur, notamment `jeveuxaider-front`, `mon-service-securise`, `infomedicament`, et `sylvasan`.  De nouveaux services ont été ajoutés ou améliorés, comme l'intégration de Matomo dans `turgot-metabase` et l'ajout de fonctionnalités de gestion des utilisateurs dans `mission-transition-ecologique`.  Plusieurs projets ont également progressé dans la modernisation de leur infrastructure et de leur code, comme `mle-front` et `infomedicament-dataeng`.
+L'organisation betagouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs fronts. Un effort important a été consacré à la sécurité, avec des mises à jour de dépendances et des corrections de vulnérabilités dans plusieurs dépôts ([mon-suivi-justice](https://github.com/betagouv/mon-suivi-justice), [omniauth-microsoft_graph](https://github.com/betagouv/omniauth-microsoft_graph)). De nombreuses améliorations fonctionnelles ont été déployées, notamment sur [zacharie](https://github.com/betagouv/zacharie) avec de nouvelles fonctionnalités de gestion des données et des utilisateurs, et sur [jeveuxaider-front](https://github.com/betagouv/jeveuxaider-front) avec une refonte de l'interface de partage de missions. Plusieurs projets ont bénéficié de refactorisations techniques importantes, comme [test-sme](https://github.com/betagouv/test-sme) et [pitchou](https://github.com/betagouv/pitchou), visant à améliorer la maintenabilité et la performance. L'intégration de nouvelles sources de données et l'amélioration des processus de synchronisation ont également été des thèmes récurrents, notamment dans [mle-back](https://github.com/betagouv/mle-back) et [infomedicament-dataeng](https://github.com/betagouv/infomedicament-dataeng).
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- Correction d'une vulnérabilité XSS potentielle dans [seves](/repos/betagouv/seves).
-- Mise à jour de la gem `rack-session` dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) pour corriger une vulnérabilité critique.
-- Correction de failles de sécurité dans [mon-entreprise](/repos/betagouv/mon-entreprise).
-- Mise à jour de dépendances critiques dans [grist-cron-grist-to-brevo](/repos/betagouv/grist-cron-grist-to-brevo).
+
+- Correction d'une vulnérabilité XSS potentielle dans [seves](https://github.com/betagouv/seves).
+- Mise à jour de dépendances pour corriger des vulnérabilités dans [recoco-sync](https://github.com/betagouv/recoco-sync), [mon-suivi-justice](https://github.com/betagouv/mon-suivi-justice) et [infomedicament-html-parser](https://github.com/betagouv/infomedicament-html-parser).
+- Renforcement de la sécurité de l'authentification dans [oauth2-proxy-buildpack](https://github.com/betagouv/oauth2-proxy-buildpack).
 
 ## Autres changements notables
-- Refonte complète de l'architecture de [pitchou](/repos/betagouv/pitchou) vers SvelteKit pour améliorer les performances.
-- Migration vers Symfony 8.0 et Doctrine 8.0 dans [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
-- Passage à Poetry pour la gestion des dépendances dans [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng).
-- Amélioration de la gestion des droits d'accès dans [grist-budget-agriculture](/repos/betagouv/grist-budget-agriculture).
-- Ajout d'une synchronisation entre Turgot et Matomo dans [kube-dev](/repos/betagouv/kube-dev).
+Plusieurs projets ont subi des refactorisations techniques majeures :
+
+- Migration vers TypeScript dans [pitchou](https://github.com/betagouv/pitchou) pour une meilleure maintenabilité.
+- Refonte de l'architecture de [maestro](https://github.com/betagouv/maestro) avec l'ajout d'un service OIDC local.
+- Passage à Next.js 16 dans [jeveuxaider-front](https://github.com/betagouv/jeveuxaider-front).
+- Refactorisation de la gestion des workflows dans [mission-transition-ecologique-back](https://github.com/betagouv/mission-transition-ecologique-back).
+- Migration vers SQLAlchemy dans [infomedicament-dataeng](https://github.com/betagouv/infomedicament-dataeng).
 
 ## Dépôts les plus actifs
-- [seves](/repos/betagouv/seves) : Amélioration de l'interface utilisateur, corrections de sécurité et gestion des documents.
-- [pitchou](/repos/betagouv/pitchou) : Refonte complète de l'architecture et amélioration de la sécurité.
-- [mon-service-securise](/repos/betagouv/mon-service-securise) : Amélioration de la gestion des administrateurs et refonte du parcours d'homologation.
-- [infomedicament](/repos/betagouv/infomedicament) : Amélioration des performances et de l'expérience utilisateur.
-- [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) : Amélioration de l'interface et ajout de nouvelles fonctionnalités.
-- [grist-core](/repos/betagouv/grist-core) : Amélioration de l'importation depuis Airtable et de la comparaison de documents.
-- [sylvasan](/repos/betagouv/sylvasan) : Ajout d'authentification OAuth2 et de nouvelles fonctionnalités pour la gestion des enquêtes.
+- [zacharie](https://github.com/betagouv/zacharie) : Ajout de nouvelles fonctionnalités de gestion des données et des utilisateurs.
+- [sylvasan](https://github.com/betagouv/sylvasan) : Amélioration de l'expérience utilisateur avec l'ajout de l'authentification DSF et d'un champ carte.
+- [test-sme](https://github.com/betagouv/test-sme) : Refonte de l'interface utilisateur et correction de bugs.
+- [pitchou](https://github.com/betagouv/pitchou) : Refonte complète de l'application et amélioration de la gestion des administrateurs.
+- [maestro](https://github.com/betagouv/maestro) : Ajout de nouvelles fonctionnalités pour la gestion des prélèvements et des laboratoires.
+- [infomedicament](https://github.com/betagouv/infomedicament) : Amélioration de la recherche sémantique et optimisation des performances.
+- [mle-back](https://github.com/betagouv/mle-back) : Amélioration de la synchronisation des données et optimisation des requêtes.
+- [jeveuxaider-front](https://github.com/betagouv/jeveuxaider-front) : Refonte de l'interface de partage de missions.

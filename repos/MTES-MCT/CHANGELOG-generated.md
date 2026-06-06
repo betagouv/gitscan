@@ -1,28 +1,28 @@
-# Synthèse d'activité : MTES-MCT (du 13/05 au 29/05)
+# Synthèse d'activité : MTES-MCT (du 22/05 au 03/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration des plateformes existantes et l'ajout de nouvelles fonctionnalités pour répondre aux besoins des utilisateurs. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et d'améliorations de l'interface utilisateur. Des efforts importants ont également été déployés pour renforcer la sécurité des applications, notamment avec l'implémentation de l'authentification à deux facteurs et la correction de vulnérabilités. On note des avancées significatives sur les projets *dialog*, *dossierfacile*, *ecobalyse* et *monitorfish* avec des améliorations notables pour les agents et les utilisateurs finaux. Plusieurs dépôts ont également mis l'accent sur l'amélioration de la qualité du code et la maintenance technique.
+L'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts.  De nombreuses mises à jour ont été apportées aux applications web existantes, notamment *Dossier Facile* et *Lucca*, avec des améliorations de l'interface utilisateur, de la sécurité et de la gestion des données.  Plusieurs dépôts ont bénéficié d'optimisations de performance et de corrections de bugs. L'accent a également été mis sur l'intégration de nouvelles fonctionnalités, comme l'authentification à deux facteurs pour *Keycloak-FranceConnect* et l'ajout de données de transport routier pour *Ecobalyse*. Enfin, des efforts importants ont été déployés pour améliorer la qualité des données et la documentation, notamment dans les dépôts *acceslibre* et *ecobalyse-schema*.
 
 ## Sécurité
-Plusieurs dépôts ont intégré des améliorations de sécurité :
-- Correction de vulnérabilités dans [ecobalyse-data](/repos/MTES-MCT/ecobalyse-data) et [dossierfacile-frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) via la mise à jour de dépendances.
-- Implémentation de l'authentification à deux facteurs (2FA) dans [mobilic-api](/repos/MTES-MCT/mobilic-api) et [Keycloak-FranceConnect](/repos/MTES-MCT/Keycloak-FranceConnect).
-- Correction d'une vulnérabilité IDOR dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend).
-- Correction d'une vulnérabilité sur l'endpoint d'autocomplete dans [mesads](/repos/MTES-MCT/mesads).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+*   *Keycloak-FranceConnect* : Activation de l'authentification à deux facteurs (2FA) pour l'identité ProConnect.
+*   *Dossier-Facile-Frontend* : Mise à jour des dépendances pour corriger des vulnérabilités (CVE).
+*   *Docurba* : Refonte de l'infrastructure de déploiement avec Nginx pour une meilleure sécurité et limitation de débit.
 
 ## Autres changements notables
-- Refonte de l'interface utilisateur de la page de revente dans [boris](/repos/MTES-MCT/boris).
-- Refactorisation importante du code dans [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) et [dialog](/repos/MTES-MCT/dialog).
-- Intégration de nouvelles sources de données dans [dialog-integrations](/repos/MTES-MCT/dialog-integrations).
-- Mise en place d'une authentification par token dans [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner).
-- Refonte du schéma de données dans [acceslibre-schema](/repos/MTES-MCT/acceslibre-schema).
-- Migration vers un format datapackage pour une meilleure gestion des schémas dans [acceslibre-schema](/repos/MTES-MCT/acceslibre-schema).
+*   *Ecobalyse* : Ajout de données de transport routier pour le Maroc et implémentation du Coefficient de Facteur de Forme (CFF) pour l'emballage alimentaire.
+*   *Dahlia* : Création de la première version de l'application web, permettant la gestion des dossiers DALO, DAHO et DAHU.
+*   *Lucca* : Ajout de la gestion des adhérents et de la possibilité de cloner un adhérent vers un autre département.
+*   *Docurba* : Intégration de Supabase pour l'authentification et création d'une API interne.
+*   *Monitorfish* : Ajout de l'affichage des navires sous AIS.
+*   *Trackdéchets* : Implémentation de l'authentification à double facteur (2FA).
 
 ## Dépôts les plus actifs
-- [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Améliorations de l'UX, gestion des campagnes et refactorisation du code.
-- [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles vues synthétiques et améliorations de la visualisation des données.
-- [trackdechets](/repos/MTES-MCT/trackdechets) : Ajout de fonctionnalités BSFF et implémentation de l'authentification à deux facteurs.
-- [dialog](/repos/MTES-MCT/dialog) : Amélioration de la cartographie, de la gestion des arrêtés et de l'expérience utilisateur.
-- [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Amélioration de l'interface d'administration et correction de bugs.
-- [ecobalyse](/repos/MTES-MCT/ecobalyse) : Ajout de nouvelles informations sur les produits alimentaires et amélioration de la gestion des données.
-- [monitorfish](/repos/MTES-MCT/monitorfish) : Intégration de l'affichage des navires AIS et amélioration de la gestion des préavis.
+*   [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Améliorations de l'interface utilisateur, correction de bugs et ajout de nouvelles fonctionnalités.
+*   [Lucca](/repos/MTES-MCT/Lucca) : Ajout de la gestion des adhérents et amélioration de l'importation des données.
+*   [Ecobalyse](/repos/MTES-MCT/Ecobalyse) : Ajout de nouvelles données et amélioration de la modélisation.
+*   [Docurba](/repos/MTES-MCT/Docurba) : Refonte de l'infrastructure et ajout de nouvelles fonctionnalités.
+*   [Trackdechets](/repos/MTES-MCT/trackdechets) : Implémentation de l'authentification à double facteur et ajout de nouvelles fonctionnalités.
+*   [Monitorfish](/repos/MTES-MCT/monitorfish) : Ajout de l'affichage des navires sous AIS.
+*   [Dahlia](/repos/MTES-MCT/dahlia) : Création de la première version de l'application.

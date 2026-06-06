@@ -1,21 +1,22 @@
-# Synthèse d'activité : cloud-gouv (du 16 avril 2026 au 26 mai 2026)
+# Synthèse d'activité : cloud-gouv (du 24 avril 2026 au 4 juin 2026)
 
 ## Résumé de l'activité
-L'organisation cloud-gouv a connu une activité soutenue au cours des dernières semaines, avec des améliorations significatives apportées à plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de la sécurité, la stabilisation des tests et l'ajout de nouvelles fonctionnalités pour faciliter le déploiement et la gestion d'applications, notamment dans un contexte Kubernetes. L'ajout d'un chart Helm pour les benchmarks PostgreSQL via [common-helm-charts](/repos/cloud-gouv/common-helm-charts) permet aux utilisateurs de mieux évaluer les performances de leurs bases de données. Des corrections de bugs et des améliorations de la documentation ont également été apportées à [securix](/repos/cloud-gouv/securix) et [securix-infra-reference-implementation](/repos/cloud-gouv/securix-infra-reference-implementation).
+L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités à ses différents projets.  Des efforts importants ont été déployés pour renforcer la sécurité d'OpenBao et de Securix, avec des corrections de vulnérabilités et des améliorations de la configuration. Les charts Helm de common-helm-charts ont été enrichis avec de nouveaux outils de monitoring et de benchmark, tandis que les charts k8s-cluster-api-helm-charts ont bénéficié d'améliorations en matière de gestion des CIDR et de la sécurité des nœuds worker. L'ajout de Go à l'image Docker de GitLab Runner via [dockerfiles](/repos/cloud-gouv/dockerfiles) permet une plus grande flexibilité pour les pipelines CI/CD.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- Mise à jour de Go dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2025-68121 / GO-2026-4337, CVE-2026-24051 / GO-2026-4394 / GHSA-9h8m-3fm2-qjrq).
-- Amélioration de la sécurité des nœuds worker dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) avec la possibilité d'injecter des règles de sécurité supplémentaires.
+Plusieurs changements liés à la sécurité ont été apportés :
+- Correction d'une vulnérabilité de sécurité dans OpenBao avec une mise à jour vers Go 1.25.7 et des dépendances OpenTelemetry ([openbao](/repos/cloud-gouv/openbao)).
+- Amélioration de la sécurité de Securix avec la désactivation optionnelle de KWallet et une configuration affinée pour une meilleure conformité aux recommandations ANSSI ([securix](/repos/cloud-gouv/securix)).
+- Amélioration de la sécurité des nœuds worker via l'injection de règles de sécurité supplémentaires dans k8s-cluster-api-helm-charts ([k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts)).
 
 ## Autres changements notables
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) a vu des améliorations dans la gestion des CIDR, des volumes snapshot, des secrets externes et des règles de sécurité.
-- [dockerfiles](/repos/cloud-gouv/dockerfiles) a été mis à jour avec l'ajout de `kustomize` et la mise à niveau des outils Kubernetes.
-- [portail](/repos/cloud-gouv/portail) a bénéficié d'une correction pour stabiliser les tests du multiplexage H2.
-- [openbao](/repos/cloud-gouv/openbao) a corrigé des bugs liés à l'auto-déverrouillage, la révocation de baux et les erreurs 500.
+- Correction d'un problème de non-déterminisme dans les tests du proxy [portail](/repos/cloud-gouv/portail).
+- Amélioration de la robustesse d'OpenBao avec la correction d'erreurs non gérées et de problèmes d'initialisation de PostgreSQL ([openbao](/repos/cloud-gouv/openbao)).
+- Ajout d'un fichier README initial pour l'implémentation de référence Securix ([securix-infra-reference-implementation](/repos/cloud-gouv/securix-infra-reference-implementation)).
+- Amélioration de la gestion des CIDR et des volumes snapshot dans k8s-cluster-api-helm-charts ([k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts)).
 
 ## Dépôts les plus actifs
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations significatives de la gestion des clusters Kubernetes via Helm charts.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité pour la gestion des secrets.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout d'un nouveau chart pour les benchmarks PostgreSQL.
-- [securix](/repos/cloud-gouv/securix) : Corrections de bugs et améliorations de la validation des commandes.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs, améliorations de la sécurité et de la robustesse du gestionnaire de secrets.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations de la gestion des CIDR, de la sécurité des nœuds worker et correction de bugs.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouveaux charts (pgbench, dashboard HAProxy) et amélioration des charts existants.
+- [securix](/repos/cloud-gouv/securix) : Améliorations de la sécurité et de la robustesse de l'installateur et de la configuration.

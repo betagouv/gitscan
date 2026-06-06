@@ -1,16 +1,17 @@
-# Synthèse d'activité : refugies-info (du 21/05 au 27/05/2026)
+# Synthèse d'activité : refugies-info (du 31/05 au 07/06)
 
 ## Résumé de l'activité
-L'organisation refugies-info a connu une semaine productive, axée sur l'amélioration de ses outils de gestion de l'information et de collaboration. Le [playground](/repos/refugies-info/playground) a bénéficié de nombreuses améliorations d'interface et de fonctionnalités pour faciliter la création et la publication de contenus, notamment avec l'ajout d'indicateurs de conformité et de priorité, ainsi qu'un outil de comparaison avec l'IA.  Parallèlement, [karfur](/repos/refugies-info/karfur) a mis l'accent sur la qualité des données, avec des améliorations significatives dans la détection et la gestion des doublons, ainsi que sur la stabilité de l'application et l'expérience utilisateur.
+L'organisation refugies-info a connu une semaine productive, axée sur l'amélioration de la plateforme [playground](/repos/refugies-info/playground) avec de nouvelles fonctionnalités pour la gestion de contenu et la traduction assistée par IA.  Des efforts importants ont également été consacrés à la stabilisation et à la correction de bugs sur [karfur](/repos/refugies-info/karfur), notamment en production, améliorant ainsi l'expérience utilisateur et la fiabilité de la plateforme.
 
 ## Sécurité
-- Ajout de GitLeaks dans [karfur](/repos/refugies-info/karfur) pour la détection de secrets dans le code.
+Des mises à jour de dépendances ont été effectuées sur [karfur](/repos/refugies-info/karfur) pour corriger des failles de sécurité. L'ajout d'un hook GitLeaks sur [karfur](/repos/refugies-info/karfur) permet également de prévenir la publication de secrets dans le code.
 
 ## Autres changements notables
-- Refactorisation de l'interface utilisateur de [playground](/repos/refugies-info/playground) avec Radix UI et shadcn/ui pour une meilleure cohérence et accessibilité.
-- Optimisation des requêtes API et ajout d'un index GIN trigram dans [playground](/repos/refugies-info/playground) pour améliorer les performances.
-- Stabilisation de la configuration de Jest et ajout de tests pour les tests mobiles dans [karfur](/repos/refugies-info/karfur).
+- Optimisation des requêtes à l'API Letta sur [playground](/repos/refugies-info/playground) pour éviter les limitations de débit.
+- Ajout d'un index GIN trigram sur `ingestion_records` dans [playground](/repos/refugies-info/playground) pour accélérer les recherches.
+- Refactorisation du code sur [karfur](/repos/refugies-info/karfur) pour une meilleure gestion des valeurs nulles et des dates.
+- Ajout d'un endpoint pour la détection de doublons d'agents sur [karfur](/repos/refugies-info/karfur).
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Ajout de nouvelles fonctionnalités d'interface et d'outils pour améliorer la création et la publication de contenus.
-- [karfur](/repos/refugies-info/karfur) : Amélioration de la détection des doublons, de la stabilité de l'application et de l'expérience utilisateur.
+- [playground](/repos/refugies-info/playground) : Ajout de fonctionnalités pour la gestion de conformité, la priorisation des traductions, et l'intégration d'une IA pour la réécriture de contenu.
+- [karfur](/repos/refugies-info/karfur) : Correction de bugs, amélioration de l'affichage sur mobile et de la gestion des doublons, et stabilisation de la plateforme en production.

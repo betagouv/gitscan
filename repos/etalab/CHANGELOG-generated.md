@@ -1,21 +1,19 @@
-# Synthèse d'activité : etalab (du 16 mai 2026 au 27 avril 2026)
+# Synthèse d'activité : etalab (du 28 avril 2026 au 01 juin 2026)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur plusieurs fronts chez etalab.  Les efforts se sont concentrés sur l'amélioration et l'extension des services liés au transport (données GBFS, NeTEx, validation GTFS) avec [transport-site](/repos/etalab/transport-site) et [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr).  Des avancées significatives ont également été réalisées sur la plateforme d'autorisation d'accès aux données [data_pass](/repos/etalab/data_pass) avec de nouvelles fonctionnalités pour la gestion des droits et l'intégration de nouvelles API.  Enfin, des mises à jour régulières ont été apportées aux bases de données de covoiturage [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) et aux données des jours fériés [jours-feries-france-data](/repos/etalab/jours-feries-france-data).
+L'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses nombreux projets open-source. Plusieurs dépôts ont bénéficié de mises à jour de sécurité, notamment [transport-site](/repos/etalab/transport-site) et [formulaire-qf](/repos/etalab/formulaire-qf). Des améliorations fonctionnelles ont été apportées à [transport-site](/repos/etalab/transport-site) avec l'ajout de la prise en charge des données GBFS de Yégo, et à [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) avec l'introduction des "data packages" pour une plus grande flexibilité du schéma. Des mises à jour de données ont également été effectuées sur [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) et [majic](/repos/etalab/majic). L'API [admin_api_entreprise](/repos/etalab/admin_api_entreprise) a vu l'ajout de nouvelles API et l'amélioration de la gestion des tokens.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été spécifiquement mentionné dans les changelogs fournis.
+Plusieurs mises à jour de dépendances JavaScript ont été appliquées dans [transport-site](/repos/etalab/transport-site) pour corriger des failles de sécurité. La rotation annuelle du token webhook a également été implémentée dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour renforcer la sécurité.
 
 ## Autres changements notables
-- Migration de la stack JavaScript dans [transport-site](/repos/etalab/transport-site).
-- Refactorisation du code et suppression de code obsolète dans [transport-site](/repos/etalab/transport-site).
-- Introduction de l'architecture "data packages" pour étendre le schéma des dispositifs d'aide dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide).
-- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion de la sécurité.
-- Rotation annuelle du token webhook pour renforcer la sécurité dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- Migration du système de gestion des styles SCSS de `@import` vers `@use` dans [transport-site](/repos/etalab/transport-site) pour une meilleure performance.
+- Introduction de l'architecture des "data packages" dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) pour étendre le schéma de données.
+- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion.
 
 ## Dépôts les plus actifs
-- [transport-site](/repos/etalab/transport-site) : Ajout du support de nouvelles données (GBFS, NeTEx) et refactorisation importante de la stack JavaScript.
-- [data_pass](/repos/etalab/data_pass) : Amélioration de la gestion des droits d'accès et intégration de nouvelles API.
-- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication d'une nouvelle version (v2.4.0) du profil France NeTEx avec des clarifications et améliorations.
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles API et amélioration de la sécurité et des performances.
-- [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) : Mise à jour régulière de la base de données des lieux de covoiturage.
+- [transport-site](/repos/etalab/transport-site) : Maintenance technique, améliorations de la sécurité et ajout de la prise en charge de nouvelles données.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles APIs et amélioration de la gestion des tokens et de la sécurité.
+- [transport-validator](/repos/etalab/transport-validator) : Optimisation des performances et de la consommation mémoire.
+- [formulaire-qf](/repos/etalab/formulaire-qf) : Correction de bugs et mise à jour des dépendances.
+- [data_pass](/repos/etalab/data_pass) : Ajout de formulaires pré-remplis et amélioration de la recherche d'utilisateurs.

@@ -1,23 +1,25 @@
-# Synthèse d'activité : numerique-gouv (du 06 mai 2026 au 28 mai 2026)
+# Synthèse d'activité : numerique-gouv (du 06 mai 2026 au 07 juin 2026)
 
 ## Résumé de l'activité
-L'activité de l'organisation numerique-gouv au cours des dernières semaines s'est concentrée sur l'amélioration de l'expérience utilisateur et la modernisation des infrastructures. Plusieurs dépôts ont bénéficié d'améliorations d'internationalisation, notamment [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), permettant une meilleure adaptation aux utilisateurs multilingues. Des efforts importants ont également été déployés pour renforcer la sécurité, avec des mises à jour de dépendances et l'intégration de Sentry dans [sites-conformes](/repos/numerique-gouv/sites-conformes). L'ajout de nouvelles fonctionnalités, comme le stockage des médias en base de données dans [sites-conformes](/repos/numerique-gouv/sites-conformes) et l'amélioration de la délégation de réunions dans [b3desk](/repos/numerique-gouv/b3desk), témoignent d'une volonté d'enrichir l'offre et de répondre aux besoins des utilisateurs.
+L'organisation numerique-gouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'internationalisation des plateformes [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion multilingue et de sélecteurs de langue.  Des avancées importantes ont également été réalisées sur les applications mobiles AMI ([ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android)) avec des corrections et des améliorations de l'interface utilisateur. L'intégration de FranceConnect et l'amélioration de la sécurité sont également des thèmes récurrents, notamment avec le proxy [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy) et la mise à jour des dépendances sur plusieurs dépôts.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de dépendances visant à corriger des vulnérabilités et à améliorer la sécurité globale des applications :
-- Mise à jour de `postcss` et `next` dans [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage)
-- Mise à jour de plusieurs dépendances dans [django-dsfr](/repos/numerique-gouv/django-dsfr)
-- Mise à jour de l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles)
+Plusieurs dépôts ont bénéficié de mises à jour de dépendances visant à corriger des vulnérabilités de sécurité :
+- Mise à jour de `postcss` et `next` dans [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).
+- Mise à jour de plusieurs dépendances dans [b3desk](/repos/numerique-gouv/b3desk) via Dependabot.
+- Utilisation de `mkcert` pour la gestion des certificats SSL locaux dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
 
 ## Autres changements notables
+- Implémentation du support complet de l'API FranceConnect Identity dans [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
+- Ajout de la possibilité de stocker les médias directement en base de données (PostgreSQL) dans [sites-conformes](/repos/numerique-gouv/sites-conformes).
 - Intégration de Sentry pour la surveillance des erreurs dans [sites-conformes](/repos/numerique-gouv/sites-conformes).
-- Simplification du déploiement sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
-- Refonte de l'architecture frontend dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
-- Amélioration de la gestion des URLs spéciales dans [ami-app-android](/repos/numerique-gouv/ami-app-android).
+- Automatisation de la publication des releases sur GitHub dans [b3desk](/repos/numerique-gouv/b3desk).
+- Refactoring de la structure du projet et publication de composants pour une utilisation plus aisée dans [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
+- Mise en place d'un mécanisme de réplication de la base de données vers un datawarehouse dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
 
 ## Dépôts les plus actifs
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Ajout d'un sélecteur de langue et internationalisation des champs de formulaire pour une meilleure gestion du contenu multilingue.
-- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Préparation de la version 3.2.0 avec packagification, stockage des médias en PostgreSQL et intégration de Sentry.
-- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la délégation de réunions, correction de bugs d'affichage et ajout de documentation sur la personnalisation du scope OIDC.
-- [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy) : Amélioration de la gestion des appels à l'API FranceConnect et correction des problèmes de déploiement sur Scalingo.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Ajout de fonctionnalités de gestion des utilisateurs et amélioration de l'affichage des notifications.
+- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la délégation de réunions, intégration des claims OIDC et automatisation de la publication des releases.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Internationalisation de la plateforme avec ajout d'un sélecteur de langue et traduction des champs de formulaire.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Amélioration de la gestion des préférences de localisation et implémentation d'un nouveau flux d'authentification avec FranceConnect.
+- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Ajout du stockage des médias en PostgreSQL, intégration de Sentry et préparation de la release v3.2.0.
+- [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy) : Implémentation du support complet de l'API FranceConnect Identity.

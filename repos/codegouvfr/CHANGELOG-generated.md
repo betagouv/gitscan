@@ -1,19 +1,18 @@
-# Synthèse d'activité : codegouvfr (du 01/05 au 16/05)
+# Synthèse d'activité : codegouvfr (du 16 avril 2026 au 01 juin 2026)
 
 ## Résumé de l'activité
-L'organisation codegouvfr a connu une activité soutenue ces dernières semaines, avec des améliorations significatives sur plusieurs de ses projets phares. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur et de la robustesse des outils, notamment avec des ajouts de fonctionnalités d'administration et d'optimisation des performances sur [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).  Des premiers pas sont également réalisés pour structurer les critères d'évaluation des logiciels libres avec [floss-criteria](/repos/codegouvfr/floss-criteria). Enfin, des correctifs de bugs et des améliorations d'accessibilité ont été apportés à [react-dsfr](/repos/codegouvfr/react-dsfr) et [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr).
+L'organisation codegouvfr a connu une période d'activité soutenue, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'administration et de la gestion des données, notamment avec [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi). Des avancées notables ont également été réalisées dans la structuration des critères d'évaluation des logiciels libres avec [floss-criteria](/repos/codegouvfr/floss-criteria) et dans l'amélioration de l'accessibilité et de la flexibilité de la bibliothèque de composants [react-dsfr](/repos/codegouvfr/react-dsfr). Enfin, [cartonum](/repos/codegouvfr/cartonum) a enrichi sa cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.
 
 ## Sécurité
-Un correctif a été appliqué sur [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) pour corriger un bug potentiel lors de la redirection vers la page d'autorisation, améliorant ainsi la robustesse du thème.
+Le thème Keycloak [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) a reçu une correction pour éviter des erreurs de redirection lors de l'autorisation, améliorant ainsi la robustesse du système.
 
 ## Autres changements notables
-- Refactorisation du type `SoftwareData` et suppression des colonnes `content` de la table `softwares` sur [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).
-- Ajout de workflows CI/CD pour le déploiement SILL sur [sill-deploy](/repos/codegouvfr/sill-deploy).
-- Amélioration de la gestion des erreurs et des limites de débit de l'API Wikidata sur [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).
-- Premières étapes de structuration des critères d'évaluation pour les logiciels libres sur [floss-criteria](/repos/codegouvfr/floss-criteria).
+- Refactorisation importante de [sill-deploy](/repos/codegouvfr/sill-deploy) avec l'ajout de workflows CI/CD et la suppression de colonnes obsolètes.
+- Mise en place d'une page d'administration pour les attributs personnalisés dans [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).
+- Amélioration des tests et de l'infrastructure de test pour [catalogi](/repos/codegouvfr/catalogi) avec la mise en cache des navigateurs Playwright.
 
 ## Dépôts les plus actifs
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Amélioration de l'administration, de l'affichage des données et des performances de l'API.
-- [catalogi](/repos/codegouvfr/catalogi) : Optimisation des performances, correction de bugs liés à Wikidata et ajout de fonctionnalités d'administration.
+- [catalogi](/repos/codegouvfr/catalogi) : Amélioration continue de l'administration du catalogue, de l'importation de données et de la gestion des sources d'informations.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Optimisation des performances, refactorisation du code et ajout de workflows CI/CD pour le déploiement.
 - [cartonum](/repos/codegouvfr/cartonum) : Enrichissement de la cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.
-- [react-dsfr](/repos/codegouvfr/react-dsfr) : Amélioration de l'accessibilité et ajout d'un exemple d'utilisation.
+- [floss-criteria](/repos/codegouvfr/floss-criteria) : Début de la structuration des critères d'évaluation pour les logiciels libres.
