@@ -77,8 +77,10 @@
 ├── docs
 │   ├── adr
 │   │   └── 0001-record-architecture-decisions.md
-│   └── assets
-│       └── europe_opensource.png
+│   ├── assets
+│   │   └── europe_opensource.png
+│   └── frontend
+│       └── chat-multi-account-architecture.md
 ├── env.d
 │   ├── development
 │   │   ├── common
@@ -279,8 +281,11 @@
     │   │       │   │   ├── chat
     │   │       │   │   │   ├── ChatPanelContext.tsx
     │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   ├── chatRefs.test.ts
     │   │       │   │   │   │   ├── fluentEmoji.test.ts
     │   │       │   │   │   │   └── reactions.test.ts
+    │   │       │   │   │   ├── chatKeys.ts
+    │   │       │   │   │   ├── chatRefs.ts
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── ChatBubble.scss
     │   │       │   │   │   │   ├── ChatBubble.tsx
@@ -291,6 +296,7 @@
     │   │       │   │   │   │   ├── ChatConversationSkeleton.scss
     │   │       │   │   │   │   ├── ChatConversationSkeleton.tsx
     │   │       │   │   │   │   ├── ChatRoute.tsx
+    │   │       │   │   │   │   ├── ChatSurface.tsx
     │   │       │   │   │   │   ├── ChatView.scss
     │   │       │   │   │   │   ├── ChatView.tsx
     │   │       │   │   │   │   ├── ChatVirtualList.scss
@@ -307,7 +313,6 @@
     │   │       │   │   │   │   ├── NewChatPlaceholder.tsx
     │   │       │   │   │   │   ├── NewChatSearchBar.tsx
     │   │       │   │   │   │   ├── NewChatView.scss
-    │   │       │   │   │   │   ├── NewChatView.tsx
     │   │       │   │   │   │   ├── SelectedUserChip.tsx
     │   │       │   │   │   │   ├── ThreadButton.scss
     │   │       │   │   │   │   ├── ThreadButton.tsx
@@ -315,6 +320,9 @@
     │   │       │   │   │   │   ├── UnreadThreadsBanner.tsx
     │   │       │   │   │   │   ├── UserSearchListBox.tsx
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── ChatBubble.test.tsx
+    │   │       │   │   │   │   │   ├── ChatComposer.test.tsx
+    │   │       │   │   │   │   │   ├── ChatViewComposition.test.tsx
     │   │       │   │   │   │   │   ├── FluentEmoji.test.tsx
     │   │       │   │   │   │   │   ├── MessageHoverToolbar.test.tsx
     │   │       │   │   │   │   │   ├── MessageReactions.test.tsx
@@ -331,6 +339,7 @@
     │   │       │   │   │   │       ├── DocumentListItemActions.tsx
     │   │       │   │   │   │       ├── DocumentSection.tsx
     │   │       │   │   │   │       ├── DocumentsTool.tsx
+    │   │       │   │   │   │       ├── DraftThreadDetail.tsx
     │   │       │   │   │   │       ├── ThreadDetail.tsx
     │   │       │   │   │   │       ├── ThreadList.tsx
     │   │       │   │   │   │       ├── ThreadListItem.tsx
@@ -338,38 +347,60 @@
     │   │       │   │   │   │       ├── ThreadsTool.tsx
     │   │       │   │   │   │       ├── ToolsPanelHeader.tsx
     │   │       │   │   │   │       ├── __tests__
+    │   │       │   │   │   │       │   ├── DraftThreadDetail.test.tsx
+    │   │       │   │   │   │       │   ├── ThreadDetailComposition.test.tsx
     │   │       │   │   │   │       │   └── ThreadListItem.test.tsx
     │   │       │   │   │   │       └── documentToPreviewFile.ts
     │   │       │   │   │   ├── fluentEmoji.ts
     │   │       │   │   │   ├── formatTimestamp.ts
     │   │       │   │   │   ├── hooks
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── useChat.test.tsx
+    │   │       │   │   │   │   │   ├── useChatComposition.test.tsx
     │   │       │   │   │   │   │   ├── useChatDocuments.test.tsx
+    │   │       │   │   │   │   │   ├── useChatEvents.test.tsx
     │   │       │   │   │   │   │   ├── useChatMessages.test.tsx
     │   │       │   │   │   │   │   ├── useChatThread.test.tsx
     │   │       │   │   │   │   │   ├── useChatThreads.test.tsx
+    │   │       │   │   │   │   │   ├── useChats.test.tsx
     │   │       │   │   │   │   │   └── useToggleReaction.test.tsx
+    │   │       │   │   │   │   ├── chatCompositionCache.ts
     │   │       │   │   │   │   ├── useChat.ts
+    │   │       │   │   │   │   ├── useChatAccounts.ts
+    │   │       │   │   │   │   ├── useChatCompositionSupport.ts
+    │   │       │   │   │   │   ├── useChatConnection.ts
     │   │       │   │   │   │   ├── useChatDocuments.ts
+    │   │       │   │   │   │   ├── useChatEvents.ts
     │   │       │   │   │   │   ├── useChatForUsers.ts
     │   │       │   │   │   │   ├── useChatMessages.ts
     │   │       │   │   │   │   ├── useChatThread.ts
     │   │       │   │   │   │   ├── useChatThreadActions.ts
     │   │       │   │   │   │   ├── useChatThreads.ts
     │   │       │   │   │   │   ├── useChatUserSearch.ts
+    │   │       │   │   │   │   ├── useChats.ts
+    │   │       │   │   │   │   ├── useSendChatMessage.ts
+    │   │       │   │   │   │   ├── useSendChatThreadReply.ts
+    │   │       │   │   │   │   ├── useStartChatThread.ts
     │   │       │   │   │   │   └── useToggleReaction.ts
     │   │       │   │   │   └── reactions.ts
     │   │       │   │   ├── config
     │   │       │   │   │   ├── Config.ts
     │   │       │   │   │   ├── ConfigProvider.tsx
+    │   │       │   │   │   ├── HubApi.ts
+    │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   └── HubApi.test.ts
     │   │       │   │   │   └── useApiConfig.ts
     │   │       │   │   ├── drivers
     │   │       │   │   │   ├── Driver.ts
+    │   │       │   │   │   ├── DriverRegistry.ts
+    │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   └── DriverRegistry.test.ts
     │   │       │   │   │   ├── implementations
+    │   │       │   │   │   │   ├── MatrixDriver.ts
     │   │       │   │   │   │   ├── MockDriver.ts
-    │   │       │   │   │   │   ├── StandardDriver.ts
     │   │       │   │   │   │   └── __tests__
-    │   │       │   │   │   │       └── MockDriver.test.ts
+    │   │       │   │   │   │       ├── MockDriver.test.ts
+    │   │       │   │   │   │       └── driver-contract.test.ts
     │   │       │   │   │   ├── mocks
     │   │       │   │   │   │   ├── mockChatUsers.ts
     │   │       │   │   │   │   ├── mockChats.ts
@@ -390,6 +421,13 @@
     │   │       │   │   │       └── AccountSelector
     │   │       │   │   │           ├── AccountSelector.scss
     │   │       │   │   │           └── AccountSelector.tsx
+    │   │       │   │   ├── matrix
+    │   │       │   │   │   ├── config.ts
+    │   │       │   │   │   ├── initMatrix.ts
+    │   │       │   │   │   ├── types.ts
+    │   │       │   │   │   └── utils
+    │   │       │   │   │       ├── auth.ts
+    │   │       │   │   │       └── autodiscovery.ts
     │   │       │   │   └── ui
     │   │       │   │       └── components
     │   │       │   │           ├── avatar
@@ -398,6 +436,11 @@
     │   │       │   │           │   └── palette.ts
     │   │       │   │           ├── gaufre
     │   │       │   │           │   └── Gaufre.tsx
+    │   │       │   │           ├── toast
+    │   │       │   │           │   ├── Toast.scss
+    │   │       │   │           │   ├── Toast.tsx
+    │   │       │   │           │   ├── index.ts
+    │   │       │   │           │   └── notify.tsx
     │   │       │   │           └── user-profile
     │   │       │   │               ├── LanguagePickerUserMenu.tsx
     │   │       │   │               └── UserProfile.tsx
@@ -415,7 +458,7 @@
     │   │       │   │   ├── _app.tsx
     │   │       │   │   ├── _document.tsx
     │   │       │   │   ├── chat
-    │   │       │   │   │   ├── [chatId].tsx
+    │   │       │   │   │   ├── index.tsx
     │   │       │   │   │   └── new.tsx
     │   │       │   │   ├── home.scss
     │   │       │   │   ├── home.tsx
@@ -424,7 +467,8 @@
     │   │       │   │   ├── cunningham-tokens-sass.scss
     │   │       │   │   ├── cunningham-tokens.css
     │   │       │   │   ├── cunningham-tokens.ts
-    │   │       │   │   └── globals.scss
+    │   │       │   │   ├── globals.scss
+    │   │       │   │   └── toast.scss
     │   │       │   └── utils
     │   │       │       ├── useLayout.tsx
     │   │       │       └── useQueries.ts
@@ -492,4 +536,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-128 directories, 366 files
+134 directories, 404 files

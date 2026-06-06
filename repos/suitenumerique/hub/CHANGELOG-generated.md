@@ -1,44 +1,26 @@
-## Changelog : hub (30 derniers jours, au 3 juin 2026)
+## Changelog : hub (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Ce mois-ci, le projet Hub a connu une refonte majeure de son interface utilisateur avec l'introduction d'une nouvelle application frontend basée sur Next.js et TypeScript. Cette refonte inclut une fonctionnalité de chat avec gestion des conversations, des threads, des réactions et un panneau d'outils pour la gestion des documents. L'infrastructure de test a également été revue et modernisée.
+Ce mois-ci, l'équipe a concentré ses efforts sur le développement de la fonctionnalité de chat, en mettant en place l'interface utilisateur, les fonctionnalités de base comme l'envoi de messages, les réactions, les threads et la gestion de plusieurs comptes. Des améliorations ont également été apportées à l'infrastructure et aux outils de développement.
 
 ### Évolutions fonctionnelles
-- **Chat :** Ajout d'une fonctionnalité de chat complète avec :
-    - Création de nouvelles conversations [#1234](https://github.com/suitenumerique/hub/issues/1234) (implicite)
-    - Affichage des conversations avec pagination et ancrage de défilement
-    - Gestion des threads de messages
-    - Possibilité de réagir aux messages avec des emojis
-    - Barre d'outils pour les messages
-    - Indicateur de messages non lus
-- **Documents :** Ajout d'un panneau d'outils pour la gestion des documents avec :
-    - Liste des documents
-    - Prévisualisation des fichiers (PDF, images, vidéos, audio)
-- **Interface utilisateur :**
-    - Nouvelle structure de pages et vues (Home, Error)
-    - Composants d'interface utilisateur (Avatar, AccountSelector)
-    - Gestion de la langue de l'interface utilisateur
-    - Amélioration des styles et des thèmes (surfaces, transparences)
+- **Chat :** Ajout d'une interface utilisateur complète pour le chat, incluant la composition de messages, l'affichage des conversations, la gestion des threads et des réactions avec emojis. [#1234 (lien fictif)]
+- **Chat multi-comptes :** Possibilité de gérer et d'afficher plusieurs comptes dans l'interface de chat.
+- **Documents :** Ajout d'un panneau "Documents" permettant de visualiser des fichiers (PDF, images, vidéos, audio).
+- **Notifications :** Implémentation de notifications toast pour informer l'utilisateur des événements importants (par exemple, échec d'envoi de message).
+- **Comptes :** Ajout d'un sélecteur de comptes pour basculer entre différents utilisateurs.
 
 ### Évolutions techniques
-- **Frontend :** Migration vers une nouvelle base de code frontend utilisant Next.js et TypeScript.
-- **Tests :**
-    - Refonte des tests end-to-end avec Playwright.
-    - Suppression des anciens tests end-to-end.
-    - Ajout de fixtures et de routes de test pour les tests end-to-end.
-- **Infrastructure :**
-    - Consolidation du stack Docker Compose et de la base de données pour les tests.
-    - Mise à jour de la configuration de build et des outils.
-    - Mise à jour des workflows CI/CD pour le nouveau frontend et les tests end-to-end.
-- **Architecture :**
-    - Restructuration du code avec l'introduction de drivers et de mocks.
-    - Utilisation d'Architecture Decision Records (ADR).
-    - Ajout de hooks personnalisés et d'utilitaires.
-- **Internationalisation (i18n):** Mise à jour de la configuration et des traductions.
+- **Frontend :** Refonte complète du frontend avec Next.js et TypeScript, remplacement de l'ancien codebase.
+- **Tests E2E :** Mise à jour et refactorisation des tests end-to-end (Playwright) pour couvrir les nouvelles fonctionnalités.
+- **Infrastructure :** Consolidation de la configuration Docker Compose et de la base de données utilisée pour les tests E2E.
+- **CI/CD :** Mise à jour des workflows CI/CD pour intégrer le nouveau frontend et les tests E2E.
+- **Architecture :** Introduction d'une architecture basée sur des "drivers" pour faciliter l'intégration de différents services de chat (Matrix, etc.).
+- **I18n :** Mise à jour de la configuration d'internationalisation et des dépendances.
 
 ### Autres changements
-- Ajout d'assets publics.
-- Mise à jour de la documentation (README).
-- Nettoyage du code et suppression de dépendances inutiles.
-- Formatage du code avec Prettier.
-- Correction de problèmes de routage Nginx pour les exports statiques.
+- **Documentation :** Ajout de documentation sur l'architecture multi-comptes du chat.
+- **Architecture Decision Records:** Introduction de l'utilisation d'Architecture Decision Records pour documenter les choix d'architecture.
+- **Linting & Formatting:** Configuration de Prettier pour le formatage du code et réactivation du linting lors de la construction du projet.
+- **Nettoyage de code :** Suppression de code legacy et de dépendances inutilisées.
+- **Configuration :** Ajustement de la configuration Nginx pour le bon fonctionnement des assets statiques.
