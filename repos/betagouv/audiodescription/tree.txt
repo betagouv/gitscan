@@ -415,6 +415,7 @@
 │   │       ├── field.field.node.movie.field_actors.yml
 │   │       ├── field.field.node.movie.field_allocine_id.yml
 │   │       ├── field.field.node.movie.field_arte_id.yml
+│   │       ├── field.field.node.movie.field_audiodescribed_poster.yml
 │   │       ├── field.field.node.movie.field_canal_vod_id.yml
 │   │       ├── field.field.node.movie.field_code.yml
 │   │       ├── field.field.node.movie.field_directors.yml
@@ -604,6 +605,7 @@
 │   │       ├── field.storage.node.field_actors.yml
 │   │       ├── field.storage.node.field_allocine_id.yml
 │   │       ├── field.storage.node.field_arte_id.yml
+│   │       ├── field.storage.node.field_audiodescribed_poster.yml
 │   │       ├── field.storage.node.field_canal_vod_id.yml
 │   │       ├── field.storage.node.field_code.yml
 │   │       ├── field.storage.node.field_content.yml
@@ -995,6 +997,7 @@
 │       │           ├── js
 │       │           │   ├── back-button.js
 │       │           │   ├── iframe-responsive.js
+│       │           │   ├── newsletter-form.js
 │       │           │   ├── search-ajax-live-update.js
 │       │           │   └── search-ajax-url-update.js
 │       │           ├── src
@@ -1008,6 +1011,8 @@
 │       │           │   │   ├── SearchBreadcrumbBuilder.php
 │       │           │   │   └── ViewBreadcrumbBuilder.php
 │       │           │   ├── Command
+│       │           │   │   ├── SearchAjaxResetFiltersCommand.php
+│       │           │   │   ├── SearchAjaxUpdateTitleCommand.php
 │       │           │   │   └── SearchAjaxUrlUpdateCommand.php
 │       │           │   ├── Controller
 │       │           │   │   ├── Error410Controller.php
@@ -1129,6 +1134,8 @@
 │               ├── dist
 │               │   ├── scripts.js
 │               │   └── styles.css
+│               ├── icons
+│               │   └── custom-speak-fill.svg
 │               ├── images
 │               │   ├── ad_icon.png
 │               │   ├── logo-betagouvfr.svg
@@ -1269,6 +1276,7 @@
 │               │   │   └── movie-search.html.twig
 │               │   ├── system
 │               │   │   ├── html.html.twig
+│               │   │   ├── input.html.twig
 │               │   │   ├── menu--main.html.twig
 │               │   │   ├── page-title--article--full.html.twig
 │               │   │   ├── page-title--director--full.html.twig
@@ -1280,7 +1288,8 @@
 │               │   │   ├── page-title--newsletter-unsubscription.html.twig
 │               │   │   ├── page-title--page--full.html.twig
 │               │   │   ├── page-title.html.twig
-│               │   │   └── page.html.twig
+│               │   │   ├── page.html.twig
+│               │   │   └── status-messages.html.twig
 │               │   ├── taxonomy_term
 │               │   │   ├── taxonomy-term--collection--full.html.twig
 │               │   │   ├── taxonomy-term--collection--highlighted.html.twig
@@ -1354,7 +1363,8 @@
 │   │   ├── Version20250217224758.php
 │   │   ├── Version20250218201041.php
 │   │   ├── Version20250715152541.php
-│   │   └── Version20250813134241.php
+│   │   ├── Version20250813134241.php
+│   │   └── Version20260605125021.php
 │   ├── phpcs.xml
 │   ├── phpcs.xml.dist
 │   ├── phpmd.xml
@@ -1514,4 +1524,4 @@
     ├── logrotate
     ├── restore_drupal.sh
     └── restore_patrimony.sh
-158 directories, 1380 files
+159 directories, 1389 files
