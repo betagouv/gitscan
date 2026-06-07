@@ -28,6 +28,7 @@
 │   ├── .env.test
 │   ├── .npmrc
 │   ├── .prettierignore
+│   ├── CLAUDE.md
 │   ├── eslint.config.js
 │   ├── package-lock.json
 │   ├── package.json
@@ -65,11 +66,14 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260522062257_premier_detenteur_user_name_cache
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260604100000_add_trichine_models
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
 │   │   ├── 20260526_backfill_carcasse_svi_closed_at.sql
 │   │   ├── 251203-clean-old-users.js
+│   │   ├── copy-db-from-source.sh
 │   │   ├── copy-schema-to-app-side.js
 │   │   ├── fill-ccg-db.ts
 │   │   ├── import-official-cfei.ts
@@ -96,6 +100,7 @@
 │   │   │   ├── sync-route-carcasse-primary.test.ts
 │   │   │   ├── sync-route-roundtrip.test.ts
 │   │   │   ├── sync-route.test.ts
+│   │   │   ├── trichine-status.test.ts
 │   │   │   ├── user-entity.test.ts
 │   │   │   └── user-invite.test.ts
 │   │   ├── assets
@@ -144,11 +149,13 @@
 │   │   │   ├── carcasse.ts
 │   │   │   ├── certificats.ts
 │   │   │   ├── entite.ts
+│   │   │   ├── laboratoire.ts
 │   │   │   ├── log.ts
 │   │   │   ├── quiz-result.ts
 │   │   │   ├── search.ts
 │   │   │   ├── stats.ts
 │   │   │   ├── sync.ts
+│   │   │   ├── trichine.ts
 │   │   │   ├── user-entity.ts
 │   │   │   ├── user.ts
 │   │   │   ├── utils.ts
@@ -236,6 +243,8 @@
 │   │       ├── sync-carcasse-modification-request.ts
 │   │       ├── sync-carcasse.ts
 │   │       ├── sync-fei.ts
+│   │       ├── trichine-status.ts
+│   │       ├── trichine.ts
 │   │       └── user.ts
 │   ├── tsconfig.json
 │   ├── vitest.config.ts
@@ -245,6 +254,7 @@
 │   ├── .gitignore
 │   ├── .npmrc
 │   ├── .prettierignore
+│   ├── CLAUDE.md
 │   ├── README.md
 │   ├── __tests__
 │   │   ├── create-new-carcasse.test.ts
@@ -663,6 +673,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260522062257_premier_detenteur_user_name_cache
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260604100000_add_trichine_models
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -1076,6 +1088,7 @@
 │   ├── Instruction 2021-555_final.pdf
 │   ├── automatic reload.md
 │   ├── e2e-tests-status.md
+│   ├── emails.md
 │   ├── from_fei_to_carcasse.md
 │   ├── project_overview
 │   │   ├── img1.1.png
@@ -1083,10 +1096,12 @@
 │   │   ├── img2.png
 │   │   └── project_overview.md
 │   ├── remix pwa offline
+│   ├── trichine-todo.md
 │   └── trichine.md
 ├── e2e
 │   ├── .gitignore
 │   ├── .npmrc
+│   ├── CLAUDE.md
 │   ├── README.md
 │   ├── package-lock.json
 │   ├── package.json
@@ -1317,4 +1332,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-318 directories, 1001 files
+320 directories, 1014 files
