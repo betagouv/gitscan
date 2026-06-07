@@ -8,6 +8,8 @@
 │       │       └── evals.json
 │       ├── commit
 │       │   └── SKILL.md
+│       ├── debug-production-issue
+│       │   └── SKILL.md
 │       └── grafana-sql
 │           ├── SKILL.md
 │           ├── evals
@@ -34,8 +36,7 @@
 │   └── workflows
 │       ├── mcr-ci.yml
 │       ├── slack-pr-notification.yml
-│       ├── trigger-dso.yml
-│       └── validate-pr-source.yml
+│       └── trigger-dso.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
 ├── .gitleaks.toml
@@ -143,7 +144,8 @@
 │   ├── README.md
 │   ├── alembic.ini
 │   ├── docs
-│   │   └── archi-captation.png
+│   │   ├── archi-captation.png
+│   │   └── audio_processing_pipeline.md
 │   ├── mcr_meeting
 │   │   ├── __init__.py
 │   │   ├── app
@@ -163,7 +165,6 @@
 │   │   │   │   │   └── transcription_router.py
 │   │   │   │   └── user_router.py
 │   │   │   ├── client
-│   │   │   │   ├── comu_client.py
 │   │   │   │   ├── drive_client.py
 │   │   │   │   ├── http_client.py
 │   │   │   │   ├── meeting_client.py
@@ -234,6 +235,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── authorize_meeting_access.py
 │   │   │   │   ├── deliverable_transitions.py
+│   │   │   │   ├── feedback.py
 │   │   │   │   ├── meeting_transitions.py
 │   │   │   │   └── report_rendering.py
 │   │   │   ├── exceptions
@@ -242,8 +244,10 @@
 │   │   │   ├── infrastructure
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── celery.py
+│   │   │   │   ├── comu.py
 │   │   │   │   ├── email.py
-│   │   │   │   └── s3.py
+│   │   │   │   ├── s3.py
+│   │   │   │   └── unleash.py
 │   │   │   ├── models
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── deliverable_model.py
@@ -254,8 +258,6 @@
 │   │   │   │   └── user_model.py
 │   │   │   ├── orchestrators
 │   │   │   │   ├── deliverable_orchestrator.py
-│   │   │   │   ├── feedback_orchestrator.py
-│   │   │   │   ├── lookup_orchestrator.py
 │   │   │   │   ├── meeting_multipart_orchestrator.py
 │   │   │   │   ├── meeting_orchestrator.py
 │   │   │   │   ├── meeting_transitions_orchestrator.py
@@ -275,7 +277,6 @@
 │   │   │   ├── services
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── audio_pre_transcription_processing_service.py
-│   │   │   │   ├── audio_upload_service.py
 │   │   │   │   ├── correct_acronyms
 │   │   │   │   │   ├── acronym_corrector.py
 │   │   │   │   │   ├── data
@@ -300,11 +301,7 @@
 │   │   │   │   │   │   └── transcription_generation_success.html
 │   │   │   │   │   ├── templates.py
 │   │   │   │   │   └── types.py
-│   │   │   │   ├── feature_flag_service.py
-│   │   │   │   ├── feedback_service.py
 │   │   │   │   ├── llm_post_processing.py
-│   │   │   │   ├── lookup_service.py
-│   │   │   │   ├── meeting_audio_service.py
 │   │   │   │   ├── meeting_multipart_service.py
 │   │   │   │   ├── meeting_service.py
 │   │   │   │   ├── meeting_to_transcription_service.py
@@ -353,8 +350,19 @@
 │   │   │   │   └── meeting_actions.py
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── create_feedback.py
+│   │   │   │   ├── create_meeting.py
+│   │   │   │   ├── delete_meeting.py
+│   │   │   │   ├── generate_presigned_audio_upload_url.py
+│   │   │   │   ├── get_feature_flag_status.py
+│   │   │   │   ├── get_meeting.py
+│   │   │   │   ├── get_meeting_audio.py
+│   │   │   │   ├── get_or_create_user_by_keycloak.py
+│   │   │   │   ├── list_meetings.py
+│   │   │   │   ├── lookup_comu_meeting.py
 │   │   │   │   ├── mark_deliverable_success.py
-│   │   │   │   └── request_deliverable.py
+│   │   │   │   ├── request_deliverable.py
+│   │   │   │   └── update_meeting.py
 │   │   │   └── utils
 │   │   │       ├── __init__.py
 │   │   │       ├── compute_devices.py
@@ -473,6 +481,7 @@
 │   │   ├── domain
 │   │   │   ├── __init__.py
 │   │   │   ├── test_deliverable_transitions.py
+│   │   │   ├── test_feedback.py
 │   │   │   └── test_report_rendering.py
 │   │   ├── factories
 │   │   │   ├── README.md
@@ -484,6 +493,9 @@
 │   │   │   ├── test_factories.py
 │   │   │   ├── transcription_factory.py
 │   │   │   └── user_factory.py
+│   │   ├── infrastructure
+│   │   │   ├── __init__.py
+│   │   │   └── test_s3.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
@@ -515,8 +527,6 @@
 │   │   │   ├── test_custom_report_generation.py
 │   │   │   ├── test_deliverable_service.py
 │   │   │   ├── test_detailed_synthesis_generation.py
-│   │   │   ├── test_meeting_audio_service.py
-│   │   │   ├── test_meeting_service.py
 │   │   │   ├── test_meeting_transitions_service.py
 │   │   │   ├── test_report_task_service.py
 │   │   │   ├── test_s3_multipart.py
@@ -547,8 +557,13 @@
 │   │   │   └── test_spelling_corrector.py
 │   │   └── use_cases
 │   │       ├── __init__.py
+│   │       ├── test_create_meeting.py
+│   │       ├── test_delete_meeting.py
+│   │       ├── test_get_meeting_audio.py
+│   │       ├── test_list_meetings.py
 │   │       ├── test_mark_deliverable_success.py
-│   │       └── test_request_deliverable.py
+│   │       ├── test_request_deliverable.py
+│   │       └── test_update_meeting.py
 │   └── uv.lock
 ├── mcr-frontend
 │   ├── .dockerignore
@@ -781,6 +796,7 @@
 │   │   │   ├── types.ts
 │   │   │   └── video2audioConverter.ts
 │   │   ├── views
+│   │   │   ├── MaintenancePage.vue
 │   │   │   ├── errors
 │   │   │   │   ├── LoginErrorPage.vue
 │   │   │   │   ├── NotBetaTesterPage.vue
@@ -1087,4 +1103,4 @@
 ├── mcr.code-workspace
 └── scripts
     └── check_changed.py
-215 directories, 874 files
+217 directories, 888 files
