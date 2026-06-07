@@ -61,6 +61,9 @@
 │   │   ├── log_entry_tag.ts
 │   │   ├── parcelle.ts
 │   │   ├── project.ts
+│   │   ├── project_step.ts
+│   │   ├── project_step_document.ts
+│   │   ├── project_step_tag.ts
 │   │   ├── territoire.ts
 │   │   └── user.ts
 │   ├── policies
@@ -70,6 +73,7 @@
 │   │   ├── aac_csv_service.ts
 │   │   ├── aac_service.ts
 │   │   ├── base_csv_service.ts
+│   │   ├── base_document_upload_service.ts
 │   │   ├── event_logger_service.ts
 │   │   ├── exploitation_csv_service.ts
 │   │   ├── exploitation_service.ts
@@ -81,6 +85,9 @@
 │   │   ├── parcelle_csv_service.ts
 │   │   ├── parcelle_service.ts
 │   │   ├── project_service.ts
+│   │   ├── project_step_document_service.ts
+│   │   ├── project_step_service.ts
+│   │   ├── project_step_tag_service.ts
 │   │   ├── territoire_service.ts
 │   │   └── user_service.ts
 │   └── validators
@@ -126,6 +133,8 @@
 │   │   ├── log_entry_tag_factory.ts
 │   │   ├── parcelle_factory.ts
 │   │   ├── project_factory.ts
+│   │   ├── project_step_factory.ts
+│   │   ├── project_step_tag_factory.ts
 │   │   ├── territoire_factory.ts
 │   │   └── user_factory.ts
 │   ├── migrations
@@ -172,7 +181,11 @@
 │   │   ├── 1775000000001_create_projects_table.ts
 │   │   ├── 1775000000002_create_project_parcelle_relations_table.ts
 │   │   ├── 1775000000003_create_project_exploitation_relations_table.ts
-│   │   └── 1775000000004_create_project_captage_relations_table.ts
+│   │   ├── 1775000000004_create_project_captage_relations_table.ts
+│   │   ├── 1775000000005_create_project_step_tags_table.ts
+│   │   ├── 1775000000006_create_project_steps_table.ts
+│   │   ├── 1775000000007_create_project_step_documents_table.ts
+│   │   └── 1775000000008_create_project_step_tag_relations_table.ts
 │   └── seeders
 │       ├── 1_user_seeder.ts
 │       ├── 2_exploitation_seeder.ts
@@ -263,6 +276,9 @@
 │   │   │   ├── parcelle-left-sidebar.tsx
 │   │   │   └── parcelles-section.tsx
 │   │   ├── parcelles-manager.tsx
+│   │   ├── projets
+│   │   │   ├── projets-list.tsx
+│   │   │   └── projets-tabs.tsx
 │   │   ├── search-adresse.tsx
 │   │   ├── search-autocomplete.tsx
 │   │   ├── search-raison-sociale.tsx
@@ -308,6 +324,9 @@
 │   │   │   └── id.tsx
 │   │   ├── login.tsx
 │   │   ├── no_territoire.tsx
+│   │   ├── projets
+│   │   │   ├── id.tsx
+│   │   │   └── index.tsx
 │   │   └── visualisation.tsx
 │   ├── tsconfig.json
 │   ├── ui
@@ -469,7 +488,6 @@
 │   │   │   └── parcelle_note.spec.ts
 │   │   ├── project
 │   │   │   ├── projects_destroy.spec.ts
-│   │   │   ├── projects_index.spec.ts
 │   │   │   ├── projects_show.spec.ts
 │   │   │   ├── projects_store.spec.ts
 │   │   │   └── projects_update.spec.ts
@@ -494,7 +512,9 @@
 │       ├── parcelle
 │       │   └── parcelle_csv_service.spec.ts
 │       ├── project
-│       │   └── project_model.spec.ts
+│       │   ├── project_model.spec.ts
+│       │   ├── project_step_service.spec.ts
+│       │   └── project_step_tag_service.spec.ts
 │       └── territoire
 │           └── territoire_service.spec.ts
 ├── tsconfig.json
@@ -506,4 +526,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-106 directories, 402 files
+108 directories, 420 files

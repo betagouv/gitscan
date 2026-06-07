@@ -1,29 +1,33 @@
-## Changelog : vizeau (30 derniers jours, au 29 mai 2026)
+## Changelog : vizeau (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment concernant la visualisation des données de qualité de l'eau et la gestion des substances. Des fonctionnalités importantes ont également été ajoutées pour la gestion des projets et des territoires, ainsi que pour l'export de données. Plusieurs corrections de bugs et optimisations ont été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, l'équipe a concentré ses efforts sur la gestion des projets, avec la création d'une page dédiée et l'ajout de fonctionnalités permettant d'attacher des exploitations, parcelles et captages aux projets. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour le suivi des substances et la visualisation de la qualité de l'eau. Enfin, des outils en ligne de commande ont été ajoutés pour faciliter la gestion des territoires et des utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'une vue synthétique de la qualité de l'eau, incluant un indicateur CTA sur les cartes récapitulatives. [#428](https://github.com/MTES-MCT/vizeau/issues/428)
-- Amélioration de la visualisation du suivi des substances avec l'introduction d'un nouveau composant de sélection `<SingleSelectMenu/>`. [#409](https://github.com/MTES-MCT/vizeau/issues/409)
-- Possibilité d'attacher des exploitations, parcelles et captages aux projets. [#425](https://github.com/MTES-MCT/vizeau/issues/425) et [#433b818](https://github.com/MTES-MCT/vizeau/commit/433b818)
-- Ajout de commandes de seeding pour les utilisateurs et territoires, facilitant la mise en place d'environnements de test. [#422](https://github.com/MTES-MCT/vizeau/issues/422)
-- Implémentation de la création de nouveaux territoires depuis la ligne de commande. [#410](https://github.com/MTES-MCT/vizeau/issues/410)
-- Ajout de l'export des données AAC (Agences de l'Eau) au format CSV, avec des améliorations de robustesse et de formatage des données. [#386](https://github.com/MTES-MCT/vizeau/issues/386)
-- Ajout d'analyses pour les installations de captage. [#393](https://github.com/MTES-MCT/vizeau/issues/393)
-- Affichage d'un toaster de confirmation lors de l'attribution des parcelles. [#403](https://github.com/MTES-MCT/vizeau/issues/403)
-- Amélioration de l'affichage des parcelles sur la carte, avec un z-index augmenté pour une meilleure visibilité. [#401](https://github.com/MTES-MCT/vizeau/issues/401)
-- Correction de l'import d'un graphique. [#400](https://github.com/MTES-MCT/vizeau/issues/400)
-- Correction d'un bug sur l'info-bulle du Design System Français (DSFR). [#395](https://github.com/MTES-MCT/vizeau/issues/395)
+- Ajout d'une page "en construction" pour la page projet, en préparation de son déploiement complet. [#426](https://github.com/MTES-MCT/vizeau/pull/426)
+- Implémentation de la gestion des étapes de projet, permettant de suivre l'avancement des projets. [#429](https://github.com/MTES-MCT/vizeau/pull/429)
+- Possibilité d'attacher des exploitations, parcelles et captages aux projets. [#425](https://github.com/MTES-MCT/vizeau/pull/425) et [#433](https://github.com/MTES-MCT/vizeau/pull/433)
+- Ajout d'une vue synthétique de la qualité de l'eau. [#424](https://github.com/MTES-MCT/vizeau/pull/424)
+- Amélioration de la visualisation du suivi des substances, avec un nouveau composant `SingleSelectMenu`. [#409](https://github.com/MTES-MCT/vizeau/pull/409) et [#419](https://github.com/MTES-MCT/vizeau/pull/419)
+- Ajout d'un CTA (Call To Action) sur les cartes de résumé. [#419](https://github.com/MTES-MCT/vizeau/pull/419)
+- Correction de l'affichage des couleurs dans la répartition des cultures. [#431](https://github.com/MTES-MCT/vizeau/issues/431)
 - Correction de l'affichage de l'évolution des parcelles bio (passage de % à ha). [#428](https://github.com/MTES-MCT/vizeau/issues/428)
+- Ajout d'un toaster de confirmation lors de l'attribution des parcelles. [#403](https://github.com/MTES-MCT/vizeau/issues/403)
 - Tri des substances affichées dans la liste déroulante. [#407](https://github.com/MTES-MCT/vizeau/issues/407)
 
 ### Évolutions techniques
+- Mise à jour de la version de Node.js utilisée par la CI à Node 24. [#432](https://github.com/MTES-MCT/vizeau/pull/432)
+- Amélioration de la gestion d'erreur et corrections de mocks lors de l'export CSV. [#432](https://github.com/MTES-MCT/vizeau/pull/432)
+- Ajout de commandes en ligne de commande pour le seeding d'utilisateurs et de territoires. [#405](https://github.com/MTES-MCT/vizeau/pull/405) et [#410](https://github.com/MTES-MCT/vizeau/pull/410)
+- Refactoring et implémentation du backend pour la gestion des projets. [#405](https://github.com/MTES-MCT/vizeau/pull/405)
 - Mise à jour du service de recherche d'exploitations. [#404](https://github.com/MTES-MCT/vizeau/issues/404)
-- Implémentation du module CRUD (Create, Read, Update, Delete) pour la gestion des projets. [#405](https://github.com/MTES-MCT/vizeau/issues/405)
-- Remplacement du composant `<Select/>` du DSFR par `<SingleSelectMenu/>` pour une meilleure gestion et personnalisation. [#409](https://github.com/MTES-MCT/vizeau/issues/409)
-- Correction d'une mauvaise requête SQL. [#0c98a5b](https://github.com/MTES-MCT/vizeau/commit/0c98a5b)
+- Correction d'une mauvaise requête SQL. [#422](https://github.com/MTES-MCT/vizeau/pull/422)
 
 ### Autres changements
-- Mise à jour du fichier `.gitignore`. [#399](https://github.com/MTES-MCT/vizeau/issues/399)
-- Diverses corrections et améliorations apportées suite aux suggestions de Copilot.
+- Corrections mineures sur les éléments de liste.
+- Validation des entrées.
+- Pagination implémentée.
+- Suppression du retour JSON inutile.
+- Déplacement des modèles de type de ProjetsTabs.
+- Corrections et améliorations diverses suite aux revues de code (Copilot).
+- Ajout d'attributs manquants et corrections de padding.
