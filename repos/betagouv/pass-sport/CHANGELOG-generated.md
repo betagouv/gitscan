@@ -1,10 +1,13 @@
-## Changelog : pass-sport (30 derniers jours, au 4 mai 2026)
+## Changelog : pass-sport (30 derniers jours, au 26 mai 2026)
 
 ### Résumé
-Ce changelog présente une mise à jour mineure du projet Pass'Sport. La principale évolution est la suppression de la mention légale concernant l'INJEP, simplifiant ainsi l'affichage pour les utilisateurs.
+Ce mois-ci, les modifications apportées au projet Pass'Sport se concentrent principalement sur la mise à jour des mentions légales, en particulier concernant le directeur des sports. Il n'y a pas eu de nouvelles fonctionnalités ou d'améliorations significatives pour les utilisateurs.
 
 ### Évolutions fonctionnelles
-- Suppression de la mention légale INJEP sur l'interface utilisateur. [#500](https://github.com/betagouv/pass-sport/issues/500)
+Aucune évolution fonctionnelle notable.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `python-dotenv` de la version 1.0.0 à la version 1.2.2 dans le répertoire `/data`.
+Aucune évolution technique notable.
+
+### Autres changements
+- Mise à jour des mentions légales concernant le directeur des sports. [#501](https://github.com/betagouv/pass-sport/issues/501)
