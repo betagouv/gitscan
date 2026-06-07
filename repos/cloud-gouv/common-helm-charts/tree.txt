@@ -100,11 +100,11 @@
 │   ├── .helmignore
 │   ├── Chart.yaml
 │   ├── dashboards
-│   │   ├── argocd
+│   │   ├── extra-apps
 │   │   │   ├── argocd-apps.json
-│   │   │   └── argocd-metrics.json
-│   │   ├── haproxy
-│   │   │   └── haproxy.json
+│   │   │   ├── argocd-metrics.json
+│   │   │   ├── haproxy.json
+│   │   │   └── postgres-overview.json
 │   │   ├── kube-mixins
 │   │   │   ├── cluster-total.json
 │   │   │   ├── controller-manager.json
@@ -134,18 +134,16 @@
 │   │   │   ├── loki-retention.json
 │   │   │   ├── loki-writes-resources.json
 │   │   │   └── loki-writes.json
-│   │   ├── mimir
-│   │   │   ├── mimir-alertmanager.json
-│   │   │   ├── mimir-compactor.json
-│   │   │   ├── mimir-object-store.json
-│   │   │   ├── mimir-overview.json
-│   │   │   ├── mimir-queries.json
-│   │   │   ├── mimir-reads.json
-│   │   │   ├── mimir-slow-queries.json
-│   │   │   ├── mimir-tenants.json
-│   │   │   └── mimir-writes.json
-│   │   └── postgres
-│   │       └── postgres-overview.json
+│   │   └── mimir
+│   │       ├── mimir-alertmanager.json
+│   │       ├── mimir-compactor.json
+│   │       ├── mimir-object-store.json
+│   │       ├── mimir-overview.json
+│   │       ├── mimir-queries.json
+│   │       ├── mimir-reads.json
+│   │       ├── mimir-slow-queries.json
+│   │       ├── mimir-tenants.json
+│   │       └── mimir-writes.json
 │   ├── templates
 │   │   ├── _helpers.tpl
 │   │   └── manifests.yaml
@@ -244,4 +242,4 @@
     │   ├── job.yaml.gotmpl
     │   └── rbac.yaml.gotmpl
     └── values.yaml
-54 directories, 192 files
+52 directories, 192 files

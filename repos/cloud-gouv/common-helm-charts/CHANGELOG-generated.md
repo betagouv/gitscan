@@ -1,23 +1,20 @@
-## Changelog : common-helm-charts (30 derniers jours, au 4 juin 2026)
+## Changelog : common-helm-charts (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées aux charts Helm de common-helm-charts. Les évolutions se concentrent sur l'ajout de nouveaux charts (pgbench, dashboard HAProxy), l'amélioration des charts existants (Argo Secrets, pgbench) et la correction de bugs pour une meilleure stabilité et sécurité.
+Ce mois-ci, les charts Helm ont été améliorés pour offrir une meilleure gestion des secrets, des tableaux de bord Grafana plus robustes et une configuration plus flexible pour certains déploiements. Des améliorations ont également été apportées au chart pgbench pour faciliter l'exécution de benchmarks.
 
 ### Évolutions fonctionnelles
-- Ajout d'un chart pour déployer un benchmark `pgbench` pour PostgreSQL, permettant de tester les performances de la base de données. [#18](https://github.com/cloud-gouv/common-helm-charts/pull/18)
-- Ajout d'un dashboard HAProxy pour Grafana, offrant une visualisation des statistiques du load balancer. [#20](https://github.com/cloud-gouv/common-helm-charts/pull/20)
-- Amélioration du chart `pgbench` avec externalisation des scripts de benchmark et correction du `securityContext` pour permettre l'écriture des résultats sur le système de fichiers. [#21](https://github.com/cloud-gouv/common-helm-charts/pull/21)
-- Correction d'un problème de provisioning des secrets dans Argo. [#10](https://github.com/cloud-gouv/common-helm-charts/pull/10)
+- **Grafana :** Refactorisation des tableaux de bord Grafana pour éviter la multiplication des ConfigMaps et améliorer la gestion des données [#25](https://github.com/cloud-gouv/common-helm-charts/issues/25).
+- **pgbench :** Amélioration du chart pgbench avec externalisation des scripts de benchmark pour une plus grande flexibilité et maintenabilité [#21](https://github.com/cloud-gouv/common-helm-charts/issues/21).
+- **Haproxy :** Ajout d'un nouveau tableau de bord Grafana dédié à Haproxy pour une meilleure supervision et analyse des performances [#20](https://github.com/cloud-gouv/common-helm-charts/issues/20).
+- **Secrets :** Correction de la gestion des secrets dans Argo, permettant un provisioning plus fiable et sécurisé [#17](https://github.com/cloud-gouv/common-helm-charts/issues/17) et [#10](https://github.com/cloud-gouv/common-helm-charts/issues/10).
 
 ### Évolutions techniques
-- Correction d'une condition dans le template pour gérer correctement les objets `$data` vides. [#24](https://github.com/cloud-gouv/common-helm-charts/pull/24)
-- Correction du chart pgbench pour ne demander aucune limite de CPU.
-- Correction du chart pgbench pour spécifier le namespace de déploiement.
-- Ajout de PodSecurityContext et securityContext pour le chart pgbench.
+- Ajout de la possibilité de définir des variables d'environnement supplémentaires pour certains charts.
+- Amélioration de la condition RBAC et ajout d'un job pour une meilleure gestion des autorisations et des tâches planifiées.
 
 ### Autres changements
-- Ajout d'une variable `extraenv` pour permettre la configuration d'environnements supplémentaires.
-- Documentation améliorée pour le chart `pgbench`.
-- Ajout d'un chart de base.
-- Correction de la gestion du namespace dans le chart Argo Secrets.
-- Ajout d'une condition RBAC et d'un job pour le chart Argo Secrets.
+- Correction d'une condition pour gérer correctement les objets `$data` vides.
+- Limitation à un seul namespace pour certaines configurations.
+- Ajout d'un nouveau chart (détails non spécifiés dans les commits).
+- Travaux de développement divers [#19](https://github.com/cloud-gouv/common-helm-charts/issues/19).
