@@ -7,11 +7,11 @@ validé par le CNIG et, plus précisément le modèle ERP (décrit en page 20 du
 
 Adopter et respecter ce schéma est une garantie, non seulement d’efficacité et de pertinence des informations collectées, mais aussi d’interopérabilité et de facilité du partage des données.
 
-[Schéma au format json](https://github.com/MTES-MCT/acceslibre-schema/blob/master/schema.json)
+[Schéma au format json](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema.json)
 
 [Description des champs acceslibre](https://acceslibre.beta.gouv.fr/contrib/documentation/)
 
-[Schéma au format excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/schema_format_excel.xls)
+[Schéma au format excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema.xls)
 
 ### Table des matières
 1. [Contexte](#contexte)
@@ -67,14 +67,14 @@ La base des informations d’accessibilité des ERP en France permet de regroupe
 
 ### Description du schéma <a name="schema"></a>
 
-Le schéma de base est disponible en format [json](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema_base.json) ou [excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema_data_base.xls) (à télécharger). (voir procédure avant dépôt des données)
+Le schéma de base est disponible en format [json](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema.json) ou [excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema.xls) (à télécharger). (voir procédure avant dépôt des données)
 
-Une description détaillée (champ par champ) du modèle de donnée est accessible ici : [https://schema.data.gouv.fr/MTES-MCT/acceslibre-schema/0.0.14/documentation.html](https://schema.data.gouv.fr/MTES-MCT/acceslibre-schema/0.0.14/documentation.html). Ce schéma
+Une description détaillée (champ par champ) du modèle de donnée est accessible ici : [https://schema.data.gouv.fr/MTES-MCT/acceslibre-schema/0.0.20/documentation.html](https://schema.data.gouv.fr/MTES-MCT/acceslibre-schema/0.0.20/documentation.html). Ce schéma
 respecte le standard Data Package Schema. Pour en savoir plus, voir la page dédiée : [DataPackage](https://specs.frictionlessdata.io/data-package/)
 
 Une description non technique des champs est également disponible ici : [https://acceslibre.beta.gouv.fr/contrib/documentation/](https://acceslibre.beta.gouv.fr/contrib/documentation/)
 
-D'autres schémas sont également disponibles pour les macro-activités correspondantes dans les dossiers floor, hosting, polling_station et school.
+D'autres schémas sont également disponibles pour les macro-activités correspondantes dans les dossiers base, bureau_de_vote, etablissements_scolaires, grands_etablissements, hebergement et sante.
 
 ### OpenData <a name="opendata"></a>
 
@@ -92,10 +92,10 @@ Voici les étapes à suivre en fonction du format choisi :
 
 1) Format json :
    1) Publier le jeu de données sur data.gouv.fr
-   2) Prévenir l’équipe acceslibre du dépôt en écrivant un mail à [acceslibre@beta.gouv.fr](mailto:acceslibre@beta.gouv.fr)
+   2) Prévenir l’équipe acceslibre du dépôt en écrivant un mail à [contact@acceslibre.beta.gouv.fr](mailto:contact@acceslibre.beta.gouv.fr)
 
-2) Format csv, via le modèle fourni “schema_format_excel”
-   1) Télécharger et remplissez le document excel [schéma format excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema_data_base.xls)
+2) Format csv, via le modèle fourni “schema”
+   1) Télécharger et remplissez le document excel [schéma format excel](https://github.com/MTES-MCT/acceslibre-schema/blob/master/base/schema.xls)
    2) Avant le dépôt de données :
       * supprimer les lignes 2,3 et tout les lignes “vides”(le modèle comportant 100 lignes)
       * supprimer l’onglet ‘tuto’
@@ -103,7 +103,7 @@ Voici les étapes à suivre en fonction du format choisi :
 Votre fichier est prêt à être déposé.
 3) Déposer le fichier sur : [https://publier.etalab.studio/select?schema=MTES-MCT%2Facceslibre-schema](https://publier.etalab.studio/select?schema=MTES-MCT%2Facceslibre-schema)
 (création de compte obligatoire)
-4) Prévenir l’équipe acceslibre du dépôt du fichier en écrivant un mail à : [acceslibre@beta.gouv.fr](mailto:acceslibre@beta.gouv.fr)
+4) Prévenir l’équipe acceslibre du dépôt du fichier en écrivant un mail à : [contact@acceslibre.beta.gouv.fr](mailto:contact@acceslibre.beta.gouv.fr)
 
 
 ### Format de fichier <a name="format"></a>
@@ -124,5 +124,5 @@ Les mises à jour sont effectuées à partir du fichier communiqué précédemme
 ### Nous contacter <a name="contact"></a>
 
 Pour contacter l’équipe Acceslibre en charge de l’élaboration et de l’utilisation de ce schéma, n’hésitez pas à nous
-écrire à l’adresse suivante : [acceslibre@beta.gouv.fr](mailto:acceslibre@beta.gouv.fr). Toutes les contributions sont
+écrire à l’adresse suivante : [contact@acceslibre.beta.gouv.fr](mailto:contact@acceslibre.beta.gouv.fr). Toutes les contributions sont
 les bienvenues !
