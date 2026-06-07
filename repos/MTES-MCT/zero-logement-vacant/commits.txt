@@ -1,3 +1,159 @@
+2026-06-05T16:21:15+02:00 - 49e3b216 - Andrea Gueugnaut : Merge pull request #1773 from MTES-MCT/feat/import-lovac-owner-eetl
+2026-06-05T16:10:52+02:00 - 410309b5 - Falinor : fix(server): fix 7 failing tests in server test suite
+2026-06-05T09:09:15+02:00 - dd3bf809 - Falinor : fix(server): fix housing repository typo
+2026-06-04T22:00:28+02:00 - 2ef0112c - Falinor : refactor(server): remove unused import
+2026-06-04T21:01:48+02:00 - 69556f4c - Falinor : fix(server): fix lint errors
+2026-06-04T20:16:31+02:00 - 933150ff - Falinor : fix(server): resolve type errors in import-lovac and vacancy-year test
+2026-06-04T19:46:34+02:00 - f3e91417 - Falinor : feat(server): use getOwnerDisplayName in Excel export
+2026-06-04T19:46:02+02:00 - f59ddcf0 - Falinor : feat(frontend): set lovac-2026 as the default filter
+2026-06-04T19:46:02+02:00 - ef3a2871 - Falinor : chore(server): drop unused owner_matches, owners_dept, owners_duplicates
+2026-06-04T19:46:02+02:00 - ed832e36 - Falinor : fix(server): drop primary key correctly from housing_owner_events
+2026-06-04T19:46:02+02:00 - ecef44bd - Falinor : chore(analytics): add import-lovac to pyproject.toml
+2026-06-04T19:46:02+02:00 - eb4158f8 - Falinor : perf(server): bypass user triggers during LOVAC housing-owner import
+2026-06-04T19:46:02+02:00 - eaf995bd - Falinor : fix(server): track affected owner ids in parallel housing-owners loader
+2026-06-04T19:46:02+02:00 - e87a47e9 - Falinor : feat(server): make insertManyHousingOwnerEvents idempotent
+2026-06-04T19:46:02+02:00 - df78b8e5 - Falinor : perf(server): single-pass GROUP BY for LOVAC buildings recompute
+2026-06-04T19:46:02+02:00 - d5ceeb96 - Falinor : perf(server): parallelize LOVAC housing-owners import by department
+2026-06-04T19:46:02+02:00 - d15c8735 - Falinor : perf(server): share housings trigger-bypass between LOVAC commands
+2026-06-04T19:46:02+02:00 - d0a4f787 - Falinor : feat: implement existing-housings transform with status reset and events
+2026-06-04T19:46:02+02:00 - c93a0188 - Falinor : docs: add plans and specs for LOVAC 2026 import
+2026-06-04T19:46:02+02:00 - c1034568 - Falinor : feat(models): add OWNER_KIND_LABELS
+2026-06-04T19:46:02+02:00 - bffe38c9 - Falinor : chore(server): set utf-8 encoding on import file reads
+2026-06-04T19:46:02+02:00 - b7e45280 - Falinor : fix(server): chunk refreshMultiOwnerFlags and fix housing-owner reporter counts
+2026-06-04T19:46:02+02:00 - b4e15551 - Falinor : test(frontend): fix HousingOwnersView tests to use getOwnerDisplayName
+2026-06-04T19:46:02+02:00 - a98c43e7 - Falinor : perf(server): batch source-housing-owners loader replace writes
+2026-06-04T19:46:02+02:00 - a1edcb53 - Falinor : feat(frontend): use getOwnerDisplayName in all owner display components and views
+2026-06-04T19:46:02+02:00 - 9b7a1618 - Falinor : fix: use next_old/next_new with structured JSON in housing events
+2026-06-04T19:46:02+02:00 - 9b14b1ec - Falinor : fix(server): align housing event ON CONFLICT targets with actual PKs
+2026-06-04T19:46:02+02:00 - 942d6138 - Falinor : perf(server): index owners_housing on housing FK columns
+2026-06-04T19:46:02+02:00 - 9365fb13 - Falinor : perf(server): bypass user triggers during LOVAC housings import
+2026-06-04T19:46:02+02:00 - 8be195a2 - Falinor : fix(server): write LOVAC housing-owner events to housing_owner_events
+2026-06-04T19:46:02+02:00 - 8b427cf4 - Falinor : test(server): align locprop fixtures with tightened source-housing-owner schema
+2026-06-04T19:46:02+02:00 - 8665d04f - Falinor : feat: complete source-owners transform with merge logic and timestamps
+2026-06-04T19:46:02+02:00 - 7d030744 - Falinor : perf(server): batch source-housing-owners enricher queries
+2026-06-04T19:46:02+02:00 - 7c768804 - Falinor : feat: add option "inconsistency2023" for vacancy start year
+2026-06-04T19:46:02+02:00 - 730aa150 - Falinor : feat(server): tighten source-housing-owner schema
+2026-06-04T19:46:02+02:00 - 6c3fed47 - Falinor : perf(server): make LOVAC owner id migration restartable on slow networks
+2026-06-04T19:46:02+02:00 - 6bf9f80c - Falinor : chore(server): remove dead code for dropped owner auxiliary tables
+2026-06-04T19:46:02+02:00 - 628dc67a - Falinor : fix(server): drop backfill from is_multi_owner migration
+2026-06-04T19:46:02+02:00 - 5c8ea8bf - Falinor : feat(server): cascade owners FK to owner_notes and owners_housing
+2026-06-04T19:46:02+02:00 - 5b7f19d4 - Falinor : feat(frontend): prefer username in parseOwner display output
+2026-06-04T19:46:02+02:00 - 569fcf78 - Falinor : feat: add Dagster import-lovac pipeline scaffolding and remaining modules
+2026-06-04T19:46:02+02:00 - 4fc0e1eb - Falinor : test(frontend): fix HousingOwnersView assertions for getOwnerDisplayName
+2026-06-04T19:46:02+02:00 - 4f4d35b3 - Falinor : fix(server): report created count in LOVAC housing-owners loader
+2026-06-04T19:46:02+02:00 - 457d045e - Falinor : feat(server): make LOVAC housings import restart-safe
+2026-06-04T19:46:02+02:00 - 39c355be - Falinor : feat(server): allow nullable idpersonne in source-owners pipeline
+2026-06-04T19:46:02+02:00 - 374b87f4 - Falinor : fix(server): order campaign locks deterministically in return_count triggers
+2026-06-04T19:46:02+02:00 - 3555246e - Falinor : feat: implement source-housing-owners transform with replacement logic and events
+2026-06-04T19:46:02+02:00 - 330549cc - Falinor : feat(models): add getOwnerDisplayName helper (username ?? fullName)
+2026-06-04T19:46:02+02:00 - 02957604 - Falinor : perf(server): convert owners_housing count triggers to statement-level
+2026-06-04T19:46:01+02:00 - fb43bb24 - Falinor : refactor(server): remove source-housing-duckdb.ts, make parquet repo resilient to missing columns
+2026-06-04T19:46:01+02:00 - f6abcf06 - Falinor : feat(server): append to file instead of overwriting it when importing lovac
+2026-06-04T19:46:01+02:00 - f61d387d - Falinor : fix(server): call reporter.created/updated in housing loader
+2026-06-04T19:46:01+02:00 - f2d68ee6 - Falinor : fix(server): create correct status and occupancy events when import source housings
+2026-06-04T19:46:01+02:00 - e726f0e1 - Falinor : feat(server): import geolocation_source field from LOVAC source
+2026-06-04T19:46:01+02:00 - e4624231 - Falinor : fix(server): create progress bars on-the-fly instead of pre-allocating all
+2026-06-04T19:46:01+02:00 - e3ede43c - Falinor : refactor(server): improve import-lovac script types
+2026-06-04T19:46:01+02:00 - dc805e13 - Falinor : fix(server): restore departments filter and clean up fs imports in housing command
+2026-06-04T19:46:01+02:00 - dbb8ae74 - Falinor : refactor(server): rewrite enricher query using Knex query builder
+2026-06-04T19:46:01+02:00 - d9d805ae - Falinor : refactor(server): update existing housing rules — only update vacant + non-suivi/en attente
+2026-06-04T19:46:01+02:00 - d456fcde - Falinor : feat(server): use owner_uid for owner identity in source owners and housing owners
+2026-06-04T19:46:01+02:00 - cfab4801 - Falinor : refactor(server): update housings CLI to accept deptsDir instead of JSONL file
+2026-06-04T19:46:01+02:00 - c17d30e8 - Falinor : test(server): update housing command tests to use parquet fixtures
+2026-06-04T19:46:01+02:00 - b5d63698 - Falinor : refactor(server): simplify housing command to accept pre-split deptsDir
+2026-06-04T19:46:01+02:00 - a7ed8621 - Falinor : refactor(server): replace geo-code A-B-C loop with DuckDB detect+split, parallel dept import
+2026-06-04T19:46:01+02:00 - a50fde81 - Falinor : feat(server): replicate owner_uid changes in Dagster pipelines
+2026-06-04T19:46:01+02:00 - 9fd862d2 - Falinor : feat(server): add parquet source repository for per-dept housing files
+2026-06-04T19:46:01+02:00 - 91fe8a5c - Falinor : fix(server): remove completed progress bars to prevent terminal overflow
+2026-06-04T19:46:01+02:00 - 8beed302 - Falinor : feat(server): add `rnb_footprint` to the table `buildings`
+2026-06-04T19:46:01+02:00 - 7b6b8312 - Falinor : feat(server): add system_account_email config and read_admin_user_id
+2026-06-04T19:46:01+02:00 - 71436f5a - Falinor : docs: add import-lovac plans
+2026-06-04T19:46:01+02:00 - 6e3d2bcb - Falinor : feat(server): add owner username
+2026-06-04T19:46:01+02:00 - 6d95acba - Falinor : fix(server): flush housing inserts before events to prevent FK violation
+2026-06-04T19:46:01+02:00 - 6bd16a57 - Falinor : feat(server): add prepare-housings.sh DuckDB script for geo-code correction and dept split
+2026-06-04T19:46:01+02:00 - 53561a74 - Falinor : refactor: extract shared constants module for Dagster pipelines
+2026-06-04T19:46:01+02:00 - 49e11e48 - Falinor : feat(server): implement housing transform with create/update logic and event generation
+2026-06-04T19:46:01+02:00 - 4888faff - Falinor : docs: add spec for completing Dagster pipeline translation
+2026-06-04T19:46:01+02:00 - 3fde5928 - Falinor : fix(server): add SQL injection guard and fix error propagation in parquet repo
+2026-06-04T19:46:01+02:00 - 3fdaaa4a - Falinor : refactor(server): avoid recomputing all buildings, increment or decrement their housing count
+2026-06-04T19:46:01+02:00 - 35b4def4 - Falinor : perf(server): update building counts inline per batch in existing housing loader
+2026-06-04T19:46:01+02:00 - 33b72424 - Falinor : refactor(server): use models constants
+2026-06-04T19:46:01+02:00 - 33643a3e - Falinor : fix(server): use deterministic uuidv5 for existing housing events
+2026-06-04T19:46:01+02:00 - 1e5045d7 - Falinor : fix(server): skip geo_code updates that would conflict with existing partition rows
+2026-06-04T19:46:01+02:00 - 1b6a71b3 - Falinor : feat(server): update housing write and asset for events tables and column mapping
+2026-06-04T19:46:01+02:00 - 1b1efc9f - Falinor : feat(server): add DuckDB prepare step for geo_code detection and dept split
+2026-06-04T19:46:01+02:00 - 19e8881e - Falinor : perf(server): scope building count update to affected buildings only
+2026-06-04T19:46:01+02:00 - 16d820ab - Falinor : feat(server): add multi-bar progress for parallel dept imports
+2026-06-04T19:46:01+02:00 - 001b8b31 - Falinor : feat(server): pre-create all progress bars sorted by dept before parallel import
+2026-06-04T19:46:00+02:00 - 7719b472 - Falinor : chore(server): add @duckdb/node-api dependency
+2026-06-04T19:44:13+02:00 - f8a1f39b - Falinor : feat: add option `lovac-2026`
+2026-06-04T19:44:13+02:00 - 96d4728b - Falinor : feat(server): validate lovac housing file using zod
+2026-06-04T19:44:13+02:00 - 9463147b - Falinor : docs: add buildings step to import pipeline, README and publish-lovac-report skill
+2026-06-04T19:44:13+02:00 - 7186136f - Falinor : feat(server): add import-buildings.sh DuckDB script with before/after report
+2026-06-04T19:44:13+02:00 - 64f39c62 - Falinor : feat(server): remove source-building Node.js importer
+2026-06-04T19:44:13+02:00 - 5d642d41 - Falinor : fix(server): batch geo_code lookup and fix stale field mappings in source-housing import
+2026-06-04T19:44:13+02:00 - 5905713b - Falinor : feat(server): add rnb_footprint to BuildingDBO
+2026-06-04T19:44:13+02:00 - 562b3de2 - Falinor : refactor(server): use Array directly without alias in source-housing-transform
+2026-06-04T19:44:13+02:00 - 3f061d72 - Falinor : fix(server): fix lint errors in import-lovac scripts
+2026-06-04T19:44:13+02:00 - 3ec682a2 - Falinor : refactor(server): fix naming, remove redundant diff, and expand owner command tests
+2026-06-04T19:44:12+02:00 - c484cfec - Falinor : test(server): align source-housing-command tests with current transform rules
+2026-06-04T19:44:12+02:00 - 9c616c8b - Falinor : refactor(server): use Array directly without alias in source-housing-owner-transform
+2026-06-04T19:44:12+02:00 - 93f259c1 - Falinor : fix(server): prevent system-user unique-constraint race in import-lovac tests
+2026-06-04T19:44:12+02:00 - 856495b1 - Falinor : fix(server): seed system user in test DB instead of per-worker setup
+2026-06-04T19:44:12+02:00 - 84a0c829 - Falinor : fix(server): fix parallel test isolation in import-lovac suite
+2026-06-04T19:44:12+02:00 - 704092c8 - Falinor : refactor(server): replace lodash/fp with effect and rename single-char params
+2026-06-04T19:44:11+02:00 - 0525078c - Falinor : refactor(server): move existing-housings verification out of source-housing command
+2026-06-04T19:43:09+02:00 - e6ca6378 - Falinor : feat(server): add housing-transform for existing-housings pipeline
+2026-06-04T19:43:09+02:00 - d133a4dd - Falinor : feat(server): extract source-housing load sinks into createHousingLoader
+2026-06-04T19:43:09+02:00 - ba05d1dd - Falinor : docs: add LOVAC loaders and existing-housings spec
+2026-06-04T19:43:09+02:00 - ad91dd70 - Falinor : feat(server): extract source-housing-owner load sinks into createHousingOwnerLoader
+2026-06-04T19:43:09+02:00 - acd04104 - Falinor : docs: add LOVAC loaders and existing-housings implementation plan
+2026-06-04T19:43:09+02:00 - 9ff89bb2 - Falinor : chore(server): ignore import-lovac JSON output files
+2026-06-04T19:43:09+02:00 - 9ec29208 - Falinor : feat(server): register existing-housings CLI subcommand
+2026-06-04T19:43:09+02:00 - 962f1435 - Falinor : fix: fix restore tool
+2026-06-04T19:43:09+02:00 - 6971cb34 - Falinor : feat(server): add existing-housings standalone command
+2026-06-04T19:43:09+02:00 - 46518463 - Falinor : feat(server): export genNoteApi
+2026-06-04T19:43:09+02:00 - 455426eb - Falinor : docs: add LOVAC EETL plan
+2026-06-04T19:43:09+02:00 - 44f1bf9b - Falinor : feat(server): add existing-housing loader
+2026-06-04T19:43:09+02:00 - 3050d33b - Falinor : feat(server): extract source-owner load sink into createOwnerLoader
+2026-06-04T19:43:09+02:00 - 076aab6e - Falinor : feat(server): update import-lovac housing transform rules
+2026-06-04T19:43:07+02:00 - 65913857 - Falinor : chore: add DuckDB MCP
+2026-06-04T19:42:35+02:00 - fe181fb5 - Falinor : refactor(server): use OwnerRecordDBO in source-owners pipeline
+2026-06-04T19:42:35+02:00 - e02f5164 - Falinor : feat(server): add CleverCloud task entrypoint and operator trigger script
+2026-06-04T19:42:35+02:00 - de54ab04 - Falinor : test(server): add year dataSource stamping test for owner transform
+2026-06-04T19:42:35+02:00 - dd9dd349 - Falinor : feat(server): add generic enrichWith stream utility for EETL pipelines
+2026-06-04T19:42:35+02:00 - d9d1fae2 - Falinor : fix(server): use cast instead of constraint in LoggerReporter to support all callers
+2026-06-04T19:42:35+02:00 - ceab3c72 - Falinor : refactor(server): replace yup with zod in source schemas
+2026-06-04T19:42:35+02:00 - beae3546 - Falinor : feat: add publish-lovac-report Notion export Skill
+2026-06-04T19:42:35+02:00 - ba84dc0f - Falinor : docs: fix commit scope convention in plan (feat(server) not feat(import-lovac))
+2026-06-04T19:42:35+02:00 - ac773a92 - Falinor : feat(server): add source-housing enricher with batch json_agg query
+2026-06-04T19:42:35+02:00 - a9e7ca97 - Falinor : docs: add spec for LOVAC observability, idempotency and CleverCloud launcher
+2026-06-04T19:42:35+02:00 - 9a7fc85b - Falinor : feat(server): use UUID v5 for deterministic owner IDs
+2026-06-04T19:42:35+02:00 - 986eed91 - Falinor : feat(server): wire EETL pipeline and writeReport in source-housing command
+2026-06-04T19:42:35+02:00 - 963a436f - Falinor : feat(server): add source-housing-owner transform, delete processor
+2026-06-04T19:42:35+02:00 - 7c2693ae - Falinor : test(server): add integration tests for source-owner command
+2026-06-04T19:42:35+02:00 - 7863362c - Falinor : feat(server): add source-housing transform, delete processor
+2026-06-04T19:42:35+02:00 - 70a68a43 - Falinor : feat(server): add source-housing-owner enricher with 2-query JOIN
+2026-06-04T19:42:35+02:00 - 65c7f07a - Falinor : docs: add EETL design spec for source-housings and source-housing-owners
+2026-06-04T19:42:35+02:00 - 5e465404 - Falinor : feat(server): rewire owner command to EETL pipeline with ts-pattern dispatch (L step)
+2026-06-04T19:42:35+02:00 - 5be3e7c0 - Falinor : feat(server): use UUID v5 for deterministic housing and event IDs
+2026-06-04T19:42:35+02:00 - 58f2a825 - Falinor : feat(server): add pure owner transform, remove N+1 processor (T step)
+2026-06-04T19:42:35+02:00 - 4efe26bd - Falinor : fix(server): re-export LOVAC_NAMESPACE from infra barrel
+2026-06-04T19:42:35+02:00 - 4d59ad6e - Falinor : feat(server): use UUID v5 for deterministic housing-owner event IDs
+2026-06-04T19:42:35+02:00 - 48740908 - Falinor : docs: update spec and README with stats, Notion skill, and operational runbook
+2026-06-04T19:42:35+02:00 - 45358fde - Falinor : fix(server): add type constraint to LoggerReporter for better type safety
+2026-06-04T19:42:35+02:00 - 2a57d027 - Falinor : feat(server): add owner enricher with batch DB lookup (E step)
+2026-06-04T19:42:35+02:00 - 273030ad - Falinor : feat(server): wire reporter created/updated into owner load sink and write report file
+2026-06-04T19:42:35+02:00 - 2712eade - Falinor : feat(server): add LOVAC_NAMESPACE constant and --year required CLI option
+2026-06-04T19:42:35+02:00 - 201a288a - Falinor : feat(server): implement created/updated counters and getSummary in LoggerReporter
+2026-06-04T19:42:35+02:00 - 186e77be - Falinor : fix(server): prefix unused params with underscore in NoopReporter
+2026-06-04T19:42:35+02:00 - 184d5de0 - Falinor : feat(server): wire EETL pipeline and writeReport in source-housing command
+2026-06-04T19:42:35+02:00 - 170f5fde - Falinor : feat(server): wire source-housing-owner command with EETL pipeline
+2026-06-04T19:42:35+02:00 - 0fd32c7f - Falinor : feat(server): add DuckDB SQL stat queries for pre/post snapshot
+2026-06-04T19:42:35+02:00 - 0d4b45aa - Falinor : feat(server): extend Reporter interface with created/updated/getSummary
+2026-06-04T19:42:35+02:00 - 0b7bb446 - Falinor : feat(server): add DuckDB snapshot and diff scripts for pre/post stats
+2026-06-04T19:42:35+02:00 - 0a12f354 - Falinor : refactor(server): split snapshot queries into one file per result set
+2026-06-04T19:42:35+02:00 - 001d34ea - Falinor : docs: replace ts-node with tsx
 2026-06-04T18:03:47+02:00 - 5581ec8a - Andrea Gueugnaut : Merge pull request #1834 from MTES-MCT/feat/metabase-dsfr-charts
 2026-06-04T17:54:23+02:00 - 261b1f56 - Falinor : fix(server): correctly detect card type and extract value for multi-column scalar dashcards
 2026-06-04T16:38:33+02:00 - dfe1ed84 - Falinor : feat(server): add Metabase API client and dashboard normalization helpers

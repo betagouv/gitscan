@@ -89,6 +89,8 @@
 │       ├── mise-en-production
 │       │   └── SKILL.md
 │       ├── prototype -> ../../.agents/skills/prototype
+│       ├── publish-lovac-report
+│       │   └── SKILL.md
 │       ├── setup-matt-pocock-skills -> ../../.agents/skills/setup-matt-pocock-skills
 │       ├── sql-explore
 │       │   └── SKILL.md
@@ -827,6 +829,47 @@
 │   │   │       ├── output_97_1.png
 │   │   │       └── rapport-complet-sortie-vacance.tex
 │   │   └── test.sh
+│   ├── import-lovac
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   ├── __init__.py
+│   │   │   ├── assets.py
+│   │   │   ├── buildings
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── read.py
+│   │   │   │   ├── triggers.py
+│   │   │   │   └── write.py
+│   │   │   ├── config.py
+│   │   │   ├── constants.py
+│   │   │   ├── definitions.py
+│   │   │   ├── existing_housings
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── read.py
+│   │   │   │   ├── transform.py
+│   │   │   │   └── write.py
+│   │   │   ├── housing_owners
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── read.py
+│   │   │   │   ├── transform.py
+│   │   │   │   └── write.py
+│   │   │   ├── housings
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── read.py
+│   │   │   │   ├── transform.py
+│   │   │   │   └── write.py
+│   │   │   ├── owners
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── read.py
+│   │   │   │   ├── transform.py
+│   │   │   │   └── write.py
+│   │   │   └── partitions.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_existing_housings_transform.py
+│   │   │   ├── test_housing_owners_transform.py
+│   │   │   ├── test_housings_transform.py
+│   │   │   └── test_owners_transform.py
+│   │   └── workspace.yaml
 │   ├── logs
 │   │   ├── dbt.log
 │   │   └── query_log.sql
@@ -858,6 +901,7 @@
 │   ├── README.md
 │   ├── SETUP_CHECKLIST.md
 │   ├── cron.json
+│   ├── import-lovac-entrypoint.sh
 │   └── post_build.sh
 ├── docs
 │   ├── DATABASE_SEEDS_SAFETY.md
@@ -890,7 +934,8 @@
 │   │   ├── 2026-04-05-knex-improvements.md
 │   │   ├── 2026-04-05-knex-to-kysely.md
 │   │   ├── 2026-04-10-better-auth-migration.md
-│   │   └── 2026-04-14-import-lovac-eetl.md
+│   │   ├── 2026-04-14-import-lovac-eetl.md
+│   │   └── 2026-04-24-import-lovac-python-migration.md
 │   ├── guides
 │   │   ├── clever-cloud-log-drains.md
 │   │   ├── document-upload-architecture.md
@@ -927,17 +972,30 @@
 │   │   │   ├── 2026-04-09-geo-api-lazy-fetch.md
 │   │   │   ├── 2026-04-09-standardize-user-repository.md
 │   │   │   ├── 2026-04-13-factories.md
+│   │   │   ├── 2026-04-14-import-lovac-observability-idempotency-launcher.md
 │   │   │   ├── 2026-04-14-import-lovac-owner-eetl.md
 │   │   │   ├── 2026-04-14-vite8-upgrade.md
+│   │   │   ├── 2026-04-15-lovac-eetl-housings.md
+│   │   │   ├── 2026-04-16-lovac-eetl-loaders-and-existing-housings.md
 │   │   │   ├── 2026-04-20-convict-to-zod.md
+│   │   │   ├── 2026-04-21-extract-prepare-housings-duckdb-script.md
+│   │   │   ├── 2026-04-21-import-buildings-duckdb.md
+│   │   │   ├── 2026-04-21-import-lovac-duckdb-geo-code-parallel-dept.md
+│   │   │   ├── 2026-04-27-port-source-housing-transform.md
+│   │   │   ├── 2026-04-28-complete-dagster-pipeline-translation.md
 │   │   │   ├── 2026-05-11-remove-api-prefix.md
 │   │   │   ├── 2026-05-14-owners-birth-date-online-migration.md
 │   │   │   └── 2026-06-02-analysis-page-next.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
+│   │       ├── 2026-04-14-import-lovac-observability-idempotency-launcher.md
 │   │       ├── 2026-04-14-vite8-upgrade-design.md
+│   │       ├── 2026-04-15-lovac-eetl-housings.md
+│   │       ├── 2026-04-16-lovac-eetl-loaders-and-existing-housings.md
 │   │       ├── 2026-04-21-remove-old-campaign-flow-design.md
+│   │       ├── 2026-04-27-port-source-housing-transform-design.md
+│   │       ├── 2026-04-28-complete-dagster-pipeline-translation.md
 │   │       ├── 2026-05-11-remove-api-prefix-design.md
 │   │       └── 2026-06-02-analysis-page-next-design.md
 │   └── technical
@@ -1583,7 +1641,8 @@
 │   │   │   ├── reset-link.service.ts
 │   │   │   ├── signup-link.service.ts
 │   │   │   ├── test
-│   │   │   │   └── draft.service.test.ts
+│   │   │   │   ├── draft.service.test.ts
+│   │   │   │   └── owner.service.test.ts
 │   │   │   ├── user-account.service.ts
 │   │   │   └── user.service.ts
 │   │   ├── store
@@ -2269,9 +2328,21 @@
 │   │   │   │   │   ├── 20260327114330_remove-unused-event-fields.ts
 │   │   │   │   │   ├── 20260407092027_campaigns-return-count-add-status-filter.ts
 │   │   │   │   │   ├── 20260407174838_groups-add-counts.ts
+│   │   │   │   │   ├── 20260421142922_buildings-add-rnb-footprint.ts
+│   │   │   │   │   ├── 20260422114226_housings-add-geolocation-source.ts
+│   │   │   │   │   ├── 20260424120000_owners-add-username.ts
+│   │   │   │   │   ├── 20260428092351_owners-fk-add-cascade.ts
 │   │   │   │   │   ├── 20260504000000_drop-settings.ts
 │   │   │   │   │   ├── 20260506000000_housing-owners-add-geo-code-index.ts
-│   │   │   │   │   └── 20260506122850_owners-add-is-multi-owner.ts
+│   │   │   │   │   ├── 20260506122850_owners-add-is-multi-owner.ts
+│   │   │   │   │   ├── 20260506141131_owners-housing-add-housing-fk-index.ts
+│   │   │   │   │   ├── 20260506144726_owners-housing-counts-triggers-statement-level.ts
+│   │   │   │   │   ├── 20260506160624_housing-owner-events-add-primary-key.ts
+│   │   │   │   │   ├── 20260506192024_campaign-return-count-deterministic-lock-order.ts
+│   │   │   │   │   ├── 20260506204958_revert-housing-owner-events-composite-pk.ts
+│   │   │   │   │   ├── 20260506221142_drop-owner-matches.ts
+│   │   │   │   │   ├── 20260506221143_drop-owners-dept.ts
+│   │   │   │   │   └── 20260506221144_drop-owners-duplicates.ts
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   └── 002-load-non-vacant-housing.sql
@@ -2304,6 +2375,7 @@
 │   │   │   │   │   └── test
 │   │   │   │   │       ├── 20240405011849_establishments.ts
 │   │   │   │   │       ├── 20250113145122_precisions.ts
+│   │   │   │   │       ├── 20260416000000_system_user.ts
 │   │   │   │   │       └── 20260421083139_users.ts
 │   │   │   │   ├── test
 │   │   │   │   │   ├── index.test.ts
@@ -2380,7 +2452,6 @@
 │   │   │   ├── campaignRepository.ts
 │   │   │   ├── datafoncierHousingRepository.ts
 │   │   │   ├── datafoncierOwnersRepository.ts
-│   │   │   ├── departmentalOwnersRepository.ts
 │   │   │   ├── documentRepository.ts
 │   │   │   ├── draftRepository.ts
 │   │   │   ├── establishmentLocalityRepository.ts
@@ -2393,7 +2464,6 @@
 │   │   │   ├── housingRepository.ts
 │   │   │   ├── localityRepository.ts
 │   │   │   ├── noteRepository.ts
-│   │   │   ├── ownerMatchRepository.ts
 │   │   │   ├── ownerRepository.ts
 │   │   │   ├── precisionRepository.ts
 │   │   │   ├── prospectRepository.ts
@@ -2417,7 +2487,6 @@
 │   │   │   │   ├── housingRepository.test.ts
 │   │   │   │   ├── localityRepository.test.ts
 │   │   │   │   ├── noteRepository.test.ts
-│   │   │   │   ├── ownerMatchRepository.test.ts
 │   │   │   │   ├── ownerRepository.test.ts
 │   │   │   │   └── precisionRepository.test.ts
 │   │   │   ├── user-establishment-repository.ts
@@ -2463,6 +2532,7 @@
 │   │   │   │   ├── test_detect_orphan_establishments.py
 │   │   │   │   └── test_import_gold_establishments.py
 │   │   │   ├── import-lovac
+│   │   │   │   ├── .gitignore
 │   │   │   │   ├── README.md
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── history
@@ -2471,12 +2541,19 @@
 │   │   │   │   │   ├── history-processor.ts
 │   │   │   │   │   └── history.ts
 │   │   │   │   ├── housings
-│   │   │   │   │   ├── housing-processor.ts
+│   │   │   │   │   ├── housing-command.ts
+│   │   │   │   │   ├── housing-loader.ts
+│   │   │   │   │   ├── housing-transform.ts
 │   │   │   │   │   └── test
-│   │   │   │   │       └── housing-processor.test.ts
+│   │   │   │   │       ├── housing-command.test.ts
+│   │   │   │   │       ├── housing-loader.test.ts
+│   │   │   │   │       └── housing-transform.test.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── infra
+│   │   │   │   │   ├── constants.ts
+│   │   │   │   │   ├── enrich.ts
 │   │   │   │   │   ├── fixtures.ts
+│   │   │   │   │   ├── housings-counts-maintenance.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── options
 │   │   │   │   │   │   └── from.ts
@@ -2485,59 +2562,88 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── logger-reporter.ts
 │   │   │   │   │   │   ├── noop-reporter.ts
-│   │   │   │   │   │   └── reporter.ts
+│   │   │   │   │   │   ├── reporter.ts
+│   │   │   │   │   │   └── test
+│   │   │   │   │   │       └── logger-reporter.test.ts
 │   │   │   │   │   ├── source-file-repository.ts
 │   │   │   │   │   ├── source-repository.ts
 │   │   │   │   │   ├── source-s3-repository.ts
 │   │   │   │   │   ├── test
+│   │   │   │   │   │   ├── enrich.test.ts
 │   │   │   │   │   │   ├── updater.test.ts
 │   │   │   │   │   │   └── validator.test.ts
 │   │   │   │   │   ├── updater.ts
 │   │   │   │   │   └── validator.ts
+│   │   │   │   ├── run-on-clevercloud.sh
 │   │   │   │   ├── source-buildings
-│   │   │   │   │   ├── source-building-command.ts
-│   │   │   │   │   ├── source-building-file-repository.ts
-│   │   │   │   │   ├── source-building-processor.ts
-│   │   │   │   │   ├── source-building.ts
-│   │   │   │   │   └── test
-│   │   │   │   │       ├── source-building-file-repository.test.ts
-│   │   │   │   │       ├── source-building-processor.test.ts
-│   │   │   │   │       └── source-building.test.ts
+│   │   │   │   │   └── import-buildings.sh
 │   │   │   │   ├── source-housing-owners
+│   │   │   │   │   ├── owners-housing-counts-maintenance.ts
+│   │   │   │   │   ├── prepare-housing-owners.sh
 │   │   │   │   │   ├── source-housing-owner-command.ts
+│   │   │   │   │   ├── source-housing-owner-enricher.ts
 │   │   │   │   │   ├── source-housing-owner-file-repository.ts
-│   │   │   │   │   ├── source-housing-owner-processor.ts
+│   │   │   │   │   ├── source-housing-owner-loader.ts
 │   │   │   │   │   ├── source-housing-owner-repository.ts
+│   │   │   │   │   ├── source-housing-owner-transform.ts
 │   │   │   │   │   ├── source-housing-owner.ts
 │   │   │   │   │   ├── source-housing-owners-s3-repository.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       ├── source-housing-owner-command.test.ts
+│   │   │   │   │       ├── source-housing-owner-enricher.test.ts
 │   │   │   │   │       ├── source-housing-owner-file-repository.test.ts
-│   │   │   │   │       ├── source-housing-owner-processor.test.ts
+│   │   │   │   │       ├── source-housing-owner-loader.test.ts
+│   │   │   │   │       ├── source-housing-owner-transform.test.ts
 │   │   │   │   │       └── source-housing-owner.test.ts
 │   │   │   │   ├── source-housings
+│   │   │   │   │   ├── prepare-housings.sh
 │   │   │   │   │   ├── source-housing-command.ts
+│   │   │   │   │   ├── source-housing-enricher.ts
 │   │   │   │   │   ├── source-housing-file-repository.ts
-│   │   │   │   │   ├── source-housing-processor.ts
+│   │   │   │   │   ├── source-housing-loader.ts
+│   │   │   │   │   ├── source-housing-parquet-repository.test.ts
+│   │   │   │   │   ├── source-housing-parquet-repository.ts
 │   │   │   │   │   ├── source-housing-repository.ts
 │   │   │   │   │   ├── source-housing-s3-repository.ts
+│   │   │   │   │   ├── source-housing-transform.ts
 │   │   │   │   │   ├── source-housing.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       ├── source-housing-command.test.ts
+│   │   │   │   │       ├── source-housing-enricher.test.ts
 │   │   │   │   │       ├── source-housing-file-repository.test.ts
-│   │   │   │   │       ├── source-housing-processor.test.ts
+│   │   │   │   │       ├── source-housing-loader.test.ts
+│   │   │   │   │       ├── source-housing-transform.test.ts
 │   │   │   │   │       └── source-housing.test.ts
-│   │   │   │   └── source-owners
-│   │   │   │       ├── source-owner-command.ts
-│   │   │   │       ├── source-owner-file-repository.ts
-│   │   │   │       ├── source-owner-processor.ts
-│   │   │   │       ├── source-owner-repository.ts
-│   │   │   │       ├── source-owner-s3-repository.ts
-│   │   │   │       ├── source-owner.ts
-│   │   │   │       └── test
-│   │   │   │           ├── source-owner-file-repository.test.ts
-│   │   │   │           ├── source-owner-processor.test.ts
-│   │   │   │           └── source-owner.test.ts
+│   │   │   │   ├── source-owners
+│   │   │   │   │   ├── source-owner-command.ts
+│   │   │   │   │   ├── source-owner-enricher.ts
+│   │   │   │   │   ├── source-owner-file-repository.ts
+│   │   │   │   │   ├── source-owner-loader.ts
+│   │   │   │   │   ├── source-owner-repository.ts
+│   │   │   │   │   ├── source-owner-s3-repository.ts
+│   │   │   │   │   ├── source-owner-transform.ts
+│   │   │   │   │   ├── source-owner.ts
+│   │   │   │   │   └── test
+│   │   │   │   │       ├── source-owner-command.test.ts
+│   │   │   │   │       ├── source-owner-enricher.test.ts
+│   │   │   │   │       ├── source-owner-file-repository.test.ts
+│   │   │   │   │       ├── source-owner-loader.test.ts
+│   │   │   │   │       ├── source-owner-transform.test.ts
+│   │   │   │   │       └── source-owner.test.ts
+│   │   │   │   └── stats
+│   │   │   │       ├── diff.sh
+│   │   │   │       ├── queries
+│   │   │   │       │   ├── events-types.sql
+│   │   │   │       │   ├── housing-owners-metrics.sql
+│   │   │   │       │   ├── housing-owners-rank.sql
+│   │   │   │       │   ├── housings-metrics.sql
+│   │   │   │       │   ├── housings-occupancy.sql
+│   │   │   │       │   ├── housings-status.sql
+│   │   │   │       │   ├── housings-years.sql
+│   │   │   │       │   ├── owners-metrics.sql
+│   │   │   │       │   ├── owners-sources.sql
+│   │   │   │       │   └── owners-types.sql
+│   │   │   │       └── snapshot.sh
 │   │   │   ├── import-owners-datafoncier
 │   │   │   │   ├── README.md
 │   │   │   │   ├── import_owners.py
@@ -2718,4 +2824,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-426 directories, 2294 files
+437 directories, 2389 files
