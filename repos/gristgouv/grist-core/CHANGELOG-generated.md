@@ -1,32 +1,26 @@
 ## Changelog : grist-core (30 derniers jours, au 31 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment en matière d'accessibilité avec l'ajout de raccourcis clavier et une meilleure compatibilité avec les lecteurs d'écran. Des efforts importants ont également été consacrés à la sécurité, avec l'implémentation d'un flux OAuth et la gestion des consentements. Enfin, des corrections et des améliorations ont été apportées au processus d'installation rapide et à la gestion des documents.
+Cette version apporte des améliorations significatives à l'accessibilité, notamment pour les utilisateurs de lecteurs d'écran, ainsi que des corrections et des améliorations au processus de configuration initiale. Des avancées ont également été faites concernant la gestion des autorisations OAuth et la création de copies de documents. De nombreuses traductions ont été mises à jour grâce à la contribution de la communauté.
 
 ### Évolutions fonctionnelles
-- Ajout de raccourcis clavier pour ouvrir les menus de ligne et de colonne dans les vues de grille. [#2230](https://github.com/gristlabs/grist-core/issues/2230)
-- Amélioration du support des lecteurs d'écran dans les vues de grille. [#2114](https://github.com/gristlabs/grist-core/issues/2114)
-- Ajout de nouveaux formats de date. [#2347](https://github.com/gristlabs/grist-core/issues/2347)
-- Implémentation d'un flux OAuth avec gestion des consentements et des autorisations. [#150](https://github.com/gristlabs/grist-core/issues/150)
-- Amélioration du processus d'installation rapide, notamment pour les utilisateurs venant de getgrist.com. [#2310](https://github.com/gristlabs/grist-core/issues/2310)
-- Possibilité d'utiliser du CSS personnalisé dans les widgets. [#2089](https://github.com/gristlabs/grist-core/issues/2089)
-- Ajout d'un point de terminaison MCP (pour les instances SaaS). [#2363](https://github.com/gristlabs/grist-core/issues/2363)
-- Amélioration de la détection de la langue et des mécanismes de repli pour la localisation. [#2313](https://github.com/gristlabs/grist-core/issues/2313)
+- **Accessibilité :** Amélioration du support des lecteurs d'écran dans les vues de grille, permettant une meilleure expérience pour les utilisateurs ayant des besoins spécifiques. [#2230, #2114]
+- **Configuration initiale :** Amélioration du flux de configuration initiale, notamment la vérification de la disponibilité du sandbox et la gestion des erreurs. [#2366, #2341, #2340]
+- **OAuth :** Implémentation du flux de consentement OAuth et de la gestion des autorisations. [#15d0aa48]
+- **Duplication de documents :** Possibilité de créer une copie d'un document lors de sa modification depuis la fenêtre contextuelle de l'assistant. [#69e26019]
+- **Formats de date :** Ajout de nouveaux formats de date. [#2347]
+- **Raccourcis clavier :** Ajout de raccourcis clavier pour ouvrir les menus de ligne et de colonne dans les vues de grille. [#2230]
+- **Sous-domaines :** Réservation du sous-domaine "forum". [#2351]
 
 ### Évolutions techniques
-- Ajout d'un backend de stockage externe basé sur le système de fichiers pour les tests.
-- Refonte de la structure OIDC en préparation de l'implémentation du flux de consentement et de gestion des autorisations.
-- Mise à jour de plusieurs dépendances : `webpack-dev-server`, `ws`, `multiparty`, `axios`, `file-type`, `node-forge`, `postcss`, `lodash`.
-- Amélioration de la gestion des erreurs et de la robustesse du serveur.
-- Ajout d'un mécanisme pour forker un document lors de sa modification depuis la popup d'assistance.
-- Ajout d'un backend filesystem pour le stockage externe.
+- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances, notamment `webpack-dev-server`, `ws`, `multiparty`, `axios`, `fast-uri`, et `basic-ftp`.
+- **Amélioration de la logique de détection de la locale :** Amélioration de la logique de détection et de repli de la locale. [#0fe0b5d5]
+- **Refactoring :** Unification de la gestion des changements d'authentification avec d'autres changements de configuration en attente. [#2189ef24]
+- **Tests :** Corrections et améliorations des tests pour QuickSetupAuth et CustomWidgets. [#04ea880f]
+- **Action Summarizer :** Clarification de l'affichage des lignes potentiellement supprimables. [#2361]
 
 ### Autres changements
-- Mise à jour de la documentation et du README pour couvrir le processus d'installation rapide. [#2366](https://github.com/gristlabs/grist-core/issues/2366)
-- Corrections de tests pour assurer la stabilité de la suite de tests.
-- Traductions mises à jour pour plusieurs langues : Hongrois, Italien, Portugais, Allemand, Indonésien, Basque, Chinois simplifié, Français.
-- Signature des CLA (Contributor License Agreement) par plusieurs contributeurs.
-- Nettoyage et refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Réservation du sous-domaine "forum". [#2351](https://github.com/gristlabs/grist-core/issues/2351)
-- Correction d'une erreur de console lors de l'utilisation de `ctrl+alt+o` sur la page d'accueil. [#2343](https://github.com/gristlabs/grist-core/issues/2343)
-- Prévention de la création de forks anonymes. [#2319](https://github.com/gristlabs/grist-core/issues/2319)
+- **Traductions :** Mises à jour des traductions en hongrois, italien, portugais, allemand, indonésien, chinois simplifié, basque et portugais brésilien.
+- **Documentation :** Mise à jour du fichier README pour couvrir le flux de configuration rapide. [#2366]
+- **CLA :** Signature du CLA par plusieurs contributeurs.
+- **Mises à jour de version :** Mises à jour de version internes.
