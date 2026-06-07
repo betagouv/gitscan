@@ -1,28 +1,29 @@
-## Changelog : ma-cantine (30 derniers jours, au 2 juin 2026)
+## Changelog : ma-cantine (30 derniers jours, au 2026-06-03)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du suivi de la création des données (cantines, achats, diagnostics) par les utilisateurs, ainsi que sur des optimisations et corrections de bugs, notamment concernant l'API Adresse et les exports de données. Des améliorations ont également été apportées aux achats et aux diagnostics, avec l'ajout de nouveaux champs et la refactorisation du code existant.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du suivi de la création des données (cantines, achats, diagnostics) avec l'ajout d'un champ "creation_user". Des corrections de bugs et des refactorings ont également été effectués pour améliorer la stabilité et la maintenabilité du code, notamment concernant l'API Adresse et les calculs d'agrégation pour les achats.
 
 ### Évolutions fonctionnelles
 - Ajout d'un champ "creation_user" pour suivre l'utilisateur ayant créé une cantine.
-- Ajout d'un champ "cout_repas" dans les diagnostics pour stocker cette information et éviter les recalculs.
-- Amélioration du formulaire de création/modification d'achats avec une meilleure organisation des champs.
-- Ajout de la définition "PAT" comme produit local dans les achats.
+- Ajout d'un champ "cout_repas" dans les diagnostics pour stocker cette information et éviter des recalculs.
+- Amélioration du formulaire de création/modification d'achats avec une meilleure organisation des champs et des explications plus claires.
+- Ajout de la définition de produit local "PAT" dans les achats.
 - Mise à jour du texte explicatif du bandeau de démonstration.
-- Correction de l'URL des CGU pour pointer vers le frontend.
+- Correction d'un lien vers les CGU du frontend.
 
 ### Évolutions techniques
-- Suppression de l'utilisation de l'API Adresse dans la création de cantines, résolvant un problème de formulaire.
-- Refactorisation du code des achats pour améliorer la lisibilité et la maintenabilité (séparation des calculs d'agrégation, gestion des querysets).
+- Suppression de l'utilisation de l'API Adresse dans la création de cantines, corrigeant un bug dans le formulaire de création.
+- Refactorings importants dans les modules Achats et Diagnostics pour améliorer la lisibilité, la maintenabilité et la testabilité du code.
+- Séparation des calculs d'agrégation pour les achats (FRANCE vs CIRCUIT_COURT/LOCAL).
 - Amélioration des scripts de remplissage des champs "calculés" dans les diagnostics.
-- Amélioration des tests de l'API, notamment pour la création de cantines et de diagnostics.
-- Optimisation des exports de données (Open Data, Metabase) et correction d'un bug lié au paramètre datagouv.
-- Suppression de code inutile lié à l'API Adresse.
-- Suppression d'un script obsolète (field_gen.py).
-- Amélioration de la gestion des caractéristiques des achats.
-- Correction d'un conflit de migration.
+- Ajout de nouveaux querysets pour faciliter le filtrage et l'accès aux données dans les modules Achats et Diagnostics.
+- Sanityzation du paramètre 'next' pour renforcer la sécurité.
+- Mise à jour des dépendances Wagtail et Django.
 
 ### Autres changements
-- Documentation : Ajout d'une page expliquant les commandes liées à une campagne de télédéclaration.
-- Mise à jour des données PAT (Produits d'Agriculture Territoriale) pour le frontend.
-- Mise à jour des dépendances Django et Wagtail.
+- Ajout d'une page de documentation expliquant les commandes liées à la campagne de télédéclaration.
+- Mise à jour des données PAT (Produits d'Agriculture de Territoire) pour le frontend.
+- Correction d'un problème d'export Open Data.
+- Amélioration des exports brutes pour inclure les WasteMeasurements.
+- Suppression d'un script inutilisé (field_gen.py).
+- Diverses corrections et améliorations suite à des tests internes.
