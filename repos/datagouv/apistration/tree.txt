@@ -2501,7 +2501,8 @@
 │   │   │   │   │   ├── chiffres_affaires_serializer
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── liasses_fiscales_serializer
-│   │   │   │   │   │   └── v3.rb
+│   │   │   │   │   │   ├── v3.rb
+│   │   │   │   │   │   └── v4.rb
 │   │   │   │   │   └── liens_capitalistiques_serializer
 │   │   │   │   │       └── v3.rb
 │   │   │   │   ├── european_commission
@@ -2620,9 +2621,6 @@
 │   │   │   │   │   │   ├── v3.rb
 │   │   │   │   │   │   └── v4.rb
 │   │   │   │   │   └── student_scholarship
-│   │   │   │   │       └── v2.rb
-│   │   │   │   ├── dgfip
-│   │   │   │   │   └── situation_ir
 │   │   │   │   │       └── v2.rb
 │   │   │   │   ├── dsnj
 │   │   │   │   │   └── service_national_serializer
@@ -3862,6 +3860,8 @@
 │   │   │   ├── rate_limit_headers_middleware_spec.rb
 │   │   │   ├── referentials
 │   │   │   │   └── activite_principale_spec.rb
+│   │   │   ├── rswag_resources_payloads_spec.rb
+│   │   │   ├── scopes_consistency_spec.rb
 │   │   │   ├── seeds_spec.rb
 │   │   │   ├── string_normalizer_spec.rb
 │   │   │   ├── swagger_data_spec.rb
@@ -4082,7 +4082,8 @@
 │   │   │   │       │   ├── chiffres_affaires
 │   │   │   │       │   │   └── v3_spec.rb
 │   │   │   │       │   ├── liasses_fiscales
-│   │   │   │       │   │   └── v3_spec.rb
+│   │   │   │       │   │   ├── v3_spec.rb
+│   │   │   │       │   │   └── v4_spec.rb
 │   │   │   │       │   └── liens_capitalistiques
 │   │   │   │       │       └── v3_spec.rb
 │   │   │   │       ├── djepva
@@ -5295,6 +5296,7 @@
     │   │   └── insee_sirene_api_client.rb
     │   ├── controllers
     │   │   ├── admin
+    │   │   │   ├── admin_activities_controller.rb
     │   │   │   ├── api_requests_controller.rb
     │   │   │   ├── audit_notifications_controller.rb
     │   │   │   ├── editor_tokens_controller.rb
@@ -5402,6 +5404,7 @@
     │   │       └── dashboard_filter.rb
     │   ├── helpers
     │   │   ├── active_links.rb
+    │   │   ├── admin_activities_helper.rb
     │   │   ├── application_helper.rb
     │   │   ├── authorization_request_helper.rb
     │   │   ├── dsfr_stepper_helper.rb
@@ -5416,14 +5419,25 @@
     │   ├── interactors
     │   │   ├── admin
     │   │   │   ├── audit_notifications
+    │   │   │   │   ├── capture_attributes.rb
     │   │   │   │   ├── create_model.rb
     │   │   │   │   └── send_email.rb
-    │   │   │   └── tokens
-    │   │   │       ├── ban_token.rb
-    │   │   │       ├── create_token.rb
-    │   │   │       ├── regenerate_token.rb
-    │   │   │       ├── send_ban_email.rb
-    │   │   │       └── validate_expiration.rb
+    │   │   │   ├── editor_tokens
+    │   │   │   │   ├── capture_creation_attributes.rb
+    │   │   │   │   └── create_token.rb
+    │   │   │   ├── editors
+    │   │   │   │   └── update_model.rb
+    │   │   │   ├── tokens
+    │   │   │   │   ├── ban_token.rb
+    │   │   │   │   ├── capture_ban_attributes.rb
+    │   │   │   │   ├── capture_creation_attributes.rb
+    │   │   │   │   ├── create_token.rb
+    │   │   │   │   ├── regenerate_token.rb
+    │   │   │   │   ├── send_ban_email.rb
+    │   │   │   │   └── validate_expiration.rb
+    │   │   │   ├── track_activity.rb
+    │   │   │   └── users
+    │   │   │       └── update_model.rb
     │   │   ├── application_interactor.rb
     │   │   ├── datapass_webhook
     │   │   │   ├── adapt_v2_to_v1.rb
@@ -5504,6 +5518,7 @@
     │   │   ├── abstract_faq_entry.rb
     │   │   ├── abstract_provider.rb
     │   │   ├── access_log.rb
+    │   │   ├── admin_activity.rb
     │   │   ├── api_entreprise
     │   │   │   ├── blog_post.rb
     │   │   │   ├── cas_usage.rb
@@ -5549,9 +5564,18 @@
     │   │   ├── admin
     │   │   │   ├── audit_notifications
     │   │   │   │   └── create.rb
-    │   │   │   └── tokens
-    │   │   │       ├── ban.rb
-    │   │   │       └── create.rb
+    │   │   │   ├── editor_tokens
+    │   │   │   │   └── create.rb
+    │   │   │   ├── editors
+    │   │   │   │   └── update.rb
+    │   │   │   ├── impersonations
+    │   │   │   │   ├── start.rb
+    │   │   │   │   └── stop.rb
+    │   │   │   ├── tokens
+    │   │   │   │   ├── ban.rb
+    │   │   │   │   └── create.rb
+    │   │   │   └── users
+    │   │   │       └── update.rb
     │   │   ├── application_organizer.rb
     │   │   ├── datapass_webhook
     │   │   │   ├── api_entreprise.rb
@@ -5602,6 +5626,8 @@
     │   │   └── throttle_store.rb
     │   └── views
     │       ├── admin
+    │       │   ├── admin_activities
+    │       │   │   └── index.html.erb
     │       │   ├── api_requests
     │       │   │   ├── _array_field.html.erb
     │       │   │   ├── _endpoint_select.html.erb
@@ -6009,10 +6035,6 @@
     │   │   ├── staging.yml.enc
     │   │   ├── test.key
     │   │   └── test.yml.enc
-    │   ├── data
-    │   │   └── scopes
-    │   │       ├── entreprise.yml
-    │   │       └── particulier.yml
     │   ├── database.yml
     │   ├── datapass_webhooks_entreprise.yml
     │   ├── datapass_webhooks_particulier.yml
@@ -6058,6 +6080,7 @@
     │   │   ├── strong_migrations.rb
     │   │   └── wrap_parameters.rb
     │   ├── locales
+    │   │   ├── admin_activities.fr.yml
     │   │   ├── api_entreprise
     │   │   │   ├── cas_usages_entries.fr.yml
     │   │   │   ├── documentation.fr.yml
@@ -6146,7 +6169,8 @@
     │   │   ├── 20260305100002_validate_editor_delegations_foreign_keys.rb
     │   │   ├── 20260318100000_create_editor_tokens.rb
     │   │   ├── 20260318100001_validate_editor_tokens_foreign_keys.rb
-    │   │   └── 20260505100000_create_changelog_subscriptions.rb
+    │   │   ├── 20260505100000_create_changelog_subscriptions.rb
+    │   │   └── 20260605120000_create_admin_activities.rb
     │   ├── schema.rb
     │   ├── seeds.rb
     │   └── views
@@ -6826,6 +6850,7 @@
     │   │   └── entreprise_with_attestations_facade_spec.rb
     │   ├── factories
     │   │   ├── access_logs.rb
+    │   │   ├── admin_activities.rb
     │   │   ├── audit_notifications.rb
     │   │   ├── authorization_request_security_settings.rb
     │   │   ├── authorization_requests.rb
@@ -6845,6 +6870,7 @@
     │   ├── features
     │   │   ├── admin
     │   │   │   ├── access_spec.rb
+    │   │   │   ├── admin_activities_spec.rb
     │   │   │   ├── api_requests_spec.rb
     │   │   │   ├── audit_notifications_spec.rb
     │   │   │   ├── editors_spec.rb
@@ -7012,6 +7038,7 @@
     │   │           └── token_mailer_preview.rb
     │   ├── models
     │   │   ├── access_log_spec.rb
+    │   │   ├── admin_activity_spec.rb
     │   │   ├── api_entreprise
     │   │   │   ├── blog_post_spec.rb
     │   │   │   ├── endpoint_spec.rb
@@ -7045,7 +7072,9 @@
     │   │   │   ├── audit_notifications
     │   │   │   │   └── create_spec.rb
     │   │   │   └── tokens
-    │   │   │       └── ban_spec.rb
+    │   │   │       ├── ban_spec.rb
+    │   │   │       └── create_spec.rb
+    │   │   ├── application_organizer_spec.rb
     │   │   ├── datapass_webhook
     │   │   │   ├── api_entreprise_spec.rb
     │   │   │   ├── api_particulier_spec.rb
@@ -7066,6 +7095,7 @@
     │   │           └── v1
     │   │               ├── delegations_spec.rb
     │   │               └── host_routing_spec.rb
+    │   ├── scopes_consistency_spec.rb
     │   ├── services
     │   │   ├── admin_api_token_spec.rb
     │   │   ├── announcement_banner_spec.rb
@@ -7134,4 +7164,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1451 directories, 6015 files
+1455 directories, 6041 files
