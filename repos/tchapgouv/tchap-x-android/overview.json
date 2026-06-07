@@ -1,23 +1,21 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Element X Android est le client Matrix de nouvelle génération fourni par Element. Il s'agit d'une réécriture complète de l'application, utilisant le SDK Matrix Rust et l'interface utilisateur est écrite avec Jetpack Compose.",
+  "description": "Element X Android est le client Matrix de nouvelle génération fourni par Element. Il s'agit d'une réécriture complète de l'application, utilisant le SDK Matrix Rust et Jetpack Compose.",
   "language": "Kotlin",
   "features": [
     "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Recherche & Filtres",
     "Sécurité & Conformité",
     "Gestion des médias & Assets",
-    "Appels",
-    "Gestion des fichiers",
-    "Gestion des salons"
+    "Temps réel & WebSocket"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix Rust SDK",
     "Jetpack Compose",
-    "Appyx",
     "Firebase",
     "Kotlin"
   ],
@@ -27,18 +25,22 @@
     "Android",
     "Kotlin",
     "Jetpack Compose",
-    "Matrix Rust SDK"
+    "Rust"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": [
+    "Unit tests",
+    "UI tests"
+  ],
   "workflows": [
     "build.yml"
   ],
-  "lastActivity": "2026-06-02T12:55:12+02:00",
+  "lastActivity": "2026-06-06T00:26:55+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -49,11 +51,10 @@
     "openIssues": null
   },
   "tags": [
-    "Sécurité",
+    "Sécurité & Conformité",
     "Android",
     "Kotlin",
     "Matrix",
-    "Communication",
-    "Messagerie"
+    "Communication & Messagerie"
   ]
 }

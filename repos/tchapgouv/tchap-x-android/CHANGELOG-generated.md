@@ -1,41 +1,35 @@
-## Changelog : tchap-x-android (30 derniers jours, au 2 juin 2026)
+## Changelog : tchap-x-android (30 derniers jours, au 06 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la sécurité, à la stabilité et à l'expérience utilisateur. Parmi les nouveautés, on note l'amélioration de la gestion des codes PIN, des correctifs pour les problèmes de duplication d'éléments dans l'interface, et l'ajout de la possibilité de partager sa position en direct. Des mises à jour de dépendances et des corrections de bugs mineurs ont également été intégrées.
+Cette version apporte des améliorations significatives à la stabilité et à l'expérience utilisateur de l'application. Les points clés incluent des corrections de bugs, des optimisations de performance, l'ajout de nouvelles fonctionnalités comme le partage de position en direct, et des améliorations de l'interface utilisateur, notamment pour les appels et la gestion des salons. Des efforts ont également été faits pour améliorer la compatibilité et la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de partager sa position en direct dans les conversations [#6741](https://github.com/tchapgouv/tchap-x-android/pull/6741).
-- Amélioration de l'expérience utilisateur lors de la configuration du code PIN, avec des messages d'erreur plus clairs et une meilleure gestion des tentatives infructueuses [#6780](https://github.com/tchapgouv/tchap-x-android/pull/6780).
-- Ajout d'un écran d'expiration de compte pour une meilleure gestion de la sécurité [#6720](https://github.com/tchapgouv/tchap-x-android/pull/6720).
-- Correction de bugs liés à la création de salons publics [#6720](https://github.com/tchapgouv/tchap-x-android/pull/6720).
-- Amélioration de la gestion des invitations dans les conversations privées, avec la création automatique d'une salle si nécessaire [#6756](https://github.com/tchapgouv/tchap-x-android/pull/6756).
-- Possibilité de se connecter depuis Tchap Legacy [#6712](https://github.com/tchapgouv/tchap-x-android/pull/6712).
-- Amélioration de l'affichage des images, avec une meilleure qualité par défaut [#6718](https://github.com/tchapgouv/tchap-x-android/pull/6718).
-- Ajout du nouveau logo Tchap dans la liste des sessions [#6699](https://github.com/tchapgouv/tchap-x-android/pull/6699).
-- Amélioration de l'affichage des médias, notamment pour les légendes [#6715](https://github.com/tchapgouv/tchap-x-android/pull/6715).
-- Suppression de la possibilité de prendre des captures d'écran dans l'application [#6695](https://github.com/tchapgouv/tchap-x-android/pull/6695).
-- Ajout de la lecture MIDI [#6770](https://github.com/tchapgouv/tchap-x-android/pull/6770).
+- **Partage de position en direct :** Ajout de la fonctionnalité permettant de partager sa position en temps réel. [#6741](https://github.com/tchapgouv/tchap-x-android/pull/6741)
+- **Appels :** Amélioration de l'affichage de l'écran d'appel en mode plein écran. [#6751](https://github.com/tchapgouv/tchap-x-android/pull/6751)
+- **Salons :** Correction de la création de salons publics. [#6725](https://github.com/tchapgouv/tchap-x-android/pull/6725)
+- **DM :** Amélioration de l'affichage des détails des conversations directes (DM), affichant uniquement l'avatar de l'autre utilisateur. [#6738](https://github.com/tchapgouv/tchap-x-android/pull/6738)
+- **Connexion :** Possibilité de se connecter à Tchap Legacy. [#1218f37b77](https://github.com/tchapgouv/tchap-x-android/commit/1218f37b77)
+- **Expiration de compte :** Ajout d'un écran pour gérer l'expiration du compte. [#07202fbe6b](https://github.com/tchapgouv/tchap-x-android/commit/07202fbe6b)
+- **Médias :** Amélioration du formatage des légendes des médias dans le visualiseur de médias. [#6729](https://github.com/tchapgouv/tchap-x-android/pull/6729)
+- **Notifications :** Correction de l'affichage des notifications lors des appels.
+- **QR Code :** Amélioration de la gestion du scan de QR code depuis un appareil non connecté. [#6783](https://github.com/tchapgouv/tchap-x-android/pull/6783)
+- **Cache :** Correction pour ne pas supprimer le dossier `logs` lors du nettoyage du cache. [#6765](https://github.com/tchapgouv/tchap-x-android/pull/6765)
 
 ### Évolutions techniques
-- Mise à jour du SDK Matrix Rust vers la version 26.05.18 [#6805](https://github.com/tchapgouv/tchap-x-android/pull/6805).
-- Mises à jour de plusieurs dépendances, incluant Firebase, Compose, et d'autres bibliothèques.
-- Amélioration du script de release pour une meilleure automatisation et fiabilité.
-- Correction d'ID dupliqués dans le SDK Rust (BWI) [#6696](https://github.com/tchapgouv/tchap-x-android/pull/6696).
-- Amélioration de la gestion des certificats Let's Encrypt en environnement de développement.
-- Ajout de builds de développement avec des options spécifiques pour le débogage.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Suppression de l'utilisation de Feature Flags pour certaines fonctionnalités, les activant définitivement.
-- Amélioration de la gestion des erreurs et des exceptions.
+- **Rust SDK :** Correction d'ID dupliqués dans le SDK Rust. [#e1c04ea084](https://github.com/tchapgouv/tchap-x-android/commit/e1c04ea084)
+- **Compilation :** La compilation du SDK Rust se fait désormais en mode release par défaut. [#ee3c1091fa](https://github.com/tchapgouv/tchap-x-android/commit/ee3c1091fa)
+- **Thèmes :** Mise à jour des thèmes (compound-design-tokens). [#0c7fcb9313](https://github.com/tchapgouv/tchap-x-android/commit/0c7fcb9313)
+- **Cartes :** Amélioration de la génération des snapshots et nettoyage automatique des anciennes cartes. [#47c95ba41e](https://github.com/tchapgouv/tchap-x-android/commit/47c95ba41e)
+- **Build :** Ajout d'une build de développement et configuration des options de build. [#b436f337e1](https://github.com/tchapgouv/tchap-x-android/commit/b436f337e1)
+- **Localazy :** Synchronisation des chaînes de caractères depuis Localazy. [#6761](https://github.com/tchapgouv/tchap-x-android/pull/6761)
+- **Firebase :** Mise à jour de la version de Firebase. [#6789](https://github.com/tchapgouv/tchap-x-android/pull/6789)
+- **Dépendances :** Mises à jour de plusieurs dépendances (Kotlin, Sentry, Compose, etc.).
 
 ### Autres changements
-- Synchronisation des chaînes de caractères depuis Localazy pour les traductions.
-- Mise à jour des captures d'écran de l'application.
-- Corrections de bugs mineurs et améliorations de la stabilité.
-- Ajout de previews spécifiques à Tchap.
-- Nettoyage du code et amélioration de la documentation.
-- Correction de problèmes liés à la duplication d'éléments dans la liste des salles [#6793](https://github.com/tchapgouv/tchap-x-android/pull/6793).
-- Correction de problèmes avec le bouton retour dans la vue web [#6725](https://github.com/tchapgouv/tchap-x-android/pull/6725).
-- Amélioration de la fiabilité de `FetchPushForegroundService` [#6757](https://github.com/tchapgouv/tchap-x-android/pull/6757).
-- Correction de problèmes liés à l'affichage des avatars dans les conversations privées [#6738](https://github.com/tchapgouv/tchap-x-android/pull/6738).
-- Suppression de l'indicateur de fonctionnalité LiveLocationSharing.
-- Désactivation du déverrouillage biométrique lors de la désactivation du code PIN [#6781](https://github.com/tchapgouv/tchap-x-android/pull/6781).
+- **Paramètres avancés :** Ajout des options "Rageshake" et "ClearCache" dans les paramètres avancés. [#c02c175f07](https://github.com/tchapgouv/tchap-x-android/commit/c02c175f07)
+- **Logo :** Ajout du nouveau logo Tchap dans la liste des sessions. [#ce12cda04a](https://github.com/tchapgouv/tchap-x-android/commit/ce12cda04a)
+- **Screenshots :** Mise à jour des captures d'écran. [#6750](https://github.com/tchapgouv/tchap-x-android/pull/6750)
+- **Documentation :** Autorisation des certificats Let's Encrypt sur l'environnement de développement. [#e3da88f812](https://github.com/tchapgouv/tchap-x-android/commit/e3da88f812)
+- **Nom de l'application :** Suffixe le nom de l'application avec le buildType (debug / nightly). [#f38b2e3453](https://github.com/tchapgouv/tchap-x-android/commit/f38b2e3453)
+- **Suppression de versions :** Suppression de la version 0.11.0. [#ee4041c368](https://github.com/tchapgouv/tchap-x-android/commit/ee4041c368)
+- **Corrections de bugs mineurs :** Plusieurs corrections de bugs et améliorations de la qualité du code.
