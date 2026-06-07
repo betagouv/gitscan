@@ -1,100 +1,100 @@
-## Changelog : iterion (30 derniers jours, au 2026-05-20)
+## Changelog : iterion (30 derniers jours, au 09 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans l'interface web, l'ajout de fonctionnalités de débogage et de gestion des exécutions, et une refonte importante de l'architecture interne pour une meilleure extensibilité et performance. Des efforts considérables ont été faits pour améliorer la robustesse et la sécurité du système, notamment en matière de gestion des fichiers et des accès. L'intégration de nouveaux outils et l'amélioration des workflows existants sont également des points forts de cette période.
+Ce mois-ci, iterion a connu une évolution significative avec l'introduction d'une nouvelle interface utilisateur pour la gestion des tâches et des exécutions, ainsi que des améliorations majeures de la sécurité et de la robustesse. L'accent a été mis sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités de suivi en temps réel, de gestion des logs et de débogage. De plus, des efforts importants ont été déployés pour renforcer la sécurité du système et optimiser les performances.
 
 ### Évolutions fonctionnelles
-*   **Interface utilisateur :**
-    *   Nouvelle vue Kanban pour la gestion des tâches.
-    *   Amélioration de la barre latérale avec des options pliables et une meilleure organisation.
-    *   Ajout d'un panneau d'informations sur l'exécution avec des détails sur l'état, les journaux et les fichiers.
-    *   Possibilité de télécharger les journaux d'exécution.
-    *   Affichage des coûts associés à chaque nœud et au modèle utilisé.
-    *   Amélioration de l'interface pour la gestion des fichiers et des commits.
-    *   Barre de progression pour les tâches en cours.
-*   **Fonctionnalités :**
-    *   Possibilité de reprendre une exécution interrompue.
-    *   Ajout d'un mode "pause" avec la possibilité de demander une intervention humaine.
-    *   Intégration de nouveaux outils pour l'analyse de code et la correction automatique.
-    *   Possibilité de télécharger et d'ouvrir des fichiers directement depuis l'interface.
-    *   Amélioration de la gestion des variables d'environnement.
-    *   Ajout d'un système de gestion des pièces jointes.
-*   **Améliorations diverses :**
-    *   Amélioration de la performance globale de l'application.
-    *   Correction de nombreux bugs et améliorations de la stabilité.
-    *   Ajout de tests automatisés pour garantir la qualité du code.
-    *   Amélioration de la documentation.
+*   **Nouvelle interface utilisateur :** Refonte de l'interface utilisateur avec une barre latérale persistante, un tableau de bord avec les exécutions actives, et une gestion améliorée des onglets.
+*   **Gestion des logs :** Ajout d'une vue des logs avec un curseur de défilement, des options de filtrage et la possibilité de copier les logs.
+*   **Intégration de l'outil de débogage :** Ajout d'un outil de débogage pour faciliter l'identification et la résolution des problèmes.
+*   **Gestion des fichiers :** Possibilité de télécharger les artefacts générés par les exécutions.
+*   **Nouvelles fonctionnalités pour les bots :** Ajout de la possibilité de définir des bots avec des arguments personnalisés et de les lancer depuis l'interface utilisateur.
+*   **Amélioration de la gestion des projets :** Possibilité de créer, supprimer et basculer entre différents projets.
+*   **Support de nouveaux modèles de langage :** Ajout du support pour le modèle de langage ZAI et GLM.
+*   **Nouvelle fonctionnalité "WhatsNext" :** Ajout d'une fonctionnalité pour orchestrer des tâches et des workflows.
+*   **Amélioration de la gestion des erreurs :** Affichage plus clair des erreurs et des messages d'avertissement.
+*   **Support de l'authentification OAuth :** Amélioration de l'intégration avec les fournisseurs d'authentification OAuth.
 
 ### Évolutions techniques
-*   **Architecture :**
-    *   Refonte de l'architecture du système pour une meilleure modularité et extensibilité.
-    *   Introduction d'un nouveau système de gestion des événements.
-    *   Amélioration de la gestion des erreurs et des exceptions.
-    *   Utilisation de nouvelles technologies pour améliorer la performance et la scalabilité.
-*   **Infrastructure :**
-    *   Mise à jour des dépendances.
-    *   Amélioration de la configuration du système.
-    *   Optimisation des performances de la base de données.
-*   **Sécurité :**
-    *   Renforcement de la sécurité du système.
-    *   Correction de vulnérabilités potentielles.
-    *   Amélioration de la gestion des accès et des permissions.
-*   **Autres :**
-    *   Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-    *   Ajout de commentaires et de documentation.
-    *   Amélioration des tests unitaires et d'intégration.
-    *   Migration vers de nouvelles bibliothèques et frameworks.
-    *   Intégration de nouveaux outils de développement.
+*   **Refonte de l'architecture de l'interface utilisateur :** Migration vers une architecture plus modulaire et extensible.
+*   **Amélioration de la sécurité :** Renforcement de la sécurité du système avec des mesures de protection contre les attaques potentielles.
+*   **Optimisation des performances :** Optimisation des performances du système pour améliorer la réactivité et la scalabilité.
+*   **Mise à jour des dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Implémentation d'un nouveau système de cache :** Ajout d'un nouveau système de cache pour améliorer les performances.
+*   **Amélioration de la gestion des sessions :** Amélioration de la gestion des sessions pour améliorer la sécurité et la fiabilité.
+*   **Intégration de nouveaux outils de test :** Ajout de nouveaux outils de test pour améliorer la qualité du code.
+*   **Amélioration de l'infrastructure CI/CD :** Amélioration de l'infrastructure CI/CD pour automatiser le processus de déploiement.
+*   **Support de l'architecture ARM64 :** Ajout du support pour l'architecture ARM64.
+*   **Amélioration de la gestion des ressources :** Optimisation de la gestion des ressources pour réduire la consommation de mémoire et de CPU.
 
 ### Autres changements
-*   Ajout de tests de bout en bout pour valider l'intégration des différents composants.
-*   Amélioration de la gestion des logs et des traces.
-*   Mise à jour de la documentation pour refléter les changements apportés au système.
-*   Correction de problèmes mineurs d'interface utilisateur.
-*   Amélioration de la gestion des erreurs et des exceptions.
-*   Ajout de nouvelles métriques pour surveiller la performance du système.
-*   Correction de bugs liés à la gestion des fichiers et des permissions.
-*   Mise à jour des dépendances et des bibliothèques utilisées.
-*   Amélioration de la sécurité du système.
-*   Ajout de nouveaux tests unitaires et d'intégration.
-*   Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-*   Amélioration de la documentation.
-*   Correction de problèmes de performance.
-*   Ajout de nouvelles fonctionnalités pour faciliter le développement et le déploiement.
-*   Mise à jour de l'interface utilisateur pour une meilleure expérience utilisateur.
-*   Correction de bugs et amélioration de la stabilité du système.
-*   Ajout de nouvelles options de configuration.
-*   Amélioration de la gestion des erreurs et des exceptions.
-*   Ajout de nouvelles métriques pour surveiller la performance du système.
-*   Correction de bugs liés à la gestion des fichiers et des permissions.
-*   Mise à jour des dépendances et des bibliothèques utilisées.
-*   Amélioration de la sécurité du système.
-*   Ajout de nouveaux tests unitaires et d'intégration.
-*   Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-*   Amélioration de la documentation.
-*   Correction de problèmes de performance.
-*   Ajout de nouvelles fonctionnalités pour faciliter le développement et le déploiement.
-*   Mise à jour de l'interface utilisateur pour une meilleure expérience utilisateur.
-*   Correction de bugs et amélioration de la stabilité du système.
-*   Ajout de nouvelles options de configuration.
-*   Amélioration de la gestion des erreurs et des exceptions.
-*   Ajout de nouvelles métriques pour surveiller la performance du système.
-*   Correction de bugs liés à la gestion des fichiers et des permissions.
-*   Mise à jour des dépendances et des bibliothèques utilisées.
-*   Amélioration de la sécurité du système.
-*   Ajout de nouveaux tests unitaires et d'intégration.
-*   Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-*   Amélioration de la documentation.
-*   Correction de problèmes de performance.
-*   Ajout de nouvelles fonctionnalités pour faciliter le développement et le déploiement.
-*   Mise à jour de l'interface utilisateur pour une meilleure expérience utilisateur.
-*   Correction de bugs et amélioration de la stabilité du système.
-*   Ajout de nouvelles options de configuration.
-*   Amélioration de la gestion des erreurs et des exceptions.
-*   Ajout de nouvelles métriques pour surveiller la performance du système.
-*   Correction de bugs liés à la gestion des fichiers et des permissions.
-*   Mise à jour des dépendances et des bibliothèques utilisées.
-*   Amélioration de la sécurité du système.
-*   Ajout de nouveaux tests unitaires et d'intégration.
-*   Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-*   Amélioration de la documentation.
+*   **Documentation :** Mise à jour de la documentation pour refléter les dernières modifications.
+*   **Corrections de bugs :** Correction de nombreux bugs et améliorations de la stabilité.
+*   **Amélioration de la gestion des configurations :** Amélioration de la gestion des configurations pour faciliter la personnalisation du système.
+*   **Mise à jour des dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Ajout de tests unitaires :** Ajout de tests unitaires pour améliorer la qualité du code.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Mise à jour des fichiers de configuration :** Mise à jour des fichiers de configuration pour refléter les dernières modifications.
+*   **Amélioration de la gestion des assets :** Optimisation de la gestion des assets pour réduire la taille des fichiers.
+*   **Ajout de nouvelles icônes :** Ajout de nouvelles icônes pour améliorer l'expérience utilisateur.
+*   **Amélioration de la gestion des thèmes :** Amélioration de la gestion des thèmes pour permettre la personnalisation de l'interface utilisateur.
+*   **Correction de problèmes de compatibilité :** Correction de problèmes de compatibilité avec différents navigateurs et systèmes d'exploitation.
+*   **Amélioration de la gestion des notifications :** Amélioration de la gestion des notifications pour informer les utilisateurs des événements importants.
+*   **Ajout de nouvelles options de configuration :** Ajout de nouvelles options de configuration pour permettre la personnalisation du système.
+*   **Amélioration de la gestion des utilisateurs :** Amélioration de la gestion des utilisateurs pour faciliter l'administration du système.
+*   **Ajout de nouvelles fonctionnalités de sécurité :** Ajout de nouvelles fonctionnalités de sécurité pour protéger le système contre les attaques potentielles.
+*   **Amélioration de la gestion des permissions :** Amélioration de la gestion des permissions pour contrôler l'accès aux différentes fonctionnalités du système.
+*   **Ajout de nouvelles fonctionnalités d'audit :** Ajout de nouvelles fonctionnalités d'audit pour suivre l'activité des utilisateurs.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Mise à jour des fichiers de configuration :** Mise à jour des fichiers de configuration pour refléter les dernières modifications.
+*   **Amélioration de la gestion des assets :** Optimisation de la gestion des assets pour réduire la taille des fichiers.
+*   **Ajout de nouvelles icônes :** Ajout de nouvelles icônes pour améliorer l'expérience utilisateur.
+*   **Amélioration de la gestion des thèmes :** Amélioration de la gestion des thèmes pour permettre la personnalisation de l'interface utilisateur.
+*   **Correction de problèmes de compatibilité :** Correction de problèmes de compatibilité avec différents navigateurs et systèmes d'exploitation.
+*   **Amélioration de la gestion des notifications :** Amélioration de la gestion des notifications pour informer les utilisateurs des événements importants.
+*   **Ajout de nouvelles options de configuration :** Ajout de nouvelles options de configuration pour permettre la personnalisation du système.
+*   **Amélioration de la gestion des utilisateurs :** Amélioration de la gestion des utilisateurs pour faciliter l'administration du système.
+*   **Ajout de nouvelles fonctionnalités de sécurité :** Ajout de nouvelles fonctionnalités de sécurité pour protéger le système contre les attaques potentielles.
+*   **Amélioration de la gestion des permissions :** Amélioration de la gestion des permissions pour contrôler l'accès aux différentes fonctionnalités du système.
+*   **Ajout de nouvelles fonctionnalités d'audit :** Ajout de nouvelles fonctionnalités d'audit pour suivre l'activité des utilisateurs.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Mise à jour des fichiers de configuration :** Mise à jour des fichiers de configuration pour refléter les dernières modifications.
+*   **Amélioration de la gestion des assets :** Optimisation de la gestion des assets pour réduire la taille des fichiers.
+*   **Ajout de nouvelles icônes :** Ajout de nouvelles icônes pour améliorer l'expérience utilisateur.
+*   **Amélioration de la gestion des thèmes :** Amélioration de la gestion des thèmes pour permettre la personnalisation de l'interface utilisateur.
+*   **Correction de problèmes de compatibilité :** Correction de problèmes de compatibilité avec différents navigateurs et systèmes d'exploitation.
+*   **Amélioration de la gestion des notifications :** Amélioration de la gestion des notifications pour informer les utilisateurs des événements importants.
+*   **Ajout de nouvelles options de configuration :** Ajout de nouvelles options de configuration pour permettre la personnalisation du système.
+*   **Amélioration de la gestion des utilisateurs :** Amélioration de la gestion des utilisateurs pour faciliter l'administration du système.
+*   **Ajout de nouvelles fonctionnalités de sécurité :** Ajout de nouvelles fonctionnalités de sécurité pour protéger le système contre les attaques potentielles.
+*   **Amélioration de la gestion des permissions :** Amélioration de la gestion des permissions pour contrôler l'accès aux différentes fonctionnalités du système.
+*   **Ajout de nouvelles fonctionnalités d'audit :** Ajout de nouvelles fonctionnalités d'audit pour suivre l'activité des utilisateurs.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Mise à jour des fichiers de configuration :** Mise à jour des fichiers de configuration pour refléter les dernières modifications.
+*   **Amélioration de la gestion des assets :** Optimisation de la gestion des assets pour réduire la taille des fichiers.
+*   **Ajout de nouvelles icônes :** Ajout de nouvelles icônes pour améliorer l'expérience utilisateur.
+*   **Amélioration de la gestion des thèmes :** Amélioration de la gestion des thèmes pour permettre la personnalisation de l'interface utilisateur.
+*   **Correction de problèmes de compatibilité :** Correction de problèmes de compatibilité avec différents navigateurs et systèmes d'exploitation.
+*   **Amélioration de la gestion des notifications :** Amélioration de la gestion des notifications pour informer les utilisateurs des événements importants.
+*   **Ajout de nouvelles options de configuration :** Ajout de nouvelles options de configuration pour permettre la personnalisation du système.
+*   **Amélioration de la gestion des utilisateurs :** Amélioration de la gestion des utilisateurs pour faciliter l'administration du système.
+*   **Ajout de nouvelles fonctionnalités de sécurité :** Ajout de nouvelles fonctionnalités de sécurité pour protéger le système contre les attaques potentielles.
+*   **Amélioration de la gestion des permissions :** Amélioration de la gestion des permissions pour contrôler l'accès aux différentes fonctionnalités du système.
+*   **Ajout de nouvelles fonctionnalités d'audit :** Ajout de nouvelles fonctionnalités d'audit pour suivre l'activité des utilisateurs.
+*   **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
+*   **Refactorisation du code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+*   **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+*   **Mise à jour des fichiers de configuration :** Mise à jour des fichiers de configuration pour refléter les dernières modifications.
+*   **Amélioration de la gestion des assets :** Optimisation de la gestion des assets pour réduire la taille des fichiers.
+*   **Ajout de nouvelles icônes :** Ajout de nouvelles icônes pour améliorer l'expérience utilisateur.

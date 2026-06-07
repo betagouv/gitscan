@@ -1,27 +1,346 @@
+2026-06-06T21:50:02+02:00 - 424ca07 - devthejo : fix(catalog): finish kebab rename in manifests + static preamble; regen surfaces new caps
+2026-06-06T18:15:13+02:00 - 03d1934 - devthejo : feat(code-review): publish reviews onto a forge PR with inline ```suggestion blocks
+2026-06-06T17:47:29+02:00 - ed3bddb - devthejo : docs(sec-audit-source): record why zero-findings is NOT short-circuited
+2026-06-06T12:06:57+02:00 - f76bd3b - devthejo : feat(docs-refresh): author docs from zero when a repo has none (DEFAULT-CREATE)
+2026-06-06T10:48:35+02:00 - 5bf7c1d - devthejo : refactor(bots): normalize the 4 snake bot names to kebab-case
+2026-06-06T10:28:34+02:00 - 8b41022 - devthejo : fix(runview): sandbox-container reaper must never reap a live run (liveness probe)
+2026-06-06T10:27:26+02:00 - d2113b2 - devthejo : fix(bots): honor overlay at dispatch + drop studio path-string surgery
+2026-06-06T10:05:34+02:00 - d4b8df2 - devthejo : Merge commit '5378e8c8' into feat/bot-metadata-editor
+2026-06-06T10:04:25+02:00 - 801ca69 - devthejo : refactor(bots): /simplify pass — reuse atomic writer, trim redundancy
+2026-06-06T09:42:42+02:00 - 5378e8c - devthejo : fix(bots): pin sandbox user numeric 1000:1000 (was "devbox") — silence host_state UID warning
+2026-06-06T09:40:58+02:00 - f720806 - devthejo : Merge commit '34d8930b' into feat/bot-metadata-editor
+2026-06-06T09:27:11+02:00 - 5158996 - devthejo : docs(bots): catalog-generation template + docs; move static template to bundle root
+2026-06-06T09:26:02+02:00 - 34d8930 - devthejo : test(e2e): de-flake TestDispatcherE2E_CancelInFlight (widen deadline)
+2026-06-06T09:20:33+02:00 - 3e438ba - devthejo : feat(studio): bot metadata editor + catalog manager
+2026-06-06T09:11:07+02:00 - 509f791 - devthejo : test(e2e): update sec-audit-deps tests to the run_eco_heuristics structure (W2.4 debt)
+2026-06-06T09:01:38+02:00 - 8bdd367 - devthejo : refactor(bots): rename doc-align -> docs-refresh (Doki)
+2026-06-06T09:00:02+02:00 - da2b065 - devthejo : feat(bots): editable manifest metadata, catalog toggle + when_to_use, registry-driven dispatch
+2026-06-06T08:16:46+02:00 - a8590e9 - devthejo : perf(code_review): short-circuit empty review diff (skip reviewers + emit)
+2026-06-06T08:13:28+02:00 - 0e2c357 - devthejo : perf(doc-align): skip LLM commit-prep when the review changed nothing
+2026-06-06T07:48:56+02:00 - 8f08a4d - devthejo : docs(bots): studio-visibility rule for dogfood runs + Revi forge-PR roadmap
+2026-06-06T07:44:19+02:00 - aec55b1 - devthejo : docs(runtime): correct RuntimeError field name in error-handling docs
+2026-06-05T22:48:52+02:00 - f4da2ed - devthejo : fix(secured-renovacy): family_revert must fail on git reset error
+2026-06-05T19:40:26+02:00 - b16b0c4 - devthejo : refactor(secured-renovacy): family per-$PKG_MGR cases -> skill data block (W2.2)
+2026-06-05T19:15:35+02:00 - dfe519b - devthejo : refactor(bots): neutralize stack-specific prompt/comment examples (W2.5)
+2026-06-05T16:52:15+02:00 - f1d0b03 - devthejo : fix(sec-audit-deps): live-dogfood fixes — sandbox claude + filter_cached robustness + datetime
+2026-06-05T16:52:15+02:00 - 5d61cdc - devthejo : fix(sec-audit-deps): make update_cache populate the real cache
+2026-06-05T16:52:15+02:00 - 452d26d - devthejo : refactor(sec-audit-deps): skill-as-data SCA + deterministic run_eco_heuristics (W2.4)
+2026-06-05T16:30:22+02:00 - 34de9e9 - devthejo : feat(studio): expose publish on tool/compute nodes in the editor
+2026-06-05T16:30:22+02:00 - 0582101 - devthejo : fix(e2e): update stale sec-audit-source tests to the current pipeline
+2026-06-05T15:52:59+02:00 - 96b8b76 - devthejo : feat(dsl): publish artifacts from compute/tool nodes + surface plans
+2026-06-05T15:52:59+02:00 - 4eff01d - devthejo : fix(studio): make run-canvas node selection visible on every status
+2026-06-05T14:17:45+02:00 - a786eb4 - devthejo : fix(sec-audit-source): harden langs handling + thread via edges + sandbox claude (live-dogfood fixes)
+2026-06-05T13:40:49+02:00 - 87b0543 - devthejo : refactor(sec-audit-source): skill-as-data scanners + deterministic run_lang_scanners (W2.3)
+2026-06-05T12:27:32+02:00 - a93d3bb - devthejo : docs(claude.md)+test(bots): universal-code-bots doctrine + stack-agnostic guard
+2026-06-05T12:20:29+02:00 - a2572f6 - devthejo : fix(backend): restore Claude Code native adaptivity + claw prompt parity
+2026-06-05T11:58:27+02:00 - 5441038 - devthejo : feat(studio): Home bots show description + technical name, in roster order
+2026-06-05T11:45:33+02:00 - 13d0546 - devthejo : feat(studio): Home shows only first-class bots, by persona name + emoji
+2026-06-05T11:31:06+02:00 - e9603cf - devthejo : fix(studio): the Home quick-open panel is "Bots", not stale "examples/"
+2026-06-05T11:12:48+02:00 - c334e49 - devthejo : Merge: bot team personas — first-class named bots + relocation to bots/
+2026-06-05T11:09:53+02:00 - 5b78eb8 - devthejo : refactor(bots): /simplify pass — drop two redundant layers
+2026-06-05T11:02:10+02:00 - f39df8e - devthejo : docs(bots): brand the named team — README legion table + persona columns
+2026-06-05T10:56:33+02:00 - b89aacc - devthejo : feat(migrate): one-shot `iterion migrate run-paths` for the examples->bots move
+2026-06-05T10:50:44+02:00 - 2d749e0 - devthejo : refactor(bots): relocate the 9 productised bot bundles examples/ -> bots/
+2026-06-05T10:34:49+02:00 - bbc4762 - devthejo : feat(studio): per-bot persona identity (emoji + colour) in the bot UI
+2026-06-05T10:28:31+02:00 - 2a491e7 - devthejo : feat(code_review): add Revi — a read-only cross-family code reviewer bot
+2026-06-05T10:19:27+02:00 - 786233c - devthejo : feat(bots): surface bundle display_name as a first-class catalog field
+2026-06-05T09:48:14+02:00 - e7577e6 - devthejo : feat(sec-audit-deps): implement supply-chain malware heuristics (install-hook, locale-anomaly)
+2026-06-05T09:43:04+02:00 - 70045bf - devthejo : refactor(sec-audit-deps): conform CVE signals to the malware-signals.md catalogue shape
+2026-06-05T09:24:40+02:00 - dabdeb1 - devthejo : feat(sec-audit-deps): implement CVE-scanner parsers (govulncheck/pip-audit/npm audit)
+2026-06-05T07:59:01+02:00 - 772d8d3 - devthejo : fix(sec-audit-deps): self-label the scaffold so a run can't pose as a complete SCA
+2026-06-04T19:57:16+02:00 - aa0cd1f - devthejo : fix(sec-audit-source): scan_health gate — stop silent zero-finding façade
+2026-06-04T19:43:38+02:00 - fe30006 - devthejo : fix(sec-audit-source): guard revalidate against zero-candidate context overflow
+2026-06-04T19:37:04+02:00 - 1239f8a - devthejo : feat(cli): add `iterion schedule` — cron for recurring bots
+2026-06-04T18:53:09+02:00 - 8c8c87e - devthejo : docs(*): align doc example paths and router enum name with code
+2026-06-04T18:51:54+02:00 - cd4757b - devthejo : refactor(model): enforce tool policy on direct shell/script tool nodes
+2026-06-04T18:24:04+02:00 - 1ca3291 - devthejo : fix(sec-audit-source): bound scanner findings to stop triage context overflow
+2026-06-04T17:12:38+02:00 - a2c475b - devthejo : fix(whats-next): prevent propose_roadmap context-window overflow on large repos
+2026-06-04T14:05:06+02:00 - 5dbbdf0 - devthejo : fix(whole_improve_loop): commit_changes aborts when state file is gitignored
+2026-06-04T12:08:01+02:00 - 4b9e385 - devthejo : fix(e2e): make the live bot suite runnable in OAuth-forfait mode
+2026-06-04T11:59:08+02:00 - e321b66 - devthejo : fix(whole_improve_loop): don't commit the bot's own state file
+2026-06-04T11:41:34+02:00 - f897c72 - devthejo : feat(secured-renovacy): family fast-path supports any package manager
+2026-06-04T11:26:10+02:00 - 800e81f - devthejo : fix(whole_improve_loop): derive review_loop bound from chunk count (#12)
+2026-06-04T10:49:48+02:00 - 5d57c83 - devthejo : chore: gofmt doc-comment drift on main
+2026-06-04T10:38:05+02:00 - a16fa35 - devthejo : fix(secured-renovacy): add go support + graceful skip in family_upgrade/validate
+2026-06-04T10:21:27+02:00 - 15c7a65 - devthejo : test(e2e): unstick sec-audit-source + feature_dev tests after intentional bot changes
+2026-06-03T19:52:16+02:00 - 844d3cc - devthejo : fix(runtime): claim resume atomically (CAS) to stop duplicate concurrent executions
+2026-06-03T15:44:41Z - d5603cb - devthejo : feat(studio): add in-run worktree file editor
+2026-06-03T09:10:45+02:00 - 5773173 - devthejo : feat(dispatcher,studio): board & dispatcher UX seams
+2026-06-03T08:55:14+02:00 - ee64ef8 - devthejo : feat(whole_improve_loop): auto-fragment large workspaces to fit context budget (#12)
+2026-06-03T08:49:04+02:00 - c26c77a - devthejo : feat(branch_improve_loop): chunk diff + stream review for large PRs (#11)
+2026-06-02T17:32:19+02:00 - 06512cc - devthejo : fix(studio): let operators merge dispatcher/bot runs that landed merge_status=skipped
+2026-06-02T14:40:52+02:00 - c5f784b - devthejo : fix(whole_improve_loop): commit the converged work (close the no-commit gap)
+2026-06-02T12:37:54+02:00 - 5aa0b61 - devthejo : test(dispatcher): cover the feature_dev feature_prompt fallback (570f18be)
+2026-06-02T12:35:40+02:00 - ca25368 - devthejo : perf(sandbox): bind the host Go build + module caches so worktrees build warm
+2026-06-02T11:09:28+02:00 - 570f18b - devthejo : fix(dispatcher): default feature_dev's feature_prompt from the issue when bot_args omit it
+2026-06-01T08:44:18+02:00 - 14cca7c - devthejo : fix(alert): a run paused for human input is not "stalled" (no false toast/badge)
+2026-05-31T19:44:08+02:00 - bb2dfab - devthejo : ci(image): build + push iterion-sandbox-sec (security scanner image)
+2026-05-31T19:41:24+02:00 - 6b5d912 - devthejo : fix(runview): detect out-of-band merges so the studio stops offering a stale squash
+2026-05-31T19:25:38+02:00 - d2bda57 - devthejo : docs: sandbox network default is `open`, not an allowlist
+2026-05-31T18:52:25+02:00 - d2ab8fb - devthejo : fix(sandbox): mount the host_state HOME tmpfs `exec` (was noexec → broke go toolchain)
+2026-05-31T18:51:07+02:00 - 21eb617 - devthejo : merge: HMAC auth for completion webhooks + adapter endpoints
+2026-05-31T18:51:03+02:00 - 09bf339 - devthejo : feat(notify): HMAC-authenticate completion webhooks + adapter endpoints
+2026-05-31T18:43:27+02:00 - 6d7017b - devthejo : fix(studio): byte-accurate log resume cursor — stop duplicating tails in the Logs tab
+2026-05-31T18:40:11+02:00 - b43be2d - devthejo : fix(server): wire callback_url through POST /api/runs (was dropped)
+2026-05-31T18:34:58+02:00 - 4c6eca7 - devthejo : merge: run-completion webhook + Mattermost @clarify-bot facilitator
+2026-05-31T18:34:37+02:00 - d770cdb - devthejo : feat(contrib): Mattermost @clarify-bot adapter + completion-webhook docs
+2026-05-31T18:34:37+02:00 - 72f2c18 - devthejo : feat(notify): run-completion webhook + clarify facilitator bot
+2026-05-31T18:22:15+02:00 - 0ef3d1b - devthejo : docs: codify the review-loop asymptote convergence objective
+2026-05-31T18:20:35+02:00 - c9e1819 - devthejo : fix(security): resolve the 6 high-severity gosec taint findings (#9 triage)
+2026-05-31T18:18:25+02:00 - 127d535 - devthejo : Merge: Nexie permanent co-CTO UX — standby + always-on composer
+2026-05-31T18:13:52+02:00 - 31e51b4 - devthejo : refactor(studio/whats-next): simplify standby composer wiring
+2026-05-31T18:09:16+02:00 - 304171c - devthejo : fix(feature_dev): reviewer_gpt must diff the working tree, not HEAD^...HEAD
+2026-05-31T18:00:41+02:00 - a8d0c94 - devthejo : feat(studio/whats-next): always-on composer + standby — never strand Nexie
+2026-05-31T17:52:29+02:00 - 484b1da - devthejo : feat(whats-next): reframe `done` as standby — Nexie never self-ends
+2026-05-31T17:24:35+02:00 - 061dbef - devthejo : fix(sandbox): writable HOME tmpfs so devbox/go are first-class under host_state
+2026-05-31T16:34:12+02:00 - 57711e2 - devthejo : docs(sec-audit): finish scan_join cleanup after sequential refactor
+2026-05-31T15:57:59+02:00 - d33e3ec - devthejo : fix(sec-audit): run scanners sequentially, not as a parallel fan-out
+2026-05-31T15:44:34+02:00 - f3f7b76 - devthejo : fix(sec-audit): bound detect_tech with a deterministic inventory
+2026-05-31T15:37:14+02:00 - 19d0ae6 - devthejo : docs(security): document self sec-audit process + scanner image + status
+2026-05-31T15:04:01Z - 6574154 - devthejo : fix(sandbox): warn instead of fail on driver-available for cross-host --target
+2026-05-31T14:23:14+02:00 - 92b1783 - devthejo : fix(sandbox): numeric USER 1000 on final stage for k8s/OpenShift
+2026-05-31T14:13:09+02:00 - cc8d1d9 - devthejo : feat(sec-audit): ship a scanner sandbox image so audits aren't a façade
+2026-05-31T12:49:22+02:00 - 261de65 - devthejo : feat(whats-next): findings auto-hygiene — archive resolved findings (#7)
+2026-05-31T12:47:08+02:00 - 0342db8 - devthejo : fix(studio): wrap run logs at word boundaries, not mid-token
+2026-05-31T12:40:24+02:00 - a11bd55 - devthejo : feat(studio): board triage UX — bulk actions, keyboard, label multi-select
+2026-05-31T09:21:44Z - 98652b3 - devthejo : feat(alerts): add run-health alerting with webhook, browser, and desktop sinks
+2026-05-31T00:39:17+02:00 - aea4477 - devthejo : fix(claude_code): break Edit-miss wedges with a re-Read hint
+2026-05-30T22:56:54+02:00 - 7dc8fe3 - devthejo : fix(studio): scope run/editor tabs to the active project
+2026-05-30T22:51:09+02:00 - 40c6d46 - devthejo : feat(spend-cap): per-day LLM spend cap with shared ledger + auto-pause
+2026-05-30T21:50:18+02:00 - 5e27a37 - devthejo : docs: thinking metrics reference + claude_code emission limitation
+2026-05-30T21:50:18+02:00 - 55f87d3 - devthejo : feat(backend): surface thinking time + tokens for claw and claude_code
+2026-05-30T21:50:18+02:00 - 02eede8 - devthejo : refactor(thinking-metrics): /simplify cleanups
+2026-05-30T11:33:29+02:00 - 5d3030e - devthejo : fix(feature_dev,claude_code): stabilize the implementer — bound sessions, graceful max-turns, tool-error circuit-breaker
+2026-05-30T10:51:19+02:00 - 6afe0aa - devthejo : fix(studio): re-enforce follow-tail on run open, preserve on tab-click
+2026-05-30T08:32:30+02:00 - 6b31d9e - devthejo : fix(feature_dev): converge the review loop — decouple reviewer effort + high-confidence-gated exit
+2026-05-29T17:08:51+02:00 - 11f842b - devthejo : feat: support Claude Opus 4.8 + Ultracode effort mode
+2026-05-29T16:47:11+02:00 - d351cad - devthejo : test(botreplay): bot golden replay framework — schema + invariant gating
+2026-05-29T16:47:11+02:00 - 7469874 - devthejo : fix(dispatcher): stop the doomed-resume loop on source-changed tickets
+2026-05-29T13:56:16+02:00 - 4350403 - devthejo : fix(studio): clearer Files scope tabs — accent-fill active pill, "All changes" default
+2026-05-29T12:55:37+02:00 - 5c385e5 - devthejo : chore: Harden error handling + robustness in pkg/bundle and pkg/identity
+2026-05-29T12:00:06+02:00 - 7bcb8c4 - devthejo : feat(studio): add combined files view with lifecycle-reactive default
+2026-05-29T11:59:42+02:00 - b842ea3 - devthejo : chore: Harden error handling + robustness in pkg/queue and pkg/runner
+2026-05-29T11:07:09+02:00 - 45d10a5 - devthejo : feat(board): add set_bot — canonical bot selector, distinct from assignee
+2026-05-29T10:58:03+02:00 - 3d69f9e - devthejo : fix(dispatcher): loud-fail unroutable bots, drop dead WorkflowPath, normalize names
+2026-05-29T09:12:30+02:00 - e5758ce - devthejo : fix(studio): board moves cards columns live on dispatch/completion
+2026-05-29T08:19:16+02:00 - f0790a7 - devthejo : feat(whole_improve_loop): publish reviewer verdicts as artifacts
+2026-05-29T08:16:35+02:00 - 53c50be - devthejo : chore: gitignore .gomodcache + drop the one that leaked onto main
+2026-05-29T08:12:59+02:00 - cedd67b - devthejo : chore: Harden error handling + robustness in pkg/log and pkg/config
+2026-05-29T01:21:09+02:00 - 1678ae6 - devthejo : feat(studio): readable verdict card for reviewer/judge artifacts
+2026-05-29T01:15:41+02:00 - 164f19f - devthejo : fix(claw): tag per-turn logs [node#iter/claw] with the real iteration
+2026-05-29T00:59:53+02:00 - ed2b0ce - devthejo : fix(dispatcher): close ticket on studio merge even when actor is idle
+2026-05-29T00:39:44+02:00 - 1e776d8 - devthejo : chore: Harden error handling + robustness in pkg/git and pkg/secrets
+2026-05-28T23:38:24+02:00 - 54aa14b - devthejo : feat(studio): inline preview for collapsed log bubbles
+2026-05-28T23:17:15+02:00 - 48ebd70 - devthejo : fix(dispatcher): route by per-ticket bot, not just assignee
+2026-05-28T21:08:39+02:00 - c95abf9 - devthejo : fix(studio): dispatcher inherits the same default bot paths as the API
+2026-05-28T20:59:57+02:00 - 3246ab6 - devthejo : fix(dispatcher): don't silently run default workflow when an explicit bot won't resolve
+2026-05-28T20:49:32+02:00 - f9077a1 - devthejo : fix(doc-align): scanner no longer drops path prefix → phantom drift
+2026-05-28T20:45:30+02:00 - 6da2fc1 - devthejo : fix(dispatcher): default merged_state to "done" so merged tickets auto-close
+2026-05-28T20:19:04+02:00 - ed57aa1 - devthejo : feat(sandbox): add sandbox doctor --strict pre-flight config validation
+2026-05-28T20:13:14+02:00 - 8e46921 - devthejo : fix(dispatcher): stamp last_run at dispatch, not only at finish
+2026-05-28T19:10:40+02:00 - 67739e5 - devthejo : docs(readme): add Roman imperator hero slogan
+2026-05-28T18:52:20+02:00 - 9744865 - devthejo : docs(skill): note watch.* capabilities in iterion-dsl-quickref
+2026-05-28T18:51:29+02:00 - 748387f - devthejo : feat(mvp3c): watch.subscribe / watch.unsubscribe capabilities (claw)
+2026-05-28T18:38:43+02:00 - 5ecc985 - devthejo : fix(dispatcher): warn loudly when a clean run produced no commit
+2026-05-28T18:16:23+02:00 - 434e5f3 - devthejo : feat(server): memoize terminal-run cost scans for runs-stats dashboard
+2026-05-28T17:58:12+02:00 - 8b8b4ae - devthejo : fix(studio): keep the run files/diff panel responsive on huge changesets
+2026-05-28T17:42:59+02:00 - dad2851 - devthejo : fix(gitignore): ignore all per-run sandbox scratch dirs (.tmp-*/), incl Go caches
+2026-05-28T16:19:00+02:00 - c8871ed - devthejo : fix(dispatcher): re-run fresh instead of looping a doomed resume after bot source change
+2026-05-28T14:05:29+02:00 - f62dd62 - devthejo : fix(bots): fail honestly on loop exhaustion in feature_dev / whole_improve_loop / branch_improve_loop
+2026-05-28T13:46:10+02:00 - 8107b29 - devthejo : docs(qa): align desktop QA and e2e coverage docs with current files
+2026-05-28T13:06:09+02:00 - 188633d - devthejo : feat(cli): add --bot / --bot-arg to `iterion issue create` for typed dispatch args
+2026-05-28T12:58:39+02:00 - f126509 - devthejo : fix(runtime): classify expired/invalid credentials (401/403) as non-retryable
+2026-05-28T12:53:53+02:00 - a705405 - devthejo : fix(doc-align): coverage gate no longer counts unscanned anchors as drift
+2026-05-28T12:45:53+02:00 - af0c64f - devthejo : fix(doc-align): fail honestly on loop exhaustion instead of silent empty success
+2026-05-28T12:06:37+02:00 - 014baea - devthejo : fix(studio): stream live WS events for dispatcher-spawned runs
+2026-05-28T10:38:39+02:00 - ff38287 - devthejo : feat(whats-next): runtime-driven watch fan-out (MVP3b)
+2026-05-28T09:34:46+02:00 - 8ae8e29 - devthejo : fix(doc-align): realign to repo-agnostic + document & enforce the rule
+2026-05-28T09:23:54+02:00 - 242bd2e - devthejo : feat(studio/board): View diff button — branch diff modal from the board
+2026-05-28T08:50:30+02:00 - 9755f17 - devthejo : fix(sandbox): harden claude_code postCreate against broken npm installs
+2026-05-28T08:33:03+02:00 - 4f4dd44 - devthejo : feat(whats-next): Quick mode — free-text ask_continue with dry-run banner
+2026-05-28T08:13:56+02:00 - a3859a9 - devthejo : feat(whats-next): inline dispatch button on WatchPanel backlog rows
+2026-05-28T08:12:06+02:00 - 9042ae3 - devthejo : feat(whats-next): smart-default the ask_continue radio + fix radio defaultValue
+2026-05-28T08:07:39+02:00 - 69fc2d2 - devthejo : chore(gitignore): ignore sandbox runtime scratch dirs
+2026-05-28T07:58:47+02:00 - 8a29d6e - devthejo : fix(runs): commit-and-finalize leaves merge_status=pending, not skipped
+2026-05-28T07:54:07+02:00 - 98a2e27 - devthejo : fix(studio/runs): conventional-commit default + auto-refresh on already-finalized
+2026-05-27T23:14:09+02:00 - 45914dc - devthejo : feat(runs): commit-and-finalize endpoint for uncommitted bot work
+2026-05-27T21:18:38+02:00 - 5ea5786 - devthejo : feat(whats-next): dispatch-just-created shortcut + contextual prompt on ask_continue
+2026-05-27T18:43:46+02:00 - a2b5e0a - devthejo : refactor(studio/whats-next): WatchPanel cleanup + shared helpers
+2026-05-27T18:23:56+02:00 - 6a1f69b - devthejo : feat(studio/whats-next): WatchPanel for dispatcher-bound tickets
+2026-05-27T17:43:27+02:00 - aaa225c - devthejo : fix(studio/whats-next): resolve titles from in-flight ExtensionMessage
+2026-05-27T17:40:45+02:00 - fe7b470 - devthejo : fix(studio/whats-next): show issue titles on answered checkbox turns
+2026-05-27T17:29:10+02:00 - 1c82190 - devthejo : feat(whats-next): fast-path launcher for "just dispatch existing items"
+2026-05-27T17:14:13+02:00 - 3f7977d - devthejo : fix(studio/runs): cost/tokens + ticket chip + bot identity in run header
+2026-05-27T15:36:33+02:00 - 184a020 - devthejo : feat(whats-next): checkbox picker on dispatch_more without explicit detail
+2026-05-27T15:09:01+02:00 - bbeb813 - devthejo : fix(dispatcher): longer backoff + park for sandbox-setup retries
+2026-05-27T15:02:56+02:00 - 8f13529 - devthejo : feat(bundle,studio): persona display_name on bot manifests + RunHeader chip
+2026-05-27T14:51:13+02:00 - 2d01752 - devthejo : fix(studio/runs): cost/tokens + ticket chip + bot identity in run header
+2026-05-27T13:18:35+02:00 - 5f40d46 - devthejo : fix(dispatcher): wire WithRecoveryDispatch so dispatcher-spawned runs retry transients
+2026-05-27T12:23:07+02:00 - 50358a0 - devthejo : feat(studio/runChat): surface engine retries on running banner cards
+2026-05-27T11:42:49+02:00 - f65deca - devthejo : fix(studio/whats-next): allow operator to start a new session from any state
+2026-05-27T10:03:57+02:00 - ddf9c4d - devthejo : feat(studio,dispatcher): WhatsNext UX cluster + run→ticket linkage + post-merge transition
+2026-05-27T08:30:49+02:00 - 351a75f - devthejo : feat(backend,dsl): add per-node provider fallback chain
+2026-05-26T20:59:52+02:00 - 02828ae - devthejo : feat(feature-dev): simpler reviewer budget discipline — drop the manifest tool node
+2026-05-26T20:49:27+02:00 - 768e455 - devthejo : feat(feature-dev): diff manifest preprocessor + tighter reviewer_gpt budget
+2026-05-26T09:33:52+02:00 - aeea37c - devthejo : docs: clarify event log filter rehydration
+2026-05-26T09:29:42+02:00 - 2150d36 - devthejo : fix: address recovery and event log review findings
+2026-05-25T14:53:12+02:00 - 75361b3 - devthejo : fix: use safe studio storage helpers
+2026-05-25T14:46:43+02:00 - 7429d79 - devthejo : fix: tolerate unavailable studio storage
+2026-05-25T13:11:11+02:00 - 0f4ae2d - devthejo : fix: address Go and TypeScript review findings
+2026-05-25T11:42:59+02:00 - d744d87 - devthejo : fix(dispatcher): cancel hammers leftover sandbox container + Shutdown preserves operator intent
+2026-05-25T11:22:19+02:00 - a3242ab - devthejo : refactor(studio/whats-next): universalise the polish priority option
+2026-05-25T11:17:56+02:00 - dcfe57b - devthejo : feat(studio/whats-next): render priorities form upfront instead of bare Start
+2026-05-25T11:08:17+02:00 - 8ed8754 - devthejo : fix(runtime): preserve checkpoint state on sandbox-failure during resume
+2026-05-25T10:59:37+02:00 - ee39cde - devthejo : feat(board,bots,studio): fold findings inbox into board's `inbox` state
+2026-05-25T10:59:37+02:00 - a075f38 - devthejo : chore: refresh project-rooted-memory rationale after findings move
+2026-05-25T09:41:25+02:00 - 435344c - devthejo : refactor(store,server): drop PromoteStaleOrphans — runview.reconcileOrphans already does this
+2026-05-25T09:35:07+02:00 - b255100 - devthejo : feat(store,server,cli): auto-promote orphan runs at server boot + --force-stale resume
+2026-05-25T09:12:46+02:00 - 99ed7b3 - devthejo : refactor(studio/whats-next): drop redundant workspace selector
+2026-05-25T09:08:09+02:00 - e948b1a - devthejo : fix(studio/run-view): relax the 'stalled Ns' badge thresholds (20/60 → 120/300)
+2026-05-25T09:08:09+02:00 - bbcaa84 - devthejo : feat(dispatcher,studio): auto-start + persisted desired state + chip aligned with manager lifecycle
+2026-05-25T08:49:41+02:00 - 4e505a5 - devthejo : feat(studio/runs): back-link to Runs from Analytics and Findings
+2026-05-25T08:43:45+02:00 - 1a86027 - devthejo : refactor(studio/nav): rename Insights → Runs analytics, link from Runs
+2026-05-25T08:43:28+02:00 - 5bce27b - devthejo : fix(studio/dispatcher): keep right-most columns reachable on narrow viewports
+2026-05-25T08:15:42+02:00 - a2ced9c - devthejo : feat(studio/board): multi-select via Shift/Ctrl-click with multi-drag
+2026-05-25T07:38:38+02:00 - ac2d6f1 - devthejo : test(e2e): smoke loop for whats-next → board → dispatcher → review
+2026-05-25T07:27:16+02:00 - 0e33a0b - devthejo : test: durable board-tool assertions + RESCUE_PROVIDER env scrub + gofmt
+2026-05-24T20:51:17+02:00 - 13f31a8 - devthejo : docs(cli): align CLI flag references with actual implementation
+2026-05-24T20:15:03+02:00 - 6a09fc8 - devthejo : feat(doc-align): doc-count chunking for reviewer batches (≤30 docs/iter)
+2026-05-24T18:41:15+02:00 - 0dd52d5 - devthejo : feat(server,studio): /insights cross-run dashboard — cost over time + fail rate + P50/P95 duration
+2026-05-24T18:22:50+02:00 - d9200bf - devthejo : feat(server,studio): findings inbox view + DELETE endpoint
+2026-05-24T18:10:04+02:00 - 41b3002 - devthejo : fix(studio/board): single-click opens issue modal + clickable label chips on cards
+2026-05-24T18:02:44+02:00 - bf6cd46 - devthejo : feat(native,studio): label vocabulary panel — rename / merge / delete
+2026-05-24T17:51:38+02:00 - 859a181 - devthejo : feat(native,whats-next): canonical label vocabulary + list_labels query before invent
+2026-05-24T16:29:40+02:00 - 9a00174 - devthejo : fix(whats-next/emit_action): surface selected_titles in user prompt so the filter actually runs
+2026-05-24T16:17:58+02:00 - 7050e3b - devthejo : feat(whats-next): assignee discipline — confident → closest → ambiguous → propose new bot
+2026-05-24T15:49:57+02:00 - 63fcb85 - devthejo : feat(whats-next): per-item checkbox at human_review to drop roadmap items pre-emit
+2026-05-24T15:27:33+02:00 - e5d58a5 - devthejo : fix(dispatcher): auto-transition in_progress → review on clean finish to break re-dispatch loop
+2026-05-24T15:03:55+02:00 - b85427c - devthejo : fix(dispatcher/native): mirror out-of-process disk writes into the index via fsnotify
+2026-05-24T14:48:44+02:00 - 845d83b - devthejo : feat(studio/forms): render JSON multi-select fields as checkboxes
+2026-05-24T14:23:21+02:00 - 31ccbc0 - devthejo : feat(whats-next/skills): split in-session triage from dispatched issues
+2026-05-24T14:20:53+02:00 - 13578eb - devthejo : fix(studio/whats-next): prefer live run over remembered terminal session
+2026-05-24T14:17:15+02:00 - 9885d63 - devthejo : feat(studio/conversation): render roadmap-item objects as cards, not JSON
+2026-05-24T14:17:05+02:00 - 97ddac2 - devthejo : fix(runtime/recovery): route 5xx + http2 timeouts to NETWORK_TRANSIENT
+2026-05-24T13:30:07+02:00 - 0ed796b - devthejo : refactor(studio/whats-next): drop curated loading phrases for the gerund pool
+2026-05-24T13:14:32+02:00 - 4615dfc - devthejo : feat(studio): clarify run/dispatcher UI copy, states, and tooltips
+2026-05-24T11:13:18+02:00 - f168180 - devthejo : fix(runtime,doc-align): walk worktree pointer files in findGitRoot + drop reviewer_gpt to medium
+2026-05-24T10:43:37+02:00 - c87a7c5 - devthejo : fix(git,runtime): resolve linked worktrees back to main repo for project_root
+2026-05-24T10:02:30+02:00 - 63c3355 - devthejo : fix(whats-next/skills): repo-survey § 7b — findings inbox handoff
+2026-05-24T09:55:54+02:00 - 817be4f - devthejo : fix(whats-next): findings inbox bypassed by Constraints' no-mkdir rule
+2026-05-24T09:49:35+02:00 - 20f9071 - devthejo : feat(bots,runtime): findings handoff via ${PROJECT_MEMORY_DIR}/findings
+2026-05-24T09:22:28+02:00 - 3997c46 - devthejo : feat(dsl,runtime): memory.project_root flag for cross-worktree shared scopes
+2026-05-23T10:14:32+02:00 - 6dce0ef - devthejo : feat(sandbox/full): pre-install operator + dev tooling (gh, yq, kubectl, helm, k9s, fnm, direnv, g)
+2026-05-23T08:31:22+02:00 - 91c8765 - devthejo : feat(studio/board): last-run link on cards + stale-retry hint on terminal issues
+2026-05-23T08:26:31+02:00 - 7c05865 - devthejo : feat(studio/dispatcher,board,runs): surface resume + paused + sandbox-error UX signals
+2026-05-23T07:54:01+02:00 - 9f59857 - devthejo : chore(runtime/resume): drop trailing blank line in resume_input_test.go
+2026-05-22T23:34:20+02:00 - 57d5034 - devthejo : fix(dispatcher): sweep stale local claims at Manager construction
+2026-05-22T23:33:07+02:00 - 50a2440 - devthejo : test(runtime/resume): regression guard for tool-node input/var mapping
+2026-05-22T22:20:37+02:00 - f857fd3 - devthejo : fix(studio/whats-next,ui): clear 'Sending…/Submitting…' feedback on human-turn submit
+2026-05-22T22:18:23+02:00 - 380c452 - devthejo : fix(backend/model): emit per-node tagged log line for claw delegations
+2026-05-22T22:12:26+02:00 - e2bfda9 - devthejo : fix(studio/home): mark just-opened examples clean so navigation away doesn't warn
+2026-05-22T22:10:14+02:00 - adf3e0f - devthejo : fix(studio/runs): collapse run-id duplication in /runs table
+2026-05-22T22:06:35+02:00 - 794283b - devthejo : fix(cli/run): guard against typed-nil PrometheusExporter interface
+2026-05-22T22:01:12+02:00 - f86a694 - devthejo : refactor(runtime,studio): simplify merge-conflict resolver
+2026-05-22T21:43:35+02:00 - bba40be - devthejo : feat(runtime,studio): in-studio merge-conflict resolver
+2026-05-22T19:25:01+02:00 - 0d3c94b - devthejo : refactor(studio): humanize run-console copy, status labels, and a11y
+2026-05-22T17:32:44+02:00 - fb844d4 - devthejo : fix(runtime/sandbox): disable git commit.gpgsign inside the container
+2026-05-22T17:30:52+02:00 - 642c3bd - devthejo : fix(runtime/sandbox): mount ~/.gitconfig so in-container git commit works
+2026-05-22T17:07:42+02:00 - fee6d46 - devthejo : fix(runtime/sandbox): mount ~/.codex for ChatGPT-forfait OAuth inside sandbox
+2026-05-22T15:45:36+02:00 - 7f6febc - devthejo : feat(dispatcher): resume from prior run on retry (no more re-running from scratch)
+2026-05-22T15:24:48+02:00 - 19616e4 - devthejo : fix(sandbox/netproxy): silent-deny claude-code MCP proxy probe
+2026-05-22T15:24:21+02:00 - 219e10e - devthejo : docs(sandbox): network policy default = open + silent-deny note
+2026-05-22T15:23:09+02:00 - a92002e - devthejo : feat(runtime/sandbox): default network policy = open
+2026-05-22T14:58:20+02:00 - bc46a20 - devthejo : docs(native-tracker): document last_run_id + last_workdir fields
+2026-05-22T14:54:02+02:00 - bdaa09c - devthejo : fix(dispatcher): teach refreshRunningStates about the in_progress transition
+2026-05-22T11:18:25+02:00 - ec545a7 - devthejo : fix(sandbox/netproxy): extend silent-deny to GitHub Copilot CDN + Sentry
+2026-05-22T11:17:43+02:00 - 4897571 - devthejo : chore(runtime): minor comment polish on worktree pointer-reading + sandbox header
+2026-05-22T11:09:24+02:00 - 9a10fc4 - devthejo : fix(runtime): read worktree .git pointer to find real gitdir (nested worktrees)
+2026-05-22T11:05:29+02:00 - d20647c - devthejo : fix(runtime): sandbox must bind whole .git, not just per-run worktree subdir
+2026-05-22T10:20:45+02:00 - c045488 - devthejo : feat(dispatcher,studio): surface last run + worktree on board issue
+2026-05-22T10:07:41+02:00 - e18570c - devthejo : feat(dispatcher): transition claimed issues to in_progress on Claim
+2026-05-22T10:07:37+02:00 - 676d733 - devthejo : fix(sandbox,runtime): worktree gitdir bind + silent-deny telemetry
+2026-05-22T08:44:03+02:00 - c2c2fd2 - devthejo : fix(doc-align): v0.15.6-8 mark_issue_for_review now actually transitions
+2026-05-22T07:58:02+02:00 - 46b4255 - devthejo : fix(runtime,proc): skip /tmp/go-build* sibling when locating iterion binary
+2026-05-21T22:31:05+02:00 - 03bb82f - devthejo : feat(doc-align): v0.15.4 mark_issue_for_review post-commit
+2026-05-21T22:16:54+02:00 - 346b6b2 - devthejo : fix(doc-align): v0.15.1-3 tuning for clean end-to-end convergence
+2026-05-21T20:36:35+02:00 - 546297c - devthejo : fix(doc-align): bump reviewer tool_max_steps 5 → 10
+2026-05-21T20:25:31+02:00 - 062c849 - devthejo : feat(doc-align): v0.15.0 manifest-driven reviewers (ca4340d3)
+2026-05-21T19:21:43+02:00 - 102773f - devthejo : fix(claudesdk): drop hookSpecificOutput when no actionable fields
+2026-05-21T19:03:46+02:00 - 6a093b9 - devthejo : fix(studio/runs): eagerly hydrate event log so cost + metrics show
+2026-05-21T18:49:01+02:00 - 7c4f329 - devthejo : fix(doc-align): v0.14.0 — cumulative_declared_paths across iters (e79d91c7)
+2026-05-21T18:36:38+02:00 - c6ab27f - devthejo : fix(dispatcher,server): operator-cancel + mid-session inbox for dispatcher runs
+2026-05-21T18:12:37+02:00 - 0a07c19 - devthejo : docs(claude-md): note __mcp-board + __scan-shards hidden subcommands
+2026-05-21T17:02:18+02:00 - 64d3950 - devthejo : fix(studio/files): direct user to Uncommitted tab when branch empty + worktree live
+2026-05-21T16:57:25+02:00 - 3d447c9 - devthejo : fix(runtime): auto-detect baseline when workDir is a git worktree
+2026-05-21T14:26:57Z - 8592fba - devthejo : feat(studio): unify whatsnext loading UX with logs ThinkingFooter
+2026-05-21T14:17:29+02:00 - cb5e5e7 - devthejo : feat(studio/runs): stalled-Xs badge when backend stops emitting events
+2026-05-21T12:28:00+02:00 - e5cc331 - devthejo : fix(dispatcher): wire spec.WorkspacePath as runtime.WithWorkDir (68e741a9)
+2026-05-21T11:34:39+02:00 - 8ece3de - devthejo : fix(doc-align): reviewer_gpt session: fresh + tool_max_steps 40→20
+2026-05-21T11:24:09Z - da209de - devthejo : feat(studio/runs): RunCanvasIR centering race fix + Scrubber/RunMetrics fuse (cont.)
+2026-05-21T11:03:02Z - 89068d5 - devthejo : feat(studio/runs): bundle_name as Workflow column, friendly name as Run
+2026-05-21T11:02:51Z - 54be78d - devthejo : fix(dispatcher): align run id + friendly name with manual launches
+2026-05-21T10:58:09+02:00 - fe99641 - devthejo : feat(studio/runs): RunCanvasIR centering race fix + Scrubber/RunMetrics fuse
+2026-05-21T10:57:51+02:00 - 18af071 - devthejo : docs: align references with current code state (doc-align iter 1 output)
+2026-05-21T10:16:55Z - b4074e1 - devthejo : chore(studio): drop orphaned RunToolbar component
+2026-05-21T10:12:00+02:00 - a5bb906 - devthejo : fix(dispatcher): wrap RunStore to fire OnEvent on every AppendEvent
+2026-05-21T09:39:56+02:00 - 6fd6167 - devthejo : docs: wip
+2026-05-21T09:35:20+02:00 - 2fc3aeb - devthejo : fix(studio/runs): show workflow_name when run.name === run.id (9f7cf179)
+2026-05-21T09:35:11+02:00 - bf96f4a - devthejo : fix(expr): if() short-circuits the un-taken branch (a3a9757b)
+2026-05-21T09:35:00+02:00 - c6b5423 - devthejo : fix(dispatcher): graceful shutdown + dead-PID claim sweep
+2026-05-21T09:34:43+02:00 - 910185a - devthejo : fix(dispatcher): synchronous heartbeat + force-reap + skip full-cap scan
+2026-05-21T09:34:25+02:00 - f9f2883 - devthejo : fix(claudesdk): honor ctx in Session.Stream() so hung CLI streams exit
+2026-05-21T08:24:50Z - e3bbe18 - devthejo : fix(studio/run-view): centre on running node when layout settles
+2026-05-21T08:19:58Z - e9d5a76 - devthejo : feat(studio/run-view): default-open events drawer + sticky follow-live
+2026-05-21T08:13:30Z - 81d4f51 - devthejo : feat(cursors): add prompt-engineering cursor primitive
+2026-05-21T08:12:14Z - 54c7c5d - devthejo : feat(studio/run-view): canvas-first refonte + floating chat panel
+2026-05-20T20:56:33+02:00 - 262f500 - devthejo : fix(dispatch defaults): drop workspace_dir overrides — let runtime PROJECT_DIR win
 2026-05-20T20:56:33+02:00 - 07becf9 - devthejo : fix(dispatch defaults): drop workspace_dir overrides — let runtime PROJECT_DIR win
+2026-05-20T20:48:45+02:00 - f365ff1 - devthejo : fix(sandbox): bind workspace at host's absolute path inside container
 2026-05-20T20:48:45+02:00 - 8630740 - devthejo : fix(sandbox): bind workspace at host's absolute path inside container
 2026-05-20T20:26:54+02:00 - b8201fa - devthejo : fix(dispatcher, sandbox): run.log capture + z.ai allowlist entry
+2026-05-20T20:26:54+02:00 - 8e80cb4 - devthejo : fix(dispatcher, sandbox): run.log capture + z.ai allowlist entry
 2026-05-20T19:56:58+02:00 - e4aa0c5 - devthejo : docs(whats-next, expr): env-overridable claude_code model + if() trap warning
+2026-05-20T19:56:58+02:00 - 3eeff8b - devthejo : docs(whats-next, expr): env-overridable claude_code model + if() trap warning
+2026-05-20T19:43:35+02:00 - cc77351 - devthejo : fix(studio/whats-next): 3 UX bugs surfaced by Playwright audit
 2026-05-20T19:43:35+02:00 - 927178e - devthejo : fix(studio/whats-next): 3 UX bugs surfaced by Playwright audit
 2026-05-20T19:27:33+02:00 - 9f2d02f - devthejo : revert(claude_code): drop ITERION_CLAUDE_CODE_MODEL Go-level override
+2026-05-20T19:27:33+02:00 - 7a01b02 - devthejo : revert(claude_code): drop ITERION_CLAUDE_CODE_MODEL Go-level override
+2026-05-20T18:25:30Z - a95a45a - devthejo : feat(studio/chat): per-bot persona table, switch whats-next to "Nexie"
 2026-05-20T18:25:30Z - 9834fa0 - devthejo : feat(studio/chat): per-bot persona table, switch whats-next to "Nexie"
 2026-05-20T17:47:54+02:00 - 8af1f40 - devthejo : feat(claude_code): ITERION_CLAUDE_CODE_MODEL env override + auto-loaded .env
+2026-05-20T17:47:54+02:00 - 068c264 - devthejo : feat(claude_code): ITERION_CLAUDE_CODE_MODEL env override + auto-loaded .env
 2026-05-20T17:30:00+02:00 - ddff8df - devthejo : fix(dispatch defaults): seed per-issue workspaces via git worktree hook
+2026-05-20T17:30:00+02:00 - 00ed277 - devthejo : fix(dispatch defaults): seed per-issue workspaces via git worktree hook
 2026-05-20T17:19:53+02:00 - efce7a0 - devthejo : feat(dispatcher): one-click auto-configure & start from the studio
+2026-05-20T17:19:53+02:00 - 7090f50 - devthejo : feat(dispatcher): one-click auto-configure & start from the studio
+2026-05-20T17:19:30+02:00 - fa3e811 - devthejo : fix(whats-next): dispatch_more + empty detail = list, not silent bulk
 2026-05-20T17:19:30+02:00 - 382277e - devthejo : fix(whats-next): dispatch_more + empty detail = list, not silent bulk
+2026-05-20T16:40:42+02:00 - df9e933 - devthejo : fix(whats-next): dispatch_more with empty detail = dispatch all assignees
 2026-05-20T16:40:42+02:00 - 1e5f86e - devthejo : fix(whats-next): dispatch_more with empty detail = dispatch all assignees
 2026-05-20T16:02:35+02:00 - b44f1d6 - devthejo : fix(whats-next): bring back detail field on ask_continue, render flat
+2026-05-20T16:02:35+02:00 - 544cacf - devthejo : fix(whats-next): bring back detail field on ask_continue, render flat
+2026-05-20T15:46:27+02:00 - f7c3141 - devthejo : fix(studio/whats-next): submitHumanAnswer must pass force: true
 2026-05-20T15:46:27+02:00 - eecdd97 - devthejo : fix(studio/whats-next): submitHumanAnswer must pass force: true
+2026-05-20T15:42:06+02:00 - ef235a7 - devthejo : chore(studio/whats-next): instrument submitHumanAnswer + resumeRun trace
 2026-05-20T15:42:06+02:00 - 607dab8 - devthejo : chore(studio/whats-next): instrument submitHumanAnswer + resumeRun trace
 2026-05-20T15:38:28+02:00 - b162b3f - devthejo : chore(studio/whats-next): instrument form submit path for stuck-click debug
+2026-05-20T15:38:28+02:00 - 76e28b4 - devthejo : chore(studio/whats-next): instrument form submit path for stuck-click debug
 2026-05-20T15:33:35+02:00 - 6bf4bb7 - devthejo : fix(studio/whats-next): unstick form submit + prefer ResumeFooter on terminal runs
+2026-05-20T15:33:35+02:00 - 2ac3bbe - devthejo : fix(studio/whats-next): unstick form submit + prefer ResumeFooter on terminal runs
 2026-05-20T14:58:26+02:00 - ec1a565 - devthejo : fix(whats-next): drop redundant free_text from ask_continue/triage_board
+2026-05-20T14:58:26+02:00 - 7d4ee90 - devthejo : fix(whats-next): drop redundant free_text from ask_continue/triage_board
 2026-05-20T14:27:11+02:00 - 9ca2e9f - devthejo : fix(boardops): add empty `required: []` to list_issues schema
+2026-05-20T14:27:11+02:00 - 7c2de97 - devthejo : fix(boardops): add empty `required: []` to list_issues schema
 2026-05-20T14:24:54+02:00 - 103d152 - devthejo : fix(runview): register native board tools on claw's tool registry
+2026-05-20T14:24:54+02:00 - 0344281 - devthejo : fix(runview): register native board tools on claw's tool registry
 2026-05-20T14:20:47+02:00 - eff6ddb - devthejo : fix(claw_backend): also alias mcp__a__b FQNs in the launcher's ToolDefs map
+2026-05-20T14:20:47+02:00 - d3a879a - devthejo : fix(claw_backend): also alias mcp__a__b FQNs in the launcher's ToolDefs map
+2026-05-20T14:18:24+02:00 - dfec6eb - devthejo : fix(studio/whats-next): bottom Resume footer + force-resume
 2026-05-20T14:18:24+02:00 - a068359 - devthejo : fix(studio/whats-next): bottom Resume footer + force-resume
 2026-05-20T14:14:47+02:00 - 9ee3990 - devthejo : feat(studio/whats-next): Resume button in SessionHeader
+2026-05-20T14:14:47+02:00 - 7bd07ff - devthejo : feat(studio/whats-next): Resume button in SessionHeader
 2026-05-20T14:12:35+02:00 - 95c74ae - devthejo : fix(backend/tool): bridge claude_code FQN to claw's dot-form MCP tools
+2026-05-20T14:12:35+02:00 - 5d6a8a0 - devthejo : fix(backend/tool): bridge claude_code FQN to claw's dot-form MCP tools
 2026-05-20T13:27:13+02:00 - de59b2b - devthejo : feat(whats-next): dynamic checkbox form on ask_which_to_process
 2026-05-20T13:12:20+02:00 - 8bd4339 - devthejo : fix(dispatcher/native): include bot_args in DefaultBoard fields
 2026-05-20T12:58:41+02:00 - 98cf35f - devthejo : fix(studio/whats-next): StrictMode breaks auto-discovery (idle leak)
@@ -33,10 +352,12 @@
 2026-05-20T12:15:13+02:00 - b6a1e7a - devthejo : feat(studio/whats-next): dispatcher status chip on IssuesSummaryCard
 2026-05-20T12:11:36+02:00 - b6728d7 - devthejo : feat(studio/whats-next): quick-action strip on free-text human turns
 2026-05-20T12:09:00+02:00 - 5147d86 - devthejo : feat(studio/chat): Enter-to-send toggle + bottom-area swap + bigger chatbox
+2026-05-20T12:07:50Z - a36dcad - devthejo : feat(studio/whats-next): rename "AI" badge to "Niblet" in chat turns
 2026-05-20T12:07:50Z - 2689ecb - devthejo : feat(studio/whats-next): rename "AI" badge to "Niblet" in chat turns
 2026-05-20T12:03:30+02:00 - fa5023e - devthejo : feat(whats-next): post-emit triage loop + plan-handed-off milestone
 2026-05-20T11:45:57+02:00 - 870f74c - devthejo : chore(deps): bump claw-code-go to dd5ef55 + regen vendor metadata
 2026-05-20T11:34:46Z - ad2d299 - devthejo : feat(studio/run-view): conversation-first chat timeline as default
+2026-05-20T11:34:46Z - 929ddd0 - devthejo : feat(studio/run-view): conversation-first chat timeline as default
 2026-05-20T11:23:23+02:00 - 7003133 - devthejo : fix(studio/whats-next): apply iteration fallback to node_finished too — fixes stuck "running" banner + duplicate cards across revise loops
 2026-05-20T11:10:44+02:00 - 2377884 - devthejo : fix(studio/whats-next): track node iteration across events so revise-loop human turns get their own bubble
 2026-05-20T11:05:19+02:00 - 7f88451 - devthejo : feat(studio/whats-next): rotating loading phrases per node in chat banners

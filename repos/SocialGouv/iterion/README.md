@@ -4,9 +4,12 @@
 
 # Iterion
 
+**From dev to imperator — command a legion of bots at the next level.**
+*Veni, vidi, merged.*
+
 **Bots, as code.** *Declarative workflow orchestration for AI agents.*
 
-Define your bots as readable `.bot` files — chain agents, judges, routers, human gates, parallel branches, bounded loops, and budget caps into a single, auditable execution graph.
+Stop coding like a mortal. Define your bots as readable `.bot` files — chain agents, judges, routers, human gates, parallel branches, bounded loops, and budget caps into a single, auditable execution graph, then command from the next level.
 
 > ⚠️ **This project is highly experimental.** APIs, DSL syntax, and storage formats may change without notice. Use at your own risk in production environments. Feedback and contributions are welcome!
 
@@ -19,6 +22,7 @@ Define your bots as readable `.bot` files — chain agents, judges, routers, hum
 - [Why Iterion?](docs/why-iterion.md) — origin + recipe + asymptote + lab
 - [What is Iterion?](#what-is-iterion)
 - [Features](#features)
+- [Meet the legion](#meet-the-legion)
 - [Quick Start](#quick-start)
 - [`.iter` vs `.bot`](#iter-vs-bot)
 - [A Taste of the DSL](#a-taste-of-the-dsl)
@@ -92,6 +96,26 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 
 ---
 
+## ⚔️ Meet the legion
+
+Iterion ships a team of named, first-class bots — your legion. Each is a general-purpose `.bot` you point at *any* repo: run it directly (`iterion run bots/<name>/main.bot`), dispatch it per issue, or schedule it.
+
+| Bot | Role | Bundle |
+|---|---|---|
+| 🧭 **Nexie** | Co-CTO orchestrator — surveys the repo, elicits priorities, proposes a roadmap, and emits kanban issues | [`whats-next`](bots/whats-next/) |
+| 🛠️ **Featurly** | Ships a feature end-to-end — plan → implement → simplify → review-fix loop | [`feature_dev`](bots/feature-dev/) |
+| 🌿 **Billy** | Branch reviewer-fixer — alternating Claude/GPT review-fix on the branch diff, auto-commits on convergence | [`branch_improve_loop`](bots/branch-improve-loop/) |
+| 🌍 **Willy** | Whole-repo reviewer-fixer — the same loop across the entire codebase | [`whole_improve_loop`](bots/whole-improve-loop/) |
+| 📚 **Doki** | Doc aligner — detects & fixes doc/code drift (the docs, never the code) | [`docs-refresh`](bots/docs-refresh/) |
+| 🔎 **Revi** | Code reviewer — read-only cross-family review, publishes findings to the board | [`code_review`](bots/code-review/) |
+| 🛡️ **Seki** | Source security auditor — SAST + secret scan + LLM triage | [`sec-audit-source`](bots/sec-audit-source/) |
+| 📦 **Depsy** | Supply-chain auditor — dependency malware / CVE scan | [`sec-audit-deps`](bots/sec-audit-deps/) |
+| ⬆️ **Renovacy** | Security-aware dependency upgrader | [`secured-renovacy`](bots/secured-renovacy/) |
+
+List them anytime with `iterion bots list`; see [docs/examples.md](docs/examples.md) for the full catalog (including the DSL demos under `examples/`).
+
+---
+
 ## 🚀 Quick Start
 
 ### Pick your install
@@ -106,9 +130,10 @@ Same engine, seven delivery modes — pick the one that fits your workflow:
 | 🐳 **Docker** | Zero-install runs, reproducible CI | `docker run --rm ghcr.io/socialgouv/iterion:latest` | [install.md#docker](docs/install.md#docker) |
 | ☁️ **Cloud / server** | Multi-tenant deployment, shared run store, REST/WS API | `helm install iterion oci://ghcr.io/socialgouv/charts/iterion` | [cloud.md](docs/cloud.md) |
 | 🎼 **Dispatcher** | Autonomous loop — poll a tracker, dispatch a workflow per issue | Bundled: `iterion dispatch iterion.dispatcher.yaml` | [dispatcher.md](docs/dispatcher.md) |
+| ⏰ **Scheduler** | Cron recurring runs (weekly audits, nightly passes) — no resident daemon | Bundled: `iterion schedule add … && iterion schedule install` | [scheduling.md](docs/scheduling.md) |
 | 📦 **TypeScript SDK** | Programmatic invocation from Node/Deno/Bun | `npm install @iterion/sdk` | [sdks/typescript/](sdks/typescript/) |
 
-All seven invoke the same Go core. The DSL, runtime, persistence and observability are identical — they only differ in how you reach them.
+All eight invoke the same Go core. The DSL, runtime, persistence and observability are identical — they only differ in how you reach them.
 
 ### Your first workflow
 
@@ -210,6 +235,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 - [docs/routers.md](docs/routers.md) — routing modes deep dive
 - [docs/recipes.md](docs/recipes.md) — preset-driven runs (benchmarking, prompt comparison)
 - [docs/delegation.md](docs/delegation.md) — `model:` vs `backend:` (claude_code, codex)
+- [docs/cursors.md](docs/cursors.md) — prompt-engineering cursors (ambition / depth / rigor / autonomy dials)
 - [docs/attachments.md](docs/attachments.md) — file/image attachments in prompts
 - [docs/privacy_filter.md](docs/privacy_filter.md) — built-in PII redaction tools
 - [docs/workflow_authoring_pitfalls.md](docs/workflow_authoring_pitfalls.md) — required reading before authoring workflows that commit code
@@ -229,7 +255,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 
 **References**
 - [docs/references/dsl-grammar.md](docs/references/dsl-grammar.md) — readable grammar
-- [docs/references/diagnostics.md](docs/references/diagnostics.md) — all C001–C082 codes (sparse)
+- [docs/references/diagnostics.md](docs/references/diagnostics.md) — all C001–C086 codes (sparse)
 - [docs/references/patterns.md](docs/references/patterns.md) — 10 reusable workflow patterns
 - [docs/grammar/iterion_v1.ebnf](docs/grammar/iterion_v1.ebnf) — formal EBNF grammar
 
