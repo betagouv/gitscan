@@ -760,7 +760,9 @@
 │   ├── 20260129095854_commentaire-libre-default-chaine-vide.ts
 │   ├── 20260211120000_onagre-default-chaine-vide.ts
 │   ├── 20260223151046_ajout-notification.ts
-│   └── 20260527182955_unique-dossier-fichier-pieces-jointes-petitionnaire.ts
+│   ├── 20260527182955_unique-dossier-fichier-pieces-jointes-petitionnaire.ts
+│   ├── 20260529100000_ajout-table-file.ts
+│   └── 20260529100100_drop-triggers-suppression-fichiers-avis-expert.ts
 ├── outils
 │   ├── aarri
 │   │   ├── donnees-pour-personne.ts
@@ -921,7 +923,9 @@
 │   │   │   ├── décision_administrative.ts
 │   │   │   ├── espèces_impactées.ts
 │   │   │   ├── fakeDatabase.ts
+│   │   │   ├── fichier.test.ts
 │   │   │   ├── fichier.ts
+│   │   │   ├── file.ts
 │   │   │   ├── geomce.ts
 │   │   │   ├── groupe_instructeurs.ts
 │   │   │   ├── notification.ts
@@ -944,6 +948,8 @@
 │   │   │   ├── recupérerGroupesInstructeurs.ts
 │   │   │   └── recupérerListeDossiersSupprimés.ts
 │   │   ├── emails.ts
+│   │   ├── object-storage.test.ts
+│   │   ├── object-storage.ts
 │   │   └── évènements_métriques.ts
 │   └── types
 │       ├── API_Pitchou.ts
@@ -968,6 +974,7 @@
 │       │       ├── DécisionAdministrative.ts
 │       │       ├── Entreprise.ts
 │       │       ├── Fichier.ts
+│       │       ├── File.ts
 │       │       ├── GroupeInstructeurs.ts
 │       │       ├── KnexMigrations.ts
 │       │       ├── KnexMigrationsLock.ts
@@ -977,8 +984,6 @@
 │       │       ├── Prescription.ts
 │       │       ├── RésultatSynchronisationDS88444.ts
 │       │       ├── TypeDossier.ts
-│       │       ├── supprimer_fichiers_avis_expert.ts
-│       │       ├── supprimer_fichiers_avis_expert_orphelins.ts
 │       │       ├── ÉvènementMétrique.ts
 │       │       └── ÉvènementPhaseDossier.ts
 │       ├── démarche-numérique
@@ -1005,6 +1010,7 @@
 │   ├── lib
 │   │   └── server
 │   │       ├── auth.ts
+│   │       ├── fichier.test.ts
 │   │       ├── fichier.ts
 │   │       └── staticFile.ts
 │   └── routes
@@ -1140,7 +1146,13 @@
 │   │   └── playwright.ts
 │   ├── integration
 │   │   ├── caps.test.ts
-│   │   └── telechargement-fichier.test.ts
+│   │   ├── load-fichier-content.test.ts
+│   │   ├── stocker-nouveau-fichier.test.ts
+│   │   ├── supprimer-fichiers.test.ts
+│   │   ├── telechargement-fichier-s3.test.ts
+│   │   ├── telechargement-fichier.test.ts
+│   │   ├── upload-avis-fichier-http.test.ts
+│   │   └── upload-decision-admin-http.test.ts
 │   ├── manuels
 │   │   ├── aide-pitchou.md
 │   │   ├── dossier.md
@@ -1151,10 +1163,12 @@
 │   ├── setup
 │   │   ├── db.ts
 │   │   ├── e2e-global.ts
+│   │   ├── init-test-s3.ts
 │   │   ├── integration-each.ts
 │   │   ├── integration-global.ts
+│   │   ├── s3.ts
 │   │   └── truncate.ts
 │   └── vitest.config.ts
 ├── tsconfig.json
 └── vite.config.ts
-138 directories, 1062 files
+138 directories, 1076 files
