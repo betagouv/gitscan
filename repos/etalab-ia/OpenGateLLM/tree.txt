@@ -1,5 +1,6 @@
 .
 ├── .coveragerc
+├── .dockerignore
 ├── .env.example
 ├── .github
 │   ├── .env.ci.example
@@ -74,7 +75,8 @@
 │   │       ├── 2026_02_26_1730-c206a2bfefe9_remove_min_max_carbon_impact.py
 │   │       ├── 2026_04_23_1814-4a8f3b3aed3a_remove_master_user.py
 │   │       ├── 2026_05_06_1224-9fd5b6491d48_add_constraint_on_router_delete.py
-│   │       └── 2026_05_06_1658-4cbcc969c660_add_constraint_on_provinder_delete.py
+│   │       ├── 2026_05_06_1658-4cbcc969c660_add_constraint_on_provinder_delete.py
+│   │       └── 2026_06_01_1421-7498a3a48271_add_storage_limits.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -387,6 +389,7 @@
 │   │   │   │   │   └── users
 │   │   │   │   │       ├── __init__.py
 │   │   │   │   │       ├── test_create_user.py
+│   │   │   │   │       ├── test_delete_user.py
 │   │   │   │   │       ├── test_get_user.py
 │   │   │   │   │       └── test_get_users.py
 │   │   │   │   ├── conftest.py
@@ -422,9 +425,11 @@
 │   │   │   │   ├── test_postgresuserwithrolequery.py
 │   │   │   │   └── user_repository
 │   │   │   │       ├── __init__.py
+│   │   │   │       ├── test_create_user.py
+│   │   │   │       ├── test_delete_user.py
+│   │   │   │       ├── test_get_first_admin_user.py
 │   │   │   │       ├── test_get_user_by_id.py
-│   │   │   │       ├── test_get_users.py
-│   │   │   │       └── test_postgresusersrepository.py
+│   │   │   │       └── test_get_users.py
 │   │   │   └── redis
 │   │   │       └── test_redisprovidermetricslogger.py
 │   │   └── unit
@@ -500,6 +505,7 @@
 │   │           │   └── users
 │   │           │       ├── __init__.py
 │   │           │       ├── test_createuserusecase.py
+│   │           │       ├── test_deleteuserusecase.py
 │   │           │       ├── test_getoneuserusecase.py
 │   │           │       └── test_getusersusecase.py
 │   │           ├── factories.py
@@ -539,6 +545,7 @@
 │   │   │   └── users
 │   │   │       ├── __init__.py
 │   │   │       ├── _createuserusecase.py
+│   │   │       ├── _deleteuserusecase.py
 │   │   │       ├── _getoneuserusecase.py
 │   │   │       ├── _getusersusecase.py
 │   │   │       └── _updateuserusecase.py
@@ -801,4 +808,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-169 directories, 634 files
+169 directories, 641 files
