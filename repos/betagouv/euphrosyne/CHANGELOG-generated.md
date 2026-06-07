@@ -1,47 +1,28 @@
-## Changelog : euphrosyne (30 derniers jours, au 14 mai 2026)
+## Changelog : euphrosyne (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur et de la gestion des projets. Des améliorations ont été apportées à l'interface pour la gestion des participations, des correctifs ont été implémentés pour assurer le bon fonctionnement des appels API et des workflows, et des traductions manquantes ont été ajoutées. De plus, l'infrastructure a été mise à jour avec les dernières versions de plusieurs dépendances.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des certifications, l'ajout de nouvelles fonctionnalités pour la gestion des projets et des participations, ainsi que des corrections de bugs et des mises à jour de sécurité. Plusieurs améliorations techniques ont également été apportées, notamment des mises à jour de dépendances et des optimisations du code.
 
 ### Évolutions fonctionnelles
-- Ajout d'un commutateur pour activer/désactiver le type de participation sur la table des participations. [#1896](https://github.com/betagouv/euphrosyne/pull/1896)
-- Amélioration de l'alignement des colonnes de participation dans l'interface utilisateur. [#1897](https://github.com/betagouv/euphrosyne/pull/1897)
-- Correction d'un bug lié à l'analyse incorrecte de l'ID d'exécution dans le middleware. [#1895](https://github.com/betagouv/euphrosyne/pull/1895)
-- Les leaders peuvent maintenant modifier leurs propres participations. [#1866](https://github.com/betagouv/euphrosyne/pull/1866)
-- Amélioration de l'interface utilisateur de la liste des opérations du cycle de vie. [#1861](https://github.com/betagouv/euphrosyne/pull/1861)
-- Correction pour que l'appel à l'API d'initialisation des outils Euphro utilise bien le slug du projet. [#1858](https://github.com/betagouv/euphrosyne/pull/1858)
-- Ajout d'une période de grâce avant de "refroidir" un projet. [#1881](https://github.com/betagouv/euphrosyne/pull/1881)
-- Le workflow d'approbation des employeurs n'est plus bloquant pour les administrateurs. [#1874](https://github.com/betagouv/euphrosyne/pull/1874)
-- Correction du type du bouton de fermeture de la modale de planification pour éviter une soumission involontaire. [#1880](https://github.com/betagouv/euphrosyne/pull/1880)
-- Ajout de traductions manquantes. [#1859](https://github.com/betagouv/euphrosyne/pull/1859)
+- Ajout d'une fonctionnalité d'export CSV pour les utilisateurs ayant réussi une certification [#6600b34](https://github.com/betagouv/euphrosyne/commit/6600b34).
+- Implémentation d'un interrupteur pour activer/désactiver le type de participation sur la table des participations, offrant plus de flexibilité dans la gestion des workflows [#f6e6c7e](https://github.com/betagouv/euphrosyne/commit/f6e6c7e).
+- Possibilité pour les administrateurs de rendre le workflow d'employeur non bloquant, améliorant l'efficacité des processus [#2016953](https://github.com/betagouv/euphrosyne/commit/2016953).
+- Ajout d'une période de grâce avant de pouvoir "re-refroidir" un projet, offrant plus de contrôle sur le cycle de vie des projets [#98a6c35](https://github.com/betagouv/euphrosyne/commit/98a6c35).
+- Correction de l'alignement des colonnes de participation dans l'interface utilisateur [#0d639ae](https://github.com/betagouv/euphrosyne/commit/0d639ae).
+- Correction d'un bug lié à l'analyse incorrecte de l'ID d'exécution dans le middleware [#a0c5653](https://github.com/betagouv/euphrosyne/commit/a0c5653).
+- Ajout d'une action permettant à un administrateur de se faire passer pour un autre utilisateur [#be2f0fd](https://github.com/betagouv/euphrosyne/commit/be2f0fd).
+- Correction pour utiliser le slug pour le renommage du répertoire du projet [#ba6440d](https://github.com/betagouv/euphrosyne/commit/ba6440d).
+- Correction pour placer le décorateur `api_view` en haut de la fonction, assurant son application correcte [#ff5c7fb](https://github.com/betagouv/euphrosyne/commit/ff5c7fb).
+- Correction pour empêcher la soumission du formulaire modal de planification lors de la fermeture via le bouton "Annuler" [#65914ad](https://github.com/betagouv/euphrosyne/commit/65914ad).
 
 ### Évolutions techniques
-- Mise en place d'un workflow de déploiement sur Scalingo lors de la publication d'une nouvelle version. [#1868](https://github.com/betagouv/euphrosyne/pull/1868)
-- Déplacement du décorateur `api_view` au début de la fonction. [#1851](https://github.com/betagouv/euphrosyne/pull/1851)
-- Suppression de `downlevelIteration` du fichier `tsconfig.json`. [#1882](https://github.com/betagouv/euphrosyne/pull/1882)
-- Utilisation du slug pour renommer le répertoire du projet. [#1852](https://github.com/betagouv/euphrosyne/pull/1852)
+- Ajout d'une protection contre les origines non autorisées pour les requêtes de données [#8ec9518](https://github.com/betagouv/euphrosyne/commit/8ec9518).
+- Correction d'une potentielle injection dans l'export CSV des certifications [#11f152e](https://github.com/betagouv/euphrosyne/commit/11f152e).
+- Mise à jour de plusieurs dépendances, incluant Django, React, TypeScript, webpack, et divers paquets npm et pip.
+- Suppression de `downlevelIteration` dans le `tsconfig.json` pour une meilleure compatibilité et performance [#89fbd72](https://github.com/betagouv/euphrosyne/commit/89fbd72).
+- Application de corrections npm audit fix pour améliorer la sécurité des dépendances front-end [#6851436](https://github.com/betagouv/euphrosyne/commit/6851436).
 
 ### Autres changements
-- Mises à jour de dépendances :
-    - `sentry-sdk` (2.55.0 -> 2.59.0)
-    - `wheel` (0.46.3 -> 0.47.0)
-    - `social-auth-app-django` (5.7.0 -> 5.9.0)
-    - `fast-uri` (3.0.6 -> 3.1.2)
-    - `fast-xml-builder` (1.1.4 -> 1.2.0)
-    - `djangorestframework` (3.16.1 -> 3.17.1)
-    - `django-stubs` (6.0.2 -> 6.0.3)
-    - `typescript` (5.9.3 -> 6.0.3)
-    - `psycopg2` (2.9.10 -> 2.9.12)
-    - `mypy` (1.20.0 -> 1.20.2)
-    - `gunicorn` (25.2.0 -> 25.3.0)
-    - `ts-loader` (9.5.4 -> 9.5.7)
-    - `react-dom` (19.2.4 -> 19.2.5)
-    - `vitest` (4.1.2 -> 4.1.5)
-    - `dotenv` (17.4.1 -> 17.4.2)
-    - `prettier` (3.8.1 -> 3.8.3)
-    - `jsdom` (29.0.1 -> 29.1.1)
-    - `@typescript-eslint/eslint-plugin`
-    - `@sentry/browser`
-    - `axios`
-    - `types-markdown`
-- Ajout d'un type ignore. [#1853](https://github.com/betagouv/euphrosyne/pull/1853)
+- Documentation mise à jour et améliorations générales du code.
+- Ajout de type ignore pour certaines parties du code [#5b1a602](https://github.com/betagouv/euphrosyne/commit/5b1a602).
+- Mise à jour des types de requêtes [#a3a4ba1](https://github.com/betagouv/euphrosyne/commit/a3a4ba1).
