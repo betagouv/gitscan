@@ -1,33 +1,65 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 03 juin 2026)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des notifications, notamment la génération de documents en masse, et l'optimisation de la synchronisation des données avec DN (Données Nationales). Des améliorations ont également été apportées à l'expérience utilisateur, avec l'ajout de filtres de recherche et l'amélioration de la navigation dans les listes de dossiers. Enfin, des corrections de bugs et des optimisations techniques ont été réalisées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des notifications, notamment la génération de documents en masse, et l'optimisation de la recherche et du filtrage des dossiers. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées pour une meilleure expérience globale. Des efforts ont été faits pour améliorer la robustesse et la performance du système, notamment en matière de synchronisation avec les sources de données externes.
 
 ### Évolutions fonctionnelles
-- **Notifications :** Possibilité de générer plusieurs documents (arrêtés et lettres) simultanément depuis une modale dédiée. Le nom des fichiers générés est désormais personnalisable et respecte les caractères valides.
-- **Notifications :** Amélioration de la gestion des erreurs lors de la génération de documents.
-- **Recherche :** Ajout d'un filtre de recherche sur les listes de projets, simulations et programmations, permettant de rechercher par intitulé, raison sociale et numéro de dossier.
-- **Filtres :** Correction du décochage silencieux des filtres de type `ModelMultipleChoiceFilter`.
-- **Filtres :** Amélioration de l'ordre du champ de recherche après l'utilisation du bouton "Réinitialiser les filtres".
-- **Interface utilisateur :** Les titres de colonnes restent visibles lors du défilement dans les listes de projets, simulations et programmations.
-- **DN :** Possibilité pour les utilisateurs de DN de mettre à jour leur adresse email.
-- **DN :** Ajout d'une action dans le back-office pour récupérer un dossier depuis DN.
-- **Adresse :** Amélioration du formatage de l'adresse du demandeur dans les documents.
+- **Notifications :**
+    - Possibilité de générer plusieurs documents (arrêtés et lettres) simultanément dans une modale dédiée. [#723, #727, #729]
+    - Choix du format d'export (arrêtés, lettres, les deux) lors de la génération de documents.
+    - Possibilité de définir le nom du fichier PDF lors de la génération de notifications d'acceptation. [#736]
+    - Découplage de la notification de refus/classement du changement de statut pour plus de flexibilité. [#719]
+    - Amélioration de la gestion des erreurs lors de la génération de documents.
+    - Ajout d'une stratégie de remplacement pour les documents existants.
+- **Recherche et Filtrage :**
+    - Ajout d'un champ de recherche général sur les listes de projets, simulations et programmations, permettant de rechercher par intitulé, raison sociale et numéro de dossier. [#701]
+    - Réordonnement du champ de recherche après l'utilisation du bouton de réinitialisation des filtres. [#702]
+    - Amélioration de la gestion des filtres de type ModelMultipleChoiceFilter pour corriger un problème de décochage silencieux. [#737]
+- **Gestion des dossiers :**
+    - Possibilité de récupérer un dossier depuis DN via une action dédiée dans le back-office. [#696]
+    - Désactivation des dossiers supprimés/archivés depuis DN pour éviter les incohérences. [#716]
+    - Amélioration du formatage de l'adresse du demandeur dans les documents générés. [#718]
+- **Interface utilisateur :**
+    - Ajout de titres de colonnes fixes (sticky headers) sur les listes de projets, simulations et programmations pour faciliter la navigation. [#704]
+    - Correction de l'ouverture du dropdown de statut sans casser les colonnes stickies. [#711]
+    - Autorisation des tabulations dans les arrêtés/lettres de notification. [#705]
 
 ### Évolutions techniques
-- **Synchronisation DS :** Ajout d'un verrou (Redis lock) pour empêcher les synchronisations concurrentes de dossiers DS, améliorant ainsi la stabilité.
-- **Historique :** Traçabilité des actions significatives sur les projets.
-- **GraphQL :** Découpage du document GraphQL monolithique en fichiers par opération pour une meilleure organisation et maintenabilité.
-- **Tests :** Correction d'un test flaky lié à la génération d'emails pour les collègues.
-- **Code :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans la gestion des statuts et des filtres.
-- **Déploiement :** Documentation sur l'utilisation des branches hotfix pour le déploiement par tag.
-- **Sécurité :** Mise à jour des dépendances vulnérables signalées par Dependabot.
-- **Architecture :** Utilisation de managers `.active()` pour simplifier les requêtes et améliorer la performance.
+- **Synchronisation DS :**
+    - Implémentation d'un verrou (Redis lock) pour empêcher les synchronisations de dossiers DS concurrentes, améliorant ainsi la robustesse du système. [#740]
+    - Amélioration de la gestion des erreurs lors de la sauvegarde des curseurs de pagination lors de la synchronisation avec DN. [#724]
+    - Refactorisation du code de synchronisation DS pour améliorer la lisibilité et la maintenabilité.
+- **Architecture :**
+    - Découpage du document GraphQL monolithique en plusieurs fichiers plus petits et plus gérables. [#721]
+    - Refactorisation de la gestion des managers `Active*Manager` pour utiliser les méthodes `queryset .active()`.
+    - Refactorisation de la logique de mise à jour des montants pour centraliser le code et améliorer la cohérence.
+- **Performance :**
+    - Évaluation paresseuse des choix dans les FilterSet pour améliorer les performances. [#703]
+    - Optimisation de la génération d'arrêtés/lettres en masse. [#714]
+- **Divers :**
+    - Mise à jour des dépendances vulnérables signalées par Dependabot. [#710]
+    - Ajout de tests pour éviter les tests flaky. [#738]
+    - Cache-busting des fichiers JS de l'importmap pour forcer la mise à jour des ressources en cache. [#745]
+    - Suppression des rafraîchissements DS bloquants à l'ouverture des modales. [#743]
+    - Correction d'une erreur de manifest staticfiles sur l'importmap. [#746]
 
 ### Autres changements
-- **Documentation :** Introduction d'un fichier `AGENTS.md` pour guider les agents de code.
-- **FAQ :** Correction de la FAQ.
-- **Tableaux TipTap :** Amélioration de la gestion des tableaux dans l'éditeur TipTap pour l'export PDF.
-- **QR Code :** Possibilité de rendre le QR code de suivi optionnel sur les documents générés.
-- **Gestion des statuts :** Possibilité de changer le statut de plusieurs projets en "refusé" ou "classé sans suite" en lot.
-- **Fichiers de configuration :** Alignement des fichiers de lock et ajout d'un garde-fou CI contre la dérive.
+- Ajout d'un fichier `AGENTS.md` pour fournir des instructions aux agents de code. [#715, #722]
+- Documentation sur l'utilisation des branches hotfix pour le déploiement par tag.
+- Correction de la perte du curseur des dossiers supprimés sur les pages vides. [#742]
+- Correction de l'affichage des largeurs de tableaux TipTap dans l'export PDF. [#734]
+- Amélioration de la FAQ. [#732]
+- Suppression des pages d'administration de l'application. [#726]
+- Correction d'un bug empêchant les utilisateurs DN de mettre à jour leur adresse email. [#700]
+- Correction d'un bug lié à l'utilisation de l'éditeur TipTap et à la gestion des tableaux. [#733]
+- Correction d'un bug lié à l'affichage des statuts dans l'interface d'administration.
+- Correction de l'utilisation de caractères invalides dans les noms de fichiers générés.
+- Ajout de logging structuré et d'identifiants de requête sur le proxy DS.
+- Amélioration de la gestion des actions significatives sur les projets.
+- Ajout de la possibilité de stocker l'assiette lors du changement depuis DN.
+- Ajout de l'enveloppe et suppression temporaire des statuts.
+- Ajout d'un identifiant de formulaire.
+- Rendre l'onglet historique accessible depuis toutes les applications.
+- Mise à jour des dotations ajoutées/supprimées.
+- Renommage du champ `montant` en `euro_field_value` et nettoyage du code.
+- Centralisation de la mise à jour du montant dans la transition et mise à jour de l'interface utilisateur.

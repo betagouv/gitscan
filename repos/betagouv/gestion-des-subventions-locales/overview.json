@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Il permet de gérer les dossiers de subventions, les notifications et les rapports.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subventions, les notifications et les synchronisations avec des sources de données externes. Il offre des fonctionnalités de recherche, de filtrage et de génération de documents.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -10,7 +10,7 @@
     "Gestion des établissements & Structures",
     "Aides & Éligibilité",
     "Gestion métier générale",
-    "API & Intégrations"
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,9 +19,10 @@
     "Celery",
     "Redis",
     "Mozilla-django-oidc",
-    "django-htmx",
     "psycopg",
-    "boto3"
+    "requests",
+    "boto3",
+    "django-htmx"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,17 +33,17 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "session"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-06-03T15:34:53+02:00",
+  "lastActivity": "2026-06-05T15:19:11+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
