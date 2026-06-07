@@ -13,14 +13,21 @@ and this project adheres to
 - ✨(backend) manage reconciliation requests for user accounts
 - ✨(backend) add recursive folder export as ZIP archive
 - ✨(frontend) add folder export action
+- ✨(backend) background conversion of legacy Office files
+- ✨(backend) allow grist file upload
 
 ### Changed
 
 - 🐛(backend) replace VersionId by Etag for WOPI
+- 🐛(backend) sanitize slash in template-created filenames
 
 ### Removed
 
 - 🔥(backend) drop deprecated numchild columns from item
+
+### Added
+
+- ✨(frontend) add CTA on public link for anonymous and authenticated users
 
 ## [v0.18.0] - 2026-05-04
 

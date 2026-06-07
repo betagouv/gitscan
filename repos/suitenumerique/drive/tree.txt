@@ -195,6 +195,7 @@
     │   │   │   ├── 0021_user_column_preferences.py
     │   │   │   ├── 0022_remove_item_numchild_remove_item_numchild_folder_and_more.py
     │   │   │   ├── 0023_userreconciliationcsvimport_userreconciliation.py
+    │   │   │   ├── 0024_alter_item_upload_state.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -252,6 +253,7 @@
     │   │   │   │   ├── test_api_items_children_from_template.py
     │   │   │   │   ├── test_api_items_children_list.py
     │   │   │   │   ├── test_api_items_children_ordering.py
+    │   │   │   │   ├── test_api_items_convert.py
     │   │   │   │   ├── test_api_items_create.py
     │   │   │   │   ├── test_api_items_delete.py
     │   │   │   │   ├── test_api_items_download.py
@@ -295,6 +297,7 @@
     │   │   │   ├── test_api_utils_detect_mimetype.py
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_flat_to_nested.py
+    │   │   │   ├── test_api_utils_format_template_filename.py
     │   │   │   ├── test_api_utils_is_previewable_item.py
     │   │   │   ├── test_api_utils_sanitize_filename.py
     │   │   │   ├── test_malware_detection.py
@@ -367,6 +370,15 @@
     │       ├── __init__.py
     │       ├── apps.py
     │       ├── authentication.py
+    │       ├── conversion
+    │       │   ├── __init__.py
+    │       │   ├── backends
+    │       │   │   ├── __init__.py
+    │       │   │   └── onlyoffice.py
+    │       │   ├── exceptions.py
+    │       │   ├── policy.py
+    │       │   ├── services.py
+    │       │   └── source_url.py
     │       ├── management
     │       │   └── commands
     │       │       ├── __init__.py
@@ -381,10 +393,17 @@
     │       │   └── lock.py
     │       ├── tasks
     │       │   ├── __init__.py
-    │       │   └── configure_wopi.py
+    │       │   ├── configure_wopi.py
+    │       │   └── conversion.py
     │       ├── tests
     │       │   ├── __init__.py
     │       │   ├── conftest.py
+    │       │   ├── conversion
+    │       │   │   ├── __init__.py
+    │       │   │   ├── test_backends_onlyoffice.py
+    │       │   │   ├── test_policy.py
+    │       │   │   ├── test_services.py
+    │       │   │   └── test_source_url.py
     │       │   ├── management_commands
     │       │   │   ├── __init__.py
     │       │   │   └── test_trigger_wopi_configuration.py
@@ -394,7 +413,8 @@
     │       │   │   └── test_lock.py
     │       │   ├── tasks
     │       │   │   ├── __init__.py
-    │       │   │   └── test_configure_wopi.py
+    │       │   │   ├── test_configure_wopi.py
+    │       │   │   └── test_conversion.py
     │       │   ├── test_settings.py
     │       │   ├── test_utils.py
     │       │   └── viewset
@@ -614,6 +634,7 @@
     │   │   │   │   │   │   │   │   └── ItemActionDropdown.tsx
     │   │   │   │   │   │   │   ├── modals
     │   │   │   │   │   │   │   │   ├── CancelUploadConfirmationModal.tsx
+    │   │   │   │   │   │   │   │   ├── ConvertLegacyFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFolderModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerRenameItemModal.tsx
@@ -659,7 +680,6 @@
     │   │   │   │   │   │   │   ├── useColumnPreferences.tsx
     │   │   │   │   │   │   │   ├── useCreateMenuItems.tsx
     │   │   │   │   │   │   │   ├── useDeleteItem.tsx
-    │   │   │   │   │   │   │   ├── useDuplicatingItemsPoller.ts
     │   │   │   │   │   │   │   ├── useGridColumns.ts
     │   │   │   │   │   │   │   ├── useInfiniteChildren.ts
     │   │   │   │   │   │   │   ├── useInfiniteItems.ts
@@ -670,6 +690,8 @@
     │   │   │   │   │   │   │   ├── useQueries.tsx
     │   │   │   │   │   │   │   ├── useRefreshItems.ts
     │   │   │   │   │   │   │   ├── useTableKeyboardNavigation.ts
+    │   │   │   │   │   │   │   ├── useTransientItem.ts
+    │   │   │   │   │   │   │   ├── useTransientItemsPoller.tsx
     │   │   │   │   │   │   │   ├── useTreeUtils.ts
     │   │   │   │   │   │   │   └── useUpload.tsx
     │   │   │   │   │   │   ├── stores
@@ -729,6 +751,9 @@
     │   │   │   │   │   │   └── SdkRelayManager.ts
     │   │   │   │   │   ├── ui
     │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── anonymous-cta
+    │   │   │   │   │   │   │   │   ├── AnonymousCTA.scss
+    │   │   │   │   │   │   │   │   └── AnonymousCTA.tsx
     │   │   │   │   │   │   │   ├── breadcrumbs
     │   │   │   │   │   │   │   │   ├── Breadcrumbs.tsx
     │   │   │   │   │   │   │   │   └── index.scss
@@ -770,6 +795,8 @@
     │   │   │   │   │   │   │   ├── loading-ring
     │   │   │   │   │   │   │   │   ├── LoadingRing.scss
     │   │   │   │   │   │   │   │   └── LoadingRing.tsx
+    │   │   │   │   │   │   │   ├── my-files-cta
+    │   │   │   │   │   │   │   │   └── MyFilesCTA.tsx
     │   │   │   │   │   │   │   ├── release-note
     │   │   │   │   │   │   │   │   ├── ReleaseNoteAuto.tsx
     │   │   │   │   │   │   │   │   ├── index.ts
@@ -892,6 +919,7 @@
     │   │   │   │   │   ├── mobile-actions.spec.ts
     │   │   │   │   │   ├── move-item.spec.ts
     │   │   │   │   │   ├── noindex.spec.ts
+    │   │   │   │   │   ├── public-folder-cta.spec.ts
     │   │   │   │   │   ├── redirect-401.spec.ts
     │   │   │   │   │   ├── release-note.spec.ts
     │   │   │   │   │   ├── search.spec.ts
@@ -1015,4 +1043,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-240 directories, 777 files
+245 directories, 800 files
