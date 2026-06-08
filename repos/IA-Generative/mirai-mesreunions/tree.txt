@@ -1,58 +1,17 @@
 .
+├── .github
+│   └── workflows
+│       └── secret-scan.yml
 ├── .gitignore
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
 ├── LICENSE
 ├── README.md
-├── audios samples
+├── audio-tests
+│   ├── README.md
 │   ├── eicar_test_virus.mp3
 │   ├── eicar_test_virus.wav
-│   ├── poemes013_agracedieu_ezwa_64kb.mp3
-│   ├── poemes013_chameaubatonsflottants_chj_128kb.mp3
-│   ├── poemes014_aambulance_ng_128kb.mp3
-│   ├── poemes014_confuciusrendaithonneurs_chj_128kb.mp3
-│   ├── poemes014_elleavaitpriscepli_jh_128kb.mp3
-│   ├── test_audio_reunion_12s.mp3
-│   └── test_audio_voix_simulee.wav
-├── bench
-│   ├── .gitignore
-│   ├── INDEX.csv
-│   ├── figures
-│   │   ├── diarization_der.png
-│   │   ├── wer_per_augmentation.png
-│   │   └── wer_per_preprocessing.png
-│   ├── metrics
-│   │   ├── ALL_RUNS.csv
-│   │   ├── baseline.csv
-│   │   ├── diarization.csv
-│   │   ├── meeting_intel.csv
-│   │   ├── postprocessing_ablation.csv
-│   │   └── preprocessing_ablation.csv
-│   ├── reports
-│   │   ├── EXECUTIVE_SUMMARY.md
-│   │   ├── FAILURES.md
-│   │   ├── RUN_LOG.md
-│   │   ├── STATUS.md
-│   │   └── SYNTHESE.md
-│   ├── samples
-│   │   └── meeting_intel
-│   │       └── multi_00
-│   │           ├── 1_naming.json
-│   │           ├── 2_cleaning.json
-│   │           ├── 3_reformulation.json
-│   │           └── 4_analysis.json
-│   └── scripts
-│       ├── augment.py
-│       ├── build_report.py
-│       ├── call_kevent.py
-│       ├── make_multispeaker.py
-│       ├── normalize_fr.py
-│       ├── pull_corpus.py
-│       ├── run_baseline.py
-│       ├── run_diarize.py
-│       ├── run_meeting_intel.py
-│       ├── run_postproc_ablation.py
-│       ├── run_preproc_ablation.py
-│       ├── summarize_baseline.py
-│       └── summarize_postproc.py
+│   └── test_audio_reunion_12s.mp3
 ├── configs
 │   └── .env.example
 ├── deploy
@@ -63,27 +22,9 @@
 │   │   ├── docker-compose.shared-infra.yml
 │   │   ├── docker-compose.yml
 │   │   └── keycloak-realm.json
-│   ├── keycloak
-│   │   └── client-mes-reunions.json
 │   ├── kubernetes
 │   │   ├── environments
 │   │   │   ├── README.md
-│   │   │   ├── prod-beta
-│   │   │   │   ├── README.md
-│   │   │   │   ├── cluster-prereqs
-│   │   │   │   │   ├── bucket-policy-audio-processed.json
-│   │   │   │   │   └── letsencrypt-prod-numerique-interieur.yaml
-│   │   │   │   ├── external
-│   │   │   │   │   ├── kustomization.yaml
-│   │   │   │   │   └── private-endpoints.yaml
-│   │   │   │   └── internal
-│   │   │   │       ├── admin-console.yaml
-│   │   │   │       ├── ingress-mydevices.yaml
-│   │   │   │       ├── ingress-pull-trigger.yaml
-│   │   │   │       ├── kustomization.yaml
-│   │   │   │       ├── mesreunions-web.yaml
-│   │   │   │       ├── networkpolicies.yaml
-│   │   │   │       └── video-ingest.yaml
 │   │   │   └── staging
 │   │   │       └── README.md
 │   │   ├── kubeconfigs
@@ -105,76 +46,41 @@
 │       └── setup.sh
 ├── docs
 │   ├── ARCHITECTURE.md
-│   ├── BUG_SCW_LB_INTER_CLUSTER.md
-│   ├── COMPARAISON_DICTAPHONE.md
 │   ├── DEV_HMR.md
 │   ├── DIARIZATION_BACKEND.md
 │   ├── DIARIZATION_BENCHMARK.md
-│   ├── REVIEW_RESPONSE_PLAN.md
 │   ├── RUNBOOK_PIPELINE_RELIABILITY.md
 │   ├── SMTP_SECRET_PROVISIONING.md
-│   ├── TODO_revue_cycle_codes.md
 │   ├── adr
 │   │   ├── 0001-pipeline-liveness-vs-progress.md
 │   │   ├── 0002-pipeline-status-enum-source-of-truth.md
 │   │   └── 0003-meeting-source-connectors.md
 │   ├── architecture
 │   │   └── meeting-source-connectors.md
-│   ├── bench-kevent-execution-plan.md
 │   ├── benchmarks
 │   │   └── diarization
 │   │       ├── BASELINE_AUDIT.md
 │   │       ├── RECOMMENDATION.md
 │   │       ├── RESULTS.md
 │   │       └── benchmark_runs.jsonl
-│   ├── chantier-resilience-batch-processing.md
 │   ├── connectors
+│   │   ├── youtube-flow-sequence.md
+│   │   ├── youtube-karaoke-options.md
 │   │   └── youtube.md
 │   ├── contract
 │   │   └── meeting-source-connector-spec.md
-│   ├── debug-brief-drive-connection-reset.md
-│   ├── features-backlog-feedbacks-2026-05.md
 │   ├── import-from-mcr-deployment.md
 │   ├── import-from-mcr.md
 │   ├── integrate-with-kevent.md
 │   ├── integrate-with-mcr.md
-│   ├── mcr-bug-report-meeting-response-validator.md
-│   ├── mirai-ux-backlog.md
-│   ├── openrag-vm-build-howto.md
-│   ├── protocole_test_transcription_diarisation.md
-│   ├── refactor-mydevices-blockers-v2.md
-│   ├── refactor-mydevices-blockers.md
-│   ├── refactor-mydevices-followups.md
-│   ├── refactor-mydevices-mapping.md
-│   ├── refactor-mydevices-pr3v2-mapping.md
-│   ├── refactor-mydevices-pr4-mapping.md
-│   ├── refactor-mydevices-report-pr0-vite.md
-│   ├── refactor-mydevices-report-pr2c.md
-│   ├── refactor-mydevices-report-pr2d.md
-│   ├── refactor-mydevices-report-pr3.md
-│   ├── refactor-mydevices-report-pr3v2.md
-│   ├── refactor-mydevices-report-pr4.md
-│   ├── refactor-mydevices-report-prep-v2.md
-│   ├── refactor-mydevices-report-rebranding.md
-│   ├── refactor-mydevices-report-ux-devices.md
-│   ├── refactor-mydevices-report-ux-meetings.md
-│   ├── refactor-mydevices-report-ux-onglets.md
-│   ├── refactor-mydevices-report-ux-polish.md
-│   ├── refactor-mydevices-report-ux-preparations.md
-│   ├── refactor-mydevices-report-ux-refonte-3.md
-│   ├── refactor-mydevices-report-v2.md
-│   ├── refactor-mydevices-report.md
-│   ├── refactor-mydevices-ui-dsfr-mapping.md
 │   ├── screenshots
-│   │   ├── activity-follow.png
-│   │   ├── admin-panel.png
-│   │   ├── enter-small-code.png
-│   │   ├── install-android-button.png
-│   │   ├── install-android.png
-│   │   ├── mobile-app-android.png
-│   │   ├── mobile-application.jpeg
-│   │   ├── qr-code-gen.png
-│   │   └── upload-mobile.png
+│   │   ├── mesreunions-appareils.png
+│   │   ├── mesreunions-detail.png
+│   │   ├── mesreunions-import-youtube.png
+│   │   ├── mesreunions-liste.png
+│   │   ├── mesreunions-preparation.png
+│   │   ├── mesreunions-rag-sources.png
+│   │   └── mesreunions-rag.png
 │   └── upstream-asks
 │       └── kevent
 │           ├── 01-issue-job-leak-when-client-republishes.md
@@ -333,6 +239,10 @@
 │   │   │   │   │   ├── generation_jobs.py
 │   │   │   │   │   ├── routes.py
 │   │   │   │   │   └── service.py
+│   │   │   │   ├── rag
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── _openrag.py
+│   │   │   │   │   └── routes.py
 │   │   │   │   ├── sessions
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── routes.py
@@ -365,6 +275,7 @@
 │   │   │   │   ├── api.js
 │   │   │   │   ├── auth.js
 │   │   │   │   ├── bootstrap.js
+│   │   │   │   ├── chat-widget.js
 │   │   │   │   ├── detail-cache.js
 │   │   │   │   ├── export-formatter.js
 │   │   │   │   ├── mailto-builder.js
@@ -491,6 +402,5 @@
 │       └── test_format_utils.js
 └── tools
     ├── backfill_meeting_datetime_from_filename.py
-    ├── mcr_fix_bad_meeting.py
     └── preview_mydevices.py
-96 directories, 452 files
+86 directories, 372 files

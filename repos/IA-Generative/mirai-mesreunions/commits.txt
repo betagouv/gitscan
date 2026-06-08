@@ -1,475 +1,938 @@
+2026-06-06T16:23:24+02:00 - 69c6a2f - etiquet : docs(architecture): retire le point-virgule du Note mermaid (parse error)
+2026-06-06T16:15:40+02:00 - a5875cf - etiquet : docs(architecture): corrige le diagramme mermaid + retire l'audit sécu interne
+2026-06-06T16:08:08+02:00 - 1af3416 - etiquet : docs(readme): ajoute la section Interroger mes réunions (RAG)
+2026-06-06T16:03:40+02:00 - fd59cc6 - etiquet : docs(readme): ajoute la capture d'import YouTube
+2026-06-06T15:49:55+02:00 - 472a541 - etiquet : docs(readme): captures d'écran de l'app Mes réunions (anciennes retirées)
+2026-06-06T15:21:45+02:00 - 54e5d1f - etiquet : ci(secret-scan): lance le binaire gitleaks (sans l'action sous licence org)
+2026-06-06T15:00:54+02:00 - 7f80420 - etiquet : chore(repo): réorg pour réouverture — deploy réel + audio hors du public
+2026-06-06T14:07:47+02:00 - d75e809 - etiquet : test(audio): jeu minimal embarqué (eicar + 1 exemple) dans audio-tests/
+2026-06-06T13:55:46+02:00 - d830fad - etiquet : refactor(drive): externalise le routage Drive vers DRIVE_HOST_ROUTES
+2026-06-06T13:03:44+02:00 - aa8d018 - etiquet : chore(security): garde anti-fuite (gitleaks + pre-commit + CI)
+2026-06-04T21:54:15+02:00 - ae8e925 - etiquet : fix(security): retire un qr_token prod et une fixture token-like des sources
+2026-06-01T08:30:27+02:00 - 83f1aa6 - etiquet : fix(rag): enrichit les sources du chat avec nos métadonnées (jointure file_id)
+2026-06-01T08:18:52+02:00 - 41bfdcf - etiquet : feat(rag): métadonnées chunks + citations cliquables + icônes de source
+2026-06-01T08:07:50+02:00 - 02af268 - etiquet : fix(rag): documents indexés enrichis (titre d'origine + acteurs/analyse) + upsert
+2026-06-01T01:22:39+02:00 - 3f4f810 - etiquet : chore(rag): câblage déploiement (env OpenRAG + égress + défaut ingester)
+2026-06-01T01:18:36+02:00 - 11979b3 - etiquet : feat(rag): widget chat « Interroger mes réunions » (bas de page, overlay)
+2026-06-01T01:16:34+02:00 - 5fa7643 - etiquet : feat(rag): module backend OpenRAG (query/ingest) + endpoint ingester rag-export
+2026-06-01T00:09:01+02:00 - 7f9eb56 - etiquet : fix(regenerate): message explicite des raisons d'ignoré (au lieu de « pas de transcription »)
+2026-06-01T00:00:24+02:00 - 6f104d4 - etiquet : feat(meetings): icônes source bleues dans le détail + icône téléphone au titre
+2026-05-31T23:53:17+02:00 - eb884cd - etiquet : fix(mcr): icône source en SVG calée sur la ligne (plus de wrap du titre)
+2026-05-31T23:42:44+02:00 - df13d57 - etiquet : fix(mcr): suppression des réunions MCR + icône source devant le titre
+2026-05-31T23:33:30+02:00 - 7e4c9df - etiquet : fix(mcr): réunions importées visibles dans la liste + bandeau import non bloquant
+2026-05-31T23:23:04+02:00 - 4ebc1f3 - etiquet : chore(mcr): retire l'outil de fix obsolète + note défense sur le fallback
+2026-05-31T13:57:30+02:00 - e880fa0 - etiquet : fix(fiche/CR): match glossaire mot-entier, point en suspens « item », croix correction
+2026-05-31T13:52:50+02:00 - a37649f - etiquet : fix(fiche/youtube): bouton play actif sur les segments (positionne la vidéo)
+2026-05-31T13:39:57+02:00 - f0311b0 - etiquet : feat(meetings): bouton « La Suite » (placeholder) dans la barre d'import
+2026-05-31T13:36:26+02:00 - 8ac328d - etiquet : fix(meetings): hauteur liste bornée au viewport via JS (scroll interne fiable)
+2026-05-31T13:17:57+02:00 - cb5d254 - etiquet : feat(meetings): liste scrollable interne, tri liens, badges source, dépliage local
+2026-05-31T00:12:02+02:00 - 89fe455 - etiquet : fix(meetings): retire le titre en tête du résumé (anti-répétition)
+2026-05-31T00:07:18+02:00 - f15867f - etiquet : fix(meetings): boutons DSFR, tri compact, date réunion unique + résumé vidéo
+2026-05-30T23:43:06+02:00 - fba097a - etiquet : fix(meetings): tri par date d'upload par défaut + 2 dates + pagination
+2026-05-29T11:35:54+02:00 - d440b30 - etiquet : fix(youtube-karaoke): clic phrase → seek YT player même avant onReady
+2026-05-29T07:06:01+02:00 - e1bd4a5 - etiquet : feat(bulk): re-générer CR en masse (provider-agnostic)
+2026-05-29T06:53:35+02:00 - ff99ada - etiquet : fix(youtube-karaoke): désactive merge-by-speaker pour sources externes
+2026-05-29T06:43:28+02:00 - 520e1ef - etiquet : feat(youtube-karaoke): sentence-align + IFrame API seekTo avec pre-roll 1.5s
+2026-05-29T06:27:00+02:00 - 16b1dd5 - etiquet : docs(connectors): flux import YouTube + options karaoké sentence-aligned
+2026-05-29T05:51:50+02:00 - 0148f37 - etiquet : fix(materialize): lier Meeting.user_audio_file_id en chemin reused
+2026-05-28T23:48:24+02:00 - c589c85 - etiquet : feat(video-ingest): force_audio passe par pipeline standard (diarisation)
+2026-05-28T23:37:16+02:00 - 914cd6e - etiquet : fix(ui): masque bouton "Transcription + diarisation" pour sources externes
 2026-05-28T23:27:44+02:00 - 522275a - etiquet : Merge pull request #26 from IA-Generative/feature/youtube-import
+2026-05-28T23:27:14+02:00 - 7435970 - etiquet : merge main into feature/youtube-import (résolution README)
 2026-05-28T23:27:14+02:00 - 28fa4e7 - etiquet : merge main into feature/youtube-import (résolution README)
 2026-05-28T23:09:02+02:00 - 7fdcd0b - etiquet : fix(youtube-import): transcript-status 404 sur UAFs YouTube
+2026-05-28T23:09:02+02:00 - 52c470a - etiquet : fix(youtube-import): transcript-status 404 sur UAFs YouTube
+2026-05-28T23:04:32+02:00 - 77b5774 - etiquet : feat(youtube-import): YT passe par showFileDetail legacy (parité fiche)
 2026-05-28T23:04:32+02:00 - 3cc7f16 - etiquet : feat(youtube-import): YT passe par showFileDetail legacy (parité fiche)
 2026-05-28T22:48:07+02:00 - 6f43df9 - etiquet : feat(youtube-import): fiche détail inline (bypass showFileDetail legacy)
+2026-05-28T22:48:07+02:00 - 4aa67b3 - etiquet : feat(youtube-import): fiche détail inline (bypass showFileDetail legacy)
 2026-05-27T10:53:42+02:00 - 86df8cb - etiquet : fix(ui): cache-busting shell.js via query string (?v=<mtime>)
+2026-05-27T10:53:42+02:00 - 6ddd87b - etiquet : fix(ui): cache-busting shell.js via query string (?v=<mtime>)
+2026-05-27T10:38:00+02:00 - e28d72a - etiquet : feat(video-ingest+ui): fail-fast materialize + SLA stale flag /my-imports
 2026-05-27T10:38:00+02:00 - 4d039ae - etiquet : feat(video-ingest+ui): fail-fast materialize + SLA stale flag /my-imports
 2026-05-27T10:33:03+02:00 - 11e5e92 - etiquet : fix(video-ingest): env materialize manquante sur api → HIT cache muet
+2026-05-27T10:22:15+02:00 - fc23650 - etiquet : feat(mcp): déploie serveur MCP video-ingest port 8001 + tool video_get_job
 2026-05-27T10:22:15+02:00 - f2ae7a0 - etiquet : feat(mcp): déploie serveur MCP video-ingest port 8001 + tool video_get_job
+2026-05-27T10:06:28+02:00 - f701f75 - etiquet : fix(ui): retire popup intrusive sur timeout fiche détaillée
 2026-05-27T10:06:28+02:00 - d8f00e7 - etiquet : fix(ui): retire popup intrusive sur timeout fiche détaillée
 2026-05-27T09:39:12+02:00 - bf01cea - etiquet : fix(ui): strip emojis ornementaux YouTube du titre (🔴 LIVE, etc.)
+2026-05-27T09:39:12+02:00 - 7d0bd0c - etiquet : fix(ui): strip emojis ornementaux YouTube du titre (🔴 LIVE, etc.)
 2026-05-27T09:04:08+02:00 - a5798ad - etiquet : fix(video-ingest): HIT cache synchrone (api.py) déclenche aussi materialize
+2026-05-27T09:04:08+02:00 - 7c8897c - etiquet : fix(video-ingest): HIT cache synchrone (api.py) déclenche aussi materialize
 2026-05-27T07:37:42+02:00 - e572820 - etiquet : fix(ui): retire définitivement pastille rouge YouTube failed (gris discret)
+2026-05-27T07:37:42+02:00 - 95b7cc8 - etiquet : fix(ui): retire définitivement pastille rouge YouTube failed (gris discret)
 2026-05-27T07:34:40+02:00 - ea59163 - etiquet : feat(youtube-import): ouverture auto fiche détaillée + polling progressif
+2026-05-27T07:34:40+02:00 - 07b5ccc - etiquet : feat(youtube-import): ouverture auto fiche détaillée + polling progressif
 2026-05-27T07:30:00+02:00 - 3dffd60 - etiquet : fix(ui): Alt+clic active la coche YouTube (bug de matching _selectedIds)
+2026-05-27T07:30:00+02:00 - 2b7562d - etiquet : fix(ui): Alt+clic active la coche YouTube (bug de matching _selectedIds)
 2026-05-27T07:27:49+02:00 - f200212 - etiquet : fix(ui): checkbox YouTube toujours visible (grid 1ère colonne 20px)
+2026-05-27T07:27:49+02:00 - ea082a4 - etiquet : fix(ui): checkbox YouTube toujours visible (grid 1ère colonne 20px)
+2026-05-27T07:22:11+02:00 - 33995d7 - etiquet : fix(ui): rouge ✕ pour kevent_failed (cohérent avec audio classique)
 2026-05-27T07:22:11+02:00 - 126c6c4 - etiquet : fix(ui): rouge ✕ pour kevent_failed (cohérent avec audio classique)
+2026-05-27T07:20:58+02:00 - c82d1e4 - etiquet : fix(ui): retire pastille rouge failed (gris discret + tooltip)
 2026-05-27T07:20:58+02:00 - 5748b98 - etiquet : fix(ui): retire pastille rouge failed (gris discret + tooltip)
 2026-05-27T07:19:41+02:00 - dd06233 - etiquet : fix(youtube-import): 3 UX fixes + HIT cache materialize
+2026-05-27T07:19:41+02:00 - 8081595 - etiquet : fix(youtube-import): 3 UX fixes + HIT cache materialize
 2026-05-27T07:13:34+02:00 - 2a1d518 - etiquet : feat(youtube-import): refresh silencieux access_token sur 401
+2026-05-27T07:13:34+02:00 - 08aecd3 - etiquet : feat(youtube-import): refresh silencieux access_token sur 401
+2026-05-27T07:09:16+02:00 - ba44528 - etiquet : fix(youtube-import): delete-one + bulk-delete via endpoint Meeting (YouTube)
 2026-05-27T07:09:16+02:00 - a8e2dac - etiquet : fix(youtube-import): delete-one + bulk-delete via endpoint Meeting (YouTube)
 2026-05-27T07:04:08+02:00 - 78be5da - etiquet : fix(ui): mécanisme delete unifié (mêmes actions audio + YouTube)
+2026-05-27T07:04:08+02:00 - 1e442c9 - etiquet : fix(ui): mécanisme delete unifié (mêmes actions audio + YouTube)
+2026-05-27T06:58:03+02:00 - ab22355 - etiquet : fix(ui): croix ✕ à gauche pour supprimer (au lieu de la poubelle redondante)
 2026-05-27T06:58:03+02:00 - 96f28ec - etiquet : fix(ui): croix ✕ à gauche pour supprimer (au lieu de la poubelle redondante)
+2026-05-27T06:53:10+02:00 - d550e93 - etiquet : feat(youtube-import): bouton supprimer + lien YouTube secondaire
 2026-05-27T06:53:10+02:00 - c7c5284 - etiquet : feat(youtube-import): bouton supprimer + lien YouTube secondaire
 2026-05-27T06:16:52+02:00 - fd62436 - etiquet : docs(connectors/youtube): C8c — fiche détail réutilise rendu audio (audioPurged)
+2026-05-27T06:16:52+02:00 - 9bc1a3d - etiquet : docs(connectors/youtube): C8c — fiche détail réutilise rendu audio (audioPurged)
+2026-05-27T06:15:40+02:00 - 541bc1b - etiquet : docs: C8 — ADR-0003 + architecture + contract spec + connectors/youtube + README
 2026-05-27T06:15:40+02:00 - 0411f0c - etiquet : docs: C8 — ADR-0003 + architecture + contract spec + connectors/youtube + README
+2026-05-27T06:09:43+02:00 - 7752b59 - etiquet : feat(ui): C7 — renderYoutubeRow status dynamique + sourceIcon
 2026-05-27T06:09:43+02:00 - 6d64108 - etiquet : feat(ui): C7 — renderYoutubeRow status dynamique + sourceIcon
+2026-05-27T06:07:52+02:00 - 6e80cfd - etiquet : feat(youtube-import): C6 — /api/youtube/my-imports enrichi preview CR
 2026-05-27T06:07:52+02:00 - 66973f1 - etiquet : feat(youtube-import): C6 — /api/youtube/my-imports enrichi preview CR
 2026-05-27T06:05:59+02:00 - ec24c1a - etiquet : feat(youtube-import): C5 — placeholder Meeting immédiat (insert+update)
+2026-05-27T06:05:59+02:00 - e11b6f2 - etiquet : feat(youtube-import): C5 — placeholder Meeting immédiat (insert+update)
+2026-05-27T06:02:19+02:00 - d499975 - etiquet : feat(video-ingest): C4 — hook orchestrator → materialize (best-effort)
 2026-05-27T06:02:19+02:00 - c0e6e4a - etiquet : feat(video-ingest): C4 — hook orchestrator → materialize (best-effort)
 2026-05-27T02:49:20+02:00 - bad2843 - etiquet : feat(materialize): C3 — endpoint /api/v1/external-source/materialize
+2026-05-27T02:49:20+02:00 - 434d867 - etiquet : feat(materialize): C3 — endpoint /api/v1/external-source/materialize
+2026-05-27T02:36:27+02:00 - 82155f8 - etiquet : refactor(models): C2 — UserAudioFile.source_type + external_video_source_id
 2026-05-27T02:36:27+02:00 - 54484b4 - etiquet : refactor(models): C2 — UserAudioFile.source_type + external_video_source_id
 2026-05-27T02:34:07+02:00 - efe036c - etiquet : feat(db): C1 — migration 022 source_type + external_video_source_id
+2026-05-27T02:34:07+02:00 - 1f7281b - etiquet : feat(db): C1 — migration 022 source_type + external_video_source_id
 2026-05-27T02:32:38+02:00 - 1934bf2 - etiquet : chore(tests): C0 — script run-regression-campaign.sh + baseline
+2026-05-27T02:32:38+02:00 - 092bc19 - etiquet : chore(tests): C0 — script run-regression-campaign.sh + baseline
 2026-05-26T07:13:38+02:00 - c518bb6 - etiquet : fix(youtube-import): clic sur titre YouTube via dispatcher window.open
+2026-05-26T07:13:38+02:00 - 780096b - etiquet : fix(youtube-import): clic sur titre YouTube via dispatcher window.open
 2026-05-26T07:09:13+02:00 - f96d4c9 - etiquet : fix(youtube-import): renderList crashait sur entries YouTube (régression)
+2026-05-26T07:09:13+02:00 - 1ce36cd - etiquet : fix(youtube-import): renderList crashait sur entries YouTube (régression)
 2026-05-26T06:47:47+02:00 - 9242db0 - etiquet : fix(youtube-import): intégration liste unifiée + retrait tri (UX)
+2026-05-26T06:47:47+02:00 - 89fed93 - etiquet : fix(youtube-import): intégration liste unifiée + retrait tri (UX)
 2026-05-26T05:58:26+02:00 - eb77cdf - etiquet : docs(video-ingest): régression MCR + modale + CodeQL #29 (journal)
+2026-05-26T05:58:26+02:00 - 4744ff0 - etiquet : docs(video-ingest): régression MCR + modale + CodeQL #29 (journal)
+2026-05-26T05:56:06+02:00 - e3bdade - etiquet : fix(youtube-import): modal CSS + multi-URL batch + CodeQL #29
 2026-05-26T05:56:06+02:00 - c5708ec - etiquet : fix(youtube-import): modal CSS + multi-URL batch + CodeQL #29
+2026-05-26T05:55:28+02:00 - bbf0dd9 - etiquet : merge: feat/import-from-mcr into feature/youtube-import — restore mcr_import
 2026-05-26T05:55:28+02:00 - a141234 - etiquet : merge: feat/import-from-mcr into feature/youtube-import — restore mcr_import
 2026-05-26T00:52:34+02:00 - 8f427b8 - etiquet : docs(video-ingest): journal wire Meeting + section UI (C1-C4)
+2026-05-26T00:52:34+02:00 - 111d46d - etiquet : docs(video-ingest): journal wire Meeting + section UI (C1-C4)
 2026-05-26T00:48:22+02:00 - 68e6b8b - etiquet : feat(youtube-import): section « Vidéos web importées » (C3 frontend)
+2026-05-26T00:48:22+02:00 - 0e1b250 - etiquet : feat(youtube-import): section « Vidéos web importées » (C3 frontend)
+2026-05-26T00:47:06+02:00 - 38fce75 - etiquet : feat(youtube-import): wire Meeting + endpoint my-imports (C2)
 2026-05-26T00:47:06+02:00 - 0a3207e - etiquet : feat(youtube-import): wire Meeting + endpoint my-imports (C2)
 2026-05-26T00:43:21+02:00 - 725021c - etiquet : feat(video-ingest): endpoint GET /video/my-bookmarks (C1 wire Meeting)
+2026-05-26T00:43:21+02:00 - 6a2d44a - etiquet : feat(video-ingest): endpoint GET /video/my-bookmarks (C1 wire Meeting)
 2026-05-26T00:35:57+02:00 - 869adb6 - etiquet : fix(video-ingest): Cilium FQDN policy — ajouter rules.dns sur kube-dns
 2026-05-26T00:30:23+02:00 - 3209fbe - etiquet : fix(video-ingest): autoriser egress frontend → video-ingest:8000
 2026-05-25T14:35:04+02:00 - 61cfd9d - etiquet : fix(video-ingest): wirings prod-bêta — deps image + env Kevent + secret
+2026-05-25T14:35:04+02:00 - 430579c - etiquet : fix(video-ingest): wirings prod-bêta — deps image + env Kevent + secret
 2026-05-25T14:18:18+02:00 - 537203e - etiquet : feat(video-ingest): frontend modale + revue sécu auto (V1 complète)
+2026-05-25T14:18:18+02:00 - 0c042fe - etiquet : feat(video-ingest): frontend modale + revue sécu auto (V1 complète)
+2026-05-25T14:10:18+02:00 - 98ab9b4 - etiquet : feat(video-ingest): Q4 + Q5 résolues — quotas + audit logging
 2026-05-25T14:10:18+02:00 - 2e38f72 - etiquet : feat(video-ingest): Q4 + Q5 résolues — quotas + audit logging
 2026-05-25T14:05:10+02:00 - 4431191 - etiquet : feat(video-ingest): slices ASR + 6 backend — Kevent fallback + proxy mesreunions
+2026-05-25T14:05:10+02:00 - 3bcdaba - etiquet : feat(video-ingest): slices ASR + 6 backend — Kevent fallback + proxy mesreunions
 2026-05-25T13:57:53+02:00 - 797b23c - etiquet : feat(video-ingest): slice 5 MCP + INTEGRATION_NOTES (slices 6 + ASR)
+2026-05-25T13:57:53+02:00 - 5e60a7f - etiquet : feat(video-ingest): slice 5 MCP + INTEGRATION_NOTES (slices 6 + ASR)
 2026-05-25T13:53:06+02:00 - ffbe1c7 - etiquet : feat(video-ingest): slice infra — Dockerfile autoporteur + manifestes K8s
+2026-05-25T13:53:06+02:00 - 8cd72a9 - etiquet : feat(video-ingest): slice infra — Dockerfile autoporteur + manifestes K8s
 2026-05-25T13:50:40+02:00 - c432e45 - etiquet : feat(video-ingest): slice 4 — API REST Flask + auth JWT autonome
+2026-05-25T13:50:40+02:00 - 6c91da2 - etiquet : feat(video-ingest): slice 4 — API REST Flask + auth JWT autonome
+2026-05-25T13:45:36+02:00 - b29ee40 - etiquet : feat(video-ingest): slice 3 — worker Postgres-native + orchestrateur
 2026-05-25T13:45:36+02:00 - 7833f23 - etiquet : feat(video-ingest): slice 3 — worker Postgres-native + orchestrateur
+2026-05-25T13:12:07+02:00 - 5d0a637 - etiquet : feat(video-ingest): slice 2 — YouTubeProvider (metadata + sous-titres) + chunking
 2026-05-25T13:12:07+02:00 - 223eb56 - etiquet : feat(video-ingest): slice 2 — YouTubeProvider (metadata + sous-titres) + chunking
 2026-05-25T13:02:05+02:00 - a32c413 - etiquet : docs(video-ingest): D15 — Q7 résolue, egress A + B prête via proxy owuicore
+2026-05-25T13:02:05+02:00 - 83ee0f6 - etiquet : docs(video-ingest): D15 — Q7 résolue, egress A + B prête via proxy owuicore
+2026-05-25T12:56:27+02:00 - bf0b3f4 - etiquet : feat(video-ingest): slice 1 — schéma BDD + parseur URL YouTube
 2026-05-25T12:56:27+02:00 - 5fee59e - etiquet : feat(video-ingest): slice 1 — schéma BDD + parseur URL YouTube
+2026-05-25T08:24:21+02:00 - ae14573 - etiquet : docs(video-ingest): D14 — service mutualisé destiné à être extrait
 2026-05-25T08:24:21+02:00 - 5f2f072 - etiquet : docs(video-ingest): D14 — service mutualisé destiné à être extrait
 2026-05-25T08:18:59+02:00 - 99a87d7 - etiquet : docs(video-ingest): Q1 résolu — orchestrateur = Postgres natif (D13)
+2026-05-25T08:18:59+02:00 - 22a7cad - etiquet : docs(video-ingest): Q1 résolu — orchestrateur = Postgres natif (D13)
 2026-05-25T08:05:50+02:00 - 7539486 - etiquet : docs(chantier): capitalisation rename repo + bugs UX bandeau/polling/LLM jour
 2026-05-25T08:00:31+02:00 - 42f5657 - etiquet : chore: smoke test build pipeline post-rename
 2026-05-25T07:56:22+02:00 - fcced21 - etiquet : docs(readme): reframer en 'intelligence de la réunion' multi-sources / souverain
+2026-05-25T07:56:22+02:00 - 9486447 - etiquet : docs(readme): reframer en 'intelligence de la réunion' multi-sources / souverain
+2026-05-25T07:56:22+02:00 - 886faef - etiquet : docs(readme): cycle de vie 4 étapes + retrait Scaleway → infra maîtrisée
 2026-05-25T07:56:22+02:00 - 2b0bf92 - etiquet : docs(readme): cycle de vie 4 étapes + retrait Scaleway → infra maîtrisée
 2026-05-25T07:52:52+02:00 - de1fd07 - etiquet : docs(video-ingest): spec V1 + amorçage branche dédiée
+2026-05-25T07:52:52+02:00 - 49c010c - etiquet : docs(video-ingest): spec V1 + amorçage branche dédiée
 2026-05-25T07:52:10+02:00 - cb9f2f9 - etiquet : chore(rename): repo mcr-secure-audio-upload → mirai-mesreunions
 2026-05-25T07:48:03+02:00 - 6d99c96 - etiquet : docs(readme): cycle de vie 4 étapes + retrait Scaleway → infra maîtrisée
+2026-05-25T07:48:03+02:00 - 36ba56f - etiquet : docs(readme): cycle de vie 4 étapes + retrait Scaleway → infra maîtrisée
 2026-05-25T07:42:23+02:00 - b4a8fc5 - etiquet : docs(readme): reframer en 'intelligence de la réunion' multi-sources / souverain
+2026-05-25T07:42:23+02:00 - 4f06fb1 - etiquet : docs(readme): reframer en 'intelligence de la réunion' multi-sources / souverain
+2026-05-25T07:27:21+02:00 - 8ebcc7e - etiquet : feat(meetings): polling auto 15s tant qu'une transcription est en cours
 2026-05-25T07:27:21+02:00 - 5aef067 - etiquet : feat(meetings): polling auto 15s tant qu'une transcription est en cours
 2026-05-25T07:20:07+02:00 - d1f4898 - etiquet : feat(meetings): UX bandeau + simplification barre actions
+2026-05-25T07:20:07+02:00 - 10981c1 - etiquet : feat(meetings): UX bandeau + simplification barre actions
 2026-05-25T07:08:28+02:00 - c20207d - etiquet : docs(chantier): ajout classe 5 (étapes LLM sans isolation) + capitalisation bug du jour
+2026-05-25T07:06:23+02:00 - b7966a0 - etiquet : fix(llm-chain): retry budget par étape + statut détaillé pour l'utilisateur
 2026-05-25T07:06:23+02:00 - 5e383b6 - etiquet : fix(llm-chain): retry budget par étape + statut détaillé pour l'utilisateur
+2026-05-25T06:55:15+02:00 - b38cda4 - etiquet : docs(chantier): fiabilité batch processing + ADR-0002 enum source de vérité
 2026-05-25T06:55:15+02:00 - 0e04fde - etiquet : docs(chantier): fiabilité batch processing + ADR-0002 enum source de vérité
+2026-05-24T22:23:37+02:00 - e45e375 - etiquet : fix(reprocess): async daemon + kevent_reprocessing dans watchdog scan
 2026-05-24T22:23:37+02:00 - 5606efd - etiquet : fix(reprocess): async daemon + kevent_reprocessing dans watchdog scan
 2026-05-24T22:18:30+02:00 - d86736a - etiquet : fix(audio-lookup): exposer hidden_block_indices + last_error_* au GET
+2026-05-24T22:18:30+02:00 - 711b348 - etiquet : fix(audio-lookup): exposer hidden_block_indices + last_error_* au GET
 2026-05-24T22:08:13+02:00 - eeb3edb - etiquet : fix(transcript-editor): stop audio avant remount (sinon son doublé)
+2026-05-24T22:08:13+02:00 - 6476cc1 - etiquet : fix(transcript-editor): stop audio avant remount (sinon son doublé)
+2026-05-24T21:55:33+02:00 - af3ef6a - etiquet : fix(transcript-editor): re-monter en place au lieu de reload + message diag
 2026-05-24T21:55:33+02:00 - 2a2cdfd - etiquet : fix(transcript-editor): re-monter en place au lieu de reload + message diag
+2026-05-24T21:45:16+02:00 - fb605b6 - etiquet : fix(transcript-editor): bouton barré sans casser layout + feedback save + karaoke après édition
 2026-05-24T21:45:16+02:00 - a13071e - etiquet : fix(transcript-editor): bouton barré sans casser layout + feedback save + karaoke après édition
+2026-05-24T21:20:20+02:00 - 69a74e3 - etiquet : feat(transcription): éditeur user — barrer/supprimer blocs + re-filtrer
 2026-05-24T21:20:20+02:00 - 135ebd6 - etiquet : feat(transcription): éditeur user — barrer/supprimer blocs + re-filtrer
+2026-05-24T21:14:41+02:00 - 9902752 - etiquet : feat(admin-console): CRUD phrases interdites pour pré-filtrage transcription
 2026-05-24T21:14:41+02:00 - 5258810 - etiquet : feat(admin-console): CRUD phrases interdites pour pré-filtrage transcription
 2026-05-24T21:11:42+02:00 - b763507 - etiquet : feat(transcription): pré-filtrage automatique des scories Whisper
+2026-05-24T21:11:42+02:00 - 25fd14c - etiquet : feat(transcription): pré-filtrage automatique des scories Whisper
 2026-05-24T21:09:17+02:00 - af4c819 - etiquet : feat(meetings): bandeau plus parlant + refresh dès T+2s après relance/import
+2026-05-24T21:09:17+02:00 - 4995f65 - etiquet : feat(meetings): bandeau plus parlant + refresh dès T+2s après relance/import
 2026-05-24T11:38:49+02:00 - beb38da - etiquet : docs(adr,runbook): post-mortem OOM cascade premier déploiement Phase 1
+2026-05-24T11:38:49+02:00 - 5f7f779 - etiquet : docs(adr,runbook): post-mortem OOM cascade premier déploiement Phase 1
+2026-05-24T11:08:54+02:00 - 23dd70b - etiquet : docs(upstream): refléter constat code kevent-ai + lien issue #66
 2026-05-24T11:08:54+02:00 - 11fab96 - etiquet : docs(upstream): refléter constat code kevent-ai + lien issue #66
 2026-05-24T10:46:01+02:00 - b94014b - etiquet : docs(adr): ADR-0001 séparer liveness vs progress + runbook fiabilité
+2026-05-24T10:46:01+02:00 - a637a60 - etiquet : docs(adr): ADR-0001 séparer liveness vs progress + runbook fiabilité
 2026-05-24T10:42:21+02:00 - eb6be55 - etiquet : docs(upstream): drafts issues/RFC pour kevent-ai (lease + DELETE + budget)
+2026-05-24T10:42:21+02:00 - 7c35073 - etiquet : docs(upstream): drafts issues/RFC pour kevent-ai (lease + DELETE + budget)
+2026-05-24T10:39:40+02:00 - a308943 - etiquet : feat(observability): détection s3_object_purged + statuts non-relançables
 2026-05-24T10:39:40+02:00 - 6c63c35 - etiquet : feat(observability): détection s3_object_purged + statuts non-relançables
 2026-05-24T10:38:07+02:00 - 78abecb - etiquet : fix(pipeline): éliminer la boucle infinie watchdog↔Kevent + observabilité erreurs
+2026-05-24T10:38:07+02:00 - 0da8769 - etiquet : fix(pipeline): éliminer la boucle infinie watchdog↔Kevent + observabilité erreurs
+2026-05-24T08:02:40+02:00 - e8858da - etiquet : chore(ui): messages user-friendly (suppression jargon technique)
 2026-05-24T08:02:40+02:00 - 0863c76 - etiquet : chore(ui): messages user-friendly (suppression jargon technique)
+2026-05-24T07:45:30+02:00 - 83e490a - etiquet : feat(meetings): bandeau vert persistant après "Relancer les bloqués"
 2026-05-24T07:45:30+02:00 - 72eccf9 - etiquet : feat(meetings): bandeau vert persistant après "Relancer les bloqués"
 2026-05-24T02:14:53+02:00 - e87efa3 - etiquet : build: bust vite cache (force re-bundle des tabs/*.js)
+2026-05-24T02:14:53+02:00 - 2613b22 - etiquet : build: bust vite cache (force re-bundle des tabs/*.js)
 2026-05-24T02:10:40+02:00 - 6cb6ae3 - etiquet : fix(mcr-import): transcode webm → m4a avant upload S3 (kevent refuse webm)
+2026-05-24T02:10:40+02:00 - 5b7663f - etiquet : fix(mcr-import): transcode webm → m4a avant upload S3 (kevent refuse webm)
+2026-05-24T02:02:12+02:00 - ebf23ad - etiquet : feat(meetings): refreshs échelonnés après "Relancer les bloqués"
 2026-05-24T02:02:12+02:00 - a2bad50 - etiquet : feat(meetings): refreshs échelonnés après "Relancer les bloqués"
 2026-05-24T01:52:18+02:00 - ee1f65e - etiquet : fix(watchdog): mcr_import avec audio uploadé → path kevent (pas republish MCR)
+2026-05-24T01:52:18+02:00 - 202ca64 - etiquet : fix(watchdog): mcr_import avec audio uploadé → path kevent (pas republish MCR)
 2026-05-24T01:48:45+02:00 - f2d0c97 - etiquet : fix(kevent): sanitiseur filename agressif (apostrophes, quotes, shell-unsafe)
+2026-05-24T01:48:45+02:00 - 3fc8cdc - etiquet : fix(kevent): sanitiseur filename agressif (apostrophes, quotes, shell-unsafe)
 2026-05-24T01:45:59+02:00 - b515ce8 - etiquet : fix(kevent): strip path components in filename pour éviter le crash Whisper
+2026-05-24T01:45:59+02:00 - b2ffe8d - etiquet : fix(kevent): strip path components in filename pour éviter le crash Whisper
 2026-05-24T01:41:02+02:00 - bca9c83 - etiquet : feat(mcr-import-ui): bandeau persistant "import en cours" + plus de reloads
+2026-05-24T01:41:02+02:00 - 80e7b14 - etiquet : feat(mcr-import-ui): bandeau persistant "import en cours" + plus de reloads
 2026-05-24T01:34:56+02:00 - d07fae9 - etiquet : feat(prep ui): liste les docs Drive utilisés/skippés dans la fiche brief
+2026-05-24T01:34:56+02:00 - b120e7c - etiquet : feat(prep ui): liste les docs Drive utilisés/skippés dans la fiche brief
+2026-05-24T01:31:51+02:00 - bec0823 - etiquet : fix(prep): skip docs Drive en transient error, ne tue plus la génération
 2026-05-24T01:31:51+02:00 - 9d6eea3 - etiquet : fix(prep): skip docs Drive en transient error, ne tue plus la génération
+2026-05-24T01:28:45+02:00 - ded9a5d - etiquet : debug(drive): log download_url pour identifier le RST
 2026-05-24T01:28:45+02:00 - 75aba29 - etiquet : debug(drive): log download_url pour identifier le RST
 2026-05-24T01:18:58+02:00 - ad737cb - etiquet : revert(drive): retour au LB public (intra-cluster impraticable)
+2026-05-24T01:18:58+02:00 - 557118a - etiquet : revert(drive): retour au LB public (intra-cluster impraticable)
 2026-05-24T01:15:59+02:00 - dc18070 - etiquet : fix(test-drive): applique le routage multi-instance (parité avec generation)
+2026-05-24T01:15:59+02:00 - c6faeff - etiquet : fix(test-drive): applique le routage multi-instance (parité avec generation)
 2026-05-24T01:11:14+02:00 - d3f107e - etiquet : docs: debug brief Drive ConnectionReset (résolu par routage intra-cluster + multi-host)
+2026-05-24T01:10:51+02:00 - bb6e88f - etiquet : feat(drive): multi-instance routing (mesfichiers intra-cluster + fichiers externe)
 2026-05-24T01:10:51+02:00 - a166c33 - etiquet : feat(drive): multi-instance routing (mesfichiers intra-cluster + fichiers externe)
 2026-05-24T01:05:30+02:00 - 39fb4e7 - etiquet : fix(drive): routage intra-cluster vers drive-backend (bypass hairpin LB)
 2026-05-24T00:50:27+02:00 - f6a9bd4 - etiquet : fix(drive): Session() + Connection:close pour bypass pool keepalive cassé
+2026-05-24T00:50:27+02:00 - aeeb7cd - etiquet : fix(drive): Session() + Connection:close pour bypass pool keepalive cassé
 2026-05-24T00:45:37+02:00 - a5bc215 - etiquet : fix(drive): retry exponentiel sur RequestException pour get_item/list/download
+2026-05-24T00:45:37+02:00 - 662dd61 - etiquet : fix(drive): retry exponentiel sur RequestException pour get_item/list/download
 2026-05-24T00:33:30+02:00 - ad15683 - etiquet : fix(models): re-add PreparationGenerationJob (lost in editor revert)
+2026-05-24T00:33:30+02:00 - 6606fb4 - etiquet : fix(models): re-add PreparationGenerationJob (lost in editor revert)
+2026-05-24T00:29:17+02:00 - e11c4b9 - etiquet : feat(preparations): generation_jobs en postgres-external (fix multi-pod)
 2026-05-24T00:29:17+02:00 - 4a0592b - etiquet : feat(preparations): generation_jobs en postgres-external (fix multi-pod)
 2026-05-23T23:40:37+02:00 - c64aa11 - etiquet : fix(prep wizard): listDrafts() ré-injecte l'id (clé du dict) dans chaque snapshot
+2026-05-23T23:40:37+02:00 - b9c9599 - etiquet : fix(prep wizard): listDrafts() ré-injecte l'id (clé du dict) dans chaque snapshot
 2026-05-23T22:55:12+02:00 - cb63bd6 - etiquet : docs: how-to réutiliser la VM openrag-et pour build & push depuis un autre repo
 2026-05-23T20:12:10+02:00 - cd5b58d - etiquet : feat(mcr-import): triple reload (0s/3s/30s) après import pour suivre l'apparition
+2026-05-23T20:12:10+02:00 - 922b324 - etiquet : feat(mcr-import): triple reload (0s/3s/30s) après import pour suivre l'apparition
 2026-05-23T18:40:29+02:00 - fa8e545 - etiquet : fix(meetings): ReferenceError 'e is not defined' dans dispatcher click
+2026-05-23T18:40:29+02:00 - 64323f0 - etiquet : fix(meetings): ReferenceError 'e is not defined' dans dispatcher click
+2026-05-23T14:42:13+02:00 - d8c9989 - etiquet : fix+feat(mcr-import): force mcr_import path watchdog + meilleur feedback UI
 2026-05-23T14:42:13+02:00 - 1139268 - etiquet : fix+feat(mcr-import): force mcr_import path watchdog + meilleur feedback UI
+2026-05-23T14:35:45+02:00 - 3b197ba - etiquet : fix(watchdog): mode include_failed (user manuel) ignore le stale threshold
 2026-05-23T14:35:45+02:00 - 06faaf7 - etiquet : fix(watchdog): mode include_failed (user manuel) ignore le stale threshold
+2026-05-23T14:33:21+02:00 - ef46a93 - etiquet : fix(mcr-import): tout 403 sur /audio → MCRApplicativeError (auth déjà validée)
 2026-05-23T14:33:21+02:00 - c0a9065 - etiquet : fix(mcr-import): tout 403 sur /audio → MCRApplicativeError (auth déjà validée)
 2026-05-23T14:27:19+02:00 - 0e9d801 - etiquet : fix(mcr-import): élargit détection 403 feature-flag + watchdog branch mcr_import
+2026-05-23T14:27:19+02:00 - 0444ea2 - etiquet : fix(mcr-import): élargit détection 403 feature-flag + watchdog branch mcr_import
+2026-05-23T14:20:26+02:00 - a0d091b - etiquet : feat(mcr-import): fallback audio→transcript + chaîne LLM sur transcript-only
 2026-05-23T14:20:26+02:00 - 39f2e2a - etiquet : feat(mcr-import): fallback audio→transcript + chaîne LLM sur transcript-only
 2026-05-23T14:14:36+02:00 - ce121f0 - etiquet : fix(cnp): autorise compte-rendu.mirai sur worker-egress (mcr_importer pull)
+2026-05-23T14:07:04+02:00 - aeee080 - etiquet : feat(mcr-import-ui): nowrap dates, infos détaillées sur rows pourries, export CSV
 2026-05-23T14:07:04+02:00 - 411975c - etiquet : feat(mcr-import-ui): nowrap dates, infos détaillées sur rows pourries, export CSV
 2026-05-23T14:01:34+02:00 - aaab167 - etiquet : fix(mcr-import): déplace INSERT user_audio_files vers internal-ingester
+2026-05-23T14:01:34+02:00 - 0c1fec8 - etiquet : fix(mcr-import): déplace INSERT user_audio_files vers internal-ingester
 2026-05-23T13:55:26+02:00 - d0009f2 - etiquet : fix(mcr-import): marker check = 'not supported' (MCR dit 'are not', pas 'is not')
+2026-05-23T13:55:26+02:00 - 402626c - etiquet : fix(mcr-import): marker check = 'not supported' (MCR dit 'are not', pas 'is not')
+2026-05-23T13:40:04+02:00 - 3493735 - etiquet : feat(mcr-import): résilience par row — placeholder UI pour les rows MCR pourries
 2026-05-23T13:40:04+02:00 - 29cadee - etiquet : feat(mcr-import): résilience par row — placeholder UI pour les rows MCR pourries
 2026-05-23T13:21:24+02:00 - 332a3c7 - etiquet : fix(mcr-script): élargir scan à toute la plage des IDs vus quand le gap local est vide
+2026-05-23T13:21:24+02:00 - 2521c70 - etiquet : fix(mcr-script): élargir scan à toute la plage des IDs vus quand le gap local est vide
+2026-05-23T12:56:36+02:00 - f6d893d - etiquet : fix(mcr-script): classifier matche toutes platforms (VISIO/WEBCONF/WEBEX/WEBINAIRE)
 2026-05-23T12:56:36+02:00 - 6bbd691 - etiquet : fix(mcr-script): classifier matche toutes platforms (VISIO/WEBCONF/WEBEX/WEBINAIRE)
 2026-05-23T12:41:59+02:00 - f262167 - etiquet : docs(mcr-bug-report): retire mention spécifique feature + corrige Visio Numérique
 2026-05-23T12:39:12+02:00 - c982dab - etiquet : docs: capitalisation des 4 pièges intégration MCR (post mortem mise en prod)
+2026-05-23T12:39:12+02:00 - a0bf2bb - etiquet : docs: capitalisation des 4 pièges intégration MCR (post mortem mise en prod)
+2026-05-23T12:34:24+02:00 - 9ae4e97 - etiquet : fix(mcr-script): exhaustive scan must skip 403 too, only 401 stops
 2026-05-23T12:34:24+02:00 - 3f0755c - etiquet : fix(mcr-script): exhaustive scan must skip 403 too, only 401 stops
 2026-05-23T12:32:04+02:00 - 6ae739f - etiquet : fix(mcr-script): 403 on GET = not ours, not token expired
+2026-05-23T12:32:04+02:00 - 2f0e17b - etiquet : fix(mcr-script): 403 on GET = not ours, not token expired
 2026-05-23T12:23:41+02:00 - 4bbb539 - etiquet : fix(mcr-script): scan by GET id + classifier 500-other-user vs 500-VISIO
+2026-05-23T12:23:41+02:00 - 2985805 - etiquet : fix(mcr-script): scan by GET id + classifier 500-other-user vs 500-VISIO
 2026-05-23T12:21:30+02:00 - bc839dd - etiquet : fix(mcr-script): /me path = /api/auth/me (not /api/me)
+2026-05-23T12:21:30+02:00 - 149bdb6 - etiquet : fix(mcr-script): /me path = /api/auth/me (not /api/me)
+2026-05-23T12:17:36+02:00 - 6854a2b - etiquet : fix(mcr-fix-script): support MCR_TOKEN env var + file argv
 2026-05-23T12:17:36+02:00 - 4e0524b - etiquet : fix(mcr-fix-script): support MCR_TOKEN env var + file argv
 2026-05-23T12:14:23+02:00 - 5b65864 - etiquet : docs+tools: MCR bug report + script bisection row pourrie
+2026-05-23T12:14:23+02:00 - 2bd5b1b - etiquet : docs+tools: MCR bug report + script bisection row pourrie
 2026-05-23T10:00:41+02:00 - f458dab - etiquet : chore(mcr-import): log MCR /meetings response body for diagnosis
+2026-05-23T10:00:41+02:00 - 9de1fb8 - etiquet : chore(mcr-import): log MCR /meetings response body for diagnosis
 2026-05-23T09:55:42+02:00 - f1344de - etiquet : fix(mcr): drop trailing slash on /api/meetings to avoid HTTP downgrade
+2026-05-23T09:55:42+02:00 - 8a611ec - etiquet : fix(mcr): drop trailing slash on /api/meetings to avoid HTTP downgrade
+2026-05-23T09:52:28+02:00 - dd2d0da - etiquet : fix(db): drop upload_sessions backfill from migration 019
 2026-05-23T09:52:28+02:00 - 275d3bc - etiquet : fix(db): drop upload_sessions backfill from migration 019
+2026-05-23T09:49:41+02:00 - a56a989 - etiquet : fix(mcr-import): guard against unconfigured rabbit_cfg
 2026-05-23T09:49:41+02:00 - 03e91a7 - etiquet : fix(mcr-import): guard against unconfigured rabbit_cfg
+2026-05-23T09:45:05+02:00 - 9e66a5b - etiquet : docs: import-from-mcr deployment runbook
 2026-05-23T09:45:05+02:00 - 45893b9 - etiquet : docs: import-from-mcr deployment runbook
+2026-05-23T09:44:01+02:00 - a9abb6e - etiquet : test(mcr-import): cover mirai_oidc + new mcr_client pull methods
 2026-05-23T09:44:01+02:00 - a6d38ad - etiquet : test(mcr-import): cover mirai_oidc + new mcr_client pull methods
+2026-05-23T09:37:15+02:00 - f02d758 - etiquet : docs: import-from-mcr.md (pendant de integrate-with-mcr.md)
 2026-05-23T09:37:15+02:00 - a5362a8 - etiquet : docs: import-from-mcr.md (pendant de integrate-with-mcr.md)
 2026-05-23T09:36:07+02:00 - bd348aa - etiquet : feat(k8s): MCR_GATEWAY_URL wired on mesreunions-web + internal-ingester
+2026-05-23T09:35:09+02:00 - 7b95f66 - etiquet : feat(ui): "Depuis MCR" button + import modal in meetings tab
 2026-05-23T09:35:09+02:00 - 310bb8c - etiquet : feat(ui): "Depuis MCR" button + import modal in meetings tab
 2026-05-23T09:32:37+02:00 - 9044a33 - etiquet : feat(internal-ingester): mcr_importer consumer (audio + DOCX transcript)
+2026-05-23T09:32:37+02:00 - 0e9bccb - etiquet : feat(internal-ingester): mcr_importer consumer (audio + DOCX transcript)
 2026-05-23T09:29:29+02:00 - 4bcf1e2 - etiquet : feat(mesreunions-web): /api/mcr/meetings + /api/mcr/import endpoints
+2026-05-23T09:29:29+02:00 - 3d54fc3 - etiquet : feat(mesreunions-web): /api/mcr/meetings + /api/mcr/import endpoints
 2026-05-23T09:23:14+02:00 - c91d70f - etiquet : feat(db): user_audio_files.origin + transcription_status mcr_import.* values
+2026-05-23T09:23:14+02:00 - b2e7f22 - etiquet : feat(db): user_audio_files.origin + transcription_status mcr_import.* values
 2026-05-23T09:22:21+02:00 - 9412048 - etiquet : feat(mcr-client): add pull endpoints (list/audio/transcription)
+2026-05-23T09:22:21+02:00 - 831be7d - etiquet : feat(mcr-client): add pull endpoints (list/audio/transcription)
 2026-05-23T09:21:40+02:00 - 85df659 - etiquet : chore: extract Mirai OIDC token-exchange into libs/shared
+2026-05-23T09:21:40+02:00 - 6750069 - etiquet : chore: extract Mirai OIDC token-exchange into libs/shared
 2026-05-23T09:15:30+02:00 - 33746f0 - etiquet : feat(sso): bascule prod-bêta interne sur sso.mirai/realms/mirai
+2026-05-22T10:01:25+02:00 - 41e1189 - etiquet : fix(watchdog): cap dur sur retries auto (anti-boucle infinie)
 2026-05-22T10:01:25+02:00 - 3cb2ad7 - etiquet : fix(watchdog): cap dur sur retries auto (anti-boucle infinie)
 2026-05-22T00:40:29+02:00 - df214c5 - etiquet : chore(watchdog): cap d'âge 24h → 168h (7j, aligné rétention S3 interne)
+2026-05-22T00:40:29+02:00 - d9eff97 - etiquet : chore(watchdog): cap d'âge 24h → 168h (7j, aligné rétention S3 interne)
+2026-05-22T00:31:33+02:00 - 7ad0009 - etiquet : fix(timing): _reset_and_resubmit set transcription_started_at = NOW()
 2026-05-22T00:31:33+02:00 - 26f0e7a - etiquet : fix(timing): _reset_and_resubmit set transcription_started_at = NOW()
 2026-05-22T00:25:49+02:00 - d772eca - etiquet : feat(tooltip): wait time estimé pour les jobs en file d'attente
+2026-05-22T00:25:49+02:00 - 34149c0 - etiquet : feat(tooltip): wait time estimé pour les jobs en file d'attente
+2026-05-22T00:23:37+02:00 - c80c1e7 - etiquet : fix(timing): peuple transcription_started_at + completed_at via _set_user_audio_status
 2026-05-22T00:23:37+02:00 - 1caac44 - etiquet : fix(timing): peuple transcription_started_at + completed_at via _set_user_audio_status
+2026-05-22T00:15:55+02:00 - 50d2d11 - etiquet : fix(watchdog): désactive l'ancien _orphan_watchdog_loop conflictuel
 2026-05-22T00:15:55+02:00 - 0d7eb22 - etiquet : fix(watchdog): désactive l'ancien _orphan_watchdog_loop conflictuel
 2026-05-22T00:07:12+02:00 - 3520d9d - etiquet : fix(watchdog) + feat: stats ETA + retry kevent_failed manuel + badge persistant
+2026-05-22T00:07:12+02:00 - 036878e - etiquet : fix(watchdog) + feat: stats ETA + retry kevent_failed manuel + badge persistant
+2026-05-21T23:52:25+02:00 - a83b570 - etiquet : docs(watchdog) + feedback visuel "relancer les bloqués"
 2026-05-21T23:52:25+02:00 - 87724ca - etiquet : docs(watchdog) + feedback visuel "relancer les bloqués"
+2026-05-21T23:46:37+02:00 - 5539c00 - etiquet : feat(watchdog): pipeline watchdog autonome + bouton "relancer les bloqués"
 2026-05-21T23:46:37+02:00 - 35a34b2 - etiquet : feat(watchdog): pipeline watchdog autonome + bouton "relancer les bloqués"
+2026-05-21T21:27:52+02:00 - 4cecda4 - etiquet : feat(bulk-download): ZIP en masse depuis la liste réunions (Alt-key menu)
 2026-05-21T21:27:52+02:00 - 381fd4e - etiquet : feat(bulk-download): ZIP en masse depuis la liste réunions (Alt-key menu)
+2026-05-21T21:20:22+02:00 - c839214 - etiquet : feat(meeting-dt): auto-extrait date/heure du nom de fichier audio
 2026-05-21T21:20:22+02:00 - 41b4456 - etiquet : feat(meeting-dt): auto-extrait date/heure du nom de fichier audio
 2026-05-21T20:54:01+02:00 - dcf8a5e - etiquet : fix(qr): retire le cap dur 50 sur max_uploads (utilise MAX_UPLOADS_PER_SESSION)
+2026-05-21T20:54:01+02:00 - 593f181 - etiquet : fix(qr): retire le cap dur 50 sur max_uploads (utilise MAX_UPLOADS_PER_SESSION)
+2026-05-21T01:15:38+02:00 - 3e7d4a7 - etiquet : docs(readme): bascule diarisation prod-bêta vm-direct → kevent
 2026-05-21T01:15:38+02:00 - 29853d5 - etiquet : docs(readme): bascule diarisation prod-bêta vm-direct → kevent
+2026-05-21T01:11:17+02:00 - 1755b3b - etiquet : docs(readme): détaille config diarisation runtime prod-bêta
 2026-05-21T01:11:17+02:00 - 03e5ecf - etiquet : docs(readme): détaille config diarisation runtime prod-bêta
+2026-05-21T00:48:45+02:00 - 9fde247 - etiquet : feat(glossary cleanup): liste complète scrollable + cases décochables
 2026-05-21T00:48:45+02:00 - 3cda002 - etiquet : feat(glossary cleanup): liste complète scrollable + cases décochables
+2026-05-21T00:42:13+02:00 - cefa1ae - etiquet : feat(glossary): filtre à l'ingestion + bouton "Nettoyage auto"
 2026-05-21T00:42:13+02:00 - 5197500 - etiquet : feat(glossary): filtre à l'ingestion + bouton "Nettoyage auto"
 2026-05-21T00:28:39+02:00 - e575b3b - etiquet : fix(useful-data): grid 6 colonnes en mode bulk pour aligner checkbox
+2026-05-21T00:28:39+02:00 - 542ad91 - etiquet : fix(useful-data): grid 6 colonnes en mode bulk pour aligner checkbox
+2026-05-21T00:23:38+02:00 - f648a89 - etiquet : feat(useful-data): bulk-delete glossaire (Alt) + rename Drive perso + nouveaux plug-ins
 2026-05-21T00:23:38+02:00 - 6531f46 - etiquet : feat(useful-data): bulk-delete glossaire (Alt) + rename Drive perso + nouveaux plug-ins
+2026-05-21T00:11:38+02:00 - c6b74cf - etiquet : fix(rename-speaker): patch DOM des blocs Intervenant_NN + invalide cache CR
 2026-05-21T00:11:38+02:00 - 7acd1c9 - etiquet : fix(rename-speaker): patch DOM des blocs Intervenant_NN + invalide cache CR
+2026-05-21T00:00:27+02:00 - a34163e - etiquet : chore(security): redact IPs SCW + domaines internes dans docs + scripts
 2026-05-21T00:00:27+02:00 - 210246b - etiquet : chore(security): redact IPs SCW + domaines internes dans docs + scripts
+2026-05-20T23:51:20+02:00 - f03a658 - etiquet : chore(scripts): commit-push-build sync internal-zone/ et external-zone/
 2026-05-20T23:51:20+02:00 - 4e02f4f - etiquet : chore(scripts): commit-push-build sync internal-zone/ et external-zone/
 2026-05-20T23:40:45+02:00 - ca0e41f - etiquet : chore(security): retire internal-zone/ et external-zone/ du repo public
+2026-05-20T23:40:45+02:00 - 076c24d - etiquet : chore(security): retire internal-zone/ et external-zone/ du repo public
 2026-05-20T23:33:15+02:00 - 6c7714c - etiquet : chore(security): redact identifiers personnels et ID SCW dans les fichiers commités
 2026-05-20T22:39:46+02:00 - d719612 - etiquet : docs: comparaison dictaphone / Visio / mcr / mes-réunions
+2026-05-20T06:55:01+02:00 - f40d7e2 - etiquet : chore(useful-data): placeholder glossaire — nom réel → personnage fictif
 2026-05-20T06:55:01+02:00 - 15d5003 - etiquet : chore(useful-data): placeholder glossaire — nom réel → personnage fictif
 2026-05-20T01:22:12+02:00 - 87c8974 - etiquet : fix(brief-detail): scroll vers panneau amend + retire entrée Renommer
+2026-05-20T01:22:12+02:00 - 5f7fe03 - etiquet : fix(brief-detail): scroll vers panneau amend + retire entrée Renommer
 2026-05-20T01:13:22+02:00 - a6964a3 - etiquet : fix(brief-detail): dropdowns alignés left au lieu de right (clip .fr-tabs)
+2026-05-20T01:13:22+02:00 - 033ed98 - etiquet : fix(brief-detail): dropdowns alignés left au lieu de right (clip .fr-tabs)
+2026-05-20T01:08:19+02:00 - 43027a3 - etiquet : fix(brief-detail): barre d'icônes alignée + dropdown bien positionné
 2026-05-20T01:08:19+02:00 - 24b5216 - etiquet : fix(brief-detail): barre d'icônes alignée + dropdown bien positionné
 2026-05-20T01:03:08+02:00 - bd90fc6 - etiquet : refactor(prep): drop LLM participants_notes du rendu — sourcer la liste éditable
+2026-05-20T01:03:08+02:00 - 06a1615 - etiquet : refactor(prep): drop LLM participants_notes du rendu — sourcer la liste éditable
+2026-05-20T00:46:43+02:00 - e1bf3d1 - etiquet : fix(brief-detail): icones download/more cliquables + "0." parasite agenda
 2026-05-20T00:46:43+02:00 - 33d7581 - etiquet : fix(brief-detail): icones download/more cliquables + "0." parasite agenda
+2026-05-20T00:30:55+02:00 - de8e74f - etiquet : fix(karaoke): retire cap 60s + dblclick → alt+click (préserve correction)
 2026-05-20T00:30:55+02:00 - b29deb9 - etiquet : fix(karaoke): retire cap 60s + dblclick → alt+click (préserve correction)
 2026-05-20T00:19:54+02:00 - 1ae6d56 - etiquet : refine(karaoke): rescale affine + fusion blocs même speaker
+2026-05-20T00:19:54+02:00 - 01e7bdc - etiquet : refine(karaoke): rescale affine + fusion blocs même speaker
+2026-05-20T00:11:38+02:00 - 926a983 - etiquet : refine(karaoke): redistribution linéaire des words dans la durée du bloc
 2026-05-20T00:11:38+02:00 - 286fbab - etiquet : refine(karaoke): redistribution linéaire des words dans la durée du bloc
 2026-05-19T23:59:52+02:00 - 50eb420 - etiquet : refine(karaoke): compense latence audio output (~150ms) sur le highlight
+2026-05-19T23:59:52+02:00 - 341fde7 - etiquet : refine(karaoke): compense latence audio output (~150ms) sur le highlight
+2026-05-19T23:44:12+02:00 - c39d02d - etiquet : fix(karaoke): ajoute transcription_words_json à l'allowlist _set_user_audio_status
 2026-05-19T23:44:12+02:00 - 8e1841c - etiquet : fix(karaoke): ajoute transcription_words_json à l'allowlist _set_user_audio_status
 2026-05-19T23:33:00+02:00 - e0f640c - etiquet : refine(karaoke): scroll word-level + double-click + cap 60s + speaker fmt
+2026-05-19T23:33:00+02:00 - 6122ee2 - etiquet : refine(karaoke): scroll word-level + double-click + cap 60s + speaker fmt
+2026-05-19T23:12:29+02:00 - 90dedf1 - etiquet : feat(transcription): word-level karaoke + vraie relance pipeline scope=full
 2026-05-19T23:12:29+02:00 - 81857af - etiquet : feat(transcription): word-level karaoke + vraie relance pipeline scope=full
+2026-05-19T23:11:53+02:00 - ed338c6 - etiquet : fix(tests): repare 26 tests pré-existants cassés (rebrand + refacto)
 2026-05-19T23:11:53+02:00 - 2768eb3 - etiquet : fix(tests): repare 26 tests pré-existants cassés (rebrand + refacto)
 2026-05-19T22:22:28+02:00 - 78b7cbe - etiquet : perf(my-sessions): élimine les HEAD S3 source/transcoded du hot path
+2026-05-19T22:22:28+02:00 - 27307f6 - etiquet : perf(my-sessions): élimine les HEAD S3 source/transcoded du hot path
+2026-05-19T22:14:19+02:00 - f4e2cd5 - etiquet : perf(s3): cache boto3 client par (endpoint, bucket, key)
 2026-05-19T22:14:19+02:00 - 91e72f8 - etiquet : perf(s3): cache boto3 client par (endpoint, bucket, key)
 2026-05-19T22:08:35+02:00 - 1824f27 - etiquet : perf(my-sessions): purge corbeille async + DB parallèle aux API + timing
+2026-05-19T22:08:35+02:00 - 0329a44 - etiquet : perf(my-sessions): purge corbeille async + DB parallèle aux API + timing
+2026-05-19T21:50:36+02:00 - aeb8907 - etiquet : perf(mes-reunions): liste rapide + fiche détaillée lazy-load
 2026-05-19T21:50:36+02:00 - 949df91 - etiquet : perf(mes-reunions): liste rapide + fiche détaillée lazy-load
+2026-05-19T21:50:08+02:00 - e9a9f04 - etiquet : feat(diarisation): SPEAKER_xx → Intervenant_xx (label utilisateur)
 2026-05-19T21:50:08+02:00 - d687a25 - etiquet : feat(diarisation): SPEAKER_xx → Intervenant_xx (label utilisateur)
 2026-05-19T08:25:25+02:00 - 6074d4d - etiquet : fix(brief-detail): icones alignées+tooltip + input rename pleine largeur + date cible éditable
+2026-05-19T08:25:25+02:00 - 5a8949d - etiquet : fix(brief-detail): icones alignées+tooltip + input rename pleine largeur + date cible éditable
+2026-05-19T08:13:01+02:00 - 9f59fe2 - etiquet : fix(ui): icones DSFR complètes + liste préparations compacte + suivante depuis liste
 2026-05-19T08:13:01+02:00 - 71f564f - etiquet : fix(ui): icones DSFR complètes + liste préparations compacte + suivante depuis liste
+2026-05-19T07:47:43+02:00 - fd7af30 - etiquet : feat(prep-wizard): autosave dès keystroke 1 + brouillons visibles dans la liste
 2026-05-19T07:47:43+02:00 - 8d52105 - etiquet : feat(prep-wizard): autosave dès keystroke 1 + brouillons visibles dans la liste
 2026-05-19T07:31:28+02:00 - 738474c - etiquet : fix(prep-wizard): sessionAffinity=ClientIP fixe "Job introuvable ou expiré"
+2026-05-18T19:02:31+02:00 - a4f9f5d - etiquet : fix(devices): form de génération ne réapparait plus au-dessus du QR
 2026-05-18T19:02:31+02:00 - 750439c - etiquet : fix(devices): form de génération ne réapparait plus au-dessus du QR
 2026-05-18T18:54:43+02:00 - f7c8334 - etiquet : fix(devices): bouton "Ajouter un téléphone" label visible + modal allégée
+2026-05-18T18:54:43+02:00 - 7e5b1e5 - etiquet : fix(devices): bouton "Ajouter un téléphone" label visible + modal allégée
+2026-05-18T18:46:24+02:00 - ac1c813 - etiquet : fix(devices): modal enrôlement - retire classes DSFR + bouton plus explicite
 2026-05-18T18:46:24+02:00 - 1315b73 - etiquet : fix(devices): modal enrôlement - retire classes DSFR + bouton plus explicite
 2026-05-18T18:41:08+02:00 - e2e7d04 - etiquet : fix(devices): enrôlement appareil en modal popup (au lieu de tab fantôme)
+2026-05-18T18:41:08+02:00 - 98a98d5 - etiquet : fix(devices): enrôlement appareil en modal popup (au lieu de tab fantôme)
 2026-05-18T18:38:04+02:00 - 7610cc4 - etiquet : fix(devices): activateTab force fr-tabs__panel--selected + retire hidden
+2026-05-18T18:38:04+02:00 - 0d452bb - etiquet : fix(devices): activateTab force fr-tabs__panel--selected + retire hidden
+2026-05-18T18:31:12+02:00 - a04d9b3 - etiquet : fix(devices): bouton + 'Enrôler un nouvel appareil' ne marchait pas
 2026-05-18T18:31:12+02:00 - 59077f6 - etiquet : fix(devices): bouton + 'Enrôler un nouvel appareil' ne marchait pas
 2026-05-18T09:09:05+02:00 - 44389eb - etiquet : docs(architecture): audit sécurité externe complet 2026-05-18
 2026-05-18T09:03:15+02:00 - fe8fc06 - etiquet : docs(architecture): matrice flux post-fix + topologie PGW dédiés
+2026-05-18T09:03:15+02:00 - 3b6b9a4 - etiquet : docs(architecture): matrice flux post-fix + topologie PGW dédiés
 2026-05-18T08:59:06+02:00 - b52e48a - etiquet : fix(scw-lb): ajoute 51.15.244.216 (PGW internal-gw) aux whitelists ACL
 2026-05-18T08:50:28+02:00 - 955eaa2 - etiquet : revert+docs(scw-lb): restaure ACL deny - LB est expose Internet, NE PAS l'ouvrir
 2026-05-18T08:42:22+02:00 - a8a82fc - etiquet : fix(scw-lb): retire ACL deny postgres-external-lb (cause des 50% TCP RST)
 2026-05-18T08:37:24+02:00 - e10fa06 - etiquet : docs(bug-scw-lb): CAUSE RACINE ACL whitelist incomplet
 2026-05-18T08:31:28+02:00 - fd54f4e - etiquet : docs(bug-scw-lb): brief TL;DR au début pour onboarder un nouvel agent
+2026-05-18T02:08:32+02:00 - 9c7ceb5 - etiquet : docs: capitalise bug SCW LB inter-cluster + matrice flux mesurée
 2026-05-18T02:08:32+02:00 - 0da56ad - etiquet : docs: capitalise bug SCW LB inter-cluster + matrice flux mesurée
+2026-05-18T02:02:47+02:00 - 6d0ebd3 - etiquet : fix(db): retry transient sur _resolve_internal_audio_id + transcript-status
 2026-05-18T02:02:47+02:00 - 6228ee4 - etiquet : fix(db): retry transient sur _resolve_internal_audio_id + transcript-status
+2026-05-18T01:34:12+02:00 - 8778f7f - etiquet : fix(cr): nettoie les artifacts (items: ...) et (porteur : ...) orphelins
 2026-05-18T01:34:12+02:00 - 31f2203 - etiquet : fix(cr): nettoie les artifacts (items: ...) et (porteur : ...) orphelins
 2026-05-18T01:32:37+02:00 - 166bd0c - etiquet : feat(cr): pastille 🔍 sur termes du glossaire personnel (pas seulement corrections)
+2026-05-18T01:32:37+02:00 - 15cbb96 - etiquet : feat(cr): pastille 🔍 sur termes du glossaire personnel (pas seulement corrections)
+2026-05-18T01:26:44+02:00 - f6df5ee - etiquet : fix(db): keepalive plus court 30s -> 10s + utilitaire retry transient
 2026-05-18T01:26:44+02:00 - 61d0fcf - etiquet : fix(db): keepalive plus court 30s -> 10s + utilitaire retry transient
 2026-05-18T01:25:06+02:00 - 47399bd - etiquet : fix(ui): drawer z-index au-dessus modale CR + retire marked.js integrity
+2026-05-18T01:25:06+02:00 - 230524b - etiquet : fix(ui): drawer z-index au-dessus modale CR + retire marked.js integrity
 2026-05-18T01:21:40+02:00 - d8f0828 - etiquet : feat(regen-ui): modale 'Details techniques' + icone liste pulsent pendant regen
+2026-05-18T01:21:40+02:00 - 31355db - etiquet : feat(regen-ui): modale 'Details techniques' + icone liste pulsent pendant regen
 2026-05-18T01:13:39+02:00 - e3a1e1d - etiquet : fix(ui+db): font/markdown/etapes pending + db pool keepalive plus aggressif
+2026-05-18T01:13:39+02:00 - e39aa8d - etiquet : fix(ui+db): font/markdown/etapes pending + db pool keepalive plus aggressif
+2026-05-18T01:07:00+02:00 - a05e2a0 - etiquet : fix(db): pool_recycle 180s pour eviter server closed connection
 2026-05-18T01:07:00+02:00 - 26728f6 - etiquet : fix(db): pool_recycle 180s pour eviter server closed connection
 2026-05-18T01:04:03+02:00 - f84e37a - etiquet : fix(corrector): vue ne se referme plus apres validation d'une correction
+2026-05-18T01:04:03+02:00 - 7e100b6 - etiquet : fix(corrector): vue ne se referme plus apres validation d'une correction
+2026-05-18T01:01:07+02:00 - df3a1c6 - etiquet : fix(regen): isoformat sur string + retire overlay + pulse (i) immediate
 2026-05-18T01:01:07+02:00 - 21f75f5 - etiquet : fix(regen): isoformat sur string + retire overlay + pulse (i) immediate
 2026-05-18T00:56:37+02:00 - f7cb63d - etiquet : feat(regen-ui): signal regen en cours + compteur version + (i) pulse
+2026-05-18T00:56:37+02:00 - 8f89f57 - etiquet : feat(regen-ui): signal regen en cours + compteur version + (i) pulse
+2026-05-18T00:48:22+02:00 - 8208f4e - etiquet : fix(ui): CR editable en modale + signal regen en cours + ingress timeout
 2026-05-18T00:48:22+02:00 - 663b5df - etiquet : fix(ui): CR editable en modale + signal regen en cours + ingress timeout
+2026-05-18T00:29:21+02:00 - a61fe42 - etiquet : feat(cr-link): modale regen avec presets + back-link CR ligne -> brute (option C)
 2026-05-18T00:29:21+02:00 - 255d594 - etiquet : feat(cr-link): modale regen avec presets + back-link CR ligne -> brute (option C)
+2026-05-18T00:14:53+02:00 - d8c770c - etiquet : fix(cr-inline): position + rendu JSON + fusion avec corrector audio (option A)
 2026-05-18T00:14:53+02:00 - 7b1e039 - etiquet : fix(cr-inline): position + rendu JSON + fusion avec corrector audio (option A)
 2026-05-17T23:58:07+02:00 - 8ea05d3 - etiquet : feat(cr-inline): rendu CR inline (marked.js) + corrector + drawer source (option C)
+2026-05-17T23:58:07+02:00 - 6dd48db - etiquet : feat(cr-inline): rendu CR inline (marked.js) + corrector + drawer source (option C)
+2026-05-17T23:40:32+02:00 - 8f2f99d - etiquet : refactor: big-bang rename mydevices-web -> mesreunions-web
 2026-05-17T23:40:32+02:00 - 08b0c67 - etiquet : refactor: big-bang rename mydevices-web -> mesreunions-web
+2026-05-17T23:29:36+02:00 - a0fee88 - etiquet : feat(corrector): popup reste ouverte + rename in-place + search locale + 502 fix
 2026-05-17T23:29:36+02:00 - 6cc360b - etiquet : feat(corrector): popup reste ouverte + rename in-place + search locale + 502 fix
+2026-05-17T22:15:25+02:00 - e761932 - etiquet : fix(transcript+feedback): audio 2× + not_found + retire case LLM + persistance modifs + clignotement régen
 2026-05-17T22:15:25+02:00 - a3eec0a - etiquet : fix(transcript+feedback): audio 2× + not_found + retire case LLM + persistance modifs + clignotement régen
 2026-05-17T21:58:46+02:00 - d4738b1 - etiquet : feat(ux+ingress): sous-titre 'Concentrez-vous sur la réunion' + accept mesreunions.numerique-interieur.com
+2026-05-17T21:58:46+02:00 - 86adadb - etiquet : feat(ux+ingress): sous-titre 'Concentrez-vous sur la réunion' + accept mesreunions.numerique-interieur.com
+2026-05-17T21:42:04+02:00 - e82eca9 - etiquet : fix(transcript): replié + audio interne (transferred) + détection purge + sync audio↔text + renommage speaker
 2026-05-17T21:42:04+02:00 - 44fab7f - etiquet : fix(transcript): replié + audio interne (transferred) + détection purge + sync audio↔text + renommage speaker
+2026-05-17T21:29:38+02:00 - 9aeafeb - etiquet : chore(feedback): affichage dédié pour les feedbacks type='correction' (mes feedbacks + admin)
 2026-05-17T21:29:38+02:00 - 48ba74e - etiquet : chore(feedback): affichage dédié pour les feedbacks type='correction' (mes feedbacks + admin)
+2026-05-17T21:27:52+02:00 - b3df0bc - etiquet : feat(glossary+correction): glossaire éditable + correction inline transcription + ré-écoute audio par bloc
 2026-05-17T21:27:52+02:00 - 6edb2fd - etiquet : feat(glossary+correction): glossaire éditable + correction inline transcription + ré-écoute audio par bloc
+2026-05-17T21:01:28+02:00 - b95c8d3 - etiquet : fix(feedback): bloc en bas de fiche + ligne pointillée entre regen/pouce + bloc compacté + fix hover bouton
 2026-05-17T21:01:28+02:00 - 81ebd6d - etiquet : fix(feedback): bloc en bas de fiche + ligne pointillée entre regen/pouce + bloc compacté + fix hover bouton
 2026-05-17T20:53:01+02:00 - 542aa6e - etiquet : fix(feedback): ordre fiche détail + warning régen full + [hidden] qui masque vraiment
+2026-05-17T20:53:01+02:00 - 4723a4b - etiquet : fix(feedback): ordre fiche détail + warning régen full + [hidden] qui masque vraiment
+2026-05-17T19:10:13+02:00 - f968958 - etiquet : feat(feedback): pouce ↑/↓ + régénération + 'Mes feedbacks' + console admin
 2026-05-17T19:10:13+02:00 - 0eaa8bd - etiquet : feat(feedback): pouce ↑/↓ + régénération + 'Mes feedbacks' + console admin
 2026-05-17T18:38:32+02:00 - 9824cb3 - etiquet : chore(ux): unification libellés exports — 3 macro-sorties + intermédiaires étiquetés
+2026-05-17T18:38:32+02:00 - 512aa9e - etiquet : chore(ux): unification libellés exports — 3 macro-sorties + intermédiaires étiquetés
 2026-05-17T17:31:47+02:00 - a04af9d - etiquet : chore(ux): libellés exports auto-porteurs (néophyte) — suppression jargon
+2026-05-17T17:31:47+02:00 - 785e564 - etiquet : chore(ux): libellés exports auto-porteurs (néophyte) — suppression jargon
+2026-05-17T17:27:52+02:00 - d82d335 - etiquet : feat(ux): en-tête exports — ajoute la nature du document (transcription / CR / reformulation…)
 2026-05-17T17:27:52+02:00 - 98c0a9e - etiquet : feat(ux): en-tête exports — ajoute la nature du document (transcription / CR / reformulation…)
 2026-05-17T17:14:27+02:00 - 06b587d - etiquet : feat(ux): exports — en-tête commun (titre + RF + date + durée + key points) + saut de paragraphe avant chaque interlocuteur dans le discours indirect
+2026-05-17T17:14:27+02:00 - 036c58d - etiquet : feat(ux): exports — en-tête commun (titre + RF + date + durée + key points) + saut de paragraphe avant chaque interlocuteur dans le discours indirect
+2026-05-17T16:57:11+02:00 - cd0d199 - etiquet : feat(ux): swap (i)↔Uploadé le + DOCX/ODT/MD/TXT interprètent MD (bold/italic/blockquote/speaker)
 2026-05-17T16:57:11+02:00 - a501271 - etiquet : feat(ux): swap (i)↔Uploadé le + DOCX/ODT/MD/TXT interprètent MD (bold/italic/blockquote/speaker)
 2026-05-17T16:45:30+02:00 - aa9624f - etiquet : feat(ux): fiche détail — boutons ✓/↺ unifiés sur titre + date, 'Uploadé le' à droite
+2026-05-17T16:45:30+02:00 - 913f02f - etiquet : feat(ux): fiche détail — boutons ✓/↺ unifiés sur titre + date, 'Uploadé le' à droite
 2026-05-17T16:18:48+02:00 - b5089fb - etiquet : fix(ux): tab Mes réunions — pastilles plus discrètes (50%) + ring statique reflétant le %
+2026-05-17T16:18:48+02:00 - 487c337 - etiquet : fix(ux): tab Mes réunions — pastilles plus discrètes (50%) + ring statique reflétant le %
+2026-05-17T16:03:39+02:00 - e76693c - etiquet : fix(ux): tab Mes réunions — 4 fixes itération utilisateur
 2026-05-17T16:03:39+02:00 - 3ee0ba4 - etiquet : fix(ux): tab Mes réunions — 4 fixes itération utilisateur
+2026-05-17T15:41:41+02:00 - 6479474 - etiquet : feat(ux): rebuild complet tab 'Mes réunions (IA)' — header séparé, SVG status, Alt-bulk-delete
 2026-05-17T15:41:41+02:00 - 57eccdf - etiquet : feat(ux): rebuild complet tab 'Mes réunions (IA)' — header séparé, SVG status, Alt-bulk-delete
 2026-05-17T15:05:01+02:00 - 81a8e93 - etiquet : fix(ux): liste réunions — compactage colonnes (status icône, source icône, durée alignée)
+2026-05-17T15:05:01+02:00 - 5df705b - etiquet : fix(ux): liste réunions — compactage colonnes (status icône, source icône, durée alignée)
 2026-05-17T14:49:30+02:00 - f222247 - etiquet : Merge pull request #21 from IA-Generative/feat/ux-quick-wins-p0
+2026-05-17T14:49:30+02:00 - 3040e53 - etiquet : Merge pull request #21 from IA-Generative/feat/ux-quick-wins-p0
 2026-05-17T14:41:45+02:00 - ed54e61 - etiquet : feat(ux): TKT-211 — bannir 'purge' user-facing → 'supprimé automatiquement'
+2026-05-17T14:41:45+02:00 - b8d9a34 - etiquet : feat(ux): TKT-211 — bannir 'purge' user-facing → 'supprimé automatiquement'
 2026-05-17T14:38:09+02:00 - fa980b4 - etiquet : feat(ux): TKT-115 — déduplique 'Corbeille' (onglet + accordéon → callout)
+2026-05-17T14:38:09+02:00 - 7cd0a27 - etiquet : feat(ux): TKT-115 — déduplique 'Corbeille' (onglet + accordéon → callout)
 2026-05-17T14:37:22+02:00 - 9ffdfd0 - etiquet : feat(ux): TKT-107 — sous-titre 'Thématiques additionnelles' en fr-h6
+2026-05-17T14:37:22+02:00 - 93ba9b1 - etiquet : feat(ux): TKT-107 — sous-titre 'Thématiques additionnelles' en fr-h6
+2026-05-17T14:36:43+02:00 - ce259c3 - etiquet : feat(ux): TKT-101 — pastilles ● 6 px → fr-tag fr-tag--sm avec libellé + icône
 2026-05-17T14:36:43+02:00 - a589c37 - etiquet : feat(ux): TKT-101 — pastilles ● 6 px → fr-tag fr-tag--sm avec libellé + icône
 2026-05-17T14:31:17+02:00 - b3be39a - etiquet : feat(ux): TKT-103 — durées et dates au format français lisible
+2026-05-17T14:31:17+02:00 - 1527f14 - etiquet : feat(ux): TKT-103 — durées et dates au format français lisible
 2026-05-17T13:39:42+02:00 - ad259a2 - etiquet : docs(ux): add UX/UI backlog du 2026-05-17 (5 P0, 16 P1, 12 P2, 3 chantiers)
 2026-05-17T12:54:55+02:00 - a0eeb93 - etiquet : feat(netpol): autorise egress internal-ingester → VM diarization (51.159.184.192:8080)
+2026-05-17T12:39:03+02:00 - c785d57 - etiquet : feat(diarization): backend selector DIARIZATION_BACKEND=kevent|vm-direct
 2026-05-17T12:39:03+02:00 - b604b7a - etiquet : feat(diarization): backend selector DIARIZATION_BACKEND=kevent|vm-direct
 2026-05-17T08:55:46+02:00 - c851543 - etiquet : fix(docker): mydevices-web :8080 → :8094 pour éviter collision écosystème
+2026-05-17T08:55:46+02:00 - 0c9f148 - etiquet : fix(docker): mydevices-web :8080 → :8094 pour éviter collision écosystème
+2026-05-17T08:37:02+02:00 - d28e513 - etiquet : feat(dev): Vite HMR pour itération UI rapide sur mydevices-web
 2026-05-17T08:37:02+02:00 - 5e694fa - etiquet : feat(dev): Vite HMR pour itération UI rapide sur mydevices-web
+2026-05-17T01:32:44+02:00 - bbd4349 - etiquet : test(meeting-prep): fix sys.modules collision entre tests recurrence/email/export
 2026-05-17T01:32:44+02:00 - 152a328 - etiquet : test(meeting-prep): fix sys.modules collision entre tests recurrence/email/export
 2026-05-17T01:31:31+02:00 - 4d1ea3e - etiquet : docs(meeting-prep): rapport final du chantier v2 (9 lots, 7 PRs)
 2026-05-17T01:31:22+02:00 - fd116c7 - etiquet : test(meeting-prep): garde-fous régression pour les 9 lots v2 (PR-7)
+2026-05-17T01:31:22+02:00 - bb2ec07 - etiquet : test(meeting-prep): garde-fous régression pour les 9 lots v2 (PR-7)
 2026-05-17T01:15:46+02:00 - 7be4d78 - etiquet : feat(meeting-prep): fiche brief — sections Thématiques + Emails (Lot 8+9)
+2026-05-17T01:15:46+02:00 - 6759353 - etiquet : feat(meeting-prep): fiche brief — sections Thématiques + Emails (Lot 8+9)
+2026-05-17T01:13:20+02:00 - 96f63f7 - etiquet : feat(meeting-prep): wizard — thématiques + toggle envoi CR auto (Lot 8+9)
 2026-05-17T01:13:20+02:00 - 2d19920 - etiquet : feat(meeting-prep): wizard — thématiques + toggle envoi CR auto (Lot 8+9)
+2026-05-17T01:10:35+02:00 - b0726eb - etiquet : feat(meeting-prep): hook ingester post-transcription → /meetings/<id>/send-cr (Lot 8)
 2026-05-17T01:10:35+02:00 - 6b935b6 - etiquet : feat(meeting-prep): hook ingester post-transcription → /meetings/<id>/send-cr (Lot 8)
 2026-05-17T01:10:26+02:00 - b50a9b8 - etiquet : feat(meeting-prep): module mailer SMTP + endpoint /meetings/<id>/send-cr (Lot 8)
+2026-05-17T01:10:26+02:00 - 1e794ed - etiquet : feat(meeting-prep): module mailer SMTP + endpoint /meetings/<id>/send-cr (Lot 8)
 2026-05-17T01:10:14+02:00 - c8b50b6 - etiquet : feat(meeting-prep): migration 014 + modèle themes/send_cr_email/main-courante (Lot 8+9)
+2026-05-17T01:10:14+02:00 - 685801e - etiquet : feat(meeting-prep): migration 014 + modèle themes/send_cr_email/main-courante (Lot 8+9)
+2026-05-17T00:55:08+02:00 - 176a498 - etiquet : feat(meeting-prep): timeline série + mode readonly preview (Lot 7)
 2026-05-17T00:55:08+02:00 - 022a5dd - etiquet : feat(meeting-prep): timeline série + mode readonly preview (Lot 7)
+2026-05-17T00:54:59+02:00 - a633bbb - etiquet : feat(meeting-prep): helper series-timeline (Lot 7)
 2026-05-17T00:54:59+02:00 - 54c130e - etiquet : feat(meeting-prep): helper series-timeline (Lot 7)
+2026-05-17T00:54:52+02:00 - 78908d9 - etiquet : feat(meeting-prep): enrichir GET /preparations/{id}/series pour timeline (Lot 7)
 2026-05-17T00:54:52+02:00 - 2bdc4c1 - etiquet : feat(meeting-prep): enrichir GET /preparations/{id}/series pour timeline (Lot 7)
+2026-05-17T00:43:04+02:00 - f6fabe1 - etiquet : feat(meeting-prep): bloc récurrence éditable sur la fiche brief (Lot 6)
 2026-05-17T00:43:04+02:00 - 69a9e35 - etiquet : feat(meeting-prep): bloc récurrence éditable sur la fiche brief (Lot 6)
+2026-05-17T00:42:51+02:00 - b8fd17a - etiquet : feat(meeting-prep): bloc récurrence dans le wizard + helper RRULE front (Lot 6)
 2026-05-17T00:42:51+02:00 - 82818f6 - etiquet : feat(meeting-prep): bloc récurrence dans le wizard + helper RRULE front (Lot 6)
+2026-05-17T00:42:41+02:00 - fa5e316 - etiquet : feat(meeting-prep): endpoints récurrence (create + amend) côté DTA & web (Lot 6)
 2026-05-17T00:42:41+02:00 - 29af571 - etiquet : feat(meeting-prep): endpoints récurrence (create + amend) côté DTA & web (Lot 6)
+2026-05-17T00:42:26+02:00 - cbce86d - etiquet : feat(meeting-prep): migration 013 + modèle récurrence + helper dateutil (Lot 6)
 2026-05-17T00:42:26+02:00 - 168602b - etiquet : feat(meeting-prep): migration 013 + modèle récurrence + helper dateutil (Lot 6)
 2026-05-17T00:26:33+02:00 - e9e4e8e - etiquet : feat(meeting-prep): bouton "Télécharger" → TXT/MD/DOCX/ODT (Lot 4)
+2026-05-17T00:26:33+02:00 - 5eb3930 - etiquet : feat(meeting-prep): bouton "Télécharger" → TXT/MD/DOCX/ODT (Lot 4)
 2026-05-17T00:26:25+02:00 - 89968e1 - etiquet : feat(meeting-prep): backend export DOCX/ODT d'une préparation (Lot 4)
+2026-05-17T00:26:25+02:00 - 2f5e3bc - etiquet : feat(meeting-prep): backend export DOCX/ODT d'une préparation (Lot 4)
 2026-05-17T00:16:08+02:00 - c2ff79d - etiquet : feat(meeting-prep): refonte 4 carrés bleus + participants éditables (Lot 3/5)
+2026-05-17T00:16:08+02:00 - 5be5dda - etiquet : feat(meeting-prep): refonte 4 carrés bleus + participants éditables (Lot 3/5)
+2026-05-17T00:08:28+02:00 - a8fe44a - etiquet : feat(meeting-prep): backend endpoints glossaire + participants (Lot 3/5)
 2026-05-17T00:08:28+02:00 - 1739395 - etiquet : feat(meeting-prep): backend endpoints glossaire + participants (Lot 3/5)
 2026-05-17T00:01:37+02:00 - ac2a295 - etiquet : feat(meeting-prep): génération async + polling progression (Lot 2)
+2026-05-17T00:01:37+02:00 - 495e4b1 - etiquet : feat(meeting-prep): génération async + polling progression (Lot 2)
 2026-05-17T00:01:12+02:00 - a4d36eb - etiquet : feat(meeting-prep): bouton "Vérifier l'accès" Drive (Lot 1)
+2026-05-17T00:01:12+02:00 - 4a81a72 - etiquet : feat(meeting-prep): bouton "Vérifier l'accès" Drive (Lot 1)
+2026-05-16T22:59:31+02:00 - 93e013e - etiquet : feat(mydevices-web): déplace "Enrôler" en bouton dans tab Mes appareils
 2026-05-16T22:59:31+02:00 - 2df73ba - etiquet : feat(mydevices-web): déplace "Enrôler" en bouton dans tab Mes appareils
 2026-05-16T21:49:55+02:00 - 65841d9 - etiquet : docs(mydevices-web): rapport UX-Refonte-3 — 3 chantiers + build + rollout
+2026-05-16T21:46:51+02:00 - a506de4 - etiquet : feat(mydevices-web): wizard nouvelle préparation en modale fullscreen DSFR (chantier UX-Refonte-3 #3)
 2026-05-16T21:46:51+02:00 - 28a6ffd - etiquet : feat(mydevices-web): wizard nouvelle préparation en modale fullscreen DSFR (chantier UX-Refonte-3 #3)
+2026-05-16T21:42:45+02:00 - af3eb2a - etiquet : feat(mydevices-web): skeleton + cache fiche détail (chantier UX-Refonte-3 #2)
 2026-05-16T21:42:45+02:00 - 8d3f8b2 - etiquet : feat(mydevices-web): skeleton + cache fiche détail (chantier UX-Refonte-3 #2)
+2026-05-16T21:39:45+02:00 - e4a412f - etiquet : feat(mydevices-web): liste réunions en fr-table triable (chantier UX-Refonte-3 #1)
 2026-05-16T21:39:45+02:00 - dc34487 - etiquet : feat(mydevices-web): liste réunions en fr-table triable (chantier UX-Refonte-3 #1)
+2026-05-16T20:48:47+02:00 - e1926d5 - etiquet : test(mydevices-web): garde-fou inline handlers publiés sur window + rapport
 2026-05-16T20:48:47+02:00 - 8f2fe5f - etiquet : test(mydevices-web): garde-fou inline handlers publiés sur window + rapport
+2026-05-16T20:48:38+02:00 - 5eaa14b - etiquet : fix(mydevices-web): bug 2 — retire override .tab-btn qui casse contraste DSFR
 2026-05-16T20:48:38+02:00 - 4016605 - etiquet : fix(mydevices-web): bug 2 — retire override .tab-btn qui casse contraste DSFR
+2026-05-16T20:48:29+02:00 - d9ef6ff - etiquet : fix(mydevices-web): publie handlers legacy sur window — débloque bugs 1/3/4
 2026-05-16T20:48:29+02:00 - 261ce74 - etiquet : fix(mydevices-web): publie handlers legacy sur window — débloque bugs 1/3/4
 2026-05-16T18:32:33+02:00 - f2b4669 - etiquet : refactor(mydevices-web): publie loadSessions/pickDefaultTab + rapport PR-UX-Devices
+2026-05-16T18:32:33+02:00 - 33e7d1b - etiquet : refactor(mydevices-web): publie loadSessions/pickDefaultTab + rapport PR-UX-Devices
+2026-05-16T18:31:16+02:00 - 7bcdd89 - etiquet : refactor(mydevices-web): extrait preparations de legacy.js vers tabs/preparations.js + refonte DSFR
 2026-05-16T18:31:16+02:00 - 7b4b516 - etiquet : refactor(mydevices-web): extrait preparations de legacy.js vers tabs/preparations.js + refonte DSFR
+2026-05-16T18:26:08+02:00 - bd45e17 - etiquet : refactor(mydevices-web): extrait devices de legacy.js vers tabs/devices.js
 2026-05-16T18:26:08+02:00 - 48a34ec - etiquet : refactor(mydevices-web): extrait devices de legacy.js vers tabs/devices.js
+2026-05-16T18:17:41+02:00 - e875db2 - etiquet : refactor(mydevices-web): tab meetings — module mount/unmount + délégation DSFR
 2026-05-16T18:17:41+02:00 - 3e11d1f - etiquet : refactor(mydevices-web): tab meetings — module mount/unmount + délégation DSFR
+2026-05-16T17:35:44+02:00 - bfb33c2 - etiquet : test(mydevices-web): garde-fous fr-tabs DSFR + rapport refonte UX onglets
 2026-05-16T17:35:44+02:00 - 2225c16 - etiquet : test(mydevices-web): garde-fous fr-tabs DSFR + rapport refonte UX onglets
+2026-05-16T17:32:45+02:00 - b579aad - etiquet : feat(mydevices-web): tab useful-data DSFR (accordions glossaire/drive/corbeille + cards à-venir)
 2026-05-16T17:32:45+02:00 - 12e1479 - etiquet : feat(mydevices-web): tab useful-data DSFR (accordions glossaire/drive/corbeille + cards à-venir)
+2026-05-16T17:30:33+02:00 - f9987c6 - etiquet : feat(mydevices-web): nav fr-tabs DSFR natif + orchestrateur tab-manager + onglet admin
 2026-05-16T17:30:33+02:00 - 271684c - etiquet : feat(mydevices-web): nav fr-tabs DSFR natif + orchestrateur tab-manager + onglet admin
 2026-05-16T14:27:23+02:00 - 6b0a8cc - etiquet : docs(mydevices-web): mapping DSFR + reste-à-faire refonte UI
+2026-05-16T14:27:17+02:00 - be5a63d - etiquet : feat(mydevices-web): migre index.html vers DSFR auto-hébergé + ajoute fr-footer
 2026-05-16T14:27:17+02:00 - 96d6422 - etiquet : feat(mydevices-web): migre index.html vers DSFR auto-hébergé + ajoute fr-footer
 2026-05-16T14:27:02+02:00 - 230a78b - etiquet : feat(mydevices-web): installe DSFR auto-hébergé via npm
+2026-05-16T14:27:02+02:00 - 08551c8 - etiquet : feat(mydevices-web): installe DSFR auto-hébergé via npm
 2026-05-16T14:25:32+02:00 - 33eafc9 - etiquet : feat(mydevices-web): PR3-v2 modules backend complets (auth/devices/sessions/drive_sync)
+2026-05-16T14:24:24+02:00 - 8a5749b - etiquet : test(mydevices-web): regression e2e modules auth/devices/sessions PR3-v2
 2026-05-16T14:24:24+02:00 - 710505c - etiquet : test(mydevices-web): regression e2e modules auth/devices/sessions PR3-v2
+2026-05-16T14:22:58+02:00 - 7c7e389 - etiquet : refactor(mydevices-web): main.py reduit au bootstrap minimal (3047 -> 194 lignes)
 2026-05-16T14:22:58+02:00 - 61382e9 - etiquet : refactor(mydevices-web): main.py reduit au bootstrap minimal (3047 -> 194 lignes)
 2026-05-16T14:22:48+02:00 - faaa78d - etiquet : feat(mydevices-web): extrait module auth (routes OIDC /login, /callback, /logout)
+2026-05-16T14:22:48+02:00 - 44a9da4 - etiquet : feat(mydevices-web): extrait module auth (routes OIDC /login, /callback, /logout)
 2026-05-16T14:22:37+02:00 - 69bfcf9 - etiquet : feat(mydevices-web): extrait module devices (QR/enroll/retention/my-devices)
+2026-05-16T14:22:37+02:00 - 4f7744f - etiquet : feat(mydevices-web): extrait module devices (QR/enroll/retention/my-devices)
 2026-05-16T14:22:27+02:00 - fe16848 - etiquet : feat(mydevices-web): extrait module sessions (uploads/corbeille/transcripts)
+2026-05-16T14:22:27+02:00 - cfed155 - etiquet : feat(mydevices-web): extrait module sessions (uploads/corbeille/transcripts)
+2026-05-16T14:13:15+02:00 - be31660 - etiquet : refactor(mydevices-web): module drive_sync expose service.py + runtime registry
 2026-05-16T14:13:15+02:00 - 3facc68 - etiquet : refactor(mydevices-web): module drive_sync expose service.py + runtime registry
 2026-05-16T14:05:27+02:00 - 6c7a4b4 - etiquet : Merge pull request #19 from IA-Generative/claude/musing-lichterman-55fa98
+2026-05-16T14:05:27+02:00 - 24c00c2 - etiquet : Merge pull request #19 from IA-Generative/claude/musing-lichterman-55fa98
 2026-05-16T13:55:52+02:00 - bbc3f4b - etiquet : docs(mydevices-web): rapport PR4 + mapping JS → modules
 2026-05-16T13:55:45+02:00 - 8b6e5a6 - etiquet : test(mydevices-web): adapt tests template pour PR4 (no-inline-JS, parse modules ES)
+2026-05-16T13:55:45+02:00 - 3bf0d30 - etiquet : test(mydevices-web): adapt tests template pour PR4 (no-inline-JS, parse modules ES)
+2026-05-16T13:55:34+02:00 - 9da4769 - etiquet : chore(mydevices-web): retire aliases brief/brief_json (front migré sur preparation.content)
 2026-05-16T13:55:34+02:00 - 1fa1032 - etiquet : chore(mydevices-web): retire aliases brief/brief_json (front migré sur preparation.content)
+2026-05-16T13:55:25+02:00 - a2bb41d - etiquet : refactor(mydevices-web): index.html réduit au shell minimal (5142 → 1815 lignes, -65%)
 2026-05-16T13:55:25+02:00 - 9d5841b - etiquet : refactor(mydevices-web): index.html réduit au shell minimal (5142 → 1815 lignes, -65%)
 2026-05-16T13:55:12+02:00 - f3e7ee3 - etiquet : feat(mydevices-web): wrappers documentaires tabs/{devices,meetings,preparations,useful-data,admin}.js
+2026-05-16T13:55:12+02:00 - a387dae - etiquet : feat(mydevices-web): wrappers documentaires tabs/{devices,meetings,preparations,useful-data,admin}.js
+2026-05-16T13:55:02+02:00 - 9431aea - etiquet : feat(mydevices-web): extrait JS inline vers frontend/legacy.js (3365 lignes)
 2026-05-16T13:55:02+02:00 - 5c5b34f - etiquet : feat(mydevices-web): extrait JS inline vers frontend/legacy.js (3365 lignes)
+2026-05-16T13:54:50+02:00 - 92bb80b - etiquet : feat(mydevices-web): squelette shell + lib ES (bootstrap, api, auth, toast)
 2026-05-16T13:54:50+02:00 - 92a6c80 - etiquet : feat(mydevices-web): squelette shell + lib ES (bootstrap, api, auth, toast)
 2026-05-16T13:26:30+02:00 - 15cc52c - etiquet : feat(infra): PR0 toolchain Vite prêt pour modularisation front
+2026-05-16T13:25:04+02:00 - ed0eb70 - etiquet : feat(mydevices-web): template partial pour loader le bundle Vite
 2026-05-16T13:25:04+02:00 - 2a912f0 - etiquet : feat(mydevices-web): template partial pour loader le bundle Vite
 2026-05-16T13:25:01+02:00 - 84899de - etiquet : feat(infra): Dockerfile multi-stage avec build Vite pour mydevices-web
+2026-05-16T13:25:01+02:00 - 3a9daf5 - etiquet : feat(infra): Dockerfile multi-stage avec build Vite pour mydevices-web
+2026-05-16T13:24:54+02:00 - ce7e2f2 - etiquet : feat(mydevices-web): structure Vite (package.json, vite.config.js, shell placeholder)
 2026-05-16T13:24:54+02:00 - bda9f83 - etiquet : feat(mydevices-web): structure Vite (package.json, vite.config.js, shell placeholder)
 2026-05-16T13:20:56+02:00 - 2bf0ea6 - etiquet : docs(mydevices-web): rapport PR3 — modules back + endpoints v2
 2026-05-16T13:19:45+02:00 - 7cad8ca - etiquet : test(mydevices-web): regression e2e blueprints PR3 + adapt unit tests
+2026-05-16T13:19:45+02:00 - 0f9d081 - etiquet : test(mydevices-web): regression e2e blueprints PR3 + adapt unit tests
 2026-05-16T13:16:03+02:00 - c879ccb - etiquet : docs(diarization): benchmark plan, baseline audit, results, recommendation (#20)
+2026-05-16T13:16:03+02:00 - 9e3d6f2 - etiquet : docs(diarization): benchmark plan, baseline audit, results, recommendation (#20)
+2026-05-16T13:13:01+02:00 - 437d2a1 - etiquet : refactor(mydevices-web): retire endpoints /api/meeting-prep/* legacy
 2026-05-16T13:13:01+02:00 - 23fab73 - etiquet : refactor(mydevices-web): retire endpoints /api/meeting-prep/* legacy
 2026-05-16T13:12:45+02:00 - d8f42df - etiquet : feat(mydevices-web): extrait module meetings (blueprint v2 + reprocess)
+2026-05-16T13:12:45+02:00 - 58d58f5 - etiquet : feat(mydevices-web): extrait module meetings (blueprint v2 + reprocess)
+2026-05-16T13:12:37+02:00 - cc5e834 - etiquet : feat(mydevices-web): extrait module preparations (blueprint v2)
 2026-05-16T13:12:37+02:00 - 8ab0dbb - etiquet : feat(mydevices-web): extrait module preparations (blueprint v2)
+2026-05-16T13:12:28+02:00 - ffa6dc4 - etiquet : refactor(mydevices-web): shared helpers + skeleton modules PR3
 2026-05-16T13:12:28+02:00 - 8642bfa - etiquet : refactor(mydevices-web): shared helpers + skeleton modules PR3
 2026-05-16T12:05:40+02:00 - 47e31e0 - etiquet : docs(infra): rapport rebranding — tag image cloud publié
 2026-05-16T12:04:20+02:00 - 19a4464 - etiquet : feat(infra): rebranding 9 services self-explanatory (prêt rollout prod)
+2026-05-16T11:55:55+02:00 - 7ac4c59 - etiquet : docs(infra): rebrand 9 services dans docs + tests
 2026-05-16T11:55:55+02:00 - 33c042e - etiquet : docs(infra): rebrand 9 services dans docs + tests
+2026-05-16T11:55:47+02:00 - 413c10f - etiquet : refactor(services): code Python + env vars + templates rebrand
 2026-05-16T11:55:47+02:00 - 370150e - etiquet : refactor(services): code Python + env vars + templates rebrand
 2026-05-16T11:55:40+02:00 - 9622cc6 - etiquet : refactor(k8s): manifestes rebrand 9 services self-explanatory
+2026-05-16T11:55:40+02:00 - 3ee95e8 - etiquet : refactor(k8s): manifestes rebrand 9 services self-explanatory
 2026-05-16T11:55:26+02:00 - 64e7955 - etiquet : refactor(infra): compose + scripts rebrand 9 services self-explanatory
+2026-05-16T11:55:26+02:00 - 4e994a4 - etiquet : refactor(infra): compose + scripts rebrand 9 services self-explanatory
+2026-05-16T11:52:45+02:00 - f3fb552 - etiquet : refactor(services): renomme les 8 dossiers services/ vers les noms self-explanatory
 2026-05-16T11:52:45+02:00 - ea4f435 - etiquet : refactor(services): renomme les 8 dossiers services/ vers les noms self-explanatory
+2026-05-16T11:36:37+02:00 - 8a8a652 - etiquet : feat(infra): mode dev partagé owuicore + bascule SSO mes-reunions
 2026-05-16T11:36:37+02:00 - 6714dad - etiquet : feat(infra): mode dev partagé owuicore + bascule SSO mes-reunions
 2026-05-16T11:29:14+02:00 - 9d8ac29 - etiquet : feat(file-mover): PR2d création meetings + auto-link via preparations
+2026-05-16T11:27:39+02:00 - eeb6aa5 - etiquet : test(tests): e2e file-mover meeting creation + auto-link via preparation (PR2d)
 2026-05-16T11:27:39+02:00 - c4ebd0a - etiquet : test(tests): e2e file-mover meeting creation + auto-link via preparation (PR2d)
 2026-05-16T11:21:17+02:00 - f85d998 - etiquet : style(file-mover): retire les antislashes parasites devant les backticks dans les docstrings
+2026-05-16T11:21:17+02:00 - 3bc081b - etiquet : style(file-mover): retire les antislashes parasites devant les backticks dans les docstrings
 2026-05-16T11:20:37+02:00 - b2cd9cf - etiquet : chore(db): supprime alias MeetingBrief + properties legacy (refacto PR2d terminé)
+2026-05-16T11:20:37+02:00 - 9a19584 - etiquet : chore(db): supprime alias MeetingBrief + properties legacy (refacto PR2d terminé)
+2026-05-16T11:18:39+02:00 - ee7448d - etiquet : feat(file-mover): crée une Meeting à l'upload audio (+ auto-link via preparation)
 2026-05-16T11:18:39+02:00 - 82902b1 - etiquet : feat(file-mover): crée une Meeting à l'upload audio (+ auto-link via preparation)
+2026-05-16T11:18:16+02:00 - 6b78b77 - etiquet : refactor(file-mover): site 4+5 — auto-link audio↔preparation via meeting
 2026-05-16T11:18:16+02:00 - 0e0d5b9 - etiquet : refactor(file-mover): site 4+5 — auto-link audio↔preparation via meeting
+2026-05-16T11:16:32+02:00 - 7091b2e - etiquet : refactor(file-mover): site 3 — glossary_correction lit Preparation via Meeting
 2026-05-16T11:16:32+02:00 - 5352d25 - etiquet : refactor(file-mover): site 3 — glossary_correction lit Preparation via Meeting
 2026-05-16T11:15:51+02:00 - 3db1c75 - etiquet : refactor(file-mover): site 2 — serializer audio expose meeting_id + preparation_id
+2026-05-16T11:15:51+02:00 - 02af8a2 - etiquet : refactor(file-mover): site 2 — serializer audio expose meeting_id + preparation_id
 2026-05-16T11:15:12+02:00 - 6bf2210 - etiquet : refactor(file-mover): site 1 — imports modèles Preparation + Meeting
+2026-05-16T11:15:12+02:00 - 067b36d - etiquet : refactor(file-mover): site 1 — imports modèles Preparation + Meeting
 2026-05-16T10:50:09+02:00 - 021c13d - etiquet : docs(mydevices): rapport PR2c — split briefs livré, tests verts
 2026-05-16T10:49:05+02:00 - f602bbc - etiquet : test(tests): e2e token-issuer preparations + meetings + auto-link
+2026-05-16T10:49:05+02:00 - f078f69 - etiquet : test(tests): e2e token-issuer preparations + meetings + auto-link
+2026-05-16T10:47:11+02:00 - f6171a2 - etiquet : refactor(code-generator): wrappers HTTP vers nouveaux endpoints preparations/meetings
 2026-05-16T10:47:11+02:00 - b045026 - etiquet : refactor(code-generator): wrappers HTTP vers nouveaux endpoints preparations/meetings
 2026-05-16T10:39:53+02:00 - d7d6f68 - etiquet : refactor(token-issuer): endpoints /api/v1/{preparations,meetings} (remplace briefs)
+2026-05-16T10:39:53+02:00 - 46b1461 - etiquet : refactor(token-issuer): endpoints /api/v1/{preparations,meetings} (remplace briefs)
 2026-05-16T10:39:34+02:00 - fe6d44e - etiquet : feat(db): modèles SQLAlchemy Preparation + Meeting (split MeetingBrief)
+2026-05-16T10:39:34+02:00 - 1d4e326 - etiquet : feat(db): modèles SQLAlchemy Preparation + Meeting (split MeetingBrief)
 2026-05-16T04:47:13+02:00 - 99fdf72 - etiquet : docs(mydevices): rapport v2 + blockers v2 (PR0 sautée, PR1+PR2a livrées)
+2026-05-16T04:44:30+02:00 - d24486b - etiquet : feat(db): migration 012 split meeting_briefs vers preparations + meetings
 2026-05-16T04:44:30+02:00 - a80d3ac - etiquet : feat(db): migration 012 split meeting_briefs vers preparations + meetings
 2026-05-16T04:41:13+02:00 - 4f80f42 - etiquet : refactor(mydevices): extrait INDEX_TEMPLATE vers fichier Jinja externe
+2026-05-16T04:41:13+02:00 - 0ab95a5 - etiquet : refactor(mydevices): extrait INDEX_TEMPLATE vers fichier Jinja externe
 2026-05-16T04:20:37+02:00 - 6cb28ad - etiquet : docs(mydevices): cartographie refacto + arrêt propre étape 0
+2026-05-15T20:52:17+02:00 - eea8015 - etiquet : feat(meeting-prep): rendu détail brief élégant + libellé header dynamique par onglet
 2026-05-15T20:52:17+02:00 - 49b98d5 - etiquet : feat(meeting-prep): rendu détail brief élégant + libellé header dynamique par onglet
+2026-05-15T20:42:20+02:00 - 4944692 - etiquet : fix(meeting-prep): révèle de nouveau la liste des briefs dans l'onglet préparation
 2026-05-15T20:42:20+02:00 - 3768809 - etiquet : fix(meeting-prep): révèle de nouveau la liste des briefs dans l'onglet préparation
+2026-05-15T20:37:25+02:00 - fe946a9 - etiquet : feat(meeting-prep): éditeur structuré de brief + renommage onglet (#18)
 2026-05-15T20:37:25+02:00 - f31851e - etiquet : feat(meeting-prep): éditeur structuré de brief + renommage onglet (#18)
+2026-05-15T20:20:48+02:00 - a0ea35a - etiquet : feat(meeting-prep): v2 — auto-link audio↔brief, reprocess glossaire amendé, chaînage série, glossaire utilisateur global (#17)
 2026-05-15T20:20:48+02:00 - 108fbd6 - etiquet : feat(meeting-prep): v2 — auto-link audio↔brief, reprocess glossaire amendé, chaînage série, glossaire utilisateur global (#17)
+2026-05-15T10:00:49+02:00 - 9dd9aee - etiquet : diag(meeting-prep): probe media-auth avec X-Original-URL pour voir les headers SigV4
 2026-05-15T10:00:49+02:00 - 6f843ed - etiquet : diag(meeting-prep): probe media-auth avec X-Original-URL pour voir les headers SigV4
 2026-05-15T09:49:46+02:00 - fbd60ca - etiquet : diag(meeting-prep): probe media-auth endpoint dans test-drive
+2026-05-15T09:49:46+02:00 - cbc4547 - etiquet : diag(meeting-prep): probe media-auth endpoint dans test-drive
 2026-05-15T09:43:03+02:00 - a36adee - etiquet : feat(meeting-prep): probe download/ sans suivre redirects dans test-drive
+2026-05-15T09:43:03+02:00 - 4d4184a - etiquet : feat(meeting-prep): probe download/ sans suivre redirects dans test-drive
+2026-05-15T09:23:48+02:00 - 3bc4397 - etiquet : fix(meeting-prep): télécharger via url_permalink (API) au lieu de url (media)
 2026-05-15T09:23:48+02:00 - 0be7df7 - etiquet : fix(meeting-prep): télécharger via url_permalink (API) au lieu de url (media)
+2026-05-14T23:22:33+02:00 - 628bc49 - etiquet : feat(meeting-prep): probe ciblé children/ + body 403 dans test-drive
 2026-05-14T23:22:33+02:00 - 60a6165 - etiquet : feat(meeting-prep): probe ciblé children/ + body 403 dans test-drive
+2026-05-14T23:16:20+02:00 - fc837cf - etiquet : feat(meeting-prep): diagnostic identité dans /api/meeting-prep/test-drive
 2026-05-14T23:16:20+02:00 - 78047de - etiquet : feat(meeting-prep): diagnostic identité dans /api/meeting-prep/test-drive
+2026-05-14T23:07:41+02:00 - a1856d1 - etiquet : fix(meeting-prep): distinguer 401 (session) et 403 (permission) sur Drive
 2026-05-14T23:07:41+02:00 - 40227db - etiquet : fix(meeting-prep): distinguer 401 (session) et 403 (permission) sur Drive
+2026-05-14T22:53:14+02:00 - 66b02c6 - etiquet : feat(meeting-prep): wizard améliorations — Drive optionnel, types de réunion, test d'accès (#16)
 2026-05-14T22:53:14+02:00 - 5698fc5 - etiquet : feat(meeting-prep): wizard améliorations — Drive optionnel, types de réunion, test d'accès (#16)
 2026-05-14T22:52:00+02:00 - db442c4 - etiquet : test(meeting-prep): tests Flask route /api/meeting-prep + /test-drive
+2026-05-14T22:52:00+02:00 - 7e3c316 - etiquet : test(meeting-prep): tests Flask route /api/meeting-prep + /test-drive
 2026-05-14T22:43:44+02:00 - ce4a8d4 - etiquet : test(meeting-prep): non-régression + nouveaux cas wizard
+2026-05-14T22:43:44+02:00 - bbee41d - etiquet : test(meeting-prep): non-régression + nouveaux cas wizard
+2026-05-14T22:43:35+02:00 - dd3a50a - etiquet : feat(meeting-prep): dossier Drive optionnel + select type + bouton test-drive
 2026-05-14T22:43:35+02:00 - 09199d6 - etiquet : feat(meeting-prep): dossier Drive optionnel + select type + bouton test-drive
+2026-05-14T22:43:14+02:00 - f470a50 - etiquet : feat(meeting-prep): 4 nouveaux prompts par type (1:1, projet, COPIL, brainstorm)
 2026-05-14T22:43:14+02:00 - 5212b6d - etiquet : feat(meeting-prep): 4 nouveaux prompts par type (1:1, projet, COPIL, brainstorm)
 2026-05-14T22:16:26+02:00 - d3dd35d - etiquet : fix(infra): code-generator a besoin de RabbitMQ + CNP egress pour /api/my-upload
 2026-05-14T22:16:26+02:00 - 1ba71a5 - etiquet : chore(prod-beta): activer meeting-prep côté serveur (OIDC offline_access + Drive + LiteLLM)
+2026-05-14T21:46:32+02:00 - f4f81b5 - etiquet : feat(meeting-prep): aligner les briefs sur le pattern objet de mydevices (#15)
 2026-05-14T21:46:32+02:00 - 3c27909 - etiquet : feat(meeting-prep): aligner les briefs sur le pattern objet de mydevices (#15)
+2026-05-14T04:17:59+02:00 - 5922151 - etiquet : ui(mydevices): tri + compteur sur la même ligne que "Mes réunions (IA)"
 2026-05-14T04:17:59+02:00 - 1ee5741 - etiquet : ui(mydevices): tri + compteur sur la même ligne que "Mes réunions (IA)"
+2026-05-14T04:10:28+02:00 - 9cb9393 - etiquet : docs(integrate-with-kevent): corrige cmd migration postgres-internal
 2026-05-14T04:10:28+02:00 - 4fad382 - etiquet : docs(integrate-with-kevent): corrige cmd migration postgres-internal
 2026-05-14T04:09:51+02:00 - 7a4f4fd - etiquet : chore: ignorer datasets/ et reports/ (audio source + rapports locaux)
+2026-05-14T04:09:51+02:00 - 3246bd6 - etiquet : chore: ignorer datasets/ et reports/ (audio source + rapports locaux)
+2026-05-14T04:05:13+02:00 - ddda29e - etiquet : feat(mydevices): upload local fichiers/dossier en batch + drag&drop (palier 4)
 2026-05-14T04:05:13+02:00 - 225ab54 - etiquet : feat(mydevices): upload local fichiers/dossier en batch + drag&drop (palier 4)
 2026-05-14T04:03:05+02:00 - 1415f95 - etiquet : feat(mydevices): fiche détaillée — éditeur date de réunion + rappel date upload (palier 3)
+2026-05-14T04:03:05+02:00 - 0f3e569 - etiquet : feat(mydevices): fiche détaillée — éditeur date de réunion + rappel date upload (palier 3)
 2026-05-14T04:00:22+02:00 - 56c749b - etiquet : feat(mydevices): liste à plat triée par date + hauteur viewport (palier 2)
+2026-05-14T04:00:22+02:00 - 27f1ba6 - etiquet : feat(mydevices): liste à plat triée par date + hauteur viewport (palier 2)
 2026-05-14T03:53:14+02:00 - b2b2bdc - etiquet : feat(mydevices): backend pour override date de réunion + upload local
+2026-05-14T03:53:14+02:00 - 64fefdc - etiquet : feat(mydevices): backend pour override date de réunion + upload local
+2026-05-14T03:39:45+02:00 - 9632263 - etiquet : docs: mise à jour README/ARCHITECTURE/intégration kevent
 2026-05-14T03:39:45+02:00 - 3e84242 - etiquet : docs: mise à jour README/ARCHITECTURE/intégration kevent
+2026-05-13T11:21:40+02:00 - e235064 - etiquet : fix: 2 bugs détectés sur le pipeline transcription live
 2026-05-13T11:21:40+02:00 - c7c6b8c - etiquet : fix: 2 bugs détectés sur le pipeline transcription live
+2026-05-13T11:17:16+02:00 - ce2a065 - etiquet : fix(file-puller): persiste aussi le kevent_job_id à la submission de pyannote
 2026-05-13T11:17:16+02:00 - 1f20938 - etiquet : fix(file-puller): persiste aussi le kevent_job_id à la submission de pyannote
 2026-05-13T11:07:00+02:00 - 46dbbcc - etiquet : feat(token-issuer): rebind par fingerprint quand la PWA perd son localStorage
+2026-05-13T11:07:00+02:00 - 3d1c25e - etiquet : feat(token-issuer): rebind par fingerprint quand la PWA perd son localStorage
 2026-05-13T03:28:43+02:00 - c4cbf6b - etiquet : feat(cr): séparer participants_presents vs participants_cites dans le compte-rendu
+2026-05-13T03:28:43+02:00 - 3e3f95c - etiquet : feat(cr): séparer participants_presents vs participants_cites dans le compte-rendu
 2026-05-13T03:25:39+02:00 - 9a821ac - etiquet : feat(file-puller): kevent_job_id persisté + reprise auto des polls orphelins (Phase 2 + 2bis)
+2026-05-13T03:25:39+02:00 - 89ae693 - etiquet : feat(file-puller): kevent_job_id persisté + reprise auto des polls orphelins (Phase 2 + 2bis)
 2026-05-13T03:17:52+02:00 - e1b8154 - etiquet : feat(token-issuer/pwa): refresh du device_token quand retention bumpée côté mydevices
+2026-05-13T03:17:52+02:00 - c3b1460 - etiquet : feat(token-issuer/pwa): refresh du device_token quand retention bumpée côté mydevices
 2026-05-13T03:14:10+02:00 - ba319b3 - etiquet : fix(upload-portal/pwa): format d'expiration plus honnête + diagnostic
+2026-05-13T03:14:10+02:00 - 06678d0 - etiquet : fix(upload-portal/pwa): format d'expiration plus honnête + diagnostic
 2026-05-13T03:11:27+02:00 - aadea92 - etiquet : test(preview): stub /api/queue-status pour exercer le hint UI en local
+2026-05-13T03:11:27+02:00 - 173961c - etiquet : test(preview): stub /api/queue-status pour exercer le hint UI en local
 2026-05-13T03:10:10+02:00 - db80e92 - etiquet : feat(mydevices): bandeau alerte virus inline + dot rouge fixe en liste et détail
+2026-05-13T03:10:10+02:00 - 6b4b61e - etiquet : feat(mydevices): bandeau alerte virus inline + dot rouge fixe en liste et détail
+2026-05-13T03:07:46+02:00 - 8ce2bd6 - etiquet : feat(mydevices): camion poubelle visible uniquement en mode avancé + nouvelle icône humoristique
 2026-05-13T03:07:46+02:00 - 82d01ca - etiquet : feat(mydevices): camion poubelle visible uniquement en mode avancé + nouvelle icône humoristique
+2026-05-13T03:06:03+02:00 - 8cce647 - etiquet : feat(mydevices): hint file d'attente Kevent visible aussi en liste compacte
 2026-05-13T03:06:03+02:00 - 0eeaa51 - etiquet : feat(mydevices): hint file d'attente Kevent visible aussi en liste compacte
 2026-05-13T03:03:33+02:00 - b7c9b3c - etiquet : fix(mydevices): suppression d'un fichier disparaît immédiatement (optimistic UI)
+2026-05-13T03:03:33+02:00 - 75853c4 - etiquet : fix(mydevices): suppression d'un fichier disparaît immédiatement (optimistic UI)
+2026-05-12T21:34:33+02:00 - dc5d449 - etiquet : fix(file-puller): re-encode audio to FLAC/WAV before pyannote diarization
 2026-05-12T21:34:33+02:00 - 718f486 - etiquet : fix(file-puller): re-encode audio to FLAC/WAV before pyannote diarization
+2026-05-12T14:40:24+02:00 - 4a22b5f - etiquet : feat(mydevices): refonte UX fiche détail — Mode avancé + Alt peek + animations pipeline
 2026-05-12T14:40:24+02:00 - 3b05cc8 - etiquet : feat(mydevices): refonte UX fiche détail — Mode avancé + Alt peek + animations pipeline
 2026-05-12T14:39:52+02:00 - da4cd62 - etiquet : test(code-generator): garde-fou parse JS du INDEX_TEMPLATE
+2026-05-12T14:39:52+02:00 - 8a5e00b - etiquet : test(code-generator): garde-fou parse JS du INDEX_TEMPLATE
 2026-05-12T13:52:36+02:00 - fc06e11 - etiquet : feat(mydevices): onglet Corbeille — restaurer + suppression définitive + balayage auto 30j
+2026-05-12T13:52:36+02:00 - 0c5e8a5 - etiquet : feat(mydevices): onglet Corbeille — restaurer + suppression définitive + balayage auto 30j
 2026-05-12T13:33:32+02:00 - 9e725cd - etiquet : fix(prod-beta): EXTERNAL_PURGE_MAX_AGE_HOURS=720h (était 12h, trop court)
+2026-05-12T12:49:47+02:00 - 81f6787 - etiquet : feat(kevent): chunking LLM medium + timeout 600s + queue-status endpoint + hint UI
 2026-05-12T12:49:47+02:00 - 418450c - etiquet : feat(kevent): chunking LLM medium + timeout 600s + queue-status endpoint + hint UI
+2026-05-12T06:45:04+02:00 - e2fe944 - etiquet : feat(mydevices): dot ● char unicode + modal info tech (i) en détail + plein écran + plus d'auto-refresh
 2026-05-12T06:45:04+02:00 - 16e27a0 - etiquet : feat(mydevices): dot ● char unicode + modal info tech (i) en détail + plein écran + plus d'auto-refresh
 2026-05-12T06:22:23+02:00 - a9a07db - etiquet : fix(mydevices): cacher status-details en liste compact + détail header en 1 ligne + virer banner redondant en détail
+2026-05-12T06:22:23+02:00 - 5e19c08 - etiquet : fix(mydevices): cacher status-details en liste compact + détail header en 1 ligne + virer banner redondant en détail
+2026-05-12T06:10:11+02:00 - 4ae1176 - etiquet : feat(mydevices): pastille inline-block + onglet Mes réunions IA + status dépliable per-step + impact LUFS dépliable
 2026-05-12T06:10:11+02:00 - 45b64bc - etiquet : feat(mydevices): pastille inline-block + onglet Mes réunions IA + status dépliable per-step + impact LUFS dépliable
+2026-05-12T05:51:34+02:00 - b097717 - etiquet : fix(mydevices): pastille align center + header session 'DeviceName CODE (status)'
 2026-05-12T05:51:34+02:00 - 0347053 - etiquet : fix(mydevices): pastille align center + header session 'DeviceName CODE (status)'
+2026-05-12T05:43:28+02:00 - efad176 - etiquet : fix(mydevices): pastille centrée verticalement + titre sans soulignement DSFR
 2026-05-12T05:43:28+02:00 - 261ba36 - etiquet : fix(mydevices): pastille centrée verticalement + titre sans soulignement DSFR
 2026-05-12T00:42:18+02:00 - 426d4bc - etiquet : feat(mydevices): UX refondue — diff-refresh + détail page-mode + rename titre + chevron 'déplier'
+2026-05-12T00:42:18+02:00 - 282cc86 - etiquet : feat(mydevices): UX refondue — diff-refresh + détail page-mode + rename titre + chevron 'déplier'
+2026-05-12T00:27:27+02:00 - fb7326e - etiquet : feat(mydevices): durée audio dans la liste + chevron expandable inline pour le résumé
 2026-05-12T00:27:27+02:00 - c179e49 - etiquet : feat(mydevices): durée audio dans la liste + chevron expandable inline pour le résumé
+2026-05-12T00:20:05+02:00 - a171880 - etiquet : fix(mydevices): vue liste ultra-compact (1 ligne) — dot statut + titre suggéré + date + delete
 2026-05-12T00:20:05+02:00 - 13801b3 - etiquet : fix(mydevices): vue liste ultra-compact (1 ligne) — dot statut + titre suggéré + date + delete
+2026-05-12T00:04:05+02:00 - 930bc0a - etiquet : feat(mydevices): vue 2-pages liste/détail des fichiers + responsive mobile
 2026-05-12T00:04:05+02:00 - 3e95de6 - etiquet : feat(mydevices): vue 2-pages liste/détail des fichiers + responsive mobile
 2026-05-11T23:50:31+02:00 - d18690f - etiquet : fix(mydevices): refresh préserve sélection dropdown + interaction-aware skip + résumé collapsable
+2026-05-11T23:50:31+02:00 - 4fb3cb2 - etiquet : fix(mydevices): refresh préserve sélection dropdown + interaction-aware skip + résumé collapsable
 2026-05-11T23:44:13+02:00 - ce19893 - etiquet : feat(mydevices): transferts en cours avec rail mini + dropdown unique téléchargements
+2026-05-11T23:44:13+02:00 - 238bd4b - etiquet : feat(mydevices): transferts en cours avec rail mini + dropdown unique téléchargements
+2026-05-11T23:40:02+02:00 - e0cef60 - etiquet : fix(mydevices): supprimer bloc 'Activités' haut + préserver position scroll au refresh 15s
 2026-05-11T23:40:02+02:00 - 5956eed - etiquet : fix(mydevices): supprimer bloc 'Activités' haut + préserver position scroll au refresh 15s
+2026-05-11T23:27:03+02:00 - cc0b4f1 - etiquet : feat(mydevices): cache rail quand fichier abouti + bloc transcript avant liens audio
 2026-05-11T23:27:03+02:00 - 4ce9d07 - etiquet : feat(mydevices): cache rail quand fichier abouti + bloc transcript avant liens audio
+2026-05-11T23:17:06+02:00 - 6fe71a6 - etiquet : feat(mydevices): titre 'MIrAI - Mes réunions IA'
 2026-05-11T23:17:06+02:00 - 27a9491 - etiquet : feat(mydevices): titre 'MIrAI - Mes réunions IA'
+2026-05-11T23:15:08+02:00 - 9bfb59e - etiquet : feat(mydevices): renommer titre 'MIrAI' → 'MIrAI - Mes réunions'
 2026-05-11T23:15:08+02:00 - 908b224 - etiquet : feat(mydevices): renommer titre 'MIrAI' → 'MIrAI - Mes réunions'
+2026-05-11T23:10:47+02:00 - 8930136 - etiquet : fix(upload-portal): bypass session.expires_at (grace QR) pour upload si device valide (rétention 15j)
 2026-05-11T23:10:47+02:00 - 440333d - etiquet : fix(upload-portal): bypass session.expires_at (grace QR) pour upload si device valide (rétention 15j)
+2026-05-11T23:05:33+02:00 - e23d9a4 - etiquet : feat(transcription): reconstruire le texte brut avec sauts de ligne par segment Whisper (lisibilité)
 2026-05-11T23:05:33+02:00 - 55b1a7c - etiquet : feat(transcription): reconstruire le texte brut avec sauts de ligne par segment Whisper (lisibilité)
+2026-05-11T22:48:58+02:00 - fa379ca - etiquet : fix(kevent): renommer .mp4 → .m4a dans le multipart (gateway whitelist whisper)
 2026-05-11T22:48:58+02:00 - 6d25252 - etiquet : fix(kevent): renommer .mp4 → .m4a dans le multipart (gateway whitelist whisper)
+2026-05-11T22:42:01+02:00 - de2fd91 - etiquet : fix(kevent): header Authorization Bearer au lieu de apikey (gateway Mirai a migré)
 2026-05-11T22:42:01+02:00 - b6157df - etiquet : fix(kevent): header Authorization Bearer au lieu de apikey (gateway Mirai a migré)
 2026-05-11T21:28:09+02:00 - 9a1d2d6 - etiquet : fix(prod-beta): DEVICE_TOKEN_RETENTION_HOURS=360 sur code-generator
+2026-05-11T21:19:03+02:00 - bb26f38 - etiquet : fix(token-issuer): renew aligne QR expires_at sur DEVICE_TOKEN_RETENTION_HOURS (sinon qr_expired malgré device valide) + msg confirm correct
 2026-05-11T21:19:03+02:00 - 9701b23 - etiquet : fix(token-issuer): renew aligne QR expires_at sur DEVICE_TOKEN_RETENTION_HOURS (sinon qr_expired malgré device valide) + msg confirm correct
+2026-05-11T21:11:23+02:00 - 774fa6e - etiquet : fix(mydevices): ordre onglets + Renouveler étend aussi device retention + liste transferts toujours visible
 2026-05-11T21:11:23+02:00 - 27c786b - etiquet : fix(mydevices): ordre onglets + Renouveler étend aussi device retention + liste transferts toujours visible
+2026-05-11T20:56:34+02:00 - 8778736 - etiquet : feat(mydevices): refonte UI en 3 onglets (Mes appareils / Mes transferts et analyses / Nouveau code) + titre clarifié
 2026-05-11T20:56:34+02:00 - 82c55bd - etiquet : feat(mydevices): refonte UI en 3 onglets (Mes appareils / Mes transferts et analyses / Nouveau code) + titre clarifié
 2026-05-11T20:52:59+02:00 - 8c4fee0 - etiquet : fix: lookup audio-file basename-or-path + map kevent_failed→UploadStatus.ERROR pour cohérence DB/PWA
+2026-05-11T20:52:59+02:00 - 6c02675 - etiquet : fix: lookup audio-file basename-or-path + map kevent_failed→UploadStatus.ERROR pour cohérence DB/PWA
+2026-05-11T20:43:37+02:00 - 5efb4a5 - etiquet : fix(mydevices): bandeau transcription en erreur affiché en rouge avec icône ⚠ (au lieu d'être discret)
 2026-05-11T20:43:37+02:00 - 17ae177 - etiquet : fix(mydevices): bandeau transcription en erreur affiché en rouge avec icône ⚠ (au lieu d'être discret)
 2026-05-11T20:40:41+02:00 - 4e90585 - etiquet : feat(normalization): persister loudnorm source+output côté transcode-worker + toast erreur côté UI
+2026-05-11T20:40:41+02:00 - 48f7fdf - etiquet : feat(normalization): persister loudnorm source+output côté transcode-worker + toast erreur côté UI
+2026-05-11T20:28:26+02:00 - 6c63bb1 - etiquet : fix(mydevices): rail-labels en 4 colonnes (label Transcription débordait sur nouvelle ligne)
 2026-05-11T20:28:26+02:00 - 131bbb5 - etiquet : fix(mydevices): rail-labels en 4 colonnes (label Transcription débordait sur nouvelle ligne)
+2026-05-11T20:19:41+02:00 - ff367e3 - etiquet : feat(mydevices): bucket actif épuré (sans Renouveler/quota) + 4e étape 'Transcription' adaptée stub/mcr/kevent
 2026-05-11T20:19:41+02:00 - 89d465f - etiquet : feat(mydevices): bucket actif épuré (sans Renouveler/quota) + 4e étape 'Transcription' adaptée stub/mcr/kevent
 2026-05-11T20:09:29+02:00 - fed65a1 - etiquet : fix(mydevices): bump MAX_UPLOADS_PER_SESSION 15→299 + cacher 'Supprimer session' dans bucket actif
+2026-05-11T20:09:29+02:00 - 97f5fe9 - etiquet : fix(mydevices): bump MAX_UPLOADS_PER_SESSION 15→299 + cacher 'Supprimer session' dans bucket actif
+2026-05-11T20:01:13+02:00 - 101f4d2 - etiquet : feat(mydevices): bouton 'Supprimer' par fichier — DELETE /api/file/<id> + token-issuer /api/v1/files/by-session
 2026-05-11T20:01:13+02:00 - 0432fb6 - etiquet : feat(mydevices): bouton 'Supprimer' par fichier — DELETE /api/file/<id> + token-issuer /api/v1/files/by-session
 2026-05-11T19:55:08+02:00 - f1a3e7d - etiquet : fix(file-puller): déplacer notify 'transferred 100%' avant dispatch kevent (sinon écrase kevent_failed)
+2026-05-11T19:55:08+02:00 - 3cce9b3 - etiquet : fix(file-puller): déplacer notify 'transferred 100%' avant dispatch kevent (sinon écrase kevent_failed)
 2026-05-11T19:48:08+02:00 - c216686 - etiquet : fix(mydevices): lifecycle 'enrolled' tant qu'un device est actif (grace QR n'est plus que la fenêtre de scan)
+2026-05-11T19:48:08+02:00 - a20bee9 - etiquet : fix(mydevices): lifecycle 'enrolled' tant qu'un device est actif (grace QR n'est plus que la fenêtre de scan)
 2026-05-11T19:41:57+02:00 - f2cae1b - etiquet : fix(mydevices): expired_consumed dans bucket actif (fichiers accessibles tant que device enrôlé)
+2026-05-11T19:41:57+02:00 - 254307e - etiquet : fix(mydevices): expired_consumed dans bucket actif (fichiers accessibles tant que device enrôlé)
+2026-05-11T19:38:15+02:00 - ec14ea0 - etiquet : fix(kevent): pousser erreurs auth/applicatives vers la PWA + label mydevices clair
 2026-05-11T19:38:15+02:00 - 8c4c2aa - etiquet : fix(kevent): pousser erreurs auth/applicatives vers la PWA + label mydevices clair
+2026-05-11T19:28:18+02:00 - ff4452f - etiquet : fix(mydevices): max-uploads défaut 299 (cohérent avec MAX_UPLOADS_PER_SESSION serveur)
 2026-05-11T19:28:18+02:00 - fb932c4 - etiquet : fix(mydevices): max-uploads défaut 299 (cohérent avec MAX_UPLOADS_PER_SESSION serveur)
+2026-05-11T19:27:00+02:00 - c018769 - etiquet : fix(mydevices): max-uploads défaut 999 (au lieu de 15) + masquer 'restants X/Y' tant que remaining >= 10
 2026-05-11T19:27:00+02:00 - 3ed4cdf - etiquet : fix(mydevices): max-uploads défaut 999 (au lieu de 15) + masquer 'restants X/Y' tant que remaining >= 10
+2026-05-11T19:14:30+02:00 - 895baae - etiquet : fix(pwa): refreshStatus retire les fichiers disparus côté serveur (purge mydevices, 404)
 2026-05-11T19:14:30+02:00 - 663ec8e - etiquet : fix(pwa): refreshStatus retire les fichiers disparus côté serveur (purge mydevices, 404)
 2026-05-11T19:10:44+02:00 - 4dc2626 - etiquet : chore(prod-beta): rollouts rapides pour les workers scalables
 2026-05-11T19:06:08+02:00 - ad10cd4 - etiquet : fix(file-puller): rebuild BytesIO après upload S3 (boto3 ferme le stream, ValueError dans _transcribe_via_kevent.seek)
+2026-05-11T19:06:08+02:00 - 627a62c - etiquet : fix(file-puller): rebuild BytesIO après upload S3 (boto3 ferme le stream, ValueError dans _transcribe_via_kevent.seek)
 2026-05-11T18:52:51+02:00 - fb5c58b - etiquet : fix(pwa): bouton Rafraîchir cassé sur iOS — SW cachait /api/status (network-only + cache-bust)
+2026-05-11T18:52:51+02:00 - 02967ab - etiquet : fix(pwa): bouton Rafraîchir cassé sur iOS — SW cachait /api/status (network-only + cache-bust)
 2026-05-11T18:48:07+02:00 - f15556f - etiquet : fix(pwa): décoder le device token (format 2-parts payload.sig, pas JWT 3-parts) pour banner expiration
+2026-05-11T18:48:07+02:00 - 0d11a4c - etiquet : fix(pwa): décoder le device token (format 2-parts payload.sig, pas JWT 3-parts) pour banner expiration
+2026-05-11T16:42:57+02:00 - fa0a5d6 - etiquet : fix(pwa): bannière expiration utilise retention_until du device token (15j) au lieu du QR grace TTL (5min)
 2026-05-11T16:42:57+02:00 - 5fff0a7 - etiquet : fix(pwa): bannière expiration utilise retention_until du device token (15j) au lieu du QR grace TTL (5min)
 2026-05-11T16:08:09+02:00 - b474e68 - etiquet : fix(prod-beta): callback cross-cluster file-puller → upload-portal pour PWA
 2026-05-11T16:01:39+02:00 - 8952418 - etiquet : fix(pwa): service worker network-first sur HTML pour propager les MAJ template (bump cache v8)
+2026-05-11T16:01:39+02:00 - 6eafd68 - etiquet : fix(pwa): service worker network-first sur HTML pour propager les MAJ template (bump cache v8)
 2026-05-11T15:59:56+02:00 - e2410f9 - etiquet : feat(scripts): commit-push-build.sh — flag --multi-arch, défaut amd64
+2026-05-11T15:59:56+02:00 - 79374ba - etiquet : feat(scripts): commit-push-build.sh — flag --multi-arch, défaut amd64
+2026-05-11T15:48:36+02:00 - e831ec7 - etiquet : fix(scripts): commit-push-build.sh — fetch + buildx detect plus robustes
 2026-05-11T15:48:36+02:00 - 2d11741 - etiquet : fix(scripts): commit-push-build.sh — fetch + buildx detect plus robustes
 2026-05-11T15:47:12+02:00 - 9c754ec - etiquet : chore: gitignore .claude/ + fix interactive prompt fallback
+2026-05-11T15:47:12+02:00 - 4cf84d5 - etiquet : chore: gitignore .claude/ + fix interactive prompt fallback
+2026-05-11T15:37:51+02:00 - d2d2730 - etiquet : chore(scripts): commit-push-build.sh — pipeline commit + push + build VM
 2026-05-11T15:37:51+02:00 - 3f5bb3b - etiquet : chore(scripts): commit-push-build.sh — pipeline commit + push + build VM
+2026-05-11T15:14:37+02:00 - 50b8a18 - etiquet : feat(pwa): ajouter un bouton "Rafraîchir" sur la carte Fichiers
 2026-05-11T15:14:37+02:00 - 0c4211c - etiquet : feat(pwa): ajouter un bouton "Rafraîchir" sur la carte Fichiers
+2026-05-10T09:38:10+02:00 - 8cff069 - etiquet : feat(pwa): pousser le statut transcription Kevent vers le PWA via WebSocket
 2026-05-10T09:38:10+02:00 - 444bc2b - etiquet : feat(pwa): pousser le statut transcription Kevent vers le PWA via WebSocket
+2026-05-10T09:32:51+02:00 - 8085b54 - etiquet : fix(mydevices): show transcription progress badge per file (auto-poll while running)
 2026-05-10T09:32:51+02:00 - 4bb942f - etiquet : fix(mydevices): show transcription progress badge per file (auto-poll while running)
 2026-05-10T09:20:32+02:00 - 39f2d28 - etiquet : feat(prod-beta): activer Kevent backend + tous les sous-toggles meeting-intelligence
 2026-05-10T04:58:57+02:00 - 69f5497 - etiquet : fix(database): retry init_tables on transient cross-cluster PG blips
+2026-05-10T04:58:57+02:00 - 210a939 - etiquet : fix(database): retry init_tables on transient cross-cluster PG blips
 2026-05-10T04:44:48+02:00 - b9edc69 - etiquet : feat(sessions): séparer fenêtre d'enrôlement (5min) et rétention device (15j) (#13)
+2026-05-10T04:44:48+02:00 - 1143053 - etiquet : feat(sessions): séparer fenêtre d'enrôlement (5min) et rétention device (15j) (#13)
 2026-05-10T02:02:09+02:00 - 323cdef - etiquet : fix(prod-beta): allow code-generator+admin-portal to call file-puller:8090
 2026-05-10T02:00:16+02:00 - d810098 - etiquet : fix(code-generator): escape \d in JS regex to silence Python SyntaxWarning
+2026-05-10T02:00:16+02:00 - 0ccd3e7 - etiquet : fix(code-generator): escape \d in JS regex to silence Python SyntaxWarning
+2026-05-10T01:38:34+02:00 - ed931f3 - etiquet : fix(mydevices): escape apostrophe in alert string — broke entire JS
 2026-05-10T01:38:34+02:00 - 5369e67 - etiquet : fix(mydevices): escape apostrophe in alert string — broke entire JS
 2026-05-10T01:32:22+02:00 - db6e5f4 - etiquet : fix(mydevices): keep generate-code form always visible
+2026-05-10T01:32:22+02:00 - 85251c8 - etiquet : fix(mydevices): keep generate-code form always visible
 2026-05-09T22:33:45+02:00 - 8355d59 - etiquet : fix(mydevices): hide 'Nombre maximal de fichiers' field from QR form
+2026-05-09T22:33:45+02:00 - 452f4cf - etiquet : fix(mydevices): hide 'Nombre maximal de fichiers' field from QR form
 2026-05-09T22:31:35+02:00 - 3d6bc04 - etiquet : fix(prod-beta): disable OIDC_OFFLINE_ACCESS — SSO client lacks the scope
+2026-05-09T22:18:23+02:00 - e276ca1 - etiquet : feat(mydevices): permanent delete button next to revoke (#12)
 2026-05-09T22:18:23+02:00 - c6ceec0 - etiquet : feat(mydevices): permanent delete button next to revoke (#12)
 2026-05-09T20:21:42+02:00 - b84d2df - etiquet : feat(kevent): async / job-based mode (POST /jobs + polling) (#11)
+2026-05-09T20:21:42+02:00 - 1e96882 - etiquet : feat(kevent): async / job-based mode (POST /jobs + polling) (#11)
 2026-05-09T20:19:19+02:00 - d16ad4b - etiquet : feat(mydevices): hide QR if enrolled, transcript downloads, LLM titles + key points (#10)
+2026-05-09T20:19:19+02:00 - 169b121 - etiquet : feat(mydevices): hide QR if enrolled, transcript downloads, LLM titles + key points (#10)
 2026-05-09T19:24:24+02:00 - 714f357 - etiquet : feat(kevent): glossary_correction step + ConfigMap-mountable glossary (#9)
+2026-05-09T19:24:24+02:00 - 0e1a1b7 - etiquet : feat(kevent): glossary_correction step + ConfigMap-mountable glossary (#9)
+2026-05-09T18:56:20+02:00 - ff8b0fd - etiquet : feat(transcode): auto-skip loudnorm when audio is already loud enough (#8)
 2026-05-09T18:56:20+02:00 - 762fb08 - etiquet : feat(transcode): auto-skip loudnorm when audio is already loud enough (#8)
 2026-05-09T18:55:45+02:00 - 689a1e1 - etiquet : bench: Kevent Mirai transcription + diarization + meeting intelligence eval (#7)
 2026-05-09T18:54:56+02:00 - 4f81d40 - etiquet : feat(kevent): Mirai backend with diarization + LLM meeting intelligence (#6)
+2026-05-09T18:54:56+02:00 - 2ff21e0 - etiquet : feat(kevent): Mirai backend with diarization + LLM meeting intelligence (#6)
 2026-05-09T18:36:59+02:00 - e6d4792 - etiquet : feat(mcr): cross-cluster MCR push via persisted OIDC refresh token (#5)
+2026-05-09T18:36:59+02:00 - bfd6cf4 - etiquet : feat(mcr): cross-cluster MCR push via persisted OIDC refresh token (#5)
+2026-05-09T18:35:40+02:00 - a8bb537 - etiquet : feat(pipeline): cross-cluster pull notification via durable queue + optional HTTP trigger (#4)
 2026-05-09T18:35:40+02:00 - 79f546e - etiquet : feat(pipeline): cross-cluster pull notification via durable queue + optional HTTP trigger (#4)
+2026-05-08T21:32:00+02:00 - d95de7c - etiquet : refactor(s3): make bucket policy applicable on Scaleway, peg threshold to upload cap (#3)
 2026-05-08T21:32:00+02:00 - 0fb2985 - etiquet : refactor(s3): make bucket policy applicable on Scaleway, peg threshold to upload cap (#3)
+2026-05-08T21:31:25+02:00 - 2b81757 - etiquet : fix(queue): cap retries on failed messages instead of looping forever (#2)
 2026-05-08T21:31:25+02:00 - 0a939ef - etiquet : fix(queue): cap retries on failed messages instead of looping forever (#2)
+2026-05-08T19:11:52+02:00 - dc40303 - etiquet : fix(s3): force single-PUT + grant multipart actions to writer policy
 2026-05-08T19:11:52+02:00 - 8eae3b9 - etiquet : fix(s3): force single-PUT + grant multipart actions to writer policy
+2026-05-08T19:07:44+02:00 - 68a9d91 - etiquet : feat(upload): hide quota counter, surface token expiry, dedup PWA enrolments
 2026-05-08T19:07:44+02:00 - 09e3b30 - etiquet : feat(upload): hide quota counter, surface token expiry, dedup PWA enrolments
 2026-05-08T17:36:00+02:00 - 0e9a4ea - etiquet : fix(deploy): N1 prod-bêta — cert-manager dedicated key + cross-cluster fixes
 2026-05-08T14:07:02+02:00 - cecc0e1 - etiquet : feat(deploy): prod-bêta overlay N1 with CDS hardening at S3 guichet
+2026-05-08T14:07:02+02:00 - 8adf2cc - etiquet : feat(deploy): prod-bêta overlay N1 with CDS hardening at S3 guichet
+2026-05-01T22:23:45+02:00 - cde67c6 - etiquet : chore(deploy): redact infra-specific names from public docs
 2026-05-01T22:23:45+02:00 - 7e5345c - etiquet : chore(deploy): redact infra-specific names from public docs
 2026-05-01T20:54:06+02:00 - c3e9bfb - etiquet : chore(deploy): scaffold per-environment layout for staging + prod-bêta
+2026-05-01T20:54:06+02:00 - 4387f1d - etiquet : chore(deploy): scaffold per-environment layout for staging + prod-bêta
 2026-05-01T20:38:45+02:00 - 0167649 - etiquet : docs: add review response plan (issue #1 triage and 1-month roadmap)
+2026-05-01T19:01:27+02:00 - a57b991 - etiquet : docs: add Android PWA install screenshots and clean up old captures/
 2026-05-01T19:01:27+02:00 - 31d6fea - etiquet : docs: add Android PWA install screenshots and clean up old captures/
 2026-05-01T19:01:08+02:00 - fa94971 - etiquet : feat(ui): add "Bêta" badge to service headers
+2026-05-01T19:01:08+02:00 - 93ce133 - etiquet : feat(ui): add "Bêta" badge to service headers
+2026-05-01T19:00:05+02:00 - 1b61e7e - etiquet : feat(upload): raise max upload size to 256 MB and scale code-generator
 2026-05-01T19:00:05+02:00 - 05da25a - etiquet : feat(upload): raise max upload size to 256 MB and scale code-generator
 2026-05-01T18:59:10+02:00 - 73345f3 - etiquet : feat(upload): support PWA Web Share Target for shared audio files
+2026-05-01T18:59:10+02:00 - 5766359 - etiquet : feat(upload): support PWA Web Share Target for shared audio files
 2026-05-01T18:57:55+02:00 - b704df0 - etiquet : feat(transcode): switch transcoded output from WAV/PCM to MP4/AAC
+2026-05-01T18:57:55+02:00 - 1bf40f9 - etiquet : feat(transcode): switch transcoded output from WAV/PCM to MP4/AAC
+2026-05-01T18:56:50+02:00 - c7a5a35 - etiquet : feat(ops): add /healthz endpoints and standardize k8s probes
 2026-05-01T18:56:50+02:00 - 3b83f2c - etiquet : feat(ops): add /healthz endpoints and standardize k8s probes
+2026-05-01T18:55:43+02:00 - cd5530b - etiquet : chore(repo): ignore Python bytecode and untrack __pycache__
 2026-05-01T18:55:43+02:00 - bdf9483 - etiquet : chore(repo): ignore Python bytecode and untrack __pycache__
