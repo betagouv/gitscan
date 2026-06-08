@@ -1,9 +1,8 @@
-## Changelog : matrix-rust-components-swift (30 derniers jours, au 24 avril 2026)
+## Changelog : matrix-rust-components-swift (30 derniers jours, au 2026-06-05)
 
 ### Résumé
-Ce changelog couvre les mises à jour du composant Swift qui connecte l'application Element X iOS au SDK Rust Matrix. Les récentes modifications concernent principalement des mises à jour du SDK Rust sous-jacent, incluant des corrections temporaires liées à la visibilité et une mise à jour générale de version. Ces changements visent à améliorer la stabilité et la fiabilité de la communication.
+Ce changelog couvre une période de mise à jour de composants du SDK Rust Matrix utilisés par l'application Element X iOS. Les changements se concentrent sur la mise à jour des dépendances du SDK Rust sous-jacent, assurant ainsi la stabilité et l'intégration des dernières corrections et améliorations de ce dernier.
 
 ### Évolutions techniques
-- Mise à jour du SDK Rust Matrix vers la version 26.03.10-bwi-main [#735bd41](https://github.com/matrix-rust-sdk/bwi-main/commit/735bd414a393a500dbc7ce9651bb459283a876cc).
-- Mise à jour temporaire du SDK Rust Matrix pour corriger un problème de visibilité [#194b84f](https://github.com/matrix-rust-sdk/raphoid/commit/194b84f51b13b8bfee77b3ee75ba6ff4406715d7) (appliquée deux fois pour assurer la cohérence).
-- Mise à jour vers la version 26.03.0-temp-fix-visibility du SDK Rust Matrix [#194b84f](https://github.com/matrix-rust-sdk/raphoid/commit/194b84f51b13b8bfee77b3ee75ba6ff4406715d7).
+- Mise à jour du SDK Rust Matrix vers la version 26.05.3-bwi-main [#51af7e6c8cfe34bb203f1ee389c576f9b829f2b0](https://github.com/matrix-rust-sdk/bwi-main/commit/51af7e6c8cfe34bb203f1ee389c576f9b829f2b0).
+- Mise à jour du SDK Rust Matrix vers la version 26.03.10-account-expired [#290ca2ed66da32ee893e9b4be6cb0cb6d2efe2ab](https://github.com/matrix-rust-sdk/tmp/build-account-expired/commit/290ca2ed66da32ee893e9b4be6cb0cb6d2efe2ab).
