@@ -1,38 +1,34 @@
 ## Changelog : meet (30 derniers jours, au 4 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la sécurité, notamment des mises à jour de dépendances pour corriger des vulnérabilités.  De nouvelles fonctionnalités sont également introduites, comme la gestion des utilisateurs en doublon et l'amélioration de l'attribution des intervenants dans les résumés de réunion. L'expérience utilisateur est améliorée avec l'ajout de fonctionnalités PiP (Picture-in-Picture) et des améliorations de l'accessibilité. Des optimisations de performance sont également apportées, notamment au niveau du chargement des ressources frontend.
+Cette version apporte des améliorations significatives à la gestion des fichiers, notamment un accès sécurisé et une administration dédiée. L'expérience utilisateur est également améliorée avec l'introduction du picture-in-picture, des réactions et des corrections de bugs pour une meilleure stabilité et fluidité. Des mises à jour de sécurité et des optimisations techniques ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une commande de gestion pour fusionner les utilisateurs en doublon [#1387].
-- Amélioration de l'attribution des intervenants dans les résumés de réunion.
-- Ajout d'une fonctionnalité Picture-in-Picture (PiP) avec contrôle de la connexion, menu d'options et barre de contrôle basique.
-- Ajout d'un sélecteur de police dans les paramètres d'accessibilité pour améliorer la lisibilité.
-- Support étendu des formats vidéo/audio pour les résumés.
-- Possibilité de configurer l'accès et le niveau de configuration des salles via l'API externe [#1260].
-- Possibilité de définir si tous les participants peuvent couper le son des autres.
-- Ajout d'un administrateur spécifique pour la gestion des fichiers.
+- Ajout d'une administration dédiée pour la gestion des fichiers [#1387](https://github.com/suitenumerique/meet/issues/1387).
+- Support étendu des formats vidéo et audio pour les résumés de réunion [#1358](https://github.com/suitenumerique/meet/issues/1358).
+- Introduction du mode Picture-in-Picture pour les réunions.
+- Ajout de réactions pendant les réunions.
+- Possibilité de muter les autres participants en fonction de la configuration de la salle.
+- Support de la configuration et du niveau d'accès des salles via l'API externe [#1260](https://github.com/suitenumerique/meet/issues/1260).
+- Amélioration de l'assignation des intervenants.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (idna, urllib3, aiohttp, core-js, webpack-dev-server, django).
-- Refactorisation du code frontend pour améliorer le code splitting et réduire la taille des bundles JavaScript.
+- Refactorisation de l'API pour une meilleure gestion de la configuration des salles.
 - Utilisation de `uv` pour la gestion des dépendances dans les agents.
-- Amélioration de la robustesse du processus de suppression de fichiers côté backend.
-- Amélioration de la synchronisation de la configuration des salles.
-- Utilisation de variables d'environnement plus cohérentes pour la configuration backend.
-- Suppression de dépendances inutiles côté frontend.
-- Amélioration de la gestion des erreurs et des conditions de concurrence.
-- Ajout de tests pour certaines fonctionnalités.
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (aiohttp, urllib3, core-js, webpack-dev-server, django).
+- Amélioration de la robustesse du processus de suppression de fichiers.
+- Optimisation du chargement des ressources frontend (code splitting, lazy loading).
+- Amélioration de la gestion des erreurs et de la concurrence lors de la création d'utilisateurs.
+- Mise à jour de la documentation de l'API.
+- Utilisation de Rollup pour la visualisation des bundles frontend.
+- Amélioration de la configuration des logs.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Amélioration des logs pour faciliter le débogage.
-- Correction de problèmes de positionnement de l'interface utilisateur.
+- Correction de liens dans les emails de notification de l'enregistrement.
+- Correction de bugs mineurs dans l'interface utilisateur (espacement, positionnement).
 - Correction de problèmes de compatibilité avec certains navigateurs.
-- Mise à jour des chartes Helm.
-- Amélioration de la configuration de l'environnement de développement.
-- Correction de liens dans les emails de notification.
-- Amélioration de la gestion des erreurs dans les tests.
-- Suppression de configurations inutiles.
-- Correction de problèmes de build.
+- Amélioration de la gestion des variables d'environnement pour le développement.
+- Ajout d'une commande de gestion pour fusionner les utilisateurs en double.
+- Mise à jour de la version du chart Helm.
+- Correction de la configuration des jobs Kubernetes.
+- Suppression de dépendances inutiles.
