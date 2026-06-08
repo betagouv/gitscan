@@ -1,12 +1,15 @@
-## Changelog : beta-botAdmin (30 derniers jours, au 01 juin 2026)
+## Changelog : beta-botAdmin (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'intégration et le développement de la fonctionnalité d'intelligence artificielle (LLM) au sein du bot. Une première version du code a été poussée et des modifications ont été apportées pour affiner son fonctionnement.
+Ce changelog fait état des premiers pas du projet beta-botAdmin. Les modifications récentes se concentrent sur la mise en place de l'infrastructure de base, incluant la configuration d'une intégration continue (CI) et des premières explorations concernant l'intégration d'un modèle de langage (LLM).
 
 ### Évolutions fonctionnelles
-- Intégration initiale de la fonctionnalité LLM. [#issue à créer]
-- Modifications apportées à la partie LLM pour améliorer ses performances. [#issue à créer]
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période. Les changements actuels sont principalement préparatoires.
 
 ### Évolutions techniques
-- Première soumission du code du projet. [#issue à créer]
-- Modifications diverses du code pour préparer l'intégration de la fonctionnalité LLM. [#issue à créer]
+- Mise en place d'une première intégration continue (CI) via un fichier `ci.yml` [#1](https://github.com/betagouv/beta-botAdmin/pull/1).
+- Premières modifications et explorations concernant l'intégration d'un modèle de langage (LLM) [#1](https://github.com/betagouv/beta-botAdmin/pull/1).
+- Initialisation du dépôt et premier push du code [#1](https://github.com/betagouv/beta-botAdmin/pull/1).
+
+### Autres changements
+- Modifications diverses pour la compatibilité avec l'environnement de déploiement (colifi).
