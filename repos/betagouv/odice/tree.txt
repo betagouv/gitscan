@@ -25,9 +25,22 @@
 ├── README.md
 ├── docs
 │   ├── README.md
-│   └── adr
-│       ├── 0000-template.md
-│       └── 0001-stack-technique-react-vite-dsfr.md
+│   ├── adr
+│   │   ├── 0000-template.md
+│   │   ├── 0001-stack-technique-react-vite-dsfr.md
+│   │   ├── 0002-architecture-ddd-engine.md
+│   │   ├── 0003-oracle-xlsx-moteur.md
+│   │   ├── 0004-versionnage-regles-in-code.md
+│   │   └── 0005-monitoring-erreurs-maison.md
+│   ├── simulateur-abattoirs-points-a-valider.md
+│   ├── simulateur-abattoirs.md
+│   ├── sources
+│   │   ├── abattoirs-formules-20260512.docx
+│   │   ├── abattoirs-test-formules-20260605.xlsx
+│   │   ├── entrees-sorties-20260520.xlsx
+│   │   ├── formules-grist-20250910.pdf
+│   │   └── logigramme-20250812.pdf
+│   └── versions.md
 ├── eslint.config.mjs
 ├── index.html
 ├── package.json
@@ -35,24 +48,60 @@
 ├── pnpm-lock.yaml
 ├── postcss.config.js
 ├── public
+│   ├── icons
+│   │   ├── building.png
+│   │   ├── cochon.png
+│   │   └── truck.png
 │   ├── images
 │   │   ├── image-1.png
 │   │   ├── image-2.png
 │   │   └── image-3.png
 │   └── logo
 │       └── logo.png
+├── scripts
+│   └── extract-abattoirs-fixture.ts
 ├── src
 │   ├── App.tsx
 │   ├── engine
-│   │   ├── evaluate.spec.ts
-│   │   ├── evaluate.ts
-│   │   ├── rules.ts
-│   │   └── types.ts
+│   │   ├── abattoirs
+│   │   │   ├── evaluate.spec.ts
+│   │   │   ├── evaluate.ts
+│   │   │   ├── index.ts
+│   │   │   ├── parse.ts
+│   │   │   ├── rules
+│   │   │   │   ├── certification.spec.ts
+│   │   │   │   ├── certification.ts
+│   │   │   │   ├── lps.spec.ts
+│   │   │   │   ├── lps.ts
+│   │   │   │   ├── marque.spec.ts
+│   │   │   │   ├── marque.ts
+│   │   │   │   ├── mouvement.spec.ts
+│   │   │   │   ├── mouvement.ts
+│   │   │   │   ├── traitement.spec.ts
+│   │   │   │   └── traitement.ts
+│   │   │   ├── schema.ts
+│   │   │   ├── types.ts
+│   │   │   ├── versions.spec.ts
+│   │   │   └── versions.ts
+│   │   ├── etablissements
+│   │   │   ├── evaluate.ts
+│   │   │   ├── index.ts
+│   │   │   └── types.ts
+│   │   ├── index.ts
+│   │   └── shared
+│   │       ├── index.ts
+│   │       └── types.ts
 │   ├── features
 │   │   ├── documentation
 │   │   │   └── pages
 │   │   │       ├── DocumentationReglementairePage.tsx
 │   │   │       └── NoticeUtilisationPage.tsx
+│   │   ├── error
+│   │   │   └── pages
+│   │   │       └── ErrorFallbackPage.tsx
+│   │   ├── historique
+│   │   │   └── pages
+│   │   │       └── HistoriqueVersionsPage.tsx
 │   │   ├── home
 │   │   │   └── pages
 │   │   │       └── HomePage.tsx
@@ -65,36 +114,54 @@
 │   │   │       └── PlanDuSitePage.tsx
 │   │   └── simulateurs
 │   │       ├── abattoirs
-│   │       │   └── pages
-│   │       │       └── SimulateurAbattoirsPage.tsx
+│   │       │   └── components
+│   │       │       ├── AbattoirsForm.tsx
+│   │       │       └── AbattoirsResult.tsx
 │   │       ├── etablissements
-│   │       │   └── pages
-│   │       │       └── SimulateurEtablissementsPage.tsx
+│   │       │   └── components
+│   │       │       └── EtablissementsSimulator.tsx
 │   │       └── pages
 │   │           └── SimulateursIndexPage.tsx
 │   ├── main.tsx
 │   ├── shared
 │   │   ├── components
 │   │   │   ├── Breadcrumb.tsx
+│   │   │   ├── ErrorBoundary.tsx
 │   │   │   ├── Notice.tsx
 │   │   │   ├── PageContainer.tsx
+│   │   │   ├── PageTitle.tsx
 │   │   │   ├── ResultPanel.tsx
 │   │   │   ├── SimulatorForm.tsx
 │   │   │   └── layout
 │   │   │       └── Layout.tsx
-│   │   └── config
-│   │       └── routes.config.ts
+│   │   ├── config
+│   │   │   └── routes.config.ts
+│   │   ├── labels
+│   │   │   └── abattoirs.labels.ts
+│   │   ├── monitoring
+│   │   │   ├── error-reporter.spec.ts
+│   │   │   ├── error-reporter.ts
+│   │   │   └── install-global-handlers.ts
+│   │   └── utils
+│   │       ├── format-date.spec.ts
+│   │       └── format-date.ts
 │   └── vite-env.d.ts
 ├── styles
 │   └── index.css
 ├── tailwind.config.js
 ├── tests
-│   └── e2e
-│       └── home.spec.ts
+│   ├── e2e
+│   │   ├── historique-versions.spec.ts
+│   │   ├── home.spec.ts
+│   │   └── simulateur-abattoirs.spec.ts
+│   └── fixtures
+│       └── abattoirs
+│           ├── README.md
+│           └── oracle-2744.json
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-36 directories, 63 files
+52 directories, 114 files
