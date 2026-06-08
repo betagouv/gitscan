@@ -1,42 +1,37 @@
-## Changelog : mon-entreprise (30 derniers jours, au 02 juin 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la simulation pour les entreprises basées à Mayotte, avec l'ajout des cotisations mahoraises et des ajustements spécifiques. Des corrections et améliorations ont également été apportées à la fiche de paie, notamment pour les cas salariés et SASU. Enfin, une refonte technique significative a été entreprise pour moderniser l'infrastructure Next.js et améliorer la gestion de l'internationalisation.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des fiches de paie et des simulations, ainsi que sur la correction de bugs et l'optimisation de la sécurité du projet. Des efforts importants ont également été réalisés pour moderniser les dépendances et améliorer la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'un avertissement spécifique pour Mayotte lors de la simulation. [#4220](https://github.com/betagouv/mon-entreprise/issues/4220)
-- Ajout des cotisations mahoraises pour les travailleurs indépendants (TI).
-- Masquage des points de retraite complémentaire pour les travailleurs indépendants mahorais.
-- Correction du revenu cotisé pour la retraite de base à Mayotte.
-- Implémentation de la fiche de paie pour les SASU.
-- Amélioration de la présentation des frais professionnels dans la fiche de paie pour les salariés.
-- Correction de la liste des questions pour les salariés.
-- Correction de l'ordre des questions lorsque celui-ci est imposé.
-- Ajout d'un message d'erreur en cas de date de cessation d'activité invalide.
-- Possibilité de supprimer les messages d'alerte (Beta Banner, avertissements).
-- Amélioration des couleurs des composants (boutons, messages, badges, étiquettes) pour une meilleure accessibilité.
-- Affichage d'un message d'erreur en cas de date de cessation trop ancienne.
-- Réinitialisation correcte de la date de cessation d'activité.
-- Changement de l'année de simulation en fonction de la date de cessation d'activité.
-- Ajout d'un bandeau indiquant que le simulateur est en version beta.
+- Ajout de la fiche de paie pour les entrepreneurs individuels (SASU) avec calcul des cotisations et de la rémunération.
+- Amélioration de la gestion des questions dans le parcours salarié, avec correction de l'ordre et ajout de questions manquantes.
+- Ajout d'un avertissement spécifique pour Mayotte concernant les cotisations sociales.
+- Prise en compte des cotisations mahoraises dans les calculs.
+- Affichage d'un message d'erreur en cas de date de cessation d'activité invalide.
+- Possibilité de rendre les messages d'information dismissibles (fermetures manuelles).
+- Ajout d'un bandeau de notification pour indiquer que le simulateur est en version bêta.
+- Amélioration de la présentation des frais professionnels dans la fiche de paie.
+- Correction de la règle LODEOM pour une meilleure précision des calculs.
+- Correction de la gestion du revenu cotisé pour la retraite de base à Mayotte.
+- Ajout de la cotisation Apec pour les Sasu.
 
 ### Évolutions techniques
-- Refonte de l'infrastructure Next.js (passage à la version 16 et implémentation de l'internationalisation SSR). [#4215](https://github.com/betagouv/mon-entreprise/issues/4215)
-- Utilisation de cookies pour la persistance du mode sombre.
-- Amélioration de la gestion des erreurs lors de la simulation, notamment en évitant de vider toute la situation en cas d'erreur sur une règle spécifique.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour de nombreuses dépendances pour corriger des vulnérabilités de sécurité (Koa, handlebars, axios, cypress, etc.).
-- Utilisation de CSS variables et chargement des fonts via `next/font/local`.
-- Suppression de code inutile et de dépendances non utilisées.
+- Mise à jour de nombreuses dépendances pour corriger des vulnérabilités de sécurité (koa, handlebars, form-data, axios, storybook, etc.).
+- Refactor de la gestion du thème (dark mode) avec utilisation de cookies et intégration via Next.js headers.
+- Amélioration de la gestion des fonts avec Next.js font/local et utilisation de variables CSS.
+- Refactor de la gestion de l'i18n (internationalisation) avec branchement de react-i18next côté client.
+- Optimisation de la gestion des erreurs dans la simulation, avec une meilleure identification et gestion des règles invalides.
+- Amélioration de la structure du code et suppression de code inutile.
+- Utilisation de TypeScript pour améliorer la robustesse et la maintenabilité du code.
+- Factorisation de la configuration i18n pour le serveur et le client.
+- Renommage de fichiers pour éviter les erreurs de compilation avec SWC.
 
 ### Autres changements
+- Correction de typos et améliorations de la documentation.
+- Amélioration des couleurs des composants (Button, Message, Chip, Tag) pour une meilleure accessibilité.
+- Suppression de code commenté inutile.
+- Correction de l'affichage de la date sélectionnée par défaut.
+- Amélioration de l'accessibilité avec l'ajout d'un rôle "status" à un composant.
 - Mise à jour du guide IRCEC pour les artistes-auteurs.
-- Ajout d'un rôle `status` pour améliorer l'accessibilité de l'avertissement concernant l'année de simulation.
-- Correction de clefs de traduction pour la fiche de paie (SalaireNet version Sasu).
-- Suppression de tests fragiles et de code commenté.
-- Amélioration de la configuration de l'environnement de développement.
-- Correction de fautes de linter.
-- Suppression de la désactivation CSSOM pour les bots.
-- Suppression de `next-env.d.ts` du `.gitignore`.
-- Traduction de la page d'accueil "hello world".
-- Correction de l'envoi des erreurs Piano Analytics à Sentry.
+- Correction de la description de l'IRCEC pour les artistes-auteurs.
