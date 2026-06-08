@@ -1,42 +1,33 @@
-## Changelog : cdata (30 derniers jours, au 29 mai 2026)
+## Changelog : cdata (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations apportées à cdata se concentrent sur l'expérience utilisateur, notamment en améliorant la recherche, l'accessibilité et la gestion des utilisateurs. Des fonctionnalités ont été ajoutées pour faciliter l'administration du site, comme la rotation des mots de passe et la gestion des notifications. Des optimisations techniques ont également été réalisées pour améliorer la performance et la maintenance du code.
+Ce changelog présente les améliorations apportées à cdata au cours du dernier mois. Les principales évolutions concernent l'expérience utilisateur avec l'ajout de nouvelles fonctionnalités de recherche, d'affichage des contacts, et d'amélioration de l'explorateur tabulaire. Des corrections de bugs et des optimisations techniques ont également été réalisées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Recherche :**
-    - Amélioration de la recherche avec des filtres personnalisés plus précis et une meilleure gestion des résultats [#1062, #1067].
-    - Correction d'un bug empêchant la réinitialisation de la recherche après une requête [#1089].
-    - Annonce du nombre de résultats de recherche pour une meilleure accessibilité [#1096].
-- **Administration :**
-    - Possibilité de faire pivoter le mot de passe des utilisateurs en tant qu'administrateur [#1078].
-    - Ajout de nouvelles notifications pour les administrateurs [#1076].
-    - Correction d'un bug dans la recherche d'utilisateurs en administration [#1089].
-    - Réintroduction du lien entre les réutilisations et les sujets [#1082].
-- **Authentification :**
-    - Amélioration de l'utilisation des codes QR pour l'authentification à deux facteurs [#1090].
-    - Correction de l'envoi des identifiants avec la nouvelle politique CORS [#1098].
-- **Données & Affichage :**
-    - Ajout de données sénatoriales aux élections [#1091].
-    - Amélioration de l'affichage des contacts [#1075].
-    - Ajout d'un segment tabulaire [#1072].
-    - Amélioration du SEO (Search Engine Optimization) [#1066].
-- **Divers :**
-    - Possibilité de définir le titre des cartes [#1092].
-    - Correction de liens vers les guides [#1077].
-    - Affichage des callbacks en attente et ajout d'un sujet utilisateur [#1073].
+- **Recherche :** Ajout d'icônes personnalisables pour les types de recherche [#1109](https://github.com/datagouv/cdata/issues/1109).
+- **Notifications :** Possibilité de marquer les notifications comme lues [#1103](https://github.com/datagouv/cdata/issues/1103) et ajout de nouvelles notifications [#1076](https://github.com/datagouv/cdata/issues/1076).
+- **Explorateur tabulaire :** Améliorations apportées à l'explorateur tabulaire [#1070](https://github.com/datagouv/cdata/issues/1070).
+- **Pages thématiques :** Ajout d'une page thématique [#1110](https://github.com/datagouv/cdata/issues/1110).
+- **Affichage des contacts :** Amélioration de l'affichage des contacts [#1075](https://github.com/datagouv/cdata/issues/1075).
+- **Réutilisation :** Réintroduction du lien entre les réutilisations et les sujets [#1082](https://github.com/datagouv/cdata/issues/1082) et correction de l'utilisation des champs "x-fields" dans l'onglet des réutilisations [#1102](https://github.com/datagouv/cdata/issues/1102).
+- **Élections :** Ajout des données sénatoriales aux élections [#1091](https://github.com/datagouv/cdata/issues/1091).
+- **Titre des cartes :** Possibilité de définir le titre des cartes [#1092](https://github.com/datagouv/cdata/issues/1092).
+- **Accessibilité :** Amélioration de l'accessibilité de la recherche avec l'annonce du nombre de résultats et la possibilité de focus automatique [#1096](https://github.com/datagouv/cdata/issues/1096).
 
 ### Évolutions techniques
-- Mise à jour de la bibliothèque `geopf-extensions-openlayers` vers la version 1.0.0-beta.10 [#1085].
-- Optimisation des dépendances pour améliorer la performance [#1086].
-- Mise à jour des dépendances du projet [#1060].
-- Passage à Nuxt 4 et mise à jour de la documentation README correspondante [#1068].
-- Ajout d'un timestamp dans les logs pour faciliter le débogage [#1084].
-- Suppression des effets de bord dans certains composants [#1079, #1080].
-- Amélioration de la gestion des erreurs CORS [#1098].
+- **Dockerfile :** Utilisation de `NODE_ENV production` dans le Dockerfile pour optimiser la production [#1104](https://github.com/datagouv/cdata/issues/1104).
+- **CORS :** Correction d'un problème de CORS dans les visualisations [#1116](https://github.com/datagouv/cdata/issues/1116) et gestion des identifiants lors de la nouvelle politique CORS [#1098](https://github.com/datagouv/cdata/issues/1098).
+- **Optimisation des dépendances :** Ajout de dépendances optimisées [#1086](https://github.com/datagouv/cdata/issues/1086).
+- **Composants :** Mise à jour des composants vers la version 1.1.2 [#1101](https://github.com/datagouv/cdata/issues/1101).
+- **geopf-extensions-openlayers :** Mise à jour de `geopf-extensions-openlayers` vers la version 1.0.0-beta.10 [#1085](https://github.com/datagouv/cdata/issues/1085).
 
 ### Autres changements
-- Affichage de l'API Swagger [#1055].
-- Correction de redirections brisées dans la configuration [#1065].
-- Ajout d'une preuve de concept de visualisation (viz poc 1) [#963].
-- Ignorer le répertoire du cache pnpm local pour une meilleure gestion de l'espace disque [#1071].
+- **Authentification 2FA :** Utilisation de l'URI QR code renvoyé par le backend pour l'authentification à deux facteurs [#1090](https://github.com/datagouv/cdata/issues/1090).
+- **Logging :** Ajout d'un timestamp dans les logs [#1084](https://github.com/datagouv/cdata/issues/1084).
+- **Admin :** Correction d'un bug dans la recherche de l'admin où la requête "q" ne réinitialisait pas la page [#1089](https://github.com/datagouv/cdata/issues/1089).
+- **Rotation de mot de passe :** Ajout de la possibilité de faire tourner le mot de passe dans l'admin [#1078](https://github.com/datagouv/cdata/issues/1078).
+- **Guides :** Correction des URLs des guides [#1077](https://github.com/datagouv/cdata/issues/1077).
+- **Correction :** Correction pour masquer le bouton de rotation lorsque celui-ci a déjà été demandé [#1081](https://github.com/datagouv/cdata/issues/1081).
+- **Correction :** Correction pour afficher l'ID de la ressource impactée dans les activités [#1123](https://github.com/datagouv/cdata/issues/1123).
+- **Correction :** Correction pour masquer les statistiques de téléchargement sans jeux de données [#1113](https://github.com/datagouv/cdata/issues/1113).
+- **Correction :** Correction d'un flash de recherche vide après la réinitialisation de la recherche [#1083](https://github.com/datagouv/cdata/issues/1083).
