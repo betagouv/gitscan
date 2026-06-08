@@ -1,18 +1,14 @@
-## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 29 avril 2026)
+## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce changelog fait état de plusieurs mises à jour de la documentation du site, principalement axées sur l'amélioration de la clarté et de l'exhaustivité des informations disponibles pour les organismes publics souhaitant utiliser la plateforme de démarches simplifiées. Les modifications concernent notamment la section "Comment choisir son parcours de dématérialisation".
+Ce changelog présente les mises à jour récentes de la documentation de demarches-simplifiees.fr. Les modifications se concentrent sur l'amélioration de la documentation et la correction de quelques problèmes liés à l'affichage dans Gitbook.
 
 ### Évolutions fonctionnelles
-- Amélioration de la documentation concernant le choix du parcours de dématérialisation. [#1194](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1194)
-- Mise à jour de la documentation sur les parcours de dématérialisation. [#1193](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1193)
-- Modifications et améliorations de la documentation relative aux parcours de dématérialisation. [#1192](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1192)
-- Ajustements et corrections dans la documentation des parcours de dématérialisation. [#1191](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1191)
-- Modifications de la documentation concernant les parcours de dématérialisation. [#1190](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1190)
-- Amélioration de la documentation sur les parcours de dématérialisation. [#1189](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1189)
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-*Aucune évolution technique significative à signaler.*
+- Correction de problèmes d'affichage dans Gitbook. [#1196](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1196)
+- Amélioration de la structure de la documentation dans Gitbook. [#1195](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1195)
 
 ### Autres changements
-*Aucun autre changement à signaler.*
+Aucun autre changement significatif à signaler.
