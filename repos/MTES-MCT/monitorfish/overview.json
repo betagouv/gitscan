@@ -1,23 +1,23 @@
 {
   "url": "https://github.com/MTES-MCT/monitorfish",
   "name": "monitorfish",
-  "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé pour le Centre National de Surveillance des Pêches. Il permet de suivre les activités des navires, de détecter les fraudes et de prioriser les contrôles.",
+  "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé par l'administration française pour le Centre National de Surveillance des Pêches. Il vise à améliorer le suivi et le contrôle des activités de pêche.",
   "language": "TypeScript",
   "features": [
     "Visualisation de données & Cartographie",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Gestion des établissements & Structures",
+    "Suivi & Traçabilité",
     "Sécurité & Conformité",
-    "Suivi & Traçabilité"
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
     "PostgreSQL",
     "OpenLayers",
-    "React",
-    "Node.js"
+    "Kafka"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,22 +29,21 @@
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "jwt",
+      "session"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
     "Cypress",
     "Jest"
   ],
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD"
   ],
   "lastActivity": "2026-06-04T18:13:46+02:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": "GNU Affero GPL Version 3",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
