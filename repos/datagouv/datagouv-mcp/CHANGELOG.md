@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.26 (2026-06-02)
+
+- feat: add sort and last_update_range params to search_datasets ([#113](https://github.com/datagouv/datagouv-mcp/pull/113))
+- fix: report real resource count from resources.total in search_datasets ([#115](https://github.com/datagouv/datagouv-mcp/pull/115))
+
+
 ## 0.2.25 (2026-05-18)
 
 - chore: upgrade dependencies
