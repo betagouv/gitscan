@@ -1,34 +1,31 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Cette base de code gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose deux interfaces utilisateurs : un outil d’administration et d’édition des aides, et un parcours usager pour les exploitants agricoles.",
+  "description": "Ce service permet de gérer un catalogue des aides publiques pour les exploitations agricoles françaises, offrant une interface d'administration et un parcours utilisateur pour trouver des aides adaptées.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
-    "Authentification & Accès",
-    "Formulaires & Démarches",
     "Gestion documentaire & Fichiers",
-    "Notifications & Alertes"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Formulaires & Démarches",
+    "Aides & Éligibilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Brevo",
-    "Matomo",
     "Sentry",
-    "Scalingo",
-    "StimulusJS",
-    "htmx",
-    "django-dsfr"
+    "htmx.org",
+    "uv",
+    "just",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Django",
     "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels",
+    "Django",
     "Docker & Conteneurs"
   ],
   "auth": {
@@ -36,12 +33,15 @@
       "email-password"
     ]
   },
-  "tests": "pytest",
-  "workflows": [
-    "dependabot",
-    "github-code-scanning"
+  "tests": [
+    "pytest"
   ],
-  "lastActivity": "2026-06-04T07:02:58+02:00",
+  "workflows": [
+    "Dependabot",
+    "CodeQL",
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-06-05T16:08:43+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
