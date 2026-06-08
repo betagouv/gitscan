@@ -1,39 +1,35 @@
 ## Changelog : envergo (30 derniers jours, au 2026-06-02)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives des performances et de la stabilité de l'application, notamment au niveau de la gestion des données et des requêtes en base de données. Des corrections ont également été apportées pour améliorer l'expérience utilisateur, en particulier concernant l'affichage des données et la gestion des conditions d'évaluation. Enfin, des efforts ont été déployés pour renforcer la sécurité et la conformité, notamment en matière de RGPD.
+Les dernières semaines ont été marquées par des améliorations significatives des performances de l'application, notamment au niveau des requêtes en base de données et de l'affichage des données cartographiques. Des corrections ont également été apportées pour améliorer l'expérience utilisateur, notamment dans la gestion des conditions d'évaluation et l'affichage des données relatives aux haies et aux espèces. La sécurité et la conformité RGPD ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des haies et de leur densité sur la carte. [#1124](https://github.com/MTES-MCT/envergo/issues/1124)
-- Ajout d'un message d'avertissement lors de la présence d'espèces sensibles. [#1120](https://github.com/MTES-MCT/envergo/issues/1120)
-- Modification du libellé "Administration" en "Espace instruction" pour plus de clarté. [#1145](https://github.com/MTES-MCT/envergo/issues/1145)
-- Correction de l'affichage des messages et des erreurs dans l'interface utilisateur. [#1096](https://github.com/MTES-MCT/envergo/issues/1096)
-- Amélioration de la gestion des conditions d'évaluation des règles urbaines (RU). [#1146](https://github.com/MTES-MCT/envergo/issues/1146)
-- Ajout de la possibilité de compléter le contexte après l'évaluation des conditions. [#1119](https://github.com/MTES-MCT/envergo/issues/1119)
-- Correction d'un problème d'affichage des données dans les détails des conditions de plantation. [#1141](https://github.com/MTES-MCT/envergo/issues/1141)
-- Correction d'un bug lié à la gestion des jetons expirés. [#1097](https://github.com/MTES-MCT/envergo/issues/1097)
-- Correction d'un problème de validation des données dans le formulaire Moulinette. [#1139](https://github.com/MTES-MCT/envergo/issues/1139)
+- Amélioration de l'affichage des données relatives aux haies, avec une simplification de la topologie pour une meilleure performance et une correction du calcul de la densité des haies.
+- Clarification de l'affichage des données relatives aux haies et aux espèces, avec des messages plus clairs et une meilleure organisation de l'information.
+- Ajout d'un message d'avertissement lorsque des espèces sensibles sont détectées.
+- Amélioration de l'interface utilisateur pour l'espace instruction, avec un changement de terminologie pour une meilleure clarté.
+- Correction d'un bug lié à l'affichage des valeurs flottantes dans les tests.
+- Mise en place d'une gestion améliorée des jetons expirés.
+- Correction d'un problème d'affichage dans les détails des conditions de plantation.
+- Amélioration de l'affichage des messages et des erreurs.
 
 ### Évolutions techniques
-- Optimisations significatives des performances des requêtes en base de données, notamment pour l'affichage des zones et des données Moulinette. [#1123](https://github.com/MTES-MCT/envergo/issues/1123)
-- Mise en cache de plusieurs données fréquemment utilisées pour réduire la charge sur la base de données.
-- Refactorisation du code pour améliorer la qualité et la maintenabilité.
-- Simplification de la topologie des cercles pour accélérer l'affichage des données.
-- Amélioration de la gestion des conditions d'évaluation des règles urbaines (RU) avec une meilleure organisation du code et ajout de tests.
-- Suppression de code obsolète et de fonctionnalités non utilisées.
-- Correction de plusieurs erreurs de style (PEP8).
-- Mise à jour des dépendances. [#1096](https://github.com/MTES-MCT/envergo/issues/1096)
-- Suppression des événements suivis par Brevo pour améliorer la conformité RGPD. [#1126](https://github.com/MTES-MCT/envergo/issues/1126)
+- Optimisation des performances des requêtes en base de données, notamment pour l'affichage des zones et des données de Moulinette.
+- Mise en cache de divers résultats de requêtes pour réduire la charge sur la base de données.
+- Refactorisation du code pour améliorer la qualité et la maintenabilité, notamment dans la gestion des conditions d'évaluation et des données relatives aux haies.
+- Suppression de code obsolète et de fonctionnalités inutilisées, notamment concernant la gestion des événements Brevo et le modèle RecipientStatus.
+- Amélioration de la sécurité en protégeant l'accès aux données des espèces derrière une authentification.
+- Mise à jour des dépendances du projet.
+- Correction de plusieurs erreurs et avertissements dans le code.
+- Amélioration de la gestion des erreurs et des exceptions.
 
 ### Autres changements
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de tests unitaires et d'intégration.
-- Amélioration de la lisibilité du code.
-- Clarification de certains noms de paramètres et de variables.
-- Mise à jour de la documentation.
-- Correction de problèmes liés à la gestion des erreurs 403 et 405.
-- Ajout de commentaires pour expliquer les choix de conception.
-- Correction de problèmes de compatibilité avec les évaluations générées précédemment.
-- Amélioration de la gestion des erreurs liées aux données départementales.
-- Correction d'un problème lié à l'affichage des données dans le tableau des espèces.
-- Suppression de messages d'avertissement inutiles.
+- Documentation mise à jour pour refléter les changements apportés au code.
+- Corrections de tests unitaires pour assurer la qualité du code.
+- Ajout de commentaires pour améliorer la lisibilité du code.
+- Amélioration de la configuration du projet.
+- Correction de problèmes de linting et de style de code.
+- Suppression de l'affichage de sections sans données.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de bugs liés à la validation des formulaires.
+- Amélioration de la gestion des événements Brevo pour la conformité RGPD.
