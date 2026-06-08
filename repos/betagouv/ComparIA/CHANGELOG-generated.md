@@ -1,43 +1,37 @@
-## Changelog : ComparIA (30 derniers jours, au 2026-06-02)
+## Changelog : ComparIA (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, ComparIA a connu des améliorations significatives en termes de gestion des données, de refonte de l'architecture backend et d'optimisations de l'interface utilisateur. Des corrections de bugs et des améliorations de la sécurité ont également été apportées, notamment en matière de détection de spam.  Une préparation est en cours pour supporter plusieurs instances de l'application, notamment pour le danois.
+Ce mois-ci, ComparIA a connu une refonte majeure de son infrastructure de base de données et de son architecture backend, visant à améliorer la robustesse, la scalabilité et la maintenance du projet.  De nombreuses améliorations ont été apportées à la gestion des données, notamment la migration des données existantes et l'ajout de nouvelles fonctionnalités pour l'analyse et la validation des données. L'interface utilisateur a également été améliorée avec de nouvelles animations et des corrections de bugs.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux modèles de langage : Gemini 3.5 Flash et Grok 4.3. [#480](https://github.com/betagouv/ComparIA/pull/480)
-- Amélioration de la détection de spam : blocage de modèles de roleplay et de tentatives de jailbreak. [#473](https://github.com/betagouv/ComparIA/pull/473)
-- Ajout de la possibilité de configurer le portail par défaut.
-- Amélioration de l'interface utilisateur avec de nouvelles animations pour les votes et les révélations.
-- Ajout de la gestion du danois (traductions et configuration). [#484](https://github.com/betagouv/ComparIA/pull/484)
-- Ajout d'un nouveau groupe de commandes pour la génération de données et de classements.
-- Ajout d'une nouvelle modalité de vote et d'annotation.
+- Ajout de nouveaux modèles de langage : Gemini 3.5 Flash et Grok 4.3 sont désormais disponibles sur la plateforme. [#480](https://github.com/betagouv/ComparIA/pull/480)
+- Amélioration de la détection et du blocage des tentatives de "jailbreak" et de "roleplay" dans les interactions avec les modèles de langage. [#481](https://github.com/betagouv/ComparIA/pull/481)
+- Ajout de traductions en danois pour certains modèles et descriptions. [#478](https://github.com/betagouv/ComparIA/pull/478)
+- Amélioration de l'expérience utilisateur avec de nouvelles animations pour les votes et les révélations.
+- Ajout d'un indicateur visuel pour confirmer la sélection d'un choix lors du vote.
+- Amélioration de la réactivité de l'interface utilisateur sur mobile.
+- Ajout de la possibilité de soumettre des votes via un bouton dédié.
+- Mise à jour des traductions italiennes via Weblate.
 
 ### Évolutions techniques
-- Refonte majeure de l'architecture backend :
-    - Remplacement des anciens modèles de données par des modèles SQLModel.
-    - Utilisation de types datetime pour les champs de date.
-    - Ajout de gestionnaires de session pour la base de données.
-    - Amélioration de la gestion du streaming des messages.
-    - Optimisation des requêtes de base de données.
-- Préparation pour supporter plusieurs instances de l'application (français et danois) :
-    - Séparation des configurations et des variables d'environnement.
-    - Utilisation de namespaces Redis spécifiques à chaque instance.
-    - Mise en place d'un système de gestion des secrets avec Keepass.
-- Amélioration des scripts de migration de la base de données : ajout d'un mode incrémental et gestion des erreurs.
-- Suppression de l'utilisation de Vertex AI dans Litellm.
-- Mise à jour des dépendances : litellm, typescript.
-- Amélioration de la gestion des logs et des erreurs.
-- Refactorisation du code pour une meilleure lisibilité et maintenabilité.
+- Refonte complète de la base de données : migration vers de nouvelles tables et modèles pour une meilleure organisation et performance.
+- Utilisation de SQLModel pour la définition des modèles de données.
+- Ajout d'un système de gestion de migrations de base de données avec Alembic.
+- Implémentation d'un système de streaming de données plus efficace pour les comparaisons.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Refactorisation du code backend pour une meilleure modularité et maintenabilité.
+- Ajout de tests unitaires et d'intégration.
+- Mise à jour des dépendances (litellm, typescript).
+- Simplification de la configuration de l'environnement de développement et de production.
+- Utilisation de UUID pour les identifiants des enregistrements dans la base de données.
+- Ajout d'un gestionnaire de contexte pour les sessions de base de données.
+- Amélioration de la validation des données.
 
 ### Autres changements
-- Mise à jour des traductions italiennes et danoises via Weblate.
-- Correction de bugs mineurs et améliorations de la documentation.
+- Documentation mise à jour pour refléter les changements de l'infrastructure.
 - Nettoyage du code et suppression de code obsolète.
-- Amélioration des tests et de la couverture de code.
-- Correction de problèmes de typage dans les jobs de lint.
-- Suppression de modèles de langage obsolètes (GPT 5.4, GLM 5, MiniMax M2.5).
-- Archivage des modèles Grok.
-- Ajout de validations pour les datasets.
-- Correction de problèmes liés à la gestion des données corrompues.
-- Suppression de la gestion des sessions hash.
-- Mise à jour des modèles de confiance pour les classements.
+- Mise à jour des fichiers de configuration.
+- Correction de bugs mineurs.
+- Suppression de modèles de langage obsolètes.
+- Ajout d'un script pour générer des jeux de données.
+- Amélioration de la gestion des traductions via Weblate.
