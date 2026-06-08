@@ -43,6 +43,18 @@
 │   │   │   ├── app.controller.spec.ts
 │   │   │   ├── app.controller.ts
 │   │   │   ├── app.module.ts
+│   │   │   ├── config
+│   │   │   │   ├── app.config.spec.ts
+│   │   │   │   ├── app.config.ts
+│   │   │   │   ├── config.module.ts
+│   │   │   │   ├── env.validation.spec.ts
+│   │   │   │   ├── env.validation.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── contact
+│   │   │   │   ├── contact.module.ts
+│   │   │   │   ├── contact.repository.ts
+│   │   │   │   ├── contact.service.spec.ts
+│   │   │   │   └── contact.service.ts
 │   │   │   ├── donnees-externes
 │   │   │   │   ├── api-monitoring.config.ts
 │   │   │   │   ├── api-monitoring.service.spec.ts
@@ -303,6 +315,19 @@
 │   │   │   │   └── services
 │   │   │   │       ├── evenement.service.spec.ts
 │   │   │   │       └── evenement.service.ts
+│   │   │   ├── mailer
+│   │   │   │   ├── mail.module.spec.ts
+│   │   │   │   ├── mail.module.ts
+│   │   │   │   ├── mail.service.spec.ts
+│   │   │   │   ├── mail.service.ts
+│   │   │   │   ├── mail.types.ts
+│   │   │   │   ├── providers
+│   │   │   │   │   ├── brevo.provider.ts
+│   │   │   │   │   └── smtp.provider.ts
+│   │   │   │   └── templates
+│   │   │   │       ├── contact-confirmation.template.ts
+│   │   │   │       ├── contact-notification.template.ts
+│   │   │   │       └── kit.ts
 │   │   │   ├── main.ts
 │   │   │   ├── metabase
 │   │   │   │   ├── metabase.controller.ts
@@ -351,6 +376,9 @@
 │   │   │   │   │   │   ├── 0018_adorable_screwball.sql
 │   │   │   │   │   │   ├── 0019_ite_fret_adresse.sql
 │   │   │   │   │   │   ├── 0020_api_health_snapshots.sql
+│   │   │   │   │   │   ├── 0021_demandes_contact.sql
+│   │   │   │   │   │   ├── 0022_besoin_ne_sait_pas.sql
+│   │   │   │   │   │   ├── 0023_ouverture_modale_multisites.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -371,11 +399,13 @@
 │   │   │   │   │   │       ├── 0017_snapshot.json
 │   │   │   │   │   │       ├── 0018_snapshot.json
 │   │   │   │   │   │       ├── 0019_snapshot.json
+│   │   │   │   │   │       ├── 0020_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
 │   │   │   │   │       ├── api-health-snapshots.schema.ts
 │   │   │   │   │       ├── communes.schema.ts
+│   │   │   │   │       ├── demandes-contact.schema.ts
 │   │   │   │   │       ├── enrichissements.schema.ts
 │   │   │   │   │       ├── epci.schema.ts
 │   │   │   │   │       ├── evaluations.schema.ts
@@ -592,6 +622,7 @@
 │       │   │   │       └── QualificationSitePage.tsx
 │       │   │   ├── resultats
 │       │   │   │   ├── components
+│       │   │   │   │   ├── ContactMultisitesModal.tsx
 │       │   │   │   │   ├── PartnerCard.tsx
 │       │   │   │   │   ├── PodiumCard.css
 │       │   │   │   │   ├── PodiumCard.tsx
@@ -734,7 +765,10 @@
 │   │   ├── 0011-securisation-origin-guard-sans-api-key.md
 │   │   ├── 0012-tracking-source-utilisation-vs-integrateur.md
 │   │   ├── 0013-zaenr-affichage-granulaire-scoring-grossier.md
-│   │   └── 0014-referentiel-epci-communes-etalab.md
+│   │   ├── 0014-referentiel-epci-communes-etalab.md
+│   │   ├── 0015-envoi-emails-smtp-mailhog-brevo.md
+│   │   ├── 0016-configuration-centralisee-appconfig.md
+│   │   └── 0017-emails-provider-brevo-api-mailhog.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
 │   └── integration
@@ -826,6 +860,8 @@
 │       │   │   └── utils
 │       │   │       ├── arrondissement.utils.spec.ts
 │       │   │       ├── arrondissement.utils.ts
+│       │   │       ├── email.utils.spec.ts
+│       │   │       ├── email.utils.ts
 │       │   │       ├── index.ts
 │       │   │       ├── parcelle.utils.spec.ts
 │       │   │       └── parcelle.utils.ts
@@ -906,4 +942,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-218 directories, 690 files
+223 directories, 721 files
