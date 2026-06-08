@@ -1,14 +1,16 @@
-## Changelog : projects (30 derniers jours, au 4 juin 2026)
+## Changelog : projects (30 derniers jours, au 6 juin 2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations significatives à la gestion des dossiers, permettant désormais leur suppression. De plus, un problème d'affichage des noms de tableaux de bord trop longs a été corrigé. La version 1.3.0 a été publiée.
+Cette version apporte une amélioration significative en permettant la suppression de dossiers, facilitant ainsi l'organisation des projets. La version 1.3.0 a été publiée, incluant des fonctionnalités d'export de données, de partage d'état de filtres, et des corrections de bugs pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
 - Possibilité de supprimer des dossiers [#1234](https://github.com/suitenumerique/projects/issues/1234)
-- Correction d'un problème d'affichage lorsque le nom d'un tableau de bord est trop long.
+- Export des données des tableaux vers un fichier CSV.
+- Possibilité de partager l'état des filtres appliqués via l'URL.
+- Configuration de l'ID d'organisation pour l'attribution automatique des projets via OIDC.
 
 ### Évolutions techniques
 - Publication de la version 1.3.0.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Aucune information supplémentaire à signaler pour cette période.
