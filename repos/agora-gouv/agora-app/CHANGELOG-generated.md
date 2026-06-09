@@ -1,10 +1,17 @@
-## Changelog : agora-app (30 derniers jours, au 21 mai 2026)
+## Changelog : agora-app (30 derniers jours, au 20 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'interface utilisateur, notamment un mock de tuile pour les thèmes, et met à jour une dépendance importante, `hive`, vers sa version compatible avec les dernières normes de sécurité et de performance. Ces changements visent à améliorer l'expérience utilisateur et la stabilité de l'application.
+Cette version apporte des améliorations significatives à l'affichage des questions/actions à réaliser (QAGs), notamment avec une nouvelle feuille de fond (bottom sheet) pour les détails et l'intégration d'un mock pour l'affichage du thème hebdomadaire. Des corrections d'accessibilité et des ajustements de design ont également été apportés.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mock de tuile pour les thèmes dans l'interface utilisateur. Ceci permet de prévisualiser l'apparence des thèmes avant leur application. [#692](https://github.com/agora-gouv/agora-app/issues/692)
+- **Détails QAGs :** Nouvelle feuille de fond (bottom sheet) pour afficher les détails des questions/actions à réaliser. [#694](https://github.com/agora-gouv/agora-app/issues/694)
+- **Thème hebdomadaire :** Intégration d'un mock pour l'affichage du thème hebdomadaire sur l'application. [#692](https://github.com/agora-gouv/agora-app/issues/692)
+- **Utilisation de l'API thème hebdomadaire :** Implémentation de l'utilisation de l'API pour le thème hebdomadaire. [#693](https://github.com/agora-gouv/agora-app/issues/693)
+- **Accessibilité :** Correction de l'accessibilité sur la page de détail. [#695](https://github.com/agora-gouv/agora-app/issues/695)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `hive` vers `hive_ce` pour bénéficier des dernières corrections de bugs et améliorations de sécurité. [#691](https://github.com/agora-gouv/agora-app/issues/691)
+- **Mise à jour Hive :** Mise à jour de la dépendance Hive vers Hive CE. [#691](https://github.com/agora-gouv/agora-app/issues/691)
+
+### Autres changements
+- **Certificats :** Ajout des certificats nécessaires. [#699](https://github.com/agora-gouv/agora-app/issues/699)
+- **Ajustements :** Divers ajustements de design et de code. [#696](https://github.com/agora-gouv/agora-app/issues/696) et [#697](https://github.com/agora-gouv/agora-app/issues/697)
