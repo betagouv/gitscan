@@ -77,29 +77,60 @@
 │       ├── cd.yml
 │       └── ci.yml
 ├── .gitignore
+├── .pnpm-store
+│   └── v11
+│       └── index.db
+├── .prettierignore
+├── .prettierrc
 ├── .tools-version
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
 ├── LICENSE
+├── Procfile
 ├── README.md
 ├── app
+│   ├── (protected)
+│   │   ├── case_files
+│   │   │   └── page.tsx
+│   │   └── layout.tsx
+│   ├── api
+│   │   └── auth
+│   │       ├── [...all]
+│   │       │   └── route.ts
+│   │       └── proconnect-logout
+│   │           ├── route.test.ts
+│   │           └── route.ts
 │   ├── apple-icon.png
-│   ├── case_files
+│   ├── connexion
 │   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── icon.svg
 │   ├── layout.tsx
 │   ├── lib
+│   │   ├── auth-client.ts
+│   │   ├── auth.test.ts
+│   │   ├── auth.ts
 │   │   ├── data
 │   │   │   ├── case-files.test.ts
 │   │   │   └── case-files.ts
 │   │   └── prisma.ts
 │   ├── page.tsx
 │   └── ui
+│       ├── case-files-search-bar.test.tsx
+│       ├── case-files-search-bar.tsx
+│       ├── case-files-search-by-status.test.tsx
+│       ├── case-files-search-by-status.tsx
+│       ├── pending-validation.tsx
+│       ├── proconnect-login-button.tsx
 │       ├── sortable-column-header.test.tsx
 │       └── sortable-column-header.tsx
 ├── data
+│   ├── anonymize.test.ts
+│   ├── anonymize.ts
 │   ├── auth.ts
 │   ├── interfaces.ts
 │   ├── scrape-telerecours.ts
@@ -127,18 +158,38 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260527155326_actor_display_name
 │   │   │   └── migration.sql
+│   │   ├── 20260529125503_optional_conclusion_operative_part
+│   │   │   └── migration.sql
+│   │   ├── 20260529130001_optional_conclusion_sense
+│   │   │   └── migration.sql
+│   │   ├── 20260529140000_search_unaccent
+│   │   │   └── migration.sql
+│   │   ├── 20260529141500_optional_hearing_room
+│   │   │   └── migration.sql
+│   │   ├── 20260601135558_main_defender_optional
+│   │   │   └── migration.sql
+│   │   ├── 20260602085732_add_detail_hearings_measures_files_related
+│   │   │   └── migration.sql
+│   │   ├── 20260605074426_add_auth_tables
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
+│       ├── attached_file.prisma
 │       ├── case_file.prisma
+│       ├── chamber.prisma
 │       ├── conclusion.prisma
 │       ├── hearing.prisma
 │       ├── legal_entity_division.prisma
+│       ├── measure.prisma
+│       ├── related_case_file.prisma
 │       ├── schema.prisma
 │       ├── status.prisma
 │       ├── urgency.prisma
 │       └── user.prisma
 ├── prisma.config.ts
+├── proxy.test.ts
+├── proxy.ts
 ├── skills-lock.json
 ├── src
 │   └── dsfr-bootstrap
@@ -147,4 +198,4 @@
 │       └── server-only-index.tsx
 ├── tsconfig.json
 └── vitest.config.mts
-29 directories, 120 files
+45 directories, 155 files
