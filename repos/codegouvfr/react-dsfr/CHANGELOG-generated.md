@@ -1,12 +1,13 @@
-## Changelog : react-dsfr (30 derniers jours, au 30 avril 2026)
+## Changelog : react-dsfr (30 derniers jours, au 30 mai 2026)
 
 ### Résumé
-Cette nouvelle version de react-dsfr apporte des améliorations à l'accessibilité et à la flexibilité des composants, notamment en permettant de spécifier la balise HTML utilisée pour le texte du corps. La documentation a également été mise à jour avec un exemple de site web utilisant la bibliothèque.
+Cette mise à jour apporte une correction importante concernant le composant `Alert`, permettant de supprimer l'attribut `role` lorsqu'il est explicitement défini à `undefined`. Cette modification offre plus de flexibilité aux développeurs pour personnaliser l'accessibilité du composant en fonction de leurs besoins spécifiques.
 
 ### Évolutions fonctionnelles
-- Possibilité de spécifier la balise HTML pour le texte du corps via le composant, améliorant ainsi la flexibilité et l'accessibilité.  [#487](https://github.com/codegouvfr/react-dsfr/issues/487)
-- Ajout d'un exemple de site web utilisant react-dsfr (Suite territoriale de l'ANCT) dans le fichier README. [#485](https://github.com/codegouvfr/react-dsfr/issues/485)
+- Correction du composant `Alert` : L'attribut `role` est maintenant correctement supprimé lorsque `role={undefined}` est spécifié, offrant un contrôle plus fin sur l'accessibilité. [#490](https://github.com/codegouvfr/react-dsfr/issues/490)
 
 ### Évolutions techniques
-- Correction d'erreurs de validation dans le fichier `publiccode.yml`. [#488](https://github.com/codegouvfr/react-dsfr/issues/488)
-- Mise à jour de la version de la bibliothèque.
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Mise à jour de la version du package.
