@@ -646,6 +646,7 @@
 │   │   │   │   │   ├── demandeSejourHelper.ts
 │   │   │   │   │   ├── documentHelper.ts
 │   │   │   │   │   ├── eigHelper.ts
+│   │   │   │   │   ├── featureFlagHelper.ts
 │   │   │   │   │   ├── fileHelper.ts
 │   │   │   │   │   ├── hebergementHelper.ts
 │   │   │   │   │   ├── organismeHelper.ts
@@ -669,12 +670,16 @@
 │   │   │   │       ├── territoire.test.ts
 │   │   │   │       └── users.test.ts
 │   │   │   ├── admin
-│   │   │   │   └── agrements
-│   │   │   │       ├── agrements.controller.ts
-│   │   │   │       ├── agrements.mail.ts
-│   │   │   │       ├── agrements.repository.ts
-│   │   │   │       ├── agrements.route.ts
-│   │   │   │       └── agrements.service.ts
+│   │   │   │   ├── agrements
+│   │   │   │   │   ├── agrements.controller.ts
+│   │   │   │   │   ├── agrements.mail.ts
+│   │   │   │   │   ├── agrements.repository.ts
+│   │   │   │   │   ├── agrements.route.ts
+│   │   │   │   │   └── agrements.service.ts
+│   │   │   │   └── users
+│   │   │   │       ├── users.mail.ts
+│   │   │   │       ├── users.repository.ts
+│   │   │   │       └── users.service.ts
 │   │   │   ├── app.ts
 │   │   │   ├── config.ts
 │   │   │   ├── controllers
@@ -896,14 +901,11 @@
 │   │   │   │   └── utils
 │   │   │   │       └── checkPermissionDeclarationSejour.js
 │   │   │   ├── repositories
-│   │   │   │   ├── admin
-│   │   │   │   │   └── Users.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   └── featureFlagRepositories.ts
 │   │   │   │   └── usagers
 │   │   │   │       ├── DemandeSejour.ts
-│   │   │   │       ├── EtablissementsSecondaires.ts
-│   │   │   │       └── Users.ts
+│   │   │   │       └── EtablissementsSecondaires.ts
 │   │   │   ├── routes
 │   │   │   │   ├── authentication.js
 │   │   │   │   ├── bo-authentication.js
@@ -1033,22 +1035,37 @@
 │   │   │   │   └── static
 │   │   │   │       └── agrements_non_actifs.xlsx
 │   │   │   ├── shared
-│   │   │   │   └── agrements
-│   │   │   │       ├── agrements.entity.ts
-│   │   │   │       ├── agrements.mapper.ts
-│   │   │   │       ├── agrements.repository.ts
-│   │   │   │       └── agrements.service.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   └── users
+│   │   │   │   │       ├── users.entity.ts
+│   │   │   │   │       └── users.mapper.ts
+│   │   │   │   ├── agrements
+│   │   │   │   │   ├── agrements.entity.ts
+│   │   │   │   │   ├── agrements.mapper.ts
+│   │   │   │   │   ├── agrements.repository.ts
+│   │   │   │   │   └── agrements.service.ts
+│   │   │   │   ├── usagers
+│   │   │   │   │   └── users
+│   │   │   │   │       ├── users.entity.ts
+│   │   │   │   │       └── users.mapper.ts
+│   │   │   │   └── users
+│   │   │   │       ├── users.entity.ts
+│   │   │   │       └── users.mail.ts
 │   │   │   ├── types
 │   │   │   │   ├── queryParams.ts
 │   │   │   │   └── request.ts
 │   │   │   ├── usagers
-│   │   │   │   └── agrements
-│   │   │   │       ├── agrements.controller.ts
-│   │   │   │       ├── agrements.mail.ts
-│   │   │   │       ├── agrements.repository.ts
-│   │   │   │       ├── agrements.route.ts
-│   │   │   │       ├── agrements.service.spec.ts
-│   │   │   │       └── agrements.service.ts
+│   │   │   │   ├── agrements
+│   │   │   │   │   ├── agrements.controller.ts
+│   │   │   │   │   ├── agrements.mail.ts
+│   │   │   │   │   ├── agrements.repository.ts
+│   │   │   │   │   ├── agrements.route.ts
+│   │   │   │   │   ├── agrements.service.spec.ts
+│   │   │   │   │   └── agrements.service.ts
+│   │   │   │   └── users
+│   │   │   │       ├── users.mail.ts
+│   │   │   │       ├── users.repository.ts
+│   │   │   │       └── users.service.ts
 │   │   │   └── utils
 │   │   │       ├── asyncErrorHandler.ts
 │   │   │       ├── bo-token.ts
@@ -1064,6 +1081,8 @@
 │   │   │       ├── mail.ts
 │   │   │       ├── normalize.spec.ts
 │   │   │       ├── normalize.ts
+│   │   │       ├── otp.spec.ts
+│   │   │       ├── otp.ts
 │   │   │       ├── pgpool.ts
 │   │   │       ├── pgpoolDoc.ts
 │   │   │       ├── regex.ts
@@ -1071,6 +1090,7 @@
 │   │   │       ├── token.ts
 │   │   │       └── validation-error.ts
 │   │   ├── start.sh
+│   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
 │   ├── cron
 │   │   ├── .gitignore
@@ -1771,6 +1791,7 @@
 │   │   │   │   ├── 20260430075044_ front.agrement__add_correction.js
 │   │   │   │   ├── 20260512160875_ front.agrement__add_file_category.js
 │   │   │   │   ├── 20260519114308_ front.seq_declaration_sejour__increase.js
+│   │   │   │   ├── 20260521120710_users_add_otp_code.js
 │   │   │   │   └── 20260522135301_front.agrement__update_all_statuts.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
@@ -1812,7 +1833,9 @@
 │   │   │   │   ├── personnePhysique.dto.ts
 │   │   │   │   ├── siret.dto.ts
 │   │   │   │   ├── territoire.dto.ts
-│   │   │   │   └── user.dto.ts
+│   │   │   │   ├── user.dto.ts
+│   │   │   │   ├── userAdmin.dto.ts
+│   │   │   │   └── userUsagers.dto.ts
 │   │   │   ├── index.ts
 │   │   │   ├── routes
 │   │   │   │   ├── admin
@@ -2019,4 +2042,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-287 directories, 1739 files
+293 directories, 1756 files
