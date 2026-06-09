@@ -1,3 +1,12 @@
+2026-06-07T14:11:05+02:00 - d787f04 - etiquet : security(images): monte nginx 1.27-alpine → 1.29-alpine (corrige openssl)
+2026-06-07T14:06:46+02:00 - c9f9719 - etiquet : chore(deps): monte les pins Python aux dernières versions
+2026-06-07T14:04:17+02:00 - 7b8eea2 - etiquet : security(deploy): désactive l'ingress filebrowser (/files)
+2026-06-07T11:56:59+02:00 - 8cb802d - etiquet : security(deploy): retire adminer (Debian 11 / PHP 7.4 EOL, 246 CVE HIGH/CRIT)
+2026-06-07T11:50:06+02:00 - c34fa31 - etiquet : build: ajoute .dockerignore (allow-list) — exclut secrets/.git/.venv du contexte
+2026-06-07T11:45:31+02:00 - 2e383d7 - etiquet : fix(deps): bump fastapi 0.136.3 / starlette 1.2.1 — corrige 3 CVE starlette
+2026-06-07T11:14:01+02:00 - 635a223 - etiquet : fix(deps): corrige CVE-2025-71176 (pytest tmpdir) et sort pytest du runtime
+2026-06-07T11:00:27+02:00 - 50f818f - etiquet : chore(scaleway): persiste DEFAULT_MODEL_NAME et retire RELAY_LLM_UPSTREAM du template
+2026-06-07T10:49:56+02:00 - 30c105d - etiquet : chore(relay): supprime le relais /llm devenu inutile
 2026-06-02T04:09:26+02:00 - 311c293 - etiquet : docs(readme): ajoute une section "Comment fonctionnent les mises à jour"
 2026-06-02T04:04:24+02:00 - 35b8148 - etiquet : docs: retire la mention de migration Nginx/Lua → FastAPI
 2026-06-02T03:55:04+02:00 - 000b4fa - etiquet : docs: restructuration par audience + sortie des artefacts internes du dépôt
@@ -113,8 +122,8 @@
 2026-03-29T17:13:44+02:00 - b2da899 - etiquet : Update .DS_Store
 2026-03-29T17:11:55+02:00 - acbb649 - etiquet : feat: v0.5.4 — perf config, admin catalog, icon DB storage, auto-versioning
 2026-03-28T22:34:44+01:00 - 2e70be3 - etiquet : feat: serve config from plugins.config_template (dm-config.json)
-2026-03-28T22:29:07+01:00 - 5cf5b7b - etiquet : chore: checkpoint before dm-config packaging
 2026-03-28T22:29:07+01:00 - 77c7285 - etiquet : chore: checkpoint before dm-config packaging
+2026-03-28T22:29:07+01:00 - 5cf5b7b - etiquet : chore: checkpoint before dm-config packaging
 2026-03-28T22:21:31+01:00 - f78bece - etiquet : docs: update all READMEs — environments, onboarding, dm-config, monitoring
 2026-03-28T22:08:30+01:00 - bd7a752 - etiquet : feat: free-form environments in dm-config.json + DB
 2026-03-28T22:02:34+01:00 - 509875d - etiquet : docs+feat: plugin onboarding — 4 envs, separate dm-config, binary cleanup
@@ -133,10 +142,10 @@
 2026-03-15T19:42:18+01:00 - 4dde654 - etiquet : feat: implement EnrichedConfigResponse — update & feature toggling (Prompt A)
 2026-03-15T18:34:25+01:00 - e1b49f8 - etiquet : docs: add test suites prompts, test cahier and operational runbook
 2026-03-15T18:28:03+01:00 - 92dfae9 - etiquet : docs: add plugin-DM protocol spec — update & feature toggling
-2026-03-14T20:00:37+01:00 - 5f12f74 - etiquet : fix: correct keycloak client_id typo and templatize int config
 2026-03-14T20:00:37+01:00 - f58eaee - etiquet : chore: reorganize repo — infra-minimal → deploy/docker, db/schema.sql
-2026-03-14T20:00:37+01:00 - 2e50ead - etiquet : chore(infra-minimal): keep only Docker files, remove k8s and CI scripts
 2026-03-14T20:00:37+01:00 - 74d61d6 - etiquet : refactor: simplify main.py — remove duplication and fix algorithmic issues
+2026-03-14T20:00:37+01:00 - 5f12f74 - etiquet : fix: correct keycloak client_id typo and templatize int config
+2026-03-14T20:00:37+01:00 - 2e50ead - etiquet : chore(infra-minimal): keep only Docker files, remove k8s and CI scripts
 2026-03-14T20:00:37+01:00 - 29ac245 - etiquet : checkpoint: secure JWT auth, scale tuning, and scaleway rollout updates
 2026-03-08T13:31:56+01:00 - 969108d - etiquet : .
 2026-03-07T15:32:24+01:00 - 1d3d4f0 - etiquet : feat: add metrics endpoint and autoscaling for docker/scaleway
