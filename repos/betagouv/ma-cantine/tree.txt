@@ -114,6 +114,7 @@
 │   │   │   ├── ObservatoryPurchases.vue
 │   │   │   ├── ObservatoryShare.vue
 │   │   │   ├── ObservatoryWarnings.vue
+│   │   │   ├── PurchaseForm.vue
 │   │   │   ├── SourceChart.vue
 │   │   │   ├── WasteMeasurementDetail.vue
 │   │   │   ├── WasteMeasurementSteps
@@ -136,6 +137,7 @@
 │   │   │   ├── global.css
 │   │   │   └── reset.css
 │   │   ├── data
+│   │   │   ├── achats.json
 │   │   │   ├── cantines.json
 │   │   │   ├── communes.json
 │   │   │   ├── communes_avec_epci.json
@@ -169,6 +171,7 @@
 │   │   │   ├── matomo.js
 │   │   │   ├── openData.js
 │   │   │   ├── profile.js
+│   │   │   ├── purchases.js
 │   │   │   ├── schemas.js
 │   │   │   ├── sectors.js
 │   │   │   ├── statistics.js
@@ -186,6 +189,8 @@
 │   │       ├── Contact.vue
 │   │       ├── Developpeurs.vue
 │   │       ├── DonneesPersonnelles.vue
+│   │       ├── GestionnaireAchatsAjouter.vue
+│   │       ├── GestionnaireAchatsModifier.vue
 │   │       ├── GestionnaireCantineArchiver.vue
 │   │       ├── GestionnaireCantineGerer.vue
 │   │       ├── GestionnaireCantineGroupeAjouter.vue
@@ -285,8 +290,8 @@
 │   │   │   │   ├── purchases_bad_corrupt.csv
 │   │   │   │   ├── purchases_bad_empty_rows.csv
 │   │   │   │   ├── purchases_bad_extra_columns.csv
+│   │   │   │   ├── purchases_bad_no_definition_local.csv
 │   │   │   │   ├── purchases_bad_no_header.csv
-│   │   │   │   ├── purchases_bad_no_local_definition.csv
 │   │   │   │   ├── purchases_bad_one_error.csv
 │   │   │   │   ├── purchases_bad_partial_header.csv
 │   │   │   │   ├── purchases_bad_wrong_header.csv
@@ -891,6 +896,7 @@
 │   │   ├── 0258_alter_creation_user_verbose_name.py
 │   │   ├── 0259_alter_diagnostic_objectifs_egalim_atteints_and_more.py
 │   │   ├── 0260_diagnostic_cout_repas.py
+│   │   ├── 0261_rename_purchase_fields_in_french.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1103,7 +1109,6 @@
 │   │   │   ├── PartnerIndicators.vue
 │   │   │   ├── ProductionTypeTag.vue
 │   │   │   ├── PublicationBadge.vue
-│   │   │   ├── PurchasesTable.vue
 │   │   │   ├── ResultCount.vue
 │   │   │   ├── SchemaTable.vue
 │   │   │   ├── TeledeclarationCancelDialog.vue
@@ -1253,7 +1258,6 @@
 │   │       │   ├── PartnersHome.vue
 │   │       │   ├── ReferencingInfo.vue
 │   │       │   └── index.vue
-│   │       ├── PurchasePage.vue
 │   │       ├── PurchasesHome.vue
 │   │       ├── PurchasesSummary.vue
 │   │       ├── TerritoryCanteens.vue
@@ -1717,4 +1721,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1645 files
+140 directories, 1649 files
