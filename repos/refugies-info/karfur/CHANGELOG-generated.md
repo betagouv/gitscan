@@ -1,30 +1,30 @@
-## Changelog : karfur (30 derniers jours, au 4 juin 2026)
+## Changelog : karfur (30 derniers jours, au 8 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de karfur se sont concentrées sur la correction de bugs et l'amélioration de la stabilité de la plateforme, notamment en production. Des améliorations ont été apportées à la recherche, à l'affichage des données et à la gestion des doublons. L'équipe a également travaillé sur l'amélioration de l'expérience utilisateur sur mobile et la gestion des erreurs.
+Cette période a été marquée par des corrections de bugs et des améliorations de la robustesse de l'application, notamment concernant la gestion des doublons, l'affichage des informations et la sécurité. Des travaux ont également été réalisés pour faciliter l'exportation des données documentaires et la préparation de l'intégration avec Letta Cloud. Enfin, des mises à jour de la documentation et de la configuration ont été effectuées.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'affichage des accents dans le moteur de recherche [#3769](https://github.com/refugies-info/karfur/issues/3769).
-- Amélioration de l'affichage sur mobile : correction du comportement du bouton "retour en haut" [#3773](https://github.com/refugies-info/karfur/issues/3773).
-- Correction de l'affichage des labels de département qui se superposaient aux pop-ups [#3766](https://github.com/refugies-info/karfur/issues/3766).
-- Correction d'un bug empêchant l'affichage des fiches sur le site en production [#3770](https://github.com/refugies-info/karfur/issues/3770).
-- Correction d'une coquille sur la page "mission" [#3746](https://github.com/refugies-info/karfur/issues/3746).
-- Correction d'un problème de sauvegarde automatique sur la fiche OPFRA [#3762](https://github.com/refugies-info/karfur/issues/3762).
-- Ajout d'un endpoint pour la détection de doublons d'agents [#3754](https://github.com/refugies-info/karfur/issues/3754) et amélioration du scoring des doublons.
+- Correction de l'affichage des adresses postales incomplètes sur les fiches RCO. [#3778](https://github.com/refugies-info/karfur/pull/3778)
+- Amélioration de l'affichage des villes sélectionnées dans la recherche, même après un rafraîchissement de la page. [#3769](https://github.com/refugies-info/karfur/pull/3769)
+- Correction de l'affichage des accents dans le moteur de recherche. [#3769](https://github.com/refugies-info/karfur/pull/3769)
+- Mise à jour des mentions légales sur le site et l'application. [#3785](https://github.com/refugies-info/karfur/pull/3785)
+- Suppression du badge et des éléments liés à l'ancien RCO (Référentiel Commun d'Offres) de l'interface. [#3784](https://github.com/refugies-info/karfur/pull/3784) [#3780](https://github.com/refugies-info/karfur/pull/3780)
+- Correction de l'affichage des labels de département qui pouvaient masquer les pop-ups. [#3766](https://github.com/refugies-info/karfur/pull/3766)
+- Amélioration de la réactivité de la page d'accueil et de la page de connexion sur mobile. [#3767](https://github.com/refugies-info/karfur/pull/3767)
+- Correction de problèmes d'affichage sur mobile. [#3773](https://github.com/refugies-info/karfur/pull/3773)
 
 ### Évolutions techniques
-- Refactorisation du code pour gérer correctement les valeurs nulles dans le calcul du nombre de CDA [#3770](https://github.com/refugies-info/karfur/issues/3770).
-- Correction de la gestion des caractères encodés et de l'affichage des villes sélectionnées lors d'un rafraîchissement de la page.
-- Amélioration de la gestion des erreurs et ajout de logs plus précis.
-- Stabilisation des tests Jest sur mobile après des mises à jour de dépendances.
-- Mise à jour des dépendances pour corriger des failles de sécurité.
-- Amélioration de la gestion des dates et des timestamps pour éviter les erreurs.
-- Correction de la gestion des utilisateurs SSO avec un prénom potentiellement nul.
+- Implémentation d'un endpoint pour la détection de doublons d'agents. [#3754](https://github.com/refugies-info/karfur/pull/3754)
+- Amélioration de la logique de scoring des doublons pour une meilleure précision. [#3754](https://github.com/refugies-info/karfur/pull/3754)
+- Préparation de l'exportation des ressources documentaires pour Letta Cloud, incluant la normalisation des données. [#3788](https://github.com/refugies-info/karfur/pull/3788) [#3786](https://github.com/refugies-info/karfur/pull/3786)
+- Documentation de la structure de données "agent-knowledge" pour Letta Cloud. [#3782](https://github.com/refugies-info/karfur/pull/3782)
+- Correction de bugs liés à la gestion des valeurs nulles et à la sécurité.
+- Ajout de scans de vulnérabilités des dépendances avec pre-push hooks. [#3779](https://github.com/refugies-info/karfur/pull/3779)
+- Mise à jour des dépendances et des outils de développement.
 
 ### Autres changements
-- Ajout d'un nouveau membre à l'équipe.
-- Ajout du nom de l'équipe au fichier README.
-- Ajout d'un hook GitLeaks pour la détection de secrets dans le code.
-- Suppression de configurations obsolètes et nettoyage du code.
-- Mise à jour de la documentation.
-- Publication de la version 2.8.0.
+- Clarification de la documentation concernant les chemins d'exportation Letta Cloud. [#3788](https://github.com/refugies-info/karfur/pull/3788)
+- Ajout d'un nouveau membre à l'équipe. [#3777](https://github.com/refugies-info/karfur/pull/3777)
+- Amélioration des messages de log pour les migrations de données.
+- Correction de coquilles et améliorations de la lisibilité du code.
+- Ajout de tests et corrections de tests existants.

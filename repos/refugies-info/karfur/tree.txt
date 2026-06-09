@@ -39,7 +39,8 @@
 ├── .gitleaks.toml
 ├── .husky
 │   ├── .gitignore
-│   └── pre-commit
+│   ├── pre-commit
+│   └── pre-push
 ├── .letta
 │   ├── .lettaignore
 │   ├── settings.json
@@ -2641,7 +2642,6 @@
 │   │   │   │   │   ├── OnboardingProgressBar.tsx
 │   │   │   │   │   ├── SearchBarCity.tsx
 │   │   │   │   │   └── SharedStyledComponents.tsx
-│   │   │   │   ├── OriginBadge.tsx
 │   │   │   │   ├── Profil
 │   │   │   │   │   ├── ContactButton.tsx
 │   │   │   │   │   ├── FilterAgeComponent.tsx
@@ -3597,6 +3597,7 @@
 │   │   │       │   │   ├── getDispositifs.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── getDispositifsWithTranslationAvancement
+│   │   │       │   │   ├── getDispositifsWithTranslationAvancement.test.ts
 │   │   │       │   │   ├── getDispositifsWithTranslationAvancement.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── getFilteredContentsForApp
@@ -3977,6 +3978,37 @@
 ├── biome.json
 ├── documentation
 │   ├── README.md
+│   ├── agent-migration
+│   │   ├── README.md
+│   │   ├── agent-knowledge
+│   │   │   ├── README.md
+│   │   │   ├── _export-manifest.json
+│   │   │   ├── archival
+│   │   │   │   └── README.md
+│   │   │   ├── conformite-editoriale
+│   │   │   │   ├── Formacode.csv
+│   │   │   │   ├── README.md
+│   │   │   │   └── jurisprudence.md
+│   │   │   ├── exemples-redaction
+│   │   │   │   └── README.md
+│   │   │   ├── langage-clair
+│   │   │   │   ├── DITP-Lexique-Administratif.md
+│   │   │   │   ├── README.md
+│   │   │   │   ├── [Charte éditorial] Réfugiés.info.md
+│   │   │   │   ├── [Lexique] administatif maison de la sagesse.md
+│   │   │   │   ├── [PROCESS] Cas éditoriaux et jurisprudence.md
+│   │   │   │   ├── [Schéma] Fiche dispositif RI data.json
+│   │   │   │   ├── [guide dannotation] agent transformateur refugies-info.md
+│   │   │   │   └── [personas] bpi.md
+│   │   │   ├── memory-blocks
+│   │   │   │   └── README.md
+│   │   │   └── metadatas
+│   │   │       ├── README.md
+│   │   │       ├── base-connaissance.md
+│   │   │       ├── dispositif-letta.json
+│   │   │       ├── mapping-data-di.md
+│   │   │       └── mapping-data.md
+│   │   └── letta-cloud-inventory.md
 │   ├── api-types
 │   │   └── README.md
 │   ├── client
@@ -4201,6 +4233,7 @@
 ├── postcss.config.mjs
 ├── release-please-config.json
 ├── scripts
+│   ├── export-letta-agent-knowledge.ts
 │   ├── generate-newsletter-token.js
 │   ├── rollback-gcp-secrets.sh
 │   └── update-gcp-secrets.sh
@@ -4242,4 +4275,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-960 directories, 3284 files
+968 directories, 3309 files
