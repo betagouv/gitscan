@@ -1,52 +1,42 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 5 juin 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 8 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité, notamment la correction de failles XSS potentielles et la mise à jour de dépendances. Des corrections ont également été apportées à la gestion des conventions, des applications et des établissements, ainsi qu'à l'interface utilisateur pour une meilleure expérience. L'ajout d'un chatbot et l'amélioration des outils d'administration complètent ces évolutions.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la correction de bugs et l'optimisation de certaines fonctionnalités existantes. Des améliorations ont été apportées à la gestion des conventions, à la recherche d'établissements et à la gestion des applications. Des corrections ont également été apportées pour éviter la duplication d'offres et améliorer la gestion des dates.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème empêchant la mise à jour de la date de signature des conventions. [#827](https://github.com/betagouv/monstagedeseconde/issues/827)
-- Amélioration de la gestion des applications :
-    - Correction d'un bug permettant à un élève de postuler plusieurs fois pour la même offre.
-    - Correction d'un problème d'affichage des applications dupliquées.
-- Amélioration de la gestion des établissements :
-    - Correction d'un bug empêchant les établissements de voir les conventions signées par l'employeur. [#891](https://github.com/betagouv/monstagedeseconde/issues/891)
-    - Ajout de la possibilité d'importer des élèves depuis l'interface d'administration. [#880](https://github.com/betagouv/monstagedeseconde/issues/880)
-- Ajout d'un chatbot pour l'assistance utilisateur. [#895](https://github.com/betagouv/monstagedeseconde/issues/895)
-- Ajout de la gestion du niveau scolaire de l'élève. [#883](https://github.com/betagouv/monstagedeseconde/issues/883)
-- Correction de l'affichage des URL des ressources. [#872](https://github.com/betagouv/monstagedeseconde/issues/872)
-- Ajout du préfixe téléphonique de la Guadeloupe. [#859](https://github.com/betagouv/monstagedeseconde/issues/859)
-- Correction du problème de nombre de places restantes à zéro.
-- Correction du renvoi d'application. [#898](https://github.com/betagouv/monstagedeseconde/issues/898)
-- Amélioration de la recherche des semaines. [#851](https://github.com/betagouv/monstagedeseconde/issues/851)
-- Correction d'un problème de double convention. [#893](https://github.com/betagouv/monstagedeseconde/issues/893)
+- Correction d'un bug empêchant la publication d'une offre après un clic intempestif sur le bouton de validation. [#907](https://github.com/betagouv/monstagedeseconde/pull/907)
+- Amélioration de la gestion des conventions : les établissements peuvent désormais voir les conventions signées par l'employeur. [#891](https://github.com/betagouv/monstagedeseconde/pull/891)
+- Correction d'un problème de duplication d'applications. [#901](https://github.com/betagouv/monstagedeseconde/pull/901)
+- Correction d'un bug empêchant l'affichage correct des semaines vides dans le planning. [#899](https://github.com/betagouv/monstagedeseconde/pull/899)
+- Amélioration de la gestion des applications : correction d'un problème de renvoi d'application. [#904](https://github.com/betagouv/monstagedeseconde/pull/904)
+- Ajout de la possibilité de gérer le niveau d'étude des étudiants au sein des établissements. [#883](https://github.com/betagouv/monstagedeseconde/pull/883)
+- Amélioration de la gestion des URL des ressources affichées. [#872](https://github.com/betagouv/monstagedeseconde/pull/872)
+- Mise à jour de la formulation concernant la récupération des candidatures. [#876](https://github.com/betagouv/monstagedeseconde/pull/876)
+- Ajout de la possibilité d'importer des étudiants depuis l'espace administrateur. [#880](https://github.com/betagouv/monstagedeseconde/pull/880)
+- Correction d'un problème lié à l'affichage des places restantes à zéro. [#9534f8f6](https://github.com/betagouv/monstagedeseconde/commit/9534f8f6)
+- Ajout d'un chatbot Crisp pour l'assistance utilisateur. [#879](https://github.com/betagouv/monstagedeseconde/pull/879)
+- Amélioration de la gestion des types d'utilisateurs lors de l'inscription. [#866](https://github.com/betagouv/monstagedeseconde/pull/866)
+- Ajout du préfixe téléphonique de la Guadeloupe. [#859](https://github.com/betagouv/monstagedeseconde/pull/859)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances : `qs`, `webpack-dev-server`, `view_component`, `devise`, `fast-uri`, `nokogiri`, `babel/plugin-transform-modules-systemjs`, `jwt`.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Amélioration de la gestion des erreurs Sygne.
-- Correction de problèmes de typage.
-- Amélioration des tests et correction de tests défaillants.
-- Mise à jour de la version de Ruby à 3.4.9.
-- Amélioration du geocoding et de la validation d'adresse pour les entreprises. [#817](https://github.com/betagouv/monstagedeseconde/issues/817)
-- Amélioration de la gestion des jobs de reconstruction de la base de données.
-- Correction de problèmes liés à l'authentification via token.
+- Refactorisation de l'utilisation des "abilities" (permissions) pour une meilleure organisation et maintenabilité. [#889](https://github.com/betagouv/monstagedeseconde/pull/889)
+- Mise à jour de la version de Ruby à 3.4.9. [#884](https://github.com/betagouv/monstagedeseconde/pull/884)
+- Amélioration de la gestion des erreurs liées à l'API Sygne, avec l'ajout d'exceptions spécifiques pour une meilleure identification des problèmes. [#898](https://github.com/betagouv/monstagedeseconde/pull/898)
+- Optimisation des requêtes pour la reconstruction de l'index de recherche, améliorant ainsi les performances.
+- Mise à jour des dépendances : `qs`, `webpack-dev-server`, `faraday`, `jwt`, `nokogiri`, `view_component`, `devise`.
+- Amélioration de la gestion des erreurs et des tests.
+- Correction de problèmes de syntaxe et de typographie.
 
 ### Autres changements
-- Suppression de fichiers inutiles.
-- Nettoyage du code.
+- Suppression d'une dépendance tierce inutile. [#120b5b14](https://github.com/betagouv/monstagedeseconde/commit/120b5b14)
+- Nettoyage du code et suppression de fichiers inutiles.
 - Mise à jour de la documentation.
-- Ajout de tests d'accessibilité (A11y).
-- Correction de fautes de frappe et amélioration de la formulation.
-- Suppression d'un add-on tiers inutile.
-- Configuration du mode maintenance via un flag Flipper.
+- Amélioration de la configuration et des scripts de déploiement.
 - Ajout de compétences pour l'IA Claude.
-- Suppression de descriptions d'extensions commentées dans `structure.sql`.
 - Correction de la configuration de l'environnement de test.
-- Correction de l'importation des types dans les modèles.
-- Correction de l'utilisation de `destroy_all` par `delete_all` pour améliorer les performances.
-- Ajout de la gestion des statistiques pour les utilisateurs statisticiens.
-- Correction de la signature des tokens.
-- Correction de la configuration du CSP.
-- Suppression d'un dump inutile.
-- Correction de l'API opérateur.
-- Correction de l'affichage des statistiques.
+- Suppression de fichiers de dump inutiles.
+- Correction de problèmes de CSP (Content Security Policy).
+- Mise à jour de la gestion des jetons de signature.
+- Amélioration de la gestion des autorisations pour les statisticiens.
+- Correction de la gestion des dates de signature des conventions.
+- Amélioration de la validation des adresses et de la géolocalisation.

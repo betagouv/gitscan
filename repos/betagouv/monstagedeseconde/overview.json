@@ -1,26 +1,26 @@
 {
   "url": "https://github.com/betagouv/monstagedeseconde",
   "name": "monstagedeseconde",
-  "description": "MonStageDeSeconde est une plateforme permettant de faciliter la recherche et la gestion des stages pour les élèves. Elle offre des fonctionnalités pour les élèves, les entreprises et les administrateurs, en mettant l'accent sur la sécurité et la conformité.",
+  "description": "MonStage est une plateforme permettant de faciliter la mise en relation entre les élèves et les entreprises pour les stages. Elle offre des fonctionnalités de gestion des conventions, des candidatures et des établissements.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
+    "Gestion des conventions",
+    "Gestion des applications",
+    "Gestion des établissements",
     "Notifications & Alertes",
-    "Gestion des établissements & Structures",
-    "Aides & Éligibilité",
-    "Gestion des signalements",
-    "Authentification & Accès"
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "Rails",
+    "Sidekiq",
     "React",
-    "Postgis",
-    "Sentry",
-    "Sidekiq"
+    "Turbo",
+    "Postgis"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,8 +32,7 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "email-password"
     ]
   },
   "tests": [
@@ -47,7 +46,7 @@
   "workflows": [
     "CI/CD with CircleCI"
   ],
-  "lastActivity": "2026-06-05T10:19:08+02:00",
+  "lastActivity": "2026-06-08T11:42:10+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
