@@ -1,17 +1,12 @@
-## Changelog : parcours-rag (30 derniers jours, au 5 mai 2026)
+## Changelog : parcours-rag (30 derniers jours, au 8 juin 2026)
 
 ### Résumé
-Ce changelog fait état d'améliorations significatives du module 3, notamment en termes de robustesse et d'outils d'évaluation. Des corrections ont été apportées pour améliorer la précision de l'extraction de citations et l'efficacité du pipeline RAG, notamment en optimisant l'utilisation de la base de données vectorielle LibSQL. Des mises à jour de dépendances ont également été intégrées pour assurer la stabilité et la sécurité du projet.
-
-### Évolutions fonctionnelles
-- Amélioration du module 3 avec l'ajout d'outils d'évaluation CP6 et une meilleure robustesse générale. [#34](https://github.com/etalab-ia/parcours-rag/pull/34)
-- Amélioration de la précision de l'extraction des numéros de page dans les citations. [#36bf614](https://github.com/etalab-ia/parcours-rag/commit/36bf614)
-- Amélioration de l'analyse des citations pour imposer un format explicite. [#36bf614](https://github.com/etalab-ia/parcours-rag/commit/36bf614)
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité du projet et la préparation d'une publication plus robuste. Des vérifications de vulnérabilités ont été ajoutées au processus de développement pour identifier et prévenir les problèmes de sécurité avant qu'ils n'atteignent la production. De plus, une configuration a été ajoutée pour contrôler la fréquence des publications.
 
 ### Évolutions techniques
-- Optimisation de l'utilisation de l'instance LibSQLVector pour améliorer les performances du pipeline de récupération. [#659f563](https://github.com/etalab-ia/parcours-rag/commit/659f563)
-- Préservation des métadonnées de page dans le pipeline de création d'index et de chunking RAG. [#139a7de](https://github.com/etalab-ia/parcours-rag/commit/139a7de)
-- Mise à jour de l'action `release-please` pour bénéficier des dernières améliorations. [#4053ae6](https://github.com/etalab-ia/parcours-rag/commit/4053ae6)
+- Ajout d'une vérification des vulnérabilités des dépendances en pré-push pour renforcer la sécurité du projet [#43](https://github.com/etalab-ia/parcours-rag/pull/43).
+- Configuration de l'âge minimum d'une release pnpm pour une meilleure gestion des versions et des publications [#47](https://github.com/etalab-ia/parcours-rag/pull/47).
+- Alignement de la vérification de sécurité avec la configuration pnpm.
 
 ### Autres changements
-- Mise à jour des dépendances : `unpdf` (1.6.0 -> 1.6.2), `zod` (4.3.6 -> 4.4.3), `@slidev/cli` (52.14.2 -> 52.15.1), `@ai-sdk/*` et `mastra/*`. Ces mises à jour sont gérées par Dependabot et visent à maintenir la sécurité et la compatibilité du projet.
+- Mise à jour de la configuration pour l'analyse des vulnérabilités.
