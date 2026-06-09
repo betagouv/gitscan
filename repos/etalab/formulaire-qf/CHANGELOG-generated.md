@@ -1,18 +1,14 @@
-## Changelog : formulaire-qf (30 derniers jours, au 01 juin 2026)
+## Changelog : formulaire-qf (30 derniers jours, au 8 juin 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de formulaire-qf se sont concentrées sur la correction d'un bug affectant la sélection des collectivités et sur la mise à jour des dépendances du projet pour assurer sa sécurité et sa stabilité.
+Ce mois-ci, les évolutions se concentrent sur la correction d'un bug affectant la sélection des collectivités et sur la maintenance des dépendances du projet. Ces mises à jour assurent la stabilité et la fiabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant le bon fonctionnement de la sélection des collectivités dans certains cas [#347](https://github.com/etalab/formulaire-qf/pull/347). Le paramètre `id` est maintenant correctement conservé lors de la définition de la collectivité.
+- Correction d'un bug empêchant le bon fonctionnement de la sélection des collectivités. L'identifiant `params[:id]` est maintenant correctement conservé lors de la définition de la collectivité. [#347](https://github.com/etalab/formulaire-qf/pull/347)
 
 ### Évolutions techniques
-- Mise à jour des dépendances du projet :
-    - Faraday (2.14.1 -> 2.14.2)
-    - Rubocop et Rubocop-rails
-    - Nokogiri (1.19.2 -> 1.19.3)
-    - Net-imap (0.6.3 -> 0.6.4)
-    - Diverses mises à jour des dépendances de production et de développement.
+- Mise à jour des dépendances Ruby, incluant `rubocop-rails`, `faraday`, et divers paquets de production et de développement. Ces mises à jour visent à améliorer la sécurité, la performance et la compatibilité du projet.
+- Amélioration du linting du code. [#346](https://github.com/etalab/formulaire-qf/pull/346)
 
 ### Autres changements
-- Amélioration de la qualité du code avec des corrections de linting [#342](https://github.com/etalab/formulaire-qf/pull/342).
+- Mises à jour de dépendances de routine via Dependabot (non listées individuellement).
