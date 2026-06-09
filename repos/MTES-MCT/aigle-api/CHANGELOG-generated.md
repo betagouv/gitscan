@@ -1,26 +1,21 @@
 ## Changelog : aigle-api (30 derniers jours, au 28 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de l'API Aigle se concentrent sur l'amélioration de l'administration des utilisateurs et des zones personnalisées, ainsi que sur l'optimisation des performances et la correction de bugs liés au téléchargement de données et au filtrage. Des améliorations ont également été apportées à la gestion des tilesets et à l'import/export de données.
+Les dernières mises à jour d'aigle-api améliorent la gestion des droits d'administration, la manipulation des zones personnalisées, et la performance globale de l'API. Des corrections ont été apportées pour assurer le bon fonctionnement des tests et des routes d'administration, ainsi qu'une amélioration du processus de déploiement. Une modification du type de données des tilesets a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface d'administration pour la gestion des groupes d'utilisateurs, permettant de modifier facilement les groupes des utilisateurs ayant le statut SUPER_ADMIN.
-- Ajout d'un filtre sur le groupe d'utilisateurs dans la liste des utilisateurs de l'interface d'administration [#64](https://github.com/MTES-MCT/aigle-api/pull/64).
-- Correction d'un bug empêchant l'application des filtres de zones personnalisées lors du téléchargement de parcelles [#58](https://github.com/MTES-MCT/aigle-api/pull/58).
-- Correction d'un problème d'affichage d'un nombre excessif de détections lors du téléchargement de parcelles [#58](https://github.com/MTES-MCT/aigle-api/pull/58).
-- Restriction de la recherche du géocodeur [#65](https://github.com/MTES-MCT/aigle-api/pull/65).
-- Correction des droits SUPER_ADMIN [#62](https://github.com/MTES-MCT/aigle-api/pull/62).
-- Correction de la gestion des zones personnalisées dans l'administration [#63](https://github.com/MTES-MCT/aigle-api/pull/63).
-- Amélioration de l'import/export de données en masse [#66](https://github.com/MTES-MCT/aigle-api/pull/66).
-- Ajout de la possibilité d'importer/exporter des données directement depuis l'interface d'administration [#59](https://github.com/MTES-MCT/aigle-api/pull/59).
+- **Administration :** Amélioration de la gestion des groupes d'utilisateurs pour les super-administrateurs, permettant de modifier facilement les groupes [#62](https://github.com/MTES-MCT/aigle-api/pull/62).
+- **Zones personnalisées :** Correction de bugs dans la gestion des zones personnalisées par les administrateurs [#63](https://github.com/MTES-MCT/aigle-api/pull/63).
+- **Géocodage :** Restriction de la recherche du géocodage [#65](https://github.com/MTES-MCT/aigle-api/pull/65).
+- **Import/Export :** Amélioration de l'import et de l'export en masse [#66](https://github.com/MTES-MCT/aigle-api/pull/66).
 
 ### Évolutions techniques
-- Le type de données de la date des tilesets a été modifié de `datetime` à `date` [#61](https://github.com/MTES-MCT/aigle-api/pull/61).
-- Optimisations de performance diverses [#60](https://github.com/MTES-MCT/aigle-api/pull/60).
-- Amélioration de la configuration locale pour faciliter le développement [#57](https://github.com/MTES-MCT/aigle-api/pull/57).
-- Ajout de logs pour les routes super_admin afin de faciliter le débogage [#62](https://github.com/MTES-MCT/aigle-api/pull/62).
-- Mise à jour de la configuration CI/CD pour ne déployer que si les tests réussissent [#61](https://github.com/MTES-MCT/aigle-api/pull/61).
-- Correction de la suite de tests [#56](https://github.com/MTES-MCT/aigle-api/pull/56).
+- **Tileset :** Le champ de date des tilesets est maintenant de type `date` au lieu de `datetime` [#60](https://github.com/MTES-MCT/aigle-api/pull/60).
+- **Performance :** Diverses optimisations de performance ont été implémentées [#64](https://github.com/MTES-MCT/aigle-api/pull/64).
+- **CI/CD :** La configuration du CI a été mise à jour pour ne déployer que si les tests réussissent [#61](https://github.com/MTES-MCT/aigle-api/pull/61).
+- **Logs :** Ajout de logs pour les routes d'administration super-administrateur [#62](https://github.com/MTES-MCT/aigle-api/pull/62).
+- **Configuration locale :** Amélioration de la configuration locale pour faciliter le développement [#64](https://github.com/MTES-MCT/aigle-api/pull/64).
 
 ### Autres changements
-- Correction d'un bug où le filtre par défaut pour le téléchargement de parcelles était incorrect (défini à 0.3) [#59](https://github.com/MTES-MCT/aigle-api/pull/59).
+- **Tests :** Correction de la suite de tests [#65](https://github.com/MTES-MCT/aigle-api/pull/65).
+- **Droits Super-Admin :** Correction des droits pour les super-administrateurs [#64](https://github.com/MTES-MCT/aigle-api/pull/64).
