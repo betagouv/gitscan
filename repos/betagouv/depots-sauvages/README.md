@@ -16,6 +16,7 @@ Application de signalement des dépôts sauvages destinée aux communes.
   - [Frontend](#frontend)
   - [Les deux conteneurs](#les-deux-conteneurs)
 - [🧪 Tests](#-tests)
+- [🔒 Sécurité](#-sécurité)
 - [✨ Fonctionnalités](#-fonctionnalités-clés)
 - [⚖️ Licence](#️-licence)
 
@@ -88,6 +89,14 @@ cp .env.example .env
 ```
 
 Note: Le fichier `.env` contient des variables pour Django et Vite. Les variables préfixées `VITE_` sont utilisées côté frontend.
+
+### 🔍 SEO, indexation et moteurs de recherche
+
+Afin d'éviter que les environnements de test, de développement et de staging ne soient indexés par les moteurs de recherche :
+
+- **robots.txt dynamique** : Servi à l'adresse `/robots.txt`, il interdit le crawling de l'ensemble du site (`Disallow: /`) si la variable d'environnement `ENV_NAME` est différente de `prod`.
+
+- **Middleware d'en-tête de non-indexation (`StagingNoIndexMiddleware`)** : Si `ENV_NAME` est différent de `prod`, le serveur Django ajoute automatiquement l'en-tête HTTP `X-Robots-Tag: noindex, nofollow` à toutes les réponses (pages HTML, documents PDF générés, fichiers ODT, API, etc.), bloquant l'indexation de manière absolue.
 
 ---
 
@@ -196,7 +205,13 @@ Certaines notions intermédiaires comme « étape » peuvent relever du métie
 
 ## 🧪 Tests
 
-Pour plus de détails sur la stratégie de test et les commandes d'exécution, consultez le fichier [TESTING.md](./TESTING.md).
+Pour plus de détails sur la stratégie de test et les commandes d'exécution, consultez le fichier [testing.md](./docs/testing.md).
+
+---
+
+## 🔒 Sécurité
+
+Pour en savoir plus sur notre politique de sécurité et notre auto-évaluation de robustesse (XSS, CSP, rate-limiting, etc.), veuillez consulter le fichier [SECURITY.md](./SECURITY.md).
 
 ---
 
@@ -259,5 +274,3 @@ docker compose down
 ## ⚖️ Licence
 
 Ce projet est sous licence libre **GNU Affero General Public License v3 (AGPL-3.0)**. Pour plus de détails, veuillez consulter le fichier [LICENSE.md](file:///home/sylvain/Dev/depots-sauvages/LICENSE.md) à la racine du dépôt.
-
-

@@ -23,7 +23,7 @@
 ├── Pipfile.lock
 ├── Procfile
 ├── README.md
-├── TESTING.md
+├── SECURITY.md
 ├── backend
 │   ├── bypass_auth
 │   │   ├── apps.py
@@ -35,13 +35,20 @@
 │   ├── constatations
 │   │   ├── __init__.py
 │   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── regenerate_constatation_docs.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_constatation_prejudice_autres_couts_and_more.py
+│   │   │   ├── 0003_calculate_prejudice_and_regenerate_docs.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── prejudice.py
 │   │   ├── serializers.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_commands.py
 │   │   │   └── test_views.py
 │   │   └── views.py
 │   ├── dn
@@ -107,6 +114,8 @@
 │   │   └── settings.py
 │   ├── home
 │   │   ├── __init__.py
+│   │   ├── middleware.py
+│   │   ├── seo_metadata.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test_admin_config.py
@@ -171,6 +180,10 @@
 │   ├── urls.py
 │   └── wsgi.py
 ├── docker-compose.yml
+├── docs
+│   ├── audit-xss-constatation.md
+│   ├── politique-csp-permissions.md
+│   └── testing.md
 ├── frontend
 │   ├── app.vue
 │   ├── components
@@ -197,6 +210,7 @@
 │   │   │   ├── CommuneAutocomplete.vue
 │   │   │   ├── CompanyAutocomplete.vue
 │   │   │   ├── LoginInvitation.vue
+│   │   │   ├── PageLoader.vue
 │   │   │   ├── PremiumBox.vue
 │   │   │   ├── PremiumCallout.vue
 │   │   │   ├── SelectableChoices.vue
@@ -221,15 +235,22 @@
 │   │   └── default-layout.vue
 │   ├── main.js
 │   ├── pages
+│   │   ├── a11y.vue
 │   │   ├── accueil.vue
+│   │   ├── cgu.vue
 │   │   ├── commencer-constatation.vue
 │   │   ├── comprendre-la-procedure.vue
+│   │   ├── constatation-fin.vue
 │   │   ├── constatation-form.vue
 │   │   ├── contact.vue
+│   │   ├── cookies.vue
 │   │   ├── demarche-numerique-rejoindre-protectenvi.vue
+│   │   ├── donnees-personnelles.vue
 │   │   ├── joindre.vue
 │   │   ├── login-demo.vue
+│   │   ├── mentions-legales.vue
 │   │   ├── mes-procedures.vue
+│   │   ├── plan-du-site.vue
 │   │   ├── rdv.vue
 │   │   ├── rejoindre-le-dispositif.vue
 │   │   └── suivi-procedure.vue
@@ -285,8 +306,9 @@
 │   │       └── money.svg
 │   └── depot-de-dechet-sauvage-image-accueil.webp
 ├── templates
-│   └── email-get-documents.html
+│   ├── email-get-documents.html
+│   └── robots.txt
 ├── vite.config.ts
 ├── vitest.setup.ts
 └── yarn.lock
-51 directories, 240 files
+54 directories, 259 files
