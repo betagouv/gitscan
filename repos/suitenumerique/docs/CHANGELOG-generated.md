@@ -1,38 +1,37 @@
 ## Changelog : docs (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité et l'expérience utilisateur, avec des corrections de bugs concernant la gestion des documents, l'interface utilisateur et les tests. Des améliorations significatives ont été apportées à la gestion des événements pour le suivi analytique, ainsi qu'à l'infrastructure de construction et de déploiement. Une nouvelle fonctionnalité de mode présentateur a été ajoutée.
+Les dernières mises à jour apportent des améliorations à la stabilité et aux performances de l'application, notamment au niveau du backend et de la gestion des documents. L'interface utilisateur a également été améliorée avec l'ajout d'un panneau latéral pour les commentaires et un mode présentateur, ainsi que des corrections de bugs pour une meilleure expérience utilisateur. L'intégration de PostHog a été étendue pour un suivi plus précis des événements.
 
 ### Évolutions fonctionnelles
-- Ajout du mode présentateur pour faciliter les présentations de documents [#2321].
+- Ajout d'un mode présentateur pour faciliter les présentations de documents [#2321].
+- Ajout d'un panneau latéral dédié aux commentaires pour une meilleure organisation et accessibilité [#2379].
 - Possibilité de quitter un document [#2365].
 - Amélioration de la recherche avec l'ajout de breadcrumbs dans les résultats [#2310].
-- Prise en charge de la création de sous-documents à partir de fichiers [#1987].
-- Ajout d'un utilitaire pour capturer des événements avec PostHog pour un meilleur suivi analytique.
-- Ajout d'une option pour activer/désactiver l'accès à tous les documents via un paramètre de configuration [#2378].
+- Possibilité de créer un sous-document à partir d'un fichier [#1987].
+- Ajout d'une fonctionnalité permettant de capturer des événements pour l'analyse avec PostHog (création/suppression de documents, actions IA, etc.) [#2363, #2364, #2366, #2367, #2368, #2369, #2370, #2371].
+- Amélioration du support de l'importation de documents.
 
 ### Évolutions techniques
-- Migration de l'outil de gestion des dépendances de `pip` à `uv` pour améliorer la performance et la fiabilité de la construction [#2363].
-- Refonte de l'infrastructure de construction avec l'utilisation de `uv_build` comme backend de construction.
-- Amélioration de la gestion des connexions de base de données pour éviter les erreurs de verrouillage.
-- Utilisation de runners ARM64 pour la construction d'images pour l'architecture ARM64.
-- Mise à jour de Next.js vers la version 16.2.6 (correction de sécurité) [#2386].
-- Amélioration de la gestion des erreurs et des conditions de concurrence dans le backend.
-- Mise à jour de Blocknote vers la version 0.51.4 [#2399].
+- Mise à jour de Blocknote vers la version 0.51.4 [#2374].
+- Refonte de l'architecture pour déplacer les actions sur les documents (partage, commentaires) vers une barre flottante [#2374].
+- Amélioration de la gestion des connexions de base de données pour éviter les erreurs lors des tests [#2385].
+- Optimisation du streaming du contenu des documents côté backend [#2381].
+- Utilisation d'uv pour la gestion des dépendances au lieu de pip.
+- Ajout de support pour le déploiement sur PaaS (Scalingo) [#2293].
+- Mise en place d'un service dédié pour la conversion Yjs avec Helm et Compose [#2358, #2305].
+- Mise à jour de Next.js vers la version 16.2.6 (correction de sécurité) [#2329].
 
 ### Autres changements
-- Corrections de bugs concernant l'affichage du titre dans la table des matières [#2399].
-- Correction de problèmes de crash liés aux threads orphelins [#2395].
-- Amélioration de l'accessibilité de l'interface utilisateur, notamment pour le menu mobile et les avatars décoratifs [#2324, #2377].
-- Ajout de tests E2E pour le mode présentateur [#2377].
-- Mise à jour des traductions [#2396].
-- Suppression de code inutilisé et nettoyage du code.
-- Ajout de la prise en charge du déploiement sur PaaS (Scalingo) [#2293].
-- Amélioration de la gestion des événements lors de la création, suppression, duplication et importation de documents.
-- Correction de problèmes d'affichage et de comportement de l'interface utilisateur (barre flottante, panneaux latéraux).
-- Correction de problèmes liés à l'impression des documents (commentaires).
-- Ajout de la configuration de PostHog dans l'environnement Helm.
-- Correction de problèmes de verrouillage lors de la création de documents.
-- Amélioration de la gestion des erreurs lors de la migration de la base de données.
-- Correction de problèmes de compatibilité avec GTranslate.
-- Correction de problèmes d'exportation des liens lors de l'impression.
+- Corrections de bugs concernant l'affichage des titres longs dans la table des matières [#2399].
+- Corrections de bugs d'interface utilisateur (crashs, affichage des icônes, comportement du focus, etc.) [#2395, #2372, #2373, #2375].
+- Améliorations de l'accessibilité (aria-label, gestion du focus) [#2377, #2324].
+- Mise à jour des traductions [#2396, #2377].
+- Ajout de tests E2E pour le mode présentateur [#2322].
+- Suppression de code obsolète et nettoyage du code [#2378, #2382].
+- Ajout de configuration pour PostHog dans les environnements de développement et de fonctionnalités [#2378].
+- Correction de problèmes de sécurité liés à la validation des ID de documents [#2323].
+- Ajout de la possibilité de configurer l'endpoint utilisateur OIDC [#2306].
+- Correction de problèmes liés à l'exportation des liens inter-documents en mode impression [#2269].
+- Amélioration de la gestion des erreurs et des avertissements.
+- Mise à jour des dépendances JavaScript [#2329, #2374].
