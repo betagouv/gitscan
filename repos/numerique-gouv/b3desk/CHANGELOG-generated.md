@@ -1,20 +1,21 @@
-## Changelog : b3desk (30 derniers jours, au 30 mai 2026)
+## Changelog : b3desk (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la délégation de réunions et à la gestion des informations utilisateur via l'intégration des claims OIDC. Des corrections et des améliorations de la documentation ont également été apportées. L'automatisation de la publication des releases sur GitHub a été implémentée.
+Les dernières mises à jour de b3desk se concentrent sur l'amélioration de la gestion des délégations de réunions et l'intégration des informations utilisateur via OIDC. Des corrections et améliorations diverses ont également été apportées pour une meilleure expérience utilisateur et une plus grande stabilité.
 
 ### Évolutions fonctionnelles
-- **Délégation de réunions :** Amélioration de la fonctionnalité de délégation de réunions via l'API. [#357](https://github.com/numerique-gouv/b3desk/issues/357)
-- **Informations utilisateur :**  Possibilité de mapper les claims OIDC pour récupérer et afficher des informations utilisateur plus complètes. [#360](https://github.com/numerique-gouv/b3desk/issues/360)
-- **Affichage du nom complet du propriétaire :** Correction de l'affichage du nom complet du propriétaire d'une réunion.
-- **Traduction :** Mise à jour des traductions via Weblate. [#344](https://github.com/numerique-gouv/b3desk/issues/344)
+- **Délégation de réunions :** Possibilité d'ajouter des délégués à une réunion via l'API. [#357](https://github.com/numerique-gouv/b3desk/issues/357)
+- **Délégation de réunions :** Amélioration de la gestion des délégations de réunions, incluant la limitation du nombre de délégués à 15 et l'impossibilité pour le propriétaire de la réunion de se déléguer lui-même. [#364](https://github.com/numerique-gouv/b3desk/issues/364)
+- **Informations utilisateur :** Intégration des informations utilisateur provenant des revendications OIDC (OpenID Connect). [#360](https://github.com/numerique-gouv/b3desk/issues/360)
+- **Affichage du nom complet :** Correction de l'affichage du nom complet du propriétaire de la réunion.
+- **Redirection en mode développement :** Redirection automatique vers `b3desk.localhost` en mode développement pour une meilleure expérience.
 
 ### Évolutions techniques
 - **Publication des releases :** Automatisation de la publication des releases GitHub lors de la création de tags.
+- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances, notamment `webob`, `uv`, `idna`, `authlib` et `urllib3`.
 - **Linting :** Ajout de vérifications lint supplémentaires pour améliorer la qualité du code.
-- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (uv, idna, authlib, urllib3, mako) pour bénéficier des dernières corrections et améliorations de sécurité. (Ces mises à jour sont gérées automatiquement par Dependabot et ne sont pas détaillées individuellement).
-- **Configuration de développement :** Redirection automatique vers `b3desk.localhost` en mode développement.
+- **Documentation :** Ajout d'un exemple de personnalisation du scope OIDC.
 
 ### Autres changements
-- **Documentation :** Ajout d'un exemple de personnalisation du scope OIDC. [#339](https://github.com/numerique-gouv/b3desk/issues/339)
-- **Amélioration de la délégation de réunions :** Amélioration de la délégation de réunions. [#322](https://github.com/numerique-gouv/b3desk/issues/322)
+- Mise à jour des traductions.
+- Préparation des versions de développement 1.6.2dev, 1.6.3dev et 1.6.4dev.
