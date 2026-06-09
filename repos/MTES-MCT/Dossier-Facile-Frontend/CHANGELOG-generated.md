@@ -1,26 +1,25 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 22 mai 2026)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment avec l'ajout de l'analyse du logement, la gestion des garants et la correction de plusieurs bugs. Des améliorations techniques ont également été apportées pour la sécurité et la stabilité de la plateforme.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans le processus de validation du dossier, avec l'ajout de fonctionnalités pour la gestion des garants et l'analyse du logement. Des corrections de bugs ont également été apportées pour améliorer la fiabilité de l'application, notamment concernant l'envoi d'emails et le comportement des boutons dans certaines étapes du processus.
 
 ### Évolutions fonctionnelles
-- Ajout de l'analyse du logement en étape de résidence [#1971](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1971)
-- Possibilité de supprimer un garant sur la page de validation [#1966](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1966)
-- Ajout du nom préféré du garant [#1953](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1953)
-- Amélioration de l'étiquette de l'année de l'avis de taxe foncière dans la location et la pension [#1968](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1968)
-- Ajout d'un lien de support Matomo dans l'appel à l'action du document [#1956](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1956)
-- Ajout d'un formulaire Typeform pour recueillir des retours lors du téléchargement de ZIP non vérifiés [#1957](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1957)
-- Correction du bouton de désactivation dans l'étape de résidence [#1972](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1972)
+- Ajout d'un compteur de caractères pour le message du filigrane (#1977).
+- Ajout d'une analyse du logement dans l'étape de résidence (#1971).
+- Possibilité de supprimer un garant sur la page de validation du dossier (#1966).
+- Amélioration de l'étiquette de l'année de l'avis d'imposition pour la rente viagère et la pension (#1968, #1974).
+- Correction d'un bug empêchant l'envoi de l'email du co-locataire à l'API lorsque les noms sont déjà enregistrés (#1934).
+- Correction d'un bug où le bouton était incorrectement désactivé dans l'étape de résidence (#1972).
+- Suppression du message d'explication concernant le co-locataire lorsque le locataire est de type "JOIN" (#1973, #1975).
+- Ajout d'un message d'erreur toast pour le texte personnalisé dépassant la longueur maximale (#1969).
 
 ### Évolutions techniques
-- Mise à jour des dépendances pour corriger des vulnérabilités (CVE) [#1954](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1954)
-- Correction du `contentType` des headers pour les locataires [#1958](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1958)
-- Remplacement du modal DSFR par un modal Typeform pour la collecte de feedback [#1961](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1961)
-- Amélioration de la gestion des artefacts et des messages Mattermost dans les tests E2E [#1970](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1970)
-- Ajout d'un fichier `robots.txt` pour le propriétaire [#1965](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1965)
+- Ajout d'un fichier `robots.txt` pour le propriétaire afin d'améliorer le référencement (#1965).
+- Amélioration des messages Mattermost et des artefacts vidéo dans les tests E2E (#1970).
 
 ### Autres changements
-- Suppression de l'enquête pour les codes postaux non vérifiés [#1963](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1963)
-- Correction de régressions E2E [#1959](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1959)
-- Correction de la marge supérieure du bouton de suppression du garant [#1967](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1967)
-- Publication des versions 3.5.8 et 3.5.9.
+- Suppression de l'enquête pour les codes postaux non vérifiés (#1963).
+- Publication de la version 3.5.9 (#1963).
+- Correction de la marge supérieure du bouton de suppression du garant (#1967).
+- Correction de l'affichage du message de clarification du co-locataire (#1975).
+- Suppression des nouvelles lignes dans le texte personnalisé avant la soumission du formulaire (#1976).
