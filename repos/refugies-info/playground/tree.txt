@@ -33,7 +33,8 @@
 ├── .gitignore
 ├── .gitleaks.toml
 ├── .husky
-│   └── pre-commit
+│   ├── pre-commit
+│   └── pre-push
 ├── .npmrc
 ├── .prototools
 ├── .skills
@@ -180,7 +181,8 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── common
 │   │   │   │   │   ├── AppSidebar.tsx
-│   │   │   │   │   └── app-pagination.tsx
+│   │   │   │   │   ├── app-pagination.tsx
+│   │   │   │   │   └── assignee-dropdown.tsx
 │   │   │   │   ├── document-editor
 │   │   │   │   │   ├── DocumentContext.tsx
 │   │   │   │   │   ├── actions
@@ -237,6 +239,7 @@
 │   │   │   │   │   │   │       ├── fields-config.ts
 │   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   ├── shared
+│   │   │   │   │   │   │   ├── helpers.test.ts
 │   │   │   │   │   │   │   ├── helpers.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── types.ts
@@ -308,6 +311,7 @@
 │   │   │   │   └── workflow-utils.ts
 │   │   │   ├── proxy.ts
 │   │   │   ├── services
+│   │   │   │   ├── assignee-actions.ts
 │   │   │   │   ├── document-actions.ts
 │   │   │   │   ├── documents.ts
 │   │   │   │   ├── helpers.ts
@@ -586,6 +590,10 @@
 │   │   │   │   ├── sidebar
 │   │   │   │   │   ├── Sidebar.stories.tsx
 │   │   │   │   │   ├── Sidebar.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── titled-popover
+│   │   │   │   │   ├── TitledPopover.stories.tsx
+│   │   │   │   │   ├── TitledPopover.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── user-card
 │   │   │   │       ├── AddUserCard.tsx
@@ -927,7 +935,8 @@
 │   │   ├── 20260511160000_fix_di_versioning.sql
 │   │   ├── 20260513110000_fix_service_role_grants_profiles.sql
 │   │   ├── 20260520142223_enable_realtime_ingestion_records.sql
-│   │   └── 20260520155000_add_di_session_end_date_to_workflows_enriched.sql
+│   │   ├── 20260520155000_add_di_session_end_date_to_workflows_enriched.sql
+│   │   └── 20260603100000_rename_editorial_author_id_to_assignee_id.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -944,4 +953,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-216 directories, 730 files
+217 directories, 738 files
