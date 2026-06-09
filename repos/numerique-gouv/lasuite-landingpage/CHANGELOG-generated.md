@@ -1,16 +1,25 @@
-## Changelog : lasuite-landingpage (30 derniers jours, au 29 mai 2026)
+## Changelog : lasuite-landingpage (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la page de questions fréquentes (FAQ) avec l'ajout d'informations sur les visioconférences, ainsi qu'un guide pour les DSI. Des ajustements esthétiques ont été réalisés sur la section "preuves sociales" et la police Marianne a été enrichie avec une variante en gras.
+Les dernières mises à jour de la plateforme La Suite se concentrent sur l'ajout de contenu pour Resana 2027, l'amélioration de la section FAQ avec des informations légales et des questions spécifiques, ainsi que l'ajout d'un guide pour les DSI. Des améliorations de style et de typographie ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section dédiée aux informations concernant les visioconférences dans la FAQ.  [#199](https://github.com/numerique-gouv/lasuite-landingpage/issues/199)
-- Publication d'un guide à destination des Directeurs des Systèmes d'Information (DSI). [#187](https://github.com/numerique-gouv/lasuite-landingpage/pull/187)
+- Ajout d'une nouvelle page de destination pour Resana 2027 avec des informations mises à jour. [#198](https://github.com/numerique-gouv/lasuite-landingpage/issues/198)
+- Mise à jour de la date du webinaire Interstis et correction du calendrier. [#204](https://github.com/numerique-gouv/lasuite-landingpage/issues/204)
+- Ajout d'une question fréquente (FAQ) concernant Resana. [#205](https://github.com/numerique-gouv/lasuite-landingpage/issues/205)
+- Ajout d'une circulaire Visio dans la FAQ. [#199](https://github.com/numerique-gouv/lasuite-landingpage/issues/199)
+- Ajout d'un guide pour les DSI. [#187](https://github.com/numerique-gouv/lasuite-landingpage/pull/187)
+- Ajout de pages légales (Docs) avec routage et gestion via le CMS.
+- Liens vers les pages légales depuis la FAQ de la section Docs.
+- Mise à jour du contenu des pages légales en français et en anglais.
+- Modification du wording sur la FAQ et le hero pour Resana 2027. [#200](https://github.com/numerique-gouv/lasuite-landingpage/issues/200)
 
 ### Évolutions techniques
-- Suppression du padding horizontal sur la section "preuves sociales" pour améliorer la mise en page. [#184](https://github.com/numerique-gouv/lasuite-landingpage/issues/184)
-- Ajout de la variante "bold" (gras) à la police Marianne pour plus de flexibilité dans la mise en forme. [#182](https://github.com/numerique-gouv/lasuite-landingpage/issues/182)
+- Ajout de la police Marianne en gras. [#182](https://github.com/numerique-gouv/lasuite-landingpage/issues/182)
+- Suppression du padding horizontal sur les social proofs. [#184](https://github.com/numerique-gouv/lasuite-landingpage/issues/184)
+- Mise à jour de Next.js vers la version 15.5.16 (correction de sécurité).
+- Mise à jour de PostCSS vers la version 8.5.10 (correction de sécurité).
 
 ### Autres changements
-- Mise à jour de la dépendance `postcss` vers la version 8.5.10 pour corriger une vulnérabilité de sécurité.
-- Mise à jour de la dépendance `next` vers la version 15.5.16 pour corriger une vulnérabilité de sécurité.
+- Ajout d'une déclaration d'accessibilité.
+- Amélioration du style des tableaux et des liens soulignés dans la section légale.
