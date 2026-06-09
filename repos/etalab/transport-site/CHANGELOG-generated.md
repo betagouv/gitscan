@@ -1,24 +1,25 @@
-## Changelog : transport-site (30 derniers jours, au 01 juin 2026)
+## Changelog : transport-site (30 derniers jours, au 02 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la maintenance technique du site, l'amélioration de la sécurité et la préparation de futures évolutions. Des corrections ont été apportées à l'affichage des icônes et des mises à jour de dépendances JavaScript ont été réalisées. Des travaux ont également été menés sur l'infrastructure et la configuration pour optimiser le site et préparer la sortie de certaines fonctionnalités expérimentales.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des données IRVE, notamment la déduplication et la validation des informations. Des optimisations ont également été apportées à l'infrastructure et au code, avec la suppression de fonctionnalités obsolètes et la correction de problèmes de sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge des données GBFS de Yégo dans les métadonnées. [#5512](https://github.com/etalab/transport-site/issues/5512)
-- Correction de l'affichage des icônes. [#5505](https://github.com/etalab/transport-site/issues/5505) [#5506](https://github.com/etalab/transport-site/issues/5506)
-- Amélioration de la récupération du `requestor_ref` via l'API, facilitant l'identification des requêtes. [#5516](https://github.com/etalab/transport-site/issues/5516)
+
+- **IRVE :** Ajout d'un permalien pour la validation IRVE, facilitant le partage et la vérification des informations. [#5524](https://github.com/etalab/transport-site/issues/5524)
+- **API :** Simplification de la récupération de la référence du demandeur (`requestor_ref`) via l'API, et ajout d'un script `CheckStatus` pour le suivi. [#5516](https://github.com/etalab/transport-site/issues/5516)
+- **Données :** Intégration des données GBFS de Yégo dans les métadonnées disponibles. [#5512](https://github.com/etalab/transport-site/issues/5512)
+- **Interface utilisateur :** Correction de l'affichage des icônes après une mise à jour. [#5506](https://github.com/etalab/transport-site/issues/5506)
 
 ### Évolutions techniques
-- Mise à jour de FontAwesome de la version 6 à la version 7 pour bénéficier des dernières icônes et améliorations. [#5500](https://github.com/etalab/transport-site/issues/5500)
-- Mise à jour de plusieurs dépendances JavaScript (DeckGL, Vega, etc.). [#5499](https://github.com/etalab/transport-site/issues/5499)
-- Migration du système de gestion des styles SCSS de `@import` vers `@use` pour une meilleure organisation et performance. [#5502](https://github.com/etalab/transport-site/issues/5502)
-- Patchs de sécurité appliqués aux dépendances JavaScript. [#5517](https://github.com/etalab/transport-site/issues/5517)
-- Début d'une refactorisation pour sortir les variables d'environnement à la compilation. [#5521](https://github.com/etalab/transport-site/issues/5521)
-- Suppression du code obsolète lié au support expérimental SIRI. [#5523](https://github.com/etalab/transport-site/issues/5523)
-- Suppression du code mort de l'ancien agrégateur dynamique IRVE du proxy unlock. [#5510](https://github.com/etalab/transport-site/issues/5510)
+
+- **IRVE :** Suppression de la consolidation "brute" IRVE et renommage de la consolidation transport pour une meilleure clarté. [#5529](https://github.com/etalab/transport-site/issues/5529)
+- **IRVE :** Arrêt du job de consolidation brute IRVE, optimisant ainsi les ressources. [#5527](https://github.com/etalab/transport-site/issues/5527)
+- **Sécurité :** Application de correctifs de sécurité pour JavaScript afin de réduire les vulnérabilités. [#5517](https://github.com/etalab/transport-site/issues/5517)
+- **Configuration :** Début de la migration des variables d'environnement vers la compilation, améliorant la sécurité et la performance. [#5521](https://github.com/etalab/transport-site/issues/5521)
+- **Code :** Suppression du code inutilisé lié au support expérimental SIRI. [#5523](https://github.com/etalab/transport-site/issues/5523)
+- **Code :** Suppression de code mort concernant l'ancien agrégateur dynamique IRVE du proxy unlock. [#5510](https://github.com/etalab/transport-site/issues/5510)
 
 ### Autres changements
-- Arrêt du job de consolidation brute. [#5527](https://github.com/etalab/transport-site/issues/5527)
-- Amélioration de la regex de validation des adresses email pour l'IRVE. [#5513](https://github.com/etalab/transport-site/issues/5513)
-- Ajout d'un script de profiling pour identifier les doublons dans le consolidé dynamique IRVE. [#5526](https://github.com/etalab/transport-site/issues/5526)
-- Correction d'un warning dans le CI. [#5504](https://github.com/etalab/transport-site/issues/5504)
+
+- **IRVE :** Amélioration de la regex pour la validation des adresses email IRVE, rendant la validation plus stricte. [#5513](https://github.com/etalab/transport-site/issues/5513)
+- **IRVE :** Ajout d'un script de profiling pour identifier les doublons dans le consolidé dynamique IRVE. [#5526](https://github.com/etalab/transport-site/issues/5526)

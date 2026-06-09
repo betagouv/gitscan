@@ -336,6 +336,7 @@
 │       │   ├── http
 │       │   │   └── utils.ex
 │       │   ├── irve
+│       │   │   ├── consolidation.ex
 │       │   │   ├── data_frame.ex
 │       │   │   ├── database_exporter.ex
 │       │   │   ├── database_importer.ex
@@ -345,12 +346,10 @@
 │       │   │   ├── fetcher.ex
 │       │   │   ├── http_pagination.ex
 │       │   │   ├── processing.ex
-│       │   │   ├── raw_report_item.ex
-│       │   │   ├── raw_static_consolidation.ex
-│       │   │   ├── simple_consolidation.ex
-│       │   │   ├── simple_report_item.ex
+│       │   │   ├── report_item.ex
 │       │   │   ├── static_irve_schema.ex
 │       │   │   ├── static_probes.ex
+│       │   │   ├── transcoder.ex
 │       │   │   └── validator
 │       │   │       ├── data_frame_validation.ex
 │       │   │       ├── field_validation.ex
@@ -400,8 +399,7 @@
 │       │   │   │   └── lez_to_geo_data.ex
 │       │   │   ├── gtfs_*.ex  (6 files)
 │       │   │   ├── import_*.ex  (8 files)
-│       │   │   ├── irve_raw_consolidation_job.ex
-│       │   │   ├── irve_simple_consolidation_job.ex
+│       │   │   ├── irve_consolidation_job.ex
 │       │   │   ├── multi_validation_with_error_notification_job.ex
 │       │   │   ├── netex_poller_job.ex
 │       │   │   ├── new_comments_notification_job.ex
@@ -1489,17 +1487,17 @@
 │           │   ├── import_data_service_test.exs
 │           │   ├── import_data_test.exs
 │           │   ├── irve
+│           │   │   ├── consolidation_test.exs
 │           │   │   ├── database_importer_test.exs
 │           │   │   ├── deduplicator_test.exs
 │           │   │   ├── dynamic_irve_schema_test.exs
 │           │   │   ├── irve_data_frame_test.exs
 │           │   │   ├── irve_extractor_test.exs
 │           │   │   ├── irve_http_pagination_test.exs
-│           │   │   ├── irve_raw_static_consolidation_test.exs
 │           │   │   ├── irve_static_probes_test.exs
 │           │   │   ├── processing_test.exs
-│           │   │   ├── simple_consolidation_test.exs
 │           │   │   ├── static_irve_schema_test.exs
+│           │   │   ├── transcoder_test.exs
 │           │   │   ├── validation
 │           │   │   │   ├── data_frame_validation_test.exs
 │           │   │   │   └── validator_test.exs
@@ -1802,8 +1800,6 @@
     │   ├── dynamic-dedup-profile.exs
     │   ├── dynamic-irve.exs
     │   ├── horodatage-formats.exs
-    │   ├── process-one.exs
-    │   ├── process-raw-static-consolidation.exs
     │   ├── process-simple-consolidation.exs
     │   ├── report-on-simple-consolidation.exs
     │   ├── stats.exs
@@ -1830,4 +1826,4 @@
     │   └── siri_request_parsing.exs
     ├── siri_check.exs
     └── subquery.exs
-183 directories, 1669 files
+183 directories, 1665 files
