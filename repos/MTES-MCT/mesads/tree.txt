@@ -66,6 +66,7 @@
 │   │   │       ├── export_ads_managers.py
 │   │   │       ├── export_emails.py
 │   │   │       ├── import_ads.py
+│   │   │       ├── import_creation_update_ads.py
 │   │   │       ├── import_last_update_file_from_paris.py
 │   │   │       ├── liste_attente_donnees_test.py
 │   │   │       ├── liste_attente_mail_delai_depasse.py
@@ -191,12 +192,14 @@
 │   │   │   ├── 0114_alter_adsmanagerdecree_date_arrete.py
 │   │   │   ├── 0115_adsmanagerdecree_nombre_ads.py
 │   │   │   ├── 0116_demandeacceslectureseule.py
+│   │   │   ├── 0117_auto_20260527_1719.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── reversion_diff.py
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── export.py
+│   │   │   ├── import_ads.py
 │   │   │   └── liste_attente.py
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
@@ -214,6 +217,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── test_command_mail_liste_attente.py
 │   │   │   ├── factories.py
+│   │   │   ├── file_test_import.xlsx
 │   │   │   ├── template_tags
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_html_metadata.py
@@ -225,6 +229,7 @@
 │   │   │   ├── test_models.py
 │   │   │   ├── test_reversion_diff.py
 │   │   │   ├── test_service_exports.py
+│   │   │   ├── test_service_import_ads.py
 │   │   │   └── views
 │   │   │       ├── __init__.py
 │   │   │       ├── test_ads.py
@@ -335,6 +340,9 @@
 │   │   │   │   ├── app
 │   │   │   │   │   ├── ads_manager_administrator
 │   │   │   │   │   │   └── change_form.html
+│   │   │   │   │   ├── adsmanager
+│   │   │   │   │   │   ├── change_form.html
+│   │   │   │   │   │   └── import.html
 │   │   │   │   │   ├── demande_acces_lecture_seule
 │   │   │   │   │   │   └── change_form.html
 │   │   │   │   │   └── demande_gestion_prefecture
@@ -609,4 +617,4 @@
 ├── setup.cfg
 ├── tsconfig.json
 └── webpack.config.js
-83 directories, 528 files
+84 directories, 535 files
