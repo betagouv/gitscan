@@ -9,6 +9,7 @@
 ├── .prettierrc.json
 ├── .stylelintrc.json
 ├── .yarnrc.yml
+├── CLAUDE.md
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -23,14 +24,15 @@
 │   ├── dependabot.md
 │   ├── ofii_referential.md
 │   ├── scripts.md
+│   ├── specs
+│   │   └── transformations.md
 │   ├── structure_version.md
 │   └── structure_version.png
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
 ├── patches
-│   └── @codegouvfr+react-dsfr+1.32.1.patch
-├── playwright.config.ts
+│   └── @codegouvfr+react-dsfr+1.32.2.patch
 ├── postcss.config.mjs
 ├── prisma
 │   ├── client.ts
@@ -221,6 +223,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260604134603_logo_operateur
 │   │   │   └── migration.sql
+│   │   ├── 20260605120346_add_transformations
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -242,6 +246,7 @@
 │   │   ├── schema.prisma
 │   │   ├── structure-version.prisma
 │   │   ├── structure.prisma
+│   │   ├── transformation.prisma
 │   │   └── user.prisma
 │   ├── seed.ts
 │   ├── seeders
@@ -285,7 +290,8 @@
 │   ├── ovoid.svg
 │   ├── stats.svg
 │   ├── structure-marker.svg
-│   └── technical-error.svg
+│   ├── technical-error.svg
+│   └── transformation-fermeture.svg
 ├── scripts
 │   ├── apply-views.ts
 │   ├── one-off-scripts
@@ -465,7 +471,8 @@
 │   │   │   │       │   │   ├── _header
 │   │   │   │       │   │   │   ├── AutoSaveStatus.tsx
 │   │   │   │       │   │   │   ├── FinalisationHeader.tsx
-│   │   │   │       │   │   │   └── StructureHeader.tsx
+│   │   │   │       │   │   │   ├── StructureHeader.tsx
+│   │   │   │       │   │   │   └── StructureMenu.tsx
 │   │   │   │       │   │   ├── _notes
 │   │   │   │       │   │   │   └── NotesBlock.tsx
 │   │   │   │       │   │   └── _type-places
@@ -519,26 +526,50 @@
 │   │   │   │       │   ├── StructuresTable.tsx
 │   │   │   │       │   └── Toolbar.tsx
 │   │   │   │       └── page.tsx
+│   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
 │   │   │   └── structures
 │   │   │       └── transformation
-│   │   │           ├── [idTransformation]
-│   │   │           │   ├── contraction
-│   │   │           │   │   └── [idStructure]
-│   │   │           │   │       └── page.tsx
-│   │   │           │   ├── extension
-│   │   │           │   │   └── [idStructure]
-│   │   │           │   │       └── page.tsx
-│   │   │           │   ├── fermeture
-│   │   │           │   │   └── [idStructure]
-│   │   │           │   │       └── page.tsx
-│   │   │           │   ├── ouverture
-│   │   │           │   │   └── [idStructure]
-│   │   │           │   │       └── page.tsx
+│   │   │           ├── [transformationId]
+│   │   │           │   ├── [transformationStructureType]
+│   │   │           │   │   └── [transformationStructureId]
+│   │   │           │   │       └── [transformationStructureStep]
+│   │   │           │   │           ├── _components
+│   │   │           │   │           │   ├── creation
+│   │   │           │   │           │   │   ├── CreationFlow.tsx
+│   │   │           │   │           │   │   └── CreationIdentificationForm.tsx
+│   │   │           │   │           │   ├── fermeture
+│   │   │           │   │           │   │   ├── FermetureDescriptionForm.tsx
+│   │   │           │   │           │   │   └── FermetureFlow.tsx
+│   │   │           │   │           │   └── shared
+│   │   │           │   │           │       ├── ExistingStructureFlow.tsx
+│   │   │           │   │           │       ├── ExistingStructureIdentificationForm.tsx
+│   │   │           │   │           │       ├── PlacesEtHebergementForm.tsx
+│   │   │           │   │           │       └── TransformationActesAdministratifsForm.tsx
+│   │   │           │   │           ├── layout.tsx
+│   │   │           │   │           └── page.tsx
+│   │   │           │   ├── _context
+│   │   │           │   │   ├── TransformationClientContext.tsx
+│   │   │           │   │   └── TransformationContext.tsx
+│   │   │           │   ├── layout.tsx
+│   │   │           │   ├── page.tsx
 │   │   │           │   ├── selection
 │   │   │           │   │   └── page.tsx
 │   │   │           │   └── verification
+│   │   │           │       ├── _components
+│   │   │           │       │   ├── StructureVersionTransformationGroup.tsx
+│   │   │           │       │   └── StructureVersionTransformationItem.tsx
 │   │   │           │       └── page.tsx
+│   │   │           ├── _components
+│   │   │           │   ├── AnnulerDemarcheModal.tsx
+│   │   │           │   ├── EnregistrementModal.tsx
+│   │   │           │   ├── ErrorModal.tsx
+│   │   │           │   ├── QuitterModal.tsx
+│   │   │           │   ├── TransformationHeader.tsx
+│   │   │           │   ├── TransformationMenu.tsx
+│   │   │           │   ├── TransformationMenuItem.tsx
+│   │   │           │   ├── TransformationStep.tsx
+│   │   │           │   └── TransformationSteps.tsx
 │   │   │           └── type
 │   │   │               └── page.tsx
 │   │   ├── (not-authenticated)
@@ -664,7 +695,6 @@
 │   │   │   │   └── route.ts
 │   │   │   ├── dna-structures
 │   │   │   │   ├── dna-structure.repository.ts
-│   │   │   │   ├── dna-structure.service.ts
 │   │   │   │   └── dna-structure.util.ts
 │   │   │   ├── documents-financiers
 │   │   │   │   └── documentFinancier.repository.ts
@@ -703,6 +733,10 @@
 │   │   │   │   └── structure-millesime.repository.ts
 │   │   │   ├── structure-typologies
 │   │   │   │   └── structure-typologie.repository.ts
+│   │   │   ├── structure-versions
+│   │   │   │   ├── structure-version.db.type.ts
+│   │   │   │   ├── structure-version.repository.ts
+│   │   │   │   └── structure-version.service.ts
 │   │   │   ├── structures
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── adresses
@@ -716,6 +750,14 @@
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
 │   │   │   │   └── structure.util.ts
+│   │   │   ├── transformations
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   ├── transformation.db.type.ts
+│   │   │   │   ├── transformation.repository.ts
+│   │   │   │   ├── transformation.service.ts
+│   │   │   │   └── transformation.util.ts
 │   │   │   ├── user
 │   │   │   │   ├── user.repository.ts
 │   │   │   │   └── user.service.ts
@@ -732,6 +774,7 @@
 │   │   │   ├── NameChangeNoticeClient.tsx
 │   │   │   ├── NoDataAccordion.tsx
 │   │   │   ├── SearchBar.tsx
+│   │   │   ├── StructureCard.tsx
 │   │   │   ├── SubmitError.tsx
 │   │   │   ├── Tracking.tsx
 │   │   │   ├── User.tsx
@@ -781,12 +824,15 @@
 │   │   │   │   ├── ContractualisationHuda.tsx
 │   │   │   │   ├── DepartementsSelector.tsx
 │   │   │   │   ├── DropZone.tsx
+│   │   │   │   ├── EffectiveDateInput.tsx
 │   │   │   │   ├── FormWrapper.tsx
 │   │   │   │   ├── InputWithValidation.tsx
 │   │   │   │   ├── LeaveModificationModal.tsx
 │   │   │   │   ├── MaxSizeNotice.tsx
 │   │   │   │   ├── ModificationTitle.tsx
 │   │   │   │   ├── PreviousPageLink.tsx
+│   │   │   │   ├── RadioCardGroup.tsx
+│   │   │   │   ├── SaveCurrentForm.tsx
 │   │   │   │   ├── SelectWithValidation.tsx
 │   │   │   │   ├── Upload.tsx
 │   │   │   │   ├── UploadWithValidation.tsx
@@ -800,7 +846,8 @@
 │   │   │   │   │   ├── DnaInput.tsx
 │   │   │   │   │   ├── FieldSetAdresseAdministrative.tsx
 │   │   │   │   │   ├── FieldSetAntennes.tsx
-│   │   │   │   │   └── ManualAddressInputs.tsx
+│   │   │   │   │   ├── ManualAddressInputs.tsx
+│   │   │   │   │   └── TransformationAdresseAdministrative.tsx
 │   │   │   │   ├── autocomplete
 │   │   │   │   │   ├── Autocomplete.tsx
 │   │   │   │   │   ├── AutocompleteField.tsx
@@ -888,7 +935,15 @@
 │   │   │   │   │   └── FieldSetSiegeSocial.tsx
 │   │   │   │   ├── ouvertureFermeture
 │   │   │   │   │   └── FieldSetOuvertureFermeture.tsx
+│   │   │   │   ├── transformation-types
+│   │   │   │   │   ├── CreationTransformationForm.tsx
+│   │   │   │   │   ├── FromStructureCard.tsx
+│   │   │   │   │   ├── FromStructureVersionTransformationForm.tsx
+│   │   │   │   │   ├── HudaTransformationForm.tsx
+│   │   │   │   │   ├── StructureSelections.tsx
+│   │   │   │   │   └── TransformationTypeForms.tsx
 │   │   │   │   └── typePlace
+│   │   │   │       ├── FieldSetTransformationPlaces.tsx
 │   │   │   │       ├── FieldSetTypePlaces.tsx
 │   │   │   │       └── YearlyTypePlace.tsx
 │   │   │   ├── lists
@@ -907,6 +962,11 @@
 │   │   │   ├── structure-selection
 │   │   │   │   ├── StructureSearch.tsx
 │   │   │   │   └── StructuresList.tsx
+│   │   │   ├── transformations
+│   │   │   │   ├── OngoingTransformation.tsx
+│   │   │   │   ├── OngoingTransformationsBanner.tsx
+│   │   │   │   ├── TransformationStructureHeader.tsx
+│   │   │   │   └── TransformationStructureIcon.tsx
 │   │   │   └── ui
 │   │   │       ├── InformationBar.tsx
 │   │   │       ├── InputSimple.tsx
@@ -939,12 +999,14 @@
 │   │   │   ├── useDebounceCallback.ts
 │   │   │   ├── useFetchFreeDnaCodes.ts
 │   │   │   ├── useFetchStructure.ts
+│   │   │   ├── useFetchTransformation.ts
 │   │   │   ├── useFieldValidator.ts
 │   │   │   ├── useFileUpload.ts
 │   │   │   ├── useForm.ts
 │   │   │   ├── useHeaderHeight.ts
 │   │   │   ├── useHideOnScroll.ts
 │   │   │   ├── useLocalStorage.ts
+│   │   │   ├── useOngoingTransformations.ts
 │   │   │   ├── useOperateur.ts
 │   │   │   ├── useOperateurFormHandling.ts
 │   │   │   ├── useOperateurSearch.ts
@@ -953,10 +1015,14 @@
 │   │   │   ├── useRedirectStructureCreation.ts
 │   │   │   ├── useSpreadsheetParse.ts
 │   │   │   ├── useStructureAdresseExistence.ts
+│   │   │   ├── useStructureSelections.ts
 │   │   │   ├── useStructureStats.ts
 │   │   │   ├── useStructures.ts
 │   │   │   ├── useStructuresSearch.ts
-│   │   │   └── useStructuresSelection.ts
+│   │   │   ├── useStructuresSelection.ts
+│   │   │   ├── useTransformationFormHandling.ts
+│   │   │   ├── useTransformationFormNavigation.ts
+│   │   │   └── useTransformations.ts
 │   │   ├── layout.tsx
 │   │   ├── not-found.tsx
 │   │   ├── page.tsx
@@ -987,11 +1053,15 @@
 │   │       ├── structure.util.ts
 │   │       ├── structureMillesime.util.ts
 │   │       ├── structureTypology.util.ts
+│   │       ├── transformation.util.ts
 │   │       ├── tutorials.util.ts
 │   │       ├── zodCustomFields.ts
 │   │       └── zodErrorMap.ts
 │   ├── config
-│   │   └── acte-administratif.config.ts
+│   │   ├── acte-administratif.config.ts
+│   │   ├── operateur.config.ts
+│   │   ├── structure.config.ts
+│   │   └── transformation.config.ts
 │   ├── constants.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
@@ -1030,7 +1100,9 @@
 │   │   │   ├── region.schema.ts
 │   │   │   ├── structure-millesime.schema.ts
 │   │   │   ├── structure-typologie.schema.ts
-│   │   │   └── structure.schema.ts
+│   │   │   ├── structure-version.schema.ts
+│   │   │   ├── structure.schema.ts
+│   │   │   └── transformation.schema.ts
 │   │   └── forms
 │   │       ├── ajout
 │   │       │   ├── ajoutIdentification.schema.ts
@@ -1060,10 +1132,15 @@
 │   │       ├── finalisation
 │   │       │   ├── finalisationIdentification.schema.ts
 │   │       │   └── finalisationQualite.schema.ts
-│   │       └── modification
-│   │           ├── modificationDescription.schema.ts
-│   │           ├── modificationFinance.schema.ts
-│   │           └── modificationQualite.schema.ts
+│   │       ├── modification
+│   │       │   ├── modificationDescription.schema.ts
+│   │       │   ├── modificationFinance.schema.ts
+│   │       │   └── modificationQualite.schema.ts
+│   │       └── transformation
+│   │           ├── creationIdentification.schema.ts
+│   │           ├── creationPlacesEtHebergement.schema.ts
+│   │           ├── fermeture.schema.ts
+│   │           └── transformationIdentification.schema.ts
 │   └── types
 │       ├── Entity.type.ts
 │       ├── ListColumn.ts
@@ -1080,6 +1157,7 @@
 │       ├── prisma.type.ts
 │       ├── proxy.type.ts
 │       ├── structure.type.ts
+│       ├── transformation.type.ts
 │       └── utils.type.ts
 ├── tailwind.config.ts
 ├── tests
@@ -1119,7 +1197,24 @@
 │   │       │   ├── Filters.test.tsx
 │   │       │   ├── ListTableHeadings.test.tsx
 │   │       │   └── OrderButton.test.tsx
-│   │       └── page.test.tsx
+│   │       ├── page.test.tsx
+│   │       └── transformation
+│   │           ├── [transformationId]
+│   │           │   └── verification
+│   │           │       ├── _components
+│   │           │       │   └── StructureVersionTransformationItem.test.tsx
+│   │           │       └── page.test.tsx
+│   │           ├── [transformationStructureStep]
+│   │           │   ├── CreationFlow.test.tsx
+│   │           │   ├── CreationIdentificationForm.test.tsx
+│   │           │   ├── ExistingStructureFlow.test.tsx
+│   │           │   ├── ExistingStructureIdentificationForm.test.tsx
+│   │           │   ├── FermetureDescriptionForm.test.tsx
+│   │           │   ├── TransformationActesAdministratifsForm.test.tsx
+│   │           │   └── page.test.tsx
+│   │           └── _components
+│   │               ├── TransformationMenu.test.tsx
+│   │               └── TransformationSteps.test.tsx
 │   ├── api
 │   │   ├── actes-administratifs
 │   │   │   └── acte-administratif.util.test.ts
@@ -1142,27 +1237,71 @@
 │   │   │   ├── route.test.ts
 │   │   │   └── suggestions
 │   │   │       └── route.test.ts
-│   │   └── structures
+│   │   ├── structure-versions
+│   │   │   └── structure-version.service.test.ts
+│   │   ├── structures
+│   │   │   ├── [id]
+│   │   │   │   ├── adresses
+│   │   │   │   │   └── route.test.ts
+│   │   │   │   └── route.test.ts
+│   │   │   ├── route.test.ts
+│   │   │   ├── stats
+│   │   │   │   └── route.test.ts
+│   │   │   ├── structure.repository.test.ts
+│   │   │   └── structure.util.test.ts
+│   │   └── transformations
 │   │       ├── [id]
-│   │       │   ├── adresses
-│   │       │   │   └── route.test.ts
 │   │       │   └── route.test.ts
 │   │       ├── route.test.ts
-│   │       ├── stats
-│   │       │   └── route.test.ts
-│   │       ├── structure.repository.test.ts
-│   │       └── structure.util.test.ts
+│   │       ├── transformation.repository.test.ts
+│   │       └── transformation.util.test.ts
 │   ├── components
 │   │   ├── Menu.test.tsx
-│   │   └── forms
-│   │       ├── DnaAndFiness.test.tsx
-│   │       ├── FieldSetAdresseAdministrative.test.tsx
-│   │       ├── FieldSetContacts.test.tsx
-│   │       ├── FieldSetDescription.test.tsx
-│   │       ├── FieldSetNotes.test.tsx
-│   │       ├── FieldSetTypePlaces.test.tsx
-│   │       └── InputWithValidation.test.tsx
+│   │   ├── forms
+│   │   │   ├── AdresseAdministrativeAndAntennes.test.tsx
+│   │   │   ├── DnaAndFiness.test.tsx
+│   │   │   ├── FieldSetAdresseAdministrative.test.tsx
+│   │   │   ├── FieldSetAntennes.test.tsx
+│   │   │   ├── FieldSetContacts.test.tsx
+│   │   │   ├── FieldSetDescription.test.tsx
+│   │   │   ├── FieldSetHebergement.test.tsx
+│   │   │   ├── FieldSetNotes.test.tsx
+│   │   │   ├── FieldSetTransformationPlaces.test.tsx
+│   │   │   ├── FieldSetTypePlaces.test.tsx
+│   │   │   ├── InputWithValidation.test.tsx
+│   │   │   └── TransformationAdresseAdministrative.test.tsx
+│   │   └── transformations
+│   │       └── OngoingTransformationsBanner.test.tsx
+│   ├── config
+│   │   └── transformation.config.test.ts
 │   ├── e2e
+│   │   ├── README.md
+│   │   ├── data
+│   │   │   ├── cpom.factory.ts
+│   │   │   ├── ids.ts
+│   │   │   └── structure.factory.ts
+│   │   ├── fixtures
+│   │   │   ├── files
+│   │   │   │   └── sample.pdf
+│   │   │   └── test.ts
+│   │   ├── global-setup.ts
+│   │   ├── pages
+│   │   │   ├── cpom-creation.page.ts
+│   │   │   ├── cpom-modification.page.ts
+│   │   │   └── structure-modification.page.ts
+│   │   ├── playwright.config.ts
+│   │   ├── proconnect-login.ts
+│   │   ├── seed
+│   │   │   ├── cleanup.ts
+│   │   │   ├── cpom.seed.ts
+│   │   │   ├── orphan-cleanup.ts
+│   │   │   ├── prisma.ts
+│   │   │   └── structure.seed.ts
+│   │   └── specs
+│   │       ├── cpom-creation.spec.ts
+│   │       ├── cpom-modification.spec.ts
+│   │       └── structure-modification.spec.ts
+│   ├── e2e-legacy
 │   │   ├── cpom-ajout.spec.ts
 │   │   ├── fixtures
 │   │   │   └── sample.pdf
@@ -1243,6 +1382,7 @@
 │   │   │   │   ├── test-data-builder.ts
 │   │   │   │   └── types.ts
 │   │   │   └── wait-helper.ts
+│   │   ├── playwright.config.ts
 │   │   ├── structures-filters-ordering.spec.ts
 │   │   └── validation-error.spec.ts
 │   ├── hooks
@@ -1250,7 +1390,8 @@
 │   │   ├── useFileUpload.test.ts
 │   │   ├── useLocalStorage.test.ts
 │   │   ├── useStructures.test.ts
-│   │   └── useStructuresSearch.test.ts
+│   │   ├── useStructuresSearch.test.ts
+│   │   └── useTransformationFormHandling.test.ts
 │   ├── lib
 │   │   └── casl
 │   │       └── abilities.test.ts
@@ -1270,7 +1411,8 @@
 │   │   │   ├── finess.factory.ts
 │   │   │   ├── operateur.factory.ts
 │   │   │   ├── structure-typologie.factory.ts
-│   │   │   └── structure-typologies.factory.ts
+│   │   │   ├── structure-typologies.factory.ts
+│   │   │   └── transformation.factory.ts
 │   │   ├── form-test-wrapper.tsx
 │   │   ├── http.mock.ts
 │   │   ├── structure-page-test.helpers.tsx
@@ -1287,10 +1429,11 @@
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
 │   │   ├── string.util.test.ts
-│   │   └── structure.util.test.ts
+│   │   ├── structure.util.test.ts
+│   │   └── transformation.util.test.ts
 │   └── validation
 │       └── finalisationFinanceSchema.test.ts
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-354 directories, 941 files
+382 directories, 1056 files
