@@ -1,3 +1,16 @@
+2026-06-08T14:28:29+02:00 - 518ee0fab - Mathieu Magnin : Merge remote-tracking branch 'origin/main' into dossier_en_construction_cannot_expire
+2026-06-08T13:40:49Z - 7dd6bdc0d - LeSim : Merge pull request #13246 from demarche-numerique/missing_proconnect_trad
+2026-06-08T12:40:57Z - 46b1fa45f - Lisa Durand : Merge pull request #13238 from demarche-numerique/improve-ux-for-demande-correction-ldu
+2026-06-08T12:35:30Z - 0d31042f3 - Mathieu Magnin : Merge pull request #13212 from demarche-numerique/dossier_en_construction_cannot_expire
+2026-06-08T09:53:53+02:00 - d922e0b4b - Colin Darie : fix(manager): pass filters local to index_header for administrate 1.0
+2026-06-08T09:53:52+02:00 - 71ebf4b8d - Colin Darie : chore(bundle): bump administrate from 0.20.1 to 1.0.0
+2026-06-08T09:53:45+02:00 - 519a0b076 - Colin Darie : refactor(manager): vendor administrate-field-enum as EnumField
+2026-06-08T09:28:58Z - db94cd2ea - LeSim : Merge pull request #13248 from demarche-numerique/remove_never_expired_line
+2026-06-08T09:16:46Z - fb423d441 - LeSim : Merge pull request #13249 from demarche-numerique/redirect_to_proconnect
+2026-06-08T09:02:33Z - a89694bd0 - Colin Darie : Merge pull request #13251 from colinux/bump-administrate
+2026-06-04T18:25:18+02:00 - 52ea07cdd - simon lehericey : fix: an instructeur is redirected to proconnect if trying fc
+2026-06-04T18:09:36+02:00 - 4c14ba8f2 - simon lehericey : UI: remove never expired in instruction line
+2026-06-04T17:55:24+02:00 - 40aeca54c - simon lehericey : fix: add missing ProConnect trad
 2026-06-04T15:05:06+02:00 - 5a5512b7c - Colin Darie : perf(export): lower MAX_CHAMPS_PER_BATCH from 140k to 40k
 2026-06-04T13:14:03Z - 4993d27e9 - mfo : Merge pull request #13196 from demarche-numerique/auto/haml-migration/c-d-short_identite_entr-d9ca6e
 2026-06-04T13:13:54Z - 5a1ddcd77 - mfo : Merge pull request #13240 from demarche-numerique/haml-migration/commencer-show
@@ -17,6 +30,7 @@
 2026-06-04T08:05:52Z - e99e1ef83 - Colin Darie : Merge pull request #13223 from colinux/security/prefill-token-confirmation-injection
 2026-06-04T07:52:40Z - 045f6208d - Colin Darie : Merge pull request #13239 from colinux/excel-fix-address
 2026-06-03T17:02:11+02:00 - 5562c417e - Colin Darie : fix(address): use address_label for column value
+2026-06-03T17:01:24+02:00 - cd9d184f7 - Lisa Durand : Improve warning banner when dossier en construction has unsubmitted changes
 2026-06-03T15:50:35+02:00 - f8790252a - simon lehericey : refactor: column_value helper -> champ_column_value
 2026-06-03T14:50:31Z - ee2cc1ead - Colin Darie : Merge pull request #13236 from colinux/fix/api-entreprise-health-check-empty-body
 2026-06-03T14:02:29Z - b23d877ce - LeSim : Merge pull request #11129 from demarche-numerique/condition_on_colonne
@@ -75,6 +89,7 @@
 2026-06-01T15:08:32+02:00 - 657394167 - Lisa Durand : reduce text size and spaces of instructeur filters block
 2026-06-01T15:08:32+02:00 - 0abd3f525 - Lisa Durand : reduce toggle right margin when no status label
 2026-06-01T15:08:28+02:00 - 955ef5efe - Lisa Durand : fix hint-text spacing when description is sibling of label/legend
+2026-06-01T14:55:44+02:00 - 39d230b31 - Mathieu Magnin : refactor(dossier): ignore en_construction_close_to_expiration_notice_sent_at column (#13178)
 2026-06-01T12:26:15+02:00 - 7978e2a53 - mfo : a11y: restore expand button with accessible name and aria-expanded
 2026-06-01T12:26:15+02:00 - 722b0d0a0 - mfo : refactor(haml): migrate instructeurs/order_positions to ERB + i18n
 2026-06-01T12:26:15+02:00 - 33d6635de - mfo : refactor(haml): migrate labels/order_positions to ERB + i18n
@@ -82,13 +97,23 @@
 2026-06-01T12:26:14+02:00 - d15afd7b4 - mfo : a11y: replace aria-hidden button with span for expand icon
 2026-06-01T12:26:14+02:00 - b0b624a92 - mfo : a11y: add labels to label reorder move buttons
 2026-06-01T12:26:10+02:00 - cb71d49e6 - mfo : a11y: add labels to procedure reorder move buttons
+2026-06-01T11:38:43+02:00 - e05439163 - Mathieu Magnin : test(users/list): use brouillon for hidden_by_expired dossier (en_construction no longer expires)
+2026-06-01T11:07:45+02:00 - ce3b2ba13 - Mathieu Magnin : test(users/dossier): extend_conservation spec uses brouillon (no longer applicable to en_construction)
 2026-06-01T10:54:54+02:00 - fd6d5fb9d - mfo : a11y: add aria-haspopup="dialog" to ineligibilite rules modal button Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 2026-06-01T10:54:54+02:00 - 466b8359a - mfo : a11y: add aria-haspopup="dialog" to champs page API columns modal button
 2026-06-01T10:54:54+02:00 - 36a838e42 - mfo : a11y: add aria-haspopup="dialog" to batch operation modal buttons
 2026-06-01T10:54:54+02:00 - 1ef5d6dbc - mfo : a11y: add aria-haspopup="dialog" to messagerie info modal button
 2026-06-01T10:54:53+02:00 - 6234d91a0 - mfo : a11y: add aria-haspopup="dialog" to champ editor API columns modal button
 2026-06-01T10:54:49+02:00 - 8ce7087ac - mfo : a11y: add aria-haspopup="dialog" to profile theme modal link
+2026-06-01T10:50:54+02:00 - d3501771f - Mathieu Magnin : refactor(maintenance): batch+delete_all for stale en_construction expirant notifications
+2026-06-01T10:46:24+02:00 - 140b5a60b - Mathieu Magnin : chore(maintenance): nullify stale expired_at on en_construction dossiers (#13178)
 2026-06-01T10:39:46Z - a42fd8586 - mfo : Merge pull request #13214 from mfo/a11y-button-labels
+2026-06-01T10:15:55+02:00 - aa8e84f55 - Mathieu Magnin : refactor(expiration): remove unused en_construction expiration scopes (#13178)
+2026-06-01T10:15:55+02:00 - a816f2705 - Mathieu Magnin : chore(maintenance): destroy stale dossier_expirant notifications on en_construction (#13178)
+2026-06-01T10:15:55+02:00 - 1991dca48 - Mathieu Magnin : fix(instructeur): expirant counter excludes en_construction (#13178)
+2026-06-01T10:15:55+02:00 - 04f61a4d6 - Mathieu Magnin : feat(dossier): en_construction dossiers never expire + banners (#13178)
+2026-06-01T10:15:54+02:00 - dea1cc83b - Mathieu Magnin : refactor(expiration): scope expiration callers to termine only (#13178)
+2026-06-01T10:15:54+02:00 - 179c2c9ab - Mathieu Magnin : feat(expiration): stop auto-deleting expired en_construction dossiers (#13178)
 2026-06-01T09:54:13+02:00 - fae4a6257 - Paul Chavard : fix(csv): disable smarter_csv C-parser acceleration (SIGILL in native ext)
 2026-06-01T09:42:04+02:00 - 9e7149d80 - Paul Chavard : refactor(columns): pass procedure_id to TypeDeChamp#columns and add #column lookup
 2026-06-01T09:00:00Z - cc93ae51c - mfo : Merge pull request #13213 from mfo/a11y-aria-haspopup-dialog

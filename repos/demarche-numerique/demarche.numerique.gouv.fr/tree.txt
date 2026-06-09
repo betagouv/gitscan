@@ -1490,6 +1490,7 @@
 │   │   ├── attachment_field.rb
 │   │   ├── attestation_template_field.rb
 │   │   ├── champ_collection_field.rb
+│   │   ├── enum_field.rb
 │   │   ├── features_field.rb
 │   │   ├── geopoint_field.rb
 │   │   ├── id_field.rb
@@ -1937,7 +1938,6 @@
 │   │   │   ├── dossier_operation_log_move_to_cold_storage_job.rb
 │   │   │   ├── enable_procedure_expires_when_termine_enabled_job.rb
 │   │   │   ├── expired_dossiers_brouillon_deletion_job.rb
-│   │   │   ├── expired_dossiers_en_construction_deletion_job.rb
 │   │   │   ├── expired_dossiers_termine_deletion_job.rb
 │   │   │   ├── expired_prefilled_dossiers_deletion_job.rb
 │   │   │   ├── expired_users_deletion_job.rb
@@ -2654,6 +2654,8 @@
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task.rb
 │   │       ├── t20260521_backfill_geo_area_uuid_task.rb
 │   │       ├── t20260522_backfill_partial_etablissements_task.rb
+│   │       ├── t20260528_reset_en_construction_expiration_task.rb
+│   │       ├── t20260601_nullify_en_construction_expired_at_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -2977,6 +2979,10 @@
 │       │   ├── attestation_template_field
 │       │   │   └── _show.html.erb
 │       │   ├── champ_collection_field
+│       │   │   └── _show.html.erb
+│       │   ├── enum_field
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _index.html.erb
 │       │   │   └── _show.html.erb
 │       │   ├── features_field
 │       │   │   └── _show.html.erb
@@ -5934,6 +5940,8 @@
 │   │       ├── t20260504_migrate_legacy_commune_columns_in_procedure_presentation_task_spec.rb
 │   │       ├── t20260521_backfill_geo_area_uuid_task_spec.rb
 │   │       ├── t20260522_backfill_partial_etablissements_task_spec.rb
+│   │       ├── t20260528_reset_en_construction_expiration_task_spec.rb
+│   │       ├── t20260601_nullify_en_construction_expired_at_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -6039,4 +6047,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-965 directories, 5392 files
+966 directories, 5399 files
