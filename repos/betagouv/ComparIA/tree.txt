@@ -39,7 +39,8 @@
 │   │   ├── session.py
 │   │   ├── spam_detection.py
 │   │   ├── spam_patterns.json
-│   │   └── streaming.py
+│   │   ├── streaming.py
+│   │   └── web_search.py
 │   ├── config.py
 │   ├── errors.py
 │   ├── llms
@@ -567,6 +568,10 @@
 ├── sonar-project.properties
 ├── templates
 │   └── models_errors.html
+├── tests
+│   └── dataset
+│       ├── test_comparison_to_turns.py
+│       └── test_streaming_export.py
 ├── utils
 │   ├── __init__.py
 │   ├── database
@@ -595,7 +600,8 @@
 │   │   │       ├── 09abb45aa086_initial_schema.py
 │   │   │       ├── 137fbd6418e6_remove_unique_constraint_on_system_msg_.py
 │   │   │       ├── 67e629fed515_merge_drop_session_hash_and_remove_.py
-│   │   │       └── 88e025e5dbfa_drop_comparison_session_hash.py
+│   │   │       ├── 88e025e5dbfa_drop_comparison_session_hash.py
+│   │   │       └── d9b83b7f2988_add_usermessage_web_search_results.py
 │   │   ├── cli.py
 │   │   ├── lint.py
 │   │   ├── models
@@ -662,4 +668,4 @@
 │   ├── utils.py
 │   └── validation.py
 └── uv.lock
-104 directories, 560 files
+106 directories, 564 files

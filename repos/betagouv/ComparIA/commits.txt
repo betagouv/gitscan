@@ -1,4 +1,45 @@
+2026-06-09T18:41:39+02:00 - 94279cca - Elie Gavoty : Merge pull request #401 from betagouv/enh-web-search
+2026-06-09T18:26:49+02:00 - 3a832340 - Elie Gavoty : Revert "debug(startup): add timing logs to identify slow init (to revert)"
+2026-06-09T18:24:46+02:00 - 4dcbd561 - Elie Gavoty : fix(redis): prefix web search cache key with instance prefix
+2026-06-09T17:06:29+02:00 - dc9c1eaf - Elie Gavoty : fix(logger): use LokiQueueHandler to avoid blocking on unreachable Loki
+2026-06-09T16:11:07+02:00 - 9a78df6f - Elie Gavoty : debug(startup): add timing logs to identify slow init (to revert)
+2026-06-09T14:08:50+02:00 - 8b5edd28 - Elie Gavoty : fix(migration): rebase web_search_results db migration on develop last migration
+2026-06-09T14:05:56+02:00 - 352ef3a8 - Elie Gavoty : chore(config): add LINKUP_API_KEY to instance env examples
+2026-06-08T17:24:35+02:00 - 9051fe8a - Elie Gavoty : Merge pull request #516 from betagouv/perf-dataset-export
+2026-06-08T16:58:34+02:00 - ea475f0a - Elie Gavoty : chore(config): default SENTRY_SAMPLE_RATE to 1.0 for troubleshooting
+2026-06-08T15:22:14+02:00 - 2636fdbc - Elie Gavoty : makefile: add test suite entry in makefile
+2026-06-08T15:12:51+02:00 - 75de611f - Elie Gavoty : feat(dataset): add cache based on raw parquet to skip slow DB fetching on normal exports
+2026-06-08T12:13:39+02:00 - 7a83a4be - Elie Gavoty : fix(dataset): fix inverted cohorts exclusion filter again
+2026-06-08T12:03:25+02:00 - 2c42b818 - Simon : perf(dataset): stream export with bounded memory, drop full jsonl
+2026-06-05T11:01:09+02:00 - ff923407 - axolotle : feat(front): display web search links in MessageUser
+2026-06-05T11:01:09+02:00 - fc8ea2b6 - axolotle : refactor(front): reflect changes of content/user_content
+2026-06-05T11:01:09+02:00 - eaab7f77 - axolotle : feat(front): update UserMessage interface with WebSearchResults
+2026-06-05T11:01:09+02:00 - e664f3cc - axolotle : refactor(back): add simpler hash_content function to build cache hash and use it in response cache
+2026-06-05T11:01:09+02:00 - bbc9cc5f - axolotle : feat(back): add web search cache utils
+2026-06-05T11:01:09+02:00 - 7caddc75 - axolotle : feat(migration): add UserMessage 'web_search_results'
+2026-06-05T11:01:09+02:00 - 76d0184f - axolotle : refactor(back): try to query cache in search_web and store results after call
+2026-06-05T11:01:09+02:00 - 6d663952 - axolotle : refactor(front): adapt Toggle to display with text to right + label or children
+2026-06-05T11:01:09+02:00 - 5aaeba15 - axolotle : refactor(back): add user_content computed field to UserMessageRead
+2026-06-05T11:01:09+02:00 - 4f10f7cf - axolotle : refactor(dataset): add merged web search results content and raw user message
+2026-06-05T11:01:09+02:00 - 1987c0fa - axolotle : refactor(analyze): get merged content with web search results
+2026-06-05T11:01:09+02:00 - 18bb6daa - axolotle : feat(back): call and store search results in UserMessage
+2026-06-05T11:01:09+02:00 - 173ddf8f - Simon Zilinskas : feat(i18n): add web search translations for remaining locales
+2026-06-05T11:01:09+02:00 - 0c55de1b - axolotle : feat(back): add field serializer to UserMessage that merge web search result in `content` depending on context
+2026-06-05T11:01:09+02:00 - 05528e4c - axolotle : feat(front): add web search toggle and update api call
+2026-06-05T11:01:08+02:00 - a8c83aab - axolotle : feat(back): add `web_search_results` field to UserMessage
+2026-06-05T11:01:08+02:00 - 80748937 - axolotle : chore(back): add linkup-sdk dep
+2026-06-05T11:01:08+02:00 - 5e56febb - axolotle : feat(back): add search_web function
+2026-06-05T11:01:08+02:00 - 0986a3be - axolotle : feat(back): add linkup api key env var
+2026-06-05T11:01:08+02:00 - 029f40f6 - axolotle : feat(back): add `web_search` bool field to AddFirstTextBody
 2026-06-05T10:49:57+02:00 - 255b601c - axolotle : chore: format
+2026-06-03T15:26:16+02:00 - bae00e76 - Elie Gavoty : dataset: fixing export crash WIP
+2026-06-03T15:23:19+02:00 - 292836aa - Elie Gavoty : dataset: fixing crashing export WIP
+2026-06-03T14:05:15+02:00 - d1898c86 - Elie Gavoty : dataset: add debug logging (to revert)
+2026-06-03T13:16:51+02:00 - 1d320d0c - Elie Gavoty : fix(dataset): include only comparisons with cohorts rather than exclude them
+2026-06-03T11:39:48+02:00 - 7fff7d7f - Elie Gavoty : fix(dataset): archived rows not properly filtered out
+2026-06-03T11:13:26+02:00 - dc94e3fd - Elie Gavoty : dataset: log the amount of validation error skipped comparisons
+2026-06-03T10:45:57+02:00 - a88e8575 - Elie Gavoty : dataset: log dataset building progress
+2026-06-03T09:59:43+02:00 - 6bce5b73 - Elie Gavoty : dataset: build panda dataframe at the end to avoid O(n2) repeated concat
 2026-06-02T20:02:52+02:00 - 8dc57990 - Elie Gavoty : dataset: modify _raw suffix to -raw
 2026-06-02T19:23:38+02:00 - 2b5ba484 - Elie Gavoty : Merge pull request #512 from betagouv/blacklist-grok
 2026-06-02T19:10:29+02:00 - 52a4989f - Elie Gavoty : db+models: disable all grok models and archive releated comparisons

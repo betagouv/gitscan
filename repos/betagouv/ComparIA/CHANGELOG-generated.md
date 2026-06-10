@@ -1,37 +1,26 @@
-## Changelog : ComparIA (30 derniers jours, au 5 juin 2026)
+## Changelog : ComparIA (30 derniers jours, au 09 juin 2026)
 
 ### Résumé
-Ce mois-ci, ComparIA a connu une refonte majeure de son infrastructure de base de données et de son architecture backend, visant à améliorer la robustesse, la scalabilité et la maintenance du projet.  De nombreuses améliorations ont été apportées à la gestion des données, notamment la migration des données existantes et l'ajout de nouvelles fonctionnalités pour l'analyse et la validation des données. L'interface utilisateur a également été améliorée avec de nouvelles animations et des corrections de bugs.
+Ce mois-ci, ComparIA a connu des améliorations significatives en termes de performance, de stabilité et de fonctionnalités. L'export de données a été optimisé pour gérer de plus gros volumes, et l'intégration de la recherche web a été améliorée. Des corrections de bugs et des refactorings importants ont également été effectués, notamment au niveau de la base de données et de l'interface utilisateur. L'ajout de nouveaux modèles de langage et la gestion des traductions ont également été réalisés.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux modèles de langage : Gemini 3.5 Flash et Grok 4.3 sont désormais disponibles sur la plateforme. [#480](https://github.com/betagouv/ComparIA/pull/480)
-- Amélioration de la détection et du blocage des tentatives de "jailbreak" et de "roleplay" dans les interactions avec les modèles de langage. [#481](https://github.com/betagouv/ComparIA/pull/481)
-- Ajout de traductions en danois pour certains modèles et descriptions. [#478](https://github.com/betagouv/ComparIA/pull/478)
-- Amélioration de l'expérience utilisateur avec de nouvelles animations pour les votes et les révélations.
-- Ajout d'un indicateur visuel pour confirmer la sélection d'un choix lors du vote.
-- Amélioration de la réactivité de l'interface utilisateur sur mobile.
-- Ajout de la possibilité de soumettre des votes via un bouton dédié.
-- Mise à jour des traductions italiennes via Weblate.
+- **Recherche Web :** Intégration de la recherche web dans l'interface utilisateur, affichant les liens de recherche dans les messages utilisateur [#401](https://github.com/betagouv/ComparIA/issues/401).
+- **Export de données :** Optimisation de l'export de données pour améliorer les performances et réduire la consommation de mémoire [#516](https://github.com/betagouv/ComparIA/issues/516).
+- **Nouveaux modèles :** Ajout des modèles Gemini 3.5 Flash et Grok 4.3, et archivage de plusieurs modèles obsolètes [#480](https://github.com/betagouv/ComparIA/issues/480), [#481](https://github.com/betagouv/ComparIA/issues/481).
+- **Interface utilisateur :** Amélioration de l'interface utilisateur avec de nouvelles animations pour les votes et les choix, ainsi que des améliorations de la navigation et de l'affichage des messages.
+- **Traductions :** Mise à jour des traductions en italien et en danois via Weblate.
 
 ### Évolutions techniques
-- Refonte complète de la base de données : migration vers de nouvelles tables et modèles pour une meilleure organisation et performance.
-- Utilisation de SQLModel pour la définition des modèles de données.
-- Ajout d'un système de gestion de migrations de base de données avec Alembic.
-- Implémentation d'un système de streaming de données plus efficace pour les comparaisons.
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Refactorisation du code backend pour une meilleure modularité et maintenabilité.
-- Ajout de tests unitaires et d'intégration.
-- Mise à jour des dépendances (litellm, typescript).
-- Simplification de la configuration de l'environnement de développement et de production.
-- Utilisation de UUID pour les identifiants des enregistrements dans la base de données.
-- Ajout d'un gestionnaire de contexte pour les sessions de base de données.
-- Amélioration de la validation des données.
+- **Base de données :** Refactoring important des tables de la base de données, incluant la migration de champs, l'ajout d'index et l'amélioration de la gestion des données archivées [#447](https://github.com/betagouv/ComparIA/issues/447).
+- **Cache :** Implémentation d'un cache pour les résultats de recherche web afin d'améliorer les performances.
+- **Logging :** Amélioration du logging pour faciliter le débogage et le suivi des performances.
+- **CI/CD :** Ajout d'une étape de test dans le Makefile.
+- **Déploiement :** Simplification de la configuration des variables d'environnement pour les différentes instances.
+- **Refactoring général :** Refactoring important du code, notamment au niveau de la gestion des messages, des modèles de données et des routes API.
+- **Dépendances :** Mise à jour de certaines dépendances (litellm, typescript).
 
 ### Autres changements
-- Documentation mise à jour pour refléter les changements de l'infrastructure.
-- Nettoyage du code et suppression de code obsolète.
-- Mise à jour des fichiers de configuration.
-- Correction de bugs mineurs.
-- Suppression de modèles de langage obsolètes.
-- Ajout d'un script pour générer des jeux de données.
-- Amélioration de la gestion des traductions via Weblate.
+- **Documentation :** Ajout de documentation sur les nouvelles fonctionnalités et les changements de configuration.
+- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Gestion des modèles :** Mise en place d'un système pour retirer les modèles "new" après deux mois.
+- **Configuration :** Ajout de la variable d'environnement `LINKUP_API_KEY` et mise à jour de la configuration par défaut de `SENTRY_SAMPLE_RATE`.
