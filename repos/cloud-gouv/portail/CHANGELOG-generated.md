@@ -1,7 +1,16 @@
-## Changelog : portail (30 derniers jours, au 2 mai 2026)
+## Changelog : portail (30 derniers jours, au 2026-06-10)
 
 ### Résumé
-Cette mise à jour corrige un problème de non-déterminisme dans les tests du multiplexage H2, assurant ainsi une meilleure fiabilité des tests et, par conséquent, une plus grande stabilité du proxy.
+Ce mois-ci, les améliorations se concentrent sur l'ajout de fonctionnalités au serveur RPC et au proxy, permettant une gestion plus flexible des backends et des routes. Ces changements visent à améliorer la configuration et l'utilisation du portail dans différents environnements.
+
+### Évolutions fonctionnelles
+- Ajout de la fonctionnalité `ListBackends` au serveur RPC, permettant de lister les backends disponibles.
+- Possibilité de définir un backend par défaut nul via `SetDefaultBackend` dans l'interface RPC/Varlink.
+- Introduction de l'option `route.local` dans la configuration du proxy ACL, offrant un contrôle plus précis sur le routage.
 
 ### Évolutions techniques
-- Correction d'un test non déterministe dans le multiplexage H2 en utilisant un client tiny rust. [#1](https://github.com/cloud-gouv/portail/commit/d04beda)
+- Refonte des dépendances pour utiliser `rustls-pki-types` et `toml` avec des contraintes de version plus larges, améliorant la compatibilité et la flexibilité.
+- Simplification de la gestion des dépendances en supprimant `peekable`.
+
+### Autres changements
+- Aucune information supplémentaire disponible.
