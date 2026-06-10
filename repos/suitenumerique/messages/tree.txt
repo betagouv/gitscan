@@ -31,6 +31,7 @@
 │   ├── manage
 │   ├── pylint
 │   ├── pytest
+│   ├── release-jmap-email.sh
 │   ├── release.py
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
@@ -180,19 +181,17 @@
     │   │   │   ├── inbound_auth.py
     │   │   │   ├── inbound_create.py
     │   │   │   ├── inbound_tasks.py
+    │   │   │   ├── inline_images.py
     │   │   │   ├── outbound.py
     │   │   │   ├── outbound_direct.py
     │   │   │   ├── outbound_tasks.py
-    │   │   │   ├── rfc5322
-    │   │   │   │   ├── README.md
-    │   │   │   │   ├── __init__.py
-    │   │   │   │   ├── composer.py
-    │   │   │   │   ├── parser.py
-    │   │   │   │   └── utils.py
+    │   │   │   ├── raw_mime.py
+    │   │   │   ├── replies.py
     │   │   │   ├── selfcheck.py
     │   │   │   ├── selfcheck_reporting.py
     │   │   │   ├── signing.py
-    │   │   │   └── smtp.py
+    │   │   │   ├── smtp.py
+    │   │   │   └── utils.py
     │   │   ├── metrics.py
     │   │   ├── middlewares.py
     │   │   ├── migrations
@@ -339,20 +338,17 @@
     │   │   │   ├── mda
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_autoreply.py
+    │   │   │   │   ├── test_gmail_labels_and_headers_blocks.py
     │   │   │   │   ├── test_inbound.py
     │   │   │   │   ├── test_inbound_auth.py
     │   │   │   │   ├── test_inbound_e2e.py
     │   │   │   │   ├── test_inbound_spoofed_sender.py
+    │   │   │   │   ├── test_inline_images.py
     │   │   │   │   ├── test_outbound.py
     │   │   │   │   ├── test_outbound_e2e.py
+    │   │   │   │   ├── test_raw_mime.py
+    │   │   │   │   ├── test_replies.py
     │   │   │   │   ├── test_retry.py
-    │   │   │   │   ├── test_rfc5322_address_fuzz.py
-    │   │   │   │   ├── test_rfc5322_composer.py
-    │   │   │   │   ├── test_rfc5322_composer_fuzz.py
-    │   │   │   │   ├── test_rfc5322_message_fuzz.py
-    │   │   │   │   ├── test_rfc5322_parser.py
-    │   │   │   │   ├── test_rfc5322_parser_structure.py
-    │   │   │   │   ├── test_rfc5322_utils.py
     │   │   │   │   ├── test_selfcheck_reporting.py
     │   │   │   │   ├── test_signing.py
     │   │   │   │   ├── test_smtp.py
@@ -363,6 +359,7 @@
     │   │   │   │   ├── test_mailbox.py
     │   │   │   │   ├── test_maildomain.py
     │   │   │   │   ├── test_maildomainaccess.py
+    │   │   │   │   ├── test_message_get_parsed_data.py
     │   │   │   │   ├── test_message_template.py
     │   │   │   │   ├── test_thread_event.py
     │   │   │   │   ├── test_user_abilities.py
@@ -400,6 +397,7 @@
     │   │   │   ├── test_checks.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_signals.py
+    │   │   │   ├── test_utils.py
     │   │   │   └── test_worker.py
     │   │   ├── urls.py
     │   │   └── utils.py
@@ -459,6 +457,7 @@
     │   └── tsconfig.json
     ├── frontend
     │   ├── .dockerignore
+    │   ├── .gitignore
     │   ├── Dockerfile
     │   ├── README.md
     │   ├── caddy
@@ -466,8 +465,8 @@
     │   ├── cunningham.ts
     │   ├── eslint.config.mjs
     │   ├── i18next.config.ts
+    │   ├── index.html
     │   ├── instrumentation-client.ts
-    │   ├── next.config.ts
     │   ├── orval.config.ts
     │   ├── package-lock.json
     │   ├── package.json
@@ -483,7 +482,8 @@
     │   │   │   │   ├── app-logo-light.svg
     │   │   │   │   ├── favicon-dark.svg
     │   │   │   │   └── favicon-light.svg
-    │   │   │   ├── banner.webp
+    │   │   │   ├── banner-dark.webp
+    │   │   │   ├── banner-light.webp
     │   │   │   ├── files
     │   │   │   │   └── icons
     │   │   │   │       ├── mime-archive-mini.svg
@@ -617,6 +617,8 @@
     │   │   ├── pdf.worker.min.mjs
     │   │   └── sounds
     │   │       └── mail-sent.ogg
+    │   ├── scripts
+    │   │   └── print-bundle-stats.mjs
     │   ├── src
     │   │   ├── features
     │   │   │   ├── api
@@ -656,7 +658,7 @@
     │   │   │   │   │   │   ├── attachment.ts
     │   │   │   │   │   │   ├── blob_upload_create201.ts
     │   │   │   │   │   │   ├── blob_upload_create_body.ts
-    │   │   │   │   │   │   ├── calendar_*.ts  (9 files)
+    │   │   │   │   │   │   ├── calendar_*.ts  (10 files)
     │   │   │   │   │   │   ├── change_flag_request_request.ts
     │   │   │   │   │   │   ├── channel.ts
     │   │   │   │   │   │   ├── channel_request.ts
@@ -1123,6 +1125,8 @@
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── empty-cell
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── error-page
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── feedback-button
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
@@ -1205,48 +1209,89 @@
     │   │   │   ├── use-safe-router-push.ts
     │   │   │   ├── use-searchable-pagination.ts
     │   │   │   ├── use-task-status.ts
+    │   │   │   ├── use-url-search-params.ts
     │   │   │   └── use-visibility-observer.ts
-    │   │   ├── pages
-    │   │   │   ├── _app.tsx
-    │   │   │   ├── _document.tsx
-    │   │   │   ├── _index.scss
+    │   │   ├── main.tsx
+    │   │   ├── routes
+    │   │   │   ├── __root.tsx
     │   │   │   ├── domain
-    │   │   │   │   ├── [maildomainId]
+    │   │   │   │   ├── $maildomainId
     │   │   │   │   │   ├── dns.tsx
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   └── signatures.tsx
-    │   │   │   │   ├── _index.scss
     │   │   │   │   └── index.tsx
     │   │   │   ├── index.tsx
     │   │   │   └── mailbox
-    │   │   │       ├── [mailboxId]
-    │   │   │       │   ├── autoreplies
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── index.tsx
-    │   │   │       │   ├── integrations
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── message-templates
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── new
-    │   │   │       │   │   ├── _index.scss
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── signatures
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   └── thread
-    │   │   │       │       └── [threadId].tsx
-    │   │   │       └── _index.scss
-    │   │   └── styles
-    │   │       ├── cunningham-tokens.css
-    │   │       ├── cunningham-tokens.scss
-    │   │       ├── cunningham-tokens.ts
-    │   │       ├── globals.scss
-    │   │       ├── main.scss
-    │   │       ├── reset.scss
-    │   │       └── utils
-    │   │           ├── _index.scss
-    │   │           └── breakpoints.scss
+    │   │   │       └── $mailboxId
+    │   │   │           ├── autoreplies
+    │   │   │           │   └── index.tsx
+    │   │   │           ├── index.tsx
+    │   │   │           ├── integrations
+    │   │   │           │   └── index.tsx
+    │   │   │           ├── message-templates
+    │   │   │           │   └── index.tsx
+    │   │   │           ├── new
+    │   │   │           │   └── index.tsx
+    │   │   │           ├── route.tsx
+    │   │   │           ├── signatures
+    │   │   │           │   └── index.tsx
+    │   │   │           └── thread
+    │   │   │               └── $threadId.tsx
+    │   │   ├── styles
+    │   │   │   ├── cunningham-tokens.css
+    │   │   │   ├── cunningham-tokens.scss
+    │   │   │   ├── cunningham-tokens.ts
+    │   │   │   ├── globals.scss
+    │   │   │   ├── main.scss
+    │   │   │   ├── reset.scss
+    │   │   │   ├── utils
+    │   │   │   │   ├── _index.scss
+    │   │   │   │   └── breakpoints.scss
+    │   │   │   └── views
+    │   │   │       ├── _index.scss
+    │   │   │       ├── domain
+    │   │   │       │   └── _index.scss
+    │   │   │       └── mailbox
+    │   │   │           ├── _index.scss
+    │   │   │           └── new
+    │   │   │               └── _index.scss
+    │   │   └── vite-env.d.ts
     │   ├── tsconfig.json
+    │   ├── tsr.config.json
+    │   ├── vite.config.ts
     │   └── vitest.config.ts
+    ├── jmap-email
+    │   ├── CHANGELOG.md
+    │   ├── CONTRIBUTING.md
+    │   ├── Dockerfile
+    │   ├── LICENSE
+    │   ├── README.md
+    │   ├── SECURITY.md
+    │   ├── examples
+    │   │   ├── compose_with_attachment.py
+    │   │   ├── encoded_word_subject.py
+    │   │   ├── import_eml_safely.py
+    │   │   ├── inline_image_roundtrip.py
+    │   │   └── parse_and_print.py
+    │   ├── jmap_email
+    │   │   ├── __init__.py
+    │   │   ├── composer.py
+    │   │   ├── helpers.py
+    │   │   ├── limits.py
+    │   │   ├── parser.py
+    │   │   ├── py.typed
+    │   │   └── types.py
+    │   ├── pyproject.toml
+    │   └── tests
+    │       ├── __init__.py
+    │       ├── test_address_fuzz.py
+    │       ├── test_composer.py
+    │       ├── test_composer_fuzz.py
+    │       ├── test_helpers.py
+    │       ├── test_limits.py
+    │       ├── test_message_fuzz.py
+    │       ├── test_parser.py
+    │       └── test_parser_structure.py
     ├── keycloak
     │   ├── Dockerfile
     │   ├── Procfile
@@ -1344,4 +1389,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-291 directories, 1236 files
+300 directories, 1273 files
