@@ -1,3 +1,13 @@
+2026-06-09T12:09:19+02:00 - 3122c76e - Gaspard "Sarp" Lonchampt : Merge pull request #857 from MTES-MCT/fix/c1b-download-controller-history
+2026-06-09T12:08:30+02:00 - 24fe771e - Gaspard "Sarp" Lonchampt : Merge pull request #843 from MTES-MCT/fix/natinf_32083_long_break
+2026-06-09T11:52:33+02:00 - 821f3e3a - Gaspard "Sarp" Lonchampt : Merge pull request #844 from MTES-MCT/fix/worktime_table_aggregation_week_month_views
+2026-06-09T11:50:08+02:00 - e8f7f389 - Gaspard "Sarp" Lonchampt : Merge pull request #855 from MTES-MCT/feat/rename-drive-button-when-other-task-disabled
+2026-06-09T11:49:42+02:00 - c869b268 - Gaspard "Sarp" Lonchampt : Merge pull request #847 from MTES-MCT/feat/sticky-submit-button-mission-summary
+2026-06-09T11:26:23+02:00 - 5cef27ef - Gaspard "Sarp" Lonchampt : Merge pull request #866 from MTES-MCT/prod
+2026-06-09T11:15:40+02:00 - 52f26cdb - Gaspard "Sarp" Lonchampt : Merge pull request #865 from MTES-MCT/perf/admin_home_dashboard_queries
+2026-06-09T10:55:59+02:00 - afd2d313 - Gaspard Lonchampt : refactor(homepage): drop dead week-filtering on the client
+2026-06-09T10:53:42+02:00 - c66c6bd9 - Gaspard Lonchampt : perf(homepage): restrict dashboard query to current week
+2026-06-08T20:06:20+02:00 - fe84b196 - Gaspard "Sarp" Lonchampt : Merge pull request #864 from MTES-MCT/master
 2026-06-03T16:34:41+02:00 - 59e59843 - Redwane Zafari : Merge pull request #861 from MTES-MCT/feat/search-natinf
 2026-06-03T16:28:08+02:00 - 3c224a48 - Redwane : refactor(control): reorganize infraction display and text styling in alert components
 2026-06-03T14:58:14+02:00 - 39f91985 - Redwane : refactor(control): rearrange infraction section header display in UserReadAlerts
@@ -6,10 +16,13 @@
 2026-06-02T18:08:46+02:00 - 999e9291 - Redwane : feat(control): reorganize user read alerts into computed and custom infraction sections
 2026-06-02T17:33:47+02:00 - 51509615 - Redwane : style(control): harmonize accordion header spacing and alignment across alert and natinf components
 2026-06-02T17:30:12+02:00 - f52c015a - Redwane : fix(control): disable DSFR infraction checkbox via native input props
+2026-06-02T14:00:50+02:00 - fd971d38 - Gaspard Lonchampt : refactor(regulatory-respect): reuse PRETTY_LABELS in chart
+2026-06-02T13:54:50+02:00 - ee2a01ef - Gaspard Lonchampt : feat(admin): add night-work alert label in regulatory respect panel
 2026-06-01T16:08:54+02:00 - 668b1c47 - Redwane Zafari : Merge pull request #853 from MTES-MCT/feat/search-natinf
 2026-06-01T14:16:24+02:00 - ce2071e8 - Gaspard "Sarp" Lonchampt : Merge pull request #858 from MTES-MCT/fix/admin_home_wording_round2
 2026-06-01T12:48:47+02:00 - de83309f - Gaspard Lonchampt : fix(admin): refine inactive employees and infraction wordings on home
 2026-06-01T11:42:51+02:00 - c50be8b4 - Gaspard "Sarp" Lonchampt : Merge pull request #856 from MTES-MCT/fix/admin_home_recette_feedback_2
+2026-05-31T16:58:23+02:00 - 4277568d - Redwane : fix(controller-export): ensure correct date format for C1B export modal
 2026-05-28T18:23:16+02:00 - edaba164 - Gaspard Lonchampt : fix(admin): apply recette home page feedback round 2
 2026-05-28T13:00:55+02:00 - 385e2c0b - Redwane : refactor(front): unify alertNumber style and compute mostRecentInfractionsUpdateTime dynamically
 2026-05-27T11:37:14+02:00 - d2836b21 - Redwane Zafari : Merge pull request #854 from MTES-MCT/fix/refresh-workdays-after-mission-validation
@@ -17,6 +30,7 @@
 2026-05-27T10:18:43+02:00 - 90aa1466 - Gaspard Lonchampt : fix(admin): distinguish empty week from all-respected on home page
 2026-05-27T10:18:43+02:00 - 80d71301 - Gaspard Lonchampt : fix(admin): apply recette UI and wording feedback on home page
 2026-05-27T10:18:43+02:00 - 6258e8b9 - Gaspard Lonchampt : feat(admin): surface multi-employer days on home infractions
+2026-05-26T19:17:50+02:00 - d99b6594 - Redwane : feat: rename drive button to "Travail" when other task is disabled
 2026-05-26T18:31:15+02:00 - 115b753c - Redwane : fix: refresh workdays after mission validation
 2026-05-26T13:29:45+02:00 - 51b9dca4 - Redwane : Revert "wip: debug log partners shuffle"
 2026-05-26T13:18:42+02:00 - 3fe25072 - Redwane : wip: debug log partners shuffle
@@ -45,8 +59,10 @@
 2026-05-14T12:32:22+02:00 - 68c2b7aa - Redwane : fix(style): replace invalid DSFR class names with valid CSS values
 2026-05-12T22:03:59+02:00 - 74c77082 - Redwane : fix(control): clear unsaved custom infractions on cancel or close
 2026-05-12T19:54:18+02:00 - b1d26810 - Redwane : feat(control): add confirmation modal for NATINF infraction deletion and corrected some style issues
+2026-05-11T21:58:06+02:00 - a1d093c7 - Redwane : feat(pwa): make mission validation button sticky Fix validation button to remain visible while scrolling by applying position fixed.
 2026-05-08T11:39:31+02:00 - 2f3ffa3e - Redwane Zafari : Merge pull request #836 from MTES-MCT/feat/admin_home_page_rework
 2026-05-07T20:08:43+02:00 - a067894c - Gaspard Lonchampt : chore(admin): remove unused useWidth in Activities panel
+2026-05-07T16:48:32+02:00 - c743913d - Gaspard Lonchampt : chore(admin): remove unused useWidth in admin drawers
 2026-05-07T16:35:28+02:00 - c94e1249 - Gaspard "Sarp" Lonchampt : Merge pull request #845 from MTES-MCT/fix/bulk_import_vehicle
 2026-05-07T16:30:52+02:00 - 4f2bf784 - Gaspard Lonchampt : fix(admin): apply recette feedback on bulk import vehicle modal
 2026-05-07T13:01:15+02:00 - cb477dac - Gaspard Lonchampt : refactor(theme): export MOBILIC_BLUE constant for shared use
@@ -57,6 +73,7 @@
 2026-05-06T11:10:18+02:00 - 1812b4ad - Gaspard "Sarp" Lonchampt : Merge pull request #837 from MTES-MCT/feat/bulk_import_vehicle
 2026-05-06T11:04:32+02:00 - cf49c19f - Gaspard Lonchampt : chore(admin): track delete-bin-line.svg in public dsfr assets
 2026-05-06T10:50:32+02:00 - d1483fb8 - Gaspard Lonchampt : fix(admin): use DSFR icons in table edit actions
+2026-05-05T12:51:18+02:00 - 49d113d1 - Gaspard Lonchampt : fix(admin): keep aggregated rows on week/month views in activity table
 2026-05-05T12:39:54+02:00 - 245d5d84 - Doniaab : Merge pull request #842 from MTES-MCT/feat/search-natinf
 2026-05-05T12:38:19+02:00 - 8ccfae03 - donia benharara : fix(control): fix parameter reassign error
 2026-05-05T12:34:55+02:00 - 3abe4a5c - donia benharara : fix(control): fix sonarcloud duplication code
