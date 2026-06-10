@@ -5,6 +5,8 @@ description = "The CSPLab Monolith"
 readme = "README.md"
 requires-python = "~=3.12.0"
 dependencies = [
+    "ddd",
+    "referentiel",
     "dependency-injector>=4.48.2,<4.49.0",
     "django>=6.0.1,<7.0.0",
     "django-dsfr>=3.3.0,<3.4.0",
@@ -26,6 +28,8 @@ dependencies = [
     "pypdf>=6.6.0,<7.0.0",
     "python-dateutil>=2.9.0.post0",
     "qdrant-client>=1.17.0",
+    "django-otp>=1.5.4,<2.0.0",
+    "qrcode>=8.0,<9.0",
     "redis>=7.4.0",
     "requests>=2.32.5,<2.33.0",
     "sentry-sdk[django]>=2.43.0,<3.0.0",
@@ -67,6 +71,8 @@ url = "https://pypi.org/simple"
 
 [tool.uv.sources]
 web = { path = ".", editable = true }
+ddd = { path = "../../libs/ddd", editable = true }
+referentiel = { path = "../../libs/referentiel", editable = true }
 
 [tool.hatch.build.targets.wheel]
 packages = [

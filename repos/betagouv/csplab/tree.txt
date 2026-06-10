@@ -15,6 +15,7 @@
 │   └── workflows
 │       ├── auto_assign.yml
 │       ├── chore.yml
+│       ├── chore_auto_rebase_on_approval.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
 │       ├── chore_require_pr_fields.yml
@@ -80,6 +81,82 @@
 │   └── postgres
 │       ├── create-ingestion-db.sql
 │       └── create-ingestion-test-db.sql
+├── libs
+│   ├── ddd
+│   │   ├── .python-version
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── aggregate_root.py
+│   │   ├── async_usecase_interface.py
+│   │   ├── base_repository_interface.py
+│   │   ├── domain_errors.py
+│   │   ├── domain_event.py
+│   │   ├── entity.py
+│   │   ├── entity_interface.py
+│   │   ├── mapper_interface.py
+│   │   ├── page_interface.py
+│   │   ├── pyproject.toml
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── async_http_client_interface.py
+│   │   │   └── logger_interface.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── example_aggregate.py
+│   │   │   ├── example_aggregate_factory.py
+│   │   │   └── test_aggregate_root.py
+│   │   ├── types.py
+│   │   ├── usecase_interface.py
+│   │   └── uv.lock
+│   └── referentiel
+│       ├── README.md
+│       ├── __init__.py
+│       ├── entities
+│       │   ├── __init__.py
+│       │   ├── concours.py
+│       │   ├── corps.py
+│       │   ├── domaine_fonctionnel.py
+│       │   ├── metier.py
+│       │   └── offer.py
+│       ├── exceptions
+│       │   ├── __init__.py
+│       │   ├── concours_errors.py
+│       │   ├── corps_errors.py
+│       │   ├── metiers_error.py
+│       │   └── offer_errors.py
+│       ├── pyproject.toml
+│       ├── repositories
+│       │   ├── __init__.py
+│       │   ├── concours_repository_interface.py
+│       │   ├── corps_repository_interface.py
+│       │   ├── metier_repository_interface.py
+│       │   └── offers_repository_interface.py
+│       ├── tests
+│       │   ├── __init__.py
+│       │   └── test_limit_date.py
+│       ├── types.py
+│       ├── uv.lock
+│       └── value_objects
+│           ├── __init__.py
+│           ├── access_modality.py
+│           ├── area.py
+│           ├── category.py
+│           ├── competence.py
+│           ├── contract_type.py
+│           ├── country.py
+│           ├── department.py
+│           ├── diploma.py
+│           ├── experience_level.py
+│           ├── label.py
+│           ├── language_level.py
+│           ├── limit_date.py
+│           ├── localisation.py
+│           ├── ministry.py
+│           ├── nor.py
+│           ├── offer_conditions.py
+│           ├── region.py
+│           ├── type_competence.py
+│           └── verse.py
 └── src
     ├── ingestion
     │   ├── .envrc.sample
@@ -104,6 +181,7 @@
     │   │       ├── archive_offer.py
     │   │       ├── clean_raw_offer.py
     │   │       ├── load_sources.py
+    │   │       ├── publish_offer.py
     │   │       └── save_raw_offer.py
     │   ├── bin
     │   │   ├── run_migrations.sh
@@ -122,6 +200,7 @@
     │   │   │   ├── archive_gateway.py
     │   │   │   ├── offers_cleaner.py
     │   │   │   ├── offers_gateway.py
+    │   │   │   ├── publish_offer_gateway.py
     │   │   │   └── sources_gateway.py
     │   │   ├── repositories
     │   │   │   ├── __init__.py
@@ -153,11 +232,14 @@
     │   │   │   └── exceptions.py
     │   │   ├── external_gateways
     │   │   │   ├── __init__.py
+    │   │   │   ├── base_web_gateway.py
     │   │   │   ├── dtos
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── offer_upsert_payload.py
     │   │   │   │   └── talentsoft_dtos.py
     │   │   │   ├── talentsoft_client.py
     │   │   │   ├── web_archive_gateway.py
+    │   │   │   ├── web_publish_offer_gateway.py
     │   │   │   └── web_sources_gateway.py
     │   │   ├── gateways
     │   │   │   ├── __init__.py
@@ -217,11 +299,13 @@
     │   │       ├── test_ingest_offer_pipeline.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
+    │   │       ├── test_publish_offer_use_case.py
     │   │       ├── test_save_raw_offer_use_case.py
     │   │       ├── test_sentry.py
     │   │       ├── test_sources_repository.py
     │   │       ├── test_talentsoft_client_repository.py
-    │   │       └── test_value_objects.py
+    │   │       ├── test_value_objects.py
+    │   │       └── test_web_publish_offer_gateway.py
     │   └── uv.lock
     ├── notebook
     │   ├── .envrc.sample
@@ -348,44 +432,31 @@
         │   └── wsgi.py
         ├── domain
         │   ├── __init__.py
-        │   ├── ddd
-        │   │   ├── __init__.py
-        │   │   ├── aggregate_root.py
-        │   │   ├── async_usecase_interface.py
-        │   │   ├── domain_event.py
-        │   │   ├── entity.py
-        │   │   ├── entity_interface.py
-        │   │   ├── mapper_interface.py
-        │   │   ├── page_interface.py
-        │   │   └── usecase_interface.py
-        │   ├── entities
-        │   │   ├── __init__.py
-        │   │   ├── concours.py
-        │   │   ├── corps.py
-        │   │   ├── cv_metadata.py
-        │   │   ├── document.py
-        │   │   ├── domaine_fonctionnel.py
-        │   │   ├── metier.py
-        │   │   ├── offer.py
-        │   │   ├── source.py
-        │   │   ├── utilisateurs.py
-        │   │   └── vectorized_document.py
-        │   ├── exceptions
-        │   │   ├── __init__.py
-        │   │   ├── concours_errors.py
-        │   │   ├── corps_errors.py
-        │   │   ├── cv_errors.py
-        │   │   ├── document_error.py
-        │   │   ├── domain_errors.py
-        │   │   ├── metiers_error.py
-        │   │   └── offer_errors.py
-        │   ├── gateways
-        │   │   ├── __init__.py
-        │   │   └── document_gateway_interface.py
+        │   ├── candidate
+        │   │   ├── entities
+        │   │   │   └── cv_metadata.py
+        │   │   ├── exceptions
+        │   │   │   ├── __init__.py
+        │   │   │   └── cv_errors.py
+        │   │   ├── repositories
+        │   │   │   ├── __init__.py
+        │   │   │   ├── async_cv_metadata_repository_interface.py
+        │   │   │   └── cv_metadata_repository_interface.py
+        │   │   ├── services
+        │   │   │   ├── __init__.py
+        │   │   │   ├── ocr_interface.py
+        │   │   │   ├── query_builder_interface.py
+        │   │   │   └── text_formatter_interface.py
+        │   │   └── value_objects
+        │   │       ├── __init__.py
+        │   │       ├── cv_extraction_types.py
+        │   │       ├── cv_processing_status.py
+        │   │       └── opportunity_type.py
         │   ├── identite
         │   │   ├── entities
         │   │   │   ├── __init__.py
-        │   │   │   └── organisme.py
+        │   │   │   ├── organisme.py
+        │   │   │   └── utilisateurs.py
         │   │   ├── errors
         │   │   │   ├── __init__.py
         │   │   │   └── organisme_errors.py
@@ -395,56 +466,46 @@
         │   │   └── value_objects
         │   │       ├── __init__.py
         │   │       └── siret.py
-        │   ├── repositories
-        │   │   ├── __init__.py
-        │   │   ├── async_cv_metadata_repository_interface.py
-        │   │   ├── concours_repository_interface.py
-        │   │   ├── corps_repository_interface.py
-        │   │   ├── cv_metadata_repository_interface.py
-        │   │   ├── document_repository_interface.py
-        │   │   ├── metier_repository_interface.py
-        │   │   ├── offers_repository_interface.py
-        │   │   ├── repository_factory_interface.py
-        │   │   ├── source_repository_interface.py
-        │   │   └── vector_repository_interface.py
-        │   ├── services
-        │   │   ├── __init__.py
-        │   │   ├── async_http_client_interface.py
-        │   │   ├── document_cleaner_interface.py
-        │   │   ├── embedding_generator_interface.py
-        │   │   ├── logger_interface.py
-        │   │   ├── ocr_interface.py
-        │   │   ├── pdf_extractor_interface.py
-        │   │   ├── query_builder_interface.py
-        │   │   ├── text_extractor_interface.py
-        │   │   └── text_formatter_interface.py
-        │   ├── types.py
-        │   └── value_objects
-        │       ├── __init__.py
-        │       ├── access_modality.py
-        │       ├── area.py
-        │       ├── category.py
-        │       ├── competence.py
-        │       ├── contract_type.py
-        │       ├── country.py
-        │       ├── cv_extraction_types.py
-        │       ├── cv_processing_status.py
-        │       ├── department.py
-        │       ├── diploma.py
-        │       ├── experience_level.py
-        │       ├── label.py
-        │       ├── language_level.py
-        │       ├── limit_date.py
-        │       ├── localisation.py
-        │       ├── ministry.py
-        │       ├── nor.py
-        │       ├── offer_conditions.py
-        │       ├── opportunity_type.py
-        │       ├── region.py
-        │       ├── similarity_type.py
-        │       ├── source_type.py
-        │       ├── type_competence.py
-        │       └── verse.py
+        │   ├── ingestion
+        │   │   ├── entities
+        │   │   │   ├── __init__.py
+        │   │   │   ├── document.py
+        │   │   │   ├── source.py
+        │   │   │   └── vectorized_document.py
+        │   │   ├── exceptions
+        │   │   │   ├── __init__.py
+        │   │   │   └── document_error.py
+        │   │   ├── gateways
+        │   │   │   ├── __init__.py
+        │   │   │   └── document_gateway_interface.py
+        │   │   ├── repositories
+        │   │   │   ├── __init__.py
+        │   │   │   ├── document_repository_interface.py
+        │   │   │   ├── repository_factory_interface.py
+        │   │   │   ├── source_repository_interface.py
+        │   │   │   └── vector_repository_interface.py
+        │   │   ├── services
+        │   │   │   ├── __init__.py
+        │   │   │   ├── document_cleaner_interface.py
+        │   │   │   ├── embedding_generator_interface.py
+        │   │   │   └── text_extractor_interface.py
+        │   │   └── value_objects
+        │   │       ├── __init__.py
+        │   │       ├── similarity_type.py
+        │   │       └── source_type.py
+        │   └── recruteur
+        │       ├── entities
+        │       │   ├── __init__.py
+        │       │   └── organisme.py
+        │       ├── errors
+        │       │   ├── __init__.py
+        │       │   └── erreur_recrutement.py
+        │       ├── events
+        │       │   ├── __init__.py
+        │       │   └── organisme_events.py
+        │       └── value_objects
+        │           ├── __init__.py
+        │           └── etapes_recrutement.py
         ├── eslint.config.mjs
         ├── infrastructure
         │   ├── __init__.py
@@ -505,6 +566,7 @@
         │   │   │   │   ├── 0022_alter_source_base_url.py
         │   │   │   │   ├── 0023_alter_source_source_id.py
         │   │   │   │   ├── 0024_alter_sourcemodel_id_alter_sourcemodel_source_id.py
+        │   │   │   │   ├── 0025_fix_missing_indexes.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -544,6 +606,7 @@
         │   │   │   │   ├── 0029_populate_offer_source_id.py
         │   │   │   │   ├── 0030_alter_offermodel_source_id_not_null.py
         │   │   │   │   ├── 0031_offermodel_reference.py
+        │   │   │   │   ├── 0032_fix_missing_indexes.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -714,76 +777,84 @@
         │   │   │   └── preview.ts
         │   │   ├── eslint.config.js
         │   │   ├── package.json
-        │   │   ├── public
-        │   │   │   └── fonts
-        │   │   │       ├── Marianne-Bold.woff
-        │   │   │       ├── Marianne-Bold.woff2
-        │   │   │       ├── Marianne-Bold_Italic.woff
-        │   │   │       ├── Marianne-Bold_Italic.woff2
-        │   │   │       ├── Marianne-Light.woff
-        │   │   │       ├── Marianne-Light.woff2
-        │   │   │       ├── Marianne-Light_Italic.woff
-        │   │   │       ├── Marianne-Light_Italic.woff2
-        │   │   │       ├── Marianne-Medium.woff
-        │   │   │       ├── Marianne-Medium.woff2
-        │   │   │       ├── Marianne-Medium_Italic.woff
-        │   │   │       ├── Marianne-Medium_Italic.woff2
-        │   │   │       ├── Marianne-Regular.woff
-        │   │   │       ├── Marianne-Regular.woff2
-        │   │   │       ├── Marianne-Regular_Italic.woff
-        │   │   │       └── Marianne-Regular_Italic.woff2
         │   │   ├── src
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
+        │   │   │   │   ├── icons.ts
         │   │   │   │   └── main.ts
         │   │   │   ├── components
-        │   │   │   │   └── base
-        │   │   │   │       ├── CspAvatar
-        │   │   │   │       │   ├── CspAvatar.stories.ts
-        │   │   │   │       │   └── CspAvatar.vue
-        │   │   │   │       ├── CspBadge
-        │   │   │   │       │   ├── CspBadge.stories.ts
-        │   │   │   │       │   └── CspBadge.vue
-        │   │   │   │       ├── CspButton
-        │   │   │   │       │   ├── CspButton.stories.ts
-        │   │   │   │       │   └── CspButton.vue
-        │   │   │   │       ├── CspCard
-        │   │   │   │       │   ├── CspCard.stories.ts
-        │   │   │   │       │   └── CspCard.vue
-        │   │   │   │       ├── CspCheckbox
-        │   │   │   │       │   ├── CspCheckbox.stories.ts
-        │   │   │   │       │   └── CspCheckbox.vue
-        │   │   │   │       ├── CspCheckboxGroup
-        │   │   │   │       │   ├── CspCheckboxGroup.stories.ts
-        │   │   │   │       │   └── CspCheckboxGroup.vue
-        │   │   │   │       ├── CspDialog
-        │   │   │   │       │   ├── CspDialog.stories.ts
-        │   │   │   │       │   └── CspDialog.vue
-        │   │   │   │       ├── CspDrawer
-        │   │   │   │       │   ├── CspDrawer.stories.ts
-        │   │   │   │       │   └── CspDrawer.vue
-        │   │   │   │       ├── CspIcon
-        │   │   │   │       │   ├── CspIcon.stories.ts
-        │   │   │   │       │   └── CspIcon.vue
-        │   │   │   │       ├── CspInput
-        │   │   │   │       │   ├── CspInput.stories.ts
-        │   │   │   │       │   └── CspInput.vue
-        │   │   │   │       ├── CspRadio
-        │   │   │   │       │   ├── CspRadio.stories.ts
-        │   │   │   │       │   └── CspRadio.vue
-        │   │   │   │       ├── CspRadioGroup
-        │   │   │   │       │   ├── CspRadioGroup.stories.ts
-        │   │   │   │       │   └── CspRadioGroup.vue
-        │   │   │   │       ├── CspSwitch
-        │   │   │   │       │   ├── CspSwitch.stories.ts
-        │   │   │   │       │   └── CspSwitch.vue
-        │   │   │   │       └── CspTextarea
-        │   │   │   │           ├── CspTextarea.stories.ts
-        │   │   │   │           └── CspTextarea.vue
+        │   │   │   │   ├── base
+        │   │   │   │   │   ├── CspAvatar
+        │   │   │   │   │   │   ├── CspAvatar.stories.ts
+        │   │   │   │   │   │   └── CspAvatar.vue
+        │   │   │   │   │   ├── CspBadge
+        │   │   │   │   │   │   ├── CspBadge.stories.ts
+        │   │   │   │   │   │   └── CspBadge.vue
+        │   │   │   │   │   ├── CspButton
+        │   │   │   │   │   │   ├── CspButton.stories.ts
+        │   │   │   │   │   │   └── CspButton.vue
+        │   │   │   │   │   ├── CspCard
+        │   │   │   │   │   │   ├── CspCard.stories.ts
+        │   │   │   │   │   │   └── CspCard.vue
+        │   │   │   │   │   ├── CspCheckbox
+        │   │   │   │   │   │   ├── CspCheckbox.stories.ts
+        │   │   │   │   │   │   └── CspCheckbox.vue
+        │   │   │   │   │   ├── CspCheckboxGroup
+        │   │   │   │   │   │   ├── CspCheckboxGroup.stories.ts
+        │   │   │   │   │   │   └── CspCheckboxGroup.vue
+        │   │   │   │   │   ├── CspDialog
+        │   │   │   │   │   │   ├── CspDialog.stories.ts
+        │   │   │   │   │   │   └── CspDialog.vue
+        │   │   │   │   │   ├── CspDrawer
+        │   │   │   │   │   │   ├── CspDrawer.stories.ts
+        │   │   │   │   │   │   └── CspDrawer.vue
+        │   │   │   │   │   ├── CspDropdownMenu
+        │   │   │   │   │   │   ├── CspDropdownMenu.stories.ts
+        │   │   │   │   │   │   └── CspDropdownMenu.vue
+        │   │   │   │   │   ├── CspIcon
+        │   │   │   │   │   │   ├── CspIcon.stories.ts
+        │   │   │   │   │   │   └── CspIcon.vue
+        │   │   │   │   │   ├── CspInput
+        │   │   │   │   │   │   ├── CspInput.stories.ts
+        │   │   │   │   │   │   └── CspInput.vue
+        │   │   │   │   │   ├── CspRadio
+        │   │   │   │   │   │   ├── CspRadio.stories.ts
+        │   │   │   │   │   │   └── CspRadio.vue
+        │   │   │   │   │   ├── CspRadioGroup
+        │   │   │   │   │   │   ├── CspRadioGroup.stories.ts
+        │   │   │   │   │   │   └── CspRadioGroup.vue
+        │   │   │   │   │   ├── CspSwitch
+        │   │   │   │   │   │   ├── CspSwitch.stories.ts
+        │   │   │   │   │   │   └── CspSwitch.vue
+        │   │   │   │   │   ├── CspTextarea
+        │   │   │   │   │   │   ├── CspTextarea.stories.ts
+        │   │   │   │   │   │   └── CspTextarea.vue
+        │   │   │   │   │   └── CspTooltip
+        │   │   │   │   │       ├── CspTooltip.stories.ts
+        │   │   │   │   │       └── CspTooltip.vue
+        │   │   │   │   └── layout
+        │   │   │   │       ├── CspAppLayout
+        │   │   │   │       │   └── CspAppLayout.vue
+        │   │   │   │       └── CspSidebar
+        │   │   │   │           ├── CspSidebar.stories.ts
+        │   │   │   │           ├── CspSidebar.vue
+        │   │   │   │           ├── CspSidebarGroup.vue
+        │   │   │   │           ├── CspSidebarItem.vue
+        │   │   │   │           ├── CspSidebarLogo.vue
+        │   │   │   │           ├── CspSidebarProvider.vue
+        │   │   │   │           ├── CspSidebarTrigger.vue
+        │   │   │   │           └── CspSidebarUser.vue
+        │   │   │   ├── composables
+        │   │   │   │   ├── useColorMode.test.ts
+        │   │   │   │   ├── useColorMode.ts
+        │   │   │   │   ├── useSidebar.test.ts
+        │   │   │   │   └── useSidebar.ts
         │   │   │   ├── env.d.ts
         │   │   │   ├── features
         │   │   │   │   └── ats
-        │   │   │   │       └── HomeView.vue
+        │   │   │   │       ├── HomeView.vue
+        │   │   │   │       └── components
+        │   │   │   │           └── AtsAppShell.vue
         │   │   │   ├── shared
         │   │   │   │   └── components
         │   │   │   │       └── ErrorBoundary.vue
@@ -808,9 +879,10 @@
         │   │   │   └── utils
         │   │   │       ├── errors.test.ts
         │   │   │       ├── errors.ts
+        │   │   │       ├── format.test.ts
+        │   │   │       ├── format.ts
         │   │   │       ├── http.test.ts
-        │   │   │       ├── http.ts
-        │   │   │       └── string.ts
+        │   │   │       └── http.ts
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
@@ -874,6 +946,23 @@
         │   │   │       └── results-announcer.js
         │   │   ├── css
         │   │   │   └── main.css
+        │   │   ├── fonts
+        │   │   │   ├── Marianne-Bold.woff
+        │   │   │   ├── Marianne-Bold.woff2
+        │   │   │   ├── Marianne-Bold_Italic.woff
+        │   │   │   ├── Marianne-Bold_Italic.woff2
+        │   │   │   ├── Marianne-Light.woff
+        │   │   │   ├── Marianne-Light.woff2
+        │   │   │   ├── Marianne-Light_Italic.woff
+        │   │   │   ├── Marianne-Light_Italic.woff2
+        │   │   │   ├── Marianne-Medium.woff
+        │   │   │   ├── Marianne-Medium.woff2
+        │   │   │   ├── Marianne-Medium_Italic.woff
+        │   │   │   ├── Marianne-Medium_Italic.woff2
+        │   │   │   ├── Marianne-Regular.woff
+        │   │   │   ├── Marianne-Regular.woff2
+        │   │   │   ├── Marianne-Regular_Italic.woff
+        │   │   │   └── Marianne-Regular_Italic.woff2
         │   │   └── js
         │   │       ├── drawer.js
         │   │       ├── matomo-tracking.js
@@ -937,29 +1026,95 @@
         ├── start.sh
         ├── tests
         │   ├── __init__.py
-        │   ├── ats
-        │   │   ├── __init__.py
-        │   │   ├── identite
-        │   │   │   ├── __init__.py
-        │   │   │   ├── factories
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── organisme_factory.py
-        │   │   │   └── unit
-        │   │   │       ├── __init__.py
-        │   │   │       ├── test_organisme_identite.py
-        │   │   │       └── test_siret.py
-        │   │   └── presentation
-        │   │       ├── __init__.py
-        │   │       └── test_views.py
-        │   ├── candidate
-        │   │   ├── __init__.py
-        │   │   ├── integration
+        │   ├── application
+        │   │   ├── candidate
         │   │   │   ├── __init__.py
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   └── test_process_uploaded_cv.py
-        │   │   ├── presentation
+        │   │   └── ingestion
+        │   │       ├── __init__.py
+        │   │       ├── test_archive_offers.py
+        │   │       ├── test_clean_documents.py
+        │   │       ├── test_list_sources.py
+        │   │       ├── test_load_documents.py
+        │   │       ├── test_upsert_offers.py
+        │   │       └── test_vectorize_documents.py
+        │   ├── conftest.py
+        │   ├── domain
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   ├── test_organisme_identite.py
+        │   │   │   ├── test_siret.py
+        │   │   │   └── test_utilisateurs.py
+        │   │   └── recruteur
+        │   │       ├── __init__.py
+        │   │       ├── test_etapes_recrutement.py
+        │   │       └── test_organisme.py
+        │   ├── factories
+        │   │   ├── __init__.py
+        │   │   ├── candidate
+        │   │   │   └── cv_metadata_factory.py
+        │   │   ├── identite
+        │   │   │   ├── organisme_factory.py
+        │   │   │   └── utilisateur_factory.py
+        │   │   ├── ingestion
+        │   │   │   ├── document_factory.py
+        │   │   │   ├── ingres_corps_factories.py
+        │   │   │   ├── ingres_metiers_factories.py
+        │   │   │   ├── offer_payload_factory.py
+        │   │   │   ├── source_factory.py
+        │   │   │   ├── talentsoft_factories.py
+        │   │   │   └── vectorized_document_factory.py
+        │   │   ├── recruteur
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme_factory.py
+        │   │   └── referentiel
+        │   │       ├── concours_factory.py
+        │   │       ├── concours_row_factory.py
+        │   │       ├── corps_factory.py
+        │   │       ├── metier_factory.py
+        │   │       └── offer_factory.py
+        │   ├── infrastructure
+        │   │   ├── __init__.py
+        │   │   ├── candidate
+        │   │   │   ├── __init__.py
+        │   │   │   ├── test_get_opportunity_details.py
+        │   │   │   ├── test_initialize_cv_metadata.py
+        │   │   │   ├── test_match_cv_to_opportunities.py
+        │   │   │   └── test_process_uploaded_cv.py
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_api_key_authentication.py
+        │   │   ├── ingestion
+        │   │   │   ├── __init__.py
+        │   │   │   ├── external_gateways
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   ├── test_talentsoft_client.py
+        │   │   │   │   ├── test_talentsoft_dtos.py
+        │   │   │   │   └── utils.py
+        │   │   │   ├── repositories
+        │   │   │   │   ├── test_postgres_document_repository.py
+        │   │   │   │   └── test_qdrant_repository.py
+        │   │   │   ├── test_archive_offer_by_reference.py
+        │   │   │   ├── test_archive_offers.py
+        │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_list_metiers.py
+        │   │   │   ├── test_list_offers.py
+        │   │   │   ├── test_list_sources.py
+        │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_upsert_offers.py
+        │   │   │   └── test_vectorize_documents.py
+        │   │   └── referentiel
+        │   │       ├── __init__.py
+        │   │       ├── test_postgres_concours_repository.py
+        │   │       ├── test_postgres_corps_repository.py
+        │   │       ├── test_postgres_metiers_repository.py
+        │   │       └── test_postgres_offers_repository.py
+        │   ├── presentation
+        │   │   ├── __init__.py
+        │   │   ├── candidate
         │   │   │   ├── __init__.py
         │   │   │   ├── accessibility
         │   │   │   │   ├── __init__.py
@@ -985,56 +1140,13 @@
         │   │   │       ├── test_drawer_views.py
         │   │   │       ├── test_error_views.py
         │   │   │       └── test_static_pages_view.py
-        │   │   └── unit
-        │   │       ├── __init__.py
-        │   │       ├── test_get_opportunity_details.py
-        │   │       ├── test_initialize_cv_metadata.py
-        │   │       ├── test_limit_date.py
-        │   │       ├── test_match_cv_to_opportunities.py
-        │   │       └── test_process_uploaded_cv.py
-        │   ├── conftest.py
-        │   ├── domain
-        │   │   ├── example_aggregate.py
-        │   │   └── test_aggregate_root.py
-        │   ├── factories
-        │   │   ├── __init__.py
-        │   │   ├── concours_factory.py
-        │   │   ├── concours_row_factory.py
-        │   │   ├── corps_factory.py
-        │   │   ├── cv_metadata_factory.py
-        │   │   ├── document_factory.py
-        │   │   ├── example_aggregate_factory.py
-        │   │   ├── ingres_corps_factories.py
-        │   │   ├── ingres_metiers_factories.py
-        │   │   ├── metier_factory.py
-        │   │   ├── offer_factory.py
-        │   │   ├── offer_payload_factory.py
-        │   │   ├── source_factory.py
-        │   │   ├── talentsoft_factories.py
-        │   │   ├── utilisateur_factory.py
-        │   │   └── vectorized_document_factory.py
-        │   ├── infrastructure
-        │   │   ├── __init__.py
-        │   │   └── authentication
-        │   │       ├── __init__.py
-        │   │       └── test_api_key_authentication.py
-        │   ├── ingestion
-        │   │   ├── __init__.py
-        │   │   ├── integration
+        │   │   ├── identite
+        │   │   │   └── views
+        │   │   │       ├── __init__.py
+        │   │   │       ├── test_login.py
+        │   │   │       └── test_profile.py
+        │   │   ├── ingestion
         │   │   │   ├── __init__.py
-        │   │   │   ├── repository
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── test_postgres_document_repository.py
-        │   │   │   ├── test_archive_offer_by_reference.py
-        │   │   │   ├── test_archive_offers.py
-        │   │   │   ├── test_clean_documents.py
-        │   │   │   ├── test_list_metiers.py
-        │   │   │   ├── test_list_offers.py
-        │   │   │   ├── test_list_sources.py
-        │   │   │   ├── test_load_documents.py
-        │   │   │   ├── test_upsert_offers.py
-        │   │   │   └── test_vectorize_documents.py
-        │   │   ├── presentation
         │   │   │   ├── management
         │   │   │   │   ├── __init__.py
         │   │   │   │   ├── test_archive_offers.py
@@ -1048,64 +1160,26 @@
         │   │   │   │   └── test_ingestion_tasks.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
+        │   │   │       ├── test_admin.py
         │   │   │       ├── test_archive_offers_view.py
+        │   │   │       ├── test_endpoints.py
         │   │   │       ├── test_ingestion_views.py
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
         │   │   │       ├── test_list_sources.py
-        │   │   │       └── test_upsert_offers.py
-        │   │   └── unit
-        │   │       ├── __init__.py
-        │   │       ├── external_gateways
-        │   │       │   ├── __init__.py
-        │   │       │   ├── test_talentsoft_client.py
-        │   │       │   ├── test_talentsoft_dtos.py
-        │   │       │   └── utils.py
-        │   │       ├── test_archive_offers.py
-        │   │       ├── test_clean_documents.py
-        │   │       ├── test_list_sources.py
-        │   │       ├── test_load_documents.py
-        │   │       ├── test_upsert_offers.py
-        │   │       └── test_vectorize_documents.py
-        │   ├── shared
-        │   │   ├── __init__.py
-        │   │   ├── integration
-        │   │   │   ├── __init__.py
-        │   │   │   └── repository
-        │   │   │       ├── __init__.py
-        │   │   │       ├── test_postgres_concours_repository.py
-        │   │   │       ├── test_postgres_corps_repository.py
-        │   │   │       ├── test_postgres_metiers_repository.py
-        │   │   │       ├── test_postgres_offers_repository.py
-        │   │   │       └── test_qdrant_repository.py
-        │   │   ├── presentation
-        │   │   │   ├── __init__.py
-        │   │   │   ├── api
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── test_endpoints.py
-        │   │   │   └── views
-        │   │   │       ├── __init__.py
+        │   │   │       ├── test_upsert_offers.py
         │   │   │       └── test_views.py
-        │   │   └── unit
+        │   │   └── recruteur
         │   │       ├── __init__.py
-        │   │       └── test_interface_aware_mock.py
-        │   ├── users
-        │   │   ├── __init__.py
-        │   │   ├── presentation
-        │   │   │   ├── __init__.py
-        │   │   │   └── test_views.py
-        │   │   └── unit
-        │   │       ├── __init__.py
-        │   │       └── test_entities.py
+        │   │       └── test_views.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── form_test_utils.py
-        │       ├── in_memory_cv_metadata_repository.py
-        │       ├── in_memory_offers_repository.py
         │       ├── interface_aware_mock.py
         │       ├── mock_api_response_factory.py
         │       ├── mock_embedding_generator.py
         │       ├── pdf_test_utils.py
-        │       └── shared_fixtures.py
+        │       ├── shared_fixtures.py
+        │       └── test_interface_aware_mock.py
         └── uv.lock
-233 directories, 877 files
+256 directories, 928 files
