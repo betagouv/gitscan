@@ -7,7 +7,7 @@ Ce mois-ci, les mises à jour se concentrent sur la maintenance de l'infrastruct
 Aucune évolution fonctionnelle n'a été apportée durant cette période.
 
 ### Évolutions techniques
-- Vérification du bon fonctionnement du workflow de build et de déploiement via une action GitHub.
+- Vérification du bon fonctionnement du workflow de build et de déploiement via GitHub Actions. [#1](https://github.com/etalab/calendrier.api.gouv.fr/commit/bb0e1d0)
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+Aucun autre changement à signaler.
