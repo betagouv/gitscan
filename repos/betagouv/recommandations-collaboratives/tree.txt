@@ -927,11 +927,8 @@
 │   │   │   ├── templates
 │   │   │   │   └── projects
 │   │   │   │       ├── project
-│   │   │   │       │   ├── actions.html
 │   │   │   │       │   ├── actions_embed.html
-│   │   │   │       │   ├── actions_inline.html
 │   │   │   │       │   ├── administration_panel.html
-│   │   │   │       │   ├── advisor_dashboard.html
 │   │   │   │       │   ├── confirmation.html
 │   │   │   │       │   ├── conversations_new.html
 │   │   │   │       │   ├── detail-ro.html
@@ -965,7 +962,6 @@
 │   │   │   │       │   │   │   ├── empty_links.html
 │   │   │   │       │   │   │   ├── file_list.html
 │   │   │   │       │   │   │   ├── file_list_item.html
-│   │   │   │       │   │   │   ├── file_list_item_api.html
 │   │   │   │       │   │   │   ├── file_list_item_embedded.html
 │   │   │   │       │   │   │   ├── file_list_item_pinned.html
 │   │   │   │       │   │   │   ├── file_search.html
@@ -984,9 +980,6 @@
 │   │   │   │       │   │   ├── information_card.html
 │   │   │   │       │   │   ├── information_card_description.html
 │   │   │   │       │   │   ├── information_card_description_details.html
-│   │   │   │       │   │   ├── kanban_projects
-│   │   │   │       │   │   │   ├── kanban_project_item.html
-│   │   │   │       │   │   │   └── kanban_projects.html
 │   │   │   │       │   │   ├── list-toolbars.html
 │   │   │   │       │   │   ├── navigation
 │   │   │   │       │   │   │   ├── display_select.html
@@ -1022,15 +1015,10 @@
 │   │   │   │       │   │   ├── survey_grid.html
 │   │   │   │       │   │   ├── switchtender-list.html
 │   │   │   │       │   │   ├── task
-│   │   │   │       │   │   │   ├── task_actions.html
-│   │   │   │       │   │   │   ├── task_comment.html
-│   │   │   │       │   │   │   ├── task_followup_user_card.html
-│   │   │   │       │   │   │   └── task_user_card.html
+│   │   │   │       │   │   │   └── task_comment.html
 │   │   │   │       │   │   ├── tasks_inline
-│   │   │   │       │   │   │   ├── status_filter.html
 │   │   │   │       │   │   │   ├── status_item.html
 │   │   │   │       │   │   │   ├── status_list.html
-│   │   │   │       │   │   │   ├── task_item.html
 │   │   │   │       │   │   │   ├── task_item_embed.html
 │   │   │   │       │   │   │   ├── task_list.html
 │   │   │   │       │   │   │   └── tasks_inline.html
@@ -1038,19 +1026,9 @@
 │   │   │   │       │   │   │   ├── tasks_inline_kanban.html
 │   │   │   │       │   │   │   ├── tasks_inline_kanban_filters.html
 │   │   │   │       │   │   │   ├── tasks_inline_kanban_header.html
-│   │   │   │       │   │   │   ├── tasks_inline_kanban_new_tasks_banner.html
-│   │   │   │       │   │   │   ├── tasks_inline_kanban_search.html
-│   │   │   │       │   │   │   ├── tasks_inline_kanban_switcher.html
-│   │   │   │       │   │   │   ├── tasks_inline_kanban_tasks_count.html
-│   │   │   │       │   │   │   └── tasks_status_buttons.html
-│   │   │   │       │   │   ├── tasks_kanban
-│   │   │   │       │   │   │   ├── kanban_header.html
-│   │   │   │       │   │   │   ├── task_item.html
-│   │   │   │       │   │   │   └── tasks_kanban.html
+│   │   │   │       │   │   │   └── tasks_inline_kanban_tasks_count.html
 │   │   │   │       │   │   ├── tasks_modal
-│   │   │   │       │   │   │   ├── delete_task_confirmation_modal.html
-│   │   │   │       │   │   │   ├── reminder_modal.html
-│   │   │   │       │   │   │   └── task_modal.html
+│   │   │   │       │   │   │   └── delete_task_confirmation_modal.html
 │   │   │   │       │   │   ├── timeline
 │   │   │   │       │   │   │   ├── activity_stream.html
 │   │   │   │       │   │   │   └── project_timeline.html
@@ -1525,10 +1503,7 @@
 │   │   │   │   │       ├── canDeleteTask.cy.js
 │   │   │   │   │       ├── canPublishDraftTask.cy.js
 │   │   │   │   │       ├── canPublishTaskWithRessource.cy.js
-│   │   │   │   │       ├── canSeeInlineTasks.cy.js
-│   │   │   │   │       ├── canSeeKanbanTasks.cy.js
 │   │   │   │   │       ├── canSeeSuggestTasks.cy.js
-│   │   │   │   │       ├── canSwitchBetweenTasksViews.cy.js
 │   │   │   │   │       ├── canUnpublishTask.cy.js
 │   │   │   │   │       ├── contact
 │   │   │   │   │       │   ├── canCreateContactOrgaAndGroup.cy.js
@@ -1537,18 +1512,6 @@
 │   │   │   │   │       │   └── canclickToSeeContact.cy.js
 │   │   │   │   │       ├── content
 │   │   │   │   │       │   └── canSeeTaskResourceInitialCommentTitleAndSubtitle.cy.js
-│   │   │   │   │       ├── kanban
-│   │   │   │   │       │   └── canDragnDropTaskToInProgressStatus.cy.js
-│   │   │   │   │       ├── newTasksBannerDisplayPluralOrSingularLabel.cy.js
-│   │   │   │   │       ├── position
-│   │   │   │   │       │   └── canMoveTask.cy.js
-│   │   │   │   │       ├── previewModal
-│   │   │   │   │       │   ├── canEditMessageDraftTask.cy.js
-│   │   │   │   │       │   ├── canOpenPreviewModal.cy.js
-│   │   │   │   │       │   ├── canPostAFollowup.cy.js
-│   │   │   │   │       │   └── cantCommentDraftTask.cy.js
-│   │   │   │   │       ├── status
-│   │   │   │   │       │   └── canChangeTaskStatus.cy.js
 │   │   │   │   │       └── topic
 │   │   │   │   │           └── canSeeKabanAndInlineTaskTopic.cy.js
 │   │   │   │   ├── public
@@ -1765,9 +1728,7 @@
 │   │   │   │   │   │   ├── resource_preview_panel.scss
 │   │   │   │   │   │   ├── shared_contents_panel.scss
 │   │   │   │   │   │   ├── survey_grid.scss
-│   │   │   │   │   │   ├── switchtender-list.scss
-│   │   │   │   │   │   └── tasks_modal
-│   │   │   │   │   │       └── modal.scss
+│   │   │   │   │   │   └── switchtender-list.scss
 │   │   │   │   │   ├── kanban.scss
 │   │   │   │   │   ├── onboarding_tutorial.scss
 │   │   │   │   │   ├── overview.scss
@@ -1858,7 +1819,6 @@
 │   │   │       │   ├── onboarding.js
 │   │   │       │   ├── organizationSearch.js
 │   │   │       │   ├── pageInvitation.js
-│   │   │       │   ├── project.js
 │   │   │       │   ├── projectAdministration.js
 │   │   │       │   ├── projectDetails.js
 │   │   │       │   ├── projectEmailReminder.js
@@ -1867,7 +1827,6 @@
 │   │   │       │   ├── searchableList.js
 │   │   │       │   ├── selectSearchable.js
 │   │   │       │   ├── tagCloud.js
-│   │   │       │   ├── tasks.js
 │   │   │       │   ├── tasksEmbed.js
 │   │   │       │   ├── topicSearch.js
 │   │   │       │   ├── tutorial.js
@@ -1920,11 +1879,9 @@
 │   │   │       │   ├── Notification.js
 │   │   │       │   ├── NotificationEater.js
 │   │   │       │   ├── OrganizationSearch.js
-│   │   │       │   ├── PreviewModal.js
 │   │   │       │   ├── PrintTaskResource.js
 │   │   │       │   ├── ProjectEmailReminder.js
 │   │   │       │   ├── ProjectShare.js
-│   │   │       │   ├── Projects.js
 │   │   │       │   ├── RegionDepartmentPreparer.js
 │   │   │       │   ├── ResourceCategoryFilter.js
 │   │   │       │   ├── Resources
@@ -1939,11 +1896,9 @@
 │   │   │       │   ├── TaskComment.js
 │   │   │       │   ├── TaskModal.js
 │   │   │       │   ├── TaskStatus.js
-│   │   │       │   ├── TaskStatusSwitcher.js
 │   │   │       │   ├── TaskStatusSwitcherConversations.js
 │   │   │       │   ├── Tasks.js
 │   │   │       │   ├── TasksInline.js
-│   │   │       │   ├── TasksKanban.js
 │   │   │       │   ├── Toast.js
 │   │   │       │   ├── TopicSearch.js
 │   │   │       │   ├── Tutorial.js
@@ -1969,7 +1924,6 @@
 │   │   │       │   ├── geolocation.js
 │   │   │       │   ├── idbObjectStoreMgmt.js
 │   │   │       │   ├── onLeaveAlert.js
-│   │   │       │   ├── previewModal.js
 │   │   │       │   ├── projectQueue.js
 │   │   │       │   ├── projects.js
 │   │   │       │   ├── resourcePreviewPanel.js
@@ -2021,7 +1975,6 @@
 │   │   │       │   ├── survey-grid.css.js
 │   │   │       │   ├── survey.css.js
 │   │   │       │   ├── switchtender-list.css.js
-│   │   │       │   ├── tasks-modal.css.js
 │   │   │       │   ├── tools-editor.css.js
 │   │   │       │   └── user-crm.css.js
 │   │   │       └── utils
@@ -2061,7 +2014,6 @@
 │   │   │           ├── stringToColor.js
 │   │   │           ├── taskStatus.js
 │   │   │           ├── tiptapParser.js
-│   │   │           ├── tooltip.js
 │   │   │           ├── tooltipInitialization.js
 │   │   │           ├── trackingMatomo.js
 │   │   │           └── uuid.js
@@ -2258,4 +2210,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-369 directories, 1913 files
+362 directories, 1872 files
