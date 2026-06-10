@@ -242,6 +242,7 @@
 │   │   │   │   │   │   │   │   │   │       │   ├── action
 │   │   │   │   │   │   │   │   │   │       │   │   └── action-explication.field.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action-hidden.view.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── action-not-found.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── header
@@ -774,7 +775,7 @@
 │   │   │   │   ├── personnalisations
 │   │   │   │   │   ├── data
 │   │   │   │   │   │   ├── transform-reponse.ts
-│   │   │   │   │   │   ├── use-list-opened-thematiques.ts
+│   │   │   │   │   │   ├── use-list-opened-thematiques.tsx
 │   │   │   │   │   │   ├── use-list-personnalisation-questions-reponses.ts
 │   │   │   │   │   │   ├── use-list-personnalisation-regles.ts
 │   │   │   │   │   │   ├── use-list-personnalisation-thematiques.ts
@@ -788,6 +789,8 @@
 │   │   │   │   │   │   ├── personnalisation-filters-converter.ts
 │   │   │   │   │   │   ├── personnalisation-filters.menu.tsx
 │   │   │   │   │   │   ├── personnalisation-filters.types.ts
+│   │   │   │   │   │   ├── personnalisation-search-params-mapper.ts
+│   │   │   │   │   │   ├── personnalisation-search-params-parsers.ts
 │   │   │   │   │   │   ├── personnalisation-thematiques.dropdown.tsx
 │   │   │   │   │   │   ├── personnalisation-url-keys.constants.ts
 │   │   │   │   │   │   └── referentiels.dropdown.tsx
@@ -1302,8 +1305,7 @@
 │   │   │   │   │   ├── action-documents.download-button.tsx
 │   │   │   │   │   ├── action-edit.modal.tsx
 │   │   │   │   │   ├── action-label.constants.ts
-│   │   │   │   │   ├── action-personnalisations
-│   │   │   │   │   │   └── ActionPersonnalisationInfo.tsx
+│   │   │   │   │   ├── action-personnalisations-info.tsx
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
 │   │   │   │   │   ├── action-preuve.panel.tsx
 │   │   │   │   │   ├── action-statut
@@ -1360,6 +1362,7 @@
 │   │   │   │   │   ├── use-list-actions.ts
 │   │   │   │   │   ├── use-mesure-pilotes.ts
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
+│   │   │   │   │   ├── use-resolve-actions-by-ids.ts
 │   │   │   │   │   └── use-update-action-explication.ts
 │   │   │   │   ├── audit-labellisation
 │   │   │   │   │   ├── audit-badge-status
@@ -1695,7 +1698,6 @@
 │   │   │   │   ├── icons
 │   │   │   │   │   └── IconThreeDotHorizontal.tsx
 │   │   │   │   ├── layout
-│   │   │   │   │   ├── HeaderSticky.tsx
 │   │   │   │   │   ├── app-layout.tsx
 │   │   │   │   │   ├── header
 │   │   │   │   │   │   ├── header.tsx
@@ -2615,11 +2617,48 @@
 │   │   │   │   │       └── panier.repository.ts
 │   │   │   │   ├── plans
 │   │   │   │   │   ├── ai-plan-import
-│   │   │   │   │   │   └── generate-import-draft
-│   │   │   │   │   │       ├── __fixtures__
-│   │   │   │   │   │       │   └── sample.pdf
-│   │   │   │   │   │       ├── extract-text.spec.ts
-│   │   │   │   │   │       └── extract-text.ts
+│   │   │   │   │   │   ├── adapters
+│   │   │   │   │   │   │   ├── extracted-action-to-import-action.spec.ts
+│   │   │   │   │   │   │   └── extracted-action-to-import-action.ts
+│   │   │   │   │   │   ├── generate-import-draft
+│   │   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   │   └── sample.pdf
+│   │   │   │   │   │   │   ├── consolidate-actions
+│   │   │   │   │   │   │   │   ├── consolidate-actions.prompt.ts
+│   │   │   │   │   │   │   │   ├── consolidate-actions.schema.ts
+│   │   │   │   │   │   │   │   ├── consolidate-actions.spec.ts
+│   │   │   │   │   │   │   │   ├── consolidate-actions.ts
+│   │   │   │   │   │   │   │   ├── select-low-score-actions.spec.ts
+│   │   │   │   │   │   │   │   ├── select-low-score-actions.ts
+│   │   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
+│   │   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
+│   │   │   │   │   │   │   ├── extract-actions
+│   │   │   │   │   │   │   │   ├── extract-actions.prompt.spec.ts
+│   │   │   │   │   │   │   │   ├── extract-actions.prompt.ts
+│   │   │   │   │   │   │   │   ├── extract-actions.schema.ts
+│   │   │   │   │   │   │   │   ├── extract-actions.spec.ts
+│   │   │   │   │   │   │   │   ├── extract-actions.ts
+│   │   │   │   │   │   │   │   ├── extraction-response-to-extracted-actions.spec.ts
+│   │   │   │   │   │   │   │   └── extraction-response-to-extracted-actions.ts
+│   │   │   │   │   │   │   ├── extract-text.spec.ts
+│   │   │   │   │   │   │   ├── extract-text.ts
+│   │   │   │   │   │   │   └── score-actions
+│   │   │   │   │   │   │       ├── apply-scores.spec.ts
+│   │   │   │   │   │   │       ├── apply-scores.ts
+│   │   │   │   │   │   │       ├── render-actions-text.spec.ts
+│   │   │   │   │   │   │       ├── render-actions-text.ts
+│   │   │   │   │   │   │       ├── score-actions.prompt.ts
+│   │   │   │   │   │   │       ├── score-actions.schema.ts
+│   │   │   │   │   │   │       ├── score-actions.spec.ts
+│   │   │   │   │   │   │       └── score-actions.ts
+│   │   │   │   │   │   ├── models
+│   │   │   │   │   │   │   ├── extracted-action.ts
+│   │   │   │   │   │   │   └── plan-draft.ts
+│   │   │   │   │   │   └── prompts
+│   │   │   │   │   │       ├── consolidation.prompt.ts
+│   │   │   │   │   │       ├── extraction.prompt.ts
+│   │   │   │   │   │       ├── ignore-directive.ts
+│   │   │   │   │   │       └── scoring.prompt.ts
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
 │   │   │   │   │   │   └── compute-budget.rules.ts
@@ -2637,6 +2676,20 @@
 │   │   │   │   │   │   ├── delete-plan.router.e2e-spec.ts
 │   │   │   │   │   │   ├── delete-plan.router.ts
 │   │   │   │   │   │   └── delete-plan.service.ts
+│   │   │   │   │   ├── duplicate-plan
+│   │   │   │   │   │   ├── duplicate-plan.errors.ts
+│   │   │   │   │   │   ├── duplicate-plan.input.ts
+│   │   │   │   │   │   ├── duplicate-plan.router.e2e-spec.ts
+│   │   │   │   │   │   ├── duplicate-plan.router.ts
+│   │   │   │   │   │   ├── duplicate-plan.service.ts
+│   │   │   │   │   │   ├── duplicated-fiche-annexes.mapper.spec.ts
+│   │   │   │   │   │   ├── duplicated-fiche-annexes.mapper.ts
+│   │   │   │   │   │   ├── duplicated-fiche-budgets.mapper.spec.ts
+│   │   │   │   │   │   ├── duplicated-fiche-budgets.mapper.ts
+│   │   │   │   │   │   ├── duplicated-fiche.mapper.spec.ts
+│   │   │   │   │   │   ├── duplicated-fiche.mapper.ts
+│   │   │   │   │   │   ├── duplicated-plan-name.spec.ts
+│   │   │   │   │   │   └── duplicated-plan-name.ts
 │   │   │   │   │   ├── get-plan
 │   │   │   │   │   │   ├── get-plan.errors.ts
 │   │   │   │   │   │   ├── get-plan.input.ts
@@ -2967,8 +3020,6 @@
 │   │   │   │   │   │   ├── build-archive.service.ts
 │   │   │   │   │   │   ├── build-liens-csv.spec.ts
 │   │   │   │   │   │   ├── build-liens-csv.ts
-│   │   │   │   │   │   ├── map-with-concurrency.spec.ts
-│   │   │   │   │   │   ├── map-with-concurrency.ts
 │   │   │   │   │   │   ├── prepare-archive-entries.spec.ts
 │   │   │   │   │   │   └── prepare-archive-entries.ts
 │   │   │   │   │   ├── generate-preuves-archive
@@ -3254,6 +3305,8 @@
 │   │   │       ├── log
 │   │   │       │   ├── custom-logger.service.ts
 │   │   │       │   └── log.dto.ts
+│   │   │       ├── map-with-concurrency.spec.ts
+│   │   │       ├── map-with-concurrency.ts
 │   │   │       ├── mattermost-notification.service.ts
 │   │   │       ├── nest
 │   │   │       │   ├── all-exceptions.filter.ts
@@ -3924,6 +3977,8 @@
 │       ├── src
 │       │   ├── airtable
 │       │   │   ├── airtable-collaborator.record.ts
+│       │   │   ├── airtable-crm-sync.service.spec.ts
+│       │   │   ├── airtable-crm-sync.service.ts
 │       │   │   ├── airtable-error.response.ts
 │       │   │   ├── airtable-feedback.record.ts
 │       │   │   ├── airtable-fetch-records.request.ts
@@ -3971,6 +4026,7 @@
 │       │   ├── cron
 │       │   │   ├── cron-consumer.service.ts
 │       │   │   ├── cron-notifications.service.ts
+│       │   │   ├── cron.config.spec.ts
 │       │   │   ├── cron.config.ts
 │       │   │   ├── cron.module.ts
 │       │   │   └── cron.service.ts
@@ -5821,7 +5877,6 @@
 │       │   └── zod-default-leaks-into-partial-update-schema.md
 │       └── test-failures
 │           └── parallel-e2e-test-isolation.md
-├── docs
 ├── e2e
 │   ├── .env.default
 │   ├── README.md
@@ -5909,6 +5964,7 @@
 │   │   │       ├── accordion-header-click.spec.ts
 │   │   │       ├── action-access-rights.spec.ts
 │   │   │       ├── create-update-document.spec.ts
+│   │   │       ├── detaille-a-la-tache-modal.spec.ts
 │   │   │       ├── hash-navigation.spec.ts
 │   │   │       ├── hide-action-desactive.spec.ts
 │   │   │       ├── referentiel-scores.pom.ts
@@ -6466,7 +6522,9 @@
 │       │   │   │   ├── PageHeader.stories.tsx
 │       │   │   │   ├── PageHeader.tsx
 │       │   │   │   ├── index.ts
-│       │   │   │   └── page-header.context.ts
+│       │   │   │   ├── page-header.context.ts
+│       │   │   │   ├── sticky-header-height.context.tsx
+│       │   │   │   └── use-sticky.ts
 │       │   │   ├── layout
 │       │   │   │   ├── FooterTeT.stories.tsx
 │       │   │   │   ├── FooterTeT.tsx
@@ -6977,9 +7035,6 @@
 │   │   │   ├── indexBy.ts
 │   │   │   ├── serveUtils.ts
 │   │   │   └── typeUtils.ts
-│   │   ├── crm_sync
-│   │   │   ├── index.ts
-│   │   │   └── test.http
 │   │   ├── get_panier_data_from_directus
 │   │   │   ├── README.md
 │   │   │   ├── fetchData.ts
@@ -7014,4 +7069,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1228 directories, 5986 files
+1233 directories, 6036 files

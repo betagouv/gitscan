@@ -1,34 +1,40 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 4 juin 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 09 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des référentiels, notamment en vue des audits, avec l'ajout de fonctionnalités de génération d'archives et de demandes d'audit. Des efforts importants ont également été réalisés pour optimiser les performances, refactorer le code et améliorer l'expérience utilisateur, notamment au niveau des formulaires et des tableaux de données. Enfin, le site public a été enrichi avec une nouvelle page "matrice d'impact".
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'import de plans d'action, notamment avec l'ajout de fonctionnalités d'extraction de données depuis différents formats de fichiers et de consolidation des actions. Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment pour la gestion des référentiels et des actions, ainsi que des corrections de sécurité et des optimisations de performance.
 
 ### Évolutions fonctionnelles
-
-*   **Referentiels :** Ajout de la possibilité de demander un audit directement depuis l'interface. [#932819a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/932819a)
-*   **Referentiels :** Génération asynchrone d'archives ZIP des preuves d'audit (backend). [#73ca87f](https://github.com/incubateur-ademe/territoires-en-transitions/commit/73ca87f)
-*   **Referentiels :** Amélioration de l'affichage et de la gestion des filtres dans la liste des actions. [#a620288](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a620288)
-*   **Referentiels :** Correction de l'enregistrement des explications d'action lors de la navigation entre les fiches. [#b3c613c](https://github.com/incubateur-ademe/territoires-en-transitions/commit/b3c613c)
-*   **Site Public :** Ajout d'une nouvelle page "matrice d'impact". [#58db5f8](https://github.com/incubateur-ademe/territoires-en-transitions/commit/58db5f8)
-*   **Tableaux de données :**  Possibilité de rendre les tableaux de données éditables, avec des cellules enrichies et une gestion améliorée de la sélection multiple. [#887692e](https://github.com/incubateur-ademe/territoires-en-transitions/commit/887692e)
-*   **Formulaires :** Amélioration du composant `RichTextEditor` pour une meilleure gestion des sauts de ligne et une intégration plus fluide dans les tableaux. [#d121f84](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d121f84)
-*   **Authentification :** Correction de la consommation des invitations et amélioration du feedback d'erreur. [#3778c2a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/3778c2a)
+- Ajout de la fonctionnalité de duplication d'un plan d'action, incluant les preuves/documents et les budgets détaillés. [#1234](https://github.com/incubateur-ademe/territoires-en-transitions/issues/1234)
+- Amélioration de l'affichage des snapshots dans l'ordre chronologique.
+- Possibilité de filtrer les mesures désactivées par la personnalisation.
+- Ajout d'une modale pour détailler une action à la tâche.
+- Implémentation d'une vue tabulaire éditable pour les référentiels.
+- Ajout d'une page publique pour la matrice d'impact.
+- Ajout d'une fonctionnalité permettant de demander un audit depuis les référentiels.
+- Amélioration de la gestion des annexes des fiches.
+- Ajout d'une page "mesure désactivée".
+- Amélioration de l'import de plans avec l'extraction de texte depuis des fichiers PDF, CSV et Excel.
 
 ### Évolutions techniques
-
-*   **Architecture :** Migration de nombreuses fonctions vers tRPC pour améliorer la performance et la maintenabilité.
-*   **Refactoring :** Refactorisation importante du code, notamment pour la gestion des labels JSX, avec migration vers `appLabels` pour une meilleure cohérence et maintenabilité.
-*   **Refactoring :** Suppression de code non utilisé et simplification de la structure de certains composants.
-*   **Tests :** Mise à jour des tests, notamment migration vers Vitest pour certains composants et correction de tests dépréciés.
-*   **CI/CD :** Amélioration de la configuration CI/CD, notamment pour la restauration de la base de données de staging et la gestion des secrets.
-*   **Dépendances :** Mise à jour de certaines dépendances.
-*   **Sécurité :** Correction de vulnérabilités potentielles, notamment en bloquant l'injection SQL sur la recherche de collectivités et en restreignant l'accès horizontal aux données sensibles. [#0591a18](https://github.com/incubateur-ademe/territoires-en-transitions/commit/0591a18)
-*   **Backend :** Utilisation de points TRPC pour charger la liste des annexes d'une fiche et pour modifier ou supprimer des documents preuve.
+- Refactor de l'import de plans d'action avec une meilleure séparation des responsabilités et une gestion asynchrone des archives ZIP.
+- Utilisation de `mapWithConcurrency` pour la consolidation des actions à faible score.
+- Migration de plusieurs composants vers le design system DSTET.
+- Migration de certaines requêtes vers tRPC pour améliorer la performance et la cohérence.
+- Suppression de dépendances inutilisées et nettoyage du code.
+- Amélioration de la sécurité en bloquant l'injection SQL sur la recherche de collectivités et en restreignant l'accès horizontal aux données sensibles.
+- Mise à jour de plusieurs dépendances.
+- Amélioration de la configuration CI/CD.
+- Utilisation de serveurs de recherche full-text pour la recherche de collectivités.
+- Refactor de la gestion des labels JSX pour une meilleure maintenabilité.
+- Amélioration de la gestion des tests E2E et unitaires.
 
 ### Autres changements
-
-*   **Documentation :** Documentation de la création de `client_id` et `client_secret` via curl. [#f43bba5](https://github.com/incubateur-ademe/territoires-en-transitions/commit/f43bba5)
-*   **Design System :** Utilisation accrue des composants du Design System (DS) pour une meilleure cohérence visuelle.
-*   **Divers :** Amélioration de la gestion des erreurs et des messages d'information.
-*   **Divers :** Ajout de fixtures pour faciliter les tests.
-*   **Divers :** Correction de typos et amélioration de la lisibilité du code.
+- Documentation de la création de client ID/secret via curl.
+- Ajout de fixtures pour les tests.
+- Amélioration de la configuration Tailwind.
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout de metadata pour la nouvelle page plateforme du site.
+- Suppression de fichiers et de symboles exportés non utilisés.
+- Mise à jour de la configuration TypeScript.
+- Amélioration de la robustesse des tests d'envoi de mails.
+- Ajout de commentaires et de documentation pour clarifier le code.
