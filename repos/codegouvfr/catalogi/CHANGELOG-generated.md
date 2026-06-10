@@ -1,25 +1,27 @@
-## Changelog : catalogi (30 derniers jours, au 5 juin 2026)
+## Changelog : catalogi (30 derniers jours, au 9 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'administration des attributs personnalisés, avec l'ajout d'un rôle administrateur et d'une interface dédiée.  Des corrections et optimisations ont également été apportées aux tests d'intégration et à la gestion des sources de données, notamment pour l'importation automatique et la résolution d'identifiants de référentiels.
+Ce changelog présente les améliorations apportées à catalogi au cours du dernier mois. Les principales évolutions concernent l'intégration de sources de données externes (Wikidata, HAL), des améliorations de l'interface d'administration et des corrections de bugs pour stabiliser les tests et l'import automatique de logiciels.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page d'administration accessible avec un rôle dédié pour la gestion des attributs personnalisés. [#528](https://github.com/codegouvfr/catalogi/issues/528)
-- Restriction des attributs personnalisés à l'administration uniquement.
-- Amélioration de l'interface d'administration : contrainte de la largeur de la page et troncature des étiquettes d'attributs trop longues.
-- Possibilité de récupérer tous les identifiants via l'API HAL. [#515](https://github.com/codegouvfr/catalogi/issues/515)
-- Le nom du logiciel peut maintenant retomber sur les sources si nécessaire.
+- Ajout de la récupération et de la recherche d'organisations sur Wikidata.  [#505](https://github.com/codegouvfr/catalogi/issues/505)
+- Ajout de la récupération de tous les identifiants sur HAL. [#515](https://github.com/codegouvfr/catalogi/issues/515)
+- Amélioration de l'interface d'administration :
+    - Contrainte de la largeur de la page et troncature des labels d'attributs longs.
+    - Restriction des attributs personnalisés à un rôle administrateur.
+    - Ajout d'un rôle administrateur et d'une page `/admin` pour la gestion des attributs personnalisés.
+- Le nom du logiciel peut maintenant retomber sur les sources si non renseigné.
+- Amélioration de la sélection de la dernière version sur Wikidata.
 
 ### Évolutions techniques
-- Amélioration de la résolution d'identifiants de référentiels en utilisant la configuration source.
-- Refactorisation de l'entrée d'objet pour l'importation automatique. [#528](https://github.com/codegouvfr/catalogi/issues/528)
-- Stabilisation des assertions pour les logiciels similaires dans les tests.
-- Mise en cache des navigateurs Playwright dans le CI pour accélérer les tests.
-- Correction de l'installation des navigateurs Playwright dans le CI.
-- Correction de l'exécution des tests Playwright dans le CI.
-- Ajout d'un script `db up` pour la base de données racine.
-- Sélection de la dernière version Wikidata corrigée.
+- Refactorisation de l'entrée d'objet et renommage des variables pour l'import automatique. [#528](https://github.com/codegouvfr/catalogi/issues/528)
+- L'import automatique ne crée plus d'entrée utilisateur. [#528](https://github.com/codegouvfr/catalogi/issues/528)
+- Utilisation de la configuration source pour résoudre l'identifiant du dépôt.
+- Amélioration de la stabilité des tests Playwright, notamment en corrigeant l'installation et l'exécution en CI.
+- Mise en cache des navigateurs Playwright pour accélérer les tests CI.
+- Ajout d'un script `db up` pour initialiser la base de données.
 
 ### Autres changements
-- Clarification de la configuration du routage de l'API Helm dans la documentation.
-- Augmentation de la version du build.
+- Clarification de la documentation concernant le routage de l'API Helm.
+- Correction de l'ordre des tests. [#505](https://github.com/codegouvfr/catalogi/issues/505)
+- Plusieurs mises à jour de version (build bumps).
