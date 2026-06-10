@@ -94,6 +94,9 @@
 │   │   │   ├── CircleProgress
 │   │   │   │   ├── CircleProgress.stories.tsx
 │   │   │   │   └── CircleProgress.tsx
+│   │   │   ├── ColumnFilterHeader
+│   │   │   │   ├── ColumnFilterHeader.scss
+│   │   │   │   └── ColumnFilterHeader.tsx
 │   │   │   ├── CompanySearch
 │   │   │   │   ├── CompanySearch.scss
 │   │   │   │   ├── CompanySearch.stories.tsx
@@ -128,6 +131,19 @@
 │   │   │   │   ├── Header.stories.tsx
 │   │   │   │   ├── Header.tsx
 │   │   │   │   └── HeaderMenu.tsx
+│   │   │   ├── LaboratoryAgreement
+│   │   │   │   ├── LaboratoryAgreementButton
+│   │   │   │   │   ├── LaboratoryAgreementButton.scss
+│   │   │   │   │   └── LaboratoryAgreementButton.tsx
+│   │   │   │   ├── LaboratoryAgreementButtons
+│   │   │   │   │   ├── LaboratoryAgreementButtons.scss
+│   │   │   │   │   └── LaboratoryAgreementButtons.tsx
+│   │   │   │   ├── LaboratoryAgreementDetailModal
+│   │   │   │   │   ├── LaboratoryAgreementDetailContext.tsx
+│   │   │   │   │   └── LaboratoryAgreementDetailModal.tsx
+│   │   │   │   └── LaboratoryAgreementTag
+│   │   │   │       ├── LaboratoryAgreementTag.scss
+│   │   │   │       └── LaboratoryAgreementTag.tsx
 │   │   │   ├── LaboratorySelect
 │   │   │   │   └── LaboratorySelect.tsx
 │   │   │   ├── LocalPrescription
@@ -388,6 +404,18 @@
 │   │       │   ├── HomeView.scss
 │   │       │   ├── HomeView.tsx
 │   │       │   └── HomeViewContainer.stories.tsx
+│   │       ├── LaboratoryAgreementsView
+│   │       │   ├── LaboratoryAgreementsModal
+│   │       │   │   ├── LaboratoryAgreementsModal.scss
+│   │       │   │   ├── LaboratoryAgreementsModal.stories.tsx
+│   │       │   │   └── LaboratoryAgreementsModal.tsx
+│   │       │   ├── LaboratoryAgreementsTable
+│   │       │   │   └── LaboratoryAgreementsTable.tsx
+│   │       │   ├── LaboratoryAgreementsView.scss
+│   │       │   ├── LaboratoryAgreementsView.tsx
+│   │       │   └── YearSelector
+│   │       │       ├── YearSelector.scss
+│   │       │       └── YearSelector.tsx
 │   │       ├── LaboratoryAnalyticalCompetencesView
 │   │       │   ├── LaboratoryAnalyticalCompetenceForm.tsx
 │   │       │   ├── LaboratoryAnalyticalCompetences.scss
@@ -508,7 +536,8 @@
 │   │       │   │   ├── SampleItemCopiesOverview.tsx
 │   │       │   │   ├── SampleOverview.scss
 │   │       │   │   ├── SampleOverview.stories.tsx
-│   │       │   │   └── SampleOverview.tsx
+│   │       │   │   ├── SampleOverview.tsx
+│   │       │   │   └── SampleSeves.tsx
 │   │       │   ├── SampleView.scss
 │   │       │   ├── SampleView.tsx
 │   │       │   ├── SavedAlert.tsx
@@ -562,6 +591,7 @@
 │   │   ├── sampleController.integration.test.ts
 │   │   ├── sampleController.test.ts
 │   │   ├── sampleController.ts
+│   │   ├── sevesController.ts
 │   │   ├── specificDataFieldConfigController.ts
 │   │   └── userController.ts
 │   ├── data
@@ -682,7 +712,10 @@
 │   │   │   ├── 093-laboratory-sacha-config.ts
 │   │   │   ├── 094-analysis-rai.ts
 │   │   │   ├── 094-laboratory-agreements.ts
-│   │   │   └── 095-laboratory-sacha-gpg-email.ts
+│   │   │   ├── 095-laboratory-agreement-checks.ts
+│   │   │   ├── 095-laboratory-sacha-gpg-email.ts
+│   │   │   ├── 096-sample-seves.ts
+│   │   │   └── 097-users-created-at.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -699,6 +732,7 @@
 │   │       │   ├── 008-laboratory-agreements.ts
 │   │       │   ├── 009-documents.ts
 │   │       │   ├── 010-analysis.ts
+│   │       │   ├── 011-laboratory-agreement-checks.ts
 │   │       │   └── index.ts
 │   │       └── laboratories
 │   │           ├── laboratoriesSeed.ts
@@ -707,6 +741,8 @@
 │   │   └── routeNotFoundError.ts
 │   ├── index.ts
 │   ├── knexfile.ts
+│   ├── loaders
+│   │   └── register.mjs
 │   ├── middlewares
 │   │   ├── checks
 │   │   │   ├── authCheck.ts
@@ -741,6 +777,8 @@
 │   │   ├── documentRepository.ts
 │   │   ├── kysely.ts
 │   │   ├── kysely.type.ts
+│   │   ├── laboratoryAgreementCheckRepository.ts
+│   │   ├── laboratoryAgreementRepository.ts
 │   │   ├── laboratoryAnalyticalCompetenceRepository.ts
 │   │   ├── laboratoryRepository.test.ts
 │   │   ├── laboratoryRepository.ts
@@ -779,6 +817,7 @@
 │   │   ├── m2mProtected.ts
 │   │   ├── protected.ts
 │   │   ├── routes.type.ts
+│   │   ├── sevesProtected.ts
 │   │   ├── test
 │   │   │   ├── analysis.router.test.ts
 │   │   │   ├── analysisDai.router.test.ts
@@ -797,6 +836,7 @@
 │   │   │   ├── programmingPlan.router.test.ts
 │   │   │   ├── sachaCommemoratifs.router.test.ts
 │   │   │   ├── sample.router.test.ts
+│   │   │   ├── seves.router.test.ts
 │   │   │   ├── specificDataFieldConfig.router.test.ts
 │   │   │   ├── specificDataFields.router.test.ts
 │   │   │   └── user.router.test.ts
@@ -895,6 +935,8 @@
 │   │   │   ├── logo.svg
 │   │   │   ├── programmation.svg
 │   │   │   └── template.css
+│   │   ├── laboratoryAgreementsExport
+│   │   │   └── laboratoryAgreementsExport.xls
 │   │   ├── laboratoryAnalyticCompetencesExport
 │   │   │   └── laboratoryAnalyticCompetencesExport.xls
 │   │   ├── partials
@@ -928,6 +970,7 @@
 │   │   │   ├── 006-specific-data-fields.ts
 │   │   │   ├── 007-samples.ts
 │   │   │   ├── 008-laboratory-agreements.ts
+│   │   │   ├── 009-laboratory-agreement-checks.ts
 │   │   │   └── index.ts
 │   │   ├── setupTests.ts
 │   │   └── testUtils.ts
@@ -1045,8 +1088,10 @@
 │   │   ├── Geolocation
 │   │   │   └── Geolocation.ts
 │   │   ├── Laboratory
+│   │   │   ├── FindLaboratoryAgreementsOptions.ts
 │   │   │   ├── FindLaboratoryOptions.ts
 │   │   │   ├── Laboratory.ts
+│   │   │   ├── LaboratoryAgreement.ts
 │   │   │   ├── LaboratoryAnalyticalCompetence.ts
 │   │   │   ├── LaboratoryAnalyticalMethod.ts
 │   │   │   ├── LaboratoryResidueMapping.ts
@@ -1090,7 +1135,8 @@
 │   │   │   ├── SampleItemRecipientKind.ts
 │   │   │   ├── SampleSpecificDataAttribute.ts
 │   │   │   ├── SampleStatus.ts
-│   │   │   └── SampleStep.ts
+│   │   │   ├── SampleStep.ts
+│   │   │   └── Seves.ts
 │   │   ├── SpecificData
 │   │   │   ├── FieldConfigInput.ts
 │   │   │   ├── PlanKindFieldConfig.ts
@@ -1113,6 +1159,7 @@
 │   │   ├── authFixtures.ts
 │   │   ├── companyFixtures.ts
 │   │   ├── documentFixtures.ts
+│   │   ├── laboratoryAgreementFixtures.ts
 │   │   ├── laboratoryFixtures.ts
 │   │   ├── notificationFixtures.ts
 │   │   ├── prescriptionFixtures.ts
@@ -1144,4 +1191,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-217 directories, 929 files
+229 directories, 964 files
