@@ -174,6 +174,7 @@
 │   ├── 20260507132939_ajouteSiretHashDonneesDansSuperviseurs.js
 │   ├── 20260507133356_migreDonneesEtSiretSuperviseurs.js
 │   ├── 20260507135337_ajouteContraintesSuperviseurs.js
+│   ├── 20260608151615_creationTableAuditAdminsOrganisations.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -579,10 +580,14 @@
 │   ├── taches
 │   │   ├── tacheEnvoieMailsNotificationExpiration.js
 │   │   └── tacheEnvoieMailsNotificationExpiration.sh
-│   └── tests.sh
+│   ├── tests.sh
+│   └── ui-kit
+│       └── maj.sh
 ├── server.ts
 ├── src
 │   ├── adaptateurs
+│   │   ├── adaptateurAuditAdminOrganisations.interface.ts
+│   │   ├── adaptateurAuditAdminOrganisationsPostgres.ts
 │   │   ├── adaptateurChiffrement.interface.ts
 │   │   ├── adaptateurChiffrement.ts
 │   │   ├── adaptateurChiffrementChaCha20.ts
@@ -628,6 +633,7 @@
 │   │   ├── adaptateurZip.js
 │   │   ├── excel
 │   │   │   └── LecteurExcel.ts
+│   │   ├── fabriqueAdaptateurAuditAdminOrganisations.ts
 │   │   ├── fabriqueAdaptateurChiffrement.js
 │   │   ├── fabriqueAdaptateurGestionErreur.js
 │   │   ├── fabriqueAdaptateurJournalMSS.js
@@ -642,9 +648,12 @@
 │   ├── annuaire
 │   │   ├── serviceAnnuaire.interface.ts
 │   │   └── serviceAnnuaire.js
+│   ├── bdd
+│   │   └── knex.ts
 │   ├── bus
 │   │   ├── abonnements
 │   │   │   ├── consigneAcceptationCguDansJournal.js
+│   │   │   ├── consigneAccesUtilisateurAdministreRetiresDansJournal.ts
 │   │   │   ├── consigneActiviteMesure.js
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.js
 │   │   │   ├── consigneCompletudeDansJournal.js
@@ -658,6 +667,7 @@
 │   │   │   ├── consigneProprietaireCreeUnServiceDansJournal.js
 │   │   │   ├── consigneRattachementDeServiceAPrestataireDansJournal.js
 │   │   │   ├── consigneRisquesDansJournal.js
+│   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.js
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.ts
@@ -683,9 +693,13 @@
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeSuggestionsActions.js
-│   │   │   └── supprimeSuggestionsSurDesChampsObligatoires.js
+│   │   │   ├── supprimeSuggestionsSurDesChampsObligatoires.js
+│   │   │   └── traceEvenementsAuditAdministrationOrganisations.ts
 │   │   ├── busEvenements.js
 │   │   ├── cablage.js
+│   │   ├── evenementAccesUtilisateurAdministreRetires.ts
+│   │   ├── evenementAdminNommeSurOrganisation.ts
+│   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   ├── evenementAutorisationsServiceModifiees.js
 │   │   ├── evenementCguAccepteesParUtilisateur.js
 │   │   ├── evenementDescriptionServiceModifiee.js
@@ -699,6 +713,7 @@
 │   │   ├── evenementNouveauServiceCree.ts
 │   │   ├── evenementNouvelleConnexionUtilisateur.ts
 │   │   ├── evenementRisqueServiceModifie.js
+│   │   ├── evenementRoleUtilisateurAdministreAttribue.ts
 │   │   ├── evenementServiceRattacheAPrestataire.js
 │   │   ├── evenementServiceSupprime.js
 │   │   ├── evenementServiceV1MigreEnV2.js
@@ -769,7 +784,9 @@
 │   │   │   ├── ajoutContributeurSurServices.js
 │   │   │   ├── autorisation.ts
 │   │   │   ├── fabriqueAutorisation.ts
-│   │   │   └── gestionDroits.ts
+│   │   │   ├── gestionDroits.ts
+│   │   │   ├── procedureSuppressionContributeur.ts
+│   │   │   └── procedureSuppressionContributeurAdmin.ts
 │   │   ├── avis.ts
 │   │   ├── base.ts
 │   │   ├── brouillonService.ts
@@ -799,6 +816,7 @@
 │   │   ├── fonctionnalitesSpecifiques.js
 │   │   ├── gestionOrganisations
 │   │   │   ├── adminOrganisations.ts
+│   │   │   ├── traceAudit.ts
 │   │   │   └── utilisateurAdministre.ts
 │   │   ├── identite.ts
 │   │   ├── indiceCyber.js
@@ -811,6 +829,7 @@
 │   │   ├── journalMSS
 │   │   │   ├── erreurs.js
 │   │   │   ├── evenement.js
+│   │   │   ├── evenementAccesUtilisateurAdministreRetires.ts
 │   │   │   ├── evenementCguAcceptees.js
 │   │   │   ├── evenementCollaboratifServiceModifie.js
 │   │   │   ├── evenementCompletudeServiceModifiee.commun.ts
@@ -826,6 +845,7 @@
 │   │   │   ├── evenementProfilUtilisateurModifie.js
 │   │   │   ├── evenementRetourUtilisateurMesure.js
 │   │   │   ├── evenementRisquesServiceModifies.js
+│   │   │   ├── evenementRoleUtilisateurAdministreAttribue.ts
 │   │   │   ├── evenementServiceMigreEnV2.js
 │   │   │   ├── evenementServiceRattacheAPrestataire.js
 │   │   │   ├── evenementServiceSupprime.js
@@ -1177,9 +1197,22 @@
 │   │   │   └── adminEntites.types.ts
 │   │   ├── adminUtilisateurs
 │   │   │   ├── AdminUtilisateurs.svelte
+│   │   │   ├── BadgeAdmin.svelte
+│   │   │   ├── TiroirGestionUtilisateurAdministre
+│   │   │   │   ├── ActionAttributionRole.svelte
+│   │   │   │   ├── ActionRetraitAcces.svelte
+│   │   │   │   ├── AlerteSeulProprietaire.svelte
+│   │   │   │   ├── IndicateurSeulProprietaire.svelte
+│   │   │   │   ├── TableauEntitesSelectionnables.svelte
+│   │   │   │   ├── TiroirGestionUtilisateurAdministre.svelte
+│   │   │   │   └── TitreContenuOnglet.svelte
+│   │   │   ├── TiroirNommerAdmin
+│   │   │   │   ├── TiroirNommerAdmin.svelte
+│   │   │   │   └── tiroirNommerAdmin.ts
 │   │   │   ├── Tuiles.svelte
 │   │   │   ├── adminUtilisateurs.api.ts
-│   │   │   └── adminUtilisateurs.ts
+│   │   │   ├── adminUtilisateurs.ts
+│   │   │   └── adminUtilisateurs.types.ts
 │   │   ├── bandeauReferentielV2
 │   │   │   ├── BandeauReferentielV2.svelte
 │   │   │   ├── bandeauReferentielV2.d.ts
@@ -1735,6 +1768,9 @@
 │   │   │   └── visiteGuideeCreationService.ts
 │   │   └── vite-env.d.ts
 │   ├── test
+│   │   ├── adminUtilisateurs
+│   │   │   └── TiroirNommerAdmin
+│   │   │       └── tiroirNommerAdmin.spec.ts
 │   │   ├── listeMesures
 │   │   │   └── mesuresAvecServicesAssocies.store.spec.ts
 │   │   ├── pagesService
@@ -1764,6 +1800,7 @@
 │   └── fil_rouge_decrire_v2.md
 ├── test
 │   ├── adaptateurs
+│   │   ├── adaptateurAuditAdminOrganisationsPostgres.spec.ts
 │   │   ├── adaptateurChiffrement.spec.ts
 │   │   ├── adaptateurChiffrementChaCha20.spec.ts
 │   │   ├── adaptateurEnvironnement.spec.js
@@ -1784,6 +1821,7 @@
 │   ├── bus
 │   │   ├── abonnements
 │   │   │   ├── consigneAcceptationCguDansJournal.spec.js
+│   │   │   ├── consigneAccesUtilisateurAdministreRetiresDansJournal.spec.ts
 │   │   │   ├── consigneActiviteMesure.spec.js
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.spec.js
 │   │   │   ├── consigneCompletudeDansJournal.spec.js
@@ -1797,6 +1835,7 @@
 │   │   │   ├── consigneProprietaireCreeUnServiceDansJournal.spec.js
 │   │   │   ├── consigneRattachementDeServiceAPrestataireDansJournal.spec.js
 │   │   │   ├── consigneRisqueDansJournal.spec.js
+│   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.spec.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.spec.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.spec.js
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.spec.ts
@@ -1822,7 +1861,8 @@
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeSuggestionsActions.spec.js
-│   │   │   └── supprimeSuggestionsSurDesChampsObligatoires.spec.js
+│   │   │   ├── supprimeSuggestionsSurDesChampsObligatoires.spec.js
+│   │   │   └── traceEvenementsAuditAdministrationOrganisations.spec.ts
 │   │   ├── aides
 │   │   │   └── busPourLesTests.js
 │   │   ├── busEvenements.spec.js
@@ -1900,7 +1940,9 @@
 │   │   ├── autorisations
 │   │   │   ├── ajoutContributeurSurServices.spec.js
 │   │   │   ├── autorisation.spec.ts
-│   │   │   └── gestionDroits.spec.ts
+│   │   │   ├── gestionDroits.spec.ts
+│   │   │   ├── procedureSuppressionContributeur.spec.ts
+│   │   │   └── procedureSuppressionContributeurAdmin.spec.ts
 │   │   ├── avis.spec.ts
 │   │   ├── base.spec.ts
 │   │   ├── brouillonService.spec.ts
@@ -1934,6 +1976,7 @@
 │   │   ├── itemsAvecDescriptions.spec.js
 │   │   ├── journalMSS
 │   │   │   ├── constructeurEvenementCompletudeServiceModifiee.js
+│   │   │   ├── evenementAccesUtilisateurAdministreRetires.spec.ts
 │   │   │   ├── evenementCguAcceptees.spec.js
 │   │   │   ├── evenementCollaboratifServiceModifie.spec.js
 │   │   │   ├── evenementCompletudeServiceModifiee.spec.ts
@@ -1946,6 +1989,7 @@
 │   │   │   ├── evenementProfilUtilisateurModifie.spec.js
 │   │   │   ├── evenementRetourUtilisateurMesure.spec.js
 │   │   │   ├── evenementRisquesServiceModifies.spec.js
+│   │   │   ├── evenementRoleUtilisateurAdministreAttribue.spec.ts
 │   │   │   ├── evenementServiceRattacheAPrestataire.spec.js
 │   │   │   ├── evenementServiceSupprime.spec.js
 │   │   │   ├── evenementServicesImportes.spec.ts
@@ -2125,4 +2169,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-286 directories, 1965 files
+292 directories, 2003 files
