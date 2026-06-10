@@ -244,11 +244,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1780006352188-auto-migration.ts
-│   │   │   │   ├── 1780321080015-backfill-login-unknown-user.ts
-│   │   │   │   ├── 1780394854888-auto-migration.ts
-│   │   │   │   ├── 1780500000000-unblock-all-brevo-blocklist.ts
-│   │   │   │   ├── 1780500000003-backfill-user-structure-email-status.ts
+│   │   │   │   ├── 1780932874467-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -723,9 +719,11 @@
 │   │   │   │   │   │   ├── structure-decision
 │   │   │   │   │   │   │   ├── structure-decision.service.spec.ts
 │   │   │   │   │   │   │   └── structure-decision.service.ts
-│   │   │   │   │   │   └── structure-decision-email
-│   │   │   │   │   │       ├── structure-decision-email.service.spec.ts
-│   │   │   │   │   │       └── structure-decision-email.service.ts
+│   │   │   │   │   │   ├── structure-decision-email
+│   │   │   │   │   │   │   ├── structure-decision-email.service.spec.ts
+│   │   │   │   │   │   │   └── structure-decision-email.service.ts
+│   │   │   │   │   │   └── user-supervisor-decision
+│   │   │   │   │   │       └── user-supervisor-decision.service.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── UserStructureWithSecurity.type.ts
 │   │   │   │   │       └── index.ts
@@ -870,6 +868,7 @@
 │   │   │   │       │   ├── users.public.controller.spec.ts
 │   │   │   │       │   └── users.public.controller.ts
 │   │   │   │       ├── dto
+│   │   │   │       │   ├── delete-user.dto.ts
 │   │   │   │       │   ├── edit-my-password.dto.ts
 │   │   │   │       │   ├── email.dto.ts
 │   │   │   │       │   ├── index.ts
@@ -890,6 +889,8 @@
 │   │   │   │       │   ├── tests
 │   │   │   │       │   │   └── user-structure-creator.service.spec.ts
 │   │   │   │       │   ├── user-structure-creator.service.ts
+│   │   │   │       │   ├── user-structure-decision
+│   │   │   │       │   │   └── user-structure-decision.service.ts
 │   │   │   │       │   ├── userPasswordWriter.service.ts
 │   │   │   │       │   ├── userSecurityEventHistoryManager.service.ts
 │   │   │   │       │   ├── userSecurityPasswordChecker.service.ts
@@ -1103,6 +1104,9 @@
 │   │   │       │   ├── file-manager.service.spec.ts
 │   │   │       │   ├── file-manager.service.ts
 │   │   │       │   └── index.ts
+│   │   │       ├── filters
+│   │   │       │   ├── http-exception.filter.ts
+│   │   │       │   └── index.ts
 │   │   │       ├── functions
 │   │   │       │   ├── anonymizeFullName.spec.ts
 │   │   │       │   ├── anonymizeFullName.ts
@@ -1158,6 +1162,7 @@
 │   │   │   ├── _core
 │   │   │   │   ├── functions
 │   │   │   │   │   ├── create-date.ts
+│   │   │   │   │   ├── getEntityDecisionMotifLabel.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── init-loading.ts
 │   │   │   │   │   └── validateMatomoParams.ts
@@ -1166,6 +1171,7 @@
 │   │   │   │   │   ├── ApiMessage.interface.ts
 │   │   │   │   │   ├── AppEntity.interface.ts
 │   │   │   │   │   ├── CommonDoc.interface.ts
+│   │   │   │   │   ├── EntityDecision.interface.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── types
 │   │   │   │       ├── WithLoading.type.ts
@@ -1499,6 +1505,7 @@
 │   │   │       │   │   ├── common-user.interface.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   └── types
+│   │   │       │       ├── UserDeleteMotif.type.ts
 │   │   │       │       ├── UserStatus.type.ts
 │   │   │       │       └── index.ts
 │   │   │       ├── index.ts
@@ -1519,6 +1526,7 @@
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── UserFonctionMapping.interface.ts
 │   │   │       │   │   ├── UserStructure.interface.ts
+│   │   │       │   │   ├── UserStructureDecision.interface.ts
 │   │   │       │   │   ├── UserStructureMails.interface.ts
 │   │   │       │   │   ├── UserStructureResume.interface.ts
 │   │   │       │   │   ├── UsersForAdminList.interface.ts
@@ -1538,6 +1546,7 @@
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── UserSupervisor.interface.ts
+│   │   │       │   │   ├── UserSupervisorDecision.interface.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   └── types
 │   │   │       │       ├── PortailAdminAuthApiResponse.type.ts
@@ -3073,6 +3082,7 @@
 │   │   │   │   │       │   │   └── suspicious-activity-filters.component.ts
 │   │   │   │   │       │   └── suspicious-activity-list
 │   │   │   │   │       │       ├── suspicious-activity-list.component.html
+│   │   │   │   │       │       ├── suspicious-activity-list.component.scss
 │   │   │   │   │       │       └── suspicious-activity-list.component.ts
 │   │   │   │   │       ├── constants
 │   │   │   │   │       │   └── SUSPICIOUS_ACTIONS.const.ts
@@ -3427,4 +3437,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-800 directories, 2629 files
+803 directories, 2636 files
