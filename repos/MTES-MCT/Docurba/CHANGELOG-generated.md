@@ -1,41 +1,33 @@
-## Changelog : Docurba (30 derniers jours, au 5 juin 2026)
+## Changelog : Docurba (30 derniers jours, au 8 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Docurba se concentrent sur l'amélioration de l'interface utilisateur, notamment dans la gestion des procédures et des événements, ainsi que sur des optimisations techniques importantes pour la performance et la sécurité de la plateforme. L'ajout d'une API interne et l'amélioration de l'authentification sont également des points clés.
+Ce mois-ci, Docurba a connu des améliorations significatives en termes de performance, de sécurité et de fonctionnalités. L'authentification Supabase a été intégrée, l'infrastructure a été renforcée avec l'ajout de Nginx pour la gestion du trafic et la sécurité, et l'interface utilisateur a été améliorée avec des corrections et des nouvelles fonctionnalités, notamment concernant la gestion des procédures et des événements. Des efforts importants ont également été déployés pour la préparation des données en vue de la conformité à la loi Huwart.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la gestion des événements liés aux procédures, incluant la distinction des types d'événements et la gestion des dates de fin d'échéance liées à la loi Huwart.
-- Possibilité de mettre à jour les procédures directement depuis la page d'administration des événements.
-- Ajout d'informations sur les procédures antérieures à la loi Huwart dans l'interface utilisateur.
-- Amélioration de la page de lecture des PAC (Plans d'Actions Climat) et suppression des restrictions d'accès.
-- Ajout d'un indicateur visuel pour les procédures antérieures à la loi Huwart.
-- Possibilité de filtrer les types de procédures en fonction de leur date de début.
-- L'API interne permet désormais de récupérer les collectivités et communes.
-- Ajout de la possibilité de filtrer les collectivités par département, région et type.
-- Pagination des résultats de l'API interne pour une meilleure performance.
-- Amélioration de la gestion des erreurs et des messages d'information dans l'interface utilisateur.
-- Ajout du nom d'utilisateur et de l'adresse e-mail de l'utilisateur actuel comme auteur de commit lors de la mise à jour des PAC.
-- Ajout d'une alerte Slack lors du lancement d'un déploiement.
+- **Authentification:** Intégration de l'authentification via Supabase, offrant une nouvelle méthode de connexion pour les utilisateurs. [#9b990ef](https://github.com/MTES-MCT/Docurba/commit/9b990ef)
+- **Interface utilisateur (Nuxt):**
+    - Amélioration de l'affichage des procédures et des événements, avec notamment l'ajout d'informations sur la date de la loi Huwart. [#802c499](https://github.com/MTES-MCT/Docurba/commit/802c499), [#6462351](https://github.com/MTES-MCT/Docurba/commit/6462351)
+    - Correction de bugs liés à la sélection des procédures et à la création de PLU. [#b82b53a](https://github.com/MTES-MCT/Docurba/commit/b82b53a), [#9553d70](https://github.com/MTES-MCT/Docurba/commit/9553d70)
+    - La page de lecture des PAC est désormais publique. [#b53a072](https://github.com/MTES-MCT/Docurba/commit/b53a072)
+- **Gestion des procédures:**
+    - Possibilité de mettre à jour les événements directement depuis la page de la procédure dans l'interface d'administration Django. [#f77b6bd](https://github.com/MTES-MCT/Docurba/commit/f77b6bd)
+    - Amélioration de la gestion des types de collectivités et des procédures. [#399bc60](https://github.com/MTES-MCT/Docurba/commit/399bc60)
+- **API Interne:** Création d'une API interne pour les collectivités et les communes. [#0af9778](https://github.com/MTES-MCT/Docurba/commit/0af9778)
 
 ### Évolutions techniques
-- Refonte de l'architecture de déploiement avec l'utilisation de Nginx pour servir les fichiers statiques et la mise en place d'une limitation du débit (rate limiting).
-- Suppression de dépendances inutiles (whitenoise, django-revproxy).
-- Mise en place d'une authentification via Supabase, incluant l'ajout du header d'autorisation Supabase et la gestion des sessions.
-- Amélioration des performances des requêtes Django, notamment en ajoutant des index et en optimisant les filtres.
-- Utilisation de `curl` au lieu de `wget` pour les requêtes HTTP.
-- Migration de l'application `internal_api` dans le répertoire `docurba`.
-- Mise à jour de plusieurs dépendances : Django, djangorestframework, cryptography, urllib3, ruff, django-filter.
-- Ajout de tests Pytest.
-- Amélioration de la gestion des migrations Django.
-- Utilisation explicite de la variable d'environnement `DOCURBA_API_URL` dans Nuxt.
+- **Infrastructure:**
+    - Ajout de Nginx pour servir les fichiers statiques et gérer le reverse proxy, améliorant ainsi les performances et la sécurité. [#dcb5c6e](https://github.com/MTES-MCT/Docurba/commit/dcb5c6e), [#44144b9](https://github.com/MTES-MCT/Docurba/commit/44144b9), [#74ec84d](https://github.com/MTES-MCT/Docurba/commit/74ec84d)
+    - Mise en place de la limitation de débit avec Nginx. [#9e8e1a9](https://github.com/MTES-MCT/Docurba/commit/9e8e1a9)
+    - Remplacement de `wget` par `curl` pour plus de robustesse. [#f040adc](https://github.com/MTES-MCT/Docurba/commit/f040adc)
+- **Backend (Django):**
+    - Amélioration des performances des requêtes et des modèles Django. [#4388d43](https://github.com/MTES-MCT/Docurba/commit/4388d43), [#60194b2](https://github.com/MTES-MCT/Docurba/commit/60194b2)
+    - Ajout de champs manquants et correction de types de données dans les modèles. [#55f3a41](https://github.com/MTES-MCT/Docurba/commit/55f3a41), [#6018fcc](https://github.com/MTES-MCT/Docurba/commit/6018fcc)
+    - Mise à jour des dépendances Django et djangorestframework. [#696384d](https://github.com/MTES-MCT/Docurba/commit/696384d), [#b4144b9](https://github.com/MTES-MCT/Docurba/commit/b4144b9)
+- **CI/CD:** Ajout d'une alerte Slack lors des déploiements. [#6209a5c](https://github.com/MTES-MCT/Docurba/commit/6209a5c)
 
 ### Autres changements
-- Documentation mise à jour.
-- Nettoyage du code et suppression de code commenté.
-- Amélioration de la configuration et des variables d'environnement.
-- Correction de conflits de migration Django.
-- Ajout de champs manquants dans les modèles Django (Event, Procedure).
-- Modification des types de champs dans les modèles Django pour une meilleure cohérence.
-- Standardisation des noms de champs et des conventions de nommage.
-- Ajout de verbose names pour les champs des modèles Django.
-- Correction de bugs et amélioration de la stabilité de la plateforme.
+- **Données:** Préparation des données pour la conformité à la loi Huwart, incluant la mise à jour des types de documents et la suppression des événements obsolètes. [#32cde71](https://github.com/MTES-MCT/Docurba/commit/32cde71), [#28ef793](https://github.com/MTES-MCT/Docurba/commit/28ef793), [#0d6cf9a](https://github.com/MTES-MCT/Docurba/commit/0d6cf9a)
+- **Documentation:** Amélioration de la documentation interne.
+- **Configuration:** Mise à jour de la configuration pour utiliser les variables d'environnement pour l'URL de l'API. [#bcaf256](https://github.com/MTES-MCT/Docurba/commit/bcaf256), [#59b1540](https://github.com/MTES-MCT/Docurba/commit/59b1540)
+- **Tests:** Ajout et amélioration des tests unitaires.
+- **Nettoyage de code:** Suppression de code commenté et amélioration de la lisibilité du code.
