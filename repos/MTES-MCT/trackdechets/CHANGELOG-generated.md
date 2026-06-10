@@ -1,35 +1,27 @@
-## Changelog : trackdechets (30 derniers jours, au 19 mai 2026)
+## Changelog : trackdechets (30 derniers jours, au 03 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des déchets, notamment via la fonctionnalité BSDD (Bon de Suivi des Déchets) et BSFF (Bordereau de Suivi des Flux de Déchets). Des corrections et des améliorations ont été apportées pour répondre aux retours de recette et améliorer l'expérience utilisateur, en particulier concernant les formulaires et les workflows de validation. La sécurité a également été renforcée avec l'implémentation de l'authentification à double facteur.
+Ce mois-ci, les évolutions de trackdechets se sont concentrées sur la correction de bugs et l'amélioration de l'expérience utilisateur, notamment sur les formulaires BSFF et les fonctionnalités liées aux établissements détenteurs. Des travaux ont également été réalisés sur l'intégration de l'aperçu DSFR et la gestion des signatures.
 
 ### Évolutions fonctionnelles
-- **BSDD :**
-  - Possibilité de modifier les intermédiaires jusqu'à la signature de la réception par la destination [#4741](https://github.com/MTES-MCT/trackdechets/issues/4741).
-  - Ajout de la possibilité d'ajouter deux intermédiaires supplémentaires [#4738](https://github.com/MTES-MCT/trackdechets/issues/4738).
-- **BSFF :**
-  - Implémentation de la fonctionnalité BSFF au DSFR (Dépôt Simplifié des Formalités des Déchets) avec l'ajout des champs émetteur, transporteur et détenteur [#4735](https://github.com/MTES-MCT/trackdechets/issues/4735).
-  - Correction de l'impossibilité de viser un établissement détenteur sur le formulaire BSFF [#4770](https://github.com/MTES-MCT/trackdechets/issues/4770).
-  - Correction de l'impossibilité de renseigner ou modifier les informations de contact de l'installation TTR du regroupement BSFF [#4767](https://github.com/MTES-MCT/trackdechets/issues/4767).
-  - Correction des retours de la démo BSFF [#4750](https://github.com/MTES-MCT/trackdechets/issues/4750).
-- **Authentification :**
-  - Implémentation de l'authentification à double facteur (2FA) [#4736](https://github.com/MTES-MCT/trackdechets/issues/4736) et [#4739](https://github.com/MTES-MCT/trackdechets/issues/4739).
-  - Possibilité de désactiver la double authentification [#4740](https://github.com/MTES-MCT/trackdechets/issues/4740).
-- **Registre :**
-  - Permettre à un établissement ayant le profil "Installation de valorisation de terres et sédiments" d’accéder à l’export du registre réglementaire entrant et sortant [#4748](https://github.com/MTES-MCT/trackdechets/issues/4748).
-- **Divers :**
-  - Ajout d'un chatbot IA (en préparation de recette) [#4743](https://github.com/MTES-MCT/trackdechets/issues/4743).
-  - Modification du script de la base de données [#4744](https://github.com/MTES-MCT/trackdechets/issues/4744) et [#4737](https://github.com/MTES-MCT/trackdechets/issues/4737).
+- Correction de l'impossibilité de saisir des caractères spéciaux dans le numéro de contenant. [#4786](https://github.com/MTES-MCT/trackdechets/issues/4786)
+- Correction de l'affichage de l'onglet BSFF associé et du tableau des conteneurs. [#4788](https://github.com/MTES-MCT/trackdechets/issues/4788) et [#4784](https://github.com/MTES-MCT/trackdechets/issues/4784)
+- Correction du retour recette aperçu. [#4785](https://github.com/MTES-MCT/trackdechets/issues/4785)
+- Correction des labels Réelle & Estimée pour PAOH & VHU.
+- Ajout d'un onglet détenteur et des champs manquants. [#4770](https://github.com/MTES-MCT/trackdechets/issues/4770)
+- Possibilité de modifier le conditionnement sur le BSFF de reconditionnement, regroupement et réexpédition. [#4775](https://github.com/MTES-MCT/trackdechets/issues/4775)
+- Correction de l'impossibilité de viser un établissement détenteur sur le formulaire BSFF. [#4770](https://github.com/MTES-MCT/trackdechets/issues/4770) et [#4767](https://github.com/MTES-MCT/trackdechets/issues/4767)
+- Correction de l'impossibilité de renseigner ou modifier les informations de contact de l'installation TTR du regroupement sur le BSFF. [#4769](https://github.com/MTES-MCT/trackdechets/issues/4769)
+- Initialisation des écrans de signature et de gestion des contenants.
+- Intégration de l'aperçu DSFR.
 
 ### Évolutions techniques
-- Correction de bugs liés au packagin et au reconditionnement [#4762](https://github.com/MTES-MCT/trackdechets/issues/4762).
-- Correction de problèmes d'affichage avec Crisp (outil de support client) [#4745](https://github.com/MTES-MCT/trackdechets/issues/4745).
-- Amélioration des conditions de verrouillage des champs dans les formulaires [#4751](https://github.com/MTES-MCT/trackdechets/issues/4751).
-- Ajout de documentation pour la validation Zod [#4776](https://github.com/MTES-MCT/trackdechets/issues/4776).
-- Suppression de code obsolète et nettoyage de l'interface utilisateur pour la recette MEP [#4761](https://github.com/MTES-MCT/trackdechets/issues/4761).
+- Refactorisation du composant SecondFactor pour une meilleure clarté.
+- Mise à jour de l'URL de l'API.
+- Ajout de documentation pour la validation Zod pour bsdasri. [#4776](https://github.com/MTES-MCT/trackdechets/issues/4776)
 
 ### Autres changements
-- Mise à jour de la description du footer.
-- Correction de l'espacement entre les colonnes.
-- Corrections de typographie.
-- Diverses corrections et améliorations de l'interface utilisateur.
+- Préparation du bandeau et du changelog pour la version MEP 2026-06. [#4789](https://github.com/MTES-MCT/trackdechets/issues/4789)
+- Corrections et réversions liées à la gestion de l'authentification multi-facteurs (MFA).
+- Intégration des branches `TRA-18138`, `TRA-18029-TRA-18109-TRA-18110` et `TRA-18313`.
+- Corrections diverses sur le formulaire BSFF pour améliorer son fonctionnement et sa convivialité.
