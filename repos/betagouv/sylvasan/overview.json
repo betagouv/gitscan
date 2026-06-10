@@ -1,29 +1,31 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. Le projet vise à améliorer la gestion des données relatives à la santé des forêts et à fournir des outils pour les professionnels et les acteurs de l'environnement.",
+  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de collecter des données sur l'état de santé des arbres et de les visualiser sur une carte.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Gestion des équipes & Partenaires"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "React",
     "Vue.js",
-    "Python",
     "npm",
-    "ruff"
+    "Python",
+    "django-environ",
+    "django-filter",
+    "djangorestframework",
+    "djangorestframework-simplejwt",
+    "requests",
+    "boto3"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,11 +33,13 @@
     "React / Next.js",
     "Python (scripts & backend)",
     "Frontend React",
-    "TypeScript / JavaScript"
+    "Django",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "email-password"
     ],
     "providers": [
       "DSF"
@@ -43,9 +47,10 @@
   },
   "tests": "Pytest",
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD & Déploiement",
+    "github/codeql-action"
   ],
-  "lastActivity": "2026-06-06T08:25:53+02:00",
+  "lastActivity": "2026-06-09T21:43:03+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
