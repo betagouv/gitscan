@@ -130,7 +130,8 @@
     │   │   │           ├── auth.py
     │   │   │           ├── dynamic.py
     │   │   │           ├── manage.py
-    │   │   │           └── static.py
+    │   │   │           ├── static.py
+    │   │   │           └── tariff.py
     │   │   ├── auth
     │   │   │   ├── __init__.py
     │   │   │   ├── factories.py
@@ -145,7 +146,8 @@
     │   │   ├── factories
     │   │   │   ├── __init__.py
     │   │   │   ├── dynamic.py
-    │   │   │   └── static.py
+    │   │   │   ├── static.py
+    │   │   │   └── tariff.py
     │   │   ├── fixtures
     │   │   │   ├── __init__.py
     │   │   │   └── operational_units.py
@@ -189,6 +191,7 @@
     │   │   │       ├── b8a68ed35a6f_move_to_active_station_and_pdc_views.py
     │   │   │       ├── bac4e97547ad_ou_data_update.py
     │   │   │       ├── c09664a85912_handle_stations_fk.py
+    │   │   │       ├── c587b03fe0b4_add_tariff_schema.py
     │   │   │       ├── cefaa3fcc0d4_ou_data_update.py
     │   │   │       ├── d198170d222f_localisation_code_insee_commune_is_.py
     │   │   │       ├── d1e96368f232_id_pdc_itinerance_should_be_unique.py
@@ -205,13 +208,16 @@
     │   │   ├── models
     │   │   │   ├── __init__.py
     │   │   │   ├── dynamic.py
+    │   │   │   ├── fields.py
     │   │   │   ├── static.py
+    │   │   │   ├── tariff.py
     │   │   │   └── utils.py
     │   │   └── schemas
     │   │       ├── __init__.py
     │   │       ├── core.py
     │   │       ├── geo.py
     │   │       ├── sql.py
+    │   │       ├── tariff.py
     │   │       └── utils.py
     │   ├── scripts
     │   │   ├── clean-old-activity.sql
@@ -233,7 +239,8 @@
     │   │   │           ├── test_auth.py
     │   │   │           ├── test_dynamic.py
     │   │   │           ├── test_manage.py
-    │   │   │           └── test_statique.py
+    │   │   │           ├── test_statique.py
+    │   │   │           └── test_tariff.py
     │   │   ├── auth
     │   │   │   ├── __init__.py
     │   │   │   ├── test_oidc.py
@@ -250,11 +257,13 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── test_dynamic.py
     │   │   │   ├── test_static.py
+    │   │   │   ├── test_tariff.py
     │   │   │   └── test_utils.py
     │   │   ├── schemas
     │   │   │   ├── __init__.py
     │   │   │   ├── test_sql.py
     │   │   │   ├── test_static.py
+    │   │   │   ├── test_tariff_utils.py
     │   │   │   └── test_utils.py
     │   │   ├── test_cli.py
     │   │   └── test_db.py
@@ -759,4 +768,4 @@
         │   ├── run.py
         │   └── submit.py
         └── uv.lock
-145 directories, 685 files
+145 directories, 694 files
