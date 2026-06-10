@@ -1,24 +1,27 @@
 ## Changelog : depenses-eclairees (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'extraction d'informations des documents financiers (avenants, DC4, etc.) grâce à des ajustements des prompts d'IA, l'ajout de post-traitements pour une meilleure qualité des données, et l'amélioration de la robustesse de l'application. Des améliorations significatives ont également été apportées à la gestion des engagements et à la pipeline de synthèse des données.
+Ce mois-ci, les améliorations se concentrent sur l'extraction et le post-traitement des données financières, notamment pour les avenants, les RIB et les contrats. Des efforts ont été faits pour améliorer la qualité des données extraites grâce à des ajustements des prompts d'IA et l'ajout de règles de post-traitement. L'infrastructure et les tests ont également été renforcés.
 
 ### Évolutions fonctionnelles
-- **Avenants :** Ajout d'un front-end pour la gestion des avenants [#132](https://github.com/betagouv/depenses-eclairees/issues/132). Amélioration de l'extraction et du post-traitement des informations des avenants, incluant la normalisation des booléens et l'enrichissement des données extraites [#131](https://github.com/betagouv/depenses-eclairees/issues/131), [#126](https://github.com/betagouv/depenses-eclairees/issues/126).
-- **RIB :** Prise en compte des IBAN étrangers dans le post-traitement des RIB [#139](https://github.com/betagouv/depenses-eclairees/issues/139). Amélioration de la logique de post-traitement des RIB et conservation du numéro de compte [#129](https://github.com/betagouv/depenses-eclairees/issues/129), [#127](https://github.com/betagouv/depenses-eclairees/issues/127).
-- **Engagements :** Refactorisation des modèles de données pour les engagements (DataEngagement -> Engagement, DataBatch -> EngagementTag) [#122](https://github.com/betagouv/depenses-eclairees/issues/122). Ajout du champ `external_created_at` pour une meilleure synchronisation des données [#133](https://github.com/betagouv/depenses-eclairees/issues/133).
-- **Synthèse :** Implémentation d'une pipeline de synthèse des données avec un script d'exécution de bout en bout [#106](https://github.com/betagouv/depenses-eclairees/issues/106). Ajout de fonctions de test pour la synthèse.
-- **DC4 :** Amélioration de la précision du prompt pour l'extraction de la date de dernière signature. Correction du schéma DC4 [#125](https://github.com/betagouv/depenses-eclairees/issues/125).
+- **Avenants :** Ajout d'une interface utilisateur pour la gestion des avenants et amélioration de l'extraction des informations ([#132](https://github.com/betagouv/depenses-eclairees/issues/132), [#131](https://github.com/betagouv/depenses-eclairees/issues/131), [#127](https://github.com/betagouv/depenses-eclairees/issues/127)).
+- **RIB :** Prise en charge des IBAN étrangers et amélioration du post-traitement des informations bancaires ([#139](https://github.com/betagouv/depenses-eclairees/issues/139)).
+- **Contrats :** Amélioration de l'extraction des informations des contrats (CCAP, devis, etc.) et ajout de règles de post-traitement pour les noms de sociétés.
+- **Synthèse :** Implémentation d'un pipeline de synthèse pour extraire des informations à partir des pièces jointes ([#106](https://github.com/betagouv/depenses-eclairees/issues/106)).
+- **Dates :** Amélioration de la gestion et de la propagation des dates, notamment pour les engagements ([#136](https://github.com/betagouv/depenses-eclairees/issues/136), [#138](https://github.com/betagouv/depenses-eclairees/issues/138)).
+- **Champs :** Augmentation de la longueur maximale des champs de formulaire pour éviter les erreurs de validation ([#135](https://github.com/betagouv/depenses-eclairees/issues/135)).
 
 ### Évolutions techniques
-- **Qualité des données :** Ajout de fonctions pour lister les erreurs par type (faux positifs, faux négatifs) et intégration dans les tests E2E [#124](https://github.com/betagouv/depenses-eclairees/issues/124), [#123](https://github.com/betagouv/depenses-eclairees/issues/123).
-- **Monitoring :** Ajout de métriques pour le comptage des tokens et la date de traitement [#128](https://github.com/betagouv/depenses-eclairees/issues/128).
-- **Robustesse :** Gestion des erreurs de décodage JSON dans le client LLM avec une logique de retry [#123](https://github.com/betagouv/depenses-eclairees/issues/123).
-- **Schémas :** Refactorisation de la définition des schémas de données [#120](https://github.com/betagouv/depenses-eclairees/issues/120).
-- **Prompt Engineering :** Refactorisation des prompts pour les champs communs entre différents types de documents (AE, CCAP, DC4, Devis) [#130](https://github.com/betagouv/depenses-eclairees/issues/130), [#126](https://github.com/betagouv/depenses-eclairees/issues/126).
+- **Modèles de données :** Renommage des modèles `DataEngagement` et `DataBatch` en `Engagement` et `EngagementTag` pour une meilleure clarté ([#122](https://github.com/betagouv/depenses-eclairees/issues/122)).
+- **Gestion des erreurs :** Ajout d'une logique de nouvelle tentative pour gérer les erreurs de décodage JSON dans le client LLM ([#123](https://github.com/betagouv/depenses-eclairees/issues/123)).
+- **Schémas :** Refonte de la définition des schémas de données pour une meilleure organisation et maintenabilité ([#120](https://github.com/betagouv/depenses-eclairees/issues/120)).
+- **Métriques :** Ajout de métriques pour suivre le nombre de tokens utilisés et la date de traitement ([#128](https://github.com/betagouv/depenses-eclairees/issues/128)).
+- **Tests :** Ajout de fonctions de test et d'un script d'exécution de bout en bout pour vérifier la qualité des données extraites.
+- **Sécurité :** Ajout d'en-têtes transférés et de paramètres de sécurité pour une meilleure protection.
 
 ### Autres changements
-- Amélioration de la documentation et des commentaires dans le code.
-- Suppression de tests redondants.
-- Paramétrage JSON strict [#121](https://github.com/betagouv/depenses-eclairees/issues/121).
-- Corrections mineures et ajustements divers.
+- **Documentation :** Clarification des règles d'extraction dans le code.
+- **Prompts IA :** Amélioration des prompts utilisés pour l'extraction d'informations par l'IA pour différents types de documents (AE, CCAP, DC4, devis).
+- **Post-traitement :** Ajout de règles de post-traitement pour améliorer la qualité des données extraites (noms de sociétés, numéros de compte).
+- **Configuration :** Ajout d'un paramètre pour activer le mode JSON strict.
+- **Correction :** Correction de bugs et d'incohérences dans le code.
