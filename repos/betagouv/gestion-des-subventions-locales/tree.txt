@@ -71,6 +71,7 @@
 │   │   ├── 0014_alter_adresse_created_at_alter_adresse_updated_at_and_more.py
 │   │   ├── 0014_merge_20260210_1059.py
 │   │   ├── 0015_merge_20260212_1416.py
+│   │   ├── 0016_alter_departement_active.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -103,7 +104,6 @@
 │   │   │           └── import.html
 │   │   ├── base.html
 │   │   ├── blocks
-│   │   │   ├── breadcrumb.html
 │   │   │   ├── footer.html
 │   │   │   ├── header.html
 │   │   │   ├── main_menu.html
@@ -336,6 +336,7 @@
 │   ├── apps.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
+│   │   ├── 0002_colleguelogentry.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── templates
@@ -353,6 +354,7 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── configure_s3_bucket.py
 │   │       └── reattach_signed_doc.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -374,6 +376,7 @@
 │   │   ├── 0016_modelearrete_is_infected_modelearrete_last_scan_and_more.py
 │   │   ├── 0017_migrate_mention_ids_to_keys.py
 │   │   ├── 0018_rename_arreteetlettresignes_to_lettreetarretesignes.py
+│   │   ├── 0019_documentimportjob.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── qr.py
@@ -417,6 +420,11 @@
 │   │   │   │   │   ├── modal_success_body.html
 │   │   │   │   │   └── select_modele.html
 │   │   │   │   └── select_modele.html
+│   │   │   ├── import
+│   │   │   │   ├── _import_progress_partial.html
+│   │   │   │   ├── modal_open.html
+│   │   │   │   ├── modal_summary_body.html
+│   │   │   │   └── modal_upload_body.html
 │   │   │   ├── modal
 │   │   │   │   └── notify_refused_dismissed.html
 │   │   │   ├── modele
@@ -460,6 +468,7 @@
 │   │   └── views
 │   │       ├── __init__.py
 │   │       ├── test_generate_document_for_multiple_projets_views.py
+│   │       ├── test_import_views.py
 │   │       ├── test_modele_views.py
 │   │       ├── test_refused_dismissed_notification.py
 │   │       ├── test_upload_document_views.py
@@ -471,6 +480,7 @@
 │       ├── __init__.py
 │       ├── decorators.py
 │       ├── generate_document_for_multiple_projets_views.py
+│       ├── import_views.py
 │       ├── modele_views.py
 │       ├── uploaded_document_views.py
 │       └── views.py
@@ -900,6 +910,7 @@
 │   │       ├── components
 │   │       │   └── tiptap.css
 │   │       └── controllers
+│   │           ├── document_import_controller.js
 │   │           ├── modal.js
 │   │           └── tiptapEditor.js
 │   ├── templates
@@ -912,4 +923,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-160 directories, 754 files
+161 directories, 764 files
