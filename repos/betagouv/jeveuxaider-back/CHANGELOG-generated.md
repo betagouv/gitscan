@@ -1,23 +1,33 @@
-## Changelog : jeveuxaider-back (30 derniers jours, au 5 juin 2026)
+## Changelog : jeveuxaider-back (30 derniers jours, au 9 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances et de la synchronisation des données, notamment concernant les missions et les organisations. Des corrections ont été apportées pour mieux gérer les missions supprimées et filtrer les résultats de recherche. Des améliorations ont également été apportées à la gestion des notifications et à l'expérience des structures.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la performance et de la robustesse de la plateforme, notamment au niveau de la synchronisation des données avec Airtable, de la gestion des missions et des statistiques. Des améliorations ont également été apportées à l'expérience des structures, avec notamment la possibilité de se désinscrire de manière autonome.
 
 ### Évolutions fonctionnelles
-- **Synchronisation Airtable :** Amélioration de la synchronisation des missions depuis Airtable, incluant désormais la prise en compte des missions supprimées et la possibilité de filtrer les organisations par ID. [#192](https://github.com/betagouv/jeveuxaider-back/issues/192) [#185](https://github.com/betagouv/jeveuxaider-back/issues/185)
-- **Notifications :** Ajout d'un bandeau avec l'adresse email du destinataire dans les notifications. [#189](https://github.com/betagouv/jeveuxaider-back/issues/189)
-- **Désinscription Structures :** Implémentation de la fonctionnalité permettant aux structures de se désinscrire de manière autonome. [#172](https://github.com/betagouv/jeveuxaider-back/issues/172)
-- **Filtres Marketplace :** Correction d'un filtre temporaire pour les adultes dans le Marketplace. [#199](https://github.com/betagouv/jeveuxaider-back/issues/199)
-- **Recherche :** Utilisation de l'opérateur `ilike` pour une recherche moins stricte. [#106](https://github.com/betagouv/jeveuxaider-back/issues/106)
+- Les structures peuvent maintenant se désinscrire de manière autonome [#172](https://github.com/betagouv/jeveuxaider-back/issues/172).
+- Amélioration de la synchronisation des missions depuis Airtable :
+    - Prise en compte des missions supprimées (soft-deleted) [#192](https://github.com/betagouv/jeveuxaider-back/issues/192).
+    - Exclusion des missions non pertinentes en fonction de leur état et de leurs notes [#190](https://github.com/betagouv/jeveuxaider-back/issues/190).
+    - Possibilité de synchroniser une seule fois les missions supprimées.
+- Ajout d'une bannière d'email pour les destinataires des notifications [#189](https://github.com/betagouv/jeveuxaider-back/issues/189).
+- Possibilité de filtrer les organisations par ID lors de la synchronisation Airtable [#200](https://github.com/betagouv/jeveuxaider-back/issues/200).
+- Amélioration du filtre "adultes uniquement" dans le marketplace inversé [#199](https://github.com/betagouv/jeveuxaider-back/issues/199).
+- Ajout d'une commande pour ajouter un utilisateur aux conversations [#193](https://github.com/betagouv/jeveuxaider-back/issues/193).
+- Amélioration de la gestion de l'état de participation.
 
 ### Évolutions techniques
-- **Performances :** Ajout d'index et de paramètres d'autovacuum pour la table de l'historique d'activité afin d'améliorer les performances. [#188](https://github.com/betagouv/jeveuxaider-back/issues/188)
-- **Optimisation des requêtes :** Optimisation et refactoring des requêtes liées aux statistiques de modération pour une meilleure efficacité et lisibilité. [#184](https://github.com/betagouv/jeveuxaider-back/issues/184)
-- **Index Partiels :** Ajout d'un index partiel pour améliorer les performances des requêtes sur les statistiques. [#186](https://github.com/betagouv/jeveuxaider-back/issues/186)
-- **Refactoring :** Suppression de la fonctionnalité de partage de missions et des notifications associées. [#200](https://github.com/betagouv/jeveuxaider-back/issues/200)
-- **Refactoring :** Suppression du code lié à `actingAs` et refactorisation de la gestion de l'état de participation. [#191](https://github.com/betagouv/jeveuxaider-back/issues/191)
-- **Rolables :** Refonte de la gestion des `rolables.fonction`. [#194](https://github.com/betagouv/jeveuxaider-back/issues/194)
-- **Airtable Sync :** Amélioration de la logique de synchronisation des missions depuis Airtable pour exclure les missions non pertinentes. [#190](https://github.com/betagouv/jeveuxaider-back/issues/190)
+- Optimisation des requêtes de statistiques et de modération :
+    - Ajout d'index partiels pour améliorer les performances [#186](https://github.com/betagouv/jeveuxaider-back/issues/186).
+    - Refactoring et optimisation des requêtes [#184](https://github.com/betagouv/jeveuxaider-back/issues/184).
+    - Ajout de jointures pour améliorer la logique de comptage [#187](https://github.com/betagouv/jeveuxaider-back/issues/187).
+- Amélioration des performances de l'activité log avec l'ajout d'index et de paramètres d'autovacuum [#188](https://github.com/betagouv/jeveuxaider-back/issues/188).
+- Refactoring de la logique de validation de l'état des structures pour exclure l'état "Désinscrite".
+- Suppression de la fonctionnalité de partage de missions et des notifications associées [#200](https://github.com/betagouv/jeveuxaider-back/issues/200).
+- Utilisation de l'opérateur `ilike` pour les recherches non sensibles à la casse [#106](https://github.com/betagouv/jeveuxaider-back/issues/106).
+- Refactoring du code pour supprimer un filtre de département inutilisé dans les invitations.
 
 ### Autres changements
-- Suppression d'un filtre de département inutilisé dans les invitations. [#185](https://github.com/betagouv/jeveuxaider-back/issues/185)
+- Mise à jour de la documentation README pour refléter le rebranding du projet.
+- Amélioration du formatage et de la lisibilité du template d'email de résumé des responsables.
+- Revamp des "rolables.fonction".
+- Mises à jour de dépendances Symfony (routing, http-kernel, mailer, mime).

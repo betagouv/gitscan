@@ -32,6 +32,7 @@
 │   ├── Console
 │   │   ├── Commands
 │   │   │   ├── AddTagCovid19.php
+│   │   │   ├── AddUserToConversations.php
 │   │   │   ├── AirtableSyncMissions.php
 │   │   │   ├── AirtableSyncMissionsOpenToMinors.php
 │   │   │   ├── AirtableSyncMissionsWithTag.php
@@ -225,6 +226,7 @@
 │   │   └── FiltersUserArchivedDatasSearch.php
 │   ├── Helpers
 │   │   ├── EnvironmentPathGenerator.php
+│   │   ├── FrenchSearch.php
 │   │   ├── Utils.php
 │   │   └── shortUrl.php
 │   ├── Http
@@ -271,6 +273,7 @@
 │   │   │   │   ├── ParticipationController.php
 │   │   │   │   ├── PassportController.php
 │   │   │   │   ├── ProfileController.php
+│   │   │   │   ├── RegisterStructureController.php
 │   │   │   │   ├── ReseauController.php
 │   │   │   │   ├── RnaController.php
 │   │   │   │   ├── RomeMacroCompetenceController.php
@@ -324,72 +327,74 @@
 │   │   │   ├── TrimStrings.php
 │   │   │   ├── TrustProxies.php
 │   │   │   └── VerifyCsrfToken.php
-│   │   └── Requests
-│   │       ├── ActivityRequest.php
-│   │       ├── AddResponsableRequest.php
-│   │       ├── Api
-│   │       │   ├── ActivityClassifyRequest.php
-│   │       │   ├── ActivityUpdateRequest.php
-│   │       │   ├── DocumentCreateRequest.php
-│   │       │   ├── DocumentUpdateRequest.php
-│   │       │   ├── DomaineCreateRequest.php
-│   │       │   ├── DomaineDeleteRequest.php
-│   │       │   ├── DomaineUpdateRequest.php
-│   │       │   ├── MessageTemplateCreateRequest.php
-│   │       │   ├── MessageTemplateUpdateRequest.php
-│   │       │   ├── MissionStructureRequest.php
-│   │       │   ├── MissionTemplateCreateRequest.php
-│   │       │   ├── MissionTemplateDeleteRequest.php
-│   │       │   ├── MissionTemplateUpdateRequest.php
-│   │       │   ├── MissionUpdateRequest.php
-│   │       │   ├── NoteCreateRequest.php
-│   │       │   ├── NoteUpdateRequest.php
-│   │       │   ├── ParticipationCancelRequest.php
-│   │       │   ├── ParticipationCreateRequest.php
-│   │       │   ├── ParticipationDeclineRequest.php
-│   │       │   ├── ParticipationUpdateRequest.php
-│   │       │   ├── ProfileCreateRequest.php
-│   │       │   ├── ProfileUpdateRequest.php
-│   │       │   ├── ReseauUpdateRequest.php
-│   │       │   ├── StructureCreateRequest.php
-│   │       │   ├── StructureDeleteRequest.php
-│   │       │   ├── StructureUpdateRequest.php
-│   │       │   ├── TemoignageCreateRequest.php
-│   │       │   ├── TemoignageUpdateRequest.php
-│   │       │   ├── TerritoireDeleteRequest.php
-│   │       │   ├── TerritoireUpdateRequest.php
-│   │       │   ├── UserAlertCreateRequest.php
-│   │       │   ├── UserAlertDeleteRequest.php
-│   │       │   ├── UserAlertUpdateRequest.php
-│   │       │   └── UserRolesRequest.php
-│   │       ├── ContextualMessageRequest.php
-│   │       ├── ConversationRequest.php
-│   │       ├── DocumentRequest.php
-│   │       ├── DomaineRequest.php
-│   │       ├── InvitationRequest.php
-│   │       ├── MessageRequest.php
-│   │       ├── MessageTemplateRequest.php
-│   │       ├── MetadatasRequest.php
-│   │       ├── MissionRequest.php
-│   │       ├── MissionTemplateRequest.php
-│   │       ├── NoteRequest.php
-│   │       ├── NotificationBenevoleRequest.php
-│   │       ├── ParticipationRequest.php
-│   │       ├── ProfileRequest.php
-│   │       ├── RegisterInvitationRequest.php
-│   │       ├── RegisterResponsableRequest.php
-│   │       ├── RegisterResponsableWithStructureRequest.php
-│   │       ├── RegisterVolontaireRequest.php
-│   │       ├── ReseauRequest.php
-│   │       ├── RuleRequest.php
-│   │       ├── StructureInvitationRequest.php
-│   │       ├── StructureRequest.php
-│   │       ├── StructureTagRequest.php
-│   │       ├── TemoignageRequest.php
-│   │       ├── TermRequest.php
-│   │       ├── TerritoireRequest.php
-│   │       ├── UserAlertRequest.php
-│   │       └── UserRequest.php
+│   │   ├── Requests
+│   │   │   ├── ActivityRequest.php
+│   │   │   ├── AddResponsableRequest.php
+│   │   │   ├── Api
+│   │   │   │   ├── ActivityClassifyRequest.php
+│   │   │   │   ├── ActivityUpdateRequest.php
+│   │   │   │   ├── DocumentCreateRequest.php
+│   │   │   │   ├── DocumentUpdateRequest.php
+│   │   │   │   ├── DomaineCreateRequest.php
+│   │   │   │   ├── DomaineDeleteRequest.php
+│   │   │   │   ├── DomaineUpdateRequest.php
+│   │   │   │   ├── MessageTemplateCreateRequest.php
+│   │   │   │   ├── MessageTemplateUpdateRequest.php
+│   │   │   │   ├── MissionStructureRequest.php
+│   │   │   │   ├── MissionTemplateCreateRequest.php
+│   │   │   │   ├── MissionTemplateDeleteRequest.php
+│   │   │   │   ├── MissionTemplateUpdateRequest.php
+│   │   │   │   ├── MissionUpdateRequest.php
+│   │   │   │   ├── NoteCreateRequest.php
+│   │   │   │   ├── NoteUpdateRequest.php
+│   │   │   │   ├── ParticipationCancelRequest.php
+│   │   │   │   ├── ParticipationCreateRequest.php
+│   │   │   │   ├── ParticipationDeclineRequest.php
+│   │   │   │   ├── ParticipationUpdateRequest.php
+│   │   │   │   ├── ProfileCreateRequest.php
+│   │   │   │   ├── ProfileUpdateRequest.php
+│   │   │   │   ├── ReseauUpdateRequest.php
+│   │   │   │   ├── StructureCreateRequest.php
+│   │   │   │   ├── StructureDeleteRequest.php
+│   │   │   │   ├── StructureUpdateRequest.php
+│   │   │   │   ├── TemoignageCreateRequest.php
+│   │   │   │   ├── TemoignageUpdateRequest.php
+│   │   │   │   ├── TerritoireDeleteRequest.php
+│   │   │   │   ├── TerritoireUpdateRequest.php
+│   │   │   │   ├── UserAlertCreateRequest.php
+│   │   │   │   ├── UserAlertDeleteRequest.php
+│   │   │   │   ├── UserAlertUpdateRequest.php
+│   │   │   │   └── UserRolesRequest.php
+│   │   │   ├── ContextualMessageRequest.php
+│   │   │   ├── ConversationRequest.php
+│   │   │   ├── DocumentRequest.php
+│   │   │   ├── DomaineRequest.php
+│   │   │   ├── InvitationRequest.php
+│   │   │   ├── MessageRequest.php
+│   │   │   ├── MessageTemplateRequest.php
+│   │   │   ├── MetadatasRequest.php
+│   │   │   ├── MissionRequest.php
+│   │   │   ├── MissionTemplateRequest.php
+│   │   │   ├── NoteRequest.php
+│   │   │   ├── NotificationBenevoleRequest.php
+│   │   │   ├── ParticipationRequest.php
+│   │   │   ├── ProfileRequest.php
+│   │   │   ├── RegisterInvitationRequest.php
+│   │   │   ├── RegisterResponsableRequest.php
+│   │   │   ├── RegisterResponsableWithStructureRequest.php
+│   │   │   ├── RegisterVolontaireRequest.php
+│   │   │   ├── ReseauRequest.php
+│   │   │   ├── RuleRequest.php
+│   │   │   ├── StructureInvitationRequest.php
+│   │   │   ├── StructureRequest.php
+│   │   │   ├── StructureTagRequest.php
+│   │   │   ├── TemoignageRequest.php
+│   │   │   ├── TermRequest.php
+│   │   │   ├── TerritoireRequest.php
+│   │   │   ├── UserAlertRequest.php
+│   │   │   └── UserRequest.php
+│   │   └── Resources
+│   │       └── RegisterStructureResource.php
 │   ├── Imports
 │   │   └── InvitationReseauAntennesImport.php
 │   ├── Jobs
@@ -990,7 +995,9 @@
 │   │   ├── 2026_05_14_000001_add_subject_specific_indexes_for_statistics_moderations_activity_log.php
 │   │   ├── 2026_05_14_000002_add_subject_id_first_indexes_for_statistics_moderations_activity_log.php
 │   │   ├── 2026_05_14_000003_add_mission_direct_aggregation_index_for_statistics_moderations_activity_log.php
-│   │   └── 2026_05_14_000004_set_conservative_autovacuum_settings_for_activity_log.php
+│   │   ├── 2026_05_14_000004_set_conservative_autovacuum_settings_for_activity_log.php
+│   │   ├── 2026_06_02_093400_create_pending_request_invitations_table.php
+│   │   └── 2026_06_02_160000_drop_pending_request_invitations_table.php
 │   ├── seeders
 │   │   ├── DatabaseSeeder.php
 │   │   └── RoleSeeder.php
@@ -1591,5 +1598,6 @@
     ├── Pest.php
     ├── TestCase.php
     └── Unit
-        └── ExampleTest.php
-119 directories, 1624 files
+        ├── ExampleTest.php
+        └── FrenchSearchTest.php
+120 directories, 1631 files

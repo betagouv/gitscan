@@ -1,84 +1,144 @@
-# Réserve Civique
+# JeVeuxAider.gouv.fr — Backend
 
-## Scalingo Setup
+API métier de [JeVeuxAider.gouv.fr](https://jeveuxaider.gouv.fr), la plateforme publique du bénévolat proposée par la Réserve Civique.
 
-* Create application
+## Objectif
+
+JeVeuxAider.gouv.fr met en relation celles et ceux qui veulent agir pour l'intérêt général avec les associations, acteurs publics et collectivités territoriales qui ont besoin de bénévoles.
+
+Les missions de bénévolat sont ouvertes à tout citoyen âgé de plus de 16 ans et résidant en France, sans condition de nationalité. Pour les personnes âgées de 16 à 18 ans, une autorisation du représentant légal est nécessaire.
+
+Ce dépôt contient l'API Laravel consommée par le frontend Nuxt (`jeveuxaider-front`). Elle gère notamment :
+
+- les missions, structures et participations ;
+- l'authentification et les profils utilisateurs (bénévoles, responsables, référents) ;
+- la messagerie, les notifications et les emails transactionnels ;
+- la modération, les statistiques et les exports ;
+- l'indexation Algolia et les intégrations tierces (France Connect, API Engagement, SNU…).
+
+## Pile technique
+
+| Couche            | Technologies                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| Framework         | [Laravel 12](https://laravel.com) (PHP 8.2+)                                             |
+| Base de données   | [PostgreSQL](https://www.postgresql.org)                                                 |
+| Authentification  | [Laravel Passport](https://laravel.com/docs/passport) (OAuth 2)                          |
+| Recherche         | [Laravel Scout](https://laravel.com/docs/scout) + [Algolia](https://www.algolia.com)     |
+| Files d'attente   | [Redis](https://redis.io) + [Laravel Horizon](https://laravel.com/docs/horizon)          |
+| Stockage fichiers | S3 (via Flysystem) + [Spatie Media Library](https://spatie.be/docs/laravel-medialibrary) |
+| Emails            | Brevo, SendGrid                                                                          |
+| Observabilité     | [Sentry](https://sentry.io)                                                              |
+| Tests             | [Pest](https://pestphp.com)                                                              |
+| Qualité           | Laravel Pint, PHP-CS-Fixer                                                               |
+
+**Extensions PHP requises :** `redis`, `sodium`.
+
+## Architecture
 
 ```
-scalingo create reserve-civique-<environment>
+jeveuxaider-back/
+├── app/
+│   ├── Http/Controllers/Api/   # Contrôleurs REST
+│   ├── Models/                 # Modèles Eloquent
+│   ├── Services/               # Intégrations externes (Algolia, France Connect, OpenAI…)
+│   ├── Jobs/                   # Tâches asynchrones (Horizon)
+│   ├── Actions/                # Actions métier
+│   ├── Mail/                   # Emails transactionnels
+│   ├── Notifications/          # Notifications applicatives
+│   └── Console/Commands/       # Commandes Artisan planifiées
+├── routes/
+│   └── api.php                 # Routes API (/api/*)
+├── database/
+│   ├── migrations/             # Schéma PostgreSQL
+│   └── seeders/                # Données initiales (rôles…)
+└── resources/views/emails/     # Templates Blade des emails
 ```
 
-* Add PostgreSQL Addon
+L'API expose des endpoints REST sous `/api`, protégés par OAuth 2 (Passport) pour les routes authentifiées. Le frontend Nuxt s'y connecte via `API_URL`.
 
+Services externes configurés via variables d'environnement :
+
+- **Algolia** — indexation et recherche de missions, organisations ;
+- **S3** — stockage des médias et exports ;
+- **Brevo** — envoi d'emails ;
+- **France Connect** — connexion via l'identité numérique ;
+- **API Engagement, SNU, France Travail** — référentiels et synchronisations ;
+- **Anthropic** — modération et analyse de contenu.
+
+En production, les tâches planifiées et les files d'attente sont gérées par Horizon (`Procfile`).
+
+## Démarrage en local
+
+### 1. Prérequis
+
+- PHP **8.2+** avec les extensions `redis`
+- [Composer](https://getcomposer.org)
+- PostgreSQL
+- Redis (recommandé ; la file peut rester en `sync` pour un premier démarrage)
+- Le frontend Nuxt (`jeveuxaider-front`) sur le port **3000** pour tester l'application complète
+
+### 2. Configuration
+
+Copier le fichier d'exemple et renseigner les variables :
+
+```bash
+cp .env.example .env
 ```
-scalingo addons-add postgresql <plan>
-```
 
-* Configure basics of the application
+Variables minimales pour un environnement local :
 
-```
-scalingo env-set \
-  BUILDPACK_URL=https://github.com/Scalingo/multi-buildpack.git \
-  PHP_BUILDPACK_NO_NODE=true \
-  APP_ENV=production \
-  LOG_CHANNEL=errorlog \
-  DB_CONNECTION=pgsql \
-  NPM_CONFIG_PRODUCTION=false \
-  APP_KEY=$(openssl rand -hex 16) \
-  MIX_API_BASE_URL=<url> \
-  MIX_ALGOLIA_PLACES_APP_ID=<algolia id> \
-  MIX_ALGOLIA_PLACES_API_KEY=<algolia key> \
-  ASSET_URL=https://<asset_url>
-  APP_URL=https://<app_url>
-```
+| Variable                      | Description               | Valeur par défaut       |
+| ----------------------------- | ------------------------- | ----------------------- |
+| `APP_URL`                     | URL du backend            | `http://localhost:8000` |
+| `FRONT_URL`                   | URL du frontend           | `http://localhost:3000` |
+| `DB_DATABASE`                 | Nom de la base PostgreSQL | `jva`                   |
+| `DB_USERNAME` / `DB_PASSWORD` | Identifiants PostgreSQL   | —                       |
+| `QUEUE_CONNECTION`            | Driver de file d'attente  | `sync`                  |
 
-> `asset_url` and `app_url` can be the same according to the setup
+Les clés Algolia, S3, email et autres services sont optionnelles pour un premier démarrage, mais nécessaires pour tester la recherche, les uploads et les envois d'emails.
 
-* Configure Passport
+### 3. Installation et lancement
 
-```
+```bash
+composer install
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
 php artisan passport:install
+php artisan serve
 ```
 
-From the output, take the second credentials (with password authentication enabled).
+L'API est accessible sur [http://localhost:8000](http://localhost:8000).
 
-Use the ID and secret in the following command:
-
-```
-scalingo env-set \
-  "OAUTH_PRIVATE_KEY=$(cat storage/oauth-private.key)" \
-  "OAUTH_PUBLIC_KEY=$(cat storage/oauth-public.key)" \
-  MIX_OAUTH_CLIENT_ID=<id> \
-  MIX_OAUTH_CLIENT_SECRET=<secret>
-```
-
-Remove these files as they should only be used in the deployed environment not in dev
+Lors de `passport:install`, récupérer l'identifiant et le secret du client **Password Grant** (second jeu de credentials) et les renseigner dans le `.env` du frontend :
 
 ```
-rm storage/oauth-private.key storage/oauth-public.key
+OAUTH_CLIENT_ID=
+OAUTH_CLIENT_SECRET=
 ```
 
-### Configure S3 Credentials
+### 4. Files d'attente et tâches planifiées
 
-```
-scalingo env-set \
-  S3_AK=<ak> \
-  S3_SK=<sk> \
-  S3_ENDPOINT=<endpoint> \
-  S3_REGION=<region> \
-  S3_BUCKET=<bucket>
+Pour exécuter les jobs asynchrones en local :
+
+```bash
+php artisan horizon
 ```
 
-### Configuration Email
+Pour les tâches planifiées (emails de bilan, synchronisations…) :
 
+```bash
+php artisan schedule:work
 ```
-scalingo env-set \
-  MAIL_DRIVER=smtp \
-  MAIL_HOST=<smtp server> \
-  MAIL_PORT=<smtp port> \
-  MAIL_USERNAME=<smtp username> \
-  MAIL_PASSWORD=<smtp password> \
-  MAIL_ENCRYPTION=<null|tls> \
-  MAIL_FROM_ADDRESS=crise@reserve-civique.gouv.fr \
-  "MAIL_FROM_NAME=Réserve Civique"
-```
+
+## Scripts utiles
+
+| Commande                    | Description                   |
+| --------------------------- | ----------------------------- |
+| `php artisan serve`         | Serveur de développement      |
+| `php artisan migrate`       | Applique les migrations       |
+| `php artisan db:seed`       | Seed les rôles                |
+| `php artisan horizon`       | Supervise les files d'attente |
+| `php artisan schedule:work` | Exécute le scheduler          |
+| `./vendor/bin/pest`         | Lance la suite de tests       |
+| `./vendor/bin/pint`         | Formate le code PHP           |
