@@ -144,6 +144,7 @@
 │   │       │   │   │   ├── mission_active_monthly.sql
 │   │       │   │   │   ├── mission_address.sql
 │   │       │   │   │   ├── mission_enrichment.sql
+│   │       │   │   │   ├── mission_enrichment_daily.sql
 │   │       │   │   │   ├── mission_enrichment_value.sql
 │   │       │   │   │   ├── mission_event.sql
 │   │       │   │   │   ├── mission_events_yearly.sql
@@ -721,6 +722,8 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── process-dead-letter-queues
+│   │   │   │   └── handler.ts
 │   │   │   ├── rdb-backup
 │   │   │   │   ├── client.ts
 │   │   │   │   └── handler.ts
@@ -838,6 +841,7 @@
 │   │   │   ├── api-datasubvention.ts
 │   │   │   ├── async-task
 │   │   │   │   ├── bus.ts
+│   │   │   │   ├── dlq-consumer.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── providers
 │   │   │   │       ├── local.ts
@@ -848,6 +852,7 @@
 │   │   │   │   ├── contact.ts
 │   │   │   │   ├── email.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── mission-content.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── campaign.ts
@@ -868,6 +873,8 @@
 │   │   │   │   └── types.ts
 │   │   │   ├── metabase.ts
 │   │   │   ├── mission-browse
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── index.test.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── transformers.ts
 │   │   │   ├── mission-email
@@ -887,14 +894,15 @@
 │   │   │   │   │   ├── v1.ts
 │   │   │   │   │   ├── v2.ts
 │   │   │   │   │   └── v3.ts
-│   │   │   │   └── providers
-│   │   │   │       ├── __tests__
-│   │   │   │       │   ├── llm.test.ts
-│   │   │   │       │   └── mock.test.ts
-│   │   │   │       ├── index.ts
-│   │   │   │       ├── llm.ts
-│   │   │   │       ├── mock.ts
-│   │   │   │       └── types.ts
+│   │   │   │   ├── providers
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── llm.test.ts
+│   │   │   │   │   │   └── mock.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── llm.ts
+│   │   │   │   │   ├── mock.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── triggers.ts
 │   │   │   ├── mission-event.ts
 │   │   │   ├── mission-index
 │   │   │   │   ├── __tests__
@@ -938,16 +946,23 @@
 │   │   │   │   ├── collections
 │   │   │   │   │   └── missions
 │   │   │   │   │       ├── __tests__
-│   │   │   │   │       │   └── client.test.ts
+│   │   │   │   │       │   ├── client.test.ts
+│   │   │   │   │       │   └── diffusion-rules-filter.test.ts
 │   │   │   │   │       ├── client.ts
+│   │   │   │   │       ├── diffusion-rules-filter.ts
 │   │   │   │   │       ├── fields.ts
 │   │   │   │   │       ├── schemas
 │   │   │   │   │       │   └── v1.ts
 │   │   │   │   │       └── types.ts
+│   │   │   │   ├── collections.ts
+│   │   │   │   ├── filter.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── providers
 │   │   │   │   │   └── typesense
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   └── filter.test.ts
 │   │   │   │   │       ├── client.ts
+│   │   │   │   │       ├── filter.ts
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       └── utils.ts
 │   │   │   │   └── types.ts
@@ -1000,7 +1015,9 @@
 │   │   │   │   ├── mission.test.ts
 │   │   │   │   ├── organization.test.ts
 │   │   │   │   ├── parser.test.ts
-│   │   │   │   └── string.test.ts
+│   │   │   │   ├── publisher-diffusion-rule-query.test.ts
+│   │   │   │   ├── string.test.ts
+│   │   │   │   └── widget.test.ts
 │   │   │   ├── activity.ts
 │   │   │   ├── address.ts
 │   │   │   ├── array.ts
@@ -1114,20 +1131,22 @@
 │   │   │   ├── docs
 │   │   │   │   ├── spec.test.ts
 │   │   │   │   └── testOpenApiApp.ts
-│   │   │   └── jobs
-│   │   │       ├── import-missions
-│   │   │       │   ├── data
-│   │   │       │   │   ├── correct-feed.xml
-│   │   │       │   │   ├── invalid-address-feed.xml
-│   │   │       │   │   ├── invalid-compensation-feed.xml
-│   │   │       │   │   └── missing-logo-feed.xml
-│   │   │       │   └── import-missions.handler.test.ts
-│   │   │       ├── letudiant
-│   │   │       │   └── letudiant.handler.test.ts
-│   │   │       ├── moderation
-│   │   │       │   └── moderation.handler.test.ts
-│   │   │       └── report
-│   │   │           └── report.handler.test.ts
+│   │   │   ├── jobs
+│   │   │   │   ├── import-missions
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── correct-feed.xml
+│   │   │   │   │   │   ├── invalid-address-feed.xml
+│   │   │   │   │   │   ├── invalid-compensation-feed.xml
+│   │   │   │   │   │   └── missing-logo-feed.xml
+│   │   │   │   │   └── import-missions.handler.test.ts
+│   │   │   │   ├── letudiant
+│   │   │   │   │   └── letudiant.handler.test.ts
+│   │   │   │   ├── moderation
+│   │   │   │   │   └── moderation.handler.test.ts
+│   │   │   │   └── report
+│   │   │   │       └── report.handler.test.ts
+│   │   │   └── services
+│   │   │       └── mission.test.ts
 │   │   ├── mocks
 │   │   │   ├── dataSubventionMock.ts
 │   │   │   ├── index.ts
@@ -1718,4 +1737,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-400 directories, 1406 files
+404 directories, 1421 files
