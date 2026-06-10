@@ -1,3 +1,15 @@
+## [24.52.3](https://github.com/MTES-MCT/monitor-ui/compare/v24.52.2...v24.52.3) (2026-06-08)
+
+### Bug Fixes
+
+* **components:** dialog component - add title to close button ([09a758d](https://github.com/MTES-MCT/monitor-ui/commit/09a758d1f9dd2c744e7c539b81c7175b7d14c8dc))
+
+## [24.52.2](https://github.com/MTES-MCT/monitor-ui/compare/v24.52.1...v24.52.2) (2026-06-08)
+
+### Bug Fixes
+
+* **components:** fix Dialog max-height ([5b34004](https://github.com/MTES-MCT/monitor-ui/commit/5b340043859cdd194f36ae3334f33e37a0cc7f0b))
+
 ## [24.52.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.52.0...v24.52.1) (2026-06-02)
 
 ### Bug Fixes
