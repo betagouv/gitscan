@@ -1,18 +1,20 @@
 ## Changelog : complements-alimentaires (30 derniers jours, au 01 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur pour la gestion des décisions de visa, notamment en termes de pré-remplissage, de persistance des données et d'affichage. Des corrections ont également été apportées pour améliorer l'expérience utilisateur et la conformité aux standards d'accessibilité (RGAA). Enfin, de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+Ce changelog couvre une période d'amélioration continue du projet, avec un accent particulier sur l'expérience utilisateur dans la gestion des décisions de visa. Des corrections et des améliorations ont été apportées à l'interface, notamment pour la persistance des décisions et la visibilité des informations.  De nombreuses mises à jour de dépendances ont également été intégrées pour assurer la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface de modification des décisions de visa : pré-remplissage des valeurs, persistance de la décision lors de la navigation et affichage du délai de réponse. [#2945](https://github.com/betagouv/complements-alimentaires/issues/2945), [#2946](https://github.com/betagouv/complements-alimentaires/issues/2946), [#2947](https://github.com/betagouv/complements-alimentaires/issues/2947)
-- Suppression de l'affichage des champs relatifs aux plantes pour les produits qui n'en sont pas. [#2921](https://github.com/betagouv/complements-alimentaires/issues/2921), [#2896](https://github.com/betagouv/complements-alimentaires/issues/2896)
-- Amélioration de l'accessibilité : utilisation de listes pour certains éléments de l'interface. [#2942](https://github.com/betagouv/complements-alimentaires/issues/2942)
+- Amélioration de l'interface de modification de la décision de visa : pré-remplissage des valeurs et persistance de la décision lors de la navigation. [#2947](https://github.com/betagouv/complements-alimentaires/issues/2947)
+- Correction d'un bug empêchant la visibilité du délai de réponse. [#2945](https://github.com/betagouv/complements-alimentaires/issues/2945)
+- Adaptation de la grille de colonnes dans VisaValidationSegment pour une meilleure réactivité.
+- Suppression des champs relatifs aux plantes pour les types de produits qui ne sont pas des plantes. [#2921](https://github.com/betagouv/complements-alimentaires/issues/2921) et [#2908](https://github.com/betagouv/complements-alimentaires/issues/2908)
 
 ### Évolutions techniques
-- Mises à jour de nombreuses dépendances (Django, Python, Node.js, React, Vue.js, PostgreSQL, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- Suppression de la dépendance `ipdb` et ajout de dépendances manquantes. [#2932](https://github.com/betagouv/complements-alimentaires/issues/2932)
-- Refactorisation et renommage de composants React liés à la modification des décisions de visa. [#2925](https://github.com/betagouv/complements-alimentaires/issues/2925)
+- Mise à jour de nombreuses dépendances frontend (React, Vue.js, TypeScript, webpack, postcss, etc.) et backend (Django, Python, PostgreSQL, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Suppression de l'utilisation de `ipdb` et ajout de dépendances manquantes. [#2932](https://github.com/betagouv/complements-alimentaires/issues/2932)
+- Amélioration de l'audit du code pour identifier les composants utilisant `v-for` qui devraient utiliser des listes HTML.
 
 ### Autres changements
-- Ajustements de marges et d'espacement dans l'interface utilisateur. [#2941](https://github.com/betagouv/complements-alimentaires/issues/2941)
-- Amélioration de la réactivité de la grille de colonnes dans le segment de validation de visa. [#2940](https://github.com/betagouv/complements-alimentaires/issues/2940)
+- Ajustements de marges et d'espacement dans l'interface utilisateur.
+- Renommage et refactorisation de composants liés au formulaire de modification de la décision de visa.
+- Mise à jour de la documentation et de la configuration du projet.
