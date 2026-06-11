@@ -1,7 +1,7 @@
 .
 ├── .claude
-│   └── skills
-│       └── nouvelle-migration-knex.md
+│   └── nouvelle-migration-knex
+│       └── skill.md
 ├── .env.template
 ├── .github
 │   └── workflows
@@ -54,6 +54,7 @@
 │   │   ├── 20260602115153_nettoyePrefixeBonneNouvelleMesures.ts
 │   │   ├── 20260604071303_convertitMarkdownEnHtmlMesures.ts
 │   │   ├── 20260604075323_ajouteLiensMesures.ts
+│   │   ├── 20260608140502_remaniePrisesEnCompte.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -86,8 +87,11 @@
 │   │   │   │   └── ressourceGuidesMemesCollections.ts
 │   │   │   ├── mesures
 │   │   │   │   ├── mesurePresentation.ts
+│   │   │   │   ├── ressourceAvisMesure.schema.ts
+│   │   │   │   ├── ressourceAvisMesure.ts
 │   │   │   │   ├── ressourceMesure.ts
-│   │   │   │   └── ressourceMesuresDeModule.ts
+│   │   │   │   ├── ressourceMesuresDeModule.ts
+│   │   │   │   └── ressourcePriseEnCompte.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
@@ -150,10 +154,12 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
+│   │   │   ├── consigneAvisMesureDonneDansJournal.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.ts
 │   │   │   ├── consigneEvenementMesureConsulteeDansJournal.ts
+│   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
@@ -162,9 +168,11 @@
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
 │   │   │   ├── evenements
+│   │   │   │   ├── avisMesureDonne.ts
 │   │   │   │   ├── avisUtilisateurDonne.ts
 │   │   │   │   ├── compteCree.ts
 │   │   │   │   ├── mesureConsultee.ts
+│   │   │   │   ├── mesurePriseEnCompte.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
@@ -200,6 +208,7 @@
 │   │   │   ├── entrepotGuideGrist.ts
 │   │   │   ├── entrepotGuideTravailGrist.ts
 │   │   │   ├── entrepotMesurePostgres.ts
+│   │   │   ├── entrepotPriseEnComptePostgres.ts
 │   │   │   ├── entrepotResultatTestPostgres.ts
 │   │   │   ├── entrepotSecretHachagePostgres.ts
 │   │   │   ├── entrepotUtilisateurMPAPostgres.ts
@@ -213,6 +222,7 @@
 │   │   │   ├── serviceVerificationCoherenceSecretsHachage.ts
 │   │   │   └── utilisateurBDD.ts
 │   │   ├── metier
+│   │   │   ├── PriseEnCompte.ts
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── entrepotFavori.ts
@@ -220,6 +230,7 @@
 │   │   │   ├── entrepotGuide.ts
 │   │   │   ├── entrepotGuideTravail.ts
 │   │   │   ├── entrepotMesure.ts
+│   │   │   ├── entrepotPriseEnCompte.ts
 │   │   │   ├── entrepotResultatTest.ts
 │   │   │   ├── entrepotSessionDeGroupe.ts
 │   │   │   ├── entrepotUtilisateur.ts
@@ -308,8 +319,11 @@
 │   │   │   │   ├── ressourceGuides.spec.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.spec.ts
 │   │   │   ├── mesures
+│   │   │   │   ├── constructeurDeMesure.ts
+│   │   │   │   ├── ressourceAvisMesure.spec.ts
 │   │   │   │   ├── ressourceMesure.spec.ts
-│   │   │   │   └── ressourceMesuresDeModule.spec.ts
+│   │   │   │   ├── ressourceMesuresDeModule.spec.ts
+│   │   │   │   └── ressourcePriseEnCompte.spec.ts
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
@@ -360,10 +374,12 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
+│   │   │   ├── consigneEvenementAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMesureConsulteeDansJournal.spec.ts
+│   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.spec.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
@@ -416,6 +432,7 @@
 │   │   │   └── valideSiret.spec.ts
 │   │   ├── mockCmsCrisp.ts
 │   │   ├── persistance
+│   │   │   ├── EntrepotPriseEnCompteMemoire.ts
 │   │   │   ├── EntrepotSessionDeGroupeMemoire.ts
 │   │   │   ├── entrepotExigenceMemoire.ts
 │   │   │   ├── entrepotFavoriMemoire.ts
@@ -1083,7 +1100,9 @@
 │   │   │   │   ├── GrilleCartesMesures.svelte
 │   │   │   │   ├── Mesure.svelte
 │   │   │   │   ├── ModuleCyberdepart.svelte
+│   │   │   │   ├── PriseEnCompteMesure.svelte
 │   │   │   │   ├── Progression.svelte
+│   │   │   │   ├── avisUtilisateur.store.ts
 │   │   │   │   └── mesure.ts
 │   │   │   ├── protection
 │   │   │   │   ├── Proteger.svelte
@@ -1311,4 +1330,4 @@
 │   └── tsconfig.json
 └── scripts
     └── get-node-version.sh
-192 directories, 1164 files
+192 directories, 1183 files
