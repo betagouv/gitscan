@@ -146,6 +146,7 @@
 │   │   ├── 0059_auto_20260323_0925.py
 │   │   ├── 0060_message_date_publication_message_last_updated.py
 │   │   ├── 0061_document_mimetype.py
+│   │   ├── 0062_message_date_picked_and_more.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -170,7 +171,7 @@
 │   │       ├── base_map.mjs
 │   │       ├── bloc_commun.css
 │   │       ├── choices.mjs
-│   │       ├── commune.js
+│   │       ├── commune.mjs
 │   │       ├── contact_add_form.css
 │   │       ├── contact_add_form.js
 │   │       ├── contact_list.css
@@ -684,15 +685,15 @@
 │   │       ├── evenement_form.js
 │   │       ├── evenement_list.css
 │   │       ├── evenement_list.js
-│   │       ├── fichedetection_common.js
 │   │       ├── fichedetection_detail.css
 │   │       ├── fichedetection_form.css
 │   │       ├── fichedetection_form.js
-│   │       ├── fichedetection_lieux_form.js
 │   │       ├── fichedetection_prelevement_form.js
 │   │       ├── fichezone_form.css
 │   │       ├── fichezone_form.mjs
-│   │       └── fichezonedelimitee_detail.css
+│   │       ├── fichezonedelimitee_detail.css
+│   │       ├── lieux.css
+│   │       └── lieux.mjs
 │   ├── templates
 │   │   └── sv
 │   │       ├── _cloturer_modal.html
@@ -702,8 +703,6 @@
 │   │       ├── _evenement_badges.html
 │   │       ├── _fichedetection_detail.html
 │   │       ├── _fichedetection_form__lieu_cant_delete_modal.html
-│   │       ├── _fichedetection_form__lieu_card.html
-│   │       ├── _fichedetection_form__lieu_delete_modal.html
 │   │       ├── _fichedetection_form__lieux_modal.html
 │   │       ├── _fichedetection_form__prelevement_card.html
 │   │       ├── _fichedetection_form__prelevement_delete_modal.html
@@ -726,6 +725,7 @@
 │   │       ├── forms
 │   │       │   ├── element_infeste.html
 │   │       │   ├── element_infeste_base_set.html
+│   │       │   ├── lieu_base_set.html
 │   │       │   └── zone_infestee_base_set.html
 │   │       └── structure_add_to_visibilite_form.html
 │   ├── templatetags
@@ -735,6 +735,9 @@
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
+│   │   ├── generic_tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_fichedetection.py
 │   │   ├── pages.py
 │   │   ├── test_access.py
 │   │   ├── test_api_views.py
@@ -948,4 +951,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-70 directories, 880 files
+71 directories, 882 files

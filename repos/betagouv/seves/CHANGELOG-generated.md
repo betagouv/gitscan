@@ -1,32 +1,60 @@
-## Changelog : seves (30 derniers jours, au 5 juin 2026)
+## Changelog : seves (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'interface utilisateur, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment dans le module SV (Surveillance Vétérinaire). Des améliorations de performance et de fiabilité ont également été apportées, ainsi que des corrections de sécurité.
+Ce mois-ci, les évolutions de Sèves se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans les modules de gestion des cas humains (SSA) et des enquêtes sanitaires (SV). L'intégration avec Mastro progresse, et des corrections ont été apportées pour améliorer la fiabilité et la performance de l'application. Des améliorations de sécurité ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des sauts de ligne dans les commentaires des fiches Zone Délimitée et Détection dans le module SV. [#41e51dc](https://github.com/betagouv/seves/commit/41e51dc)
-- Correction d'une régression dans le formulaire EvenementProduit (SSA) concernant le champ produit prêt à manger avec le nouveau sélecteur arborescent. [#c8bc916](https://github.com/betagouv/seves/commit/c8bc916)
-- Ajout de la possibilité de filtrer par structure sur la page d'administration via ChoiceJS. [#b31d352](https://github.com/betagouv/seves/commit/b31d352)
-- Correction d'un problème avec le type MIME des fichiers EML. [#7ce4ef8](https://github.com/betagouv/seves/commit/7ce4ef8)
-- Amélioration de l'affichage du label complet avec les catégories dans le bouton TreeSelect lors de la sélection d'un élément. [#71bf5c3](https://github.com/betagouv/seves/commit/71bf5c3)
-- Ajout d'un panneau "éléments infestés" au formulaire SV, incluant l'affichage des lieux et prélèvements associés. [#a4f8599](https://github.com/betagouv/seves/commit/a4f8599) et [#8772c4e](https://github.com/betagouv/seves/commit/8772c4e)
-- Possibilité de passer une référence Maestro lors de la création d'un événement, facilitant l'intégration. [#f02247c](https://github.com/betagouv/seves/commit/f02247c)
-- Le nombre de personnes malades est maintenant obligatoire sur les TIAC (Troubles Immédiats Après Consommation). [#531e4a5](https://github.com/betagouv/seves/commit/531e4a5)
-- Suppression de la limitation de 9 caractères pour le numéro RASFF dans le module SV. [#57251bc](https://github.com/betagouv/seves/commit/57251bc)
-- Suppression du drapeau de fonctionnalité (feature flag) pour l'éditeur de texte enrichi. [#f8fe6ed](https://github.com/betagouv/seves/commit/f8fe6ed)
-- Suppression du drapeau de fonctionnalité pour le téléchargement en ZIP. [#b9881ab](https://github.com/betagouv/seves/commit/b9881ab)
+- **SSA (Cas Humains):**
+    - Nouveau sélecteur d'arbre (treeselect) pour l'investigation des cas humains [#2038](https://github.com/betagouv/seves/issues/2038).
+    - Amélioration de l'affichage des dates dans l'historique des événements.
+- **SV (Enquêtes Sanitaires):**
+    - Affichage amélioré des commentaires des fiches de zone délimitée et de détection au format HTML.
+    - Ajout d'un bloc "éléments infestés" au formulaire SV, incluant l'affichage des lieux et prélèvements associés.
+    - Possibilité de choisir une date lors de l'envoi d'un message de note.
+    - Correction d'une régression sur le formulaire `EvenementProduitForm` avec le nouveau treeselect.
+    - Amélioration de l'affichage des lieux et prélèvements sur la page de détails.
+    - Possibilité de télécharger des données au format ZIP.
+- **Général:**
+    - Intégration avec Mastro finalisée [#1010cb5](https://github.com/betagouv/seves/pull/1010cb5).
+    - Correction d'une vulnérabilité XSS potentielle liée au numéro de rappel conso.
+    - Amélioration de la gestion des documents et des notifications.
+    - Possibilité de voir les sous-objets ajoutés dans la même révision.
 
 ### Évolutions techniques
-- Refactorisation de la recherche d'espèce dans le module SV pour utiliser un contrôleur Stimulus dédié. [#54c0ede](https://github.com/betagouv/seves/commit/54c0ede)
-- Amélioration des performances du bloc commun. [#007ff4d](https://github.com/betagouv/seves/commit/007ff4d)
-- Amélioration de la fiabilité de l'application account. [#f951dac](https://github.com/betagouv/seves/commit/f951dac)
-- Correction d'une vulnérabilité XSS potentielle avec le numéro de rappel conso. [#306b5c1](https://github.com/betagouv/seves/commit/306b5c1)
-- Adaptation des exports Europhyt dans le module SV. [#2cb9cc7](https://github.com/betagouv/seves/commit/2cb9cc7)
-- Modification de l'API ChoiceJSPage pour la rendre réutilisable. [#35de83e](https://github.com/betagouv/seves/commit/35de83e)
+- **Dépendances:**
+    - Mise à jour de Django (6.0.5 -> 6.0.6).
+    - Mise à jour de Django-DSFR (3.4.2 -> 3.5.1).
+    - Mise à jour de Redis (7.4.0 -> 8.0.0).
+    - Mise à jour de Ruff (0.15.14 -> 0.15.16).
+    - Mise à jour de Sentry-SDK (2.60.0 -> 2.61.1).
+    - Mise à jour de Beautifulsoup4 (4.14.3 -> 4.15.0).
+    - Mise à jour de Playwright (1.59.0 -> 1.60.0).
+    - Mise à jour de pytest-rerunfailures (16.1 -> 16.3).
+    - Mise à jour de pytest-playwright (0.7.2 -> 0.8.0).
+    - Mise à jour de idna (3.7 -> 3.15).
+    - Mise à jour de django-reversion (6.1.0 -> 6.2.0).
+    - Mise à jour de gunicorn (25.3.0 -> 26.0.0).
+    - Mise à jour de urllib3 (2.6.3 -> 2.7.0).
+- **Refactoring & Performance:**
+    - Refactorisation du formulaire `lieux`.
+    - Optimisation des performances du bloc commun.
+    - Amélioration de la fiabilité des tests.
+    - Suppression de la limite de caractères sur le numéro RASFF dans SV.
+- **Autres:**
+    - Ajout d'un avertissement dans le README concernant l'utilisation de merge-commits pour la MEP.
+    - Suppression du feature flag pour l'éditeur de texte enrichi.
 
 ### Autres changements
-- Ajout d'un webhook pour notifier Maestro. [#3c50a2c](https://github.com/betagouv/seves/commit/3c50a2c)
-- Mise à jour de l'URL de l'API BAN. [#5bf3107](https://github.com/betagouv/seves/commit/5bf3107)
-- Suppression d'un avertissement dans les tests lié à django-widget-tweaks. [#c457d59](https://github.com/betagouv/seves/commit/c457d59)
-- Diverses corrections et améliorations des tests pour augmenter leur fiabilité. [#583d0c7](https://github.com/betagouv/seves/commit/583d0c7), [#954a743](https://github.com/betagouv/seves/commit/954a743), [#34ff415](https://github.com/betagouv/seves/commit/34ff415), [#a14eb40](https://github.com/betagouv/seves/commit/a14eb40), [#8857987](https://github.com/betagouv/seves/commit/8857987)
-- Mise à jour des dépendances : sentry-sdk, ruff, pytest-rerunfailures, pytest-playwright, gunicorn, urllib3, django, django-reversion, idna, playwright. (Ces mises à jour sont gérées par Dependabot et ne sont pas détaillées individuellement).
+- Ajout de webhooks pour notifier Maestro.
+- Changement d'URL de l'API BAN.
+- Amélioration de la gestion des droits d'administration.
+- Correction de problèmes d'affichage des sauts de ligne dans les commentaires.
+- Suppression d'un avertissement dans les tests de django-widget-tweaks.
+- Ajout de différentes couleurs pour les niveaux d'accordéon dans le treeselect.
+- Amélioration de la gestion des dates de réception.
+- Ajout de choixjs pour le filtre de structure sur la page d'administration.
+- Correction d'un problème de type MIME EML.
+- Exclusion des documents de la structure MUS lors de l'envoi de notifications.
+- Nettoyage du code pour `choice_js_fill`.
+- Amélioration de la fiabilité des tests pour SV.
+- Modification de l'approche de mise à jour dans SV.
