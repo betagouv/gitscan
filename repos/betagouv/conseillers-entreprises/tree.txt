@@ -38,6 +38,7 @@
 │   │   │   ├── admin_archivable.rb
 │   │   │   ├── csv_exportable.rb
 │   │   │   ├── dynamically_filtrable.rb
+│   │   │   ├── on_demand_activity_reports.rb
 │   │   │   └── territorial_zones_searchable.rb
 │   │   ├── contact.rb
 │   │   ├── cooperation.rb
@@ -426,18 +427,6 @@
 │   ├── jobs
 │   │   ├── abandon_needs_job.rb
 │   │   ├── activity_reports
-│   │   │   ├── antenne_matches
-│   │   │   │   ├── enqueue_job.rb
-│   │   │   │   └── generate_job.rb
-│   │   │   ├── antenne_stats
-│   │   │   │   ├── enqueue_job.rb
-│   │   │   │   └── generate_job.rb
-│   │   │   ├── cooperation
-│   │   │   │   ├── enqueue_job.rb
-│   │   │   │   └── generate_job.rb
-│   │   │   ├── cooperation_solicitations
-│   │   │   │   ├── enqueue_job.rb
-│   │   │   │   └── generate_job.rb
 │   │   │   ├── notify_antenne_managers_job.rb
 │   │   │   └── notify_cooperation_managers_job.rb
 │   │   ├── add_shared_satisfactions_job.rb
@@ -574,12 +563,11 @@
 │   │       └── expert_subject_serializer.rb
 │   ├── services
 │   │   ├── activity_reports
-│   │   │   ├── generate
-│   │   │   │   ├── antenne_matches.rb
-│   │   │   │   ├── antenne_stats.rb
-│   │   │   │   ├── base.rb
-│   │   │   │   ├── cooperation.rb
-│   │   │   │   └── cooperation_solicitations.rb
+│   │   │   ├── antenne_matches.rb
+│   │   │   ├── antenne_stats.rb
+│   │   │   ├── cooperation_solicitations.rb
+│   │   │   ├── cooperation_stats.rb
+│   │   │   ├── generator_base.rb
 │   │   │   ├── notify_antenne_managers.rb
 │   │   │   └── notify_cooperation_managers.rb
 │   │   ├── antenne_hierarchy.rb
@@ -766,6 +754,7 @@
 │   │   │   ├── months.rb
 │   │   │   ├── quarters.rb
 │   │   │   └── years.rb
+│   │   ├── time_duration_service.rb
 │   │   ├── utilities
 │   │   │   └── arrays.rb
 │   │   ├── xlsx_export
@@ -1345,6 +1334,7 @@
 │   │       └── rswag.rb
 │   ├── rack
 │   │   └── full_remote_ip_and_port.rb
+│   ├── sidekiq_job.rb
 │   └── tasks
 │       ├── annotate_rb.rake
 │       ├── anonymize.rake
@@ -1548,14 +1538,6 @@
 │   ├── jobs
 │   │   ├── abandon_needs_job_spec.rb
 │   │   ├── activity_reports
-│   │   │   ├── antenne_matches
-│   │   │   │   └── generate_job_spec.rb
-│   │   │   ├── antenne_stats
-│   │   │   │   └── generate_job_spec.rb
-│   │   │   ├── cooperation
-│   │   │   │   └── generate_job_spec.rb
-│   │   │   ├── cooperation_solicitations
-│   │   │   │   └── generate_job_spec.rb
 │   │   │   └── notify_antenne_managers_job_spec.rb
 │   │   ├── add_shared_satisfactions_job_spec.rb
 │   │   ├── admin
@@ -1662,12 +1644,11 @@
 │   │   └── solicitations_spec.rb
 │   ├── services
 │   │   ├── activity_reports
-│   │   │   ├── generate
-│   │   │   │   ├── antenne_matches_spec.rb
-│   │   │   │   ├── antenne_stats_spec.rb
-│   │   │   │   ├── base_spec.rb
-│   │   │   │   ├── cooperation_solicitations_spec.rb
-│   │   │   │   └── cooperation_spec.rb
+│   │   │   ├── antenne_matches_spec.rb
+│   │   │   ├── antenne_stats_spec.rb
+│   │   │   ├── cooperation_solicitations_spec.rb
+│   │   │   ├── cooperation_stats_spec.rb
+│   │   │   ├── generator_base_spec.rb
 │   │   │   ├── notify_antenne_managers_spec.rb
 │   │   │   └── notify_cooperation_managers_spec.rb
 │   │   ├── antenne_hierarchy_spec.rb
@@ -1746,6 +1727,7 @@
 │   │   │   ├── months_spec.rb
 │   │   │   ├── quarters_spec.rb
 │   │   │   └── years_spec.rb
+│   │   ├── time_duration_service_spec.rb
 │   │   └── xlsx_export
 │   │       └── cooperation_exporter_spec.rb
 │   ├── spec_helper.rb
@@ -1810,4 +1792,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-312 directories, 1509 files
+302 directories, 1501 files
