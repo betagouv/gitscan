@@ -11,16 +11,19 @@ and this project adheres to
 ### Added
 
 - ✨(back) add cron job to poll Albert models health
+- ✨(back) de-index inactive collections and reindex in conversation
 
 ### Changed
 
 - 🧱(helm) bump chart to v0.0.6
 - 🚸(front) replace help button with a dropdown menu
+- 🔒️(back) restrict sign-in to users with an allowed OIDC role
 
 ### Fixed
 
 - 🐛(helm) stop job pods from matching the backend disruption budget
- 
+- 🐛(front) use the browser language for the default UI on first load
+
 ## [0.0.17] - 2026-06-02
 
 ### Added
@@ -36,6 +39,9 @@ and this project adheres to
 ### Fixed
 
 - 🐛(backend) remove user list endpoint
+
+### Added
+- ✨(frontend): display specific error when LLM provider is down
 
 ## [0.0.16] - 2026-05-21
 
