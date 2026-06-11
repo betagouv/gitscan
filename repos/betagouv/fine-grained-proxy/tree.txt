@@ -1,0 +1,161 @@
+.
+├── .claude
+│   ├── settings.json
+│   └── skills
+│       ├── add-tests
+│       │   └── SKILL.md
+│       ├── check-review-pr
+│       │   └── SKILL.md
+│       ├── sync-docs
+│       │   └── SKILL.md
+│       └── verif
+│           └── SKILL.md
+├── .editorconfig
+├── .env.example
+├── .github
+│   ├── pull_request_template.md
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── ACTIVITY.md
+├── CLAUDE.md
+├── Dockerfile
+├── README.md
+├── deno.json
+├── deno.lock
+├── docs
+│   ├── acceptance-criteria.md
+│   ├── adr
+│   │   ├── 0000-template.md
+│   │   ├── 0001-stack-hono-deno-crypto.md
+│   │   ├── 0002-chiffrement-serveur.md
+│   │   ├── 0003-proxy-agnostique-scopes-generiques.md
+│   │   ├── 0004-body-filters-scopes-structures.md
+│   │   ├── 0005-dual-mode-blob-url-header.md
+│   │   ├── 0006-proxy-transparent-erreurs-upstream.md
+│   │   └── 0007-logs-stream-in-memory-opt-in.md
+│   ├── changelog.md
+│   ├── deno-deploy.md
+│   ├── design
+│   │   ├── and-filter-ui.md
+│   │   ├── body-filters-ui.md
+│   │   ├── guide-examples.md
+│   │   ├── logs-page-and-tab.md
+│   │   ├── presets-reorganization.md
+│   │   └── scalingo-preset-mapping.md
+│   ├── ia-architecture-reference.md
+│   ├── limits.md
+│   ├── review
+│   │   ├── a11y-audit.md
+│   │   ├── ac-coverage.md
+│   │   ├── proxy-transparent-coverage.md
+│   │   ├── recette-e2e-deploy.md
+│   │   ├── recette-visuelle.md
+│   │   ├── tabs-ui-review.md
+│   │   ├── test-scope-ui-review.md
+│   │   ├── ui-review-post-extraction.md
+│   │   └── ui-review.md
+│   ├── scalingo-deploy.md
+│   ├── specs.md
+│   └── team
+│       ├── designer.md
+│       ├── dev.md
+│       ├── lead.md
+│       ├── po.md
+│       └── testeur.md
+├── presentation
+│   ├── .gitignore
+│   ├── .prettierrc.json
+│   ├── README.md
+│   ├── demo-upstream
+│   │   └── server.ts
+│   ├── demo.ts
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
+│   └── slides.md
+├── scripts
+│   ├── changelog.ts
+│   └── version.ts
+├── skills-lock.json
+├── src
+│   ├── auth
+│   │   ├── cache.ts
+│   │   └── client.ts
+│   ├── constants.ts
+│   ├── crypto
+│   │   ├── blob.ts
+│   │   └── share.ts
+│   ├── logs
+│   │   ├── blob-id.ts
+│   │   ├── capture.ts
+│   │   ├── config.ts
+│   │   ├── events.ts
+│   │   ├── ip.ts
+│   │   └── store.ts
+│   ├── main.ts
+│   ├── middleware
+│   │   ├── proxy.ts
+│   │   └── scopes.ts
+│   ├── routes
+│   │   ├── logs.tsx
+│   │   └── ui.tsx
+│   └── ui
+│       ├── changelog-renderer.tsx
+│       ├── client
+│       │   ├── apps.ts
+│       │   ├── body-filters.ts
+│       │   ├── clipboard.ts
+│       │   ├── elements.ts
+│       │   ├── generate.ts
+│       │   ├── import-config.ts
+│       │   ├── logs-tab.ts
+│       │   ├── presets.ts
+│       │   ├── scopes.ts
+│       │   ├── share-config.ts
+│       │   ├── tabs.ts
+│       │   ├── test-scope.ts
+│       │   ├── ttl.ts
+│       │   └── types.ts
+│       ├── client.ts
+│       ├── config-page.tsx
+│       ├── layout.tsx
+│       ├── logs-client.ts
+│       ├── logs-page.tsx
+│       └── tailwind.css
+├── tailwind.config.js
+└── tests
+    ├── testi
+    │   ├── api-edge-cases.test.ts
+    │   ├── api.test.ts
+    │   ├── body-filters.test.ts
+    │   ├── decode.test.ts
+    │   ├── endpoints.test.ts
+    │   ├── header-blob.test.ts
+    │   ├── headers.test.ts
+    │   ├── logs-endpoints.test.ts
+    │   ├── no-token-leak.test.ts
+    │   ├── onerror.test.ts
+    │   ├── proxy-edge-cases.test.ts
+    │   ├── proxy-transparent.test.ts
+    │   ├── proxy.test.ts
+    │   └── test-scope.test.ts
+    └── testu
+        ├── auth
+        │   ├── cache.test.ts
+        │   └── client.test.ts
+        ├── crypto
+        │   ├── blob-validation.test.ts
+        │   └── blob.test.ts
+        ├── example.test.ts
+        ├── logs-blob-id.test.ts
+        ├── logs-capture.test.ts
+        ├── logs-ip.test.ts
+        ├── logs-store.test.ts
+        ├── middleware
+        │   ├── body-filters.test.ts
+        │   ├── scopes-edge-cases.test.ts
+        │   └── scopes.test.ts
+        └── ui
+            └── changelog-renderer.test.ts
+32 directories, 128 files
