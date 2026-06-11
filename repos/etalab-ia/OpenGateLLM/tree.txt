@@ -35,6 +35,7 @@
 │   ├── 2026-01-07-clean-architecture-migration.md
 │   ├── 2026-01-30-es-scaling.md
 │   ├── 2026-03-17-integration-test-isolation.md
+│   ├── 2026-05-28-refactoring-model-forwarding.md
 │   ├── README.md
 │   └── scripts
 │       └── 2026-01-30-es-migration.py
@@ -97,6 +98,15 @@
 │   ├── dependencies.py
 │   ├── domain
 │   │   ├── __init__.py
+│   │   ├── audio
+│   │   │   ├── __init__.py
+│   │   │   └── entities.py
+│   │   ├── chat
+│   │   │   ├── __init__.py
+│   │   │   └── entities.py
+│   │   ├── embeddings
+│   │   │   ├── __init__.py
+│   │   │   └── entities.py
 │   │   ├── key
 │   │   │   ├── __init__.py
 │   │   │   ├── _keyrepository.py
@@ -104,18 +114,30 @@
 │   │   │   └── errors.py
 │   │   ├── model
 │   │   │   ├── __init__.py
+│   │   │   ├── _modelenvironmentalimpactscomputer.py
+│   │   │   ├── _modeltokenizer.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
+│   │   ├── ocr
+│   │   │   ├── __init__.py
+│   │   │   └── entities.py
 │   │   ├── organization
 │   │   │   ├── __init__.py
 │   │   │   └── errors.py
 │   │   ├── provider
 │   │   │   ├── __init__.py
+│   │   │   ├── _provideradapter.py
+│   │   │   ├── _provideradapterbuilder.py
+│   │   │   ├── _providerclient.py
 │   │   │   ├── _providergateway.py
+│   │   │   ├── _providerloadbalancer.py
 │   │   │   ├── _providermetricslogger.py
 │   │   │   ├── _providerrepository.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
+│   │   ├── rerank
+│   │   │   ├── __init__.py
+│   │   │   └── entities.py
 │   │   ├── role
 │   │   │   ├── __init__.py
 │   │   │   ├── _limitrepository.py
@@ -125,9 +147,14 @@
 │   │   │   └── errors.py
 │   │   ├── router
 │   │   │   ├── __init__.py
+│   │   │   ├── _routerratelimiter.py
 │   │   │   ├── _routerrepository.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
+│   │   ├── usage
+│   │   │   ├── __init__.py
+│   │   │   ├── _usagecomputer.py
+│   │   │   └── entities.py
 │   │   └── user
 │   │       ├── __init__.py
 │   │       ├── _userrepository.py
@@ -157,7 +184,6 @@
 │   │   ├── monitoring.py
 │   │   ├── ocr.py
 │   │   ├── parse.py
-│   │   ├── rerank.py
 │   │   └── search.py
 │   ├── helpers
 │   │   ├── __init__.py
@@ -183,10 +209,14 @@
 │   │       └── _modelregistry.py
 │   ├── infrastructure
 │   │   ├── __init__.py
+│   │   ├── ecologit
+│   │   │   ├── __init__.py
+│   │   │   └── _ecologitmodelenvironmentalimpactscomputer.py
 │   │   ├── fastapi
 │   │   │   ├── __init__.py
 │   │   │   ├── access.py
 │   │   │   ├── context.py
+│   │   │   ├── decorators.py
 │   │   │   ├── documentation.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
@@ -198,41 +228,111 @@
 │   │   │   │   │   └── users.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── health.py
-│   │   │   │   └── models.py
+│   │   │   │   ├── models.py
+│   │   │   │   └── rerank.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
 │   │   │       ├── health.py
 │   │   │       ├── models.py
 │   │   │       ├── providers.py
+│   │   │       ├── rerank.py
 │   │   │       ├── roles.py
 │   │   │       ├── routers.py
 │   │   │       └── users.py
 │   │   ├── http
-│   │   │   └── model
+│   │   │   ├── __init__.py
+│   │   │   ├── _httpprovideradapterbuilder.py
+│   │   │   ├── _httpproviderclient.py
+│   │   │   └── adapters
 │   │   │       ├── __init__.py
-│   │   │       ├── _modelhttpclient.py
-│   │   │       ├── _modeltokenizercomputer.py
-│   │   │       ├── _modelusagecomputer.py
-│   │   │       ├── adapters.py
-│   │   │       ├── albert
+│   │   │       ├── _httpprovideradapter.py
+│   │   │       ├── audio
 │   │   │       │   ├── __init__.py
-│   │   │       │   └── _albertmodelhttpclient.py
-│   │   │       ├── exchanges.py
-│   │   │       ├── mistral
+│   │   │       │   ├── _audiotranscriptionsadapter.py
+│   │   │       │   ├── albert
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _albertaudiotranscriptionsadapter.py
+│   │   │       │   ├── mistral
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _mistralaudiotranscriptionsadapter.py
+│   │   │       │   ├── openai
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _openaiaudiotranscriptionsadapter.py
+│   │   │       │   └── vllm
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _vllmaudiotranscriptionsadapter.py
+│   │   │       ├── chat
 │   │   │       │   ├── __init__.py
-│   │   │       │   ├── _mistralmodelhttpclient.py
-│   │   │       │   └── adapters.py
-│   │   │       ├── openai
+│   │   │       │   ├── _chatcompletionsadapter.py
+│   │   │       │   ├── albert
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _albertchatcompletionsadapter.py
+│   │   │       │   ├── mistral
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _mistralchatcompletionsadapter.py
+│   │   │       │   ├── openai
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _openaichatcompletionsadapter.py
+│   │   │       │   └── vllm
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _vllmchatcompletionsadapter.py
+│   │   │       ├── embeddings
 │   │   │       │   ├── __init__.py
-│   │   │       │   └── _openaimodelhttpclient.py
-│   │   │       ├── tei
+│   │   │       │   ├── _embeddingsadapter.py
+│   │   │       │   ├── albert
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _albertembeddingsadapter.py
+│   │   │       │   ├── mistral
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _mistralembeddingsadapter.py
+│   │   │       │   ├── openai
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _openaiembeddingsadapter.py
+│   │   │       │   ├── tei
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _teiembeddingsadapter.py
+│   │   │       │   └── vllm
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _vllmembeddingsadapter.py
+│   │   │       ├── models
 │   │   │       │   ├── __init__.py
-│   │   │       │   ├── _teimodelhttpclient.py
-│   │   │       │   └── adapters.py
-│   │   │       └── vllm
+│   │   │       │   ├── _modelsadapter.py
+│   │   │       │   ├── albert
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _albertmodelsadapter.py
+│   │   │       │   ├── mistral
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _mistralmodelsadapter.py
+│   │   │       │   ├── openai
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _openaimodelsadapter.py
+│   │   │       │   ├── tei
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _teimodelsadapter.py
+│   │   │       │   └── vllm
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _vllmmodelsadapter.py
+│   │   │       ├── ocr
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── _ocradapter.py
+│   │   │       │   ├── albert
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _albertocradapter.py
+│   │   │       │   └── mistral
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _mistralocradapter.py
+│   │   │       └── rerank
 │   │   │           ├── __init__.py
-│   │   │           ├── _vllmmodelhttpclient.py
-│   │   │           └── adapters.py
+│   │   │           ├── _rerankadapter.py
+│   │   │           ├── albert
+│   │   │           │   ├── __init__.py
+│   │   │           │   └── _albertreranksadapter.py
+│   │   │           ├── tei
+│   │   │           │   ├── __init__.py
+│   │   │           │   └── _teireranksadapter.py
+│   │   │           └── vllm
+│   │   │               ├── __init__.py
+│   │   │               └── _vllmreranksadapter.py
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   └── _modelprovidergateway.py
@@ -245,11 +345,16 @@
 │   │   │   ├── _postgresrolesrepository.py
 │   │   │   ├── _postgresrouterrepository.py
 │   │   │   ├── _postgresusersrepository.py
-│   │   │   ├── _postgresuserwithrolerepository.py
+│   │   │   ├── _postgresuserwithrolequery.py
 │   │   │   └── decorators.py
-│   │   └── redis
+│   │   ├── redis
+│   │   │   ├── __init__.py
+│   │   │   ├── _redisproviderloadbalancer.py
+│   │   │   ├── _redisprovidermetricslogger.py
+│   │   │   └── _redisrouterratelimiter.py
+│   │   └── tiktoken
 │   │       ├── __init__.py
-│   │       └── _redisprovidermetricslogger.py
+│   │       └── _tiktokenmodeltokenizer.py
 │   ├── main.py
 │   ├── routers
 │   │   └── registry.py
@@ -286,7 +391,6 @@
 │   │   ├── models.py
 │   │   ├── ocr.py
 │   │   ├── parse.py
-│   │   ├── rerank.py
 │   │   ├── search.py
 │   │   └── usage.py
 │   ├── sql
@@ -346,7 +450,6 @@
 │   │   │   │   ├── test_mistral_image_to_text.py
 │   │   │   │   ├── test_mistral_speech_automatic_regonition.py
 │   │   │   │   ├── test_mistral_text_image_to_text.py
-│   │   │   │   ├── test_tei_text_classification.py
 │   │   │   │   └── test_tei_text_embeddings_inference.py
 │   │   │   ├── test_search.py
 │   │   │   ├── test_tools.py
@@ -361,6 +464,9 @@
 │   │   │   │   │   └── test_bootstrapmodels.py
 │   │   │   │   └── test_createapp.py
 │   │   │   ├── conftest.py
+│   │   │   ├── ecologit
+│   │   │   │   ├── conftest.py
+│   │   │   │   └── test_ecologitmodelenvironmentalimpactscomputer.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── admin
@@ -395,16 +501,20 @@
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
+│   │   │   │   ├── test_rerank.py
 │   │   │   │   └── utils.py
 │   │   │   ├── factories
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── albert.py
+│   │   │   │   ├── http.py
 │   │   │   │   ├── mistral.py
 │   │   │   │   ├── openai.py
 │   │   │   │   ├── redis.py
 │   │   │   │   ├── sql.py
 │   │   │   │   ├── tei.py
 │   │   │   │   └── vllm.py
+│   │   │   ├── http
+│   │   │   │   └── test_httpproviderclient.py
 │   │   │   ├── models
 │   │   │   │   └── test_modelprovidergateway.py
 │   │   │   ├── postgres
@@ -430,28 +540,35 @@
 │   │   │   │       ├── test_get_first_admin_user.py
 │   │   │   │       ├── test_get_user_by_id.py
 │   │   │   │       └── test_get_users.py
-│   │   │   └── redis
-│   │   │       └── test_redisprovidermetricslogger.py
+│   │   │   ├── redis
+│   │   │   │   ├── test_redisproviderloadbalancer.py
+│   │   │   │   ├── test_redisprovidermetricslogger.py
+│   │   │   │   └── test_redisrouterratelimiter.py
+│   │   │   └── tiktoken
+│   │   │       └── test_tiktokenmodeltokenizer.py
 │   │   └── unit
 │   │       ├── __init__.py
+│   │       ├── domain
+│   │       │   ├── __init__.py
+│   │       │   ├── embeddings
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_embeddingsentities.py
+│   │       │   ├── rerank
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_rerankentities.py
+│   │       │   └── usage
+│   │       │       ├── __init__.py
+│   │       │       └── test_usagecomputer.py
 │   │       ├── infrastructure
+│   │       │   ├── factories.py
 │   │       │   ├── fastapi
 │   │       │   │   └── test_access.py
 │   │       │   ├── http
-│   │       │   │   ├── model
-│   │       │   │   │   ├── factories.py
-│   │       │   │   │   ├── mistral
-│   │       │   │   │   │   ├── test_mistral_adapters.py
-│   │       │   │   │   │   └── test_mistralhttpclient.py
-│   │       │   │   │   ├── tei
-│   │       │   │   │   │   ├── test_tei_adapters.py
-│   │       │   │   │   │   └── test_teimodelhttpclient.py
-│   │       │   │   │   ├── test_adapters.py
-│   │       │   │   │   ├── test_modelhttpclientendpoints.py
-│   │       │   │   │   └── vllm
-│   │       │   │   │       ├── test_vllm_adapters.py
-│   │       │   │   │       └── test_vllmmodelhttpclient.py
-│   │       │   │   └── test_modelhttpclient.py
+│   │       │   │   ├── adapters
+│   │       │   │   │   ├── test_embeddingsadapter.py
+│   │       │   │   │   ├── test_modelsadapter.py
+│   │       │   │   │   └── test_rerankadapter.py
+│   │       │   │   └── test_httpprovideradapterbuilder.py
 │   │       │   └── model
 │   │       │       └── test_modelprovidergateway.py
 │   │       ├── test_configuration.py
@@ -512,10 +629,12 @@
 │   │           ├── health
 │   │           │   ├── __init__.py
 │   │           │   └── test_gethealthmodelsusecase.py
-│   │           └── models
-│   │               ├── __init__.py
-│   │               ├── test_getmodelsusecase.py
-│   │               └── test_getmodelusecase.py
+│   │           ├── models
+│   │           │   ├── __init__.py
+│   │           │   ├── test_getmodelsusecase.py
+│   │           │   └── test_getmodelusecase.py
+│   │           └── reranks
+│   │               └── test_creatererankusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -552,11 +671,14 @@
 │   │   ├── health
 │   │   │   ├── __init__.py
 │   │   │   └── _gethealthmodelsusecase.py
-│   │   └── models
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── _bootstrapmodelsusecase.py
+│   │   │   ├── _getmodelsusecase.py
+│   │   │   └── _getmodelusecase.py
+│   │   └── reranks
 │   │       ├── __init__.py
-│   │       ├── _bootstrapmodelsusecase.py
-│   │       ├── _getmodelsusecase.py
-│   │       └── _getmodelusecase.py
+│   │       └── _creatererankusecase.py
 │   └── utils
 │       ├── __init__.py
 │       ├── carbon.py
@@ -808,4 +930,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-169 directories, 641 files
+207 directories, 725 files
