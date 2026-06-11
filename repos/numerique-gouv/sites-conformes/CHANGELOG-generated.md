@@ -1,20 +1,22 @@
-## Changelog : sites-conformes (30 derniers jours, au 7 juin 2026)
+## Changelog : sites-conformes (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Sites Conformes au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de Sentry pour la surveillance des erreurs, des améliorations de la documentation, la possibilité de stocker les médias directement en base de données (PostgreSQL) et des corrections de bugs sur l'interface utilisateur. Des travaux de packagification et de préparation de la release v3.2.0 ont également été réalisés.
+Ce mois-ci, les évolutions de Sites Conformes se concentrent sur l'amélioration de la robustesse du projet, avec l'ajout de Sentry pour la surveillance des erreurs, des corrections de bugs sur le frontend, et des améliorations de la configuration et du packaging. Une nouvelle fonctionnalité permet également le stockage des médias directement en base de données PostgreSQL, offrant une alternative à l'utilisation de S3.
 
 ### Évolutions fonctionnelles
-- **Stockage des médias :** Possibilité de stocker les médias directement en PostgreSQL, offrant une alternative au stockage sur S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
-- **Corrections de bugs front-end :** Résolution de plusieurs bugs affectant l'interface utilisateur. [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
+- Ajout de la possibilité de stocker les médias en PostgreSQL, offrant une alternative à S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
+- Corrections de bugs sur l'interface utilisateur (frontend). [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
+- Intégration de Sentry pour la surveillance et la gestion des erreurs. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
 
 ### Évolutions techniques
-- **Intégration de Sentry :** Ajout de Sentry pour la surveillance et le suivi des erreurs applicatives. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
-- **Packagification :** Travaux de packagification du projet, incluant la récupération de la documentation et la préparation de la release v3.2.0. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506), [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
-- **Mise à jour des dépendances Python :** Mise à jour des dépendances Python pour bénéficier des dernières corrections et améliorations. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
-- **Refactoring :** Déplacement des sources namespacées dans le répertoire `sites_conformes/` en préparation de la release v3.2.0.
-- **Préparation release v3.2.0 :** Application automatique des corrections proposées par `pre-commit` pour la version 3.2.0.
+- Amélioration de la configuration Docker. [#519](https://github.com/numerique-gouv/sites-conformes/issues/519)
+- Refonte du packaging du projet, incluant la récupération de la documentation. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506) et [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
+- Mise à jour des dépendances Python. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
+- Migration des sources namespacées vers `sites_conformes/`.
+- Application automatique de corrections via pre-commit.
+- Correction des erreurs de validation du fichier `publiccode.yml`. [#496](https://github.com/numerique-gouv/sites-conformes/issues/496)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation du projet. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
-- **Nom du dépôt :** Mise à jour du nom du dépôt. [#493](https://github.com/numerique-gouv/sites-conformes/issues/493)
-- **Configuration :** Ajout de `demo` à `slugignore`.
+- Mise à jour de la documentation. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
+- Ajout de `demo` à `slugignore`.
+- Revert d'une migration et ajout d'une nouvelle migration.
