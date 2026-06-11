@@ -577,6 +577,7 @@
 │   │   │   │                       │   │   │   ├── FishAuctionController.kt
 │   │   │   │                       │   │   │   ├── GeneralInfoRestController.kt
 │   │   │   │                       │   │   │   ├── InquiryRestController.kt
+│   │   │   │                       │   │   │   ├── MetabaseEmbedController.kt
 │   │   │   │                       │   │   │   ├── MissionExportController.kt
 │   │   │   │                       │   │   │   ├── MissionRestController.kt
 │   │   │   │                       │   │   │   ├── NatInfRestController.kt
@@ -939,6 +940,7 @@
 │   │   │       │       ├── V1.2026.05.11.10.47__alter_role_type_add_values.sql
 │   │   │       │       ├── V1.2026.05.11.27.47__alter_agent_table_add_card_id.sql
 │   │   │       │       ├── V1.2026.05.28.10.00__create_mission_action_resource_table.sql
+│   │   │       │       ├── V1.2026.06.09.10.00__backfill_location_type_gps_for_controls.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1231,6 +1233,7 @@
 │   │       │                   │   │   │   │       ├── PatchedEnvActionTest.kt
 │   │       │                   │   │   │   │       └── PatchedFishActionTest.kt
 │   │       │                   │   │   │   └── v2
+│   │       │                   │   │   │       ├── MetabaseEmbedControllerTest.kt
 │   │       │                   │   │   │       └── MissionExportControllerTest.kt
 │   │       │                   │   │   ├── model
 │   │       │                   │   │   │   └── sati
@@ -2027,6 +2030,9 @@
 │   │   │   │   │       ├── use-manage-delete-agent-service.tsx
 │   │   │   │   │       ├── use-manage-upsert-agent-service.tsx
 │   │   │   │   │       └── use-manage-upsert-resource-service.tsx
+│   │   │   │   ├── metabase
+│   │   │   │   │   └── services
+│   │   │   │   │       └── use-metabase-embed.tsx
 │   │   │   │   ├── mission-action
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
@@ -2418,6 +2424,7 @@
 │   │   │   │   ├── inquiry-page.tsx
 │   │   │   │   ├── login-page.tsx
 │   │   │   │   ├── manage-page.tsx
+│   │   │   │   ├── metabase-page.tsx
 │   │   │   │   ├── mission-list-pam-page.tsx
 │   │   │   │   ├── mission-list-ulam-page.tsx
 │   │   │   │   ├── mission-pam-page.tsx
@@ -2460,4 +2467,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-492 directories, 2006 files
+494 directories, 2011 files
