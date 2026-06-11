@@ -261,7 +261,6 @@
 │   │   │   │   │   │   ├── docs.dto.ts
 │   │   │   │   │   │   ├── docs.filter.ts
 │   │   │   │   │   │   ├── finders
-│   │   │   │   │   │   │   ├── agenda-nomination-files.finder.ts
 │   │   │   │   │   │   │   ├── agenda.finder.ts
 │   │   │   │   │   │   │   ├── docs-nomination-files.finder.ts
 │   │   │   │   │   │   │   └── reported-nomination-files.finder.ts
@@ -406,7 +405,6 @@
 │   │   │   │   │   │   └── maintenance.service.ts
 │   │   │   │   │   └── maintenance.module.ts
 │   │   │   │   ├── members
-│   │   │   │   │   ├── data.test-controller.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── jurisdiction.ts
 │   │   │   │   │   │   ├── member-enums.ts
@@ -543,9 +541,7 @@
 │   │   │   │   │   │   │   ├── sortable-targeted-grade.ts
 │   │   │   │   │   │   │   └── summary.repository.ts
 │   │   │   │   │   │   ├── session.filter.ts
-│   │   │   │   │   │   ├── session.test-controller.ts
 │   │   │   │   │   │   ├── sessions.service.ts
-│   │   │   │   │   │   ├── sessions.test-service.ts
 │   │   │   │   │   │   ├── summary.filter.ts
 │   │   │   │   │   │   └── summary.service.ts
 │   │   │   │   │   ├── session.controller.ts
@@ -1152,6 +1148,7 @@
 │       ├── tests
 │       │   ├── e2e
 │       │   │   ├── file-affectation.spec.ts
+│       │   │   ├── generate-docs.spec.ts
 │       │   │   ├── login.spec.ts
 │       │   │   ├── manage-session-list.spec.ts
 │       │   │   ├── manage-session.spec.ts
@@ -1165,7 +1162,10 @@
 │       │   │   └── sessions.fixture.ts
 │       │   ├── fixtures.ts
 │       │   ├── pages
+│       │   │   ├── admin.page.ts
 │       │   │   ├── create-session.page.ts
+│       │   │   ├── generate-agenda.page.ts
+│       │   │   ├── generate-official-report.page.ts
 │       │   │   ├── login.page.ts
 │       │   │   ├── manage-sessions.page.ts
 │       │   │   ├── manage-single-session.page.ts
@@ -1189,6 +1189,21 @@
 │   └── api.sh
 ├── package.json
 ├── packages
+│   ├── lolfi
+│   │   ├── .gitignore
+│   │   ├── .oxlintrc.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── generate-lolfi-archive.ts
+│   │   │   ├── generate-lolfi-files.ts
+│   │   │   ├── grade-to-number.ts
+│   │   │   ├── index.ts
+│   │   │   └── types.ts
+│   │   ├── test
+│   │   │   ├── lolfi.test.ts
+│   │   │   └── lolfi.test.ts.snapshot
+│   │   ├── tsconfig.build.json
+│   │   └── tsconfig.json
 │   └── shared-models
 │       ├── .gitignore
 │       ├── .oxlintrc.json
@@ -1216,4 +1231,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-269 directories, 949 files
+272 directories, 961 files

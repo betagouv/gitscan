@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/fondation",
   "name": "fondation",
-  "description": "Donner au CSM les moyens d'un travail efficace et de qualité afin de concourir à la continuité du fonctionnement de l'institution judiciaire et de contribuer à une RH vertueuse du corps de la magistrature.",
+  "description": "Fournir au Conseil Supérieur de la Magistrature les outils nécessaires pour un travail efficace et de qualité, contribuant ainsi au bon fonctionnement de l'institution judiciaire et à une gestion des ressources humaines vertueuse.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,8 +9,8 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Gestion métier générale"
+    "API & Intégrations",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,18 +19,20 @@
     "PostgreSQL",
     "Prisma",
     "axios",
-    "zod"
+    "puppeteer",
+    "tailwindcss"
   ],
   "components": [
-    "Frontend React",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
-    "Node.js / NestJS"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
@@ -38,9 +40,9 @@
     "Playwright"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD with Renovate"
   ],
-  "lastActivity": "2026-06-08T17:55:23+02:00",
+  "lastActivity": "2026-06-10T18:23:05+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
