@@ -66,6 +66,7 @@
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
+├── .talismanrc
 ├── .tooling
 │   ├── prettierrc.js
 │   └── tsconfig.base.json
@@ -233,7 +234,7 @@
 │   │   │   │   │   │   └── photovoltaicPerformance.module.ts
 │   │   │   │   │   └── secondary
 │   │   │   │   │       └── photovoltaic-data-provider
-│   │   │   │   │           ├── PhotovoltaicGeoInfoSystemApi.mock.ts
+│   │   │   │   │           ├── FakePhotovoltaicDataProvider.ts
 │   │   │   │   │           └── PhotovoltaicGeoInfoSystemApi.ts
 │   │   │   │   └── core
 │   │   │   │       ├── gateways
@@ -273,6 +274,29 @@
 │   │   │   │   │   │   ├── reconversionProjects.controller.ts
 │   │   │   │   │   │   └── reconversionProjects.module.ts
 │   │   │   │   │   └── secondary
+│   │   │   │   │       ├── ademe-csv-import
+│   │   │   │   │       │   ├── .gitignore
+│   │   │   │   │       │   ├── README.md
+│   │   │   │   │       │   ├── address-search
+│   │   │   │   │       │   │   ├── AddressSearchGateway.ts
+│   │   │   │   │       │   │   ├── BanAddressSearchGateway.ts
+│   │   │   │   │       │   │   ├── CachedAddressSearchGateway.ts
+│   │   │   │   │       │   │   └── FakeAddressSearchGateway.ts
+│   │   │   │   │       │   ├── ademeScriptDeps.ts
+│   │   │   │   │       │   ├── export
+│   │   │   │   │       │   │   └── ademeImpactsCsvRow.ts
+│   │   │   │   │       │   ├── import
+│   │   │   │   │       │   │   ├── importAdemeProjects.ts
+│   │   │   │   │       │   │   ├── mapAdemeProjectToFriche.ts
+│   │   │   │   │       │   │   ├── mapAdemeProjectToProject.ts
+│   │   │   │   │       │   │   └── parseAdemeProjectsCsv.ts
+│   │   │   │   │       │   └── scripts
+│   │   │   │   │       │       ├── delete-ademe-user-data.ts
+│   │   │   │   │       │       ├── export-ademe-impacts-csv.ts
+│   │   │   │   │       │       ├── export-custom-projects-impacts-csv.ts
+│   │   │   │   │       │       ├── import-ademe-csv.ts
+│   │   │   │   │       │       ├── run-ademe-analysis.sh
+│   │   │   │   │       │       └── strip-trailing-empty-csv-rows.ts
 │   │   │   │   │       ├── queries
 │   │   │   │   │       │   ├── city-stats
 │   │   │   │   │       │   │   ├── InMemoryCityStatsQuery.ts
@@ -285,14 +309,10 @@
 │   │   │   │   │       │   │   ├── InMemoryReconversionProjectImpactsQuery.ts
 │   │   │   │   │       │   │   ├── SqlReconversionProjectImpactsQuery.integration-spec.ts
 │   │   │   │   │       │   │   └── SqlReconversionProjectImpactsQuery.ts
-│   │   │   │   │       │   ├── reconversion-project-list
-│   │   │   │   │       │   │   ├── InMemoryReconversionProjectsListQuery.ts
-│   │   │   │   │       │   │   ├── SqlReconversionProjectsListQuery.integration-spec.ts
-│   │   │   │   │       │   │   └── SqlReconversionProjectsListQuery.ts
-│   │   │   │   │       │   └── site-impacts
-│   │   │   │   │       │       ├── InMemorySiteImpactsQuery.ts
-│   │   │   │   │       │       ├── SqlSiteImpactsQuery.integration-spec.ts
-│   │   │   │   │       │       └── SqlSiteImpactsQuery.ts
+│   │   │   │   │       │   └── reconversion-project-list
+│   │   │   │   │       │       ├── InMemoryReconversionProjectsListQuery.ts
+│   │   │   │   │       │       ├── SqlReconversionProjectsListQuery.integration-spec.ts
+│   │   │   │   │       │       └── SqlReconversionProjectsListQuery.ts
 │   │   │   │   │       └── repositories
 │   │   │   │   │           └── reconversion-project
 │   │   │   │   │               ├── InMemoryReconversionProjectRepository.ts
@@ -318,14 +338,14 @@
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.spec.ts
 │   │   │   │       │   │   ├── UrbanProjectImpactsService.ts
 │   │   │   │       │   │   ├── break-even-level
+│   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.spec.ts
+│   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.ts
 │   │   │   │       │   │   │   ├── documentation-calculs-impacts.md
 │   │   │   │       │   │   │   ├── indirect-economic-impacts
 │   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.ts
 │   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.ts
-│   │   │   │       │   │   │   │   ├── rentalIncomeImpacts.spec.ts
-│   │   │   │       │   │   │   │   ├── rentalIncomeImpacts.ts
 │   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.ts
 │   │   │   │       │   │   │   │   ├── urbanProjectImpacts.spec.ts
@@ -367,6 +387,7 @@
 │   │   │   │       │   │   │       ├── householdsPoweredByRenewableEnergyImpact.spec.ts
 │   │   │   │       │   │   │       └── householdsPoweredByRenewableEnergyImpact.ts
 │   │   │   │       │   │   ├── roads-and-utilities-expenses
+│   │   │   │       │   │   │   ├── roadsAndUtilitiesContruction.ts
 │   │   │   │       │   │   │   ├── roadsAndUtilitiesExpensesImpact.spec.ts
 │   │   │   │       │   │   │   └── roadsAndUtilitiesExpensesImpact.ts
 │   │   │   │       │   │   ├── soils-co2eq-storage
@@ -384,14 +405,9 @@
 │   │   │   │       │   │       └── YearlyUrbanFreshnessRelatedImpacts.ts
 │   │   │   │       │   ├── reconversionProject.mock.ts
 │   │   │   │       │   ├── reconversionProject.ts
-│   │   │   │       │   ├── site-statu-quo-impacts
-│   │   │   │       │   │   └── SiteStatuQuoImpactsService.ts
 │   │   │   │       │   ├── sum-on-evolution-period
 │   │   │   │       │   │   ├── SumOnEvolutionPeriodService.spec.ts
 │   │   │   │       │   │   └── SumOnEvolutionPeriodService.ts
-│   │   │   │       │   ├── urban-sprawl-impacts-comparison
-│   │   │   │       │   │   ├── roadAndUtilitiesMaintenance.ts
-│   │   │   │       │   │   └── roadsAndUtilitiesContruction.ts
 │   │   │   │       │   └── urbanProjects.ts
 │   │   │   │       └── usecases
 │   │   │   │           ├── archiveReconversionProject.usecase.spec.ts
@@ -593,6 +609,10 @@
 │   │   │   │   │   │   ├── sites.controller.ts
 │   │   │   │   │   │   └── sites.module.ts
 │   │   │   │   │   └── secondary
+│   │   │   │   │       ├── site-impacts
+│   │   │   │   │       │   ├── InMemorySiteImpactsQuery.ts
+│   │   │   │   │       │   ├── SqlSiteImpactsQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlSiteImpactsQuery.ts
 │   │   │   │   │       ├── site-query
 │   │   │   │   │       │   ├── InMemorySitesQuery.ts
 │   │   │   │   │       │   ├── SqlSitesQuery.integration-spec.ts
@@ -610,6 +630,13 @@
 │   │   │   │       ├── models
 │   │   │   │       │   ├── agriculturalOperationGenerator.ts
 │   │   │   │       │   ├── fricheGenerator.ts
+│   │   │   │       │   ├── impacts
+│   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.spec.ts
+│   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.ts
+│   │   │   │       │   │   ├── siteIndirectEconomicImpacts.spec.ts
+│   │   │   │       │   │   ├── siteIndirectEconomicImpacts.ts
+│   │   │   │       │   │   ├── siteOperatingEconomicBalance.spec.ts
+│   │   │   │       │   │   └── siteOperatingEconomicBalance.ts
 │   │   │   │       │   ├── naturalAreaGenerator.ts
 │   │   │   │       │   ├── site.mock.ts
 │   │   │   │       │   ├── site.spec.ts
@@ -621,6 +648,8 @@
 │   │   │   │           ├── archiveSite.usecase.spec.ts
 │   │   │   │           ├── archiveSite.usecase.ts
 │   │   │   │           ├── computeFricheInactionCost.usecase.ts
+│   │   │   │           ├── computeSiteImpacts.usecase.spec.ts
+│   │   │   │           ├── computeSiteImpacts.usecase.ts
 │   │   │   │           ├── createNewExpressSite.usecase.spec.ts
 │   │   │   │           ├── createNewExpressSite.usecase.ts
 │   │   │   │           ├── createNewSite.usecase.spec.ts
@@ -631,6 +660,16 @@
 │   │   │   │           ├── getSiteRealEstateValuation.usecase.ts
 │   │   │   │           ├── getSiteViewById.usecase.spec.ts
 │   │   │   │           └── getSiteViewById.usecase.ts
+│   │   │   ├── stats
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── primary
+│   │   │   │   │   │   ├── stats.controller.ts
+│   │   │   │   │   │   └── stats.module.ts
+│   │   │   │   │   └── secondary
+│   │   │   │   │       └── SqlStatsQuery.ts
+│   │   │   │   └── core
+│   │   │   │       └── usecases
+│   │   │   │           └── computeEvaluatedProjectStats.usecase.ts
 │   │   │   └── users
 │   │   │       ├── adapters
 │   │   │       │   ├── primary
@@ -2059,48 +2098,46 @@
 │       │   │   │   │   ├── project-features
 │       │   │   │   │   │   ├── projectFeatures.actions.ts
 │       │   │   │   │   │   └── projectFeatures.reducer.ts
-│       │   │   │   │   ├── project-impacts
-│       │   │   │   │   │   ├── __tests__
-│       │   │   │   │   │   │   ├── impactsOnboardingSkip.spec.ts
-│       │   │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   │   └── projectImpactsFetching.spec.ts
-│       │   │   │   │   │   ├── actions
-│       │   │   │   │   │   │   └── index.ts
-│       │   │   │   │   │   ├── exportImpacts.selectors.ts
-│       │   │   │   │   │   ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
-│       │   │   │   │   │   ├── impactsOnboardingSkip.actions.ts
-│       │   │   │   │   │   ├── impactsOnboardingSkip.selectors.ts
-│       │   │   │   │   │   ├── impactsOnboardingSkip.ts
-│       │   │   │   │   │   ├── projectBreakEvenLevel.selectors.ts
-│       │   │   │   │   │   ├── projectDevelopmentScore.selectors.ts
-│       │   │   │   │   │   ├── projectImpacts.mock.ts
-│       │   │   │   │   │   ├── projectImpacts.reducer.ts
-│       │   │   │   │   │   ├── projectImpactsAreaChartsData.ts
-│       │   │   │   │   │   ├── projectImpactsEconomicBalance.selectors.spec.ts
-│       │   │   │   │   │   ├── projectImpactsEconomicBalance.selectors.ts
-│       │   │   │   │   │   ├── projectImpactsEnvironmental.selectors.spec.ts
-│       │   │   │   │   │   ├── projectImpactsEnvironmental.selectors.ts
-│       │   │   │   │   │   ├── projectImpactsSocial.selectors.spec.ts
-│       │   │   │   │   │   ├── projectImpactsSocial.selectors.ts
-│       │   │   │   │   │   ├── projectImpactsSocioEconomic.selectors.spec.ts
-│       │   │   │   │   │   ├── projectImpactsSocioEconomic.selectors.ts
-│       │   │   │   │   │   ├── projectKeyImpactIndicators.selectors.ts
-│       │   │   │   │   │   └── projectSummary.selector.ts
-│       │   │   │   │   └── project-impacts-urban-sprawl-comparison
-│       │   │   │   │       ├── fetchUrbanSprawlImpactsComparison.action.ts
-│       │   │   │   │       ├── summary.selectors.ts
-│       │   │   │   │       ├── urbanSprawlComparison.reducer.ts
-│       │   │   │   │       ├── urbanSprawlComparisonOnboardingSkip.action.ts
-│       │   │   │   │       └── urbanSprawlComparisonOnboardingSkip.selector.ts
+│       │   │   │   │   └── project-impacts
+│       │   │   │   │       ├── __tests__
+│       │   │   │   │       │   ├── impactsOnboardingSkip.spec.ts
+│       │   │   │   │       │   ├── index.ts
+│       │   │   │   │       │   └── projectImpactsFetching.spec.ts
+│       │   │   │   │       ├── actions
+│       │   │   │   │       │   ├── index.ts
+│       │   │   │   │       │   ├── urbanSprawlComparisonOnboardingSkip.action.ts
+│       │   │   │   │       │   └── urbanSprawlImpactsComparisonRequested.action.ts
+│       │   │   │   │       ├── exportImpacts.selectors.ts
+│       │   │   │   │       ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
+│       │   │   │   │       ├── impactsOnboardingSkip.actions.ts
+│       │   │   │   │       ├── impactsOnboardingSkip.selectors.ts
+│       │   │   │   │       ├── impactsOnboardingSkip.ts
+│       │   │   │   │       ├── projectAvoidedCostsAnalysis.selectors.ts
+│       │   │   │   │       ├── projectBreakEvenLevel.selectors.ts
+│       │   │   │   │       ├── projectDevelopmentScore.selectors.ts
+│       │   │   │   │       ├── projectImpacts.mock.ts
+│       │   │   │   │       ├── projectImpacts.reducer.ts
+│       │   │   │   │       ├── projectImpactsAreaChartsData.ts
+│       │   │   │   │       ├── projectImpactsEconomicBalance.selectors.spec.ts
+│       │   │   │   │       ├── projectImpactsEconomicBalance.selectors.ts
+│       │   │   │   │       ├── projectImpactsEnvironmental.selectors.spec.ts
+│       │   │   │   │       ├── projectImpactsEnvironmental.selectors.ts
+│       │   │   │   │       ├── projectImpactsSocial.selectors.spec.ts
+│       │   │   │   │       ├── projectImpactsSocial.selectors.ts
+│       │   │   │   │       ├── projectImpactsSocioEconomic.selectors.spec.ts
+│       │   │   │   │       ├── projectImpactsSocioEconomic.selectors.ts
+│       │   │   │   │       ├── projectKeyImpactIndicators.selectors.ts
+│       │   │   │   │       ├── projectSummary.selector.ts
+│       │   │   │   │       └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
 │       │   │   │   ├── core
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── projectFeatures.selectors.spec.ts
-│       │   │   │   │   │   ├── projectImpacts.selectors.spec.ts
-│       │   │   │   │   │   └── urbanSprawlComparison.selectors.spec.ts
+│       │   │   │   │   │   └── projectImpacts.selectors.spec.ts
 │       │   │   │   │   ├── projectFeatures.selectors.ts
-│       │   │   │   │   ├── projectImpacts.selectors.ts
-│       │   │   │   │   └── urbanSprawlComparison.selectors.ts
+│       │   │   │   │   └── projectImpacts.selectors.ts
 │       │   │   │   ├── domain
+│       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
+│       │   │   │   │   ├── groupIndirectImpactsByBearer.ts
 │       │   │   │   │   ├── projectImpactsAreaChartsData.ts
 │       │   │   │   │   ├── projectImpactsEconomicBalance.ts
 │       │   │   │   │   ├── projectImpactsEnvironmental.ts
@@ -2122,6 +2159,30 @@
 │       │   │   │   │       ├── HttpUrbanSprawlImpactsComparisonService.ts
 │       │   │   │   │       └── MockUrbanSprawlImpactsComparisonService.ts
 │       │   │   │   └── views
+│       │   │   │       ├── project-avoided-costs-analysis
+│       │   │   │       │   ├── ProjectAvoidedCostsAnalysisPage.tsx
+│       │   │   │       │   ├── avoided-inaction-costs
+│       │   │   │       │   │   ├── ProjectAvoidedInactionCosts.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── avoided-urban-sprawl-costs
+│       │   │   │       │   │   ├── ProjectAvoidedUrbanSprawlCosts.tsx
+│       │   │   │       │   │   ├── index.tsx
+│       │   │   │       │   │   └── introduction
+│       │   │   │       │   │       ├── IntroModal.tsx
+│       │   │   │       │   │       ├── IntroModalAccordion.tsx
+│       │   │   │       │   │       ├── IntroModalFirstStepContent.tsx
+│       │   │   │       │   │       ├── IntroModalSecondStepContent.css
+│       │   │   │       │   │       ├── IntroModalSecondStepContent.tsx
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── index.tsx
+│       │   │   │       │   └── layout
+│       │   │   │       │       ├── ComparisionDetailsMonetaryRow.tsx
+│       │   │   │       │       ├── ComparisonCell.tsx
+│       │   │   │       │       ├── ComparisonGrid.tsx
+│       │   │   │       │       ├── ComparisonMonetaryRow.tsx
+│       │   │   │       │       ├── ScenarioHeader.tsx
+│       │   │   │       │       ├── SectionHeader.tsx
+│       │   │   │       │       └── byBearer.helper.ts
 │       │   │   │       ├── project-break-even-level
 │       │   │   │       │   ├── ProjectBreakEvenLevelActionBar.tsx
 │       │   │   │       │   ├── ProjectBreakEvenLevelSection.tsx
@@ -2157,36 +2218,6 @@
 │       │   │   │       │   ├── StepView.tsx
 │       │   │   │       │   ├── index.tsx
 │       │   │   │       │   └── steps.ts
-│       │   │   │       ├── project-impacts-urban-sprawl-comparison
-│       │   │   │       │   ├── ImpactComparisonSelect.tsx
-│       │   │   │       │   ├── ImpactsComparisonResult.tsx
-│       │   │   │       │   ├── ImpactsComparisonView.tsx
-│       │   │   │       │   ├── description-modals
-│       │   │   │       │   │   └── ImpactComparisonModalDescription.tsx
-│       │   │   │       │   ├── formatSiteData.ts
-│       │   │   │       │   ├── index.tsx
-│       │   │   │       │   ├── introduction
-│       │   │   │       │   │   ├── IntroModal.tsx
-│       │   │   │       │   │   ├── IntroModalAccordion.tsx
-│       │   │   │       │   │   ├── IntroModalFirstStepContent.tsx
-│       │   │   │       │   │   ├── IntroModalSecondStepContent.css
-│       │   │   │       │   │   └── IntroModalSecondStepContent.tsx
-│       │   │   │       │   ├── list-view
-│       │   │   │       │   │   ├── ImpactsComparisonListView.tsx
-│       │   │   │       │   │   ├── layout
-│       │   │   │       │   │   │   ├── TableAccordionRows.tsx
-│       │   │   │       │   │   │   ├── TableHeaderRow.tsx
-│       │   │   │       │   │   │   ├── TableRow.tsx
-│       │   │   │       │   │   │   ├── TableSectionRow.tsx
-│       │   │   │       │   │   │   └── TableSeparatorRow.tsx
-│       │   │   │       │   │   └── sections
-│       │   │   │       │   │       ├── EconomicBalanceSection.tsx
-│       │   │   │       │   │       ├── EnvironmentalSection.tsx
-│       │   │   │       │   │       ├── SocialSection.tsx
-│       │   │   │       │   │       └── SocioEconomicSection.tsx
-│       │   │   │       │   └── summary-view
-│       │   │   │       │       ├── ImpactSummaryView.tsx
-│       │   │   │       │       └── index.tsx
 │       │   │   │       ├── project-page
 │       │   │   │       │   ├── ProjectPage.tsx
 │       │   │   │       │   ├── export-impacts
@@ -2753,6 +2784,7 @@
 │       │   │   │   │           │   │   │   ├── buildingsReaders.spec.ts
 │       │   │   │   │           │   │   │   └── sequencing
 │       │   │   │   │           │   │   │       ├── buildingsOnSiteNoBuildingsPlanned.sequence.spec.ts
+│       │   │   │   │           │   │   │       ├── buildingsOnSiteNoBuildingsUsePlanned.sequence.spec.ts
 │       │   │   │   │           │   │   │       ├── fullReuseWithNewConstruction.sequence.spec.ts
 │       │   │   │   │           │   │   │       ├── newConstructionOnlyWithDemolition.sequence.spec.ts
 │       │   │   │   │           │   │   │       ├── partialReuseWithDemolitionAndNewConstruction.sequence.spec.ts
@@ -3384,6 +3416,7 @@
 │       │   │   ├── index.ts
 │       │   │   ├── reconversion-projects
 │       │   │   │   ├── getReconversionProjectFeatures.dto.ts
+│       │   │   │   ├── getReconversionProjectImpacts.dto.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── site-actions
 │       │   │   │   ├── index.ts
@@ -3393,6 +3426,7 @@
 │       │   │   │   ├── createExpressSite.dto.ts
 │       │   │   │   ├── getFricheInactionCost.ts
 │       │   │   │   ├── getSiteFeatures.dto.ts
+│       │   │   │   ├── getSiteImpacts.dto.ts
 │       │   │   │   ├── getSiteRealEstateValuation.dto.ts
 │       │   │   │   ├── getSiteView.dto.ts
 │       │   │   │   └── index.ts
@@ -3544,15 +3578,12 @@
 │       │   │   ├── soilDistributionByType.ts
 │       │   │   ├── soils.spec.ts
 │       │   │   └── soilsDistributionObjToArray.ts
-│       │   ├── surface-area
-│       │   │   ├── index.ts
-│       │   │   ├── surfaceArea.spec.ts
-│       │   │   ├── surfaceArea.ts
-│       │   │   ├── surfaceAreaDistribution.spec.ts
-│       │   │   └── surfaceAreaDistribution.ts
-│       │   └── urban-sprawl-impacts-comparison
+│       │   └── surface-area
 │       │       ├── index.ts
-│       │       └── types.ts
+│       │       ├── surfaceArea.spec.ts
+│       │       ├── surfaceArea.ts
+│       │       ├── surfaceAreaDistribution.spec.ts
+│       │       └── surfaceAreaDistribution.ts
 │       ├── tsconfig.json
 │       └── tsdown.config.ts
 ├── pnpm-lock.yaml
@@ -3561,4 +3592,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-967 directories, 2596 files
+973 directories, 2621 files

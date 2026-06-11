@@ -1,3 +1,47 @@
+2026-06-10T23:42:59+02:00 - 0589282 - stephane-ruhlmann : Merge branch 'debug/pvgis-flaky-tests': fix e2e flakiness (CRM crash + API boot race)
+2026-06-10T23:27:10+02:00 - 83de2d4 - stephane-ruhlmann : fix(e2e-tests): add API healthcheck so the stack waits for NestJS before running tests
+2026-06-10T23:21:58+02:00 - 8fee866 - stephane-ruhlmann : revert(e2e-tests): drop PVGIS-flakiness band-aids superseded by backend fakes
+2026-06-10T23:18:29+02:00 - ec734ee - stephane-ruhlmann : revert(e2e-tests): remove temporary debug scaffolding and test isolation
+2026-06-10T23:16:59+02:00 - f2e17a0 - stephane-ruhlmann : fix(api): prevent CRM event handler failures from crashing the API process
+2026-06-10T23:02:48+02:00 - 657919b - stephane-ruhlmann : refactor: swap CRM and PVGIS external APIs for fakes in e2e tests
+2026-06-10T22:28:58+02:00 - 0c02a70 - stephane-ruhlmann : revert: remove temporary debug logging from PV creation e2e tests
+2026-06-10T22:25:39+02:00 - b6d303a - stephane-ruhlmann : debug(e2e-tests): isolate flaky PV demo mode test with enhanced CI logging
+2026-06-10T17:52:58+02:00 - 3303f6a - stephane-ruhlmann : fix(api): add 10s timeout to PVGIS HTTP requests so they don't hang forever
+2026-06-10T17:38:09+02:00 - 79b1fcb - stephane-ruhlmann : debug(e2e-tests): log page content and network responses on PV creation test failure
+2026-06-10T16:55:48+02:00 - ae8c273 - stephane-ruhlmann : fix(e2e-tests): increase assertion timeout for CI-slow network-dependent checks
+2026-06-10T16:23:22+02:00 - 7c0b34b - stephane-ruhlmann : feat(ci): cache docker image builds for e2e tests job
+2026-06-10T16:15:23+02:00 - cdeed9e - stephane-ruhlmann : feat(e2e-tests): limit PV project creation test flakiness by stubbing photovoltaic performance API route
+2026-06-10T15:36:01+02:00 - 3634aaf - stephane-ruhlmann : docs: specify expected PostgreSQL version in Readme
+2026-06-10T12:14:48+02:00 - 819a4d1 - stephane-ruhlmann : refactor(api): split ademe-csv-import into address-search, import, export, and scripts subfolders
+2026-06-10T12:00:10+02:00 - e821bba - stephane-ruhlmann : feat(api): structure, document and orchestrate ADEME reconversion projects analysis pipeline
+2026-06-10T12:00:10+02:00 - 3a7a9c8 - stephane-ruhlmann : tools(api): add script to export impacts CSV for all custom reconversion projects
+2026-06-10T12:00:09+02:00 - c63da3c - stephane-ruhlmann : feat: create script to create reconversion projects from CSV file
+2026-06-10T11:37:20+02:00 - 15b0311 - Claire Dhénin : fix(api): missing gdp_evolution in taxes income site impact sum
+2026-06-10T11:37:20+02:00 - 0d497fd - Claire Dhénin : feat: rework impact comparison tab to display inaction costs and urban sprawl comparison costs
+2026-06-10T11:37:20+02:00 - 0506228 - Claire Dhénin : feat(api): create endpoint to compute site statu quo impacts
+2026-06-09T21:50:34+02:00 - dcd49d8 - stephane-ruhlmann : fix(api): set CI=true in postdeploy hook to fix pnpm 11 no-TTY abort
+2026-06-09T15:58:29+02:00 - 058e9d9 - stephane-ruhlmann : chore: upgrade pnpm from 10.31.0 to 11.5.2
+2026-06-09T15:56:19+02:00 - 8c761b8 - stephane-ruhlmann : chore(api): assign non-default ports to mailcatcher for tests
+2026-06-09T15:43:23+02:00 - b896d18 - stephane-ruhlmann : chore(ci): remove e2e tests debug timeout and pw:install logging
+2026-06-09T14:50:56+02:00 - 4374188 - stephane-ruhlmann : fix(e2e-tests): upgrade playwright to 1.60.0 to fix browser install hang on Node.js 24.16.0
+2026-06-09T14:18:42+02:00 - aba29d0 - stephane-ruhlmann : debug(ci): add timeout and debug for Playwright browser installation
+2026-06-09T13:35:21+02:00 - f6af9cc - stephane-ruhlmann : fix(e2e-tests): fix playwright install hanging by pinning chromium browser and adding cache
+2026-06-09T12:49:51+02:00 - 4963c04 - stephane-ruhlmann : chore: add talisman secret scanning to pre-commit hook
+2026-06-08T16:15:51+02:00 - 5c00498 - stephane-ruhlmann : feat(web): update form info text for real estate valuation DVF link
+2026-06-08T15:50:13+02:00 - 9825fbf - stephane-ruhlmann : fix(web): skip buildings intro step when site has buildings but project has none
+2026-06-08T11:12:46+02:00 - 5c427ae - stephane-ruhlmann : Merge feat/infra-security-observability-track-c into main
+2026-06-08T11:09:04+02:00 - f34e292 - stephane-ruhlmann : tools: use Sonnet to run-e2e-tests skill
+2026-06-08T11:08:19+02:00 - 26f7d3f - stephane-ruhlmann : refactor(api): improve error logging
+2026-06-08T11:06:50+02:00 - 61785ed - stephane-ruhlmann : security(api): add throttler
+2026-05-26T11:35:54+02:00 - a8348db - Claire Dhénin : feat(api): add more informations in result of stats search endpoint
+2026-05-26T10:37:08+02:00 - 4b623c2 - Claire Dhénin : fix(api): wrong arguments on stats endpoint usecase and sql service
+2026-05-20T14:09:07+02:00 - b46acf0 - Claire Dhénin : refacto(api): wrong folder structure for stats module
+2026-05-20T13:56:40+02:00 - cc5c81b - Claire Dhénin : feat(api): add endpoint to compute stats on average break even and inaction costs for given reconversion project ids
+2026-05-20T08:42:48+02:00 - a06c0bc - Claire Dhénin : fix(e2e): wrong urban zone generated name
+2026-05-20T08:24:44+02:00 - 52544b3 - Claire Dhénin : feat(web): use urbanZoneType to generate default site name in creation form
+2026-05-19T11:28:21+02:00 - 1fe81aa - Claire Dhénin : fix(web): reduce height of break even level chart
+2026-05-19T11:20:44+02:00 - b09f78a - Claire Dhénin : fix(web): update badge layout for break even year and change text if break even year index is 0
+2026-05-19T10:27:25+02:00 - 595bb80 - Claire Dhénin : fix: break even summary if break even level is firstYear and changes zoom on summary leaflet map
 2026-05-13T17:00:40+02:00 - ac91bf5 - stephane-ruhlmann : docs(web): fix malformed code block in quality guards section
 2026-05-12T17:39:51+02:00 - c23a4d7 - stephane-ruhlmann : docs(api): migrate CLAUDE.md patterns to path-scoped rules in .claude/rules/api
 2026-05-12T17:12:59+02:00 - e28428f - stephane-ruhlmann : fix(web): wire buildings reuse/construction intros in urban project update wizard
