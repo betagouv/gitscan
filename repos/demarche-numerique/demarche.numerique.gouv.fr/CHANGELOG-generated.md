@@ -1,100 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 8 juin 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité avec l'ajout d'une authentification à deux facteurs pour les administrateurs, des optimisations de performance, notamment au niveau des requêtes en base de données et de l'import de données, et une migration vers des technologies plus récentes. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées, notamment au niveau de la gestion des champs, des exports et de l'interface administrateur.
+Cette période a été marquée par des améliorations de la sécurité (authentification, gestion des OTP), des optimisations de performance (requêtes, jobs), des corrections de bugs (import de données, affichage d'informations) et des refactorings importants pour préparer l'évolution de la plateforme, notamment concernant l'intégration avec l'API Entreprise v4 et la migration vers des technologies plus modernes. Des améliorations de l'expérience utilisateur ont également été apportées, notamment dans l'administration et la gestion des dossiers.
 
 ### Évolutions fonctionnelles
-- Ajout d'une authentification à deux facteurs (OTP) pour les administrateurs, renforçant la sécurité de l'accès aux fonctionnalités sensibles.
-- Amélioration de l'interface utilisateur pour la correction de demandes, avec une meilleure indication des changements non sauvegardés.
+- Ajout d'un bouton "ProConnect" pour les usagers concernés, permettant l'accès à la procédure simplifiée. [#13015](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/13015)
 - Amélioration de l'affichage des informations sur les avis des experts.
-- Possibilité de filtrer les opérations en lot sur les instructeurs en fonction de leur statut de suivi.
-- Ajout d'un bouton "ProConnect" pour les professionnels lors de la connexion.
-- Amélioration de l'affichage des informations de l'entreprise dans l'interface administrateur.
-- Correction d'un bug empêchant la suppression de groupes d'instructeurs par défaut lors d'un import.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction d'un problème d'affichage des changements non sauvegardés dans l'éditeur administrateur.
-- Amélioration de l'affichage des breadcrumbs pour les différents rôles utilisateurs.
-- Correction d'un bug lié à la redirection après une tentative de connexion ProConnect échouée.
-- Amélioration de la gestion des champs de type "liste déroulante" avec des références externes.
+- Possibilité de préremplir le champ date de naissance avec les informations FranceConnect.
+- Ajout d'un indicateur visuel pour les champs préremplis avec FranceConnect.
+- Amélioration de la gestion des erreurs lors des opérations par lots.
+- Ajout d'un message d'avertissement lors de la tentative de suppression du groupe d'instructeurs par défaut lors d'un import.
+- Amélioration de l'affichage des breadcrumbs dans l'interface d'administration.
+- Ajout d'un bouton pour insérer des sauts de page dans l'éditeur d'attestations.
+- Amélioration de la gestion des erreurs lors de l'importation de fichiers CSV.
+- Ajout d'une option pour masquer les champs lors de l'archivage.
+- Amélioration de l'affichage des informations sur les procédures.
+- Ajout de la possibilité de filtrer les opérations par lots en fonction du statut de l'instructeur.
 
 ### Évolutions techniques
-- Migration de composants HAML vers ERB pour une meilleure maintenabilité et performance.
-- Refactorisation du code pour améliorer la lisibilité et la modularité.
-- Optimisation des requêtes en base de données pour améliorer les performances.
-- Mise à jour de nombreuses dépendances (Puma, Selenium, etc.) pour bénéficier des dernières corrections de sécurité et améliorations.
-- Utilisation de monades `Dry::Monads` pour une meilleure gestion des erreurs dans le service `APIEntreprise`.
-- Amélioration de la gestion des erreurs et des logs.
-- Mise en place d'un système de cache pour les configurations OIDC (France Connect / Passport).
-- Refactorisation du code lié à l'archivage des dossiers pour améliorer la performance et la fiabilité.
-- Amélioration des tests unitaires et d'intégration.
-- Utilisation de Sidekiq pour la gestion des tâches asynchrones, avec une meilleure gestion des retries.
+- Refactor de l'intégration avec l'API Entreprise, incluant la gestion des erreurs et l'utilisation de monads `Result`.
+- Migration de plusieurs composants vers ERB pour une meilleure maintenabilité.
+- Optimisation des requêtes SQL pour améliorer les performances.
+- Mise à jour de nombreuses dépendances (Puma, Rubocop, etc.).
+- Amélioration de la gestion des erreurs et des exceptions.
+- Utilisation de Sidekiq pour la gestion asynchrone des tâches.
+- Refactor de la gestion des OTP (One-Time Password) pour améliorer la sécurité.
+- Amélioration de la gestion des configurations OIDC (OpenID Connect).
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+- Suppression de code obsolète et simplification de la base de code.
 - Amélioration de la gestion des fichiers et des uploads.
-- Correction de problèmes de performance liés à l'export de données.
+- Correction de problèmes de sécurité liés à l'importation de fichiers.
+- Amélioration de la gestion des erreurs lors de l'importation de données.
+- Mise en place d'un système de cache pour améliorer les performances.
+- Refactor de la gestion des champs et des types de champs.
+- Amélioration de la gestion des autorisations et des rôles.
 
 ### Autres changements
 - Mise à jour de la documentation.
 - Amélioration de la configuration du projet.
-- Nettoyage du code et suppression de code obsolète.
-- Ajout de tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Correction de problèmes de validation dans le fichier `publiccode.yml`.
-- Amélioration de la gestion des traductions.
-- Correction de problèmes de linting et de style de code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
+- Nettoyage du code et correction de problèmes de style.
+- Ajout de tests pour améliorer la qualité du code.
+- Correction de bugs mineurs.
+- Mise à jour des fichiers de configuration pour l'intégration continue.
 - Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
+- Ajout de métriques pour le suivi des performances.
+- Correction de problèmes de validation des données.
+- Amélioration de la gestion des erreurs lors de l'importation de données.
+- Ajout de traductions pour les nouvelles fonctionnalités.
+- Correction de problèmes de compatibilité avec les navigateurs.
 - Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de compatibilité avec différentes versions de Ruby et de Rails.
-- Correction de problèmes d'affichage sur différents navigateurs.
-- Amélioration de l'accessibilité du site web.
-- Correction de problèmes de performance sur les pages les plus chargées.
-- Amélioration de la gestion des erreurs lors de l'import de données.
-- Correction de problèmes de sécurité potentiels.
-- Ajout de tests pour la gestion des erreurs.
+- Correction de problèmes de sécurité.
+- Mise à jour des dépendances.
+- Amélioration de la gestion des erreurs.
+- Ajout de tests unitaires.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.
+- Ajout de nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la sécurité.
+- Mise à jour des dépendances.
+- Correction de bugs.
+- Amélioration de la documentation.
+- Refactor du code.

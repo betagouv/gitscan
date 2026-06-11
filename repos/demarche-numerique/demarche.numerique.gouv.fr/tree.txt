@@ -1521,6 +1521,8 @@
 │   │   │   ├── create_direct_upload.rb
 │   │   │   ├── demarche_ajouter_administrateur.rb
 │   │   │   ├── demarche_cloner.rb
+│   │   │   ├── demarche_modifier_parametres.rb
+│   │   │   ├── demarche_publier.rb
 │   │   │   ├── demarche_supprimer_administrateur.rb
 │   │   │   ├── dossier_accepter.rb
 │   │   │   ├── dossier_ajouter_label.rb
@@ -2557,6 +2559,7 @@
 │   │       ├── prefill_individual_email_verified_at_task.rb
 │   │       ├── prefill_user_email_verified_at_task.rb
 │   │       ├── recompute_blob_checksum_task.rb
+│   │       ├── regenerate_attestation_task.rb
 │   │       ├── remove_non_unique_champs_task.rb
 │   │       ├── resolve_pending_correction_for_dossier_with_invalid_commune_external_id_task.rb
 │   │       ├── samsung_browser_is_supported_task.rb
@@ -4520,6 +4523,7 @@
 │   │   ├── 20260402182757_recreate_search_terms_indexes_with_unaccent.rb
 │   │   ├── 20260407120000_add_api_entreprise_token_expiration_notice_sent_at_to_procedures.rb
 │   │   ├── 20260421120000_add_partial_index_for_stalled_declarative_dossiers.rb
+│   │   ├── 20260423120000_add_pro_connect_for_moral_procedure_to_procedures.rb
 │   │   ├── 20260427100611_add_last_export_seen_at_to_instructeurs_procedures.rb
 │   │   ├── 20260429133815_add_source_stream_to_champs.rb
 │   │   ├── 20260504090452_add_partial_index_on_blobs_pending_virus_scan.rb
@@ -5798,6 +5802,8 @@
 │   │   │   └── procedure_sort_spec.rb
 │   │   ├── integrateurs
 │   │   │   └── procedure_prefilling_spec.rb
+│   │   ├── manager
+│   │   │   └── instructeurs_spec.rb
 │   │   ├── outdated_browser_spec.rb
 │   │   ├── patron_spec.rb
 │   │   ├── playground_spec.rb
@@ -5855,6 +5861,7 @@
 │   │       ├── populate_rna_json_value_task_spec.rb
 │   │       ├── populate_rnf_json_value_task_spec.rb
 │   │       ├── populate_siret_value_json_task_spec.rb
+│   │       ├── regenerate_attestation_task_spec.rb
 │   │       ├── resolve_pending_correction_for_dossier_with_invalid_commune_external_id_task_spec.rb
 │   │       ├── spread_dossier_deletion_task_spec.rb
 │   │       ├── t20250106_fix_closed_procedures_replaced_by_self_task_spec.rb
@@ -5975,7 +5982,8 @@
 │       ├── commencer
 │       │   └── show.html.haml_spec.rb
 │       ├── dossiers
-│       │   └── dossier_vide.pdf.prawn_spec.rb
+│       │   ├── dossier_vide.pdf.prawn_spec.rb
+│       │   └── show.pdf.prawn_spec.rb
 │       ├── experts
 │       │   └── avis
 │       │       ├── index.html.haml_spec.rb
@@ -6047,4 +6055,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-966 directories, 5399 files
+967 directories, 5406 files
