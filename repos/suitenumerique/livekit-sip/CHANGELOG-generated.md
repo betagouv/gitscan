@@ -1,20 +1,27 @@
-## Changelog : livekit-sip (30 derniers jours)
+## Changelog : livekit-sip (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au pont SIP vers WebRTC pour LiveKit. Les récentes mises à jour se concentrent sur l'amélioration de la stabilité, du diagnostic et des performances, notamment en gérant mieux les paquets RTP, en ajoutant des logs plus détaillés et en optimisant le traitement des requêtes SIP.
+Ce changelog présente les améliorations apportées au pont SIP vers WebRTC pour LiveKit au cours du dernier mois. Les mises à jour se concentrent sur l'amélioration de la stabilité des appels, la correction de problèmes liés à la gestion des médias (codec AMR-WB, TURN, RTP symétrique), l'amélioration de la catégorisation des erreurs SIP et l'ajout de configurations avancées (ALPN, realm d'authentification).
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des appels entrants avec des ajustements au traitement des messages INVITE [#589](https://github.com/suitenumerique/livekit-sip/pull/589).
-- Ajout du support pour les trames UDP jumbo, permettant potentiellement d'améliorer le débit et de réduire la latence dans certaines configurations réseau [#527](https://github.com/suitenumerique/livekit-sip/pull/527).
+- Ajout du support du codec AMR-WB, offrant une meilleure qualité audio pour les appels (optionnel) [#693](https://github.com/suitenumerique/livekit-sip/issues/693).
+- Amélioration de la gestion des erreurs d'appels sortants, avec une meilleure catégorisation des échecs d'invitation, notamment en cas de déconnexion de la salle [#692](https://github.com/suitenumerique/livekit-sip/issues/692), [#691](https://github.com/suitenumerique/livekit-sip/issues/691), [#690](https://github.com/suitenumerique/livekit-sip/issues/690), [#703](https://github.com/suitenumerique/livekit-sip/issues/703).
+- Correction d'un problème de RTP symétrique, améliorant la compatibilité avec certains équipements SIP [#706](https://github.com/suitenumerique/livekit-sip/issues/706).
+- Ajout d'un mécanisme de cache pour les appels ayant échoué, permettant de réessayer plus efficacement [#694](https://github.com/suitenumerique/livekit-sip/issues/694).
+- Possibilité de configurer le realm d'authentification pour les appels entrants [#688](https://github.com/suitenumerique/livekit-sip/issues/688).
+- Possibilité de configurer les protocoles ALPN pour TLS [#686](https://github.com/suitenumerique/livekit-sip/issues/686).
 
 ### Évolutions techniques
-- Collecte de statistiques sur le buffer de gigue (jitter buffer) pour aider au diagnostic des problèmes de qualité audio [#596](https://github.com/suitenumerique/livekit-sip/pull/596).
-- Correction d'une erreur dans la mise à jour des statistiques `packets_input` après un traitement RTP réussi [#591](https://github.com/suitenumerique/livekit-sip/pull/591).
-- Mise en cache des identifiants attribués avant le dialogue pour optimiser le traitement des requêtes SIP [#590](https://github.com/suitenumerique/livekit-sip/pull/590).
-- Modification du code d'erreur `psrpc.Canceled` en `psrpc.DeadlineExceeded` pour une meilleure conformité et clarté [#581](https://github.com/suitenumerique/livekit-sip/pull/581).
-- Gestion améliorée des paquets RTP entrants, avec un rejet des paquets avant le démarrage de la boucle RTP pour éviter les pertes et les erreurs [#576](https://github.com/suitenumerique/livekit-sip/pull/576).
-- Ajout de logs plus détaillés pour les erreurs de terminaison et le signal SIP [#569](https://github.com/suitenumerique/livekit-sip/pull/569) et [#558](https://github.com/suitenumerique/livekit-sip/pull/558).
-- Correction d'un log excessif pour les paquets RTP plus grands que la MTU [#586](https://github.com/suitenumerique/livekit-sip/pull/586).
+- Mise à jour de la librairie media SDK pour corriger des problèmes avec le codec AMR-WB [#704](https://github.com/suitenumerique/livekit-sip/issues/704), [#695](https://github.com/suitenumerique/livekit-sip/issues/695).
+- Activation de TURN pour LiveKit RTC, améliorant la connectivité dans des environnements réseau complexes [#707](https://github.com/suitenumerique/livekit-sip/issues/707).
+- Désactivation de TURN pour LiveKit RTC, permettant une configuration plus fine en fonction des besoins [#689](https://github.com/suitenumerique/livekit-sip/issues/689).
+- Correction d'une condition de course (race condition) lors de l'annulation d'appels, améliorant la stabilité des tests [#684](https://github.com/suitenumerique/livekit-sip/issues/684).
+- Amélioration de la gestion du timeout média, avec une configuration par appel [#673](https://github.com/suitenumerique/livekit-sip/issues/673), [#683](https://github.com/suitenumerique/livekit-sip/issues/683).
+- Consolidation des logs liés aux tracks, facilitant le débogage [#677](https://github.com/suitenumerique/livekit-sip/issues/677).
+- Correction de la catégorisation des erreurs SIP [#687](https://github.com/suitenumerique/livekit-sip/issues/687).
+- Clonage de `CallInfo` pour éviter les accès concurrents [#709](https://github.com/suitenumerique/livekit-sip/issues/709).
+- Suppression du cache inutile dans le workflow "Release to Docker" [#681](https://github.com/suitenumerique/livekit-sip/issues/681).
 
 ### Autres changements
-- Amélioration des tests E2E, notamment en déplaçant les tests de sonnerie et en permettant une configuration plus flexible des participants SIP [#587](https://github.com/suitenumerique/livekit-sip/pull/587) et [#584](https://github.com/suitenumerique/livekit-sip/pull/584).
+- Mise à jour de la dépendance `protocol/psrpc` et suppression du package `pkg/errors` [#708](https://github.com/suitenumerique/livekit-sip/issues/708).
+- Limitation du nombre d'impressions des changements de source et de destination dans les logs [#705](https://github.com/suitenumerique/livekit-sip/issues/705).

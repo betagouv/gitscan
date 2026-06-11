@@ -8,6 +8,7 @@
 │       ├── docker.yaml
 │       └── test.yaml
 ├── .gitignore
+├── .golangci.yml
 ├── LICENSE.txt
 ├── NOTICE
 ├── README.md
@@ -43,6 +44,7 @@
 │   │   ├── client.go
 │   │   ├── config.go
 │   │   ├── errors.go
+│   │   ├── errors_test.go
 │   │   ├── features.go
 │   │   ├── inbound.go
 │   │   ├── media.go
@@ -59,14 +61,18 @@
 │   │   ├── protocol.go
 │   │   ├── protocol_test.go
 │   │   ├── room.go
+│   │   ├── rpc.go
 │   │   ├── server.go
 │   │   ├── service.go
 │   │   ├── service_test.go
 │   │   ├── signal_logger.go
 │   │   ├── signal_logger_test.go
 │   │   ├── signaling_test.go
+│   │   ├── signaling_timestamps.go
 │   │   ├── silence_filler.go
 │   │   ├── silence_filler_test.go
+│   │   ├── srtp_conn.go
+│   │   ├── srtp_conn_test.go
 │   │   ├── tls.go
 │   │   ├── tls_test.go
 │   │   └── types.go
@@ -74,7 +80,8 @@
 │   │   └── client.go
 │   └── stats
 │       ├── healthstatus_string.go
-│       └── monitor.go
+│       ├── monitor.go
+│       └── termination.go
 ├── renovate.json
 ├── res
 │   ├── README.md
@@ -115,4 +122,4 @@
 │       └── main.go
 └── version
     └── version.go
-27 directories, 90 files
+27 directories, 97 files
