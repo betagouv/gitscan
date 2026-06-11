@@ -18,10 +18,12 @@
 ├── .prettierrc
 ├── .versionrc.json
 ├── CHANGELOG.md
+├── CONTRIBUTORS.md
 ├── LICENSE
 ├── Procfile
 ├── README.md
 ├── build.bash
+├── hexagonal-architecture.png
 ├── nx.json
 ├── package.json
 ├── packages
@@ -40,6 +42,7 @@
 │   │   │   └── images
 │   │   │       └── favicons
 │   │   │           └── favicon.ico
+│   │   ├── dn-fixture.json
 │   │   ├── docker-compose.yml
 │   │   ├── eslint.config.mjs
 │   │   ├── jest-mongodb-config.js
@@ -128,7 +131,8 @@
 │   │   │   ├── 20260320072628-chorus-remove-indexed-informations.js
 │   │   │   ├── 20260323195850-remove-overwriteAlert-deposit-log.js
 │   │   │   ├── 20260428231703-osiris-request-raw-entity.js
-│   │   │   └── 20260512233618-osiris-action-raw-entity.js
+│   │   │   ├── 20260512233618-osiris-action-raw-entity.js
+│   │   │   └── 20260605132926-add-service-instructeur-to-dn-application-flat.js
 │   │   ├── nodemon.json
 │   │   ├── package.json
 │   │   ├── src
@@ -219,6 +223,8 @@
 │   │   │   │   │   │   └── user.cli.ts
 │   │   │   │   │   ├── cron
 │   │   │   │   │   │   ├── _example.cron.ts
+│   │   │   │   │   │   ├── chorus.cron.test.ts
+│   │   │   │   │   │   ├── chorus.cron.ts
 │   │   │   │   │   │   ├── data-bretagne.cron.test.ts
 │   │   │   │   │   │   ├── data-bretagne.cron.ts
 │   │   │   │   │   │   ├── dauphin.cron.ts
@@ -230,44 +236,53 @@
 │   │   │   │   │   │   ├── search-cache.cron.ts
 │   │   │   │   │   │   ├── sirene-stock-unite-legale.cron.ts
 │   │   │   │   │   │   └── stats.cron.ts
-│   │   │   │   │   └── http
-│   │   │   │   │       ├── CONTRIBUTING.md
-│   │   │   │   │       ├── __fixtures__
-│   │   │   │   │       │   └── association.fixture.ts
-│   │   │   │   │       ├── admin.http.test.ts
-│   │   │   │   │       ├── admin.http.ts
-│   │   │   │   │       ├── adminStructure.http.ts
-│   │   │   │   │       ├── association.http.test.ts
-│   │   │   │   │       ├── association.http.ts
-│   │   │   │   │       ├── authentification.http.test.ts
-│   │   │   │   │       ├── authentification.http.ts
-│   │   │   │   │       ├── configurations.http.test.ts
-│   │   │   │   │       ├── configurations.http.ts
-│   │   │   │   │       ├── consumer.http.ts
-│   │   │   │   │       ├── dataviz.http.test.ts
-│   │   │   │   │       ├── dataviz.http.ts
-│   │   │   │   │       ├── deposit-scdl-process.http.test.ts
-│   │   │   │   │       ├── deposit-scdl-process.http.ts
-│   │   │   │   │       ├── document.http.test.ts
-│   │   │   │   │       ├── document.http.ts
-│   │   │   │   │       ├── establishment.http.test.ts
-│   │   │   │   │       ├── establishment.http.ts
-│   │   │   │   │       ├── examples
-│   │   │   │   │       │   ├── Documents.ts
-│   │   │   │   │       │   ├── Grants.ts
-│   │   │   │   │       │   ├── OldGrants.ts
-│   │   │   │   │       │   ├── README.md
-│   │   │   │   │       │   └── Users.ts
-│   │   │   │   │       ├── grant.http.ts
-│   │   │   │   │       ├── index.http.test.ts
-│   │   │   │   │       ├── index.http.ts
-│   │   │   │   │       ├── provider.http.ts
-│   │   │   │   │       ├── rna-siren.http.ts
-│   │   │   │   │       ├── search.http.ts
-│   │   │   │   │       ├── subvention.http.ts
-│   │   │   │   │       ├── tools.http.test.ts
-│   │   │   │   │       ├── tools.http.ts
-│   │   │   │   │       └── user.http.ts
+│   │   │   │   │   ├── http
+│   │   │   │   │   │   ├── CONTRIBUTING.md
+│   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   └── association.fixture.ts
+│   │   │   │   │   │   ├── admin.http.test.ts
+│   │   │   │   │   │   ├── admin.http.ts
+│   │   │   │   │   │   ├── adminStructure.http.ts
+│   │   │   │   │   │   ├── association.http.test.ts
+│   │   │   │   │   │   ├── association.http.ts
+│   │   │   │   │   │   ├── authentification.http.test.ts
+│   │   │   │   │   │   ├── authentification.http.ts
+│   │   │   │   │   │   ├── configurations.http.test.ts
+│   │   │   │   │   │   ├── configurations.http.ts
+│   │   │   │   │   │   ├── consumer.http.ts
+│   │   │   │   │   │   ├── dataviz.http.test.ts
+│   │   │   │   │   │   ├── dataviz.http.ts
+│   │   │   │   │   │   ├── deposit-scdl-process.http.test.ts
+│   │   │   │   │   │   ├── deposit-scdl-process.http.ts
+│   │   │   │   │   │   ├── document.http.test.ts
+│   │   │   │   │   │   ├── document.http.ts
+│   │   │   │   │   │   ├── establishment.http.test.ts
+│   │   │   │   │   │   ├── establishment.http.ts
+│   │   │   │   │   │   ├── examples
+│   │   │   │   │   │   │   ├── Documents.ts
+│   │   │   │   │   │   │   ├── Grants.ts
+│   │   │   │   │   │   │   ├── OldGrants.ts
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   └── Users.ts
+│   │   │   │   │   │   ├── grant.http.ts
+│   │   │   │   │   │   ├── index.http.test.ts
+│   │   │   │   │   │   ├── index.http.ts
+│   │   │   │   │   │   ├── provider.http.ts
+│   │   │   │   │   │   ├── rna-siren.http.ts
+│   │   │   │   │   │   ├── search.http.ts
+│   │   │   │   │   │   ├── subvention.http.ts
+│   │   │   │   │   │   ├── tools.http.test.ts
+│   │   │   │   │   │   ├── tools.http.ts
+│   │   │   │   │   │   └── user.http.ts
+│   │   │   │   │   └── pipeline
+│   │   │   │   │       └── import
+│   │   │   │   │           ├── README.md
+│   │   │   │   │           └── chorus
+│   │   │   │   │               ├── chorus.dto.ts
+│   │   │   │   │               ├── chorus.import.ts
+│   │   │   │   │               ├── chorus.mapper.ts
+│   │   │   │   │               ├── chorus.parser.ts
+│   │   │   │   │               └── chorus.validator.ts
 │   │   │   │   └── outputs
 │   │   │   │       ├── api
 │   │   │   │       │   ├── api-asso
@@ -364,11 +379,11 @@
 │   │   │   │       │   │   └── provider-request.port.ts
 │   │   │   │       │   ├── providers
 │   │   │   │       │   │   ├── chorus
+│   │   │   │       │   │   │   ├── chorus-fse.adapter.test.ts
+│   │   │   │       │   │   │   ├── chorus-fse.adapter.ts
+│   │   │   │       │   │   │   ├── chorus-fse.port.ts
 │   │   │   │       │   │   │   ├── chorus.adapter.test.ts
 │   │   │   │       │   │   │   ├── chorus.adapter.ts
-│   │   │   │       │   │   │   ├── chorus.fse.adapter.test.ts
-│   │   │   │       │   │   │   ├── chorus.fse.adapter.ts
-│   │   │   │       │   │   │   ├── chorus.fse.port.ts
 │   │   │   │       │   │   │   └── chorus.port.ts
 │   │   │   │       │   │   ├── dauphin
 │   │   │   │       │   │   │   ├── DauphinGisproDbo.ts
@@ -438,9 +453,8 @@
 │   │   │   │       │   │   ├── search.adapter.ts
 │   │   │   │       │   │   └── search.port.ts
 │   │   │   │       │   ├── sirene
-│   │   │   │       │   │   └── stock-unite-legale
-│   │   │   │       │   │       ├── sirene-stock-unite-legale.adapter.ts
-│   │   │   │       │   │       └── sirene-stock-unite-legale.port.ts
+│   │   │   │       │   │   ├── sirene-unite-legale.adapter.ts
+│   │   │   │       │   │   └── sirene-unite-legale.port.ts
 │   │   │   │       │   ├── state-budget-program
 │   │   │   │       │   │   ├── @types
 │   │   │   │       │   │   │   └── StateBudgetProgramDbo.ts
@@ -524,7 +538,7 @@
 │   │   │   │   ├── MinistryEntity.ts
 │   │   │   │   ├── RefProgrammationEntity.ts
 │   │   │   │   ├── RnaSirenEntity.ts
-│   │   │   │   ├── SireneStockUniteLegaleEntity.ts
+│   │   │   │   ├── SireneUniteLegaleEntity.ts
 │   │   │   │   ├── StateBudgetProgramEntity.ts
 │   │   │   │   ├── UniteLegaleEntrepriseEntity.ts
 │   │   │   │   ├── UniteLegaleNameEntity.ts
@@ -614,7 +628,6 @@
 │   │   │   │   │   ├── associations.service.test.ts
 │   │   │   │   │   ├── associations.service.ts
 │   │   │   │   │   └── use-cases
-│   │   │   │   │       ├── association.use-case.factory.ts
 │   │   │   │   │       ├── association.use-case.test.ts
 │   │   │   │   │       ├── check-identifier-is-from-asso.use-case.ts
 │   │   │   │   │       ├── check-siren-is-from-asso.use-case.ts
@@ -838,30 +851,32 @@
 │   │   │   │   │   │       └── bodacc.mapper.ts
 │   │   │   │   │   ├── chorus
 │   │   │   │   │   │   ├── @types
-│   │   │   │   │   │   │   ├── ChorusDto.ts
 │   │   │   │   │   │   │   ├── ChorusPaymentFlat.ts
 │   │   │   │   │   │   │   └── ChorusPaymentFlatRaw.ts
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── ChorusFixtures.ts
-│   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── chorus.parser.test.ts.snap
-│   │   │   │   │   │   ├── chorus.parser.test.ts
-│   │   │   │   │   │   ├── chorus.parser.ts
 │   │   │   │   │   │   ├── chorus.service.test.ts
 │   │   │   │   │   │   ├── chorus.service.ts
 │   │   │   │   │   │   ├── entities
 │   │   │   │   │   │   │   ├── ChorusEntity.ts
 │   │   │   │   │   │   │   └── ChorusFseEntity.ts
-│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── chorus.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── chorus-region.mapping.ts
+│   │   │   │   │   │   │   ├── chorus.mapper.test.ts
+│   │   │   │   │   │   │   └── chorus.mapper.ts
+│   │   │   │   │   │   └── use-cases
 │   │   │   │   │   │       ├── __snapshots__
-│   │   │   │   │   │       │   ├── chorus.fse.mapper.test.ts.snap
-│   │   │   │   │   │       │   └── chorus.mapper.test.ts.snap
-│   │   │   │   │   │       ├── chorus-region.mapping.ts
-│   │   │   │   │   │       ├── chorus.fse.mapper.test.ts
-│   │   │   │   │   │       ├── chorus.fse.mapper.ts
-│   │   │   │   │   │       ├── chorus.mapper.test.ts
-│   │   │   │   │   │       └── chorus.mapper.ts
+│   │   │   │   │   │       │   └── chorus.use-case.test.ts.snap
+│   │   │   │   │   │       ├── chorus.use-case.test.ts
+│   │   │   │   │   │       ├── filter-entities.ts
+│   │   │   │   │   │       ├── filter-fse-entities.ts
+│   │   │   │   │   │       ├── save-entities.ts
+│   │   │   │   │   │       ├── save-fse-entities.ts
+│   │   │   │   │   │       ├── transform-fse-to-flat.ts
+│   │   │   │   │   │       └── update-flat-by-exercise.ts
 │   │   │   │   │   ├── data-bretagne
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   └── DataBretagne.ts
@@ -897,7 +912,8 @@
 │   │   │   │   │   ├── demarches-simplifiees
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   │   └── DemarchesSimplifieesFixture.ts
+│   │   │   │   │   │   │   ├── DemarchesSimplifieesFixture.ts
+│   │   │   │   │   │   │   └── demarche-ministere-culture.json
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── demarches-simplifiees.service.test.ts.snap
 │   │   │   │   │   │   ├── demarches-simplifiees.service.test.ts
@@ -1046,27 +1062,26 @@
 │   │   │   │   │   │   ├── scdl.service.test.ts
 │   │   │   │   │   │   └── scdl.service.ts
 │   │   │   │   │   ├── sirene
+│   │   │   │   │   │   ├── @types
+│   │   │   │   │   │   │   ├── SireneUniteLegaleDbo.ts
+│   │   │   │   │   │   │   ├── SireneUniteLegaleDto.ts
+│   │   │   │   │   │   │   └── __fixtures__
+│   │   │   │   │   │   │       └── sirene-stock-unite-legale.fixture.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   ├── StockUniteLegale_utf8.zip
-│   │   │   │   │   │   │   └── sirene-stock-unite-legale.fixture.ts
-│   │   │   │   │   │   └── stock-unite-legale
-│   │   │   │   │   │       ├── @types
-│   │   │   │   │   │       │   ├── SireneUniteLegaleDbo.ts
-│   │   │   │   │   │       │   ├── SireneUniteLegaleDto.ts
-│   │   │   │   │   │       │   └── __fixtures__
-│   │   │   │   │   │       │       └── sirene-stock-unite-legale.fixture.ts
-│   │   │   │   │   │       ├── mappers
-│   │   │   │   │   │       │   ├── __snapshots__
-│   │   │   │   │   │       │   │   └── sirene-stock-unite-legale.mapper.test.ts.snap
-│   │   │   │   │   │       │   ├── sirene-stock-unite-legale.mapper.test.ts
-│   │   │   │   │   │       │   └── sirene-stock-unite-legale.mapper.ts
-│   │   │   │   │   │       ├── parser
-│   │   │   │   │   │       │   ├── sirene-stock-unite-legale.parser.test.ts
-│   │   │   │   │   │       │   └── sirene-stock-unite-legale.parser.ts
-│   │   │   │   │   │       ├── sirene-stock-unite-legale.file.service.test.ts
-│   │   │   │   │   │       ├── sirene-stock-unite-legale.file.service.ts
-│   │   │   │   │   │       ├── sirene-stock-unite-legale.service.test.ts
-│   │   │   │   │   │       └── sirene-stock-unite-legale.service.ts
+│   │   │   │   │   │   │   └── sirene-unite-legale.fixture.ts
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── sirene-unite-legale.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── sirene-unite-legale.mapper.test.ts
+│   │   │   │   │   │   │   └── sirene-unite-legale.mapper.ts
+│   │   │   │   │   │   ├── parser
+│   │   │   │   │   │   │   ├── sirene-stock-unite-legale.parser.test.ts
+│   │   │   │   │   │   │   └── sirene-stock-unite-legale.parser.ts
+│   │   │   │   │   │   ├── sirene-stock-unite-legale.service.test.ts
+│   │   │   │   │   │   ├── sirene-stock-unite-legale.service.ts
+│   │   │   │   │   │   ├── sirene-unite-legale.service.test.ts
+│   │   │   │   │   │   └── sirene-unite-legale.service.ts
 │   │   │   │   │   ├── subventia
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── subventia.dto.ts
@@ -1098,8 +1113,20 @@
 │   │   │   │   │   ├── rna-siren.service.test.ts
 │   │   │   │   │   └── rna-siren.service.ts
 │   │   │   │   ├── s3-file
+│   │   │   │   │   ├── @types
+│   │   │   │   │   │   ├── FileStatus.ts
+│   │   │   │   │   │   └── FileTags.ts
 │   │   │   │   │   ├── s3-storage.service.test.ts
-│   │   │   │   │   └── s3-storage.service.ts
+│   │   │   │   │   ├── s3-storage.service.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── get-file-data.test.ts
+│   │   │   │   │       ├── get-file-data.ts
+│   │   │   │   │       ├── get-new-s3-file.test.ts
+│   │   │   │   │       ├── get-new-s3-file.ts
+│   │   │   │   │       ├── tag-imported-file.test.ts
+│   │   │   │   │       ├── tag-imported-file.ts
+│   │   │   │   │       ├── tag-new-file.test.ts
+│   │   │   │   │       └── tag-new-file.ts
 │   │   │   │   ├── search
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   ├── BudgetLine.ts
@@ -1283,11 +1310,17 @@
 │   │   │   │   └── example.spec.ts.snap
 │   │   │   ├── adapters
 │   │   │   │   ├── inputs
-│   │   │   │   │   └── cli
+│   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   └── chorus.xlsx
+│   │   │   │   │   ├── cli
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── helios.cli.spec.ts.snap
+│   │   │   │   │   │   ├── helios.cli.spec.ts
+│   │   │   │   │   │   └── helios.fixture.ods
+│   │   │   │   │   └── cron
 │   │   │   │   │       ├── __snapshots__
-│   │   │   │   │       │   └── helios.cli.spec.ts.snap
-│   │   │   │   │       ├── helios.cli.spec.ts
-│   │   │   │   │       └── helios.fixture.ods
+│   │   │   │   │       │   └── chorus.cron.spec.ts.snap
+│   │   │   │   │       └── chorus.cron.spec.ts
 │   │   │   │   └── outputs
 │   │   │   │       └── db
 │   │   │   │           └── __fixtures__
@@ -1322,6 +1355,7 @@
 │   │   │   │   │   │   ├── consumer.cli.spec.ts.snap
 │   │   │   │   │   │   ├── data-bretagne.cli.spec.ts.snap
 │   │   │   │   │   │   ├── dauphin.cli.spec.ts.snap
+│   │   │   │   │   │   ├── demarches-simplifiees.cli.spec.ts.snap
 │   │   │   │   │   │   ├── fonjep.cli.spec.ts.snap
 │   │   │   │   │   │   ├── osiris.cli.spec.ts.snap
 │   │   │   │   │   │   ├── scdl.cli.spec.ts.snap
@@ -2208,4 +2242,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-512 directories, 1698 files
+519 directories, 1725 files
