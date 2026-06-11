@@ -366,10 +366,8 @@
 │   │   │   ├── healthcheck.test.ts
 │   │   │   ├── jobProcessorServer.ts
 │   │   │   ├── middlewares
-│   │   │   │   ├── OneLinerLogger.ts
 │   │   │   │   ├── authMiddleware.ts
-│   │   │   │   ├── errorMiddleware.ts
-│   │   │   │   └── logMiddleware.ts
+│   │   │   │   └── errorMiddleware.ts
 │   │   │   ├── server.test.ts
 │   │   │   └── server.ts
 │   │   ├── index.ts
@@ -736,7 +734,8 @@
 │   │   │   ├── 20260507130000-add-10-seo-metiers-batch-3.ts
 │   │   │   ├── 20260512182814-maj-handi-engagement-avril-2026.ts
 │   │   │   ├── 20260518121500-remove-salaire-seo-diplome.ts
-│   │   │   └── 20260528143130-drop-eligible-trainings-for-appointments-histories.ts
+│   │   │   ├── 20260528143130-drop-eligible-trainings-for-appointments-histories.ts
+│   │   │   └── 20260603120000-remove-establishment-id-from-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -1271,7 +1270,9 @@
 │   │   │   │   ├── _components
 │   │   │   │   │   ├── CarteOffre.tsx
 │   │   │   │   │   ├── JobsCtaTracked.tsx
+│   │   │   │   │   ├── SectionTitle.tsx
 │   │   │   │   │   ├── diplome_data.tsx
+│   │   │   │   │   ├── hubStyles.ts
 │   │   │   │   │   ├── metier_data.tsx
 │   │   │   │   │   └── ville_data.tsx
 │   │   │   │   ├── diplome
@@ -1286,17 +1287,22 @@
 │   │   │   │   │       │   ├── PreparationSection.tsx
 │   │   │   │   │       │   ├── ProgrammeDiplome.tsx
 │   │   │   │   │       │   ├── SalaireSection.tsx
-│   │   │   │   │       │   ├── SectionTitle.tsx
 │   │   │   │   │       │   └── diplome_decoration.svg
 │   │   │   │   │       ├── _data
 │   │   │   │   │       │   └── constants.ts
 │   │   │   │   │       └── page.tsx
+│   │   │   │   ├── diplomes
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── metier
 │   │   │   │   │   └── [metier]
 │   │   │   │   │       └── page.tsx
-│   │   │   │   └── ville
-│   │   │   │       └── [ville]
-│   │   │   │           └── page.tsx
+│   │   │   │   ├── metiers
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── ville
+│   │   │   │   │   └── [ville]
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── villes
+│   │   │   │       └── page.tsx
 │   │   │   ├── contact
 │   │   │   │   └── page.tsx
 │   │   │   ├── desinscription
@@ -2479,4 +2485,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-478 directories, 2571 files
+481 directories, 2574 files
