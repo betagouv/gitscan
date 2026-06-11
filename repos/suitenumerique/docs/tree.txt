@@ -155,6 +155,7 @@
     ├── backend
     │   ├── .pylintrc
     │   ├── MANIFEST.in
+    │   ├── conftest.py
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
@@ -612,7 +613,7 @@
     │   │       │   │           ├── admin_panel_settings.svg
     │   │       │   │           ├── all.svg
     │   │       │   │           ├── apps.svg
-    │   │       │   │           ├── arrow-*.svg  (11 files)
+    │   │       │   │           ├── arrow-*.svg  (12 files)
     │   │       │   │           ├── arrow_*.svg  (12 files)
     │   │       │   │           ├── article.svg
     │   │       │   │           ├── article_shortcut.svg
@@ -709,6 +710,7 @@
     │   │       │   │           ├── edit.svg
     │   │       │   │           ├── edit_off.svg
     │   │       │   │           ├── empty.svg
+    │   │       │   │           ├── enter.svg
     │   │       │   │           ├── error.svg
     │   │       │   │           ├── euro-filled.svg
     │   │       │   │           ├── event_list.svg
@@ -1066,7 +1068,6 @@
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   ├── IconAI.svg
     │   │       │   │   │   │   │   ├── ai-loader.svg
-    │   │       │   │   │   │   │   ├── doc-found.svg
     │   │       │   │   │   │   │   ├── doc-link.svg
     │   │       │   │   │   │   │   ├── doc-plus.svg
     │   │       │   │   │   │   │   ├── doc-selected.svg
@@ -1202,7 +1203,6 @@
     │   │       │   │   │   │   │   ├── useMoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRestoreDoc.tsx
-    │   │       │   │   │   │   │   ├── useSearchDocs.tsx
     │   │       │   │   │   │   │   └── useUpdateDoc.tsx
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   ├── child-document.svg
@@ -1251,15 +1251,21 @@
     │   │       │   │   │   │   │   └── useSlides.ts
     │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── doc-search
+    │   │       │   │   │   │   ├── api
+    │   │       │   │   │   │   │   └── useSearchDocs.tsx
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   └── illustration-docs-empty.png
     │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── DocSearchButtonModal.tsx
     │   │       │   │   │   │   │   ├── DocSearchContent.tsx
     │   │       │   │   │   │   │   ├── DocSearchFilters.tsx
     │   │       │   │   │   │   │   ├── DocSearchItem.tsx
     │   │       │   │   │   │   │   ├── DocSearchModal.tsx
     │   │       │   │   │   │   │   └── index.ts
-    │   │       │   │   │   │   └── index.ts
+    │   │       │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   ├── stores
+    │   │       │   │   │   │   │   └── useDocSearchFilterStore.tsx
+    │   │       │   │   │   │   └── types.tsx
     │   │       │   │   │   ├── doc-share
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
@@ -1693,4 +1699,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-298 directories, 1470 files
+300 directories, 1475 files
