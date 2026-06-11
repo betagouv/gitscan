@@ -24,6 +24,7 @@
 ├── .tessdata
 │   ├── digits.traineddata
 │   └── fra.traineddata
+├── AGENTS.md
 ├── Aptfile
 ├── LICENSE
 ├── Procfile
@@ -245,6 +246,7 @@
 │       │   │                   │       ├── ConnectionContextFilter.java
 │       │   │                   │       ├── DossierFacileWebhookApiKeyFilter.java
 │       │   │                   │       ├── RateLimitingAuthenticatedDownloadFilter.java
+│       │   │                   │       ├── RateLimitingDfcDocumentsFilter.java
 │       │   │                   │       ├── RateLimitingPublicDownloadFilter.java
 │       │   │                   │       └── RateLimitingSupportMailFilter.java
 │       │   │                   ├── controller
@@ -264,10 +266,13 @@
 │       │   │                   │   ├── TenantController.java
 │       │   │                   │   └── UserController.java
 │       │   │                   ├── dfc
-│       │   │                   │   └── controller
-│       │   │                   │       ├── DfcSettingsController.java
-│       │   │                   │       ├── DfcTenantController.java
-│       │   │                   │       └── DfcTenantsController.java
+│       │   │                   │   ├── controller
+│       │   │                   │   │   ├── DfcSettingsController.java
+│       │   │                   │   │   ├── DfcTenantController.java
+│       │   │                   │   │   └── DfcTenantsController.java
+│       │   │                   │   └── service
+│       │   │                   │       ├── DfcDocumentService.java
+│       │   │                   │       └── DfcDocumentServiceImpl.java
 │       │   │                   ├── exception
 │       │   │                   │   ├── ApartmentSharingNotFoundException.java
 │       │   │                   │   ├── ApartmentSharingUnexpectedException.java
@@ -634,11 +639,13 @@
 │           │                   │       ├── RegisterControllerTest.java
 │           │                   │       └── RegisterGuarantorNaturalPersonControllerTest.java
 │           │                   ├── dfc
-│           │                   │   └── controller
-│           │                   │       ├── DfcSettingsControllerTest.java
-│           │                   │       ├── DfcTenantControllerTest.java
-│           │                   │       ├── DfcTenantsControllerIntegrationTest.java
-│           │                   │       └── DfcTenantsControllerTest.java
+│           │                   │   ├── controller
+│           │                   │   │   ├── DfcSettingsControllerTest.java
+│           │                   │   │   ├── DfcTenantControllerTest.java
+│           │                   │   │   ├── DfcTenantsControllerIntegrationTest.java
+│           │                   │   │   └── DfcTenantsControllerTest.java
+│           │                   │   └── service
+│           │                   │       └── DfcDocumentServiceImplTest.java
 │           │                   ├── log
 │           │                   │   └── GlobalExceptionHandlerTest.java
 │           │                   ├── mapper
@@ -878,6 +885,7 @@
 │       │   │               │   └── specification
 │       │   │               │       └── OwnerSpecifications.java
 │       │   │               ├── security
+│       │   │               │   ├── BOAccessDenied.java
 │       │   │               │   ├── BOApplicationAccessService.java
 │       │   │               │   ├── BOApplicationAccessServiceImpl.java
 │       │   │               │   ├── RoleHierarchyConfig.java
@@ -890,6 +898,7 @@
 │       │   │               │           └── OIDCUserInfo.java
 │       │   │               ├── service
 │       │   │               │   ├── ApartmentSharingService.java
+│       │   │               │   ├── BOTenantResolver.java
 │       │   │               │   ├── BrevoMailHistoryService.java
 │       │   │               │   ├── DocumentDeniedOptionsService.java
 │       │   │               │   ├── DocumentDeniedReasonsService.java
@@ -1409,6 +1418,8 @@
 │           │               │   ├── BOApartmentSharingControllerTest.java
 │           │               │   ├── BOControllerSearchTenantTest.java
 │           │               │   ├── BOMessageControllerTest.java
+│           │               │   ├── BOTenantControllerTest.java
+│           │               │   ├── FileControllerTest.java
 │           │               │   └── TaxDisplayTest.java
 │           │               ├── dto
 │           │               │   └── TenantInfoHeaderTest.java
@@ -1417,6 +1428,7 @@
 │           │               │   ├── RoleComparatorTest.java
 │           │               │   └── UserPrincipalRoleTest.java
 │           │               ├── service
+│           │               │   ├── BOTenantResolverTest.java
 │           │               │   ├── BrevoMailHistoryServiceTest.java
 │           │               │   ├── DocumentDeniedOptionsServiceTest.java
 │           │               │   ├── DocumentDeniedReasonsServiceTest.java
@@ -1951,7 +1963,8 @@
 │       │       │       ├── 202604290000-set-deployment_date_nullable.xml
 │       │       │       ├── 202605130000-drop-json-profile-from-tenant-log.xml
 │       │       │       ├── 202605200000-add-document-ia-classify-residency-feature-flag.xml
-│       │       │       └── 20260602000000-add-indexes-to-optimize-database.xml
+│       │       │       ├── 20260602000000-add-indexes-to-optimize-database.xml
+│       │       │       └── 20260604000000-rework-materialized-view.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2377,4 +2390,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-588 directories, 1895 files
+590 directories, 1906 files
