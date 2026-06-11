@@ -1,19 +1,26 @@
 ## Changelog : calendars (30 derniers jours, au 7 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'application Calendars a bénéficié d'améliorations significatives, notamment une refonte de la gestion des RSVP (réponses à une invitation), un renforcement de la sécurité pour l'importation de données CalDAV, et une migration technique majeure du frontend de Next.js vers Vite pour une meilleure performance et expérience de développement. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
+Ce mois-ci, l'application Calendars a bénéficié d'améliorations significatives, notamment une refonte de la gestion des RSVP (réponses à une invitation), un renforcement de la sécurité du traitement des données CalDAV, et une migration technique majeure du frontend vers Vite pour de meilleures performances. Des améliorations de l'interface utilisateur, comme le réordonnancement des calendriers, ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **RSVP :** Amélioration significative de la gestion des RSVP, incluant une refonte des modèles d'emails et de pages, permettant une confirmation de participation directement depuis l'interface utilisateur. [#60](https://github.com/suitenumerique/calendars/issues/60)
-- **Gestion des calendriers :** Possibilité de réorganiser les calendriers dans l'interface utilisateur, avec des corrections d'interface et d'administration associées. [#56](https://github.com/suitenumerique/calendars/issues/56)
-- **CalDAV :** Renforcement de la sécurité lors de la manipulation des données ICS importées via CalDAV. [#59](https://github.com/suitenumerique/calendars/issues/59)
-- **Langue et déconnexion :** Correction des flux de sélection de la langue et de déconnexion. [#8902f75](https://github.com/suitenumerique/calendars/commit/8902f75f6151530444131766c962a6f215f63f8f)
+- **RSVP (Réponses aux invitations):**
+    - Refonte complète des modèles d'emails et de pages RSVP, avec correction de bugs associés. [#64](https://github.com/suitenumerique/calendars/issues/64)
+    - Possibilité de répondre directement aux invitations depuis l'interface utilisateur. [#60](https://github.com/suitenumerique/calendars/issues/60)
+- **Calendriers:**
+    - Ajout de la fonctionnalité de réordonnancement des calendriers dans l'interface utilisateur. [#56](https://github.com/suitenumerique/calendars/issues/56)
+    - Corrections d'erreurs d'encodage des caractères spéciaux lors de la synchronisation CalDAV. [#817cc41](https://github.com/suitenumerique/calendars/commit/817cc41)
+- **Sécurité:**
+    - Renforcement de la sécurité du traitement des données ICS (iCalendar) pour prévenir les vulnérabilités. [#59](https://github.com/suitenumerique/calendars/issues/59)
 
 ### Évolutions techniques
-- **Frontend :** Migration du frontend de Next.js vers Vite pour améliorer les performances et l'expérience de développement. [#63](https://github.com/suitenumerique/calendars/issues/63)
-- **CalDAV :** Suppression de la librairie `tsdav` et refactorisation du chemin réseau pour une meilleure gestion des requêtes CalDAV. [#58](https://github.com/suitenumerique/calendars/issues/58)
-- **Dépendances :** Fixation des versions des dépendances Composer pour assurer la stabilité et retour à la version principale de SabreDAV. [#61](https://github.com/suitenumerique/calendars/issues/61)
-- **RSVP :** Factorisation du code de composition des emails entre SMTP et Messages pour une meilleure maintenabilité. [#64](https://github.com/suitenumerique/calendars/issues/64)
+- **Frontend:**
+    - Migration du frontend de Next.js vers Vite, pour améliorer les performances et l'expérience de développement. [#63](https://github.com/suitenumerique/calendars/issues/63)
+- **CalDAV:**
+    - Suppression de la librairie `tsdav` et refactorisation du chemin réseau pour une meilleure gestion de la synchronisation CalDAV. [#58](https://github.com/suitenumerique/calendars/issues/58)
+    - Fixation des dépendances Composer et retour à la version principale de SabreDAV pour une meilleure stabilité. [#61](https://github.com/suitenumerique/calendars/issues/61)
+- **RSVP:**
+    - Factorisation du code de composition des emails entre SMTP et Messages pour une meilleure maintenabilité. [#64](https://github.com/suitenumerique/calendars/issues/64)
 
 ### Autres changements
-- Correction de l'encodage des caractères spéciaux lors de l'importation CalDAV. [#817cc41](https://github.com/suitenumerique/calendars/commit/817cc41779316b69a14a020987d04698d49a519b)
+- Corrections et améliorations de l'interface d'administration et de la mise en page générale. [#56](https://github.com/suitenumerique/calendars/issues/56)
