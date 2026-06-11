@@ -1,43 +1,43 @@
 {
   "url": "https://github.com/etalab-ia/ragtime",
   "name": "ragtime",
-  "description": "Ragtime est un pipeline RAG modulaire pour l'administration française, alimenté par l'API Albert. Il permet de créer des applications de recherche et de réponse aux questions basées sur des documents.",
+  "description": "Ragtime est un pipeline RAG modulaire pour l'administration française, alimenté par l'API Albert. Il permet de créer et de gérer des projets RAG, d'ingérer des documents et de poser des questions.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Intelligence Artificielle & NLP"
   ],
-  "audience": [
-    "Professionnels",
-    "Agents de l'Administration"
-  ],
+  "audience": "Professionnels",
   "dependencies": [
     "albert-client",
-    "chainlit",
-    "supabase",
-    "uv",
-    "just"
+    "chainlit-chat",
+    "openai",
+    "httpx",
+    "instructor",
+    "pydantic",
+    "supabase"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "PostgreSQL & SQL",
     "Frontend React",
-    "CI/CD & Déploiement"
+    "Base de données PostgreSQL",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": []
   },
   "tests": "Pytest",
-  "workflows": [
-    "CI/CD & Déploiement"
-  ],
+  "workflows": [],
   "lastActivity": "2026-04-20T00:00:00Z",
   "status": "active",
   "license": "MIT",
@@ -50,9 +50,8 @@
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "Python",
     "Intelligence Artificielle & LLM",
-    "Sécurité & Conformité"
+    "Python",
+    "Sécurité & Auth"
   ]
 }
