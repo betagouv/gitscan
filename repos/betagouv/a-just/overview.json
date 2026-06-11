@@ -1,48 +1,54 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir un outil pour la gestion et l'analyse des données relatives à la justice.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une application pour la gestion et l'analyse de données, probablement dans le contexte de la justice.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Gestion des établissements & Structures",
-    "Aides & Éligibilité",
-    "Suivi & Traçabilité",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Koa",
+    "React",
+    "Express",
     "PostgreSQL",
     "Redis",
-    "jsonwebtoken",
     "bcryptjs",
-    "sequelize",
-    "axios"
+    "jsonwebtoken",
+    "koa",
+    "sequelize"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "Tests"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml"
+      "jwt",
+      "session"
     ]
   },
   "tests": [
     "Mocha",
     "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-06-05T18:04:04+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-10T11:47:19+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -55,10 +61,11 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
-    "PostgreSQL",
-    "Sécurité & Auth",
-    "JavaScript"
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
