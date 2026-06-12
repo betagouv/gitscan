@@ -1,12 +1,12 @@
-## Changelog : ami-app-ios (30 derniers jours, au 4 juin 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 04 juin 2026)
 
 ### Résumé
-Cette mise à jour améliore l'affichage des bannières d'information et corrige un problème lié à l'URL d'accès aux réglages. L'application est plus claire et plus facile à utiliser.
+Cette mise à jour se concentre sur l'amélioration de l'affichage des bannières d'information dans l'application. Les bannières sont désormais affichées correctement et leur conteneur a été optimisé pour une meilleure présentation et une suppression de code inutile.
 
 ### Évolutions fonctionnelles
-- Réactivation de l'affichage des bannières d'information. [#91](https://github.com/numerique-gouv/ami-app-ios/pull/91)
-- Suppression d'un conteneur inutile pour les bannières dans la vue principale, améliorant ainsi la présentation. [#93](https://github.com/numerique-gouv/ami-app-ios/pull/93)
+- Réactivation de l'affichage des bannières d'information.
+- Amélioration de la présentation des bannières d'information en déplaçant leur conteneur.
 
 ### Évolutions techniques
-- Déplacement du conteneur des bannières en dehors de la NavigationStack pour une meilleure gestion de l'affichage.
-- Modification de l'URL d'accès aux réglages. [#86](https://github.com/numerique-gouv/ami-app-ios/pull/86)
+- Suppression d'un conteneur de bannières inutile dans la vue principale. [#93](https://github.com/numerique-gouv/ami-app-ios/pull/93)
+- Refactoring du placement du conteneur de bannières pour une meilleure organisation du code. [#91](https://github.com/numerique-gouv/ami-app-ios/pull/91)
