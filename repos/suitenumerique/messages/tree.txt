@@ -439,6 +439,7 @@
     │   │   ├── __tests__
     │   │   │   ├── attachment-preview.spec.ts
     │   │   │   ├── login.spec.ts
+    │   │   │   ├── mailbox-settings.spec.ts
     │   │   │   ├── message-import.spec.ts
     │   │   │   ├── message-inline-image.spec.ts
     │   │   │   ├── message-send.spec.ts
@@ -602,6 +603,17 @@
     │   │   │   │   ├── pt-PT.json
     │   │   │   │   ├── ru-RU.json
     │   │   │   │   └── uk-UA.json
+    │   │   │   ├── placeholders
+    │   │   │   │   ├── br-FR.json
+    │   │   │   │   ├── de-DE.json
+    │   │   │   │   ├── en-US.json
+    │   │   │   │   ├── es-ES.json
+    │   │   │   │   ├── fr-FR.json
+    │   │   │   │   ├── it-IT.json
+    │   │   │   │   ├── nl-NL.json
+    │   │   │   │   ├── pt-PT.json
+    │   │   │   │   ├── ru-RU.json
+    │   │   │   │   └── uk-UA.json
     │   │   │   └── roles
     │   │   │       ├── br-FR.json
     │   │   │       ├── de-DE.json
@@ -701,8 +713,9 @@
     │   │   │   │   │   │   ├── messages_delivery_statuses_partial_update_body_one.ts
     │   │   │   │   │   │   ├── paginated_*.ts  (5 files)
     │   │   │   │   │   │   ├── partial_drive_item.ts
-    │   │   │   │   │   │   ├── patched_*.ts  (8 files)
+    │   │   │   │   │   │   ├── patched_*.ts  (9 files)
     │   │   │   │   │   │   ├── placeholders_retrieve200.ts
+    │   │   │   │   │   │   ├── placeholders_retrieve200_i18n.ts
     │   │   │   │   │   │   ├── read_message_template.ts
     │   │   │   │   │   │   ├── read_message_template_metadata.ts
     │   │   │   │   │   │   ├── regenerated_api_key_response.ts
@@ -770,7 +783,12 @@
     │   │   │   │   │   └── index.tsx
     │   │   │   │   ├── inline-template-variable
     │   │   │   │   │   ├── _index.scss
-    │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   ├── editing-behavior.test.ts
+    │   │   │   │   │   ├── editing-behavior.ts
+    │   │   │   │   │   ├── index.test.tsx
+    │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   ├── use-placeholder-variables.test.ts
+    │   │   │   │   │   └── use-placeholder-variables.ts
     │   │   │   │   ├── markdown-exporter.test.ts
     │   │   │   │   ├── message-template-block
     │   │   │   │   │   ├── _index.scss
@@ -789,6 +807,7 @@
     │   │   │   │   └── index.ts
     │   │   │   ├── controlled-modals
     │   │   │   │   ├── index.ts
+    │   │   │   │   ├── mailbox-settings.tsx
     │   │   │   │   └── message-importer
     │   │   │   │       ├── _index.scss
     │   │   │   │       ├── index.tsx
@@ -907,19 +926,19 @@
     │   │   │   │       │   │       ├── _index.scss
     │   │   │   │       │   │       └── index.tsx
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── mailbox-selector
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── mailbox-settings
     │   │   │   │       │   ├── autoreplies-view
     │   │   │   │       │   │   ├── autoreply-data-grid.tsx
-    │   │   │   │       │   │   ├── compose-autoreply-action.tsx
-    │   │   │   │       │   │   └── page-content.tsx
+    │   │   │   │       │   │   └── compose-autoreply-action.tsx
     │   │   │   │       │   ├── integrations-view
     │   │   │   │       │   │   ├── create-integration-action.tsx
-    │   │   │   │       │   │   ├── integrations-data-grid.tsx
-    │   │   │   │       │   │   └── page-content.tsx
+    │   │   │   │       │   │   └── integrations-data-grid.tsx
     │   │   │   │       │   ├── message-templates-view
     │   │   │   │       │   │   ├── compose-template-action.tsx
-    │   │   │   │       │   │   ├── message-template-data-grid.tsx
-    │   │   │   │       │   │   └── page-content.tsx
+    │   │   │   │       │   │   └── message-template-data-grid.tsx
     │   │   │   │       │   ├── modal-compose-integration
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── index.tsx
@@ -933,9 +952,24 @@
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── index.tsx
     │   │   │   │       │   │   └── template-composer.tsx
+    │   │   │   │       │   ├── modal-mailbox-settings
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   ├── access-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── autoreplies-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── general-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── index.tsx
+    │   │   │   │       │   │   ├── integrations-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── message-templates-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── resource-section-header.tsx
+    │   │   │   │       │   │   └── signatures-tab
+    │   │   │   │       │   │       └── index.tsx
     │   │   │   │       │   ├── signatures-view
     │   │   │   │       │   │   ├── compose-signature-action.tsx
-    │   │   │   │       │   │   ├── page-content.tsx
     │   │   │   │       │   │   └── signature-data-grid.tsx
     │   │   │   │       │   └── utils.ts
     │   │   │   │       ├── main
@@ -1136,6 +1170,7 @@
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── lagaufre
+    │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── portal
     │   │   │   │       │   └── index.tsx
@@ -1204,6 +1239,7 @@
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-feature.ts
     │   │   │   ├── use-is-shared-context.ts
+    │   │   │   ├── use-mailbox-access-management.ts
     │   │   │   ├── use-popup-position.ts
     │   │   │   ├── use-previous.ts
     │   │   │   ├── use-safe-router-push.ts
@@ -1223,18 +1259,10 @@
     │   │   │   ├── index.tsx
     │   │   │   └── mailbox
     │   │   │       └── $mailboxId
-    │   │   │           ├── autoreplies
-    │   │   │           │   └── index.tsx
     │   │   │           ├── index.tsx
-    │   │   │           ├── integrations
-    │   │   │           │   └── index.tsx
-    │   │   │           ├── message-templates
-    │   │   │           │   └── index.tsx
     │   │   │           ├── new
     │   │   │           │   └── index.tsx
     │   │   │           ├── route.tsx
-    │   │   │           ├── signatures
-    │   │   │           │   └── index.tsx
     │   │   │           └── thread
     │   │   │               └── $threadId.tsx
     │   │   ├── styles
@@ -1389,4 +1417,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-300 directories, 1273 files
+305 directories, 1297 files
