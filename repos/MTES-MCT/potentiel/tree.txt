@@ -181,6 +181,9 @@
 │   │   │   │   ├── commands
 │   │   │   │   │   ├── abandon
 │   │   │   │   │   │   └── relancer-abandon-sans-preuve.ts
+│   │   │   │   │   ├── achèvement
+│   │   │   │   │   │   ├── rendre-stream-cohérent.ts
+│   │   │   │   │   │   └── vérifier-données.ts
 │   │   │   │   │   ├── candidature
 │   │   │   │   │   │   ├── importer-dossier.ts
 │   │   │   │   │   │   ├── lister-dossiers.ts
@@ -358,7 +361,6 @@
 │   │   │   │   │               ├── ppe2.elimine.stories.tsx
 │   │   │   │   │               └── ppe2.laureat.stories.tsx
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── mapToReadableStream.ts
 │   │   │   │   └── modèleRéponseSignée
 │   │   │   │       ├── abandon
 │   │   │   │       │   └── modèleRéponseSignéeAbandon.ts
@@ -892,6 +894,7 @@
 │   │   │   │       │   ├── producteur
 │   │   │   │       │   │   ├── changementProducteurEnregistré.projector.ts
 │   │   │   │       │   │   ├── index.ts
+│   │   │   │       │   │   ├── numéroIdentificationCorrigé.projector.ts
 │   │   │   │       │   │   ├── producteurImporté.projector.ts
 │   │   │   │       │   │   ├── producteurModifié.projector.ts
 │   │   │   │       │   │   └── producteurRebuildTrigerred.projector.ts
@@ -1863,6 +1866,7 @@
 │   │   │   │   │   │   │   │   │   ├── events
 │   │   │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   │   │   ├── mapToChangementProducteurEnregistréTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mapToNuméroIdentificationCorrigéTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToProducteurImportéTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   └── mapToProducteurModifiéTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToProducteurTimelineItemProps.tsx
@@ -1877,11 +1881,17 @@
 │   │   │   │   │   │   │   │   │       ├── InfoBoxProducteur.tsx
 │   │   │   │   │   │   │   │   │       ├── enregistrerChangementProducteur.action.ts
 │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   └── modifier
-│   │   │   │   │   │   │   │       ├── ModifierProducteur.form.tsx
-│   │   │   │   │   │   │   │       ├── ModifierProducteur.page.tsx
-│   │   │   │   │   │   │   │       ├── modifierProducteur.action.ts
-│   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   ├── ModifierProducteur.form.tsx
+│   │   │   │   │   │   │   │   │   ├── ModifierProducteur.page.tsx
+│   │   │   │   │   │   │   │   │   ├── modifierProducteur.action.ts
+│   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   └── numero-identification
+│   │   │   │   │   │   │   │       └── corriger
+│   │   │   │   │   │   │   │           ├── CorrigerNuméroIdentification.form.tsx
+│   │   │   │   │   │   │   │           ├── CorrigerNuméroIdentification.page.tsx
+│   │   │   │   │   │   │   │           ├── corrigerNuméroIdentification.action.ts
+│   │   │   │   │   │   │   │           └── page.tsx
 │   │   │   │   │   │   │   ├── puissance
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -2044,6 +2054,7 @@
 │   │   │   │   │   │   │   │   │   │   └── mapToReprésentantLégalModifiéTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToReprésentantLégalTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   ├── _helpers
+│   │   │   │   │   │   │   │   │   ├── DemandeInfosBox.tsx
 │   │   │   │   │   │   │   │   │   ├── TypeReprésentantLégalSelect.tsx
 │   │   │   │   │   │   │   │   │   ├── getTypeReprésentantLégalLabel.ts
 │   │   │   │   │   │   │   │   │   ├── schema.ts
@@ -2051,8 +2062,6 @@
 │   │   │   │   │   │   │   │   │       ├── SaisieNom.step.tsx
 │   │   │   │   │   │   │   │   │       ├── SaisiePièceJustificative.step.tsx
 │   │   │   │   │   │   │   │   │       ├── SaisieType.step.tsx
-│   │   │   │   │   │   │   │   │       ├── SaisieTypeSociété.step.tsx
-│   │   │   │   │   │   │   │   │       ├── Validation.step.tsx
 │   │   │   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   │   │   ├── [date]
@@ -2260,7 +2269,6 @@
 │   │   │   │   │       └── proconnect.provider.ts
 │   │   │   │   ├── components
 │   │   │   │   │   ├── atoms
-│   │   │   │   │   │   ├── CallOut.tsx
 │   │   │   │   │   │   ├── FormattedDate.tsx
 │   │   │   │   │   │   ├── FormattedNuméroIdentification.tsx
 │   │   │   │   │   │   ├── Icon.tsx
@@ -3017,7 +3025,7 @@
 │   │   │   │   │   │   │   │   │   └── listerArchivesGarantiesFinancières.query.ts
 │   │   │   │   │   │   │   │   └── motifArchivageGarantiesFinancières.valueType.ts
 │   │   │   │   │   │   │   ├── consulter
-│   │   │   │   │   │   │   │   └── consulterGarantiesFinancières.query.ts
+│   │   │   │   │   │   │   │   └── consulterGarantiesFinancièresActuelles.query.ts
 │   │   │   │   │   │   │   ├── demander
 │   │   │   │   │   │   │   │   └── demanderGarantiesFinancières.options.ts
 │   │   │   │   │   │   │   ├── effacer
@@ -3072,6 +3080,8 @@
 │   │   │   │   │   │   │       ├── validerDépôtGarantiesFinancières.option.ts
 │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.usecase.ts
 │   │   │   │   │   │   ├── en-attente
+│   │   │   │   │   │   │   ├── consulter
+│   │   │   │   │   │   │   │   └── consulterGarantiesFinancièresEnAttente.query.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresEnAttente.queries.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresEnAttente.register.ts
 │   │   │   │   │   │   │   └── lister
@@ -3291,7 +3301,6 @@
 │   │   │   │   │   │       ├── signalerPowerPurchaseAgreement.option.ts
 │   │   │   │   │   │       └── signalerPowerPurchaseAgreement.usecase.ts
 │   │   │   │   │   ├── producteur
-│   │   │   │   │   │   ├── applyLuhnCheck.test.ts
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── changementProducteur.entity.ts
 │   │   │   │   │   │   │   ├── consulter
@@ -3317,6 +3326,13 @@
 │   │   │   │   │   │   │   ├── modifierProducteur.event.ts
 │   │   │   │   │   │   │   ├── modifierProducteur.option.ts
 │   │   │   │   │   │   │   └── modifierProducteur.usecase.ts
+│   │   │   │   │   │   ├── numéroIdentification
+│   │   │   │   │   │   │   └── corriger
+│   │   │   │   │   │   │       ├── corrigerNuméroIdentification.command.ts
+│   │   │   │   │   │   │       ├── corrigerNuméroIdentification.event.ts
+│   │   │   │   │   │   │       ├── corrigerNuméroIdentification.option.ts
+│   │   │   │   │   │   │       └── corrigerNuméroIdentification.usecase.ts
+│   │   │   │   │   │   ├── numéroIdentification.test.ts
 │   │   │   │   │   │   ├── numéroIdentification.valueType.ts
 │   │   │   │   │   │   ├── producteur.aggregate.ts
 │   │   │   │   │   │   ├── producteur.entity.ts
@@ -4132,7 +4148,6 @@
 │   │   │   │   ├── PièceJustificative.ts
 │   │   │   │   ├── convertFixtureFileToReadable.ts
 │   │   │   │   ├── convertReadableToString.ts
-│   │   │   │   ├── convertStringToReadableStream.ts
 │   │   │   │   ├── createS3ClientWithMD5.ts
 │   │   │   │   ├── expectFileContent.ts
 │   │   │   │   ├── faker
@@ -4353,8 +4368,10 @@
 │   │   │   │   │   │       ├── powerPurchaseAgreement.then.ts
 │   │   │   │   │   │       └── powerPurchaseAgreement.when.ts
 │   │   │   │   │   ├── producteur
+│   │   │   │   │   │   ├── corrigerNuméroIdentification.feature
 │   │   │   │   │   │   ├── enregistrerChangementProducteur.feature
 │   │   │   │   │   │   ├── fixture
+│   │   │   │   │   │   │   ├── corrigerNuméroIdentification.fixture.ts
 │   │   │   │   │   │   │   ├── enregistrerChangementProducteur.fixture.ts
 │   │   │   │   │   │   │   └── modifierProducteur.fixture.ts
 │   │   │   │   │   │   ├── modifierProducteur.feature
@@ -4620,4 +4637,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1120 directories, 3502 files
+1126 directories, 3513 files
