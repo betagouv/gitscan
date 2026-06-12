@@ -1,7 +1,6 @@
 .
 ├── .env.example
 ├── .env.test
-├── .eslintrc.json
 ├── .github
 │   └── workflows
 │       └── playwright.yml
@@ -9,6 +8,7 @@
 ├── .npmrc
 ├── LICENSE
 ├── README.md
+├── eslint.config.mjs
 ├── graphql.config.yml
 ├── next.config.ts
 ├── package-lock.json
@@ -32,63 +32,64 @@
 │   │   │   ├── echec
 │   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
-│   │   ├── espace-laureat
-│   │   │   ├── (list)
-│   │   │   │   ├── loading.tsx
+│   │   ├── departements
+│   │   │   ├── [codeDepartement]
 │   │   │   │   └── page.tsx
-│   │   │   ├── [dossierNumber]
-│   │   │   │   ├── demande-de-versement
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── loading.tsx
-│   │   │   │   └── page.tsx
-│   │   │   ├── _components
-│   │   │   │   ├── AucunDossier.tsx
-│   │   │   │   ├── DossierSection.tsx
-│   │   │   │   ├── DossiersTable.tsx
-│   │   │   │   ├── RefreshIndicator.tsx
-│   │   │   │   ├── RefreshOnVisibility.tsx
-│   │   │   │   ├── RefreshStatusContext.tsx
-│   │   │   │   ├── compareDateSignatureDecision.ts
-│   │   │   │   ├── dossier-section
-│   │   │   │   │   ├── StatutRealisation.tsx
-│   │   │   │   │   ├── Summary.tsx
-│   │   │   │   │   ├── Timeline.tsx
-│   │   │   │   │   └── details
-│   │   │   │   │       ├── EngagementsJuridiquesList.tsx
-│   │   │   │   │       ├── EngagementsSection.tsx
-│   │   │   │   │       ├── EngagementsSkeleton.tsx
-│   │   │   │   │       ├── SubventionDetails.tsx
-│   │   │   │   │       ├── engagement-juridique
-│   │   │   │   │       │   ├── DernierPaiement.tsx
-│   │   │   │   │       │   ├── EngagementJuridiqueDetails.tsx
-│   │   │   │   │       │   ├── EngagementJuridiqueHistorique.tsx
-│   │   │   │   │       │   ├── EtatEngagementBadge.tsx
-│   │   │   │   │       │   ├── FinanceFieldsErrorAlert.tsx
-│   │   │   │   │       │   └── FinanceFieldsSection.tsx
-│   │   │   │   │       └── impact-details
-│   │   │   │   │           ├── Help.tsx
-│   │   │   │   │           └── MetricsGrid.tsx
-│   │   │   │   ├── getDemarcheDossiers.ts
-│   │   │   │   ├── getDossier.ts
-│   │   │   │   ├── getPageTitle.ts
-│   │   │   │   ├── getParams.ts
-│   │   │   │   └── impact
-│   │   │   │       └── CompletionSidebar.tsx
-│   │   │   └── demo
-│   │   │       └── page.tsx
+│   │   │   └── _components
+│   │   │       ├── CommunesFilter.tsx
+│   │   │       ├── ProjetSection.tsx
+│   │   │       ├── ProjetsPanel.tsx
+│   │   │       ├── TabButton.tsx
+│   │   │       └── getParams.tsx
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
 │   │   └── projets
-│   │       ├── [codeDepartement]
+│   │       ├── [dossierNumber]
+│   │       │   ├── demande-de-versement
+│   │       │   │   └── page.tsx
+│   │       │   ├── loading.tsx
 │   │       │   └── page.tsx
-│   │       └── _components
-│   │           ├── CommunesFilter.tsx
-│   │           ├── ProjetSection.tsx
-│   │           ├── ProjetsPanel.tsx
-│   │           ├── TabButton.tsx
-│   │           └── getParams.tsx
+│   │       ├── _components
+│   │       │   ├── AucunDossier.tsx
+│   │       │   ├── DossierPage.tsx
+│   │       │   ├── DossierSection.tsx
+│   │       │   ├── DossiersTable.tsx
+│   │       │   ├── RefreshIndicator.tsx
+│   │       │   ├── RefreshOnVisibility.tsx
+│   │       │   ├── RefreshStatusContext.tsx
+│   │       │   ├── compareDateSignatureDecision.ts
+│   │       │   ├── dossier-section
+│   │       │   │   ├── StatutRealisation.tsx
+│   │       │   │   ├── Summary.tsx
+│   │       │   │   ├── Timeline.tsx
+│   │       │   │   └── details
+│   │       │   │       ├── AnomaliesSection.tsx
+│   │       │   │       ├── EngagementsJuridiquesList.tsx
+│   │       │   │       ├── EngagementsSection.tsx
+│   │       │   │       ├── EngagementsSkeleton.tsx
+│   │       │   │       ├── SubventionDetails.tsx
+│   │       │   │       ├── engagement-juridique
+│   │       │   │       │   ├── DernierPaiement.tsx
+│   │       │   │       │   ├── EngagementJuridiqueDetails.tsx
+│   │       │   │       │   ├── EngagementJuridiqueHistorique.tsx
+│   │       │   │       │   ├── EtatEngagementBadge.tsx
+│   │       │   │       │   ├── FinanceFieldsErrorAlert.tsx
+│   │       │   │       │   └── FinanceFieldsSection.tsx
+│   │       │   │       └── impact-details
+│   │       │   │           ├── Help.tsx
+│   │       │   │           └── MetricsGrid.tsx
+│   │       │   ├── getDemarcheDossiers.ts
+│   │       │   ├── getDossier.ts
+│   │       │   ├── getPageTitle.ts
+│   │       │   ├── getParams.ts
+│   │       │   └── impact
+│   │       │       └── CompletionSidebar.tsx
+│   │       ├── demo
+│   │       │   └── page.tsx
+│   │       ├── loading.tsx
+│   │       └── page.tsx
 │   ├── components
 │   │   ├── dsfr
 │   │   │   ├── DsfrHead.tsx
@@ -103,12 +104,13 @@
 │   │   │   └── Navigation.tsx
 │   │   ├── metrics
 │   │   │   ├── ArrowedValues.tsx
+│   │   │   ├── MetricField.tsx
 │   │   │   └── MetricValue.tsx
 │   │   ├── money-field
 │   │   │   └── MoneyField.tsx
 │   │   └── non-disponible
 │   │       └── NonDisponible.tsx
-│   ├── middleware.ts
+│   ├── proxy.ts
 │   ├── services
 │   │   ├── ds
 │   │   │   ├── graphql
@@ -131,9 +133,7 @@
 │   │   │       ├── champs
 │   │   │       │   ├── index.ts
 │   │   │       │   └── mapping.ts
-│   │   │       ├── index.ts
-│   │   │       └── state
-│   │   │           └── index.ts
+│   │   │       └── index.ts
 │   │   ├── fondsvert
 │   │   │   ├── dossier
 │   │   │   │   └── index.ts
@@ -183,6 +183,7 @@
 │       └── url
 │           └── index.ts
 ├── tests
+│   ├── demo.spec.ts
 │   ├── dossier.spec.ts
 │   ├── dossiers-liste.spec.ts
 │   ├── fixtures
@@ -194,4 +195,4 @@
 │   └── setup
 │       └── auth.ts
 └── tsconfig.json
-73 directories, 123 files
+71 directories, 126 files
