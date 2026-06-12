@@ -1,3 +1,41 @@
+2026-06-11T14:31:13+02:00 - f9348bb - Gaël Servaud : refactor(ai-plan-import): valide le formulaire d'import par safeParse zod direct, sans parsing JSON manuel
+2026-06-11T14:31:13+02:00 - f19463b - Gaël Servaud : refactor(ai-plan-import): renomme le membre repository en jobRepository dans les services
+2026-06-11T14:31:13+02:00 - e62fa32 - Gaël Servaud : refactor(ai-plan-import): resserre le modèle drizzle et les contrats de types
+2026-06-11T14:31:13+02:00 - e250ea6 - Gaël Servaud : test(ai-plan-import): couvre les gates et chemins de compensation d'EnqueueImportService
+2026-06-11T14:31:13+02:00 - ccc2c94 - Gaël Servaud : refactor(ai-plan-import): lot de nettoyages issus de la revue
+2026-06-11T14:31:13+02:00 - cb60083 - Gaël Servaud : fix(ai-plan-import): échec immédiat sur stall et compensation d'enqueue loggée
+2026-06-11T14:31:13+02:00 - b930ce8 - Gaël Servaud : refactor(ai-plan-import): restreint disabledFields au type DisableableField de bout en bout
+2026-06-11T14:31:13+02:00 - 984cadc - Gaël Servaud : fix(ai-plan-import): remonte les échecs d'écriture markDone/markFailed au worker
+2026-06-11T14:31:13+02:00 - 96faf7a - Gaël Servaud : feat(ai-plan-import): endpoint d'enfilement multipart et statut tRPC
+2026-06-11T14:31:13+02:00 - 8c6299a - Gaël Servaud : refactor(ai-plan-import): passe par DocumentStorageService au lieu d'accès storage ad hoc
+2026-06-11T14:31:13+02:00 - 8b7813d - Gaël Servaud : fix(ai-plan-import): supprime le document source sur échec terminal hors-process
+2026-06-11T14:31:13+02:00 - 83b3df0 - Gaël Servaud : fix(ai-plan-import): valide la structure xlsx et plafonne la taille décompressée
+2026-06-11T14:31:13+02:00 - 82d877d - Gaël Servaud : feat(ai-plan-import): repository, service et worker d'exécution du job
+2026-06-11T14:31:13+02:00 - 6a2fdb2 - Gaël Servaud : refactor(ai-plan-import): l'enqueue stocke via DocumentStorageService
+2026-06-11T14:31:13+02:00 - 6365242 - Gaël Servaud : fix(ai-plan-import): borne les champs du formulaire et répond 400 sur body invalide
+2026-06-11T14:31:13+02:00 - 54d1802 - Gaël Servaud : refactor(ai-plan-import): remplace « enfilement » par « mise en file d'attente » dans les logs
+2026-06-11T14:31:13+02:00 - 491c7be - Gaël Servaud : fix(ai-plan-import): vide les objets du bucket avant sa suppression dans le revert
+2026-06-11T14:31:13+02:00 - 480888b - Gaël Servaud : refactor(ai-plan-import): extrait le modèle domaine du job hors du fichier table drizzle
+2026-06-11T14:31:13+02:00 - 2c6eaa3 - Gaël Servaud : fix(ai-plan-import): type les signatures des mocks createUnlessInFlight et saveInStorage au lieu de caster mock.calls
+2026-06-11T14:31:13+02:00 - 26f13d9 - Gaël Servaud : feat(ai-plan-import): table d'état de job, bucket source et config queue
+2026-06-11T14:31:13+02:00 - 068d26f - Gaël Servaud : fix(ai-plan-import): marque le job failed sur exception ou échec terminal du worker
+2026-06-11T14:31:13+02:00 - 02dc850 - Gaël Servaud : refactor(ai-plan-import): remplace l'enum de statut par un objet as const
+2026-06-10T18:27:20+02:00 - a428150 - Gaël Servaud : feat(plans): action « Dupliquer l'action » dans les menus de fiche
+2026-06-10T17:58:02+02:00 - a6c7b3f - Gaël Servaud : feat(plans): endpoint de duplication d'une fiche action
+2026-06-10T16:11:25+02:00 - 68fe472 - Gaël Servaud : refactor(plans): extrait FicheDuplicationService de DuplicatePlanService
+2026-06-10T15:53:31+02:00 - e9a2510 - Gaël Servaud : refactor(ai-plan-import): renomme withoutSousActions en clearSousActions
+2026-06-10T15:53:31+02:00 - 8dd5536 - Gaël Servaud : refactor(ai-plan-import): renomme advance en mergeStepResult
+2026-06-10T15:53:31+02:00 - 762e31e - Gaël Servaud : feat(ai-plan-import): orchestrateur 5 étapes + revue qualitative
+2026-06-10T15:53:31+02:00 - 52121be - Gaël Servaud : refactor(ai-plan-import): suite revue de code de l'orchestrateur
+2026-06-10T15:53:31+02:00 - 1b62d10 - Gaël Servaud : refactor(ai-plan-import): unifie les step runners en un seul runStep
+2026-06-10T12:07:52+02:00 - 50acc0f - Gaël Servaud : feat(plans): action Dupliquer le plan dans le menu (modale de nom)
+2026-06-10T12:07:52+02:00 - 00f3eca - Gaël Servaud : feat(ui): variante destructive (rouge) pour les items de ButtonMenu
+2026-06-10T11:48:26+02:00 - 8a86ba6 - Gaël Servaud : feat(plans): copie les notes de chaque fiche lors de la duplication d'un plan
+2026-06-10T11:45:36+02:00 - e927165 - Marc Rutkowski : Ajoute le composant manquant pour l'affichage des valeurs cible/limite
+2026-06-10T11:14:44+02:00 - 159385b - Marc Rutkowski : Met en adéquation le type de procédure du point trpc indicateurs.valeurs.recompute avec la permission requise
+2026-06-10T10:47:56+02:00 - fa522ba - Gaël Servaud : test(ai-plan-import): renomme le helper anAction en toAction
+2026-06-10T10:47:56+02:00 - 8a25ced - Gaël Servaud : feat(ai-plan-import): étape 4 enrichissement des sous-actions
+2026-06-10T10:06:27+02:00 - 925354a - Gaël Servaud : feat(plans): le nom du plan dupliqué est fourni en entrée
 2026-06-09T17:51:03+02:00 - 2bb4132 - Gaël Servaud : feat(plans): copie les preuves/documents lors de la duplication d'un plan
 2026-06-09T17:28:41+02:00 - de94aa9 - Gaël Servaud : fix(ai-plan-import): borne les entrées de consolidation aux index du lot demandé
 2026-06-09T17:28:41+02:00 - b6b5dc1 - Gaël Servaud : refactor(ai-plan-import): promeut mapWithConcurrency vers utils partagé et le réutilise pour la consolidation

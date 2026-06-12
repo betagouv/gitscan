@@ -877,6 +877,9 @@
 │   │   │   │   │   │   ├── use-fiches-count-by.ts
 │   │   │   │   │   │   ├── use-get-fiche.ts
 │   │   │   │   │   │   └── use-list-fiches-grouped-by-action-id.ts
+│   │   │   │   │   ├── duplicate-fiche
+│   │   │   │   │   │   └── data
+│   │   │   │   │   │       └── use-duplicate-fiche.ts
 │   │   │   │   │   ├── get-fiche
 │   │   │   │   │   │   └── fiche-no-access.page.tsx
 │   │   │   │   │   ├── list-all-fiches
@@ -1180,6 +1183,7 @@
 │   │   │   │   │   ├── show-plan
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── delete-axe-or-plan.modal.tsx
+│   │   │   │   │   │   │   ├── duplicate-plan.modal.tsx
 │   │   │   │   │   │   │   ├── move-axe.modal.tsx
 │   │   │   │   │   │   │   ├── move-fiche.modal.tsx
 │   │   │   │   │   │   │   ├── plan-node-to-profondeur-axe.adapter.ts
@@ -1192,6 +1196,7 @@
 │   │   │   │   │   │   │   ├── use-create-plan.ts
 │   │   │   │   │   │   │   ├── use-delete-axe.ts
 │   │   │   │   │   │   │   ├── use-delete-plan.ts
+│   │   │   │   │   │   │   ├── use-duplicate-plan.ts
 │   │   │   │   │   │   │   ├── use-export-plan.ts
 │   │   │   │   │   │   │   ├── use-fiches-filters-list
 │   │   │   │   │   │   │   │   ├── filter-formatters.test.ts
@@ -2464,6 +2469,12 @@
 │   │   │   │   │   │   ├── delete-fiche.router.e2e-spec.ts
 │   │   │   │   │   │   ├── delete-fiche.router.ts
 │   │   │   │   │   │   └── delete-fiche.service.ts
+│   │   │   │   │   ├── duplicate-fiche
+│   │   │   │   │   │   ├── duplicate-fiche.errors.ts
+│   │   │   │   │   │   ├── duplicate-fiche.input.ts
+│   │   │   │   │   │   ├── duplicate-fiche.router.e2e-spec.ts
+│   │   │   │   │   │   ├── duplicate-fiche.router.ts
+│   │   │   │   │   │   └── duplicate-fiche.service.ts
 │   │   │   │   │   ├── export
 │   │   │   │   │   │   ├── export-plan.controller.e2e-spec.ts
 │   │   │   │   │   │   ├── export-plan.controller.ts
@@ -2505,6 +2516,8 @@
 │   │   │   │   │   │   ├── fiche-annexes.router.e2e-spec.ts
 │   │   │   │   │   │   ├── fiche-annexes.router.ts
 │   │   │   │   │   │   └── fiche-annexes.service.ts
+│   │   │   │   │   ├── fiche-duplication
+│   │   │   │   │   │   └── fiche-duplication.service.ts
 │   │   │   │   │   ├── fiches.module.ts
 │   │   │   │   │   ├── fiches.router.ts
 │   │   │   │   │   ├── fiches.test-fixture.ts
@@ -2620,6 +2633,22 @@
 │   │   │   │   │   │   ├── adapters
 │   │   │   │   │   │   │   ├── extracted-action-to-import-action.spec.ts
 │   │   │   │   │   │   │   └── extracted-action-to-import-action.ts
+│   │   │   │   │   │   ├── ai-plan-import-job.repository.ts
+│   │   │   │   │   │   ├── ai-plan-import.constants.ts
+│   │   │   │   │   │   ├── ai-plan-import.errors.ts
+│   │   │   │   │   │   ├── ai-plan-import.module.ts
+│   │   │   │   │   │   ├── ai-plan-import.queue.ts
+│   │   │   │   │   │   ├── ai-plan-import.trpc-errors.ts
+│   │   │   │   │   │   ├── enqueue-import
+│   │   │   │   │   │   │   ├── detect-source-mime-type.spec.ts
+│   │   │   │   │   │   │   ├── detect-source-mime-type.ts
+│   │   │   │   │   │   │   ├── enqueue-import.controller.ts
+│   │   │   │   │   │   │   ├── enqueue-import.input.spec.ts
+│   │   │   │   │   │   │   ├── enqueue-import.input.ts
+│   │   │   │   │   │   │   ├── enqueue-import.service.spec.ts
+│   │   │   │   │   │   │   ├── enqueue-import.service.ts
+│   │   │   │   │   │   │   ├── validate-xlsx-archive.spec.ts
+│   │   │   │   │   │   │   └── validate-xlsx-archive.ts
 │   │   │   │   │   │   ├── generate-import-draft
 │   │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   │   └── sample.pdf
@@ -2632,6 +2661,15 @@
 │   │   │   │   │   │   │   │   ├── select-low-score-actions.ts
 │   │   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
 │   │   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
+│   │   │   │   │   │   │   ├── enrich-sous-actions
+│   │   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
+│   │   │   │   │   │   │   │   ├── apply-enrichments.ts
+│   │   │   │   │   │   │   │   ├── enrich-sous-actions.prompt.ts
+│   │   │   │   │   │   │   │   ├── enrich-sous-actions.schema.ts
+│   │   │   │   │   │   │   │   ├── enrich-sous-actions.spec.ts
+│   │   │   │   │   │   │   │   ├── enrich-sous-actions.ts
+│   │   │   │   │   │   │   │   ├── index-sous-actions.spec.ts
+│   │   │   │   │   │   │   │   └── index-sous-actions.ts
 │   │   │   │   │   │   │   ├── extract-actions
 │   │   │   │   │   │   │   │   ├── extract-actions.prompt.spec.ts
 │   │   │   │   │   │   │   │   ├── extract-actions.prompt.ts
@@ -2642,6 +2680,19 @@
 │   │   │   │   │   │   │   │   └── extraction-response-to-extracted-actions.ts
 │   │   │   │   │   │   │   ├── extract-text.spec.ts
 │   │   │   │   │   │   │   ├── extract-text.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.service.spec.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.service.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.worker.spec.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.worker.ts
+│   │   │   │   │   │   │   ├── qualitative-review
+│   │   │   │   │   │   │   │   ├── qualitative-review.prompt.ts
+│   │   │   │   │   │   │   │   ├── qualitative-review.schema.ts
+│   │   │   │   │   │   │   │   ├── qualitative-review.spec.ts
+│   │   │   │   │   │   │   │   ├── qualitative-review.ts
+│   │   │   │   │   │   │   │   ├── render-actions-compact.spec.ts
+│   │   │   │   │   │   │   │   └── render-actions-compact.ts
+│   │   │   │   │   │   │   ├── run-import-pipeline.spec.ts
+│   │   │   │   │   │   │   ├── run-import-pipeline.ts
 │   │   │   │   │   │   │   └── score-actions
 │   │   │   │   │   │   │       ├── apply-scores.spec.ts
 │   │   │   │   │   │   │       ├── apply-scores.ts
@@ -2651,13 +2702,24 @@
 │   │   │   │   │   │   │       ├── score-actions.schema.ts
 │   │   │   │   │   │   │       ├── score-actions.spec.ts
 │   │   │   │   │   │   │       └── score-actions.ts
+│   │   │   │   │   │   ├── get-import-status
+│   │   │   │   │   │   │   ├── get-import-status.input.ts
+│   │   │   │   │   │   │   ├── get-import-status.output.ts
+│   │   │   │   │   │   │   ├── get-import-status.router.ts
+│   │   │   │   │   │   │   ├── get-import-status.service.spec.ts
+│   │   │   │   │   │   │   └── get-import-status.service.ts
 │   │   │   │   │   │   ├── models
+│   │   │   │   │   │   │   ├── ai-plan-import-job.table.ts
+│   │   │   │   │   │   │   ├── ai-plan-import-job.ts
+│   │   │   │   │   │   │   ├── disableable-field.ts
 │   │   │   │   │   │   │   ├── extracted-action.ts
 │   │   │   │   │   │   │   └── plan-draft.ts
 │   │   │   │   │   │   └── prompts
 │   │   │   │   │   │       ├── consolidation.prompt.ts
+│   │   │   │   │   │       ├── enrichment.prompt.ts
 │   │   │   │   │   │       ├── extraction.prompt.ts
 │   │   │   │   │   │       ├── ignore-directive.ts
+│   │   │   │   │   │       ├── qualitative-review.prompt.ts
 │   │   │   │   │   │       └── scoring.prompt.ts
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
@@ -2687,9 +2749,7 @@
 │   │   │   │   │   │   ├── duplicated-fiche-budgets.mapper.spec.ts
 │   │   │   │   │   │   ├── duplicated-fiche-budgets.mapper.ts
 │   │   │   │   │   │   ├── duplicated-fiche.mapper.spec.ts
-│   │   │   │   │   │   ├── duplicated-fiche.mapper.ts
-│   │   │   │   │   │   ├── duplicated-plan-name.spec.ts
-│   │   │   │   │   │   └── duplicated-plan-name.ts
+│   │   │   │   │   │   └── duplicated-fiche.mapper.ts
 │   │   │   │   │   ├── get-plan
 │   │   │   │   │   │   ├── get-plan.errors.ts
 │   │   │   │   │   │   ├── get-plan.input.ts
@@ -3301,7 +3361,8 @@
 │   │   │       │   ├── llm.repository.ts
 │   │   │       │   ├── llm.service.ts
 │   │   │       │   ├── parse-json-response.spec.ts
-│   │   │       │   └── parse-json-response.ts
+│   │   │       │   ├── parse-json-response.ts
+│   │   │       │   └── token-usage.ts
 │   │   │       ├── log
 │   │   │       │   ├── custom-logger.service.ts
 │   │   │       │   └── log.dto.ts
@@ -4456,6 +4517,7 @@
 │   │   │   │   ├── add_fiche_recursive_axe_view.sql
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
+│   │   │   │   ├── ai_plan_import_job.sql
 │   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
@@ -4991,6 +5053,7 @@
 │   │   │   │   ├── add_fiche_recursive_axe_view.sql
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
+│   │   │   │   ├── ai_plan_import_job.sql
 │   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
@@ -5525,6 +5588,7 @@
 │   │       │   ├── add_fiche_recursive_axe_view.sql
 │   │       │   ├── add_report_generation_table.sql
 │   │       │   ├── add_report_notifications.sql
+│   │       │   ├── ai_plan_import_job.sql
 │   │       │   ├── ajout_created_columns_tags.sql
 │   │       │   ├── ajout_de_pilote_par_plan.sql
 │   │       │   ├── ajout_de_referent_par_plan.sql
@@ -7069,4 +7133,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1233 directories, 6036 files
+1241 directories, 6092 files
