@@ -44,6 +44,7 @@
 │   │   ├── 0005-auth-oidc-franceconnect-proconnect.md
 │   │   ├── 0006-architecture-ddd-lite-par-features.md
 │   │   ├── 0007-modele-etat-parcours-sync-ds.md
+│   │   ├── 0008-tracking-matomo-simulateur-deduplication.md
 │   │   └── README.md
 │   ├── parcours
 │   │   ├── FLOW-AND-SYNC.md
@@ -159,34 +160,36 @@
 │   │   ├── fix-missing-epci.ts
 │   │   ├── lib
 │   │   │   └── double-progression.ts
+│   │   ├── reset-amo-non-eligible.ts
 │   │   └── verify-dashboard-stats.ts
-│   └── seed
-│       ├── README.md
-│       ├── seed-staging.ts
-│       └── sql
-│           ├── agents
-│           │   ├── seed-agents-local-staging.sql
-│           │   └── seed-agents-prod.sql
-│           ├── amo-av
-│           │   └── seed-amo-av-fixtures.sql
-│           └── fake-parcours
-│               ├── 00-init.sql
-│               ├── 01-users.sql
-│               ├── 01b-users-prospects.sql
-│               ├── 02-parcours.sql
-│               ├── 03-validations-amo.sql
-│               ├── 04-dossiers-ds.sql
-│               ├── 05-prospects-sans-amo.sql
-│               ├── 06-test-aucun-amo.sql
-│               ├── 07-commentaires.sql
-│               ├── 08-prospect-qualifications.sql
-│               ├── 09-archives-dashboard.sql
-│               ├── 10-top-departements-dashboard.sql
-│               ├── 11-statistiques-demandes.sql
-│               ├── 12-donnees-eligibilite.sql
-│               ├── 13-amo-av-arrete-2026.sql
-│               ├── 99-verification.sql
-│               └── README.md
+│   ├── seed
+│   │   ├── README.md
+│   │   ├── seed-staging.ts
+│   │   └── sql
+│   │       ├── agents
+│   │       │   ├── seed-agents-local-staging.sql
+│   │       │   └── seed-agents-prod.sql
+│   │       ├── amo-av
+│   │       │   └── seed-amo-av-fixtures.sql
+│   │       └── fake-parcours
+│   │           ├── 00-init.sql
+│   │           ├── 01-users.sql
+│   │           ├── 01b-users-prospects.sql
+│   │           ├── 02-parcours.sql
+│   │           ├── 03-validations-amo.sql
+│   │           ├── 04-dossiers-ds.sql
+│   │           ├── 05-prospects-sans-amo.sql
+│   │           ├── 06-test-aucun-amo.sql
+│   │           ├── 07-commentaires.sql
+│   │           ├── 08-prospect-qualifications.sql
+│   │           ├── 09-archives-dashboard.sql
+│   │           ├── 10-top-departements-dashboard.sql
+│   │           ├── 11-statistiques-demandes.sql
+│   │           ├── 12-donnees-eligibilite.sql
+│   │           ├── 13-amo-av-arrete-2026.sql
+│   │           ├── 99-verification.sql
+│   │           └── README.md
+│   └── tsconfig.json
 ├── src
 │   ├── app
 │   │   ├── (backoffice)
@@ -356,6 +359,8 @@
 │   │   │   │   │   │   ├── DossiersSuivisHeader.tsx
 │   │   │   │   │   │   ├── DossiersSuivisTable.tsx
 │   │   │   │   │   │   ├── HeaderIconButton.tsx
+│   │   │   │   │   │   ├── dossiers-filters-url.test.ts
+│   │   │   │   │   │   ├── dossiers-filters-url.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── nouveau
 │   │   │   │   │   │   ├── page.tsx
@@ -1482,6 +1487,7 @@
 │   │   │   │   ├── 0030_regular_caretaker.sql
 │   │   │   │   ├── 0031_solid_la_nuit.sql
 │   │   │   │   ├── 0032_rename_commentaires_to_actions.sql
+│   │   │   │   ├── 0033_sad_star_brand.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1516,6 +1522,7 @@
 │   │   │   │       ├── 0030_snapshot.json
 │   │   │   │       ├── 0031_snapshot.json
 │   │   │   │       ├── 0032_snapshot.json
+│   │   │   │       ├── 0033_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1626,6 +1633,7 @@
 │   │   │       └── statistics.mocks.ts
 │   │   ├── types
 │   │   │   ├── action-result.types.ts
+│   │   │   ├── assets.d.ts
 │   │   │   ├── coordinates.types.ts
 │   │   │   ├── crisp.types.ts
 │   │   │   ├── dsfr-chart-jsx.d.ts
@@ -1660,4 +1668,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-469 directories, 1193 files
+469 directories, 1201 files
