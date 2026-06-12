@@ -1,9 +1,14 @@
-## Changelog : proconnect-landing-page (30 derniers jours)
+## Changelog : proconnect-landing-page (30 derniers jours, au 19 février 2026)
 
 ### Résumé
-Ce changelog présente les mises à jour mineures apportées au site vitrine ProConnect au cours des 30 derniers jours. Ces changements concernent principalement la mise à jour de certaines dépendances du projet pour assurer sa sécurité et sa stabilité.
+Ce changelog couvre une période de maintenance et de mises à jour de dépendances. Aucune nouvelle fonctionnalité majeure n'a été implémentée durant cette période. Les efforts se sont concentrés sur la mise à jour des librairies utilisées par le projet pour assurer la sécurité et la stabilité de la plateforme.
+
+### Évolutions fonctionnelles
+Aucune évolution fonctionnelle n'a été apportée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `dotenv` de la version 17.2.3 à la version 17.2.4 [#228](https://github.com/proconnect-gouv/proconnect-landing-page/issues/228)
-- Mise à jour de la dépendance `openid-client` de la version 6.8.1 à la version 6.8.2 [#227](https://github.com/proconnect-gouv/proconnect-landing-page/issues/227)
-- Mise à jour de la dépendance `qs` de la version 6.14.1 à la version 6.14.2 [#229](https://github.com/proconnect-gouv/proconnect-landing-page/issues/229)
+- Mise à jour de la dépendance `qs` de la version 6.14.2 à la version 6.15.2 [#239](https://github.com/proconnect-gouv/proconnect-landing-page/pull/239).
+- Mise à jour de la dépendance `shell-quote` et `concurrently` [#244](https://github.com/proconnect-gouv/proconnect-landing-page/pull/244).
+
+### Autres changements
+Aucun autre changement significatif n'a été effectué.
