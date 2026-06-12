@@ -1,36 +1,39 @@
-## Changelog : meet (30 derniers jours, au 4 juin 2026)
+## Changelog : meet (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des fichiers, notamment un accès sécurisé et une administration dédiée. L'expérience utilisateur est également améliorée avec l'ajout de fonctionnalités de picture-in-picture, de réactions et d'optimisations de performance, en particulier au niveau du chargement initial de l'application. Des corrections de sécurité et des mises à jour de dépendances ont également été intégrées.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec l'ajout de fonctionnalités comme le picture-in-picture, les réactions, et une meilleure gestion des permissions de muting. Des corrections de bugs et des mises à jour de sécurité ont également été apportées, ainsi que des optimisations techniques pour améliorer la performance et la stabilité de la plateforme. L'addon Outlook a été amélioré avec la prise en charge de l'internationalisation et l'ajout d'un formulaire de feedback.
 
 ### Évolutions fonctionnelles
-- Ajout d'une administration dédiée pour les fichiers [#1387](https://github.com/suitenumerique/meet/issues/1387).
-- Implémentation de la fonctionnalité Picture-in-Picture (PiP) pour les réunions, incluant une barre de contrôle et des notifications.
-- Amélioration de la gestion des réactions avec une meilleure accessibilité et compatibilité mobile.
-- Support étendu des formats vidéo et audio pour les résumés de réunion [#1358](https://github.com/suitenumerique/meet/issues/1358).
-- Possibilité de configurer l'accès et le niveau de permission des salles de réunion via l'API externe [#1260](https://github.com/suitenumerique/meet/issues/1260).
-- Ajout d'une commande de gestion pour fusionner les utilisateurs en double.
-- Support de la configuration de la salle de réunion (configuration et niveau d'accès) via l'API externe.
+- Ajout d'une fonctionnalité Picture-in-Picture (PiP) pour les réunions, incluant une barre de contrôle et un affichage de l'état de connexion.
+- Implémentation des réactions pendant les réunions, avec une navigation accessible au clavier et une adaptation pour les appareils mobiles.
+- Possibilité pour les participants de couper le son des autres en fonction de la configuration de la salle.
+- Amélioration de l'addon Outlook : prise en charge de l'internationalisation, ajout d'un lien vers un formulaire de feedback, et insertion intelligente des liens de réunion.
+- Support étendu des types de fichiers pour l'enregistrement des réunions.
+- Amélioration de l'assignation des intervenants.
 
 ### Évolutions techniques
-- Refactorisation de l'API pour remplacer les options de salle obsolètes.
-- Mise à jour de plusieurs dépendances, incluant `aiohttp`, `urllib3`, `eslint-plugin-react-hooks`, `webpack-dev-server`, `django` et `core-js` pour corriger des failles de sécurité et améliorer la stabilité.
-- Utilisation de `uv` pour la gestion des dépendances dans les agents.
-- Optimisation du chargement initial de l'application en utilisant le code splitting et le lazy loading des routes.
-- Amélioration de la robustesse du processus de suppression des fichiers.
-- Refactorisation de la logique de gestion des utilisateurs pour éviter les conditions de concurrence.
-- Utilisation de `uv.lock` pour la gestion des dépendances dans le PaaS.
-- Amélioration de la synchronisation de la configuration de la salle de réunion.
-- Préfixage des routes Swagger avec `/api`.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (idna, urllib3, eslint-plugin-react-hooks, aiohttp).
+- Refactorisation du code frontend pour améliorer le code splitting et réduire la taille des bundles JavaScript.
+- Utilisation de SVG importés directement pour les icônes, optimisant ainsi leur taille et leur performance.
+- Amélioration de la synchronisation de la configuration des salles.
+- Refactorisation de la gestion des permissions de muting.
+- Mise à jour de l'infrastructure de build et de déploiement (Tiltfile, Kubernetes jobs).
+- Amélioration de la robustesse du processus de suppression de fichiers.
+- Ajout d'un admin spécifique pour la gestion des fichiers.
+- Correction de bugs et amélioration de la stabilité du metadata extractor.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter le support de la configuration de la salle de réunion.
-- Amélioration des logs pour le speaker assignment.
-- Correction de la documentation des valeurs du chart Helm.
-- Suppression de dépendances inutiles dans le frontend.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
+- Correction de bugs mineurs dans l'interface utilisateur et le backend.
+- Amélioration des logs pour faciliter le débogage.
+- Mise à jour des versions des releases (1.19.0, 1.18.0, 1.17.0, 1.16.0).
+- Correction de la configuration CSP pour éviter les erreurs.
+- Ajout d'un message de fallback lorsque la fermeture automatique d'un dialogue échoue.
+- Paramétrisation de la configuration Nginx du frontend via un volume.
+- Ajout d'un badge "beta" avec le style de l'UI kit.
+- Suppression d'une dépendance inutile (vite-tsconfig-paths).
+- Correction d'un problème de positionnement des tooltips.
 - Ajout de tests pour la couverture du code.
-- Correction de la position des tooltips dans la fenêtre PiP.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Correction de la génération des ID de salle pour renforcer la sécurité.
-- Mise à jour du changelog.
+- Correction d'un bug lié à la concurrence lors de la création d'utilisateurs.
+- Correction d'un bug lié à la gestion des états des fichiers.
+- Correction d'un bug lié à la configuration des variables d'environnement.
