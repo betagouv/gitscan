@@ -1,5 +1,70 @@
+2026-06-03T11:03:51+02:00 - f15834a - Vincent Viers : perf(generiques): move getEvents fetch to server component
+2026-06-03T11:03:51+02:00 - b3a46cd - Vincent Viers : perf(medicament): move all data fetching to the server
+2026-06-03T11:03:51+02:00 - 831d18e - Vincent Viers : fix: copy resume_specialites to review apps
+2026-06-03T11:03:51+02:00 - 64b63ee - Vincent Viers : perf(definitions): move all data fetching to server components
+2026-06-03T11:03:51+02:00 - 4bb0690 - Vincent Viers : doc: add todo comment for getIndicationsBlock
+2026-06-02T12:55:35+02:00 - f3f35de - Vincent Viers : fix(notice): make grossesse, boireManger, pediatrie, conduite icons functional
+2026-06-02T12:28:08+02:00 - fd277c0 - Vincent Viers : fix(script): query pregnancy alerts directly instead of via unstable_cache
+2026-06-02T12:28:08+02:00 - 99cb6a8 - Vincent Viers : conf: react-jsx mode
+2026-06-02T12:28:08+02:00 - 4e943d5 - Vincent Viers : fix(search): include brand-name drugs in substance search results
+2026-06-02T12:28:08+02:00 - 11b126a - Vincent Viers : fix(search): increase result cap to 200 so brand-name drugs aren't cut off
+2026-06-02T12:21:52+02:00 - fe91327 - Vincent Viers : fix: Albert JSON guard + tests, cleanup logs in production
+2026-06-02T12:21:52+02:00 - d7e4be9 - Vincent Viers : feat: add notice semantic search API route and lib utilities
+2026-06-02T12:21:52+02:00 - d05a94b - Vincent Viers : feat(notice-search): cache LLM responses with 24hrs unstable_cache
+2026-06-02T12:21:52+02:00 - cf24ed0 - Vincent Viers : test(notice-search): add unit tests for noticeToText, extractBlockId, and highlightTextInElement
+2026-06-02T12:21:52+02:00 - b79e083 - Vincent Viers : fix(notice-search): fix block_id parsing and add dev-only highlight debug logs
+2026-06-02T12:21:52+02:00 - 8345b10 - Vincent Viers : fix: remove invalid DSFR class fr-input--sm
+2026-06-02T12:21:52+02:00 - 7e02eaa - Vincent Viers : feat: add free-text search input to QuestionsBox
+2026-06-02T12:21:52+02:00 - 7721df4 - Vincent Viers : feat(notice-search): replace vector search with LLM-only answering and sentence highlighting Send the full notice as plain text to Albert, which returns a structured   JSON (answer, section_anchor, block_id, quote). Server-side we strip the   block- prefix so the client can resolve data-block-id directly. Client-side   we use the DOM Range API to highlight the exact sentence (quote) within the   identified block, falling back to block- then section-level highlight.
+2026-06-02T12:21:52+02:00 - 71d7957 - Vincent Viers : wip: highlighting in notice
+2026-06-02T12:21:52+02:00 - 6aa8f02 - Vincent Viers : test(notice-search): add integration tests for GET route covering happy path, Albert failures, and edge cases
+2026-06-02T12:21:52+02:00 - 686df85 - Vincent Viers : fix: update regex for block-id returned by LLM
+2026-06-02T12:21:52+02:00 - 65f1ff9 - Vincent Viers : refactor: remove keyword-highlight CSS from NoticeBlock
+2026-06-02T12:21:52+02:00 - 575eaa2 - Vincent Viers : feat(OpenSearch): use HyDE approach to question answering
+2026-06-02T12:21:52+02:00 - 363049b - Vincent Viers : feat: add NoticeChunkResultsBox component
+2026-06-02T12:21:52+02:00 - 31dae67 - Vincent Viers : refactor: simplify notice highlight to position-based matching
+2026-06-02T12:21:52+02:00 - 24d58db - Vincent Viers : feat: wire OpenSearch semantic search into notice question flow
+2026-06-02T12:21:52+02:00 - 1c066b4 - Vincent Viers : chore: remove dead HyDE/OpenSearch code
+2026-06-02T12:21:52+02:00 - 17430be - Vincent Viers : conf(OS): some more tweaking
+2026-06-02T12:21:52+02:00 - 15684fd - Vincent Viers : feat: misc improvements
+2026-06-02T12:21:52+02:00 - 14aa16e - Vincent Viers : feat: add queryText to notice questions, remove keyword arrays
+2026-06-02T12:21:52+02:00 - 0f6cf4c - Vincent Viers : debug: add logging to try and tune OpenSearch queries
+2026-06-02T12:21:52+02:00 - 0a37d51 - Vincent Viers : fix(tests): loosen block() helper type to accept string | string[] for content
+2026-06-02T12:21:52+02:00 - 038003f - Vincent Viers : refactor: simplify results box to question reminder, limit OS to 1 result
+2026-06-02T12:21:52+02:00 - 01ba308 - Vincent Viers : fix(notice-search): remove competing scrollIntoView that raced with highlight scroll
+2026-06-02T10:46:56+02:00 - c800e29 - Vincent Viers : feat: add date dernière maj
+2026-06-02T10:46:56+02:00 - 4370954 - Vincent Viers : chores: update text in interactions page
+2026-06-02T10:46:13+02:00 - c6c52d0 - Vincent Viers : fix(analytics): remove duplicate Matomo initialisation
+2026-06-02T10:46:13+02:00 - 1588720 - Vincent Viers : clean: remove hotjar from codebase
+2026-06-02T10:46:13+02:00 - 06058ff - Vincent Viers : perf(analytics): use matomo in cookieless mode, remove consent banner
+2026-06-02T10:44:23+02:00 - 5421b45 - Vincent Viers : Merge pull request #194 from betagouv/search-filters
+2026-06-02T10:36:19+02:00 - 6542964 - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
+2026-06-02T10:35:21+02:00 - 343941a - Clemence : fix: display indications on the new spec card
+2026-06-02T10:20:37+02:00 - aee17ac - Vincent Viers : Merge pull request #222 from betagouv/feat-new-medicament-page
+2026-06-01T15:52:19+02:00 - 8c4b86c - Clemence : fix: improvements
+2026-06-01T11:42:49+02:00 - 29ec51a - Clemence : feat: add tests
+2026-06-01T11:10:25+02:00 - f81313f - Clemence : fix: wording aggregate instead of agregate
+2026-06-01T10:06:47+02:00 - 1bbcebd - Clemence : fix: error for non unique key
+2026-06-01T10:06:27+02:00 - 6637ad5 - Clemence : fix: some improvements
+2026-05-29T11:03:01+02:00 - 01143ec - Clemence : feat: add tests
+2026-05-29T10:49:49+02:00 - 2d8e974 - Clemence : fix: tests
+2026-05-29T10:33:10+02:00 - 88fac33 - Clemence : fix: icons display
+2026-05-25T22:17:11+02:00 - 5ef9426 - Clemence : fix: tests (+ temp comments)
+2026-05-25T11:00:19+02:00 - 82f13a1 - Clemence : feat: clean
+2026-05-25T10:51:58+02:00 - dfed96e - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
+2026-05-25T10:51:46+02:00 - fb9375d - Clemence : feat: new results cards
+2026-05-20T15:26:46+02:00 - 9c2233c - Clemence : fix: display filter even with count = 0 and display "Voir plus / Voir moins" even if all filters are selected
+2026-05-20T15:25:42+02:00 - cb997da - Clemence : fix: rename "popularité" with "pertinence"
+2026-05-19T17:34:00+02:00 - dec0bf2 - Clemence : feat: v2 for filters
+2026-05-19T10:54:40+02:00 - dc55d7a - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into feat-new-medicament-page
 2026-05-18T17:12:47+02:00 - 45c8594 - Vincent Viers : chore: update dependencies
 2026-05-18T17:12:30+02:00 - 99e0269 - Vincent Viers : perf(sitemap): generate statically at build time with 24h ISR revalidation
+2026-05-14T10:28:36+02:00 - cd1ed6b - Clemence : feat: add new icons + review questions boxes styles
+2026-05-13T16:03:06+02:00 - 342a851 - Clemence : fix: errors from previous merge
+2026-05-13T13:58:49+02:00 - fda7a64 - Clemence : feat: add indications in indication block
+2026-05-12T15:06:10+02:00 - 340e9f1 - Clemence : fix: errors from previous merge
+2026-05-12T15:03:48+02:00 - 04f5271 - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
+2026-05-11T16:01:00+02:00 - 6874a1c - Clemence : feat: advanced version
 2026-05-07T15:09:31+02:00 - d61baa2 - Vincent Viers : perf: cache static DB queries with unstable_cache to reduce load during SSG
 2026-05-07T15:09:31+02:00 - 9a90924 - Vincent Viers : fix(specialities): revert unstable_cache on getNoticeRcpLastUpdated
 2026-05-07T15:09:31+02:00 - 7e86350 - Vincent Viers : fix(cache): resolve unstable_cache key collision between getSubstanceSpecialitesCIS and getSubstanceAllSpecialites
@@ -13,6 +78,11 @@
 2026-05-07T11:04:09+02:00 - 43f4b54 - Vincent Viers : feat(build): use generateStaticParams to SSG alpha_lists and glossaire
 2026-05-07T10:57:44+02:00 - 3c5a6bd - Vincent Viers : fix(proxy): use Sec-Fetch-Dest to skip RSC and prefetch requests from rate limit
 2026-05-07T10:33:50+02:00 - 65e6f65 - Clemence : feat: update menus : header and footer
+2026-05-06T11:39:43+02:00 - acadb46 - Clemence : feat: decompose presentation
+2026-05-05T18:52:56+02:00 - 56cd14d - Clemence : feat: desktop version
+2026-05-05T14:34:50+02:00 - 5871239 - Clemence : fix: main merge (end)
+2026-05-04T15:50:05+02:00 - 35aefd1 - Clemence : fix: main merge
+2026-05-04T15:45:41+02:00 - 6979ca3 - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into feat-new-medicament-page
 2026-05-04T13:28:56+02:00 - 7ba1ee3 - Vincent Viers : refactor(alpha_lists): move data fetching to server components
 2026-05-04T13:28:56+02:00 - 4e1caa9 - Vincent Viers : conf(proxy): reintroduce 200 req / min limit
 2026-05-04T12:39:32+02:00 - d85ced2 - Vincent Viers : fix(proxy): raise rate limit to 1000 req/min in staging
@@ -22,6 +92,9 @@
 2026-04-30T10:01:16+02:00 - f74ef38 - Vincent Viers : script(import): add post-import npm commands for derived psql tables
 2026-04-30T10:01:16+02:00 - 23c9b28 - Vincent Viers : script(devcontainer): add import_pdbm_dump script to devcontainer setup
 2026-04-30T10:01:16+02:00 - 058cea4 - Vincent Viers : script(scalingo): add pdbm import script for scalingo
+2026-04-28T14:19:34+02:00 - cee02a4 - Clemence : feat: filter only if one filter is selected + remove articles loading from search results page
+2026-04-27T14:21:43+02:00 - aa46846 - Clemence : feat: new features for the filters
+2026-04-26T17:36:23+02:00 - 3c8765f - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
 2026-04-22T15:33:07+02:00 - fd307af - Vincent Viers : clean: dedup and rename seed-search-index to camelCase
 2026-04-22T15:33:07+02:00 - c02973c - Vincent Viers : scripts: add seedInteractionsSearch.ts to built scripts
 2026-04-22T15:33:07+02:00 - 52f8bc6 - Vincent Viers : clean: rename seed-review-app to camelCase
@@ -70,6 +143,7 @@
 2026-04-15T11:21:53+02:00 - 39ace6c - Vincent Viers : perf(fonts): preload Marianne-Regular_Italic to eliminate late font fetch
 2026-04-15T11:21:53+02:00 - 33ea8e3 - Vincent Viers : refacto(AutoCompleteSearch): replace MUI Autocomplete with custom combobox
 2026-04-15T11:21:53+02:00 - 2963b3c - Vincent Viers : clean: finish removing MUI
+2026-04-14T09:59:18+02:00 - b91f69b - Clemence : feat: new page v1
 2026-04-09T10:59:52+02:00 - e49f32b - Vincent Viers : feat: compute data freshness in GreetingModal
 2026-04-09T10:59:52+02:00 - 7793f4a - Vincent Viers : clean: remove unused Article import from homepage
 2026-04-09T10:59:52+02:00 - 719c15d - Vincent Viers : feat: dynamically compute number of commercialized medications
@@ -83,6 +157,9 @@
 2026-03-31T11:15:33+02:00 - 47b04bb - Vincent Viers : chore(lint): change linter to eslint
 2026-03-31T11:15:33+02:00 - 26f337a - Vincent Viers : conf(app): upgrade to Next 16.1.6
 2026-03-31T11:14:47+02:00 - 554e6ab - Vincent Viers : conf: add google search console verification HTML
+2026-03-30T11:16:41+02:00 - 832e2ac - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
+2026-03-30T09:12:39+02:00 - 66d6ee4 - Clemence : fix: add score in SearchResultItem
+2026-03-27T21:50:34+01:00 - 6ff4562 - Clemence : feat: filters v1
 2026-03-25T15:54:47+01:00 - ed5155c - Vincent Viers : fix: run seed-search-index in review apps
 2026-03-25T15:54:47+01:00 - afc4946 - Vincent Viers : hotfix: add empty pathosCodesNames to resume_specialites insert
 2026-03-25T15:21:38+01:00 - b86edcd - Clemence : feat: add migration
@@ -90,6 +167,10 @@
 2026-03-25T10:02:16+01:00 - d134941 - Clemence : fix: compositions
 2026-03-25T10:00:44+01:00 - 0d8dde1 - Vincent Viers : conf(devcontainer): add opensearch UI to devcontainer
 2026-03-25T09:35:06+01:00 - fc4e56d - Vincent Viers : conf(devcontainer): add OpenSearch container for local dev
+2026-03-24T18:27:11+01:00 - 5375e31 - Clemence : fix: add some tests to avoid undefined errors
+2026-03-24T18:13:36+01:00 - a89b245 - Clemence : fix: add some tests to avoid undefined errors
+2026-03-24T17:05:33+01:00 - 8c19e1a - Clemence : feat: rename migration
+2026-03-24T15:54:03+01:00 - 5bc30bc - Clemence : Merge branch 'main' of https://github.com/betagouv/infomedicament into search-filters
 2026-03-19T16:09:25+01:00 - fd8a20c - Vincent Viers : feat(script): use arrays for all table types in review app script
 2026-03-19T16:09:25+01:00 - e65cd75 - Vincent Viers : chore(CI): make lighthouse CI trigger only when review app is up
 2026-03-19T16:09:25+01:00 - e557ab7 - Vincent Viers : chore(db): baseline migration for PostgreSQL tables

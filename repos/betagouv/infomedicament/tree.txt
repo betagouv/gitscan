@@ -29,7 +29,20 @@
 ├── public
 │   ├── googleac4490d520987202.html
 │   ├── icons
+│   │   ├── a_quoi_sert_il.svg
 │   │   ├── aip.png
+│   │   ├── alcool_et_nourriture.svg
+│   │   ├── allergies.svg
+│   │   ├── combien_en_prendre.svg
+│   │   ├── comment_le_prendre.svg
+│   │   ├── composition.svg
+│   │   ├── conduite.svg
+│   │   ├── conservation.svg
+│   │   ├── duree_du_traitement.svg
+│   │   ├── effets_indesirables.svg
+│   │   ├── enfants.svg
+│   │   ├── grossesse_et_allaitement.svg
+│   │   ├── interactions_medicaments.svg
 │   │   └── surveillance_renforcee.png
 │   └── img
 │       ├── apropos_illu.webp
@@ -121,6 +134,10 @@
 │   │   │   ├── layout.tsx
 │   │   │   ├── medicaments
 │   │   │   │   └── [CIS]
+│   │   │   │       ├── notice-search
+│   │   │   │       │   ├── route.integration.test.ts
+│   │   │   │       │   ├── route.test.ts
+│   │   │   │       │   └── route.ts
 │   │   │   │       └── page.tsx
 │   │   │   ├── mentions-legales
 │   │   │   │   └── page.tsx
@@ -131,7 +148,6 @@
 │   │   │   │   ├── route.test.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── rechercher
-│   │   │   │   ├── SearchPage.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── results
 │   │   │   │       └── route.ts
@@ -146,7 +162,6 @@
 │   │   │       └── [id]
 │   │   │           └── page.tsx
 │   │   ├── StartDsfr.tsx
-│   │   ├── StartHotjar.tsx
 │   │   ├── api
 │   │   │   └── debug
 │   │   │       └── memory
@@ -171,8 +186,6 @@
 │   │   ├── GenericAccordion.tsx
 │   │   ├── GreetingModal.tsx
 │   │   ├── InteractionSubstanceInput.tsx
-│   │   ├── Matomo.tsx
-│   │   ├── PresentationsList.tsx
 │   │   ├── ThemeProvider.tsx
 │   │   ├── articles
 │   │   │   ├── ArticlesResumeList.tsx
@@ -183,6 +196,7 @@
 │   │   │   ├── DataBlockGeneric.tsx
 │   │   │   ├── DataBlockGenericIcons.tsx
 │   │   │   ├── DataBlockSpecGenerique.tsx
+│   │   │   ├── DataBlockSpecResult.tsx
 │   │   │   ├── DataList.tsx
 │   │   │   └── DataListPagination.tsx
 │   │   ├── definition
@@ -210,22 +224,29 @@
 │   │   │   ├── MarrNoticeAdvanced.tsx
 │   │   │   └── MarrResumeList.tsx
 │   │   ├── medicaments
-│   │   │   ├── DetailedNotice.tsx
-│   │   │   ├── MedicamentContainer.tsx
+│   │   │   ├── AdvancedContent.tsx
 │   │   │   ├── MedicamentContent.tsx
-│   │   │   ├── MedicamentContentHeader.tsx
-│   │   │   ├── NoticeBlock.tsx
-│   │   │   ├── QuestionKeyword.tsx
-│   │   │   ├── QuestionKeywordsBox.tsx
-│   │   │   ├── QuestionsBox.tsx
+│   │   │   ├── NoticeContent.tsx
+│   │   │   ├── advanced
+│   │   │   │   ├── DetailedSubMenu.tsx
+│   │   │   │   ├── DocumentHas.tsx
+│   │   │   │   ├── GeneralInformations.tsx
+│   │   │   │   └── RcpBlock.tsx
 │   │   │   ├── blocks
 │   │   │   │   ├── CentraliseBlock.tsx
-│   │   │   │   └── GenericBlocks.tsx
-│   │   │   └── detailed
-│   │   │       ├── DetailedSubMenu.tsx
-│   │   │       ├── DocumentHas.tsx
-│   │   │       ├── GeneralInformations.tsx
-│   │   │       └── RcpBlock.tsx
+│   │   │   │   ├── DesktopTitleBlock.tsx
+│   │   │   │   ├── GenericBlocks.tsx
+│   │   │   │   ├── IndicationsBlock.tsx
+│   │   │   │   ├── MedicamentContentHeaderBlock.tsx
+│   │   │   │   └── SwitchNoticeAdvancedBlock.tsx
+│   │   │   └── notice
+│   │   │       ├── NoticeBlock.tsx
+│   │   │       ├── NoticeChunkResultsBox.test.ts
+│   │   │       ├── NoticeChunkResultsBox.tsx
+│   │   │       ├── PresentationsList.tsx
+│   │   │       ├── QuestionKeyword.tsx
+│   │   │       ├── QuestionKeywordsBox.tsx
+│   │   │       └── QuestionsBox.tsx
 │   │   ├── medicamentsGeneriques
 │   │   │   └── MedicamentGeneriqueContainer.tsx
 │   │   ├── rating
@@ -235,8 +256,11 @@
 │   │   │   ├── RatingStars.tsx
 │   │   │   └── RatingToaster.tsx
 │   │   ├── search
-│   │   │   ├── PregnancyPediatricFilters.tsx
-│   │   │   └── SearchResultsList.tsx
+│   │   │   ├── SearchPage.tsx
+│   │   │   ├── SearchResultsList.tsx
+│   │   │   └── blocks
+│   │   │       ├── SearchFilterBlock.tsx
+│   │   │       └── SearchFilterLabel.tsx
 │   │   ├── statistics
 │   │   │   └── Statistics.tsx
 │   │   └── tags
@@ -250,15 +274,16 @@
 │   │       ├── SubstanceTag.tsx
 │   │       ├── TagContainer.tsx
 │   │       └── dsfr-custom-tags.css
-│   ├── consentManagement.tsx
 │   ├── customIcons
 │   │   ├── bedroom-baby.svg
 │   │   ├── box.svg
 │   │   ├── customIcons.css
 │   │   ├── molecule.svg
 │   │   ├── notice.svg
+│   │   ├── pediatric_alert.svg
 │   │   ├── pill.svg
-│   │   └── pregnancy.svg
+│   │   ├── pregnancy.svg
+│   │   └── pregnancy_alert.svg
 │   ├── data
 │   │   ├── grist
 │   │   │   ├── index.ts
@@ -281,7 +306,8 @@
 │   │   │   ├── 20260402000000_create_triam_tables.ts
 │   │   │   ├── 20260408000000_add_triam_classe_grp_subst.ts
 │   │   │   ├── 20260408100000_add_class_ids_to_interactions_search.ts
-│   │   │   └── 20260430091940_classes_cliniques.ts
+│   │   │   ├── 20260430091940_classes_cliniques.ts
+│   │   │   └── 20260521080526_resume_specialites.ts
 │   │   ├── pdbmMySQL
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
@@ -323,6 +349,9 @@
 │   ├── displayUtils.test.ts
 │   ├── displayUtils.ts
 │   ├── instrumentation.ts
+│   ├── lib
+│   │   ├── albert.test.ts
+│   │   └── albert.ts
 │   ├── proxy.ts
 │   ├── services
 │   │   ├── matomo.ts
@@ -347,14 +376,14 @@
 │   │   ├── PresentationTypes.tsx
 │   │   ├── RatingTypes.tsx
 │   │   ├── SearchTypes.tsx
-│   │   ├── SpecialiteTypes.tsx
-│   │   └── TagType.tsx
+│   │   └── SpecialiteTypes.tsx
 │   └── utils
 │       ├── alphabeticNav.ts
 │       ├── atc.ts
 │       ├── glossary.tsx
 │       ├── network.tsx
 │       ├── notices
+│       │   ├── noticesUtils.test.ts
 │       │   └── noticesUtils.tsx
 │       ├── pediatrics.ts
 │       ├── presentations.integration.test.ts
@@ -368,4 +397,4 @@
 ├── utils
 │   └── network.tsx
 └── vitest.config.mts
-94 directories, 276 files
+98 directories, 301 files
