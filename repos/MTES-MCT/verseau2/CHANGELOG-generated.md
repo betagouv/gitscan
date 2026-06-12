@@ -1,35 +1,42 @@
-## Changelog : verseau2 (30 derniers jours, au 25 mai 2026)
+## Changelog : verseau2 (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, Verseau2 a bénéficié d'améliorations significatives en termes de fonctionnalités d'export de données, de visualisation, et de gestion des bilans. Des corrections ont également été apportées pour améliorer la stabilité et la configuration de l'application, notamment en environnement de développement et de déploiement.
+Ce mois-ci, Verseau2 a bénéficié d'améliorations significatives en termes de fonctionnalités et de corrections, notamment autour de la gestion des données MASA, des indicateurs de conformité, et de l'export des données. Des optimisations ont également été apportées au backend pour améliorer la performance et la lisibilité du code. L'interface utilisateur a été enrichie avec de nouvelles visualisations et des informations contextuelles.
 
 ### Évolutions fonctionnelles
+- Ajout de l'affichage du nombre total de mesures au-dessus du tableau des données [#113](https://github.com/MTES-MCT/verseau2/issues/113).
+- Ajout d'un avis informatif pour les indicateurs concernant les réseaux mixtes/unitaires [#112](https://github.com/MTES-MCT/verseau2/issues/112).
+- Implémentation du décodage de la clé privée SFTP en UTF-8 [#111](https://github.com/MTES-MCT/verseau2/issues/111).
+- Ajout de la gestion des statuts MASA et mise à jour des entités associées [#92](https://github.com/MTES-MCT/verseau2/issues/92).
+- Ajout de la gestion des agences de l'eau par SIRET [#90](https://github.com/MTES-MCT/verseau2/issues/90).
 - Ajout d'un graphique pour visualiser les mesures [#88](https://github.com/MTES-MCT/verseau2/issues/88).
-- Implémentation de l'export CSV pour les données [#82](https://github.com/MTES-MCT/verseau2/issues/82).
-- Ajout de nouvelles colonnes au bilan, améliorant la richesse des données présentées [#72](https://github.com/MTES-MCT/verseau2/issues/72).
-- Gestion des dates de début et de fin pour les bilans, avec un nouvel endpoint dédié aux paramètres [#84](https://github.com/MTES-MCT/verseau2/issues/84).
-- Les rapports sont désormais envoyés même en cas d'erreur [#76](https://github.com/MTES-MCT/verseau2/issues/76).
-- Correction du tri des résultats SQL [#89](https://github.com/MTES-MCT/verseau2/issues/89).
-- Mise à jour du titre de l'application et ajout de la gestion de l'environnement [#74](https://github.com/MTES-MCT/verseau2/issues/74).
+- Ajout de la gestion des filtres pour tous les contrôles [#91](https://github.com/MTES-MCT/verseau2/issues/91).
+- Ajout d'une bannière d'information sur la conformité réglementaire [#104](https://github.com/MTES-MCT/verseau2/issues/104).
+- Ajout de la classe `truncate-cell` pour tronquer le texte des indicateurs [#103](https://github.com/MTES-MCT/verseau2/issues/103).
+- Formatage de la date de validation des critères [#102](https://github.com/MTES-MCT/verseau2/issues/102).
+- Ajout de liens cliquables pour les indicateurs [#98](https://github.com/MTES-MCT/verseau2/issues/98).
+- Ajout de l'export CSV pour les données [#82](https://github.com/MTES-MCT/verseau2/issues/82).
+- Ajout de nouvelles colonnes au bilan [#72](https://github.com/MTES-MCT/verseau2/issues/72).
+- Ajout de la gestion des dates de début et de fin pour les bilans et nouvel endpoint paramètres [#84](https://github.com/MTES-MCT/verseau2/issues/84).
+- Suppression des filtres avancés en mode STEU [#94](https://github.com/MTES-MCT/verseau2/issues/94).
+- Ajout d'un service d'authentification mock avec gestion [#85](https://github.com/MTES-MCT/verseau2/issues/85).
 
 ### Évolutions techniques
-- Ajout d'un service d'authentification mock avec gestion, facilitant les tests et le développement [#85](https://github.com/MTES-MCT/verseau2/issues/85).
+- Amélioration de la gestion des tables exclues pour `pg_restore` [#109](https://github.com/MTES-MCT/verseau2/issues/109).
+- Ajustement de la vérification DBO5 par rapport à CMA N-1 [#107](https://github.com/MTES-MCT/verseau2/issues/107).
+- Correction des vérifications DCO et DBO5 pour A3 et A4 [#106](https://github.com/MTES-MCT/verseau2/issues/106).
+- Implémentation du contrôle de débit A3 A4 [#96](https://github.com/MTES-MCT/verseau2/issues/96).
+- Correction du calcul du débit de référence en cascade [#105](https://github.com/MTES-MCT/verseau2/issues/105).
+- Refactor du calcul de 'Maximum entre PC95 et débit de référence' [#101](https://github.com/MTES-MCT/verseau2/issues/101).
+- Suppression de cache inutile [#99](https://github.com/MTES-MCT/verseau2/issues/99).
+- Amélioration de la lisibilité du code avec des blocs conditionnels [#97](https://github.com/MTES-MCT/verseau2/issues/97).
+- Renommage des méthodes de détail dans `MasaProvider`.
 - Ajout de la gestion CORS pour les déploiements frontend/backend [#83](https://github.com/MTES-MCT/verseau2/issues/83).
-- Amélioration de la structure des types et des services dans le backend [#81](https://github.com/MTES-MCT/verseau2/issues/81).
-- Refactoring des méthodes de détail dans `MasaProvider`.
-- Amélioration de la gestion des requêtes pour les API REST MASA.
+- Correction d'une erreur lors du déploiement de `sync-pg` [#87](https://github.com/MTES-MCT/verseau2/issues/87).
+- Correction d'une erreur `ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY`.
 - Mise à jour de la dépendance `axios` vers la version 1.16 [#66](https://github.com/MTES-MCT/verseau2/issues/66).
-- Configuration du serveur pour Docker.
-- Ajout de la configuration pour le reverse proxy [#73](https://github.com/MTES-MCT/verseau2/issues/73).
 
 ### Autres changements
-- Correction d'une erreur lors du déploiement de `sync-pg` [#87](https://github.com/MTES-MCT/verseau2/issues/87).
-- Correction d'une erreur `ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY` en environnement de développement [#6bf89b5](https://github.com/MTES-MCT/verseau2/commit/6bf89b5).
-- Ajout de la configuration du gestionnaire de paquets et des moteurs [#179](https://github.com/MTES-MCT/verseau2/issues/179).
-- Correction de la restauration de la base de données PostgreSQL en local [#86](https://github.com/MTES-MCT/verseau2/issues/86).
-- Correction de l'URL de redirection Nginx [#80](https://github.com/MTES-MCT/verseau2/issues/80).
-- Désactivation temporaire de la synchronisation de la base de données [#78](https://github.com/MTES-MCT/verseau2/issues/78).
-- Fix des règles ESLint et gestion des erreurs [#75](https://github.com/MTES-MCT/verseau2/issues/75).
-- Amélioration de la documentation et des commandes dans `AGENTS.md`.
-- Correction du trim des adresses email dans les requêtes [#70](https://github.com/MTES-MCT/verseau2/issues/70).
-- Correctif recette [#71](https://github.com/MTES-MCT/verseau2/issues/71).
+- Suppression de l'entrée `graphify-out` et ajout de `understand-anything` dans le fichier `.gitignore`.
+- Correction d'une erreur de restauration pg en local [#86](https://github.com/MTES-MCT/verseau2/issues/86).
+- Ajout de la configuration du gestionnaire de paquets et des moteurs [#86](https://github.com/MTES-MCT/verseau2/issues/86).
