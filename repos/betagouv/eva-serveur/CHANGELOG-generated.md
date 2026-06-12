@@ -1,58 +1,62 @@
-## Changelog : eva-serveur (30 derniers jours, au 4 juin 2026)
+## Changelog : eva-serveur (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'interface avec l'intégration du Design System Fr (DSFR) et des corrections de bugs. Des améliorations ont également été apportées à la gestion des structures et des comptes, ainsi qu'à la robustesse de l'application avec des corrections de tests et des mises à jour de dépendances.
+Cette version apporte des améliorations significatives à l'interface utilisateur, notamment une migration vers le nouveau layout DSFR, des corrections d'accessibilité et des ajustements visuels. Des optimisations ont été apportées à la gestion des structures et des utilisateurs, ainsi que des corrections de bugs et des mises à jour de dépendances pour assurer la stabilité et la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Possibilité de fermer la modale de validation en attente en cliquant en dehors. [#d28aa70](https://github.com/betagouv/eva-serveur/commit/d28aa70)
-- Affichage et filtrage du SIRET pour toutes les structures. [#9d7e987](https://github.com/betagouv/eva-serveur/commit/9d7e987)
-- Restauration des fonctions d'autocomplétion pour la recherche de compte. [#db01108](https://github.com/betagouv/eva-serveur/commit/db01108)
-- Réactivation de l'autocomplétion de recherche sur les campagnes privées. [#12743ab](https://github.com/betagouv/eva-serveur/commit/12743ab)
-- Ajout d'URL officielles pour les compétences transversales. [#e3cb723](https://github.com/betagouv/eva-serveur/commit/e3cb723)
-- Suppression des boutons copier/coller dans la modal d'invitation des structures Opco et Administrative. [#9915ed9](https://github.com/betagouv/eva-serveur/commit/9915ed9)
-- Possibilité de générer les PDF en environnement de développement. [#e1a4388](https://github.com/betagouv/eva-serveur/commit/e1a4388)
-- Refonte du parcours de réinitialisation du mot de passe avec le DSFR. [#a5ce034](https://github.com/betagouv/eva-serveur/commit/a5ce034)
+- Possibilité de fermer la modale de validation en attente en cliquant sur le fond.
+- Affichage et filtrage du SIRET pour toutes les structures.
+- Ajout d'accès démos depuis l'accueil.
+- Ajout de liens officiels pour les compétences transversales.
+- Restauration des fonctions d'autocomplétion pour la recherche de compte.
+- Réactivation de l'autocomplete de recherche sur les campagnes privées.
+- Possibilité de générer les PDF en environnement de développement.
+- Ajout d'une colonne SIRET à la table des comptes.
+- Suppression des choix retirés d'une question lors de l'import de questions QCM.
+- Ajout du profil aberrant pour la comparaison.
+- Ajout d'indicateurs de coût actualisés.
+- Ajout de conseils actualisés pour les bilans Evapro.
+- Ajout de nouvelles permissions pour CodeQL.
 
 ### Évolutions techniques
-- Migration vers la version 3.2.0 de la gem `jwt`. [#7ee913d](https://github.com/betagouv/eva-serveur/commit/7ee913d)
-- Mise à jour du Design System Fr (DSFR). [#28bef9e](https://github.com/betagouv/eva-serveur/commit/28bef9e)
-- Refactoring et correction des ouvertures de modales. [#89221aa](https://github.com/betagouv/eva-serveur/commit/89221aa)
-- Suppression de code CSS inutilisé et alignement des breakpoints sur le DSFR. [#66386c2](https://github.com/betagouv/eva-serveur/commit/66386c2)
-- Suppression de méthodes inutilisées. [#c1faf90](https://github.com/betagouv/eva-serveur/commit/c1faf90)
-- Déplacement des fichiers par type d'évaluation. [#f3d01d7](https://github.com/betagouv/eva-serveur/commit/f3d01d7)
-- Généralisation de la suppression des réponses à l'import. [#79a5bfe](https://github.com/betagouv/eva-serveur/commit/79a5bfe)
-- Remplacement de `CardUsageComponent` par `CardComponent` du DSFR. [#52fb8f3](https://github.com/betagouv/eva-serveur/commit/52fb8f3)
-- Retravail des cartes de choix d'usage. [#32fc06d](https://github.com/betagouv/eva-serveur/commit/32fc06d)
-- Création d'un composant Metabase Iframe pour les structures. [#323a686](https://github.com/betagouv/eva-serveur/commit/323a686)
-- Suppression du code lié à Proconnect. [#988cefa](https://github.com/betagouv/eva-serveur/commit/988cefa)
+- Migration de la page de démo d'eva vers le nouveau layout DSFR.
+- Refonte de l'interface utilisateur avec le DSFR (Design System Fr).
+- Suppression de l'ancienne vague de fond.
+- Correction de la structure de la page de login pour l'accessibilité.
+- Mise à jour de la dépendance `jwt` vers la version 3.2.0.
+- Mise à jour de la dépendance `devise` vers la version 5.0.4.
+- Mise à jour de la dépendance `fast-uri` vers la version 3.1.2.
+- Mise à jour de la dépendance `image_processing` vers la version 2.0.2 (nécessite l'installation de ruby-vips).
+- Mise à jour de la dépendance `Puma` vers la version 7.2.
+- Simplification du code `cout_presenter`.
+- Suppression du composant `impact_stepper` non utilisé.
+- Généralisation de la suppression des réponses à l'import.
+- Suppression de code inutilisé et nettoyage du code.
+- Utilisation des lettres en majuscule pour les paliers.
+- Correction d'un `DoubleRenderError` dans le contrôleur `nouveaux_comptes`.
+- Suppression des utilities Bootstrap.
+- Correction de problèmes de rendu sur EvaPro.
+- Refactorisation et correction des ouvertures de modales.
 
 ### Autres changements
-- Ajout d'une colonne Siret à la table `comptes`. [#0955357](https://github.com/betagouv/eva-serveur/commit/0955357)
-- Documentation de la variable d'environnement du tableau Metabase des Opco. [#038260f](https://github.com/betagouv/eva-serveur/commit/038260f)
-- Corrections de tests et suppression de tests aléatoires. [#441e269](https://github.com/betagouv/eva-serveur/commit/441e269), [#fab15c0](https://github.com/betagouv/eva-serveur/commit/fab15c0), [#752ca35](https://github.com/betagouv/eva-serveur/commit/752ca35), [#bb8dd69](https://github.com/betagouv/eva-serveur/commit/bb8dd69)
-- Corrections de style et de rendu de l'interface. [#93859d4](https://github.com/betagouv/eva-serveur/commit/93859d4), [#0d9bd60](https://github.com/betagouv/eva-serveur/commit/0d9bd60), [#19ed320](https://github.com/betagouv/eva-serveur/commit/19ed320), [#ee22e3c](https://github.com/betagouv/eva-serveur/commit/ee22e3c), [#aebae62](https://github.com/betagouv/eva-serveur/commit/aebae62), [#742eccf](https://github.com/betagouv/eva-serveur/commit/742eccf), [#f71b7c3](https://github.com/betagouv/eva-serveur/commit/f71b7c3), [#4dcac60](https://github.com/betagouv/eva-serveur/commit/4dcac60), [#6324774](https://github.com/betagouv/eva-serveur/commit/6324774)
-- Suppression d'informations de géolocalisation inutilisées. [#fd343b5](https://github.com/betagouv/eva-serveur/commit/fd343b5)
-- Correction de bugs divers. [#64ad99c](https://github.com/betagouv/eva-serveur/commit/64ad99c), [#a9b0eae](https://github.com/betagouv/eva-serveur/commit/a9b0eae), [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
-- Ajout de traductions et formatage du SIRET dans le choix de structure. [#77484a6](https://github.com/betagouv/eva-serveur/commit/77484a6)
-- Suppression du type de structure forcé pour Evapro. [#61844f6](https://github.com/betagouv/eva-serveur/commit/61844f6)
-- Suppression des choix retirés d'une question lors de l'import QuestionQCM. [#2b4d7b0](https://github.com/betagouv/eva-serveur/commit/2b4d7b0)
-- Correction du style du bouton d'ajout de réponse. [#353f7d8](https://github.com/betagouv/eva-serveur/commit/353f7d8)
-- Correction d'un DoubleRenderError dans le controller `nouveaux_comptes`. [#041b5e0](https://github.com/betagouv/eva-serveur/commit/041b5e0)
-- Déplacement du menu "Opérateurs de compétences" dans le menu accompagnement. [#11c12b0](https://github.com/betagouv/eva-serveur/commit/11c12b0)
-- Ajout de tests manquants lors de la génération de code campagne. [#234ffce](https://github.com/betagouv/eva-serveur/commit/234ffce)
-- Empêche la génération de codes campagne problématiques. [#20ea8a6](https://github.com/betagouv/eva-serveur/commit/20ea8a6)
-- Ajout de data manquants. [#0c01b82](https://github.com/betagouv/eva-serveur/commit/0c01b82), [#7e2c653](https://github.com/betagouv/eva-serveur/commit/7e2c653)
-- Ajout du data-fr-opened manquant. [#b9f53da](https://github.com/betagouv/eva-serveur/commit/b9f53da)
-- Correction du lien vers l'accueil. [#02cfbb0](https://github.com/betagouv/eva-serveur/commit/02cfbb0)
-- Correction de l'affichage de l'index des évaluations pour Eva Pro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
-- Correction du rendu de l'index compte sur EvaPro. [#983496b](https://github.com/betagouv/eva-serveur/commit/983496b)
-- Correction de l'intégration du JS du DSFR. [#f71b7c3](https://github.com/betagouv/eva-serveur/commit/f71b7c3)
-- Correction du menu du DSFR. [#8f08f7d](https://github.com/betagouv/eva-serveur/commit/8f08f7d)
-- Suppression de Plausible et ajout des services Tarteaucitron. [#082e502](https://github.com/betagouv/eva-serveur/commit/082e502)
-- Ajout de migration pour créer les réponses "je ne sais pas" sur les questions des Impacts et risques. [#66d7cda](https://github.com/betagouv/eva-serveur/commit/66d7cda)
-- Correction de la hauteur de la card et troncature de la description si trop longue. [#6324774](https://github.com/betagouv/eva-serveur/commit/6324774)
-- Ajout des effets de transition et de survol aux cartes incontournables. [#db37918](https://github.com/betagouv/eva-serveur/commit/db37918)
-- Création du composant les incontournables et placement dans la vue. [#a57da7c](https://github.com/betagouv/eva-serveur/commit/a57da7c)
-- Range par ordre alphabetique les ui_kits. [#798976b](https://github.com/betagouv/eva-serveur/commit/798976b)
-- Permet aux incontournables d'être comme avant dans le pdf. [#2b81ecd](https://github.com/betagouv/eva-serveur/commit/2b81ecd)
-- Ajoute les liens vers les étapes. [#ebc6a59](https://github.com/betagouv/eva-serveur/commit/ebc6a59)
+- Documentation améliorée des indicateurs de risque.
+- Ajout d'opacité pour les EvaProScore.
+- Ajout de traductions et formatage du SIRET dans le choix de structure.
+- Suppression d'exemples de stratégie de contournement obsolètes.
+- Correction du calcul de `score_strategie`.
+- Extraction des chaînes de caractères liées aux coûts dans les fichiers de traduction.
+- Ajout d'un composant Metabase iframe pour les structures.
+- Ajout de tests pour la génération de codes campagne.
+- Correction de tests suite à la mise à jour de `jwt`.
+- Suppression du bouton copier/coller dans la modal invitation des structures Opco et Administrative.
+- Correction de l'affichage des actualités.
+- Correction de l'affichage de l'index des évaluations pour EvaPro.
+- Ajout de commentaires et documentation pour clarifier le code.
+- Correction de problèmes de style et d'affichage.
+- Ajout de tests unitaires et d'intégration.
+- Correction de bugs mineurs et améliorations de la performance.
+- Suppression de fichiers CSS inutilisés.
+- Ajout de liens vers les étapes du parcours utilisateur.
+- Ajout d'effets de transition et de survol aux cartes incontournables.
+- Création du composant "les incontournables".
+- Suppression de la hauteur fixe et troncature de la description.

@@ -4,6 +4,9 @@
 │   └── config.yml
 ├── .env.template
 ├── .erdconfig
+├── .github
+│   └── workflows
+│       └── codeql.yml
 ├── .gitignore
 ├── .rspec
 ├── .rubocop.yml
@@ -122,7 +125,6 @@
 │   │   │   ├── crochet-aide-redaction.svg
 │   │   │   ├── croix.svg
 │   │   │   ├── deconnexion.svg
-│   │   │   ├── demonstration-illustration.svg
 │   │   │   ├── favicon.svg
 │   │   │   ├── fleche-droite.svg
 │   │   │   ├── fleche-menu.svg
@@ -182,9 +184,11 @@
 │   │   │   ├── logo
 │   │   │   │   ├── anlci.svg
 │   │   │   │   ├── eva-bleu.svg
+│   │   │   │   ├── eva-card.svg
 │   │   │   │   ├── eva-dark.svg
 │   │   │   │   ├── eva-simple.svg
 │   │   │   │   ├── eva.svg
+│   │   │   │   ├── evapro-card.svg
 │   │   │   │   ├── evapro.png
 │   │   │   │   ├── evapro.svg
 │   │   │   │   ├── france_relance.svg
@@ -218,7 +222,6 @@
 │   │   │   ├── vague.svg
 │   │   │   ├── vagues-demo.svg
 │   │   │   ├── vagues-verticales-secondaire.svg
-│   │   │   ├── vagues-verticales.svg
 │   │   │   └── vigilance_controle.svg
 │   │   ├── javascripts
 │   │   │   ├── accessible-autocomplete.min.js
@@ -279,6 +282,7 @@
 │   │       │   │   ├── _bilan_evapro.scss
 │   │       │   │   ├── _bouton_menu_action.scss
 │   │       │   │   ├── _card.scss
+│   │       │   │   ├── _card_component.scss
 │   │       │   │   ├── _card_diagnostique.scss
 │   │       │   │   ├── _card_parcours_type.scss
 │   │       │   │   ├── _card_validation.scss
@@ -295,7 +299,6 @@
 │   │       │   │   ├── _forms.scss
 │   │       │   │   ├── _header.scss
 │   │       │   │   ├── _image_file_input.scss
-│   │       │   │   ├── _impact_stepper.scss
 │   │       │   │   ├── _incontournables_etape_card.scss
 │   │       │   │   ├── _input_choix.scss
 │   │       │   │   ├── _input_choix_parcours.scss
@@ -419,7 +422,8 @@
 │   │       │   │   └── alert_incomplete.scss
 │   │       │   └── pages
 │   │       │       └── _resittuation_evapro.scss
-│   │       └── print.pdf.scss
+│   │       ├── print.pdf.scss
+│   │       └── ui_kit.scss
 │   ├── channels
 │   │   └── application_cable
 │   │       ├── channel.rb
@@ -508,8 +512,6 @@
 │   │   ├── footer_component.rb
 │   │   ├── header_component.erb
 │   │   ├── header_component.rb
-│   │   ├── impact_stepper_component.erb
-│   │   ├── impact_stepper_component.rb
 │   │   ├── incontournables_etape_card_component.html.erb
 │   │   ├── incontournables_etape_card_component.rb
 │   │   ├── input_component.html.erb
@@ -1041,6 +1043,7 @@
 │       │   │   │   ├── _definitions_des_impacts.erb
 │       │   │   │   ├── _evaluation_evapro.html.arb
 │       │   │   │   ├── _impact_couts.erb
+│       │   │   │   ├── _impact_couts_indicateur.erb
 │       │   │   │   ├── _les_incontournables.erb
 │       │   │   │   ├── _les_incontournables_etapes.erb
 │       │   │   │   ├── _les_incontournables_intro.erb
@@ -1126,6 +1129,7 @@
 │       │   ├── transcriptions
 │       │   │   └── _input_ecrit_audio.html.arb
 │       │   └── ui_kit
+│       │       ├── _entete_ui_kit.html.erb
 │       │       ├── badge.html.erb
 │       │       ├── barre_segmentee.html.erb
 │       │       ├── bilan_eva_pro.html.erb
@@ -1142,7 +1146,6 @@
 │       │       ├── eva_pro_score.html.erb
 │       │       ├── evaluation_incomplete.html.erb
 │       │       ├── header.html.erb
-│       │       ├── impact_stepper.html.erb
 │       │       ├── incontournables_etape_card.html.erb
 │       │       ├── index.html.erb
 │       │       ├── input.html.erb
@@ -1242,7 +1245,8 @@
 │       │   ├── evapro_admin.html.erb
 │       │   ├── inscription_v2.html.erb
 │       │   ├── mailer.html.erb
-│       │   └── mailer.text.erb
+│       │   ├── mailer.text.erb
+│       │   └── ui_kit.html.erb
 │       └── structure_mailer
 │           ├── invitation_structure.html.erb
 │           ├── nouvelle_structure.html.erb
@@ -2051,7 +2055,8 @@
 │   │   ├── evaluations
 │   │   │   ├── diagnostic_pro
 │   │   │   │   ├── bilan_consolide_calculator_spec.rb
-│   │   │   │   └── couts_presenter_spec.rb
+│   │   │   │   ├── couts_presenter_spec.rb
+│   │   │   │   └── risques_presenter_spec.rb
 │   │   │   ├── diagnostic_pro_spec.rb
 │   │   │   ├── passation_beneficiaire
 │   │   │   │   ├── mise_en_action_presenter_spec.rb
@@ -2304,4 +2309,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-335 directories, 2025 files
+337 directories, 2028 files
