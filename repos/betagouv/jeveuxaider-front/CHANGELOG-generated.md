@@ -1,29 +1,28 @@
-## Changelog : jeveuxaider-front (30 derniers jours, au 9 juin 2026)
+## Changelog : jeveuxaider-front (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des organisations et des missions, notamment en simplifiant les formulaires d'inscription et en ajoutant de nouvelles fonctionnalités pour la campagne d'été. Des corrections ont également été apportées pour améliorer l'expérience utilisateur sur mobile et pour la gestion des statistiques.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience d'inscription des organisations et des missions, notamment en simplifiant les formulaires et en ajoutant de nouvelles fonctionnalités de gestion des tags et des ressources. Des corrections ont également été apportées pour améliorer la stabilité et la convivialité de la plateforme, ainsi que des ajustements pour la campagne d'été et la période de canicule.
 
 ### Évolutions fonctionnelles
-- **Gestion des organisations :** Refonte des formulaires d'inscription des organisations avec une meilleure gestion de l'adresse et des validations [#346](https://github.com/betagouv/jeveuxaider-front/issues/346).
-- **Partage de missions :** Amélioration du partage de missions, notamment pour les utilisateurs non-gestionnaires [#353](https://github.com/betagouv/jeveuxaider-front/issues/353).
-- **Campagne d'été :** Ajout d'un lien vers la campagne "Canicule" dans la navigation principale et mise à jour des informations relatives à la tournée d'été [#342](https://github.com/betagouv/jeveuxaider-front/issues/342).
-- **Gestion des inscriptions :** Modification du libellé "Fermer les inscriptions" en "Mettre en pause les inscriptions" pour une meilleure clarté.
-- **Statistiques :** Correction de l'affichage du nom dans les statistiques de visites et simplification de la logique des paramètres de requête.
-- **Désinscription des organisations :** Possibilité pour les organisations de se désinscrire de manière autonome [#322](https://github.com/betagouv/jeveuxaider-front/issues/322).
-- **Filtre de localisation :** Mise à jour des options de rayon dans le filtre de localisation, incluant 0 et 1000.
-- **Gestion des ressources et réseaux :** Ajout de nouveaux formulaires pour la gestion des ressources et des réseaux avec validation, téléchargement de médias et gestion des rôles.
-- **UTM parameters:** Ajout de paramètres UTM pour le suivi des invitations.
+- **Gestion des organisations :** Refonte des formulaires d'inscription des organisations avec une meilleure gestion des adresses, des logos et des informations de contact. [#346](https://github.com/betagouv/jeveuxaider-front/issues/346)
+- **Gestion des tags :** Implémentation d'un nouveau formulaire pour la gestion des tags des structures, avec validation et soumission améliorées.
+- **Partage de missions :** Amélioration du partage de missions, notamment pour les utilisateurs non-gestionnaires. [#353](https://github.com/betagouv/jeveuxaider-front/issues/353)
+- **Campagne d'été :** Mise à jour des composants `MissionInfos` et `Section` pour la campagne d'été.
+- **Canicule :** Ajout d'un lien "Canicule" dans la navigation secondaire pour faciliter l'accès aux informations relatives aux événements liés à la canicule.
+- **Statistiques :** Affichage du nom au lieu de la clé dans les statistiques de visites. [#337](https://github.com/betagouv/jeveuxaider-front/issues/337)
+- **Désinscription des organisations :** Permettre aux organisations de se désinscrire de manière autonome. [#322](https://github.com/betagouv/jeveuxaider-front/issues/322)
+- **Fermeture des inscriptions :** Modification du libellé "Fermer les inscriptions" en "Mettre en pause les inscriptions" pour une meilleure clarté.
+- **Filtre de localisation :** Mise à jour des options de rayon dans le filtre de localisation, incluant 0 et 1000. [#342](https://github.com/betagouv/jeveuxaider-front/issues/342)
 
 ### Évolutions techniques
-- **Refactoring :** Amélioration de la gestion de l'état des organisations et de la logique des badges.
-- **Adresse :** Mise à jour de la logique de récupération de l'adresse dans le formulaire d'inscription des organisations.
-- **API Plausible :** Mise à jour de l'API Plausible vers la version 2 et suppression d'un filtre de date défectueux.
-- **Optimisation des dépendances :** Optimisation de l'inclusion des dépendances dans la configuration Nuxt pour éviter les rechargements en développement.
-- **ARIA attributes:** Mise à jour des attributs ARIA pour éviter les erreurs liées aux attributs avec tiret.
+- **Refactoring :** Plusieurs refactorings ont été effectués pour améliorer la structure du code et la maintenabilité, notamment dans les composants d'organisation et de formulaire.
+- **Mise à jour des dépendances :** Mise à jour de plusieurs dépendances, notamment `axios`, `qs`, `brace-expansion` et `shell-quote`.
+- **Plausible Analytics :** Mise à jour de l'intégration avec Plausible Analytics pour utiliser l'API v2 et corriger un filtre de date défectueux. [#344](https://github.com/betagouv/jeveuxaider-front/issues/344)
+- **ARIA attributes:** Mise à jour des attributs ARIA pour éviter les exigences d'attributs avec tiret. [#349](https://github.com/betagouv/jeveuxaider-front/issues/349)
 
 ### Autres changements
 - **Documentation :** Mise à jour de la description du projet et de la pile technique dans le fichier README.
-- **Labels Rolables:** Mise à jour des labels "rolables.fonction".
-- **Corrections mineures :** Diverses corrections de bugs et améliorations de la qualité du code.
-- **Suppression de code obsolète :** Suppression du composable `useAutocompleteSuggestions`.
-- **Corrections de dates :** Mise à jour des dates de l'événement canicule de juin à août.
+- **Dates canicule :** Mise à jour des dates des événements canicule de juin à août.
+- **Labels Rolables:** Mise à jour des labels `rolables.fonction`. [#348](https://github.com/betagouv/jeveuxaider-front/issues/348)
+- **UTM parameters:** Ajout de paramètres UTM pour le soft gate Invitations.
+- **Soft gate Invitations:** Correction du comportement sur certains appareils mobiles.
