@@ -78,9 +78,15 @@
 │   │   │   ├── icon-alert-error.svg
 │   │   │   ├── icon-api-error.svg
 │   │   │   ├── icon-api-success.svg
+│   │   │   ├── icon-fournitures-only.svg
+│   │   │   ├── icon-fournitures.svg
 │   │   │   ├── icon-info.svg
+│   │   │   ├── icon-services-only.svg
+│   │   │   ├── icon-services.svg
 │   │   │   ├── icon-target.svg
+│   │   │   ├── icon-travaux-only.svg
 │   │   │   ├── icon-travaux.png
+│   │   │   ├── icon-travaux.svg
 │   │   │   ├── icon-warning-triangle.svg
 │   │   │   ├── passe-marche-logo-email.jpg
 │   │   │   ├── passe-marche-logo.png
@@ -172,7 +178,8 @@
 │   │   └── source_badge_component.rb
 │   ├── components.md
 │   ├── concerns
-│   │   └── market_presenter_concern.rb
+│   │   ├── market_presenter_concern.rb
+│   │   └── multi_type_lot_concern.rb
 │   ├── controllers
 │   │   ├── admin
 │   │   │   ├── application_controller.rb
@@ -190,6 +197,7 @@
 │   │   │       └── public_markets_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── buyer
+│   │   │   ├── lots_controller.rb
 │   │   │   ├── public_markets_controller.rb
 │   │   │   └── sync_status_controller.rb
 │   │   ├── candidate
@@ -349,6 +357,7 @@
 │   │       ├── input_type_hint_controller.js
 │   │       ├── input_validation_controller.js
 │   │       ├── lot_selection_controller.js
+│   │       ├── lot_type_picker_controller.js
 │   │       ├── modal_controller.js
 │   │       ├── radio_toggle_controller.js
 │   │       ├── subcategory_filter_controller.js
@@ -464,6 +473,8 @@
 │   │   │   └── dashboard_presenter.rb
 │   │   ├── api_block_status_presenter.rb
 │   │   ├── market_application_presenter.rb
+│   │   ├── public_market
+│   │   │   └── wizard_steps_builder.rb
 │   │   ├── public_market_presenter.rb
 │   │   └── socle_de_base_presenter.rb
 │   ├── services
@@ -548,7 +559,9 @@
 │       │   │   ├── _category_accordion.html.erb
 │       │   │   ├── _field_checkbox.html.erb
 │       │   │   ├── _field_display.html.erb
+│       │   │   ├── _lot_row.html.erb
 │       │   │   ├── _lot_type_badge.html.erb
+│       │   │   ├── _scope_tags.html.erb
 │       │   │   ├── _subcategory_section.html.erb
 │       │   │   ├── form_config.html.erb
 │       │   │   ├── generic_step.html.erb
@@ -904,7 +917,7 @@
 │   │   ├── buyer_flow_steps.rb
 │   │   ├── buyer_lot_config_steps.rb
 │   │   ├── buyer_webhook_sync_steps.rb
-│   │   ├── candidate_*.rb  (8 files)
+│   │   ├── candidate_*.rb  (11 files)
 │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
 │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
 │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_steps.rb
@@ -934,7 +947,12 @@
 │   │   ├── candidate_auth_helper.rb
 │   │   ├── capybara.rb
 │   │   ├── env.rb
-│   │   └── warden.rb
+│   │   ├── form_helpers.rb
+│   │   ├── market_builder_helpers.rb
+│   │   ├── navigation_helpers.rb
+│   │   ├── validation_helpers.rb
+│   │   ├── warden.rb
+│   │   └── webmock.rb
 │   └── urssaf_attestation_vigilance.feature
 ├── lib
 │   ├── assets
@@ -1286,6 +1304,7 @@
 │   │   │       ├── market_applications_spec.rb
 │   │   │       └── public_markets_spec.rb
 │   │   ├── buyer
+│   │   │   ├── lots_spec.rb
 │   │   │   ├── public_markets_spec.rb
 │   │   │   └── sync_status_spec.rb
 │   │   ├── candidate
@@ -1293,6 +1312,7 @@
 │   │   │   ├── application_consultations_spec.rb
 │   │   │   ├── company_identifications_spec.rb
 │   │   │   ├── dashboards_spec.rb
+│   │   │   ├── lot_selections_spec.rb
 │   │   │   ├── market_applications_spec.rb
 │   │   │   ├── sessions_spec.rb
 │   │   │   └── sync_status_spec.rb
@@ -1407,4 +1427,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-227 directories, 1202 files
+228 directories, 1224 files
