@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Cet outil permet de gérer les subventions locales. Il offre des fonctionnalités de génération de documents, de recherche et de filtrage, et d'amélioration de la synchronisation avec les sources de données externes.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions, les dossiers, les simulations et les notifications. Il offre également des fonctionnalités d'import/export de documents et d'administration.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion des documents & Fichiers",
     "Recherche & Filtres",
     "Notifications & Alertes",
-    "Gestion des établissements & Structures",
+    "Gestion des utilisateurs & Permissions",
+    "API & Intégrations",
+    "Sécurité & Conformité",
+    "Gestion métier générale",
     "Aides & Éligibilité",
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "Gestion des établissements & Structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -28,21 +30,23 @@
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Django",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "session"
+      "sso"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD & Déploiement"
   ],
-  "lastActivity": "2026-06-09T12:29:54+02:00",
+  "lastActivity": "2026-06-10T15:09:12+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,6 +61,8 @@
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Subventions & Finances publiques"
+    "Sécurité & Auth",
+    "Subventions & Finances publiques",
+    "Territoire & Collectivités"
   ]
 }
