@@ -1,22 +1,23 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et de diffuser des informations sur l'engagement civique et associatif.",
+  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et de diffuser des missions d'engagement.",
   "language": "TypeScript",
   "features": [
+    "Authentification & Accès",
     "API & Intégrations",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres"
+    "Recherche & Filtres",
+    "Gestion documentaire & Fichiers"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
+    "NodeJs",
     "Express",
     "React",
-    "PostgreSQL",
     "Next.js",
+    "PostgreSQL",
     "Typesense"
   ],
   "components": [
@@ -28,14 +29,15 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "jwt",
+      "session"
     ]
   },
   "tests": "Vitest",
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-05T00:00:00Z",
+  "lastActivity": "2026-06-09T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

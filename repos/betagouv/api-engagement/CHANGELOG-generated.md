@@ -1,32 +1,35 @@
-## Changelog : api-engagement (30 derniers jours, au 9 juin 2026)
+## Changelog : api-engagement (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de gestion des missions, notamment concernant leur diffusion et leur enrichissement. Des corrections ont été apportées pour améliorer la robustesse de l'API et du back-office, ainsi que des optimisations pour la gestion des files d'attente et des erreurs. L'interface utilisateur de la plateforme a également été améliorée, notamment en termes d'accessibilité et d'expérience utilisateur.
+Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de diffusion des missions, d'analytics et d'expérience utilisateur sur la plateforme. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité du système. L'ajout de règles de diffusion basées sur les diffuseurs permet un ciblage plus précis des missions.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mécanisme de diffusion des missions basé sur les règles de publication des diffuseurs [#1110](https://github.com/betagouv/api-engagement/pulls/1110).
-- Amélioration de la recherche d'organisations parentes dans l'API [#1119](https://github.com/betagouv/api-engagement/issues/1119).
-- Possibilité de gérer plusieurs adresses pour une plateforme [#1114](https://github.com/betagouv/api-engagement/issues/1114).
-- Amélioration de la gestion des erreurs et ajout d'une file d'attente pour les messages en erreur [#1113](https://github.com/betagouv/api-engagement/issues/1113) et [#1116](https://github.com/betagouv/api-engagement/issues/1116).
-- Ajout d'un système de limitation du taux d'appels (rate limit) basé sur l'adresse IP pour protéger l'API [#1075](https://github.com/betagouv/api-engagement/issues/1075).
-- Ajout de journaux d'audit pour suivre les actions effectuées sur l'API [#1019](https://github.com/betagouv/api-engagement/issues/1019).
-- Amélioration de l'interface utilisateur de la plateforme : refonte de la page des résultats de recherche, amélioration de l'accessibilité du quiz et des missions [#1060](https://github.com/betagouv/api-engagement/issues/1060), [#1084](https://github.com/betagouv/api-engagement/issues/1084), [#1058](https://github.com/betagouv/api-engagement/issues/1058), [#1057](https://github.com/betagouv/api-engagement/issues/1057), [#1055](https://github.com/betagouv/api-engagement/issues/1055), [#1054](https://github.com/betagouv/api-engagement/issues/1054), [#1053](https://github.com/betagouv/api-engagement/issues/1053).
-- Amélioration des formulaires d'authentification et de gestion de compte avec des attributs d'autocomplétion et une meilleure gestion des erreurs [#1090](https://github.com/betagouv/api-engagement/issues/1090), [#1089](https://github.com/betagouv/api-engagement/issues/1089), [#1088](https://github.com/betagouv/api-engagement/issues/1088), [#1087](https://github.com/betagouv/api-engagement/issues/1087), [#1086](https://github.com/betagouv/api-engagement/issues/1086).
+- Ajout d'un paramètre de débogage pour afficher un bouton de débogage sur la plateforme ([#1126](https://github.com/betagouv/api-engagement/pull/1126)).
+- Amélioration de la gestion des diffuseurs dans les règles de diffusion, permettant de filtrer par valeur de champ ([#1111](https://github.com/betagouv/api-engagement/pull/1111)).
+- Implémentation d'un moteur de règles de diffusion pour remplacer l'exclusion manuelle des diffuseurs ([#1078](https://github.com/betagouv/api-engagement/pull/1078)).
+- Amélioration du contenu des emails de matching de missions (en-tête et liste) ([#1118](https://github.com/betagouv/api-engagement/pull/1118)).
+- Ajout de la possibilité d'utiliser les règles de diffusion pour le service Grimp ([#1107](https://github.com/betagouv/api-engagement/pull/1107)).
+- Utilisation de la diffusion par éditeur dans l'endpoint de navigation des missions ([#1110](https://github.com/betagouv/api-engagement/pull/1110)).
+- Amélioration de l'interface utilisateur du quiz et de la page de résultats sur la plateforme ([#1074](https://github.com/betagouv/api-engagement/pull/1074), [#1058](https://github.com/betagouv/api-engagement/pull/1058), [#1057](https://github.com/betagouv/api-engagement/pull/1057), [#1055](https://github.com/betagouv/api-engagement/pull/1055), [#1054](https://github.com/betagouv/api-engagement/pull/1054), [#1053](https://github.com/betagouv/api-engagement/pull/1053)).
+- Ajout de la possibilité de gérer plusieurs adresses sur la liste des missions ([#1114](https://github.com/betagouv/api-engagement/pull/1114)).
+- Amélioration de la gestion des champs requis et des erreurs dans les composants de formulaire de l'application ([#1090](https://github.com/betagouv/api-engagement/pull/1090)).
+- Amélioration de l'accessibilité de la plateforme (étiquettes, champs, progress bar, dialogs) ([#1087](https://github.com/betagouv/api-engagement/pull/1087), [#1086](https://github.com/betagouv/api-engagement/pull/1086), [#1084](https://github.com/betagouv/api-engagement/pull/1084)).
 
 ### Évolutions techniques
-- Refactorisation de la logique d'enrichissement des missions pour limiter les mises à jour inutiles [#1120](https://github.com/betagouv/api-engagement/issues/1120).
-- Remplacement de l'exclusion de diffusion par un moteur basé sur des règles [#1078](https://github.com/betagouv/api-engagement/issues/1078).
-- Amélioration de la configuration Typesense pour la production [#1068](https://github.com/betagouv/api-engagement/issues/1068).
-- Suppression du modèle de taxonomie hérité [#1079](https://github.com/betagouv/api-engagement/issues/1079).
-- Ajout de tests et de workflows CI pour la plateforme [#1085](https://github.com/betagouv/api-engagement/issues/1085).
-- Mise à jour des dépendances : React Toastify, Docker actions, Node.js [#983](https://github.com/betagouv/api-engagement/issues/983), [#1076](https://github.com/betagouv/api-engagement/issues/1076), [#1071](https://github.com/betagouv/api-engagement/issues/1071), [#1022](https://github.com/betagouv/api-engagement/issues/1022).
-- Correction de problèmes liés à la configuration de Terraform [#1106](https://github.com/betagouv/api-engagement/issues/1106).
+- Refactorisation de l'export des données analytics pour utiliser un seul appel ([#1145](https://github.com/betagouv/api-engagement/pull/1145)).
+- Optimisation de l'enrichissement des missions pour limiter les mises à jour inutiles ([#1120](https://github.com/betagouv/api-engagement/pull/1120)).
+- Amélioration de la gestion des erreurs et de la résilience de l'enfilement des missions ([#1108](https://github.com/betagouv/api-engagement/pull/1108)).
+- Ajout d'une file d'attente de lettres mortes pour améliorer la robustesse du système ([#1113](https://github.com/betagouv/api-engagement/pull/1113)).
+- Mise en place d'une limite de débit IP sur les routes de l'API de la plateforme ([#1075](https://github.com/betagouv/api-engagement/pull/1075)).
+- Configuration de Typesense pour la production ([#1068](https://github.com/betagouv/api-engagement/pull/1068)).
+- Ajout de tests et de workflows lint pour la plateforme ([#1066](https://github.com/betagouv/api-engagement/pull/1066)).
+- Refactorisation de la gestion de la diffusion des missions ([#1079](https://github.com/betagouv/api-engagement/pull/1079)).
+- Suppression de la taxonomie legacy ([#1069](https://github.com/betagouv/api-engagement/pull/1069)).
 
 ### Autres changements
-- Correction d'un bug lié à la correspondance insensible à la casse des champs dans les règles du widget [#1117](https://github.com/betagouv/api-engagement/issues/1117).
-- Correction d'un problème d'affichage de la page d'organisation [#1119](https://github.com/betagouv/api-engagement/issues/1119).
-- Ajout d'un script pour générer le changelog [#1112](https://github.com/betagouv/api-engagement/issues/1112).
-- Ajout d'un fichier AGENTS.md pour documenter les agents de la plateforme [#1082](https://github.com/betagouv/api-engagement/issues/1082).
-- Amélioration de la gestion des erreurs et ajout d'un mécanisme de relance pour les tâches échouées [#1108](https://github.com/betagouv/api-engagement/issues/1108).
-- Correction d'un bug dans l'API pour les missions de type incorrect [#1080](https://github.com/betagouv/api-engagement/issues/1080).
-- Ajout de la possibilité de définir des règles de publication pour les missions [#1061](https://github.com/betagouv/api-engagement/issues/1061).
+- Amélioration de la documentation des règles de diffusion ([#1142](https://github.com/betagouv/api-engagement/pull/1142)).
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Mise à jour des dépendances (actions/checkout, react-toastify, docker/build-push-action, docker/login-action, actions/setup-node).
+- Publication des versions v1.11.0, v1.10.0, v1.9.3, v1.9.2, v1.9.1 et v1.9.0.
+- Ajout d'un fichier AGENTS.md.
+- Correction de problèmes de merge et de conflits.
