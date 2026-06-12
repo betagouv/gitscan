@@ -12,8 +12,6 @@
 ├── .gitignore
 ├── .gitpod.Dockerfile
 ├── .gitpod.yml
-├── .husky
-│   └── pre-commit
 ├── .ignore
 ├── .npmrc
 ├── .rspec
@@ -23,6 +21,18 @@
 ├── .tool-versions
 ├── .vscode
 │   └── settings.json
+├── Aptfile
+├── Brewfile.netlify
+├── CHANGELOG.md
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Makefile
+├── Procfile
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── SECURITY.md
 ├── app
 │   ├── components
 │   │   ├── application_component.rb
@@ -41,8 +51,8 @@
 │   │   │   │   └── analyse_override_editable_component.html.erb
 │   │   │   ├── analyse_override_editable_component.rb
 │   │   │   ├── mail_iframe_component
-│   │   │   │   ├── mail_iframe_component_preview.rb
-│   │   │   │   └── mail_iframe_component.html.erb
+│   │   │   │   ├── mail_iframe_component.html.erb
+│   │   │   │   └── mail_iframe_component_preview.rb
 │   │   │   ├── mail_iframe_component.rb
 │   │   │   ├── objet_card_component
 │   │   │   │   └── objet_card_component_preview.rb
@@ -75,20 +85,20 @@
 │   │   │   │   │   ├── button_component.html.haml
 │   │   │   │   │   ├── button_component.rb
 │   │   │   │   │   ├── confirmation_component
-│   │   │   │   │   │   ├── confirmation_component_controller.js
-│   │   │   │   │   │   └── confirmation_component.html.haml
+│   │   │   │   │   │   ├── confirmation_component.html.haml
+│   │   │   │   │   │   └── confirmation_component_controller.js
 │   │   │   │   │   └── confirmation_component.rb
 │   │   │   │   └── upload.rb
 │   │   │   ├── frame_component.rb
 │   │   │   ├── lightbox_component
-│   │   │   │   ├── lightbox_component_controller.js
 │   │   │   │   ├── lightbox_component.css
-│   │   │   │   └── lightbox_component.html.haml
+│   │   │   │   ├── lightbox_component.html.haml
+│   │   │   │   └── lightbox_component_controller.js
 │   │   │   ├── lightbox_component.rb
 │   │   │   ├── miniatures_component
-│   │   │   │   ├── miniatures_component_controller.js
 │   │   │   │   ├── miniatures_component.css
-│   │   │   │   └── miniatures_component.html.haml
+│   │   │   │   ├── miniatures_component.html.haml
+│   │   │   │   └── miniatures_component_controller.js
 │   │   │   └── miniatures_component.rb
 │   │   ├── impersonate_callout_component
 │   │   │   └── impersonate_callout_component.haml
@@ -97,26 +107,26 @@
 │   │   │   └── message_component.haml
 │   │   ├── message_component.rb
 │   │   ├── objet_card_component
-│   │   │   ├── objet_card_component_preview.rb
-│   │   │   └── objet_card_component.haml
+│   │   │   ├── objet_card_component.haml
+│   │   │   └── objet_card_component_preview.rb
 │   │   ├── objet_card_component.rb
 │   │   ├── password_input_component
-│   │   │   ├── password_input_component_preview.rb
-│   │   │   └── password_input_component.html.erb
+│   │   │   ├── password_input_component.html.erb
+│   │   │   └── password_input_component_preview.rb
 │   │   ├── password_input_component.rb
 │   │   ├── photo_upload_component
-│   │   │   ├── photo_upload_component_controller.js
-│   │   │   ├── photo_upload_component_preview.rb
 │   │   │   ├── photo_upload_component.css
-│   │   │   └── photo_upload_component.html.haml
+│   │   │   ├── photo_upload_component.html.haml
+│   │   │   ├── photo_upload_component_controller.js
+│   │   │   └── photo_upload_component_preview.rb
 │   │   ├── photo_upload_component.rb
 │   │   ├── recensement_radios_fieldset_component
 │   │   │   └── recensement_radios_fieldset_component.html.haml
 │   │   ├── recensement_radios_fieldset_component.rb
 │   │   ├── unfold_component
+│   │   │   ├── unfold_component.haml
 │   │   │   ├── unfold_component_controller.js
-│   │   │   ├── unfold_component_preview.rb
-│   │   │   └── unfold_component.haml
+│   │   │   └── unfold_component_preview.rb
 │   │   └── unfold_component.rb
 │   ├── controllers
 │   │   ├── admin
@@ -219,8 +229,8 @@
 │   │   │   │   ├── counter-03.svg
 │   │   │   │   ├── etape1.svg
 │   │   │   │   ├── etape2.svg
-│   │   │   │   ├── etape3_sans_chiffre.svg
 │   │   │   │   ├── etape3.svg
+│   │   │   │   ├── etape3_sans_chiffre.svg
 │   │   │   │   ├── head-circle-man-beard.svg
 │   │   │   │   ├── head-circle-man-blue.svg
 │   │   │   │   ├── head-circle-man-glasses.svg
@@ -391,8 +401,8 @@
 │   │   │   ├── campaign_planned.text.erb
 │   │   │   └── sanity_check_alert.text.erb
 │   │   ├── campaign_v1_mailer
-│   │   │   ├── _cta_complete.mjml
 │   │   │   ├── _cta.mjml
+│   │   │   ├── _cta_complete.mjml
 │   │   │   ├── _custom_campaign_infos.mjml
 │   │   │   ├── _objet_photo.mjml
 │   │   │   ├── fin_inactive_email.mjml
@@ -439,13 +449,13 @@
 │   │   ├── analyse.rb
 │   │   ├── application_record.rb
 │   │   ├── article_presse.rb
+│   │   ├── bordereau.rb
 │   │   ├── bordereau_pdf.rb
 │   │   ├── bordereau_recensement.rb
-│   │   ├── bordereau.rb
+│   │   ├── campaign.rb
 │   │   ├── campaign_email.rb
 │   │   ├── campaign_recipient.rb
 │   │   ├── campaign_stats.rb
-│   │   ├── campaign.rb
 │   │   ├── commune.rb
 │   │   ├── concerns
 │   │   │   ├── .keep
@@ -456,15 +466,15 @@
 │   │   │   │   ├── analyse_concern.rb
 │   │   │   │   └── booleans_concern.rb
 │   │   │   └── session_code_authenticatable.rb
-│   │   ├── conservateur_role.rb
 │   │   ├── conservateur.rb
+│   │   ├── conservateur_role.rb
 │   │   ├── content_blob.rb
 │   │   ├── departement
 │   │   │   └── activity.rb
 │   │   ├── departement.rb
+│   │   ├── dossier.rb
 │   │   ├── dossier_accept.rb
 │   │   ├── dossier_completion.rb
-│   │   ├── dossier.rb
 │   │   ├── edifice.rb
 │   │   ├── email_attachment.rb
 │   │   ├── exports
@@ -475,6 +485,7 @@
 │   │   ├── message.rb
 │   │   ├── objet.rb
 │   │   ├── pop_export.rb
+│   │   ├── recensement.rb
 │   │   ├── recensement_wizard
 │   │   │   ├── base.rb
 │   │   │   ├── step1.rb
@@ -484,9 +495,9 @@
 │   │   │   ├── step5.rb
 │   │   │   ├── step6.rb
 │   │   │   └── step7.rb
-│   │   ├── recensement.rb
 │   │   ├── session_authentication.rb
 │   │   ├── session_code.rb
+│   │   ├── stats_for_emails_group.rb
 │   │   ├── survey_vote.rb
 │   │   └── user.rb
 │   ├── policies
@@ -526,8 +537,8 @@
 │       │   │   ├── new.html.haml
 │       │   │   └── show.html.haml
 │       │   ├── campaigns
-│       │   │   ├── edit_recipients.html.haml
 │       │   │   ├── edit.html.haml
+│       │   │   ├── edit_recipients.html.haml
 │       │   │   ├── index.html.haml
 │       │   │   ├── mail_previews.html.haml
 │       │   │   ├── new.html.haml
@@ -623,16 +634,16 @@
 │       │   │   ├── create.turbo_stream.erb
 │       │   │   └── index.html.haml
 │       │   ├── campaigns
-│       │   │   ├── edit_recipients.html.haml
 │       │   │   ├── edit.html.haml
+│       │   │   ├── edit_recipients.html.haml
 │       │   │   ├── mail_previews.html.haml
 │       │   │   ├── new.html.haml
 │       │   │   └── show.html.haml
 │       │   ├── communes
 │       │   │   ├── _autocomplete_results.html.erb
 │       │   │   ├── _tabs.html.haml
-│       │   │   ├── show_analyse_saved.html.haml
-│       │   │   └── show.html.haml
+│       │   │   ├── show.html.haml
+│       │   │   └── show_analyse_saved.html.haml
 │       │   ├── deleted_recensements
 │       │   │   └── show.html.haml
 │       │   ├── departements
@@ -703,8 +714,8 @@
 │       │   ├── index.html.haml
 │       │   └── show.html.haml
 │       ├── recensements
-│       │   ├── _etapes_contenu.html.haml
-│       │   └── _etapes.html.haml
+│       │   ├── _etapes.html.haml
+│       │   └── _etapes_contenu.html.haml
 │       ├── shared
 │       │   ├── _badge_li.html.erb
 │       │   ├── _banners.html.haml
@@ -745,8 +756,8 @@
 │       │   │   ├── _form.html.haml
 │       │   │   └── _list.html.haml
 │       │   └── rapport
-│       │       ├── _recensement_attributes.html.haml
-│       │       └── _recensement.html.haml
+│       │       ├── _recensement.html.haml
+│       │       └── _recensement_attributes.html.haml
 │       ├── survey_votes
 │       │   └── new.html.haml
 │       └── users
@@ -762,7 +773,6 @@
 │           │   └── _error_messages.html.erb
 │           └── unsubscribes
 │               └── new.html.haml
-├── Aptfile
 ├── bin
 │   ├── bundle
 │   ├── dev
@@ -770,8 +780,6 @@
 │   ├── rake
 │   ├── setup
 │   └── vite
-├── Brewfile.netlify
-├── CHANGELOG.md
 ├── cms
 │   ├── config.yml
 │   └── index.html
@@ -824,10 +832,10 @@
 │   │   ├── 2022_11_18_dis_leur.md
 │   │   ├── 2022_11_20_la_depeche.md
 │   │   ├── 2023_01_14_france3_alsace.md
-│   │   ├── 2023_03_à-trigny-des-petits-trésors-sortent-de-loubli.md
 │   │   ├── 2023_03_la-plateforme-collectif-objets-de-récolement-des-objets-classés-sétend-à-tout-le-territoire.md
 │   │   ├── 2023_03_patrimoine-bâtir-le-récit-du-territoire.md
 │   │   ├── 2023_03_start-up-d’etat-gros-plan-sur-3-innovations-à-suivre.md
+│   │   ├── 2023_03_à-trigny-des-petits-trésors-sortent-de-loubli.md
 │   │   ├── 2023_05_communiqué-de-presse-drac-bretagne.md
 │   │   ├── 2023_06_la-médiathèque-du-patrimoine-et-de-la-photographie-et-collectif-objets-une-collaboration-étroite.md
 │   │   ├── 2023_09_mois-du-patrimoine-en-bretagne-dossier-de-presse.md
@@ -862,14 +870,14 @@
 │   │   │   ├── 2023-07-26-messagerie-commune-la-desirade.png
 │   │   │   ├── bordereaux_de_recolement_onglet.png
 │   │   │   ├── bordereaux_de_recolement_telecharger_pdf.png
-│   │   │   ├── capture_ecran_page_analyse.jpg
 │   │   │   ├── capture-ecran-mes_actions.png
 │   │   │   ├── capture-ecran-messagerie.png
 │   │   │   ├── capture-messagerie-co.png
+│   │   │   ├── capture_ecran_page_analyse.jpg
 │   │   │   ├── communes_vue_.png
 │   │   │   ├── communes_vue_carte.png
-│   │   │   ├── conservateurs_analyse_terminee.png
 │   │   │   ├── conservateurs_analyse.png
+│   │   │   ├── conservateurs_analyse_terminee.png
 │   │   │   ├── conservateurs_carte_departement.png
 │   │   │   ├── conservateurs_envoyer_rapport.png
 │   │   │   ├── conservateurs_liste_communes.png
@@ -1059,9 +1067,6 @@
 │   ├── recensement_state_machine_diagram.png
 │   └── synchronisation.md
 ├── docker-compose.yml
-├── Dockerfile
-├── Gemfile
-├── Gemfile.lock
 ├── lib
 │   ├── assets
 │   │   └── .keep
@@ -1080,17 +1085,14 @@
 │       └── users.rake
 ├── log
 │   └── .keep
-├── Makefile
 ├── package-lock.json
 ├── package.json
 ├── prawn_assets
-│   ├── logo-ministere-culture.png
-│   ├── logo-monument-historique.png
 │   ├── Marianne-Bold.ttf
 │   ├── Marianne-Regular.ttf
-│   └── Marianne-RegularItalic.ttf
-├── Procfile
-├── Procfile.dev
+│   ├── Marianne-RegularItalic.ttf
+│   ├── logo-ministere-culture.png
+│   └── logo-monument-historique.png
 ├── public
 │   ├── 404.html
 │   ├── 500.html
@@ -1134,8 +1136,6 @@
 │   ├── pdf-en-cours-de-generation.pdf
 │   ├── robots.txt
 │   └── spinner-blue.gif
-├── Rakefile
-├── README.md
 ├── scalingo.json
 ├── scripts
 │   ├── create_brevo_webhooks.sh
@@ -1152,7 +1152,6 @@
 │   ├── sib_failed_webhooks.rb
 │   ├── trigger_raise_on_purpose.rb
 │   └── truncate_all_tables.rb
-├── SECURITY.md
 ├── spec
 │   ├── active_storage_safe_purge_spec.rb
 │   ├── controllers
@@ -1162,20 +1161,20 @@
 │   │   └── conservateurs
 │   │       └── bordereaux_controller_spec.rb
 │   ├── factories
-│   │   ├── admin_user.rb
+│   │   ├── admin_users.rb
 │   │   ├── bordereau_recensements.rb
 │   │   ├── bordereaux.rb
-│   │   ├── campaign_email.rb
-│   │   ├── campaign_recipient.rb
-│   │   ├── campaign.rb
-│   │   ├── commune.rb
+│   │   ├── campaign_emails.rb
+│   │   ├── campaign_recipients.rb
+│   │   ├── campaigns.rb
+│   │   ├── communes.rb
 │   │   ├── conservateurs.rb
-│   │   ├── departement.rb
-│   │   ├── dossier.rb
+│   │   ├── departements.rb
+│   │   ├── dossiers.rb
 │   │   ├── edifices.rb
 │   │   ├── messages.rb
 │   │   ├── objets.rb
-│   │   ├── recensement.rb
+│   │   ├── recensements.rb
 │   │   ├── session_codes.rb
 │   │   └── users.rb
 │   ├── factories_spec
@@ -1300,4 +1299,4 @@
 ├── vendor
 │   └── .keep
 └── vite.config.ts
-236 directories, 1066 files
+235 directories, 1066 files
