@@ -1,12 +1,15 @@
-## Changelog : aides-jeunes (30 derniers jours, au 3 juin 2026)
+## Changelog : aides-jeunes (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'outil de contribution simplifié avec l'ajout d'une navigation latérale pour faciliter l'expérience utilisateur. Des corrections de libellés et des mises à jour de dépendances ont également été effectuées pour améliorer la stabilité et la sécurité du projet.
+Ce mois-ci, les améliorations se concentrent sur l'outil de contribution simplifié, avec l'ajout de la sélection d'une institution et d'une navigation latérale pour faciliter l'utilisation. Des corrections de libellés et des mises à jour de dépendances ont également été effectuées pour améliorer la stabilité et la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une navigation latérale pour l'outil de contribution simplifié, améliorant l'ergonomie et la facilité d'utilisation. [#5120](https://github.com/betagouv/aides-jeunes/pull/5120)
+- Ajout de la possibilité de sélectionner une institution dans l'outil de contribution simplifié. [#5133](https://github.com/betagouv/aides-jeunes/issues/5133)
+- Ajout d'une navigation latérale à l'outil de contribution simplifié pour une meilleure expérience utilisateur. [#5120](https://github.com/betagouv/aides-jeunes/issues/5120)
 - Correction du libellé des conditions générales dans l'outil de contribution. [#5149](https://github.com/betagouv/aides-jeunes/issues/5149)
+- Mise à jour des données de l'aide "permis demandeur d'emploi". [#5151](https://github.com/betagouv/aides-jeunes/issues/5151)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances, incluant `js-yaml`, `jsonwebtoken`, `axios`, `openfisca-france` et `next`, pour bénéficier des dernières corrections de sécurité et améliorations de performance. [#5145](https://github.com/betagouv/aides-jeunes/pull/5145), [#5143](https://github.com/betagouv/aides-jeunes/pull/5143), [#5138](https://github.com/betagouv/aides-jeunes/pull/5138), [#5141](https://github.com/betagouv/aides-jeunes/pull/5141)
-- Correction de vulnérabilités identifiées par `npm audit`. [#5144](https://github.com/betagouv/aides-jeunes/pull/5144)
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités et améliorer la stabilité : `js-yaml`, `jsonwebtoken`, `dsfr`, `axios`. [#5145](https://github.com/betagouv/aides-jeunes/issues/5145), [#5144](https://github.com/betagouv/aides-jeunes/issues/5144), [#5143](https://github.com/betagouv/aides-jeunes/issues/5143)
+- Mise à jour de la dépendance `openfisca-france`. [#5152](https://github.com/betagouv/aides-jeunes/issues/5152) et [#5138](https://github.com/betagouv/aides-jeunes/issues/5138)
+- Mise à jour de la dépendance `next` dans le module `contribuer`. [#5141](https://github.com/betagouv/aides-jeunes/issues/5141)
