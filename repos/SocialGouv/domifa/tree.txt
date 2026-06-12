@@ -245,6 +245,7 @@
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
 │   │   │   │   ├── 1780932874467-auto-migration.ts
+│   │   │   │   ├── 1781108400000-prefix-deleted-emails-for-removed-structures.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -607,7 +608,8 @@
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── brevo-sender
 │   │   │   │   │   │   │   ├── brevo-sender.service.spec.ts
-│   │   │   │   │   │   │   └── brevo-sender.service.ts
+│   │   │   │   │   │   │   ├── brevo-sender.service.ts
+│   │   │   │   │   │   │   └── deleted-email.guard.ts
 │   │   │   │   │   │   └── brevo-sync-cron.service.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── MessageEmailAttachment.type.ts
@@ -1103,9 +1105,6 @@
 │   │   │       │   ├── FileManager.ts
 │   │   │       │   ├── file-manager.service.spec.ts
 │   │   │       │   ├── file-manager.service.ts
-│   │   │       │   └── index.ts
-│   │   │       ├── filters
-│   │   │       │   ├── http-exception.filter.ts
 │   │   │       │   └── index.ts
 │   │   │       ├── functions
 │   │   │       │   ├── anonymizeFullName.spec.ts
@@ -2848,7 +2847,9 @@
 │   │   │   │   │   │   │       ├── structure-users-list.component.html
 │   │   │   │   │   │   │       └── structure-users-list.component.ts
 │   │   │   │   │   │   ├── manage-structure-users-routing.module.ts
-│   │   │   │   │   │   └── manage-structure-users.module.ts
+│   │   │   │   │   │   ├── manage-structure-users.module.ts
+│   │   │   │   │   │   └── utils
+│   │   │   │   │   │       └── is-obsolete-user.ts
 │   │   │   │   │   ├── manage-users
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── delete-user
@@ -2941,6 +2942,10 @@
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
 │   │   │   │   │   │   │   │   └── fonction-selection.component.ts
+│   │   │   │   │   │   │   ├── page-size-selector
+│   │   │   │   │   │   │   │   ├── page-size-selector.component.html
+│   │   │   │   │   │   │   │   ├── page-size-selector.component.scss
+│   │   │   │   │   │   │   │   └── page-size-selector.component.ts
 │   │   │   │   │   │   │   ├── sessions-stats-tiles
 │   │   │   │   │   │   │   │   ├── sessions-stats-tiles.component.html
 │   │   │   │   │   │   │   │   └── sessions-stats-tiles.component.ts
@@ -3305,6 +3310,7 @@
 │       │   │   │   │   │       ├── news-content.component.spec.ts
 │       │   │   │   │   │       └── news-content.component.ts
 │       │   │   │   │   ├── directives
+│       │   │   │   │   │   ├── trim-uppercase.directive.ts
 │       │   │   │   │   │   └── uppercase.directive.ts
 │       │   │   │   │   ├── pipes
 │       │   │   │   │   │   └── nl2br.pipe.ts
@@ -3437,4 +3443,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-803 directories, 2636 files
+804 directories, 2641 files

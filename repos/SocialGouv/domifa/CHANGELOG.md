@@ -1,3 +1,49 @@
+## [2.250.6](https://github.com/SocialGouv/domifa/compare/v2.250.5...v2.250.6) (2026-06-11)
+
+
+### Bug Fixes
+
+* **portail:** update required ([e470f70](https://github.com/SocialGouv/domifa/commit/e470f70f2da56adcce995f9af74a0efda5c34e08))
+
+## [2.250.5](https://github.com/SocialGouv/domifa/compare/v2.250.4...v2.250.5) (2026-06-11)
+
+
+### Bug Fixes
+
+* **backend:** fix update password ([46ee479](https://github.com/SocialGouv/domifa/commit/46ee4790827e7a2fe3d033244d689431de9f72e2))
+* **portail-usagers:** fix test ([7a75508](https://github.com/SocialGouv/domifa/commit/7a75508add6a0567ef0eb3205f16e2c941ae1132))
+
+## [2.250.4](https://github.com/SocialGouv/domifa/compare/v2.250.3...v2.250.4) (2026-06-10)
+
+
+### Bug Fixes
+
+* **backend:** add logs of download ([eda5bc8](https://github.com/SocialGouv/domifa/commit/eda5bc848829a30cbd185aeb3f266a44b859cb34))
+* **backend:** add mailing from tipimail ([f71ca66](https://github.com/SocialGouv/domifa/commit/f71ca66cc1edff03a621546c629f09fa81c9e58e))
+* **frontend:** add trim for login ([bc47fd7](https://github.com/SocialGouv/domifa/commit/bc47fd728b86673bcec241e7c1d1ff60a468c153))
+
+## [2.250.3](https://github.com/SocialGouv/domifa/compare/v2.250.2...v2.250.3) (2026-06-10)
+
+
+### Bug Fixes
+
+* **backend:** fix prod ([ac82166](https://github.com/SocialGouv/domifa/commit/ac82166a5355002103af9c4840100705c6e2d821))
+
+## [2.250.2](https://github.com/SocialGouv/domifa/compare/v2.250.1...v2.250.2) (2026-06-10)
+
+
+### Bug Fixes
+
+* **backend:** fix import ([bf8547f](https://github.com/SocialGouv/domifa/commit/bf8547ff2496dbd8c42e4366df33f597133e023b))
+
+## [2.250.1](https://github.com/SocialGouv/domifa/compare/v2.250.0...v2.250.1) (2026-06-10)
+
+
+### Bug Fixes
+
+* **admin:** add filters ([b13fead](https://github.com/SocialGouv/domifa/commit/b13feadb4a2c2160a94340d194db7bf73ab50be5))
+* **backend:** fix http filter ([2986c2e](https://github.com/SocialGouv/domifa/commit/2986c2e29c4d982941c172311ac5485f8a51809e))
+
 # [2.250.0](https://github.com/SocialGouv/domifa/compare/v2.249.8...v2.250.0) (2026-06-09)
 
 
