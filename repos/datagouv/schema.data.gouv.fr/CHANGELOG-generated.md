@@ -1,19 +1,17 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 10 juin 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Le site schema.data.gouv.fr a connu une période de maintenance et de mises à jour régulières au cours des 30 derniers jours. Ces mises à jour concernent principalement la consolidation de la configuration, les recommandations de schémas et la mise à jour du site web. Une amélioration notable est la correction du format du jeu de données "aides" qui est maintenant un datapackage. Des améliorations techniques ont également été apportées avec la mise à jour de pnpm et la suppression d'une configuration obsolète.
+Le site schema.data.gouv.fr a connu une période de maintenance et de mises à jour régulières au cours des 30 derniers jours. Les principales évolutions concernent la mise à jour des recommandations de schémas, des corrections concernant le format des données (passage d'un schéma à un datapackage pour les aides) et des améliorations techniques de l'infrastructure (mise à jour de pnpm et suppression d'une autorisation de build).
 
 ### Évolutions fonctionnelles
-- Ajout du référentiel de données "communication-publique" ([#346](https://github.com/datagouv/schema.data.gouv.fr/pull/346)).
-- Correction du format du jeu de données "aides" qui est maintenant conforme au format datapackage, améliorant ainsi son interopérabilité.
-- Mise à jour des recommandations de schémas de données à plusieurs reprises au cours du mois.
-- Modification du schéma "acceslibre" pour le convertir en datapackage ([#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344)).
+- Ajout du schéma "referentiel-donnees-communication-publique" au catalogue.
+- Correction du format de données pour les "aides" qui passent d'un schéma à un datapackage, améliorant ainsi leur compatibilité et leur réutilisation. [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344)
 
 ### Évolutions techniques
-- Mise à jour de pnpm vers la version 11 ([#345](https://github.com/datagouv/schema.data.gouv.fr/pull/345)).
-- Suppression de la configuration "allow-builds" ([#346](https://github.com/datagouv/schema.data.gouv.fr/pull/346)).
-- Mises à jour régulières du site web et de la configuration.
+- Mise à jour de l'outil de gestion de paquets pnpm vers la version 11. [#345](https://github.com/datagouv/schema.data.gouv.fr/issues/345)
+- Suppression de l'autorisation "allow-builds" dans la configuration du projet. [#346](https://github.com/datagouv/schema.data.gouv.fr/issues/346)
+- Mises à jour régulières du site web et des recommandations de schémas.
 
 ### Autres changements
-- Consolidation de la configuration du site à plusieurs reprises.
-- Mises à jour régulières des recommandations.
+- Consolidation des fichiers de configuration.
+- Mises à jour régulières du site web (plusieurs commits sans description détaillée).
