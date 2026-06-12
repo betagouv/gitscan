@@ -1,24 +1,23 @@
-## Changelog : hyyypertool (30 derniers jours, au 5 juin 2026)
+## Changelog : hyyypertool (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des modérations, notamment l'ajout de raisons de refus pour les utilisateurs et la possibilité de lier l'email d'un membre à son profil. Des corrections de coquilles et des optimisations de performance ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de l'application.
+Ce mois-ci, hyyypertool a bénéficié d'améliorations significatives en termes de gestion des utilisateurs, notamment l'ajout de l'historique de connexion OIDC, ainsi que des optimisations techniques et de sécurité. L'interface utilisateur a également été enrichie avec des badges d'informations sur les organisations et des améliorations de l'affichage des modérations.
 
 ### Évolutions fonctionnelles
-- Ajout de champs "raison du refus de l'utilisateur" et "modification autorisée" aux modérations [#1652](https://github.com/proconnect-gouv/hyyypertool/issues/1652).
-- L'email d'un membre d'organisation est désormais un lien vers son profil utilisateur [#1653](https://github.com/proconnect-gouv/hyyypertool/issues/1653).
-- Possibilité de filtrer les modérations par statut de décision (accepté, rejeté, réouvert) [#1594](https://github.com/proconnect-gouv/hyyypertool/issues/1594).
-- Ajout d'une action de suppression pour les modèles de réponse [#1600](https://github.com/proconnect-gouv/hyyypertool/issues/1600).
-- Amélioration de l'interface utilisateur pour les modèles de réponse (ordre alphabétique, titre plus clair) [#1595](https://github.com/proconnect-gouv/hyyypertool/issues/1595), [#1596](https://github.com/proconnect-gouv/hyyypertool/issues/1596).
+- Ajout de la pagination de l'historique de connexion OIDC sur la page utilisateur pour une meilleure lisibilité. [#1678](https://github.com/proconnect-gouv/hyyypertool/issues/1678)
+- Affichage de l'historique de connexion aux services ProConnect directement sur la fiche utilisateur. [#1673](https://github.com/proconnect-gouv/hyyypertool/issues/1673)
+- Ajout de badges d'informations synthétiques (type de service, statut, activité, etc.) dans les fiches organisation. [#1672](https://github.com/proconnect-gouv/hyyypertool/issues/1672)
+- Possibilité de spécifier une raison de refus lors de la suppression d'un utilisateur. [#1652](https://github.com/proconnect-gouv/hyyypertool/issues/1652)
+- Lien direct vers le profil utilisateur depuis l'adresse e-mail affichée. [#1653](https://github.com/proconnect-gouv/hyyypertool/issues/1653)
+- Amélioration de l'affichage des modérations avec la possibilité de trier les colonnes. [#1604](https://github.com/proconnect-gouv/hyyypertool/issues/1604) et [#1620](https://github.com/proconnect-gouv/hyyypertool/issues/1620)
 
 ### Évolutions techniques
-- Remplacement des modals SSR par des "Preact islands" auto-contenues pour améliorer les performances [#1627](https://github.com/proconnect-gouv/hyyypertool/issues/1627).
-- Refonte des mocks pour utiliser des routes Hono en développement, simplifiant la configuration et la maintenance [#1608](https://github.com/proconnect-gouv/hyyypertool/issues/1608), [#1609](https://github.com/proconnect-gouv/hyyypertool/issues/1609), [#1610](https://github.com/proconnect-gouv/hyyypertool/issues/1610).
-- Mise à jour de la bibliothèque `@proconnect-gouv/proconnect.identite` [#1651](https://github.com/proconnect-gouv/hyyypertool/issues/1651).
-- Ajout de la limitation du débit (rate limiting) basé sur l'adresse IP pour améliorer la sécurité [#1620](https://github.com/proconnect-gouv/hyyypertool/issues/1620).
-- Amélioration de la gestion du cache avec l'ajout correct des headers `cache-control` [#1601](https://github.com/proconnect-gouv/hyyypertool/issues/1601).
+- Remplacement des modals SSR par des "Preact islands" auto-contenues pour les modérations, améliorant potentiellement les performances et la maintenabilité. [#1627](https://github.com/proconnect-gouv/hyyypertool/issues/1627)
+- Implémentation d'une limitation de débit (rate limiting) basée sur l'adresse IP pour renforcer la sécurité. [#1621](https://github.com/proconnect-gouv/hyyypertool/issues/1621)
+- Remplacement des mocks de certains services externes par des routes de développement locales pour faciliter les tests et le développement. [#1607](https://github.com/proconnect-gouv/hyyypertool/issues/1607), [#1608](https://github.com/proconnect-gouv/hyyypertool/issues/1608), [#1609](https://github.com/proconnect-gouv/hyyypertool/issues/1609)
+- Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections et améliorations.
 
 ### Autres changements
-- Correction d'une coquille dans l'email automatique [#1654](https://github.com/proconnect-gouv/hyyypertool/issues/1654).
-- Correction d'un bug empêchant l'envoi de modèles de réponse vides [#1597](https://github.com/proconnect-gouv/hyyypertool/issues/1597).
-- Amélioration du support du mode sombre et ajout d'accents manquants [#1598](https://github.com/proconnect-gouv/hyyypertool/issues/1598).
-- Plusieurs mises à jour de dépendances pour assurer la sécurité et la stabilité.
+- Correction d'une faute de frappe dans un e-mail automatisé. [#1654](https://github.com/proconnect-gouv/hyyypertool/issues/1654)
+- Amélioration de la gestion des nonces pour la sécurité des îles Preact. [#1605](https://github.com/proconnect-gouv/hyyypertool/issues/1605)
+- Mise à jour de la dépendance `@proconnect-gouv/proconnect.identite`. [#1651](https://github.com/proconnect-gouv/hyyypertool/issues/1651)
