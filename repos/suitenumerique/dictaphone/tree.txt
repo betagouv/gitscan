@@ -105,7 +105,9 @@
     │   │   ├── management
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── auto_hard_delete_files.py
     │   │   │       ├── clean_pending_files.py
+    │   │   │       ├── delete_original_files_data.py
     │   │   │       └── purge_deleted_files.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
@@ -119,6 +121,7 @@
     │   │   │   ├── 0009_aifilejob_language.py
     │   │   │   ├── 0010_file_source.py
     │   │   │   ├── 0011_alter_file_upload_state.py
+    │   │   │   ├── 0012_file_lifecycle_state_file_file_created_915352_idx.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── static
@@ -144,7 +147,9 @@
     │   │   │   │   └── test_pkce_views.py
     │   │   │   ├── commands
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_auto_hard_delete_files.py
     │   │   │   │   ├── test_clean_pending_files.py
+    │   │   │   │   ├── test_delete_original_files_data.py
     │   │   │   │   └── test_purge_deleted_files.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
@@ -339,9 +344,6 @@
     │   │   │   │   └── utils
     │   │   │   │       ├── formatFileSize.ts
     │   │   │   │       └── getAudioDuration.ts
-    │   │   │   ├── support
-    │   │   │   │   └── hooks
-    │   │   │   │       └── useSupport.tsx
     │   │   │   └── ui
     │   │   │       ├── components
     │   │   │       │   ├── circular-progress
@@ -739,4 +741,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-184 directories, 557 files
+182 directories, 561 files

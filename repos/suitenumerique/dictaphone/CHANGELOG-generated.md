@@ -1,43 +1,46 @@
-## Changelog : dictaphone (30 derniers jours, au 5 juin 2026)
+## Changelog : dictaphone (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application mobile, notamment en termes de gestion des enregistrements hors ligne, de robustesse et d'expérience utilisateur. Des corrections de bugs et des optimisations ont également été apportées au backend et à l'interface web, avec un focus particulier sur l'accessibilité et la gestion des transcriptions.
+Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment sur mobile, avec une gestion améliorée de l'enregistrement, du téléchargement et de la reprise d'enregistrements interrompus. Des fonctionnalités de régénération de transcriptions et de gestion des erreurs ont été ajoutées. L'accessibilité a également été améliorée sur le frontend, et la configuration de la politique de données est maintenant plus flexible.
 
 ### Évolutions fonctionnelles
-- L'application mobile permet désormais de supprimer les enregistrements locaux si le fichier correspondant n'existe plus sur le serveur.
-- L'application mobile gère les liens profonds pour la déconnexion.
-- L'application mobile affiche une raison plus explicite en cas de blocage de l'upload (ex: pas de wifi).
-- L'application mobile propose une gestion améliorée des erreurs et des retours en arrière.
-- L'application mobile permet de télécharger un fichier non uploadé.
-- L'application mobile permet de contourner l'écran de connexion.
-- L'interface web permet d'exporter les transcriptions au format SRT.
-- L'interface web permet de copier le texte de la transcription et d'ouvrir le document dans Indoc.
-- L'interface web affiche la source et la durée des fichiers dans l'administration.
-- L'interface web affiche correctement la durée des enregistrements.
-- L'interface web propose une nouvelle interface pour la liste des enregistrements.
-- Le backend permet de relancer la génération d'une transcription en cas d'échec.
-- Le backend supporte désormais plus de formats audio/vidéo.
-- Le backend stocke la source de l'enregistrement audio pour l'analyse.
+- Possibilité de reprendre un enregistrement interrompu sur mobile.
+- Affichage d'une alerte lorsque l'enregistrement web est lancé depuis un appareil mobile.
+- Affichage de l'état de la transcription sous forme de badge sur le frontend.
+- Affichage des informations relatives à la politique de données sur la page d'enregistrement.
+- Ajout d'une option pour régénérer une transcription échouée, accessible depuis le menu des fichiers et via un swipe sur mobile.
+- Possibilité de copier le texte de la transcription.
+- Ajout d'actions supplémentaires (copier, ouvrir dans Indoc) au menu des fichiers.
+- Amélioration de l'interface utilisateur de la liste des enregistrements.
+- Ajout d'une indication visuelle du niveau sonore pendant l'enregistrement.
+- Possibilité de télécharger un fichier non encore téléchargé.
+- Gestion des liens profonds (deeplinks) pour la déconnexion sur mobile.
+- Amélioration de la robustesse du composant d'enregistrement sur mobile.
+- Affichage d'un message d'erreur plus clair en cas de problème de téléchargement.
+- Ajout de sons de démarrage et d'arrêt de l'enregistrement sur mobile.
+- Amélioration de l'accessibilité de l'application web (titres, labels ARIA, etc.).
 
 ### Évolutions techniques
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (React, i18next, formatjs, tanstack/react-query).
-- Mise à jour de Python à la version 3.14.5 et Django à la version 5.12.4.
-- Amélioration de la robustesse de l'authentification avec JWT et PKCE.
-- Refactoring du code mobile pour une meilleure organisation.
-- Ajout d'un script pour automatiser les releases mobiles.
-- Amélioration des logs pour faciliter le débogage des problèmes de connexion mobile.
-- Ajout d'une commande pour nettoyer les fichiers temporaires et supprimés.
-- Configuration du nettoyage des fichiers en tant que tâche cron.
-- Amélioration de la configuration du logging.
-- Backport de la configuration du logging depuis la documentation.
+- Mise à jour des dépendances du frontend.
+- Amélioration de la gestion des erreurs et des timeouts.
+- Refactorisation du code d'enregistrement sur le frontend.
+- Ajout de tests pour la gestion des enregistrements hors ligne sur mobile.
+- Mise à jour de Python et Django.
+- Amélioration de la configuration de la politique de données (gestion automatique, exposition via un endpoint).
+- Ajout de jobs cron pour la suppression des fichiers originaux et des fichiers supprimés.
+- Amélioration de la sécurité avec l'utilisation de `secrets.compare_digest`.
+- Ajout de logs plus détaillés pour faciliter le débogage des problèmes de connexion sur mobile.
+- Support de plus de formats audio/vidéo.
+- Amélioration de l'architecture du backend pour supporter la régénération des transcriptions.
+- Mise à jour des librairies React Native Audio.
 
 ### Autres changements
-- Amélioration de l'accessibilité de l'interface web (titres, labels, contraste).
-- Mise à jour de la documentation et des fichiers README.
-- Ajout d'un lien vers la salle Matrix du projet.
-- Corrections de typos et améliorations de la lisibilité du code.
-- Ajout de tests Posthog pour le suivi des erreurs sur mobile.
-- Amélioration des messages d'alerte et des indications visuelles sur mobile.
-- Ajout de sons pour le démarrage et l'arrêt de l'enregistrement sur mobile.
-- Amélioration du rendu du niveau sonore sur l'interface web.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Mise à jour de la documentation (README, docs de développement).
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout d'un script pour automatiser les releases sur mobile.
+- Ajout d'un lien vers la salle Matrix du projet dans le README.
+- Amélioration des badges du README.
+- Suppression de code inutile.
+- Correction de problèmes de compatibilité iOS.
+- Ajout de suivi PostHog pour les erreurs sur mobile.
+- Configuration de l'agent utilisateur pour les requêtes.
