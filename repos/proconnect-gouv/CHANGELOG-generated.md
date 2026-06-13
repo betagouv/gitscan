@@ -1,21 +1,22 @@
-# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 04 juin 2026)
+# Synthèse d'activité : proconnect-gouv (du 22 mai 2026 au 12 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment autour de l'identité et de l'authentification. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour renforcer la sécurité et la stabilité. Des améliorations significatives ont été apportées à [proconnect-identite] pour simplifier l'inscription des petites organisations, améliorer les messages d'erreur OIDC et gérer les rejets de modération.  [hyyypertool] a également connu des évolutions notables avec l'ajout de motifs de refus pour les utilisateurs et l'amélioration de l'interface utilisateur.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment dans les domaines de l'authentification, de la gestion des utilisateurs et de la validation de données. Plusieurs dépôts ont bénéficié de mises à jour significatives, comme [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec des améliorations de la modération et de la migration des emails, et [hyyypertool](/repos/proconnect-gouv/hyyypertool) avec des ajouts d'informations utilisateur et des optimisations de sécurité. La librairie [class-validator](/repos/proconnect-gouv/class-validator) a également été enrichie de nouveaux validateurs pour une validation de données plus complète.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités. [class-validator] a notamment mis à jour ses dépendances pour améliorer la sécurité. [federation] a renforcé la sécurité de la validation d'email en utilisant DNS-over-HTTPS.
+Plusieurs dépôts ont reçu des mises à jour axées sur la sécurité :
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) a implémenté une limitation de débit (rate limiting) basée sur l'adresse IP.
+- [class-validator](/repos/proconnect-gouv/class-validator) a corrigé des vulnérabilités de dépendances.
+- [federation](/repos/proconnect-gouv/federation) a bénéficié de mises à jour de l'infrastructure avec Node 24.16.
 
 ## Autres changements notables
-- Migration de la base de données MongoDB de [proconnect-espace-partenaires] vers `corev2`.
-- Publication du package `rne` par [proconnect-identite] pour une utilisation publique.
-- Mise à jour de Node vers la version 24.16 dans [federation].
-- Implémentation d'une limitation de débit basée sur l'adresse IP dans [hyyypertool].
-- Création d'un client dédié pour l'environnement de pré-production dans [proconnect-identite].
+- Migration de [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers un runtime Bun natif pour améliorer les performances.
+- Refactorisation de la documentation eIDAS dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
+- Remplacement de `resolveMx` par une requête DNS-over-HTTPS dans le validateur d'email de [federation](/repos/proconnect-gouv/federation).
 
 ## Dépôts les plus actifs
-- [proconnect-identite] : Améliorations majeures de l'expérience utilisateur et de la gestion des identités, incluant la simplification de l'inscription et l'amélioration des messages d'erreur.
-- [hyyypertool] : Ajout de fonctionnalités pour la gestion des utilisateurs et des modérations, ainsi que des améliorations de l'interface utilisateur.
-- [class-validator] : Ajout de nouveaux validateurs et amélioration de la validation des données.
-- [federation] : Améliorations de l'API et de la sécurité, notamment avec l'utilisation de DNS-over-HTTPS.
-- [proconnect-test-client] : Amélioration de la gestion de l'authentification multi-facteurs (MFA).
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la modération, migration des emails et optimisations de la base de données.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Ajout d'informations utilisateur, amélioration de l'interface et renforcement de la sécurité.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
+- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Correction de bugs d'authentification et migration vers Bun.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration de l'autocomplétion des mots de passe et mises à jour de l'infrastructure.

@@ -1,22 +1,19 @@
 # Synthèse d'activité : IA-Generative (du 26 mai au 02 juin 2026)
 
 ## Résumé de l'activité
-L'organisation IA-Generative a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs fronts. Les efforts de développement se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'assistants d'onboarding et des interfaces plus intuitives (mirai-assistant-navigateur, mirai-mesreunions, Stirling-PDF).  Des avancées importantes ont également été réalisées dans l'intégration de l'IA, avec l'implémentation de systèmes RAG (Retrieval-Augmented Generation) et d'agents pour l'analyse de documents PDF (Stirling-PDF). Enfin, des améliorations de sécurité et de gestion des infrastructures ont été apportées, notamment pour le projet device-management.
+L'organisation IA-Generative a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'assistants d'onboarding et de nouvelles fonctionnalités pour faciliter l'utilisation des outils.  Des avancées notables ont également été réalisées dans l'intégration de l'IA, avec l'implémentation de systèmes RAG et l'amélioration des capacités de transcription et d'analyse de documents. Enfin, des corrections de sécurité et des optimisations techniques ont été apportées pour garantir la robustesse et la performance des plateformes. Les projets [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) et [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) ont été particulièrement actifs.
 
 ## Sécurité
-Le dépôt [device-management](/repos/IA-Generative/device-management) a bénéficié d'un audit de sécurité et de corrections de multiples vulnérabilités (CT-1, CT-7, CT-9, CT-12, IMM-1..8). La gestion des secrets a également été normalisée pour renforcer la sécurité des déploiements.
+Des corrections de vulnérabilités ont été appliquées sur le dépôt [device-management](/repos/IA-Generative/device-management), renforçant l'authentification et corrigeant des failles potentielles dans les dépendances et la configuration du serveur.
 
 ## Autres changements notables
-Plusieurs dépôts ont connu des refactorings importants :
-* [claim-controller](/repos/IA-Generative/claim-controller) a vu des améliorations de sa configuration et de sa gestion du cycle de vie des revendications.
-* [kevent-ai](/repos/IA-Generative/kevent-ai) a subi une refonte majeure de son architecture, remplaçant Kafka par Redis pour la gestion des files d'attente.
-* [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) a optimisé le chargement de l'interface utilisateur pour améliorer les performances.
-* [mirai-api](/repos/IA-Generative/mirai-api) a mis en place un pipeline CI/CD complet et une infrastructure de documentation basée sur VitePress.
-* [n8n-image](/repos/IA-Generative/n8n-image) a amélioré la gestion des versions de ses images Docker.
+Plusieurs dépôts ont bénéficié de mises à jour d'infrastructure et de refactorings importants. [claim-controller](/repos/IA-Generative/claim-controller) a vu son architecture améliorée pour une meilleure gestion des ressources Kubernetes. [mirai-api](/repos/IA-Generative/mirai-api) a implémenté un pipeline CI/CD complet et une infrastructure de documentation basée sur VitePress.  [kevent-ai](/repos/IA-Generative/kevent-ai) a subi une refonte majeure de son architecture, remplaçant Kafka par Redis pour la gestion des files d'attente. [n8n-image](/repos/IA-Generative/n8n-image) a centralisé la gestion des versions et simplifié le processus de build.
 
 ## Dépôts les plus actifs
-* [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) : Refonte complète de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des réunions.
-* [mcr](/repos/IA-Generative/mcr) : Ajout de notes personnalisées aux rapports et améliorations de la gestion des livrables.
-* [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Optimisation des performances, intégration d'un système RAG pour l'IA et corrections de bugs.
-* [device-management](/repos/IA-Generative/device-management) : Corrections de sécurité, amélioration de la configuration et de la gestion des versions.
-* [mirai-api](/repos/IA-Generative/mirai-api) : Implémentation d'une documentation complète et d'un pipeline CI/CD.
+*   [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) : Refonte complète de l'interface utilisateur et ajout de nouvelles fonctionnalités pour l'importation de vidéos et la gestion des transcriptions.
+*   [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Optimisation des performances, intégration d'un système RAG pour l'IA et correction de bugs pour améliorer l'expérience utilisateur.
+*   [mcr](/repos/IA-Generative/mcr) : Ajout de nouvelles fonctionnalités pour le téléchargement de fichiers, la régénération de rapports et l'intégration de notes personnalisées.
+*   [device-management](/repos/IA-Generative/device-management) : Amélioration de l'identification des plugins et correction de vulnérabilités de sécurité.
+*   [mirai-api](/repos/IA-Generative/mirai-api) : Mise en place d'une documentation complète et d'un pipeline CI/CD.
+*   [n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core) : Amélioration de la gestion des instances Playwright distantes et ajout du support des proxys.
+*   [ocr-api](/repos/IA-Generative/ocr-api) : Ajout de la prise en charge de l'extraction de texte à partir d'emails et optimisation de la gestion des tâches d'OCR.

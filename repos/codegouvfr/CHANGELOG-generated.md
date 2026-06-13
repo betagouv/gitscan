@@ -1,18 +1,19 @@
-# Synthèse d'activité : codegouvfr (du 16 avril 2026 au 01 juin 2026)
+# Synthèse d'activité : codegouvfr (du 16/04 au 16/06)
 
 ## Résumé de l'activité
-L'organisation codegouvfr a connu une période d'activité soutenue, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'administration et de la gestion des données, notamment avec [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi). Des avancées notables ont également été réalisées dans la structuration des critères d'évaluation des logiciels libres avec [floss-criteria](/repos/codegouvfr/floss-criteria) et dans l'amélioration de l'accessibilité et de la flexibilité de la bibliothèque de composants [react-dsfr](/repos/codegouvfr/react-dsfr). Enfin, [cartonum](/repos/codegouvfr/cartonum) a enrichi sa cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.
+L'activité récente de l'organisation codegouvfr s'est concentrée sur l'amélioration de ses outils et plateformes existants, avec un accent particulier sur la gestion des logiciels et des données. Plusieurs dépôts ont bénéficié d'améliorations significatives en termes de fonctionnalités, de performance et de sécurité. On note des avancées notables dans la structuration des critères d'évaluation des logiciels libres ([floss-criteria](/repos/codegouvfr/floss-criteria)) et l'enrichissement du catalogue de logiciels ([catalogi](/repos/codegouvfr/catalogi)), ainsi que des corrections et optimisations sur [sill-deploy](/repos/codegouvfr/sill-deploy), [react-dsfr](/repos/codegouvfr/react-dsfr) et [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr). L'outil cartonum ([cartonum](/repos/codegouvfr/cartonum)) a également progressé en ajoutant de nouvelles fonctionnalités de gestion documentaire et de sécurité.
 
 ## Sécurité
-Le thème Keycloak [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) a reçu une correction pour éviter des erreurs de redirection lors de l'autorisation, améliorant ainsi la robustesse du système.
+- Correction d'un bug dans [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) empêchant la redirection vers la page d'autorisation lorsque le client Keycloak n'existe pas, améliorant ainsi la robustesse du thème.
+- Ajout de protections pour les logiciels dans [catalogi](/repos/codegouvfr/catalogi).
 
 ## Autres changements notables
-- Refactorisation importante de [sill-deploy](/repos/codegouvfr/sill-deploy) avec l'ajout de workflows CI/CD et la suppression de colonnes obsolètes.
-- Mise en place d'une page d'administration pour les attributs personnalisés dans [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).
-- Amélioration des tests et de l'infrastructure de test pour [catalogi](/repos/codegouvfr/catalogi) avec la mise en cache des navigateurs Playwright.
+- Refactorisation de la logique de filtrage des logiciels dans [catalogi](/repos/codegouvfr/catalogi) pour améliorer les performances en effectuant le filtrage directement au niveau SQL.
+- Ajout de workflows CI/CD pour le déploiement SILL et la synchronisation avec le dépôt upstream dans [sill-deploy](/repos/codegouvfr/sill-deploy).
+- Début de la structuration des critères d'évaluation pour les logiciels libres dans [floss-criteria](/repos/codegouvfr/floss-criteria), posant les bases de l'analyse et du choix de logiciels open source.
 
 ## Dépôts les plus actifs
-- [catalogi](/repos/codegouvfr/catalogi) : Amélioration continue de l'administration du catalogue, de l'importation de données et de la gestion des sources d'informations.
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Optimisation des performances, refactorisation du code et ajout de workflows CI/CD pour le déploiement.
+- [catalogi](/repos/codegouvfr/catalogi) : Amélioration de la recherche de logiciels, ajout de fonctionnalités d'administration pour les attributs personnalisés et optimisation des performances.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Ajout d'une page d'administration, amélioration de l'affichage de la provenance des données et optimisation des performances de l'API.
+- [floss-criteria](/repos/codegouvfr/floss-criteria) : Initialisation et structuration des critères d'évaluation pour les logiciels libres.
 - [cartonum](/repos/codegouvfr/cartonum) : Enrichissement de la cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.
-- [floss-criteria](/repos/codegouvfr/floss-criteria) : Début de la structuration des critères d'évaluation pour les logiciels libres.

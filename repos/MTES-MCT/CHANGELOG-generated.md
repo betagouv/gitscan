@@ -1,28 +1,30 @@
-# Synthèse d'activité : MTES-MCT (du 22/05 au 03/06)
+# Synthèse d'activité : MTES-MCT (du 22/05 au 22/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts.  De nombreuses mises à jour ont été apportées aux applications web existantes, notamment *Dossier Facile* et *Lucca*, avec des améliorations de l'interface utilisateur, de la sécurité et de la gestion des données.  Plusieurs dépôts ont bénéficié d'optimisations de performance et de corrections de bugs. L'accent a également été mis sur l'intégration de nouvelles fonctionnalités, comme l'authentification à deux facteurs pour *Keycloak-FranceConnect* et l'ajout de données de transport routier pour *Ecobalyse*. Enfin, des efforts importants ont été déployés pour améliorer la qualité des données et la documentation, notamment dans les dépôts *acceslibre* et *ecobalyse-schema*.
+L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration de la qualité des données, la sécurité et l'expérience utilisateur de ses différentes applications. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment *trackdechets*, *vizeau*, *mon-devis-sans-oublis*, *dialog* et *acceslibre*. Ces améliorations se traduisent par de nouvelles fonctionnalités, des corrections de bugs, des optimisations de performance et une meilleure intégration avec d'autres services. L'accent mis sur la sécurité, avec des mises à jour de dépendances et des corrections de vulnérabilités, témoigne de l'engagement de l'organisation envers la protection des données et la fiabilité de ses services.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
 
-*   *Keycloak-FranceConnect* : Activation de l'authentification à deux facteurs (2FA) pour l'identité ProConnect.
-*   *Dossier-Facile-Frontend* : Mise à jour des dépendances pour corriger des vulnérabilités (CVE).
-*   *Docurba* : Refonte de l'infrastructure de déploiement avec Nginx pour une meilleure sécurité et limitation de débit.
+*   Correction d'une vulnérabilité dans `mesads` concernant l'authentification.
+*   Mise à jour de la dépendance `sentry-sdk` dans `mon-devis-sans-oublis-backend-ocr` pour corriger des failles de sécurité.
+*   Mise à jour de Twig et Symfony dans `dahlia` pour corriger des vulnérabilités de sécurité.
+*   Correction de vulnérabilités dans les fichiers `uv.lock` de `ecobalyse-data`.
 
 ## Autres changements notables
-*   *Ecobalyse* : Ajout de données de transport routier pour le Maroc et implémentation du Coefficient de Facteur de Forme (CFF) pour l'emballage alimentaire.
-*   *Dahlia* : Création de la première version de l'application web, permettant la gestion des dossiers DALO, DAHO et DAHU.
-*   *Lucca* : Ajout de la gestion des adhérents et de la possibilité de cloner un adhérent vers un autre département.
-*   *Docurba* : Intégration de Supabase pour l'authentification et création d'une API interne.
-*   *Monitorfish* : Ajout de l'affichage des navires sous AIS.
-*   *Trackdéchets* : Implémentation de l'authentification à double facteur (2FA).
+*   **trackdechets:** Amélioration significative de l'interface utilisateur et correction de bugs, notamment sur les formulaires BSFF.
+*   **vizeau:** Ajout de la gestion de projets avec étapes, attachement d'exploitations et de parcelles, et amélioration de la visualisation de la qualité de l'eau.
+*   **dialog:** Ajout de la possibilité d'intégrer la cartographie via iframe et amélioration de la gestion des arrêtés.
+*   **acceslibre:** Intégration de données APIDAE, ajout de nouvelles questions signalétiques et amélioration de la qualité des données.
+*   **dahlia:** Passage d'une version initiale à une application fonctionnelle avec SSO ProConnect et scraping automatisé.
+*   **carbuere:** Ajout de la gestion des entités DREAL et possibilité pour les DREAL d'accepter/refuser des utilisateurs.
+*   **aigle-frontend & aigle-api:** Amélioration de l'administration, de la gestion des zones personnalisées et des performances.
 
 ## Dépôts les plus actifs
-*   [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Améliorations de l'interface utilisateur, correction de bugs et ajout de nouvelles fonctionnalités.
-*   [Lucca](/repos/MTES-MCT/Lucca) : Ajout de la gestion des adhérents et amélioration de l'importation des données.
-*   [Ecobalyse](/repos/MTES-MCT/Ecobalyse) : Ajout de nouvelles données et amélioration de la modélisation.
-*   [Docurba](/repos/MTES-MCT/Docurba) : Refonte de l'infrastructure et ajout de nouvelles fonctionnalités.
-*   [Trackdechets](/repos/MTES-MCT/trackdechets) : Implémentation de l'authentification à double facteur et ajout de nouvelles fonctionnalités.
-*   [Monitorfish](/repos/MTES-MCT/monitorfish) : Ajout de l'affichage des navires sous AIS.
-*   [Dahlia](/repos/MTES-MCT/dahlia) : Création de la première version de l'application.
+*   [trackdechets](/repos/MTES-MCT/trackdechets) : Corrections de bugs et améliorations de l'expérience utilisateur sur les formulaires BSFF.
+*   [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités de gestion de projets et d'amélioration de la visualisation des données.
+*   [dialog](/repos/MTES-MCT/dialog) : Amélioration de l'intégration cartographique et de la gestion des arrêtés.
+*   [acceslibre](/repos/MTES-MCT/acceslibre) : Intégration de nouvelles données et amélioration de la qualité des informations sur l'accessibilité.
+*   [dahlia](/repos/MTES-MCT/dahlia) : Développement d'une application fonctionnelle pour la gestion des dossiers DALO, DAHO et DAHU.
+*   [mon-devis-sans-oublis-backend](/repos/MTES-MCT/mon-devis-sans-oublis-backend) : Amélioration de la gestion des droits et des fonctionnalités.
+*   [boris](/repos/MTES-MCT/boris) : Amélioration du SEO et de la page de revente.

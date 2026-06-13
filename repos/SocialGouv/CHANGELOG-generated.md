@@ -1,31 +1,28 @@
-# Synthèse d'activité : SocialGouv (du 07/05 au 07/06)
+# Synthèse d'activité : SocialGouv (du 17 mai 2026 au 17 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv a été marquée par une forte concentration sur la maintenance, la sécurité et l'amélioration de l'infrastructure. Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de corrections de bugs pour assurer la stabilité et la fiabilité des services. Des efforts significatifs ont également été déployés pour améliorer l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités dans des outils comme `dashlord` et `matomo-next`, et des améliorations de l'accessibilité dans `vao`.  L'organisation a continué à investir dans l'automatisation et l'intégration continue, avec des améliorations des workflows CI/CD dans plusieurs projets.  Enfin, des mises à jour régulières des données législatives et des conventions collectives ont été effectuées pour garantir la pertinence des informations fournies par les services.
+L'activité récente de SocialGouv a été marquée par une forte concentration sur la sécurité, la maintenance et l'amélioration continue de ses applications. Plusieurs dépôts ont bénéficié de corrections de vulnérabilités et de mises à jour de dépendances pour assurer la stabilité et la pérennité des services. Des efforts significatifs ont également été déployés pour améliorer l'expérience utilisateur, notamment sur les applications vao, srdt et dashlord. L'intégration de nouvelles fonctionnalités, comme l'authentification à deux facteurs sur domifa et le support des accords d'entreprise sur le Code du Travail Numérique, témoigne d'une volonté d'innovation et d'adaptation aux besoins des utilisateurs. Plusieurs projets sont en phase de démarrage ou de préparation, comme JIA-demo-atelier-1 et JIA-atelier, qui explorent de nouvelles pistes pour l'avenir de l'organisation.
 
 ## Sécurité
 Plusieurs dépôts ont reçu des correctifs de sécurité importants :
 
-*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-*   Correction d'une vulnérabilité et renforcement de la sécurité dans [domifa](/repos/SocialGouv/domifa) avec l'ajout de l'authentification à deux facteurs et des mesures anti-bot.
-*   Correction d'une vulnérabilité dans [token-bureau](/repos/SocialGouv/token-bureau).
-*   Correction d'une vulnérabilité dans [dsfr-mcp](/repos/SocialGouv/dsfr-mcp).
+*   [archifiltre-mails](/repos/SocialGouv/archifiltre-mails) a bénéficié d'une correction de vulnérabilité critique.
+*   [archifiltre-docs](/repos/SocialGouv/archifiltre-docs) a également intégré une correction de sécurité.
+*   [domifa](/repos/SocialGouv/domifa) a renforcé sa sécurité avec l'ajout de l'authentification à deux facteurs et la surveillance des activités suspectes.
 
 ## Autres changements notables
-*   **Refonte d'infrastructure :** Migration vers pnpm dans plusieurs dépôts (token-bureau, revu, domifa, archifiltre-docs, cdtn-admin) pour une meilleure gestion des dépendances.
-*   **Amélioration de l'intégration continue :** Amélioration des workflows CI/CD dans plusieurs projets, notamment [dashlord-actions] et [infra-apps].
-*   **Refactorisation majeure :** Refonte de l'architecture de [questions-ecrites](/repos/SocialGouv/questions-ecrites) pour utiliser `pg_vector` à la place de `qdrant`.
-*   **Nouvelles fonctionnalités :** Ajout de la gestion des permissions configurables dans [token-bureau](/repos/SocialGouv/token-bureau) et de l'authentification à deux facteurs dans [domifa](/repos/SocialGouv/domifa).
-*   **Automatisation :** Intégration de Claude pour la revue de code et la gestion des pull requests dans [da-manager](/repos/SocialGouv/da-manager).
+*   **Infrastructure et Déploiement:** Plusieurs dépôts ont été mis à jour pour utiliser pnpm comme gestionnaire de paquets ([token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), [domifa](/repos/SocialGouv/domifa)).  L'infrastructure de certains services, comme Iterion ([infra-apps](/repos/SocialGouv/infra-apps)), a été améliorée avec des déploiements sur OVH et la mise en place d'environnements haute disponibilité.
+*   **Intégration IA:** L'intégration de modèles de langage comme Claude a progressé dans plusieurs projets ([git-ai-trace](/repos/SocialGouv/git-ai-trace), [claw-code-go](/repos/SocialGouv/claw-code-go), [dashlord-actions](/repos/SocialGouv/dashlord-actions)).
+*   **Amélioration de l'expérience utilisateur:** Des améliorations significatives ont été apportées à l'interface utilisateur de dashlord, et des corrections de bugs ont été implémentées sur plusieurs applications pour améliorer la convivialité.
+*   **Gestion des données:** Les données légales de [legi-data](/repos/SocialGouv/legi-data) et les données des fiches VDD ([fiches-vdd](/repos/SocialGouv/fiches-vdd)) et du code du travail ([cdtn-admin](/repos/SocialGouv/cdtn-admin)) ont été mises à jour régulièrement.
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration de l'accessibilité et ajout de nouvelles fonctionnalités pour la gestion des agréments.
-*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs, améliorations de la gestion des permissions et migration vers pnpm.
-*   [srdt](/repos/SocialGouv/srdt) : Amélioration de l'expérience utilisateur et corrections de bugs pour l'assistant virtuel.
-*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Amélioration de la gestion des contributions et corrections de bugs.
-*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données législatives.
-*   [fiches-travail-data](/repos/SocialGouv/fiches-travail-data) : Mises à jour régulières des données des fiches de travail.
-*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles statistiques.
-*   [crossplane-function-js](/repos/SocialGouv/crossplane-function-js) : Amélioration de l'intégration avec les modèles d'IA et ajout de nouvelles fonctionnalités.
-*   [domifa](/repos/SocialGouv/domifa) : Ajout de l'authentification à deux facteurs et amélioration de la sécurité.
+*   [vao](/repos/SocialGouv/vao) : Améliorations significatives de l'accessibilité et du workflow de renouvellement d'agrément.
+*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs et améliorations de la gestion des permissions.
+*   [srdt](/repos/SocialGouv/srdt) : Refonte de l'affichage du statut de la convention collective et ajout de nouvelles fonctionnalités.
+*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.
+*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Amélioration de la gestion des contributions et des calculs du SMIC.
+*   [domifa](/repos/SocialGouv/domifa) : Renforcement de la sécurité et amélioration de la gestion des utilisateurs.
+*   [infra-apps](/repos/SocialGouv/infra-apps) : Amélioration de l'infrastructure et des déploiements, notamment pour Iterion.
+*   [git-ai-trace](/repos/SocialGouv/git-ai-trace) : Initialisation et développement d'un outil pour le suivi de la collaboration IA/humain.
+*   [claw-code-go](/repos/SocialGouv/claw-code-go) : Intégration de nouveaux modèles d'IA et ajout de fonctionnalités d'automatisation.
