@@ -78,6 +78,7 @@
 │   │   ├── postgresql.values.yaml
 │   │   └── redis.values.yaml
 │   ├── file-upload-modes.md
+│   ├── history-processor.md
 │   ├── installation.md
 │   ├── llm-configuration.md
 │   ├── release.md
@@ -160,10 +161,12 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── base.py
 │   │   │   │   ├── conversation.py
+│   │   │   │   ├── history_processors.py
 │   │   │   │   ├── local_media_url_processors.py
 │   │   │   │   └── summarize.py
 │   │   │   ├── ai_sdk_types.py
 │   │   │   ├── apps.py
+│   │   │   ├── assistant_health.py
 │   │   │   ├── clients
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── async_to_sync.py
@@ -196,12 +199,14 @@
 │   │   │   │   ├── 0007_chatconversationattachment_project_and_more.py
 │   │   │   │   ├── 0008_modelhealth.py
 │   │   │   │   ├── 0009_chatconversation_index_state_and_more.py
+│   │   │   │   ├── 0010_alter_modelhealth_status.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── model_health.py
 │   │   │   ├── models.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── albert_models.py
+│   │   │   ├── rate_limiting.py
 │   │   │   ├── serializers.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
@@ -233,6 +238,7 @@
 │   │   │   │   │   ├── test_albert_models.py
 │   │   │   │   │   ├── test_base_agent.py
 │   │   │   │   │   ├── test_build_conversation_agent.py
+│   │   │   │   │   ├── test_history_processors.py
 │   │   │   │   │   ├── test_project_image_pinning.py
 │   │   │   │   │   └── test_title_generation_agent.py
 │   │   │   │   ├── clients
@@ -272,12 +278,15 @@
 │   │   │   │   │   ├── test_chat_conversation_input_serializer.py
 │   │   │   │   │   ├── test_chat_conversation_request_serializer.py
 │   │   │   │   │   └── test_chat_project_serializer.py
+│   │   │   │   ├── test_admin.py
 │   │   │   │   ├── test_ai_agent_service_co2.py
+│   │   │   │   ├── test_assistant_health.py
 │   │   │   │   ├── test_document_context_builder.py
 │   │   │   │   ├── test_llm_configuration.py
 │   │   │   │   ├── test_local_media_url_processors.py
 │   │   │   │   ├── test_malware_detection.py
 │   │   │   │   ├── test_model_health.py
+│   │   │   │   ├── test_rate_limiting.py
 │   │   │   │   ├── tools
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_document_generic_search_rag.py
@@ -328,9 +337,12 @@
 │   │   │   │       │   ├── test_partial_update.py
 │   │   │   │       │   ├── test_retrieve.py
 │   │   │   │       │   └── test_update.py
+│   │   │   │       ├── test_assistant_health_view.py
+│   │   │   │       ├── test_chat_cooldown_view.py
 │   │   │   │       ├── test_file_stream.py
 │   │   │   │       ├── test_llm_configuration_view.py
 │   │   │   │       └── test_model_health_view.py
+│   │   │   ├── tokens.py
 │   │   │   ├── tools
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── descriptions.py
@@ -356,8 +368,8 @@
 │   │   │   │       └── encoder.py
 │   │   │   └── views
 │   │   │       ├── __init__.py
-│   │   │       ├── llm_config.py
-│   │   │       └── model_health.py
+│   │   │       ├── health.py
+│   │   │       └── llm_config.py
 │   │   ├── conftest.py
 │   │   ├── conversations
 │   │   │   ├── __init__.py
@@ -421,6 +433,8 @@
 │   │   │   │   ├── 0009_modelhealthsettings.py
 │   │   │   │   ├── 0010_alter_maintenancemode_updated_by.py
 │   │   │   │   ├── 0011_accessbypassemail_user_organization_siret.py
+│   │   │   │   ├── 0012_chatcooldownsettings.py
+│   │   │   │   ├── 0013_siteconfiguration_block_on_full_outage.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
@@ -431,7 +445,8 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── authentication
 │   │   │   │   │   ├── __init__.py
-│   │   │   │   │   └── test_backends.py
+│   │   │   │   │   ├── test_backends.py
+│   │   │   │   │   └── test_views.py
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── feature_flags
 │   │   │   │   │   ├── __init__.py
@@ -710,14 +725,20 @@
 │   │   │   │   │   │   │   ├── silentLogin.ts
 │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   ├── banner
+│   │   │   │   │   │   │   ├── Banner.tsx
+│   │   │   │   │   │   │   ├── BannerStack.tsx
 │   │   │   │   │   │   │   ├── StatusBanner.tsx
 │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── Banner.test.tsx
+│   │   │   │   │   │   │   │   ├── BannerStack.test.tsx
 │   │   │   │   │   │   │   │   └── StatusBanner.test.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── chat
 │   │   │   │   │   │   │   ├── api
 │   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   ├── useAssistantHealth.test.tsx
 │   │   │   │   │   │   │   │   │   └── useConversations.test.tsx
+│   │   │   │   │   │   │   │   ├── useAssistantHealth.ts
 │   │   │   │   │   │   │   │   ├── useChat.tsx
 │   │   │   │   │   │   │   │   ├── useConversation.tsx
 │   │   │   │   │   │   │   │   ├── useConversations.tsx
@@ -761,6 +782,7 @@
 │   │   │   │   │   │   │   │   │   ├── MessageBlock.test.tsx
 │   │   │   │   │   │   │   │   │   ├── MessageItem.test.tsx
 │   │   │   │   │   │   │   │   │   ├── ProjectWelcomeMessage.test.tsx
+│   │   │   │   │   │   │   │   │   ├── SendButton.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SourceItem.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SuggestionCarousel.test.tsx
 │   │   │   │   │   │   │   │   │   ├── ToolInvocationItem.test.tsx
@@ -906,6 +928,8 @@
 │   │   │   │   │   ├── layouts
 │   │   │   │   │   │   ├── MainLayout.tsx
 │   │   │   │   │   │   ├── PageLayout.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── MainLayout.test.tsx
 │   │   │   │   │   │   ├── conf.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── libs
@@ -1062,4 +1086,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-228 directories, 836 files
+229 directories, 859 files
