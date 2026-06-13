@@ -7,9 +7,9 @@
 │   ├── ISSUE_TEMPLATE.md
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
+│       ├── calendars-backend.yml
 │       ├── calendars-frontend.yml
 │       ├── calendars-ghcr.yml
-│       ├── calendars.yml
 │       ├── docker-publish.yml
 │       └── front-dependencies-installation.yml
 ├── .gitignore
@@ -28,6 +28,7 @@
 │   ├── clear_db_e2e.sql
 │   ├── compose
 │   ├── export_pg_vars.sh
+│   ├── fake_messages_server.py
 │   ├── fernetkey
 │   ├── manage
 │   ├── postgres_e2e
@@ -71,15 +72,12 @@
 │       └── postgresql.e2e
 ├── gitlint
 │   └── gitlint_emoji.py
-├── scripts
-│   └── fake_messages_server.py
 └── src
     ├── backend
     │   ├── .dockerignore
     │   ├── .pylintrc
     │   ├── Dockerfile
     │   ├── MANIFEST.in
-    │   ├── __init__.py
     │   ├── calendars
     │   │   ├── __init__.py
     │   │   ├── configuration
@@ -270,344 +268,342 @@
     │       ├── ResourceCalendar.php
     │       ├── ShareAccessPlugin.php
     │       └── SharedCalendarPrivacyPlugin.php
+    ├── e2e
+    │   ├── .gitignore
+    │   ├── __tests__
+    │   │   ├── calendar-locale.test.ts
+    │   │   ├── calendar.test.ts
+    │   │   └── helpers
+    │   │       └── e2e-helpers.ts
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── playwright.config.ts
+    │   └── tsconfig.json
     ├── frontend
     │   ├── .dockerignore
+    │   ├── .gitignore
+    │   ├── .oxfmtrc.json
+    │   ├── .oxlintrc.json
     │   ├── Caddyfile
     │   ├── Dockerfile
     │   ├── Dockerfile.caddy
-    │   ├── apps
-    │   │   ├── calendars
-    │   │   │   ├── .env
-    │   │   │   ├── .env.development
-    │   │   │   ├── .gitignore
-    │   │   │   ├── README.md
-    │   │   │   ├── cunningham.ts
-    │   │   │   ├── eslint.config.mjs
-    │   │   │   ├── index.html
-    │   │   │   ├── package.json
-    │   │   │   ├── public
-    │   │   │   │   ├── 401-background.png
-    │   │   │   │   ├── 403-background.png
-    │   │   │   │   ├── anct_favicon.png
-    │   │   │   │   ├── anct_logo-icon.svg
-    │   │   │   │   ├── anct_logo_alpha.svg
-    │   │   │   │   ├── anct_logo_beta.svg
-    │   │   │   │   ├── cal_icon_no_number.svg
-    │   │   │   │   ├── cal_logotype_text_no_number.svg
-    │   │   │   │   ├── favicon.png
-    │   │   │   │   ├── logo-icon_alpha.svg
-    │   │   │   │   ├── logo-icon_beta.svg
-    │   │   │   │   ├── logo-suite-numerique.png
-    │   │   │   │   ├── logo_alpha.svg
-    │   │   │   │   └── mime-video.svg
-    │   │   │   ├── src
-    │   │   │   │   ├── assets
-    │   │   │   │   │   ├── feedback
-    │   │   │   │   │   │   ├── form.svg
-    │   │   │   │   │   │   ├── tchap.svg
-    │   │   │   │   │   │   └── visio.svg
-    │   │   │   │   │   ├── home
-    │   │   │   │   │   │   └── banner.svg
-    │   │   │   │   │   ├── icons
-    │   │   │   │   │   │   ├── cancel.svg
-    │   │   │   │   │   │   ├── cancel_blue.svg
-    │   │   │   │   │   │   ├── delete_filled.svg
-    │   │   │   │   │   │   ├── info.svg
-    │   │   │   │   │   │   ├── settings.svg
-    │   │   │   │   │   │   ├── trash.svg
-    │   │   │   │   │   │   ├── undo.svg
-    │   │   │   │   │   │   └── undo_blue.svg
-    │   │   │   │   │   ├── logo-gouv.svg
-    │   │   │   │   │   └── logo-icon.svg
-    │   │   │   │   ├── features
-    │   │   │   │   │   ├── analytics
-    │   │   │   │   │   │   └── AnalyticsProvider.tsx
-    │   │   │   │   │   ├── api
-    │   │   │   │   │   │   ├── APIError.ts
-    │   │   │   │   │   │   ├── fetchApi.ts
-    │   │   │   │   │   │   ├── types.ts
-    │   │   │   │   │   │   └── utils.ts
-    │   │   │   │   │   ├── app
-    │   │   │   │   │   │   └── AppContext.tsx
-    │   │   │   │   │   ├── auth
-    │   │   │   │   │   │   ├── Auth.tsx
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── LoginButton.tsx
-    │   │   │   │   │   │   │   └── LogoutButton.tsx
-    │   │   │   │   │   │   └── types.ts
-    │   │   │   │   │   ├── calendar
-    │   │   │   │   │   │   ├── api.ts
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── calendar-list
-    │   │   │   │   │   │   │   │   ├── CalendarItemMenu.tsx
-    │   │   │   │   │   │   │   │   ├── CalendarList.scss
-    │   │   │   │   │   │   │   │   ├── CalendarList.tsx
-    │   │   │   │   │   │   │   │   ├── CalendarListItem.tsx
-    │   │   │   │   │   │   │   │   ├── CalendarModal.tsx
-    │   │   │   │   │   │   │   │   ├── CalendarShareModal.tsx
-    │   │   │   │   │   │   │   │   ├── DeleteConfirmModal.tsx
-    │   │   │   │   │   │   │   │   ├── ImportEventsModal.tsx
-    │   │   │   │   │   │   │   │   ├── SubscriptionUrlModal.tsx
-    │   │   │   │   │   │   │   │   ├── constants.ts
-    │   │   │   │   │   │   │   │   ├── hooks
-    │   │   │   │   │   │   │   │   │   └── useCalendarListState.ts
-    │   │   │   │   │   │   │   │   ├── index.ts
-    │   │   │   │   │   │   │   │   ├── types.ts
-    │   │   │   │   │   │   │   │   └── utils.ts
-    │   │   │   │   │   │   │   ├── index.ts
-    │   │   │   │   │   │   │   ├── left-panel
-    │   │   │   │   │   │   │   │   ├── LeftPanel.scss
-    │   │   │   │   │   │   │   │   ├── LeftPanel.tsx
-    │   │   │   │   │   │   │   │   ├── MiniCalendar.scss
-    │   │   │   │   │   │   │   │   ├── MiniCalendar.tsx
-    │   │   │   │   │   │   │   │   └── index.ts
-    │   │   │   │   │   │   │   └── scheduler
-    │   │   │   │   │   │   │       ├── AttendeesInput.scss
-    │   │   │   │   │   │   │       ├── AttendeesInput.tsx
-    │   │   │   │   │   │   │       ├── CalendarSelect.tsx
-    │   │   │   │   │   │   │       ├── DeleteEventModal.tsx
-    │   │   │   │   │   │   │       ├── EventModal.scss
-    │   │   │   │   │   │   │       ├── EventModal.tsx
-    │   │   │   │   │   │   │       ├── FreeBusyTimeline.scss
-    │   │   │   │   │   │   │       ├── FreeBusyTimeline.tsx
-    │   │   │   │   │   │   │       ├── RecurrenceEditor.scss
-    │   │   │   │   │   │   │       ├── RecurrenceEditor.tsx
-    │   │   │   │   │   │   │       ├── RecurringEditModal.tsx
-    │   │   │   │   │   │   │       ├── Scheduler.scss
-    │   │   │   │   │   │   │       ├── Scheduler.tsx
-    │   │   │   │   │   │   │       ├── SchedulerToolbar.scss
-    │   │   │   │   │   │   │       ├── SchedulerToolbar.tsx
-    │   │   │   │   │   │   │       ├── __tests__
-    │   │   │   │   │   │   │       │   ├── RecurrenceEditor.helpers.test.ts
-    │   │   │   │   │   │   │       │   ├── attendees-utils.test.ts
-    │   │   │   │   │   │   │       │   └── organizer-for-calendar.test.ts
-    │   │   │   │   │   │   │       ├── attendees-utils.ts
-    │   │   │   │   │   │   │       ├── event-modal-sections
-    │   │   │   │   │   │   │       │   ├── AttachmentsSection.tsx
-    │   │   │   │   │   │   │       │   ├── AttendeesSection.tsx
-    │   │   │   │   │   │   │       │   ├── DateTimeSection.tsx
-    │   │   │   │   │   │   │       │   ├── DescriptionSection.tsx
-    │   │   │   │   │   │   │       │   ├── FreeBusySection.tsx
-    │   │   │   │   │   │   │       │   ├── InvitationResponseSection.scss
-    │   │   │   │   │   │   │       │   ├── InvitationResponseSection.tsx
-    │   │   │   │   │   │   │       │   ├── LocationSection.tsx
-    │   │   │   │   │   │   │       │   ├── RecurrenceSection.tsx
-    │   │   │   │   │   │   │       │   ├── RemindersSection.tsx
-    │   │   │   │   │   │   │       │   ├── ResourcesSection.tsx
-    │   │   │   │   │   │   │       │   ├── SectionPill.scss
-    │   │   │   │   │   │   │       │   ├── SectionPill.tsx
-    │   │   │   │   │   │   │       │   ├── SectionPills.tsx
-    │   │   │   │   │   │   │       │   ├── SectionRow.scss
-    │   │   │   │   │   │   │       │   ├── SectionRow.tsx
-    │   │   │   │   │   │   │       │   ├── StatusSection.tsx
-    │   │   │   │   │   │   │       │   ├── VideoConferenceSection.tsx
-    │   │   │   │   │   │   │       │   ├── __tests__
-    │   │   │   │   │   │   │       │   │   └── generateVisioRoomId.test.ts
-    │   │   │   │   │   │   │       │   └── generateVisioRoomId.ts
-    │   │   │   │   │   │   │       ├── hooks
-    │   │   │   │   │   │   │       │   ├── useEventForm.ts
-    │   │   │   │   │   │   │       │   ├── useFreeBusy.ts
-    │   │   │   │   │   │   │       │   ├── useMobileNavigation.ts
-    │   │   │   │   │   │   │       │   ├── useSchedulerHandlers.ts
-    │   │   │   │   │   │   │       │   └── useSchedulerInit.ts
-    │   │   │   │   │   │   │       ├── index.ts
-    │   │   │   │   │   │   │       ├── mobile
-    │   │   │   │   │   │   │       │   ├── FloatingActionButton.scss
-    │   │   │   │   │   │   │       │   ├── FloatingActionButton.tsx
-    │   │   │   │   │   │   │       │   ├── MobileListView.scss
-    │   │   │   │   │   │   │       │   ├── MobileListView.tsx
-    │   │   │   │   │   │   │       │   ├── MobileToolbar.scss
-    │   │   │   │   │   │   │       │   ├── MobileToolbar.tsx
-    │   │   │   │   │   │   │       │   ├── WeekDayBar.scss
-    │   │   │   │   │   │   │       │   └── WeekDayBar.tsx
-    │   │   │   │   │   │   │       ├── partstatBadge.ts
-    │   │   │   │   │   │   │       ├── scheduler-theme.scss
-    │   │   │   │   │   │   │       ├── types.ts
-    │   │   │   │   │   │   │       └── utils
-    │   │   │   │   │   │   │           ├── dateFormatters.ts
-    │   │   │   │   │   │   │           ├── eventContent.ts
-    │   │   │   │   │   │   │           └── eventDisplayRules.ts
-    │   │   │   │   │   │   ├── contexts
-    │   │   │   │   │   │   │   ├── CalendarContext.tsx
-    │   │   │   │   │   │   │   └── index.ts
+    │   ├── README.md
+    │   ├── cunningham.ts
+    │   ├── index.html
+    │   ├── package.json
+    │   ├── pnpm-lock.yaml
+    │   ├── pnpm-workspace.yaml
+    │   ├── public
+    │   │   ├── 401-background.png
+    │   │   ├── 403-background.png
+    │   │   ├── anct_favicon.png
+    │   │   ├── anct_logo-icon.svg
+    │   │   ├── anct_logo_alpha.svg
+    │   │   ├── anct_logo_beta.svg
+    │   │   ├── cal_icon_no_number.svg
+    │   │   ├── cal_logotype_text_no_number.svg
+    │   │   ├── favicon.png
+    │   │   ├── logo-icon_alpha.svg
+    │   │   ├── logo-icon_beta.svg
+    │   │   ├── logo-suite-numerique.png
+    │   │   ├── logo_alpha.svg
+    │   │   └── mime-video.svg
+    │   ├── src
+    │   │   ├── assets
+    │   │   │   ├── feedback
+    │   │   │   │   ├── form.svg
+    │   │   │   │   ├── tchap.svg
+    │   │   │   │   └── visio.svg
+    │   │   │   ├── home
+    │   │   │   │   └── banner.svg
+    │   │   │   ├── icons
+    │   │   │   │   ├── cancel.svg
+    │   │   │   │   ├── cancel_blue.svg
+    │   │   │   │   ├── delete_filled.svg
+    │   │   │   │   ├── info.svg
+    │   │   │   │   ├── settings.svg
+    │   │   │   │   ├── trash.svg
+    │   │   │   │   ├── undo.svg
+    │   │   │   │   └── undo_blue.svg
+    │   │   │   ├── logo-gouv.svg
+    │   │   │   └── logo-icon.svg
+    │   │   ├── features
+    │   │   │   ├── analytics
+    │   │   │   │   └── AnalyticsProvider.tsx
+    │   │   │   ├── api
+    │   │   │   │   ├── APIError.ts
+    │   │   │   │   ├── fetchApi.ts
+    │   │   │   │   ├── types.ts
+    │   │   │   │   └── utils.ts
+    │   │   │   ├── app
+    │   │   │   │   └── AppContext.tsx
+    │   │   │   ├── auth
+    │   │   │   │   ├── Auth.tsx
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── LoginButton.tsx
+    │   │   │   │   │   └── LogoutButton.tsx
+    │   │   │   │   └── types.ts
+    │   │   │   ├── calendar
+    │   │   │   │   ├── api.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── calendar-list
+    │   │   │   │   │   │   ├── CalendarItemMenu.tsx
+    │   │   │   │   │   │   ├── CalendarList.scss
+    │   │   │   │   │   │   ├── CalendarList.tsx
+    │   │   │   │   │   │   ├── CalendarListItem.tsx
+    │   │   │   │   │   │   ├── CalendarModal.tsx
+    │   │   │   │   │   │   ├── CalendarShareModal.tsx
+    │   │   │   │   │   │   ├── DeleteConfirmModal.tsx
+    │   │   │   │   │   │   ├── ImportEventsModal.tsx
+    │   │   │   │   │   │   ├── SubscriptionUrlModal.tsx
+    │   │   │   │   │   │   ├── constants.ts
     │   │   │   │   │   │   ├── hooks
-    │   │   │   │   │   │   │   ├── useCalendarLocale.ts
-    │   │   │   │   │   │   │   └── useCalendars.ts
-    │   │   │   │   │   │   ├── services
-    │   │   │   │   │   │   │   └── dav
-    │   │   │   │   │   │   │       ├── CalDavService.ts
-    │   │   │   │   │   │   │       ├── EventCalendarAdapter.ts
-    │   │   │   │   │   │   │       ├── __tests__
-    │   │   │   │   │   │   │       │   ├── CalDavService.connect.test.ts
-    │   │   │   │   │   │   │       │   ├── CalDavService.deleteEvent.test.ts
-    │   │   │   │   │   │   │       │   ├── CalDavService.moveEvent.test.ts
-    │   │   │   │   │   │   │       │   ├── caldav-helpers.test.ts
-    │   │   │   │   │   │   │       │   ├── freebusy-builder.test.ts
-    │   │   │   │   │   │   │       │   └── sanitizeIcsUrl.test.ts
-    │   │   │   │   │   │   │       ├── caldav-helpers.ts
-    │   │   │   │   │   │   │       ├── constants.ts
-    │   │   │   │   │   │   │       ├── helpers
-    │   │   │   │   │   │   │       │   ├── freebusy-builder.ts
-    │   │   │   │   │   │   │       │   └── ical-timezones.ts
-    │   │   │   │   │   │   │       └── types
-    │   │   │   │   │   │   │           ├── caldav-service.ts
-    │   │   │   │   │   │   │           └── event-calendar.ts
-    │   │   │   │   │   │   ├── types.ts
-    │   │   │   │   │   │   └── utils
-    │   │   │   │   │   │       ├── DavClient.ts
-    │   │   │   │   │   │       └── __tests__
-    │   │   │   │   │   │           └── DavClient.test.ts
-    │   │   │   │   │   ├── config
-    │   │   │   │   │   │   ├── Config.ts
-    │   │   │   │   │   │   ├── ConfigProvider.tsx
-    │   │   │   │   │   │   └── useApiConfig.ts
-    │   │   │   │   │   ├── errors
-    │   │   │   │   │   │   └── AppError.ts
-    │   │   │   │   │   ├── feedback
-    │   │   │   │   │   │   ├── Feedback.scss
-    │   │   │   │   │   │   ├── Feedback.tsx
-    │   │   │   │   │   │   └── useMessagesWidget.tsx
-    │   │   │   │   │   ├── home
-    │   │   │   │   │   │   └── HomePage.tsx
-    │   │   │   │   │   ├── i18n
-    │   │   │   │   │   │   ├── conf.ts
-    │   │   │   │   │   │   ├── initI18n.ts
-    │   │   │   │   │   │   ├── translations.json
-    │   │   │   │   │   │   └── utils.ts
-    │   │   │   │   │   ├── integrations
-    │   │   │   │   │   │   ├── api
-    │   │   │   │   │   │   │   └── useChannels.ts
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── ChannelCard.tsx
-    │   │   │   │   │   │   │   ├── ChannelForm.tsx
-    │   │   │   │   │   │   │   ├── ChannelList.tsx
-    │   │   │   │   │   │   │   ├── ChannelModal.tsx
-    │   │   │   │   │   │   │   ├── ChannelTypePicker.tsx
-    │   │   │   │   │   │   │   ├── DeleteChannelModal.tsx
-    │   │   │   │   │   │   │   ├── Integrations.scss
-    │   │   │   │   │   │   │   ├── ScopeEditor.tsx
-    │   │   │   │   │   │   │   ├── TokenRevealBox.tsx
-    │   │   │   │   │   │   │   └── TokenRevealModal.tsx
-    │   │   │   │   │   │   └── types.ts
-    │   │   │   │   │   ├── layouts
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── global
-    │   │   │   │   │   │   │   │   ├── GlobalLayout.scss
-    │   │   │   │   │   │   │   │   └── GlobalLayout.tsx
-    │   │   │   │   │   │   │   ├── header
-    │   │   │   │   │   │   │   │   ├── Header.tsx
-    │   │   │   │   │   │   │   │   └── index.scss
-    │   │   │   │   │   │   │   ├── left-panel
-    │   │   │   │   │   │   │   │   ├── LeftPanelMobile.scss
-    │   │   │   │   │   │   │   │   └── LeftPanelMobile.tsx
-    │   │   │   │   │   │   │   └── simple
-    │   │   │   │   │   │   │       └── SimpleLayout.tsx
-    │   │   │   │   │   │   └── contexts
-    │   │   │   │   │   │       └── LeftPanelContext.tsx
-    │   │   │   │   │   ├── mailbox
-    │   │   │   │   │   │   ├── MailboxContext.tsx
-    │   │   │   │   │   │   ├── api.ts
+    │   │   │   │   │   │   │   └── useCalendarListState.ts
     │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   ├── types.ts
-    │   │   │   │   │   │   └── useMailboxSync.ts
-    │   │   │   │   │   ├── resources
-    │   │   │   │   │   │   ├── api
-    │   │   │   │   │   │   │   ├── useResourcePrincipals.ts
-    │   │   │   │   │   │   │   └── useResources.ts
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── CreateResourceModal.tsx
-    │   │   │   │   │   │   │   ├── DeleteResourceModal.tsx
-    │   │   │   │   │   │   │   ├── ResourceCard.tsx
-    │   │   │   │   │   │   │   ├── ResourceList.tsx
-    │   │   │   │   │   │   │   └── Resources.scss
-    │   │   │   │   │   │   └── types.ts
-    │   │   │   │   │   ├── settings
-    │   │   │   │   │   │   ├── __tests__
-    │   │   │   │   │   │   │   └── availability-ics.test.ts
-    │   │   │   │   │   │   ├── api
-    │   │   │   │   │   │   │   └── useWorkingHours.ts
-    │   │   │   │   │   │   ├── availability-ics.ts
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── AvailabilityRow.tsx
-    │   │   │   │   │   │   │   ├── WorkingHoursSettings.scss
-    │   │   │   │   │   │   │   └── WorkingHoursSettings.tsx
-    │   │   │   │   │   │   └── types.ts
-    │   │   │   │   │   ├── ui
-    │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── gaufre
-    │   │   │   │   │   │   │   │   └── Gaufre.tsx
-    │   │   │   │   │   │   │   ├── generic-disclaimer
-    │   │   │   │   │   │   │   │   ├── GenericDisclaimer.scss
-    │   │   │   │   │   │   │   │   └── GenericDisclaimer.tsx
-    │   │   │   │   │   │   │   ├── icon
-    │   │   │   │   │   │   │   │   └── Icon.tsx
-    │   │   │   │   │   │   │   ├── logo
-    │   │   │   │   │   │   │   │   ├── DynamicCalendarLogo.scss
-    │   │   │   │   │   │   │   │   ├── DynamicCalendarLogo.tsx
-    │   │   │   │   │   │   │   │   └── index.ts
-    │   │   │   │   │   │   │   ├── spinner
-    │   │   │   │   │   │   │   │   ├── SpinnerPage.scss
-    │   │   │   │   │   │   │   │   └── SpinnerPage.tsx
-    │   │   │   │   │   │   │   ├── toaster
-    │   │   │   │   │   │   │   │   ├── Toaster.tsx
-    │   │   │   │   │   │   │   │   └── index.scss
-    │   │   │   │   │   │   │   └── user
-    │   │   │   │   │   │   │       └── UserProfile.tsx
-    │   │   │   │   │   │   ├── cunningham
-    │   │   │   │   │   │   │   └── useCunninghamTheme.ts
-    │   │   │   │   │   │   └── hooks
-    │   │   │   │   │   │       └── useDynamicFavicon.ts
-    │   │   │   │   │   └── users
+    │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── left-panel
+    │   │   │   │   │   │   ├── LeftPanel.scss
+    │   │   │   │   │   │   ├── LeftPanel.tsx
+    │   │   │   │   │   │   ├── MiniCalendar.scss
+    │   │   │   │   │   │   ├── MiniCalendar.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   └── scheduler
+    │   │   │   │   │       ├── AttendeesInput.scss
+    │   │   │   │   │       ├── AttendeesInput.tsx
+    │   │   │   │   │       ├── CalendarSelect.tsx
+    │   │   │   │   │       ├── DeleteEventModal.tsx
+    │   │   │   │   │       ├── EventModal.scss
+    │   │   │   │   │       ├── EventModal.tsx
+    │   │   │   │   │       ├── FreeBusyTimeline.scss
+    │   │   │   │   │       ├── FreeBusyTimeline.tsx
+    │   │   │   │   │       ├── RecurrenceEditor.scss
+    │   │   │   │   │       ├── RecurrenceEditor.tsx
+    │   │   │   │   │       ├── RecurringEditModal.tsx
+    │   │   │   │   │       ├── Scheduler.scss
+    │   │   │   │   │       ├── Scheduler.tsx
+    │   │   │   │   │       ├── SchedulerToolbar.scss
+    │   │   │   │   │       ├── SchedulerToolbar.tsx
+    │   │   │   │   │       ├── __tests__
+    │   │   │   │   │       │   ├── RecurrenceEditor.helpers.test.ts
+    │   │   │   │   │       │   ├── attendees-utils.test.ts
+    │   │   │   │   │       │   └── organizer-for-calendar.test.ts
+    │   │   │   │   │       ├── attendees-utils.ts
+    │   │   │   │   │       ├── event-modal-sections
+    │   │   │   │   │       │   ├── AttachmentsSection.tsx
+    │   │   │   │   │       │   ├── AttendeesSection.tsx
+    │   │   │   │   │       │   ├── DateTimeSection.tsx
+    │   │   │   │   │       │   ├── DescriptionSection.tsx
+    │   │   │   │   │       │   ├── FreeBusySection.tsx
+    │   │   │   │   │       │   ├── InvitationResponseSection.scss
+    │   │   │   │   │       │   ├── InvitationResponseSection.tsx
+    │   │   │   │   │       │   ├── LocationSection.tsx
+    │   │   │   │   │       │   ├── RecurrenceSection.tsx
+    │   │   │   │   │       │   ├── RemindersSection.tsx
+    │   │   │   │   │       │   ├── ResourcesSection.tsx
+    │   │   │   │   │       │   ├── SectionPill.scss
+    │   │   │   │   │       │   ├── SectionPill.tsx
+    │   │   │   │   │       │   ├── SectionPills.tsx
+    │   │   │   │   │       │   ├── SectionRow.scss
+    │   │   │   │   │       │   ├── SectionRow.tsx
+    │   │   │   │   │       │   ├── VideoConferenceSection.tsx
+    │   │   │   │   │       │   ├── VisibilitySection.tsx
+    │   │   │   │   │       │   ├── __tests__
+    │   │   │   │   │       │   │   └── generateVisioRoomId.test.ts
+    │   │   │   │   │       │   └── generateVisioRoomId.ts
     │   │   │   │   │       ├── hooks
-    │   │   │   │   │       │   ├── useUserQueries.tsx
-    │   │   │   │   │       │   └── useUserSearch.ts
-    │   │   │   │   │       └── types.ts
+    │   │   │   │   │       │   ├── useEventForm.ts
+    │   │   │   │   │       │   ├── useFreeBusy.ts
+    │   │   │   │   │       │   ├── useMobileNavigation.ts
+    │   │   │   │   │       │   ├── useSchedulerHandlers.ts
+    │   │   │   │   │       │   └── useSchedulerInit.ts
+    │   │   │   │   │       ├── index.ts
+    │   │   │   │   │       ├── mobile
+    │   │   │   │   │       │   ├── FloatingActionButton.scss
+    │   │   │   │   │       │   ├── FloatingActionButton.tsx
+    │   │   │   │   │       │   ├── MobileListView.scss
+    │   │   │   │   │       │   ├── MobileListView.tsx
+    │   │   │   │   │       │   ├── MobileToolbar.scss
+    │   │   │   │   │       │   ├── MobileToolbar.tsx
+    │   │   │   │   │       │   ├── WeekDayBar.scss
+    │   │   │   │   │       │   └── WeekDayBar.tsx
+    │   │   │   │   │       ├── partstatBadge.tsx
+    │   │   │   │   │       ├── scheduler-theme.scss
+    │   │   │   │   │       ├── types.ts
+    │   │   │   │   │       └── utils
+    │   │   │   │   │           ├── dateFormatters.ts
+    │   │   │   │   │           ├── eventContent.ts
+    │   │   │   │   │           └── eventDisplayRules.ts
+    │   │   │   │   ├── contexts
+    │   │   │   │   │   ├── CalendarContext.tsx
+    │   │   │   │   │   └── index.ts
     │   │   │   │   ├── hooks
-    │   │   │   │   │   ├── useFeatureFlag.ts
-    │   │   │   │   │   ├── useIsMobile.ts
-    │   │   │   │   │   └── useThemeCustomization.tsx
-    │   │   │   │   ├── main.tsx
-    │   │   │   │   ├── routes
-    │   │   │   │   │   ├── 401.tsx
-    │   │   │   │   │   ├── 403.tsx
-    │   │   │   │   │   ├── __root.tsx
-    │   │   │   │   │   ├── availabilities.tsx
-    │   │   │   │   │   ├── calendar.tsx
-    │   │   │   │   │   ├── index.tsx
-    │   │   │   │   │   ├── integrations.tsx
-    │   │   │   │   │   ├── no-access.tsx
-    │   │   │   │   │   └── resources.tsx
-    │   │   │   │   ├── styles
-    │   │   │   │   │   ├── cunningham-tokens-sass.scss
-    │   │   │   │   │   ├── cunningham-tokens.css
-    │   │   │   │   │   ├── cunningham-tokens.ts
-    │   │   │   │   │   ├── globals.scss
-    │   │   │   │   │   └── views
-    │   │   │   │   │       ├── calendar.scss
-    │   │   │   │   │       └── index.scss
-    │   │   │   │   ├── utils
-    │   │   │   │   │   ├── date.ts
-    │   │   │   │   │   └── useQueries.ts
-    │   │   │   │   └── vite-env.d.ts
-    │   │   │   ├── svg.d.ts
-    │   │   │   ├── test-dst.js
-    │   │   │   ├── tsconfig.json
-    │   │   │   ├── tsr.config.json
-    │   │   │   ├── types.d.ts
-    │   │   │   ├── vite.config.mts
-    │   │   │   └── vitest.config.ts
-    │   │   └── e2e
-    │   │       ├── .gitignore
-    │   │       ├── __tests__
-    │   │       │   ├── calendar-locale.test.ts
-    │   │       │   ├── calendar.test.ts
-    │   │       │   └── helpers
-    │   │       │       └── e2e-helpers.ts
-    │   │       ├── package.json
-    │   │       ├── playwright.config.ts
-    │   │       └── tsconfig.json
-    │   ├── package-lock.json
-    │   └── package.json
+    │   │   │   │   │   ├── useCalendarLocale.ts
+    │   │   │   │   │   └── useCalendars.ts
+    │   │   │   │   ├── services
+    │   │   │   │   │   └── dav
+    │   │   │   │   │       ├── CalDavService.ts
+    │   │   │   │   │       ├── EventCalendarAdapter.ts
+    │   │   │   │   │       ├── __tests__
+    │   │   │   │   │       │   ├── CalDavService.connect.test.ts
+    │   │   │   │   │       │   ├── CalDavService.deleteEvent.test.ts
+    │   │   │   │   │       │   ├── CalDavService.moveEvent.test.ts
+    │   │   │   │   │       │   ├── CalDavService.updateEvent.partstat.test.ts
+    │   │   │   │   │       │   ├── caldav-helpers.test.ts
+    │   │   │   │   │       │   ├── freebusy-builder.test.ts
+    │   │   │   │   │       │   └── sanitizeIcsUrl.test.ts
+    │   │   │   │   │       ├── caldav-helpers.ts
+    │   │   │   │   │       ├── constants.ts
+    │   │   │   │   │       ├── helpers
+    │   │   │   │   │       │   ├── freebusy-builder.ts
+    │   │   │   │   │       │   └── ical-timezones.ts
+    │   │   │   │   │       └── types
+    │   │   │   │   │           ├── caldav-service.ts
+    │   │   │   │   │           └── event-calendar.ts
+    │   │   │   │   ├── types.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── DavClient.ts
+    │   │   │   │       └── __tests__
+    │   │   │   │           └── DavClient.test.ts
+    │   │   │   ├── config
+    │   │   │   │   ├── ConfigProvider.tsx
+    │   │   │   │   └── useApiConfig.ts
+    │   │   │   ├── errors
+    │   │   │   │   └── AppError.ts
+    │   │   │   ├── feedback
+    │   │   │   │   ├── Feedback.scss
+    │   │   │   │   ├── Feedback.tsx
+    │   │   │   │   └── useMessagesWidget.tsx
+    │   │   │   ├── home
+    │   │   │   │   └── HomePage.tsx
+    │   │   │   ├── i18n
+    │   │   │   │   ├── conf.ts
+    │   │   │   │   ├── initI18n.ts
+    │   │   │   │   ├── translations.json
+    │   │   │   │   └── utils.ts
+    │   │   │   ├── integrations
+    │   │   │   │   ├── api
+    │   │   │   │   │   └── useChannels.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── ChannelCard.tsx
+    │   │   │   │   │   ├── ChannelForm.tsx
+    │   │   │   │   │   ├── ChannelList.tsx
+    │   │   │   │   │   ├── ChannelModal.tsx
+    │   │   │   │   │   ├── ChannelTypePicker.tsx
+    │   │   │   │   │   ├── DeleteChannelModal.tsx
+    │   │   │   │   │   ├── Integrations.scss
+    │   │   │   │   │   ├── ScopeEditor.tsx
+    │   │   │   │   │   ├── TokenRevealBox.tsx
+    │   │   │   │   │   └── TokenRevealModal.tsx
+    │   │   │   │   └── types.ts
+    │   │   │   ├── layouts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── global
+    │   │   │   │   │   │   ├── GlobalLayout.scss
+    │   │   │   │   │   │   └── GlobalLayout.tsx
+    │   │   │   │   │   ├── header
+    │   │   │   │   │   │   ├── Header.tsx
+    │   │   │   │   │   │   └── index.scss
+    │   │   │   │   │   ├── left-panel
+    │   │   │   │   │   │   ├── LeftPanelMobile.scss
+    │   │   │   │   │   │   └── LeftPanelMobile.tsx
+    │   │   │   │   │   └── simple
+    │   │   │   │   │       └── SimpleLayout.tsx
+    │   │   │   │   └── contexts
+    │   │   │   │       └── LeftPanelContext.tsx
+    │   │   │   ├── mailbox
+    │   │   │   │   ├── MailboxContext.tsx
+    │   │   │   │   ├── api.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── types.ts
+    │   │   │   │   └── useMailboxSync.ts
+    │   │   │   ├── resources
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── useResourcePrincipals.ts
+    │   │   │   │   │   └── useResources.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── CreateResourceModal.tsx
+    │   │   │   │   │   ├── DeleteResourceModal.tsx
+    │   │   │   │   │   ├── ResourceCard.tsx
+    │   │   │   │   │   ├── ResourceList.tsx
+    │   │   │   │   │   └── Resources.scss
+    │   │   │   │   └── types.ts
+    │   │   │   ├── settings
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   └── availability-ics.test.ts
+    │   │   │   │   ├── api
+    │   │   │   │   │   └── useWorkingHours.ts
+    │   │   │   │   ├── availability-ics.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── AvailabilityRow.tsx
+    │   │   │   │   │   ├── WorkingHoursSettings.scss
+    │   │   │   │   │   └── WorkingHoursSettings.tsx
+    │   │   │   │   └── types.ts
+    │   │   │   ├── ui
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── gaufre
+    │   │   │   │   │   │   └── Gaufre.tsx
+    │   │   │   │   │   ├── generic-disclaimer
+    │   │   │   │   │   │   ├── GenericDisclaimer.scss
+    │   │   │   │   │   │   └── GenericDisclaimer.tsx
+    │   │   │   │   │   ├── icon
+    │   │   │   │   │   │   └── Icon.tsx
+    │   │   │   │   │   ├── logo
+    │   │   │   │   │   │   ├── DynamicCalendarLogo.scss
+    │   │   │   │   │   │   ├── DynamicCalendarLogo.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   ├── spinner
+    │   │   │   │   │   │   ├── SpinnerPage.scss
+    │   │   │   │   │   │   └── SpinnerPage.tsx
+    │   │   │   │   │   ├── toaster
+    │   │   │   │   │   │   ├── Toaster.tsx
+    │   │   │   │   │   │   └── index.scss
+    │   │   │   │   │   └── user
+    │   │   │   │   │       └── UserProfile.tsx
+    │   │   │   │   ├── cunningham
+    │   │   │   │   │   └── useCunninghamTheme.ts
+    │   │   │   │   └── hooks
+    │   │   │   │       └── useDynamicFavicon.ts
+    │   │   │   └── users
+    │   │   │       ├── hooks
+    │   │   │       │   ├── useUserQueries.tsx
+    │   │   │       │   └── useUserSearch.ts
+    │   │   │       └── types.ts
+    │   │   ├── hooks
+    │   │   │   ├── useFeatureFlag.ts
+    │   │   │   ├── useIsMobile.ts
+    │   │   │   └── useThemeCustomization.tsx
+    │   │   ├── main.tsx
+    │   │   ├── routes
+    │   │   │   ├── 401.tsx
+    │   │   │   ├── 403.tsx
+    │   │   │   ├── __root.tsx
+    │   │   │   ├── availabilities.tsx
+    │   │   │   ├── calendar.tsx
+    │   │   │   ├── index.tsx
+    │   │   │   ├── integrations.tsx
+    │   │   │   ├── no-access.tsx
+    │   │   │   └── resources.tsx
+    │   │   ├── styles
+    │   │   │   ├── cunningham-tokens-sass.scss
+    │   │   │   ├── cunningham-tokens.css
+    │   │   │   ├── cunningham-tokens.ts
+    │   │   │   ├── globals.scss
+    │   │   │   └── views
+    │   │   │       ├── calendar.scss
+    │   │   │       └── index.scss
+    │   │   ├── utils
+    │   │   │   ├── date.ts
+    │   │   │   └── useQueries.ts
+    │   │   └── vite-env.d.ts
+    │   ├── svg.d.ts
+    │   ├── test-dst.js
+    │   ├── tsconfig.json
+    │   ├── tsr.config.json
+    │   ├── types.d.ts
+    │   ├── vite.config.mts
+    │   └── vitest.config.ts
     └── proxy
         └── Caddyfile
-132 directories, 480 files
+129 directories, 479 files
