@@ -1,45 +1,39 @@
-## Changelog : zero-logement-vacant (30 derniers jours, au 09 juin 2026)
+## Changelog : zero-logement-vacant (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'intégration des données Metabase via de nouveaux types de graphiques (barres, tables, secteurs), l'importation des données LOVAC 2026, l'optimisation des performances et la refactorisation du code pour une meilleure maintenabilité. Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment pour la gestion des campagnes et la visualisation des données sur la carte.
+Ce mois-ci, les améliorations se concentrent sur l'importation des données LOVAC 2026, l'intégration de nouveaux types de graphiques DSFR (Diagrammes en barres, tableaux, diagrammes circulaires) et l'optimisation des performances, notamment au niveau du cache et du chargement des données. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Intégration Metabase :** Ajout de la prise en charge de nouveaux types de graphiques Metabase : diagrammes à barres, tableaux et diagrammes circulaires, permettant une visualisation plus riche des données.
-- **Import LOVAC 2026 :** Implémentation complète de l'importation des données LOVAC 2026, incluant la transformation et le chargement des données.
+- **Import LOVAC 2026 :** Amélioration significative du processus d'importation des données LOVAC 2026, incluant la gestion des propriétaires, des logements et des événements associés. Ajout de nouvelles étapes de transformation et de validation des données.
+- **Graphiques DSFR :** Intégration de nouveaux types de graphiques basés sur la bibliothèque DSFR (Diagrammes en barres, tableaux, diagrammes circulaires) pour une meilleure visualisation des données dans l'interface d'analyse.
 - **Campagnes :**
-    - Amélioration de l'alignement des boutons dans la gestion des campagnes.
-    - Ajout d'une colonne "Statut d'envoi" pour les destinataires des campagnes.
-    - Différenciation de l'exportation des données pour les groupes et les campagnes.
-    - Ajout de colonnes supplémentaires (date de naissance du propriétaire, ville) à l'exportation des groupes.
-- **Carte :**
-    - Ajout d'une légende à la carte pour une meilleure interprétation des données.
-    - Possibilité de basculer vers une vue tableau en cliquant sur un groupe sur la carte.
-- **Interface utilisateur :** Amélioration de l'UX de la légende de la carte et ajout d'un état de chargement au bouton de connexion.
+    - Possibilité de lier les logements aux campagnes directement depuis la carte.
+    - Ajout d'une colonne "Statut de suivi" dans le tableau des destinataires de campagne.
+    - Correction d'un bug empêchant l'application du filtre de campagne lors de la navigation vers la liste des logements.
+- **Interface utilisateur :**
+    - Ajout d'un état de chargement au bouton de connexion.
+    - Amélioration de l'affichage des noms de propriétaires (utilisation du nom d'utilisateur si disponible).
+    - Redirection vers la vue tableau lors du clic sur le bouton de regroupement sur la carte.
 
 ### Évolutions techniques
-- **Refactorisation :**
-    - Suppression du préfixe `/api` des routes et des appels API pour simplifier l'architecture.
-    - Refactorisation du code lié à la gestion des campagnes.
-    - Simplification de l'importation des données LOVAC en utilisant des formats de fichiers plus efficaces (Parquet).
-- **Performances :**
-    - Optimisation des requêtes SQL pour l'importation des données LOVAC.
-    - Réduction de la taille du bundle frontend en utilisant le lazy loading pour les routes.
-- **Tests :**
-    - Ajout et amélioration des tests unitaires et d'intégration.
-    - Correction de tests défaillants.
-- **Dépendances :** Mise à jour des dépendances du projet.
-- **Infrastructure :** Amélioration de la configuration de l'environnement de développement et de déploiement.
-- **CI/CD :** Amélioration du pipeline CI/CD pour automatiser les tests et le déploiement.
-- **Architecture :** Utilisation de DuckDB pour la transformation des données LOVAC.
+- **Cache :** Implémentation d'un cache pour les réponses de l'API Metabase afin d'améliorer les performances de la page d'analyse.
+- **Architecture :** Refactorisation du code pour une meilleure organisation et maintenabilité.
+- **Tests :** Ajout et amélioration des tests unitaires et d'intégration.
+- **Déploiement :** Amélioration de la configuration et du processus de déploiement.
+- **Base de données :** Optimisation des requêtes et des index pour améliorer les performances.
+- **Dépendances :** Mise à jour de certaines dépendances.
+- **Performance:** Optimisation du chargement des données et de l'exécution des requêtes, notamment lors de l'importation des données LOVAC.
+- **Pipeline ETL :** Refonte du pipeline ETL pour l'importation des données LOVAC, avec l'utilisation de DuckDB et de fichiers Parquet.
+- **React Router V7:** Mise à jour vers la version 7 de React Router.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les changements apportés au projet.
-- Ajout de nouvelles compétences et amélioration des compétences existantes dans le cadre du programme beta.gouv.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de règles de linting et de formattage pour assurer la cohérence du code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles métriques et de nouveaux tableaux de bord pour surveiller les performances du projet.
-- Suppression de code obsolète et de dépendances inutiles.
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités et les changements de configuration.
+- Corrections de bugs mineurs et améliorations de la qualité du code.
+- Ajout de règles de linting et de formatage pour assurer la cohérence du code.
+- Ajout de documentation sur l'implémentation des nouveaux graphiques et du pipeline d'importation LOVAC.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Amélioration des messages d'erreur et des logs pour faciliter le débogage.
+- Ajout de variables d'environnement pour configurer l'application.
 - Correction de problèmes de typographie (utilisation des apostrophes françaises).
-- Ajout de la possibilité de désactiver la synchronisation quotidienne des données BAN.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout d'un système de suivi des performances pour identifier les goulots d'étranglement.

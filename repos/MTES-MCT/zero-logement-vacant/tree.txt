@@ -987,6 +987,7 @@
 │   │   │   ├── 2026-05-14-owners-birth-date-online-migration.md
 │   │   │   ├── 2026-06-02-analysis-page-next.md
 │   │   │   ├── 2026-06-08-metabase-bar-charts.md
+│   │   │   ├── 2026-06-09-analysis-page-cache.md
 │   │   │   ├── 2026-06-09-metabase-line-charts.md
 │   │   │   └── 2026-06-09-metabase-tables.md
 │   │   └── specs
@@ -1002,6 +1003,7 @@
 │   │       ├── 2026-05-11-remove-api-prefix-design.md
 │   │       ├── 2026-06-02-analysis-page-next-design.md
 │   │       ├── 2026-06-08-metabase-bar-charts-design.md
+│   │       ├── 2026-06-09-analysis-page-cache-design.md
 │   │       ├── 2026-06-09-metabase-line-charts-design.md
 │   │       └── 2026-06-09-metabase-tables-design.md
 │   └── technical
@@ -1517,7 +1519,9 @@
 │   │   ├── dsfr-fix.scss
 │   │   ├── focus-visible.scss
 │   │   ├── hooks
+│   │   │   ├── HousingFiltersContext.tsx
 │   │   │   ├── test
+│   │   │   │   ├── HousingFiltersContext.test.tsx
 │   │   │   │   ├── useForm.test.ts
 │   │   │   │   └── useSelection.test.tsx
 │   │   │   ├── useActivationEmail.tsx
@@ -1526,7 +1530,6 @@
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useEmailLink.tsx
 │   │   │   ├── useFetchInterceptor.ts
-│   │   │   ├── useFilters.tsx
 │   │   │   ├── useForm.tsx
 │   │   │   ├── useGetCampaignDraftQuery.tsx
 │   │   │   ├── useHide.tsx
@@ -2739,7 +2742,11 @@
 │   │   │   │   └── nodemailerService.ts
 │   │   │   ├── metabase
 │   │   │   │   ├── metabase-api.ts
-│   │   │   │   └── metabase-service.ts
+│   │   │   │   ├── metabase-cache.ts
+│   │   │   │   ├── metabase-normalize.ts
+│   │   │   │   ├── metabase-service.ts
+│   │   │   │   └── test
+│   │   │   │       └── metabase-cache.test.ts
 │   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── posthogService.ts
 │   │   │   ├── test
@@ -2818,19 +2825,11 @@
 │   │   │   ├── front
 │   │   │   │   ├── main.tf
 │   │   │   │   └── variables.tf
-│   │   │   ├── queue
-│   │   │   │   ├── main.tf
-│   │   │   │   └── variables.tf
-│   │   │   ├── redis
-│   │   │   │   ├── main.tf
-│   │   │   │   ├── outputs.tf
-│   │   │   │   └── variables.tf
 │   │   │   └── s3
 │   │   │       ├── main.tf
 │   │   │       ├── outputs.tf
 │   │   │       └── variables.tf
 │   │   ├── outputs.tf
-│   │   ├── restore.sh
 │   │   ├── terraform.tfvars.example
 │   │   └── variables.tf
 │   ├── test-reprojection.ts
@@ -2838,4 +2837,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-438 directories, 2402 files
+437 directories, 2402 files
