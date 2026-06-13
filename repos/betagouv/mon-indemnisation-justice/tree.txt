@@ -126,7 +126,9 @@
 │   │   ├── Version20260507143021.php
 │   │   ├── Version20260512125047.php
 │   │   ├── Version20260515074112.php
-│   │   └── Version20260515101417.php
+│   │   ├── Version20260515101417.php
+│   │   ├── Version20260610080243.php
+│   │   └── Version20260610131925.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -252,7 +254,7 @@
 │   │   │   │       │   ├── ProcedureJudiciaireOutput.php
 │   │   │   │       │   ├── RedacteurOutput.php
 │   │   │   │       │   ├── RequerantOutput.php
-│   │   │   │       │   ├── TestEligibiliteOutput.php
+│   │   │   │       │   ├── TestEligibiliteBrisPorteOutput.php
 │   │   │   │       │   └── UsagerOutput.php
 │   │   │   │       ├── Transformers
 │   │   │   │       │   ├── AgentIdTransformer.php
@@ -384,7 +386,7 @@
 │   │   │   ├── PrejudiceType.php
 │   │   │   ├── ProcedureJudiciaire.php
 │   │   │   ├── RapportAuLogement.php
-│   │   │   ├── TestEligibilite.php
+│   │   │   ├── TestEligibiliteBrisPorte.php
 │   │   │   ├── TypeAttestation.php
 │   │   │   └── Usager.php
 │   │   ├── Event
@@ -413,7 +415,7 @@
 │   │   ├── Forms
 │   │   │   ├── ModificationMotDePasseType.php
 │   │   │   ├── MotDePasseOublieType.php
-│   │   │   ├── TestEligibiliteType.php
+│   │   │   ├── TestEligibiliteBrisPorteType.php
 │   │   │   ├── Transformer
 │   │   │   │   └── LiteralBooleanTransformer.php
 │   │   │   └── Type
@@ -706,6 +708,7 @@
     │   │   │   │   ├── fichiers
     │   │   │   │   │   └── documents
     │   │   │   │   │       ├── avis-d-intervention-en-cas-de-bris-de-porte.pdf
+    │   │   │   │   │       ├── avis-d-intervention-en-cas-de-bris-de-porte_gn.pdf
     │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre-pn.pdf
     │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre.pdf
     │   │   │   │   │       └── guide-de-remise-de-l-avis-d-intervention-apres-un-bris-de-porte.pdf
@@ -736,8 +739,6 @@
     │   │   │   │   │   └── index.ts
     │   │   │   │   └── tsconfig.json
     │   │   │   └── fip6
-    │   │   │       ├── _init
-    │   │   │       │   └── index.ts
     │   │   │       ├── composants
     │   │   │       │   ├── dossiers
     │   │   │       │   │   └── ListeDossiers.tsx
@@ -878,7 +879,7 @@
     │   │   │   │   ├── components
     │   │   │   │   │   ├── PieceJointe
     │   │   │   │   │   │   └── AfficherPieceJointe.tsx
-    │   │   │   │   │   └── TestEligibiliteForm.tsx
+    │   │   │   │   │   └── TestEligibiliteBrisPorteForm.tsx
     │   │   │   │   ├── creation_de_compte.tsx
     │   │   │   │   ├── models
     │   │   │   │   │   └── Inscription.ts
@@ -948,6 +949,8 @@
     │   │   ├── composants
     │   │   │   ├── ListeEtapes.tsx
     │   │   │   ├── Loader.tsx
+    │   │   │   ├── document
+    │   │   │   │   └── DocumentPDF.tsx
     │   │   │   ├── dsfr
     │   │   │   │   ├── Chargement.css
     │   │   │   │   ├── Chargement.tsx
@@ -971,7 +974,7 @@
     │   │   │   ├── RapportAuLogement.ts
     │   │   │   ├── Redacteur.ts
     │   │   │   ├── Requerant.ts
-    │   │   │   ├── TestEligibilite.ts
+    │   │   │   ├── TestEligibiliteBrisPorte.ts
     │   │   │   ├── TypeAttestation.ts
     │   │   │   ├── TypePersonneMorale.ts
     │   │   │   ├── Usager.ts
@@ -1025,4 +1028,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-225 directories, 802 files
+225 directories, 805 files

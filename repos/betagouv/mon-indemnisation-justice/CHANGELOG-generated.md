@@ -1,48 +1,57 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 5 juin 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'application Mon Indemnisation Justice a bénéficié d'améliorations significatives en termes de sécurité, de gestion des dossiers et d'expérience utilisateur. Des correctifs ont été apportés pour améliorer la stabilité et la fiabilité de l'application, notamment en corrigeant des erreurs liées à la gestion des adresses, des attestations et des emails. L'accès et la gestion des agents ont également été sécurisés et améliorés.
+Ce mois-ci, l'application Mon Indemnisation Justice a bénéficié d'améliorations significatives en termes de sécurité, de gestion des utilisateurs et de correction de bugs. Des améliorations ont été apportées à la gestion des erreurs et à l'affichage des documents. De nouvelles fonctionnalités ont été implémentées pour la gestion des dossiers et des utilisateurs, notamment pour les agents ProConnect et les administrations.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'affichage du badge "Déclaration FDO" [#cd805a5](https://github.com/betagouv/mon-indemnisation-justice/commit/cd805a5).
-- Ajout du type "Avis d'intervention" à la liste des types d'attestation.
-- Amélioration de l'affichage de l'explication de la clôture sur la page "Mes demandes".
-- Correction d'un lien mort sur la page récapitulative.
-- Correction d'un lien mort sur la liste des arrêtés à signer.
-- Correction d'un problème lié à l'affichage des montants littéraux (troncature de "zéro centimes").
-- Affichage de la première ligne de l'adresse sur l'arrêté de paiement.
-- Mise en place d'un cache buster pour éviter les problèmes de chargement des ressources.
-- Affichage d'un message de chargement au démarrage de l'application.
-- La déclaration n'apparait que si elle est acceptée par le requérant [#8e7351c](https://github.com/betagouv/mon-indemnisation-justice/commit/8e7351c).
-- Correction d'un problème lié à la gestion des agents PP et à l'association des agents à leur administration [#9884fc6](https://github.com/betagouv/mon-indemnisation-justice/commit/9884fc6).
-- Correction d'un problème lié à la conversion de la casse lors de la connexion et de l'enregistrement des adresses [#550bd32](https://github.com/betagouv/mon-indemnisation-justice/commit/550bd32).
-- Ajout d'un motif de clôture "Dossier incomplet".
+- **Gestion des utilisateurs et accès :**
+    - Les agents ProConnect peuvent désormais se déconnecter correctement grâce à l'injection de l'URL de déconnexion.
+    - Les agents sont désormais associés à leur administration et peuvent être provisionnés en test et en production.
+    - Sécurisation de l'accès aux nouveaux agents ProConnect et aux agents existants.
+- **Gestion des dossiers :**
+    - Une page "Mes dossiers" a été ajoutée pour permettre aux utilisateurs de consulter et de rechercher leurs dossiers.
+    - Possibilité de lister les dossiers associés à un usager.
+    - Amélioration de la navigation et de la réactivité de l'interface utilisateur pour la gestion des dossiers.
+    - Correction du lien vers la liste des arrêtés à signer.
+    - Correction du compteur du nombre d'arrêtés à signer.
+- **Documents :**
+    - Affichage des pièces jointes au format PDF via la librairie `react-pdf`.
+    - Amélioration du navigateur de pages.
+    - Correction d'un problème d'affichage lors du changement de page.
+- **Notifications et Alertes :**
+    - Mise à jour du lien vers le questionnaire de satisfaction.
+    - Correction de l'envoi du courriel de notification de déclaration retournée.
+    - Mise en place d'emails pour les décisions (ok et ko), la confirmation de dépôt et la clôture sans traitement.
+- **Autres améliorations :**
+    - Précision du `TestEligibilite` pour les bris de porte.
+    - Mise à jour de l'avis d'intervention pour la GN.
+    - Correction d'un bug lié à l'affichage de la déclaration si elle n'est pas acceptée par le requérant.
+    - Correction du problème "The operation is insecure" lié à la gestion des cookies.
 
 ### Évolutions techniques
-- Implémentation de Content Security Policy (CSP) pour renforcer la sécurité de l'application.
-- Intégration de Sentry pour la gestion des erreurs et le suivi des performances, incluant la transmission du contexte utilisateur [#9a526f7](https://github.com/betagouv/mon-indemnisation-justice/commit/9a526f7).
-- Mise à jour des versions de Symfony et Doctrine pour préparer la migration vers la version 8.0.
-- Refonte de la page "Mon compte" en React.
-- Conversion du layout de l'espace FIP6.
-- Déplacement de la route de recherche de dossiers.
-- Séparation des dossiers à instruire de ceux déjà en instruction sur les tableaux de bord.
-- Restauration de la réactivité de Mobx.
-- Correction de bugs et amélioration des tests unitaires backend.
-- Correction de problèmes liés à Doctrine.
-- Mise à jour de l'image Docker pour retirer la variable d'environnement APP_RUNTIME.
+- **Sécurité :**
+    - Implémentation de Content Security Policies (CSP) pour renforcer la sécurité de l'application. Plusieurs corrections et ajustements ont été effectués pour garantir la compatibilité avec les différentes librairies utilisées (Crisp, Matomo, Sentry).
+    - Correction de vulnérabilités potentielles liées à l'utilisation de `safe-eval` dans `zod`.
+- **Monitoring et Erreurs :**
+    - Intégration de Sentry pour la gestion des erreurs et le suivi des performances.
+    - Envoi des sources à Sentry lors du build pour faciliter le débogage.
+    - Génération de composants d'erreur et de page non trouvée.
+- **Infrastructure et Déploiement :**
+    - Mise en place d'un cache buster via une variable d'environnement.
+    - Provisionnement des données en test et en production.
+- **Architecture :**
+    - Conversion de la page "Mon compte" vers React.
+    - Refonte du layout de l'espace FIP6.
+    - Utilisation de la version legacy de `react-pdf` pour résoudre des problèmes de compatibilité.
+    - Utilisation de tableaux DSFR pondérables et configurables.
 
 ### Autres changements
 - Mise à jour du guide de déclaration PN.
-- Correction de typos et amélioration de la qualité du code.
-- Correction de l'envoi du courriel de notification de déclaration retournée.
-- Ajout de tests unitaires pour l'API.
-- Correction de l'affichage du prénom dans certains cas.
+- Correction de typos (ex: "dosssier").
 - Suppression de la mention "en qualité de" du corps du courrier de décision.
-- Clonage de la page "Consulter dossier".
-- Correction d'un lien mort depuis les listes de dossiers.
-- Correction d'un bug lié à l'affichage du nombre d'arrêtés à signer.
-- Correction d'un problème lié à l'opération "insecure".
-- Ajout d'emails pour la décision (ok et ko), la confirmation de dépôt et la clôture sans traitement.
-- Correction d'un problème lié à l'affichage du badge "Declaration FDO".
-- Correction d'un bug lié à l'affichage du badge "Declaration FDO".
-- Correction d'un bug lié à l'affichage du badge "Declaration FDO".
+- Tronquage du "zéro centimes" du montant littéral.
+- Correction de liens morts.
+- Ajout d'un test sur la route API.
+- Enrichissement et correction des tests unitaires et d'intégration.
+- Correction de bugs divers et amélioration de la qualité du code.
+- Suppression de code inutile et nettoyage du code.
