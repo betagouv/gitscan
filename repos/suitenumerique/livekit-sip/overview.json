@@ -1,34 +1,29 @@
 {
   "url": "https://github.com/suitenumerique/livekit-sip",
   "name": "livekit-sip",
-  "description": "Ce projet est un pont SIP vers WebRTC pour LiveKit, permettant d'intégrer des communications SIP traditionnelles avec les capacités de LiveKit.",
+  "description": "Ce projet est un pont SIP vers WebRTC pour LiveKit, permettant de connecter des réseaux téléphoniques traditionnels aux sessions LiveKit.",
   "language": "Go",
   "features": [
-    "Gestion des appels entrants",
-    "Gestion des appels sortants",
-    "Authentification Digest",
-    "Lecture de tonalités DTMF"
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "libopus",
     "Redis"
   ],
   "components": [
-    "API REST & GraphQL",
-    "TypeScript / JavaScript",
+    "API REST",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "jwt",
+      "api-key"
     ]
   },
-  "tests": "Tests E2E",
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-06-10T23:06:12Z",
+  "tests": null,
+  "workflows": null,
+  "lastActivity": "2026-06-12T21:01:01Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -36,13 +31,9 @@
     "stars": 8,
     "forks": 3,
     "contributors": null,
-    "openIssues": 1
+    "openIssues": 2
   },
   "tags": [
-    "SIP",
-    "WebRTC",
-    "LiveKit",
-    "Téléphonie",
-    "Communication"
+    "Temps réel & WebSocket"
   ]
 }
