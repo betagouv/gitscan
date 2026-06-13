@@ -5299,6 +5299,7 @@
     │   │   │   ├── admin_activities_controller.rb
     │   │   │   ├── api_requests_controller.rb
     │   │   │   ├── audit_notifications_controller.rb
+    │   │   │   ├── editor_members_controller.rb
     │   │   │   ├── editor_tokens_controller.rb
     │   │   │   ├── editors_controller.rb
     │   │   │   ├── provider_dashboards_controller.rb
@@ -5369,6 +5370,7 @@
     │   │   │   ├── prolong_token_wizard_management.rb
     │   │   │   ├── provider_dashboard_filtering.rb
     │   │   │   ├── public_token_magic_links_management.rb
+    │   │   │   ├── session_lifecycle.rb
     │   │   │   ├── sessions_management.rb
     │   │   │   ├── tokens_management.rb
     │   │   │   ├── transfer_tokens_management.rb
@@ -5386,6 +5388,7 @@
     │   │   └── provider_controller.rb
     │   ├── decorators
     │   │   ├── application_decorator.rb
+    │   │   ├── editor_decorator.rb
     │   │   ├── endpoint_decorator.rb
     │   │   └── token_decorator.rb
     │   ├── errors
@@ -5422,6 +5425,9 @@
     │   │   │   │   ├── capture_attributes.rb
     │   │   │   │   ├── create_model.rb
     │   │   │   │   └── send_email.rb
+    │   │   │   ├── editor
+    │   │   │   │   ├── add_member.rb
+    │   │   │   │   └── remove_member.rb
     │   │   │   ├── editor_tokens
     │   │   │   │   ├── capture_creation_attributes.rb
     │   │   │   │   └── create_token.rb
@@ -5638,8 +5644,11 @@
     │       │   │   ├── index.html.erb
     │       │   │   └── new.html.erb
     │       │   ├── editors
+    │       │   │   ├── _form.html.erb
     │       │   │   ├── edit.html.erb
-    │       │   │   └── index.html.erb
+    │       │   │   ├── index.html.erb
+    │       │   │   ├── new.html.erb
+    │       │   │   └── show.html.erb
     │       │   ├── provider_dashboards
     │       │   │   └── index.html.erb
     │       │   ├── tokens
@@ -6100,7 +6109,8 @@
     │   │   ├── fr.yml
     │   │   ├── mailers.fr.yml
     │   │   ├── models
-    │   │   │   └── audit_notification.fr.yml
+    │   │   │   ├── audit_notification.fr.yml
+    │   │   │   └── editor.fr.yml
     │   │   ├── pagination.fr.yml
     │   │   └── reporter_groups.fr.yml
     │   ├── puma.rb
@@ -6170,6 +6180,7 @@
     │   │   ├── 20260318100000_create_editor_tokens.rb
     │   │   ├── 20260318100001_validate_editor_tokens_foreign_keys.rb
     │   │   ├── 20260505100000_create_changelog_subscriptions.rb
+    │   │   ├── 20260520132026_add_fields_to_editors.rb
     │   │   └── 20260605120000_create_admin_activities.rb
     │   ├── schema.rb
     │   ├── seeds.rb
@@ -6840,11 +6851,14 @@
     │   │   │   ├── authenticated_users_controller_spec.rb
     │   │   │   ├── sessions_controller_spec.rb
     │   │   │   └── stats_controller_spec.rb
-    │   │   └── api_particulier
-    │   │       ├── authenticated_users_controller_spec.rb
-    │   │       └── stats_controller_spec.rb
+    │   │   ├── api_particulier
+    │   │   │   ├── authenticated_users_controller_spec.rb
+    │   │   │   └── stats_controller_spec.rb
+    │   │   └── application_controller_spec.rb
     │   ├── decorators
+    │   │   ├── editor_decorator_spec.rb
     │   │   └── token_decorator_spec.rb
+    │   ├── endpoint_ping_urls_consistency_spec.rb
     │   ├── facade
     │   │   ├── api_request_facade_spec.rb
     │   │   └── entreprise_with_attestations_facade_spec.rb
@@ -6971,6 +6985,9 @@
     │   │   ├── admin
     │   │   │   ├── audit_notifications
     │   │   │   │   └── create_model_spec.rb
+    │   │   │   ├── editor
+    │   │   │   │   ├── add_member_spec.rb
+    │   │   │   │   └── remove_member_spec.rb
     │   │   │   └── tokens
     │   │   │       └── validate_expiration_spec.rb
     │   │   ├── datapass_webhook
@@ -7164,4 +7181,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1455 directories, 6041 files
+1457 directories, 6056 files
