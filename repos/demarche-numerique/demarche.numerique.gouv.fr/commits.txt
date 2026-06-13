@@ -1,4 +1,38 @@
+2026-06-12T16:09:57+02:00 - e53d52826 - mfo : refactor(haml): migrate UserFilterComponent to ERB
+2026-06-12T14:15:17Z - 8fe6389dd - mfo : Merge pull request #13286 from demarche-numerique/auto/haml-migration/c-d-u-user_filter_component
+2026-06-12T13:32:12Z - c68fecfbe - Eric Leroy-Terquem : Merge pull request #13276 from demarche-numerique/feat/attestation-v2-hard-break
+2026-06-12T03:29:22Z - f63499d77 - mfo : Merge pull request #13277 from mfo/fix-validators-within-repetition
+2026-06-11T20:40:50Z - 063e179e5 - Mathieu Magnin : Merge pull request #13234 from demarche-numerique/fix/lockable-concern-atomic-lock
+2026-06-11T20:40:35Z - 208701107 - Mathieu Magnin : Merge pull request #13283 from demarche-numerique/worktree-hashed-soaring-reef
+2026-06-11T17:28:46+02:00 - e4a16861e - mfo : feat: expose naf_2025 in GraphQL Add naf_2025 and libelle_naf_2025 nullable fields to PersonneMoraleType.
+2026-06-11T17:28:46+02:00 - a42d99583 - mfo : fix(sentry): exclude provider-down errors from Sentry reporting
+2026-06-11T17:28:46+02:00 - 6b7f6bc60 - mfo : feat: expose naf_2025 in export_templates + filters
+2026-06-11T17:28:46+02:00 - 4985f37b7 - mfo : feat: maintenance task to backfill naf_2025 for existing etablissements
+2026-06-11T17:28:46+02:00 - 307123f76 - mfo : clean(entreprise_job): no more
+2026-06-11T17:28:46+02:00 - 132643e35 - mfo : fix: update specs for naf_2025 columns and GraphQL fields
+2026-06-11T17:28:42+02:00 - f7b5acebf - mfo : feat: update Etablissement model — DISPLAYABLE, EXPORTABLE, search_terms
+2026-06-11T17:28:09+02:00 - 448e9d572 - mfo : fix: validate fields nested in repetitions for Date, Number, Referentiel and Libelle
+2026-06-11T17:28:05+02:00 - 0f78b29d8 - mfo : test: add failing tests for validators not descending into repetitions
+2026-06-11T16:17:24+02:00 - 11e84b653 - Mathieu Magnin : fix(admin): remove duplicated fr-badge class on ineligibilite tile
+2026-06-11T16:15:14+02:00 - 808eb7cfb - Mathieu Magnin : fix(admin): add missing fr-badge base class on labels tile
+2026-06-11T16:14:06+02:00 - 8b1180733 - Mathieu Magnin : fix(admin): align tile status badge colors with convention
+2026-06-11T15:57:54+02:00 - 59381db68 - Eric Leroy-Terquem : fix(admin): Fix NoMethodError on groupe instructeurs index with filter
+2026-06-11T15:41:33Z - e00ac3702 - mfo : Merge pull request #13179 from mfo/expose-naf-2025
+2026-06-11T14:13:59Z - 6409e53e2 - Eric Leroy-Terquem : Merge pull request #13259 from demarche-numerique/fix/includes-on-paginatable-array
+2026-06-11T13:24:59Z - e3abe372a - Colin Darie : Merge pull request #13278 from adullact/fix-gestionnaires-table-views
+2026-06-11T12:13:30+02:00 - 41f4f6c24 - Pierre de La Morinerie : views: fix tables display for gestionnaire views
+2026-06-11T12:13:01Z - 8f3d2b3c2 - Colin Darie : Merge pull request #13272 from colinux/handle-attestation-upload-failure
+2026-06-11T12:04:44+02:00 - 0735be1c8 - Thibaut : fix(admin/procedures): tolerate missing or discarded replaced procedure on show
+2026-06-11T10:13:43Z - e79aad208 - Colin Darie : Merge pull request #13268 from thibpoullain/fix/admin-procedure-show-replaced-by-nil
+2026-06-11T10:07:55Z - a3080aa53 - Mathieu Magnin : Merge pull request #13263 from demarche-numerique/fix-empty-drop-down-in-repetition
+2026-06-11T08:12:16Z - 0708c6625 - LeSim : Merge pull request #13270 from demarche-numerique/ds_proxy_mode_s3
+2026-06-11T08:11:36Z - 58bc35f05 - LeSim : Merge pull request #13271 from demarche-numerique/migrate_proconnect_2fa
+2026-06-11T07:55:46+02:00 - 7e2cba37c - Eric Leroy-Terquem : feat(attestation): add hard break support in attestation v2 editor
+2026-06-10T15:53:05+02:00 - 7c94aae41 - Colin Darie : fix(attestations): do not persist attestation when pdf upload fails
+2026-06-10T14:54:48+02:00 - 9926f2694 - simon lehericey : chore: update ProConnect 2fa acr
 2026-06-10T14:32:43Z - 1b553fc70 - Eric Leroy-Terquem : Merge pull request #13253 from demarche-numerique/feat/attestation-v2-page-break
+2026-06-10T14:31:18+02:00 - ce9a96937 - simon lehericey : feat: add aws-sdk-s3 gem
+2026-06-10T14:31:18+02:00 - a973e9fc1 - simon lehericey : feat: add options to plug aws to ds_proxy
 2026-06-10T14:20:11Z - 4ab5ee3e2 - Lisa Durand : Merge pull request #13269 from colinux/regenerate-attestation
 2026-06-10T11:20:00+02:00 - 336723dea - Colin Darie : chore(task): regenerate an attestation for a list of dossier
 2026-06-10T11:17:31+02:00 - 9e7f23fcc - Mathieu Magnin : feat(api_entreprise): enqueue TvaJob behind api_entreprise_tva_job flag
@@ -23,6 +57,7 @@
 2026-06-09T14:04:04Z - 3d4b4af76 - LeSim : Merge pull request #12888 from ralmn/graphql/demarche-publication
 2026-06-09T13:12:05Z - 2a7e0960d - LeSim : Merge pull request #13264 from demarche-numerique/stop_tva_job
 2026-06-09T11:56:55+02:00 - 03cdaaf7d - simon lehericey : refactor: date limit is a Date instead of a DateTime
+2026-06-09T11:45:30+02:00 - 45e3e743b - Mathieu Magnin : Validate empty drop-down lists nested in repetitions
 2026-06-09T11:37:27+02:00 - 5a5ffebdb - simon lehericey : wording
 2026-06-09T11:28:58+02:00 - db892963c - simon lehericey : refactor: reuse procedure.declarative_with_state
 2026-06-09T10:58:23+02:00 - e77002499 - simon lehericey : chore: lint
@@ -104,6 +139,7 @@
 2026-06-03T09:34:48+02:00 - b12b33155 - simon lehericey : feat(logic): add column_value
 2026-06-03T09:34:48+02:00 - 61d649d05 - simon lehericey : feat(logic): a term can list its own terms
 2026-06-03T09:34:48+02:00 - 543bc953d - simon lehericey : feat(admin_editor): an admin can use the columns to setup condition
+2026-06-02T18:56:34+02:00 - be7f0f70a - Mathieu Magnin : fix: make submission lock atomic and release it on error
 2026-06-02T13:49:04+02:00 - 677cae504 - Corinne Durrmeyer : refactoring(procedure-stats): Code simplification
 2026-06-02T13:49:04+02:00 - 614288e44 - Corinne Durrmeyer : refactoring(procedure-stats): Format file
 2026-06-02T13:47:40+02:00 - cb18eb5ee - Paul Chavard : chore: update js dependencies
