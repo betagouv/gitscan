@@ -15,6 +15,7 @@
 │   ├── cnpg.yaml
 │   ├── eck-operator.yaml
 │   ├── huginn.yaml
+│   ├── iterion.yaml
 │   ├── kube-image-keeper.yaml
 │   ├── kubesight.yaml
 │   ├── no-package-malware.yaml
@@ -196,6 +197,26 @@
 │   │   ├── ingress.yaml
 │   │   ├── netpol.yaml
 │   │   └── service.yaml
+│   ├── values.ovh-dev.yaml
+│   ├── values.ovh-prod.yaml
+│   └── values.yaml
+├── iterion
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── charts
+│   │   ├── iterion-0.14.0.tgz
+│   │   ├── minio-5.4.0.tgz
+│   │   └── mongodb-0.7.8.tgz
+│   ├── templates
+│   │   ├── iterion-auth.ovh-prod.sealedsecret.yaml
+│   │   ├── iterion-auth.sealedsecret.yaml
+│   │   ├── iterion-llm.ovh-prod.sealedsecret.yaml
+│   │   ├── iterion-llm.sealedsecret.yaml
+│   │   ├── iterion-minio-creds.ovh-prod.sealedsecret.yaml
+│   │   ├── iterion-mongodb-creds.ovh-prod.sealedsecret.yaml
+│   │   ├── iterion-mongodb-keyfile.ovh-prod.sealedsecret.yaml
+│   │   ├── iterion-storage.ovh-prod.sealedsecret.yaml
+│   │   └── minio-mkbucket.ovh-prod.job.yaml
 │   ├── values.ovh-dev.yaml
 │   ├── values.ovh-prod.yaml
 │   └── values.yaml
@@ -733,4 +754,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-300 directories, 435 files
+303 directories, 453 files
