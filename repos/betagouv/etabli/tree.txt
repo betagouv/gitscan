@@ -51,6 +51,9 @@
 ├── TECHNICAL_ARCHITECTURE_DOCUMENT.md
 ├── docker-compose.yaml
 ├── format-legal-documents.sh
+├── instrumentation-edge.ts
+├── instrumentation-node.ts
+├── instrumentation.ts
 ├── jest.config.ts
 ├── lighthouserc.js
 ├── next-env.d.ts
@@ -59,7 +62,6 @@
 ├── package-lock.json
 ├── package.json
 ├── patches
-│   ├── @mistralai+mistralai+0.1.3.patch
 │   └── wappalyzer+6.10.66.patch
 ├── prepare-standalone.sh
 ├── prisma.config.ts
@@ -73,8 +75,6 @@
 │       └── pandoc-html-template.html
 ├── semgrep-rules.yaml
 ├── sentry.client.config.ts
-├── sentry.edge.config.ts
-├── sentry.server.config.ts
 ├── services_diagram.drawio.svg
 ├── src
 │   ├── @types
@@ -222,7 +222,6 @@
 │   │   ├── llm-langchain.ts
 │   │   ├── llm-mock.ts
 │   │   ├── llm-openai.ts
-│   │   ├── llm.spec.ts
 │   │   ├── llm.ts
 │   │   ├── repository.spec.ts
 │   │   ├── repository.ts
@@ -308,7 +307,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20240314155319_add_new_functional_use_cases
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260611000000_add_initiative_fulltext_search
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
+│   │   ├── pool.ts
 │   │   ├── production-seed.script.ts
 │   │   ├── production-seed.ts
 │   │   ├── schema.prisma
@@ -431,4 +433,4 @@
 ├── test-runner-jest.config.js
 ├── transpilePackages.js
 └── tsconfig.json
-89 directories, 344 files
+90 directories, 345 files

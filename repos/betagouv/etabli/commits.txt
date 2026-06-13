@@ -1,3 +1,21 @@
+2026-06-13T00:09:00+02:00 - f05255b - Thomas Ramé : fix(runtime): attempt to resolve http decoding error only in production, it may be due to sentry with node v22
+2026-06-12T19:00:56+02:00 - 7f00201 - Thomas Ramé : chore(ui): make sure the assistant input cannot be modified when submitting
+2026-06-12T18:59:57+02:00 - 2968871 - Thomas Ramé : fix(assistant): we were no longer passing the raw user input so the llm can follow up properly
+2026-06-12T18:35:37+02:00 - 0c300a0 - Thomas Ramé : fix(assistant): fallback in case no search query inferred during intermediate input step
+2026-06-12T17:07:05+02:00 - ca6eb47 - Thomas Ramé : fix(ci): set a retry backoff to download huggingface model
+2026-06-12T16:56:53+02:00 - f69418d - Thomas Ramé : fix(ci): due to .npmrc adjustment prettier must be an explicit dependency
+2026-06-12T16:05:38+02:00 - c84a24e - Thomas Ramé : fix(assistant): it was not finding some initiatives due to search in the whole sheet (long description...)
+2026-06-12T16:05:38+02:00 - a79b3a8 - Thomas Ramé : chore(search): put assistant tip more often
+2026-06-12T16:05:38+02:00 - 938e5fd - Thomas Ramé : chore(assistant): improve a system prompt
+2026-06-12T16:05:38+02:00 - 7851895 - Thomas Ramé : chore(assistant): during the preparation rag step simplify the search pattern and use also synonyms for lexical search
+2026-06-12T16:05:38+02:00 - 25a04f5 - Thomas Ramé : feat(search): allow selecting specific page instead of just having prev/next choices
+2026-06-12T03:02:25+02:00 - a154b38 - Thomas Ramé : fix(llm): the reranker model used was for english and produced very bad results for too long
+2026-06-12T02:51:54+02:00 - 14fe314 - Thomas Ramé : fix(cli): missing explicit package since .npmrc adjustement
+2026-06-12T02:07:21+02:00 - 1e1e312 - Thomas Ramé : fix(llm): keep in context entirely previous initiatives in case of subsequent questions where specific ones would not be retrieved again in the rag
+2026-06-12T01:48:46+02:00 - 38d7c25 - Thomas Ramé : chore(llm): update logic to benefit from formatted outputs like json + fix history
+2026-06-12T01:12:20+02:00 - 4d7838d - Thomas Ramé : chore(llm): upgrade mistral model with new usage capabilities
+2026-06-12T00:39:15+02:00 - 6c66153 - Thomas Ramé : fix(search): cross-encoding and semantic search were too bad for a directory, switching to lexical search
+2026-06-11T23:04:47+02:00 - 28f7316 - Thomas Ramé : fix(db): provider backups were making the database clients in a dead-end
 2026-05-21T02:21:11+02:00 - bf0adce - Thomas Ramé : fix(deploy): prisma v7 can no longer use "prefer" ssl mode when self-signed certificate
 2026-05-21T02:14:42+02:00 - 941f7f8 - Thomas Ramé : fix(clean): old package was mixing tagged and untagged fragments, making it very risky
 2026-05-21T01:24:06+02:00 - 85ea63d - Thomas Ramé : fix(deploy): try to fix runtime error (missing prisma stuff)
