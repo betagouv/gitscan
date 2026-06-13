@@ -18,6 +18,7 @@
 ├── cron.json
 ├── docs
 │   ├── architecture.md
+│   ├── budget_fields.md
 │   ├── database.md
 │   ├── db.png
 │   ├── db.svg
@@ -225,6 +226,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260605120346_add_transformations
 │   │   │   └── migration.sql
+│   │   ├── 20260612130445_add_impact_indicators
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -318,7 +321,8 @@
 │   │   ├── fill-cpoms.ts
 │   │   ├── fill-monthly-reporting.ts
 │   │   ├── fill-roles.ts
-│   │   └── ofii-fill-referential-and-activity.ts
+│   │   ├── ofii-fill-referential-and-activity.ts
+│   │   └── reporting-indicator-categories.ts
 │   ├── run-one-off.sh
 │   ├── utils
 │   │   ├── csv-loader.ts
@@ -337,8 +341,12 @@
 │       ├── 004b_structures_places_quality.sql
 │       ├── 004c_structures_finance_quality.sql
 │       ├── 004d_structures_characteristics_quality.sql
+│       ├── 004e_structures_documents_quality.sql
+│       ├── 004f_structures_activite_quality.sql
 │       ├── 004z_structures_global_quality.sql
-│       └── 005_structures_missing_history.sql
+│       ├── 005_structures_missing_history.sql
+│       ├── 006_reporting_global.sql
+│       └── 007_reporting_mensuel.sql
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
 ├── setupTests.js
@@ -520,11 +528,11 @@
 │   │   │   │       │   │       └── page.tsx
 │   │   │   │       │   └── page.tsx
 │   │   │   │       ├── _components
-│   │   │   │       │   ├── RepartitionBadge.tsx
 │   │   │   │       │   ├── StructureItem.tsx
 │   │   │   │       │   ├── StructuresMap.tsx
 │   │   │   │       │   ├── StructuresTable.tsx
-│   │   │   │       │   └── Toolbar.tsx
+│   │   │   │       │   ├── Toolbar.tsx
+│   │   │   │       │   └── TypeBatiBadge.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
@@ -843,11 +851,13 @@
 │   │   │   │   │   └── FieldSetActeAdministratif.tsx
 │   │   │   │   ├── adresseAdministrativeAndAntenne
 │   │   │   │   │   ├── AdresseAdministrativeAndAntennes.tsx
+│   │   │   │   │   ├── Antennes.tsx
 │   │   │   │   │   ├── DnaInput.tsx
 │   │   │   │   │   ├── FieldSetAdresseAdministrative.tsx
 │   │   │   │   │   ├── FieldSetAntennes.tsx
 │   │   │   │   │   ├── ManualAddressInputs.tsx
-│   │   │   │   │   └── TransformationAdresseAdministrative.tsx
+│   │   │   │   │   ├── TransformationAdresseAdministrative.tsx
+│   │   │   │   │   └── TransformationAntennesSection.tsx
 │   │   │   │   ├── autocomplete
 │   │   │   │   │   ├── Autocomplete.tsx
 │   │   │   │   │   ├── AutocompleteField.tsx
@@ -1210,6 +1220,7 @@
 │   │           │   ├── ExistingStructureFlow.test.tsx
 │   │           │   ├── ExistingStructureIdentificationForm.test.tsx
 │   │           │   ├── FermetureDescriptionForm.test.tsx
+│   │           │   ├── PlacesEtHebergementForm.test.tsx
 │   │           │   ├── TransformationActesAdministratifsForm.test.tsx
 │   │           │   └── page.test.tsx
 │   │           └── _components
@@ -1269,7 +1280,8 @@
 │   │   │   ├── FieldSetTransformationPlaces.test.tsx
 │   │   │   ├── FieldSetTypePlaces.test.tsx
 │   │   │   ├── InputWithValidation.test.tsx
-│   │   │   └── TransformationAdresseAdministrative.test.tsx
+│   │   │   ├── TransformationAdresseAdministrative.test.tsx
+│   │   │   └── TransformationAntennesSection.test.tsx
 │   │   └── transformations
 │   │       └── OngoingTransformationsBanner.test.tsx
 │   ├── config
@@ -1283,6 +1295,7 @@
 │   │   ├── fixtures
 │   │   │   ├── files
 │   │   │   │   └── sample.pdf
+│   │   │   ├── sample.pdf
 │   │   │   └── test.ts
 │   │   ├── global-setup.ts
 │   │   ├── pages
@@ -1425,6 +1438,7 @@
 │   │   ├── date.util.test.ts
 │   │   ├── decimal.util.test.ts
 │   │   ├── getErrorMessages.util.test.ts
+│   │   ├── getInitialAntennes.test.ts
 │   │   ├── math.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
@@ -1436,4 +1450,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-382 directories, 1056 files
+383 directories, 1069 files
