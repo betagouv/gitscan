@@ -183,6 +183,9 @@
 │   ├── controllers
 │   │   ├── README.md
 │   │   ├── admin
+│   │   │   ├── base_controller.rb
+│   │   │   ├── school_managements_controller.rb
+│   │   │   ├── user_schools_controller.rb
 │   │   │   └── users_controller.rb
 │   │   ├── admin_controller.rb
 │   │   ├── api
@@ -1111,6 +1114,17 @@
 │       ├── active_storage
 │       │   └── blobs
 │       │       └── _blob.html.erb
+│       ├── admin
+│       │   ├── school_managements
+│       │   │   ├── _school_results.html.slim
+│       │   │   ├── _search_results.html.slim
+│       │   │   ├── index.html.slim
+│       │   │   ├── show.html.slim
+│       │   │   └── switch_school.turbo_stream.slim
+│       │   └── user_schools
+│       │       ├── _list.html.slim
+│       │       ├── create.turbo_stream.slim
+│       │       └── destroy.turbo_stream.slim
 │       ├── class_rooms
 │       │   └── _class_room.html.slim
 │       ├── custom_devise_mailer
@@ -1471,7 +1485,8 @@
 │       │   ├── no_link_layout.slim
 │       │   ├── preview.html.erb
 │       │   ├── rails_admin
-│       │   │   └── _head.html.erb
+│       │   │   ├── _head.html.erb
+│       │   │   └── admin_custom.html.erb
 │       │   ├── search.html.slim
 │       │   ├── welcome_mailer_layout.html.erb
 │       │   └── welcome_mailer_layout.text.slim
@@ -2406,7 +2421,8 @@
 │   │   ├── 20260430082727_create_boarding_house_views.rb
 │   │   ├── 20260515090000_add_totp_to_users.rb
 │   │   ├── 20260520214758_add_unique_index_on_internship_applications_user_offer.rb
-│   │   └── 20260526090153_add_unique_index_on_internship_agreements_application.rb
+│   │   ├── 20260526090153_add_unique_index_on_internship_agreements_application.rb
+│   │   └── 20260604000000_backfill_user_schools_for_school_management.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
@@ -2693,7 +2709,9 @@
 │   │   ├── .keep
 │   │   ├── admin
 │   │   │   ├── admin_controller_test.rb
-│   │   │   └── import_students_from_sygne_test.rb
+│   │   │   ├── import_students_from_sygne_test.rb
+│   │   │   ├── school_managements_controller_test.rb
+│   │   │   └── user_schools_controller_test.rb
 │   │   ├── api
 │   │   │   ├── authentication_test.rb
 │   │   │   ├── schools_controller_test.rb
@@ -3019,6 +3037,7 @@
 │   │   │   ├── reporting_kpi_test.rb
 │   │   │   └── school_test.rb
 │   │   ├── reserved_school_test.rb
+│   │   ├── school_search_test.rb
 │   │   ├── school_test.rb
 │   │   ├── school_track
 │   │   │   └── seconde_test.rb
@@ -3037,6 +3056,7 @@
 │   │   │   ├── operator_test.rb
 │   │   │   ├── other_test.rb
 │   │   │   ├── prefecture_statistician_test.rb
+│   │   │   ├── school_management_search_test.rb
 │   │   │   ├── school_management_test.rb
 │   │   │   ├── statistician_test.rb
 │   │   │   ├── student_test.rb
@@ -3056,6 +3076,8 @@
 │   │   └── turbo_assertions_helper.rb
 │   ├── system
 │   │   ├── .keep
+│   │   ├── admin
+│   │   │   └── school_managements_test.rb
 │   │   ├── autocomplete_school_test.rb
 │   │   ├── dashboard
 │   │   │   ├── edit_or_duplicate_internship_offer_test.rb
@@ -3132,4 +3154,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-432 directories, 2710 files
+436 directories, 2728 files
