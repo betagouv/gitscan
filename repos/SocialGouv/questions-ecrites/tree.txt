@@ -1,6 +1,4 @@
 .
-├── .claude
-│   └── settings.local.json
 ├── .cline
 │   └── mcp_settings.json
 ├── .clinerules
@@ -28,6 +26,7 @@
 │       ├── 3f8a2c1d9b47_create_qe_ingestion_tables.py
 │       ├── a1b2c3d4e5f6_add_objet_to_questions.py
 │       ├── a8b9c0d1e2f3_add_direction_index_to_vec_offices.py
+│       ├── a9b0c1d2e3f4_drop_question_clusters.py
 │       ├── b3c4d5e6f7a8_extract_reponses_table.py
 │       ├── c0d1e2f3a4b5_add_pgvector_tables.py
 │       ├── c45166ba8ead_drop_is_social_from_ministeres.py
@@ -63,21 +62,25 @@
 │   ├── main.py
 │   ├── models.py
 │   ├── office_ingestion.py
+│   ├── question_fetch.py
 │   └── rate_limiter.py
-└── scripts
-    ├── assign_qe_to_office.py
-    ├── download_an_legacy.py
-    ├── download_senat.py
-    ├── dump_qdrant.py
-    ├── embed_answers.py
-    ├── embed_questions.py
-    ├── eval_office_assignment.py
-    ├── eval_question_similarity.py
-    ├── find_similar_questions.py
-    ├── ingest_an_legacy.py
-    ├── ingest_office_responsibilities.py
-    ├── ingest_senat.py
-    ├── inspect_db.py
-    ├── load_pgvector.py
-    └── reset_dbs.py
-13 directories, 69 files
+├── scripts
+│   ├── assign_qe_to_office.py
+│   ├── download_an_legacy.py
+│   ├── download_senat.py
+│   ├── dump_qdrant.py
+│   ├── embed_answers.py
+│   ├── embed_questions.py
+│   ├── eval_office_assignment.py
+│   ├── eval_question_similarity.py
+│   ├── fetch_senat_question.py
+│   ├── find_similar_questions.py
+│   ├── ingest_an_legacy.py
+│   ├── ingest_office_responsibilities.py
+│   ├── ingest_senat.py
+│   ├── inspect_db.py
+│   ├── load_pgvector.py
+│   └── reset_dbs.py
+└── tests
+    └── test_ingestion_an_objet.py
+13 directories, 72 files
