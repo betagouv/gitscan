@@ -1,23 +1,24 @@
 {
   "url": "https://github.com/incubateur-ademe/mutafriches",
   "name": "mutafriches",
-  "description": "Mutafriches est une application web qui analyse la mutabilité des friches urbaines, calcule des indices et fournit un indice de fiabilité.",
+  "description": "Mutafriches est une application web qui remplace un fichier Excel pour analyser la mutabilité des friches urbaines. Elle calcule des indices de mutabilité sur 7 usages différents et fournit un indice de fiabilité.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
-    "Simulation & Calcul",
-    "Données & Schémas"
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "NestJS",
-    "React",
     "PostgreSQL",
-    "Drizzle ORM",
+    "React",
+    "Vite",
     "Tailwind CSS",
-    "Vite"
+    "Drizzle ORM"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,22 +28,25 @@
   ],
   "auth": {
     "methods": [
-      "none"
+      "jwt",
+      "session"
     ]
   },
-  "tests": "Vitest",
-  "workflows": [
-    "CI/CD workflows from .github/workflows"
+  "tests": [
+    "Vitest"
   ],
-  "lastActivity": "2026-06-05T13:26:53+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-06-12T20:00:10+00:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 0,
-    "contributors": 0,
-    "openIssues": 1
+    "contributors": null,
+    "openIssues": 2
   },
   "tags": [
     "Données & Open Data",
