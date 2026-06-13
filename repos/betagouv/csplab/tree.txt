@@ -113,6 +113,7 @@
 │       ├── __init__.py
 │       ├── entities
 │       │   ├── __init__.py
+│       │   ├── api_log.py
 │       │   ├── concours.py
 │       │   ├── corps.py
 │       │   ├── domaine_fonctionnel.py
@@ -182,7 +183,8 @@
     │   │       ├── clean_raw_offer.py
     │   │       ├── load_sources.py
     │   │       ├── publish_offer.py
-    │   │       └── save_raw_offer.py
+    │   │       ├── save_raw_offer.py
+    │   │       └── save_webhook.py
     │   ├── bin
     │   │   ├── run_migrations.sh
     │   │   └── start_web.sh
@@ -191,7 +193,8 @@
     │   │   ├── entities
     │   │   │   ├── __init__.py
     │   │   │   ├── offer.py
-    │   │   │   └── raw_offer.py
+    │   │   │   ├── raw_offer.py
+    │   │   │   └── webhook.py
     │   │   ├── exceptions
     │   │   │   ├── __init__.py
     │   │   │   └── offer_errors.py
@@ -205,7 +208,8 @@
     │   │   ├── repositories
     │   │   │   ├── __init__.py
     │   │   │   ├── raw_offer_repository.py
-    │   │   │   └── sources_repository.py
+    │   │   │   ├── sources_repository.py
+    │   │   │   └── webhook_repository.py
     │   │   └── value_objects
     │   │       ├── __init__.py
     │   │       ├── area.py
@@ -219,7 +223,8 @@
     │   │       ├── region.py
     │   │       ├── source.py
     │   │       ├── verse.py
-    │   │       └── webhook_event.py
+    │   │       ├── webhook_event.py
+    │   │       └── webhook_type.py
     │   ├── infrastructure
     │   │   ├── __init__.py
     │   │   ├── credentials_store.py
@@ -247,15 +252,22 @@
     │   │   │   └── offers_cleaner.py
     │   │   ├── models
     │   │   │   ├── __init__.py
-    │   │   │   └── raw_offer.py
+    │   │   │   ├── raw_offer.py
+    │   │   │   └── webhook.py
     │   │   ├── raw_offer_repository.py
     │   │   ├── sources_repository.py
-    │   │   └── talentsoft_client_repository.py
+    │   │   ├── talentsoft_client_repository.py
+    │   │   ├── value_objects
+    │   │   │   └── webhook_source.py
+    │   │   └── webhook_repository.py
     │   ├── migrations
     │   │   ├── env.py
     │   │   ├── script.py.mako
     │   │   └── versions
-    │   │       └── 20250529_0000_initial_raw_offers.py
+    │   │       ├── 20250529_0000_initial_raw_offers.py
+    │   │       ├── 20260605_0001_talentsoft_webhooks.py
+    │   │       ├── 20260606_0000_add_archived_at_to_raw_offers.py
+    │   │       └── 20260610_0751_merge_talentsoft_webhooks_and_archived_.py
     │   ├── presentation
     │   │   ├── __init__.py
     │   │   └── dtos
@@ -267,6 +279,7 @@
     │   │   ├── conftest.py
     │   │   ├── factories
     │   │   │   ├── __init__.py
+    │   │   │   ├── domain_factories.py
     │   │   │   └── talentsoft_factories.py
     │   │   ├── integration
     │   │   │   ├── __init__.py
@@ -275,7 +288,8 @@
     │   │   │   ├── test_health.py
     │   │   │   ├── test_load_sources_use_case.py
     │   │   │   ├── test_raw_offer_repository.py
-    │   │   │   └── test_save_raw_offer_use_case.py
+    │   │   │   ├── test_save_raw_offer_use_case.py
+    │   │   │   └── test_webhook_repository.py
     │   │   ├── presentation
     │   │   │   ├── __init__.py
     │   │   │   ├── test_load_sources.py
@@ -301,6 +315,7 @@
     │   │       ├── test_main.py
     │   │       ├── test_publish_offer_use_case.py
     │   │       ├── test_save_raw_offer_use_case.py
+    │   │       ├── test_save_webhook_use_case.py
     │   │       ├── test_sentry.py
     │   │       ├── test_sources_repository.py
     │   │       ├── test_talentsoft_client_repository.py
@@ -387,13 +402,24 @@
         │   ├── __init__.py
         │   ├── candidate
         │   │   ├── __init__.py
+        │   │   ├── commands
+        │   │   │   ├── __init__.py
+        │   │   │   └── soumettre_candidature_command.py
         │   │   └── usecases
         │   │       ├── __init__.py
         │   │       ├── get_opportunity_details.py
         │   │       ├── initialize_cv_metadata.py
         │   │       ├── match_cv_to_opportunities.py
-        │   │       └── process_uploaded_cv.py
+        │   │       ├── process_uploaded_cv.py
+        │   │       └── soumettre_candidature.py
         │   ├── exceptions.py
+        │   ├── identite
+        │   │   ├── __init__.py
+        │   │   └── usecases
+        │   │       ├── __init__.py
+        │   │       ├── create_agent.py
+        │   │       ├── create_candidat.py
+        │   │       └── get_utilisateur_details.py
         │   └── ingestion
         │       ├── __init__.py
         │       ├── interfaces
@@ -426,6 +452,7 @@
         │   │   ├── _sentry.py
         │   │   ├── base.py
         │   │   ├── dev.py
+        │   │   ├── schema_internal.py
         │   │   └── test.py
         │   ├── setup-qdrant.py
         │   ├── urls.py
@@ -434,13 +461,19 @@
         │   ├── __init__.py
         │   ├── candidate
         │   │   ├── entities
+        │   │   │   ├── __init__.py
+        │   │   │   ├── candidature.py
         │   │   │   └── cv_metadata.py
+        │   │   ├── events
+        │   │   │   └── candidature_events.py
         │   │   ├── exceptions
         │   │   │   ├── __init__.py
+        │   │   │   ├── candidature_errors.py
         │   │   │   └── cv_errors.py
         │   │   ├── repositories
         │   │   │   ├── __init__.py
         │   │   │   ├── async_cv_metadata_repository_interface.py
+        │   │   │   ├── candidature_repository_interface.py
         │   │   │   └── cv_metadata_repository_interface.py
         │   │   ├── services
         │   │   │   ├── __init__.py
@@ -451,38 +484,56 @@
         │   │       ├── __init__.py
         │   │       ├── cv_extraction_types.py
         │   │       ├── cv_processing_status.py
-        │   │       └── opportunity_type.py
+        │   │       ├── opportunity_type.py
+        │   │       └── statut_candidature.py
         │   ├── identite
         │   │   ├── entities
         │   │   │   ├── __init__.py
+        │   │   │   ├── agent.py
+        │   │   │   ├── candidat.py
         │   │   │   ├── organisme.py
         │   │   │   └── utilisateurs.py
         │   │   ├── errors
         │   │   │   ├── __init__.py
+        │   │   │   ├── agent_errors.py
+        │   │   │   ├── candidat_errors.py
+        │   │   │   ├── identite_errors.py
         │   │   │   └── organisme_errors.py
         │   │   ├── events
         │   │   │   ├── __init__.py
+        │   │   │   ├── agent_events.py
+        │   │   │   ├── candidat_events.py
         │   │   │   └── organisme_events.py
+        │   │   ├── repositories
+        │   │   │   ├── __init__.py
+        │   │   │   ├── agent_repository_interface.py
+        │   │   │   ├── candidat_repository_interface.py
+        │   │   │   └── utilisateur_repository_interface.py
         │   │   └── value_objects
         │   │       ├── __init__.py
         │   │       └── siret.py
         │   ├── ingestion
         │   │   ├── entities
         │   │   │   ├── __init__.py
+        │   │   │   ├── api_log_daily_aggregation.py
         │   │   │   ├── document.py
         │   │   │   ├── source.py
         │   │   │   └── vectorized_document.py
         │   │   ├── exceptions
         │   │   │   ├── __init__.py
-        │   │   │   └── document_error.py
+        │   │   │   ├── document_error.py
+        │   │   │   └── source_authorization_error.py
         │   │   ├── gateways
         │   │   │   ├── __init__.py
         │   │   │   └── document_gateway_interface.py
         │   │   ├── repositories
         │   │   │   ├── __init__.py
+        │   │   │   ├── api_log_daily_aggregation_repository_interface.py
+        │   │   │   ├── api_log_repository_interface.py
         │   │   │   ├── document_repository_interface.py
         │   │   │   ├── repository_factory_interface.py
         │   │   │   ├── source_repository_interface.py
+        │   │   │   ├── user_source_repository_interface.py
         │   │   │   └── vector_repository_interface.py
         │   │   ├── services
         │   │   │   ├── __init__.py
@@ -518,6 +569,10 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── candidate_container.py
         │   │   │   └── candidate_factory.py
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   ├── identite_container.py
+        │   │   │   └── identite_factory.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── ingestion_container.py
@@ -567,9 +622,13 @@
         │   │   │   │   ├── 0023_alter_source_source_id.py
         │   │   │   │   ├── 0024_alter_sourcemodel_id_alter_sourcemodel_source_id.py
         │   │   │   │   ├── 0025_fix_missing_indexes.py
+        │   │   │   │   ├── 0026_apilogmodel.py
+        │   │   │   │   ├── 0027_apilogdailyaggregationmodel.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
+        │   │   │       ├── api_log.py
+        │   │   │       ├── api_log_daily_aggregation.py
         │   │   │       ├── raw_document.py
         │   │   │       └── source.py
         │   │   ├── shared
@@ -607,6 +666,8 @@
         │   │   │   │   ├── 0030_alter_offermodel_source_id_not_null.py
         │   │   │   │   ├── 0031_offermodel_reference.py
         │   │   │   │   ├── 0032_fix_missing_indexes.py
+        │   │   │   │   ├── 0033_apilogmodel.py
+        │   │   │   │   ├── 0034_remove_apilogmodel.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -622,6 +683,10 @@
         │   │       │   ├── 0002_alter_usermodel_options_alter_usermodel_email.py
         │   │       │   ├── 0003_alter_usermodel_username.py
         │   │       │   ├── 0004_alter_usermodel_table.py
+        │   │       │   ├── 0005_add_sources_to_user.py
+        │   │       │   ├── 0005_profilagentmodel.py
+        │   │       │   ├── 0006_profilcandidatmodel.py
+        │   │       │   ├── 0007_merge_20260612_1624.py
         │   │       │   └── __init__.py
         │   │       └── models.py
         │   ├── exceptions
@@ -676,13 +741,21 @@
         │       │   ├── __init__.py
         │       │   ├── async_postgres_cv_metadata_repository.py
         │       │   └── postgres_cv_metadata_repository.py
+        │       ├── identite
+        │       │   ├── __init__.py
+        │       │   ├── postgres_agent_repository.py
+        │       │   ├── postgres_candidat_repository.py
+        │       │   └── postgres_utilisateur_repository.py
         │       ├── ingestion
         │       │   ├── __init__.py
         │       │   ├── postgres_document_repository.py
-        │       │   └── postgres_source_repository.py
+        │       │   ├── postgres_source_repository.py
+        │       │   └── postgres_user_source_repository.py
         │       ├── repository_factory.py
         │       └── shared
         │           ├── __init__.py
+        │           ├── postgres_api_log_daily_agg_repository.py
+        │           ├── postgres_api_log_repository.py
         │           ├── postgres_concours_repository.py
         │           ├── postgres_corps_repository.py
         │           ├── postgres_metier_repository.py
@@ -698,6 +771,8 @@
         ├── presentation
         │   ├── api
         │   │   ├── __init__.py
+        │   │   ├── openapi_hooks.py
+        │   │   ├── serializers.py
         │   │   ├── urls.py
         │   │   └── views.py
         │   ├── assets
@@ -886,6 +961,11 @@
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
+        │   ├── identite
+        │   │   ├── __init__.py
+        │   │   ├── serializers.py
+        │   │   ├── urls.py
+        │   │   └── views.py
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── apps.py
@@ -894,11 +974,13 @@
         │   │   │   ├── __init__.py
         │   │   │   └── commands
         │   │   │       ├── __init__.py
+        │   │   │       ├── aggregate_api_logs.py
         │   │   │       ├── archive_offers.py
         │   │   │       ├── clean_documents.py
         │   │   │       ├── load_corps.py
         │   │   │       ├── load_metiers.py
         │   │   │       ├── load_offers.py
+        │   │   │       ├── purge_api_logs.py
         │   │   │       └── vectorize_documents.py
         │   │   ├── mappers.py
         │   │   ├── openapi.py
@@ -913,12 +995,16 @@
         │   │       ├── metiers.py
         │   │       ├── offers.py
         │   │       └── sources.py
+        │   ├── middleware
+        │   │   ├── __init__.py
+        │   │   └── api_request_logger.py
         │   ├── pages
         │   │   ├── __init__.py
         │   │   ├── urls.py
         │   │   └── views.py
         │   ├── static
         │   │   ├── api
+        │   │   │   ├── internal-schema.yaml
         │   │   │   └── schema.yaml
         │   │   ├── candidate
         │   │   │   ├── images
@@ -969,59 +1055,55 @@
         │   │       ├── redoc.standalone.js
         │   │       ├── redoc.standalone.js.map
         │   │       └── toast.js
-        │   ├── templates
-        │   │   ├── 403.html
-        │   │   ├── 404.html
-        │   │   ├── 500.html
-        │   │   ├── api
-        │   │   │   └── redoc.html
-        │   │   ├── ats
-        │   │   │   └── base.html
-        │   │   ├── candidate
-        │   │   │   ├── components
-        │   │   │   │   ├── _filter_fieldset.html
-        │   │   │   │   ├── _filters_content.html
-        │   │   │   │   ├── _no_results_content.html
-        │   │   │   │   ├── _opportunity_body.html
-        │   │   │   │   ├── _opportunity_cta.html
-        │   │   │   │   ├── _opportunity_detail_content.html
-        │   │   │   │   ├── _opportunity_drawer.html
-        │   │   │   │   ├── _opportunity_drawer_content.html
-        │   │   │   │   ├── _opportunity_feedback.html
-        │   │   │   │   ├── _processing_content.html
-        │   │   │   │   ├── _result_card_concours.html
-        │   │   │   │   ├── _result_card_offer.html
-        │   │   │   │   ├── _results_content.html
-        │   │   │   │   ├── _results_list.html
-        │   │   │   │   ├── _tally_feedback.html
-        │   │   │   │   └── _tally_results_modal.html
-        │   │   │   ├── cv_no_results.html
-        │   │   │   ├── cv_processing.html
-        │   │   │   ├── cv_results.html
-        │   │   │   ├── cv_upload.html
-        │   │   │   └── opportunity_detail.html
-        │   │   ├── components
-        │   │   │   ├── cv_upload_actions.html
-        │   │   │   └── file_upload.html
-        │   │   ├── layouts
-        │   │   │   ├── base.html
-        │   │   │   └── error.html
-        │   │   ├── pages
-        │   │   │   ├── accessibility.html
-        │   │   │   ├── home.html
-        │   │   │   ├── legal_notices.html
-        │   │   │   ├── privacy.html
-        │   │   │   └── terms.html
-        │   │   ├── partials
-        │   │   │   ├── footer.html
-        │   │   │   └── header.html
-        │   │   └── registration
-        │   │       ├── login.html
-        │   │       └── profile.html
-        │   └── users
-        │       ├── __init__.py
-        │       ├── urls.py
-        │       └── views.py
+        │   └── templates
+        │       ├── 403.html
+        │       ├── 404.html
+        │       ├── 500.html
+        │       ├── api
+        │       │   └── redoc.html
+        │       ├── ats
+        │       │   └── base.html
+        │       ├── candidate
+        │       │   ├── components
+        │       │   │   ├── _filter_fieldset.html
+        │       │   │   ├── _filters_content.html
+        │       │   │   ├── _no_results_content.html
+        │       │   │   ├── _opportunity_body.html
+        │       │   │   ├── _opportunity_cta.html
+        │       │   │   ├── _opportunity_detail_content.html
+        │       │   │   ├── _opportunity_drawer.html
+        │       │   │   ├── _opportunity_drawer_content.html
+        │       │   │   ├── _opportunity_feedback.html
+        │       │   │   ├── _processing_content.html
+        │       │   │   ├── _result_card_concours.html
+        │       │   │   ├── _result_card_offer.html
+        │       │   │   ├── _results_content.html
+        │       │   │   ├── _results_list.html
+        │       │   │   ├── _tally_feedback.html
+        │       │   │   └── _tally_results_modal.html
+        │       │   ├── cv_no_results.html
+        │       │   ├── cv_processing.html
+        │       │   ├── cv_results.html
+        │       │   ├── cv_upload.html
+        │       │   └── opportunity_detail.html
+        │       ├── components
+        │       │   ├── cv_upload_actions.html
+        │       │   └── file_upload.html
+        │       ├── layouts
+        │       │   ├── base.html
+        │       │   └── error.html
+        │       ├── pages
+        │       │   ├── accessibility.html
+        │       │   ├── home.html
+        │       │   ├── legal_notices.html
+        │       │   ├── privacy.html
+        │       │   └── terms.html
+        │       ├── partials
+        │       │   ├── footer.html
+        │       │   └── header.html
+        │       └── registration
+        │           ├── login.html
+        │           └── profile.html
         ├── pyproject.toml
         ├── start.sh
         ├── tests
@@ -1032,7 +1114,8 @@
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
-        │   │   │   └── test_process_uploaded_cv.py
+        │   │   │   ├── test_process_uploaded_cv.py
+        │   │   │   └── test_soumettre_candidature.py
         │   │   └── ingestion
         │   │       ├── __init__.py
         │   │       ├── test_archive_offers.py
@@ -1043,8 +1126,14 @@
         │   │       └── test_vectorize_documents.py
         │   ├── conftest.py
         │   ├── domain
+        │   │   ├── __init__.py
+        │   │   ├── candidate
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_candidature.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_agent.py
+        │   │   │   ├── test_candidat.py
         │   │   │   ├── test_organisme_identite.py
         │   │   │   ├── test_siret.py
         │   │   │   └── test_utilisateurs.py
@@ -1054,12 +1143,22 @@
         │   │       └── test_organisme.py
         │   ├── factories
         │   │   ├── __init__.py
+        │   │   ├── api_log_factory.py
         │   │   ├── candidate
+        │   │   │   ├── __init__.py
+        │   │   │   ├── candidature_factory.py
         │   │   │   └── cv_metadata_factory.py
+        │   │   ├── datetime_utils.py
         │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   ├── agent_factory.py
+        │   │   │   ├── candidat_factory.py
         │   │   │   ├── organisme_factory.py
         │   │   │   └── utilisateur_factory.py
         │   │   ├── ingestion
+        │   │   │   ├── __init__.py
+        │   │   │   ├── api_log_daily_agg_model_factory.py
+        │   │   │   ├── api_log_model_factory.py
         │   │   │   ├── document_factory.py
         │   │   │   ├── ingres_corps_factories.py
         │   │   │   ├── ingres_metiers_factories.py
@@ -1071,6 +1170,7 @@
         │   │   │   ├── __init__.py
         │   │   │   └── organisme_factory.py
         │   │   └── referentiel
+        │   │       ├── __init__.py
         │   │       ├── concours_factory.py
         │   │       ├── concours_row_factory.py
         │   │       ├── corps_factory.py
@@ -1086,7 +1186,10 @@
         │   │   │   └── test_process_uploaded_cv.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
-        │   │   │   └── test_api_key_authentication.py
+        │   │   │   ├── test_api_key_authentication.py
+        │   │   │   ├── test_create_agent.py
+        │   │   │   ├── test_create_candidat.py
+        │   │   │   └── test_get_utilisateurs_details.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── external_gateways
@@ -1096,7 +1199,9 @@
         │   │   │   │   └── utils.py
         │   │   │   ├── repositories
         │   │   │   │   ├── test_postgres_document_repository.py
+        │   │   │   │   ├── test_postgres_user_source_repository.py
         │   │   │   │   └── test_qdrant_repository.py
+        │   │   │   ├── test_aggregate_api_logs.py
         │   │   │   ├── test_archive_offer_by_reference.py
         │   │   │   ├── test_archive_offers.py
         │   │   │   ├── test_clean_documents.py
@@ -1104,6 +1209,8 @@
         │   │   │   ├── test_list_offers.py
         │   │   │   ├── test_list_sources.py
         │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_metier_cleaner.py
+        │   │   │   ├── test_purge_api_logs.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   └── test_vectorize_documents.py
         │   │   └── referentiel
@@ -1144,7 +1251,8 @@
         │   │   │   └── views
         │   │   │       ├── __init__.py
         │   │   │       ├── test_login.py
-        │   │   │       └── test_profile.py
+        │   │   │       ├── test_profile.py
+        │   │   │       └── test_utilisateur_details.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── management
@@ -1158,8 +1266,11 @@
         │   │   │   │   ├── __init__.py
         │   │   │   │   ├── test_archive_offers.py
         │   │   │   │   └── test_ingestion_tasks.py
+        │   │   │   ├── test_postgres_api_log_daily_agg_repository.py
+        │   │   │   ├── test_postgres_api_log_repository.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
+        │   │   │       ├── conftest.py
         │   │   │       ├── test_admin.py
         │   │   │       ├── test_archive_offers_view.py
         │   │   │       ├── test_endpoints.py
@@ -1180,6 +1291,7 @@
         │       ├── mock_embedding_generator.py
         │       ├── pdf_test_utils.py
         │       ├── shared_fixtures.py
+        │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-256 directories, 928 files
+266 directories, 1030 files
