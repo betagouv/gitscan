@@ -1,16 +1,43 @@
+2026-06-11T18:25:05+02:00 - 673df886 - Elie Gavoty : Merge pull request #524 from betagouv/dataset-time-to-vote
+2026-06-11T16:55:27+02:00 - b08a2f43 - Elie Gavoty : fix(dataset): add pii to ArchivedReason literal (rebase error)
+2026-06-11T16:25:36+02:00 - 2960bf28 - Elie Gavoty : chore(db): merge alembic heads voted_at and web_search_results
+2026-06-11T16:20:33+02:00 - 75d6107c - Elie Gavoty : fix(dataset): fix comparison_to_turns divergence from oracle pipeline
+2026-06-11T16:00:16+02:00 - df2109c2 - Simon : Add time-to-vote tracking and conversation timestamp to the dataset
+2026-06-11T16:00:16+02:00 - 7c915071 - Simon : Only compute time_to_vote when both models answered
+2026-06-11T14:48:37+02:00 - a0688fca - Elie Gavoty : Merge pull request #528 from betagouv/dependabot/npm_and_yarn/frontend/protobufjs-7.6.3
+2026-06-11T14:43:43+02:00 - 82bf1a7a - Elie Gavoty : Merge pull request #521 from betagouv/dependabot/pip/pip-minor-patch-7987131af8
+2026-06-11T14:43:05+02:00 - 73b2cdc9 - Elie Gavoty : Merge pull request #522 from betagouv/dependabot/npm_and_yarn/frontend/npm-minor-patch-b4a5249158
+2026-06-11T14:42:05+02:00 - ad07feec - Elie Gavoty : Merge pull request #527 from betagouv/backfill-pii-spam-as-archived-migration
+2026-06-11T14:41:27+02:00 - 167aa354 - Elie Gavoty : Merge pull request #526 from betagouv/fix-dataset-pii
+2026-06-11T14:40:37+02:00 - 9706d949 - Elie Gavoty : feat(db): add backfill_pii_spam migration command
+2026-06-11T12:53:37+02:00 - 77eaaa81 - Elie Gavoty : fix(dataset): filter out comparisons with contains_pii or contains_spam
+2026-06-11T12:50:54+02:00 - b7269506 - Elie Gavoty : chore(tests): remove test inexistant test-backend from makefile
+2026-06-11T12:50:54+02:00 - 3e220159 - Elie Gavoty : chore(tools): delete .devin
+2026-06-11T12:48:07Z - b0ff0ca0 - dependabot[bot] : chore(deps): bump protobufjs from 7.5.4 to 7.6.3 in /frontend
+2026-06-10T15:04:15+02:00 - 018d2894 - axolotle : chore: format
+2026-06-10T10:35:04+02:00 - d7442968 - Axolotle : Merge pull request #517 from betagouv/enh-llm-infos
+2026-06-10T09:17:55+02:00 - fa53330d - axolotle : fix(front): reset prompt after successful response
+2026-06-10T09:17:24+02:00 - d21827f2 - axolotle : feat(front): return success boolean on ask
 2026-06-09T18:41:39+02:00 - 94279cca - Elie Gavoty : Merge pull request #401 from betagouv/enh-web-search
 2026-06-09T18:26:49+02:00 - 3a832340 - Elie Gavoty : Revert "debug(startup): add timing logs to identify slow init (to revert)"
 2026-06-09T18:24:46+02:00 - 4dcbd561 - Elie Gavoty : fix(redis): prefix web search cache key with instance prefix
+2026-06-09T17:13:47+02:00 - 34c8e633 - axolotle : refactor(bacl): ignore new extra LLMdata fields
 2026-06-09T17:06:29+02:00 - dc9c1eaf - Elie Gavoty : fix(logger): use LokiQueueHandler to avoid blocking on unreachable Loki
 2026-06-09T16:11:07+02:00 - 9a78df6f - Elie Gavoty : debug(startup): add timing logs to identify slow init (to revert)
 2026-06-09T14:08:50+02:00 - 8b5edd28 - Elie Gavoty : fix(migration): rebase web_search_results db migration on develop last migration
 2026-06-09T14:05:56+02:00 - 352ef3a8 - Elie Gavoty : chore(config): add LINKUP_API_KEY to instance env examples
+2026-06-08T20:59:56+02:00 - 6f1a0b2c - Simon : data(llms): fill migration fields for all models
 2026-06-08T17:24:35+02:00 - 9051fe8a - Elie Gavoty : Merge pull request #516 from betagouv/perf-dataset-export
 2026-06-08T16:58:34+02:00 - ea475f0a - Elie Gavoty : chore(config): default SENTRY_SAMPLE_RATE to 1.0 for troubleshooting
+2026-06-08T16:21:06+02:00 - be2b70d7 - axolotle : refactor(llms): move public_training_* field to LLMData
 2026-06-08T15:22:14+02:00 - 2636fdbc - Elie Gavoty : makefile: add test suite entry in makefile
+2026-06-08T15:20:39Z - f54962ed - dependabot[bot] : chore(deps): bump the npm-minor-patch group across 1 directory with 20 updates
+2026-06-08T15:16:54Z - 75763517 - dependabot[bot] : chore(deps): bump the pip-minor-patch group across 1 directory with 2 updates
 2026-06-08T15:12:51+02:00 - 75de611f - Elie Gavoty : feat(dataset): add cache based on raw parquet to skip slow DB fetching on normal exports
 2026-06-08T12:13:39+02:00 - 7a83a4be - Elie Gavoty : fix(dataset): fix inverted cohorts exclusion filter again
 2026-06-08T12:03:25+02:00 - 2c42b818 - Simon : perf(dataset): stream export with bounded memory, drop full jsonl
+2026-06-05T13:08:32+02:00 - b1a58e1f - axolotle : feat(llms): add db_id field to llms data models
+2026-06-05T13:06:40+02:00 - 846b7995 - axolotle : feat(llms): add db_id to orga, license and llm
 2026-06-05T11:01:09+02:00 - ff923407 - axolotle : feat(front): display web search links in MessageUser
 2026-06-05T11:01:09+02:00 - fc8ea2b6 - axolotle : refactor(front): reflect changes of content/user_content
 2026-06-05T11:01:09+02:00 - eaab7f77 - axolotle : feat(front): update UserMessage interface with WebSearchResults
@@ -31,6 +58,7 @@
 2026-06-05T11:01:08+02:00 - 5e56febb - axolotle : feat(back): add search_web function
 2026-06-05T11:01:08+02:00 - 0986a3be - axolotle : feat(back): add linkup api key env var
 2026-06-05T11:01:08+02:00 - 029f40f6 - axolotle : feat(back): add `web_search` bool field to AddFirstTextBody
+2026-06-05T10:55:04+02:00 - 9ffb7f2a - axolotle : feat: add new fields in licenses, organisations and llms
 2026-06-05T10:49:57+02:00 - 255b601c - axolotle : chore: format
 2026-06-03T15:26:16+02:00 - bae00e76 - Elie Gavoty : dataset: fixing export crash WIP
 2026-06-03T15:23:19+02:00 - 292836aa - Elie Gavoty : dataset: fixing crashing export WIP
