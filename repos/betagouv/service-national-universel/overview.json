@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/service-national-universel",
   "name": "service-national-universel",
-  "description": "Plateforme du Service National Universel, organisée en plusieurs services : interface publique, interface de gestion et API.",
+  "description": "Plateforme du Service National Universel, permettant la gestion des missions, des candidatures et des informations relatives au service civique.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Authentification utilisateur",
-    "API & Intégrations",
     "Formulaires & Démarches",
+    "Authentification & Accès",
+    "Notifications & Alertes",
     "Gestion documentaire & Fichiers",
-    "Notifications & Alertes"
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -28,10 +28,11 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
-  "tests": "Jest, Pytest, Cypress",
+  "tests": "Jest, Cypress",
   "workflows": [
     "api.yml"
   ],
@@ -52,6 +53,7 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
