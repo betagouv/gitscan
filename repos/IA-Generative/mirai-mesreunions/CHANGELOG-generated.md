@@ -1,100 +1,34 @@
-## Changelog : mirai-mesreunions (30 derniers jours, au 2026-06-06)
+## Changelog : mirai-mesreunions (30 derniers jours, au 2026-06-11)
 
 ### Résumé
-Ce mois-ci, le projet a connu une évolution majeure avec l'intégration d'une fonctionnalité de recherche et d'interrogation des réunions grâce à l'utilisation de l'IA (RAG). De nombreuses améliorations ont été apportées à l'interface utilisateur, notamment pour la gestion des fichiers et la préparation des réunions. L'architecture a également été revue pour améliorer la performance et la sécurité, avec une intégration plus poussée de Kevent et une refonte de l'infrastructure.
+Ce mois-ci, le projet a connu une évolution significative, avec une refonte majeure de l'interface utilisateur de mydevices (devenant mesreunions), l'ajout de nouvelles fonctionnalités d'importation de vidéos YouTube avec synchronisation des transcriptions, et des améliorations importantes de la sécurité et de la robustesse de l'application. L'intégration de l'importation depuis MCR est également en cours, avec des corrections et des améliorations continues.
 
 ### Évolutions fonctionnelles
-*   **Recherche et interrogation des réunions (RAG):** Ajout d'une fonctionnalité permettant d'interroger les réunions via une interface de chat, alimentée par l'IA. Les sources sont enrichies avec des métadonnées et des citations cliquables.
-*   **Import YouTube:** Amélioration de l'importation de vidéos YouTube avec la possibilité d'importer des transcriptions alignées et d'utiliser l'API YouTube pour la lecture.
-*   **Gestion des fichiers:**
-    *   Ajout d'un bouton pour télécharger en masse les fichiers.
-    *   Amélioration de l'affichage des fichiers avec des informations plus détaillées.
-    *   Ajout d'une corbeille pour la suppression définitive des fichiers.
-*   **Préparation des réunions:**
-    *   Refonte de l'éditeur de brief avec des fonctionnalités améliorées.
-    *   Ajout de la possibilité de définir des thématiques pour les réunions.
-    *   Intégration de la gestion des participants.
-*   **Interface utilisateur:**
-    *   Amélioration de l'interface de la liste des réunions avec un tri et une pagination.
-    *   Refonte de l'interface de la fiche détail avec un mode avancé et des animations.
-    *   Ajout d'une barre d'état pour afficher le statut de la transcription.
-*   **Correction de bugs:** Correction de plusieurs bugs liés à l'affichage, à la gestion des fichiers et à la transcription.
+- **Importation YouTube :** Ajout de l'importation de vidéos YouTube avec synchronisation des transcriptions et fonctionnalité de "karaoké" pour suivre le texte en temps réel.
+- **Interface utilisateur (mydevices -> mesreunions) :** Refonte complète de l'interface utilisateur avec l'utilisation de Design System FR (DSFR), améliorant l'ergonomie et l'accessibilité.
+- **Préparation de réunions :** Amélioration du wizard de préparation de réunions avec des options de type de réunion, de dossier Drive associé, et un bouton de test d'accès.
+- **Gestion des fichiers :** Possibilité d'uploader des fichiers et dossiers localement en batch avec glisser-déposer.
+- **Gestion des réunions :** Ajout de la possibilité de modifier la date d'une réunion et affichage de la date d'upload.
+- **Glossaire et corrections :** Ajout d'un glossaire éditable et de la possibilité de corriger les transcriptions en ligne.
+- **Feedback :** Implémentation d'un système de feedback avec pouces haut/bas et possibilité de régénérer la transcription.
+- **Importation MCR :** Amélioration de l'importation depuis MCR avec gestion des erreurs et affichage de l'état de progression.
+- **Rapport et export :** Ajout de la possibilité d'exporter les transcriptions dans différents formats (TXT, MD, DOCX, ODT).
 
 ### Évolutions techniques
-*   **Intégration Kevent:** Intégration plus poussée de Kevent pour la gestion des tâches asynchrones et la transcription.
-*   **Refonte de l'architecture:** Refonte de l'architecture pour améliorer la performance et la sécurité.
-*   **Docker et Kubernetes:** Amélioration de la configuration Docker et Kubernetes.
-*   **Sécurité:**
-    *   Correction de failles de sécurité potentielles.
-    *   Ajout de mesures de protection contre les fuites de données.
-*   **Infrastructure:**
-    *   Amélioration de l'infrastructure pour supporter la charge et la scalabilité.
-    *   Mise en place d'un système de monitoring et d'alerting.
-*   **Tests:** Ajout de tests unitaires et de tests d'intégration pour améliorer la qualité du code.
-*   **Refactoring:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Migration de la base de données:** Migration de la base de données pour supporter les nouvelles fonctionnalités.
-*   **Utilisation de Vite:** Migration vers Vite pour une meilleure expérience de développement.
+- **Refonte de l'architecture front-end :** Migration vers une architecture modulaire basée sur Vite pour une meilleure performance et maintenabilité.
+- **Sécurité :** Renforcement de la sécurité avec des corrections de vulnérabilités potentielles et une meilleure gestion des identités.
+- **Amélioration de la robustesse :** Ajout de mécanismes de retry et de gestion des erreurs pour améliorer la stabilité de l'application.
+- **Infrastructure :** Amélioration de l'infrastructure avec l'utilisation de Docker et Kubernetes.
+- **Base de données :** Modifications de la base de données pour supporter les nouvelles fonctionnalités.
+- **Tests :** Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- **Observabilité :** Ajout de métriques et de logs pour faciliter le monitoring et le débogage.
+- **Diarisation :** Intégration de la diarisation avec différents backends (kevent, vm-direct).
+- **API :** Refonte de certaines APIs pour améliorer la performance et la cohérence.
 
 ### Autres changements
-*   **Documentation:** Mise à jour de la documentation pour refléter les changements apportés au projet.
-*   **Configuration:** Mise à jour de la configuration pour supporter les nouvelles fonctionnalités.
-*   **Nettoyage du code:** Nettoyage du code pour améliorer la lisibilité et la maintenabilité.
-*   **Correction de bugs mineurs:** Correction de plusieurs bugs mineurs.
-*   **Amélioration des messages de log:** Amélioration des messages de log pour faciliter le débogage.
-*   **Rapport d'audit de sécurité:** Ajout d'un rapport d'audit de sécurité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
-*   **Correction de bugs:** Correction de bugs pour améliorer la stabilité du projet.
-*   **Amélioration de la documentation:** Amélioration de la documentation pour faciliter l'utilisation du projet.
-*   **Ajout de tests:** Ajout de tests pour améliorer la qualité du code.
-*   **Refactoring du code:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
-*   **Correction de bugs:** Correction de bugs pour améliorer la stabilité du projet.
-*   **Amélioration de la documentation:** Amélioration de la documentation pour faciliter l'utilisation du projet.
-*   **Ajout de tests:** Ajout de tests pour améliorer la qualité du code.
-*   **Refactoring du code:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
-*   **Correction de bugs:** Correction de bugs pour améliorer la stabilité du projet.
-*   **Amélioration de la documentation:** Amélioration de la documentation pour faciliter l'utilisation du projet.
-*   **Ajout de tests:** Ajout de tests pour améliorer la qualité du code.
-*   **Refactoring du code:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
-*   **Correction de bugs:** Correction de bugs pour améliorer la stabilité du projet.
-*   **Amélioration de la documentation:** Amélioration de la documentation pour faciliter l'utilisation du projet.
-*   **Ajout de tests:** Ajout de tests pour améliorer la qualité du code.
-*   **Refactoring du code:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
-*   **Correction de bugs:** Correction de bugs pour améliorer la stabilité du projet.
-*   **Amélioration de la documentation:** Amélioration de la documentation pour faciliter l'utilisation du projet.
-*   **Ajout de tests:** Ajout de tests pour améliorer la qualité du code.
-*   **Refactoring du code:** Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Suppression de code obsolète:** Suppression de code obsolète.
-*   **Amélioration des performances:** Amélioration des performances du projet.
-*   **Ajout de commentaires:** Ajout de commentaires pour faciliter la compréhension du code.
-*   **Refonte de l'interface utilisateur:** Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur.
-*   **Ajout de nouvelles fonctionnalités:** Ajout de nouvelles fonctionnalités pour améliorer la fonctionnalité du projet.
+- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés au projet.
+- **Nettoyage du code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Corrections de bugs :** Correction de nombreux bugs et améliorations de l'expérience utilisateur.
+- **Rapport d'audit de sécurité :** Réalisation d'un audit de sécurité complet et implémentation des recommandations.
+- **Refactoring :** Refactoring de plusieurs modules pour améliorer la maintenabilité et la testabilité.
+- **Gestion des dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de sécurité et améliorations de performance.

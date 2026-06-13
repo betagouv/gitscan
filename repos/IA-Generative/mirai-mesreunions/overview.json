@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/IA-Generative/mirai-mesreunions",
   "name": "mirai-mesreunions",
-  "description": "Ce projet vise à couvrir l'ensemble du cycle de vie d'une réunion efficace, de sa préparation à la capitalisation des décisions, afin de produire un impact organisationnel mesurable, tout en garantissant la souveraineté des données.",
+  "description": "Ce projet est une suite d'intelligence pour la réunion, couvrant tout son cycle de vie, de la préparation à la capitalisation des décisions, dans un environnement de confiance souverain. Il vise à produire un impact organisationnel mesurable en garantissant la confidentialité des données.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
@@ -23,31 +22,29 @@
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Kubernetes & Helm"
+    "Kubernetes & Helm",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "session"
+      "saml"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": "Tests unitaires et de bout en bout",
-  "workflows": [],
-  "lastActivity": "2026-06-06T16:23:24+02:00",
+  "tests": "Tests unitaires et d'intégration",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-06T00:00:00Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",

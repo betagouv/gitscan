@@ -104,20 +104,24 @@
 │           ├── glossary_filter.py
 │           ├── mirai_oidc.py
 │           ├── models.py
+│           ├── oidc_auth.py
 │           ├── oidc_refresh_store.py
 │           ├── queue_eta.py
 │           ├── queue_helper.py
+│           ├── rate_limit.py
 │           ├── s3_helper.py
 │           ├── secrets_crypto.py
 │           ├── security.py
 │           ├── trigger_url.py
-│           └── upload_helpers.py
+│           ├── upload_helpers.py
+│           └── web_hardening.py
 ├── migrations
 │   ├── external
 │   │   ├── 001_normalization_impact.sql
 │   │   ├── 002_trashed_at.sql
 │   │   ├── 003_session_user_active_created_index.sql
-│   │   └── 004_preparation_generation_jobs.sql
+│   │   ├── 004_preparation_generation_jobs.sql
+│   │   └── 005_qr_session_hardening.sql
 │   └── internal
 │       ├── 001_admin_readonly_role.sql
 │       ├── 002_device_enrollment_pending_status.sql
@@ -398,9 +402,12 @@
 │   │   ├── resilience_internal_pull.sh
 │   │   └── security_pull_trigger.sh
 │   └── unit
-│       ├── test_*.py  (54 files)
+│       ├── test_*.py  (64 files)
 │       └── test_format_utils.js
 └── tools
     ├── backfill_meeting_datetime_from_filename.py
-    └── preview_mydevices.py
-86 directories, 372 files
+    ├── preview_mydevices.py
+    ├── smoke_audio_retention.sh
+    ├── smoke_local_upload_transcribe.sh
+    └── smoke_youtube_materialization.sh
+86 directories, 389 files
