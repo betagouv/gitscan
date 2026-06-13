@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus de Validation des Acquis de l'Expérience (VAE).",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus de Validation des Acquis de l'Expérience (VAE) en France.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,11 +9,16 @@
     "Authentification & Accès",
     "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Interface utilisateur & Design",
-    "Collaboration & Workflow"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels"
+  ],
   "dependencies": [
     "Fastify",
     "Next.js",
@@ -21,26 +26,30 @@
     "Prisma",
     "React",
     "Keycloak",
-    "Traefik",
     "PostgreSQL",
     "Outscale",
-    "Brevo"
+    "Traefik",
+    "Datadog",
+    "Metabase",
+    "Brevo",
+    "Strapi"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
+    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session",
-      "jwt"
+      "jwt",
+      "session"
     ],
     "providers": [
-      "Keycloak"
+      "FranceConnect"
     ]
   },
   "tests": [
@@ -51,7 +60,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-10T16:49:07+02:00",
+  "lastActivity": "2026-06-12T10:51:49+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

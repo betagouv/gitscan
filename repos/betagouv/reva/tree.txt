@@ -2169,6 +2169,8 @@
     │   │   │   ├── features
     │   │   │   │   ├── createAccount.ts
     │   │   │   │   ├── deleteAccount.ts
+    │   │   │   │   ├── deleteExpiredAccountEmailOtps.test.ts
+    │   │   │   │   ├── deleteExpiredAccountEmailOtps.ts
     │   │   │   │   ├── disableAccount.ts
     │   │   │   │   ├── establishSsoSession.test.ts
     │   │   │   │   ├── establishSsoSession.ts
@@ -2189,8 +2191,12 @@
     │   │   │   │   ├── keycloak.ts
     │   │   │   │   ├── loginWithCredentials.ts
     │   │   │   │   ├── resetAccountPassword.ts
+    │   │   │   │   ├── sendEmailOtp.test.ts
+    │   │   │   │   ├── sendEmailOtp.ts
     │   │   │   │   ├── sendForgotPasswordEmail.ts
     │   │   │   │   ├── updateAccount.ts
+    │   │   │   │   ├── verifyEmailOtp.test.ts
+    │   │   │   │   ├── verifyEmailOtp.ts
     │   │   │   │   └── verifyOtpChallenge.ts
     │   │   │   ├── mail
     │   │   │   │   ├── notify-new-email.ts
@@ -4431,6 +4437,14 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260527133148_add_new_end_of_accompagnement_reason
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260608093556_create_table_account_email_otp
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260608093950_update_account_table_add_enable_email_otp_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260610092628_add_account_otp_counter_sequence
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260612084919_update_account_email_otp_add_index_on_created_at_column
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -6012,4 +6026,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2020 directories, 3994 files
+2024 directories, 4004 files

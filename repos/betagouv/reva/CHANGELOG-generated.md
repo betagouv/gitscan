@@ -1,57 +1,100 @@
-## Changelog : reva (30 derniers jours, au 10 juin 2026)
+## Changelog : reva (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur et de la gestion des candidatures, notamment au niveau de l'administration et de l'intégration FranceConnect. Des améliorations de sécurité ont également été apportées, avec l'introduction de l'authentification à deux facteurs (TOTP) et la sécurisation des cookies. Plusieurs corrections de bugs et optimisations ont été réalisées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de la sécurité avec l'ajout de l'authentification à deux facteurs par email et par OTP, l'enrichissement des fonctionnalités d'administration (gestion des collaborateurs AAP, tableau de bord AAP), et l'amélioration de l'expérience utilisateur, notamment dans la gestion des candidatures et des informations sur les organismes certificateurs. Plusieurs corrections de bugs et optimisations ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Gestion des candidatures :**
-    - Ajout de filtres pour les candidatures (accompagnement, archive, financement, jury, etc.) dans l'interface d'administration. [#1037](https://github.com/betagouv/reva/pull/1037)
-    - Amélioration de la page de résumé des candidatures avec l'ajout d'une carte pour l'organisme certificateur et un lien vers sa page de détails.
-    - Possibilité pour les administrateurs de créer des comptes collaborateurs pour les AAP directement depuis la liste des AAP.
-    - Ajout d'un nouveau motif de fin d'accompagnement.
-    - Amélioration de l'affichage des informations sur les résultats du jury.
-    - Ajout d'une page de détails pour les organismes certificateurs.
-- **FranceConnect :**
-    - Amélioration de la gestion des comptes FranceConnect existants.
-    - Correction de la gestion des codes pays lors de l'utilisation de FranceConnect.
-- **Authentification :**
-    - Implémentation de l'authentification à deux facteurs (TOTP) pour les utilisateurs.
-    - Amélioration de la sécurité des cookies de session.
-    - Possibilité d'activer/désactiver le tableau de bord AAP par utilisateur.
-- **Interface utilisateur :**
-    - Amélioration de l'interface de la page de gestion des lieux d'accueil (ajout d'un bouton de suppression, confirmation de suppression).
-    - Amélioration de l'affichage des informations sur les cohortes VAE.
-    - Correction de bugs d'affichage et de navigation dans l'interface d'administration.
-- **Interopérabilité :**
-    - Ajout de la possibilité d'ajouter un fichier de déclaration sur l'honneur à la réponse de création de décision de recevabilité PDF.
+- Ajout de l'authentification à deux facteurs par email avec envoi d'un code OTP par email [#1234](https://github.com/betagouv/reva/issues/1234).
+- Possibilité pour les administrateurs de gérer les comptes collaborateurs des AAP (création, liste).
+- Ajout d'un nouveau tableau de bord pour les administrateurs AAP.
+- Amélioration de la page de résumé des candidatures avec l'ajout d'une carte pour l'organisme certificateur, avec un lien vers une page de détails.
+- Ajout d'une page d'informations de contact de l'organisme certificateur.
+- Possibilité pour les administrateurs de confirmer automatiquement l'arrêt d'un accompagnement.
+- Ajout de filtres pour les candidatures dans l'interface d'administration (financement, accompagnement, statut, etc.).
+- Amélioration des règles métiers pour les statuts de faisabilité.
+- Ajout de la possibilité de choisir une nouvelle raison de fin d'accompagnement.
+- Amélioration de l'affichage des informations sur les certifications.
+- Correction de l'URL de création de compte collaborateur AAP.
+- Suppression de la limite de 100 heures pour la formation supplémentaire.
+- Suppression de la notification de migration du lien magique pour les candidats.
+- Ajout d'une route d'enregistrement par mot de passe pour les candidats.
+- Amélioration de l'affichage des informations sur les organismes certificateurs.
 
 ### Évolutions techniques
-- **Keycloak :**
-    - Mise à jour de la configuration de Keycloak pour activer les fonctionnalités token-exchange:v1 et admin-fine-grained-authz:v1.
-    - Optimisation de la configuration de Keycloak pour l'authentification à deux facteurs.
-- **Infrastructure :**
-    - Mise à jour des dépendances (axios, @strapi/strapi, react-router, react-router-dom, tmp, ip-address, protobufjs/utf8).
-    - Amélioration de la gestion des secrets et des variables d'environnement.
-    - Amélioration de la gestion des logs.
-- **Code :**
-    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-    - Optimisation des requêtes en base de données.
-    - Ajout de tests unitaires et d'intégration.
-    - Migration de tests Cypress vers Playwright.
-    - Suppression de code obsolète.
-- **CI/CD :**
-    - Amélioration du pipeline CI/CD.
+- Mise à jour de Keycloak pour activer les fonctionnalités `token-exchange:v1` et `admin-fine-grained-authz:v1`.
+- Refactorisation du code d'authentification pour améliorer la sécurité et la maintenabilité.
+- Amélioration de la gestion des cookies pour l'impersonation.
+- Optimisation des requêtes GraphQL pour améliorer les performances.
+- Migration de certains tests Cypress vers Playwright.
+- Mise à jour des dépendances (axios, @strapi/strapi, uuid, brace-expansion, react-router, react-router-dom, tmp).
+- Ajout d'un index sur la colonne `create_at` de la table `account_email_otp` pour améliorer les performances des requêtes.
+- Suppression d'informations inutiles du type GraphQL `AccountLogged`.
+- Ajout d'une table `account_email_otp` pour stocker les codes OTP par email.
+- Ajout d'une tâche cron pour supprimer les codes OTP expirés.
+- Ajout d'un champ `email_otp_enabled` à la table `account` pour activer/désactiver l'authentification par email.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Suppression de journaux inutiles.
 
 ### Autres changements
-- Mise à jour de la documentation.
+- Amélioration de la documentation.
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Amélioration de la lisibilité du code.
 - Correction de problèmes de typage.
-- Amélioration des messages d'erreur.
-- Correction de bugs mineurs.
-- Ajout de scripts pour l'anonymisation des bases de données.
+- Mise à jour de la configuration de l'infrastructure.
+- Correction de la gestion des codes pays INSEE (Corée).
+- Amélioration de la gestion des espaces blancs dans les noms de cohortes.
+- Correction de l'affichage des badges pour les comptes AAP désactivés.
+- Amélioration de la gestion des liens dans l'interface d'administration.
+- Correction de l'affichage des résultats de jury.
+- Ajout de commentaires pour faciliter la maintenance du code.
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Amélioration de la gestion des filtres dans l'interface d'administration.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
 - Amélioration de la gestion des erreurs FranceConnect.
-- Correction de la gestion des domaines Formacode.
-- Amélioration de la gestion des filtres dans l'API.
-- Correction de la gestion des codes INSEE des pays.
-- Amélioration de la gestion des URL de redirection.
-- Correction de problèmes de performance.
-- Mise à jour de Next.js dans certains packages.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
+- Correction de l'affichage des informations sur les accompagnements.
+- Correction de l'affichage des informations sur les candidatures archivées.
+- Amélioration de la gestion des erreurs FranceConnect.
+- Correction de l'affichage des informations sur les organismes certificateurs.
