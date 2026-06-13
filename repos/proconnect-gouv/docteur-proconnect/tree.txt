@@ -1,7 +1,8 @@
 .
+├── .buildpacks
 ├── .editorconfig
 ├── .env
-├── .env.development
+├── .env.test
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
@@ -9,25 +10,24 @@
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── index.js
-├── package-lock.json
+├── bun.lock
 ├── package.json
 ├── public
-│   ├── 2fa.svg
 │   ├── common.css
-│   ├── illu-password.svg
-│   ├── js
-│   │   └── 2fa.js
-│   ├── padlock.svg
-│   ├── single-use-code.svg
 │   └── welcome.svg
-└── views
-    ├── pages
-    │   ├── error.ejs
-    │   ├── index.ejs
-    │   └── main.ejs
-    └── partials
-        ├── footer.ejs
-        ├── go-back.ejs
-        └── header.ejs
-8 directories, 24 files
+├── scalingo.json
+├── src
+│   ├── config.ts
+│   ├── dev
+│   │   └── oidc_provider.ts
+│   ├── main.ts
+│   ├── server.browser.test.ts
+│   ├── server.ts
+│   ├── session.test.ts
+│   ├── session.ts
+│   └── views
+│       ├── error.ts
+│       ├── home.ts
+│       └── layout.ts
+└── tsconfig.json
+7 directories, 25 files
