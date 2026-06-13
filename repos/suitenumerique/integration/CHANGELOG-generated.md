@@ -1,11 +1,13 @@
-## Changelog : integration (derniers 30 jours)
+## Changelog : integration (30 derniers jours, au 2026-07-11)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'application "Gaufre" et plus particulièrement sur sa fonctionnalité de visioconférence. La version 1 de cette fonctionnalité est désormais officiellement sortie de phase bêta, indiquant une stabilisation et une fiabilité accrues pour les utilisateurs.
+Cette mise à jour apporte une correction importante concernant la gestion des événements `clickOutside` dans le composant `lagaufre`, améliorant ainsi la réactivité et la fiabilité de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- La fonctionnalité de visioconférence de l'application "Gaufre" est maintenant disponible en version 1, sortant de sa phase bêta. (#129c163)
+- Correction d'un bug dans le composant `lagaufre` où l'événement `clickOutside` n'était pas correctement déclenché pendant la phase de capture, ce qui pouvait empêcher certaines interactions de fonctionner comme prévu. [#5316093](https://github.com/suitenumerique/integration/commit/5316093)
 
 ### Évolutions techniques
-- Suppression de l'étiquette "bêta" pour la fonctionnalité de visioconférence de "Gaufre". (#129c163)
-- Correction d'une erreur de typographie dans le message concernant la sortie de la version 1 de "Gaufre" (passage de "fichiers" à "visio"). (#0e7ca43)
+- Aucune évolution technique significative à signaler durant cette période.
+
+### Autres changements
+- Aucune autre modification n'a été apportée.
