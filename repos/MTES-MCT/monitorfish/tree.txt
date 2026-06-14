@@ -188,6 +188,7 @@
 │   │   │   │                   │   │   │   ├── LastPositionAIS.kt
 │   │   │   │                   │   │   │   └── Species.kt
 │   │   │   │                   │   │   ├── logbook
+│   │   │   │                   │   │   │   ├── CurrentTripDepAndPositionAtSea.kt
 │   │   │   │                   │   │   │   ├── EffortTargetSpeciesGroup.kt
 │   │   │   │                   │   │   │   ├── Haul.kt
 │   │   │   │                   │   │   │   ├── IHasImplementation.kt
@@ -239,6 +240,8 @@
 │   │   │   │                   │   │   │       ├── ControlOrigin.kt
 │   │   │   │                   │   │   │       ├── Controller.kt
 │   │   │   │                   │   │   │       ├── ControlsSummary.kt
+│   │   │   │                   │   │   │       ├── DiscardReason.kt
+│   │   │   │                   │   │   │       ├── DiscardedSpeciesControl.kt
 │   │   │   │                   │   │   │       ├── FleetSegment.kt
 │   │   │   │                   │   │   │       ├── FlightGoal.kt
 │   │   │   │                   │   │   │       ├── GearControl.kt
@@ -247,7 +250,9 @@
 │   │   │   │                   │   │   │       ├── MissionAction.kt
 │   │   │   │                   │   │   │       ├── MissionActionType.kt
 │   │   │   │                   │   │   │       ├── PatchableMissionAction.kt
-│   │   │   │                   │   │   │       ├── SpeciesControl.kt
+│   │   │   │                   │   │   │       ├── SpeciesControlPrefill.kt
+│   │   │   │                   │   │   │       ├── SpeciesOnboardControl.kt
+│   │   │   │                   │   │   │       ├── WireType.kt
 │   │   │   │                   │   │   │       └── actrep
 │   │   │   │                   │   │   │           ├── ActivityCode.kt
 │   │   │   │                   │   │   │           ├── Constants.kt
@@ -477,6 +482,9 @@
 │   │   │   │                   │   │   ├── infraction
 │   │   │   │                   │   │   │   ├── GetAllInfractionThreatCharacterization.kt
 │   │   │   │                   │   │   │   └── GetAllInfractions.kt
+│   │   │   │                   │   │   ├── logbook
+│   │   │   │                   │   │   │   ├── GetHasFilledLogbookForCurrentTrip.kt
+│   │   │   │                   │   │   │   └── GetLogbookMessages.kt
 │   │   │   │                   │   │   ├── mission
 │   │   │   │                   │   │   │   ├── GetAllMissions.kt
 │   │   │   │                   │   │   │   ├── GetMission.kt
@@ -549,7 +557,7 @@
 │   │   │   │                   │   │   │   ├── GetActiveVessels.kt
 │   │   │   │                   │   │   │   ├── GetDatesFromVesselTrackDepth.kt
 │   │   │   │                   │   │   │   ├── GetLastPositionsAIS.kt
-│   │   │   │                   │   │   │   ├── GetLogbookMessages.kt
+│   │   │   │                   │   │   │   ├── GetSpeciesControlPrefillFromLogbook.kt
 │   │   │   │                   │   │   │   ├── GetVessel.kt
 │   │   │   │                   │   │   │   ├── GetVesselAISPositions.kt
 │   │   │   │                   │   │   │   ├── GetVesselBeaconMalfunctions.kt
@@ -616,6 +624,7 @@
 │   │   │   │                   │   │   │   ├── ComputeFleetSegmentsDataInput.kt
 │   │   │   │                   │   │   │   ├── CreateOrUpdateFleetSegmentDataInput.kt
 │   │   │   │                   │   │   │   ├── CreateReportingDataInput.kt
+│   │   │   │                   │   │   │   ├── DiscardedSpeciesControlDataInput.kt
 │   │   │   │                   │   │   │   ├── DynamicVesselGroupDataInput.kt
 │   │   │   │                   │   │   │   ├── FixedVesselGroupDataInput.kt
 │   │   │   │                   │   │   │   ├── GearControlDataInput.kt
@@ -629,7 +638,7 @@
 │   │   │   │                   │   │   │   ├── SaveBeaconMalfunctionCommentDataInput.kt
 │   │   │   │                   │   │   │   ├── SilenceOperationalAlertDataInput.kt
 │   │   │   │                   │   │   │   ├── SilencedAlertDataInput.kt
-│   │   │   │                   │   │   │   ├── SpeciesControlDataInput.kt
+│   │   │   │                   │   │   │   ├── SpeciesOnboardControlDataInput.kt
 │   │   │   │                   │   │   │   ├── ThreatHierarchyDataInput.kt
 │   │   │   │                   │   │   │   ├── UpdateBeaconMalfunctionDataInput.kt
 │   │   │   │                   │   │   │   ├── UpdateControlObjectiveDataInput.kt
@@ -721,6 +730,7 @@
 │   │   │   │                   │   │   │   ├── SelectedVesselDataOutput.kt
 │   │   │   │                   │   │   │   ├── SilencedAlertDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesAndSpeciesGroupsDataOutput.kt
+│   │   │   │                   │   │   │   ├── SpeciesControlPrefillDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesGroupDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesLastPositionDataOutput.kt
@@ -1228,6 +1238,7 @@
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.380__Create_ais_positions_hourly_continuous_aggregate.sql
 │   │   │       │   │   │   ├── V0.381__Update_analytics_missions_table.sql
+│   │   │       │   │   │   ├── V0.382__Update_mission_actions_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.40__Update_control_anteriority_table.sql
@@ -1410,6 +1421,8 @@
 │   │       │           └── cnsp
 │   │       │               └── monitorfish
 │   │       │                   ├── UtilsUTests.kt
+│   │       │                   ├── config
+│   │       │                   │   └── MapperConfigurationUTests.kt
 │   │       │                   ├── domain
 │   │       │                   │   ├── UtilsUTests.kt
 │   │       │                   │   ├── entities
@@ -1493,6 +1506,8 @@
 │   │       │                   │   │   │   └── UtilsUTests.kt
 │   │       │                   │   │   ├── gear
 │   │       │                   │   │   │   └── GetAllGearsUTests.kt
+│   │       │                   │   │   ├── logbook
+│   │       │                   │   │   │   └── GetHasFilledLogbookForCurrentTripUTests.kt
 │   │       │                   │   │   ├── mission
 │   │       │                   │   │   │   ├── GetAllMissionsUTests.kt
 │   │       │                   │   │   │   ├── GetMissionUTests.kt
@@ -1543,6 +1558,7 @@
 │   │       │                   │   │   ├── vessel
 │   │       │                   │   │   │   ├── GetActiveVesselsUTests.kt
 │   │       │                   │   │   │   ├── GetLogbookMessagesUTests.kt
+│   │       │                   │   │   │   ├── GetSpeciesControlPrefillFromLogbookUTests.kt
 │   │       │                   │   │   │   ├── GetVesselAISPositionsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselContactToUpdateByVesselIdUTests.kt
 │   │       │                   │   │   │   ├── GetVesselTripNumbersUTests.kt
@@ -3010,6 +3026,8 @@
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── overlays
 │   │   │   │   │   └── LogbookMessageOverlay.tsx
+│   │   │   │   ├── schemas
+│   │   │   │   │   └── SpeciesControlPrefillSchema.ts
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
@@ -3167,16 +3185,20 @@
 │   │   │   │   │   │   │   ├── ObservationForm.tsx
 │   │   │   │   │   │   │   ├── SeaControlForm.tsx
 │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   │   │   ├── schemas.test.ts
+│   │   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   │   │   ├── shared
 │   │   │   │   │   │   │   │   ├── ActionFormHeader.tsx
+│   │   │   │   │   │   │   │   ├── ControlCheckTable.tsx
 │   │   │   │   │   │   │   │   ├── ControlQualityField.tsx
 │   │   │   │   │   │   │   │   ├── DatePickerField.tsx
+│   │   │   │   │   │   │   │   ├── DiscardedSpeciesField.tsx
 │   │   │   │   │   │   │   │   ├── FleetSegmentsField.tsx
 │   │   │   │   │   │   │   │   ├── FormikAuthor.tsx
 │   │   │   │   │   │   │   │   ├── FormikCoordinatesPicker.tsx
+│   │   │   │   │   │   │   │   ├── FormikGangwayField.tsx
 │   │   │   │   │   │   │   │   ├── FormikINNRadio.tsx
 │   │   │   │   │   │   │   │   ├── FormikMultiInfractionPicker
 │   │   │   │   │   │   │   │   │   ├── Infraction.tsx
@@ -3228,10 +3250,13 @@
 │   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   ├── constants.tsx
 │   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── useIsEISREnabled.test.ts
 │   │   │   │   │   │   │   ├── useGetMainFormFormikUsecases.ts
 │   │   │   │   │   │   │   ├── useGetMissionActionFormikUsecases.ts
 │   │   │   │   │   │   │   ├── useGetMissionFrontCompletion.ts
 │   │   │   │   │   │   │   ├── useGetNatinfsAsOptions.ts
+│   │   │   │   │   │   │   ├── useIsEISREnabled.ts
 │   │   │   │   │   │   │   ├── useIsMissionEnded.ts
 │   │   │   │   │   │   │   ├── useListenToAllMissionEventsUpdates.ts
 │   │   │   │   │   │   │   ├── useListenToMissionEventUpdatesById.ts
@@ -3258,10 +3283,13 @@
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   │   │   └── dummyAction.ts
+│   │   │   │   │   │   │   │   ├── mergeSpeciesOnboardWithPrefill.test.ts
+│   │   │   │   │   │   │   │   ├── updateActionLogbookFilledPriorToControl.test.ts
 │   │   │   │   │   │   │   │   └── updateMissionLocation.test.ts
 │   │   │   │   │   │   │   ├── initMissionGeometry.ts
 │   │   │   │   │   │   │   ├── updateActionFAOAreas.ts
 │   │   │   │   │   │   │   ├── updateActionGearsOnboard.ts
+│   │   │   │   │   │   │   ├── updateActionLogbookFilledPriorToControl.ts
 │   │   │   │   │   │   │   ├── updateActionSegments.ts
 │   │   │   │   │   │   │   ├── updateActionSpeciesOnboard.ts
 │   │   │   │   │   │   │   ├── updateMissionGeometry.ts
@@ -3331,12 +3359,14 @@
 │   │   │   │   ├── monitorenvMissionApi.ts
 │   │   │   │   ├── monitorfishMissionApi.ts
 │   │   │   │   ├── schemas
+│   │   │   │   │   ├── DiscardedSpeciesControlSchema.ts
 │   │   │   │   │   ├── FleetSegmentSchema.ts
 │   │   │   │   │   ├── GearControlSchema.ts
 │   │   │   │   │   ├── InfractionSchema.ts
 │   │   │   │   │   ├── MissionActionSchema.ts
 │   │   │   │   │   ├── NatinfSchema.ts
 │   │   │   │   │   ├── SpeciesControlSchema.ts
+│   │   │   │   │   ├── SpeciesOnboardControlSchema.ts
 │   │   │   │   │   ├── ThreatCharacterizationSchema.ts
 │   │   │   │   │   └── ThreatSchema.ts
 │   │   │   │   ├── types.ts
@@ -5854,4 +5884,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-792 directories, 5378 files
+797 directories, 5403 files
