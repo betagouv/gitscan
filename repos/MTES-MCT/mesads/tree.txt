@@ -63,6 +63,7 @@
 │   │   ├── management
 │   │   │   └── commands
 │   │   │       ├── ads_donnees_test.py
+│   │   │       ├── create_previous_update_logs.py
 │   │   │       ├── export_ads_managers.py
 │   │   │       ├── export_emails.py
 │   │   │       ├── import_ads.py
@@ -71,6 +72,7 @@
 │   │   │       ├── liste_attente_donnees_test.py
 │   │   │       ├── liste_attente_mail_delai_depasse.py
 │   │   │       ├── load_ads_managers.py
+│   │   │       ├── notify_prefectures_gestionnaires.py
 │   │   │       ├── remove_old_accounts.py
 │   │   │       ├── stats_ads_count_by_administration.py
 │   │   │       └── stats_ads_count_by_pmr.py
@@ -193,6 +195,7 @@
 │   │   │   ├── 0115_adsmanagerdecree_nombre_ads.py
 │   │   │   ├── 0116_demandeacceslectureseule.py
 │   │   │   ├── 0117_auto_20260527_1719.py
+│   │   │   ├── 0118_adsmanageradministrator_notify_verification_enabled.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── reversion_diff.py
@@ -200,7 +203,8 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── export.py
 │   │   │   ├── import_ads.py
-│   │   │   └── liste_attente.py
+│   │   │   ├── liste_attente.py
+│   │   │   └── notifications.py
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
 │   │   │   ├── boolean_display.py
@@ -230,6 +234,7 @@
 │   │   │   ├── test_reversion_diff.py
 │   │   │   ├── test_service_exports.py
 │   │   │   ├── test_service_import_ads.py
+│   │   │   ├── test_service_notifications.py
 │   │   │   └── views
 │   │   │       ├── __init__.py
 │   │   │       ├── test_ads.py
@@ -370,6 +375,10 @@
 │   │   │   ├── liste_attente
 │   │   │   │   ├── doublon_inscription_email_body.mjml
 │   │   │   │   └── doublon_inscription_email_body.txt
+│   │   │   ├── mail_ads_manager
+│   │   │   │   ├── demande_verification_content.mjml
+│   │   │   │   ├── demande_verification_content.txt
+│   │   │   │   └── demande_verification_subject.txt
 │   │   │   ├── pages
 │   │   │   │   ├── email_ads_created_or_updated_content.mjml
 │   │   │   │   ├── email_ads_created_or_updated_content.txt
@@ -617,4 +626,4 @@
 ├── setup.cfg
 ├── tsconfig.json
 └── webpack.config.js
-84 directories, 535 files
+85 directories, 543 files
