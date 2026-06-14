@@ -1,52 +1,48 @@
 ## Changelog : maestro (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe de Maestro a déployé de nombreuses améliorations, notamment autour de la gestion des laboratoires, des prélèvements et des analyses. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur. L'application continue d'évoluer pour répondre aux besoins des agents de l'administration dans la gestion des données environnementales et sanitaires.
+Cette période a été marquée par de nombreuses améliorations et corrections, notamment concernant la gestion des documents, des laboratoires, des prélèvements et des analyses. Des améliorations ont également été apportées à l'API et à l'intégration avec des services externes comme Brevo et S3. De nombreuses mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface pour configurer les laboratoires et leurs analytes [#920].
-- Possibilité de filtrer les prélèvements par département pour les administrations centrales [#3c18a93].
-- Amélioration de la gestion des documents pour le suivi national, permettant le dépôt de documents [#1051].
-- Ajout d'une API dédiée à SEVES [#80ef3c1].
-- Gestion des agréments des laboratoires dans LabCam [#8c49371].
-- Possibilité d'imprimer le formulaire vierge pour les DAOA après sélection de l'abattoir [#c71d3d9].
-- Amélioration de la gestion des LMR (Limites Maximales de Résidus) avec prise en compte de certaines LMR optionnelles [#616abbd].
-- Ajout de la date de création des utilisateurs dans Maestro [#80ef3c1].
-- Correction de l'affichage du tableau de bord lorsqu'il n'y a pas d'actions prioritaires [#1054].
-- Correction de la réinitialisation de la modale de recevabilité [#6d6890b].
-- Correction de l'affichage du numéro DAP et du code barre échantillon [#7a57781].
-- Correction de la gestion des statuts suite à l'analyse des échantillons [#a137db9].
+- Ajout de la possibilité de déposer des documents pour le suivi national [#1051](https://github.com/betagouv/maestro/issues/1051).
+- Amélioration de l'affichage du tableau de bord lorsque qu'il n'y a pas d'actions prioritaires [#1054](https://github.com/betagouv/maestro/issues/1054).
+- Ajout d'une API pour SEVES [#900](https://github.com/betagouv/maestro/issues/900).
+- Gestion des agréments des laboratoires [#871](https://github.com/betagouv/maestro/issues/871).
+- Possibilité de modifier les analytes des laboratoires en PPV [#919](https://github.com/betagouv/maestro/issues/919).
+- Ajout d'une interface de configuration des laboratoires [#920](https://github.com/betagouv/maestro/issues/920).
+- Amélioration du filtre sur les types de plans de programmation pour les utilisateurs [#1055](https://github.com/betagouv/maestro/issues/1055).
+- Ajout du filtre par département pour les administrations centrales dans les prélèvements [#937](https://github.com/betagouv/maestro/issues/937).
+- Ajout de certaines LMR optionnelles [#1013](https://github.com/betagouv/maestro/issues/1013).
+- Possibilité d'imprimer le formulaire vierge pour les DAO après sélection de l'abattoir [#1011](https://github.com/betagouv/maestro/issues/1011).
+- Ajout de l'identifiant de l'acteur dans Sacha [#1057](https://github.com/betagouv/maestro/issues/1057).
 
 ### Évolutions techniques
-- Amélioration du typage des réponses de l'API [#b78df31].
-- Refactorisation de l'URL avec un builder typé [#c5f03d8].
-- Remplacement de `swc` par `node` pour certaines tâches [#ab687ee].
-- Utilisation d'une meilleure méthode pour ajouter des pièces jointes avec Nodemailer [#78c1a30].
-- Mise à jour de nombreuses dépendances (voir section "Autres changements").
-- Correction d'un problème de capture des erreurs `console.error` avec Sentry (puis rétractation de la correction en raison de problèmes) [#5a11e34, #69c611e].
-- Ajout d'alertes Mattermost en cas d'échec d'envoi d'emails via Brevo [#1cbe5f4].
+- Mise à jour de l'envoi d'emails pour utiliser le relai SMTP Brevo.
+- Amélioration du typage des réponses de l'API pour une meilleure robustesse [#1006](https://github.com/betagouv/maestro/issues/1006).
+- Refactorisation de l'URL pour utiliser un builder typé [#987](https://github.com/betagouv/maestro/issues/987).
+- Remplacement de `swc` par `node` pour certaines tâches [#1037](https://github.com/betagouv/maestro/issues/1037).
+- Correction d'un problème de capture des erreurs `console.error` avec Sentry (réversion d'un commit précédent).
+- Mise à jour de plusieurs dépendances (voir section "Autres changements").
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances : `@aws-sdk/client-s3`, `i18next`, `shell-quote`, `actions/checkout`, `github/codeql-action`, `@biomejs/biome`, `vite`, `@types/react`, `@reduxjs/toolkit`, `lefthook`, `date-fns`, `puppeteer-core`, `playwright`, `@types/node`, `@mui/material`, `@aws-sdk/s3-request-presigner`, `fast-xml-builder`, `react-dom`, `react-router`, `fast-xml-parser`, et d'autres.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Nettoyage du code et refactoring de certains composants.
-- Correction de quelques balises dans l'interface utilisateur [#8d17f9a].
-- Ajout de l'identifiant de l'acteur dans Sacha [#d80f2a4].
-- Correction du filtre sur les `programmingPlanKinds` dans la gestion des utilisateurs [#aaaea64].
-- Correction d'un problème avec les réponses non définies dans Zod [#6f2750a].
-- Correction de l'extraction du numéro d'exemplaire dans PPV [#6e4a42d].
-- Correction de la duplication de la date du prélèvement [#e47a28a].
-- Correction de l'association du prélèvement à sa programmation [#347ca75].
-- Correction de l'export des prélèvements par année [#cc522ab].
-- Correction de la gestion de la conformité des prélèvements [#821fe0d].
-- Correction de l'ajout des types de ressources réglementation et modèle [#ea86394].
-- Suppression des utilisateurs non actifs de la liste des préleveurs [#476dd7c].
-- Correction de l'ajout de préfixes aux destinataires dans Sacha [#5a7f594].
-- Correction de l'utilisation du relai SMTP Brevo pour l'envoi d'emails [#2834570].
-- Passage de GPG en mode non interactif [#39733a5].
-- Ajout d'un utilitaire typé pour la gestion du menu [#463b63e].
-- Transformation des onglets du menu d'administration en liens [#e35885f].
-- Ajout de la prise en compte des non quantifiables pour Cereco [#90c424c].
-- Correction du nouveau nom de colonne dans Cereco [#5723d7c].
-- Correction de l'interprétation des nouvelles syntaxes LMR par Inovalys [#855339b, #b2b8b39].
-- Correction de l'email contenu dans la clé GPG [#81cf0f5].
+- Mise à jour de nombreuses dépendances : `@aws-sdk/client-s3`, `i18next`, `storybook`, `actions/checkout`, `github/codeql-action`, `date-fns`, `react-dom`, `imapflow`, `nodemailer`, `@sentry/node`, `@sentry/react`, `vite`, `@types/node`, `@vitest/coverage-v8`, `fast-xml-parser`, `fast-xml-builder`, `@mui/material`, etc.
+- Ajout d'une alerte Mattermost en cas d'échec d'envoi d'email via Brevo [#1056](https://github.com/betagouv/maestro/issues/1056).
+- Correction de quelques balises dans Sacha [#1044](https://github.com/betagouv/maestro/issues/1044).
+- Ajout d'un préfixe aux destinataires d'emails dans Sacha [#1047](https://github.com/betagouv/maestro/issues/1047).
+- Ajout de la date de création des utilisateurs [#1038](https://github.com/betagouv/maestro/issues/1038).
+- Correction de la gestion des statuts suite à l'analyse des échantillons [#947](https://github.com/betagouv/maestro/issues/947).
+- Correction de la réinitialisation de la modale de recevabilité [#977](https://github.com/betagouv/maestro/issues/977).
+- Correction de la duplication de la date du prélèvement dans la dernière étape [#979](https://github.com/betagouv/maestro/issues/979).
+- Correction du parsing de la nouvelle syntaxe LMR par Inovalys [#1005](https://github.com/betagouv/maestro/issues/1005).
+- Correction de la prise en compte des corrections apportées par Inovalys [#1004](https://github.com/betagouv/maestro/issues/1004).
+- Correction de la recherche de la programmation associée à une matrice [#950](https://github.com/betagouv/maestro/issues/950).
+- Correction du filtre sur les prélèvements exportés par année [#964](https://github.com/betagouv/maestro/issues/964).
+- Correction de la conformité du prélèvement lors de la validation des échantillons [#981](https://github.com/betagouv/maestro/issues/981).
+- Correction du status après analyse des échantillons [#978](https://github.com/betagouv/maestro/issues/978).
+- Suppression des utilisateurs non actifs de la liste des préleveurs [#990](https://github.com/betagouv/maestro/issues/990).
+- Ajout des types de ressources "réglementation" et "modèle" pour les documents [#988](https://github.com/betagouv/maestro/issues/988).
+- Correction du numéro DAP et ajout du code barre échantillon pour les étiquettes [#951](https://github.com/betagouv/maestro/issues/951).
+- Correction de la gestion des document_id dupliqués dans DAI [#938](https://github.com/betagouv/maestro/issues/938).
+- Correction du nouveau nom de colonne dans Cereco [#918](https://github.com/betagouv/maestro/issues/918).
+- Correction du coerce pour les DAI et les RAI [#948](https://github.com/betagouv/maestro/issues/948).
+- Passage de GPG en mode non interactif [#939](https://github.com/betagouv/maestro/issues/939).

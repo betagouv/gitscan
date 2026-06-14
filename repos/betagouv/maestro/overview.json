@@ -1,45 +1,48 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant la gestion des prélèvements, des analyses et des données associées, notamment dans le contexte de la surveillance de l'environnement et de la sécurité sanitaire. Elle facilite l'échange de données entre les différents acteurs et offre des fonctionnalités d'administration et de reporting.",
+  "description": "Maestro est une application web permettant de gérer des données environnementales et sanitaires, notamment dans le cadre de prélèvements et d'analyses. Elle offre des fonctionnalités pour les agents de l'administration afin de suivre et gérer ces données efficacement.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Authentification & Accès",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
     "Données & Schémas",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "PostgreSQL",
-    "Node.js",
     "React",
+    "Node.js",
+    "PostgreSQL",
     "S3",
-    "Browserless"
+    "Browserless",
+    "Dex"
   ],
   "components": [
-    "Frontend React",
-    "API REST",
-    "Base de données PostgreSQL",
-    "Docker",
-    "TypeScript"
+    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml",
-      "session"
-    ],
-    "providers": []
+      "saml"
+    ]
   },
   "tests": [
+    "Jest",
     "Vitest"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-06-11T17:03:19+02:00",
   "status": "active",
   "license": "AGPL-3.0",
@@ -57,6 +60,7 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
