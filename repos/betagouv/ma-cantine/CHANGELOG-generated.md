@@ -1,26 +1,34 @@
-## Changelog : ma-cantine (30 derniers jours, au 8 juin 2026)
+## Changelog : ma-cantine (30 derniers jours, au 13 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de ma-cantine se concentrent principalement sur le module Achats, avec une refonte de l'interface et l'ajout de nouvelles fonctionnalités pour faciliter la saisie et la gestion des informations. Des améliorations techniques ont également été apportées pour optimiser le code et corriger des erreurs.
+Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration de la gestion des achats, notamment avec une refonte du formulaire et l'ajout de nouvelles fonctionnalités pour les caractéristiques des produits. Des corrections et améliorations techniques ont également été apportées, notamment au niveau de l'API et des diagnostics, pour une meilleure robustesse et une plus grande clarté du code.
 
 ### Évolutions fonctionnelles
-- **Achats :** Ajout de la possibilité de modifier un achat directement depuis le nouveau formulaire. ([#6783](https://github.com/betagouv/ma-cantine/issues/6783))
-- **Achats :** Début de la migration de la page de création d'achat vers Vue.js, modernisant l'interface utilisateur. ([#6759](https://github.com/betagouv/ma-cantine/issues/6759))
-- **Achats :** Mise à jour de l'URL utilisée pour récupérer les données, assurant la compatibilité avec la nouvelle source officielle. ([#6789](https://github.com/betagouv/ma-cantine/issues/6789))
-- **Achats :** Ajout de l'autocomplétion dans les champs "Description" et "Fournisseurs" pour une saisie plus rapide et précise. ([#6797](https://github.com/betagouv/ma-cantine/issues/6797))
-- **Achats :** Ajout des champs "Caractéristiques" et "Famille de produit" pour une description plus détaillée des achats. ([#6782](https://github.com/betagouv/ma-cantine/issues/6782))
-- **Ressources :** Ajout des livrables GT sanitaire et médico-social. ([#6733](https://github.com/betagouv/ma-cantine/issues/6733))
+- Le formulaire de création et de modification des achats a été amélioré avec une division des caractéristiques en 4 sections pour une meilleure organisation.
+- Ajout de la possibilité de choisir "EUROPE" comme origine des produits dans les achats.
+- Ajout des champs "caractéristiques" et "famille de produit" aux achats.
+- Mise à jour des valeurs autorisées pour l'origine des produits et de l'ordre des valeurs de "Définition de locale".
+- Ajout des livrables GT sanitaire et médico-social aux ressources.
+- Remplacement de l'ancienne URL par la nouvelle URL officielle pour les achats.
+- Ajout d'une autocomplétion pour les champs "Description" et "Fournisseurs" dans les achats.
+- Ajout d'une vidéo explicative (remplacée par un lien vers la documentation) sur le formulaire d'achat.
 
 ### Évolutions techniques
-- **API :** Amélioration de la gestion des erreurs 404 pour les objets non liés à une cantine. ([#6816](https://github.com/betagouv/ma-cantine/issues/6816), [#6815](https://github.com/betagouv/ma-cantine/issues/6815), [#6814](https://github.com/betagouv/ma-cantine/issues/6814), [#6812](https://github.com/betagouv/ma-cantine/issues/6812))
-- **Achats :** Refactorisation du code pour une meilleure lisibilité et maintenabilité, notamment en séparant les règles métiers et en renommant les champs du modèle. ([#6805](https://github.com/betagouv/ma-cantine/issues/6805), [#6804](https://github.com/betagouv/ma-cantine/issues/6804), [#6765](https://github.com/betagouv/ma-cantine/issues/6765))
-- **Achats :** Amélioration des calculs d'agrégation pour prendre en compte les achats en EUROPE. ([#6788](https://github.com/betagouv/ma-cantine/issues/6788))
-- **Données Géo :** Suppression du code inutile lié à l'ancienne API Adresse. ([#6787](https://github.com/betagouv/ma-cantine/issues/6787))
-- **Diagnostics :** Simplification du code et suppression de champs inutiles. ([#6794](https://github.com/betagouv/ma-cantine/issues/6794))
-- **ETL :** Réactivation des exports cantines (Open Data & Metabase) à une fréquence journalière. ([#6725](https://github.com/betagouv/ma-cantine/issues/6725))
-- **ETL :** Ajout de WasteMeasurements dans les exports brutes (dbt). ([#6705](https://github.com/betagouv/ma-cantine/issues/6705))
+- Refactorisation de l'API pour utiliser `IsCanteenManagerUrlParam` au lieu de `IsLinkedCanteenManager` pour une meilleure cohérence.
+- Amélioration de la gestion des erreurs en renvoyant un code 404 lorsque l'objet n'appartient pas à la cantine.
+- Amélioration des calculs d'agrégation pour gérer correctement l'origine "EUROPE".
+- Suppression du code lié à l'ancienne API Adresse, simplifiant ainsi le code et améliorant la performance.
+- Amélioration des tests et correction de tests cassés suite aux refactorisations.
+- Amélioration du script de remplissage des champs "calculés" pour les diagnostics.
+- Ajout de nouveaux querysets pour faciliter le filtrage des données de diagnostic.
+- Ajout d'un nouveau champ `cout_repas` pour stocker le coût du repas et éviter les recalculs.
+- Amélioration des scripts de remplissage des champs `warning_reason_list` et `invalid_reason_list` pour les diagnostics.
+- Suppression du script `field_gen.py` car il n'est plus utilisé.
+- Correction d'un bug empêchant la création de cantines via l'API OAuth2.
+- Correction de l'export Open Data.
 
 ### Autres changements
-- **Documentation :** Ajout d'une page expliquant les commandes en lien avec une campagne de télédéclaration. ([#6738](https://github.com/betagouv/ma-cantine/issues/6738))
-- **Tests :** Correction de plusieurs tests suite aux modifications apportées. ([#6801](https://github.com/betagouv/ma-cantine/issues/6801), [#6781](https://github.com/betagouv/ma-cantine/issues/6781))
-- **Sécurité :** Sanitize du paramètre 'next' pour prévenir les failles de sécurité. ([#6709](https://github.com/betagouv/ma-cantine/issues/6709))
+- Ajout d'une page de documentation expliquant les commandes liées à une campagne de télédéclaration.
+- Mise à jour des données PAT (Produits d'Accueil et de Territoire) pour le frontend.
+- Correction de quelques tests et amélioration de la lisibilité du code.
+- Mise à jour des dépendances et publication de nouvelles versions (2026.37.1, 2026.36.1, 2026.35.0, 2026.34.0, 2026.33.4, 2026.33.3).
