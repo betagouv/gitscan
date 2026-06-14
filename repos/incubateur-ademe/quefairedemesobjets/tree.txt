@@ -187,7 +187,8 @@
 │   │   │   │   │   ├── cluster_acteurs_read_task.py
 │   │   │   │   │   ├── cluster_acteurs_suggestions_failing_task.py
 │   │   │   │   │   ├── cluster_acteurs_suggestions_prepare_task.py
-│   │   │   │   │   └── cluster_acteurs_suggestions_to_db_task.py
+│   │   │   │   │   ├── cluster_acteurs_suggestions_to_db_task.py
+│   │   │   │   │   └── utils.py
 │   │   │   │   └── business_logic
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── cluster_acteurs_clusters.py
@@ -401,6 +402,7 @@
 │   │   │   │           ├── test_cluster_acteurs_exclude_intra_source.py
 │   │   │   │           ├── test_cluster_acteurs_metadata.py
 │   │   │   │           ├── test_cluster_acteurs_normalize.py
+│   │   │   │           ├── test_cluster_acteurs_parent_data_serde.py
 │   │   │   │           ├── test_cluster_acteurs_parents_choose_data.py
 │   │   │   │           ├── test_cluster_acteurs_parents_choose_new.py
 │   │   │   │           ├── test_cluster_acteurs_read_children.py
@@ -1204,6 +1206,7 @@
     │   │   ├── qfdmd_tags.py
     │   │   └── suggestions_tags.py
     │   ├── urls.py
+    │   ├── utils.py
     │   ├── views.py
     │   └── wagtail_hooks.py
     ├── qfdmo
@@ -1256,6 +1259,7 @@
     │   │       ├── mode_liste_post_deploy.py
     │   │       ├── populate_propositionservice.py
     │   │       ├── populate_sous_cat.py
+    │   │       ├── realign_acteur_and_revision_proposition_service.py
     │   │       ├── reinitialize_suggestions.py
     │   │       ├── rename_souscategorieobjet_code.py
     │   │       ├── source_code_modification.py
@@ -1453,6 +1457,7 @@
     │       └── tests
     │           ├── ab_test_controller.test.ts
     │           ├── choose_action_controller.test.ts
+    │           ├── helpers.test.ts
     │           ├── iframe_functions.test.ts
     │           └── map_search_controller.test.ts
     ├── stats
@@ -1864,6 +1869,8 @@
     │   │   ├── test_lien.py
     │   │   ├── test_middleware.py
     │   │   ├── test_produit.py
+    │   │   ├── test_produit_page.py
+    │   │   ├── test_qfdmd_utils.py
     │   │   ├── test_signals.py
     │   │   └── test_synonyme.py
     │   ├── qfdmo
@@ -1905,4 +1912,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-353 directories, 1554 files
+353 directories, 1561 files
