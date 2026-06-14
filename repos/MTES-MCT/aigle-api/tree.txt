@@ -65,6 +65,8 @@
 │   │       ├── create_api_key.py
 │   │       ├── create_super_admin.py
 │   │       ├── create_tile.py
+│   │       ├── import_control_statuses.py
+│   │       ├── import_custom_zones.py
 │   │       ├── import_detections.py
 │   │       ├── import_from_lucca.py
 │   │       ├── import_geocommune.py
@@ -80,7 +82,8 @@
 │   │       ├── test_cmd.py
 │   │       ├── update_custom_zones.py
 │   │       ├── update_detection_parcels.py
-│   │       └── update_detectionobject_commune.py
+│   │       ├── update_detectionobject_commune.py
+│   │       └── warm_deployed_data_cache.py
 │   ├── managers
 │   │   ├── __init__.py
 │   │   └── user.py
@@ -204,6 +207,10 @@
 │   │   ├── 0115_add_calculate_surface_function.py
 │   │   ├── 0116_useractionlog.py
 │   │   ├── 0117_alter_tileset_date_to_datefield.py
+│   │   ├── 0118_redact_user_action_log_passwords.py
+│   │   ├── 0119_geocustomzone_import_id.py
+│   │   ├── 0120_add_jugement_detection_control_status.py
+│   │   ├── 0121_deployed_data_aggregate_indexes.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -235,6 +242,7 @@
 │   │   ├── base.py
 │   │   ├── geo_custom_zone.py
 │   │   ├── parcel.py
+│   │   ├── scope.py
 │   │   ├── tile_set.py
 │   │   └── user.py
 │   ├── repository
@@ -277,6 +285,7 @@
 │   ├── services
 │   │   ├── __init__.py
 │   │   ├── command_async.py
+│   │   ├── deployed_data.py
 │   │   ├── detection.py
 │   │   ├── detection_bulk_update.py
 │   │   ├── detection_geo_filter.py
@@ -293,16 +302,25 @@
 │   │   ├── prior_letter.py
 │   │   ├── tile_set.py
 │   │   └── user.py
+│   ├── signals.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── base.py
+│   │   ├── commands
+│   │   │   ├── __init__.py
+│   │   │   ├── test_import_custom_zones.py
+│   │   │   └── test_import_sitadel.py
+│   │   ├── conftest.py
 │   │   ├── fixtures
 │   │   │   ├── __init__.py
 │   │   │   ├── detection_data.py
 │   │   │   ├── geo_data.py
 │   │   │   └── users.py
+│   │   ├── test_cache.py
+│   │   ├── test_cache_integration.py
 │   │   └── views
 │   │       ├── __init__.py
+│   │       ├── test_deployed_data.py
 │   │       ├── test_detection_data.py
 │   │       ├── test_detection_geo.py
 │   │       ├── test_detection_list.py
@@ -320,6 +338,7 @@
 │   │       ├── test_run_command.py
 │   │       ├── test_statistics.py
 │   │       ├── test_super_admin_scope.py
+│   │       ├── test_super_admin_scope_extended.py
 │   │       ├── test_tile_set.py
 │   │       ├── test_user.py
 │   │       ├── test_user_action_log.py
@@ -330,6 +349,7 @@
 │   │   ├── __init__.py
 │   │   ├── analytic_log.py
 │   │   ├── bulk_csv.py
+│   │   ├── cache.py
 │   │   ├── code.py
 │   │   ├── email.py
 │   │   ├── filters.py
@@ -345,7 +365,6 @@
 │   │   ├── run_command.py
 │   │   ├── serializers.py
 │   │   ├── string.py
-│   │   ├── super_admin_scope.py
 │   │   ├── tasks.py
 │   │   └── user_action_log.py
 │   └── views
@@ -371,6 +390,7 @@
 │       ├── run_command.py
 │       ├── statistics
 │       │   ├── __init__.py
+│       │   ├── deployed_data.py
 │       │   ├── utils.py
 │       │   ├── validation_status_evolution.py
 │       │   ├── validation_status_global.py
@@ -405,4 +425,4 @@
 └── services
     ├── celery.service
     └── gunicorn_aigle.service
-37 directories, 370 files
+38 directories, 389 files
