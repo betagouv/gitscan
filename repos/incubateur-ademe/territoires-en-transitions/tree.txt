@@ -434,7 +434,9 @@
 │   │   │   │   ├── version
 │   │   │   │   │   └── route.ts
 │   │   │   │   └── zip
-│   │   │   │       └── route.ts
+│   │   │   │       ├── route.ts
+│   │   │   │       ├── validate.spec.ts
+│   │   │   │       └── validate.ts
 │   │   │   ├── app.css
 │   │   │   ├── global-error.tsx
 │   │   │   ├── global.css
@@ -4181,7 +4183,6 @@
 │   │   ├── restore-config.yml
 │   │   └── restore.sh
 │   ├── scripts
-│   │   ├── curl_test.sh
 │   │   └── run_tests.sh
 │   ├── seed
 │   │   ├── README.md
@@ -4241,8 +4242,7 @@
 │   │   │   ├── 89-1-confidentialite_vues.sql
 │   │   │   ├── 89-2-confidentialite_matrice.sql
 │   │   │   ├── 89-3-confidentialite_dataset.sql
-│   │   │   ├── 89-4_matrices.sql
-│   │   │   └── 90-reset.sql
+│   │   │   └── 89-4_matrices.sql
 │   │   └── verify
 │   │       ├── content.sql
 │   │       ├── fakes.sql
@@ -4279,6 +4279,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
+│   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -4814,6 +4815,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
+│   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5351,6 +5353,7 @@
 │   │       │   ├── bucket.sql
 │   │       │   ├── bucket@v2.93.0.sql
 │   │       │   ├── bucket@v4.36.0.sql
+│   │       │   ├── bucket_rls_strict_read.sql
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
 │   │       │   ├── collectivite@v2.8.0.sql
@@ -5859,6 +5862,7 @@
 │   │           └── webhooks.sql
 │   └── tests
 │       ├── collectivite
+│       │   ├── bucket_rls.sql
 │       │   ├── collectivite_test.sql
 │       │   └── identite.sql
 │       ├── evaluation
@@ -5957,7 +5961,8 @@
 │   │   │   │   ├── discussions.spec.ts
 │   │   │   │   └── filter-discussions.pom.ts
 │   │   │   ├── documents
-│   │   │   │   └── documents.pom.ts
+│   │   │   │   ├── documents.pom.ts
+│   │   │   │   └── preuve-storage-access.spec.ts
 │   │   │   ├── membres
 │   │   │   │   ├── invite-membre.pom.ts
 │   │   │   │   ├── invite-membre.spec.ts
@@ -6041,6 +6046,8 @@
 │   │   │   ├── dropdown.pom.ts
 │   │   │   ├── fixture-factory.interface.ts
 │   │   │   ├── mailpit.utils.ts
+│   │   │   ├── preuve-file.utils.ts
+│   │   │   ├── storage-download.utils.ts
 │   │   │   ├── supabase-client.utils.ts
 │   │   │   └── trpc.utils.ts
 │   │   └── users
@@ -6116,8 +6123,7 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── tests
 │   │   │   │   ├── auth.ts
-│   │   │   │   ├── supabase.ts
-│   │   │   │   └── testReset.ts
+│   │   │   │   └── supabase.ts
 │   │   │   ├── typeUtils.ts
 │   │   │   ├── users
 │   │   │   │   ├── dcp.fetch.ts
@@ -7133,4 +7139,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1241 directories, 6092 files
+1241 directories, 6098 files

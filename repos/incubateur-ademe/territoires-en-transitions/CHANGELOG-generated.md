@@ -1,26 +1,31 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 11 juin 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'import de plans d'action, notamment avec l'ajout d'une nouvelle fonctionnalité d'importation via différents formats de fichiers (Excel, CSV, PDF). Des améliorations ont également été apportées à la duplication de plans, à la gestion des preuves et des documents, ainsi qu'à l'interface utilisateur pour une meilleure expérience globale. Des corrections de bugs et des optimisations de performance ont également été réalisées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la gestion des documents et l'import de plans d'action, notamment via l'ajout d'une fonctionnalité d'importation de fichiers Excel et la gestion des erreurs associées. Des améliorations significatives ont également été apportées à l'interface utilisateur, en particulier pour la gestion des référentiels et des actions, avec une attention particulière portée à la duplication de plans et à la personnalisation.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fonctionnalité d'import de plans d'action à partir de fichiers Excel, CSV et PDF. [#26f13d9](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/26f13d9)
-- Possibilité de dupliquer un plan d'action existant, avec copie des notes, budgets détaillés et documents associés. [#a428150](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/a428150), [#8a86ba6](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/8a86ba6), [#2bb4132](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/2bb4132)
-- Amélioration de l'affichage des valeurs cibles et limites des indicateurs. [#e927165](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/e927165)
-- Ajout d'une modale pour demander un audit. [#cd04de5](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/cd04de5)
-- Amélioration de la page "Plateforme" du site avec une nouvelle mise en page et une section FAQ. [#a2de354](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/a2de354)
-- Ajout d'une option pour filtrer les mesures désactivées par la personnalisation. [#e5a5b51](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/e5a5b51)
+- Ajout d'une fonctionnalité de duplication de plan d'action, incluant la copie des budgets, des preuves et des notes associées [#26f13d9](https://github.com/incubateur-ademe/territoires-en-transitions/issues/26f13d9).
+- Possibilité de demander un audit directement depuis l'interface [#cd04de5](https://github.com/incubateur-ademe/territoires-en-transitions/issues/cd04de5).
+- Amélioration de l'interface pour la gestion des actions, avec une vue tabulaire éditable et des options de filtrage plus précises [#a464ae6](https://github.com/incubateur-ademe/territoires-en-transitions/issues/a464ae6).
+- Ajout de la possibilité de télécharger des documents [#0937de9](https://github.com/incubateur-ademe/territoires-en-transitions/issues/0937de9).
+- Amélioration de la gestion des invitations et des erreurs associées.
+- Ajout d'une modale pour détailler une action à la tâche.
 
 ### Évolutions techniques
-- Refactorisation importante du code lié à l'import de plans d'action, incluant la validation des données, la gestion des erreurs et l'utilisation de services dédiés. [#82d877d](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/82d877d), [#6a2fdb2](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/6a2fdb2)
-- Migration de nombreux labels JSX statiques vers un système de labels centralisé pour une meilleure maintenabilité. [#83095b9](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/83095b9)
-- Mise à jour des dépendances et correction de vulnérabilités de sécurité. [#0591a18](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/0591a18), [#6b4b226](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/6b4b226)
-- Amélioration de la performance et de la robustesse des tests. [#f9fbef9](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/f9fbef9)
-- Utilisation de nouveaux composants du Design System (DS) pour améliorer la cohérence visuelle. [#d7eac84](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/d7eac84)
+- Renforcement de la sécurité en bloquant des potentielles failles de type IDOR (Insecure Direct Object Reference) et SSRF (Server-Side Request Forgery) [#0420172](https://github.com/incubateur-ademe/territoires-en-transitions/issues/0420172), [#2930c8b](https://github.com/incubateur-ademe/territoires-en-transitions/issues/2930c8b).
+- Refactor de l'import de plans d'action avec une validation plus robuste et une meilleure gestion des erreurs, incluant l'utilisation de Zod pour la validation des formulaires et une gestion améliorée des jobs asynchrones [#f9348bb](https://github.com/incubateur-ademe/territoires-en-transitions/issues/f9348bb).
+- Migration vers Next.js 16.2.7 et mise à jour des dépendances ESLint [#b54924a](https://github.com/incubateur-ademe/territoires-en-transitions/issues/b54924a).
+- Amélioration des performances en remplaçant Fuse.js par une recherche plein texte côté serveur pour la recherche de collectivités [#8a731f8](https://github.com/incubateur-ademe/territoires-en-transitions/issues/8a731f8).
+- Refactor de la gestion des labels JSX pour une meilleure maintenabilité et réutilisation.
+- Amélioration de la gestion des tests, avec la migration vers Vitest et la suppression de tests Cypress dépréciés.
+- Utilisation de points TRPC pour certaines opérations (comptage de documents, modification/suppression de preuves).
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités et les changements d'API.
+- Mise à jour de la documentation.
+- Suppression de code et de fichiers inutilisés.
+- Amélioration de la configuration CI/CD.
 - Corrections de typos et améliorations de la lisibilité du code.
-- Nettoyage du code et suppression de fichiers inutilisés.
+- Ajout de fixtures pour les tests.
 - Amélioration de la gestion des erreurs et des logs.
-- Mise à jour de la configuration des CI/CD.
+- Mise à jour des dépendances.
+- Ajout de metadata pour la nouvelle page plateforme du site.
