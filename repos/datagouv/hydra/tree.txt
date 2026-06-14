@@ -53,9 +53,11 @@
 │   │   ├── test_analysis.py
 │   │   ├── test_catalog.py
 │   │   ├── test_probe_cors.py
-│   │   └── test_purge.py
+│   │   ├── test_purge.py
+│   │   └── test_quiet_startup.py
 │   ├── test_conversion
 │   │   ├── test_csv_to_db.py
+│   │   ├── test_csv_to_geojson.py
 │   │   ├── test_db_to_geojson.py
 │   │   ├── test_geojson_to_pmtiles.py
 │   │   └── test_parquet_export.py
@@ -68,6 +70,8 @@
 │   ├── test_logger.py
 │   └── test_utils
 │       ├── test_compute_checksum_from_file.py
+│       ├── test_csv_headers.py
+│       ├── test_queue.py
 │       ├── test_s3_client.py
 │       └── test_sentry_error.py
 ├── udata_hydra
@@ -83,14 +87,20 @@
 │   │   ├── resource.py
 │   │   └── tables_index.py
 │   ├── app.py
-│   ├── cli.py
+│   ├── cli
+│   │   ├── __init__.py
+│   │   ├── analysis.py
+│   │   ├── catalog.py
+│   │   ├── common.py
+│   │   ├── crawl.py
+│   │   ├── db.py
+│   │   └── purge.py
 │   ├── config_default.toml
 │   ├── context.py
 │   ├── conversion
 │   │   ├── __init__.py
 │   │   ├── csv_to_db.py
 │   │   ├── csv_to_geojson.py
-│   │   ├── csv_to_geojson_and_pmtiles.py
 │   │   ├── db_to_geojson.py
 │   │   ├── db_to_geojson_and_pmtiles.py
 │   │   ├── db_to_parquet.py
@@ -183,4 +193,4 @@
 │   │   └── timer.py
 │   └── worker.py
 └── uv.lock
-27 directories, 158 files
+28 directories, 167 files
