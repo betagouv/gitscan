@@ -1,28 +1,24 @@
-## Changelog : plusfraichemaville-site (30 derniers jours, au 9 juin 2026)
+## Changelog : plusfraichemaville-site (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur de l'espace projet, notamment concernant le module ClimaDiag et la gestion des fiches solutions. Des ajustements ont également été apportés pour simplifier le parcours utilisateur et supprimer des éléments non pertinents, comme les notifications et certains chargements inutiles sur la page d'accueil.
+Ce mois-ci, le site Plus Fraîche Ma Ville a bénéficié d'améliorations significatives en termes d'expérience utilisateur et de gestion des données. Des ajustements ont été apportés pour une meilleure gestion des aides disponibles, une présentation plus claire des informations, et la suppression de certaines fonctionnalités obsolètes ou non pertinentes. Des corrections ont également été apportées pour améliorer la recherche et l'affichage des données.
 
 ### Évolutions fonctionnelles
-- Le menu déroulant de maturité est maintenant affiché correctement [#504](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/504).
-- Suppression de l'appel à l'iframe Connect sur la page d'accueil pour améliorer la performance et la simplicité [#503](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/503).
-- Ajout d'une redirection pour les utilisateurs venant de MCP PGE [#502](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/502).
-- Suppression de la fiche solution "matériaux à changement de phase" de l'espace projet [#501](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/501).
-- Ajout d'un bouton secondaire pour les cartes de webinaires [#500](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/500).
-- Modification de la légende pour ClimaDiag dans l'espace projet [#499](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/499).
-- Mise à jour des canaux d'acquisition [#498](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/498).
-- Amélioration de la gestion des caractères spéciaux dans la recherche ClimaDiag [#497](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/497).
-- Suppression de la mention "non disponible en outre-mer" pour ClimaDiag [#493](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/493).
-- Filtrage des résultats des aides territoires qui ne sont pas "live" [#495](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/495).
+- Amélioration de la gestion des aides territoriales : l'affichage des fiches solution n'est plus bloqué lors de la récupération des aides. [#506](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/506)
+- Meilleure gestion de l'absence d'aides : un message plus clair est affiché lorsque aucune aide n'est disponible. [#506](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/506)
+- Correction de l'affichage du menu déroulant de maturité. [#504](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/504)
+- Suppression de la demande de retours d'expérience (REX) par email. [#504](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/504)
+- Suppression du chargement de l'iframe Connect sur la page d'accueil. [#503](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/503)
+- Ajout d'une redirection pour le MCP PGE. [#502](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/502)
+- Suppression de la fiche solution "matériaux à changement de phase" de l'espace projet. [#501](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/501)
+- Ajout d'un bouton secondaire pour les cartes de webinaires. [#500](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/500)
+- Modification de la légende pour le Climadiag dans l'espace projet. [#499](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/499)
+- Modification des canaux d'acquisition. [#498](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/498)
+- Suppression des caractères spéciaux lors de la recherche d'informations Climadiag. [#497](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/497)
 
 ### Évolutions techniques
-- Utilisation du paramètre `is_live` pour filtrer les données [#495](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/495).
-- Correction de l'utilisation du seuil ClimaDiag pour assurer une cohérence [#494](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/494).
-- Mise à jour des dépendances du projet [#496](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/496).
-- Correction de l'alignement du bouton "NL" [#504](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/504).
-- Suppression de l'envoi de mails pour les retours d'expérience (REX) [#503](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/503).
+- Amélioration de l'alignement du bouton "NL". [#504](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/504)
+- Corrections de style avec Prettier. [#499](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/499)
 
 ### Autres changements
-- Correction de fautes de frappe.
-- Amélioration de la lisibilité du code avec Prettier.
-- Importation du script ClimaDiag corrigé.
+- Correction d'une faute de frappe. [#500](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/500)
