@@ -1,32 +1,25 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours, au 4 juin 2026)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du processus de transformation des ingrédients, notamment en corrigeant des problèmes de résolution de données, en optimisant la correspondance des ingrédients et en affinant la gestion des variantes.  Plusieurs corrections ont été apportées pour assurer la cohérence et la qualité des données transformées, ainsi que pour faciliter l'intégration avec le dépôt de données Ecobalyse.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration significative de l'outil `transformed-ingredients`, qui permet de transformer et de gérer les données d'ingrédients pour l'écobilan. Les améliorations incluent une meilleure gestion des alias, une résolution plus précise des données VoLCA, et la génération de rapports CSV pour faciliter la revue des données transformées. Des corrections ont également été apportées pour améliorer la cohérence et la précision des données.
 
 ### Évolutions fonctionnelles
-- Amélioration de la correspondance des ingrédients grâce à une pénalisation des références multi-mots bruyantes dans le matcher de voisins les plus proches. [#da4d97d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/da4d97d)
-- Correction de la gestion des collisions de noms d'affichage lors de la fusion du catalogue LCI. [#39304da](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/39304da)
-- Suppression de la Soja de la variante BIO. [#0ee7b9b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0ee7b9b)
-- Génération de nouvelles versions avec 5 variantes. [#47f31af](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/47f31af)
-- Mise à jour des chemins README pour refléter le dépôt de données Ecobalyse fusionné. [#3fa0659](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/3fa0659)
+- Amélioration de la gestion des alias dans `transformed-ingredients` pour une meilleure correspondance des données. [#221ae9b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/221ae9b)
+- Ajout d'un rapport CSV par variante dans `transformed-ingredients` pour faciliter la revue des données transformées. [#64d555e](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/64d555e)
+- Génération de rapports CSV plus concis et backfill ECS depuis le pipeline dans `transformed-ingredients`. [#8c624fe](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/8c624fe)
+- Suppression de la soja de la variante BIO. [#0ee7b9b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0ee7b9b)
 
 ### Évolutions techniques
-- Refactorisation du script `export.py` pour unifier la logique des variantes, typifier le flux de données et différer les effets secondaires. [#c0cf4de](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c0cf4de)
-- Optimisation du matcher de groupes de cultures pour une meilleure correspondance et une plus grande transparence de la confiance. [#dc9a01e](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/dc9a01e)
-- Simplification du code en supprimant les docstrings et commentaires redondants, et en intégrant les fonctions utilitaires à usage unique. [#cfcd323](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/cfcd323)
-- Correction de la résolution VoLCA et déduplication des produits. [#c174dfa](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c174dfa)
-- Amélioration de la dérivation des entrées à partir du chemin du dépôt Ecobalyse. [#89d9915](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/89d9915)
-- Mise à jour de `transformers` vers la version 5.x. [#e46bea9](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e46bea9)
-- Correction de la gestion des identités d'activité lors de la fusion du catalogue LCI, en préservant les identifiants UUID. [#081c66c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/081c66c)
-- Suppression du suffixe `-2025` des alias au niveau de l'activité (espace de noms des ingrédients uniquement). [#b7dbe8a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b7dbe8a)
-- Correction de l'émission de clés de base de données redondantes au niveau supérieur. [#27ebf53](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/27ebf53)
+- Refonte de la génération des ingrédients transformés avec une nouvelle approche en 3 étapes (génération, pipeline, backfill ECS). [#53eef25](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/53eef25) et [#08d2f17](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/08d2f17)
+- Amélioration de la résolution VoLCA dans `transformed-ingredients`. [#c174dfa](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c174dfa)
+- Dérivation de tous les inputs du chemin du dépôt Ecobalyse dans `transformed-ingredients`. [#89d9915](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/89d9915)
+- Mise à jour de la bibliothèque `transformers` vers la version 5.x. [#e46bea9](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e46bea9)
+- Correction de collisions de `displayName` entre différents lots dans `lci_catalog`. [#39304da](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/39304da)
+- Suppression des clés de base de données obsolètes des `generated_activities.json`. [#0888ffb](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0888ffb)
+- Suppression d'une clé de base de données redondante au niveau supérieur. [#27ebf53](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/27ebf53)
 
 ### Autres changements
-- Synchronisation de la documentation avec les entrées du catalogue LCI et ses 5 variantes. [#172190d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/172190d)
-- Correction d'un problème d'ancrage des alias. [#ce4808c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/ce4808c)
-- Régénération des sorties après avoir ignoré les bases de données non chargées. [#b3145b5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b3145b5)
-- Nouvelle génération. [#4850ca2](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/4850ca2)
-- Correction pour préserver l'UUID de l'activité lors du renommage legacy `-2025`. [#5626ea6](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/5626ea6)
+- Mise à jour de la documentation de `transformed-ingredients` pour refléter les changements apportés et l'intégration du dépôt `ecobalyse-data`. [#172190d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/172190d)
+- Mise à jour des chemins dans le README de `transformed-ingredients` suite à la fusion du dépôt `ecobalyse-data`. [#3fa0659](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/3fa0659)
+- Correction de vulnérabilités dans les dépendances. [#d90e144](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d90e144)
 - Mise à jour des packages. [#3e7e52d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/3e7e52d)
-- Correction de vulnérabilités dans les fichiers `uv.lock`. [#d90e144](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d90e144)
-- Régénération des ingrédients transformés. [#300787b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/300787b)
