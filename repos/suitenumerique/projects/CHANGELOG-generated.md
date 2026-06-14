@@ -1,16 +1,14 @@
-## Changelog : projects (30 derniers jours, au 6 juin 2026)
+## Changelog : projects (30 derniers jours, au 10 juin 2026)
 
 ### Résumé
-Cette version apporte une amélioration significative en permettant la suppression de dossiers, facilitant ainsi l'organisation des projets. La version 1.3.0 a été publiée, incluant des fonctionnalités d'export de données, de partage d'état de filtres, et des corrections de bugs pour une meilleure expérience utilisateur.
+Cette version apporte des corrections de bugs et une amélioration de la stabilité du projet. Les utilisateurs peuvent désormais supprimer des dossiers et une correction a été apportée pour les tableaux partagés. Une nouvelle version (1.3.0) a été publiée.
 
 ### Évolutions fonctionnelles
-- Possibilité de supprimer des dossiers [#1234](https://github.com/suitenumerique/projects/issues/1234)
-- Export des données des tableaux vers un fichier CSV.
-- Possibilité de partager l'état des filtres appliqués via l'URL.
-- Configuration de l'ID d'organisation pour l'attribution automatique des projets via OIDC.
+- Correction d'un problème empêchant la suppression de dossiers. [#e7e14ab](https://github.com/suitenumerique/projects/commit/e7e14ab)
+- Correction d'un problème de dépendance pour les tableaux partagés. [#807aba6](https://github.com/suitenumerique/projects/commit/807aba6)
 
 ### Évolutions techniques
-- Publication de la version 1.3.0.
+- Publication de la version 1.3.0. [#5aa2996](https://github.com/suitenumerique/projects/commit/5aa2996)
 
 ### Autres changements
-- Aucune information supplémentaire à signaler pour cette période.
+- Aucun changement significatif à signaler.
