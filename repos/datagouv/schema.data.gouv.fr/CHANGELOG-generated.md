@@ -1,17 +1,16 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 12 juin 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 14 juin 2026)
 
 ### Résumé
-Le site schema.data.gouv.fr a connu une période de maintenance et de mises à jour régulières au cours des 30 derniers jours. Les principales évolutions concernent la mise à jour des recommandations de schémas, des corrections concernant le format des données (passage d'un schéma à un datapackage pour les aides) et des améliorations techniques de l'infrastructure (mise à jour de pnpm et suppression d'une autorisation de build).
+Le site schema.data.gouv.fr a bénéficié de mises à jour régulières au cours du dernier mois, principalement axées sur la consolidation de la configuration et la mise à jour des recommandations. Une modification notable concerne le schéma "acceslibre" qui a été converti au format datapackage. Des corrections ont également été apportées au schéma "aides" pour le convertir également en datapackage.
 
 ### Évolutions fonctionnelles
-- Ajout du schéma "referentiel-donnees-communication-publique" au catalogue.
-- Correction du format de données pour les "aides" qui passent d'un schéma à un datapackage, améliorant ainsi leur compatibilité et leur réutilisation. [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344)
+- Le schéma "acceslibre" est désormais disponible au format datapackage, améliorant son interopérabilité et sa réutilisation. [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344)
+- Le schéma "aides" a été temporairement restauré à sa version datapackage, puis définitivement converti.
 
 ### Évolutions techniques
-- Mise à jour de l'outil de gestion de paquets pnpm vers la version 11. [#345](https://github.com/datagouv/schema.data.gouv.fr/issues/345)
-- Suppression de l'autorisation "allow-builds" dans la configuration du projet. [#346](https://github.com/datagouv/schema.data.gouv.fr/issues/346)
-- Mises à jour régulières du site web et des recommandations de schémas.
+- Mises à jour régulières de la configuration du site.
+- Mises à jour régulières des recommandations.
+- Mises à jour régulières du site web.
 
 ### Autres changements
-- Consolidation des fichiers de configuration.
-- Mises à jour régulières du site web (plusieurs commits sans description détaillée).
+- Aucune information supplémentaire.
