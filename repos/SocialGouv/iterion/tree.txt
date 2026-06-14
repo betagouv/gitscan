@@ -93,17 +93,31 @@
 ├── SKILL.md
 ├── Taskfile.yml
 ├── bots
+│   ├── bmady
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   ├── presets
+│   │   │   ├── brownfield.md
+│   │   │   └── greenfield.md
+│   │   └── skills
+│   │       ├── bmady-analyst.md
+│   │       ├── bmady-architect.md
+│   │       ├── bmady-dev.md
+│   │       ├── bmady-pm.md
+│   │       ├── bmady-qa.md
+│   │       └── bmady.md
 │   ├── branch-improve-loop
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   └── manifest.yaml
 │   ├── catalog_universality_test.go
-│   ├── code-review
+│   ├── devbox-setup
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   └── skills
-│   │       └── forge-pr-review.md
+│   │       └── devbox-setup.md
 │   ├── docs-refresh
 │   │   ├── README.md
 │   │   ├── attachments
@@ -119,10 +133,34 @@
 │   │       ├── doc-verification-checklist.md
 │   │       └── docs-refresh.md
 │   ├── embed.go
+│   ├── evolve
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── architectural-axes.md
+│   │       ├── backlog-handoff.md
+│   │       ├── elicitation-discipline.md
+│   │       ├── evolve-memory-layout.md
+│   │       ├── evolve-playbook.md
+│   │       ├── iterion-board.md
+│   │       ├── repo-maturity-assessment.md
+│   │       └── session-continuity.md
 │   ├── feature-dev
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   └── manifest.yaml
+│   ├── revi-converse
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       └── forge-reply.md
+│   ├── review-pr
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       └── forge-pr-review.md
 │   ├── sec-audit-deps
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -141,9 +179,17 @@
 │   │   ├── attachments
 │   │   │   └── matchers
 │   │   │       └── example-secrets.py
+│   │   ├── devbox.json
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
+│   │   ├── sandbox
+│   │   │   └── sec
+│   │   │       └── Dockerfile
 │   │   └── skills
+│   │       ├── HARNESS-ATTRIBUTION.md
+│   │       ├── crypto-handling.md
+│   │       ├── disprove-voting.md
+│   │       ├── external-security-tools.md
 │   │       ├── file-records.md
 │   │       ├── finding-taxonomy.md
 │   │       ├── fp-memory.md
@@ -152,9 +198,19 @@
 │   │       ├── lang-go.md
 │   │       ├── lang-js.md
 │   │       ├── lang-python.md
+│   │       ├── patch.md
 │   │       ├── programmatic-matchers.md
+│   │       ├── project-context.md
+│   │       ├── reattack-oracles.md
+│   │       ├── reproducer-go.md
+│   │       ├── reproducer-ts.md
+│   │       ├── reviewer-isolation.md
+│   │       ├── scanner-deepsec.md
 │   │       ├── sec-audit-source.md
-│   │       └── vuln-matchers-guide.md
+│   │       ├── threat-model.md
+│   │       ├── triage.md
+│   │       ├── vuln-matchers-guide.md
+│   │       └── vuln-scan.md
 │   ├── secured-renovacy
 │   │   ├── .gitignore
 │   │   ├── NOTES.md
@@ -195,7 +251,15 @@
 │   └── whole-improve-loop
 │       ├── README.md
 │       ├── main.bot
-│       └── manifest.yaml
+│       ├── manifest.yaml
+│       ├── presets
+│       │   ├── code-quality.md
+│       │   ├── improve-quality.md
+│       │   ├── production-ready.md
+│       │   ├── rgaa.md
+│       │   └── rgpd.md
+│       └── skills
+│           └── lang-js-fallow.md
 ├── build
 │   ├── appicon.png
 │   ├── darwin
@@ -213,18 +277,23 @@
 ├── charts
 │   └── iterion
 │       ├── Chart.yaml
+│       ├── README.md
 │       ├── examples
 │       │   └── networkpolicy-egress.yaml
 │       ├── templates
+│       │   ├── NOTES.txt
 │       │   ├── _helpers.tpl
 │       │   ├── configmap.yaml
 │       │   ├── networkpolicy.yaml
+│       │   ├── poddisruptionbudget.yaml
 │       │   ├── prometheus-podmonitor.yaml
+│       │   ├── prometheus-rule.yaml
 │       │   ├── runner-deployment.yaml
 │       │   ├── runner-keda-scaledobject.yaml
 │       │   ├── runner-rbac.yaml
 │       │   ├── secret-auth.yaml
 │       │   ├── secret-llm.yaml
+│       │   ├── secret-smtp.yaml
 │       │   ├── secret-storage.yaml
 │       │   ├── server-deployment.yaml
 │       │   ├── server-hpa.yaml
@@ -255,6 +324,7 @@
 │   │   ├── mcp_board.go
 │   │   ├── mcp_board_test.go
 │   │   ├── mcp_control.go
+│   │   ├── memory.go
 │   │   ├── migrate.go
 │   │   ├── report.go
 │   │   ├── resume.go
@@ -362,22 +432,39 @@
 │   │   ├── 013-dispatcher-attachments-unsupported.md
 │   │   ├── 014-dispatcher-paused-run-parking.md
 │   │   ├── 015-dispatcher-retry-attempt-cap.md
-│   │   └── 016-in-run-worktree-file-editor.md
+│   │   ├── 016-in-run-worktree-file-editor.md
+│   │   ├── 017-devbox-first-bot-toolchain.md
+│   │   ├── 018-bot-secret-binding-egress-enforcement.md
+│   │   └── 019-sandbox-doctor-static-binary-check.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── attachments.md
+│   ├── baas-admin-guide.md
+│   ├── baas-overview.md
 │   ├── backends.md
+│   ├── bot-runs
+│   │   ├── README.md
+│   │   ├── branch-improve-loop.md
+│   │   ├── evolve.md
+│   │   ├── feature-dev.md
+│   │   ├── review-pr.md
+│   │   ├── sec-audit-deps.md
+│   │   ├── sec-audit-source.md
+│   │   ├── whats-next.md
+│   │   └── whole-improve-loop.md
 │   ├── browser-pane.md
 │   ├── bundles.md
+│   ├── byok.md
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
+│   ├── cloud-architecture.md
 │   ├── cloud-backup.md
 │   ├── cloud-deployment.md
 │   ├── cloud-public-exposure-checklist.md
+│   ├── cloud-rest-api.md
 │   ├── cloud-troubleshooting.md
 │   ├── cloud-user.md
 │   ├── cloud.md
-│   ├── completion-webhooks.md
 │   ├── cursors.md
 │   ├── delegation.md
 │   ├── desktop-architecture.md
@@ -392,6 +479,7 @@
 │   ├── dsl.md
 │   ├── e2e_coverage.md
 │   ├── examples.md
+│   ├── forge-conversations.md
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
@@ -399,6 +487,7 @@
 │   │   └── iterion-logo.png
 │   ├── install.md
 │   ├── install.sh
+│   ├── memory-and-knowledge.md
 │   ├── native-tracker.md
 │   ├── observability
 │   │   ├── README.md
@@ -411,25 +500,33 @@
 │   │   ├── docker-compose.yml
 │   │   └── grafana
 │   │       └── iterion-workflow.json
+│   ├── outbound-callbacks.md
 │   ├── persisted-formats.md
 │   ├── privacy_filter.md
+│   ├── quotas-and-limits.md
 │   ├── recipes.md
 │   ├── references
 │   │   ├── diagnostics.md
 │   │   ├── dsl-grammar.md
 │   │   └── patterns.md
+│   ├── references-bootstrap.md
 │   ├── resume.md
+│   ├── review-merge-gate.md
 │   ├── reviews
 │   │   └── codebase-2026-05-17.md
 │   ├── routers.md
 │   ├── sandbox.md
 │   ├── scheduling.md
+│   ├── secrets-reference.md
+│   ├── secrets.md
 │   ├── security-bots-distributed.md
 │   ├── security-bots.md
+│   ├── security-patcher.md
 │   ├── skill.md
 │   ├── thinking-metrics.md
 │   ├── ultracode.md
 │   ├── visual-editor.md
+│   ├── webhooks.md
 │   ├── why-iterion.md
 │   ├── why-not-prompt-orchestration.md
 │   └── workflow_authoring_pitfalls.md
@@ -513,6 +610,7 @@
 │   ├── cursors
 │   │   ├── cursors.iter
 │   │   └── sample.iter
+│   ├── deploy-e2e.bot
 │   ├── devcontainer-devbox
 │   │   ├── .devcontainer
 │   │   │   └── devcontainer.json
@@ -522,6 +620,7 @@
 │   │   └── iterion-hitl.yml
 │   ├── mcp_test_server
 │   │   └── main.go
+│   ├── review-merge-gate.bot
 │   └── ultracode
 │       └── sample.iter
 ├── go.mod
@@ -535,6 +634,12 @@
 │   │   ├── manager_test.go
 │   │   ├── webhook.go
 │   │   └── webhook_test.go
+│   ├── audit
+│   │   ├── audit.go
+│   │   ├── audit_test.go
+│   │   ├── memory.go
+│   │   ├── mongo.go
+│   │   └── mongo_test.go
 │   ├── auth
 │   │   ├── identity.go
 │   │   ├── jwt.go
@@ -547,6 +652,8 @@
 │   │   │   └── pkce.go
 │   │   ├── oidc_service.go
 │   │   ├── password.go
+│   │   ├── password_reset.go
+│   │   ├── password_reset_test.go
 │   │   ├── refresh.go
 │   │   ├── refresh_test.go
 │   │   ├── service.go
@@ -596,8 +703,12 @@
 │   │   │   ├── mcp_watch.go
 │   │   │   ├── multiplexer.go
 │   │   │   ├── multiplexer_test.go
+│   │   │   ├── network_errors.go
+│   │   │   ├── network_errors_test.go
 │   │   │   ├── parse.go
+│   │   │   ├── presets_test.go
 │   │   │   ├── registry.go
+│   │   │   ├── secrets_prompt_test.go
 │   │   │   ├── tooluse_log_test.go
 │   │   │   └── truncate.go
 │   │   ├── detect
@@ -638,19 +749,13 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_act_test.go
-│   │   │   ├── executor_fallback_test.go
-│   │   │   ├── executor_mcp_test.go
-│   │   │   ├── executor_retry.go
-│   │   │   ├── executor_retry_test.go
-│   │   │   ├── executor_test.go
-│   │   │   ├── executor_tool.go
-│   │   │   ├── executor_tool_test.go
+│   │   │   ├── executor_*.go  (8 files)
 │   │   │   ├── generation.go
 │   │   │   ├── generation_test.go
 │   │   │   ├── generation_tool.go
 │   │   │   ├── generation_types.go
 │   │   │   ├── hooks.go
+│   │   │   ├── hooks_secretguard_test.go
 │   │   │   ├── inbox_test.go
 │   │   │   ├── iteration_ctx.go
 │   │   │   ├── lifecycle_hooks.go
@@ -658,13 +763,18 @@
 │   │   │   ├── llm_tool.go
 │   │   │   ├── memory_tools.go
 │   │   │   ├── memory_tools_test.go
+│   │   │   ├── network_retry_test.go
 │   │   │   ├── preview_url.go
 │   │   │   ├── preview_url_test.go
 │   │   │   ├── privacy_redaction_test.go
 │   │   │   ├── registry.go
 │   │   │   ├── resolve_backend_test.go
+│   │   │   ├── review_companion.go
 │   │   │   ├── schema.go
 │   │   │   ├── schema_test.go
+│   │   │   ├── secretguard.go
+│   │   │   ├── secretguard_binding_hosts_test.go
+│   │   │   ├── secrets_materialize_test.go
 │   │   │   ├── session.go
 │   │   │   ├── session_test.go
 │   │   │   ├── stamp_delegate_meta_test.go
@@ -672,10 +782,17 @@
 │   │   │   ├── subagent.go
 │   │   │   ├── template_ctx.go
 │   │   │   ├── validate.go
-│   │   │   └── validate_test.go
+│   │   │   ├── validate_test.go
+│   │   │   └── wire_model_test.go
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
+│   │   ├── secretguard
+│   │   │   ├── encodings.go
+│   │   │   ├── host.go
+│   │   │   ├── host_test.go
+│   │   │   ├── secretguard.go
+│   │   │   └── secretguard_test.go
 │   │   ├── thinktokens
 │   │   │   ├── thinktokens.go
 │   │   │   └── thinktokens_test.go
@@ -734,6 +851,11 @@
 │   │   ├── report.go
 │   │   ├── runner.go
 │   │   └── store.go
+│   ├── botinstall
+│   │   ├── inspect.go
+│   │   ├── inspect_test.go
+│   │   ├── install.go
+│   │   └── install_test.go
 │   ├── botregistry
 │   │   ├── catalog.go
 │   │   ├── catalog_test.go
@@ -742,6 +864,7 @@
 │   │   ├── registry.go
 │   │   ├── registry_test.go
 │   │   ├── schema.go
+│   │   ├── schema_presets_test.go
 │   │   └── schema_test.go
 │   ├── botreplay
 │   │   ├── compile.go
@@ -770,6 +893,8 @@
 │   │   ├── manifest_write_test.go
 │   │   ├── openat_other.go
 │   │   ├── openat_unix.go
+│   │   ├── presets.go
+│   │   ├── presets_test.go
 │   │   ├── tar.go
 │   │   ├── testbuild_test.go
 │   │   ├── writer.go
@@ -812,6 +937,7 @@
 │   │   │   ├── bundle_README.md
 │   │   │   ├── bundle_main.bot
 │   │   │   ├── bundle_manifest.yaml
+│   │   │   ├── bundle_preset_example.md
 │   │   │   ├── dispatch_bots
 │   │   │   │   └── .gitkeep
 │   │   │   ├── dispatch_bots_default.bot
@@ -934,13 +1060,17 @@
 │   │   │   ├── env_expand_test.go
 │   │   │   ├── ir.go
 │   │   │   ├── memory_validate_test.go
+│   │   │   ├── memory_visibility_test.go
 │   │   │   ├── mermaid.go
 │   │   │   ├── mermaid_test.go
+│   │   │   ├── optional_secret_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
+│   │   │   ├── review_test.go
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_test.go
+│   │   │   ├── secrets_test.go
 │   │   │   ├── ultracode_test.go
 │   │   │   ├── validate.go
 │   │   │   ├── validate_audit_test.go
@@ -983,6 +1113,7 @@
 │   │   │   ├── memory_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── roundtrip_test.go
+│   │   │   ├── secrets_test.go
 │   │   │   ├── unparse.go
 │   │   │   └── unparse_test.go
 │   │   └── workflowfile
@@ -990,6 +1121,7 @@
 │   │       └── workflowfile_test.go
 │   ├── git
 │   │   ├── ancestor_test.go
+│   │   ├── clone.go
 │   │   ├── diff.go
 │   │   ├── git.go
 │   │   ├── git_test.go
@@ -1007,6 +1139,7 @@
 │   │   ├── memory_test.go
 │   │   ├── mongo.go
 │   │   ├── store.go
+│   │   ├── team_test.go
 │   │   └── types.go
 │   ├── internal
 │   │   ├── appinfo
@@ -1023,24 +1156,64 @@
 │   │   │   └── proc_windows.go
 │   │   └── shellquote
 │   │       └── shellquote.go
+│   ├── knowledge
+│   │   ├── doc.go
+│   │   ├── docpath_test.go
+│   │   ├── export.go
+│   │   ├── hash.go
+│   │   ├── iface.go
+│   │   ├── markdown.go
+│   │   ├── markdown_test.go
+│   │   ├── quota.go
+│   │   ├── scope.go
+│   │   └── scope_test.go
 │   ├── log
 │   │   ├── format.go
 │   │   ├── format_test.go
 │   │   ├── json.go
 │   │   ├── log.go
 │   │   └── log_test.go
+│   ├── mail
+│   │   ├── log.go
+│   │   ├── mail.go
+│   │   ├── mail_test.go
+│   │   ├── smtp.go
+│   │   └── templates.go
+│   ├── marketplace
+│   │   ├── jsonstore.go
+│   │   ├── jsonstore_test.go
+│   │   ├── mongostore.go
+│   │   └── types.go
 │   ├── memory
+│   │   ├── export_test.go
+│   │   ├── fsstore.go
 │   │   ├── index.go
 │   │   ├── index_test.go
 │   │   ├── memory.go
-│   │   └── memory_test.go
+│   │   ├── memory_test.go
+│   │   ├── quota_fs.go
+│   │   ├── quota_fs_test.go
+│   │   └── space_test.go
 │   ├── notify
 │   │   ├── completion.go
 │   │   ├── completion_test.go
 │   │   ├── sign.go
 │   │   └── sign_test.go
+│   ├── orgusage
+│   │   ├── memory.go
+│   │   ├── mongo.go
+│   │   ├── mongo_test.go
+│   │   ├── orgusage.go
+│   │   └── orgusage_test.go
+│   ├── pat
+│   │   ├── memory.go
+│   │   ├── mongo.go
+│   │   ├── mongo_test.go
+│   │   ├── pat.go
+│   │   └── pat_test.go
 │   ├── queue
 │   │   ├── nats
+│   │   │   ├── dlq.go
 │   │   │   ├── lock.go
 │   │   │   ├── nats.go
 │   │   │   ├── nats_test.go
@@ -1048,6 +1221,7 @@
 │   │   ├── types.go
 │   │   └── types_test.go
 │   ├── runner
+│   │   ├── clone_test.go
 │   │   ├── loop.go
 │   │   ├── loop_test.go
 │   │   └── metrics_test.go
@@ -1075,6 +1249,7 @@
 │   │   ├── on_node_finished_test.go
 │   │   ├── parallel_test.go
 │   │   ├── pause_test.go
+│   │   ├── presets_test.go
 │   │   ├── recipe_test.go
 │   │   ├── recovery
 │   │   │   ├── recovery.go
@@ -1084,6 +1259,8 @@
 │   │   ├── resume.go
 │   │   ├── resume_input_test.go
 │   │   ├── resume_internal_test.go
+│   │   ├── review.go
+│   │   ├── review_test.go
 │   │   ├── round_robin_test.go
 │   │   ├── routing.go
 │   │   ├── sandbox.go
@@ -1093,6 +1270,8 @@
 │   │   ├── sandbox_lifecycle.go
 │   │   ├── sandbox_mounts.go
 │   │   ├── sandbox_mounts_test.go
+│   │   ├── sandbox_secret_files.go
+│   │   ├── sandbox_secret_files_test.go
 │   │   ├── session_test.go
 │   │   ├── snapshot.go
 │   │   ├── spendcap.go
@@ -1141,6 +1320,7 @@
 │   │   ├── service_lifecycle_reap_test.go
 │   │   ├── service_log.go
 │   │   ├── service_runs.go
+│   │   ├── service_runs_repo_test.go
 │   │   ├── service_test.go
 │   │   ├── skills.go
 │   │   ├── snapshot.go
@@ -1157,6 +1337,7 @@
 │   │   │   ├── build.go
 │   │   │   ├── build_test.go
 │   │   │   ├── driver.go
+│   │   │   ├── driver_nixvol_test.go
 │   │   │   ├── driver_test.go
 │   │   │   ├── integration_test.go
 │   │   │   ├── orphans.go
@@ -1178,12 +1359,16 @@
 │   │   │   ├── mounts_test.go
 │   │   │   ├── netpolicy.go
 │   │   │   ├── runtime.go
+│   │   │   ├── secrets_ca_test.go
 │   │   │   ├── strings.go
 │   │   │   ├── validate.go
 │   │   │   └── validate_test.go
 │   │   ├── netproxy
 │   │   │   ├── base64.go
+│   │   │   ├── ca.go
 │   │   │   ├── errors.go
+│   │   │   ├── inspect.go
+│   │   │   ├── inspect_test.go
 │   │   │   ├── matcher.go
 │   │   │   ├── matcher_test.go
 │   │   │   ├── preset.go
@@ -1199,11 +1384,16 @@
 │   │   ├── spec.go
 │   │   └── spec_test.go
 │   ├── secrets
+│   │   ├── bindings.go
+│   │   ├── bindings_test.go
 │   │   ├── byok.go
 │   │   ├── byok_test.go
 │   │   ├── claw_guard_test.go
 │   │   ├── credentials.go
+│   │   ├── files.go
 │   │   ├── fingerprint.go
+│   │   ├── generic.go
+│   │   ├── generic_test.go
 │   │   ├── oauth.go
 │   │   ├── oauth_refresh.go
 │   │   ├── oauth_refresh_test.go
@@ -1212,17 +1402,24 @@
 │   │   ├── sealer.go
 │   │   └── sealer_test.go
 │   ├── server
+│   │   ├── admin_orgs_routes.go
+│   │   ├── admin_orgs_routes_test.go
+│   │   ├── audit_helper.go
+│   │   ├── audit_routes_test.go
 │   │   ├── auth_ratelimit.go
 │   │   ├── auth_ratelimit_test.go
 │   │   ├── auth_routes.go
 │   │   ├── auth_routes_test.go
 │   │   ├── backends_routes.go
 │   │   ├── backends_routes_test.go
+│   │   ├── bot_bindings_routes.go
+│   │   ├── bot_bindings_routes_test.go
 │   │   ├── bots_routes.go
 │   │   ├── bots_routes_test.go
 │   │   ├── byok_routes.go
 │   │   ├── cloudpublisher
-│   │   │   └── publisher.go
+│   │   │   ├── publisher.go
+│   │   │   └── publisher_secrets_test.go
 │   │   ├── cost_preview.go
 │   │   ├── cost_preview_test.go
 │   │   ├── effort.go
@@ -1230,20 +1427,34 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
+│   │   ├── generic_secrets_routes.go
 │   │   ├── health.go
 │   │   ├── health_test.go
 │   │   ├── hub.go
+│   │   ├── hub_origin_test.go
+│   │   ├── launch_gate.go
+│   │   ├── launch_gate_test.go
 │   │   ├── limits.go
 │   │   ├── limits_test.go
+│   │   ├── marketplace_routes.go
+│   │   ├── marketplace_routes_test.go
 │   │   ├── mcp_board_handler.go
 │   │   ├── mcp_board_handler_test.go
+│   │   ├── memory_routes.go
+│   │   ├── memory_routes_test.go
 │   │   ├── middleware.go
 │   │   ├── middleware_test.go
+│   │   ├── middleware_webhook.go
 │   │   ├── oauth_routes.go
+│   │   ├── password_routes.go
+│   │   ├── pat_routes.go
+│   │   ├── pat_routes_test.go
 │   │   ├── projects
 │   │   │   ├── prune_test.go
 │   │   │   └── registry.go
 │   │   ├── projects.go
+│   │   ├── queue_sweeper.go
+│   │   ├── queue_sweeper_test.go
 │   │   ├── runs.go
 │   │   ├── runs_browser.go
 │   │   ├── runs_commits.go
@@ -1258,6 +1469,8 @@
 │   │   ├── runs_preview.go
 │   │   ├── runs_preview_test.go
 │   │   ├── runs_rename.go
+│   │   ├── runs_repos.go
+│   │   ├── runs_repos_test.go
 │   │   ├── runs_stats.go
 │   │   ├── runs_stats_cache.go
 │   │   ├── runs_stats_cache_test.go
@@ -1278,62 +1491,107 @@
 │   │   ├── timefmt.go
 │   │   ├── watch_coordinator.go
 │   │   ├── watch_coordinator_test.go
-│   │   └── watcher.go
-│   └── store
-│       ├── attachments.go
-│       ├── attachments_test.go
-│       ├── blob
-│       │   ├── iface.go
-│       │   ├── key.go
-│       │   ├── key_test.go
-│       │   ├── s3.go
-│       │   └── s3_test.go
-│       ├── capabilities.go
-│       ├── cloud
-│       │   └── cloud.go
-│       ├── conformance_test.go
-│       ├── event.go
-│       ├── factory.go
-│       ├── factory_test.go
-│       ├── iface.go
-│       ├── iface_test.go
-│       ├── lock.go
-│       ├── lock_test.go
-│       ├── lock_unix.go
-│       ├── lock_windows.go
-│       ├── mongo
-│       │   ├── artifacts.go
-│       │   ├── attachments.go
-│       │   ├── conformance_test.go
+│   │   ├── watcher.go
+│   │   ├── webhooks_common.go
+│   │   ├── webhooks_forgejo.go
+│   │   ├── webhooks_forgejo_test.go
+│   │   ├── webhooks_generic.go
+│   │   ├── webhooks_generic_test.go
+│   │   ├── webhooks_github.go
+│   │   ├── webhooks_github_test.go
+│   │   ├── webhooks_gitlab.go
+│   │   ├── webhooks_gitlab_test.go
+│   │   ├── webhooks_routes.go
+│   │   └── webhooks_routes_test.go
+│   ├── store
+│   │   ├── attachments.go
+│   │   ├── attachments_test.go
+│   │   ├── blob
+│   │   │   ├── iface.go
+│   │   │   ├── key.go
+│   │   │   ├── key_test.go
+│   │   │   ├── s3.go
+│   │   │   └── s3_test.go
+│   │   ├── capabilities.go
+│   │   ├── cloud
+│   │   │   └── cloud.go
+│   │   ├── conformance_test.go
+│   │   ├── event.go
+│   │   ├── factory.go
+│   │   ├── factory_test.go
+│   │   ├── iface.go
+│   │   ├── iface_test.go
+│   │   ├── lock.go
+│   │   ├── lock_test.go
+│   │   ├── lock_unix.go
+│   │   ├── lock_windows.go
+│   │   ├── mongo
+│   │   │   ├── artifacts.go
+│   │   │   ├── attachments.go
+│   │   │   ├── conformance_test.go
+│   │   │   ├── events.go
+│   │   │   ├── interactions.go
+│   │   │   ├── memory.go
+│   │   │   ├── runs.go
+│   │   │   ├── store.go
+│   │   │   ├── tenant.go
+│   │   │   └── user_messages.go
+│   │   ├── openat_other.go
+│   │   ├── openat_unix.go
+│   │   ├── pid.go
+│   │   ├── pid_test.go
+│   │   ├── run.go
+│   │   ├── run_env.go
+│   │   ├── run_env_test.go
+│   │   ├── runlog.go
+│   │   ├── runname.go
+│   │   ├── runname_test.go
+│   │   ├── spend.go
+│   │   ├── spend_test.go
+│   │   ├── store.go
+│   │   ├── store_test.go
+│   │   ├── storedir.go
+│   │   ├── storedir_test.go
+│   │   ├── storetest
+│   │   │   └── conformance.go
+│   │   ├── tenant.go
+│   │   ├── turn.go
+│   │   ├── turn_store.go
+│   │   ├── turn_store_test.go
+│   │   └── user_messages.go
+│   └── webhooks
+│       ├── forgejo
 │       │   ├── events.go
-│       │   ├── interactions.go
-│       │   ├── runs.go
-│       │   ├── store.go
-│       │   ├── tenant.go
-│       │   └── user_messages.go
-│       ├── openat_other.go
-│       ├── openat_unix.go
-│       ├── pid.go
-│       ├── pid_test.go
-│       ├── run.go
-│       ├── run_env.go
-│       ├── run_env_test.go
-│       ├── runlog.go
-│       ├── runname.go
-│       ├── runname_test.go
-│       ├── spend.go
-│       ├── spend_test.go
+│       │   ├── forgejo_test.go
+│       │   ├── matcher.go
+│       │   └── parser.go
+│       ├── generic
+│       │   ├── generic.go
+│       │   └── generic_test.go
+│       ├── github
+│       │   ├── events.go
+│       │   ├── github_test.go
+│       │   ├── matcher.go
+│       │   └── parser.go
+│       ├── gitlab
+│       │   ├── auth.go
+│       │   ├── auth_test.go
+│       │   ├── client.go
+│       │   ├── client_live_test.go
+│       │   ├── client_test.go
+│       │   ├── events.go
+│       │   ├── gitlab_test.go
+│       │   ├── matcher.go
+│       │   ├── note.go
+│       │   ├── note_test.go
+│       │   └── parser.go
+│       ├── match.go
+│       ├── memory.go
+│       ├── mongo.go
 │       ├── store.go
-│       ├── store_test.go
-│       ├── storedir.go
-│       ├── storedir_test.go
-│       ├── storetest
-│       │   └── conformance.go
-│       ├── tenant.go
-│       ├── turn.go
-│       ├── turn_store.go
-│       ├── turn_store_test.go
-│       └── user_messages.go
+│       ├── token.go
+│       ├── types.go
+│       └── webhooks_test.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── sandbox
@@ -1438,21 +1696,34 @@
 │   │   │   │   └── primitives.test.tsx
 │   │   │   └── desktopBridge.test.ts
 │   │   ├── api
+│   │   │   ├── __tests__
+│   │   │   │   ├── secrets.helpers.test.ts
+│   │   │   │   └── webhooks.helpers.test.ts
+│   │   │   ├── admin.ts
+│   │   │   ├── audit.ts
 │   │   │   ├── auth.ts
 │   │   │   ├── backends.ts
+│   │   │   ├── botBindings.ts
 │   │   │   ├── bots.ts
 │   │   │   ├── byok.ts
 │   │   │   ├── client.ts
 │   │   │   ├── dispatcher.ts
 │   │   │   ├── limits.ts
+│   │   │   ├── marketplace.ts
+│   │   │   ├── memory.ts
 │   │   │   ├── native.ts
+│   │   │   ├── orgs.ts
+│   │   │   ├── pats.ts
 │   │   │   ├── projects.ts
 │   │   │   ├── queueMessages.ts
 │   │   │   ├── runs.fileContent.test.ts
 │   │   │   ├── runs.lifecycle.test.ts
 │   │   │   ├── runs.ts
 │   │   │   ├── runsStats.ts
+│   │   │   ├── secrets.ts
 │   │   │   ├── types.ts
+│   │   │   ├── usage.ts
+│   │   │   ├── webhooks.ts
 │   │   │   └── ws.ts
 │   │   ├── app.css
 │   │   ├── auth
@@ -1492,6 +1763,7 @@
 │   │   │   │   └── searchResults.ts
 │   │   │   ├── Home
 │   │   │   │   ├── HomeView.tsx
+│   │   │   │   ├── RecentFilesPanel.test.tsx
 │   │   │   │   ├── RecentFilesPanel.tsx
 │   │   │   │   ├── RunsPanel.tsx
 │   │   │   │   └── WhatsNextCard.tsx
@@ -1583,12 +1855,19 @@
 │   │   │   │   │   ├── HumanQuestionCard.tsx
 │   │   │   │   │   ├── MarkdownText.tsx
 │   │   │   │   │   ├── NodeOutputCard.tsx
+│   │   │   │   │   ├── ReviewMergeCard.tsx
 │   │   │   │   │   ├── RunConversationView.tsx
 │   │   │   │   │   ├── SessionClosedCard.test.tsx
 │   │   │   │   │   └── SessionClosedCard.tsx
+│   │   │   │   ├── runBotMeta.test.ts
+│   │   │   │   ├── runBotMeta.ts
 │   │   │   │   ├── runListFilter.test.ts
 │   │   │   │   ├── runListFilter.ts
+│   │   │   │   ├── runListSortGroup.ts
 │   │   │   │   ├── runListStatusLabel.test.ts
+│   │   │   │   ├── runRepoMeta.test.ts
+│   │   │   │   ├── runRepoMeta.ts
+│   │   │   │   ├── runSourceMeta.ts
 │   │   │   │   ├── runStatusClasses.ts
 │   │   │   │   ├── runStatusMeta.test.ts
 │   │   │   │   ├── runStatusMeta.ts
@@ -1717,6 +1996,7 @@
 │   │   │   ├── useRunKeyboard.ts
 │   │   │   ├── useRunMetrics.ts
 │   │   │   ├── useRunReport.ts
+│   │   │   ├── useRunRepos.ts
 │   │   │   ├── useRunToasts.test.ts
 │   │   │   ├── useRunToasts.ts
 │   │   │   ├── useRunWebSocket.ts
@@ -1729,6 +2009,8 @@
 │   │   │   ├── autoLayout.ts
 │   │   │   ├── board
 │   │   │   │   └── stateTheme.ts
+│   │   │   ├── botLabel.test.ts
+│   │   │   ├── botLabel.ts
 │   │   │   ├── cdpClient.ts
 │   │   │   ├── computeEdgeHandles.ts
 │   │   │   ├── constants.ts
@@ -1753,6 +2035,7 @@
 │   │   │   │   ├── formSpecFromSchema.test.ts
 │   │   │   │   └── formSpecFromSchema.ts
 │   │   │   ├── groups.ts
+│   │   │   ├── humanizeKey.ts
 │   │   │   ├── inferMonacoLanguage.ts
 │   │   │   ├── iterLanguage.ts
 │   │   │   ├── iterMonacoCompletion.ts
@@ -1763,6 +2046,7 @@
 │   │   │   ├── localStorageFlag.ts
 │   │   │   ├── nodeDetailGraph.test.ts
 │   │   │   ├── nodeDetailGraph.ts
+│   │   │   ├── openExample.ts
 │   │   │   ├── personas.ts
 │   │   │   ├── promptHighlight.test.ts
 │   │   │   ├── promptHighlight.ts
@@ -1827,6 +2111,11 @@
 │   │   │   │   ├── dispatcherActionState.ts
 │   │   │   │   └── index.tsx
 │   │   │   ├── Login.tsx
+│   │   │   ├── Marketplace
+│   │   │   │   ├── MarketplaceCard.tsx
+│   │   │   │   ├── MarketplaceDetail.tsx
+│   │   │   │   ├── MarketplaceSubmit.tsx
+│   │   │   │   └── index.tsx
 │   │   │   ├── ProjectSwitcher
 │   │   │   │   ├── AddProjectDialog.tsx
 │   │   │   │   └── index.tsx
@@ -1849,12 +2138,32 @@
 │   │   │   │       ├── Done.tsx
 │   │   │   │       ├── ProjectPicker.test.ts
 │   │   │   │       └── ProjectPicker.tsx
+│   │   │   ├── admin
+│   │   │   │   ├── OrgsAdminPage.tsx
+│   │   │   │   └── UsersAdminPage.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── AcceptInvitation.tsx
+│   │   │   │   ├── ForcedPasswordChange.tsx
+│   │   │   │   ├── ForgotPassword.tsx
+│   │   │   │   ├── ResetPassword.tsx
+│   │   │   │   └── __tests__
+│   │   │   │       └── ForcedPasswordChange.test.tsx
 │   │   │   ├── settings
 │   │   │   │   ├── ApiKeys.tsx
 │   │   │   │   ├── OAuthConnections.tsx
-│   │   │   │   └── SettingsPage.tsx
+│   │   │   │   ├── SettingsPage.tsx
+│   │   │   │   └── TokensPanel.tsx
 │   │   │   └── teams
-│   │   │       └── TeamPage.tsx
+│   │   │       ├── TeamPage.tsx
+│   │   │       └── tabs
+│   │   │           ├── AuditTab.tsx
+│   │   │           ├── BindingsTab.tsx
+│   │   │           ├── MemoryTab.tsx
+│   │   │           ├── SecretsTab.tsx
+│   │   │           ├── UsageTab.tsx
+│   │   │           ├── WebhooksTab.tsx
+│   │   │           └── __tests__
+│   │   │               └── WebhooksTab.tokenOnce.test.tsx
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
@@ -8190,4 +8499,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1255 directories, 7483 files
+1289 directories, 7765 files

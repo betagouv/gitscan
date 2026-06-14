@@ -24,7 +24,7 @@ Stop coding like a mortal. Define your bots as readable `.bot` files — chain a
 - [Features](#features)
 - [Meet the legion](#meet-the-legion)
 - [Quick Start](#quick-start)
-- [`.iter` vs `.bot`](#iter-vs-bot)
+- [Workflow files](#workflow-files)
 - [A Taste of the DSL](#a-taste-of-the-dsl)
 - [Documentation](#documentation)
 - [License](#license)
@@ -33,12 +33,12 @@ Stop coding like a mortal. Define your bots as readable `.bot` files — chain a
 
 ## 🧩 What is Iterion?
 
-*If you've ever noticed yourself repeating the same prompt-and-review patterns while vibe-coding with an LLM — "ask the model, eyeball the diff, ask it to fix what it missed, run the tests, ask again" — and wondered how to **automate and optimize** that loop, Iterion is built for you.* Capture the pattern once as an `.iter` workflow, give it budget caps, parallel reviewers, judges and human gates, and let the engine run it deterministically every time.
+*If you've ever noticed yourself repeating the same prompt-and-review patterns while vibe-coding with an LLM — "ask the model, eyeball the diff, ask it to fix what it missed, run the tests, ask again" — and wondered how to **automate and optimize** that loop, Iterion is built for you.* Capture the pattern once as a `.bot` workflow, give it budget caps, parallel reviewers, judges and human gates, and let the engine run it deterministically every time.
 
-Iterion is a workflow engine that turns `.iter` files into executable AI pipelines. You describe *what* your agents should do — review code, plan fixes, check compliance, ask a human — and Iterion handles *how*: scheduling branches in parallel, enforcing budgets, persisting state, and routing between nodes.
+Iterion is a workflow engine that turns `.bot` files into executable AI pipelines. You describe *what* your agents should do — review code, plan fixes, check compliance, ask a human — and Iterion handles *how*: scheduling branches in parallel, enforcing budgets, persisting state, and routing between nodes.
 
 ```
-.iter file → Parse → Compile → Validate → Execute
+.bot file → Parse → Compile → Validate → Execute
                                             │
                     ┌───────────────────────┐│
                     │  agents, judges,      ││
@@ -59,7 +59,7 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 
 ### Authoring & orchestration
 
-- 📝 **Declarative DSL** — Human-readable `.iter` files with indentation-based syntax
+- 📝 **Declarative DSL** — Human-readable `.bot` files with indentation-based syntax
 - 🤖 **Multi-agent orchestration** — Chain agents, judges, routers, and await-based convergence into complex graphs
 - 🖥️ **Visual editor** — Browser-based workflow builder with drag-and-drop, live validation, and source view
 - 🙋 **Human-in-the-loop** — Pause for human input, auto-answer via LLM, or let the LLM decide when to ask
@@ -67,7 +67,7 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 - 🧭 **4 routing modes** — `fan_out_all`, `condition`, `round_robin`, and `llm`-driven routing
 - 🔁 **Bounded loops** — Retry and refinement cycles with configurable iteration limits
 - 🔲 **Structured I/O** — Typed schemas for inputs and outputs with enum constraints
-- 🔗 **MCP support** — Declare MCP servers directly in `.iter` files (`stdio`, `http`)
+- 🔗 **MCP support** — Declare MCP servers directly in `.bot` files (`stdio`, `http`)
 - 🧪 **Recipe system** — Bundle workflows with presets for comparison and benchmarking
 - 📐 **Mermaid diagrams** — Auto-generate visual workflow diagrams (compact / detailed / full)
 
@@ -90,9 +90,39 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 
 ### Distribution & integration
 
-- ☁️ **Cloud mode** — Multi-tenant Helm deployment with MongoDB + S3-compatible blob store + NATS JetStream queue; KEDA-scaled runner pool; per-run Kubernetes sandbox pods
+- ☁️ **Bot-as-a-Service platform** — Multi-tenant Helm deployment (MongoDB + S3 + NATS JetStream, KEDA-scaled runners, per-run Kubernetes sandboxes) with the full platform layer: orgs + quotas + metering, inbound webhooks for GitLab / GitHub / Forgejo / generic JSON, bound credentials, audit log, PATs, SMTP onboarding, self-serve studio — see [docs/baas-overview.md](docs/baas-overview.md)
 - 🧰 **TypeScript SDK** — [`@iterion/sdk`](sdks/typescript/) wraps the CLI with typed `run` / `resume` / `events` streaming for Node, Deno, and Bun apps
 - 🧠 **AI agent skill** — Install as a skill in Claude Code, Codex, Cursor, Windsurf, GitHub Copilot, Cline, Aider, and other AI coding agents
+
+---
+
+## ☁️ Iterion Cloud — Bot-as-a-Service
+
+The same engine, hosted: an external event fires → an autonomous bot
+runs with your org's **bound** credentials → the result lands back in
+your own system. Open a merge request, get Revi's review as inline
+comments — no human in the loop, no secret ever in a prompt.
+
+From dev to imperator: the legion, as a service.
+
+```text
+forge event ──▶ POST /api/webhooks/{provider}/{id}   (token/HMAC, rate, quota)
+            ──▶ NATS queue ──▶ runner pod (KEDA-scaled)
+            ──▶ bot executes with bound creds (BYOK key + file secrets)
+            ──▶ review/fix/report posted back on the MR/PR
+```
+
+Five steps to a working loop:
+
+1. `helm install iterion oci://ghcr.io/socialgouv/charts/iterion -f values.yaml` — [chart README](charts/iterion/README.md)
+2. Activate the bootstrap super-admin (temp password in the boot logs), create an org
+3. In the studio: org → Webhooks → create (provider, bot scope) — copy the one-time token + URL
+4. Paste them into your forge's webhook settings; add a `forge_token` secret + bot binding
+5. Open an MR — watch the run in the studio, the review lands on the MR
+
+Org quotas (runs / cost / concurrency / rate), audit log, personal
+access tokens, DLQ ops and Prometheus metrics make it operable as a
+real multi-tenant service. Start at [docs/baas-overview.md](docs/baas-overview.md).
 
 ---
 
@@ -107,7 +137,7 @@ Iterion ships a team of named, first-class bots — your legion. Each is a gener
 | 🌿 **Billy** | Branch reviewer-fixer — alternating Claude/GPT review-fix on the branch diff, auto-commits on convergence | [`branch_improve_loop`](bots/branch-improve-loop/) |
 | 🌍 **Willy** | Whole-repo reviewer-fixer — the same loop across the entire codebase | [`whole_improve_loop`](bots/whole-improve-loop/) |
 | 📚 **Doki** | Doc aligner — detects & fixes doc/code drift (the docs, never the code) | [`docs-refresh`](bots/docs-refresh/) |
-| 🔎 **Revi** | Code reviewer — read-only cross-family review, publishes findings to the board | [`code_review`](bots/code-review/) |
+| 🔎 **Revi** | Code reviewer — read-only cross-family review, publishes findings to the board | [`review_pr`](bots/review-pr/) |
 | 🛡️ **Seki** | Source security auditor — SAST + secret scan + LLM triage | [`sec-audit-source`](bots/sec-audit-source/) |
 | 📦 **Depsy** | Supply-chain auditor — dependency malware / CVE scan | [`sec-audit-deps`](bots/sec-audit-deps/) |
 | ⬆️ **Renovacy** | Security-aware dependency upgrader | [`secured-renovacy`](bots/secured-renovacy/) |
@@ -172,9 +202,9 @@ All run data (events, artifacts, interactions) is stored in `.iterion/runs/`.
 
 ---
 
-## 🤖 `.iter` vs `.bot`
+## 🤖 Workflow files
 
-Iterion accepts two interchangeable file extensions: **`.iter`** for raw or experimental DSL (didactic examples, coverage tests, single-purpose scripts) and **`.bot`** for productized, operational bots (with human gates, mitigation steps, reports, and a documented runbook). The parser, compiler, runtime, and studio treat them identically — the distinction is narrative only. `iterion init` produces a `.bot` file by default; the `examples/` directory ships both, with `.bot` reserved for examples meant to be run unmodified against real systems.
+Iterion accepts plain workflow sources as **`.bot`** files. The former `.iter` extension is no longer supported at the CLI, server, dispatcher, or studio boundaries.
 
 Bots can also be shipped as **`.botz`** — a tar.gz packaging the workflow with adjacent resources (Claude Code skills, reusable prompts, default attachments, manifest). Scaffold with `iterion bundle init`, build with `iterion bundle pack`, run with `iterion run my.botz`. See [docs/bundles.md](docs/bundles.md).
 
@@ -231,7 +261,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 - [docs/skill.md](docs/skill.md) — install Iterion as an AI agent skill (Claude Code, Cursor, Copilot…)
 
 **Author workflows**
-- [docs/dsl.md](docs/dsl.md) — full `.iter` DSL reference
+- [docs/dsl.md](docs/dsl.md) — full `.bot` DSL reference
 - [docs/routers.md](docs/routers.md) — routing modes deep dive
 - [docs/recipes.md](docs/recipes.md) — preset-driven runs (benchmarking, prompt comparison)
 - [docs/delegation.md](docs/delegation.md) — `model:` vs `backend:` (claude_code, codex)
