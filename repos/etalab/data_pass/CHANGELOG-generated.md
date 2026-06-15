@@ -1,34 +1,33 @@
-## Changelog : data_pass (30 derniers jours, au 10 juin 2026)
+## Changelog : data_pass (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à data_pass au cours des 30 derniers jours. Les évolutions concernent principalement des corrections de bugs, des améliorations de l'expérience utilisateur (notamment dans les emails et les formulaires pré-remplis), des mises à jour de l'API et des ajustements de sécurité. Des efforts ont également été faits pour améliorer la qualité du code et la documentation.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment dans la gestion des données géographiques, l'intégration avec FranceConnect et la simplification de l'interface administrative. Des corrections de bugs et des mises à jour de sécurité ont également été apportées pour garantir la stabilité et la fiabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration des emails FranceConnect : reformulation du texte d'approbation. [#1603](https://github.com/etalab/data_pass/pull/1603)
-- Ajout d'un lien de gestion des notifications dans les emails d'instruction. [#1585](https://github.com/etalab/data_pass/pull/1585)
-- Possibilité pour les administrateurs de s'auto-éditer leurs propres droits d'accès. [#1573](https://github.com/etalab/data_pass/pull/1573)
-- Ajout du formulaire pré-rempli MGDIS Aides facultatives départementales. [#1578](https://github.com/etalab/data_pass/pull/1578)
-- Ajout du formulaire pré-rempli Andyvie (Recreo). [#1577](https://github.com/etalab/data_pass/pull/1577)
-- Activation des brouillons pour les instructeurs FranceConnect. [#1597](https://github.com/etalab/data_pass/pull/1597)
-- Mise à jour des CGU Prosante Connect. [#1596](https://github.com/etalab/data_pass/pull/1596)
-- Mise à jour des CGU TDAE. [#1585](https://github.com/etalab/data_pass/pull/1585)
-- Limitation de la taille des fichiers uploadés. [#1554](https://github.com/etalab/data_pass/pull/1554)
-- Amélioration de la recherche d'instructeurs : acceptation du formatted_id (D/H). [#1575](https://github.com/etalab/data_pass/pull/1575)
-- Possibilité de trier les résultats des endpoints de l'API par date de création. [#1593](https://github.com/etalab/data_pass/pull/1593)
+- Ajout de la possibilité de trier les résultats des endpoints de l'API par date de création (descendant par défaut) [#1583](https://github.com/etalab/data_pass/pull/1583).
+- Amélioration de la recherche par ID : les demandes validées sont désormais incluses dans les résultats [#1584](https://github.com/etalab/data_pass/pull/1584).
+- Intégration du formulaire pré-rempli Andyvie (Recreo) dans l'API particulier [#1577](https://github.com/etalab/data_pass/pull/1577).
+- Ajout d'un lien de gestion des notifications dans les emails d'instruction [#1575](https://github.com/etalab/data_pass/pull/1575).
+- Mise à jour des CGU pour Prosante Connect [#1596](https://github.com/etalab/data_pass/pull/1596).
+- Mise à jour des CGU pour TDAE [#1585](https://github.com/etalab/data_pass/pull/1585).
+- Amélioration des emails FranceConnect : ajout d'un lien pour ne plus recevoir ces emails [#1603](https://github.com/etalab/data_pass/pull/1603).
+- Ajout du formulaire pré-rempli MGDIS Aides facultatives départementales [#1501](https://github.com/etalab/data_pass/pull/1501).
+- Les administrateurs peuvent désormais s'auto-éditer leurs propres droits [#1573](https://github.com/etalab/data_pass/pull/1573).
+- Activation des brouillons d'instructeurs pour FranceConnect [#1597](https://github.com/etalab/data_pass/pull/1597).
 
 ### Évolutions techniques
-- Correction de races conditionnelles dans les tests Cucumber, améliorant leur fiabilité. [#1608](https://github.com/etalab/data_pass/pull/1608)
-- Correction des liens vers la documentation dans l'interface Swagger. [#1623](https://github.com/etalab/data_pass/pull/1623)
-- Mise à jour de Ruby à la dernière version. [#1285](https://github.com/etalab/data_pass/pull/1285)
-- Refactorisation du code pour utiliser `params.expect` pour les strong parameters, améliorant la sécurité et la lisibilité.
-- Suppression d'une redirection inutile lors d'une recherche par ID. [#1602](https://github.com/etalab/data_pass/pull/1602)
-- Suppression du champ `recurrence` du bloc `cnous_data_extraction_criteria`. [#1621](https://github.com/etalab/data_pass/pull/1621)
-- Ajout de mapping des codes INSEE pour la catégorie légale des organisations. [#1582](https://github.com/etalab/data_pass/pull/1582)
-- Correction de bugs et améliorations dans les tests Cucumber. [#1612](https://github.com/etalab/data_pass/pull/1612), [#1591](https://github.com/etalab/data_pass/pull/1591)
+- Refactor de la gestion des données CNous : amélioration de la performance et de la lisibilité du code [#1582](https://github.com/etalab/data_pass/pull/1582).
+- Implémentation d'une nouvelle méthode pour récupérer les données de périmètre géographique de CNous, affichées côté client [#1581](https://github.com/etalab/data_pass/pull/1581).
+- Correction de problèmes de concurrence dans les tests Cucumber [#1608](https://github.com/etalab/data_pass/pull/1608).
+- Mise à jour de la documentation concernant l'authentification ProConnect [#1622](https://github.com/etalab/data_pass/pull/1622).
+- Amélioration de la gestion des liens dans la documentation Swagger [#1623](https://github.com/etalab/data_pass/pull/1623).
+- Mise à jour des dépendances : Ruby, puma, jwt, faraday, rubocop, actions/checkout.
 
 ### Autres changements
-- Mise à jour de la documentation pour clarifier le format des scopes en réponse API.
-- Mise à jour des liens CGU des services CISIRH. [#1620](https://github.com/etalab/data_pass/pull/1620)
-- Mise à jour de la documentation et suppression de TODOs. [#1594](https://github.com/etalab/data_pass/pull/1594)
-- Corrections de linting et amélioration de la qualité du code. [#1611](https://github.com/etalab/data_pass/pull/1611), [#1613](https://github.com/etalab/data_pass/pull/1613)
-- Mises à jour de dépendances (Faraday, JWT, Rubocop, etc.).
+- Mise à jour du lien CGU pour les services CISIRH [#1621](https://github.com/etalab/data_pass/pull/1621).
+- Correction de l'introduction des TD CESU [#1617](https://github.com/etalab/data_pass/pull/1617) et [#1616](https://github.com/etalab/data_pass/pull/1616).
+- Suppression de la redirection vers la demande lors d'une recherche par ID [#1602](https://github.com/etalab/data_pass/pull/1602).
+- Amélioration de la documentation du tutoriel de lecture de l'API [#1569](https://github.com/etalab/data_pass/pull/1569).
+- Suppression d'un scope obsolète (DHTOUR) pour l'hébergement touristique [#1574](https://github.com/etalab/data_pass/pull/1574).
+- Ajout d'une limite de taille pour l'upload de documents [#1554](https://github.com/etalab/data_pass/pull/1554).
+- Correction de bugs et améliorations diverses de l'interface utilisateur.

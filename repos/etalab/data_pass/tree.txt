@@ -1248,6 +1248,7 @@
 │   │   │   ├── choose_stage_controller.js
 │   │   │   ├── clickable_rows_controller.js
 │   │   │   ├── clipboard_controller.js
+│   │   │   ├── cnous_perimeter_controller.js
 │   │   │   ├── dsfr_multi_select_controller.js
 │   │   │   ├── dynamic_modal_controller.js
 │   │   │   ├── fill_contact_data_with_applicant_data_controller.js
@@ -1609,6 +1610,7 @@
 │   │   ├── email_preview_renderer.rb
 │   │   ├── email_verifier_api.rb
 │   │   ├── france_connect_data_builder.rb
+│   │   ├── geo_api_gouv_client.rb
 │   │   ├── hubee_api_client.rb
 │   │   ├── hubspot_api.rb
 │   │   ├── insee_api_authentication.rb
@@ -1797,7 +1799,9 @@
 │       │   │   │   └── _contacts.html.erb
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
+│       │   │   │   ├── _cnous_communes_manual.html.erb
 │       │   │   │   ├── _cnous_data_extraction_criteria.html.erb
+│       │   │   │   ├── _cnous_perimeter_readonly.html.erb
 │       │   │   │   ├── _contacts.html.erb
 │       │   │   │   ├── _france_connect.html.erb
 │       │   │   │   ├── _france_connect_eidas.html.erb
@@ -2568,8 +2572,10 @@
 │   │   ├── ajout_nouveau_bloc_de_formulaire.md
 │   │   ├── ajout_nouveau_provider.md
 │   │   ├── api.md
+│   │   ├── authentification_proconnect.md
 │   │   ├── datagouv-habilitations-sync.md
 │   │   ├── design.md
+│   │   ├── geo_data.md
 │   │   ├── habilitation_type_dynamique.md
 │   │   ├── modal.md
 │   │   ├── modification_scopes.md
@@ -3041,7 +3047,8 @@
 │   │   └── insee
 │   │       ├── 13002526500013.json
 │   │       ├── 21920023500014.json
-│   │       └── 21920023500022.json
+│   │       ├── 21920023500022.json
+│   │       └── 22690001700014.json
 │   ├── form_builders
 │   │   ├── authorization_request_form_builder_spec.rb
 │   │   └── dsfr_form_builder_spec.rb
@@ -3170,9 +3177,11 @@
 │   │   ├── categorie_juridique_spec.rb
 │   │   ├── code_naf_spec.rb
 │   │   ├── concerns
-│   │   │   └── authorization_core
-│   │   │       ├── checkboxes_spec.rb
-│   │   │       └── documents_spec.rb
+│   │   │   ├── authorization_core
+│   │   │   │   ├── checkboxes_spec.rb
+│   │   │   │   └── documents_spec.rb
+│   │   │   └── authorization_extensions
+│   │   │       └── cnous_data_extraction_criteria_spec.rb
 │   │   ├── contact_definition_spec.rb
 │   │   ├── contact_spec.rb
 │   │   ├── data_provider_spec.rb
@@ -3327,6 +3336,7 @@
 │   │   ├── dynamic_authorization_request_registrar_spec.rb
 │   │   ├── email_preview_renderer_spec.rb
 │   │   ├── france_connect_data_builder_spec.rb
+│   │   ├── geo_api_gouv_client_spec.rb
 │   │   ├── hubee_api_client_spec.rb
 │   │   ├── insee_sirene_api_client_spec.rb
 │   │   ├── je_clique_ou_pas_api_client_spec.rb
@@ -3392,4 +3402,4 @@
     ├── .keep
     └── javascript
         └── .keep
-482 directories, 3050 files
+483 directories, 3059 files
