@@ -1,51 +1,38 @@
-## Changelog : fondation (30 derniers jours, au 10 juin 2026)
+## Changelog : fondation (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des documents, notamment les agendas et les rapports officiels. Des corrections de bugs et des optimisations ont été apportées pour améliorer la stabilité et l'expérience utilisateur, en particulier concernant la sélection de fichiers, l'archivage des sessions et la recherche. L'équipe a également travaillé sur l'amélioration de la sécurité et de la conformité en mettant à jour certaines dépendances.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des agendas, des rapports officiels et des documents, avec un accent particulier sur l'expérience utilisateur. Des corrections de bugs et des optimisations ont été apportées pour fluidifier le workflow des agents et améliorer la fiabilité de l'application. Des efforts ont également été faits pour renforcer la sécurité et moderniser l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Amélioration de la sélection des fichiers d'agenda : ajout de la sélection par ligne et verrouillage des fichiers officiellement rapportés. [#384](https://github.com/betagouv/fondation/issues/384), [#385](https://github.com/betagouv/fondation/issues/385)
-- Ajout de la possibilité de renoncer à une présentation dans les plans de présentation. [#378](https://github.com/betagouv/fondation/issues/378)
-- Ajout de la possibilité d'ajouter des membres absents dans les plans de présentation. [#358](https://github.com/betagouv/fondation/issues/358)
-- Amélioration de la recherche plein texte dans les fichiers de nomination. [#336](https://github.com/betagouv/fondation/issues/336)
-- Ajout de l'état des sessions (par exemple, archivage). [#362](https://github.com/betagouv/fondation/issues/362)
-- Ajout de la possibilité de donner son avis (fonction "Je donne mon avis"). [#360](https://github.com/betagouv/fondation/issues/360)
-- Amélioration de l'affichage des plans de présentation. [#386](https://github.com/betagouv/fondation/issues/386)
-- Ajout de l'heure de fin dans les rapports officiels. [#379](https://github.com/betagouv/fondation/issues/379)
-- Amélioration de l'affichage des noms dans les plans. [#391](https://github.com/betagouv/fondation/issues/391)
+- Amélioration de la sélection des fichiers d'agenda et verrouillage des fichiers une fois rapportés officiellement [#384](https://github.com/betagouv/fondation/issues/384), [#385](https://github.com/betagouv/fondation/issues/385).
+- Ajout de la possibilité d'indiquer l'heure de fin dans les rapports officiels [#379](https://github.com/betagouv/fondation/issues/379).
+- Ajout de la fonctionnalité "Je donne mon avis" pour les rapports [#360](https://github.com/betagouv/fondation/issues/360).
+- Possibilité d'ajouter des membres absents dans les plans de présentation [#358](https://github.com/betagouv/fondation/issues/358).
+- Amélioration de l'affichage des plans de présentation [#386](https://github.com/betagouv/fondation/issues/386).
+- Ajout de la renonciation dans les plans de présentation [#378](https://github.com/betagouv/fondation/issues/378).
+- Ajout d'un éditeur WYSIWYG pour les documents [#352](https://github.com/betagouv/fondation/issues/352).
+- Amélioration de la gestion des statuts des sessions [#362](https://github.com/betagouv/fondation/issues/362).
+- Correction de l'affichage des plans dans la liste [#391](https://github.com/betagouv/fondation/issues/391).
+- Correction du design des boutons de sélection de fichiers d'agenda [#390](https://github.com/betagouv/fondation/issues/390).
+- Correction de l'affichage du badge de documentation [#389](https://github.com/betagouv/fondation/issues/389).
+- Amélioration de la sélection des fichiers d'agenda [#384](https://github.com/betagouv/fondation/issues/384).
 
 ### Évolutions techniques
-- Refactorisation pour utiliser lolfi ingest pour les données de test. [#398](https://github.com/betagouv/fondation/issues/398)
-- Extraction de la génération d'archives lolfi. [#396](https://github.com/betagouv/fondation/issues/396)
-- Mise à jour de la configuration de Renovate pour utiliser des commits sémantiques et un scope FON. [#394](https://github.com/betagouv/fondation/issues/394)
-- Amélioration de la gestion des erreurs lors de l'importation de fichiers. [#355](https://github.com/betagouv/fondation/issues/355)
-- Correction de la configuration de Renovate pour limiter le nombre de PR ouvertes simultanément. [#350](https://github.com/betagouv/fondation/issues/350)
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité (axios, vite, @nestjs/core, postcss). [#347](https://github.com/betagouv/fondation/issues/347), [#346](https://github.com/betagouv/fondation/issues/346), [#344](https://github.com/betagouv/fondation/issues/344), [#356](https://github.com/betagouv/fondation/issues/356)
+- Mise en place de Vitest et Storybook pour les tests et le développement de composants [#409](https://github.com/betagouv/fondation/issues/409).
+- Application de l'outil de formatage de code oxfmt [#406](https://github.com/betagouv/fondation/issues/406).
+- Refactorisation pour utiliser lolfi ingest pour les données de test [#398](https://github.com/betagouv/fondation/issues/398).
+- Extraction de la génération d'archives lolfi [#396](https://github.com/betagouv/fondation/issues/396).
+- Mise à jour de la configuration de Renovate pour des commits sémantiques et un scope FON [#394](https://github.com/betagouv/fondation/issues/394).
+- Mise à jour de la version de pnpm à la version 11 [#363](https://github.com/betagouv/fondation/issues/363).
+- Configuration du cache de playwright pour accélérer les tests [#357](https://github.com/betagouv/fondation/issues/357).
+- Correction de la configuration de Renovate pour limiter à un seul PR ouvert [#350](https://github.com/betagouv/fondation/issues/350).
 
 ### Autres changements
-- Mise à jour de la documentation README. [#392](https://github.com/betagouv/fondation/issues/392)
-- Ajout d'un test d'acceptation pour la documentation. [#399](https://github.com/betagouv/fondation/issues/399)
-- Correction du placeholder de recherche dans le tableau des nominations. [#405](https://github.com/betagouv/fondation/issues/405)
-- Suppression de l'utilisation de dsft w units. [#403](https://github.com/betagouv/fondation/issues/403)
-- Correction du nom de l'agenda dans le sélecteur de rapport officiel. [#401](https://github.com/betagouv/fondation/issues/401)
-- Correction pour le cas particulier de CC PARIS. [#400](https://github.com/betagouv/fondation/issues/400)
-- Correction pour filtrer les fichiers déjà rapportés dans l'agenda. [#397](https://github.com/betagouv/fondation/issues/397)
-- Correction du contenu du template de documentation pour le conseil. [#395](https://github.com/betagouv/fondation/issues/395)
-- Correction du wording du badge de documentation. [#389](https://github.com/betagouv/fondation/issues/389)
-- Correction du bouton JDMA en fonction du rôle de l'utilisateur. [#388](https://github.com/betagouv/fondation/issues/388)
-- Correction de la configuration du préfixe de commit Renovate. [#393](https://github.com/betagouv/fondation/issues/393)
-- Correction de l'archivage des sessions avec un résultat nul. [#376](https://github.com/betagouv/fondation/issues/376)
-- Correction de l'affichage des pièces jointes pour les observateurs. [#375](https://github.com/betagouv/fondation/issues/375)
-- Normalisation des grades lors de l'ingestion des magistrats. [#373](https://github.com/betagouv/fondation/issues/373)
-- Tri des membres par ordre du protocole. [#373](https://github.com/betagouv/fondation/issues/373)
-- Correction du nombre de fichiers par statut. [#371](https://github.com/betagouv/fondation/issues/371)
-- Correction du rendu PDF après la pagination. [#370](https://github.com/betagouv/fondation/issues/370)
-- Correction du tri des membres par nom. [#384](https://github.com/betagouv/fondation/issues/384)
-- Correction du formatage de l'heure. [#384](https://github.com/betagouv/fondation/issues/384)
-- Correction du champ secrétaire dans le rapport officiel. [#367](https://github.com/betagouv/fondation/issues/367)
-- Inclusion du résultat supprimé dans le statut de la session rapportée. [#368](https://github.com/betagouv/fondation/issues/368)
-- Correction de l'affichage des rapports officiels sans agenda dans la liste des documents. [#366](https://github.com/betagouv/fondation/issues/366)
-- Ajout d'une animation de recherche de fichiers. [#337](https://github.com/betagouv/fondation/issues/337)
-- Correction de l'archivage des sessions. [#364](https://github.com/betagouv/fondation/issues/364)
-- Correction des fichiers suspendus qui étaient toujours en cours d'exécution. [#338](https://github.com/betagouv/fondation/issues/338)
-- Ajout d'un audit Zizmor. [#339](https://github.com/betagouv/fondation/issues/339)
+- Mise à jour de la documentation README [#392](https://github.com/betagouv/fondation/issues/392), [#353](https://github.com/betagouv/fondation/issues/353).
+- Correction de plusieurs bugs mineurs liés à l'affichage et à la gestion des données dans l'interface utilisateur.
+- Correction de problèmes liés à l'importation de données [#355](https://github.com/betagouv/fondation/issues/355).
+- Correction de la synchronisation des données des rapports officiels [#402](https://github.com/betagouv/fondation/issues/402).
+- Correction du nom de l'agenda dans le sélecteur de rapports officiels [#401](https://github.com/betagouv/fondation/issues/401).
+- Correction du placeholder de recherche dans le tableau des nominations [#405](https://github.com/betagouv/fondation/issues/405).
+- Suppression de la condition de migration inutile [#1071b5d](https://github.com/betagouv/fondation/commit/1071b5d).
+- Mise à jour des dépendances (axios, vite, postcss, @nestjs/core) pour corriger des failles de sécurité [#347](https://github.com/betagouv/fondation/issues/347), [#346](https://github.com/betagouv/fondation/issues/346), [#344](https://github.com/betagouv/fondation/issues/344), [#356](https://github.com/betagouv/fondation/issues/356).
