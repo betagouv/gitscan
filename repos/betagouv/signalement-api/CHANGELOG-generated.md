@@ -1,13 +1,13 @@
-## Changelog : signalement-api (30 derniers jours, au 10 mai 2026)
+## Changelog : signalement-api (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à l'API SignalConso. Les modifications se concentrent sur la correction d'un problème lié au nom du répertoire d'exportation des données et sur la correction du nom d'une variable d'environnement. Ces ajustements visent à améliorer la stabilité et la fiabilité de l'API.
+Cette mise à jour corrige un problème d'affichage des labels d'emails et intègre les modifications issues de la pull request #2037. Ces améliorations visent à garantir une meilleure expérience utilisateur et à maintenir la qualité du code.
 
 ### Évolutions fonctionnelles
-- Correction du nom du répertoire d'exportation des données [#2035](https://github.com/betagouv/signalement-api/pull/2035).
+- Correction de l'affichage des labels d'emails. [#2037](https://github.com/betagouv/signalement-api/pull/2037)
 
 ### Évolutions techniques
-- Correction du nom d'une variable d'environnement.
+- Intégration des modifications issues de la pull request #2037.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Aucune information disponible.
