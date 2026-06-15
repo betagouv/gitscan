@@ -246,6 +246,7 @@
 │   │   │   ├── _migrations
 │   │   │   │   ├── 1780932874467-auto-migration.ts
 │   │   │   │   ├── 1781108400000-prefix-deleted-emails-for-removed-structures.ts
+│   │   │   │   ├── 1781271727059-PrefixDeletedEmailsForSoftDeletedUsers.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -2938,6 +2939,9 @@
 │   │   │   │   │   │   │   ├── display-user-agent
 │   │   │   │   │   │   │   │   ├── display-user-agent.component.html
 │   │   │   │   │   │   │   │   └── display-user-agent.component.ts
+│   │   │   │   │   │   │   ├── filter-tabs
+│   │   │   │   │   │   │   │   ├── filter-tabs.component.html
+│   │   │   │   │   │   │   │   └── filter-tabs.component.ts
 │   │   │   │   │   │   │   ├── fonction-selection
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
@@ -2977,6 +2981,8 @@
 │   │   │   │   │   │   │   │   ├── user-sessions-tab.component.html
 │   │   │   │   │   │   │   │   ├── user-sessions-tab.component.ts
 │   │   │   │   │   │   │   │   └── user-sessions.types.ts
+│   │   │   │   │   │   │   ├── user-status-badge
+│   │   │   │   │   │   │   │   └── user-status-badge.component.ts
 │   │   │   │   │   │   │   └── users-table
 │   │   │   │   │   │   │       ├── users-table.component.html
 │   │   │   │   │   │   │       ├── users-table.component.ts
@@ -3015,16 +3021,24 @@
 │   │   │   │   │   │   │   │   ├── structures.effects.ts
 │   │   │   │   │   │   │   │   ├── structures.reducer.ts
 │   │   │   │   │   │   │   │   └── structures.selectors.ts
+│   │   │   │   │   │   │   ├── supervisors
+│   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   ├── supervisors.actions.ts
+│   │   │   │   │   │   │   │   ├── supervisors.effects.ts
+│   │   │   │   │   │   │   │   ├── supervisors.reducer.ts
+│   │   │   │   │   │   │   │   └── supervisors.selectors.ts
 │   │   │   │   │   │   │   └── users
 │   │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │   │       ├── users.actions.ts
 │   │   │   │   │   │   │       ├── users.effects.ts
 │   │   │   │   │   │   │       ├── users.reducer.ts
 │   │   │   │   │   │   │       └── users.selectors.ts
-│   │   │   │   │   │   └── types
-│   │   │   │   │   │       ├── CustomToast.type.ts
-│   │   │   │   │   │       ├── CustomToastClass.type.ts
-│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   │   ├── types
+│   │   │   │   │   │   │   ├── CustomToast.type.ts
+│   │   │   │   │   │   │   ├── CustomToastClass.type.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── utils
+│   │   │   │   │   │       └── matches-search-term.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   └── national-stats
@@ -3443,4 +3457,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-804 directories, 2641 files
+808 directories, 2651 files

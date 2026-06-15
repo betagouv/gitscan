@@ -1,3 +1,19 @@
+## [2.250.8](https://github.com/SocialGouv/domifa/compare/v2.250.7...v2.250.8) (2026-06-12)
+
+
+### Bug Fixes
+
+* **backend:** fix auth by delete ([98fad17](https://github.com/SocialGouv/domifa/commit/98fad17ec3c06fec606dc4a37e914233fddd409e))
+
+## [2.250.7](https://github.com/SocialGouv/domifa/compare/v2.250.6...v2.250.7) (2026-06-12)
+
+
+### Bug Fixes
+
+* **backend:** add filters for deleted ([ee496a6](https://github.com/SocialGouv/domifa/commit/ee496a657caec816106cdb5ab24ca505f891c237))
+* **backend:** delete fabrique social ([99130ca](https://github.com/SocialGouv/domifa/commit/99130ca1666dcd01936135a46c2fd35d0ea836c7))
+* **backend:** fix lint ([429fbfc](https://github.com/SocialGouv/domifa/commit/429fbfc78a74b8770e98e330f6b2cff6b983d6b2))
+
 ## [2.250.6](https://github.com/SocialGouv/domifa/compare/v2.250.5...v2.250.6) (2026-06-11)
 
 
