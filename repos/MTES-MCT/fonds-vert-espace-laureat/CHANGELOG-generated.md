@@ -1,18 +1,19 @@
 ## Changelog : fonds-vert-espace-laureat (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Les dernières évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment en affichant des informations plus complètes sur les projets et les dossiers de subvention. Des ajustements ont également été apportés à la navigation et à l'interface utilisateur pour une meilleure clarté. Enfin, des mises à jour techniques ont été réalisées pour maintenir la performance et la sécurité de l'application.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives pour l'expérience utilisateur, notamment une meilleure visibilité des anomalies sur les projets et une navigation plus claire avec le renommage de l'espace laureat. Des corrections ont également été apportées pour améliorer la robustesse de l'application et l'affichage des dossiers.
 
 ### Évolutions fonctionnelles
-- **Projets :** Une nouvelle section affichant les anomalies de démonstration est désormais visible pour les projets.
-- **Dossiers :** Les dossiers sont maintenant affichés quel que soit leur statut, offrant une vue d'ensemble plus complète aux utilisateurs.
-- **Navigation :** Le nom de l'espace lauréat a été modifié en "Vert Impact" pour une meilleure cohérence et clarté.
+- **Projets :** Une section dédiée aux anomalies détectées sur les projets est désormais visible, permettant une identification rapide des points d'attention.
+- **Navigation :** L'espace laureat a été renommé "Vert Impact" pour une meilleure clarté et cohérence avec l'objectif du fonds. [#2b1e976](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/2b1e976)
+- **Dossiers :** Les dossiers sont maintenant affichés quel que soit leur statut, offrant une vue complète de l'historique des demandes. [#b3e4d08](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/b3e4d08)
+- **Composants :** Correction du passage de props sérialisables pour l'accès rapide aux en-têtes. [#8c15934](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/8c15934)
 
 ### Évolutions techniques
-- **Mises à jour de dépendances :** Les dépendances `dsfr` et `next` ont été mises à jour vers leurs dernières versions.
-- **Refactoring :** Le composant de métriques a été refactorisé pour partager le contenu de la valeur de la métrique.
-- **URLs Demarches Numériques :** Les URLs vers les services Demarches Numériques ont été mises à jour.
-- **Passage de props :** Correction pour assurer le passage de props sérialisables pour l'accès rapide aux en-têtes.
+- **Refactoring :** Partage du contenu de la valeur des métriques pour une meilleure réutilisation du code. [#188f6bb](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/188f6bb)
+- **Dépendances :** Mise à jour de la bibliothèque DSFR et de Next.js pour bénéficier des dernières corrections et améliorations. [#2900b2e](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/2900b2e)
+- **URLs Demarches Numériques :** Mise à jour des URLs pointant vers les services de Demarches Numériques. [#e9c7bb7](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/e9c7bb7) et [#4275a4a](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/4275a4a)
 
 ### Autres changements
-- Les URLs des services Demarches Numériques ont été mises à jour.
+- Mise à jour de la dépendance `shell-quote`.
+- Mise à jour de la dépendance `ws`.
