@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet est en cours de développement et vise à aider les agents de l'administration.",
+  "description": "CSPLab accompagne le travail des employeurs de la fonction publique. Le projet est en cours de développement et vise à fournir des outils pour faciliter la gestion des offres d'emploi et des candidatures.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,39 +11,34 @@
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Administration & Backoffice"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "Redis",
+    "Qdrant",
     "Docker",
-    "Docker Compose",
-    "uv",
-    "Direnv",
-    "Node.js",
-    "pnpm",
-    "poppler",
-    "tesseract"
+    "Docker Compose"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Frontend React",
     "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
-  "tests": "Pytest, Jest, Cypress",
+  "tests": [
+    "Pytest"
+  ],
   "workflows": [
-    "CI/CD",
-    "GitHub Actions"
+    "CI/CD & GitHub Actions"
   ],
   "lastActivity": "2026-06-12T19:49:16Z",
   "status": "active",

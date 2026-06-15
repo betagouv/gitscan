@@ -1,51 +1,52 @@
 ## Changelog : csplab (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'ingestion des offres d'emploi, l'ajout de fonctionnalités pour la gestion des utilisateurs et des candidatures, ainsi que sur la mise en place d'une architecture frontend plus robuste. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'ingestion et de la gestion des offres d'emploi, ainsi que sur la mise en place des fondations pour l'interface utilisateur et l'authentification des utilisateurs. Des améliorations ont également été apportées à l'infrastructure et aux outils de développement.
 
 ### Évolutions fonctionnelles
 - **Ingestion :**
-    - Agrégation et purge quotidienne des logs API pour une meilleure surveillance et maintenance. [#743](https://github.com/betagouv/csplab/issues/743)
-    - Sauvegarde des offres Talensoft archivées avec la date d'archivage. [#697](https://github.com/betagouv/csplab/issues/697)
-    - Mise en place d'un endpoint pour la soumission de candidatures. [#729](https://github.com/betagouv/csplab/issues/729)
-    - Publication des offres sur le web. [#692](https://github.com/betagouv/csplab/issues/692)
-    - Ajout de la gestion des statuts des offres Talensoft. [#627](https://github.com/betagouv/csplab/issues/627)
-    - Mise en place d'un mécanisme de logging pour l'ingestion. [#578](https://github.com/betagouv/csplab/issues/578)
+    - Agrégation et purge quotidienne des logs de l'API pour une meilleure gestion et performance.
+    - Sauvegarde des offres Talensoft archivées avec la date d'archivage.
+    - Implémentation de l'ingestion d'offres via des webhooks Talensoft.
+    - Ajout d'un endpoint pour lister les sources d'offres.
+    - Possibilité de mettre à jour les offres via l'API avec authentification par token.
 - **Utilisateurs :**
-    - Création d'utilisateurs avec les profils "agent" et "candidat". [#735](https://github.com/betagouv/csplab/issues/735), [#744](https://github.com/betagouv/csplab/issues/744)
-    - Liaison des utilisateurs aux sources de données. [#742](https://github.com/betagouv/csplab/issues/742)
-    - Authentification à deux facteurs (2FA) ajoutée pour l'accès à l'administration Django. [#699](https://github.com/betagouv/csplab/issues/699)
-    - Authentification par email/mot de passe mise en place. [#639](https://github.com/betagouv/csplab/issues/639)
-- **Frontend :**
-    - Création d'une base de layout et d'une barre latérale pour l'interface utilisateur. [#701](https://github.com/betagouv/csplab/issues/701)
-    - Amélioration de l'affichage des polices dans Storybook et en développement local. [#740](https://github.com/betagouv/csplab/issues/740)
-    - Composants de base (badges, avatars, conteneurs de contenu) ajoutés pour le frontend ATS. [#682](https://github.com/betagouv/csplab/issues/682), [#683](https://github.com/betagouv/csplab/issues/683), [#687](https://github.com/betagouv/csplab/issues/687)
-    - Affichage des offres d'emploi dans un tiroir (drawer). [#550](https://github.com/betagouv/csplab/issues/550)
-    - Gestion des erreurs frontend avec interception et affichage. [#629](https://github.com/betagouv/csplab/issues/629)
+    - Création d'utilisateurs avec les profils "agent" et "candidat".
+    - Mise en place de l'authentification à deux facteurs (2FA) pour l'accès à l'administration Django.
+    - Authentification par email et mot de passe implémentée.
+- **Candidatures :**
+    - Soumission de candidatures implémentée.
+- **Interface utilisateur :**
+    - Création d'une base de layout et d'une barre latérale pour l'interface utilisateur.
+    - Composants de base (badges, avatars, conteneurs de contenu) ajoutés pour l'interface utilisateur.
+    - Gestion des erreurs frontend implémentée.
+    - Mise en place d'une structure de tests pour le frontend.
+- **Recherche :**
+    - Ajout de la vectorisation pour les métiers, améliorant potentiellement la recherche sémantique.
 
 ### Évolutions techniques
-- **Architecture :**
-    - Refactorisation de la couche de présentation pour l'identité, regroupant les composants liés aux utilisateurs. [#728](https://github.com/betagouv/csplab/issues/728)
-    - Organisation des tests par couche et contexte. [#673](https://github.com/betagouv/csplab/issues/673)
-    - Déplacement des objets DDD (Domain-Driven Design) dans une librairie distincte au sein du monorepo. [#663](https://github.com/betagouv/csplab/issues/663)
 - **Infrastructure :**
-    - Configuration de GitHub Pages pour gérer un nom de domaine personnalisé. [#727](https://github.com/betagouv/csplab/issues/727)
-    - Ajout d'un fichier `security.txt` pour la divulgation responsable des vulnérabilités. [#695](https://github.com/betagouv/csplab/issues/695)
-    - Mise en place de workflows GitHub Actions pour l'automatisation des tâches (lint, tests, publication). [#718](https://github.com/betagouv/csplab/issues/718), [#719](https://github.com/betagouv/csplab/issues/719), [#658](https://github.com/betagouv/csplab/issues/658)
-    - Amélioration de la gestion des variables d'environnement pour Talensoft. [#600](https://github.com/betagouv/csplab/issues/600)
-- **Base de données :**
-    - Ajout d'une clé étrangère pour `source_id` dans la table `offers`. [#651](https://github.com/betagouv/csplab/issues/651)
-    - Création d'une table `Source` pour gérer les sources de données. [#574](https://github.com/betagouv/csplab/issues/574)
-    - Backfill de la colonne `source_id` pour les offres existantes. [#642](https://github.com/betagouv/csplab/issues/642)
-- **Divers :**
-    - Refactorisation des fixtures de test pour l'ingestion. [#726](https://github.com/betagouv/csplab/issues/726)
-    - Amélioration de la lisibilité du code et des noms de méthodes. [#568](https://github.com/betagouv/csplab/issues/568)
+    - Configuration de GitHub Pages pour gérer un nom de domaine personnalisé.
+    - Amélioration de la gestion des workflows GitHub Actions (auto-assignation, exécution des tests, etc.).
+    - Mise à jour des dépendances pour plusieurs composants (web, ingestion, ocr, notebook).
+    - Refactorisation de l'architecture pour séparer les couches de présentation et de domaine.
+    - Utilisation de composants Storybook pour le développement de l'interface utilisateur.
+    - Migration vers un modèle d'utilisateur personnalisé dans Django.
+    - Ajout d'un système de logging plus robuste.
+- **Code :**
+    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+    - Ajout de tests unitaires et d'intégration.
+    - Amélioration de la gestion des erreurs et des exceptions.
+    - Standardisation des noms de méthodes.
+    - Ajout de documentation pour certains composants.
 
 ### Autres changements
-- Ajout de scripts pour la souscription et la suppression des webhooks Talensoft. [#721](https://github.com/betagouv/csplab/issues/721)
-- Traduction du modèle de PR en français. [#619](https://github.com/betagouv/csplab/issues/619)
-- Correction de l'affichage de `!N!` dans les conditions particulières et la description. [#739](https://github.com/betagouv/csplab/issues/739)
-- Correction d'un problème de concurrence avec GitHub Pages. [#724](https://github.com/betagouv/csplab/issues/724)
-- Correction de bugs liés à la configuration de Storybook. [#749](https://github.com/betagouv/csplab/issues/749), [#649](https://github.com/betagouv/csplab/issues/649)
-- Suppression de la déclaration du manager par défaut. [#749](https://github.com/betagouv/csplab/issues/749)
-- Ajustement des `entity_id` dans le domaine ingestion. [#746](https://github.com/betagouv/csplab/issues/746)
+- Ajout d'un fichier `security.txt` pour la divulgation responsable des vulnérabilités.
+- Ajout d'un script pour s'abonner et se désabonner aux webhooks Talensoft.
+- Traduction du template de PR en français.
+- Organisation des tests web par couche et contexte.
+- Ajout d'un fichier `CHANGELOG.md` pour la version 0.1.10 et 0.1.9.
+- Ajout d'un système de gestion des sources d'offres.
+- Ajout de la gestion des organismes pour les recruteurs.
+- Ajout d'un endpoint pour lister les métiers.
+- Correction de bugs divers liés à l'affichage, aux migrations de base de données et à la configuration de l'environnement.
