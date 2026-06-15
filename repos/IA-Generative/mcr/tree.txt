@@ -47,9 +47,6 @@
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
-├── dantotsus
-│   └── architecture
-│       └── transition-01-close-b2.md
 ├── docker
 │   ├── auth
 │   │   ├── .env.kc.local
@@ -157,6 +154,7 @@
 │   │   │   │   ├── feedback_router.py
 │   │   │   │   ├── lookup_router.py
 │   │   │   │   ├── meeting
+│   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── capture_bot_router.py
 │   │   │   │   │   ├── capture_router.py
 │   │   │   │   │   ├── deliverable_router.py
@@ -165,10 +163,9 @@
 │   │   │   │   │   └── transcription_router.py
 │   │   │   │   └── user_router.py
 │   │   │   ├── client
-│   │   │   │   ├── drive_client.py
+│   │   │   │   ├── __init__.py
 │   │   │   │   ├── http_client.py
-│   │   │   │   ├── meeting_client.py
-│   │   │   │   └── smtp_client.py
+│   │   │   │   └── meeting_client.py
 │   │   │   ├── configs
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── base.py
@@ -224,6 +221,7 @@
 │   │   │   │   │       ├── c3a1f0d8e2b4_deliverable_type_and_status.py
 │   │   │   │   │       ├── ca74396de706_add_report_filename.py
 │   │   │   │   │       ├── d1fe6890d8a3_add_bot_is_connecting_status_to_meeting_.py
+│   │   │   │   │       ├── d2c7b9a4e1f8_backfill_recent_transcription_deliverables.py
 │   │   │   │   │       ├── d7e3c0f4a8b1_deliverable_unique_meeting_type_active.py
 │   │   │   │   │       ├── e4d8594ebbcf_add_capture_end_status.py
 │   │   │   │   │       ├── e57b5e520610_add_notes_to_meeting.py
@@ -235,17 +233,31 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── authorize_meeting_access.py
 │   │   │   │   ├── deliverable_transitions.py
+│   │   │   │   ├── email
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── builder.py
+│   │   │   │   │   └── registry
+│   │   │   │   │       ├── base.html
+│   │   │   │   │       ├── footer.html
+│   │   │   │   │       ├── report_generation_success.html
+│   │   │   │   │       └── transcription_generation_success.html
 │   │   │   │   ├── feedback.py
 │   │   │   │   ├── meeting_transitions.py
-│   │   │   │   └── report_rendering.py
+│   │   │   │   ├── report_rendering.py
+│   │   │   │   └── transcription_rendering.py
 │   │   │   ├── exceptions
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── celery_exceptions.py
 │   │   │   │   ├── exception_handler.py
 │   │   │   │   └── exceptions.py
 │   │   │   ├── infrastructure
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── celery.py
 │   │   │   │   ├── comu.py
+│   │   │   │   ├── drive.py
 │   │   │   │   ├── email.py
+│   │   │   │   ├── keycloak.py
+│   │   │   │   ├── redis.py
 │   │   │   │   ├── s3.py
 │   │   │   │   └── unleash.py
 │   │   │   ├── models
@@ -257,8 +269,8 @@
 │   │   │   │   ├── transcription_model.py
 │   │   │   │   └── user_model.py
 │   │   │   ├── orchestrators
+│   │   │   │   ├── __init__.py
 │   │   │   │   ├── deliverable_orchestrator.py
-│   │   │   │   ├── meeting_multipart_orchestrator.py
 │   │   │   │   ├── meeting_orchestrator.py
 │   │   │   │   ├── meeting_transitions_orchestrator.py
 │   │   │   │   └── transcription_orchestrator.py
@@ -278,35 +290,26 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── audio_pre_transcription_processing_service.py
 │   │   │   │   ├── correct_acronyms
+│   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── acronym_corrector.py
 │   │   │   │   │   ├── data
 │   │   │   │   │   │   └── glossary.md
 │   │   │   │   │   └── prompt.py
 │   │   │   │   ├── correct_spelling_mistakes
+│   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── prompt.py
 │   │   │   │   │   └── spelling_corrector.py
 │   │   │   │   ├── deliverable_service.py
-│   │   │   │   ├── deliverable_storage_service.py
 │   │   │   │   ├── docx_generation
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── templated_docx_generator.py
 │   │   │   │   ├── docx_report_generation_service.py
-│   │   │   │   ├── docx_transcription_generation_service.py
 │   │   │   │   ├── email
-│   │   │   │   │   ├── email_service.py
-│   │   │   │   │   ├── registry
-│   │   │   │   │   │   ├── base.html
-│   │   │   │   │   │   ├── footer.html
-│   │   │   │   │   │   ├── report_generation_success.html
-│   │   │   │   │   │   └── transcription_generation_success.html
-│   │   │   │   │   ├── templates.py
-│   │   │   │   │   └── types.py
+│   │   │   │   │   └── __init__.py
 │   │   │   │   ├── llm_post_processing.py
-│   │   │   │   ├── meeting_multipart_service.py
 │   │   │   │   ├── meeting_service.py
 │   │   │   │   ├── meeting_to_transcription_service.py
 │   │   │   │   ├── meeting_transition_record_service.py
-│   │   │   │   ├── redis_token_store.py
 │   │   │   │   ├── report_content
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── markdown_to_docx.py
@@ -334,11 +337,11 @@
 │   │   │   │   │       ├── models.py
 │   │   │   │   │       ├── types.py
 │   │   │   │   │       └── vad.py
-│   │   │   │   ├── token_exchange_service.py
 │   │   │   │   ├── transcription_task_service.py
 │   │   │   │   ├── transcription_waiting_time_service.py
 │   │   │   │   └── user_service.py
 │   │   │   ├── state_machine
+│   │   │   │   ├── __init__.py
 │   │   │   │   ├── graph
 │   │   │   │   │   ├── ImportMeetingStateMachine.png
 │   │   │   │   │   ├── RecordMeetingStateMachine.png
@@ -347,21 +350,30 @@
 │   │   │   │   ├── record_meeting_state_machine.py
 │   │   │   │   └── visio_meeting_state_machine.py
 │   │   │   ├── statemachine_actions
+│   │   │   │   ├── __init__.py
 │   │   │   │   └── meeting_actions.py
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── abort_multipart_upload.py
+│   │   │   │   ├── complete_multipart_upload.py
+│   │   │   │   ├── complete_transcription.py
 │   │   │   │   ├── create_feedback.py
 │   │   │   │   ├── create_meeting.py
 │   │   │   │   ├── delete_meeting.py
+│   │   │   │   ├── ensure_offline_token.py
+│   │   │   │   ├── fail_capture_bot.py
 │   │   │   │   ├── generate_presigned_audio_upload_url.py
 │   │   │   │   ├── get_feature_flag_status.py
 │   │   │   │   ├── get_meeting.py
 │   │   │   │   ├── get_meeting_audio.py
 │   │   │   │   ├── get_or_create_user_by_keycloak.py
+│   │   │   │   ├── init_multipart_upload.py
 │   │   │   │   ├── list_meetings.py
 │   │   │   │   ├── lookup_comu_meeting.py
 │   │   │   │   ├── mark_deliverable_success.py
 │   │   │   │   ├── request_deliverable.py
+│   │   │   │   ├── sign_multipart_part.py
+│   │   │   │   ├── start_capture_bot.py
 │   │   │   │   └── update_meeting.py
 │   │   │   └── utils
 │   │   │       ├── __init__.py
@@ -466,6 +478,7 @@
 │   │   ├── api
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
+│   │   │   ├── test_capture_bot_router.py
 │   │   │   ├── test_deliverable_router.py
 │   │   │   ├── test_feature_flag_router.py
 │   │   │   ├── test_feedback_router.py
@@ -497,9 +510,7 @@
 │   │   │   ├── __init__.py
 │   │   │   └── test_s3.py
 │   │   ├── integration
-│   │   │   ├── __init__.py
-│   │   │   ├── conftest.py
-│   │   │   └── test_deliverable_storage.py
+│   │   │   └── __init__.py
 │   │   ├── mocks
 │   │   │   ├── __init__.py
 │   │   │   ├── in_memory_drive.py
@@ -511,8 +522,7 @@
 │   │   ├── orchestrators
 │   │   │   ├── test_deliverable_orchestrator.py
 │   │   │   ├── test_deliverable_repository.py
-│   │   │   ├── test_meeting_repository.py
-│   │   │   └── test_transcription_orchestrator.py
+│   │   │   └── test_meeting_repository.py
 │   │   ├── schemas
 │   │   │   └── test_meeting_schema.py
 │   │   ├── services
@@ -557,12 +567,20 @@
 │   │   │   └── test_spelling_corrector.py
 │   │   └── use_cases
 │   │       ├── __init__.py
+│   │       ├── test_abort_multipart_upload.py
+│   │       ├── test_complete_multipart_upload.py
+│   │       ├── test_complete_transcription.py
 │   │       ├── test_create_meeting.py
 │   │       ├── test_delete_meeting.py
+│   │       ├── test_ensure_offline_token.py
+│   │       ├── test_fail_capture_bot.py
 │   │       ├── test_get_meeting_audio.py
+│   │       ├── test_init_multipart_upload.py
 │   │       ├── test_list_meetings.py
 │   │       ├── test_mark_deliverable_success.py
 │   │       ├── test_request_deliverable.py
+│   │       ├── test_sign_multipart_part.py
+│   │       ├── test_start_capture_bot.py
 │   │       └── test_update_meeting.py
 │   └── uv.lock
 ├── mcr-frontend
@@ -625,7 +643,9 @@
 │   │   │   │   └── TipTapEditor.vue
 │   │   │   ├── feedback
 │   │   │   │   ├── FeedbackButton.vue
-│   │   │   │   └── FeedbackModal.vue
+│   │   │   │   ├── FeedbackModal.spec.ts
+│   │   │   │   ├── FeedbackModal.vue
+│   │   │   │   └── feedback.schema.ts
 │   │   │   ├── meeting
 │   │   │   │   ├── AddMeetingForm.spec.ts
 │   │   │   │   ├── AddMeetingForm.vue
@@ -763,6 +783,7 @@
 │   │   │   ├── feedback
 │   │   │   │   ├── feedback.service.ts
 │   │   │   │   ├── feedback.types.ts
+│   │   │   │   ├── use-feedback-draft.ts
 │   │   │   │   └── use-feedback.ts
 │   │   │   ├── http
 │   │   │   │   ├── http.interceptors.ts
@@ -1103,4 +1124,4 @@
 ├── mcr.code-workspace
 └── scripts
     └── check_changed.py
-217 directories, 888 files
+216 directories, 910 files

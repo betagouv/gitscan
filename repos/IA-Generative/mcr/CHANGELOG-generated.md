@@ -1,37 +1,30 @@
-## Changelog : mcr (30 derniers jours, au 5 juin 2026)
+## Changelog : mcr (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'application MCR, notamment l'ajout de nouvelles fonctionnalités pour la gestion des notes, la génération de rapports personnalisés et l'amélioration de la robustesse et de la flexibilité du système. Des efforts ont également été déployés pour améliorer la documentation, les tests et l'infrastructure du projet.
+Cette période a été marquée par des améliorations significatives de la robustesse et de la flexibilité de l'application MCR. Des corrections de bugs ont été apportées pour gérer les erreurs de transcription et les problèmes d'état des livrables. De nouvelles fonctionnalités ont été implémentées pour améliorer la gestion des notes, l'intégration avec des outils externes comme Google Drive et l'ajout de capacités de débogage. L'architecture interne a été refactorisée pour une meilleure maintenabilité et extensibilité.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fonctionnalité permettant de télécharger les fichiers audio des réunions [#757](https://github.com/IA-Generative/mcr/issues/757).
-- Implémentation de la possibilité de relancer la génération d'un rapport en cas d'échec [#720](https://github.com/IA-Generative/mcr/issues/720).
-- Ajout d'une page de maintenance pour signaler les interruptions de service [#798](https://github.com/IA-Generative/mcr/issues/798).
-- Possibilité d'ajouter des notes personnalisées aux rapports, avec une intégration dans les différentes étapes du pipeline de génération [#755](https://github.com/IA-Generative/mcr/issues/755), [#727](https://github.com/IA-Generative/mcr/issues/727), [#637](https://github.com/IA-Generative/mcr/issues/637), [#638](https://github.com/IA-Generative/mcr/issues/638).
-- Ajout d'une fonctionnalité pour générer des rapports au format DOCX [#625](https://github.com/IA-Generative/mcr/issues/625).
-- Ajout d'un bouton "Voir dans Drive" pour accéder directement aux rapports générés sur Google Drive [#687](https://github.com/IA-Generative/mcr/issues/687).
-- Amélioration de la gestion des participants et de leur identification dans les rapports [#639](https://github.com/IA-Generative/mcr/issues/639), [#640](https://github.com/IA-Generative/mcr/issues/640).
+- Ajout d'un bouton de téléchargement audio pour les utilisateurs [#757](https://github.com/IA-Generative/mcr/issues/757).
+- Possibilité de relancer la génération de livrables en cas d'échec [#720](https://github.com/IA-Generative/mcr/issues/720).
+- Ajout de la possibilité d'utiliser des notes personnalisées dans les sections du rapport [#727](https://github.com/IA-Generative/mcr/issues/727).
+- Amélioration de la gestion des participants et des notes dans les transcriptions, notamment pour éviter la perte d'informations entre les segments audio [#746](https://github.com/IA-Generative/mcr/issues/746), [#697](https://github.com/IA-Generative/mcr/issues/697).
+- Ajout d'une page de maintenance pour signaler les interruptions de service [#799](https://github.com/IA-Generative/mcr/issues/799).
+- Intégration avec Google Drive pour visualiser les transcriptions et les rapports [#687](https://github.com/IA-Generative/mcr/issues/687), [#437](https://github.com/IA-Generative/mcr/issues/437).
+- Ajout d'un outil de débogage pour faciliter le diagnostic des problèmes [#792](https://github.com/IA-Generative/mcr/issues/792).
+- Amélioration des suggestions de prompts personnalisés [#710](https://github.com/IA-Generative/mcr/issues/710).
 
 ### Évolutions techniques
-- Migration vers une organisation basée sur le "trunk-based development" pour une meilleure gestion des versions et des déploiements [#796](https://github.com/IA-Generative/mcr/issues/796).
-- Refactorisation de l'architecture pour séparer les responsabilités et améliorer la maintenabilité du code.
-- Amélioration de la gestion des erreurs et des exceptions, notamment lors de la génération de rapports.
-- Mise à jour des dépendances et des outils de développement.
-- Suppression de code obsolète et de fonctionnalités non utilisées.
-- Amélioration des tests unitaires et d'intégration pour garantir la qualité du code.
-- Utilisation de nouveaux modèles GPTOSS pour l'analyse du langage naturel [#761](https://github.com/IA-Generative/mcr/issues/761).
-- Optimisation des performances et de la scalabilité du système.
-- Amélioration de la journalisation et de la surveillance du système.
-- Ajout de tests pour la gestion des états de la transcription et de la génération de rapports.
-- Refonte de l'infrastructure Celery pour une meilleure gestion des tâches asynchrones.
+- Refactorisation de l'architecture pour séparer les couches de domaine, d'infrastructure et de présentation, améliorant la modularité et la testabilité [#810](https://github.com/IA-Generative/mcr/issues/810).
+- Migration vers une architecture basée sur des cas d'utilisation (use cases) pour une meilleure organisation du code [#820](https://github.com/IA-Generative/mcr/issues/820), [#770](https://github.com/IA-Generative/mcr/issues/770).
+- Ajout d'un linter pour faire respecter les règles d'architecture et de style de code [#814](https://github.com/IA-Generative/mcr/issues/814).
+- Amélioration de la gestion des erreurs et des exceptions, notamment pour les tâches Celery et les appels API.
+- Mise à jour des dépendances et correction de problèmes liés à la configuration de l'environnement local [#834](https://github.com/IA-Generative/mcr/issues/834).
+- Suppression de code obsolète et de fonctionnalités non utilisées [#773](https://github.com/IA-Generative/mcr/issues/773), [#689](https://github.com/IA-Generative/mcr/issues/689).
+- Amélioration de la journalisation (logging) pour faciliter le débogage et la surveillance.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
 
 ### Autres changements
-- Amélioration de la documentation du projet, notamment pour les nouvelles fonctionnalités et l'architecture du système [#756](https://github.com/IA-Generative/mcr/issues/756).
-- Mise à jour des instructions de démarrage du projet dans le fichier README.
-- Ajout d'un outil d'évaluation pour les rapports générés [#593](https://github.com/IA-Generative/mcr/issues/593).
-- Ajout d'un glossaire avec 428 acronymes pour faciliter la compréhension des rapports [#642](https://github.com/IA-Generative/mcr/issues/642).
-- Suppression des feature flags obsolètes [#712](https://github.com/IA-Generative/mcr/issues/712).
-- Ajout d'un outil de linting pour garantir la qualité du code.
-- Amélioration de la lisibilité des logs.
-- Ajout d'une intégration avec Sentry pour la surveillance des erreurs.
-- Ajout d'un nouveau membre à l'équipe Slack.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications de l'architecture [#760](https://github.com/IA-Generative/mcr/issues/760).
+- Mise à jour de la configuration Slack pour inclure les nouveaux membres de l'équipe [#834](https://github.com/IA-Generative/mcr/issues/834).
+- Correction de fautes de frappe et amélioration de la lisibilité du code [#785](https://github.com/IA-Generative/mcr/issues/785).
+- Suppression de la limite de longueur des commentaires de feedback [#835](https://github.com/IA-Generative/mcr/issues/835).
