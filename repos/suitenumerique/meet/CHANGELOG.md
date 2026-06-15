@@ -8,9 +8,21 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(frontend) allow disabling silent login via a URL parameter
+- ✨(frontend) allow hiding the login button via a URL parameter
+
+### Changed
+
+- ✨(frontend) enhance noise reduction with BBBA audio processing pipeline
+
+## [1.20.0] - 2026-06-12
+
 ### Changed
 
 - ♻️(addon) improve Outlook add-on: i18n support, feedback link, smarter link
+- ⬆️(frontend) upgrade react-i18next from 15.1.1 to 17.0.8
 
 ### Fixed
 

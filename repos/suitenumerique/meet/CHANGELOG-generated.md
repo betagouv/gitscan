@@ -1,39 +1,46 @@
-## Changelog : meet (30 derniers jours, au 11 juin 2026)
+## Changelog : meet (30 derniers jours, au 2026-06-14)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec l'ajout de fonctionnalités comme le picture-in-picture, les réactions, et une meilleure gestion des permissions de muting. Des corrections de bugs et des mises à jour de sécurité ont également été apportées, ainsi que des optimisations techniques pour améliorer la performance et la stabilité de la plateforme. L'addon Outlook a été amélioré avec la prise en charge de l'internationalisation et l'ajout d'un formulaire de feedback.
+Ce mois-ci, l'équipe a apporté des améliorations significatives à la plateforme Meet, axées sur l'expérience utilisateur, la sécurité et la flexibilité. Les nouveautés incluent des options de configuration avancées pour les salles de réunion, des améliorations de la qualité audio, des correctifs de sécurité et des optimisations des performances, notamment grâce au chargement différé de certains composants. L'addon Outlook a également été enrichi de nouvelles fonctionnalités.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fonctionnalité Picture-in-Picture (PiP) pour les réunions, incluant une barre de contrôle et un affichage de l'état de connexion.
-- Implémentation des réactions pendant les réunions, avec une navigation accessible au clavier et une adaptation pour les appareils mobiles.
-- Possibilité pour les participants de couper le son des autres en fonction de la configuration de la salle.
-- Amélioration de l'addon Outlook : prise en charge de l'internationalisation, ajout d'un lien vers un formulaire de feedback, et insertion intelligente des liens de réunion.
-- Support étendu des types de fichiers pour l'enregistrement des réunions.
-- Amélioration de l'assignation des intervenants.
+- Possibilité de masquer le bouton de connexion via un paramètre d'URL.
+- Possibilité de désactiver la connexion silencieuse via un paramètre d'URL.
+- Amélioration de la réduction du bruit avec un pipeline de traitement audio BBBA.
+- Ajout d'un menu d'options dans la fenêtre "image dans l'image" (PiP) pour un contrôle plus facile.
+- Prise en charge de la désactivation du micro des participants par les administrateurs de la salle, configurable au niveau de la salle.
+- Ajout d'un lien vers un formulaire de feedback dans le pied de page de l'addon Outlook.
+- Amélioration de l'addon Outlook : support de l'internationalisation, lien de feedback, et amélioration de la génération de liens.
+- Support étendu pour tous les types de fichiers audio/vidéo.
+- Ajout d'un administrateur spécifique aux fichiers.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (idna, urllib3, eslint-plugin-react-hooks, aiohttp).
-- Refactorisation du code frontend pour améliorer le code splitting et réduire la taille des bundles JavaScript.
-- Utilisation de SVG importés directement pour les icônes, optimisant ainsi leur taille et leur performance.
-- Amélioration de la synchronisation de la configuration des salles.
-- Refactorisation de la gestion des permissions de muting.
-- Mise à jour de l'infrastructure de build et de déploiement (Tiltfile, Kubernetes jobs).
-- Amélioration de la robustesse du processus de suppression de fichiers.
-- Ajout d'un admin spécifique pour la gestion des fichiers.
-- Correction de bugs et amélioration de la stabilité du metadata extractor.
+- Optimisation des performances du frontend grâce au chargement différé de `@libreaudio/la-call` et d'autres composants.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (react-i18next, urllib3, idna, core-js, webpack-dev-server).
+- Refactorisation du code frontend pour améliorer la modularité et le code splitting.
+- Amélioration de la synchronisation de la configuration des salles de réunion entre le backend et le frontend.
+- Utilisation d'imports SVG individuels pour les icônes Material afin d'optimiser la taille des ressources.
+- Refactorisation de la gestion des permissions de mise en sourdine.
+- Amélioration de la robustesse du processus de suppression de fichiers sur le backend.
+- Mise à jour des versions des charts Helm.
+- Ajout d'une commande de gestion pour fusionner les utilisateurs en double.
+- Amélioration de la gestion des erreurs et des conditions de concurrence lors de la création d'utilisateurs.
+- Remplacement de l'API Room Options dépréciée.
+- Mise à jour de ESLint vers la version 9.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
-- Correction de bugs mineurs dans l'interface utilisateur et le backend.
-- Amélioration des logs pour faciliter le débogage.
-- Mise à jour des versions des releases (1.19.0, 1.18.0, 1.17.0, 1.16.0).
-- Correction de la configuration CSP pour éviter les erreurs.
-- Ajout d'un message de fallback lorsque la fermeture automatique d'un dialogue échoue.
-- Paramétrisation de la configuration Nginx du frontend via un volume.
-- Ajout d'un badge "beta" avec le style de l'UI kit.
-- Suppression d'une dépendance inutile (vite-tsconfig-paths).
-- Correction d'un problème de positionnement des tooltips.
-- Ajout de tests pour la couverture du code.
-- Correction d'un bug lié à la concurrence lors de la création d'utilisateurs.
-- Correction d'un bug lié à la gestion des états des fichiers.
-- Correction d'un bug lié à la configuration des variables d'environnement.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités de l'API.
+- Correction de bugs mineurs liés à la position des tooltips et au recentrage de la barre de réactions.
+- Amélioration de la configuration des variables d'environnement pour le backend et le développement.
+- Ajout d'un visualiseur de bundle Rollup pour faciliter le débogage des performances du frontend.
+- Correction de problèmes de compatibilité avec ProConnect.
+- Correction d'un bug d'audio mono dans la réduction du bruit.
+- Correction d'un bug empêchant la fermeture automatique des dialogues dans l'addon Outlook.
+- Correction d'un bug lié à l'absence de `default-src` dans la configuration CSP.
+- Correction d'un bug lié à l'affichage du message de fallback lorsque le dialogue ne peut pas se fermer automatiquement.
+- Correction d'un bug empêchant l'insertion du lien de réunion à la position du curseur dans l'addon Outlook.
+- Correction d'un bug lié à l'affichage du tag "beta" dans l'addon Outlook.
+- Correction d'un bug lié à la génération de liens lorsque l'événement en contient déjà un.
+- Correction d'un bug lié au changement de bouton "ajouter" en "supprimer" lorsque le lien existe déjà.
+- Correction d'un bug lié à la gestion des erreurs lors de la suppression de fichiers.
+- Mise à jour du changelog.
