@@ -1,23 +1,24 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Element X Android est une application de messagerie Matrix de nouvelle génération. Il s'agit d'une réécriture complète de l'application précédente, utilisant le SDK Matrix Rust et Jetpack Compose.",
+  "description": "Application cliente Matrix de nouvelle génération fournie par Element. Il s'agit d'une réécriture complète utilisant le SDK Matrix Rust et Jetpack Compose.",
   "language": "Kotlin",
   "features": [
     "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Recherche & Filtres",
-    "Gestion des médias & Assets",
     "Sécurité & Conformité",
-    "Temps réel & WebSocket"
+    "Gestion des appels",
+    "Gestion des médias"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix Rust SDK",
     "Jetpack Compose",
     "Appyx",
-    "Firebase"
+    "Firebase",
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,7 +30,6 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2"
     ]
   },
@@ -38,10 +38,10 @@
     "UI tests"
   ],
   "workflows": [
-    "build",
+    "Build",
     "CI/CD"
   ],
-  "lastActivity": "2026-06-10T11:28:06+02:00",
+  "lastActivity": "2026-06-12T10:20:56+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -53,10 +53,9 @@
   },
   "tags": [
     "Sécurité & Conformité",
-    "Messagerie",
     "Android",
     "Kotlin",
-    "Rust",
-    "Matrix"
+    "Matrix",
+    "Communication & Messagerie"
   ]
 }
