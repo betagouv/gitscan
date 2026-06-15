@@ -1,50 +1,36 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 10 juin 2026)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'import de documents, de la gestion des statuts des projets et de la génération de documents. Des optimisations techniques ont également été apportées pour améliorer la performance et la robustesse de l'application, ainsi que la gestion des erreurs.
+Ce mois-ci, les améliorations se concentrent sur la performance, l'import de documents, l'expérience utilisateur et la robustesse de l'application. Des optimisations ont été apportées pour accélérer le traitement des tâches et la compression des fichiers statiques. L'import de documents a été simplifié et amélioré, notamment pour les documents signés. L'interface utilisateur a été affinée avec des corrections de bugs et des améliorations de l'affichage.
 
 ### Évolutions fonctionnelles
-- **Import de documents :** Amélioration significative de l'import de documents signés scannés, avec la possibilité de télécharger directement via S3 et un suivi de la progression pour chaque fichier. Import possible de dossiers de tous les territoires gérés.
-- **Gestion des statuts :** Possibilité de modifier en masse le statut des projets vers "refusé" ou "classé sans suite".
-- **Notifications :**
-    - Possibilité de personnaliser le nom du fichier PDF lors de la génération de notifications d'acceptation.
-    - Découplage de la notification de refus/classement du changement de statut.
-    - Ajout d'un QR code optionnel sur les documents générés pour faciliter le rattachement des scans signés.
-- **Interface utilisateur :**
-    - Masquage de la colonne d'actions sur les pages de programmation et de simulation pour une meilleure clarté.
-    - Amélioration de l'affichage du tableau des enveloppes.
-    - Réduction de la taille du header et du footer.
-    - Correction du dropdown de sélection de statut dans la page projet.
-    - Correction du décochage silencieux des filtres de type ModelMultipleChoiceFilter.
-    - Amélioration du formatage de l'adresse du demandeur dans les documents.
-- **Navigation :** Création d'une entrée de menu dédiée pour les modèles de publipostage.
-- **Recherche :** Possibilité de rechercher un dossier par sous-chaîne de son numéro.
-- **Admin :**
-    - Journalisation des modifications des utilisateurs via l'admin Django.
-    - Affichage du périmètre, des dates Turgot et du statut du report dans l'admin.
+- Possibilité d'importer des dossiers de tous les territoires gérés. [#749](https://github.com/betagouv/gestion-des-subventions-locales/issues/749)
+- Ajout d'une page dédiée au publipostage avec un menu pour les modèles. [#750](https://github.com/betagouv/gestion-des-subventions-locales/issues/750)
+- Possibilité de changer le statut de plusieurs projets en "refusé" ou "classé sans suite" en lot. [#726](https://github.com/betagouv/gestion-des-subventions-locales/issues/726)
+- Amélioration du formatage de l'adresse du demandeur dans les documents générés. [#718](https://github.com/betagouv/gestion-des-subventions-locales/issues/718)
+- Correction du dropdown de sélection de statut dans la page projet. [#717](https://github.com/betagouv/gestion-des-subventions-locales/issues/717)
+- Possibilité de spécifier le nom du fichier PDF lors de la génération de notifications d'acceptation. [#720](https://github.com/betagouv/gestion-des-subventions-locales/issues/720)
+- Ajout d'une option pour rendre le QR code de suivi optionnel sur les documents générés. [#720](https://github.com/betagouv/gestion-des-subventions-locales/issues/720)
+- Amélioration de l'affichage des enveloppes sur les pages de programmation et de simulation (masquage de la colonne d'actions). [#752](https://github.com/betagouv/gestion-des-subventions-locales/issues/752)
+- Unification de la page de détail d'un projet, pilotée par son état. [#753](https://github.com/betagouv/gestion-des-subventions-locales/issues/753)
+- Affichage du périmètre, des dates Turgot et du report dans l'admin. [#748](https://github.com/betagouv/gestion-des-subventions-locales/issues/748)
+- Possibilité d'importer en masse des documents signés scannés via un upload direct sur S3. [#739](https://github.com/betagouv/gestion-des-subventions-locales/issues/739)
 
 ### Évolutions techniques
-- **Performance :** Priorisation des tâches Celery en fonction du contexte d'appel.
-- **Refactoring :**
-    - Unification de la page de détail d'un projet, pilotée par son état.
-    - Remplacement des FBV de détail de projet par une base DetailView.
-    - Découpage du document GraphQL monolithique en documents par opération.
-    - Extraction des helpers de pagination dans la fonction `save_demarche_dossiers_from_ds`.
-    - Remplacement des `Active*Manager` par des méthodes `queryset .active()`.
-- **Sécurité :**
-    - Limitation de la portée des tokens du proxy DS au groupe instructeur.
-    - Alertes email aux administrateurs sur les actions sensibles.
-- **Infrastructure :**
-    - Verrou anti-concurrence sur la synchronisation des dossiers DS avec Redis.
-    - Mise à jour des dépendances vulnérables signalées par Dependabot.
-- **Tests :** Correction d'un test flaky lié à la génération d'emails.
+- Activation de la compression WhiteNoise (gzip + Brotli) des fichiers statiques pour améliorer les performances. [#757](https://github.com/betagouv/gestion-des-subventions-locales/issues/757)
+- Priorisation des tâches Celery en fonction du contexte d'appel pour une meilleure gestion des ressources. [#751](https://github.com/betagouv/gestion-des-subventions-locales/issues/751)
+- Refactorisation du code pour améliorer la structure et la maintenabilité, notamment au niveau de la gestion des projets et de l'import de documents.
+- Amélioration de la gestion des erreurs lors de la synchronisation des dossiers depuis DN.
+- Ajout d'un verrou anti-concurrence sur la synchronisation des dossiers DS pour éviter les conflits. [#740](https://github.com/betagouv/gestion-des-subventions-locales/issues/740)
+- Découplage de la notification de refus/classement du changement de statut. [#719](https://github.com/betagouv/gestion-des-subventions-locales/issues/719)
+- Optimisation de la génération d'arrêtés/lettres en masse. [#714](https://github.com/betagouv/gestion-des-subventions-locales/issues/714)
+- Suppression des rafraîchissements DS bloquants à l'ouverture des modales. [#743](https://github.com/betagouv/gestion-des-subventions-locales/issues/743)
 
 ### Autres changements
-- Ajout d'un fichier `AGENTS.md` pour guider les agents de code.
-- Documentation sur l'utilisation des branches hotfix pour le déploiement par tag.
-- Correction d'erreurs de manifest staticfiles.
-- Cache-busting des fichiers JS de l'importmap.
-- Suppression des rafraîchissements DS bloquants à l'ouverture des modales.
-- Correction de la perte du curseur des dossiers supprimés sur les pages vides.
-- Autorisation des tabulations dans les arrêtés/lettres de notification.
-- Correctifs de la FAQ.
+- Ajout d'un fichier `AGENTS.md` pour partager des conseils et des bonnes pratiques avec les agents de code. [#715](https://github.com/betagouv/gestion-des-subventions-locales/issues/715)
+- Documentation : usage des branches hotfix pour le déploiement par tag. [#722](https://github.com/betagouv/gestion-des-subventions-locales/issues/722)
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout de logs pour les actions des utilisateurs via l'admin Django. [#741](https://github.com/betagouv/gestion-des-subventions-locales/issues/741)
+- Correction d'un test flaky lié à la création de collègues. [#738](https://github.com/betagouv/gestion-des-subventions-locales/issues/738)
+- Correction de la perte du curseur des dossiers supprimés sur les pages vides. [#742](https://github.com/betagouv/gestion-des-subventions-locales/issues/742)
+- Correction du décochage silencieux des filtres de type `ModelMultipleChoiceFilter`. [#737](https://github.com/betagouv/gestion-des-subventions-locales/issues/737)
