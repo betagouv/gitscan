@@ -1,11 +1,11 @@
-## Changelog : mission-transition-ecologique (30 derniers jours, au 2026-06-04)
+## Changelog : mission-transition-ecologique (30 derniers jours, au 2026-06-14)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la correction d'une fuite de mémoire en production, améliorant ainsi la stabilité de la plateforme. Des mises à jour automatiques des projets et programmes ont également été effectuées.
+Ce mois-ci, les améliorations se concentrent sur l'ajout de nouvelles fonctionnalités pour l'administration des établissements et sur la résolution de fuites de mémoire en production. Des mises à jour automatiques des données des programmes et projets ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Correction d'une fuite de mémoire en production, améliorant la stabilité de l'application. [#2622](https://github.com/betagouv/mission-transition-ecologique/issues/2622)
+- Ajout de la fonctionnalité d'administration du statut des établissements. [#2637](https://github.com/betagouv/mission-transition-ecologique/issues/2637)
 
 ### Évolutions techniques
-- Mise à jour automatique des projets via GitHub Actions. [#2643](https://github.com/betagouv/mission-transition-ecologique/issues/2643), [#2628](https://github.com/betagouv/mission-transition-ecologique/issues/2628)
-- Mise à jour automatique des programmes via GitHub Actions. [#2633](https://github.com/betagouv/mission-transition-ecologique/issues/2633), [#2629](https://github.com/betagouv/mission-transition-ecologique/issues/2629), [#2617](https://github.com/betagouv/mission-transition-ecologique/issues/2617)
+- Correction d'une fuite de mémoire en production, améliorant la stabilité de l'application. [#2622](https://github.com/betagouv/mission-transition-ecologique/issues/2622)
+- Mises à jour automatiques des données des programmes et projets via les workflows CI/CD. [#2617](https://github.com/betagouv/mission-transition-ecologique/issues/2617), [#2628](https://github.com/betagouv/mission-transition-ecologique/issues/2628), [#2629](https://github.com/betagouv/mission-transition-ecologique/issues/2629), [#2630](https://github.com/betagouv/mission-transition-ecologique/issues/2630), [#2633](https://github.com/betagouv/mission-transition-ecologique/issues/2633), [#2643](https://github.com/betagouv/mission-transition-ecologique/issues/2643)
