@@ -1,26 +1,25 @@
-## Changelog : acceslibre (30 derniers jours, au 11 juin 2026)
+## Changelog : acceslibre (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la qualité des données, notamment via l'intégration de données APIDAE et des corrections de schémas, ainsi que sur l'ajout de nouvelles questions signalétiques pour enrichir les informations collectées sur l'accessibilité des ERP. Des corrections et ajustements ont également été apportés à l'interface utilisateur et à l'exportation des données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la qualité des données, notamment via l'ajout de nouvelles questions dans le schéma de collecte et la correction de problèmes liés à l'importation et à la visualisation des données. Des ajustements ont également été apportés à l'interface utilisateur et à la sécurité, ainsi qu'à l'intégration de données externes via l'APIDAE.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles questions signalétiques concernant les établissements scolaires et les lieux de santé pour une meilleure évaluation de l'accessibilité. [#2620](https://github.com/MTES-MCT/acceslibre/issues/2620)
-- Possibilité d'exporter les données des mails.
-- Correction du lien vers acceslibre pour l'ouverture dans un nouvel onglet. [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654)
-- Amélioration de la sélection de la commune pour optimiser les requêtes. [#2655](https://github.com/MTES-MCT/acceslibre/issues/2655)
-- Intégration des données APIDAE. [#2641](https://github.com/MTES-MCT/acceslibre/issues/2641)
-- Restriction de l'accès à l'interface d'administration aux utilisateurs "staff". [#2652](https://github.com/MTES-MCT/acceslibre/issues/2652)
-- Ajustement des questions existantes et exclusion de certaines questions du taux de complétion (accueil espaces ouverts, questions). [#2656](https://github.com/MTES-MCT/acceslibre/issues/2656), [#2653](https://github.com/MTES-MCT/acceslibre/issues/2653)
-- Correction de la lecture du lien widget acceslibre. [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654)
+- Ajout de questions signalétiques et ajustement des questions concernant les établissements scolaires et les lieux de santé dans le formulaire de collecte de données [#2620](https://github.com/MTES-MCT/acceslibre/issues/2620).
+- Amélioration de l'ouverture des liens vers acceslibre dans une nouvelle fenêtre [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654).
+- Correction de l'affichage du taux de complétion en excluant certaines questions [#2656](https://github.com/MTES-MCT/acceslibre/issues/2656) et [#2653](https://github.com/MTES-MCT/acceslibre/issues/2653).
+- Possibilité d'exporter les mails [#2652](https://github.com/MTES-MCT/acceslibre/issues/2652).
+- Restriction de l'accès à l'interface d'administration aux utilisateurs "staff" [#2652](https://github.com/MTES-MCT/acceslibre/issues/2652).
+- Correction de la lecture des liens widget acceslibre [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654).
+- Amélioration de la sélection de la commune pour optimiser les requêtes [#2655](https://github.com/MTES-MCT/acceslibre/issues/2655).
 
 ### Évolutions techniques
-- Mise à jour du schéma de données à la version 0.0.20. [#2590](https://github.com/MTES-MCT/acceslibre/issues/2590)
-- Utilisation de Redis pour stocker les événements du widget et les vider dans la base de données toutes les heures, améliorant ainsi les performances. [#2624](https://github.com/MTES-MCT/acceslibre/issues/2624)
-- Ajustement de la sécurité de Google Analytics (GA). [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663)
-- Correction de problèmes liés au schéma de base de données. [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671)
-- Désactivation temporaire de l'acquisition via Scrapfly en attendant une réécriture. [#2640](https://github.com/MTES-MCT/acceslibre/issues/2640)
+- Mise à jour du schéma de données vers la version 0.0.20 [#2590](https://github.com/MTES-MCT/acceslibre/issues/2590).
+- Intégration de l'importation de données via l'APIDAE [#2641](https://github.com/MTES-MCT/acceslibre/issues/2641).
+- Ajustements de sécurité liés à Google Analytics (GA) [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663).
+- Correction de bugs liés au schéma de base de données [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671).
+- Correction de problèmes liés à l'acquisition de données via Scrapfly (désactivée temporairement en attendant une réécriture) [#2640](https://github.com/MTES-MCT/acceslibre/issues/2640).
+- Correction de problèmes liés au wizard de contribution, nécessitant une authentification [#2636](https://github.com/MTES-MCT/acceslibre/issues/2636).
+- Correction de problèmes liés au feedback RGAA [#2670](https://github.com/MTES-MCT/acceslibre/issues/2670).
 
 ### Autres changements
-- Mise à jour de la documentation et du wizard de contribution pour exiger une authentification. [#2636](https://github.com/MTES-MCT/acceslibre/issues/2636)
-- Application de corrections pour assurer la cohérence des versions des packages. [#2635](https://github.com/MTES-MCT/acceslibre/issues/2635)
-- Ajustements et corrections mineures du code.
+- Mise à jour de la documentation et ajustements suite aux changements de schéma [#2651](https://github.com/MTES-MCT/acceslibre/issues/2651).
