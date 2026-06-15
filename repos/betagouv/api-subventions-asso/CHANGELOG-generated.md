@@ -1,30 +1,28 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 10 juin 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données Osiris, notamment des actions de subvention, avec l'ajout de nouvelles DTOs et routes API. Des corrections et refactorings ont également été effectués pour optimiser la performance et la robustesse de l'API. Enfin, des améliorations ont été apportées à l'intégration avec Brevo et à la gestion des fichiers Osiris.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'intégration avec Osiris, notamment pour la gestion des actions et subventions, et sur la refactorisation du code pour une meilleure maintenabilité. Des corrections ont également été apportées pour gérer correctement les formats de données et les erreurs potentielles.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles DTOs (Data Transfer Objects) pour les associations et les détails des fournisseurs et d'Osiris.
-- Implémentation de routes API pour récupérer les détails des subventions et des actions Osiris.
-- Affichage des actions Osiris dans la modale de détail des subventions sur le frontend.
-- Amélioration de la détection des nouveaux fichiers Chorus sur le bucket S3.
-- Correction de la gestion des formats de nombres européens avec la virgule comme séparateur décimal.
-- Correction de l'envoi de paramètres vides à l'API Brevo Transaction.
-- Suppression des fichiers vides du répertoire de téléchargements Osiris grâce à un nouveau script.
+- Ajout de la possibilité de détecter les nouveaux fichiers Chorus sur le bucket S3. [#3937](https://github.com/betagouv/api-subventions-asso/issues/3937)
+- Amélioration de l'affichage des actions Osiris dans l'interface utilisateur (modal). [#3910](https://github.com/betagouv/api-subventions-asso/issues/3910)
+- Les détails des subventions Osiris sont désormais accessibles via une nouvelle route API. [#3840](https://github.com/betagouv/api-subventions-asso/issues/3840)
+- Prise en charge d'un nouveau DTO (Data Transfer Object) pour les associations. [#3921](https://github.com/betagouv/api-subventions-asso/issues/3921)
+- Gestion améliorée des formats de nombres européens avec la virgule comme séparateur décimal. [#3956](https://github.com/betagouv/api-subventions-asso/issues/3956)
+- Correction d'un problème empêchant l'envoi de paramètres vides à l'API Brevo Transaction. [#3951](https://github.com/betagouv/api-subventions-asso/issues/3951)
 
 ### Évolutions techniques
-- Refactoring de la gestion des entités Osiris (actions et requêtes) avec des DTOs et des migrations.
-- Amélioration de la validation des requêtes API.
-- Mise à jour de la configuration TypeScript pour inclure les TODOs.
-- Remplacement de Lerna par pnpm workspaces pour la gestion des dépendances.
-- Optimisation de l'indexation des données Osiris (actions et requêtes) - temporairement désactivée puis réactivée avec des corrections.
-- Refactoring du service `api-asso` vers une architecture basée sur des adaptateurs et des ports.
-- Suppression de champs potentiellement inconnus dans les entités Osiris.
-- Utilisation d'une fonction de sanitisation des nombres à virgule flottante.
+- Refactorisation de la validation des requêtes. [#3935](https://github.com/betagouv/api-subventions-asso/issues/3935)
+- Refactorisation du service `api-asso` vers une architecture adaptateur/port. [#3907](https://github.com/betagouv/api-subventions-asso/issues/3907)
+- Refactorisation des entités brutes Osiris pour améliorer la qualité du code et la gestion des champs. [#3918](https://github.com/betagouv/api-subventions-asso/issues/3918)
+- Migration du système de gestion de paquets de Lerna à pnpm workspaces. [#3917](https://github.com/betagouv/api-subventions-asso/issues/3917)
+- Mise à jour des configurations TypeScript pour inclure des annotations `TODO`. [#3907](https://github.com/betagouv/api-subventions-asso/issues/3907)
+- Renommage de certaines variables et fonctions pour plus de clarté et de cohérence. [#3960](https://github.com/betagouv/api-subventions-asso/issues/3960)
 
 ### Autres changements
-- Ajout de documentation pour le script de récupération des données LCA-OSIRIS.
-- Mise à jour des dépendances du frontend.
-- Corrections mineures du fichier `CHANGELOG.md`.
-- Corrections de la configuration du `Procfile`.
-- Ajout du fichier `.versionrc.json`.
+- Ajout de documentation expliquant la différence entre les points de terminaison de téléchargement par association et par document. [#3938](https://github.com/betagouv/api-subventions-asso/issues/3938)
+- Ajout d'agrégations récentes à la documentation de l'API. [#3952](https://github.com/betagouv/api-subventions-asso/issues/3952)
+- Correction du fichier `Procfile`. [#3957](https://github.com/betagouv/api-subventions-asso/issues/3957)
+- Ajout d'un fichier `.versionrc.json`. [#3959](https://github.com/betagouv/api-subventions-asso/issues/3959)
+- Suppression de fichiers vides du répertoire des téléchargements Osiris. [#3920](https://github.com/betagouv/api-subventions-asso/issues/3920)
+- Réactivation temporaire des index pour les requêtes et actions Osiris (avec des désactivations temporaires pour maintenance).
