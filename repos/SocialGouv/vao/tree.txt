@@ -3,14 +3,16 @@
 │   ├── instructions.json
 │   ├── links.md
 │   ├── product-context.md
-│   └── rules
-│       ├── integration-tests.md
-│       ├── typescript-best-practices.mdc
-│       └── unit-tests.md
+│   ├── rules
+│   │   ├── integration-tests.md
+│   │   ├── typescript-best-practices.mdc
+│   │   └── unit-tests.md
+│   └── skills
+│       └── branch-review
+│           └── SKILL.md
 ├── .dockerignore
 ├── .editorconfig
 ├── .env.dev.example.env
-├── .eslintrc.json
 ├── .github
 │   ├── CODEOWNERS
 │   ├── copilot-instructions.md
@@ -567,11 +569,11 @@
 │       ├── seed.ts
 │       ├── urls.ts
 │       └── users.ts
+├── eslint.config.mjs
 ├── package.json
 ├── packages
 │   ├── backend
 │   │   ├── .dockerignore
-│   │   ├── .eslintrc.json
 │   │   ├── .gitignore
 │   │   ├── Dockerfile
 │   │   ├── assets
@@ -610,6 +612,7 @@
 │   │   │   │   └── modele_EIG.pdf
 │   │   │   └── static
 │   │   │       └── agrements_VAO_non_actifs_07_24_2024.pdf
+│   │   ├── eslint.config.mjs
 │   │   ├── jest.config.js
 │   │   ├── jest.setup.js
 │   │   ├── nodemon.json
@@ -684,33 +687,37 @@
 │   │   │   ├── config.ts
 │   │   │   ├── controllers
 │   │   │   │   ├── authentication
-│   │   │   │   │   ├── disconnect.js
+│   │   │   │   │   ├── disconnect.ts
 │   │   │   │   │   ├── email
 │   │   │   │   │   │   ├── forgotten-password.js
-│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── login.ts
 │   │   │   │   │   │   ├── register.js
 │   │   │   │   │   │   ├── renew-password.js
 │   │   │   │   │   │   ├── renew-token.js
-│   │   │   │   │   │   └── validate.js
-│   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── resend-otp.ts
+│   │   │   │   │   │   ├── validate.js
+│   │   │   │   │   │   └── verify-otp.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── bo-authentication
 │   │   │   │   │   ├── disconnect.js
 │   │   │   │   │   ├── email
 │   │   │   │   │   │   ├── forgotten-password.js
-│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── login.ts
 │   │   │   │   │   │   ├── renew-password.js
 │   │   │   │   │   │   ├── renew-token.js
-│   │   │   │   │   │   └── validate.js
-│   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── resend-otp.ts
+│   │   │   │   │   │   ├── validate.js
+│   │   │   │   │   │   └── verify-otp.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── bo-user
 │   │   │   │   │   ├── accept-cgu.ts
 │   │   │   │   │   ├── create.js
 │   │   │   │   │   ├── get-me.ts
 │   │   │   │   │   ├── get-one.js
 │   │   │   │   │   ├── getExtract.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── list-users-territoire.js
 │   │   │   │   │   ├── list.js
 │   │   │   │   │   ├── service-competence.js
@@ -718,7 +725,10 @@
 │   │   │   │   │   └── update.js
 │   │   │   │   ├── common
 │   │   │   │   │   └── authentication
-│   │   │   │   │       └── disconnect.js
+│   │   │   │   │       ├── connected.ts
+│   │   │   │   │       ├── disconnect.js
+│   │   │   │   │       └── email
+│   │   │   │   │           └── login.ts
 │   │   │   │   ├── demandeSejour
 │   │   │   │   │   ├── cancel.js
 │   │   │   │   │   ├── copy.ts
@@ -739,7 +749,7 @@
 │   │   │   │   │   ├── getHebergementsByDepartementCodes.js
 │   │   │   │   │   ├── getStats.js
 │   │   │   │   │   ├── historique.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── post.js
 │   │   │   │   │   ├── prendEnCharge.js
 │   │   │   │   │   ├── refus.js
@@ -764,7 +774,7 @@
 │   │   │   │   │   ├── get-me.js
 │   │   │   │   │   ├── get-pdf.js
 │   │   │   │   │   ├── get-total-to-read.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── mark-as-read.js
 │   │   │   │   │   └── update.js
 │   │   │   │   ├── fo-user
@@ -774,7 +784,7 @@
 │   │   │   │   │   ├── getByOrganisme.js
 │   │   │   │   │   ├── getExtract.js
 │   │   │   │   │   ├── getOne.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── list-to-validate.js
 │   │   │   │   │   ├── list.js
 │   │   │   │   │   ├── update-roles.js
@@ -788,7 +798,7 @@
 │   │   │   │   │   ├── commune.spec.js
 │   │   │   │   │   ├── departement.js
 │   │   │   │   │   ├── departement.spec.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── region.js
 │   │   │   │   │   └── region.spec.js
 │   │   │   │   ├── hebergement
@@ -799,16 +809,16 @@
 │   │   │   │   │   ├── getById.ts
 │   │   │   │   │   ├── getBySiren.js
 │   │   │   │   │   ├── getExtract.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── post-brouillon.js
 │   │   │   │   │   ├── post.js
 │   │   │   │   │   ├── reactivate.js
 │   │   │   │   │   ├── update-brouillon.js
 │   │   │   │   │   └── update.js
-│   │   │   │   ├── index.js
+│   │   │   │   ├── index.ts
 │   │   │   │   ├── message
 │   │   │   │   │   ├── get.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── postByBO.js
 │   │   │   │   │   ├── postByFO.js
 │   │   │   │   │   └── read.js
@@ -820,7 +830,7 @@
 │   │   │   │   │   ├── getListeExtract.js
 │   │   │   │   │   ├── getMine.js
 │   │   │   │   │   ├── getNonAgrees.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── post.js
 │   │   │   │   │   └── update.ts
 │   │   │   │   ├── siret
@@ -828,7 +838,7 @@
 │   │   │   │   │   ├── checkApiInsee.js
 │   │   │   │   │   ├── get.js
 │   │   │   │   │   ├── getLienSuccession.ts
-│   │   │   │   │   └── index.js
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── territoire
 │   │   │   │   │   ├── get-fiche-by-agrement-region-user.ts
 │   │   │   │   │   ├── get-fiche-id-by-ter-code.js
@@ -840,7 +850,7 @@
 │   │   │   │       ├── generateApiToken.js
 │   │   │   │       ├── get-me.ts
 │   │   │   │       ├── getApiToken.js
-│   │   │   │       ├── index.js
+│   │   │   │       ├── index.ts
 │   │   │   │       └── patch-me.js
 │   │   │   ├── global.d.ts
 │   │   │   ├── helpers
@@ -907,24 +917,24 @@
 │   │   │   │       ├── DemandeSejour.ts
 │   │   │   │       └── EtablissementsSecondaires.ts
 │   │   │   ├── routes
-│   │   │   │   ├── authentication.js
-│   │   │   │   ├── bo-authentication.js
-│   │   │   │   ├── bo-user.js
+│   │   │   │   ├── authentication.ts
+│   │   │   │   ├── bo-authentication.ts
+│   │   │   │   ├── bo-user.ts
 │   │   │   │   ├── debug-sentry.ts
 │   │   │   │   ├── documents.ts
 │   │   │   │   ├── e2e.ts
-│   │   │   │   ├── eig.js
-│   │   │   │   ├── fo-user.js
-│   │   │   │   ├── geo.js
+│   │   │   │   ├── eig.ts
+│   │   │   │   ├── fo-user.ts
+│   │   │   │   ├── geo.ts
 │   │   │   │   ├── healthz.ts
 │   │   │   │   ├── hebergement.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── message.js
-│   │   │   │   ├── organisme.js
-│   │   │   │   ├── sejour.js
-│   │   │   │   ├── siret.js
+│   │   │   │   ├── message.ts
+│   │   │   │   ├── organisme.ts
+│   │   │   │   ├── sejour.ts
+│   │   │   │   ├── siret.ts
 │   │   │   │   ├── territoire.ts
-│   │   │   │   └── user.js
+│   │   │   │   └── user.ts
 │   │   │   ├── schemas
 │   │   │   │   ├── bo-user.js
 │   │   │   │   ├── declaration-sejour.js
@@ -983,9 +993,10 @@
 │   │   │   │   │   ├── Hebergement.js
 │   │   │   │   │   └── helpers.js
 │   │   │   │   ├── mail
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── schema.js
-│   │   │   │   │   └── transporter.js
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schema.ts
+│   │   │   │   │   ├── transporter.spec.ts
+│   │   │   │   │   └── transporter.ts
 │   │   │   │   ├── organisme
 │   │   │   │   │   ├── EtablissementsSecondaires.js
 │   │   │   │   │   ├── PersonneMorale.js
@@ -1050,7 +1061,9 @@
 │   │   │   │   │       └── users.mapper.ts
 │   │   │   │   └── users
 │   │   │   │       ├── users.entity.ts
-│   │   │   │       └── users.mail.ts
+│   │   │   │       ├── users.mail.ts
+│   │   │   │       ├── users.mapper.ts
+│   │   │   │       └── users.service.ts
 │   │   │   ├── types
 │   │   │   │   ├── queryParams.ts
 │   │   │   │   └── request.ts
@@ -1179,10 +1192,10 @@
 │   │   ├── start.sh
 │   │   └── tsconfig.json
 │   ├── external-api
-│   │   ├── .eslintrc.js
 │   │   ├── .gitignore
 │   │   ├── Dockerfile
 │   │   ├── README.md
+│   │   ├── eslint.config.mjs
 │   │   ├── jest.config.js
 │   │   ├── nest-cli.json
 │   │   ├── package.json
@@ -1371,7 +1384,7 @@
 │   │   │   │   │   ├── mot-de-passe-oublie.vue
 │   │   │   │   │   ├── reset-mot-de-passe.vue
 │   │   │   │   │   ├── validation.vue
-│   │   │   │   │   └── verification-2fa.vue
+│   │   │   │   │   └── verification-otp.vue
 │   │   │   │   ├── eig
 │   │   │   │   │   ├── [eigId].vue
 │   │   │   │   │   └── index.vue
@@ -1614,7 +1627,7 @@
 │   │   │   │   │   ├── mot-de-passe-oublie.vue
 │   │   │   │   │   ├── reset-mot-de-passe.vue
 │   │   │   │   │   ├── validation.vue
-│   │   │   │   │   └── verification-2fa.vue
+│   │   │   │   │   └── verification-otp.vue
 │   │   │   │   ├── demande-agrement-transmise
 │   │   │   │   │   └── index.vue
 │   │   │   │   ├── demande-sejour
@@ -1706,9 +1719,9 @@
 │   │   └── vitest.config.mts
 │   ├── migrations
 │   │   ├── .dockerignore
-│   │   ├── .eslintrc.json
 │   │   ├── .gitignore
 │   │   ├── Dockerfile
+│   │   ├── eslint.config.mjs
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── knexfile.js
@@ -1792,7 +1805,8 @@
 │   │   │   │   ├── 20260512160875_ front.agrement__add_file_category.js
 │   │   │   │   ├── 20260519114308_ front.seq_declaration_sejour__increase.js
 │   │   │   │   ├── 20260521120710_users_add_otp_code.js
-│   │   │   │   └── 20260522135301_front.agrement__update_all_statuts.js
+│   │   │   │   ├── 20260522135301_front.agrement__update_all_statuts.js
+│   │   │   │   └── 20260601141044_users_add_otp_attemps.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -1801,8 +1815,8 @@
 │   │   │           └── e2e-reset.js
 │   │   └── start.sh
 │   ├── shared-bridge
-│   │   ├── .eslintrc.json
 │   │   ├── .gitignore
+│   │   ├── eslint.config.mjs
 │   │   ├── jest.config.js
 │   │   ├── package.json
 │   │   ├── src
@@ -1835,6 +1849,7 @@
 │   │   │   │   ├── territoire.dto.ts
 │   │   │   │   ├── user.dto.ts
 │   │   │   │   ├── userAdmin.dto.ts
+│   │   │   │   ├── userBase.dto.ts
 │   │   │   │   └── userUsagers.dto.ts
 │   │   │   ├── index.ts
 │   │   │   ├── routes
@@ -1852,9 +1867,13 @@
 │   │   │   │   │   ├── document
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── postDocument.ts
-│   │   │   │   │   └── hebergement
-│   │   │   │   │       ├── getOne.ts
-│   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── hebergement
+│   │   │   │   │   │   ├── getOne.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── users
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── resendOtp.ts
+│   │   │   │   │       └── verifyOtp.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── schemas.ts
 │   │   │   │   └── usagers
@@ -1878,9 +1897,13 @@
 │   │   │   │       ├── siret
 │   │   │   │       │   ├── getSuccesseur.ts
 │   │   │   │       │   └── index.ts
-│   │   │   │       └── territoire
-│   │   │   │           ├── get-by-agrement-region-user.ts
-│   │   │   │           └── index.ts
+│   │   │   │       ├── territoire
+│   │   │   │       │   ├── get-by-agrement-region-user.ts
+│   │   │   │       │   └── index.ts
+│   │   │   │       └── users
+│   │   │   │           ├── index.ts
+│   │   │   │           ├── resendOtp.ts
+│   │   │   │           └── verifyOtp.ts
 │   │   │   └── utils
 │   │   │       ├── date.spec.ts
 │   │   │       ├── date.ts
@@ -1891,6 +1914,8 @@
 │   │   │       ├── index.ts
 │   │   │       ├── normalizeAdresse.spec.ts
 │   │   │       ├── normalizeAdresse.ts
+│   │   │       ├── normalizeFilename.spec.ts
+│   │   │       ├── normalizeFilename.ts
 │   │   │       ├── request.spec.ts
 │   │   │       ├── request.ts
 │   │   │       ├── siret.spec.ts
@@ -1953,7 +1978,8 @@
 │       │   │   ├── api
 │       │   │   │   └── ApiUnavailable.vue
 │       │   │   ├── auth
-│       │   │   │   └── TwoFactorCodeVerification.vue
+│       │   │   │   ├── TwoFactorCodeVerification.vue
+│       │   │   │   └── verification-otp.vue
 │       │   │   ├── cgu
 │       │   │   │   └── CguValidation.vue
 │       │   │   ├── eig
@@ -2042,4 +2068,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-293 directories, 1756 files
+298 directories, 1777 files
