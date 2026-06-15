@@ -1,20 +1,28 @@
-## Changelog : approbiom (30 derniers jours, au 26 mai 2026)
+## Changelog : approbiom (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce changelog marque les débuts du projet approbiom, une initiative visant à créer des widgets personnalisés pour Grist. Les premiers développements se concentrent sur la mise en place de l'infrastructure de build et la création d'un widget de carte simple. Le projet est maintenant déployable sur GitHub Pages.
+Ce mois-ci, le projet approbiom a connu un développement rapide, passant d'un dépôt initialisé à une base solide pour la création de widgets pour Grist. L'accent a été mis sur la création de widgets de tableau et de carte interactifs, ainsi que sur la mise en place d'une infrastructure de build et de déploiement robuste.
 
 ### Évolutions fonctionnelles
-- Création d'un widget de carte simple [#1](https://github.com/betagouv/approbiom/pulls/1) (b9833a9)
-- Mise en place de la structure de base pour les widgets Grist utilisant Vite en mode MPA (Multiple Page Application) (608ffd9)
+- Ajout d'un widget de tableau permettant de sélectionner des colonnes et de filtrer les lignes. [#9](https://github.com/betagouv/approbiom/issues/9) et [#10](https://github.com/betagouv/approbiom/issues/10)
+- Implémentation d'un widget de carte interactive affichant des données géographiques. [#11](https://github.com/betagouv/approbiom/issues/11)
+- Possibilité de choisir les colonnes à afficher et leur ordre dans le widget tableau.
+- Affichage du libellé des colonnes au lieu de leur identifiant dans le widget tableau.
+- Ajout d'une barre de recherche permettant de filtrer les lignes du tableau.
+- Création d'un menu déroulant pour l'édition des types de référence.
+- Amélioration de la réactivité de l'affichage des départements sur la carte.
 
 ### Évolutions techniques
-- Configuration du build pour déployer les widgets dans le dossier `docs/` pour GitHub Pages (f07c321)
-- Ajout d'un workflow GitHub Actions pour automatiser le build et le déploiement sur GitHub Pages (ade3700)
-- Contournement des politiques de sécurité de pnpm pour permettre le build en CI (79f57ed, 907179a, d30852d)
-- Renommage du dossier `grist-widgets` en `grist-widget` pour plus de clarté (bd63757)
-- Initialisation du projet et configuration initiale (72c841c, d57bd82)
-- Formatage des fichiers grist-widget (b01bbc0)
-- Ajout d'un fichier `.nojekyll` pour éviter que Jekyll n'interfère avec les assets préfixés par un underscore (38a350d)
+- Mise en place d'une chaîne CI/CD avec GitHub Actions pour la construction et le déploiement automatique.
+- Configuration de l'environnement de développement pour servir une instance Grist en mode développement.
+- Utilisation de Playwright pour les tests E2E, notamment pour le widget carte.
+- Refactoring du code pour suivre les bonnes pratiques Vue.js (nommage des composants).
+- Utilisation des types Grist Plugin API pour une meilleure intégration.
+- Passage à une structure MPA (Multiple Page Application) avec Vite.
+- Amélioration de la gestion des configurations et des variables d'environnement.
 
 ### Autres changements
-- Aucun changement significatif à signaler dans cette catégorie.
+- Correction de diverses erreurs de linting.
+- Suppression de dossiers inutiles (docs, dist).
+- Ajout d'un fichier `.nojekyll` pour éviter les problèmes de déploiement sur GitHub Pages.
+- Documentation et commentaires ajoutés pour faciliter la compréhension du code.

@@ -1,61 +1,93 @@
 .
 ├── .editorconfig
 ├── .gitattributes
+├── .github
+│   └── workflows
+│       └── ci-cd.yml
 ├── .gitignore
-├── .oxlintrc.json
 ├── .prettierrc.json
 ├── .vscode
 │   └── extensions.json
 ├── LICENSE
 ├── README.md
-├── dist
-│   ├── assets
-│   │   ├── _plugin-vue_export-helper-CKae3373.js
-│   │   ├── widget-one-BKfz3tm4.js
-│   │   └── widget-two-CDYUOprc.js
-│   ├── favicon.ico
-│   ├── grist-widget
-│   │   ├── widget-one
-│   │   │   └── index.html
-│   │   └── widget-two
-│   │       └── index.html
+├── dev
 │   └── index.html
-├── docs
-│   ├── .nojekyll
-│   ├── assets
-│   │   ├── _plugin-vue_export-helper-CsBNNgDr.js
-│   │   ├── map-D5RmmLs7.css
-│   │   ├── map-h5aA1htR.js
-│   │   └── widget-two-BJeOWLaj.js
-│   ├── favicon.ico
-│   ├── grist-widget
-│   │   ├── map
-│   │   │   └── index.html
-│   │   └── widget-two
-│   │       └── index.html
-│   └── index.html
+├── doc
+│   └── adr
+│       ├── 0001-e2e-testing-with-playwright.md
+│       └── 0002-grist-dev-instance-via-vite-plugin.md
+├── e2e
+│   ├── README.md
+│   ├── barre-de-recherche
+│   │   └── barre-de-recherche.spec.ts
+│   ├── carte-departement
+│   │   └── carte-departement.spec.ts
+│   ├── fixtures.ts
+│   ├── liste-deroulante-riche-selecteur
+│   │   └── liste-deroulante-riche-selecteur.spec.ts
+│   ├── mocks
+│   │   └── grist-plugin-api.js
+│   ├── selecteur-editeur
+│   │   └── selecteur-editeur.spec.ts
+│   ├── tableau
+│   │   └── tableau.spec.ts
+│   └── tableau-selecteur
+│       └── tableau-selecteur.spec.ts
 ├── env.d.ts
 ├── eslint.config.ts
 ├── grist-widget
-│   ├── map
+│   ├── barre-de-recherche
 │   │   ├── App.vue
+│   │   ├── index.html
+│   │   └── main.ts
+│   ├── carte-departement
+│   │   ├── App.vue
+│   │   ├── CarteDepartement.vue
 │   │   ├── data
 │   │   │   └── departements.geojson
 │   │   ├── index.html
 │   │   ├── main.ts
 │   │   └── types
 │   │       └── departement.d.ts
+│   ├── liste-deroulante-riche-selecteur
+│   │   ├── App.vue
+│   │   ├── ConfigPanel.vue
+│   │   ├── ListeDeroulanteRicheSelecteur.vue
+│   │   ├── index.html
+│   │   └── main.ts
+│   ├── selecteur-editeur
+│   │   ├── App.vue
+│   │   ├── ConfigPanel.vue
+│   │   ├── index.html
+│   │   └── main.ts
+│   ├── tableau-selecteur
+│   │   ├── App.vue
+│   │   ├── ConfigPanel.vue
+│   │   ├── index.html
+│   │   └── main.ts
+│   ├── vue-tableau
+│   │   ├── App.vue
+│   │   ├── ConfigPanel.vue
+│   │   ├── VueTableau.vue
+│   │   ├── index.html
+│   │   └── main.ts
 │   └── widget-two
 │       ├── App.vue
 │       ├── index.html
 │       └── main.ts
 ├── index.html
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── public
 │   └── favicon.ico
+├── shared
+│   ├── types
+│   │   └── grist-plugin-api.d.ts
+│   └── utils
+│       └── grist.ts
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
 └── vite.config.ts
-18 directories, 42 files
+29 directories, 63 files
