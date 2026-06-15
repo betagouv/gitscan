@@ -1,16 +1,15 @@
 ## Changelog : portail (30 derniers jours, au 2026-06-10)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de fonctionnalités au serveur RPC et au proxy, permettant une gestion plus flexible des backends et des routes. Ces changements visent à améliorer la configuration et l'utilisation du portail dans différents environnements.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'API RPC et l'ajout de fonctionnalités pour une gestion plus flexible des backends. Une nouvelle option `route.local` a été introduite pour le proxy ACL, offrant un contrôle plus précis du routage.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité `ListBackends` au serveur RPC, permettant de lister les backends disponibles.
-- Possibilité de définir un backend par défaut nul via `SetDefaultBackend` dans l'interface RPC/Varlink.
-- Introduction de l'option `route.local` dans la configuration du proxy ACL, offrant un contrôle plus précis sur le routage.
+- Ajout de la fonctionnalité `ListBackends` à l'API RPC, permettant de lister les backends disponibles. [#8f6daae](https://github.com/cloud-gouv/portail/commit/8f6daae)
+- La fonction `SetDefaultBackend` de l'API Varlink accepte désormais la valeur `null`, offrant plus de flexibilité dans la configuration des backends. [#260ea60](https://github.com/cloud-gouv/portail/commit/260ea60)
+- Introduction de l'option `route.local` dans le proxy ACL, permettant de définir des routes locales. [#d6bf086](https://github.com/cloud-gouv/portail/commit/d6bf086)
 
 ### Évolutions techniques
-- Refonte des dépendances pour utiliser `rustls-pki-types` et `toml` avec des contraintes de version plus larges, améliorant la compatibilité et la flexibilité.
-- Simplification de la gestion des dépendances en supprimant `peekable`.
-
-### Autres changements
-- Aucune information supplémentaire disponible.
+- Mise à jour des dépendances `insta`, `rand`, `toml` et `zlink` vers des versions compatibles. (f38dd32, 7f511b4, 6c0e3e7, 34c1fd3, 15f951e)
+- Relaxation des contraintes de version des dépendances pour une meilleure compatibilité. (15f951e)
+- Migration vers `rustls-pki-types` pour une gestion améliorée des certificats. (47803ff)
+- Suppression de la dépendance `peekable`. (6c0e3e7)
