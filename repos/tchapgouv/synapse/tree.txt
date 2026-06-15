@@ -8,7 +8,6 @@
 │   │   ├── calculate_jobs.py
 │   │   ├── check_lockfile.py
 │   │   ├── checkout_complement.sh
-│   │   ├── gotestfmt
 │   │   ├── setup_complement_prerequisites.sh
 │   │   ├── test_export_data_command.sh
 │   │   ├── test_synapse_port_db.sh
@@ -33,6 +32,7 @@
 │   ├── SUPPORT.md
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── complement_tests.yml
 │       ├── docker.yml
 │       ├── docs-pr.yaml
 │       ├── docs.yaml
@@ -69,7 +69,12 @@
 │   ├── go.sum
 │   └── tests
 │       ├── federation_test.go
+│       ├── internal
+│       │   └── dockerutil
+│       │       └── files.go
 │       ├── main_test.go
+│       ├── oidc_test.go
+│       ├── room_messages_test.go
 │       └── synapse_version_check_test.go
 ├── contrib
 │   ├── README.rst
@@ -388,12 +393,15 @@
 │   └── src
 │       ├── acl
 │       │   └── mod.rs
+│       ├── canonical_json.rs
 │       ├── duration.rs
 │       ├── errors.rs
 │       ├── events
 │       │   ├── filter.rs
 │       │   ├── internal_metadata.rs
-│       │   └── mod.rs
+│       │   ├── mod.rs
+│       │   ├── signatures.rs
+│       │   └── unsigned.rs
 │       ├── http.rs
 │       ├── http_client.rs
 │       ├── identifier.rs
@@ -410,6 +418,7 @@
 │       ├── rendezvous
 │       │   ├── mod.rs
 │       │   └── session.rs
+│       ├── room_versions.rs
 │       └── segmenter.rs
 ├── schema
 │   ├── synapse-config.schema.yaml
@@ -823,6 +832,7 @@
 │   │   │   ├── scheduled_tasks.py
 │   │   │   ├── server_notice_servlet.py
 │   │   │   ├── statistics.py
+│   │   │   ├── user_reports.py
 │   │   │   ├── username_available.py
 │   │   │   └── users.py
 │   │   ├── client
@@ -1552,13 +1562,21 @@
 │   │   │   │   │   │   ├── 08_thread_subscriptions_seq_fixup.sql.postgres
 │   │   │   │   │   │   ├── 09_thread_subscriptions_update.sql
 │   │   │   │   │   │   └── 09_thread_subscriptions_update.sql.postgres
-│   │   │   │   │   └── 93
-│   │   │   │   │       ├── 01_add_delayed_events.sql
-│   │   │   │   │       ├── 01_sticky_events.sql
-│   │   │   │   │       ├── 01_sticky_events_seq.sql.postgres
-│   │   │   │   │       ├── 02_sliding_sync_members.sql
-│   │   │   │   │       ├── 03_sss_pos_last_used.sql
-│   │   │   │   │       └── 04_make_delayed_event_content_text.py
+│   │   │   │   │   ├── 93
+│   │   │   │   │   │   ├── 01_add_delayed_events.sql
+│   │   │   │   │   │   ├── 01_sticky_events.sql
+│   │   │   │   │   │   ├── 01_sticky_events_seq.sql.postgres
+│   │   │   │   │   │   ├── 02_sliding_sync_members.sql
+│   │   │   │   │   │   ├── 03_sss_pos_last_used.sql
+│   │   │   │   │   │   └── 04_make_delayed_event_content_text.py
+│   │   │   │   │   └── 94
+│   │   │   │   │       ├── 01_redactions_recheck.sql
+│   │   │   │   │       ├── 02_redactions_recheck_bg_update.sql
+│   │   │   │   │       ├── 03_device_lists_room_timestamp.sql
+│   │   │   │   │       ├── 03_quarantined_media_tracking.sql
+│   │   │   │   │       ├── 03_quarantined_media_tracking_seq.sql.postgres
+│   │   │   │   │       ├── 03_state_dag_fwd_extrems.sql
+│   │   │   │   │       └── 04_device_lists_changes_max_pruned.sql
 │   │   │   │   └── full_schemas
 │   │   │   │       └── 72
 │   │   │   │           ├── full.sql.postgres
@@ -1608,12 +1626,12 @@
 │   │   ├── msc4388_rendezvous.pyi
 │   │   ├── push.pyi
 │   │   ├── rendezvous.pyi
+│   │   ├── room_versions.pyi
 │   │   └── segmenter.pyi
 │   ├── types
 │   │   ├── __init__.py
 │   │   ├── handlers
 │   │   │   ├── __init__.py
-│   │   │   ├── policy_server.py
 │   │   │   └── sliding_sync.py
 │   │   ├── rest
 │   │   │   ├── __init__.py
@@ -1894,6 +1912,7 @@
 │   │   │   ├── test_server_notice.py
 │   │   │   ├── test_statistics.py
 │   │   │   ├── test_user.py
+│   │   │   ├── test_user_reports.py
 │   │   │   └── test_username_available.py
 │   │   ├── client
 │   │   │   ├── __init__.py
@@ -1984,6 +2003,7 @@
 │   │   ├── test_invite_rule.py
 │   │   ├── test_main.py
 │   │   ├── test_monthly_active_users.py
+│   │   ├── test_msc4242_state_dag.py
 │   │   ├── test_profile.py
 │   │   ├── test_purge.py
 │   │   ├── test_receipts.py
@@ -2010,7 +2030,9 @@
 │   │       └── test_partial_state_events_tracker.py
 │   ├── synapse_rust
 │   │   ├── __init__.py
-│   │   └── test_http_client.py
+│   │   ├── test_http_client.py
+│   │   ├── test_room_versions.py
+│   │   └── test_unsigned.py
 │   ├── test_distributor.py
 │   ├── test_event_auth.py
 │   ├── test_mau.py
@@ -2068,4 +2090,4 @@
 │   │   └── test_wheel_timer.py
 │   └── utils.py
 └── tox.ini
-292 directories, 1826 files
+295 directories, 1845 files
