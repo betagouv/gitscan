@@ -8,6 +8,7 @@ and this project adheres to
 
 ### Added
 
+- ✨(frontend) leave a document #2410
 - ✨(frontend) add top parent on sub docs search #1952
 - ✨(frontend) unauthenticated users can search #2407
 
@@ -17,10 +18,12 @@ and this project adheres to
 - ♿️(frontend) use heading element for pinned documents section title #2380
 - ♿️(frontend) use anchor links for table of contents entries #2390
 - ♿️(frontend) improve presenter mode screen reader and keyboard support #2383
+♿️(frontend) link export modal name to its heading #2422
 
 ### Fixed
 
 - 🐛(frontend) overlap of block menu dropdown #2406
+- ⚡️(backend) fix N+1 queries when serializing thread comments #2415
 
 ## [v5.2.1] - 2026-06-05
 
