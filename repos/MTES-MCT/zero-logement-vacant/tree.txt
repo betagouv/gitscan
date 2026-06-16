@@ -141,8 +141,9 @@
 ├── .mcp.json
 ├── .npmrc
 ├── .nvmrc
+├── .oxfmtrc.json
+├── .oxlintrc.json
 ├── .prettierignore
-├── .prettierrc.json
 ├── .slugignore
 ├── .sonarcloud.properties
 ├── .talismanrc
@@ -989,7 +990,11 @@
 │   │   │   ├── 2026-06-08-metabase-bar-charts.md
 │   │   │   ├── 2026-06-09-analysis-page-cache.md
 │   │   │   ├── 2026-06-09-metabase-line-charts.md
-│   │   │   └── 2026-06-09-metabase-tables.md
+│   │   │   ├── 2026-06-09-metabase-tables.md
+│   │   │   ├── 2026-06-11-factories-campaign-slice-plan.md
+│   │   │   ├── 2026-06-11-migrate-validator-next.md
+│   │   │   ├── 2026-06-11-remove-old-dsfr.md
+│   │   │   └── 2026-06-13-reference-data-cache.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
@@ -1005,14 +1010,17 @@
 │   │       ├── 2026-06-08-metabase-bar-charts-design.md
 │   │       ├── 2026-06-09-analysis-page-cache-design.md
 │   │       ├── 2026-06-09-metabase-line-charts-design.md
-│   │       └── 2026-06-09-metabase-tables-design.md
+│   │       ├── 2026-06-09-metabase-tables-design.md
+│   │       ├── 2026-06-11-factories-campaign-slice-design.md
+│   │       ├── 2026-06-11-migrate-validator-next-design.md
+│   │       ├── 2026-06-11-remove-old-dsfr-design.md
+│   │       └── 2026-06-13-reference-data-cache-design.md
 │   └── technical
 │       ├── .gitignore
 │       ├── DAT-Dossier-Architecture-Technique.md
 │       ├── DE-Dossier-Exploitation.md
 │       ├── DI-Dossier-Installation.md
 │       └── generate-pdf.sh
-├── eslint.config.mjs
 ├── frontend
 │   ├── .env.example
 │   ├── .gitignore
@@ -1395,89 +1403,6 @@
 │   │   │   │   └── AppTextInput
 │   │   │   │       ├── AppTextInput.tsx
 │   │   │   │       └── AppTextInputNext.tsx
-│   │   │   ├── _dsfr
-│   │   │   │   ├── components
-│   │   │   │   │   ├── foundation
-│   │   │   │   │   │   ├── grid
-│   │   │   │   │   │   │   ├── Col.d.ts
-│   │   │   │   │   │   │   ├── Col.jsx
-│   │   │   │   │   │   │   ├── Container.d.ts
-│   │   │   │   │   │   │   ├── Container.jsx
-│   │   │   │   │   │   │   ├── Row.d.ts
-│   │   │   │   │   │   │   ├── Row.jsx
-│   │   │   │   │   │   │   ├── index.d.ts
-│   │   │   │   │   │   │   └── index.js
-│   │   │   │   │   │   ├── icon
-│   │   │   │   │   │   │   ├── Icon.d.ts
-│   │   │   │   │   │   │   ├── Icon.jsx
-│   │   │   │   │   │   │   ├── icons.css
-│   │   │   │   │   │   │   ├── index.d.ts
-│   │   │   │   │   │   │   └── index.js
-│   │   │   │   │   │   ├── index.d.ts
-│   │   │   │   │   │   ├── index.js
-│   │   │   │   │   │   └── typography
-│   │   │   │   │   │       ├── Text
-│   │   │   │   │   │       │   ├── Text.d.ts
-│   │   │   │   │   │       │   ├── Text.jsx
-│   │   │   │   │   │       │   ├── index.d.ts
-│   │   │   │   │   │       │   └── index.js
-│   │   │   │   │   │       ├── index.d.ts
-│   │   │   │   │   │       └── index.js
-│   │   │   │   │   └── interface
-│   │   │   │   │       ├── Modal
-│   │   │   │   │       │   ├── Modal.d.ts
-│   │   │   │   │       │   ├── Modal.jsx
-│   │   │   │   │       │   ├── ModalClose.d.ts
-│   │   │   │   │       │   ├── ModalClose.jsx
-│   │   │   │   │       │   ├── ModalContent.d.ts
-│   │   │   │   │       │   ├── ModalContent.jsx
-│   │   │   │   │       │   ├── ModalFooter.d.ts
-│   │   │   │   │       │   ├── ModalFooter.jsx
-│   │   │   │   │       │   ├── ModalTitle.d.ts
-│   │   │   │   │       │   ├── ModalTitle.jsx
-│   │   │   │   │       │   ├── index.d.ts
-│   │   │   │   │       │   └── index.js
-│   │   │   │   │       ├── Pagination
-│   │   │   │   │       │   ├── Pagination.d.ts
-│   │   │   │   │       │   ├── Pagination.jsx
-│   │   │   │   │       │   ├── PaginationItem.d.ts
-│   │   │   │   │       │   ├── PaginationItem.jsx
-│   │   │   │   │       │   ├── helpers.js
-│   │   │   │   │       │   ├── index.d.ts
-│   │   │   │   │       │   └── index.js
-│   │   │   │   │       ├── Select
-│   │   │   │   │       │   ├── SearchableSelect.d.ts
-│   │   │   │   │       │   ├── SearchableSelect.jsx
-│   │   │   │   │       │   ├── Select.d.ts
-│   │   │   │   │       │   ├── Select.jsx
-│   │   │   │   │       │   ├── SelectWrapper.d.ts
-│   │   │   │   │       │   ├── SelectWrapper.jsx
-│   │   │   │   │       │   ├── index.d.ts
-│   │   │   │   │       │   ├── index.js
-│   │   │   │   │       │   └── searchableSelect.css
-│   │   │   │   │       ├── Table
-│   │   │   │   │       │   ├── SimpleTable.d.ts
-│   │   │   │   │       │   ├── SimpleTable.jsx
-│   │   │   │   │       │   ├── Table.d.ts
-│   │   │   │   │       │   ├── Table.jsx
-│   │   │   │   │       │   ├── index.d.ts
-│   │   │   │   │       │   ├── index.js
-│   │   │   │   │       │   └── table.css
-│   │   │   │   │       ├── index.d.ts
-│   │   │   │   │       └── index.js
-│   │   │   │   ├── hooks
-│   │   │   │   │   └── useFocusTrap.js
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── index.js
-│   │   │   │   └── utils
-│   │   │   │       ├── children-utilities.js
-│   │   │   │       ├── convertBytes.js
-│   │   │   │       ├── data-attributes.js
-│   │   │   │       ├── getters.js
-│   │   │   │       ├── range.js
-│   │   │   │       ├── type-validation.js
-│   │   │   │       ├── variables.js
-│   │   │   │       └── withProps.js
 │   │   │   ├── establishment
 │   │   │   │   ├── EstablishmentSearchableSelect.tsx
 │   │   │   │   └── EstablishmentTable.tsx
@@ -1496,9 +1421,6 @@
 │   │   │   │   │   ├── PerimetersModal.tsx
 │   │   │   │   │   ├── PerimetersModalOpener.tsx
 │   │   │   │   │   └── geo-perimeters-modal.module.scss
-│   │   │   │   ├── GroupCampaignCreationModal
-│   │   │   │   │   ├── GroupCampaignCreationModal.test.tsx
-│   │   │   │   │   └── GroupCampaignCreationModal.tsx
 │   │   │   │   ├── HousingCreationModal
 │   │   │   │   │   ├── FillLocalId.tsx
 │   │   │   │   │   ├── HousingCreationModal.tsx
@@ -1671,7 +1593,10 @@
 │   │   │       └── auth-thunks.ts
 │   │   ├── test
 │   │   │   ├── event-source-mock.ts
-│   │   │   └── fixtures.ts
+│   │   │   ├── factories.ts
+│   │   │   ├── fixtures.ts
+│   │   │   ├── msw-adapter.test.ts
+│   │   │   └── msw-adapter.ts
 │   │   ├── theme.tsx
 │   │   ├── types
 │   │   │   ├── dsfr-chart-jsx.d.ts
@@ -1948,6 +1873,7 @@
 │   │   ├── src
 │   │   │   ├── building-filters.ts
 │   │   │   ├── campaign-creation-payload.ts
+│   │   │   ├── campaign-filters.ts
 │   │   │   ├── campaign-update-next-payload.ts
 │   │   │   ├── date-string.ts
 │   │   │   ├── document-payload.ts
@@ -1959,6 +1885,7 @@
 │   │   │   ├── file-upload.ts
 │   │   │   ├── geo-code.ts
 │   │   │   ├── group-creation-payload.ts
+│   │   │   ├── group-housing-payload.ts
 │   │   │   ├── housing-batch-update-payload.ts
 │   │   │   ├── housing-document-payload.ts
 │   │   │   ├── housing-filters.ts
@@ -1967,18 +1894,23 @@
 │   │   │   ├── index.ts
 │   │   │   ├── note-payload.ts
 │   │   │   ├── owner-filters.ts
+│   │   │   ├── owner-payload.ts
+│   │   │   ├── pagination.ts
 │   │   │   ├── password.ts
 │   │   │   ├── phone.ts
 │   │   │   ├── sign-in.ts
 │   │   │   ├── siren.ts
+│   │   │   ├── sort.ts
 │   │   │   ├── test
 │   │   │   │   ├── building-filters.test.ts
 │   │   │   │   ├── campaign-creation-payload.test.ts
+│   │   │   │   ├── campaign-filters.test.ts
 │   │   │   │   ├── date-string.test.ts
 │   │   │   │   ├── draft-creation-payload.test.ts
 │   │   │   │   ├── draft-update-payload.test.ts
 │   │   │   │   ├── geo-code.test.ts
 │   │   │   │   ├── group-creation-payload.test.ts
+│   │   │   │   ├── group-housing-payload.test.ts
 │   │   │   │   ├── housing-batch-update-payload.test.ts
 │   │   │   │   ├── housing-document-payload.test.ts
 │   │   │   │   ├── housing-filters.test.ts
@@ -1986,7 +1918,10 @@
 │   │   │   │   ├── id.test.ts
 │   │   │   │   ├── note-payload.test.ts
 │   │   │   │   ├── owner-filters.test.ts
+│   │   │   │   ├── owner-payload.test.ts
+│   │   │   │   ├── pagination.test.ts
 │   │   │   │   ├── phone.test.ts
+│   │   │   │   ├── sort.test.ts
 │   │   │   │   ├── user-filters.test.ts
 │   │   │   │   └── user-update-payload.test.ts
 │   │   │   ├── transforms.ts
@@ -2048,24 +1983,18 @@
 │   │   │   ├── exportController.ts
 │   │   │   ├── fileController.ts
 │   │   │   ├── fileRepository.ts
-│   │   │   ├── geoController.test.ts
 │   │   │   ├── geoController.ts
-│   │   │   ├── groupController.test.ts
 │   │   │   ├── groupController.ts
 │   │   │   ├── housingController.ts
 │   │   │   ├── housingExportController.ts
 │   │   │   ├── housingOwnerController.ts
-│   │   │   ├── localityController.test.ts
 │   │   │   ├── localityController.ts
 │   │   │   ├── noteController.test.ts
 │   │   │   ├── noteController.ts
 │   │   │   ├── ownerController.ts
 │   │   │   ├── precisionController.ts
-│   │   │   ├── prospectController.test.ts
 │   │   │   ├── prospectController.ts
-│   │   │   ├── resetLinkController.test.ts
 │   │   │   ├── resetLinkController.ts
-│   │   │   ├── signupLinkController.test.ts
 │   │   │   ├── signupLinkController.ts
 │   │   │   ├── test
 │   │   │   │   ├── auth-controller.test.ts
@@ -2077,10 +2006,17 @@
 │   │   │   │   ├── establishment-api.test.ts
 │   │   │   │   ├── event-api.test.ts
 │   │   │   │   ├── fileController.test.ts
+│   │   │   │   ├── geo-api.test.ts
+│   │   │   │   ├── group-api.test.ts
 │   │   │   │   ├── housing-api.test.ts
 │   │   │   │   ├── housing-owner-api.test.ts
+│   │   │   │   ├── housingExport-api.test.ts
+│   │   │   │   ├── locality-api.test.ts
 │   │   │   │   ├── owner-api.test.ts
 │   │   │   │   ├── precisionController.test.ts
+│   │   │   │   ├── prospect-api.test.ts
+│   │   │   │   ├── resetLink-api.test.ts
+│   │   │   │   ├── signupLink-api.test.ts
 │   │   │   │   ├── test.jpeg
 │   │   │   │   └── user-api.test.ts
 │   │   │   └── userController.ts
@@ -2410,15 +2346,15 @@
 │   │   │   ├── error-handler.ts
 │   │   │   ├── fileTypeMiddleware.ts
 │   │   │   ├── noop.ts
+│   │   │   ├── responseCache.ts
 │   │   │   ├── shapefileValidation.test.ts
 │   │   │   ├── shapefileValidation.ts
 │   │   │   ├── test
 │   │   │   │   ├── auth.test.ts
 │   │   │   │   ├── error-handler.test.ts
-│   │   │   │   ├── validator-next.test.ts
+│   │   │   │   ├── responseCache.test.ts
 │   │   │   │   └── validator.test.ts
 │   │   │   ├── upload.ts
-│   │   │   ├── validator-next.ts
 │   │   │   ├── validator.ts
 │   │   │   └── zipValidation.ts
 │   │   ├── models
@@ -2774,9 +2710,8 @@
 │   │       ├── excelUtils.ts
 │   │       ├── object.ts
 │   │       ├── stringUtils.ts
-│   │       ├── test
-│   │       │   └── object.test.ts
-│   │       └── validators.ts
+│   │       └── test
+│   │           └── object.test.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.spec.json
@@ -2837,4 +2772,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-437 directories, 2402 files
+422 directories, 2352 files
