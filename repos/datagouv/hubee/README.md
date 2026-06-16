@@ -1,16 +1,16 @@
 # Hubee V2
 
-[![Ruby](https://img.shields.io/badge/Ruby-3.4.7-red.svg)](https://www.ruby-lang.org/)
+[![Ruby](https://img.shields.io/badge/Ruby-4.0.5-red.svg)](https://www.ruby-lang.org/)
 [![Rails](https://img.shields.io/badge/Rails-8.1.0-red.svg)](https://rubyonrails.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16+-blue.svg)](https://www.postgresql.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18+-blue.svg)](https://www.postgresql.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 Plateforme d'échange sécurisé de fichiers gouvernementaux (SecNumCloud, RGS niveau élevé).
 
 ## 📋 Prérequis
 
-- Ruby 3.4.7
-- PostgreSQL 18+
+- Ruby 4.0.5
+- PostgreSQL 18+ (requis pour `uuidv7()` natif — RFC 9562)
 - Bundler 2.7+
 
 ## 🚀 Installation
@@ -47,7 +47,7 @@ bundle exec rspec
 # Cucumber (tests E2E)
 bundle exec cucumber
 
-# Tests avec couverture de code (minimum 80%)
+# Tests avec couverture de code (minimum 90%)
 COVERAGE=true bundle exec rspec
 ```
 
@@ -74,7 +74,7 @@ Cette commande exécute automatiquement :
 - ✅ **Security** : bundler-audit + brakeman + importmap
 - ✅ **Database** : Préparation DB test
 - ✅ **Tests** : RSpec (models + requests) + Cucumber (E2E)
-- ✅ **Coverage** : Vérification >= 80%
+- ✅ **Coverage** : Vérification >= 90%
 - ✅ **Signoff** : Marque le commit comme approuvé (si tous checks passent)
 
 **Durée** : ~10 secondes
@@ -94,7 +94,7 @@ bin/ci  # ✅ Si succès → commit marqué "approved"
 git push
 ```
 
-**Prérequis** : `gh` CLI + extension `gh-signoff` (voir `.ai/context/SECURITY_CHECKS.md`)
+**Prérequis** : `gh` CLI + extension `gh-signoff`
 
 ### RSpec
 
@@ -156,21 +156,23 @@ bundle exec rake security:bundler_audit
 - **Tests**: RSpec + Cucumber
 - **Linting**: StandardRB
 - **Sécurité**: strong_migrations, bundler-audit, Brakeman
-- **Autorisation**: Pundit
-- **Authentification**: bcrypt (has_secure_password)
+
+## 🔒 Statut de l'API V2
+
+L'ébauche d'API V2 présente dans ce repo (routes `api/v1`, 6 modèles, interactors de transmission) est **gelée**.
+
+Le portail V2 (repo [`datagouv/hubee`](https://github.com/datagouv/hubee)) consomme l'API V1 via une gem cliente privée. La reprise du développement API V2 se fera ultérieurement, dans ce même repo.
+
+> Les routes sont commentées dans `config/routes.rb` et les request specs exclues du run par défaut. Ne pas décommenter sans décision explicite de l'équipe.
 
 ## 📚 Documentation
 
-Pour plus d'informations, consulter :
+Documentation de l'API V2 (gelée) :
 
-- `.ai/context/OVERVIEW.md` - Vue d'ensemble du projet
-- `.ai/context/ARCHITECTURE.md` - Architecture système détaillée
-- `.ai/context/DATABASE.md` - Schéma base de données complet
-- `.ai/context/CODE_STYLE.md` - Conventions Ruby/Rails
-- `.ai/context/TESTING.md` - Stratégie et exemples de tests
-- `.ai/context/API.md` - Documentation API REST complète
-- `.ai/context/SECURITY_CHECKS.md` - Outils de sécurité (strong_migrations, bundler-audit, brakeman)
-- `.ai/context/DEVELOPMENT_WORKFLOW.md` - Workflow TDD feature par feature
+- `docs/OVERVIEW.md` - Vue d'ensemble du projet
+- `docs/ARCHITECTURE.md` - Architecture système détaillée
+- `docs/DATABASE.md` - Schéma base de données complet
+- `docs/API.md` - Documentation API REST complète
 
 ## 🛠️ Commandes Utiles
 
@@ -191,7 +193,7 @@ bin/rails solid_queue:start     # Démarrer les workers
 
 ## 🧑‍💻 Développement
 
-Le projet suit une approche **TDD feature par feature**. Consulter `.ai/context/DEVELOPMENT_WORKFLOW.md` pour le workflow détaillé.
+Le projet suit une approche **TDD feature par feature**.
 
 ### Ordre des Features
 
@@ -219,7 +221,15 @@ Le projet suit une approche **TDD feature par feature**. Consulter `.ai/context/
 - ✅ Tous les tests passent (RSpec + Cucumber)
 - ✅ StandardRB sans erreurs
 - ✅ Brakeman sans warnings critiques
-- ✅ Coverage ≥ 80%
+- ✅ Coverage >= 90%
+
+## 📦 Politique de versioning des gems
+
+Les gems du projet ne portent **aucune contrainte de version** dans le `Gemfile`. Le `Gemfile.lock` joue son rôle : il fixe les versions exactes installées sur tous les environnements (dev, CI, prod). C'est lui le filet de sécurité, pas les contraintes de version.
+
+Mettre à jour une gem se fait délibérément, via `bundle update <gem>`. Si la CI passe, la mise à jour est validée. Si elle casse, on le voit immédiatement et on décide d'adapter ou d'attendre.
+
+Les contraintes de type `~> x.y` créent une fausse impression de contrôle : elles n'empêchent ni les bugs ni les breaking changes à l'intérieur d'une plage, mais elles bloquent les mises à jour majeures sans raison explicite et alourdissent la maintenance. On préfère la confiance dans les tests à la prudence par configuration.
 
 ## 📝 Licence
 
