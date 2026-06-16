@@ -49,6 +49,8 @@
 │   ├── 0029_rapid_moonstone.sql
 │   ├── 0030_gigantic_invisible_woman.sql
 │   ├── 0031_melted_thor.sql
+│   ├── 0032_bright_lucky_pierre.sql
+│   ├── 0033_normal_sumo.sql
 │   ├── init
 │   │   ├── 0_create-publication.sql
 │   │   └── 1_create_keycloak.sql
@@ -85,6 +87,8 @@
 │       ├── 0029_snapshot.json
 │       ├── 0030_snapshot.json
 │       ├── 0031_snapshot.json
+│       ├── 0032_snapshot.json
+│       ├── 0033_snapshot.json
 │       └── _journal.json
 ├── docker-compose.test.yaml
 ├── docker-compose.yaml
@@ -165,6 +169,7 @@
 │   │   │   └── types.ts
 │   │   ├── test.png
 │   │   ├── tsconfig.json
+│   │   ├── tsup.config.ts
 │   │   └── vite.config.ts
 │   ├── frontend
 │   │   ├── .eslintrc.cjs
@@ -173,6 +178,9 @@
 │   │   │   └── tmp
 │   │   │       └── 385cc012-52fb9a5562b2df45910cc5730cad1492
 │   │   ├── README.md
+│   │   ├── dsfr-chart
+│   │   │   ├── DSFRChart.css
+│   │   │   └── DSFRChart.js
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── public
@@ -257,6 +265,7 @@
 │   │   │   │   ├── HomeImageSvg.tsx
 │   │   │   │   ├── InputGroup.tsx
 │   │   │   │   ├── MUIDsfr.tsx
+│   │   │   │   ├── MobileModalActions.tsx
 │   │   │   │   ├── MutationAlert.tsx
 │   │   │   │   ├── PDFViewerPaginated.tsx
 │   │   │   │   ├── PasswordInput.tsx
@@ -265,6 +274,7 @@
 │   │   │   │   ├── SearchModal.tsx
 │   │   │   │   ├── SmartAddressInput.tsx
 │   │   │   │   ├── Spinner.tsx
+│   │   │   │   ├── StatsCharts.tsx
 │   │   │   │   ├── SyncForm.tsx
 │   │   │   │   ├── Tabs.tsx
 │   │   │   │   ├── chips
@@ -273,11 +283,13 @@
 │   │   │   │   │   ├── FurtherInfoChips.tsx
 │   │   │   │   │   └── SpaceTypeChips.tsx
 │   │   │   │   └── ui
+│   │   │   │       ├── CanvasButton.tsx
 │   │   │   │       ├── Center.tsx
 │   │   │   │       ├── ConfirmationModal.tsx
 │   │   │   │       ├── Divider.tsx
 │   │   │   │       ├── Flex.tsx
 │   │   │   │       ├── IconLink.tsx
+│   │   │   │       ├── InfoText.tsx
 │   │   │   │       └── LinkButton.tsx
 │   │   │   ├── contexts
 │   │   │   │   └── AuthContext.tsx
@@ -305,6 +317,8 @@
 │   │   │   │   ├── chips
 │   │   │   │   │   └── useChipOptions.tsx
 │   │   │   │   ├── idb.ts
+│   │   │   │   ├── map
+│   │   │   │   │   └── MapLibre.tsx
 │   │   │   │   ├── menu
 │   │   │   │   │   ├── ClauseMenu.tsx
 │   │   │   │   │   ├── HelpMenu.tsx
@@ -355,7 +369,8 @@
 │   │   │   │   │   │   ├── ConstatDetaille.tsx
 │   │   │   │   │   │   ├── ConstatGeneral.tsx
 │   │   │   │   │   │   ├── ContexteVisite.tsx
-│   │   │   │   │   │   └── MonumentHistorique.tsx
+│   │   │   │   │   │   ├── MonumentHistorique.tsx
+│   │   │   │   │   │   └── PlanDeSituationModal.tsx
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── suggestionsMachine.ts
 │   │   │   │   ├── text-editor
@@ -424,10 +439,18 @@
 │       ├── src
 │       │   ├── components
 │       │   │   ├── MarianneHeader.tsx
-│       │   │   └── Pagination.tsx
+│       │   │   ├── Pagination.tsx
+│       │   │   └── images.tsx
 │       │   ├── index.ts
 │       │   ├── report.tsx
 │       │   ├── serviceInstructeur.json
+│       │   ├── state-report
+│       │   │   ├── state-report.alerts.tsx
+│       │   │   ├── state-report.details.tsx
+│       │   │   ├── state-report.general.tsx
+│       │   │   ├── state-report.images.tsx
+│       │   │   ├── state-report.info.tsx
+│       │   │   └── state-report.preconisations.tsx
 │       │   ├── stateReport.tsx
 │       │   └── utils.tsx
 │       └── tsconfig.json
@@ -439,6 +462,7 @@
 ├── powersync
 │   ├── powersync-config.yaml
 │   └── sync-config.yaml
+├── reference-repos.md
 ├── scalingo.json
 ├── scripts
 │   ├── clear-db.sh
@@ -465,4 +489,4 @@
     ├── teardown.ts
     ├── user.spec.ts
     └── utils.ts
-68 directories, 399 files
+71 directories, 420 files

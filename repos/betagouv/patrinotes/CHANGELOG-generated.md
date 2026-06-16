@@ -1,25 +1,20 @@
-## Changelog : patrinotes (30 derniers jours, au 26 mai 2026)
+## Changelog : patrinotes (30 derniers jours, au 15 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'application patrinotes a bénéficié d'améliorations significatives concernant la synchronisation des données, la gestion des rapports d'état et l'expérience utilisateur lors de la création de compte. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application.
+Cette version apporte des corrections de bugs et des améliorations concernant la génération de rapports de condition (CR), la gestion des mots de passe, et l'interface utilisateur. Une nouvelle fonctionnalité permet de sélectionner un métier et d'afficher une liste de personnes dans les rapports de condition.
 
 ### Évolutions fonctionnelles
-- Amélioration de la synchronisation des rapports d'état et de leurs pièces jointes.
-- Ajout d'une liste de personnes présentes et du comptage des services dans les rapports PDF.  [#70](https://github.com/betagouv/patrinotes/issues/70)
-- Redirection des utilisateurs depuis CRVIF.
-- Amélioration de la présentation du formulaire d'inscription avec l'ajout d'un composant d'information pour l'utilisateur. [#71](https://github.com/betagouv/patrinotes/issues/71)
-- Affichage conditionnel du rapport après la sélection du MH (Monument Historique).
-- Sélection du responsable de la mission et liste des personnes présentes dans le Compte Rendu.
+- Correction d'un bug empêchant la sauvegarde des détails de visite.
+- Amélioration de la génération de PDF pour les rapports de condition :
+  - Correction du texte des en-têtes et des listes à puces. [#71](https://github.com/betagouv/patrinotes/issues/71)
+  - Ajout de la possibilité de sélectionner un métier et d'afficher une liste de personnes dans le rapport. [#71](https://github.com/betagouv/patrinotes/issues/71)
+- Correction du problème empêchant la soumission du formulaire d'information avec la touche Entrée.
+- Correction de l'affichage du nombre de pièces jointes lorsque celles-ci ont un libellé.
+- Correction du maintien du libellé des images lors du chargement de plusieurs images.
+- Correction d'un bug dans la route des statistiques d'administration, ajout d'une clause `WHERE` manquante.
 
 ### Évolutions techniques
-- Mise à jour des données de population (pop data).
-- Correction d'un crash du routeur frontend.
-- Correction des migrations de la base de données.
-- Utilisation de l'email pour identifier les utilisateurs au lieu de l'ID interne.
-- Correction de problèmes liés à la réinitialisation des données locales.
+- Correction d'un hotfix concernant la réinitialisation du mot de passe.
 
 ### Autres changements
-- Amélioration de l'étiquette lors du dessin sur une image.
-- Correction de l'affichage des sections dans le formulaire `ServiceInstructeurForm`.
-- Correction d'un bug empêchant la duplication de rapports sans sections.
-- Exclusion des pièces jointes PDF des rapports lors de certaines opérations.
+- Préparation pour les sprints 6 et 7. [#75](https://github.com/betagouv/patrinotes/issues/75)
