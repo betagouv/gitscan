@@ -93,6 +93,23 @@
 ├── SKILL.md
 ├── Taskfile.yml
 ├── bots
+│   ├── adr-cartograph
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── adr-format.md
+│   │       ├── adr-scope-detection.md
+│   │       ├── adry.md
+│   │       ├── completeness-taxonomy.md
+│   │       └── decision-vs-mechanic.md
+│   ├── adr-rechallenge
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── argument-framing.md
+│   │       └── rearchi.md
 │   ├── bmady
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -150,6 +167,13 @@
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   └── manifest.yaml
+│   ├── feature-gap-fill
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── fini.md
+│   │       └── gap-vs-feature.md
 │   ├── revi-converse
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
@@ -259,7 +283,8 @@
 │       │   ├── rgaa.md
 │       │   └── rgpd.md
 │       └── skills
-│           └── lang-js-fallow.md
+│           ├── lang-js-fallow.md
+│           └── verify-build.md
 ├── build
 │   ├── appicon.png
 │   ├── darwin
@@ -435,7 +460,15 @@
 │   │   ├── 016-in-run-worktree-file-editor.md
 │   │   ├── 017-devbox-first-bot-toolchain.md
 │   │   ├── 018-bot-secret-binding-egress-enforcement.md
-│   │   └── 019-sandbox-doctor-static-binary-check.md
+│   │   ├── 019-sandbox-doctor-static-binary-check.md
+│   │   ├── 020-git-arg-injection-and-path-traversal-hardening.md
+│   │   ├── 021-is-ancestor-via-merge-base-equality.md
+│   │   ├── 022-empty-tree-sha-synthetic-baseline-for-root-commits.md
+│   │   ├── 023-c-locale-pinned-stderr-substring-error-classification.md
+│   │   ├── 024-nul-framed-parsing-for-adversarial-git-metadata.md
+│   │   ├── 025-git-panel-reflects-working-tree-not-the-index.md
+│   │   ├── 026-main-repo-root-resolution-for-project-rooted-state.md
+│   │   └── 027-git-cli-shell-out-not-embedded-pure-go.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── attachments.md
@@ -444,17 +477,25 @@
 │   ├── backends.md
 │   ├── bot-runs
 │   │   ├── README.md
+│   │   ├── adr-cartograph.md
+│   │   ├── adr-rechallenge.md
+│   │   ├── bmady.md
 │   │   ├── branch-improve-loop.md
+│   │   ├── devbox-setup.md
+│   │   ├── docs-refresh.md
 │   │   ├── evolve.md
 │   │   ├── feature-dev.md
+│   │   ├── feature-gap-fill.md
 │   │   ├── review-pr.md
 │   │   ├── sec-audit-deps.md
 │   │   ├── sec-audit-source.md
+│   │   ├── secured-renovacy.md
 │   │   ├── whats-next.md
 │   │   └── whole-improve-loop.md
 │   ├── browser-pane.md
 │   ├── bundles.md
 │   ├── byok.md
+│   ├── c082-board-emit-fix-plan.md
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
 │   ├── cloud-architecture.md
@@ -706,6 +747,7 @@
 │   │   │   ├── network_errors.go
 │   │   │   ├── network_errors_test.go
 │   │   │   ├── parse.go
+│   │   │   ├── parse_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── registry.go
 │   │   │   ├── secrets_prompt_test.go
@@ -904,6 +946,7 @@
 │   │   ├── bots.go
 │   │   ├── bots_test.go
 │   │   ├── bundle.go
+│   │   ├── cli_docs_examples_test.go
 │   │   ├── cli_test.go
 │   │   ├── diagram.go
 │   │   ├── dispatch.go
@@ -966,6 +1009,7 @@
 │   │   └── yaml.go
 │   ├── dispatcher
 │   │   ├── cleanup_workspace_test.go
+│   │   ├── cmd_buffer_test.go
 │   │   ├── commands.go
 │   │   ├── commands_cancel_test.go
 │   │   ├── commands_paused_test.go
@@ -977,9 +1021,11 @@
 │   │   ├── dispatcher.go
 │   │   ├── dispatcher_test.go
 │   │   ├── engine_runner.go
+│   │   ├── engine_runner_close_test.go
 │   │   ├── engine_runner_test.go
 │   │   ├── external.go
 │   │   ├── heartbeat_store.go
+│   │   ├── heartbeat_store_test.go
 │   │   ├── heartbeat_test.go
 │   │   ├── hooks.go
 │   │   ├── hooks_test.go
@@ -1006,6 +1052,7 @@
 │   │   │   │   └── ops_test.go
 │   │   │   ├── bot_args_test.go
 │   │   │   ├── event.go
+│   │   │   ├── events_torntail_test.go
 │   │   │   ├── http.go
 │   │   │   ├── http_bot_args_test.go
 │   │   │   ├── http_test.go
@@ -1048,7 +1095,8 @@
 │   │   │   └── pos.go
 │   │   ├── expr
 │   │   │   ├── expr.go
-│   │   │   └── expr_test.go
+│   │   │   ├── expr_test.go
+│   │   │   └── overflow_test.go
 │   │   ├── ir
 │   │   │   ├── attachments_test.go
 │   │   │   ├── bench_test.go
@@ -1056,6 +1104,7 @@
 │   │   │   ├── compile_cursors.go
 │   │   │   ├── compile_test.go
 │   │   │   ├── compute_when_test.go
+│   │   │   ├── cursor_resolve_test.go
 │   │   │   ├── cursors_test.go
 │   │   │   ├── env_expand_test.go
 │   │   │   ├── ir.go
@@ -1122,7 +1171,9 @@
 │   ├── git
 │   │   ├── ancestor_test.go
 │   │   ├── clone.go
+│   │   ├── clone_test.go
 │   │   ├── diff.go
+│   │   ├── diff_test.go
 │   │   ├── git.go
 │   │   ├── git_test.go
 │   │   ├── log.go
@@ -1197,6 +1248,7 @@
 │   ├── notify
 │   │   ├── completion.go
 │   │   ├── completion_test.go
+│   │   ├── deliver_pin_test.go
 │   │   ├── sign.go
 │   │   └── sign_test.go
 │   ├── orgusage
@@ -1296,6 +1348,7 @@
 │   │   │   ├── iface.go
 │   │   │   └── mongo.go
 │   │   ├── executor.go
+│   │   ├── extract_string_ids_test.go
 │   │   ├── file_event_source.go
 │   │   ├── file_event_source_test.go
 │   │   ├── file_log_source.go
@@ -1373,7 +1426,8 @@
 │   │   │   ├── matcher_test.go
 │   │   │   ├── preset.go
 │   │   │   ├── proxy.go
-│   │   │   └── proxy_test.go
+│   │   │   ├── proxy_test.go
+│   │   │   └── tunnel_test.go
 │   │   ├── noop
 │   │   │   ├── noop.go
 │   │   │   └── noop_test.go
@@ -1418,6 +1472,7 @@
 │   │   ├── bots_routes_test.go
 │   │   ├── byok_routes.go
 │   │   ├── cloudpublisher
+│   │   │   ├── gosafe_test.go
 │   │   │   ├── publisher.go
 │   │   │   └── publisher_secrets_test.go
 │   │   ├── cost_preview.go
@@ -1428,6 +1483,8 @@
 │   │   ├── filter.go
 │   │   ├── filter_test.go
 │   │   ├── generic_secrets_routes.go
+│   │   ├── gosafe.go
+│   │   ├── gosafe_test.go
 │   │   ├── health.go
 │   │   ├── health_test.go
 │   │   ├── hub.go
@@ -1475,6 +1532,7 @@
 │   │   ├── runs_stats_cache.go
 │   │   ├── runs_stats_cache_test.go
 │   │   ├── runs_stats_test.go
+│   │   ├── runs_tenant_test.go
 │   │   ├── runs_test.go
 │   │   ├── runs_uploads.go
 │   │   ├── runs_uploads_test.go
@@ -1493,6 +1551,7 @@
 │   │   ├── watch_coordinator_test.go
 │   │   ├── watcher.go
 │   │   ├── webhooks_common.go
+│   │   ├── webhooks_forge_host_test.go
 │   │   ├── webhooks_forgejo.go
 │   │   ├── webhooks_forgejo_test.go
 │   │   ├── webhooks_generic.go
@@ -1519,6 +1578,7 @@
 │   │   ├── event.go
 │   │   ├── factory.go
 │   │   ├── factory_test.go
+│   │   ├── hardening_test.go
 │   │   ├── iface.go
 │   │   ├── iface_test.go
 │   │   ├── lock.go
@@ -1532,6 +1592,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── interactions.go
 │   │   │   ├── memory.go
+│   │   │   ├── memory_hardening_test.go
 │   │   │   ├── runs.go
 │   │   │   ├── store.go
 │   │   │   ├── tenant.go
@@ -1557,8 +1618,10 @@
 │   │   ├── tenant.go
 │   │   ├── turn.go
 │   │   ├── turn_store.go
+│   │   ├── turn_store_concurrency_test.go
 │   │   ├── turn_store_test.go
-│   │   └── user_messages.go
+│   │   ├── user_messages.go
+│   │   └── user_messages_test.go
 │   └── webhooks
 │       ├── forgejo
 │       │   ├── events.go
@@ -1693,6 +1756,7 @@
 │   │   ├── App.tsx
 │   │   ├── __tests__
 │   │   │   ├── a11y
+│   │   │   │   ├── contrast.test.ts
 │   │   │   │   └── primitives.test.tsx
 │   │   │   └── desktopBridge.test.ts
 │   │   ├── api
@@ -1911,6 +1975,7 @@
 │   │   │   │   ├── DispatcherControlBar.tsx
 │   │   │   │   ├── EditorTabHost.tsx
 │   │   │   │   ├── ErrorBoundary.tsx
+│   │   │   │   ├── ErrorNotice.tsx
 │   │   │   │   ├── GlobalCommandPalette.tsx
 │   │   │   │   ├── InnerTabBar.tsx
 │   │   │   │   ├── MainSpinner.tsx
@@ -1940,6 +2005,7 @@
 │   │   │       ├── EffortBar.tsx
 │   │   │       ├── EmptyState.tsx
 │   │   │       ├── IconButton.tsx
+│   │   │       ├── InlineBanner.tsx
 │   │   │       ├── Input.tsx
 │   │   │       ├── LiveDot.tsx
 │   │   │       ├── MarkdownPreview.tsx
@@ -2027,6 +2093,8 @@
 │   │   │   ├── docMutations.ts
 │   │   │   ├── documentToGraph.ts
 │   │   │   ├── dslOptions.ts
+│   │   │   ├── errorHints.test.ts
+│   │   │   ├── errorHints.ts
 │   │   │   ├── eventIter.ts
 │   │   │   ├── fileTree.test.ts
 │   │   │   ├── fileTree.ts
@@ -8499,4 +8567,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1289 directories, 7765 files
+1295 directories, 7827 files
