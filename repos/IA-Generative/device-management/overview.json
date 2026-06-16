@@ -8,8 +8,8 @@
     "API & Intégrations",
     "Authentification & Accès",
     "Statistiques & Rapports",
-    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
     "Gestion métier générale"
   ],
@@ -17,15 +17,15 @@
   "dependencies": [
     "FastAPI",
     "PostgreSQL",
-    "Docker",
-    "Kubernetes"
+    "Keycloak",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Kubernetes & Helm"
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
@@ -33,11 +33,13 @@
       "jwt",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": "Tests unitaires et d'intégration (pytest)",
+  "tests": "Pytest",
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "GitHub Actions"
   ],
   "lastActivity": "2026-06-07T14:11:05+02:00",
   "status": "active",
@@ -51,10 +53,9 @@
   },
   "tags": [
     "Données & Open Data",
-    "Sécurité & Conformité",
+    "Sécurité & Auth",
     "Python",
     "Bases de données SQL",
-    "Docker",
-    "Kubernetes"
+    "Déploiement & Hosting"
   ]
 }
