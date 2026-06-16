@@ -16,8 +16,9 @@
   "dependencies": [
     "Django",
     "Next.js",
+    "Vercel AI SDK",
     "Pydantic AI",
-    "Vercel AI SDK"
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,11 +30,15 @@
   "auth": {
     "methods": [
       "oauth2",
-      "email-password"
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "Google",
+      "GitHub",
+      "Microsoft"
+    ]
   },
-  "tests": "Tests unitaires et d'intégration (Jest, Pytest)",
+  "tests": "Jest, Pytest, Cypress",
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
