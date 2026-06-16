@@ -1,27 +1,24 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 8 juin 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 15 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la génération et de la gestion des rapports d'activité, ainsi que sur des corrections de bugs et des optimisations techniques pour améliorer la stabilité et la performance de la plateforme. Des améliorations ont également été apportées à la recherche d'entreprises et à la gestion des logs.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration des rapports statistiques disponibles dans l'interface d'administration, avec l'ajout d'une colonne d'évolution et de nouvelles actions pour la génération de rapports. Des corrections et simplifications de code ont également été apportées, notamment concernant la gestion des jobs Sidekiq et l'affichage des besoins de diagnostic. Une vulnérabilité potentielle d'injection de code a été corrigée.
 
 ### Évolutions fonctionnelles
-- Ajout d'actions ActiveAdmin pour la génération de rapports. [#4495](https://github.com/betagouv/conseillers-entreprises/pull/4495)
-- Amélioration de l'affichage des éléments de besoin de diagnostic avec une mise en page en grille. [#4483](https://github.com/betagouv/conseillers-entreprises/pull/4483)
-- Correction d'un bug empêchant la recherche d'entreprises avec moins de 3 caractères. [#4481](https://github.com/betagouv/conseillers-entreprises/pull/4481)
-- Correction d'un bug lié au traitement des statistiques de thème dans les rapports. [#4478](https://github.com/betagouv/conseillers-entreprises/pull/4478)
-- Lien direct vers Sidekiq depuis le menu Jobs dans l'interface d'administration, remplaçant l'iframe. [#4487](https://github.com/betagouv/conseillers-entreprises/pull/4487)
+- Ajout d'une colonne "Évolution" dans le rapport des coopérations, permettant de suivre les changements dans le temps. [#4500](https://github.com/betagouv/conseillers-entreprises/pull/4500)
+- Ajout d'actions dans l'interface d'administration pour générer les rapports. [#4495](https://github.com/betagouv/conseillers-entreprises/pull/4495)
+- Correction de l'affichage des besoins de diagnostic, avec une mise en page améliorée et la suppression de code inutile. [#4483](https://github.com/betagouv/conseillers-entreprises/pull/4483)
+- Correction du lien vers les jobs Sidekiq dans l'interface d'administration, qui pointe désormais directement vers Sidekiq. [#4487](https://github.com/betagouv/conseillers-entreprises/pull/4487)
 
 ### Évolutions techniques
-- Mise à jour de Ruby en version 4.0.5 pour bénéficier des dernières corrections et améliorations. [#4493](https://github.com/betagouv/conseillers-entreprises/pull/4493)
-- Refactorisation du code lié à la gestion de la durée des événements (TimeDurationService). [#4494](https://github.com/betagouv/conseillers-entreprises/pull/4494)
-- Simplification de la classe `ActivityReports`. [#4495](https://github.com/betagouv/conseillers-entreprises/pull/4495)
-- Suppression du code lié à l'ancienne API Adresse. [#4489](https://github.com/betagouv/conseillers-entreprises/pull/4489)
-- Suppression des emails de notification concernant les jobs échoués. [#4488](https://github.com/betagouv/conseillers-entreprises/pull/4488)
-- Mise à jour de la dépendance webpack-dev-server en version 5.2.4. [#4486](https://github.com/betagouv/conseillers-entreprises/pull/4486)
-- Ajout de `SidekiqJob.status_for` pour faciliter le suivi des jobs.
-- Amélioration de la gestion des logs pour éviter de journaliser des informations sensibles (adresses email) lors des échecs d'authentification. [#4479](https://github.com/betagouv/conseillers-entreprises/pull/4479)
+- Refactoring et simplification du code lié à la gestion des rapports, notamment concernant l'enqueuing et la génération des jobs. [#4498](https://github.com/betagouv/conseillers-entreprises/pull/4498) et [#4493](https://github.com/betagouv/conseillers-entreprises/pull/4493)
+- Mise à jour de Ruby vers la version 4.0.5. [#4493](https://github.com/betagouv/conseillers-entreprises/pull/4493)
+- Correction d'une vulnérabilité potentielle d'injection de code détectée par l'analyse de code. [#4514](https://github.com/betagouv/conseillers-entreprises/pull/4514)
+- Suppression du code lié à l'API Adresse, qui n'est plus utilisée. [#4489](https://github.com/betagouv/conseillers-entreprises/pull/4489)
+- Suppression du mail de notification concernant les jobs ayant échoué. [#4488](https://github.com/betagouv/conseillers-entreprises/pull/4488)
+- Mise à jour de dépendances : webpack-dev-server. [#4486](https://github.com/betagouv/conseillers-entreprises/pull/4486) et net-imap. [#4512](https://github.com/betagouv/conseillers-entreprises/pull/4512)
 
 ### Autres changements
 - Ajout d'un fichier de configuration pour la revue des dépendances GitHub. [#4492](https://github.com/betagouv/conseillers-entreprises/pull/4492)
+- Amélioration de la configuration Rubocop. [#4496](https://github.com/betagouv/conseillers-entreprises/pull/4496)
 - Nettoyage du fichier `.gitignore`. [#4497](https://github.com/betagouv/conseillers-entreprises/pull/4497)
-- Corrections mineures de code et de style pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour de Bootsnap pour corriger un problème de compatibilité avec Ruby 4.0.4+.
+- Correction d'une erreur de traitement des statistiques de thème. [#4478](https://github.com/betagouv/conseillers-entreprises/pull/4478)
