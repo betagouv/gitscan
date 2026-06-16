@@ -60,6 +60,11 @@
 │   │   │   │   │   ├── getSoftwareFormData.ts
 │   │   │   │   │   ├── getSoftwareOptions.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── RNSR
+│   │   │   │   │   ├── API
+│   │   │   │   │   │   ├── get.ts
+│   │   │   │   │   │   └── getOrganisation.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── comptoirDuLibre
 │   │   │   │   │   ├── getCDLExternalData.ts
 │   │   │   │   │   ├── getCDLFormData.ts
@@ -118,7 +123,9 @@
 │   │   │   │   │       │   ├── 1774540759933_add-config-on-source.ts
 │   │   │   │   │       │   ├── 1775831291184_add-user-input-source.ts
 │   │   │   │   │       │   ├── 1778168171859_add-user-role.ts
-│   │   │   │   │       │   └── 1778676305325_add-editable-by-admin-only-to-custom-attributes.ts
+│   │   │   │   │       │   ├── 1778676305325_add-editable-by-admin-only-to-custom-attributes.ts
+│   │   │   │   │       │   ├── 1779436823000_add-software-protections.ts
+│   │   │   │   │       │   └── 1779792794032_add-new-type.ts
 │   │   │   │   │       └── pgDbApi.integration.test.ts
 │   │   │   │   ├── doiResolver.ts
 │   │   │   │   ├── getCnllPrestatairesSill.ts
@@ -142,13 +149,24 @@
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── resolveAdapter.ts
+│   │   │   │   ├── ror.org
+│   │   │   │   │   ├── API
+│   │   │   │   │   │   ├── getOrganization.test.ts
+│   │   │   │   │   │   ├── getOrganization.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── wikidata
 │   │   │   │   │   ├── ApiAgent
 │   │   │   │   │   │   ├── entity.ts
+│   │   │   │   │   │   ├── getItem.test.ts
 │   │   │   │   │   │   ├── getLicenses.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── getOrganisation.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── restApi.ts
+│   │   │   │   │   │   └── wikimedia.ts
 │   │   │   │   │   ├── commonsImage.test.ts
 │   │   │   │   │   ├── commonsImage.ts
+│   │   │   │   │   ├── getOrganization.ts
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   ├── getWikidataSoftware.test.ts
 │   │   │   │   │   ├── getWikidataSoftware.ts
@@ -171,11 +189,13 @@
 │   │   │   │   ├── ComptoirDuLibreApi.ts
 │   │   │   │   ├── DbApiV2.ts
 │   │   │   │   ├── GetCnllPrestatairesSill.ts
+│   │   │   │   ├── GetOrganization.ts
 │   │   │   │   ├── GetScholarlyArticle.ts
 │   │   │   │   ├── GetSoftwareExternal.ts
 │   │   │   │   ├── GetSoftwareExternalData.ts
 │   │   │   │   ├── GetSoftwareExternalDataOptions.ts
 │   │   │   │   ├── GetSoftwareFormData.ts
+│   │   │   │   ├── SearchOrganization.ts
 │   │   │   │   └── SourceGateway.ts
 │   │   │   ├── types
 │   │   │   │   ├── SoftwareTypes.ts
@@ -204,7 +224,10 @@
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── refreshExternalData.test.ts
 │   │   │   │   ├── refreshExternalData.ts
+│   │   │   │   ├── resolveSoftwareFormDataProtection.ts
 │   │   │   │   ├── sanitizeSoftwareFormDataCustomAttributes.ts
+│   │   │   │   ├── softwareErrors.ts
+│   │   │   │   ├── unreferenceSoftware.ts
 │   │   │   │   ├── updateSoftware.test.ts
 │   │   │   │   └── updateSoftware.ts
 │   │   │   └── utils.ts
@@ -254,6 +277,11 @@
 ├── backup-db.sh
 ├── catalogi-realm.json
 ├── catalogi.png
+├── customization
+│   ├── README.md
+│   ├── docker-compose.preprod.override.yml
+│   ├── docker-compose.prod.override.yml
+│   └── ui-config.json
 ├── deployment-examples
 │   ├── .gitignore
 │   ├── docker-compose
@@ -1281,4 +1309,4 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 └── yarn-error.log
-132 directories, 1192 files
+137 directories, 1215 files

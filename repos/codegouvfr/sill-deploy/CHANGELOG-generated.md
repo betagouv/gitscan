@@ -1,29 +1,34 @@
-## Changelog : sill-deploy (30 derniers jours, au 21 mai 2026)
+## Changelog : sill-deploy (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'administration des attributs personnalisés, la robustesse de l'API (notamment concernant Wikidata) et l'amélioration de l'expérience utilisateur en affichant la provenance des données. Des optimisations de performance ont également été apportées, ainsi que l'ajout de workflows de déploiement SILL et de synchronisation avec le dépôt upstream.
+Ce changelog présente les améliorations apportées à sill-deploy au cours du dernier mois. Les principales évolutions concernent l'ajout de fonctionnalités pour la gestion des organisations et des sources de données, des améliorations de l'interface utilisateur pour la sélection des logiciels, et des corrections de bugs pour stabiliser les tests et l'importation automatique. Des workflows de déploiement SILL ont également été ajoutés.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page d'administration accessible via `/admin` pour gérer les attributs personnalisés, avec restriction de l'accès à un rôle administrateur. [#52bdc24](https://github.com/codegouvfr/sill-deploy/pull/52bdc24)
-- Amélioration de l'affichage de la provenance des données dans la modale DSFR, avec une présentation sous forme de tableau comparatif. [#9058319](https://github.com/codegouvfr/sill-deploy/pull/9058319)
-- Affichage de la source des modifications utilisateur. [#2999e51](https://github.com/codegouvfr/sill-deploy/pull/2999e51)
-- Contrainte de la largeur de la page d'administration et troncature des étiquettes d'attributs trop longues pour une meilleure lisibilité. [#b9f8d89](https://github.com/codegouvfr/sill-deploy/pull/b9f8d89)
+- Ajout de la récupération et de la recherche d'organisations sur Wikidata. [#505](https://github.com/codegouvfr/sill-deploy/issues/505)
+- Ajout de la possibilité de récupérer l'organisation pour ROR et RNS. [#523](https://github.com/codegouvfr/sill-deploy/issues/523)
+- Ajout de la possibilité de configurer les cartes de sélection de logiciels sur la page d'accueil via l'interface utilisateur.
+- Ajout de protections pour les logiciels.
+- Amélioration de l'importation automatique des données, empêchant la création d'entrées utilisateur. [#528](https://github.com/codegouvfr/sill-deploy/issues/528)
+- Ajout de la récupération de tous les identifiants sur HAL. [#515](https://github.com/codegouvfr/sill-deploy/issues/515)
+- Ajout d'un rôle administrateur et d'une page d'administration pour gérer les attributs personnalisés.
+- Restriction des attributs personnalisés à l'administration uniquement.
+- Contrainte de la largeur de la page et troncature des étiquettes d'attributs longs dans l'interface d'administration.
 
 ### Évolutions techniques
-- Ajout de workflows CI/CD pour le déploiement SILL et la synchronisation avec le dépôt upstream. [#f99c7d9](https://github.com/codegouvfr/sill-deploy/pull/f99c7d9), [#98a4217](https://github.com/codegouvfr/sill-deploy/pull/98a4217), [#10ac978](https://github.com/codegouvfr/sill-deploy/pull/10ac978)
-- Optimisation de la récupération des logos et des données Wikidata pour améliorer les performances de l'API. [#759cedb](https://github.com/codegouvfr/sill-deploy/pull/759cedb)
-- Refactorisation du type `SoftwareData` et suppression des colonnes `content` de la table `softwares` pour simplifier la structure des données. [#4377664](https://github.com/codegouvfr/sill-deploy/pull/4377664)
-- Amélioration de la gestion des erreurs et des limites de débit (429) lors de l'accès à l'API Wikidata. [#04a9455](https://github.com/codegouvfr/sill-deploy/pull/04a9455)
-- Correction d'un problème de sélection de la dernière version Wikidata. [#f7fc708](https://github.com/codegouvfr/sill-deploy/pull/f7fc708)
-- Utilisation de `Special:FilePath` pour les URLs des images Wikidata. [#e06c5c5](https://github.com/codegouvfr/sill-deploy/pull/e06c5c5)
-- Suivi de l'auteur de la déréférenciation et stockage de l'heure au format ISO. [#d99ffe4](https://github.com/codegouvfr/sill-deploy/pull/d99ffe4)
-- Correction d'un problème de type dans `gitbeaker`. [#75c22f7](https://github.com/codegouvfr/sill-deploy/pull/75c22f7)
+- Ajout de workflows de déploiement SILL et synchronisation avec l'upstream.
+- Refactoring pour effectuer le filtrage au niveau SQL plutôt qu'au niveau des résultats. [#516](https://github.com/codegouvfr/sill-deploy/issues/516)
+- Utilisation de la configuration de la source pour résoudre l'identifiant du dépôt.
+- Correction de l'ordre des tests pour assurer une exécution déterministe.
+- Amélioration de la stabilité des assertions pour les logiciels similaires.
+- Correction de l'installation des navigateurs Playwright en CI.
+- Correction de l'exécution des tests Playwright en CI.
+- Mise à jour des dépendances Renovate.
 
 ### Autres changements
-- Mise à jour de la documentation pour utiliser la CSP de Vite dans l'environnement Vite. [#93dd20b](https://github.com/codegouvfr/sill-deploy/pull/93dd20b)
-- Nettoyage du code et suppression d'artefacts de provenance et de revue. [#5c7d400](https://github.com/codegouvfr/sill-deploy/pull/5c7d400)
-- Mise à jour de l'attente du test de rafraîchissement Wikidata. [#efde4eb](https://github.com/codegouvfr/sill-deploy/pull/efde4eb)
-- Correction de la préservation des remplacements d'entrée utilisateur. [#baf4f39](https://github.com/codegouvfr/sill-deploy/pull/baf4f39)
-- Encodage des valeurs de secours d'entrée utilisateur avec null. [#762e377](https://github.com/codegouvfr/sill-deploy/pull/762e377)
-- Exclusion de `UserInput` de la source principale et remplissage des valeurs héritées complètes. [#f8c5051](https://github.com/codegouvfr/sill-deploy/pull/f8c5051)
-- Ajustement des assertions dans les tests E2E pour éviter les collisions de provenance des sources. [#3297648](https://github.com/codegouvfr/sill-deploy/pull/3297648)
+- Clarification de la documentation concernant le routage de l'API Helm.
+- Ajout d'un script pour initialiser la base de données racine.
+- Correction du réordonnancement des références de migration. [#523](https://github.com/codegouvfr/sill-deploy/issues/523)
+- Correction de l'espacement entre le héros de la page d'accueil et la sélection des logiciels.
+- Modification de l'entrée d'objet et renommage de la variable. [#528](https://github.com/codegouvfr/sill-deploy/issues/528)
+- Blocage de la création de logiciels via l'API lorsque l'utilisation de la fonctionnalité d'ajout de logiciel ou de service est désactivée.
+- Plusieurs augmentations de version (build bumps).
