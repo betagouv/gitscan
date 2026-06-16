@@ -225,6 +225,7 @@
     │   │   │   ├── 0028_split_attachment_messages.py
     │   │   │   ├── 0029_attachment_message_not_null.py
     │   │   │   ├── 0030_remove_attachment__deprecated_messages_and_more.py
+    │   │   │   ├── 0031_message_mime_id_index.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -305,7 +306,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (60 files)
+    │   │   │   │   └── test_*.py  (62 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
@@ -703,7 +704,7 @@
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
     │   │   │   │   │   │   ├── mailbox_*.ts  (16 files)
-    │   │   │   │   │   │   ├── mailboxes_*.ts  (16 files)
+    │   │   │   │   │   │   ├── mailboxes_*.ts  (18 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
@@ -724,6 +725,7 @@
     │   │   │   │   │   │   ├── reset_password_not_found.ts
     │   │   │   │   │   │   ├── reset_password_response.ts
     │   │   │   │   │   │   ├── response_enum.ts
+    │   │   │   │   │   │   ├── scope_enum.ts
     │   │   │   │   │   │   ├── scope_level_enum.ts
     │   │   │   │   │   │   ├── send_*.ts  (5 files)
     │   │   │   │   │   │   ├── status_enum.ts
@@ -731,8 +733,8 @@
     │   │   │   │   │   │   ├── task_status_response_result.ts
     │   │   │   │   │   │   ├── third_party_drive_retrieve_params.ts
     │   │   │   │   │   │   ├── thread.ts
-    │   │   │   │   │   │   ├── thread_*.ts  (20 files)
-    │   │   │   │   │   │   ├── threads_*.ts  (13 files)
+    │   │   │   │   │   │   ├── thread_*.ts  (21 files)
+    │   │   │   │   │   │   ├── threads_*.ts  (15 files)
     │   │   │   │   │   │   ├── tree_label.ts
     │   │   │   │   │   │   ├── user_*.ts  (5 files)
     │   │   │   │   │   │   └── users_list_params.ts
@@ -931,6 +933,7 @@
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── mailbox-settings
     │   │   │   │       │   ├── autoreplies-view
+    │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── autoreply-data-grid.tsx
     │   │   │   │       │   │   └── compose-autoreply-action.tsx
     │   │   │   │       │   ├── integrations-view
@@ -1004,6 +1007,9 @@
     │   │   │   │       │   │   ├── thread-panel-filter.tsx
     │   │   │   │       │   │   └── thread-panel-header.tsx
     │   │   │   │       │   ├── hooks
+    │   │   │   │       │   │   ├── listbox-navigation.test.ts
+    │   │   │   │       │   │   ├── listbox-navigation.ts
+    │   │   │   │       │   │   ├── use-thread-listbox.ts
     │   │   │   │       │   │   └── use-thread-panel-filters.ts
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── thread-selection-placeholder.tsx
@@ -1032,6 +1038,7 @@
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── message-reply-form
     │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   ├── draft-actions-menu.tsx
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── share-modal-extensions
     │   │   │   │           │   │   ├── _index.scss
@@ -1095,8 +1102,10 @@
     │   │   │   │   ├── use-assigned-users.ts
     │   │   │   │   ├── use-can-edit-threads.tsx
     │   │   │   │   ├── use-copy-deep-link.tsx
+    │   │   │   │   ├── use-delete-drafts.tsx
     │   │   │   │   ├── use-delete-label.tsx
     │   │   │   │   ├── use-delete-thread-access.tsx
+    │   │   │   │   ├── use-delete.tsx
     │   │   │   │   ├── use-flag.tsx
     │   │   │   │   ├── use-mention-read.tsx
     │   │   │   │   ├── use-print.tsx
@@ -1124,6 +1133,9 @@
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   └── queued-message.tsx
     │   │   │   │   ├── theme.tsx
+    │   │   │   │   ├── thread-listbox-focus.tsx
+    │   │   │   │   ├── thread-selection-core.test.ts
+    │   │   │   │   ├── thread-selection-core.ts
     │   │   │   │   └── thread-selection.tsx
     │   │   │   ├── signatures
     │   │   │   │   └── components
@@ -1201,6 +1213,7 @@
     │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.tsx
     │   │   │       ├── composer-helper
+    │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.ts
     │   │   │       ├── date-helper.test.ts
     │   │   │       ├── date-helper.ts
@@ -1417,4 +1430,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-305 directories, 1297 files
+305 directories, 1317 files
