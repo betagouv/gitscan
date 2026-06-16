@@ -77,7 +77,8 @@
 │   │       ├── 2026_04_23_1814-4a8f3b3aed3a_remove_master_user.py
 │   │       ├── 2026_05_06_1224-9fd5b6491d48_add_constraint_on_router_delete.py
 │   │       ├── 2026_05_06_1658-4cbcc969c660_add_constraint_on_provinder_delete.py
-│   │       └── 2026_06_01_1421-7498a3a48271_add_storage_limits.py
+│   │       ├── 2026_06_01_1421-7498a3a48271_add_storage_limits.py
+│   │       └── 2026_06_10_1828-0daf52aadaf0_add_basic_auth_to_provider_definition.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -232,13 +233,15 @@
 │   │   │   │   └── rerank.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
+│   │   │       ├── admin
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── providers.py
+│   │   │       │   ├── roles.py
+│   │   │       │   ├── routers.py
+│   │   │       │   └── users.py
 │   │   │       ├── health.py
 │   │   │       ├── models.py
-│   │   │       ├── providers.py
-│   │   │       ├── rerank.py
-│   │   │       ├── roles.py
-│   │   │       ├── routers.py
-│   │   │       └── users.py
+│   │   │       └── rerank.py
 │   │   ├── http
 │   │   │   ├── __init__.py
 │   │   │   ├── _httpprovideradapterbuilder.py
@@ -294,6 +297,15 @@
 │   │   │       │   └── vllm
 │   │   │       │       ├── __init__.py
 │   │   │       │       └── _vllmembeddingsadapter.py
+│   │   │       ├── metrics
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── _metricsadapter.py
+│   │   │       │   ├── mistral
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   └── _mistralmetricsadapter.py
+│   │   │       │   └── vllm
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── _vllmmetricsadapter.py
 │   │   │       ├── models
 │   │   │       │   ├── __init__.py
 │   │   │       │   ├── _modelsadapter.py
@@ -566,6 +578,7 @@
 │   │       │   ├── http
 │   │       │   │   ├── adapters
 │   │       │   │   │   ├── test_embeddingsadapter.py
+│   │       │   │   │   ├── test_metricsadapter.py
 │   │       │   │   │   ├── test_modelsadapter.py
 │   │       │   │   │   └── test_rerankadapter.py
 │   │       │   │   └── test_httpprovideradapterbuilder.py
@@ -930,4 +943,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-207 directories, 725 files
+211 directories, 734 files
