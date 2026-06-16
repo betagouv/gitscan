@@ -228,6 +228,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260612130445_add_impact_indicators
 │   │   │   └── migration.sql
+│   │   ├── 20260615130113_new_indicator_for_impact
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -284,6 +286,9 @@
 │       └── wipe.ts
 ├── prisma.config.ts
 ├── public
+│   ├── 07-Fiche_de_parametrage_OFII-transformation_parc.xlsx
+│   ├── 11-FAQ Transformation HUDA en CADA_FV.pdf
+│   ├── Instruction INTV2609238J.pdf
 │   ├── adresses-diffus.xlsx
 │   ├── adresses-mixte.xlsx
 │   ├── autosave-picto.svg
@@ -423,6 +428,20 @@
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── statistiques
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── stats
+│   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── StatistiquesHeader.tsx
+│   │   │   │   │   │   └── structures
+│   │   │   │   │   │       ├── GenericTypeChart.tsx
+│   │   │   │   │   │       ├── StructuresBlock.tsx
+│   │   │   │   │   │       ├── StructuresStatsTable.tsx
+│   │   │   │   │   │       ├── TypesBatis.tsx
+│   │   │   │   │   │       └── TypesStructures.tsx
+│   │   │   │   │   ├── _context
+│   │   │   │   │   │   ├── StatistiquesClientContext.tsx
+│   │   │   │   │   │   └── StatistiquesContext.tsx
+│   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── structures
 │   │   │   │       ├── [id]
@@ -881,7 +900,11 @@
 │   │   │   │   ├── dnaAndFiness
 │   │   │   │   │   ├── DnaAndFiness.tsx
 │   │   │   │   │   ├── FieldSetDna.tsx
-│   │   │   │   │   └── FieldSetFiness.tsx
+│   │   │   │   │   ├── FieldSetFiness.tsx
+│   │   │   │   │   ├── TransformationCodeSection.tsx
+│   │   │   │   │   ├── TransformationDnaAndFiness.tsx
+│   │   │   │   │   ├── TransformationDnaSection.tsx
+│   │   │   │   │   └── TransformationFinessSection.tsx
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── Controle.tsx
 │   │   │   │   │   └── Controles.tsx
@@ -1108,6 +1131,7 @@
 │   │   │   ├── indicateurFinancier.schema.ts
 │   │   │   ├── operateur.schema.ts
 │   │   │   ├── region.schema.ts
+│   │   │   ├── statistiques.schema.ts
 │   │   │   ├── structure-millesime.schema.ts
 │   │   │   ├── structure-typologie.schema.ts
 │   │   │   ├── structure-version.schema.ts
@@ -1281,7 +1305,8 @@
 │   │   │   ├── FieldSetTypePlaces.test.tsx
 │   │   │   ├── InputWithValidation.test.tsx
 │   │   │   ├── TransformationAdresseAdministrative.test.tsx
-│   │   │   └── TransformationAntennesSection.test.tsx
+│   │   │   ├── TransformationAntennesSection.test.tsx
+│   │   │   └── TransformationDnaAndFiness.test.tsx
 │   │   └── transformations
 │   │       └── OngoingTransformationsBanner.test.tsx
 │   ├── config
@@ -1450,4 +1475,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-383 directories, 1069 files
+388 directories, 1089 files
