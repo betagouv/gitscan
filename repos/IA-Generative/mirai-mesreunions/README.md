@@ -77,17 +77,24 @@ Quelle que soit la source, la suite est identique : pipeline LLM commun (`puller
 flowchart LR
   subgraph EXT["ZONE EXTERNE (DMZ)"]
     direction TB
-    MW["mydevices-web<br/>(génération QR, OIDC)"]
-    PWA["mobile-upload-pwa<br/>(captation mobile)"]
+    MW["mydevices-web<br/>(QR)"]
+    PWA["mobile-upload (ex transcript dinum)"]
     CV["clamav-scanner"]
     AN["audio-normalizer<br/>(FFmpeg voix)"]
-    BR["dmz-to-internal-bridge<br/>(notif AMQP)"]
+    BR["dmz-to-internal-bridge"]
   end
 
-  subgraph INT["ZONE INTERNE"]
+  subgraph SHARED["INFRA PARTAGÉE (rendez-vous — sur les 2 réseaux)"]
+    direction TB
+    MQ{{"RabbitMQ<br/>queue internal_pull"}}
+    GUI[("S3 audio-processed<br/>guichet")]
+  end
+
+  subgraph INT["ZONE INTERNE (protégée)"]
     direction TB
     DTA["device-token-authority<br/>(autorité tokens)"]
     ING["internal-ingester<br/>(pull + dispatch)"]
+    S3I[("S3 audio-internal")]
     REL["transcription-relay"]
   end
 
@@ -98,19 +105,34 @@ flowchart LR
     MCR["Plateforme MCR"]
   end
 
-  MW -->|Bearer| DTA
-  PWA -->|upload| CV --> AN --> BR
-  BR -.->|AMQP internal_pull| ING
+  %% Données : déposées dans l'infra partagée, JAMAIS poussées dans l'interne
+  PWA -->|upload| CV --> AN
+  AN -->|dépose fichier| GUI
+  AN --> BR -->|publie notif| MQ
+
+  %% PULL : l'INTERNE tire depuis l'infra partagée (sockets sortantes)
+  ING -.->|① consomme la notif| MQ
+  ING ==>|② tire le fichier| GUI
+  ING --> S3I
   ING --> REL
+
+  %% Contrôle : l'externe demande à l'autorité INTERNE de frapper un token (RPC authentifié)
+  MW -.->|mint token<br/>Bearer / dmz-net| DTA
+
+  %% Traitements lourds : initiés depuis l'interne
   ING -->|Whisper + LLM| KEV
   ING -->|diarize| VM
-  ING -->|push| MCR
+  ING -->|push CR| MCR
+
+  linkStyle 5,6 stroke:#2e7d32,stroke-width:3px,color:#2e7d32
+  linkStyle 9 stroke:#e65100,stroke-width:2px,color:#e65100
 ```
 
-**Lecture rapide** :
-- L'externe accueille les uploads, scanne et normalise.
-- L'interne reçoit par PULL (queue AMQP + trigger HTTP optionnel) et orchestre transcription/diarisation/LLM.
-- Les appels lourds (Whisper, pyannote, LLM) sortent vers des services externes mais sont initiés *depuis l'interne*.
+**Lecture rapide** (le diagramme colle au `docker-compose.yml` : réseaux = zones) :
+- **Deux plans distincts.** Le *plan données* (vert) et le *plan contrôle* (orange) ne se croisent pas.
+- **Plan données — « rien ne rentre ».** L'externe **dépose** le fichier dans une **infra partagée** (le broker RabbitMQ et le bucket guichet `audio-processed` sont sur les deux réseaux). C'est l'**interne qui tire** : `internal-ingester` ouvre des **sockets sortantes** pour ① consommer la notif et ② télécharger le fichier (cf. `puller.py` : *« no inbound connection ever crosses the boundary »*). **Aucune donnée audio n'est poussée dans la zone interne.**
+- **Plan contrôle — le seul flux entrant.** `mydevices-web` (ext) demande à l'**autorité interne** `device-token-authority` de **frapper un token** (HTTP Bearer via le réseau-pont `dmz-net`, flèche orange). C'est *voulu* : l'autorité de confiance reste interne, l'externe ne fait que consommer le code. S'y ajoute un **trigger HTTP optionnel** (`bridge → ingester /api/v1/pull-trigger`, best-effort, bearer + ACL) qui ne transporte **aucune donnée** — juste un « draine maintenant ».
+- Les appels lourds (Whisper, pyannote, LLM, push MCR) sortent vers des services externes, *initiés depuis l'interne*.
 
 ### 3.3 Cycle complet d'un fichier
 
@@ -121,20 +143,28 @@ sequenceDiagram
   participant DTA as device-token-authority (int)
   participant PWA as mobile-upload-pwa (ext)
   participant PIPE as Pipeline ext (CV→AN→BR)
+  participant SH as Infra partagée (broker + S3 guichet)
   participant ING as internal-ingester (int)
-  participant KEV as Kevent (Whisper+LLM)
-  participant VM as VM diarisation
+  participant KEV as Kevent / VM (ext)
+
+  Note over MW,DTA: Plan contrôle — l'autorité reste interne (RPC entrant authentifié)
   U->>MW: Login OIDC, demande de code
-  MW->>DTA: POST /issue-token
+  MW->>DTA: POST /issue-token (Bearer, via dmz-net)
   DTA-->>MW: simple_code + qr_token
   MW-->>U: QR + code court
+
   U->>PWA: Ouvre QR depuis mobile
   PWA->>PIPE: Upload .m4a
-  PIPE-->>ING: notif internal_pull (AMQP)
-  ING->>KEV: Whisper (Bearer)
-  ING->>VM: pyannote (DIARIZATION_BACKEND=vm-direct)
-  ING->>KEV: glossary_correction + reformulation + meeting_cr
-  ING-->>MW: brief disponible (corbeille, corrector, glossaire)
+  PIPE->>SH: dépose fichier (S3) + publie notif (AMQP)
+
+  Note over SH,ING: Plan données — PULL strict, l'interne INITIE (rien ne rentre)
+  ING->>SH: drain internal_pull (socket sortante)
+  SH-->>ING: notif {file_id, simple_code}
+  ING->>SH: GET fichier depuis le guichet S3
+  SH-->>ING: bytes audio
+  ING->>KEV: Whisper + pyannote + glossary/reformulation/CR (Bearer)
+  KEV-->>ING: transcript + CR structuré
+  Note over ING,MW: CR stocké en zone interne, lu par mydevices-web (corbeille, corrector, glossaire)
 ```
 
 ### 3.4 Les neuf services applicatifs
