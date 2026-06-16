@@ -1,3 +1,11 @@
+2026-06-12T09:12:56+02:00 - 7cf6fc21e - Anaïs Payet : Fix blur screen by moving back element badge's to HStack
+2026-06-11T16:53:11+02:00 - 755fe0621 - Anaïs Payet : Tchap: Connect Tchap classic for auto authentification
+2026-06-11T16:45:02+02:00 - 452d78622 - Anaïs Payet : Merge remote-tracking branch 'origin/Rebase/ElementX-26.05.3' into develop
+2026-06-09T09:57:20+02:00 - 4b35051f1 - Anaïs Payet : Tchap: increment version
+2026-06-08T10:28:38+02:00 - 68b16c973 - Anaïs Payet : Fix unit tests build
+2026-06-05T15:08:10+02:00 - addb40028 - Anaïs Payet : Fix refacto from OIDC to OAuth
+2026-06-05T14:56:19+02:00 - 50121a2f5 - Anaïs Payet : Fix rebase conflicts on Rebase/ElementX-26.05.3 into Tchap
+2026-06-02T12:08:37+02:00 - 6af4a1071 - Anaïs Payet : Merge ElementX-ios v26.05.3 into Tchap-rebase
 2026-06-01T10:40:19+02:00 - 63a52eea4 - Anaïs Payet : Tchap: translate release notes titles into french
 2026-06-01T09:51:08+02:00 - 75edc0905 - Anaïs Payet : Tchap: increment version
 2026-05-29T22:47:37+02:00 - 78ab9befd - Anaïs P. : Merge pull request #341 from tchapgouv/340-activate-uncrypted-private-room
@@ -9,29 +17,244 @@
 2026-05-29T14:41:32+02:00 - a49a7b891 - Anaïs P. : Tchap: increase optimized image resolution (#350)
 2026-05-29T11:54:48+02:00 - ca3f53ca0 - Anaïs P. : Tchap: fix empty room for direct when userID is from an other instance (#349)
 2026-05-29T09:18:47+02:00 - 05874d7ac - Anaïs P. : Tchap: add clear cache option in advanced settings (#348)
+2026-05-18T17:40:17+02:00 - b3e637375 - Mauro Romito : update sdk to 26.05.18
+2026-05-18T16:23:09+03:00 - 96230fcc3 - Atridad Lahiji : Fixing Room List in Spaces View Not Rendering Some Rooms (#5595)
+2026-05-18T11:16:18Z - 087bf9a2c - ElementRobot : Translations update (#5604)
+2026-05-18T10:08:07+02:00 - 6c0aaa7a5 - Mauro : Invite the DM recipient to a new room (#5588)
+2026-05-17T14:40:47+03:00 - 9ed47c61b - Mauro Romito : possible fix for the top banner having it's pieces slide and appear independently
+2026-05-17T14:37:55+03:00 - 579b63d33 - Stefan Ceriu : Remove unused method
+2026-05-17T14:37:55+03:00 - 4ff58f875 - Stefan Ceriu : Hook up client pausing and resuming next to sync starting and stopping for nightly and debug builds.
+2026-05-16T16:54:32+03:00 - 16715ea1c - Stefan Ceriu : Remove the focused ComposerToolbar accessibility test and preview
+2026-05-16T16:54:22+03:00 - e8c7d0761 - Stefan Ceriu : Wait for the search field to be usable and remove unnecessary sleeps.
+2026-05-15T10:19:29+03:00 - 42b3507ea - Stefan Ceriu : Fix wrong keyboard type on some iPhone UI test snapshots.
+2026-05-14T13:47:44+02:00 - a4a857003 - Mauro Romito : use isDM from the SDK to determine if a spaceRoom, a joinedRoom or a notificationItem are from a dm room.
+2026-05-14T09:45:49+03:00 - ff5dcb040 - Michael : Replace the ServiceLocator with direct dependency injection (#5548)
+2026-05-13T19:46:52+03:00 - f70182d09 - Stefan Ceriu : Add a developer option button for marking every single room as read (#5582)
+2026-05-13T16:48:11+03:00 - 6aec4f210 - Stefan Ceriu : Bump the RustSDK to v26.05.13
+2026-05-13T12:40:01+02:00 - 690a177f6 - Mauro Romito : apply last character font size to the attachment
+2026-05-13T04:04:52-07:00 - c99d07927 - Element CI : Prepare next release
+2026-05-12T17:55:16+02:00 - 5763e152b - Mauro Romito : update SDK to 26.05.12 (v0.17 of the main repo)
+2026-05-12T17:26:02+02:00 - 07fc022a6 - Mauro Romito : prevent replies to LLS timeline items, and live location sharing in threads
+2026-05-12T17:04:08+03:00 - 212ac17d0 - Stefan Ceriu : Add media upload preview cropping capability for images (#5575)
+2026-05-12T14:46:18+02:00 - deac31e48 - Mauro Romito : remove code related to the previous bidi usage implementation of whitespaces for the timestamp label
+2026-05-12T14:46:18+02:00 - d60f5d6ef - Mauro Romito : UI tests updated
+2026-05-12T14:46:18+02:00 - 831819860 - Mauro Romito : update preview tests (also improved the strings for ltr and rtl testing)
+2026-05-12T14:46:18+02:00 - 686753721 - Mauro Romito : new implementation based on the usage of NSTextAttachment to allocate space for the timestamp
+2026-05-12T14:46:18+02:00 - 221780382 - Mauro Romito : update all the timeline item views to use the new implemementation with nstextattachment
+2026-05-12T10:39:05+03:00 - 2582293c0 - Valere : call: Only group voice/video call if threads developer option is on
+2026-05-12T09:16:06-07:00 - 25318175b - Element CI : Prepare next release
+2026-05-11T18:04:00+01:00 - 008975c7b - Doug : Let Element Call manage the safe areas within the web view. (#5573)
+2026-05-11T15:37:38+03:00 - ded86dd66 - Stefan Ceriu : Fix settings UI test by making sure the analytics button is visible before attempting to tap it.
+2026-05-11T15:37:38+03:00 - a5d07cf1f - Stefan Ceriu : Fix start chat UI flow after allowing avatars to be selected from files too
+2026-05-11T15:37:38+03:00 - 80385bbc1 - Stefan Ceriu : Fix start chat flow UI test snapshots after enabling the room directory by default
+2026-05-11T15:37:38+03:00 - 42d726cd5 - Stefan Ceriu : Fix room roles and permissions UI test snapshots after adding live location sharing
+2026-05-11T14:51:30+03:00 - ba23153ab - Valere Fedronic : feat: Render declined calls in DM timeline (#5512)
+2026-05-11T14:22:34+01:00 - e235e3ba8 - Doug : Link new device with QR code tweaks. (#5563)
+2026-05-11T11:43:18+01:00 - 2b3cd2712 - ElementRobot : Translations update (#5569)
+2026-05-11T11:28:37+01:00 - bd2c775ff - Doug : Fix an accessibility test failure. (#5571)
+2026-05-11T11:10:03+01:00 - 3b1f5cca9 - Michael : Add editorconfig to enforce style guides naturally in the editor (#5564)
+2026-05-11T09:59:07+03:00 - 70d47f116 - renovate[bot] : Update actions/add-to-project action to v2
+2026-05-07T13:33:32+03:00 - 367c7da7c - renovate[bot] : Update dependency MapLibre to v6.26.0 (#5549)
+2026-05-07T13:17:49+01:00 - 091ff8a35 - Doug : Use onScrollGeometryChange to hide the scrollable media caption fade. (#5559)
+2026-05-06T15:12:59+03:00 - d6a8bcf24 - Stefan Ceriu : Remove the `RoomDirectorySearch` feature flag and enable the feature by default.
+2026-05-06T14:12:42Z - 05e7ad52f - Doug : Update the Enterprise submodule. (#5554)
+2026-05-06T13:53:36+02:00 - 6d71a3efe - Mauro Romito : updated preview tests
+2026-05-06T13:53:36+02:00 - 53669a606 - Mauro Romito : Add the setting to change live location permissions to the change permissions screen.
+2026-05-06T13:04:11+02:00 - d5170ae4c - Mauro Romito : Revert "use `isDm` from the SDK to determine if a room is a direct one to one room."
+2026-05-06T13:04:11+02:00 - b5d9f03ad - Mauro Romito : use `isDm` from the SDK to determine if a room is a direct one to one room.
+2026-05-06T13:04:11+02:00 - 2ce32d00e - Mauro Romito : update SDK to 26.05.06
+2026-05-06T11:11:38+03:00 - 5e95bd653 - Stefan Ceriu : Move verification request acceptance confirmation to method call response instead of delegate callback
+2026-05-06T10:29:25+01:00 - 0355e9f70 - Doug : Add an OAuthPresenterHook. (#5545)
+2026-05-06T05:48:43-07:00 - 34e96aee2 - Element CI : Prepare next release
+2026-05-05T15:15:54+03:00 - e37190320 - Stefan Ceriu : Switch the xcodegen renovate schedule to fortnightly
+2026-05-05T15:10:38+02:00 - 680a9a587 - Mauro Romito : Show alert if user has not beacon and beaconInfo permissions in the room.
+2026-05-05T14:32:58+03:00 - aaf81e00f - renovate[bot] : Update dependency PostHog to v3.57.2 (#5540)
+2026-05-05T14:07:06+01:00 - 0acbc4143 - Doug : Rename OIDC to OAuth. (#5525)
+2026-05-05T12:47:07+01:00 - fef942f52 - Doug : Restore the .oidcCallback route for external authentication. (#5391)
+2026-05-05T12:08:30+02:00 - 4188a10ea - Daniel Anderson : Fix a crash on iOS 26 when the scene's keyWindow is nil at cold start.
+2026-05-05T08:44:45+03:00 - d3b24a63b - renovate[bot] : Update EmbeddedElementCall and PostHog
+2026-05-04T15:28:22+03:00 - f0aac9295 - Element CI : Translations update
+2026-05-04T14:12:31+03:00 - d02459d9b - Mauro Romito : limit knock FF only room creation and access type changes
+2026-05-04T14:10:32+03:00 - 272c8ca76 - renovate[bot] : Update dependency PostHog to v3.57.0 (#5532)
+2026-05-04T14:03:28+03:00 - af4483385 - Doug : Show which test suite failed in the UnitTest logs.
+2026-05-04T13:14:33+03:00 - 8a6bd920a - Doug : Re-enable the AppLock UI tests on iPhone only.
+2026-05-01T23:52:06+01:00 - 5f5fc15c1 - renovate[bot] : Update dependency element-hq/compound-design-tokens to v10.1.1 (#5526)
+2026-05-01T17:56:57+01:00 - d1ac160e7 - renovate[bot] : Update dependency PostHog to v3.56.0 (#5529)
+2026-05-01T14:44:04+01:00 - 9015c3e48 - Doug : Fixes for multi-window support. (#5528)
+2026-04-30T16:10:14+01:00 - c1184b748 - renovate[bot] : Update XcodeGen (#5520)
+2026-04-30T14:58:08+03:00 - 53a54c1b9 - Stefan Ceriu : Allow the mac app to chose room avatars directly from files instead of the photo library
 2026-04-30T14:25:54+02:00 - e56bfd918 - Anaïs P. : Merge pull request #338 from tchapgouv/sianay/280-offline-banner
+2026-04-30T13:18:36Z - 76f744b9c - Mauro : Live Location Sharing - handle server echoes (#5514)
+2026-04-30T13:00:35+03:00 - 0ec114d2f - Stefan Ceriu : #5504 - Add logs around route handling and the global search window presentation
 2026-04-30T09:43:19+02:00 - f9bff079e - Anaïs P. : Merge pull request #335 from tchapgouv/sianay/fix-staging-ca
 2026-04-30T09:43:03+02:00 - 9338371f9 - Anaïs P. : Merge pull request #336 from tchapgouv/sianay/desactivate-geodata-pinning-2
+2026-04-29T21:01:54+01:00 - 0502df0a8 - ElementRobot : Translations update (#5516)
+2026-04-29T19:34:22+01:00 - 8f815aafb - Doug : Update TimelineMediaPreviewDetailsView to match the latest design. (#5513)
+2026-04-29T19:32:38+01:00 - 63592e48c - Doug : Remove support for handling SPA calls within the app. (#5515)
+2026-04-29T10:28:21+02:00 - dc26e9eb5 - Mauro Romito : update sdk to 26.04.28
+2026-04-29T08:01:03+01:00 - 434cc2d9d - ElementRobot : Bump the calendar version ready for the next release (#5505)
 2026-04-28T21:58:41+02:00 - 6ee6e673b - Anaïs Payet : Display banner when homeserver is unreachable
+2026-04-28T18:02:22+02:00 - 8a5e364c7 - Mauro Romito : only stop the session when receiving a not live error
+2026-04-28T18:02:22+02:00 - 2cee29082 - Doug : Replace ​Combine throttle with backpressure​-aware location send loop.
+2026-04-28T17:37:50+03:00 - 0bdde3927 - Stefan Ceriu : Move integration test flows that don't require a backend to the UI tests
+2026-04-28T13:16:07+03:00 - 3a8e6ea0f - Stefan Ceriu : Avoid logouts when resetting the caches
 2026-04-28T12:35:29+02:00 - 75211ee59 - Anaïs Payet : Disable geodata pinning from target.yml
 2026-04-28T11:52:17+02:00 - 3f46eeb12 - Anaïs Payet : Fix CA staging
+2026-04-28T10:05:43+02:00 - f7cb0d2ff - Mauro Romito : updated tests snapshots
+2026-04-28T10:05:43+02:00 - c46a0d22c - Stefan Ceriu : Revert "Re-enable the disabled UI tests but delete the snapshotting steps that are conflicting with the secure pin keyboard"
+2026-04-28T10:05:43+02:00 - 893b8f56a - Stefan Ceriu : Re-enable the disabled UI tests but delete the snapshotting steps that are conflicting with the secure pin keyboard
+2026-04-28T10:05:43+02:00 - 3efca2366 - Mauro Romito : fix for the flaky start chat test flow
+2026-04-28T10:05:43+02:00 - 3a70f2097 - Mauro Romito : disable tests that do not work for now
 2026-04-28T09:03:25+02:00 - 0384bac7d - Anaïs P. : Merge pull request #333 from tchapgouv/Rebase/ElementX-26.03.3
+2026-04-27T15:13:07+02:00 - 876109ef7 - Mauro Romito : removed LLS feature flag
+2026-04-27T14:46:53+01:00 - 7bce116d9 - Doug : Update the SDK, handling OIDC/OAuth API breaks. (#5497)
+2026-04-27T14:43:18+03:00 - 9a2a852af - Richard van der Hoff : Promote "history sharing on invite" out of developer options (#5480)
+2026-04-27T14:33:09+01:00 - 0087b5a4e - Doug : Fix a bug where the onboarding flow was dismissed by logging out. (#5481)
 2026-04-27T14:29:19+02:00 - 13e2c22ce - Anaïs Payet : Fix gradient for timeline
+2026-04-27T14:13:13+02:00 - fa801b579 - Mauro Romito : splitting runtime sim version from the os version
+2026-04-27T14:13:13+02:00 - c33cb5671 - Mauro Romito : disabled the flaky test `callIsTimingOut`
+2026-04-27T14:13:13+02:00 - 078c24926 - Mauro Romito : use 26.4 os version on SE 3rd gen for preview tests
+2026-04-27T14:13:13+02:00 - 04202676a - Mauro Romito : use the default preview tests configuration
+2026-04-25T11:26:43+03:00 - eb72815e7 - Doug : Fix a bug where calls don't ring when quiet notifications are hidden.
+2026-04-24T18:57:44+03:00 - ecc2f80f0 - Element CI : Run XcodeGen, update Package.resolved and Settings.bundle
+2026-04-24T18:57:44+03:00 - e96467409 - renovate[bot] : Update dependency PostHog to v3.54.0
+2026-04-24T18:57:44+03:00 - c6ea99239 - Element CI : Run XcodeGen, update Package.resolved and Settings.bundle
 2026-04-24T18:00:08+02:00 - 4eac3a73a - Anaïs Payet : Update compound-design-token 6.10-angelo 65b1517530e9772bc656ac20b09b7ad733455008
 2026-04-24T17:43:31+02:00 - 09afa20b9 - Anaïs Payet : Up matrix-rust-components-swift v26.03.10
+2026-04-24T16:44:00+03:00 - 69822c851 - amshak : Combine DM call actions into one menu item
+2026-04-24T16:44:00+03:00 - 31dbc6bd6 - Stefan Ceriu : Fix orphaned doc comment warning
+2026-04-24T16:44:00+03:00 - 0c91ae786 - Stefan Ceriu : Tweak some things, fix some things, delete some things
+2026-04-24T15:19:37+03:00 - fa2c3169b - Stefan Ceriu : Fix the `Update Acknowledgements` renovate dependencies update workflow step by building the project instead of just resolving the dependencies
 2026-04-24T14:24:32+02:00 - c40ae68a6 - Anaïs Payet : Fix rebase conflicts on Rebase/ElementX-26.03.3 into Tchap
+2026-04-24T13:19:07+02:00 - ef26796d9 - Mauro : Open Live Locations map on tapping on the banner (#5477)
+2026-04-24T13:07:16+02:00 - 5d1132c75 - Mauro : Update SDK to 26.04.23 (#5478)
 2026-04-24T12:06:12+02:00 - d38268ffd - Anaïs Payet : Merge ElementX-ios v26.03.3 into Tchap-rebase
+2026-04-24T11:59:15+02:00 - a9fae7b4e - Mauro : update sim version to 26.4.1 (#5479)
 2026-04-24T09:31:36+02:00 - 6113451cf - Anaïs P. : Merge pull request #331 from tchapgouv/327-desactivate-pinning-geodata
+2026-04-23T17:53:17+02:00 - b0fa1afe5 - Mauro Romito : Force a stop before starting a new session and resend last location on new starts
 2026-04-23T16:41:53+02:00 - 0ff2abd8f - Anaïs P. : Merge pull request #323 from tchapgouv/sianay/312-taxonomie
 2026-04-23T16:08:13+02:00 - 3b59175ca - Anaïs Payet : Tchap: use specific tchap wording
+2026-04-23T15:52:47+01:00 - 95c32225a - Doug : Add a Developer Options button to the AuthenticationStartScreen on Nightly builds. (#5472)
 2026-04-23T13:25:32+02:00 - 7d9f9d316 - Anaïs P. : Merge pull request #329 from tchapgouv/144-espaces-modifications-d-affichage
 2026-04-23T11:50:56+02:00 - 6b12e6aec - Anaïs Payet : Tchap: Space default action is now conversation filtering
 2026-04-23T11:00:11+02:00 - f7ec2f456 - Anaïs Payet : Tchap: temporary disable pinning for geo data
+2026-04-22T18:17:17+02:00 - 6dc6eed9e - Mauro Romito : stop showing live location disclaimer when accepted.
+2026-04-22T16:43:18+02:00 - ad2143f33 - Mauro Romito : use current value subject and current value publisher for `LiveLocationShare` updates
+2026-04-22T16:36:15Z - 5e2210f1e - Mauro : LocationSharingScreen: fix indefinite loading on the center to location button in non picker mode (#5469)
+2026-04-22T16:04:33+01:00 - f23b77a48 - Doug : Bold the room cell when highlighted if not showing all activity. (#5468)
+2026-04-22T13:21:09+01:00 - 77b8243de - manuroe : Fix testUserFlow integration tests, at least locally (#5352)
+2026-04-22T13:12:03+02:00 - 55f82e69b - Mauro : Improve Live Location Sharing with reduced accuracy mode (#5461)
+2026-04-21T20:10:51+03:00 - a17b09702 - Stefan Ceriu : Update all UI test snapshots following 26.4 migration
+2026-04-21T17:20:12+03:00 - 4e1c85546 - Doug : Update the SDK. (#5456)
+2026-04-21T17:19:50+03:00 - ec054dde0 - Stefan Ceriu : Rename github workflows so they all use hyphens, instead of a mix of underscores and hyphens
+2026-04-21T17:19:50+03:00 - bb311d19d - Stefan Ceriu : Converge on the same CI bot name and email as the Swift CI scripts (Tools)
+2026-04-21T17:19:50+03:00 - 47de08125 - Stefan Ceriu : Fix formatting .. according to Zed rules anyway
+2026-04-21T17:14:17+01:00 - 3c2702452 - Doug : Fix a potential crash caused by using old Sentry transactions. (#5459)
 2026-04-21T16:53:10+02:00 - c54c2400d - Anaïs Payet : Tchap: Changes in CreateRoomScreen for space
 2026-04-21T16:39:10+02:00 - 81c2b3bf1 - Anaïs Payet : Tchap: Hide space selection in create room
+2026-04-21T15:50:27+01:00 - e37396935 - Doug : Update the Deactivate Account strings (and icon) to call it Delete Account. (#5458)
 2026-04-21T15:33:44+02:00 - 8e3caa9c1 - Anaïs P. : Merge pull request #309 from tchapgouv/139-acces-par-lien-a-un-salon
 2026-04-21T15:31:41+02:00 - 1d6eb2f5d - Anaïs P. : Merge pull request #325 from tchapgouv/sianay/try-fix-ci
+2026-04-21T14:12:07+03:00 - 2a6f94ff4 - amshak : Notification Decoration Revised (#5312)
+2026-04-21T13:51:40+02:00 - 2250087cf - Mauro Romito : handle reduced accuracy authorization case
+2026-04-21T13:24:41+01:00 - fb94b3fc6 - ElementRobot : Translations update (#5452)
+2026-04-21T12:43:40+01:00 - 1ac9c9617 - Doug : Throttle capabilities updates to once per day (or when the app is next launched). (#5454)
+2026-04-21T12:32:50+02:00 - 676c90c48 - Mauro Romito : allow users to set live location minimum distance update
+2026-04-21T12:32:50+02:00 - 53f6c66a8 - Mauro Romito : use CLLocationManager directly to handle location updates since is more reliable in bg and more configurable
+2026-04-21T12:32:50+02:00 - 30ee9c943 - Mauro Romito : updated the UI for the live locations distance to match designs.
+2026-04-21T12:32:50+02:00 - 22e3c81da - Mauro Romito : implemented a 3 seconds throttling of LLS updates.
+2026-04-21T11:43:51+01:00 - 5b7ee5c45 - Doug : Enable automatic Verification when already signed in with Element Classic. (#5453)
+2026-04-21T09:43:26-07:00 - dc1670015 - Element CI : Prepare next release
+2026-04-21T09:11:52Z - d49a6e5a5 - Valere Fedronic : Support for ongoing voice vs video call + joining (#5399)
+2026-04-20T18:33:44+02:00 - 915007850 - Mauro Romito : fix invite users confirmation sheet strings
+2026-04-20T18:19:27+03:00 - 354cd0f89 - Stefan Ceriu : Fix session verification SAS flow not automatically starting
+2026-04-20T17:47:26+01:00 - d9013208d - Doug : Add a feature flag for automatic back pagination. (#5445)
+2026-04-20T14:59:38+03:00 - 97bc5690d - Stefan Ceriu : Fix removing the label in the record snapshots workflow.
+2026-04-20T14:36:46Z - ff88854b2 - Doug : Make the well-known version optional. (#5447)
+2026-04-20T13:51:41+01:00 - 1406e43a3 - mxandreas : Add guidelines for new features and a bit refactoring. (#5436)
+2026-04-20T12:53:25+03:00 - fac893040 - Stefan Ceriu : Try to fix the record_snapshots workflow trigger.. again
+2026-04-20T12:52:04+03:00 - 1fea0e6d5 - Stefan Ceriu : Try to fix the record_snapshots workflow trigger
+2026-04-20T12:47:57+03:00 - 135390a96 - Stefan Ceriu : Fix record_snapshots workflow trigger
+2026-04-20T11:54:44+03:00 - f6fe11278 - Stefan Ceriu : Split out the preview tests from the unit tests and move them to their own CI tool.
+2026-04-20T11:54:44+03:00 - eb0758c04 - Stefan Ceriu : Add a new workflow that runs the preview tests and re-records the snapshots for PRs that are labeled with `record-snapshots`
+2026-04-20T11:54:44+03:00 - 751ea16b0 - Stefan Ceriu : Add a snapshot re-recording option to the snapshot tests CI command.
+2026-04-20T10:17:27+02:00 - b0d7da383 - Mauro Romito : implement annotation animations in MapLibreMapView
+2026-04-20T10:17:27+02:00 - 95b6e3244 - Mauro Romito : fixed a bug that made the map still follow your location, even whan trying to center the map on an annotation.
+2026-04-20T10:15:34+01:00 - 117a96609 - Doug : Use macOS 26 for all workflows. (#5442)
+2026-04-17T17:17:55+03:00 - f378e6e92 - bxdxnn : Make media captions scrollable
+2026-04-17T17:17:55+03:00 - 30593909d - Stefan Ceriu : Simplify and fix implementation
+2026-04-17T16:14:17+01:00 - 826946e31 - Aaron Thornburgh : Replace the Cancel button with a Close button on the Space Filters screen. (#5408)
+2026-04-17T15:22:56+01:00 - ab61e8ab3 - Doug : Fix the space filters button on iPad using a Toggle for default styling.
+2026-04-17T15:22:56+01:00 - 16fce556b - Doug : Revert the space filters Toggle and instead don't try to use glass when in the sidebar.
+2026-04-17T15:22:15+02:00 - e1a390e52 - Mauro Romito : update compound-ios snapshotting package
+2026-04-17T15:22:15+02:00 - acb9bcb29 - Mauro Romito : update project
+2026-04-17T15:22:15+02:00 - 727613b8a - renovate[bot] : Update dependency SnapshotTesting to v1.19.2
+2026-04-17T15:22:15+02:00 - 4f73ffcbd - Mauro Romito : update compound-ios sim creation in the runner
+2026-04-17T15:22:15+02:00 - 22545d146 - Mauro Romito : package resolved
+2026-04-17T15:11:48+03:00 - bec882a3d - Stefan Ceriu : Add a workflow that runs on top of Renovate XcodeGen PRs to update the project and resolved packages.
+2026-04-17T15:11:48+03:00 - 95a6ae5ec - Stefan Ceriu : Limit `sentry-ios` Renovate upgrades to one PR per month
+2026-04-17T15:11:48+03:00 - 5b7a3bdc8 - Stefan Ceriu : Set a Renovate `minimumReleaseAge` of 7 days.
+2026-04-17T15:11:48+03:00 - 14875447a - Stefan Ceriu : Group Renovate XcodeGen PRs, remove bundler.
+2026-04-17T14:26:08+01:00 - 683c05019 - Doug : Move the Acknowledgements generation to the post-renovate workflow. (#5438)
+2026-04-17T12:16:20+03:00 - 760ea35c5 - Stefan Ceriu : Switch to fatalErroring on SDK background task panics in release builds too
+2026-04-17T12:01:06+03:00 - 0a0403760 - Stefan Ceriu : Update preview snapshots following iOS 26.4 workflow migration.
+2026-04-17T11:52:46+01:00 - eef4a2497 - Doug : Add support for homeserver capabilities to disable the `UserDetailsEditScreen` UI. (#5421)
+2026-04-17T11:13:16Z - bfb1036aa - Mauro : LLS Sheet implementation (#5420)
+2026-04-17T10:55:48+03:00 - a89b33ee4 - Stefan Ceriu : Remove more DTCoreText/Foundation references as they are no longer directly imported or used
+2026-04-17T10:55:48+03:00 - 8f0f65242 - Stefan Ceriu : Fix various warnings
+2026-04-17T10:47:33+03:00 - d43089ee5 - Stefan Ceriu : Manually update project and resolved packages following Renovate XcodeGen update
+2026-04-17T10:47:08+03:00 - e2282aa9f - renovate[bot] : Update dependency SwiftSoup to v2.13.4
+2026-04-17T10:46:12+03:00 - 6c3b5689f - renovate[bot] : Update dependency Sentry to v9.10.0
+2026-04-17T10:46:01+03:00 - d77cb39f8 - renovate[bot] : Update dependency PostHog to v3.53.1
+2026-04-17T10:45:35+03:00 - faadcaee7 - renovate[bot] : Update dependency MapLibre to v6.25.0
+2026-04-17T10:44:45+03:00 - c6a8b19af - renovate[bot] : Update dependency Kingfisher to v8.8.1
+2026-04-17T10:44:18+03:00 - 847ee108d - renovate[bot] : Update dependency EmbeddedElementCall to v0.19.1
+2026-04-17T10:34:02Z - c40454bbd - Aaron Thornburgh : Update the icon for "Remove this device" on the Settings screen. (#5415)
+2026-04-17T09:57:18Z - 09438cba7 - Doug : Tweak the font/icon sizes on the Space visibility label. (#5396)
+2026-04-16T18:14:26+03:00 - aa5e48859 - renovate[bot] : Update dependency DSWaveformImage to v14.3.0
+2026-04-16T18:14:13+03:00 - 6a8f46d55 - renovate[bot] : Update dependency DeviceKit to v5.8.0
+2026-04-16T18:13:56+03:00 - 0503e552f - renovate[bot] : Update dependency Collections to v1.4.1
+2026-04-16T18:13:39+03:00 - aacc5930f - renovate[bot] : Update dependency AnalyticsEvents to v0.33.2
+2026-04-16T18:13:19+03:00 - bc0fd7e0f - renovate[bot] : Update dependency SwiftState to v6.0.1
+2026-04-16T18:13:02+03:00 - c36565775 - renovate[bot] : Update dependency LRUCache to v1.2.1
+2026-04-16T18:12:48+03:00 - 2dffb4027 - renovate[bot] : Update dependency AsyncAlgorithms to v1.1.3
+2026-04-16T15:37:59+02:00 - 7d43b5f12 - renovate[bot] : Update dependency WysiwygComposer to v2.41.3
+2026-04-16T14:33:20+02:00 - 63422f8f6 - Doug : Upgrade the project to use Xcode 26.4 (and the 26.4 simulator for tests). (#5375)
+2026-04-16T13:01:53+01:00 - efbf47441 - Doug : Use a VStack for invite buttons when the HStack doesn't fit. (#5403)
+2026-04-16T12:19:09+01:00 - 1d0b73fe4 - Doug : Add a build flag for Verify with Classic to disable it for the next RC. (#5406)
+2026-04-16T12:01:42+02:00 - 9121ce6f4 - Mauro Romito : update sdk to 26.04.16
+2026-04-16T06:30:26-07:00 - 984d213b2 - Element CI : Prepare next release
+2026-04-14T18:27:34+02:00 - 602d779e3 - Mauro : Render LiveLocations in the map (#5394)
+2026-04-14T14:51:58+03:00 - 78240ebde - Skye Elliot : Prompt user when inviting users with uncached identities (#5331)
+2026-04-14T14:17:27+02:00 - facba008e - Mauro Romito : implement APIs for LLS observation
+2026-04-14T14:17:27+02:00 - a40fab5f5 - Mauro Romito : pr suggestions
+2026-04-14T11:29:08+03:00 - fe2319cad - renovate[bot] : Update zizmorcore/zizmor-action action to v0.5.3
+2026-04-14T11:27:27+03:00 - 7ff2cf618 - Stefan Ceriu : Add an action to the newly introduced FloatingDateBadge that scrolls the timeline to that day. (#5350)
+2026-04-13T18:38:26+02:00 - 15340f99c - Mauro Romito : update sdk to 26.04.13
+2026-04-13T18:36:40+01:00 - 07b139b30 - renovate[bot] : Update actions/upload-artifact action to v7.0.1 (#5381)
+2026-04-13T18:05:47+02:00 - 8bfdc70b9 - Mauro : Fix LiveLocationManager flaky tests (#5389)
+2026-04-13T15:30:09+01:00 - 7c812201c - Doug : Verify Element X with an existing Element Classic account. (#5374)
+2026-04-13T13:16:58+01:00 - 001a389f5 - Doug : Update CONTRIBUTING.md with Localazy download instructions
+2026-04-13T11:40:22+02:00 - d4abb2487 - Mauro Romito : swiftformat
+2026-04-13T11:40:22+02:00 - 122f0371d - Mauro Romito : translation update
+2026-04-10T18:44:10+01:00 - ea6a6dd79 - renovate[bot] : Update peter-evans/create-pull-request action to v8.1.1 (#5380)
+2026-04-10T17:49:28+01:00 - 9590443aa - Doug : Remove the Spaces Announcement sheet. (#5376)
+2026-04-10T16:21:57+02:00 - 8b2d83f06 - Mauro Romito : use swift regex and also apply the same logic to stringsdict
+2026-04-10T16:21:57+02:00 - 11dd6f032 - Mauro Romito : order strings alphabetically by key after downloading them
+2026-04-10T14:50:42+02:00 - 922fcafcd - Mauro : Live Location Sharing Banner (#5370)
+2026-04-10T13:04:55+01:00 - 148b292ca - renovate[bot] : Update actions/github-script action to v9 (#5372)
+2026-04-10T13:04:44+01:00 - dd7e25552 - renovate[bot] : Update nschloe/action-cached-lfs-checkout action to v1.2.5 (#5368)
+2026-04-10T10:55:52+02:00 - a7bfef0ef - ElementRobot : Translations update
+2026-04-09T17:26:12+01:00 - 9aa58aaf1 - Doug : Update the SDK. (#5369)
+2026-04-09T16:22:31+01:00 - b05ab3ac0 - Valere Fedronic : Add support for starting voice calls from a DM (#5305)
+2026-04-09T14:18:06Z - 7434d531b - Valere Fedronic : Require video for callkit even if voice call only to workaround a bug answering calls on the lock screen (#5366)
+2026-04-08T21:18:03+01:00 - 1a5a709e2 - Doug : Add a view to show the user's account from Element Classic. (#5361)
+2026-04-08T21:13:03+01:00 - f21e8cb89 - Doug : Add missing SDK mocks.
+2026-04-08T21:11:57+01:00 - f26b4a1cd - Doug : Update the SDK handling breaking changes. (#5364)
+2026-04-08T17:48:35+02:00 - 9b05df399 - Mauro Romito : fixes an issue where the playback speed was preventing the a11y label to be read
+2026-04-08T14:55:07+02:00 - 95f3edac7 - Mauro Romito : floating date feature is now out of the feature flag
 2026-04-08T11:43:51+02:00 - 9f982bc8d - Anaïs Payet : Add generated strings
+2026-04-08T11:03:30+01:00 - 6978f96f9 - Doug : Add a view with instructions for enabling backups in Element Classic. (#5359)
 2026-04-08T10:54:22+02:00 - cb3581acf - Nicolas Buquet : Only disable toggle button if toggling link access is not allowed.
 2026-04-08T10:54:06+02:00 - 6fb378a28 - Nicolas Buquet : Implement Room Access Via Link in Room Details View
 2026-04-08T10:52:20+02:00 - 2cfbe947e - Nicolas Buquet : Mask Access via Link in Room Creation view
@@ -39,21 +262,99 @@
 2026-04-08T10:52:03+02:00 - 282e06ee0 - Nicolas Buquet : Introduce Access by Link in Room Detail
 2026-04-08T10:52:01+02:00 - a278eff34 - Nicolas Buquet : Remove useless file removed from ElementX
 2026-04-08T10:51:59+02:00 - 4eb28e5ad - Nicolas Buquet : Implement access by link UI on create Room view
+2026-04-08T09:48:00+01:00 - ac1426586 - Hugh Nimmo-Smith : Improve detection of link device completion when linking a new device via QR (#5323)
 2026-04-07T16:24:31+02:00 - 8959144c7 - Anaïs P. : Tchap: open RecoveryScreen first before IdentityConfirmation
+2026-04-07T11:32:54+01:00 - 70fdfed63 - ElementRobot : Translations update (#5357)
 2026-04-03T19:59:55+02:00 - b33d332f0 - Anaïs Payet : Fix UnitTests compilation
 2026-04-03T19:59:02+02:00 - 0e6895d01 - Anaïs Payet : Fix target and import for unit tests
+2026-04-03T16:46:20+02:00 - dfaeea0ff - Mauro Romito : add a spinner when starting LLS
+2026-04-03T16:46:20+02:00 - ac7f259b9 - Mauro Romito : force the timeline to render as expired as soon as the stop button is pressed
 2026-04-03T15:16:35+02:00 - fa4d2bbda - Anaïs Payet : Fix typo in test
+2026-04-03T14:19:42+02:00 - 960183d51 - Mauro Romito : implement the start live location handling in the `LocationSharingScreenViewModel`
+2026-04-03T14:19:42+02:00 - 93a6917d8 - Mauro Romito : add new tests to LocationSharingViewModel
+2026-04-03T14:19:42+02:00 - 208c21c2a - Mauro Romito : implement the stop action in the `LiveLocationRoomTimelineView`
+2026-04-03T12:36:45+02:00 - f3b523011 - Mauro Romito : update plist to include background location updates
+2026-04-03T12:36:45+02:00 - df5570281 - Mauro Romito : implement the start, send and stop functions
+2026-04-03T12:36:45+02:00 - dc67d49d4 - Mauro Romito : add .vscode stuff to gitignore (because Copilot is just way better with VSCode)
+2026-04-03T12:36:45+02:00 - d9a480b1c - Mauro Romito : pr suggestions
+2026-04-03T09:11:54+03:00 - e3d9ab1c1 - Stefan Ceriu : Add PRs to the list of stale checks.
+2026-04-03T09:11:54+03:00 - 5dde7174b - Stefan Ceriu : Rename the `stale-issues` workflow to just `stale` as it handles PRs as well now
 2026-04-02T17:20:51+02:00 - ffddb50fc - Anaïs Payet : Format TchapX code using swiftformat v0.59.1
 2026-04-02T17:20:41+02:00 - ce4b86d6d - Anaïs Payet : overwrite swiftformat version for CI
+2026-04-02T16:42:50+03:00 - e66bbab63 - Stefan Ceriu : Remove now unneeded `waitForInitialItems` TimelineProvider method.
 2026-04-02T15:49:58+02:00 - 187c7b7b9 - Anaïs P. : Merge pull request #324 from tchapgouv/sianay/v0.9.10
 2026-04-02T14:56:04+02:00 - 637c99daf - Anaïs Payet : tchap: increment version
+2026-04-02T12:30:43+03:00 - 598400172 - Stefan Ceriu : Remove the `shouldDisambiguateDisplayNames` parameter from the `RoomEvent` and `RoomStateEvent` string builders.
+2026-04-01T18:42:45+03:00 - 2b8c21afd - Stefan Ceriu : Update reply view border corner radii and color
+2026-04-01T14:09:23+03:00 - a358cacf3 - Stefan Ceriu : Hook up the RoomThreadList to the RoomFlowCoordinator state machine and presenting threads.
+2026-04-01T14:09:23+03:00 - 212cd4216 - Stefan Ceriu : Fix a couple of warnings
+2026-04-01T13:33:21+01:00 - 48794a2c4 - renovate[bot] : Update dependency element-hq/compound-design-tokens to v10 (#5340)
+2026-04-01T13:03:58+03:00 - afd6b8cf5 - Stefan Ceriu : Fix UI test snapshots after attachment menu and reply bubble UI changes
+2026-04-01T12:50:16+03:00 - 83704beb8 - Stefan Ceriu : chore(integration_tests): increase the wait time for sliding sync to retrieve the integration tests room
+2026-04-01T11:09:28+01:00 - 09970fdba - renovate[bot] : Update codecov/codecov-action action to v6 (#5309)
+2026-04-01T10:47:02+01:00 - 893617688 - Doug : Update the SDK to fix support for Xcode 26.4. (#5338)
+2026-04-01T08:33:07+03:00 - 7eb6d09dc - Doug : Update README.md
+2026-03-31T20:33:33+03:00 - f1ef96897 - Stefan Ceriu : Introduce support for multiple windows on mac and iPad OS
+2026-03-31T20:33:33+03:00 - ec9cf76f2 - Stefan Ceriu : Fix which roomID is used when dismissing windows and unit test mocks.
+2026-03-31T20:33:33+03:00 - e6f269b9f - Stefan Ceriu : Hook up the settings screen
+2026-03-31T20:33:33+03:00 - e080c7d35 - Stefan Ceriu : Prevent the window manager from being setup more than once.
+2026-03-31T20:33:33+03:00 - deaa2727d - Stefan Ceriu : Set a default size for all the detached windows
+2026-03-31T20:33:33+03:00 - d4e3b1148 - Stefan Ceriu : Best effort attempt at cleaning up the WindowManger registered coordinators.
+2026-03-31T20:33:33+03:00 - c3a79cd9f - Stefan Ceriu : Use different auxiliary window sizes on mac vs iPad
+2026-03-31T20:33:33+03:00 - bb61db285 - Stefan Ceriu : Dismiss a room's window when its flow finishes as there's no longer a reason for it to be alive.
+2026-03-31T20:33:33+03:00 - b7333b9b5 - Stefan Ceriu : Clean up the window manager and its protocols
+2026-03-31T20:33:33+03:00 - ac5b61c97 - Stefan Ceriu : Programatically focus the main window when invoking the global search
+2026-03-31T20:33:33+03:00 - a39c150ec - Stefan Ceriu : Use the environment's `supportsMultipleWindows` instead of `UIDevice.current.isPhone`
+2026-03-31T20:33:33+03:00 - a010306b4 - Stefan Ceriu : Move the global search shortcut to application commands so it's more reliable with multiple windows
+2026-03-31T20:33:33+03:00 - 891c3fffd - Stefan Ceriu : Close all secondary windows on logout
+2026-03-31T20:33:33+03:00 - 4abf9112f - Stefan Ceriu : Rename "Auxiliary" windows to "Secondary" windows
+2026-03-31T20:33:33+03:00 - 4a4cdce09 - Stefan Ceriu : Change the "open in new window" room list cell action underneath mark as read/unread and change its icon
+2026-03-31T20:33:33+03:00 - 3b858a407 - Stefan Ceriu : Disable multiple windows when screen lock is enabled.
+2026-03-31T20:33:33+03:00 - 35198460c - Stefan Ceriu : Automatically dismiss (now) empty windows
+2026-03-31T20:33:33+03:00 - 2277d0dea - Stefan Ceriu : Disable creating new windows (duplicates)
+2026-03-31T18:21:14+03:00 - e97ed6ec5 - Stefan Ceriu : Introduce the `RoomThreadListServiceProxy` and expose it from the `RoomProxy`
+2026-03-31T18:21:14+03:00 - e7e1e990d - Stefan Ceriu : Add a new `RoomThreadListScreen` and hook it up to the RoomThreadListService
+2026-03-31T18:21:14+03:00 - df7914d05 - Stefan Ceriu : Fix template screen ElementNavigationStack errors
+2026-03-31T18:21:14+03:00 - 940614868 - Stefan Ceriu : Add a feature flag for the new RoomThreadList screen.
+2026-03-31T18:21:14+03:00 - 91a10f4d5 - Stefan Ceriu : Add RoomThreadListScreen preview snapshots.
+2026-03-31T18:21:14+03:00 - 823e2afa9 - Stefan Ceriu : Refactor the RoomMessageEventStringBuilder to take a Style instead of a Destination
+2026-03-31T17:09:42+02:00 - 87aaf1065 - Mauro Romito : include the always usage location description in the info.plist
+2026-03-31T14:29:04+02:00 - d7f8d6d89 - Mauro Romito : reactively determine with a timer if the lls timeline item has expired or not.
+2026-03-31T13:26:51+01:00 - 07490dd4a - Doug : Add support for iOS 26.4 emoji reactions and ensure older ESS versions still work. (#5329)
+2026-03-31T12:58:27+02:00 - f31c25603 - Mauro Romito : added tests
+2026-03-31T12:58:27+02:00 - d67c1a93d - Mauro Romito : implemented the usage of the live location manager permission handling in the location sharing screen.
+2026-03-31T12:58:27+02:00 - b31d0cad7 - Mauro Romito : implemented the LiveLocationManager as part of the user session and setup of permissions in the plist.
+2026-03-31T12:58:27+02:00 - a1029132c - Mauro Romito : PR Suggestions
+2026-03-31T12:50:43+01:00 - 08a92c0dd - renovate[bot] : Update codecov/codecov-action action to v5.5.4 (#5308)
+2026-03-31T10:58:03+02:00 - 3ba636aa3 - ElementRobot : Bump the calendar version ready for the next release
+2026-03-31T10:38:07+03:00 - ada2c73c1 - renovate[bot] : Update dependency element-hq/compound-design-tokens to v9
 2026-03-31T10:32:38+02:00 - 812e42843 - Anaïs P. : Merge pull request #322 from tchapgouv/sianay/rebase-sdk-temp-fix-visibility
+2026-03-31T06:00:56-07:00 - 0fc0e6834 - Element CI : Prepare next release
+2026-03-30T19:41:33+02:00 - 220ccfe61 - Hugh Nimmo-Smith : Don't check scanned server against app config and use baseUrl from QR if available
 2026-03-30T19:30:09+02:00 - 4d3d9b903 - Anaïs Payet : update matrix-rust-components-swift sdk
+2026-03-30T17:49:46+02:00 - fec4f7d9e - Valere : call: Support voice only incoming call
+2026-03-30T17:49:46+02:00 - a17001894 - Valere : fixup swiftformat
+2026-03-30T17:49:46+02:00 - 83adb46b3 - Valere : add test for voice call
+2026-03-30T17:49:46+02:00 - 558ec76f7 - Valere : fix tests
+2026-03-30T16:57:16+03:00 - bec8f55f2 - Valere : feat: Forward ElementCall logs to the native logs
+2026-03-30T16:57:16+03:00 - 867d3476c - Valere : fixup: Missing "log" handling
+2026-03-30T14:05:31+02:00 - eafe1f25e - Mauro Romito : added an FF for the floating date
+2026-03-30T14:05:31+02:00 - e3a8c7f42 - Mauro Romito : implemented the display logic for the formatted date
+2026-03-30T14:05:31+02:00 - 96a13f718 - Mauro Romito : implemented the UI to render the formatted floating date
+2026-03-30T14:05:31+02:00 - 42ac71cbc - Mauro Romito : pr suggestions
+2026-03-30T13:54:04+02:00 - 9b4fc23c2 - ElementRobot : Translations update
+2026-03-30T10:11:49+02:00 - 3d58aa0af - manuroe : Use single typeText call to speed up tests execution
 2026-03-26T16:50:56+01:00 - 2923e4425 - Anaïs P. : Merge pull request #319 from tchapgouv/318-desactiver-les-salons-prives-non-chiffres
 2026-03-26T16:06:37+01:00 - dd06193c6 - Anaïs Payet : Allow unencryptedPrivateRoom in dev
 2026-03-26T16:06:37+01:00 - 12fb62edb - Nicolas Buquet : Désactiver les salons privés non chiffrés
+2026-03-25T17:42:10Z - 96b6d69d5 - Aaron Thornburgh : Update Send button bg color (#5170)
 2026-03-25T14:58:53+01:00 - 3ee72c4dd - Nicolas Buquet : Merge pull request #316 from tchapgouv/315-ui-masquer-le-bouton-de-login-par-qr-code
 2026-03-25T14:57:12+01:00 - abb0c2337 - Nicolas Buquet : Rename "Sign in manually" to "Sign in"
+2026-03-24T19:45:07Z - 8ce6f1f0d - Doug : Really fix the release script.
+2026-03-24T17:06:44Z - 86cea87c0 - Doug : Fix the release script.
+2026-03-24T16:31:38+01:00 - 3ae0fc671 - Mauro Romito : remove the DEBUG check from the PreviewScrollView
+2026-03-24T13:51:40-07:00 - a2481b59b - Element CI : Prepare next release
+2026-03-24T12:48:34+01:00 - b4d6b8f47 - Mauro Romito : update matrix sdk to 26.03.24
 2026-03-23T18:00:14+01:00 - 9a61dc196 - Nicolas Buquet : Hide QR code login button on onboarding screen
 2026-03-23T17:40:40+01:00 - 0a1ff1092 - Nicolas Buquet : Merge pull request #304 from tchapgouv/303-supprimer-du-code-bwi-inutilise
 2026-03-23T17:40:22+01:00 - d7b85e844 - Nicolas Buquet : Merge pull request #314 from tchapgouv/313-build-build-upon-github-dependencies
