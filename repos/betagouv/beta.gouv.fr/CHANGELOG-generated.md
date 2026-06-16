@@ -1,18 +1,17 @@
 ## Changelog : beta.gouv.fr (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout d'un nouveau programme pour les startups en sortie d'incubation, des corrections de badges pour les événements spéciaux et des ajustements mineurs pour améliorer la présentation et l'exactitude des informations sur le site. Des mises à jour régulières de la base de données ont également été effectuées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'affichage des informations concernant les startups, notamment avec l'intégration d'un nouveau programme de sortie d'incubation et des badges spécifiques pour les événements importants. Des corrections ont également été apportées pour améliorer la précision des données affichées et corriger des fautes de frappe. Enfin, des mises à jour régulières de la base de données ont été effectuées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau programme de sortie d'incubation, permettant aux startups de mieux gérer leur transition après l'incubation. [#21545](https://github.com/betagouv/beta.gouv.fr/pull/21545)
-- Correction de l'affichage du badge pour les événements spéciaux (FAST, impact national) pour une meilleure visibilité. [#21590](https://github.com/betagouv/beta.gouv.fr/pull/21590)
-- Correction de l'orthographe du titre sur la page intrapreneur. [#21568](https://github.com/betagouv/beta.gouv.fr/pull/21568)
-- Correction du comptage des startups affiché sur le site.
-- Ajout de la variable `LAST_COMMIT_DATE` manquante.
+- **Startups :** Correction de l'affichage du nombre de startups.
+- **Startups :** Ajout de badges spécifiques pour les startups participant à des événements spéciaux (FAST, impact national) [#21590](https://github.com/betagouv/beta.gouv.fr/issues/21590).
+- **Programme de sortie d'incubation :** Intégration du nouveau programme de sortie d'incubation [#21545](https://github.com/betagouv/beta.gouv.fr/issues/21545).
+- **Page intrapreneur :** Correction d'une faute de frappe dans le titre de la page intrapreneur [#21568](https://github.com/betagouv/beta.gouv.fr/issues/21568).
 
 ### Évolutions techniques
-- Mises à jour régulières de la base de données (plusieurs commits de `secretariat-bot`). Ces mises à jour concernent la structure et les données de la base de données. [#21588](https://github.com/betagouv/beta.gouv.fr/pull/21588), [#21586](https://github.com/betagouv/beta.gouv.fr/pull/21586), [#21585](https://github.com/betagouv/beta.gouv.fr/pull/21584), [#21581](https://github.com/betagouv/beta.gouv.fr/pull/21577), [#21576](https://github.com/betagouv/beta.gouv.fr/pull/21574), [#21573](https://github.com/betagouv/beta.gouv.fr/pull/21572), [#21570](https://github.com/betagouv/beta.gouv.fr/pull/21567), [#21565](https://github.com/betagouv/beta.gouv.fr/pull/21564)
-- Amélioration du travail sur la phase "more". [#21575](https://github.com/betagouv/beta.gouv.fr/pull/21575)
+- Correction de l'ajout de la variable `LAST_COMMIT_DATE` manquante.
+- Amélioration du code lié à l'affichage du nombre de startups en phase "work". [#21575](https://github.com/betagouv/beta.gouv.fr/issues/21575)
 
 ### Autres changements
-- Aucune information supplémentaire à signaler.
+- Mises à jour régulières de la base de données (plusieurs commits de `secretariat-bot` référencés par [#21588](https://github.com/betagouv/beta.gouv.fr/issues/21588), [#21586](https://github.com/betagouv/beta.gouv.fr/issues/21586), [#21585](https://github.com/betagouv/beta.gouv.fr/issues/21585), [#21584](https://github.com/betagouv/beta.gouv.fr/issues/21584), [#21581](https://github.com/betagouv/beta.gouv.fr/issues/21581), [#21577](https://github.com/betagouv/beta.gouv.fr/issues/21577), [#21576](https://github.com/betagouv/beta.gouv.fr/issues/21576), [#21574](https://github.com/betagouv/beta.gouv.fr/issues/21574), [#21573](https://github.com/betagouv/beta.gouv.fr/issues/21573), [#21572](https://github.com/betagouv/beta.gouv.fr/issues/21572), [#21570](https://github.com/betagouv/beta.gouv.fr/issues/21570), [#21567](https://github.com/betagouv/beta.gouv.fr/issues/21567), [#21565](https://github.com/betagouv/beta.gouv.fr/issues/21565), [#21564](https://github.com/betagouv/beta.gouv.fr/issues/21564)).
