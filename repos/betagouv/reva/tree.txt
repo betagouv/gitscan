@@ -38,6 +38,25 @@
 │   └── keycloak.md
 ├── infra
 │   ├── .gitignore
+│   ├── clamav-rest
+│   │   ├── .buildpacks
+│   │   ├── .python-version
+│   │   ├── Dockerfile
+│   │   ├── LICENSE
+│   │   ├── Makefile
+│   │   ├── Procfile
+│   │   ├── README.md
+│   │   ├── clamav_rest.py
+│   │   ├── clamav_versions.py
+│   │   ├── config.py
+│   │   ├── docker
+│   │   │   └── default-nginx-site.conf
+│   │   ├── docker-compose.yml
+│   │   ├── requirements.txt
+│   │   ├── run.sh
+│   │   ├── scalingo.json
+│   │   ├── tests.py
+│   │   └── version.py
 │   ├── elastic
 │   │   ├── .dockerignore
 │   │   ├── .gitattributes
@@ -1653,7 +1672,9 @@
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── login
     │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   ├── AuthenticatorOtpStep.tsx
     │   │   │   │   │   │   │   ├── CredentialsStep.tsx
+    │   │   │   │   │   │   │   ├── EmailOtpStep.tsx
     │   │   │   │   │   │   │   ├── OtpStep.tsx
     │   │   │   │   │   │   │   └── RegistrationLinks.tsx
     │   │   │   │   │   │   ├── actions.ts
@@ -2190,6 +2211,8 @@
     │   │   │   │   ├── isAccountEmailAlreadyUsed.ts
     │   │   │   │   ├── keycloak.ts
     │   │   │   │   ├── loginWithCredentials.ts
+    │   │   │   │   ├── resendEmailOtp.test.ts
+    │   │   │   │   ├── resendEmailOtp.ts
     │   │   │   │   ├── resetAccountPassword.ts
     │   │   │   │   ├── sendEmailOtp.test.ts
     │   │   │   │   ├── sendEmailOtp.ts
@@ -2926,6 +2949,8 @@
     │   │   │   │   ├── otp-challenge.utils.test.ts
     │   │   │   │   ├── otp-challenge.utils.ts
     │   │   │   │   └── wrap-keycloak-unavailable.ts
+    │   │   │   ├── clamav
+    │   │   │   │   └── clamav.service.ts
     │   │   │   ├── config
     │   │   │   │   └── config.ts
     │   │   │   ├── date
@@ -6026,4 +6051,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2024 directories, 4004 files
+2027 directories, 4026 files
