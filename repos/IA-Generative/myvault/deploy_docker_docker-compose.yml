@@ -1,0 +1,49 @@
+version: "3.8"
+
+# MyVault utilise le PostgreSQL et le Keycloak d'owuicore-main.
+# Prérequis : owuicore-main doit être démarré (docker compose up).
+# La base "myvault" est créée par le script postgres/init/01-create-databases.sql.
+
+services:
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: myvault
+      POSTGRES_USER: ${POSTGRES_USER:-owui}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-owui}
+      MYVAULT_MASTER_KEY: ${MYVAULT_MASTER_KEY:-0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef}
+      MYVAULT_JWT_SECRET: ${MYVAULT_JWT_SECRET:-dev-jwt-secret}
+      MYVAULT_DEV_MODE: ${MYVAULT_DEV_MODE:-false}
+      MYVAULT_CORS_ORIGINS: http://localhost:8085
+      OIDC_ISSUER_URL: ${OIDC_ISSUER_URL:-http://localhost:8082/realms/openwebui}
+      OIDC_INTERNAL_URL: http://keycloak:8080/realms/openwebui
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:-myvault}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:-}
+    ports:
+      - "${MYVAULT_BACKEND_PORT:-8000}:8000"
+    networks:
+      - owui-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/health/live').raise_for_status()"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8085:3000"
+    networks:
+      - owui-net
+    depends_on:
+      - backend
+
+networks:
+  owui-net:
+    external: true

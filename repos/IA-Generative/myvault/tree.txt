@@ -1,0 +1,174 @@
+.
+├── .env.example
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── ci.yml
+│       ├── release.yml
+│       └── security-scan.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── backend
+│   ├── Dockerfile
+│   ├── alembic
+│   │   ├── env.py
+│   │   └── script.py.mako
+│   ├── alembic.ini
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── admin_routes.py
+│   │   │   ├── bridge_routes.py
+│   │   │   ├── health_routes.py
+│   │   │   ├── personal_routes.py
+│   │   │   ├── security_routes.py
+│   │   │   ├── tool_access_routes.py
+│   │   │   └── user_vault_routes.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── audit.py
+│   │   │   ├── auth.py
+│   │   │   ├── config.py
+│   │   │   ├── database.py
+│   │   │   ├── encryption.py
+│   │   │   ├── master_password.py
+│   │   │   ├── ratelimit.py
+│   │   │   ├── ssrf.py
+│   │   │   └── totp.py
+│   │   ├── main.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── database_models.py
+│   │   │   └── schemas.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── app_service.py
+│   │   │   ├── bridge_service.py
+│   │   │   └── vault_service.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_auth_audience.py
+│   │       ├── test_bridge_service.py
+│   │       ├── test_client_auth.py
+│   │       ├── test_encryption.py
+│   │       ├── test_master_password.py
+│   │       ├── test_schemas.py
+│   │       ├── test_ssrf.py
+│   │       └── test_totp.py
+│   └── requirements.txt
+├── browser-extension
+│   ├── _locales
+│   │   └── fr
+│   │       └── messages.json
+│   ├── background.js
+│   ├── content
+│   │   ├── content.css
+│   │   └── content.js
+│   ├── manifest.json
+│   └── popup
+│       ├── popup.css
+│       ├── popup.html
+│       └── popup.js
+├── deploy
+│   ├── docker
+│   │   └── docker-compose.yml
+│   └── k8s
+│       ├── base
+│       │   ├── backend-deployment.yaml
+│       │   ├── configmap.yaml
+│       │   ├── frontend-deployment.yaml
+│       │   ├── kustomization.yaml
+│       │   └── secrets.example.yaml
+│       └── overlays
+│           ├── dev
+│           │   ├── dev-config-patch.yaml
+│           │   └── kustomization.yaml
+│           └── prod-scaleway
+│               ├── backend-patch.yaml
+│               ├── ingress.yaml
+│               └── kustomization.yaml
+├── docs
+│   ├── ARCHITECTURE.md
+│   ├── FUNCTIONAL_SPEC.md
+│   ├── INTEGRATION_GUIDE.md
+│   ├── PROMPT_INTEGRATION_TOOL.md
+│   ├── USER_GUIDE.md
+│   ├── adr
+│   │   └── ADR-001-choix-moteur-secrets.md
+│   ├── keycloak-client-myvault.json
+│   ├── resana-import.json
+│   └── sample-apps-import.json
+├── frontend
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── icons
+│   │   │   ├── github.svg
+│   │   │   ├── grist.svg
+│   │   │   ├── iobeya.png
+│   │   │   ├── mattermost.ico
+│   │   │   └── tchap.svg
+│   │   └── logo-myvault.svg
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── components
+│   │   │   ├── AppCard.tsx
+│   │   │   ├── ConnectionChecker.tsx
+│   │   │   ├── CredentialsOverlay.tsx
+│   │   │   ├── SecretField.tsx
+│   │   │   ├── TotpField.tsx
+│   │   │   ├── UnlockModal.tsx
+│   │   │   └── VariableField.tsx
+│   │   ├── main.tsx
+│   │   ├── pages
+│   │   │   ├── AdminAppFormPage.tsx
+│   │   │   ├── AdminPage.tsx
+│   │   │   ├── AppDetailPage.tsx
+│   │   │   ├── BridgePage.tsx
+│   │   │   ├── GuidePage.tsx
+│   │   │   ├── PersonalVaultPage.tsx
+│   │   │   ├── PopupCredentialsPage.tsx
+│   │   │   ├── SecurityPage.tsx
+│   │   │   └── VaultPage.tsx
+│   │   ├── services
+│   │   │   ├── api.ts
+│   │   │   ├── auth.ts
+│   │   │   ├── sample-apps.ts
+│   │   │   └── security-context.tsx
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── prompt_myvault_v2.md
+├── sdk
+│   ├── myvault_client
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   ├── exceptions.py
+│   │   └── models.py
+│   ├── setup.py
+│   └── tests
+│       └── __init__.py
+├── tests
+│   ├── e2e
+│   │   ├── conftest.py
+│   │   ├── test_admin_flow.py
+│   │   ├── test_tool_integration.py
+│   │   └── test_user_flow.py
+│   ├── load
+│   │   └── locustfile.py
+│   └── manual
+│       ├── CHECKLIST.md
+│       ├── REPORT_TEMPLATE.md
+│       └── TEST_PLAN.md
+└── widget
+    └── loader.js
+40 directories, 133 files
