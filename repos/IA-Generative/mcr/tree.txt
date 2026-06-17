@@ -1,5 +1,7 @@
 .
 ├── .claude
+│   ├── rules
+│   │   └── repository-flush.md
 │   ├── settings.json
 │   └── skills
 │       ├── andon
@@ -176,6 +178,7 @@
 │   │   │   ├── db
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── db.py
+│   │   │   │   ├── db_errors.py
 │   │   │   │   ├── deliverable_repository.py
 │   │   │   │   ├── feedback_repository.py
 │   │   │   │   ├── meeting_repository.py
@@ -241,9 +244,11 @@
 │   │   │   │   │       ├── footer.html
 │   │   │   │   │       ├── report_generation_success.html
 │   │   │   │   │       └── transcription_generation_success.html
+│   │   │   │   ├── evaluation_zip.py
 │   │   │   │   ├── feedback.py
 │   │   │   │   ├── meeting_transitions.py
 │   │   │   │   ├── report_rendering.py
+│   │   │   │   ├── transcription_queue_estimation.py
 │   │   │   │   └── transcription_rendering.py
 │   │   │   ├── exceptions
 │   │   │   │   ├── __init__.py
@@ -270,10 +275,7 @@
 │   │   │   │   └── user_model.py
 │   │   │   ├── orchestrators
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── deliverable_orchestrator.py
-│   │   │   │   ├── meeting_orchestrator.py
-│   │   │   │   ├── meeting_transitions_orchestrator.py
-│   │   │   │   └── transcription_orchestrator.py
+│   │   │   │   └── meeting_transitions_orchestrator.py
 │   │   │   ├── schemas
 │   │   │   │   ├── S3_types.py
 │   │   │   │   ├── __init__.py
@@ -338,7 +340,6 @@
 │   │   │   │   │       ├── types.py
 │   │   │   │   │       └── vad.py
 │   │   │   │   ├── transcription_task_service.py
-│   │   │   │   ├── transcription_waiting_time_service.py
 │   │   │   │   └── user_service.py
 │   │   │   ├── state_machine
 │   │   │   │   ├── __init__.py
@@ -355,25 +356,37 @@
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── abort_multipart_upload.py
+│   │   │   │   ├── complete_capture.py
 │   │   │   │   ├── complete_multipart_upload.py
 │   │   │   │   ├── complete_transcription.py
 │   │   │   │   ├── create_feedback.py
 │   │   │   │   ├── create_meeting.py
 │   │   │   │   ├── delete_meeting.py
 │   │   │   │   ├── ensure_offline_token.py
+│   │   │   │   ├── evaluate_transcription_from_s3.py
+│   │   │   │   ├── evaluate_transcription_from_zip.py
 │   │   │   │   ├── fail_capture_bot.py
+│   │   │   │   ├── fail_transcription.py
 │   │   │   │   ├── generate_presigned_audio_upload_url.py
+│   │   │   │   ├── get_deliverable_file.py
 │   │   │   │   ├── get_feature_flag_status.py
 │   │   │   │   ├── get_meeting.py
 │   │   │   │   ├── get_meeting_audio.py
+│   │   │   │   ├── get_or_create_transcription_docx.py
 │   │   │   │   ├── get_or_create_user_by_keycloak.py
+│   │   │   │   ├── init_capture.py
 │   │   │   │   ├── init_multipart_upload.py
+│   │   │   │   ├── init_transcription.py
+│   │   │   │   ├── list_deliverables_for_meeting.py
 │   │   │   │   ├── list_meetings.py
 │   │   │   │   ├── lookup_comu_meeting.py
+│   │   │   │   ├── mark_deliverable_failure.py
 │   │   │   │   ├── mark_deliverable_success.py
 │   │   │   │   ├── request_deliverable.py
 │   │   │   │   ├── sign_multipart_part.py
+│   │   │   │   ├── soft_delete_deliverable.py
 │   │   │   │   ├── start_capture_bot.py
+│   │   │   │   ├── start_transcription.py
 │   │   │   │   └── update_meeting.py
 │   │   │   └── utils
 │   │   │       ├── __init__.py
@@ -479,7 +492,9 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
 │   │   │   ├── test_capture_bot_router.py
+│   │   │   ├── test_capture_router.py
 │   │   │   ├── test_deliverable_router.py
+│   │   │   ├── test_evaluation_router.py
 │   │   │   ├── test_feature_flag_router.py
 │   │   │   ├── test_feedback_router.py
 │   │   │   ├── test_lookup_router.py
@@ -494,8 +509,11 @@
 │   │   ├── domain
 │   │   │   ├── __init__.py
 │   │   │   ├── test_deliverable_transitions.py
+│   │   │   ├── test_evaluation_zip.py
 │   │   │   ├── test_feedback.py
-│   │   │   └── test_report_rendering.py
+│   │   │   ├── test_meeting_transitions.py
+│   │   │   ├── test_report_rendering.py
+│   │   │   └── test_transcription_queue_estimation.py
 │   │   ├── factories
 │   │   │   ├── README.md
 │   │   │   ├── __init__.py
@@ -520,7 +538,6 @@
 │   │   │   ├── in_memory_s3.py
 │   │   │   └── report_task_mocks.py
 │   │   ├── orchestrators
-│   │   │   ├── test_deliverable_orchestrator.py
 │   │   │   ├── test_deliverable_repository.py
 │   │   │   └── test_meeting_repository.py
 │   │   ├── schemas
@@ -539,8 +556,7 @@
 │   │   │   ├── test_detailed_synthesis_generation.py
 │   │   │   ├── test_meeting_transitions_service.py
 │   │   │   ├── test_report_task_service.py
-│   │   │   ├── test_s3_multipart.py
-│   │   │   └── test_transcription_waiting_time_service.py
+│   │   │   └── test_s3_multipart.py
 │   │   ├── unit
 │   │   │   ├── __init__.py
 │   │   │   ├── evaluation
@@ -568,19 +584,29 @@
 │   │   └── use_cases
 │   │       ├── __init__.py
 │   │       ├── test_abort_multipart_upload.py
+│   │       ├── test_complete_capture.py
 │   │       ├── test_complete_multipart_upload.py
 │   │       ├── test_complete_transcription.py
 │   │       ├── test_create_meeting.py
 │   │       ├── test_delete_meeting.py
 │   │       ├── test_ensure_offline_token.py
 │   │       ├── test_fail_capture_bot.py
+│   │       ├── test_fail_transcription.py
+│   │       ├── test_get_deliverable_file.py
 │   │       ├── test_get_meeting_audio.py
+│   │       ├── test_get_or_create_transcription_docx.py
+│   │       ├── test_init_capture.py
 │   │       ├── test_init_multipart_upload.py
+│   │       ├── test_init_transcription.py
+│   │       ├── test_list_deliverables_for_meeting.py
 │   │       ├── test_list_meetings.py
+│   │       ├── test_mark_deliverable_failure.py
 │   │       ├── test_mark_deliverable_success.py
 │   │       ├── test_request_deliverable.py
 │   │       ├── test_sign_multipart_part.py
+│   │       ├── test_soft_delete_deliverable.py
 │   │       ├── test_start_capture_bot.py
+│   │       ├── test_start_transcription.py
 │   │       └── test_update_meeting.py
 │   └── uv.lock
 ├── mcr-frontend
@@ -1124,4 +1150,4 @@
 ├── mcr.code-workspace
 └── scripts
     └── check_changed.py
-216 directories, 910 files
+217 directories, 935 files
