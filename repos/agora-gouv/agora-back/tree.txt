@@ -16,13 +16,30 @@
 ├── architecture-decisions
 │   ├── 2024-07-22-regenerer-les-ids-de-contenu-strapi.md
 │   ├── 2024-07-29-regenerer-les-ids-de-question-strapi.md
-│   └── migration-strapi-v4-vers-v5.md
+│   └── migration_strapi_v5
+│       ├── history.md
+│       ├── impact_document_id.md
+│       └── migration-strapi-v4-vers-v5.md
 ├── bin
 │   └── init_review_database.sh
 ├── build.gradle.kts
 ├── cron.json
 ├── data
-│   └── questions.sql
+│   ├── prod
+│   │   ├── fiches_inventaire_map_anciens_id_new_documentId.json
+│   │   ├── mig_consultation_result_PROD_todo.sql
+│   │   ├── mig_reponses_consultation_PROD_todo.sql
+│   │   ├── mig_thematique_id_PROD_todo.sql
+│   │   └── mig_user_answered_consultation_PROD_todo.sql
+│   ├── questions.sql
+│   └── re7
+│       ├── mig_consultation_result_RE7_done.sql
+│       ├── mig_consultation_result_RE7_todo.sql
+│       ├── mig_reponses_consultation_RE7_done.sql
+│       ├── mig_reponses_consultation_RE7_todo.sql
+│       ├── mig_thematique_id_re7.sql
+│       ├── mig_user_answered_consultation_RE7_done.sql
+│       └── mig_user_answered_consultation_RE7_todo.sql
 ├── docker-compose.yml
 ├── docs
 │   ├── Agora Local.postman_environment.json
@@ -708,10 +725,35 @@
 │       │       └── gouv
 │       │           └── agora
 │       │               ├── TestUtils.kt
+│       │               ├── e2e
+│       │               │   ├── StrapiE2ETestBase.kt
+│       │               │   ├── concertations
+│       │               │   │   └── ConcertationStrapiE2ETest.kt
+│       │               │   ├── consultation
+│       │               │   │   └── ConsultationStrapiE2ETest.kt
+│       │               │   ├── content
+│       │               │   │   └── ContentStrapiE2ETest.kt
+│       │               │   ├── ficheInventaire
+│       │               │   │   └── FicheInventaireStrapiE2ETest.kt
+│       │               │   ├── headerQag
+│       │               │   │   └── HeaderQagStrapiE2ETest.kt
+│       │               │   ├── participationCharter
+│       │               │   │   └── ParticipationCharterStrapiE2ETest.kt
+│       │               │   ├── responseQag
+│       │               │   │   └── ResponseQagStrapiE2ETest.kt
+│       │               │   ├── thematique
+│       │               │   │   └── ThematiqueStrapiE2ETest.kt
+│       │               │   ├── themeHebdo
+│       │               │   │   └── ThemeHebdoStrapiE2ETest.kt
+│       │               │   └── welcomePage
+│       │               │       └── NewsStrapiE2ETest.kt
 │       │               ├── infrastructure
 │       │               │   ├── common
+│       │               │   │   ├── StrapiMediaPictureTest.kt
 │       │               │   │   ├── StrapiRequestBuilderTest.kt
 │       │               │   │   └── StrapiRichTextTest.kt
+│       │               │   ├── concertations
+│       │               │   │   └── ConcertationMapperTest.kt
 │       │               │   ├── consultation
 │       │               │   │   └── dto
 │       │               │   │       └── ConsultationStrapiDTOTest.kt
@@ -721,9 +763,15 @@
 │       │               │   ├── consultationResults
 │       │               │   │   └── repository
 │       │               │   │       └── ConsultationResultAggregatedRepositoryImplTest.kt
+│       │               │   ├── consultationUpdates
+│       │               │   │   └── repository
+│       │               │   │       ├── ConsultationUpdateHistoryMapperTest.kt
+│       │               │   │       └── ConsultationUpdateInfoV2MapperTest.kt
 │       │               │   ├── feedbackConsultationUpdate
 │       │               │   │   └── repository
 │       │               │   │       └── FeedbackConsultationUpdateMapperTest.kt
+│       │               │   ├── ficheInventaire
+│       │               │   │   └── FicheInventaireRepositoryImplTest.kt
 │       │               │   ├── login
 │       │               │   │   └── repository
 │       │               │   │       └── UserRepositoryImplTest.kt
@@ -748,12 +796,15 @@
 │       │               │   ├── responseQag
 │       │               │   │   └── repository
 │       │               │   │       └── ResponseQagRepositoryImplTest.kt
+│       │               │   ├── responseQagPaginated
+│       │               │   │   └── ResponseQagPaginatedJsonMapperTest.kt
 │       │               │   ├── supportQag
 │       │               │   │   ├── SupportQagQueueTest.kt
 │       │               │   │   └── repository
 │       │               │   │       └── SupportQagInsertingMapperTest.kt
 │       │               │   ├── thematique
 │       │               │   │   └── repository
+│       │               │   │       ├── ThematiqueMapperTest.kt
 │       │               │   │       └── ThematiqueRepositoryImplTest.kt
 │       │               │   ├── themeHebdo
 │       │               │   │   └── repository
@@ -800,6 +851,8 @@
 │       │                   ├── qagArchive
 │       │                   │   ├── AnonymizeOldQagUseCaseTest.kt
 │       │                   │   └── ArchiveOldQagUseCaseTest.kt
+│       │                   ├── qagPaginated
+│       │                   │   └── QagPaginatedV2UseCaseTest.kt
 │       │                   ├── qagSelection
 │       │                   │   └── SelectMostPopularQagUseCaseTest.kt
 │       │                   ├── reponseQag
@@ -817,4 +870,4 @@
 │           └── mockito-extensions
 │               └── org.mockito.plugins.MockMaker
 └── system.properties
-233 directories, 586 files
+253 directories, 619 files
