@@ -159,18 +159,25 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_remove_sa_orm_sentinel.py
+│   │   │   ├── 0003_token_context.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── schemas.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
 │   │   │   ├── test_all.py
 │   │   │   ├── test_check_auth.py
 │   │   │   ├── test_login.py
+│   │   │   ├── test_login_ami_fi.py
 │   │   │   ├── test_login_callback.py
 │   │   │   ├── test_login_callback_address.py
+│   │   │   ├── test_login_callback_ami_fi.py
 │   │   │   ├── test_login_callback_error.py
-│   │   │   └── test_logout.py
+│   │   │   ├── test_login_callback_silent_ami_fi.py
+│   │   │   ├── test_login_silent_ami_fi.py
+│   │   │   ├── test_logout.py
+│   │   │   └── test_providers.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   ├── conftest.py
@@ -214,6 +221,7 @@
 │   │   ├── serializers.py
 │   │   └── tests
 │   │       ├── test_all.py
+│   │       ├── test_item_archive.py
 │   │       └── test_notification_data.py
 │   ├── notification
 │   │   ├── __init__.py
@@ -241,6 +249,7 @@
 │   │   │   ├── 0010_add_content_private_body.py
 │   │   │   ├── 0011_remove_content_private_body_from_ScheduledNotification.py
 │   │   │   ├── 0012_valid_until.py
+│   │   │   ├── 0013_item_is_archived.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -412,6 +421,8 @@
 │   │   │   │   │   ├── PageWrapper.svelte
 │   │   │   │   │   ├── RequestItem.svelte
 │   │   │   │   │   ├── RequestItem.svelte.test.ts
+│   │   │   │   │   ├── Requests.svelte
+│   │   │   │   │   ├── Requests.svelte.test.ts
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
@@ -425,6 +436,7 @@
 │   │   │   │   │       ├── Modal.svelte
 │   │   │   │   │       ├── Modal.svelte.test.ts
 │   │   │   │   │       ├── NavWithBackButton.svelte
+│   │   │   │   │       ├── RequestItemModal.svelte
 │   │   │   │   │       ├── ZonePreferences.svelte
 │   │   │   │   │       ├── ZonePreferences.svelte.test.ts
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
@@ -481,7 +493,8 @@
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── fi
-│   │   │       │   └── +page.svelte
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── forbidden
 │   │   │       │   └── +page.svelte
 │   │   │       ├── layout.svelte.test.ts
@@ -508,6 +521,12 @@
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── requests
+│   │   │       │   ├── +page.svelte
+│   │   │       │   ├── archived
+│   │   │       │   │   ├── +page.svelte
+│   │   │       │   │   └── page.svelte.test.ts
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── silent-login
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── technical-error
@@ -578,4 +597,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-113 directories, 467 files
+115 directories, 484 files
