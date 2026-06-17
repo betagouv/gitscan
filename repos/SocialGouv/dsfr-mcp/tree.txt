@@ -2,21 +2,371 @@
 ├── .github
 │   └── workflows
 │       ├── ci.yml
+│       ├── refresh-docs.yml
 │       └── release.yml
 ├── .gitignore
 ├── .releaserc.json
 ├── LICENSE
 ├── README.md
+├── docs
+│   ├── accessibility.json
+│   ├── colors.json
+│   ├── component
+│   │   ├── accordion
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── alert
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── badge
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── breadcrumb
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── button
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── callout
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── card
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── checkbox
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── combobox
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── composition
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── connect
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── consent
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── content
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── display
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── download
+│   │   │   └── overview.md
+│   │   ├── dropdown
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── follow
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── footer
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── form
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── header
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── highlight
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── input
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── link
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── logo
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── modal
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── navigation
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── notice
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── pagination
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── password
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── quote
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── radio
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── range
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── search
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── segmented
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── select
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── share
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── sidemenu
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── skiplink
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── stepper
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── summary
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── tab
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── table
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── tabnav
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── tag
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── tile
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── toggle
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── tooltip
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── transcription
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── translate
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   ├── upload
+│   │   │   ├── accessibility.md
+│   │   │   ├── code.md
+│   │   │   ├── demo.md
+│   │   │   ├── design.md
+│   │   │   └── overview.md
+│   │   └── user
+│   │       ├── design.md
+│   │       └── overview.md
+│   ├── core
+│   │   ├── base
+│   │   │   └── overview.md
+│   │   ├── color
+│   │   │   └── overview.md
+│   │   ├── display
+│   │   │   └── overview.md
+│   │   ├── elevation
+│   │   │   └── overview.md
+│   │   ├── favicon
+│   │   │   └── overview.md
+│   │   ├── grid
+│   │   │   └── overview.md
+│   │   ├── icon
+│   │   │   └── overview.md
+│   │   ├── media
+│   │   │   └── overview.md
+│   │   ├── palette
+│   │   │   └── overview.md
+│   │   ├── pictogram
+│   │   │   └── overview.md
+│   │   ├── spacing
+│   │   │   └── overview.md
+│   │   └── typography
+│   │       └── overview.md
+│   ├── icons.json
+│   ├── index.json
+│   ├── layout
+│   │   ├── page
+│   │   │   ├── login
+│   │   │   │   └── overview.md
+│   │   │   ├── overview.md
+│   │   │   ├── register
+│   │   │   │   └── overview.md
+│   │   │   └── response
+│   │   │       └── overview.md
+│   │   └── pattern
+│   │       ├── civility
+│   │       │   └── overview.md
+│   │       ├── company
+│   │       │   └── overview.md
+│   │       ├── date
+│   │       │   └── overview.md
+│   │       ├── email
+│   │       │   └── overview.md
+│   │       ├── forms
+│   │       │   └── overview.md
+│   │       ├── name
+│   │       │   └── overview.md
+│   │       ├── overview.md
+│   │       └── tel
+│   │           └── overview.md
+│   └── meta.json
 ├── package.json
 ├── pnpm-lock.yaml
+├── render.yaml
 ├── scripts
-│   └── fetch-docs.ts
+│   ├── fetch-docs.ts
+│   └── parse-accessibility.ts
+├── smithery.yaml
 ├── src
 │   ├── __tests__
+│   │   ├── accessibility.test.ts
 │   │   ├── cache.test.ts
 │   │   ├── colors.test.ts
 │   │   ├── core.test.ts
 │   │   ├── fixtures
+│   │   │   ├── accessibility.json
 │   │   │   ├── colors.json
 │   │   │   ├── component
 │   │   │   │   ├── button
@@ -34,8 +384,11 @@
 │   │   └── icons.test.ts
 │   ├── cache.ts
 │   ├── core.ts
+│   ├── http.ts
 │   ├── index.ts
+│   ├── server.ts
+│   ├── smithery.ts
 │   └── types.ts
 ├── tsconfig.json
 └── vitest.config.ts
-12 directories, 28 files
+91 directories, 302 files

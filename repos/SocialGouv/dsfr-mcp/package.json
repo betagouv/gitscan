@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "MCP server pour la documentation DSFR (Système de Design de l'État français)",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SocialGouv/dsfr-mcp.git"
+  },
+  "homepage": "https://github.com/SocialGouv/dsfr-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/SocialGouv/dsfr-mcp/issues"
+  },
   "main": "build/index.js",
+  "module": "src/smithery.ts",
   "bin": {
     "dsfr-mcp": "build/index.js"
   },
@@ -13,11 +22,14 @@
   ],
   "scripts": {
     "build": "tsc",
+    "start": "node build/http.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "fetch-docs": "tsx scripts/fetch-docs.ts",
     "setup": "pnpm run fetch-docs && pnpm build",
-    "prepublishOnly": "pnpm run setup"
+    "prepublishOnly": "pnpm run setup",
+    "smithery:dev": "smithery dev",
+    "smithery:build": "smithery build"
   },
   "keywords": [
     "mcp",
@@ -31,6 +43,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@smithery/cli": "^4.8.0",
+    "@types/express": "^5.0.6",
     "@types/node": "^25.3.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
