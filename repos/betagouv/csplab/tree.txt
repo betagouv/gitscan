@@ -53,7 +53,8 @@
 │   ├── ADR
 │   │   ├── ADR-001-testing-strategy.md
 │   │   ├── ADR-002-testing-strategy-and-repository-mocking.md
-│   │   └── ADR-003-ddd-aggregate-root-pattern.md
+│   │   ├── ADR-003-ddd-aggregate-root-pattern.md
+│   │   └── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -113,7 +114,6 @@
 │       ├── __init__.py
 │       ├── entities
 │       │   ├── __init__.py
-│       │   ├── api_log.py
 │       │   ├── concours.py
 │       │   ├── corps.py
 │       │   ├── domaine_fonctionnel.py
@@ -177,6 +177,9 @@
     │   │   ├── pipelines
     │   │   │   ├── __init__.py
     │   │   │   └── ingest_offer_pipeline.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   └── process_webhook.py
     │   │   └── use_cases
     │   │       ├── __init__.py
     │   │       ├── archive_offer.py
@@ -187,7 +190,9 @@
     │   │       └── save_webhook.py
     │   ├── bin
     │   │   ├── run_migrations.sh
-    │   │   └── start_web.sh
+    │   │   ├── start_flower.sh
+    │   │   ├── start_web.sh
+    │   │   └── start_worker.sh
     │   ├── domain
     │   │   ├── __init__.py
     │   │   ├── entities
@@ -204,6 +209,7 @@
     │   │   │   ├── offers_cleaner.py
     │   │   │   ├── offers_gateway.py
     │   │   │   ├── publish_offer_gateway.py
+    │   │   │   ├── publish_offer_input.py
     │   │   │   └── sources_gateway.py
     │   │   ├── repositories
     │   │   │   ├── __init__.py
@@ -227,6 +233,7 @@
     │   │       └── webhook_type.py
     │   ├── infrastructure
     │   │   ├── __init__.py
+    │   │   ├── celery_app.py
     │   │   ├── credentials_store.py
     │   │   ├── database.py
     │   │   ├── di
@@ -313,6 +320,7 @@
     │   │       ├── test_ingest_offer_pipeline.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
+    │   │       ├── test_process_webhook_task.py
     │   │       ├── test_publish_offer_use_case.py
     │   │       ├── test_save_raw_offer_use_case.py
     │   │       ├── test_save_webhook_use_case.py
@@ -404,14 +412,14 @@
         │   │   ├── __init__.py
         │   │   ├── commands
         │   │   │   ├── __init__.py
-        │   │   │   └── soumettre_candidature_command.py
+        │   │   │   └── submit_application_command.py
         │   │   └── usecases
         │   │       ├── __init__.py
         │   │       ├── get_opportunity_details.py
         │   │       ├── initialize_cv_metadata.py
         │   │       ├── match_cv_to_opportunities.py
         │   │       ├── process_uploaded_cv.py
-        │   │       └── soumettre_candidature.py
+        │   │       └── submit_application.py
         │   ├── exceptions.py
         │   ├── identite
         │   │   ├── __init__.py
@@ -477,6 +485,7 @@
         │   │   │   └── cv_metadata_repository_interface.py
         │   │   ├── services
         │   │   │   ├── __init__.py
+        │   │   │   ├── candidature_actors_validator.py
         │   │   │   ├── ocr_interface.py
         │   │   │   ├── query_builder_interface.py
         │   │   │   └── text_formatter_interface.py
@@ -504,6 +513,9 @@
         │   │   │   ├── agent_events.py
         │   │   │   ├── candidat_events.py
         │   │   │   └── organisme_events.py
+        │   │   ├── exceptions
+        │   │   │   ├── __init__.py
+        │   │   │   └── candidat_errors.py
         │   │   ├── repositories
         │   │   │   ├── __init__.py
         │   │   │   ├── agent_repository_interface.py
@@ -515,6 +527,7 @@
         │   ├── ingestion
         │   │   ├── entities
         │   │   │   ├── __init__.py
+        │   │   │   ├── api_log.py
         │   │   │   ├── api_log_daily_aggregation.py
         │   │   │   ├── document.py
         │   │   │   ├── source.py
@@ -589,9 +602,13 @@
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   ├── 0002_cvmetadatamodel_status_cvmetadatamodel_updated_at_and_more.py
+        │   │   │   │   ├── 0003_alter_cvmetadatamodel_created_at_and_more.py
+        │   │   │   │   ├── 0004_candidaturemodel.py
+        │   │   │   │   ├── 0005_fix_cv_metadata_id_index.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
+        │   │   │       ├── candidature.py
         │   │   │       └── cv_metadata.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
@@ -624,6 +641,8 @@
         │   │   │   │   ├── 0025_fix_missing_indexes.py
         │   │   │   │   ├── 0026_apilogmodel.py
         │   │   │   │   ├── 0027_apilogdailyaggregationmodel.py
+        │   │   │   │   ├── 0028_sourcemodel_created_at_sourcemodel_updated_at_and_more.py
+        │   │   │   │   ├── 0029_fix_rawdocument_id_index.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -631,7 +650,7 @@
         │   │   │       ├── api_log_daily_aggregation.py
         │   │   │       ├── raw_document.py
         │   │   │       └── source.py
-        │   │   ├── shared
+        │   │   ├── referentiel
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
@@ -668,6 +687,8 @@
         │   │   │   │   ├── 0032_fix_missing_indexes.py
         │   │   │   │   ├── 0033_apilogmodel.py
         │   │   │   │   ├── 0034_remove_apilogmodel.py
+        │   │   │   │   ├── 0035_restore_offers_primary_key.py
+        │   │   │   │   ├── 0036_fix_missing_id_indexes.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -675,19 +696,22 @@
         │   │   │       ├── corps.py
         │   │   │       ├── metier.py
         │   │   │       └── offer.py
-        │   │   └── users
-        │   │       ├── admin.py
-        │   │       ├── apps.py
-        │   │       ├── migrations
-        │   │       │   ├── 0001_initial.py
-        │   │       │   ├── 0002_alter_usermodel_options_alter_usermodel_email.py
-        │   │       │   ├── 0003_alter_usermodel_username.py
-        │   │       │   ├── 0004_alter_usermodel_table.py
-        │   │       │   ├── 0005_add_sources_to_user.py
-        │   │       │   ├── 0005_profilagentmodel.py
-        │   │       │   ├── 0006_profilcandidatmodel.py
-        │   │       │   ├── 0007_merge_20260612_1624.py
-        │   │       │   └── __init__.py
+        │   │   ├── users
+        │   │   │   ├── admin.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   ├── 0002_alter_usermodel_options_alter_usermodel_email.py
+        │   │   │   │   ├── 0003_alter_usermodel_username.py
+        │   │   │   │   ├── 0004_alter_usermodel_table.py
+        │   │   │   │   ├── 0005_add_sources_to_user.py
+        │   │   │   │   ├── 0005_profilagentmodel.py
+        │   │   │   │   ├── 0006_profilcandidatmodel.py
+        │   │   │   │   ├── 0007_merge_20260612_1624.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models.py
+        │   │   └── utils
+        │   │       ├── __init__.py
         │   │       └── models.py
         │   ├── exceptions
         │   │   ├── __init__.py
@@ -740,6 +764,7 @@
         │       ├── candidate
         │       │   ├── __init__.py
         │       │   ├── async_postgres_cv_metadata_repository.py
+        │       │   ├── postgres_candidature_repository.py
         │       │   └── postgres_cv_metadata_repository.py
         │       ├── identite
         │       │   ├── __init__.py
@@ -807,7 +832,8 @@
         │   │       │   ├── _cv-processing.scss
         │   │       │   ├── _cv-upload.scss
         │   │       │   ├── _home.scss
-        │   │       │   └── _index.scss
+        │   │       │   ├── _index.scss
+        │   │       │   └── _login.scss
         │   │       ├── utilities
         │   │       │   ├── _index.scss
         │   │       │   ├── _position.scss
@@ -853,6 +879,8 @@
         │   │   ├── eslint.config.js
         │   │   ├── package.json
         │   │   ├── src
+        │   │   │   ├── api
+        │   │   │   │   └── utilisateur.ts
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   ├── icons.ts
@@ -901,6 +929,16 @@
         │   │   │   │   │   ├── CspSwitch
         │   │   │   │   │   │   ├── CspSwitch.stories.ts
         │   │   │   │   │   │   └── CspSwitch.vue
+        │   │   │   │   │   ├── CspTabs
+        │   │   │   │   │   │   ├── CspTabs.stories.ts
+        │   │   │   │   │   │   └── CspTabs.vue
+        │   │   │   │   │   ├── CspTag
+        │   │   │   │   │   │   ├── CspTag.stories.ts
+        │   │   │   │   │   │   ├── CspTag.test.ts
+        │   │   │   │   │   │   ├── CspTag.vue
+        │   │   │   │   │   │   ├── CspTagGroup.vue
+        │   │   │   │   │   │   ├── tag.ts
+        │   │   │   │   │   │   └── useCspTagGroup.ts
         │   │   │   │   │   ├── CspTextarea
         │   │   │   │   │   │   ├── CspTextarea.stories.ts
         │   │   │   │   │   │   └── CspTextarea.vue
@@ -922,6 +960,8 @@
         │   │   │   ├── composables
         │   │   │   │   ├── useColorMode.test.ts
         │   │   │   │   ├── useColorMode.ts
+        │   │   │   │   ├── useCurrentUser.test.ts
+        │   │   │   │   ├── useCurrentUser.ts
         │   │   │   │   ├── useSidebar.test.ts
         │   │   │   │   └── useSidebar.ts
         │   │   │   ├── env.d.ts
@@ -951,6 +991,8 @@
         │   │   │   │   ├── fonts.css
         │   │   │   │   ├── index.css
         │   │   │   │   └── theme.css
+        │   │   │   ├── types
+        │   │   │   │   └── api.d.ts
         │   │   │   └── utils
         │   │   │       ├── errors.test.ts
         │   │   │       ├── errors.ts
@@ -1115,7 +1157,7 @@
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   ├── test_process_uploaded_cv.py
-        │   │   │   └── test_soumettre_candidature.py
+        │   │   │   └── test_submit_application.py
         │   │   └── ingestion
         │   │       ├── __init__.py
         │   │       ├── test_archive_offers.py
@@ -1183,7 +1225,8 @@
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
-        │   │   │   └── test_process_uploaded_cv.py
+        │   │   │   ├── test_process_uploaded_cv.py
+        │   │   │   └── test_submit_candidature.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
         │   │   │   ├── test_api_key_authentication.py
@@ -1294,4 +1337,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-266 directories, 1030 files
+273 directories, 1066 files
