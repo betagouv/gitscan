@@ -1,28 +1,31 @@
-## Changelog : karfur (30 derniers jours, au 12 juin 2026)
+## Changelog : karfur (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la gestion des données, notamment l'amélioration de la détection des doublons, la structuration des données pour l'Agent Knowledge et la correction de bugs liés à l'affichage et à la sauvegarde des données. Des améliorations ont également été apportées à l'interface utilisateur, en particulier sur les fiches RCO pour les plateformes mobiles.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité du code, la correction de bugs, et l'ajout de fonctionnalités pour l'intégration de nouveaux contenus et l'amélioration de l'expérience utilisateur, notamment sur mobile. Une attention particulière a été portée à la gestion des doublons et à la préparation de l'intégration de nouveaux "skills" pour l'agent Letta.
 
 ### Évolutions fonctionnelles
 - Correction de bugs d'affichage sur les fiches RCO sur Android et iOS [#3792](https://github.com/refugies-info/karfur/pull/3792).
-- Correction d'un bug empêchant la prévisualisation des fiches [#3798](https://github.com/refugies-info/karfur/pull/3798).
-- Correction d'un problème de connexion et de réinitialisation de mot de passe [#3789](https://github.com/refugies-info/karfur/pull/3789).
-- Amélioration de l'affichage des adresses postales sur les fiches RCO, notamment sur mobile [#3778](https://github.com/refugies-info/karfur/pull/3778).
+- Amélioration de la gestion des erreurs lors de la prévisualisation des fiches [#3813](https://github.com/refugies-info/karfur/pull/3813).
+- Correction de l'affichage des adresses postales tronquées sur les fiches RCO [#3778](https://github.com/refugies-info/karfur/pull/3778).
+- Correction de problèmes de connexion et de réinitialisation de mot de passe [#3789](https://github.com/refugies-info/karfur/pull/3789).
 - Correction de l'affichage des accents dans le moteur de recherche [#3769](https://github.com/refugies-info/karfur/pull/3769).
 - Mise à jour des mentions légales sur le site et l'application [#3785](https://github.com/refugies-info/karfur/pull/3785).
-- Ajout de la possibilité de supprimer les contenus RCO de l'interface de traduction pour éviter les erreurs [#3780](https://github.com/refugies-info/karfur/pull/3780).
+- Correction de l'affichage des labels de département qui pouvaient masquer les pop-up [#3766](https://github.com/refugies-info/karfur/pull/3766).
+- Amélioration de la réactivité des écrans de login sur mobile [#3767](https://github.com/refugies-info/karfur/pull/3767) et [#3753](https://github.com/refugies-info/karfur/pull/3753).
 
 ### Évolutions techniques
-- Implémentation d'un endpoint pour la détection de doublons d'agents [#3754](https://github.com/refugies-info/karfur/pull/3754).
-- Structuration des données pour le corpus documentaire de l'Agent Knowledge (création de la structure, exportation et normalisation des ressources documentaires, configuration de l'indexation QMD) [#3788](https://github.com/refugies-info/karfur/pull/3788), [#3786](https://github.com/refugies-info/karfur/pull/3786), [#3782](https://github.com/refugies-info/karfur/pull/3782), [#3779](https://github.com/refugies-info/karfur/pull/3779).
-- Amélioration de la gestion des erreurs et des valeurs nulles dans le code serveur.
-- Mise à jour des dépendances et correction de vulnérabilités de sécurité.
-- Ajout de tests et de validations pour améliorer la qualité du code.
-- Amélioration de la performance et de la robustesse de l'application.
+- Intégration de Letta Code pour l'analyse automatique du code via un workflow GitHub Actions [#3815](https://github.com/refugies-info/karfur/pull/3815).
+- Ajout de tests et de validations pour la structure des "skills" QMD et corpus [#3797](https://github.com/refugies-info/karfur/pull/3797).
+- Refactorisation et correction de la gestion des doublons, notamment pour l'agent Letta, avec ajout d'un endpoint dédié [#3754](https://github.com/refugies-info/karfur/pull/3754).
+- Mise en place de scans de vulnérabilités de dépendances en pré-commit [#3779](https://github.com/refugies-info/karfur/pull/3779).
+- Mise à jour des dépendances et correction de problèmes liés à la gestion des versions.
+- Suppression des paramètres de configuration Claude.
+- Suppression de code obsolète et nettoyage du code.
 
 ### Autres changements
-- Documentation des structures de données et des nouveaux endpoints.
-- Nettoyage du code et refactoring de certaines parties de l'application.
-- Corrections de coquilles et améliorations de la lisibilité du code.
-- Ajout de hooks GitLeaks pour la détection de secrets dans le code.
-- Mise à jour de la version de l'application à 2.8.0.
+- Documentation et clarification de la structure des "skills" pour l'agent Letta.
+- Correction de coquilles et amélioration de la lisibilité de la documentation.
+- Mise à jour des informations de contact dans les mentions légales.
+- Suppression de badges RCO et simplification du code associé.
+- Correction de problèmes liés à la gestion des valeurs nulles et des types de données.
+- Amélioration des messages de log et de la gestion des erreurs.
