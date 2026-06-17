@@ -1,50 +1,100 @@
 ## Changelog : domifa (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Cette période a été marquée par de nombreuses corrections de bugs et améliorations de la sécurité, notamment autour de l'authentification (ajout de l'OTP) et de la gestion des utilisateurs. Des améliorations ont également été apportées à la journalisation et à la gestion des erreurs pour faciliter le diagnostic et la résolution des problèmes. Enfin, une mise à jour majeure des dépendances Angular a été effectuée.
+Cette version apporte des corrections de bugs et des améliorations de sécurité, notamment concernant l'authentification, la gestion des utilisateurs et la journalisation. Des améliorations ont également été apportées à l'interface utilisateur et à la gestion des emails. L'ajout de l'authentification à deux facteurs (OTP) est en cours de déploiement.
 
 ### Évolutions fonctionnelles
 - Ajout de la possibilité de supprimer des utilisateurs dans l'interface d'administration.
-- Implémentation de l'authentification à deux facteurs (OTP) pour une sécurité renforcée.
-- Ajout de la possibilité de renvoyer un OTP.
-- Ajout de statistiques sur les sessions utilisateurs.
-- Ajout de la possibilité de débloquer des utilisateurs.
-- Amélioration de la recherche et des filtres dans l'interface d'administration.
-- Ajout de la possibilité de délier un compte Brevo.
+- Implémentation de l'authentification à deux facteurs (OTP) pour la connexion.
+- Ajout de la possibilité de renvoyer un code OTP.
+- Amélioration de la gestion des alertes email avec l'ajout de titres et la correction des adresses email.
+- Ajout d'une fonctionnalité pour bloquer et débloquer les utilisateurs.
+- Ajout de statistiques de session.
 
 ### Évolutions techniques
-- Mise à jour de la version d'Angular à la v19 sur l'ensemble des frontends.
-- Amélioration de la journalisation (logs) pour faciliter le débogage et le suivi des événements.
-- Ajout de filtres d'exceptions pour une meilleure gestion des erreurs.
-- Refactorisation de la gestion des logs pour la sécurité et l'ajout d'un délai de 30 minutes pour l'OTP.
+- Refonte de la journalisation pour améliorer la sécurité et le débogage.
 - Amélioration de la gestion des tests unitaires.
-- Suppression de la "fabrique social" du backend.
-- Ajout de tests unitaires pour l'OTP.
-- Suppression de code obsolète et nettoyage général du code.
+- Intégration de Brevo pour l'envoi d'emails.
+- Mise à jour des dépendances et correction de problèmes de linting.
+- Ajout de filtres pour la suppression logique d'éléments.
+- Amélioration de la gestion des erreurs et des exceptions.
 
 ### Autres changements
-- Correction de problèmes liés à l'affichage de l'agent utilisateur.
-- Correction de problèmes liés aux alertes par email.
-- Correction de problèmes liés à la gestion des utilisateurs bloqués.
-- Correction de problèmes de construction de l'application frontend.
-- Correction de problèmes d'affichage des caractères spéciaux (@) dans le frontend.
-- Correction de problèmes liés au bouton de validation OTP.
-- Correction de problèmes de typage dans le backend.
-- Correction de problèmes liés aux logs pour les connexions inconnues.
-- Mise à jour des dépendances et des configurations de sécurité.
-- Ajout de titres et de pages pour améliorer l'expérience utilisateur.
-- Amélioration de la gestion des erreurs 401.
-- Ajout de labels d'action pour une meilleure identification des événements.
-- Ajout d'une structure de logs plus claire.
-- Correction de problèmes liés aux tests de bout en bout.
-- Ajout de la possibilité de réinitialiser l'OTP.
-- Correction de problèmes liés au chargement des utilisateurs.
-- Correction de problèmes de linting et de composants autonomes dans l'administration.
-- Amélioration de la gestion des limites de throttling.
-- Ajout de la possibilité de consulter les statistiques des sessions.
-- Correction de problèmes liés à la suppression d'utilisateurs.
-- Ajout de la possibilité de consulter les alertes de sécurité.
-- Correction de problèmes liés à l'affichage des titres et des pages.
-- Correction de problèmes liés au fonctionnement des dropdowns et des listes dans l'interface d'administration.
-- Ajout d'un identifiant unique (UUID) aux endpoints de la structure.
-- Correction d'une potentielle vulnérabilité de type "Type confusion through parameter tampering" identifiée par CodeQL.
+- Correction de problèmes d'affichage et de comportement de l'interface utilisateur.
+- Amélioration de la documentation et des commentaires dans le code.
+- Correction de bugs mineurs et amélioration de la stabilité générale de l'application.
+- Ajout de tests pour la suppression d'utilisateurs.
+- Correction de problèmes liés à la construction de l'application frontend.
+- Correction de problèmes de typage et de logs.
+- Ajout de logs pour les tentatives de connexion inconnues.
+- Correction de problèmes liés aux utilisateurs bloqués.
+- Ajout de tests unitaires.
+- Correction de vulnérabilités potentielles identifiées par CodeQL.
+- Ajout de statistiques de session.
+- Correction de problèmes de chargement des utilisateurs dans l'administration.
+- Ajout de filtres dans l'administration.
+- Correction de problèmes de modal de première connexion.
+- Ajout de logs pour les actions utilisateurs.
+- Correction de problèmes liés à l'importation de données.
+- Ajout de la possibilité de se déconnecter de Brevo.
+- Correction de l'affichage de l'agent utilisateur.
+- Correction de problèmes de test.
+- Ajout de la possibilité de supprimer des utilisateurs.
+- Correction de problèmes de filtrage et de recherche.
+- Ajout de logs pour les téléchargements.
+- Correction de problèmes liés à l'UUID.
+- Correction de problèmes de test.
+- Ajout de la lecture de session.
+- Ajout de whitelist.
+- Correction de problèmes de test.
+- Ajout de logs pour la sécurité.
+- Ajout de 30 minutes au OTP.
+- Correction de problèmes de construction de l'application.
+- Correction de problèmes d'arobase dans le texte.
+- Désactivation du bouton dans OTP.
+- Ajout d'un testeur d'email générique.
+- Correction de problèmes de typage.
+- Correction de logs pour les connexions inconnues.
+- Correction de problèmes liés aux utilisateurs bloqués.
+- Correction de problèmes de test.
+- Ajout de titres et de pages.
+- Correction de problèmes de dump et d'alertes de sécurité.
+- Correction de l'affichage de l'agent utilisateur.
+- Ajout de la possibilité de se déconnecter de Brevo.
+- Correction de problèmes de filtrage et de recherche.
+- Correction de problèmes d'email d'alerte.
+- Correction de problèmes de modal de première connexion.
+- Correction de problèmes de chargement des utilisateurs.
+- Correction de problèmes de test.
+- Ajout de l'OTP à l'administration.
+- Ajout de logs pour la sécurité.
+- Ajout d'éléments aux logs.
+- Ajout de la surveillance et du déblocage.
+- Ajout du type d'utilisateur aux logs.
+- Correction de problèmes de test.
+- Ajout de logs pour la sécurité.
+- Ajout de 30 minutes au OTP.
+- Ajout de whitelist.
+- Correction de problèmes de test.
+- Ajout de logs pour la sécurité.
+- Ajout de logs pour les téléchargements.
+- Correction de problèmes de typage.
+- Correction de logs pour les connexions inconnues.
+- Correction de problèmes liés aux utilisateurs bloqués.
+- Correction de problèmes de test.
+- Ajout de titres et de pages.
+- Correction de problèmes de dump et d'alertes de sécurité.
+- Correction de l'affichage de l'agent utilisateur.
+- Ajout de la possibilité de se déconnecter de Brevo.
+- Correction de problèmes de filtrage et de recherche.
+- Correction de problèmes d'email d'alerte.
+- Correction de problèmes de modal de première connexion.
+- Correction de problèmes de chargement des utilisateurs.
+- Correction de problèmes de test.
+- Ajout de l'OTP à l'administration.
+- Ajout de logs pour la sécurité.
+- Ajout d'éléments aux logs.
+- Ajout de la surveillance et du déblocage.
+- Ajout du type d'utilisateur aux logs.
+- Correction de problèmes de test.
+- Ajout de logs pour la sécurité.
