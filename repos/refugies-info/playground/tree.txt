@@ -1,19 +1,4 @@
 .
-├── .agents
-│   └── memory
-│       └── system
-│           ├── jeremie.md
-│           ├── luis.md
-│           ├── mcp_servers.md
-│           ├── persona.md
-│           └── project.md
-├── .claude
-│   └── settings.json
-├── .commands
-│   ├── audit.md
-│   ├── metadata.md
-│   ├── pipeline.md
-│   └── redaction.md
 ├── .config
 │   └── wt.toml
 ├── .devcontainer
@@ -29,7 +14,7 @@
 │   └── workflows
 │       ├── checks.yml
 │       ├── chromatic.yml
-│       └── production-release.yml
+│       └── letta.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── .husky
@@ -37,11 +22,6 @@
 │   └── pre-push
 ├── .npmrc
 ├── .prototools
-├── .skills
-│   └── metadata
-│       ├── SKILL.md
-│       └── scripts
-│           └── map-metadata.ts
 ├── .specify
 │   ├── memory
 │   │   └── constitution.md
@@ -352,6 +332,33 @@
 │       └── metadata-validation-strategy.md
 ├── documentation
 │   ├── README.md
+│   ├── agent-migration
+│   │   ├── README.md
+│   │   ├── agent-knowledge
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── SCHEMA.md
+│   │   │   ├── corpus.config.yaml
+│   │   │   ├── examples
+│   │   │   │   └── README.md
+│   │   │   ├── index.qmd
+│   │   │   ├── prompts
+│   │   │   │   └── README.md
+│   │   │   ├── references
+│   │   │   │   ├── README.md
+│   │   │   │   ├── data-inclusion-schema.md
+│   │   │   │   └── language-codes.md
+│   │   │   └── skills
+│   │   │       ├── README.md
+│   │   │       ├── audit
+│   │   │       │   └── .gitkeep
+│   │   │       ├── metadata
+│   │   │       │   └── .gitkeep
+│   │   │       ├── redaction
+│   │   │       │   └── .gitkeep
+│   │   │       └── translate
+│   │   │           └── .gitkeep
+│   │   └── letta-cloud-inventory.md
 │   ├── ai
 │   │   └── README.md
 │   ├── api
@@ -820,7 +827,7 @@
 │   ├── register-metadata-validator-tool.ts
 │   ├── run-di-ingestion-workflow.ts
 │   ├── seed-ingestion.ts
-│   ├── update-metadata-schema-block.ts
+│   ├── validate-corpus.ts
 │   └── validate-docs.ts
 ├── specs
 │   ├── 002-turborepo-scaffolding
@@ -934,7 +941,8 @@
 │   │   ├── 20260513110000_fix_service_role_grants_profiles.sql
 │   │   ├── 20260520142223_enable_realtime_ingestion_records.sql
 │   │   ├── 20260520155000_add_di_session_end_date_to_workflows_enriched.sql
-│   │   └── 20260603100000_rename_editorial_author_id_to_assignee_id.sql
+│   │   ├── 20260603100000_rename_editorial_author_id_to_assignee_id.sql
+│   │   └── 20260615095200_move_assignee_to_workflows.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -951,4 +959,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-217 directories, 736 files
+219 directories, 742 files

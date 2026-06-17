@@ -1,29 +1,34 @@
-## Changelog : playground (30 derniers jours, au 11 juin 2026)
+## Changelog : playground (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des fiches, notamment en ajoutant l'auto-sauvegarde, en corrigeant des bugs liés à la sauvegarde des coordonnées GPS et à l'affichage des titres, et en améliorant l'attribution des tâches aux utilisateurs. Des améliorations ont également été apportées à la gestion des métadonnées et à l'archivage des fiches. Enfin, des travaux de maintenance et d'optimisation ont été réalisés, notamment sur les crons et la sécurité.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des workflows, la correction de bugs liés à l'affichage et la sauvegarde des données, ainsi que l'optimisation de l'utilisation des ressources IA. Des améliorations de sécurité et de gestion des utilisateurs ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de l'auto-sauvegarde des fiches Bomo [#247](https://github.com/refugies-info/playground/pull/247).
-- Correction d'un bug empêchant la sauvegarde correcte des coordonnées GPS [#253](https://github.com/refugies-info/playground/pull/253).
-- Correction d'un bug d'affichage des titres des fiches RCO en langage clair [#252](https://github.com/refugies-info/playground/pull/252).
-- Possibilité d'assigner une fiche à un utilisateur spécifique, avec une gestion des permissions améliorée [#245](https://github.com/refugies-info/playground/pull/245), [#251](https://github.com/refugies-info/playground/pull/251).
-- Ajout de la date de fin dans les tableaux d'ingestion [#232](https://github.com/refugies-info/playground/pull/232).
-- Ajout du nombre de mots dans le tableau d'ingestion [#230](https://github.com/refugies-info/playground/pull/230).
-- Possibilité d'afficher le bouton "enregistrer" même pour les fiches archivées [#237](https://github.com/refugies-info/playground/pull/237).
-- Amélioration de l'affichage de l'état de publication [#237](https://github.com/refugies-info/playground/pull/237).
+- Possibilité d'assigner une fiche à un utilisateur pour suivi ([#236](https://github.com/refugies-info/playground/pull/236)).
+- Ajout d'une date de fin pour les tableaux d'ingestion, permettant un suivi plus précis des délais ([#232](https://github.com/refugies-info/playground/pull/232)).
+- Affichage du nombre de mots dans le tableau d'ingestion pour une meilleure analyse du contenu ([#230](https://github.com/refugies-info/playground/pull/230)).
+- Correction d'un bug empêchant la sauvegarde des fiches Bomo ([#243](https://github.com/refugies-info/playground/pull/243)).
+- Correction d'un bug lié à l'affichage des titres des fiches RCO en langage clair ([#252](https://github.com/refugies-info/playground/pull/252)).
+- Correction d'un bug sur les métadonnées avec des coordonnées GPS ([#253](https://github.com/refugies-info/playground/pull/253)).
+- Amélioration de l'affichage du statut de publication des documents.
+- Possibilité d'afficher le bouton "enregistrer" même pour les fiches archivées ([#237](https://github.com/refugies-info/playground/pull/237)).
+- Ajout de Camille et Jérémy au seed des utilisateurs pour faciliter les tests et le débogage ([#258](https://github.com/refugies-info/playground/pull/258)).
+- Activation de la création de nouvelles fiches depuis la sauvegarde ([#254](https://github.com/refugies-info/playground/pull/254)).
 
 ### Évolutions techniques
-- Refactorisation de la gestion des métadonnées pour optimiser l'utilisation de l'IA et ne générer des métadonnées que pour les fiches conformes [#230](https://github.com/refugies-info/playground/pull/230).
-- Mise à jour de la base de données avec une commande de migration dédiée [#251](https://github.com/refugies-info/playground/pull/251).
-- Amélioration de la sécurité en limitant les rôles autorisés pour l'assignation d'utilisateurs [#204](https://github.com/refugies-info/playground/pull/204).
-- Correction de bugs et refactorisation du code liés à l'archivage des fiches [#240](https://github.com/refugies-info/playground/pull/240).
-- Mise à jour des dépendances du workflow [#236](https://github.com/refugies-info/playground/pull/236).
-- Ajout d'un scan de vulnérabilités des dépendances en pré-push [#244](https://github.com/refugies-info/playground/pull/244).
+- Mise en place d'une action CI/CD avec Letta Cloud pour la revue de code ([#268](https://github.com/refugies-info/playground/pull/268)).
+- Migration de l'identifiant `author_id` vers `assignee_id` dans la table `editorial_records` et les workflows associés ([#257](https://github.com/refugies-info/playground/pull/257), [#238](https://github.com/refugies-info/playground/pull/238), [#242](https://github.com/refugies-info/playground/pull/242)).
+- Suppression des paramètres Claude ([#266](https://github.com/refugies-info/playground/pull/266), [#260](https://github.com/refugies-info/playground/pull/260)).
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité ([#262](https://github.com/refugies-info/playground/pull/262)).
+- Archivage des anciens assets RCO XML ([#260](https://github.com/refugies-info/playground/pull/260)).
+- Ajout d'une commande pour migrer la base de données ([#251](https://github.com/refugies-info/playground/pull/251)).
+- Optimisation de l'utilisation de l'IA en limitant la génération de métadonnées aux enregistrements conformes ([#229](https://github.com/refugies-info/playground/pull/229)).
+- Suppression d'un workflow Supabase redondant ([#242](https://github.com/refugies-info/playground/pull/242)).
 
 ### Autres changements
-- Suppression de code mort lié à l'ancien workflow de traduction [#236](https://github.com/refugies-info/playground/pull/236).
-- Correction de tests Storybook bloquant la CI [#239](https://github.com/refugies-info/playground/pull/239).
-- Mise à jour de la configuration des crons pour l'ingestion de données [#228](https://github.com/refugies-info/playground/pull/228), [#231](https://github.com/refugies-info/playground/pull/231).
-- Modification du nom de la variable `author_id` en `assignee_id` pour refléter la nouvelle fonctionnalité d'assignation [#238](https://github.com/refugies-info/playground/pull/238).
-- Amélioration de la gestion des erreurs lors de la mise à jour du statut de conformité [#248](https://github.com/refugies-info/playground/pull/248).
+- Documentation mise à jour concernant l'inventaire Letta Cloud ([#259](https://github.com/refugies-info/playground/pull/259)).
+- Correction de références obsolètes dans la documentation ([#260](https://github.com/refugies-info/playground/pull/260)).
+- Mise à jour des dépendances de routine.
+- Ajustement du cron pour l'ingestion DI.
+- Ajout de tests pour les crons.
+- Suppression d'un workflow de traduction inutile.
