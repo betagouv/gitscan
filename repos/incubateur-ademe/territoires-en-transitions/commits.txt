@@ -1,3 +1,55 @@
+2026-06-16T14:43:06+02:00 - 512a8f9 - Gaël Servaud : chore(referentiels): reduit le TTL de l'URL de telechargement d'archive a 10 min
+2026-06-16T14:21:32+02:00 - 63d6da5 - Gaël Servaud : feat(authorizations): conserve le role auditeur 15 jours apres la cloture de l'audit
+2026-06-16T14:13:08+02:00 - ed3706b - Fred Arnoux : fix(rls): autorise les utilisateurs ADEME a lire storage.objects
+2026-06-16T14:13:08+02:00 - 1245e27 - Fred Arnoux : test(e2e): un utilisateur ADEME peut telecharger les preuves d'une autre collectivite
+2026-06-16T14:12:20+02:00 - 374d3de - Gaël Servaud : feat(preuves): verrouille les preuves de labellisation une fois l'audit valide
+2026-06-16T13:51:18+02:00 - e39f286 - Gaël Servaud : feat(referentiels): scope les preuves de mesures a la fenetre de l'audit
+2026-06-16T10:27:56+02:00 - 39b0372 - Gaël Servaud : feat(referentiels): derive le plafond d'etoile demandable du score realise
+2026-06-16T09:46:05+02:00 - d79d52d - Gaël Servaud : feat(ai-plan-import): propage les etats d'etapes au fil de l'eau pendant l'import
+2026-06-15T19:20:24+02:00 - 039e030 - Gaël Servaud : fix(referentiels): limite les preuves de l'archive au référentiel de l'audit
+2026-06-15T16:09:17+02:00 - 6cc5989 - Gaël Servaud : feat(ai-plan-import): le worker cree le plan directement, sans etape de confirmation
+2026-06-15T12:39:58+02:00 - f9c5824 - Marc Rutkowski : Ajoute l'évaluation du contexte référentiel pour les formules l'utilisant
+2026-06-15T12:39:58+02:00 - eac02a0 - Marc Rutkowski : Gère la syntaxe `referentiel(<id>)` dans le parser et l'évaluateur d'expressions
+2026-06-15T12:39:58+02:00 - a7cf4aa - Marc Rutkowski : Ajout de la description des changements envisagés
+2026-06-15T12:39:58+02:00 - 801dde3 - Marc Rutkowski : Valide les expressions utilisant le contexte référentiel lors de l'import
+2026-06-15T12:39:58+02:00 - 4229a6e - Marc Rutkowski : Restreint l'évaluation des scores indicatifs au référentiel du snapshot
+2026-06-15T12:39:38+02:00 - fc29200 - Marc Rutkowski : Extrait un utilitaire
+2026-06-15T12:39:38+02:00 - f6571f6 - Arthur Molinos : wip : clean et sépare les composants de la liste de sous-mesure en fonction du référentiel
+2026-06-15T12:39:38+02:00 - eb2c9b2 - Arthur Molinos : Déplace les composants liés aux anciens référentiel dans un dossier dédié
+2026-06-15T12:39:38+02:00 - e1cb2bb - Arthur Molinos : Intervertit la jauge et le score dans le header d'une mesure
+2026-06-15T12:39:38+02:00 - dc36fa0 - Arthur Molinos : Supprime le toggle showJustification de la page d'une mesure
+2026-06-15T12:39:38+02:00 - d9bb822 - Arthur Molinos : Améliore l'affichage du badge d'audit dans le header d'une mesure
+2026-06-15T12:39:38+02:00 - d9571c0 - Arthur Molinos : Déplace les actions pour les scores indicatifs dans un nouveau composant
+2026-06-15T12:39:38+02:00 - d7a117c - Arthur Molinos : Adapte les tâches de tableau référentiel au référentiel TE
+2026-06-15T12:39:38+02:00 - d5aa045 - Arthur Molinos : Affiche les informations du header de la mesure en sticky pour les grands écrans
+2026-06-15T12:39:38+02:00 - b8032cd - Marc Rutkowski : Ajuste la présentation du volet Informations d'une mesure
+2026-06-15T12:39:38+02:00 - b6d29d6 - Marc Rutkowski : Ouvre le panneau info depuis une sous-mesure
+2026-06-15T12:39:38+02:00 - ae1693b - Arthur Molinos : Enleve un bouton du header pour les mesures du nouveau référentiel
+2026-06-15T12:39:38+02:00 - aa95acb - Arthur Molinos : Utilise une fonction existante
+2026-06-15T12:39:38+02:00 - a7af324 - Marc Rutkowski : Internalise l'état du volet latéral dans le provider plutôt que la page
+2026-06-15T12:39:38+02:00 - 9a9a4f6 - Marc Rutkowski : Ouvre par défaut le volet Informations sur la page mesure
+2026-06-15T12:39:38+02:00 - 918c7f3 - Arthur Molinos : amélioration graphique
+2026-06-15T12:39:38+02:00 - 88fc6a5 - Marc Rutkowski : Met à jour les données du référentiel TE de test
+2026-06-15T12:39:38+02:00 - 8489721 - Arthur Molinos : Rend le header d'une mesure plus petit lorsque sticky
+2026-06-15T12:39:38+02:00 - 8047a9a - Arthur Molinos : Fix category label affiché dans SubactionsListContainer dans le cas où une catégorie est undefined
+2026-06-15T12:39:38+02:00 - 716e17d - Arthur Molinos : Ajoute l'info tooltip description de l'indicateur au niveau de son titre
+2026-06-15T12:39:38+02:00 - 6e7cb1f - Arthur Molinos : Ajoute un scroll vers la sous-action active
+2026-06-15T12:39:38+02:00 - 660d22b - Arthur Molinos : Enlève l'option de statut détailler à la tâche pour le nouveau référentiel
+2026-06-15T12:39:38+02:00 - 62a2f33 - Arthur Molinos : Affiche le niveau d'adaptation dans les sous-mesures
+2026-06-15T12:39:38+02:00 - 5618e34 - Arthur Molinos : Rétabli les line-height dans PageHeader du package ui
+2026-06-15T12:39:38+02:00 - 55bbf45 - Arthur Molinos : Supprime prefetchedScoreIndicatif de ScoreIndicatifActions prop
+2026-06-15T12:39:38+02:00 - 3b4980d - Arthur Molinos : wip: affiche les scores indicatifs dans les nouvelles sous-mesures
+2026-06-15T12:39:38+02:00 - 390be3d - Arthur Molinos : wip: intégration des nouvelles cartes sous-mesures
+2026-06-15T12:39:38+02:00 - 37d4673 - Arthur Molinos : Ajoute l'id de la mesure active dans le panneau latéral
+2026-06-15T12:39:38+02:00 - 2afede7 - Arthur Molinos : Ajoute la taille réelle du header pour le scroll à la sous-mesure
+2026-06-15T12:39:38+02:00 - 27ff9ba - Marc Rutkowski : Améliore l'ouverture automatique du panneau Informations
+2026-06-15T12:39:38+02:00 - 1d9a870 - Marc Rutkowski : Conserve l'état des sections ouvertes quand on passe d'une mesure à l'autre
+2026-06-15T12:39:38+02:00 - 1d0c2d2 - Arthur Molinos : Fix un oubli de type
+2026-06-15T12:39:38+02:00 - 1cc6f1e - Marc Rutkowski : Synchronise l'état d'ouverture des sections ouvertes avec l'url
+2026-06-15T12:39:38+02:00 - 13daf3c - Marc Rutkowski : Ajoute la colonne indiquant le niveau d'exposition au changement climatique dans les définitions des mesures
+2026-06-15T12:39:38+02:00 - 0ae28cd - Marc Rutkowski : Répare les tests e2e
+2026-06-15T12:39:38+02:00 - 0267d42 - Arthur Molinos : Nouveau bouton commentaires des sous-mesures remplaçant l'ancienne implémentation directe dans le composant Subaction
+2026-06-15T10:39:25+02:00 - c24277a - Gaël Servaud : feat(audits): modale de clôture d'audit en 2 étapes
 2026-06-12T22:49:17+02:00 - 0420172 - Fred Arnoux : fix(security): bloque l'IDOR sur plans.fiches.budgets.upsert (TET-7356)
 2026-06-12T17:17:13+02:00 - 9987397 - Fred Arnoux : fix(rls): restrict storage.objects reads to collectivity members
 2026-06-12T17:17:13+02:00 - 6de6a49 - Fred Arnoux : fix(sqitch): Rend la migration d'index plus flexible

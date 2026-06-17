@@ -239,11 +239,25 @@
 │   │   │   │   │   │   │   │   │   ├── action
 │   │   │   │   │   │   │   │   │   │   └── [actionId]
 │   │   │   │   │   │   │   │   │   │       ├── _components
-│   │   │   │   │   │   │   │   │   │       │   ├── action
-│   │   │   │   │   │   │   │   │   │       │   │   └── action-explication.field.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── action-explication.field.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action-hidden.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action-not-found.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── components.new-referentiel
+│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-comments.button.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-score-indicatif.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   └── subactions.list-container.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── components.old-referentiel
+│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.actions.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction-card.header.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction-card.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.cards-list.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   └── use-scroll-to-hash.ts
+│   │   │   │   │   │   │   │   │   │       │   │   └── task
+│   │   │   │   │   │   │   │   │   │       │   │       ├── task-card.tsx
+│   │   │   │   │   │   │   │   │   │       │   │       └── task.cards-list.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── header
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-side-panel-toolbar.tsx
@@ -257,8 +271,6 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── previous-and-next-actions.links.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   └── vertical-divider.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── information
-│   │   │   │   │   │   │   │   │   │       │   │   └── action-information.item.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── score-indicatif
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.donnees.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.labels.ts
@@ -271,25 +283,19 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── use-get-valeurs-utilisees.ts
 │   │   │   │   │   │   │   │   │   │       │   │   ├── use-set-valeurs-utilisees.ts
 │   │   │   │   │   │   │   │   │   │       │   │   └── utils.ts
-│   │   │   │   │   │   │   │   │   │       │   ├── side-panel
-│   │   │   │   │   │   │   │   │   │       │   │   ├── buttons.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── comments.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── context.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── documents.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── index.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── indicateurs.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── informations.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── types.ts
-│   │   │   │   │   │   │   │   │   │       │   │   └── use-metadata-count.ts
-│   │   │   │   │   │   │   │   │   │       │   ├── subaction
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.actions.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── use-scroll-to-hash.ts
-│   │   │   │   │   │   │   │   │   │       │   └── task
-│   │   │   │   │   │   │   │   │   │       │       ├── task-card.tsx
-│   │   │   │   │   │   │   │   │   │       │       └── task.cards-list.tsx
+│   │   │   │   │   │   │   │   │   │       │   └── side-panel
+│   │   │   │   │   │   │   │   │   │       │       ├── buttons.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── comments.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── context.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── documents.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── index.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── indicateurs.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── informations.button.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── informations.config.ts
+│   │   │   │   │   │   │   │   │   │       │       ├── informations.item.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── informations.tsx
+│   │   │   │   │   │   │   │   │   │       │       ├── types.ts
+│   │   │   │   │   │   │   │   │   │       │       └── use-metadata-count.ts
 │   │   │   │   │   │   │   │   │   │       ├── layout.tsx
 │   │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── labellisation
@@ -1406,7 +1412,6 @@
 │   │   │   │   │   ├── ActionAuditDetail.tsx
 │   │   │   │   │   ├── ActionAuditStatut.stories.tsx
 │   │   │   │   │   ├── ActionAuditStatut.tsx
-│   │   │   │   │   ├── AddRapportButton.tsx
 │   │   │   │   │   ├── AuditComparaison
 │   │   │   │   │   │   ├── AuditComparaisonTable.tsx
 │   │   │   │   │   │   ├── index.tsx
@@ -1429,13 +1434,30 @@
 │   │   │   │   │   │   ├── queries.tsx
 │   │   │   │   │   │   └── useTableData.ts
 │   │   │   │   │   ├── BadgeAuditStatut.tsx
+│   │   │   │   │   ├── cloture
+│   │   │   │   │   │   ├── cloturer-audit.button.tsx
+│   │   │   │   │   │   ├── cloturer-audit.modal.tsx
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-list-reports-by-audit.ts
+│   │   │   │   │   │   │   ├── use-upload-audit-report.ts
+│   │   │   │   │   │   │   └── use-validate-audit.ts
+│   │   │   │   │   │   ├── mail-template
+│   │   │   │   │   │   │   ├── field-with-copy.tsx
+│   │   │   │   │   │   │   ├── get-mail-template-to-copy-paste.test.ts
+│   │   │   │   │   │   │   ├── get-mail-template-to-copy-paste.ts
+│   │   │   │   │   │   │   ├── mail-template-step-footer.tsx
+│   │   │   │   │   │   │   ├── mail-template.view.tsx
+│   │   │   │   │   │   │   └── use-mail-step.tsx
+│   │   │   │   │   │   └── report-upload
+│   │   │   │   │   │       ├── audit-report-uploader.tsx
+│   │   │   │   │   │       ├── audit-reports.list.tsx
+│   │   │   │   │   │       ├── report-card.tsx
+│   │   │   │   │   │       ├── upload-report-step-footer.tsx
+│   │   │   │   │   │       └── use-report-upload-step.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── use-get-mesure-audit-statut.ts
 │   │   │   │   │   ├── use-update-mesure-audit-statut.ts
-│   │   │   │   │   ├── useAddPreuveToAudit.ts
-│   │   │   │   │   ├── useAudit.ts
-│   │   │   │   │   ├── valider-audit.button.stories.tsx
-│   │   │   │   │   └── valider-audit.button.tsx
+│   │   │   │   │   └── useAudit.ts
 │   │   │   │   ├── comparisons
 │   │   │   │   │   ├── deleteSnapshot
 │   │   │   │   │   │   ├── delete-snapshot.button.tsx
@@ -1494,8 +1516,7 @@
 │   │   │   │   │   ├── useCycleLabellisation.ts
 │   │   │   │   │   ├── useEnvoiDemande.ts
 │   │   │   │   │   ├── useLabellisationParcours.ts
-│   │   │   │   │   ├── useStartAudit.ts
-│   │   │   │   │   └── useValidateAudit.ts
+│   │   │   │   │   └── useStartAudit.ts
 │   │   │   │   ├── preuves
 │   │   │   │   │   ├── AddPreuveComplementaire.tsx
 │   │   │   │   │   ├── AddPreuveModal
@@ -1510,12 +1531,10 @@
 │   │   │   │   │   │   ├── FileItem.tsx
 │   │   │   │   │   │   ├── FileItemsList.stories.tsx
 │   │   │   │   │   │   ├── FileItemsList.tsx
-│   │   │   │   │   │   ├── constants.tsx
 │   │   │   │   │   │   ├── filesToUploadList.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   ├── useAddFileToLib.ts
-│   │   │   │   │   │   ├── useCollectiviteBucketId.ts
+│   │   │   │   │   │   ├── use-file-upload-list.ts
 │   │   │   │   │   │   └── useUploader.ts
 │   │   │   │   │   ├── AddPreuveReglementaire.tsx
 │   │   │   │   │   ├── Bibliotheque
@@ -1540,6 +1559,16 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── PreuvesAction.stories.tsx
 │   │   │   │   │   ├── PreuvesAction.tsx
+│   │   │   │   │   ├── mappers
+│   │   │   │   │   │   ├── audit-report-to-preuve.test.ts
+│   │   │   │   │   │   └── audit-report-to-preuve.ts
+│   │   │   │   │   ├── upload
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── upload-file-to-bucket.ts
+│   │   │   │   │   │   ├── use-upload-file-to-collectivite-library.ts
+│   │   │   │   │   │   ├── useAddFileToLib.ts
+│   │   │   │   │   │   ├── useCollectiviteBucketId.ts
+│   │   │   │   │   │   └── validate-file.ts
 │   │   │   │   │   ├── use-action-preuves-count.ts
 │   │   │   │   │   ├── useAddPreuveToAction.ts
 │   │   │   │   │   ├── useAddPreuves.ts
@@ -1836,6 +1865,7 @@
 │   │   │       │   ├── toast-context.tsx
 │   │   │       │   ├── use-base-toast.tsx
 │   │   │       │   └── use-mutation-toast.tsx
+│   │   │       ├── toggle-array-value.ts
 │   │   │       ├── use-api-client.ts
 │   │   │       ├── use-get-url-hash.ts
 │   │   │       ├── useDownloadFile.ts
@@ -2644,6 +2674,7 @@
 │   │   │   │   │   │   ├── enqueue-import
 │   │   │   │   │   │   │   ├── detect-source-mime-type.spec.ts
 │   │   │   │   │   │   │   ├── detect-source-mime-type.ts
+│   │   │   │   │   │   │   ├── enqueue-import.controller.e2e-spec.ts
 │   │   │   │   │   │   │   ├── enqueue-import.controller.ts
 │   │   │   │   │   │   │   ├── enqueue-import.input.spec.ts
 │   │   │   │   │   │   │   ├── enqueue-import.input.ts
@@ -2663,6 +2694,8 @@
 │   │   │   │   │   │   │   │   ├── select-low-score-actions.ts
 │   │   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
 │   │   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
+│   │   │   │   │   │   │   ├── draft-to-import-plan-input.spec.ts
+│   │   │   │   │   │   │   ├── draft-to-import-plan-input.ts
 │   │   │   │   │   │   │   ├── enrich-sous-actions
 │   │   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
 │   │   │   │   │   │   │   │   ├── apply-enrichments.ts
@@ -3134,6 +3167,7 @@
 │   │   │   │   │   ├── get-score-indicatif.request.ts
 │   │   │   │   │   ├── get-valeurs-utilisables.request.ts
 │   │   │   │   │   ├── get-valeurs-utilisees.request.ts
+│   │   │   │   │   ├── score-indicatif.errors.ts
 │   │   │   │   │   ├── score-indicatif.router.e2e-spec.ts
 │   │   │   │   │   ├── score-indicatif.router.ts
 │   │   │   │   │   ├── score-indicatif.service.ts
@@ -3347,7 +3381,9 @@
 │   │   │       │   ├── generate-diagrams.ts
 │   │   │       │   ├── generated-diagrams.html
 │   │   │       │   ├── get-formatted-errors.utils.ts
-│   │   │       │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── parse-referentiel-arg.spec.ts
+│   │   │       │   └── parse-referentiel-arg.ts
 │   │   │       ├── fuse
 │   │   │       │   ├── fuse.utils.spec.ts
 │   │   │       │   └── fuse.utils.ts
@@ -4279,6 +4315,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
+│   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
@@ -4519,6 +4556,7 @@
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
 │   │   │   │   ├── ai_plan_import_job.sql
+│   │   │   │   ├── ai_plan_import_job_created_plan.sql
 │   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
@@ -4604,6 +4642,7 @@
 │   │   │   │   ├── action_statut@v1.17.0.sql
 │   │   │   │   ├── action_statut_historique.sql
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
+│   │   │   │   ├── add_adaptation_niveau.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
 │   │   │   │   ├── audit_preuves_archive.sql
@@ -4815,6 +4854,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
+│   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
@@ -5056,6 +5096,7 @@
 │   │   │   │   ├── add_report_generation_table.sql
 │   │   │   │   ├── add_report_notifications.sql
 │   │   │   │   ├── ai_plan_import_job.sql
+│   │   │   │   ├── ai_plan_import_job_created_plan.sql
 │   │   │   │   ├── ajout_created_columns_tags.sql
 │   │   │   │   ├── ajout_de_pilote_par_plan.sql
 │   │   │   │   ├── ajout_de_referent_par_plan.sql
@@ -5141,6 +5182,7 @@
 │   │   │   │   ├── action_statut@v1.17.0.sql
 │   │   │   │   ├── action_statut_historique.sql
 │   │   │   │   ├── action_statut_historique@v1.14.0.sql
+│   │   │   │   ├── add_adaptation_niveau.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
 │   │   │   │   ├── audit_preuves_archive.sql
@@ -5353,6 +5395,7 @@
 │   │       │   ├── bucket.sql
 │   │       │   ├── bucket@v2.93.0.sql
 │   │       │   ├── bucket@v4.36.0.sql
+│   │       │   ├── bucket_rls_ademe_read.sql
 │   │       │   ├── bucket_rls_strict_read.sql
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
@@ -5592,6 +5635,7 @@
 │   │       │   ├── add_report_generation_table.sql
 │   │       │   ├── add_report_notifications.sql
 │   │       │   ├── ai_plan_import_job.sql
+│   │       │   ├── ai_plan_import_job_created_plan.sql
 │   │       │   ├── ajout_created_columns_tags.sql
 │   │       │   ├── ajout_de_pilote_par_plan.sql
 │   │       │   ├── ajout_de_referent_par_plan.sql
@@ -5677,6 +5721,7 @@
 │   │       │   ├── action_statut@v1.17.0.sql
 │   │       │   ├── action_statut_historique.sql
 │   │       │   ├── action_statut_historique@v1.14.0.sql
+│   │       │   ├── add_adaptation_niveau.sql
 │   │       │   ├── add_audit_etoiles.sql
 │   │       │   ├── add_demande_associated_collectivite_id.sql
 │   │       │   ├── audit_preuves_archive.sql
@@ -5930,7 +5975,8 @@
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
-│   │   └── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
+│   │   ├── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
+│   │   └── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
 │   └── solutions
 │       ├── architecture-patterns
 │       │   ├── extract-history-repository-from-service.md
@@ -6021,13 +6067,13 @@
 │   │   │   │   ├── checklist-role-mesures.spec.ts
 │   │   │   │   ├── checklist-score-minimum.spec.ts
 │   │   │   │   ├── checklist-statut-refresh.spec.ts
+│   │   │   │   ├── cloturer-audit.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
 │   │   │   │   ├── new-audit-labellisation.pom.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
 │   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
-│   │   │   │   ├── start-labellisation-cot.spec.ts
-│   │   │   │   └── validate-labellisation-cot.spec.ts
+│   │   │   │   └── start-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
 │   │   │   └── scores
 │   │   │       ├── accordion-header-click.spec.ts
@@ -6309,6 +6355,7 @@
 │   │   │   ├── referentiels
 │   │   │   │   ├── action-with-score.schema.ts
 │   │   │   │   ├── actions
+│   │   │   │   │   ├── action-adaptation-niveau.enum.ts
 │   │   │   │   │   ├── action-categorie.enum.schema.ts
 │   │   │   │   │   ├── action-commentaire.schema.ts
 │   │   │   │   │   ├── action-definition-tag.schema.ts
@@ -6332,6 +6379,9 @@
 │   │   │   │   ├── labellisations
 │   │   │   │   │   ├── action-audit-statut.enum.schema.ts
 │   │   │   │   │   ├── action-audit-statut.schema.ts
+│   │   │   │   │   ├── can-modify-labellisation-preuves
+│   │   │   │   │   │   ├── can-modify-labellisation-preuves.rule.spec.ts
+│   │   │   │   │   │   └── can-modify-labellisation-preuves.rule.ts
 │   │   │   │   │   ├── etoile-action-condition-definition.schema.ts
 │   │   │   │   │   ├── labellisation-audit.schema.ts
 │   │   │   │   │   ├── labellisation-critere.schema.ts
@@ -6343,7 +6393,10 @@
 │   │   │   │   │   ├── parcours-labellisation.schema.ts
 │   │   │   │   │   ├── request-labellisation
 │   │   │   │   │   │   ├── request-labellisation.rules-errors.ts
+│   │   │   │   │   │   ├── request-labellisation.rules.spec.ts
 │   │   │   │   │   │   └── request-labellisation.rules.ts
+│   │   │   │   │   ├── requestable-star.spec.ts
+│   │   │   │   │   ├── requestable-star.ts
 │   │   │   │   │   ├── start-audit
 │   │   │   │   │   │   ├── start-audit.rules-errors.ts
 │   │   │   │   │   │   └── start-audit.rules.ts
@@ -7139,4 +7192,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1241 directories, 6098 files
+1248 directories, 6144 files
