@@ -655,6 +655,8 @@
 │   │   │   ├── consigneAcceptationCguDansJournal.js
 │   │   │   ├── consigneAccesUtilisateurAdministreRetiresDansJournal.ts
 │   │   │   ├── consigneActiviteMesure.js
+│   │   │   ├── consigneAdminNommeSurOrganisationDansJournal.ts
+│   │   │   ├── consigneAdminRetireDeOrganisationDansJournal.ts
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.js
 │   │   │   ├── consigneCompletudeDansJournal.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.ts
@@ -830,6 +832,8 @@
 │   │   │   ├── erreurs.js
 │   │   │   ├── evenement.js
 │   │   │   ├── evenementAccesUtilisateurAdministreRetires.ts
+│   │   │   ├── evenementAdminNommeSurOrganisation.ts
+│   │   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   │   ├── evenementCguAcceptees.js
 │   │   │   ├── evenementCollaboratifServiceModifie.js
 │   │   │   ├── evenementCompletudeServiceModifiee.commun.ts
@@ -1100,6 +1104,7 @@
 │       ├── accueilInscription.pug
 │       ├── activation.pug
 │       ├── admin
+│       │   ├── administrateurs.pug
 │       │   ├── entites.pug
 │       │   └── utilisateurs.pug
 │       ├── apresAuthentification.pug
@@ -1174,6 +1179,10 @@
 │   │   │   ├── AccueilInscription.svelte
 │   │   │   ├── accueilInscription.d.ts
 │   │   │   └── accueilInscription.ts
+│   │   ├── adminAdministrateurs
+│   │   │   ├── AdminAdministrateurs.svelte
+│   │   │   ├── Tuiles.svelte
+│   │   │   └── adminAdministrateurs.ts
 │   │   ├── adminEntites
 │   │   │   ├── AdminEntites.svelte
 │   │   │   ├── LignesDuTableau
@@ -1198,6 +1207,7 @@
 │   │   ├── adminUtilisateurs
 │   │   │   ├── AdminUtilisateurs.svelte
 │   │   │   ├── BadgeAdmin.svelte
+│   │   │   ├── ModaleEntitesUtilisateurAdministre.svelte
 │   │   │   ├── TiroirGestionUtilisateurAdministre
 │   │   │   │   ├── ActionAttributionRole.svelte
 │   │   │   │   ├── ActionRetraitAcces.svelte
@@ -1651,6 +1661,7 @@
 │   │   ├── typesBasiquesSvelte.ts
 │   │   ├── ui
 │   │   │   ├── AsterisqueChampRequis.svelte
+│   │   │   ├── AucunResultatRecherche.svelte
 │   │   │   ├── Avertissement.svelte
 │   │   │   ├── BarreDeRecherche.svelte
 │   │   │   ├── Bouton.svelte
@@ -1670,6 +1681,7 @@
 │   │   │   ├── CaseACocher.svelte
 │   │   │   ├── ChampDeSaisie.svelte
 │   │   │   ├── ChampOrganisation.svelte
+│   │   │   ├── ChampRecherche.svelte
 │   │   │   ├── ChampTexte.svelte
 │   │   │   ├── ChargementEnCours.svelte
 │   │   │   ├── Confetti.svelte
@@ -1824,6 +1836,8 @@
 │   │   │   ├── consigneAcceptationCguDansJournal.spec.js
 │   │   │   ├── consigneAccesUtilisateurAdministreRetiresDansJournal.spec.ts
 │   │   │   ├── consigneActiviteMesure.spec.js
+│   │   │   ├── consigneAdminNommeSurOrganisationDansJournal.spec.ts
+│   │   │   ├── consigneAdminRetireDeOrganisationDansJournal.spec.ts
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.spec.js
 │   │   │   ├── consigneCompletudeDansJournal.spec.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.spec.ts
@@ -1978,6 +1992,8 @@
 │   │   ├── journalMSS
 │   │   │   ├── constructeurEvenementCompletudeServiceModifiee.js
 │   │   │   ├── evenementAccesUtilisateurAdministreRetires.spec.ts
+│   │   │   ├── evenementAdminNommeSurOrganisation.spec.ts
+│   │   │   ├── evenementAdminRetireDeOrganisation.spec.ts
 │   │   │   ├── evenementCguAcceptees.spec.js
 │   │   │   ├── evenementCollaboratifServiceModifie.spec.js
 │   │   │   ├── evenementCompletudeServiceModifiee.spec.ts
@@ -2170,4 +2186,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-292 directories, 2004 files
+293 directories, 2019 files
