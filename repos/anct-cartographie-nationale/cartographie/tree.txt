@@ -32,7 +32,8 @@
 ├── docs
 │   ├── codes-territoires.md
 │   ├── integration-url.md
-│   └── integration-web-component.md
+│   ├── integration-web-component.md
+│   └── observabilité.md
 ├── infrastructure
 │   ├── .env.example
 │   ├── .gitignore
@@ -236,6 +237,7 @@
 │   │   ├── error.tsx
 │   │   ├── favicon.ico
 │   │   ├── favicon.svg
+│   │   ├── global-error.tsx
 │   │   ├── layout.tsx
 │   │   └── not-found.tsx
 │   ├── configuration
@@ -243,13 +245,23 @@
 │   │   │   ├── client.ts
 │   │   │   └── index.ts
 │   │   └── telemetry
-│   │       └── event-tracker
-│   │           ├── event-tracker-config.key.ts
-│   │           ├── event-tracker.tsx
-│   │           ├── event-tracker.wc.tsx
-│   │           ├── index.ts
-│   │           ├── register.ts
-│   │           └── track-event.ts
+│   │       ├── error-reporter
+│   │       │   ├── client.ts
+│   │       │   ├── index.ts
+│   │       │   ├── report-error.ts
+│   │       │   ├── scrub-event.spec.ts
+│   │       │   ├── scrub-event.ts
+│   │       │   ├── sentry-options.ts
+│   │       │   └── server.ts
+│   │       ├── event-tracker
+│   │       │   ├── event-tracker-config.key.ts
+│   │       │   ├── event-tracker.tsx
+│   │       │   ├── event-tracker.wc.tsx
+│   │       │   ├── index.ts
+│   │       │   ├── register.ts
+│   │       │   └── track-event.ts
+│   │       └── logger
+│   │           └── server.ts
 │   ├── content
 │   │   └── legal
 │   │       ├── declaration-d-accessibilite.mdx
@@ -627,6 +639,7 @@
 │   │   │   ├── keys
 │   │   │   │   ├── api-base-url.key.ts
 │   │   │   │   ├── contact-action.key.ts
+│   │   │   │   ├── error-reporter.key.ts
 │   │   │   │   ├── map-config.key.ts
 │   │   │   │   ├── map-position.schema.ts
 │   │   │   │   ├── site-url.key.ts
@@ -689,4 +702,4 @@
 ├── vite.config.wc.ts
 ├── vitest.config.infra.mjs
 └── vitest.config.mjs
-196 directories, 495 files
+198 directories, 506 files

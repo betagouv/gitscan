@@ -1,3 +1,58 @@
+# [6.25.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.24.0...v6.25.0) (2026-06-16)
+
+
+### Bug Fixes
+
+* **cache:** await memory refresh before invalidating Next cache on reset ([2ea5904](https://github.com/anct-cartographie-nationale/cartographie/commit/2ea59047881c3fd73c55f3920b246f01c0410482))
+* **infra:** shorten nginx cache TTL to 5m so cache reset propagates ([62b786b](https://github.com/anct-cartographie-nationale/cartographie/commit/62b786b964660d14a808ca038cd8870e92d2883c))
+* **lieux-cache:** retry on failed load instead of caching rejection ([fe3379e](https://github.com/anct-cartographie-nationale/cartographie/commit/fe3379e7411d926df311a99dc26a3f4eb1d1ffff))
+
+
+### Features
+
+* **observability:** correlate nginx logs and Sentry via request_id ([aba6a86](https://github.com/anct-cartographie-nationale/cartographie/commit/aba6a868f0209a98c268ec1bab160acaa70f64cb))
+* **observability:** emit nginx access logs as JSON for Grafana ([4614093](https://github.com/anct-cartographie-nationale/cartographie/commit/4614093beeec01fdca6e79da0d859f4b5bc7cf1d))
+* **telemetry:** capture cache warm-up failure at startup ([5f70215](https://github.com/anct-cartographie-nationale/cartographie/commit/5f70215844fb49f2aecad31f4533a4c8b4fc63d5))
+
+# [6.24.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.23.0...v6.24.0) (2026-06-15)
+
+
+### Features
+
+* **telemetry:** add structured server request logging ([73141cd](https://github.com/anct-cartographie-nationale/cartographie/commit/73141cd04f8d391968f2379b05f1f24281ba5d75))
+
+# [6.23.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.22.1...v6.23.0) (2026-06-15)
+
+
+### Features
+
+* **health:** expose cache last-refresh timestamp ([f9a4d09](https://github.com/anct-cartographie-nationale/cartographie/commit/f9a4d091cfd0104b3f52890c99c7c2626cf3efc0))
+
+## [6.22.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.22.0...v6.22.1) (2026-06-15)
+
+
+### Bug Fixes
+
+* **telemetry:** send Sentry events directly instead of via broken tunnel ([8eb182c](https://github.com/anct-cartographie-nationale/cartographie/commit/8eb182c613afb87169973bf3b17ad19ffb62f3f4))
+
+# [6.22.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.21.0...v6.22.0) (2026-06-15)
+
+
+### Bug Fixes
+
+* **infra:** harden DB-IP download against month-boundary 404s ([0efe15b](https://github.com/anct-cartographie-nationale/cartographie/commit/0efe15bcadab5a2ff104e47ea99e76c5c6e33833))
+* **infra:** pin Alpine base image to 3.23 ([0fbe8d2](https://github.com/anct-cartographie-nationale/cartographie/commit/0fbe8d207bc025c80f08019f7453d6d7427ab7e5))
+
+
+### Features
+
+* **telemetry:** add sentry error reporting via @arckit/telemetry ([4f1548d](https://github.com/anct-cartographie-nationale/cartographie/commit/4f1548da416f412906d5972682f3bf2088b7c699))
+* **telemetry:** capture errors in CSV export routes, contact action and map fetch ([d2e357b](https://github.com/anct-cartographie-nationale/cartographie/commit/d2e357bdf3bcc0117e9b60efc4730ec38c242fa5))
+* **telemetry:** complete error-reporter wiring and capture paths ([e5c9fb1](https://github.com/anct-cartographie-nationale/cartographie/commit/e5c9fb199aff909ea1d0c385eafa889f50f6d929))
+* **telemetry:** report background cache refresh failures ([2c463d6](https://github.com/anct-cartographie-nationale/cartographie/commit/2c463d60af1add4696c63d6d16f4a43a0bf4f301))
+* **telemetry:** scrub PII and filter noise from Sentry events ([5f631b9](https://github.com/anct-cartographie-nationale/cartographie/commit/5f631b97aa825493512d12767178215fcc3bfd59))
+* **telemetry:** tag Sentry events with environment ([58fe28c](https://github.com/anct-cartographie-nationale/cartographie/commit/58fe28cd37a1d3658197fbe9e49dc687d9810dd2))
+
 # [6.21.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.20.2...v6.21.0) (2026-05-30)
 
 

@@ -1,3 +1,37 @@
+2026-06-16T02:11:30+02:00 - fe3379e - Marc Gavanier : fix(lieux-cache): retry on failed load instead of caching rejection
+2026-06-16T02:11:30+02:00 - efaffe4 - Marc Gavanier : refactor(telemetry): drop per-route app logs, rely on nginx JSON access logs
+2026-06-16T02:11:30+02:00 - c82b42c - Marc Gavanier : docs(observability): document startup cache warm-up capture
+2026-06-16T02:11:30+02:00 - aba6a86 - Marc Gavanier : feat(observability): correlate nginx logs and Sentry via request_id
+2026-06-16T02:11:30+02:00 - 62b786b - Marc Gavanier : fix(infra): shorten nginx cache TTL to 5m so cache reset propagates
+2026-06-16T02:11:30+02:00 - 5f70215 - Marc Gavanier : feat(telemetry): capture cache warm-up failure at startup
+2026-06-16T02:11:30+02:00 - 4614093 - Marc Gavanier : feat(observability): emit nginx access logs as JSON for Grafana
+2026-06-16T02:11:30+02:00 - 2ea5904 - Marc Gavanier : fix(cache): await memory refresh before invalidating Next cache on reset
+2026-06-16T00:47:27+02:00 - 77f33e2 - Marc Gavanier : docs(observability): document structured server logging
+2026-06-16T00:47:27+02:00 - 73141cd - Marc Gavanier : feat(telemetry): add structured server request logging
+2026-06-16T00:12:56Z - 5c8ddf4 - semantic-release-bot : chore(release): 6.25.0 [skip ci]
+2026-06-15T23:39:53+02:00 - fa61024 - Marc Gavanier : test(health): adapt health endpoint e2e to cache field
+2026-06-15T23:39:53+02:00 - f9a4d09 - Marc Gavanier : feat(health): expose cache last-refresh timestamp
+2026-06-15T22:49:06Z - dd35e7f - semantic-release-bot : chore(release): 6.24.0 [skip ci]
+2026-06-15T21:41:39Z - c92250d - semantic-release-bot : chore(release): 6.23.0 [skip ci]
+2026-06-15T18:59:21+02:00 - 8eb182c - Marc Gavanier : fix(telemetry): send Sentry events directly instead of via broken tunnel
+2026-06-15T18:17:09+02:00 - d45720b - Marc Gavanier : ci(telemetry): support self-hosted Sentry via SENTRY_URL
+2026-06-15T18:17:09+02:00 - d2e357b - Marc Gavanier : feat(telemetry): capture errors in CSV export routes, contact action and map fetch
+2026-06-15T18:17:09+02:00 - 5f631b9 - Marc Gavanier : feat(telemetry): scrub PII and filter noise from Sentry events
+2026-06-15T18:17:09+02:00 - 5c44e57 - Marc Gavanier : chore(deps): bump @arckit/nextjs to 2.1.0
+2026-06-15T18:17:09+02:00 - 58fe28c - Marc Gavanier : feat(telemetry): tag Sentry events with environment
+2026-06-15T18:17:09+02:00 - 519e14d - Marc Gavanier : ci: pin Node.js setup to version 24
+2026-06-15T18:17:09+02:00 - 385ae69 - Marc Gavanier : docs: add observability / error-capture guide
+2026-06-15T18:17:09+02:00 - 2c463d6 - Marc Gavanier : feat(telemetry): report background cache refresh failures
+2026-06-15T18:17:09+02:00 - 2b79eaf - Marc Gavanier : ci(telemetry): wire Sentry env vars into build
+2026-06-15T17:00:47Z - 2ed6dfe - semantic-release-bot : chore(release): 6.22.1 [skip ci]
+2026-06-15T16:18:31Z - 195c484 - semantic-release-bot : chore(release): 6.22.0 [skip ci]
+2026-06-15T10:09:44+02:00 - f42fc4b - Marc Gavanier : chore(ci): remove temporary testcontainers debug logging
+2026-06-15T10:09:44+02:00 - e5c9fb1 - Marc Gavanier : feat(telemetry): complete error-reporter wiring and capture paths
+2026-06-15T10:09:44+02:00 - 4f1548d - Marc Gavanier : feat(telemetry): add sentry error reporting via @arckit/telemetry
+2026-06-15T10:09:44+02:00 - 4c5cf30 - Marc Gavanier : chore: upgrade dependencies
+2026-06-15T10:09:44+02:00 - 1df9f57 - Marc Gavanier : chore(ci): enable testcontainers debug logs for infra build [temp]
+2026-06-15T10:09:44+02:00 - 0fbe8d2 - Marc Gavanier : fix(infra): pin Alpine base image to 3.23
+2026-06-15T10:09:44+02:00 - 0efe15b - Marc Gavanier : fix(infra): harden DB-IP download against month-boundary 404s
 2026-05-31T01:42:32+02:00 - 9164f79 - Marc Gavanier : refactor(telemetry): delegate page-view tracking to @arckit/telemetry
 2026-05-31T01:42:32+02:00 - 697985f - Marc Gavanier : refactor(telemetry): move analytics into configuration/telemetry
 2026-05-31T01:42:32+02:00 - 5fee61e - Marc Gavanier : refactor(telemetry): nest the event-tracker pillar under its own folder
