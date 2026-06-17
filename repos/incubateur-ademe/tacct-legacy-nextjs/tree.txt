@@ -1,0 +1,612 @@
+.
+├── .claude
+│   ├── claude.md
+│   └── settings.json
+├── .env.example
+├── .gitignore
+├── .prettierignore
+├── .prettierrc.json
+├── README.md
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── postcss.config.mjs
+├── prisma
+│   └── schema.prisma
+├── prisma.config.ts
+├── public
+│   ├── assets
+│   │   ├── .gitkeep
+│   │   ├── files
+│   │   │   ├── 07f57d11-ccb2-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 0d33efae-cc1c-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 213296f5-cbf4-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 237df664-ccdb-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 243a8e86-ccac-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 254a4053-c113-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 2f79ba16-bb87-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 3dfc1194-b08c-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 41881b1b-ccd7-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 4c34a476-ccdb-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 52b6f1cc-ccc9-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 656e7912-ccb2-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 7296e806-bb88-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 78caa723-b07f-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 7f38e57d-ccb1-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 869ef9ad-ccac-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 8dfd4ca5-bb88-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── 9cbd6ff6-bb88-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── a2785d7c-cbf5-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── a847db99-cbf4-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── aafbf03a-bb88-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── b3ca656a-bb88-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── b42e8b71-c10e-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── b51f0fec-ccac-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── bd3c32e1-cbf5-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── c0098ef8-cc1b-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── c6b13aa4-ccb1-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── ce90d2d9-bc54-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── d0583076-cbf5-11ee-8df2-005056b787ff.jpg
+│   │   │   ├── f5356df6-bb87-11ee-8df2-005056b787ff.jpg
+│   │   │   └── ff523f32-ccb2-11ee-8df2-005056b787ff.jpg
+│   │   ├── fonts
+│   │   │   ├── Font-icon
+│   │   │   │   ├── font-icon.eot
+│   │   │   │   ├── font-icon.svg
+│   │   │   │   ├── font-icon.ttf
+│   │   │   │   └── font-icon.woff
+│   │   │   ├── Marianne
+│   │   │   │   ├── Marianne-Bold.otf
+│   │   │   │   ├── Marianne-ExtraBold.otf
+│   │   │   │   ├── Marianne-Light.otf
+│   │   │   │   ├── Marianne-Medium.otf
+│   │   │   │   ├── Marianne-Regular.otf
+│   │   │   │   └── Marianne-Thin.otf
+│   │   │   └── Roboto
+│   │   │       ├── LICENSE.txt
+│   │   │       ├── Roboto-Black.ttf
+│   │   │       ├── Roboto-BlackItalic.ttf
+│   │   │       ├── Roboto-Bold.ttf
+│   │   │       ├── Roboto-BoldItalic.ttf
+│   │   │       ├── Roboto-Italic.ttf
+│   │   │       ├── Roboto-Light.ttf
+│   │   │       ├── Roboto-LightItalic.ttf
+│   │   │       ├── Roboto-Medium.ttf
+│   │   │       ├── Roboto-MediumItalic.ttf
+│   │   │       ├── Roboto-Regular.ttf
+│   │   │       ├── Roboto-Thin.ttf
+│   │   │       └── Roboto-ThinItalic.ttf
+│   │   ├── img
+│   │   │   ├── arrow-bottom.svg
+│   │   │   ├── arrow-droite-blue.svg
+│   │   │   ├── arrow-droite-green.svg
+│   │   │   ├── arrow-droite-white.svg
+│   │   │   ├── arrow-left.svg
+│   │   │   ├── arrow-right-white.svg
+│   │   │   ├── arrow-right.svg
+│   │   │   ├── bullet-point.svg
+│   │   │   ├── circle_tacct.svg
+│   │   │   ├── construct-strategy
+│   │   │   │   ├── in-progress-status.svg
+│   │   │   │   ├── incomplete-status.svg
+│   │   │   │   └── validated-status.svg
+│   │   │   ├── demarche_arrow.svg
+│   │   │   ├── file_download.svg
+│   │   │   ├── home_arrow.svg
+│   │   │   ├── home_schema_demarche_tacct.png
+│   │   │   ├── impact-strategy
+│   │   │   │   ├── communication.svg
+│   │   │   │   ├── formation.svg
+│   │   │   │   ├── institution.svg
+│   │   │   │   ├── module-finance.svg
+│   │   │   │   ├── recherche.svg
+│   │   │   │   ├── réglementaire.svg
+│   │   │   │   └── technique.svg
+│   │   │   ├── info.svg
+│   │   │   ├── info_tacct.png
+│   │   │   ├── logo-life-artisan.png
+│   │   │   ├── logo.svg
+│   │   │   ├── logo_rf.png
+│   │   │   ├── logo_tacct.svg
+│   │   │   ├── logo_tacct_diag.svg
+│   │   │   ├── logo_tacct_diagnose_navbar.svg
+│   │   │   ├── logo_tacct_eval.svg
+│   │   │   ├── logo_tacct_navbar.svg
+│   │   │   ├── logo_tacct_strat.svg
+│   │   │   ├── logo_tacct_strategie.svg
+│   │   │   ├── registered_communities.png
+│   │   │   ├── schema_aleas.svg
+│   │   │   ├── schema_enjeux.svg
+│   │   │   ├── schema_sensibilite.svg
+│   │   │   ├── selectionne.svg
+│   │   │   ├── status_in-progress.png
+│   │   │   ├── status_incomplete.png
+│   │   │   ├── status_validated.png
+│   │   │   ├── temp_precip
+│   │   │   │   ├── 01_temperature.svg
+│   │   │   │   ├── 02_temperature.png
+│   │   │   │   ├── 02_temperature.svg
+│   │   │   │   ├── 03_temperature.png
+│   │   │   │   ├── 03_temperature.svg
+│   │   │   │   ├── 04_precipitation.png
+│   │   │   │   ├── 04_temperature.png
+│   │   │   │   ├── 11_precipitation.png
+│   │   │   │   ├── 11_temperature.png
+│   │   │   │   ├── 21_precipitation.png
+│   │   │   │   ├── 21_temperature.png
+│   │   │   │   ├── 22_precipitation.png
+│   │   │   │   ├── 22_temperature.png
+│   │   │   │   ├── 23_precipitation.png
+│   │   │   │   ├── 23_temperature.png
+│   │   │   │   ├── 24_precipitation.png
+│   │   │   │   ├── 24_temperature.png
+│   │   │   │   ├── 25_precipitation.png
+│   │   │   │   ├── 25_temperature.png
+│   │   │   │   ├── 26_precipitation.png
+│   │   │   │   ├── 26_temperature.png
+│   │   │   │   ├── 31_precipitation.png
+│   │   │   │   ├── 31_temperature.png
+│   │   │   │   ├── 41_precipitation.png
+│   │   │   │   ├── 41_temperature.png
+│   │   │   │   ├── 42_precipitation.png
+│   │   │   │   ├── 42_temperature.png
+│   │   │   │   ├── 43_precipitation.png
+│   │   │   │   ├── 43_temperature.png
+│   │   │   │   ├── 52_precipitation.png
+│   │   │   │   ├── 52_temperature.png
+│   │   │   │   ├── 53_precipitation.png
+│   │   │   │   ├── 53_temperature.png
+│   │   │   │   ├── 54_precipitation.png
+│   │   │   │   ├── 54_temperature.png
+│   │   │   │   ├── 72_precipitation.png
+│   │   │   │   ├── 72_temperature.png
+│   │   │   │   ├── 73_precipitation.png
+│   │   │   │   ├── 73_temperature.png
+│   │   │   │   ├── 74_precipitation.png
+│   │   │   │   ├── 74_temperature.png
+│   │   │   │   ├── 82_precipitation.png
+│   │   │   │   ├── 82_temperature.png
+│   │   │   │   ├── 83_precipitation.png
+│   │   │   │   ├── 83_temperature.png
+│   │   │   │   ├── 91_precipitation.png
+│   │   │   │   ├── 91_temperature.png
+│   │   │   │   ├── 93_precipitation.png
+│   │   │   │   ├── 93_temperature.png
+│   │   │   │   ├── 94_precipitation.png
+│   │   │   │   └── 94_temperature.png
+│   │   │   ├── timeline.svg
+│   │   │   ├── trend-climate
+│   │   │   │   ├── france.svg
+│   │   │   │   ├── global-trend
+│   │   │   │   │   └── GLOBAL_TEMPERATURE.png
+│   │   │   │   ├── map-france.svg
+│   │   │   │   ├── map-outre-mer.svg
+│   │   │   │   ├── regions_de_france.svg
+│   │   │   │   └── trend-france
+│   │   │   │       ├── FRANCE_PRECIPITATION.png
+│   │   │   │       └── FRANCE_TEMPERATURE.png
+│   │   │   ├── user-logo.svg
+│   │   │   └── you-are.jpg
+│   │   ├── json
+│   │   │   ├── activity-types.json
+│   │   │   ├── area-types.json
+│   │   │   ├── review-criterias.json
+│   │   │   ├── types-actions.json
+│   │   │   └── types-approches.json
+│   │   └── ressources
+│   │       ├── Communication des résultats.pdf
+│   │       ├── Comprendre les projections climatiques.pdf
+│   │       ├── Définition indices.pdf
+│   │       ├── Définitions du GIEC.pdf
+│   │       ├── Evaluation de la sensibilité - exemples de questions.pdf
+│   │       ├── Exemples d'impacts.pdf
+│   │       └── Exemples de notation de l'exposition.pdf
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── src
+│   ├── app
+│   │   ├── (workspace)
+│   │   │   ├── dashboard
+│   │   │   │   └── page.tsx
+│   │   │   ├── future-climate
+│   │   │   │   ├── analyse-future-climate
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── capture-future-climate
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── gestion
+│   │   │   │   ├── account-management
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── create
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── project-sheet-management
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── create
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── status
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── studies-management
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── study-offices-management
+│   │   │   │       └── page.tsx
+│   │   │   ├── impacts
+│   │   │   │   ├── [type]
+│   │   │   │   │   └── [id]
+│   │   │   │   │       ├── build-trajectories
+│   │   │   │   │       │   ├── [idTrajectory]
+│   │   │   │   │       │   │   └── page.tsx
+│   │   │   │   │       │   ├── create-trajectory
+│   │   │   │   │       │   │   └── page.tsx
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       ├── define-actions
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       ├── impact-level
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       ├── layout.tsx
+│   │   │   │   │       └── review-actions
+│   │   │   │   │           ├── criterias
+│   │   │   │   │           │   └── page.tsx
+│   │   │   │   │           └── page.tsx
+│   │   │   │   ├── choose-impacts
+│   │   │   │   │   ├── [idImpact]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── create-impact
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── observed-climate
+│   │   │   │   ├── climate-trend
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── natural-disasters
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── observed-exposure
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   └── edit
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── add
+│   │   │   │   │   │   ├── [category]
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── profile
+│   │   │   │   └── page.tsx
+│   │   │   ├── sensibility
+│   │   │   │   ├── impact-theme
+│   │   │   │   │   ├── add
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── impact
+│   │   │   │   │       ├── add
+│   │   │   │   │       │   └── [impactThemeId]
+│   │   │   │   │       │       └── page.tsx
+│   │   │   │   │       └── edit
+│   │   │   │   │           └── [impactId]
+│   │   │   │   │               └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── settings
+│   │   │   │   └── page.tsx
+│   │   │   └── skills-partners-mobilised
+│   │   │       └── page.tsx
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   │   └── [studyId]
+│   │   │   │       └── csv
+│   │   │   │           └── route.ts
+│   │   │   └── export-tet
+│   │   │       └── [studyId]
+│   │   │           └── route.ts
+│   │   ├── favicon.ico
+│   │   ├── layout.tsx
+│   │   └── project-sheets
+│   │       ├── [slug]
+│   │       │   └── page.tsx
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── admin
+│   │   │   ├── CommuneAutocomplete.tsx
+│   │   │   ├── EditAccount.tsx
+│   │   │   ├── Pagination.tsx
+│   │   │   ├── ProjectSheetAdminFilter.tsx
+│   │   │   ├── ProjectSheetAdminList.tsx
+│   │   │   ├── ProjectSheetForm.tsx
+│   │   │   ├── SortHeader.tsx
+│   │   │   ├── StatusAccount.tsx
+│   │   │   └── UserForm.tsx
+│   │   ├── dashboard
+│   │   │   ├── DashboardExposition.tsx
+│   │   │   ├── DashboardPotentialFuture.tsx
+│   │   │   ├── DashboardSensibilite.tsx
+│   │   │   └── DashboardSyntheseImpacts.tsx
+│   │   ├── future-climate
+│   │   │   └── FutureCapture.tsx
+│   │   ├── layout
+│   │   │   ├── ContentLayout.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.module.scss
+│   │   │   ├── Header.tsx
+│   │   │   ├── HeaderLogo.tsx
+│   │   │   ├── HelpSidebar.tsx
+│   │   │   ├── Menu.tsx
+│   │   │   ├── UserTerritorySelect.module.scss
+│   │   │   ├── UserTerritorySelect.tsx
+│   │   │   └── menu-items.ts
+│   │   ├── observed-climate
+│   │   │   ├── AlertForm.tsx
+│   │   │   ├── ClimateHazardCategory.tsx
+│   │   │   ├── ClimateTrendContent.tsx
+│   │   │   ├── ClimateTrendTabs.tsx
+│   │   │   ├── Exposure.tsx
+│   │   │   ├── InteractiveMap.tsx
+│   │   │   └── ValidationFooter.tsx
+│   │   ├── observed-exposure
+│   │   │   └── ExposureFormFields.tsx
+│   │   ├── project-sheets
+│   │   │   ├── ProjectSheetCard.tsx
+│   │   │   ├── ProjectSheetCardList.tsx
+│   │   │   ├── ProjectSheetEffectsConsequences.tsx
+│   │   │   ├── ProjectSheetIntroBloc.tsx
+│   │   │   ├── ProjectSheetQuestions.tsx
+│   │   │   ├── ProjectSheetRelatedItems.tsx
+│   │   │   ├── ProjectSheetRessources.tsx
+│   │   │   └── ProjectSheetSearch.tsx
+│   │   ├── sensibility
+│   │   │   ├── AddThematicForm.tsx
+│   │   │   ├── ImpactFormFields.tsx
+│   │   │   ├── SecondaryExposuresSectionClient.tsx
+│   │   │   ├── SensibilityCard.tsx
+│   │   │   ├── SensibilityTheme.tsx
+│   │   │   └── Thematic.tsx
+│   │   ├── settings
+│   │   │   ├── InviteCoUserForm.tsx
+│   │   │   ├── StudySettingsForm.tsx
+│   │   │   └── TransferStudyForm.tsx
+│   │   ├── skills-partners
+│   │   │   ├── CompetenceForm.tsx
+│   │   │   ├── DetailSyntheseImpacts.tsx
+│   │   │   ├── SyntheseImpactSimple.tsx
+│   │   │   └── SyntheseImpacts.tsx
+│   │   ├── strategies
+│   │   │   ├── ActionDotsTimeline.tsx
+│   │   │   ├── AddRemoveImpactButton.tsx
+│   │   │   ├── CardAction.tsx
+│   │   │   ├── DefineActions.tsx
+│   │   │   ├── Dots.tsx
+│   │   │   ├── ExportActionPlanButton.tsx
+│   │   │   ├── FormAction.tsx
+│   │   │   ├── ImpactItem.tsx
+│   │   │   ├── ImpactLevelAbstract.tsx
+│   │   │   ├── ItemTrajectory.tsx
+│   │   │   ├── ReviewActions.tsx
+│   │   │   ├── ReviewItem.tsx
+│   │   │   └── TrajectoryForm.tsx
+│   │   ├── ui
+│   │   │   ├── BlockHeader.tsx
+│   │   │   ├── BlockTitleIcon.tsx
+│   │   │   ├── ConfirmModal.tsx
+│   │   │   ├── Label.tsx
+│   │   │   ├── RichTextEditor.tsx
+│   │   │   └── StepStatus.tsx
+│   │   └── workspace
+│   │       └── DiagnosticIncompleteButton.tsx
+│   ├── generated
+│   │   └── prisma
+│   │       ├── browser.ts
+│   │       ├── client.ts
+│   │       ├── commonInputTypes.ts
+│   │       ├── enums.ts
+│   │       ├── internal
+│   │       │   ├── class.ts
+│   │       │   ├── prismaNamespace.ts
+│   │       │   └── prismaNamespaceBrowser.ts
+│   │       ├── models
+│   │       │   ├── climate.ts
+│   │       │   ├── climate_hazard.ts
+│   │       │   ├── climate_hazard_category.ts
+│   │       │   ├── climate_hazard_category_department.ts
+│   │       │   ├── command_migration.ts
+│   │       │   ├── command_process.ts
+│   │       │   ├── commune.ts
+│   │       │   ├── config.ts
+│   │       │   ├── department.ts
+│   │       │   ├── doctrine_migration_versions.ts
+│   │       │   ├── domain.ts
+│   │       │   ├── file.ts
+│   │       │   ├── future_climate.ts
+│   │       │   ├── future_exposure.ts
+│   │       │   ├── impact.ts
+│   │       │   ├── impact_action.ts
+│   │       │   ├── impact_action_review.ts
+│   │       │   ├── impact_climate_hazard.ts
+│   │       │   ├── impact_competence.ts
+│   │       │   ├── impact_level.ts
+│   │       │   ├── impact_review_criteria.ts
+│   │       │   ├── impact_strategy.ts
+│   │       │   ├── impact_theme.ts
+│   │       │   ├── impact_trajectory.ts
+│   │       │   ├── impact_trajectory_impact_action.ts
+│   │       │   ├── messenger_messages.ts
+│   │       │   ├── natural_disaster.ts
+│   │       │   ├── natural_disaster_search.ts
+│   │       │   ├── natural_disaster_search_commune.ts
+│   │       │   ├── observed_exposure.ts
+│   │       │   ├── observed_exposure_impact.ts
+│   │       │   ├── old_region.ts
+│   │       │   ├── page.ts
+│   │       │   ├── page_info.ts
+│   │       │   ├── project_sheet_detail.ts
+│   │       │   ├── project_sheet_detail_relation.ts
+│   │       │   ├── project_sheet_question.ts
+│   │       │   ├── region.ts
+│   │       │   ├── skill_territory.ts
+│   │       │   ├── study.ts
+│   │       │   ├── study_office.ts
+│   │       │   ├── thematic.ts
+│   │       │   ├── token.ts
+│   │       │   ├── user.ts
+│   │       │   └── user_study.ts
+│   │       └── models.ts
+│   ├── lib
+│   │   ├── action-catalogs.ts
+│   │   ├── base-path.ts
+│   │   ├── env.ts
+│   │   ├── files.ts
+│   │   ├── futureExposure.ts
+│   │   ├── manage-dots.ts
+│   │   ├── pluralize.ts
+│   │   ├── project-sheet-taxonomy.ts
+│   │   ├── public-origin.ts
+│   │   ├── review-average.ts
+│   │   ├── sensibility.ts
+│   │   ├── skillsScore.ts
+│   │   └── typeExposure.ts
+│   ├── server
+│   │   ├── acl
+│   │   │   └── README.md
+│   │   ├── admin
+│   │   │   ├── actions.ts
+│   │   │   └── queries.ts
+│   │   ├── auth
+│   │   │   ├── README.md
+│   │   │   ├── current-user.ts
+│   │   │   └── index.ts
+│   │   ├── crypto
+│   │   │   └── user-crypto.ts
+│   │   ├── dashboard
+│   │   │   └── queries.ts
+│   │   ├── db
+│   │   │   └── index.ts
+│   │   ├── future-exposure
+│   │   │   ├── actions.ts
+│   │   │   └── queries.ts
+│   │   ├── help
+│   │   │   └── actions.ts
+│   │   ├── mail
+│   │   │   ├── account-emails.ts
+│   │   │   ├── layout.ts
+│   │   │   ├── mailer.ts
+│   │   │   └── study-emails.ts
+│   │   ├── observed-exposure
+│   │   │   ├── actions.ts
+│   │   │   └── queries.ts
+│   │   ├── profile
+│   │   │   └── actions.ts
+│   │   ├── project-sheets
+│   │   │   ├── parse.ts
+│   │   │   └── queries.ts
+│   │   ├── sensibility
+│   │   │   ├── actions.ts
+│   │   │   └── queries.ts
+│   │   ├── skills-partners
+│   │   │   ├── actions.ts
+│   │   │   └── queries.ts
+│   │   ├── strategies
+│   │   │   ├── actions.ts
+│   │   │   ├── export-tet.ts
+│   │   │   ├── impact-actions.ts
+│   │   │   ├── impact-queries.ts
+│   │   │   └── queries.ts
+│   │   └── study
+│   │       └── current-study.ts
+│   ├── styles
+│   │   ├── 01_variables
+│   │   │   ├── _concrete-color.scss
+│   │   │   ├── _index.scss
+│   │   │   ├── bootstrap.scss
+│   │   │   ├── borders.scss
+│   │   │   ├── colors.scss
+│   │   │   ├── icons.scss
+│   │   │   ├── opacity.scss
+│   │   │   ├── shadows.scss
+│   │   │   ├── sizes.scss
+│   │   │   └── texts.scss
+│   │   ├── 02_mixins
+│   │   │   ├── _index.scss
+│   │   │   ├── button.scss
+│   │   │   ├── card.scss
+│   │   │   ├── composant.scss
+│   │   │   └── responsive-breakpoints.scss
+│   │   ├── 03_reset
+│   │   │   ├── _index.scss
+│   │   │   ├── body.scss
+│   │   │   ├── button.scss
+│   │   │   └── text.scss
+│   │   ├── 04_tags
+│   │   │   ├── _index.scss
+│   │   │   ├── tags.scss
+│   │   │   └── title.scss
+│   │   ├── 05_objects
+│   │   │   ├── _index.scss
+│   │   │   ├── bubble-card.scss
+│   │   │   ├── button.scss
+│   │   │   ├── card.scss
+│   │   │   ├── layout.scss
+│   │   │   ├── list.scss
+│   │   │   ├── section.scss
+│   │   │   └── title.scss
+│   │   ├── 06_components
+│   │   │   ├── _index.scss
+│   │   │   ├── act.scss
+│   │   │   ├── block-title-icon.scss
+│   │   │   ├── build-trajectories.scss
+│   │   │   ├── button.scss
+│   │   │   ├── checkbox.scss
+│   │   │   ├── choose-impacts.scss
+│   │   │   ├── collapse.scss
+│   │   │   ├── dashboard.scss
+│   │   │   ├── define-actions.scss
+│   │   │   ├── event.scss
+│   │   │   ├── filter.scss
+│   │   │   ├── footer.scss
+│   │   │   ├── future-climate.scss
+│   │   │   ├── gestion.scss
+│   │   │   ├── help.scss
+│   │   │   ├── icon.scss
+│   │   │   ├── impact-level.scss
+│   │   │   ├── input.scss
+│   │   │   ├── list.scss
+│   │   │   ├── menu.scss
+│   │   │   ├── modal-overlay.scss
+│   │   │   ├── modal.scss
+│   │   │   ├── ngb-accordion.scss
+│   │   │   ├── ngb-tooltip.scss
+│   │   │   ├── observed-climate.scss
+│   │   │   ├── paginator.scss
+│   │   │   ├── project-sheets.scss
+│   │   │   ├── radio.scss
+│   │   │   ├── review-actions.scss
+│   │   │   ├── select.scss
+│   │   │   ├── sensibility.scss
+│   │   │   ├── settings.scss
+│   │   │   ├── skills-partners.scss
+│   │   │   ├── step-status.scss
+│   │   │   ├── stepper.scss
+│   │   │   ├── studied-impacts.scss
+│   │   │   ├── tab.scss
+│   │   │   ├── text-editor.scss
+│   │   │   ├── texts.scss
+│   │   │   └── workspace-home.scss
+│   │   ├── 07_utilities
+│   │   │   ├── _index.scss
+│   │   │   ├── datepicker.scss
+│   │   │   ├── tag-input.scss
+│   │   │   ├── u-margin.scss
+│   │   │   └── u-text.scss
+│   │   ├── bases.scss
+│   │   └── main.scss
+│   └── types
+│       └── next-auth.d.ts
+└── tsconfig.json
+121 directories, 490 files
