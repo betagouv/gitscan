@@ -1,48 +1,47 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 12 juin 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de performance, des corrections de sécurité, des refactorings importants pour préparer l'évolution de l'application, et des améliorations de l'expérience utilisateur, notamment au niveau de l'administration et de la gestion des procédures. L'intégration de ProConnect a également été avancée.
+Cette période a été marquée par des améliorations de la sécurité (désactivation de l'authentification OTP legacy pour les super-admins, correction d'une vulnérabilité), des optimisations de performance (optimisation des requêtes N+1, refactoring de l'API Entreprise avec gestion des erreurs améliorée), et des corrections de bugs (problèmes d'affichage, erreurs de validation, etc.). De nombreuses mises à jour de dépendances ont également été effectuées. Des améliorations de l'expérience utilisateur ont été apportées, notamment au niveau de l'éditeur de formulaire et des bannières d'information.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'ajouter des sauts de page dans l'éditeur d'attestations v2.
-- Amélioration de l'affichage des informations sur les champs dans l'exportation des données.
-- Amélioration de l'expérience utilisateur pour les opérations en lot (batch) dans l'interface administrateur, avec affichage des messages d'erreur et une meilleure gestion des alertes.
-- Ajout d'un bouton ProConnect pour les professionnels lors de la connexion.
-- Amélioration de l'affichage des informations sur les procédures dans l'interface administrateur.
-- Possibilité de filtrer les instructeurs par statut.
-- Correction d'un bug empêchant l'affichage correct des champs de type "liste déroulante multiple".
-- Amélioration de la gestion des erreurs lors de l'importation de fichiers CSV.
-- Correction d'un problème d'affichage des commentaires sur la page "Mon Avis".
-- Ajout d'une indication visuelle pour les champs modifiés dans l'éditeur administrateur.
-- Amélioration de la gestion des erreurs lors de la soumission de formulaires.
-- Correction d'un bug lié à l'expiration des dossiers en construction.
+- Ajout de bannières d'information administrables avec une interface utilisateur dédiée.
+- Amélioration de l'interface utilisateur pour la gestion des pièces justificatives (LDUP).
+- Possibilité de préremplir des champs avec des données externes (adresse, civilité) via l'API.
+- Ajout de la gestion du champ "naf_2025" pour les établissements.
+- Amélioration de l'affichage des informations de contact dans l'interface d'administration.
+- Ajout de la possibilité de masquer/afficher des champs en fonction de la valeur d'autres champs (conditions).
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Ajout d'un système de gestion des notifications pour les administrateurs.
+- Possibilité de publier ou de dépublier des démarches.
+- Amélioration de la gestion des utilisateurs et des rôles.
+- Ajout de la possibilité de transférer des dossiers.
 
 ### Évolutions techniques
-- Refactorings importants pour migrer vers API Entreprise v4, incluant la gestion des données d'établissement et l'extraction du NAF 2025.
-- Mise à jour de nombreuses dépendances, incluant Puma, rubocop, et diverses bibliothèques Ruby.
-- Amélioration de la performance des requêtes, notamment pour l'affichage des procédures et des avis.
-- Optimisation du code pour réduire les requêtes N+1.
-- Amélioration de la gestion des erreurs et de la robustesse de l'application.
-- Mise en place de tests plus complets et fiables.
-- Utilisation de monades `Dry::Monads` pour une meilleure gestion des erreurs dans l'API Entreprise.
+- Refactoring de l'API Entreprise avec gestion des erreurs basée sur des monades `Dry::Monads Result`.
+- Optimisation des requêtes SQL pour améliorer les performances.
+- Mise à jour de nombreuses dépendances (RubyGems).
 - Migration de composants HAML vers ERB pour une meilleure maintenabilité.
-- Amélioration de la gestion des configurations OIDC pour FranceConnect et ProConnect.
-- Refactorisation du code pour une meilleure séparation des préoccupations et une plus grande modularité.
-- Amélioration de la gestion des tâches asynchrones avec Sidekiq.
-- Ajout de circuit breakers pour l'API Entreprise.
-- Mise en place de tâches de maintenance pour la suppression des dossiers abandonnés.
+- Amélioration de la gestion des jobs asynchrones (Sidekiq).
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Amélioration de la sécurité en supprimant l'authentification OTP legacy pour les super-admins.
+- Correction d'une vulnérabilité potentielle dans la gestion des champs de formulaire.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Amélioration de la gestion des configurations.
+- Mise en place d'un système de cache pour améliorer les performances.
+- Amélioration de la gestion des logs.
+- Ajout de métriques pour le monitoring de l'application.
 
 ### Autres changements
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de problèmes de linting et de style de code.
-- Mise à jour des traductions.
-- Amélioration de la sécurité de l'application, notamment en corrigeant des vulnérabilités potentielles.
-- Ajout de tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Amélioration de la gestion des logs et du monitoring.
-- Suppression de code obsolète.
-- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Correction de problèmes de performance.
-- Amélioration de la sécurité de l'application.
 - Mise à jour de la documentation.
-- Amélioration de la lisibilité et de la maintenabilité du code.
+- Correction de problèmes de linting et de style de code.
+- Amélioration de la gestion des traductions.
+- Suppression de code obsolète.
+- Nettoyage du code.
+- Amélioration de la gestion des tests.
+- Correction de bugs mineurs.
+- Ajout de commentaires pour améliorer la compréhension du code.
+- Refactoring de certaines parties du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de tests pour les nouvelles fonctionnalités.
