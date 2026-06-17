@@ -1,15 +1,23 @@
-## Changelog : portail (30 derniers jours, au 2026-06-10)
+## Changelog : portail (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'API RPC et l'ajout de fonctionnalités pour une gestion plus flexible des backends. Une nouvelle option `route.local` a été introduite pour le proxy ACL, offrant un contrôle plus précis du routage.
+Ce mois-ci, les améliorations se concentrent sur la gestion dynamique des backends, permettant une configuration plus flexible et réactive du portail.  De nouvelles fonctionnalités RPC ont été ajoutées pour lister et mettre à jour ces backends, et des corrections ont été apportées pour améliorer la robustesse et la clarté des messages d'erreur.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité `ListBackends` à l'API RPC, permettant de lister les backends disponibles. [#8f6daae](https://github.com/cloud-gouv/portail/commit/8f6daae)
-- La fonction `SetDefaultBackend` de l'API Varlink accepte désormais la valeur `null`, offrant plus de flexibilité dans la configuration des backends. [#260ea60](https://github.com/cloud-gouv/portail/commit/260ea60)
-- Introduction de l'option `route.local` dans le proxy ACL, permettant de définir des routes locales. [#d6bf086](https://github.com/cloud-gouv/portail/commit/d6bf086)
+- Ajout de la possibilité de mettre à jour dynamiquement les backends via l'API RPC.
+- Introduction d'une nouvelle API RPC `ListBackends` pour lister les backends configurés.
+- Amélioration du message d'erreur "permission denied" pour une meilleure clarté.
+- Possibilité de définir un backend par défaut nul via l'API RPC `SetDefaultBackend`.
+- Ajout d'une option `route.local` dans la configuration du proxy ACL.
 
 ### Évolutions techniques
-- Mise à jour des dépendances `insta`, `rand`, `toml` et `zlink` vers des versions compatibles. (f38dd32, 7f511b4, 6c0e3e7, 34c1fd3, 15f951e)
-- Relaxation des contraintes de version des dépendances pour une meilleure compatibilité. (15f951e)
-- Migration vers `rustls-pki-types` pour une gestion améliorée des certificats. (47803ff)
-- Suppression de la dépendance `peekable`. (6c0e3e7)
+- Support des backends dynamiques au niveau du proxy.
+- Refonte de la gestion des backends pour permettre leur affichage dynamique dans l'état du système.
+- Mise à jour des tests d'intégration et tests E2E pour couvrir les nouvelles fonctionnalités RPC.
+- Correction de typos dans les messages d'erreur RPC.
+- Amélioration de la compatibilité multi-plateforme en ajustant le type de pointeur.
+- Mise à jour de plusieurs dépendances : `insta`, `rand`, `toml`, `rustls-pki-types`, `zlink`.
+
+### Autres changements
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
+- Simplification des contraintes de version des dépendances pour une meilleure flexibilité.
