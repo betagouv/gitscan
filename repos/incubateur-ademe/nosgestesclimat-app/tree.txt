@@ -3,6 +3,8 @@
 │   ├── create.sh
 │   ├── devcontainer.json
 │   └── docker-compose.yml
+├── .eslint-configs
+│   └── e2e.js
 ├── .gitconfig
 ├── .github
 │   ├── actions
@@ -65,7 +67,6 @@
 │   │   │   └── scripts
 │   │   │       ├── add-integrations-api-scopes.ts
 │   │   │       ├── add-integrations-email-whitelist.ts
-│   │   │       ├── geolocation-countries.ts
 │   │   │       ├── geolocation-sorted-ips.ts
 │   │   │       └── grant-roles.ts
 │   │   ├── scalingo.json
@@ -749,6 +750,7 @@
 │       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   ├── resultats
+│       │   │   │   │   │   │   │   ├── _actions.ts
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   ├── EditableGroupTitle.tsx
 │       │   │   │   │   │   │   │   │   ├── GroupPage.tsx
@@ -766,6 +768,7 @@
 │       │   │   │   │   │   │   │   │       │       └── ValueDiff.tsx
 │       │   │   │   │   │   │   │   │       └── ranking
 │       │   │   │   │   │   │   │   │           └── RankingMember.tsx
+│       │   │   │   │   │   │   │   ├── guard.ts
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   └── supprimer
@@ -1437,7 +1440,6 @@
 │       │   │   │   ├── ActionsBlock.tsx
 │       │   │   │   ├── CategoriesAccordion.stories.tsx
 │       │   │   │   ├── CategoriesAccordion.tsx
-│       │   │   │   ├── CategoriesAccordionLegacy.tsx
 │       │   │   │   ├── CategoriesChart.tsx
 │       │   │   │   ├── FootprintBlock.stories.tsx
 │       │   │   │   ├── FootprintBlock.tsx
@@ -1473,12 +1475,6 @@
 │       │   │   │   │   │   └── ServicesDescription.tsx
 │       │   │   │   │   └── subcategoriesList
 │       │   │   │   │       └── SubcategoryItem.tsx
-│       │   │   │   ├── categoriesAccordionLegacy
-│       │   │   │   │   ├── AccordionItemWithRule.tsx
-│       │   │   │   │   └── accordionItemWithRule
-│       │   │   │   │       ├── SubcategoriesList.tsx
-│       │   │   │   │       └── subcategoriesList
-│       │   │   │   │           └── SubcategoryListItem.tsx
 │       │   │   │   ├── categoriesChart
 │       │   │   │   │   └── CategoryChartItem.tsx
 │       │   │   │   ├── groups
@@ -2408,4 +2404,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-622 directories, 1833 files
+620 directories, 1831 files
