@@ -1,13 +1,13 @@
 ## Changelog : dockerfiles (30 derniers jours, au 29 mai 2026)
 
 ### Résumé
-Ce changelog présente l'ajout de Go (golang) à l'image Docker de GitLab Runner. Cette modification permet aux utilisateurs d'exécuter des jobs GitLab nécessitant l'environnement Go directement dans leurs pipelines, sans avoir besoin de l'installer manuellement à chaque fois.
+Ce mois-ci, les mises à jour se concentrent sur l'amélioration des images Docker pour GitLab Runner, en ajoutant le support de Go pour faciliter le développement et l'exécution de pipelines. Ces changements permettent une plus grande flexibilité et une meilleure intégration avec les outils de développement Go.
 
 ### Évolutions fonctionnelles
-- Ajout de Go (golang) à l'image Docker de GitLab Runner, permettant l'exécution de jobs Go directement dans les pipelines.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
+- Ajout de Go à l'image Docker de GitLab Runner, permettant l'exécution de projets Go directement dans les pipelines.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
 
 ### Évolutions techniques
-- Intégration de Go dans le Dockerfile de GitLab Runner pour une meilleure prise en charge des jobs nécessitant cet environnement.
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Aucune autre modification notable.
