@@ -1,0 +1,13 @@
+## Changelog : transfers (30 derniers jours, au 16 juin 2026)
+
+### Résumé
+Cette mise à jour introduit une nouvelle fonctionnalité permettant de générer des liens de téléchargement uniques et temporaires pour les fichiers. Ces liens s'auto-désactivent après le premier téléchargement complet, renforçant ainsi la sécurité et le contrôle sur le partage de fichiers. La documentation a également été enrichie.
+
+### Évolutions fonctionnelles
+- Ajout de liens de téléchargement uniques qui se désactivent après le premier téléchargement complet [#5](https://github.com/suitenumerique/transfers/issues/5).
+
+### Évolutions techniques
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Ajout de documentation.
