@@ -1,17 +1,14 @@
-## Changelog : statistiques-impact (30 derniers jours, au 18 mai 2026)
+## Changelog : statistiques-impact (30 derniers jours, au 2026-06-15)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au site statistiques-impact au cours du dernier mois. Les modifications concernent principalement des corrections de bugs et des ajustements techniques au niveau des modèles de données et de l'API, visant à améliorer la stabilité et la fiabilité de la plateforme.
+Ce changelog présente les améliorations apportées au site statistiques-impact au cours du dernier mois. Les modifications incluent des corrections liées à l'affichage des données France Transfert, des ajustements pour la compatibilité avec la librairie `datagouv_client` et une correction concernant la régénération des slugs dans les modèles de données.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Correction de l'affichage du client France Transfert. [#4d9196f](https://github.com/numerique-gouv/statistiques-impact/commit/4d9196f)
+- Correction des tests liés à datagouv. [#f1d76ab](https://github.com/numerique-gouv/statistiques-impact/commit/f1d76ab)
+- Correction d'un test qui dépendait d'une ressource non disponible sur demo.data.gouv.fr. Le test est maintenant ignoré. [#9a274e6](https://github.com/numerique-gouv/statistiques-impact/commit/9a274e6)
 
 ### Évolutions techniques
-- Correction d'un bug où les slugs étaient régénérés à chaque sauvegarde des modèles, ce qui pouvait impacter les URLs et le SEO. [#16cf5b2](https://github.com/numerique-gouv/statistiques-impact/commit/16cf5b2)
-- Modification du champ utilisé pour la recherche des indicateurs dans l'API, améliorant potentiellement la performance et la précision des requêtes. [#ed708f4](https://github.com/numerique-gouv/statistiques-impact/commit/ed708f4)
-- Ajout d'un fichier de migration manquant dans la base de données, corrigeant un problème potentiel lors des déploiements. [#a9bf3c9](https://github.com/numerique-gouv/statistiques-impact/commit/a9bf3c9)
-- Amélioration des tests liés à l'authentification pour une meilleure couverture et fiabilité. [#aa2f691](https://github.com/numerique-gouv/statistiques-impact/commit/aa2f691)
-- Correction d'un test défaillant suite à une réinitialisation de la démo datagouv. [#f143fff](https://github.com/numerique-gouv/statistiques-impact/commit/f143fff)
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Mise à jour de la librairie `datagouv_client` vers la version 0.3.2. [#e8aa04c](https://github.com/numerique-gouv/statistiques-impact/commit/e8aa04c)
+- Mise à jour du schéma de l'API. [#5228b4d](https://github.com/numerique-gouv/statistiques-impact/commit/5228b4d)
+- Correction : Les slugs des modèles ne sont plus régénérés à chaque sauvegarde, évitant ainsi des comportements inattendus. [#16cf5b2](https://github.com/numerique-gouv/statistiques-impact/commit/16cf5b2)
