@@ -1,39 +1,32 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 11 juin 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur pour la gestion des décisions de visa, notamment en permettant la persistance de la décision lors de la navigation et en améliorant l'affichage des champs. Des corrections et des optimisations ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité du projet.
+Ce mois-ci, les évolutions se concentrent sur la maintenance technique du projet avec de nombreuses mises à jour de dépendances. Des améliorations fonctionnelles ont été apportées à la gestion des visas, notamment l'amélioration de l'interface de modification de la décision et la persistance de cette décision lors de la navigation. Une suppression de champs inutiles a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface de modification de la décision de visa : pré-remplissage des valeurs et adaptation du layout pour une meilleure expérience utilisateur. [#2947](https://github.com/betagouv/complements-alimentaires/pull/2947)
-- La décision de visa est maintenant persistée lors de la navigation, évitant la perte de données. [#2959](https://github.com/betagouv/complements-alimentaires/pull/2959)
-- Correction d'un bug empêchant l'affichage du délai de réponse. [#2945](https://github.com/betagouv/complements-alimentaires/pull/2945)
-- Suppression de l'affichage de la section "partie de la plante" pour les produits qui ne sont pas des plantes. [#2921](https://github.com/betagouv/complements-alimentaires/pull/2921)
+- Amélioration de l'interface de modification de la décision de visa : refonte du layout et pré-remplissage des valeurs. [#2948](https://github.com/betagouv/complements-alimentaires/pull/2948)
+- Persistance de la décision de visa : la décision est maintenant conservée lors de la navigation dans l'application. [#2950](https://github.com/betagouv/complements-alimentaires/pull/2950)
+- Suppression des champs relatifs aux plantes pour les produits non-plantes. [#2921](https://github.com/betagouv/complements-alimentaires/pull/2921)
+- Correction d'un problème d'affichage du délai de réponse. [#2945](https://github.com/betagouv/complements-alimentaires/pull/2945)
 
 ### Évolutions techniques
-- Suppression de l'utilisation de `ipdb` et ajout des dépendances manquantes. [#2932](https://github.com/betagouv/complements-alimentaires/pull/2932)
-- Mises à jour de plusieurs dépendances :
-    - `arabic-reshaper` (3.0.0 -> 3.0.1)
-    - `babel/core` (7.29.0 -> 7.29.7)
-    - `babel/eslint-parser` (7.29.0 -> 7.29.7)
-    - `cryptography` (48.0.0)
-    - `express` et `qs` (dans /frontend)
-    - `github/codeql-action`
-    - `gouvminint/vue-dsfr` (8.17.0)
-    - `idna` (3.11 -> 3.15)
-    - `lxml` (6.1.0 -> 6.1.1)
-    - `pypdf` (6.10.2 -> 6.11.0)
-    - `pytz` (2025.2 -> 2026.2)
-    - `psycopg2` (2.9.11 -> 2.9.12)
-    - `regex` (2026.1.15 -> 2026.5.9)
+- Mise à jour de nombreuses dépendances :
+    - `numpy` (2.4.4 -> 2.4.6)
+    - `cryptography` (48.0.0 -> 48.0.1)
+    - `pypdf` (6.10.2 -> 6.13.0)
+    - `bleach` (6.3.0 -> 6.4.0)
+    - `tzdata` (2025.3 -> 2026.2)
     - `requests` (2.33.0 -> 2.34.2)
-    - `sentry-sdk` (2.58.0 -> 2.60.0)
+    - `packaging` (26.0 -> 26.2)
     - `sqlfluff` (4.1.0 -> 4.2.1)
-    - `tailwindcss` (4.2.4 -> 4.3.0)
-    - `vue` (3.5.33 -> 3.5.34)
-    - `vue-router` (5.0.6 -> 5.0.7)
-    - `webpack-bundle-tracker`
+    - `idna` (3.11 -> 3.15)
+    - `psycopg2` (2.9.11 -> 2.9.12)
+    - `pytz` (2025.2 -> 2026.2)
+    - `regex` (2026.1.15 -> 2026.5.9)
+- Mise à jour des dépendances frontend : `vue`, `vue-router`, `tailwindcss`, `eslint-plugin-prettier`, `vue-eslint-parser`, `webpack-bundle-tracker`, `shell-quote`, `gouvminint/vue-dsfr` et autres.
+- Suppression de `ipdb` et de ses dépendances. [#2932](https://github.com/betagouv/complements-alimentaires/pull/2932)
 
 ### Autres changements
-- Audit de l'utilisation de `v-for` dans le frontend pour identifier les composants qui devraient utiliser des listes HTML.
-- Ajustement des marges et espacement dans l'interface utilisateur. [#2942](https://github.com/betagouv/complements-alimentaires/pull/2942)
-- Grille de colonnes responsive dans VisaValidationSegment. [#2946](https://github.com/betagouv/complements-alimentaires/pull/2946)
+- Amélioration de l'accessibilité : audit et correction de l'utilisation de `v-for` pour utiliser des listes HTML sémantiques. [#2946](https://github.com/betagouv/complements-alimentaires/pull/2946)
+- Ajustement des marges et espacement dans l'interface. [#2957](https://github.com/betagouv/complements-alimentaires/pull/2957)
+- Grille de colonnes responsive dans VisaValidationSegment. [#2952](https://github.com/betagouv/complements-alimentaires/pull/2952)
