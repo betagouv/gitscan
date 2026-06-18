@@ -1,0 +1,153 @@
+2026-06-16T07:55:04+02:00 - a3fd4bf - etiquet : fix(front): sépare actions utilisateur (créer/explorer) de l'administration
+2026-06-16T04:27:09+02:00 - b9637e8 - etiquet : test: batterie identification + actions de fix (backend pytest + front vitest)
+2026-06-16T04:18:36+02:00 - 36b892d - etiquet : feat(front): menu et routes Administration réservés aux super-admins
+2026-06-16T04:14:26+02:00 - bbd0701 - etiquet : fix(sync): rend visibles les échecs de la synchro Keycloak -> OpenRAG + client admin dédié
+2026-06-16T03:31:22+02:00 - c77f1bf - etiquet : fix(security): cloisonne les collections par groupe Keycloak (A01)
+2026-06-16T03:00:05+02:00 - 88dccc6 - etiquet : chore(security): pose les garde-fous anti-leak
+2026-06-16T02:23:29+02:00 - 3d35c79 - etiquet : feat(ui): en-tête aligné sur le look myvault (logo en slot opérateur DSFR)
+2026-06-16T02:17:09+02:00 - dc23676 - etiquet : feat(ui): logo devant le titre de service dans l'en-tête
+2026-06-16T02:12:25+02:00 - 69ace10 - etiquet : feat(ui): icône d'application DSFR (collections + graphe de références)
+2026-06-14T12:24:04+02:00 - 8bb37df - etiquet : fix(security): garde d'authentification JWT sur les routes XHR
+2026-06-13T18:46:59+02:00 - 41208ad - etiquet : fix(security): assainit le rendu HTML du Markdown non fiable côté front
+2026-06-13T18:45:07+02:00 - f177776 - etiquet : fix(security): isole le contenu non fiable inséré dans les prompts LLM
+2026-06-13T18:43:10+02:00 - 4025f7e - etiquet : fix(security): réduit la divulgation d'info sur l'endpoint de diagnostic
+2026-06-13T18:42:05+02:00 - a0d3ba4 - etiquet : fix(security): CORS configurable et combo wildcard+credentials levé
+2026-06-13T18:41:12+02:00 - c680e1a - etiquet : fix(security): valide les URL des fetch serveur (anti-SSRF)
+2026-06-13T18:38:55+02:00 - 9cc21c6 - etiquet : fix(security): confine les chemins dérivés d'entrées utilisateur
+2026-06-13T18:35:46+02:00 - 52fa9f1 - etiquet : chore: checkpoint avant correctifs sécurité
+2026-04-20T23:14:26+02:00 - 2fcc294 - etiquet : fix(publish): route alias wrapper through openrag pipeline (sources)
+2026-04-20T23:01:29+02:00 - e40950f - etiquet : docs(deploy): document OWUI ↔ OpenRAG one-shot setup
+2026-04-20T22:36:38+02:00 - dd85856 - etiquet : fix(owui): fall through to create on update 401 (first publication)
+2026-04-20T22:34:52+02:00 - eefa6a5 - etiquet : feat(owui): diagnostic endpoint + richer 401/403 error
+2026-04-20T22:29:04+02:00 - d8e3315 - etiquet : feat(publish): actually push model to OWUI via admin API key
+2026-04-20T22:09:29+02:00 - e3843f0 - etiquet : fix(publish): read flat flags from response, not data.modes.*
+2026-04-20T22:05:09+02:00 - ce5445d - etiquet : fix(sync): OWUI DB name is 'owui' + graceful exit on missing table
+2026-04-20T22:02:29+02:00 - dfa35e7 - etiquet : docs: README + capitalisation reflect playground refonte + OWUI sync
+2026-04-20T21:53:31+02:00 - a81ba29 - etiquet : feat(playground): proxy /static/ + "Document complet" link + OWUI CronJob
+2026-04-20T08:56:26+02:00 - e26113f - etiquet : feat(playground): hover preview on source chips
+2026-04-20T08:54:45+02:00 - b15505a - etiquet : fix(playground): render extract proxy as DSFR HTML, not raw JSON
+2026-04-20T08:50:37+02:00 - f9940b3 - etiquet : fix(playground): proxy OpenRAG extract/file through MyRAG for auth
+2026-04-20T08:45:07+02:00 - b2d714a - etiquet : fix(playground): auto-seed via /chat instead of /generate-eval
+2026-04-20T08:27:21+02:00 - da9a1a8 - etiquet : feat(sync): OWUI feedback → MyRAG pull sync service
+2026-04-20T08:23:54+02:00 - 8ee553e - etiquet : feat(playground): ground-up redesign with test-question bank
+2026-04-20T08:04:40+02:00 - b7317fd - etiquet : docs(readme): add "Raison d'être" framed around daily use
+2026-04-20T08:03:45+02:00 - 5cfd130 - etiquet : feat(playground): GET /bank endpoint aggregating 4 sources
+2026-04-20T06:19:43+02:00 - 54f5ee7 - etiquet : feat(playground): clickable source links + chunk extract URLs
+2026-04-20T06:17:32+02:00 - f13a51a - etiquet : fix(playground): drop redundant sources line + prettify filenames
+2026-04-20T06:13:22+02:00 - 2de0851 - etiquet : refactor(playground): hide empty Debug column + tighten suggestion spacing
+2026-04-20T06:11:32+02:00 - 595086d - etiquet : refactor(playground): trim redundant helper text
+2026-04-20T06:08:02+02:00 - 3a85bc7 - etiquet : fix(nginx): no-store on index.html to surface deploys immediately
+2026-04-20T05:36:32+02:00 - 4a78ba1 - etiquet : fix(playground): hard cap chat area at 400 px, drop viewport-dependent sizing
+2026-04-20T05:23:11+02:00 - 451110b - etiquet : fix(playground): pin chat column to viewport with flex-column layout
+2026-04-20T05:14:52+02:00 - b95fc86 - etiquet : fix(playground): bound chat height + auto-scroll to latest message
+2026-04-20T05:11:35+02:00 - 7165287 - etiquet : fix(playground): neutral textarea placeholder + usage hint
+2026-04-20T05:09:43+02:00 - 1ecbbb8 - etiquet : fix(playground): generate suggestions via chat prompt (robust fallback)
+2026-04-20T05:06:13+02:00 - a98bf64 - etiquet : fix(breadcrumb): wrap current page in fr-breadcrumb__link for DSFR alignment
+2026-04-20T05:03:24+02:00 - 305bdf0 - etiquet : chore(todo): consolidate known bugs, UX ideas, and Lots 1-5 roadmap
+2026-04-20T05:02:53+02:00 - 81e92fe - etiquet : feat(playground): conversational agent with markdown + clickable suggestions
+2026-04-20T04:58:00+02:00 - ef5dd85 - etiquet : chore(todo): track "per-collection query counter" feature
+2026-04-20T04:52:37+02:00 - 221f950 - etiquet : fix(home): "sans fiche" badge for orphan partitions, drop filename-wall fallback
+2026-04-20T04:43:10+02:00 - 364321e - etiquet : feat(k8s): split ingress — canonical mycollections + legacy mycorpus 301
+2026-04-20T04:41:47+02:00 - 535ce10 - etiquet : fix(drive): honest 403 message + open-Drive shortcut in the picker
+2026-04-20T04:34:12+02:00 - 94d5f25 - etiquet : feat(config): redirect to home after successful save
+2026-04-20T04:30:56+02:00 - 7dc1d91 - etiquet : feat(config): auto-prefill contact from OIDC + "guess description" via RAG
+2026-04-20T04:22:44+02:00 - 710eaa6 - etiquet : feat(collection-page): adopt orphan OpenRAG partitions into MyRAG
+2026-04-20T04:16:49+02:00 - 7bbd8f5 - etiquet : fix(collection-page): friendly 404 fallback instead of blank page
+2026-04-20T04:13:42+02:00 - 6454c25 - etiquet : fix(wizard): false "similar collection" warning for distinct names
+2026-04-19T23:00:13+02:00 - c62322c - etiquet : feat(auth): retry-on-401 with silent renew for transparent token refresh
+2026-04-19T22:45:56+02:00 - 86241c4 - etiquet : fix(drive): explicit 403 message when user is not provisioned in Drive
+2026-04-19T22:40:03+02:00 - 381f28b - etiquet : feat(drive): impersonation — picker + sync download with user token
+2026-04-19T22:33:08+02:00 - c94a3b4 - etiquet : docs: impersonation model + Drive/Find architecture reference
+2026-04-19T22:12:29+02:00 - 009c479 - etiquet : docs: top-level README with architecture, Drive source, security note
+2026-04-19T21:41:07+02:00 - 95f2d07 - etiquet : docs(myrag): bot user provisioning for Drive source
+2026-04-19T20:59:15+02:00 - 9badac9 - etiquet : fix(drive): call /external_api/v1.0/ with openid-scoped token
+2026-04-19T20:49:58+02:00 - f30c56b - etiquet : fix(frontend): useApi.get crashes "Invalid URL" with empty baseUrl
+2026-04-19T20:03:58+02:00 - f38dbad - etiquet : fix: proxy OpenRAG health-check via MyRAG to avoid browser CORS
+2026-04-19T19:59:46+02:00 - a632498 - etiquet : fix: empty string env vars propagate through nuxt config + canonical URL
+2026-04-19T19:56:23+02:00 - 73dc79a - etiquet : fix(frontend): empty MYRAG_API_URL to avoid double /api/api/... 404
+2026-04-19T19:54:29+02:00 - f3375f1 - etiquet : fix(frontend): navigate to / after OIDC callback instead of replaceState
+2026-04-19T19:50:43+02:00 - 868fa02 - etiquet : fix(frontend): relative redirects in nginx to avoid HTTPS-ingress leak
+2026-04-19T19:48:51+02:00 - 86fd41d - etiquet : fix(frontend): OIDC login infinite redirect loop
+2026-04-19T19:35:49+02:00 - 00eca04 - etiquet : feat(frontend): Drive folder picker in wizard step 3
+2026-04-19T19:33:27+02:00 - 8585f0f - etiquet : feat(k8s): Drive env vars + mycollections host alias on the ingress
+2026-04-19T19:31:50+02:00 - 0fd3688 - etiquet : feat(myrag): Drive connector + /api/sources/drive/* routes
+2026-04-19T18:40:03+02:00 - 808a015 - etiquet : fix(auth): strip internal port from OIDC redirect_uri
+2026-04-19T18:37:35+02:00 - a8fc33c - etiquet : fix(k8s): Recreate strategy for myrag-backend (RWO PVC)
+2026-04-19T18:32:07+02:00 - 9aa2c01 - etiquet : fix(myrag): add missing OpenRAGClient.chat/list_files/get_file_content
+2026-04-19T18:27:20+02:00 - 1a913df - etiquet : docs(myrag): flag linux/amd64 build + tz-aware datetime pitfalls
+2026-04-19T18:25:51+02:00 - 6d5a024 - etiquet : fix(myrag): use naive UTC datetimes for PostgreSQL compatibility
+2026-04-19T18:12:58+02:00 - eaa248c - etiquet : docs(myrag): add DEPLOYMENT.md + secret template for Scaleway
+2026-04-19T18:10:11+02:00 - 2032d22 - etiquet : refactor(myrag): compose DATABASE_URL from shared owui-socle-secrets
+2026-04-19T18:07:17+02:00 - 5aba021 - etiquet : fix(frontend): add missing marked dependency + refresh lockfile
+2026-04-19T17:59:07+02:00 - 2c39245 - etiquet : feat(myrag): K8s manifests + frontend Dockerfile for Scaleway deployment
+2026-04-19T13:59:06+02:00 - 2961d88 - etiquet : test(myrag): unit tests for archive/unarchive/purge flow
+2026-04-19T13:57:57+02:00 - 4f18653 - etiquet : feat(myrag): catalog archive/unarchive/purge actions + confirm modal
+2026-04-19T13:56:06+02:00 - 7a89a44 - etiquet : feat(myrag): purge_collection + DELETE /api/collections/{name}
+2026-04-19T13:54:45+02:00 - a996b10 - etiquet : feat(myrag): OpenRAGClient.delete_partition with idempotent 404 handling
+2026-04-19T13:54:12+02:00 - 1c8f3f9 - etiquet : feat(myrag): archive/unarchive endpoints + include_archived filter
+2026-04-19T13:52:43+02:00 - ee4a163 - etiquet : feat(myrag): archive/unarchive helpers in collection_store
+2026-04-19T13:51:46+02:00 - 38d7119 - etiquet : feat(myrag): add archived_at column to Collection with auto-migration
+2026-04-19T12:23:06+02:00 - f1ea8e8 - etiquet : docs: complete CLAUDE.md with dependencies, related repos, deployment
+2026-04-19T12:16:52+02:00 - 2326476 - etiquet : docs: add CLAUDE.md for mycollections repository
+2026-04-19T06:34:13+02:00 - 8e5e648 - etiquet : feat(myrag): R6+R7 complete — DB migration, source storage, reindex, UI
+2026-04-19T06:32:46+02:00 - 3328706 - etiquet : feat(myrag): R7.2 — add reindex endpoint using stored source files
+2026-04-19T06:31:27+02:00 - 562a719 - etiquet : feat(myrag): R6.4 — migrate feedback to SQLAlchemy DB
+2026-04-19T06:29:57+02:00 - 269e954 - etiquet : feat(myrag): R6.3+R7.1 — migrate jobs to DB + store source files
+2026-04-19T06:28:09+02:00 - 178a9ff - etiquet : feat(myrag): R6.2 — migrate collections and publications to SQLAlchemy DB
+2026-04-19T06:25:12+02:00 - 0ed72c4 - etiquet : feat(myrag): R6.1 — add SQLAlchemy database schema (SQLite/PostgreSQL)
+2026-04-19T04:29:13+02:00 - 73d2ef6 - etiquet : chore(myrag-front): update sensitivity labels to ministry vocabulary
+2026-04-19T04:25:39+02:00 - 923a2b7 - etiquet : feat(myrag-front): add hint + descriptions on sensitivity dropdown
+2026-04-19T04:24:37+02:00 - 7bcefe6 - etiquet : fix(myrag-front): align Sensibilite and Portee dropdowns (flex-start)
+2026-04-19T04:22:47+02:00 - a84b318 - etiquet : feat(myrag-front): scope groups + reorder options + label fixes
+2026-04-19T04:16:59+02:00 - 5d48ee3 - etiquet : feat(myrag-front): name uniqueness check + suggestion + description hint
+2026-04-19T04:13:16+02:00 - f9b6de2 - etiquet : feat(myrag-front): pre-fill contact from Keycloak session
+2026-04-19T04:11:01+02:00 - 4e9fdb7 - etiquet : fix(myrag-front): fix missing end tag — extra </div> removed
+2026-04-19T04:10:08+02:00 - 432af81 - etiquet : fix(myrag-front): AI summary — hide when graph off, clarify in tooltip
+2026-04-19T04:06:21+02:00 - f5fb8dd - etiquet : fix(myrag-front): fix inline if in @change — use method instead
+2026-04-19T04:05:16+02:00 - 6ba29c6 - etiquet : feat(myrag-front): AI summary requires graph + info tooltip
+2026-04-19T04:04:12+02:00 - 927a17c - etiquet : feat(myrag-front): couple strategy + prompt into profiles
+2026-04-19T03:59:45+02:00 - e7554b1 - etiquet : feat(myrag-front): grayed-out 'Bientot disponible' cards in source wizard
+2026-04-19T03:57:09+02:00 - 3f3eff3 - etiquet : fix(myrag-front): merge duplicate style attributes in WizardStepper
+2026-04-19T03:56:11+02:00 - 8b6f6f8 - etiquet : chore(myrag-front): update lead text — gestionnaire perspective
+2026-04-19T03:53:55+02:00 - 5363408 - etiquet : chore(myrag-front): simplify footer description
+2026-04-19T03:52:51+02:00 - 39282f7 - etiquet : chore(myrag-front): rename MyRAG → Mes collections
+2026-04-19T03:50:40+02:00 - 14fcb84 - etiquet : feat(myrag-front): redesign 'Mes collections' — tiles + cards like owuiapps-agents
+2026-04-19T03:46:08+02:00 - 5d64ca1 - etiquet : feat(myrag-front): catalog page + duplicate detection + contact owner
+2026-04-19T03:41:23+02:00 - 96f5fb6 - etiquet : feat(myrag): wizard 5-step source-first + BaseConnector + SourceConfig
+2026-04-19T03:33:05+02:00 - 2faaa7a - etiquet : docs(myrag): update prompt — source-first wizard, 6 connectors, full context
+2026-04-19T03:25:14+02:00 - 87923b8 - etiquet : docs(myrag): add contextualized prompt for CESEDA import feature
+2026-04-19T03:05:34+02:00 - 2ec9222 - etiquet : fix(myrag-front): wizard navigation — breadcrumbs, subtitles, guard
+2026-04-19T03:01:55+02:00 - 5c452fc - etiquet : fix(myrag-front): fix OIDC auth — dynamic import + error handling
+2026-04-19T02:57:31+02:00 - f41e321 - etiquet : feat(myrag): wizard 4-step creation + catalog with contacts + widget snippet
+2026-04-19T02:42:20+02:00 - 7ceb4c6 - etiquet : feat(myrag): publication lifecycle — publish/unpublish/archive
+2026-04-19T02:28:33+02:00 - ddfb779 - etiquet : fix(myrag-front): use dedicated public PKCE client 'myrag-front'
+2026-04-19T02:26:38+02:00 - 5c64ef5 - etiquet : feat(myrag-front): add Keycloak OIDC auth + beta badge
+2026-04-19T02:23:03+02:00 - 3f9c5ab - etiquet : fix(myrag-front): fix DSFR CSS import — use css array instead of head links
+2026-04-19T02:21:31+02:00 - 2904055 - etiquet : feat(myrag-front): add service status indicators in header
+2026-04-19T02:14:28+02:00 - 89790e8 - etiquet : feat(myrag): add DSFR frontend — Nuxt 4 + vue-dsfr
+2026-04-18T21:36:52+02:00 - 22ae7fd - etiquet : feat(myrag): R3 — feedback system + OWUI outlet + promotion loop
+2026-04-18T21:34:21+02:00 - b1e87e6 - etiquet : feat(myrag): R2 — RAG evaluation with dataset + scoring + runs
+2026-04-18T21:32:56+02:00 - d6808f6 - etiquet : feat(myrag): R1 — Q&R cache with fuzzy matching + import/export
+2026-04-18T21:31:00+02:00 - c39eda7 - etiquet : feat(myrag): add K8s Scaleway manifests
+2026-04-18T21:29:32+02:00 - 3802054 - etiquet : feat(myrag): add Legifrance PISTE client + sources router
+2026-04-18T21:21:50+02:00 - 25a99b7 - etiquet : feat(myrag): AI summary for long articles + collection preferences
+2026-04-18T21:11:00+02:00 - 3396c70 - etiquet : fix(myrag): increase content preview to 10000 chars
+2026-04-18T21:07:04+02:00 - b6306a7 - etiquet : fix(myrag): increase graph content preview from 200 to 2000 chars
+2026-04-18T21:03:20+02:00 - f4e559e - etiquet : feat(myrag): build CESEDA graph — 2399 nodes, 9293 edges
+2026-04-18T20:56:47+02:00 - 310df9a - etiquet : fix(myrag): fix route ordering — templates before /{name} to avoid 404
+2026-04-18T20:54:44+02:00 - 174dd8e - etiquet : feat(myrag): add OWUI tool (4 methods) + pipe filter #collection
+2026-04-18T20:52:25+02:00 - 66fff84 - etiquet : feat(myrag): add graph API, Cytoscape.js viewer, article HTML views
+2026-04-18T20:49:08+02:00 - a81d371 - etiquet : feat(myrag): add graph builder — NetworkX article reference graphs
+2026-04-18T20:45:08+02:00 - 575d2d7 - etiquet : feat(myrag): add sync service Keycloak → OpenRAG + sync router
+2026-04-18T20:42:53+02:00 - eda3254 - etiquet : feat(myrag): add Keycloak admin client for group management
+2026-04-18T20:40:22+02:00 - 238ed70 - etiquet : feat(myrag): prompt templates catalog — 7 builtin + custom admin templates
+2026-04-18T20:07:27+02:00 - 85f9593 - etiquet : feat(myrag): improve default system prompt for article citation
+2026-04-18T19:31:50+02:00 - e7bee19 - etiquet : feat(myrag): add collection config + system prompt + async ingest tracking
+2026-04-18T19:06:22+02:00 - 812870e - etiquet : fix(myrag): fix hierarchy regex — roman numerals only, no trailing words
+2026-04-18T18:59:42+02:00 - 40ac617 - etiquet : feat(myrag): async ingest with job tracking + progress endpoint
+2026-04-18T18:54:30+02:00 - 935ad01 - etiquet : feat(myrag): add sensitivity metadata + article headers in chunks
+2026-04-18T18:47:02+02:00 - 320196b - etiquet : feat(myrag): enrich chunk metadata for graph post-processing
+2026-04-18T18:09:25+02:00 - 637667d - etiquet : feat(myrag): add OpenRAG client + ingest endpoint
+2026-04-18T18:07:37+02:00 - f673789 - etiquet : feat(myrag): add chunker with 4 strategies
+2026-04-18T18:05:41+02:00 - 9dd2e74 - etiquet : feat(myrag): init FastAPI skeleton + Dockerfile + docker-compose
+2026-04-18T14:20:28+02:00 - 7071a0f - etiquet : feat: add integrations (OIDC, connectors, notifications, admin, eval) + harden gitignore

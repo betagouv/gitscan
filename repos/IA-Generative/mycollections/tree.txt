@@ -1,0 +1,191 @@
+.
+├── .env.integration.example
+├── .github
+│   └── workflows
+│       └── gitleaks.yml
+├── .gitignore
+├── .gitleaks.toml
+├── CLAUDE.md
+├── README.md
+├── TODO.md
+├── brief-linagora-integration-openrag.md
+├── docker-compose.integration.yaml
+├── docs
+│   └── drive-find-architecture.md
+├── myrag
+│   ├── DEPLOYMENT.md
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── main.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── collection.py
+│   │   │   └── db.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── articles.py
+│   │   │   ├── collections.py
+│   │   │   ├── eval_datasets.py
+│   │   │   ├── feedback.py
+│   │   │   ├── graph.py
+│   │   │   ├── ingest.py
+│   │   │   ├── playground.py
+│   │   │   ├── playground_bank.py
+│   │   │   ├── publication.py
+│   │   │   ├── qr_cache_router.py
+│   │   │   ├── sources.py
+│   │   │   └── sync.py
+│   │   ├── security_utils.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── access.py
+│   │   │   ├── chunker.py
+│   │   │   ├── collection_store.py
+│   │   │   ├── connectors
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   └── drive.py
+│   │   │   ├── eval_service.py
+│   │   │   ├── feedback_service.py
+│   │   │   ├── feedback_store.py
+│   │   │   ├── graph_builder.py
+│   │   │   ├── job_store.py
+│   │   │   ├── job_tracker.py
+│   │   │   ├── keycloak_client.py
+│   │   │   ├── legifrance_client.py
+│   │   │   ├── openrag_client.py
+│   │   │   ├── owui_client.py
+│   │   │   ├── owui_feedback_sync.py
+│   │   │   ├── qr_cache.py
+│   │   │   └── sync_service.py
+│   │   ├── static
+│   │   │   └── graph_view.html
+│   │   └── templates
+│   │       └── article_view.html
+│   ├── build-graph.py
+│   ├── data
+│   │   └── ceseda-v3
+│   │       └── graph.json
+│   ├── docker-compose.yaml
+│   ├── frontend
+│   │   ├── .dockerignore
+│   │   ├── Dockerfile
+│   │   ├── app.vue
+│   │   ├── assets
+│   │   │   └── main.css
+│   │   ├── components
+│   │   │   ├── WizardStepper.vue
+│   │   │   └── playground
+│   │   │       ├── BankCard.vue
+│   │   │       ├── BankFilter.vue
+│   │   │       ├── ChatMessage.vue
+│   │   │       ├── DebugAccordion.vue
+│   │   │       ├── SourceChip.vue
+│   │   │       └── VoteBar.vue
+│   │   ├── composables
+│   │   │   ├── useAdminAuth.ts
+│   │   │   ├── useApi.ts
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useBank.ts
+│   │   │   └── useChat.ts
+│   │   ├── layouts
+│   │   │   └── default.vue
+│   │   ├── middleware
+│   │   │   └── admin-only.ts
+│   │   ├── nginx.conf
+│   │   ├── nuxt.config.ts
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── pages
+│   │   │   ├── admin
+│   │   │   │   ├── catalog.vue
+│   │   │   │   ├── create
+│   │   │   │   │   ├── index.vue
+│   │   │   │   │   ├── step-2.vue
+│   │   │   │   │   ├── step-3.vue
+│   │   │   │   │   ├── step-4.vue
+│   │   │   │   │   └── step-5.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── auth
+│   │   │   │   └── callback.vue
+│   │   │   ├── c
+│   │   │   │   └── [id]
+│   │   │   │       ├── config.vue
+│   │   │   │       ├── graph.vue
+│   │   │   │       ├── index.vue
+│   │   │   │       ├── playground.vue
+│   │   │   │       ├── prompt.vue
+│   │   │   │       ├── publish.vue
+│   │   │   │       └── upload.vue
+│   │   │   └── index.vue
+│   │   ├── public
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── exemple-evaluation.json
+│   │   │   └── favicon.svg
+│   │   ├── tests
+│   │   │   └── unit
+│   │   │       └── access.test.ts
+│   │   ├── tsconfig.json
+│   │   ├── utils
+│   │   │   ├── access.ts
+│   │   │   ├── playground.ts
+│   │   │   └── sanitize.ts
+│   │   └── vitest.config.ts
+│   ├── k8s
+│   │   ├── configmap.yaml
+│   │   ├── cronjob-sync-owui.yaml
+│   │   ├── deployment-backend.yaml
+│   │   ├── deployment-frontend.yaml
+│   │   ├── ingress.yaml
+│   │   ├── namespace.yaml
+│   │   ├── pvc.yaml
+│   │   ├── secret.example.yaml
+│   │   ├── secret.yaml.template
+│   │   ├── service-backend.yaml
+│   │   └── service-frontend.yaml
+│   ├── owui
+│   │   ├── feedback_outlet.py
+│   │   ├── pipe_myrag_filter.py
+│   │   └── tool_myrag.py
+│   ├── owui-plugin.yaml
+│   ├── prompts
+│   │   └── prompt-import-ceseda.md
+│   ├── pytest.ini
+│   ├── requirements.txt
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── e2e
+│   │   │   └── __init__.py
+│   │   ├── integration
+│   │   │   └── __init__.py
+│   │   └── unit
+│   │       ├── __init__.py
+│   │       ├── test_archive_purge.py
+│   │       ├── test_auth_current_user.py
+│   │       ├── test_chunker.py
+│   │       ├── test_collection_access.py
+│   │       ├── test_collections.py
+│   │       ├── test_collections_authz.py
+│   │       ├── test_eval.py
+│   │       ├── test_feedback.py
+│   │       ├── test_graph_builder.py
+│   │       ├── test_health.py
+│   │       ├── test_keycloak_client.py
+│   │       ├── test_legifrance_client.py
+│   │       ├── test_openrag_client.py
+│   │       ├── test_owui_feedback_sync.py
+│   │       ├── test_playground_bank.py
+│   │       ├── test_publication.py
+│   │       ├── test_qr_cache.py
+│   │       └── test_sync_service.py
+│   └── watch-ingest.sh
+├── openwebui
+│   ├── README.md
+│   └── feedback_forwarder.py
+├── setup-keycloak.sh
+└── sync_keycloak_openrag.py
+39 directories, 151 files
