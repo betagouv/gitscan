@@ -1,37 +1,13 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 16 juin 2026)
+## Changelog : fiches-travail-data (30 derniers jours, au 2026-06-17)
 
 ### Résumé
-Ce changelog couvre les mises à jour des données fournies par le projet fiches-travail-data au cours des 30 derniers jours.  Ces mises à jour consistent en l'ajout et la modification de données relatives aux fiches de travail, impactant directement les applications et services qui utilisent ces données.
+Ce changelog fait état de mises à jour régulières des données fournies par le projet.  Chaque mise à jour apporte de nouvelles informations ou des corrections aux fiches de travail, assurant ainsi la pertinence et l'exactitude des données disponibles pour les utilisateurs et les applications consommant ces données.
 
 ### Évolutions fonctionnelles
-- Mises à jour régulières des données des fiches de travail :
-    - Mise à jour du 29 mai 2026 ([6542e1d](https://github.com/SocialGouv/fiches-travail-data/commit/6542e1d55c4b998384c91608a66c167226524c31))
-    - Mise à jour du 28 mai 2026 ([43ece5e](https://github.com/SocialGouv/fiches-travail-data/commit/43ece5e85489246606a195436b6665721082284e))
-    - Mise à jour du 27 mai 2026 ([74ebee1](https://github.com/SocialGouv/fiches-travail-data/commit/74ebee18b3232352b2628404f8f7615411197285))
-    - Mise à jour du 26 mai 2026 ([da358ed](https://github.com/SocialGouv/fiches-travail-data/commit/da358ed644542157419739a7114f13b89565694d))
-    - Mise à jour du 21 mai 2026 ([3d5e910](https://github.com/SocialGouv/fiches-travail-data/commit/3d5e910398836916f4459c40c5781a876c60859a))
-    - Mise à jour du 20 mai 2026 ([dc74718](https://github.com/SocialGouv/fiches-travail-data/commit/dc74718461417678483709987999f43183467119))
-    - Mise à jour du 18 mai 2026 ([4f1bf87](https://github.com/SocialGouv/fiches-travail-data/commit/4f1bf876579981769869c62790192098d48f956b))
-    - Mise à jour du 17 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 16 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 15 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 14 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 13 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 12 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 11 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 10 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 9 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 8 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 7 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 6 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 5 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 4 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 3 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 2 mai 2026 (non visible dans les commits fournis)
-    - Mise à jour du 1 mai 2026 (non visible dans les commits fournis)
+- Mises à jour des données des fiches de travail : plusieurs mises à jour de données ont été intégrées les 17, 16, 15, 14, 12, 11, 10, 8, 5, 4, 3, 2, 1er juin et les 29, 28, 27, 26, 21, 20 mai. Ces mises à jour contiennent de nouvelles informations ou des corrections sur les fiches de travail. (Voir les commits associés pour plus de détails : [960f269](https://github.com/SocialGouv/fiches-travail-data/commit/960f2693643f9179a1fcc5866834eb84d9a0c39a), [b7de688](https://github.com/SocialGouv/fiches-travail-data/commit/b7de68855d68449681358810f646274d84e2e5ed), [c6b0e62](https://github.com/SocialGouv/fiches-travail-data/commit/c6b0e62d3dc295cf3e4d7c3c7e199b46d0b5a37a), [de94f03](https://github.com/SocialGouv/fiches-travail-data/commit/de94f03d70745a6f9f783871f0545b5aad8caf71), [5481955](https://github.com/SocialGouv/fiches-travail-data/commit/5481955bab0e76e7a641d4076e8b84469d8cb068), [4ea1288](https://github.com/SocialGouv/fiches-travail-data/commit/4ea1288acd31f3247ce30feeaff405af53cc3139), [9943ff5](https://github.com/SocialGouv/fiches-travail-data/commit/9943ff55650b75a362737ef7f99b14a7fbb1f249), [6c2d536](https://github.com/SocialGouv/fiches-travail-data/commit/6c2d53633aa6fad23d3379b5be48f8503780ac6a), [4cc28f2](https://github.com/SocialGouv/fiches-travail-data/commit/4cc28f2839b5ec386fb6e51ad2c6fce697d582a4), [197305a](https://github.com/SocialGouv/fiches-travail-data/commit/197305a6bc86e7f209819520edfa0625014ff492), [30da7fe](https://github.com/SocialGouv/fiches-travail-data/commit/30da7fe3166d73dcbf030907100198efc05ba8fd), [0d883a2](https://github.com/SocialGouv/fiches-travail-data/commit/0d883a266890343899768910a3914676906f6753), [e893303](https://github.com/SocialGouv/fiches-travail-data/commit/e893303142f65883751592673549c0a48c11371f), [6542e1d](https://github.com/SocialGouv/fiches-travail-data/commit/6542e1d43f19744f58c61c40225644604c354923), [43ece5e](https://github.com/SocialGouv/fiches-travail-data/commit/43ece5e677c309311a154f583814b1436911889d), [74ebee1](https://github.com/SocialGouv/fiches-travail-data/commit/74ebee1f6369c92928365699690a8946365b6145), [da358ed](https://github.com/SocialGouv/fiches-travail-data/commit/da358edc59314171119580f66a65b94691450196), [3d5e910](https://github.com/SocialGouv/fiches-travail-data/commit/3d5e9103746644a4713498487996539143f5286f), [dc74718](https://github.com/SocialGouv/fiches-travail-data/commit/dc74718288713f659115768f878f676959c9467b))
 
 ### Évolutions techniques
-- Aucune évolution technique significative n'a été identifiée dans les commits fournis.
+- Aucune évolution technique significative n'a été apportée durant cette période.
 
 ### Autres changements
-- Aucune autre modification n'a été identifiée dans les commits fournis.
+- Mises à jour de la version du projet à plusieurs reprises (4.1217.0 à 4.1235.0).
