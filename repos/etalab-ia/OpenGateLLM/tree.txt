@@ -78,7 +78,9 @@
 │   │       ├── 2026_05_06_1224-9fd5b6491d48_add_constraint_on_router_delete.py
 │   │       ├── 2026_05_06_1658-4cbcc969c660_add_constraint_on_provinder_delete.py
 │   │       ├── 2026_06_01_1421-7498a3a48271_add_storage_limits.py
-│   │       └── 2026_06_10_1828-0daf52aadaf0_add_basic_auth_to_provider_definition.py
+│   │       ├── 2026_06_10_1828-0daf52aadaf0_add_basic_auth_to_provider_definition.py
+│   │       ├── 2026_06_16_1400-c3d4e5f6a7b9_all_datetime_timestamptz.py
+│   │       └── 2026_06_17_1518-5138304df5f5_add_unique_constraint_on_key_name.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -110,6 +112,7 @@
 │   │   │   └── entities.py
 │   │   ├── key
 │   │   │   ├── __init__.py
+│   │   │   ├── _keyencoder.py
 │   │   │   ├── _keyrepository.py
 │   │   │   ├── entities.py
 │   │   │   └── errors.py
@@ -154,12 +157,11 @@
 │   │   │   └── errors.py
 │   │   ├── usage
 │   │   │   ├── __init__.py
-│   │   │   ├── _usagecomputer.py
 │   │   │   └── entities.py
 │   │   └── user
 │   │       ├── __init__.py
+│   │       ├── _authenticateduserquery.py
 │   │       ├── _userrepository.py
-│   │       ├── _userwithrolequery.py
 │   │       ├── entities.py
 │   │       ├── errors.py
 │   │       └── views.py
@@ -215,7 +217,7 @@
 │   │   │   └── _ecologitmodelenvironmentalimpactscomputer.py
 │   │   ├── fastapi
 │   │   │   ├── __init__.py
-│   │   │   ├── access.py
+│   │   │   ├── _accesscontroler.py
 │   │   │   ├── context.py
 │   │   │   ├── decorators.py
 │   │   │   ├── documentation.py
@@ -223,6 +225,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── keys.py
 │   │   │   │   │   ├── providers.py
 │   │   │   │   │   ├── roles.py
 │   │   │   │   │   ├── routers.py
@@ -235,6 +238,7 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── admin
 │   │   │       │   ├── __init__.py
+│   │   │       │   ├── keys.py
 │   │   │       │   ├── providers.py
 │   │   │       │   ├── roles.py
 │   │   │       │   ├── routers.py
@@ -345,11 +349,15 @@
 │   │   │           └── vllm
 │   │   │               ├── __init__.py
 │   │   │               └── _vllmreranksadapter.py
+│   │   ├── jwt
+│   │   │   ├── __init__.py
+│   │   │   └── _jwtkeyencoder.py
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   └── _modelprovidergateway.py
 │   │   ├── postgres
 │   │   │   ├── __init__.py
+│   │   │   ├── _postgresauthenticateduserquery.py
 │   │   │   ├── _postgreskeyrepository.py
 │   │   │   ├── _postgreslimitrepository.py
 │   │   │   ├── _postgrespermissionrepository.py
@@ -357,7 +365,6 @@
 │   │   │   ├── _postgresrolesrepository.py
 │   │   │   ├── _postgresrouterrepository.py
 │   │   │   ├── _postgresusersrepository.py
-│   │   │   ├── _postgresuserwithrolequery.py
 │   │   │   └── decorators.py
 │   │   ├── redis
 │   │   │   ├── __init__.py
@@ -483,6 +490,9 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── keys
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── test_create_key.py
 │   │   │   │   │   ├── provider
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_create_provider.py
@@ -525,8 +535,12 @@
 │   │   │   │   ├── sql.py
 │   │   │   │   ├── tei.py
 │   │   │   │   └── vllm.py
+│   │   │   ├── fastapi
+│   │   │   │   └── test_accesscontroler.py
 │   │   │   ├── http
 │   │   │   │   └── test_httpproviderclient.py
+│   │   │   ├── jwt
+│   │   │   │   └── test_jwtkeyencoder.py
 │   │   │   ├── models
 │   │   │   │   └── test_modelprovidergateway.py
 │   │   │   ├── postgres
@@ -539,12 +553,12 @@
 │   │   │   │   │   ├── test_get_role_name.py
 │   │   │   │   │   ├── test_get_roles_page.py
 │   │   │   │   │   └── test_update_role.py
+│   │   │   │   ├── test_postgresauthenticateduserquery.py
 │   │   │   │   ├── test_postgreskeyrepository.py
 │   │   │   │   ├── test_postgreslimitrepository.py
 │   │   │   │   ├── test_postgrespermissionrepository.py
 │   │   │   │   ├── test_postgresproviderrepository.py
 │   │   │   │   ├── test_postgresrouterrepository.py
-│   │   │   │   ├── test_postgresuserwithrolequery.py
 │   │   │   │   └── user_repository
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── test_create_user.py
@@ -570,11 +584,9 @@
 │   │       │   │   └── test_rerankentities.py
 │   │       │   └── usage
 │   │       │       ├── __init__.py
-│   │       │       └── test_usagecomputer.py
+│   │       │       └── test_entities.py
 │   │       ├── infrastructure
 │   │       │   ├── factories.py
-│   │       │   ├── fastapi
-│   │       │   │   └── test_access.py
 │   │       │   ├── http
 │   │       │   │   ├── adapters
 │   │       │   │   │   ├── test_embeddingsadapter.py
@@ -609,6 +621,9 @@
 │   │           ├── __init__.py
 │   │           ├── admin
 │   │           │   ├── __init__.py
+│   │           │   ├── keys
+│   │           │   │   ├── __init__.py
+│   │           │   │   └── test_createkeyusecase.py
 │   │           │   ├── providers
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── test_createproviderusecase.py
@@ -653,6 +668,9 @@
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── _bootstrapadminusecase.py
+│   │   │   ├── keys
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── _createkeyusecase.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createproviderusecase.py
@@ -713,6 +731,7 @@
 ├── compose.example.yml
 ├── config.example.yml
 ├── docs
+│   ├── .npmrc
 │   ├── astro.config.mjs
 │   ├── openapi.json
 │   ├── package-lock.json
@@ -943,4 +962,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-211 directories, 734 files
+216 directories, 748 files
