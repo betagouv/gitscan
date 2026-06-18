@@ -59,8 +59,8 @@
 │   │   ├── test_csv_to_db.py
 │   │   ├── test_csv_to_geojson.py
 │   │   ├── test_db_to_geojson.py
-│   │   ├── test_geojson_to_pmtiles.py
-│   │   └── test_parquet_export.py
+│   │   ├── test_db_to_parquet.py
+│   │   └── test_geojson_to_pmtiles.py
 │   ├── test_crawl
 │   │   ├── test_backoff.py
 │   │   └── test_crawl.py
@@ -71,6 +71,7 @@
 │   └── test_utils
 │       ├── test_compute_checksum_from_file.py
 │       ├── test_csv_headers.py
+│       ├── test_file.py
 │       ├── test_queue.py
 │       ├── test_s3_client.py
 │       └── test_sentry_error.py
@@ -78,12 +79,8 @@
 │   ├── __init__.py
 │   ├── analysis
 │   │   ├── __init__.py
-│   │   ├── csv.py
 │   │   ├── exports.py
-│   │   ├── geojson.py
 │   │   ├── helpers.py
-│   │   ├── ogc.py
-│   │   ├── parquet.py
 │   │   ├── resource.py
 │   │   └── tables_index.py
 │   ├── app.py
@@ -99,13 +96,6 @@
 │   ├── context.py
 │   ├── conversion
 │   │   ├── __init__.py
-│   │   ├── csv_to_db.py
-│   │   ├── csv_to_geojson.py
-│   │   ├── db_to_geojson.py
-│   │   ├── db_to_geojson_and_pmtiles.py
-│   │   ├── db_to_parquet.py
-│   │   ├── geojson_to_pmtiles.py
-│   │   ├── parquet_to_db.py
 │   │   └── schema.py
 │   ├── crawl
 │   │   ├── __init__.py
@@ -114,6 +104,28 @@
 │   │   ├── helpers.py
 │   │   ├── preprocess_check_data.py
 │   │   └── select_batch.py
+│   ├── data_formats
+│   │   ├── __init__.py
+│   │   ├── csv_like
+│   │   │   ├── __init__.py
+│   │   │   ├── to_db.py
+│   │   │   └── to_geojson.py
+│   │   ├── data_format.py
+│   │   ├── detect.py
+│   │   ├── geojson
+│   │   │   ├── __init__.py
+│   │   │   └── to_pmtiles.py
+│   │   ├── ogc
+│   │   │   └── __init__.py
+│   │   ├── parquet
+│   │   │   ├── __init__.py
+│   │   │   └── to_db.py
+│   │   ├── pmtiles
+│   │   │   └── __init__.py
+│   │   └── table
+│   │       ├── __init__.py
+│   │       ├── to_geojson.py
+│   │       └── to_parquet.py
 │   ├── db
 │   │   ├── __init__.py
 │   │   ├── check.py
@@ -179,18 +191,14 @@
 │   │   ├── __init__.py
 │   │   ├── auth.py
 │   │   ├── casting.py
-│   │   ├── csv.py
 │   │   ├── db.py
 │   │   ├── errors.py
 │   │   ├── file.py
-│   │   ├── geojson.py
 │   │   ├── http.py
-│   │   ├── ogc.py
-│   │   ├── parquet.py
 │   │   ├── queue.py
 │   │   ├── reader.py
 │   │   ├── s3.py
 │   │   └── timer.py
 │   └── worker.py
 └── uv.lock
-28 directories, 167 files
+35 directories, 168 files

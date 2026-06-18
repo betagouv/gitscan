@@ -1,26 +1,26 @@
-## Changelog : hydra (30 derniers jours, au 12 juin 2026)
+## Changelog : hydra (30 derniers jours, au 2026-06-17)
 
 ### Résumé
-Les dernières mises à jour d'Hydra se concentrent sur l'amélioration de la robustesse, des performances et de la flexibilité du système. Des améliorations ont été apportées à l'exportation de données (Parquet et GeoJSON), au support du stockage S3, et à la gestion des logs. Une migration vers Python 3.14 a également été effectuée pour bénéficier des dernières optimisations du langage.
+Les dernières mises à jour d'Hydra améliorent la gestion des fichiers, l'exportation des données (notamment vers Parquet et GeoJSON), et l'intégration avec le stockage S3. Des corrections de bugs et des améliorations de la robustesse ont également été apportées, ainsi que des optimisations de performance et de la documentation.
 
 ### Évolutions fonctionnelles
-- Ajout de l'exportation de fichiers Parquet et GeoJSON via des files d'attente RQ dédiées, améliorant ainsi la gestion des tâches de conversion et l'évolutivité. [#425](https://github.com/datagouv/hydra/pull/425)
-- Possibilité d'exporter des fichiers Parquet directement depuis la base de données, sans relire les fichiers CSV sources. [#424](https://github.com/datagouv/hydra/pull/424)
-- Intégration du stockage d'objets S3 via `boto3`, permettant de stocker les données sur Amazon S3. [#415](https://github.com/datagouv/hydra/pull/415)
-- Ajout du champ `header` à l'analyse des fichiers Parquet. [#431](https://github.com/datagouv/hydra/pull/431)
-- L'endpoint de santé inclut maintenant la version de Python utilisée. [#433](https://github.com/datagouv/hydra/pull/433)
+- Ajout de l'exportation Parquet et GeoJSON vers des queues RQ dédiées, améliorant ainsi la performance et la scalabilité de ces opérations. ([#425](https://github.com/datagouv/hydra/pull/425))
+- Implémentation du stockage S3 via boto3, permettant d'utiliser des buckets S3 pour le stockage des données. ([#415](https://github.com/datagouv/hydra/pull/415))
+- Possibilité d'exporter au format Parquet directement depuis la base de données. ([#424](https://github.com/datagouv/hydra/pull/424))
+- Amélioration de la gestion des fichiers et correction de bugs liés à la suppression de fichiers.
+- Ajout du champ `header` lors de l'analyse Parquet. ([#431](https://github.com/datagouv/hydra/pull/431))
 
 ### Évolutions techniques
-- Migration vers Python 3.14 pour des performances améliorées. [#378](https://github.com/datagouv/hydra/pull/378)
-- Refactorisation de la CLI pour une meilleure organisation et maintenabilité. [#437](https://github.com/datagouv/hydra/pull/437)
-- Amélioration de la gestion des uploads vers S3, corrigeant des problèmes potentiels. [#428](https://github.com/datagouv/hydra/pull/428)
-- Refactorisation des tests pour améliorer la couverture et l'organisation. [#434](https://github.com/datagouv/hydra/pull/435)
-- Séparation des méthodes de conversion dans des fichiers dédiés dans le répertoire `/conversion`. [#422](https://github.com/datagouv/hydra/pull/422)
-- Contrainte de la version de `urllib3` pour corriger une vulnérabilité de sécurité (GHSA-mf9v-mfxr-j63j). [#420](https://github.com/datagouv/hydra/pull/420)
+- Mise à jour de la version de Python utilisée pour améliorer les performances (Python 3.14). ([#378](https://github.com/datagouv/hydra/pull/378))
+- Refactorisation de l'interface de ligne de commande (CLI) pour une meilleure organisation et maintenabilité. ([#437](https://github.com/datagouv/hydra/pull/437))
+- Amélioration de la gestion des logs avec l'option `--quiet` pour réduire la verbosité. ([#436](https://github.com/datagouv/hydra/pull/436), [#432](https://github.com/datagouv/hydra/pull/432))
+- Ajout de tests unitaires pour améliorer la couverture et la qualité du code. ([#434](https://github.com/datagouv/hydra/pull/434), [#449](https://github.com/datagouv/hydra/pull/449))
+- Correction d'une vulnérabilité de sécurité en contraignant la version de la librairie urllib3. ([#420](https://github.com/datagouv/hydra/pull/420))
+- Utilisation d'un bucket S3 par environnement et de préfixes basés sur l'extension des fichiers pour une meilleure organisation du stockage. ([#429](https://github.com/datagouv/hydra/pull/429))
 
 ### Autres changements
-- Suppression des couches OGC dans le payload. [#440](https://github.com/datagouv/hydra/pull/440)
-- Mise à jour de la documentation README pour refléter les changements récents de l'API, de la CLI et du comportement du worker. [#439](https://github.com/datagouv/hydra/pull/439)
-- Suppression d'une garde obsolète dans le helper CSV_TO_GEOJSON.
+- Mise à jour de la documentation README pour refléter les changements récents de l'API, de la CLI et du comportement du worker. ([#439](https://github.com/datagouv/hydra/pull/439))
 - Correction d'une erreur mineure dans la docstring de la fonction `enqueue`.
-- Amélioration de la verbosité de la CLI avec l'option `--quiet` qui applique le silence à tous les loggers. [#432](https://github.com/datagouv/hydra/pull/432)
+- Suppression de cibles `remainders` inutiles. ([#450](https://github.com/datagouv/hydra/pull/450))
+- Correction d'un problème lié à l'analyse des sous-classes OGC. ([#444](https://github.com/datagouv/hydra/pull/444))
+- Correction d'un problème lié au passage de dictionnaires à la file d'attente (queue). ([#446](https://github.com/datagouv/hydra/pull/446))
