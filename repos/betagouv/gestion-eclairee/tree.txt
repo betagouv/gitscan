@@ -5,18 +5,50 @@
 ├── README.md
 ├── gesec
 │   ├── __init__.py
-│   ├── asgi.py
+│   ├── apps.py
+│   ├── common
+│   │   ├── __init__.py
+│   │   └── models.py
 │   ├── cpro
 │   │   ├── __init__.py
 │   │   ├── build_download_list.py
 │   │   ├── checks.py
 │   │   ├── download_cpro.py
 │   │   └── exports_to_db.py
+│   ├── front
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   ├── backends.py
+│   │   │   └── views.py
+│   │   ├── context_processors.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── wsgi.py
+│   ├── logging.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
 │   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
+│   ├── templates
+│   │   └── gesec
+│   │       ├── auth
+│   │       │   └── login.html
+│   │       ├── base.html
+│   │       ├── blocks
+│   │       │   ├── footer.html
+│   │       │   └── header.html
+│   │       └── home.html
+│   └── templatetags
+│       ├── __init__.py
+│       └── gesec.py
 ├── main.py
 ├── manage.py
 ├── pyproject.toml
+├── static
+│   └── css
+│       └── main.css
 └── uv.lock
-3 directories, 18 files
+14 directories, 39 files

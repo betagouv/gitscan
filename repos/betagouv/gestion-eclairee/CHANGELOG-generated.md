@@ -1,14 +1,23 @@
-## Changelog : gestion-eclairee (30 derniers jours, au 11 juin 2026)
+## Changelog : gestion-eclairee (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les travaux sur gestion-eclairee ont débuté avec la mise en place de l'environnement initial du projet. Cela inclut l'initialisation de l'application Django, l'ajout des dépendances nécessaires et la première structure de code. Une fonctionnalité de téléchargement CPro a également été implémentée.
+Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'environnement Django et sur l'amélioration du processus de validation et d'importation des données CPRO (Comptes-rendus Prévisionnels d'Opérations). Des corrections ont été apportées pour gérer plus robustement les données, notamment en termes de formatage des montants et de gestion des erreurs liées aux champs obligatoires.
 
 ### Évolutions fonctionnelles
-- Implémentation d'une fonctionnalité de téléchargement CPro.
+- Amélioration de la validation des données CPRO :
+  - Gestion améliorée des arrondis pour les montants CPRO.
+  - Validation de la longueur des codes EJ (Établissement Juridique).
+  - Gestion plus robuste des champs "SERVICE" vides.
+  - Exclusion de certains services/EJ spécifiques des vérifications.
+- Mise à jour du motif de fichier CSV pour supporter l'absence du service et ajout d'une vérification de doublons.
 
 ### Évolutions techniques
-- Initialisation d'une nouvelle application Django.
-- Ajout des dépendances initiales du projet (Django, Django-DSFR, psycopg, pandas, mozilla-django-oidc).
+- Initialisation du projet Django.
+- Ajout des dépendances nécessaires au projet (Django, psycopg, pandas, mozilla-django-oidc).
+- Mise en place de l'outil de formatage de code Ruff.
+- Refactorisation des vérifications CPRO avec une meilleure gestion des nombres décimaux et un suivi de la progression.
+- Implémentation du téléchargement des fichiers CPRO.
 
 ### Autres changements
-- Premier commit du dépôt, initialisant la structure du projet.
+- Première version du projet initialisée.
+- Ajout d'une application Django initiale.
