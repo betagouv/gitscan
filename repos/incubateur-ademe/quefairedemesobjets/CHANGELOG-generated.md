@@ -1,38 +1,33 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 15 juin 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité du site, la correction de bugs liés à la recherche et à l'affichage des données, ainsi que la mise à niveau de l'infrastructure technique avec la migration vers Airflow v3 et la mise à jour de nombreuses dépendances. Des améliorations ont également été apportées à l'interface d'administration et à la gestion des données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la recherche et l'accessibilité. Des corrections de bugs et des mises à jour de dépendances ont également été réalisées pour assurer la stabilité et la sécurité de la plateforme. Une migration vers Airflow v3 a été entreprise et est en cours de finalisation.
 
 ### Évolutions fonctionnelles
-
-*   Correction d'un bug empêchant l'affichage correct du bouton "Voir la fiche" en mode liste. [#2868](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2868)
-*   Amélioration de l'affichage de la famille d'un objet dans les résultats de recherche pour tous les utilisateurs. [#2827](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2827)
-*   Ajout d'une légende à la carte dans l'administration des groupes de suggestions.
-*   Correction d'une erreur 500 lors de l'import des synonymes de recherche (page vélo). [#2853](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2853)
-*   Implémentation d'un A/B test pour l'affichage par défaut des pages produit en mode mobile (carte ou liste). [#2795](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2795)
-*   Correction de problèmes d'encodage des propositions de service suite à la migration vers Airflow v3. [#2870](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2870)
-*   Correction d'un problème lié au tri des intervalles dans Airflow v3. [#2991](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2991)
-*   Ajout de documentation concernant la sécurité et les Agents IA. [#2495](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2495)
+- Amélioration de la recherche : correction d'une erreur 500 lors de l'import des synonymes de recherche (page vélo) [#2853](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2853).
+- Affichage de la famille de produits dans les résultats de recherche pour tous les utilisateurs [#2827](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2827).
+- Correction du bouton "Voir la fiche" en mode liste sur les pages produit (correction d'une régression) [#2868](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2868).
+- Ajout d'une légende à la carte dans l'administration des suggestion groupe.
+- Mise à jour des données "Sites Conformes" [#2825](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2825).
+- Amélioration de l'affichage des propositions de service depuis la migration vers Airflow v3 [#2870](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2870).
 
 ### Évolutions techniques
-
-*   Migration vers Airflow v3. [#2568](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2568)
-*   Mise à jour de nombreuses dépendances (Django, Airflow, boto3, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
-*   Suppression des espaces autour des emails pour une meilleure conformité. [#3014](https://github.com/incubateur-ademe/quefiredemesobjets/issues/3014)
-*   Empêchement de l'indexation de l'environnement de pré-production par une variable d'environnement. [#3017](https://github.com/incubateur-ademe/quefiredemesobjets/issues/3017)
-*   Mise à jour de la CLI Scaleway dans la supply chain. [#2856](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2856)
-*   Amélioration de la gestion des groupes de dépendances avec Dependabot. [#2981](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2981)
+- Migration vers Airflow v3 en cours : adaptation du code et de l'infrastructure pour supporter la nouvelle version d'Airflow [#2568](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2568) et [#2832](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2832).
+- Mise à jour de nombreuses dépendances : plusieurs bibliothèques et frameworks ont été mis à jour vers leurs dernières versions stables (Django, Airflow, PostgreSQL, React, etc.).
+- Amélioration de la gestion des environnements et des variables d'environnement pour la preprod et la production.
+- Optimisation du processus de purge des IndexEntry orphelines pour améliorer les performances de la recherche.
+- Refonte de la configuration de la supply chain pour utiliser la version v1 du CLI Scaleway.
+- Suppression des espaces autour des emails dans le code.
+- Correction de problèmes d'encodage des propositions de service.
 
 ### Autres changements
-
-*   Améliorations de l'accessibilité RGAA : correction de non-conformités bloquantes et mineures. [#2777](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2777), [#2794](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2794)
-*   Utilisation du nouvel autocomplete pour le champ adresse de la carte. [#2793](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2793)
-*   Mise à jour de la base de données `db_mapping.json`. [#2829](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2829)
-*   Correction d'un problème où une recherche synonyme était conservée lors de la navigation. [#2826](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2826)
-*   Correction d'une erreur lors de la purge des `IndexEntry` orphelines.
-*   Amélioration de la conformité aux maquettes.
-*   Ajout de commentaires et de tests assistés par LLM.
-*   Ajout de paramètres UTM.
-*   Amélioration de la gestion des actions applicables à un ensemble de `SuggestionGroupe`.
-*   Correction d'un problème avec les float dans l'interface Airflow v3.
-*   Ajout d'une commande pour aligner les propositions de service. [#2866](https://github.com/incubateur-ademe/quefiredemesobjets/issues/2866)
+- Amélioration de l'accessibilité (RGAA) : corrections de non-conformités mineures et implémentation de nouvelles fonctionnalités pour améliorer l'accessibilité de la plateforme [#2777](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2777) et [#2794](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2794).
+- Ajout de documentation pour la sécurité et les Agents IA [#2495](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2495).
+- Ajout de tests LLM-assistés.
+- Modification du nom d'un libellé ("En savoir plus sur ce site" -> "En savoir plus sur cet outil") [#3018](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3018).
+- Ajout d'un header `X-Robots-Tag` pour améliorer le référencement.
+- Groupement des dépendances de Dependabot pour une meilleure gestion.
+- Suppression de l'environnement Airflow et modification du nom des environnements.
+- Mise à jour des fichiers de lock Terragrunt après le déploiement d'Airflow v3 en production.
+- Ajout de variables d'environnement pour contrôler le comportement de l'indexation.
+- Correction de l'utilisation des paramètres `dry_run` et `use_legacy` dans les DAG Airflow.
