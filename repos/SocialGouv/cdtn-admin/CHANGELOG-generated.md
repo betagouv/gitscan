@@ -1,18 +1,17 @@
-## Changelog : cdtn-admin (30 derniers jours, au 28 mai 2026)
+## Changelog : cdtn-admin (30 derniers jours, au 17 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'administration du Code du Travail Numérique a bénéficié d'améliorations concernant la gestion des contributions, notamment en ce qui concerne le SMIC et la publication/dépublication de ces contributions. Des corrections de bugs ont également été apportées pour améliorer la qualité des suggestions et la gestion des alertes.
+Ce changelog présente les améliorations apportées à l'outil d'administration du Code du Travail Numérique au cours du dernier mois. Les principales évolutions concernent l'amélioration des fonctionnalités de gestion des contributions, notamment la détection automatique des salaires et le suivi des modifications du SMIC, ainsi qu'une nouvelle fonctionnalité permettant de restaurer la base de données à un état antérieur. Un outil a également été renommé pour plus de clarté.
 
 ### Évolutions fonctionnelles
-- Ajout de méthodes de calcul du SMIC annuel pour les contributions [#1685](https://github.com/SocialGouv/cdtn-admin/issues/1685).
-- Ajout d'un système de vérification (challenger) lors des modifications du SMIC sur les contributions [#1679](https://github.com/SocialGouv/cdtn-admin/issues/1679).
-- Correction d'un bug lors de la dépublication d'une contribution [#1678](https://github.com/SocialGouv/cdtn-admin/issues/1678).
-- Amélioration des suggestions proposées [#1672](https://github.com/SocialGouv/cdtn-admin/issues/1672).
+- Ajout d'un challenger pour la détection automatique des salaires exprimés en pourcentage du SMIC dans les contributions. [#1689](https://github.com/SocialGouv/cdtn-admin/issues/1689)
+- Ajout de méthodes de calcul sur le SMIC annuel pour les contributions. [#1685](https://github.com/SocialGouv/cdtn-admin/issues/1685)
+- Correction d'un bug lors de la dépublication d'une contribution. [#1678](https://github.com/SocialGouv/cdtn-admin/issues/1678)
+- Renommage de l'outil "Trouver sa CC" pour plus de clarté. [#1669](https://github.com/SocialGouv/cdtn-admin/issues/1669)
+- Possibilité de réaliser un dump (sauvegarde) de la base de données à une date précise, permettant une restauration à un état antérieur (PITR - Point-In-Time Recovery). [#1687](https://github.com/SocialGouv/cdtn-admin/issues/1687)
 
 ### Évolutions techniques
-- Migration vers une instance interne d'Elasticsearch (ES) pour l'environnement de pré-production [#1668](https://github.com/SocialGouv/cdtn-admin/issues/1668).
-- Mise à jour du mapping Elasticsearch pour améliorer l'indexation des contributions, infographies, informations et modèles de courrier [#1665](https://github.com/SocialGouv/cdtn-admin/issues/1665).  Conversion du HTML en texte pour une meilleure recherche.
-- Gestion du cas où une section peut avoir un titre vide dans les alertes [#1670](https://github.com/SocialGouv/cdtn-admin/issues/1670).
+- (Information non disponible dans les commits récents)
 
 ### Autres changements
-- Publication des versions 2.75.0, 2.74.0, 2.73.4, 2.73.3 et 2.72.3.
+- (Aucun changement significatif à signaler)
