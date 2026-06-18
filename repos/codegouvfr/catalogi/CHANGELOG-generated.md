@@ -1,30 +1,29 @@
-## Changelog : catalogi (30 derniers jours, au 12 juin 2026)
+## Changelog : catalogi (30 derniers jours, au 11 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de catalogi se concentrent sur l'amélioration de la recherche et de l'importation de logiciels, ainsi que sur l'ajout de nouvelles fonctionnalités d'administration pour la gestion des attributs personnalisés. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, les évolutions de catalogi se concentrent sur l'amélioration de la gestion des organisations (ROR, RNS, Wikidata), l'ajout de protections pour les logiciels, la configuration de la page d'accueil et des améliorations de l'interface d'administration. Des corrections et optimisations ont également été apportées pour stabiliser les tests et améliorer la performance.
 
 ### Évolutions fonctionnelles
-- Ajout de la récupération et de la recherche d'organisations sur Wikidata [#505](https://github.com/codegouvfr/catalogi/issues/505).
-- Amélioration de la recherche de logiciels par source [#516](https://github.com/codegouvfr/catalogi/issues/516).
+- Ajout de la récupération et de la recherche d'organisations sur Wikidata. [#505](https://github.com/codegouvfr/catalogi/issues/505)
+- Possibilité de configurer les cartes de sélection de logiciels sur la page d'accueil via l'interface utilisateur.
 - Ajout de protections pour les logiciels.
-- Configuration des cartes de sélection de logiciels sur la page d'accueil via l'interface utilisateur.
-- Possibilité de bloquer la création de logiciels via l'API lorsque l'utilisation de la fonctionnalité "ajouter un logiciel ou un service" est désactivée.
-- Ajout de la récupération de tous les identifiants sur HAL [#515](https://github.com/codegouvfr/catalogi/issues/515).
-- Amélioration de l'affichage de la page d'accueil avec un espacement plus compact entre le héros et la sélection des logiciels.
-- Ajout d'une page d'administration (accessible avec le rôle admin) pour gérer les attributs personnalisés, incluant la restriction de leur accès et la gestion de leur affichage [#528](https://github.com/codegouvfr/catalogi/issues/528).
-- Le nom du logiciel peut maintenant retomber sur les sources si nécessaire.
+- Blocage de la création de logiciels via l'API lorsque la fonctionnalité d'ajout via l'interface utilisateur est désactivée.
+- Amélioration de l'affichage des noms de logiciels en permettant un retour aux sources si le nom principal est absent.
+- Ajout d'une page d'administration (accessible avec un nouveau rôle) pour gérer les attributs personnalisés, avec restriction de l'accès et amélioration de l'affichage. [#515](https://github.com/codegouvfr/catalogi/issues/515)
+- Ajout de la récupération de tous les identifiants sur HAL. [#515](https://github.com/codegouvfr/catalogi/issues/515)
+- Amélioration de l'importation automatique pour ne plus créer d'entrée utilisateur. [#528](https://github.com/codegouvfr/catalogi/issues/528)
 
 ### Évolutions techniques
-- Refactorisation de la logique de filtrage des logiciels pour effectuer le filtrage directement au niveau SQL, améliorant ainsi les performances [#516](https://github.com/codegouvfr/catalogi/issues/516).
-- Amélioration de la gestion des références de migration.
-- Stabilisation des tests similaires pour les logiciels.
-- Mise à jour de la configuration de l'importation automatique pour ne pas créer d'entrée utilisateur [#528](https://github.com/codegouvfr/catalogi/issues/528).
-- Amélioration de la configuration du cache des navigateurs Playwright pour les tests CI.
-- Correction de l'installation des navigateurs Playwright en CI.
-- Correction des tests Playwright qui échouaient en CI.
-- Clarification de la documentation concernant le routage de l'API Helm.
+- Optimisation de la requête SQL pour la mise à jour parallèle des sources. [#516](https://github.com/codegouvfr/catalogi/issues/516)
+- Refactorisation du code pour utiliser des objets en entrée et renommer des variables. [#528](https://github.com/codegouvfr/catalogi/issues/528)
+- Amélioration de la stabilité des tests Playwright, notamment en stabilisant les assertions sur les logiciels similaires et en corrigeant l'installation des navigateurs en CI.
+- Correction de l'ordre des tests live.
+- Correction de l'ordre des références de migration. [#523](https://github.com/codegouvfr/catalogi/issues/523)
+- Amélioration de la documentation sur le routage de l'API Helm.
+- Ajout d'un script pour monter la base de données root.
 
 ### Autres changements
-- Mise à jour des dépendances Renovate.
-- Ajout d'un script pour initialiser la base de données racine.
-- Bump de version.
+- Amélioration de l'espacement entre le héros de la page d'accueil et la sélection des logiciels.
+- Correction de l'ordre des tests.
+- Mises à jour de dépendances via Renovate.
+- Augmentation du numéro de version.
