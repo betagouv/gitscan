@@ -1,29 +1,33 @@
-## Changelog : messages (30 derniers jours, au 15 juin 2026)
+## Changelog : messages (30 derniers jours, au 17 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment au niveau de la navigation dans les threads, de la composition des messages et de la gestion des boîtes de réception. Des améliorations de sécurité et de performance ont également été apportées, ainsi qu'une refonte technique majeure du frontend avec le passage à Vite et TanStack Router.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de la performance et de l'expérience utilisateur de Messages. Les améliorations incluent une meilleure gestion des pièces jointes, une navigation plus accessible, des corrections de bugs importants et une refonte technique majeure pour moderniser l'interface utilisateur. Des améliorations de la sécurité ont également été apportées, notamment au niveau de la configuration SMTP et de la gestion des certificats.
 
 ### Évolutions fonctionnelles
-- **Threads :** Possibilité de supprimer définitivement les brouillons et amélioration de l'édition des brouillons. [#707](https://github.com/suitenumerique/messages/issues/707)
-- **Boîtes de réception :** Amélioration de la navigation et de l'accessibilité des boîtes de réception, ainsi que de l'expérience utilisateur du menu déroulant des boîtes de réception. [#708](https://github.com/suitenumerique/messages/issues/708) [#705](https://github.com/suitenumerique/messages/issues/705)
-- **Paramètres des boîtes de réception :** Regroupement des paramètres des boîtes de réception dans une boîte de dialogue dédiée.
-- **Comportement des messages :** Gestion améliorée des pièces jointes de type `message/delivery-status` lors de la composition de messages.
+- **Threads :** Suppression définitive des brouillons et amélioration de l'édition des brouillons. [#707](https://github.com/suitenumerique/messages/issues/707)
 - **Calendrier :** Possibilité de lier une instance CalDAV pour accepter directement les événements. [#584](https://github.com/suitenumerique/messages/issues/584)
-- **Assignation de threads :** Possibilité d'assigner un thread à un utilisateur. [#645](https://github.com/suitenumerique/messages/issues/645)
-- **Prévisualisation des pièces jointes :** Ajout de la prévisualisation des pièces jointes. [#676](https://github.com/suitenumerique/messages/issues/676)
-- **Liens profonds vers les threads :** Ajout de liens directs vers des threads spécifiques. [#664](https://github.com/suitenumerique/messages/issues/664)
+- **Pièces jointes :** Prévisualisation des pièces jointes. [#676](https://github.com/suitenumerique/messages/issues/676)
+- **Boîtes de réception :** Amélioration de la navigation et de l'accessibilité des boîtes de réception, notamment avec l'utilisation de menus déroulants améliorés. [#705](https://github.com/suitenumerique/messages/issues/705) et [#708](https://github.com/suitenumerique/messages/issues/708)
+- **Composer :** Amélioration de l'expérience de composition des messages.
+- **Assignation de threads :** Possibilité d'assigner des threads à des utilisateurs. [#645](https://github.com/suitenumerique/messages/issues/645)
+- **Paramètres de la boîte de réception :** Regroupement des paramètres de la boîte de réception dans une boîte de dialogue. [#702](https://github.com/suitenumerique/messages/issues/702)
+- **Création de boîte aux lettres :** Possibilité de créer une boîte aux lettres sans mot de passe lorsque la synchronisation d'identité est désactivée. [#707](https://github.com/suitenumerique/messages/issues/707)
 
 ### Évolutions techniques
-- **Frontend :** Refonte complète du frontend avec le passage de Next.js à Vite et TanStack Router. [#675](https://github.com/suitenumerique/messages/issues/675)
-- **Bibliothèque JMAP :** Utilisation de la nouvelle bibliothèque `jmap-email` pour l'analyse et la composition des emails. [#700](https://github.com/suitenumerique/messages/issues/700)
-- **Stockage des blobs :** Refonte du stockage des blobs et des pièces jointes avec une approche en plusieurs niveaux.
-- **Backend :** Amélioration des performances des requêtes et correction de problèmes de N+1.
-- **Sécurité :** Renforcement de la sécurité de la connexion SMTP et des configurations de proxy. [#706](https://github.com/suitenumerique/messages/issues/706)
-- **Authentification :** Possibilité de créer une boîte de réception sans synchronisation d'identité. [#707](https://github.com/suitenumerique/messages/issues/707)
+- **Frontend :** Migration de Next.js vers Vite et TanStack Router pour moderniser l'architecture frontend et améliorer les performances. [#675](https://github.com/suitenumerique/messages/issues/675)
+- **Bibliothèque email :** Refactorisation du parser et du compositeur d'emails vers une nouvelle bibliothèque `jmap-email`. [#700](https://github.com/suitenumerique/messages/issues/700)
+- **Stockage des blobs :** Implémentation d'un stockage en plusieurs niveaux pour les blobs et les pièces jointes.
+- **Sécurité SMTP :** Renforcement de la configuration de la connexion SMTP et des proxys.
 - **Dépendances :** Mise à jour de `django-lasuite` vers la version 0.0.26. [#689](https://github.com/suitenumerique/messages/issues/689)
+- **Architecture :** Suppression des champs de modèle dépréciés.
+- **Performance :** Optimisation des requêtes N+1 dans l'interface d'administration et des recherches lentes.
 
 ### Autres changements
-- **Documentation :** Ajout d'une nouvelle illustration pour la page d'accueil. [#702](https://github.com/suitenumerique/messages/issues/702)
-- **Tests :** Ajout de scripts de publication PyPI pour `jmap-email`. [#700](https://github.com/suitenumerique/messages/issues/700)
-- **Corrections de bugs :** Diverses corrections de bugs concernant l'importation de boîtes aux lettres, le traitement des événements récurrents du calendrier, et le fonctionnement général de l'application.
-- **Nettoyage du code :** Suppression de champs de modèle dépréciés et ajout de la bibliothèque `defusedxml` pour une meilleure sécurité.
+- Correction d'un bug empêchant l'ajout de l'en-tête `To` aux emails sortants. [#712](https://github.com/suitenumerique/messages/issues/712)
+- Correction de bugs liés à l'importation de fichiers MBOX et PST.
+- Amélioration de la gestion des statuts de vérification de la messagerie (delivery status).
+- Ajout de scripts de publication PyPI pour la bibliothèque `jmap-email`.
+- Amélioration de la gestion des erreurs et des logs.
+- Internationalisation de chaînes de caractères manquantes.
+- Mise à jour de la documentation.
+- Correction de bugs divers liés à l'interface utilisateur et à la gestion des threads.
