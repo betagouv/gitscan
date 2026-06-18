@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Accélérer la mise en place de l’affichage environnemental. L’application est accessible à cette adresse : https://ecobalyse.beta.gouv.fr.",
+  "description": "Ecobalyse accélère la mise en place de l’affichage environnemental. L’application est accessible à l’adresse https://ecobalyse.beta.gouv.fr.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,39 +11,42 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Simulation & Calcul",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Données & Schémas"
+    "Simulation & Calcul"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Elm",
+    "NodeJS",
+    "Python",
+    "uv",
+    "gettext",
+    "transcrypt",
+    "docker",
     "Litestar",
     "asyncpg",
-    "psycopg",
+    "PostgreSQL",
+    "aiosmtplib",
+    "emails",
+    "python-stdnum",
+    "pygithub",
+    "typer",
     "pytest",
     "pytest-databases",
+    "psycopg",
+    "structlog",
     "orjson",
-    "aiosmtplib",
-    "fastapi",
-    "matplotlib",
-    "NodeJS",
-    "npm",
-    "Elm",
-    "Docker"
+    "pwdlib"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "jwt",
-      "session"
+      "email-password"
     ]
   },
   "tests": [
@@ -62,9 +65,6 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
