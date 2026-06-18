@@ -727,8 +727,9 @@
 │   │   │   │   │   └── authentication
 │   │   │   │   │       ├── connected.ts
 │   │   │   │   │       ├── disconnect.js
-│   │   │   │   │       └── email
-│   │   │   │   │           └── login.ts
+│   │   │   │   │       ├── email
+│   │   │   │   │       │   └── login.ts
+│   │   │   │   │       └── isTrustDevice.ts
 │   │   │   │   ├── demandeSejour
 │   │   │   │   │   ├── cancel.js
 │   │   │   │   │   ├── copy.ts
@@ -767,7 +768,7 @@
 │   │   │   │   │   ├── create.js
 │   │   │   │   │   ├── delete.js
 │   │   │   │   │   ├── depose.js
-│   │   │   │   │   ├── get-admin.js
+│   │   │   │   │   ├── get-admin.ts
 │   │   │   │   │   ├── get-by-ds-id-admin.js
 │   │   │   │   │   ├── get-by-ds-id.js
 │   │   │   │   │   ├── get-by-id.js
@@ -903,7 +904,8 @@
 │   │   │   │   │   └── checkJWT.js
 │   │   │   │   ├── getDepartements.js
 │   │   │   │   ├── requestValidatorMiddleware.ts
-│   │   │   │   ├── scan-file.js
+│   │   │   │   ├── scan-file.spec.ts
+│   │   │   │   ├── scan-file.ts
 │   │   │   │   ├── trackBoUser.ts
 │   │   │   │   ├── trackDemandeSejour.js
 │   │   │   │   ├── trackEig.js
@@ -1806,7 +1808,8 @@
 │   │   │   │   ├── 20260519114308_ front.seq_declaration_sejour__increase.js
 │   │   │   │   ├── 20260521120710_users_add_otp_code.js
 │   │   │   │   ├── 20260522135301_front.agrement__update_all_statuts.js
-│   │   │   │   └── 20260601141044_users_add_otp_attemps.js
+│   │   │   │   ├── 20260601141044_users_add_otp_attemps.js
+│   │   │   │   └── 20260615174703_public.__add__featureflag_otp.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -1867,6 +1870,9 @@
 │   │   │   │   │   ├── document
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── postDocument.ts
+│   │   │   │   │   ├── eig
+│   │   │   │   │   │   ├── get.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── hebergement
 │   │   │   │   │   │   ├── getOne.ts
 │   │   │   │   │   │   └── index.ts
@@ -2068,4 +2074,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-298 directories, 1777 files
+299 directories, 1782 files
