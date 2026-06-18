@@ -183,7 +183,9 @@
 │   │   ├── second-declaration-confirmation.md
 │   │   └── second-declaration-reminder.md
 │   ├── mails.md
-│   └── parcours-utilisateurs.md
+│   ├── parcours-utilisateurs.md
+│   ├── plan-de-tracking.md
+│   └── strategie-tracking.md
 ├── package.json
 ├── packages
 │   ├── app
@@ -239,6 +241,8 @@
 │   │   │   ├── 0036_add_step_change_event_type.sql
 │   │   │   ├── 0037_pale_mikhail_rasputin.sql
 │   │   │   ├── 0038_whole_unus.sql
+│   │   │   ├── 0039_cse_opinion_file.sql
+│   │   │   ├── 0040_reconcile_drifted_schema.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -264,6 +268,8 @@
 │   │   │       ├── 0036_snapshot.json
 │   │   │       ├── 0037_snapshot.json
 │   │   │       ├── 0038_snapshot.json
+│   │   │       ├── 0039_snapshot.json
+│   │   │       ├── 0040_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -629,8 +635,17 @@
 │   │   │   │   │   │   └── ContactPage.test.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── analytics
+│   │   │   │   │   ├── FunnelCompleteTracker.tsx
+│   │   │   │   │   ├── FunnelStepTracker.tsx
 │   │   │   │   │   ├── MatomoAnalytics.tsx
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── trackEvent.test.ts
+│   │   │   │   │   │   └── useFunnelTracking.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   └── events.ts
+│   │   │   │   │   ├── trackEvent.ts
+│   │   │   │   │   └── useFunnelTracking.ts
 │   │   │   │   ├── audit
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── actionKeys.test.ts
@@ -664,9 +679,13 @@
 │   │   │   │   │   │   ├── Step2Upload.test.tsx
 │   │   │   │   │   │   ├── SubmitConfirmationModal.test.tsx
 │   │   │   │   │   │   ├── confirmationHelpers.test.ts
-│   │   │   │   │   │   └── mapOpinionsFromDb.test.ts
+│   │   │   │   │   │   ├── contentTypeColumns.test.ts
+│   │   │   │   │   │   ├── mapOpinionsFromDb.test.ts
+│   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AccuracyOpinionCard.tsx
+│   │   │   │   │   │   ├── ContentTypeMatrix.module.scss
+│   │   │   │   │   │   ├── ContentTypeMatrix.tsx
 │   │   │   │   │   │   ├── CseStepIndicator.tsx
 │   │   │   │   │   │   ├── GapConsultationCard.tsx
 │   │   │   │   │   │   ├── OpinionCard.module.scss
@@ -674,8 +693,12 @@
 │   │   │   │   │   │   ├── OpinionSummaryBox.tsx
 │   │   │   │   │   │   ├── SubmissionBanner.module.scss
 │   │   │   │   │   │   ├── SubmissionBanner.tsx
-│   │   │   │   │   │   └── SubmitConfirmationModal.tsx
+│   │   │   │   │   │   ├── SubmitConfirmationModal.tsx
+│   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │       └── ContentTypeMatrix.test.tsx
 │   │   │   │   │   ├── confirmationHelpers.ts
+│   │   │   │   │   ├── contentTypeColumns.ts
+│   │   │   │   │   ├── funnelConfig.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── mapOpinionsFromDb.ts
 │   │   │   │   │   ├── schemas.ts
@@ -701,7 +724,10 @@
 │   │   │   │   │   │   ├── RecapitulatifPage.module.scss
 │   │   │   │   │   │   ├── RecapitulatifPage.tsx
 │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   └── RecapitulatifPage.test.tsx
+│   │   │   │   │   │   │   ├── CategoryRecapTable.test.tsx
+│   │   │   │   │   │   │   ├── RecapitulatifPage.correction.test.tsx
+│   │   │   │   │   │   │   ├── RecapitulatifPage.test.tsx
+│   │   │   │   │   │   │   └── fixtures.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
@@ -766,6 +792,7 @@
 │   │   │   │   │   │   │   ├── useDeclarationDraft.ts
 │   │   │   │   │   │   │   ├── useDraftAutoSave.ts
 │   │   │   │   │   │   │   └── useDraftHydration.ts
+│   │   │   │   │   │   ├── funnelConfig.ts
 │   │   │   │   │   │   ├── gapBadge.module.scss
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
@@ -773,6 +800,7 @@
 │   │   │   │   │   │   └── indicatorRowMapping.ts
 │   │   │   │   │   ├── steps
 │   │   │   │   │   │   ├── ComplianceConfirmation.tsx
+│   │   │   │   │   │   ├── CompliancePathChoice.module.scss
 │   │   │   │   │   │   ├── CompliancePathChoice.tsx
 │   │   │   │   │   │   ├── CompliancePathPage.tsx
 │   │   │   │   │   │   ├── Step1Workforce.module.scss
@@ -809,6 +837,7 @@
 │   │   │   │   │   │   │   ├── CompliancePathOption.module.scss
 │   │   │   │   │   │   │   ├── CompliancePathOption.tsx
 │   │   │   │   │   │   │   ├── CompliancePathOptions.tsx
+│   │   │   │   │   │   │   ├── DeclarationSuccessBanner.module.scss
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
 │   │   │   │   │   │   │   └── constants.ts
 │   │   │   │   │   │   ├── jointEvaluation
@@ -831,6 +860,7 @@
 │   │   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.test.tsx
 │   │   │   │   │   │   │   │   └── SecondDeclarationStep3Review.test.tsx
 │   │   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   │   ├── funnelConfig.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── step3
 │   │   │   │   │   │   │   └── index.ts
@@ -1016,12 +1046,14 @@
 │   │   │   │   │   ├── HomePlaceholder.tsx
 │   │   │   │   │   ├── HomeSearch.module.scss
 │   │   │   │   │   ├── HomeSearch.tsx
+│   │   │   │   │   ├── HomeSearchForm.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── HomeHero.test.tsx
 │   │   │   │   │   │   ├── HomeNotice.test.tsx
 │   │   │   │   │   │   ├── HomePage.test.tsx
 │   │   │   │   │   │   ├── HomePlaceholder.test.tsx
-│   │   │   │   │   │   └── HomeSearch.test.tsx
+│   │   │   │   │   │   ├── HomeSearch.test.tsx
+│   │   │   │   │   │   └── HomeSearchForm.test.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── Breadcrumb.tsx
@@ -1057,6 +1089,7 @@
 │   │   │   │   │   │   └── ResourceBanner.test.tsx
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── shared
+│   │   │   │   │       ├── ConsultationNavLink.tsx
 │   │   │   │   │       ├── DsfrPictogram.tsx
 │   │   │   │   │       ├── NavLink.tsx
 │   │   │   │   │       ├── NewTabNotice.tsx
@@ -1237,6 +1270,7 @@
 │   │   │   │   │   │   ├── DsfrTable.test.tsx
 │   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
+│   │   │   │   │   │   ├── formatFileSize.test.ts
 │   │   │   │   │   │   ├── getDsfrModal.test.ts
 │   │   │   │   │   │   ├── uploadFile.test.ts
 │   │   │   │   │   │   ├── useFileUploadForm.test.tsx
@@ -1275,6 +1309,7 @@
 │   │   │   │   │   │   │   ├── company.getWithDeclarations.test.ts
 │   │   │   │   │   │   │   ├── company.list.test.ts
 │   │   │   │   │   │   │   ├── company.test.ts
+│   │   │   │   │   │   │   ├── cseOpinion.fileAssociations.integration.test.ts
 │   │   │   │   │   │   │   ├── cseOpinion.finalize.test.ts
 │   │   │   │   │   │   │   ├── cseOpinion.test.ts
 │   │   │   │   │   │   │   ├── declaration.cancellation-flow.test.ts
@@ -1283,6 +1318,7 @@
 │   │   │   │   │   │   │   ├── declaration.impersonation.test.ts
 │   │   │   │   │   │   │   ├── declaration.step4Loader.test.ts
 │   │   │   │   │   │   │   ├── declaration.test.ts
+│   │   │   │   │   │   │   ├── declarationDraft.integration.test.ts
 │   │   │   │   │   │   │   ├── declarationDraft.test.ts
 │   │   │   │   │   │   │   ├── declarationHelpers.test.ts
 │   │   │   │   │   │   │   ├── helpers
@@ -1360,6 +1396,7 @@
 │   │   │   │       │   ├── fileUpload.test.ts
 │   │   │   │       │   ├── fileValidation.test.ts
 │   │   │   │       │   ├── gipMds.test.ts
+│   │   │   │       │   ├── matomo.test.ts
 │   │   │   │       │   ├── s3.test.ts
 │   │   │   │       │   ├── suit.test.ts
 │   │   │   │       │   ├── uploadPipeline.test.ts
@@ -1370,6 +1407,7 @@
 │   │   │   │       ├── fileValidation.ts
 │   │   │   │       ├── gatewaySource.ts
 │   │   │   │       ├── gipMds.ts
+│   │   │   │       ├── matomo.ts
 │   │   │   │       ├── s3.ts
 │   │   │   │       ├── suit.ts
 │   │   │   │       ├── uploadPipeline.ts
@@ -1496,4 +1534,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-263 directories, 1235 files
+266 directories, 1270 files
