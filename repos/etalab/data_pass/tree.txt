@@ -857,7 +857,8 @@
 │   │   ├── application_bridge.rb
 │   │   ├── hubee_base_bridge.rb
 │   │   ├── hubee_cert_dc_bridge.rb
-│   │   └── hubee_dila_bridge.rb
+│   │   ├── hubee_dila_bridge.rb
+│   │   └── hubee_proactivite_bridge.rb
 │   ├── channels
 │   │   └── application_cable
 │   │       ├── channel.rb
@@ -1033,6 +1034,7 @@
 │   │   ├── manual_transfer_authorization_requests_controller.rb
 │   │   ├── messages_controller.rb
 │   │   ├── next_authorization_request_stage_controller.rb
+│   │   ├── notification_unsubscriptions_controller.rb
 │   │   ├── notifications_settings_controller.rb
 │   │   ├── organizations_controller.rb
 │   │   ├── pages_controller.rb
@@ -1109,6 +1111,7 @@
 │   │   ├── page_title_helper.rb
 │   │   ├── subdomains_helper.rb
 │   │   ├── tabs_helper.rb
+│   │   ├── user_rights_helper.rb
 │   │   ├── user_rights_paths_helper.rb
 │   │   └── webhooks_helper.rb
 │   ├── interactors
@@ -1178,6 +1181,8 @@
 │   │   ├── deliver_linked_france_connect_revocation_notification.rb
 │   │   ├── deliver_linked_france_connect_webhook.rb
 │   │   ├── deliver_message_mail.rb
+│   │   ├── deliver_message_mail_to_applicant.rb
+│   │   ├── deliver_message_mail_to_instructors.rb
 │   │   ├── deprecate_linked_authorizations.rb
 │   │   ├── deprecate_previous_authorizations.rb
 │   │   ├── developer
@@ -1214,6 +1219,8 @@
 │   │   ├── mark_authorization_as_revoked.rb
 │   │   ├── mark_authorizations_as_revoked.rb
 │   │   ├── mark_instructor_draft_as_claimed.rb
+│   │   ├── notifications
+│   │   │   └── unsubscribe.rb
 │   │   ├── regenerate_instructor_draft_request_public_id.rb
 │   │   ├── resolve_authorization_request_form.rb
 │   │   ├── restore_authorization_request_to_authorization.rb
@@ -1265,6 +1272,7 @@
 │   │   │   ├── scroll_into_view_controller.js
 │   │   │   ├── scroll_to_controller.js
 │   │   │   ├── scroll_to_top_controller.js
+│   │   │   ├── search_status_controller.js
 │   │   │   ├── show_and_hide_controller.js
 │   │   │   ├── stats_controller.js
 │   │   │   ├── sticky_bar_controller.js
@@ -1433,14 +1441,17 @@
 │   │   ├── denial_of_authorization.rb
 │   │   ├── eligibility_option.rb
 │   │   ├── eligibility_rule.rb
+│   │   ├── form_template.rb
 │   │   ├── france_connect_default_data.rb
 │   │   ├── habilitation_type.rb
 │   │   ├── identity_provider.rb
 │   │   ├── impersonation.rb
 │   │   ├── impersonation_action.rb
 │   │   ├── instruction
+│   │   │   ├── notification_recipients.rb
 │   │   │   ├── right_validator.rb
 │   │   │   ├── scope.rb
+│   │   │   ├── user_rights_search.rb
 │   │   │   └── user_rights_view.rb
 │   │   ├── instructor_draft_request.rb
 │   │   ├── instructor_draft_request_document.rb
@@ -1448,6 +1459,7 @@
 │   │   ├── malware_scan.rb
 │   │   ├── message.rb
 │   │   ├── message_template.rb
+│   │   ├── notification_unsubscribe_token.rb
 │   │   ├── organization.rb
 │   │   ├── organizations_user.rb
 │   │   ├── parsed_role.rb
@@ -2167,7 +2179,8 @@
 │       │   ├── instruction
 │       │   │   └── authorization_request.html.erb
 │       │   ├── mailer.html.erb
-│       │   └── mailer.text.erb
+│       │   ├── mailer.text.erb
+│       │   └── notification_unsubscription.html.erb
 │       ├── mailer
 │       │   └── shared
 │       │       ├── applicant
@@ -2190,6 +2203,10 @@
 │       │   ├── _message.html.erb
 │       │   ├── create.turbo_stream.erb
 │       │   └── index.html.erb
+│       ├── notification_unsubscriptions
+│       │   ├── invalid.html.erb
+│       │   ├── show.html.erb
+│       │   └── success.html.erb
 │       ├── organizations
 │       │   ├── new.html.erb
 │       │   └── show.html.erb
@@ -2537,7 +2554,10 @@
 │   │   ├── 20260417000001_add_diagnostic_fields.rb
 │   │   ├── 20260419000001_add_p95_p99_duration_to_rails_pulse_jobs.rb
 │   │   ├── 20260420000001_expand_normalized_sql_column.rb
-│   │   └── 20260421000000_migrate_roles_to_three_part_format.rb
+│   │   ├── 20260421000000_migrate_roles_to_three_part_format.rb
+│   │   ├── 20260513000001_create_form_templates.rb
+│   │   ├── 20260608193914_enforce_single_default_form_template_per_habilitation_type.rb
+│   │   └── 20260615100802_backfill_default_form_templates.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2614,6 +2634,7 @@
 │   ├── consultation_habilitation_en_tant_que_reporter.feature
 │   ├── consultation_habilitation_non_integre.feature
 │   ├── dashboard_empty_states.feature
+│   ├── desabonnement_notifications.feature
 │   ├── developpeurs
 │   │   ├── applications.feature
 │   │   ├── documentation.feature
@@ -2738,6 +2759,7 @@
 │   │   ├── message_templates_steps.rb
 │   │   ├── messages_steps.rb
 │   │   ├── modal_steps.rb
+│   │   ├── notification_unsubscription_steps.rb
 │   │   ├── organizations_steps.rb
 │   │   ├── query_steps.rb
 │   │   ├── settings.rb
@@ -2878,7 +2900,8 @@
 │   │   ├── api_captchetat_bridge_spec.rb
 │   │   ├── application_bridge_spec.rb
 │   │   ├── hubee_cert_dc_bridge_spec.rb
-│   │   └── hubee_dila_bridge_spec.rb
+│   │   ├── hubee_dila_bridge_spec.rb
+│   │   └── hubee_proactivite_bridge_spec.rb
 │   ├── components
 │   │   ├── applicant
 │   │   │   └── demande_alerts_component_spec.rb
@@ -2901,7 +2924,9 @@
 │   │   ├── molecules
 │   │   │   └── instruction
 │   │   │       └── user_rights
-│   │   │           └── right_field_component_spec.rb
+│   │   │           ├── readonly_rights_list_component_spec.rb
+│   │   │           ├── right_field_component_spec.rb
+│   │   │           └── table_row_component_spec.rb
 │   │   └── previews
 │   │       ├── applicant
 │   │       │   └── demande_alerts_component_preview.rb
@@ -3003,6 +3028,7 @@
 │   │   ├── bulk_authorization_request_updates.rb
 │   │   ├── data_providers.rb
 │   │   ├── denial_of_authorizations.rb
+│   │   ├── form_templates.rb
 │   │   ├── habilitation_types.rb
 │   │   ├── hubee_payloads.rb
 │   │   ├── impersonation_actions.rb
@@ -3065,6 +3091,8 @@
 │   │   ├── page_title_helper_spec.rb
 │   │   └── tabs_helper_spec.rb
 │   ├── i18n_spec.rb
+│   ├── initializers
+│   │   └── sentry_spec.rb
 │   ├── interactors
 │   │   ├── .gitkeep
 │   │   ├── admin
@@ -3097,6 +3125,7 @@
 │   │   │   ├── replay_webhook_attempt_spec.rb
 │   │   │   ├── save_webhook_attempt_spec.rb
 │   │   │   └── test_webhook_spec.rb
+│   │   ├── execute_authorization_request_bridge_spec.rb
 │   │   ├── find_or_create_applicant_from_api_spec.rb
 │   │   ├── find_or_create_organization_for_api_spec.rb
 │   │   ├── find_or_create_organization_through_mon_compte_pro_spec.rb
@@ -3106,6 +3135,8 @@
 │   │   ├── instruction
 │   │   │   └── merge_managed_roles_spec.rb
 │   │   ├── link_applicant_to_organization_spec.rb
+│   │   ├── notifications
+│   │   │   └── unsubscribe_spec.rb
 │   │   ├── restore_authorization_request_to_latest_authorization_spec.rb
 │   │   ├── revoke_child_authorizations_spec.rb
 │   │   ├── run_malware_scan_on_documents_spec.rb
@@ -3187,13 +3218,16 @@
 │   │   ├── data_provider_spec.rb
 │   │   ├── denial_of_authorization_spec.rb
 │   │   ├── eligibility_rule_spec.rb
+│   │   ├── form_template_spec.rb
 │   │   ├── france_connect_default_data_spec.rb
 │   │   ├── habilitation_type_spec.rb
 │   │   ├── identity_provider_spec.rb
 │   │   ├── impersonation_action_spec.rb
 │   │   ├── impersonation_spec.rb
 │   │   ├── instruction
+│   │   │   ├── notification_recipients_spec.rb
 │   │   │   ├── scope_spec.rb
+│   │   │   ├── user_rights_search_spec.rb
 │   │   │   └── user_rights_view_spec.rb
 │   │   ├── instructor_draft_request_document_spec.rb
 │   │   ├── instructor_draft_request_spec.rb
@@ -3201,6 +3235,7 @@
 │   │   ├── malware_scan_spec.rb
 │   │   ├── message_spec.rb
 │   │   ├── message_template_spec.rb
+│   │   ├── notification_unsubscribe_token_spec.rb
 │   │   ├── organization_spec.rb
 │   │   ├── organizations_user_spec.rb
 │   │   ├── parsed_role_spec.rb
@@ -3312,6 +3347,7 @@
 │   │   ├── instruction
 │   │   │   └── authorization_requests_spec.rb
 │   │   ├── instruction_access_spec.rb
+│   │   ├── notification_unsubscriptions_spec.rb
 │   │   └── stats_spec.rb
 │   ├── serializers
 │   │   ├── api
@@ -3364,9 +3400,10 @@
 │   │   ├── openapi_validation.rb
 │   │   ├── requests_helpers.rb
 │   │   ├── sessions_helpers.rb
-│   │   └── shared_examples
-│   │       ├── generators.rb
-│   │       └── new_authorization_request_facade.rb
+│   │   ├── shared_examples
+│   │   │   ├── generators.rb
+│   │   │   └── new_authorization_request_facade.rb
+│   │   └── sql_query_counter.rb
 │   ├── tmp
 │   │   ├── generator_specs
 │   │   │   └── app
@@ -3402,4 +3439,4 @@
     ├── .keep
     └── javascript
         └── .keep
-483 directories, 3059 files
+487 directories, 3092 files
