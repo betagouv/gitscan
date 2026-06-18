@@ -27,7 +27,7 @@
 ├── bench
 │   └── index.ts
 ├── data
-│   ├── actions
+│   ├── actions_v1
 │   │   ├── actions.publicodes
 │   │   ├── alimentation.publicodes
 │   │   ├── divers.publicodes
@@ -39,45 +39,77 @@
 │   │       ├── deux roues.publicodes
 │   │       ├── ferry.publicodes
 │   │       └── voiture.publicodes
-│   ├── alimentation
-│   │   ├── alimentation.publicodes
-│   │   ├── boisson.publicodes
-│   │   ├── déchets.publicodes
-│   │   ├── modèle déchets
-│   │   │   ├── collecte séparée.publicodes
-│   │   │   ├── dechetterie.publicodes
-│   │   │   ├── note-méthodo.md
-│   │   │   ├── omr.publicodes
-│   │   │   ├── part_DAE.png
-│   │   │   ├── traitement_refus_CS.png
-│   │   │   ├── traitements_OMR.png
-│   │   │   └── traitements_déchetterie.png
-│   │   └── repas.publicodes
-│   ├── archives
-│   │   ├── finance.archive
-│   │   ├── fuites réseau.archive
-│   │   ├── humour.archive
-│   │   └── pétrole
-│   │       └── conversion-métrique.archive
-│   ├── bilan.publicodes
-│   ├── commun.publicodes
-│   ├── divers
-│   │   ├── ameublement.publicodes
-│   │   ├── animaux domestiques.publicodes
-│   │   ├── archives
-│   │   │   └── livres.archive
-│   │   ├── autres produits macro.publicodes
-│   │   ├── autres produits.publicodes
-│   │   ├── divers.publicodes
-│   │   ├── loisirs.publicodes
-│   │   ├── numérique.publicodes
-│   │   ├── produits consommables.publicodes
-│   │   ├── tabac.publicodes
-│   │   ├── textile.publicodes
-│   │   └── électroménager.publicodes
-│   ├── empreinte SDES
-│   │   ├── empreinte nationale.publicodes
-│   │   └── empreinte par branche.publicodes
+│   ├── actions_v2
+│   │   ├── actions.publicodes
+│   │   ├── alimentation
+│   │   │   └── alimentation.publicodes
+│   │   ├── consommation
+│   │   │   └── consommation.publicodes
+│   │   ├── logement
+│   │   │   └── logement.publicodes
+│   │   ├── mobilités
+│   │   │   └── mobilités.publicodes
+│   │   └── vie quotienne
+│   │       └── vie quotienne.publicodes
+│   ├── empreinte
+│   │   ├── alimentation
+│   │   │   ├── alimentation.publicodes
+│   │   │   ├── boisson.publicodes
+│   │   │   ├── déchets.publicodes
+│   │   │   ├── modèle déchets
+│   │   │   │   ├── collecte séparée.publicodes
+│   │   │   │   ├── dechetterie.publicodes
+│   │   │   │   ├── note-méthodo.md
+│   │   │   │   ├── omr.publicodes
+│   │   │   │   ├── part_DAE.png
+│   │   │   │   ├── traitement_refus_CS.png
+│   │   │   │   ├── traitements_OMR.png
+│   │   │   │   └── traitements_déchetterie.png
+│   │   │   └── repas.publicodes
+│   │   ├── bilan.publicodes
+│   │   ├── commun.publicodes
+│   │   ├── divers
+│   │   │   ├── ameublement.publicodes
+│   │   │   ├── animaux domestiques.publicodes
+│   │   │   ├── archives
+│   │   │   │   └── livres.archive
+│   │   │   ├── autres produits macro.publicodes
+│   │   │   ├── autres produits.publicodes
+│   │   │   ├── divers.publicodes
+│   │   │   ├── loisirs.publicodes
+│   │   │   ├── numérique.publicodes
+│   │   │   ├── produits consommables.publicodes
+│   │   │   ├── tabac.publicodes
+│   │   │   ├── textile.publicodes
+│   │   │   └── électroménager.publicodes
+│   │   ├── empreinte SDES
+│   │   │   ├── empreinte nationale.publicodes
+│   │   │   └── empreinte par branche.publicodes
+│   │   ├── logement
+│   │   │   ├── chauffage.publicodes
+│   │   │   ├── chiffres parc logements français.publicodes
+│   │   │   ├── climatisation.publicodes
+│   │   │   ├── construction.publicodes
+│   │   │   ├── eau domestique.publicodes
+│   │   │   ├── extérieur.publicodes
+│   │   │   ├── logement.publicodes
+│   │   │   ├── piscine.publicodes
+│   │   │   ├── vacances.publicodes
+│   │   │   └── électricité.publicodes
+│   │   ├── services sociétaux
+│   │   │   ├── services marchands.publicodes
+│   │   │   ├── services publics.publicodes
+│   │   │   └── services sociétaux.publicodes
+│   │   └── transport
+│   │       ├── avion.publicodes
+│   │       ├── deux roues.publicodes
+│   │       ├── ferry.publicodes
+│   │       ├── mobilité douce.publicodes
+│   │       ├── train.publicodes
+│   │       ├── transport.publicodes
+│   │       ├── transports commun.publicodes
+│   │       ├── vacances.publicodes
+│   │       └── voiture.publicodes
 │   ├── i18n
 │   │   ├── models
 │   │   │   ├── BE-en.publicodes
@@ -128,35 +160,12 @@
 │   │   │   └── YT-fr.publicodes
 │   │   └── t9n
 │   │       └── translated-rules-en.yaml
-│   ├── logement
-│   │   ├── chauffage.publicodes
-│   │   ├── chiffres parc logements français.publicodes
-│   │   ├── climatisation.publicodes
-│   │   ├── construction.publicodes
-│   │   ├── eau domestique.publicodes
-│   │   ├── extérieur.publicodes
-│   │   ├── logement.publicodes
-│   │   ├── piscine.publicodes
-│   │   ├── vacances.publicodes
-│   │   └── électricité.publicodes
-│   ├── services sociétaux
-│   │   ├── services marchands.publicodes
-│   │   ├── services publics.publicodes
-│   │   └── services sociétaux.publicodes
-│   ├── transport
-│   │   ├── avion.publicodes
-│   │   ├── deux roues.publicodes
-│   │   ├── ferry.publicodes
-│   │   ├── mobilité douce.publicodes
-│   │   ├── train.publicodes
-│   │   ├── transport.publicodes
-│   │   ├── transports commun.publicodes
-│   │   ├── vacances.publicodes
-│   │   └── voiture.publicodes
-│   └── ui
-│       ├── organisations.publicodes
-│       ├── pédagogie.publicodes
-│       └── ui.publicodes
+│   ├── ui
+│   │   ├── organisations.publicodes
+│   │   ├── pédagogie.publicodes
+│   │   └── ui.publicodes
+│   └── utilisateur
+│       └── utilisateur.publicodes
 ├── dev-server.ts
 ├── index.d.ts
 ├── migration
@@ -283,4 +292,4 @@
     └── unit
         ├── bornes.test.mjs
         └── utils.mjs
-46 directories, 239 files
+52 directories, 242 files
