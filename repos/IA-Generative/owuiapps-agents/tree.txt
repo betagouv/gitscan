@@ -1,0 +1,146 @@
+.
+├── .dockerignore
+├── .env.example
+├── .eslintrc.json
+├── .github
+│   └── workflows
+│       └── gitleaks.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── AGENTS.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── app
+│   ├── _components
+│   │   └── header-account.tsx
+│   ├── agents
+│   │   ├── [id]
+│   │   │   ├── chat
+│   │   │   │   └── page.tsx
+│   │   │   └── edit
+│   │   │       └── page.tsx
+│   │   ├── _components
+│   │   │   └── onboarding-chat.tsx
+│   │   ├── new
+│   │   │   ├── _components
+│   │   │   │   ├── step-behavior.tsx
+│   │   │   │   ├── step-identity.tsx
+│   │   │   │   ├── step-knowledge.tsx
+│   │   │   │   └── step-test-publish.tsx
+│   │   │   ├── _context.tsx
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── api
+│   │   ├── ab
+│   │   │   ├── agents
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── chat
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── conversations
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── catalog
+│   │   │   │   └── route.ts
+│   │   │   ├── config
+│   │   │   │   └── route.ts
+│   │   │   ├── conversations
+│   │   │   │   └── [id]
+│   │   │   │       └── route.ts
+│   │   │   ├── keycloak
+│   │   │   │   └── groups
+│   │   │   │       └── route.ts
+│   │   │   ├── models
+│   │   │   │   └── route.ts
+│   │   │   ├── onboarding
+│   │   │   │   └── chat
+│   │   │   │       └── route.ts
+│   │   │   └── prompt
+│   │   │       ├── assist
+│   │   │       │   └── route.ts
+│   │   │       ├── optimize
+│   │   │       │   └── route.ts
+│   │   │       └── suggest-starters
+│   │   │           └── route.ts
+│   │   ├── auth
+│   │   │   └── [...nextauth]
+│   │   │       └── route.ts
+│   │   └── health
+│   │       └── route.ts
+│   ├── catalog
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── sign-in
+│       └── page.tsx
+├── deploy
+│   ├── build-image.sh
+│   ├── deploy-k8s.sh
+│   ├── prepare-env.sh
+│   ├── prepare-registry-secret.sh
+│   ├── prepare-secrets.sh
+│   └── push-image.sh
+├── docker-compose.yml
+├── k8s
+│   └── base
+│       ├── configmap.yaml
+│       ├── deployment.yaml
+│       ├── ingress.yaml
+│       ├── job-migrate.yaml
+│       ├── kustomization.yaml
+│       ├── namespace.yaml
+│       ├── secret.example.yaml
+│       └── service.yaml
+├── keycloak
+│   ├── README.md
+│   └── client-miraiku-agents.json
+├── middleware.ts
+├── mockups
+│   ├── 01-wizard-actions.html
+│   ├── 01-wizard-actions.png
+│   ├── 02-recording.html
+│   ├── 02-recording.png
+│   ├── 03-overlay-panel.html
+│   ├── 03-overlay-panel.png
+│   ├── 04-execution-progress.html
+│   ├── 04-execution-progress.png
+│   ├── 05-mes-agents-cards.html
+│   ├── 05-mes-agents-cards.png
+│   ├── 06-onglet-apprendre.html
+│   └── 06-onglet-apprendre.png
+├── mockups.zip
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── prisma
+│   ├── migrations
+│   │   ├── 0_init
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   └── schema.prisma
+├── prompt_mirai_agent_builder.md
+├── prompt_mirai_agent_builder_v2_extensions.md
+├── public
+│   ├── .gitkeep
+│   └── favicon.svg
+├── scripts
+│   └── load_env.sh
+├── src
+│   ├── lib
+│   │   ├── auth.ts
+│   │   ├── db.ts
+│   │   ├── env.ts
+│   │   ├── models.ts
+│   │   ├── owui-admin-client.ts
+│   │   ├── owui-client.ts
+│   │   ├── rate-limit.ts
+│   │   └── scw-llm-client.ts
+│   └── types
+│       └── next-auth.d.ts
+├── tailwind.config.ts
+└── tsconfig.json
+49 directories, 96 files
