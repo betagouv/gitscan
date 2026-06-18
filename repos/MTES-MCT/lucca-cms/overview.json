@@ -1,53 +1,50 @@
 {
   "url": "https://github.com/MTES-MCT/lucca-cms",
   "name": "lucca-cms",
-  "description": "Ce gestionnaire de contenu permet de créer et gérer un site internet basé sur le Système de design de l’État, accessible et sécurisé. Il est basé sur Wagtail CMS.",
+  "description": "Ce projet permet de créer et gérer des sites internet conformes aux normes numériques en vigueur, en utilisant Wagtail CMS et le Système de design de l’État.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Contenu éditorial",
+    "API & Intégrations",
     "Authentification & Accès",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Contenu éditorial",
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Wagtail",
+    "django-dsfr",
     "PostgreSQL",
     "python-dotenv",
     "dj-database-url",
     "gunicorn",
+    "dj-static",
     "whitenoise",
     "wagtailmenus",
     "wagtail-modeladmin",
     "wagtail-markdown",
-    "beautifulsoup4",
-    "django-taggit",
-    "wagtail-localize",
-    "icalendar",
-    "mozilla-django-oidc"
+    "psycopg2-binary"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Django",
-    "Wagtail",
+    "React / Next.js",
     "Python (scripts & backend)",
-    "Design System (DSFR)",
-    "Docker & Conteneurs"
+    "Django",
+    "Wagtail CMS",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2",
-      "sso"
-    ],
-    "providers": []
+      "email-password"
+    ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-06-12T11:25:28+02:00",
+  "tests": "Tests automatisés couvrant les versions de Python 3.12 à 3.14 et PostgreSQL 14 à 17.",
+  "workflows": [],
+  "lastActivity": "2026-06-17T02:01:16+00:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -55,7 +52,7 @@
     "stars": 0,
     "forks": 0,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": 1
   },
   "tags": [
     "Données & Open Data",
@@ -63,7 +60,6 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Django",
-    "Wagtail"
+    "Environnement & Énergie"
   ]
 }
