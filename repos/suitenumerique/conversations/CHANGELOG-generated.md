@@ -1,33 +1,35 @@
 ## Changelog : conversations (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la robustesse du système, la gestion de la santé des modèles d'IA, l'expérience utilisateur et la sécurité. Des indicateurs de santé des modèles sont désormais disponibles, des corrections ont été apportées pour améliorer la stabilité et l'interface utilisateur a été affinée, notamment avec une nouvelle gestion des paramètres et des bannières d'état.
+Ce mois-ci, les améliorations se concentrent sur la robustesse du système, la surveillance de la santé des modèles d'IA, et l'expérience utilisateur. Des correctifs ont été apportés pour améliorer la stabilité, notamment en lien avec la gestion des pods et la configuration des dépendances. L'interface utilisateur a été améliorée avec de nouvelles fonctionnalités comme le mode maintenance et des indicateurs de santé des modèles.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode maintenance pour permettre des opérations de maintenance planifiées. [#fa746ed](https://github.com/suitenumerique/conversations/commit/fa746ed)
-- Amélioration de l'interface utilisateur pour la création de projets : passage automatique à une nouvelle conversation. [#d243b55](https://github.com/suitenumerique/conversations/commit/d243b55)
-- Possibilité de taper pendant que le modèle d'IA génère une réponse, améliorant la réactivité de l'interface. [#763ed4b](https://github.com/suitenumerique/conversations/commit/763ed4b)
+- Ajout d'un mode maintenance pour permettre des opérations de maintenance planifiées.
+- Affichage d'indicateurs de santé dynamiques pour les assistants IA, informant l'utilisateur de leur disponibilité.
+- Amélioration du filtrage et de l'affichage des conversations dans l'interface d'administration.
+- Possibilité de continuer à taper pendant que l'IA génère une réponse.
 - Affichage d'un message d'erreur spécifique lorsque le fournisseur de LLM est indisponible.
-- Nouvelle interface pour les paramètres avec une taille adaptée. [#a5e0894](https://github.com/suitenumerique/conversations/commit/a5e0894)
-- Ajout de bannières d'état dynamiques pour indiquer la santé des assistants IA. [#1d1279a](https://github.com/suitenumerique/conversations/commit/1d1279a)
-- Amélioration du filtrage et de l'affichage des chats dans l'interface d'administration. [#db7bf6d](https://github.com/suitenumerique/conversations/commit/db7bf6d)
-- Remplacement du bouton d'aide par un menu déroulant plus complet. [#aa24e0f](https://github.com/suitenumerique/conversations/commit/aa24e0f)
+- Amélioration de la gestion des fichiers et de la recherche documentaire.
+- Ajout d'un menu déroulant pour l'aide à la place du bouton d'aide précédent.
+- Possibilité d'éditer le statut de santé des modèles directement dans l'interface d'administration.
 
 ### Évolutions techniques
-- Implémentation d'un système de surveillance de la santé des modèles Albert, avec polling régulier et affichage d'indicateurs. [#41a591e](https://github.com/suitenumerique/conversations/commit/41a591e), [#757d75e](https://github.com/suitenumerique/conversations/commit/757d75e), [#6beeaea](https://github.com/suitenumerique/conversations/commit/6beeaea)
-- Ajout d'un processeur d'historique à fenêtre glissante pour optimiser la gestion des conversations. [#1241a1e](https://github.com/suitenumerique/conversations/commit/1241a1e)
-- Refonte de la gestion des rôles et des accès, avec une liste de contournement pour une flexibilité accrue. [#6211fb5](https://github.com/suitenumerique/conversations/commit/6211fb5)
-- Mise en place d'un refroidissement (cooldown) du taux de requêtes basé sur l'état de santé du modèle. [#42a5c43](https://github.com/suitenumerique/conversations/commit/42a5c43)
-- Correction d'un problème de redirection OIDC qui exposait le port interne. [#3dc1628](https://github.com/suitenumerique/conversations/commit/3dc1628)
-- Suppression de l'endpoint listant les utilisateurs. [#ff45878](https://github.com/suitenumerique/conversations/commit/ff45878)
-- Amélioration de l'instruction pour éviter les hallucinations d'URL. [#dca0eef](https://github.com/suitenumerique/conversations/commit/dca0eef)
-- Optimisation de l'indexation des collections pour améliorer les performances de recherche. [#f9a5c37](https://github.com/suitenumerique/conversations/commit/f9a5c37)
+- Mise en place d'un système de surveillance de la santé des modèles Albert via un job Cron et une intégration Helm.
+- Refonte de la gestion des collections de données pour optimiser les performances (désindexation des collections inactives et réindexation à la demande).
+- Implémentation d'un système de limitation du débit (rate limiting) basé sur la santé du modèle.
+- Amélioration de la gestion des erreurs et des redirections OIDC pour éviter les fuites d'informations sensibles.
+- Mise à jour des dépendances du backend et du frontend.
+- Optimisation de la gestion des pods Helm pour éviter les conflits de disruption budget.
+- Renommage du statut "orange" de santé du modèle en "yellow" pour plus de clarté.
+- Ajout d'un processeur d'historique à fenêtre glissante pour améliorer la gestion du contexte des conversations.
+- Suppression du point de terminaison de liste d'utilisateurs pour des raisons de sécurité.
 
 ### Autres changements
-- Mise à jour des traductions. [#6f0ef43](https://github.com/suitenumerique/conversations/commit/6f0ef43), [#f03e101](https://github.com/suitenumerique/conversations/commit/f03e101)
-- Mise à jour des dépendances du backend et du frontend. [#3ba131e](https://github.com/suitenumerique/conversations/commit/3ba131e)
-- Correction de problèmes liés à la gestion des pods Helm. [#b1f62d6](https://github.com/suitenumerique/conversations/commit/b1f62d6)
-- Mise à jour de la version du chart Helm. [#5ae3f6e](https://github.com/suitenumerique/conversations/commit/5ae3f6e)
-- Désactivation des scripts d'installation Yarn pour renforcer la sécurité. [#119b814](https://github.com/suitenumerique/conversations/commit/119b814)
-- Amélioration de la documentation et de la configuration.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Mise à jour des chaînes de caractères pour la traduction (i18n).
+- Amélioration de la documentation et des tests unitaires.
+- Correction de problèmes de style et de mise en page dans l'interface utilisateur.
+- Désactivation des scripts d'installation Yarn dans les builds Docker pour plus de sécurité.
+- Correction de la langue par défaut de l'interface utilisateur lors du premier chargement.
+- Amélioration de l'instruction pour éviter les hallucinations d'URL.
+- Correction de bugs liés à l'ouverture de liens dans de nouveaux onglets.
+- Correction d'un crash lié au streaming avec les APIs compatibles OpenAI.
