@@ -417,6 +417,7 @@
 │   │   │   ├── carif_oref_certifications_qualiopi_france_competences.yml
 │   │   │   ├── datasubvention_subventions.yml
 │   │   │   ├── dgfip_liens_capitalistiques.yml
+│   │   │   ├── dgfip_numero_tva.yml
 │   │   │   └── gip_mds_effectifs.yml
 │   │   ├── api_particulier
 │   │   │   ├── ants_siv.yml
@@ -560,6 +561,10 @@
 │   │   ├── api_entreprise_v3_dgfip_liens_capitalistiques
 │   │   │   ├── 200.yaml
 │   │   │   ├── 404.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
+│   │   ├── api_entreprise_v3_dgfip_tva
+│   │   │   ├── 200-single.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_european_commission_vies
@@ -1617,7 +1622,8 @@
 │   │   │   │       │   ├── attestations_fiscales_controller.rb
 │   │   │   │       │   ├── chiffres_affaires_controller.rb
 │   │   │   │       │   ├── liasses_fiscales_controller.rb
-│   │   │   │       │   └── liens_capitalistiques_controller.rb
+│   │   │   │       │   ├── liens_capitalistiques_controller.rb
+│   │   │   │       │   └── tva_controller.rb
 │   │   │   │       ├── european_commission
 │   │   │   │       │   └── vies_controller.rb
 │   │   │   │       ├── fabrique_numerique_ministeres_sociaux
@@ -1968,6 +1974,12 @@
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── liens_capitalistiques
 │   │   │   │   │   ├── build_resource_from_liasses_fiscales.rb
+│   │   │   │   │   └── validate_response.rb
+│   │   │   │   ├── tva
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   ├── build_tva_number_from_siren.rb
+│   │   │   │   │   ├── fetch_refresh_date.rb
+│   │   │   │   │   ├── make_request.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── validate_request_id.rb
 │   │   │   │   ├── validate_response.rb
@@ -2340,7 +2352,8 @@
 │   │   │   │   ├── liasses_fiscales.rb
 │   │   │   │   ├── liens_capitalistiques
 │   │   │   │   │   └── build_resource.rb
-│   │   │   │   └── liens_capitalistiques.rb
+│   │   │   │   ├── liens_capitalistiques.rb
+│   │   │   │   └── tva.rb
 │   │   │   ├── djepva
 │   │   │   │   └── unite_legale.rb
 │   │   │   ├── documents
@@ -2503,7 +2516,9 @@
 │   │   │   │   │   ├── liasses_fiscales_serializer
 │   │   │   │   │   │   ├── v3.rb
 │   │   │   │   │   │   └── v4.rb
-│   │   │   │   │   └── liens_capitalistiques_serializer
+│   │   │   │   │   ├── liens_capitalistiques_serializer
+│   │   │   │   │   │   └── v3.rb
+│   │   │   │   │   └── numero_tva_serializer
 │   │   │   │   │       └── v3.rb
 │   │   │   │   ├── european_commission
 │   │   │   │   │   └── vies_serializer
@@ -3602,6 +3617,12 @@
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── liens_capitalistiques
 │   │   │   │   │   └── validate_response_spec.rb
+│   │   │   │   ├── tva
+│   │   │   │   │   ├── build_resource_spec.rb
+│   │   │   │   │   ├── build_tva_number_from_siren_spec.rb
+│   │   │   │   │   ├── fetch_refresh_date_spec.rb
+│   │   │   │   │   ├── make_request_spec.rb
+│   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   └── validate_year_spec.rb
 │   │   │   ├── documents
 │   │   │   │   ├── base64_decode_spec.rb
@@ -3940,7 +3961,8 @@
 │   │   │   │   ├── liasses_fiscales_spec.rb
 │   │   │   │   ├── liens_capitalistiques
 │   │   │   │   │   └── build_resource_spec.rb
-│   │   │   │   └── liens_capitalistiques_spec.rb
+│   │   │   │   ├── liens_capitalistiques_spec.rb
+│   │   │   │   └── tva_spec.rb
 │   │   │   ├── dsnj
 │   │   │   │   ├── service_national
 │   │   │   │   │   └── validate_params_spec.rb
@@ -4084,7 +4106,9 @@
 │   │   │   │       │   ├── liasses_fiscales
 │   │   │   │       │   │   ├── v3_spec.rb
 │   │   │   │       │   │   └── v4_spec.rb
-│   │   │   │       │   └── liens_capitalistiques
+│   │   │   │       │   ├── liens_capitalistiques
+│   │   │   │       │   │   └── v3_spec.rb
+│   │   │   │       │   └── tva
 │   │   │   │       │       └── v3_spec.rb
 │   │   │   │       ├── djepva
 │   │   │   │       │   ├── unite_legale
@@ -7181,4 +7205,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1457 directories, 6056 files
+1462 directories, 6075 files
