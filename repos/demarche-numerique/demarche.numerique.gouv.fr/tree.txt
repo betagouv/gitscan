@@ -398,6 +398,11 @@
 │   │   │   │   ├── champs_rows_show_component.fr.yml
 │   │   │   │   └── champs_rows_show_component.html.erb
 │   │   │   ├── champs_rows_show_component.rb
+│   │   │   ├── changes_component
+│   │   │   │   ├── changes_component.en.yml
+│   │   │   │   ├── changes_component.fr.yml
+│   │   │   │   └── changes_component.html.erb
+│   │   │   ├── changes_component.rb
 │   │   │   ├── commentaire_list_component
 │   │   │   │   └── commentaire_list_component.html.erb
 │   │   │   ├── commentaire_list_component.rb
@@ -477,6 +482,11 @@
 │   │   │   │   ├── message_component.fr.yml
 │   │   │   │   └── message_component.html.haml
 │   │   │   ├── message_component.rb
+│   │   │   ├── no_access_to_dossier_component
+│   │   │   │   ├── no_access_to_dossier_component.en.yml
+│   │   │   │   ├── no_access_to_dossier_component.fr.yml
+│   │   │   │   └── no_access_to_dossier_component.html.erb
+│   │   │   ├── no_access_to_dossier_component.rb
 │   │   │   ├── notified_toggle_component
 │   │   │   │   ├── notified_toggle_component.en.yml
 │   │   │   │   ├── notified_toggle_component.fr.yml
@@ -1653,6 +1663,7 @@
 │   │       │   ├── decimal_column_type.rb
 │   │       │   ├── enum_column_type.rb
 │   │       │   ├── enums_column_type.rb
+│   │       │   ├── geo_json_column_type.rb
 │   │       │   ├── integer_column_type.rb
 │   │       │   └── text_column_type.rb
 │   │       ├── correction_type.rb
@@ -1722,6 +1733,7 @@
 │   ├── javascript
 │   │   ├── components
 │   │   │   ├── ComboBox.tsx
+│   │   │   ├── ComboBoxSections.test.tsx
 │   │   │   ├── Layout.tsx
 │   │   │   ├── MapEditor
 │   │   │   │   ├── components
@@ -1741,6 +1753,7 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── MapReader.tsx
 │   │   │   ├── Select.tsx
+│   │   │   ├── process-env-shim.ts
 │   │   │   ├── react-aria
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ListBox.css
@@ -2184,6 +2197,7 @@
 │   │   │   ├── text_champ.rb
 │   │   │   ├── textarea_champ.rb
 │   │   │   └── yes_no_champ.rb
+│   │   ├── changed_column.rb
 │   │   ├── chorus_configuration.rb
 │   │   ├── column.rb
 │   │   ├── columns
@@ -2191,6 +2205,7 @@
 │   │   │   ├── attached_many_column.rb
 │   │   │   ├── champ_column.rb
 │   │   │   ├── dossier_column.rb
+│   │   │   ├── geo_json_column.rb
 │   │   │   ├── json_path_column.rb
 │   │   │   ├── linked_drop_down_column.rb
 │   │   │   ├── multiple_drop_down_column.rb
@@ -2516,6 +2531,9 @@
 │   │   ├── pieces_justificatives_service.rb
 │   │   ├── pro_connect_service.rb
 │   │   ├── procedure_archive_service.rb
+│   │   ├── procedure_export_service
+│   │   │   ├── xlsx_export.rb
+│   │   │   └── xlsx_streamer.rb
 │   │   ├── procedure_export_service.rb
 │   │   ├── rdv_service.rb
 │   │   ├── recovery_service.rb
@@ -2668,6 +2686,7 @@
 │   │       ├── t20260527_backfill_naf_2025_task.rb
 │   │       ├── t20260528_reset_en_construction_expiration_task.rb
 │   │       ├── t20260601_nullify_en_construction_expired_at_task.rb
+│   │       ├── t20260615_strip_underline_marks_from_tiptap_bodies_task.rb
 │   │       ├── t20260616backfill_rna_external_id_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
@@ -3195,7 +3214,6 @@
 │       │   ├── application.html.erb
 │       │   ├── application.turbo_stream.haml
 │       │   ├── attestation.html.haml
-│       │   ├── closing_details.html.haml
 │       │   ├── commencer
 │       │   │   └── _no_procedure.html.haml
 │       │   ├── component_preview.html.haml
@@ -3220,7 +3238,8 @@
 │       │   │   ├── _vertical_margin.html.erb
 │       │   │   └── layout.html.erb
 │       │   ├── print.html.haml
-│       │   └── procedure_context.html.erb
+│       │   ├── procedure_context.html.erb
+│       │   └── procedure_unavailable.html.haml
 │       ├── manager
 │       │   ├── administrateur_confirmations
 │       │   │   └── new.html.erb
@@ -3448,7 +3467,8 @@
 │           ├── activate
 │           │   └── new.html.haml
 │           ├── commencer
-│           │   └── closing_details.html.haml
+│           │   ├── closing_details.html.haml
+│           │   └── not_found.html.haml
 │           ├── confirmations
 │           │   └── new.html.haml
 │           ├── demarches
@@ -4546,7 +4566,9 @@
 │   │   ├── 20260521105001_add_uuid_to_geo_area.rb
 │   │   ├── 20260602100001_create_banners.rb
 │   │   ├── 20260602100002_add_unique_index_to_banners_target.rb
-│   │   └── 20260602100003_seed_banners.rb
+│   │   ├── 20260602100003_seed_banners.rb
+│   │   ├── 20260602145306_add_checkpoint_to_champs.rb
+│   │   └── 20260602145332_add_checkpoint_to_traitements.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -4623,7 +4645,8 @@
 │   │   └── unscoped.rb
 │   ├── core_ext
 │   │   ├── array.rb
-│   │   └── phonelib.rb
+│   │   ├── phonelib.rb
+│   │   └── xlsxtream.rb
 │   ├── data
 │   │   └── api_geo
 │   │       ├── communes-*.json  (109 files)
@@ -4668,6 +4691,7 @@
 │   │   ├── instructeurs.rake
 │   │   ├── jobs.rake
 │   │   ├── lint.rake
+│   │   ├── llm_stats.rake
 │   │   ├── pjs.rake
 │   │   ├── recovery.rake
 │   │   ├── routing_engine.rake
@@ -4690,7 +4714,7 @@
 ├── package.json
 ├── patches
 │   ├── @hotwired%2Fturbo@7.3.0.patch
-│   └── react-dom@19.2.4.patch
+│   └── react-dom@19.2.7.patch
 ├── public
 │   ├── 403.html
 │   ├── 404.html
@@ -4749,6 +4773,7 @@
 │   │   │   ├── batch_operation_component_spec.rb
 │   │   │   ├── champ_updated_component_spec.rb
 │   │   │   ├── champs_rows_show_component_spec.rb
+│   │   │   ├── changes_component_spec.rb
 │   │   │   ├── edit_footer_component_spec.rb
 │   │   │   ├── en_construction_not_submitted_component_spec.rb
 │   │   │   ├── errors_full_messages_component_spec.rb
@@ -4756,6 +4781,7 @@
 │   │   │   ├── export_link_component_spec.rb
 │   │   │   ├── individual_form_component_spec.rb
 │   │   │   ├── message_component_spec.rb
+│   │   │   ├── no_access_to_dossier_component_spec.rb
 │   │   │   └── pending_correction_checkbox_component_spec.rb
 │   │   ├── dsfr
 │   │   │   └── toggle_component_spec.rb
@@ -4816,6 +4842,7 @@
 │   │   │   │   ├── autosave_footer_component_preview
 │   │   │   │   │   └── error.html.erb
 │   │   │   │   ├── autosave_footer_component_preview.rb
+│   │   │   │   ├── changes_component_preview.rb
 │   │   │   │   ├── degraded_identite_entreprise_component_preview.rb
 │   │   │   │   ├── external_champ_component_preview
 │   │   │   │   │   └── default.html.haml
@@ -4882,6 +4909,7 @@
 │   │   ├── simple_format_component_spec.rb
 │   │   ├── switch_domain_banner_component_spec.rb
 │   │   ├── tags_button_list_component_spec.rb
+│   │   ├── tiptap_editor_component_spec.rb
 │   │   ├── type_de_champ_header_sections_summary_component_spec.rb
 │   │   └── types_de_champ_editor
 │   │       ├── champ_component_spec.rb
@@ -4946,6 +4974,7 @@
 │   │   │   ├── csv_parsing_concern_spec.rb
 │   │   │   ├── devise_populated_resource_spec.rb
 │   │   │   ├── lockable_concern_spec.rb
+│   │   │   ├── nav_bar_profile_concern_spec.rb
 │   │   │   ├── pro_connect_session_concern_spec.rb
 │   │   │   └── procedure_context_concern_spec.rb
 │   │   ├── contact_controller_spec.rb
@@ -5642,7 +5671,7 @@
 │   │   ├── super_admin_spec.rb
 │   │   ├── sva_svr_configuration_spec.rb
 │   │   ├── targeted_user_link_spec.rb
-│   │   ├── traitement.rb
+│   │   ├── traitement_spec.rb
 │   │   ├── trusted_device_token_spec.rb
 │   │   ├── type_de_champ_private_spec.rb
 │   │   ├── type_de_champ_shared_example.rb
@@ -5735,6 +5764,8 @@
 │   │   ├── pieces_justificatives_service_spec.rb
 │   │   ├── pro_connect_service_spec.rb
 │   │   ├── procedure_archive_service_spec.rb
+│   │   ├── procedure_export_service
+│   │   │   └── xlsx_streamer_spec.rb
 │   │   ├── procedure_export_service_spec.rb
 │   │   ├── procedure_export_service_tabular_spec.rb
 │   │   ├── procedure_export_service_zip_spec.rb
@@ -5808,6 +5839,7 @@
 │   │   ├── i18n_spec.rb
 │   │   ├── instructeurs
 │   │   │   ├── batch_operation_spec.rb
+│   │   │   ├── dossier_link_no_access_spec.rb
 │   │   │   ├── expert_spec.rb
 │   │   │   ├── instructeur_creation_spec.rb
 │   │   │   ├── instruction_spec.rb
@@ -5967,6 +5999,7 @@
 │   │       ├── t20260527_backfill_naf_2025_task_spec.rb
 │   │       ├── t20260528_reset_en_construction_expiration_task_spec.rb
 │   │       ├── t20260601_nullify_en_construction_expired_at_task_spec.rb
+│   │       ├── t20260615_strip_underline_marks_from_tiptap_bodies_task_spec.rb
 │   │       ├── t20260616backfill_rna_external_id_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
@@ -6074,4 +6107,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-969 directories, 5424 files
+973 directories, 5453 files
