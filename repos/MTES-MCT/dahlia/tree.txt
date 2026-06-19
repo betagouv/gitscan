@@ -73,9 +73,11 @@
 ├── .env.example
 ├── .github
 │   ├── dependabot.yml
+│   ├── release-config.yml
 │   └── workflows
 │       ├── cd.yml
-│       └── ci.yml
+│       ├── ci.yml
+│       └── deploy.yml
 ├── .gitignore
 ├── .pnpm-store
 │   └── v11
@@ -95,6 +97,7 @@
 │   ├── (protected)
 │   │   ├── case_files
 │   │   │   ├── [caseFileNumber]
+│   │   │   │   ├── actions.ts
 │   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
 │   │   └── layout.tsx
@@ -134,6 +137,7 @@
 │       ├── pending-validation.test.tsx
 │       ├── pending-validation.tsx
 │       ├── proconnect-login-button.tsx
+│       ├── refresh-case-file-button.tsx
 │       ├── sortable-column-header.test.tsx
 │       └── sortable-column-header.tsx
 ├── cron.json
@@ -141,8 +145,10 @@
 │   ├── anonymize.test.ts
 │   ├── anonymize.ts
 │   ├── auth.ts
+│   ├── enrich-case-file.ts
 │   ├── interfaces.ts
 │   ├── scrape-telerecours.ts
+│   ├── telecharge-fichier.ts
 │   ├── telerecours-client.ts
 │   └── tsconfig.json
 ├── docker-compose.yml
@@ -183,6 +189,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260609065200_actor_display_name_by_actor_type
 │   │   │   └── migration.sql
+│   │   ├── 20260615163428_add_case_file_is_deleted
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -209,4 +217,4 @@
 │       └── server-only-index.tsx
 ├── tsconfig.json
 └── vitest.config.mts
-47 directories, 164 files
+48 directories, 171 files
