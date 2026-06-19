@@ -464,19 +464,48 @@
 │   │   ├── cold-network.svg
 │   │   ├── enrr.svg
 │   │   ├── enrr.svgr
-│   │   ├── enrr_*.png  (5 files)
 │   │   ├── github-brands.svg
 │   │   ├── grid-line.svg
-│   │   ├── icon-*.png  (11 files)
-│   │   ├── marker-blue.png
-│   │   ├── marker-green.png
-│   │   ├── marker-red.png
+│   │   ├── icon-feuille.png
+│   │   ├── icon-graph.png
+│   │   ├── icon-immeuble.png
+│   │   ├── icon-linkedin.png
+│   │   ├── icon-money.png
+│   │   ├── icon-star.png
+│   │   ├── icon-thermometre.png
+│   │   ├── icon-thumbs-down.png
+│   │   ├── icon-thumbs-up.png
+│   │   ├── icon-warning.png
+│   │   ├── icon-wheel.png
 │   │   ├── outils.svgr
-│   │   ├── picto-*.svg  (25 files)
+│   │   ├── picto-arrow.svg
+│   │   ├── picto-carto.svg
+│   │   ├── picto-check.svg
+│   │   ├── picto-compte-pro.svg
+│   │   ├── picto-confort.svg
+│   │   ├── picto-connection.svg
+│   │   ├── picto-copro.svg
+│   │   ├── picto-ecology.svg
+│   │   ├── picto-economic.svg
+│   │   ├── picto-fioul-noir.svg
+│   │   ├── picto-fioul.svg
+│   │   ├── picto-gaz-bleu.svg
+│   │   ├── picto-gaz.svg
+│   │   ├── picto-info.svg
+│   │   ├── picto-invoice.svg
+│   │   ├── picto-network.svg
+│   │   ├── picto-planet.svg
+│   │   ├── picto-relation.svg
+│   │   ├── picto-reseaux-vert.svg
+│   │   ├── picto-resource.svg
+│   │   ├── picto-serenity.svg
+│   │   ├── picto-thumb.svg
+│   │   ├── picto-traces.svg
+│   │   ├── picto-warning.svg
+│   │   ├── picto-white-arrow.svg
 │   │   ├── picto_warning_white.svg
 │   │   ├── potentiel.svgr
 │   │   ├── reseaux.svgr
-│   │   ├── square.png
 │   │   ├── system
 │   │   │   └── checkbox-circle-line.svg
 │   │   └── tools
@@ -790,7 +819,6 @@
 │   │   │   ├── Interviews.styles.ts
 │   │   │   ├── Interviews.tsx
 │   │   │   └── InterviewsVideos.tsx
-│   │   ├── DPE.tsx
 │   │   ├── EligibilityForm
 │   │   │   ├── EligibilityContactForm.style.tsx
 │   │   │   ├── EligibilityContactForm.tsx
@@ -824,92 +852,17 @@
 │   │   │   │   └── IFrameLink.tsx
 │   │   │   └── Map
 │   │   │       ├── IFrameMapIntegrationForm.styles.ts
-│   │   │       └── IFrameMapIntegrationForm.tsx
-│   │   ├── IframeWrapper.tsx
+│   │   │       ├── IFrameMapIntegrationForm.tsx
+│   │   │       └── selectableLayers.ts
 │   │   ├── Infographie
 │   │   │   ├── index.styles.ts
 │   │   │   └── index.tsx
 │   │   ├── Manager
 │   │   │   ├── DemandEmailForm.tsx
+│   │   │   ├── DemandEmailModal.tsx
 │   │   │   ├── ModeDeChauffageTag.tsx
 │   │   │   ├── Tag.styles.ts
 │   │   │   └── Tag.tsx
-│   │   ├── Map
-│   │   │   ├── Map.style.tsx
-│   │   │   ├── Map.tsx
-│   │   │   ├── MapProvider.tsx
-│   │   │   ├── StyleSwitcher
-│   │   │   │   ├── index.ts
-│   │   │   │   └── styles.css
-│   │   │   ├── components
-│   │   │   │   ├── AdminEditLegend.tsx
-│   │   │   │   ├── CardSearchDetails.style.tsx
-│   │   │   │   ├── CardSearchDetails.tsx
-│   │   │   │   ├── CarteFrance.style.tsx
-│   │   │   │   ├── CarteFrance.tsx
-│   │   │   │   ├── DownloadNetworkGeometryButton.tsx
-│   │   │   │   ├── FileDragNDrop.tsx
-│   │   │   │   ├── IconPolygon.tsx
-│   │   │   │   ├── MapLegendReseaux.tsx
-│   │   │   │   ├── MapMarker.tsx
-│   │   │   │   ├── MapSearchForm.tsx
-│   │   │   │   ├── ModalCarteFrance.style.tsx
-│   │   │   │   ├── ModalCarteFrance.tsx
-│   │   │   │   ├── ScaleLegend.style.ts
-│   │   │   │   ├── ScaleLegend.tsx
-│   │   │   │   ├── SimpleMapLegend.style.tsx
-│   │   │   │   ├── SimpleMapLegend.tsx
-│   │   │   │   ├── VillesPotentielMapLegend.tsx
-│   │   │   │   └── tools
-│   │   │   │       ├── BuildingsDataExtractionTool.tsx
-│   │   │   │       ├── DistancesMeasurementTool.tsx
-│   │   │   │       ├── LinearHeatDensityTool.tsx
-│   │   │   │       ├── MeasureFeatureListItem.tsx
-│   │   │   │       └── measure.ts
-│   │   │   ├── layers
-│   │   │   │   ├── adressesEligibles.tsx
-│   │   │   │   ├── batimentsRaccordesReseauxChaleurFroid.tsx
-│   │   │   │   ├── bdnb
-│   │   │   │   │   ├── caracteristiquesBatiments.tsx
-│   │   │   │   │   ├── common.tsx
-│   │   │   │   │   └── typeChauffageBatimentsCollectifs.tsx
-│   │   │   │   ├── besoinsEnChaleur.tsx
-│   │   │   │   ├── besoinsEnChaleurIndustrieCommunes.tsx
-│   │   │   │   ├── common.tsx
-│   │   │   │   ├── communesFortPotentielPourCreationReseauxChaleur.tsx
-│   │   │   │   ├── consommationsGaz.tsx
-│   │   │   │   ├── customGeojson.tsx
-│   │   │   │   ├── demandesEligibilite.tsx
-│   │   │   │   ├── enrr-mobilisables
-│   │   │   │   │   ├── chaleurFatale.tsx
-│   │   │   │   │   ├── friches.tsx
-│   │   │   │   │   ├── parkings.tsx
-│   │   │   │   │   ├── thalassothermie.tsx
-│   │   │   │   │   └── zonesGeothermieProfonde.tsx
-│   │   │   │   ├── etudesEnCours.tsx
-│   │   │   │   ├── filters.ts
-│   │   │   │   ├── geomUpdate.tsx
-│   │   │   │   ├── geothermie
-│   │   │   │   │   ├── installationsGeothermieProfonde.tsx
-│   │   │   │   │   ├── installationsGeothermieSurface.tsx
-│   │   │   │   │   ├── ouvragesGeothermieSurface.tsx
-│   │   │   │   │   └── perimetresGeothermieProfonde.tsx
-│   │   │   │   ├── perimetresDeDeveloppementPrioritaire.tsx
-│   │   │   │   ├── quartiersPrioritairesPolitiqueVille.tsx
-│   │   │   │   ├── reseauxDeChaleur.tsx
-│   │   │   │   ├── reseauxDeFroid.tsx
-│   │   │   │   ├── reseauxEnConstruction.tsx
-│   │   │   │   ├── ressourcesGeothermalesNappes.tsx
-│   │   │   │   ├── testsAdresses.tsx
-│   │   │   │   ├── zonesAUrbaniser.tsx
-│   │   │   │   ├── zonesPotentielChaud.tsx
-│   │   │   │   └── zonesPotentielFroid.tsx
-│   │   │   ├── map-configuration.ts
-│   │   │   ├── map-events.tsx
-│   │   │   ├── map-layers.ts
-│   │   │   ├── osm.config.json
-│   │   │   ├── satellite.config.json
-│   │   │   └── useMapController.ts
 │   │   ├── MarkdownWrapper
 │   │   │   ├── MarkdownWrapper.style.tsx
 │   │   │   ├── MarkdownWrapper.tsx
@@ -1022,10 +975,6 @@
 │   │   │   ├── WrappedText.style.tsx
 │   │   │   ├── WrappedText.tsx
 │   │   │   └── index.tsx
-│   │   ├── assignment-rules
-│   │   │   ├── AssignmentRuleDialog.tsx
-│   │   │   ├── ExpressionTester.tsx
-│   │   │   └── ExpressionValidator.tsx
 │   │   ├── connexion
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── NewPasswordForm.tsx
@@ -1040,11 +989,9 @@
 │   │   ├── dsfr
 │   │   │   └── README.md
 │   │   ├── form
-│   │   │   ├── FCUTagAutocomplete.tsx
 │   │   │   ├── dsfr
 │   │   │   │   ├── Checkbox.tsx
 │   │   │   │   ├── Checkboxes.tsx
-│   │   │   │   ├── FCUTagAutocompleteInput.tsx
 │   │   │   │   ├── FieldWrapper.tsx
 │   │   │   │   ├── Input.styles.ts
 │   │   │   │   ├── Input.tsx
@@ -1066,8 +1013,7 @@
 │   │   │       └── useForm.tsx
 │   │   ├── shared
 │   │   │   ├── layout
-│   │   │   │   ├── Global.style.ts
-│   │   │   │   └── MainLayout.data.ts
+│   │   │   │   └── Global.style.ts
 │   │   │   └── page
 │   │   │       ├── CenterLayout.tsx
 │   │   │       ├── SimplePage.styles.tsx
@@ -1289,6 +1235,7 @@
 │   │   ├── useDevMode.ts
 │   │   ├── useDimensions.tsx
 │   │   ├── useEligibilityForm.tsx
+│   │   ├── useHeaderHeightVar.ts
 │   │   ├── useHtmlAttributes.ts
 │   │   ├── useInViewport.tsx
 │   │   ├── useInitialSearchParam.ts
@@ -1426,9 +1373,7 @@
 │   │   │   │   ├── Contacted.tsx
 │   │   │   │   ├── DemandSondageForm.tsx
 │   │   │   │   ├── DemandStatusBadge.tsx
-│   │   │   │   ├── DemandsStatsPage.tsx
 │   │   │   │   ├── EmailHistory.tsx
-│   │   │   │   ├── Gestionnaire.tsx
 │   │   │   │   ├── NetworkSelectorDialog.tsx
 │   │   │   │   ├── ReseauxStatsPage.tsx
 │   │   │   │   └── Status.tsx
@@ -1440,8 +1385,6 @@
 │   │   │   │   ├── admin-operations.integration.spec.ts
 │   │   │   │   ├── admin-operations.ts
 │   │   │   │   ├── assignment-change.integration.spec.ts
-│   │   │   │   ├── assignment-rules-service.spec.ts
-│   │   │   │   ├── assignment-rules-service.ts
 │   │   │   │   ├── creation-batch.ts
 │   │   │   │   ├── creation-user.integration.spec.ts
 │   │   │   │   ├── creation-user.ts
@@ -1526,6 +1469,7 @@
 │   │   │   ├── Autocomplete.spec.tsx
 │   │   │   ├── Autocomplete.tsx
 │   │   │   ├── EntrepriseField.tsx
+│   │   │   ├── MultiAutocompleteField.tsx
 │   │   │   ├── useDebouncedSwitchMap.spec.ts
 │   │   │   └── useDebouncedSwitchMap.ts
 │   │   ├── geo
@@ -1547,6 +1491,179 @@
 │   │   │       ├── service.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
 │   │   │       └── trpc-routes.ts
+│   │   ├── map
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── Map.tsx
+│   │   │   │   ├── MapCanvas.tsx
+│   │   │   │   ├── MapStoreProvider.tsx
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── IframeGeneratorPage.tsx
+│   │   │   │   │   └── iframeGenerator.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── DownloadNetworkGeometryButton.tsx
+│   │   │   │   ├── config
+│   │   │   │   │   ├── map-configuration.ts
+│   │   │   │   │   ├── useMapConfig.ts
+│   │   │   │   │   └── useMapConfiguration.ts
+│   │   │   │   ├── controls
+│   │   │   │   │   ├── AttributionControl.tsx
+│   │   │   │   │   ├── FcuLogo.tsx
+│   │   │   │   │   ├── GeolocateControl.tsx
+│   │   │   │   │   ├── NavigationControl.tsx
+│   │   │   │   │   ├── ScaleControl.tsx
+│   │   │   │   │   ├── StyleSwitcher.module.css
+│   │   │   │   │   ├── StyleSwitcher.tsx
+│   │   │   │   │   ├── StyleSwitcherControl.ts
+│   │   │   │   │   └── useControl.ts
+│   │   │   │   ├── core
+│   │   │   │   │   ├── MapCanvasContext.tsx
+│   │   │   │   │   ├── MapImpl.tsx
+│   │   │   │   │   ├── common.tsx
+│   │   │   │   │   ├── controller.ts
+│   │   │   │   │   ├── icons
+│   │   │   │   │   │   ├── enrr_mobilisables_datacenter.png
+│   │   │   │   │   │   ├── enrr_mobilisables_industrie.png
+│   │   │   │   │   │   ├── enrr_mobilisables_installations_electrogenes.png
+│   │   │   │   │   │   ├── enrr_mobilisables_stations_epuration.png
+│   │   │   │   │   │   ├── enrr_mobilisables_unites_incineration.png
+│   │   │   │   │   │   ├── marker-blue.png
+│   │   │   │   │   │   ├── marker-green.png
+│   │   │   │   │   │   ├── marker-red.png
+│   │   │   │   │   │   └── square.png
+│   │   │   │   │   └── layer-symbols.ts
+│   │   │   │   ├── dev
+│   │   │   │   │   ├── FlyToButtons.tsx
+│   │   │   │   │   └── Sandbox.tsx
+│   │   │   │   ├── iframeCarteParams.ts
+│   │   │   │   ├── interactions
+│   │   │   │   │   ├── BdnbBatimentSelector.tsx
+│   │   │   │   │   ├── FileDropHandler.tsx
+│   │   │   │   │   ├── MapContextMenu.tsx
+│   │   │   │   │   ├── MapDrawHost.tsx
+│   │   │   │   │   ├── MapFitBounds.tsx
+│   │   │   │   │   ├── MapFlyTo.tsx
+│   │   │   │   │   ├── MapInstanceSync.tsx
+│   │   │   │   │   ├── MapInteractions.tsx
+│   │   │   │   │   ├── MapMarker.tsx
+│   │   │   │   │   ├── MapViewUrlSync.tsx
+│   │   │   │   │   ├── ReseauxFiltersUrlSync.tsx
+│   │   │   │   │   ├── atoms.ts
+│   │   │   │   │   ├── clickHandlers.ts
+│   │   │   │   │   └── fileConversion.ts
+│   │   │   │   ├── layers
+│   │   │   │   │   ├── AdressesEligiblesLayer.tsx
+│   │   │   │   │   ├── ConfiguredLayers.tsx
+│   │   │   │   │   ├── all-layers.ts
+│   │   │   │   │   ├── filters.ts
+│   │   │   │   │   ├── specs
+│   │   │   │   │   │   ├── adressesEligibles.tsx
+│   │   │   │   │   │   ├── batimentsRaccordesReseauxChaleurFroid.legend.tsx
+│   │   │   │   │   │   ├── batimentsRaccordesReseauxChaleurFroid.tsx
+│   │   │   │   │   │   ├── bdnb
+│   │   │   │   │   │   │   ├── DPE.tsx
+│   │   │   │   │   │   │   ├── caracteristiquesBatiments.legend.tsx
+│   │   │   │   │   │   │   ├── caracteristiquesBatiments.tsx
+│   │   │   │   │   │   │   ├── caracteristiquesBatimentsLayerStyle.ts
+│   │   │   │   │   │   │   ├── common.tsx
+│   │   │   │   │   │   │   ├── typeChauffageBatimentsCollectifs.legend.tsx
+│   │   │   │   │   │   │   └── typeChauffageBatimentsCollectifs.tsx
+│   │   │   │   │   │   ├── besoinsEnChaleur.legend.tsx
+│   │   │   │   │   │   ├── besoinsEnChaleur.tsx
+│   │   │   │   │   │   ├── besoinsEnChaleurIndustrieCommunes.legend.tsx
+│   │   │   │   │   │   ├── besoinsEnChaleurIndustrieCommunes.tsx
+│   │   │   │   │   │   ├── communesFortPotentielPourCreationReseauxChaleur.legend.tsx
+│   │   │   │   │   │   ├── communesFortPotentielPourCreationReseauxChaleur.tsx
+│   │   │   │   │   │   ├── consommationsGaz.legend.tsx
+│   │   │   │   │   │   ├── consommationsGaz.tsx
+│   │   │   │   │   │   ├── customGeojson.legend.tsx
+│   │   │   │   │   │   ├── customGeojson.tsx
+│   │   │   │   │   │   ├── demandesEligibilite.legend.tsx
+│   │   │   │   │   │   ├── demandesEligibilite.tsx
+│   │   │   │   │   │   ├── enrr-mobilisables
+│   │   │   │   │   │   │   ├── chaleurFatale.legend.tsx
+│   │   │   │   │   │   │   ├── chaleurFatale.tsx
+│   │   │   │   │   │   │   ├── friches.tsx
+│   │   │   │   │   │   │   ├── parkings.tsx
+│   │   │   │   │   │   │   ├── solaireThermique.legend.tsx
+│   │   │   │   │   │   │   ├── thalassothermie.legend.tsx
+│   │   │   │   │   │   │   ├── thalassothermie.tsx
+│   │   │   │   │   │   │   ├── zonesGeothermieProfonde.legend.tsx
+│   │   │   │   │   │   │   └── zonesGeothermieProfonde.tsx
+│   │   │   │   │   │   ├── etudesEnCours.legend.tsx
+│   │   │   │   │   │   ├── etudesEnCours.tsx
+│   │   │   │   │   │   ├── geomUpdate.legend.tsx
+│   │   │   │   │   │   ├── geomUpdate.tsx
+│   │   │   │   │   │   ├── geothermie
+│   │   │   │   │   │   │   ├── geothermieProfonde.legend.tsx
+│   │   │   │   │   │   │   ├── geothermieSurfaceEchangeursFermes.legend.tsx
+│   │   │   │   │   │   │   ├── geothermieSurfaceEchangeursOuverts.legend.tsx
+│   │   │   │   │   │   │   ├── installationsGeothermieProfonde.tsx
+│   │   │   │   │   │   │   ├── installationsGeothermieSurface.tsx
+│   │   │   │   │   │   │   ├── ouvragesGeothermieSurface.tsx
+│   │   │   │   │   │   │   └── perimetresGeothermieProfonde.tsx
+│   │   │   │   │   │   ├── perimetresDeDeveloppementPrioritaire.legend.tsx
+│   │   │   │   │   │   ├── perimetresDeDeveloppementPrioritaire.tsx
+│   │   │   │   │   │   ├── quartiersPrioritairesPolitiqueVille.legend.tsx
+│   │   │   │   │   │   ├── quartiersPrioritairesPolitiqueVille.tsx
+│   │   │   │   │   │   ├── reseauxDeChaleur.legend.tsx
+│   │   │   │   │   │   ├── reseauxDeChaleur.tsx
+│   │   │   │   │   │   ├── reseauxDeFroid.legend.tsx
+│   │   │   │   │   │   ├── reseauxDeFroid.tsx
+│   │   │   │   │   │   ├── reseauxEnConstruction.legend.tsx
+│   │   │   │   │   │   ├── reseauxEnConstruction.tsx
+│   │   │   │   │   │   ├── ressourcesGeothermalesNappes.legend.tsx
+│   │   │   │   │   │   ├── ressourcesGeothermalesNappes.tsx
+│   │   │   │   │   │   ├── testsAdresses.tsx
+│   │   │   │   │   │   ├── tools
+│   │   │   │   │   │   │   ├── buildingsDataExtraction.ts
+│   │   │   │   │   │   │   ├── distancesMeasurement.ts
+│   │   │   │   │   │   │   ├── linearHeatDensity.ts
+│   │   │   │   │   │   │   └── measure.ts
+│   │   │   │   │   │   ├── zonesAUrbaniser.legend.tsx
+│   │   │   │   │   │   ├── zonesAUrbaniser.tsx
+│   │   │   │   │   │   ├── zonesPotentielChaud.legend.tsx
+│   │   │   │   │   │   ├── zonesPotentielChaud.tsx
+│   │   │   │   │   │   ├── zonesPotentielFroid.legend.tsx
+│   │   │   │   │   │   └── zonesPotentielFroid.tsx
+│   │   │   │   │   ├── useMapLayers.spec.tsx
+│   │   │   │   │   └── useMapLayers.ts
+│   │   │   │   ├── legend
+│   │   │   │   │   ├── GradientBar.tsx
+│   │   │   │   │   ├── IframeLegend.tsx
+│   │   │   │   │   ├── LegendAccordion.tsx
+│   │   │   │   │   ├── LegendCheckbox.tsx
+│   │   │   │   │   ├── LegendDrawer.tsx
+│   │   │   │   │   ├── LegendIcon.tsx
+│   │   │   │   │   ├── LegendIntervalSlider.tsx
+│   │   │   │   │   ├── LegendSection.tsx
+│   │   │   │   │   ├── MapAccordion.tsx
+│   │   │   │   │   ├── MapLegend.tsx
+│   │   │   │   │   ├── ReseauxDeChaleurFilters.tsx
+│   │   │   │   │   ├── atoms.ts
+│   │   │   │   │   ├── tabsUrl.ts
+│   │   │   │   │   └── tools
+│   │   │   │   │       ├── BuildingsDataExtractionTool.tsx
+│   │   │   │   │       ├── DistancesMeasurementTool.tsx
+│   │   │   │   │       ├── LinearHeatDensityTool.tsx
+│   │   │   │   │       ├── MeasureFeatureListItem.tsx
+│   │   │   │   │       ├── ToolsTabContent.tsx
+│   │   │   │   │       └── useDrawingTool.ts
+│   │   │   │   └── search
+│   │   │   │       ├── AddressSearchInput.tsx
+│   │   │   │       ├── EligibilityPopup.tsx
+│   │   │   │       ├── EligibilityResultsPanel.tsx
+│   │   │   │       ├── MapSearchInput.tsx
+│   │   │   │       └── legacy
+│   │   │   │           ├── CardSearchDetails.style.tsx
+│   │   │   │           └── CardSearchDetails.tsx
+│   │   │   ├── maplibre.d.ts
+│   │   │   ├── shared
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── osm.config.json
+│   │   │   │   ├── satellite.config.json
+│   │   │   │   └── types.ts
+│   │   │   └── types.d.ts
 │   │   ├── metrics
 │   │   │   ├── .env.example
 │   │   │   ├── AGENTS.md
@@ -1577,7 +1694,6 @@
 │   │   │   │   ├── PermissionsInput.tsx
 │   │   │   │   ├── PermissionsMap.tsx
 │   │   │   │   └── PermissionsView.tsx
-│   │   │   ├── commands.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── server
 │   │   │   │   ├── demand-access.spec.ts
@@ -1631,6 +1747,7 @@
 │   │   │   │   ├── download-network.ts
 │   │   │   │   ├── geometry-apply.ts
 │   │   │   │   ├── geometry-diff.ts
+│   │   │   │   ├── geometry-identify.ts
 │   │   │   │   ├── geometry-operations.ts
 │   │   │   │   ├── geometry-updates.ts
 │   │   │   │   ├── reminders.ts
@@ -1653,19 +1770,6 @@
 │   │   │   │   ├── SimulatorFormFields.tsx
 │   │   │   │   └── useSimulatorFormState.ts
 │   │   │   └── constants.ts
-│   │   ├── tags
-│   │   │   ├── .env.example
-│   │   │   ├── AGENTS.md
-│   │   │   ├── client
-│   │   │   │   ├── FCUTagAutocomplete.tsx
-│   │   │   │   ├── admin
-│   │   │   │   │   └── TagsPage.tsx
-│   │   │   │   └── useFCUTags.tsx
-│   │   │   ├── constants.ts
-│   │   │   └── server
-│   │   │       ├── api-admin.ts
-│   │   │       ├── service.ts
-│   │   │       └── trpc-routes.ts
 │   │   ├── tiles
 │   │   │   ├── AGENTS.md
 │   │   │   ├── commands.ts
@@ -1719,27 +1823,21 @@
 │   │   │   ├── [slug].tsx
 │   │   │   └── index.tsx
 │   │   ├── admin
-│   │   │   ├── assignment-rules.tsx
 │   │   │   ├── data-diagnostic.tsx
-│   │   │   ├── demandes
-│   │   │   │   └── stats.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── diagnostic.tsx
 │   │   │   ├── emails.tsx
 │   │   │   ├── events.tsx
+│   │   │   ├── iframes.tsx
 │   │   │   ├── impostures.tsx
 │   │   │   ├── jobs.tsx
 │   │   │   ├── reseaux
 │   │   │   │   └── stats.tsx
 │   │   │   ├── reseaux.tsx
-│   │   │   ├── tags.tsx
 │   │   │   ├── tests-adresses.tsx
 │   │   │   └── users.tsx
 │   │   ├── api
 │   │   │   ├── admin
-│   │   │   │   ├── assignment-rules
-│   │   │   │   │   ├── [[...slug]].ts
-│   │   │   │   │   └── results.ts
 │   │   │   │   ├── impersonate.ts
 │   │   │   │   ├── jobs
 │   │   │   │   │   ├── [id]
@@ -1747,9 +1845,6 @@
 │   │   │   │   │   │   └── reset.ts
 │   │   │   │   │   └── [id].ts
 │   │   │   │   ├── jobs.ts
-│   │   │   │   ├── tags
-│   │   │   │   │   └── [[...slug]].ts
-│   │   │   │   ├── tags-gestionnaires.ts
 │   │   │   │   ├── users
 │   │   │   │   │   └── [[...slug]].ts
 │   │   │   │   └── users-stats.ts
@@ -1820,6 +1915,8 @@
 │   │   ├── contact.tsx
 │   │   ├── contribution.tsx
 │   │   ├── decret-tertiaire.tsx
+│   │   ├── dev
+│   │   │   └── map.tsx
 │   │   ├── donnees.tsx
 │   │   ├── faq
 │   │   │   └── index.tsx
@@ -1827,6 +1924,7 @@
 │   │   ├── iframe
 │   │   │   ├── carte-collectivite.tsx
 │   │   │   ├── carte-reseaux-de-chaleur-et-froid.tsx
+│   │   │   ├── carte.tsx
 │   │   │   ├── charleville-mezieres.tsx
 │   │   │   ├── dalkia.tsx
 │   │   │   ├── engie.tsx
@@ -1910,9 +2008,8 @@
 │   │   │       ├── 20260512000000_rename_demand_assigned_to_demand_validated.ts
 │   │   │       ├── 20260512000001_split_demand_updated_events.ts
 │   │   │       ├── 20260515120000_tiles_metadata.ts
-│   │   │       ├── migrator.ts
-│   │   │       └── pending
-│   │   │           └── drop_legacy_tags_and_assignment_rules.ts
+│   │   │       ├── 20260615120000_drop_legacy_tags_and_assignment_rules.ts
+│   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── logger.ts
 │   │   │   └── server.ts
@@ -1996,8 +2093,6 @@
 │       ├── event-bus.tsx
 │       ├── events.ts
 │       ├── export.ts
-│       ├── expression-parser.test.ts
-│       ├── expression-parser.ts
 │       ├── form-utils.ts
 │       ├── format.ts
 │       ├── interval.spec.ts
@@ -2022,4 +2117,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-285 directories, 2097 files
+290 directories, 2149 files
