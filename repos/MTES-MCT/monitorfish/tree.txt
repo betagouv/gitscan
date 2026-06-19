@@ -494,11 +494,12 @@
 │   │   │   │                   │   │   │       ├── AddMissionAction.kt
 │   │   │   │                   │   │   │       ├── DeleteMissionAction.kt
 │   │   │   │                   │   │   │       ├── EnrichMissionAction.kt
+│   │   │   │                   │   │   │       ├── EnrichPublicMissionAction.kt
 │   │   │   │                   │   │   │       ├── GetActivityReports.kt
 │   │   │   │                   │   │   │       ├── GetMissionActionFacade.kt
 │   │   │   │                   │   │   │       ├── GetMissionActions.kt
 │   │   │   │                   │   │   │       ├── GetVesselControls.kt
-│   │   │   │                   │   │   │       ├── IsPointInFrenchEez.kt
+│   │   │   │                   │   │   │       ├── IsPointInInnArea.kt
 │   │   │   │                   │   │   │       ├── PatchMissionAction.kt
 │   │   │   │                   │   │   │       ├── UpdateMissionAction.kt
 │   │   │   │                   │   │   │       └── dtos
@@ -691,7 +692,7 @@
 │   │   │   │                   │   │   │   ├── InfractionDataOutput.kt
 │   │   │   │                   │   │   │   ├── InfractionSuspicionDataOutput.kt
 │   │   │   │                   │   │   │   ├── InfractionThreatCharacterizationDataOutput.kt
-│   │   │   │                   │   │   │   ├── IsInFrenchEezDataOutput.kt
+│   │   │   │                   │   │   │   ├── IsInInnAreaDataOutput.kt
 │   │   │   │                   │   │   │   ├── LastPositionAISDataOutput.kt
 │   │   │   │                   │   │   │   ├── LogbookMessageDataOutput.kt
 │   │   │   │                   │   │   │   ├── LogbookMessageFishingCatchDataOutput.kt
@@ -762,9 +763,11 @@
 │   │   │   │                   │   │   │   ├── UserManagementController.kt
 │   │   │   │                   │   │   │   ├── VersionController.kt
 │   │   │   │                   │   │   │   ├── VesselController.kt
-│   │   │   │                   │   │   │   └── input
-│   │   │   │                   │   │   │       ├── AddUserDataInput.kt
-│   │   │   │                   │   │   │       └── PatchableMissionActionDataInput.kt
+│   │   │   │                   │   │   │   ├── input
+│   │   │   │                   │   │   │   │   ├── AddUserDataInput.kt
+│   │   │   │                   │   │   │   │   └── PatchableMissionActionDataInput.kt
+│   │   │   │                   │   │   │   └── outputs
+│   │   │   │                   │   │   │       └── PublicMissionActionDataOutput.kt
 │   │   │   │                   │   │   └── security
 │   │   │   │                   │   │       ├── ApiKeyCheckFilter.kt
 │   │   │   │                   │   │       ├── BffFilterConfig.kt
@@ -1239,6 +1242,9 @@
 │   │   │       │   │   │   ├── V0.380__Create_ais_positions_hourly_continuous_aggregate.sql
 │   │   │       │   │   │   ├── V0.381__Update_analytics_missions_table.sql
 │   │   │       │   │   │   ├── V0.382__Update_mission_actions_table.sql
+│   │   │       │   │   │   ├── V0.383__Update_last_positions_ais_table.sql
+│   │   │       │   │   │   ├── V0.384__Update_sales_notes_table.sql
+│   │   │       │   │   │   ├── V0.385__Update_vessels_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.40__Update_control_anteriority_table.sql
@@ -1516,6 +1522,7 @@
 │   │       │                   │   │   │       ├── AddMissionActionUTests.kt
 │   │       │                   │   │   │       ├── DeleteMissionActionUTests.kt
 │   │       │                   │   │   │       ├── EnrichMissionActionUTests.kt
+│   │       │                   │   │   │       ├── EnrichPublicMissionActionUTests.kt
 │   │       │                   │   │   │       ├── GetActivityReportsUTests.kt
 │   │       │                   │   │   │       ├── GetMissionActionSeafrontUTests.kt
 │   │       │                   │   │   │       ├── GetVesselControlsUTests.kt
@@ -3211,6 +3218,13 @@
 │   │   │   │   │   │   │   │   ├── GearsField.tsx
 │   │   │   │   │   │   │   │   ├── LicencesAndLogbookField.tsx
 │   │   │   │   │   │   │   │   ├── MissingFieldsText.tsx
+│   │   │   │   │   │   │   │   ├── Species
+│   │   │   │   │   │   │   │   │   ├── SpeciesTableRow.tsx
+│   │   │   │   │   │   │   │   │   ├── WeightInput.tsx
+│   │   │   │   │   │   │   │   │   ├── speciesControlCheckRows.tsx
+│   │   │   │   │   │   │   │   │   ├── speciesTable.styles.ts
+│   │   │   │   │   │   │   │   │   ├── useRowActivation.ts
+│   │   │   │   │   │   │   │   │   └── useSpeciesAndFaoOptions.ts
 │   │   │   │   │   │   │   │   ├── SpeciesField.tsx
 │   │   │   │   │   │   │   │   ├── UpdateMissionActionCompletionEffect.ts
 │   │   │   │   │   │   │   │   ├── VesselField.tsx
@@ -4353,6 +4367,7 @@
 │   │   │   │   ├── parseResponseOrReturn.test.ts
 │   │   │   │   ├── pushToObjectAtIndex.ts
 │   │   │   │   ├── sha256.test.ts
+│   │   │   │   ├── splitSegmentAtAntimeridian.test.ts
 │   │   │   │   ├── toFormikValidationSchema.test.ts
 │   │   │   │   ├── undefinedize.test.ts
 │   │   │   │   ├── updateListItemsProp.test.ts
@@ -4396,6 +4411,7 @@
 │   │   │   ├── sha256.ts
 │   │   │   ├── sortArrayByColumn.ts
 │   │   │   ├── sortByAscendingValue.ts
+│   │   │   ├── splitSegmentAtAntimeridian.ts
 │   │   │   ├── stopMouseEventPropagation.ts
 │   │   │   ├── toFormikValidationSchema.ts
 │   │   │   ├── undefinedize.ts
@@ -5884,4 +5900,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-797 directories, 5403 files
+799 directories, 5417 files

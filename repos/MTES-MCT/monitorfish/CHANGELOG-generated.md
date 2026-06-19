@@ -1,33 +1,30 @@
-## Changelog : monitorfish (30 derniers jours, au 11 juin 2026)
+## Changelog : monitorfish (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de monitorfish se concentrent sur l'amélioration de la gestion des contrôles, notamment en mer et à terre, avec l'ajout de nouveaux champs et la correction de plusieurs bugs. Des améliorations significatives ont également été apportées à l'intégration des données AIS, permettant désormais l'affichage des navires et de leurs positions sur la carte. Enfin, des corrections et des améliorations ont été apportées à l'interface utilisateur et à la gestion des signalements INN.
+Cette période a été marquée par d'importantes améliorations concernant le suivi des navires, notamment l'intégration des données AIS (Automatic Identification System) pour afficher la position des navires sur la carte. Des corrections et des améliorations ont également été apportées aux formulaires de contrôle en mer et à terre, ainsi qu'à la gestion des signalements INN et des préavis. Des optimisations techniques et des corrections de bugs ont également été réalisées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de champs pour les contrôles en mer et à terre liés à l'e-ISR, incluant la possibilité de spécifier si le navire a débarqué ou non. [#5161](https://github.com/MTES-MCT/monitorfish/issues/5161)
-- Amélioration de l'affichage des raisons de vérification des préavis. [#5108](https://github.com/MTES-MCT/monitorfish/issues/5108)
-- Ajout de la mention "Préavis zéro" dans l'objet des emails de notification. [#5104](https://github.com/MTES-MCT/monitorfish/issues/5104)
-- Ajout de la possibilité de rechercher par type et base lors de la création d'un nouveau moyen pour les unités. [#5110](https://github.com/MTES-MCT/monitorfish/issues/5110)
-- Amélioration des filtres dans la liste des signalements INN, avec la possibilité de filtrer par type de signalement et d'exiger l'ID du navire dans le formulaire. [#5113](https://github.com/MTES-MCT/monitorfish/issues/5113)
-- Intégration de l'affichage des navires sous AIS sur la carte, avec la possibilité de visualiser leurs dernières positions. [#5090](https://github.com/MTES-MCT/monitorfish/issues/5090)
-- Ajout de la gestion des notes de vente FLUX et correction du parser. [#5173](https://github.com/MTES-MCT/monitorfish/issues/5173)
-- Ajout du champ `is_under_jdp` à la table `analytics_missions`. [#5162](https://github.com/MTES-MCT/monitorfish/issues/5162)
+- **AIS :** Affichage des navires équipés d'un système AIS sur la carte, avec des informations sur leur type, leur destination et leur position récente.
+- **Contrôles en mer et à terre :** Modifications des formulaires pour l'e-ISR (échange électronique d'informations sur les contrôles) v1.2, incluant la gestion des espèces, des quantités et des zones de pêche.
+- **Signalements INN :** Amélioration des filtres dans la liste des signalements INN pour faciliter la recherche et la gestion. Possibilité pour le pôle INN de mettre à jour les signalements liés aux fiches Navpro.
+- **Préavis :** Affichage de la raison pour laquelle un préavis est "à vérifier" (note, signalement, port état tiers).
+- **Unités :** Ajout d'une recherche par type et base lors de la création d'une nouvelle unité.
+- **NATINF :** Ajout des NATINF 4789 et 30013.
+- **Gestion des engins :** Ajout d'un engin pour les navires auxiliaires à la campagne BFT (Thon Rouge).
 
 ### Évolutions techniques
-- Mise à jour des dépendances frontend : uuid 14, TS-ESLint 7, ol 10.9, fuse.js 7.3, styled-components 6.4 et monitor-ui 24.50. [#5147](https://github.com/MTES-MCT/monitorfish/issues/5147)
-- Mise à jour des dépendances backend : Spring Boot 4, Security 7, Flyway 12, Ktor 3.5. [#5146](https://github.com/MTES-MCT/monitorfish/issues/5146)
-- Correction de la sérialisation PATCH. [#5174](https://github.com/MTES-MCT/monitorfish/issues/5174)
-- Correction des schémas Zod. [#5174](https://github.com/MTES-MCT/monitorfish/issues/5174)
-- Amélioration de la gestion des erreurs lors du téléchargement des source maps Sentry.
-- Correction de plusieurs tests Cypress et Jest.
-- Ajout de variables d'environnement pour Kafka et la génération de certificats.
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- **Backend :** Mise à jour de plusieurs dépendances backend (Spring Boot, Security, Flyway, Ktor).
+- **Frontend :** Mise à jour de plusieurs dépendances frontend (uuid, TS-ESLint, styled-components, monitor-ui, ol, fuse.js).
+- **Kafka :** Ajout de la gestion de Kafka pour l'intégration des données AIS. Configuration et gestion des variables d'environnement associées.
+- **Tests :** Correction de tests Cypress et amélioration de la stabilité des tests e2e.
+- **Base de données :** Ajout d'index pour optimiser les performances des requêtes sur les notes de vente dans le data warehouse.
+- **Architecture :** Refactorisation du code pour séparer les espèces embarquées et les rejets dans les contrôles.
 
 ### Autres changements
-- Amélioration de l'UI des nouvelles modales. [#5169](https://github.com/MTES-MCT/monitorfish/issues/5169)
-- Correction de problèmes d'accessibilité. [#5144](https://github.com/MTES-MCT/monitorfish/issues/5144)
-- Ajout d'un README pour la génération du fichier .p12. [#5123](https://github.com/MTES-MCT/monitorfish/issues/5123)
-- Correction de la mention "Drone" dans l'interface utilisateur.
-- Harmonisation du composant Dialog.
-- Correction de plusieurs tests E2E.
-- Ajout du NATINF 4789 et mise à jour du NATINF 30013. [#5149](https://github.com/MTES-MCT/monitorfish/issues/5149) et [#5167](https://github.com/MTES-MCT/monitorfish/issues/5167)
+- Amélioration de la documentation pour la génération du fichier .p12.
+- Correction de problèmes de linting et de style de code.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Correction de problèmes d'affichage et de comportement des formulaires.
+- Ajout de logs et d'informations de débogage pour faciliter la résolution des problèmes.
+- Correction de problèmes de sérialisation des données.
+- Amélioration de la gestion des erreurs et des exceptions.
