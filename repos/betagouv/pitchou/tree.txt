@@ -28,7 +28,6 @@
 │   │   └── schema-DS
 │   │       ├── 7f52a348-fd16-4fcd-8a6f-2e78ddafaee4.json
 │   │       └── derogation-especes-protegees.json
-│   ├── liste-espèces-protégées.csv
 │   ├── modèles
 │   │   └── modèle ajout prescriptions.ods
 │   └── sources_especes
@@ -763,7 +762,8 @@
 │   ├── 20260223151046_ajout-notification.ts
 │   ├── 20260527182955_unique-dossier-fichier-pieces-jointes-petitionnaire.ts
 │   ├── 20260529100000_ajout-table-file.ts
-│   └── 20260529100100_drop-triggers-suppression-fichiers-avis-expert.ts
+│   ├── 20260529100100_drop-triggers-suppression-fichiers-avis-expert.ts
+│   └── 20260606120000_creation-tables-espece-protegee.ts
 ├── outils
 │   ├── aarri
 │   │   ├── donnees-pour-personne.ts
@@ -772,7 +772,10 @@
 │   ├── genere-types-schema-DS.ts
 │   ├── geomce.ts
 │   ├── import-dossiers.ts
-│   ├── liste-espèces.ts
+│   ├── importer-bdc.ts
+│   ├── importer-modifications-especes.ts
+│   ├── importer-taxref.ts
+│   ├── rafraichir-reference-especes.ts
 │   ├── sync-démarche-numérique.ts
 │   └── synchronisation-ds
 │       ├── makeColonnesCommunesDossierPourSynchro88444.ts
@@ -794,6 +797,7 @@
 │   │   ├── manipulationStrings.test.ts
 │   │   ├── manipulationStrings.ts
 │   │   ├── outils-dossiers.ts
+│   │   ├── outils-espèces.test.ts
 │   │   ├── outils-espèces.ts
 │   │   ├── préremplissageDémarcheNumérique.ts
 │   │   └── typeFormat.ts
@@ -801,6 +805,8 @@
 │   │   ├── actions
 │   │   │   ├── aarri.ts
 │   │   │   ├── activitésMéthodesMoyensDePoursuite.ts
+│   │   │   ├── admin.ts
+│   │   │   ├── adminEspeces.ts
 │   │   │   ├── avisExpert.ts
 │   │   │   ├── contrôle.ts
 │   │   │   ├── créerEspècesGroupéesParImpact.ts
@@ -834,12 +840,17 @@
 │   │   │   │   │   ├── AvisExpert.svelte
 │   │   │   │   │   └── FormulaireAvisExpert.svelte
 │   │   │   │   ├── Contrôles
-│   │   │   │   │   ├── DécisionsAdministratives.svelte
+│   │   │   │   │   ├── CardDecisionAdministrative.svelte
+│   │   │   │   │   ├── DecisionAdministrative.svelte
+│   │   │   │   │   ├── DecisionAdministrative.svelte.test.ts
+│   │   │   │   │   ├── FormDecisionAdministrative.svelte
+│   │   │   │   │   ├── FormDecisionAdministrative.svelte.test.ts
 │   │   │   │   │   ├── FormulaireContrôle.svelte
-│   │   │   │   │   ├── FormulaireDécisionAdministrative.svelte
-│   │   │   │   │   └── Prescription.svelte
+│   │   │   │   │   ├── Prescription.svelte
+│   │   │   │   │   └── Prescriptions.svelte
 │   │   │   │   ├── DossierAvis.svelte
 │   │   │   │   ├── DossierContrôles.svelte
+│   │   │   │   ├── DossierContrôles.svelte.test.ts
 │   │   │   │   ├── DossierGénérationDocuments.svelte
 │   │   │   │   ├── DossierInstruction.svelte
 │   │   │   │   ├── DossierMessagerie.svelte
@@ -882,6 +893,7 @@
 │   │   │   │   ├── Accessibilite.svelte
 │   │   │   │   ├── DonnéesPersonnelles.svelte
 │   │   │   │   ├── Dossier.svelte
+│   │   │   │   ├── ErrorPage.svelte
 │   │   │   │   ├── ImportDossierBFC.svelte
 │   │   │   │   ├── ImportDossierCorse.svelte
 │   │   │   │   ├── LoginViaEmail.svelte
@@ -892,6 +904,7 @@
 │   │   │   │   ├── TmpStats.svelte
 │   │   │   │   └── TousLesDossiers.svelte
 │   │   │   └── stats
+│   │   │       ├── AARRIEvolutionChart.svelte
 │   │   │       ├── IndicateursAARRI.svelte
 │   │   │       ├── StatistiquesConformites.svelte
 │   │   │       └── StatsContenu.svelte
@@ -905,11 +918,15 @@
 │   │   ├── triDossiers.ts
 │   │   └── triEspèces.ts
 │   ├── server
+│   │   ├── admin.test.ts
+│   │   ├── admin.ts
 │   │   ├── auth.test.ts
 │   │   ├── auth.ts
 │   │   ├── database
 │   │   │   ├── aarri
 │   │   │   │   ├── constantes.ts
+│   │   │   │   ├── niveau.test.ts
+│   │   │   │   ├── niveau.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── aarri.ts
 │   │   │   ├── analyse_utilisation.ts
@@ -927,6 +944,7 @@
 │   │   │   ├── fichier.test.ts
 │   │   │   ├── fichier.ts
 │   │   │   ├── file.ts
+│   │   │   ├── geomce.test.ts
 │   │   │   ├── geomce.ts
 │   │   │   ├── groupe_instructeurs.ts
 │   │   │   ├── notification.ts
@@ -937,6 +955,7 @@
 │   │   │   ├── prescription.ts
 │   │   │   ├── relation_suivi.ts
 │   │   │   ├── stats.ts
+│   │   │   ├── utilisateursAARRI.ts
 │   │   │   └── évènements_métriques.ts
 │   │   ├── database.ts
 │   │   ├── démarche-numérique
@@ -974,6 +993,11 @@
 │       │       ├── Dossier.ts
 │       │       ├── DécisionAdministrative.ts
 │       │       ├── Entreprise.ts
+│       │       ├── EspeceBdcStatut.ts
+│       │       ├── EspeceProtegee.ts
+│       │       ├── EspeceProtegeeModification.ts
+│       │       ├── EspeceProtegeeReference.ts
+│       │       ├── EspeceTaxref.ts
 │       │       ├── Fichier.ts
 │       │       ├── File.ts
 │       │       ├── GroupeInstructeurs.ts
@@ -1003,7 +1027,14 @@
 │       └── évènement.d.ts
 ├── seeds
 │   └── dev
-│       └── 01_dev_user.ts
+│       ├── 01_dev_user.ts
+│       ├── 02_espece_taxref.ts
+│       ├── 02_evenements_metriques.ts
+│       ├── 02_utilisateurs_aarri.ts
+│       ├── 03_espece_bdc_statut.ts
+│       ├── 04_espece_protegee_reference.ts
+│       ├── 05_espece_protegee_modification_cnpn_ministerielle.ts
+│       └── 06_espece_protegee_modification_ajouts.ts
 ├── src
 │   ├── app.d.ts
 │   ├── app.html
@@ -1011,23 +1042,81 @@
 │   ├── lib
 │   │   └── server
 │   │       ├── auth.ts
+│   │       ├── bdcStatut.ts
+│   │       ├── especeProtegee.ts
+│   │       ├── especeProtegeeReference.test.ts
+│   │       ├── especeProtegeeReference.ts
 │   │       ├── fichier.test.ts
 │   │       ├── fichier.ts
-│   │       └── staticFile.ts
+│   │       ├── staticFile.ts
+│   │       └── taxref.ts
 │   └── routes
+│       ├── +error.svelte
 │       ├── +layout.svelte
 │       ├── +layout.ts
 │       ├── +page.svelte
 │       ├── accessibilite
 │       │   └── +page.svelte
+│       ├── admin
+│       │   ├── especes-protegees
+│       │   │   ├── +page.svelte
+│       │   │   ├── ChampClassification.svelte
+│       │   │   ├── ChampModifiable.svelte
+│       │   │   ├── ChampNoms.svelte
+│       │   │   ├── ChampOuiNon.svelte
+│       │   │   ├── ChampStatuts.svelte
+│       │   │   ├── HeritageCheckbox.svelte
+│       │   │   ├── ListeModifications.svelte
+│       │   │   ├── Modale.svelte
+│       │   │   ├── ModaleAjout.svelte
+│       │   │   ├── ModaleEditionModification.svelte
+│       │   │   ├── ModificationsFilterPanel.svelte
+│       │   │   ├── ModificationsSortPanel.svelte
+│       │   │   ├── OuiNonToggle.svelte
+│       │   │   ├── SelecteurEspece.svelte
+│       │   │   ├── SelecteurTaxref.svelte
+│       │   │   ├── TableModifications.svelte
+│       │   │   └── adminModificationsList.ts
+│       │   └── utilisateurs
+│       │       ├── +page.svelte
+│       │       ├── BadgeNiveauAARRI.svelte
+│       │       ├── NiveauxAARRIModale.svelte
+│       │       ├── RepartitionNiveaux.svelte
+│       │       ├── UtilisateursFilterPanel.svelte
+│       │       ├── UtilisateursList.svelte
+│       │       ├── UtilisateursSortPanel.svelte
+│       │       ├── UtilisateursTable.svelte
+│       │       ├── utilisateursList.test.ts
+│       │       └── utilisateursList.ts
 │       ├── api
 │       │   ├── aarri
+│       │   │   └── +server.ts
+│       │   ├── admin
+│       │   │   ├── especes-protegees
+│       │   │   │   ├── +server.ts
+│       │   │   │   └── modifications
+│       │   │   │       ├── +server.ts
+│       │   │   │       └── [cd_ref]
+│       │   │   │           └── +server.ts
+│       │   │   ├── evenements-metriques-csv
+│       │   │   │   └── +server.ts
+│       │   │   └── utilisateurs-aarri
+│       │   │       └── +server.ts
+│       │   ├── bdc-statuts
+│       │   │   ├── +server.ts
+│       │   │   └── filtres
+│       │   │       └── +server.ts
+│       │   ├── especes-protegees
 │       │   │   └── +server.ts
 │       │   ├── metriques
 │       │   │   └── evenements
 │       │   │       └── +server.ts
-│       │   └── stats-publiques
-│       │       └── +server.ts
+│       │   ├── stats-publiques
+│       │   │   └── +server.ts
+│       │   └── taxref
+│       │       ├── +server.ts
+│       │       └── filtres
+│       │           └── +server.ts
 │       ├── avis-expert
 │       │   ├── +server.ts
 │       │   ├── [avisExpertId]
@@ -1035,6 +1124,13 @@
 │       │   └── fichier
 │       │       └── [fichierId]
 │       │           └── +server.ts
+│       ├── bdc-statuts
+│       │   ├── +page.svelte
+│       │   ├── BdcStatutsFilterPanel.svelte
+│       │   ├── BdcStatutsListe.svelte
+│       │   ├── BdcStatutsSortPanel.svelte
+│       │   ├── BdcStatutsTable.svelte
+│       │   └── bdcStatutsList.ts
 │       ├── caps
 │       │   └── +server.ts
 │       ├── controle
@@ -1078,6 +1174,16 @@
 │       ├── especes-impactees
 │       │   └── [fichierId]
 │       │       └── +server.ts
+│       ├── especes-protegees
+│       │   ├── +page.svelte
+│       │   ├── EspecesFilterPanel.svelte
+│       │   ├── EspecesGenerationModale.svelte
+│       │   ├── EspecesSortPanel.svelte
+│       │   ├── EspecesSynonymesModale.svelte
+│       │   ├── EspecesTable.svelte
+│       │   ├── ListeEspecesProtegees.svelte
+│       │   ├── especesList.test.ts
+│       │   └── especesList.ts
 │       ├── import-dossier-historique
 │       │   ├── bourgogne-franche-comte
 │       │   │   └── +page.svelte
@@ -1107,6 +1213,13 @@
 │       │   └── +page.svelte
 │       ├── stats
 │       │   └── +page.svelte
+│       ├── taxref
+│       │   ├── +page.svelte
+│       │   ├── TaxrefFilterPanel.svelte
+│       │   ├── TaxrefListe.svelte
+│       │   ├── TaxrefSortPanel.svelte
+│       │   ├── TaxrefTable.svelte
+│       │   └── taxrefList.ts
 │       ├── tmp
 │       │   └── stats
 │       │       └── +page.svelte
@@ -1132,6 +1245,7 @@
 │   │   ├── failed-login.spec.ts
 │   │   ├── login-and-see-dossier.spec.ts
 │   │   ├── mes-dossiers.spec.ts
+│   │   ├── rajouter-decision-administrative.spec.ts
 │   │   ├── reload-dossier.spec.ts
 │   │   ├── saisie-especes.spec.ts
 │   │   └── secret-disappears-from-url.spec.ts
@@ -1139,15 +1253,22 @@
 │   │   ├── _random.ts
 │   │   ├── cap.ts
 │   │   ├── dossier.ts
+│   │   ├── especeProtegeeReference.ts
 │   │   ├── fichier.ts
 │   │   ├── index.ts
 │   │   ├── notification.ts
 │   │   └── personne.ts
 │   ├── fixtures
 │   │   └── playwright.ts
+│   ├── helpers
+│   │   └── reactive.svelte.ts
 │   ├── integration
+│   │   ├── admin-utilisateurs-aarri.test.ts
+│   │   ├── api-especes-protegees.test.ts
 │   │   ├── caps.test.ts
 │   │   ├── dossier-especes-impactees.test.ts
+│   │   ├── espece-protegee.test.ts
+│   │   ├── geomce.test.ts
 │   │   ├── load-fichier-content.test.ts
 │   │   ├── stocker-nouveau-fichier.test.ts
 │   │   ├── supprimer-fichiers.test.ts
@@ -1173,4 +1294,4 @@
 │   └── vitest.config.ts
 ├── tsconfig.json
 └── vite.config.ts
-138 directories, 1078 files
+156 directories, 1181 files
