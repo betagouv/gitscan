@@ -1,25 +1,36 @@
 .
 ├── .agents
 │   └── skills
+│       ├── ask-matt
+│       │   └── SKILL.md
 │       ├── caveman
+│       │   └── SKILL.md
+│       ├── codebase-design
+│       │   ├── DEEPENING.md
+│       │   ├── DESIGN-IT-TWICE.md
 │       │   └── SKILL.md
 │       ├── diagnose
 │       │   ├── SKILL.md
 │       │   └── scripts
 │       │       └── hitl-loop.template.sh
+│       ├── diagnosing-bugs
+│       │   ├── SKILL.md
+│       │   └── scripts
+│       │       └── hitl-loop.template.sh
+│       ├── domain-modeling
+│       │   ├── ADR-FORMAT.md
+│       │   ├── CONTEXT-FORMAT.md
+│       │   └── SKILL.md
 │       ├── grill-me
 │       │   └── SKILL.md
 │       ├── grill-with-docs
-│       │   ├── ADR-FORMAT.md
-│       │   ├── CONTEXT-FORMAT.md
+│       │   └── SKILL.md
+│       ├── grilling
 │       │   └── SKILL.md
 │       ├── handoff
 │       │   └── SKILL.md
 │       ├── improve-codebase-architecture
-│       │   ├── DEEPENING.md
 │       │   ├── HTML-REPORT.md
-│       │   ├── INTERFACE-DESIGN.md
-│       │   ├── LANGUAGE.md
 │       │   └── SKILL.md
 │       ├── prototype
 │       │   ├── LOGIC.md
@@ -34,11 +45,15 @@
 │       │   └── triage-labels.md
 │       ├── tdd
 │       │   ├── SKILL.md
-│       │   ├── deep-modules.md
-│       │   ├── interface-design.md
 │       │   ├── mocking.md
 │       │   ├── refactoring.md
 │       │   └── tests.md
+│       ├── teach
+│       │   ├── GLOSSARY-FORMAT.md
+│       │   ├── LEARNING-RECORD-FORMAT.md
+│       │   ├── MISSION-FORMAT.md
+│       │   ├── RESOURCES-FORMAT.md
+│       │   └── SKILL.md
 │       ├── to-issues
 │       │   └── SKILL.md
 │       ├── to-prd
@@ -48,6 +63,9 @@
 │       │   ├── OUT-OF-SCOPE.md
 │       │   └── SKILL.md
 │       ├── write-a-skill
+│       │   └── SKILL.md
+│       ├── writing-great-skills
+│       │   ├── GLOSSARY.md
 │       │   └── SKILL.md
 │       └── zoom-out
 │           └── SKILL.md
@@ -72,16 +90,21 @@
 │   │   └── packages-conventions.md
 │   ├── settings.json
 │   └── skills
+│       ├── ask-matt -> ../../.agents/skills/ask-matt
 │       ├── caveman -> ../../.agents/skills/caveman
+│       ├── codebase-design -> ../../.agents/skills/codebase-design
 │       ├── dagster-asset
 │       │   └── SKILL.md
 │       ├── dbt-model
 │       │   └── SKILL.md
 │       ├── diagnose -> ../../.agents/skills/diagnose
+│       ├── diagnosing-bugs -> ../../.agents/skills/diagnosing-bugs
+│       ├── domain-modeling -> ../../.agents/skills/domain-modeling
 │       ├── external-source-onboarding
 │       │   └── SKILL.md
 │       ├── grill-me -> ../../.agents/skills/grill-me
 │       ├── grill-with-docs -> ../../.agents/skills/grill-with-docs
+│       ├── grilling -> ../../.agents/skills/grilling
 │       ├── handoff -> ../../.agents/skills/handoff
 │       ├── implement-feature
 │       │   └── SKILL.md
@@ -95,10 +118,12 @@
 │       ├── sql-explore
 │       │   └── SKILL.md
 │       ├── tdd -> ../../.agents/skills/tdd
+│       ├── teach -> ../../.agents/skills/teach
 │       ├── to-issues -> ../../.agents/skills/to-issues
 │       ├── to-prd -> ../../.agents/skills/to-prd
 │       ├── triage -> ../../.agents/skills/triage
 │       ├── write-a-skill -> ../../.agents/skills/write-a-skill
+│       ├── writing-great-skills -> ../../.agents/skills/writing-great-skills
 │       └── zoom-out -> ../../.agents/skills/zoom-out
 ├── .config
 │   └── wt.toml
@@ -188,6 +213,7 @@
 │   │       ├── pyproject.toml
 │   │       └── uv.lock
 │   ├── dagster
+│   │   ├── .backfill_ban_owners.lovac-2026.cursor.json
 │   │   ├── .dlt
 │   │   │   ├── .sources
 │   │   │   └── config.toml
@@ -210,6 +236,9 @@
 │   │   │   └── nginx
 │   │   │       └── nginx.conf
 │   │   ├── pyproject.toml
+│   │   ├── scripts
+│   │   │   ├── CONTEXT.md
+│   │   │   └── backfill_ban_owners.py
 │   │   ├── src
 │   │   │   ├── .dlt
 │   │   │   │   ├── .sources
@@ -297,6 +326,7 @@
 │   │   ├── uv.lock
 │   │   └── workspace.yaml
 │   ├── dbt
+│   │   ├── .dbt-test-coverage-allowlist.txt
 │   │   ├── .gitignore
 │   │   ├── .python-version
 │   │   ├── .sqlfluff
@@ -711,7 +741,8 @@
 │   │   │       ├── establishment
 │   │   │       │   ├── test_establishment_activation_typology_valid.sql
 │   │   │       │   ├── test_establishment_active_has_users.sql
-│   │   │       │   └── test_establishment_type_valid.sql
+│   │   │       │   ├── test_establishment_type_valid.sql
+│   │   │       │   └── test_zlv_usage_maj_attributed_to_own_users.sql
 │   │   │       ├── events
 │   │   │       │   ├── test_events_include_all_versions.sql
 │   │   │       │   ├── test_events_type_valid.sql
@@ -2772,4 +2803,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-422 directories, 2352 files
+438 directories, 2367 files
