@@ -1,13 +1,11 @@
-## Changelog : dockerfiles (30 derniers jours, au 29 mai 2026)
+## Changelog : dockerfiles (30 derniers jours, au 2026-06-19)
 
 ### Résumé
-Ce mois-ci, les mises à jour se concentrent sur l'amélioration des images Docker pour GitLab Runner, en ajoutant le support de Go pour faciliter le développement et l'exécution de pipelines. Ces changements permettent une plus grande flexibilité et une meilleure intégration avec les outils de développement Go.
+Ce dépôt a récemment été mis à jour pour améliorer la compatibilité et la fonctionnalité de plusieurs images Docker fournies. Les changements incluent une mise à jour majeure de `clusterctl` et l'ajout de `golang` à l'image des runners GitLab, permettant ainsi une plus grande flexibilité pour les utilisateurs. Des corrections mineures ont également été apportées pour assurer la stabilité des images.
 
 ### Évolutions fonctionnelles
-- Ajout de Go à l'image Docker de GitLab Runner, permettant l'exécution de projets Go directement dans les pipelines.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
+- Ajout de `golang` à l'image Docker des runners GitLab, offrant ainsi un environnement de build plus complet.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
+- Mise à jour de `clusterctl` de la version 1.8.10 à la version 1.13.1, apportant de nouvelles fonctionnalités et corrections. [#35](https://github.com/cloud-gouv/dockerfiles/issues/35)
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler.
-
-### Autres changements
-- Aucune autre modification notable.
+- Correction des sommes SHA des actions utilisées dans les Dockerfiles pour garantir l'intégrité des builds. [#36](https://github.com/cloud-gouv/dockerfiles/issues/36)
