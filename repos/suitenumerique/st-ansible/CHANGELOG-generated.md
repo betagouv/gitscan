@@ -1,16 +1,18 @@
-## Changelog : st-ansible (30 derniers jours, au 12 juin 2026)
+## Changelog : st-ansible (30 derniers jours, au 2026-06-18)
 
 ### Résumé
-Cette mise à jour apporte des corrections et améliorations concernant le déploiement et la configuration des applications *meet* et *keycloak*. Les modifications concernent notamment la gestion des utilisateurs Docker, la configuration des ports pour les défis ACME de Caddy, et la compatibilité de Keycloak avec des configurations en cluster. Une correction a également été apportée à la commande de démarrage des workers pour l'application *messages*.
+Les dernières mises à jour de st-ansible se concentrent sur l'amélioration de la configuration et de la stabilité des applications de La Suite Territoriale, notamment Collabora, Meet et Keycloak. Des corrections ont été apportées pour permettre une personnalisation accrue et résoudre des problèmes liés à l'utilisateur Docker et aux ports non privilégiés.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'utilisateur dans le Dockerfile de l'application *meet* [#issue](https://github.com/suitenumerique/st-ansible/issues/).
-- Correction de la configuration des ports pour les défis ACME de Caddy dans *meet*, permettant une obtention de certificats SSL/TLS fonctionnelle.
-- Correction de la configuration de Keycloak pour les environnements en cluster [#issue](https://github.com/suitenumerique/st-ansible/issues/).
-- Correction de la commande de démarrage des workers pour l'application *messages*.
+- **Collabora:** Possibilité de personnaliser la police utilisée.
+- **Meet:** Ajout d'une configuration Nginx personnalisée pour une meilleure gestion du trafic.
+- **Keycloak:** Correction de la configuration de Compose pour les installations en cluster, améliorant la scalabilité et la fiabilité.
+- **Drive:** Ajout de nouvelles routes Nginx upstream pour une meilleure intégration et performance.
 
 ### Évolutions techniques
-- Amélioration de la documentation concernant la gestion des retours en arrière (rollbacks).
+- **Meet:** Correction d'un problème d'utilisateur dans le Dockerfile, assurant un fonctionnement correct du conteneur.
+- **Meet:** Correction du problème `unprivileged_port_start` pour le challenge ACME de Caddy, permettant une configuration HTTPS plus simple et sécurisée.
+- **Messages:** Correction de la commande Compose pour les workers, améliorant la gestion des processus en arrière-plan.
 
 ### Autres changements
-- Aucune information disponible.
+- **Meet:** Clarification de la documentation concernant les procédures de rollback.
