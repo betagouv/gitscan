@@ -1444,8 +1444,6 @@
 │   │       │   └── loadPath.ts
 │   │       ├── commands.ts
 │   │       └── e2e.ts
-│   ├── feat__create_Tags_backoffice_and_display_tags.patch
-│   ├── feat__refacto_mission_table_to_make_it_expandable.patch
 │   ├── index.html
 │   ├── package-lock.json
 │   ├── package.json
@@ -1807,9 +1805,13 @@
 │   │   │   ├── BannerStack
 │   │   │   │   └── item.tsx
 │   │   │   ├── CenteredFingerprintLoader.ts
-│   │   │   ├── ConfirmationModal.tsx
 │   │   │   ├── CustomGlobalStyle.ts
-│   │   │   ├── Dialog.tsx
+│   │   │   ├── Dialog
+│   │   │   │   ├── ArchiveDialog.tsx
+│   │   │   │   ├── CancelEditDialog.tsx
+│   │   │   │   ├── DeleteDialog.tsx
+│   │   │   │   ├── ForbiddenActionDialog.tsx
+│   │   │   │   └── MapInteraction.tsx
 │   │   │   ├── DrawModalInMenu.tsx
 │   │   │   ├── EnvironmentBox.tsx
 │   │   │   ├── ErrorBoundary.tsx
@@ -2334,7 +2336,6 @@
 │   │   │   │   │   │   │   ├── ControlUnitWarningMessage.tsx
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── CreateDashboardModal.tsx
-│   │   │   │   │   │   ├── DeleteModal.tsx
 │   │   │   │   │   │   ├── ExternalActionsModal.tsx
 │   │   │   │   │   │   ├── FormikSyncMissionFields.tsx
 │   │   │   │   │   │   ├── GeneralInformationsForm.tsx
@@ -2491,9 +2492,8 @@
 │   │   │   │   │   │   │   ├── AttachedMissionCard.tsx
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   └── slice.ts
+│   │   │   │   │   │   ├── CancelEditModal.tsx
 │   │   │   │   │   │   ├── FormComponents
-│   │   │   │   │   │   │   ├── Dialog
-│   │   │   │   │   │   │   │   └── CancelEditDialog.tsx
 │   │   │   │   │   │   │   ├── Footer.tsx
 │   │   │   │   │   │   │   ├── Position
 │   │   │   │   │   │   │   │   ├── PointPicker.tsx
@@ -2815,11 +2815,6 @@
 │   │   │   │   ├── AutoSaveTag.tsx
 │   │   │   │   ├── ControlCard
 │   │   │   │   │   └── index.tsx
-│   │   │   │   ├── Modals
-│   │   │   │   │   ├── Archive.tsx
-│   │   │   │   │   ├── CancelEditModal.tsx
-│   │   │   │   │   ├── Delete.tsx
-│   │   │   │   │   └── MapInteraction.tsx
 │   │   │   │   ├── ReinitializeFiltersButton.tsx
 │   │   │   │   ├── Skeleton
 │   │   │   │   │   └── index.tsx
@@ -3110,6 +3105,7 @@
 │   └── scripts
 │       ├── backup_dev_db.sh
 │       └── restore_dev_db.sh
+├── package-lock.json
 ├── pipeline
 │   ├── .env.template
 │   ├── .env.test
@@ -3312,4 +3308,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-605 directories, 2709 files
+604 directories, 2706 files
