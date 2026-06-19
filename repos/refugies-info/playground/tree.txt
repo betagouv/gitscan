@@ -244,6 +244,7 @@
 │   │   │   │   │   └── cells
 │   │   │   │   │       ├── ComplianceStatusCell.tsx
 │   │   │   │   │       ├── ExternalIdCell.tsx
+│   │   │   │   │       ├── IngestionVersionCell.tsx
 │   │   │   │   │       ├── ModalitesEntreesSortiesCell.tsx
 │   │   │   │   │       ├── OnlineStatusCell.tsx
 │   │   │   │   │       ├── QualityScoreCell.tsx
@@ -274,6 +275,7 @@
 │   │   │   │   ├── document-column-factories.tsx
 │   │   │   │   ├── document-labels.ts
 │   │   │   │   ├── errors.ts
+│   │   │   │   ├── format-ingestion-version.ts
 │   │   │   │   ├── markdown
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── normalizeMarkdown.ts
@@ -942,7 +944,10 @@
 │   │   ├── 20260520142223_enable_realtime_ingestion_records.sql
 │   │   ├── 20260520155000_add_di_session_end_date_to_workflows_enriched.sql
 │   │   ├── 20260603100000_rename_editorial_author_id_to_assignee_id.sql
-│   │   └── 20260615095200_move_assignee_to_workflows.sql
+│   │   ├── 20260609154000_add_latest_ingestion_record_to_workflows.sql
+│   │   ├── 20260609155000_audit_pending_ingestion_updates.sql
+│   │   ├── 20260615095200_move_assignee_to_workflows.sql
+│   │   └── 20260617153014_fix_workflows_enriched_versioning_columns.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -954,9 +959,10 @@
 │   │   ├── 09_editorial_records.sql
 │   │   ├── 10_translation_records.sql
 │   │   ├── 11_publication_records.sql
+│   │   ├── 12_ri1242_versioning.sql
 │   │   └── 99_backfill_fks.sql
 │   └── seed.sql
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-219 directories, 742 files
+219 directories, 748 files
