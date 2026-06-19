@@ -311,7 +311,6 @@
 │   │   └── web_profiler.yaml
 │   ├── routes.yaml
 │   ├── services.yaml
-│   ├── team_admins.yaml
 │   └── validator
 │       ├── Application
 │       │   ├── Organization
@@ -1482,6 +1481,7 @@
 │   │   │       └── RegulationOrderRecordVoter.php
 │   │   ├── Symfony
 │   │   │   ├── Command
+│   │   │   │   ├── AnonymizeDatabaseCommand.php
 │   │   │   │   ├── BacIdfImportCommand.php
 │   │   │   │   ├── BdTopoSetupIndexesCommand.php
 │   │   │   │   ├── EudonetParisImportCommand.php
@@ -1497,7 +1497,6 @@
 │   │   │   │   ├── SyncLocationGeometriesCommand.php
 │   │   │   │   ├── SyncOrganizationsCodesCommand.php
 │   │   │   │   ├── SyncOrganizationsToGristCommand.php
-│   │   │   │   ├── SyncTeamAdminsCommand.php
 │   │   │   │   └── SyncUsersToGristCommand.php
 │   │   │   ├── DependencyInjection
 │   │   │   │   ├── CifsFilterSetEnvVarProcessor.php
@@ -1829,8 +1828,7 @@
 │   │       │       ├── RefreshTopPublishedOrganizationsCommandTest.php
 │   │       │       ├── RunMetabaseExportCommandTest.php
 │   │       │       ├── StorageAreaGenerateCommandTest.php
-│   │       │       ├── SyncLocationGeometriesCommandTest.php
-│   │       │       └── SyncTeamAdminsCommandTest.php
+│   │       │       └── SyncLocationGeometriesCommandTest.php
 │   │       └── Templates
 │   │           ├── NamedStreetPointsTemplateTest.php
 │   │           └── VehicleSetTemplateTest.php
@@ -2161,6 +2159,7 @@
 │   │       │   └── UserCheckerTest.php
 │   │       ├── Symfony
 │   │       │   ├── Command
+│   │       │   │   ├── AnonymizeDatabaseCommandTest.php
 │   │       │   │   ├── BacIdfImportCommandTest.php
 │   │       │   │   ├── BdTopoSetupIndexesCommandTest.php
 │   │       │   │   ├── EudonetParisImportCommandTest.php
@@ -2170,7 +2169,6 @@
 │   │       │   │   ├── LitteralisImportCommunicationCommandTest.php
 │   │       │   │   ├── SyncLocationGeometriesCommandTest.php
 │   │       │   │   ├── SyncOrganizationsToGristCommandTest.php
-│   │       │   │   ├── SyncTeamAdminsCommandTest.php
 │   │       │   │   └── SyncUsersToGristCommandTest.php
 │   │       │   ├── DependencyInjection
 │   │       │   │   ├── CifsFilterSetEnvVarProcessorTest.php
@@ -2205,6 +2203,7 @@
 │   ├── jop_prepare.sh
 │   ├── mkfrcitysql.php
 │   ├── polyline_to_geojson.py
+│   ├── restore_from_prod.py
 │   ├── scalingodbtunnel
 │   ├── shp2geojson.py
 │   ├── wait-for-it.sh
@@ -2215,4 +2214,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-436 directories, 1937 files
+436 directories, 1936 files
