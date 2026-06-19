@@ -1,51 +1,41 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 16 juin 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 2026-06-18)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des audits, l'import de plans d'action (notamment via Excel), la sécurisation de l'application et l'amélioration de l'expérience utilisateur sur la plateforme, en particulier au niveau de l'édition et de la visualisation des données. Des refactorings importants ont également été réalisés pour améliorer la maintenabilité du code.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des plans d'action, notamment avec la possibilité de les dupliquer, et sur l'import de plans via un nouveau module dédié. Des améliorations significatives ont également été apportées à l'interface utilisateur, en particulier pour la gestion des actions et des preuves, ainsi qu'à la sécurité et à la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Audits :**
-    - Possibilité de verrouiller les preuves de labellisation une fois l'audit validé.
-    - Limitation des preuves de l'archive au référentiel de l'audit.
-    - Conservation du rôle auditeur pendant 15 jours après la clôture de l'audit.
-    - Ajout d'une modale de clôture d'audit en deux étapes.
-    - Autorisation pour les utilisateurs ADEME à lire les preuves stockées.
-    - Ajout d'une fonctionnalité pour demander un audit.
-- **Import de plans d'action :**
-    - Amélioration du processus d'import de plans d'action, avec une gestion plus robuste des fichiers Excel et une meilleure validation des données.
-    - Extraction structurée des actions à partir de différents formats de fichiers (PDF, CSV, Excel).
-    - Mise en place d'un workflow d'import asynchrone avec plusieurs étapes (scoring, consolidation, enrichissement).
-- **Sécurité :**
-    - Correction de plusieurs vulnérabilités de sécurité identifiées lors de tests d'intrusion (injection SQL, phishing, SSRF).
-    - Renforcement des contrôles d'accès pour protéger les données sensibles.
-- **Interface utilisateur :**
-    - Amélioration de l'affichage des badges d'audit et des indicateurs.
-    - Refonte de la page "Toutes les actions" avec une vue tabulaire éditable.
-    - Amélioration de l'expérience utilisateur pour la gestion des sous-mesures.
-    - Ajout de la possibilité de filtrer les mesures désactivées par la personnalisation.
-    - Amélioration de la gestion des champs de formulaire (RichTextEditor).
-    - Nouvelle page "Plateforme numérique" sur le site web.
-    - Amélioration de la gestion des états ouverts/fermés des sections dans la page d'une mesure.
+- Ajout de la possibilité de dupliquer un plan d'action, incluant les budgets et les preuves associées.
+- Nouvelle fonctionnalité permettant de générer une archive ZIP des preuves d'audit, accessible uniquement aux auditeurs.
+- Amélioration de la vue des actions avec une nouvelle interface tabulaire (activable via un *feature flag*).
+- Possibilité d'éditer les actions directement depuis le tableau des actions.
+- Ajout d'un bandeau pour faciliter l'accès à la nouvelle vue de labellisation.
+- Amélioration de l'affichage du statut d'audit et des badges associés.
+- Ajout de la possibilité de filtrer les actions par statut et priorité.
+- Amélioration de l'affichage des sous-mesures et des indicateurs.
+- Correction de bugs liés à l'affichage des données et à la gestion des accès.
+- Amélioration de la gestion des commentaires sur les sous-mesures.
+- Ajout d'un indicateur visuel pour les actions privées.
+- Amélioration de l'expérience utilisateur pour la gestion des tâches.
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Migration des labels JSX vers un système centralisé pour une meilleure maintenabilité.
-    - Refactorisation du code lié à l'import de plans d'action pour une meilleure structure et une plus grande clarté.
-    - Suppression de code obsolète et de dépendances inutiles.
-    - Amélioration de la gestion des types et des interfaces.
-- **Infrastructure :**
-    - Mise à jour des dépendances (Next.js, eslint-config-next).
-    - Amélioration de la configuration CI/CD.
-- **Tests :**
-    - Ajout de nouveaux tests unitaires et E2E pour garantir la qualité du code.
-    - Migration des tests Storybook vers Vitest.
-- **Base de données :**
-    - Optimisation des requêtes SQL.
-    - Ajout de nouvelles colonnes et index pour améliorer les performances.
+- Refactor important du code pour migrer les labels JSX vers un système centralisé (`appLabels`) pour une meilleure maintenabilité.
+- Implémentation d'un nouveau module pour l'import de plans d'action, incluant la gestion des erreurs et la validation des données.
+- Utilisation de Drizzle pour la gestion de la base de données dans le module d'import.
+- Amélioration de la sécurité avec des corrections pour prévenir les injections SQL et les IDOR (Insecure Direct Object Reference).
+- Mise à jour des dépendances et des outils de développement (Next.js, eslint, Playwright).
+- Optimisation des performances avec la suppression de dépendances inutiles et l'amélioration du code.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Refactor de la gestion des accès et des permissions.
+- Utilisation de TypeScript pour une meilleure typage et une détection plus précoce des erreurs.
+- Amélioration de la structure du code et de la documentation.
+- Migration des tests Cypress vers Vitest.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration des messages de log.
-- Correction de bugs mineurs.
-- Ajout de fixtures pour les tests.
-- Amélioration de la configuration de l'environnement.
+- Ajout de documentation pour la création de `client_id` et `client_secret` via curl.
+- Mise à jour des données de test pour refléter les dernières évolutions.
+- Nettoyage du code et suppression des fichiers inutilisés.
+- Amélioration de la configuration CI/CD.
+- Correction de problèmes de style et de mise en page.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Amélioration de la gestion des *feature flags*.
+- Ajout de métriques de suivi pour l'utilisation de la plateforme.
