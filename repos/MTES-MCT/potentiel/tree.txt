@@ -186,8 +186,7 @@
 │   │   │   │   │   │   └── vérifier-données.ts
 │   │   │   │   │   ├── candidature
 │   │   │   │   │   │   ├── importer-dossier.ts
-│   │   │   │   │   │   ├── lister-dossiers.ts
-│   │   │   │   │   │   └── migrer-details.ts
+│   │   │   │   │   │   └── lister-dossiers.ts
 │   │   │   │   │   ├── document
 │   │   │   │   │   │   └── générer.ts
 │   │   │   │   │   ├── files
@@ -1114,6 +1113,7 @@
 │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   ├── applySearchParams.test.ts
 │   │   │   │   │   │   ├── applySearchParams.ts
+│   │   │   │   │   │   ├── assertIdentifiantProjet.ts
 │   │   │   │   │   │   ├── changementActionnaireNécessiteInstruction.ts
 │   │   │   │   │   │   ├── filters
 │   │   │   │   │   │   │   └── getTypeActionnariatFilterOptions.ts
@@ -1126,6 +1126,7 @@
 │   │   │   │   │   │   ├── getFiltresActifs.test.ts
 │   │   │   │   │   │   ├── getFiltresActifs.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitationTypeLabel.ts
+│   │   │   │   │   │   ├── getProjetLauréatOuÉliminé.ts
 │   │   │   │   │   │   ├── getPériodeAppelOffres.ts
 │   │   │   │   │   │   ├── getRecours.ts
 │   │   │   │   │   │   ├── getStatutLauréatLabel.tsx
@@ -1133,10 +1134,14 @@
 │   │   │   │   │   │   ├── getTypologieInstallationLabel.ts
 │   │   │   │   │   │   ├── getÉliminé.ts
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── lauréat
+│   │   │   │   │   │   │   ├── getLauréatInfos.ts
+│   │   │   │   │   │   │   ├── getLauréatNonAbandonné.ts
+│   │   │   │   │   │   │   ├── getLauréatSansAbandon.ts
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── optionalStringArray.ts
 │   │   │   │   │   │   ├── redirigerPageProjet.ts
 │   │   │   │   │   │   ├── récupérerChangementsPermisParLeCahierDesCharges.ts
-│   │   │   │   │   │   ├── récupérerLauréat.ts
 │   │   │   │   │   │   ├── transformToOptionalEnumArray.ts
 │   │   │   │   │   │   └── vérifierQueLeCahierDesChargesPermetUnChangement.ts
 │   │   │   │   │   ├── api
@@ -2155,9 +2160,6 @@
 │   │   │   │   │   │   └── export
 │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   ├── legacy
-│   │   │   │   │   │   └── [guid]
-│   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── not-found.tsx
 │   │   │   │   │   ├── periodes
 │   │   │   │   │   │   ├── PériodeList.page.tsx
@@ -2300,23 +2302,20 @@
 │   │   │   │   │   │   │       ├── UploadNewOrModifyExistingDocument.tsx
 │   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   ├── headings
-│   │   │   │   │   │   │   ├── Heading1.tsx
-│   │   │   │   │   │   │   ├── Heading2.tsx
-│   │   │   │   │   │   │   ├── Heading3.tsx
-│   │   │   │   │   │   │   ├── Heading4.tsx
-│   │   │   │   │   │   │   ├── Heading5.tsx
-│   │   │   │   │   │   │   ├── Heading6.tsx
-│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── makeHeading.tsx
 │   │   │   │   │   │   ├── historique
 │   │   │   │   │   │   │   └── DisplayRaisonChangement.tsx
-│   │   │   │   │   │   └── menu
+│   │   │   │   │   │   ├── menu
+│   │   │   │   │   │   │   ├── DemandeEnCours.page.tsx
+│   │   │   │   │   │   │   ├── Menu.tsx
+│   │   │   │   │   │   │   └── MenuToggle.tsx
+│   │   │   │   │   │   └── section
 │   │   │   │   │   │       ├── Champ.tsx
-│   │   │   │   │   │       ├── DemandeEnCours.page.tsx
-│   │   │   │   │   │       ├── Menu.tsx
-│   │   │   │   │   │       ├── MenuToggle.tsx
 │   │   │   │   │   │       ├── Section.tsx
 │   │   │   │   │   │       ├── SectionPage.tsx
-│   │   │   │   │   │       └── SectionWithErrorHandling.tsx
+│   │   │   │   │   │       ├── SectionWithErrorHandling.tsx
+│   │   │   │   │   │       └── TitreChamp.tsx
 │   │   │   │   │   ├── molecules
 │   │   │   │   │   │   ├── CommunePicker.tsx
 │   │   │   │   │   │   ├── ConfirmationAction.tsx
@@ -2591,6 +2590,7 @@
 │   │   │   │   ├── rangeOptions.ts
 │   │   │   │   ├── selectOptions.ts
 │   │   │   │   ├── where
+│   │   │   │   │   ├── between.ts
 │   │   │   │   │   ├── equal.ts
 │   │   │   │   │   ├── equalNull.ts
 │   │   │   │   │   ├── greaterOrEqual.ts
@@ -2632,6 +2632,7 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── innovation.ppe2.ts
 │   │   │   │   │   │   ├── neutre.ppe2.ts
+│   │   │   │   │   │   ├── petitPV.ppe2.ts
 │   │   │   │   │   │   ├── petitPVBâtiment.ppe2.ts
 │   │   │   │   │   │   ├── sol.ppe2.ts
 │   │   │   │   │   │   └── zni.ppe2.ts
@@ -3774,11 +3775,9 @@
 │   │   │   │   │   └── générerDocumentPdf.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── projet
-│   │   │   │   │   ├── getIdentifiantProjetFromLegacyId.adapter.ts
 │   │   │   │   │   ├── getProjetAggregateRoot.adapter.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── récupérerConstitutionGarantiesFinancières.adapter.ts
-│   │   │   │   │   └── récupérerProjetsEligiblesPreuveRecanditureAdapter.adapter.ts
+│   │   │   │   │   └── récupérerConstitutionGarantiesFinancières.adapter.ts
 │   │   │   │   ├── statistiques
 │   │   │   │   │   └── statistiques.adapter.ts
 │   │   │   │   └── utilisateur
@@ -4637,4 +4636,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1126 directories, 3513 files
+1126 directories, 3512 files
