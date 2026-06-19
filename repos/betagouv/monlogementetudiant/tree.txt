@@ -1,11 +1,15 @@
 .
 ├── .circleci
 │   └── config.yml
+├── .claude
+│   └── commands
+│       └── pr-autofixing.md
 ├── .env.dist
 ├── .gitignore
 ├── .mcp.json
 ├── .vscode
 │   └── settings.json
+├── CLAUDE.md
 ├── Procfile
 ├── README.md
 ├── biome.json
@@ -100,6 +104,7 @@
 │   ├── 0034_owner_feedback.sql
 │   ├── 0035_pale_joshua_kane.sql
 │   ├── 0036_target_audience_enum.sql
+│   ├── 0037_add_owner_landing_url.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -138,6 +143,7 @@
 │       ├── 0034_snapshot.json
 │       ├── 0035_snapshot.json
 │       ├── 0036_snapshot.json
+│       ├── 0037_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -396,9 +402,6 @@
 │   │   │   ├── dossier-facile
 │   │   │   │   └── error
 │   │   │   │       └── page.tsx
-│   │   │   ├── landing
-│   │   │   │   ├── landing.module.css
-│   │   │   │   └── page.tsx
 │   │   │   ├── layout.module.css
 │   │   │   ├── layout.tsx
 │   │   │   ├── not-found.tsx
@@ -686,7 +689,8 @@
 │   │   │   └── use-help-simulator-step.tsx
 │   │   ├── home
 │   │   │   ├── alert
-│   │   │   │   └── alert-section.tsx
+│   │   │   │   ├── alert-section.tsx
+│   │   │   │   └── crous-alert-section.tsx
 │   │   │   ├── cities
 │   │   │   │   ├── cities.module.css
 │   │   │   │   └── cities.tsx
@@ -807,6 +811,8 @@
 │   │   │   │   ├── workspace-header.tsx
 │   │   │   │   └── workspace-navigation.tsx
 │   │   │   ├── logo.tsx
+│   │   │   ├── pagination.module.css
+│   │   │   ├── pagination.tsx
 │   │   │   ├── rent-search-modal.tsx
 │   │   │   ├── rich-text-editor.module.css
 │   │   │   ├── rich-text-editor.tsx
@@ -858,6 +864,8 @@
 │   │   ├── use-admin-my-linked-owners.ts
 │   │   ├── use-admin-owner.ts
 │   │   ├── use-admin-owners.ts
+│   │   ├── use-admin-reset-user-password.ts
+│   │   ├── use-admin-set-email-verified.ts
 │   │   ├── use-admin-stats.ts
 │   │   ├── use-admin-unlink-admin-from-owner.ts
 │   │   ├── use-admin-update-owner-logo.ts
@@ -996,6 +1004,7 @@
 │   │   │   ├── activity-logger.ts
 │   │   │   ├── brevo.test.ts
 │   │   │   ├── brevo.ts
+│   │   │   ├── crisp-helpdesk.ts
 │   │   │   ├── dossier-facile
 │   │   │   │   ├── sync.ts
 │   │   │   │   └── webhook.ts
@@ -1070,4 +1079,4 @@
 │       └── widget-resize.ts
 ├── tsconfig.json
 └── vitest.config.ts
-228 directories, 844 files
+229 directories, 852 files
