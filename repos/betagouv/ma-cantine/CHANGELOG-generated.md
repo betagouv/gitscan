@@ -1,31 +1,30 @@
-## Changelog : ma-cantine (30 derniers jours, au 16 juin 2026)
+## Changelog : ma-cantine (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de ma-cantine se concentrent sur l'amélioration de la gestion des achats, notamment avec une refonte du formulaire et l'ajout de nouvelles caractéristiques. Des corrections et des optimisations techniques ont également été apportées, en particulier au niveau de l'API et de la gestion des données, pour une meilleure performance et fiabilité de la plateforme.
+Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration de la gestion des achats, notamment en termes de données d'origine des produits et de duplication des achats. Des améliorations ont également été apportées aux diagnostics, avec un focus sur la détection des anomalies et le calcul des coûts. Enfin, des corrections et des refactorings techniques ont été effectués pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- **Achats :** Ajout d'un sélecteur de cantine lors de la duplication d'un achat, facilitant la réutilisation des informations. [#6823](https://github.com/betagouv/ma-cantine/issues/6823)
-- **Achats :** Refonte du formulaire de création et de modification d'achat avec une division des caractéristiques en quatre sections pour une meilleure organisation. [#6720](https://github.com/betagouv/ma-cantine/issues/6720)
-- **Achats :** Ajout des champs "Caractéristiques" et "Famille de produit" pour une description plus précise des achats. [#6782](https://github.com/betagouv/ma-cantine/issues/6782)
-- **Achats :** Ajout de la possibilité de modifier un achat directement depuis le nouveau formulaire. [#6783](https://github.com/betagouv/ma-cantine/issues/6783)
-- **Achats :** Amélioration de l'autocomplétion dans les champs "Description" et "Fournisseurs" pour une saisie plus rapide et précise. [#6797](https://github.com/betagouv/ma-cantine/issues/6797)
-- **Achats :** Ajout de la caractéristique "EUROPE" pour une meilleure catégorisation des origines des produits. [#6708](https://github.com/betagouv/ma-cantine/issues/6708)
+- **Achats :** Ajout d'un sélecteur de cantine lors de la duplication d'un achat, facilitant ainsi la réutilisation des informations. [#6823](https://github.com/betagouv/ma-cantine/issues/6823)
+- **Achats :** Modification de l'affichage des champs "EGalim" et "Origine" pour une meilleure clarté. [#6826](https://github.com/betagouv/ma-cantine/issues/6826)
+- **Achats :** Mise à jour des valeurs autorisées pour les "Origines" et réorganisation des valeurs de "Définition de locale". [#6803](https://github.com/betagouv/ma-cantine/issues/6803)
+- **Diagnostics :** Amélioration de la détection des diagnostics anormaux en identifiant ceux dont le coût du repas est inférieur à 0.1. [#6795](https://github.com/betagouv/ma-cantine/issues/6795)
+- **Diagnostics :** Amélioration du script de remplissage des champs `invalid_reason_list` et `warning_reason_list` pour les bilans 1TD1Site. [#6820](https://github.com/betagouv/ma-cantine/issues/6820)
 - **Ressources :** Ajout des livrables GT sanitaire et médico-social. [#6733](https://github.com/betagouv/ma-cantine/issues/6733)
-- **Bandeau Démo :** Mise à jour du texte explicatif. [#6717](https://github.com/betagouv/ma-cantine/issues/6717)
 
 ### Évolutions techniques
-- **API :** Amélioration de la gestion des permissions et des accès aux données via l'utilisation de `IsCanteenManagerUrlParam` pour une meilleure sécurité et cohérence. [#6815](https://github.com/betagouv/ma-cantine/issues/6815), [#6812](https://github.com/betagouv/ma-cantine/issues/6812), [#6814](https://github.com/betagouv/ma-cantine/issues/6814)
-- **API :** Correction pour renvoyer un code 404 lorsque l'objet demandé n'appartient pas à la cantine concernée. [#6816](https://github.com/betagouv/ma-cantine/issues/6816)
-- **Achats :** Refactorisation des règles métiers pour garantir la cohérence des données (dates futures, incompatibilité FRANCE/EUROPE). [#6805](https://github.com/betagouv/ma-cantine/issues/6805), [#6804](https://github.com/betagouv/ma-cantine/issues/6804)
-- **Diagnostics :** Amélioration du script de remplissage des champs `invalid_reason_list` et `warning_reason_list`. [#6820](https://github.com/betagouv/ma-cantine/issues/6820)
-- **Diagnostics :** Ajout du champ `cout_repas` pour stocker le coût du repas et éviter les recalculs. [#6753](https://github.com/betagouv/ma-cantine/issues/6753)
-- **Diagnostics :** Ajout du champ `warning_reason_list` pour stocker des informations non bloquantes sur les diagnostics. [#6732](https://github.com/betagouv/ma-cantine/issues/6732)
-- **1TD1Site :** Ajout du champ `groupe_snapshot` pour les TD générées. [#6799](https://github.com/betagouv/ma-cantine/issues/6799)
-- **Données Géo :** Suppression du code lié à l'API Adresse, qui n'est plus utilisée. [#6787](https://github.com/betagouv/ma-cantine/issues/6787)
-- **ETL :** Restauration de la fréquence d'export des données des cantines (Open Data & Metabase) à quotidien. [#6725](https://github.com/betagouv/ma-cantine/issues/6725)
-- **ETL :** Désactivation temporaire des exports de télédéclaration vers Metabase. [#6723](https://github.com/betagouv/ma-cantine/issues/6723)
+- **API :** Refactorisation de l'API pour renvoyer un code 404 lorsque l'objet demandé n'appartient pas à la cantine concernée (Diagnostics, Waste Measurements, Teledeclaration). [#6816](https://github.com/betagouv/ma-cantine/issues/6816), [#6815](https://github.com/betagouv/ma-cantine/issues/6815), [#6814](https://github.com/betagouv/ma-cantine/issues/6814), [#6812](https://github.com/betagouv/ma-cantine/issues/6812)
+- **API :** Utilisation de `IsCanteenManagerUrlParam` au lieu de `IsLinkedCanteenManager` pour une meilleure gestion des permissions. [#6815](https://github.com/betagouv/ma-cantine/issues/6815), [#6812](https://github.com/betagouv/ma-cantine/issues/6812)
+- **Achats :** Amélioration des règles métiers pour s'assurer que la date d'achat n'est pas future et que les origines "EUROPE" et "FRANCE" ne cohabitent pas. [#6805](https://github.com/betagouv/ma-cantine/issues/6805), [#6804](https://github.com/betagouv/ma-cantine/issues/6804)
+- **1TD1Site :** Ajout du champ `groupe_snapshot` aux diagnostics et affichage dans l'admin. [#6799](https://github.com/betagouv/ma-cantine/issues/6799), [#6818](https://github.com/betagouv/ma-cantine/issues/6818)
+- **Diagnostics :** Calcul des champs agrégés et des pourcentages à chaque sauvegarde, au lieu de les calculer uniquement lors de la télédeclaration. [#6752](https://github.com/betagouv/ma-cantine/issues/6752)
+- **Diagnostics :** Ajout d'un nouveau champ `cout_repas` pour stocker le coût du repas et éviter les recalculs. [#6753](https://github.com/betagouv/ma-cantine/issues/6753)
+- **Diagnostics :** Ajout d'un nouveau champ `warning_reason_list` pour stocker des informations non bloquantes. [#6732](https://github.com/betagouv/ma-cantine/issues/6732)
+- **Données Géo :** Suppression du code lié à l'API Adresse, car elle n'est plus utilisée. [#6787](https://github.com/betagouv/ma-cantine/issues/6787)
+- **Cantines :** Suppression de l'appel à l'API Adresse lors de la création d'une cantine, corrigeant un problème dans le formulaire de création. [#6766](https://github.com/betagouv/ma-cantine/issues/6766)
+- **Tests :** Correction de plusieurs tests suite à des modifications récentes. [#6781](https://github.com/betagouv/ma-cantine/issues/6781), [#6801](https://github.com/betagouv/ma-cantine/issues/6801)
 
 ### Autres changements
 - **Documentation :** Ajout d'une page expliquant les commandes liées à une campagne de télédéclaration. [#6738](https://github.com/betagouv/ma-cantine/issues/6738)
-- **Tests :** Correction de plusieurs tests suite aux modifications récentes. [#6801](https://github.com/betagouv/ma-cantine/issues/6801), [#6781](https://github.com/betagouv/ma-cantine/issues/6781)
-- **Release :** Publication des versions 2026.37.1, 2026.37.0, 2026.36.1, 2026.36.0, 2026.35.0, 2026.34.0, 2026.33.4 et 2026.33.3. [#6802](https://github.com/betagouv/ma-cantine/issues/6802), [#6785](https://github.com/betagouv/ma-cantine/issues/6785), [#6762](https://github.com/betagouv/ma-cantine/issues/6762), [#6749](https://github.com/betagouv/ma-cantine/issues/6749), [#6744](https://github.com/betagouv/ma-cantine/issues/6744), [#6739](https://github.com/betagouv/ma-cantine/issues/6739), [#6721](https://github.com/betagouv/ma-cantine/issues/6721)
+- **Achats :** Renommage des champs du modèle en français pour une meilleure lisibilité. [#6765](https://github.com/betagouv/ma-cantine/issues/6765)
+- **Achats :** Diverses corrections et améliorations sur le formulaire suite à des tests internes. [#6740](https://github.com/betagouv/ma-cantine/issues/6740)
+- **Achats :** Remplacement de la vidéo explicative par un lien vers la documentation. [#6742](https://github.com/betagouv/ma-cantine/issues/6742)
