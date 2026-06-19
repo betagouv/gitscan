@@ -113,6 +113,8 @@
 │   │   │   │   │   └── back_signalement_form.js
 │   │   │   │   ├── back_signalement_list_export
 │   │   │   │   │   └── back_signalement_list_export.js
+│   │   │   │   ├── back_signalement_same_address
+│   │   │   │   │   └── back_signalement_same_address.js
 │   │   │   │   ├── back_signalement_view
 │   │   │   │   │   ├── back_view_signalement.js
 │   │   │   │   │   ├── form_acceptation_refus.js
@@ -149,6 +151,7 @@
 │   │   │       ├── component
 │   │   │       │   ├── component_autocomplete_bailleur.js
 │   │   │       │   ├── component_dialog_side_panel.js
+│   │   │       │   ├── component_file_upload.js
 │   │   │       │   ├── component_json_response_handler.js
 │   │   │       │   ├── component_phone_number_row.js
 │   │   │       │   ├── component_search_address.js
@@ -408,7 +411,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (102 files)
+│   └── Version*.php  (109 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -538,7 +541,7 @@
 ├── scripts
 │   ├── clean.sh
 │   ├── postdeploy.sh
-│   ├── retry-failed-interconnection.sh
+│   ├── retry-and-clean-interconnections.sh
 │   ├── sync-db.sh
 │   ├── sync-esabora-sish.sh
 │   └── upload-s3.sh
@@ -552,6 +555,7 @@
 │   │   │   ├── ClearEntitiesCommand.php
 │   │   │   ├── ClearStorageOriginalFileCommand.php
 │   │   │   ├── ClearStorageTmpFolderCommand.php
+│   │   │   ├── DesynchronizeEsaboraSISHCommand.php
 │   │   │   ├── Handler
 │   │   │   │   └── ClearEntitiesHandler.php
 │   │   │   ├── MonitorMessengerQueuesCommand.php
@@ -583,6 +587,7 @@
 │   │   │   ├── .gitignore
 │   │   │   └── ForceEsaboraDossierClotureCommand.php
 │   │   ├── UpdateCommunesCommand.php
+│   │   ├── UpdateMergedCommunesCommand.php
 │   │   ├── UpdateSignalementDocumentFieldsCommand.php
 │   │   └── UpdateSignalementGeolocalisationCommand.php
 │   ├── Controller
@@ -638,6 +643,7 @@
 │   │   │   ├── SignalementFileGenerateZipController.php
 │   │   │   ├── SignalementInjonctionController.php
 │   │   │   ├── SignalementListController.php
+│   │   │   ├── SignalementSameAddressController.php
 │   │   │   ├── SignalementVisitesController.php
 │   │   │   ├── SitemapController.php
 │   │   │   ├── SuiviSummariesController.php
@@ -672,7 +678,9 @@
 │   │       └── CronReportingController.php
 │   ├── DataFixtures
 │   │   ├── Files
+│   │   │   ├── Address.yml
 │   │   │   ├── Affectation.yml
+│   │   │   ├── Arrete.yml
 │   │   │   ├── AutoAffectationRule.yml
 │   │   │   ├── Bailleur.yml
 │   │   │   ├── ClubEvent.yml
@@ -720,7 +728,9 @@
 │   │   │   ├── sample.heic
 │   │   │   └── sample.png
 │   │   └── Loader
+│   │       ├── LoadAddressData.php
 │   │       ├── LoadAffectationData.php
+│   │       ├── LoadArreteData.php
 │   │       ├── LoadAutoAffectationRuleData.php
 │   │       ├── LoadBailleurData.php
 │   │       ├── LoadClubEventData.php
@@ -823,8 +833,10 @@
 │   │   └── SuiviCategory.php
 │   ├── Entity
 │   │   ├── .gitignore
+│   │   ├── Address.php
 │   │   ├── Affectation.php
 │   │   ├── ApiUserToken.php
+│   │   ├── Arrete.php
 │   │   ├── AutoAffectationRule.php
 │   │   ├── Bailleur.php
 │   │   ├── BailleurTerritory.php
@@ -882,6 +894,7 @@
 │   │   │   ├── SignalementStatus.php
 │   │   │   ├── SuiviCategory.php
 │   │   │   ├── TiersInvitationStatus.php
+│   │   │   ├── TypeArrete.php
 │   │   │   ├── UserStatus.php
 │   │   │   ├── VisiteStatus.php
 │   │   │   └── ZoneType.php
@@ -938,6 +951,7 @@
 │   │   │   └── DoctrineListenerRemoverTrait.php
 │   │   ├── ConsoleCommandListener.php
 │   │   ├── ContentSecurityPolicyListener.php
+│   │   ├── DashboardKpiCacheInvalidationListener.php
 │   │   ├── EntityHistoryListener.php
 │   │   ├── EntitySanitizerListener.php
 │   │   ├── ExceptionListener.php
@@ -1023,6 +1037,7 @@
 │   │   ├── AddSuiviType.php
 │   │   ├── AddTagType.php
 │   │   ├── AgentSelectionType.php
+│   │   ├── AutoAffectationRuleImportType.php
 │   │   ├── AutoAffectationRuleType.php
 │   │   ├── BailleurClotureProcedureType.php
 │   │   ├── BailleurType.php
@@ -1030,6 +1045,8 @@
 │   │   ├── ClubEventType.php
 │   │   ├── CommuneType.php
 │   │   ├── CoordonneesAgenceType.php
+│   │   ├── DataTransformer
+│   │   │   └── PolygonToWktTransformer.php
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── EditTagType.php
 │   │   ├── MessageBailleurType.php
@@ -1161,8 +1178,10 @@
 │   │       ├── SuiviSummariesMessageHandler.php
 │   │       └── UserExportMessageHandler.php
 │   ├── Repository
+│   │   ├── AddressRepository.php
 │   │   ├── AffectationRepository.php
 │   │   ├── ApiUserTokenRepository.php
+│   │   ├── ArreteRepository.php
 │   │   ├── AutoAffectationRuleRepository.php
 │   │   ├── BailleurRepository.php
 │   │   ├── BailleurTerritoryRepository.php
@@ -1214,18 +1233,21 @@
 │   │   │   ├── SignalementList
 │   │   │   │   ├── ExportIterableQuery.php
 │   │   │   │   ├── MapGeoDataQuery.php
-│   │   │   │   └── QueryBuilderFactory.php
-│   │   │   └── Statistics
-│   │   │       ├── CountStatisticsQuery.php
-│   │   │       ├── CriticitePercentStatisticsQuery.php
-│   │   │       ├── CriticiteStatisticsQuery.php
-│   │   │       ├── FilteredStatisticsQuery.php
-│   │   │       ├── GlobalStatisticsQuery.php
-│   │   │       ├── MonthStatisticsQuery.php
-│   │   │       ├── MotifClotureStatisticsQuery.php
-│   │   │       ├── SituationStatisticsQuery.php
-│   │   │       ├── StatusStatisticsQuery.php
-│   │   │       └── VisiteStatisticsQuery.php
+│   │   │   │   ├── QueryBuilderFactory.php
+│   │   │   │   └── SameAddressQuery.php
+│   │   │   ├── Statistics
+│   │   │   │   ├── CountStatisticsQuery.php
+│   │   │   │   ├── CriticitePercentStatisticsQuery.php
+│   │   │   │   ├── CriticiteStatisticsQuery.php
+│   │   │   │   ├── FilteredStatisticsQuery.php
+│   │   │   │   ├── GlobalStatisticsQuery.php
+│   │   │   │   ├── MonthStatisticsQuery.php
+│   │   │   │   ├── MotifClotureStatisticsQuery.php
+│   │   │   │   ├── SituationStatisticsQuery.php
+│   │   │   │   ├── StatusStatisticsQuery.php
+│   │   │   │   └── VisiteStatisticsQuery.php
+│   │   │   └── Zone
+│   │   │       └── ZonePaginatorQuery.php
 │   │   ├── ServiceSecoursRouteRepository.php
 │   │   ├── SignalementDraftRepository.php
 │   │   ├── SignalementQualificationRepository.php
@@ -1297,13 +1319,16 @@
 │   │   ├── ClubEventService.php
 │   │   ├── DashboardTabPanel
 │   │   │   ├── Kpi
+│   │   │   │   ├── CachedTabCountKpiCalculator.php
 │   │   │   │   ├── CountAfermer.php
 │   │   │   │   ├── CountDossiersAVerifier.php
 │   │   │   │   ├── CountDossiersMessagesUsagers.php
 │   │   │   │   ├── CountNouveauxDossiers.php
 │   │   │   │   ├── TabCountKpi.php
 │   │   │   │   ├── TabCountKpiBuilder.php
-│   │   │   │   └── TabCountKpiCacheHelper.php
+│   │   │   │   ├── TabCountKpiCacheHelper.php
+│   │   │   │   ├── TabCountKpiCalculator.php
+│   │   │   │   └── TabCountKpiCalculatorInterface.php
 │   │   │   ├── TabBody.php
 │   │   │   ├── TabBodyLoader
 │   │   │   │   ├── AbstractTabBodyLoader.php
@@ -1350,6 +1375,9 @@
 │   │   │   ├── UserAvatar.php
 │   │   │   ├── ZipHelper.php
 │   │   │   └── ZipStreamBuilder.php
+│   │   ├── Geometry
+│   │   │   ├── GeometryCollection.php
+│   │   │   └── GeometryFactory.php
 │   │   ├── Gouv
 │   │   │   ├── Ban
 │   │   │   │   ├── AddressService.php
@@ -1388,6 +1416,9 @@
 │   │   │   └── HistoryEntryBuffer.php
 │   │   ├── HtmlTargetContentsService.php
 │   │   ├── Import
+│   │   │   ├── AutoAffectationRule
+│   │   │   │   ├── AutoAffectationRuleHeader.php
+│   │   │   │   └── AutoAffectationRuleLoader.php
 │   │   │   ├── Bailleur
 │   │   │   │   ├── BailleurHeader.php
 │   │   │   │   └── BailleurLoader.php
@@ -1820,6 +1851,7 @@
 │   │   │   ├── _modal_autoaffectationrule_delete.html.twig
 │   │   │   ├── _title-and-table-list-results.html.twig
 │   │   │   ├── edit.html.twig
+│   │   │   ├── import.html.twig
 │   │   │   └── index.html.twig
 │   │   ├── auto-assigner-simulator
 │   │   │   ├── index.html.twig
@@ -1837,6 +1869,7 @@
 │   │   │   ├── archive_2022-08-12.html.twig
 │   │   │   ├── archive_2023-01-20.html.twig
 │   │   │   ├── archive_2024-07-24.html.twig
+│   │   │   ├── archive_2025-09-02.html.twig
 │   │   │   ├── archive_version.html.twig
 │   │   │   ├── archives.html.twig
 │   │   │   └── cgu_bo.html.twig
@@ -2031,6 +2064,9 @@
 │   │   │   ├── courrier-bailleur.html.twig
 │   │   │   ├── engagement-travaux-bailleur.html.twig
 │   │   │   └── index.html.twig
+│   │   ├── signalement-same-address
+│   │   │   ├── export-same-address.html.twig
+│   │   │   └── index.html.twig
 │   │   ├── signalement_archived
 │   │   │   └── index.html.twig
 │   │   ├── signalement_create
@@ -2170,7 +2206,6 @@
 │   │   │   ├── _suivi_signalement_inviter_tiers.html.twig
 │   │   │   ├── _suivi_signalement_prevenir_bailleur.html.twig
 │   │   │   └── _suivi_signalement_suivi.html.twig
-│   │   ├── cgu_agents.html.twig
 │   │   ├── dossier_bailleur
 │   │   │   ├── dossier_bailleur.html.twig
 │   │   │   └── dossier_bailleur_cloture.html.twig
@@ -2271,6 +2306,7 @@
 │   │   │   ├── Back
 │   │   │   │   ├── AdminTerritoryFilesControllerTest.php
 │   │   │   │   ├── AffectationControllerTest.php
+│   │   │   │   ├── AutoAffectationRuleControllerTest.php
 │   │   │   │   ├── AutoAssignerSimulatorControllerTest.php
 │   │   │   │   ├── BackArchivedPartnerControllerTest.php
 │   │   │   │   ├── BackBailleurControllerTest.php
@@ -2294,6 +2330,7 @@
 │   │   │   │   ├── SignalementFileGenerateZipControllerTest.php
 │   │   │   │   ├── SignalementInjonctionControllerTest.php
 │   │   │   │   ├── SignalementListControllerTest.php
+│   │   │   │   ├── SignalementSameAddressControllerTest.php
 │   │   │   │   ├── SignalementVisitesControllerTest.php
 │   │   │   │   ├── TerritoryFilesControllerTest.php
 │   │   │   │   ├── UserApiPermissionControllerTest.php
@@ -2404,6 +2441,8 @@
 │   │   │   │   ├── AffectationEsaboraPolicyTest.php
 │   │   │   │   └── CiviliteMapperTest.php
 │   │   │   ├── Import
+│   │   │   │   ├── AutoAffectationRule
+│   │   │   │   │   └── AutoAffectationRuleLoaderTest.php
 │   │   │   │   ├── Bailleur
 │   │   │   │   │   └── BailleurLoaderTest.php
 │   │   │   │   ├── CsvParserTest.php
@@ -2485,6 +2524,7 @@
 │   │   │   ├── ImportSignalementCommandTest.php
 │   │   │   ├── PushEsaboraDossierCommandTest.php
 │   │   │   ├── PushIdossDossierCommandTest.php
+│   │   │   ├── UpdateMergedCommunesCommandTest.php
 │   │   │   ├── UpdateSignalementDocumentFieldsCommandTest.php
 │   │   │   └── UpdateSignalementGeolocalisationCommandTest.php
 │   │   ├── Dto
@@ -2574,9 +2614,12 @@
 │   │   │   ├── ClubEventServiceTest.php
 │   │   │   ├── DashboardTabPanel
 │   │   │   │   ├── Kpi
+│   │   │   │   │   ├── CachedTabCountKpiCalculatorTest.php
 │   │   │   │   │   ├── CountAfermerTest.php
 │   │   │   │   │   ├── CountDossiersMessagesUsagersTest.php
-│   │   │   │   │   └── TabCountKpiBuilderTest.php
+│   │   │   │   │   ├── TabCountKpiBuilderTest.php
+│   │   │   │   │   ├── TabCountKpiCacheHelperTest.php
+│   │   │   │   │   └── TabCountKpiCalculatorTest.php
 │   │   │   │   ├── TabBodyLoader
 │   │   │   │   │   ├── DossierDemandesFermetureUsagerTabBodyLoaderTest.php
 │   │   │   │   │   ├── DossiersActiviteRecenteTabBodyLoaderTest.php
@@ -2622,6 +2665,8 @@
 │   │   │   │   ├── UserAvatarTest.php
 │   │   │   │   ├── ZipHelperTest.php
 │   │   │   │   └── ZipStreamBuilderTest.php
+│   │   │   ├── Geometry
+│   │   │   │   └── GeometryFactoryTest.php
 │   │   │   ├── Gouv
 │   │   │   │   ├── Ban
 │   │   │   │   │   └── AddressServiceTest.php
@@ -2846,4 +2891,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-477 directories, 2489 files
+485 directories, 2533 files
