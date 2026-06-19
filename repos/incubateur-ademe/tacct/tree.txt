@@ -1,4 +1,7 @@
 .
+├── .claude
+│   └── settings.local.json
+├── .claudeignore
 ├── .editorconfig
 ├── .eslintrc.js
 ├── .github
@@ -15,6 +18,7 @@
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
+├── axe-linter.yml
 ├── content
 │   ├── .editorconfig
 │   ├── accessibilite.mdx
@@ -42,6 +46,8 @@
 │   ├── indicateurs
 │   │   └── intensite_secheresses.md
 │   └── reference
+│       ├── audit-rgaa-2026-04-28.md
+│       ├── methodo-rgga.txt
 │       └── reference.md
 ├── docker-compose.yml
 ├── e2e
@@ -270,14 +276,16 @@
 │   │   │   │   │   │   ├── constantes.ts
 │   │   │   │   │   │   └── fonctions.ts
 │   │   │   │   │   ├── cursorVisualization.tsx
-│   │   │   │   │   ├── indicesDetail.tsx
 │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   └── patch4c.module.scss
 │   │   │   │   ├── recherche-territoire
+│   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── recherche-territoire-patch4
+│   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── thematiques
+│   │   │   │       ├── ThematiquesLayoutClient.tsx
 │   │   │   │       ├── components
 │   │   │   │       │   ├── panneauLateral.tsx
 │   │   │   │       │   └── roue.tsx
@@ -286,10 +294,12 @@
 │   │   │   │       │   ├── colors.ts
 │   │   │   │       │   ├── textesSVG.ts
 │   │   │   │       │   └── textesThematiques.tsx
+│   │   │   │       ├── layout.tsx
 │   │   │   │       ├── page.tsx
 │   │   │   │       └── roue.module.scss
 │   │   │   ├── CollectiviteSearch.tsx
 │   │   │   ├── CookieConsentButton.tsx
+│   │   │   ├── MaintenanceNotice.tsx
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
 │   │   │   ├── budget
@@ -309,6 +319,8 @@
 │   │   │   │   ├── moncompte.module.scss
 │   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
+│   │   │   ├── plan-du-site
+│   │   │   │   └── page.tsx
 │   │   │   ├── politique-de-confidentialite
 │   │   │   │   └── page.tsx
 │   │   │   ├── politique-des-cookies
@@ -409,7 +421,6 @@
 │   │   │   │   │   ├── constantes.ts
 │   │   │   │   │   └── fonctions.ts
 │   │   │   │   ├── cursorVisualization.tsx
-│   │   │   │   ├── indicesDetail.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── patch4c.module.scss
 │   │   │   ├── recherche-territoire
@@ -515,6 +526,7 @@
 │   │   │   ├── france_icon_black.png
 │   │   │   ├── grid_icon_grey.svg
 │   │   │   ├── group_people_icon_black.svg
+│   │   │   ├── guadeloupe_icon_black.svg
 │   │   │   ├── guillemet_icon_white.svg
 │   │   │   ├── guyane_icon_black.png
 │   │   │   ├── habitat_icon_black.svg
@@ -545,6 +557,7 @@
 │   │   │   ├── map_search_icon_blue.svg
 │   │   │   ├── markerHand_icon_green.svg
 │   │   │   ├── marker_icon_blue.svg
+│   │   │   ├── martinique_icon_black.svg
 │   │   │   ├── mayotte_icon_black.png
 │   │   │   ├── meeting_icon_green.svg
 │   │   │   ├── menu_book_icon_orange.png
@@ -557,6 +570,8 @@
 │   │   │   ├── mon-compte-icon-green.svg
 │   │   │   ├── monde_icon_black.png
 │   │   │   ├── niveau_marin_icon_black.svg
+│   │   │   ├── nouvelle_caledonie_icon_black.png
+│   │   │   ├── nouvelle_caledonie_icon_black.svg
 │   │   │   ├── partage_icon_black.svg
 │   │   │   ├── people_icon_lightgrey.svg
 │   │   │   ├── precipitation_icon_black.svg
@@ -572,6 +587,10 @@
 │   │   │   ├── route_icon_black.svg
 │   │   │   ├── route_icon_green.svg
 │   │   │   ├── route_icon_white.svg
+│   │   │   ├── saint_barthelemy_icon_black.png
+│   │   │   ├── saint_barthelemy_icon_black.svg
+│   │   │   ├── saint_martin_icon_black.png
+│   │   │   ├── saint_martin_icon_black.svg
 │   │   │   ├── secheresse_icon_black.svg
 │   │   │   ├── share_icon_white.svg
 │   │   │   ├── sun_icon_green.svg
@@ -581,6 +600,8 @@
 │   │   │   ├── tacct_icon2.svg
 │   │   │   ├── tacct_icon3.svg
 │   │   │   ├── tacct_icon4.svg
+│   │   │   ├── tahiti_icon_black.png
+│   │   │   ├── tahiti_icon_black.svg
 │   │   │   ├── team_meeting_icon_orange.png
 │   │   │   ├── themes
 │   │   │   │   ├── agriculture_icon_teal.svg
@@ -589,6 +610,7 @@
 │   │   │   │   ├── biodiversite_icon_teal.svg
 │   │   │   │   ├── bois_icon_teal.svg
 │   │   │   │   ├── eclair_icon_black.svg
+│   │   │   │   ├── energie_icon_black.svg
 │   │   │   │   ├── espacesNaturels_icon_teal.svg
 │   │   │   │   ├── flocon_icon_black.svg
 │   │   │   │   ├── foret_icon_teal.svg
@@ -642,6 +664,8 @@
 │   │   │   ├── data_not_found_prelevement.png
 │   │   │   ├── data_not_found_prelevement.svg
 │   │   │   ├── diagnostiquer_impacts.png
+│   │   │   ├── donnees_indisponibles_outremer.png
+│   │   │   ├── donnees_zero.png
 │   │   │   ├── erosion.webp
 │   │   │   ├── feux.webp
 │   │   │   ├── filtres_non_trouves.png
@@ -717,6 +741,7 @@
 │   │   ├── Cartes.module.scss
 │   │   ├── Cartes.tsx
 │   │   ├── DeclarationAccessibilite.tsx
+│   │   ├── DonneesIndisponiblesOutreMer.tsx
 │   │   ├── MultiSelect.tsx
 │   │   ├── Slider.tsx
 │   │   ├── SliderAnnees.tsx
@@ -797,6 +822,7 @@
 │   │   │   ├── ScrollToTop.tsx
 │   │   │   └── scrollToSource.tsx
 │   │   ├── maps
+│   │   │   ├── AccessibleMapWrapper.tsx
 │   │   │   ├── components
 │   │   │   │   ├── boundsFromCollection.ts
 │   │   │   │   ├── ceremaLCZFallback.tsx
@@ -805,6 +831,7 @@
 │   │   │   │   ├── datavizLegends.ts
 │   │   │   │   ├── legend.css
 │   │   │   │   ├── legendBlocks.tsx
+│   │   │   │   ├── legendCanopee.tsx
 │   │   │   │   ├── legendCatnat.tsx
 │   │   │   │   ├── legendComp.tsx
 │   │   │   │   ├── legendErosionCotiere.tsx
@@ -865,6 +892,7 @@
 │   │       ├── OptimalParagraph.tsx
 │   │       ├── ReadMoreFade.tsx
 │   │       ├── TabTooltip.tsx
+│   │       ├── Tooltips.module.scss
 │   │       ├── Tooltips.tsx
 │   │       ├── ZoomOnClick.tsx
 │   │       └── utils.module.scss
@@ -915,6 +943,7 @@
 │   │       │   ├── prismaNamespace.ts
 │   │       │   └── prismaNamespaceBrowser.ts
 │   │       ├── models
+│   │       │   ├── aot_40_new.ts
 │   │       │   ├── arbovirose.ts
 │   │       │   ├── databases_v2_agriculture.ts
 │   │       │   ├── databases_v2_agriculture_bio.ts
@@ -1011,7 +1040,6 @@
 │   │   │   ├── postgis
 │   │   │   │   ├── cartographie.ts
 │   │   │   │   └── etatCoursDeau.ts
-│   │   │   ├── redis.ts
 │   │   │   ├── searchBar.ts
 │   │   │   └── territoiresQueries.ts
 │   │   ├── react-leaflet.ts
@@ -1075,4 +1103,4 @@
 ├── tailwind.config.js
 ├── test2.json
 └── tsconfig.json
-140 directories, 965 files
+142 directories, 991 files
