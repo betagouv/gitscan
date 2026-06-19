@@ -28,7 +28,8 @@
 │   └── update_openapi_schema
 ├── compose.yaml
 ├── docs
-│   └── S3.md
+│   ├── S3.md
+│   └── authentication.md
 ├── env.d
 │   └── development
 │       ├── backend.defaults
@@ -78,6 +79,7 @@
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_transfer_notifications_completed_at.py
     │   │   │   ├── 0003_transfer_auto_archive_on_download_and_more.py
+    │   │   │   ├── 0004_alter_user_sub.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -110,6 +112,7 @@
     │   │   │   ├── test_s3_cleanup_structural.py
     │   │   │   ├── test_s3_cleanup_tasks.py
     │   │   │   ├── test_s3_cleanup_transfer.py
+    │   │   │   ├── test_s3_content_disposition.py
     │   │   │   └── test_s3_live_smoke.py
     │   │   └── urls.py
     │   ├── entrypoint
@@ -124,125 +127,140 @@
     │   │   └── wsgi.py
     │   ├── uv.lock
     │   └── worker.py
-    └── frontend
-        ├── .dockerignore
-        ├── Dockerfile
-        ├── README.md
-        ├── caddy
-        │   └── Caddyfile
-        ├── cunningham.ts
-        ├── eslint.config.mjs
-        ├── i18next.config.ts
-        ├── instrumentation-client.ts
-        ├── next.config.ts
-        ├── package-lock.json
-        ├── package.json
-        ├── public
-        │   ├── images
-        │   │   ├── lasuite-territoriale.svg
-        │   │   ├── republique-francaise.svg
-        │   │   ├── transferts-favicon.svg
-        │   │   ├── transferts-icon.svg
-        │   │   ├── transferts-logo.svg
-        │   │   └── transferts-wordmark.svg
-        │   ├── locales
-        │   │   └── common
-        │   │       ├── en-US.json
-        │   │       └── fr-FR.json
-        │   └── manifest.json
-        ├── src
-        │   ├── features
-        │   │   ├── api
-        │   │   │   ├── client.ts
-        │   │   │   └── types.ts
-        │   │   ├── auth
-        │   │   │   └── index.tsx
-        │   │   ├── config
-        │   │   │   ├── constants.ts
-        │   │   │   └── index.ts
-        │   │   ├── i18n
-        │   │   │   ├── conf.ts
-        │   │   │   ├── initI18n.ts
-        │   │   │   └── utils.ts
-        │   │   ├── layouts
-        │   │   │   └── components
-        │   │   │       ├── main
-        │   │   │       │   ├── MainLayout.tsx
-        │   │   │       │   ├── _index.scss
-        │   │   │       │   ├── hooks
-        │   │   │       │   │   └── useControllableState.ts
-        │   │   │       │   └── language-picker.tsx
-        │   │   │       └── shell
-        │   │   │           ├── ShellLayout.tsx
-        │   │   │           ├── Sidebar.tsx
-        │   │   │           ├── TopBar.tsx
-        │   │   │           ├── _index.scss
-        │   │   │           └── index.ts
-        │   │   ├── providers
-        │   │   │   └── config.tsx
-        │   │   ├── transfers
-        │   │   │   ├── api
-        │   │   │   │   ├── useDeactivateTransfer.ts
-        │   │   │   │   ├── useDownload.ts
-        │   │   │   │   ├── useResendTransfer.ts
-        │   │   │   │   ├── useTransfer.ts
-        │   │   │   │   ├── useTransferDraft.ts
-        │   │   │   │   ├── useTransferEvents.ts
-        │   │   │   │   └── useTransfers.ts
-        │   │   │   ├── components
-        │   │   │   │   ├── DownloadView.tsx
-        │   │   │   │   ├── DriveAttachButton.tsx
-        │   │   │   │   ├── FileDropZone.tsx
-        │   │   │   │   ├── FileItem.tsx
-        │   │   │   │   ├── HomeLanding.tsx
-        │   │   │   │   ├── RecipientInput.tsx
-        │   │   │   │   ├── TransferDetail.tsx
-        │   │   │   │   ├── TransferFailed.tsx
-        │   │   │   │   ├── TransferForm.tsx
-        │   │   │   │   ├── TransferStatusBadge.tsx
-        │   │   │   │   ├── TransferSuccess.tsx
-        │   │   │   │   └── _transfers.scss
-        │   │   │   └── upload
-        │   │   │       ├── MultipartUploader.ts
-        │   │   │       └── uploadPart.ts
-        │   │   ├── ui
-        │   │   │   └── components
-        │   │   │       ├── badge
-        │   │   │       │   ├── _index.scss
-        │   │   │       │   └── index.tsx
-        │   │   │       └── toaster
-        │   │   │           ├── _index.scss
-        │   │   │           └── index.tsx
-        │   │   └── utils
-        │   │       ├── errors
-        │   │       │   └── index.ts
-        │   │       ├── string-helper
-        │   │       │   └── index.ts
-        │   │       └── use-debounced-value
-        │   │           └── index.ts
-        │   ├── pages
-        │   │   ├── _app.tsx
-        │   │   ├── _document.tsx
-        │   │   ├── _index.scss
-        │   │   ├── confirm
-        │   │   │   └── [id].tsx
-        │   │   ├── confirm-failed
-        │   │   │   └── [id].tsx
-        │   │   ├── index.tsx
-        │   │   ├── t
-        │   │   │   └── [token].tsx
-        │   │   └── transfers
-        │   │       └── [id].tsx
-        │   └── styles
-        │       ├── cunningham-tokens.css
-        │       ├── cunningham-tokens.scss
-        │       ├── cunningham-tokens.ts
-        │       ├── globals.scss
-        │       ├── main.scss
-        │       ├── reset.scss
-        │       └── utils
-        │           ├── _index.scss
-        │           └── breakpoints.scss
-        ├── tsconfig.json
-        └── vitest.config.ts
-63 directories, 184 files
+    ├── frontend
+    │   ├── .dockerignore
+    │   ├── .gitignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── caddy
+    │   │   └── Caddyfile
+    │   ├── cunningham.ts
+    │   ├── eslint.config.mjs
+    │   ├── i18next.config.ts
+    │   ├── index.html
+    │   ├── instrumentation-client.ts
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── public
+    │   │   ├── images
+    │   │   │   ├── lasuite-territoriale.svg
+    │   │   │   ├── republique-francaise.svg
+    │   │   │   ├── transferts-favicon.svg
+    │   │   │   ├── transferts-icon.svg
+    │   │   │   ├── transferts-logo.svg
+    │   │   │   └── transferts-wordmark.svg
+    │   │   ├── locales
+    │   │   │   └── common
+    │   │   │       ├── en-US.json
+    │   │   │       └── fr-FR.json
+    │   │   └── manifest.json
+    │   ├── scripts
+    │   │   └── print-bundle-stats.mjs
+    │   ├── src
+    │   │   ├── features
+    │   │   │   ├── api
+    │   │   │   │   ├── client.ts
+    │   │   │   │   └── types.ts
+    │   │   │   ├── auth
+    │   │   │   │   └── index.tsx
+    │   │   │   ├── config
+    │   │   │   │   ├── constants.ts
+    │   │   │   │   └── index.ts
+    │   │   │   ├── i18n
+    │   │   │   │   ├── conf.ts
+    │   │   │   │   ├── initI18n.ts
+    │   │   │   │   └── utils.ts
+    │   │   │   ├── layouts
+    │   │   │   │   └── components
+    │   │   │   │       ├── main
+    │   │   │   │       │   ├── MainLayout.tsx
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   ├── hooks
+    │   │   │   │       │   │   └── useControllableState.ts
+    │   │   │   │       │   └── language-picker.tsx
+    │   │   │   │       └── shell
+    │   │   │   │           ├── ShellLayout.tsx
+    │   │   │   │           ├── Sidebar.tsx
+    │   │   │   │           ├── TopBar.tsx
+    │   │   │   │           ├── _index.scss
+    │   │   │   │           └── index.ts
+    │   │   │   ├── providers
+    │   │   │   │   └── config.tsx
+    │   │   │   ├── transfers
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── useDeactivateTransfer.ts
+    │   │   │   │   │   ├── useDownload.ts
+    │   │   │   │   │   ├── useResendTransfer.ts
+    │   │   │   │   │   ├── useTransfer.ts
+    │   │   │   │   │   ├── useTransferDraft.ts
+    │   │   │   │   │   ├── useTransferEvents.ts
+    │   │   │   │   │   └── useTransfers.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── DownloadView.tsx
+    │   │   │   │   │   ├── DriveAttachButton.tsx
+    │   │   │   │   │   ├── FileDropZone.tsx
+    │   │   │   │   │   ├── FileItem.tsx
+    │   │   │   │   │   ├── HomeLanding.tsx
+    │   │   │   │   │   ├── RecipientInput.tsx
+    │   │   │   │   │   ├── TransferDetail.tsx
+    │   │   │   │   │   ├── TransferFailed.tsx
+    │   │   │   │   │   ├── TransferForm.tsx
+    │   │   │   │   │   ├── TransferStatusBadge.tsx
+    │   │   │   │   │   ├── TransferSuccess.tsx
+    │   │   │   │   │   └── _transfers.scss
+    │   │   │   │   └── upload
+    │   │   │   │       ├── MultipartUploader.ts
+    │   │   │   │       └── uploadPart.ts
+    │   │   │   ├── ui
+    │   │   │   │   └── components
+    │   │   │   │       ├── badge
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── relative-date
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       └── toaster
+    │   │   │   │           ├── _index.scss
+    │   │   │   │           └── index.tsx
+    │   │   │   └── utils
+    │   │   │       ├── date
+    │   │   │       │   ├── index.test.ts
+    │   │   │       │   └── index.ts
+    │   │   │       ├── errors
+    │   │   │       │   └── index.ts
+    │   │   │       ├── string-helper
+    │   │   │       │   └── index.ts
+    │   │   │       └── use-debounced-value
+    │   │   │           └── index.ts
+    │   │   ├── main.tsx
+    │   │   ├── routes
+    │   │   │   ├── __root.tsx
+    │   │   │   ├── _app
+    │   │   │   │   ├── confirm
+    │   │   │   │   │   └── $id.tsx
+    │   │   │   │   ├── confirm-failed
+    │   │   │   │   │   └── $id.tsx
+    │   │   │   │   ├── index.tsx
+    │   │   │   │   └── transfers
+    │   │   │   │       └── $id.tsx
+    │   │   │   ├── _app.tsx
+    │   │   │   └── t
+    │   │   │       └── $token.tsx
+    │   │   └── styles
+    │   │       ├── cunningham-tokens.css
+    │   │       ├── cunningham-tokens.scss
+    │   │       ├── cunningham-tokens.ts
+    │   │       ├── globals.scss
+    │   │       ├── main.scss
+    │   │       ├── reset.scss
+    │   │       ├── utils
+    │   │       │   ├── _index.scss
+    │   │       │   └── breakpoints.scss
+    │   │       └── views
+    │   │           └── _index.scss
+    │   ├── tsconfig.json
+    │   ├── tsr.config.json
+    │   ├── vite.config.ts
+    │   └── vitest.config.ts
+    └── keycloak
+        └── realm.json
+69 directories, 196 files

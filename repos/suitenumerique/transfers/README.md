@@ -7,8 +7,8 @@ Initially forked from [suitenumerique/messages](https://github.com/suitenumeriqu
 ## Stack
 
 - **Backend**: Django + DRF, PostgreSQL, Celery/Redis, S3 (RustFS in dev)
-- **Frontend**: React (Next.js)
-- **Auth**: ProConnect via OIDC
+- **Frontend**: React (Vite + TanStack Router)
+- **Auth**: ProConnect via OIDC (a local Keycloak stands in for it in dev)
 
 ## Development
 
@@ -17,11 +17,16 @@ make bootstrap
 ```
 
 Services:
-- Frontend: http://localhost:8900
-- API: http://localhost:8901
-- Admin: http://localhost:8901/admin
-- Mail: http://localhost:8904
-- S3 Console: http://localhost:8907
+- Frontend: http://localhost:8980
+- API: http://localhost:8981
+- Admin: http://localhost:8981/admin
+- Mail: http://localhost:8984
+- S3 Console: http://localhost:8987
+- Keycloak (dev OIDC): http://localhost:8902 (`admin` / `admin`)
+
+**Signing in:** open the frontend, click _Sign in_, and use a seeded test user
+(`agent@collectivite.fr` / `transferts`). Dev runs the real OIDC flow against a
+local Keycloak — no ProConnect needed. See [`docs/authentication.md`](docs/authentication.md).
 
 ## Configurable limits
 
@@ -43,7 +48,7 @@ S3 / storage:
 | Variable | Effect |
 |---|---|
 | `AWS_S3_ENDPOINT_URL` | S3 endpoint as seen from the backend |
-| `AWS_S3_DOMAIN_REPLACE` | Hostname rewritten into presigned URLs (dev: backend sees `objectstorage:9000`, browser sees `localhost:8906`) |
+| `AWS_S3_DOMAIN_REPLACE` | Hostname rewritten into presigned URLs (dev: backend sees `objectstorage:9000`, browser sees `localhost:8986`) |
 | `AWS_S3_ACCESS_KEY_ID` / `AWS_S3_SECRET_ACCESS_KEY` | IAM credentials |
 | `AWS_S3_REGION_NAME` | Region (default `us-east-1`) |
 | `AWS_S3_SIGNATURE_VERSION` | `s3v4` by default |
