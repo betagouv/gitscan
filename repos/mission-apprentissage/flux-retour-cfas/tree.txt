@@ -1,7 +1,7 @@
 .
 ├── .bin
 │   ├── commands.sh
-│   ├── mna-tdb
+│   ├── mna
 │   ├── scripts
 │   │   ├── app-build.sh
 │   │   ├── app-release-interactive.sh
@@ -63,7 +63,6 @@
 │   │   ├── sync-preprod.yml
 │   │   └── tasks
 │   │       └── files_copy.yml
-│   ├── authorizations
 │   ├── docker-compose.production.yml
 │   ├── docker-compose.recette.yml
 │   ├── env.global.yml
@@ -108,7 +107,10 @@
 │   │       ├── sync-preprod.sh
 │   │       └── trigger-indexes-creation.sh
 │   └── inventories
+│       └── env.ini
 ├── .node-version
+├── .openpgp-keyid
+├── .openpgp-pubkey
 ├── .prettierignore
 ├── .stylelintrc.json
 ├── .vscode
@@ -249,6 +251,7 @@
 │   │   │   │   │   └── opcos.actions.ts
 │   │   │   │   ├── organisations.actions.ts
 │   │   │   │   ├── organismes
+│   │   │   │   │   ├── collab-v2-eligibility.ts
 │   │   │   │   │   ├── deca-cfa-eligibility.ts
 │   │   │   │   │   ├── mission-locale.actions.ts
 │   │   │   │   │   ├── organismes.actions.ts
@@ -265,6 +268,7 @@
 │   │   │   │   ├── sessions.actions.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   └── rupture-pipeline.utils.ts
+│   │   │   │   ├── sipa.actions.ts
 │   │   │   │   ├── telechargementListeNomLogs.actions.ts
 │   │   │   │   └── users.actions.ts
 │   │   │   ├── apis
@@ -449,7 +453,8 @@
 │   │   │       ├── 20260402120000-add-deca-cfa-list.ts
 │   │   │       ├── 20260423120000-activate-v2-and-deca-cma-hdf.ts
 │   │   │       ├── 20260429150337-activate-v2-and-deca-cma-nouvelle-aquitaine.ts
-│   │   │       └── 20260520092021-add-souhaite-rdv.ts
+│   │   │       ├── 20260520092021-add-souhaite-rdv.ts
+│   │   │       └── 20260611110024-drop-redundant-departement-index.ts
 │   │   ├── dev.ts
 │   │   ├── http
 │   │   │   ├── helpers
@@ -461,6 +466,7 @@
 │   │   │   │   ├── requireApiKeyAuthentication.ts
 │   │   │   │   ├── requireBearerAuthentication.ts
 │   │   │   │   ├── requireMissionLocaleTokenAuthentication.ts
+│   │   │   │   ├── requireSipaAuthentication.ts
 │   │   │   │   └── validateRequestMiddleware.ts
 │   │   │   ├── open-api-path.ts
 │   │   │   ├── routes
@@ -722,6 +728,7 @@
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── cfa-effectifs-ruptures.actions.test.ts
 │   │   │   │   │   ├── cfa-effectifs.actions.test.ts
+│   │   │   │   │   ├── collab-v2-eligibility.test.ts
 │   │   │   │   │   ├── deca-cfa-eligibility.test.ts
 │   │   │   │   │   ├── effectifs.duplicates.actions.test.ts
 │   │   │   │   │   ├── effectifs.types.actions.test.ts
@@ -775,6 +782,8 @@
 │   │   │   │   ├── password.route.test.ts
 │   │   │   │   ├── redirect.routes.test.ts
 │   │   │   │   ├── rncp.routes.test.ts
+│   │   │   │   ├── sipa-auth.routes.test.ts
+│   │   │   │   ├── sipa-suivi.routes.test.ts
 │   │   │   │   ├── users.routes.test.ts
 │   │   │   │   └── utils
 │   │   │   │       └── validators.test.ts
@@ -920,6 +929,7 @@
 │   │   │   ├── reseaux.model.ts
 │   │   │   ├── rncp.model.ts
 │   │   │   ├── romeSecteurActivites.model.ts
+│   │   │   ├── sipaUsers.model.ts
 │   │   │   ├── telechargementListesNomLogs.model.ts
 │   │   │   ├── transmissionDailyReport.model.ts
 │   │   │   ├── usersMigration.model.ts
@@ -1192,7 +1202,10 @@
 │   │   │   ├── landing-page.module.scss
 │   │   │   ├── layout.module.scss
 │   │   │   ├── layout.tsx
-│   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── webinaires
+│   │   │       ├── page.module.scss
+│   │   │       └── page.tsx
 │   │   ├── _components
 │   │   │   ├── ConnectedHeader.tsx
 │   │   │   ├── CrispChat.tsx
@@ -1794,6 +1807,7 @@
 │   ├── middleware.ts
 │   ├── modules
 │   │   ├── admin
+│   │   │   ├── CollabV2AdminSection.tsx
 │   │   │   ├── DashboardAdministrateur.tsx
 │   │   │   ├── DecaCfaPilotAdminSection.tsx
 │   │   │   ├── InfosTransmissionEtParametrageOFA.tsx
@@ -2418,4 +2432,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-478 directories, 1942 files
+478 directories, 1956 files
