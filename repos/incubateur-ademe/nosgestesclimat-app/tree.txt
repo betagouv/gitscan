@@ -420,6 +420,7 @@
 │       │   │   ├── age.spec.ts
 │       │   │   ├── cookies.spec.ts
 │       │   │   ├── groups.spec.ts
+│       │   │   ├── locale-persistence.spec.ts
 │       │   │   ├── mode-scolaire.spec.ts
 │       │   │   ├── organisation-admin.spec.ts
 │       │   │   ├── poll-creation.ts
@@ -993,12 +994,13 @@
 │       │   │   │   │   │   ├── IframeOptionsContext.tsx
 │       │   │   │   │   │   ├── MainHooks.tsx
 │       │   │   │   │   │   ├── QueryClientProviderWrapper.tsx
-│       │   │   │   │   │   ├── StorageAccessOverlay.tsx
 │       │   │   │   │   │   ├── _helpers
 │       │   │   │   │   │   │   ├── getIsAllowedToBypassConsentDataShare.ts
 │       │   │   │   │   │   │   └── verifyIntegratorBypassRights.ts
-│       │   │   │   │   │   └── _hooks
-│       │   │   │   │   │       └── useStoragePermissions.ts
+│       │   │   │   │   │   ├── _hooks
+│       │   │   │   │   │   │   └── useStoragePermissions.ts
+│       │   │   │   │   │   └── iframeOptionsContext
+│       │   │   │   │   │       └── StorageAccessOverlay.tsx
 │       │   │   │   │   ├── mobilise
 │       │   │   │   │   │   ├── CreateGroupLink.tsx
 │       │   │   │   │   │   └── CreateOrganisationLink.tsx
@@ -1586,7 +1588,8 @@
 │       │   │   ├── model
 │       │   │   │   ├── frenchRegions.ts
 │       │   │   │   ├── metric.ts
-│       │   │   │   └── orderedCategories.ts
+│       │   │   │   ├── orderedCategories.ts
+│       │   │   │   └── simulationModes.ts
 │       │   │   ├── organisations
 │       │   │   │   ├── administrator.ts
 │       │   │   │   ├── organisationTypes.ts
@@ -2291,6 +2294,10 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260604120000_alter_model_domain_accept_pr
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260617130000_add_anon_user_view_and_update_poll_view
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260617160000_alter_model_domain_accept_nightly
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
 │       │   │   ├── ngc.prisma
@@ -2404,4 +2411,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-620 directories, 1831 files
+623 directories, 1835 files
