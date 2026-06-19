@@ -4,9 +4,6 @@
 │   └── config.yml
 ├── .env.template
 ├── .erdconfig
-├── .github
-│   └── workflows
-│       └── codeql.yml
 ├── .gitignore
 ├── .rspec
 ├── .rubocop.yml
@@ -225,7 +222,6 @@
 │   │   │   └── vigilance_controle.svg
 │   │   ├── javascripts
 │   │   │   ├── accessible-autocomplete.min.js
-│   │   │   ├── accordion_positionnement.js
 │   │   │   ├── actions_groupees.js
 │   │   │   ├── active_admin.js
 │   │   │   ├── aide.js
@@ -242,7 +238,6 @@
 │   │   │   ├── liens_evitement.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
-│   │   │   ├── nouveau_compte.js
 │   │   │   ├── numero_telephone_input.js
 │   │   │   ├── plausible.js.erb
 │   │   │   ├── recherche_structure.js
@@ -435,6 +430,7 @@
 │   │   ├── badge_component.rb
 │   │   ├── barre_segmentee_component.erb
 │   │   ├── barre_segmentee_component.rb
+│   │   ├── base_input_component.rb
 │   │   ├── bilan_eva_pro_component.html.erb
 │   │   ├── bilan_eva_pro_component.rb
 │   │   ├── bouton_copier_component.html.erb
@@ -530,6 +526,8 @@
 │   │   ├── numero_telephone_input_component.rb
 │   │   ├── panel_component.html.erb
 │   │   ├── panel_component.rb
+│   │   ├── password_input_component.html.erb
+│   │   ├── password_input_component.rb
 │   │   ├── pastille_component.html.erb
 │   │   ├── pastille_component.rb
 │   │   ├── pdf
@@ -1722,11 +1720,12 @@
 │   │   ├── 20260505151143_cree_nouvelles_structures_opco.rb
 │   │   ├── 20260513175802_ajoute_reponses_je_ne_sais_pas_aux_questions_diag_risques.rb
 │   │   ├── 20260513180228_ajoute_reponses_je_ne_sais_pas_aux_questions_evaluation_impact_general.rb
-│   │   └── 20260527135709_ajoute_colonne_siret_a_compte.rb
+│   │   ├── 20260527135709_ajoute_colonne_siret_a_compte.rb
+│   │   └── 20260617151736_add_unique_index_to_comptes_id_pro_connect.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
-│   ├── erd.png
+│   ├── erd.mmd
 │   ├── extraction_stat_niveau_1_et_2.md
 │   ├── procedure_deploiement.md
 │   ├── readme_component.md
@@ -1870,6 +1869,7 @@
 │   │   ├── lien_component_spec.rb
 │   │   ├── navigation_component_spec.rb
 │   │   ├── numero_telephone_input_component_spec.rb
+│   │   ├── password_input_component_spec.rb
 │   │   ├── siret_input_component_spec.rb
 │   │   └── statistiques_structure_metabase_component_spec.rb
 │   ├── config
@@ -2309,4 +2309,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-337 directories, 2028 files
+335 directories, 2030 files
