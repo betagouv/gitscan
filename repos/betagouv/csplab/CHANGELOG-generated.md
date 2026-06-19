@@ -1,31 +1,49 @@
-## Changelog : csplab (30 derniers jours, au 2026-06-16)
+## Changelog : csplab (30 derniers jours, au 2026-06-18)
 
 ### Résumé
-Ce mois-ci, l'équipe a continué à développer et améliorer les fonctionnalités de csplab, notamment en se concentrant sur l'ingestion de données, l'interface utilisateur et la gestion des utilisateurs. Des améliorations significatives ont été apportées à l'authentification, à la présentation des offres d'emploi et à l'infrastructure globale du projet. L'ajout de tests et l'amélioration de la documentation sont également des points importants de cette période.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'ingestion des offres d'emploi, notamment via l'intégration de sources externes comme Talentsoft, et sur le développement de l'interface utilisateur (ATS) pour la gestion des candidatures. Des améliorations techniques ont également été apportées à l'infrastructure, aux tests et à la documentation du projet.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de connexion avec une interface utilisateur améliorée [#752](https://github.com/betagouv/csplab/issues/752).
-- Affichage du métier de l'utilisateur dans la liste des offres [#747](https://github.com/betagouv/csplab/issues/747).
-- Implémentation de la soumission de candidature [#729](https://github.com/betagouv/csplab/issues/729).
-- Ajout de badges et de composants d'avatar pour l'interface utilisateur [#682](https://github.com/betagouv/csplab/issues/682), [#683](https://github.com/betagouv/csplab/issues/683).
-- Amélioration de l'affichage des composants de formulaire de base [#646](https://github.com/betagouv/csplab/issues/646).
-- Possibilité de créer des utilisateurs avec un profil candidat ou agent [#735](https://github.com/betagouv/csplab/issues/735), [#722](https://github.com/betagouv/csplab/issues/722).
-- Ajout d'une authentification à deux facteurs (2FA) pour l'administration Django [#699](https://github.com/betagouv/csplab/issues/699).
-- Ajout d'une fonctionnalité pour lister les sources de données [#574](https://github.com/betagouv/csplab/issues/574).
+- Ajout de la persistance des champs additionnels des offres via l'interface référentiel. [#809](https://github.com/betagouv/csplab/issues/809)
+- Initialisation des interfaces Organisme et Etape de Recrutement d'un Organisme dans la présentation recruteur. [#798](https://github.com/betagouv/csplab/issues/798)
+- Ajout d'une documentation non-technique pour l'ingestion des données. [#813](https://github.com/betagouv/csplab/issues/813)
+- Ajout de composants d'interface utilisateur (UI) pour l'ATS, incluant des badges, avatars, formulaires, onglets et composants de base. [#741](https://github.com/betagouv/csplab/issues/741), [#790](https://github.com/betagouv/csplab/issues/790), [#795](https://github.com/betagouv/csplab/issues/795), [#787](https://github.com/betagouv/csplab/issues/787)
+- Affichage du métier du candidat dans la liste des offres. [#747](https://github.com/betagouv/csplab/issues/747)
+- Implémentation de la soumission de candidature. [#729](https://github.com/betagouv/csplab/issues/729)
+- Ajout d'une page de connexion avec l'interface utilisateur. [#752](https://github.com/betagouv/csplab/issues/752)
+- Ajout de la possibilité de récupérer le nom d'utilisateur actuel dans l'ATS. [#741](https://github.com/betagouv/csplab/issues/741)
+- Ajout de la gestion de l'authentification par email/mot de passe. [#639](https://github.com/betagouv/csplab/issues/639)
+- Ajout d'un endpoint pour lister les métiers. [#569](https://github.com/betagouv/csplab/issues/569)
 
 ### Évolutions techniques
-- Refactorisation de l'architecture pour utiliser Celery pour le traitement asynchrone des webhooks [#737](https://github.com/betagouv/csplab/issues/737).
-- Amélioration de la gestion des dépendances et des tests, avec des mises à jour régulières et des refactorisations [#793](https://github.com/betagouv/csplab/issues/793), [#792](https://github.com/betagouv/csplab/issues/792), [#791](https://github.com/betagouv/csplab/issues/791), [#785](https://github.com/betagouv/csplab/issues/785), [#783](https://github.com/betagouv/csplab/issues/783), [#745](https://github.com/betagouv/csplab/issues/745).
-- Migration vers un modèle utilisateur personnalisé pour une meilleure flexibilité et sécurité [#614](https://github.com/betagouv/csplab/issues/614), [#616](https://github.com/betagouv/csplab/issues/616), [#630](https://github.com/betagouv/csplab/issues/630), [#632](https://github.com/betagouv/csplab/issues/632).
-- Amélioration de l'infrastructure de test et de déploiement, notamment avec l'ajout de workflows GitHub Actions [#606](https://github.com/betagouv/csplab/issues/606), [#658](https://github.com/betagouv/csplab/issues/658), [#718](https://github.com/betagouv/csplab/issues/718).
-- Utilisation de composants React et Storybook pour le développement de l'interface utilisateur [#596](https://github.com/betagouv/csplab/issues/596), [#716](https://github.com/betagouv/csplab/issues/716).
-- Ajout d'index manquants sur les bases de données pour améliorer les performances [#786](https://github.com/betagouv/csplab/issues/786), [#789](https://github.com/betagouv/csplab/issues/789).
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité [#662](https://github.com/betagouv/csplab/issues/662), [#672](https://github.com/betagouv/csplab/issues/672), [#673](https://github.com/betagouv/csplab/issues/673).
+- Simplification de l'interface des événements de domaine (DDD). [#811](https://github.com/betagouv/csplab/issues/811)
+- Ajout d'un tag `robots.txt` contrôlé par une variable d'environnement. [#810](https://github.com/betagouv/csplab/issues/810)
+- Séparation du traitement des webhooks d'ingestion par type d'action. [#805](https://github.com/betagouv/csplab/issues/805)
+- Traduction des erreurs de domaine en français. [#807](https://github.com/betagouv/csplab/issues/807)
+- Amélioration de la cohérence du schéma OpenAPI entre Typescript et DRF. [#804](https://github.com/betagouv/csplab/issues/804)
+- Suppression de la commande `make lint` lors du commit. [#803](https://github.com/betagouv/csplab/issues/803)
+- Correction d'un bug lié à la suppression de `lint-internal-schema` dans le tooling CI. [#816](https://github.com/betagouv/csplab/issues/816)
+- Mise à jour des dépendances frontend vers les dernières versions majeures. [#796](https://github.com/betagouv/csplab/issues/796)
+- Correction d'un bug empêchant l'exécution des tâches Celery en raison d'une boucle d'événements fermée et ajout d'un timeout. [#797](https://github.com/betagouv/csplab/issues/797)
+- Amélioration de la gestion des versions et ajout d'une vérification de la version de `pyproject.toml` lors des changements de librairies. [#801](https://github.com/betagouv/csplab/issues/801)
+- Correction d'un bug dans l'ingestion web qui cachait l'ID source dans la sérialisation des offres. [#800](https://github.com/betagouv/csplab/issues/800)
+- Correction d'un bug lié à l'envoi de l'ID source par offre lors de la mise à jour vers le web. [#802](https://github.com/betagouv/csplab/issues/802)
+- Refactorisation de l'architecture pour utiliser Celery pour le traitement asynchrone des webhooks. [#737](https://github.com/betagouv/csplab/issues/737)
+- Mise en place d'un scheduler Huey unique. [#782](https://github.com/betagouv/csplab/issues/782)
+- Amélioration de la gestion des index dans la base de données. [#786](https://github.com/betagouv/csplab/issues/786), [#789](https://github.com/betagouv/csplab/issues/789)
+- Refactorisation des tests et ajout de fixtures pour une meilleure lisibilité. [#726](https://github.com/betagouv/csplab/issues/726), [#783](https://github.com/betagouv/csplab/issues/783)
+- Utilisation de `include` au lieu de `autodiscover` pour l'enregistrement des tâches Celery. [#783](https://github.com/betagouv/csplab/issues/783)
+- Mise à jour des dépendances (OCR, web, ingestion, notebook). [#793](https://github.com/betagouv/csplab/issues/793), [#792](https://github.com/betagouv/csplab/issues/792), [#791](https://github.com/betagouv/csplab/issues/791), [#677](https://github.com/betagouv/csplab/issues/677), [#678](https://github.com/betagouv/csplab/issues/678), [#676](https://github.com/betagouv/csplab/issues/676), [#675](https://github.com/betagouv/csplab/issues/675)
+- Migration vers un modèle utilisateur personnalisé. [#614](https://github.com/betagouv/csplab/issues/614), [#616](https://github.com/betagouv/csplab/issues/616), [#630](https://github.com/betagouv/csplab/issues/630), [#632](https://github.com/betagouv/csplab/issues/632)
 
 ### Autres changements
-- Ajout d'un fichier `security.txt` pour la divulgation responsable des vulnérabilités [#695](https://github.com/betagouv/csplab/issues/695).
-- Mise à jour de la documentation et des modèles de pull request [#619](https://github.com/betagouv/csplab/issues/619), [#721](https://github.com/betagouv/csplab/issues/721).
-- Amélioration de la configuration de GitHub Pages [#727](https://github.com/betagouv/csplab/issues/727).
-- Ajout de tests pour l'accessibilité de l'interface utilisateur [#740](https://github.com/betagouv/csplab/issues/740).
-- Publication du notebook sur GitHub Pages [#641](https://github.com/betagouv/csplab/issues/641).
-- Correction de bugs divers et amélioration de la stabilité du projet.
+- Ajout de la documentation pour les scripts d'abonnement et de suppression des webhooks Talentsoft. [#721](https://github.com/betagouv/csplab/issues/721)
+- Mise à jour du CHANGELOG pour la version 0.1.11. [#648](https://github.com/betagouv/csplab/issues/648)
+- Ajout d'un fichier `security.txt`. [#695](https://github.com/betagouv/csplab/issues/695)
+- Ajout d'un workflow pour la publication de Storybook. [#724](https://github.com/betagouv/csplab/issues/724), [#647](https://github.com/betagouv/csplab/issues/647)
+- Documentation de l'architecture et des conventions frontend. [#595](https://github.com/betagouv/csplab/issues/595)
+- Traduction du template de PR en français. [#619](https://github.com/betagouv/csplab/issues/619)
+- Ajout d'un workflow pour l'assignation automatique des PR. [#606](https://github.com/betagouv/csplab/issues/606)
+- Ajout d'un workflow pour la publication de Storybook. [#647](https://github.com/betagouv/csplab/issues/647)
+- Suppression de la configuration `npm sass` pour le MVP CV. [#622](https://github.com/betagouv/csplab/issues/622)
+- Ajout de tests d'accessibilité pour le flow CV. [#622](https://github.com/betagouv/csplab/issues/622)
