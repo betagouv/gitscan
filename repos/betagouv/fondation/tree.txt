@@ -35,9 +35,6 @@
 │   │   ├── .sqlfluff
 │   │   ├── .vscode
 │   │   │   └── settings.json
-│   │   ├── docs
-│   │   │   └── adr
-│   │   │       └── 2025-10-22-sortie-hexa.md
 │   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
@@ -145,6 +142,10 @@
 │   │   │   │   ├── 20260603164132_normalize_magistrat_grade
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260604100341_adds_renunciation_to_presentation_plans
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260609140844_adds_nomination_file_attachment
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260616113427_nomination_current_position_nullable
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
@@ -302,9 +303,16 @@
 │   │   │   │   │   │           │   └── pdf-worker.ts
 │   │   │   │   │   │           ├── presentation-plan.renderer.ts
 │   │   │   │   │   │           └── templates
+│   │   │   │   │   │               ├── __snapshots__
+│   │   │   │   │   │               │   ├── agenda.html.spec.ts.snap
+│   │   │   │   │   │               │   ├── official-report.html.spec.ts.snap
+│   │   │   │   │   │               │   └── presentation-plan.html.spec.ts.snap
+│   │   │   │   │   │               ├── agenda.html.spec.ts
 │   │   │   │   │   │               ├── agenda.html.ts
 │   │   │   │   │   │               ├── common.html.ts
+│   │   │   │   │   │               ├── official-report.html.spec.ts
 │   │   │   │   │   │               ├── official-report.html.ts
+│   │   │   │   │   │               ├── presentation-plan.html.spec.ts
 │   │   │   │   │   │               ├── presentation-plan.html.ts
 │   │   │   │   │   │               └── templates.types.ts
 │   │   │   │   │   └── lolfi.e2e-spec.ts
@@ -521,6 +529,7 @@
 │   │   │   │   │   │   │   ├── count-nomination-files-by-status.query.ts
 │   │   │   │   │   │   │   ├── count-unaffected-files.query.ts
 │   │   │   │   │   │   │   ├── count-users-new-sessions.query.ts
+│   │   │   │   │   │   │   ├── detail-nomination-file-attachment.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session-affectation-version.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session-attachment.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session.query.ts
@@ -531,6 +540,7 @@
 │   │   │   │   │   │   │   ├── internal-find-docs-nomination-files.query.ts
 │   │   │   │   │   │   │   ├── internal-list-member-sessions.query.ts
 │   │   │   │   │   │   │   ├── list-currently-affected-reporters.query.ts
+│   │   │   │   │   │   │   ├── list-nomination-file-attachments.query.ts
 │   │   │   │   │   │   │   ├── list-nomination-files-as-excel.query.ts
 │   │   │   │   │   │   │   ├── list-nomination-files.query.ts
 │   │   │   │   │   │   │   ├── list-nomination-session-attachments.query.ts
@@ -640,6 +650,10 @@
 │       ├── .vscode
 │       │   └── settings.json
 │       ├── README.md
+│       ├── docs
+│       │   └── adr
+│       │       ├── 2026-06-15-organisation-des-composants-partages.md
+│       │       └── 2026-06-16-conventions-react.md
 │       ├── index.html
 │       ├── openapi-ts.config.ts
 │       ├── package.json
@@ -653,322 +667,277 @@
 │       │   ├── Procfile
 │       │   └── nginx.conf.erb
 │       ├── scripts
+│       │   ├── check-tailwind-colors.sh
 │       │   └── install-fonts.sh
 │       ├── src
 │       │   ├── HomePage.tsx
 │       │   ├── assets
 │       │   │   └── react.svg
-│       │   ├── components
-│       │   │   ├── guards
-│       │   │   │   └── AuthGuard.tsx
-│       │   │   ├── layout
-│       │   │   │   ├── AppFooter.tsx
-│       │   │   │   ├── Avatar.tsx
-│       │   │   │   ├── Header.tsx
-│       │   │   │   ├── LolfiCsm.tsx
-│       │   │   │   ├── ManageSessionsLink.tsx
-│       │   │   │   └── PageLayout.tsx
-│       │   │   ├── login
-│       │   │   │   ├── AuthenticationFailedAlert.tsx
-│       │   │   │   └── Login.tsx
+│       │   ├── constants
+│       │   │   ├── labels.constants.ts
+│       │   │   ├── mimetypes.constants.ts
+│       │   │   └── sg-anchor-attributes.ts
+│       │   ├── features
+│       │   │   ├── administration
+│       │   │   │   ├── components
+│       │   │   │   │   └── AdminUserRole.tsx
+│       │   │   │   └── labels
+│       │   │   │       └── admin-user-enum.ts
+│       │   │   ├── agenda
+│       │   │   │   ├── components
+│       │   │   │   │   ├── AgendaBreadcrumb.tsx
+│       │   │   │   │   ├── AgendaChairmanSelect.tsx
+│       │   │   │   │   ├── AgendaFileSearch.tsx
+│       │   │   │   │   ├── AgendaMetadataStep.tsx
+│       │   │   │   │   ├── AgendaNominationFile.css
+│       │   │   │   │   ├── AgendaNominationFile.tsx
+│       │   │   │   │   └── AgendaNominationFilesStep.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   ├── AgendaContext.tsx
+│       │   │   │   │   ├── AgendaContext.types.ts
+│       │   │   │   │   └── AgendaProvider.tsx
+│       │   │   │   └── hooks
+│       │   │   │       ├── useAgendaBasket.hook.ts
+│       │   │   │       └── useScrollDownIndicator.hook.ts
+│       │   │   ├── auth
+│       │   │   │   ├── components
+│       │   │   │   │   ├── AuthGuard.tsx
+│       │   │   │   │   ├── AuthenticationFailedAlert.tsx
+│       │   │   │   │   ├── ImpersonationBanner.tsx
+│       │   │   │   │   └── Login.tsx
+│       │   │   │   ├── constants
+│       │   │   │   │   └── authorized-roles.constants.ts
+│       │   │   │   └── hooks
+│       │   │   │       └── roles.hook.ts
+│       │   │   ├── documents
+│       │   │   │   ├── components
+│       │   │   │   │   ├── AbsentMemberSelector.tsx
+│       │   │   │   │   ├── ChairmanSelector.tsx
+│       │   │   │   │   └── JusticeContactSelector.tsx
+│       │   │   │   └── hooks
+│       │   │   │       └── useSelection.ts
+│       │   │   ├── jobs
+│       │   │   │   ├── components
+│       │   │   │   │   ├── JobFileNode.tsx
+│       │   │   │   │   ├── JobFilesBranch.tsx
+│       │   │   │   │   ├── JobFilesTree.tsx
+│       │   │   │   │   └── JobsListItem.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── job.context.ts
+│       │   │   │   │   └── selected-job-provider.tsx
+│       │   │   │   ├── types
+│       │   │   │   │   └── job.types.ts
+│       │   │   │   └── utils
+│       │   │   │       ├── format-job-date.utils.ts
+│       │   │   │       ├── format-job-duration.utils.ts
+│       │   │   │       ├── job-status.utils.ts
+│       │   │   │       └── tree.utils.ts
+│       │   │   ├── members
+│       │   │   │   └── components
+│       │   │   │       ├── DetailsMember.tsx
+│       │   │   │       ├── DetailsMemberHeader.tsx
+│       │   │   │       ├── DetailsMemberStats.tsx
+│       │   │   │       ├── JurisdictionAutocomplete.tsx
+│       │   │   │       ├── JurisdictionSelector.tsx
+│       │   │   │       ├── MemberDisplayTitle.tsx
+│       │   │   │       ├── MemberList.tsx
+│       │   │   │       ├── MemberListHeader.tsx
+│       │   │   │       ├── MemberListStateCell.tsx
+│       │   │   │       └── MemberTitle.tsx
+│       │   │   ├── nomination-files-table
+│       │   │   │   ├── components
+│       │   │   │   │   ├── AgendaBasketButtons.tsx
+│       │   │   │   │   ├── MemberExclusionSelector.tsx
+│       │   │   │   │   ├── NominationFilesActionsBar.tsx
+│       │   │   │   │   ├── NominationFilesAffectationsStatus.tsx
+│       │   │   │   │   ├── NominationFilesAutoAffectationButton.tsx
+│       │   │   │   │   ├── NominationFilesBatchOperationsButton.tsx
+│       │   │   │   │   ├── NominationFilesReporterSelector.tsx
+│       │   │   │   │   ├── NominationFilesSaveAffectationsButton.tsx
+│       │   │   │   │   ├── NominationFilesStatusBadges.tsx
+│       │   │   │   │   ├── NominationFilesTable.css
+│       │   │   │   │   ├── NominationFilesTable.tsx
+│       │   │   │   │   ├── NominationFilesToggleEditionModeButton.tsx
+│       │   │   │   │   └── cells
+│       │   │   │   │       ├── NominationFilesPriorityCell.tsx
+│       │   │   │   │       ├── NominationFilesPrioritySelectorCell.tsx
+│       │   │   │   │       ├── magistrat-details
+│       │   │   │   │       │   ├── MagistratAttachments.tsx
+│       │   │   │   │       │   ├── MagistratDetails.tsx
+│       │   │   │   │       │   ├── MagistratDnModale.tsx
+│       │   │   │   │       │   ├── MagistratSummaryButton.tsx
+│       │   │   │   │       │   ├── magistrat-comment
+│       │   │   │   │       │   │   ├── MagistratComment.tsx
+│       │   │   │   │       │   │   ├── MagistratCommentEdit.tsx
+│       │   │   │   │       │   │   └── MagistratCommentView.tsx
+│       │   │   │   │       │   └── member-memo
+│       │   │   │   │       │       ├── MemberMemo.css
+│       │   │   │   │       │       └── MemberMemo.tsx
+│       │   │   │   │       ├── nomination-file-outcome
+│       │   │   │   │       │   ├── NominationFileDocStatusBadge.tsx
+│       │   │   │   │       │   ├── NominationFileOutcome.tsx
+│       │   │   │   │       │   ├── NominationFileOutcomeBadge.tsx
+│       │   │   │   │       │   ├── NominationFileOutcomeCommentModal.tsx
+│       │   │   │   │       │   ├── NominationFileOutcomeCommentModalProvider.tsx
+│       │   │   │   │       │   ├── NominationFileOutcomeSelector.tsx
+│       │   │   │   │       │   ├── NominationFilesOutcomeCell.tsx
+│       │   │   │   │       │   ├── OutcomeCommentModalContext.ts
+│       │   │   │   │       │   └── nomination-file-outcome-badge.utils.ts
+│       │   │   │   │       ├── observation-follow-up
+│       │   │   │   │       │   ├── ObservationFollowUpReminderContext.ts
+│       │   │   │   │       │   ├── ObservationFollowUpReminderModal.tsx
+│       │   │   │   │       │   ├── ObservationFollowUpReminderProvider.tsx
+│       │   │   │   │       │   └── useObservationFollowUpReminderModal.hook.ts
+│       │   │   │   │       ├── observations
+│       │   │   │   │       │   ├── ObservantsCell.tsx
+│       │   │   │   │       │   ├── ObservationForm.tsx
+│       │   │   │   │       │   ├── ObservationsList.tsx
+│       │   │   │   │       │   ├── ObservationsModalContext.ts
+│       │   │   │   │       │   └── ObservationsModalProvider.tsx
+│       │   │   │   │       ├── reporters
+│       │   │   │   │       │   ├── RapporteursDropdownBase.tsx
+│       │   │   │   │       │   ├── ReportersAlert.tsx
+│       │   │   │   │       │   ├── ReportersCell.tsx
+│       │   │   │   │       │   └── ReportersSelector.tsx
+│       │   │   │   │       └── targeted-position
+│       │   │   │   │           ├── NominationFileTargetPositionCell.tsx
+│       │   │   │   │           ├── NominationFileTargetPositionContext.ts
+│       │   │   │   │           └── NominationFileTargetPositionProvider.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   ├── FilesAffectationsProvider.tsx
+│       │   │   │   │   ├── FilesSelectionProvider.tsx
+│       │   │   │   │   ├── NominationFilesTableProvider.tsx
+│       │   │   │   │   ├── files-affectations.context.ts
+│       │   │   │   │   ├── files-selection.context.ts
+│       │   │   │   │   └── files-table.context.ts
+│       │   │   │   └── hooks
+│       │   │   │       └── useNominationFilesTableColumns.hook.tsx
+│       │   │   ├── observations
+│       │   │   │   ├── components
+│       │   │   │   │   ├── ObservationCard.tsx
+│       │   │   │   │   ├── ObservationDescription.tsx
+│       │   │   │   │   ├── ObservationDetailsContent.tsx
+│       │   │   │   │   ├── ObservationFollowUpCommentDialog.tsx
+│       │   │   │   │   ├── ObservationFollowUpSelector.tsx
+│       │   │   │   │   └── ObservationLinks.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   ├── ObservationFollowUpCommentContext.ts
+│       │   │   │   │   └── ObservationFollowUpCommentDialogProvider.tsx
+│       │   │   │   └── hooks
+│       │   │   │       └── useObservationFollowUpCommentDialog.ts
+│       │   │   ├── official-report
+│       │   │   │   ├── components
+│       │   │   │   │   ├── OfficialReportBreadCrumb.tsx
+│       │   │   │   │   └── OfficialReportForm.tsx
+│       │   │   │   └── context
+│       │   │   │       ├── OfficialReportContext.tsx
+│       │   │   │       ├── OfficialReportContext.types.ts
+│       │   │   │       └── OfficialReportProvider.tsx
+│       │   │   ├── presentations
+│       │   │   │   ├── components
+│       │   │   │   │   ├── PresentationAgendaCommentsStep.tsx
+│       │   │   │   │   ├── PresentationAgendaSelectionList.tsx
+│       │   │   │   │   └── PresentationMetadataStep.tsx
+│       │   │   │   └── context
+│       │   │   │       ├── PresentatPlanModalProvider.tsx
+│       │   │   │       ├── PresentationPlanProvider.tsx
+│       │   │   │       ├── present-plan-modal.context.ts
+│       │   │   │       ├── present-plan-modal.type.ts
+│       │   │   │       ├── presentation-plan.context.ts
+│       │   │   │       └── presentation-plan.type.ts
 │       │   │   ├── reports
 │       │   │   │   ├── components
-│       │   │   │   │   ├── ReportList
-│       │   │   │   │   │   ├── HeaderReportList.tsx
-│       │   │   │   │   │   ├── ReportList.tsx
-│       │   │   │   │   │   ├── ReportListPage.tsx
-│       │   │   │   │   │   ├── ReportListViewToggle.tsx
-│       │   │   │   │   │   ├── ReportStateTag.tsx
-│       │   │   │   │   │   ├── ReportsDnVueGenerale.tsx
-│       │   │   │   │   │   ├── TransparencyAttachmentsSection.tsx
-│       │   │   │   │   │   └── useReportListFocus.ts
-│       │   │   │   │   ├── ReportOverview
-│       │   │   │   │   │   ├── AttachedFileUpload.tsx
-│       │   │   │   │   │   ├── AttachedFilesList.tsx
-│       │   │   │   │   │   ├── AutoSaveNotice.tsx
-│       │   │   │   │   │   ├── Biography.tsx
-│       │   │   │   │   │   ├── Card.tsx
-│       │   │   │   │   │   ├── MagistratIdentity.tsx
-│       │   │   │   │   │   ├── Observers.tsx
-│       │   │   │   │   │   ├── ReportEditor.tsx
-│       │   │   │   │   │   ├── ReportOverview.tsx
-│       │   │   │   │   │   ├── ReportOverviewFileComment.tsx
-│       │   │   │   │   │   ├── ReportOverviewPage.tsx
-│       │   │   │   │   │   ├── ReportOverviewState.tsx
-│       │   │   │   │   │   ├── ReportSummaryCard.css
-│       │   │   │   │   │   ├── ReportSummaryCard.tsx
-│       │   │   │   │   │   ├── Summary.tsx
-│       │   │   │   │   │   ├── TextareaCard.tsx
-│       │   │   │   │   │   ├── TipTapEditor
-│       │   │   │   │   │   │   ├── MenuBar.tsx
-│       │   │   │   │   │   │   ├── buttons
-│       │   │   │   │   │   │   │   ├── BoldButton.tsx
-│       │   │   │   │   │   │   │   ├── BulletListButton.tsx
-│       │   │   │   │   │   │   │   ├── EditorButton.tsx
-│       │   │   │   │   │   │   │   ├── HeadingButton.tsx
-│       │   │   │   │   │   │   │   ├── HighlightButton.tsx
-│       │   │   │   │   │   │   │   ├── ImageUploadButton.tsx
-│       │   │   │   │   │   │   │   ├── IndentDecreaseButton.tsx
-│       │   │   │   │   │   │   │   ├── IndentIncreaseButton.tsx
-│       │   │   │   │   │   │   │   ├── ItalicButton.tsx
-│       │   │   │   │   │   │   │   ├── OrderedListButton.tsx
-│       │   │   │   │   │   │   │   ├── RedoButton.tsx
-│       │   │   │   │   │   │   │   ├── TextColorButton.tsx
-│       │   │   │   │   │   │   │   ├── UnderlineButton.tsx
-│       │   │   │   │   │   │   │   └── UndoButton.tsx
-│       │   │   │   │   │   │   ├── extensions
-│       │   │   │   │   │   │   │   ├── ImageUploadPreview.tsx
-│       │   │   │   │   │   │   │   ├── constant.ts
-│       │   │   │   │   │   │   │   ├── editor-file-uploader.ts
-│       │   │   │   │   │   │   │   ├── file-handler-extension.ts
-│       │   │   │   │   │   │   │   └── useTipTapExtensions.ts
-│       │   │   │   │   │   │   ├── hooks
-│       │   │   │   │   │   │   │   ├── useIsBlurred.ts
-│       │   │   │   │   │   │   │   └── useMarkPriority.ts
-│       │   │   │   │   │   │   ├── index.tsx
-│       │   │   │   │   │   │   └── markPriorityFactory.ts
-│       │   │   │   │   │   ├── formatters.ts
-│       │   │   │   │   │   └── hooks
-│       │   │   │   │   │       └── useObservedSections.ts
-│       │   │   │   │   └── Transparencies
-│       │   │   │   │       ├── SessionBlock.tsx
-│       │   │   │   │       ├── SessionCsmList.tsx
-│       │   │   │   │       ├── SessionGardeDesSceauxList.tsx
-│       │   │   │   │       └── Sessions.tsx
+│       │   │   │   │   ├── AttachedFileUpload.tsx
+│       │   │   │   │   ├── AttachedFilesList.tsx
+│       │   │   │   │   ├── AutoSaveNotice.tsx
+│       │   │   │   │   ├── Biography.tsx
+│       │   │   │   │   ├── Card.tsx
+│       │   │   │   │   ├── HeaderReportList.tsx
+│       │   │   │   │   ├── MagistratIdentity.tsx
+│       │   │   │   │   ├── Observers.tsx
+│       │   │   │   │   ├── ReportEditor.tsx
+│       │   │   │   │   ├── ReportList.tsx
+│       │   │   │   │   ├── ReportListViewToggle.tsx
+│       │   │   │   │   ├── ReportOverview.tsx
+│       │   │   │   │   ├── ReportOverviewFileComment.tsx
+│       │   │   │   │   ├── ReportOverviewState.tsx
+│       │   │   │   │   ├── ReportStateTag.tsx
+│       │   │   │   │   ├── ReportSummaryCard.css
+│       │   │   │   │   ├── ReportSummaryCard.tsx
+│       │   │   │   │   ├── ReportsDnVueGenerale.tsx
+│       │   │   │   │   ├── Summary.tsx
+│       │   │   │   │   ├── TextareaCard.tsx
+│       │   │   │   │   └── TransparencyAttachmentsSection.tsx
+│       │   │   │   ├── constants
+│       │   │   │   │   └── summary-sections.constants.ts
 │       │   │   │   ├── dom
 │       │   │   │   │   ├── html-ids.ts
 │       │   │   │   │   ├── scroll-to-summary-section.ts
 │       │   │   │   │   ├── summary-scroll-listeners.ts
 │       │   │   │   │   └── summary-section-observer-factory.ts
-│       │   │   │   └── labels
-│       │   │   │       ├── labels-mappers.ts
-│       │   │   │       ├── report-list-table-labels.ts
-│       │   │   │       ├── state-filter-labels.ts
-│       │   │   │       └── summary-labels.ts
-│       │   │   ├── secretariat-general
-│       │   │   │   ├── Dashboard.tsx
-│       │   │   │   ├── document-preview
-│       │   │   │   │   ├── DocumentEditor.css
-│       │   │   │   │   ├── DocumentEditor.tsx
-│       │   │   │   │   ├── DocumentIframe.tsx
-│       │   │   │   │   ├── DocumentPreview.tsx
-│       │   │   │   │   └── document-fonts.css
-│       │   │   │   ├── membres
-│       │   │   │   │   ├── details
-│       │   │   │   │   │   ├── DetailsMember.tsx
-│       │   │   │   │   │   ├── DetailsMemberHeader.tsx
-│       │   │   │   │   │   ├── DetailsMemberStats.tsx
-│       │   │   │   │   │   ├── JurisdictionAutocomplete.tsx
-│       │   │   │   │   │   ├── JurisdictionSelector.tsx
-│       │   │   │   │   │   ├── MemberDisplayTitle.tsx
-│       │   │   │   │   │   └── MemberTitle.tsx
-│       │   │   │   │   ├── jurisdictions.queries.ts
-│       │   │   │   │   └── list
-│       │   │   │   │       ├── MemberList.tsx
-│       │   │   │   │       ├── MemberListHeader.tsx
-│       │   │   │   │       └── MemberListStateCell.tsx
-│       │   │   │   ├── session
-│       │   │   │   │   ├── ManageArchivedSessions.tsx
-│       │   │   │   │   ├── ManageSession.tsx
-│       │   │   │   │   └── SessionStatusBadge.tsx
-│       │   │   │   └── transparence
-│       │   │   │       ├── content
-│       │   │   │       │   ├── Transparence.tsx
-│       │   │   │       │   └── tableau-de-bord
-│       │   │   │       │       ├── actions
-│       │   │   │       │       │   ├── DocActionDelete.tsx
-│       │   │   │       │       │   ├── DocActionDetails.tsx
-│       │   │   │       │       │   ├── DocActionUpdate.tsx
-│       │   │   │       │       │   ├── DocGenerationAction.tsx
-│       │   │   │       │       │   ├── ImportAttachmentModal.tsx
-│       │   │   │       │       │   ├── ImportObservantsModal.tsx
-│       │   │   │       │       │   ├── NominationSessionDocsList.tsx
-│       │   │   │       │       │   ├── TableauDeBordActions.tsx
-│       │   │   │       │       │   └── TableauDeBordActionsList.tsx
-│       │   │   │       │       └── resume
-│       │   │   │       │           ├── TableauDeBordEditTransparence.tsx
-│       │   │   │       │           ├── TableauDeBordResume.tsx
-│       │   │   │       │           ├── TableauDeBordResumeDetails.tsx
-│       │   │   │       │           └── TableauDeBordValidationCallOut.tsx
-│       │   │   │       └── nouvelle-transparence
-│       │   │   │           ├── NouvelleTransparence.tsx
-│       │   │   │           └── UploadExcelFailedAlert.tsx
-│       │   │   ├── shared
-│       │   │   │   ├── Breadcrumb.tsx
-│       │   │   │   ├── Card.stories.tsx
-│       │   │   │   ├── Card.test.tsx
-│       │   │   │   ├── Card.tsx
-│       │   │   │   ├── DeleteAttachmentModal.tsx
-│       │   │   │   ├── DropdownFilter.tsx
-│       │   │   │   ├── DropdownMenu.tsx
-│       │   │   │   ├── DropdownSelect.tsx
-│       │   │   │   ├── DropdownSelectMultiple.tsx
-│       │   │   │   ├── ErrorMessage.tsx
-│       │   │   │   ├── HintImportXlsxFile.tsx
-│       │   │   │   ├── ImpersonatedAppLayout.tsx
-│       │   │   │   ├── LolfiMagistratLink.tsx
-│       │   │   │   ├── Mandatory.tsx
-│       │   │   │   ├── Marked.tsx
-│       │   │   │   ├── NominationSessionAttachmentList.tsx
-│       │   │   │   ├── ObservationDescription.tsx
-│       │   │   │   ├── ObservationDetailsContent.tsx
-│       │   │   │   ├── ObservationLinks.tsx
-│       │   │   │   ├── PageContentLayout.tsx
-│       │   │   │   ├── ScrollToTop.tsx
-│       │   │   │   ├── SortButton.tsx
-│       │   │   │   ├── StagingAppLayout.tsx
-│       │   │   │   ├── SuccessModal.tsx
-│       │   │   │   ├── TextValue.tsx
-│       │   │   │   ├── UserChipsSelect.tsx
-│       │   │   │   ├── alerts
-│       │   │   │   │   ├── AlertsProvider.tsx
-│       │   │   │   │   └── alerts.context.ts
-│       │   │   │   ├── combobox.tsx
-│       │   │   │   ├── data-table
-│       │   │   │   │   ├── DataTable.tsx
-│       │   │   │   │   ├── ReactTableBody.tsx
-│       │   │   │   │   ├── ReactTableColumnVisibility.tsx
-│       │   │   │   │   ├── ReactTableContent.tsx
-│       │   │   │   │   ├── ReactTableFilterColumn.tsx
-│       │   │   │   │   ├── ReactTableFilterColumnAsyncList.tsx
-│       │   │   │   │   ├── ReactTableFilterSearch.tsx
-│       │   │   │   │   ├── ReactTableHead.tsx
-│       │   │   │   │   ├── ReactTablePagination.tsx
-│       │   │   │   │   ├── ReactTableWrapper.tsx
-│       │   │   │   │   ├── hooks
-│       │   │   │   │   │   ├── assert-is-page-size.ts
-│       │   │   │   │   │   ├── data-table-parsers.ts
-│       │   │   │   │   │   ├── data-table-state.ts
-│       │   │   │   │   │   ├── useDataTable.ts
-│       │   │   │   │   │   ├── useDataTablePaginationItemLabel.ts
-│       │   │   │   │   │   ├── useDataTableState.ts
-│       │   │   │   │   │   └── useQueryDataTableState.ts
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── filter-configurations.ts
-│       │   │   │   ├── indeterminate-checkbox
-│       │   │   │   │   ├── IndeterminateCheckbox.css
-│       │   │   │   │   └── IndeterminateCheckbox.tsx
-│       │   │   │   ├── layouts
-│       │   │   │   │   ├── BanneredLayout.tsx
-│       │   │   │   │   ├── ImpersonationBanner.tsx
-│       │   │   │   │   ├── PermanentBanner.tsx
-│       │   │   │   │   ├── StagingBanner.tsx
-│       │   │   │   │   └── archived-banner
-│       │   │   │   │       ├── ArchiveBannerPortal.tsx
-│       │   │   │   │       └── ArchivedSessionBanner.tsx
-│       │   │   │   ├── loaders
-│       │   │   │   │   └── pulse
-│       │   │   │   │       ├── Pulse.css
-│       │   │   │   │       ├── Pulse.tsx
-│       │   │   │   │       └── index.ts
-│       │   │   │   ├── menu.tsx
-│       │   │   │   ├── nomination-files-table
-│       │   │   │   │   ├── NominationFilesTable.css
-│       │   │   │   │   ├── NominationFilesTable.tsx
-│       │   │   │   │   ├── components
-│       │   │   │   │   │   ├── AgendaBasketButtons.tsx
-│       │   │   │   │   │   ├── MemberExclusionSelector.tsx
-│       │   │   │   │   │   ├── NominationFilesActionsBar.tsx
-│       │   │   │   │   │   ├── NominationFilesAffectationsStatus.tsx
-│       │   │   │   │   │   ├── NominationFilesAutoAffectationButton.tsx
-│       │   │   │   │   │   ├── NominationFilesBatchOperationsButton.tsx
-│       │   │   │   │   │   ├── NominationFilesReporterSelector.tsx
-│       │   │   │   │   │   ├── NominationFilesSaveAffectationsButton.tsx
-│       │   │   │   │   │   ├── NominationFilesStatusBadges.tsx
-│       │   │   │   │   │   ├── NominationFilesToggleEditionModeButton.tsx
-│       │   │   │   │   │   └── cells
-│       │   │   │   │   │       ├── NominationFilesPriorityCell.tsx
-│       │   │   │   │   │       ├── NominationFilesPrioritySelectorCell.tsx
-│       │   │   │   │   │       ├── magistrat-details
-│       │   │   │   │   │       │   ├── MagistratDetails.tsx
-│       │   │   │   │   │       │   ├── MagistratDnModale.tsx
-│       │   │   │   │   │       │   ├── MagistratSummaryButton.tsx
-│       │   │   │   │   │       │   ├── magistrat-comment
-│       │   │   │   │   │       │   │   ├── MagistratComment.tsx
-│       │   │   │   │   │       │   │   ├── MagistratCommentEdit.tsx
-│       │   │   │   │   │       │   │   └── MagistratCommentView.tsx
-│       │   │   │   │   │       │   └── member-memo
-│       │   │   │   │   │       │       ├── MemberMemo.css
-│       │   │   │   │   │       │       └── MemberMemo.tsx
-│       │   │   │   │   │       ├── nomination-file-outcome
-│       │   │   │   │   │       │   ├── NominationFileDocStatusBadge.tsx
-│       │   │   │   │   │       │   ├── NominationFileOutcome.tsx
-│       │   │   │   │   │       │   ├── NominationFileOutcomeBadge.tsx
-│       │   │   │   │   │       │   ├── NominationFileOutcomeCommentModal.tsx
-│       │   │   │   │   │       │   ├── NominationFileOutcomeCommentModalProvider.tsx
-│       │   │   │   │   │       │   ├── NominationFileOutcomeSelector.tsx
-│       │   │   │   │   │       │   ├── NominationFilesOutcomeCell.tsx
-│       │   │   │   │   │       │   ├── OutcomeCommentModalContext.ts
-│       │   │   │   │   │       │   └── nomination-file-outcome-badge.utils.ts
-│       │   │   │   │   │       ├── observation-follow-up
-│       │   │   │   │   │       │   ├── ObservationFollowUpReminderContext.ts
-│       │   │   │   │   │       │   ├── ObservationFollowUpReminderModal.tsx
-│       │   │   │   │   │       │   ├── ObservationFollowUpReminderProvider.tsx
-│       │   │   │   │   │       │   └── useObservationFollowUpReminderModal.hook.ts
-│       │   │   │   │   │       ├── observations
-│       │   │   │   │   │       │   ├── ObservantsCell.tsx
-│       │   │   │   │   │       │   ├── ObservationForm.tsx
-│       │   │   │   │   │       │   ├── ObservationsList.tsx
-│       │   │   │   │   │       │   ├── ObservationsModalContext.ts
-│       │   │   │   │   │       │   └── ObservationsModalProvider.tsx
-│       │   │   │   │   │       ├── reporters
-│       │   │   │   │   │       │   ├── RapporteursDropdownBase.tsx
-│       │   │   │   │   │       │   ├── ReportersAlert.tsx
-│       │   │   │   │   │       │   ├── ReportersCell.tsx
-│       │   │   │   │   │       │   └── ReportersSelector.tsx
-│       │   │   │   │   │       └── targeted-position
-│       │   │   │   │   │           ├── NominationFileTargetPositionCell.tsx
-│       │   │   │   │   │           ├── NominationFileTargetPositionContext.ts
-│       │   │   │   │   │           └── NominationFileTargetPositionProvider.tsx
-│       │   │   │   │   ├── contexts
-│       │   │   │   │   │   ├── FilesAffectationsProvider.tsx
-│       │   │   │   │   │   ├── FilesSelectionProvider.tsx
-│       │   │   │   │   │   ├── NominationFilesTableProvider.tsx
-│       │   │   │   │   │   ├── files-affectations.context.ts
-│       │   │   │   │   │   ├── files-selection.context.ts
-│       │   │   │   │   │   └── files-table.context.ts
-│       │   │   │   │   └── useNominationFilesTableColumns.hook.tsx
-│       │   │   │   ├── observations
-│       │   │   │   │   ├── ObservationCard.tsx
-│       │   │   │   │   ├── follow-up-selector
-│       │   │   │   │   │   ├── ObservationFollowUpCommentContext.ts
-│       │   │   │   │   │   ├── ObservationFollowUpCommentDialog.tsx
-│       │   │   │   │   │   ├── ObservationFollowUpCommentDialogProvider.tsx
-│       │   │   │   │   │   ├── ObservationFollowUpSelector.tsx
-│       │   │   │   │   │   └── useObservationFollowUpCommentDialog.ts
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── ovoid.tsx
-│       │   │   │   ├── priorities
-│       │   │   │   │   └── PriorityBadge.tsx
-│       │   │   │   └── user-avatar
-│       │   │   │       ├── UserAvatar.tsx
-│       │   │   │       ├── UserAvatarList.tsx
-│       │   │   │       ├── index.ts
-│       │   │   │       └── user-avatar.utils.ts
-│       │   │   └── summary
-│       │   │       ├── Summary.tsx
+│       │   │   │   ├── hooks
+│       │   │   │   │   ├── useObservedSections.ts
+│       │   │   │   │   └── useReportListFocus.ts
+│       │   │   │   ├── labels
+│       │   │   │   │   ├── report-list-table-labels.ts
+│       │   │   │   │   ├── state-filter-labels.ts
+│       │   │   │   │   └── summary-labels.ts
+│       │   │   │   └── utils
+│       │   │   │       └── formatters.ts
+│       │   │   ├── sessions
+│       │   │   │   └── components
+│       │   │   │       ├── ManageArchivedSessions.tsx
+│       │   │   │       ├── ManageSession.tsx
+│       │   │   │       └── SessionStatusBadge.tsx
+│       │   │   ├── summary
+│       │   │   │   ├── components
+│       │   │   │   │   ├── Summary.tsx
+│       │   │   │   │   ├── SummaryAutoSaveNotice.tsx
+│       │   │   │   │   ├── SummaryBreadcrumb.tsx
+│       │   │   │   │   ├── SummaryContainer.tsx
+│       │   │   │   │   ├── SummaryNotFound.tsx
+│       │   │   │   │   ├── SummaryOutcomeNotice.tsx
+│       │   │   │   │   ├── SummaryReaderSelector.tsx
+│       │   │   │   │   ├── SummarySectionAttachments.tsx
+│       │   │   │   │   ├── SummarySectionBiography.tsx
+│       │   │   │   │   ├── SummarySectionCard.tsx
+│       │   │   │   │   ├── SummarySectionContent.css
+│       │   │   │   │   ├── SummarySectionContent.tsx
+│       │   │   │   │   ├── SummarySectionEditor.tsx
+│       │   │   │   │   ├── SummarySectionMagistrat.tsx
+│       │   │   │   │   ├── SummarySectionObservations.tsx
+│       │   │   │   │   └── SummarySideNav.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   └── SummaryContext.ts
+│       │   │   │   └── hooks
+│       │   │   │       └── useVisibleSummarySections.ts
+│       │   │   └── transparence
 │       │   │       ├── components
-│       │   │       │   ├── SummaryAutoSaveNotice.tsx
-│       │   │       │   ├── SummaryBreadcrumb.tsx
-│       │   │       │   ├── SummaryContainer.tsx
-│       │   │       │   ├── SummaryOutcomeNotice.tsx
-│       │   │       │   ├── SummaryReaderSelector.tsx
-│       │   │       │   ├── SummarySectionAttachments.tsx
-│       │   │       │   ├── SummarySectionBiography.tsx
-│       │   │       │   ├── SummarySectionCard.tsx
-│       │   │       │   ├── SummarySectionContent.css
-│       │   │       │   ├── SummarySectionContent.tsx
-│       │   │       │   ├── SummarySectionEditor.tsx
-│       │   │       │   ├── SummarySectionMagistrat.tsx
-│       │   │       │   ├── SummarySectionObservations.tsx
-│       │   │       │   └── SummarySideNav.tsx
-│       │   │       └── useVisibleSummarySections.ts
-│       │   ├── constants
-│       │   │   ├── authorized-roles.constants.ts
-│       │   │   ├── labels.constants.ts
-│       │   │   ├── mimetypes.constants.ts
-│       │   │   ├── sg-anchor-attributes.ts
-│       │   │   └── summary-sections.constants.ts
+│       │   │       │   ├── DocActionDelete.tsx
+│       │   │       │   ├── DocActionDetails.tsx
+│       │   │       │   ├── DocActionUpdate.tsx
+│       │   │       │   ├── DocGenerationAction.tsx
+│       │   │       │   ├── HintImportXlsxFile.tsx
+│       │   │       │   ├── ImportAttachmentModal.tsx
+│       │   │       │   ├── ImportObservantsModal.tsx
+│       │   │       │   ├── NominationSessionAttachmentList.tsx
+│       │   │       │   ├── NominationSessionDocsList.tsx
+│       │   │       │   ├── NouvelleTransparence.tsx
+│       │   │       │   ├── SessionBlock.tsx
+│       │   │       │   ├── SessionCsmList.tsx
+│       │   │       │   ├── SessionGardeDesSceauxList.tsx
+│       │   │       │   ├── Sessions.tsx
+│       │   │       │   ├── TableauDeBordActions.tsx
+│       │   │       │   ├── TableauDeBordActionsList.tsx
+│       │   │       │   ├── TableauDeBordEditTransparence.tsx
+│       │   │       │   ├── TableauDeBordResume.tsx
+│       │   │       │   ├── TableauDeBordResumeDetails.tsx
+│       │   │       │   ├── TableauDeBordValidationCallOut.tsx
+│       │   │       │   ├── Transparence.tsx
+│       │   │       │   └── UploadExcelFailedAlert.tsx
+│       │   │       └── labels
+│       │   │           └── labels-mappers.ts
 │       │   ├── generated
 │       │   │   └── api
 │       │   │       ├── client
@@ -988,132 +957,74 @@
 │       │   │       │   └── utils.ts
 │       │   │       ├── sdk.ts
 │       │   │       └── types.ts
-│       │   ├── hooks
-│       │   │   ├── archive
-│       │   │   │   ├── ArchivedSessionContext.ts
-│       │   │   │   ├── ArchivedSessionProvider.tsx
-│       │   │   │   └── useArchivedSession.ts
-│       │   │   ├── roles.hook.ts
-│       │   │   ├── useBeforeUnload.ts
-│       │   │   ├── useConfirmation.hook.tsx
-│       │   │   ├── useLocallyStoredState.hook.ts
-│       │   │   ├── useSelection.hook.ts
-│       │   │   └── useTab.ts
 │       │   ├── i18n
 │       │   │   ├── components.tsx
 │       │   │   ├── formats.ts
 │       │   │   └── hooks.ts
-│       │   ├── index.css
 │       │   ├── instrument.ts
+│       │   ├── layout
+│       │   │   ├── AppFooter.tsx
+│       │   │   ├── PageLayout.tsx
+│       │   │   └── header
+│       │   │       ├── Avatar.tsx
+│       │   │       ├── Header.tsx
+│       │   │       ├── LolfiCsm.tsx
+│       │   │       └── ManageSessionsLink.tsx
 │       │   ├── main.tsx
 │       │   ├── models
 │       │   │   └── breadcrumb-vm.model.ts
 │       │   ├── pages
-│       │   │   ├── LoginPage.tsx
-│       │   │   ├── LolfiRedirectMagistratPage.tsx
-│       │   │   ├── admin
-│       │   │   │   ├── AdminLayout.tsx
-│       │   │   │   ├── ingest
-│       │   │   │   │   └── IngestLolfiArchivePage.tsx
-│       │   │   │   ├── jobs
-│       │   │   │   │   ├── DetailsJobPage.tsx
-│       │   │   │   │   ├── JobsPage.tsx
-│       │   │   │   │   ├── common
-│       │   │   │   │   │   ├── format-job-date.utils.ts
-│       │   │   │   │   │   ├── format-job-duration.utils.ts
-│       │   │   │   │   │   ├── job-status.utils.ts
-│       │   │   │   │   │   ├── job.types.ts
-│       │   │   │   │   │   ├── jobs-page-outlet-context.type.ts
-│       │   │   │   │   │   └── tree.utils.ts
-│       │   │   │   │   ├── components
-│       │   │   │   │   │   ├── JobFileNode.tsx
-│       │   │   │   │   │   ├── JobFilesBranch.tsx
-│       │   │   │   │   │   ├── JobFilesTree.tsx
-│       │   │   │   │   │   └── JobsListItem.tsx
-│       │   │   │   │   └── contexts
-│       │   │   │   │       ├── index.ts
-│       │   │   │   │       ├── job.context.ts
-│       │   │   │   │       └── selected-job-provider.tsx
-│       │   │   │   └── users
-│       │   │   │       ├── AdminUserDetailPage.tsx
-│       │   │   │       ├── AdminUserListPage.tsx
-│       │   │   │       ├── AdminUserRole.tsx
-│       │   │   │       └── admin-user-enum.ts
+│       │   │   ├── agenda
+│       │   │   │   ├── AgendaPage.tsx
+│       │   │   │   └── AgendaPreviewPage.tsx
+│       │   │   ├── auth
+│       │   │   │   └── LoginPage.tsx
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
 │       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
-│       │   │   ├── secretariat-general
+│       │   │   ├── members
+│       │   │   │   ├── DetailsMemberPage.tsx
+│       │   │   │   └── MemberListPage.tsx
+│       │   │   ├── observations
+│       │   │   │   └── ObservationDetailsPage.tsx
+│       │   │   ├── official-report
+│       │   │   │   ├── OfficialReportPage.tsx
+│       │   │   │   └── OfficialReportPreviewPage.tsx
+│       │   │   ├── presentations
+│       │   │   │   ├── PresentationUpsertPage.tsx
+│       │   │   │   ├── PresentationsLayout.tsx
+│       │   │   │   ├── PresentationsPreviewPage.tsx
+│       │   │   │   ├── PresentationsTabPast.tsx
+│       │   │   │   ├── PresentationsTabReady.tsx
+│       │   │   │   └── PresentationsTabsPage.tsx
+│       │   │   ├── reports
+│       │   │   │   ├── ReportListPage.tsx
+│       │   │   │   └── ReportOverviewPage.tsx
+│       │   │   ├── sessions
 │       │   │   │   ├── ArchivedSessionsPage.tsx
-│       │   │   │   ├── ManageSessionPage.tsx
-│       │   │   │   ├── MemberListPage.tsx
-│       │   │   │   ├── NouvelleTransparencePage.tsx
-│       │   │   │   ├── SecretariatGeneralPage.tsx
-│       │   │   │   ├── SecretariatLayout.tsx
-│       │   │   │   ├── TransparencePage.tsx
-│       │   │   │   ├── docs
-│       │   │   │   │   ├── agenda
-│       │   │   │   │   │   ├── AgendaPage.tsx
-│       │   │   │   │   │   ├── AgendaPreviewPage.tsx
-│       │   │   │   │   │   ├── components
-│       │   │   │   │   │   │   ├── AgendaBreadcrumb.tsx
-│       │   │   │   │   │   │   ├── AgendaChairmanSelect.tsx
-│       │   │   │   │   │   │   ├── AgendaFileSearch.tsx
-│       │   │   │   │   │   │   ├── AgendaNominationFile.css
-│       │   │   │   │   │   │   └── AgendaNominationFile.tsx
-│       │   │   │   │   │   ├── context
-│       │   │   │   │   │   │   ├── AgendaContext.tsx
-│       │   │   │   │   │   │   ├── AgendaContext.types.ts
-│       │   │   │   │   │   │   └── AgendaProvider.tsx
-│       │   │   │   │   │   ├── hooks
-│       │   │   │   │   │   │   ├── useAgendaBasket.hook.ts
-│       │   │   │   │   │   │   └── useScrollDownIndicator.hook.ts
-│       │   │   │   │   │   └── steps
-│       │   │   │   │   │       ├── AgendaMetadataStep.tsx
-│       │   │   │   │   │       └── AgendaNominationFilesStep.tsx
-│       │   │   │   │   ├── components
-│       │   │   │   │   │   ├── AbsentMemberSelector.tsx
-│       │   │   │   │   │   ├── ChairmanSelector.tsx
-│       │   │   │   │   │   └── JusticeContactSelector.tsx
-│       │   │   │   │   ├── official-report
-│       │   │   │   │   │   ├── OfficialReportPage.tsx
-│       │   │   │   │   │   ├── OfficialReportPreviewPage.tsx
-│       │   │   │   │   │   ├── components
-│       │   │   │   │   │   │   ├── OfficialReportBreadCrumb.tsx
-│       │   │   │   │   │   │   └── OfficialReportForm.tsx
-│       │   │   │   │   │   ├── context
-│       │   │   │   │   │   │   ├── OfficialReportContext.tsx
-│       │   │   │   │   │   │   ├── OfficialReportContext.types.ts
-│       │   │   │   │   │   │   └── OfficialReportProvider.tsx
-│       │   │   │   │   │   └── hooks
-│       │   │   │   │   │       └── useSelection.ts
-│       │   │   │   │   └── presentations
-│       │   │   │   │       ├── PresentationUpsertPage.tsx
-│       │   │   │   │       ├── PresentationsLayout.tsx
-│       │   │   │   │       ├── PresentationsPreviewPage.tsx
-│       │   │   │   │       ├── PresentationsTabPast.tsx
-│       │   │   │   │       ├── PresentationsTabReady.tsx
-│       │   │   │   │       ├── PresentationsTabsPage.tsx
-│       │   │   │   │       ├── components
-│       │   │   │   │       │   └── PresentationAgendaSelectionList.tsx
-│       │   │   │   │       └── contexts
-│       │   │   │   │           ├── PresentatPlanModalProvider.tsx
-│       │   │   │   │           ├── PresentationPlanProvider.tsx
-│       │   │   │   │           ├── present-plan-modal.context.ts
-│       │   │   │   │           ├── present-plan-modal.type.ts
-│       │   │   │   │           ├── presentation-plan.context.ts
-│       │   │   │   │           └── presentation-plan.type.ts
-│       │   │   │   ├── membres
-│       │   │   │   │   └── DetailsMemberPage.tsx
-│       │   │   │   └── observations
-│       │   │   │       └── ObservationDetailsPage.tsx
+│       │   │   │   ├── LolfiRedirectMagistratPage.tsx
+│       │   │   │   └── ManageSessionPage.tsx
+│       │   │   ├── spaces
+│       │   │   │   ├── admin
+│       │   │   │   │   ├── AdminJobDetailsPage.tsx
+│       │   │   │   │   ├── AdminJobsPage.tsx
+│       │   │   │   │   ├── AdminLayout.tsx
+│       │   │   │   │   ├── AdminUserDetailPage.tsx
+│       │   │   │   │   ├── AdminUserListPage.tsx
+│       │   │   │   │   ├── IngestLolfiArchivePage.tsx
+│       │   │   │   │   └── jobs-page-outlet-context.type.ts
+│       │   │   │   ├── member
+│       │   │   │   │   └── MemberLayout.tsx
+│       │   │   │   └── secretariat-general
+│       │   │   │       ├── SecretariatGeneralPage.tsx
+│       │   │   │       └── SecretariatLayout.tsx
 │       │   │   ├── summary
-│       │   │   │   ├── SummaryContext.ts
-│       │   │   │   ├── SummaryNotFound.tsx
 │       │   │   │   └── SummaryPage.tsx
 │       │   │   └── transparence
+│       │   │       ├── NouvelleTransparencePage.tsx
 │       │   │       ├── SessionsPage.tsx
-│       │   │       └── TransparencesLayout.tsx
+│       │   │       └── TransparencePage.tsx
 │       │   ├── queries
 │       │   │   ├── administration.queries.ts
 │       │   │   ├── agenda.queries.ts
@@ -1121,6 +1032,7 @@
 │       │   │   ├── auth.queries.ts
 │       │   │   ├── ingest.queries.ts
 │       │   │   ├── jobs.queries.ts
+│       │   │   ├── jurisdictions.queries.ts
 │       │   │   ├── members.queries.ts
 │       │   │   ├── nomination-sessions.queries.ts
 │       │   │   ├── observations.queries.ts
@@ -1130,6 +1042,124 @@
 │       │   ├── router
 │       │   │   ├── AppErrorBoundary.tsx
 │       │   │   └── AppRouter.tsx
+│       │   ├── shared
+│       │   │   ├── components
+│       │   │   │   ├── LolfiMagistratLink.tsx
+│       │   │   │   ├── banners
+│       │   │   │   │   ├── BanneredLayout.tsx
+│       │   │   │   │   ├── PermanentBanner.tsx
+│       │   │   │   │   ├── StagingBanner.tsx
+│       │   │   │   │   └── archived-banner
+│       │   │   │   │       ├── ArchiveBannerPortal.tsx
+│       │   │   │   │       └── ArchivedSessionBanner.tsx
+│       │   │   │   ├── priorities
+│       │   │   │   │   └── PriorityBadge.tsx
+│       │   │   │   └── user-avatar
+│       │   │   │       ├── UserAvatar.tsx
+│       │   │   │       ├── UserAvatarList.tsx
+│       │   │   │       ├── index.ts
+│       │   │   │       └── user-avatar.utils.ts
+│       │   │   ├── context
+│       │   │   │   ├── alerts
+│       │   │   │   │   ├── AlertsProvider.tsx
+│       │   │   │   │   └── alerts.context.ts
+│       │   │   │   ├── archived-session
+│       │   │   │   │   ├── ArchivedSessionContext.ts
+│       │   │   │   │   ├── ArchivedSessionProvider.tsx
+│       │   │   │   │   └── useArchivedSession.ts
+│       │   │   │   └── confirmation
+│       │   │   │       └── useConfirmation.hook.tsx
+│       │   │   ├── hooks
+│       │   │   │   ├── useBeforeUnload.ts
+│       │   │   │   ├── useLocallyStoredState.hook.ts
+│       │   │   │   ├── useSelection.hook.ts
+│       │   │   │   └── useTab.ts
+│       │   │   └── ui
+│       │   │       ├── Breadcrumb.tsx
+│       │   │       ├── DeleteAttachmentModal.tsx
+│       │   │       ├── DropdownFilter.tsx
+│       │   │       ├── DropdownMenu.tsx
+│       │   │       ├── DropdownSelect.tsx
+│       │   │       ├── DropdownSelectMultiple.tsx
+│       │   │       ├── Mandatory.tsx
+│       │   │       ├── Marked.tsx
+│       │   │       ├── PageContentLayout.tsx
+│       │   │       ├── ScrollToTop.tsx
+│       │   │       ├── TextValue.tsx
+│       │   │       ├── card
+│       │   │       │   ├── Card.stories.tsx
+│       │   │       │   ├── Card.test.tsx
+│       │   │       │   ├── Card.tsx
+│       │   │       │   └── index.ts
+│       │   │       ├── combobox.tsx
+│       │   │       ├── data-table
+│       │   │       │   ├── DataTable.tsx
+│       │   │       │   ├── ReactTableBody.tsx
+│       │   │       │   ├── ReactTableColumnVisibility.tsx
+│       │   │       │   ├── ReactTableContent.tsx
+│       │   │       │   ├── ReactTableFilterColumn.tsx
+│       │   │       │   ├── ReactTableFilterColumnAsyncList.tsx
+│       │   │       │   ├── ReactTableFilterSearch.tsx
+│       │   │       │   ├── ReactTableHead.tsx
+│       │   │       │   ├── ReactTablePagination.tsx
+│       │   │       │   ├── ReactTableWrapper.tsx
+│       │   │       │   ├── hooks
+│       │   │       │   │   ├── assert-is-page-size.ts
+│       │   │       │   │   ├── data-table-parsers.ts
+│       │   │       │   │   ├── data-table-state.ts
+│       │   │       │   │   ├── useDataTable.ts
+│       │   │       │   │   ├── useDataTablePaginationItemLabel.ts
+│       │   │       │   │   ├── useDataTableState.ts
+│       │   │       │   │   └── useQueryDataTableState.ts
+│       │   │       │   └── index.ts
+│       │   │       ├── document-preview
+│       │   │       │   ├── DocumentEditor.css
+│       │   │       │   ├── DocumentEditor.tsx
+│       │   │       │   ├── DocumentIframe.tsx
+│       │   │       │   ├── DocumentPreview.tsx
+│       │   │       │   └── document-fonts.css
+│       │   │       ├── indeterminate-checkbox
+│       │   │       │   ├── IndeterminateCheckbox.css
+│       │   │       │   └── IndeterminateCheckbox.tsx
+│       │   │       ├── loaders
+│       │   │       │   └── pulse
+│       │   │       │       ├── Pulse.css
+│       │   │       │       ├── Pulse.tsx
+│       │   │       │       └── index.ts
+│       │   │       ├── menu.tsx
+│       │   │       ├── ovoid.tsx
+│       │   │       └── tip-tap-editor
+│       │   │           ├── MenuBar.tsx
+│       │   │           ├── buttons
+│       │   │           │   ├── BoldButton.tsx
+│       │   │           │   ├── BulletListButton.tsx
+│       │   │           │   ├── EditorButton.tsx
+│       │   │           │   ├── HeadingButton.tsx
+│       │   │           │   ├── HighlightButton.tsx
+│       │   │           │   ├── ImageUploadButton.tsx
+│       │   │           │   ├── IndentDecreaseButton.tsx
+│       │   │           │   ├── IndentIncreaseButton.tsx
+│       │   │           │   ├── ItalicButton.tsx
+│       │   │           │   ├── OrderedListButton.tsx
+│       │   │           │   ├── RedoButton.tsx
+│       │   │           │   ├── TextColorButton.tsx
+│       │   │           │   ├── UnderlineButton.tsx
+│       │   │           │   └── UndoButton.tsx
+│       │   │           ├── extensions
+│       │   │           │   ├── ImageUploadPreview.tsx
+│       │   │           │   ├── constant.ts
+│       │   │           │   ├── editor-file-uploader.ts
+│       │   │           │   ├── file-handler-extension.ts
+│       │   │           │   └── useTipTapExtensions.ts
+│       │   │           ├── hooks
+│       │   │           │   ├── useIsBlurred.ts
+│       │   │           │   └── useMarkPriority.ts
+│       │   │           ├── index.tsx
+│       │   │           └── markPriorityFactory.ts
+│       │   ├── styles
+│       │   │   ├── Colors.mdx
+│       │   │   ├── Swatch.tsx
+│       │   │   └── index.css
 │       │   ├── tanstack-react-table.d.ts
 │       │   ├── types
 │       │   │   ├── enums.types.ts
@@ -1159,13 +1189,12 @@
 │       │   │   ├── manage-session-list.spec.ts
 │       │   │   ├── manage-session.spec.ts
 │       │   │   ├── members.spec.ts
+│       │   │   ├── nomination-file-attachment.spec.ts
 │       │   │   ├── observations.spec.ts
 │       │   │   └── sg-auth.setup.ts
 │       │   ├── fixtures
 │       │   │   ├── api.fixture.ts
-│       │   │   ├── auth.fixture.ts
-│       │   │   ├── data.fixture.ts
-│       │   │   └── sessions.fixture.ts
+│       │   │   └── auth.fixture.ts
 │       │   ├── fixtures.ts
 │       │   ├── pages
 │       │   │   ├── admin.page.ts
@@ -1196,6 +1225,9 @@
 │       └── vitest.setup.ts
 ├── bin
 │   └── api.sh
+├── docs
+│   └── adr
+│       └── 2026-06-emploi-de-l-anglais.md
 ├── package.json
 ├── packages
 │   ├── lolfi
@@ -1240,4 +1272,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-273 directories, 969 files
+296 directories, 978 files
