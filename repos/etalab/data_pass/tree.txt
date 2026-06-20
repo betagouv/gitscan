@@ -819,6 +819,7 @@
 │   │       │   ├── cards.css
 │   │       │   ├── clickable_rows.css
 │   │       │   ├── contact_card.css
+│   │       │   ├── copiable_field.css
 │   │       │   ├── dashboard_empty_state.css
 │   │       │   ├── dsfr_multi_select.css
 │   │       │   ├── intro_stepper.css
@@ -989,6 +990,8 @@
 │   │   │   ├── .keep
 │   │   │   ├── access_authorization.rb
 │   │   │   ├── api_pagination.rb
+│   │   │   ├── authentication
+│   │   │   │   └── session_lifecycle.rb
 │   │   │   ├── authentication.rb
 │   │   │   ├── authorization_or_request_context.rb
 │   │   │   ├── authorization_requests_flashes.rb
@@ -1214,7 +1217,8 @@
 │   │   ├── find_organization.rb
 │   │   ├── increment_authorization_request_unread_counter.rb
 │   │   ├── instruction
-│   │   │   └── merge_managed_roles.rb
+│   │   │   ├── merge_managed_roles.rb
+│   │   │   └── revoke_oauth_applications_if_no_developer_role.rb
 │   │   ├── link_applicant_to_organization.rb
 │   │   ├── mark_authorization_as_revoked.rb
 │   │   ├── mark_authorizations_as_revoked.rb
@@ -1268,6 +1272,7 @@
 │   │   │   ├── modified_form_controller.js
 │   │   │   ├── name_with_uid_preview_controller.js
 │   │   │   ├── nested_form_focus_controller.js
+│   │   │   ├── oauth_revocation_warning_controller.js
 │   │   │   ├── remove_attached_file_controller.js
 │   │   │   ├── scroll_into_view_controller.js
 │   │   │   ├── scroll_to_controller.js
@@ -1557,6 +1562,7 @@
 │   │   │   └── developer_scoping.rb
 │   │   ├── data_provider_policy.rb
 │   │   ├── developer
+│   │   │   ├── oauth_application_policy.rb
 │   │   │   ├── webhook_attempt_policy.rb
 │   │   │   └── webhook_policy.rb
 │   │   ├── habilitation_type_policy.rb
@@ -1572,7 +1578,6 @@
 │   │   ├── authorization_requests_mentions_query.rb
 │   │   ├── authorizations_mentions_query.rb
 │   │   ├── demandes_habilitations_viewable_by_user.rb
-│   │   ├── processing_time_query.rb
 │   │   └── stats
 │   │       ├── backlog_evolution_query.rb
 │   │       ├── base_stats_query.rb
@@ -2061,7 +2066,10 @@
 │       ├── developers
 │       │   ├── index.html.erb
 │       │   ├── oauth_applications
-│       │   │   └── index.html.erb
+│       │   │   ├── _copiable_field.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show_credentials.html.erb
 │       │   ├── open_api
 │       │   │   └── show.html.erb
 │       │   ├── tutorials
@@ -2638,6 +2646,7 @@
 │   ├── developpeurs
 │   │   ├── applications.feature
 │   │   ├── documentation.feature
+│   │   ├── gestion_des_cles_api.feature
 │   │   ├── tutoriels.feature
 │   │   └── webhooks.feature
 │   ├── eligibility_check.feature
@@ -2729,6 +2738,7 @@
 │   │   ├── consultation_habilitation.feature
 │   │   ├── liste_des_habilitations.feature
 │   │   └── notifications.feature
+│   ├── session_expiree.feature
 │   ├── soumission_demande_scan_antivirus.feature
 │   ├── soumission_depuis_resume_demande_modifications.feature
 │   ├── sous-domaine_nouvelle_habilitation.feature
@@ -2760,6 +2770,7 @@
 │   │   ├── messages_steps.rb
 │   │   ├── modal_steps.rb
 │   │   ├── notification_unsubscription_steps.rb
+│   │   ├── oauth_application_steps.rb
 │   │   ├── organizations_steps.rb
 │   │   ├── query_steps.rb
 │   │   ├── settings.rb
@@ -3133,7 +3144,8 @@
 │   │   ├── find_or_create_user_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_user_through_pro_connect_spec.rb
 │   │   ├── instruction
-│   │   │   └── merge_managed_roles_spec.rb
+│   │   │   ├── merge_managed_roles_spec.rb
+│   │   │   └── revoke_oauth_applications_if_no_developer_role_spec.rb
 │   │   ├── link_applicant_to_organization_spec.rb
 │   │   ├── notifications
 │   │   │   └── unsubscribe_spec.rb
@@ -3309,6 +3321,8 @@
 │   │   ├── authorization_request_form_policy_spec.rb
 │   │   ├── authorization_request_policy_spec.rb
 │   │   ├── data_provider_policy_spec.rb
+│   │   ├── developer
+│   │   │   └── oauth_application_policy_spec.rb
 │   │   ├── habilitation_type_policy_spec.rb
 │   │   └── instruction
 │   │       └── user_right_policy_spec.rb
@@ -3317,7 +3331,6 @@
 │   │   ├── authorization_requests_mentions_query_spec.rb
 │   │   ├── authorizations_mentions_query_spec.rb
 │   │   ├── demandes_habilitations_viewable_by_user_spec.rb
-│   │   ├── processing_time_query_spec.rb
 │   │   └── stats
 │   │       ├── backlog_evolution_query_spec.rb
 │   │       ├── base_stats_query_spec.rb
@@ -3439,4 +3452,4 @@
     ├── .keep
     └── javascript
         └── .keep
-487 directories, 3092 files
+489 directories, 3103 files

@@ -1,35 +1,33 @@
-## Changelog : data_pass (30 derniers jours, au 17 juin 2026)
+## Changelog : data_pass (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment en facilitant la gestion des inscriptions et des droits d'accès. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme. L'intégration avec des services tiers comme HubEE et ProConnect a été renforcée.
+Ce mois-ci, les évolutions de DataPass se concentrent sur l'amélioration de la sécurité et de l'expérience utilisateur. Des ajustements ont été apportés à la gestion des sessions, à la gestion des clés API, et à la simplification des processus de désinscription. Des améliorations ont également été apportées à l'API et à l'intégration avec différents services.
 
 ### Évolutions fonctionnelles
-- Possibilité de se désinscrire facilement des notifications par email via un lien unique et chiffré présent dans les emails. [#1606](https://github.com/etalab/data_pass/pull/1606)
-- Amélioration de la présentation des préférences utilisateur et correction de l'accessibilité (RGAA). [#1606](https://github.com/etalab/data_pass/pull/1606)
-- Envoi individuel des emails d'instruction pour une meilleure délivrabilité et un suivi plus précis. [#1606](https://github.com/etalab/data_pass/pull/1606)
-- Correction d'un bug empêchant la suppression correcte d'une ligne de droit utilisateur. [#1634](https://github.com/etalab/data_pass/pull/1634)
-- Amélioration de la recherche d'utilisateurs et de la gestion des droits, avec une meilleure expérience utilisateur. [#1610](https://github.com/etalab/data_pass/pull/1610)
-- Possibilité de définir plusieurs modèles de cas d'usage pour un même formulaire, offrant une plus grande flexibilité. [#1564](https://github.com/etalab/data_pass/pull/1564)
-- Ajout d'un lien pour gérer les préférences de notification dans les emails d'instruction. [#1575](https://github.com/etalab/data_pass/pull/1575)
-- Les demandes validées sont maintenant incluses dans les résultats de recherche par ID. [#1619](https://github.com/etalab/data_pass/pull/1619)
-- Mise à jour des CGU pour les services Prosante Connect et TDAE. [#1596](https://github.com/etalab/data_pass/pull/1596), [#1585](https://github.com/etalab/data_pass/pull/1585)
-- Amélioration de la recherche et de l'affichage des données géographiques (CNous). [#1582](https://github.com/etalab/data_pass/pull/1582)
-- Intégration du formulaire pré-rempli Andyvie (Recreo) dans l'API. [#1577](https://github.com/etalab/data_pass/pull/1577)
-- Ajout du formulaire pré-rempli MGDIS Aides facultatives départementales. [#1501](https://github.com/etalab/data_pass/pull/1501)
-- Possibilité pour les administrateurs de s'auto-éditer leurs droits. [#1573](https://github.com/etalab/data_pass/pull/1573)
+- **Sécurité des sessions:** La durée des sessions DataPass a été réduite à 12 heures d'inactivité, alignée sur ProConnect, avec un maximum de 24 heures. [#1789](https://github.com/etalab/data_pass/issues/1789)
+- **Gestion des clés API:** Les développeurs peuvent désormais créer et supprimer leurs propres clés API pour l'API DataPass. [#1780](https://github.com/etalab/data_pass/issues/1780)
+- **Désinscription simplifiée:**  Les utilisateurs peuvent maintenant se désinscrire en un clic depuis un email contenant un token chiffré. [#1743](https://github.com/etalab/data_pass/issues/1743)
+- **Amélioration de la recherche utilisateurs:** La recherche d'utilisateurs a été améliorée et l'UX de la gestion des droits a été optimisée. [#1765](https://github.com/etalab/data_pass/issues/1765)
+- **Gestion des rôles:** Les managers peuvent désormais attribuer le rôle développeur à leurs utilisateurs.
+- **Notifications:** Ajout d'un lien de gestion des notifications dans les emails d'instruction.
+- **Formulaires pré-remplis:** Ajout de formulaires pré-remplis pour MGDIS Aides facultatives départementales et Andyvie (Recreo).
+- **Validation:** Remplacement du terme "Approbation" par "Validation" dans l'interface.
+- **Affichage des demandes validées:** Les demandes validées sont désormais incluses dans les résultats de recherche par ID.
+- **Amélioration des emails FranceConnect:** Mise à jour du contenu des emails FranceConnect.
 
 ### Évolutions techniques
-- Intégration du bridge HubEE par bloc, améliorant la gestion de la proactivité. [#1633](https://github.com/etalab/data_pass/pull/1633)
-- Amélioration de la gestion des erreurs et des performances du tableau de bord, notamment en corrigeant les requêtes N+1 et en réduisant le bruit dans Sentry. [#1604](https://github.com/etalab/data_pass/pull/1604)
-- Documentation du processus d'authentification ProConnect. [#1622](https://github.com/etalab/data_pass/pull/1622)
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour des dépendances (Faraday, JWT, Rubocop, Puma, etc.).
-- Amélioration de la robustesse des tests Cucumber. [#1608](https://github.com/etalab/data_pass/pull/1608)
+- **Refactoring API:**  Amélioration de la gestion des endpoints de l'API, avec la possibilité de trier les résultats. [#1746](https://github.com/etalab/data_pass/issues/1746)
+- **Intégration HubEE:** Amélioration de l'intégration avec HubEE, notamment pour la proactivité boursiers. [#1633](https://github.com/etalab/data_pass/issues/1633) et [#1626](https://github.com/etalab/data_pass/issues/1626)
+- **Optimisation des performances:**  Correction d'un problème de N+1 dans le dashboard et réduction du bruit des transactions Sentry. [#1604](https://github.com/etalab/data_pass/issues/1604)
+- **Mise à jour des dépendances:**  Mise à jour de plusieurs dépendances, notamment Ruby, Rubocop, et les actions Docker.
+- **Amélioration de la documentation:** Documentation du processus d'authentification ProConnect.
+- **Correction de bugs:** Correction de plusieurs bugs, notamment liés aux tests Cucumber et à la gestion des liens.
+- **Suppression de code obsolète:** Suppression de code lié à une redirection inutile après une recherche par ID.
 
 ### Autres changements
-- Mise à jour des liens vers la documentation Swagger. [#1623](https://github.com/etalab/data_pass/pull/1623)
-- Correction de liens obsolètes dans la documentation. [#1617](https://github.com/etalab/data_pass/pull/1617)
-- Suppression de code HTML générique inutile dans les emails. [#1600](https://github.com/etalab/data_pass/pull/1600)
-- Amélioration de la prévisualisation des emails FranceConnect. [#1599](https://github.com/etalab/data_pass/pull/1599)
-- Suppression de TODO et remplacement par des données métier. [#1594](https://github.com/etalab/data_pass/pull/1594)
-- Mise à jour de la version de Ruby. [#1285](https://github.com/etalab/data_pass/pull/1285)
+- **Mise à jour des CGU:** Mise à jour des conditions générales d'utilisation pour TDAE et Prosante Connect.
+- **Amélioration de la configuration:** Rendre `SameSite=Lax` explicite pour les cookies.
+- **Correction de liens:** Correction des liens vers la documentation.
+- **Amélioration de la qualité du code:** Application de corrections automatiques Rubocop.
+- **Ajout de seed:** Ajout d'un seed pour la feature geo/cnous.
+- **Amélioration des tests:** Correction de tests Cucumber.
