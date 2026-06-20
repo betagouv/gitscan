@@ -23,15 +23,16 @@
 ├── data
 │   ├── Dockerfile
 │   ├── __init__.py
-│   ├── celery_app.py
+│   ├── broker.py
+│   ├── dashboard.py
 │   ├── dumps-sample
 │   │   ├── epcis.json
 │   │   ├── operators.json
 │   │   ├── organizations.json
 │   │   ├── service_usages.json
 │   │   └── services.json
-│   ├── poetry.lock
 │   ├── pyproject.toml
+│   ├── redis_conn.py
 │   ├── tasks
 │   │   ├── __init__.py
 │   │   ├── check_dns.py
@@ -42,16 +43,19 @@
 │   │   ├── dumps.py
 │   │   ├── historize.py
 │   │   ├── lib.py
+│   │   ├── queue_all.py
 │   │   ├── sync.py
 │   │   └── sync_repertoire.py
-│   └── tests
-│       ├── __init__.py
-│       ├── conftest.py
-│       ├── test_check_dns.py
-│       ├── test_check_website.py
-│       ├── test_communes.py
-│       ├── test_conformance.py
-│       └── test_lib.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_check_dns.py
+│   │   ├── test_check_website.py
+│   │   ├── test_communes.py
+│   │   ├── test_conformance.py
+│   │   └── test_lib.py
+│   ├── uv.lock
+│   └── worker.py
 ├── docker-compose.yml
 ├── docs
 │   └── rpnt-data-process.png
@@ -310,4 +314,4 @@
 └── webcomponents
     ├── demo.html
     └── st-collectivite-search.tsx
-48 directories, 353 files
+48 directories, 357 files
