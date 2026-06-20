@@ -1,33 +1,42 @@
-## Changelog : messages (30 derniers jours, au 17 juin 2026)
+## Changelog : messages (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de la performance et de l'expérience utilisateur de Messages. Les améliorations incluent une meilleure gestion des pièces jointes, une navigation plus accessible, des corrections de bugs importants et une refonte technique majeure pour moderniser l'interface utilisateur. Des améliorations de la sécurité ont également été apportées, notamment au niveau de la configuration SMTP et de la gestion des certificats.
+Les 30 derniers jours ont été marqués par une refonte technique majeure avec le passage de Next.js à Vite et TanStack Router, améliorant ainsi les performances et la maintenabilité du frontend. De nombreuses corrections de bugs ont été apportées, notamment concernant la composition des emails, la gestion des calendriers, la sécurité et l'importation de boîtes aux lettres. Des améliorations significatives ont également été apportées à l'expérience utilisateur, comme la gestion des brouillons, les paramètres de boîte aux lettres et la prévisualisation des pièces jointes.
 
 ### Évolutions fonctionnelles
-- **Threads :** Suppression définitive des brouillons et amélioration de l'édition des brouillons. [#707](https://github.com/suitenumerique/messages/issues/707)
-- **Calendrier :** Possibilité de lier une instance CalDAV pour accepter directement les événements. [#584](https://github.com/suitenumerique/messages/issues/584)
-- **Pièces jointes :** Prévisualisation des pièces jointes. [#676](https://github.com/suitenumerique/messages/issues/676)
-- **Boîtes de réception :** Amélioration de la navigation et de l'accessibilité des boîtes de réception, notamment avec l'utilisation de menus déroulants améliorés. [#705](https://github.com/suitenumerique/messages/issues/705) et [#708](https://github.com/suitenumerique/messages/issues/708)
-- **Composer :** Amélioration de l'expérience de composition des messages.
-- **Assignation de threads :** Possibilité d'assigner des threads à des utilisateurs. [#645](https://github.com/suitenumerique/messages/issues/645)
-- **Paramètres de la boîte de réception :** Regroupement des paramètres de la boîte de réception dans une boîte de dialogue. [#702](https://github.com/suitenumerique/messages/issues/702)
-- **Création de boîte aux lettres :** Possibilité de créer une boîte aux lettres sans mot de passe lorsque la synchronisation d'identité est désactivée. [#707](https://github.com/suitenumerique/messages/issues/707)
+- Possibilité de supprimer définitivement les brouillons et amélioration de l'édition des brouillons.
+- Ajout d'un lien vers une instance CalDAV pour accepter directement les événements.
+- Amélioration de l'expérience d'envoi de messages.
+- Prévisualisation des pièces jointes.
+- Possibilité de créer un compte sans synchronisation d'identité.
+- Amélioration de la navigation dans les threads et de l'expérience utilisateur du multiselect.
+- Affinement du menu déroulant des boîtes aux lettres.
+- Traduction des espaces réservés des modèles et ajout de la variable `user_name`.
+- Regroupement des paramètres de la boîte aux lettres dans une boîte de dialogue.
+- Amélioration de l'affichage des événements récurrents avec exceptions.
+- Ajout d'un rapport de l'état de l'auto-vérification à Sentry.
 
 ### Évolutions techniques
-- **Frontend :** Migration de Next.js vers Vite et TanStack Router pour moderniser l'architecture frontend et améliorer les performances. [#675](https://github.com/suitenumerique/messages/issues/675)
-- **Bibliothèque email :** Refactorisation du parser et du compositeur d'emails vers une nouvelle bibliothèque `jmap-email`. [#700](https://github.com/suitenumerique/messages/issues/700)
-- **Stockage des blobs :** Implémentation d'un stockage en plusieurs niveaux pour les blobs et les pièces jointes.
-- **Sécurité SMTP :** Renforcement de la configuration de la connexion SMTP et des proxys.
-- **Dépendances :** Mise à jour de `django-lasuite` vers la version 0.0.26. [#689](https://github.com/suitenumerique/messages/issues/689)
-- **Architecture :** Suppression des champs de modèle dépréciés.
-- **Performance :** Optimisation des requêtes N+1 dans l'interface d'administration et des recherches lentes.
+- Refonte du frontend : remplacement de Next.js par Vite et TanStack Router [#675].
+- Déplacement du parser et du compositeur d'emails vers la nouvelle librairie `jmap-email` [#700].
+- Ajout de scripts de publication PyPI pour `jmap-email`.
+- Utilisation du composant `LaGaufreV2`.
+- Mise à jour de `dompurify` vers la dernière version.
+- Mise à jour de `django-lasuite` vers la version 0.0.26 [#689].
+- Ajout de `defusedxml` comme dépendance.
+- Suppression des champs de modèle dépréciés liés à la migration du stockage en niveaux.
 
 ### Autres changements
-- Correction d'un bug empêchant l'ajout de l'en-tête `To` aux emails sortants. [#712](https://github.com/suitenumerique/messages/issues/712)
-- Correction de bugs liés à l'importation de fichiers MBOX et PST.
-- Amélioration de la gestion des statuts de vérification de la messagerie (delivery status).
-- Ajout de scripts de publication PyPI pour la bibliothèque `jmap-email`.
-- Amélioration de la gestion des erreurs et des logs.
-- Internationalisation de chaînes de caractères manquantes.
-- Mise à jour de la documentation.
-- Correction de bugs divers liés à l'interface utilisateur et à la gestion des threads.
+- Correction d'un problème de code en dur du paramètre `lang=en` qui pouvait déclencher une traduction automatique.
+- Correction de l'ajout de l'en-tête `To` aux emails sortants qui en étaient dépourvus [#712].
+- Correction de problèmes liés au compositeur.
+- Correction de problèmes de désépinglage des threads lors de la suppression d'un brouillon.
+- Correction de problèmes liés à la gestion des pièces jointes `message/delivery-status`.
+- Correction de la persistance du nom de la boîte aux lettres lorsqu'un contact est manquant.
+- Correction d'un problème de permission de socket Milter au démarrage.
+- Renforcement de la sécurité de la connexion SMTP et de la configuration des proxies.
+- Renforcement de la sécurité de l'analyse des emails entrants.
+- Correction de la détection de fichiers Mbox en tant que `text/html` avec certaines versions de libmagic [#696].
+- Correction d'un problème de validation TLS opportuniste contre des MX avec des certificats incompatibles [#687].
+- Correction d'un bug dans l'ordre et la sélection par défaut du calendrier lors de la réponse à un événement [#699].
+- Ajout de contrôles de santé lprobe et de vérification des sommes de contrôle pour lprobe + Caddy.
