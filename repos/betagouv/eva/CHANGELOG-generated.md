@@ -1,10 +1,11 @@
-## Changelog : eva (30 derniers jours, au 2026-05-20)
+## Changelog : eva (30 derniers jours, au 20 juin 2026)
 
 ### Résumé
-Ce changelog couvre une période de maintenance et de mise à jour des dépendances du projet eva. La principale évolution est la mise à jour de la librairie `uuid` vers la version 14. Aucune nouvelle fonctionnalité ou correction de bug visible pour l'utilisateur n'a été implémentée durant cette période.
+Ce mois-ci, les efforts de développement se sont concentrés sur la maintenance technique du projet. L'environnement de développement a été mis à jour avec une version plus récente de Node.js (v22) pour bénéficier des dernières améliorations de performance et de sécurité. Des mises à jour de dépendances mineures ont également été effectuées pour assurer la stabilité du projet.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `uuid` vers la version 14. [#1234](https://github.com/betagouv/eva/issues/1234) (implémentation non visible dans les commits)
+- Mise à jour de Node.js vers la version 22 [#73bb2b9](https://github.com/betagouv/eva/commit/73bb2b9)
 
 ### Autres changements
-- Actualisation générale des dépendances du projet.
+- Mise à jour de certaines dépendances du projet. [#ed48db2](https://github.com/betagouv/eva/commit/ed48db2)
+- Mise à jour de la dépendance `shell-quote` de la version 1.8.3 à la version 1.8.4 [#c7f02f8](https://github.com/betagouv/eva/commit/c7f02f8)
