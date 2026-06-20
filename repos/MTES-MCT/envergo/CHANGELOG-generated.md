@@ -1,26 +1,35 @@
-## Changelog : envergo (30 derniers jours, au 15 juin 2026)
+## Changelog : envergo (30 derniers jours, au 17 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des ICPE (Installations Classées pour la Protection de l'Environnement), l'optimisation des performances de l'application, et la correction de bugs pour une meilleure expérience utilisateur. Des améliorations ont également été apportées à la gestion des notifications par email et à la clarté de l'interface utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données, notamment concernant les critères ICPE et les règles d'urbanisme, ainsi que sur des optimisations de performance et des corrections de bugs. Des améliorations significatives ont été apportées à l'interface utilisateur pour faciliter l'accès aux informations et la gestion des dossiers. La sécurité et la conformité RGPD ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- **ICPE :** Ajout d'une gestion plus fine des cas par cas pour les ICPE, incluant de nouveaux critères, des actions spécifiques et des modèles d'email adaptés. L'affichage des informations ICPE a été amélioré et rendu plus clair.
-- **Notifications Email :** Amélioration de la gestion des emails, notamment en lien avec les ICPE, avec des templates mis à jour et une meilleure gestion des erreurs.
-- **Interface Utilisateur :**
-    - Clarification des messages d'erreur et des indications affichées aux utilisateurs.
-    - Amélioration de l'affichage des haies et de leur longueur.
-    - Modification du libellé "Administration" vers "Espace instruction" pour plus de clarté.
-- **Gestion des pétitions :** Refonte de la gestion du contexte des pétitions pour améliorer la performance et la clarté.
+- Amélioration de l'affichage et de la gestion des données relatives aux densités.
+- Ajout de la gestion du "cas par cas" pour les ICPE, avec des templates et des actions spécifiques.
+- Amélioration de l'affichage des données de plantation et des conditions associées.
+- Correction de l'affichage des données dans les avis (html et txt).
+- Amélioration de la gestion des critères ICPE et de leur visibilité en fonction des utilisateurs.
+- Mise à jour des textes et libellés pour une meilleure clarté, notamment dans l'espace instruction.
+- Possibilité d'importer plusieurs documents simultanément.
+- Amélioration de l'interface pour la gestion des zones et des coefficients.
+- Ajout d'une fonctionnalité permettant d'importer les données de l'inventaire national du patrimoine naturel (INPN).
 
 ### Évolutions techniques
-- **Performance :** Optimisations significatives des requêtes en base de données, notamment pour l'affichage des données et le calcul des longueurs de haies. Mise en cache de données fréquemment utilisées pour réduire la charge sur la base de données.
-- **Refactoring :** Plusieurs refactorings ont été effectués pour améliorer la qualité du code, notamment dans les modules liés aux conditions d'évaluation et à la gestion des ICPE.
-- **Tests :** Ajout et amélioration des tests unitaires et d'intégration, notamment pour les nouvelles fonctionnalités ICPE et les calculs de longueurs de haies.
-- **Dépendances :** Mise à jour des dépendances du projet.
-- **Sécurité :** Suppression de fonctionnalités obsolètes liées à Brevo (anciennement Sendinblue) pour améliorer la conformité RGPD.
+- Optimisations de performance significatives au niveau des requêtes en base de données, notamment pour les pétitions et les données de Moulinette.
+- Refactorisation du code pour une meilleure qualité et maintenabilité.
+- Mise à jour des dépendances (Playwright, Node).
+- Amélioration de la gestion des configurations et des URL.
+- Suppression des informations sensibles dans les données exportées.
+- Amélioration des tests unitaires et d'intégration, notamment avec Playwright.
+- Renforcement de la sécurité en limitant l'accès aux URL et en gérant les secrets.
+- Suppression des fonctionnalités liées au suivi des emails (Brevo) pour assurer la conformité RGPD.
+- Correction de plusieurs erreurs de pre-commit.
 
 ### Autres changements
-- **Documentation :** Ajout de liens vers la documentation en ligne du PAC (Plan d'Action Climat).
-- **CI/CD :** Corrections pour assurer le bon fonctionnement des pipelines CI/CD.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Corrections de bugs :** Correction de plusieurs bugs mineurs affectant l'affichage et le comportement de l'application.
+- Mise à jour de la documentation.
+- Correction de problèmes de synchronisation entre les templates HTML et TXT.
+- Amélioration des commentaires et de la lisibilité du code.
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de typographie et de grammaire dans les textes.
+- Suppression de code inutile et nettoyage du codebase.
