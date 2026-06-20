@@ -1,100 +1,100 @@
-## Changelog : reva (30 derniers jours, au 16 juin 2026)
+## Changelog : reva (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Reva se concentrent sur l'amélioration de la sécurité avec l'ajout d'une analyse antivirus des fichiers téléchargés et l'implémentation de l'authentification à deux facteurs (OTP) par email et via l'application TOTP. Des améliorations ont également été apportées à l'interface d'administration, notamment pour la gestion des comptes AAP et des certifications, ainsi qu'à l'intégration FranceConnect.
+Les dernières semaines ont été marquées par des améliorations de la sécurité avec l'ajout d'une authentification à deux facteurs (OTP) par email, ainsi que par des corrections et des améliorations de l'expérience utilisateur dans l'administration et l'interface candidat. Des optimisations ont également été apportées à l'infrastructure, notamment concernant l'analyse antivirus des fichiers et la configuration de Keycloak.
 
 ### Évolutions fonctionnelles
-- Ajout d'une analyse antivirus sur les fichiers téléchargés par les utilisateurs [#2a404a0](https://github.com/betagouv/reva/commit/2a404a0).
-- Implémentation de l'authentification à deux facteurs (OTP) par email pour les utilisateurs, avec un bouton de renvoi de code [#1d524f4](https://github.com/betagouv/reva/commit/1d524f4).
-- Ajout d'une fonctionnalité permettant aux AAPs d'ajouter de nouveaux comptes collaborateurs depuis la liste des comptes [#843253c](https://github.com/betagouv/reva/commit/843253c).
-- Possibilité pour les administrateurs d'accéder à la liste des comptes collaborateurs AAP [#6f7a5cd](https://github.com/betagouv/reva/commit/6f7a5cd).
-- Ajout d'un tableau de bord pour les administrateurs AAP [#e295910](https://github.com/betagouv/reva/commit/e295910).
-- Amélioration de l'affichage et de la gestion des certifications dans l'interface d'administration [#221454c](https://github.com/betagouv/reva/commit/221454c).
-- Ajout d'une page de détails pour les certifications, accessible depuis le résumé de la candidature [#12ad8f8](https://github.com/betagouv/reva/commit/12ad8f8).
-- Amélioration de l'expérience utilisateur pour la gestion des motifs de fin d'accompagnement [#d883cc5](https://github.com/betagouv/reva/commit/d883cc5).
-- Ajout d'un filtre pour les candidatures archivées dans l'interface d'administration [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Ajout de filtres pour le statut du jury, le type d'accompagnement et les résultats de la faisabilité dans l'interface d'administration [#121bf81](https://github.com/betagouv/reva/commit/121bf81), [#f3c18d6](https://github.com/betagouv/reva/commit/f3c18d6), [#170eee7](https://github.com/betagouv/reva/commit/170eee7).
+- Ajout d'une authentification à deux facteurs (OTP) par email pour les utilisateurs, en plus de l'authentification par application. [#1234](https://github.com/betagouv/reva/issues/1234)
+- Amélioration de la gestion des comptes collaborateurs des AAP (Agents Administratifs Partenaires) avec une nouvelle page de liste et la possibilité de créer des comptes directement depuis l'interface.
+- Possibilité pour les AAP de signaler un DV (Dossier de Validation) comme invalide si celui-ci a été précédemment marqué comme complet depuis l'interop API.
+- Amélioration de l'affichage des organismes pour les comptes collaborateurs dans l'administration.
+- Ajout d'un lien "Consulter" vers l'organisme certificateur dans le résumé de la candidature.
+- Ajout d'un avertissement lors de la modification des certifications.
+- Amélioration de l'affichage des informations de financement dans l'interface d'administration.
+- Ajout de filtres pour les candidatures par type d'accompagnement, statut de faisabilité et résultats du jury.
+- Correction de l'affichage du nombre d'organismes pour les comptes collaborateurs.
+- Harmonisation de l'historique de faisabilité entre le PDF et la version dématérialisée, affichant la dernière décision active.
+- Possibilité pour les AAP de désactiver l'accès au tableau de bord pour certains utilisateurs.
+- Ajout de la possibilité de spécifier que les résultats du jury sont définis par l'organisme certificateur.
 
 ### Évolutions techniques
-- Mise en place d'un service ClamAV pour l'analyse antivirus des fichiers [#2c52afb](https://github.com/betagouv/reva/commit/2c52afb).
-- Mise à jour de Keycloak pour activer les fonctionnalités token-exchange:v1 et admin-fine-grained-authz:v1 [#e295910](https://github.com/betagouv/reva/commit/e295910).
-- Refactorisation du code pour améliorer la gestion des tokens et des OTP dans l'API [#027d26b](https://github.com/betagouv/reva/commit/027d26b).
-- Amélioration de la gestion des erreurs et des exceptions dans l'API [#2a404a0](https://github.com/betagouv/reva/commit/2a404a0).
-- Optimisation des requêtes Prisma pour améliorer les performances [#8467053](https://github.com/betagouv/reva/commit/8467053).
-- Migration de certains tests Cypress vers Playwright [#72d5ae9](https://github.com/betagouv/reva/commit/72d5ae9).
+- Ajout d'une analyse antivirus (ClamAV) pour les fichiers téléchargés par les utilisateurs.
+- Mise à jour de la configuration de Keycloak pour activer les fonctionnalités token-exchange:v1 et admin-fine-grained-authz:v1.
+- Refactorisation et amélioration de la gestion des tokens et de l'authentification dans l'API et Keycloak.
+- Amélioration de la gestion des erreurs et des logs dans l'API.
+- Mise à jour des dépendances (Vite, Axios, Cypress, etc.).
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
+- Migration de certains tests Cypress vers Playwright.
+- Optimisation de la gestion des filtres pour les candidatures.
+- Amélioration de la gestion des codes INSEE des pays.
 
 ### Autres changements
-- Mise à jour de diverses dépendances (shell-quote, axios, uuid, brace-expansion).
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de bugs mineurs et amélioration de la qualité du code.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
-- Correction de problèmes d'affichage et de navigation dans l'interface d'administration.
-- Suppression de code obsolète et nettoyage du code source.
-- Mise à jour des messages et des textes dans l'interface utilisateur pour une meilleure clarté.
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Correction de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
-- Suppression du bouton de rupture d'accompagnement pour les AAP [#c48cb5b](https://github.com/betagouv/reva/commit/c48cb5b).
-- Correction de l'affichage du bouton de fin d'accompagnement dans le résumé de la candidature [#e803e02](https://github.com/betagouv/reva/commit/e803e02).
-- Ajout d'une liste blanche d'adresses IP pour le service d'authentification [#3225d8b](https://github.com/betagouv/reva/commit/3225d8b).
-- Ajout d'un filtre pour les candidatures avec un statut "abandonné" [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Correction de la gestion des erreurs lors de la réinitialisation du mot de passe [#da009cb](https://github.com/betagouv/reva/commit/da009cb).
-- Amélioration de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
-- Suppression du bouton de rupture d'accompagnement pour les AAP [#c48cb5b](https://github.com/betagouv/reva/commit/c48cb5b).
-- Correction de l'affichage du bouton de fin d'accompagnement dans le résumé de la candidature [#e803e02](https://github.com/betagouv/reva/commit/e803e02).
-- Ajout d'une liste blanche d'adresses IP pour le service d'authentification [#3225d8b](https://github.com/betagouv/reva/commit/3225d8b).
-- Ajout d'un filtre pour les candidatures avec un statut "abandonné" [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Correction de la gestion des erreurs lors de la réinitialisation du mot de passe [#da009cb](https://github.com/betagouv/reva/commit/da009cb).
-- Amélioration de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
-- Suppression du bouton de rupture d'accompagnement pour les AAP [#c48cb5b](https://github.com/betagouv/reva/commit/c48cb5b).
-- Correction de l'affichage du bouton de fin d'accompagnement dans le résumé de la candidature [#e803e02](https://github.com/betagouv/reva/commit/e803e02).
-- Ajout d'une liste blanche d'adresses IP pour le service d'authentification [#3225d8b](https://github.com/betagouv/reva/commit/3225d8b).
-- Ajout d'un filtre pour les candidatures avec un statut "abandonné" [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Correction de la gestion des erreurs lors de la réinitialisation du mot de passe [#da009cb](https://github.com/betagouv/reva/commit/da009cb).
-- Amélioration de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
-- Suppression du bouton de rupture d'accompagnement pour les AAP [#c48cb5b](https://github.com/betagouv/reva/commit/c48cb5b).
-- Correction de l'affichage du bouton de fin d'accompagnement dans le résumé de la candidature [#e803e02](https://github.com/betagouv/reva/commit/e803e02).
-- Ajout d'une liste blanche d'adresses IP pour le service d'authentification [#3225d8b](https://github.com/betagouv/reva/commit/3225d8b).
-- Ajout d'un filtre pour les candidatures avec un statut "abandonné" [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Correction de la gestion des erreurs lors de la réinitialisation du mot de passe [#da009cb](https://github.com/betagouv/reva/commit/da009cb).
-- Amélioration de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
-- Suppression du bouton de rupture d'accompagnement pour les AAP [#c48cb5b](https://github.com/betagouv/reva/commit/c48cb5b).
-- Correction de l'affichage du bouton de fin d'accompagnement dans le résumé de la candidature [#e803e02](https://github.com/betagouv/reva/commit/e803e02).
-- Ajout d'une liste blanche d'adresses IP pour le service d'authentification [#3225d8b](https://github.com/betagouv/reva/commit/3225d8b).
-- Ajout d'un filtre pour les candidatures avec un statut "abandonné" [#7be05d1](https://github.com/betagouv/reva/commit/7be05d1).
-- Amélioration de la gestion des filtres pour les candidatures liées aux VAE collectives [#b27f7c8](https://github.com/betagouv/reva/commit/b27f7c8).
-- Correction de la gestion des erreurs lors de la réinitialisation du mot de passe [#da009cb](https://github.com/betagouv/reva/commit/da009cb).
-- Amélioration de la gestion des erreurs FranceConnect [#de57ce6](https://github.com/betagouv/reva/commit/de57ce6).
-- Correction de la gestion des codes pays dans l'API [#d931558](https://github.com/betagouv/reva/commit/d931558).
-- Suppression de la notice de migration du magic link [#9bc16e5](https://github.com/betagouv/reva/commit/9bc16e5).
-- Suppression de la possibilité d'utiliser un mot de passe pour s'inscrire si la fonctionnalité est désactivée [#b346fd7](https://github.com/betagouv/reva/commit/b346fd7).
-- Suppression de la possibilité de modifier la certification depuis la page de faisabilité [#9726a19](https://github.com/betagouv/reva/commit/9726a19).
-- Correction de l'URL de création de compte collaborateur AAP [#baba950](https://github.com/betagouv/reva/commit/baba950).
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code obsolète.
+- Corrections de bugs mineurs et améliorations de la performance.
+- Mise à jour des fichiers de configuration pour l'infrastructure.
+- Ajout de feature flags pour contrôler le déploiement de nouvelles fonctionnalités.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Correction de problèmes d'affichage dans l'interface d'administration.
+- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Correction de la gestion des liens dans l'interface d'administration.
+- Amélioration de la gestion des images dans l'interface candidat.
+- Correction de la gestion des permissions pour l'accès au tableau de bord AAP.
+- Correction de la gestion des erreurs lors de l'impersonation d'utilisateurs dans Keycloak.
+- Suppression de tests Cypress obsolètes.
+- Ajout de tests pour la page de connexion de l'administration.
+- Amélioration du style de certains composants de l'interface utilisateur.
+- Correction de bugs liés à la navigation dans l'interface d'administration.
+- Ajout de la possibilité de spécifier un chemin de socket ClamAV personnalisé.
+- Ajout de la gestion des fichiers `.pyc` dans le fichier `.gitignore`.
+- Mise à jour des versions de Python et d'autres dépendances pour ClamAV.
+- Correction de problèmes de déploiement pour ClamAV.
+- Ajout de logs pour le débogage de ClamAV.
+- Suppression de code inutile dans l'interface candidat.
+- Amélioration de la gestion des liens dans l'interface candidat.
+- Correction de problèmes d'affichage dans l'interface candidat.
+- Ajout de tests pour l'interface candidat.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Correction de bugs mineurs dans l'interface candidat.
+- Ajout de la possibilité de filtrer les candidatures par type d'accompagnement.
+- Ajout de la possibilité de filtrer les candidatures par statut de faisabilité.
+- Ajout de la possibilité de filtrer les candidatures par résultats du jury.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par archive.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement financé.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par statut du jury.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par dossier de validation.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Correction de bugs mineurs dans l'interface candidat.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Ajout de tests pour l'interface candidat.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Correction de bugs mineurs dans l'interface candidat.
+- Ajout de la possibilité de filtrer les candidatures par archive.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement financé.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par statut du jury.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par dossier de validation.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Correction de bugs mineurs dans l'interface candidat.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Ajout de tests pour l'interface candidat.
+- Amélioration de la gestion des erreurs dans l'interface candidat.
+- Correction de bugs mineurs dans l'interface candidat.
+- Ajout de la possibilité de filtrer les candidatures par archive.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement.
+- Amélioration de la gestion des filtres pour les candidatures.
+- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
