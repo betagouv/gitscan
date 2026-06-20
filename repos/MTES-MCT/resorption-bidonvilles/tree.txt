@@ -149,8 +149,11 @@
 │   │   │   │   │   └── item_1.png
 │   │   │   │   ├── 2.49.1
 │   │   │   │   │   └── item_1.jpg
-│   │   │   │   └── 2.5.0
-│   │   │   │       └── item_1.png
+│   │   │   │   ├── 2.5.0
+│   │   │   │   │   └── item_1.png
+│   │   │   │   └── 2.54.0
+│   │   │   │       ├── item_1.jpg
+│   │   │   │       └── item_2.jpg
 │   │   │   ├── chartes_engagement
 │   │   │   │   ├── Charte-d-engagement-resorption-bidonvilles-2020-04-10.pdf
 │   │   │   │   ├── charte-d-engagement-resorption-bidonvilles_v2.pdf
@@ -514,6 +517,8 @@
 │   │   │   │   ├── 30000010-create-organization-insee.js
 │   │   │   │   ├── 300000105-01-alter-table-actions-add-action_ref-col.js
 │   │   │   │   ├── 30000011-create-organization-caf.js
+│   │   │   │   ├── 300000111-01-alter-table-action_operators-add-is_principal-col.js
+│   │   │   │   ├── 300000111-02-populate-is_principal.js
 │   │   │   │   ├── 30000012-create-organization-cpam.js
 │   │   │   │   ├── 30000013-01-create-table-academies.js
 │   │   │   │   ├── 30000013-02-create-organization-rectorat.js
@@ -711,6 +716,10 @@
 │   │   │   │   ├── 30000099-01-create-procedure-deactivate_expired_users.js
 │   │   │   │   ├── 30000101-01-remove-resorption-permissions-from-national-admins.js
 │   │   │   │   ├── 30000101-02-add-shantytown-resorption-access-feature.js
+│   │   │   │   ├── 30000102-01-alter-table-action_metrics-rename-scolaire-mineurs-scolarisables-field.js
+│   │   │   │   ├── 30000102-02-alter-table-action_metrics-add-and-rename-scolaire-mediation-fields.js
+│   │   │   │   ├── 30000102-03-alter-table-action_metrics-add-scolaire_mineur_scolarise_dans_annee.js
+│   │   │   │   ├── 30000102-04-alter-table-action_metrics-remove-obsolete-scolaire-constraints.js
 │   │   │   │   ├── 30000103-01-clean-user-deactivation-fields.js
 │   │   │   │   ├── 30000104-01-create-table-signin_logs.js
 │   │   │   │   ├── 30000105-01-create-index-shantytowns-updated_at.js
@@ -720,6 +729,7 @@
 │   │   │   │   ├── 30000107-01-alter-table-shantytowns-add-population_updated_at-col.js
 │   │   │   │   ├── 30000108-01-create-action-addresses-unique.js
 │   │   │   │   ├── 30000109-01-create-table-action_metrics_history.js
+│   │   │   │   ├── 30000110-01-alter-table-action_metrics_history-sync-scolaire-columns.js
 │   │   │   │   └── common
 │   │   │   │       ├── create_covid_comment_permissions.js
 │   │   │   │       ├── create_plan_finances_permissions.js
@@ -737,10 +747,14 @@
 │   │   │   │       │   └── 02_fix_action_create.js
 │   │   │   │       ├── full_user_permissions_by_user
 │   │   │   │       │   └── 01_initial_view.js
+│   │   │   │       ├── helpers
+│   │   │   │       │   ├── constraints.js
+│   │   │   │       │   ├── manageForeignKeys.js
+│   │   │   │       │   ├── migrationHelper.js
+│   │   │   │       │   └── transaction.js
 │   │   │   │       ├── localized_organizations
 │   │   │   │       │   ├── 01_create_original_view.js
 │   │   │   │       │   └── 02_add_being_funded_columns.js
-│   │   │   │       ├── manageForeignKeys.js
 │   │   │   │       ├── permission_locations
 │   │   │   │       │   ├── 01_create_original_view.js
 │   │   │   │       │   ├── 02_support_actions.js
@@ -818,6 +832,7 @@
 │   │   │   │   ├── 000000-changelog-2.4.0.js
 │   │   │   │   ├── 000000-changelog-2.49.1.js
 │   │   │   │   ├── 000000-changelog-2.5.0.js
+│   │   │   │   ├── 000000-changelog-2.54.0.js
 │   │   │   │   ├── 000000-changelogs.js.sample
 │   │   │   │   ├── 000001-users.js
 │   │   │   │   ├── 000002-soliguide.js.sample
@@ -833,6 +848,7 @@
 │   │   │   │   ├── data
 │   │   │   │   │   └── changelogs
 │   │   │   │   │       ├── 2.49.1.json
+│   │   │   │   │       ├── 2.54.0.json
 │   │   │   │   │       ├── README.md
 │   │   │   │   │       └── template.json
 │   │   │   │   ├── helpers
@@ -859,6 +875,7 @@
 │   │   │   ├── controllers
 │   │   │   │   ├── action
 │   │   │   │   │   ├── _common
+│   │   │   │   │   │   ├── action.write.validator.spec.ts
 │   │   │   │   │   │   └── action.write.validator.ts
 │   │   │   │   │   ├── create
 │   │   │   │   │   │   ├── action.create.route.ts
@@ -882,7 +899,8 @@
 │   │   │   │   │   │   └── action.getHistory.ts
 │   │   │   │   │   ├── list
 │   │   │   │   │   │   ├── action.list.route.ts
-│   │   │   │   │   │   └── action.list.ts
+│   │   │   │   │   │   ├── action.list.ts
+│   │   │   │   │   │   └── action.list.validator.ts
 │   │   │   │   │   ├── listFinanceReaders
 │   │   │   │   │   │   ├── action.listFinanceReaders.route.ts
 │   │   │   │   │   │   └── action.listFinanceReaders.ts
@@ -1137,6 +1155,10 @@
 │   │   │   │   │   │   ├── shantytown.findNearby.route.ts
 │   │   │   │   │   │   ├── shantytown.findNearby.ts
 │   │   │   │   │   │   └── shantytown.findNearby.validator.ts
+│   │   │   │   │   ├── forceUpdateWithoutChanges
+│   │   │   │   │   │   ├── shantytown.forceUpdateWithoutChanges.route.ts
+│   │   │   │   │   │   ├── shantytown.forceUpdateWithoutChanges.ts
+│   │   │   │   │   │   └── shantytown.forceUpdateWithoutChanges.validator.ts
 │   │   │   │   │   ├── get
 │   │   │   │   │   │   ├── shantytown.get.route.ts
 │   │   │   │   │   │   └── shantytown.get.ts
@@ -1483,6 +1505,7 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── actionModel
 │   │   │   │   │   ├── _common
+│   │   │   │   │   │   ├── getDiff.spec.ts
 │   │   │   │   │   │   ├── getDiff.ts
 │   │   │   │   │   │   └── serializeAction.ts
 │   │   │   │   │   ├── create
@@ -1503,6 +1526,7 @@
 │   │   │   │   │   ├── fetch
 │   │   │   │   │   │   ├── ActionFinanceRow.d.ts
 │   │   │   │   │   │   ├── ActionUserRow.d.ts
+│   │   │   │   │   │   ├── computeActionNames.ts
 │   │   │   │   │   │   ├── enrichWhere.ts
 │   │   │   │   │   │   ├── fetch.ts
 │   │   │   │   │   │   ├── fetchActions.ts
@@ -1530,13 +1554,13 @@
 │   │   │   │   │   │   ├── fetchOperators.ts
 │   │   │   │   │   │   ├── fetchTopics.ts
 │   │   │   │   │   │   ├── hashActions.ts
-│   │   │   │   │   │   ├── mergeOperators.ts
 │   │   │   │   │   │   └── mergeTopics.ts
 │   │   │   │   │   ├── fetchComments
 │   │   │   │   │   │   ├── ActionCommentRow.d.ts
 │   │   │   │   │   │   ├── fetchComments.ts
 │   │   │   │   │   │   └── serializeComment.ts
 │   │   │   │   │   ├── fetchReport
+│   │   │   │   │   │   ├── fetchReport.spec.ts
 │   │   │   │   │   │   └── fetchReport.ts
 │   │   │   │   │   ├── findActionFinancesReaders
 │   │   │   │   │   │   ├── findActionFinancesReaders.ts
@@ -1554,6 +1578,7 @@
 │   │   │   │   │   │   ├── historizeFinances.ts
 │   │   │   │   │   │   ├── historizeManagers.ts
 │   │   │   │   │   │   ├── historizeMetrics.ts
+│   │   │   │   │   │   ├── historizeOperators.spec.ts
 │   │   │   │   │   │   ├── historizeOperators.ts
 │   │   │   │   │   │   ├── historizeShantytowns.ts
 │   │   │   │   │   │   └── historizeTopics.ts
@@ -1884,6 +1909,7 @@
 │   │   │   │   │   │   │   ├── buildChangelog.ts
 │   │   │   │   │   │   │   ├── enrichTownsWithRelations.ts
 │   │   │   │   │   │   │   └── processPreparatoryPhases.ts
+│   │   │   │   │   │   ├── rawLocation.ts
 │   │   │   │   │   │   ├── serializeComment.ts
 │   │   │   │   │   │   ├── serializeShantytown.ts
 │   │   │   │   │   │   ├── types
@@ -1904,6 +1930,7 @@
 │   │   │   │   │   ├── findAll.ts
 │   │   │   │   │   ├── findNearby.ts
 │   │   │   │   │   ├── findOne.ts
+│   │   │   │   │   ├── findRaw.ts
 │   │   │   │   │   ├── fixClosedStatus.ts
 │   │   │   │   │   ├── getClosureYearRange.ts
 │   │   │   │   │   ├── getHistory.ts
@@ -2059,6 +2086,7 @@
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   └── hasMetricValues.ts
 │   │   │   │   │   ├── actionService.ts
+│   │   │   │   │   ├── create.spec.ts
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── createComment.sendMailNotifications.ts
 │   │   │   │   │   ├── createComment.sendMattermostNotification.ts
@@ -2067,6 +2095,7 @@
 │   │   │   │   │   ├── deleteComment.spec.ts
 │   │   │   │   │   ├── deleteComment.ts
 │   │   │   │   │   ├── enrichCommentsAttachments.ts
+│   │   │   │   │   ├── exportActions.creerClasseurExcel.spec.ts
 │   │   │   │   │   ├── exportActions.creerClasseurExcel.ts
 │   │   │   │   │   ├── exportActions.generateExportFile.ts
 │   │   │   │   │   ├── exportActions.ts
@@ -2080,6 +2109,8 @@
 │   │   │   │   │   ├── getCommentReport.ts
 │   │   │   │   │   ├── getHistory.spec.ts
 │   │   │   │   │   ├── getHistory.ts
+│   │   │   │   │   ├── operatorValidation.spec.ts
+│   │   │   │   │   ├── operatorValidation.ts
 │   │   │   │   │   ├── requestPilot.spec.ts
 │   │   │   │   │   ├── requestPilot.ts
 │   │   │   │   │   ├── sendAlert.ts
@@ -2278,6 +2309,8 @@
 │   │   │   │   │   ├── findJusticeReaders.ts
 │   │   │   │   │   ├── fixClosedStatus.spec.ts
 │   │   │   │   │   ├── fixClosedStatus.ts
+│   │   │   │   │   ├── forceUpdateWithoutChanges.spec.ts
+│   │   │   │   │   ├── forceUpdateWithoutChanges.ts
 │   │   │   │   │   ├── getClosureYearRange.spec.ts
 │   │   │   │   │   ├── getClosureYearRange.ts
 │   │   │   │   │   ├── index.ts
@@ -2407,6 +2440,7 @@
 │   │   │       ├── action.ts
 │   │   │       ├── actionComment.ts
 │   │   │       ├── actionFinancesReader.ts
+│   │   │       ├── actionInput.ts
 │   │   │       ├── activity.ts
 │   │   │       ├── answer.ts
 │   │   │       ├── answerSerialized.ts
@@ -2952,13 +2986,6 @@
 │       │   │   │   │   └── ButtonGPS.vue
 │       │   │   │   ├── CarteActionDeSite
 │       │   │   │   │   └── CarteActionDeSite.vue
-│       │   │   │   ├── CarteActionDetaillee
-│       │   │   │   │   ├── CarteActionColonneChampsIntervention.vue
-│       │   │   │   │   ├── CarteActionDetaillee.vue
-│       │   │   │   │   ├── CarteActionDetailleeColonneDepartement.vue
-│       │   │   │   │   ├── CarteActionDetailleeColonneLocalisation.vue
-│       │   │   │   │   ├── CarteActionDetailleeColonneOperateur.vue
-│       │   │   │   │   └── CarteActionDetailleeColonnePilote.vue
 │       │   │   │   ├── CarteCommentaire
 │       │   │   │   │   ├── CarteCommentaire.vue
 │       │   │   │   │   ├── CarteCommentaireAction.vue
@@ -3472,6 +3499,10 @@
 │       │   │   │   │   ├── FormDeclarationAction.labels.js
 │       │   │   │   │   ├── FormDeclarationAction.schema.js
 │       │   │   │   │   ├── FormDeclarationAction.vue
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── indicateursErrorReset.spec.js
+│       │   │   │   │   │   ├── indicateursTopicValidation.spec.js
+│       │   │   │   │   │   └── noChangeErrorReset.spec.js
 │       │   │   │   │   ├── inputs
 │       │   │   │   │   │   ├── FormDeclarationActionInputDates.vue
 │       │   │   │   │   │   ├── FormDeclarationActionInputFinances.vue
@@ -3722,6 +3753,7 @@
 │       │   │   │   │   ├── IndicateursTableRow.vue
 │       │   │   │   │   ├── IndicateursTableRowCell.vue
 │       │   │   │   │   ├── IndicateursTableRowData.vue
+│       │   │   │   │   ├── IndicateursTableRowDataInputs.vue
 │       │   │   │   │   └── IndicateursTableRowInputs.vue
 │       │   │   │   ├── IndicationCaractereObligatoire
 │       │   │   │   │   └── IndicationCaractereObligatoire.vue
@@ -3787,6 +3819,7 @@
 │       │   │   │   │   ├── ListeDesActionsHeader.vue
 │       │   │   │   │   ├── ListeDesActionsListe.vue
 │       │   │   │   │   ├── ListeDesActionsStatistiques.vue
+│       │   │   │   │   ├── ListeDesActionsTableau.vue
 │       │   │   │   │   └── ListeDesActionsVide.vue
 │       │   │   │   ├── ListeDesSites
 │       │   │   │   │   ├── FilterClosureYear.vue
@@ -3944,6 +3977,7 @@
 │       │   │   │       └── HelloWorld.spec.js
 │       │   │   ├── composables
 │       │   │   │   ├── BadgeSiteOjectifResorption.vue
+│       │   │   │   ├── useBadgeType.js
 │       │   │   │   ├── useClosureYears.js
 │       │   │   │   └── useLastUpdated.js
 │       │   │   ├── helpers
@@ -3988,6 +4022,7 @@
 │       │   │   │   ├── action_location_types.js
 │       │   │   │   ├── action_metrics_icons.js
 │       │   │   │   ├── backOrReplace.js
+│       │   │   │   ├── capitalizeFirstLetter.js
 │       │   │   │   ├── census_statuses.js
 │       │   │   │   ├── closing_reasons.js
 │       │   │   │   ├── coloreUpdatedSince.js
@@ -4012,6 +4047,7 @@
 │       │   │   │   ├── filterShantytowns.js
 │       │   │   │   ├── filterShantytownsForMap.js
 │       │   │   │   ├── focusFirstErrorField.js
+│       │   │   │   ├── formatActionName.js
 │       │   │   │   ├── formatActivityDate.js
 │       │   │   │   ├── formatBool.js
 │       │   │   │   ├── formatDateSince.js
@@ -4025,6 +4061,7 @@
 │       │   │   │   ├── formatMetricsUpdatedAt.js
 │       │   │   │   ├── formatMoney.js
 │       │   │   │   ├── formatUserName.js
+│       │   │   │   ├── formatUserWithOrganization.js
 │       │   │   │   ├── generateSquare.js
 │       │   │   │   ├── getAbsoluteOffsetTop.js
 │       │   │   │   ├── getBadgeLabel.js
@@ -4058,11 +4095,13 @@
 │       │   │   │   ├── normalizeTownName.js
 │       │   │   │   ├── organization_categories.js
 │       │   │   │   ├── parseCoordinates.js
+│       │   │   │   ├── pluralize.js
 │       │   │   │   ├── police_statuses.js
 │       │   │   │   ├── prepareActivityFilterForApi.js
 │       │   │   │   ├── skipFocus.js
 │       │   │   │   ├── skipFocusNext.js
 │       │   │   │   ├── skipFocusPrevious.js
+│       │   │   │   ├── sortOperatorsByPrincipal.js
 │       │   │   │   ├── special_tags.js
 │       │   │   │   ├── townLastUpdateManager.js
 │       │   │   │   ├── usePhasesPreparatoiresResorption.js
@@ -4209,4 +4248,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-737 directories, 3824 files
+740 directories, 3860 files
