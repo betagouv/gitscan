@@ -1,45 +1,56 @@
 {
   "url": "https://github.com/etalab-ia/eval-transcript",
   "name": "eval-transcript",
-  "description": "Ce projet est un service de benchmarking pour la transcription audio, destiné à l'administration française. Il permet de gérer les fichiers audio, les transcriptions de référence et les sorties des modèles pour comparer leur qualité.",
+  "description": "Ce projet est un service de benchmark pour la transcription audio, destiné à l'administration française. Il permet de comparer la qualité de la transcription de différents modèles sur un ensemble de fichiers audio.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Évaluation & Notation"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
-    "httpx",
     "elevenlabs",
-    "python-dotenv",
+    "httpx",
+    "huggingface-hub",
     "jiwer",
+    "python-dotenv",
     "text2num"
   ],
   "components": [
+    "API REST & GraphQL",
     "Python (scripts & backend)",
-    "API REST & GraphQL"
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "api-key"
     ]
   },
-  "tests": [
-    "pytest"
+  "tests": "Pytest",
+  "workflows": [
+    "bench-remote",
+    "judge"
   ],
-  "workflows": null,
-  "lastActivity": "2026-06-10T09:33:20Z",
+  "lastActivity": "2026-06-19T21:37:17+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "contributors": 1,
-    "openIssues": 1
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
   },
   "tags": [
     "Données & Open Data",
-    "Intelligence Artificielle & NLP"
+    "Intelligence Artificielle & NLP",
+    "Python",
+    "Sécurité & Conformité",
+    "API & Intégrations"
   ]
 }

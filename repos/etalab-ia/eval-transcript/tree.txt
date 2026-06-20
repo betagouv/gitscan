@@ -2,6 +2,10 @@
 ├── .config
 │   └── wt.toml
 ├── .env.example
+├── .github
+│   └── workflows
+│       ├── bench-remote.yml
+│       └── judge.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .python-version
@@ -11,9 +15,9 @@
 ├── data
 │   ├── audio
 │   │   └── .gitkeep
-│   ├── manifest.md
-│   ├── source_truth
+│   ├── ground_truth
 │   │   └── .gitkeep
+│   ├── manifest.md
 │   └── transcriptions
 │       └── .gitkeep
 ├── pyproject.toml
@@ -21,16 +25,29 @@
 │   └── eval_transcript
 │       ├── __init__.py
 │       ├── albert.py
+│       ├── data_migrate.py
 │       ├── elevenlabs.py
+│       ├── judge.py
+│       ├── judge_cli.py
 │       ├── manifest.py
 │       ├── omlx.py
+│       ├── openrouter.py
+│       ├── panel.py
+│       ├── results.py
 │       ├── scaleway.py
 │       ├── scoring.py
 │       ├── scoring_cli.py
 │       └── transcriptions.py
 ├── tests
+│   ├── test_cli.py
+│   ├── test_data_migrate.py
 │   ├── test_elevenlabs.py
+│   ├── test_judge.py
+│   ├── test_manifest.py
+│   ├── test_openrouter.py
+│   ├── test_panel.py
+│   ├── test_results.py
 │   ├── test_scaleway.py
 │   └── test_scoring.py
 └── uv.lock
-9 directories, 26 files
+11 directories, 41 files

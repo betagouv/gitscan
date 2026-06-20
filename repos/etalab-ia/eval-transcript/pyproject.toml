@@ -10,6 +10,7 @@ requires-python = ">=3.12"
 dependencies = [
     "elevenlabs>=2.50.0",
     "httpx>=0.28.1",
+    "huggingface-hub>=0.24.0",
     "jiwer>=4.0.0",
     "python-dotenv>=1.2.2",
     "text2num>=2.4.0",
@@ -25,4 +26,11 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.0",
+]
+# Optional benchmark-only group: WhisperX is the Transcript production ASR engine.
+# Pinned to the version used by suitenumerique/meet-whisperx. Not a CLI dependency.
+# Run with: uv run --python 3.12 --group whisperx ...  (CTranslate2 is CPU-only on
+# Apple Silicon and requires Python < 3.13).
+whisperx = [
+    "whisperx==3.8.5",
 ]
