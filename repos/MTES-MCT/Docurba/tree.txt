@@ -137,9 +137,11 @@
 │   │   ├── templates
 │   │   │   ├── 404.html
 │   │   │   ├── admin
-│   │   │   │   └── core
-│   │   │   │       └── commune
-│   │   │   │           └── procedures.html
+│   │   │   │   ├── core
+│   │   │   │   │   └── commune
+│   │   │   │   │       └── procedures.html
+│   │   │   │   └── users
+│   │   │   │       └── change_user_form.html
 │   │   │   └── core
 │   │   │       └── collectivite.html
 │   │   └── users
@@ -151,6 +153,7 @@
 │   │       │   ├── 0001_initial.py
 │   │       │   ├── 0002_add_column_departements.py
 │   │       │   ├── 0003_session.py
+│   │       │   ├── 0004_add_encrypted_password_to_users.py
 │   │       │   └── __init__.py
 │   │       └── models.py
 │   ├── exports
@@ -200,6 +203,7 @@
 │   │   └── users
 │   │       ├── __init__.py
 │   │       ├── factories.py
+│   │       ├── test_admin.py
 │   │       └── test_models.py
 │   └── uv.lock
 ├── docker
@@ -1095,4 +1099,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-210 directories, 929 files
+211 directories, 932 files

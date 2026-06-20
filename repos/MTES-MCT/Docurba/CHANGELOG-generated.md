@@ -1,49 +1,36 @@
-## Changelog : Docurba (30 derniers jours, au 17 juin 2026)
+## Changelog : Docurba (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Docurba se concentrent sur l'amélioration de l'administration des événements et des procédures, notamment via l'interface d'administration Django. Des corrections et des améliorations ont également été apportées à l'interface utilisateur Nuxt3, en particulier concernant la gestion des procédures et des événements liés à la loi Huwart. Des optimisations de sécurité et de performance ont également été implémentées.
+Ce mois-ci, les évolutions de Docurba se concentrent sur l'amélioration de l'administration des événements et des procédures, avec un accent particulier sur l'intégration de l'historique des modifications, la gestion des utilisateurs et des permissions, ainsi que des optimisations de l'interface utilisateur et de l'API. Des améliorations de sécurité et de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Possibilité de modifier les événements depuis l'interface d'administration Django.
-- Ajout de catégories de PAC (Plan d'Actions Concertées) dans Django.
-- Ajout d'une nouvelle catégorie d'événement dans Django.
-- Amélioration de l'affichage des procédures et des événements dans Nuxt3, notamment pour les procédures antérieures à la loi Huwart.
-- La page de lecture des PAC est désormais publique.
-- Possibilité de filtrer les types de procédures par date de début.
-- Historisation de toutes les modifications d'événements.
-- Les procédures peuvent être listées dans l'administration Django en fonction de l'inclusion de la commune dans leur périmètre.
-- Amélioration de la sélection de la section trame dans Nuxt3, initialisée à partir de l'URL.
-- Affichage du statut des procédures primaires manquantes dans les messages.
-- Ajout de la possibilité de filtrer les collectivités et communes via une API interne.
-- Amélioration de la gestion des événements liés à la loi Huwart dans Nuxt3.
+- Possibilité de rechercher des utilisateurs dans l'interface d'administration par adresse email. [#3df9bea](https://github.com/MTES-MCT/Docurba/issues/3df9bea)
+- Mise à jour du mot de passe des utilisateurs directement depuis l'interface d'administration. [#29e6ea8](https://github.com/MTES-MCT/Docurba/issues/29e6ea8)
+- Ajout de la possibilité de lister les procédures incluant une commune spécifique dans l'interface d'administration. [#818abbd](https://github.com/MTES-MCT/Docurba/issues/818abbd)
+- Historisation de toutes les modifications apportées aux événements, permettant un suivi précis des changements. [#cfb4754](https://github.com/MTES-MCT/Docurba/issues/cfb4754)
+- Amélioration de la détection et de l'affichage des événements de prescription dans l'interface Nuxt. [#3d9205b](https://github.com/MTES-MCT/Docurba/issues/3d9205b) et [#13efcf1](https://github.com/MTES-MCT/Docurba/issues/13efcf1)
+- Affichage du statut "avant loi Huwart" pour les procédures concernées dans l'interface Nuxt. [#b885455](https://github.com/MTES-MCT/Docurba/issues/b885455)
+- Possibilité de filtrer les types de procédures par date de début dans l'interface Nuxt. [#4f89e20](https://github.com/MTES-MCT/Docurba/issues/4f89e20)
+- Page de lecture des PAC (Prescriptions Archéologiques Collectives) rendue publique. [#b53a072](https://github.com/MTES-MCT/Docurba/issues/b53a072)
+- Ajout de nouvelles catégories de PAC. [#a553a34](https://github.com/MTES-MCT/Docurba/issues/a553a34)
+- Ajout d'une nouvelle catégorie d'événements. [#a26bfc2](https://github.com/MTES-MCT/Docurba/issues/a26bfc2)
 
 ### Évolutions techniques
-- Refonte de l'architecture de reverse proxy : remplacement de `django-revproxy` par Nginx pour la gestion du reverse proxy et la limitation du débit.
-- Utilisation explicite de `DOCURBA_API_URL` dans Nuxt3.
-- Ajout de tests API Django.
-- Amélioration de la performance des requêtes Django, notamment via l'ajout d'index.
-- Mise à jour des dépendances : Django, Supabase, Ruff, cryptography, pyjwt, django-filter.
-- Suppression de dépendances obsolètes.
-- Ajout de la gestion des sessions et de l'authentification Supabase.
-- Ajout du header `Supabase-Authorization` pour l'authentification.
-- Amélioration de l'intégration de `pg_history` pour le suivi des modifications.
-- Utilisation de `format_html` pour des raisons de sécurité dans l'administration Django.
-- Suppression de code commenté inutile.
-- Correction de la configuration des templates.
-- Suppression de la vue publique `collectivite-detail`.
+- Refonte de l'authentification avec l'ajout de l'authentification Supabase et la gestion des sessions.
+- Amélioration de la configuration des templates. [#d1b9b1e](https://github.com/MTES-MCT/Docurba/issues/d1b9b1e)
+- Remplacement de `wget` par `curl` pour les requêtes HTTP. [#f040adc](https://github.com/MTES-MCT/Docurba/issues/f040adc)
+- Mise en place d'un reverse proxy Nginx pour améliorer la sécurité et les performances.
+- Configuration de la limitation de débit avec Nginx.
+- Utilisation de variables d'environnement pour la configuration de l'URL de l'API Docurba dans Nuxt. [#bcaf256](https://github.com/MTES-MCT/Docurba/issues/bcaf256)
+- Amélioration de la gestion des tests avec l'ajout d'un client staff pour les tests d'administration. [#b4cf286](https://github.com/MTES-MCT/Docurba/issues/b4cf286) et le regroupement des tests par modèle. [#8671872](https://github.com/MTES-MCT/Docurba/issues/8671872)
+- Optimisation des performances de l'API interne Django avec la pagination et le filtrage.
+- Ajout d'une alerte Slack lors des déploiements. [#6209a5c](https://github.com/MTES-MCT/Docurba/issues/6209a5c)
+- Mise à jour de plusieurs dépendances (cryptography, pyjwt, ruff, supabase, django, django-filter).
 
 ### Autres changements
-- Ajout de commentaires dans le code.
-- Amélioration de la documentation.
-- Ajout de factories pour les tests Django (Project, Event).
-- Correction de la configuration CORS pour l'environnement local.
-- Ajout d'une alerte Slack lors des déploiements.
-- Suppression d'un test inutile.
-- Ajout du champ `last_sign_in_at` au modèle User.
-- Ajout du champ `owner_id` au modèle Procedure.
-- Suppression de la gestion de la table `Session` dans les tests Docker Compose.
-- Ajout du champ `email` à la factory Profile.
-- Ajout de la gestion des catégories d'événements dans les migrations Django.
-- Correction de la gestion des types de champs dans les migrations Django.
-- Suppression de la dépendance `whitenoise`.
-- Ajout d'une tâche quotidienne pour vérifier les mises à jour des dépendances.
+- Suppression de vues publiques inutiles. [#863748b](https://github.com/MTES-MCT/Docurba/issues/863748b)
+- Suppression de paramètres Django obsolètes. [#e50d554](https://github.com/MTES-MCT/Docurba/issues/e50d554)
+- Ajout de commentaires et de documentation.
+- Amélioration de l'intégration de `pg_history`.
+- Configuration de Dependabot pour vérifier les mises à jour des dépendances quotidiennement. [#12842da](https://github.com/MTES-MCT/Docurba/issues/12842da)
+- Mise à jour de la configuration des applications de revue (review apps). [#92361da](https://github.com/MTES-MCT/Docurba/issues/92361da)
