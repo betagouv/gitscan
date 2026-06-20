@@ -44,18 +44,22 @@
 │   │   │       ├── subscriptions_controller.rb
 │   │   │       └── transmissions_controller.rb
 │   │   ├── application_controller.rb
-│   │   └── concerns
-│   │       └── .keep
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   └── portail
+│   │       ├── base_controller.rb
+│   │       └── dashboard_controller.rb
 │   ├── helpers
 │   │   └── application_helper.rb
 │   ├── interactors
-│   │   └── data_packages
-│   │       ├── transmit
-│   │       │   ├── create_notifications.rb
-│   │       │   ├── resolve_recipients.rb
-│   │       │   ├── transition_to_transmitted.rb
-│   │       │   └── validate_transmission.rb
-│   │       └── transmit.rb
+│   │   └── api
+│   │       └── data_packages
+│   │           ├── transmit
+│   │           │   ├── create_notifications.rb
+│   │           │   ├── resolve_recipients.rb
+│   │           │   ├── transition_to_transmitted.rb
+│   │           │   └── validate_transmission.rb
+│   │           └── transmit.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
@@ -76,9 +80,11 @@
 │   │   ├── organization.rb
 │   │   └── subscription.rb
 │   ├── queries
-│   │   └── delivery_criteria_resolver.rb
+│   │   └── api
+│   │       └── delivery_criteria_resolver.rb
 │   ├── validators
-│   │   └── delivery_criteria_validator.rb
+│   │   └── data_package
+│   │       └── delivery_criteria_validator.rb
 │   └── views
 │       ├── api
 │       │   └── v1
@@ -103,7 +109,11 @@
 │       ├── layouts
 │       │   ├── application.html.erb
 │       │   ├── mailer.html.erb
-│       │   └── mailer.text.erb
+│       │   ├── mailer.text.erb
+│       │   └── portail.html.erb
+│       ├── portail
+│       │   └── dashboard
+│       │       └── index.html.erb
 │       └── pwa
 │           ├── manifest.json.erb
 │           └── service-worker.js
@@ -171,8 +181,11 @@
 │   ├── DATABASE.md
 │   └── OVERVIEW.md
 ├── features
+│   ├── portail
+│   │   └── dashboard.feature
 │   ├── step_definitions
-│   │   └── .keep
+│   │   ├── .keep
+│   │   └── portail_steps.rb
 │   └── support
 │       └── env.rb
 ├── lib
@@ -201,13 +214,14 @@
 │   │   ├── organizations.rb
 │   │   └── subscriptions.rb
 │   ├── interactors
-│   │   └── data_packages
-│   │       ├── transmit
-│   │       │   ├── create_notifications_spec.rb
-│   │       │   ├── resolve_recipients_spec.rb
-│   │       │   ├── transition_to_transmitted_spec.rb
-│   │       │   └── validate_transmission_spec.rb
-│   │       └── transmit_spec.rb
+│   │   └── api
+│   │       └── data_packages
+│   │           ├── transmit
+│   │           │   ├── create_notifications_spec.rb
+│   │           │   ├── resolve_recipients_spec.rb
+│   │           │   ├── transition_to_transmitted_spec.rb
+│   │           │   └── validate_transmission_spec.rb
+│   │           └── transmit_spec.rb
 │   ├── models
 │   │   ├── data_package_spec.rb
 │   │   ├── data_stream_spec.rb
@@ -215,25 +229,29 @@
 │   │   ├── organization_spec.rb
 │   │   └── subscription_spec.rb
 │   ├── queries
-│   │   └── delivery_criteria_resolver_spec.rb
+│   │   └── api
+│   │       └── delivery_criteria_resolver_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
-│   │   └── api
-│   │       └── v1
-│   │           ├── data_packages
-│   │           │   └── subscriptions_spec.rb
-│   │           ├── data_packages_spec.rb
-│   │           ├── data_streams_spec.rb
-│   │           ├── organizations_spec.rb
-│   │           ├── subscriptions_spec.rb
-│   │           └── transmissions_spec.rb
+│   │   ├── api
+│   │   │   └── v1
+│   │   │       ├── data_packages
+│   │   │       │   └── subscriptions_spec.rb
+│   │   │       ├── data_packages_spec.rb
+│   │   │       ├── data_streams_spec.rb
+│   │   │       ├── organizations_spec.rb
+│   │   │       ├── subscriptions_spec.rb
+│   │   │       └── transmissions_spec.rb
+│   │   └── portail
+│   │       └── dashboard_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
 │   │   ├── shared_examples_for_pagination.rb
 │   │   └── shared_examples_for_uuid_v7.rb
 │   └── validators
-│       └── delivery_criteria_validator_spec.rb
+│       └── data_package
+│           └── delivery_criteria_validator_spec.rb
 ├── storage
 │   └── .keep
 ├── tmp
@@ -246,4 +264,4 @@
     ├── .keep
     └── javascript
         └── .keep
-71 directories, 177 files
+82 directories, 184 files

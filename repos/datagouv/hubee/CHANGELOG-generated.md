@@ -1,12 +1,13 @@
-## Changelog : hubee (30 derniers jours, au 15 juin 2026)
+## Changelog : hubee (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Cette version apporte des mises à jour techniques importantes pour préparer l'avenir de la plateforme. L'équipe a gelé l'API V2, mis à jour les versions de PostgreSQL et Ruby, et adopté un nouveau plugin pour la gestion de l'intelligence artificielle. Ces changements visent à améliorer la stabilité, la sécurité et la performance de hubee.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'architecture interne de la plateforme, la sécurisation des informations et la préparation de l'environnement pour les futures évolutions technologiques. Des ajustements ont également été faits concernant l'utilisation de l'IA et la gestion des dépendances.
 
 ### Évolutions techniques
-- Préparation pour la prochaine version majeure : gel de l'API V2 pour stabiliser les développements futurs [#65](https://github.com/datagouv/hubee/issues/65).
-- Mise à jour de l'environnement de développement : passage à PostgreSQL 18 et Ruby 4.0.5 [#65](https://github.com/datagouv/hubee/issues/65).
-- Adoption d'un nouveau plugin pour la gestion de l'IA : utilisation de `hubee-claude-plugin` comme source de vérité pour les fonctionnalités d'intelligence artificielle [#67](https://github.com/datagouv/hubee/issues/67).
+- Refactorisation de l'architecture pour adopter une approche modulaire avec des namespaces dédiés (API, Portail, Hubee) [#69](https://github.com/datagouv/hubee/issues/69).
+- Gel de la version de l'API à V2, passage à PostgreSQL 18 et Ruby 4.0.5 [#65](https://github.com/datagouv/hubee/issues/65).
+- Mise à jour des gems et suppression des contraintes de version pour faciliter les futures mises à jour [#66](https://github.com/datagouv/hubee/issues/66).
+- Adoption du plugin `hubee-claude-plugin` comme source de vérité pour l'intégration de l'IA [#67](https://github.com/datagouv/hubee/issues/67).
 
 ### Autres changements
-- Mise à jour des gems et suppression des contraintes de version pour faciliter les futures mises à jour [#66](https://github.com/datagouv/hubee/issues/66).
+- Interdiction des références à des informations confidentielles dans le dépôt public, renforçant la sécurité des données [#68](https://github.com/datagouv/hubee/issues/68).
