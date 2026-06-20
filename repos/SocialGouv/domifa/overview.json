@@ -4,16 +4,20 @@
   "description": "DomiFa est une plateforme numérique qui facilite la gestion de la domiciliation pour les organismes agréés et permet aux personnes sans domicile stable d'accéder à leurs droits.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Authentification & Accès",
-    "API & Intégrations"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
     "PostgreSQL",
     "Angular",
-    "Docker"
+    "Docker",
+    "TypeORM"
   ],
   "components": [
     "API REST & GraphQL",
@@ -25,14 +29,16 @@
   "auth": {
     "methods": [
       "email-password",
-      "jwt",
-      "session"
+      "oauth2"
     ]
   },
   "tests": [
-    "Tests unitaires"
+    "Tests unitaires",
+    "Tests d'intégration"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-06-12T00:00:00Z",
   "status": "active",
   "license": null,
