@@ -100,6 +100,9 @@
 │       │   ├── attribute_processors
 │       │   │   ├── __init__.py
 │       │   │   └── flattening_processor.py
+│       │   ├── authorization
+│       │   │   ├── __init__.py
+│       │   │   └── affiliation_checker.py
 │       │   ├── frontends
 │       │   │   ├── __init__.py
 │       │   │   └── jwt_userinfo_openid_connect.py
@@ -111,6 +114,7 @@
 │       │   │   ├── openid_connect_frontend.yaml
 │       │   │   └── ping_frontend.yaml
 │       │   └── microservices
+│       │       ├── affiliation_checker.yaml
 │       │       ├── attribute_authorization.yaml
 │       │       ├── attribute_processor.yaml
 │       │       ├── filter_attributes.yaml
@@ -128,8 +132,10 @@
 │           ├── oidc2fer
 │           │   ├── attribute_generators
 │           │   │   └── test_entity_id_to_siret_mapper.py
-│           │   └── attribute_processors
-│           │       └── test_flattening_processor.py
+│           │   ├── attribute_processors
+│           │   │   └── test_flattening_processor.py
+│           │   └── authorization
+│           │       └── test_affiliation_checker.py
 │           └── test_e2e.py
 └── start-kind.sh
-47 directories, 87 files
+49 directories, 91 files

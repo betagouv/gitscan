@@ -1,16 +1,17 @@
-## Changelog : oidc2fer (30 derniers jours, au 22 mai 2026)
+## Changelog : oidc2fer (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des identifiants SIRET et corrige un problème de sensibilité à la casse pour l'attribut `eduPersonAffiliation`. Ces changements améliorent la compatibilité et la précision de l'identification des établissements d'enseignement supérieur. La version 1.0.14 a été déployée en production.
+Cette nouvelle version apporte des améliorations à la gestion des erreurs d'affiliation lors de l'authentification OIDC, ainsi que des mises à jour pour les tests d'intégration et la gestion des identifiants SIRET. Une nouvelle version (v1.0.15) a été publiée en production.
 
 ### Évolutions fonctionnelles
-- Correction : L'attribut `eduPersonAffiliation` est maintenant comparé sans tenir compte de la casse, améliorant ainsi la compatibilité avec certains fournisseurs d'identité. [#41](https://github.com/proconnect-gouv/oidc2fer/pull/41)
-- Ajout : Ajout de nouvelles entités à la correspondance SIRET, notamment pour EURECOM.
-- Ajout : Ajout d'autres entités à la correspondance SIRET.
+- Amélioration du message d'erreur renvoyé en cas d'échec de la vérification de l'affiliation `eduPersonAffiliation` pour fournir plus de détails. [#42](https://github.com/proconnect-gouv/oidc2fer/pull/42)
+- Mise à jour du client de test ProConnect utilisé pour les tests d'intégration.
+- Ajout de nouvelles entités à la correspondance SIRET, incluant EURECOM.
+- Ajout de nouvelles entités à la correspondance SIRET.
 
 ### Évolutions techniques
-- Déploiement : La version 1.0.14 a été déployée en production.
-- Publication : Publication de la version 1.0.14.
+- Exclusion du répertoire de construction (build) de l'analyse Pylint pour améliorer la performance et réduire les faux positifs.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Publication de la version v1.0.15 en production.
+- Publication de la version v1.0.15.
