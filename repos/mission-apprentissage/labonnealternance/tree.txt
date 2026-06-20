@@ -738,7 +738,10 @@
 │   │   │   ├── 20260518121500-remove-salaire-seo-diplome.ts
 │   │   │   ├── 20260528143130-drop-eligible-trainings-for-appointments-histories.ts
 │   │   │   ├── 20260603120000-remove-establishment-id-from-jobs-partners.ts
-│   │   │   └── 20260611143504-restore-jobs-partners-offres-emploi-lba.ts
+│   │   │   ├── 20260605185522-normalize-offer-origin-jobs-partners.ts
+│   │   │   ├── 20260611143504-restore-jobs-partners-offres-emploi-lba.ts
+│   │   │   ├── 20260612162005-fill-empty-level-lba-jobs.ts
+│   │   │   └── 20260618102545-cancel-jobs-partners-with-invalid-computed.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -1306,6 +1309,13 @@
 │   │   │   │   │       └── page.tsx
 │   │   │   │   └── villes
 │   │   │   │       └── page.tsx
+│   │   │   ├── barometre
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── BarChartHorizontal.tsx
+│   │   │   │   │   ├── BarChartVertical.tsx
+│   │   │   │   │   ├── Callout.tsx
+│   │   │   │   │   └── SectionTitle.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── contact
 │   │   │   │   └── page.tsx
 │   │   │   ├── desinscription
@@ -1427,6 +1437,7 @@
 │   │   │       │   │   ├── InformationLegaleEntreprise.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
+│   │   │       │   │   ├── OffreProlongationModal.tsx
 │   │   │       │   │   ├── OffresTabs.tsx
 │   │   │       │   │   ├── OffresTabsMenu.tsx
 │   │   │       │   │   └── UpsertOffre.tsx
@@ -1828,6 +1839,7 @@
 │   │   │   ├── TagEmploiFormation.tsx
 │   │   │   ├── TagFormation.tsx
 │   │   │   ├── TagOffreEmploi.tsx
+│   │   │   ├── TagRecrutementUrgent.tsx
 │   │   │   └── ValorisationCandidatureSpontanee.tsx
 │   │   ├── MailCard.tsx
 │   │   ├── ModalReadOnly.tsx
@@ -2488,4 +2500,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-480 directories, 2578 files
+482 directories, 2588 files
