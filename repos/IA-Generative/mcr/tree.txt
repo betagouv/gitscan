@@ -166,7 +166,6 @@
 │   │   │   │   └── user_router.py
 │   │   │   ├── client
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── http_client.py
 │   │   │   │   └── meeting_client.py
 │   │   │   ├── configs
 │   │   │   │   ├── __init__.py
@@ -258,12 +257,15 @@
 │   │   │   ├── infrastructure
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── celery.py
+│   │   │   │   ├── celery_consumer.py
 │   │   │   │   ├── comu.py
 │   │   │   │   ├── drive.py
 │   │   │   │   ├── email.py
 │   │   │   │   ├── keycloak.py
+│   │   │   │   ├── langfuse.py
 │   │   │   │   ├── redis.py
 │   │   │   │   ├── s3.py
+│   │   │   │   ├── sentry.py
 │   │   │   │   └── unleash.py
 │   │   │   ├── models
 │   │   │   │   ├── __init__.py
@@ -355,6 +357,9 @@
 │   │   │   │   └── meeting_actions.py
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── _shared
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── drive_upload.py
 │   │   │   │   ├── abort_multipart_upload.py
 │   │   │   │   ├── complete_capture.py
 │   │   │   │   ├── complete_multipart_upload.py
@@ -502,6 +507,9 @@
 │   │   │   ├── test_meeting_router.py
 │   │   │   ├── test_transcription_router.py
 │   │   │   └── test_user_router.py
+│   │   ├── client
+│   │   │   ├── __init__.py
+│   │   │   └── test_meeting_client.py
 │   │   ├── config
 │   │   │   ├── __init__.py
 │   │   │   └── test_env_vars.py
@@ -725,8 +733,6 @@
 │   │   │   │   │   ├── MeetingsDataTable.vue
 │   │   │   │   │   ├── StatusTag.spec.ts
 │   │   │   │   │   ├── StatusTag.vue
-│   │   │   │   │   ├── TableHeaderActions.spec.ts
-│   │   │   │   │   ├── TableHeaderActions.vue
 │   │   │   │   │   ├── TableTag.vue
 │   │   │   │   │   ├── cells
 │   │   │   │   │   │   ├── DataCellAction.vue
@@ -750,7 +756,6 @@
 │   │   │   │   ├── use-auth.test-utils.ts
 │   │   │   │   └── use-auth.ts
 │   │   │   └── table
-│   │   │       ├── BaseTable.vue
 │   │   │       ├── TableActions.vue
 │   │   │       └── TablePagination.vue
 │   │   ├── components.d.ts
@@ -765,6 +770,7 @@
 │   │   │   ├── use-leave-guard.ts
 │   │   │   ├── use-meeting-peremption.spec.ts
 │   │   │   ├── use-meeting-peremption.ts
+│   │   │   ├── use-multipart.spec.ts
 │   │   │   ├── use-multipart.ts
 │   │   │   ├── use-network-status.spec.ts
 │   │   │   ├── use-network-status.ts
@@ -791,6 +797,7 @@
 │   │   ├── main.ts
 │   │   ├── plugins
 │   │   │   ├── i18n.ts
+│   │   │   ├── vue-query.spec.ts
 │   │   │   └── vue-query.ts
 │   │   ├── router
 │   │   │   ├── index.ts
@@ -827,6 +834,10 @@
 │   │   │   │   ├── meetings.types.ts
 │   │   │   │   ├── use-meeting-notes.ts
 │   │   │   │   └── use-meeting.ts
+│   │   │   ├── observability
+│   │   │   │   ├── error-meta.ts
+│   │   │   │   ├── sentry.spec.ts
+│   │   │   │   └── sentry.ts
 │   │   │   ├── shared
 │   │   │   │   └── pagination.type.ts
 │   │   │   └── users
@@ -1150,4 +1161,4 @@
 ├── mcr.code-workspace
 └── scripts
     └── check_changed.py
-217 directories, 935 files
+220 directories, 943 files
