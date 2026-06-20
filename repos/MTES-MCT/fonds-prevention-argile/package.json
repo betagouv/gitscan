@@ -1,8 +1,8 @@
 {
   "name": "fonds-prevention-argile",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "private": true,
-  "packageManager": "pnpm@11.5.2",
+  "packageManager": "pnpm@11.7.0",
   "engines": {
     "node": "24.x"
   },
@@ -37,16 +37,18 @@
     "seo:generate": "tsx src/features/seo/scripts/generate-seo-data.ts",
     "seo:import-catnat": "tsx src/features/seo/catnat/scripts/import-catnat.ts",
     "seed:staging": "tsx scripts/seed/seed-staging.ts",
-    "fix:epci": "tsx scripts/ops/fix-missing-epci.ts",
-    "audit:parcours-ds": "tsx scripts/ops/audit-parcours-ds-integrity.ts",
-    "fix:double-progression": "tsx scripts/ops/fix-double-progression-amo.ts",
-    "fix:amo-non-eligible": "tsx --tsconfig scripts/tsconfig.json scripts/ops/reset-amo-non-eligible.ts",
+    "fix:epci": "tsx scripts/ops/fix/fix-missing-epci.ts",
+    "audit:parcours-ds": "tsx scripts/ops/audit/audit-parcours-ds-integrity.ts",
+    "audit:dossiers-bloques": "tsx scripts/ops/audit/audit-dossiers-bloques.ts",
+    "ds:check-permissions": "tsx scripts/ops/ds/check-ds-permissions.ts",
+    "fix:double-progression": "tsx scripts/ops/fix/fix-double-progression-amo.ts",
+    "fix:amo-non-eligible": "tsx --tsconfig scripts/tsconfig.json scripts/ops/fix/reset-amo-non-eligible.ts",
     "rga:import": "tsx scripts/import/rga-zones/import-rga-zones.ts"
   },
   "dependencies": {
     "@getbrevo/brevo": "5.0.4",
     "@gouvfr/dsfr": "1.14.4",
-    "@gouvfr/dsfr-chart": "2.0.4",
+    "@gouvfr/dsfr-chart": "2.1.1",
     "@react-email/components": "1.0.12",
     "@react-email/render": "2.0.8",
     "@socialgouv/matomo-next": "1.13.1",
@@ -76,7 +78,7 @@
     "@testing-library/user-event": "14.6.1",
     "@types/node": "22.13.5",
     "@types/nodemailer": "8.0.0",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.4",
     "@vitest/ui": "4.1.8",
