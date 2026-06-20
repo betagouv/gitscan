@@ -1,17 +1,18 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 18 juin 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 20 juin 2026)
 
 ### Résumé
-Ce mois-ci, le site schema.data.gouv.fr a bénéficié de mises à jour régulières des recommandations de schémas et du site web lui-même. Des corrections ont été apportées pour assurer la cohérence des données, notamment concernant le schéma "aides" qui a été temporairement réverti puis transformé en datapackage. Une amélioration de la localisation a également été effectuée.
+Ce mois-ci, le site schema.data.gouv.fr a bénéficié de mises à jour régulières des recommandations de schémas et du site web lui-même. Des corrections ont été apportées pour assurer la bonne localisation en français et la gestion des données concernant les aides. Un schéma a été mis à jour pour utiliser le format datapackage.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage de la langue, forcée en français (fr-FR) pour une meilleure expérience utilisateur.
-- Le schéma "acceslibre" a été mis à jour et converti en format datapackage [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344).
-- Le schéma "aides" a été temporairement réverti vers un format tableschema, puis transformé en datapackage.
+- Correction de la langue par défaut du site web pour afficher le français (fr-FR). [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344)
+- Le schéma "acceslibre" a été mis à jour et utilise désormais le format datapackage, améliorant ainsi sa compatibilité et son interopérabilité.
+- Correction temporaire de la gestion des données "aides" qui sont revenues à un format tableschema, en attendant une solution plus pérenne.
+- Les données "aides" sont maintenant gérées comme un datapackage.
 
 ### Évolutions techniques
-- Mises à jour régulières des fichiers de configuration pour la consolidation des données.
+- Mises à jour régulières des fichiers de configuration de consolidation.
 - Mises à jour régulières des recommandations de schémas.
-- Mises à jour régulières du site web pour améliorer la stabilité et la performance.
+- Mises à jour régulières du site web.
 
 ### Autres changements
-- Nettoyage et consolidation des fichiers de configuration.
+- Aucune information supplémentaire.
