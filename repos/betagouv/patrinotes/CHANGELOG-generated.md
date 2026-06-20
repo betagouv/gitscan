@@ -1,26 +1,26 @@
-## Changelog : patrinotes (30 derniers jours, au 17 juin 2026)
+## Changelog : patrinotes (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la génération de rapports PDF, notamment en corrigeant des problèmes d'affichage et en s'assurant que toutes les informations pertinentes sont incluses. Des corrections de bugs ont également été apportées à l'interface utilisateur et à la gestion des formulaires. Enfin, une nouvelle fonctionnalité permet de sélectionner un métier et d'afficher une liste de personnes dans le compte rendu.
+Cette version apporte des améliorations significatives à la génération de rapports PDF, notamment concernant la mise en page des images et des informations de visite. Des corrections ont également été apportées pour améliorer la stabilité de la réinitialisation du mot de passe et la sauvegarde des détails de visite. Enfin, des ajustements ont été faits à l'interface utilisateur pour une meilleure expérience.
 
 ### Évolutions fonctionnelles
 - Amélioration de la génération des rapports PDF :
-    - Correction de l'affichage des images dans les PDF [#75](https://github.com/betagouv/patrinotes/issues/75).
-    - Correction de la vitesse de dégradation dans les PDF.
-    - Correction de l'affichage du représentant dans les PDF.
-    - Correction de l'affichage des détails de la visite dans les PDF.
-    - Correction de l'affichage des textes et des listes à puces dans les PDF [#75](https://github.com/betagouv/patrinotes/issues/75).
-    - Sauvegarde correcte des détails de la visite.
-- Ajout de la possibilité de sélectionner un métier et d'afficher une liste de personnes dans le compte rendu [#71](https://github.com/betagouv/patrinotes/issues/71).
-- Correction du lien vers la FAQ.
-- Correction d'une typo dans les emails.
+    - Correction de l'affichage des images dans les rapports PDF [#71](https://github.com/betagouv/patrinotes/issues/71).
+    - Correction de la représentation des informations de visite dans les rapports PDF.
+    - Amélioration de la vitesse de génération des rapports PDF.
+    - Correction de typos dans les emails.
+- Ajout de la sélection de métier et de la liste des personnes dans les comptes rendus [#71](https://github.com/betagouv/patrinotes/issues/71).
+- Correction du lien vers la FAQ [#71](https://github.com/betagouv/patrinotes/issues/71).
+- Correction de la sauvegarde des détails de visite.
+- Correction pour empêcher la soumission du formulaire par la touche Entrée.
 
 ### Évolutions techniques
-- Correction d'une clause `WHERE` manquante dans la route des statistiques d'administration.
-- Correction d'un problème empêchant l'envoi du formulaire infoform par la touche Entrée.
-- Correction d'un problème lié à l'affichage du nombre de pièces jointes.
-- Correction d'un problème lié à l'affichage des labels des images lors du chargement multiple.
-- Correction d'un hotfix concernant la réinitialisation du mot de passe.
+- Correction d'une clause `WHERE` manquante dans la route des statistiques d'administration [#71](https://github.com/betagouv/patrinotes/issues/71).
+- Correction d'un problème de réinitialisation du mot de passe [#71](https://github.com/betagouv/patrinotes/issues/71).
+- Suppression des balises `<unbreakable />` inutiles.
 
 ### Autres changements
-- Mise à jour des sprints 6 et 7 [#75](https://github.com/betagouv/patrinotes/issues/75).
+- Préparation des sprints 6 et 7 [#75](https://github.com/betagouv/patrinotes/issues/75).
+- Amélioration de l'affichage du nombre de pièces jointes.
+- Correction de l'affichage des labels des images lors du téléchargement.
+- Correction du texte des en-têtes et des listes à puces dans les rapports PDF.
