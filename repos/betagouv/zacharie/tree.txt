@@ -102,7 +102,8 @@
 │   │   │   ├── sync-route.test.ts
 │   │   │   ├── trichine-status.test.ts
 │   │   │   ├── user-entity.test.ts
-│   │   │   └── user-invite.test.ts
+│   │   │   ├── user-invite.test.ts
+│   │   │   └── user-onboarding-finished.test.ts
 │   │   ├── assets
 │   │   │   ├── etablissements-traitement-sanitaire.json
 │   │   │   ├── fonts
@@ -152,7 +153,6 @@
 │   │   │   ├── laboratoire.ts
 │   │   │   ├── log.ts
 │   │   │   ├── quiz-result.ts
-│   │   │   ├── search.ts
 │   │   │   ├── stats.ts
 │   │   │   ├── sync.ts
 │   │   │   ├── trichine.ts
@@ -758,6 +758,7 @@
 │   │   │   ├── CardCarcasse.tsx
 │   │   │   ├── CardCarcasseSvi.tsx
 │   │   │   ├── CardFiche.tsx
+│   │   │   ├── CardTransmission.tsx
 │   │   │   ├── Chargement.tsx
 │   │   │   ├── CheckboxFilterSection.tsx
 │   │   │   ├── CollapsibleSection.tsx
@@ -770,7 +771,6 @@
 │   │   │   ├── DropDownMenu.tsx
 │   │   │   ├── ExportFeisModal.tsx
 │   │   │   ├── FederationTableauDeBord.tsx
-│   │   │   ├── FeiStepper.tsx
 │   │   │   ├── Filters.tsx
 │   │   │   ├── FiltersSidebar.tsx
 │   │   │   ├── FloatingNewFicheButton.tsx
@@ -924,6 +924,7 @@
 │   │   │   │   ├── collecteur-destinataire-select-sous-traite.tsx
 │   │   │   │   ├── collecteur-fei.tsx
 │   │   │   │   ├── collecteur-fiches.tsx
+│   │   │   │   ├── collecteur-header-fiche.tsx
 │   │   │   │   ├── collecteur-layout.tsx
 │   │   │   │   ├── collecteur-navigation-menu.ts
 │   │   │   │   ├── collecteur-router.tsx
@@ -1030,7 +1031,8 @@
 │   │   │   ├── carcasse.ts
 │   │   │   ├── carcasses-intermediaire.ts
 │   │   │   ├── fei-steps.ts
-│   │   │   └── filter.ts
+│   │   │   ├── filter.ts
+│   │   │   └── transmission-steps.ts
 │   │   ├── utils
 │   │   │   ├── carcasse-svi-archived.ts
 │   │   │   ├── circuit-court.ts
@@ -1046,20 +1048,10 @@
 │   │   │   ├── filter-carcasse.ts
 │   │   │   ├── filter-my-carcasses.ts
 │   │   │   ├── gert-fei-key-dates.tsx
-│   │   │   ├── get-carcasse-card-display.ts
-│   │   │   ├── get-carcasse-intermediaire-id.ts
-│   │   │   ├── get-carcasse-status.ts
-│   │   │   ├── get-carcasses-for-fei.ts
-│   │   │   ├── get-carcasses-intermediaires.ts
-│   │   │   ├── get-entity-display.ts
-│   │   │   ├── get-entity-relations.ts
-│   │   │   ├── get-fei-sorted.ts
-│   │   │   ├── get-landing-page-navigation-menu.ts
+│   │   │   ├── get-*.ts  (15 files)
 │   │   │   ├── get-ongoing-cell.tsx
-│   │   │   ├── get-previous-detenteur.tsx
-│   │   │   ├── get-saison.ts
-│   │   │   ├── get-user-roles-label.ts
-│   │   │   ├── get-vulgarisation-saisie.ts
+│   │   │   ├── get-previous-detenteur-from-fei.tsx
+│   │   │   ├── get-previous-detenteur-from-transmission.tsx
 │   │   │   ├── is-carcasse-done.ts
 │   │   │   ├── lesions.ts
 │   │   │   ├── load-carcasses.ts
@@ -1067,10 +1059,14 @@
 │   │   │   ├── load-my-relations.ts
 │   │   │   ├── map-fei-fields-to-carcasse.ts
 │   │   │   ├── merge-fetched-items.ts
+│   │   │   ├── modif-requests.ts
 │   │   │   ├── quiz-shuffle.ts
+│   │   │   ├── search-local.ts
 │   │   │   ├── sort.ts
 │   │   │   ├── standalone.ts
 │   │   │   ├── sync-data.ts
+│   │   │   ├── transmission-labels.test.ts
+│   │   │   ├── transmission-labels.ts
 │   │   │   ├── useCarcasseStatusAndRefus.tsx
 │   │   │   ├── useGetCommunesDeChasseFavorites.ts
 │   │   │   ├── useLocalStorage.ts
@@ -1149,7 +1145,8 @@
 │   │   │   ├── 70-fiche-cloturee-lecture-seule.spec.ts
 │   │   │   ├── 71-pas-de-transmission-svi-directe.spec.ts
 │   │   │   ├── 72-fiche-attribuee-autre-collecteur.spec.ts
-│   │   │   └── 73-hors-ligne-prise-en-charge.spec.ts
+│   │   │   ├── 73-hors-ligne-prise-en-charge.spec.ts
+│   │   │   └── 74-refus-total-reste-editable.spec.ts
 │   │   ├── dispatch-isolation
 │   │   │   ├── 117-dispatch-2-etg-isolation-negative.spec.ts
 │   │   │   ├── 118-dispatch-etg-plus-collecteur.spec.ts
@@ -1186,6 +1183,7 @@
 │   │   │   ├── 65-modif-request-cancel.spec.ts
 │   │   │   ├── 66-modif-request-new-carcasse-after-svi-transmit.spec.ts
 │   │   │   ├── 67-modif-request-new-carcasse-before-svi-transmit.spec.ts
+│   │   │   ├── 68-refus-total-reste-editable.spec.ts
 │   │   │   ├── fiche_circuit-long_simple_etg.spec.ts
 │   │   │   └── premier-detenteur-info.spec.ts
 │   │   ├── examinateur
@@ -1344,4 +1342,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-320 directories, 1026 files
+320 directories, 1038 files
