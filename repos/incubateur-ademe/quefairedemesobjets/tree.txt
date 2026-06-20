@@ -69,8 +69,8 @@
 │   │   │   │   └── export_opendata.py
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
+│   │   │       │   ├── check_is_prod_env.py
 │   │   │       │   ├── check_model_table_consistency_task.py
-│   │   │       │   ├── check_not_prod_env.py
 │   │   │       │   ├── config_management.py
 │   │   │       │   ├── copy_db_data_task.py
 │   │   │       │   ├── copy_db_schema_task.py
@@ -518,6 +518,16 @@
 │   │   │   │   │   ├── base_acteur_acteur_services.sql
 │   │   │   │   │   ├── base_acteur_labels.sql
 │   │   │   │   │   ├── base_acteur_type.sql
+│   │   │   │   │   ├── base_acteurservice.sql
+│   │   │   │   │   ├── base_displayedacteur.sql
+│   │   │   │   │   ├── base_displayedacteur_acteur_services.sql
+│   │   │   │   │   ├── base_displayedacteur_labels.sql
+│   │   │   │   │   ├── base_displayedacteur_sources.sql
+│   │   │   │   │   ├── base_displayedperimetreadomicile.sql
+│   │   │   │   │   ├── base_displayedpropositionservice.sql
+│   │   │   │   │   ├── base_displayedpropositionservice_sous_categories.sql
+│   │   │   │   │   ├── base_epci.sql
+│   │   │   │   │   ├── base_labelqualite.sql
 │   │   │   │   │   ├── base_perimetreadomicile.sql
 │   │   │   │   │   ├── base_propositionservice.sql
 │   │   │   │   │   ├── base_propositionservice_sous_categories.sql
@@ -528,6 +538,7 @@
 │   │   │   │   │   ├── base_revisionpropositionservice.sql
 │   │   │   │   │   ├── base_revisionpropositionservice_sous_categories.sql
 │   │   │   │   │   ├── base_source.sql
+│   │   │   │   │   ├── base_souscategorieobjet.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ae_annuaire_entreprises
 │   │   │   │   │   ├── base_ae_etablissement.sql
@@ -541,6 +552,7 @@
 │   │   │   │   └── stats
 │   │   │   │       ├── base_action.sql
 │   │   │   │       ├── base_random_position.sql
+│   │   │   │       ├── base_vueacteur.sql
 │   │   │   │       ├── base_vueacteur_visible.sql
 │   │   │   │       ├── base_vuepropositionservice.sql
 │   │   │   │       ├── base_vuepropositionservice_visible.sql
@@ -856,10 +868,6 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
-│   │   │   ├── database_sample
-│   │   │   │   ├── .terraform.lock.hcl
-│   │   │   │   ├── terraform.tfvars.example
-│   │   │   │   └── terragrunt.hcl
 │   │   │   └── object_storage
 │   │   │       ├── .terraform.lock.hcl
 │   │   │       ├── terraform.tfvars.example
@@ -878,6 +886,10 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   └── terragrunt.hcl
 │   │   │   ├── database
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
+│   │   │   ├── database_sample
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
@@ -909,6 +921,7 @@
 │       │   └── variables.tf
 │       ├── database_sample
 │       │   ├── main.tf
+│       │   ├── outputs.tf
 │       │   └── variables.tf
 │       └── object_storage
 │           ├── airflow.tf
@@ -1217,6 +1230,7 @@
     │   │   ├── 0083_alter_produitindexpage_body_alter_produitpage_body.py
     │   │   ├── 0083_produitpage_ab_test_carte_default_view.py
     │   │   ├── 0084_merge_20260527_0000.py
+    │   │   ├── 0085_add_break_block_to_streamfield.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── signals.py
@@ -1366,6 +1380,7 @@
     │   │   ├── 0002_searchterm_disabled.py
     │   │   └── __init__.py
     │   ├── models.py
+    │   ├── score_breakdown.py
     │   └── wagtail_hooks.py
     ├── servers.conf.erb
     ├── static
@@ -1757,6 +1772,7 @@
     │       │   │   ├── nouvelle_recherche.html
     │       │   │   └── produit.html
     │       │   ├── search
+    │       │   │   ├── _score_breakdown.html
     │       │   │   ├── autocomplete_header_view.html
     │       │   │   ├── autocomplete_results.html
     │       │   │   ├── autocomplete_view.html
@@ -1926,9 +1942,10 @@
     │   ├── search_tests
     │   │   ├── __init__.py
     │   │   ├── test_purge_orphan_searchterm_index.py
+    │   │   ├── test_score_breakdown.py
     │   │   ├── test_search_term.py
     │   │   └── test_search_view.py
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-355 directories, 1578 files
+355 directories, 1595 files
