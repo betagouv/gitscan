@@ -1,29 +1,25 @@
 ## Changelog : device-management (30 derniers jours, au 7 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la sécurité, la documentation et l'amélioration de la gestion des secrets. Des corrections importantes ont été apportées pour répondre aux vulnérabilités identifiées lors d'audits de sécurité, et la documentation a été restructurée pour une meilleure clarté.  Des améliorations ont également été apportées à la gestion des déploiements et à la configuration des extensions.
+Ce mois-ci, les efforts de développement se sont concentrés sur la sécurité, la stabilisation du déploiement et l'amélioration de la gestion des extensions et des mises à jour. Des corrections de vulnérabilités critiques ont été implémentées, ainsi que des améliorations de la documentation et de la gestion des secrets. Des optimisations ont également été apportées à l'infrastructure de déploiement et à la gestion des configurations.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'exposition de l'ID des plugins dans l'API `/catalog/api/plugins` (au lieu du slug), facilitant l'intégration avec d'autres systèmes. [#9](https://github.com/IA-Generative/device-management/pull/9)
-- Ajout de la prise en charge de la génération de fichiers XML et JSON pour les mises à jour, permettant une distribution multi-cible des extensions. [#20](https://github.com/IA-Generative/device-management/pull/20)
-- Possibilité de configurer l'API via des variables d'environnement (API_BASE, RELAY_ASSISTANT_BASE_URL, etc.). [#25](https://github.com/IA-Generative/device-management/pull/25)
-- Ajout d'une section "Comment fonctionnent les mises à jour" à la documentation. [#31](https://github.com/IA-Generative/device-management/pull/31)
-- Amélioration de la gestion des redirects OIDC pour l'interface d'administration. [#36](https://github.com/IA-Generative/device-management/pull/36)
+- **Gestion du catalogue:** L'ID du plugin est maintenant exposé dans l'API publique `/catalog/api/plugins` au lieu du slug, améliorant l'identification des extensions. [#4cf65d4](https://github.com/IA-Generative/device-management/commit/4cf65d4)
+- **Mises à jour:** Génération de fichiers `gupdate XML` et `Mozilla JSON` multi-cible pour faciliter la distribution des mises à jour. [#cb68812](https://github.com/IA-Generative/device-management/commit/cb68812)
+- **Configuration:** Support des variables d'environnement `API_BASE`, `RELAY_ASSISTANT_BASE_URL`, `COMPTE_RENDU_URL`, `COMU_URL` et `TELEMETRY_ENDPOINT` pour une configuration plus flexible. [#f49adde](https://github.com/IA-Generative/device-management/commit/f49adde)
+- **Authentification:** Amélioration de la gestion du `redirect_uri` Keycloak via les variables d'environnement `KEYCLOAK_REDIRECT_URI` et `ALLOWED`. [#f4012b9](https://github.com/IA-Generative/device-management/commit/f4012b9)
 
 ### Évolutions techniques
-- Renforcement significatif de la sécurité suite à un audit, incluant la correction de plusieurs vulnérabilités (CT-1, CT-7, CT-9, CT-12, IMM-1..8). [#30](https://github.com/IA-Generative/device-management/pull/30)
-- Mise à jour de Nginx en version 1.29-alpine pour corriger une vulnérabilité OpenSSL. [#41](https://github.com/IA-Generative/device-management/pull/41)
-- Mise à jour des dépendances FastAPI et Starlette pour corriger des CVE. [#37](https://github.com/IA-Generative/device-management/pull/37)
-- Suppression de composants obsolètes et potentiellement dangereux (Adminer, ingress Filebrowser). [#38](https://github.com/IA-Generative/device-management/pull/38) et [#39](https://github.com/IA-Generative/device-management/pull/39)
-- Amélioration de la gestion des secrets dans Kubernetes, avec une normalisation de la configuration et suppression des secrets du dépôt. [#40](https://github.com/IA-Generative/device-management/pull/40) et [#42](https://github.com/IA-Generative/device-management/pull/42)
-- Refonte de la structure de la documentation pour une meilleure organisation par audience. [#32](https://github.com/IA-Generative/device-management/pull/32)
-- Ajout d'un fichier `.dockerignore` pour exclure les fichiers sensibles et inutiles du contexte de build Docker. [#43](https://github.com/IA-Generative/device-management/pull/43)
+- **Sécurité:** Correction de plusieurs vulnérabilités de sécurité critiques, incluant des failles dans `starlette`, `pytest` et des problèmes d'authentification et de révocation de jetons.  Des audits de sécurité ont été réalisés et des mesures correctives ont été implémentées. [#2e383d7](https://github.com/IA-Generative/device-management/commit/2e383d7), [#635a223](https://github.com/IA-Generative/device-management/commit/635a223), [#c66be0d](https://github.com/IA-Generative/device-management/commit/c66be0d), [#adb4658](https://github.com/IA-Generative/device-management/commit/adb4658), [#e6a9cb2](https://github.com/IA-Generative/device-management/commit/e6a9cb2)
+- **Déploiement:** Mise à jour de l'image Docker vers la version 0.6.0 avec configuration des variables d'environnement. [#1f324de](https://github.com/IA-Generative/device-management/commit/1f324de)
+- **Infrastructure:** Suppression de services obsolètes ou non sécurisés comme Adminer et Filebrowser. [#8cb802d](https://github.com/IA-Generative/device-management/commit/8cb802d), [#7b8eea2](https://github.com/IA-Generative/device-management/commit/7b8eea2)
+- **Gestion des secrets:** Normalisation de la gestion des secrets Kubernetes, en retirant les secrets du code source et en utilisant des overlays spécifiques à chaque environnement. [#950430a](https://github.com/IA-Generative/device-management/commit/950430a), [#ed793b7](https://github.com/IA-Generative/device-management/commit/ed793b7), [#2b071c0](https://github.com/IA-Generative/device-management/commit/2b071c0)
+- **Base de données:** Ajout de l'extension `extension_id` et `gecko_id` à la base de données pour améliorer la gestion des extensions. [#3c8edb9](https://github.com/IA-Generative/device-management/commit/3c8edb9)
 
 ### Autres changements
-- Suppression du relais `/llm` devenu inutile. [#44](https://github.com/IA-Generative/device-management/pull/44)
-- Nettoyage du code et suppression de code mort. [#45](https://github.com/IA-Generative/device-management/pull/45)
-- Mise à jour des variables d'environnement pour le déploiement Scaleway. [#46](https://github.com/IA-Generative/device-management/pull/46)
-- Ajout d'un runbook de déploiement consolidé pour Scaleway et DGX. [#47](https://github.com/IA-Generative/device-management/pull/47)
-- Ajout d'une note de sécurité pour le dépôt public. [#48](https://github.com/IA-Generative/device-management/pull/48)
-- Publication d'un rapport d'audit de sécurité anonymisé. [#49](https://github.com/IA-Generative/device-management/pull/49)
-- Caviardage de l'historique du dépôt avant sa publication. [#50](https://github.com/IA-Generative/device-management/pull/50)
+- **Documentation:** Ajout d'une section "Comment fonctionnent les mises à jour" au fichier README.md. [#311c293](https://github.com/IA-Generative/device-management/commit/311c293)
+- **Documentation:** Restructuration de la documentation par audience et suppression des artefacts internes du dépôt. [#000b4fa](https://github.com/IA-Generative/device-management/commit/000b4fa)
+- **Documentation:** Consolidation du runbook de déploiement pour Scaleway et DGX. [#945aeeb](https://github.com/IA-Generative/device-management/commit/945aeeb)
+- **Nettoyage du code:** Suppression de code mort et normalisation du code. [#b9408f3](https://github.com/IA-Generative/device-management/commit/b9408f3), [#cf95cf6](https://github.com/IA-Generative/device-management/commit/cf95cf6)
+- **Build:** Ajout d'un fichier `.dockerignore` pour exclure les fichiers sensibles et inutiles du contexte de build Docker. [#c34fa31](https://github.com/IA-Generative/device-management/commit/c34fa31)
+- **Divers:** Mise à jour des dépendances Python vers les dernières versions. [#c9f9719](https://github.com/IA-Generative/device-management/commit/c9f9719)
