@@ -186,7 +186,9 @@
 │   ├── 20260507000001_update_phases_check.ts
 │   ├── 20260512000001_add_matrix_accounts.ts
 │   ├── 20260527000001_update_phase_perenisation_consolidation.ts
-│   └── 20260615000001_drop_marrainage_tables.ts
+│   ├── 20260615000001_drop_marrainage_tables.ts
+│   ├── 20260615000001_drop_users_tjm_column.ts
+│   └── 20260617000001_add_contact_fields_to_startups.ts
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
@@ -282,6 +284,8 @@
 │   │   │       │   │       ├── new
 │   │   │       │   │       │   └── page.tsx
 │   │   │       │   │       └── page.tsx
+│   │   │       │   ├── ops
+│   │   │       │   │   └── page.tsx
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── sentry
 │   │   │       │       ├── page.tsx
@@ -386,7 +390,9 @@
 │   │   │   │       │   └── route.ts
 │   │   │   │       └── route.ts
 │   │   │   ├── services
-│   │   │   │   └── actions.ts
+│   │   │   │   ├── actions.ts
+│   │   │   │   └── ops
+│   │   │   │       └── actions.ts
 │   │   │   ├── startups
 │   │   │   │   ├── actions.ts
 │   │   │   │   └── files
@@ -501,6 +507,7 @@
 │   │   │   ├── CreateMatomoServiceForm.tsx
 │   │   │   ├── CreateSentryServiceForm.tsx
 │   │   │   ├── MatomoServiceForm.tsx
+│   │   │   ├── OpsRequestForm.tsx
 │   │   │   └── SentryServiceForm.tsx
 │   │   ├── Skiplinks.tsx
 │   │   ├── SponsorForm
@@ -609,6 +616,7 @@
 │   │   ├── events.ts
 │   │   ├── file.ts
 │   │   ├── flat.ts
+│   │   ├── grist.ts
 │   │   ├── hstore.ts
 │   │   ├── kysely
 │   │   │   ├── index.ts
@@ -642,6 +650,7 @@
 │   │   │   ├── image.ts
 │   │   │   ├── incubator.ts
 │   │   │   ├── member.ts
+│   │   │   ├── opsRequest.ts
 │   │   │   ├── organization.ts
 │   │   │   ├── service.ts
 │   │   │   ├── startup.ts
@@ -670,6 +679,7 @@
 │   │   ├── memberChange.ts
 │   │   ├── misc.ts
 │   │   ├── mission.ts
+│   │   ├── ops.ts
 │   │   ├── sentry.ts
 │   │   ├── sentryTeam.ts
 │   │   ├── services.ts
@@ -689,6 +699,7 @@
 │   │   ├── github-schemas.ts
 │   │   ├── import-from-www.ts
 │   │   ├── import-teams-from-www.ts
+│   │   ├── setup-grist-ops-table.ts
 │   │   ├── sync-dimail.ts
 │   │   ├── sync-matrix-accounts.ts
 │   │   ├── update-local-files.ts
@@ -756,10 +767,9 @@
 │   │   │   │   ├── syncMatomoSites.ts
 │   │   │   │   ├── syncSentryAccounts.ts
 │   │   │   │   └── syncSentryTeams.ts
-│   │   │   ├── startups
-│   │   │   │   ├── index.ts
-│   │   │   │   └── sendEmailToStartupToUpdatePhase.ts
-│   │   │   └── unblockEmailsThatAreActive.ts
+│   │   │   └── startups
+│   │   │       ├── index.ts
+│   │   │       └── sendEmailToStartupToUpdatePhase.ts
 │   │   ├── types
 │   │   │   └── request.d.ts
 │   │   └── views
@@ -816,4 +826,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-186 directories, 632 files
+188 directories, 640 files
