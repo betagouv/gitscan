@@ -161,6 +161,7 @@
 │   │   └── user
 │   │       ├── __init__.py
 │   │       ├── _authenticateduserquery.py
+│   │       ├── _userpasswordencoder.py
 │   │       ├── _userrepository.py
 │   │       ├── entities.py
 │   │       ├── errors.py
@@ -173,7 +174,6 @@
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
 │   │   ├── audio.py
-│   │   ├── auth.py
 │   │   ├── chat.py
 │   │   ├── chunks.py
 │   │   ├── collections.py
@@ -212,6 +212,9 @@
 │   │       └── _modelregistry.py
 │   ├── infrastructure
 │   │   ├── __init__.py
+│   │   ├── bcrypt
+│   │   │   ├── __init__.py
+│   │   │   └── _bcryptuserpasswordencoder.py
 │   │   ├── ecologit
 │   │   │   ├── __init__.py
 │   │   │   └── _ecologitmodelenvironmentalimpactscomputer.py
@@ -230,6 +233,7 @@
 │   │   │   │   │   ├── roles.py
 │   │   │   │   │   ├── routers.py
 │   │   │   │   │   └── users.py
+│   │   │   │   ├── auth.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── health.py
 │   │   │   │   ├── models.py
@@ -243,6 +247,7 @@
 │   │   │       │   ├── roles.py
 │   │   │       │   ├── routers.py
 │   │   │       │   └── users.py
+│   │   │       ├── auth.py
 │   │   │       ├── health.py
 │   │   │       ├── models.py
 │   │   │       └── rerank.py
@@ -375,8 +380,6 @@
 │   │       ├── __init__.py
 │   │       └── _tiktokenmodeltokenizer.py
 │   ├── main.py
-│   ├── routers
-│   │   └── registry.py
 │   ├── schemas
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -388,7 +391,6 @@
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
 │   │   ├── audio.py
-│   │   ├── auth.py
 │   │   ├── chat.py
 │   │   ├── chunks.py
 │   │   ├── collections.py
@@ -482,6 +484,8 @@
 │   │   │   │   │   ├── test_bootstrapadmin.py
 │   │   │   │   │   └── test_bootstrapmodels.py
 │   │   │   │   └── test_createapp.py
+│   │   │   ├── bcrypt
+│   │   │   │   └── test_bcryptuserpasswordencoder.py
 │   │   │   ├── conftest.py
 │   │   │   ├── ecologit
 │   │   │   │   ├── conftest.py
@@ -521,6 +525,7 @@
 │   │   │   │   │       ├── test_get_user.py
 │   │   │   │   │       └── test_get_users.py
 │   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_auth_login.py
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   ├── test_rerank.py
@@ -565,6 +570,7 @@
 │   │   │   │       ├── test_delete_user.py
 │   │   │   │       ├── test_get_first_admin_user.py
 │   │   │   │       ├── test_get_user_by_id.py
+│   │   │   │       ├── test_get_user_id_and_password_by_email.py
 │   │   │   │       └── test_get_users.py
 │   │   │   ├── redis
 │   │   │   │   ├── test_redisproviderloadbalancer.py
@@ -597,9 +603,6 @@
 │   │       │   └── model
 │   │       │       └── test_modelprovidergateway.py
 │   │       ├── test_configuration.py
-│   │       ├── test_endpoints
-│   │       │   ├── mock.py
-│   │       │   └── test_auth.py
 │   │       ├── test_helpers
 │   │       │   ├── test_accesscontroller.py
 │   │       │   ├── test_documentmanager.py
@@ -653,6 +656,8 @@
 │   │           │       ├── test_deleteuserusecase.py
 │   │           │       ├── test_getoneuserusecase.py
 │   │           │       └── test_getusersusecase.py
+│   │           ├── auth
+│   │           │   └── test_authloginusecase.py
 │   │           ├── factories.py
 │   │           ├── health
 │   │           │   ├── __init__.py
@@ -699,6 +704,9 @@
 │   │   │       ├── _getoneuserusecase.py
 │   │   │       ├── _getusersusecase.py
 │   │   │       └── _updateuserusecase.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   └── _authloginusecase.py
 │   │   ├── health
 │   │   │   ├── __init__.py
 │   │   │   └── _gethealthmodelsusecase.py
@@ -962,4 +970,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-216 directories, 748 files
+218 directories, 754 files
