@@ -1,22 +1,24 @@
-# Synthèse d'activité : proconnect-gouv (du 22 mai 2026 au 12 juin 2026)
+# Synthèse d'activité : proconnect-gouv (du 05/05 au 18/06 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment dans les domaines de l'authentification, de la gestion des utilisateurs et de la validation de données. Plusieurs dépôts ont bénéficié de mises à jour significatives, comme [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec des améliorations de la modération et de la migration des emails, et [hyyypertool](/repos/proconnect-gouv/hyyypertool) avec des ajouts d'informations utilisateur et des optimisations de sécurité. La librairie [class-validator](/repos/proconnect-gouv/class-validator) a également été enrichie de nouveaux validateurs pour une validation de données plus complète.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités aux services existants. Plusieurs dépôts ont bénéficié de mises à jour pour supporter l'authentification multi-facteurs (MFA), simplifier l'inscription des utilisateurs, et améliorer la gestion des erreurs. L'accent a également été mis sur la modernisation de l'infrastructure et des dépendances, notamment avec l'adoption de Bun pour certains projets. Les améliorations apportées à [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) sont particulièrement notables, impactant directement l'expérience utilisateur et la sécurité des plateformes.
 
 ## Sécurité
-Plusieurs dépôts ont reçu des mises à jour axées sur la sécurité :
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) a implémenté une limitation de débit (rate limiting) basée sur l'adresse IP.
-- [class-validator](/repos/proconnect-gouv/class-validator) a corrigé des vulnérabilités de dépendances.
-- [federation](/repos/proconnect-gouv/federation) a bénéficié de mises à jour de l'infrastructure avec Node 24.16.
+Plusieurs changements ont été apportés pour renforcer la sécurité :
+- Suppression d'anciennes adresses IP dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) pour améliorer la sécurité.
+- Mise à jour de dépendances vulnérables dans [class-validator](/repos/proconnect-gouv/class-validator) pour corriger des failles de sécurité.
+- Renforcement de l'authentification multi-facteurs (MFA) dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
 
 ## Autres changements notables
-- Migration de [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers un runtime Bun natif pour améliorer les performances.
-- Refactorisation de la documentation eIDAS dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
-- Remplacement de `resolveMx` par une requête DNS-over-HTTPS dans le validateur d'email de [federation](/repos/proconnect-gouv/federation).
+- Migration de la base de données MongoDB dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) vers "corev2" avec un nouvel utilisateur.
+- Migration de l'application [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers un runtime Bun natif sur l'environnement Scalingo-24 pour améliorer les performances.
+- Refonte de l'interface d'administration de [federation](/repos/proconnect-gouv/federation) avec une nouvelle identité visuelle (ProConnect remplace FranceConnect).
+- Préparation de la base de données [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) pour la compatibilité avec PostgreSQL 17.
+- Suppression du proxy HTTP BridgeRie dans [federation](/repos/proconnect-gouv/federation).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la modération, migration des emails et optimisations de la base de données.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Ajout d'informations utilisateur, amélioration de l'interface et renforcement de la sécurité.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la validation des utilisateurs et ajout de nouvelles catégories juridiques.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation eIDAS/ANSSI et renforcement de l'authentification MFA.
+- [federation](/repos/proconnect-gouv/federation) : Refonte de l'interface d'administration et améliorations techniques de l'infrastructure.
+- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Corrections de bugs liés à l'authentification OIDC et migration vers Bun.
 - [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
-- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Correction de bugs d'authentification et migration vers Bun.
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de l'autocomplétion des mots de passe et mises à jour de l'infrastructure.

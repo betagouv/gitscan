@@ -1,31 +1,27 @@
-# Synthèse d'activité : suitenumerique (du 22 mai au 11 juin 2026)
+# Synthèse d'activité : suitenumerique (du 29 mai au 25 juin 2026)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives de ses produits phares. Les efforts se sont concentrés sur l'amélioration de la sécurité, notamment avec des mises à jour de dépendances et la correction de vulnérabilités. Plusieurs applications ont bénéficié de refontes techniques majeures, comme le passage de Next.js à Vite pour *calendars* et *conversations*, visant à optimiser les performances et l'expérience de développement. Des fonctionnalités importantes ont été ajoutées, comme la génération de liens de téléchargement uniques pour *st-transfers*, la suppression de dossiers dans *projects*, et l'amélioration de la gestion des RSVP dans *calendars*. L'accent a également été mis sur l'amélioration de l'expérience utilisateur, avec des corrections de bugs et des améliorations de l'interface dans de nombreux dépôts, notamment *hub*, *docs*, et *drive*.
+La période récente a été marquée par des efforts importants pour améliorer la sécurité, la performance et l'expérience utilisateur des différentes applications de la Suite Numérique. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment [transfers](/repos/suitenumerique/transfers) avec une refonte de son frontend et des améliorations de la sécurité des téléchargements, et [st-home](/repos/suitenumerique/st-home) avec l'adoption de Dramatiq pour la gestion des tâches asynchrones et des améliorations de l'affichage de la carte de déploiement.  Des améliorations notables ont également été apportées à [meet](/repos/suitenumerique/meet) avec l'ajout d'un nouveau pipeline audio et à [calendars](/repos/suitenumerique/calendars) avec une refonte du RSVP et une migration vers Vite. L'accent a également été mis sur la correction de vulnérabilités et l'amélioration de la qualité du code dans plusieurs projets.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de la sécurité :
 
-- Correction de vulnérabilités dans les dépendances de *people* (urllib3, next, django, dimail).
-- Renforcement de la sécurité du traitement des données ICS dans *calendars*.
-- Correction d'une vulnérabilité potentielle dans *conversations* concernant l'exposition du port interne lors de la redirection OIDC.
-- Amélioration de la sécurité avec `secrets.compare_digest` dans *dictaphone*.
+- [transfers](/repos/suitenumerique/transfers) : Renforcement de la sécurité des téléchargements et correction de vulnérabilités identifiées lors d'une revue de sécurité.
+- [people](/repos/suitenumerique/people) : Mise à jour de dépendances (urllib3, next, django) pour corriger des vulnérabilités de sécurité.
+- [meet-sip](/repos/suitenumerique/meet-sip) : Correction d'une condition de concurrence.
+- [calendars](/repos/suitenumerique/calendars) : Renforcement de la sécurité du traitement des données ICS pour prévenir les vulnérabilités.
 
 ## Autres changements notables
-Plusieurs refactorings et migrations importantes ont eu lieu :
-
-- Migration du frontend de *calendars* et *conversations* vers Vite pour une meilleure performance.
-- Refonte de la gestion des RSVP dans *calendars*.
-- Refonte du frontend de *hub* avec Next.js et TypeScript.
-- Remplacement de Next.js par Vite et TanStack Router dans *messages* pour une meilleure performance et maintenabilité.
-- Suppression de la recherche par embedding dans *find* pour se concentrer sur BM25.
-- Amélioration de l'infrastructure de surveillance de la santé des modèles d'IA dans *conversations*.
+- [transfers](/repos/suitenumerique/transfers) : Migration du frontend vers Vite et TanStack Router pour une meilleure performance et une architecture plus moderne.
+- [st-home](/repos/suitenumerique/st-home) : Remplacement de Celery par Dramatiq pour la gestion des tâches asynchrones.
+- [calendars](/repos/suitenumerique/calendars) : Migration du frontend de Next.js vers Vite.
+- [find](/repos/suitenumerique/find) : Suppression de la recherche par embedding et refonte de la gestion des indices de recherche.
+- [conversations](/repos/suitenumerique/conversations) : Mise en place d'un système de surveillance de la santé des modèles d'IA.
 
 ## Dépôts les plus actifs
-- [ui-kit](/repos/suitenumerique/ui-kit) : Amélioration de l'accessibilité et mise à jour de la bibliothèque d'icônes.
-- [st-home](/repos/suitenumerique/st-home) : Corrections et améliorations de l'affichage des données et de la recherche de collectivités.
-- [messages](/repos/suitenumerique/messages) : Refonte technique majeure avec migration vers Vite et TanStack Router, et ajout de nombreuses améliorations fonctionnelles.
-- [calendars](/repos/suitenumerique/calendars) : Refonte de la gestion des RSVP et migration vers Vite.
-- [conversations](/repos/suitenumerique/conversations) : Améliorations de la stabilité, de la sécurité et de l'expérience utilisateur, ainsi que migration vers Vite.
-- [drive](/repos/suitenumerique/drive) : Ajout de l'export de dossiers et amélioration de la gestion des comptes.
-- [docs](/repos/suitenumerique/docs) : Amélioration de la recherche et ajout d'un mode présentateur.
+- [transfers](/repos/suitenumerique/transfers) : Refonte du frontend et amélioration de la sécurité des téléchargements.
+- [st-home](/repos/suitenumerique/st-home) : Amélioration de la gestion des tâches asynchrones et de l'affichage de la carte de déploiement.
+- [meet](/repos/suitenumerique/meet) : Amélioration de la qualité audio et ajout de nouvelles fonctionnalités pour les réunions.
+- [calendars](/repos/suitenumerique/calendars) : Refonte du RSVP et migration vers Vite.
+- [conversations](/repos/suitenumerique/conversations) : Amélioration de la stabilité, de la surveillance des modèles d'IA et de l'expérience utilisateur.
+- [docs](/repos/suitenumerique/docs) : Ajout de nouvelles fonctionnalités et amélioration de l'accessibilité.

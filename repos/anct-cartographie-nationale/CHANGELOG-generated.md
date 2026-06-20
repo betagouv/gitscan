@@ -1,15 +1,14 @@
-# Synthèse d'activité : anct-cartographie-nationale (du 23/05 au 02/06)
+# Synthèse d'activité : anct-cartographie-nationale (du 16/05 au 16/06)
 
 ## Résumé de l'activité
-L'organisation a connu une semaine productive, axée sur l'amélioration de la qualité et de la disponibilité des données des lieux de médiation numérique, ainsi que sur la modernisation de l'application de cartographie.  [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a bénéficié d'optimisations significatives du processus de géocodage et de l'ajout de nouvelles sources de données. L'application [cartographie](/repos/anct-cartographie-nationale/cartographie) a vu l'implémentation de nouvelles fonctionnalités de recherche et l'adoption d'une nouvelle stack technologique (Arckit) pour une meilleure maintenabilité et scalabilité.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la qualité et de la disponibilité des données de médiation numérique, ainsi que sur le renforcement de l'observabilité et de la robustesse de la plateforme cartographique. [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a bénéficié d'optimisations significatives pour la gestion des données et le géocodage, tandis que [cartographie](/repos/anct-cartographie-nationale/cartographie) a vu l'implémentation d'outils de surveillance et d'un formulaire de contact pour améliorer l'expérience utilisateur et faciliter le diagnostic des problèmes.
 
 ## Sécurité
-- Ajout de la détection de secrets avec Gitleaks dans les hooks pré-commit et CI sur [cartographie](/repos/anct-cartographie-nationale/cartographie).
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Migration du géocodage BAN vers l'API batch CSV dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), améliorant les performances et la scalabilité.
-- Migration de l'application [cartographie](/repos/anct-cartographie-nationale/cartographie) vers l'écosystème Arckit (@arckit/telemetry, @arckit/form, @arckit/daisyui, @arckit/nextjs).
+La plateforme [cartographie](/repos/anct-cartographie-nationale/cartographie) a subi des refactorings importants, notamment l'adoption de plusieurs bibliothèques `@arckit` pour standardiser et simplifier le développement.  L'utilisation de Secret Manager pour la gestion des informations sensibles et l'intégration de Gitleaks pour la détection de secrets renforcent également la sécurité de l'infrastructure.  Enfin, l'amélioration de la gestion du cache vise à optimiser les performances et la propagation des mises à jour.
 
 ## Dépôts les plus actifs
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Amélioration de la gestion des données de lieux de médiation numérique, incluant l'ajout de nouvelles sources et l'optimisation du géocodage.
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Modernisation de l'application avec l'adoption d'Arckit et l'ajout de nouvelles fonctionnalités de recherche et de contact.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Ce dépôt a été activement mis à jour pour améliorer la gestion des données de lieux de médiation numérique, incluant l'ajout de nouvelles sources de données et l'optimisation du géocodage.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Ce dépôt a connu une activité intense axée sur l'amélioration de l'observabilité, la robustesse et la standardisation du code, avec l'intégration de nouveaux outils de surveillance et de refactorings majeurs.

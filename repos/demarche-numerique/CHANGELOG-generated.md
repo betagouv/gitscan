@@ -1,16 +1,17 @@
 # Synthèse d'activité : demarche-numerique (du 02/06 au 12/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec des évolutions significatives pour les professionnels, notamment l'ajout d'un bouton ProConnect et une migration vers la version 4 de l'API Entreprise pour une meilleure gestion des données d'établissement. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées.  Parallèlement, une correction importante a été déployée sur [ds_proxy](/repos/demarche-numerique/ds_proxy) pour garantir l'intégrité des données lors du proxyage des requêtes.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec des ajouts fonctionnels pour faciliter la communication avec les utilisateurs (bannières administrables) et améliorer l'expérience de correction de demandes. Des efforts importants ont également été faits pour renforcer la sécurité de la plateforme, notamment concernant l'import CSV et l'API Entreprise, en y intégrant des mécanismes de protection contre les surcharges et les vulnérabilités. Enfin, des optimisations de performance ont été apportées à l'export de données.
 
 ## Sécurité
-Aucune modification liée à la sécurité n'a été signalée durant cette période.
+- Correction de vulnérabilités dans l'import CSV sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Ajout de circuit breakers et de rate limiting pour l'API Entreprise sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour une meilleure résilience et protection contre les abus.
 
 ## Autres changements notables
-- Refactorisation majeure de [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour la migration vers l'API Entreprise v4, incluant la gestion des données d'établissement et le code NAF 2025.
-- Amélioration de la performance et optimisation du code de [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec la réduction des requêtes N+1 et l'utilisation de circuit breakers.
-- Correction d'un bug d'altération d'en-tête HTTP dans [ds_proxy](/repos/demarche-numerique/ds_proxy) affectant l'intégrité des fichiers.
+- Migration de composants HAML vers ERB sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour une meilleure maintenabilité du code.
+- Utilisation de Redis pour la mise en cache de la configuration OIDC sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Correction d'un bug d'altération de l'en-tête `content-md5` lors du proxyage sur [ds_proxy](/repos/demarche-numerique/ds_proxy), assurant l'intégrité des fichiers.
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration significative de la plateforme avec des fonctionnalités pour les professionnels et une migration vers une nouvelle version de l'API Entreprise.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Correction d'un bug critique concernant l'intégrité des données lors du proxyage.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration significative de la plateforme avec des ajouts fonctionnels, des corrections de sécurité et des optimisations de performance.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Correction d'un bug critique affectant l'intégrité des données lors du proxyage HTTP.

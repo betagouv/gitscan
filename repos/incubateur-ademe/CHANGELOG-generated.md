@@ -1,19 +1,23 @@
-# Synthèse d'activité : incubateur-ademe (du 17 avril 2026 au 17 juin 2026)
+# Synthèse d'activité : incubateur-ademe (du 16 mai 2026 au 16 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation incubateur-ademe a été marquée par des améliorations significatives sur plusieurs projets. On observe une forte concentration sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités et la correction de bugs dans des applications comme [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) et [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets).  Des efforts importants ont également été déployés pour moderniser l'infrastructure et les outils de développement, avec des migrations vers des technologies plus récentes comme TypeScript ([dsfr-override](/repos/incubateur-ademe/dsfr-override)) et l'automatisation des processus de déploiement ([n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo)). Plusieurs projets ont bénéficié de mises à jour de données et d'améliorations de la précision des calculs, comme [impactco2](/repos/incubateur-ademe/impactco2) et [publicodes-commun](/repos/incubateur-ademe/publicodes-commun).
+L'activité récente de l'organisation incubateur-ademe a été riche et diversifiée, avec des améliorations significatives sur plusieurs projets.  Plusieurs dépôts ont bénéficié d'améliorations de l'expérience utilisateur, notamment [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [benefriches](/repos/incubateur-ademe/benefriches), avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des efforts importants ont été consacrés à la modernisation technique, avec des migrations vers TypeScript ([dsfr-override](/repos/incubateur-ademe/dsfr-override), [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs)) et des mises à jour de dépendances majeures (n8n, Node.js).  L'accent a également été mis sur la sécurité, avec des corrections pour prévenir les injections SQL et les IDOR dans [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) et l'ajout de scans de secrets ([benefriches](/repos/incubateur-ademe/benefriches)).
 
 ## Sécurité
-Des corrections de vulnérabilités et des améliorations de la sécurité ont été apportées à [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) et [dsfr-override](/repos/incubateur-ademe/dsfr-override) avec l'ajout d'un throttleur et l'utilisation de Talisman pour la détection de secrets.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- Correction de vulnérabilités et prévention des injections SQL et IDOR dans [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions).
+- Ajout d'un scan de secrets avec Talisman dans [benefriches](/repos/incubateur-ademe/benefriches).
 
 ## Autres changements notables
-Plusieurs projets ont connu des refactorings importants et des migrations technologiques. [dsfr-override](/repos/incubateur-ademe/dsfr-override) a été entièrement migré vers TypeScript, tandis que [facili-tacct](/repos/incubateur-ademe/facili-tacct) a bénéficié d'une mise à jour de Node.js et d'une correction de bugs liés à la base de données.  [dashlord](/repos/incubateur-ademe/dashlord) a reçu une mise à jour de son action GitHub. L'application [cal.com](/repos/incubateur-ademe/cal.com) a vu l'ajout d'une interface d'administration spécifique pour l'incubateur Ademe.
+- Migration vers TypeScript dans [dsfr-override](/repos/incubateur-ademe/dsfr-override) et [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) pour une meilleure maintenabilité.
+- Mise à jour majeure de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
+- Refonte de l'infrastructure de déploiement pour [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) vers Scaleway et OpenTofu.
+- Intégration de l'authentification FGP dans [grafana](/repos/incubateur-ademe/grafana) pour une gestion centralisée des accès.
+- Migration de l'application Pacoupa vers l'application FCU ([pacoupa](/repos/incubateur-ademe/pacoupa)).
 
 ## Dépôts les plus actifs
-*   [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration continue de l'interface utilisateur et ajout de nouvelles fonctionnalités pour faciliter l'utilisation en milieu scolaire.
-*   [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) : Corrections de bugs, améliorations de l'accessibilité et préparation de la migration vers Airflow v3.
-*   [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Ajout de nouvelles fonctionnalités d'import de plans d'action et d'audit, ainsi que des améliorations de la sécurité.
-*   [impactco2](/repos/incubateur-ademe/impactco2) : Ajout de nouveaux modes de transport et d'alimentation pour une évaluation plus précise de l'empreinte carbone.
-*   [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) : Amélioration de l'interface utilisateur et intégration de données de vigilances (alertes météo et écowatt).
-*   [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Refonte complète avec migration vers TypeScript et développement d'une interface utilisateur pour la personnalisation du DSFR.
-*   [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données (zonage, fret, photovoltaïque) et amélioration de l'importation et de l'exportation de données.
+- [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) : Développement initial de l'application avec authentification, pages et chiffrement.
+- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Améliorations de l'interface utilisateur et intégration d'un système d'enquête.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Ajout de documentation, refonte de l'interface de comparaison d'impacts et améliorations de la sécurité.
+- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Ajout d'un mode "scolaire" et refonte du système de déploiement.
+- [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) : Amélioration de l'accessibilité et correction de bugs.
