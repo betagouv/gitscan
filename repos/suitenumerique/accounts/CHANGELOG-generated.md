@@ -1,24 +1,35 @@
-## Changelog : accounts (30 derniers jours, au 8 juin 2026)
+## Changelog : accounts (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité du code, la sécurité et la simplification de la gestion des dépendances et de l'environnement de développement. Des corrections de style et des mises à jour de l'infrastructure ont également été apportées pour optimiser le projet.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'infrastructure CI/CD, la qualité du code et la préparation du terrain pour l'ajout d'une nouvelle interface utilisateur. Des corrections et des optimisations ont été apportées aux workflows, aux outils de linting et à la gestion des dépendances. La migration vers Python 3.14.5 a également été effectuée.
+
+### Évolutions fonctionnelles
+- Reconstruction de l'application frontend en utilisant les conventions "drive" pour une meilleure cohérence et expérience utilisateur. [#issue à venir]
+- Suppression de l'ancien code boilerplate frontend, préparant le terrain pour la nouvelle interface. [#issue à venir]
+- Mise en place de la stack de tests end-to-end (e2e) pour assurer la qualité de l'application. [#issue à venir]
 
 ### Évolutions techniques
-- Mise à jour de la version de Python à 3.14.5 [#2a6bcfe](https://github.com/suitenumerique/accounts/commit/2a6bcfe).
-- Utilisation de groupes de dépendances pour l'environnement de développement [#09a3420](https://github.com/suitenumerique/accounts/commit/09a3420).
-- Utilisation de dépendances verrouillées pour les workflows backend afin d'assurer la reproductibilité [#049214e](https://github.com/suitenumerique/accounts/commit/049214e).
-- Simplification de la gestion des versions dans les images Docker en utilisant `ARG` [#42f9a15](https://github.com/suitenumerique/accounts/commit/42f9a15).
-- Utilisation de la même version d' `uv` lors de la construction des images Docker [#e7dc62d](https://github.com/suitenumerique/accounts/commit/e7dc62d).
-- Suppression du script lié à un sous-module git non utilisé [#5595967](https://github.com/suitenumerique/accounts/commit/5595967).
-- Suppression du fichier `setup.py` devenu inutile [#680189f](https://github.com/suitenumerique/accounts/commit/680189f).
-- Amélioration de la configuration de l'action `setup-python` dans Crowdin [#923f370](https://github.com/suitenumerique/accounts/commit/923f370).
-- Restriction de l'exposition des services Docker à l'extérieur [#44d4fa0](https://github.com/suitenumerique/accounts/commit/44d4fa0).
+- Amélioration de la détection des commits de type "fixup!" et "squash!" dans le CI.
+- Optimisation du CI pour ne scanner que les lignes ajoutées lors de la recherche de `print()`.
+- Autorisation des URLs longues dans le corps des commits pour une meilleure lisibilité.
+- Sécurisation du CI en passant explicitement les secrets nécessaires au lieu d'hériter de tous.
+- Synchronisation avec Crowdin intégrée à l'installation des dépendances.
+- Mise en place de groupes de concurrence pour les workflows `pull_request` afin d'optimiser l'utilisation des ressources.
+- Refonte des workflows CI pour une meilleure organisation et réutilisation du code.
+- Extraction des étapes de qualité globales dans un workflow dédié.
+- Extraction des vérifications du changelog dans un workflow dédié.
+- Activation des règles Pyflakes et Pyupgrade de Ruff pour améliorer la qualité du code Python.
+- Utilisation de `ARG` dans le Dockerfile pour simplifier la gestion des versions.
+- Utilisation de la même version d'uv dans tous les builds d'images Docker.
+- Suppression du fichier `setup.py` devenu inutile.
+- Mise à jour de la configuration de `action/setup-python` pour Crowdin.
+- Utilisation de groupes de dépendances pour l'environnement de développement.
+- Utilisation de dépendances verrouillées pour les workflows backend.
+- Correction de plusieurs erreurs shellcheck dans les scripts shell.
+- Suppression d'un script lié à un sous-module Git obsolète.
+- Mise à jour de Python vers la version 3.14.5.
 
 ### Autres changements
-- Application des règles de formatage `ruff` (Pyflakes et pyupgrade) pour améliorer la qualité du code [#b162579](https://github.com/suitenumerique/accounts/commit/b162579), [#07829c4](https://github.com/suitenumerique/accounts/commit/07829c4).
-- Corrections de plusieurs erreurs shellcheck dans les scripts shell [#e855913](https://github.com/suitenumerique/accounts/commit/e855913), [#3298808](https://github.com/suitenumerique/accounts/commit/3298808), [#fc8e216](https://github.com/suitenumerique/accounts/commit/fc8e216), [#1bdf822](https://github.com/suitenumerique/accounts/commit/1bdf822), [#df96aa1](https://github.com/suitenumerique/accounts/commit/df96aa1).
-- Amélioration de la gestion des arguments optionnels dans les scripts binaires [#b53ab39](https://github.com/suitenumerique/accounts/commit/b53ab39).
-- Correction du script `generate-readme.sh` pour qu'il fonctionne depuis n'importe quel répertoire [#3298808](https://github.com/suitenumerique/accounts/commit/3298808).
-- Mise à jour de l'adresse e-mail du projet dans la documentation [#233dea5](https://github.com/suitenumerique/accounts/commit/233dea5).
-- Reformattage du tableau des services dans le fichier README [#56b1d78](https://github.com/suitenumerique/accounts/commit/56b1d78).
-- Utilisation des identifiants corrects dans le README [#1886da2](https://github.com/suitenumerique/accounts/commit/1886da2).
+- Amélioration de la gestion des arguments optionnels dans les scripts binaires.
+- Correction du script `generate-readme.sh` pour qu'il fonctionne depuis n'importe quel répertoire.
+- Modification de la configuration de Docker pour ne pas exposer les services inutilement.
