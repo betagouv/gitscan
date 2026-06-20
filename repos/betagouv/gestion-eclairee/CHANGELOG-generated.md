@@ -1,23 +1,20 @@
-## Changelog : gestion-eclairee (30 derniers jours, au 16 juin 2026)
+## Changelog : gestion-eclairee (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'environnement Django et sur l'amélioration du processus de validation et d'importation des données CPRO (Comptes-rendus Prévisionnels d'Opérations). Des corrections ont été apportées pour gérer plus robustement les données, notamment en termes de formatage des montants et de gestion des erreurs liées aux champs obligatoires.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du pipeline de traitement des fichiers CSV, notamment pour l'importation des données CPRO. Des refactorings importants ont été effectués pour optimiser la gestion des données et la validation des informations financières. L'initialisation d'une application Django marque le début d'une nouvelle phase de développement.
 
 ### Évolutions fonctionnelles
-- Amélioration de la validation des données CPRO :
-  - Gestion améliorée des arrondis pour les montants CPRO.
-  - Validation de la longueur des codes EJ (Établissement Juridique).
-  - Gestion plus robuste des champs "SERVICE" vides.
-  - Exclusion de certains services/EJ spécifiques des vérifications.
-- Mise à jour du motif de fichier CSV pour supporter l'absence du service et ajout d'une vérification de doublons.
+- Amélioration de l'importation des fichiers CSV : le pipeline a été refactoré pour une meilleure gestion des colonnes et du suivi des sources de données.
+- Validation des données CPRO : des contrôles plus robustes ont été ajoutés pour la validation des montants et des codes EJ, avec une gestion améliorée des erreurs et des arrondis.
+- Téléchargement des données CPRO : implémentation de la fonctionnalité de téléchargement des données CPRO.
+- Prise en charge des fichiers CSV avec ou sans indication du service.
 
 ### Évolutions techniques
-- Initialisation du projet Django.
-- Ajout des dépendances nécessaires au projet (Django, psycopg, pandas, mozilla-django-oidc).
-- Mise en place de l'outil de formatage de code Ruff.
-- Refactorisation des vérifications CPRO avec une meilleure gestion des nombres décimaux et un suivi de la progression.
-- Implémentation du téléchargement des fichiers CPRO.
+- Refactoring du modèle `User` : la clé primaire du modèle `User` a été modifiée de UUID à BigAutoField, simplifiant ainsi la gestion des identifiants utilisateurs.
+- Initialisation d'une application Django : mise en place de la structure de base d'une application Django, ouvrant la voie à de nouvelles fonctionnalités et à une architecture plus moderne.
+- Utilisation de Ruff : intégration de l'outil Ruff pour le linting et la vérification du code, améliorant ainsi la qualité et la cohérence du code.
+- Refactoring général du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Première version du projet initialisée.
-- Ajout d'une application Django initiale.
+- Ajout des dépendances nécessaires au projet, notamment Django et ses composants associés.
+- Premier commit du dépôt, initialisant le projet.
