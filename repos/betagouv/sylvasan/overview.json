@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de collecter des données sur l'état de santé des arbres et de les visualiser sur une carte.",
+  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de collecter des données sur l'état de santé des arbres et de les gérer efficacement.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Gestion métier générale"
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,12 +22,12 @@
     "Node.js",
     "npm",
     "Python",
-    "boto3",
     "django-environ",
+    "django-cors-headers",
     "djangorestframework",
-    "djangorestframework-camel-case",
-    "djangorestframework_simplejwt",
-    "requests"
+    "djangorestframework-simplejwt",
+    "requests",
+    "boto3"
   ],
   "components": [
     "API REST & GraphQL",
@@ -34,21 +36,22 @@
     "Python (scripts & backend)",
     "Frontend React",
     "Django",
-    "Microservices & Architecture"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "email-password"
     ],
     "providers": [
       "DSF"
     ]
   },
-  "tests": "Pytest",
+  "tests": "Pytest, Jest",
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD"
   ],
-  "lastActivity": "2026-06-16T16:27:40+02:00",
+  "lastActivity": "2026-06-19T14:48:05+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -62,6 +65,8 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",

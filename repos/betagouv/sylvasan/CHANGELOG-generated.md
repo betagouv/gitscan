@@ -1,59 +1,30 @@
-## Changelog : sylvasan (30 derniers jours, au 16 juin 2026)
+## Changelog : sylvasan (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'application mobile, notamment en termes de géolocalisation, d'affichage des cartes et de gestion des images. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées, ainsi que des optimisations de performance et des mises à jour de dépendances. L'authentification via DSF a été améliorée et des fonctionnalités de filtrage et d'export des réponses ont été ajoutées.
+Cette période a été marquée par des améliorations significatives de l'application mobile (iOS et Android), notamment des corrections de bugs, l'ajout de fonctionnalités de géolocalisation et une meilleure gestion des images. Des améliorations ont également été apportées à l'interface utilisateur et à la gestion des données, avec un focus sur l'export des réponses et l'ajout de filtres. Enfin, de nombreuses dépendances ont été mises à jour pour assurer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Amélioration de l'authentification via DSF, avec affichage d'un spinner pendant la connexion et gestion des sessions après redémarrage. [#244](https://github.com/betagouv/sylvasan/pull/244)
-- **Géolocalisation :** Ajout de la géolocalisation native dans le champ "MapField" sur l'application mobile, permettant de positionner la carte en touchant l'écran. [#350](https://github.com/betagouv/sylvasan/pull/350)
-- **Images :** Ajout d'une galerie de visualisation des images, compression des images, et gestion du stockage local. [#314](https://github.com/betagouv/sylvasan/pull/314)
-- **Export :** Implémentation de l'export des réponses. [#287](https://github.com/betagouv/sylvasan/pull/287)
-- **Filtrage :** Ajout d'un filtre par enquête pour les réponses. [#317](https://github.com/betagouv/sylvasan/pull/317)
-- **Affichage :** Affichage des coordonnées GPS dans l'application mobile. [#374](https://github.com/betagouv/sylvasan/pull/374)
-- **Champs conditionnels :** Implémentation de champs conditionnels avec affichage et validation. [#286](https://github.com/betagouv/sylvasan/pull/286)
-- **Vocabulaires :** Amélioration de l'affichage et de la gestion des vocabulaires. [#285](https://github.com/betagouv/sylvasan/pull/285)
+- **Géolocalisation :** Intégration de la géolocalisation native sur mobile, permettant de positionner précisément les observations sur une carte. [#349](https://github.com/betagouv/sylvasan/pull/349)
+- **Gestion des images :** Amélioration de la gestion des images, avec la possibilité de visualiser une galerie d'images, de compresser les images avant l'envoi et d'utiliser un champ image dédié. [#314](https://github.com/betagouv/sylvasan/pull/314)
+- **Export des réponses :** Ajout de la fonctionnalité d'export des réponses, permettant de récupérer les données collectées. [#263](https://github.com/betagouv/sylvasan/pull/263)
+- **Filtres :** Ajout de filtres pour les réponses, permettant de trier et de rechercher plus facilement les données.
+- **Suppression d'enquêtes :** Possibilité d'annuler une observation et de supprimer des enquêtes avec une confirmation. [#382](https://github.com/betagouv/sylvasan/pull/382)
+- **Authentification :** Amélioration de la gestion de l'authentification, notamment avec l'ajout d'un renvoi d'email de confirmation pour les nouveaux utilisateurs. [#378](https://github.com/betagouv/sylvasan/pull/378)
+- **Vocabulaires :** Correction du chargement des vocabulaires et ajout de la gestion des vocabulaires dans les tests. [#342](https://github.com/betagouv/sylvasan/pull/342)
+- **Champs conditionnels :** Implémentation de champs conditionnels, permettant d'afficher ou de masquer des champs en fonction de la valeur d'autres champs. [#281](https://github.com/betagouv/sylvasan/pull/281)
 
 ### Évolutions techniques
-- **Performance :** Améliorations de performance sur les réponses, notamment via le préchargement des images. [#370](https://github.com/betagouv/sylvasan/pull/370)
-- **Infrastructure :** Mise à jour de nombreuses dépendances (Django, boto3, requests, etc.).
-- **Architecture :** Utilisation de Django Storages pour la gestion des fichiers. [#282](https://github.com/betagouv/sylvasan/pull/282)
-- **Tests :** Ajout de tests pour la sérialisation des organisations et des pôles.
-- **CI/CD :** Mises à jour des workflows CI/CD.
+- **Mise à jour des dépendances :** De nombreuses dépendances ont été mises à jour (Django, React, Node.js, npm, Python, etc.) pour améliorer la sécurité et la stabilité de l'application.
+- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- **Optimisations de performance :** Amélioration des performances de l'application, notamment lors du chargement des données et de l'export des réponses.
+- **CI/CD :** Amélioration continue du pipeline CI/CD.
+- **Application Android :** Mises à jour régulières de l'application Android (versions 0.0.8, 0.0.10, 0.0.14, 0.0.17).
+- **Application iOS :** Ajustements de l'interface utilisateur pour iOS. [#385](https://github.com/betagouv/sylvasan/pull/385)
 
 ### Autres changements
-- Correction de coquilles et de bugs mineurs.
-- Amélioration de la gestion des erreurs et des validations.
-- Ajustements d'interface utilisateur (UI) sur le web et le mobile.
-- Ajout d'icônes pour l'application Android.
-- Suppression de code mort.
-- Mise à jour de la documentation.
-- Corrections de warnings Typescript.
-- Ajout de spinners pour améliorer l'expérience utilisateur pendant les chargements.
-- Amélioration de la gestion des erreurs de validation dans les formulaires.
-- Ajout de messages de confirmation pour les suppressions.
-- Correction de bugs liés à la hauteur des tabs dans le formulaire.
-- Amélioration de la gestion des vocabulaires et des références.
-- Mise à jour de la version de l'application Android (0.0.17).
-- Ajout d'un bouton pour fermer la page de téléchargement de cartes.
-- Suppression du message d'ETA dans le téléchargement de cartes.
-- Ajout d'un modal de confirmation pour la suppression d'une page.
-- Correction du bug de suppression d'options.
-- Correction du bug de type de champ lors de l'édition.
-- Ajout d'un autocomplete avec gestion des accents.
-- Ajout de la possibilité de modifier les sous-champs.
-- Ajout de la gestion des champs image.
-- Correction de bugs liés à l'affichage des champs.
-- Amélioration de la gestion des erreurs et des validations.
-- Ajout de la pagination dans la vue réponses.
-- Ajout de l'affichage des labels pour les vocabulaires web.
-- Ajout de la possibilité de filtrer par enquête.
-- Ajout de la gestion des conditions d'affichage pour les champs.
-- Amélioration de la gestion des sessions et de l'authentification.
-- Ajout de la gestion des erreurs et des validations.
-- Correction de bugs liés à l'affichage des champs.
-- Amélioration de la gestion des erreurs et des validations.
-- Ajout de la pagination dans la vue réponses.
-- Ajout de l'affichage des labels pour les vocabulaires web.
-- Ajout de la possibilité de filtrer par enquête.
-- Ajout de la gestion des conditions d'affichage pour les champs.
-- Amélioration de la gestion des sessions et de l'authentification.
+- **Documentation :** Ajout et mise à jour de la documentation.
+- **Tests :** Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- **Correction de bugs :** Correction de nombreux bugs, notamment liés à l'affichage de l'interface utilisateur, à la gestion des erreurs et à la validation des données.
+- **Nettoyage de code :** Suppression de code mort et amélioration de la qualité du code.
+- **Amélioration de l'expérience utilisateur :** Ajustements de l'interface utilisateur pour améliorer l'expérience utilisateur.
+- **Suppression du rôle manager :** Suppression du rôle manager. [#381](https://github.com/betagouv/sylvasan/pull/381)
