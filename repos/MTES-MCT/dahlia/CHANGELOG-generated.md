@@ -1,27 +1,25 @@
-## Changelog : dahlia (30 derniers jours, au 17 juin 2026)
+## Changelog : dahlia (30 derniers jours, au 20 juin 2026)
 
 ### Résumé
-Ce mois-ci a été marqué par le développement initial et le déploiement de l'application DAHL'ia. Les principales avancées concernent l'intégration du SSO ProConnect, l'automatisation du scraping des dossiers DALO, DAHO et DAHU, ainsi que l'amélioration de la gestion des fichiers et des dossiers. L'application est maintenant déployée en production et bénéficie d'une synchronisation nocturne des données.
+Le projet Dahlia a connu une progression significative au cours des dernières semaines, avec l'ajout de nombreuses fonctionnalités clés pour la gestion des dossiers DALO, DAHO et DAHU. Les améliorations portent notamment sur la recherche, le tri, l'anonymisation des données, l'intégration du SSO ProConnect et l'automatisation de la synchronisation des dossiers. L'application est désormais plus robuste et offre une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Intégration de l'authentification SSO ProConnect [#7](https://github.com/MTES-MCT/dahlia/issues/7).
-- Possibilité de télécharger des fichiers et de rafraîchir l'affichage des dossiers [#16](https://github.com/MTES-MCT/dahlia/issues/16).
-- Les dossiers supprimés sont maintenant correctement gérés et ne sont plus accessibles [#16](https://github.com/MTES-MCT/dahlia/issues/16).
-- Ajout de détails supplémentaires aux dossiers [#13](https://github.com/MTES-MCT/dahlia/issues/13).
-- Implémentation d'une recherche et d'un scraping de tous les dossiers, avec gestion des erreurs [#5](https://github.com/MTES-MCT/dahlia/issues/5).
-- Scraping de tous les types de dossiers avec anonymisation des données [#6](https://github.com/MTES-MCT/dahlia/issues/6).
-- Synchronisation automatique des données chaque nuit [#12](https://github.com/MTES-MCT/dahlia/issues/12).
+- **Recherche et Tri:** Ajout de la recherche et du tri dans les tableaux des pièces et de l'historique des dossiers [#22]. Amélioration de la recherche et du tri des dossiers en général [#19].
+- **Gestion des dossiers:** Ajout d'un bouton pour rafraîchir les informations d'un dossier et amélioration de l'accessibilité des dossiers supprimés [#16].
+- **Détails des dossiers:** Ajout de détails supplémentaires dans les dossiers pour une meilleure compréhension [#13].
+- **Scrapping et Synchronisation:** Implémentation d'un scrapping de tous les types de dossiers avec anonymisation des données [#6, #5].  Ajout d'une synchronisation automatique des dossiers chaque nuit [#12]. Amélioration de la robustesse du scrapping avec un système de ré-essai en cas d'erreurs temporaires [#8].
+- **Authentification:** Intégration du SSO ProConnect pour l'authentification des utilisateurs [#7].
+- **Indicateurs visuels:** Ajout d'un badge "très urgent" pour signaler les dossiers prioritaires [#21] et d'un bandeau indiquant que l'application n'est pas en production [#20].
 
 ### Évolutions techniques
-- Mise en place d'un script de création de release et de déploiement en production [#17](https://github.com/MTES-MCT/dahlia/issues/17).
-- Amélioration de la robustesse du scraping avec un système de ré-essai en cas d'erreurs temporaires [#8](https://github.com/MTES-MCT/dahlia/issues/8).
-- Correction d'un problème d'anonymisation incomplète [#11](https://github.com/MTES-MCT/dahlia/issues/11).
-- Correction d'un bug de déconnexion intempestive après la connexion [#10](https://github.com/MTES-MCT/dahlia/issues/10).
-- Ajout de `ts-node` comme dépendance de production pour le scraping [#9](https://github.com/MTES-MCT/dahlia/issues/9).
-- Amélioration de la qualité du code avec l'utilisation de Prettier et d'un linter [#15](https://github.com/MTES-MCT/dahlia/issues/15).
-- Anonymisation du scraping en fonction de l'environnement [#14](https://github.com/MTES-MCT/dahlia/issues/14).
+- **Déploiement:** Mise en place d'un script pour la création de releases et le déploiement en production [#17].  Configuration du déploiement sur Scalingo [#3].
+- **Anonymisation:** Amélioration de l'anonymisation des données, notamment en fonction de l'environnement [#14, #11].
+- **Infrastructure:** Ajout de `ts-node` en production pour permettre l'exécution du scraping [#9].
+- **Qualité du code:** Mise en forme du code avec Prettier et Linter pour améliorer la lisibilité et la maintenabilité [#15].
+- **CI/CD:** Correction du workflow de déploiement pour assurer le bon checkout du code [#4].
 
 ### Autres changements
-- Correction d'un problème de checkout avant déploiement [#4](https://github.com/MTES-MCT/dahlia/issues/4).
-- Déploiement initial de l'application sur Scalingo [#3](https://github.com/MTES-MCT/dahlia/issues/3).
-- Initialisation du dépôt et création de la première version de l'application [#1](https://github.com/MTES-MCT/dahlia/issues/1).
+- Correction d'un problème de déconnexion intempestive après la connexion [#10].
+- Correction d'un problème avec le paramètre 'directory' pour dependabot [#24].
+- Utilisation de npm comme gestionnaire de package pour dependabot [#2].
+- Création de la première version de l'application web Dahlia [#1].
