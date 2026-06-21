@@ -310,7 +310,9 @@
 │   │   ├── ClientProviders.tsx
 │   │   ├── Providers.tsx
 │   │   ├── fonts.ts
+│   │   ├── global-error.tsx
 │   │   ├── layout.tsx
+│   │   ├── not-found.tsx
 │   │   └── page.tsx
 │   ├── build
 │   │   ├── .eslintrc.yaml
@@ -428,7 +430,6 @@
 │   │   │   └── utils.ts
 │   │   └── tsconfig.json
 │   ├── cypress.config.ts
-│   ├── instrumentation.ts
 │   ├── mon-entreprise.fr
 │   │   └── netlify.toml
 │   ├── netlify.base.toml
@@ -474,8 +475,7 @@
 │   │   │   ├── parser.config.js
 │   │   │   ├── translate-rules.js
 │   │   │   ├── translate-ui.js
-│   │   │   ├── utils.js
-│   │   │   └── yaml-to-json.ts
+│   │   │   └── utils.js
 │   │   ├── prepare.js
 │   │   ├── search
 │   │   │   ├── clean.js
@@ -557,10 +557,6 @@
 │   │   │       │   └── urssaf.svg
 │   │   │       └── undraw_fill_in_mie5.svg
 │   │   ├── components
-│   │   │   ├── ATInternetTracking
-│   │   │   │   ├── .eslintrc.yaml
-│   │   │   │   ├── Tracker.ts
-│   │   │   │   └── index.tsx
 │   │   │   ├── App.tsx
 │   │   │   ├── Assistant
 │   │   │   │   └── AssistantGoal.tsx
@@ -570,6 +566,9 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── BêtaChip.tsx
 │   │   │   ├── ChiffreAffairesActivitéMixte.tsx
+│   │   │   ├── ConseillersEntreprises
+│   │   │   │   ├── BoutonConseillersEntreprises.tsx
+│   │   │   │   └── ConseillersEntreprisesIframe.tsx
 │   │   │   ├── ConseillersEntreprisesButton.tsx
 │   │   │   ├── ConseillersEntreprisesIframe.tsx
 │   │   │   ├── Contact.tsx
@@ -607,6 +606,14 @@
 │   │   │   ├── Notifications.tsx
 │   │   │   ├── PageHeader.tsx
 │   │   │   ├── PeriodSwitch.tsx
+│   │   │   ├── PianoAnalytics
+│   │   │   │   ├── .eslintrc.yaml
+│   │   │   │   ├── PianoTracker.ts
+│   │   │   │   ├── PianoTrackerContext.ts
+│   │   │   │   ├── PianoTrackerProvider.tsx
+│   │   │   │   ├── TrackingChaptersContext.test.ts
+│   │   │   │   ├── TrackingChaptersContext.tsx
+│   │   │   │   └── index.tsx
 │   │   │   ├── Provider.tsx
 │   │   │   ├── PublicodesDateChip.tsx
 │   │   │   ├── Redirections.tsx
@@ -616,6 +623,21 @@
 │   │   │   ├── ShareSimulationBanner
 │   │   │   │   ├── ShareSimulationPopup.tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── Simulateur
+│   │   │   │   ├── Actions.tsx
+│   │   │   │   ├── BlocMontants.tsx
+│   │   │   │   ├── BlocSituation.tsx
+│   │   │   │   ├── BoutonDétail.tsx
+│   │   │   │   ├── BoutonPartage.tsx
+│   │   │   │   ├── BoutonReset.tsx
+│   │   │   │   ├── BoutonRetour.tsx
+│   │   │   │   ├── ComposantQuestionFournie.tsx
+│   │   │   │   ├── ListeQuestions.tsx
+│   │   │   │   ├── QuestionCourante.tsx
+│   │   │   │   ├── QuestionPublicodes.tsx
+│   │   │   │   ├── QuestionsPrincipales.tsx
+│   │   │   │   ├── Simulateur.tsx
+│   │   │   │   └── ZoneDeSaisie.tsx
 │   │   │   ├── SimulateurCard.tsx
 │   │   │   ├── SimulateurOrAssistantPage.tsx
 │   │   │   ├── SimulateurWarning.tsx
@@ -643,7 +665,6 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── StatutTag.tsx
 │   │   │   ├── Switch.ts
-│   │   │   ├── TrackingProvider.tsx
 │   │   │   ├── WrongSimulateurWarning.tsx
 │   │   │   ├── conversation
 │   │   │   │   ├── AnswersList.tsx
@@ -822,10 +843,6 @@
 │   │   │           ├── RégimeTag.test.tsx
 │   │   │           └── RégimeTag.tsx
 │   │   ├── design-system
-│   │   │   ├── InfoBulle
-│   │   │   │   └── index.tsx
-│   │   │   ├── InfoButton.stories.tsx
-│   │   │   ├── InfoButton.tsx
 │   │   │   ├── StyledComponentsRegistry.tsx
 │   │   │   ├── accordion
 │   │   │   │   ├── chevron.svg
@@ -926,8 +943,10 @@
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── molecules
-│   │   │   │   ├── HelpButtonWithPopover.stories.tsx
-│   │   │   │   ├── HelpButtonWithPopover.tsx
+│   │   │   │   ├── InfoBulle.stories.tsx
+│   │   │   │   ├── InfoBulle.tsx
+│   │   │   │   ├── InfoButton.stories.tsx
+│   │   │   │   ├── InfoButton.tsx
 │   │   │   │   ├── field
 │   │   │   │   │   ├── Checkbox.stories.tsx
 │   │   │   │   │   ├── Checkbox.tsx
@@ -1149,19 +1168,23 @@
 │   │   │   ├── usePublicodes.ts
 │   │   │   ├── useQuestionList.ts
 │   │   │   ├── useQuestions.ts
+│   │   │   ├── useQuestionsEditorialisees.test.tsx
+│   │   │   ├── useQuestionsEditorialisees.ts
 │   │   │   ├── useQuestionsPublicodes.ts
+│   │   │   ├── useQuestionsPublicodesEditorialisees.ts
 │   │   │   ├── useRepositories.ts
 │   │   │   ├── useSaveAndRestoreScrollPosition.ts
 │   │   │   ├── useSearchCompany.ts
-│   │   │   ├── useSearchParamsForSituation.test.ts
+│   │   │   ├── useSearchParamsForSituation.test.tsx
 │   │   │   ├── useSearchParamsForSituation.tsx
 │   │   │   ├── useSetEntreprise.ts
 │   │   │   ├── useSetEntrepriseFromUrssafConnection.ts
-│   │   │   ├── useSetSimulationFromSearchParams.test.ts
+│   │   │   ├── useSetSimulationFromSearchParams.test.tsx
 │   │   │   ├── useSetSimulationFromSearchParams.ts
 │   │   │   ├── useSetupSafeSituation.tsx
 │   │   │   ├── useSimulationConfig.ts
 │   │   │   ├── useSimulationPublicodes.ts
+│   │   │   ├── useSimulationPublicodesEditorialisee.ts
 │   │   │   ├── useSimulatorData.ts
 │   │   │   ├── useSimulatorsData.ts
 │   │   │   ├── useSiteUrl.tsx
@@ -1298,7 +1321,6 @@
 │   │   │   │   │   ├── SearchCodeAPE.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── ActivityNotFound.tsx
-│   │   │   │   │   │   ├── HelpGuichetUnique.tsx
 │   │   │   │   │   │   ├── Result.tsx
 │   │   │   │   │   │   └── SeoExplanations.tsx
 │   │   │   │   │   ├── config.tsx
@@ -1407,21 +1429,22 @@
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── comparaison-statuts
+│   │   │   │   │   ├── ComparateurDeStatuts.tsx
 │   │   │   │   │   ├── EngineComparison.tsx
 │   │   │   │   │   ├── NamedEngine.tsx
 │   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── Comparateur.tsx
+│   │   │   │   │   │   ├── Comparaison.tsx
 │   │   │   │   │   │   ├── DetailsRowCards.tsx
-│   │   │   │   │   │   ├── Détails.tsx
+│   │   │   │   │   │   ├── DétailSimulation.tsx
 │   │   │   │   │   │   ├── ItemTitle.tsx
 │   │   │   │   │   │   ├── ModifierOptions.tsx
+│   │   │   │   │   │   ├── MontantsÀSaisir.tsx
 │   │   │   │   │   │   ├── RevenuEstimé.tsx
 │   │   │   │   │   │   ├── RevenuTable.tsx
 │   │   │   │   │   │   ├── StatutChoice.tsx
 │   │   │   │   │   │   ├── TableRow.tsx
 │   │   │   │   │   │   └── WarningTooltip.tsx
 │   │   │   │   │   ├── config.ts
-│   │   │   │   │   ├── index.tsx
 │   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── cout-creation-entreprise
@@ -1533,8 +1556,8 @@
 │   │   │   │   │   │   ├── Warnings.tsx
 │   │   │   │   │   │   └── ZoneSwitch.tsx
 │   │   │   │   │   ├── config.ts
-│   │   │   │   │   ├── lodeom.ts
-│   │   │   │   │   └── simulationConfig.ts
+│   │   │   │   │   ├── simulationConfig.ts
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── médecin
 │   │   │   │   │   ├── AvertissementMédecin.tsx
 │   │   │   │   │   ├── Médecin.tsx
@@ -1724,7 +1747,7 @@
 │   │       ├── ChangeHandler.ts
 │   │       ├── NoOp.ts
 │   │       ├── URLs.ts
-│   │       ├── chargeModèle.ts
+│   │       ├── chargeModele.ts
 │   │       ├── complement.ts
 │   │       ├── dates.ts
 │   │       ├── guichetToPLMétier.ts
@@ -1829,4 +1852,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-320 directories, 1511 files
+321 directories, 1533 files
