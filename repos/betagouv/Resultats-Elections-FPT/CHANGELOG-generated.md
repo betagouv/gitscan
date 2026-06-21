@@ -1,27 +1,27 @@
-## Changelog : Resultats-Elections-FPT (30 derniers jours, au 29 avril 2026)
+## Changelog : Resultats-Elections-FPT (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'interface utilisateur et la correction de bugs, notamment au niveau du tableau de résultats, de la cartographie et du formulaire de scrutin. Des optimisations ont été apportées pour améliorer l'expérience utilisateur et la stabilité de l'application.
+Ce changelog présente les améliorations apportées au projet Resultats-Elections-FPT au cours des 30 derniers jours. Les modifications se concentrent sur la correction de bugs, l'amélioration des performances et l'ajout de nouvelles fonctionnalités pour faciliter la gestion et la visualisation des résultats des élections professionnelles de la fonction publique territoriale.
 
 ### Évolutions fonctionnelles
-- Ajout de la sélection de ligne dans le tableau des résultats via un curseur grist. [#49](https://github.com/betagouv/Resultats-Elections-FPT/pull/49)
-- Amélioration du formulaire de scrutin : suppression du message de résultat vide lors d'une nouvelle recherche. [#48](https://github.com/betagouv/Resultats-Elections-FPT/pull/48)
-- Affichage du tag "doublon" sur la cartographie avec le style "erreur" pour une meilleure visibilité. [#46](https://github.com/betagouv/Resultats-Elections-FPT/pull/46)
-- Le tableau des résultats ne se filtre plus automatiquement, mais uniquement lors d'un clic sur le bouton "Appliquer les filtres". [#45](https://github.com/betagouv/Resultats-Elections-FPT/pull/45)
-- Ajout d'un type d'affichage de cellule "badge" pour le tableau des résultats. [#37](https://github.com/betagouv/Resultats-Elections-FPT/pull/37)
-- Ajout de filtres au tableau des résultats. [#30](https://github.com/betagouv/Resultats-Elections-FPT/pull/30)
-- La recherche de scrutin est désormais insensible aux accents et affiche automatiquement la liste complète si la recherche est vide. [#29](https://github.com/betagouv/Resultats-Elections-FPT/pull/29)
+- Correction de l'affichage des badges pour les collectivités : les badges vides ne sont plus affichés et un nouveau style "erreur" a été ajouté pour signaler les problèmes. [#52](https://github.com/betagouv/Resultats-Elections-FPT/pull/52)
+- Amélioration de la sélection de lignes dans le tableau avec un curseur grist. [#49](https://github.com/betagouv/Resultats-Elections-FPT/pull/49)
+- Correction du formulaire de scrutin : suppression du message de résultat vide lors d'une nouvelle recherche. [#48](https://github.com/betagouv/Resultats-Elections-FPT/pull/48)
+- Ajout d'un nouveau type d'affichage de cellule "badge" dans le tableau. [#37](https://github.com/betagouv/Resultats-Elections-FPT/pull/37)
+- Modification du formulaire : possibilité de cacher le formulaire et changement de l'option 'vide' du select. [#34](https://github.com/betagouv/Resultats-Elections-FPT/pull/34)
+- La colonne badge est maintenant optionnelle dans la recherche de scrutin. [#33](https://github.com/betagouv/Resultats-Elections-FPT/pull/33)
 
 ### Évolutions techniques
-- Suppression des anciennes vues HTML remplacées par des vues génériques, allégeant ainsi le code. [#47](https://github.com/betagouv/Resultats-Elections-FPT/pull/47)
-- Création d'une version figée pour les custom widgets à la version v0.12. [#38](https://github.com/betagouv/Resultats-Elections-FPT/pull/38)
+- Amélioration des performances pour l'affichage des informations des tables. [#51](https://github.com/betagouv/Resultats-Elections-FPT/pull/51)
+- Correction de la récupération des données de la table pour les éditeurs. [#53](https://github.com/betagouv/Resultats-Elections-FPT/pull/53)
+- Suppression des anciennes vues HTML remplacées par les vues génériques. [#47](https://github.com/betagouv/Resultats-Elections-FPT/pull/47)
+- Correction du texte exporté pour les colonnes de type badge DSFR dans la cartographie. [#43](https://github.com/betagouv/Resultats-Elections-FPT/pull/43)
+- Création d'une version figée pour les custom widget à la version v0.12. [#38](https://github.com/betagouv/Resultats-Elections-FPT/pull/38)
+- Correction du filtre dans la vue tableau et suppression des espaces dans la recherche. [#35](https://github.com/betagouv/Resultats-Elections-FPT/pull/35)
 
 ### Autres changements
-- Correction du badge optionnel dans la fiche d'une entité. [#50](https://github.com/betagouv/Resultats-Elections-FPT/pull/50)
-- Diverses corrections et améliorations générales. [#44](https://github.com/betagouv/Resultats-Elections-FPT/pull/44) & [#39](https://github.com/betagouv/Resultats-Elections-FPT/pull/39)
-- Correction du formulaire de modalités de scrutins (multiples CAP et bug d'affichage). [#42](https://github.com/betagouv/Resultats-Elections-FPT/pull/42)
-- Correction de l'affichage du formulaire sur la vue cartographie. [#41](https://github.com/betagouv/Resultats-Elections-FPT/pull/41)
+- Correction de divers bugs et améliorations avant le lancement. [#44](https://github.com/betagouv/Resultats-Elections-FPT/pull/44)
+- Correction de bugs concernant les modalités de scrutins (CAP multiples et affichage du formulaire). [#42](https://github.com/betagouv/Resultats-Elections-FPT/pull/42)
+- Correction de l'affichage du formulaire après un clic sur "Revenir au formulaire". [#41](https://github.com/betagouv/Resultats-Elections-FPT/pull/41)
 - Création d'une vue pour afficher un bouton. [#40](https://github.com/betagouv/Resultats-Elections-FPT/pull/40)
-- Réduction de la taille de la modale du tableau. [#32](https://github.com/betagouv/Resultats-Elections-FPT/pull/32)
-- Modification de l'option 'vide' du select et ajout d'une option pour cacher le formulaire. [#34](https://github.com/betagouv/Resultats-Elections-FPT/pull/34)
-- Rendre la colonne badge optionnelle dans la recherche de scrutin. [#33](https://github.com/betagouv/Resultats-Elections-FPT/pull/33)
+- Diverses améliorations générales. [#39](https://github.com/betagouv/Resultats-Elections-FPT/pull/39)
