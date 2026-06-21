@@ -468,7 +468,8 @@
 │   │   ├── 024-nul-framed-parsing-for-adversarial-git-metadata.md
 │   │   ├── 025-git-panel-reflects-working-tree-not-the-index.md
 │   │   ├── 026-main-repo-root-resolution-for-project-rooted-state.md
-│   │   └── 027-git-cli-shell-out-not-embedded-pure-go.md
+│   │   ├── 027-git-cli-shell-out-not-embedded-pure-go.md
+│   │   └── 028-dispatcher-actor-io-offload.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── attachments.md
@@ -521,6 +522,7 @@
 │   ├── e2e_coverage.md
 │   ├── examples.md
 │   ├── forge-conversations.md
+│   ├── forge-integrations.md
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
@@ -791,7 +793,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (8 files)
+│   │   │   ├── executor_*.go  (9 files)
 │   │   │   ├── generation.go
 │   │   │   ├── generation_test.go
 │   │   │   ├── generation_tool.go
@@ -929,6 +931,7 @@
 │   ├── bundle
 │   │   ├── bundle.go
 │   │   ├── bundle_test.go
+│   │   ├── forge_test.go
 │   │   ├── loader.go
 │   │   ├── manifest.go
 │   │   ├── manifest_write.go
@@ -1034,6 +1037,7 @@
 │   │   ├── httpjson.go
 │   │   ├── loop.go
 │   │   ├── loop_bot_override_test.go
+│   │   ├── loop_setup_offload_test.go
 │   │   ├── loop_state_test.go
 │   │   ├── loop_test.go
 │   │   ├── manager.go
@@ -1168,6 +1172,45 @@
 │   │   └── workflowfile
 │   │       ├── workflowfile.go
 │   │       └── workflowfile_test.go
+│   ├── forge
+│   │   ├── admin.go
+│   │   ├── connection_sealer.go
+│   │   ├── connection_store.go
+│   │   ├── event_map.go
+│   │   ├── event_map_test.go
+│   │   ├── forgejo
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── events.go
+│   │   │   ├── oauth.go
+│   │   │   └── oauth_app_create_test.go
+│   │   ├── forgelive_test.go
+│   │   ├── github
+│   │   │   ├── app_client.go
+│   │   │   ├── app_jwt.go
+│   │   │   ├── app_manifest.go
+│   │   │   ├── app_manifest_test.go
+│   │   │   ├── app_test.go
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── events.go
+│   │   │   └── oauth.go
+│   │   ├── gitlab
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── events.go
+│   │   │   ├── oauth.go
+│   │   │   ├── oauth_app_create_test.go
+│   │   │   └── oauth_test.go
+│   │   ├── oauth_app_sealer.go
+│   │   ├── oauth_app_store.go
+│   │   ├── oauth_app_store_test.go
+│   │   ├── orchestrator.go
+│   │   ├── orchestrator_test.go
+│   │   ├── refresh.go
+│   │   ├── refresh_test.go
+│   │   ├── repo_integration_store.go
+│   │   └── types.go
 │   ├── git
 │   │   ├── ancestor_test.go
 │   │   ├── clone.go
@@ -1276,7 +1319,8 @@
 │   │   ├── clone_test.go
 │   │   ├── loop.go
 │   │   ├── loop_test.go
-│   │   └── metrics_test.go
+│   │   ├── metrics_test.go
+│   │   └── secrets_mount_test.go
 │   ├── runtime
 │   │   ├── budget.go
 │   │   ├── budget_test.go
@@ -1482,6 +1526,12 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
+│   │   ├── forge_github_manifest_routes.go
+│   │   ├── forge_oauth_app_routes.go
+│   │   ├── forge_oauth_app_routes_test.go
+│   │   ├── forge_provisioning_routes.go
+│   │   ├── forge_routes.go
+│   │   ├── forge_routes_test.go
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_test.go
@@ -1722,6 +1772,7 @@
 │   ├── docs
 │   │   ├── design-system.md
 │   │   └── visual-identity.md
+│   ├── eslint.config.js
 │   ├── index.html
 │   ├── package.json
 │   ├── public
@@ -1756,6 +1807,7 @@
 │   │   ├── App.tsx
 │   │   ├── __tests__
 │   │   │   ├── a11y
+│   │   │   │   ├── broken-classes.test.ts
 │   │   │   │   ├── contrast.test.ts
 │   │   │   │   └── primitives.test.tsx
 │   │   │   └── desktopBridge.test.ts
@@ -1772,6 +1824,7 @@
 │   │   │   ├── byok.ts
 │   │   │   ├── client.ts
 │   │   │   ├── dispatcher.ts
+│   │   │   ├── forgeConnections.ts
 │   │   │   ├── limits.ts
 │   │   │   ├── marketplace.ts
 │   │   │   ├── memory.ts
@@ -1907,6 +1960,7 @@
 │   │   │   │   ├── RunView.tsx
 │   │   │   │   ├── RunsTabsView.tsx
 │   │   │   │   ├── Scrubber.tsx
+│   │   │   │   ├── StatusDot.tsx
 │   │   │   │   ├── ThinkingFooter.tsx
 │   │   │   │   ├── ToolRunningFooter.tsx
 │   │   │   │   ├── budgetPillTooltip.test.ts
@@ -1923,6 +1977,9 @@
 │   │   │   │   │   ├── RunConversationView.tsx
 │   │   │   │   │   ├── SessionClosedCard.test.tsx
 │   │   │   │   │   └── SessionClosedCard.tsx
+│   │   │   │   ├── detail
+│   │   │   │   │   ├── LLMTrace.tsx
+│   │   │   │   │   └── ToolCalls.tsx
 │   │   │   │   ├── runBotMeta.test.ts
 │   │   │   │   ├── runBotMeta.ts
 │   │   │   │   ├── runListFilter.test.ts
@@ -1969,6 +2026,7 @@
 │   │   │   │   ├── AgentChatboxInline.tsx
 │   │   │   │   ├── AppShell.tsx
 │   │   │   │   ├── CommandPalette.tsx
+│   │   │   │   ├── ConfirmDialog.test.tsx
 │   │   │   │   ├── ConfirmDialog.tsx
 │   │   │   │   ├── ContextualHeaderBar.tsx
 │   │   │   │   ├── CostCapBanner.tsx
@@ -2158,6 +2216,9 @@
 │   │   │   ├── library.test.ts
 │   │   │   ├── library.ts
 │   │   │   ├── recents.ts
+│   │   │   ├── run
+│   │   │   │   ├── logBuffer.ts
+│   │   │   │   └── reducer.ts
 │   │   │   ├── run.test.ts
 │   │   │   ├── run.ts
 │   │   │   ├── selection.test.ts
@@ -2169,10 +2230,15 @@
 │   │   │   └── ui.ts
 │   │   ├── views
 │   │   │   ├── Board
+│   │   │   │   ├── BoardFilters.tsx
+│   │   │   │   ├── BoardKeyboardHelp.tsx
 │   │   │   │   ├── BotArgsForm.tsx
 │   │   │   │   ├── BotPicker.tsx
+│   │   │   │   ├── Column.tsx
 │   │   │   │   ├── IssueModal.tsx
 │   │   │   │   ├── Labels.tsx
+│   │   │   │   ├── SelectionToolbar.tsx
+│   │   │   │   ├── boardShared.ts
 │   │   │   │   └── index.tsx
 │   │   │   ├── Dispatcher
 │   │   │   │   ├── dispatcherActionState.test.ts
@@ -2226,11 +2292,13 @@
 │   │   │       └── tabs
 │   │   │           ├── AuditTab.tsx
 │   │   │           ├── BindingsTab.tsx
+│   │   │           ├── IntegrationsTab.tsx
 │   │   │           ├── MemoryTab.tsx
 │   │   │           ├── SecretsTab.tsx
 │   │   │           ├── UsageTab.tsx
 │   │   │           ├── WebhooksTab.tsx
 │   │   │           └── __tests__
+│   │   │               ├── IntegrationsTab.oauthApps.test.tsx
 │   │   │               └── WebhooksTab.tokenOnce.test.tsx
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
@@ -2546,6 +2614,7 @@
     │   │       │   │   │       └── provider.go
     │   │       │   │   ├── sse.go
     │   │       │   │   ├── sseutil
+    │   │       │   │   │   ├── idlewatchdog.go
     │   │       │   │   │   └── toolcall.go
     │   │       │   │   ├── streamhttp.go
     │   │       │   │   └── types.go
@@ -8567,4 +8636,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1295 directories, 7827 files
+1301 directories, 7891 files
