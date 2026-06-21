@@ -261,7 +261,9 @@
     │   │   │   ├── __init__.py
     │   │   │   └── commands
     │   │   │       ├── __init__.py
-    │   │   │       └── merge_duplicate_users.py
+    │   │   │       ├── clean_pending_files.py
+    │   │   │       ├── merge_duplicate_users.py
+    │   │   │       └── purge_deleted_files.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_create_pg_trgm_extension.py
@@ -337,6 +339,10 @@
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
+    │   │   │   ├── commands
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_clean_pending_files.py
+    │   │   │   │   └── test_purge_deleted_files.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
     │   │   │   │   ├── __init__.py
@@ -625,6 +631,7 @@
     │   │   │   │   │   ├── StyledToastContainer.tsx
     │   │   │   │   │   ├── Toast.tsx
     │   │   │   │   │   ├── ToastAnyRecording.tsx
+    │   │   │   │   │   ├── ToastAutoMuteLargeRoom.tsx
     │   │   │   │   │   ├── ToastJoined.tsx
     │   │   │   │   │   ├── ToastLowerHand.tsx
     │   │   │   │   │   ├── ToastMessageReceived.tsx
@@ -1123,6 +1130,7 @@
     │       │   ├── _helpers.tpl
     │       │   ├── agent_metadata_deployment.yaml
     │       │   ├── agent_subtitles_deployment.yaml
+    │       │   ├── backend_cronjob_list.yaml
     │       │   ├── backend_deployment.yaml
     │       │   ├── backend_job_createsuperuser.yaml
     │       │   ├── backend_job_merge_duplicate_users.yaml
@@ -1289,4 +1297,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-244 directories, 1047 files
+245 directories, 1054 files

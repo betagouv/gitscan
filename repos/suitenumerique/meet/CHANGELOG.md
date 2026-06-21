@@ -10,12 +10,34 @@ and this project adheres to
 
 ### Added
 
+- ✨(backend) add command to clean pending and deleted files
+- 🧱(helm) run clean files command as cronjob
+
+### Changed
+
+- ✨(summary) generalized stt api call #1420
+
+## [1.21.0] - 2026-06-15
+
+### Added
+
 - ✨(frontend) allow disabling silent login via a URL parameter
 - ✨(frontend) allow hiding the login button via a URL parameter
+- ✨(summary) add optional satisfaction survey footer
 
 ### Changed
 
 - ✨(frontend) enhance noise reduction with BBBA audio processing pipeline
+- 🚸(frontend) mute join notification sound in larger rooms
+- 🚸(frontend) mute participants by default when joining a large meeting
+
+### Fixed
+
+- 🐛(frontend) fix metadata agent collector enabled check
+
+### Fixed
+
+- ♿️(frontend) improve accessibilty of the Effects panel #1401
 
 ## [1.20.0] - 2026-06-12
 
@@ -45,7 +67,7 @@ and this project adheres to
 
 - 🔇(summary) make ffmpeg quiet #1404
 - 🔒️(backend) prevent accessing files if they are not ready #1395
-- ⬆️(backend) upgrade idna to >=3.15 to address CVE-2026-45409
+- # ⬆️(backend) upgrade idna to >=3.15 to address CVE-2026-45409
 
 ## [1.18.0] - 2026-06-03
 
