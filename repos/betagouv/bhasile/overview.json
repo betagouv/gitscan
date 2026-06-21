@@ -1,25 +1,27 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Bhasile (anciennement Place d'asile) permet de piloter le parc de logements pour demandeurs d’asile. Le projet vise à faciliter la gestion et le suivi des structures d'hébergement et des transformations associées.",
+  "description": "Bhasile (anciennement Place d'asile) permet de piloter le parc de logements pour demandeurs d’asile. Le projet vise à améliorer la gestion et le suivi des structures d'hébergement.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Gestion des établissements & Structures",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Recherche & Filtres",
+    "Authentification & Accès",
     "Statistiques & Rapports",
-    "Gestion des signalements"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Next.js",
-    "Prisma",
+    "TypeScript",
     "PostgreSQL",
-    "tailwindcss",
-    "jsonwebtoken"
+    "Prisma",
+    "TailwindCSS"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,10 +32,10 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
-    ]
+      "session"
+    ],
+    "providers": []
   },
   "tests": [
     "Jest",
@@ -43,9 +45,9 @@
   ],
   "workflows": [
     "CI/CD",
-    "GitHub Actions"
+    "Dependabot"
   ],
-  "lastActivity": "2026-06-17T12:07:00+02:00",
+  "lastActivity": "2026-06-18T15:50:09+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
