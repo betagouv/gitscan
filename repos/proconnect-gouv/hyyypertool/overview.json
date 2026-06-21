@@ -1,41 +1,41 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les demandes et les signalements liés aux comptes utilisateurs.",
+  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les demandes liées aux organisations et aux utilisateurs.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
     "Notifications & Alertes",
     "Sécurité & Conformité",
+    "Recherche & Filtres",
     "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "@gouvfr/dsfr",
+    "@preact/signals",
     "htmx.org",
     "zod",
-    "preact",
     "bun"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
+    "React / Next.js",
+    "PostgreSQL & SQL",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
       "jwt",
       "session"
     ]
   },
-  "tests": "Jest, Cypress",
+  "tests": "Cypress, Jest",
   "workflows": [
     "Release it!"
   ],
@@ -43,20 +43,12 @@
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
     "Sécurité & Auth"
   ]
 }
