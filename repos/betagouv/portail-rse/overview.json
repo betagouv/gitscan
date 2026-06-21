@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre un espace pour la gestion des indicateurs et la publication des données RSE.",
+  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre un espace pour la gestion des indicateurs RSE et l'analyse des données.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,34 +11,46 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Contenu éditorial",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "React",
-    "Sentry",
-    "WeasyPrint"
+    "Redis",
+    "requests",
+    "weasyprint",
+    "psycopg",
+    "dj-database-url",
+    "whitenoise",
+    "sentry-sdk",
+    "django-vite",
+    "django-anymail",
+    "aiohttp",
+    "responses",
+    "geojson"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Frontend React",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "sso"
-    ]
+    ],
+    "providers": []
   },
-  "tests": [
-    "pytest"
-  ],
+  "tests": "Pytest",
   "workflows": [
     "test.yml"
   ],
@@ -55,11 +67,11 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Environnement & Énergie",
+    "JavaScript",
+    "Reporting & BI"
   ]
 }
