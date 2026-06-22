@@ -9,7 +9,7 @@ icon: door-open
 
 ## L'Assistant, c'est quoi ?&#x20;
 
-**L'Assistant** est une plateforme de la DINUM qui vous permet d'échanger avec des modèles d'intelligence artificiel dans un espace **sécurisé** en ligne, de créer des conversations et des projets avec vos documents, et vos instructions adaptées à vos métiers.
+**L'Assistant** est une plateforme de la DINUM qui vous permet d'échanger avec des modèles d'intelligence artificielle dans un espace **sécurisé** en ligne, de créer des conversations et des projets avec vos documents, et vos instructions adaptées à vos métiers.
 
 {% hint style="info" %}
 Vous pouvez utiliser l'Assistant sans coût et sans quotas d'utilisation
@@ -17,10 +17,10 @@ Vous pouvez utiliser l'Assistant sans coût et sans quotas d'utilisation
 
 ## L'Assistant, pour quoi faire ?
 
-### Avoir un outil d'intelligence artificiel maîtrisé et sécurisé
+### Avoir un outil d'intelligence artificielle maîtrisé et sécurisé
 
-* Hébergement souverain et sécurisé : les documents importés dans l'Assistant et le contenu des conversations sont stockés de façon **sécurisée** sur des infrastructures qualifiées SecNumCloud.
-* Vous pouvez accéder à l'Assistant en lgne depuis n'importe quel navigateur, sans installation de logiciel.
+* Hébergement souverain et sécurisé : les documents importés dans l'Assistant et le contenu des conversations sont stockés de façon **sécurisée** sur des infrastructures qualifiées SecNumCloud. Le traitement par des modèles d'IA est aussi réalisé dans cet environnement, sans envoi à des acteurs tiers.
+* Vous pouvez accéder à l'Assistant en ligne depuis n'importe quel navigateur, sans installation de logiciel.
 * Simplicité d'usage : une interface simple pour aider les agents à monter en compétence sur l'utilisation de l'intelligence artificielle sans complexité.
 
 ### Un outil généraliste pour permettre aux directions métiers de se concentrer sur leurs spécificités
