@@ -1,18 +1,22 @@
-## Changelog : beta-botAdmin (30 derniers jours, au 12 juin 2026)
+## Changelog : beta-botAdmin (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce changelog présente les premières évolutions du bot beta-botAdmin. Les modifications se concentrent sur l'amélioration de la gestion des salles, l'intégration avec des outils externes comme n8n et la configuration initiale de la CI/CD. Des ajustements ont également été apportés pour supporter différents domaines d'email et la partie LLM.
+Ce changelog couvre les premières étapes de développement du bot beta-botAdmin. Les modifications récentes se concentrent sur l'ajout de commandes de base, la correction de bugs initiaux et la mise en place d'une infrastructure de CI/CD pour faciliter le développement futur. L'objectif est de fournir un outil fonctionnel pour la gestion des opérations au sein de la communauté beta.gouv.fr.
 
 ### Évolutions fonctionnelles
-- Correction : Le bot admin est maintenant correctement maintenu dans les salles créées via la commande d'auto-gestion. [#3](https://github.com/betagouv/beta-botAdmin/pull/3)
-- Amélioration : Prise en charge des messages directs depuis n8n, permettant une intégration plus fluide avec cet outil d'automatisation.
-- Amélioration : Ajout de la prise en charge des modifications de nom de domaine : `@beta.gouv.fr`, `@numerique.gouv.fr`, `@modernisation.gouv.fr`. [#2](https://github.com/betagouv/beta-botAdmin/pull/2)
-- Amélioration : Ajustements de la partie LLM (Large Language Model). [#1](https://github.com/betagouv/beta-botAdmin/pull/1)
+- Ajout de la commande `/help` pour la demande OPS.
+- Amélioration de la commande `/espace`.
+- Ajout de la possibilité de créer des rooms directement depuis n8n.
+- Correction d'un bug empêchant le bot d'être administrateur dans les rooms créés via la commande self. [#3](https://github.com/betagouv/beta-botAdmin/issues/3)
+- Ajout de la gestion des noms de domaine : `@beta.gouv.fr`, `@numerique.gouv.fr` et `@modernisation.gouv.fr`.
+- Ajout d'ID pour la création de demandes.
 
 ### Évolutions techniques
-- CI/CD : Mise en place d'une première chaîne d'intégration continue (CI) pour automatiser les tests et la construction du projet. [#1](https://github.com/betagouv/beta-botAdmin/pull/1)
-- Initialisation : Premier push du code source et configuration initiale du dépôt.
+- Mise en place d'une première intégration de CI/CD. [#1](https://github.com/betagouv/beta-botAdmin/issues/1)
+- Modifications et tests pour l'intégration avec une partie LLM (Large Language Model).
+- Amélioration de la gestion des messages directs depuis n8n.
 
 ### Autres changements
-- Tests : Modifications et ajustements des tests unitaires.
-- Configuration : Diverses modifications de configuration pour assurer le bon fonctionnement du bot.
+- Modifications diverses pour le bon fonctionnement du bot et des tests.
+- Ajout de tests initiaux.
+- Premiers commits et push du code source.
