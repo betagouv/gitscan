@@ -1,35 +1,38 @@
 ## Changelog : domifa (30 derniers jours, au 12 juin 2026)
 
 ### Résumé
-Cette période a été marquée par de nombreuses corrections de bugs et améliorations de la sécurité, notamment l'ajout de l'authentification à deux facteurs (OTP) et des améliorations de la gestion des logs et de la sécurité. Des corrections ont également été apportées à l'import de données, à l'interface utilisateur et à la gestion des utilisateurs.
+Cette période a été marquée par de nombreuses corrections et améliorations, notamment concernant la gestion des utilisateurs, la sécurité, et la robustesse de l'application. Des améliorations ont également été apportées à la gestion des logs et des tests. L'authentification a été revue et corrigée.
 
 ### Évolutions fonctionnelles
-- Ajout de l'authentification à deux facteurs (OTP) pour la connexion des utilisateurs.
-- Possibilité de renvoyer un code OTP.
-- Ajout de la suppression de comptes utilisateurs (via [#4152](https://github.com/SocialGouv/domifa/issues/4152)).
+- Ajout de la possibilité de supprimer des utilisateurs dans le backend.
+- Amélioration de la gestion des utilisateurs bloqués.
 - Ajout de statistiques sur les sessions utilisateurs.
-- Ajout de la possibilité de débloquer les utilisateurs bloqués.
-- Ajout de filtres à l'interface d'administration pour faciliter la recherche et la gestion des données.
+- Intégration de Brevo pour l'envoi d'emails et la gestion des liens de déconnexion.
+- Ajout d'un testeur de mails générique.
+- Correction de l'affichage de l'agent utilisateur.
+- Correction du fonctionnement du mot de passe.
+- Correction de la gestion des filtres pour les éléments supprimés.
+- Suppression de la fabrique sociale.
 
 ### Évolutions techniques
-- Amélioration de la gestion des logs pour une meilleure traçabilité et détection des problèmes.
-- Refonte de la gestion des sessions et ajout de vues de sécurité.
-- Mise en place d'un testeur de mails génériques.
-- Correction de problèmes de typage dans le code.
-- Suppression de la fabrique sociale.
-- Ajout de tests unitaires et corrections des tests existants.
-- Amélioration de la sécurité avec la correction d'une potentielle vulnérabilité CodeQL.
-- Ajout de la gestion de Brevo (anciennement Sendinblue) pour l'envoi d'emails et la possibilité de se désinscrire.
+- Amélioration des logs pour la sécurité et le débogage.
+- Ajout de tests unitaires et correction de tests existants.
+- Refactorisation des logs pour améliorer la lisibilité et la maintenance.
+- Mise à jour de la gestion des erreurs avec l'ajout de filtres d'exception.
+- Correction de problèmes de typage.
+- Amélioration de la gestion des sessions.
+- Correction de problèmes liés à l'importation de données.
+- Correction de problèmes de construction de l'application frontend.
 
 ### Autres changements
-- Mise à jour de la documentation et des titres/pages.
-- Correction de problèmes de build de l'application frontend.
-- Correction de l'affichage de l'agent utilisateur.
-- Nettoyage du code et correction de problèmes de linting.
-- Ajout de filtres pour les éléments supprimés.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Correction de problèmes liés aux caractères spéciaux (@) dans l'interface utilisateur.
-- Désactivation du bouton pendant l'envoi du code OTP.
-- Ajout de l'UUID.
-- Ajout de la structure des logs.
-- Correction de tests end-to-end.
+- Correction de problèmes de linting.
+- Ajout de titres et de pages.
+- Correction d'un problème potentiel de sécurité lié à la confusion de type via la manipulation de paramètres (CodeQL).
+- Correction de l'affichage de l'arobase dans le frontend.
+- Désactivation du bouton dans le processus d'authentification à deux facteurs (OTP).
+- Ajout de 30 minutes au délai d'expiration de l'OTP.
+- Correction de problèmes liés à l'UUID.
+- Ajout de filtres dans l'interface d'administration.
+- Correction d'un bug lié à l'affichage de l'agent utilisateur.
+- Correction de problèmes de compatibilité avec la production.
+- Ajout de statistiques sur les sessions.
