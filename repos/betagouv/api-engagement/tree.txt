@@ -167,7 +167,6 @@
 │   │       │   │   │   ├── annonceur.sql
 │   │       │   │   │   ├── diffuseur.sql
 │   │       │   │   │   ├── publisher.sql
-│   │       │   │   │   ├── publisher_diffusion_exclusion.sql
 │   │       │   │   │   └── publisher_organization.sql
 │   │       │   │   ├── stat_event
 │   │       │   │   │   ├── __models.yml
@@ -238,7 +237,6 @@
 │   │       │       ├── publisher
 │   │       │       │   ├── __models.yml
 │   │       │       │   ├── stg_publisher.sql
-│   │       │       │   ├── stg_publisher_diffusion_exclusion.sql
 │   │       │       │   └── stg_publisher_organization.sql
 │   │       │       ├── stat_event
 │   │       │       │   ├── __models.yml
@@ -272,7 +270,6 @@
 │   │           └── .gitkeep
 │   ├── docker-entrypoint.sh
 │   ├── eslint.config.cjs
-│   ├── package-lock.json
 │   ├── package.json
 │   ├── scripts
 │   │   └── dbt-env.sh
@@ -531,6 +528,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260610120000_add_publisher_organization_parent_organizations_gin_index
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260618000000_diffusion_rule_client_id_to_publisher_organization_id
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -617,6 +616,7 @@
 │   │   │   ├── countries.ts
 │   │   │   ├── departments.ts
 │   │   │   ├── domains.ts
+│   │   │   ├── metabase.ts
 │   │   │   ├── moderation.ts
 │   │   │   └── organization-verification.ts
 │   │   ├── controllers
@@ -639,6 +639,7 @@
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── moderation.ts
 │   │   │   ├── organization.ts
+│   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── redirect.ts
 │   │   │   ├── report.ts
@@ -886,6 +887,7 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── mission-enrichment
 │   │   │   │   ├── __tests__
+│   │   │   │   │   ├── builder.test.ts
 │   │   │   │   │   ├── index.test.ts
 │   │   │   │   │   └── parser.test.ts
 │   │   │   │   ├── config.ts
@@ -1015,6 +1017,7 @@
 │   │   │   │   ├── activity.test.ts
 │   │   │   │   ├── audit-log.test.ts
 │   │   │   │   ├── geo.test.ts
+│   │   │   │   ├── llm.test.ts
 │   │   │   │   ├── mission-moderation-status.test.ts
 │   │   │   │   ├── mission-rule.test.ts
 │   │   │   │   ├── mission.test.ts
@@ -1030,6 +1033,7 @@
 │   │   │   ├── geo.ts
 │   │   │   ├── index.ts
 │   │   │   ├── job.ts
+│   │   │   ├── llm.ts
 │   │   │   ├── mission-moderation-status.ts
 │   │   │   ├── mission-moderation.ts
 │   │   │   ├── mission-rule.ts
@@ -1125,6 +1129,7 @@
 │   │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   │   ├── mymission.test.ts
 │   │   │   │   │   │   ├── myorganization.test.ts
+│   │   │   │   │   │   ├── publisher.test.ts
 │   │   │   │   │   │   └── view.test.ts
 │   │   │   │   │   ├── v2
 │   │   │   │   │   │   ├── activity.test.ts
@@ -1153,7 +1158,8 @@
 │   │   │   │   └── report
 │   │   │   │       └── report.handler.test.ts
 │   │   │   └── services
-│   │   │       └── mission.test.ts
+│   │   │       ├── mission.test.ts
+│   │   │       └── publisher.test.ts
 │   │   ├── mocks
 │   │   │   ├── dataSubventionMock.ts
 │   │   │   ├── index.ts
@@ -1521,6 +1527,7 @@
 │   │   │   │   ├── loading-recap.tsx
 │   │   │   │   ├── mission-card.tsx
 │   │   │   │   ├── next-button.tsx
+│   │   │   │   ├── quiz-transition.tsx
 │   │   │   │   ├── radio-group-rich.tsx
 │   │   │   │   └── radio-group.tsx
 │   │   │   ├── results
@@ -1587,6 +1594,7 @@
 │   │   │   ├── client.ts
 │   │   │   ├── config.ts
 │   │   │   ├── email.ts
+│   │   │   ├── geolocation.ts
 │   │   │   ├── matching.ts
 │   │   │   ├── mission-browse.ts
 │   │   │   └── user-scoring.ts
@@ -1597,11 +1605,15 @@
 │   │   └── utils
 │   │       ├── __tests__
 │   │       │   ├── conditions.test.ts
+│   │       │   ├── geo.test.ts
 │   │       │   ├── mission.test.ts
-│   │       │   └── quiz.test.ts
+│   │       │   ├── quiz.test.ts
+│   │       │   └── string.test.ts
 │   │       ├── conditions.ts
+│   │       ├── geo.ts
 │   │       ├── mission.ts
-│   │       └── quiz.ts
+│   │       ├── quiz.ts
+│   │       └── string.ts
 │   ├── eslint.config.cjs
 │   ├── package.json
 │   ├── react-router.config.ts
@@ -1681,7 +1693,6 @@
     ├── instrumentation.ts
     ├── next-env.d.ts
     ├── next.config.js
-    ├── package-lock.json
     ├── package.json
     ├── pages
     │   ├── _app.tsx
@@ -1744,4 +1755,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-407 directories, 1425 files
+408 directories, 1435 files
