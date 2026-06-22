@@ -146,6 +146,7 @@
 │   │   ├── DescribeResource.vue
 │   │   ├── FileEditModal.vue
 │   │   ├── FileEditModalFromQueryString.client.vue
+│   │   ├── LegacyResourceList.vue
 │   │   ├── New
 │   │   │   ├── Step1PublishingType.vue
 │   │   │   ├── Step3AddResources.vue
@@ -299,7 +300,8 @@
 │   │   └── SmallCapsLabel.vue
 │   ├── OpenApi
 │   │   ├── OpenApiProperties.vue
-│   │   └── OpenApiProperty.vue
+│   │   ├── OpenApiProperty.vue
+│   │   └── openApiCollapse.ts
 │   ├── Organization
 │   │   ├── AdminContactPointsPage.vue
 │   │   ├── ListPage.vue
@@ -396,6 +398,7 @@
 │   ├── useCurrentOwned.ts
 │   ├── useDeleteMailto.ts
 │   ├── useForm.ts
+│   ├── useJobItems.ts
 │   ├── useMarkAsRead.ts
 │   ├── useNotifications.client.ts
 │   ├── useRecommendationReason.ts
@@ -561,6 +564,7 @@
 │   ├── public
 │   │   └── favicon.ico
 │   ├── src
+│   │   ├── chart.ts
 │   │   ├── components
 │   │   │   ├── ActivityList
 │   │   │   │   ├── ActivityList.vue
@@ -809,6 +813,7 @@
 │   └── en.json
 ├── middleware
 │   ├── auth.ts
+│   ├── clear-error.global.ts
 │   ├── guest.ts
 │   ├── me.global.ts
 │   └── redirect.global.ts
@@ -817,6 +822,8 @@
 ├── pages
 │   ├── a-propos.vue
 │   ├── admin
+│   │   ├── beta
+│   │   │   └── chart.vue
 │   │   ├── community-resources
 │   │   │   └── new.vue
 │   │   ├── dataservices
@@ -964,7 +971,6 @@
 │   ├── design
 │   │   ├── buttons.vue
 │   │   ├── cards.vue
-│   │   ├── chart.vue
 │   │   ├── dataservice-search.vue
 │   │   ├── dataset-search.vue
 │   │   ├── index.vue
@@ -1052,6 +1058,7 @@
 ├── playwright.config.ts
 ├── plugins
 │   ├── api.ts
+│   ├── datagouv-components.ts
 │   ├── logger.ts
 │   ├── matomo.client.ts
 │   └── translation.ts
@@ -1120,7 +1127,6 @@
 │   │   ├── _bus.svg
 │   │   ├── _calculus.svg
 │   │   ├── _camera.svg
-│   │   ├── _chart.svg
 │   │   ├── _cheese.svg
 │   │   ├── _cinema.svg
 │   │   ├── _clock.svg
@@ -1216,6 +1222,7 @@
 │   │   ├── book-2.svg
 │   │   ├── briefcase.svg
 │   │   ├── business.svg
+│   │   ├── chart.svg
 │   │   ├── coffee.svg
 │   │   ├── dataservice.svg
 │   │   ├── dataset.svg
@@ -1400,6 +1407,7 @@
 │   │   ├── [did].spec.ts
 │   │   ├── chunked-upload.spec.ts
 │   │   ├── creation.spec.ts
+│   │   ├── datagouv-config-after-error.spec.ts
 │   │   └── search.spec.ts
 │   ├── discussions
 │   │   └── discussions.normal-user.spec.ts
@@ -1430,6 +1438,9 @@
 │   │   ├── invitations.spec.ts
 │   │   ├── organizations.spec.ts
 │   │   └── partial-editor.spec.ts
+│   ├── pages
+│   │   ├── error-page-navigation.spec.ts
+│   │   └── not-found.spec.ts
 │   ├── posts
 │   │   ├── blocs.spec.ts
 │   │   └── kind.spec.ts
@@ -1479,4 +1490,4 @@
     ├── paginate.ts
     ├── posts.ts
     └── reuses.ts
-223 directories, 1258 files
+225 directories, 1267 files
