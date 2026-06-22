@@ -1,54 +1,33 @@
 ## Changelog : anssi-portail (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du référencement (SEO), la sécurisation du site (mise à jour de dépendances, protection contre les failles), l'implémentation du parcours sécurisation (notamment l'affichage des mesures et la prise en compte par les utilisateurs), et l'amélioration de l'expérience utilisateur grâce à l'utilisation de composants du Design System Français (DSFR).
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du référencement (SEO) du site, la sécurisation des dépendances, l'implémentation du parcours sécurisation (notamment l'affichage des mesures et la prise en compte par les utilisateurs), et des corrections de bugs et améliorations de l'expérience utilisateur. Plusieurs mises à jour de composants DSFR ont également été intégrées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité pour les utilisateurs de donner leur avis sur les mesures de sécurité et de les marquer comme prises en compte.
-- Amélioration de l'affichage et de la navigation dans le parcours sécurisation, avec l'ajout de badges de progression et de liens vers des mesures plus avancées.
-- Affichage des mesures de sécurité pour les 5 modules du parcours sécurisation.
-- Ajout d'un fil d'Ariane utilisant les composants DSFR pour une meilleure navigation.
-- Amélioration de la page 404.
-- Ajout des mesures pour les 5 modules.
-- Affichage des contact de la région PACA, ARA et Normandie.
+- **Parcours sécurisation :** Implémentation de l'affichage des mesures de sécurité et de la possibilité pour les utilisateurs de les prendre en compte. Un badge indique si une mesure a été prise en compte.
+- **Mesures :** Affichage des détails d'une mesure, incluant les risques, les actions prioritaires, les liens pour aller plus loin et les exigences ReCyF.
+- **Avis sur les mesures :** Possibilité pour les utilisateurs de donner leur avis sur les mesures, avec stockage de cet avis.
+- **Page 404 :** Amélioration de la page d'erreur 404.
+- **Contact :** Mise à jour des contacts des régions PACA, Normandie et ARA. Ajout et suppression de COT (Contact d'Organisation Territoriale).
+- **Collectivités :** Ajout d'une ancre pour afficher la demande de diagnostic.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité (dompurify, @babel/core, vite, form-data, shell-quote, svelte, qs).
-- Refonte de la gestion des erreurs et des logs pour une meilleure robustesse.
-- Utilisation accrue des composants du Design System Français (DSFR) pour l'interface utilisateur (boutons, badges, segmented control, fil d'Ariane).
-- Amélioration de la configuration et du déploiement (utilisation de corepack, gestion des versions de Node.js).
-- Optimisation de la configuration d'Axios.
-- Centralisation de la configuration et des chemins.
-- Amélioration de la gestion du cache Grist.
-- Ajout d'un constructeur d'utilisateur.
-- Introduction d'un constructeur de mesures.
-- Suppression de code inutilisé et simplification de certains composants.
-- Ajout de tests et correction de bugs.
-- Mise en place d'un système de notification à MQC lors des changements.
+- **SEO :** Amélioration du référencement avec suppression des titres `<h1>` dupliqués, redirection des URL avec `/` final, utilisation d'URL kebab-case, ajout de balises canoniques et ajout des fichiers `robots.txt` et `sitemap.xml`.
+- **Sécurité :** Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (dompurify, @babel/core, vite, form-data, shell-quote).
+- **CI/CD :** Épinglage des versions des dépendances des GitHub Actions et configuration de prettier.
+- **Architecture :** Refonte de la gestion des erreurs, centralisation de la configuration d'axios, utilisation d'un constructeur d'utilisateur, introduction d'un constructeur de mesures.
+- **Base de données :** Adaptation de la base de données pour le parcours sécurisation.
+- **Cache :** Amélioration de la gestion du cache Grist.
+- **Nettoyage de code :** Suppression de code inutilisé et simplification de certains composants.
+- **Typescript :** Rendre plus explicite les types des variables.
 
 ### Autres changements
-- Amélioration des messages d'erreurs.
-- Nettoyage du code et refactoring de certains composants.
-- Ajout de documentation.
-- Mise à jour des informations de contact.
-- Suppression de vidéos et d'éléments obsolètes.
-- Correction de problèmes de z-index et de styles.
-- Ajout de fichiers robots.txt et sitemap.xml pour le SEO.
-- Suppression des titres <h1> dupliqués pour le SEO.
-- Redirection des URL avec un slash final vers les URL sans slash.
-- Utilisation d'URL kebab-case pour les pages Mentions Légales et À propos.
-- Ajout d'un lien canonique pour le SEO.
+- Ajout de tests pour éviter la création du sitemap à chaque test.
+- Augmentation du rate limit global.
+- Documentation mise à jour.
+- Amélioration des messages d'erreur au démarrage.
 - Tri des lignes des overrides.
-- Ajout de la signature de base64.
-- Ajout de la signature de base64.
-- Ajout des fichiers de skills pour l'IA.
-- Suppression des jobs d’approbation.
-- Utilise les valeurs paramétrées pour MQC.
-- Appelle MQC avec les modifications.
-- Décide de notifier MQC de changement.
-- Échoue lorsque l’appel à MQC échoue.
-- Ajoute les différences dans l’artefact.
-- Filtre les erreurs 'Network error' d’axios.
-- Filtre les erreurs qui ne viennent pas d’MSC.
-- N’efface pas la preuve de sauvegarde.
-- Aligne la vérification sur la synchro.
+- Mise à jour de la version de Ruby et des actions associées dans la CI.
+- Ajout d'illustrations et d'un composant Toast.
+- Amélioration de l'affichage de la progression du parcours sécurisation.
+- Correction de bugs mineurs liés à l'affichage et au z-index.
