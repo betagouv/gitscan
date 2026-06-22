@@ -326,6 +326,7 @@
 │   │   │   ├── HomeController.php
 │   │   │   ├── InscriptionController.php
 │   │   │   ├── MetaController.php
+│   │   │   ├── PublicController.php
 │   │   │   ├── Requerant
 │   │   │   │   ├── DocumentController.php
 │   │   │   │   └── HomeController.php
@@ -337,6 +338,8 @@
 │   │   │   ├── DossierFixture.php
 │   │   │   ├── FDOFixture.php
 │   │   │   ├── GeoFixtures.php
+│   │   │   ├── Helpers
+│   │   │   │   └── MailpitManager.php
 │   │   │   ├── PersonneFixture.php
 │   │   │   ├── TestEligibiliteFixture.php
 │   │   │   ├── UsagerFixture.php
@@ -408,6 +411,7 @@
 │   │   │   └── Listener
 │   │   │       ├── ApiExceptionListener.php
 │   │   │       ├── ConnexionUsagerListener.php
+│   │   │       ├── DeclarationBrisPorteFDOEntitylistener.php
 │   │   │       ├── DetectObsoleteBrowserListener.php
 │   │   │       ├── DossierEntitylistener.php
 │   │   │       ├── DossierTransitionListener.php
@@ -462,6 +466,7 @@
 │   │   │   ├── DateConvertisseur.php
 │   │   │   ├── DocumentManager.php
 │   │   │   ├── DossierManager.php
+│   │   │   ├── GenerateurReferenceCourte.php
 │   │   │   ├── ImprimanteCourrier.php
 │   │   │   ├── Mailer.php
 │   │   │   └── MontantAfficheur.php
@@ -554,6 +559,8 @@
 │   │   ├── mentions-legales.html.twig
 │   │   ├── navigateur-non-pris-en charge.html.twig
 │   │   ├── politique-de-confidentialite.html.twig
+│   │   ├── public
+│   │   │   └── public.html.twig
 │   │   ├── qui-sommes-nous.html.twig
 │   │   ├── requerant
 │   │   │   └── requerant.html.twig
@@ -741,6 +748,7 @@
     │   │   │   └── fip6
     │   │   │       ├── composants
     │   │   │       │   ├── dossiers
+    │   │   │       │   │   ├── BadgeEtatDossier.tsx
     │   │   │       │   │   └── ListeDossiers.tsx
     │   │   │       │   └── pages
     │   │   │       │       └── RechercherDossierPage.tsx
@@ -846,6 +854,44 @@
     │   │   │       ├── services
     │   │   │       │   └── dossier.ts
     │   │   │       └── tsconfig.json
+    │   │   ├── public
+    │   │   │   ├── components
+    │   │   │   │   ├── Layout.tsx
+    │   │   │   │   ├── formulaires
+    │   │   │   │   │   └── eligibilite.schemas.ts
+    │   │   │   │   ├── steps
+    │   │   │   │   │   ├── NavButtons.tsx
+    │   │   │   │   │   ├── StepActionContentieuse.tsx
+    │   │   │   │   │   ├── StepDateDecision.tsx
+    │   │   │   │   │   ├── StepDiligences.tsx
+    │   │   │   │   │   ├── StepPiecesProc.tsx
+    │   │   │   │   │   ├── StepTypeDecision.tsx
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   └── types.ts
+    │   │   │   ├── container.ts
+    │   │   │   ├── models
+    │   │   │   │   └── TestEligibilite.ts
+    │   │   │   ├── public.tsx
+    │   │   │   ├── routes
+    │   │   │   │   ├── __root.tsx
+    │   │   │   │   └── dysfonctionnement
+    │   │   │   │       └── tester-mon-eligibilite
+    │   │   │   │           ├── 1-date-decision.tsx
+    │   │   │   │           ├── 2-action-contentieuse.tsx
+    │   │   │   │           ├── 3-type-decision.tsx
+    │   │   │   │           ├── 4-pieces-procedure.tsx
+    │   │   │   │           ├── 5-diligences.tsx
+    │   │   │   │           ├── index.tsx
+    │   │   │   │           ├── resultat.tsx
+    │   │   │   │           └── test-eligibilite.tsx
+    │   │   │   ├── routeur
+    │   │   │   │   ├── index.ts
+    │   │   │   │   └── routeur-public.gen.ts
+    │   │   │   ├── services
+    │   │   │   │   ├── TestEligibiliteManager.ts
+    │   │   │   │   ├── eligibiliteStore.ts
+    │   │   │   │   └── prescription.ts
+    │   │   │   └── tsconfig.json
     │   │   ├── requerant
     │   │   │   ├── composants
     │   │   │   │   ├── IconeLigne.tsx
@@ -947,6 +993,8 @@
     │   │   └── sentry.ts
     │   ├── common
     │   │   ├── composants
+    │   │   │   ├── Frise.css
+    │   │   │   ├── Frise.tsx
     │   │   │   ├── ListeEtapes.tsx
     │   │   │   ├── Loader.tsx
     │   │   │   ├── document
@@ -999,15 +1047,21 @@
     │   │   │   └── object.ts
     │   │   └── validation
     │   │       └── index.ts
-    │   └── style
-    │       ├── agents.css
-    │       ├── index.css
-    │       └── requerant
-    │           └── dossier
-    │               └── test_mon_eligibilite.css
+    │   ├── style
+    │   │   ├── agents.css
+    │   │   ├── index.css
+    │   │   └── requerant
+    │   │       └── dossier
+    │   │           └── test_mon_eligibilite.css
+    │   └── vite-env.d.ts
     ├── stylelint.config.ts
     ├── tests
     │   ├── apps
+    │   │   ├── public
+    │   │   │   ├── models
+    │   │   │   │   └── TestEligibilite.test.ts
+    │   │   │   └── services
+    │   │   │       └── prescription.test.ts
     │   │   └── requerant
     │   │       └── models
     │   │           ├── Dossier.test.ts
@@ -1028,4 +1082,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-225 directories, 805 files
+240 directories, 844 files
