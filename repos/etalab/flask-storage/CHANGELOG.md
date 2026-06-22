@@ -2,7 +2,8 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- fix(s3): fix content type if not guessed [#18](https://github.com/etalab/flask-storage/pull/18)
+- fix(S3): delete only the exact object instead of every key sharing its prefix [#19](https://github.com/etalab/flask-storage/pull/19)
 
 ## 1.4.4 (2026-03-12)
 
