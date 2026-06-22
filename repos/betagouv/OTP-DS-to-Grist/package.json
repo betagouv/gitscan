@@ -19,13 +19,15 @@
   },
   "scripts": {
     "test": "jest",
+    "test:vue": "cd front && npm run test:unit",
     "lint": "eslint static/js/",
     "lint:fix": "eslint static/js/ --fix",
+    "dev": "cd front && npm run dev",
     "build": "cd front && npm ci --include=dev && npm run build"
   },
   "devDependencies": {
-    "baseline-browser-mapping": "^2.10.34",
-    "eslint": "^10.4.1",
+    "baseline-browser-mapping": "^2.10.38",
+    "eslint": "^10.5.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1"
   }
