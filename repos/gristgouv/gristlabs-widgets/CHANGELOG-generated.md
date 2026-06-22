@@ -1,12 +1,17 @@
-## Changelog : gristlabs-widgets (30 derniers jours, au 9 mai 2026)
+## Changelog : gristlabs-widgets (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration de l'expérience utilisateur et la mise à jour des dépendances clés. Le widget calendrier a été amélioré pour mieux s'adapter aux préférences régionales concernant le premier jour de la semaine. De plus, les environnements de développement ont été mis à jour avec les dernières versions de Jupyter Notebook et JupyterLite. Une fonctionnalité expérimentale de jeu "Whack-a-cell" a également été ajoutée.
+Cette mise à jour se concentre sur l'amélioration de la robustesse et de la clarté de l'affichage des widgets, notamment en gérant mieux les erreurs et en simplifiant la présentation des titres et labels. Une préparation pour la publication de la version 0.0.7 a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Le widget calendrier détecte désormais automatiquement le premier jour de la semaine en fonction des paramètres régionaux de l'utilisateur. [#199](https://github.com/gristlabs/gristlabs-widgets/issues/199)
-- Ajout d'un jeu expérimental "Whack-a-cell". [#202](https://github.com/gristlabs/gristlabs-widgets/issues/202)
+- Les erreurs et les messages d'inspection sont désormais affichés en texte brut, améliorant la lisibilité et évitant les problèmes d'interprétation du HTML.  [#225](https://github.com/gristlabs/gristlabs-widgets/issues/225)
+- Les labels des widgets sont maintenant rendus en texte brut au lieu de HTML, pour une présentation plus simple et prévisible. [#221](https://github.com/gristlabs/gristlabs-widgets/issues/221)
+- L'affichage du message d'erreur et du message d'exoplanète a été corrigé pour afficher du texte. [#227](https://github.com/gristlabs/gristlabs-widgets/issues/227)
+- Amélioration de la sanitisation des titres pour éviter des problèmes d'affichage. [#223](https://github.com/gristlabs/gristlabs-widgets/issues/223)
 
 ### Évolutions techniques
-- Mise à jour de Jupyter Notebook vers la dernière version avec une configuration de build corrigée. [#205](https://github.com/gristlabs/gristlabs-widgets/issues/205)
-- Mise à jour de JupyterLite vers la dernière version. [#204](https://github.com/gristlabs/gristlabs-widgets/issues/204)
+- Les tests ont été mis à jour pour fonctionner avec la dernière image de Grist. [#219](https://github.com/gristlabs/gristlabs-widgets/issues/219)
+- Toutes les dépendances ont été déplacées vers `devDependencies`, réduisant la taille du bundle final. [#218](https://github.com/gristlabs/gristlabs-widgets/issues/218)
+
+### Autres changements
+- Préparation de la publication de la version 0.0.7.
