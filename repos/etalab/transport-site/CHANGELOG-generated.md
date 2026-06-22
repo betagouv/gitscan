@@ -1,21 +1,19 @@
-## Changelog : transport-site (30 derniers jours, au 11 juin 2026)
+## Changelog : transport-site (30 derniers jours, au 18 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent principalement sur le module IRVE (Infrastructure de Recharge pour Véhicules Électriques) avec des optimisations de la base de données, l'ajout de permaliens pour la validation et la suppression de processus de consolidation obsolètes. Des efforts ont également été faits pour améliorer la sécurité et la configuration du projet.
+Ce mois-ci, les améliorations se concentrent sur la consolidation et la gestion des données IRVE (Infrastructure de Recharge pour Véhicules Électriques). Des corrections ont été apportées aux coordonnées, des optimisations de stockage ont été réalisées et des outils de profiling ont été ajoutés pour améliorer la qualité des données. Des efforts de maintenance ont également été effectués pour simplifier le code et arrêter des processus inutilisés.
 
 ### Évolutions fonctionnelles
-- Ajout de permaliens pour faciliter la validation des données IRVE. [#5524](https://github.com/etalab/transport-site/issues/5524)
-- Amélioration de la récupération du `requestor_ref` via l'API, facilitant l'identification des requêtes. [#5516](https://github.com/etalab/transport-site/issues/5516)
-- Renforcement de la validation des adresses e-mail dans le module IRVE avec une expression régulière plus stricte. [#5513](https://github.com/etalab/transport-site/issues/5513)
+- Correction des coordonnées dans la consolidation IRVE, améliorant la précision géographique des données.  [#5535](https://github.com/etalab/transport-site/issues/5535)
+- Ajout d'un permalien pour faciliter la validation des données IRVE. [#5524](https://github.com/etalab/transport-site/issues/5524)
 
 ### Évolutions techniques
-- Modification du type de données de la colonne `puissance_nominale` en `float` dans la base de données IRVE pour une meilleure précision. [#5531](https://github.com/etalab/transport-site/issues/5531)
-- Suppression du job de consolidation brute IRVE et renommage de la consolidation transport pour simplifier l'architecture. [#5527](https://github.com/etalab/transport-site/issues/5527) et [#5529](https://github.com/etalab/transport-site/issues/5529)
-- Refactoring initial pour sortir les lectures de variables d'environnement à la compilation, améliorant la configuration et la sécurité. [#5521](https://github.com/etalab/transport-site/issues/5521)
-- Suppression de code inutilisé lié au support expérimental SIRI. [#5523](https://github.com/etalab/transport-site/issues/5523)
+- Utilisation de `float` en base de données pour le champ `puissance_nominale` des bornes IRVE, permettant une meilleure précision des valeurs. [#5531](https://github.com/etalab/transport-site/issues/5531)
+- Suppression de la consolidation "brute" IRVE et renommage de la consolidation transport pour simplifier l'architecture. [#5529](https://github.com/etalab/transport-site/issues/5529)
+- Arrêt du job de consolidation brute IRVE, réduisant la charge de travail et les ressources utilisées. [#5527](https://github.com/etalab/transport-site/issues/5527)
+- Début d'un refactoring pour sortir les lectures d'environnement à la compilation, améliorant la performance et la sécurité. [#5521](https://github.com/etalab/transport-site/issues/5521)
 - Mise à jour de protobuf. [#5533](https://github.com/etalab/transport-site/issues/5533)
 
 ### Autres changements
-- Correction de failles de sécurité JavaScript. [#5517](https://github.com/etalab/transport-site/issues/5517)
-- Ajout d'un script pour profiler les doublons dans le consolidé dynamique IRVE. [#5526](https://github.com/etalab/transport-site/issues/5526)
-- Ajout d'un script CheckStatus pour faciliter le monitoring de l'API. [#5516](https://github.com/etalab/transport-site/issues/5516)
+- Suppression du code inutilisé lié au support expérimental pour SIRI, allégeant le code base. [#5523](https://github.com/etalab/transport-site/issues/5523)
+- Ajout d'un script de profiling pour identifier et corriger les doublons dans le consolidé dynamique IRVE. [#5526](https://github.com/etalab/transport-site/issues/5526)
