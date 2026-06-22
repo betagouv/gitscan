@@ -1,18 +1,16 @@
 {
   "url": "https://github.com/refugies-info/playground",
   "name": "playground",
-  "description": "Ce projet est un espace de test pour un workflow éditorial assisté par l'IA, visant à améliorer la clarté et l'efficacité du processus d'édition chez Refugies.info. Il combine la réécriture automatique par l'IA avec la validation humaine.",
+  "description": "Ce projet vise à rationaliser le flux de publication en combinant la réécriture assistée par l'IA avec la validation humaine. Il ingère des données à partir de plusieurs sources, clarifie automatiquement le contenu à l'aide de l'IA et permet aux rédacteurs de revoir et d'approuver avant l'exportation.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Statistiques & Rapports",
+    "Notifications & Alertes",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Sécurité & Conformité"
   ],
   "audience": "Associations",
   "dependencies": [
@@ -20,8 +18,6 @@
     "Tailwind CSS",
     "Supabase",
     "Letta Cloud",
-    "shadcn/ui",
-    "Radix UI",
     "Turborepo"
   ],
   "components": [
@@ -33,8 +29,8 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "Supabase"
@@ -42,7 +38,7 @@
   },
   "tests": "Vitest",
   "workflows": [
-    "CI/CD with Letta Cloud"
+    "CI/CD & GitHub Actions"
   ],
   "lastActivity": "2026-06-18T17:16:50+02:00",
   "status": "active",
@@ -62,7 +58,6 @@
     "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Intelligence Artificielle & LLM"
+    "Sécurité & Auth"
   ]
 }
