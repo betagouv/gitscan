@@ -1,18 +1,15 @@
-## Changelog : trackdechets-vigiedechets (30 derniers jours, au 08 juin 2026)
+## Changelog : trackdechets-vigiedechets (30 derniers jours, au 3 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de fonctionnalités pour l'assistance utilisateur, notamment la possibilité de joindre plusieurs fichiers aux demandes. Des travaux ont également été réalisés pour faciliter le développement local avec ClickHouse et pour maintenir à jour les dépendances du projet.
+Cette mise à jour apporte des améliorations à la fonctionnalité de contact/assistance, permettant aux utilisateurs de joindre plusieurs fichiers à leurs demandes. Des optimisations techniques et des corrections ont également été apportées pour améliorer la qualité du code et la préparation de l'application.
 
 ### Évolutions fonctionnelles
-- **Assistance utilisateur :** Possibilité de joindre plusieurs pièces jointes au formulaire de contact de l'assistance. [#476](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/476)
-- **ClickHouse :** Ajout de la possibilité d'utiliser ClickHouse en local pour le développement. [#464](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/464)
+- Possibilité de joindre plusieurs pièces jointes au formulaire de contact/assistance. [#476](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/476)
+- Ajout de vérifications côté serveur pour l'envoi de pièces jointes.
 
 ### Évolutions techniques
-- **Dépendances :** Mise à jour de plusieurs dépendances du projet, incluant des corrections suite à ces mises à jour. [#490](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/490), [#483](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/483), [#481](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/481)
-- **Gestion des packages :** Amélioration de la gestion des packages et des fichiers de verrouillage (lockfiles) pour assurer la cohérence des dépendances.
-- **Ruff :** Application de formatage du code avec Ruff.
-- **Vérifications serveur :** Ajout de vérifications côté serveur pour l'envoi de pièces jointes.
+- Application des corrections automatiques de formatage du code avec `ruff`.
+- Ajout d'un script pour peupler la base de données de l'assistance.
 
 ### Autres changements
-- Préparation de la base de données pour l'assistance (script de peuplement).
-- Nettoyage et amélioration de la configuration du projet.
+- Mise à jour des dépendances du projet (eslint, et autres). [#487](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/487) et [#499](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/499)
