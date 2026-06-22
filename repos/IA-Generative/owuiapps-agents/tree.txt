@@ -62,7 +62,9 @@
 │   │   │       │   └── route.ts
 │   │   │       ├── optimize
 │   │   │       │   └── route.ts
-│   │   │       └── suggest-starters
+│   │   │       ├── suggest-starters
+│   │   │       │   └── route.ts
+│   │   │       └── validate
 │   │   │           └── route.ts
 │   │   ├── auth
 │   │   │   └── [...nextauth]
@@ -79,79 +81,113 @@
 ├── deploy
 │   ├── build-image.sh
 │   ├── deploy-k8s.sh
+│   ├── k8s
+│   │   └── base
+│   │       ├── configmap.yaml
+│   │       ├── deployment.yaml
+│   │       ├── ingress.yaml
+│   │       ├── job-migrate.yaml
+│   │       ├── kustomization.yaml
+│   │       ├── namespace.yaml
+│   │       ├── secret.example.yaml
+│   │       └── service.yaml
+│   ├── keycloak
+│   │   ├── README.md
+│   │   └── client-miraiku-agents.json
 │   ├── prepare-env.sh
 │   ├── prepare-registry-secret.sh
 │   ├── prepare-secrets.sh
-│   └── push-image.sh
+│   ├── push-image.sh
+│   └── scripts
+│       └── load_env.sh
 ├── docker-compose.yml
-├── k8s
-│   └── base
-│       ├── configmap.yaml
-│       ├── deployment.yaml
-│       ├── ingress.yaml
-│       ├── job-migrate.yaml
-│       ├── kustomization.yaml
-│       ├── namespace.yaml
-│       ├── secret.example.yaml
-│       └── service.yaml
-├── keycloak
+├── docs
 │   ├── README.md
-│   └── client-miraiku-agents.json
+│   ├── mockups
+│   │   ├── 01-wizard-actions.html
+│   │   ├── 01-wizard-actions.png
+│   │   ├── 02-recording.html
+│   │   ├── 02-recording.png
+│   │   ├── 03-overlay-panel.html
+│   │   ├── 03-overlay-panel.png
+│   │   ├── 04-execution-progress.html
+│   │   ├── 04-execution-progress.png
+│   │   ├── 05-mes-agents-cards.html
+│   │   ├── 05-mes-agents-cards.png
+│   │   ├── 06-onglet-apprendre.html
+│   │   └── 06-onglet-apprendre.png
+│   ├── nemo-guardrails-comparison.md
+│   ├── prompt-guard-isolation.md
+│   └── specs
+│       ├── agent-builder-roadmap-v2.md
+│       └── agent-builder-spec.md
 ├── middleware.ts
-├── mockups
-│   ├── 01-wizard-actions.html
-│   ├── 01-wizard-actions.png
-│   ├── 02-recording.html
-│   ├── 02-recording.png
-│   ├── 03-overlay-panel.html
-│   ├── 03-overlay-panel.png
-│   ├── 04-execution-progress.html
-│   ├── 04-execution-progress.png
-│   ├── 05-mes-agents-cards.html
-│   ├── 05-mes-agents-cards.png
-│   ├── 06-onglet-apprendre.html
-│   └── 06-onglet-apprendre.png
-├── mockups.zip
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
+├── playwright.config.ts
 ├── postcss.config.js
 ├── prisma
 │   ├── migrations
 │   │   ├── 0_init
 │   │   │   └── migration.sql
+│   │   ├── 20260619043000_add_guard_events
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
-├── prompt_mirai_agent_builder.md
-├── prompt_mirai_agent_builder_v2_extensions.md
 ├── public
 │   ├── .gitkeep
 │   └── favicon.svg
-├── scripts
-│   └── load_env.sh
 ├── src
 │   ├── lib
 │   │   ├── auth.ts
 │   │   ├── db.ts
 │   │   ├── env.ts
+│   │   ├── guard-audit.ts
 │   │   ├── models.ts
 │   │   ├── owui-admin-client.ts
 │   │   ├── owui-client.ts
 │   │   ├── prompt-guard.ts
 │   │   ├── rate-limit.ts
 │   │   └── scw-llm-client.ts
+│   ├── packages
+│   │   └── prompt-guard
+│   │       ├── README.md
+│   │       ├── audit.ts
+│   │       ├── config.ts
+│   │       ├── core.ts
+│   │       ├── index.ts
+│   │       └── judge.ts
 │   └── types
 │       └── next-auth.d.ts
 ├── tailwind.config.ts
 ├── tests
-│   └── redteam
-│       ├── README.md
-│       ├── detectors.test.ts
-│       ├── detectors.ts
-│       ├── env.setup.ts
-│       ├── payloads.ts
-│       ├── prompt-guard.test.ts
-│       └── prompt-injection.test.ts
+│   ├── e2e
+│   │   ├── auth.setup.ts
+│   │   ├── redteam-api.spec.ts
+│   │   └── wizard-verify.spec.ts
+│   ├── redteam
+│   │   ├── METHODOLOGY.md
+│   │   ├── README.md
+│   │   ├── anomaly.test.ts
+│   │   ├── detectors.test.ts
+│   │   ├── detectors.ts
+│   │   ├── env.setup.ts
+│   │   ├── guard-messages.test.ts
+│   │   ├── harness.ts
+│   │   ├── judge-eval.run.test.ts
+│   │   ├── judge-eval.ts
+│   │   ├── judge-parser.test.ts
+│   │   ├── matrix.run.test.ts
+│   │   ├── payloads.ts
+│   │   ├── prompt-guard.test.ts
+│   │   ├── prompt-injection.test.ts
+│   │   ├── run-matrix.ts
+│   │   ├── streaming.test.ts
+│   │   ├── zorg-corpus.test.ts
+│   │   └── zorg-corpus.ts
+│   └── routes
+│       └── guard-routes.test.ts
 ├── tsconfig.json
 └── vitest.config.ts
-51 directories, 105 files
+59 directories, 133 files
