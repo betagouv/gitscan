@@ -1,45 +1,61 @@
-## Changelog : tchap-x-android (30 derniers jours, au 12 juin 2026)
+## Changelog : tchap-x-android (30 derniers jours, au 19 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la sécurité, à la stabilité et à l'expérience utilisateur.  Plusieurs correctifs ont été implémentés pour améliorer la gestion des connexions, des salons, des médias et des autorisations. Des mises à jour de l'interface utilisateur ont également été effectuées, notamment le renommage d'une section et la correction d'icônes.
+Cette version apporte des améliorations significatives à la stabilité et aux fonctionnalités de l'application.  La mise à jour vers Element X v26.06.2 inclut des corrections de bugs, des améliorations de l'interface utilisateur (notamment pour l'édition de médias et l'affichage des salons), et des optimisations des performances. Des fonctionnalités comme la gestion des autorisations de partage de position et la personnalisation de la carte ont également été améliorées.
 
 ### Évolutions fonctionnelles
-- Renommage de la section "Direct" en "Personnes" pour une meilleure clarté. [#3656d854c6](https://github.com/tchapgouv/tchap-x-android/commit/3656d854c6)
-- Correction de l'icône d'envoi de message en mode sombre. [#a8491c7c6d](https://github.com/tchapgouv/tchap-x-android/commit/a8491c7c6d)
-- Support pour la connexion à partir de Tchap Legacy. [#1218f37b77](https://github.com/tchapgouv/tchap-x-android/commit/1218f37b77)
-- Ajout d'un écran d'expiration de compte. [#07202fbe6b](https://github.com/tchapgouv/tchap-x-android/commit/07202fbe6b)
-- Amélioration de la création de salons publics. [#efee76bff3](https://github.com/tchapgouv/tchap-x-android/commit/efee76bff3)
-- Possibilité de créer un nouveau salon lors de l'invitation de personnes en DM. [#174a6cad0d](https://github.com/tchapgouv/tchap-x-android/commit/174a6cad0d)
-- Lecture MIDI ajoutée. [#e6c3a8ff1d](https://github.com/tchapgouv/tchap-x-android/commit/e6c3a8ff1d)
-- Correction pour la création de salons publiques. [#2954174c56](https://github.com/tchapgouv/tchap-x-android/commit/2954174c56)
-- Amélioration du script de release. [#9768a9b5fe](https://github.com/tchapgouv/tchap-x-android/commit/9768a9b5fe)
-- Correction des ID dupliqués dans le rust-sdk (BWI). [#e1c04ea084](https://github.com/tchapgouv/tchap-x-android/commit/e1c04ea084)
-- Suppression de la version 0.11.0. [#ee4041c368](https://github.com/tchapgouv/tchap-x-android/commit/ee4041c368)
+- **Gestion des salons:** Correction de l'affichage du menu d'historique. [#6855](https://github.com/tchapgouv/tchap-x-android/issues/6855)
+- **Interface utilisateur:**
+    - Renommage de la section "Direct" en "Personnes".
+    - Correction de l'icône d'envoi de message en mode sombre.
+    - Amélioration de l'affichage des fichiers et de leur taille.
+    - Amélioration de l'interface de la vue des médias (partage, téléchargement).
+    - Amélioration de la conception et de l'ordre des éléments dans les détails du salon.
+    - Ajout d'une option pour choisir des sons personnalisés pour les notifications de messages et d'appels.
+- **Médias:**
+    - Ajout de fonctions de recadrage et de rotation d'image avant envoi.
+    - Amélioration de la génération et du nettoyage des snapshots des cartes.
+    - Correction de l'affichage des images dans la vue des médias.
+- **Localisation:**
+    - Amélioration de la gestion des autorisations de partage de position.
+    - Possibilité d'utiliser une URL de style de carte personnalisée.
+- **Notifications:** Correction des badges de mentions.
+- **Sécurité:** Autorisation des certificats Let's Encrypt sur l'environnement de développement.
+- **Expiration de compte:** Ajout d'un écran d'expiration de compte.
+- **Lecture des messages:** Correction de l'envoi incorrect des accusés de lecture dans les salons publics. [#6838](https://github.com/tchapgouv/tchap-x-android/issues/6838)
+- **Indicateur de messages non lus:** Ajout du nombre de messages non lus à l'indicateur de messages non lus des salons. [#6887](https://github.com/tchapgouv/tchap-x-android/issues/6887)
 
 ### Évolutions techniques
-- Mise à jour du SDK Matrix Rust vers la version 26.05.18.
-- Mise à jour des thèmes (compound-design-tokens). [#0c7fcb9313](https://github.com/tchapgouv/tchap-x-android/commit/0c7fcb9313)
-- Compilation du SDK en release par défaut pour optimiser les performances. [#ee3c1091fa](https://github.com/tchapgouv/tchap-x-android/commit/ee3c1091fa)
-- Cartes : Amélioration de la génération des snapshots et nettoyage automatique des anciennes. [#47c95ba41e](https://github.com/tchapgouv/tchap-x-android/commit/47c95ba41e)
-- Correction de la compilation du rust-sdk. [#0f5c6eb9cf](https://github.com/tchapgouv/tchap-x-android/commit/0f5c6eb9cf)
-- Suppression du support pour Android Auto (mode voiture). [#d824afd998](https://github.com/tchapgouv/tchap-x-android/commit/d824afd998)
-- Mise à jour de Firebase BOM vers la version 34.13.0.
-- Mise à jour de androidx.webkit:webkit vers la version 1.16.0.
-- Suppression du flag de fonctionnalité LiveLocationSharing.
-- Correction pour la numérotation des badges de mentions. [#a9152c9049](https://github.com/tchapgouv/tchap-x-android/commit/a9152c9049)
+- **Mise à jour des dépendances:**
+    - Mise à jour du SDK Matrix Rust vers la version 26.06.3.
+    - Mise à jour de Compound Design Tokens vers la version 10.2.1.
+    - Mise à jour de Kotlin vers la version 2.3.9.
+    - Mises à jour de diverses autres dépendances (Roborazzi, Maplibre, Posthog, etc.).
+- **Architecture:**
+    - Suppression du support d'Android Auto (mode voiture).
+    - Utilisation d'un emplacement de clé brut pour les nouveaux sessions du SDK.
+    - Refactorisation de la logique de rafraîchissement des tokens.
+    - Amélioration de la gestion des erreurs de rafraîchissement des tokens.
+    - Utilisation de `runBlocking` pour la logique de rafraîchissement des tokens.
+    - Suppression du code généré par DI des rapports Kover.
+- **Compilation:** Compilation du SDK en mode release par défaut.
+- **Tests:** Ajout de tests unitaires et d'interface utilisateur.
+- **CI/CD:** Amélioration du script de release.
+- **Performances:** Amélioration des performances générales de l'application.
+- **Sécurité:** Correction d'ID dupliqués dans le rust-sdk (BWI).
 
 ### Autres changements
-- Ajout des sections RageShake et ClearCache dans les paramètres avancés. [#c02c175f07](https://github.com/tchapgouv/tchap-x-android/commit/c02c175f07)
-- Petites corrections du linter et du script de release. [#a6000a6745](https://github.com/tchapgouv/tchap-x-android/commit/a6000a6745)
-- Désactivation des screenshots sur l'application. [#6f09957591](https://github.com/tchapgouv/tchap-x-android/commit/6f09957591)
-- Nettoyage des access_rules à la création de salons. [#69404aedae](https://github.com/tchapgouv/tchap-x-android/commit/69404aedae)
-- Ajout du nouveau logo Tchap dans la liste des sessions. [#ce12cda04a](https://github.com/tchapgouv/tchap-x-android/commit/ce12cda04a)
 - Mise à jour des captures d'écran.
-- Correction pour l'utilisation de QR code pour la connexion depuis un appareil non connecté.
-- Suppression de la fonctionnalité biometric unlock lorsque le code PIN est désactivé.
-- Correction de la duplication d'éléments dans la liste des salles.
-- Augmentation de la qualité des images par défaut. [#07b5b0c3e0](https://github.com/tchapgouv/tchap-x-android/commit/07b5b0c3e0)
-- Autorisation des certificats Let's Encrypt sur l'environnement de développement. [#e3da88f812](https://github.com/tchapgouv/tchap-x-android/commit/e3da88f812)
-- Suffixe le nom de l'application avec le buildType (debug / nightly). [#f38b2e3453](https://github.com/tchapgouv/tchap-x-android/commit/f38b2e3453)
-- Vérification de la connexion avec le code de récupération si disponible. [#20d3b81f30](https://github.com/tchapgouv/tchap-x-android/commit/20d3b81f30)
-- Limitation des espaces au mode consultation. [#0440e6071e](https://github.com/tchapgouv/tchap-x-android/commit/0440e6071e)
+- Correction de problèmes de linter.
+- Ajout de sections RageShake et ClearCache dans les paramètres avancés.
+- Suppression de la version 0.11.0.
+- Ajout d'une étiquette Stefan au projet.
+- Correction de la compilation du rust-sdk.
+- Ajout de liens Figma.
+- Suppression de la fonctionnalité `FloatingDateBadge`.
+- Suppression de la fonctionnalité Vulkan.
+- Amélioration de la gestion des erreurs et ajout de logs plus précis.
+- Suppression de la possibilité de partager sa position via Maplibre, remplacée par une solution plus simple.
+- Correction de problèmes de compilation et de tests.
+- Synchronisation des chaînes de caractères depuis Localazy.
+- Ajout de commentaires et nettoyage du code.

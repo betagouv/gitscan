@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-android",
   "name": "tchap-x-android",
-  "description": "Application cliente Matrix de nouvelle génération fournie par Element. Il s'agit d'une réécriture complète utilisant le SDK Matrix Rust et Jetpack Compose.",
+  "description": "Application cliente Matrix de nouvelle génération, réécrite avec le SDK Matrix Rust et utilisant Jetpack Compose pour l'interface utilisateur.",
   "language": "Kotlin",
   "features": [
     "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
+    "Recherche",
     "Notifications & Alertes",
-    "Recherche & Filtres",
+    "Gestion des médias & Assets",
     "Sécurité & Conformité",
-    "Gestion des appels",
-    "Gestion des médias"
+    "Gestion des salons",
+    "Gestion des messages",
+    "Appels audio et vidéo"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,30 +20,27 @@
     "Jetpack Compose",
     "Appyx",
     "Firebase",
-    "Sentry"
+    "Kotlin"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
     "Android",
-    "Kotlin",
     "Jetpack Compose",
-    "Rust"
+    "Rust",
+    "Kotlin"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2"
     ]
   },
-  "tests": [
-    "Unit tests",
-    "UI tests"
-  ],
+  "tests": "Tests unitaires et d'interface utilisateur",
   "workflows": [
-    "Build",
-    "CI/CD"
+    "build.yml"
   ],
-  "lastActivity": "2026-06-12T10:20:56+02:00",
+  "lastActivity": "2026-06-19T16:27:48+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
