@@ -27,6 +27,7 @@
 │   │   ├── log_entries_controller.ts
 │   │   ├── projects_controller.ts
 │   │   ├── session_controller.ts
+│   │   ├── territoires_controller.ts
 │   │   └── visualisation_controller.ts
 │   ├── dto
 │   │   ├── aac_dto.ts
@@ -38,6 +39,7 @@
 │   │   ├── log_entry_tag_dto.ts
 │   │   ├── parcelle_dto.ts
 │   │   ├── project_dto.ts
+│   │   ├── project_step_dto.ts
 │   │   └── territoire_dto.ts
 │   ├── exceptions
 │   │   └── handler.ts
@@ -98,7 +100,8 @@
 │       ├── log_entry.ts
 │       ├── log_entry_tag.ts
 │       ├── parcelle.ts
-│       └── project.ts
+│       ├── project.ts
+│       └── project_step.ts
 ├── bin
 │   ├── console.ts
 │   ├── server.ts
@@ -293,6 +296,9 @@
 │   │   │   │   ├── parcelles-step.tsx
 │   │   │   │   ├── projet-form.tsx
 │   │   │   │   └── step-renderer.tsx
+│   │   │   ├── projet-infos-card.tsx
+│   │   │   ├── projet-installations-list.tsx
+│   │   │   ├── projet-parcelles-list.tsx
 │   │   │   ├── projets-list.tsx
 │   │   │   └── projets-tabs.tsx
 │   │   ├── search-adresse.tsx
@@ -342,7 +348,10 @@
 │   │   ├── no_territoire.tsx
 │   │   ├── projets
 │   │   │   ├── creation.tsx
+│   │   │   ├── edition.tsx
 │   │   │   ├── id.tsx
+│   │   │   └── index.tsx
+│   │   ├── territoires
 │   │   │   └── index.tsx
 │   │   └── visualisation.tsx
 │   ├── tsconfig.json
@@ -494,6 +503,7 @@
 │   └── routes.ts
 ├── start_db.sh
 ├── start_local_prod.sh
+├── start_test_db.sh
 ├── tests
 │   ├── bootstrap.ts
 │   ├── functional
@@ -506,8 +516,11 @@
 │   │   ├── project
 │   │   │   ├── projects_destroy.spec.ts
 │   │   │   ├── projects_show.spec.ts
+│   │   │   ├── projects_steps.spec.ts
 │   │   │   ├── projects_store.spec.ts
 │   │   │   └── projects_update.spec.ts
+│   │   ├── territoire
+│   │   │   └── territoires_index.spec.ts
 │   │   └── visualisation
 │   │       └── assign_parcelles.spec.ts
 │   └── unit
@@ -543,4 +556,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-109 directories, 436 files
+111 directories, 447 files
