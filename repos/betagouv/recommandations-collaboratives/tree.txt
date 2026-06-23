@@ -577,6 +577,7 @@
 │   │   │   │   ├── 0041_fill_profile_previous_activity_at.py
 │   │   │   │   ├── 0042_notification_splits.py
 │   │   │   │   ├── 0043_alter_userprofile_managers.py
+│   │   │   │   ├── 0044_setup_sesame_cookie_consent.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── password_validation.py
@@ -630,12 +631,15 @@
 │   │   │   │               ├── question.jpg
 │   │   │   │               └── support.jpg
 │   │   │   ├── templates
+│   │   │   │   ├── 403.html
 │   │   │   │   └── home
 │   │   │   │       ├── accessibility.html
 │   │   │   │       ├── advisor_access_request.html
 │   │   │   │       ├── advisor_access_request_moderator.html
 │   │   │   │       ├── contact.html
 │   │   │   │       ├── followus.html
+│   │   │   │       ├── fragments
+│   │   │   │       │   └── content_403.html
 │   │   │   │       ├── home.html
 │   │   │   │       ├── legals.html
 │   │   │   │       ├── methodology.html
@@ -1390,6 +1394,7 @@
 │   │   │   ├── e2e
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── advisorSignup.cy.js
+│   │   │   │   │   ├── canSee403.cy.js
 │   │   │   │   │   ├── loginWithUi.cy.js
 │   │   │   │   │   ├── loginWithoutUi.cy.js
 │   │   │   │   │   └── signupWithUi.cy.js
@@ -1688,6 +1693,7 @@
 │   │   │   │   ├── input.css
 │   │   │   │   ├── introJs.css
 │   │   │   │   ├── layouts
+│   │   │   │   │   ├── errorPage.scss
 │   │   │   │   │   └── stack.css
 │   │   │   │   ├── map.css
 │   │   │   │   ├── markdown.css
@@ -1943,17 +1949,28 @@
 │   │   │       │   ├── base.css.js
 │   │   │       │   ├── card-crm.css.js
 │   │   │       │   ├── consent-banner.css.js
-│   │   │       │   ├── contact-*.js  (6 files)
+│   │   │       │   ├── contact-card.css.js
+│   │   │       │   ├── contact-create-contact-modal.css.js
+│   │   │       │   ├── contact-create-organization-modal.css.js
+│   │   │       │   ├── contact-multi-select.css.js
+│   │   │       │   ├── contact-search-contact-modal.css.js
+│   │   │       │   ├── contact-search-organization.css.js
 │   │   │       │   ├── crm-empty-state.css.js
 │   │   │       │   ├── crm-results.css.js
 │   │   │       │   ├── departments-selector.css.js
 │   │   │       │   ├── form-resources.css.js
 │   │   │       │   ├── header-menu-burger.css.js
 │   │   │       │   ├── header-user-tools.css.js
-│   │   │       │   ├── home-*.js  (5 files)
+│   │   │       │   ├── home-actors.css.js
+│   │   │       │   ├── home-auth.css.js
+│   │   │       │   ├── home-cms-page-showcase.css.js
+│   │   │       │   ├── home-cms-page-text.css.js
+│   │   │       │   ├── home-privacy.css.js
 │   │   │       │   ├── home.css.js
 │   │   │       │   ├── invite-not-accepted-banner.css.js
 │   │   │       │   ├── kanban.css.js
+│   │   │       │   ├── layouts
+│   │   │       │   │   └── error-page.css.js
 │   │   │       │   ├── marianne.css.js
 │   │   │       │   ├── markdownx.css.js
 │   │   │       │   ├── menu-top.css.js
@@ -1966,7 +1983,20 @@
 │   │   │       │   ├── project-card-crm.css.js
 │   │   │       │   ├── project-crm.css.js
 │   │   │       │   ├── project-details.css.js
-│   │   │       │   ├── projects-*.js  (14 files)
+│   │   │       │   ├── projects-action-list.css.js
+│   │   │       │   ├── projects-administration.css.js
+│   │   │       │   ├── projects-board.css.js
+│   │   │       │   ├── projects-card-info.css.js
+│   │   │       │   ├── projects-conversations-new.css.js
+│   │   │       │   ├── projects-file-upload.css.js
+│   │   │       │   ├── projects-kanban-project.css.js
+│   │   │       │   ├── projects-onboarding-tutorial.css.js
+│   │   │       │   ├── projects-overview.css.js
+│   │   │       │   ├── projects-project-moderation.css.js
+│   │   │       │   ├── projects-project-navigation.css.js
+│   │   │       │   ├── projects-project.css.js
+│   │   │       │   ├── projects-push.css.js
+│   │   │       │   ├── projects-searchbar.css.js
 │   │   │       │   ├── resource-card.css.js
 │   │   │       │   ├── resource-preview-panel.css.js
 │   │   │       │   ├── resources.css.js
@@ -2063,6 +2093,7 @@
 │   │   └── svg
 │   │       ├── bootstrap-icons.svg
 │   │       ├── empty-state.svg
+│   │       ├── page-eaten.svg
 │   │       ├── picto-demarches_simplifiees--no-border.svg
 │   │       └── picto-demarches_simplifiees.svg
 │   ├── template_loaders.py
@@ -2131,6 +2162,8 @@
 │   │       │   ├── menu-top.html
 │   │       │   ├── skip-links.html
 │   │       │   └── submenu_static_link.html
+│   │       ├── layouts
+│   │       │   └── error_page.html
 │   │       ├── magicauth
 │   │       │   ├── email.html
 │   │       │   ├── email.txt
@@ -2210,4 +2243,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-362 directories, 1872 files
+365 directories, 1880 files

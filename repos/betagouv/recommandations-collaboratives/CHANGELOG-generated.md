@@ -1,33 +1,26 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 11 juin 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 2026-06-18)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du CRM et de la gestion des projets. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de l'application. Des mises à jour de sécurité et des optimisations techniques ont également été réalisées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de l'expérience utilisateur, notamment au niveau de l'authentification (magic links, gestion des cookies), de la gestion des utilisateurs CRM, et de la correction de bugs affectant les tests et certaines fonctionnalités clés. Des refactorings importants ont également été effectués pour préparer le projet à de futures évolutions et améliorer la qualité du code.
 
 ### Évolutions fonctionnelles
-- **CRM :** Refonte de l'affichage des résultats du CRM avec l'ajout d'informations sur l'organisation, la commune, la date, le statut et l'origine du portail. [#2152](https://github.com/betagouv/recommandations-collaboratives/issues/2152)
-- **Filtres projets :** Ajout d'un filtre "Mes projets" sur la page de la carte, permettant aux utilisateurs de visualiser uniquement leurs propres projets. [#2140](https://github.com/betagouv/recommandations-collaboratives/issues/2140)
-- **Gestion des comptes :** Correction d'un bug empêchant la création de compte si l'utilisateur n'était pas dans le processus d'accompagnement. [#2112](https://github.com/betagouv/recommandations-collaboratives/issues/2112)
-- **Formulaire de contact :** Le formulaire de contact est désormais uniquement disponible pour les utilisateurs authentifiés. [#2153](https://github.com/betagouv/recommandations-collaboratives/issues/2153)
-- **Gestion des droits :** Correction des droits d'accès pour l'éditeur de contact dans le CRM. [#2183](https://github.com/betagouv/recommandations-collaboratives/issues/2183)
-- **Export CSV :** Amélioration de l'affichage des badges dans l'export CSV.
-- **Interface utilisateur :** Amélioration de l'interface utilisateur, notamment au niveau de la sélection des activités et de l'affichage des informations.
+- **Authentification :** Amélioration de la gestion des cookies pour les magic links, notamment en vérifiant le consentement de l'utilisateur et en corrigeant des problèmes liés à la gestion des sessions. Ajout d'une page 403 personnalisée. [#2142](https://github.com/betagouv/recommandations-collaboratives/pull/2142)
+- **CRM :** Correction de bugs liés à l'affichage et à la mise à jour des informations utilisateur dans le CRM. [#2183](https://github.com/betagouv/recommandations-collaboratives/pull/2183)
+- **Filtres :** Ajout d'un filtre "Mes projets" sur la page de la carte pour faciliter la recherche de projets pertinents. [#2131](https://github.com/betagouv/recommandations-collaboratives/pull/2131)
+- **Export CSV :** Amélioration de l'export CSV avec l'utilisation de `dictWriter`.
+- **Interface utilisateur :** Mise à jour du style de la mise en page et de la couleur de fond principale.
+- **Contact Form :** Le formulaire de contact est désormais uniquement disponible pour les utilisateurs authentifiés. [#2153](https://github.com/betagouv/recommandations-collaboratives/pull/2153)
 
 ### Évolutions techniques
-- **Sécurité :**
-    - Mise à jour de `pyjwt` vers la version 2.13.0 pour corriger des vulnérabilités. [#2169](https://github.com/betagouv/recommandations-collaboratives/issues/2169)
-    - Mise à jour de `uv` et des dépendances associées pour corriger des problèmes de sécurité. [#2163](https://github.com/betagouv/recommandations-collaboratives/issues/2163)
-    - Ajout de `gitleaks` au pre-commit pour détecter les secrets dans le code. [#2178](https://github.com/betagouv/recommandations-collaboratives/issues/2178)
-- **Infrastructure :** Utilisation de `uv` pour la gestion des dépendances et l'audit de sécurité.
-- **Tests :**
-    - Ajout de tests E2E et refactorisation des tests existants. [#2043](https://github.com/betagouv/recommandations-collaboratives/issues/2043)
-    - Ajout d'un nouveau test pour vérifier la redirection après la signature.
-- **Refactoring :**
-    - Refactorisation du code lié à la gestion des recommandations (reco).
-    - Suppression de code mort et amélioration de la lisibilité du code.
-    - Amélioration de la pagination.
+- **Dépendances :** Mise à jour de plusieurs dépendances, incluant `uv`, `django`, `pyjwt`, `bleach`, `vite`, `form-data`, `tar`, `dompurify`, `@babel/core`, `cryptography`.
+- **Tests :** Ajout de nouveaux tests unitaires et d'intégration, notamment pour les filtres et la page 403. Amélioration de la robustesse des tests existants. Ajout d'une commande `manage.py allurls` pour faciliter les tests. [#2130](https://github.com/betagouv/recommandations-collaboratives/pull/2130)
+- **Refactoring :** Refactorisation du code lié à la gestion des projets pour préparer une refonte future. Suppression de code mort et amélioration de la lisibilité du code.
+- **Sécurité :** Mise à jour des dépendances pour corriger des vulnérabilités de sécurité. Intégration de `uv-audit` pour la détection de vulnérabilités.
+- **CI/CD :** Mise à jour de la configuration CI/CD pour inclure les nouvelles dépendances et les tests.
+- **Pre-commit hooks :** Ajout de `gitleaks` aux hooks pre-commit pour détecter les secrets potentiellement exposés. [#2178](https://github.com/betagouv/recommandations-collaboratives/pull/2178)
 
 ### Autres changements
-- **Documentation :** Ajout d'un lien vers la documentation.
-- **Dépendances :** Mises à jour mineures de certaines dépendances (shell-quote, tmp, systeminformation).
-- **Configuration :** Précision de la configuration pour la gestion des logs.
-- **Corrections diverses :** Correction de bugs mineurs et améliorations de la qualité du code.
+- Documentation mise à jour pour refléter les changements apportés.
+- Corrections de style et améliorations de la lisibilité du code.
+- Suppression de code obsolète.
+- Correction de fautes de frappe et amélioration de la qualité de la documentation.
