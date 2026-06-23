@@ -319,7 +319,7 @@
 │   │   │   ├── notification.service.ts
 │   │   │   ├── prescription.service.ts
 │   │   │   ├── programmingPlan.service.ts
-│   │   │   ├── programmingPlanKindFields.service.ts
+│   │   │   ├── programmingSubPlanFields.service.ts
 │   │   │   ├── region.service.ts
 │   │   │   ├── sachaCommemoratifs.service.ts
 │   │   │   ├── sample.service.ts
@@ -356,12 +356,12 @@
 │   │       │   ├── Notice
 │   │       │   │   ├── AdminViewDashboardNotice.tsx
 │   │       │   │   └── AdminViewRootNotice.tsx
-│   │       │   ├── PlanKindSpecificData
-│   │       │   │   ├── AddFieldToKindModal.tsx
-│   │       │   │   ├── PlanKindFieldActiveOptions.tsx
-│   │       │   │   ├── PlanKindFieldItem.tsx
-│   │       │   │   ├── PlanKindFieldList.tsx
-│   │       │   │   └── PlanKindSpecificDataView.tsx
+│   │       │   ├── ProgrammingSubPlanSpecificData
+│   │       │   │   ├── AddFieldToProgrammingSubPlanModal.tsx
+│   │       │   │   ├── ProgrammingSubPlanFieldActiveOptions.tsx
+│   │       │   │   ├── ProgrammingSubPlanFieldItem.tsx
+│   │       │   │   ├── ProgrammingSubPlanFieldList.tsx
+│   │       │   │   └── ProgrammingSubPlanSpecificDataView.tsx
 │   │       │   ├── SpecificDataFields
 │   │       │   │   ├── FieldCreateForm.tsx
 │   │       │   │   ├── FieldDeleteConfirm.tsx
@@ -410,6 +410,7 @@
 │   │       │   │   ├── LaboratoryAgreementsModal.stories.tsx
 │   │       │   │   └── LaboratoryAgreementsModal.tsx
 │   │       │   ├── LaboratoryAgreementsTable
+│   │       │   │   ├── AgreementTableRow.tsx
 │   │       │   │   └── LaboratoryAgreementsTable.tsx
 │   │       │   ├── LaboratoryAgreementsView.scss
 │   │       │   ├── LaboratoryAgreementsView.tsx
@@ -721,7 +722,11 @@
 │   │   │   ├── 096-sample-seves.ts
 │   │   │   ├── 097-users-created-at.ts
 │   │   │   ├── 099-residue-contamination-sources.ts
-│   │   │   └── 100-residue-lmr-zero-to-null.ts
+│   │   │   ├── 100-residue-lmr-zero-to-null.ts
+│   │   │   ├── 101-programming-sub-plans.ts
+│   │   │   ├── 102-programming-sub-plan-fields.ts
+│   │   │   ├── 103-subplan-substance-kinds.ts
+│   │   │   └── 104-laboratory-billing-address.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -799,6 +804,7 @@
 │   │   ├── prescriptionRepository.ts
 │   │   ├── prescriptionSubstanceRepository.ts
 │   │   ├── programmingPlanRepository.ts
+│   │   ├── programmingSubPlanRepository.ts
 │   │   ├── residueAnalyteRepository.ts
 │   │   ├── sachaCommemoratifRepository.test.ts
 │   │   ├── sachaCommemoratifRepository.ts
@@ -1129,11 +1135,12 @@
 │   │   │   ├── Context.ts
 │   │   │   ├── DistributionKind.ts
 │   │   │   ├── FindProgrammingPlanOptions.ts
+│   │   │   ├── FindProgrammingSubPlanOptions.ts
 │   │   │   ├── ProgrammingPlanDomain.ts
-│   │   │   ├── ProgrammingPlanKind.ts
 │   │   │   ├── ProgrammingPlanLocalStatus.ts
 │   │   │   ├── ProgrammingPlanStatus.ts
-│   │   │   └── ProgrammingPlans.ts
+│   │   │   ├── ProgrammingPlans.ts
+│   │   │   └── ProgrammingSubPlan.ts
 │   │   ├── SachaCommemoratif
 │   │   │   └── SachaCommemoratif.ts
 │   │   ├── Sample
@@ -1150,7 +1157,7 @@
 │   │   │   └── Seves.ts
 │   │   ├── SpecificData
 │   │   │   ├── FieldConfigInput.ts
-│   │   │   ├── PlanKindFieldConfig.ts
+│   │   │   ├── ProgrammingSubPlanFieldConfig.ts
 │   │   │   ├── SpecificData.ts
 │   │   │   ├── buildSpecificDataSchema.ts
 │   │   │   └── getFieldValueLabel.ts
@@ -1202,4 +1209,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-229 directories, 975 files
+229 directories, 982 files
