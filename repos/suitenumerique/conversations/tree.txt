@@ -171,6 +171,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── async_to_sync.py
 │   │   │   │   ├── conversation_reindexer.py
+│   │   │   │   ├── error_classification.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── pydantic_ai.py
 │   │   │   │   ├── pydantic_ui_message_converter.py
@@ -258,10 +259,11 @@
 │   │   │   │   │   │   ├── test_smart_web_search.py
 │   │   │   │   │   │   ├── test_stream_methods.py
 │   │   │   │   │   │   └── test_thinking_history_stripping.py
-│   │   │   │   │   └── pydantic_ui_message_converter
-│   │   │   │   │       ├── __init__.py
-│   │   │   │   │       ├── test_model_message_to_ui_message.py
-│   │   │   │   │       └── test_ui_message_to_user_content.py
+│   │   │   │   │   ├── pydantic_ui_message_converter
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── test_model_message_to_ui_message.py
+│   │   │   │   │   │   └── test_ui_message_to_user_content.py
+│   │   │   │   │   └── test_error_classification.py
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── factories
 │   │   │   │   │   ├── __init__.py
@@ -760,6 +762,7 @@
 │   │   │   │   │   │   │   │   ├── Chat.tsx
 │   │   │   │   │   │   │   │   ├── ChatError.tsx
 │   │   │   │   │   │   │   │   ├── CodeBlock.tsx
+│   │   │   │   │   │   │   │   ├── DocumentParsingErrorBox.tsx
 │   │   │   │   │   │   │   │   ├── FeedbackButtons.tsx
 │   │   │   │   │   │   │   │   ├── InputChat.tsx
 │   │   │   │   │   │   │   │   ├── InputChatAction.tsx
@@ -786,8 +789,12 @@
 │   │   │   │   │   │   │   │   │   ├── SourceItem.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SuggestionCarousel.test.tsx
 │   │   │   │   │   │   │   │   │   ├── ToolInvocationItem.test.tsx
-│   │   │   │   │   │   │   │   │   └── WelcomeMessage.test.tsx
-│   │   │   │   │   │   │   │   └── chatErrorMessages.ts
+│   │   │   │   │   │   │   │   │   ├── WelcomeMessage.test.tsx
+│   │   │   │   │   │   │   │   │   └── reindexErrorMessages.test.ts
+│   │   │   │   │   │   │   │   ├── chatErrorMessages.ts
+│   │   │   │   │   │   │   │   ├── documentParsingErrorMessages.ts
+│   │   │   │   │   │   │   │   ├── ragErrorKinds.ts
+│   │   │   │   │   │   │   │   └── reindexErrorMessages.ts
 │   │   │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   │   ├── useFileDragDrop.test.tsx
@@ -1086,4 +1093,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-229 directories, 859 files
+229 directories, 866 files

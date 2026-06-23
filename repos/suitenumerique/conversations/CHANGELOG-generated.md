@@ -1,35 +1,38 @@
-## Changelog : conversations (30 derniers jours, au 12 juin 2026)
+## Changelog : conversations (30 derniers jours, au 22 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la robustesse du système, la surveillance de la santé des modèles d'IA, et l'expérience utilisateur. Des correctifs ont été apportés pour améliorer la stabilité, notamment en lien avec la gestion des pods et la configuration des dépendances. L'interface utilisateur a été améliorée avec de nouvelles fonctionnalités comme le mode maintenance et des indicateurs de santé des modèles.
+Ce mois-ci, les améliorations se concentrent sur la robustesse du système, la gestion de la santé des modèles d'IA, l'expérience utilisateur et la sécurité. Des indicateurs de santé des modèles sont désormais disponibles, des erreurs sont mieux gérées et affichées, et l'accès est plus finement contrôlé. L'interface utilisateur a également été améliorée avec des ajustements visuels et fonctionnels.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode maintenance pour permettre des opérations de maintenance planifiées.
-- Affichage d'indicateurs de santé dynamiques pour les assistants IA, informant l'utilisateur de leur disponibilité.
-- Amélioration du filtrage et de l'affichage des conversations dans l'interface d'administration.
-- Possibilité de continuer à taper pendant que l'IA génère une réponse.
-- Affichage d'un message d'erreur spécifique lorsque le fournisseur de LLM est indisponible.
-- Amélioration de la gestion des fichiers et de la recherche documentaire.
-- Ajout d'un menu déroulant pour l'aide à la place du bouton d'aide précédent.
-- Possibilité d'éditer le statut de santé des modèles directement dans l'interface d'administration.
+- Affichage d'une erreur spécifique lorsque l'analyse d'un document échoue [#2ffffae](https://github.com/suitenumerique/conversations/commit/2ffffae)
+- Affichage d'une erreur spécifique lorsque le fournisseur LLM est indisponible.
+- Indication de la taille maximale des pièces jointes en cas d'échec de l'upload.
+- Ajout d'un mode maintenance pour la plateforme.
+- Amélioration du filtrage et de l'affichage des chats dans l'interface d'administration [#db7bf6d](https://github.com/suitenumerique/conversations/commit/db7bf6d)
+- Nouvelle interface de gestion des paramètres (settings modal) avec une taille ajustée.
+- Possibilité d'éditer le statut de santé des modèles depuis l'interface d'administration.
+- Ajout de bannières dynamiques indiquant l'état de santé des assistants IA.
+- Menu déroulant remplaçant le bouton d'aide sur l'onboarding.
 
 ### Évolutions techniques
-- Mise en place d'un système de surveillance de la santé des modèles Albert via un job Cron et une intégration Helm.
-- Refonte de la gestion des collections de données pour optimiser les performances (désindexation des collections inactives et réindexation à la demande).
-- Implémentation d'un système de limitation du débit (rate limiting) basé sur la santé du modèle.
-- Amélioration de la gestion des erreurs et des redirections OIDC pour éviter les fuites d'informations sensibles.
-- Mise à jour des dépendances du backend et du frontend.
-- Optimisation de la gestion des pods Helm pour éviter les conflits de disruption budget.
-- Renommage du statut "orange" de santé du modèle en "yellow" pour plus de clarté.
-- Ajout d'un processeur d'historique à fenêtre glissante pour améliorer la gestion du contexte des conversations.
-- Suppression du point de terminaison de liste d'utilisateurs pour des raisons de sécurité.
+- Implémentation d'un système de limitation du débit (rate limiting) basé sur l'état de santé du modèle.
+- Ajout d'un processeur d'historique en fenêtre glissante (sliding window history processor) pour améliorer les performances.
+- Mise en place d'un job Cron pour surveiller l'état de santé des modèles Albert et l'intégrer dans l'application.
+- Refactorisation de la gestion des statuts de santé des modèles (renommage de "orange" en "yellow").
+- Amélioration de la gestion des pods Helm pour éviter les conflits avec le budget de perturbation du backend.
+- Mise à jour des dépendances backend et frontend.
+- Amélioration de la sécurité avec l'ajout d'un filtrage d'accès basé sur les rôles avec une liste de contournement.
+- Correction d'une fuite d'informations de port interne lors des redirections OIDC.
+- Suppression du point de terminaison de la liste des utilisateurs (user list endpoint).
+- Correction d'un bug empêchant l'ouverture des liens sources dans un nouvel onglet.
 
 ### Autres changements
-- Mise à jour des chaînes de caractères pour la traduction (i18n).
-- Amélioration de la documentation et des tests unitaires.
-- Correction de problèmes de style et de mise en page dans l'interface utilisateur.
-- Désactivation des scripts d'installation Yarn dans les builds Docker pour plus de sécurité.
-- Correction de la langue par défaut de l'interface utilisateur lors du premier chargement.
-- Amélioration de l'instruction pour éviter les hallucinations d'URL.
-- Correction de bugs liés à l'ouverture de liens dans de nouveaux onglets.
-- Correction d'un crash lié au streaming avec les APIs compatibles OpenAI.
+- Mise à jour des chaînes de traduction (i18n).
+- Mise à jour de la documentation.
+- Mise à jour de la version du chart Helm à v0.0.6.
+- Désactivation des scripts d'installation Yarn dans le build Docker pour renforcer la sécurité.
+- Correction de l'affichage de la langue du navigateur lors du premier chargement de l'interface utilisateur.
+- Correction de la mise en page et de l'apparence de certains éléments de l'interface utilisateur.
+- Suppression de l'instruction `prevent_url_hallucination` dans l'agent de conversation.
+- Amélioration de la gestion des fichiers de projet pour la recherche RAG.
+- Ajout de la possibilité de configurer des bannières avec différents niveaux, titres et contenus.
