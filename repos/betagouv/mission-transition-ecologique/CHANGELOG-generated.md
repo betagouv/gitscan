@@ -1,11 +1,12 @@
-## Changelog : mission-transition-ecologique (30 derniers jours, au 2026-06-17)
+## Changelog : mission-transition-ecologique (30 derniers jours, au 17 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de nouvelles fonctionnalités pour l'administration des établissements et des correctifs pour optimiser les performances en production. Des mises à jour automatiques des données des projets et programmes ont également été effectuées.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des établissements et l'ajout d'un statut d'administration. Des mises à jour automatiques des projets et des programmes ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion du statut d'administration des établissements. [#2637](https://github.com/betagouv/mission-transition-ecologique/issues/2637)
+- Ajout d'un statut d'administration pour les établissements, permettant une meilleure gestion et identification des structures administratives. [#2637](https://github.com/betagouv/mission-transition-ecologique/issues/2637)
 
 ### Évolutions techniques
-- Correction d'une fuite de mémoire en production, améliorant ainsi la stabilité de l'application. [#2622](https://github.com/betagouv/mission-transition-ecologique/issues/2622)
-- Mises à jour automatiques des données des projets et programmes via les workflows automatisés. [#2628](https://github.com/betagouv/mission-transition-ecologique/issues/2628), [#2629](https://github.com/betagouv/mission-transition-ecologique/issues/2629), [#2630](https://github.com/betagouv/mission-transition-ecologique/issues/2630), [#2633](https://github.com/betagouv/mission-transition-ecologique/issues/2633), [#2643](https://github.com/betagouv/mission-transition-ecologique/issues/2643)
+- Mise à jour automatique des projets via GitHub Actions. [#2643](https://github.com/betagouv/mission-transition-ecologique/issues/2643)
+- Mise à jour automatique des programmes via GitHub Actions. [#2630](https://github.com/betagouv/mission-transition-ecologique/issues/2630)
+- Mise à jour automatique des programmes via GitHub Actions. [#2633](https://github.com/betagouv/mission-transition-ecologique/issues/2633)
