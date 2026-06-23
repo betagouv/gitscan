@@ -1,21 +1,22 @@
-## Changelog : securix (30 derniers jours, au 19 juin 2026)
+## Changelog : securix (30 derniers jours, au 21 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la sécurité et à la configuration de SecurixOS. On note l'ajout de support pour Qemu/KVM, des corrections pour la conformité aux recommandations ANSSI (notamment Secure Boot), et des améliorations de l'installateur. L'intégration de Nixpkgs 26.05 permet également de bénéficier des dernières versions des logiciels.
+Ce changelog présente les améliorations apportées à securix au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de la configuration système, et des ajustements pour une meilleure conformité aux recommandations ANSSI. Une tentative d'intégration du support Qemu/KVM a été annulée.
 
 ### Évolutions fonctionnelles
-- Ajout du support pour le matériel Qemu/KVM, permettant une virtualisation plus aisée. [#184](https://github.com/cloud-gouv/securix/issues/184)
-- Désactivation de KWallet par défaut pour renforcer la sécurité. [#93](https://github.com/cloud-gouv/securix/issues/93)
-- Amélioration de l'installateur pour garantir son idempotence (ré-exécution sans effet indésirable). [#174](https://github.com/cloud-gouv/securix/issues/174)
-- Mise à jour de l'URL/chemin d'enregistrement Grist. [#192](https://github.com/cloud-gouv/securix/issues/192)
+- **Grist:** Modification de l'URL/chemin d'enregistrement pour Grist [#192](https://github.com/cloud-gouv/securix/issues/192).
+- **KWallet:** Désactivation de KWallet pour renforcer la sécurité [#93](https://github.com/cloud-gouv/securix/issues/93).
+- **Plymouth:** Initialisation des modules de configuration de Plymouth (écran de démarrage) [#184](https://github.com/cloud-gouv/securix/issues/184).
+- **Secure Boot:** Correction d'un problème dans la vérification du Secure Boot pour la conformité ANSSI R3 [#187](https://github.com/cloud-gouv/securix/issues/187).
+- **Installation:** Correction d'un problème d'idempotence de l'installateur, assurant que les installations répétées ne causent pas de conflits ou d'erreurs [#186](https://github.com/cloud-gouv/securix/issues/186) et [#186](https://github.com/cloud-gouv/securix/issues/186).
 
 ### Évolutions techniques
-- Mise à jour de Nixpkgs vers la version 26.05, apportant les dernières versions des paquets. [#174](https://github.com/cloud-gouv/securix/issues/174)
-- Correction d'un problème de regex dans la vérification du Secure Boot pour la conformité ANSSI R3. [#187](https://github.com/cloud-gouv/securix/issues/187)
-- Amélioration de la comparaison de chaînes de caractères dans la configuration ANSSI. [#11c84dd](https://github.com/cloud-gouv/securix/commit/11c84dd)
-- Correction d'un bug et amélioration mineure de `disko`. [#186](https://github.com/cloud-gouv/securix/issues/186) et [#185](https://github.com/cloud-gouv/securix/issues/185)
+- **Nixpkgs:** Mise à jour de Nixpkgs vers la version 26.05 [#174](https://github.com/cloud-gouv/securix/issues/174).
+- **Sysctl:** Amélioration de la comparaison de chaînes de caractères dans `mkSysctlChecker` pour une meilleure fiabilité [#187](https://github.com/cloud-gouv/securix/issues/187).
+- **Qemu/KVM:** Annulation de l'intégration du support matériel Qemu/KVM en raison de problèmes potentiels [#193](https://github.com/cloud-gouv/securix/issues/193).
 
 ### Autres changements
-- Mise à jour de la documentation README. [#191](https://github.com/cloud-gouv/securix/issues/191)
-- Mise à jour de la documentation concernant la configuration. [#168](https://github.com/cloud-gouv/securix/issues/168)
-- Ajout d'un test pour l'idempotence de l'installateur.
+- **Documentation:** Mise à jour du fichier README [#191](https://github.com/cloud-gouv/securix/issues/191).
+- **Documentation:** Mise à jour du fichier README concernant la configuration [#168](https://github.com/cloud-gouv/securix/issues/168).
+- **Améliorations mineures:** Diverses améliorations mineures du code [#185](https://github.com/cloud-gouv/securix/issues/185).
+- **Tests:** Ajout d'un test pour vérifier l'idempotence de l'installateur.
