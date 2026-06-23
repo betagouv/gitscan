@@ -357,6 +357,7 @@
 │   │   │   ├── oauth2.test.ts
 │   │   │   ├── permissions.integration.ts
 │   │   │   ├── permissions.test.ts
+│   │   │   ├── recoveryLogin.integration.ts
 │   │   │   ├── resetDb.integration.ts
 │   │   │   ├── server.integration.ts
 │   │   │   ├── testClient.ts
@@ -476,6 +477,7 @@
 │   │   │   └── validation.ts
 │   │   ├── auth
 │   │   │   ├── auth.ts
+│   │   │   ├── recoveryLoginHandler.ts
 │   │   │   └── totpStrategy.ts
 │   │   ├── bsda
 │   │   │   ├── __tests__
@@ -2002,6 +2004,48 @@
 │   │   ├── index.ts
 │   │   ├── mailer
 │   │   │   └── mailing.ts
+│   │   ├── mfaResetRequest
+│   │   │   ├── emails
+│   │   │   │   └── mfaResetRequestEmails.ts
+│   │   │   ├── repository
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── mfaResetRequest
+│   │   │   │   │   ├── count.ts
+│   │   │   │   │   ├── create.ts
+│   │   │   │   │   ├── findFirst.ts
+│   │   │   │   │   ├── findMany.ts
+│   │   │   │   │   └── update.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── resolvers
+│   │   │   │   ├── Mutation.ts
+│   │   │   │   ├── Query.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── jobs
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── loginSuspension.test.ts
+│   │   │   │   │   │   └── processDueMfaResetRequests.integration.ts
+│   │   │   │   │   └── processDueMfaResetRequests.ts
+│   │   │   │   ├── mutations
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── cancelMfaResetRequest.integration.ts
+│   │   │   │   │   │   └── createMfaResetRequest.integration.ts
+│   │   │   │   │   ├── cancelMfaResetRequest.ts
+│   │   │   │   │   ├── createMfaResetRequest.ts
+│   │   │   │   │   └── utils
+│   │   │   │   │       └── mfaResetRequest.utils.ts
+│   │   │   │   └── queries
+│   │   │   │       └── private
+│   │   │   │           ├── __tests__
+│   │   │   │           │   ├── mfaResetRequestSummary.integration.ts
+│   │   │   │           │   └── mfaResetRequestsAdmin.integration.ts
+│   │   │   │           ├── mfaResetRequestSummary.ts
+│   │   │   │           └── mfaResetRequestsAdmin.ts
+│   │   │   └── typeDefs
+│   │   │       └── private
+│   │   │           ├── mfaResetRequest.enums.graphql
+│   │   │           ├── mfaResetRequest.mutations.graphql
+│   │   │           ├── mfaResetRequest.objects.graphql
+│   │   │           └── mfaResetRequest.queries.graphql
 │   │   ├── oauth
 │   │   │   ├── oauth2.ts
 │   │   │   └── utils.ts
@@ -2324,6 +2368,7 @@
 │   │   │   │   │   │   ├── deleteInvitation.integration.ts
 │   │   │   │   │   │   ├── editProfile.integration.ts
 │   │   │   │   │   │   ├── editProfile.test.ts
+│   │   │   │   │   │   ├── finalizeMfaSetup.integration.ts
 │   │   │   │   │   │   ├── inviteUserToCompany.integration.ts
 │   │   │   │   │   │   ├── inviteUserToCompany.test.ts
 │   │   │   │   │   │   ├── joinWithInvite.integration.ts
@@ -2344,12 +2389,14 @@
 │   │   │   │   │   ├── anonymizeUser.ts
 │   │   │   │   │   ├── changePassword.ts
 │   │   │   │   │   ├── changeUserRole.ts
+│   │   │   │   │   ├── completeMfaReconfiguration.ts
 │   │   │   │   │   ├── confirmTotpSetup.ts
 │   │   │   │   │   ├── createAccessToken.ts
 │   │   │   │   │   ├── createPasswordResetRequest.ts
 │   │   │   │   │   ├── deleteInvitation.ts
 │   │   │   │   │   ├── disableTotp.ts
 │   │   │   │   │   ├── editProfile.ts
+│   │   │   │   │   ├── finalizeMfaSetup.ts
 │   │   │   │   │   ├── generateTotpSetup.ts
 │   │   │   │   │   ├── inviteUserToCompany.ts
 │   │   │   │   │   ├── inviteUserToCompanyService.ts
@@ -2393,6 +2440,8 @@
 │   │   │   │       ├── passwordResetRequest.ts
 │   │   │   │       ├── permissionsInfos.ts
 │   │   │   │       └── warningMessage.ts
+│   │   │   ├── services
+│   │   │   │   └── recoveryCode.service.ts
 │   │   │   ├── typeDefs
 │   │   │   │   ├── private
 │   │   │   │   │   ├── user.inputs.graphql
@@ -3890,6 +3939,8 @@
 │   │   │   │   │   │   ├── company.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mfaResetRequest
+│   │   │   │   │   │   └── mfaResetRequest.ts
 │   │   │   │   │   ├── registryDelegation
 │   │   │   │   │   │   └── queries.ts
 │   │   │   │   │   ├── reviews
@@ -3949,6 +4000,8 @@
 │   │   │   │   └── CompanyTable.tsx
 │   │   │   ├── company
 │   │   │   │   └── MembersAdmin.tsx
+│   │   │   ├── mfaReset
+│   │   │   │   └── MfaResetAdmin.tsx
 │   │   │   ├── registry
 │   │   │   │   └── Registry.tsx
 │   │   │   ├── reindex
@@ -4356,11 +4409,13 @@
 │   │   ├── graphql-client.ts
 │   │   ├── index.tsx
 │   │   ├── login
+│   │   │   ├── ForcedMfaReconfigurationModal.tsx
 │   │   │   ├── Invite.tsx
 │   │   │   ├── Login.module.scss
 │   │   │   ├── Login.tsx
 │   │   │   ├── PasswordReset.tsx
 │   │   │   ├── PasswordResetRequest.tsx
+│   │   │   ├── RecoveryCodeModal.tsx
 │   │   │   ├── ResendActivationEmail.tsx
 │   │   │   ├── SecondFactor.tsx
 │   │   │   ├── Signup.tsx
@@ -4545,6 +4600,10 @@
 │   │   │   │   │   │   ├── invitation-par-administrateur.html
 │   │   │   │   │   │   ├── membership-request-details.html
 │   │   │   │   │   │   ├── membership-request.html
+│   │   │   │   │   │   ├── mfa-reset-cancelled.html
+│   │   │   │   │   │   ├── mfa-reset-done.html
+│   │   │   │   │   │   ├── mfa-reset-request-created-for-admins.html
+│   │   │   │   │   │   ├── mfa-reset-request-created-for-user.html
 │   │   │   │   │   │   ├── notification-invitation.html
 │   │   │   │   │   │   ├── notification-renouvellement-code-signature.html
 │   │   │   │   │   │   ├── pending-membership-request-details.html
@@ -4556,6 +4615,7 @@
 │   │   │   │   │   │   ├── reinitialisation-mot-de-passe.html
 │   │   │   │   │   │   ├── totp-activated.html
 │   │   │   │   │   │   ├── totp-disabled.html
+│   │   │   │   │   │   ├── totp-recovery.html
 │   │   │   │   │   │   └── your-company-is-identified-on-a-bsd.html
 │   │   │   │   │   ├── provider
 │   │   │   │   │   │   └── templateIds.ts
@@ -5079,6 +5139,10 @@
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260413000000_add_totp_recovery_codes
 │   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260604000000_add_mfa_recovery_fields
+│   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260612000000_add_mfa_reset_request
+│   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   └── migration_lock.toml
 │   │   │   │   ├── models
 │   │   │   │   │   ├── main.prisma
@@ -5345,4 +5409,4 @@
 │   ├── validation-doc.js
 │   └── waste-consistence-migration.sql
 └── tsconfig.base.json
-939 directories, 4445 files
+959 directories, 4489 files
