@@ -37,21 +37,23 @@ Stop coding like a mortal. Define your bots as readable `.bot` files — chain a
 
 Iterion is a workflow engine that turns `.bot` files into executable AI pipelines. You describe *what* your agents should do — review code, plan fixes, check compliance, ask a human — and Iterion handles *how*: scheduling branches in parallel, enforcing budgets, persisting state, and routing between nodes.
 
-```
-.bot file → Parse → Compile → Validate → Execute
-                                            │
-                    ┌───────────────────────┐│
-                    │  agents, judges,      ││
-                    │  routers, await,      ││
-                    │  humans, tools        ││
-                    │  running in parallel  ││
-                    │  with budget tracking ││
-                    └───────────────────────┘│
-                                            ▼
-                              results, artifacts, event log
+```mermaid
+flowchart LR
+  BOT[".bot file"] --> PARSE["Parse"]
+  PARSE --> COMPILE["Compile"]
+  COMPILE --> VALIDATE["Validate"]
+  VALIDATE --> EXEC["Execute"]
+  EXEC --> NODES["agents, judges,<br/>routers, await,<br/>humans, tools<br/>running in parallel<br/>with budget tracking"]
+  NODES --> OUT["results, artifacts, event log"]
 ```
 
 Think of it as a DAG runner purpose-built for LLM workflows — with first-class support for things like structured I/O, conversation sessions, human-in-the-loop pauses, and cost control.
+
+<p align="center">
+  <img src="docs/images/studio/editor-canvas.png" alt="Iterion studio — visual workflow editor" width="900" />
+  <br/>
+  <em>The studio's visual editor — drag-and-drop graph, live diagnostics, and an inspector for every node. See <a href="docs/visual-editor.md">more screenshots</a>.</em>
+</p>
 
 ---
 
@@ -62,7 +64,7 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 - 📝 **Declarative DSL** — Human-readable `.bot` files with indentation-based syntax
 - 🤖 **Multi-agent orchestration** — Chain agents, judges, routers, and await-based convergence into complex graphs
 - 🖥️ **Visual editor** — Browser-based workflow builder with drag-and-drop, live validation, and source view
-- 🙋 **Human-in-the-loop** — Pause for human input, auto-answer via LLM, or let the LLM decide when to ask
+- 🙋 **Human-in-the-loop** — Pause for human input, auto-answer via LLM, or let the LLM decide when to ask — see [docs/human-in-the-loop.md](docs/human-in-the-loop.md)
 - 🔀 **Parallel branching** — Fan-out via routers, converge at downstream nodes with `await: wait_all` / `await: best_effort`
 - 🧭 **4 routing modes** — `fan_out_all`, `condition`, `round_robin`, and `llm`-driven routing
 - 🔁 **Bounded loops** — Retry and refinement cycles with configurable iteration limits
@@ -88,6 +90,12 @@ Think of it as a DAG runner purpose-built for LLM workflows — with first-class
 - ⏯️ **Resumable runs** — Checkpoint-based resume from `failed_resumable` / `paused_waiting_human` / `cancelled` states — see [docs/resume.md](docs/resume.md)
 - 📈 **Observability stack** — Prometheus `/metrics`, OTLP traces, and a self-contained docker-compose stack with pre-built Grafana dashboards — see [docs/observability/README.md](docs/observability/README.md)
 
+<p align="center">
+  <img src="docs/images/studio/insights.png" alt="Iterion studio — run analytics: cost over time and per-workflow stats" width="900" />
+  <br/>
+  <em>Run analytics — cost over time stacked by workflow, plus per-workflow run counts, fail rates, and P50/P95 durations.</em>
+</p>
+
 ### Distribution & integration
 
 - ☁️ **Bot-as-a-Service platform** — Multi-tenant Helm deployment (MongoDB + S3 + NATS JetStream, KEDA-scaled runners, per-run Kubernetes sandboxes) with the full platform layer: orgs + quotas + metering, inbound webhooks for GitLab / GitHub / Forgejo / generic JSON, bound credentials, audit log, PATs, SMTP onboarding, self-serve studio — see [docs/baas-overview.md](docs/baas-overview.md)
@@ -105,11 +113,13 @@ comments — no human in the loop, no secret ever in a prompt.
 
 From dev to imperator: the legion, as a service.
 
-```text
-forge event ──▶ POST /api/webhooks/{provider}/{id}   (token/HMAC, rate, quota)
-            ──▶ NATS queue ──▶ runner pod (KEDA-scaled)
-            ──▶ bot executes with bound creds (BYOK key + file secrets)
-            ──▶ review/fix/report posted back on the MR/PR
+```mermaid
+flowchart LR
+  FORGE["forge event"] -- "token/HMAC,<br/>rate, quota" --> HOOK["POST /api/webhooks/{provider}/{id}"]
+  HOOK --> NATS[("NATS queue")]
+  NATS --> RUNNER["runner pod<br/>(KEDA-scaled)"]
+  RUNNER -- "BYOK key +<br/>file secrets" --> BOT["bot executes with<br/>bound creds"]
+  BOT --> POST["review/fix/report<br/>posted back on the MR/PR"]
 ```
 
 Five steps to a working loop:
@@ -263,6 +273,7 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 **Author workflows**
 - [docs/dsl.md](docs/dsl.md) — full `.bot` DSL reference
 - [docs/routers.md](docs/routers.md) — routing modes deep dive
+- [docs/human-in-the-loop.md](docs/human-in-the-loop.md) — pause for human input; interaction modes (human / llm / llm_or_human / review)
 - [docs/recipes.md](docs/recipes.md) — preset-driven runs (benchmarking, prompt comparison)
 - [docs/delegation.md](docs/delegation.md) — `model:` vs `backend:` (claude_code, codex)
 - [docs/cursors.md](docs/cursors.md) — prompt-engineering cursors (ambition / depth / rigor / autonomy dials)

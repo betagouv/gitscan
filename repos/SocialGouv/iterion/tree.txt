@@ -338,6 +338,7 @@
 │   │   ├── claw_runner.go
 │   │   ├── claw_runner_proxy.go
 │   │   ├── claw_runner_proxy_test.go
+│   │   ├── cloud_wireup.go
 │   │   ├── diagram.go
 │   │   ├── dispatch.go
 │   │   ├── fork.go
@@ -348,6 +349,7 @@
 │   │   ├── mcp_ask_user.go
 │   │   ├── mcp_board.go
 │   │   ├── mcp_board_test.go
+│   │   ├── mcp_common.go
 │   │   ├── mcp_control.go
 │   │   ├── memory.go
 │   │   ├── migrate.go
@@ -526,8 +528,36 @@
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
+│   ├── human-in-the-loop.md
 │   ├── images
-│   │   └── iterion-logo.png
+│   │   ├── iterion-logo.png
+│   │   └── studio
+│   │       ├── board-active.png
+│   │       ├── board-dispatched.png
+│   │       ├── board-labels.png
+│   │       ├── board.png
+│   │       ├── catalog.png
+│   │       ├── command-palette.png
+│   │       ├── dispatcher.png
+│   │       ├── editor-canvas.png
+│   │       ├── editor-source.png
+│   │       ├── hitl-form-bool.png
+│   │       ├── hitl-form-text.png
+│   │       ├── hitl-form.png
+│   │       ├── home.png
+│   │       ├── insights.png
+│   │       ├── launch.png
+│   │       ├── marketplace.png
+│   │       ├── run-commits.png
+│   │       ├── run-console.png
+│   │       ├── run-diff.png
+│   │       ├── run-from-ticket.png
+│   │       ├── run-live.png
+│   │       ├── run-report.png
+│   │       ├── runs-list.png
+│   │       ├── settings-appearance.png
+│   │       ├── settings-backends.png
+│   │       └── whats-next.png
 │   ├── install.md
 │   ├── install.sh
 │   ├── memory-and-knowledge.md
@@ -558,6 +588,7 @@
 │   ├── reviews
 │   │   └── codebase-2026-05-17.md
 │   ├── routers.md
+│   ├── rtk.md
 │   ├── sandbox.md
 │   ├── scheduling.md
 │   ├── secrets-reference.md
@@ -661,6 +692,7 @@
 │   │   └── devbox.json
 │   ├── github-actions
 │   │   └── iterion-hitl.yml
+│   ├── human-in-the-loop.bot
 │   ├── mcp_test_server
 │   │   └── main.go
 │   ├── review-merge-gate.bot
@@ -690,10 +722,26 @@
 │   │   ├── oidc
 │   │   │   ├── connector.go
 │   │   │   ├── generic.go
+│   │   │   ├── generic_test.go
 │   │   │   ├── github.go
+│   │   │   ├── github_test.go
 │   │   │   ├── google.go
-│   │   │   └── pkce.go
+│   │   │   ├── jwks.go
+│   │   │   ├── jwks_test.go
+│   │   │   ├── pkce.go
+│   │   │   └── state_mongo.go
 │   │   ├── oidc_service.go
+│   │   ├── oidc_service_github_test.go
+│   │   ├── oidc_service_orgsso_test.go
+│   │   ├── orgsso
+│   │   │   ├── domain.go
+│   │   │   ├── domain_mongo.go
+│   │   │   ├── domain_test.go
+│   │   │   ├── mongo.go
+│   │   │   ├── orgsso_test.go
+│   │   │   ├── sealer.go
+│   │   │   ├── store.go
+│   │   │   └── types.go
 │   │   ├── password.go
 │   │   ├── password_reset.go
 │   │   ├── password_reset_test.go
@@ -831,6 +879,9 @@
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
+│   │   ├── rtk
+│   │   │   ├── rtk.go
+│   │   │   └── rtk_test.go
 │   │   ├── secretguard
 │   │   │   ├── encodings.go
 │   │   │   ├── host.go
@@ -949,6 +1000,7 @@
 │   │   ├── bots.go
 │   │   ├── bots_test.go
 │   │   ├── bundle.go
+│   │   ├── bundles.go
 │   │   ├── cli_docs_examples_test.go
 │   │   ├── cli_test.go
 │   │   ├── diagram.go
@@ -962,6 +1014,7 @@
 │   │   ├── inspect.go
 │   │   ├── inspect_node.go
 │   │   ├── issue.go
+│   │   ├── kvflags.go
 │   │   ├── migrate_run_paths.go
 │   │   ├── migrate_run_paths_test.go
 │   │   ├── output.go
@@ -1067,6 +1120,8 @@
 │   │   │   ├── subscribe_test.go
 │   │   │   ├── watcher.go
 │   │   │   └── watcher_test.go
+│   │   ├── proc_unix.go
+│   │   ├── proc_windows.go
 │   │   ├── reconcile_stalled_test.go
 │   │   ├── retry.go
 │   │   ├── retry_resume_test.go
@@ -1121,6 +1176,7 @@
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
 │   │   │   ├── review_test.go
+│   │   │   ├── rtk_test.go
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_test.go
 │   │   │   ├── secrets_test.go
@@ -1166,6 +1222,7 @@
 │   │   │   ├── memory_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── roundtrip_test.go
+│   │   │   ├── rtk_test.go
 │   │   │   ├── secrets_test.go
 │   │   │   ├── unparse.go
 │   │   │   └── unparse_test.go
@@ -1174,6 +1231,7 @@
 │   │       └── workflowfile_test.go
 │   ├── forge
 │   │   ├── admin.go
+│   │   ├── admin_http.go
 │   │   ├── connection_sealer.go
 │   │   ├── connection_store.go
 │   │   ├── event_map.go
@@ -1210,6 +1268,7 @@
 │   │   ├── refresh.go
 │   │   ├── refresh_test.go
 │   │   ├── repo_integration_store.go
+│   │   ├── transport.go
 │   │   └── types.go
 │   ├── git
 │   │   ├── ancestor_test.go
@@ -1248,8 +1307,11 @@
 │   │   │   ├── proc.go
 │   │   │   ├── proc_unix.go
 │   │   │   └── proc_windows.go
-│   │   └── shellquote
-│   │       └── shellquote.go
+│   │   ├── shellquote
+│   │   │   └── shellquote.go
+│   │   └── strutil
+│   │       ├── strutil.go
+│   │       └── strutil_test.go
 │   ├── knowledge
 │   │   ├── doc.go
 │   │   ├── docpath_test.go
@@ -1499,6 +1561,10 @@
 │   │   ├── run_secrets.go
 │   │   ├── sealer.go
 │   │   └── sealer_test.go
+│   ├── secure
+│   │   └── httpdial
+│   │       ├── httpdial.go
+│   │       └── httpdial_test.go
 │   ├── server
 │   │   ├── admin_orgs_routes.go
 │   │   ├── admin_orgs_routes_test.go
@@ -1553,6 +1619,9 @@
 │   │   ├── middleware_test.go
 │   │   ├── middleware_webhook.go
 │   │   ├── oauth_routes.go
+│   │   ├── org_sso_domain_routes.go
+│   │   ├── org_sso_routes.go
+│   │   ├── org_sso_routes_test.go
 │   │   ├── password_routes.go
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
@@ -1590,10 +1659,12 @@
 │   │   ├── runs_ws_logs.go
 │   │   ├── runs_ws_logs_cross_store.go
 │   │   ├── runs_ws_test.go
+│   │   ├── safe_origin_test.go
 │   │   ├── server.go
 │   │   ├── server_info.go
 │   │   ├── spa.go
 │   │   ├── spa_test.go
+│   │   ├── sso_resolver.go
 │   │   ├── static
 │   │   │   └── .gitkeep
 │   │   ├── timefmt.go
@@ -1673,19 +1744,9 @@
 │   │   ├── user_messages.go
 │   │   └── user_messages_test.go
 │   └── webhooks
-│       ├── forgejo
-│       │   ├── events.go
-│       │   ├── forgejo_test.go
-│       │   ├── matcher.go
-│       │   └── parser.go
 │       ├── generic
 │       │   ├── generic.go
 │       │   └── generic_test.go
-│       ├── github
-│       │   ├── events.go
-│       │   ├── github_test.go
-│       │   ├── matcher.go
-│       │   └── parser.go
 │       ├── gitlab
 │       │   ├── auth.go
 │       │   ├── auth_test.go
@@ -1694,13 +1755,17 @@
 │       │   ├── client_test.go
 │       │   ├── events.go
 │       │   ├── gitlab_test.go
-│       │   ├── matcher.go
 │       │   ├── note.go
 │       │   ├── note_test.go
 │       │   └── parser.go
 │       ├── match.go
+│       ├── match_test.go
 │       ├── memory.go
 │       ├── mongo.go
+│       ├── prforge
+│       │   ├── events.go
+│       │   ├── parser.go
+│       │   └── prforge_test.go
 │       ├── store.go
 │       ├── token.go
 │       ├── types.go
@@ -1807,9 +1872,13 @@
 │   │   ├── App.tsx
 │   │   ├── __tests__
 │   │   │   ├── a11y
+│   │   │   │   ├── _scanner.ts
+│   │   │   │   ├── axeHelpers.ts
 │   │   │   │   ├── broken-classes.test.ts
 │   │   │   │   ├── contrast.test.ts
-│   │   │   │   └── primitives.test.tsx
+│   │   │   │   ├── primitives.test.tsx
+│   │   │   │   ├── source-discipline.test.ts
+│   │   │   │   └── views.test.tsx
 │   │   │   └── desktopBridge.test.ts
 │   │   ├── api
 │   │   │   ├── __tests__
@@ -1829,10 +1898,22 @@
 │   │   │   ├── marketplace.ts
 │   │   │   ├── memory.ts
 │   │   │   ├── native.ts
+│   │   │   ├── orgSso.ts
 │   │   │   ├── orgs.ts
 │   │   │   ├── pats.ts
 │   │   │   ├── projects.ts
 │   │   │   ├── queueMessages.ts
+│   │   │   ├── runs
+│   │   │   │   ├── artifacts.ts
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── commits.ts
+│   │   │   │   ├── conflicts.ts
+│   │   │   │   ├── files.ts
+│   │   │   │   ├── lifecycle.ts
+│   │   │   │   ├── listing.ts
+│   │   │   │   ├── snapshot.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── uploads.ts
 │   │   │   ├── runs.fileContent.test.ts
 │   │   │   ├── runs.lifecycle.test.ts
 │   │   │   ├── runs.ts
@@ -1863,7 +1944,8 @@
 │   │   │   │   ├── SubNodePalette.tsx
 │   │   │   │   ├── ToolPalette.tsx
 │   │   │   │   ├── WorkflowNode.tsx
-│   │   │   │   └── handlePositions.ts
+│   │   │   │   ├── handlePositions.ts
+│   │   │   │   └── useCanvasHandlers.ts
 │   │   │   ├── Catalog
 │   │   │   │   └── BotCatalogDialog.tsx
 │   │   │   ├── Diagnostics
@@ -1978,10 +2060,70 @@
 │   │   │   │   │   ├── SessionClosedCard.test.tsx
 │   │   │   │   │   └── SessionClosedCard.tsx
 │   │   │   │   ├── detail
+│   │   │   │   │   ├── ArtifactTab.tsx
+│   │   │   │   │   ├── CollapseButton.tsx
+│   │   │   │   │   ├── DetailHeader.tsx
+│   │   │   │   │   ├── EventsTab.tsx
+│   │   │   │   │   ├── FollowLivePill.tsx
+│   │   │   │   │   ├── IterationCrumb.tsx
+│   │   │   │   │   ├── IterationPills.tsx
 │   │   │   │   │   ├── LLMTrace.tsx
-│   │   │   │   │   └── ToolCalls.tsx
+│   │   │   │   │   ├── LogsTab.tsx
+│   │   │   │   │   ├── NodeKindIcon.tsx
+│   │   │   │   │   ├── PauseTab.tsx
+│   │   │   │   │   ├── ToolCalls.tsx
+│   │   │   │   │   ├── nodeDetailFormat.ts
+│   │   │   │   │   ├── useExecutionCostMeta.ts
+│   │   │   │   │   └── useExecutionEvents.ts
+│   │   │   │   ├── eventLog
+│   │   │   │   │   ├── EventRow.tsx
+│   │   │   │   │   ├── eventModel.ts
+│   │   │   │   │   ├── useAnnotatedEvents.ts
+│   │   │   │   │   ├── usePersistedEventFilters.ts
+│   │   │   │   │   └── useVirtuosoTailFollow.ts
+│   │   │   │   ├── launchView
+│   │   │   │   │   ├── AttachmentsSection.tsx
+│   │   │   │   │   ├── LaunchBar.tsx
+│   │   │   │   │   ├── PresetSection.tsx
+│   │   │   │   │   ├── RunSettingsSection.tsx
+│   │   │   │   │   ├── SandboxBadge.tsx
+│   │   │   │   │   ├── VarFieldsSection.tsx
+│   │   │   │   │   ├── WorktreeFinalizationSection.tsx
+│   │   │   │   │   ├── WorktreeTargetSummary.tsx
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── runBotMeta.test.ts
 │   │   │   │   ├── runBotMeta.ts
+│   │   │   │   ├── runCanvasIR
+│   │   │   │   │   ├── FilterChips.tsx
+│   │   │   │   │   ├── StatusLegend.tsx
+│   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   ├── useEffortCapsPrefetch.ts
+│   │   │   │   │   ├── useInitialRunningFocus.ts
+│   │   │   │   │   ├── useSelectedNodeFocus.ts
+│   │   │   │   │   └── useWorkflowLoad.ts
+│   │   │   │   ├── runHeader
+│   │   │   │   │   ├── BotChip.tsx
+│   │   │   │   │   ├── ErrorHintRow.tsx
+│   │   │   │   │   ├── FinalizationRow.tsx
+│   │   │   │   │   ├── ForkedFromRow.tsx
+│   │   │   │   │   ├── MergeStatusBadge.tsx
+│   │   │   │   │   ├── RunNameEditor.tsx
+│   │   │   │   │   ├── SourceTicketRow.tsx
+│   │   │   │   │   ├── WSDisconnectBanner.tsx
+│   │   │   │   │   └── cancelTooltip.ts
+│   │   │   │   ├── runList
+│   │   │   │   │   ├── BotAvatar.tsx
+│   │   │   │   │   ├── FilterMenu.tsx
+│   │   │   │   │   ├── RunCardGroupHeader.tsx
+│   │   │   │   │   ├── RunListCard.tsx
+│   │   │   │   │   ├── RunListFilters.tsx
+│   │   │   │   │   ├── RunListRow.tsx
+│   │   │   │   │   ├── RunRowGroup.tsx
+│   │   │   │   │   ├── SortGroupControls.tsx
+│   │   │   │   │   ├── SourceBadge.tsx
+│   │   │   │   │   ├── runListFormat.ts
+│   │   │   │   │   ├── useRunListFilters.ts
+│   │   │   │   │   └── useRunListLiveTick.ts
 │   │   │   │   ├── runListFilter.test.ts
 │   │   │   │   ├── runListFilter.ts
 │   │   │   │   ├── runListSortGroup.ts
@@ -1992,15 +2134,30 @@
 │   │   │   │   ├── runStatusClasses.ts
 │   │   │   │   ├── runStatusMeta.test.ts
 │   │   │   │   ├── runStatusMeta.ts
+│   │   │   │   ├── runView
+│   │   │   │   │   ├── BottomTabPanel.tsx
+│   │   │   │   │   ├── PanelChrome.tsx
+│   │   │   │   │   ├── RunMetricsBar.tsx
+│   │   │   │   │   ├── RunViewLoadStates.tsx
+│   │   │   │   │   ├── layoutFlags.ts
+│   │   │   │   │   ├── useDisplayedRunData.ts
+│   │   │   │   │   ├── useFileDialogs.ts
+│   │   │   │   │   ├── useFollowLiveNode.ts
+│   │   │   │   │   ├── useHorizontalLayout.ts
+│   │   │   │   │   ├── useRunConsoleLayout.ts
+│   │   │   │   │   ├── useRunSnapshot.ts
+│   │   │   │   │   └── useSelectionState.ts
 │   │   │   │   ├── toolFormatters.test.ts
-│   │   │   │   └── toolFormatters.ts
+│   │   │   │   ├── toolFormatters.ts
+│   │   │   │   └── usePreview.ts
 │   │   │   ├── Settings
 │   │   │   │   └── ApiKeysEditor.tsx
 │   │   │   ├── SourceView
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
 │   │   │   │   ├── Toolbar.tsx
-│   │   │   │   └── ToolbarGroup.tsx
+│   │   │   │   ├── ToolbarGroup.tsx
+│   │   │   │   └── useDocumentFileOps.ts
 │   │   │   ├── WhatsNext
 │   │   │   │   ├── ChatTranscript.tsx
 │   │   │   │   ├── HumanChatTurn.tsx
@@ -2014,7 +2171,16 @@
 │   │   │   │   ├── WatchPanel.tsx
 │   │   │   │   ├── WhatsNextView.tsx
 │   │   │   │   ├── humanStatus.test.ts
-│   │   │   │   └── smartContinue.test.ts
+│   │   │   │   ├── smartContinue.test.ts
+│   │   │   │   └── whatsNextView
+│   │   │   │       ├── PendingTurnFooter.tsx
+│   │   │   │       ├── QuickModeFooter.tsx
+│   │   │   │       ├── ResumeFooter.tsx
+│   │   │   │       ├── SessionHeader.tsx
+│   │   │   │       ├── composerPlaceholder.ts
+│   │   │   │       ├── forms.ts
+│   │   │   │       ├── humanStatus.ts
+│   │   │   │       └── smartContinue.ts
 │   │   │   ├── icons
 │   │   │   │   ├── BackendBadge.tsx
 │   │   │   │   ├── NodeIcon.tsx
@@ -2025,6 +2191,7 @@
 │   │   │   │   ├── AgentChatbox.tsx
 │   │   │   │   ├── AgentChatboxInline.tsx
 │   │   │   │   ├── AppShell.tsx
+│   │   │   │   ├── BootLoading.tsx
 │   │   │   │   ├── CommandPalette.tsx
 │   │   │   │   ├── ConfirmDialog.test.tsx
 │   │   │   │   ├── ConfirmDialog.tsx
@@ -2053,7 +2220,9 @@
 │   │   │   │   └── useHeaderSlot.ts
 │   │   │   └── ui
 │   │   │       ├── Badge.tsx
+│   │   │       ├── BrandWordmark.tsx
 │   │   │       ├── Button.tsx
+│   │   │       ├── Checkbox.tsx
 │   │   │       ├── Chip.tsx
 │   │   │       ├── Combobox.tsx
 │   │   │       ├── ContextUsageBar.tsx
@@ -2062,6 +2231,9 @@
 │   │   │       ├── Dialog.tsx
 │   │   │       ├── EffortBar.tsx
 │   │   │       ├── EmptyState.tsx
+│   │   │       ├── FieldLabel.tsx
+│   │   │       ├── HeaderBanner.tsx
+│   │   │       ├── HelpHint.tsx
 │   │   │       ├── IconButton.tsx
 │   │   │       ├── InlineBanner.tsx
 │   │   │       ├── Input.tsx
@@ -2069,6 +2241,8 @@
 │   │   │       ├── MarkdownPreview.tsx
 │   │   │       ├── Popover.tsx
 │   │   │       ├── PromptOverlayHighlight.tsx
+│   │   │       ├── Radio.tsx
+│   │   │       ├── RadioGroup.tsx
 │   │   │       ├── RefAwareInput.tsx
 │   │   │       ├── RefAwarePopup.tsx
 │   │   │       ├── Select.tsx
@@ -2077,6 +2251,7 @@
 │   │   │       ├── StatusBadge.tsx
 │   │   │       ├── Tabs.tsx
 │   │   │       ├── TagInput.tsx
+│   │   │       ├── TerminalCaret.tsx
 │   │   │       ├── Textarea.tsx
 │   │   │       ├── ThinkingIndicator.tsx
 │   │   │       ├── Tooltip.tsx
@@ -2087,6 +2262,7 @@
 │   │   │   ├── useAddFromLibrary.ts
 │   │   │   ├── useAddNode.ts
 │   │   │   ├── useAddSubNode.ts
+│   │   │   ├── useAsyncAction.ts
 │   │   │   ├── useAutoOpenDiagnosticsOnError.ts
 │   │   │   ├── useAutoValidation.ts
 │   │   │   ├── useBoardKeyboard.ts
@@ -2097,6 +2273,7 @@
 │   │   │   ├── useCanvasSearch.ts
 │   │   │   ├── useCaretPosition.ts
 │   │   │   ├── useConfirm.tsx
+│   │   │   ├── useCopyTimer.ts
 │   │   │   ├── useDebounce.ts
 │   │   │   ├── useDesktop.ts
 │   │   │   ├── useDocumentTitle.ts
@@ -2126,8 +2303,10 @@
 │   │   │   ├── useRunWebSocket.ts
 │   │   │   ├── useRuns.test.ts
 │   │   │   ├── useRuns.ts
-│   │   │   └── useSchemaPromptCreators.ts
+│   │   │   ├── useSchemaPromptCreators.ts
+│   │   │   └── useToggleSet.ts
 │   │   ├── lib
+│   │   │   ├── a11y.ts
 │   │   │   ├── attachmentValidation.test.ts
 │   │   │   ├── attachmentValidation.ts
 │   │   │   ├── autoLayout.ts
@@ -2150,6 +2329,7 @@
 │   │   │   ├── diagnostics.ts
 │   │   │   ├── docMutations.ts
 │   │   │   ├── documentToGraph.ts
+│   │   │   ├── download.ts
 │   │   │   ├── dslOptions.ts
 │   │   │   ├── errorHints.test.ts
 │   │   │   ├── errorHints.ts
@@ -2186,6 +2366,7 @@
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useRunChatMessages.ts
 │   │   │   │   └── useScrollPin.ts
+│   │   │   ├── runErrorHints.ts
 │   │   │   ├── snapshotReducer.test.ts
 │   │   │   ├── snapshotReducer.ts
 │   │   │   ├── thinkingWords.ts
@@ -2238,11 +2419,26 @@
 │   │   │   │   ├── IssueModal.tsx
 │   │   │   │   ├── Labels.tsx
 │   │   │   │   ├── SelectionToolbar.tsx
+│   │   │   │   ├── board
+│   │   │   │   │   ├── EmptyBoard.tsx
+│   │   │   │   │   ├── EmptyBoardBanner.tsx
+│   │   │   │   │   ├── boardSort.ts
+│   │   │   │   │   ├── useBoardBulkActions.ts
+│   │   │   │   │   ├── useBoardColumns.ts
+│   │   │   │   │   ├── useBoardData.ts
+│   │   │   │   │   ├── useBoardDragDrop.ts
+│   │   │   │   │   ├── useBoardSelection.ts
+│   │   │   │   │   ├── useDispatcherPoll.ts
+│   │   │   │   │   ├── useTabBadge.ts
+│   │   │   │   │   └── useUndoTransitions.ts
 │   │   │   │   ├── boardShared.ts
 │   │   │   │   └── index.tsx
 │   │   │   ├── Dispatcher
+│   │   │   │   ├── RetriesTable.tsx
+│   │   │   │   ├── RunningTable.tsx
 │   │   │   │   ├── dispatcherActionState.test.ts
 │   │   │   │   ├── dispatcherActionState.ts
+│   │   │   │   ├── format.ts
 │   │   │   │   └── index.tsx
 │   │   │   ├── Login.tsx
 │   │   │   ├── Marketplace
@@ -2294,12 +2490,30 @@
 │   │   │           ├── BindingsTab.tsx
 │   │   │           ├── IntegrationsTab.tsx
 │   │   │           ├── MemoryTab.tsx
+│   │   │           ├── SSOTab.tsx
 │   │   │           ├── SecretsTab.tsx
 │   │   │           ├── UsageTab.tsx
 │   │   │           ├── WebhooksTab.tsx
-│   │   │           └── __tests__
-│   │   │               ├── IntegrationsTab.oauthApps.test.tsx
-│   │   │               └── WebhooksTab.tokenOnce.test.tsx
+│   │   │           ├── __tests__
+│   │   │           │   ├── IntegrationsTab.oauthApps.test.tsx
+│   │   │           │   └── WebhooksTab.tokenOnce.test.tsx
+│   │   │           ├── integrations
+│   │   │           │   ├── ConnectForm.tsx
+│   │   │           │   ├── ConnectionCard.tsx
+│   │   │           │   ├── EnableRepoPanel.tsx
+│   │   │           │   ├── OAuthAppsSection.tsx
+│   │   │           │   ├── RegisterOAuthAppForm.tsx
+│   │   │           │   └── forgeShared.ts
+│   │   │           ├── sso
+│   │   │           │   ├── DomainsSection.tsx
+│   │   │           │   ├── GitHubSection.tsx
+│   │   │           │   └── KeycloakSection.tsx
+│   │   │           └── webhooks
+│   │   │               ├── CreateWebhookDialog.tsx
+│   │   │               ├── DeliveriesDrawer.tsx
+│   │   │               ├── DeliveryStatusBadge.tsx
+│   │   │               ├── Field.tsx
+│   │   │               └── TokenOncePanel.tsx
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
@@ -8636,4 +8850,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1301 directories, 7891 files
+1318 directories, 8088 files

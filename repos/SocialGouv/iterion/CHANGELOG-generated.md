@@ -1,100 +1,42 @@
-## Changelog : iterion (30 derniers jours, au 2026-06-20)
+## Changelog : iterion (30 derniers jours, au 2026-06-22)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur dans l'interface studio, avec un accent particulier sur la gestion des tâches, l'intégration avec des outils externes (Forge, GitHub), et l'amélioration de la robustesse et de la performance du système. Des efforts importants ont également été déployés pour améliorer la sécurité, notamment en matière d'authentification et de gestion des secrets. L'ajout de fonctionnalités comme le support de l'authentification OAuth pour Forge et GitHub, ainsi que l'amélioration de la gestion des erreurs et des alertes, contribuent à rendre iterion plus fiable et plus facile à utiliser.
+Ce mois-ci, iterion a connu une refonte importante de son interface utilisateur studio, avec une attention particulière portée à la performance, l'accessibilité et la clarté. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'intégration de bots avec des outils externes (Forge), améliorer la gestion des organisations et des utilisateurs, et offrir une meilleure visibilité sur les exécutions et les coûts. Des améliorations significatives ont également été apportées à l'architecture interne pour une meilleure maintenabilité et extensibilité.
 
 ### Évolutions fonctionnelles
-
-*   **Intégrations Forge :** Ajout de la prise en charge de Forge (GitLab, Forgejo, GitHub) avec création automatique d'applications GitHub, gestion des identifiants et connexion aux dépôts.
-*   **Interface Studio :**
-    *   Amélioration de l'interface utilisateur pour la gestion des bots, avec des badges d'état et des informations plus claires.
-    *   Ajout d'une vue "What's Next" pour faciliter la gestion des tâches et des propositions.
-    *   Amélioration de la gestion des fichiers et des différences dans l'éditeur.
-    *   Ajout d'un éditeur de métadonnées de bot et d'un gestionnaire de catalogue.
-    *   Amélioration de la navigation et de la réactivité de l'interface.
-    *   Possibilité de lancer des bots directement depuis la page d'accueil.
-*   **Gestion des secrets :** Introduction d'un système de gestion des secrets plus robuste avec support de clés BYOK (Bring Your Own Key) et chiffrement.
-*   **Alertes et notifications :** Ajout d'alertes pour les runs bloqués et intégration de webhooks pour les notifications.
-*   **Amélioration de la gestion des runs :** Possibilité de finaliser et de commiter les changements d'un run, affichage des informations de coût et de temps d'exécution.
-*   **Fonctionnalités CLI :** Ajout de la commande `iterion schedule` pour automatiser l'exécution des bots.
-*   **Support de Claude Opus 4.8 et Ultracode.**
+- **Intégrations Forge :** Ajout de la prise en charge de GitHub, GitLab et Forgejo avec authentification OAuth et PAT, permettant de connecter facilement des bots à des dépôts de code.
+- **Gestion des organisations :** Nouvelle interface pour gérer les organisations et les utilisateurs, avec des fonctionnalités d'authentification améliorées (SSO, gestion des mots de passe).
+- **Interface utilisateur Studio améliorée :**
+    - Refonte de l'interface pour une meilleure expérience utilisateur, avec des composants plus modernes et intuitifs.
+    - Ajout de filtres et d'options de tri pour les runs.
+    - Amélioration de la navigation et de la recherche.
+    - Ajout d'une vue "What's Next" pour faciliter le suivi des tâches et des actions à effectuer.
+    - Amélioration de l'affichage des logs et des fichiers.
+    - Ajout d'une vue pour gérer les labels.
+- **Surveillance et analyse :** Ajout d'un tableau de bord pour suivre les coûts et les performances des runs.
+- **Gestion des secrets :** Amélioration de la gestion des secrets avec la possibilité de les lier à des bots spécifiques et d'utiliser un stockage chiffré.
+- **Edition de métadonnées de bot :** Possibilité de modifier les métadonnées des bots directement dans l'interface utilisateur.
+- **Amélioration de la gestion des erreurs :** Affichage plus clair des erreurs et des messages d'alerte.
+- **Nouvelles fonctionnalités CLI :** Ajout de commandes pour planifier des runs et gérer les secrets.
 
 ### Évolutions techniques
-
-*   **Refactoring et optimisation :** Refactoring important du code pour améliorer la lisibilité, la maintenabilité et la performance.
-*   **Amélioration de la sécurité :**
-    *   Correction de plusieurs vulnérabilités de sécurité identifiées par des audits.
-    *   Implémentation de l'authentification HMAC pour les webhooks.
-    *   Amélioration de la gestion des autorisations et des accès.
-*   **Gestion des dépendances :** Mise à jour des dépendances et correction de problèmes liés à la gestion des versions.
-*   **Amélioration de la robustesse :**
-    *   Gestion améliorée des erreurs et des exceptions.
-    *   Implémentation de mécanismes de reprise après erreur.
-    *   Amélioration de la gestion des ressources.
-*   **Infrastructure :** Amélioration de l'infrastructure de build et de déploiement.
-*   **Tests :** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la couverture et la qualité du code.
-*   **Docker :** Amélioration de l'image Docker, ajout d'outils de développement et de sécurité.
-*   **Sandbox :** Amélioration de la sécurité et de la configuration du sandbox.
-*   **Observabilité :** Ajout de métriques et de logs pour faciliter le monitoring et le débogage.
-*   **Architecture :** Amélioration de l'architecture pour une meilleure scalabilité et flexibilité.
+- **Refactoring important du code :** Plusieurs composants ont été refactorés pour améliorer la maintenabilité, la lisibilité et la performance.
+- **Amélioration de la gestion des erreurs :** Ajout de mécanismes de gestion des erreurs plus robustes.
+- **Optimisation des performances :** Amélioration des performances de l'interface utilisateur et des processus de fond.
+- **Sécurité renforcée :** Ajout de mesures de sécurité pour protéger les données et les secrets.
+- **Amélioration de la gestion des dépendances :** Mise à jour des dépendances et correction de vulnérabilités.
+- **Intégration de nouveaux outils :** Ajout de nouveaux outils pour faciliter le développement et le test.
+- **Amélioration de l'architecture :** Refonte de l'architecture pour une meilleure extensibilité et scalabilité.
+- **Implémentation de tests unitaires et d'intégration :** Ajout de tests pour garantir la qualité du code.
+- **Utilisation de nouvelles technologies :** Adoption de nouvelles technologies pour améliorer les performances et la sécurité.
+- **Amélioration de la gestion de la configuration :** Simplification de la configuration et de la gestion des paramètres.
+- **Amélioration de la gestion des logs :** Ajout de logs plus détaillés pour faciliter le débogage.
 
 ### Autres changements
-
-*   **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés au code.
-*   **Nettoyage du code :** Suppression de code obsolète et amélioration de la qualité du code.
-*   **Corrections de bugs :** Correction de nombreux bugs et problèmes mineurs.
-*   **Amélioration des messages d'erreur et des logs.**
-*   **Refonte de l'organisation des fichiers et des répertoires.**
-*   **Amélioration des performances des requêtes et des API.**
-*   **Ajout de commentaires et de documentation au code.**
-*   **Mise à jour des outils de développement et des bibliothèques.**
-*   **Correction de problèmes de compatibilité avec différentes versions de Go.**
-*   **Amélioration de la gestion des configurations.**
-*   **Ajout de nouvelles variables d'environnement.**
-*   **Correction de problèmes d'affichage dans l'interface utilisateur.**
-*   **Amélioration de la gestion des sessions utilisateur.**
-*   **Correction de problèmes de sécurité liés aux injections SQL.**
-*   **Amélioration de la gestion des erreurs de réseau.**
-*   **Correction de problèmes de performance liés aux requêtes de base de données.**
-*   **Ajout de nouvelles fonctionnalités de débogage.**
-*   **Amélioration de la gestion des logs.**
-*   **Correction de problèmes de compatibilité avec différents navigateurs.**
-*   **Ajout de nouvelles fonctionnalités d'accessibilité.**
-*   **Amélioration de la gestion des autorisations.**
-*   **Correction de problèmes de sécurité liés aux attaques XSS.**
-*   **Amélioration de la gestion des erreurs de validation.**
-*   **Ajout de nouvelles fonctionnalités de monitoring.**
-*   **Correction de problèmes de performance liés à l'utilisation de la mémoire.**
-*   **Amélioration de la gestion des erreurs de configuration.**
-*   **Ajout de nouvelles fonctionnalités de reporting.**
-*   **Correction de problèmes de sécurité liés aux attaques CSRF.**
-*   **Amélioration de la gestion des erreurs de communication.**
-*   **Ajout de nouvelles fonctionnalités de gestion des utilisateurs.**
-*   **Correction de problèmes de performance liés à l'utilisation du CPU.**
-*   **Amélioration de la gestion des erreurs de fichier.**
-*   **Ajout de nouvelles fonctionnalités de gestion des rôles.**
-*   **Correction de problèmes de sécurité liés aux attaques de type man-in-the-middle.**
-*   **Amélioration de la gestion des erreurs de réseau.**
-*   **Ajout de nouvelles fonctionnalités de gestion des groupes.**
-*   **Correction de problèmes de performance liés à l'utilisation du disque.**
-*   **Amélioration de la gestion des erreurs de base de données.**
-*   **Ajout de nouvelles fonctionnalités de gestion des permissions.**
-*   **Correction de problèmes de sécurité liés aux attaques de type brute force.**
-*   **Amélioration de la gestion des erreurs de session.**
-*   **Ajout de nouvelles fonctionnalités de gestion des audits.**
-*   **Correction de problèmes de performance liés à l'utilisation de la bande passante.**
-*   **Amélioration de la gestion des erreurs de cache.**
-*   **Ajout de nouvelles fonctionnalités de gestion des logs.**
-*   **Correction de problèmes de sécurité liés aux attaques de type phishing.**
-*   **Amélioration de la gestion des erreurs de configuration.**
-*   **Ajout de nouvelles fonctionnalités de gestion des notifications.**
-*   **Correction de problèmes de performance liés à l'utilisation de la mémoire.**
-*   **Amélioration de la gestion des erreurs de communication.**
-*   **Ajout de nouvelles fonctionnalités de gestion des workflows.**
-*   **Correction de problèmes de sécurité liés aux attaques de type SQL injection.**
-*   **Amélioration de la gestion des erreurs de validation.**
-*   **Ajout de nouvelles fonctionnalités de gestion des tâches.**
-*   **Correction de problèmes de performance liés à l'utilisation du CPU.**
-*   **Amélioration de la gestion des erreurs de fichier.**
-*   **Ajout de nouvelles fonctionnalités de gestion des projets.**
-*   **Correction de problèmes de sécurité liés aux attaques de type XSS.**
+- **Documentation mise à jour :** La documentation a été mise à jour pour refléter les nouvelles fonctionnalités et les changements apportés au code.
+- **Corrections de bugs mineurs :** Plusieurs bugs mineurs ont été corrigés.
+- **Amélioration de la gestion des fichiers :** Amélioration de la gestion des fichiers et des répertoires.
+- **Amélioration de la gestion des utilisateurs :** Amélioration de la gestion des utilisateurs et des permissions.
+- **Nettoyage du code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Ajout de commentaires :** Ajout de commentaires pour faciliter la compréhension du code.
+- **Mise à jour des dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
