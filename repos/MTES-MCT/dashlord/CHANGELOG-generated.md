@@ -1,18 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 16 juin 2026)
+## Changelog : dashlord (30 derniers jours, au 21 juin 2026)
 
 ### Résumé
-Ce changelog couvre une période d'un mois marquée principalement par des mises à jour automatiques des URLs des sites web surveillés par Dashlord.  Ces mises à jour garantissent que le tableau de bord continue de fonctionner correctement avec les dernières adresses des services de la fabrique numérique. De plus, quelques ajustements de configuration ont été effectués, notamment la suppression d'une entrée obsolète et la modification de l'URL de certains services.
+Ce changelog fait état d'une mise à jour massive des URLs surveillées par Dashlord.  De nombreux sites web et APIs de la fabrique numérique ont été mis à jour, assurant ainsi une surveillance continue de leur état de santé et de leur sécurité. Une modification mineure de la configuration a également été effectuée pour désactiver un type de vérification.
 
 ### Évolutions fonctionnelles
-- Mise à jour des URLs de nombreux sites web surveillés par Dashlord pour assurer leur bon fonctionnement et la pertinence des données affichées.
-- Suppression de l'entrée "a-dock" de la liste des sites surveillés.
-- Mise à jour de l'URL de l'application Emile vers `emile.beta.gouv.fr`.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements concernent principalement la mise à jour des URLs surveillées.
 
 ### Évolutions techniques
-- Ajustement de la configuration de Dashlord : désactivation des outils de statistiques, de budget, de Dependabot et de Codescan. Désactivation également de Betagouv pour Prelex.
-- Mise à jour de l'URL de l'API dans le fichier de configuration `dashlord.yml`.
-- Mise à jour des URLs de Trackdechets et Dossier Facile dans le fichier `dashlord.yml`.
+- Désactivation des vérifications Nuclei dans la configuration de Dashlord [#issue à retrouver].
+- Mise à jour régulière des URLs surveillées pour refléter les changements dans l'infrastructure des services de la fabrique numérique.
 
 ### Autres changements
-- Intégration des pull requests [#45](https://github.com/MTES-MCT/dashlord/pull/45) pour l'ajout de Prelex et la bascule d'Emile vers l'application.
-- Mises à jour régulières du rapport de Dashlord.
+- Mise à jour du titre et du logo de l'opérateur dans le fichier `dashlord.yml`.
