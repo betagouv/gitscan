@@ -49,10 +49,12 @@
 │   │   ├── 0010-actions-typees-parcours.md
 │   │   ├── 0011-instance-unique-ds-et-permissions-token.md
 │   │   ├── 0012-url-reprise-dossier-basee-sur-depot.md
+│   │   ├── 0013-remediation-dossiers-dn-sync-erreur.md
 │   │   └── README.md
 │   ├── parcours
 │   │   ├── FLOW-AND-SYNC.md
-│   │   └── INCIDENT-double-progression-amo.md
+│   │   ├── INCIDENT-double-progression-amo.md
+│   │   └── SYNC-ERREURS-ET-REMEDIATION.md
 │   ├── partners
 │   │   └── PARTNER-TRACKING.md
 │   ├── security
@@ -175,9 +177,16 @@
 │   │   │   ├── double-progression.ts
 │   │   │   ├── ds-graphql.ts
 │   │   │   └── env.ts
-│   │   └── sql
-│   │       ├── cleanup-staging.sql
-│   │       └── extend-expired-tokens.sql
+│   │   ├── sql
+│   │   │   ├── cleanup-staging.sql
+│   │   │   └── extend-expired-tokens.sql
+│   │   └── sync-erreurs
+│   │       ├── README.md
+│   │       ├── _shared.ts
+│   │       ├── clean-faux-depots-submitted-at.ts
+│   │       ├── probe-dossiers.ts
+│   │       ├── relink-eligibilite-dossier.ts
+│   │       └── reset-eligibilite-sync-error.ts
 │   ├── seed
 │   │   ├── README.md
 │   │   ├── seed-staging.ts
@@ -1535,6 +1544,7 @@
 │   │   │   │   ├── 0032_rename_commentaires_to_actions.sql
 │   │   │   │   ├── 0033_sad_star_brand.sql
 │   │   │   │   ├── 0034_nullable_ds_status.sql
+│   │   │   │   ├── 0035_puzzling_nomad.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1571,6 +1581,7 @@
 │   │   │   │       ├── 0032_snapshot.json
 │   │   │   │       ├── 0033_snapshot.json
 │   │   │   │       ├── 0034_snapshot.json
+│   │   │   │       ├── 0035_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1716,4 +1727,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-482 directories, 1236 files
+483 directories, 1246 files
