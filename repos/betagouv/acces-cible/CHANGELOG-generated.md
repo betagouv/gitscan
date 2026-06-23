@@ -1,18 +1,18 @@
-## Changelog : acces-cible (30 derniers jours, au 26 juin 2024)
+## Changelog : acces-cible (30 derniers jours, au 22 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilisation des imports CSV, l'ajout d'un nouveau widget JDMA pour faciliter l'identification des problèmes d'accessibilité, et des optimisations techniques concernant la gestion des audits et l'environnement Docker. Des corrections ont également été apportées pour éviter les doublons de tags lors de l'import CSV et normaliser l'URL des sites.
+Cette version apporte des améliorations significatives à l'import de données CSV, notamment en stabilisant le processus et en évitant les doublons de tags. De plus, un nouveau widget JDMA a été intégré et la configuration de ce dernier est désormais gérée via des variables d'environnement. Des optimisations ont également été apportées à la gestion des tests et à l'image Docker.
 
 ### Évolutions fonctionnelles
-- Ajout d'un widget JDMA pour afficher les résultats de tests d'accessibilité directement dans l'interface utilisateur. [#569](https://github.com/betagouv/acces-cible/issues/569)
-- Possibilité de configurer le bouton JDMA via des variables d'environnement. [#578](https://github.com/betagouv/acces-cible/issues/578)
-- Correction d'un bug qui provoquait des doublons de tags lors de l'import de fichiers CSV. [#577](https://github.com/betagouv/acces-cible/issues/577)
-- L'URL des sites est maintenant normalisée pour assurer une meilleure cohérence des données. [#576](https://github.com/betagouv/acces-cible/issues/576)
-- Stabilisation des imports CSV en les traitant en arrière-plan, améliorant ainsi la réactivité de l'application. [#541](https://github.com/betagouv/acces-cible/issues/541)
+- Ajout d'un widget JDMA pour une fonctionnalité non précisée. [#569](https://github.com/betagouv/acces-cible/issues/569)
+- Amélioration de la gestion des imports CSV : traitement en arrière-plan pour une meilleure stabilité et éviter les blocages. [#541](https://github.com/betagouv/acces-cible/issues/541)
+- Correction d'un bug empêchant la normalisation correcte de l'URL des sites. [#576](https://github.com/betagouv/acces-cible/issues/576)
+- Éviter la création de tags en doublon lors de l'import de fichiers CSV. [#577](https://github.com/betagouv/acces-cible/issues/577)
+- Configuration du bouton JDMA désormais possible via des variables d'environnement. [#578](https://github.com/betagouv/acces-cible/issues/578)
 
 ### Évolutions techniques
-- Refactorisation du navigateur utilisé pour les tests. [#545](https://github.com/betagouv/acces-cible/issues/545)
-- Suppression de la colonne `url` et `current` de la table `audits` et de la logique associée, simplifiant ainsi la structure de la base de données. [#582](https://github.com/betagouv/acces-cible/issues/582), [#580](https://github.com/betagouv/acces-cible/issues/580), [#573](https://github.com/betagouv/acces-cible/issues/573)
-- Mise à jour de la configuration Docker pour utiliser le Dockerfile principal. [#547](https://github.com/betagouv/acces-cible/issues/547)
-- Suppression d'une version personnalisée d'Omniauth, revenant à la version standard. [#587](https://github.com/betagouv/acces-cible/issues/587)
+- Refonte de l'image Docker pour utiliser le Dockerfile principal. [#547](https://github.com/betagouv/acces-cible/issues/547)
 - Amélioration du mocking des tests Axe pour une meilleure fiabilité. [#586](https://github.com/betagouv/acces-cible/issues/586)
+- Suppression d'une version personnalisée de la gem Omniauth au profit d'une version standard. [#587](https://github.com/betagouv/acces-cible/issues/587)
+- Refactoring du navigateur utilisé pour les tests. [#545](https://github.com/betagouv/acces-cible/issues/545)
+- Suppression de la logique liée à la colonne `current` et à la colonne `url` de la table `audits`. [#580](https://github.com/betagouv/acces-cible/issues/580), [#582](https://github.com/betagouv/acces-cible/issues/582), [#573](https://github.com/betagouv/acces-cible/issues/573)
