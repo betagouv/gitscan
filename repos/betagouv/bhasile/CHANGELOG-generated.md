@@ -1,29 +1,44 @@
-## Changelog : bhasile (30 derniers jours, au 18 juin 2026)
+## Changelog : bhasile (30 derniers jours, au 22 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de bhasile se concentrent sur l'amélioration significative du parcours de transformation des structures d'hébergement, avec l'ajout de formulaires dédiés, la gestion des validations et l'intégration de nouveaux champs. Des améliorations ont également été apportées aux statistiques, à l'interface utilisateur et à la gestion des documents.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration du parcours de création et de modification des structures et de leurs transformations, ainsi que sur l'ajout de nouvelles statistiques et indicateurs de performance. Des corrections de bugs et des améliorations techniques ont également été apportées pour stabiliser et optimiser l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des transformations de structures : création, modification et validation des demandes de transformation. ([#1350](https://github.com/betagouv/bhasile/issues/1350), [#1352](https://github.com/betagouv/bhasile/issues/1352), [#1355](https://github.com/betagouv/bhasile/issues/1355), [#1361](https://github.com/betagouv/bhasile/issues/1361), [#1367](https://github.com/betagouv/bhasile/issues/1367), [#1368](https://github.com/betagouv/bhasile/issues/1368), [#1369](https://github.com/betagouv/bhasile/issues/1369), [#1371](https://github.com/betagouv/bhasile/issues/1371), [#1372](https://github.com/betagouv/bhasile/issues/1372), [#1373](https://github.com/betagouv/bhasile/issues/1373))
-- Ajout de formulaires spécifiques pour les actes administratifs, les places et les hébergements dans le cadre des transformations. ([#1342](https://github.com/betagouv/bhasile/issues/1342), [#1343](https://github.com/betagouv/bhasile/issues/1343), [#1345](https://github.com/betagouv/bhasile/issues/1345))
-- Amélioration de l'affichage des champs DNA et FINESS lors de la création de structures. ([#1371](https://github.com/betagouv/bhasile/issues/1371))
-- Ajout de statistiques sur les types de places et les structures. ([#1337](https://github.com/betagouv/bhasile/issues/1337), [#1360](https://github.com/betagouv/bhasile/issues/1360))
-- Ajout de la possibilité d'ajouter des avenants aux transformations. ([#1330](https://github.com/betagouv/bhasile/issues/1330))
-- Ajout de logos pour les opérateurs. ([#1286](https://github.com/betagouv/bhasile/issues/1286))
-- Ajout d'un nouveau bloc d'activité. ([#1262](https://github.com/betagouv/bhasile/issues/1262))
-- Amélioration de l'affichage des dates d'expiration des documents. ([#1295](https://github.com/betagouv/bhasile/issues/1295))
+- Ajout d'un bloc de statistiques sur les finances [#1366].
+- Possibilité de lier une campagne à une version de structure [#1379].
+- Ajout de statistiques sur les types de places [#1361].
+- Amélioration de l'affichage des contacts des opérateurs [#1286].
+- Ajout d'un logo pour les opérateurs [#1319].
+- Ajout de la possibilité de créer des structures *ex nihilo* (à partir de zéro) avec des formulaires dédiés pour les documents administratifs, les places et les hébergements [#1277, #1290, #1291].
+- Ajout d'un flux complet pour la fermeture des structures [#1293].
+- Amélioration de l'affichage des dates d'expiration des documents dans le calendrier [#1295].
+- Ajout d'indicateurs d'impact et amélioration de leur affichage [#1331, #1360].
+- Amélioration de la gestion des avenants (extensions/contractions) avec la possibilité de les associer aux transformations [#1330].
+- Ajout de la possibilité de supprimer la première adresse [#1313].
+- Affichage des adresses complètes dans les formulaires de transformation [#1343].
+- Ajout de la possibilité de modifier les transformations [#1283].
+- Amélioration de l'accessibilité (a11y) avec correction d'un problème d'alerte [#1308].
 
 ### Évolutions techniques
-- Refonte de la gestion des transformations avec l'introduction de `StructureVersion`. ([#1258](https://github.com/betagouv/bhasile/issues/1258))
-- Optimisation des performances en déplaçant certaines logiques côté serveur. ([#1272](https://github.com/betagouv/bhasile/issues/1272))
-- Amélioration de la configuration du déploiement sur Scalingo. ([#1303](https://github.com/betagouv/bhasile/issues/1303))
-- Refactoring du repository de transformation. ([#1280](https://github.com/betagouv/bhasile/issues/1280))
-- Ajout de tests E2E pour les nouvelles fonctionnalités. ([#1325](https://github.com/betagouv/bhasile/issues/1325), [#1357](https://github.com/betagouv/bhasile/issues/1357))
-- Mise à jour de plusieurs dépendances.
+- Mise à jour de plusieurs dépendances (React, Next.js, Prisma, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
+- Refactorisation du code lié aux transformations pour une meilleure maintenabilité [#1370, #1380].
+- Amélioration des tests E2E (end-to-end) pour assurer la qualité de l'application [#1329, #1374, #1390, #1394].
+- Optimisation de la gestion du cache et des builds sur Scalingo [#1303].
+- Correction de problèmes liés aux tests de développement [#1374].
+- Ajout de documentation pour les types utilisés dans le code [#1305].
+- Suppression de fichiers de migration obsolètes.
+- Amélioration de la performance en déplaçant certaines opérations côté serveur [#1272].
 
 ### Autres changements
-- Ajout de documentation pour Dependabot. ([#1322](https://github.com/betagouv/bhasile/issues/1322))
-- Amélioration de l'accessibilité (a11y). ([#1308](https://github.com/betagouv/bhasile/issues/1308))
-- Nettoyage du code et suppression de fichiers de migration obsolètes.
-- Amélioration de l'affichage des filiales. ([#1317](https://github.com/betagouv/bhasile/issues/1317))
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout d'un patch DSFR (Design System Française) [#1388].
+- Correction de bugs mineurs liés à l'affichage et au comportement de certains composants [#1325, #1340, #1346, #1347, #1351, #1352, #1355, #1356, #1357, #1358, #1362, #1363, #1364, #1365, #1371, #1373, #1375, #1381, #1382, #1385, #1387, #1391, #1392, #1393].
+- Ajout de logs plus précis pour le backfill des versions de structure [#1393].
+- Correction de problèmes liés à l'utilisation des tests E2E avec les versions de structure [#1390, #1394].
+- Amélioration de la gestion des erreurs et des validations dans les formulaires [#1296, #1306, #1311, #1314, #1316, #1317].
+- Ajout de règles de préremplissage pour la création de structures à partir de transformations [#1339].
+- Ajout de liens vers les transformations dans les cartes de structure [#1367, #1368].
+- Ajout d'un indicateur visuel pour les structures en cours de finalisation [#1369].
+- Correction de problèmes d'affichage des champs DNA et FINESS lors de la création de structures [#1371].
+- Ajout de la possibilité de supprimer des transformations [#1365].
+- Prévention de la duplication des numéros DNA ou FINESS [#1375].
+- Ajout d'une indication visuelle pour les filiales [#1317].

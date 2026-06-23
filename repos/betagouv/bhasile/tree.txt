@@ -33,7 +33,7 @@
 ├── next.config.ts
 ├── package.json
 ├── patches
-│   └── @codegouvfr+react-dsfr+1.32.2.patch
+│   └── @codegouvfr+react-dsfr+1.32.4.patch
 ├── postcss.config.mjs
 ├── prisma
 │   ├── client.ts
@@ -230,13 +230,20 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260615130113_new_indicator_for_impact
 │   │   │   └── migration.sql
+│   │   ├── 20260616153230_transformation_oncascade_deletion
+│   │   │   └── migration.sql
 │   │   ├── 20260617094548_structure_finess_and_code_link_descriptions
+│   │   │   └── migration.sql
+│   │   ├── 20260618090000_add_campaign_version_link
+│   │   │   └── migration.sql
+│   │   ├── 20260618090100_drop_force_historize
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
 │   │   ├── adresse.prisma
 │   │   ├── budget.prisma
+│   │   ├── campaign.prisma
 │   │   ├── contact.prisma
 │   │   ├── controle.prisma
 │   │   ├── cpom.prisma
@@ -321,7 +328,8 @@
 │   │   ├── 20260410-migrate-structure-notes-to-note.ts
 │   │   ├── 20260414-move-indicateurs-financiers.ts
 │   │   ├── 20260521-backfill-structure-version.ts
-│   │   └── 20260610-backfill-structure-finess-and-descriptions.ts
+│   │   ├── 20260610-backfill-structure-finess-and-descriptions.ts
+│   │   └── 20260617-create-transformation-form-definitions.ts
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
@@ -435,6 +443,12 @@
 │   │   │   │   ├── stats
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── StatistiquesHeader.tsx
+│   │   │   │   │   │   ├── finances
+│   │   │   │   │   │   │   ├── BalanceChart.tsx
+│   │   │   │   │   │   │   ├── FinanceCards.tsx
+│   │   │   │   │   │   │   ├── FinanceTypeSelector.tsx
+│   │   │   │   │   │   │   ├── FinancesBlock.tsx
+│   │   │   │   │   │   │   └── FinancesStatsTable.tsx
 │   │   │   │   │   │   ├── structures
 │   │   │   │   │   │   │   ├── GenericTypeChart.tsx
 │   │   │   │   │   │   │   ├── StructuresBlock.tsx
@@ -782,6 +796,7 @@
 │   │   │   │   ├── structure.db.type.ts
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
+│   │   │   │   ├── structure.sql.ts
 │   │   │   │   └── structure.util.ts
 │   │   │   ├── transformations
 │   │   │   │   ├── [id]
@@ -803,6 +818,7 @@
 │   │   │   ├── InformationCard.tsx
 │   │   │   ├── Logo.tsx
 │   │   │   ├── Menu.tsx
+│   │   │   ├── MultiInformationCard.tsx
 │   │   │   ├── NameChangeNotice.tsx
 │   │   │   ├── NameChangeNoticeClient.tsx
 │   │   │   ├── NoDataAccordion.tsx
@@ -839,6 +855,7 @@
 │   │   │   │   ├── SeeFileButton.tsx
 │   │   │   │   ├── SegmentedControl.tsx
 │   │   │   │   ├── SimplePagination.tsx
+│   │   │   │   ├── StackedBarLineChart.tsx
 │   │   │   │   └── Table.tsx
 │   │   │   ├── filters
 │   │   │   │   ├── Filters.tsx
@@ -1329,12 +1346,14 @@
 │   │   ├── fixtures
 │   │   │   ├── files
 │   │   │   │   └── sample.pdf
+│   │   │   ├── sample.pdf
 │   │   │   └── test.ts
 │   │   ├── global-setup.ts
 │   │   ├── pages
 │   │   │   ├── cpom-creation.page.ts
 │   │   │   ├── cpom-modification.page.ts
-│   │   │   └── structure-modification.page.ts
+│   │   │   ├── structure-modification.page.ts
+│   │   │   └── upload.helper.ts
 │   │   ├── playwright.config.ts
 │   │   ├── proconnect-login.ts
 │   │   ├── seed
@@ -1444,6 +1463,7 @@
 │   ├── schemas
 │   │   └── forms
 │   │       └── base
+│   │           ├── dna.schema.test.ts
 │   │           └── finess.schema.test.ts
 │   ├── scripts
 │   │   └── parse-date.test.ts
@@ -1488,4 +1508,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-393 directories, 1097 files
+397 directories, 1113 files
