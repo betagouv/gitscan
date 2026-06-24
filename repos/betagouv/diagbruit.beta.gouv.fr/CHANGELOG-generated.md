@@ -1,18 +1,13 @@
 ## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 5 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur et la correction de bugs. L'ajout d'un lien vers la documentation permet une meilleure autonomie des utilisateurs. Des améliorations ont également été apportées à l'affichage des zones bruyantes et à la gestion des références de parcelles.
+Cette mise à jour corrige un problème d'affichage des zones bruyantes associées à une alerte. Les zones bruyantes sont désormais affichées de manière unique pour chaque alerte, améliorant ainsi la clarté et la précision des informations présentées aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers la documentation dans le pied de page pour faciliter l'accès à l'aide et aux informations sur l'outil. [#81](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/81)
-- Amélioration de l'affichage des zones bruyantes par alerte, en affichant uniquement les zones uniques. [#93](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/93)
-- Ajout de paramètres de requête spécifiques pour cibler les références de parcelles. [#80](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/80)
-- Correction de l'affichage du libellé du risque pour le résumé. [#93](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/93)
+- Correction d'un bug où les zones bruyantes pouvaient être dupliquées dans l'affichage des alertes. Les zones sont maintenant affichées une seule fois par alerte. [#93](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/93)
 
 ### Évolutions techniques
-- Amélioration de l'isolation des fonctions de classification sonore avec des règles cumulatives. [#80](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/80)
-- Ajout de tests pour les fonctions d'isolation. [#80](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/80)
-- Correction d'un problème de ciblage de lien dans la documentation. [#81](https://github.com/betagouv/diagbruit.beta.gouv.fr/pull/81)
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Correction de la formulation de certains textes.
+- Aucune autre modification notable.
