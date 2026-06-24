@@ -319,6 +319,8 @@
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   ├── commentaires
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── cycles
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   ├── default.tsx
 │   │   │   │   │   │   │   │   │       │   │   ├── detail
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
@@ -329,6 +331,8 @@
 │   │   │   │   │   │   │   │   │       │   │   ├── priorisation
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   ├── progression
+│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │       │   │   ├── suivi
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   └── tabs-wrapper.tsx
 │   │   │   │   │   │   │   │   │       │   ├── default.tsx
@@ -1378,16 +1382,26 @@
 │   │   │   │   │   ├── use-resolve-actions-by-ids.ts
 │   │   │   │   │   └── use-update-action-explication.ts
 │   │   │   │   ├── audit-labellisation
+│   │   │   │   │   ├── audit-badge
+│   │   │   │   │   │   └── use-audit-status-badge.ts
 │   │   │   │   │   ├── audit-badge-status
+│   │   │   │   │   │   ├── get-request-audit-tooltip.ts
 │   │   │   │   │   │   ├── get-viewer-role.spec.ts
 │   │   │   │   │   │   ├── get-viewer-role.ts
+│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.spec.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
 │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   ├── checklist
 │   │   │   │   │   │   ├── acte-engagement.section.tsx
-│   │   │   │   │   │   ├── ask-premiere-etoile.button.tsx
+│   │   │   │   │   │   ├── actions
+│   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.spec.ts
+│   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.ts
+│   │   │   │   │   │   │   ├── ask-premiere-etoile.button.tsx
+│   │   │   │   │   │   │   └── begin-audit.button.tsx
 │   │   │   │   │   │   ├── candidature-documents.section.tsx
+│   │   │   │   │   │   ├── checklist-actions.spec.tsx
+│   │   │   │   │   │   ├── checklist-actions.tsx
 │   │   │   │   │   │   ├── container.tsx
 │   │   │   │   │   │   ├── format-reponse-attendue.spec.ts
 │   │   │   │   │   │   ├── format-reponse-attendue.ts
@@ -1405,8 +1419,9 @@
 │   │   │   │   │   ├── criteres-labellisation.view.tsx
 │   │   │   │   │   ├── parcours-to-checklist.spec.ts
 │   │   │   │   │   ├── parcours-to-checklist.ts
-│   │   │   │   │   ├── referentiel.ts
-│   │   │   │   │   └── role-mesures.ts
+│   │   │   │   │   ├── premiere-etoile-demande-pending.spec.ts
+│   │   │   │   │   ├── premiere-etoile-demande-pending.ts
+│   │   │   │   │   └── use-referent-roles-defined.ts
 │   │   │   │   ├── audits
 │   │   │   │   │   ├── ActionAuditDetail.stories.tsx
 │   │   │   │   │   ├── ActionAuditDetail.tsx
@@ -1506,6 +1521,7 @@
 │   │   │   │   │   │   ├── available-audit.types.ts
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   └── use-request-audit.ts
+│   │   │   │   │   │   ├── start-audit.button.spec.tsx
 │   │   │   │   │   │   ├── start-audit.button.tsx
 │   │   │   │   │   │   ├── start-audit.form.spec.tsx
 │   │   │   │   │   │   ├── start-audit.form.tsx
@@ -6066,9 +6082,9 @@
 │   │   │   │   ├── historique-seed.ts
 │   │   │   │   └── historique.pom.ts
 │   │   │   ├── labellisations
+│   │   │   │   ├── audit-conduct-tabs-auditeur.spec.ts
 │   │   │   │   ├── checklist-acte-engagement.spec.ts
 │   │   │   │   ├── checklist-candidature-documents.spec.ts
-│   │   │   │   ├── checklist-demande-audit.spec.ts
 │   │   │   │   ├── checklist-role-mesures.spec.ts
 │   │   │   │   ├── checklist-score-minimum.spec.ts
 │   │   │   │   ├── checklist-statut-refresh.spec.ts
@@ -6384,6 +6400,13 @@
 │   │   │   │   ├── labellisations
 │   │   │   │   │   ├── action-audit-statut.enum.schema.ts
 │   │   │   │   │   ├── action-audit-statut.schema.ts
+│   │   │   │   │   ├── audit-labellisation-referentiel.ts
+│   │   │   │   │   ├── audit-request-availability
+│   │   │   │   │   │   ├── audit-request-availability.rules.spec.ts
+│   │   │   │   │   │   └── audit-request-availability.rules.ts
+│   │   │   │   │   ├── available-audit-types
+│   │   │   │   │   │   ├── available-audit-types.spec.ts
+│   │   │   │   │   │   └── available-audit-types.ts
 │   │   │   │   │   ├── can-modify-labellisation-preuves
 │   │   │   │   │   │   ├── can-modify-labellisation-preuves.rules.spec.ts
 │   │   │   │   │   │   └── can-modify-labellisation-preuves.rules.ts
@@ -6402,6 +6425,9 @@
 │   │   │   │   │   │   └── request-labellisation.rules.ts
 │   │   │   │   │   ├── requestable-star.spec.ts
 │   │   │   │   │   ├── requestable-star.ts
+│   │   │   │   │   ├── role-mesures
+│   │   │   │   │   │   ├── role-mesures.spec.ts
+│   │   │   │   │   │   └── role-mesures.ts
 │   │   │   │   │   ├── start-audit
 │   │   │   │   │   │   ├── start-audit.rules-errors.ts
 │   │   │   │   │   │   └── start-audit.rules.ts
@@ -6738,6 +6764,10 @@
 │       │   │   │   ├── Field.stories.tsx
 │       │   │   │   ├── Field.tsx
 │       │   │   │   ├── FieldMessage.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── FloatingPanel
+│       │   │   │   ├── FloatingPanel.stories.tsx
+│       │   │   │   ├── FloatingPanel.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── Footer
 │       │   │   │   ├── Footer.stories.tsx
@@ -7197,4 +7227,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1249 directories, 6148 files
+1257 directories, 6170 files

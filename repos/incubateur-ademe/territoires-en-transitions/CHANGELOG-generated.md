@@ -1,41 +1,32 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 26 juin 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 23 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment sur la gestion des plans d'action et des preuves, avec une attention particulière portée à la duplication de plans et à la visualisation des données. Des efforts importants ont également été consacrés à la sécurité, à la performance et à la maintenance technique du code. L'import de plans via Excel progresse avec l'implémentation de nouvelles étapes et une gestion plus robuste des données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur autour des audits et de la labellisation, avec une nouvelle interface pour le suivi des audits et la gestion des cycles. Des améliorations significatives ont également été apportées à la gestion des plans d'action, notamment avec la possibilité de les dupliquer et d'éditer les actions directement dans un tableau. Des corrections de sécurité et des optimisations de performance ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Possibilité de dupliquer un plan d'action existant, incluant les budgets, les preuves et les notes associées.
-- Amélioration de l'affichage des badges de statut et de priorité des actions dans les tableaux.
-- Ajout d'une modale de clôture d'audit en deux étapes pour une meilleure confirmation.
-- Les utilisateurs ADEME peuvent désormais télécharger les preuves d'autres collectivités.
-- Amélioration de la gestion des statuts des tâches et des actions.
-- Ajout d'une fonctionnalité pour verrouiller les preuves de labellisation après validation d'un audit.
-- Possibilité de filtrer les actions par statut et priorité dans les vues "Toutes les actions" et "Suivi personnel".
-- Amélioration de l'affichage des informations dans le header d'une mesure, avec un affichage "sticky" sur les grands écrans.
-- Ajout d'une fonctionnalité pour afficher les scores indicatifs dans les nouvelles sous-mesures.
-- Ajout d'une action "Dupliquer l'action" dans les menus de fiche.
-- Amélioration de la page "Mesure désactivée" avec une gestion des timeouts et une meilleure synchronisation des données.
-- Ajout d'un bandeau pour basculer vers la nouvelle vue de labellisation.
+- **Audit et Labellisation :** Nouvelle interface pour le suivi des audits, incluant des onglets pour le suivi et les cycles [#a8b3cb7](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a8b3cb7).
+- **Audit et Labellisation :**  Possibilité de demander un audit en fonction de la disponibilité réelle [#d9e5d33](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d9e5d33).
+- **Audit et Labellisation :** Affichage d'un badge de statut d'audit sur l'onglet correspondant [#bc4c1e8](https://github.com/incubateur-ademe/territoires-en-transitions/commit/bc4c1e8).
+- **Plans d'action :** Ajout de la fonctionnalité de duplication d'un plan d'action [#a428150](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a428150).
+- **Plans d'action :** Copie des budgets détaillés lors de la duplication d'un plan [#3214abc](https://github.com/incubateur-ademe/territoires-en-transitions/commit/3214abc).
+- **Actions :** Possibilité d'éditer les actions directement dans un tableau, avec des options de suppression et d'ouverture simplifiées [#d1da417](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d1da417).
+- **Actions :** Ajout d'un filtre pour afficher les actions sans priorité ou sans statut [#396fdd1](https://github.com/incubateur-ademe/territoires-en-transitions/commit/396fdd1).
+- **Interface Utilisateur :** Nouvelle primitive `FloatingPanel` non-modale pour les composants de l'interface utilisateur [#5510e5e](https://github.com/incubateur-ademe/territoires-en-transitions/commit/5510e5e).
+- **Import de plans :** Amélioration du processus d'import de plans via l'ajout d'une étape de scoring de confiance des actions [#d92eb79](https://github.com/incubateur-ademe/territoires-en-transitions/commit/d92eb79).
 
 ### Évolutions techniques
-- Refactorings importants du code, notamment dans les domaines de l'import de plans (AI Plan Import) et de la gestion des labels.
-- Amélioration de la sécurité avec des corrections pour bloquer les injections SQL et les attaques de type IDOR.
-- Optimisation des performances, notamment en supprimant des dépendances inutiles et en améliorant la gestion des requêtes.
-- Mise à jour des dépendances (Next.js, eslint-config-next).
-- Suppression de code obsolète et de fichiers inutilisés.
-- Utilisation de TypeScript pour améliorer la robustesse du code.
-- Amélioration de la gestion des tests, avec migration vers Vitest et correction de tests existants.
-- Implémentation d'un client Gemini structuré pour l'IA.
-- Refonte de l'éditeur de texte riche (RichTextEditor) pour une meilleure gestion des sauts de ligne.
-- Amélioration de la gestion des erreurs et des logs.
-- Utilisation de Row-Level Security (RLS) pour restreindre l'accès aux données.
+- **Refactoring :** Refactorisation de l'infrastructure `role/referentiel` vers le domaine, avec renommage des champs du view-model [#6bf4002](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6bf4002).
+- **Base de données :** Suppression de l'implémentation de la sécurité au niveau des lignes (RLS) du `DatabaseService` [#7217fd4](https://github.com/incubateur-ademe/territoires-en-transitions/commit/7217fd4).
+- **Authentification :** Amélioration de la sécurité en bloquant l'IDOR sur les tickets bugs/supports via le SDK Notion [#06999e5](https://github.com/incubateur-ademe/territoires-en-transitions/commit/06999e5).
+- **Sécurité :** Correction de vulnérabilités de sécurité (phishing, SSRF) identifiées lors de tests de pénétration [#2930c8b](https://github.com/incubateur-ademe/territoires-en-transitions/commit/2930c8b), [#8a731f8](https://github.com/incubateur-ademe/territoires-en-transitions/commit/8a731f8).
+- **Déploiement :**  Mises à jour de la configuration CI/CD et des dépendances.
+- **Tests :** Ajout et mise à jour de tests E2E pour les nouvelles fonctionnalités et corrections de bugs.
+- **Typescript:** Amélioration du typage et de la cohérence du code.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration de la gestion des fichiers et des documents.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de tests unitaires et d'intégration.
-- Amélioration de la structure du projet et de l'organisation du code.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Synchronisation des données CRM depuis les outils.
-- Ajustement des données de test pour une meilleure couverture.
+- **Documentation :** Mise à jour de la documentation.
+- **Nettoyage de code :** Suppression de fichiers et de code inutilisés dans divers packages et modules.
+- **Conventions de code :** Uniformisation des conventions de nommage (renommage de suffixes `.rule` en `.rules` et `.error` en `.errors`).
+- **Améliorations UI :** Diverses améliorations de l'interface utilisateur et corrections de bugs visuels.
+- **Gestion des dépendances :** Mise à jour de certaines dépendances (Next.js, eslint-config-next).
+- **Refonte des tests:** Migration des tests Storybook vers Vitest.
