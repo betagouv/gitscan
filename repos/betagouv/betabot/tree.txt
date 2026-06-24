@@ -3,7 +3,8 @@
 ├── .env.example
 ├── .github
 │   └── workflows
-│       └── eval.yml
+│       ├── eval.yml
+│       └── test.yml
 ├── .gitignore
 ├── .talismanrc
 ├── Dockerfile
@@ -18,8 +19,10 @@
 │   ├── generate.ts
 │   ├── report.ts
 │   ├── run.ts
-│   └── test-sqlite.ts
+│   ├── test-sqlite.ts
+│   └── trend.ts
 ├── fetch-docs.ts
+├── fetch-messagerie-docs.ts
 ├── fetch-wttj.ts
 ├── get-data.sh
 ├── package-lock.json
@@ -33,21 +36,32 @@
 │   ├── matrix.md
 │   └── search.md
 ├── src
+│   ├── __tests__
+│   │   ├── entity-detector.test.ts
+│   │   └── fixtures
+│   │       └── index
+│   │           ├── members.json
+│   │           └── startups.json
 │   ├── cli.ts
 │   ├── config.ts
 │   ├── connectors
 │   │   └── matrix.ts
 │   ├── embed.ts
+│   ├── entity-detector.ts
 │   ├── idb-persist.ts
 │   ├── index.ts
 │   ├── markdown.ts
 │   ├── orchestrator.ts
+│   ├── parse-startup-changelog.ts
+│   ├── prompt.ts
 │   ├── search.ts
 │   ├── tools
 │   │   ├── calendar.ts
+│   │   ├── changelog-startups.ts
 │   │   ├── docs-base.ts
 │   │   ├── docs-dsfr.ts
 │   │   ├── docs-franceconnect.ts
+│   │   ├── docs-messagerie.ts
 │   │   ├── docs-proconnect.ts
 │   │   ├── docs.ts
 │   │   ├── incubators.ts
@@ -60,4 +74,4 @@
 │   ├── types.d.ts
 │   └── watcher.ts
 └── tsconfig.json
-10 directories, 52 files
+13 directories, 63 files
