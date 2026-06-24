@@ -11,6 +11,7 @@
 │   │   ├── bug.yml
 │   │   ├── config.yml
 │   │   └── enhancement.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
 │   ├── release.yml
 │   └── workflows
 │       ├── blocked.yaml
@@ -26,7 +27,8 @@
 │       ├── tchap-publish-embedded-packages.yaml
 │       ├── test.yaml
 │       ├── translations-download.yaml
-│       └── translations-upload.yaml
+│       ├── translations-upload.yaml
+│       └── zizmor.yml
 ├── .gitignore
 ├── .node-version
 ├── .postcssrc.json
@@ -46,7 +48,9 @@
 ├── WIDGET_TEST.md
 ├── babel.config.cjs
 ├── backend
+│   ├── dev_homeserver-othersite.yaml
 │   ├── dev_homeserver.yaml
+│   ├── dev_livekit-othersite.yaml
 │   ├── dev_livekit.yaml
 │   ├── dev_nginx.conf
 │   ├── dev_tls_local-ca.crt
@@ -55,13 +59,15 @@
 │   ├── dev_tls_m.localhost.key
 │   ├── dev_tls_setup
 │   ├── ew.test.config.json
-│   ├── playwright_homeserver.yaml
-│   └── redis.conf
+│   ├── ew.test.othersite.config.json
+│   ├── playwright_homeserver-othersite.yaml
+│   └── playwright_homeserver.yaml
 ├── codecov.yaml
 ├── config
 │   ├── config.devenv.json
 │   ├── config.sample.json
 │   ├── config_netlify_preview.json
+│   ├── config_netlify_preview_sdk.json
 │   ├── httpd.conf
 │   ├── netlify_redirects
 │   ├── nginx.conf
@@ -186,14 +192,27 @@
 │   ├── create-call.spec.ts
 │   ├── errors.spec.ts
 │   ├── fixtures
+│   │   ├── fixture-mobile-create.ts
+│   │   ├── jwt-token.ts
 │   │   └── widget-user.ts
 │   ├── global.d.ts
 │   ├── landing.spec.ts
+│   ├── mobile
+│   │   └── create-call-mobile.spec.ts
 │   ├── reconnect.spec.ts
 │   ├── restricted-sfu.spec.ts
 │   ├── sfu-reconnect-bug.spec.ts
+│   ├── spa-call-sticky.spec.ts
+│   ├── spa-helpers.ts
 │   └── widget
-│       └── simple-create.spec.ts
+│       ├── federated-call.test.ts
+│       ├── hotswap-legacy-compat.test.ts
+│       ├── huddle-call.test.ts
+│       ├── pip-call-button-interaction.test.ts
+│       ├── pip-call.test.ts
+│       ├── simple-create.spec.ts
+│       ├── test-helpers.ts
+│       └── voice-call-dm.spec.ts
 ├── playwright-backend-docker-compose.override.yml
 ├── playwright-backend-docker-compose.yml
 ├── playwright.config.ts
@@ -204,8 +223,14 @@
 │   ├── dockerbuild.sh
 │   ├── playwright-webserver-command.sh
 │   └── reformat-release-notes.py
+├── sdk
+│   ├── README.md
+│   ├── helper.ts
+│   ├── index.html
+│   └── main.ts
 ├── src
 │   ├── @types
+│   │   ├── dom-mediacapture-transform.d.ts
 │   │   ├── global.d.ts
 │   │   ├── i18next.d.ts
 │   │   ├── matrix-js-sdk.d.ts
@@ -261,9 +286,7 @@
 │   │   ├── AnalyticsNotice.tsx
 │   │   ├── PosthogAnalytics.test.ts
 │   │   ├── PosthogAnalytics.ts
-│   │   ├── PosthogEvents.ts
-│   │   ├── PosthogSpanProcessor.ts
-│   │   └── RageshakeSpanProcessor.ts
+│   │   └── PosthogEvents.ts
 │   ├── auth
 │   │   ├── LoginPage.module.css
 │   │   ├── LoginPage.tsx
@@ -365,27 +388,15 @@
 │   │   ├── MatrixAudioRenderer.test.tsx
 │   │   ├── MatrixAudioRenderer.tsx
 │   │   ├── TrackProcessorContext.tsx
+│   │   ├── openIDSFU.test.ts
 │   │   ├── openIDSFU.ts
 │   │   ├── options.ts
-│   │   ├── useECConnectionState.test.tsx
-│   │   ├── useECConnectionState.ts
-│   │   └── useLivekit.ts
+│   │   └── useECConnectionState.ts
 │   ├── main.tsx
 │   ├── mediapipe
 │   │   └── imageSegmenter
 │   │       ├── README.md
 │   │       └── selfie_segmenter.tflite
-│   ├── otel
-│   │   ├── OTelCall.ts
-│   │   ├── OTelCallAbstractMediaStreamSpan.ts
-│   │   ├── OTelCallFeedMediaStreamSpan.ts
-│   │   ├── OTelCallMediaStreamTrackSpan.ts
-│   │   ├── OTelCallTransceiverMediaStreamSpan.ts
-│   │   ├── OTelGroupCallMembership.ts
-│   │   ├── ObjectFlattener.test.ts
-│   │   ├── ObjectFlattener.ts
-│   │   ├── otel.test.ts
-│   │   └── otel.ts
 │   ├── profile
 │   │   └── useProfile.ts
 │   ├── reactions
@@ -424,8 +435,6 @@
 │   │   ├── LayoutToggle.tsx
 │   │   ├── LobbyView.module.css
 │   │   ├── LobbyView.tsx
-│   │   ├── MuteStates.test.tsx
-│   │   ├── MuteStates.ts
 │   │   ├── RageshakeRequestModal.tsx
 │   │   ├── ReactionAudioRenderer.test.tsx
 │   │   ├── ReactionAudioRenderer.tsx
@@ -442,18 +451,15 @@
 │   │   ├── __snapshots__
 │   │   │   ├── GroupCallErrorBoundary.test.tsx.snap
 │   │   │   └── InCallView.test.tsx.snap
-│   │   ├── checkForParallelCalls.test.ts
-│   │   ├── checkForParallelCalls.ts
-│   │   ├── useActiveFocus.ts
 │   │   ├── useJoinRule.ts
 │   │   ├── useLoadGroupCall.ts
 │   │   ├── useRoomAvatar.ts
 │   │   ├── useRoomName.ts
 │   │   └── useRoomState.ts
-│   ├── rtcSessionHelpers.test.ts
 │   ├── rtcSessionHelpers.ts
 │   ├── settings
 │   │   ├── DeveloperSettingsTab.module.css
+│   │   ├── DeveloperSettingsTab.test.tsx
 │   │   ├── DeveloperSettingsTab.tsx
 │   │   ├── DeviceSelection.module.css
 │   │   ├── DeviceSelection.tsx
@@ -465,6 +471,9 @@
 │   │   ├── RageshakeButton.tsx
 │   │   ├── SettingsModal.module.css
 │   │   ├── SettingsModal.tsx
+│   │   ├── __snapshots__
+│   │   │   └── DeveloperSettingsTab.test.tsx.snap
+│   │   ├── rageshake.test.ts
 │   │   ├── rageshake.ts
 │   │   ├── settings.ts
 │   │   ├── submit-rageshake.test.ts
@@ -519,23 +528,71 @@
 │   ├── state
 │   │   ├── AppViewModel.ts
 │   │   ├── Behavior.ts
+│   │   ├── CallViewModel
+│   │   │   ├── CallNotificationLifecycle.test.ts
+│   │   │   ├── CallNotificationLifecycle.ts
+│   │   │   ├── CallViewModel.test.ts
+│   │   │   ├── CallViewModel.ts
+│   │   │   ├── CallViewModelTestUtils.ts
+│   │   │   ├── LayoutSwitch.test.ts
+│   │   │   ├── LayoutSwitch.ts
+│   │   │   ├── localMember
+│   │   │   │   ├── HomeserverConnected.test.ts
+│   │   │   │   ├── HomeserverConnected.ts
+│   │   │   │   ├── LocalMember.test.ts
+│   │   │   │   ├── LocalMember.ts
+│   │   │   │   ├── LocalTransport.test.ts
+│   │   │   │   ├── LocalTransport.ts
+│   │   │   │   ├── Publisher.test.ts
+│   │   │   │   └── Publisher.ts
+│   │   │   └── remoteMembers
+│   │   │       ├── Connection.test.ts
+│   │   │       ├── Connection.ts
+│   │   │       ├── ConnectionFactory.ts
+│   │   │       ├── ConnectionManager.test.ts
+│   │   │       ├── ConnectionManager.ts
+│   │   │       ├── ECConnectionFactory.test.ts
+│   │   │       ├── MatrixLivekitMembers.test.ts
+│   │   │       ├── MatrixLivekitMembers.ts
+│   │   │       ├── MatrixMemberMetadata.test.ts
+│   │   │       ├── MatrixMemberMetadata.ts
+│   │   │       └── integration.test.ts
 │   │   ├── CallViewModel.test.ts
 │   │   ├── CallViewModel.ts
+│   │   ├── CallViewModelWidget.test.ts
 │   │   ├── GridLikeLayout.ts
 │   │   ├── MediaDevices.ts
-│   │   ├── MediaViewModel.test.ts
-│   │   ├── MediaViewModel.ts
 │   │   ├── MuteAllAudioModel.test.ts
 │   │   ├── MuteAllAudioModel.ts
+│   │   ├── MuteStates.test.ts
+│   │   ├── MuteStates.ts
+│   │   ├── ObservableScope.test.ts
 │   │   ├── ObservableScope.ts
 │   │   ├── OneOnOneLayout.ts
 │   │   ├── PipLayout.ts
+│   │   ├── SessionBehaviors.ts
 │   │   ├── SpotlightExpandedLayout.ts
 │   │   ├── TileStore.ts
 │   │   ├── TileViewModel.ts
-│   │   ├── ViewModel.ts
-│   │   ├── observeSpeaker.test.ts
-│   │   └── observeSpeaker.ts
+│   │   ├── VolumeControls.ts
+│   │   ├── initialMuteState.test.ts
+│   │   ├── initialMuteState.ts
+│   │   ├── layout-types.ts
+│   │   ├── media
+│   │   │   ├── LocalScreenShareViewModel.ts
+│   │   │   ├── LocalUserMediaViewModel.ts
+│   │   │   ├── MediaItem.ts
+│   │   │   ├── MediaViewModel.test.ts
+│   │   │   ├── MediaViewModel.ts
+│   │   │   ├── MemberMediaViewModel.ts
+│   │   │   ├── RemoteScreenShareViewModel.ts
+│   │   │   ├── RemoteUserMediaViewModel.ts
+│   │   │   ├── ScreenShareViewModel.ts
+│   │   │   ├── UserMediaViewModel.ts
+│   │   │   ├── observeRtpStreamStats.ts
+│   │   │   ├── observeSpeaker.test.ts
+│   │   │   └── observeSpeaker.ts
+│   │   └── observeTrackReference.ts
 │   ├── tabs
 │   │   ├── Tabs.module.css
 │   │   └── Tabs.tsx
@@ -557,15 +614,12 @@
 │   ├── useBehavior.ts
 │   ├── useCallViewKeyboardShortcuts.test.tsx
 │   ├── useCallViewKeyboardShortcuts.ts
-│   ├── useErrorBoundary.test.tsx
-│   ├── useErrorBoundary.ts
 │   ├── useEvents.test.tsx
 │   ├── useEvents.ts
 │   ├── useInitial.ts
 │   ├── useLatest.ts
 │   ├── useLocalStorage.test.tsx
 │   ├── useLocalStorage.ts
-│   ├── useMatrixRTCSessionJoinState.ts
 │   ├── useMatrixRTCSessionMemberships.ts
 │   ├── useMediaQuery.ts
 │   ├── useMergedRefs.ts
@@ -576,7 +630,6 @@
 │   ├── useTheme.ts
 │   ├── useWakeLock.ts
 │   ├── utils
-│   │   ├── abortHandle.ts
 │   │   ├── array.ts
 │   │   ├── displayname-integration.test.ts
 │   │   ├── displayname.test.ts
@@ -593,12 +646,16 @@
 │   │   ├── spa.ts
 │   │   ├── test-fixtures.ts
 │   │   ├── test-viewmodel.ts
-│   │   └── test.ts
+│   │   ├── test.ts
+│   │   ├── videoFit.test.ts
+│   │   └── videoFit.ts
 │   ├── vitest.setup.ts
+│   ├── widget.test.ts
 │   └── widget.ts
 ├── tsconfig.json
 ├── vite-embedded.config.ts
+├── vite-sdk.config.ts
 ├── vite.config.ts
 ├── vitest.config.ts
 └── yarn.lock
-91 directories, 512 files
+97 directories, 563 files

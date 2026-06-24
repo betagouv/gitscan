@@ -1,12 +1,14 @@
-## Changelog : element-call (30 derniers jours, au 24 mars 2026)
+## Changelog : element-call (30 derniers jours, au 2 juin 2026)
 
 ### Résumé
-Ce changelog reflète une transition importante du projet, avec un renommage de "TCHAP" à "element-call-tchap".  Les publications pour les applications Android et iOS ont été supprimées, et des ajustements ont été apportés à l'environnement de CI/CD pour intégrer npm et corriger un problème spécifique sur Firefox avec certains appareils utilisant un proxy.
+Cette mise à jour apporte principalement une mise à niveau vers la version 0.18.0, incluant des corrections et améliorations internes. Les changements visibles pour les utilisateurs sont minimes dans cette version. Une modification du workflow CI/CD a également été effectuée pour supprimer un token npm.
 
 ### Évolutions fonctionnelles
-- Suppression des publications des applications Android et iOS.
+*   Aucune évolution fonctionnelle majeure n'est présente dans cette version.
 
 ### Évolutions techniques
-- Renommage du projet de "TCHAP" à "element-call-tchap" [609e833](https://github.com/tchapgouv/element-call/commit/609e833).
-- Intégration de npm dans le pipeline CI pour une meilleure gestion des dépendances [9535c8c](https://github.com/tchapgouv/element-call/commit/9535c8c).
-- Correction d'un problème de compatibilité sur Firefox avec les appareils utilisant un proxy [84331e0](https://github.com/tchapgouv/element-call/commit/84331e0).
+*   Mise à niveau vers la version 0.18.0 [#2](https://github.com/tchapgouv/element-call/pull/2)
+*   Suppression du token npm dans le workflow CI/CD pour renforcer la sécurité.
+
+### Autres changements
+*   Publication de la version v0.18.0.
