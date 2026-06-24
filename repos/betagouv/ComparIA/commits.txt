@@ -1,3 +1,21 @@
+2026-06-23T16:54:17+02:00 - ad4acb88 - Elie Gavoty : Merge pull request #542 from betagouv/feat/content-safety-guardrail
+2026-06-23T16:28:06+02:00 - 4b88ee2d - Elie Gavoty : Merge pull request #540 from betagouv/add-glm-5.2
+2026-06-23T14:52:50+03:00 - a13408c6 - Simon : Add GLM 5.2 to the model catalog
+2026-06-23T14:33:24+03:00 - 00f5e876 - Simon : Update README.md
+2026-06-23T13:57:10+02:00 - 085af79e - Axolotle : Merge pull request #545 from betagouv/fix-arena-mobile
+2026-06-23T13:43:21+02:00 - 80a07b6f - Axolotle : Merge pull request #391 from betagouv/fix/llm-ids-validation
+2026-06-23T13:43:03+02:00 - 22437e18 - Axolotle : Merge pull request #463 from betagouv/fix/altcha-token-refresh
+2026-06-23T13:03:15+02:00 - fcbcfb04 - axolotle : refacto(front): reduce min height
+2026-06-23T13:03:15+02:00 - 5a6b2a3e - axolotle : refactor(front): improve arena responsiveness
+2026-06-23T13:03:15+02:00 - 358ae662 - axolotle : fix(front): allow sending new prompt after prompt error
+2026-06-23T12:28:19+02:00 - 775f35a0 - Axolotle : Merge pull request #539 from betagouv/datasets-single-dataset
+2026-06-23T11:33:09+02:00 - 406672b6 - axolotle : refactor(back): update default LOGDIR loc to 'logs/' + unignore 'data/'
+2026-06-22T11:20:31+03:00 - 6609ceab - Simon : feat(arena): add content-safety guardrail on user prompts
+2026-06-22T10:25:42+02:00 - 978856db - Axolotle : Merge pull request #538 from simonaszilinskas/da-minimax-m3
+2026-06-22T10:23:42+02:00 - 72194186 - Axolotle : Merge pull request #490 from weblate/weblate-comparia-develop
+2026-06-22T10:21:19+02:00 - c675983f - Axolotle : Merge branch 'develop' into weblate-comparia-develop
+2026-06-16T09:37:10+03:00 - 1f6ee069 - Simon : Consolidate datasets page to a single dataset
+2026-06-15T19:14:14+03:00 - b59aa436 - Simon : i18n(da): add Danish translation for MiniMax M3
 2026-06-15T18:02:50+02:00 - 32e33dae - Elie Gavoty : Merge pull request #533 from betagouv/fix-en-locale-bug
 2026-06-15T17:57:59+02:00 - 381bcd65 - Elie Gavoty : Merge pull request #531 from betagouv/add-minimax-m3
 2026-06-15T17:55:56+02:00 - b133a5ce - Elie Gavoty : chore(models): update/build
@@ -23,6 +41,8 @@
 2026-06-10T10:35:04+02:00 - d7442968 - Axolotle : Merge pull request #517 from betagouv/enh-llm-infos
 2026-06-10T09:17:55+02:00 - fa53330d - axolotle : fix(front): reset prompt after successful response
 2026-06-10T09:17:24+02:00 - d21827f2 - axolotle : feat(front): return success boolean on ask
+2026-06-09T18:54:10+02:00 - ac49adac - Simon : fix(captcha): wrap network errors in CaptchaError
+2026-06-09T18:54:10+02:00 - 2ff2c608 - Simon : fix(captcha): refresh altcha token before it expires
 2026-06-09T18:41:39+02:00 - 94279cca - Elie Gavoty : Merge pull request #401 from betagouv/enh-web-search
 2026-06-09T18:26:49+02:00 - 3a832340 - Elie Gavoty : Revert "debug(startup): add timing logs to identify slow init (to revert)"
 2026-06-09T18:24:46+02:00 - 4dcbd561 - Elie Gavoty : fix(redis): prefix web search cache key with instance prefix
@@ -41,6 +61,7 @@
 2026-06-08T15:12:51+02:00 - 75de611f - Elie Gavoty : feat(dataset): add cache based on raw parquet to skip slow DB fetching on normal exports
 2026-06-08T12:13:39+02:00 - 7a83a4be - Elie Gavoty : fix(dataset): fix inverted cohorts exclusion filter again
 2026-06-08T12:03:25+02:00 - 2c42b818 - Simon : perf(dataset): stream export with bounded memory, drop full jsonl
+2026-06-07T10:01:03Z - badc5f82 - Libre : i18n: updated translation for Spanish (Weblate)
 2026-06-05T13:08:32+02:00 - b1a58e1f - axolotle : feat(llms): add db_id field to llms data models
 2026-06-05T13:06:40+02:00 - 846b7995 - axolotle : feat(llms): add db_id to orga, license and llm
 2026-06-05T11:01:09+02:00 - ff923407 - axolotle : feat(front): display web search links in MessageUser
@@ -79,7 +100,17 @@
 2026-06-02T19:09:03+02:00 - 7d623131 - Elie Gavoty : fix(db): migration - avoid migrating like/dislike as keyword annotations
 2026-06-02T17:55:20+02:00 - 5d8405ef - Elie Gavoty : Merge pull request #510 from betagouv/add-new-models
 2026-06-02T17:50:27+02:00 - 38d9dc95 - Elie Gavoty : chore(models): update
+2026-06-02T13:02:18+02:00 - bb0840a7 - Niklas Zechner : i18n: updated translation for Swedish (Weblate)
+2026-06-02T13:02:16+02:00 - 46e2230b - Simonas : i18n: updated translation for English (Weblate)
+2026-06-02T13:02:14+02:00 - 438aa829 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-06-02T13:02:11+02:00 - 54391afa - ELISA TRAGLIA : i18n: updated translation for Italian (Weblate)
+2026-06-02T13:02:08+02:00 - cd64430b - Distance : i18n: updated translation for Spanish (Weblate)
+2026-06-02T13:02:03+02:00 - df72b447 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
+2026-06-02T13:02:01+02:00 - 1952767e - Anonymous : i18n: updated translation for Lithuanian (Weblate)
 2026-06-02T11:21:49+02:00 - 68451fe7 - Simon : catalog: add IBM Granite 4.1 8B (+ en/da translations); archive GPT 5.4, GLM 5, MiniMax M2.5
+2026-06-01T12:01:17+02:00 - 5a4f680f - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
+2026-06-01T12:01:10+02:00 - 29caa557 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-06-01T12:01:05+02:00 - 941b753e - ELISA TRAGLIA : i18n: updated translation for Italian (Weblate)
 2026-06-01T10:11:49+02:00 - 12e1035f - axolotle : chore: format
 2026-05-29T20:25:22+02:00 - 10520ff5 - Elie Gavoty : Merge pull request #507 from betagouv/front-vote-animations
 2026-05-29T17:03:09+02:00 - a394567e - Simon : fix(front): make send/reveal area gradients dark-mode aware
@@ -105,6 +136,9 @@
 2026-05-29T15:57:31+02:00 - 4821f2f9 - Elie Gavoty : db : migration llm_message - estimate token count with tiktoken
 2026-05-29T15:57:31+02:00 - 3f1ada5b - Elie Gavoty : db : migrate hardcode created_at timestamp pour system_message
 2026-05-29T15:57:31+02:00 - 0c1e43dd - Elie Gavoty : db: migration keep empty content llm_message
+2026-05-29T09:01:03+02:00 - ea440885 - ELISA TRAGLIA : i18n: updated translation for Italian (Weblate)
+2026-05-27T09:11:38Z - ec44e2fa - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-05-27T09:11:33Z - b4d1ab9e - ELISA TRAGLIA : i18n: updated translation for Italian (Weblate)
 2026-05-26T15:15:28+02:00 - c1f3cbfc - Elie Gavoty : chore(models): update
 2026-05-26T15:07:11+02:00 - 07567ce7 - Elie Gavoty : Merge pull request #487 from betagouv/models/trinity-large-thinking
 2026-05-26T14:46:52+02:00 - 78c80b41 - Elie Gavoty : Merge pull request #484 from betagouv/i18n/da-gemini-grok
