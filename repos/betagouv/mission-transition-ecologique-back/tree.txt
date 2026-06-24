@@ -5,8 +5,17 @@
 │   │   ├── execute-feature.md
 │   │   ├── quick-fix.md
 │   │   └── sync-docs.md
+│   ├── hooks
+│   │   ├── guard-generated-files.sh
+│   │   ├── lint-before-commit.sh
+│   │   └── remind-importmap.sh
+│   ├── rules
+│   │   └── code-comments.md
 │   └── settings.json
 ├── .github
+│   ├── actions
+│   │   └── setup-workspace
+│   │       └── action.yml
 │   ├── copilot-instructions.md
 │   └── workflows
 │       └── ci.yml
@@ -46,6 +55,8 @@
 │       ├── src
 │       │   ├── app
 │       │   │   ├── (frontend)
+│       │   │   │   ├── canonical-demo
+│       │   │   │   │   └── page.tsx
 │       │   │   │   ├── layout.tsx
 │       │   │   │   ├── page.tsx
 │       │   │   │   └── styles.css
@@ -167,8 +178,11 @@
 │   │   ├── 0003-projects-collection.md
 │   │   ├── 0004-programs-workflow.md
 │   │   ├── 0005-programs-workflow-extended.md
-│   │   └── 0006-programs-form-refactor.md
+│   │   ├── 0006-programs-form-refactor.md
+│   │   ├── 0007-canonical-pivot-format.md
+│   │   └── 0007b-COG_CONVENTION.md
 │   ├── context
+│   │   ├── canonical-pivot-format.md
 │   │   ├── programs-model.md
 │   │   ├── projects-model.md
 │   │   └── seed.md
@@ -188,6 +202,49 @@
 │       ├── synthèse-backoffice.md
 │       └── workflow-programs.png
 ├── eslint.config.mjs
+├── libs
+│   └── canonical
+│       ├── CLAUDE.md
+│       ├── README.md
+│       ├── eslint.config.mjs
+│       ├── project.json
+│       ├── src
+│       │   ├── canonical-program
+│       │   │   ├── CanonicalProgram.ts
+│       │   │   ├── CanonicalProgramValidator.ts
+│       │   │   ├── additional-data
+│       │   │   │   └── additional-data.schema.ts
+│       │   │   ├── canonical-program.schema.ts
+│       │   │   ├── canonical-program.types.ts
+│       │   │   ├── enums.ts
+│       │   │   ├── fields
+│       │   │   │   ├── aide.schema.ts
+│       │   │   │   ├── contenu.schema.ts
+│       │   │   │   ├── eligibilite.schema.ts
+│       │   │   │   └── identite.schema.ts
+│       │   │   └── variants
+│       │   │       └── variante.schema.ts
+│       │   ├── index.ts
+│       │   └── shared
+│       │       ├── cog.ts
+│       │       ├── deepFreeze.ts
+│       │       ├── primitives.ts
+│       │       └── schema
+│       │           ├── cog.ts
+│       │           └── operator.ts
+│       ├── tests
+│       │   ├── fixtures
+│       │   │   ├── valid-full.ts
+│       │   │   └── valid-minimal.ts
+│       │   └── unit
+│       │       ├── CanonicalProgram.spec.ts
+│       │       ├── CanonicalProgramValidator.spec.ts
+│       │       ├── canonical-program.schema.spec.ts
+│       │       └── variante.schema.spec.ts
+│       ├── tsconfig.json
+│       ├── tsconfig.lib.json
+│       ├── tsconfig.spec.json
+│       └── vitest.config.ts
 ├── memory
 │   └── MEMORY.md
 ├── nx.json
@@ -196,4 +253,4 @@
 ├── pnpm-workspace.yaml
 ├── tsconfig.base.json
 └── tsconfig.json
-52 directories, 146 files
+69 directories, 186 files
