@@ -141,6 +141,8 @@
     │   │   │   │   ├── test_api_ai_jobs_results.py
     │   │   │   │   ├── test_api_ai_jobs_retry.py
     │   │   │   │   └── test_api_files_ai_api_webhook.py
+    │   │   │   ├── assets
+    │   │   │   │   └── export-throughput.csv
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
@@ -172,6 +174,7 @@
     │   │   │   ├── test_admin.py
     │   │   │   ├── test_api_frontend_configuration.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_floor_dt_to_bucket.py
     │   │   │   ├── test_models_ai_jobs.py
     │   │   │   ├── test_models_users.py
     │   │   │   ├── test_tasks.py
@@ -243,6 +246,7 @@
     │   │       │       ├── docs-mono.svg
     │   │       │       ├── mime-audio-mini.svg
     │   │       │       ├── mime-audio.svg
+    │   │       │       ├── pending-icon.svg
     │   │       │       └── play-store-logo.svg
     │   │       ├── gouv-logo.svg
     │   │       ├── hero.svg
@@ -278,7 +282,9 @@
     │   │   │   ├── Pagination.scss
     │   │   │   ├── Pagination.tsx
     │   │   │   ├── ProgressBar.scss
-    │   │   │   └── ProgressBar.tsx
+    │   │   │   ├── ProgressBar.tsx
+    │   │   │   ├── Skeleton.scss
+    │   │   │   └── Skeleton.tsx
     │   │   ├── features
     │   │   │   ├── ai-jobs
     │   │   │   │   ├── api
@@ -288,7 +294,8 @@
     │   │   │   │       ├── getMainAiJobs.test.ts
     │   │   │   │       ├── getMainAiJobs.ts
     │   │   │   │       ├── transcript.test.ts
-    │   │   │   │       └── transcript.ts
+    │   │   │   │       ├── transcript.ts
+    │   │   │   │       └── useFormattedProcessingDuration.ts
     │   │   │   ├── analytics
     │   │   │   │   └── hooks
     │   │   │   │       ├── useAnalytics.ts
@@ -661,6 +668,7 @@
         │   │   ├── AppInitialization.tsx
         │   │   ├── AppText.tsx
         │   │   ├── AudioRecorder.tsx
+        │   │   ├── CheckBatteryOptimization.tsx
         │   │   ├── LoginButton.tsx
         │   │   ├── LoginWithProConnectButton.tsx
         │   │   ├── MainMenu.tsx
@@ -679,7 +687,8 @@
         │   │   │       ├── getMainAiJobs.test.ts
         │   │   │       ├── getMainAiJobs.ts
         │   │   │       ├── transcript.test.ts
-        │   │   │       └── transcript.ts
+        │   │   │       ├── transcript.ts
+        │   │   │       └── useFormattedProcessingDuration.ts
         │   │   ├── analytics
         │   │   │   └── hooks
         │   │   │       └── useAnalytics.ts
@@ -746,4 +755,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-184 directories, 564 files
+185 directories, 572 files
