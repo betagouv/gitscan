@@ -147,6 +147,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260616113427_nomination_current_position_nullable
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260619181638_openid
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -585,17 +587,40 @@
 │   │   │   │       │   │   ├── auth-cli.module.ts
 │   │   │   │       │   │   └── register-user.cli.ts
 │   │   │   │       │   ├── dto
-│   │   │   │       │   │   └── auth.dto.ts
+│   │   │   │       │   │   ├── auth.dto.ts
+│   │   │   │       │   │   └── openid.dto.ts
+│   │   │   │       │   ├── finders
+│   │   │   │       │   │   └── openid-authentication-request.finder.ts
 │   │   │   │       │   ├── guards
 │   │   │   │       │   │   └── development-environment.guard.ts
+│   │   │   │       │   ├── openid-auth.controller.ts
 │   │   │   │       │   ├── queries
 │   │   │   │       │   │   ├── details-user-from-impesronation-id.query.ts
 │   │   │   │       │   │   ├── details-user-from-session-id.query.ts
 │   │   │   │       │   │   ├── details-user.query.ts
 │   │   │   │       │   │   ├── find-machine.query.ts
+│   │   │   │       │   │   ├── list-openid-providers.query.ts
 │   │   │   │       │   │   └── list-users.query.ts
 │   │   │   │       │   └── repositories
 │   │   │   │       │       └── auth-user.repository.ts
+│   │   │   │       ├── openid
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── internal
+│   │   │   │       │   │   ├── jwt-decoder.spec.ts
+│   │   │   │       │   │   ├── jwt-decoder.ts
+│   │   │   │       │   │   ├── openid-claims.ts
+│   │   │   │       │   │   ├── openid-config.spec.ts
+│   │   │   │       │   │   ├── openid-config.ts
+│   │   │   │       │   │   ├── openid-request.ts
+│   │   │   │       │   │   ├── openid.schema.ts
+│   │   │   │       │   │   ├── openid.service.spec.ts
+│   │   │   │       │   │   ├── openid.service.ts
+│   │   │   │       │   │   └── openid.tokens.ts
+│   │   │   │       │   ├── openid.decorator.ts
+│   │   │   │       │   ├── openid.module.ts
+│   │   │   │       │   ├── openid.provider.ts
+│   │   │   │       │   └── openid.ts
+│   │   │   │       ├── openid-auth.service.ts
 │   │   │   │       ├── simple-auth.controller.ts
 │   │   │   │       ├── simple-auth.decorator.ts
 │   │   │   │       ├── simple-auth.e2e-spec.ts
@@ -653,7 +678,8 @@
 │       ├── docs
 │       │   └── adr
 │       │       ├── 2026-06-15-organisation-des-composants-partages.md
-│       │       └── 2026-06-16-conventions-react.md
+│       │       ├── 2026-06-16-conventions-react.md
+│       │       └── 2026-06-18-architecture-front-feature-first.md
 │       ├── index.html
 │       ├── openapi-ts.config.ts
 │       ├── package.json
@@ -670,13 +696,10 @@
 │       │   ├── check-tailwind-colors.sh
 │       │   └── install-fonts.sh
 │       ├── src
-│       │   ├── HomePage.tsx
 │       │   ├── assets
 │       │   │   └── react.svg
 │       │   ├── constants
-│       │   │   ├── labels.constants.ts
-│       │   │   ├── mimetypes.constants.ts
-│       │   │   └── sg-anchor-attributes.ts
+│       │   │   └── labels.constants.ts
 │       │   ├── features
 │       │   │   ├── administration
 │       │   │   │   ├── components
@@ -704,7 +727,9 @@
 │       │   │   │   │   ├── AuthGuard.tsx
 │       │   │   │   │   ├── AuthenticationFailedAlert.tsx
 │       │   │   │   │   ├── ImpersonationBanner.tsx
-│       │   │   │   │   └── Login.tsx
+│       │   │   │   │   ├── Login.tsx
+│       │   │   │   │   ├── LoginPasswordForm.tsx
+│       │   │   │   │   └── LoginProConnectButton.tsx
 │       │   │   │   ├── constants
 │       │   │   │   │   └── authorized-roles.constants.ts
 │       │   │   │   └── hooks
@@ -870,12 +895,8 @@
 │       │   │   │   │   ├── TextareaCard.tsx
 │       │   │   │   │   └── TransparencyAttachmentsSection.tsx
 │       │   │   │   ├── constants
+│       │   │   │   │   ├── html-ids.constants.ts
 │       │   │   │   │   └── summary-sections.constants.ts
-│       │   │   │   ├── dom
-│       │   │   │   │   ├── html-ids.ts
-│       │   │   │   │   ├── scroll-to-summary-section.ts
-│       │   │   │   │   ├── summary-scroll-listeners.ts
-│       │   │   │   │   └── summary-section-observer-factory.ts
 │       │   │   │   ├── hooks
 │       │   │   │   │   ├── useObservedSections.ts
 │       │   │   │   │   └── useReportListFocus.ts
@@ -884,7 +905,10 @@
 │       │   │   │   │   ├── state-filter-labels.ts
 │       │   │   │   │   └── summary-labels.ts
 │       │   │   │   └── utils
-│       │   │   │       └── formatters.ts
+│       │   │   │       ├── formatters.ts
+│       │   │   │       ├── scroll-to-summary-section.ts
+│       │   │   │       ├── summary-scroll-listeners.ts
+│       │   │   │       └── summary-section-observer-factory.ts
 │       │   │   ├── sessions
 │       │   │   │   └── components
 │       │   │   │       ├── ManageArchivedSessions.tsx
@@ -965,20 +989,32 @@
 │       │   ├── layout
 │       │   │   ├── AppFooter.tsx
 │       │   │   ├── PageLayout.tsx
+│       │   │   ├── RootLayout.tsx
 │       │   │   └── header
 │       │   │       ├── Avatar.tsx
 │       │   │       ├── Header.tsx
 │       │   │       ├── LolfiCsm.tsx
 │       │   │       └── ManageSessionsLink.tsx
 │       │   ├── main.tsx
-│       │   ├── models
-│       │   │   └── breadcrumb-vm.model.ts
 │       │   ├── pages
-│       │   │   ├── agenda
-│       │   │   │   ├── AgendaPage.tsx
-│       │   │   │   └── AgendaPreviewPage.tsx
 │       │   │   ├── auth
 │       │   │   │   └── LoginPage.tsx
+│       │   │   ├── documents
+│       │   │   │   ├── agenda
+│       │   │   │   │   ├── AgendaPage.tsx
+│       │   │   │   │   └── AgendaPreviewPage.tsx
+│       │   │   │   ├── official-report
+│       │   │   │   │   ├── OfficialReportPage.tsx
+│       │   │   │   │   └── OfficialReportPreviewPage.tsx
+│       │   │   │   └── presentations
+│       │   │   │       ├── PresentationUpsertPage.tsx
+│       │   │   │       ├── PresentationsLayout.tsx
+│       │   │   │       ├── PresentationsPreviewPage.tsx
+│       │   │   │       ├── PresentationsTabPast.tsx
+│       │   │   │       ├── PresentationsTabReady.tsx
+│       │   │   │       └── PresentationsTabsPage.tsx
+│       │   │   ├── error
+│       │   │   │   └── ErrorPage.tsx
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
 │       │   │   │   ├── HelpPageButton.tsx
@@ -988,16 +1024,6 @@
 │       │   │   │   └── MemberListPage.tsx
 │       │   │   ├── observations
 │       │   │   │   └── ObservationDetailsPage.tsx
-│       │   │   ├── official-report
-│       │   │   │   ├── OfficialReportPage.tsx
-│       │   │   │   └── OfficialReportPreviewPage.tsx
-│       │   │   ├── presentations
-│       │   │   │   ├── PresentationUpsertPage.tsx
-│       │   │   │   ├── PresentationsLayout.tsx
-│       │   │   │   ├── PresentationsPreviewPage.tsx
-│       │   │   │   ├── PresentationsTabPast.tsx
-│       │   │   │   ├── PresentationsTabReady.tsx
-│       │   │   │   └── PresentationsTabsPage.tsx
 │       │   │   ├── reports
 │       │   │   │   ├── ReportListPage.tsx
 │       │   │   │   └── ReportOverviewPage.tsx
@@ -1039,9 +1065,7 @@
 │       │   │   ├── reports.queries.ts
 │       │   │   └── summary.queries.ts
 │       │   ├── react-dsfr.d.ts
-│       │   ├── router
-│       │   │   ├── AppErrorBoundary.tsx
-│       │   │   └── AppRouter.tsx
+│       │   ├── router.tsx
 │       │   ├── shared
 │       │   │   ├── components
 │       │   │   │   ├── LolfiMagistratLink.tsx
@@ -1076,7 +1100,7 @@
 │       │   │   │   └── useTab.ts
 │       │   │   └── ui
 │       │   │       ├── Breadcrumb.tsx
-│       │   │       ├── DeleteAttachmentModal.tsx
+│       │   │       ├── DeleteFileButton.tsx
 │       │   │       ├── DropdownFilter.tsx
 │       │   │       ├── DropdownMenu.tsx
 │       │   │       ├── DropdownSelect.tsx
@@ -1272,4 +1296,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-296 directories, 978 files
+299 directories, 999 files
