@@ -1327,6 +1327,7 @@
 │   │   │   ├── Map
 │   │   │   │   ├── BuildingAside.tsx
 │   │   │   │   ├── BuildingPoints.tsx
+│   │   │   │   ├── BuildingStatusImages.tsx
 │   │   │   │   ├── Clusters.tsx
 │   │   │   │   ├── HousingPoints.tsx
 │   │   │   │   ├── LayerControl.tsx
@@ -1732,10 +1733,10 @@
 │   ├── factories
 │   │   ├── package.json
 │   │   ├── src
-│   │   │   ├── adapter.ts
 │   │   │   ├── create-factories.ts
 │   │   │   ├── entity-map.ts
 │   │   │   ├── factories
+│   │   │   │   ├── building.ts
 │   │   │   │   ├── campaign.ts
 │   │   │   │   ├── establishment.ts
 │   │   │   │   ├── group.ts
@@ -1751,6 +1752,7 @@
 │   │   │   │   └── user.ts
 │   │   │   ├── index.ts
 │   │   │   ├── memory-adapter.ts
+│   │   │   ├── persistence-adapter.ts
 │   │   │   └── test
 │   │   │       ├── create-factories.test.ts
 │   │   │       └── memory-adapter.test.ts
@@ -2331,6 +2333,14 @@
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   └── 002-load-non-vacant-housing.sql
 │   │   │   │   ├── seeds
+│   │   │   │   │   ├── demo
+│   │   │   │   │   │   ├── 20240404234042_load-common-data.ts
+│   │   │   │   │   │   ├── 20240404235442_establishments.ts
+│   │   │   │   │   │   ├── 20240404235443_users.ts
+│   │   │   │   │   │   ├── 20240404235456_owners.ts
+│   │   │   │   │   │   ├── 20240404235458_buildings.ts
+│   │   │   │   │   │   ├── 20240404235459_housings.ts
+│   │   │   │   │   │   └── 20250113145122_precisions.ts
 │   │   │   │   │   ├── development
 │   │   │   │   │   │   ├── 20240404234042_load-common-data.ts
 │   │   │   │   │   │   ├── 20240404235442_establishments.ts
@@ -2721,9 +2731,22 @@
 │   │   │   │   └── ownerDistanceService.test.ts
 │   │   │   └── twoFactorService.ts
 │   │   ├── test
-│   │   │   ├── factories.ts
+│   │   │   ├── factories
+│   │   │   │   ├── building.ts
+│   │   │   │   ├── campaign.ts
+│   │   │   │   ├── create-factories.ts
+│   │   │   │   ├── dto-factories.ts
+│   │   │   │   ├── entity-map.ts
+│   │   │   │   ├── establishment.ts
+│   │   │   │   ├── group.ts
+│   │   │   │   ├── housing-owner.ts
+│   │   │   │   ├── housing.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── knex-adapter.ts
+│   │   │   │   ├── owner.ts
+│   │   │   │   ├── persistence-adapter.ts
+│   │   │   │   └── user.ts
 │   │   │   ├── global-setup.ts
-│   │   │   ├── knex-adapter.ts
 │   │   │   ├── sample.pdf
 │   │   │   ├── testFixtures.ts
 │   │   │   └── testUtils.ts
@@ -2803,4 +2826,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-438 directories, 2367 files
+440 directories, 2388 files
