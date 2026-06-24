@@ -21,7 +21,6 @@
 │       ├── api-https-deploy-production.yaml
 │       ├── api-https-deploy-sandbox.yaml
 │       ├── api-https-deploy-staging.yaml
-│       ├── api-regenerate_swagger.yaml
 │       ├── clients-node.yml
 │       ├── clients-ruby.yml
 │       ├── mocks-tests.yml
@@ -1479,6 +1478,17 @@
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_ine
 │   │   │   ├── 200_boursier.yaml
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── 200_boursier_commune_accentuee_minnie_mouse.yaml
+│   │   │   ├── 200_boursier_commune_naissance_typo_mickey_mouse.yaml
+│   │   │   ├── 200_boursier_daisy_duck.yaml
+│   │   │   ├── 200_boursier_hors_dijon_donald_duck.yaml
+│   │   │   ├── 200_boursier_naissance_1947_balthazar_picsou.yaml
+│   │   │   ├── 200_boursier_pat_hibulaire.yaml
+│   │   │   ├── 200_boursier_prenom_compose_espace_anne_marie_robert.yaml
+│   │   │   ├── 200_boursier_prenom_compose_tiret_jean_michel_robert.yaml
+│   │   │   ├── 200_boursier_regional_provisoire_loulou_duck.yaml
+│   │   │   ├── 200_boursier_riri_duck.yaml
+│   │   │   ├── 200_non_boursier_fifi_duck.yaml
 │   │   │   ├── 200_radie.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
@@ -5350,6 +5360,7 @@
     │   │   │   ├── endpoints_controller.rb
     │   │   │   ├── errors_controller.rb
     │   │   │   ├── faq_controller.rb
+    │   │   │   ├── open_api_controller.rb
     │   │   │   ├── pages_controller.rb
     │   │   │   ├── prolong_token_wizard_controller.rb
     │   │   │   ├── public_token_magic_links_controller.rb
@@ -5371,6 +5382,7 @@
     │   │   │   ├── endpoints_controller.rb
     │   │   │   ├── errors_controller.rb
     │   │   │   ├── faq_controller.rb
+    │   │   │   ├── open_api_controller.rb
     │   │   │   ├── pages_controller.rb
     │   │   │   ├── prolong_token_wizard_controller.rb
     │   │   │   ├── public_token_magic_links_controller.rb
@@ -5986,8 +5998,7 @@
     │           │   ├── mentions.html.erb
     │           │   ├── redoc.html.erb
     │           │   ├── redoc_v2.html.erb
-    │           │   ├── redoc_v3.html.erb
-    │           │   └── sitemap.html.erb
+    │           │   └── redoc_v3.html.erb
     │           ├── prolong_token_wizard
     │           │   ├── _contact.html.erb
     │           │   ├── build
@@ -6152,7 +6163,6 @@
     │   │   ├── api-entreprise.rb
     │   │   └── api-particulier.rb
     │   ├── sitemap.rb
-    │   ├── sitemap.yml
     │   ├── storage.yml
     │   └── throttle.yml -> ../../commons/data/throttle.yml
     ├── config.ru
@@ -6976,6 +6986,7 @@
     │   │   └── provider
     │   │       ├── access_spec.rb
     │   │       ├── csv_exports_spec.rb
+    │   │       ├── habilitations_filter_spec.rb
     │   │       └── navigation_spec.rb
     │   ├── fixtures
     │   │   ├── insee
@@ -7133,13 +7144,15 @@
     │   │       └── dashboard_query_spec.rb
     │   ├── rails_helper.rb
     │   ├── requests
-    │   │   └── editor
-    │   │       └── api
-    │   │           └── v1
-    │   │               ├── delegations_spec.rb
-    │   │               └── host_routing_spec.rb
+    │   │   ├── editor
+    │   │   │   └── api
+    │   │   │       └── v1
+    │   │   │           ├── delegations_spec.rb
+    │   │   │           └── host_routing_spec.rb
+    │   │   └── open_api_spec.rb
     │   ├── scopes_consistency_spec.rb
     │   ├── services
+    │   │   ├── abstract_open_api_definition_spec.rb
     │   │   ├── admin_api_token_spec.rb
     │   │   ├── announcement_banner_spec.rb
     │   │   ├── metabase_embed_service_spec.rb
@@ -7151,7 +7164,6 @@
     │   │   │   ├── attestation_downloader_spec.rb
     │   │   │   └── manual_request_spec.rb
     │   │   └── status_page_spec.rb
-    │   ├── sitemap_spec.rb
     │   ├── spec_helper.rb
     │   ├── stores
     │   │   └── api_entreprise
@@ -7208,4 +7220,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1462 directories, 6078 files
+1462 directories, 6090 files
