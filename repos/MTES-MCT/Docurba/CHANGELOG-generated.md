@@ -1,36 +1,41 @@
-## Changelog : Docurba (30 derniers jours, au 18 juin 2026)
+## Changelog : Docurba (30 derniers jours, au 23 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Docurba se concentrent sur l'amélioration de l'administration des événements et des procédures, avec un accent particulier sur l'intégration de l'historique des modifications, la gestion des utilisateurs et des permissions, ainsi que des optimisations de l'interface utilisateur et de l'API. Des améliorations de sécurité et de performance ont également été apportées.
+Ce mois-ci, les évolutions de Docurba se concentrent sur l'amélioration de l'administration des données, notamment des procédures, des événements et des utilisateurs. Des corrections et des améliorations ont été apportées à l'interface utilisateur Nuxt3, ainsi que des optimisations techniques pour la sécurité et la performance. L'authentification via Supabase a été implémentée.
 
 ### Évolutions fonctionnelles
-- Possibilité de rechercher des utilisateurs dans l'interface d'administration par adresse email. [#3df9bea](https://github.com/MTES-MCT/Docurba/issues/3df9bea)
-- Mise à jour du mot de passe des utilisateurs directement depuis l'interface d'administration. [#29e6ea8](https://github.com/MTES-MCT/Docurba/issues/29e6ea8)
-- Ajout de la possibilité de lister les procédures incluant une commune spécifique dans l'interface d'administration. [#818abbd](https://github.com/MTES-MCT/Docurba/issues/818abbd)
-- Historisation de toutes les modifications apportées aux événements, permettant un suivi précis des changements. [#cfb4754](https://github.com/MTES-MCT/Docurba/issues/cfb4754)
-- Amélioration de la détection et de l'affichage des événements de prescription dans l'interface Nuxt. [#3d9205b](https://github.com/MTES-MCT/Docurba/issues/3d9205b) et [#13efcf1](https://github.com/MTES-MCT/Docurba/issues/13efcf1)
-- Affichage du statut "avant loi Huwart" pour les procédures concernées dans l'interface Nuxt. [#b885455](https://github.com/MTES-MCT/Docurba/issues/b885455)
-- Possibilité de filtrer les types de procédures par date de début dans l'interface Nuxt. [#4f89e20](https://github.com/MTES-MCT/Docurba/issues/4f89e20)
-- Page de lecture des PAC (Prescriptions Archéologiques Collectives) rendue publique. [#b53a072](https://github.com/MTES-MCT/Docurba/issues/b53a072)
-- Ajout de nouvelles catégories de PAC. [#a553a34](https://github.com/MTES-MCT/Docurba/issues/a553a34)
-- Ajout d'une nouvelle catégorie d'événements. [#a26bfc2](https://github.com/MTES-MCT/Docurba/issues/a26bfc2)
+- Ajout de l'ID de la procédure dans l'onglet Procédures et Validations.
+- Amélioration de la recherche et de la sélection des événements, notamment en affichant si une procédure est antérieure ou postérieure à la loi Huwart.
+- Possibilité de mettre à jour les événements directement depuis la page de la procédure.
+- Ajout de la possibilité de rechercher des utilisateurs par email dans l'interface d'administration Django.
+- Mise à jour du mot de passe utilisateur via l'interface d'administration Django.
+- Liste des procédures incluant la commune courante dans l'interface d'administration Django.
+- Historisation de toutes les modifications d'événements.
+- Limitation des champs envoyés dans les payloads des webhooks pour optimiser les performances.
+- Ajout d'une alerte Slack lors du lancement d'un déploiement.
+- Amélioration de la détection des événements de lancement et des messages d'erreur associés.
+- Ajout d'un champ `last_sign_in_at` au modèle User.
+- Implémentation de l'authentification via Supabase.
 
 ### Évolutions techniques
-- Refonte de l'authentification avec l'ajout de l'authentification Supabase et la gestion des sessions.
-- Amélioration de la configuration des templates. [#d1b9b1e](https://github.com/MTES-MCT/Docurba/issues/d1b9b1e)
-- Remplacement de `wget` par `curl` pour les requêtes HTTP. [#f040adc](https://github.com/MTES-MCT/Docurba/issues/f040adc)
-- Mise en place d'un reverse proxy Nginx pour améliorer la sécurité et les performances.
-- Configuration de la limitation de débit avec Nginx.
-- Utilisation de variables d'environnement pour la configuration de l'URL de l'API Docurba dans Nuxt. [#bcaf256](https://github.com/MTES-MCT/Docurba/issues/bcaf256)
-- Amélioration de la gestion des tests avec l'ajout d'un client staff pour les tests d'administration. [#b4cf286](https://github.com/MTES-MCT/Docurba/issues/b4cf286) et le regroupement des tests par modèle. [#8671872](https://github.com/MTES-MCT/Docurba/issues/8671872)
-- Optimisation des performances de l'API interne Django avec la pagination et le filtrage.
-- Ajout d'une alerte Slack lors des déploiements. [#6209a5c](https://github.com/MTES-MCT/Docurba/issues/6209a5c)
-- Mise à jour de plusieurs dépendances (cryptography, pyjwt, ruff, supabase, django, django-filter).
+- Refactorisation des tests Django pour une meilleure organisation et couverture.
+- Mise à jour des dépendances : pytest, ruff, cryptography, pyjwt, django-filter, supabase, django.
+- Amélioration de la configuration des templates.
+- Suppression de dépendances obsolètes (whitenoise, django-revproxy).
+- Utilisation de Nginx pour servir les fichiers statiques et mise en place d'un rate limiting.
+- Utilisation de curl au lieu de wget.
+- Mise en place d'un pipeline CI/CD plus robuste avec une vérification quotidienne des mises à jour des dépendances.
+- Utilisation de l'API Django pour récupérer les procédures et collectivités dans Nuxt3.
+- Correction de problèmes liés à la configuration CORS en environnement local.
+- Amélioration de la performance des requêtes et des modèles Django.
 
 ### Autres changements
-- Suppression de vues publiques inutiles. [#863748b](https://github.com/MTES-MCT/Docurba/issues/863748b)
-- Suppression de paramètres Django obsolètes. [#e50d554](https://github.com/MTES-MCT/Docurba/issues/e50d554)
-- Ajout de commentaires et de documentation.
-- Amélioration de l'intégration de `pg_history`.
-- Configuration de Dependabot pour vérifier les mises à jour des dépendances quotidiennement. [#12842da](https://github.com/MTES-MCT/Docurba/issues/12842da)
-- Mise à jour de la configuration des applications de revue (review apps). [#92361da](https://github.com/MTES-MCT/Docurba/issues/92361da)
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code commenté.
+- Ajout de commentaires pour améliorer la lisibilité du code.
+- Configuration de l'URL de l'API Docurba via une variable d'environnement.
+- Ajout de nouvelles catégories de PAC (Prescription, Autorisation de Construire).
+- Ajout d'une nouvelle catégorie d'événements.
+- Amélioration de l'intégration de pg_history.
+- Ajout de commentaires et de documentation pour les nouvelles fonctionnalités.
+- Correction de bugs mineurs et améliorations de la stabilité.
