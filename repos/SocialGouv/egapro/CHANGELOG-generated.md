@@ -1,37 +1,36 @@
-## Changelog : egapro (30 derniers jours, au 2026-06-17)
+## Changelog : egapro (30 derniers jours, au 2024-06-23)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment dans les parcours de déclaration et de mise en conformité, avec un alignement plus précis sur les maquettes Figma. Des efforts ont également été déployés pour améliorer la performance et la stabilité de la plateforme, ainsi que pour enrichir les statistiques disponibles pour l'administration. Enfin, l'infrastructure de notification par email a été revue et corrigée.
+Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de l'expérience utilisateur, notamment via des corrections d'alignement visuel et des améliorations du parcours de conformité. Des efforts importants ont également été déployés pour l'intégration d'outils d'analyse (Matomo) pour un suivi précis de l'utilisation de la plateforme, tout en respectant la conformité CNIL. Enfin, des améliorations techniques ont été apportées à l'infrastructure CI/CD et à l'orchestration des tests.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'alignement visuel de la page de récapitulatif de la seconde déclaration, masquant certains éléments conditionnels et ajustant le titre et le bouton. [#3582](https://github.com/SocialGouv/egapro/issues/3582) [#3653]
-- Corrections visuelles et amélioration du focus sur l'ajout d'informations à l'étape 5 du parcours de déclaration. [#3538](https://github.com/SocialGouv/egapro/issues/3538) [#3589]
-- Amélioration de l'étape 6 du parcours de revue, avec un changement de couleur et un ajustement de la graisse de la police. [#3540](https://github.com/SocialGouv/egapro/issues/3540) [#3588]
-- Intégration de l'historique des statuts dans l'application, permettant de suivre l'évolution des déclarations. [#3584](https://github.com/SocialGouv/egapro/issues/3584) [#3611]
-- Correction des URLs des emails de notification et refactorisation du système de templates. [#3606]
-- Affichage du récapitulatif de la déclaration sur la page de détail de l'administration. [#3437](https://github.com/SocialGouv/egapro/issues/3437) [#3590]
-- Amélioration de la validation du champ vide et ajout d'une alerte GIP sur l'étape 1 du parcours de déclaration. [#3544]
-- Désactivation de l'autocomplétion du navigateur sur tous les formulaires pour une meilleure expérience utilisateur. [#3539](https://github.com/SocialGouv/egapro/issues/3539) [#3548]
-- Ajout de nouvelles statistiques : taux de déclaration, délai moyen par étape, distribution des scores publics, taux d'abandon par étape et funnel de complétion. [#3214](https://github.com/SocialGouv/egapro/issues/3214) [#3513], [#3217](https://github.com/SocialGouv/egapro/issues/3217) [#3521], [#3218](https://github.com/SocialGouv/egapro/issues/3218) [#3546], [#3222](https://github.com/SocialGouv/egapro/issues/3222) [#3545], [#3551]
-- Exposition de l'ID de déclaration dans l'API SUIT. [#3478](https://github.com/SocialGouv/egapro/issues/3478) [#3481]
+- Amélioration du parcours de conformité avec alignement visuel des formulaires "Évaluation conjointe" et "Téléchargement de fichiers" selon les maquettes Figma. [#3583](https://github.com/SocialGouv/egapro/issues/3583) [#3651](https://github.com/SocialGouv/egapro/issues/3651)
+- Correction de l'affichage de la page de récapitulatif de la deuxième déclaration, masquant les éléments A-F et ajustant le titre et le bouton en fonction des conditions. [#3650](https://github.com/SocialGouv/egapro/issues/3650)
+- Amélioration de l'alignement visuel de l'indicateur par catégorie dans le parcours de mise en conformité. [#3652](https://github.com/SocialGouv/egapro/issues/3652)
+- Découplage de la lecture du brouillon de la date limite de la campagne. [#3594](https://github.com/SocialGouv/egapro/issues/3594) [#3656](https://github.com/SocialGouv/egapro/issues/3656)
+- Refonte des pages d'avis du CSE. [#3639](https://github.com/SocialGouv/egapro/issues/3639)
+- Intégration de l'historique des statuts des déclarations. [#3611](https://github.com/SocialGouv/egapro/issues/3611)
+- Correction des URLs des emails et refactorisation du système de templates. [#3606](https://github.com/SocialGouv/egapro/issues/3606)
+- Affichage du récapitulatif de la déclaration sur la page de détails de l'administration. [#3437](https://github.com/SocialGouv/egapro/issues/3437) [#3590](https://github.com/SocialGouv/egapro/issues/3590)
+- Ajout d'un diagramme de flux du parcours CSE 2027 avec superposition des étapes FSM. [#3433](https://github.com/SocialGouv/egapro/issues/3433)
+- Ajout de nouveaux indicateurs de suivi Matomo pour le modèle et les liens d'aide. [#3707](https://github.com/SocialGouv/egapro/issues/3707)
+- Implémentation de la conformité CNIL pour Matomo (exemption de consentement). [#3655](https://github.com/SocialGouv/egapro/issues/3655)
+- Ajout de graphes Matomo sur la page /admin/stats (usage du modèle, liens d'aide, répartition par appareil). [#3658](https://github.com/SocialGouv/egapro/issues/3658)
+- Préservation de l'URL cible lors de la redirection après la connexion. [#3718](https://github.com/SocialGouv/egapro/issues/3718)
 
 ### Évolutions techniques
-- Implémentation d'un plan de tracking Matomo pour les événements client et la documentation. [#3625]
-- Refonte des pages d'avis du CSE. [#3476](https://github.com/SocialGouv/egapro/issues/3476) [#3639]
-- Ajout d'un agent tu-dev pour l'écriture de tests unitaires et d'intégration. [#3620]
-- Refactorisation du système de cache avec une sauvegarde en base de données. [#3484](https://github.com/SocialGouv/egapro/issues/3484) [#3537]
-- Extraction du kit de templates React Email pour une meilleure organisation et réutilisabilité. [#3561]
-- Amélioration de l'orchestration avec l'ajout d'outils de planification et de suivi de la vélocité. [#3644]
-- Suppression des tests E2E lors de la fusion des fonctionnalités épiques pour optimiser le CI/CD. [#3635]
-- Correction d'un problème de blocage de l'installation de Playwright dans le CI/CD. [#3591]
+- Ajout d'un agent e2e-dev en fin de pipeline pour les tests. [#3654](https://github.com/SocialGouv/egapro/issues/3654)
+- Ajout d'une vérification du journal monotone pour éviter l'omission silencieuse des migrations. [#3557](https://github.com/SocialGouv/egapro/issues/3557) [#3560](https://github.com/SocialGouv/egapro/issues/3560)
+- Ajout d'outils de planification, de dimensionnement de sprint et de vélocité. [#3644](https://github.com/SocialGouv/egapro/issues/3644)
+- Ajout d'un agent tu-dev pour la création de tests unitaires et d'intégration. [#3620](https://github.com/SocialGouv/egapro/issues/3620)
+- Suppression des tests e2e lors de la fusion des fonctionnalités épiques. [#3635](https://github.com/SocialGouv/egapro/issues/3635)
+- Refactorisation du système de templates d'emails avec extraction d'un kit React Email. [#3561](https://github.com/SocialGouv/egapro/issues/3561)
+- Implémentation du versioning des CGU. [#2626](https://github.com/SocialGouv/egapro/issues/2626)
 
 ### Autres changements
-- Découplage du draft read de la date limite de la campagne. [#3594](https://github.com/SocialGouv/egapro/issues/3594) [#3656]
-- Ajustement de l'alignement du CompanyBanner avec les maquettes Figma. [#3532](https://github.com/SocialGouv/egapro/issues/3532) [#3573]
-- Correction de l'affichage des étiquettes de champs de formulaire pour la conformité RGAA.
-- Correction de bugs mineurs liés à l'affichage et au comportement de l'interface utilisateur, notamment l'alignement des éléments et la gestion des erreurs.
-- Correction de la route du bouton précédent sur la page d'avis du CSE. [#3485]
-- Correction de l'affichage des labels d'étape pour les statuts du parcours de conformité. [#3495]
-- Suppression des seuils Q4 de l'API SUIT suite à une migration. [#3493]
-- Correction du nom de la phase 2 en "processus de conformité" dans l'API SUIT. [#3496]
-- Amélioration de la gestion des dates dans l'API SUIT. [#3486]
+- Attribution de noms de fichiers générés. [#3643](https://github.com/SocialGouv/egapro/issues/3643)
+- Ajout de statistiques K5 (taux d'abandon par étape) et K19 (entonnoir de complétion). [#3218](https://github.com/SocialGouv/egapro/issues/3218) [#3546](https://github.com/SocialGouv/egapro/issues/3546) et [#3222](https://github.com/SocialGouv/egapro/issues/3222) [#3545](https://github.com/SocialGouv/egapro/issues/3545)
+- Ajout de statistiques K7 (distribution des scores publics). [#3551](https://github.com/SocialGouv/egapro/issues/3551)
+- Correction de problèmes d'installation de Playwright. [#3591](https://github.com/SocialGouv/egapro/issues/3591)
+- Ajout d'un système de cache avec sauvegarde en base de données. [#3537](https://github.com/SocialGouv/egapro/issues/3537)
+- Désactivation de l'autocomplétion du navigateur sur tous les formulaires. [#3539](https://github.com/SocialGouv/egapro/issues/3539) [#3548](https://github.com/SocialGouv/egapro/issues/3548)

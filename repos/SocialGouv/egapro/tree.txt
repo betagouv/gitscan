@@ -3,6 +3,8 @@
 │   ├── agents
 │   │   ├── architect
 │   │   │   └── AGENT.md
+│   │   ├── architect-rework
+│   │   │   └── AGENT.md
 │   │   ├── bug-analyst
 │   │   │   └── AGENT.md
 │   │   ├── code-dev
@@ -12,6 +14,8 @@
 │   │   ├── designer
 │   │   │   └── AGENT.md
 │   │   ├── doc-writer
+│   │   │   └── AGENT.md
+│   │   ├── e2e-dev
 │   │   │   └── AGENT.md
 │   │   ├── functional-validator
 │   │   │   └── AGENT.md
@@ -167,6 +171,7 @@
 ├── README.md
 ├── docker-compose.yml
 ├── docs
+│   ├── Déclarations-&-Parcours-CSE.md
 │   ├── SUIT-API.md
 │   ├── architecture.md
 │   ├── features.md
@@ -183,6 +188,7 @@
 │   │   ├── second-declaration-confirmation.md
 │   │   └── second-declaration-reminder.md
 │   ├── mails.md
+│   ├── matomo-cnil-exemption.md
 │   ├── parcours-utilisateurs.md
 │   ├── plan-de-tracking.md
 │   └── strategie-tracking.md
@@ -295,6 +301,7 @@
 │   │   │           └── proconnect-logo.svg
 │   │   ├── scripts
 │   │   │   ├── audit-cleanup.mjs
+│   │   │   ├── check-journal.mjs
 │   │   │   ├── copy-dsfr.mjs
 │   │   │   ├── copy-swagger-ui.mjs
 │   │   │   ├── entrypoint.sh
@@ -308,6 +315,7 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── middleware.test.ts
 │   │   │   │   └── scripts
+│   │   │   │       ├── check-journal.test.ts
 │   │   │   │       └── generate-mock-gip-data.test.ts
 │   │   │   ├── app
 │   │   │   │   ├── admin
@@ -588,6 +596,9 @@
 │   │   │   │   │       ├── CompletionFunnelChart.tsx
 │   │   │   │   │       ├── CompletionFunnelTable.tsx
 │   │   │   │   │       ├── StagnationDaysFilter.tsx
+│   │   │   │   │       ├── StatsBarChart.module.scss
+│   │   │   │   │       ├── StatsBarChart.tsx
+│   │   │   │   │       ├── StatsBarTable.tsx
 │   │   │   │   │       ├── StatsDashboard.module.scss
 │   │   │   │   │       ├── StatsDashboard.tsx
 │   │   │   │   │       ├── StepDropoffChart.module.scss
@@ -604,6 +615,8 @@
 │   │   │   │   │       │   ├── CompletionFunnelChart.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelTable.test.tsx
 │   │   │   │   │       │   ├── StagnationDaysFilter.test.tsx
+│   │   │   │   │       │   ├── StatsBarChart.test.tsx
+│   │   │   │   │       │   ├── StatsBarTable.test.tsx
 │   │   │   │   │       │   ├── StatsDashboard.campaign.test.tsx
 │   │   │   │   │       │   ├── StatsDashboard.test.tsx
 │   │   │   │   │       │   ├── StepDropoffChart.test.tsx
@@ -638,7 +651,11 @@
 │   │   │   │   │   ├── FunnelCompleteTracker.tsx
 │   │   │   │   │   ├── FunnelStepTracker.tsx
 │   │   │   │   │   ├── MatomoAnalytics.tsx
+│   │   │   │   │   ├── TrackedLink.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── MatomoAnalytics.test.tsx
+│   │   │   │   │   │   ├── TrackedLink.test.tsx
+│   │   │   │   │   │   ├── elapsedSeconds.test.ts
 │   │   │   │   │   │   ├── trackEvent.test.ts
 │   │   │   │   │   │   └── useFunnelTracking.test.ts
 │   │   │   │   │   ├── index.ts
@@ -841,6 +858,7 @@
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
 │   │   │   │   │   │   │   └── constants.ts
 │   │   │   │   │   │   ├── jointEvaluation
+│   │   │   │   │   │   │   ├── JointEvaluationForm.module.scss
 │   │   │   │   │   │   │   ├── JointEvaluationForm.tsx
 │   │   │   │   │   │   │   ├── JointEvaluationPage.tsx
 │   │   │   │   │   │   │   ├── JointEvaluationSubmitModal.tsx
@@ -877,8 +895,11 @@
 │   │   │   │   │   │   │   ├── CategoryImportExport.tsx
 │   │   │   │   │   │   │   ├── DeleteCategoryDialog.tsx
 │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   └── categoryFileHandler.test.ts
+│   │   │   │   │   │   │   │   ├── CategoryImportExport.test.tsx
+│   │   │   │   │   │   │   │   ├── categoryFileHandler.test.ts
+│   │   │   │   │   │   │   │   └── categoryModelTracking.test.ts
 │   │   │   │   │   │   │   ├── categoryFileHandler.ts
+│   │   │   │   │   │   │   ├── categoryModelTracking.ts
 │   │   │   │   │   │   │   ├── categorySerializer.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   └── sources.ts
@@ -1106,6 +1127,8 @@
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── CookiesPage.tsx
 │   │   │   │   │   ├── LegalNoticePage.tsx
+│   │   │   │   │   ├── MatomoOptOut.module.scss
+│   │   │   │   │   ├── MatomoOptOut.tsx
 │   │   │   │   │   ├── PrivacyPolicyPage
 │   │   │   │   │   │   ├── PrivacyCookies.tsx
 │   │   │   │   │   │   ├── PrivacyOverview.tsx
@@ -1113,6 +1136,7 @@
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── SitemapPage.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── MatomoOptOut.test.tsx
 │   │   │   │   │   │   ├── robots.test.ts
 │   │   │   │   │   │   └── sitemap.test.ts
 │   │   │   │   │   ├── index.ts
@@ -1131,8 +1155,10 @@
 │   │   │   │   │   │   ├── LoginAccordion.test.tsx
 │   │   │   │   │   │   ├── LoginForm.test.tsx
 │   │   │   │   │   │   ├── LoginPage.test.tsx
-│   │   │   │   │   │   └── ProConnectButton.test.tsx
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ProConnectButton.test.tsx
+│   │   │   │   │   │   └── sanitizeCallbackUrl.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── sanitizeCallbackUrl.ts
 │   │   │   │   ├── mail
 │   │   │   │   │   ├── ResendReceiptButton.tsx
 │   │   │   │   │   ├── __tests__
@@ -1268,14 +1294,17 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
 │   │   │   │   │   │   ├── DsfrTable.test.tsx
+│   │   │   │   │   │   ├── FileUpload.test.tsx
 │   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
+│   │   │   │   │   │   ├── fileNameValidation.test.ts
 │   │   │   │   │   │   ├── formatFileSize.test.ts
 │   │   │   │   │   │   ├── getDsfrModal.test.ts
 │   │   │   │   │   │   ├── uploadFile.test.ts
 │   │   │   │   │   │   ├── useFileUploadForm.test.tsx
 │   │   │   │   │   │   ├── useSortableTable.test.tsx
 │   │   │   │   │   │   └── useZodForm.test.ts
+│   │   │   │   │   ├── fileNameValidation.ts
 │   │   │   │   │   ├── getDsfrCollapse.ts
 │   │   │   │   │   ├── getDsfrModal.ts
 │   │   │   │   │   ├── index.ts
@@ -1506,6 +1535,12 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
+│   ├── matomo-local
+│   │   ├── .secrets
+│   │   │   └── .gitkeep
+│   │   ├── README.md
+│   │   ├── cnil-setup.py
+│   │   └── seed-events.py
 │   ├── orchestration
 │   │   ├── agent_drilldown.sh
 │   │   ├── agent_status.sh
@@ -1527,11 +1562,13 @@
 │   │   ├── rebase_epic_branch.sh
 │   │   ├── refresh_pr_link.sh
 │   │   ├── render_dashboard.sh
+│   │   ├── run_architect_rework.sh
 │   │   ├── run_doc_writer.sh
+│   │   ├── run_e2e_dev.sh
 │   │   ├── set_ticket_size.sh
 │   │   ├── set_ticket_status.sh
 │   │   └── sprint_velocity.sh
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-266 directories, 1270 files
+270 directories, 1303 files
