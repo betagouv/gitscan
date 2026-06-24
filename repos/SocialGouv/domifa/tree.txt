@@ -40,9 +40,6 @@
 │       ├── review.yml
 │       └── unit-tests.yml
 ├── .gitignore
-├── .husky
-│   ├── commit-msg
-│   └── pre-commit
 ├── .kontinuous
 │   ├── config.yaml
 │   ├── env
@@ -108,6 +105,7 @@
 ├── docker-compose.local.run.sh
 ├── docker-compose.local.yml
 ├── docker-compose.tests.yml
+├── lefthook.yml
 ├── lerna.json
 ├── package.json
 ├── packages
@@ -233,6 +231,7 @@
 │   │   │   │           │   └── index.ts
 │   │   │   │           ├── user-supervisor
 │   │   │   │           │   ├── constants
+│   │   │   │           │   │   ├── USER_SUPERVISOR_ASSIGNABLE_ROLES.const.ts
 │   │   │   │           │   │   ├── USER_SUPERVISOR_ROLES.const.ts
 │   │   │   │           │   │   └── index.ts
 │   │   │   │           │   ├── index.ts
@@ -247,6 +246,7 @@
 │   │   │   │   ├── 1780932874467-auto-migration.ts
 │   │   │   │   ├── 1781108400000-prefix-deleted-emails-for-removed-structures.ts
 │   │   │   │   ├── 1781271727059-PrefixDeletedEmailsForSoftDeletedUsers.ts
+│   │   │   │   ├── 1781813895170-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -322,11 +322,14 @@
 │   │   │   │   │   ├── AppUserGuard.guard.ts
 │   │   │   │   │   ├── CanGetUserStructure.guard.ts
 │   │   │   │   │   ├── app-throttler
+│   │   │   │   │   │   ├── app-throttler.bot-guard.spec-helpers.ts
 │   │   │   │   │   │   ├── app-throttler.bot-guard.spec.ts
+│   │   │   │   │   │   ├── app-throttler.constants.ts
 │   │   │   │   │   │   ├── app-throttler.guard.ts
 │   │   │   │   │   │   ├── app-throttler.types.ts
 │   │   │   │   │   │   ├── app-throttler.utils.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── throttler.config.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── interactions.guard.ts
 │   │   │   │   │   ├── structure-access.guard.ts
@@ -373,6 +376,9 @@
 │   │   │   │   │   ├── _core
 │   │   │   │   │   │   ├── AppTypeormTable.typeorm.ts
 │   │   │   │   │   │   ├── BaseUserSecurityTable.typeorm.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── app-ip-ban
+│   │   │   │   │   │   ├── AppIpBanTable.typeorm.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── app-log
 │   │   │   │   │   │   ├── AppLogTable.typeorm.ts
@@ -450,6 +456,9 @@
 │   │   │   │       │   ├── postgresQueryBuilder.service.ts
 │   │   │   │       │   ├── sql-identifier.helper.spec.ts
 │   │   │   │       │   └── sql-identifier.helper.ts
+│   │   │   │       ├── app-ip-ban
+│   │   │   │       │   ├── appIpBanRepository.service.ts
+│   │   │   │       │   └── index.ts
 │   │   │   │       ├── app-log
 │   │   │   │       │   ├── appLogsRepository.service.ts
 │   │   │   │       │   ├── expiredTokenRepositiory.service.ts
@@ -602,6 +611,10 @@
 │   │   │   │   │       ├── interactionsCreator.service.ts
 │   │   │   │   │       ├── interactionsTypeManager.service.spec.ts
 │   │   │   │   │       └── interactionsTypeManager.service.ts
+│   │   │   │   ├── ip-ban
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── ip-ban-cache.service.ts
+│   │   │   │   │   └── ip-ban.guard.ts
 │   │   │   │   ├── mails
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   └── newsletter.public.controller.ts
@@ -686,10 +699,7 @@
 │   │   │   │   │   │       └── portail-admin-login.controller.ts
 │   │   │   │   │   ├── decorators
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── is-social-gouv-email.decorator.ts
-│   │   │   │   │   │   ├── isValidGeographicDecorator.ts
-│   │   │   │   │   │   └── tests
-│   │   │   │   │   │       └── is-social-gouv-email.decorator.spec.ts
+│   │   │   │   │   │   └── isValidGeographicDecorator.ts
 │   │   │   │   │   ├── dto
 │   │   │   │   │   │   ├── MetabaseStats.dto.ts
 │   │   │   │   │   │   ├── brevo-email-events-query.dto.ts
@@ -775,6 +785,10 @@
 │   │   │   │   │   │   └── SECURITY_LOG_ACTIONS.const.ts
 │   │   │   │   │   ├── security-monitoring.module.ts
 │   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── behavioral-quota-enforcer.constants.ts
+│   │   │   │   │   │   ├── behavioral-quota-enforcer.service.spec.ts
+│   │   │   │   │   │   ├── behavioral-quota-enforcer.service.ts
+│   │   │   │   │   │   ├── behavioral-quota-enforcer.types.ts
 │   │   │   │   │   │   ├── security-alert-email.service.ts
 │   │   │   │   │   │   └── security-monitoring.service.ts
 │   │   │   │   │   ├── templates
@@ -1500,6 +1514,11 @@
 │   │   │   └── users
 │   │   │       ├── common-user
 │   │   │       │   ├── StructureSessionRecord.type.ts
+│   │   │       │   ├── constants
+│   │   │       │   │   ├── USER_STATUS_CAN_BE_MANAGED.const.ts
+│   │   │       │   │   ├── USER_STATUS_LABELS.const.ts
+│   │   │       │   │   ├── USER_STATUS_VALUES.const.ts
+│   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── common-user.interface.ts
@@ -3104,7 +3123,8 @@
 │   │   │   │   │       │       ├── suspicious-activity-list.component.scss
 │   │   │   │   │       │       └── suspicious-activity-list.component.ts
 │   │   │   │   │       ├── constants
-│   │   │   │   │       │   └── SUSPICIOUS_ACTIONS.const.ts
+│   │   │   │   │       │   ├── SUSPICIOUS_ACTIONS.const.ts
+│   │   │   │   │       │   └── SUSPICIOUS_FILTER_USER_TYPES.const.ts
 │   │   │   │   │       ├── services
 │   │   │   │   │       │   └── suspicious-activity.service.ts
 │   │   │   │   │       ├── suspicious-activity-routing.module.ts
@@ -3457,4 +3477,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-808 directories, 2651 files
+810 directories, 2669 files
