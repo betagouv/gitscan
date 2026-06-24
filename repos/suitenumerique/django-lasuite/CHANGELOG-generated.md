@@ -1,19 +1,13 @@
-## Changelog : django-lasuite (30 derniers jours)
+## Changelog : django-lasuite (30 derniers jours, au 22 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'interface d'administration, notamment la possibilité de personnaliser la couleur de l'en-tête. Des améliorations techniques ont également été apportées pour la gestion des types de fichiers, l'intégration OIDC et la configuration du projet. Enfin, des mises à jour de l'infrastructure CI/CD ont été effectuées.
+Les récentes évolutions de django-lasuite se concentrent sur l'amélioration de la configuration de l'authentification OpenID Connect (OIDC) en permettant la transmission de paramètres supplémentaires. Une nouvelle version du projet a été publiée (0.0.27).
 
 ### Évolutions fonctionnelles
-- 💄(admin) Possibilité de personnaliser la couleur de l'en-tête de l'interface d'administration.
-- 🍱(core) Amélioration de la gestion des types de fichiers en utilisant un fichier `mime.types` vendorisé.
-- 🚸(oidc) La comparaison des emails lors de la recherche de correspondance est désormais insensible à la casse [#61](https://github.com/suitenumerique/django-lasuite/issues/61).
+- Possibilité de configurer des paramètres supplémentaires à transmettre lors de l'authentification OIDC. [#438e72b](https://github.com/suitenumerique/django-lasuite/commit/438e72b)
 
 ### Évolutions techniques
-- ⬆️(ci) Mise à jour des étapes du workflow GitHub Actions vers les dernières versions.
-- ✅(pyproject) Correction du format des extras pour hatchling.
-- ♻️(oidc) Correction de l'utilisation de la clé de session pour la vérification de l'expiration du jeton.
-- 🍱(core) Utilisation d'un fichier `mime.types` vendorisé pour une meilleure gestion des types de fichiers.
+- Mise à jour de la version du projet à 0.0.27. [72da3b9](https://github.com/suitenumerique/django-lasuite/commit/72da3b9)
 
 ### Autres changements
-- 🔖 Publication de la version 0.0.25.
-- 🔖 Publication de la version 0.0.24.
+- Aucun autre changement significatif à signaler.

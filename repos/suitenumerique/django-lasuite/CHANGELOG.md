@@ -8,6 +8,22 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.27] - 2026-06-22
+
+### Added
+
+- ✨(oidc) allow to configure forwarded params
+
+## [0.0.26] - 2026-04-03
+
+### Changed
+
+- ✨(oidc) allow login_hint param #69
+
+### Fixed
+
+- 🐛(oidc) make `iss` claim optional in introspection response validation
+
 ## [0.0.25] - 2026-03-10
 
 ### Added
@@ -20,10 +36,13 @@ and this project adheres to
 ### Changed
 
 - 🚸(oidc) ignore case when fallback on email #61
+-  🔊(oidc) improve logging for improperly configured authorization clients #66
 
 ### Fixed
 
 - 🐛(oidc) use correct session key for token expiration check #56
+- 📝(oidc) fix misleading docstring in AuthorizationServerClient #66
+- 📝(oidc) document required oidc_op_url for resource server configuration #66
 
 ## [0.0.23] - 2026-01-14
 
@@ -201,7 +220,9 @@ and this project adheres to
 - ✨(oidc) add the authentication backends #2
 - ✨(oidc) add refresh token tools #3
 
-[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.25...main
+[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.27...main
+[0.0.27]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.27
+[0.0.26]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.26
 [0.0.25]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.25
 [0.0.24]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.24
 [0.0.23]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.23
