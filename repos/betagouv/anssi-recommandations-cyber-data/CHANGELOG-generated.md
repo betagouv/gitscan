@@ -1,35 +1,37 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 19 juin 2026)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 23 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation et la sécurisation de l'authentification WebAuthn.  De nouvelles fonctionnalités permettent l'enrôlement et l'authentification des utilisateurs via cette méthode, avec une attention particulière portée à la sécurité des clés et des sessions. L'interface utilisateur a également été améliorée avec l'ajout d'un tableau de bord protégé et de boutons d'enrôlement et d'identification.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation de l'authentification WebAuthn (yubikey) et l'amélioration de l'interface utilisateur, notamment avec l'ajout d'un tableau de bord et la gestion des collections de documents. Des corrections de sécurité et des ajustements techniques ont également été apportés pour stabiliser et sécuriser l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page protégée "Tableau de bord" accessible après authentification.
-- Implémentation de l'enrôlement et de l'authentification WebAuthn :
-    - Ajout de boutons d'enrôlement et d'identification.
-    - Possibilité de saisir les identifiants pour l'enrôlement et l'authentification.
-    - Initialisation de l'enrôlement d'une clé.
-    - Ajout d'un bouton d'identification de test.
-- Amélioration de la gestion des erreurs : retour d'une erreur si l'utilisateur est inconnu.
-- Correction de l'exécution de l'enrôlement et de l'authentification.
-- Correction du typage du payload pour finaliser l’authentification.
-- Ajout des routes `/auth/finalise` pour finaliser l’authentification.
+- **Authentification WebAuthn :** Implémentation complète de l'authentification avec yubikey, incluant l'enrôlement, la vérification et la finalisation du processus. Une documentation spécifique à l'utilisation de la yubikey a été ajoutée. [#1234 (exemple)]
+- **Tableau de bord :** Ajout d'un tableau de bord protégé, accessible après authentification.
+- **Gestion des collections :**
+    - Affichage des collections d'indexation et de jeopardy dans un tableau.
+    - Possibilité de filtrer les documents par collection.
+    - Affichage des informations de chaque collection sous forme d'onglets.
+    - Récupération et exposition via une API des informations sur les collections.
+- **Recherche de documents :** Ajout d'un champ de recherche pour filtrer les documents.
+- **Amélioration de l'interface utilisateur :**
+    - Retouche du design de la page d'authentification.
+    - Amélioration de la disposition du tableau de bord.
 
 ### Évolutions techniques
-- Sécurisation de la clé de session et du challenge dans la session côté serveur.
-- Utilisation de la bonne clé pour récupérer la clé publique de l’utilisateur.
-- Mise à jour de la librairie `starlette` pour des raisons de sécurité.
-- Ajustement de la version de la GitHub Action pour le clonage du dépôt.
-- Implémentation de la recherche d'utilisateurs pour l'authentification.
-- Passage de la clé publique de l’utilisateur au service de vérification.
-- Génération d'un token JWT et ajout de ce token à la session.
-- Correction de l'intégration de l'UI dans le Docker Compose.
-- Modification de la collection.
-- Ajout de style avec Tailwind.
-- Suppression des espaces potentiels lors de la construction des listes de fichiers.
-- Dépose du fichier d’évaluation ainsi que du mapping dans un répertoire temporaire.
+- **Sécurité :**
+    - Sécurisation de la clé de session et du challenge côté serveur.
+    - Mise à jour de la librairie `starlette` pour corriger des failles de sécurité.
+- **Docker :** Correction de la configuration Docker Compose pour inclure l'interface utilisateur.
+- **GitHub Actions :** Épinglage des versions des dépendances des GitHub Actions pour une meilleure stabilité.
+- **Typage :** Correction du typage du payload pour l'authentification.
+- **Gestion des fichiers :** Suppression des espaces potentiels lors de la construction des listes de fichiers.
 
 ### Autres changements
-- Explicitation des variables d’environnement pour l’authentification.
-- Épinglage des versions des dépendances des GitHub Actions pour une meilleure reproductibilité.
-- Revert d'une version de la GHA.
+- Ajout d'une documentation pour l'authentification avec la yubikey uniquement.
+- Renommage d'une classe pour plus de clarté.
+- Ajout de variables d'environnement explicites pour l'authentification.
+- Correction de l'exécution de l'enrôlement et de l'authentification.
+- Utilisation de la bonne clé pour récupérer la clé publique de l'utilisateur.
+- Ajustement de la version de la GHA pour le clonage du dépôt.
+- Retour à une version précédente de la GHA.
+- Ajout d'une route `/auth/finalise` pour finaliser l'authentification.
+- Correction d'une erreur lors de la création de fichiers temporaires.
