@@ -542,18 +542,19 @@
 │   │   │   │   └── card_vertical_component.html.haml
 │   │   │   ├── card_vertical_component.rb
 │   │   │   ├── copy_button_component
+│   │   │   │   ├── copy_button_component.en.yml
 │   │   │   │   ├── copy_button_component.fr.yml
-│   │   │   │   └── copy_button_component.html.haml
+│   │   │   │   └── copy_button_component.html.erb
 │   │   │   ├── copy_button_component.rb
 │   │   │   ├── download_component
 │   │   │   │   ├── download_component.en.yml
 │   │   │   │   ├── download_component.fr.yml
-│   │   │   │   └── download_component.html.haml
+│   │   │   │   └── download_component.html.erb
 │   │   │   ├── download_component.rb
 │   │   │   ├── input_component
 │   │   │   │   ├── input_component.en.yml
 │   │   │   │   ├── input_component.fr.yml
-│   │   │   │   └── input_component.html.haml
+│   │   │   │   └── input_component.html.erb
 │   │   │   ├── input_component.rb
 │   │   │   ├── input_errorable.rb
 │   │   │   ├── input_status_message_component
@@ -3599,6 +3600,7 @@
 │   │   ├── mailcatcher.rb
 │   │   ├── mailtrap.rb
 │   │   ├── mime_types.rb
+│   │   ├── new_framework_defaults_8_0.rb
 │   │   ├── omniauth.rb
 │   │   ├── open_id_connect.rb
 │   │   ├── otp.rb
@@ -4716,6 +4718,7 @@
 │   ├── @hotwired%2Fturbo@7.3.0.patch
 │   └── react-dom@19.2.7.patch
 ├── public
+│   ├── 400.html
 │   ├── 403.html
 │   ├── 404.html
 │   ├── 406-unsupported-browser.html
@@ -4784,6 +4787,8 @@
 │   │   │   ├── no_access_to_dossier_component_spec.rb
 │   │   │   └── pending_correction_checkbox_component_spec.rb
 │   │   ├── dsfr
+│   │   │   ├── callout_component_spec.rb
+│   │   │   ├── input_component_spec.rb
 │   │   │   └── toggle_component_spec.rb
 │   │   ├── editable_champ
 │   │   │   ├── champ_label_content_component_spec.rb
@@ -4857,6 +4862,7 @@
 │   │   │   │   ├── pending_correction_checkbox_component_preview.rb
 │   │   │   │   └── short_identite_entreprise_component_preview.rb
 │   │   │   ├── dsfr
+│   │   │   │   ├── download_component_preview.rb
 │   │   │   │   ├── radio_button_list_component_preview
 │   │   │   │   │   └── default.html.erb
 │   │   │   │   └── radio_button_list_component_preview.rb
@@ -4905,6 +4911,8 @@
 │   │   │   ├── referentiel_display_component_spec.rb
 │   │   │   ├── referentiel_prefill_component_spec.rb
 │   │   │   └── stepper_component_spec.rb
+│   │   ├── release_note
+│   │   │   └── form_component_spec.rb
 │   │   ├── select_procedure_drop_down_list_component_spec.rb
 │   │   ├── simple_format_component_spec.rb
 │   │   ├── switch_domain_banner_component_spec.rb
@@ -5022,12 +5030,14 @@
 │   │   │   ├── banners_controller_spec.rb
 │   │   │   ├── confirmation_urls_controller_spec.rb
 │   │   │   ├── dossiers_controller_spec.rb
+│   │   │   ├── dubious_procedures_controller_spec.rb
 │   │   │   ├── gestionnaires_controller_spec.rb
 │   │   │   ├── groupe_gestionnaires_controller_spec.rb
 │   │   │   ├── instructeurs_controller_spec.rb
 │   │   │   ├── procedures_controller_spec.rb
 │   │   │   ├── services_controller_spec.rb
 │   │   │   ├── super_admins_controller_spec.rb
+│   │   │   ├── team_accounts_controller_spec.rb
 │   │   │   └── users_controller_spec.rb
 │   │   ├── password_complexity_controller_spec.rb
 │   │   ├── ping_controller_spec.rb
@@ -5712,6 +5722,9 @@
 │   │   └── llm
 │   │       └── tunnel_query_spec.rb
 │   ├── rails_helper.rb
+│   ├── requests
+│   │   └── instructeurs
+│   │       └── telecharger_pjs_spec.rb
 │   ├── services
 │   │   ├── administrateur_deletion_service_spec.rb
 │   │   ├── ami
@@ -6012,6 +6025,7 @@
 │   ├── validators
 │   │   ├── export_template_validator_spec.rb
 │   │   └── types_de_champ
+│   │       ├── condition_validator_spec.rb
 │   │       ├── date_validator_spec.rb
 │   │       ├── libelle_validator_spec.rb
 │   │       ├── number_validator_spec.rb
@@ -6107,4 +6121,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-973 directories, 5453 files
+976 directories, 5464 files
