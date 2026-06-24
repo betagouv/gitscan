@@ -24,6 +24,7 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── build-check.yml
+│       ├── chrome-extension-package.yml
 │       ├── claude.yml
 │       ├── docker-build-push.yml
 │       ├── docs-sync.yml
@@ -528,7 +529,7 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260610120000_add_publisher_organization_parent_organizations_gin_index
 │   │   │   │   └── migration.sql
-│   │   │   ├── 20260618000000_diffusion_rule_client_id_to_publisher_organization_id
+│   │   │   ├── 20260622120000_add_publisher_demarche_simplifiees_table
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -560,7 +561,8 @@
 │   │   ├── migrate-publisher-diffusion-exclusion-to-rule.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
 │   │   ├── mission-enrichment
-│   │   │   └── export-dataset.ts
+│   │   │   ├── export-dataset.ts
+│   │   │   └── judge-enrichments.ts
 │   │   ├── missions-sdis
 │   │   │   ├── addresses.csv
 │   │   │   ├── create-spv-missions.ts
@@ -629,6 +631,7 @@
 │   │   │   │       ├── download-file.ts
 │   │   │   │       └── link-extractor.ts
 │   │   │   ├── campaign.ts
+│   │   │   ├── demarches-simplifiees.ts
 │   │   │   ├── email.ts
 │   │   │   ├── iframe.ts
 │   │   │   ├── import.ts
@@ -663,6 +666,8 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── demarches-simplifiees-apply-import
+│   │   │   │   └── handler.ts
 │   │   │   ├── enrich-missions-geoloc
 │   │   │   │   └── handler.ts
 │   │   │   ├── grimpio
@@ -810,6 +815,7 @@
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── organization.ts
+│   │   │   ├── publisher-demarche-simplifiees.ts
 │   │   │   ├── publisher-diffusion-rule.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
@@ -865,6 +871,11 @@
 │   │   │   ├── data-gouv
 │   │   │   │   ├── api.ts
 │   │   │   │   └── types.ts
+│   │   │   ├── demarches-simplifiees
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── functions.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── email.ts
 │   │   │   ├── geoloc.ts
 │   │   │   ├── geopf.ts
@@ -923,7 +934,8 @@
 │   │   │   ├── mission-scoring
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── calculator.test.ts
-│   │   │   │   │   └── index.test.ts
+│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   └── scoring-rules.test.ts
 │   │   │   │   ├── calculator.ts
 │   │   │   │   ├── config.ts
 │   │   │   │   ├── data.ts
@@ -940,9 +952,11 @@
 │   │   │   │   ├── exceptions.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types.ts
+│   │   │   ├── publisher-demarches-simplifiees.ts
 │   │   │   ├── publisher-diffusion-rule
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── index.test.ts
+│   │   │   │   ├── config.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
@@ -959,7 +973,8 @@
 │   │   │   │   │       ├── diffusion-rules-filter.ts
 │   │   │   │   │       ├── fields.ts
 │   │   │   │   │       ├── schemas
-│   │   │   │   │       │   └── v1.ts
+│   │   │   │   │       │   ├── v1.ts
+│   │   │   │   │       │   └── v2.ts
 │   │   │   │   │       └── types.ts
 │   │   │   │   ├── collections.ts
 │   │   │   │   ├── filter.ts
@@ -1363,6 +1378,7 @@
 │   │   │   │   │   ├── Administration.jsx
 │   │   │   │   │   ├── Annonceur.jsx
 │   │   │   │   │   ├── AnnonceurCreation.jsx
+│   │   │   │   │   ├── DemarcheSimplifiee.jsx
 │   │   │   │   │   ├── Diffuseur.jsx
 │   │   │   │   │   ├── DiffuseurCreation.jsx
 │   │   │   │   │   ├── Informations.jsx
@@ -1620,12 +1636,6 @@
 │   ├── tsconfig.json
 │   ├── vite.config.ts
 │   └── vitest.config.ts
-├── scripts
-│   ├── .gitignore
-│   ├── generate-changelog.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   └── tsconfig.json
 ├── terraform
 │   ├── .gitignore
 │   ├── containers.tf
@@ -1656,6 +1666,33 @@
 │   ├── typesense.tf
 │   ├── variables.tf
 │   └── vpc.tf
+├── tools
+│   └── chrome-extension
+│       ├── README.md
+│       ├── background
+│       │   └── service-worker.js
+│       ├── content
+│       │   ├── detect.js
+│       │   └── toast.js
+│       ├── dsfr
+│       │   └── fonts
+│       │       ├── Marianne-Bold.woff
+│       │       ├── Marianne-Bold.woff2
+│       │       ├── Marianne-Light.woff
+│       │       ├── Marianne-Light.woff2
+│       │       ├── Marianne-Medium.woff
+│       │       ├── Marianne-Medium.woff2
+│       │       ├── Marianne-Regular.woff
+│       │       └── Marianne-Regular.woff2
+│       ├── icons
+│       │   ├── icon-128.png
+│       │   ├── icon-16.png
+│       │   └── icon-48.png
+│       ├── manifest.json
+│       └── popup
+│           ├── popup.css
+│           ├── popup.html
+│           └── popup.js
 └── widget
     ├── .dockerignore
     ├── .gitignore
@@ -1755,4 +1792,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-408 directories, 1435 files
+417 directories, 1463 files
