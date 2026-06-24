@@ -1,4 +1,28 @@
 .
+├── .agents
+│   └── skills
+│       └── swift-concurrency-pro
+│           ├── SKILL.md
+│           ├── agents
+│           │   └── openai.yaml
+│           ├── assets
+│           │   ├── swift-concurrency-pro-icon.png
+│           │   └── swift-concurrency-pro-icon.svg
+│           └── references
+│               ├── actors.md
+│               ├── async-streams.md
+│               ├── bridging.md
+│               ├── bug-patterns.md
+│               ├── cancellation.md
+│               ├── diagnostics.md
+│               ├── hotspots.md
+│               ├── interop.md
+│               ├── new-features.md
+│               ├── structured.md
+│               ├── testing.md
+│               └── unstructured.md
+├── .claude
+│   └── skills -> ../.agents/skills
 ├── .editorconfig
 ├── .gitattributes
 ├── .githooks
@@ -127,6 +151,11 @@
 │   │   │   │   ├── Localizable.strings
 │   │   │   │   └── Localizable.stringsdict
 │   │   │   ├── bg.lproj
+│   │   │   │   ├── InfoPlist.strings
+│   │   │   │   ├── Localizable.strings
+│   │   │   │   ├── Localizable.stringsdict
+│   │   │   │   └── SAS.strings
+│   │   │   ├── ca.lproj
 │   │   │   │   ├── InfoPlist.strings
 │   │   │   │   ├── Localizable.strings
 │   │   │   │   ├── Localizable.stringsdict
@@ -301,7 +330,8 @@
 │   │   │       ├── Localizable.strings
 │   │   │       └── Localizable.stringsdict
 │   │   └── Sounds
-│   │       └── message.caf
+│   │       ├── message.caf
+│   │       └── sound_01.caf
 │   ├── Sources
 │   │   ├── AccessibilityTests
 │   │   │   └── AccessibilityTestsAppCoordinator.swift
@@ -310,7 +340,6 @@
 │   │   │   └── Hooks
 │   │   │       ├── AppSettingsHook.swift
 │   │   │       ├── BugReportHook.swift
-│   │   │       ├── CertificateValidatorHook.swift
 │   │   │       ├── ClientBuilderHook.swift
 │   │   │       ├── CompoundHook.swift
 │   │   │       ├── DeveloperOptionsScreenHook.swift
@@ -342,12 +371,15 @@
 │   │   │   │   ├── AudioPlaybackSpeed.swift
 │   │   │   │   ├── FrequentlyUsedEmoji.swift
 │   │   │   │   ├── LiveLocationSession.swift
-│   │   │   │   ├── MapTilerConfiguration.swift
+│   │   │   │   ├── MapTilerSettings.swift
 │   │   │   │   ├── OAuthConfiguration.swift
 │   │   │   │   ├── RageshakeConfiguration.swift
 │   │   │   │   ├── RemotePreference.swift
 │   │   │   │   ├── RoomListActivityVisibility.swift
-│   │   │   │   └── UserPreference.swift
+│   │   │   │   ├── TrackedUserDefaults.swift
+│   │   │   │   ├── UserDefaultsProtocol.swift
+│   │   │   │   ├── UserPreference.swift
+│   │   │   │   └── VolatileUserDefaults.swift
 │   │   │   ├── TargetConfiguration.swift
 │   │   │   └── Windowing
 │   │   │       ├── OrientationManagerProtocol.swift
@@ -384,7 +416,7 @@
 │   │   │   └── Strings.swift
 │   │   ├── Mocks
 │   │   │   ├── AggregatedReactionMock.swift
-│   │   │   ├── AnalyticsService+Mock.swift
+│   │   │   ├── AnalyticsServiceMock.swift
 │   │   │   ├── AppMediatorMock.swift
 │   │   │   ├── AuthenticationClientBuilderFactoryMock.swift
 │   │   │   ├── BannedRoomProxyMock.swift
@@ -408,6 +440,7 @@
 │   │   │   ├── NetworkMonitorMock.swift
 │   │   │   ├── NotificationItemProxyMock.swift
 │   │   │   ├── NotificationSettingsProxyMock.swift
+│   │   │   ├── NotificationToneManagerMock.swift
 │   │   │   ├── PHGPostHogMock.swift
 │   │   │   ├── PhotoLibraryManagerMock.swift
 │   │   │   ├── PollMock.swift
@@ -426,13 +459,14 @@
 │   │   │   │   └── LeaveSpaceHandleSDKMock.swift
 │   │   │   ├── SecureBackupControllerMock.swift
 │   │   │   ├── SessionVerificationControllerProxyMock.swift
+│   │   │   ├── SignallingTimelineItemProviderMock.swift
 │   │   │   ├── SpaceRoomListProxyMock.swift
 │   │   │   ├── SpaceServiceProxyMock.swift
 │   │   │   ├── TimelineControllerFactoryMock.swift
+│   │   │   ├── TimelineControllerMock.swift
 │   │   │   ├── TimelineProviderMock.swift
 │   │   │   ├── TimelineProxyMock.swift
 │   │   │   ├── UserIdentityProxyMock.swift
-│   │   │   ├── UserIndicatorControllerMock.swift
 │   │   │   ├── UserProfile+Mock.swift
 │   │   │   ├── UserSessionMock.swift
 │   │   │   └── UserSessionStoreMock.swift
@@ -596,7 +630,7 @@
 │   │   │   │       ├── SnapshotableGlassEffect.swift
 │   │   │   │       ├── StackedAvatarsView.swift
 │   │   │   │       ├── StopButton.swift
-│   │   │   │       ├── TimelineScrollToBottomButton.swift
+│   │   │   │       ├── TimelineScrollButton.swift
 │   │   │   │       ├── TombstonedAvatarImage.swift
 │   │   │   │       ├── ToolbarButton.swift
 │   │   │   │       ├── TopBannerModifier.swift
@@ -1364,9 +1398,14 @@
 │   │   │       └── View
 │   │   │           └── UserProfileScreen.swift
 │   │   ├── Services
+│   │   │   ├── AlertTones
+│   │   │   │   ├── NotificationTone.swift
+│   │   │   │   ├── NotificationToneManager.swift
+│   │   │   │   └── NotificationToneManagerProtocol.swift
 │   │   │   ├── Analytics
 │   │   │   │   ├── AnalyticsClientProtocol.swift
 │   │   │   │   ├── AnalyticsService.swift
+│   │   │   │   ├── AnalyticsServiceProtocol.swift
 │   │   │   │   ├── Helpers
 │   │   │   │   │   ├── Analytics+SwiftUI.swift
 │   │   │   │   │   ├── JoinedRoomSize+MemberCount.swift
@@ -1539,7 +1578,6 @@
 │   │   │   │   ├── GeoURI.swift
 │   │   │   │   ├── IntentionalMentions.swift
 │   │   │   │   ├── TimelineController
-│   │   │   │   │   ├── MockTimelineController.swift
 │   │   │   │   │   ├── TimelineController.swift
 │   │   │   │   │   ├── TimelineControllerFactory.swift
 │   │   │   │   │   ├── TimelineControllerFactoryProtocol.swift
@@ -1654,6 +1692,7 @@
 │       │   │   ├── Kingfisher.plist
 │       │   │   ├── LRUCache.plist
 │       │   │   ├── LoremSwiftum.plist
+│       │   │   ├── Mantis.plist
 │       │   │   ├── SFSafeSymbols.plist
 │       │   │   ├── SwiftSoup.plist
 │       │   │   ├── SwiftState.plist
@@ -1757,6 +1796,7 @@
 ├── NSE
 │   ├── Sources
 │   │   ├── BootDetectionManager.swift
+│   │   ├── CommonSettings+NotificationName.swift
 │   │   ├── NSEUserSession.swift
 │   │   ├── NotificationContentBuilder.swift
 │   │   ├── NotificationHandler.swift
@@ -3732,6 +3772,10 @@
 │   │           ├── timelineReplyView.iPad-pseudo-0.png
 │   │           ├── timelineReplyView.iPhone-en-GB-0.png
 │   │           ├── timelineReplyView.iPhone-pseudo-0.png
+│   │           ├── timelineScrollButton.iPad-en-GB-0.png
+│   │           ├── timelineScrollButton.iPad-pseudo-0.png
+│   │           ├── timelineScrollButton.iPhone-en-GB-0.png
+│   │           ├── timelineScrollButton.iPhone-pseudo-0.png
 │   │           ├── timelineStartRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── timelineStartRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── timelineStartRoomTimelineView.iPhone-en-GB-0.png
@@ -4449,6 +4493,7 @@
 │   │   ├── LoginScreenViewModelTests.swift
 │   │   ├── ManageRoomMemberSheetViewModelTests.swift
 │   │   ├── MapTilerURLBuilderTests.swift
+│   │   ├── MatrixClientWellKnownTests.swift
 │   │   ├── MatrixEntityRegexTests.swift
 │   │   ├── MediaPlayerProviderTests.swift
 │   │   ├── MediaProvider
@@ -4458,6 +4503,7 @@
 │   │   ├── MediaUploadPreviewScreenViewModelTests.swift
 │   │   ├── MediaUploadingPreprocessorTests.swift
 │   │   ├── MessageForwardingScreenViewModelTests.swift
+│   │   ├── NSItemProviderTests.swift
 │   │   ├── NavigationRootCoordinatorTests.swift
 │   │   ├── NavigationSplitCoordinatorTests.swift
 │   │   ├── NavigationStackCoordinatorTests.swift
@@ -4470,6 +4516,7 @@
 │   │   │   └── UNTextInputNotificationResponse+Creator.swift
 │   │   ├── NotificationSettingsEditScreenViewModelTests.swift
 │   │   ├── NotificationSettingsScreenViewModelTests.swift
+│   │   ├── NotificationToneManagerTests.swift
 │   │   ├── PermalinkTests.swift
 │   │   ├── PillContextTests.swift
 │   │   ├── PinnedEventsBannerStateTests.swift
@@ -4524,6 +4571,7 @@
 │   │   ├── TimelineItemFactoryTests.swift
 │   │   ├── TimelineMediaPreviewDataSourceTests.swift
 │   │   ├── TimelineMediaPreviewViewModelTests.swift
+│   │   ├── TimelineStateTests.swift
 │   │   ├── TimelineViewModelTests.swift
 │   │   ├── URLComponentsTests.swift
 │   │   ├── URLTests.swift
@@ -4760,4 +4808,4 @@
 ├── project-tchap-x.yml
 ├── project.yml
 └── renovate.json
-556 directories, 5679 files
+566 directories, 5717 files
