@@ -1,35 +1,41 @@
-## Changelog : envergo (30 derniers jours, au 17 juin 2026)
+## Changelog : envergo (30 derniers jours, au 23 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données, notamment concernant les critères ICPE et les règles d'urbanisme, ainsi que sur des optimisations de performance et des corrections de bugs. Des améliorations significatives ont été apportées à l'interface utilisateur pour faciliter l'accès aux informations et la gestion des dossiers. La sécurité et la conformité RGPD ont également été renforcées.
+Cette période a été marquée par des améliorations significatives de la performance et de la stabilité de l'application, notamment au niveau de la gestion des données et des requêtes. Des corrections de bugs et des ajustements ont été apportés pour améliorer l'expérience utilisateur, en particulier concernant la gestion des critères Natura 2000, des données ICPE et des alertes. L'interface utilisateur a également été affinée et des nouvelles fonctionnalités ont été ajoutées pour faciliter la gestion des données et des configurations.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la gestion des données relatives aux densités.
-- Ajout de la gestion du "cas par cas" pour les ICPE, avec des templates et des actions spécifiques.
-- Amélioration de l'affichage des données de plantation et des conditions associées.
-- Correction de l'affichage des données dans les avis (html et txt).
-- Amélioration de la gestion des critères ICPE et de leur visibilité en fonction des utilisateurs.
-- Mise à jour des textes et libellés pour une meilleure clarté, notamment dans l'espace instruction.
-- Possibilité d'importer plusieurs documents simultanément.
-- Amélioration de l'interface pour la gestion des zones et des coefficients.
-- Ajout d'une fonctionnalité permettant d'importer les données de l'inventaire national du patrimoine naturel (INPN).
+- Ajout de la gestion des cartes de densité sur la page de configuration.
+- Implémentation d'une procédure d'urgence avec un formulaire dédié et une alerte d'information.
+- Amélioration de l'affichage et de la gestion des critères Natura 2000, incluant la prise en compte des haies et des zones spécifiques.
+- Correction d'un bug empêchant la soumission des ICPE non soumis et sans dépôt LSE.
+- Ajout de la possibilité d'importer plusieurs fichiers.
+- Amélioration de la gestion des actions à entreprendre pour les ICPE, avec des modèles spécifiques pour les cas par cas.
+- Modification du libellé "Administration" par "Espace instruction" pour plus de clarté.
+- Ajout de la possibilité d'importer des données Taxref pour mettre à jour les espèces.
+- Amélioration de l'affichage des données dans les tableaux, notamment l'ajout d'unités.
+- Correction de l'affichage des données dans les emails d'avis.
+- Amélioration de la gestion des conditions de plantation.
 
 ### Évolutions techniques
-- Optimisations de performance significatives au niveau des requêtes en base de données, notamment pour les pétitions et les données de Moulinette.
-- Refactorisation du code pour une meilleure qualité et maintenabilité.
-- Mise à jour des dépendances (Playwright, Node).
-- Amélioration de la gestion des configurations et des URL.
-- Suppression des informations sensibles dans les données exportées.
-- Amélioration des tests unitaires et d'intégration, notamment avec Playwright.
-- Renforcement de la sécurité en limitant l'accès aux URL et en gérant les secrets.
-- Suppression des fonctionnalités liées au suivi des emails (Brevo) pour assurer la conformité RGPD.
-- Correction de plusieurs erreurs de pre-commit.
+- Optimisation des performances de l'application, notamment au niveau des requêtes en base de données et de la récupération des données.
+- Refactorisation du code pour améliorer la qualité et la maintenabilité.
+- Mise à jour des dépendances, incluant Playwright et Node.js.
+- Amélioration de la sécurité en whitelistant les URL mappings vers les domaines locaux.
+- Suppression de données sensibles dans les URL.
+- Correction de bugs et amélioration des tests unitaires et d'intégration.
+- Mise en place de tests plus complets pour les critères ICPE.
+- Amélioration de la gestion des migrations de base de données.
+- Correction de conflits de migration.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
 
 ### Autres changements
+- Correction de fautes de frappe et amélioration de la qualité du code.
 - Mise à jour de la documentation.
-- Correction de problèmes de synchronisation entre les templates HTML et TXT.
-- Amélioration des commentaires et de la lisibilité du code.
-- Correction de bugs mineurs dans l'interface utilisateur.
+- Suppression de code inutile.
+- Amélioration des messages d'erreur.
 - Ajout de tests pour les nouvelles fonctionnalités.
-- Correction de problèmes de typographie et de grammaire dans les textes.
-- Suppression de code inutile et nettoyage du codebase.
+- Correction de problèmes de synchronisation entre les templates HTML et texte des avis.
+- Suppression du modèle `RecipientStatus` et des fonctionnalités associées à Brevo pour la gestion du RGPD.
+- Suppression du suivi des événements Brevo.
+- Correction de problèmes liés à la gestion des conditions et des coefficients pour les RU (Réglementation Urbanisme).
+- Amélioration de la gestion des erreurs et des exceptions.
