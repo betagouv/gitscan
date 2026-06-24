@@ -49,6 +49,8 @@
 │   │   │   │   ├── forbidden.spec.js
 │   │   │   │   ├── page-not-found.spec.js
 │   │   │   │   └── unauthorized.spec.js
+│   │   │   ├── federation-user
+│   │   │   │   └── federation-user-list.spec.js
 │   │   │   ├── identity-provider
 │   │   │   │   ├── identity-provider-create.spec.js
 │   │   │   │   ├── identity-provider-delete.spec.js
@@ -251,6 +253,13 @@
 │   │   │   └── filter
 │   │   │       ├── all-exception.filter.spec.ts
 │   │   │       └── all-exception.filter.ts
+│   │   ├── federation-user
+│   │   │   ├── federation-user.controller.ts
+│   │   │   ├── federation-user.module.ts
+│   │   │   ├── federation-user.mongodb.entity.ts
+│   │   │   ├── federation-user.service.ts
+│   │   │   └── interfaces
+│   │   │       └── idp-identity-key.interface.ts
 │   │   ├── file-storage
 │   │   │   ├── file-storage.mongodb.entity.ts
 │   │   │   ├── file-storage.service.spec.ts
@@ -389,6 +398,8 @@
 │   │   │   ├── 404.ejs
 │   │   │   ├── 413.ejs
 │   │   │   └── 500.ejs
+│   │   ├── federation-user
+│   │   │   └── list.ejs
 │   │   ├── identity-provider
 │   │   │   ├── creation.ejs
 │   │   │   ├── list.ejs
@@ -1099,8 +1110,6 @@
 │   │   │   │   ├── oidc-provider.service.ts
 │   │   │   │   └── services
 │   │   │   │       ├── index.ts
-│   │   │   │       ├── oidc-provider-config-app.service.spec.ts
-│   │   │   │       ├── oidc-provider-config-app.service.ts
 │   │   │   │       ├── oidc-provider-config.service.spec.ts
 │   │   │   │       └── oidc-provider-config.service.ts
 │   │   │   └── tsconfig.lib.json
@@ -1173,7 +1182,6 @@
 │   │       │   │   └── session-commit.interceptor.ts
 │   │       │   ├── interfaces
 │   │       │   │   ├── index.ts
-│   │       │   │   ├── session-cookie-options.interface.ts
 │   │       │   │   ├── session-service.interface.ts
 │   │       │   │   └── session-storage.interface.ts
 │   │       │   ├── middlewares
@@ -1198,7 +1206,6 @@
 │   │       │   │   └── session-store-key.token.ts
 │   │       │   └── types
 │   │       │       ├── index.ts
-│   │       │       ├── samesite.type.ts
 │   │       │       └── template-exposed.type.ts
 │   │       └── tsconfig.lib.json
 │   ├── migrate-mongo-config.js
@@ -1248,12 +1255,9 @@
 │   │   │   ├── Dockerfile
 │   │   │   ├── definitions.json
 │   │   │   └── rabbitmq.config
-│   │   ├── lemonldap
-│   │   │   ├── Dockerfile
-│   │   │   └── entrypoint.sh
-│   │   └── mongodb
+│   │   └── lemonldap
 │   │       ├── Dockerfile
-│   │       └── healthcheck.sh
+│   │       └── entrypoint.sh
 │   ├── compose
 │   │   ├── fca-low
 │   │   │   ├── .env
@@ -1270,22 +1274,17 @@
 │   │   │   │   ├── fsa2-low.env
 │   │   │   │   ├── fsa3-low.env
 │   │   │   │   ├── hybridge-rie.env
-│   │   │   │   ├── moncomptepro.env
-│   │   │   │   └── mongo-fca-low.env
+│   │   │   │   └── moncomptepro.env
 │   │   │   ├── admin.yml
 │   │   │   ├── core.yml
 │   │   │   ├── hybridge.yml
 │   │   │   ├── mocks.yml
-│   │   │   ├── mongo.yml
-│   │   │   ├── postgres.yml
 │   │   │   └── stack.yml
 │   │   └── shared
 │   │       ├── .env
 │   │       │   ├── base-app.env
+│   │       │   ├── mongo.env
 │   │       │   ├── pc-mongo.env
-│   │       │   ├── postgres
-│   │       │   │   ├── base.env
-│   │       │   │   └── databases.env
 │   │       │   ├── postgres.env
 │   │       │   └── redis.env
 │   │       └── compose.yaml
@@ -1307,9 +1306,11 @@
 │       │       └── init.sh
 │       ├── log
 │       │   └── .gitkeep
+│       ├── mongo
+│       │   └── initdb.d
+│       │       ├── 01-create-user.js
+│       │       └── 02-seed.js
 │       ├── mongo-fca-low
-│       │   ├── initdb.d
-│       │   │   └── 01-create-user.js
 │       │   └── scripts
 │       │       ├── db-states
 │       │       │   ├── _default
@@ -1326,9 +1327,7 @@
 │       │       │   │   ├── e2e-idp-update-activate.js
 │       │       │   │   └── e2e-idp-update-desactivate.js
 │       │       │   └── mongo-reset.js
-│       │       ├── flatten-v2-federation-keys.js
-│       │       ├── manage.sh
-│       │       └── run.sh
+│       │       └── flatten-v2-federation-keys.js
 │       ├── nginx-proxy
 │       │   ├── default-vhost
 │       │   │   └── index.html
@@ -1339,42 +1338,17 @@
 │       │   ├── includes
 │       │   │   └── common.vhost.conf
 │       │   └── nginx.conf
-│       ├── postgres
-│       │   ├── init-multiple-postgresql-databases.sh
-│       │   ├── pg_hba.conf
-│       │   ├── postgresql.conf
-│       │   └── start.sh
 │       └── ssl
 │           ├── README.md
 │           ├── app.crt
 │           ├── app.key
-│           ├── ca.crt
-│           ├── client-ignite.crt
-│           ├── client-ignite.key
 │           ├── docker-stack-ca.crt
 │           ├── docker-stack-ca.key
 │           ├── docker-stack-ca.srl
 │           ├── generate.sh
-│           ├── mongo.crt
-│           ├── mongo.key
-│           ├── mongo.pem
-│           ├── postgres.crt
-│           ├── postgres.fc-apps.client.crt
-│           ├── postgres.fc-apps.client.key
-│           ├── postgres.key
-│           ├── postgres.partner.client.crt
-│           ├── postgres.partner.client.key
 │           └── requests
 │               ├── app-req.conf
-│               ├── app.csr
-│               ├── mongo-req.conf
-│               ├── mongo.csr
-│               ├── postgres-req.conf
-│               ├── postgres.csr
-│               ├── postgres.fc-apps.client-req.conf
-│               ├── postgres.fc-apps.client.csr
-│               ├── postgres.partner.client-req.conf
-│               └── postgres.partner.client.csr
+│               └── app.csr
 ├── pcdbapi
 │   ├── .dockerignore
 │   ├── .gitignore
@@ -1434,6 +1408,7 @@
     │   │   │   ├── api-token-introspection.feature
     │   │   │   └── api-token.feature
     │   │   ├── exploitation
+    │   │   │   ├── blocage-utilisateur.feature
     │   │   │   ├── connexion-exploitation.feature
     │   │   │   ├── creation-modification-fi-routing.feature
     │   │   │   ├── creation-modification-fi.feature
@@ -1570,4 +1545,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-353 directories, 1219 files
+355 directories, 1192 files
