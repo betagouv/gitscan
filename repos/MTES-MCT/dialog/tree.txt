@@ -1136,6 +1136,7 @@
 │   │   │   │   │   ├── DeleteRegulationController.php
 │   │   │   │   │   ├── GetCifsIncidentsController.php
 │   │   │   │   │   ├── GetOrganizationIdentifiersController.php
+│   │   │   │   │   ├── GetRegulationController.php
 │   │   │   │   │   ├── GetRegulationsController.php
 │   │   │   │   │   └── PublishRegulationController.php
 │   │   │   │   └── Statistics
@@ -1242,17 +1243,30 @@
 │   │   │   │   └── ResetPasswordController.php
 │   │   │   └── StatisticsController.php
 │   │   ├── DTO
-│   │   │   └── Event
-│   │   │       ├── RegulationGeneralInfoDTO.php
-│   │   │       ├── SaveDailyRangeDTO.php
-│   │   │       ├── SaveLocationDTO.php
-│   │   │       ├── SaveMeasureDTO.php
-│   │   │       ├── SaveNamedStreetDTO.php
-│   │   │       ├── SaveNumberedRoadDTO.php
-│   │   │       ├── SavePeriodDTO.php
-│   │   │       ├── SaveRawGeoJSONDTO.php
-│   │   │       ├── SaveTimeSlotDTO.php
-│   │   │       └── SaveVehicleSetDTO.php
+│   │   │   ├── Event
+│   │   │   │   ├── RegulationGeneralInfoDTO.php
+│   │   │   │   ├── SaveDailyRangeDTO.php
+│   │   │   │   ├── SaveLocationDTO.php
+│   │   │   │   ├── SaveMeasureDTO.php
+│   │   │   │   ├── SaveNamedStreetDTO.php
+│   │   │   │   ├── SaveNumberedRoadDTO.php
+│   │   │   │   ├── SavePeriodDTO.php
+│   │   │   │   ├── SaveRawGeoJSONDTO.php
+│   │   │   │   ├── SaveTimeSlotDTO.php
+│   │   │   │   └── SaveVehicleSetDTO.php
+│   │   │   └── Regulation
+│   │   │       ├── DailyRangeApiView.php
+│   │   │       ├── LocationApiView.php
+│   │   │       ├── MeasureApiView.php
+│   │   │       ├── NamedStreetApiView.php
+│   │   │       ├── NumberedRoadApiView.php
+│   │   │       ├── OrganizationApiView.php
+│   │   │       ├── PeriodApiView.php
+│   │   │       ├── RawGeoJSONApiView.php
+│   │   │       ├── RegulationApiView.php
+│   │   │       ├── StorageAreaApiView.php
+│   │   │       ├── TimeSlotApiView.php
+│   │   │       └── VehicleSetApiView.php
 │   │   ├── Data
 │   │   │   └── StorageArea
 │   │   │       └── StorageAreaMigrationGenerator.php
@@ -1706,6 +1720,7 @@
 │   │       │   │   ├── GetCifsIncidentsControllerTest.php
 │   │       │   │   ├── GetNearbyStreetsControllerTest.php
 │   │       │   │   ├── GetOrganizationIdentifiersControllerTest.php
+│   │       │   │   ├── GetRegulationControllerTest.php
 │   │       │   │   ├── GetRegulationsControllerTest.php
 │   │       │   │   ├── PublishRegulationControllerTest.php
 │   │       │   │   ├── Statistics
@@ -2104,10 +2119,14 @@
 │   │       │   ├── Api
 │   │       │   │   ├── GetNearbyStreetsControllerTest.php
 │   │       │   │   └── Regulations
+│   │       │   │       ├── GetRegulationControllerTest.php
 │   │       │   │       └── GetRegulationsControllerTest.php
 │   │       │   └── Regulation
 │   │       │       └── Fragments
 │   │       │           └── GetLocationGeometryControllerTest.php
+│   │       ├── DTO
+│   │       │   └── Regulation
+│   │       │       └── RegulationApiViewTest.php
 │   │       ├── Data
 │   │       │   └── StorageArea
 │   │       │       └── StorageAreaMigrationGeneratorTest.php
@@ -2214,4 +2233,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-436 directories, 1936 files
+439 directories, 1952 files
