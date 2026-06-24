@@ -43,7 +43,8 @@
 │   ├── manage
 │   ├── publish-notebooks
 │   ├── restore-web-db
-│   └── sass
+│   ├── sass
+│   └── upgrade-deps
 ├── csplab.code-workspace
 ├── dev
 │   ├── .python-version
@@ -57,7 +58,6 @@
 │   │   ├── ADR-003-ddd-aggregate-root-pattern.md
 │   │   └── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
 │   ├── accessibility_testing.md
-│   ├── api_guide_metier.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
 │   ├── docker_compose_override.md
@@ -421,29 +421,43 @@
         │   │       ├── __init__.py
         │   │       ├── create_agent.py
         │   │       ├── create_candidat.py
-        │   │       └── get_utilisateur_details.py
-        │   └── ingestion
+        │   │       ├── create_organisme.py
+        │   │       ├── get_utilisateur_details.py
+        │   │       └── log_utilisateur_connexion.py
+        │   ├── ingestion
+        │   │   ├── __init__.py
+        │   │   ├── interfaces
+        │   │   │   ├── __init__.py
+        │   │   │   ├── archive_offer_by_reference_input.py
+        │   │   │   ├── get_offers_by_source_input.py
+        │   │   │   ├── list_metiers_input.py
+        │   │   │   ├── list_offers_input.py
+        │   │   │   ├── load_documents_input.py
+        │   │   │   ├── load_operation_type.py
+        │   │   │   └── upsert_offers_input.py
+        │   │   └── usecases
+        │   │       ├── __init__.py
+        │   │       ├── archive_offer_by_reference.py
+        │   │       ├── archive_offers.py
+        │   │       ├── clean_documents.py
+        │   │       ├── get_offers_by_source.py
+        │   │       ├── list_metiers.py
+        │   │       ├── list_offers.py
+        │   │       ├── list_sources.py
+        │   │       ├── load_documents.py
+        │   │       ├── load_offers.py
+        │   │       ├── upsert_offers.py
+        │   │       └── vectorize_documents.py
+        │   └── recruteur
         │       ├── __init__.py
-        │       ├── interfaces
-        │       │   ├── __init__.py
-        │       │   ├── archive_offer_by_reference_input.py
-        │       │   ├── list_metiers_input.py
-        │       │   ├── list_offers_input.py
-        │       │   ├── load_documents_input.py
-        │       │   ├── load_operation_type.py
-        │       │   └── upsert_offers_input.py
         │       └── usecases
-        │           ├── __init__.py
-        │           ├── archive_offer_by_reference.py
-        │           ├── archive_offers.py
-        │           ├── clean_documents.py
-        │           ├── list_metiers.py
-        │           ├── list_offers.py
-        │           ├── list_sources.py
-        │           ├── load_documents.py
-        │           ├── load_offers.py
-        │           ├── upsert_offers.py
-        │           └── vectorize_documents.py
+        │           ├── get_organisme_recruteur.py
+        │           └── initialize_organisme_steps.py
+        ├── bin
+        │   ├── backup-db-to-scaleway.sh
+        │   ├── postdeploy.sh
+        │   ├── run_worker.sh
+        │   └── start.sh
         ├── cliff.toml
         ├── config
         │   ├── __init__.py
@@ -459,6 +473,7 @@
         │   ├── setup-qdrant.py
         │   ├── urls.py
         │   └── wsgi.py
+        ├── cron.json
         ├── domain
         │   ├── __init__.py
         │   ├── candidate
@@ -489,6 +504,17 @@
         │   │       ├── cv_processing_status.py
         │   │       ├── opportunity_type.py
         │   │       └── statut_candidature.py
+        │   ├── commons
+        │   │   ├── __init__.py
+        │   │   ├── entities
+        │   │   │   ├── __init__.py
+        │   │   │   └── audit_log.py
+        │   │   ├── repositories
+        │   │   │   ├── __init__.py
+        │   │   │   └── audit_log_repository_interface.py
+        │   │   └── services
+        │   │       ├── __init__.py
+        │   │       └── audit_log_writer.py
         │   ├── identite
         │   │   ├── entities
         │   │   │   ├── __init__.py
@@ -514,6 +540,7 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── agent_repository_interface.py
         │   │   │   ├── candidat_repository_interface.py
+        │   │   │   ├── organisme_repository_interface.py
         │   │   │   └── utilisateur_repository_interface.py
         │   │   └── value_objects
         │   │       ├── __init__.py
@@ -554,16 +581,20 @@
         │   └── recruteur
         │       ├── entities
         │       │   ├── __init__.py
-        │       │   └── organisme.py
+        │       │   ├── etape_recrutement.py
+        │       │   └── organisme_recruteur.py
         │       ├── errors
         │       │   ├── __init__.py
         │       │   └── erreur_recrutement.py
         │       ├── events
         │       │   ├── __init__.py
         │       │   └── organisme_events.py
+        │       ├── repositories
+        │       │   ├── __init__.py
+        │       │   └── organisme_repository_interface.py
         │       └── value_objects
         │           ├── __init__.py
-        │           └── etapes_recrutement.py
+        │           └── categorie_etapes_recrutement.py
         ├── eslint.config.mjs
         ├── infrastructure
         │   ├── __init__.py
@@ -584,6 +615,10 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── ingestion_container.py
         │   │   │   └── ingestion_factory.py
+        │   │   ├── recruteur
+        │   │   │   ├── __init__.py
+        │   │   │   ├── recruteur_container.py
+        │   │   │   └── recruteur_factory.py
         │   │   └── shared
         │   │       ├── __init__.py
         │   │       └── shared_container.py
@@ -604,6 +639,14 @@
         │   │   │       ├── __init__.py
         │   │   │       ├── candidature.py
         │   │   │       └── cv_metadata.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   ├── admin.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
@@ -637,6 +680,9 @@
         │   │   │   │   ├── 0027_apilogdailyaggregationmodel.py
         │   │   │   │   ├── 0028_sourcemodel_created_at_sourcemodel_updated_at_and_more.py
         │   │   │   │   ├── 0029_fix_rawdocument_id_index.py
+        │   │   │   │   ├── 0030_sourcemodel_slug.py
+        │   │   │   │   ├── 0031_alter_sourcemodel_type.py
+        │   │   │   │   ├── 0032_alter_sourcemodel_id.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -644,6 +690,14 @@
         │   │   │       ├── api_log_daily_aggregation.py
         │   │   │       ├── raw_document.py
         │   │   │       └── source.py
+        │   │   ├── recruteur
+        │   │   │   ├── __init__.py
+        │   │   │   ├── admin.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models.py
         │   │   ├── referentiel
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
@@ -752,6 +806,8 @@
         │   │       └── logger.py
         │   ├── mappers
         │   │   ├── __init__.py
+        │   │   ├── organisme_identite_mapper.py
+        │   │   ├── organisme_recruteur_mapper.py
         │   │   ├── qdrant_filters_mapper.py
         │   │   └── queryset_page.py
         │   └── repositories
@@ -761,16 +817,23 @@
         │       │   ├── async_postgres_cv_metadata_repository.py
         │       │   ├── postgres_candidature_repository.py
         │       │   └── postgres_cv_metadata_repository.py
+        │       ├── commons
+        │       │   ├── __init__.py
+        │       │   └── postgres_audit_log_repository.py
         │       ├── identite
         │       │   ├── __init__.py
         │       │   ├── postgres_agent_repository.py
         │       │   ├── postgres_candidat_repository.py
+        │       │   ├── postgres_organisme_repository.py
         │       │   └── postgres_utilisateur_repository.py
         │       ├── ingestion
         │       │   ├── __init__.py
         │       │   ├── postgres_document_repository.py
         │       │   ├── postgres_source_repository.py
         │       │   └── postgres_user_source_repository.py
+        │       ├── recruteur
+        │       │   ├── __init__.py
+        │       │   └── postgres_organisme_repository.py
         │       ├── repository_factory.py
         │       └── shared
         │           ├── __init__.py
@@ -787,7 +850,6 @@
         ├── package.json
         ├── pnpm-lock.yaml
         ├── pnpm-workspace.yaml
-        ├── postdeploy.sh
         ├── presentation
         │   ├── __init__.py
         │   ├── api
@@ -901,6 +963,11 @@
         │   │   │   │   │   ├── CspCheckboxGroup
         │   │   │   │   │   │   ├── CspCheckboxGroup.stories.ts
         │   │   │   │   │   │   └── CspCheckboxGroup.vue
+        │   │   │   │   │   ├── CspDataTable
+        │   │   │   │   │   │   ├── CspDataTable.stories.ts
+        │   │   │   │   │   │   ├── CspDataTable.test.ts
+        │   │   │   │   │   │   ├── CspDataTable.vue
+        │   │   │   │   │   │   └── table.ts
         │   │   │   │   │   ├── CspDialog
         │   │   │   │   │   │   ├── CspDialog.stories.ts
         │   │   │   │   │   │   └── CspDialog.vue
@@ -947,6 +1014,10 @@
         │   │   │   │   │   ├── CspTextarea
         │   │   │   │   │   │   ├── CspTextarea.stories.ts
         │   │   │   │   │   │   └── CspTextarea.vue
+        │   │   │   │   │   ├── CspToast
+        │   │   │   │   │   │   ├── CspToast.stories.ts
+        │   │   │   │   │   │   ├── CspToast.vue
+        │   │   │   │   │   │   └── CspToastProvider.vue
         │   │   │   │   │   └── CspTooltip
         │   │   │   │   │       ├── CspTooltip.stories.ts
         │   │   │   │   │       └── CspTooltip.vue
@@ -973,8 +1044,9 @@
         │   │   │   ├── features
         │   │   │   │   └── ats
         │   │   │   │       ├── HomeView.vue
-        │   │   │   │       └── components
-        │   │   │   │           └── AtsAppShell.vue
+        │   │   │   │       ├── components
+        │   │   │   │       │   └── AtsAppShell.vue
+        │   │   │   │       └── navigation.ts
         │   │   │   ├── shared
         │   │   │   │   └── components
         │   │   │   │       └── ErrorBoundary.vue
@@ -1057,6 +1129,7 @@
         │   │   └── views.py
         │   ├── static
         │   │   ├── api
+        │   │   │   ├── guide_api.md
         │   │   │   ├── internal-schema.yaml
         │   │   │   └── schema.yaml
         │   │   ├── candidate
@@ -1147,6 +1220,7 @@
         │       │   └── error.html
         │       ├── pages
         │       │   ├── accessibility.html
+        │       │   ├── api_guide.html
         │       │   ├── home.html
         │       │   ├── legal_notices.html
         │       │   ├── privacy.html
@@ -1158,8 +1232,6 @@
         │           ├── login.html
         │           └── profile.html
         ├── pyproject.toml
-        ├── run_worker.sh
-        ├── start.sh
         ├── tests
         │   ├── __init__.py
         │   ├── application
@@ -1170,14 +1242,21 @@
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   ├── test_process_uploaded_cv.py
         │   │   │   └── test_submit_application.py
-        │   │   └── ingestion
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_create_organisme.py
+        │   │   ├── ingestion
+        │   │   │   ├── __init__.py
+        │   │   │   ├── test_archive_offers.py
+        │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_get_offers_by_source.py
+        │   │   │   ├── test_list_sources.py
+        │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_upsert_offers.py
+        │   │   │   └── test_vectorize_documents.py
+        │   │   └── recruteur
         │   │       ├── __init__.py
-        │   │       ├── test_archive_offers.py
-        │   │       ├── test_clean_documents.py
-        │   │       ├── test_list_sources.py
-        │   │       ├── test_load_documents.py
-        │   │       ├── test_upsert_offers.py
-        │   │       └── test_vectorize_documents.py
+        │   │       └── test_organisme_steps.py
         │   ├── conftest.py
         │   ├── domain
         │   │   ├── __init__.py
@@ -1193,7 +1272,6 @@
         │   │   │   └── test_utilisateurs.py
         │   │   └── recruteur
         │   │       ├── __init__.py
-        │   │       ├── test_etapes_recrutement.py
         │   │       └── test_organisme.py
         │   ├── factories
         │   │   ├── __init__.py
@@ -1202,6 +1280,9 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── candidature_factory.py
         │   │   │   └── cv_metadata_factory.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   └── audit_log_factory.py
         │   │   ├── datetime_utils.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
@@ -1239,12 +1320,17 @@
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   ├── test_process_uploaded_cv.py
         │   │   │   └── test_submit_candidature.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_postgres_audit_log_repository.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
         │   │   │   ├── test_api_key_authentication.py
         │   │   │   ├── test_create_agent.py
         │   │   │   ├── test_create_candidat.py
-        │   │   │   └── test_get_utilisateurs_details.py
+        │   │   │   ├── test_create_organisme.py
+        │   │   │   ├── test_get_utilisateurs_details.py
+        │   │   │   └── test_log_utilisateur_connexion.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── external_gateways
@@ -1268,6 +1354,9 @@
         │   │   │   ├── test_purge_api_logs.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   └── test_vectorize_documents.py
+        │   │   ├── recruteur
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_organisme_steps.py
         │   │   └── referentiel
         │   │       ├── __init__.py
         │   │       ├── test_postgres_concours_repository.py
@@ -1323,6 +1412,7 @@
         │   │   │   │   └── test_ingestion_tasks.py
         │   │   │   ├── test_postgres_api_log_daily_agg_repository.py
         │   │   │   ├── test_postgres_api_log_repository.py
+        │   │   │   ├── test_serializers.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
         │   │   │       ├── conftest.py
@@ -1333,8 +1423,12 @@
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
         │   │   │       ├── test_list_sources.py
+        │   │   │       ├── test_offers_by_source.py
         │   │   │       ├── test_upsert_offers.py
         │   │   │       └── test_views.py
+        │   │   ├── pages
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_views.py
         │   │   └── recruteur
         │   │       ├── __init__.py
         │   │       └── test_views.py
@@ -1349,4 +1443,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-277 directories, 1074 files
+300 directories, 1145 files
