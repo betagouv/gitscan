@@ -56,11 +56,13 @@
 │   │   └── order_by.py
 │   ├── management
 │   │   ├── __init__.py
+│   │   ├── base.py
 │   │   └── commands
 │   │       ├── __init__.py
 │   │       ├── _common
 │   │       │   ├── __init__.py
 │   │       │   └── file.py
+│   │       ├── clean_detections.py
 │   │       ├── compute_prescription.py
 │   │       ├── create_api_key.py
 │   │       ├── create_super_admin.py
@@ -211,6 +213,12 @@
 │   │   ├── 0119_geocustomzone_import_id.py
 │   │   ├── 0120_add_jugement_detection_control_status.py
 │   │   ├── 0121_deployed_data_aggregate_indexes.py
+│   │   ├── 0122_deployed_data_detail_commune_index.py
+│   │   ├── 0123_remove_duplicate_indexes.py
+│   │   ├── 0124_add_detection_batch_id_index.py
+│   │   ├── 0125_remove_unused_indexes.py
+│   │   ├── 0126_add_illegal_and_to_control_statuses.py
+│   │   ├── 0127_commandrun_origin_and_timing.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -308,6 +316,9 @@
 │   │   ├── base.py
 │   │   ├── commands
 │   │   │   ├── __init__.py
+│   │   │   ├── test_clean_detections.py
+│   │   │   ├── test_command_progress.py
+│   │   │   ├── test_command_run_tracker.py
 │   │   │   ├── test_import_custom_zones.py
 │   │   │   └── test_import_sitadel.py
 │   │   ├── conftest.py
@@ -351,6 +362,7 @@
 │   │   ├── bulk_csv.py
 │   │   ├── cache.py
 │   │   ├── code.py
+│   │   ├── command_progress.py
 │   │   ├── email.py
 │   │   ├── filters.py
 │   │   ├── geo.py
@@ -425,4 +437,4 @@
 └── services
     ├── celery.service
     └── gunicorn_aigle.service
-38 directories, 389 files
+38 directories, 401 files
