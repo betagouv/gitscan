@@ -8,6 +8,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) allow converting a file while it is being analyzed
+
+### Fixed
+
+- 🐛(frontend) keep uploaded items usable while malware analysis runs
+- 🐛(backend) stream export files from S3 without buffering
+
 ## [v0.19.0] - 2026-06-09
 
 ### Added
