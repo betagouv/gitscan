@@ -1,14 +1,14 @@
-## Changelog : projects (30 derniers jours, au 21 juin 2026)
+## Changelog : projects (30 derniers jours, au 23 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des corrections importantes pour améliorer la stabilité et l'expérience utilisateur. Notamment, un problème de dépendance a été résolu pour les tableaux partagés et la suppression de dossiers est désormais possible.
+Cette version apporte des corrections importantes pour l'utilisation des tableaux partagés et permet la suppression des dossiers. Ces améliorations visent à fluidifier l'expérience utilisateur et à offrir plus de contrôle sur l'organisation des projets.
 
 ### Évolutions fonctionnelles
-- Possibilité de supprimer des dossiers [#1234](https://github.com/suitenumerique/projects/issues/1234)
-- Correction d'un problème de dépendance pour les tableaux partagés.
+- Correction d'un problème de dépendance lors de l'utilisation de tableaux partagés. [#807aba6](https://github.com/suitenumerique/projects/commit/807aba6)
+- Possibilité de supprimer des dossiers. [#e7e14ab](https://github.com/suitenumerique/projects/commit/e7e14ab)
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler durant cette période.
+- Préparation de la publication de la version 1.3.0 (mise à jour du numéro de version). [#5aa2996](https://github.com/suitenumerique/projects/commit/5aa2996)
 
 ### Autres changements
-- Mise à jour de la version de publication à 1.3.0.
+- Aucun autre changement significatif à signaler.
