@@ -250,6 +250,7 @@
 │   │   │   ├── 0011_remove_content_private_body_from_ScheduledNotification.py
 │   │   │   ├── 0012_valid_until.py
 │   │   │   ├── 0013_item_is_archived.py
+│   │   │   ├── 0014_content_icon.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -292,6 +293,7 @@
 │   │   │   ├── 0005_anonymizednotification_anonymizedregistration.py
 │   │   │   ├── 0006_alter_anonymizeduser_replication_id.py
 │   │   │   ├── 0007_anonymizedregistration_subscription.py
+│   │   │   ├── 0008_user.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── router.py
@@ -348,7 +350,8 @@
 │   └── wsgi.py
 ├── bin
 │   ├── check-no-vanilla-httpx-usage.sh
-│   └── start.sh
+│   ├── start.sh
+│   └── worker.sh
 ├── biome.json
 ├── cron.json
 ├── manage.py
@@ -430,6 +433,8 @@
 │   │   │   │   │   ├── Toggle.svelte
 │   │   │   │   │   └── modal
 │   │   │   │   │       ├── AgendaItemModal.svelte
+│   │   │   │   │       ├── AgendaItemModal.svelte.test.ts
+│   │   │   │   │       ├── ItemModal.svelte
 │   │   │   │   │       ├── Logout.svelte
 │   │   │   │   │       ├── LogoutFooter.svelte
 │   │   │   │   │       ├── LogoutFooter.svelte.test.ts
@@ -437,9 +442,12 @@
 │   │   │   │   │       ├── Modal.svelte.test.ts
 │   │   │   │   │       ├── NavWithBackButton.svelte
 │   │   │   │   │       ├── RequestItemModal.svelte
+│   │   │   │   │       ├── RequestItemModal.svelte.test.ts
 │   │   │   │   │       ├── ZonePreferences.svelte
 │   │   │   │   │       ├── ZonePreferences.svelte.test.ts
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
+│   │   │   │   ├── dsfr-icon.test.ts
+│   │   │   │   ├── dsfr-icon.ts
 │   │   │   │   ├── dsfr.ts
 │   │   │   │   ├── follow-up.test.ts
 │   │   │   │   ├── follow-up.ts
@@ -597,4 +605,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-115 directories, 484 files
+115 directories, 492 files
