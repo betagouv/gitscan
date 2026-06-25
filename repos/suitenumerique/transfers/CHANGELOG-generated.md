@@ -1,19 +1,20 @@
-## Changelog : transfers (30 derniers jours, au 18 juin 2026)
+## Changelog : transfers (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment une meilleure présentation des dates, un renforcement de la sécurité des téléchargements et la possibilité de se connecter via ProConnect sans authentification préalable. L'architecture du frontend a également été modernisée avec le passage à Vite et TanStack Router.
+Ce mois-ci, le service de transfert de fichiers a bénéficié d'améliorations significatives en matière de sécurité, d'expérience utilisateur et de refonte technique. L'ajout d'un scanner de fichiers dangereux renforce la sécurité, tandis que la migration vers Vite et Tanstack Router modernise l'architecture frontend et améliore les performances. De nouvelles options d'authentification et des améliorations de l'affichage des dates contribuent à une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Téléchargements sécurisés :** Renforcement du flux de téléchargement et correction des points soulevés lors de la revue de sécurité. [#11](https://github.com/suitenumerique/transfers/issues/11)
-- **Connexion ProConnect simplifiée :** Ajout d'un flux de connexion via ProConnect sans nécessiter d'authentification préalable. [#13](https://github.com/suitenumerique/transfers/issues/13)
-- **Liens de téléchargement temporaires :** Implémentation de liens de téléchargement uniques qui s'auto-désactivent après le premier téléchargement complet. [#5](https://github.com/suitenumerique/transfers/issues/5)
-- **Affichage des dates amélioré :** Les dates sont désormais affichées de manière plus intuitive, avec des indications relatives (ex: "il y a 2 jours") et la date complète au survol.
-- **Documentation :** Ajout de documentation.
+- Ajout d'un scanner de fichiers pour empêcher le stockage de fichiers dangereux. [#9](https://github.com/suitenumerique/transfers/issues/9)
+- Amélioration de l'affichage des dates : affichage relatif intelligent avec date complète au survol.
+- Ajout d'un flux de connexion ProConnect sans authentification préalable. [#13](https://github.com/suitenumerique/transfers/issues/13)
+- Implémentation de liens uniques à usage unique qui s'auto-désactivent après le premier téléchargement complet. [#5](https://github.com/suitenumerique/transfers/issues/5)
+- Autorisation de l'origine S3 dans la directive `connect-src` du CSP pour les uploads.
 
 ### Évolutions techniques
-- **Migration Frontend :** Refonte complète du frontend avec la migration de Next.js vers Vite et TanStack Router pour une meilleure performance et une architecture plus moderne.
-- **Optimisations Frontend :** Corrections suite aux retours de CodeRabbit pour améliorer la qualité du code frontend.
-- **Dépendances Frontend :** Déplacement de TanStack Router vers les dépendances de développement.
+- Refonte complète du frontend : migration de Next.js vers Vite et Tanstack Router.
+- Renforcement du flux de téléchargement et correction des points soulevés lors de la revue de code. [#11](https://github.com/suitenumerique/transfers/issues/11)
+- Déplacement de Tanstack Router dans les dépendances de développement.
+- Correction d'un problème identifié par CodeRabbit.
 
 ### Autres changements
-- Nettoyage et optimisation du code.
+- Ajout de documentation. [#246148d](https://github.com/suitenumerique/transfers/commit/246148d)
