@@ -1,14 +1,18 @@
 ## Changelog : formulaire-qf (30 derniers jours, au 08 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la correction d'un bug affectant la sélection des collectivités et sur la mise à jour des dépendances du projet pour assurer sa stabilité et sa sécurité. Plusieurs mises à jour automatiques de dépendances ont été intégrées.
+Ce mois-ci, les évolutions se concentrent sur la correction d'un bug empêchant la sélection correcte des collectivités et sur la maintenance des dépendances du projet. L'équipe a également continué à améliorer la qualité du code grâce à des outils de linting.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant le bon fonctionnement de la sélection des collectivités. L'identifiant de la collectivité est maintenant correctement conservé lors de la soumission du formulaire.  [#347](https://github.com/etalab/formulaire-qf/pull/347)
+- Correction d'un bug dans la sélection des collectivités : l'identifiant de la collectivité est maintenant correctement conservé lors de la soumission du formulaire, permettant une sélection correcte.  [#347](https://github.com/etalab/formulaire-qf/pull/347)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances du projet, notamment Rubocop et Faraday, afin de bénéficier des dernières corrections de bugs et améliorations de sécurité.
-- Amélioration du linter pour assurer la qualité du code. [#346](https://github.com/etalab/formulaire-qf/pull/346)
+- Mise à jour de Rubocop-rails : passage de la version 2.35.1 à 2.35.4.
+- Mise à jour de Faraday : passage à la version 2.14.2.
+- Mise à jour de Rubocop : passage à une version plus récente.
+- Mise à jour des dépendances de production : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations.
+- Mise à jour des dépendances de développement : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations.
+- Amélioration du linting du code.
 
 ### Autres changements
-- Aucune information significative à signaler.
+- Nettoyage du code et application des recommandations du linter.
