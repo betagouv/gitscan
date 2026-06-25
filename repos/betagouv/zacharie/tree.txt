@@ -68,6 +68,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260604100000_add_trichine_models
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260623083000_carcasse_owner_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260623100352_drop_svi_assigned_to_fei_at
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -189,8 +193,7 @@
 │   │   ├── prisma.ts
 │   │   ├── scripts
 │   │   │   ├── migrations.ts
-│   │   │   ├── strip-lesion-codes.ts
-│   │   │   └── update-all-carcasses-status.ts
+│   │   │   └── strip-lesion-codes.ts
 │   │   ├── service
 │   │   │   ├── crypto.ts
 │   │   │   ├── metabase-embed.ts
@@ -258,7 +261,6 @@
 │   ├── README.md
 │   ├── __tests__
 │   │   ├── create-new-carcasse.test.ts
-│   │   ├── fei-steps.test.ts
 │   │   └── update-carcasse-status.test.ts
 │   ├── eslint.config.js
 │   ├── index.html
@@ -675,6 +677,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260604100000_add_trichine_models
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260623083000_carcasse_owner_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260623100352_drop_svi_assigned_to_fei_at
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -757,7 +763,6 @@
 │   │   │   ├── CarcassesEspeceSummary.tsx
 │   │   │   ├── CardCarcasse.tsx
 │   │   │   ├── CardCarcasseSvi.tsx
-│   │   │   ├── CardFiche.tsx
 │   │   │   ├── CardTransmission.tsx
 │   │   │   ├── Chargement.tsx
 │   │   │   ├── CheckboxFilterSection.tsx
@@ -769,8 +774,9 @@
 │   │   │   ├── DepartementValorisationCard.tsx
 │   │   │   ├── DonneesDeChasse.tsx
 │   │   │   ├── DropDownMenu.tsx
-│   │   │   ├── ExportFeisModal.tsx
+│   │   │   ├── ExportTransmissionsModal.tsx
 │   │   │   ├── FederationTableauDeBord.tsx
+│   │   │   ├── FeiAucuneAction.tsx
 │   │   │   ├── Filters.tsx
 │   │   │   ├── FiltersSidebar.tsx
 │   │   │   ├── FloatingNewFicheButton.tsx
@@ -993,8 +999,6 @@
 │   │   │   ├── quiz.tsx
 │   │   │   ├── stats.tsx
 │   │   │   ├── svi
-│   │   │   │   ├── current-owner-sous-traite.tsx
-│   │   │   │   ├── destinataire-select-sous-traite.tsx
 │   │   │   │   ├── onboarding
 │   │   │   │   │   ├── 1-coordonnees.tsx
 │   │   │   │   │   └── 2-entreprise.tsx
@@ -1030,7 +1034,6 @@
 │   │   ├── types
 │   │   │   ├── carcasse.ts
 │   │   │   ├── carcasses-intermediaire.ts
-│   │   │   ├── fei-steps.ts
 │   │   │   ├── filter.ts
 │   │   │   └── transmission-steps.ts
 │   │   ├── utils
@@ -1043,15 +1046,13 @@
 │   │   │   ├── disconnect.ts
 │   │   │   ├── etablissementsTraitementSaintaire.ts
 │   │   │   ├── export-carcasses.ts
-│   │   │   ├── export-feis.ts
-│   │   │   ├── fei-steps.ts
+│   │   │   ├── export-transmissions.ts
 │   │   │   ├── filter-carcasse.ts
-│   │   │   ├── filter-my-carcasses.ts
 │   │   │   ├── gert-fei-key-dates.tsx
-│   │   │   ├── get-*.ts  (15 files)
+│   │   │   ├── get-*.ts  (16 files)
 │   │   │   ├── get-ongoing-cell.tsx
-│   │   │   ├── get-previous-detenteur-from-fei.tsx
 │   │   │   ├── get-previous-detenteur-from-transmission.tsx
+│   │   │   ├── is-carcasse-done.test.ts
 │   │   │   ├── is-carcasse-done.ts
 │   │   │   ├── lesions.ts
 │   │   │   ├── load-carcasses.ts
@@ -1160,6 +1161,7 @@
 │   │   │   ├── 127-url-directe-carcasse-autre-branche.spec.ts
 │   │   │   ├── 128-modification-api-cross-branche.spec.ts
 │   │   │   ├── 129-dispatch-partial-refusal-isolation.spec.ts
+│   │   │   ├── 130-etg-deux-transmissions-meme-examen.spec.ts
 │   │   │   └── fiche_dispatch_multi_destinataires.spec.ts
 │   │   ├── etg
 │   │   │   ├── 45-reception-avec-stockage-ccg.spec.ts
@@ -1214,6 +1216,7 @@
 │   │   │   ├── 26-examinateur-to-external-pd.spec.ts
 │   │   │   ├── 27-examinateur-as-self-pd.spec.ts
 │   │   │   ├── 28-examinateur-to-association-step-advance.spec.ts
+│   │   │   ├── 29-consommateur-final-usage-domestique.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_examinateur.spec.ts
 │   │   ├── premier-detenteur
@@ -1253,7 +1256,8 @@
 │   │   │   ├── 85-refus-sans-motif.spec.ts
 │   │   │   ├── 86-carcasse-manquante.spec.ts
 │   │   │   ├── 87-fiche-sans-carcasse-a-inspecter.spec.ts
-│   │   │   └── 88-svi-autre-departement.spec.ts
+│   │   │   ├── 88-svi-autre-departement.spec.ts
+│   │   │   └── 89-acceptee-carcasses-restent-visibles.spec.ts
 │   │   └── transverse
 │   │       ├── 104-offline-create-online-sync.spec.ts
 │   │       ├── 105-role-based-route-access-matrix.spec.ts
@@ -1266,6 +1270,7 @@
 │   │       ├── 130-search-redirect-role-routes.spec.ts
 │   │       ├── 131-fiches-list-sorting.spec.ts
 │   │       ├── 132-working-for-pii-leak-requested-relation.spec.ts
+│   │       ├── 133-fiches-pagination.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1342,4 +1347,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-320 directories, 1038 files
+324 directories, 1040 files
