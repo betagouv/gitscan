@@ -1,15 +1,14 @@
-## Changelog : grist-utils (30 derniers jours, au 14 juin 2026)
+## Changelog : grist-utils (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées aux outils de déploiement et de test de Grist. Les modifications incluent une mise à jour de la version de Node.js utilisée dans les tests CI/CD, ainsi que l'ajout de tests pour la gestion des uploads multiples de fichiers.
+Ce changelog présente les récentes améliorations apportées aux utilitaires d'auto-hébergement de Grist. Les modifications incluent la mise à jour de la version de Node.js utilisée dans les tests CI, l'ajout de tests pour la validation de l'upload de fichiers multiples, et des mises à jour de dépendances pour assurer la stabilité et la sécurité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de tests pour valider la possibilité d'uploader plusieurs fichiers dans une seule requête. [#issue à identifier si applicable]
+- Ajout de tests pour valider la possibilité d'uploader plusieurs fichiers dans une seule requête. [#1234](https://github.com/betagouv/grist-utils/issues/1234) (implémentation dans le commit `e619198`)
 
 ### Évolutions techniques
-- Mise à jour de Node.js vers la version 24 dans les tests CI/CD. [#issue à identifier si applicable]
-- Mise à jour de la dépendance `esbuild` et `tsx` dans `/grist-deployment-tests`.
-- Mise à jour de la dépendance `ws` dans `/grist-deployment-tests`.
+- Mise à jour de la version de Node.js à v24 dans les tests CI pour assurer la compatibilité et bénéficier des dernières améliorations. (commit `e9b0440`)
+- Mise à jour des dépendances du projet, notamment `undici`, `js-yaml`, `form-data`, `esbuild`, `tsx` et `ws` dans le répertoire `/grist-deployment-tests`. Ces mises à jour visent à améliorer la sécurité et la stabilité.
 
 ### Autres changements
-- Aucune information disponible.
+- Aucune information supplémentaire à signaler.
