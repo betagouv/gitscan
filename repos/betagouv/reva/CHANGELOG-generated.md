@@ -1,100 +1,44 @@
-## Changelog : reva (30 derniers jours, au 19 juin 2026)
+## Changelog : reva (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations de la sécurité avec l'ajout d'une authentification à deux facteurs (OTP) par email, ainsi que par des corrections et des améliorations de l'expérience utilisateur dans l'administration et l'interface candidat. Des optimisations ont également été apportées à l'infrastructure, notamment concernant l'analyse antivirus des fichiers et la configuration de Keycloak.
+Cette période a été marquée par des améliorations significatives de l'interface utilisateur dans l'espace administrateur, notamment sur les pages de gestion des candidatures et des profils. Des corrections et des optimisations ont également été apportées aux API, notamment en matière de sécurité (analyse antivirus des fichiers) et de gestion des OTP (One-Time Password) pour une authentification renforcée. L'ajout de nouvelles fonctionnalités, comme la gestion des comptes collaborateurs AAP et l'intégration de ClamAV pour l'analyse antivirus, renforce la robustesse et la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'une authentification à deux facteurs (OTP) par email pour les utilisateurs, en plus de l'authentification par application. [#1234](https://github.com/betagouv/reva/issues/1234)
-- Amélioration de la gestion des comptes collaborateurs des AAP (Agents Administratifs Partenaires) avec une nouvelle page de liste et la possibilité de créer des comptes directement depuis l'interface.
-- Possibilité pour les AAP de signaler un DV (Dossier de Validation) comme invalide si celui-ci a été précédemment marqué comme complet depuis l'interop API.
-- Amélioration de l'affichage des organismes pour les comptes collaborateurs dans l'administration.
-- Ajout d'un lien "Consulter" vers l'organisme certificateur dans le résumé de la candidature.
-- Ajout d'un avertissement lors de la modification des certifications.
-- Amélioration de l'affichage des informations de financement dans l'interface d'administration.
-- Ajout de filtres pour les candidatures par type d'accompagnement, statut de faisabilité et résultats du jury.
-- Correction de l'affichage du nombre d'organismes pour les comptes collaborateurs.
-- Harmonisation de l'historique de faisabilité entre le PDF et la version dématérialisée, affichant la dernière décision active.
-- Possibilité pour les AAP de désactiver l'accès au tableau de bord pour certains utilisateurs.
-- Ajout de la possibilité de spécifier que les résultats du jury sont définis par l'organisme certificateur.
+- Amélioration de l'interface utilisateur et de l'expérience utilisateur sur les pages de certification, d'éligibilité, de modification des expériences du candidat et du profil candidat dans l'espace administrateur. [#1037](https://github.com/betagouv/reva/pull/1037)
+- Ajout d'une page de sélection des autorités de certification dans l'espace administrateur.
+- Ajout d'un lien "Consulter" vers les détails de l'autorité de certification dans le résumé de la candidature.
+- Possibilité pour les AAPs d'ajouter de nouveaux comptes collaborateurs depuis la liste des comptes.
+- Affichage d'un badge pour les comptes AAP désactivés et désactivation du lien vers la carte.
+- Amélioration de l'affichage des raisons d'arrêt d'accompagnement.
+- Ajout de filtres pour les candidatures (statut, type d'accompagnement, financement, résultats du jury, etc.) dans la page "candidatures-for-aap".
+- Ajout d'une nouvelle raison d'arrêt d'accompagnement.
+- Amélioration de la gestion des filtres et de l'affichage des données dans l'espace administrateur.
+- Possibilité de renvoyer un code OTP par email.
+- Ajout d'une page pour gérer les autorités de certification multiples.
+- Amélioration de la gestion des fichiers joints (augmentation de la taille maximale autorisée).
+- Remplacement du lien "Contact" par un formulaire de pré-qualification sur le site web.
+- Correction de l'affichage des lieux de naissance.
+- Amélioration de la gestion des erreurs côté client avec Urql.
 
 ### Évolutions techniques
-- Ajout d'une analyse antivirus (ClamAV) pour les fichiers téléchargés par les utilisateurs.
-- Mise à jour de la configuration de Keycloak pour activer les fonctionnalités token-exchange:v1 et admin-fine-grained-authz:v1.
-- Refactorisation et amélioration de la gestion des tokens et de l'authentification dans l'API et Keycloak.
-- Amélioration de la gestion des erreurs et des logs dans l'API.
-- Mise à jour des dépendances (Vite, Axios, Cypress, etc.).
+- Refactorisation de la logique de détection des feature flags pour les tableaux de bord AAP.
+- Optimisation et renforcement des vérifications avant l'envoi des DFF (Dossier de Formation) à l'autorité de certification.
+- Ajout d'une analyse antivirus des fichiers téléchargés par les utilisateurs via l'intégration de ClamAV.
+- Mise à jour des dépendances (Strapi, Vite, shell-quote, etc.).
+- Amélioration de la gestion des tokens persistants dans l'espace administrateur pour l'authentification SSO.
+- Ajout d'un endpoint `establish-sso` pour la gestion de l'authentification SSO inter-applications.
 - Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
 - Migration de certains tests Cypress vers Playwright.
-- Optimisation de la gestion des filtres pour les candidatures.
-- Amélioration de la gestion des codes INSEE des pays.
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de bugs et optimisations de performance diverses.
 
 ### Autres changements
 - Documentation mise à jour.
-- Nettoyage du code et suppression de code obsolète.
-- Corrections de bugs mineurs et améliorations de la performance.
-- Mise à jour des fichiers de configuration pour l'infrastructure.
-- Ajout de feature flags pour contrôler le déploiement de nouvelles fonctionnalités.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Correction de problèmes d'affichage dans l'interface d'administration.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Correction de la gestion des liens dans l'interface d'administration.
-- Amélioration de la gestion des images dans l'interface candidat.
-- Correction de la gestion des permissions pour l'accès au tableau de bord AAP.
-- Correction de la gestion des erreurs lors de l'impersonation d'utilisateurs dans Keycloak.
+- Nettoyage du code et refactoring de certains composants.
+- Mise à jour de la configuration de l'infrastructure.
+- Ajout de fichiers `.pyc` à `.gitignore`.
+- Correction de problèmes liés à la gestion des ports dans l'environnement ClamAV.
 - Suppression de tests Cypress obsolètes.
-- Ajout de tests pour la page de connexion de l'administration.
-- Amélioration du style de certains composants de l'interface utilisateur.
-- Correction de bugs liés à la navigation dans l'interface d'administration.
-- Ajout de la possibilité de spécifier un chemin de socket ClamAV personnalisé.
-- Ajout de la gestion des fichiers `.pyc` dans le fichier `.gitignore`.
-- Mise à jour des versions de Python et d'autres dépendances pour ClamAV.
-- Correction de problèmes de déploiement pour ClamAV.
-- Ajout de logs pour le débogage de ClamAV.
-- Suppression de code inutile dans l'interface candidat.
-- Amélioration de la gestion des liens dans l'interface candidat.
-- Correction de problèmes d'affichage dans l'interface candidat.
-- Ajout de tests pour l'interface candidat.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Correction de bugs mineurs dans l'interface candidat.
-- Ajout de la possibilité de filtrer les candidatures par type d'accompagnement.
-- Ajout de la possibilité de filtrer les candidatures par statut de faisabilité.
-- Ajout de la possibilité de filtrer les candidatures par résultats du jury.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par archive.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement financé.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par statut du jury.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par dossier de validation.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Correction de bugs mineurs dans l'interface candidat.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Ajout de tests pour l'interface candidat.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Correction de bugs mineurs dans l'interface candidat.
-- Ajout de la possibilité de filtrer les candidatures par archive.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement financé.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par statut du jury.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par dossier de validation.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Correction de bugs mineurs dans l'interface candidat.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Ajout de tests pour l'interface candidat.
-- Amélioration de la gestion des erreurs dans l'interface candidat.
-- Correction de bugs mineurs dans l'interface candidat.
-- Ajout de la possibilité de filtrer les candidatures par archive.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement.
-- Amélioration de la gestion des filtres pour les candidatures.
-- Ajout de la possibilité de filtrer les candidatures par accompagnement autonome.
+- Correction de problèmes d'affichage et de navigation dans l'interface administrateur.
+- Mise à jour des emails d'activation des certifications dans Keycloak.
+- Correction de bugs mineurs et améliorations de la qualité du code.

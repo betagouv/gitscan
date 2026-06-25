@@ -816,6 +816,7 @@
     │   │   │   ├── mail-send.svg
     │   │   │   ├── no-result.svg
     │   │   │   ├── self-training.svg
+    │   │   │   ├── student.svg
     │   │   │   ├── success.svg
     │   │   │   ├── transfer-certification-authority-local-account.svg
     │   │   │   ├── transfer-certification-authority.svg
@@ -1246,9 +1247,6 @@
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── CandidacySummaryBottomButtons.tsx
     │   │   │   │   │   │   │   │   │   ├── CandidateExperiencesSectionCard.tsx
-    │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCard.tsx
-    │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCardV2.tsx
-    │   │   │   │   │   │   │   │   │   ├── EmptyCertificationAuthoritySummaryCard.tsx
     │   │   │   │   │   │   │   │   │   ├── admin-action-zone
     │   │   │   │   │   │   │   │   │   │   ├── AdminActionZone.tsx
     │   │   │   │   │   │   │   │   │   │   ├── EndAccompagnementTile.tsx
@@ -1256,6 +1254,11 @@
     │   │   │   │   │   │   │   │   │   │   └── modals
     │   │   │   │   │   │   │   │   │   │       ├── confirmFinanceModuleSwitchToHorsPlateformeModal.hook.tsx
     │   │   │   │   │   │   │   │   │   │       └── confirmTypeAccompagnementSwitchToAutonomeModal.hook.tsx
+    │   │   │   │   │   │   │   │   │   ├── certification-authority-summary-cards
+    │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCard.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthoritySummaryCardV2.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── EmptyCertificationAuthoritySummaryCard.tsx
+    │   │   │   │   │   │   │   │   │   │   └── MultipleCertificationAuthoritiesSummaryCard.tsx
     │   │   │   │   │   │   │   │   │   ├── checkCandidateFields.ts
     │   │   │   │   │   │   │   │   │   ├── takeOverCondidacy.ts
     │   │   │   │   │   │   │   │   │   └── useCandidateSummary.ts
@@ -1284,6 +1287,14 @@
     │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccountCard.tsx
     │   │   │   │   │   │   │   │   │   ├── certificationAuthorityDetails.hooks.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── multiple-certification-authorities-selection
+    │   │   │   │   │   │   │   │   │   ├── certification-authorities-list
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── multipleCertificationAuthoritiesList.hooks.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   └── disclaimer
+    │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   ├── training
     │   │   │   │   │   │   │   │   ├── _components
@@ -1747,6 +1758,8 @@
     │   │   │   │   │   └── CandidacyCard.tsx
     │   │   │   │   ├── certification-card
     │   │   │   │   │   └── CertificationCard.tsx
+    │   │   │   │   ├── certification-card-read-only
+    │   │   │   │   │   └── CertificationCardReadOnly.tsx
     │   │   │   │   ├── enhanced-section-card
     │   │   │   │   │   └── EnhancedSectionCard.tsx
     │   │   │   │   ├── gray-card
@@ -1920,6 +1933,10 @@
     │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   └── index.ts
     │   │   │   │   └── index.ts
+    │   │   │   ├── status-page
+    │   │   │   │   ├── StatusPage.tsx
+    │   │   │   │   └── assets
+    │   │   │   │       └── hexagonBackground.svg
     │   │   │   ├── tile-group
     │   │   │   │   └── TileGroup.tsx
     │   │   │   ├── toast
@@ -2011,6 +2028,11 @@
     │   │   │   │       │   ├── candidate-information-fc-locking.spec.ts
     │   │   │   │       │   ├── certification-authority-card.spec.ts
     │   │   │   │       │   ├── certification-authority-details.spec.ts
+    │   │   │   │       │   ├── multiple-certification-authorities-selection
+    │   │   │   │       │   │   ├── certification-authorities-list
+    │   │   │   │       │   │   │   └── multiple-certification-authorities-list-page.spec.ts
+    │   │   │   │       │   │   └── disclaimer
+    │   │   │   │       │   │       └── multiple-certification-cuthorities-selection-disclaimer-page.spec.ts
     │   │   │   │       │   └── summary.spec.ts
     │   │   │   │       └── training
     │   │   │   │           └── training.spec.ts
@@ -2624,6 +2646,7 @@
     │   │   │   │   │   ├── getSwornStatementFileWithFileNameAndUrlById.ts
     │   │   │   │   │   ├── resetDFFSentToCandidateState.ts
     │   │   │   │   │   ├── sendDFFToCandidate.ts
+    │   │   │   │   │   ├── sendDFFToCertificationAuthority.test.ts
     │   │   │   │   │   ├── sendDFFToCertificationAuthority.ts
     │   │   │   │   │   ├── sendReminderToAAPForMissingSwornStatement.ts
     │   │   │   │   │   └── updateCompetenceBlocsPartCompletion.ts
@@ -4475,6 +4498,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260612084919_update_account_email_otp_add_index_on_created_at_column
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260622085006_add_clamav_feature_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260624105707_add_value_to_dff_eligibility_candidate_situation_enum
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -6056,4 +6083,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2029 directories, 4029 files
+2042 directories, 4043 files
