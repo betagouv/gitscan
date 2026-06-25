@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.19] - 2026-06-24
+
+### Changed
+
+- 🔧(dependencies) bump backend to Python 3.14 and update pinned dependencies
+- ⬆️(dependencies) update front and mail dependencies
+- ♻️(front) source the home documentation link from config
+- 💄(front) use "L'Assistant" as the default product name
+
+### Fixed
+
+- 🐛(front) keep the app open when using the contact link
+- 💄(front) use semantic warning color for banner icon
+- ✨(back) handle 404 during deletion as successful de-indexing 
+
 ## [0.0.18] - 2026-06-12
 
 ### Added
@@ -347,7 +362,8 @@ and this project adheres to
 - ✨(onboarding) add activation code logic for launch #62
 - 💄(chat) add code highlighting for LLM responses #67
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.18...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.19...main
+[0.0.19]: https://github.com/suitenumerique/conversations/releases/v0.0.19
 [0.0.18]: https://github.com/suitenumerique/conversations/releases/v0.0.18
 [0.0.17]: https://github.com/suitenumerique/conversations/releases/v0.0.17
 [0.0.16]: https://github.com/suitenumerique/conversations/releases/v0.0.16
