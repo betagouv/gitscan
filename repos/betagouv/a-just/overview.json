@@ -1,44 +1,40 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir un outil pour la gestion et l'analyse de données, probablement dans le domaine juridique.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution pour la gestion des données et des effectifs au sein du ministère.",
   "language": "TypeScript",
   "features": [
+    "Gestion des utilisateurs & Permissions",
+    "Visualisation de données & Cartographie",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
     "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
-    "Express",
     "PostgreSQL",
     "Redis",
-    "bcryptjs",
+    "Koa",
+    "Sequelize",
     "jsonwebtoken",
-    "koa",
-    "sequelize"
+    "bcryptjs",
+    "sib-api-v3-sdk"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "Frontend React"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "jwt",
-      "session"
+      "saml"
     ]
   },
   "tests": [
@@ -46,9 +42,9 @@
     "Cypress"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-06-18T11:09:02+02:00",
+  "lastActivity": "2026-06-24T15:37:31+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

@@ -163,7 +163,8 @@
 │   │   │   │   ├── 202511071206-access-id-to-float.js
 │   │   │   │   ├── 202511130846-user-referentiel-filter.js
 │   │   │   │   ├── 202512041250-add-backup-group.js
-│   │   │   │   └── 202606081052-add-dashboard-writer-to-dashboard-readers.js
+│   │   │   │   ├── 202606081052-add-dashboard-writer-to-dashboard-readers.js
+│   │   │   │   └── 202606221200-create-user-feedback.js
 │   │   │   └── seeders
 │   │   │       ├── development
 │   │   │       │   ├── 202110271703-add-hr-categories.js
@@ -614,6 +615,7 @@
 │   │   │   ├── TableTj.js
 │   │   │   ├── TableTjdetails.js
 │   │   │   ├── TableTokens.js
+│   │   │   ├── TableUserfeedback.js
 │   │   │   ├── TableUsers.js
 │   │   │   ├── TableUsersaccess.js
 │   │   │   ├── TableUserventilations.js
@@ -642,6 +644,7 @@
 │   │   │   │   ├── OptionsBackups.js
 │   │   │   │   ├── TJ.js
 │   │   │   │   ├── TJDetails.js
+│   │   │   │   ├── UserFeedback.js
 │   │   │   │   ├── UserVentilations.js
 │   │   │   │   ├── UsersAccess.js
 │   │   │   │   ├── competencemappings.js
@@ -667,6 +670,7 @@
 │   │   │   ├── RouteContentieuxReferentiels.js
 │   │   │   ├── RouteCsp.js
 │   │   │   ├── RouteExtractor.js
+│   │   │   ├── RouteFeedback.js
 │   │   │   ├── RouteHRBackupSettings.js
 │   │   │   ├── RouteHRCategories.js
 │   │   │   ├── RouteHRComment.js
@@ -737,6 +741,7 @@
 │       │   ├── RouteChangeUserData.test.js
 │       │   ├── RouteConnexion.test.js
 │       │   ├── RouteContentieuxOptions.test.js
+│       │   ├── RouteFeedback.test.js
 │       │   ├── RouteHR.test.js
 │       │   ├── RouteImports.test.js
 │       │   ├── RoutePanorama.test.js
@@ -759,6 +764,7 @@
 │       │   ├── activities.js
 │       │   ├── calculator.js
 │       │   ├── contentieux.js
+│       │   ├── feedback.js
 │       │   ├── hr.js
 │       │   ├── panorama.js
 │       │   ├── simulator.js
@@ -978,6 +984,10 @@
 │   │   │   │   │   ├── tour-button.component.scss
 │   │   │   │   │   └── tour-button.component.ts
 │   │   │   │   ├── wrapper
+│   │   │   │   │   ├── feedback-banner
+│   │   │   │   │   │   ├── feedback-banner.component.html
+│   │   │   │   │   │   ├── feedback-banner.component.scss
+│   │   │   │   │   │   └── feedback-banner.component.ts
 │   │   │   │   │   ├── news
 │   │   │   │   │   │   ├── news.component.html
 │   │   │   │   │   │   ├── news.component.scss
@@ -1026,6 +1036,7 @@
 │   │   │   │   ├── contentieux-options.ts
 │   │   │   │   ├── date.ts
 │   │   │   │   ├── documentation.ts
+│   │   │   │   ├── feedback.ts
 │   │   │   │   ├── hr-category.ts
 │   │   │   │   ├── hr-fonction.ts
 │   │   │   │   ├── hr-situation.ts
@@ -1143,6 +1154,11 @@
 │   │   │   │   │       ├── extractor-ventilation.component.html
 │   │   │   │   │       ├── extractor-ventilation.component.scss
 │   │   │   │   │       └── extractor-ventilation.component.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   └── popin-feedback
+│   │   │   │   │       ├── popin-feedback.component.html
+│   │   │   │   │       ├── popin-feedback.component.scss
+│   │   │   │   │       └── popin-feedback.component.ts
 │   │   │   │   ├── forgot-password
 │   │   │   │   │   ├── forgot-password.page.html
 │   │   │   │   │   ├── forgot-password.page.scss
@@ -1354,6 +1370,8 @@
 │   │   │   │   │   └── excel.service.ts
 │   │   │   │   ├── extractor-activity
 │   │   │   │   │   └── extrator-activity.service.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   └── feedback.service.ts
 │   │   │   │   ├── hr-category
 │   │   │   │   │   └── hr-category.service.ts
 │   │   │   │   ├── hr-comment
@@ -1609,6 +1627,7 @@
 │   │   │   │   ├── backup.ts
 │   │   │   │   ├── contentieu-referentiel.ts
 │   │   │   │   ├── contentieux-options.ts
+│   │   │   │   ├── feedback.ts
 │   │   │   │   ├── hr-category.ts
 │   │   │   │   ├── hr-fonction.ts
 │   │   │   │   ├── human-resource-interface.ts
@@ -1626,6 +1645,10 @@
 │   │   │   ├── routes
 │   │   │   │   ├── app.routes.ts
 │   │   │   │   ├── auth.guard.ts
+│   │   │   │   ├── avis
+│   │   │   │   │   ├── avis.page.html
+│   │   │   │   │   ├── avis.page.scss
+│   │   │   │   │   └── avis.page.ts
 │   │   │   │   ├── backup-options
 │   │   │   │   │   ├── backup-options.page.html
 │   │   │   │   │   ├── backup-options.page.scss
@@ -1671,6 +1694,8 @@
 │   │   │   │   │   └── contentieux-options.service.ts
 │   │   │   │   ├── extracts-data
 │   │   │   │   │   └── extracts-data.service.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   └── feedback.service.ts
 │   │   │   │   ├── http-server
 │   │   │   │   │   ├── http.service.ts
 │   │   │   │   │   └── server.service.ts
@@ -1788,4 +1813,4 @@
     ├── section-mochawesome.js
     ├── setup-sandbox-reference.sh
     └── sync-remotes.sh
-257 directories, 1533 files
+263 directories, 1552 files
