@@ -461,9 +461,10 @@
 │   │   │   │                   │       ├── EndAfterStartValidator.kt
 │   │   │   │                   │       ├── EntityValidityValidator.kt
 │   │   │   │                   │       ├── ReflectionFieldUtils.kt
-│   │   │   │                   │       ├── RequiredFields.kt
 │   │   │   │                   │       ├── RequiredFieldsValidator.kt
 │   │   │   │                   │       ├── ValidationGroups.kt
+│   │   │   │                   │       ├── ValidationPolicies.kt
+│   │   │   │                   │       ├── ValidationPolicy.kt
 │   │   │   │                   │       ├── ValidationRulesDocGenerator.kt
 │   │   │   │                   │       ├── WithinMissionDateRange.kt
 │   │   │   │                   │       └── WithinMissionDateRangeValidator.kt
@@ -2077,11 +2078,18 @@
 │   │   │   │   │   │   │   └── mission-action-item-vigimer.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   ├── fish-control-conclusion.test.tsx
+│   │   │   │   │   │       │   ├── fish-control-others.test.tsx
+│   │   │   │   │   │       │   ├── fish-control-polpeche.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-control-sector-form.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-env-themes.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-formik-coordonate-input-dmd.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-location-picker.test.tsx
 │   │   │   │   │   │       │   └── mission-action-nav-control-warning.test.tsx
+│   │   │   │   │   │       ├── fish-control-conclusion.tsx
+│   │   │   │   │   │       ├── fish-control-infos.tsx
+│   │   │   │   │   │       ├── fish-control-others.tsx
+│   │   │   │   │   │       ├── fish-control-polpeche.tsx
 │   │   │   │   │   │       ├── mission-action-anti-pollution-warning.tsx
 │   │   │   │   │   │       ├── mission-action-control-nautical-leisure-form.tsx
 │   │   │   │   │   │       ├── mission-action-control-sector-form.tsx
@@ -2092,7 +2100,8 @@
 │   │   │   │   │   │       ├── mission-action-formik-toogle-unit-has-confirm.tsx
 │   │   │   │   │   │       ├── mission-action-incident-download.tsx
 │   │   │   │   │   │       ├── mission-action-location-picker.tsx
-│   │   │   │   │   │       └── mission-action-nav-control-warning.tsx
+│   │   │   │   │   │       ├── mission-action-nav-control-warning.tsx
+│   │   │   │   │   │       └── nav-control-conclusion.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── use-mission-action-nav-control.test.tsx
@@ -2128,13 +2137,13 @@
 │   │   │   │   │   │       │   ├── mission-control-nav-summary.test.tsx
 │   │   │   │   │   │       │   ├── mission-control-title.test.tsx
 │   │   │   │   │   │       │   └── mission-control-unit-confirm.test.tsx
+│   │   │   │   │   │       ├── fish-control-administrative-section.tsx
+│   │   │   │   │   │       ├── fish-control-engines-section.tsx
+│   │   │   │   │   │       ├── fish-control-other-observation-section.tsx
+│   │   │   │   │   │       ├── fish-control-seizure-section.tsx
+│   │   │   │   │   │       ├── fish-control-species-section.tsx
 │   │   │   │   │   │       ├── mission-control-env-error.tsx
-│   │   │   │   │   │       ├── mission-control-fish-administrative-section.tsx
-│   │   │   │   │   │       ├── mission-control-fish-engines-section.tsx
 │   │   │   │   │   │       ├── mission-control-fish-fleet-segment-section.tsx
-│   │   │   │   │   │       ├── mission-control-fish-other-observation-section.tsx
-│   │   │   │   │   │       ├── mission-control-fish-seizure-section.tsx
-│   │   │   │   │   │       ├── mission-control-fish-species-section.tsx
 │   │   │   │   │   │       ├── mission-control-fomik-multi-radio.tsx
 │   │   │   │   │   │       ├── mission-control-nav-summary.tsx
 │   │   │   │   │   │       ├── mission-control-title.tsx
@@ -2172,23 +2181,19 @@
 │   │   │   │   ├── mission-infraction
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
-│   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   └── mission-infraction-fish-summary.test.tsx
-│   │   │   │   │   │   │   ├── mission-infraction-fish-summary.tsx
-│   │   │   │   │   │   │   ├── mission-infraction-form-new.tsx
-│   │   │   │   │   │   │   ├── mission-infraction-form.tsx
-│   │   │   │   │   │   │   ├── mission-infraction-item.tsx
-│   │   │   │   │   │   │   ├── mission-infraction-list.tsx
-│   │   │   │   │   │   │   └── mission-infraction-nav-summary.tsx
+│   │   │   │   │   │   │   └── mission-infraction-form.tsx
 │   │   │   │   │   │   ├── layout
-│   │   │   │   │   │   │   └── mission-infraction-summary.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── infraction-summary.test.tsx
+│   │   │   │   │   │   │   └── infraction-summary.tsx
 │   │   │   │   │   │   └── ui
-│   │   │   │   │   │       ├── mission-infraction-add-button.tsx
-│   │   │   │   │   │       ├── mission-infraction-empty.tsx
+│   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   ├── infraction-fish-summary.test.tsx
+│   │   │   │   │   │       │   └── infraction-nav-summary.test.tsx
+│   │   │   │   │   │       ├── infraction-fish-summary.tsx
+│   │   │   │   │   │       ├── infraction-nav-summary.tsx
 │   │   │   │   │   │       ├── mission-infraction-env-summary-by-cacem.tsx
-│   │   │   │   │   │       ├── mission-infraction-env-title.tsx
 │   │   │   │   │   │       ├── mission-infraction-formik-controlled-person-input.tsx
-│   │   │   │   │   │       ├── mission-infraction-summary.tsx
 │   │   │   │   │   │       ├── mission-infraction-type-tag.tsx
 │   │   │   │   │   │       └── mission-infraction-vessel-form.tsx
 │   │   │   │   │   ├── hooks
@@ -2203,21 +2208,23 @@
 │   │   │   │   │   │   │   │   ├── mission-target-control-env.test.tsx
 │   │   │   │   │   │   │   │   ├── mission-target-control-nav.test.tsx
 │   │   │   │   │   │   │   │   ├── mission-target-form.test.tsx
-│   │   │   │   │   │   │   │   ├── mission-target-infraction-form.test.tsx
-│   │   │   │   │   │   │   │   ├── mission-target-infraction-list.test.tsx
-│   │   │   │   │   │   │   │   ├── mission-target-item.test.tsx
-│   │   │   │   │   │   │   │   ├── mission-target-list.test.tsx
-│   │   │   │   │   │   │   │   └── mission-target-new.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-target-new.test.tsx
+│   │   │   │   │   │   │   │   ├── target-infraction-form.test.tsx
+│   │   │   │   │   │   │   │   ├── target-infraction-list.test.tsx
+│   │   │   │   │   │   │   │   ├── target-item-default.test.tsx
+│   │   │   │   │   │   │   │   ├── target-item-others.test.tsx
+│   │   │   │   │   │   │   │   └── target-list.test.tsx
 │   │   │   │   │   │   │   ├── mission-target-control-env.tsx
 │   │   │   │   │   │   │   ├── mission-target-control-nav.tsx
 │   │   │   │   │   │   │   ├── mission-target-form.tsx
-│   │   │   │   │   │   │   ├── mission-target-infraction-form.tsx
-│   │   │   │   │   │   │   ├── mission-target-infraction-list.tsx
 │   │   │   │   │   │   │   ├── mission-target-inquiry-form.tsx
 │   │   │   │   │   │   │   ├── mission-target-inquiry.tsx
-│   │   │   │   │   │   │   ├── mission-target-item.tsx
-│   │   │   │   │   │   │   ├── mission-target-list.tsx
-│   │   │   │   │   │   │   └── mission-target-new.tsx
+│   │   │   │   │   │   │   ├── mission-target-new.tsx
+│   │   │   │   │   │   │   ├── target-infraction-form.tsx
+│   │   │   │   │   │   │   ├── target-infraction-list.tsx
+│   │   │   │   │   │   │   ├── target-item-default.tsx
+│   │   │   │   │   │   │   ├── target-item-others.tsx
+│   │   │   │   │   │   │   └── target-list.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── mission-target-action.test.tsx
@@ -2468,4 +2475,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-494 directories, 2012 files
+495 directories, 2018 files

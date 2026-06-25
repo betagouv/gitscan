@@ -1,26 +1,31 @@
-## Changelog : rapportnav2 (30 derniers jours, au 17 juin 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de rapportnav2 se concentrent sur l'amélioration des fonctionnalités existantes, notamment la gestion des ressources des agents, l'intégration de Metabase pour des rapports plus visuels, et des corrections pour une meilleure expérience utilisateur. Des améliorations techniques ont également été apportées, notamment concernant la validation des données et la gestion des dépendances.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des actions et des ressources, notamment pour les contrôles environnementaux. Des corrections et améliorations ont également été apportées à l'interface utilisateur, en particulier pour les formulaires et les dialogues, ainsi qu'à l'intégration de Metabase pour la visualisation de données. Des efforts ont été faits pour améliorer la validation des données et la sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des ressources des agents, permettant de gérer les moyens alloués aux agents. [#1381](https://github.com/MTES-MCT/rapportnav2/issues/1381)
-- Intégration d'un iframe Metabase pour afficher des rapports directement dans l'application. [#1390](https://github.com/MTES-MCT/rapportnav2/issues/1390)
-- Ajout de la fonctionnalité "diving" pour les contrôles environnementaux.
-- Amélioration de l'interface utilisateur pour la création de missions (dimensions du dialogue).
-- Remplacement des champs texte par des zones de texte pour les observations des contrôles environnementaux.
-- Correction de l'affichage des dropdown dans les dialogues d'administration.
-- Restauration de la fonctionnalité "diving" pour les contrôles environnementaux.
+- Ajout de la gestion des ressources des agents, avec une page dédiée et des restrictions de rôles. [#1380](https://github.com/MTES-MCT/rapportnav2/issues/1380) et [#1381](https://github.com/MTES-MCT/rapportnav2/issues/1381)
+- Mise à jour de l'action "entretien des moyens" et ajout d'une nouvelle table `mission_action_resource`. [#1390](https://github.com/MTES-MCT/rapportnav2/issues/1390)
+- Ajout de la possibilité de plonger (diving) dans les contrôles de navigation.
+- Intégration d'un iframe Metabase pour l'affichage de rapports et de données.
+- Amélioration de l'affichage des valeurs dans les formulaires.
+- Correction de l'ordre des options dans les radios multi-sélection (Fish). [#1033](https://github.com/MTES-MCT/rapportnav2/issues/1033)
+- Remplacement des champs de texte par des zones de texte pour les observations des contrôles environnementaux.
+- Correction de l'affichage des dimensions des dialogues de création de mission.
 
 ### Évolutions techniques
-- Mise à jour des règles de validation des données, avec ajout d'un générateur de documentation pour ces règles.
-- Correction d'un bug concernant le type de localisation GPS des contrôles.
-- Amélioration de la validation des données côté backend.
+- Refactorisation du code frontend pour une meilleure organisation et réutilisation.
+- Ajout de validations côté backend pour renforcer la cohérence des données.
+- Générateur de documentation pour les règles de validation.
 - Mise à jour des dépendances frontend (Monitor-UI).
-- Corrections de bugs et améliorations diverses de l'interface utilisateur frontend.
+- Correction de problèmes de build et de tests.
+- Amélioration des tests unitaires.
+- Correction de problèmes liés à la gestion des types de localisation (GPS).
 
 ### Autres changements
-- Mise à jour de la documentation et des snapshots de tests.
-- Correction de problèmes liés aux audits npm.
-- Mise à jour du playbook de déploiement.
-- Corrections mineures et refactoring du code.
+- Correction de divers problèmes d'interface utilisateur et d'affichage.
+- Amélioration de la gestion des snapshots pour les tests.
+- Mise à jour des dépendances npm et yarn.
+- Corrections de sécurité (audit npm).
+- Mise à jour de la documentation.
+- Corrections mineures et améliorations de code.
