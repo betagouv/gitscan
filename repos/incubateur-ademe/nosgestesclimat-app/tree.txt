@@ -30,6 +30,7 @@
 ├── .gitmodules
 ├── .husky
 │   └── pre-commit
+├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc.json
 ├── .vscode
@@ -117,8 +118,10 @@
 │   │   │   ├── config.ts
 │   │   │   ├── core
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── fixtures
-│   │   │   │   │       └── server.fixture.ts
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   └── server.fixture.ts
+│   │   │   │   │   └── is-safe-redirect-url.spec.ts
+│   │   │   │   ├── allowed-urls.ts
 │   │   │   │   ├── batch-find-many.ts
 │   │   │   │   ├── deep-merge.ts
 │   │   │   │   ├── errors
@@ -998,6 +1001,8 @@
 │       │   │   │   │   │   │   ├── getIsAllowedToBypassConsentDataShare.ts
 │       │   │   │   │   │   │   └── verifyIntegratorBypassRights.ts
 │       │   │   │   │   │   ├── _hooks
+│       │   │   │   │   │   │   ├── useBypassConsentDataShare.ts
+│       │   │   │   │   │   │   ├── useIframeStorageParams.ts
 │       │   │   │   │   │   │   └── useStoragePermissions.ts
 │       │   │   │   │   │   └── iframeOptionsContext
 │       │   │   │   │   │       ├── StorageAccessOverlay.tsx
@@ -1104,8 +1109,10 @@
 │       │   │   │   │   │   │   ├── ReuseSimulationForPoll.tsx
 │       │   │   │   │   │   │   ├── Tutorial.tsx
 │       │   │   │   │   │   │   ├── YouthTutorial.tsx
-│       │   │   │   │   │   │   └── autresQuestions
-│       │   │   │   │   │   │       └── OrganisationPrivacy.tsx
+│       │   │   │   │   │   │   ├── autresQuestions
+│       │   │   │   │   │   │   │   └── OrganisationPrivacy.tsx
+│       │   │   │   │   │   │   └── reuseSimulationForPoll
+│       │   │   │   │   │   │       └── ReuseButtons.tsx
 │       │   │   │   │   │   ├── age
 │       │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   └── AgeForm.tsx
@@ -1661,8 +1668,10 @@
 │       │   │   │   ├── ButtonLinkServer.tsx
 │       │   │   │   ├── CopyButton.stories.tsx
 │       │   │   │   ├── CopyButton.tsx
-│       │   │   │   └── __tests__
-│       │   │   │       └── CopyButton.test.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── CopyButton.test.tsx
+│       │   │   │   ├── buttonStyles.ts
+│       │   │   │   └── useButtonState.ts
 │       │   │   ├── cms
 │       │   │   │   ├── AllBlogCategories.stories.tsx
 │       │   │   │   ├── AllBlogCategories.tsx
@@ -2301,6 +2310,8 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260617160000_alter_model_domain_accept_nightly
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260622120000_anon_user_remove_name_add_simulations
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
 │       │   │   ├── ngc.prisma
@@ -2414,4 +2425,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-623 directories, 1838 files
+625 directories, 1847 files

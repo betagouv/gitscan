@@ -1,49 +1,44 @@
-## Changelog : nosgestesclimat-app (30 derniers jours, au 22 juin 2026)
+## Changelog : nosgestesclimat-app (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives sur l'expérience utilisateur, notamment concernant les actions proposées, le partage de résultats et l'intégration avec des outils externes. Des optimisations techniques ont également été apportées pour améliorer la performance et la maintenabilité du code.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment sur la page de résultats avec l'ajout d'actions concrètes et l'amélioration de la présentation des données. Des corrections de bugs et des améliorations de sécurité ont également été apportées, ainsi que des optimisations techniques pour faciliter le développement et le déploiement. L'intégration des actions est en cours et se précise.
 
 ### Évolutions fonctionnelles
-- **Actions :**
-    - Amélioration du suivi des actions entreprises par les utilisateurs [#1830].
-    - Affichage de l'impact des actions proposées [#1822].
-    - Diverses améliorations de formulation et de présentation des actions [#1849, #1835, #1837].
-    - Intégration des nouvelles actions synchronisées depuis Notion [#1812].
-- **Partage et intégration :**
-    - Ajout de support pour le partage de données via React Native WebView avec postMessage [#1828].
-    - Correction du partage d'URL avec les paramètres UTM [#1821].
-    - Possibilité de définir le mode simulation via l'URL [#1859].
-- **Questionnaire et résultats :**
-    - Implémentation d'une nouvelle question sur la tranche d'âge [#1788].
-    - Amélioration de l'harmonisation des graphiques de catégories sur la page des résultats groupés [#1807].
-    - Correction du comportement du bouton "Passer" pour la question d'âge [#1838].
-    - Affichage du formulaire de contact en anglais [#1853].
-    - Mise à jour du texte des services publics sur la page des résultats [#1851].
-- **Divers :**
-    - Correction d'un bug empêchant le chargement du modèle de nuit [#1860].
-    - Amélioration de la visibilité et du SEO de la page de détails des actions [#1855].
-    - Ajout d'un bouton pour déclencher manuellement le déploiement de l'application [#1834].
+- Ajout d'un bloc d'actions à la fin du parcours, proposant des gestes à adopter pour réduire son impact [NGC-3408, #1869].
+- Amélioration de l'affichage du graphique des catégories sur la page de résultats pour les groupes [NGC-3196, #1807].
+- Possibilité de définir le mode simulation via l'URL [#1859].
+- Implémentation d'une nouvelle question sur les tranches d'âge [#1788].
+- Affichage du formulaire de contact en anglais [#1853].
+- Mise à jour du texte des services publics sur la page des résultats [#1851].
+- Amélioration de l'affichage des actions et de leur impact [NGC-3298, #1822].
+- Ajout de la possibilité de partager l'URL avec des paramètres UTM pour le suivi [#1821].
+- Amélioration de la gestion des régions via le paramètre `region` [#1824].
 
 ### Évolutions techniques
-- **Architecture et performance :**
-    - Utilisation de pnpm deploy au lieu de standalone pour la production [#1831].
-    - Migration de zod vers valibot pour la validation des données [#1801].
-    - Ajout d'un worker de calcul pour les actions [#1811].
-- **Tests :**
-    - Correction des tests E2E [#1836].
-    - Ajout d'un helper `createPage` et d'une règle ESLint pour renforcer l'utilisation des feature flags dans les tests E2E [#1840].
-- **Infrastructure :**
-    - Ajout d'une migration pour les utilisateurs anonymes (AnonUser et AnonPoll) [#1856].
-- **Autres :**
-    - Remplacement de la librairie restcountries par un package npm [#1847].
-    - Mise à jour de la version du modèle [#1810].
-    - Correction d'un crash potentiel lié à la gestion des cookies en SSR [#1819].
-    - Ajout de la gestion des variantes de feature flags (tests A/B) [#1816].
+- Refonte du mécanisme de vérification pour le partage de données, utilisant une clé de vérification [NGC-3408, #1869].
+- Migration de `restcountries` vers un package npm [#1847].
+- Utilisation de `pnpm deploy` au lieu de `standalone` pour la production [#1831].
+- Migration de `zod` vers `valibot` pour la validation de données [#1801].
+- Ajout d'un worker pour le calcul des actions [#1811].
+- Ajout d'un helper `createPage` et d'une règle ESLint pour renforcer l'utilisation des feature flags en tests E2E [#1840].
+- Mise en place de tests E2E pour les actions [#1823].
+- Ajout de la gestion des variantes de feature flags (tests A/B) [#1816].
+- Ajout de migrations pour les utilisateurs anonymes (AnonUser et AnonPoll) [#1856].
+- Correction d'un problème de crash des cookies lors de l'utilisation de `useFeatureFlag` en SSR [#1819].
 
 ### Autres changements
-- Suppression d'un lien mort [#1843].
-- Correction d'un problème d'affichage d'iframes sur certaines versions de Safari [#1814].
-- Amélioration du suivi automatique des événements, en ignorant les clics rapides et le simulateur [#1852].
-- Mise à jour du titre de la page d'accueil [#1815, #1809].
-- Amélioration du texte du mode étudiant [#1803].
-- Ajout de la possibilité de masquer des éléments pour les intégrateurs utilisant des régions de modèle différentes [#1804].
+- Correction de plusieurs vulnérabilités de sécurité (redirections ouvertes, erreurs verbeuses) [#1871, #1854].
+- Suppression du mode "jeune" (feature flag) [#1874].
+- Suppression de liens morts [#1868, #1843].
+- Amélioration du suivi des événements (auto-track) [#1852].
+- Corrections de style et d'affichage sur différentes pages et composants [#1878, #1867, #1870, #1836].
+- Améliorations diverses de l'interface utilisateur et du texte [#1849, #1803, #1809].
+- Ajout d'un trigger manuel pour le déploiement de l'application [#1834].
+- Correction du bouton de saut de la question d'âge [#1838].
+- Ajout de suivi pour les actions [#1830].
+- Mise à jour de la version du modèle [#1810].
+- Correction du problème de mise à jour du cookie de langue [#1841].
+- Amélioration de la cliquabilité du bloc d'actions sur la page de fin [#1805].
+- Correction de bugs liés à l'iframe sur Safari [#1814].
+- Ajout de la gestion de `pollMode` et `organisation` pour l'affichage des sondages anonymes [#1850].
+- Correction du comportement du bouton "skip" sur la question d'âge [#1838].
