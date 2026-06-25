@@ -1,17 +1,16 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 23 juin 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, le site schema.data.gouv.fr a bénéficié de mises à jour régulières des recommandations de schémas et du site web lui-même, assurant une amélioration continue de la qualité et de la pertinence des informations disponibles. Des corrections ont été apportées concernant la langue de l'interface et le format des données pour certains schémas.
+Le site schema.data.gouv.fr a connu une période d'activité soutenue, principalement axée sur la mise à jour régulière des recommandations et du site web lui-même. Des corrections ont été apportées concernant la langue de l'interface et le format des données pour le schéma "aides". Un schéma a été migré vers le format datapackage.
 
 ### Évolutions fonctionnelles
 - Correction du réglage de la langue de l'interface utilisateur pour afficher le français de France (fr-FR).
-- Le schéma "acceslibre" a été mis à jour et est maintenant publié au format Datapackage [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344).
-- Le schéma "dispositif aide" a été temporairement rétabli au format Table Schema, puis converti en Datapackage.
+- Le schéma "aides" a été temporairement rétabli au format tableschema, puis migré vers le format datapackage.
+- Le schéma "acceslibre" a été migré vers le format datapackage [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344).
 
 ### Évolutions techniques
-- Mises à jour régulières des fichiers de configuration de consolidation.
-- Mises à jour fréquentes des recommandations de schémas.
-- Mises à jour régulières du site web.
+- Mise à jour régulière des fichiers de configuration de consolidation.
+- Mises à jour continues du site web et des recommandations.
 
 ### Autres changements
-- Aucune information supplémentaire à signaler.
+-  Aucun autre changement significatif à signaler.
