@@ -1361,6 +1361,7 @@
 │   │   │   │   ├── elasticHelpers.test.ts
 │   │   │   │   ├── fileDownload.test.ts
 │   │   │   │   ├── helpers.test.ts
+│   │   │   │   ├── mfaLogger.test.ts
 │   │   │   │   ├── operationModes.test.ts
 │   │   │   │   ├── pagination.test.ts
 │   │   │   │   ├── redis.test.ts
@@ -1380,6 +1381,7 @@
 │   │   │   ├── eventTypes.ts
 │   │   │   ├── fileDownload.ts
 │   │   │   ├── helpers.ts
+│   │   │   ├── mfaLogger.ts
 │   │   │   ├── middlewares
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── errorHandler.test.ts
@@ -2028,9 +2030,11 @@
 │   │   │   │   ├── mutations
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── cancelMfaResetRequest.integration.ts
-│   │   │   │   │   │   └── createMfaResetRequest.integration.ts
+│   │   │   │   │   │   ├── createMfaResetRequest.integration.ts
+│   │   │   │   │   │   └── exchangeMfaReconfigToken.integration.ts
 │   │   │   │   │   ├── cancelMfaResetRequest.ts
 │   │   │   │   │   ├── createMfaResetRequest.ts
+│   │   │   │   │   ├── exchangeMfaReconfigToken.ts
 │   │   │   │   │   └── utils
 │   │   │   │   │       └── mfaResetRequest.utils.ts
 │   │   │   │   └── queries
@@ -2363,12 +2367,15 @@
 │   │   │   │   │   │   ├── changePassword.integration.ts
 │   │   │   │   │   │   ├── changePassword.test.ts
 │   │   │   │   │   │   ├── changeUserRole.integration.ts
+│   │   │   │   │   │   ├── confirmTotpSetup.integration.ts
 │   │   │   │   │   │   ├── createAccessToken.integration.ts
 │   │   │   │   │   │   ├── createPasswordResetRequest.integration.ts
 │   │   │   │   │   │   ├── deleteInvitation.integration.ts
+│   │   │   │   │   │   ├── disableTotp.integration.ts
 │   │   │   │   │   │   ├── editProfile.integration.ts
 │   │   │   │   │   │   ├── editProfile.test.ts
 │   │   │   │   │   │   ├── finalizeMfaSetup.integration.ts
+│   │   │   │   │   │   ├── generateTotpSetup.integration.ts
 │   │   │   │   │   │   ├── inviteUserToCompany.integration.ts
 │   │   │   │   │   │   ├── inviteUserToCompany.test.ts
 │   │   │   │   │   │   ├── joinWithInvite.integration.ts
@@ -2422,6 +2429,7 @@
 │   │   │   │       │   ├── me.integration.ts
 │   │   │   │       │   ├── membershipRequest.integration.ts
 │   │   │   │       │   ├── membershipRequests.integration.ts
+│   │   │   │       │   ├── mfaAuditLogs.integration.ts
 │   │   │   │       │   ├── myCompanies.integration.ts
 │   │   │   │       │   ├── myCompaniesCsv.integration.ts
 │   │   │   │       │   ├── myCompaniesXls.integration.ts
@@ -2434,6 +2442,7 @@
 │   │   │   │       ├── me.ts
 │   │   │   │       ├── membershipRequest.ts
 │   │   │   │       ├── membershipRequests.ts
+│   │   │   │       ├── mfaAuditLogs.ts
 │   │   │   │       ├── myCompanies.ts
 │   │   │   │       ├── myCompaniesCsv.ts
 │   │   │   │       ├── myCompaniesXls.ts
@@ -4413,6 +4422,7 @@
 │   │   │   ├── Invite.tsx
 │   │   │   ├── Login.module.scss
 │   │   │   ├── Login.tsx
+│   │   │   ├── MfaReconfiguration.tsx
 │   │   │   ├── PasswordReset.tsx
 │   │   │   ├── PasswordResetRequest.tsx
 │   │   │   ├── RecoveryCodeModal.tsx
@@ -5139,9 +5149,13 @@
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260413000000_add_totp_recovery_codes
 │   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260514000000_add_mfa_audit_log
+│   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260604000000_add_mfa_recovery_fields
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260612000000_add_mfa_reset_request
+│   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260622000000_add_mfa_reconfig_token
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   └── migration_lock.toml
 │   │   │   │   ├── models
@@ -5409,4 +5423,4 @@
 │   ├── validation-doc.js
 │   └── waste-consistence-migration.sql
 └── tsconfig.base.json
-959 directories, 4489 files
+961 directories, 4501 files
