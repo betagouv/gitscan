@@ -560,7 +560,6 @@
 │   ├── env.d.ts
 │   ├── eslint.config.ts
 │   ├── package.json
-│   ├── pnpm-lock.yaml
 │   ├── public
 │   │   └── favicon.ico
 │   ├── src
@@ -1394,6 +1393,10 @@
 │   │   └── redirect.spec.ts
 │   ├── api
 │   │   └── redirect_on_different_slug.spec.ts
+│   ├── auth
+│   │   ├── login.logged-out.spec.ts
+│   │   ├── register.logged-out.spec.ts
+│   │   └── reset.logged-out.spec.ts
 │   ├── auth-normal-user.setup.ts
 │   ├── auth.2fa-user.spec.ts
 │   ├── auth.setup.ts
@@ -1402,20 +1405,29 @@
 │   │   ├── [did].spec.ts
 │   │   ├── add-dataset.spec.ts
 │   │   ├── creation.spec.ts
+│   │   ├── edition.spec.ts
 │   │   └── search.spec.ts
 │   ├── datasets
 │   │   ├── [did].spec.ts
 │   │   ├── chunked-upload.spec.ts
 │   │   ├── creation.spec.ts
 │   │   ├── datagouv-config-after-error.spec.ts
+│   │   ├── edition.spec.ts
+│   │   ├── files-management.spec.ts
+│   │   ├── lifecycle.spec.ts
+│   │   ├── resources.spec.ts
 │   │   └── search.spec.ts
 │   ├── discussions
+│   │   ├── discussions-lifecycle.spec.ts
 │   │   └── discussions.normal-user.spec.ts
 │   ├── edito
 │   │   ├── pages-editor.spec.ts
 │   │   └── pages-editor.spec.ts-snapshots
 │   │       ├── edito-page-final-chromium-linux.png
 │   │       └── edito-page-final-firefox-linux.png
+│   ├── follow
+│   │   ├── follow.logged-out.spec.ts
+│   │   └── follow.spec.ts
 │   ├── helpers.ts
 │   ├── homepage.spec.ts
 │   ├── homepage.spec.ts-snapshots
@@ -1424,6 +1436,8 @@
 │   ├── legacy
 │   │   ├── edito_redirects_to_search.spec.ts
 │   │   └── redirect_trailing_slash.spec.ts
+│   ├── moderation
+│   │   └── report.spec.ts
 │   ├── og-images.spec.ts
 │   ├── og-images.spec.ts-snapshots
 │   │   ├── og-dataset-sirene-chromium-linux.png
@@ -1444,15 +1458,38 @@
 │   ├── posts
 │   │   ├── blocs.spec.ts
 │   │   └── kind.spec.ts
-│   ├── resources
-│   │   └── use-resource-capabilities.spec.ts
 │   ├── reuses
 │   │   ├── [rid].spec.ts
 │   │   ├── creation.spec.ts
+│   │   ├── edition.spec.ts
 │   │   └── search.spec.ts
+│   ├── transfers
+│   │   └── transfer.spec.ts
 │   ├── translation.spec.ts
 │   └── visualizations
 │       └── chart-configurator.spec.ts
+├── tests-unit
+│   ├── composables
+│   │   └── use-form.spec.ts
+│   ├── datagouv-components
+│   │   ├── charts.spec.ts
+│   │   ├── dates.spec.ts
+│   │   ├── helpers.spec.ts
+│   │   ├── markdown.spec.ts
+│   │   ├── organizations.spec.ts
+│   │   ├── resource-capabilities.spec.ts
+│   │   ├── resources.spec.ts
+│   │   └── tabular.spec.ts
+│   ├── setup.ts
+│   ├── shims
+│   │   └── datagouv-components.ts
+│   └── utils
+│       ├── datasets.spec.ts
+│       ├── helpers.spec.ts
+│       ├── openapi-bouquet.spec.ts
+│       ├── openapi-extract.spec.ts
+│       ├── paginate.spec.ts
+│       └── send-file.spec.ts
 ├── tsconfig.json
 ├── types
 │   ├── alert.ts
@@ -1470,24 +1507,25 @@
 │   ├── shims.d.ts
 │   ├── support.ts
 │   └── types.d.ts
-└── utils
-    ├── activities.ts
-    ├── api.ts
-    ├── auth.ts
-    ├── contacts.ts
-    ├── dataservices.ts
-    ├── datasets.ts
-    ├── discussions.ts
-    ├── harvesters.ts
-    ├── helpers.ts
-    ├── navigation.ts
-    ├── notifications.ts
-    ├── openapi-bouquet.ts
-    ├── openapi-extract.ts
-    ├── organizations.ts
-    ├── owner.ts
-    ├── pages.ts
-    ├── paginate.ts
-    ├── posts.ts
-    └── reuses.ts
-225 directories, 1267 files
+├── utils
+│   ├── activities.ts
+│   ├── api.ts
+│   ├── auth.ts
+│   ├── contacts.ts
+│   ├── dataservices.ts
+│   ├── datasets.ts
+│   ├── discussions.ts
+│   ├── harvesters.ts
+│   ├── helpers.ts
+│   ├── navigation.ts
+│   ├── notifications.ts
+│   ├── openapi-bouquet.ts
+│   ├── openapi-extract.ts
+│   ├── organizations.ts
+│   ├── owner.ts
+│   ├── pages.ts
+│   ├── paginate.ts
+│   ├── posts.ts
+│   └── reuses.ts
+└── vitest.config.ts
+233 directories, 1297 files
