@@ -31,13 +31,17 @@
 │   │   ├── 0002-architecture-ddd-engine.md
 │   │   ├── 0003-oracle-xlsx-moteur.md
 │   │   ├── 0004-versionnage-regles-in-code.md
-│   │   └── 0005-monitoring-erreurs-maison.md
+│   │   ├── 0005-monitoring-erreurs-maison.md
+│   │   └── 0006-fixture-oracle-compacte-etablissements.md
 │   ├── simulateur-abattoirs-points-a-valider.md
 │   ├── simulateur-abattoirs.md
+│   ├── simulateur-etablissements.md
 │   ├── sources
 │   │   ├── abattoirs-formules-20260512.docx
 │   │   ├── abattoirs-test-formules-20260605.xlsx
 │   │   ├── entrees-sorties-20260520.xlsx
+│   │   ├── etablissements-test-formules-20260623.xlsx
+│   │   ├── formules-20260623.docx
 │   │   ├── formules-grist-20250910.pdf
 │   │   └── logigramme-20250812.pdf
 │   └── versions.md
@@ -59,7 +63,8 @@
 │   └── logo
 │       └── logo.png
 ├── scripts
-│   └── extract-abattoirs-fixture.ts
+│   ├── extract-abattoirs-fixture.ts
+│   └── extract-etablissements-fixture.ts
 ├── src
 │   ├── App.tsx
 │   ├── engine
@@ -84,9 +89,25 @@
 │   │   │   ├── versions.spec.ts
 │   │   │   └── versions.ts
 │   │   ├── etablissements
+│   │   │   ├── evaluate.spec.ts
 │   │   │   ├── evaluate.ts
 │   │   │   ├── index.ts
-│   │   │   └── types.ts
+│   │   │   ├── parse.ts
+│   │   │   ├── rules
+│   │   │   │   ├── certification.spec.ts
+│   │   │   │   ├── certification.ts
+│   │   │   │   ├── lps.spec.ts
+│   │   │   │   ├── lps.ts
+│   │   │   │   ├── marque.spec.ts
+│   │   │   │   ├── marque.ts
+│   │   │   │   ├── mouvement.spec.ts
+│   │   │   │   ├── mouvement.ts
+│   │   │   │   ├── traitement.spec.ts
+│   │   │   │   └── traitement.ts
+│   │   │   ├── schema.ts
+│   │   │   ├── types.ts
+│   │   │   ├── versions.spec.ts
+│   │   │   └── versions.ts
 │   │   ├── index.ts
 │   │   └── shared
 │   │       ├── index.ts
@@ -119,7 +140,8 @@
 │   │       │       └── AbattoirsResult.tsx
 │   │       ├── etablissements
 │   │       │   └── components
-│   │       │       └── EtablissementsSimulator.tsx
+│   │       │       ├── EtablissementsForm.tsx
+│   │       │       └── EtablissementsResult.tsx
 │   │       └── pages
 │   │           └── SimulateursIndexPage.tsx
 │   ├── main.tsx
@@ -137,7 +159,9 @@
 │   │   ├── config
 │   │   │   └── routes.config.ts
 │   │   ├── labels
-│   │   │   └── abattoirs.labels.ts
+│   │   │   ├── abattoirs.labels.ts
+│   │   │   ├── common.labels.ts
+│   │   │   └── etablissements.labels.ts
 │   │   ├── monitoring
 │   │   │   ├── error-reporter.spec.ts
 │   │   │   ├── error-reporter.ts
@@ -153,15 +177,18 @@
 │   ├── e2e
 │   │   ├── historique-versions.spec.ts
 │   │   ├── home.spec.ts
-│   │   └── simulateur-abattoirs.spec.ts
+│   │   ├── simulateur-abattoirs.spec.ts
+│   │   └── simulateur-etablissements.spec.ts
 │   └── fixtures
-│       └── abattoirs
-│           ├── README.md
-│           └── oracle-2744.json
+│       ├── abattoirs
+│       │   ├── README.md
+│       │   └── oracle-2744.json
+│       └── etablissements
+│           └── oracle-32928.json
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-52 directories, 114 files
+54 directories, 139 files
