@@ -12,6 +12,7 @@
 ├── Aptfile
 ├── README.md
 ├── biome
+│   ├── no-direct-api-endpoint.grit
 │   ├── no-direct-builder.grit
 │   └── no-direct-check.grit
 ├── biome.json
@@ -249,6 +250,9 @@
 │   │   │   ├── UserFeedback
 │   │   │   │   ├── UserFeedback.scss
 │   │   │   │   └── UserFeedback.tsx
+│   │   │   ├── YearSelector
+│   │   │   │   ├── YearSelector.scss
+│   │   │   │   └── YearSelector.tsx
 │   │   │   └── _app
 │   │   │       ├── AppErrorAlert
 │   │   │       │   └── AppServiceErrorAlert.tsx
@@ -285,7 +289,6 @@
 │   │   │   ├── useAnalytics.tsx
 │   │   │   ├── useAuthentication.tsx
 │   │   │   ├── useAutoSave.ts
-│   │   │   ├── useDocument.tsx
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useForm.tsx
 │   │   │   ├── useMatomoTagManager.tsx
@@ -324,6 +327,7 @@
 │   │   │   ├── sachaCommemoratifs.service.ts
 │   │   │   ├── sample.service.ts
 │   │   │   ├── specificDataFields.service.ts
+│   │   │   ├── uploadDocument.ts
 │   │   │   └── user.service.ts
 │   │   ├── store
 │   │   │   ├── localStorage.ts
@@ -413,10 +417,7 @@
 │   │       │   │   ├── AgreementTableRow.tsx
 │   │       │   │   └── LaboratoryAgreementsTable.tsx
 │   │       │   ├── LaboratoryAgreementsView.scss
-│   │       │   ├── LaboratoryAgreementsView.tsx
-│   │       │   └── YearSelector
-│   │       │       ├── YearSelector.scss
-│   │       │       └── YearSelector.tsx
+│   │       │   └── LaboratoryAgreementsView.tsx
 │   │       ├── LaboratoryAnalyticalCompetencesView
 │   │       │   ├── LaboratoryAnalyticalCompetenceForm.tsx
 │   │       │   ├── LaboratoryAnalyticalCompetences.scss
@@ -596,6 +597,7 @@
 │   │   ├── sampleController.integration.test.ts
 │   │   ├── sampleController.test.ts
 │   │   ├── sampleController.ts
+│   │   ├── sampleDocumentController.ts
 │   │   ├── sevesController.ts
 │   │   ├── specificDataFieldConfigController.ts
 │   │   └── userController.ts
@@ -756,7 +758,9 @@
 │   │   └── register.mjs
 │   ├── middlewares
 │   │   ├── checks
+│   │   │   ├── analysisCheck.ts
 │   │   │   ├── authCheck.ts
+│   │   │   ├── documentCheck.ts
 │   │   │   ├── localPrescriptionCheck.ts
 │   │   │   ├── prescriptionCheck.ts
 │   │   │   ├── programmingPlanCheck.ts
@@ -1209,4 +1213,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-229 directories, 982 files
+229 directories, 986 files
