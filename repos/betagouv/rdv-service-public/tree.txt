@@ -283,6 +283,7 @@
 │   │   │   │   └── weak_password_controller_concern.rb
 │   │   │   ├── can_have_rdv_wizard_context.rb
 │   │   │   ├── domain_detection.rb
+│   │   │   ├── domain_redirection_after_login.rb
 │   │   │   ├── explicit_pundit_concern.rb
 │   │   │   ├── token_invitable.rb
 │   │   │   └── users
@@ -1342,9 +1343,6 @@
 │       │   │   └── show.html.erb
 │       │   └── authorized_applications
 │       │       └── index.html.slim
-│       ├── dsfr
-│       │   └── rdv_mairie
-│       │       └── homepage.html.slim
 │       ├── errors
 │       │   ├── bad_request.html.slim
 │       │   ├── internal_server_error.html.slim
@@ -1510,6 +1508,8 @@
 │       │   ├── accessibilite.html.slim
 │       │   ├── cgu.html.slim
 │       │   ├── cgu_agent.html.slim
+│       │   ├── homepage_anct.html.slim
+│       │   ├── homepage_etat.html.slim
 │       │   ├── mds.html.slim
 │       │   ├── mentions_legales.html.slim
 │       │   ├── microsoft_domain_verification.json.erb
@@ -2231,9 +2231,12 @@
 │   │   │   ├── sessions_by_code_controller_spec.rb
 │   │   │   └── sessions_controller_spec.rb
 │   │   ├── concerns
+│   │   │   ├── domain_redirection_after_login_spec.rb
 │   │   │   └── token_invitable_spec.rb
 │   │   ├── france_connect_v2_controller_spec.rb
 │   │   ├── pro_connect_controller_spec.rb
+│   │   ├── proconnect_controller
+│   │   │   └── domain_redirection_spec.rb
 │   │   ├── search_controller_spec.rb
 │   │   └── users
 │   │       ├── file_attentes_controller_spec.rb
@@ -2952,4 +2955,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-458 directories, 2496 files
+457 directories, 2500 files

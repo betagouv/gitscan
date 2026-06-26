@@ -1,64 +1,30 @@
-## Changelog : rdv-service-public (30 derniers jours, au 23 juin 2026)
+## Changelog : rdv-service-public (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration du Design System de la DINUM (DSFR) pour une interface plus cohérente et accessible. Des corrections de bugs et des améliorations de la synchronisation CalDAV ont également été apportées, ainsi que des optimisations concernant la gestion des services et des motifs de rendez-vous. La migration vers le nouveau nom de domaine rdv.numerique.gouv.fr a été finalisée.
+Ce mois-ci, les évolutions se concentrent sur la migration vers un nouveau nom de domaine (rdv.numerique.gouv.fr), l'amélioration de la synchronisation CalDAV, et des corrections de bugs pour une meilleure expérience utilisateur. Des améliorations techniques ont également été apportées, notamment pour la gestion des motifs et des services, ainsi que pour la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Les boutons et badges Bootstrap ont été remplacés par leurs équivalents DSFR, améliorant l'harmonie visuelle et l'accessibilité.
-- Ajout d'une flèche sur les cartes de motifs pour améliorer leur visibilité et leur découvrabilité.
-- Amélioration du message d'erreur pour les numéros de téléphone étrangers.
-- Possibilité d'envoyer des emails avec le nouveau nom de domaine rdv.numerique.gouv.fr.
-- Les agents de l'État sont automatiquement redirigés vers le nouveau domaine rdv.numerique.gouv.fr.
-- Simplification du parcours de rendez-vous téléphonique.
-- Ajout de l'email du bénéficiaire au parcours de prescription.
-- Ajout d'instructions pour les usagers dans la réservation en ligne.
-- Redirection vers la liste des créneaux collectifs après inscription d'un usager.
-- Correction d'un lien raccourci pour accéder aux créneaux libres en file d'attente.
-- Possibilité pour les admins d'espace de créer un nouveau service.
-- Correction de l'annulation d'un rendez-vous.
-- Suppression des rendez-vous d'accompagnement pour les espaces ouverts avec le compte opérateur.
+- **Nouveau nom de domaine:** Le service a été adapté pour fonctionner avec le nouveau nom de domaine rdv.numerique.gouv.fr. Cela inclut des mises à jour de la documentation, des redirections et des ajustements de l'interface utilisateur. [#6484](https://github.com/betagouv/rdv-service-public/issues/6484), [#6481](https://github.com/betagouv/rdv-service-public/issues/6481), [#6480](https://github.com/betagouv/rdv-service-public/issues/6480), [#6479](https://github.com/betagouv/rdv-service-public/issues/6479)
+- **Synchronisation CalDAV:** Amélioration de la synchronisation CalDAV avec Zimbra et correction de bugs liés à l'activation des données personnelles. [#6416](https://github.com/betagouv/rdv-service-public/issues/6416), [#6417](https://github.com/betagouv/rdv-service-public/issues/6417)
+- **Gestion des motifs:** Possibilité pour les administrateurs d'espace de créer un nouveau service. Création massive des motifs France Service en un clic dans la super-admin. [#6455](https://github.com/betagouv/rdv-service-public/issues/6455), [#6406](https://github.com/betagouv/rdv-service-public/issues/6406)
+- **Interface utilisateur:**
+    - Amélioration de l'interface de recherche de créneaux pour les agents avec l'utilisation de cartes DSFR. [#6437](https://github.com/betagouv/rdv-service-public/issues/6437)
+    - Utilisation de composants DSFR (badges, boutons, accordéon) pour une meilleure cohérence visuelle. [#6467](https://github.com/betagouv/rdv-service-public/issues/6467), [#6468](https://github.com/betagouv/rdv-service-public/issues/6468), [#6434](https://github.com/betagouv/rdv-service-public/issues/6434)
+    - Affichage du nom de l'usager connecté. [#6452](https://github.com/betagouv/rdv-service-public/issues/6452)
+- **Prescription externe:** Correction d'un bug sur la bannière de prescription externe. [#6398](https://github.com/betagouv/rdv-service-public/issues/6398)
+- **Numéros de téléphone:** Permet désormais les numéros de téléphone des DROM pour les organisations. [#6400](https://github.com/betagouv/rdv-service-public/issues/6400)
+- **FranceConnect:** Permet d'utiliser des FS FranceConnect différents par domaine. [#6401](https://github.com/betagouv/rdv-service-public/issues/6401)
 
 ### Évolutions techniques
-- Mise à jour de Puma vers la version 7.2.1.
-- Mise à jour de Bundler vers la version 4.0.12.
-- Utilisation de la stack `scalingo-24` dans les review apps.
-- Refactorisation pour préparer l'ajout d'intervalles après les rendez-vous.
-- Suppression de code inutilisé et de commentaires obsolètes.
-- Amélioration de la gestion des erreurs Caldav et ajout de debug à Sentry.
-- Correction de flaky specs liées aux prénoms aléatoires et aux connections ActionCable.
-- Suppression de la contrainte d'unicité sur `Service#short_name`.
-- Limitation de la longueur des noms de service.
-- Utilisation de cartes DSFR pour la recherche de créneaux côté agents et pour les choix de motifs de rendez-vous collectifs.
-- Utilisation d'un accordéon DSFR pour les composants d'historique de version et de notifications.
-- Ajout d'un service de suivi de la cohérence des listes de RDV affichées côté agent.
-- Correction de l'usage de `cleanup_preserved_jobs_before_seconds_ago` (GoodJob).
-- Correction d'un effet de bug sur le bouton "Annuler".
-- Correction de la synchronisation CalDAV avec Zimbra.
-- Ajout d’une étape de sélection agenda sync CalDAV.
+- **Refactoring CSS:** Réduction de la dépendance à Bootstrap pour une meilleure maintenabilité. [#6457](https://github.com/betagouv/rdv-service-public/issues/6457)
+- **Mise à jour de Puma:** Mise à jour de la version de Puma à 7.2.1. [#6425](https://github.com/betagouv/rdv-service-public/issues/6425)
+- **GoodJob:** Correction d'un problème lié à la gestion des jobs GoodJob. [#6408](https://github.com/betagouv/rdv-service-public/issues/6408)
+- **ActionCable:** Correction de tests flaky liés à ActionCable. [#6426](https://github.com/betagouv/rdv-service-public/issues/6426)
+- **Suppression de code obsolète:** Suppression de formulaires et de code inutilisé. [#6465](https://github.com/betagouv/rdv-service-public/issues/6465)
+- **Amélioration des tests:** Amélioration des tests unitaires et d'intégration. [#6453](https://github.com/betagouv/rdv-service-public/issues/6453), [#6445](https://github.com/betagouv/rdv-service-public/issues/6445), [#6411](https://github.com/betagouv/rdv-service-public/issues/6411)
 
 ### Autres changements
-- Ajout de la feuille de route.
-- Ajout de documentation pour debugger les réponses de l’API Espace Opérateur ANCT.
-- Ajout de la possibilité de créer les catégories de motifs lorsque `ants_connectable` est activé dans la super admin.
-- Ajout de la possibilité de créer 29 motifs France Service en un clic dans la super admin.
-- Ajout de la variable d'environnement pour afficher les login codes sur les review apps.
-- Mise à jour des mentions légales pour le nom de domaine de la dinum.
-- Ajout de la possibilité d'utiliser des FS FranceConnect différents par domaine.
-- Ajout de la possibilité d'utiliser des numéros de téléphone des DROM pour les organisations.
-- Suppression d'un formulaire de création d'organisation inutilisé.
-- Affichage du nom de l'usager connecté.
-- Correction d'un bug empêchant l'envoi d'emails de réinitialisation de mot de passe.
-- Ignorer les valeurs invalides injectées dans le formulaire de contact.
-- Ajout d'un espace manquant dans le titre de page sur un motif.
-- Ajout de tests pour ne pas filtrer les valeurs des attributs AR.
-- Suppression des règles Metrics de Rubocop.
-- Ajout d'un temps de battement après les rendez-vous.
-- Correction d'un bug lié aux absences récurrentes sur plusieurs jours.
-- Ajout d'une bannière de prescription externe.
-- Correction de l’activation des données perso sync CalDAV.
-- Correction de la demande d’ouverture de compte État.
-- Suppression du namespace global (Tod::TimeOfDay).
-- Ajout d'une étape de sélection agenda sync CalDAV.
-- Correction de l’effet du bouton « Annuler » lors d’une annulation.
-- Correction de la synchronisation CalDAV avec Zimbra.
-- Ajout d’une étape de sélection agenda sync CalDAV.
+- **Documentation:** Mise à jour de la documentation pour refléter les changements récents. [#6476](https://github.com/betagouv/rdv-service-public/issues/6476)
+- **Configuration:** Ajout d'une variable d'environnement pour afficher les login codes sur les review apps. [#6454](https://github.com/betagouv/rdv-service-public/issues/6454)
+- **Sécurité:** Fixer par hash les versions des GitHub Actions pour améliorer la sécurité. [#6412](https://github.com/betagouv/rdv-service-public/issues/6412)
+- **Correction de bugs mineurs:** Correction de divers bugs et améliorations de la stabilité. [#6478](https://github.com/betagouv/rdv-service-public/issues/6478), [#6477](https://github.com/betagouv/rdv-service-public/issues/6477), [#6475](https://github.com/betagouv/rdv-service-public/issues/6475), [#6471](https://github.com/betagouv/rdv-service-public/issues/6471), [#6469](https://github.com/betagouv/rdv-service-public/issues/6469), [#6470](https://github.com/betagouv/rdv-service-public/issues/6470)
