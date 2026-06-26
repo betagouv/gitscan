@@ -1,27 +1,21 @@
-## Changelog : plusfraisautravail (30 derniers jours, au 21 mai 2026)
+## Changelog : plusfraisautravail (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, le projet plusfraisautravail a connu des avancées significatives, notamment l'ajout d'un mode de démonstration, l'intégration de données de vigilances (alertes météo et écowatt), et une refonte de l'infrastructure de déploiement. Ces améliorations visent à offrir une meilleure expérience utilisateur et à faciliter la maintenance et l'évolution du projet.
+Ce mois-ci, les améliorations se concentrent sur l'intégration d'un nouveau moteur de calcul de score basé sur Publicodes pour l'auto-diagnostic, ainsi que sur l'amélioration significative du widget d'alerte canicule. Ce dernier bénéficie d'une nouvelle approche pour l'affichage de la carte, avec un chargement à la demande et une meilleure isolation, offrant une expérience utilisateur plus fluide et performante.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode de démonstration pour faciliter la présentation et le test de l'application.
-- Intégration des alertes météo et des informations Ecowatt (électricité) pour informer les utilisateurs sur les risques liés aux conditions climatiques et à la consommation d'énergie.
-- Amélioration de l'affichage des alertes avec des tooltips détaillés et des liens vers les sources d'information.
-- Refonte de la vue des phénomènes pour une meilleure lisibilité et une présentation plus claire des informations.
+- **Auto-diagnostic :** Migration du moteur de calcul de score vers les règles Publicodes, permettant une plus grande flexibilité et maintenabilité. [#5fe8f7c](https://github.com/incubateur-ademe/plusfraisautravail/commit/5fe8f7c)
+- **Widget d'alerte canicule :**
+    - Ajout d'une route `/map` affichant la carte de vigilance canicule de la France et des DROM-TOM. [#a03bf75](https://github.com/incubateur-ademe/plusfraisautravail/commit/a03bf75)
+    - Amélioration du chargement de la carte : le bundle de la carte est maintenant chargé à la demande avec isolation via Shadow DOM. [#02f52e8](https://github.com/incubateur-ademe/plusfraisautravail/commit/02f52e8)
+    - Suppression de l'affichage de la barre d'adresse du navigateur sur la route `/map` et configuration du proxy de développement pour pointer vers l'API de production. [#910b556](https://github.com/incubateur-ademe/plusfraisautravail/commit/910b556)
+    - La carte est maintenant intégrée directement à la position du script, supprimant l'affichage d'un flash de chargement. [#4f3dd25](https://github.com/incubateur-ademe/plusfraisautravail/commit/4f3dd25)
+    - Correction : le lien de prévention s'ouvre maintenant dans le même onglet. [#d4eb811](https://github.com/incubateur-ademe/plusfraisautravail/commit/d4eb811)
+- **Carte canicule :** Affichage filtré uniquement des canicules sur la carte. [#e7ed19e](https://github.com/incubateur-ademe/plusfraisautravail/commit/e7ed19e)
 
 ### Évolutions techniques
-- Migration de l'infrastructure de déploiement vers Scaleway et OpenTofu, améliorant ainsi la robustesse et l'automatisation du processus.
-- Mise en place de pre-commit hooks pour garantir la qualité du code et faciliter les revues.
-- Utilisation de l'environnement variable `CORS_ORIGINS` pour configurer les autorisations CORS de l'API.
-- Refactoring du code pour améliorer la maintenabilité et la lisibilité.
-- Correction de problèmes de linting avec Ruff.
-- Amélioration de la gestion des erreurs dans l'API météo, traitant les `KeyError` comme des alertes valides.
-- Mise à jour de l'URL de l'application.
+- Intégration de Publicodes pour le moteur de scoring de l'auto-diagnostic. [#5fe8f7c](https://github.com/incubateur-ademe/plusfraisautravail/commit/5fe8f7c)
+- Refonte de l'intégration de la carte du widget d'alerte pour améliorer les performances et l'isolation. [#02f52e8](https://github.com/incubateur-ademe/plusfraisautravail/commit/02f52e8)
 
 ### Autres changements
-- Ajout de workflows CI/CD pour le déploiement continu sur GitHub Environments.
-- Suppression du cache de Vite du `.gitignore`.
-- Traduction de certains éléments de l'interface utilisateur.
-- Amélioration de l'affichage du lien source dans le widget d'alerte.
-- Modification du namespace pour éviter les conflits.
-- Ajout de tests pour le mode de démonstration.
+- Mise à jour du contenu de l'application. [#1dbc140](https://github.com/incubateur-ademe/plusfraisautravail/commit/1dbc140)
