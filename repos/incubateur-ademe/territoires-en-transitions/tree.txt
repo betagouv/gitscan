@@ -1,10 +1,84 @@
 .
 ├── .actrc
+├── .agents
+│   ├── rules
+│   │   ├── comply-adr.mdc
+│   │   └── playwright-e2e.mdc
+│   └── skills
+│       ├── next-best-practices
+│       │   ├── SKILL.md
+│       │   ├── async-patterns.md
+│       │   ├── bundling.md
+│       │   ├── data-patterns.md
+│       │   ├── debug-tricks.md
+│       │   ├── directives.md
+│       │   ├── error-handling.md
+│       │   ├── file-conventions.md
+│       │   ├── font.md
+│       │   ├── functions.md
+│       │   ├── hydration-error.md
+│       │   ├── image.md
+│       │   ├── metadata.md
+│       │   ├── parallel-routes.md
+│       │   ├── route-handlers.md
+│       │   ├── rsc-boundaries.md
+│       │   ├── runtime-selection.md
+│       │   ├── scripts.md
+│       │   ├── self-hosting.md
+│       │   └── suspense-boundaries.md
+│       ├── playwright-cli
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       ├── request-mocking.md
+│       │       ├── running-code.md
+│       │       ├── session-management.md
+│       │       ├── storage-state.md
+│       │       ├── test-generation.md
+│       │       ├── tracing.md
+│       │       └── video-recording.md
+│       ├── vercel-composition-patterns
+│       │   ├── AGENTS.md
+│       │   ├── README.md
+│       │   ├── SKILL.md
+│       │   ├── metadata.json
+│       │   └── rules
+│       │       ├── _sections.md
+│       │       ├── _template.md
+│       │       ├── architecture-avoid-boolean-props.md
+│       │       ├── architecture-compound-components.md
+│       │       ├── patterns-children-over-render-props.md
+│       │       ├── patterns-explicit-variants.md
+│       │       ├── react19-no-forwardref.md
+│       │       ├── state-context-interface.md
+│       │       ├── state-decouple-implementation.md
+│       │       └── state-lift-state.md
+│       └── vercel-react-best-practices
+│           ├── AGENTS.md
+│           ├── README.md
+│           ├── SKILL.md
+│           └── rules
+│               ├── advanced-event-handler-refs.md
+│               ├── advanced-init-once.md
+│               ├── advanced-use-latest.md
+│               ├── async-*.md  (5 files)
+│               ├── bundle-*.md  (5 files)
+│               ├── client-event-listeners.md
+│               ├── client-localstorage-schema.md
+│               ├── client-passive-event-listeners.md
+│               ├── client-swr-dedup.md
+│               ├── js-*.md  (12 files)
+│               ├── rendering-*.md  (9 files)
+│               ├── rerender-*.md  (12 files)
+│               └── server-*.md  (8 files)
 ├── .claude
-│   └── settings.json
-├── .cursor
-│   └── rules
-│       └── comply-adr.mdc
+│   ├── claude-security-guidance.md
+│   ├── settings.json
+│   └── skills
+│       ├── nestjs-best-practices -> ../../.agents/skills/nestjs-best-practices
+│       ├── next-best-practices -> ../../.agents/skills/next-best-practices
+│       ├── playwright-cli -> ../../.agents/skills/playwright-cli
+│       ├── vercel-composition-patterns -> ../../.agents/skills/vercel-composition-patterns
+│       └── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
 ├── .earthlyignore
 ├── .editorconfig
 ├── .github
@@ -92,6 +166,8 @@
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
 ├── DISCOVERED.md
 ├── Earthfile
 ├── LICENSE
@@ -104,6 +180,8 @@
 │   │   │   ├── main.ts
 │   │   │   ├── preview.css
 │   │   │   └── preview.tsx
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── Earthfile
 │   │   ├── README.md
 │   │   ├── app
@@ -331,8 +409,6 @@
 │   │   │   │   │   │   │   │   │       │   │   ├── priorisation
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   ├── progression
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── suivi
 │   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │       │   │   └── tabs-wrapper.tsx
 │   │   │   │   │   │   │   │   │       │   ├── default.tsx
@@ -1381,9 +1457,21 @@
 │   │   │   │   │   ├── use-mesure-services-pilotes.ts
 │   │   │   │   │   ├── use-resolve-actions-by-ids.ts
 │   │   │   │   │   └── use-update-action-explication.ts
+│   │   │   │   ├── archives-panel
+│   │   │   │   │   ├── archive-details.spec.tsx
+│   │   │   │   │   ├── archive-details.tsx
+│   │   │   │   │   ├── archive-output-to-details-state.spec.ts
+│   │   │   │   │   ├── archive-output-to-details-state.ts
+│   │   │   │   │   ├── archives-panel-layout.tsx
+│   │   │   │   │   ├── archives-panel.provider.tsx
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── use-download-archive.spec.ts
+│   │   │   │   │   │   ├── use-download-archive.ts
+│   │   │   │   │   │   ├── use-generate-archive.ts
+│   │   │   │   │   │   └── use-list-preuves-archive.ts
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── use-ticking-now.ts
 │   │   │   │   ├── audit-labellisation
-│   │   │   │   │   ├── audit-badge
-│   │   │   │   │   │   └── use-audit-status-badge.ts
 │   │   │   │   │   ├── audit-badge-status
 │   │   │   │   │   │   ├── get-request-audit-tooltip.ts
 │   │   │   │   │   │   ├── get-viewer-role.spec.ts
@@ -1391,28 +1479,47 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.spec.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
-│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── use-get-audit-status-badge.ts
 │   │   │   │   │   ├── checklist
-│   │   │   │   │   │   ├── acte-engagement.section.tsx
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.spec.ts
 │   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.ts
 │   │   │   │   │   │   │   ├── ask-premiere-etoile.button.tsx
-│   │   │   │   │   │   │   └── begin-audit.button.tsx
-│   │   │   │   │   │   ├── candidature-documents.section.tsx
+│   │   │   │   │   │   │   └── start-audit.button.tsx
+│   │   │   │   │   │   ├── audit-table-hint.banner.tsx
 │   │   │   │   │   │   ├── checklist-actions.spec.tsx
 │   │   │   │   │   │   ├── checklist-actions.tsx
-│   │   │   │   │   │   ├── container.tsx
-│   │   │   │   │   │   ├── format-reponse-attendue.spec.ts
-│   │   │   │   │   │   ├── format-reponse-attendue.ts
-│   │   │   │   │   │   ├── header.tsx
 │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   └── labellisation-checklist.table.tsx
+│   │   │   │   │   │   ├── is-audit-actif.spec.ts
+│   │   │   │   │   │   ├── is-audit-actif.ts
+│   │   │   │   │   │   ├── layout
+│   │   │   │   │   │   │   ├── container.tsx
+│   │   │   │   │   │   │   └── header.tsx
+│   │   │   │   │   │   ├── rules
+│   │   │   │   │   │   │   ├── is-acte-engagement-visible.spec.ts
+│   │   │   │   │   │   │   ├── is-acte-engagement-visible.ts
+│   │   │   │   │   │   │   ├── is-candidature-documents-visible.spec.ts
+│   │   │   │   │   │   │   └── is-candidature-documents-visible.ts
+│   │   │   │   │   │   └── table
+│   │   │   │   │   │       ├── format-reponse-attendue.spec.ts
+│   │   │   │   │   │       ├── format-reponse-attendue.ts
+│   │   │   │   │   │       ├── labellisation-checklist.table.tsx
+│   │   │   │   │   │       ├── reponse-attendue.label.tsx
+│   │   │   │   │   │       └── sections
+│   │   │   │   │   │           ├── acte-engagement.section.spec.tsx
+│   │   │   │   │   │           ├── acte-engagement.section.tsx
+│   │   │   │   │   │           ├── candidature-documents.section.spec.tsx
+│   │   │   │   │   │           ├── candidature-documents.section.tsx
+│   │   │   │   │   │           ├── delete-preuve-button.tsx
+│   │   │   │   │   │           ├── rename-preuve-button.tsx
+│   │   │   │   │   │           └── upload-preuve-button.tsx
 │   │   │   │   │   ├── checklist-page-header
 │   │   │   │   │   │   ├── checklist-page-header.tsx
+│   │   │   │   │   │   ├── conseiller-referent.item.tsx
 │   │   │   │   │   │   ├── referentiel-menu.button.tsx
+│   │   │   │   │   │   ├── referents-line.tsx
 │   │   │   │   │   │   ├── role-mesure.item.tsx
-│   │   │   │   │   │   ├── role-mesures-line.tsx
 │   │   │   │   │   │   └── use-role-mesure.ts
 │   │   │   │   │   ├── checklist-view-model.ts
 │   │   │   │   │   ├── checklist.context.tsx
@@ -1469,8 +1576,13 @@
 │   │   │   │   │   │       ├── report-card.tsx
 │   │   │   │   │   │       ├── upload-report-step-footer.tsx
 │   │   │   │   │   │       └── use-report-upload-step.tsx
+│   │   │   │   │   ├── old
+│   │   │   │   │   │   ├── AddRapportButton.tsx
+│   │   │   │   │   │   ├── useAddPreuveToAudit.ts
+│   │   │   │   │   │   └── valider-audit.button.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── use-get-mesure-audit-statut.ts
+│   │   │   │   │   ├── use-list-mesure-audit-statuts-grouped-by-id.ts
 │   │   │   │   │   ├── use-update-mesure-audit-statut.ts
 │   │   │   │   │   └── useAudit.ts
 │   │   │   │   ├── comparisons
@@ -1513,25 +1625,24 @@
 │   │   │   │   │   ├── fixture.json
 │   │   │   │   │   ├── new-referentiel-layout.banner.tsx
 │   │   │   │   │   ├── numLabels.tsx
-│   │   │   │   │   ├── start-audit
+│   │   │   │   │   ├── request-audit
 │   │   │   │   │   │   ├── audit-selection.spec.ts
 │   │   │   │   │   │   ├── audit-selection.ts
 │   │   │   │   │   │   ├── audit-type.field.tsx
-│   │   │   │   │   │   ├── available-audit.types.spec.ts
-│   │   │   │   │   │   ├── available-audit.types.ts
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   └── use-request-audit.ts
-│   │   │   │   │   │   ├── start-audit.button.spec.tsx
-│   │   │   │   │   │   ├── start-audit.button.tsx
-│   │   │   │   │   │   ├── start-audit.form.spec.tsx
-│   │   │   │   │   │   ├── start-audit.form.tsx
-│   │   │   │   │   │   ├── start-audit.modal.tsx
+│   │   │   │   │   │   ├── request-audit.button.spec.tsx
+│   │   │   │   │   │   ├── request-audit.button.tsx
+│   │   │   │   │   │   ├── request-audit.form.spec.tsx
+│   │   │   │   │   │   ├── request-audit.form.tsx
+│   │   │   │   │   │   ├── request-audit.modal.tsx
 │   │   │   │   │   │   └── target-star.field.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── useAddPreuveToDemande.ts
 │   │   │   │   │   ├── useCycleLabellisation.ts
 │   │   │   │   │   ├── useEnvoiDemande.ts
 │   │   │   │   │   ├── useLabellisationParcours.ts
+│   │   │   │   │   ├── useRemovePreuveFromDemande.ts
 │   │   │   │   │   └── useStartAudit.ts
 │   │   │   │   ├── preuves
 │   │   │   │   │   ├── AddPreuveComplementaire.tsx
@@ -1591,6 +1702,14 @@
 │   │   │   │   │   └── usePreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel.table
+│   │   │   │   │   ├── audit-input-cell.tsx
+│   │   │   │   │   ├── empty-cell.tsx
+│   │   │   │   │   ├── referentiel-table.audit-notes.cell
+│   │   │   │   │   │   ├── get-audit-note-preview-content.spec.ts
+│   │   │   │   │   │   ├── get-audit-note-preview-content.ts
+│   │   │   │   │   │   └── referentiel-table.audit-notes.cell.tsx
+│   │   │   │   │   ├── referentiel-table.audit-ordre-du-jour.cell.tsx
+│   │   │   │   │   ├── referentiel-table.audit-statut.cell.tsx
 │   │   │   │   │   ├── referentiel-table.categorie.cell.tsx
 │   │   │   │   │   ├── referentiel-table.comments.cell.tsx
 │   │   │   │   │   ├── referentiel-table.description.cell.tsx
@@ -1784,6 +1903,7 @@
 │   │   │   │   ├── metadata-line
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── metadata-item-personne.tsx
+│   │   │   │   │   ├── metadata-item.spec.tsx
 │   │   │   │   │   ├── metadata-item.tsx
 │   │   │   │   │   └── metadata-line.tsx
 │   │   │   │   ├── pictogrammes
@@ -1988,6 +2108,8 @@
 │   │   └── tsconfig.spec.json
 │   ├── backend
 │   │   ├── .env.default
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── Earthfile
 │   │   ├── QuickstartApi.md
 │   │   ├── README.md
@@ -4367,6 +4489,7 @@
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
 │   │   │   │   ├── preferences.sql
+│   │   │   │   ├── preferences_referentiel_mode.sql
 │   │   │   │   ├── region.sql
 │   │   │   │   ├── region@v2.55.0.sql
 │   │   │   │   ├── remove-create-collectivite-triggers.sql
@@ -4906,6 +5029,7 @@
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
 │   │   │   │   ├── preferences.sql
+│   │   │   │   ├── preferences_referentiel_mode.sql
 │   │   │   │   ├── region.sql
 │   │   │   │   ├── region@v2.55.0.sql
 │   │   │   │   ├── remove-create-collectivite-triggers.sql
@@ -5447,6 +5571,7 @@
 │   │       │   ├── mes_*.sql  (8 files)
 │   │       │   ├── nic.sql
 │   │       │   ├── preferences.sql
+│   │       │   ├── preferences_referentiel_mode.sql
 │   │       │   ├── region.sql
 │   │       │   ├── region@v2.55.0.sql
 │   │       │   ├── remove-create-collectivite-triggers.sql
@@ -5997,7 +6122,8 @@
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
 │   │   ├── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
-│   │   └── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
+│   │   ├── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
+│   │   └── 2026-06-11-001-feat-bascule-referentiel-te-prd.md
 │   └── solutions
 │       ├── architecture-patterns
 │       │   ├── extract-history-repository-from-service.md
@@ -6082,13 +6208,18 @@
 │   │   │   │   ├── historique-seed.ts
 │   │   │   │   └── historique.pom.ts
 │   │   │   ├── labellisations
+│   │   │   │   ├── acte-engagement-auditeur.spec.ts
+│   │   │   │   ├── audit-badge-tab.spec.ts
 │   │   │   │   ├── audit-conduct-tabs-auditeur.spec.ts
+│   │   │   │   ├── audit-labellisation-to-action-scroll.spec.ts
+│   │   │   │   ├── candidature-documents-auditeur.spec.ts
 │   │   │   │   ├── checklist-acte-engagement.spec.ts
 │   │   │   │   ├── checklist-candidature-documents.spec.ts
 │   │   │   │   ├── checklist-role-mesures.spec.ts
 │   │   │   │   ├── checklist-score-minimum.spec.ts
 │   │   │   │   ├── checklist-statut-refresh.spec.ts
 │   │   │   │   ├── cloturer-audit.spec.ts
+│   │   │   │   ├── demandes-audit-labellisation.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
 │   │   │   │   ├── new-audit-labellisation.pom.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
@@ -6096,18 +6227,19 @@
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
 │   │   │   │   └── start-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
-│   │   │   └── scores
-│   │   │       ├── accordion-header-click.spec.ts
-│   │   │       ├── action-access-rights.spec.ts
-│   │   │       ├── create-update-document.spec.ts
-│   │   │       ├── detaille-a-la-tache-modal.spec.ts
-│   │   │       ├── hash-navigation.spec.ts
-│   │   │       ├── hide-action-desactive.spec.ts
-│   │   │       ├── referentiel-scores.pom.ts
-│   │   │       ├── score-indicatif-modal.spec.ts
-│   │   │       ├── update-action-explication-navigation.spec.ts
-│   │   │       ├── update-action-statut.spec.ts
-│   │   │       └── update-personnalisation.spec.ts
+│   │   │   ├── scores
+│   │   │   │   ├── accordion-header-click.spec.ts
+│   │   │   │   ├── action-access-rights.spec.ts
+│   │   │   │   ├── create-update-document.spec.ts
+│   │   │   │   ├── detaille-a-la-tache-modal.spec.ts
+│   │   │   │   ├── hash-navigation.spec.ts
+│   │   │   │   ├── hide-action-desactive.spec.ts
+│   │   │   │   ├── referentiel-scores.pom.ts
+│   │   │   │   ├── score-indicatif-modal.spec.ts
+│   │   │   │   ├── update-action-explication-navigation.spec.ts
+│   │   │   │   ├── update-action-statut.spec.ts
+│   │   │   │   └── update-personnalisation.spec.ts
+│   │   │   └── sticky-header.helpers.ts
 │   │   ├── shared
 │   │   │   ├── database.service.ts
 │   │   │   ├── dropdown.pom.ts
@@ -6247,7 +6379,10 @@
 │   │   │   ├── collectivites
 │   │   │   │   ├── categorie-tag.schema.ts
 │   │   │   │   ├── collectivite-banatic-type.enum.ts
+│   │   │   │   ├── collectivite-preferences.schema.spec.ts
 │   │   │   │   ├── collectivite-preferences.schema.ts
+│   │   │   │   ├── collectivite-referentiel-preferences.rules.spec.ts
+│   │   │   │   ├── collectivite-referentiel-preferences.rules.ts
 │   │   │   │   ├── collectivite-relation.schema.ts
 │   │   │   │   ├── collectivite-type.enum.ts
 │   │   │   │   ├── collectivite.schema.ts
@@ -6407,9 +6542,9 @@
 │   │   │   │   │   ├── available-audit-types
 │   │   │   │   │   │   ├── available-audit-types.spec.ts
 │   │   │   │   │   │   └── available-audit-types.ts
-│   │   │   │   │   ├── can-modify-labellisation-preuves
-│   │   │   │   │   │   ├── can-modify-labellisation-preuves.rules.spec.ts
-│   │   │   │   │   │   └── can-modify-labellisation-preuves.rules.ts
+│   │   │   │   │   ├── can-modify-candidature-documents
+│   │   │   │   │   │   ├── can-modify-candidature-documents.rule.spec.ts
+│   │   │   │   │   │   └── can-modify-candidature-documents.rule.ts
 │   │   │   │   │   ├── etoile-action-condition-definition.schema.ts
 │   │   │   │   │   ├── labellisation-audit.schema.ts
 │   │   │   │   │   ├── labellisation-critere.schema.ts
@@ -6430,6 +6565,7 @@
 │   │   │   │   │   │   └── role-mesures.ts
 │   │   │   │   │   ├── start-audit
 │   │   │   │   │   │   ├── start-audit.rules-errors.ts
+│   │   │   │   │   │   ├── start-audit.rules.spec.ts
 │   │   │   │   │   │   └── start-audit.rules.ts
 │   │   │   │   │   └── start-new-audit-cycle
 │   │   │   │   │       ├── start-new-audit-cycle.rules-errors.ts
@@ -6959,6 +7095,7 @@
 │       └── vitest.storybook.config.mts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── skills-lock.json
 ├── sqitch.conf
 ├── strapi
 │   ├── .editorconfig
@@ -7227,4 +7364,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1257 directories, 6170 files
+1276 directories, 6333 files
