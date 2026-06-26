@@ -1,13 +1,13 @@
-## Changelog : signalement-api (30 derniers jours, au 12 juin 2026)
+## Changelog : signalement-api (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Cette mise à jour corrige un problème d'affichage des labels d'emails et intègre les modifications issues de la pull request #2037. Ces améliorations visent à garantir une meilleure expérience utilisateur et à maintenir la qualité du code.
+Cette mise à jour apporte principalement une suppression de fonctionnalité liée à un type de consommateur spécifique ("employeeConsumer"). Des corrections mineures concernant l'étiquetage des emails ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des labels d'emails. [#2037](https://github.com/betagouv/signalement-api/pull/2037)
+- Suppression du type de consommateur "employeeConsumer" [#2038](https://github.com/betagouv/signalement-api/pull/2038).
 
 ### Évolutions techniques
-- Intégration des modifications issues de la pull request #2037.
+- Aucune évolution technique majeure.
 
 ### Autres changements
-- Aucune information disponible.
+- Correction de l'étiquetage des emails [#2037](https://github.com/betagouv/signalement-api/pull/2037). Plusieurs commits ont été effectués pour affiner cette correction (0aa77d7, 5c3c094, 23d6329).
