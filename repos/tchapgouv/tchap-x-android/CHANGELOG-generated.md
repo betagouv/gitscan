@@ -1,61 +1,52 @@
-## Changelog : tchap-x-android (30 derniers jours, au 19 juin 2026)
+## Changelog : tchap-x-android (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la stabilité et aux fonctionnalités de l'application.  La mise à jour vers Element X v26.06.2 inclut des corrections de bugs, des améliorations de l'interface utilisateur (notamment pour l'édition de médias et l'affichage des salons), et des optimisations des performances. Des fonctionnalités comme la gestion des autorisations de partage de position et la personnalisation de la carte ont également été améliorées.
+Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment une meilleure gestion des salons privés, des corrections de bugs et des optimisations de l'interface. Des fonctionnalités de sécurité ont également été renforcées, avec l'ajout d'un écran d'expiration de compte et des améliorations concernant les certificats Let's Encrypt. Enfin, des mises à jour techniques ont été effectuées pour maintenir la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Gestion des salons:** Correction de l'affichage du menu d'historique. [#6855](https://github.com/tchapgouv/tchap-x-android/issues/6855)
-- **Interface utilisateur:**
-    - Renommage de la section "Direct" en "Personnes".
-    - Correction de l'icône d'envoi de message en mode sombre.
-    - Amélioration de l'affichage des fichiers et de leur taille.
-    - Amélioration de l'interface de la vue des médias (partage, téléchargement).
-    - Amélioration de la conception et de l'ordre des éléments dans les détails du salon.
-    - Ajout d'une option pour choisir des sons personnalisés pour les notifications de messages et d'appels.
-- **Médias:**
-    - Ajout de fonctions de recadrage et de rotation d'image avant envoi.
-    - Amélioration de la génération et du nettoyage des snapshots des cartes.
-    - Correction de l'affichage des images dans la vue des médias.
-- **Localisation:**
-    - Amélioration de la gestion des autorisations de partage de position.
-    - Possibilité d'utiliser une URL de style de carte personnalisée.
-- **Notifications:** Correction des badges de mentions.
-- **Sécurité:** Autorisation des certificats Let's Encrypt sur l'environnement de développement.
-- **Expiration de compte:** Ajout d'un écran d'expiration de compte.
-- **Lecture des messages:** Correction de l'envoi incorrect des accusés de lecture dans les salons publics. [#6838](https://github.com/tchapgouv/tchap-x-android/issues/6838)
-- **Indicateur de messages non lus:** Ajout du nombre de messages non lus à l'indicateur de messages non lus des salons. [#6887](https://github.com/tchapgouv/tchap-x-android/issues/6887)
+- Ajout d'un badge "Recommandé" pour les salons privés chiffrés.
+- Activation des salons privés non-chiffrés.
+- Possibilité de partager un fichier dans un salon non chiffré avec un message d'alerte approprié.
+- Suppression du support pour Android Auto (mode voiture).
+- Renommage de la section "Direct" en "Personnes".
+- Correction de l'icône d'envoi de message en mode sombre.
+- Ajout d'un écran d'expiration de compte pour renforcer la sécurité.
+- Amélioration de l'affichage des fichiers dans la vue média (taille, format).
+- Possibilité de choisir des sons personnalisés pour les notifications de messages et d'appels.
+- Amélioration de l'affichage des badges de mentions.
+- Possibilité de basculer l'image dans l'éditeur d'image.
+- Réorganisation des éléments dans les détails d'une salle.
+- Ajout d'un indicateur du nombre de messages non lus dans la liste des salles.
+- Amélioration de l'affichage des fichiers PDF et des fichiers texte dans la vue média.
+- Possibilité de partager sa position avec des permissions plus granulaires.
 
 ### Évolutions techniques
-- **Mise à jour des dépendances:**
-    - Mise à jour du SDK Matrix Rust vers la version 26.06.3.
-    - Mise à jour de Compound Design Tokens vers la version 10.2.1.
-    - Mise à jour de Kotlin vers la version 2.3.9.
-    - Mises à jour de diverses autres dépendances (Roborazzi, Maplibre, Posthog, etc.).
-- **Architecture:**
-    - Suppression du support d'Android Auto (mode voiture).
-    - Utilisation d'un emplacement de clé brut pour les nouveaux sessions du SDK.
-    - Refactorisation de la logique de rafraîchissement des tokens.
-    - Amélioration de la gestion des erreurs de rafraîchissement des tokens.
-    - Utilisation de `runBlocking` pour la logique de rafraîchissement des tokens.
-    - Suppression du code généré par DI des rapports Kover.
-- **Compilation:** Compilation du SDK en mode release par défaut.
-- **Tests:** Ajout de tests unitaires et d'interface utilisateur.
-- **CI/CD:** Amélioration du script de release.
-- **Performances:** Amélioration des performances générales de l'application.
-- **Sécurité:** Correction d'ID dupliqués dans le rust-sdk (BWI).
+- Mise à jour du SDK Matrix Rust en version 26.06.3.
+- Mise à jour de Compound Design Tokens en version 10.2.1.
+- Mise à jour de Maplibre GL Android SDK en version 13.2.0.
+- Mise à jour de Roborazzi.
+- Amélioration de la compilation du SDK Rust.
+- Compilation du SDK en mode release par défaut.
+- Optimisation de la taille des logs pour éviter les erreurs serveur.
+- Correction de bugs liés à la compilation et au build.
+- Correction de problèmes liés à l'intégration avec Element X v26.06.2.
+- Correction de problèmes liés à l'utilisation de Vulkan (désactivation).
+- Amélioration de la gestion des erreurs de localisation.
+- Correction de problèmes liés aux tests unitaires et d'interface utilisateur.
+- Correction de problèmes liés à l'utilisation de Let's Encrypt.
+- Amélioration de la gestion des certificats.
+- Correction de problèmes liés à la synchronisation des chaînes de caractères.
+- Suppression de jobs cron et de clés SSH privées dans les forks.
+- Correction de problèmes liés à la dérivation de clés SQLCipher.
 
 ### Autres changements
 - Mise à jour des captures d'écran.
-- Correction de problèmes de linter.
-- Ajout de sections RageShake et ClearCache dans les paramètres avancés.
+- Ajout de liens Figma pour certaines fonctionnalités.
+- Corrections de linting et amélioration du script de release.
+- Ajout d'options de débogage pour le build (mode dev, nombre de workers).
+- Ajout d'une section "Rageshake & ClearCache" dans les paramètres avancés.
 - Suppression de la version 0.11.0.
-- Ajout d'une étiquette Stefan au projet.
-- Correction de la compilation du rust-sdk.
-- Ajout de liens Figma.
-- Suppression de la fonctionnalité `FloatingDateBadge`.
-- Suppression de la fonctionnalité Vulkan.
-- Amélioration de la gestion des erreurs et ajout de logs plus précis.
-- Suppression de la possibilité de partager sa position via Maplibre, remplacée par une solution plus simple.
-- Correction de problèmes de compilation et de tests.
-- Synchronisation des chaînes de caractères depuis Localazy.
-- Ajout de commentaires et nettoyage du code.
+- Ajout d'une option pour signaler un problème avec un numéro de ticket GitHub.
+- Suppression de la possibilité de définir un style de carte personnalisé.
+- Amélioration de la gestion des erreurs et des logs.
+- Corrections diverses et amélioration de la qualité du code.
