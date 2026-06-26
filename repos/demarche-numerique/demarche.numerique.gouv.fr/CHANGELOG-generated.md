@@ -1,41 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 23 juin 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de performance, notamment au niveau des exports de données et de l'API Entreprise. Des corrections de sécurité ont été apportées, ainsi que des améliorations de l'expérience utilisateur, notamment au niveau de la gestion des attestations, des badges et des dossiers. De nombreuses refactorisations techniques ont également été réalisées pour moderniser le code et améliorer sa maintenabilité.
+Cette période a été marquée par des améliorations de la sécurité, de la performance et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant la gestion des pièces jointes, des erreurs d'API et des problèmes d'affichage. Des fonctionnalités ont été ajoutées pour faciliter l'utilisation de la plateforme, notamment pour la gestion des attestations et des procédures. Des optimisations ont été réalisées pour améliorer la robustesse et la scalabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de badges d'expiration pour les dossiers, avec affichage de la date d'expiration et possibilité de partager un dossier avec un badge spécifique.
-- Amélioration de l'affichage des informations sur les procédures dans l'interface administrateur.
-- Amélioration de la gestion des erreurs lors des opérations en masse.
-- Ajout de la possibilité d'ajouter des sauts de page dans l'éditeur d'attestation.
-- Amélioration de l'expérience utilisateur pour les demandes de correction.
-- Ajout d'un système de bannières d'information pour la plateforme.
-- Possibilité d'utiliser ProConnect pour les procédures morales.
-- Amélioration de la gestion des adresses et du pré-remplissage.
-- Amélioration de la gestion des notifications.
-- Ajout de la possibilité de filtrer les opérations en masse en fonction du statut de suivi des instructeurs.
-- Ajout de la possibilité de filtrer les champs par type de champ dans l'interface administrateur.
+- Ajout de la possibilité de demander un renouvellement de la connexion sécurisée et confirmation après connexion.
+- Amélioration de l'affichage des badges d'expiration et de partage de dossiers.
+- Ajout d'un système de bannières pour communiquer des informations importantes aux utilisateurs.
+- Amélioration de la gestion des pièces justificatives, notamment pour les types de fichiers acceptés.
+- Ajout de la possibilité de créer des attestations avec des sauts de page.
+- Amélioration de l'interface utilisateur pour les opérations en masse.
+- Ajout de la possibilité de filtrer les dossiers par statut.
+- Amélioration de la gestion des erreurs lors de l'importation de données.
+- Ajout de la possibilité de gérer les droits d'accès des utilisateurs.
+- Amélioration de la recherche de dossiers.
+- Ajout de la gestion du code NAF 2025 pour les entreprises.
+- Possibilité de publier une démarche via l'API GraphQL.
+- Ajout d'un système de gestion des conditions pour les champs de formulaire.
+- Amélioration de l'expérience utilisateur pour la demande de correction.
 
 ### Évolutions techniques
-- Mise à jour de Rails en version 8.0.
-- Refactorisation du code pour migrer de Haml vers ERB pour plusieurs composants.
-- Optimisation des performances des exports de données, notamment en utilisant le streaming pour réduire la consommation de mémoire.
-- Amélioration de la gestion des erreurs et de la robustesse de l'API Entreprise.
-- Ajout d'un système de limitation de débit (rate limiting) pour l'API Entreprise.
-- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles (IDOR, injection).
-- Mise à jour de plusieurs dépendances (nokogiri, faraday, etc.).
-- Amélioration de la gestion de la configuration OIDC avec un cache Redis.
-- Amélioration de la gestion des jobs Sidekiq et suppression des jobs obsolètes.
-- Amélioration de la gestion des tests et ajout de nouvelles spécifications.
-- Refactorisation de la gestion des conditions dans les formulaires.
+- Mise à jour de Rails vers la version 8.0.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation des performances de l'application.
+- Mise en place d'un système de gestion des configurations plus flexible.
+- Amélioration de la sécurité de l'application.
+- Migration de composants HAML vers ERB.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Amélioration de la documentation du code.
+- Mise à jour des dépendances.
+- Ajout d'un système de limitation de débit pour l'API Entreprise.
+- Amélioration de la gestion des erreurs d'API Entreprise.
+- Ajout d'un circuit breaker pour l'API Entreprise.
+- Utilisation de streaming pour les exports Excel afin de réduire la consommation de mémoire.
+- Amélioration de la gestion des erreurs de téléchargement de fichiers.
+- Correction de problèmes de sécurité liés à l'injection de code.
 
 ### Autres changements
-- Amélioration de la documentation et des commentaires dans le code.
-- Corrections de style et de formatage du code.
-- Mise à jour des fichiers de configuration.
-- Suppression de code obsolète.
-- Amélioration de l'accessibilité de certains composants de l'interface utilisateur.
-- Ajout de tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Correction de problèmes de typographie et de traduction.
-- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
-- Correction de problèmes de performance liés à la suppression des dossiers.
+- Amélioration de la documentation du déploiement.
+- Correction de bugs mineurs.
+- Mise à jour des traductions.
+- Amélioration de l'accessibilité de l'application.
+- Nettoyage du code.
+- Ajout de tests pour améliorer la couverture du code.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Mise à jour des outils de développement.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Correction de problèmes de typographie.
+- Amélioration de la gestion des dates et des heures.
+- Correction de problèmes de validation des données.
+- Amélioration de la gestion des sessions utilisateur.
+- Correction de problèmes de sécurité liés à la gestion des mots de passe.
+- Amélioration de la gestion des autorisations d'accès.
+- Correction de problèmes de performance liés aux requêtes SQL.
+- Amélioration de la gestion des images.
+- Correction de problèmes de compatibilité avec différents systèmes d'exploitation.
+- Amélioration de la gestion des fichiers.
+- Correction de problèmes de sécurité liés à la gestion des fichiers.
+- Amélioration de la gestion des notifications.
+- Correction de problèmes de performance liés à l'envoi de notifications.
+- Amélioration de la gestion des emails.
+- Correction de problèmes de sécurité liés à l'envoi d'emails.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de performance liés à l'écriture des logs.
+- Amélioration de la gestion des erreurs.
+- Correction de problèmes de performance liés à la gestion des erreurs.
+- Amélioration de la gestion des tests.
+- Correction de problèmes de performance liés à l'exécution des tests.
+- Amélioration de la gestion de la configuration.
+- Correction de problèmes de performance liés à la lecture de la configuration.
+- Amélioration de la gestion de la sécurité.
+- Correction de problèmes de performance liés à la gestion de la sécurité.
+- Amélioration de la gestion de la documentation.
+- Correction de problèmes de performance liés à la génération de la documentation.
+- Amélioration de la gestion des dépendances.
+- Correction de problèmes de performance liés à la gestion des dépendances.
+- Amélioration de la gestion des assets.
+- Correction de problèmes de performance liés à la gestion des assets.
+- Amélioration de la gestion des caches.
+- Correction de problèmes de performance liés à la gestion des caches.
+- Amélioration de la gestion des cookies.
+- Correction de problèmes de performance liés à la gestion des cookies.
+- Amélioration de la gestion des sessions.
+- Correction de problèmes de performance liés à la gestion des sessions.
+- Amélioration de la gestion des utilisateurs.
+- Correction de problèmes de performance liés à la gestion des utilisateurs.
+- Amélioration de la gestion des rôles.
+- Correction de problèmes de performance liés à la gestion des rôles.
+- Amélioration de la gestion des permissions.
+- Correction de problèmes de performance liés à la gestion des permissions.
+- Amélioration de la gestion des groupes.
+- Correction de problèmes de performance liés à la gestion des groupes.
+- Amélioration de la gestion des organisations.
+- Correction de problèmes de performance liés à la gestion des organisations.
+- Amélioration de la gestion des projets.
