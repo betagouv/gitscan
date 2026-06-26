@@ -1,27 +1,31 @@
-## Changelog : monitorfish (30 derniers jours, au 23 juin 2026)
+## Changelog : monitorfish (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'amélioration de la gestion des contrôles en mer et à la débarque (e-ISR), l'ajout de nouvelles fonctionnalités pour le suivi des navires (AIS), et l'optimisation de l'interface utilisateur et des performances. Des corrections de bugs et des mises à jour techniques ont également été apportées pour améliorer la stabilité et la maintenabilité du projet.
+Ce mois-ci, les évolutions de monitorfish se concentrent sur l'amélioration de l'interface utilisateur, notamment pour les contrôles en mer et à la débarque, ainsi que sur l'ajout de nouvelles fonctionnalités liées aux groupes prioritaires de navires et aux signalements INN. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Contrôles en mer et à la débarque (e-ISR):** Modifications des APIs publiques pour faciliter l'intégration avec e-ISR, incluant l'ajout de données sur le propriétaire du navire [#5170](https://github.com/MTES-MCT/monitorfish/issues/5170).
-- **Signalements INN:** Amélioration des filtres dans la liste des signalements INN, permettant une recherche plus précise et une mise à jour plus facile des informations depuis Navpro [#5113](https://github.com/MTES-MCT/monitorfish/issues/5113).
-- **AIS:** Affichage des navires sous AIS v1.2 [#5177](https://github.com/MTES-MCT/monitorfish/issues/5177). Mise à jour des dernières positions des navires via la pipeline [#5127](https://github.com/MTES-MCT/monitorfish/issues/5127). Correction de la lecture des coordonnées WKT pour une meilleure précision [#5125](https://github.com/MTES-MCT/monitorfish/issues/5125).
-- **Missions:** Ajout du type de moyen des unités de contrôles [#5145](https://github.com/MTES-MCT/monitorfish/issues/5145).
-- **Notes de vente:** Correction du parser des notes de vente FLUX [#5173](https://github.com/MTES-MCT/monitorfish/issues/5173) et ajout d'un index pour l'import des notes de vente dans le data warehouse [#5196](https://github.com/MTES-MCT/monitorfish/issues/5196).
-- **Campagne BFT:** Ajout d'un engin pour les navires auxiliaires [#5202](https://github.com/MTES-MCT/monitorfish/issues/5202).
-- **Interface utilisateur:** Amélioration de l'UI des nouvelles modales et harmonisation du composant Dialog [#5144](https://github.com/MTES-MCT/monitorfish/issues/5144).
+- **Contrôles en mer et à la débarque (e-ISR):** Modifications et corrections pour s'adapter à la version 1.3 d'e-ISR, incluant la gestion des infractions, des zones attribuées et des champs spécifiques. [#5225, #5228, #5170, #5175, #5161]
+- **Groupes prioritaires:** Ajout de la description des groupes prioritaires dans les nouvelles fonctionnalités et affichage avec des icônes de ciblage. Possibilité de tester et d'utiliser les groupes prioritaires en mer. [#5231, #5215]
+- **Signalements INN:** Amélioration des filtres dans la liste des signalements INN, permettant une recherche plus précise et l'ajout de filtres pour les types de signalement et l'ID du navire. Possibilité de mettre à jour les signalements directement depuis l'interface. [#5113, #5151]
+- **NATINF:** Ajout des NATINF 4789 et 30013. [#5149, #5167]
+- **Missions:** Ajout du type de moyen des unités de contrôles. [#5145]
+- **Gestion des espèces:** Amélioration de l'affichage et de la gestion des espèces lors des contrôles, avec la possibilité de ne pas les inclure dans le relevé.
+- **Préavis:** Affichage des messages manuels dans la marée du navire. [#5222]
 
 ### Évolutions techniques
-- **Backend:** Mise à jour des dépendances Spring Boot (4), Security (7), Flyway (12), Ktor (3.5) et d'autres dépendances non majeures [#5146](https://github.com/MTES-MCT/monitorfish/issues/5146), [#5147](https://github.com/MTES-MCT/monitorfish/issues/5147), [#5171](https://github.com/MTES-MCT/monitorfish/issues/5171).
-- **Frontend:** Migration vers les dernières versions de ol (10.9), fuse.js (7.3), styled-components (6.4) et monitor-ui (24.50).
-- **CI/CD:** Modification du workflow CI/CD pour Sentry, permettant de continuer l'upload des source maps même en cas d'erreur.
-- **Kafka:** Ajout des variables d'environnement manquantes pour Kafka [#5118](https://github.com/MTES-MCT/monitorfish/issues/5118).
-- **Base de données:** Ajout d'un aggregate continu horaire des positions AIS.
+- **Backend:** Mise à jour des dépendances Spring Boot (4), Security (7), Flyway (12), Ktor (3.5) et d'autres dépendances mineures. [#5146, #5148]
+- **Tests:** Correction de tests flakys et ajout de tests pour les nouveaux groupes prioritaires.
+- **CI/CD:** Modification du workflow CI/CD pour la gestion des source maps Sentry.
+- **Architecture:** Refactorisation du code pour améliorer la maintenabilité et les performances.
+- **Docker:** Ajout de la variable d'environnement `MONITORFISH_KAFKA_AIS_TOPIC` au fichier docker-compose.
+- **Frontend:** Migration vers des versions plus récentes de certaines librairies frontend (uuid, TS-ESLint, styled-components, monitor-ui).
 
 ### Autres changements
-- Ajout d'un README pour la génération du fichier .p12 [#5123](https://github.com/MTES-MCT/monitorfish/issues/5123).
-- Correction de plusieurs tests Cypress et amélioration de la stabilité des tests e2e.
-- Suppression de la configuration AI.
-- Diverses corrections de bugs et améliorations de la qualité du code.
-- Ajout du NATINF 4789 [#5149](https://github.com/MTES-MCT/monitorfish/issues/5149) et du NATINF 30013 [#5167](https://github.com/MTES-MCT/monitorfish/issues/5167).
+- Ajout d'un README pour la génération du fichier .p12. [#5123]
+- Correction de la documentation et des commentaires dans le code.
+- Amélioration de l'accessibilité de certains composants de l'interface utilisateur.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout d'index pour l'import des notes de vente dans le data warehouse. [#5196]
+- Correction du parser des notes de vente FLUX. [#5173]
+- Ajout du champ `is_under_jdp` à la table `analytics_missions`. [#5162]
+- Correction de la gestion des dates dans les requêtes natives Hibernate.

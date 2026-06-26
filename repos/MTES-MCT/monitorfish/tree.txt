@@ -581,7 +581,7 @@
 │   │   │   │                   │   │       ├── AddOrUpdateFixedVesselGroup.kt
 │   │   │   │                   │   │       ├── DeleteFixedVesselGroupVessel.kt
 │   │   │   │                   │   │       ├── DeleteVesselGroup.kt
-│   │   │   │                   │   │       ├── GetAllVesselGroups.kt
+│   │   │   │                   │   │       ├── GetAllUserVesselGroups.kt
 │   │   │   │                   │   │       ├── GetAllVesselGroupsWithVessels.kt
 │   │   │   │                   │   │       └── dtos
 │   │   │   │                   │   │           ├── CreateOrUpdateDynamicVesselGroupCommand.kt
@@ -722,6 +722,8 @@
 │   │   │   │                   │   │   │   ├── PriorNotificationUploadDataOutput.kt
 │   │   │   │                   │   │   │   ├── PriorNotificationVesselSubscriptionDataOutput.kt
 │   │   │   │                   │   │   │   ├── PriorNotificationsExtraDataOutput.kt
+│   │   │   │                   │   │   │   ├── PriorityVesselGroupDataOutput.kt
+│   │   │   │                   │   │   │   ├── PriorityVesselGroupWithVesselsDataOutput.kt
 │   │   │   │                   │   │   │   ├── ProducerOrganizationMembershipDataOutput.kt
 │   │   │   │                   │   │   │   ├── ReportingAndOccurrencesDataOutput.kt
 │   │   │   │                   │   │   │   ├── ReportingDataOutput.kt
@@ -1246,6 +1248,7 @@
 │   │   │       │   │   │   ├── V0.384__Update_sales_notes_table.sql
 │   │   │       │   │   │   ├── V0.385__Update_vessels_table.sql
 │   │   │       │   │   │   ├── V0.386__Update_manual_prior_notifications_table.sql
+│   │   │       │   │   │   ├── V0.387__Create_last_positions_vms_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.40__Update_control_anteriority_table.sql
@@ -1468,6 +1471,7 @@
 │   │       │                   │   │   │   └── VesselUTests.kt
 │   │       │                   │   │   ├── vessel_group
 │   │       │                   │   │   │   ├── DynamicVesselGroupUTests.kt
+│   │       │                   │   │   │   ├── PriorityVesselGroupUTests.kt
 │   │       │                   │   │   │   └── VesselGroupBaseUTests.kt
 │   │       │                   │   │   └── vessel_profile
 │   │       │                   │   │       └── VesselProfileUTests.kt
@@ -1583,7 +1587,8 @@
 │   │       │                   │   │       ├── AddOrUpdateFixedVesselGroupUTests.kt
 │   │       │                   │   │       ├── DeleteFixedVesselGroupVesselUTests.kt
 │   │       │                   │   │       ├── DeleteVesselGroupUTests.kt
-│   │       │                   │   │       └── GetAllVesselGroupsWithVesselsUTests.kt
+│   │       │                   │   │       ├── GetAllUserVesselGroupsUTests.kt
+│   │       │                   │   │       └── GetAllUserVesselGroupsWithVesselsUTests.kt
 │   │       │                   │   └── utils
 │   │       │                   │       └── PaginatedListUTests.kt
 │   │       │                   ├── fakers
@@ -4135,8 +4140,10 @@
 │   │   │   │   │   └── hideVesselsNotInVesselGroups.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── __tests__
-│   │   │   │       │   └── getFilteredVesselGroups.test.ts
-│   │   │   │       └── getFilteredVesselGroups.ts
+│   │   │   │       │   ├── getFilteredVesselGroups.test.ts
+│   │   │   │       │   └── utils.test.ts
+│   │   │   │       ├── getFilteredVesselGroups.ts
+│   │   │   │       └── utils.ts
 │   │   │   ├── VesselSearch
 │   │   │   │   ├── VesselSearchResult.tsx
 │   │   │   │   ├── VesselSearchResultItem.tsx
@@ -4429,6 +4436,7 @@
 │   │       │   ├── __mocks__
 │   │       │   │   └── dummyLastPositions.ts
 │   │       │   ├── getDisplayedVesselsGroups.test.ts
+│   │       │   ├── getFilteredVesselGroups.test.ts
 │   │       │   └── getFilteredVessels.test.ts
 │   │       ├── constants.ts
 │   │       ├── hooks
@@ -5438,8 +5446,8 @@
 │   │   │   │   ├── ais_last_positions.sql
 │   │   │   │   ├── all_positions.sql
 │   │   │   │   ├── beacon_malfunctions_for_last_positions.sql
-│   │   │   │   ├── compute_last_positions.sql
 │   │   │   │   ├── compute_ports_activity_status.sql
+│   │   │   │   ├── compute_vms_last_positions.sql
 │   │   │   │   ├── control_anteriority.sql
 │   │   │   │   ├── control_anteriority_for_pnos.sql
 │   │   │   │   ├── control_charter.sql
@@ -5479,7 +5487,7 @@
 │   │   │   │   ├── ports_facade.sql
 │   │   │   │   ├── ports_fao_areas_and_facade.sql
 │   │   │   │   ├── position_alerts.sql
-│   │   │   │   ├── previous_last_positions.sql
+│   │   │   │   ├── previous_vms_last_positions.sql
 │   │   │   │   ├── recent_positions_histogram.sql
 │   │   │   │   ├── recent_segments.sql
 │   │   │   │   ├── regulations_hashes.sql
@@ -5901,4 +5909,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-799 directories, 5418 files
+799 directories, 5426 files
