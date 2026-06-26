@@ -56,7 +56,8 @@
 │   │   ├── ADR-001-testing-strategy.md
 │   │   ├── ADR-002-testing-strategy-and-repository-mocking.md
 │   │   ├── ADR-003-ddd-aggregate-root-pattern.md
-│   │   └── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
+│   │   ├── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
+│   │   └── ADR-005-business-rule-ownership-entity-vs-orm-model.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -120,13 +121,15 @@
 │       │   ├── corps.py
 │       │   ├── domaine_fonctionnel.py
 │       │   ├── metier.py
-│       │   └── offer.py
+│       │   ├── offer.py
+│       │   └── source.py
 │       ├── exceptions
 │       │   ├── __init__.py
 │       │   ├── concours_errors.py
 │       │   ├── corps_errors.py
 │       │   ├── metiers_error.py
-│       │   └── offer_errors.py
+│       │   ├── offer_errors.py
+│       │   └── source_errors.py
 │       ├── pyproject.toml
 │       ├── repositories
 │       │   ├── __init__.py
@@ -136,7 +139,8 @@
 │       │   └── offers_repository_interface.py
 │       ├── tests
 │       │   ├── __init__.py
-│       │   └── test_limit_date.py
+│       │   ├── test_limit_date.py
+│       │   └── test_source.py
 │       ├── types.py
 │       ├── uv.lock
 │       └── value_objects
@@ -159,6 +163,7 @@
 │           ├── nor.py
 │           ├── offer_conditions.py
 │           ├── region.py
+│           ├── source_type.py
 │           ├── type_competence.py
 │           └── verse.py
 └── src
@@ -187,11 +192,13 @@
     │   │       ├── __init__.py
     │   │       ├── archive_offer.py
     │   │       ├── clean_raw_offer.py
+    │   │       ├── import_offers.py
     │   │       ├── load_sources.py
     │   │       ├── publish_offer.py
     │   │       ├── save_raw_offer.py
     │   │       └── save_webhook.py
     │   ├── bin
+    │   │   ├── import_offers.py
     │   │   ├── run_migrations.sh
     │   │   ├── start_flower.sh
     │   │   ├── start_web.sh
@@ -221,7 +228,6 @@
     │   │   └── value_objects
     │   │       ├── __init__.py
     │   │       ├── credentials.py
-    │   │       ├── source.py
     │   │       ├── webhook_event.py
     │   │       └── webhook_type.py
     │   ├── infrastructure
@@ -231,6 +237,7 @@
     │   │   ├── database.py
     │   │   ├── di
     │   │   │   ├── __init__.py
+    │   │   │   ├── bootstrap.py
     │   │   │   └── container.py
     │   │   ├── exceptions
     │   │   │   ├── __init__.py
@@ -311,6 +318,7 @@
     │   │       ├── test_async_http_client.py
     │   │       ├── test_clean_raw_offer_use_case.py
     │   │       ├── test_credentials_store.py
+    │   │       ├── test_import_offers_use_case.py
     │   │       ├── test_ingest_offer_pipeline.py
     │   │       ├── test_load_sources_use_case.py
     │   │       ├── test_main.py
@@ -551,7 +559,6 @@
         │   │   │   ├── api_log.py
         │   │   │   ├── api_log_daily_aggregation.py
         │   │   │   ├── document.py
-        │   │   │   ├── source.py
         │   │   │   └── vectorized_document.py
         │   │   ├── exceptions
         │   │   │   ├── __init__.py
@@ -576,8 +583,7 @@
         │   │   │   └── text_extractor_interface.py
         │   │   └── value_objects
         │   │       ├── __init__.py
-        │   │       ├── similarity_type.py
-        │   │       └── source_type.py
+        │   │       └── similarity_type.py
         │   └── recruteur
         │       ├── entities
         │       │   ├── __init__.py
@@ -683,6 +689,7 @@
         │   │   │   │   ├── 0030_sourcemodel_slug.py
         │   │   │   │   ├── 0031_alter_sourcemodel_type.py
         │   │   │   │   ├── 0032_alter_sourcemodel_id.py
+        │   │   │   │   ├── 0033_alter_source_optional_api_fields.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -694,6 +701,11 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
+        │   │   │   ├── management
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── commands
+        │   │   │   │       ├── __init__.py
+        │   │   │   │       └── seed_recruteur_datas.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   └── __init__.py
@@ -761,6 +773,7 @@
         │   │   │   └── models.py
         │   │   └── utils
         │   │       ├── __init__.py
+        │   │       ├── admin.py
         │   │       └── models.py
         │   ├── exceptions
         │   │   ├── __init__.py
@@ -929,6 +942,10 @@
         │   │   ├── urls.py
         │   │   └── views
         │   │       └── cv_flow.py
+        │   ├── commons
+        │   │   ├── __init__.py
+        │   │   ├── pagination.py
+        │   │   └── serializers.py
         │   ├── context_processors.py
         │   ├── frontend
         │   │   ├── .storybook
@@ -942,7 +959,8 @@
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   ├── icons.ts
-        │   │   │   │   └── main.ts
+        │   │   │   │   ├── main.ts
+        │   │   │   │   └── routes.ts
         │   │   │   ├── components
         │   │   │   │   ├── base
         │   │   │   │   │   ├── CspAvatar
@@ -951,6 +969,9 @@
         │   │   │   │   │   ├── CspBadge
         │   │   │   │   │   │   ├── CspBadge.stories.ts
         │   │   │   │   │   │   └── CspBadge.vue
+        │   │   │   │   │   ├── CspBreadcrumb
+        │   │   │   │   │   │   ├── CspBreadcrumb.stories.ts
+        │   │   │   │   │   │   └── CspBreadcrumb.vue
         │   │   │   │   │   ├── CspButton
         │   │   │   │   │   │   ├── CspButton.stories.ts
         │   │   │   │   │   │   └── CspButton.vue
@@ -998,12 +1019,19 @@
         │   │   │   │   │   ├── CspSelect
         │   │   │   │   │   │   ├── CspSelect.stories.ts
         │   │   │   │   │   │   └── CspSelect.vue
+        │   │   │   │   │   ├── CspSortableList
+        │   │   │   │   │   │   ├── CspSortableList.stories.ts
+        │   │   │   │   │   │   ├── CspSortableList.vue
+        │   │   │   │   │   │   └── CspSortableListItem.vue
         │   │   │   │   │   ├── CspSwitch
         │   │   │   │   │   │   ├── CspSwitch.stories.ts
         │   │   │   │   │   │   └── CspSwitch.vue
         │   │   │   │   │   ├── CspTabs
         │   │   │   │   │   │   ├── CspTabs.stories.ts
-        │   │   │   │   │   │   └── CspTabs.vue
+        │   │   │   │   │   │   ├── CspTabs.test.ts
+        │   │   │   │   │   │   ├── CspTabs.vue
+        │   │   │   │   │   │   ├── CspTabsList.vue
+        │   │   │   │   │   │   └── CspTabsPanels.vue
         │   │   │   │   │   ├── CspTag
         │   │   │   │   │   │   ├── CspTag.stories.ts
         │   │   │   │   │   │   ├── CspTag.test.ts
@@ -1024,6 +1052,9 @@
         │   │   │   │   └── layout
         │   │   │   │       ├── CspAppLayout
         │   │   │   │       │   └── CspAppLayout.vue
+        │   │   │   │       ├── CspPageHeader
+        │   │   │   │       │   ├── CspPageHeader.stories.ts
+        │   │   │   │       │   └── CspPageHeader.vue
         │   │   │   │       └── CspSidebar
         │   │   │   │           ├── CspSidebar.stories.ts
         │   │   │   │           ├── CspSidebar.vue
@@ -1034,6 +1065,9 @@
         │   │   │   │           ├── CspSidebarTrigger.vue
         │   │   │   │           └── CspSidebarUser.vue
         │   │   │   ├── composables
+        │   │   │   │   ├── dnd
+        │   │   │   │   │   ├── useDraggableElement.ts
+        │   │   │   │   │   └── useDropTargetElement.ts
         │   │   │   │   ├── useColorMode.test.ts
         │   │   │   │   ├── useColorMode.ts
         │   │   │   │   ├── useCurrentUser.test.ts
@@ -1046,7 +1080,9 @@
         │   │   │   │       ├── HomeView.vue
         │   │   │   │       ├── components
         │   │   │   │       │   └── AtsAppShell.vue
-        │   │   │   │       └── navigation.ts
+        │   │   │   │       ├── navigation.ts
+        │   │   │   │       └── recrutements
+        │   │   │   │           └── MesRecrutementsView.vue
         │   │   │   ├── shared
         │   │   │   │   └── components
         │   │   │   │       └── ErrorBoundary.vue
@@ -1104,7 +1140,6 @@
         │   │   │       └── vectorize_documents.py
         │   │   ├── mappers.py
         │   │   ├── openapi.py
-        │   │   ├── pagination.py
         │   │   ├── schemas.py
         │   │   ├── serializers.py
         │   │   ├── tasks.py
@@ -1124,6 +1159,7 @@
         │   │   └── views.py
         │   ├── recruteur
         │   │   ├── __init__.py
+        │   │   ├── mappers.py
         │   │   ├── serializers.py
         │   │   ├── urls.py
         │   │   └── views.py
@@ -1315,6 +1351,7 @@
         │   │   ├── __init__.py
         │   │   ├── candidate
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_candidature_admin.py
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
@@ -1352,17 +1389,22 @@
         │   │   │   ├── test_load_documents.py
         │   │   │   ├── test_metier_cleaner.py
         │   │   │   ├── test_purge_api_logs.py
+        │   │   │   ├── test_source_admin.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_organisme_admin.py
         │   │   │   └── test_organisme_steps.py
-        │   │   └── referentiel
+        │   │   ├── referentiel
+        │   │   │   ├── __init__.py
+        │   │   │   ├── test_postgres_concours_repository.py
+        │   │   │   ├── test_postgres_corps_repository.py
+        │   │   │   ├── test_postgres_metiers_repository.py
+        │   │   │   └── test_postgres_offers_repository.py
+        │   │   └── utils
         │   │       ├── __init__.py
-        │   │       ├── test_postgres_concours_repository.py
-        │   │       ├── test_postgres_corps_repository.py
-        │   │       ├── test_postgres_metiers_repository.py
-        │   │       └── test_postgres_offers_repository.py
+        │   │       └── test_admin.py
         │   ├── presentation
         │   │   ├── __init__.py
         │   │   ├── candidate
@@ -1439,8 +1481,9 @@
         │       ├── mock_api_response_factory.py
         │       ├── mock_embedding_generator.py
         │       ├── pdf_test_utils.py
+        │       ├── seed_recruteur_datas.py
         │       ├── shared_fixtures.py
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-300 directories, 1145 files
+309 directories, 1179 files

@@ -1,54 +1,40 @@
-## Changelog : csplab (30 derniers jours, au 23 juin 2026)
+## Changelog : csplab (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface utilisateur pour les recruteurs, notamment l'ajout de fonctionnalités pour la gestion des étapes de recrutement et des organismes. Des améliorations significatives ont également été apportées à l'ingestion des offres, avec une meilleure gestion des sources, des webhooks et des logs. Des travaux d'infrastructure et de tooling ont été réalisés pour améliorer la robustesse et la maintenabilité du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur, notamment avec l'ajout de composants réutilisables pour l'ATS (Applicant Tracking System) et la gestion des recrutements. Des efforts importants ont également été réalisés sur l'ingestion des données, avec une meilleure gestion des sources, des webhooks et des erreurs. Enfin, des bases solides sont posées pour l'authentification et la sécurité, ainsi que pour l'audit des actions.
 
 ### Évolutions fonctionnelles
-- **Recruteur :**
-    - Affichage et gestion des étapes de recrutement d'un organisme. [#838](https://github.com/betagouv/csplab/issues/838)
-    - Interface pour mettre à jour les étapes d'un organisme. [#835](https://github.com/betagouv/csplab/issues/835)
-    - Affinement des catégories d'étapes de recrutement. [#845](https://github.com/betagouv/csplab/issues/845)
-- **ATS (Suivi des candidatures) :**
-    - Préparation de la barre latérale pour une navigation complète. [#846](https://github.com/betagouv/csplab/issues/846)
-    - Ajout d'un composant de tableau générique. [#817](https://github.com/betagouv/csplab/issues/817)
-    - Ajout de composants de pagination. [#812](https://github.com/betagouv/csplab/issues/812)
-    - Ajout de composants de base (badges, avatars, icônes, boutons). [#682](https://github.com/betagouv/csplab/issues/682), [#741](https://github.com/betagouv/csplab/issues/741)
-- **Candidatures :**
-    - Implémentation de la soumission de candidature. [#729](https://github.com/betagouv/csplab/issues/729)
-    - Affichage du métier dans la liste des offres. [#747](https://github.com/betagouv/csplab/issues/747)
-- **Authentification :**
-    - Ajout de l'authentification à deux facteurs (2FA) pour l'administration Django. [#699](https://github.com/betagouv/csplab/issues/699)
-    - Mise en place de l'authentification par email et mot de passe. [#639](https://github.com/betagouv/csplab/issues/639)
-- **Documentation :**
-    - Publication du notebook sur GitHub Pages. [#641](https://github.com/betagouv/csplab/issues/641)
-    - Rendu de la documentation de l'API en Markdown à l'adresse `/pages/guide_api`. [#820](https://github.com/betagouv/csplab/issues/820)
-    - Documentation de l'architecture et des conventions frontend. [#595](https://github.com/betagouv/csplab/issues/595)
+- Ajout d'une interface pour les détails des recrutements [#856](https://github.com/betagouv/csplab/issues/856).
+- Implémentation de la soumission de candidatures [#753](https://github.com/betagouv/csplab/issues/753).
+- Ajout d'une interface pour la mise à jour des étapes de recrutement d'un organisme [#835](https://github.com/betagouv/csplab/issues/835).
+- Possibilité de voir le métier associé à une offre dans la liste des offres [#747](https://github.com/betagouv/csplab/issues/747).
+- Ajout d'une page pour consulter la documentation de l'API [#820](https://github.com/betagouv/csplab/issues/820).
+- Ajout d'une authentification par email/mot de passe [#752](https://github.com/betagouv/csplab/issues/752) et authentification 2FA sur l'admin Django [#699](https://github.com/betagouv/csplab/issues/699).
+- Ajout de la gestion des organismes et des étapes de recrutement [#798](https://github.com/betagouv/csplab/issues/798).
+- Ajout d'un workflow pour les previews de branches Storybook sur demande [#867](https://github.com/betagouv/csplab/issues/867).
 
 ### Évolutions techniques
-- **Ingestion :**
-    - Ajout d'un endpoint pour récupérer une source par UUID. [#837](https://github.com/betagouv/csplab/issues/837)
-    - Ajout d'un champ `slug` requis au modèle `Source`. [#837](https://github.com/betagouv/csplab/issues/837)
-    - Amélioration de la gestion des webhooks Talentsoft (enregistrement, suppression, traitement asynchrone via Celery). [#694](https://github.com/betagouv/csplab/issues/694), [#737](https://github.com/betagouv/csplab/issues/737)
-    - Ajout d'un champ `source_id` aux offres et gestion de la publication des offres vers le web. [#642](https://github.com/betagouv/csplab/issues/642), [#692](https://github.com/betagouv/csplab/issues/692)
-    - Gestion de l'archivage des offres. [#824](https://github.com/betagouv/csplab/issues/824)
-    - Amélioration de la gestion des erreurs et des logs. [#602](https://github.com/betagouv/csplab/issues/602), [#605](https://github.com/betagouv/csplab/issues/605)
-- **Infrastructure :**
-    - Sécurisation du déploiement Scalingo en définissant explicitement les variables d'environnement Django. [#839](https://github.com/betagouv/csplab/issues/839)
-    - Mise en place d'une sauvegarde quotidienne de la base de données sur Scaleway. [#833](https://github.com/betagouv/csplab/issues/833)
-    - Correction de problèmes liés à l'exécution de Huey et de Flower dans des conteneurs Scalingo. [#782](https://github.com/betagouv/csplab/issues/782), [#783](https://github.com/betagouv/csplab/issues/783)
-- **Tooling :**
-    - Ajout d'un script pour mettre à jour les dépendances. [#832](https://github.com/betagouv/csplab/issues/832)
-    - Amélioration des tests (pytest, Cypress).
-    - Ajout de workflows GitHub Actions pour l'automatisation des tâches (lint, tests, déploiement).
-    - Refactoring des tests et des fixtures.
-    - Ajout de vérifications de version dans les workflows CI. [#801](https://github.com/betagouv/csplab/issues/801)
+- Refactorisation de l'architecture pour séparer les couches domaine, présentation et infrastructure.
+- Amélioration de la gestion des erreurs avec l'envoi des exceptions Celery à Sentry [#861](https://github.com/betagouv/csplab/issues/861).
+- Découplage de l'application Celery pour éviter les dépendances cycliques [#862](https://github.com/betagouv/csplab/issues/862).
+- Mise en place de releases Sentry lors des déploiements [#850](https://github.com/betagouv/csplab/issues/850).
+- Utilisation de Docker et de conteneurs pour l'environnement de développement et de production.
+- Migration vers un modèle utilisateur personnalisé Django.
+- Amélioration de la gestion des dépendances et des workflows CI/CD.
+- Ajout de tests Cypress et pytest pour assurer la qualité du code.
+- Mise en place de tests plus lisibles avec le décorateur `patch` [#849](https://github.com/betagouv/csplab/issues/849).
+- Utilisation de TypeScript et de React pour le frontend.
+- Ajout de composants réutilisables pour l'interface utilisateur (table, pagination, badges, icônes, etc.).
+- Amélioration des performances et de la scalabilité de l'application.
+- Ajout d'un script pour mettre à jour les dépendances [#832](https://github.com/betagouv/csplab/issues/832).
 
 ### Autres changements
-- Refactoring du code et amélioration de la structure du projet.
-- Traduction des erreurs de domaine en français. [#807](https://github.com/betagouv/csplab/issues/807)
-- Suppression de code inutile et nettoyage du code.
-- Mise à jour des dépendances.
-- Ajout d'un fichier `robots.txt` contrôlé par une variable d'environnement. [#810](https://github.com/betagouv/csplab/issues/810)
-- Ajout d'un fichier `security.txt`. [#721](https://github.com/betagouv/csplab/issues/721)
-- Ajout de composants de notification (CspToast). [#815](https://github.com/betagouv/csplab/issues/815)
-- Amélioration de l'accessibilité (a11y) du formulaire de CV. [#464](https://github.com/betagouv/csplab/issues/464)
+- Documentation améliorée pour l'API et les processus d'ingestion.
+- Ajout de règles métier dans la couche domaine [#863](https://github.com/betagouv/csplab/issues/863).
+- Nettoyage du code et refactorisation de certaines parties de l'application.
+- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Mise à jour des dépendances et des outils de développement.
+- Configuration améliorée pour l'environnement de production.
+- Ajout d'un fichier `robots.txt` pour le SEO [#808](https://github.com/betagouv/csplab/issues/808).
+- Ajout d'un fichier `security.txt` pour la sécurité [#695](https://github.com/betagouv/csplab/issues/695).
+- Ajout d'un script de sauvegarde de la base de données [#833](https://github.com/betagouv/csplab/issues/833).
