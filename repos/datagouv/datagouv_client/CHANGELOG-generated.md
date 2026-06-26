@@ -1,15 +1,16 @@
-## Changelog : datagouv_client (30 derniers jours, au 20 mai 2026)
+## Changelog : datagouv_client (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Les dernières mises à jour de `datagouv_client` se concentrent sur l'ajout d'une interface en ligne de commande (CLI) pour interagir avec l'API data.gouv.fr, améliorant ainsi l'accessibilité et la facilité d'utilisation pour les développeurs. Des corrections ont également été apportées pour gérer des cas spécifiques de l'API et améliorer la robustesse de la bibliothèque.
+Cette nouvelle version de `datagouv_client` apporte des améliorations techniques et de la maintenance, notamment le remplacement de la librairie `httpx` par `niquests` et des ajustements concernant le CI/CD et les dépendances de développement. Une optimisation a été apportée pour retarder les appels à l'API Tabular jusqu'à ce qu'ils soient réellement nécessaires, améliorant potentiellement la performance.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface en ligne de commande (CLI) permettant d'effectuer des opérations sur les objets de l'API data.gouv.fr, notamment une méthode `get` pour récupérer des données. [#48](https://github.com/datagouv/datagouv_client/pull/48)
-- La CLI permet désormais de rester anonyme lors de la simple récupération de données. [#52](https://github.com/datagouv/datagouv_client/pull/52)
-- Correction d'un problème lié à l'URL de l'API Tabular sur l'environnement de démonstration. [#49](https://github.com/datagouv/datagouv_client/pull/49)
-- Gestion de l'absence inattendue de l'API Tabular. [#56](https://github.com/datagouv/datagouv_client/pull/56)
-- Ajout d'un alias `prod` pour `www` afin de simplifier l'utilisation de l'API de production. [#50](https://github.com/datagouv/datagouv_client/pull/50)
+- Retard des appels à l'API Tabular : Les appels à l'API Tabular sont maintenant différés jusqu'à ce qu'ils soient requis, ce qui peut améliorer la performance dans certains cas [#59](https://github.com/datagouv/datagouv_client/pull/59).
 
 ### Évolutions techniques
-- Ajout d'en-têtes `User-Agent` pour identifier le client lors des requêtes API. [#55](https://github.com/datagouv/datagouv_client/pull/55)
-- Correction de l'environnement dans l'URI utilisé par la CLI. [#51](https://github.com/datagouv/datagouv_client/pull/51)
+- Remplacement de `httpx` par `niquests` : La librairie `httpx` a été remplacée par `niquests` [#63](https://github.com/datagouv/datagouv_client/pull/63).
+- Mise à jour des dépendances de développement : La manière de déclarer les dépendances de développement a été modifiée [#61](https://github.com/datagouv/datagouv_client/pull/61).
+- Utilisation du token UV_PUBLISH_TOKEN recommandé : Le CI utilise maintenant le token UV_PUBLISH_TOKEN recommandé pour les publications [#64](https://github.com/datagouv/datagouv_client/pull/64).
+- Mise à jour des instructions d'installation des dépendances de développement : La documentation a été mise à jour pour refléter les nouvelles instructions d'installation [#65](https://github.com/datagouv/datagouv_client/pull/65).
+
+### Autres changements
+- Publication de la version 0.4.0.
