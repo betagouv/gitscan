@@ -249,6 +249,7 @@
 │   │   │   ├── 0038_whole_unus.sql
 │   │   │   ├── 0039_cse_opinion_file.sql
 │   │   │   ├── 0040_reconcile_drifted_schema.sql
+│   │   │   ├── 0041_curvy_forgotten_one.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -276,6 +277,7 @@
 │   │   │       ├── 0038_snapshot.json
 │   │   │       ├── 0039_snapshot.json
 │   │   │       ├── 0040_snapshot.json
+│   │   │       ├── 0041_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -310,6 +312,7 @@
 │   │   │   ├── generate-mock-gip-data.ts
 │   │   │   ├── migrate.mjs
 │   │   │   ├── post-process-schema-wiki.ts
+│   │   │   ├── seed-demo-stats.mjs
 │   │   │   └── seed-dev.mjs
 │   │   ├── src
 │   │   │   ├── __tests__
@@ -344,6 +347,11 @@
 │   │   │   │   │   │   └── logout
 │   │   │   │   │   │       ├── callback
 │   │   │   │   │   │       │   └── route.ts
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── declaration-lock
+│   │   │   │   │   │   └── release
+│   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   └── route.test.ts
 │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── declaration-pdf
 │   │   │   │   │   │   └── route.ts
@@ -531,6 +539,7 @@
 │   │   │   │   │   │   ├── DetailSections.tsx
 │   │   │   │   │   │   ├── SearchForm.tsx
 │   │   │   │   │   │   ├── SiblingDeclarationsSection.tsx
+│   │   │   │   │   │   ├── UnlockDeclarationButton.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── AdminDeclarationDetailPage.test.tsx
 │   │   │   │   │   │   │   ├── AdminDeclarationsPage.test.tsx
@@ -539,6 +548,7 @@
 │   │   │   │   │   │   │   ├── DetailSections.test.tsx
 │   │   │   │   │   │   │   ├── SearchForm.test.tsx
 │   │   │   │   │   │   │   ├── SiblingDeclarationsSection.test.tsx
+│   │   │   │   │   │   │   ├── UnlockDeclarationButton.test.tsx
 │   │   │   │   │   │   │   ├── constants.test.ts
 │   │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   │   ├── index.ts
@@ -580,9 +590,11 @@
 │   │   │   │   │   ├── settings
 │   │   │   │   │   │   ├── AdminSettingsPage.tsx
 │   │   │   │   │   │   ├── CampaignDeadlinesForm.tsx
+│   │   │   │   │   │   ├── LockTimeoutForm.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── AdminSettingsPage.test.tsx
 │   │   │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
+│   │   │   │   │   │   │   ├── LockTimeoutForm.test.tsx
 │   │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── schemas.ts
@@ -595,6 +607,7 @@
 │   │   │   │   │       ├── CompletionFunnelChart.module.scss
 │   │   │   │   │       ├── CompletionFunnelChart.tsx
 │   │   │   │   │       ├── CompletionFunnelTable.tsx
+│   │   │   │   │       ├── CseStatusConfirmationsTile.tsx
 │   │   │   │   │       ├── StagnationDaysFilter.tsx
 │   │   │   │   │       ├── StatsBarChart.module.scss
 │   │   │   │   │       ├── StatsBarChart.tsx
@@ -607,6 +620,7 @@
 │   │   │   │   │       ├── StepDurationsChart.module.scss
 │   │   │   │   │       ├── StepDurationsChart.tsx
 │   │   │   │   │       ├── StepDurationsTable.tsx
+│   │   │   │   │       ├── UsersPerCompanyTile.tsx
 │   │   │   │   │       ├── YearsFilter.tsx
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   ├── AdminKpiTile.test.tsx
@@ -614,6 +628,7 @@
 │   │   │   │   │       │   ├── CampaignRateTile.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelChart.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelTable.test.tsx
+│   │   │   │   │       │   ├── CseStatusConfirmationsTile.test.tsx
 │   │   │   │   │       │   ├── StagnationDaysFilter.test.tsx
 │   │   │   │   │       │   ├── StatsBarChart.test.tsx
 │   │   │   │   │       │   ├── StatsBarTable.test.tsx
@@ -623,6 +638,7 @@
 │   │   │   │   │       │   ├── StepDropoffTable.test.tsx
 │   │   │   │   │       │   ├── StepDurationsChart.test.tsx
 │   │   │   │   │       │   ├── StepDurationsTable.test.tsx
+│   │   │   │   │       │   ├── UsersPerCompanyTile.test.tsx
 │   │   │   │   │       │   ├── YearsFilter.test.tsx
 │   │   │   │   │       │   ├── formatters.test.ts
 │   │   │   │   │       │   ├── helpers
@@ -690,6 +706,7 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── AccuracyOpinionCard.test.tsx
 │   │   │   │   │   │   ├── ConfirmationPage.test.tsx
+│   │   │   │   │   │   ├── CseOpinionLayout.test.tsx
 │   │   │   │   │   │   ├── GapConsultationCard.test.tsx
 │   │   │   │   │   │   ├── OpinionSummaryBox.test.tsx
 │   │   │   │   │   │   ├── Step1Opinions.test.tsx
@@ -730,6 +747,7 @@
 │   │   │   │   │   ├── MissingSiret.tsx
 │   │   │   │   │   ├── StepPageClient.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── DeclarationLayout.test.tsx
 │   │   │   │   │   │   ├── computeIndicatorPercentages.test.ts
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── index.ts
@@ -814,7 +832,15 @@
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
 │   │   │   │   │   │   ├── gipToStepData.ts
-│   │   │   │   │   │   └── indicatorRowMapping.ts
+│   │   │   │   │   │   ├── indicatorRowMapping.ts
+│   │   │   │   │   │   └── lock
+│   │   │   │   │   │       ├── DeclarationLockAlert.tsx
+│   │   │   │   │   │       ├── LockContext.tsx
+│   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   ├── DeclarationLockAlert.test.tsx
+│   │   │   │   │   │       │   ├── LockContext.test.tsx
+│   │   │   │   │   │       │   └── useDeclarationLock.test.tsx
+│   │   │   │   │   │       └── useDeclarationLock.ts
 │   │   │   │   │   ├── steps
 │   │   │   │   │   │   ├── ComplianceConfirmation.tsx
 │   │   │   │   │   │   ├── CompliancePathChoice.module.scss
@@ -822,6 +848,7 @@
 │   │   │   │   │   │   ├── CompliancePathPage.tsx
 │   │   │   │   │   │   ├── Step1Workforce.module.scss
 │   │   │   │   │   │   ├── Step1Workforce.tsx
+│   │   │   │   │   │   ├── Step1WorkforceDefinition.tsx
 │   │   │   │   │   │   ├── Step2PayGap.tsx
 │   │   │   │   │   │   ├── Step3VariablePay.module.scss
 │   │   │   │   │   │   ├── Step3VariablePay.tsx
@@ -835,6 +862,7 @@
 │   │   │   │   │   │   │   ├── ComplianceConfirmation.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathChoice.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathPage.test.ts
+│   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.test.tsx
 │   │   │   │   │   │   │   ├── DraftLoadingGate.test.tsx
 │   │   │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
 │   │   │   │   │   │   │   ├── Step1DevFill.test.tsx
@@ -854,6 +882,7 @@
 │   │   │   │   │   │   │   ├── CompliancePathOption.module.scss
 │   │   │   │   │   │   │   ├── CompliancePathOption.tsx
 │   │   │   │   │   │   │   ├── CompliancePathOptions.tsx
+│   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.tsx
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.module.scss
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
 │   │   │   │   │   │   │   └── constants.ts
@@ -958,6 +987,7 @@
 │   │   │   │   │   │   ├── declarationDisplay.test.ts
 │   │   │   │   │   │   ├── declarationFlags.test.ts
 │   │   │   │   │   │   ├── declarationFsmStatus.test.ts
+│   │   │   │   │   │   ├── declarationLock.test.ts
 │   │   │   │   │   │   ├── declarationPrerequisites.test.ts
 │   │   │   │   │   │   ├── declarationProcessStep.test.ts
 │   │   │   │   │   │   ├── declarationStatus.test.ts
@@ -982,6 +1012,7 @@
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── declarationDisplay.ts
 │   │   │   │   │   │   ├── declarationFlags.ts
+│   │   │   │   │   │   ├── declarationLock.ts
 │   │   │   │   │   │   ├── declarationPrerequisites.ts
 │   │   │   │   │   │   ├── declarationProcessStep.ts
 │   │   │   │   │   │   ├── declarationStatus.ts
@@ -1219,7 +1250,8 @@
 │   │   │   │   │   │   ├── buildDeclarationList.test.ts
 │   │   │   │   │   │   ├── declarationProcessState.test.ts
 │   │   │   │   │   │   ├── formatAddress.test.ts
-│   │   │   │   │   │   └── formatSiren.test.ts
+│   │   │   │   │   │   ├── formatSiren.test.ts
+│   │   │   │   │   │   └── useUpdateHasCse.test.tsx
 │   │   │   │   │   ├── buildDeclarationList.ts
 │   │   │   │   │   ├── declarationProcessState.ts
 │   │   │   │   │   ├── declarationStatus.ts
@@ -1227,7 +1259,8 @@
 │   │   │   │   │   ├── formatSiren.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── schemas.ts
-│   │   │   │   │   └── types.ts
+│   │   │   │   │   ├── types.ts
+│   │   │   │   │   └── useUpdateHasCse.ts
 │   │   │   │   ├── noSanctionAttestation
 │   │   │   │   │   ├── NoSanctionPdfDocument.tsx
 │   │   │   │   │   ├── __tests__
@@ -1324,16 +1357,19 @@
 │   │   │   ├── server
 │   │   │   │   ├── api
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── adminProcedure.test.ts
+│   │   │   │   │   │   ├── adminProcedure.test.ts
+│   │   │   │   │   │   └── declarationLockedWriteProcedure.test.ts
 │   │   │   │   │   ├── root.ts
 │   │   │   │   │   ├── routers
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.getById.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.getRecap.test.ts
+│   │   │   │   │   │   │   ├── adminDeclarations.releaseLock.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.search.test.ts
 │   │   │   │   │   │   │   ├── adminReferents.test.ts
 │   │   │   │   │   │   │   ├── adminSettings.test.ts
+│   │   │   │   │   │   │   ├── adminStats.getUsersPerCompany.integration.test.ts
 │   │   │   │   │   │   │   ├── adminStats.test.ts
 │   │   │   │   │   │   │   ├── company.getWithDeclarations.test.ts
 │   │   │   │   │   │   │   ├── company.list.test.ts
@@ -1350,8 +1386,10 @@
 │   │   │   │   │   │   │   ├── declarationDraft.integration.test.ts
 │   │   │   │   │   │   │   ├── declarationDraft.test.ts
 │   │   │   │   │   │   │   ├── declarationHelpers.test.ts
+│   │   │   │   │   │   │   ├── declarationLock.test.ts
 │   │   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   │   └── declarationTestHelpers.ts
+│   │   │   │   │   │   │   │   ├── declarationTestHelpers.ts
+│   │   │   │   │   │   │   │   └── lockTestHelpers.ts
 │   │   │   │   │   │   │   ├── jointEvaluation.test.ts
 │   │   │   │   │   │   │   ├── publicReferents.test.ts
 │   │   │   │   │   │   │   ├── publicStats.test.ts
@@ -1366,6 +1404,7 @@
 │   │   │   │   │   │   ├── declaration.ts
 │   │   │   │   │   │   ├── declarationDraft.ts
 │   │   │   │   │   │   ├── declarationHelpers.ts
+│   │   │   │   │   │   ├── declarationLock.ts
 │   │   │   │   │   │   ├── gipMds.ts
 │   │   │   │   │   │   ├── jointEvaluation.ts
 │   │   │   │   │   │   ├── mail.ts
@@ -1421,6 +1460,8 @@
 │   │   │   │   └── services
 │   │   │   │       ├── __tests__
 │   │   │   │       │   ├── clamav.test.ts
+│   │   │   │       │   ├── declarationLockService.integration.test.ts
+│   │   │   │       │   ├── declarationLockService.test.ts
 │   │   │   │       │   ├── fileStreaming.test.ts
 │   │   │   │       │   ├── fileUpload.test.ts
 │   │   │   │       │   ├── fileValidation.test.ts
@@ -1431,6 +1472,7 @@
 │   │   │   │       │   ├── uploadPipeline.test.ts
 │   │   │   │       │   └── weez.test.ts
 │   │   │   │       ├── clamav.ts
+│   │   │   │       ├── declarationLockService.ts
 │   │   │   │       ├── fileStreaming.ts
 │   │   │   │       ├── fileUpload.ts
 │   │   │   │       ├── fileValidation.ts
@@ -1571,4 +1613,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-270 directories, 1303 files
+275 directories, 1340 files
