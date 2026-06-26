@@ -1,11 +1,11 @@
-## Changelog : dockerfiles (30 derniers jours, au 23 juin 2026)
+## Changelog : dockerfiles (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce changelog présente les mises à jour récentes des Dockerfiles du projet. Les changements notables incluent une mise à jour majeure de la version de `clusterctl` et l'ajout de `golang` à l'image des runners GitLab, améliorant ainsi la flexibilité et les capacités de déploiement des outils. Des corrections mineures concernant les sommes de contrôle des actions ont également été apportées.
+Ce mois-ci, les mises à jour du dépôt se concentrent sur l'amélioration de la gestion des versions des outils inclus dans les images Docker, notamment `clusterctl`, et l'ajout de `golang` à l'image `gitlab-runner`. Ces changements visent à fournir des environnements de développement et d'exécution plus récents et plus complets.
 
 ### Évolutions fonctionnelles
-- Ajout de `golang` à l'image Docker des runners GitLab, permettant de construire et d'exécuter des projets Go directement dans l'environnement du runner.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
-- Mise à jour de la version de `clusterctl` de 1.8.10 à 1.13.1, apportant de nouvelles fonctionnalités et corrections de bugs. [#35](https://github.com/cloud-gouv/dockerfiles/issues/35)
+- Ajout de `golang` à l'image Docker `gitlab-runner` pour faciliter l'exécution de projets Go.  [#30](https://github.com/cloud-gouv/dockerfiles/issues/30)
+- Mise à jour de `clusterctl` de la version 1.8.10 à la version 1.13.1, offrant ainsi les dernières fonctionnalités et corrections de bugs. [#35](https://github.com/cloud-gouv/dockerfiles/issues/35)
 
 ### Évolutions techniques
-- Correction des sommes de contrôle (shasum) pour les actions utilisées dans les Dockerfiles, assurant l'intégrité et la sécurité des images. [#36](https://github.com/cloud-gouv/dockerfiles/issues/36)
+- Correction des sommes SHA des actions utilisées dans les Dockerfiles pour garantir l'intégrité et la reproductibilité des builds. [#36](https://github.com/cloud-gouv/dockerfiles/issues/36)
