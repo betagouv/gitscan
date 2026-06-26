@@ -1,36 +1,31 @@
-## Changelog : domifa (30 derniers jours, au 23 juin 2026)
+## Changelog : domifa (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de DomiFa se concentrent sur la correction de bugs et l'amélioration de la sécurité. Des corrections ont été apportées concernant l'authentification, la gestion des téléchargements, la gestion des utilisateurs bloqués et des vulnérabilités potentielles. Des améliorations de la journalisation et de la surveillance ont également été implémentées.
+Cette période a été marquée par de nombreuses corrections de bugs et améliorations de la sécurité, notamment concernant la gestion des organismes, des utilisateurs et des accès. Des améliorations ont également été apportées à la gestion des journaux et des alertes de sécurité. Enfin, des corrections ont été apportées à l'interface utilisateur et aux tests.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant la réponse "autre" dans le backend.
-- Suppression de la possibilité d'éditer les utilisateurs bloqués dans l'interface.
-- Amélioration de la gestion des téléchargements avec l'ajout d'un blocage.
-- Ajout de statistiques de session pour une meilleure surveillance.
-- Ajout de la possibilité de supprimer des utilisateurs.
+- Ajout de la possibilité de gérer les organismes sans raison spécifique ("autre").
+- Amélioration de la gestion des utilisateurs bloqués, avec suppression de la possibilité de les éditer.
+- Ajout de la suppression des utilisateurs (via [#4152](https://github.com/SocialGouv/domifa/issues/4152)).
+- Ajout de statistiques sur les sessions utilisateurs.
 
 ### Évolutions techniques
-- Correction de vulnérabilités potentielles liées à la confusion de type via la manipulation de paramètres.
-- Ajout de filtres pour les utilisateurs supprimés.
-- Suppression de la fabrique sociale.
-- Amélioration de la gestion des erreurs avec l'ajout de filtres d'exception.
-- Ajout de logs pour les téléchargements et les tentatives de connexion inconnues.
-- Mise à jour de la gestion des agents utilisateurs.
-- Refactorisation des logs pour la sécurité et ajout d'un délai de 30 minutes pour les OTP.
-- Intégration de Brevo pour la gestion des emails et la possibilité de se désinscrire.
-- Amélioration de la gestion des sessions.
+- Mise en place de règles de pare-feu IP pour une meilleure sécurité.
+- Ajout de filtres pour la gestion des données supprimées.
+- Refonte des journaux pour une meilleure traçabilité des événements de sécurité.
+- Ajout d'un délai de 30 minutes pour les OTP (One-Time Password) afin d'améliorer la sécurité.
+- Amélioration de la gestion des erreurs et ajout de filtres d'exception.
+- Correction d'une potentielle vulnérabilité de type "Type confusion through parameter tampering".
+- Amélioration de la gestion des tests unitaires.
+- Mise à jour des dépendances de sécurité et correction des alertes associées.
 
 ### Autres changements
-- Correction de divers problèmes de linting.
-- Mise à jour des tests unitaires.
-- Amélioration de la page de titre et des titres.
-- Ajout d'un testeur d'emails génériques.
-- Correction de problèmes de typage.
-- Correction de bugs dans la construction de l'application frontend.
-- Correction d'un problème d'affichage de l'arobase dans le frontend.
-- Désactivation du bouton dans le processus OTP.
-- Correction d'un bug lié à l'importation.
-- Ajout de filtres dans l'interface d'administration.
-- Correction d'un problème de filtre HTTP.
-- Ajout d'un test pour la gestion des mots de passe.
+- Amélioration des tests pour le portail usagers.
+- Ajout de tests pour les emails.
+- Correction de problèmes de build de l'application frontend.
+- Amélioration de la gestion des erreurs de typage.
+- Ajout de logs pour les tentatives de connexion inconnues.
+- Suppression de la possibilité de modifier le mot de passe pour les utilisateurs bloqués.
+- Ajout d'un testeur d'envoi d'emails génériques.
+- Suppression de la fabrique sociale.
+- Correction de problèmes de linting.
