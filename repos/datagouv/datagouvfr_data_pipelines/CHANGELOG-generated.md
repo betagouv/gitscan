@@ -1,28 +1,32 @@
-## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 19 juin 2026)
+## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les pipelines de données ont bénéficié d'optimisations significatives en termes de gestion de la mémoire, notamment pour les traitements de données géographiques (parcelles OM, DVF). Plusieurs corrections ont été apportées pour améliorer la robustesse des pipelines, notamment concernant la gestion des fichiers, des connexions FTP/SFTP et des dates. De nouvelles données PNT ont été intégrées et un pipeline pour la géolocalisation des données DVF a été migré vers Airflow.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de l'efficacité des pipelines de données, notamment en optimisant l'utilisation de la mémoire et en migrant vers de nouvelles infrastructures (OVH Minio). Des corrections ont également été apportées pour améliorer la gestion des fichiers, des connexions et des erreurs, ainsi que pour supporter de nouveaux jeux de données.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux packs de données PNT. [#669](https://github.com/datagouv/datagouvfr_data_pipelines/issues/669)
-- Migration du pipeline de géolocalisation des données DVF vers Airflow. [#653](https://github.com/datagouv/datagouvfr_data_pipelines/issues/653)
-- Publication des données de qualité de l'eau remaniées dans un nouveau jeu de données. [#665](https://github.com/datagouv/datagouvfr_data_pipelines/issues/665)
-- Amélioration de la gestion des messages longs pour l'envoi via Tchap. [#663](https://github.com/datagouv/datagouvfr_data_pipelines/issues/663)
-- Ajout de la pagination et d'un filtre d'état à l'API Airflow. [#662](https://github.com/datagouv/datagouvfr_data_pipelines/issues/662)
+- Ajout de la prise en charge de nouveaux packs PNT [#669](https://github.com/datagouv/datagouvfr_data_pipelines/issues/669).
+- Publication du rework de la qualité de l'eau dans un nouveau jeu de données [#665](https://github.com/datagouv/datagouvfr_data_pipelines/issues/665).
+- Migration de la géolocalisation DVF vers Airflow [#653](https://github.com/datagouv/datagouvfr_data_pipelines/issues/653).
+- Prise en charge des messages longs pour Tchap [#663](https://github.com/datagouv/datagouvfr_data_pipelines/issues/663).
+- Ajout d'un label de dépréciation pour les DAGs [#666](https://github.com/datagouv/datagouvfr_data_pipelines/issues/666).
+- Correction des timeslots pour OM.
+- Correction de références datagouv.
 
 ### Évolutions techniques
-- Optimisations de la consommation de mémoire pour les pipelines traitant les données OM (parcelles) et DVF, notamment en optimisant le tri et la concaténation des données.
-- Utilisation de la nouvelle syntaxe Airflow et suppression des avertissements de dépréciation grâce à l'Airflow SDK. [#661](https://github.com/datagouv/datagouvfr_data_pipelines/issues/661)
-- Amélioration de la gestion des connexions FTP, notamment en récupérant la connexion au moment de l'exécution.
-- Suppression régulière des digests anciens pour optimiser le stockage. [#672](https://github.com/datagouv/datagouvfr_data_pipelines/issues/672)
-- Ajout d'un mécanisme d'arrêt anticipé pour accélérer les mises à jour de datagouv.
-- Correction de la gestion des time slots pour OM.
-- Ajout d'un label de dépréciation pour les DAGs. [#666](https://github.com/datagouv/datagouvfr_data_pipelines/issues/666)
+- Migration vers l'utilisation des buckets OVH au lieu de Minio [#675](https://github.com/datagouv/datagouvfr_data_pipelines/issues/675) et [#670](https://github.com/datagouv/datagouvfr_data_pipelines/issues/670).
+- Utilisation de l'Airflow SDK pour les imports [#674](https://github.com/datagouv/datagouvfr_data_pipelines/issues/674) et pour supprimer les avertissements de dépréciation et le lint [#661](https://github.com/datagouv/datagouvfr_data_pipelines/issues/661).
+- Optimisation de l'utilisation de la mémoire (RAM) pour les pipelines de traitement des parcelles (OM) et des fichiers compressés (csvgz).
+- Suppression des digests anciens de manière périodique [#672](https://github.com/datagouv/datagouvfr_data_pipelines/issues/672).
+- Amélioration de la gestion des connexions FTP et S3.
+- Augmentation du timeout pour certains DAGs (météo).
+- Correction de la gestion des types de contenu (content-type) lors du chargement sur S3.
+- Amélioration de la gestion des erreurs et des timeouts lors de la récupération des headers.
 
 ### Autres changements
-- Suppression de notifications spam inutiles. [#667](https://github.com/datagouv/datagouvfr_data_pipelines/issues/667)
-- Amélioration de la mise en page des notifications HVD. [#664](https://github.com/datagouv/datagouvfr_data_pipelines/issues/664)
-- Corrections mineures de logging et de documentation.
-- Suppression de fichiers et variables inutilisés.
-- Correction de références datagouv.
-- Augmentation du timeout pour le DAG météo FTP.
+- Correction de la gestion des chemins et des préfixes sur S3.
+- Suppression de notifications potentiellement spammantes et de tickets Zammad inutiles [#667](https://github.com/datagouv/datagouvfr_data_pipelines/issues/667).
+- Amélioration de la documentation et du code (linting, suppression de variables inutilisées).
+- Correction de bugs mineurs et améliorations de la robustesse générale du code.
+- Ajout de tests et de vérifications pour améliorer la qualité du code.
+- Correction de la mise en page de la notification HVD [#664](https://github.com/datagouv/datagouvfr_data_pipelines/issues/664).
+- Ajout de la possibilité de spécifier le port dans les connexions Airflow [#676](https://github.com/datagouv/datagouvfr_data_pipelines/issues/676).
