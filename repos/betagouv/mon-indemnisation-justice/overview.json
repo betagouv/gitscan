@@ -1,39 +1,48 @@
 {
   "url": "https://github.com/betagouv/mon-indemnisation-justice",
   "name": "mon-indemnisation-justice",
-  "description": "L'application Mon Indemnisation Justice vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduire les délais de traitement et permettre des économies financières.",
-  "language": "PHP",
+  "description": "L'application Mon Indemnisation Justice vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduisant les délais de traitement et permettant des économies financières.",
+  "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
     "Gestion des fichiers",
-    "Notifications & Alertes"
+    "Recherche & Filtres"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Grand public",
   "dependencies": [
-    "@gouvfr/dsfr",
+    "React",
+    "Tanstack",
     "puppeteer",
     "remixicon"
   ],
   "components": [
+    "React / Next.js",
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "PHP",
-    "Docker & Conteneurs"
+    "PostgreSQL & SQL"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "session"
+    ],
+    "providers": [
+      "France Connect"
     ]
   },
-  "tests": "Tests unitaires et tests end-to-end (Playwright)",
+  "tests": [
+    "Jest",
+    "Playwright",
+    "Tests unitaires",
+    "Tests end-to-end"
+  ],
   "workflows": [
     "test.yml"
   ],
-  "lastActivity": "2026-06-19T16:27:55+02:00",
+  "lastActivity": "2026-06-25T16:28:33+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -46,9 +55,10 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "PHP",
-    "Bases de données SQL",
+    "React & Next.js",
+    "TypeScript",
     "Sécurité & Auth",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches"
   ]
 }

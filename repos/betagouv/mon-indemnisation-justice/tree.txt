@@ -194,9 +194,10 @@
 │   │   │   │       │   │   ├── DeclarerNouvelAgentEndpoint.php
 │   │   │   │       │   │   ├── EditerAgentEndpoint.php
 │   │   │   │       │   │   ├── EditerAgentInput.php
-│   │   │   │       │   │   ├── ListerAgentsActifsEndpoint.php
 │   │   │   │       │   │   ├── ListerRedacteurEndpoint.php
-│   │   │   │       │   │   └── MoiEndpoint.php
+│   │   │   │       │   │   ├── MoiEndpoint.php
+│   │   │   │       │   │   ├── RechercherAgentInput.php
+│   │   │   │       │   │   └── RecherchersAgentsEndpoint.php
 │   │   │   │       │   ├── Document
 │   │   │   │       │   │   ├── ImprimerDocumentEndpoint.php
 │   │   │   │       │   │   ├── ImprimerDocumentInput.php
@@ -291,6 +292,8 @@
 │   │   │       │   └── TeleverserPiecesJointesEndpoint.php
 │   │   │       ├── Moi
 │   │   │       │   └── MoiEndpoint.php
+│   │   │       ├── PieceJointe
+│   │   │       │   └── SupprimerPieceJointeEndpoint.php
 │   │   │       ├── Request
 │   │   │       │   └── Attribute
 │   │   │       │       ├── MapDossier.php
@@ -616,11 +619,13 @@
 │   │   │   │               ├── ListerDossierUsagerEndpointTest.php
 │   │   │   │               └── RechercherDossierEndpointTest.php
 │   │   │   └── Requerant
-│   │   │       └── Dossier
-│   │   │           ├── AmenderDossierEndpointTest.php
-│   │   │           ├── MesDemandesEndpointTest.php
-│   │   │           ├── PublierDossierEndpointTest.php
-│   │   │           └── TeleverserPiecesJointesEndpointTest.php
+│   │   │       ├── Dossier
+│   │   │       │   ├── AmenderDossierEndpointTest.php
+│   │   │       │   ├── MesDemandesEndpointTest.php
+│   │   │       │   ├── PublierDossierEndpointTest.php
+│   │   │       │   └── TeleverserPiecesJointesEndpointTest.php
+│   │   │       └── PieceJointe
+│   │   │           └── SupprimerPieceJointeEndpointTest.php
 │   │   ├── Controller
 │   │   │   ├── Agent
 │   │   │   │   └── DossierControllerTest.php
@@ -808,7 +813,7 @@
     │   │   │       ├── gestion_agents
     │   │   │       │   ├── components
     │   │   │       │   │   ├── DeclarationNouvelAgentRow.tsx
-    │   │   │       │   │   ├── ValidationAgentApp.tsx
+    │   │   │       │   │   ├── ValidationAgentPage.tsx
     │   │   │       │   │   ├── ValidationAgentRow.tsx
     │   │   │       │   │   └── index.ts
     │   │   │       │   └── models
@@ -824,7 +829,11 @@
     │   │   │       ├── routes
     │   │   │       │   ├── __root.tsx
     │   │   │       │   ├── agents
-    │   │   │       │   │   └── gestion.tsx
+    │   │   │       │   │   ├── gestion
+    │   │   │       │   │   │   ├── actifs.tsx
+    │   │   │       │   │   │   ├── inactifs.tsx
+    │   │   │       │   │   │   └── index.tsx
+    │   │   │       │   │   └── index.tsx
     │   │   │       │   ├── dossier
     │   │   │       │   │   ├── $id
     │   │   │       │   │   │   └── index.tsx
@@ -919,7 +928,8 @@
     │   │   │   │   └── piecesJointes
     │   │   │   │       ├── AjouterPiecesJointesModale.tsx
     │   │   │   │       ├── PieceJointePanelNavigation.tsx
-    │   │   │   │       └── PrevisualiserFichier.tsx
+    │   │   │   │       ├── PrevisualiserFichier.tsx
+    │   │   │   │       └── SupprimerPieceJointeModale.tsx
     │   │   │   ├── container.ts
     │   │   │   ├── dossier
     │   │   │   │   ├── components
@@ -1082,4 +1092,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-240 directories, 844 files
+243 directories, 851 files
