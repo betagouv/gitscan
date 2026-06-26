@@ -1,31 +1,32 @@
 {
   "url": "https://github.com/datagouv/csv-detective",
   "name": "csv-detective",
-  "description": "Ce projet permet d'inspecter automatiquement le contenu des colonnes dans des fichiers tabulaires. Il lit le fichier entier ou les premières lignes pour déterminer le type de contenu de chaque colonne.",
+  "description": "Ce projet permet d'inspecter automatiquement le contenu des colonnes dans des fichiers tabulaires (csv, xls-like, parquet). Il lit le fichier entier ou les premières lignes pour déterminer le type de contenu de chaque colonne.",
   "language": "Python",
   "features": [
-    "Gestion des fichiers",
-    "Détection automatique",
-    "Validation",
-    "Schémas"
+    "Détection de données & Schémas",
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "pandas",
     "charset-normalizer",
     "python-dateutil",
+    "Unidecode",
     "openpyxl",
     "xlrd",
     "odfpy",
     "requests",
     "python-magic",
     "frformat",
-    "Faker"
+    "Faker",
+    "rstr",
+    "more-itertools",
+    "pyarrow"
   ],
   "components": [
-    "Python",
-    "API REST",
-    "Scripts"
+    "Python (scripts & backend)",
+    "API REST & GraphQL"
   ],
   "auth": {
     "methods": [
@@ -33,22 +34,22 @@
     ]
   },
   "tests": "Pytest",
-  "workflows": [],
-  "lastActivity": "2026-05-12T17:30:26+02:00",
+  "workflows": [
+    "CI/CD & Déploiement"
+  ],
+  "lastActivity": "2026-06-24T19:39:53+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 141,
-    "forks": 26,
-    "contributors": 13,
-    "openIssues": 1
+    "stars": 94910602,
+    "forks": 0,
+    "contributors": 0,
+    "openIssues": 0
   },
   "tags": [
     "Données & Open Data",
     "Python",
-    "Bases de données SQL",
-    "Détection de données",
-    "Tableaux"
+    "Bases de données SQL"
   ]
 }

@@ -1,14 +1,18 @@
-## Changelog : csv-detective (30 derniers jours, au 12 mai 2026)
+## Changelog : csv-detective (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Les récentes mises à jour de csv-detective se concentrent sur la correction de bugs et l'amélioration de la robustesse du processus de validation des données. Une correction importante assure que la validation échoue si une erreur survient lors du chargement des données par blocs, garantissant ainsi une meilleure intégrité des résultats. Des améliorations de linting et l'ajout de tests associés contribuent également à la qualité du code.
+Les récentes mises à jour de csv-detective améliorent la capacité du logiciel à analyser différents types de fichiers, notamment les fichiers Parquet, et à détecter plus précisément les types de données dans les colonnes. Des améliorations ont également été apportées à la gestion des valeurs manquantes et à la correction de certains formats de données. Enfin, des corrections mineures ont été effectuées pour améliorer la qualité du code et le processus de CI/CD.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug : la validation échoue désormais si une erreur se produit lors du chargement des données par blocs, empêchant ainsi l'utilisation de résultats incomplets ou erronés. [#251](https://github.com/datagouv/csv-detective/issues/251)
+- Ajout de la prise en charge de l'analyse des fichiers Parquet [#253](https://github.com/datagouv/csv-detective/pull/253).
+- Possibilité de spécifier des valeurs NaN supplémentaires pour une meilleure détection des données manquantes [#255](https://github.com/datagouv/csv-detective/pull/255).
+- Ajout de la liste des valeurs uniques pour les colonnes catégorielles (simples et multiples) [#250](https://github.com/datagouv/csv-detective/pull/250).
+- Renommage du format `booleen` en `bool` pour une meilleure cohérence [#252](https://github.com/datagouv/csv-detective/pull/252).
 
 ### Évolutions techniques
-- Amélioration de la qualité du code via des corrections de linting.
-- Ajout de tests unitaires pour renforcer la couverture et la fiabilité du code.
+- Correction d'un problème de détection des valeurs uniques dans les colonnes trop complexes [#257](https://github.com/datagouv/csv-detective/pull/257).
+- Correction des erreurs de linting et amélioration du processus de vérification du lint dans le CI [#254](https://github.com/datagouv/csv-detective/pull/254).
+- Utilisation d'un token UV pour la publication, améliorant la sécurité et l'automatisation du processus de publication [#256](https://github.com/datagouv/csv-detective/pull/256).
 
 ### Autres changements
-- Mise à jour de la dépendance `urllib3`. [#251](https://github.com/datagouv/csv-detective/issues/251)
+- Aucune documentation ou configuration n'a été modifiée dans cette version.
