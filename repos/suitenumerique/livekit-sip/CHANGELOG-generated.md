@@ -1,26 +1,24 @@
-## Changelog : livekit-sip (30 derniers jours, au 22 juin 2026)
+## Changelog : livekit-sip (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité et la compatibilité du pont SIP vers WebRTC. Des corrections ont été apportées pour améliorer la gestion des erreurs, la qualité audio et la gestion des appels, notamment en ajoutant la prise en charge de codecs audio supplémentaires et en optimisant la gestion des ports RTP. Des améliorations internes ont également été réalisées pour une meilleure gestion de l'état et des dépendances.
+Ce changelog présente les améliorations apportées à livekit-sip au cours du dernier mois. Les mises à jour se concentrent sur l'amélioration de la stabilité des appels, l'ajout de support pour de nouveaux codecs audio, et des corrections de bugs liés à la gestion des erreurs et des transactions SIP. Des optimisations internes ont également été réalisées pour améliorer la robustesse du système.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge des codecs audio PCMU et PCMA pour une meilleure compatibilité avec les équipements SIP existants. [#700](https://github.com/suitenumerique/livekit-sip/issues/700)
-- Amélioration de la gestion des erreurs lors des transferts d'appels, avec une meilleure propagation des erreurs aux instances en attente. [#723](https://github.com/suitenumerique/livekit-sip/issues/723)
-- Correction d'un problème de symétrie RTP pour une meilleure qualité audio. [#706](https://github.com/suitenumerique/livekit-sip/issues/706)
-- Ajout d'une fonctionnalité permettant de récupérer les en-têtes distants des participants via RPC. [#699](https://github.com/suitenumerique/livekit-sip/issues/699)
-- Activation de TURN pour LiveKit RTC, améliorant la connectivité dans des environnements réseau complexes. [#707](https://github.com/suitenumerique/livekit-sip/issues/707)
+- **Support de codecs audio supplémentaires :** Ajout du support des codecs PCMU et PCMA pour une meilleure compatibilité avec les équipements téléphoniques existants. [#700](https://github.com/suitenumerique/livekit-sip/issues/700)
+- **Amélioration de la gestion des erreurs :**  Catégorisation plus précise des erreurs lors des appels, notamment la distinction entre erreurs serveur, erreurs client et problèmes de temporisation. [#718](https://github.com/suitenumerique/livekit-sip/issues/718), [#719](https://github.com/suitenumerique/livekit-sip/issues/719)
+- **Activation de TURN pour LiveKit RTC :** Permet d'améliorer la connectivité et la qualité des appels dans des environnements réseau complexes. [#707](https://github.com/suitenumerique/livekit-sip/issues/707)
+- **Correction du problème de symétrie RTP :** Résolution d'un problème affectant la transmission RTP. [#706](https://github.com/suitenumerique/livekit-sip/issues/706)
 
 ### Évolutions techniques
-- Refactorisation de la gestion de l'état SIP, en utilisant un `StateHandler` public pour une meilleure organisation et maintenabilité. [#714](https://github.com/suitenumerique/livekit-sip/issues/714)
-- Catégorisation plus précise des erreurs de temporisation des transactions B pour les appels sortants. [#718](https://github.com/suitenumerique/livekit-sip/issues/718)
-- Séparation des états "indéterminé" et "erreur de serveur" pour une meilleure identification des problèmes. [#719](https://github.com/suitenumerique/livekit-sip/issues/719)
-- Utilisation de noms de codecs corrects et mise à jour des dépendances. [#713](https://github.com/suitenumerique/livekit-sip/issues/713)
-- Clonage de `CallInfo` pour éviter les accès concurrents et améliorer la sécurité. [#709](https://github.com/suitenumerique/livekit-sip/issues/709)
-- Mise à jour de la bibliothèque `protocol/psrpc` et suppression du package `pkg/errors`. [#708](https://github.com/suitenumerique/livekit-sip/issues/708)
-- Correction de l'utilisation des ports RTP, en utilisant des ports pairs. [#711](https://github.com/suitenumerique/livekit-sip/issues/711)
-- Traitement des erreurs de limite de CPS comme des erreurs client. [#703](https://github.com/suitenumerique/livekit-sip/issues/703)
+- **Refactoring de la gestion de l'état SIP :** Introduction d'un `StateHandler` public pour une meilleure organisation et maintenabilité du code. [#714](https://github.com/suitenumerique/livekit-sip/issues/714)
+- **Mise à jour de la librairie media-sdk :** Correction de bugs et améliorations de la gestion des codecs AMR-WB. [#721](https://github.com/suitenumerique/livekit-sip/issues/721), [#704](https://github.com/suitenumerique/livekit-sip/issues/704)
+- **Gestion des erreurs de dépassement de limite CPS :** Traitement des erreurs de limite de CPS comme des erreurs client pour une meilleure gestion des appels. [#703](https://github.com/suitenumerique/livekit-sip/issues/703)
+- **Correction de l'utilisation des noms de codecs :** Amélioration de la cohérence et de la précision dans l'utilisation des noms de codecs. [#713](https://github.com/suitenumerique/livekit-sip/issues/713)
+- **Mise à jour des dépendances :**  Mise à jour de `protocol/psrpc` et suppression de `pkg/errors`. [#708](https://github.com/suitenumerique/livekit-sip/issues/708)
+- **Prévention des accès concurrents :** Clonage de `CallInfo` pour éviter les problèmes d'accès concurrents. [#709](https://github.com/suitenumerique/livekit-sip/issues/709)
 
 ### Autres changements
-- Suppression des logs de débogage WebRTC pour réduire le bruit dans les logs. [#715](https://github.com/suitenumerique/livekit-sip/issues/715)
-- Limitation du taux d'impression des changements de source et de destination pour éviter le spam de logs. [#705](https://github.com/suitenumerique/livekit-sip/issues/705)
-- Mise à jour de la bibliothèque `media-sdk` pour corriger des problèmes avec le codec AMR-WB. [#721](https://github.com/suitenumerique/livekit-sip/issues/721) et [#704](https://github.com/suitenumerique/livekit-sip/issues/704)
+- **Gestion des logs :** Suppression des logs de débogage WebRTC pour réduire le bruit et améliorer la lisibilité des logs. [#715](https://github.com/suitenumerique/livekit-sip/issues/715)
+- **Amélioration de la gestion des ports RTP :** Utilisation de ports RTP pairs pour une meilleure compatibilité. [#711](https://github.com/suitenumerique/livekit-sip/issues/711)
+- **Limitation du taux d'impression des changements de source et destination :** Réduction du nombre d'impressions pour améliorer les performances. [#705](https://github.com/suitenumerique/livekit-sip/issues/705)
+- **Gestion des erreurs de transfert :** Ajout d'une gestion des erreurs pour les instances en attente de transfert. [#723](https://github.com/suitenumerique/livekit-sip/issues/723)
