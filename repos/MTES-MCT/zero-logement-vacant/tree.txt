@@ -271,6 +271,7 @@
 │   │   │   │   │   │   ├── EXTERNAL_SOURCES_README.md
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── administrative_cuts.py
+│   │   │   │   │   │   ├── ingest_cerema_lovac_users_asset.py
 │   │   │   │   │   │   ├── ingest_external_sources_asset.py
 │   │   │   │   │   │   ├── ingest_postgres_asset.py
 │   │   │   │   │   │   ├── queries
@@ -541,6 +542,7 @@
 │   │   │   │   │   │   ├── marts_production_join_housing_groups.sql
 │   │   │   │   │   │   └── marts_production_join_owner_housing.sql
 │   │   │   │   │   ├── marts_production_campaigns.sql
+│   │   │   │   │   ├── marts_production_cerema_lovac_users_unregistered.sql
 │   │   │   │   │   ├── marts_production_establishments.sql
 │   │   │   │   │   ├── marts_production_establishments_activation.sql
 │   │   │   │   │   ├── marts_production_establishments_category_pro_activity.sql
@@ -588,6 +590,7 @@
 │   │   │       │   │   ├── schemas.yml
 │   │   │       │   │   ├── sources.yml
 │   │   │       │   │   ├── stg_external_cerema_conso_espaces.sql
+│   │   │       │   │   ├── stg_external_cerema_lovac_users.sql
 │   │   │       │   │   ├── stg_external_cerema_prix_volumes_appartements.sql
 │   │   │       │   │   ├── stg_external_cerema_prix_volumes_bati.sql
 │   │   │       │   │   └── stg_external_cerema_prix_volumes_maisons.sql
@@ -1329,6 +1332,7 @@
 │   │   │   │   ├── BuildingPoints.tsx
 │   │   │   │   ├── BuildingStatusImages.tsx
 │   │   │   │   ├── Clusters.tsx
+│   │   │   │   ├── FullscreenControl.tsx
 │   │   │   │   ├── HousingPoints.tsx
 │   │   │   │   ├── LayerControl.tsx
 │   │   │   │   ├── LegendButtonControl.tsx
@@ -1341,7 +1345,9 @@
 │   │   │   │   │   └── Map.tsx
 │   │   │   │   ├── map-controls.module.scss
 │   │   │   │   ├── map.module.scss
-│   │   │   │   └── status-colors.ts
+│   │   │   │   ├── status-colors.ts
+│   │   │   │   └── test
+│   │   │   │       └── FullscreenControl.test.tsx
 │   │   │   ├── Notification
 │   │   │   │   └── Notification.tsx
 │   │   │   ├── OccupancyTag
@@ -1371,6 +1377,8 @@
 │   │   │   │   ├── RankBadge.tsx
 │   │   │   │   ├── RelativeLocationTag.tsx
 │   │   │   │   ├── SecondaryOwnerList.tsx
+│   │   │   │   ├── test
+│   │   │   │   │   └── OwnerCard.test.tsx
 │   │   │   │   ├── useHousingOwners.tsx
 │   │   │   │   └── useIgnoredAddresses.tsx
 │   │   │   ├── OwnerAddressEdition
@@ -2826,4 +2834,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-440 directories, 2388 files
+442 directories, 2394 files
