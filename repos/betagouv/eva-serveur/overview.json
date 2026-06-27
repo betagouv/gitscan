@@ -4,50 +4,61 @@
   "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les utilisateurs.",
   "language": "Ruby",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Authentification & Accès",
     "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
-    "Notifications & Alertes"
+    "Gestion des établissements & Structures",
+    "Notifications & Alertes",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
+    "Puma",
     "PostgreSQL",
     "Redis",
     "Devise",
-    "Puma",
-    "Sidekiq",
+    "ActiveAdmin",
+    "DSFR",
     "ruby-vips"
   ],
   "components": [
-    "API REST",
-    "Base de données PostgreSQL",
-    "Ruby on Rails",
-    "Docker & Conteneurs"
+    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Ruby",
+    "Rails",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "session"
-    ],
-    "providers": []
+      "oauth2",
+      "sso"
+    ]
   },
   "tests": [
     "RSpec",
-    "FactoryBot"
+    "Capybara"
   ],
   "workflows": [],
   "lastActivity": "2026-06-24T17:27:46+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Ruby",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Gestion des utilisateurs & Permissions"
   ]
 }
