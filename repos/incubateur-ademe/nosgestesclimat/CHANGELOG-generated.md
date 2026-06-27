@@ -1,31 +1,30 @@
-## Changelog : nosgestesclimat (30 derniers jours, au 17 juin 2026)
+## Changelog : nosgestesclimat (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'enrichissement du référentiel d'actions proposées aux utilisateurs, avec l'ajout de nombreuses nouvelles actions dans les domaines de la mobilité, de l'alimentation, de la consommation et du logement. Des corrections et ajustements ont également été apportés pour améliorer la précision des calculs et l'expérience utilisateur, notamment concernant le chauffage collectif, les actions liées à l'énergie et les bornes de recharge.
+Ce mois-ci, nosgestesclimat a connu une évolution significative avec l'ajout de nombreuses nouvelles actions, notamment dans les domaines de la mobilité, du logement, de la vie quotidienne et de la consommation. Des améliorations ont également été apportées à la précision des calculs, à la gestion des actions et à l'expérience utilisateur, notamment via des corrections de traduction et des ajustements suite aux retours des utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles actions dans les catégories "vie quotidienne", "reconditionné", "mobilités", "consommation" et "alimentation" pour offrir plus de choix aux utilisateurs. [#2784](https://github.com/incubateur-ademe/nosgestesclimat/issues/2784)
-- L'action "réduire viande" a été ajoutée. [#97e6bda4](https://github.com/incubateur-ademe/nosgestesclimat/commit/97e6bda4)
-- Amélioration de l'action "isolation" via le saut DPE. [#c03c0a82](https://github.com/incubateur-ademe/nosgestesclimat/commit/c03c0a82)
-- Amélioration de l'action "améliorer chauffage collectif" pour une meilleure applicabilité aux maisons. [#2781](https://github.com/incubateur-ademe/nosgestesclimat/issues/2781)
-- Correction de la condition d'alimentation pour certaines actions. [#127a72a9](https://github.com/incubateur-ademe/nosgestesclimat/commit/127a72a9)
-- Correction de la vitesse de l'avion pour un calcul plus précis. [#2778](https://github.com/incubateur-ademe/nosgestesclimat/issues/2778)
-- Correction des valeurs par défaut des bornes de recharge pour éviter des changements inattendus. [#2767](https://github.com/incubateur-ademe/nosgestesclimat/issues/2767)
-- Correction de l'action liée à la consommation d'énergie via le DPE (Diagnostic de Performance Énergétique). [#2768](https://github.com/incubateur-ademe/nosgestesclimat/issues/2768)
-- Repousse de la date limite d'utilisation (DLUO) des bases de données écobalyses et agribalyse. [#48d8c9c4](https://github.com/incubateur-ademe/nosgestesclimat/commit/48d8c9c4) et [#95cac37d](https://github.com/incubateur-ademe/nosgestesclimat/commit/95cac37d)
+- Ajout d'actions liées à la mobilité : nouvelles actions pour les mobilités, notamment des actions de reconditionnement [#2775](https://github.com/incubateur-ademe/nosgestesclimat/issues/2775).
+- Ajout d'actions liées au logement : ajout d'actions pour l'amélioration de l'isolation via le DPE, le chauffage collectif et l'adaptation des actions en fonction du type de logement [#2781](https://github.com/incubateur-ademe/nosgestesclimat/issues/2781).
+- Ajout d'actions liées à la vie quotidienne : intégration de nouvelles actions pour la vie quotidienne [#2782](https://github.com/incubateur-ademe/nosgestesclimat/issues/2782).
+- Ajout d'une action pour réduire la consommation de viande [#97e6bda4](https://github.com/incubateur-ademe/nosgestesclimat/commit/97e6bda4).
+- Amélioration de la description des repas avec ajout de la portion [#2785](https://github.com/incubateur-ademe/nosgestesclimat/issues/2785).
+- Correction de l'impact de la piscine sur l'empreinte eau [#13683ec4](https://github.com/incubateur-ademe/nosgestesclimat/commit/13683ec4).
+- Correction de la vitesse des avions pour une meilleure précision des calculs [#2778](https://github.com/incubateur-ademe/nosgestesclimat/issues/2778).
+- Suppression des suggestions de vacances. [#df6d5d71](https://github.com/incubateur-ademe/nosgestesclimat/commit/df6d5d71)
+- Désactivation des actions v2 pour le mode jeune. [#2762](https://github.com/incubateur-ademe/nosgestesclimat/issues/2762)
 
 ### Évolutions techniques
-- Désactivation des actions v2 pour le mode jeune. [#7946c74b](https://github.com/incubateur-ademe/nosgestesclimat/commit/7946c74b)
-- Suppression de la librairie axios. [#a01a11cd](https://github.com/incubateur-ademe/nosgestesclimat/commit/a01a11cd)
-- Corrections de compilation. [#a246c8ac](https://github.com/incubateur-ademe/nosgestesclimat/commit/a246c8ac)
+- Refonte de la gestion des dates de péremption (DLUO) pour l'écobalyse et l'agribalyse [#48d8c9c4](https://github.com/incubateur-ademe/nosgestesclimat/commit/48d8c9c4).
+- Mise à jour de l'interface utilisateur pour l'affichage des données Agribalyse [#331ac51a](https://github.com/incubateur-ademe/nosgestesclimat/commit/331ac51a).
+- Correction de la gestion de la désactivation des actions pour l'évaluation des émissions différées (ED) [#f9a5211c](https://github.com/incubateur-ademe/nosgestesclimat/commit/f9a5211c).
+- Corrections et ajustements suite aux retours des phases de tests (MEP) [#a7b6ba2a](https://github.com/incubateur-ademe/nosgestesclimat/commit/a7b6ba2a).
+- Gestion de la cohabitation des nouvelles et anciennes actions [#55fc9821](https://github.com/incubateur-ademe/nosgestesclimat/commit/55fc9821).
+- Corrections de namespace pour les actions logement [#92f8a861](https://github.com/incubateur-ademe/nosgestesclimat/commit/92f8a861).
 
 ### Autres changements
-- Mises à jour de la documentation et des traductions. [#cb2b54c9](https://github.com/incubateur-ademe/nosgestesclimat/commit/cb2b54c9), [#19e71a58](https://github.com/incubateur-ademe/nosgestesclimat/commit/19e71a58), [#9b6a98ad](https://github.com/incubateur-ademe/nosgestesclimat/commit/9b6a98ad)
-- Corrections suite aux retours de la MEP (Minimum Employable Product). [#a7b6ba2a](https://github.com/incubateur-ademe/nosgestesclimat/commit/a7b6ba2a)
-- Corrections suite aux retours de l'équipe et de Jojo. [#77103d61](https://github.com/incubateur-ademe/nosgestesclimat/commit/77103d61)
-- Ajout des identifiants manquants. [#0b06e539](https://github.com/incubateur-ademe/nosgestesclimat/commit/0b06e539)
-- Corrections des conditions d'application des actions. [#c4bb9d68](https://github.com/incubateur-ademe/nosgestesclimat/commit/c4bb9d68)
-- Corrections pour la cohabitation des nouvelles et anciennes actions. [#55fc9821](https://github.com/incubateur-ademe/nosgestesclimat/commit/55fc9821)
-- Corrections du namespace "vie quotidienne". [#92f8a861](https://github.com/incubateur-ademe/nosgestesclimat/commit/92f8a861)
-- Corrections suite aux retours de Florence concernant le mode scolaire et le standard. [#50decac5](https://github.com/incubateur-ademe/nosgestesclimat/commit/50decac5)
-- Corrections pour l'action légumineuse non quantifiable. [#099d95fd](https://github.com/incubateur-ademe/nosgestesclimat/commit/099d95fd)
+- Corrections de traductions et d'orthographe [#cb2b54c9](https://github.com/incubateur-ademe/nosgestesclimat/commit/cb2b54c9), [#dd5763eb](https://github.com/incubateur-ademe/nosgestesclimat/commit/dd5763eb), [#19e71a58](https://github.com/incubateur-ademe/nosgestesclimat/commit/19e71a58), [#9b6a98ad](https://github.com/incubateur-ademe/nosgestesclimat/commit/9b6a98ad).
+- Publication des versions 4.13.0-rc.1, 4.13.0-rc.2 et 4.13.1 [#006715d4](https://github.com/incubateur-ademe/nosgestesclimat/commit/006715d4), [#f1c9d809](https://github.com/incubateur-ademe/nosgestesclimat/commit/f1c9d809), [#6d01b87b](https://github.com/incubateur-ademe/nosgestesclimat/commit/6d01b87b).
+- Ajout des identifiants manquants [#0b06e539](https://github.com/incubateur-ademe/nosgestesclimat/commit/0b06e539).
+- Corrections de conditions d'actions [#c4bb9d68](https://github.com/incubateur-ademe/nosgestesclimat/commit/c4bb9d68), [#c03c0a82](https://github.com/incubateur-ademe/nosgestesclimat/commit/c03c0a82), [#14ebcefa](https://github.com/incubateur-ademe/nosgestesclimat/commit/14ebcefa).
+- Correction d'une action légumineuse non quantifiable [#099d95fd](https://github.com/incubateur-ademe/nosgestesclimat/commit/099d95fd).
