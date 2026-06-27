@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Messages est une boîte de réception collaborative complète pour La Suite territoriale. Elle permet aux équipes de collaborer sur les e-mails grâce à des boîtes de réception partagées ou personnelles.",
+  "description": "Messages est une boîte de réception collaborative complète pour La Suite territoriale. Elle permet aux équipes de collaborer sur les emails grâce à des boîtes de réception partagées ou personnelles.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -24,9 +24,7 @@
     "BlockNote.js",
     "Postfix",
     "Celery",
-    "Redis",
-    "PostgreSQL",
-    "OpenSearch"
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
@@ -40,10 +38,11 @@
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "session"
+      "saml"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": null,
   "workflows": null,
@@ -66,7 +65,6 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Communication & Messagerie",
-    "CI/CD & GitHub Actions"
+    "Intelligence Artificielle & LLM"
   ]
 }
