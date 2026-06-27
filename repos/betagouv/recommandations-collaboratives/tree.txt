@@ -41,6 +41,7 @@
 │   ├── make.bat
 │   ├── models.rst
 │   ├── permissions.rst
+│   ├── plugins.rst
 │   ├── terminology.rst
 │   ├── urls.rst
 │   └── workflows.rst
@@ -197,6 +198,9 @@
 │   │   │   │           │   └── type_followup_item.html
 │   │   │   │           ├── message_item.html
 │   │   │   │           └── message_item_content.html
+│   │   │   ├── templatetags
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── conversation_tags.py
 │   │   │   ├── tests.py
 │   │   │   └── utils.py
 │   │   ├── crm
@@ -578,6 +582,7 @@
 │   │   │   │   ├── 0042_notification_splits.py
 │   │   │   │   ├── 0043_alter_userprofile_managers.py
 │   │   │   │   ├── 0044_setup_sesame_cookie_consent.py
+│   │   │   │   ├── 0045_siteconfiguration_plugin_fields.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── password_validation.py
@@ -661,6 +666,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_commands.py
 │   │   │   │   ├── test_middlewares.py
+│   │   │   │   ├── test_plugins.py
 │   │   │   │   ├── test_rest.py
 │   │   │   │   ├── test_signals.py
 │   │   │   │   ├── test_site_creation.py
@@ -787,6 +793,24 @@
 │   │   │   │       └── simple_page.html
 │   │   │   ├── tests.py
 │   │   │   └── views.py
+│   │   ├── plugins
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── hooks.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── collect_plugin_vite_entries.py
+│   │   │   │       └── migrate_tenant.py
+│   │   │   ├── manager.py
+│   │   │   ├── middlewares.py
+│   │   │   ├── migrations
+│   │   │   │   └── __init__.py
+│   │   │   ├── resolvers.py
+│   │   │   ├── routers.py
+│   │   │   ├── tests.py
+│   │   │   └── urls.py
 │   │   ├── projects
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -1618,6 +1642,7 @@
 │   │   │   │   ├── calendar.svg
 │   │   │   │   ├── chat-1-line.svg
 │   │   │   │   ├── check-double-line.svg
+│   │   │   │   ├── check-line.svg
 │   │   │   │   ├── contacts-book-line.svg
 │   │   │   │   ├── corner-down-right-line.svg
 │   │   │   │   ├── delete.svg
@@ -1674,6 +1699,7 @@
 │   │   │   │   ├── custom-icon.css
 │   │   │   │   ├── exceptions.css
 │   │   │   │   ├── flags.css
+│   │   │   │   ├── formInformation.scss
 │   │   │   │   ├── geocoderBAN.css
 │   │   │   │   ├── header
 │   │   │   │   │   ├── menu-burger.scss
@@ -1692,6 +1718,7 @@
 │   │   │   │   ├── hover.css
 │   │   │   │   ├── input.css
 │   │   │   │   ├── introJs.css
+│   │   │   │   ├── layoutForm.scss
 │   │   │   │   ├── layouts
 │   │   │   │   │   ├── errorPage.scss
 │   │   │   │   │   └── stack.css
@@ -1830,6 +1857,7 @@
 │   │   │       │   ├── projectEmailReminder.js
 │   │   │       │   ├── projectKnowledge.js
 │   │   │       │   ├── projectShare.js
+│   │   │       │   ├── resourceDetails.js
 │   │   │       │   ├── searchableList.js
 │   │   │       │   ├── selectSearchable.js
 │   │   │       │   ├── tagCloud.js
@@ -1920,6 +1948,7 @@
 │   │   │       ├── main.js
 │   │   │       ├── models
 │   │   │       │   ├── Modal.model.js
+│   │   │       │   ├── projectStatus.enum.js
 │   │   │       │   └── toastType.js
 │   │   │       ├── store
 │   │   │       │   ├── actionPusher.js
@@ -1958,6 +1987,7 @@
 │   │   │       │   ├── crm-empty-state.css.js
 │   │   │       │   ├── crm-results.css.js
 │   │   │       │   ├── departments-selector.css.js
+│   │   │       │   ├── form-information.css.js
 │   │   │       │   ├── form-resources.css.js
 │   │   │       │   ├── header-menu-burger.css.js
 │   │   │       │   ├── header-user-tools.css.js
@@ -1969,6 +1999,7 @@
 │   │   │       │   ├── home.css.js
 │   │   │       │   ├── invite-not-accepted-banner.css.js
 │   │   │       │   ├── kanban.css.js
+│   │   │       │   ├── layout-form.css.js
 │   │   │       │   ├── layouts
 │   │   │       │   │   └── error-page.css.js
 │   │   │       │   ├── marianne.css.js
@@ -2101,6 +2132,7 @@
 │   │   └── default_site
 │   │       ├── account
 │   │       │   ├── base_reauthenticate.html
+│   │       │   ├── confirm_login_code.html
 │   │       │   ├── email
 │   │       │   │   ├── base_message.txt
 │   │       │   │   ├── email_confirmation_signup_message.html
@@ -2112,10 +2144,13 @@
 │   │       │   ├── email.html
 │   │       │   ├── fragments
 │   │       │   │   ├── button_pending_advisor_request.html
+│   │       │   │   ├── confirm_login_code_form.html
 │   │       │   │   ├── departements_select_form.html
 │   │       │   │   ├── departements_select_form_moderator.html
 │   │       │   │   ├── naive_signup_redirect.html
+│   │       │   │   ├── no_account_action.html
 │   │       │   │   ├── pending_advisor_request_redirect.html
+│   │       │   │   ├── request_login_code_form.html
 │   │       │   │   └── signup_form.html
 │   │       │   ├── layout
 │   │       │   │   └── layout.html
@@ -2125,6 +2160,7 @@
 │   │       │   ├── password_reset_from_key.html
 │   │       │   ├── password_reset_from_key_done.html
 │   │       │   ├── reauthenticate.html
+│   │       │   ├── request_login_code.html
 │   │       │   └── signup.html
 │   │       ├── actstream
 │   │       │   └── action.html
@@ -2145,6 +2181,7 @@
 │   │       │       ├── footer_logo.html
 │   │       │       └── footer_resources.html
 │   │       ├── fragments
+│   │       │   ├── form_information.html
 │   │       │   └── new_feature_banner.html
 │   │       ├── header
 │   │       │   ├── dropdown-menu-notification-link.html
@@ -2162,13 +2199,10 @@
 │   │       │   ├── menu-top.html
 │   │       │   ├── skip-links.html
 │   │       │   └── submenu_static_link.html
+│   │       ├── layout
+│   │       │   └── new_layout.html
 │   │       ├── layouts
 │   │       │   └── error_page.html
-│   │       ├── magicauth
-│   │       │   ├── email.html
-│   │       │   ├── email.txt
-│   │       │   ├── email_sent.html
-│   │       │   └── login.html
 │   │       ├── matomo.html
 │   │       ├── mfa
 │   │       │   ├── authenticate.html
@@ -2243,4 +2277,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-365 directories, 1880 files
+370 directories, 1909 files

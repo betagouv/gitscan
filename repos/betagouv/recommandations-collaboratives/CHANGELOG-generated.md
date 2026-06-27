@@ -1,28 +1,48 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 2026-06-24)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la sécurité du logiciel, avec des mises à jour de dépendances et des corrections de bugs. Des améliorations sont également apportées à l'interface utilisateur, notamment au niveau de la gestion des utilisateurs CRM et des filtres de recherche. Des optimisations de performance et des refactorings de code ont également été réalisés.
+Ce mois-ci, les évolutions se concentrent sur l'ajout d'un système de plugins pour étendre les fonctionnalités de Recoco, l'amélioration de l'authentification avec la suppression de Django Magicauth et l'implémentation d'une nouvelle méthode de connexion par code, ainsi que des corrections de bugs et des optimisations de sécurité. Des améliorations de l'interface utilisateur et des corrections de filtres ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant le formulaire de contact d'être accessible qu'aux utilisateurs authentifiés. [#2153](https://github.com/betagouv/recommandations-collaboratives/pull/2153)
-- Ajout de filtres pour les projets "Mes projets" sur la page de la carte. [#2131](https://github.com/betagouv/recommandations-collaboratives/pull/2131) et [#2097](https://github.com/betagouv/recommandations-collaboratives/pull/2097)
-- Amélioration de la gestion des utilisateurs CRM, notamment la suppression du préchargement et la limitation des résultats. [#2142](https://github.com/betagouv/recommandations-collaboratives/pull/2142) et [#2130](https://github.com/betagouv/recommandations-collaboratives/pull/2130)
-- Ajout d'une page 403 personnalisée avec une meilleure gestion des erreurs d'accès. [#2112](https://github.com/betagouv/recommandations-collaboratives/pull/2112)
-- Correction d'un problème lié à l'exportation de plusieurs fichiers le même jour. [#2181](https://github.com/betagouv/recommandations-collaboratives/pull/2181)
-- Correction d'un bug empêchant le chargement des détails de l'utilisateur dans le timeline. [#2141](https://github.com/betagouv/recommandations-collaboratives/pull/2141)
-- Correction d'un problème lié à la mise à jour des informations de l'utilisateur CRM (prénom et nom). [#2183](https://github.com/betagouv/recommandations-collaboratives/pull/2183)
+- **Plugins :** Ajout d'un système de plugins pour étendre les fonctionnalités de Recoco, incluant la découverte automatique des hooks et la possibilité d'ajouter des composants personnalisés à la conversation [#1986](https://github.com/betagouv/recommandations-collaboratives/pull/1986).
+- **Authentification :**
+    - Remplacement de Django Magicauth par une nouvelle méthode de connexion par code, avec une durée de validité accrue et une meilleure gestion des comptes sensibles [#2143](https://github.com/betagouv/recommandations-collaboratives/pull/2143).
+    - Ajout d'une page de confirmation de code pour la connexion par code.
+    - Amélioration de la sécurité de l'authentification avec la vérification du consentement aux cookies pour l'utilisation des magiclinks.
+    - Ajout d'une page 403 personnalisée.
+- **Interface utilisateur :**
+    - Ajout d'un filtre pour afficher les projets sur la carte [#2144](https://github.com/betagouv/recommandations-collaboratives/pull/2144).
+    - Amélioration de l'interface utilisateur pour la gestion des utilisateurs CRM [#2142](https://github.com/betagouv/recommandations-collaboratives/pull/2142).
+    - Mise à jour du style de la mise en page et des couleurs principales.
+- **Formulaires :**
+    - Correction du formulaire de contact pour limiter son accès aux utilisateurs authentifiés [#2153](https://github.com/betagouv/recommandations-collaboratives/pull/2153).
+    - Correction du formulaire de mise à jour des utilisateurs CRM pour permettre la saisie des noms et prénoms.
 
 ### Évolutions techniques
-- Mise à jour de l'outil de construction vers `uv` pour une meilleure gestion des dépendances. [#2210](https://github.com/betagouv/recommandations-collaboratives/pull/2210) et [#2217](https://github.com/betagouv/recommandations-collaboratives/pull/2217)
-- Suppression du fichier `requirements.txt` et des usages associés. [#2212](https://github.com/betagouv/recommandations-collaboratives/pull/2212)
-- Mise à jour de plusieurs dépendances : `django`, `pyjwt`, `tornado`, `bleach`, `cryptography`.
-- Ajout d'un hook `gitleaks` au pre-commit pour détecter les secrets exposés. [#2178](https://github.com/betagouv/recommandations-collaboratives/pull/2178)
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité. [#2187](https://github.com/betagouv/recommandations-collaboratives/pull/2187), [#2150](https://github.com/betagouv/recommandations-collaboratives/pull/2150), [#2110](https://github.com/betagouv/recommandations-collaboratives/pull/2110) et [#2080](https://github.com/betagouv/recommandations-collaboratives/pull/2080)
-- Amélioration de la robustesse des tests, notamment du test de documentation. [#2201](https://github.com/betagouv/recommandations-collaboratives/pull/2201)
+- **Dépendances :**
+    - Mise à jour de plusieurs dépendances, notamment `uv`, `django`, `pyjwt`, `dompurify`, `vite`, `form-data`, `tar`, `@babel/core`, `bleach` et `tornado`.
+    - Suppression de `requirements.txt` et passage à `uv` pour la gestion des dépendances.
+    - Suppression des dépendances Django Magicauth.
+- **CI/CD :**
+    - Ajout de `uv` à l'environnement CI.
+    - Mise à jour de la configuration de GitHub Actions pour l'audit des dépendances avec `uv-audit`.
+- **Refactoring :**
+    - Refactorisation du code lié à la gestion des projets pour préparer un nouveau lancement.
+    - Suppression de code mort lié aux recommandations.
+    - Amélioration de la robustesse des tests, notamment pour les documents.
+    - Suppression de l'importation en ligne pour les plugins.
+    - Utilisation de fixtures pour les tests.
+- **Sécurité :**
+    - Correction de failles de sécurité potentielles liées aux noms de schémas de plugins.
+    - Mise à jour des dépendances pour corriger des vulnérabilités connues.
+    - Ajout d'un hook pour détecter les exports multiples dans la même journée.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Corrections de style et améliorations de l'accessibilité.
-- Diverses corrections de bugs et améliorations mineures.
-- Ajout de tests unitaires et d'intégration.
-- Suppression de code mort.
+- **Documentation :** Mise à jour de la documentation pour l'installation des plugins.
+- **Tests :** Ajout d'un nouveau test pour vérifier toutes les URLs.
+- **Pre-commit :** Ajout de `gitleaks` au pre-commit pour détecter les secrets dans le code.
+- **Divers :**
+    - Correction de typos et amélioration de la lisibilité du code.
+    - Suppression de code inutile.
+    - Ajout de commentaires pour clarifier le fonctionnement de certains composants.
+    - Mise à jour des statuts des projets dans l'API.

@@ -9,18 +9,23 @@
     "Authentification & Accès",
     "Notifications & Alertes",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité"
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Redis",
     "PostgreSQL",
-    "celery",
+    "Redis",
+    "Celery",
     "beautifulsoup4",
     "cryptography",
-    "django-allauth"
+    "django-allauth",
+    "django-filter",
+    "django-leaflet",
+    "django-markdownx",
+    "django-multisite2",
+    "djangorestframework",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,7 +37,8 @@
   "auth": {
     "methods": [
       "email-password",
-      "magic-link",
+      "oauth2",
+      "saml",
       "session"
     ]
   },
@@ -40,9 +46,9 @@
     "pytest"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-06-24T15:09:43+02:00",
+  "lastActivity": "2026-06-26T16:26:07+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
