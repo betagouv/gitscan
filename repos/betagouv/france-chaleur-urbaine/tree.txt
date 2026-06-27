@@ -753,7 +753,6 @@
 │   │   └── temperature-exterieure-de-base.json
 │   ├── sort-sql-schema.mjs
 │   └── stats
-│       ├── pipedrive.ts
 │       └── refresh.ts
 ├── sentry.client.config.ts
 ├── sentry.edge.config.ts
@@ -771,7 +770,8 @@
 │   │   │   ├── TableFieldInput.tsx
 │   │   │   ├── UserForm.tsx
 │   │   │   ├── UserImpersonation.tsx
-│   │   │   └── UserRoleBadge.tsx
+│   │   │   ├── UserRoleBadge.tsx
+│   │   │   └── adminPages.ts
 │   │   ├── Articles
 │   │   │   ├── Article.tsx
 │   │   │   ├── LastArticles.styles.ts
@@ -850,10 +850,10 @@
 │   │   │   │   ├── Eligibility.styles.ts
 │   │   │   │   ├── Eligibility.tsx
 │   │   │   │   └── IFrameLink.tsx
+│   │   │   ├── IframeCodeBlock.tsx
 │   │   │   └── Map
 │   │   │       ├── IFrameMapIntegrationForm.styles.ts
-│   │   │       ├── IFrameMapIntegrationForm.tsx
-│   │   │       └── selectableLayers.ts
+│   │   │       └── IFrameMapIntegrationForm.tsx
 │   │   ├── Infographie
 │   │   │   ├── index.styles.ts
 │   │   │   └── index.tsx
@@ -1331,6 +1331,19 @@
 │   │   │   ├── AGENTS.md
 │   │   │   └── server
 │   │   │       └── context-builder.ts
+│   │   ├── conversion-tracking
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── ConversionStatsPage.tsx
+│   │   │   │   ├── trackingContext.spec.ts
+│   │   │   │   ├── trackingContext.ts
+│   │   │   │   ├── useRecordConversionEvent.ts
+│   │   │   │   └── useTrackPageView.ts
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── data
 │   │   │   ├── AGENTS.md
 │   │   │   ├── commands.ts
@@ -1370,7 +1383,6 @@
 │   │   │   │   ├── AffectedNetworkCell.tsx
 │   │   │   │   ├── Comment.tsx
 │   │   │   │   ├── Contact.tsx
-│   │   │   │   ├── Contacted.tsx
 │   │   │   │   ├── DemandSondageForm.tsx
 │   │   │   │   ├── DemandStatusBadge.tsx
 │   │   │   │   ├── EmailHistory.tsx
@@ -1433,15 +1445,10 @@
 │   │   │       │       ├── confirmation-inscription.tsx
 │   │   │       │       └── reinitialisation-mot-de-passe.tsx
 │   │   │       └── demands
-│   │   │           ├── _data.ts
 │   │   │           ├── demandeur
 │   │   │           │   ├── confirmation-demande.tsx
 │   │   │           │   ├── enquete-satisfaction.tsx
 │   │   │           │   └── message-gestionnaire.tsx
-│   │   │           ├── equipe-fcu
-│   │   │           │   ├── demande-haut-potentiel.tsx
-│   │   │           │   ├── demande-reaffectation.tsx
-│   │   │           │   └── nouvelle-demande.tsx
 │   │   │           └── gestionnaire
 │   │   │               ├── nouvelles-demandes-a-traiter.tsx
 │   │   │               └── rappel-demandes-en-attente.tsx
@@ -1823,6 +1830,7 @@
 │   │   │   ├── [slug].tsx
 │   │   │   └── index.tsx
 │   │   ├── admin
+│   │   │   ├── conversion.tsx
 │   │   │   ├── data-diagnostic.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── diagnostic.tsx
@@ -2009,9 +2017,13 @@
 │   │   │       ├── 20260512000001_split_demand_updated_events.ts
 │   │   │       ├── 20260515120000_tiles_metadata.ts
 │   │   │       ├── 20260615120000_drop_legacy_tags_and_assignment_rules.ts
+│   │   │       ├── 20260617000000_conversion_tracking.ts
+│   │   │       ├── 20260624000000_fusion_statuts.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── logger.ts
+│   │   │   ├── request-ip.spec.ts
+│   │   │   ├── request-ip.ts
 │   │   │   └── server.ts
 │   │   └── services
 │   │       ├── addresseInformation.ts
@@ -2117,4 +2129,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-290 directories, 2149 files
+292 directories, 2159 files
