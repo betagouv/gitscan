@@ -88,6 +88,7 @@
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
 │   │   │   ├── ImportAdminCallout.vue
+│   │   │   ├── ImportDeprecatedWarning.vue
 │   │   │   ├── ImportExplanation.vue
 │   │   │   ├── ImportFileUpload.vue
 │   │   │   ├── ImportFilesExample.vue
@@ -201,8 +202,10 @@
 │   │       ├── GestionnaireGaspillageAlimentaire.vue
 │   │       ├── GestionnaireGaspillageAlimentaireModifier.vue
 │   │       ├── GestionnaireImport.vue
-│   │       ├── GestionnaireImportAchats.vue
+│   │       ├── GestionnaireImportAchatsID.vue
+│   │       ├── GestionnaireImportAchatsIDOld.vue
 │   │       ├── GestionnaireImportAchatsSIRET.vue
+│   │       ├── GestionnaireImportAchatsSIRETOld.vue
 │   │       ├── GestionnaireImportBilansDetailles.vue
 │   │       ├── GestionnaireImportBilansSimples.vue
 │   │       ├── GestionnaireImportBilansSimplesSIRET.vue
@@ -288,22 +291,43 @@
 │   │   │   ├── achats
 │   │   │   │   ├── purchases_bad.csv
 │   │   │   │   ├── purchases_bad_corrupt.csv
+│   │   │   │   ├── purchases_bad_corrupt_old.csv
 │   │   │   │   ├── purchases_bad_empty_rows.csv
+│   │   │   │   ├── purchases_bad_empty_rows_old.csv
 │   │   │   │   ├── purchases_bad_extra_columns.csv
+│   │   │   │   ├── purchases_bad_extra_columns_old.csv
 │   │   │   │   ├── purchases_bad_no_definition_local.csv
+│   │   │   │   ├── purchases_bad_no_definition_local_old.csv
 │   │   │   │   ├── purchases_bad_no_header.csv
+│   │   │   │   ├── purchases_bad_no_header_old.csv
+│   │   │   │   ├── purchases_bad_old.csv
 │   │   │   │   ├── purchases_bad_one_error.csv
+│   │   │   │   ├── purchases_bad_one_error_old.csv
 │   │   │   │   ├── purchases_bad_partial_header.csv
+│   │   │   │   ├── purchases_bad_partial_header_old.csv
 │   │   │   │   ├── purchases_bad_wrong_header.csv
+│   │   │   │   ├── purchases_bad_wrong_header_old.csv
 │   │   │   │   ├── purchases_bad_wrong_header_typo.csv
+│   │   │   │   ├── purchases_bad_wrong_header_typo_old.csv
 │   │   │   │   ├── purchases_good.csv
 │   │   │   │   ├── purchases_good.xlsx
 │   │   │   │   ├── purchases_good_floating_number.csv
+│   │   │   │   ├── purchases_good_floating_number_old.csv
 │   │   │   │   ├── purchases_good_id.csv
+│   │   │   │   ├── purchases_good_id_caracteristics.csv
+│   │   │   │   ├── purchases_good_id_old.csv
+│   │   │   │   ├── purchases_good_local_vs_circuit_court.csv
+│   │   │   │   ├── purchases_good_old.csv
+│   │   │   │   ├── purchases_good_old.xlsx
 │   │   │   │   ├── purchases_good_separator_comma.csv
+│   │   │   │   ├── purchases_good_separator_comma_old.csv
 │   │   │   │   ├── purchases_good_separator_semicolon.csv
+│   │   │   │   ├── purchases_good_separator_semicolon_old.csv
 │   │   │   │   ├── purchases_good_separator_tab.tsv
-│   │   │   │   └── purchases_good_with_empty_columns.xlsx
+│   │   │   │   ├── purchases_good_separator_tab_old.tsv
+│   │   │   │   ├── purchases_good_siret_caracteristics.csv
+│   │   │   │   ├── purchases_good_with_empty_columns.xlsx
+│   │   │   │   └── purchases_good_with_empty_columns_old.xlsx
 │   │   │   ├── canteen_managers
 │   │   │   │   ├── canteen_managers_bad_empty_rows.csv
 │   │   │   │   ├── canteen_managers_bad_extra_header.csv
@@ -435,6 +459,7 @@
 │   │   ├── test_purchase_export.py
 │   │   ├── test_purchases.py
 │   │   ├── test_purchases_import.py
+│   │   ├── test_purchases_import_old.py
 │   │   ├── test_reservation_expe.py
 │   │   ├── test_resource_actions.py
 │   │   ├── test_reviews.py
@@ -472,6 +497,8 @@
 │       ├── purchase.py
 │       ├── purchase_export.py
 │       ├── purchase_import.py
+│       ├── purchase_import_base.py
+│       ├── purchase_import_old.py
 │       ├── reservationexpe.py
 │       ├── resourceaction.py
 │       ├── review.py
@@ -945,7 +972,9 @@
 │   │   ├── imports
 │   │   │   ├── README.md
 │   │   │   ├── achats_id.json
+│   │   │   ├── achats_id_old.json
 │   │   │   ├── achats_siret.json
+│   │   │   ├── achats_siret_old.json
 │   │   │   ├── bilans_detaille.json
 │   │   │   ├── bilans_simple_id.json
 │   │   │   ├── bilans_simple_siret.json
@@ -1523,13 +1552,12 @@
     │   │   ├── Webinaire6-MaCantine.pdf
     │   │   ├── Webinaire6-Secteur.pdf
     │   │   ├── Webinaire_*.pdf  (18 files)
-    │   │   ├── achats_fichier_exemple_fichier_accepte.jpg
-    │   │   ├── achats_fichier_exemple_fichier_rejete.jpg
-    │   │   ├── achats_fichier_exemple_ma_cantine.csv
-    │   │   ├── achats_fichier_exemple_ma_cantine.xlsx
-    │   │   ├── achats_siret_fichier_exemple_fichier_accepte.jpg
-    │   │   ├── achats_siret_fichier_exemple_fichier_rejete.jpg
-    │   │   ├── achats_siret_fichier_exemple_ma_cantine.csv
+    │   │   ├── achats_*.jpg  (8 files)
+    │   │   ├── achats_id_ancien_format_fichier_exemple_ma_cantine.csv
+    │   │   ├── achats_id_ancien_format_fichier_exemple_ma_cantine.xlsx
+    │   │   ├── achats_id_fichier_exemple_ma_cantine.xlsx
+    │   │   ├── achats_siret_ancien_format_fichier_exemple_ma_cantine.csv
+    │   │   ├── achats_siret_ancien_format_fichier_exemple_ma_cantine.xlsx
     │   │   ├── achats_siret_fichier_exemple_ma_cantine.xlsx
     │   │   ├── admin_importer_des_cantines_exemple_ma_cantine.csv
     │   │   ├── annuaire_des_exploitations_hve_janvier_2022(1).xlsx
@@ -1738,4 +1766,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1666 files
+140 directories, 1701 files
