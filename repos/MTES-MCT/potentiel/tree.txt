@@ -324,7 +324,6 @@
 │   │   │   │   │       ├── helpers
 │   │   │   │   │       │   ├── formatDateForPdf.ts
 │   │   │   │   │       │   ├── formatNumber.ts
-│   │   │   │   │       │   ├── getDésignationCatégorie.ts
 │   │   │   │   │       │   ├── getFinancementEtTemplate.ts
 │   │   │   │   │       │   ├── index.ts
 │   │   │   │   │       │   └── makeAddFootnotes.ts
@@ -4100,20 +4099,6 @@
 │   │   │   │   ├── mockEmailAdapter.ts
 │   │   │   │   ├── mockRécupererGarantiesFinancières.ts
 │   │   │   │   └── mockRécupérerGRDParVilleAdapter.ts
-│   │   │   ├── accès
-│   │   │   │   ├── accès.world.ts
-│   │   │   │   ├── fixtures
-│   │   │   │   │   ├── remplacer
-│   │   │   │   │   │   └── remplacerAccèsProjet.fixture.ts
-│   │   │   │   │   └── réclamer
-│   │   │   │   │       └── réclamerProjet.fixture.ts
-│   │   │   │   ├── remplacerAccèsProjet.feature
-│   │   │   │   ├── retirerAccèsProjet.feature
-│   │   │   │   ├── réclamerProjet.feature
-│   │   │   │   └── stepDefinitions
-│   │   │   │       ├── accès.given.ts
-│   │   │   │       ├── accès.then.ts
-│   │   │   │       └── accès.when.ts
 │   │   │   ├── candidature
 │   │   │   │   ├── candidature.exempleMap.ts
 │   │   │   │   ├── candidature.world.ts
@@ -4168,6 +4153,20 @@
 │   │   │   │       └── notification.then.ts
 │   │   │   ├── potentiel.world.ts
 │   │   │   ├── projet
+│   │   │   │   ├── accès
+│   │   │   │   │   ├── accès.world.ts
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── remplacer
+│   │   │   │   │   │   │   └── remplacerAccèsProjet.fixture.ts
+│   │   │   │   │   │   └── réclamer
+│   │   │   │   │   │       └── réclamerProjet.fixture.ts
+│   │   │   │   │   ├── remplacerAccèsProjet.feature
+│   │   │   │   │   ├── retirerAccèsProjet.feature
+│   │   │   │   │   ├── réclamerProjet.feature
+│   │   │   │   │   └── stepDefinitions
+│   │   │   │   │       ├── accès.given.ts
+│   │   │   │   │       ├── accès.then.ts
+│   │   │   │   │       └── accès.when.ts
 │   │   │   │   ├── lauréat
 │   │   │   │   │   ├── abandon
 │   │   │   │   │   │   ├── abandon.world.ts
@@ -4404,6 +4403,60 @@
 │   │   │   │   │   │   └── stepDefinitions
 │   │   │   │   │   │       ├── puissance.then.ts
 │   │   │   │   │   │       └── puissance.when.ts
+│   │   │   │   │   ├── raccordement
+│   │   │   │   │   │   ├── dateDeMiseEnService
+│   │   │   │   │   │   │   ├── dateMiseEnService.world.ts
+│   │   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   │   ├── modifierDateDeMiseEnService.fixture.ts
+│   │   │   │   │   │   │   │   └── transmettreDateDeMiseEnService.fixture.ts
+│   │   │   │   │   │   │   ├── modifierDateMiseEnService.feature
+│   │   │   │   │   │   │   ├── stepDefinitions
+│   │   │   │   │   │   │   │   ├── dateMiseEnService.given.ts
+│   │   │   │   │   │   │   │   ├── dateMiseEnService.then.ts
+│   │   │   │   │   │   │   │   └── dateMiseEnService.when.ts
+│   │   │   │   │   │   │   ├── supprimerDateMiseEnService.feature
+│   │   │   │   │   │   │   └── transmettreDateMiseEnService.feature
+│   │   │   │   │   │   ├── demandeComplèteDeRaccordement
+│   │   │   │   │   │   │   ├── demandeComplèteRaccordement.world.ts
+│   │   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   │   ├── importerDemandeComplèteDeRaccordement.fixture.ts
+│   │   │   │   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.fixture.ts
+│   │   │   │   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.fixture.ts
+│   │   │   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.feature
+│   │   │   │   │   │   │   ├── modifierRéférenceDemandeComplèteDeRaccordement.feature
+│   │   │   │   │   │   │   ├── stepDefinitions
+│   │   │   │   │   │   │   │   ├── demandeComplèteRaccordement.given.ts
+│   │   │   │   │   │   │   │   ├── demandeComplèteRaccordement.then.ts
+│   │   │   │   │   │   │   │   └── demandeComplèteRaccordement.when.ts
+│   │   │   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.feature
+│   │   │   │   │   │   ├── dossierRaccordement
+│   │   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   │   └── modifierRéférenceDossierRaccordement.fixture.ts
+│   │   │   │   │   │   │   ├── stepDefinitions
+│   │   │   │   │   │   │   │   ├── dossierRaccordement.then.ts
+│   │   │   │   │   │   │   │   └── dossierRaccordement.when.ts
+│   │   │   │   │   │   │   └── supprimerDossierDuRaccordement.feature
+│   │   │   │   │   │   ├── gestionnaireRéseau
+│   │   │   │   │   │   │   ├── attribuerGestionnaireRéseauRaccordement.feature
+│   │   │   │   │   │   │   ├── modifierGestionnaireRéseauRaccordement.feature
+│   │   │   │   │   │   │   └── stepDefinitions
+│   │   │   │   │   │   │       ├── gestionnaireRéseauRaccordement.given.ts
+│   │   │   │   │   │   │       ├── gestionnaireRéseauRaccordement.then.ts
+│   │   │   │   │   │   │       └── gestionnaireRéseauRaccordement.when.ts
+│   │   │   │   │   │   ├── propositionTechniqueEtFinancière
+│   │   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.fixture.ts
+│   │   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.fixture.ts
+│   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.feature
+│   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.world.ts
+│   │   │   │   │   │   │   ├── stepDefinitions
+│   │   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.given.ts
+│   │   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.then.ts
+│   │   │   │   │   │   │   │   └── propositionTechniqueEtFinancière.when.ts
+│   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.feature
+│   │   │   │   │   │   ├── raccordement.world.ts
+│   │   │   │   │   │   └── stepDefinitions
+│   │   │   │   │   │       └── raccordement.then.ts
 │   │   │   │   │   ├── représentant-légal
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── accorderChangementReprésentantLégal.feature
@@ -4469,60 +4522,6 @@
 │   │   │   │       ├── période.given.ts
 │   │   │   │       ├── période.then.ts
 │   │   │   │       └── période.when.ts
-│   │   │   ├── raccordement
-│   │   │   │   ├── dateDeMiseEnService
-│   │   │   │   │   ├── dateMiseEnService.world.ts
-│   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   ├── modifierDateDeMiseEnService.fixture.ts
-│   │   │   │   │   │   └── transmettreDateDeMiseEnService.fixture.ts
-│   │   │   │   │   ├── modifierDateMiseEnService.feature
-│   │   │   │   │   ├── stepDefinitions
-│   │   │   │   │   │   ├── dateMiseEnService.given.ts
-│   │   │   │   │   │   ├── dateMiseEnService.then.ts
-│   │   │   │   │   │   └── dateMiseEnService.when.ts
-│   │   │   │   │   ├── supprimerDateMiseEnService.feature
-│   │   │   │   │   └── transmettreDateMiseEnService.feature
-│   │   │   │   ├── demandeComplèteDeRaccordement
-│   │   │   │   │   ├── demandeComplèteRaccordement.world.ts
-│   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   ├── importerDemandeComplèteDeRaccordement.fixture.ts
-│   │   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.fixture.ts
-│   │   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.fixture.ts
-│   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.feature
-│   │   │   │   │   ├── modifierRéférenceDemandeComplèteDeRaccordement.feature
-│   │   │   │   │   ├── stepDefinitions
-│   │   │   │   │   │   ├── demandeComplèteRaccordement.given.ts
-│   │   │   │   │   │   ├── demandeComplèteRaccordement.then.ts
-│   │   │   │   │   │   └── demandeComplèteRaccordement.when.ts
-│   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.feature
-│   │   │   │   ├── dossierRaccordement
-│   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   └── modifierRéférenceDossierRaccordement.fixture.ts
-│   │   │   │   │   ├── stepDefinitions
-│   │   │   │   │   │   ├── dossierRaccordement.then.ts
-│   │   │   │   │   │   └── dossierRaccordement.when.ts
-│   │   │   │   │   └── supprimerDossierDuRaccordement.feature
-│   │   │   │   ├── gestionnaireRéseau
-│   │   │   │   │   ├── attribuerGestionnaireRéseauRaccordement.feature
-│   │   │   │   │   ├── modifierGestionnaireRéseauRaccordement.feature
-│   │   │   │   │   └── stepDefinitions
-│   │   │   │   │       ├── gestionnaireRéseauRaccordement.given.ts
-│   │   │   │   │       ├── gestionnaireRéseauRaccordement.then.ts
-│   │   │   │   │       └── gestionnaireRéseauRaccordement.when.ts
-│   │   │   │   ├── propositionTechniqueEtFinancière
-│   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.fixture.ts
-│   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.fixture.ts
-│   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.feature
-│   │   │   │   │   ├── propositionTechniqueEtFinancière.world.ts
-│   │   │   │   │   ├── stepDefinitions
-│   │   │   │   │   │   ├── propositionTechniqueEtFinancière.given.ts
-│   │   │   │   │   │   ├── propositionTechniqueEtFinancière.then.ts
-│   │   │   │   │   │   └── propositionTechniqueEtFinancière.when.ts
-│   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.feature
-│   │   │   │   ├── raccordement.world.ts
-│   │   │   │   └── stepDefinitions
-│   │   │   │       └── raccordement.then.ts
 │   │   │   ├── setup.ts
 │   │   │   ├── shared
 │   │   │   │   ├── customParameters.ts
@@ -4636,4 +4635,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1126 directories, 3512 files
+1126 directories, 3511 files
