@@ -1,32 +1,29 @@
-## Changelog : fondation (30 derniers jours, au 23 juin 2026)
+## Changelog : fondation (30 derniers jours, au 2026-06-25)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des documents, notamment des agendas et des rapports, avec des fonctionnalités d'archivage, de sélection de fichiers et d'amélioration de l'expérience utilisateur. Des refactorings importants ont été effectués pour adopter une architecture plus moderne et maintenable, basée sur des fonctionnalités. Des corrections de sécurité et des mises à jour de dépendances ont également été intégrées.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'interface utilisateur, notamment au niveau de la gestion des agendas et des fichiers, ainsi que sur la migration vers une nouvelle architecture frontale plus modulaire et maintenable. Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de la sélection des fichiers d'agenda : ajout de la possibilité de pré-sélectionner des fichiers et de verrouiller les fichiers officiellement rapportés. [#381](https://github.com/betagouv/fondation/issues/381)
-- Ajout de la possibilité de donner un avis (fonction "Je donne mon avis"). [#360](https://github.com/betagouv/fondation/issues/360)
-- Ajout de la gestion des membres absents dans les plans de présentation. [#334](https://github.com/betagouv/fondation/issues/334)
-- Amélioration de l'éditeur de documents avec un éditeur WYSIWYG. [#352](https://github.com/betagouv/fondation/issues/352)
-- Ajout de la possibilité d'ajouter des pièces jointes aux dossiers de nomination. [#407](https://github.com/betagouv/fondation/issues/407)
-- Amélioration de l'affichage des données dans les rapports officiels, notamment l'heure de fin et la gestion des agendas. [#378](https://github.com/betagouv/fondation/issues/378), [#380](https://github.com/betagouv/fondation/issues/380), [#368](https://github.com/betagouv/fondation/issues/368)
-- Amélioration de la gestion de l'archivage des sessions. [#361](https://github.com/betagouv/fondation/issues/361), [#364](https://github.com/betagouv/fondation/issues/364)
-- Ajout de la possibilité de renoncer à un plan de présentation. [#376](https://github.com/betagouv/fondation/issues/376)
-- Amélioration de la gestion des statuts des sessions. [#362](https://github.com/betagouv/fondation/issues/362)
+- Amélioration de la sélection des fichiers d'agenda et ajout de la possibilité de verrouiller les fichiers une fois qu'ils sont officiellement rapportés. [#384](https://github.com/betagouv/fondation/issues/384)
+- Possibilité d'ajouter des pièces jointes aux dossiers de nomination. [#407](https://github.com/betagouv/fondation/issues/407)
+- Ajout de la possibilité de renoncer à des présentations de plans. [#378](https://github.com/betagouv/fondation/issues/378)
+- Amélioration de l'affichage des informations sur les sessions, notamment l'heure de fin dans les rapports officiels. [#379](https://github.com/betagouv/fondation/issues/379)
+- Remplacement du modal de magistrat par un panneau latéral pour une meilleure expérience utilisateur. [#439](https://github.com/betagouv/fondation/issues/439)
+- Amélioration de l'affichage des plans avec la possibilité de trier les membres par ordre de protocole. [#384](https://github.com/betagouv/fondation/issues/384)
+- Ajout de la possibilité de filtrer les fichiers déjà rapportés dans l'agenda. [#397](https://github.com/betagouv/fondation/issues/397)
 
 ### Évolutions techniques
-- Refactoring important de l'architecture frontend vers une approche "feature-first" pour une meilleure organisation et maintenabilité du code. [#434](https://github.com/betagouv/fondation/issues/434), [#433](https://github.com/betagouv/fondation/issues/433), [#432](https://github.com/betagouv/fondation/issues/432), [#431](https://github.com/betagouv/fondation/issues/431), [#430](https://github.com/betagouv/fondation/issues/430), [#429](https://github.com/betagouv/fondation/issues/429), [#428](https://github.com/betagouv/fondation/issues/428), [#427](https://github.com/betagouv/fondation/issues/427)
-- Mise en place de Vitest et Storybook pour les tests et le développement des composants. [#409](https://github.com/betagouv/fondation/issues/409)
-- Utilisation des tokens de couleurs DSFR au lieu des couleurs Tailwind natives. [#418](https://github.com/betagouv/fondation/issues/418)
-- Migration vers SheetJS pour la gestion des fichiers Excel.
-- Amélioration de la configuration du workflow de publication.
-- Utilisation de lolfi pour la génération des données de test. [#398](https://github.com/betagouv/fondation/issues/398)
+- Migration vers Vitest pour les tests unitaires. [#437](https://github.com/betagouv/fondation/issues/437)
+- Refactoring de plusieurs modules (admin, reports, summary, auth, shared) vers une architecture frontale basée sur des "features" pour une meilleure organisation et maintenabilité. [#426](https://github.com/betagouv/fondation/issues/426), [#427](https://github.com/betagouv/fondation/issues/427), [#428](https://github.com/betagouv/fondation/issues/428), [#429](https://github.com/betagouv/fondation/issues/429), [#430](https://github.com/betagouv/fondation/issues/430), [#431](https://github.com/betagouv/fondation/issues/431), [#432](https://github.com/betagouv/fondation/issues/432), [#433](https://github.com/betagouv/fondation/issues/433)
+- Utilisation de tokens de couleurs DSFR au lieu des couleurs Tailwind natives. [#418](https://github.com/betagouv/fondation/issues/418)
+- Suppression de packages `shared-models` inutilisés. [#426](https://github.com/betagouv/fondation/issues/426)
+- Mise à jour de plusieurs dépendances (piscina, react-router, vite, react monorepo) pour corriger des failles de sécurité et bénéficier des dernières améliorations. [#422](https://github.com/betagouv/fondation/issues/422), [#423](https://github.com/betagouv/fondation/issues/423), [#435](https://github.com/betagouv/fondation/issues/435)
+- Utilisation de SheetJS pour la gestion des fichiers Excel.
 
 ### Autres changements
-- Ajout d'une documentation ADR pour l'architecture "feature-first" du frontend. [#434](https://github.com/betagouv/fondation/issues/434)
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité et améliorer la stabilité.
-- Suppression de composants et de modèles inutilisés. [#426](https://github.com/betagouv/fondation/issues/426)
-- Amélioration de la configuration de Renovate pour éviter les problèmes de mémoire. [#420](https://github.com/betagouv/fondation/issues/420)
-- Ajout de tests d'acceptation avec Playwright.
-- Mise à jour de la documentation README. [#392](https://github.com/betagouv/fondation/issues/392)
-- Correction de divers bugs et améliorations de l'expérience utilisateur mineures.
+- Ajout d'une documentation pour l'architecture frontale "feature-first". [#434](https://github.com/betagouv/fondation/issues/434)
+- Amélioration de la configuration du CI/CD pour éviter les limites de mémoire de Renovate. [#420](https://github.com/betagouv/fondation/issues/420)
+- Correction de plusieurs bugs mineurs liés à l'affichage et à la gestion des données.
+- Mise à jour de la documentation et des tests.
+- Amélioration de la gestion des priorités. [#414](https://github.com/betagouv/fondation/issues/414)
+- Ajout de tests pour la documentation. [#399](https://github.com/betagouv/fondation/issues/399)

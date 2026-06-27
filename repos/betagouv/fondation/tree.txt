@@ -149,6 +149,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260619181638_openid
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260624075501_adds_file_size
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260625165922_rename_file_size_to_size_in_bytes
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -657,14 +661,11 @@
 │   │   │   │   └── lodam
 │   │   │   │       └── lodam_transparence.xlsx
 │   │   │   ├── docker-compose-test.yaml
-│   │   │   ├── jest
-│   │   │   │   ├── jest-all.config.ts
-│   │   │   │   ├── jest-e2e.config.ts
-│   │   │   │   └── jest.config.ts
 │   │   │   └── utils
 │   │   │       └── lolfi.ts
 │   │   ├── tsconfig.build.json
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.ts
 │   └── client
 │       ├── .gitignore
 │       ├── .oxfmtrc.json
@@ -787,18 +788,59 @@
 │       │   │   │   │   └── cells
 │       │   │   │   │       ├── NominationFilesPriorityCell.tsx
 │       │   │   │   │       ├── NominationFilesPrioritySelectorCell.tsx
-│       │   │   │   │       ├── magistrat-details
-│       │   │   │   │       │   ├── MagistratAttachments.tsx
-│       │   │   │   │       │   ├── MagistratDetails.tsx
-│       │   │   │   │       │   ├── MagistratDnModale.tsx
-│       │   │   │   │       │   ├── MagistratSummaryButton.tsx
-│       │   │   │   │       │   ├── magistrat-comment
-│       │   │   │   │       │   │   ├── MagistratComment.tsx
-│       │   │   │   │       │   │   ├── MagistratCommentEdit.tsx
-│       │   │   │   │       │   │   └── MagistratCommentView.tsx
-│       │   │   │   │       │   └── member-memo
-│       │   │   │   │       │       ├── MemberMemo.css
-│       │   │   │   │       │       └── MemberMemo.tsx
+│       │   │   │   │       ├── magistrat-side-panel
+│       │   │   │   │       │   ├── components
+│       │   │   │   │       │   │   ├── MagistratDetails.tsx
+│       │   │   │   │       │   │   ├── MagistratPanel.tsx
+│       │   │   │   │       │   │   ├── MagistratPanelTrigger.tsx
+│       │   │   │   │       │   │   ├── magistrat-attachments
+│       │   │   │   │       │   │   │   ├── MagistratAttachments.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratAttachments.test.tsx
+│       │   │   │   │       │   │   │   └── MagistratAttachments.tsx
+│       │   │   │   │       │   │   ├── magistrat-biography
+│       │   │   │   │       │   │   │   ├── MagistratBiography.stories.tsx
+│       │   │   │   │       │   │   │   └── MagistratBiography.tsx
+│       │   │   │   │       │   │   ├── magistrat-career-info
+│       │   │   │   │       │   │   │   ├── MagistratCareerInfo.stories.tsx
+│       │   │   │   │       │   │   │   └── MagistratCareerInfo.tsx
+│       │   │   │   │       │   │   ├── magistrat-header
+│       │   │   │   │       │   │   │   ├── MagistratAffectationFields.test.tsx
+│       │   │   │   │       │   │   │   ├── MagistratAffectationFields.tsx
+│       │   │   │   │       │   │   │   ├── MagistratHeader.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratHeader.test.tsx
+│       │   │   │   │       │   │   │   └── MagistratHeader.tsx
+│       │   │   │   │       │   │   ├── magistrat-observations
+│       │   │   │   │       │   │   │   ├── MagistratObservations.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratObservations.test.tsx
+│       │   │   │   │       │   │   │   └── MagistratObservations.tsx
+│       │   │   │   │       │   │   ├── magistrat-outcome
+│       │   │   │   │       │   │   │   ├── MagistratOutcome.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratOutcome.tsx
+│       │   │   │   │       │   │   │   ├── MagistratOutcomeSelect.test.tsx
+│       │   │   │   │       │   │   │   └── MagistratOutcomeSelect.tsx
+│       │   │   │   │       │   │   ├── magistrat-summary
+│       │   │   │   │       │   │   │   ├── MagistratSummary.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratSummary.tsx
+│       │   │   │   │       │   │   │   └── MagistratSummaryButton.tsx
+│       │   │   │   │       │   │   ├── member-memo
+│       │   │   │   │       │   │   │   ├── MemberMemo.stories.tsx
+│       │   │   │   │       │   │   │   ├── MemberMemo.test.tsx
+│       │   │   │   │       │   │   │   └── MemberMemo.tsx
+│       │   │   │   │       │   │   └── sg-comment
+│       │   │   │   │       │   │       ├── SgComment.stories.tsx
+│       │   │   │   │       │   │       ├── SgComment.test.tsx
+│       │   │   │   │       │   │       └── SgComment.tsx
+│       │   │   │   │       │   ├── context
+│       │   │   │   │       │   │   ├── MagistratPanelProvider.test.tsx
+│       │   │   │   │       │   │   ├── MagistratPanelProvider.tsx
+│       │   │   │   │       │   │   └── magistrat-panel.context.ts
+│       │   │   │   │       │   └── hooks
+│       │   │   │   │       │       ├── use-magistrat-affectation
+│       │   │   │   │       │       │   ├── use-magistrat-affectation.hook.ts
+│       │   │   │   │       │       │   └── use-magistrat-affectation.test.ts
+│       │   │   │   │       │       └── use-unsaved-guard
+│       │   │   │   │       │           ├── use-unsaved-guard.hook.ts
+│       │   │   │   │       │           └── use-unsaved-guard.test.tsx
 │       │   │   │   │       ├── nomination-file-outcome
 │       │   │   │   │       │   ├── NominationFileDocStatusBadge.tsx
 │       │   │   │   │       │   ├── NominationFileOutcome.tsx
@@ -818,8 +860,10 @@
 │       │   │   │   │       │   ├── ObservantsCell.tsx
 │       │   │   │   │       │   ├── ObservationForm.tsx
 │       │   │   │   │       │   ├── ObservationsList.tsx
-│       │   │   │   │       │   ├── ObservationsModalContext.ts
-│       │   │   │   │       │   └── ObservationsModalProvider.tsx
+│       │   │   │   │       │   └── context
+│       │   │   │   │       │       ├── ObservationsModalContext.ts
+│       │   │   │   │       │       ├── ObservationsModalProvider.reducer.test.ts
+│       │   │   │   │       │       └── ObservationsModalProvider.tsx
 │       │   │   │   │       ├── reporters
 │       │   │   │   │       │   ├── RapporteursDropdownBase.tsx
 │       │   │   │   │       │   ├── ReportersAlert.tsx
@@ -1076,7 +1120,8 @@
 │       │   │   │   │   └── archived-banner
 │       │   │   │   │       ├── ArchiveBannerPortal.tsx
 │       │   │   │   │       └── ArchivedSessionBanner.tsx
-│       │   │   │   ├── priorities
+│       │   │   │   ├── priority-badge
+│       │   │   │   │   ├── PriorityBadge.stories.tsx
 │       │   │   │   │   └── PriorityBadge.tsx
 │       │   │   │   └── user-avatar
 │       │   │   │       ├── UserAvatar.tsx
@@ -1097,7 +1142,10 @@
 │       │   │   │   ├── useBeforeUnload.ts
 │       │   │   │   ├── useLocallyStoredState.hook.ts
 │       │   │   │   ├── useSelection.hook.ts
+│       │   │   │   ├── useTab.test.ts
 │       │   │   │   └── useTab.ts
+│       │   │   ├── storybook
+│       │   │   │   └── StoryQueryClient.tsx
 │       │   │   └── ui
 │       │   │       ├── Breadcrumb.tsx
 │       │   │       ├── DeleteFileButton.tsx
@@ -1116,6 +1164,10 @@
 │       │   │       │   ├── Card.tsx
 │       │   │       │   └── index.ts
 │       │   │       ├── combobox.tsx
+│       │   │       ├── comment-editor
+│       │   │       │   ├── CommentEditor.stories.tsx
+│       │   │       │   ├── CommentEditor.test.tsx
+│       │   │       │   └── CommentEditor.tsx
 │       │   │       ├── data-table
 │       │   │       │   ├── DataTable.tsx
 │       │   │       │   ├── ReactTableBody.tsx
@@ -1152,6 +1204,14 @@
 │       │   │       │       └── index.ts
 │       │   │       ├── menu.tsx
 │       │   │       ├── ovoid.tsx
+│       │   │       ├── side-panel
+│       │   │       │   ├── SidePanel.stories.tsx
+│       │   │       │   ├── SidePanel.test.tsx
+│       │   │       │   └── SidePanel.tsx
+│       │   │       ├── soft-dropdown
+│       │   │       │   ├── SoftDropdown.stories.tsx
+│       │   │       │   ├── SoftDropdown.test.tsx
+│       │   │       │   └── SoftDropdown.tsx
 │       │   │       └── tip-tap-editor
 │       │   │           ├── MenuBar.tsx
 │       │   │           ├── buttons
@@ -1185,6 +1245,9 @@
 │       │   │   ├── Swatch.tsx
 │       │   │   └── index.css
 │       │   ├── tanstack-react-table.d.ts
+│       │   ├── test-utils
+│       │   │   └── factories
+│       │   │       └── session-nomination-file.factory.ts
 │       │   ├── types
 │       │   │   ├── enums.types.ts
 │       │   │   ├── icons.types.ts
@@ -1193,6 +1256,8 @@
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
 │       │   │   ├── date-only.util.ts
+│       │   │   ├── file.utils.test.ts
+│       │   │   ├── file.utils.ts
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── multipart-json.ts
@@ -1296,4 +1361,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-299 directories, 999 files
+319 directories, 1044 files
