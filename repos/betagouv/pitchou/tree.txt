@@ -24,6 +24,9 @@
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
 │   │   │   ├── hooks.server.ts
+│   │   │   ├── lib
+│   │   │   │   └── server
+│   │   │   │       └── database.ts
 │   │   │   ├── routes
 │   │   │   │   ├── +layout.svelte
 │   │   │   │   ├── +page.server.ts
@@ -117,7 +120,6 @@
 │       │       │   ├── IndicateurDélai.svelte
 │       │       │   ├── IndicateurDélaiPhase.svelte
 │       │       │   ├── SuiviInstruction.svelte
-│       │       │   ├── TagEnjeu.svelte
 │       │       │   ├── TrisDeTh.svelte
 │       │       │   └── triDossiers.ts
 │       │       ├── accessibilite
@@ -336,6 +338,7 @@
 │       │       │   ├── +page.svelte
 │       │       │   ├── AARRIEvolutionChart.svelte
 │       │       │   ├── IndicateursAARRI.svelte
+│       │       │   ├── MatriceImpact.svelte
 │       │       │   ├── StatistiquesConformites.svelte
 │       │       │   └── StatsContenu.svelte
 │       │       ├── taxref
@@ -370,6 +373,7 @@
 │       ├── tests
 │       │   ├── README.md
 │       │   ├── e2e
+│       │   │   ├── dossier-instruction.spec.ts
 │       │   │   ├── failed-login.spec.ts
 │       │   │   ├── login-and-see-dossier.spec.ts
 │       │   │   ├── mes-dossiers.spec.ts
@@ -447,6 +451,7 @@
 │   ├── Gemfile
 │   ├── _config.yml
 │   ├── _includes
+│   │   ├── breadcrumb.html
 │   │   ├── footer.html
 │   │   └── header.html
 │   ├── _layouts
@@ -1192,18 +1197,28 @@
 │   │   │   ├── 20260527182955_unique-dossier-fichier-pieces-jointes-petitionnaire.ts
 │   │   │   ├── 20260529100000_ajout-table-file.ts
 │   │   │   ├── 20260529100100_drop-triggers-suppression-fichiers-avis-expert.ts
-│   │   │   └── 20260606120000_creation-tables-espece-protegee.ts
+│   │   │   ├── 20260606120000_creation-tables-espece-protegee.ts
+│   │   │   ├── 20260622145147_convertir-date-fin-consultation-public-en-date.ts
+│   │   │   ├── 20260623094941_ajout-colonne-enjeu-dossier.ts
+│   │   │   ├── 20260623110921_supprimer-enjeu-politique-et-ecologique-dossier.ts
+│   │   │   └── 20260626120000_supprimer-date-envoi-derniere-contribution-ddep.ts
 │   │   ├── package.json
 │   │   ├── seeds
-│   │   │   └── dev
-│   │   │       ├── 01_dev_user.ts
-│   │   │       ├── 02_espece_taxref.ts
-│   │   │       ├── 02_evenements_metriques.ts
-│   │   │       ├── 02_utilisateurs_aarri.ts
-│   │   │       ├── 03_espece_bdc_statut.ts
-│   │   │       ├── 04_espece_protegee_reference.ts
-│   │   │       ├── 05_espece_protegee_modification_cnpn_ministerielle.ts
-│   │   │       └── 06_espece_protegee_modification_ajouts.ts
+│   │   │   ├── dev
+│   │   │   │   ├── 01_espece_taxref.ts
+│   │   │   │   ├── 02_espece_bdc_statut.ts
+│   │   │   │   ├── 03_espece_protegee_reference.ts
+│   │   │   │   ├── 04_espece_protegee_modification_cnpn_ministerielle.ts
+│   │   │   │   ├── 05_espece_protegee_modification_ajouts.ts
+│   │   │   │   ├── 06_users.ts
+│   │   │   │   ├── 07_evenements_metriques.ts
+│   │   │   │   ├── 08_utilisateurs_aarri.ts
+│   │   │   │   ├── 09_dossier.ts
+│   │   │   │   └── 10_pièces-jointes-pétitionnaire.ts
+│   │   │   └── fixtures
+│   │   │       ├── dossiers.ts
+│   │   │       ├── pièces-jointes-pétitionnaire.ts
+│   │   │       └── users.ts
 │   │   └── tsconfig.json
 │   ├── server
 │   │   ├── package.json
@@ -1370,7 +1385,8 @@
 │   ├── geomce.ts
 │   ├── import-dossiers.ts
 │   ├── package.json
+│   ├── start.sh
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-182 directories, 1234 files
+185 directories, 1247 files
