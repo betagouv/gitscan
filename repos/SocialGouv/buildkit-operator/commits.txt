@@ -1,0 +1,106 @@
+2026-06-27T00:43:20+02:00 - 7bcb4f8 - devthejo : feat(action): gateway-host input for IP-independent gateway addressing
+2026-06-26T23:40:09+02:00 - 3c6daed - devthejo : test(e2e): live end-to-end suite for every feature + OIDC security
+2026-06-26T22:34:29+02:00 - cdfa6ae - devthejo : docs: PoC method — build from PIC + staged OIDC rollout (validated live)
+2026-06-26T21:49:41+02:00 - b346209 - devthejo : feat(security): legacy-bearer fallback while OIDC is enabled (zero-downtime migration)
+2026-06-26T21:20:28+02:00 - f072517 - devthejo : style: gofmt the new OIDC/sweeper test files
+2026-06-26T20:47:38+02:00 - e3ba4ad - devthejo : test(security): cover OIDC config + PVC sweeper; feat: Forgejo/Gitea OIDC provider
+2026-06-26T20:41:39+02:00 - 5758cac - devthejo : Merge branch 'main' into chore/hardening-oidc
+2026-06-26T20:40:02+02:00 - c0e8906 - devthejo : feat(security): verify CI OIDC identity on /route + harden egress, PVC, LB, CI
+2026-06-26T20:10:22+02:00 - 51c0c6c - devthejo : test: cover handleRoute cold-start success path
+2026-06-26T20:04:25+02:00 - 1c3275d - devthejo : test: comprehensive unit test coverage + CI coverage gate
+2026-06-26T18:47:21+02:00 - 2009582 - devthejo : docs: validation report — untrusted/Kata + all features validated live on v0.8.3
+2026-06-26T18:06:49+02:00 - a790994 - devthejo : chore: release v0.8.3
+2026-06-26T18:06:21+02:00 - 059ccbd - devthejo : fix: untrusted/fork builds hung — reaper killed the fork in its birth window
+2026-06-26T17:32:32+02:00 - 8e3de6d - devthejo : docs: update validation report for v0.8.2 (cold-start robustness + measured S3 skip)
+2026-06-26T17:12:46+02:00 - 9190bb8 - devthejo : chore: release v0.8.2
+2026-06-26T17:12:23+02:00 - 9854008 - devthejo : fix(buildd): warm a fresh project reliably + expose readiness on /prewarm
+2026-06-26T16:51:21+02:00 - f9e2324 - devthejo : docs: end-to-end validation & performance report (ovh-prod)
+2026-06-26T15:51:03+02:00 - fa0052c - devthejo : chore: release v0.8.1
+2026-06-26T15:49:49+02:00 - 1862462 - devthejo : fix(build): poll /route in bounded attempts when tunnelling through a proxy
+2026-06-26T14:54:09+02:00 - b932307 - devthejo : chore: release v0.8.0
+2026-06-26T13:55:44+02:00 - ff678ab - devthejo : feat(build): accept base64-encoded mTLS certs (GitLab masked-variable convention)
+2026-06-26T13:52:26+02:00 - 031f29e - devthejo : feat(gateway): multi-domain — one gateway fronts several client populations
+2026-06-26T13:52:06+02:00 - 6c5ea80 - devthejo : fix: harden buildkit operator security
+2026-06-26T13:35:07+02:00 - 714dab1 - devthejo : feat: off-cluster builds behind an egress proxy (gateway on 443 + buildd Ingress + CI tunnel)
+2026-06-26T12:53:54+02:00 - e4aaa84 - devthejo : chore: release v0.7.0
+2026-06-26T12:34:48+02:00 - 73b672b - devthejo : feat(ci): reusable GitLab CI/CD component for builds
+2026-06-26T12:29:09+02:00 - 8ea4899 - devthejo : docs: align all docs with the 3-namespace topology + correct chart values
+2026-06-26T12:12:44+02:00 - 6da8aa6 - devthejo : docs: lessons-learned (Kata/k8s/Helm/BuildKit/OVH gotchas) + kata-deploy SIGTERM warning
+2026-06-26T10:23:45+02:00 - f9b8d84 - devthejo : chore: release v0.6.0
+2026-06-26T10:21:37+02:00 - 644b4f4 - devthejo : fix(helm): nil-safe namespace helpers + only create builds ns
+2026-06-26T09:58:17+02:00 - af4a658 - devthejo : chore: replace Makefile with a go-task Taskfile
+2026-06-26T09:48:58+02:00 - 5061d39 - devthejo : chore(renovate): automate all dependency updates + document dev prerequisites
+2026-06-26T09:39:53+02:00 - 78adcb6 - devthejo : chore(deps): update toolchain to latest + add devbox/direnv dev env
+2026-06-26T09:30:19+02:00 - 30c93dd - devthejo : feat(deploy)!: three-namespace topology (operator / builds / system) + founding ADRs
+2026-06-26T01:20:02+02:00 - 89c17d8 - devthejo : chore: release v0.5.2
+2026-06-26T01:19:56+02:00 - ac7c6d9 - devthejo : fix(helm): nil-safe api.* guard so helm upgrade --reuse-values doesn't break
+2026-06-26T01:18:51+02:00 - 153d900 - devthejo : fix(ci): build golangci-lint from source so its Go version matches go.mod
+2026-06-26T01:14:24+02:00 - 1a5cfad - devthejo : chore: release v0.5.1
+2026-06-26T01:14:11+02:00 - 19a182a - devthejo : fix(ci): lowercase image owner for cosign + disable matrix fail-fast
+2026-06-26T01:07:37+02:00 - 6817809 - devthejo : chore: release v0.5.0
+2026-06-26T01:04:54+02:00 - 3446961 - devthejo : feat: harden CI, supply-chain, observability and robustness from full project review
+2026-06-25T22:26:02Z - a90b10b - github-actions[bot] : chore: release v0.4.1
+2026-06-26T00:24:18+02:00 - c432a8a - devthejo : chore(security): harden chart, supply-chain and ops for production
+2026-06-25T22:20:48Z - cbeb56f - github-actions[bot] : chore: release v0.4.0
+2026-06-26T00:13:52+02:00 - 6591c11 - devthejo : chore(deps): bump Go 1.26.4, buildkit v0.31.1, k8s v0.36.1, controller-runtime v0.24.1
+2026-06-25T23:38:00+02:00 - 3758f9e - devthejo : docs: GitHub repo onboarding guide (org-level creds + copy-paste workflow)
+2026-06-25T23:01:59+02:00 - 61c81a7 - devthejo : chore: release v0.3.0
+2026-06-25T23:01:08+02:00 - 3cd485b - devthejo : feat(certs): opt-in cert-manager issuance for the mTLS material
+2026-06-25T21:29:12+02:00 - b362f2a - devthejo : docs: cover off-cluster auth, supply-chain, LB timeout + production status
+2026-06-25T19:54:58+02:00 - 085b9de - devthejo : fix(helm): raise OVH/OpenStack LB idle timeout so cold-start routes and long builds aren't cut
+2026-06-25T19:10:52+02:00 - a8ffe1e - devthejo : docs(gitops): manifests for the 3 in-service pieces (kata-deploy, Kyverno exclude, operator sandbox)
+2026-06-25T18:57:57+02:00 - 34f8d38 - devthejo : feat(kata): target the whole build nodepool so replacement nodes auto-get Kata (durable)
+2026-06-25T18:52:09+02:00 - 260c791 - devthejo : docs: VM-isolated builds (Kata) + OVH MKS platform notes
+2026-06-25T18:09:54+02:00 - 663a4cc - devthejo : docs(kata): reproducible kata-clh setup for VM-isolated untrusted forks
+2026-06-25T15:18:47Z - 57506f6 - github-actions[bot] : chore: release v0.2.3
+2026-06-25T17:17:42+02:00 - 7290418 - devthejo : feat(sandbox): skip companion for forks; document Kata vCPU floor for nested virt
+2026-06-25T14:40:21Z - 2ffc40a - github-actions[bot] : chore: release v0.2.2
+2026-06-25T16:30:08+02:00 - 72553fb - devthejo : feat(sandbox): run sandboxed forks privileged + non-rootless (Kata microVM)
+2026-06-25T14:19:51+02:00 - 2137727 - devthejo : style: gofmt router_test.go (comment alignment)
+2026-06-25T13:59:52+02:00 - 219ec50 - devthejo : fix: close metadata egress, release leaked inflight, normalize repo ports
+2026-06-25T11:26:54Z - 5c83198 - github-actions[bot] : chore: release v0.2.1
+2026-06-25T13:20:00+02:00 - 1b22e91 - devthejo : fix: harden routing, lifecycle and gateway (full review remediation)
+2026-06-25T11:13:51Z - 3026f2a - github-actions[bot] : chore: release v0.2.0
+2026-06-25T12:46:19+02:00 - 6a843f9 - devthejo : feat(daemon): bump default buildkit image to v0.22.0-rootless (ovh-prod parity)
+2026-06-25T11:56:06+02:00 - 761f6f2 - devthejo : feat(scheduling): pin daemon pods to a dedicated build nodepool
+2026-06-25T11:31:29+02:00 - 9fbf73e - devthejo : ci(release): best-effort dispatch images.yml on the new tag (token can't auto-trigger it)
+2026-06-25T11:21:23+02:00 - 2cdd912 - devthejo : fix(release): create the GitHub release via gh CLI (release-it octokit call crashes on v17)
+2026-06-25T09:16:41Z - 76a7401 - github-actions[bot] : chore: release v0.1.0
+2026-06-25T11:16:14+02:00 - 3cb4cd1 - devthejo : fix(release): use npm ci so release-it sees a clean working dir
+2026-06-25T11:13:20+02:00 - 6a7852b - devthejo : build(release): support releasing the current version as-is (--no-increment)
+2026-06-25T10:48:12+02:00 - e1647cc - devthejo : feat(security): opt-in internet-less egress for untrusted fork daemons
+2026-06-25T10:23:53+02:00 - 5d75ccc - devthejo : build(release): release-it + OCI Helm chart publishing + versioned releases
+2026-06-25T09:41:11+02:00 - 5f273d3 - devthejo : test(builder): sandbox RuntimeClass applies to fork daemons only
+2026-06-25T09:33:23+02:00 - 5f2dc25 - devthejo : feat: pull-through cache (base-image mirror) + sandboxed runtime for fork daemons
+2026-06-25T09:14:20+02:00 - c439b04 - devthejo : feat(security): daemon egress NetworkPolicy + supply-chain attestations in the Action
+2026-06-25T08:39:17+02:00 - 2f13fd3 - devthejo : feat(action): optional gateway-ip input (no-wildcard-DNS escape hatch) + skip image rebuilds on docs/action changes
+2026-06-25T08:31:26+02:00 - d3be0ef - devthejo : fix(status): RetryOnConflict for touchLastBuild (correct the prior MergeFrom attempt)
+2026-06-25T08:20:26+02:00 - c58cb40 - devthejo : fix(status): MergeFrom patches for LastBuildTime + reconciler status (no clobber)
+2026-06-25T08:00:21+02:00 - 1d99974 - devthejo : docs: commercial README (emoji features, no milestones) + de-narrate the deep docs
+2026-06-25T07:50:59+02:00 - 2ec9152 - devthejo : feat(ci): reusable composite GitHub Action (action.yml + scripts/build.sh)
+2026-06-25T07:36:04+02:00 - f013fd9 - devthejo : docs(pages): mkdocs-material GitHub Pages site (renders Mermaid) + architecture diagram
+2026-06-25T07:32:36+02:00 - bbe2725 - devthejo : docs: github-domain API group + Mermaid flow diagrams
+2026-06-25T07:23:41+02:00 - d8807c3 - devthejo : refactor: rename buildcat -> buildkit-operator
+2026-06-25T06:29:07+02:00 - 403f7a9 - devthejo : fix(controller): fully reconcile the daemon Service + StatefulSet, not just replicas
+2026-06-25T01:00:15+02:00 - bc4f8c0 - devthejo : docs: align with the architecture realignment (promote, derive, name, S3 policy, gateway, companion)
+2026-06-25T00:49:57+02:00 - 4de4fc5 - devthejo : refactor(companion): drop the dead heartbeat; add cold-start histogram
+2026-06-25T00:40:15+02:00 - b0668a0 - devthejo : feat(gateway): single shared SNI gateway, deterministic endpoint, ClusterIP daemons
+2026-06-25T00:25:43+02:00 - dd50077 - devthejo : feat(s3): cold cache as a project policy (buildd-driven, creds on the daemon)
+2026-06-25T00:15:57+02:00 - cb6ce42 - devthejo : feat(router): optional Name component in the key for monorepos
+2026-06-25T00:10:03+02:00 - 570610d - devthejo : refactor: unify fork + clone derivation via api.DeriveChild
+2026-06-25T00:07:20+02:00 - ac88937 - devthejo : refactor(M5): remove the unimplemented promote/lineage
+2026-06-24T23:26:55+02:00 - 8f0fded - devthejo : fix(controller): default IdleTimeoutSec in applyDefaults (warm scale-to-zero bug)
+2026-06-24T23:21:16+02:00 - 0ed68a0 - devthejo : refactor: simplify per /simplify (reuse, dedup, no-op write guard)
+2026-06-24T23:07:10+02:00 - eb45577 - devthejo : chore: remove unused Build CRD (dead scaffolding, no reconciler)
+2026-06-24T22:59:07+02:00 - 519ea1a - devthejo : docs: capture session learnings (security, S3 cold cache, perf, comparison, ops)
+2026-06-24T20:42:14+02:00 - 63932b3 - devthejo : feat(gateway): optional LoadBalancer exposure for off-cluster CI
+2026-06-24T18:48:24+02:00 - 1b05bf4 - devthejo : feat(ha): leader election for buildd (run multiple replicas)
+2026-06-24T18:37:48+02:00 - daae420 - devthejo : docs: MIT license
+2026-06-24T18:30:42+02:00 - e58af2e - devthejo : docs: add README (architecture, milestones, install, usage)
+2026-06-24T16:53:07+02:00 - f777fce - devthejo : chore: home in github.com/socialgouv/buildcat — module rename, CI, helm fix
+2026-06-24T16:31:49+02:00 - 0800e61 - devthejo : feat(m5): conditional fan-out (CoW clones) + promote mechanic
+2026-06-24T16:13:14+02:00 - d8adb5c - devthejo : feat(m4): observability, fork-PR isolation, cold-start backpressure
+2026-06-24T15:06:38+02:00 - db8966f - devthejo : feat(m3): durability — periodic in-use snapshots + restore-from-snapshot
+2026-06-24T14:39:15+02:00 - 4e9feae - devthejo : feat(m2): elasticity — tier-aware scale-to-zero, /prewarm, warm pool
+2026-06-24T13:50:02+02:00 - 337bd89 - devthejo : fix(builder): unset allowPrivilegeEscalation for rootless; optional companion; buildd --context
+2026-06-24T13:42:41+02:00 - 063a3df - devthejo : feat: M1 scaffold — buildcat control plane (daemon-per-project on OVH)

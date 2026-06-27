@@ -1,0 +1,186 @@
+.
+├── .envrc
+├── .github
+│   ├── renovate.json5
+│   └── workflows
+│       ├── ci.yml
+│       ├── images.yml
+│       ├── pages.yml
+│       └── release.yml
+├── .gitignore
+├── .golangci.yml
+├── .release-it.json
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── Taskfile.yml
+├── action.yml
+├── api
+│   └── v1alpha1
+│       ├── buildproject_types.go
+│       ├── defaults.go
+│       ├── defaults_test.go
+│       ├── derive.go
+│       ├── derive_test.go
+│       ├── groupversion_info.go
+│       └── zz_generated.deepcopy.go
+├── cmd
+│   ├── build
+│   │   ├── exec_stub_test.go
+│   │   ├── main.go
+│   │   └── main_test.go
+│   ├── buildd
+│   │   ├── Dockerfile
+│   │   ├── account.go
+│   │   ├── auth_test.go
+│   │   ├── certs.go
+│   │   ├── certs_test.go
+│   │   ├── coverage_test.go
+│   │   ├── main.go
+│   │   ├── oidc_route_test.go
+│   │   ├── route.go
+│   │   ├── route_handlers_test.go
+│   │   ├── route_test.go
+│   │   └── server.go
+│   ├── companion
+│   │   ├── Dockerfile
+│   │   ├── drain.go
+│   │   ├── drain_test.go
+│   │   ├── env.go
+│   │   ├── env_test.go
+│   │   ├── exec.go
+│   │   ├── exec_stub_test.go
+│   │   ├── inode.go
+│   │   ├── inode_test.go
+│   │   ├── main.go
+│   │   ├── state.go
+│   │   ├── state_test.go
+│   │   └── subprocess_test.go
+│   └── gateway
+│       ├── Dockerfile
+│       ├── handle_test.go
+│       ├── main.go
+│       ├── pipe_test.go
+│       ├── sni.go
+│       ├── sni_errors_test.go
+│       └── sni_test.go
+├── deploy
+│   ├── README.md
+│   ├── cert
+│   │   ├── .certs
+│   │   │   └── .gitignore
+│   │   └── create-certs.sh
+│   ├── config
+│   │   └── buildkitd.toml
+│   ├── crd
+│   │   ├── README.md
+│   │   └── buildkit-operator.socialgouv.github.io_buildprojects.yaml
+│   ├── gitops
+│   │   ├── README.md
+│   │   ├── kata-deploy.flux.yaml
+│   │   └── kyverno-exclude.patch.yaml
+│   ├── helm
+│   │   └── buildkit-operator
+│   │       ├── .helmignore
+│   │       ├── Chart.yaml
+│   │       ├── crds
+│   │       │   ├── README.md
+│   │       │   └── buildkit-operator.socialgouv.github.io_buildprojects.yaml
+│   │       ├── files
+│   │       │   └── buildkitd.toml
+│   │       ├── templates
+│   │       │   ├── NOTES.txt
+│   │       │   ├── _helpers.tpl
+│   │       │   ├── certificates.yaml
+│   │       │   ├── clusterrole.yaml
+│   │       │   ├── clusterrolebinding.yaml
+│   │       │   ├── configmap.yaml
+│   │       │   ├── deployment.yaml
+│   │       │   ├── gateway.yaml
+│   │       │   ├── ingress.yaml
+│   │       │   ├── mirror.yaml
+│   │       │   ├── namespaces.yaml
+│   │       │   ├── networkpolicy.yaml
+│   │       │   ├── oidc-configmap.yaml
+│   │       │   ├── pdb.yaml
+│   │       │   ├── service.yaml
+│   │       │   └── serviceaccount.yaml
+│   │       └── values.yaml
+│   ├── kata
+│   │   ├── README.md
+│   │   ├── kata-clh-vcpu-tune.yaml
+│   │   └── kata-deploy-values.yaml
+│   ├── rbac
+│   │   └── role.yaml
+│   └── warm-pool.yaml
+├── devbox.json
+├── devbox.lock
+├── docs
+│   ├── README.md
+│   ├── adr
+│   │   ├── 0001-control-plane-over-vanilla-buildkit.md
+│   │   ├── 0002-reject-distributed-snapshotter.md
+│   │   ├── 0003-scale-to-zero-retained-pvc.md
+│   │   ├── 0004-shared-sni-gateway.md
+│   │   ├── 0005-kata-clh-for-untrusted-forks.md
+│   │   ├── 0006-namespace-topology.md
+│   │   └── README.md
+│   ├── architecture.md
+│   ├── benchmarks-phase0.md
+│   ├── ci-integration.md
+│   ├── comparison-buildkit-service.md
+│   ├── lessons-learned.md
+│   ├── onboarding.md
+│   ├── operations.md
+│   ├── performance.md
+│   ├── platform-ovh-mks.md
+│   ├── poc-pic-oidc.md
+│   ├── sandboxed-builds.md
+│   ├── security.md
+│   ├── storage-and-cold-cache.md
+│   └── validation-report.md
+├── go.mod
+├── go.sum
+├── hack
+│   ├── boilerplate.go.txt
+│   └── coverage.sh
+├── internal
+│   ├── builder
+│   │   ├── statefulset.go
+│   │   └── statefulset_test.go
+│   ├── controller
+│   │   ├── buildproject_controller.go
+│   │   ├── buildproject_controller_test.go
+│   │   ├── helpers_test.go
+│   │   ├── pvc_sweeper.go
+│   │   └── pvc_sweeper_test.go
+│   ├── identity
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── identity.go
+│   │   ├── identity_test.go
+│   │   └── jwt.go
+│   ├── metrics
+│   │   ├── metrics.go
+│   │   └── metrics_test.go
+│   └── router
+│       ├── router.go
+│       └── router_test.go
+├── mkdocs.yml
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── scripts
+│   └── build.sh
+├── templates
+│   ├── README.md
+│   └── build.yml
+└── test
+    └── e2e
+        ├── README.md
+        ├── features_test.go
+        ├── harness_test.go
+        └── security_test.go
+36 directories, 149 files
