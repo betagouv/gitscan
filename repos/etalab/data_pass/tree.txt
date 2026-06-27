@@ -810,6 +810,7 @@
 │   │       │   ├── authorization-request-events.css
 │   │       │   ├── authorization-requests-legal.css
 │   │       │   ├── authorization-requests-scopes.css
+│   │       │   ├── authorization_definition_action_btn.css
 │   │       │   ├── authorization_header.css
 │   │       │   ├── authorization_request_form.css
 │   │       │   ├── authorization_row.css
@@ -818,10 +819,13 @@
 │   │       │   ├── btn-authorization-header-actions.css
 │   │       │   ├── cards.css
 │   │       │   ├── clickable_rows.css
+│   │       │   ├── config_block.css
 │   │       │   ├── contact_card.css
 │   │       │   ├── copiable_field.css
 │   │       │   ├── dashboard_empty_state.css
+│   │       │   ├── definition_card.css
 │   │       │   ├── dsfr_multi_select.css
+│   │       │   ├── edit_definition_block.css
 │   │       │   ├── intro_stepper.css
 │   │       │   ├── loader.css
 │   │       │   ├── malware_badge.css
@@ -835,11 +839,13 @@
 │   │       │   ├── scopes_documentation_accordion.css
 │   │       │   ├── scroll_to_top.css
 │   │       │   ├── search_results.css
+│   │       │   ├── side_panel.css
 │   │       │   ├── simple_action_page_wrapper.css
 │   │       │   ├── sticky_bar.css
 │   │       │   ├── summary_block.css
 │   │       │   ├── timeline_steps.css
-│   │       │   └── unread-messages-dot.css
+│   │       │   ├── unread-messages-dot.css
+│   │       │   └── wide_header.css
 │   │       ├── dsfr-extensions.css
 │   │       ├── dsfr-fonts.css
 │   │       ├── dsfr-utility.css
@@ -869,7 +875,11 @@
 │   │   │   └── demande_alerts_component.rb
 │   │   ├── application_component.rb
 │   │   ├── atoms
-│   │   │   └── color_badge_component.rb
+│   │   │   ├── action_card_component.html.erb
+│   │   │   ├── action_card_component.rb
+│   │   │   ├── color_badge_component.rb
+│   │   │   ├── edit_definition_block_component.html.erb
+│   │   │   └── edit_definition_block_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
@@ -909,14 +919,33 @@
 │   │   │   ├── duration_card_component.html.erb
 │   │   │   ├── duration_card_component.rb
 │   │   │   ├── instruction
-│   │   │   │   └── user_rights
-│   │   │   │       ├── readonly_rights_list_component.html.erb
-│   │   │   │       ├── readonly_rights_list_component.rb
-│   │   │   │       ├── right_field_component.html.erb
-│   │   │   │       ├── right_field_component.rb
-│   │   │   │       ├── table_row_component.html.erb
-│   │   │   │       └── table_row_component.rb
+│   │   │   │   ├── authorization_definition
+│   │   │   │   │   ├── card_component.html.erb
+│   │   │   │   │   ├── card_component.rb
+│   │   │   │   │   ├── config_block_component.html.erb
+│   │   │   │   │   ├── config_block_component.rb
+│   │   │   │   │   ├── config_chip_component.html.erb
+│   │   │   │   │   ├── config_chip_component.rb
+│   │   │   │   │   ├── edit_header_component.html.erb
+│   │   │   │   │   ├── edit_header_component.rb
+│   │   │   │   │   ├── form_card_component.html.erb
+│   │   │   │   │   ├── form_card_component.rb
+│   │   │   │   │   ├── forms_header_component.html.erb
+│   │   │   │   │   ├── forms_header_component.rb
+│   │   │   │   │   ├── show_header_component.html.erb
+│   │   │   │   │   └── show_header_component.rb
+│   │   │   │   ├── user_rights
+│   │   │   │   │   ├── readonly_rights_list_component.html.erb
+│   │   │   │   │   ├── readonly_rights_list_component.rb
+│   │   │   │   │   ├── right_field_component.html.erb
+│   │   │   │   │   ├── right_field_component.rb
+│   │   │   │   │   ├── table_row_component.html.erb
+│   │   │   │   │   └── table_row_component.rb
+│   │   │   │   ├── wide_header.html.erb
+│   │   │   │   └── wide_header.rb
 │   │   │   ├── instructor_banner_notice_component.rb
+│   │   │   ├── side_panel_component.html.erb
+│   │   │   ├── side_panel_component.rb
 │   │   │   ├── stat_card_component.html.erb
 │   │   │   ├── stat_card_component.rb
 │   │   │   └── update_in_progress_notice_component.rb
@@ -1015,12 +1044,15 @@
 │   │   │   ├── abstract_authorization_requests_controller.rb
 │   │   │   ├── approve_authorization_requests_controller.rb
 │   │   │   ├── archive_authorization_requests_controller.rb
+│   │   │   ├── authorization_definitions_controller.rb
 │   │   │   ├── authorization_request_events_controller.rb
 │   │   │   ├── authorization_requests_controller.rb
 │   │   │   ├── authorizations_controller.rb
 │   │   │   ├── cancel_authorization_reopenings_controller.rb
 │   │   │   ├── cancel_next_authorization_request_stages_controller.rb
 │   │   │   ├── dashboard_controller.rb
+│   │   │   ├── form_management_controller.rb
+│   │   │   ├── forms_controller.rb
 │   │   │   ├── france_connected_authorizations_controller.rb
 │   │   │   ├── instructor_draft_requests
 │   │   │   │   └── invite_controller.rb
@@ -1277,8 +1309,10 @@
 │   │   │   ├── scroll_into_view_controller.js
 │   │   │   ├── scroll_to_controller.js
 │   │   │   ├── scroll_to_top_controller.js
+│   │   │   ├── search_list_controller.js
 │   │   │   ├── search_status_controller.js
 │   │   │   ├── show_and_hide_controller.js
+│   │   │   ├── side_panel_controller.js
 │   │   │   ├── stats_controller.js
 │   │   │   ├── sticky_bar_controller.js
 │   │   │   ├── toggle_element_display_based_on_checkbox_controller.js
@@ -1439,7 +1473,8 @@
 │   │   │   │   ├── api_impot_particulier_modalities.rb
 │   │   │   │   ├── api_impot_particulier_scopes.rb
 │   │   │   │   └── extra_contacts_infos.rb
-│   │   │   └── notifications_settings.rb
+│   │   │   ├── notifications_settings.rb
+│   │   │   └── user_roles.rb
 │   │   ├── contact.rb
 │   │   ├── contact_definition.rb
 │   │   ├── data_provider.rb
@@ -1567,6 +1602,7 @@
 │   │   │   └── webhook_policy.rb
 │   │   ├── habilitation_type_policy.rb
 │   │   ├── instruction
+│   │   │   ├── authorization_definition_policy.rb
 │   │   │   ├── authorization_policy.rb
 │   │   │   ├── authorization_request_policy.rb
 │   │   │   ├── instructor_draft_request_policy.rb
@@ -1691,6 +1727,8 @@
 │       ├── authorization_request_forms
 │       │   ├── _authorization_request_form_card.html.erb
 │       │   ├── _form.html.erb
+│       │   ├── _introduction.html.erb
+│       │   ├── _introduction_text.html.erb
 │       │   ├── _unicity_callout.html.erb
 │       │   ├── annuaire_des_entreprises.html.erb
 │       │   ├── api_captchetat.html.erb
@@ -2104,6 +2142,11 @@
 │       ├── instruction
 │       │   ├── approve_authorization_requests
 │       │   │   └── new.html.erb
+│       │   ├── authorization_definitions
+│       │   │   ├── _counts.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── authorization_request_events
 │       │   │   └── index.html.erb
 │       │   ├── authorization_request_mailer
@@ -2122,6 +2165,8 @@
 │       │   │   ├── _authorization_requests.html.erb
 │       │   │   ├── _authorizations.html.erb
 │       │   │   └── show.html.erb
+│       │   ├── forms
+│       │   │   └── index.html.erb
 │       │   ├── france_connected_authorizations
 │       │   │   └── index.html.erb
 │       │   ├── instructor_draft_requests
@@ -2189,7 +2234,8 @@
 │       │   │   └── authorization_request.html.erb
 │       │   ├── mailer.html.erb
 │       │   ├── mailer.text.erb
-│       │   └── notification_unsubscription.html.erb
+│       │   ├── notification_unsubscription.html.erb
+│       │   └── wide_container.html.erb
 │       ├── mailer
 │       │   └── shared
 │       │       ├── applicant
@@ -2711,6 +2757,11 @@
 │   │   │   ├── je_modifie_des_droits.feature
 │   │   │   ├── je_supprime_tous_les_droits.feature
 │   │   │   └── liste_des_droits.feature
+│   │   ├── gestion_des_formulaires
+│   │   │   ├── detail_formulaire.feature
+│   │   │   ├── edition_formulaire.feature
+│   │   │   ├── liste_cas_dusages.feature
+│   │   │   └── liste_formulaires.feature
 │   │   ├── habilitations_france_connectees.feature
 │   │   ├── historique_admin_change.feature
 │   │   ├── historique_habilitation.feature
@@ -2945,7 +2996,9 @@
 │   │       │   └── demande_alerts_component_preview.rb
 │   │       ├── application_preview.rb
 │   │       ├── atoms
-│   │       │   └── color_badge_component_preview.rb
+│   │       │   ├── action_card_component_preview.rb
+│   │       │   ├── color_badge_component_preview.rb
+│   │       │   └── edit_definition_block_component_preview.rb
 │   │       ├── authorization_header_component_preview.rb
 │   │       ├── dashboard
 │   │       │   └── blank_state_component_preview.rb
@@ -2965,10 +3018,20 @@
 │   │       │   │   └── scopes_editor_component_preview.rb
 │   │       │   ├── duration_card_component_preview.rb
 │   │       │   ├── instruction
-│   │       │   │   └── user_rights
-│   │       │   │       ├── readonly_rights_list_component_preview.rb
-│   │       │   │       └── right_field_component_preview.rb
+│   │       │   │   ├── authorization_definition
+│   │       │   │   │   ├── card_component_preview.rb
+│   │       │   │   │   ├── config_block_component_preview.rb
+│   │       │   │   │   ├── config_chip_component_preview.rb
+│   │       │   │   │   ├── edit_header_component_preview.rb
+│   │       │   │   │   ├── form_card_component_preview.rb
+│   │       │   │   │   ├── forms_header_component_preview.rb
+│   │       │   │   │   └── show_header_component_preview.rb
+│   │       │   │   ├── user_rights
+│   │       │   │   │   ├── readonly_rights_list_component_preview.rb
+│   │       │   │   │   └── right_field_component_preview.rb
+│   │       │   │   └── wide_header_preview.rb
 │   │       │   ├── instructor_banner_notice_component_preview.rb
+│   │       │   ├── side_panel_component_preview.rb
 │   │       │   ├── stat_card_component_preview.rb
 │   │       │   └── update_in_progress_notice_component_preview.rb
 │   │       └── organisms
@@ -3225,8 +3288,9 @@
 │   │   │   ├── authorization_core
 │   │   │   │   ├── checkboxes_spec.rb
 │   │   │   │   └── documents_spec.rb
-│   │   │   └── authorization_extensions
-│   │   │       └── cnous_data_extraction_criteria_spec.rb
+│   │   │   ├── authorization_extensions
+│   │   │   │   └── cnous_data_extraction_criteria_spec.rb
+│   │   │   └── user_roles_spec.rb
 │   │   ├── contact_definition_spec.rb
 │   │   ├── contact_spec.rb
 │   │   ├── data_provider_spec.rb
@@ -3327,6 +3391,7 @@
 │   │   │   └── oauth_application_policy_spec.rb
 │   │   ├── habilitation_type_policy_spec.rb
 │   │   └── instruction
+│   │       ├── authorization_definition_policy_spec.rb
 │   │       └── user_right_policy_spec.rb
 │   ├── queries
 │   │   ├── authorization_request_events_query_spec.rb
@@ -3360,7 +3425,8 @@
 │   │   ├── authorization_requests_access_spec.rb
 │   │   ├── dashboard_spec.rb
 │   │   ├── instruction
-│   │   │   └── authorization_requests_spec.rb
+│   │   │   ├── authorization_requests_spec.rb
+│   │   │   └── forms_spec.rb
 │   │   ├── instruction_access_spec.rb
 │   │   ├── notification_unsubscriptions_spec.rb
 │   │   └── stats_spec.rb
@@ -3455,4 +3521,4 @@
     ├── .keep
     └── javascript
         └── .keep
-489 directories, 3106 files
+494 directories, 3167 files
