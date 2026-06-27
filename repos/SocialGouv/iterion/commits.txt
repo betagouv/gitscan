@@ -1,3 +1,97 @@
+2026-06-26T15:57:57+02:00 - 92c77cf - devthejo : docs(adr): ADR-047 — keep the forge token out of .git/config
+2026-06-26T15:43:01+02:00 - d5208a2 - devthejo : docs(bot-runs): run 019f03df (2nd healthy run) + campaign outcome
+2026-06-26T15:40:53+02:00 - b554fd0 - devthejo : fix(security): close studio Login open-redirect + pin desktop-release tools
+2026-06-26T14:24:59+02:00 - cafa3b9 - devthejo : fix(studio): gate no-auth local studio on a loopback bind
+2026-06-26T14:20:28+02:00 - ad0040c - devthejo : docs(bot-runs): run 019f039e — first clean+healthy Seki run (0 confirmed)
+2026-06-26T13:30:22+02:00 - 3c19587 - devthejo : chore(renovate): cover every ecosystem + self-hosted runner
+2026-06-26T13:13:04+02:00 - 1a827fc - devthejo : docs(secretguard): fix smart-quote-mangled escaping comment
+2026-06-26T13:11:27+02:00 - 7e6c109 - devthejo : docs(bot-runs): Seki convergence-campaign record + dispositions
+2026-06-26T13:09:05+02:00 - 34605fe - devthejo : fix(sec-audit-source): keep trivy from timing out (skip node_modules, raise timeout)
+2026-06-26T12:29:28+02:00 - a79e278 - devthejo : chore(ci): pin all actions to SHAs + base images to digests + Renovate
+2026-06-26T12:28:18+02:00 - 28a8690 - devthejo : fix(runner): SSRF connect-time hardening for git clone (TOCTOU)
+2026-06-26T11:35:59+02:00 - 43161df - devthejo : fix(secretguard): shell-escape materialized secret values (RCE)
+2026-06-26T10:06:51+02:00 - 488a0e8 - devthejo : fix(server): CSRF-guard project switch/add/remove endpoints
+2026-06-26T10:02:53+02:00 - aa2811d - devthejo : fix(sec-audit-source): revert langs to json (string[] breaks tool shell)
+2026-06-26T09:47:28+02:00 - 6629175 - devthejo : feat(sec-audit-source): scan_health flags detected-but-uncovered languages
+2026-06-26T09:09:39+02:00 - 17e810a - devthejo : docs(bot-runs): record silent zero-language-scanner finding + fix (019f02b8)
+2026-06-26T09:08:57+02:00 - 5688378 - devthejo : fix(sec-audit-source): prevent silent zero-language-scanner runs
+2026-06-26T08:51:15+02:00 - 43a327a - devthejo : docs(bot-runs): Seki re-run bilan (019f0119) — version.yml fix re-scan-validated
+2026-06-26T08:51:15+02:00 - 3b0deec - devthejo : fix(sec-audit-source): surface silent scanner output-file gaps
+2026-06-26T01:09:30+02:00 - d230005 - devthejo : fix(ci): harden release/image workflows vs GHA script injection
+2026-06-26T01:09:30+02:00 - 9f96ce8 - devthejo : docs(bot-runs): Seki dogfood bilan + cross-check vs manual audit (019f00bf)
+2026-06-26T00:44:10+02:00 - d20ccad - devthejo : fix(studio): suppress browser autofill in forge connect/register forms
+2026-06-26T00:44:10+02:00 - 8917a27 - devthejo : fix(studio): refresh access token on 401 before signing out
+2026-06-26T00:44:10+02:00 - 5a772db - devthejo : fix(studio): AuditTab null guard (events: null → [] on empty log)
+2026-06-26T00:39:15+02:00 - 3a45a33 - devthejo : feat(chart): emit Valkey/Redis env (config.redis) for distributed state
+2026-06-26T00:37:00+02:00 - 901454c - devthejo : feat(server): distribute ephemeral state via Valkey (HA-ready)
+2026-06-26T00:11:35+02:00 - d36d205 - devthejo : fix(backend): fail fast on claude_code model-unavailable result
+2026-06-26T00:11:35+02:00 - 036522d - devthejo : fix(sec-audit-source): decouple detect_tech backend/model env vars
+2026-06-25T23:56:54Z - 21227e7 - github-actions[bot] : chore(brew): update tap to v0.23.1 [skip ci]
+2026-06-25T23:51:19Z - 9ce35cd - github-actions[bot] : chore: release v0.23.1
+2026-06-25T22:53:30Z - 30764dc - github-actions[bot] : chore(brew): update tap to v0.23.0 [skip ci]
+2026-06-25T22:48:31Z - 088e487 - github-actions[bot] : chore: release v0.23.0
+2026-06-25T21:50:41+02:00 - 8f867f8 - devthejo : feat(auth): GitHub SSO tiered access — teamless submitter vs authorized team
+2026-06-25T21:09:56+02:00 - 7605025 - devthejo : fix(model): surface unregistered system-prompt reference
+2026-06-25T20:52:26+02:00 - d574a16 - devthejo : fix(trigger): gate custom-emit launches + cancellable spine workers
+2026-06-25T20:31:02Z - ea490f0 - github-actions[bot] : chore(brew): update tap to v0.22.0 [skip ci]
+2026-06-25T20:24:45Z - bfc80c7 - github-actions[bot] : chore: release v0.22.0
+2026-06-25T19:15:02+02:00 - 97caeb0 - devthejo : feat(trigger): unified event-driven run spine + iterion board-event source
+2026-06-25T19:15:02+02:00 - 9363d21 - devthejo : feat(trigger): scheduled source — in-process Scheduler over schedule subscriptions
+2026-06-25T19:15:02+02:00 - 7307964 - devthejo : docs(trigger): update CLAUDE.md spine note for the four shipped sources
+2026-06-25T19:15:02+02:00 - 5a90cc5 - devthejo : feat(trigger): custom-integration ingress (POST /api/v1/triggers/emit)
+2026-06-25T19:15:02+02:00 - 49b2681 - devthejo : feat(studio): Automations view — manage event-driven triggers by repo/bot
+2026-06-25T19:15:02+02:00 - 1d56ea4 - devthejo : feat(trigger): direct-mode launcher over runview + run-completion source
+2026-06-25T19:15:02+02:00 - 0bcbfce - devthejo : feat(trigger): git-forge events on the spine (observational, no double-launch)
+2026-06-25T19:15:02+02:00 - 00b94a7 - devthejo : refactor(trigger): simplify board promote + dedup subscription constructors
+2026-06-25T18:54:01+02:00 - 11f3686 - devthejo : feat(chart): marketplace toggle + config-checksum pod reload
+2026-06-25T17:19:26+02:00 - 63218f5 - devthejo : feat(e2e): keyless cross-family quality panel (claude_code OAuth judge works)
+2026-06-25T17:19:26+02:00 - 2cde92d - devthejo : fix(e2e): claude_code judge → text-JSON path + diagnostic (still opt-in)
+2026-06-25T17:19:26+02:00 - 035acf7 - devthejo : feat(e2e): sandbox network-allowlist + run-fork live tests (worktree)
+2026-06-25T17:02:34Z - 8561481 - github-actions[bot] : chore(brew): update tap to v0.21.0 [skip ci]
+2026-06-25T16:56:59Z - f3ce83e - github-actions[bot] : chore: release v0.21.0
+2026-06-25T16:18:25+02:00 - afe61db - devthejo : feat(studio): markdown + syntax-highlighted code across all chat surfaces
+2026-06-25T16:12:22+02:00 - 67ec6ab - devthejo : feat(studio): commercial cloud landing + public marketplace (browse/download/seed)
+2026-06-25T16:12:22+02:00 - 56f02eb - devthejo : feat(studio): polish cloud landing — brand mark, theme toggle, hero design
+2026-06-25T16:08:02+02:00 - c63ac55 - devthejo : docs(quality): claude_code OAuth judge — flat schema didn't resolve it
+2026-06-25T16:02:48+02:00 - 2fac5de - devthejo : fix(quality): flatten judge schema (robust cross-backend structured output)
+2026-06-25T15:50:05+02:00 - 7b3680f - devthejo : feat(e2e): schedule trigger → live bot run test
+2026-06-25T15:38:45+02:00 - 4796541 - devthejo : feat(e2e): budget→resume recovery test (+ budget fixture to OpenAI)
+2026-06-25T15:28:30+02:00 - 06ced1a - devthejo : feat(e2e): follow-up feature tests — skills-mirroring, permission ask, rtk
+2026-06-25T14:47:48+02:00 - 4721a01 - devthejo : refactor(e2e): claude_code OAuth judge is opt-in (default = clean OpenAI judge)
+2026-06-25T14:39:13+02:00 - 6085c61 - devthejo : fix(e2e): make the claude_code judge actually produce a verdict
+2026-06-25T14:30:46+02:00 - a867957 - devthejo : feat(e2e): route Anthropic judge via claude_code OAuth (true cross-family, no API key)
+2026-06-25T14:00:30+02:00 - 44b3f5f - devthejo : fix(e2e): credential-aware judge panel (live-run finding)
+2026-06-25T13:38:45+02:00 - 5f3a51c - devthejo : feat(e2e): Phase 5 feature tests — 7 more engine features
+2026-06-25T12:50:52+02:00 - 23ff4c3 - devthejo : feat(e2e): Phase 7 wiring — per-bot/per-feature Taskfile targets
+2026-06-25T12:49:08+02:00 - cd45302 - devthejo : feat(e2e): Phase 5 feature tests — cursors, ultracode, supervisor
+2026-06-25T12:41:31+02:00 - 5eab6a9 - devthejo : feat(e2e): Phase 4 sec bots (Seki, Depsy) — all 19 bots covered
+2026-06-25T12:39:05+02:00 - 9e4e9ff - devthejo : feat(e2e): Phase 3 live tests — 7 code-mutating bots
+2026-06-25T12:31:57+02:00 - fb8aec2 - devthejo : feat(e2e): Phase 2b live tests — rgaa-audit, revi-converse, adr-cartograph, evolve
+2026-06-25T12:10:21+02:00 - 61ca396 - devthejo : docs(e2e): mark review-pr/whats-next/docs-refresh done + authoring guide
+2026-06-25T12:06:13+02:00 - c7ec94a - devthejo : feat(e2e): auto-resume driver + whats-next (Nexie) live test
+2026-06-25T11:58:09+02:00 - 1007998 - devthejo : feat(e2e): live tests for review-pr (Revi) + docs-refresh (Doki)
+2026-06-25T11:45:53+02:00 - 71abd75 - devthejo : feat(e2e): live-test quality/value snapshot foundation + per-bot files
+2026-06-25T10:57:15+02:00 - 3c2c2ef - devthejo : fix(supervise): match Claude Code's project-key encoding for raw sessions
+2026-06-25T10:38:35+02:00 - e6dd489 - devthejo : fix(supervise): make cross-process + CLI supervision actually deliver (live-dogfood fixes)
+2026-06-25T10:35:45+02:00 - ddac6ba - devthejo : fix(permission): two live-dogfood bugs — pause on interaction:none + exempt StructuredOutput
+2026-06-25T10:05:00+02:00 - f890ace - devthejo : refactor: purge deprecated .iter extension repo-wide (zero-trace)
+2026-06-25T09:35:16+02:00 - 5954c36 - devthejo : feat(permission): RunHeader gate badge + structural infra-tool exemption
+2026-06-25T09:03:55+02:00 - a16d33b - devthejo : fix(permission): warn (C112) on inert tool-node permission
+2026-06-25T08:49:38+02:00 - f800634 - devthejo : feat(studio): permission approval card (allow once / always / deny)
+2026-06-25T08:49:38+02:00 - d046d7b - devthejo : feat(permission): unified ask-approval marker → claude_code auto-grant
+2026-06-25T08:49:38+02:00 - 9d5e4ee - devthejo : feat(studio): Launch-modal permission toggle (off/ask/deny)
+2026-06-25T08:47:38+02:00 - b2e14ae - devthejo : feat(supervise): raw Claude Code session bridge (transcript tail + hook drain)
+2026-06-25T08:47:38+02:00 - 1b6a2b0 - devthejo : feat(supervise): in-`.bot` `supervisor <name>:` DSL block + engine auto-spawn
+2026-06-25T08:45:55+02:00 - f0fc414 - devthejo : feat(supervise): node-scoped supervisor agents + `iterion supervise` CLI
+2026-06-25T08:20:54+02:00 - d6c9f2d - devthejo : feat(config): default Anthropic forfait client id to the public Claude Code client
+2026-06-25T08:20:54+02:00 - ba9eb33 - devthejo : feat(cloud,oauth): browser OAuth forfait for Claude + org fallback
+2026-06-25T07:58:30+02:00 - dced429 - devthejo : refactor(permission): /simplify pass — collapse arg matcher, cmp.Or, lazy summarize
+2026-06-25T07:58:30+02:00 - a1a9700 - devthejo : docs(permission): correct rule-list syntax (inline arrays) + gate scope note
+2026-06-25T07:58:30+02:00 - 755bac9 - devthejo : feat(permission): tool-permission gate (anti-prompt-injection) — claude_code ⇄ claw parity
+2026-06-25T07:58:30+02:00 - 3ee7a8a - devthejo : feat(permission): claw ask-mode approve→execute round-trip
+2026-06-25T07:58:30+02:00 - 2bc4231 - devthejo : feat(permission): --permission* overrides on `iterion resume`
+2026-06-25T06:48:14+02:00 - 54dac9c - devthejo : feat(sso): make cloud SSO discoverable, recoverable, and admin-friendly
+2026-06-25T06:37:36+02:00 - 5c71848 - devthejo : fix(runner,skills): exclude .claude/ run-scratch from review diff + env-based forge auth
 2026-06-25T00:47:31+02:00 - 7733c14 - devthejo : docs(bot-runs): feature-dev cloud-k8s issue-comment→MR e2e GREEN (8 more fixes)
 2026-06-24T23:47:31Z - be7c909 - github-actions[bot] : chore(brew): update tap to v0.20.0 [skip ci]
 2026-06-24T23:40:36Z - a49032a - github-actions[bot] : chore: release v0.20.0

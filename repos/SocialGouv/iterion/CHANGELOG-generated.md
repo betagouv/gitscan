@@ -1,100 +1,54 @@
-## Changelog : iterion (30 derniers jours, au 2026-06-27)
+## Changelog : iterion (30 derniers jours, au 2026-06-28)
 
 ### Résumé
-Ce mois-ci, iterion a connu des améliorations significatives en termes de fonctionnalités, de stabilité et d'expérience utilisateur. Les efforts se sont concentrés sur l'amélioration de l'intégration avec les outils de développement (GitHub, GitLab, Forgejo), l'automatisation des workflows, la gestion des secrets, l'amélioration de l'interface utilisateur du studio, et l'ajout de nouvelles capacités pour les bots et les workflows. Des corrections de bugs et des optimisations de performances ont également été apportées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, de la robustesse et de l'expérience utilisateur. Des fonctionnalités clés ont été ajoutées, notamment l'intégration de secrets, l'amélioration de la gestion des erreurs, et de nouvelles capacités pour les bots et les workflows. L'interface utilisateur a également été améliorée avec de nouvelles fonctionnalités et corrections de bugs. L'accent a été mis sur la préparation du projet pour un déploiement cloud plus stable et sécurisé.
 
 ### Évolutions fonctionnelles
-- **Intégration Forgejo/GitHub/GitLab:** Amélioration de l'intégration avec les plateformes de gestion de code, incluant la création automatique d'applications GitHub, la gestion des OAuth et la publication de revues directement sur les pull requests.
-- **Bots et Workflows:**
-    - Ajout de nouveaux bots (Revi, Adry, Fini, Billy, Nexie) avec des fonctionnalités spécifiques (revue de code, automatisation de tâches, etc.).
-    - Amélioration de la gestion des bots et de leur configuration via une interface utilisateur dédiée.
-    - Ajout de la possibilité de définir des workflows planifiés avec une syntaxe cron.
-    - Introduction de la gestion des secrets avec des fonctionnalités de chiffrement et de contrôle d'accès.
-- **Studio:**
-    - Amélioration de l'interface utilisateur du studio avec de nouvelles fonctionnalités telles que l'édition de fichiers, la visualisation des logs, et la gestion des tâches.
-    - Ajout d'une vue "What's Next" pour faciliter la gestion des tâches en attente.
-    - Amélioration de la gestion des erreurs et des notifications.
-- **Sécurité:**
-    - Mise en place de mesures de sécurité renforcées, notamment l'authentification à deux facteurs et la protection contre les attaques XSS.
-    - Ajout d'un scanner de vulnérabilités pour détecter les failles de sécurité dans les dépendances.
-- **Amélioration de la performance:**
-    - Optimisation des performances du moteur de workflow pour réduire les temps d'exécution.
-    - Amélioration de la gestion de la mémoire pour réduire la consommation de ressources.
+*   **Authentification et Sécurité :** Ajout de la gestion des secrets avec des fonctionnalités de chiffrement et de rotation des clés. Implémentation de l'authentification à deux facteurs et de la gestion des accès basée sur les rôles.
+*   **Intégrations :** Ajout de la prise en charge de GitHub Apps, GitLab et Forgejo pour l'intégration avec des dépôts de code.
+*   **Bots :**
+    *   Ajout de nouveaux bots pour l'analyse de sécurité du code (sec-audit-source).
+    *   Amélioration des bots existants, notamment Revi pour la revue de code et Nexie pour l'assistance aux utilisateurs.
+    *   Possibilité de définir des bots personnalisés avec des métadonnées et des workflows spécifiques.
+*   **Interface Utilisateur :**
+    *   Amélioration de l'interface utilisateur pour la gestion des runs et des logs.
+    *   Ajout d'une vue pour la gestion des secrets.
+    *   Amélioration de la navigation et de la recherche.
+*   **Workflows :**
+    *   Ajout de la possibilité de planifier des runs de bots avec un cron.
+    *   Amélioration de la gestion des erreurs et des retries dans les workflows.
+    *   Ajout de la possibilité de définir des dépendances entre les runs de bots.
+*   **Fonctionnalités diverses :**
+    *   Ajout d'un système d'alerte pour les runs qui échouent.
+    *   Amélioration de la documentation et des exemples.
+    *   Ajout de la possibilité de suivre l'utilisation des ressources (temps CPU, mémoire, etc.).
 
 ### Évolutions techniques
-- **Refactoring:** Refactorisation importante du code pour améliorer la maintenabilité et la lisibilité.
-- **Architecture:**
-    - Amélioration de l'architecture du système pour le rendre plus scalable et résilient.
-    - Migration vers de nouvelles technologies pour améliorer les performances et la sécurité.
-- **Infrastructure:**
-    - Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-    - Amélioration de l'infrastructure de déploiement pour faciliter les mises à jour et les déploiements.
-- **Tests:** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la qualité du code.
-- **CI/CD:** Amélioration du pipeline CI/CD pour automatiser les tests et les déploiements.
-- **Docker:** Amélioration de l'image Docker pour faciliter le déploiement et la configuration.
-- **Sécurité:** Mise en place de nouvelles mesures de sécurité pour protéger le système contre les attaques.
-- **Observabilité:** Ajout de métriques et de logs pour faciliter la surveillance et le débogage du système.
+*   **Architecture :**
+    *   Refactorisation de plusieurs composants pour améliorer la maintenabilité et la testabilité du code.
+    *   Amélioration de la gestion des erreurs et des exceptions.
+    *   Optimisation des performances de certains composants.
+*   **Infrastructure :**
+    *   Mise à jour des dépendances vers les dernières versions.
+    *   Amélioration de la configuration et du déploiement.
+    *   Ajout de tests d'intégration et de bout en bout.
+*   **Sécurité :**
+    *   Correction de plusieurs vulnérabilités de sécurité.
+    *   Implémentation de mesures de sécurité supplémentaires pour protéger les données sensibles.
+*   **Outils :**
+    *   Ajout de nouveaux outils pour le développement et le test.
+    *   Amélioration des outils existants.
+*   **Divers :**
+    *   Amélioration de la couverture de test.
+    *   Correction de bugs et amélioration de la stabilité.
+    *   Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+    *   Utilisation de nouvelles bibliothèques et frameworks pour améliorer les performances et la sécurité.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les dernières modifications.
-- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
-- Ajout de nouvelles variables d'environnement pour faciliter la configuration.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de problèmes de compatibilité avec différentes versions de Go.
-- Amélioration de la gestion des dépendances.
-- Mise à jour des outils de développement.
-- Ajout de nouvelles fonctionnalités pour les développeurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de performance.
-- Ajout de nouvelles fonctionnalités pour les administrateurs.
-- Amélioration de la sécurité du système.
-- Correction de bugs mineurs.
-- Amélioration de l'expérience utilisateur.
-- Ajout de nouvelles variables d'environnement.
-- Amélioration de la gestion des erreurs.
-- Ajout de commentaires et de documentation.
-- Correction de problèmes de compatibilité.
-- Amélioration de la gestion des dépendances.
-- Mise à jour des outils de développement.
-- Ajout de nouvelles fonctionnalités pour les développeurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de performance.
-- Ajout de nouvelles fonctionnalités pour les administrateurs.
-- Amélioration de la sécurité du système.
-- Correction de bugs mineurs.
-- Amélioration de l'expérience utilisateur.
-- Ajout de nouvelles variables d'environnement.
-- Amélioration de la gestion des erreurs.
-- Ajout de commentaires et de documentation.
-- Correction de problèmes de compatibilité.
-- Amélioration de la gestion des dépendances.
-- Mise à jour des outils de développement.
-- Ajout de nouvelles fonctionnalités pour les développeurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de performance.
-- Ajout de nouvelles fonctionnalités pour les administrateurs.
-- Amélioration de la sécurité du système.
-- Correction de bugs mineurs.
-- Amélioration de l'expérience utilisateur.
-- Ajout de nouvelles variables d'environnement.
-- Amélioration de la gestion des erreurs.
-- Ajout de commentaires et de documentation.
-- Correction de problèmes de compatibilité.
-- Amélioration de la gestion des dépendances.
-- Mise à jour des outils de développement.
-- Ajout de nouvelles fonctionnalités pour les développeurs.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de performance.
-- Ajout de nouvelles fonctionnalités pour les administrateurs.
-- Amélioration de la sécurité du système.
-- Correction de bugs mineurs.
-- Amélioration de l'expérience utilisateur.
-- Ajout de nouvelles variables d'environnement.
-- Amélioration de la gestion des erreurs.
-- Ajout de commentaires et de documentation.
-- Correction de problèmes de compatibilité.
-- Amélioration de la gestion des dépendances.
-- Mise à jour des outils de développement.
-- Ajout de nouvelles fonctionnalités pour les développeurs.
-- Amélioration de la gestion des logs.
+*   **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés au code.
+*   **Configuration :** Ajout de nouvelles options de configuration pour personnaliser le comportement du projet.
+*   **Nettoyage de code :** Suppression du code mort et des commentaires inutiles.
+*   **Tests :** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la couverture de test.
+*   **Chore:** Mise à jour des dépendances et des outils de développement.
+*   **CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de construction, de test et de déploiement.
+*   **Corrections de bugs:** Correction de nombreux bugs mineurs et amélioration de la stabilité du projet.
