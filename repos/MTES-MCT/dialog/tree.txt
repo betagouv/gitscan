@@ -333,7 +333,9 @@
 │       │   │       ├── SaveRegulationWithMeasureCommand.xml
 │       │   │       ├── SaveTimeSlotCommand.xml
 │       │   │       ├── SaveVehicleSetCommand.xml
-│       │   │       └── SendRegulationOrderToMailingListCommand.xml
+│       │   │       ├── SaveWholeCityCommand.xml
+│       │   │       ├── SendRegulationOrderToMailingListCommand.xml
+│       │   │       └── UpdateRegulationWithMeasureCommand.xml
 │       │   ├── SigningAuthority
 │       │   │   └── SaveSigningAuthorityCommand.xml
 │       │   └── User
@@ -705,6 +707,7 @@
 │   │   │   │   │   ├── SaveNumberedRoadCommandHandler.php
 │   │   │   │   │   ├── SaveRawGeoJSONCommand.php
 │   │   │   │   │   ├── SaveRawGeoJSONCommandHandler.php
+│   │   │   │   │   ├── SaveWholeCityCommand.php
 │   │   │   │   │   └── UpdateNamedStreetsWithoutRoadBanIdsCommandResult.php
 │   │   │   │   ├── MapImage
 │   │   │   │   │   ├── WarmRegulationMapImageCacheCommand.php
@@ -737,6 +740,8 @@
 │   │   │   │   ├── SaveRegulationOrderStorageCommandHandler.php
 │   │   │   │   ├── SaveRegulationWithMeasureCommand.php
 │   │   │   │   ├── SaveRegulationWithMeasureCommandHandler.php
+│   │   │   │   ├── UpdateRegulationWithMeasureCommand.php
+│   │   │   │   ├── UpdateRegulationWithMeasureCommandHandler.php
 │   │   │   │   └── VehicleSet
 │   │   │   │       ├── SaveVehicleSetCommand.php
 │   │   │   │       └── SaveVehicleSetCommandHandler.php
@@ -786,7 +791,9 @@
 │   │   │   │   │   ├── GetRawGeoJSONGeometryQuery.php
 │   │   │   │   │   ├── GetRawGeoJSONGeometryQueryHandler.php
 │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQuery.php
-│   │   │   │   │   └── GetStorageAreasByRoadNumbersQueryHandler.php
+│   │   │   │   │   ├── GetStorageAreasByRoadNumbersQueryHandler.php
+│   │   │   │   │   ├── GetWholeCityGeometryQuery.php
+│   │   │   │   │   └── GetWholeCityGeometryQueryHandler.php
 │   │   │   │   ├── Measure
 │   │   │   │   │   ├── GetMeasureByUuidQuery.php
 │   │   │   │   │   ├── GetMeasureByUuidQueryHandler.php
@@ -811,7 +818,8 @@
 │   │   │       │   ├── NamedStreetView.php
 │   │   │       │   ├── NumberedRoadView.php
 │   │   │       │   ├── RawGeoJSONView.php
-│   │   │       │   └── StorageAreaView.php
+│   │   │       │   ├── StorageAreaView.php
+│   │   │       │   └── WholeCityView.php
 │   │   │       ├── NamedStreetView.php
 │   │   │       ├── NumberedRoadView.php
 │   │   │       ├── PeriodView.php
@@ -823,7 +831,8 @@
 │   │   │       ├── StatisticsView.php
 │   │   │       ├── TimeSlotView.php
 │   │   │       ├── VehicleSetView.php
-│   │   │       └── VisasAndReasonsView.php
+│   │   │       ├── VisasAndReasonsView.php
+│   │   │       └── WholeCityView.php
 │   │   ├── RoadGeocoderInterface.php
 │   │   ├── RoadSectionMakerInterface.php
 │   │   ├── Statistics
@@ -1138,7 +1147,8 @@
 │   │   │   │   │   ├── GetOrganizationIdentifiersController.php
 │   │   │   │   │   ├── GetRegulationController.php
 │   │   │   │   │   ├── GetRegulationsController.php
-│   │   │   │   │   └── PublishRegulationController.php
+│   │   │   │   │   ├── PublishRegulationController.php
+│   │   │   │   │   └── UpdateRegulationController.php
 │   │   │   │   └── Statistics
 │   │   │   │       └── GetOrganizationsGeometriesController.php
 │   │   │   ├── CGUController.php
@@ -1293,7 +1303,8 @@
 │   │   │   │   ├── RegulationListFiltersFormType.php
 │   │   │   │   ├── StorageRegulationOrderFormType.php
 │   │   │   │   ├── TimeSlotFormType.php
-│   │   │   │   └── VehicleSetFormType.php
+│   │   │   │   ├── VehicleSetFormType.php
+│   │   │   │   └── WholeCityFormType.php
 │   │   │   └── User
 │   │   │       ├── CreateAccountFromInvitationFormType.php
 │   │   │       ├── EditPasswordFormType.php
@@ -1426,7 +1437,7 @@
 │   │   │       │   ├── Version20260129110000.php
 │   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (157 files)
+│   │   │       │   └── Version*.php  (158 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
 │   │   │       │   │   └── ORMSchemaEventListener.php
@@ -1725,6 +1736,7 @@
 │   │       │   │   ├── PublishRegulationControllerTest.php
 │   │       │   │   ├── Statistics
 │   │       │   │   │   └── GetOrganizationsGeometriesControllerTest.php
+│   │       │   │   ├── UpdateRegulationControllerTest.php
 │   │       │   │   ├── cifs-incidents-expected-result.xml
 │   │       │   │   └── get-regulations-expected-result.xml
 │   │       │   ├── CGUControllerTest.php
@@ -1979,7 +1991,8 @@
 │   │   │   │   │   │   ├── GetLocationByUuidQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetNamedStreetGeometryQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetNumberedRoadGeometryQueryHandlerTest.php
-│   │   │   │   │   │   └── GetStorageAreasByRoadNumbersQueryHandlerTest.php
+│   │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQueryHandlerTest.php
+│   │   │   │   │   │   └── GetWholeCityGeometryQueryHandlerTest.php
 │   │   │   │   │   ├── Measure
 │   │   │   │   │   │   ├── GetMeasureByUuidQueryHandlerTest.php
 │   │   │   │   │   │   └── GetMeasuresQueryHandlerTest.php
@@ -2166,7 +2179,8 @@
 │   │       │       ├── LocationsTransformerTest.php
 │   │       │       └── PeriodsTransformerTest.php
 │   │       ├── Repository
-│   │       │   └── LocationRepositoryTest.php
+│   │       │   ├── LocationRepositoryTest.php
+│   │       │   └── MeasureRepositoryTest.php
 │   │       ├── Security
 │   │       │   ├── Authenticator
 │   │       │   │   └── ProConnectAuthenticatorTest.php
@@ -2233,4 +2247,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-439 directories, 1952 files
+439 directories, 1967 files
