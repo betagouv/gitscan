@@ -1,27 +1,31 @@
-## Changelog : code-du-travail-numerique (30 derniers jours, au 23 juin 2026)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la recherche et de l'affichage des accords d'entreprise, ainsi que par des corrections de bugs concernant l'affichage des tableaux, des redirections et des tests automatisés. Des fonctionnalités liées au SMIC ont également été ajoutées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'outil de recherche de conventions collectives avec l'ajout de la recherche d'accords d'entreprise, des corrections de bugs et des améliorations de l'expérience utilisateur, notamment concernant la contribution et l'affichage des informations. Un nouveau système d'extraction et de vérification des événements statiques a également été mis en place.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de rechercher des accords d'entreprise dans l'outil "Trouver sa CC" ([#7260](https://github.com/SocialGouv/code-du-travail-numerique/issues/7260)).
-- Ajout de méthodes de calcul du SMIC annuel ([#7286](https://github.com/SocialGouv/code-du-travail-numerique/issues/7286)).
-- Amélioration de l'affichage des accords, notamment en les ordonnant par date de signature ([#7313](https://github.com/SocialGouv/code-du-travail-numerique/issues/7313)).
-- Ajout d'un type de contribution "bon à savoir" ([#7326](https://github.com/SocialGouv/code-du-travail-numerique/issues/7326)).
-- Ajout de logs pour faciliter le débogage des erreurs d'API liées aux accords.
+- Ajout de la recherche d'accords d'entreprise dans l'outil "Trouver sa CC" ([#7260](https://github.com/SocialGouv/code-du-travail-numerique/issues/7260)).
+- Amélioration du calcul du SMIC annuel avec de nouvelles méthodes de calcul ([#7286](https://github.com/SocialGouv/code-du-travail-numerique/issues/7286)).
 - Correction de l'affichage des en-têtes de tableaux dans la section contribution ([#7325](https://github.com/SocialGouv/code-du-travail-numerique/issues/7325)).
-- Redirection de l'ancienne fiche canicule vers la nouvelle page d'information ([#7318](https://github.com/SocialGouv/code-du-travail-numerique/issues/7318), [#7322](https://github.com/SocialGouv/code-du-travail-numerique/issues/7322)).
+- Correction d'un bug empêchant l'ouverture de la page de recherche ([#7293](https://github.com/SocialGouv/code-du-travail-numerique/issues/7293)).
+- Correction de l'affichage de l'astérisque sur le brut dans la section contribution ([#7288](https://github.com/SocialGouv/code-du-travail-numerique/issues/7288)).
+- Correction d'une erreur dans l'affichage du SMIC dans la section contribution.
+- Correction d'un problème d'affichage du code IDCC 9999 dans les conventions collectives ([#7303](https://github.com/SocialGouv/code-du-travail-numerique/issues/7303)).
+- Ajout d'un type "bon à savoir" dans la section contribution ([#7326](https://github.com/SocialGouv/code-du-travail-numerique/issues/7326)).
+- Correction pour ne plus exiger un minimum d'ancienneté pour le particulier employeur ([#7314](https://github.com/SocialGouv/code-du-travail-numerique/issues/7314)).
+- Ajout de logs pour les erreurs d'API dans la section accord.
+- Mise en place d'un système d'extraction et de vérification des événements statiques ([#7300](https://github.com/SocialGouv/code-du-travail-numerique/issues/7300)).
+- Correction de la redirection de l'ancienne fiche canicule vers la nouvelle page.
+- Correction d'un HTML invalide sur les actualités de la page d'accueil.
+- Les accords sont maintenant ordonnés par date de signature.
 
 ### Évolutions techniques
-- Correction de tests E2E pour le glossaire, la recherche et les conventions collectives ([#7319](https://github.com/SocialGouv/code-du-travail-numerique/issues/7319)).
-- Correction de problèmes HTML invalides sur la page d'actualités.
-- Correction de tests unitaires suite à des modifications.
-- Découplage de l'affichage des accords de la recherche d'entreprise pour une meilleure performance et maintenabilité ([#7324](https://github.com/SocialGouv/code-du-travail-numerique/issues/7324)).
-- Correction de bugs liés à l'ouverture de la page de recherche et à l'affichage des résultats.
-- Correction de bugs liés à la gestion des attributs du challenger SMIC.
-- Amélioration de la gestion des erreurs et ajout de logs.
+- Découplage de l'affichage des accords de la recherche d'entreprise pour améliorer la performance et la maintenabilité.
+- Adaptation des tests E2E pour le glossaire et la recherche d'en-têtes, et fiabilisation des tests pour les conventions collectives ([#7319](https://github.com/SocialGouv/code-du-travail-numerique/issues/7319)).
+- Mise à jour des secrets pour l'environnement de pré-production.
 
 ### Autres changements
-- Mise à jour des dépendances ([#7297](https://github.com/SocialGouv/code-du-travail-numerique/issues/7297)).
-- Mise à jour des secrets pour l'environnement de pré-production.
-- Correction d'un bug bloquant l'affichage des informations sans convention collective sélectionnée ([#7232](https://github.com/SocialGouv/code-du-travail-numerique/issues/7232)).
+- Mise à jour des dépendances du projet ([#7297](https://github.com/SocialGouv/code-du-travail-numerique/issues/7297)).
+- Correction des tests unitaires suite aux modifications du 1er juin.
+- Suppression de la balise canonical sur la page générique de contribution ([#7316](https://github.com/SocialGouv/code-du-travail-numerique/issues/7316)).
+- Ajout du support de l'inaptitude pour les assistants maternels de la 3239.
