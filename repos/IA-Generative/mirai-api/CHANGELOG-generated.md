@@ -1,15 +1,15 @@
 ## Changelog : mirai-api (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la documentation de l'API MirAI. Les modifications incluent une clarification des quotas d'utilisation pour les différents niveaux d'accès, une mise à jour de la documentation des services basée sur les spécifications Swagger réelles, et une révision des informations concernant la gestion des données personnelles et la rétention des données.
+Cette mise à jour se concentre sur l'amélioration de la documentation de l'API MirAI, notamment en clarifiant les informations sur la passerelle, les niveaux d'accès (quotas) et la gestion des données sensibles (PII). Les modifications apportées visent à faciliter l'intégration et l'utilisation de l'API par les partenaires et les utilisateurs internes.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la documentation des services pour refléter les spécifications Swagger actuelles [#issue à investiguer](https://github.com/IA-Generative/mirai-api/issues/)
-- Clarification des niveaux d'accès (Découverte, Intégration, Production, Critique) et de leurs quotas respectifs [#issue à investiguer](https://github.com/IA-Generative/mirai-api/issues/)
-- Ajustement de la durée de rétention des données à 72 heures (anciennement 24 heures) [#issue à investiguer](https://github.com/IA-Generative/mirai-api/issues/)
+- Modification de la durée de rétention des données à 72 heures (au lieu de 24h).
+- Clarification des niveaux d'accès (Découverte, Intégration, Production, Critique) et de leurs quotas respectifs [#f540a17](https://github.com/IA-Generative/mirai-api/commit/f540a17).
 
 ### Évolutions techniques
-- Suppression des références à Kafka dans la documentation, indiquant potentiellement une simplification de l'architecture ou un changement de technologie.
+- Suppression des références à Kafka dans la documentation, indiquant potentiellement une simplification de l'architecture ou un changement d'infrastructure. [#4c18e02](https://github.com/IA-Generative/mirai-api/commit/4c18e02)
+- Complétion de la liste des données personnellement identifiables (PII) dans la documentation, renforçant la conformité et la transparence en matière de protection des données. [#4c18e02](https://github.com/IA-Generative/mirai-api/commit/4c18e02)
 
 ### Autres changements
-- Mise à jour de la liste des données personnelles (PII) pour une meilleure conformité et transparence.
+- Ajout d'une section dédiée à la passerelle dans la documentation, améliorant la compréhension de l'architecture de l'API. [#f540a17](https://github.com/IA-Generative/mirai-api/commit/f540a17)
