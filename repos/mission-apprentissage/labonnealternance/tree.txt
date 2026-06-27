@@ -532,7 +532,6 @@
 │   │   │   │   │   ├── importFranceTravailCEGID.ts
 │   │   │   │   │   ├── mappingAgences.ts
 │   │   │   │   │   └── mockGeolocApi.ts
-│   │   │   │   ├── geiqWhitelist.ts
 │   │   │   │   ├── hellowork
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── importHelloWork.test.ts.snap
@@ -736,6 +735,7 @@
 │   │   │   ├── 20260507130000-add-10-seo-metiers-batch-3.ts
 │   │   │   ├── 20260512182814-maj-handi-engagement-avril-2026.ts
 │   │   │   ├── 20260518121500-remove-salaire-seo-diplome.ts
+│   │   │   ├── 20260526115741-add-ft-support-jobs-partners.ts
 │   │   │   ├── 20260528143130-drop-eligible-trainings-for-appointments-histories.ts
 │   │   │   ├── 20260603120000-remove-establishment-id-from-jobs-partners.ts
 │   │   │   ├── 20260605185522-normalize-offer-origin-jobs-partners.ts
@@ -932,6 +932,7 @@
 │   │   │   ├── appointment.ts
 │   │   │   ├── diffusibleStatus.ts
 │   │   │   ├── errorCodes.ts
+│   │   │   ├── geiq.ts
 │   │   │   ├── geolocation.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lbaitem.ts
@@ -1122,7 +1123,8 @@
 │   │   ├── security
 │   │   │   └── permissions.ts
 │   │   ├── services
-│   │   │   └── isCfaEntreprise.ts
+│   │   │   ├── isCfaEntreprise.ts
+│   │   │   └── isGeiqEntreprise.ts
 │   │   ├── utils
 │   │   │   ├── assertUnreachable.ts
 │   │   │   ├── detectUrlAndEmails.test.ts
@@ -1434,6 +1436,7 @@
 │   │   │       │   │   ├── FormulaireEditionOffreFields.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreStep1.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreStep2.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreStep3FtSupport.tsx
 │   │   │       │   │   ├── InformationLegaleEntreprise.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
@@ -1781,7 +1784,6 @@
 │   │   │   │   ├── CandidatureLba.tsx
 │   │   │   │   ├── CandidatureLbaFailed.tsx
 │   │   │   │   ├── CandidatureLbaFileDropzone.tsx
-│   │   │   │   ├── CandidatureLbaMandataireMessage.tsx
 │   │   │   │   ├── CandidatureLbaModal.tsx
 │   │   │   │   ├── CandidatureLbaModalBody.tsx
 │   │   │   │   ├── CandidatureLbaWorked.tsx
@@ -2089,7 +2091,13 @@
 │   │   │   │   ├── mailcloud.svg
 │   │   │   │   ├── miseEnRelationEnvoyee.svg
 │   │   │   │   ├── no-job.svg
-│   │   │   │   └── right.svg
+│   │   │   │   ├── right.svg
+│   │   │   │   └── xp_france_travail
+│   │   │   │       ├── entretien.svg
+│   │   │   │       ├── handicap.svg
+│   │   │   │       ├── page.svg
+│   │   │   │       ├── profil.svg
+│   │   │   │       └── selection.svg
 │   │   │   ├── femmeMontrantNavigateur.svg
 │   │   │   ├── financement_ue.png
 │   │   │   ├── france_relance.svg
@@ -2500,4 +2508,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-482 directories, 2588 files
+483 directories, 2595 files
