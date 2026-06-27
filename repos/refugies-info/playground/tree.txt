@@ -84,6 +84,8 @@
 │   │   │   │   ├── (main)
 │   │   │   │   │   ├── documents
 │   │   │   │   │   │   ├── [id]
+│   │   │   │   │   │   │   ├── activity-logs
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── compliance
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── layout.tsx
@@ -139,6 +141,8 @@
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── health
 │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── release-edit-lock
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── tools
 │   │   │   │   │   │   └── validate-metadata-ri
 │   │   │   │   │   │       └── route.ts
@@ -169,11 +173,16 @@
 │   │   │   │   │   │   ├── DocumentActionsContext.tsx
 │   │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   │   ├── useAutosave.ts
+│   │   │   │   │   │   │   ├── useEditLock.ts
 │   │   │   │   │   │   │   └── usePublicationRealtime.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── ui
+│   │   │   │   │   │       ├── EditLockDialog.tsx
 │   │   │   │   │   │       ├── PublishConfirmationDialog.tsx
 │   │   │   │   │   │       └── PublishSuccessDialog.tsx
+│   │   │   │   │   ├── activity-logs
+│   │   │   │   │   │   ├── ActivityLogsView.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── arbitration
 │   │   │   │   │   │   ├── ArbitrationView.tsx
 │   │   │   │   │   │   └── index.ts
@@ -286,6 +295,7 @@
 │   │   │   │   │   └── seededRandom.ts
 │   │   │   │   ├── payload-builder.ts
 │   │   │   │   ├── preview-utils.ts
+│   │   │   │   ├── profile-name.ts
 │   │   │   │   ├── publication-errors.ts
 │   │   │   │   ├── sanitize-ri-metadata.ts
 │   │   │   │   ├── supabase
@@ -294,9 +304,11 @@
 │   │   │   │   └── workflow-utils.ts
 │   │   │   ├── proxy.ts
 │   │   │   ├── services
+│   │   │   │   ├── activity-logs.ts
 │   │   │   │   ├── assignee-actions.ts
 │   │   │   │   ├── document-actions.ts
 │   │   │   │   ├── documents.ts
+│   │   │   │   ├── edit-lock-actions.ts
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── metadata-actions.ts
 │   │   │   │   ├── permission-helper.ts
@@ -329,6 +341,7 @@
 │       ├── vitest.config.ts
 │       └── vitest.setup.ts
 ├── biome.json
+├── docker-compose.letta.yml
 ├── docs
 │   └── architecture
 │       └── metadata-validation-strategy.md
@@ -362,7 +375,8 @@
 │   │   │           └── .gitkeep
 │   │   └── letta-cloud-inventory.md
 │   ├── ai
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── local-letta-dev.md
 │   ├── api
 │   │   └── README.md
 │   ├── architecture
@@ -540,7 +554,9 @@
 │   │   │   ├── schemas
 │   │   │   │   └── metadata-ri.ts
 │   │   │   └── types
+│   │   │       ├── activity-log.ts
 │   │   │       ├── content.ts
+│   │   │       ├── date.ts
 │   │   │       ├── document.ts
 │   │   │       ├── index.ts
 │   │   │       ├── metadata-ri.ts
@@ -624,6 +640,8 @@
 │   │   │   ├── lib
 │   │   │   │   └── remixicon-categories.ts
 │   │   │   ├── overlays
+│   │   │   │   ├── dialog.stories.tsx
+│   │   │   │   ├── dialog.tsx
 │   │   │   │   ├── drawer
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.ts
@@ -718,6 +736,10 @@
 │   │   │   │   │   │       ├── UserSettingLine.tsx
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── icon-badge
+│   │   │   │   │   ├── IconBadge.stories.tsx
+│   │   │   │   │   ├── IconBadge.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── indication-conformite
 │   │   │   │   │   ├── IndicationConformite.stories.tsx
@@ -783,6 +805,7 @@
 │       │   │   └── workflow-registry.ts
 │       │   ├── steps
 │       │   │   ├── common
+│       │   │   │   ├── activity-log.ts
 │       │   │   │   ├── get-editorial-record-id.ts
 │       │   │   │   └── supabase.ts
 │       │   │   ├── editorial
@@ -819,6 +842,7 @@
 │   ├── convert-dispositifs.ts
 │   ├── copy-schema.ts
 │   ├── create-di-ingestion-records.ts
+│   ├── create-local-agents.ts
 │   ├── extract-random-records.ts
 │   ├── force-metadata-reports.ts
 │   ├── generate-json.ts
@@ -946,8 +970,12 @@
 │   │   ├── 20260603100000_rename_editorial_author_id_to_assignee_id.sql
 │   │   ├── 20260609154000_add_latest_ingestion_record_to_workflows.sql
 │   │   ├── 20260609155000_audit_pending_ingestion_updates.sql
+│   │   ├── 20260610160000_add_current_editor_id_to_editorial_records.sql
 │   │   ├── 20260615095200_move_assignee_to_workflows.sql
-│   │   └── 20260617153014_fix_workflows_enriched_versioning_columns.sql
+│   │   ├── 20260617084727_add_activity_logs.sql
+│   │   ├── 20260617153014_fix_workflows_enriched_versioning_columns.sql
+│   │   ├── 20260623120000_grant_service_role_translation_records.sql
+│   │   └── 20260626150000_rename_activity_log_archivage_to_archive.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -965,4 +993,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-219 directories, 748 files
+223 directories, 772 files
