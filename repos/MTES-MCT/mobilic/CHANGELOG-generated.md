@@ -1,36 +1,30 @@
-## Changelog : mobilic (30 derniers jours, au 22 juin 2026)
+## Changelog : mobilic (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment au niveau de la gestion des missions et de l'affichage des informations pour les administrateurs. Des corrections de bugs et des optimisations de performance ont également été apportées, en particulier sur le tableau de bord administrateur. L'interface utilisateur a été améliorée avec l'utilisation de composants DSFR et une meilleure gestion de l'affichage des données.
+Les dernières semaines ont été marquées par des améliorations significatives de l'interface utilisateur, notamment pour les administrateurs, avec une refonte de la vue des missions et des tableaux de bord. Des corrections de bugs et des optimisations de performance ont également été apportées, en particulier au niveau de l'affichage des données et de la gestion des alertes. L'application continue d'évoluer pour offrir une meilleure expérience utilisateur et une plus grande efficacité.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des activités pour les employés : le format de l'heure a été modifié pour plus de clarté. [#880](https://github.com/MTES-MCT/mobilic/pull/880)
-- Modification du bouton "Edition" d'activité pour utiliser un composant DSFR, améliorant l'harmonie visuelle. [#879](https://github.com/MTES-MCT/mobilic/pull/879)
-- Modification du bouton "Remplacer" une activité. [#870](https://github.com/MTES-MCT/mobilic/pull/870)
-- Masquage du champ "Conducteur" pour les utilisateurs non-équipe dans la révision d'activité. [#875](https://github.com/MTES-MCT/mobilic/pull/875)
-- Rafraîchissement des données après validation d'une mission dans le panneau de validation administrateur. [#873](https://github.com/MTES-MCT/mobilic/pull/873)
-- Correction permettant de sélectionner "Accompagnement" dans le menu déroulant lors de la révision d'une activité. [#872](https://github.com/MTES-MCT/mobilic/pull/872)
-- Correction pour utiliser le paramètre d'accompagnement pour afficher l'étiquette "Conduite". [#872](https://github.com/MTES-MCT/mobilic/pull/872)
-- Ajout d'une étiquette d'alerte de travail de nuit dans le panneau de respect de la réglementation (admin). [#843](https://github.com/MTES-MCT/mobilic/pull/843)
-- Ajout d'une recherche pour les NATINF. [#861](https://github.com/MTES-MCT/mobilic/pull/861) et [#860](https://github.com/MTES-MCT/mobilic/pull/860) et [#853](https://github.com/MTES-MCT/mobilic/pull/853)
-- Renommage du bouton "Conduire" en "Travail" lorsque les autres tâches sont désactivées. [#855](https://github.com/MTES-MCT/mobilic/pull/855) et [#867](https://github.com/MTES-MCT/mobilic/pull/867) et [#864](https://github.com/MTES-MCT/mobilic/pull/864)
-- Amélioration de la documentation du contrôleur et des liens vers les vidéos. [#854](https://github.com/MTES-MCT/mobilic/pull/854) et [#861](https://github.com/MTES-MCT/mobilic/pull/861)
+- **Vue administrateur des missions :** Amélioration de la structure et de l'ergonomie de la vue des missions pour les administrateurs, incluant des modifications de l'affichage des tags et des en-têtes. [#878](https://github.com/MTES-MCT/mobilic/pull/878)
+- **Modification du format de l'heure :** Changement du format d'affichage de l'heure pour les activités, améliorant la lisibilité pour les employés. [#880](https://github.com/MTES-MCT/mobilic/pull/880)
+- **Bouton d'édition d'activité :** Utilisation d'un composant DSFR pour le bouton d'édition d'activité, améliorant l'accessibilité et l'apparence. [#879](https://github.com/MTES-MCT/mobilic/pull/879)
+- **Bouton "Remplacer activité" :** Refonte du bouton de remplacement d'activité pour une meilleure clarté et une meilleure expérience utilisateur. [#870](https://github.com/MTES-MCT/mobilic/pull/870)
+- **Masquage de la sélection du conducteur :** Le champ "Conducteur" est maintenant masqué pour les utilisateurs qui ne sont pas en mode équipe. [#875](https://github.com/MTES-MCT/mobilic/pull/875)
+- **Rafraîchissement du panneau de validation :** Correction d'un bug qui empêchait le rafraîchissement des données après la validation d'une mission par un administrateur. [#873](https://github.com/MTES-MCT/mobilic/pull/873)
+- **Bouton "Travail" :** Corrections de bugs et améliorations de l'interface du bouton "Travail" dans la vue PWA. [#872](https://github.com/MTES-MCT/mobilic/pull/872)
+- **Bouton "Conduire" :** Renommage du bouton "Conduire" lorsque d'autres tâches sont désactivées, pour une meilleure clarté. [#867](https://github.com/MTES-MCT/mobilic/pull/867) et [#855](https://github.com/MTES-MCT/mobilic/pull/855)
+- **Recherche NatInf :** Ajout de la fonctionnalité de recherche NatInf. [#861](https://github.com/MTES-MCT/mobilic/pull/861) et [#860](https://github.com/MTES-MCT/mobilic/pull/860) et [#853](https://github.com/MTES-MCT/mobilic/pull/853)
+- **Bouton de soumission fixe :** Ajout d'un bouton de soumission fixe en bas de la page de résumé de la mission. [#868](https://github.com/MTES-MCT/mobilic/pull/868)
+- **Alertes réglementaires :** Ajout d'une étiquette pour les alertes de travail de nuit dans le panneau de respect de la réglementation. [#844](https://github.com/MTES-MCT/mobilic/pull/844)
 
 ### Évolutions techniques
-- Optimisation des requêtes du tableau de bord administrateur pour améliorer les performances. [#865](https://github.com/MTES-MCT/mobilic/pull/865)
-- Refactorisation du code pour supprimer le filtrage hebdomadaire côté client sur la page d'accueil. [#856](https://github.com/MTES-MCT/mobilic/pull/856)
-- Correction d'un problème de téléchargement de l'historique du contrôleur C1B. [#857](https://github.com/MTES-MCT/mobilic/pull/857)
-- Correction d'un problème d'agrégation du tableau des temps de travail dans les vues hebdomadaires et mensuelles. [#844](https://github.com/MTES-MCT/mobilic/pull/844)
-- Correction d'un bug lié au rafraîchissement des jours de travail après la validation d'une mission. [#854](https://github.com/MTES-MCT/mobilic/pull/854)
-- Correction d'une typographie dans la documentation. [#871](https://github.com/MTES-MCT/mobilic/pull/871)
-- Correction d'un problème avec le bouton de soumission fixe sur le résumé de la mission. [#868](https://github.com/MTES-MCT/mobilic/pull/868)
-- Correction de l'affichage des infractions dans l'interface du contrôleur.
-- Correction de l'affichage des infractions dans l'interface du contrôleur.
+- **Optimisation des performances :** Amélioration des performances de l'application, notamment au niveau des requêtes du tableau de bord administrateur. [#865](https://github.com/MTES-MCT/mobilic/pull/865)
+- **Refactorisation du code :** Refactorisation de plusieurs composants pour améliorer la lisibilité et la maintenabilité du code.
+- **Documentation :** Amélioration de la documentation du contrôleur et des ressources disponibles. [#863](https://github.com/MTES-MCT/mobilic/pull/863) et [#857](https://github.com/MTES-MCT/mobilic/pull/857) et [#858](https://github.com/MTES-MCT/mobilic/pull/858) et [#856](https://github.com/MTES-MCT/mobilic/pull/856)
+- **Correction de bugs :** Correction de plusieurs bugs, notamment liés à l'affichage des données, à la gestion des alertes et à l'exportation des données C1B. [#843](https://github.com/MTES-MCT/mobilic/pull/843)
 
 ### Autres changements
-- Amélioration de la documentation et des liens vers les ressources du contrôleur.
-- Correction de quelques wordings sur la page d'accueil administrateur. [#851](https://github.com/MTES-MCT/mobilic/pull/851) et [#858](https://github.com/MTES-MCT/mobilic/pull/858)
-- Correction de l'affichage des infractions sur la page d'accueil administrateur.
-- Correction du format de date pour l'export C1B.
-- Amélioration du style et de l'organisation des composants d'alerte du contrôleur.
-- Correction de l'affichage des infractions dans l'interface du contrôleur.
+- **Amélioration de l'accessibilité :** Ajout de labels pour les icônes afin d'améliorer l'accessibilité.
+- **Mise à jour des liens de la documentation :** Mise à jour des liens vers les ressources de documentation du contrôleur.
+- **Corrections de typographie :** Correction de plusieurs erreurs de typographie dans la documentation et l'interface utilisateur.
+- **Nettoyage du code :** Suppression de variables et d'imports inutilisés.
+- **Amélioration du style :** Ajustement du style de certains composants pour une meilleure cohérence visuelle.
