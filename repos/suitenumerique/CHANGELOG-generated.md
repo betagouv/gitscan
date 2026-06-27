@@ -1,27 +1,28 @@
-# Synthèse d'activité : suitenumerique (du 29 mai au 25 juin 2026)
+# Synthèse d'activité : suitenumerique (du 29 mai 2026 au 26 juin 2026)
 
 ## Résumé de l'activité
-La période récente a été marquée par des efforts importants pour améliorer la sécurité, la performance et l'expérience utilisateur des différentes applications de la Suite Numérique. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment [transfers](/repos/suitenumerique/transfers) avec une refonte de son frontend et des améliorations de la sécurité des téléchargements, et [st-home](/repos/suitenumerique/st-home) avec l'adoption de Dramatiq pour la gestion des tâches asynchrones et des améliorations de l'affichage de la carte de déploiement.  Des améliorations notables ont également été apportées à [meet](/repos/suitenumerique/meet) avec l'ajout d'un nouveau pipeline audio et à [calendars](/repos/suitenumerique/calendars) avec une refonte du RSVP et une migration vers Vite. L'accent a également été mis sur la correction de vulnérabilités et l'amélioration de la qualité du code dans plusieurs projets.
+L'organisation suitenumerique a connu une période d'activité intense, marquée par des améliorations significatives de la sécurité, de la performance et de l'expérience utilisateur de ses différents produits.  Des refontes architecturales majeures, notamment la migration vers Vite dans plusieurs dépôts ([messages](/repos/suitenumerique/messages), [calendars](/repos/suitenumerique/calendars)), visent à moderniser la base de code et à améliorer la scalabilité. L'accent a également été mis sur la sécurité, avec des corrections de vulnérabilités et l'implémentation de nouvelles mesures de protection dans [people](/repos/suitenumerique/people), [meet](/repos/suitenumerique/meet) et [accounts](/repos/suitenumerique/accounts).  Des fonctionnalités importantes ont été ajoutées, comme l'export de dossiers dans [drive](/repos/suitenumerique/drive) et l'amélioration du système de RSVP dans [calendars](/repos/suitenumerique/calendars).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de la sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-- [transfers](/repos/suitenumerique/transfers) : Renforcement de la sécurité des téléchargements et correction de vulnérabilités identifiées lors d'une revue de sécurité.
-- [people](/repos/suitenumerique/people) : Mise à jour de dépendances (urllib3, next, django) pour corriger des vulnérabilités de sécurité.
-- [meet-sip](/repos/suitenumerique/meet-sip) : Correction d'une condition de concurrence.
-- [calendars](/repos/suitenumerique/calendars) : Renforcement de la sécurité du traitement des données ICS pour prévenir les vulnérabilités.
+*   Correction de vulnérabilités dans [people](/repos/suitenumerique/people) avec la mise à jour de dépendances critiques (PyJWT, cryptography) et la correction du Dockerfile.
+*   Correction d'une vulnérabilité de redirection OIDC dans [conversations](/repos/suitenumerique/conversations).
+*   Renforcement de la sécurité du traitement des données ICS dans [calendars](/repos/suitenumerique/calendars).
+*   Mises à jour de dépendances dans [drive](/repos/suitenumerique/drive) et [conversations](/repos/suitenumerique/conversations) pour corriger des failles de sécurité.
 
 ## Autres changements notables
-- [transfers](/repos/suitenumerique/transfers) : Migration du frontend vers Vite et TanStack Router pour une meilleure performance et une architecture plus moderne.
-- [st-home](/repos/suitenumerique/st-home) : Remplacement de Celery par Dramatiq pour la gestion des tâches asynchrones.
-- [calendars](/repos/suitenumerique/calendars) : Migration du frontend de Next.js vers Vite.
-- [find](/repos/suitenumerique/find) : Suppression de la recherche par embedding et refonte de la gestion des indices de recherche.
-- [conversations](/repos/suitenumerique/conversations) : Mise en place d'un système de surveillance de la santé des modèles d'IA.
+*   **Refonte architecturale :** Migration vers Vite dans [messages](/repos/suitenumerique/messages) et [calendars](/repos/suitenumerique/calendars) pour une meilleure performance et expérience de développement.
+*   **Migration de tâches asynchrones :** Passage de Celery à Dramatiq dans [st-home](/repos/suitenumerique/st-home) pour une meilleure performance et fiabilité.
+*   **Amélioration de l'infrastructure CI/CD :** Optimisations et refactorisation importantes de l'infrastructure CI/CD dans [accounts](/repos/suitenumerique/accounts) pour une meilleure efficacité et maintenance.
+*   **Intégration de nouveaux services :** Intégration du client Matrix pour la messagerie dans [hub](/repos/suitenumerique/hub) et OnlyOffice pour la conversion de fichiers dans [drive](/repos/suitenumerique/drive).
 
 ## Dépôts les plus actifs
-- [transfers](/repos/suitenumerique/transfers) : Refonte du frontend et amélioration de la sécurité des téléchargements.
-- [st-home](/repos/suitenumerique/st-home) : Amélioration de la gestion des tâches asynchrones et de l'affichage de la carte de déploiement.
-- [meet](/repos/suitenumerique/meet) : Amélioration de la qualité audio et ajout de nouvelles fonctionnalités pour les réunions.
-- [calendars](/repos/suitenumerique/calendars) : Refonte du RSVP et migration vers Vite.
-- [conversations](/repos/suitenumerique/conversations) : Amélioration de la stabilité, de la surveillance des modèles d'IA et de l'expérience utilisateur.
-- [docs](/repos/suitenumerique/docs) : Ajout de nouvelles fonctionnalités et amélioration de l'accessibilité.
+*   **[meet](/repos/suitenumerique/meet)** : Améliorations significatives de la fonctionnalité, de la sécurité et de la performance, incluant l'ajout de nouvelles fonctionnalités et la correction de bugs.
+*   **[calendars](/repos/suitenumerique/calendars)** : Refonte majeure avec migration vers Vite, amélioration du système RSVP et de l'interface utilisateur.
+*   **[messages](/repos/suitenumerique/messages)** : Migration vers Vite et Tanstack Router, renforcement de la sécurité et amélioration de l'expérience utilisateur.
+*   **[people](/repos/suitenumerique/people)** : Améliorations de la sécurité, notamment l'import automatique de boîtes aux lettres depuis DiMail et la correction de vulnérabilités.
+*   **[hub](/repos/suitenumerique/hub)** : Ajout de nouvelles fonctionnalités de chat et intégration du client Matrix.
+*   **[st-home](/repos/suitenumerique/st-home)** : Amélioration du blog, de la carte de déploiement et migration du système de tâches asynchrones.
+*   **[drive](/repos/suitenumerique/drive)** : Ajout de l'export de dossiers, intégration d'OnlyOffice et amélioration de l'interface utilisateur.
+*   **[accounts](/repos/suitenumerique/accounts)** : Amélioration de l'infrastructure CI/CD et préparation pour l'ajout d'une interface utilisateur.

@@ -1,29 +1,33 @@
-# Synthèse d'activité : SocialGouv (du 17 mai 2026 au 17 juin 2026)
+# Synthèse d'activité : SocialGouv (du 17/05 au 26/06)
 
 ## Résumé de l'activité
-Au cours des dernières semaines, l'organisation SocialGouv a connu une activité soutenue, marquée par des améliorations significatives de la sécurité, de la stabilité et de l'expérience utilisateur de ses différentes applications.  Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et de l'ajout de nouvelles fonctionnalités. Des efforts importants ont été déployés pour préparer l'arrêt de certains services, comme Recosanté, et pour faciliter l'intégration de l'IA dans les processus de développement, notamment avec des outils comme repo-falcon et git-ai-trace. L'accent a également été mis sur la documentation et l'amélioration des processus de CI/CD. Les dépôts les plus actifs incluent [vao](/repos/SocialGouv/vao), [dashlord](/repos/SocialGouv/dashlord) et [domifa](/repos/SocialGouv/domifa).
+L'activité récente de SocialGouv est marquée par une forte concentration sur l'amélioration de la sécurité, la modernisation des infrastructures et l'amélioration de l'expérience utilisateur. Plusieurs dépôts ont bénéficié de corrections de vulnérabilités et de mises à jour de dépendances. Des efforts importants ont été déployés pour faciliter l'intégration avec des outils d'IA (Claude, OpenAI) et pour automatiser les processus de développement et de déploiement.  Des améliorations significatives ont été apportées à des services clés comme `vao` (accessibilité, recherche), `token-bureau` (gestion des permissions), `srdt` (expérience utilisateur) et `matomo-next` (analyse). Plusieurs projets ont également débuté, comme `migration-harbor2` et `JIA-demo-atelier-1`, témoignant de l'innovation continue au sein de l'organisation.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-*   Renforcement de la sécurité et correction de vulnérabilités dans [dsfr-mcp](/repos/SocialGouv/dsfr-mcp).
-*   Implémentation d'un mécanisme de "fail closed" pour l'antivirus dans [vao](/repos/SocialGouv/vao).
-*   Correction de vulnérabilités dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget).
+*   `smart-allow` : Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes.
+*   `nos1000jours-blues-epds-widget` : Correction de vulnérabilités de sécurité dans les dépendances.
+*   `archifiltre-mails` : Correction d'une vulnérabilité de sécurité.
+*   `buildkit-operator` : Renforcement de la sécurité avec des politiques réseau et attestations de supply-chain.
 
 ## Autres changements notables
-*   **Infrastructure:** Augmentation des ressources CPU et mémoire pour la base de données PostgreSQL dans [vao](/repos/SocialGouv/vao).
-*   **Migration:** Migration vers pnpm pour la gestion des dépendances dans plusieurs dépôts, notamment [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) et [dashlord-actions](/repos/SocialGouv/dashlord-actions).
-*   **Intégration IA:** Développement et amélioration d'outils d'intégration de l'IA, comme [git-ai-trace](/repos/SocialGouv/git-ai-trace) et [repo-falcon](/repos/SocialGouv/repo-falcon).
-*   **Abandon de service:** Préparation de l'arrêt du service Recosanté avec l'ajout d'une bannière d'information dans [recosante](/repos/SocialGouv/recosante).
-*   **Refonte d'interface:** Refonte majeure de l'interface utilisateur de [dashlord](/repos/SocialGouv/dashlord).
-*   **Changement de stockage:** Remplacement de Qdrant par pg\_vector dans [srdt](/repos/SocialGouv/srdt).
+Plusieurs changements techniques majeurs ont été effectués :
+
+*   `token-bureau` : Migration vers pnpm et refactorisation en monorepo.
+*   `revu` : Migration vers pnpm.
+*   `matomo-postgres` : Correction de problèmes liés aux ressources PostgreSQL.
+*   `dsfr-mcp` : Ajout d'un outil pour extraire des informations sur l'accessibilité RGAA.
+*   `buildkit-operator` : Nouvelle architecture à trois namespaces pour une meilleure isolation.
+*   `legi-data` : Passage à pg_vector pour le stockage des vecteurs.
+*   `cdtn-admin` : Ajout d'un challenger pour les modifications du SMIC.
 
 ## Dépôts les plus actifs
-*   **[vao](/repos/SocialGouv/vao):** Améliorations significatives de l'accessibilité, de la robustesse et de la sécurité de l'application, notamment au niveau de la gestion des agréments et de l'authentification.
-*   **[dashlord](/repos/SocialGouv/dashlord):** Refonte de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des données.
-*   **[domifa](/repos/SocialGouv/domifa):** Corrections de bugs, améliorations de la sécurité et ajout de l'authentification à deux facteurs.
-*   **[legi-data](/repos/SocialGouv/legi-data):** Mises à jour régulières des données de la base LEGI.
-*   **[srdt](/repos/SocialGouv/srdt):** Amélioration de l'expérience utilisateur et de la précision de l'assistant virtuel.
-*   **[code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique):** Ajout des accords d'entreprise et amélioration de la gestion du SMIC.
-*   **[infra-apps](/repos/SocialGouv/infra-apps):** Déploiement et configuration de l'application Iterion sur l'environnement OVH.
+*   `vao` : Amélioration de l'accessibilité, ajout de filtres de recherche et correction de bugs liés au renouvellement d'agrément.
+*   `token-bureau` : Corrections de bugs, améliorations de la gestion des permissions et migration vers pnpm.
+*   `srdt` : Amélioration de l'expérience utilisateur, refonte de l'affichage du statut de la convention collective et ajout de la possibilité de changer de modèle d'IA.
+*   `matomo-next` : Ajout d'un proxy pour contourner les bloqueurs de publicités et prise en charge des tests A/B.
+*   `cdtn-admin` : Amélioration de la gestion des contributions et ajout de nouvelles fonctionnalités pour le SMIC.
+*   `buildkit-operator` : Amélioration de la sécurité, refonte de l'architecture et ajout de tests E2E.
+*   `dashlord` : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.
+*   `JIA-atelier` et `JIA-atelier-gary` : Préparation et documentation de l'atelier sur l'Intelligence Artificielle.

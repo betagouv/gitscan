@@ -1,19 +1,19 @@
-# Synthèse d'activité : gristgouv (du 8 avril 2026 au 8 juin 2026)
+# Synthèse d'activité : gristgouv (du 23 mai au 23 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation gristgouv s'est concentrée sur l'amélioration de l'expérience utilisateur de Grist, notamment en termes d'accessibilité et de configuration initiale. L'ajout de nouveaux widgets, comme le "Formulaire Intra" [widgets-config](/repos/gristgouv/widgets-config), permet d'étendre les cas d'usage de la plateforme, en particulier pour les administrations publiques. Des efforts importants ont également été déployés pour améliorer la qualité du code et faciliter l'apprentissage de l'outil grâce à la mise à jour du contenu de formation [grist-mooc](/repos/gristgouv/grist-mooc). Enfin, la mise à jour régulière de l'image Docker [grist-docker-image](/repos/gristgouv/grist-docker-image) assure la disponibilité des dernières fonctionnalités de Grist.
+L'organisation gristgouv a connu une période d'activité soutenue, marquée par des améliorations significatives de l'expérience utilisateur et de la sécurité. L'ajout d'un nouveau widget de formulaire intra-administration via [widgets-config](/repos/gristgouv/widgets-config) permet aux agents de l'État de créer des formulaires directement dans Grist. Des efforts importants ont été consacrés à l'amélioration de l'accessibilité et de l'internationalisation de Grist via [grist-core](/repos/gristgouv/grist-core), avec l'ajout de traductions et l'amélioration du support des lecteurs d'écran. La sécurité a également été renforcée avec l'intégration d'un scanner de vulnérabilités dans l'image Docker via [grist-docker-image](/repos/gristgouv/grist-docker-image).
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+- Intégration de Trivy pour l'analyse des vulnérabilités de l'image Docker et génération d'un rapport JSON des vulnérabilités détectées dans [grist-docker-image](/repos/gristgouv/grist-docker-image).
 
 ## Autres changements notables
-- Amélioration de la gestion des locales et des traductions dans [grist-core](/repos/gristgouv/grist-core) pour une meilleure internationalisation.
-- Ajout de tests automatisés (smoke tests) dans [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) pour améliorer la stabilité et la qualité du code.
-- Implémentation du flux de consentement OAuth dans [grist-core](/repos/gristgouv/grist-core) pour une meilleure gestion des autorisations.
+- Amélioration de la gestion des locales (langues) pour une meilleure internationalisation dans [grist-core](/repos/gristgouv/grist-core).
+- Ajout d'une nouvelle build utilisant une version plus récente de gvisor dans [grist-docker-image](/repos/gristgouv/grist-docker-image).
+- Ajout d'un workflow CI avec des tests "smoke tests" utilisant Vitest dans [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form).
 
 ## Dépôts les plus actifs
-- [grist-core](/repos/gristgouv/grist-core) : Améliorations significatives de l'accessibilité, de la configuration initiale, de la gestion des locales et implémentation du consentement OAuth.
-- [widgets-config](/repos/gristgouv/widgets-config) : Ajout d'un nouveau widget "Formulaire Intra" pour faciliter l'intégration de formulaires internes.
-- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour du contenu de formation avec de nouveaux exercices et instructions.
-- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Mise à jour de l'image Docker avec la dernière version de Grist (v1.7.13).
-- [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) : Ajout d'une suite de tests automatisés pour améliorer la qualité du code.
+- [grist-core](/repos/gristgouv/grist-core) : Améliorations majeures de l'accessibilité, de l'expérience utilisateur et de l'internationalisation.
+- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Renforcement de la sécurité avec l'intégration d'un scanner de vulnérabilités et mise à jour de Grist.
+- [widgets-config](/repos/gristgouv/widgets-config) : Ajout d'un nouveau widget pour les formulaires intra-administration.
+- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la lisibilité et de la robustesse des widgets.
+- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour des contenus de formation.

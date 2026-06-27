@@ -1,31 +1,34 @@
-# Synthèse d'activité : MTES-MCT (du 23 mai au 22 juin)
+# Synthèse d'activité : MTES-MCT (du 23 mai au 23 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été particulièrement riche, marquée par des améliorations significatives sur de nombreux dépôts.  Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec des refontes d'interfaces (Sparte, rapportnav2), l'ajout de nouvelles fonctionnalités (otelo, mobilic, fonds-vert-espace-laureat) et l'amélioration de la gestion des données (ecobalyse-data, acceslibre). La sécurité a également été une priorité, avec des corrections de vulnérabilités et des mises à jour de dépendances dans plusieurs dépôts (mobilic, ecobalyse-runner).  Enfin, de nombreux dépôts ont bénéficié d'optimisations de performance et de corrections de bugs pour une meilleure stabilité et fiabilité. Des projets comme dahlia et dialog ont franchi des étapes importantes avec des déploiements initiaux et l'intégration de nouvelles fonctionnalités clés.
+L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration de l'expérience utilisateur, la sécurité et la qualité des données. Plusieurs projets ont bénéficié de refontes d'interface, d'ajouts de fonctionnalités clés (comme l'authentification multi-facteurs pour Trackdéchets et l'importation massive de données pour MesADS) et de corrections de bugs.  Un effort important a également été consacré à la modernisation des infrastructures et des dépendances, notamment pour assurer la sécurité et la performance des applications. Les projets *Lucca*, *Dossier Facile* et *Ecobalyse* ont été particulièrement actifs, avec des mises à jour significatives sur de nombreux aspects.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
 
-*   Correction de vulnérabilités dans `ecobalyse-runner` avec la mise à jour de la dépendance `sentry-sdk`.
-*   Correction de vulnérabilités CVE dans `mobilic` et `ecobalyse-method-tooling` via des mises à jour de dépendances.
-*   Restriction de l'accès à l'interface d'administration dans `acceslibre` aux utilisateurs "staff".
+*   **Trackdechets :** Implémentation de l'authentification multi-facteurs (MFA) avec gestion des réinitialisations et récupération de compte.
+*   **Mesads :** Correction d'une faille de sécurité potentielle en utilisant `format_html` pour éviter l'exécution de JavaScript non intentionnel.
+*   **Apilos :** Mise à jour de la dépendance `sentry-sdk` pour corriger des vulnérabilités.
+*   **Carbure :** Correction de vulnérabilités de sécurité (CVE openssl) dans l'image de développement.
 
 ## Autres changements notables
-*   **Refonte d'interfaces :**  `Sparte` a vu une refonte complète de sa page d'accueil et `rapportnav2` a intégré Metabase pour l'affichage de rapports.
-*   **Intégrations :**  `dialog-integrations` a progressé sur l'intégration des données des préfectures de Nantes et Rennes.
-*   **Déploiements :**  `dahlia` a été déployé en production avec une synchronisation nocturne des données.
-*   **Nouvelles fonctionnalités :** `otelo` a ajouté la gestion des tarifs de recharge, `mobilic` a amélioré la gestion des infractions et `fonds-vert-espace-laureat` a amélioré l'affichage des anomalies.
-*   **Amélioration de la qualité des données :** `acceslibre` a ajouté de nouvelles questions dans le schéma de collecte et corrigé des problèmes d'importation.
-*   **Refactoring et Optimisations :** Plusieurs dépôts ont bénéficié de refactorings de code et d'optimisations de performance (fisheries-and-environment-data-warehouse, mobilic-api).
+*   **Zero-logement-vacant :** Migration vers React Router v7 et refonte de l'importation des données LOVAC avec DuckDB et Parquet pour une meilleure performance et scalabilité.
+*   **Vizeau :** Nouvelle gestion complète des projets avec étapes, tags et documents associés.
+*   **Verseau2 :** Ajout de la gestion des erreurs via Sentry et optimisation des requêtes avec une vue matérialisée.
+*   **Trackdechets-vigiedechets :** Ajout de la possibilité de joindre plusieurs pièces jointes au formulaire de contact/assistance.
+*   **Sparte :** Refonte de la page d'accueil et amélioration de la lisibilité des indicateurs.
+*   **Potentiel :** Ajout de la possibilité pour les PP de corriger leur numéro d'identification.
+*   **Monitorfish :** Migration vers les nouvelles versions de Spring Boot et Security.
+*   **Docurba :** Intégration de Supabase pour l'authentification et remplacement de `wget` par `curl`.
 
 ## Dépôts les plus actifs
-*   **trackdechets:** Préparation et déploiement de la recette de mai 2026, corrections de bugs et améliorations de l'interface utilisateur.
-*   **sparte:** Refonte de l'interface utilisateur et amélioration de l'affichage des données.
-*   **dialog:** Ajout de la possibilité d'exporter des iframes de cartographie et amélioration de la gestion des arrêtés.
-*   **mobilic:** Amélioration de la gestion des infractions, des missions et de l'interface utilisateur.
-*   **acceslibre:** Amélioration de la qualité des données, ajout de nouvelles questions et intégration de l'APIDAE.
-*   **dahlia:** Développement initial et déploiement de l'application, intégration du SSO ProConnect et automatisation du scraping.
-*   **fonds-vert-espace-laureat:** Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.
-*   **ecobalyse:** Enrichissement de la base de données et amélioration de la gestion des alias.
-*   **apilos:** Amélioration de la génération de documents et correction de bugs.
-*   **aigle-frontend & aigle-api:** Amélioration de l'administration et de la gestion des données.
+*   **Dossier-Facile-Frontend :** Amélioration de l'expérience utilisateur, correction de bugs et amélioration des tests E2E.
+*   **Trackdechets :** Implémentation de l'authentification multi-facteurs et corrections de blocages critiques.
+*   **Lucca :** Ajout de la gestion des adhérents et amélioration de l'interface d'administration.
+*   **Mesads :** Ajout de l'importation massive de données et amélioration de la gestion des utilisateurs.
+*   **Ecobalyse :** Ajout de nouvelles données pour les batteries, les emballages et les transports, ainsi que des améliorations techniques.
+*   **Docurba :** Amélioration de l'affichage, ajout de fonctionnalités d'administration et migration vers Supabase.
+*   **Potentiel :** Amélioration de l'interface et ajout de fonctionnalités pour les utilisateurs.
+*   **Monitorfish :** Amélioration de l'interface et des fonctionnalités pour les contrôles en mer et à la débarque.
+*   **Dialog :** Ajout de la gestion des cartes de densité et d'une procédure d'urgence.
+*   **Apilos :** Amélioration de la génération de documents et correction de bugs.

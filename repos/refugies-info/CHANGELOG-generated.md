@@ -1,18 +1,15 @@
-# Synthèse d'activité : refugies-info (du 07/06 au 14/06)
+# Synthèse d'activité : refugies-info (du 15/05 au 22/05)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la qualité du code, notamment sur l'application [karfur](/repos/refugies-info/karfur) avec des corrections de bugs d'affichage et de gestion des erreurs sur mobile. Des efforts ont également été déployés pour faciliter la collaboration et l'analyse des données dans [playground](/repos/refugies-info/playground) grâce à l'ajout de nouvelles fonctionnalités d'assignation de fiches et d'affichage d'informations pertinentes. L'intégration de Letta, l'agent conversationnel, progresse avec des améliorations dans la gestion des doublons et la validation des "skills".
+L'activité de la semaine s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs dans les applications [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur). Des améliorations ont été apportées à la gestion des fiches, au suivi des modifications, et à l'affichage des informations, notamment les adresses et les images. L'organisation a également renforcé la sécurité de ses applications et mis en place des outils pour améliorer la qualité du code.
 
 ## Sécurité
-- Correction de vulnérabilités de sécurité via la mise à jour des dépendances dans [playground](/repos/refugies-info/playground).
-- Mise en place de scans de vulnérabilités de dépendances en pré-commit dans [karfur](/repos/refugies-info/karfur).
+Des corrections de vulnérabilités de sécurité ont été implémentées dans [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur), notamment via la mise à jour des dépendances.
 
 ## Autres changements notables
-- Refactorisation de la gestion des versions d'ingestion et de l'archivage dans [playground](/repos/refugies-info/playground).
-- Migration d'un identifiant d'auteur vers un identifiant d'assigné dans la table `editorial_records` de [playground](/repos/refugies-info/playground) pour une meilleure cohérence.
-- Intégration de Letta Code pour l'analyse automatique du code via un workflow GitHub Actions dans [karfur](/repos/refugies-info/karfur).
-- Suppression de code obsolète et de paramètres de configuration inutiles dans [karfur](/repos/refugies-info/karfur).
+- Intégration de Letta Code dans [karfur](/repos/refugies-info/karfur) pour l'auto-review des pull requests, améliorant ainsi la qualité du code.
+- Migration de la gestion des utilisateurs dans [playground](/repos/refugies-info/playground) avec le remplacement de `author_id` par `assignee_id`.
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Amélioration de l'interface et des fonctionnalités pour faciliter la gestion et l'analyse des fiches d'information.
-- [karfur](/repos/refugies-info/karfur) : Corrections de bugs, amélioration de l'expérience utilisateur sur mobile et intégration de nouvelles fonctionnalités pour l'agent Letta.
+- [playground](/repos/refugies-info/playground) : Amélioration significative de la gestion des fiches, du suivi des modifications et correction de bugs.
+- [karfur](/repos/refugies-info/karfur) : Corrections de bugs d'affichage et de connexion, amélioration de la réactivité et intégration d'outils d'analyse de code.

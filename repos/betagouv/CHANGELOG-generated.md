@@ -1,30 +1,20 @@
-# Synthèse d'activité : betagouv (du 16/05 au 16/06)
+# Synthèse d'activité : betagouv (du 17/05 au 24/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation betagouv est marquée par une forte concentration sur l'amélioration de la sécurité, la modernisation des infrastructures et l'ajout de nouvelles fonctionnalités pour faciliter l'accès aux services publics et améliorer l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour significatives, notamment *mon-suivi-justice* avec une correction de vulnérabilité critique, *reva* avec l'ajout de l'authentification à deux facteurs, et *infomedicament* avec une refonte de l'interface utilisateur et l'implémentation d'une recherche sémantique. De nombreux projets ont également bénéficié de mises à jour de dépendances et d'optimisations de performances. L'accent est mis sur la robustesse, la sécurité et l'amélioration continue des services proposés.
+L'activité récente de l'organisation betagouv a été marquée par une forte concentration sur l'amélioration de la qualité des données, la sécurité et la maintenance technique de ses nombreux projets. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités et assurer la stabilité. Des efforts importants ont également été déployés pour moderniser l'infrastructure, notamment avec des migrations vers des outils plus récents comme Poetry et Next.js. Plusieurs projets ont vu l'ajout de nouvelles fonctionnalités, comme l'intégration de données de Matomo, l'amélioration des interfaces utilisateur (recherche, gestion des formulaires) et l'ajout de nouveaux simulateurs (transport sanitaire, aides vélo). Enfin, des améliorations significatives ont été apportées à la gestion des données et à la synchronisation entre différents systèmes (Airtable, Brevo, Matomo).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-*   Correction d'une vulnérabilité critique dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) avec la mise à jour de la gem `rack-session`.
-*   Renforcement de la sécurité dans [maestro](/repos/betagouv/maestro) avec l'ajout de nouveaux ACR pour l'authentification MFA de ProConnect.
-*   Mise à jour de dépendances dans [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) et [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) pour corriger des vulnérabilités.
-*   Correction d'une faille de sécurité dans [maestro](/repos/betagouv/maestro).
+Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités de sécurité : [mon-suivi-justice](/repos/betagouv/mon-suivi-justice), [mes-aides-analytics](/repos/betagouv/mes-aides-analytics), [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng), [grist-custom-widgets-fr-admin](/repos/betagouv/grist-custom-widgets-fr-admin).  Des mesures de sécurité ont également été renforcées dans [maestro](/repos/betagouv/maestro) et [mon-entreprise](/repos/betagouv/mon-entreprise).
 
 ## Autres changements notables
-*   **Refonte et modernisation:** Refonte de l'interface utilisateur de [infomedicament](/repos/betagouv/infomedicament) et migration vers TypeScript dans [pitchou](/repos/betagouv/pitchou).
-*   **Infrastructure:** Passage à la version 2.0 des standards dans [standards](/repos/betagouv/standards) et modernisation de l'infrastructure pour [nitrates-iac](/repos/betagouv/nitrates-iac).
-*   **Nouvelles fonctionnalités:** Ajout de l'authentification à deux facteurs dans [reva](/repos/betagouv/reva), de la recherche sémantique dans [infomedicament](/repos/betagouv/infomedicament), et de la gestion des agréments des laboratoires via LabCam dans [maestro](/repos/betagouv/maestro).
-*   **Synchronisation de données:** Amélioration de la synchronisation des données entre différents systèmes, notamment entre Turgot et Matomo dans [kube-dev](/repos/betagouv/kube-dev) et entre Airtable et Grist dans [grist-cron-grist-to-brevo](/repos/betagouv/grist-cron-grist-to-brevo).
+Plusieurs projets ont entrepris des refactorings importants pour améliorer la maintenabilité et la performance : [test-sme](/repos/betagouv/test-sme), [transports-sanitaires](/repos/betagouv/transports-sanitaires), [piste-sme](/repos/betagouv/piste-sme), [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng), [maestro](/repos/betagouv/maestro), [mon-entreprise](/repos/betagouv/mon-entreprise).  Des migrations vers des technologies plus modernes ont été initiées, notamment avec l'utilisation de Next.js dans [mon-entreprise](/repos/betagouv/mon-entreprise) et la mise à jour de Node.js dans plusieurs projets. Des améliorations significatives ont été apportées à l'infrastructure de test et de déploiement, notamment avec l'ajout de tests end-to-end et l'optimisation des workflows CI/CD.
 
 ## Dépôts les plus actifs
-*   [maestro](/repos/betagouv/maestro) : Ajout de nouvelles fonctionnalités et amélioration de la gestion des accès.
-*   [infomedicament](/repos/betagouv/infomedicament) : Refonte de l'interface utilisateur et implémentation de la recherche sémantique.
-*   [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Amélioration de la synchronisation des données et correction de bugs.
-*   [grist-core](/repos/betagouv/grist-core) : Amélioration de l'importation depuis Airtable et correction de bugs.
-*   [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) : Correction d'une vulnérabilité de sécurité critique.
-*   [pitchou](/repos/betagouv/pitchou) : Migration vers TypeScript et amélioration de la gestion des données.
-*   [sylvasan](/repos/betagouv/sylvasan) : Ajout de la géolocalisation et amélioration de la gestion des images.
-*   [test-sme](/repos/betagouv/test-sme) : Amélioration de l'expérience utilisateur et maintenance technique.
-*   [mission-transition-ecologique](/repos/betagouv/mission-transition-ecologique) : Ajout de la gestion du statut d'administration des établissements.
-*   [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) : Amélioration de l'analyse des données budgétaires et optimisation du fonctionnement hors connexion.
+*   [zacharie](/repos/betagouv/zacharie) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des fiches.
+*   [sylvasan](/repos/betagouv/sylvasan) : Ajout de la géolocalisation mobile et amélioration de la gestion des observations.
+*   [test-sme](/repos/betagouv/test-sme) : Refonte de l'interface utilisateur et maintenance technique.
+*   [maestro](/repos/betagouv/maestro) : Amélioration de la gestion des laboratoires et des prélèvements.
+*   [infomedicament](/repos/betagouv/infomedicament) : Amélioration de la recherche de médicaments et de l'affichage des informations.
+*   [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Amélioration de la synchronisation des données et gestion des missions.
+*   [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte du comparateur de statuts et amélioration de l'expérience utilisateur.
+*   [mission-transition-ecologique-back](/repos/betagouv/mission-transition-ecologique-back) : Amélioration de la qualité du code et de l'infrastructure de test.
