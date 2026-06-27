@@ -101,6 +101,8 @@
 │   │   │   │   │   ├── pagination_handler.js
 │   │   │   │   │   ├── sort_handler.js
 │   │   │   │   │   └── tabs_loader.js
+│   │   │   │   ├── back_histo_address
+│   │   │   │   │   └── back_histo_address.js
 │   │   │   │   ├── back_partner_index
 │   │   │   │   │   └── back_partner_index.js
 │   │   │   │   ├── back_partner_view
@@ -411,7 +413,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (109 files)
+│   └── Version*.php  (112 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -585,6 +587,7 @@
 │   │   ├── SlugifyDocumentSignalementCommand.php
 │   │   ├── Temp
 │   │   │   ├── .gitignore
+│   │   │   ├── ForceCloturesDossiersCommand.php
 │   │   │   └── ForceEsaboraDossierClotureCommand.php
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateMergedCommunesCommand.php
@@ -626,6 +629,7 @@
 │   │   │   ├── DashboardController.php
 │   │   │   ├── DashboardTabPanelController.php
 │   │   │   ├── ExportSignalementController.php
+│   │   │   ├── HistoAddressController.php
 │   │   │   ├── HistoryEntryController.php
 │   │   │   ├── InterconnexionController.php
 │   │   │   ├── MetabaseController.php
@@ -646,7 +650,6 @@
 │   │   │   ├── SignalementSameAddressController.php
 │   │   │   ├── SignalementVisitesController.php
 │   │   │   ├── SitemapController.php
-│   │   │   ├── SuiviSummariesController.php
 │   │   │   ├── TagController.php
 │   │   │   ├── TerritoryFilesController.php
 │   │   │   ├── TerritoryManagementController.php
@@ -933,8 +936,6 @@
 │   │   └── Zone.php
 │   ├── Event
 │   │   ├── AffectationAnsweredEvent.php
-│   │   ├── AffectationClosedEvent.php
-│   │   ├── AffectationCreatedEvent.php
 │   │   ├── FileUploadedEvent.php
 │   │   ├── InterventionCreatedEvent.php
 │   │   ├── InterventionEditedEvent.php
@@ -966,8 +967,6 @@
 │   │   └── UserCreatedListener.php
 │   ├── EventSubscriber
 │   │   ├── AffectationAnsweredSubscriber.php
-│   │   ├── AffectationClosedSubscriber.php
-│   │   ├── AffectationCreatedSubscriber.php
 │   │   ├── ApiLimiterSubscriber.php
 │   │   ├── ApiRequestIdSubscriber.php
 │   │   ├── FileUploadedSubscriber.php
@@ -1103,7 +1102,6 @@
 │   │   │   ├── TypeCompositionType.php
 │   │   │   └── UsagerSituationFoyerType.php
 │   │   ├── StopProcedureType.php
-│   │   ├── SuiviSummariesType.php
 │   │   ├── TerritoryFileType.php
 │   │   ├── Type
 │   │   │   ├── PhoneType.php
@@ -1158,7 +1156,6 @@
 │   │   │   ├── PdfExportMessage.php
 │   │   │   ├── SignalementDraftProcessMessage.php
 │   │   │   ├── SignalementServiceSecoursFileMessage.php
-│   │   │   ├── SuiviSummariesMessage.php
 │   │   │   └── UserExportMessage.php
 │   │   └── MessageHandler
 │   │       ├── Esabora
@@ -1175,7 +1172,6 @@
 │   │       ├── SignalementAddressUpdateAndAutoAssignMessageHandler.php
 │   │       ├── SignalementDraftFileMessageHandler.php
 │   │       ├── SignalementServiceSecoursFileMessageHandler.php
-│   │       ├── SuiviSummariesMessageHandler.php
 │   │       └── UserExportMessageHandler.php
 │   ├── Repository
 │   │   ├── AddressRepository.php
@@ -1555,7 +1551,6 @@
 │   │   │   │   │   ├── SignalementPdfExportMailer.php
 │   │   │   │   │   ├── SignalementRefusalMailer.php
 │   │   │   │   │   ├── SignalementReminderInjonctionBailleurMailer.php
-│   │   │   │   │   ├── SignalementSuiviSummariesExportMailer.php
 │   │   │   │   │   ├── SignalementUsagerCloseInjonctionBailleurMailer.php
 │   │   │   │   │   ├── SignalementUserExportMailer.php
 │   │   │   │   │   └── SignalementValidationMailer.php
@@ -1661,6 +1656,7 @@
 │   │   │   ├── SignalementQualificationNde.php
 │   │   │   ├── Suivi
 │   │   │   │   ├── SuiviCategoryMapper.php
+│   │   │   │   ├── SuiviDescriptionHelper.php
 │   │   │   │   ├── SuiviHelper.php
 │   │   │   │   ├── SuiviSeenMarker.php
 │   │   │   │   └── SuiviTransformerService.php
@@ -1935,6 +1931,8 @@
 │   │   │           ├── _header_dossier_nouveaux.html.twig
 │   │   │           └── tab_dossier_nouveaux.html.twig
 │   │   ├── header_main_menu.html.twig
+│   │   ├── histo-address
+│   │   │   └── index.html.twig
 │   │   ├── history-entry
 │   │   │   └── details.html.twig
 │   │   ├── indicateurs_pnlhi
@@ -1972,8 +1970,6 @@
 │   │   │   ├── _modal_profil_notification_email_alert_signalement.html.twig
 │   │   │   ├── _modal_profil_password.html.twig
 │   │   │   ├── _notifications-email.html.twig
-│   │   │   └── index.html.twig
-│   │   ├── resumes-suivi
 │   │   │   └── index.html.twig
 │   │   ├── signalement
 │   │   │   ├── list
@@ -2188,7 +2184,6 @@
 │   │   ├── signalement_edit_mail_occupant.html.twig
 │   │   ├── signalement_pdf_export.html.twig
 │   │   ├── signalement_user_export.html.twig
-│   │   ├── suivi_summaries_export.html.twig
 │   │   ├── transfer_account_email.html.twig
 │   │   └── validation_signalement_email.html.twig
 │   ├── flash-messages.html.twig
@@ -2423,6 +2418,7 @@
 │   │   │   │   ├── Interconnection
 │   │   │   │   │   └── JobEventRepositoryTest.php
 │   │   │   │   ├── SignalementList
+│   │   │   │   │   ├── ExportIterableQueryTest.php
 │   │   │   │   │   ├── MapGeoDataQueryTest.php
 │   │   │   │   │   └── QueryBuilderFactoryTest.php
 │   │   │   │   └── Statistics
@@ -2702,6 +2698,7 @@
 │   │   │   ├── Intervention
 │   │   │   │   └── InterventionDescriptionGeneratorTest.php
 │   │   │   ├── Mailer
+│   │   │   │   ├── AbstractNotificationMailerTest.php
 │   │   │   │   ├── ContextDateTimeNormalizerTest.php
 │   │   │   │   ├── Error
 │   │   │   │   │   └── ErrorSignalementMailerTest.php
@@ -2829,15 +2826,20 @@
 │               ├── Brevo
 │               │   ├── blocked.json
 │               │   ├── clicked.json
+│               │   ├── deferred.json
 │               │   ├── delivered.json
 │               │   ├── error.json
+│               │   ├── error_template.json
 │               │   ├── hard_bounce.json
 │               │   ├── invalid_email.json
 │               │   ├── opened.json
+│               │   ├── proxy_open.json
 │               │   ├── sent.json
 │               │   ├── soft_bounce.json
 │               │   ├── spam.json
-│               │   └── unique_opened.json
+│               │   ├── unique_opened.json
+│               │   ├── unique_proxy_open.json
+│               │   └── unsubscribed.json
 │               ├── Esabora
 │               │   ├── schs
 │               │   │   ├── ws_etat_dossier_sas
@@ -2891,4 +2893,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-485 directories, 2533 files
+486 directories, 2537 files
