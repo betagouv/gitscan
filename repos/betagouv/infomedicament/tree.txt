@@ -63,6 +63,7 @@
 │   ├── aggregatePathoClasseClinique.ts
 │   ├── importNoticeRCP.integration.test.ts
 │   ├── importNoticeRCP.ts
+│   ├── populateSpecMetadataTable.ts
 │   ├── scalingo
 │   │   └── import_pdbm.sh
 │   ├── seedInteractionsSearch.ts
@@ -307,7 +308,10 @@
 │   │   │   ├── 20260408000000_add_triam_classe_grp_subst.ts
 │   │   │   ├── 20260408100000_add_class_ids_to_interactions_search.ts
 │   │   │   ├── 20260430091940_classes_cliniques.ts
-│   │   │   └── 20260521080526_resume_specialites.ts
+│   │   │   ├── 20260521080526_resume_specialites.ts
+│   │   │   ├── 20260602102559_spec_metadata_table.ts
+│   │   │   ├── 20260615000000_search_index_spec_id.ts
+│   │   │   └── 20260616000000_search_synonyms.ts
 │   │   ├── pdbmMySQL
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
@@ -342,6 +346,8 @@
 │   │       ├── search.test.ts
 │   │       ├── search.ts
 │   │       ├── searchScoring.ts
+│   │       ├── searchSynonyms.test.ts
+│   │       ├── searchSynonyms.ts
 │   │       ├── specialities.integration.test.ts
 │   │       ├── specialities.ts
 │   │       ├── substances.integration.test.ts
@@ -383,9 +389,9 @@
 │       ├── atc.ts
 │       ├── glossary.tsx
 │       ├── network.tsx
-│       ├── notices
-│       │   ├── noticesUtils.test.ts
-│       │   └── noticesUtils.tsx
+│       ├── notices.test.ts
+│       ├── notices.test.tsx
+│       ├── notices.tsx
 │       ├── pediatrics.ts
 │       ├── presentations.integration.test.ts
 │       ├── presentations.test.ts
@@ -398,4 +404,4 @@
 ├── utils
 │   └── network.tsx
 └── vitest.config.mts
-98 directories, 302 files
+97 directories, 309 files
