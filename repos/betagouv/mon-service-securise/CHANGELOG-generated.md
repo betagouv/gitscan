@@ -1,41 +1,45 @@
-## Changelog : mon-service-securise (30 derniers jours, au 24 juin 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'administration des utilisateurs et des organisations, avec l'ajout de nouvelles fonctionnalités pour les administrateurs et superviseurs, ainsi que des améliorations de l'accessibilité et de la sécurité. Des corrections et optimisations techniques ont également été apportées pour améliorer la stabilité et la performance du service.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de l'expérience administrateur, notamment avec la refonte de la gestion des utilisateurs et des permissions. Des corrections d'accessibilité ont également été apportées, ainsi que des optimisations de sécurité et de maintenance technique. L'ajout de nouvelles fonctionnalités pour la gestion des risques v2 et l'amélioration du suivi des événements sont également notables.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page dédiée à la gestion des administrateurs et superviseurs, accessible via un nouveau menu dans l'interface.
-- Possibilité pour un administrateur de nommer d'autres administrateurs sur des entités spécifiques, avec gestion des permissions et des rôles.
-- Affichage des entités sur lesquelles un utilisateur est administrateur ou superviseur.
-- Amélioration de l'affichage des risques v2 avec un tiroir permettant de modifier la gravité.
-- Ajout d'une recherche sur les pages d'administration.
+- Amélioration de l'affichage et de la gestion des risques v2 : affichage des descriptions et exemples, modification du niveau de gravité, affichage cohérent en lecture seule.
+- Ajout d'une page dédiée à la gestion des administrateurs et superviseurs, incluant la recherche, la gestion des permissions et l'attribution de rôles.
+- Possibilité de nommer un administrateur sur un périmètre complet.
+- Affichage des actions de suppression et d'attribution de rôles pour les utilisateurs administrés.
+- Ajout d'une fonctionnalité permettant de retirer l'accès d'un utilisateur à des services.
+- Amélioration de l'affichage des entités et des services associés à un utilisateur.
+- Ajout d'un fil d'Ariane plus précis sur certaines pages.
 - Affichage des statistiques de supervision.
-- Possibilité de surcharger la gravité d'un risque général V2 via l'API.
-- Ajout de tableaux par thématique pour une meilleure organisation des informations.
-- Affichage du récapitulatif des modifications lors de l'attribution de rôles.
-- Ajout d'une page listant les utilisateurs administrés.
-- Amélioration de l'affichage des informations sur les services et les entités.
+- Ajout d'un tableau de bord spécifique pour les administrateurs et superviseurs.
+- Affichage des badges d'administrateur sur la liste des utilisateurs.
+- Amélioration de l'affichage des matrices de risque v2.
+- Ajout d'une page "Conseils cyber" utilisant des composants DSFR.
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances (Vitest, Playwright, Prettier, Knex, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
-- Renforcement de la sécurité avec la mise à jour de Vite et de Multer, corrigeant des vulnérabilités.
-- Amélioration de la configuration Knex pour éviter les duplications.
-- Ajout de tests d'accessibilité pour les pages d'administration et les tiroirs.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Ajout de tests unitaires et d'intégration.
-- Utilisation de zizmor pour valider la configuration.
+- Mise à jour de nombreuses dépendances (axios, @tiptap, vite, svelte, etc.).
+- Amélioration de la configuration Knex et simplification de la connexion à la base de données.
+- Ajout de tests d'accessibilité et corrections associées.
 - Implémentation d'un adaptateur de persistance mémoire pour les tests d'accessibilité.
-- Ajout de logs d'audit pour les actions d'administration (attribution de rôles, suppression d'accès).
-- Amélioration du tracking Matomo pour une meilleure analyse de l'utilisation du service.
+- Ajout d'un système de journalisation des événements (audit) pour les actions d'administration.
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- Ajout de règles ESLint pour améliorer la qualité du code.
+- Amélioration de la sécurité en désactivant les identifiants git dans les actions CI/CD et en mettant à jour des dépendances vulnérables (multer, vite, svelte).
+- Ajout d'un fichier `robots.txt` et d'un sitemap pour améliorer le référencement.
+- Utilisation de zizmor pour valider la configuration.
 
 ### Autres changements
-- Suppression de code obsolète et de configurations inutiles.
-- Amélioration de la documentation.
-- Correction de problèmes d'accessibilité (couleurs, contrastes, labels).
-- Ajout d'un fichier `robots.txt` et mise à jour du sitemap.
-- Suppression de la page "activation".
-- Ajout de règles ESLint pour améliorer la qualité du code.
-- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
-- Suppression de l'attribut `setGenerationTimeMs`.
-- Suppression du fil d'Ariane sur la page de statistiques de supervision.
-- Ajout de titres cohérents sur les pages connectées.
+- Mise à jour de la documentation.
+- Correction de problèmes de contraste et d'accessibilité.
+- Amélioration de l'affichage des messages et des infobulles.
+- Suppression de code obsolète.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de tests unitaires et d'intégration.
+- Correction de bugs mineurs.
+- Suppression de code inutile.
+- Uniformisation de certains composants et styles.
+- Ajout de variables d'environnement pour la configuration.
+- Amélioration de la gestion des secrets.
+- Ajout de la possibilité de suivre la navigation dans la SPA avec Matomo.
