@@ -226,6 +226,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260605120346_add_transformations
 │   │   │   └── migration.sql
+│   │   ├── 20260608102330_add_population_to_department
+│   │   │   └── migration.sql
 │   │   ├── 20260612130445_add_impact_indicators
 │   │   │   └── migration.sql
 │   │   ├── 20260615130113_new_indicator_for_impact
@@ -285,7 +287,7 @@
 │   │   ├── note.seed.ts
 │   │   ├── operateur.seed.ts
 │   │   ├── structure-typologie.seed.ts
-│   │   ├── structure.seed.ts
+│   │   ├── structure-version.seed.ts
 │   │   └── user.seed.ts
 │   └── utils
 │       ├── code-bhasile.util.ts
@@ -329,7 +331,8 @@
 │   │   ├── 20260414-move-indicateurs-financiers.ts
 │   │   ├── 20260521-backfill-structure-version.ts
 │   │   ├── 20260610-backfill-structure-finess-and-descriptions.ts
-│   │   └── 20260617-create-transformation-form-definitions.ts
+│   │   ├── 20260617-create-transformation-form-definitions.ts
+│   │   └── 20260622-fill-departement-population.ts
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
@@ -502,7 +505,13 @@
 │   │   │   │       │   │   │   ├── CpomViewer.tsx
 │   │   │   │       │   │   │   ├── DescriptionBlock.tsx
 │   │   │   │       │   │   │   ├── General.tsx
-│   │   │   │       │   │   │   └── PrahdaDescriptionBlock.tsx
+│   │   │   │       │   │   │   ├── Historique.tsx
+│   │   │   │       │   │   │   ├── PrahdaDescriptionBlock.tsx
+│   │   │   │       │   │   │   └── _historique
+│   │   │   │       │   │   │       ├── HistoryEventItem.tsx
+│   │   │   │       │   │   │       ├── HistoryEventLabel.tsx
+│   │   │   │       │   │   │       ├── HistoryTimeline.tsx
+│   │   │   │       │   │   │       └── StructureRefLinks.tsx
 │   │   │   │       │   │   ├── _finances
 │   │   │   │       │   │   │   ├── AmountBadge.tsx
 │   │   │   │       │   │   │   ├── BudgetExecutoire.tsx
@@ -567,6 +576,7 @@
 │   │   │   │       │   │       └── page.tsx
 │   │   │   │       │   └── page.tsx
 │   │   │   │       ├── _components
+│   │   │   │       │   ├── StatutTabs.tsx
 │   │   │   │       │   ├── StructureItem.tsx
 │   │   │   │       │   ├── StructuresMap.tsx
 │   │   │   │       │   ├── StructuresTable.tsx
@@ -601,6 +611,10 @@
 │   │   │           │   ├── layout.tsx
 │   │   │           │   ├── page.tsx
 │   │   │           │   ├── selection
+│   │   │           │   │   ├── _components
+│   │   │           │   │   │   ├── ReinitialiserSelectionModal.tsx
+│   │   │           │   │   │   ├── TransformationSelectionSummary.tsx
+│   │   │           │   │   │   └── TransformationSelectionSummaryItem.tsx
 │   │   │           │   │   └── page.tsx
 │   │   │           │   └── verification
 │   │   │           │       ├── _components
@@ -759,6 +773,7 @@
 │   │   │   │   ├── finess.repository.ts
 │   │   │   │   └── finess.util.ts
 │   │   │   ├── forms
+│   │   │   │   ├── form.constants.ts
 │   │   │   │   ├── form.repository.ts
 │   │   │   │   └── form.util.ts
 │   │   │   ├── indicateurs-financiers
@@ -771,11 +786,43 @@
 │   │   │   │   ├── operateur.db.type.ts
 │   │   │   │   ├── operateur.repository.ts
 │   │   │   │   ├── operateur.service.ts
+│   │   │   │   ├── operateur.sql.ts
 │   │   │   │   ├── route.ts
 │   │   │   │   └── suggestions
 │   │   │   │       └── route.ts
 │   │   │   ├── role
 │   │   │   │   └── role.repository.ts
+│   │   │   ├── statistiques
+│   │   │   │   ├── README.md
+│   │   │   │   ├── activite
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── activite.repository.ts
+│   │   │   │   │   ├── activite.service.ts
+│   │   │   │   │   └── activite.util.ts
+│   │   │   │   ├── controle-qualite
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── controle-qualite-eig.util.ts
+│   │   │   │   │   ├── controle-qualite-evaluation.util.ts
+│   │   │   │   │   ├── controle-qualite.repository.ts
+│   │   │   │   │   └── controle-qualite.service.ts
+│   │   │   │   ├── finance
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── finance.repository.ts
+│   │   │   │   │   ├── finance.service.ts
+│   │   │   │   │   └── finance.util.ts
+│   │   │   │   ├── places
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── places.service.ts
+│   │   │   │   │   └── places.util.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   ├── statistique.service.ts
+│   │   │   │   ├── statistiques.db.type.ts
+│   │   │   │   ├── statistiques.repository.ts
+│   │   │   │   ├── statistiques.utils.ts
+│   │   │   │   └── structures
+│   │   │   │       ├── README.md
+│   │   │   │       ├── structures.service.ts
+│   │   │   │       └── structures.util.ts
 │   │   │   ├── structure-millesimes
 │   │   │   │   └── structure-millesime.repository.ts
 │   │   │   ├── structure-typologies
@@ -783,7 +830,8 @@
 │   │   │   ├── structure-versions
 │   │   │   │   ├── structure-version.db.type.ts
 │   │   │   │   ├── structure-version.repository.ts
-│   │   │   │   └── structure-version.service.ts
+│   │   │   │   ├── structure-version.service.ts
+│   │   │   │   └── structure-version.util.ts
 │   │   │   ├── structures
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── adresses
@@ -800,7 +848,9 @@
 │   │   │   │   └── structure.util.ts
 │   │   │   ├── transformations
 │   │   │   │   ├── [id]
-│   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── route.ts
+│   │   │   │   │   └── selection
+│   │   │   │   │       └── route.ts
 │   │   │   │   ├── route.ts
 │   │   │   │   ├── transformation.db.type.ts
 │   │   │   │   ├── transformation.repository.ts
@@ -818,6 +868,7 @@
 │   │   │   ├── InformationCard.tsx
 │   │   │   ├── Logo.tsx
 │   │   │   ├── Menu.tsx
+│   │   │   ├── MenuFooter.tsx
 │   │   │   ├── MultiInformationCard.tsx
 │   │   │   ├── NameChangeNotice.tsx
 │   │   │   ├── NameChangeNoticeClient.tsx
@@ -883,6 +934,7 @@
 │   │   │   │   ├── PreviousPageLink.tsx
 │   │   │   │   ├── RadioCardGroup.tsx
 │   │   │   │   ├── SelectWithValidation.tsx
+│   │   │   │   ├── TransformationFakeSaver.tsx
 │   │   │   │   ├── TransformationFormController.tsx
 │   │   │   │   ├── Upload.tsx
 │   │   │   │   ├── UploadWithValidation.tsx
@@ -1018,11 +1070,16 @@
 │   │   │   ├── structure-selection
 │   │   │   │   ├── StructureSearch.tsx
 │   │   │   │   └── StructuresList.tsx
+│   │   │   ├── structures
+│   │   │   │   └── StructureEventIcon.tsx
+│   │   │   ├── transformation-markers
+│   │   │   │   ├── TransformationMarkerBadge.tsx
+│   │   │   │   ├── TransformationMarkers.tsx
+│   │   │   │   └── getTransformationMarkers.ts
 │   │   │   ├── transformations
 │   │   │   │   ├── OngoingTransformation.tsx
 │   │   │   │   ├── OngoingTransformationsBanner.tsx
-│   │   │   │   ├── TransformationStructureHeader.tsx
-│   │   │   │   └── TransformationStructureIcon.tsx
+│   │   │   │   └── TransformationStructureHeader.tsx
 │   │   │   └── ui
 │   │   │       ├── InformationBar.tsx
 │   │   │       ├── InputSimple.tsx
@@ -1096,6 +1153,7 @@
 │   │       ├── date.util.ts
 │   │       ├── decimal.util.ts
 │   │       ├── defaultValues.util.ts
+│   │       ├── eig.util.ts
 │   │       ├── errorMail.util.ts
 │   │       ├── evaluation.util.ts
 │   │       ├── file-upload.util.ts
@@ -1106,6 +1164,7 @@
 │   │       ├── number.util.ts
 │   │       ├── operateur.util.ts
 │   │       ├── phone.util.ts
+│   │       ├── statistiques-format.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
 │   │       ├── structureMillesime.util.ts
@@ -1155,6 +1214,7 @@
 │   │   │   ├── indicateurFinancier.schema.ts
 │   │   │   ├── operateur.schema.ts
 │   │   │   ├── region.schema.ts
+│   │   │   ├── statistique.schema.ts
 │   │   │   ├── statistiques.schema.ts
 │   │   │   ├── structure-millesime.schema.ts
 │   │   │   ├── structure-typologie.schema.ts
@@ -1214,12 +1274,21 @@
 │       ├── indicateur-financier.type.ts
 │       ├── prisma.type.ts
 │       ├── proxy.type.ts
+│       ├── structure-history.type.ts
 │       ├── structure.type.ts
 │       ├── transformation.type.ts
 │       └── utils.type.ts
 ├── tailwind.config.ts
 ├── tests
 │   ├── (authenticated)
+│   │   ├── (with-menu)
+│   │   │   └── structures
+│   │   │       └── [id]
+│   │   │           └── _components
+│   │   │               └── _description
+│   │   │                   └── _historique
+│   │   │                       ├── HistoryEventLabel.test.tsx
+│   │   │                       └── StructureRefLinks.test.tsx
 │   │   └── structures
 │   │       ├── StructuresTable.test.tsx
 │   │       ├── [id]
@@ -1258,6 +1327,8 @@
 │   │       ├── page.test.tsx
 │   │       └── transformation
 │   │           ├── [transformationId]
+│   │           │   ├── selection
+│   │           │   │   └── page.test.tsx
 │   │           │   └── verification
 │   │           │       ├── _components
 │   │           │       │   └── StructureVersionTransformationItem.test.tsx
@@ -1296,6 +1367,12 @@
 │   │   │   ├── route.test.ts
 │   │   │   └── suggestions
 │   │   │       └── route.test.ts
+│   │   ├── statistiques
+│   │   │   ├── activite.util.test.ts
+│   │   │   ├── controle-qualite.util.test.ts
+│   │   │   ├── finance.util.test.ts
+│   │   │   ├── places.util.test.ts
+│   │   │   └── structures.util.test.ts
 │   │   ├── structure-versions
 │   │   │   └── structure-version.service.test.ts
 │   │   ├── structures
@@ -1306,6 +1383,7 @@
 │   │   │   ├── route.test.ts
 │   │   │   ├── stats
 │   │   │   │   └── route.test.ts
+│   │   │   ├── structure-history.util.test.ts
 │   │   │   ├── structure.repository.test.ts
 │   │   │   └── structure.util.test.ts
 │   │   └── transformations
@@ -1327,12 +1405,15 @@
 │   │   │   ├── FieldSetHebergement.test.tsx
 │   │   │   ├── FieldSetNotes.test.tsx
 │   │   │   ├── FieldSetTransformationPlaces.test.tsx
+│   │   │   ├── FieldSetTypeBati.test.tsx
 │   │   │   ├── FieldSetTypePlaces.test.tsx
 │   │   │   ├── InputWithValidation.test.tsx
 │   │   │   ├── TransformationAdresseAdministrative.test.tsx
 │   │   │   ├── TransformationAntennesSection.test.tsx
 │   │   │   ├── TransformationDnaAndFiness.test.tsx
 │   │   │   └── TransformationFormController.test.tsx
+│   │   ├── transformation-markers
+│   │   │   └── getTransformationMarkers.test.ts
 │   │   └── transformations
 │   │       └── OngoingTransformationsBanner.test.tsx
 │   ├── config
@@ -1487,7 +1568,8 @@
 │   │   ├── http.mock.ts
 │   │   ├── structure-page-test.helpers.tsx
 │   │   ├── structure-page-test.mocks.tsx
-│   │   └── structure.factory.ts
+│   │   ├── structure.factory.ts
+│   │   └── transformationForm.tsx
 │   ├── utils
 │   │   ├── acteAdministratif.util.test.ts
 │   │   ├── adresse.util.test.ts
@@ -1495,6 +1577,7 @@
 │   │   ├── common.util.test.ts
 │   │   ├── date.util.test.ts
 │   │   ├── decimal.util.test.ts
+│   │   ├── eig.util.test.ts
 │   │   ├── getErrorMessages.util.test.ts
 │   │   ├── getInitialAntennes.test.ts
 │   │   ├── math.util.test.ts
@@ -1508,4 +1591,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-397 directories, 1113 files
+418 directories, 1175 files
