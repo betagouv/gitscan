@@ -1,29 +1,30 @@
-## Changelog : agora-back (30 derniers jours, au 22 juin 2026)
+## Changelog : agora-back (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des thèmes hebdomadaires, la préparation d'une migration vers Strapi V5, et l'optimisation de l'affichage des réponses et des tendances. Plusieurs corrections et ajustements ont été apportés pour améliorer la qualité des données et l'expérience utilisateur.
+Ce changelog présente les améliorations apportées au backend d'Agora au cours des 30 derniers jours. Les principales évolutions concernent l'algorithme de tendances, la gestion des thèmes libres et l'intégration avec Strapi V5, ainsi que des corrections et optimisations diverses pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des thèmes hebdomadaires : ajout de filtres pour afficher les 3 prochains thèmes, gestion de la période optionnelle et affichage dynamique du sous-titre en fonction du type de thème.
-- Affichage des réponses : suppression des balises HTML et troncature du texte des réponses pour une meilleure lisibilité.
-- Intégration de la transcription textuelle pour les réponses vidéo, permettant d'afficher un résumé du contenu.
-- Ajout de deux nouveaux champs pour la page de détails QAG gouvernement.
-- Nouvelle logique pour l'onglet "Tendances" : affichage des questions ayant reçu plus de 5 "likes" au cours des dernières 24 heures.
-- Correction de l'heure de sélection des questions gagnantes, désormais fixée à 10h.
-- Amélioration de l'anonymisation des noms d'utilisateur.
+- Amélioration de l'algorithme de calcul des tendances, basé sur un nombre de "likes" supérieur à 5 sur les dernières 24 heures [#issue à identifier].
+- Introduction d'un indicateur booléen `estThemeLibre` pour mieux identifier les thèmes libres.
+- Affichage de la transcription textuelle des réponses vidéo pour faciliter l'accessibilité et la recherche.
+- Modification de l'heure de sélection des questions gagnantes, désormais fixée à 10h au lieu de 14h.
+- Amélioration de l'affichage des sous-titres pour les thèmes libres.
+- Ajout de la fonction de l'auteur dans les réponses preview.
+- Passage de la limite de caractères pour la synthèse des réponses à 400 caractères.
+- Filtrage des réponses par date minimale via les APIs.
 
 ### Évolutions techniques
-- Préparation de la migration vers Strapi V5 : plan de migration établi, migrations passées en production, ajout d'un header de compatibilité pour les clients V4.
-- Refonte de l'algorithme de calcul des tendances avec une formule plus complexe.
-- Ajout d'un contrôleur dédié au traitement hebdomadaire pour un lancement en mode administration.
-- Mise en cache optimisée des thèmes hebdomadaires avec un cache court.
-- Correction de bugs et amélioration de la robustesse du code.
-- Ajout de logs pour faciliter le débogage et le suivi des opérations.
+- Préparation et exécution de la migration vers Strapi V5, incluant des scripts de rollback et des ajustements des migrations.
+- Ajout d'un header de compatibilité pour les clients Strapi V4.
+- Mise en place d'un plan de migration complet vers Strapi V5.
+- Optimisation du cache pour les thèmes hebdomadaires, avec une durée de cache plus courte.
+- Correction de bugs liés à la date de début des thèmes courants pour le filtrage des thèmes hebdomadaires.
+- Ajout de logs pour le remapping des fiches inventaires.
+- Suppression des balises HTML et troncature du texte des réponses dans certaines requêtes.
 
 ### Autres changements
-- Correction de wording et amélioration de la clarté des messages.
-- Correction d'un bug lié à l'utilisation de la date de début du thème courant pour filtrer les thèmes hebdomadaires suivants.
-- Correction d'un bug dans le script de rollback pour les migrations Strapi V5.
-- Ajout d'un flag pour désactiver le cache sur les thèmes hebdomadaires en environnement de recette.
-- Correction du champ "programme_du_mois" en rich texte.
-- Ajout d'un boolean 'estThemeLibre' pour qualifier les thèmes libres.
+- Correction de coquilles et amélioration du wording dans différentes parties de l'application.
+- Ajout de points de fin de phrase manquants.
+- Correction de tests suite aux modifications de la date de sélection des questions gagnantes.
+- Mise en majuscule de la période des thèmes hebdomadaires.
+- Proposition d'intégration ACME V2.
