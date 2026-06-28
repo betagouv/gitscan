@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/dossierfacile-backend",
   "name": "dossierfacile-backend",
-  "description": "Le backend de DossierFacile.fr est un projet visant à simplifier la création de dossiers de location en France. Il fournit des API et des services pour gérer les informations des locataires, des propriétaires et des biens immobiliers.",
+  "description": "Le backend de DossierFacile.fr est un outil créé par le Ministère de la Transition écologique pour aider à la constitution de dossiers de location. Il fournit des API et des services pour gérer les informations relatives aux dossiers et aux utilisateurs.",
   "language": "Java",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,20 +9,22 @@
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
-    "Redis",
     "Maven",
-    "Docker"
+    "Docker",
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "Java (scripts & backend)"
+    "Java",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -33,9 +35,11 @@
       "Keycloak"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-06-12T11:02:00+02:00",
+  "tests": "Des tests unitaires et d'intégration sont présents dans le projet.",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-26T16:28:39+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -48,6 +52,8 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "Java",
+    "Bases de données SQL",
     "Sécurité & Auth",
     "Environnement & Énergie"
   ]

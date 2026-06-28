@@ -345,6 +345,7 @@
 │       │   │                   │       └── ApiPartnerUserController.java
 │       │   │                   ├── register
 │       │   │                   │   ├── AbstractDocumentSaveStep.java
+│       │   │                   │   ├── DocumentSaveResult.java
 │       │   │                   │   ├── RegisterFactory.java
 │       │   │                   │   ├── SaveStep.java
 │       │   │                   │   ├── config
@@ -657,6 +658,7 @@
 │           │                   │       ├── ApiPartnerTenantControllerTest.java
 │           │                   │       └── ApiPartnerUserControllerTest.java
 │           │                   ├── register
+│           │                   │   ├── DocumentAddedLogTest.java
 │           │                   │   ├── DocumentTaxCustomTextTest.java
 │           │                   │   ├── guarantor
 │           │                   │   │   └── natural_person
@@ -1417,6 +1419,7 @@
 │           │               ├── controller
 │           │               │   ├── BOApartmentSharingControllerTest.java
 │           │               │   ├── BOControllerSearchTenantTest.java
+│           │               │   ├── BOE2ETestControllerTest.java
 │           │               │   ├── BOMessageControllerTest.java
 │           │               │   ├── BOTenantControllerTest.java
 │           │               │   ├── FileControllerTest.java
@@ -1436,7 +1439,10 @@
 │           │               │   ├── QuotaServiceTest.java
 │           │               │   ├── TenantServiceDissociateTenantTest.java
 │           │               │   ├── TenantServiceFindNextTenantInCoupleTest.java
-│           │               │   └── TenantServiceRegroupTenantTest.java
+│           │               │   ├── TenantServiceRegroupTenantTest.java
+│           │               │   ├── UserServiceTest.java
+│           │               │   └── impl
+│           │               │       └── KeycloakServiceImplTest.java
 │           │               └── utils
 │           │                   ├── DateFormatUtilTest.java
 │           │                   ├── ExpectedMonthsTest.java
@@ -1647,9 +1653,9 @@
 │       │   │               │   └── log
 │       │   │               │       ├── ApplicationTypeChange.java
 │       │   │               │       ├── DeletedOwnerModel.java
-│       │   │               │       ├── EditedDocument.java
+│       │   │               │       ├── DocumentLogDetails.java
 │       │   │               │       ├── EditedStep.java
-│       │   │               │       ├── EditionType.java
+│       │   │               │       ├── FileLogDetails.java
 │       │   │               │       └── UpdateMonthlySum.java
 │       │   │               ├── repository
 │       │   │               │   ├── ApartmentSharingLinkRepository.java
@@ -1965,7 +1971,8 @@
 │       │       │       ├── 202605130000-drop-json-profile-from-tenant-log.xml
 │       │       │       ├── 202605200000-add-document-ia-classify-residency-feature-flag.xml
 │       │       │       ├── 20260602000000-add-indexes-to-optimize-database.xml
-│       │       │       └── 20260604000000-rework-materialized-view.xml
+│       │       │       ├── 20260604000000-rework-materialized-view.xml
+│       │       │       └── 202606180000-add-document-ia-property-tax-analysis-flag.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -1978,6 +1985,7 @@
 │           │               ├── entity
 │           │               │   ├── ApartmentSharingTest.java
 │           │               │   ├── DocumentAnalysisRuleTest.java
+│           │               │   ├── TenantLogTest.java
 │           │               │   ├── TenantTest.java
 │           │               │   └── UserTest.java
 │           │               ├── mapper
@@ -2045,6 +2053,7 @@
 │       │   │                   │   ├── AvisImpositionRulesValidationService.java
 │       │   │                   │   ├── BulletinSalaireRulesValidationService.java
 │       │   │                   │   ├── CarteNationalIdentiteRulesValidationService.java
+│       │   │                   │   ├── PropertyTaxRulesValidationService.java
 │       │   │                   │   ├── ResidencyCommonRulesValidationService.java
 │       │   │                   │   ├── VisaleCertificateRulesValidationService.java
 │       │   │                   │   └── validator
@@ -2077,6 +2086,12 @@
 │       │   │                   │       │       ├── BeneficiaireModel.java
 │       │   │                   │       │       ├── PayslipDate.java
 │       │   │                   │       │       └── PayslipNames.java
+│       │   │                   │       ├── property_tax
+│       │   │                   │       │   ├── PropertyTaxLeafRule.java
+│       │   │                   │       │   ├── PropertyTaxNamesRule.java
+│       │   │                   │       │   ├── PropertyTaxYearRule.java
+│       │   │                   │       │   └── document_ia_model
+│       │   │                   │       │       └── PropertyTaxModel.java
 │       │   │                   │       ├── tax
 │       │   │                   │       │   ├── BaseTaxRule.java
 │       │   │                   │       │   ├── TaxClassificationRuleB.java
@@ -2137,11 +2152,17 @@
 │                               │       │   ├── PayslipClassificationValidatorBTest.java
 │                               │       │   ├── PayslipContinuityRuleTest.java
 │                               │       │   └── PayslipNamesRuleTest.java
+│                               │       ├── property_tax
+│                               │       │   ├── PropertyTaxLeafRuleTest.java
+│                               │       │   ├── PropertyTaxNamesRuleTest.java
+│                               │       │   └── PropertyTaxYearRuleTest.java
 │                               │       ├── tax
 │                               │       │   ├── TaxClassificationRuleBTest.java
 │                               │       │   ├── TaxLeafRuleBTest.java
 │                               │       │   ├── TaxNamesRuleTest.java
 │                               │       │   └── TaxYearRuleTest.java
+│                               │       ├── util
+│                               │       │   └── IdentityMatchUtilTest.java
 │                               │       └── visale_certificate
 │                               │           ├── VisaleCertificateExpirationRuleTest.java
 │                               │           └── VisaleCertificateNameMatchTest.java
@@ -2391,4 +2412,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-590 directories, 1907 files
+595 directories, 1923 files
