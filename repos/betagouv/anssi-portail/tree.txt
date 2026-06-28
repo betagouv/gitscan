@@ -96,8 +96,9 @@
 │   │   │   │   ├── ressourceAvisMesure.schema.ts
 │   │   │   │   ├── ressourceAvisMesure.ts
 │   │   │   │   ├── ressourceMesure.ts
-│   │   │   │   ├── ressourceMesuresDeModule.ts
-│   │   │   │   └── ressourcePriseEnCompte.ts
+│   │   │   │   ├── ressourceModule.ts
+│   │   │   │   ├── ressourcePriseEnCompte.ts
+│   │   │   │   └── schemaRessourceModule.schema.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
@@ -164,11 +165,13 @@
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
+│   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.ts
 │   │   │   ├── consigneEvenementMesureConsulteeDansJournal.ts
 │   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.ts
+│   │   │   ├── consigneEvenementModuleTerminéDansJournal.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
@@ -179,15 +182,18 @@
 │   │   │   ├── evenements
 │   │   │   │   ├── avisMesureDonne.ts
 │   │   │   │   ├── avisUtilisateurDonne.ts
+│   │   │   │   ├── badgeCyberdepartDebloque.ts
 │   │   │   │   ├── compteCree.ts
 │   │   │   │   ├── mesureConsultee.ts
 │   │   │   │   ├── mesurePriseEnCompte.ts
+│   │   │   │   ├── moduleTermine.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   └── miseAJourFavorisUtilisateur.ts
+│   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotSessionDeGroupePostgres.ts
@@ -232,6 +238,7 @@
 │   │   │   ├── serviceVerificationCoherenceSecretsHachage.ts
 │   │   │   └── utilisateurBDD.ts
 │   │   ├── metier
+│   │   │   ├── EntrepotModule.ts
 │   │   │   ├── PriseEnCompte.ts
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── besoinCyber.ts
@@ -250,6 +257,7 @@
 │   │   │   ├── guide.ts
 │   │   │   ├── messagerieInstantanee.ts
 │   │   │   ├── mesure.ts
+│   │   │   ├── module.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── entrepotExigence.ts
 │   │   │   │   └── exigence.ts
@@ -333,7 +341,7 @@
 │   │   │   │   ├── constructeurDeMesure.ts
 │   │   │   │   ├── ressourceAvisMesure.spec.ts
 │   │   │   │   ├── ressourceMesure.spec.ts
-│   │   │   │   ├── ressourceMesuresDeModule.spec.ts
+│   │   │   │   ├── ressourceModule.spec.ts
 │   │   │   │   └── ressourcePriseEnCompte.spec.ts
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
@@ -385,12 +393,14 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
+│   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMesureConsulteeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.spec.ts
+│   │   │   ├── consigneEvenementModuleTermineDansJournal.spec.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
@@ -446,6 +456,7 @@
 │   │   ├── persistance
 │   │   │   ├── EntrepotPriseEnCompteMemoire.ts
 │   │   │   ├── EntrepotSessionDeGroupeMemoire.ts
+│   │   │   ├── EntrepôtModuleMémoire.ts
 │   │   │   ├── entrepotExigenceMemoire.ts
 │   │   │   ├── entrepotFavoriMemoire.ts
 │   │   │   ├── entrepotFinancementMemoire.ts
@@ -515,8 +526,36 @@
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
+│   ├── _contacts
+│   │   ├── fr-20r.md
+│   │   ├── fr-971.md
+│   │   ├── fr-972.md
+│   │   ├── fr-973.md
+│   │   ├── fr-974.md
+│   │   ├── fr-976.md
+│   │   ├── fr-ara.md
+│   │   ├── fr-bfc.md
+│   │   ├── fr-bl.md
+│   │   ├── fr-bre.md
+│   │   ├── fr-cp.md
+│   │   ├── fr-cvl.md
+│   │   ├── fr-ges.md
+│   │   ├── fr-hdf.md
+│   │   ├── fr-idf.md
+│   │   ├── fr-mf.md
+│   │   ├── fr-naq.md
+│   │   ├── fr-nc.md
+│   │   ├── fr-nor.md
+│   │   ├── fr-occ.md
+│   │   ├── fr-pac.md
+│   │   ├── fr-pdl.md
+│   │   ├── fr-pf.md
+│   │   ├── fr-pm.md
+│   │   ├── fr-tf.md
+│   │   └── fr-wf.md
 │   ├── _data
 │   │   ├── catalogue.yml
+│   │   ├── contacts.yml
 │   │   ├── meta-description.yml
 │   │   ├── parcours-approfondir.yml
 │   │   └── parcours-debuter.yml
@@ -527,6 +566,8 @@
 │   │   ├── carte-item.html
 │   │   ├── centre-aide.html
 │   │   ├── composant-svelte.html
+│   │   ├── contact-region.html
+│   │   ├── donnees-structurees-indexation.html
 │   │   ├── encart-cyberdepart.html
 │   │   ├── encart-nis2.html
 │   │   ├── footer.html
@@ -823,6 +864,7 @@
 │   │       ├── catalogue.scss
 │   │       ├── commun.scss
 │   │       ├── connexion.scss
+│   │       ├── contacts.scss
 │   │       ├── dsfr.scss
 │   │       ├── encart-cyberdepart.scss
 │   │       ├── fonts.scss
@@ -1121,6 +1163,7 @@
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── BadgeCyberdepart.svelte
 │   │   │   │   ├── BasculeParcoursAvance.svelte
+│   │   │   │   ├── BoutonPartageBadgeCyberdepart.svelte
 │   │   │   │   ├── CarteMesure.svelte
 │   │   │   │   ├── GrilleCartesMesures.svelte
 │   │   │   │   ├── Mesure.svelte
@@ -1128,7 +1171,10 @@
 │   │   │   │   ├── PriseEnCompteMesure.svelte
 │   │   │   │   ├── Progression.svelte
 │   │   │   │   ├── avisUtilisateur.store.ts
-│   │   │   │   └── mesure.ts
+│   │   │   │   ├── mesure.ts
+│   │   │   │   └── modales
+│   │   │   │       ├── ModaleBadgeCyberdepartDebloque.svelte
+│   │   │   │       └── ModaleModuleTermine.svelte
 │   │   │   ├── protection
 │   │   │   │   ├── Proteger.svelte
 │   │   │   │   ├── associations
@@ -1359,6 +1405,7 @@
 │   │   ├── index.ts
 │   │   └── route-sans-validation.ts
 │   └── tsconfig.json
+├── renovate.json
 └── scripts
     └── get-node-version.sh
-197 directories, 1209 files
+199 directories, 1254 files

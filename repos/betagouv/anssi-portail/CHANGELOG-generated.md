@@ -1,33 +1,37 @@
-## Changelog : anssi-portail (30 derniers jours, au 18 juin 2026)
+## Changelog : anssi-portail (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du référencement (SEO) du site, la sécurisation des dépendances, l'implémentation du parcours sécurisation (notamment l'affichage des mesures et la prise en compte par les utilisateurs), et des corrections de bugs et améliorations de l'expérience utilisateur. Plusieurs mises à jour de composants DSFR ont également été intégrées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, l'optimisation de l'expérience utilisateur autour du parcours sécurisation et des mesures, ainsi que des améliorations SEO et de maintenance technique. L'ajout de nouvelles fonctionnalités, comme l'affichage des mesures et la gestion des prises en compte, renforce l'utilité du portail pour les professionnels de la sécurité.
 
 ### Évolutions fonctionnelles
-- **Parcours sécurisation :** Implémentation de l'affichage des mesures de sécurité et de la possibilité pour les utilisateurs de les prendre en compte. Un badge indique si une mesure a été prise en compte.
-- **Mesures :** Affichage des détails d'une mesure, incluant les risques, les actions prioritaires, les liens pour aller plus loin et les exigences ReCyF.
-- **Avis sur les mesures :** Possibilité pour les utilisateurs de donner leur avis sur les mesures, avec stockage de cet avis.
-- **Page 404 :** Amélioration de la page d'erreur 404.
-- **Contact :** Mise à jour des contacts des régions PACA, Normandie et ARA. Ajout et suppression de COT (Contact d'Organisation Territoriale).
-- **Collectivités :** Ajout d'une ancre pour afficher la demande de diagnostic.
+- Ajout de l'affichage des mesures et de leurs détails, incluant les risques, les actions prioritaires et les liens pour aller plus loin.
+- Implémentation d'un système de prise en compte des mesures, avec affichage de la progression et encouragement à accéder à des mesures plus avancées.
+- Amélioration de la page 404 pour une meilleure expérience utilisateur.
+- Ajout de la possibilité de soumettre des avis sur les mesures.
+- Affichage du badge cyberdépart et d'un toast de félicitation lors de la complétion du parcours sécurisation.
+- Intégration des données structurées pour l'indexation SEO.
+- Ajout des pages des contacts régionaux et des pages statiques associées au sitemap pour améliorer le référencement.
+- Ajout des pages ressources, services et financements au sitemap.
+- Correction de l'affichage des liens canoniques et redirection des URL avec un slash final.
+- Amélioration de la hiérarchie des titres sur plusieurs pages (Accueil, Financements, Catalogue, Test de maturité).
 
 ### Évolutions techniques
-- **SEO :** Amélioration du référencement avec suppression des titres `<h1>` dupliqués, redirection des URL avec `/` final, utilisation d'URL kebab-case, ajout de balises canoniques et ajout des fichiers `robots.txt` et `sitemap.xml`.
-- **Sécurité :** Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (dompurify, @babel/core, vite, form-data, shell-quote).
-- **CI/CD :** Épinglage des versions des dépendances des GitHub Actions et configuration de prettier.
-- **Architecture :** Refonte de la gestion des erreurs, centralisation de la configuration d'axios, utilisation d'un constructeur d'utilisateur, introduction d'un constructeur de mesures.
-- **Base de données :** Adaptation de la base de données pour le parcours sécurisation.
-- **Cache :** Amélioration de la gestion du cache Grist.
-- **Nettoyage de code :** Suppression de code inutilisé et simplification de certains composants.
-- **Typescript :** Rendre plus explicite les types des variables.
+- Mise à jour de plusieurs dépendances pour renforcer la sécurité et bénéficier des dernières corrections (Multer, DomPurify, @babel/core, vite, form-data, shell-quote).
+- Configuration de Renovate pour la gestion automatisée des dépendances.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Refonte de la gestion des sessions pour plus de sécurité.
+- Optimisation de la récupération des mesures et de la gestion du cache Grist.
+- Utilisation du composant de progression de l'UI Kit.
+- Centralisation de la configuration d'Axios.
+- Ajout de tests et correction de bugs.
+- Migration vers Ruby 4.0.5 et mise à jour des actions Ruby dans la CI.
+- Utilisation de l'UI Kit en version 1.54.0.
 
 ### Autres changements
-- Ajout de tests pour éviter la création du sitemap à chaque test.
-- Augmentation du rate limit global.
-- Documentation mise à jour.
-- Amélioration des messages d'erreur au démarrage.
-- Tri des lignes des overrides.
-- Mise à jour de la version de Ruby et des actions associées dans la CI.
-- Ajout d'illustrations et d'un composant Toast.
-- Amélioration de l'affichage de la progression du parcours sécurisation.
-- Correction de bugs mineurs liés à l'affichage et au z-index.
+- Ajout de fichiers robots.txt et sitemap.xml pour le SEO.
+- Mise à jour de la documentation README.
+- Correction de petites erreurs de typographie et de wording.
+- Ajout et mise à jour des contacts régionaux.
+- Suppression de vidéos obsolètes.
+- Amélioration de la structure du code et refactoring de certains composants.
+- Correction d'une vulnérabilité.
