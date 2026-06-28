@@ -1,16 +1,17 @@
-## Changelog : agora-cms-strapi (30 derniers jours, au 29 mai 2026)
+## Changelog : agora-cms-strapi (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Les dernières évolutions se concentrent sur l'ajout et l'amélioration de la gestion des thèmes hebdomadaires, ainsi que sur l'enrichissement des informations affichées sur les pages de détails des Questions d'Agora (QAG). Ces changements visent à offrir plus de flexibilité et d'informations aux utilisateurs de la plateforme.
+Ce mois-ci, le projet a connu une migration majeure vers Strapi V5, apportant des améliorations significatives en termes de performance et de fonctionnalités. Des ajustements ont également été apportés à la gestion des thèmes et des auteurs de réponses.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle collection "theme_hebdo" permettant la gestion des thèmes hebdomadaires. [#3683bc7](https://github.com/agora-gouv/agora-cms-strapi/commit/3683bc7)
-- Possibilité de définir une période optionnelle pour les thèmes hebdomadaires. [#f2a0529](https://github.com/agora-gouv/agora-cms-strapi/commit/f2a0529)
-- Ajout de champs supplémentaires pour la page de détail des QAG, enrichissant ainsi les informations disponibles. [#64fc3db](https://github.com/agora-gouv/agora-cms-strapi/commit/64fc3db)
-- Ajout d'un champ booléen "theme_libre" pour indiquer si un thème est libre. [#8f9070a](https://github.com/agora-gouv/agora-cms-strapi/commit/8f9070a)
-- Ajout d'un champ booléen "semaine libre" pour les thèmes hebdomadaires. [#e7760b5](https://github.com/agora-gouv/agora-cms-strapi/commit/e7760b5)
-- Correction du format de la photo pour les thèmes hebdomadaires. [#3fc966d](https://github.com/agora-gouv/agora-cms-strapi/commit/3fc966d)
+- Ajout de la fonction permettant d'afficher l'auteur d'une réponse. [#46](https://github.com/agora-gouv/agora-cms-strapi/pull/46)
+- Introduction d'un booléen `theme_libre` pour indiquer si un thème est libre ou non.
+- Ajout d'un booléen `semaine_libre` pour les thèmes hebdomadaires.
 
 ### Évolutions techniques
-- Renommage du champ "theme_libre" pour plus de clarté. [#91bb6b0](https://github.com/agora-gouv/agora-cms-strapi/commit/91bb6b0)
-- Changement du format de la photo pour les thèmes hebdomadaires. [#b758ec0](https://github.com/agora-gouv/agora-cms-strapi/commit/b758ec0)
+- Migration complète du projet vers Strapi V5. [#46](https://github.com/agora-gouv/agora-cms-strapi/pull/46)
+- Mise à jour de Strapi de la version 4.26.1 vers la version 5.47.
+- Renommage du champ `theme_libre` pour plus de clarté.
+
+### Autres changements
+- Aucune information supplémentaire à signaler.
