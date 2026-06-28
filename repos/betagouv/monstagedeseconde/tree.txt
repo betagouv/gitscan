@@ -799,6 +799,7 @@
 │   │   │   ├── agreements_creation_steps.rb
 │   │   │   ├── applications_creation_steps.rb
 │   │   │   ├── boarding_houses_creation_steps.rb
+│   │   │   ├── cleaning_creation_steps.rb
 │   │   │   ├── employers_creation_steps.rb
 │   │   │   ├── invitations_creation_steps.rb
 │   │   │   ├── offers_creation_steps.rb
@@ -896,6 +897,8 @@
 │   │   │   ├── error.rb
 │   │   │   ├── god.rb
 │   │   │   ├── internship_agreement.rb
+│   │   │   ├── internship_application
+│   │   │   │   └── human_state.rb
 │   │   │   ├── internship_application.rb
 │   │   │   ├── internship_offer.rb
 │   │   │   ├── invitation.rb
@@ -1255,6 +1258,8 @@
 │       │   │   │   ├── user_internship_applications.html.slim
 │       │   │   │   └── user_internship_applications.xlsx.axlsx
 │       │   │   ├── new.html.slim
+│       │   │   ├── publish.turbo_stream.slim
+│       │   │   ├── unpublish.turbo_stream.slim
 │       │   │   └── update.turbo_stream.slim
 │       │   ├── multi_stepper
 │       │   │   ├── _summary_card.html.slim
@@ -1628,8 +1633,6 @@
 │       │   │   ├── _webinar.html.slim
 │       │   │   ├── everyone
 │       │   │   │   ├── _BO.html.slim
-│       │   │   │   ├── _become_partner.html.slim
-│       │   │   │   ├── _everyone_faq.html.slim
 │       │   │   │   ├── _everyone_resources.html.slim
 │       │   │   │   ├── _faq_in_cards.html.slim
 │       │   │   │   ├── _hero_everyone.html.slim
@@ -2829,6 +2832,7 @@
 │   │   │   ├── internship_offers_controller_test.rb
 │   │   │   ├── operators_controller_test.rb
 │   │   │   └── schools_controller_test.rb
+│   │   ├── reset_review_data_controller_test.rb
 │   │   ├── school_switches_controller_test.rb
 │   │   ├── schools_controller_test.rb
 │   │   ├── two_factor_challenges_controller_test.rb
@@ -2951,6 +2955,8 @@
 │   │   │   │   ├── class_room_stats_test.rb
 │   │   │   │   └── student_stats_test.rb
 │   │   │   ├── internship_agreement_test.rb
+│   │   │   ├── internship_application
+│   │   │   │   └── human_state_test.rb
 │   │   │   ├── school_test.rb
 │   │   │   ├── user_management_role_test.rb
 │   │   │   ├── user_test.rb
@@ -3158,4 +3164,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-436 directories, 2732 files
+438 directories, 2736 files
