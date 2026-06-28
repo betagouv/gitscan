@@ -1,27 +1,30 @@
-## Changelog : aigle-frontend (30 derniers jours, au 12 juin 2026)
+## Changelog : aigle-frontend (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Les dernières mises à jour d'aigle-frontend se concentrent sur l'amélioration de l'interface d'administration, notamment pour la gestion des utilisateurs, des groupes d'utilisateurs et des commandes. Des améliorations ont également été apportées à la cartographie et à la gestion des données, avec l'ajout de nouvelles informations et la correction de bugs liés à l'export de données.
+Les dernières mises à jour d'aigle-frontend se concentrent sur l'amélioration de l'interface d'administration, notamment pour la gestion des commandes et des données déployées. Des améliorations ont également été apportées à la gestion des utilisateurs et des statuts des éléments, ainsi que des corrections de bugs pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout du champ "is_staff" aux utilisateurs pour une gestion des permissions plus fine. [#45](https://github.com/MTES-MCT/aigle-frontend/pull/45)
-- Amélioration de la gestion des groupes d'utilisateurs dans l'interface d'administration : ajout d'informations sur le formulaire, filtrage par type de groupe et réinitialisation des filtres après changement de groupe. [#44](https://github.com/MTES-MCT/aigle-frontend/pull/44)
-- Correction d'un bug empêchant le téléchargement de fichiers CSV/XLSX dans la vue tableau lorsque d'autres catégories étaient sélectionnées. [#46](https://github.com/MTES-MCT/aigle-frontend/pull/46)
-- Ajout de la valeur "JUGEMENT" au statut de contrôle de détection.
-- Ajout de données Sitadel à l'aperçu du déploiement.
-- Possibilité de restreindre la recherche du géocodeur.
-- Amélioration de la fonctionnalité de changement de groupe dans l'interface d'administration.
-- Ajout de la possibilité de spécifier une bounding box (bbox) dans l'URL.
+- Ajout de nouveaux statuts : "illégal" et "à contrôler" [#51](https://github.com/MTES-MCT/aigle-frontend/pull/51).
+- Ajout d'un bouton pour copier l'UUID dans les vues de tableau, facilitant la manipulation des identifiants uniques [#52](https://github.com/MTES-MCT/aigle-frontend/pull/52).
+- Possibilité de télécharger des fichiers CSV/XLSX dans les vues de tableau, même lorsque la catégorie "autres" est sélectionnée [#46](https://github.com/MTES-MCT/aigle-frontend/pull/46).
+- Ajout de la valeur "JUGEMENT" au statut de contrôle de détection [#48](https://github.com/MTES-MCT/aigle-frontend/pull/48).
+- Ajout de données Sitadel à l'aperçu du déploiement [#48](https://github.com/MTES-MCT/aigle-frontend/pull/48).
+- Ajout de filtres prédéfinis [#47](https://github.com/MTES-MCT/aigle-frontend/pull/47).
+- Ajout d'un champ "is_staff" pour les utilisateurs, permettant de définir des rôles d'administration [#45](https://github.com/MTES-MCT/aigle-frontend/pull/45).
 
 ### Évolutions techniques
-- Amélioration de la gestion des arguments de commande dans l'interface d'administration. [#47](https://github.com/MTES-MCT/aigle-frontend/pull/47)
-- Ajout d'un bouton de relance pour les commandes qui échouent dans l'interface d'administration.
-- Refonte de la gestion des paramètres d'URL dans l'interface d'administration.
-- Implémentation d'une interface d'administration pour les données déployées (en cours de développement).
-- Suppression du cache des fichiers sources pour éviter des comportements inattendus.
-- Correction d'un problème de zoom/dézoom sur les appareils Android et iOS.
-- L'impersonation n'est plus appliquée aux routes commençant par `/admin/`.
+- Refonte de la gestion des arguments de commande dans l'interface d'administration [#47](https://github.com/MTES-MCT/aigle-frontend/pull/47).
+- Amélioration de la gestion des commandes d'administration, avec un bouton de relance en cas d'erreur [#47](https://github.com/MTES-MCT/aigle-frontend/pull/47).
+- Nettoyage du code et suppression de commentaires inutiles [#50](https://github.com/MTES-MCT/aigle-frontend/pull/50).
+- Refactorisation de la logique de `run_command` pour corriger un bug [#46](https://github.com/MTES-MCT/aigle-frontend/pull/46).
+- Implémentation d'un déploiement en un clic [#53](https://github.com/MTES-MCT/aigle-frontend/pull/53).
+- Prévention de la rotation accidentelle de la carte [#51](https://github.com/MTES-MCT/aigle-frontend/pull/51).
+- Suppression des routes liées aux statistiques [#53](https://github.com/MTES-MCT/aigle-frontend/pull/53).
+- Amélioration de l'interface pour les données déployées [#49](https://github.com/MTES-MCT/aigle-frontend/pull/49).
+- Amélioration de la gestion des paramètres d'URL dans l'administration [#48](https://github.com/MTES-MCT/aigle-frontend/pull/48).
 
 ### Autres changements
-- Amélioration de la formulation du champ "is_staff".
-- Correction d'un bug lié au téléchargement de fichiers.
+- Correction d'un bug empêchant l'application de l'impersonation pour les routes d'administration.
+- Modification de l'ordre des statuts pour placer "JUGEMENT" avant "OBSERVATION_REPORT_REDACTED".
+- Amélioration de la gestion des permissions pour empêcher l'attribution de départements et de communes à un groupe d'utilisateurs [#52](https://github.com/MTES-MCT/aigle-frontend/pull/52).
+- Ajustement de la formulation du champ "is_staff" pour plus de clarté.
