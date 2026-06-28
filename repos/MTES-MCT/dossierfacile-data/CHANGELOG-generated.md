@@ -1,13 +1,14 @@
-## Changelog : dossierfacile-data (30 derniers jours, au 2026-05-13)
+## Changelog : dossierfacile-data (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la modélisation des documents et des garanties, avec une refonte du modèle des documents et des corrections liées à l'unicité des identifiants de garant. Des travaux ont également été réalisés pour ajouter un nouveau modèle de fonctionnalité utilisateur.
+Cette mise à jour apporte des améliorations au suivi des opérations réalisées sur DossierFacile. Plus précisément, elle ajoute un nouveau type d'action enregistrée et corrige un problème lié à la gestion des identifiants de locataires (tenant_id) lors de la recherche d'applications. Ces changements permettent un suivi plus précis de l'utilisation de la plateforme et améliorent la robustesse du système.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème lié à l'unicité de l'identifiant de garant dans le modèle `guarantor_document` [#68](https://github.com/MTES-MCT/dossierfacile-data/issues/68), [#69](https://github.com/MTES-MCT/dossierfacile-data/issues/69), [#70](https://github.com/MTES-MCT/dossierfacile-data/issues/70).
-- Ajout d'un nouveau modèle DBT pour la fonctionnalité utilisateur [#64](https://github.com/MTES-MCT/dossierfacile-data/issues/64).
-- Refonte du modèle des documents pour améliorer sa structure et sa pertinence [#67](https://github.com/MTES-MCT/dossierfacile-data/issues/67).
+- Ajout d'un nouveau type d'action enregistrée dans le suivi des opérations : `APPLICATION_SEARCHED` [#71](https://github.com/MTES-MCT/dossierfacile-data/issues/71).
+- Correction d'un bug permettant d'accepter une valeur nulle pour l'identifiant du locataire (`tenant_id`) lors de l'enregistrement d'une action de type `APPLICATION_SEARCHED` [#72](https://github.com/MTES-MCT/dossierfacile-data/issues/72).
 
 ### Évolutions techniques
-- Refactorisation de la construction du modèle des documents à partir des logs des locataires [#66](https://github.com/MTES-MCT/dossierfacile-data/issues/66).
-- Suppression des modèles d'analyse flous, simplifiant ainsi le code et améliorant la maintenance [#65](https://github.com/MTES-MCT/dossierfacile-data/issues/65).
+Aucune évolution technique significative à signaler.
+
+### Autres changements
+Aucun autre changement à signaler.
