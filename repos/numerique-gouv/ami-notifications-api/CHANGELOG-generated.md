@@ -1,30 +1,58 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 24 juin 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de l'API de gestion des notifications de l'application mobile interministérielle (AMI). Les améliorations concernent principalement l'affichage des icônes de notifications, la gestion des liens profonds (deep links) vers des éléments spécifiques, l'archivage des suivis, l'intégration d'un nouveau système d'authentification FranceConnect FI et des corrections pour améliorer la stabilité et la performance.
+Les dernières mises à jour de l'API ami-notifications-api se concentrent sur l'amélioration de l'expérience utilisateur de l'application mobile, notamment en permettant une gestion plus fine des notifications, des informations sur les suivis et des préférences de localisation. Des améliorations techniques ont également été apportées pour optimiser les performances et la sécurité, ainsi que pour faciliter l'intégration avec d'autres systèmes. L'authentification FranceConnect a été améliorée pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Notifications :** Amélioration de l'affichage des icônes des notifications. L'API tente désormais de deviner l'icône à partir de l'icône enregistrée et du partenaire, et stocke l'icône brute pour une plus grande flexibilité. L'icône de l'élément de suivi est également renvoyée. [#952]
-- **Suivis :** Ajout de la possibilité d'archiver les suivis (follow-up) avec une nouvelle interface utilisateur et une nouvelle API dédiée. Les suivis archivés sont désormais masqués par défaut. [#776]
-- **Authentification :** Implémentation d'un nouveau flux d'authentification via FranceConnect FI, incluant la gestion des sessions, des tokens et des informations utilisateur.  Une page de test a été ajoutée pour faciliter le développement et les tests. [#917, #907, #708]
-- **Gestion des adresses :** Amélioration de la gestion des adresses dans les préférences utilisateur, avec la possibilité de les ajouter, les supprimer et de les sélectionner facilement. [#789]
-- **Liens profonds :** Amélioration de la gestion des liens profonds pour les suivis, permettant de naviguer directement vers un suivi spécifique. [#690]
-- **Notifications expirées :** L'API exclut désormais les notifications avec une date de validité dépassée. [#674]
+- **Notifications :**
+    - Ajout de la possibilité de filtrer les notifications obsolètes en fonction de leur date de validité [#674].
+    - Amélioration de l'affichage des icônes des notifications et des suivis, avec récupération depuis l'API et gestion des cas par défaut [#952].
+    - Ajout du champ `content_private_body` pour stocker le corps privé d'une notification, utilisé pour des informations sensibles [#973].
+- **Suivis :**
+    - Ajout de la possibilité d'archiver les suivis, avec une nouvelle interface utilisateur pour gérer les suivis archivés [#776].
+    - Ajout d'informations sur l'état d'archivage d'un suivi dans l'API [#776].
+    - Ajout d'un lien vers la page de suivi directement depuis une notification lorsqu'un item est associé [#794].
+- **Authentification FranceConnect :**
+    - Amélioration du processus de réauthentification silencieuse pour une meilleure expérience utilisateur [#917].
+    - Ajout d'une page dédiée pour gérer la connexion via FranceConnect [#917].
+    - Gestion des scopes d'authentification pour une sécurité accrue [#907].
+- **Préférences de localisation :**
+    - Amélioration de la gestion des adresses et des zones géographiques dans les préférences utilisateur [#789].
+    - Possibilité de sélectionner une zone géographique en fonction de la ville choisie [#789].
+- **Réplication :**
+    - Ajout de l'ID utilisateur dans les données de réplication anonymisées pour une meilleure traçabilité [#964].
 
 ### Évolutions techniques
-- **Performance :** Optimisation de la requête de liste des notifications en utilisant `select_related` pour réduire le nombre de requêtes à la base de données. [#952]
-- **Architecture :** Utilisation de `django-tasks-db` pour la gestion des tâches asynchrones, améliorant la robustesse et la scalabilité. [#956]
-- **Configuration :** Utilisation de variables d'environnement pour la configuration, notamment pour l'URL de base du proxy FranceConnect FI. [#708, #905]
-- **Tests :** Suppression des timeouts inutiles dans les tests unitaires. [#789]
-- **Outils :** Mise à jour de certaines dépendances (uv, webob, esbuild, svelte, etc.).
-- **Code :** Suppression de code inutile et refactorisation de certains composants de l'interface utilisateur.
+- **API :**
+    - Optimisation des requêtes de listage des notifications en utilisant `select_related` pour améliorer les performances [#952].
+    - Ajout de la possibilité de récupérer le type et l'ID d'un élément externe associé à un suivi [#690].
+- **Infrastructure :**
+    - Mise à jour des dépendances Python et JavaScript (voir section "Autres changements").
+    - Utilisation de `django-tasks-db` pour la gestion des tâches asynchrones [#956].
+    - Configuration de Vite pour LightningCSS [#981].
+- **Tests :**
+    - Amélioration des tests unitaires pour la page de préférences de zone [#789].
+- **Sécurité :**
+    - Correction d'une vulnérabilité potentielle dans la gestion des cookies lors de la connexion via FranceConnect [#971].
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
-- **Gitignore :** Correction du fichier `.gitignore` pour ignorer correctement les répertoires de build de l'application mobile.
-- **Replication :** Ajout de l'ID utilisateur dans l'anonymisation des enregistrements et des notifications lors de la réplication. [#964]
-- **Gestion des logs :** Amélioration de la gestion des logs pour faciliter le débogage et le suivi des erreurs.
-- **Correction d'un bug :** Correction d'un problème d'erreur d'intégrité lors de la déconnexion. [#971]
-- **Correction d'un bug :** Correction d'un bug empêchant l'affichage correct des données du quotient familial après la connexion via ami-fi. [#907]
-- **Accessibilité :** Correction d'un problème d'accessibilité lié aux images avec des attributs `alt` ou `aria-label` vides. [#924]
-- **Suppression de code obsolète :** Suppression de code obsolète et de fichiers inutiles.
+- Mise à jour des dépendances suivantes :
+    - `dompurify` (3.4.5 -> 3.4.11)
+    - `js-yaml` (4.1.1 -> 4.2.0)
+    - `cryptography` (46.0.7 -> 48.0.1)
+    - `pyjwt` (2.12.0 -> 2.13.0)
+    - `esbuild`, `@sveltejs/vite-plugin-svelte`, `vite` et `@vitejs/plugin-basic-ssl`
+    - `webob` (1.8.9 -> 1.8.10)
+    - `vitest` (4.0.15 -> 4.1.8)
+    - `uv` (0.11.6 -> 0.11.15)
+    - `idna` (3.10 -> 3.15)
+    - `ujson` (5.12.0 -> 5.12.1)
+    - `svelte` (5.53.6 -> 5.55.8)
+- Suppression de fichiers SVG inutilisés dans le frontend [#789].
+- Correction de la gestion de l'attribut `alt` et `aria-label` pour les images pour améliorer l'accessibilité [#924, #929].
+- Correction de problèmes de hauteur sur la page de mode [#942].
+- Amélioration de la gestion des descriptions des pull requests dans les logs [#981].
+- Correction de problèmes de scroll sur la page d'édition d'adresse [#946].
+- Amélioration de la compatibilité avec WebView Android [#944].
+- Correction d'un bug empêchant l'affichage correct des données de quotient particulier après la connexion via ami-fi [#907].
+- Mise à jour de la réplication de la base de données pour accéder aux données du datawarehouse [#904].
