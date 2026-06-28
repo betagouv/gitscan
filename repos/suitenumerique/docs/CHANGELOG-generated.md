@@ -1,31 +1,52 @@
-## Changelog : docs (30 derniers jours, au 22 juin 2026)
+## Changelog : docs (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec l'ajout d'une barre latérale droite pour les commentaires et la table des matières, l'amélioration de l'accessibilité, ainsi que des optimisations de performance et des corrections de bugs. De nouvelles fonctionnalités comme la possibilité de quitter un document et le mode présentateur ont été implémentées. L'équipe a également travaillé sur l'intégration d'événements de suivi pour une meilleure analyse de l'utilisation.
+Ce changelog résume les améliorations apportées au projet Docs au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration de l'accessibilité, l'ajout de nouvelles fonctionnalités comme le mode présentateur et la possibilité de quitter un document, ainsi que des corrections de bugs et des optimisations de performance.
 
 ### Évolutions fonctionnelles
 - Ajout de la possibilité de quitter un document.
-- Implémentation du mode présentateur pour faciliter les présentations.
+- Implémentation du mode présentateur pour les documents.
 - Les utilisateurs non authentifiés peuvent désormais effectuer des recherches.
-- Ajout d'une barre latérale droite pour afficher les commentaires et la table des matières.
-- Ajout d'une limite au nombre de réactions par commentaire.
-- Ajout d'une fonctionnalité permettant de supprimer les relations d'un utilisateur lors de sa suppression.
-- Ajout d'un breadcrumb dans les résultats de recherche.
+- Ajout d'un bouton pour créer des sous-documents.
+- Support des liens `mailto:` dans le menu d'aide.
+- Ajout d'un badge DPG au README.
+- Possibilité d'ajouter un sous-menu "Légal" configurable dans le menu d'aide.
+- Amélioration de la gestion des réactions sur les commentaires avec une limite.
+- Ajout d'un support pour les liens d'ancrage dans la table des matières.
+- Ajout d'un bouton pour laisser un document.
 
 ### Évolutions techniques
-- Optimisation des requêtes pour éviter le problème N+1 lors de la sérialisation des commentaires.
-- Refactorisation de la gestion des événements PostHog.
-- Amélioration de la gestion des connexions à la base de données lors des tests.
-- Mise à jour de Blocknote à la version 0.51.4.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Suppression du job de test E2E pour un autre navigateur.
-- Amélioration de la configuration et du déploiement avec Helm.
+- Refactorisation de la gestion des événements PostHog côté backend.
+- Amélioration des performances de l'arbre de navigation.
+- Correction d'un bug lié au service worker causant un rechargement de l'onglet.
+- Mise à jour de BlockNote à la version 0.51.4.
+- Correction d'un problème de chargement de l'élément "left panel" dans certaines conditions.
+- Optimisation de la récupération des commentaires pour éviter les requêtes N+1.
+- Correction de problèmes liés à la gestion des threads orphelins.
+- Suppression de Crisp (outil de chat).
+- Suppression du code de masquage des documents.
+- Amélioration de la gestion des erreurs de connexion à la base de données lors des tests.
+- Suppression d'un paramètre de tri inutile dans la classe Paginator.
+- Mise à jour des dépendances JavaScript.
+- Correction d'une vulnérabilité de sécurité.
+- Suppression d'une tâche CI inutile.
+- Amélioration de la gestion des événements lors de la création, suppression et modification de documents.
 
 ### Autres changements
-- Ajout d'un badge Snyk pour la sécurité.
-- Améliorations de l'accessibilité de divers composants de l'interface utilisateur (liens, focus, titres, etc.).
+- Corrections de typos dans le guide de contribution.
+- Améliorations de l'accessibilité de divers composants (champs de recherche, modales, titres, etc.).
 - Mise à jour des chaînes de traduction.
-- Correction de problèmes d'affichage et de mise en page.
-- Ajout de tests unitaires et E2E pour les nouvelles fonctionnalités.
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités et configurations.
-- Correction de bugs divers liés à l'interface utilisateur et au backend.
+- Ajout d'un badge Snyk au README.
+- Amélioration de la gestion du focus dans les modales.
+- Correction de problèmes d'affichage de titres longs dans la table des matières.
+- Amélioration de l'affichage des icônes dans l'en-tête du panneau gauche.
+- Correction de bugs liés à la conversion HTML/Markdown (préservation des éléments formatés).
+- Ajout de tests unitaires pour le mode présentateur.
+- Correction de bugs liés à l'exportation de documents.
+- Ajout de la configuration de PostHog.
+- Mise à jour de la documentation pour inclure le nouveau paramètre de configuration.
+- Correction de problèmes liés à l'affichage des emojis.
+- Amélioration de la gestion des erreurs lors de l'importation de documents.
+- Correction de bugs liés au chargement des documents.
+- Correction de bugs liés à la gestion des accès aux documents.
+- Mise à jour de la documentation pour inclure le nouveau paramètre CONVERSION_UPLOAD_ENABLED.

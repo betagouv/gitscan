@@ -613,7 +613,7 @@
     │   │       │   │           ├── admin_panel_settings.svg
     │   │       │   │           ├── all.svg
     │   │       │   │           ├── apps.svg
-    │   │       │   │           ├── arrow-*.svg  (12 files)
+    │   │       │   │           ├── arrow-*.svg  (13 files)
     │   │       │   │           ├── arrow_*.svg  (12 files)
     │   │       │   │           ├── article.svg
     │   │       │   │           ├── article_shortcut.svg
@@ -696,7 +696,7 @@
     │   │       │   │           ├── desktop_mac-filled.svg
     │   │       │   │           ├── directions_car-filled.svg
     │   │       │   │           ├── divergence.svg
-    │   │       │   │           ├── doc-*.svg  (6 files)
+    │   │       │   │           ├── doc-*.svg  (7 files)
     │   │       │   │           ├── doc.svg
     │   │       │   │           ├── dock_to_left.svg
     │   │       │   │           ├── domain.svg
@@ -787,6 +787,7 @@
     │   │       │   │           ├── left-panel.svg
     │   │       │   │           ├── left_panel_close.svg
     │   │       │   │           ├── left_panel_open.svg
+    │   │       │   │           ├── legal.svg
     │   │       │   │           ├── lightbulb-filled.svg
     │   │       │   │           ├── lightbulb.svg
     │   │       │   │           ├── link.svg
@@ -901,6 +902,7 @@
     │   │       │   │           ├── undo.svg
     │   │       │   │           ├── unhide.svg
     │   │       │   │           ├── update.svg
+    │   │       │   │           ├── upload-arrow.svg
     │   │       │   │           ├── upload.svg
     │   │       │   │           ├── upload_file.svg
     │   │       │   │           ├── v.svg
@@ -953,6 +955,7 @@
     │   │       │   │   ├── SkipToContent.tsx
     │   │       │   │   ├── Text.tsx
     │   │       │   │   ├── TextErrors.tsx
+    │   │       │   │   ├── Waffle.tsx
     │   │       │   │   ├── __tests__
     │   │       │   │   │   └── Box.spec.tsx
     │   │       │   │   ├── dropdown-menu
@@ -1201,6 +1204,7 @@
     │   │       │   │   │   │   │   ├── useDocs.tsx
     │   │       │   │   │   │   │   ├── useDocsFavorite.tsx
     │   │       │   │   │   │   │   ├── useDuplicateDoc.tsx
+    │   │       │   │   │   │   │   ├── useImportDoc.tsx
     │   │       │   │   │   │   │   ├── useMoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRestoreDoc.tsx
@@ -1215,6 +1219,7 @@
     │   │       │   │   │   │   │   ├── DocIcon.tsx
     │   │       │   │   │   │   │   ├── DocPage403.tsx
     │   │       │   │   │   │   │   ├── ModalRemoveDoc.tsx
+    │   │       │   │   │   │   │   ├── NewDocButton.tsx
     │   │       │   │   │   │   │   ├── SimpleDocItem.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   ├── hooks
@@ -1225,6 +1230,7 @@
     │   │       │   │   │   │   │   ├── useCreateChildDocTree.tsx
     │   │       │   │   │   │   │   ├── useDocTitleUpdate.tsx
     │   │       │   │   │   │   │   ├── useDocUtils.tsx
+    │   │       │   │   │   │   │   ├── useImport.tsx
     │   │       │   │   │   │   │   ├── useIsCollaborativeEditable.tsx
     │   │       │   │   │   │   │   └── useTrans.tsx
     │   │       │   │   │   │   ├── index.ts
@@ -1349,8 +1355,7 @@
     │   │       │   │   │   └── docs-grid
     │   │       │   │   │       ├── api
     │   │       │   │   │       │   ├── index.ts
-    │   │       │   │   │       │   ├── useDocsTrashbin.tsx
-    │   │       │   │   │       │   └── useImportDoc.tsx
+    │   │       │   │   │       │   └── useDocsTrashbin.tsx
     │   │       │   │   │       ├── components
     │   │       │   │   │       │   ├── DocGridContentList.tsx
     │   │       │   │   │       │   ├── DocMoveModal.tsx
@@ -1369,7 +1374,6 @@
     │   │       │   │   │       ├── conf.ts
     │   │       │   │   │       ├── hooks
     │   │       │   │   │       │   ├── useDragAndDrop.tsx
-    │   │       │   │   │       │   ├── useImport.tsx
     │   │       │   │   │       │   └── useResponsiveDocGrid.tsx
     │   │       │   │   │       └── index.ts
     │   │       │   │   ├── footer
@@ -1382,7 +1386,6 @@
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── Header.tsx
     │   │       │   │   │   │   ├── Title.tsx
-    │   │       │   │   │   │   ├── Waffle.tsx
     │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── conf.ts
     │   │       │   │   │   ├── index.ts
@@ -1446,8 +1449,8 @@
     │   │       │   │   │   │   ├── LeftPanelDocContent.tsx
     │   │       │   │   │   │   ├── LeftPanelFavoriteItem.tsx
     │   │       │   │   │   │   ├── LeftPanelFavorites.tsx
+    │   │       │   │   │   │   ├── LeftPanelFooter.tsx
     │   │       │   │   │   │   ├── LeftPanelHeader.tsx
-    │   │       │   │   │   │   ├── LeftPanelHeaderNewDoc.tsx
     │   │       │   │   │   │   ├── LeftPanelToggleMobile.tsx
     │   │       │   │   │   │   ├── ResizableLeftPanel.tsx
     │   │       │   │   │   │   └── index.tsx
@@ -1549,7 +1552,6 @@
     │   │       │   │           └── [id]
     │   │       │   │               └── index.tsx
     │   │       │   ├── services
-    │   │       │   │   ├── Crisp.tsx
     │   │       │   │   ├── PosthogAnalytic.tsx
     │   │       │   │   └── index.ts
     │   │       │   ├── stores
@@ -1623,6 +1625,12 @@
     │   │       ├── src
     │   │       │   ├── api
     │   │       │   │   └── collaborationBackend.ts
+    │   │       │   ├── blockSpecs
+    │   │       │   │   ├── Callout.ts
+    │   │       │   │   ├── InterlinkingLinkInline.ts
+    │   │       │   │   ├── Pdf.ts
+    │   │       │   │   ├── UploadLoader.ts
+    │   │       │   │   └── index.ts
     │   │       │   ├── env.ts
     │   │       │   ├── handlers
     │   │       │   │   ├── collaborationResetConnectionsHandler.ts
@@ -1702,4 +1710,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-300 directories, 1478 files
+301 directories, 1487 files
