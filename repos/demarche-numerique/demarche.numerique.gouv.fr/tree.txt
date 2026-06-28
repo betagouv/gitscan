@@ -421,6 +421,9 @@
 │   │   │   │   ├── deleted_dossiers_component.fr.yml
 │   │   │   │   └── deleted_dossiers_component.html.haml
 │   │   │   ├── deleted_dossiers_component.rb
+│   │   │   ├── departement_component
+│   │   │   │   ├── departement_component.en.yml
+│   │   │   │   └── departement_component.fr.yml
 │   │   │   ├── departement_component.rb
 │   │   │   ├── edit_footer_component
 │   │   │   │   ├── edit_footer_component.en.yml
@@ -432,6 +435,8 @@
 │   │   │   │   ├── en_construction_not_submitted_component.fr.yml
 │   │   │   │   └── en_construction_not_submitted_component.html.haml
 │   │   │   ├── en_construction_not_submitted_component.rb
+│   │   │   ├── epci_component.en.yml
+│   │   │   ├── epci_component.fr.yml
 │   │   │   ├── epci_component.rb
 │   │   │   ├── errors_full_messages_component
 │   │   │   │   ├── errors_full_messages_component.en.yml
@@ -594,7 +599,7 @@
 │   │   │   │   └── sidemenu_component.html.haml
 │   │   │   ├── sidemenu_component.rb
 │   │   │   ├── toggle_component
-│   │   │   │   └── toggle_component.html.haml
+│   │   │   │   └── toggle_component.html.erb
 │   │   │   └── toggle_component.rb
 │   │   ├── editable_champ
 │   │   │   ├── address_component
@@ -1443,7 +1448,6 @@
 │   │   │   ├── groupe_gestionnaires_controller.rb
 │   │   │   ├── groupe_instructeurs_controller.rb
 │   │   │   ├── instructeurs_controller.rb
-│   │   │   ├── outdated_procedures_controller.rb
 │   │   │   ├── procedure_paths_controller.rb
 │   │   │   ├── procedure_tags_controller.rb
 │   │   │   ├── procedures_controller.rb
@@ -1502,7 +1506,6 @@
 │   │   ├── groupe_gestionnaire_dashboard.rb
 │   │   ├── groupe_instructeur_dashboard.rb
 │   │   ├── instructeur_dashboard.rb
-│   │   ├── outdated_procedure_dashboard.rb
 │   │   ├── procedure_dashboard.rb
 │   │   ├── procedure_path_dashboard.rb
 │   │   ├── procedure_tag_dashboard.rb
@@ -1971,7 +1974,6 @@
 │   │   │   ├── discarded_procedures_deletion_job.rb
 │   │   │   ├── discarded_termine_dossiers_deletion_job.rb
 │   │   │   ├── dossier_operation_log_move_to_cold_storage_job.rb
-│   │   │   ├── enable_procedure_expires_when_termine_enabled_job.rb
 │   │   │   ├── expired_dossiers_brouillon_deletion_job.rb
 │   │   │   ├── expired_dossiers_termine_deletion_job.rb
 │   │   │   ├── expired_prefilled_dossiers_deletion_job.rb
@@ -2159,6 +2161,7 @@
 │   │   ├── attestation.rb
 │   │   ├── attestation_template.rb
 │   │   ├── avis.rb
+│   │   ├── avis_impot.rb
 │   │   ├── banner.rb
 │   │   ├── batch_operation.rb
 │   │   ├── bill_signature.rb
@@ -2168,6 +2171,7 @@
 │   │   ├── champ.rb
 │   │   ├── champ_presentations
 │   │   │   ├── base_presentation.rb
+│   │   │   ├── carte_presentation.rb
 │   │   │   ├── multiple_drop_down_list_presentation.rb
 │   │   │   └── repetition_presentation.rb
 │   │   ├── champs
@@ -2756,7 +2760,6 @@
 │       │   ├── activate_before_expiration.haml
 │       │   ├── api_entreprise_token_expiration.html.erb
 │       │   ├── api_token_expiration.haml
-│       │   ├── notify_procedure_expires_when_termine_forced.haml
 │       │   └── notify_service_without_siret.haml
 │       ├── administrateurs
 │       │   ├── _groups_header.haml
@@ -2854,7 +2857,6 @@
 │       │   │   ├── _publication_form.html.haml
 │       │   │   ├── _publication_form_inputs.html.erb
 │       │   │   ├── _sticky_title.html.haml
-│       │   │   ├── _suggest_expires_when_termine.html.haml
 │       │   │   ├── _unpublished_changes_sticky_header.html.erb
 │       │   │   ├── accuse_lecture.html.haml
 │       │   │   ├── administrateurs.html.erb
@@ -2867,6 +2869,7 @@
 │       │   │   ├── clone_settings.html.erb
 │       │   │   ├── close.html.haml
 │       │   │   ├── closing_notification.html.haml
+│       │   │   ├── commune_info.html.erb
 │       │   │   ├── confirmation.html.haml
 │       │   │   ├── detail.turbo_stream.haml
 │       │   │   ├── edit.html.haml
@@ -3291,9 +3294,6 @@
 │       │   │   └── show.html.erb
 │       │   ├── instructeurs
 │       │   │   └── show.html.erb
-│       │   ├── outdated_procedures
-│       │   │   ├── _collection.html.erb
-│       │   │   └── index.html.erb
 │       │   ├── procedures
 │       │   │   ├── import_data.html.erb
 │       │   │   └── show.html.erb
@@ -3686,6 +3686,9 @@
 │   │   │   ├── avis
 │   │   │   │   ├── en.yml
 │   │   │   │   └── fr.yml
+│   │   │   ├── avis_impot
+│   │   │   │   ├── en.yml
+│   │   │   │   └── fr.yml
 │   │   │   ├── bill_signature
 │   │   │   │   └── fr.yml
 │   │   │   ├── bulk_message
@@ -3772,8 +3775,6 @@
 │   │   │   │   └── fr.yml
 │   │   │   ├── dossier_transfer
 │   │   │   │   ├── en.yml
-│   │   │   │   └── fr.yml
-│   │   │   ├── dubious_procedure
 │   │   │   │   └── fr.yml
 │   │   │   ├── etablissement
 │   │   │   │   ├── en.yml
@@ -5289,6 +5290,7 @@
 │   │   │   ├── data
 │   │   │   │   └── treatment-expected-3months.csv
 │   │   │   ├── doc_ia
+│   │   │   │   ├── avis_impot.json
 │   │   │   │   ├── failed.json
 │   │   │   │   └── success.json
 │   │   │   ├── dossierPDF.pdf
@@ -5420,7 +5422,6 @@
 │   │   │   ├── discarded_dossiers_deletion_base_job_spec.rb
 │   │   │   ├── discarded_en_construction_dossiers_deletion_job_spec.rb
 │   │   │   ├── discarded_termine_dossiers_deletion_job_spec.rb
-│   │   │   ├── enable_procedure_expires_when_termine_enabled_job_spec.rb
 │   │   │   ├── expired_users_deletion_job_spec.rb
 │   │   │   ├── fallback_fetch_cadastre_real_geometry_job_spec.rb
 │   │   │   ├── fix_missing_antivirus_analysis_job_spec.rb
@@ -5574,6 +5575,7 @@
 │   │   │   └── procedure_dossier_pagination_spec.rb
 │   │   ├── champ_blank_json_not_touched_spec.rb
 │   │   ├── champ_presentations
+│   │   │   ├── carte_presentation_spec.rb
 │   │   │   ├── multiple_drop_down_list_presentation_spec.rb
 │   │   │   └── repetition_presentation_spec.rb
 │   │   ├── champ_private_spec.rb
@@ -6182,4 +6184,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-991 directories, 5510 files
+991 directories, 5512 files

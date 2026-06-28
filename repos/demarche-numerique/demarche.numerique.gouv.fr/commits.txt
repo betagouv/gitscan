@@ -1,3 +1,27 @@
+2026-06-26T17:13:35+02:00 - 5a3051237 - mfo : i18n(champ_component): extract hardcoded strings from ChampComponent
+2026-06-26T17:13:35+02:00 - 3dcf70f73 - mfo : feat: add Etranger option to Region field
+2026-06-26T17:13:35+02:00 - 389760038 - mfo : feat(commune): add info modal explaining field limitations Add a "Comment fonctionne ce champ ?" link inside the commune warning notice that opens a lazy modal with detailed explanations about API Géo coverage and impact on mandatory field behavior.
+2026-06-26T17:13:30+02:00 - 81982adcd - mfo : i18n: rename type de champ labels for Localisation category
+2026-06-26T15:23:03Z - 1679b2917 - mfo : Merge pull request #13345 from mfo/enhance-commune-champ
+2026-06-26T15:18:58Z - 958e0c1c8 - mfo : Merge pull request #13348 from demarche-numerique/auto/haml-migration/batch-5c8ae63c
+2026-06-26T15:11:06Z - b4f71c4b3 - mfo : Merge pull request #13349 from demarche-numerique/auto/test-optimization/s-a-procedure_attest-47bf11
+2026-06-26T15:10:55Z - d089298ae - mfo : Merge pull request #13324 from demarche-numerique/auto/i18n-hardcoded/batch-578b4b09
+2026-06-26T13:59:35+02:00 - bec36f7c9 - mfo : supprime l'attribut transitoire procedure_expires_when_termine_enabled
+2026-06-26T13:41:14+02:00 - f06045de3 - mfo : feat(attestation): render optional tag with a different color
+2026-06-26T13:41:14+02:00 - d961726b4 - mfo : feat(attestation): add spport for carte
+2026-06-26T13:41:14+02:00 - 4ad055756 - mfo : feat(attestation#editor): remove mention conditional? champ are not available
+2026-06-26T13:41:11+02:00 - 588e89970 - mfo : feat(attestation): allows conditional champs
+2026-06-26T12:42:00Z - ef325321a - mfo : Merge pull request #13359 from demarche-numerique/add_avis_imposition
+2026-06-26T12:11:13Z - 690675c88 - mfo : Merge pull request #13341 from demarche-numerique/drop_dead_attribute_procedure_expires_when_termine_enabled
+2026-06-26T12:09:57Z - 3e9ac854d - mfo : Merge pull request #13358 from mfo/attestation-with-conditional-and-carto
+2026-06-26T11:14:00+02:00 - 9367eda4b - simon lehericey : feat(avis_impot): add columns
+2026-06-26T11:14:00+02:00 - 8e3fd4af4 - simon lehericey : feat(avis_impot): show feedback to user
+2026-06-26T11:13:59+02:00 - f93324c47 - simon lehericey : feat(avis_impot): specific rules for avis_impot pj
+2026-06-26T11:13:59+02:00 - bcd5beac6 - simon lehericey : feat(avis_impot): add ocr extraction
+2026-06-26T11:13:59+02:00 - 985a44afe - simon lehericey : refactor(ocr_service): add nature indirection and first_valid_2ddoc helper
+2026-06-26T11:13:59+02:00 - 32833a026 - simon lehericey : feat(avis_impot): add instructeur view
+2026-06-26T11:13:58+02:00 - 543641184 - simon lehericey : feat(avis_impot): add nature
+2026-06-26T11:13:39+02:00 - 9476d1fa6 - simon lehericey : feat(avis_impot): add model
 2026-06-25T15:38:25+02:00 - 9e1ac9e1a - Colin Darie : feat(admin): remove survey banner about champ tableau
 2026-06-25T15:26:12Z - fd80f5ced - Colin Darie : Merge pull request #13355 from colinux/remove-banner-sondage-champ-tableau
 2026-06-25T13:28:31Z - 3c13eeb59 - Paul Chavard : Merge pull request #13353 from demarche-numerique/fix-blank-champ-touched-on-merge
@@ -8,6 +32,8 @@
 2026-06-24T15:01:44+02:00 - b82005633 - Mathieu Magnin : Show secure connection renewal confirmation after login
 2026-06-24T15:00:17+02:00 - cf6d068f7 - Mathieu Magnin : Clarify in renewal email that clicking the link is enough
 2026-06-24T14:58:27+02:00 - 3e4fc54ce - Mathieu Magnin : Convert trusted_device_token_renewal mailer view from HAML to ERB
+2026-06-24T14:47:25+02:00 - 583062cf3 - mfo : perf(tests): S02 inline scenarios — procedure_attestation_template_spec
+2026-06-24T14:46:53+02:00 - 6ee5f2197 - mfo : refactor(haml): migrate Dsfr::ToggleComponent to ERB
 2026-06-24T14:42:12+02:00 - ed5f3c494 - Mathieu Magnin : Fix typo "peut-être" -> "peut être" in login mailers
 2026-06-24T12:11:47Z - 558e5aa44 - Colin Darie : Merge pull request #13301 from adullact/pr-improve-deployment-documentation
 2026-06-24T11:58:06+02:00 - 9c3124ebb - simon lehericey : feat(s3): graphql blob creation give the procedure id
@@ -165,6 +191,8 @@
 2026-06-22T12:24:47Z - 43a015538 - Colin Darie : Merge pull request #13306 from demarche-numerique/auto/haml-migration/batch-d0e305e4
 2026-06-22T12:15:53Z - 173a68b6e - Mathieu Magnin : Merge pull request #13323 from demarche-numerique/worktree-radiant-knitting-catmull
 2026-06-22T11:33:48+02:00 - 965a3a729 - mfo : perf(groupe_instructeur): fix N+1 on add_instructeurs — batch notifications
+2026-06-19T11:44:40+02:00 - b694b92f8 - mfo : i18n(components): extract hardcoded strings from EpciComponent
+2026-06-19T11:44:33+02:00 - 9f922eeb5 - mfo : i18n(components): extract hardcoded strings from DepartementComponent
 2026-06-19T10:28:38+02:00 - 22a9e98ac - Eric Leroy-Terquem : fix(condition validator): validate the condition of a repetition block itself
 2026-06-19T09:45:14+02:00 - f90447717 - Eric Leroy-Terquem : fix(libelle validator): improve missing libelle error message for fields inside a repetition
 2026-06-19T08:20:49Z - 6ea5cdd19 - Eric Leroy-Terquem : Merge pull request #13328 from demarche-numerique/improve-missing-libelle-repetition-error
