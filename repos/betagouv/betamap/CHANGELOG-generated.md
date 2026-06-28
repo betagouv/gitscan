@@ -1,13 +1,13 @@
-## Changelog : betamap (30 derniers jours, au 20 juin 2026)
+## Changelog : betamap (30 derniers jours, au 27 juin 2026)
 
 ### Résumé
-Ce changelog couvre une période d'un mois marquée principalement par des mises à jour régulières de la base de données des startups d'État. Ces mises à jour permettent de maintenir l'application à jour avec les dernières informations sur l'écosystème numérique de l'État.
+Ce changelog fait état d'une série de mises à jour des données des startups d'état visualisées sur BetaMap. Ces mises à jour régulières permettent de maintenir la plateforme à jour avec les dernières informations sur l'écosystème des startups numériques de l'État.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Mise à jour de la liste des startups d'état et de leurs informations.
 
 ### Évolutions techniques
-- Mise à jour régulière de la base de données des startups d'État : [#31c5e85](https://github.com/betagouv/betamap/commit/31c5e85), [#50785aa](https://github.com/betagouv/betamap/commit/50785aa), [#defb100](https://github.com/betagouv/betamap/commit/defb100), [#05aa8b8](https://github.com/betagouv/betamap/commit/05aa8b8).
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Mises à jour régulières des données des startups : [#f952ed3](https://github.com/betagouv/betamap/commit/f952ed3), [#31c5e85](https://github.com/betagouv/betamap/commit/31c5e85), [#50785aa](https://github.com/betagouv/betamap/commit/50785aa), [#defb100](https://github.com/betagouv/betamap/commit/defb100), [#05aa8b8](https://github.com/betagouv/betamap/commit/05aa8b8).
