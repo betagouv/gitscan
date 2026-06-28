@@ -98,7 +98,12 @@
 │   │   ├── case_files
 │   │   │   ├── [caseFileNumber]
 │   │   │   │   ├── actions.ts
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── pieces
+│   │   │   │       └── [encodedFileId]
+│   │   │   │           ├── data
+│   │   │   │           │   └── route.ts
+│   │   │   │           └── page.tsx
 │   │   │   └── page.tsx
 │   │   └── layout.tsx
 │   ├── api
@@ -123,11 +128,14 @@
 │   │   ├── case-file-search.test.ts
 │   │   ├── case-file-search.ts
 │   │   ├── data
+│   │   │   ├── attached-files.ts
 │   │   │   ├── case-files.test.ts
 │   │   │   └── case-files.ts
+│   │   ├── pieces-table.ts
 │   │   ├── prisma.ts
 │   │   ├── table-query.test.ts
-│   │   └── table-query.ts
+│   │   ├── table-query.ts
+│   │   └── telerecours.ts
 │   ├── page.tsx
 │   └── ui
 │       ├── case-file-tabs.test.tsx
@@ -154,6 +162,8 @@
 │       ├── memory-deadline-cell.tsx
 │       ├── pending-validation.test.tsx
 │       ├── pending-validation.tsx
+│       ├── piece-navigator.tsx
+│       ├── piece-viewer.tsx
 │       ├── proconnect-login-button.test.tsx
 │       ├── proconnect-login-button.tsx
 │       ├── refresh-case-file-button.test.tsx
@@ -170,12 +180,34 @@
 ├── data
 │   ├── anonymize.test.ts
 │   ├── anonymize.ts
-│   ├── auth.ts
-│   ├── enrich-case-file.ts
-│   ├── interfaces.ts
-│   ├── scrape-telerecours.ts
+│   ├── cli
+│   │   ├── parse-args.test.ts
+│   │   ├── parse-args.ts
+│   │   └── scrape-telerecours.ts
+│   ├── persistence
+│   │   ├── enrich-case-file.test.ts
+│   │   ├── enrich-case-file.ts
+│   │   ├── paginate.ts
+│   │   └── upsert-case-file.ts
+│   ├── scrape
+│   │   ├── phase-a-list.test.ts
+│   │   ├── phase-a-list.ts
+│   │   ├── phase-b-enrich.ts
+│   │   ├── phase-c-related.ts
+│   │   ├── pipeline.ts
+│   │   ├── where.test.ts
+│   │   └── where.ts
 │   ├── telecharge-fichier.ts
-│   ├── telerecours-client.ts
+│   ├── telerecours
+│   │   ├── auth.ts
+│   │   ├── client.interface.ts
+│   │   ├── client.ts
+│   │   ├── http.test.ts
+│   │   ├── http.ts
+│   │   └── types.ts
+│   ├── test-support
+│   │   ├── fake-client.ts
+│   │   └── fixtures.ts
 │   └── tsconfig.json
 ├── docker-compose.yml
 ├── docs
@@ -223,6 +255,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260622180000_case_file_last_producer
 │   │   │   └── migration.sql
+│   │   ├── 20260626120000_last_decision_reading_object
+│   │   │   └── migration.sql
+│   │   ├── 20260626140000_case_file_event_pieces_non_downloadable_boolean
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -231,6 +267,7 @@
 │       ├── chamber.prisma
 │       ├── conclusion.prisma
 │       ├── hearing.prisma
+│       ├── last_decision_reading.prisma
 │       ├── legal_entity_division.prisma
 │       ├── measure.prisma
 │       ├── related_case_file.prisma
@@ -249,4 +286,4 @@
 │       └── server-only-index.tsx
 ├── tsconfig.json
 └── vitest.config.mts
-51 directories, 200 files
+61 directories, 227 files
