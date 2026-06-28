@@ -9,6 +9,7 @@
 │   ├── appset-rancher-projects.yaml
 │   ├── arc-runners.yaml
 │   ├── arc-system.yaml
+│   ├── buildkit-operator.yaml
 │   ├── buildkit-services.yaml
 │   ├── charon.yaml
 │   ├── clamav.yaml
@@ -16,6 +17,7 @@
 │   ├── eck-operator.yaml
 │   ├── huginn.yaml
 │   ├── iterion.yaml
+│   ├── kata.yaml
 │   ├── kube-image-keeper.yaml
 │   ├── kubesight.yaml
 │   ├── no-package-malware.yaml
@@ -48,6 +50,8 @@
 ├── arc-systems
 │   ├── Chart.yaml
 │   └── values.yaml
+├── buildkit-operator
+│   └── README.md
 ├── buildkit-service
 │   ├── .gitignore
 │   ├── Chart.lock
@@ -220,6 +224,27 @@
 │   │   └── minio-mkbucket.ovh-prod.job.yaml
 │   ├── values.ovh-dev.yaml
 │   ├── values.ovh-prod.yaml
+│   └── values.yaml
+├── kata
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── charts
+│   │   └── node-feature-discovery-chart-0.18.3.tgz
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── containerd-user-dropin-config.yaml
+│   │   ├── custom-runtimes.yaml
+│   │   ├── kata-cleanup-rbac-job.yaml
+│   │   ├── kata-clh-vcpu-tune.yaml
+│   │   ├── kata-deploy-cleanup-job.yaml
+│   │   ├── kata-deploy-install-job.yaml
+│   │   ├── kata-deploy-job-templates.yaml
+│   │   ├── kata-deploy.yaml
+│   │   ├── kata-monitor.yaml
+│   │   ├── kata-rbac.yaml
+│   │   ├── runtimeclasses.yaml
+│   │   └── verification-job.yaml
 │   └── values.yaml
 ├── kubesight
 │   ├── Chart.yaml
@@ -693,6 +718,8 @@
 │   │           │       ├── github-backup.pvc.yaml
 │   │           │       └── github-ssh.sealed-secret.yaml
 │   │           └── ovh-prod
+│   │               ├── buildkit-operator
+│   │               │   └── buildkit-operator-s3.sealedsecret.yaml
 │   │               ├── buildkit-service
 │   │               │   ├── buildkit-client-certs.sealedsecret.yaml
 │   │               │   └── buildkit-daemon-certs.sealedsecret.yaml
@@ -755,4 +782,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-303 directories, 454 files
+308 directories, 476 files
