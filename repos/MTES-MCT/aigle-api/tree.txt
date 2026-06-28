@@ -219,6 +219,7 @@
 │   │   ├── 0125_remove_unused_indexes.py
 │   │   ├── 0126_add_illegal_and_to_control_statuses.py
 │   │   ├── 0127_commandrun_origin_and_timing.py
+│   │   ├── 0128_geocustomzone_import_layer_name.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -293,12 +294,14 @@
 │   ├── services
 │   │   ├── __init__.py
 │   │   ├── command_async.py
+│   │   ├── data_deployment.py
 │   │   ├── deployed_data.py
 │   │   ├── detection.py
 │   │   ├── detection_bulk_update.py
 │   │   ├── detection_geo_filter.py
 │   │   ├── detection_object.py
 │   │   ├── detection_process.py
+│   │   ├── detections_schema.py
 │   │   ├── external_api.py
 │   │   ├── geo_custom_zone.py
 │   │   ├── lucca_analytics.py
@@ -320,6 +323,7 @@
 │   │   │   ├── test_command_progress.py
 │   │   │   ├── test_command_run_tracker.py
 │   │   │   ├── test_import_custom_zones.py
+│   │   │   ├── test_import_detections.py
 │   │   │   └── test_import_sitadel.py
 │   │   ├── conftest.py
 │   │   ├── fixtures
@@ -329,8 +333,11 @@
 │   │   │   └── users.py
 │   │   ├── test_cache.py
 │   │   ├── test_cache_integration.py
+│   │   ├── test_detections_schema.py
+│   │   ├── test_import_parcels.py
 │   │   └── views
 │   │       ├── __init__.py
+│   │       ├── test_data_deployment.py
 │   │       ├── test_deployed_data.py
 │   │       ├── test_detection_data.py
 │   │       ├── test_detection_geo.py
@@ -347,7 +354,6 @@
 │   │       ├── test_object_type_category.py
 │   │       ├── test_parcel.py
 │   │       ├── test_run_command.py
-│   │       ├── test_statistics.py
 │   │       ├── test_super_admin_scope.py
 │   │       ├── test_super_admin_scope_extended.py
 │   │       ├── test_tile_set.py
@@ -375,7 +381,6 @@
 │   │   ├── permissions.py
 │   │   ├── postgis.py
 │   │   ├── run_command.py
-│   │   ├── serializers.py
 │   │   ├── string.py
 │   │   ├── tasks.py
 │   │   └── user_action_log.py
@@ -402,11 +407,7 @@
 │       ├── run_command.py
 │       ├── statistics
 │       │   ├── __init__.py
-│       │   ├── deployed_data.py
-│       │   ├── utils.py
-│       │   ├── validation_status_evolution.py
-│       │   ├── validation_status_global.py
-│       │   └── validation_status_object_types_global.py
+│       │   └── deployed_data.py
 │       ├── tile_set.py
 │       ├── user.py
 │       ├── user_action_log.py
@@ -414,11 +415,11 @@
 │       └── utils
 │           ├── __init__.py
 │           ├── contact_us.py
+│           ├── data_deployment.py
 │           ├── deploy_infos.py
 │           ├── generate_prior_letter.py
 │           ├── get_annotation_grid.py
 │           ├── get_custom_geometry.py
-│           ├── get_import_infos.py
 │           └── get_tile_view.py
 ├── docker-compose.yml
 ├── external_api_doc
@@ -437,4 +438,4 @@
 └── services
     ├── celery.service
     └── gunicorn_aigle.service
-38 directories, 401 files
+38 directories, 402 files
