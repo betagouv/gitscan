@@ -1,31 +1,65 @@
 ## Changelog : mon-indemnisation-justice (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce changelog fait état d'une période riche en améliorations et corrections, touchant à la fois l'expérience utilisateur et les fondations techniques de l'application. Les efforts se sont concentrés sur l'amélioration de la gestion des dossiers, la correction de bugs, l'intégration de nouvelles fonctionnalités (comme la frise temporelle et le test d'éligibilité), et le renforcement de la sécurité et de la robustesse de l'application.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de gestion des dossiers, de sécurité et d'expérience utilisateur. Les agents peuvent désormais mieux gérer les dossiers, avec de nouvelles fonctionnalités de recherche, de filtrage et de gestion des accès. Des corrections importantes ont été apportées pour améliorer la stabilité et la sécurité de l'application, notamment en corrigeant des failles de sécurité potentielles et en améliorant la gestion des erreurs. L'espace public a également été refactorisé et amélioré avec l'ajout d'un test d'éligibilité.
 
 ### Évolutions fonctionnelles
-- Ajout d'une frise temporelle pour visualiser l'historique des dossiers [#86e0f75](https://github.com/betagouv/mon-indemnisation-justice/commit/86e0f75).
-- Mise en place du test d'éligibilité dans l'espace public [#be88cc6](https://github.com/betagouv/mon-indemnisation-justice/commit/be88cc6).
-- Possibilité de modifier les critères de recherche de dossiers [#b3785de](https://github.com/betagouv/mon-indemnisation-justice/commit/b3785de).
-- Affichage des pièces jointes au format PDF via `react-pdf` [#216a13f](https://github.com/betagouv/mon-indemnisation-justice/commit/216a13f).
-- Création d'une page "Mes dossiers" permettant de lister les dossiers associés à un utilisateur [#c54ef5c](https://github.com/betagouv/mon-indemnisation-justice/commit/c54ef5c).
-- Amélioration du navigateur de pages pour une meilleure expérience utilisateur [#aae1bba](https://github.com/betagouv/mon-indemnisation-justice/commit/aae1bba).
-- Fluidification de l'affichage des champs et possibilité de masquer les outils Tanstack [#e8aeaf1](https://github.com/betagouv/mon-indemnisation-justice/commit/e8aeaf1).
-- Correction du fonctionnement de la modale de mot de passe oublié [#f120742](https://github.com/betagouv/mon-indemnisation-justice/commit/f120742).
-- Ajout d'une gestion des erreurs FIP6 et FDO avec affichage et remontée des erreurs [#8272609](https://github.com/betagouv/mon-indemnisation-justice/commit/8272609) et [#4d0b818](https://github.com/betagouv/mon-indemnisation-justice/commit/4d0b818).
-- Mise en place d'un tourniquet avec message de chargement au démarrage de l'application [#7655272](https://github.com/betagouv/mon-indemnisation-justice/commit/7655272).
+- Ajout d'une fonctionnalité de recherche de dossiers et d'une page "Mes dossiers" pour les usagers, permettant de lister les dossiers associés à un usager.
+- Création d'une page dédiée aux "Agents à valider" et restriction de l'accès à cette page aux agents disposant du rôle approprié.
+- Amélioration du navigateur de pages et correction des liens morts.
+- Possibilité de modifier les critères de recherche de dossiers.
+- Affichage de l'historique des actions sur un dossier avec des badges de couleur pour une meilleure visibilité.
+- Mise en place du test d'éligibilité dans l'espace public avec un nouveau modèle TypeScript et des formulaires Tanstack.
+- Intégration du Ministère de l'intérieur comme administration.
+- Ajout d'emails pour la confirmation de dépôt, la décision (ok et ko), la clôture sans traitement et les arrêts à signer.
+- Possibilité de modifier les critères de recherche.
+- Affichage des pièces jointes en PDF via `react-pdf`.
+- Fluidification de l'affichage des champs et possibilité de masquer les outils Tanstack.
+- Suppression de la mention "en qualité de" dans le corps du courrier de décision.
+- Affichage de la ligne 1 de l'adresse sur la première paragraphe de l'arrêté de paiement.
 
 ### Évolutions techniques
-- Injection de l'URL de déconnexion dans le contexte agent pour une meilleure gestion de l'authentification [#78a286f](https://github.com/betagouv/mon-indemnisation-justice/commit/78a286f).
-- Utilisation de la version legacy de `react-pdf` pour résoudre des problèmes de compatibilité [#f6e7923](https://github.com/betagouv/mon-indemnisation-justice/commit/f6e7923).
-- Mise en place de headers CSP (Content Security Policy) pour renforcer la sécurité de l'application [#2d7460c](https://github.com/betagouv/mon-indemnisation-justice/commit/2d7460c) et corrections successives [#6c29178](https://github.com/betagouv/mon-indemnisation-justice/commit/6c29178), [#739a1ac](https://github.com/betagouv/mon-indemnisation-justice/commit/739a1ac).
-- Intégration de Sentry pour la gestion des erreurs et le suivi des performances [#9a526f7](https://github.com/betagouv/mon-indemnisation-justice/commit/9a526f7).
-- Refactoring de l'espace public avec amélioration de la qualité et de la cohérence du code [#820530a](https://github.com/betagouv/mon-indemnisation-justice/commit/820530a) et [#1d06713](https://github.com/betagouv/mon-indemnisation-justice/commit/1d06713).
-- Conversion de la page "Mon compte" vers React [#55e0da8](https://github.com/betagouv/mon-indemnisation-justice/commit/55e0da8).
-- Mise en place de tests unitaires et end-to-end pour garantir la qualité du code [#47ad9ec](https://github.com/betagouv/mon-indemnisation-justice/commit/47ad9ec).
+- Injection des headers CSP (Content Security Policy) pour renforcer la sécurité de l'application.
+- Mise en place de la gestion des erreurs via Sentry pour une meilleure surveillance et résolution des problèmes.
+- Utilisation de la version legacy de `react-pdf` pour corriger des problèmes de compatibilité.
+- Refactorisation de l'espace public pour améliorer la qualité et la cohérence du code.
+- Conversion du layout de l'espace FIP6.
+- Ajout de tests unitaires et correction des tests existants.
+- Mise à jour de la configuration pour utiliser l'URL de déconnexion fournie par l'API.
+- Mise en place d'un cache buster via une variable d'environnement.
+- Suppression de la dépendance `vite-plugin-static-copy` en tant que dépendance de développement.
+- Correction d'un problème lié à l'adresse pouvant être manquante sur un dossier.
+- Correction d'un problème avec la modale de mot de passe oublié.
+- Correction d'un problème lié à la collision de référence.
+- Ajout de source maps pour Sentry.
+- Ajout d'un tourniquet avec un message de chargement au démarrage de l'application.
 
 ### Autres changements
-- Mise à jour du guide de déclaration PN [#b673eb7](https://github.com/betagouv/mon-indemnisation-justice/commit/b673eb7).
-- Corrections diverses et amélioration de la documentation.
-- Suppression de dépendances inutiles et nettoyage du code.
-- Correction de liens morts et amélioration de l'accessibilité.
+- Mise à jour du lien vers le questionnaire de satisfaction.
+- Correction de l'affichage du montant littéral (troncature de "zéro centimes").
+- Amélioration de la réactivité de MobX.
+- Correction de l'affichage des compteurs de dossiers pour les agents sans rôle DOSSIER.
+- Correction de l'erreur "The operation is insecure" sur MON-INDEMNISATION-JUSTICE-AK.
+- Correction de l'affichage des pièces jointes en PDF sur Safari iOS.
+- Suppression des entrées vite.config.ts vers des fichiers supprimés.
+- Déplacement des pages d'étape du Storybook vers l'app visiteur.
+- Suppression de Storybook sur l'espace visiteur.
+- Suppression de la route de recherche de dossiers.
+- Suppression de la mention superflue "en qualité de" du corps du courrier de décision.
+- Ajout d'un test unitaire sur la route de suppression.
+- Création du point d'entrée API et appel depuis le DossierManager.
+- Création de la modale de suppression de la pièce jointe.
+- Correction de l'argument optionnel Requerant.nomSimple.
+- Purge de la boite et envoi des emails au chargement des fixtures.
+- Création du composant Frise temporelle.
+- Correction des tests.
+- Affichage de l'historique avec les badges de couleur.
+- Injection de l'URL de déconnexion dans le contexte agent.
+- Rectification de `logout_route` non défini pour ProConnect.
+- Attraper, afficher et remonter les erreurs sur FIP6 et FDO.
+- Correction de l'accès à l'agent MJ sans rôle AGENT_DOSSIER.
+- Correction pour react-pdf.
+- Correction de l'email de clôture sans traitement.
+- Correction de l'email de confirmation de dépôt.
+- Correction de l'email arrêté à signer.
+- Suppression de la mention superflue "en qualité de" du corps du courrier de décision.

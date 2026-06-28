@@ -4,19 +4,17 @@
   "description": "L'application Mon Indemnisation Justice vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduisant les délais de traitement et permettant des économies financières.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
     "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Gestion des fichiers",
-    "Recherche & Filtres"
+    "Authentification & Accès",
+    "Sécurité & Conformité"
   ],
   "audience": "Grand public",
   "dependencies": [
-    "React",
-    "Tanstack",
+    "@gouvfr/dsfr",
     "puppeteer",
-    "remixicon"
+    "remixicon",
+    "react-pdf"
   ],
   "components": [
     "React / Next.js",
@@ -26,18 +24,14 @@
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
-    ],
-    "providers": [
-      "France Connect"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Jest",
-    "Playwright",
-    "Tests unitaires",
-    "Tests end-to-end"
+    "Pytest",
+    "Cypress"
   ],
   "workflows": [
     "test.yml"
@@ -57,8 +51,7 @@
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Sécurité & Auth",
-    "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches"
+    "Déploiement & Hosting",
+    "Sécurité & Auth"
   ]
 }
