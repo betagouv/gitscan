@@ -1,29 +1,33 @@
 {
   "url": "https://github.com/datagouv/apistration",
   "name": "apistration",
-  "description": "APIstration est une application et un site pour les API Entreprise et Particulier du gouvernement français, fournissant des données certifiées sur les entreprises et les individus. Elle est développée et maintenue par DINUM.",
+  "description": "APIstration est un projet qui fournit une API et un site web pour les API Entreprise et Particulier du gouvernement français, permettant l'accès à des données certifiées sur les entreprises et les individus.",
   "language": "Ruby",
   "features": [
-    "Authentification & Accès",
     "API & Intégrations",
-    "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Documentation",
+    "Gestion documentaire & Fichiers"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration",
+    "Développeurs"
+  ],
   "dependencies": [
     "Ruby",
     "Rails",
-    "RSpec",
-    "Webmock",
     "PostgreSQL",
-    "Docker"
+    "Node.js",
+    "React",
+    "TypeScript"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs"
@@ -31,18 +35,19 @@
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
-    ],
-    "providers": [
-      "FranceConnect"
+      "jwt",
+      "session"
     ]
   },
   "tests": [
     "RSpec",
-    "Webmock"
+    "Webmock",
+    "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-06-23T14:16:29+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-06-26T16:25:16+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,11 +60,12 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "API",
-    "Sécurité",
-    "JavaScript",
-    "Ruby",
-    "PostgreSQL",
-    "Docker"
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "JavaScript"
   ]
 }
