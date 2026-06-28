@@ -1282,15 +1282,16 @@
     │   │   │   │   │   │   │   │   │   ├── candidateProfilePageLogic.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── certification-authority-details
-    │   │   │   │   │   │   │   │   │   ├── _components
-    │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityCard.tsx
-    │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccountCard.tsx
     │   │   │   │   │   │   │   │   │   ├── certificationAuthorityDetails.hooks.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── multiple-certification-authorities-selection
     │   │   │   │   │   │   │   │   │   ├── certification-authorities-list
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── certification-authority-selection
+    │   │   │   │   │   │   │   │   │   │   │   └── [certificationAuthorityId]
+    │   │   │   │   │   │   │   │   │   │   │       ├── certificationAuthoritySelection.hooks.ts
+    │   │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── multipleCertificationAuthoritiesList.hooks.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   └── disclaimer
@@ -1751,6 +1752,10 @@
     │   │   │   │   └── CandidacyBackButton.tsx
     │   │   │   ├── candidacy-status-tag
     │   │   │   │   └── CandidacyStatusTag.tsx
+    │   │   │   ├── candidacy-summary
+    │   │   │   │   └── certification-authority
+    │   │   │   │       ├── CertificationAuthorityCard.tsx
+    │   │   │   │       └── CertificationAuthorityLocalAccountCard.tsx
     │   │   │   ├── candidacy-tags-aap
     │   │   │   │   └── CandidacyTagsAap.tsx
     │   │   │   ├── card
@@ -2030,6 +2035,8 @@
     │   │   │   │       │   ├── certification-authority-details.spec.ts
     │   │   │   │       │   ├── multiple-certification-authorities-selection
     │   │   │   │       │   │   ├── certification-authorities-list
+    │   │   │   │       │   │   │   ├── certification-authority-selection
+    │   │   │   │       │   │   │   │   └── certification-authority-selection-page.spec.ts
     │   │   │   │       │   │   │   └── multiple-certification-authorities-list-page.spec.ts
     │   │   │   │       │   │   └── disclaimer
     │   │   │   │       │   │       └── multiple-certification-cuthorities-selection-disclaimer-page.spec.ts
@@ -2291,6 +2298,7 @@
     │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.test.ts
     │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertification.ts
+    │   │   │   │       ├── updateCertificationAuthorityOfCandidacy.test.ts
     │   │   │   │       ├── updateCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.test.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.ts
@@ -2519,6 +2527,7 @@
     │   │   │       ├── getCertificationAuthority.ts
     │   │   │       ├── getCertificationAuthorityByCandidacyId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByAccountId.ts
+    │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.test.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountById.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountsToTransferCandidacy.ts
@@ -4502,6 +4511,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260624105707_add_value_to_dff_eligibility_candidate_situation_enum
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260625105530_add_maisonmere_aap_vaeco_view
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260625114106_add_prerequisites_comment_dematerialized_feasibility_file_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -6083,4 +6096,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2042 directories, 4043 files
+2048 directories, 4050 files

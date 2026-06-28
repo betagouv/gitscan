@@ -1,44 +1,54 @@
-## Changelog : reva (30 derniers jours, au 24 juin 2026)
+## Changelog : reva (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur dans l'espace administrateur, notamment sur les pages de gestion des candidatures et des profils. Des corrections et des optimisations ont également été apportées aux API, notamment en matière de sécurité (analyse antivirus des fichiers) et de gestion des OTP (One-Time Password) pour une authentification renforcée. L'ajout de nouvelles fonctionnalités, comme la gestion des comptes collaborateurs AAP et l'intégration de ClamAV pour l'analyse antivirus, renforce la robustesse et la sécurité de la plateforme.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'administration des candidatures VAE, notamment avec l'ajout de fonctionnalités de gestion des organismes certificateurs et des cohortes VAE collectives. Des améliorations significatives ont également été apportées à l'interface utilisateur de l'application admin pour faciliter la navigation et la gestion des données. Des corrections et optimisations ont été apportées à l'API, notamment en matière de sécurité et de gestion des fichiers.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface utilisateur et de l'expérience utilisateur sur les pages de certification, d'éligibilité, de modification des expériences du candidat et du profil candidat dans l'espace administrateur. [#1037](https://github.com/betagouv/reva/pull/1037)
-- Ajout d'une page de sélection des autorités de certification dans l'espace administrateur.
-- Ajout d'un lien "Consulter" vers les détails de l'autorité de certification dans le résumé de la candidature.
-- Possibilité pour les AAPs d'ajouter de nouveaux comptes collaborateurs depuis la liste des comptes.
-- Affichage d'un badge pour les comptes AAP désactivés et désactivation du lien vers la carte.
-- Amélioration de l'affichage des raisons d'arrêt d'accompagnement.
-- Ajout de filtres pour les candidatures (statut, type d'accompagnement, financement, résultats du jury, etc.) dans la page "candidatures-for-aap".
-- Ajout d'une nouvelle raison d'arrêt d'accompagnement.
-- Amélioration de la gestion des filtres et de l'affichage des données dans l'espace administrateur.
-- Possibilité de renvoyer un code OTP par email.
-- Ajout d'une page pour gérer les autorités de certification multiples.
-- Amélioration de la gestion des fichiers joints (augmentation de la taille maximale autorisée).
-- Remplacement du lien "Contact" par un formulaire de pré-qualification sur le site web.
-- Correction de l'affichage des lieux de naissance.
-- Amélioration de la gestion des erreurs côté client avec Urql.
+- Ajout d'une page de sélection d'un organisme certificateur dans l'administration. [#1037](https://github.com/betagouv/reva)
+- Amélioration de l'interface utilisateur des pages "expériences du candidat", "pièces jointes", "prérequis" et "compétences" dans l'administration.
+- Ajout d'une page de détails de l'organisme certificateur accessible depuis le résumé de la candidature.
+- Ajout d'un lien "Consulter" sur la carte de l'organisme certificateur dans le résumé de la candidature.
+- Amélioration de la gestion des filtres de statut des candidatures pour les AAP (Accompagnement à la VAE).
+- Possibilité de filtrer les candidatures par organisme certificateur et par cohortes VAE collectives.
+- Ajout de la possibilité de créer un compte collaborateur pour un AAP directement depuis la liste des AAP.
+- Amélioration de l'affichage des organismes certificateurs dans le résumé de la candidature.
+- Ajout de la possibilité de signaler un DVA (Décision de Validation des Acquis) comme invalide depuis l'interop.
+- Amélioration de l'affichage de l'historique des décisions pour la dématérialisation.
+- Suppression de la limite de 100 heures pour la formation complémentaire.
+- Ajout de la possibilité d'enregistrer un mot de passe pour les candidats (fonctionnalité gérée par un flag).
+- Suppression de la notification de migration du lien magique.
+- Amélioration de l'interface utilisateur de la page de profil du candidat.
+- Amélioration de l'interface utilisateur de la page d'éligibilité.
 
 ### Évolutions techniques
+- Mise à jour de plusieurs dépendances (Fastify, Next.js, GraphQL, Prisma, React, Keycloak, Outscale, Traefik, Vitest, Cypress, Playwright, Datadog, Metabase, Strapi, URQL, graphql-request).
 - Refactorisation de la logique de détection des feature flags pour les tableaux de bord AAP.
-- Optimisation et renforcement des vérifications avant l'envoi des DFF (Dossier de Formation) à l'autorité de certification.
-- Ajout d'une analyse antivirus des fichiers téléchargés par les utilisateurs via l'intégration de ClamAV.
-- Mise à jour des dépendances (Strapi, Vite, shell-quote, etc.).
-- Amélioration de la gestion des tokens persistants dans l'espace administrateur pour l'authentification SSO.
-- Ajout d'un endpoint `establish-sso` pour la gestion de l'authentification SSO inter-applications.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
-- Migration de certains tests Cypress vers Playwright.
+- Simplification de la logique de vérification de l'accès aux données.
+- Ajout d'une vue PostgreSQL pour récupérer les AAP avec ou sans candidatures VAECo.
+- Amélioration de la gestion des sessions SSO.
+- Correction du temps de vie des cookies OTP (One-Time Password).
+- Correction du TTL (Time To Live) des tokens de challenge OTP.
+- Ajout d'un antivirus (ClamAV) pour analyser les fichiers téléchargés par les utilisateurs.
 - Amélioration de la gestion des erreurs et des logs.
-- Correction de bugs et optimisations de performance diverses.
+- Ajout de tests unitaires et d'intégration.
+- Migration de certains tests Cypress vers Playwright.
+- Correction de plusieurs bugs et améliorations de la performance.
+- Amélioration de la gestion des images dans l'application candidat.
+- Mise à jour des packages Strapi.
 
 ### Autres changements
-- Documentation mise à jour.
-- Nettoyage du code et refactoring de certains composants.
-- Mise à jour de la configuration de l'infrastructure.
-- Ajout de fichiers `.pyc` à `.gitignore`.
-- Correction de problèmes liés à la gestion des ports dans l'environnement ClamAV.
-- Suppression de tests Cypress obsolètes.
-- Correction de problèmes d'affichage et de navigation dans l'interface administrateur.
-- Mise à jour des emails d'activation des certifications dans Keycloak.
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout d'un lien vers le nouveau formulaire de pré-qualification sur le site web.
+- Correction de la cartographie du code INSEE pour la Corée.
+- Amélioration de la documentation.
+- Nettoyage du code.
+- Ajout de commentaires et de documentation pour faciliter la maintenance.
+- Correction de la gestion des codes de pays pour les lieux de naissance.
+- Ajout de tests pour la vérification de l'OTP par email.
+- Ajout d'un flag pour activer la vérification par email OTP.
+- Ajout d'une table `account_email_otp` pour stocker les codes OTP par email.
+- Ajout d'une tâche cron pour supprimer les OTP expirés.
+- Amélioration de la gestion des erreurs lors de l'utilisation de l'API.
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Ajout de la possibilité de définir un lien externe supplémentaire sur la page de statut.
+- Correction de l'affichage des noms de cohortes trop longs dans l'administration.
+- Amélioration de la gestion des filtres dans l'administration.
