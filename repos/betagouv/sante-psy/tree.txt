@@ -12,6 +12,7 @@
 │       ├── codeql-analysis.yml
 │       └── nodejs.yml
 ├── .gitignore
+├── .mocharc.local.yml
 ├── .nvmrc
 ├── .prettierrc
 ├── .slugignore
@@ -47,6 +48,7 @@
 │       └── studentValidators.ts
 ├── cron_jobs
 │   ├── cron.ts
+│   ├── cronAppointmentsNotifications.ts
 │   ├── cronDemarchesSimplifiees.ts
 │   ├── cronPsychologists.ts
 │   ├── cronStudents.ts
@@ -422,6 +424,10 @@
 │   │   │   │   ├── Certificate
 │   │   │   │   │   ├── SendCertificate.jsx
 │   │   │   │   │   └── StudentSendCertificate.jsx
+│   │   │   │   ├── EditProfile
+│   │   │   │   │   ├── ConfirmEmailChange.jsx
+│   │   │   │   │   ├── EditProfile.jsx
+│   │   │   │   │   └── editProfile.cssmodule.scss
 │   │   │   │   ├── EmergencyNumbers
 │   │   │   │   │   ├── EmergencyNumbers.jsx
 │   │   │   │   │   ├── NumbersList.jsx
@@ -492,6 +498,7 @@
 │   │   │   │   │   └── session.js
 │   │   │   │   └── studentSpace
 │   │   │   │       └── space.js
+│   │   │   ├── matomo.js
 │   │   │   ├── search.js
 │   │   │   ├── string.js
 │   │   │   ├── trackAds.js
@@ -585,6 +592,7 @@
 │   ├── 20260205151206_add_token_signin_attempts.ts
 │   ├── 20260413144901_add_students_fields_questionnaire.ts
 │   ├── 20260428124907_add_last_connection_student_table.ts
+│   ├── 20260603124541_add_students_edit_email_token.ts
 │   ├── 20260609100350_add_uai_university.ts
 │   └── 20260609140450_add_rpps_psychologist.ts
 ├── package.json
@@ -621,6 +629,7 @@
 │   ├── matchPsyToUniversities.ts
 │   ├── matchSpecialPsyToUniversities.ts
 │   ├── newPatientsInstitution.json
+│   ├── notifyStudentsAppointments.ts
 │   ├── patientsInstitution.json
 │   ├── psyToUni.ts
 │   └── removePsyPersonalData.ts
@@ -636,7 +645,8 @@
 │   │   └── verifyPsychologist.ts
 │   ├── distance.ts
 │   ├── email
-│   │   └── appointmentNotification.ts
+│   │   ├── sendModifyEmailLink.ts
+│   │   └── studentAppointmentsNotification.ts
 │   ├── getAddressCoordinates.ts
 │   ├── getAdeliErrors.ts
 │   ├── getAppointmentsCount.ts
@@ -644,7 +654,6 @@
 │   ├── getDiplomaErrors.ts
 │   ├── inesApi.ts
 │   ├── loginInformations.ts
-│   ├── notifications.ts
 │   ├── sanitizer.ts
 │   ├── sendSecondStepMail.ts
 │   ├── sendStudentMailTemplate.ts
@@ -774,6 +783,7 @@
 │   ├── logs.ts
 │   ├── sendGraphQLRequest.ts
 │   ├── sentry.ts
+│   ├── shuffle.ts
 │   ├── string.ts
 │   ├── univYears.ts
 │   ├── universities.ts
@@ -781,10 +791,11 @@
 │   └── validation.ts
 └── views
     └── emails
-        ├── appointmentNotification.ejs
+        ├── appointmentsNotification.ejs
         ├── footer.ejs
         ├── header.ejs
         ├── loginNotAcceptedYet.ejs
+        ├── modifyEmailLink.ejs
         ├── multipleAcceptedAlert.ejs
         ├── psyLogin.ejs
         ├── sendCertificate.ejs
@@ -800,4 +811,4 @@
         ├── studentSignInValidation.ejs
         ├── studentWelcome.ejs
         └── summaryUniversity.ejs
-120 directories, 682 files
+121 directories, 692 files
