@@ -1,11 +1,12 @@
-## Changelog : monitoring-pinger (30 derniers jours, au 22 juin 2026)
+## Changelog : monitoring-pinger (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Cette mise à jour améliore la gestion des alertes envoyées par le service de monitoring.  Le système évite désormais de renvoyer des notifications déjà traitées et ne transmet les messages que si l'incident est considéré comme une urgence, réduisant ainsi le bruit et améliorant la pertinence des alertes reçues par l'équipe ProConnect.
+Ce mois-ci, les améliorations apportées au monitoring-pinger visent à rendre les alertes plus fiables et pertinentes. Nous avons notamment ajouté une gestion des tentatives en cas d'échec d'envoi de notification, et évité l'envoi de notifications non urgentes ainsi que les envois redondants. L'application est maintenant initialisée et prête à être utilisée.
 
 ### Évolutions fonctionnelles
-- Le service ne renvoie plus les mêmes notifications une seconde fois [#95e9841](https://github.com/proconnect-gouv/monitoring-pinger/commit/95e9841).
-- Seules les alertes d'urgence sont désormais transmises [#44d810e](https://github.com/proconnect-gouv/monitoring-pinger/commit/44d810e).
+- Les notifications sont maintenant retentées en cas d'échec d'envoi, améliorant la fiabilité des alertes. [#N/A](https://github.com/proconnect-gouv/monitoring-pinger/commit/e83bd67)
+- Seules les alertes d'urgence sont désormais envoyées, réduisant le bruit et permettant de se concentrer sur les incidents critiques. [#N/A](https://github.com/proconnect-gouv/monitoring-pinger/commit/44d810e)
+- Une notification n'est envoyée qu'une seule fois pour un même incident, évitant ainsi les alertes répétées. [#N/A](https://github.com/proconnect-gouv/monitoring-pinger/commit/95e9841)
 
 ### Évolutions techniques
-- Initialisation du projet [#a80a686](https://github.com/proconnect-gouv/monitoring-pinger/commit/a80a686).
+- Initialisation du projet. [#N/A](https://github.com/proconnect-gouv/monitoring-pinger/commit/a80a686)
