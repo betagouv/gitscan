@@ -1,14 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 27 juin 2026)
+## Changelog : upptime (30 derniers jours, au 29 juin 2026)
 
 ### Résumé
-Ce changelog résume les mises à jour récentes d'Upptime, principalement des vérifications de l'état de santé des différents services surveillés. La majorité des changements concernent des mises à jour automatiques des rapports d'état, indiquant si les services sont opérationnels ou non. Des mises à jour de la version d'Upptime ont également été déployées.
+Ce changelog résume les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent les mises à jour régulières de l'état des services surveillés par le bot Upptime, signalant des succès de vérification de disponibilité et de performance. Plusieurs mises à jour de la version du package `@upptime` ont également été effectuées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et la mise à jour de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et la signalisation de l'état des services.
 
 ### Évolutions techniques
-- Mises à jour régulières de la version d'Upptime : v1.42.0, v1.42.1, v1.42.2, v1.42.3, v1.42.4, v1.42.5, v1.42.6, v1.42.7, v1.43.0, v1.43.1, v1.43.2 et v1.43.3.
-- Mises à jour automatiques des rapports d'état pour les différents services surveillés (API Apprentissage, Percona, SENTRY, Monitoring, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance).
+- Mises à jour régulières du package `@upptime` vers les versions 1.42.0, 1.42.1, 1.42.2, 1.42.3, 1.42.4, 1.42.5, 1.42.6, 1.42.7, 1.43.0, 1.43.1, 1.43.2, 1.43.3, 1.43.4 et 1.43.5.
+- Mises à jour automatiques du résumé de l'état des services dans le fichier README.
 
 ### Autres changements
-- Mises à jour régulières du fichier `README.md` et du résumé d'état.
+- Mises à jour automatiques du résumé de l'état des services.
+- Les rapports d'état des différents services surveillés (API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance) ont été continuellement mis à jour pour refléter leur disponibilité et leur performance.
