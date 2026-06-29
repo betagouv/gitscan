@@ -22,6 +22,7 @@
 ├── .slugignore
 ├── .stylelintrc
 ├── Aptfile
+├── COVERAGE.md
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -76,6 +77,7 @@
 │   └── wsgi.py
 ├── conftest.py
 ├── cron.json
+├── crop_svg_viewbox.mjs
 ├── docker-compose.e2e.yml
 ├── docker-compose.yml
 ├── docs
@@ -107,6 +109,9 @@
 │       ├── branche_culture_printemps.spec.ts
 │       ├── branche_luzerne.spec.ts
 │       ├── branche_prairie_plus_6_mois.spec.ts
+│       ├── capture_couvert.spec.ts
+│       ├── capture_par_ge.spec.ts
+│       ├── capture_zar.spec.ts
 │       ├── debug_view.spec.ts
 │       ├── map_overlays.spec.ts
 │       └── simulateur.spec.ts
@@ -371,6 +376,7 @@
 │   │   │   ├── 0028_fix_terres_emergees_names.py
 │   │   │   ├── 0029_merge_20260413_1454.py
 │   │   │   ├── 0030_alter_map_map_type.py
+│   │   │   ├── 0031_alter_map_map_type.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tasks.py
@@ -675,10 +681,15 @@
 │   │   ├── apps.py
 │   │   ├── assets
 │   │   │   ├── REF_CULTURES_GROUPES_CULTURES_2024.csv
-│   │   │   └── zone_montagne_communes_2026-04-30.csv
+│   │   │   ├── zone_montagne_communes_2026-04-30.csv
+│   │   │   └── zones_est_grand_est.csv
 │   │   ├── auth.py
 │   │   ├── bassins.py
 │   │   ├── constants.py
+│   │   ├── contenu_rich
+│   │   │   ├── __init__.py
+│   │   │   ├── compilateur.py
+│   │   │   └── loader.py
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
@@ -686,14 +697,30 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── attach_couvert_screenshots.py
 │   │   │       ├── attach_validation_screenshot.py
+│   │   │       ├── export_manifeste_capture_couvert.py
+│   │   │       ├── export_manifeste_capture_par_ge.py
+│   │   │       ├── export_manifeste_capture_zar.py
 │   │   │       ├── import_decision_tree.py
 │   │   │       ├── import_nitrates_departments.py
 │   │   │       ├── import_nitrates_rpg.py
+│   │   │       ├── import_nitrates_zar.py
 │   │   │       ├── import_nitrates_zv.py
 │   │   │       ├── import_rpg_cultures.py
+│   │   │       ├── ingest_captures_couvert.py
+│   │   │       ├── ingest_crops_miro_couvert.py
+│   │   │       ├── ingest_crops_miro_par.py
+│   │   │       ├── ingest_crops_miro_zar.py
+│   │   │       ├── ingest_miro_widget_ids.py
+│   │   │       ├── ingest_miro_widget_ids_par_ge.py
+│   │   │       ├── ingest_miro_widget_ids_zar.py
 │   │   │       ├── provision_admin.py
+│   │   │       ├── provision_carte_98.py
+│   │   │       ├── provision_zones_est.py
 │   │   │       ├── seed_branches_validation.py
 │   │   │       ├── seed_branches_validation_couvert.py
+│   │   │       ├── seed_branches_validation_par_ge.py
+│   │   │       ├── seed_branches_validation_zar_ge.py
+│   │   │       ├── seed_contenus_rich.py
 │   │   │       └── seed_referentiels.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -712,8 +739,20 @@
 │   │   │   ├── 0014_alter_decisiontree_options.py
 │   │   │   ├── 0015_flatten_couverts.py
 │   │   │   ├── 0016_branchevalidation_flag_verif.py
+│   │   │   ├── 0017_fertilisant_champs_prefill.py
+│   │   │   ├── 0018_departementouverture.py
+│   │   │   ├── 0019_seed_ouverture_grand_est.py
+│   │   │   ├── 0020_decisiontree_scope.py
+│   │   │   ├── 0021_contenurichdsfr.py
+│   │   │   ├── 0022_codeprescription_blocs.py
+│   │   │   ├── 0023_branchevalidation_miro_widget_id.py
+│   │   │   ├── 0024_branchevalidation_scope.py
+│   │   │   ├── 0025_branchevalidation_nature.py
+│   │   │   ├── 0026_code_pc_miro_max_300.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── models_contenu_rich.py
+│   │   ├── models_ouverture.py
 │   │   ├── models_referentiels.py
 │   │   ├── permissions.py
 │   │   ├── regions.py
@@ -733,44 +772,71 @@
 │   │   │   ├── .gitkeep
 │   │   │   ├── arbre_decision_national.yaml
 │   │   │   ├── arbre_decision_national_db-active-snapshot_2026-06-02.yaml
+│   │   │   ├── arbre_decision_national_db-active-snapshot_2026-06-15.yaml
 │   │   │   ├── arbre_decision_national_staging-snapshot_25-05-26_09H27.yaml
+│   │   │   ├── arbre_decision_par_grand_est.yaml
+│   │   │   ├── arbre_decision_par_grand_est_db-active-snapshot_2026-06-18.yaml
+│   │   │   ├── arbre_decision_zar_grand_est.yaml
+│   │   │   ├── arbre_decision_zar_grand_est_db-active-snapshot_2026-06-18.yaml
+│   │   │   ├── contenus_rich.yaml
 │   │   │   ├── grammaire.yaml
+│   │   │   ├── pc_blocs.yaml
 │   │   │   ├── referentiels.yaml
-│   │   │   └── snapshot_miro
-│   │   │       ├── README.md
-│   │   │       ├── arbre_complet
-│   │   │       │   ├── 2026-04-28
-│   │   │       │   │   ├── README.md
-│   │   │       │   │   ├── arbre_decision_complet.pdf
-│   │   │       │   │   └── arbre_decision_complet.svg
-│   │   │       │   └── 2026-05-30
-│   │   │       │       ├── README.md
-│   │   │       │       ├── arbre_decision_complet.svg
-│   │   │       │       ├── couvert_reference_svg.json
-│   │   │       │       ├── cross_validation_couvert.md
-│   │   │       │       └── pseudocode.md
-│   │   │       ├── culture_principale
-│   │   │       │   └── 2026-05-08
-│   │   │       │       ├── README.md
-│   │   │       │       ├── autres_cultures.png
-│   │   │       │       ├── colza.png
-│   │   │       │       ├── culture_de_printemps.png
-│   │   │       │       ├── culture_hiver_autre_que_colza.png
-│   │   │       │       ├── index.yaml
-│   │   │       │       ├── luzerne_partie1.png
-│   │   │       │       ├── luzerne_partie2.png
-│   │   │       │       ├── luzerne_partie3.png
-│   │   │       │       └── prairies_implantees_plus_de_6_mois.png
-│   │   │       ├── cultures_formulaire
-│   │   │       │   └── 2026-05-08
-│   │   │       │       ├── README.md
-│   │   │       │       ├── cultures_formulaire.svg
-│   │   │       │       └── index.yaml
-│   │   │       └── types_fertilisant
-│   │   │           └── 2026-04-28
-│   │   │               ├── README.md
-│   │   │               ├── index.yaml
-│   │   │               └── types_fertilisant.pdf
+│   │   │   ├── snapshot_miro
+│   │   │   │   ├── README.md
+│   │   │   │   ├── arbre_complet
+│   │   │   │   │   ├── 2026-04-28
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── arbre_decision_complet.pdf
+│   │   │   │   │   │   └── arbre_decision_complet.svg
+│   │   │   │   │   ├── 2026-05-30
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── arbre_decision_complet.svg
+│   │   │   │   │   │   ├── couvert_reference_svg.json
+│   │   │   │   │   │   ├── cross_validation_couvert.md
+│   │   │   │   │   │   └── pseudocode.md
+│   │   │   │   │   ├── 2026-06-15
+│   │   │   │   │   │   ├── board.csv
+│   │   │   │   │   │   ├── parse_svg_widgets.py
+│   │   │   │   │   │   └── widgets.json
+│   │   │   │   │   └── 2026-06-17
+│   │   │   │   │       ├── crops_named
+│   │   │   │   │       │   └── _RAPPORT.md
+│   │   │   │   │       ├── mapping_widget_ids.json
+│   │   │   │   │       └── widgets.json
+│   │   │   │   ├── culture_principale
+│   │   │   │   │   └── 2026-05-08
+│   │   │   │   │       ├── README.md
+│   │   │   │   │       ├── autres_cultures.png
+│   │   │   │   │       ├── colza.png
+│   │   │   │   │       ├── culture_de_printemps.png
+│   │   │   │   │       ├── culture_hiver_autre_que_colza.png
+│   │   │   │   │       ├── index.yaml
+│   │   │   │   │       ├── luzerne_partie1.png
+│   │   │   │   │       ├── luzerne_partie2.png
+│   │   │   │   │       ├── luzerne_partie3.png
+│   │   │   │   │       └── prairies_implantees_plus_de_6_mois.png
+│   │   │   │   ├── cultures_formulaire
+│   │   │   │   │   └── 2026-05-08
+│   │   │   │   │       ├── README.md
+│   │   │   │   │       ├── cultures_formulaire.svg
+│   │   │   │   │       └── index.yaml
+│   │   │   │   ├── par_zar_grand_est
+│   │   │   │   │   └── 2026-06-18
+│   │   │   │   │       ├── crops_named_zar
+│   │   │   │   │       │   └── _RAPPORT_ZAR.md
+│   │   │   │   │       ├── mapping_widget_ids_par.json
+│   │   │   │   │       ├── mapping_widget_ids_zar.json
+│   │   │   │   │       ├── match_and_crop_par.py
+│   │   │   │   │       ├── match_and_crop_zar.py
+│   │   │   │   │       ├── parse_svg_widgets.py
+│   │   │   │   │       └── widgets.json
+│   │   │   │   └── types_fertilisant
+│   │   │   │       └── 2026-04-28
+│   │   │   │           ├── README.md
+│   │   │   │           ├── index.yaml
+│   │   │   │           └── types_fertilisant.pdf
+│   │   │   └── zones_est_par_grand_est.xlsx
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
 │   │   │   ├── nitrates_tags.py
@@ -778,12 +844,14 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   └── test_*.py  (59 files)
+│   │   │   └── test_*.py  (84 files)
 │   │   ├── urls.py
 │   │   ├── views.py
+│   │   ├── views_admin_ouverture.py
 │   │   ├── views_admin_validation.py
 │   │   ├── views_admin_yaml.py
 │   │   ├── views_admin_yaml_edit.py
+│   │   ├── views_contenu_rich_preview.py
 │   │   ├── views_yaml_browser.py
 │   │   ├── yaml_admin
 │   │   │   ├── __init__.py
@@ -799,6 +867,7 @@
 │   │   ├── yaml_tree
 │   │   │   ├── __init__.py
 │   │   │   ├── condition.py
+│   │   │   ├── expression.py
 │   │   │   ├── feuilles.py
 │   │   │   ├── loader.py
 │   │   │   ├── loader_db.py
@@ -806,7 +875,8 @@
 │   │   │   ├── schema.py
 │   │   │   └── validator.py
 │   │   ├── zonage_montagne.py
-│   │   └── zonage_note_5.py
+│   │   ├── zonage_note_5.py
+│   │   └── zonage_zones_est.py
 │   ├── pages
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -1083,17 +1153,32 @@
 │   │   │   ├── calculatrice-calendrier.js
 │   │   │   ├── calendrier.css
 │   │   │   ├── cascade.js
-│   │   │   ├── epandage_aujourdhui.js
+│   │   │   ├── construction.css
+│   │   │   ├── construction.js
+│   │   │   ├── couvert_split.js
+│   │   │   ├── form_autoscroll.js
 │   │   │   ├── home.css
 │   │   │   ├── home.js
 │   │   │   ├── illu_nitrates.png
+│   │   │   ├── scroll_resultat.js
 │   │   │   ├── simulateur.css
 │   │   │   ├── simulator.js
 │   │   │   ├── subsidiaires.js
-│   │   │   └── subsidiaires_cascade.js
+│   │   │   ├── subsidiaires_cascade.js
+│   │   │   └── theme_toggle.js
 │   │   ├── nitrates_admin
+│   │   │   ├── contenu_rich_editor.css
+│   │   │   ├── contenu_rich_editor.js
+│   │   │   ├── foldable_tool.js
+│   │   │   ├── indent_tune.js
 │   │   │   ├── referentiels_list.css
 │   │   │   ├── sortable.min.js
+│   │   │   ├── vendor
+│   │   │   │   └── editorjs
+│   │   │   │       ├── editorjs.umd.min.js
+│   │   │   │       ├── header.umd.min.js
+│   │   │   │       ├── list.umd.min.js
+│   │   │   │       └── quote.umd.min.js
 │   │   │   └── yaml_tree.css
 │   │   ├── pdfs
 │   │   │   ├── annexe_1_cerfa_14734_3.pdf
@@ -1833,22 +1918,24 @@
 │   │   │       └── urbanisme_haie_a_verifier.html
 │   │   ├── multisite_base.html
 │   │   ├── nitrates
+│   │   │   ├── _bandeau_construction.html
 │   │   │   ├── _footer.html
 │   │   │   ├── _header.html
+│   │   │   ├── admin
+│   │   │   │   └── contenu_rich_preview.html
 │   │   │   ├── base.html
 │   │   │   ├── contact_us.html
 │   │   │   ├── form.html
 │   │   │   ├── fragments
 │   │   │   │   ├── _calculatrice_calendrier.html
 │   │   │   │   ├── _calendrier.html
-│   │   │   │   ├── _epandage_header.html
+│   │   │   │   ├── _debug_parcours.html
 │   │   │   │   ├── _form_hidden_passthrough.html
 │   │   │   │   ├── _panneau_form.html
 │   │   │   │   ├── _panneau_resultat.html
 │   │   │   │   ├── _qc_question_item.html
-│   │   │   │   ├── _qc_recap.html
-│   │   │   │   ├── _questions_complementaires.html
-│   │   │   │   └── _resultat_questions.html
+│   │   │   │   ├── _qc_sous_form.html
+│   │   │   │   └── _questions_complementaires.html
 │   │   │   ├── home.html
 │   │   │   ├── result.html
 │   │   │   ├── simulateur.html
@@ -1858,6 +1945,9 @@
 │   │   ├── nitrates_admin
 │   │   │   ├── base.html
 │   │   │   ├── clone_confirm.html
+│   │   │   ├── ouverture
+│   │   │   │   ├── _item.html
+│   │   │   │   └── index.html
 │   │   │   ├── validation
 │   │   │   │   ├── _lightbox.html
 │   │   │   │   ├── create.html
@@ -1877,6 +1967,8 @@
 │   │   │       │   ├── _add_form_kind_fields.html
 │   │   │       │   ├── _branche_block.html
 │   │   │       │   ├── _branche_form.html
+│   │   │       │   ├── _change_content_form.html
+│   │   │       │   ├── _insert_parent_form.html
 │   │   │       │   ├── _node_form.html
 │   │   │       │   ├── _node_row.html
 │   │   │       │   ├── _regle_block.html
@@ -2029,4 +2121,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-263 directories, 1826 files
+274 directories, 1932 files
