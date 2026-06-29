@@ -10,6 +10,7 @@
 │   ├── CODEOWNERS
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── _build-image.yml
 │       ├── brew-update.yml
 │       ├── desktop-release.yml
 │       ├── image.yml
@@ -19,6 +20,7 @@
 │       ├── trivy.yml
 │       └── version.yml
 ├── .gitignore
+├── .graphifyignore
 ├── .npmrc
 ├── .release-it.json
 ├── .trivyignore
@@ -477,7 +479,8 @@
 │   │   ├── 044-adaptive-recovery-for-deterministic-action-nodes.md
 │   │   ├── 045-whole-improve-loop-progressive-context-disclosure.md
 │   │   ├── 046-event-driven-runs-trigger-spine.md
-│   │   └── 047-forge-token-out-of-git-config.md
+│   │   ├── 047-forge-token-out-of-git-config.md
+│   │   └── 048-org-team-hierarchy.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── attachments.md
@@ -510,6 +513,7 @@
 │   ├── bundles.md
 │   ├── byok.md
 │   ├── c082-board-emit-fix-plan.md
+│   ├── ci-performance-buildkit-operator.md
 │   ├── cli-reference.md
 │   ├── cloud-admin.md
 │   ├── cloud-architecture.md
@@ -833,6 +837,7 @@
 │   │   ├── oidc_service.go
 │   │   ├── oidc_service_github_test.go
 │   │   ├── oidc_service_orgsso_test.go
+│   │   ├── org_service_test.go
 │   │   ├── orgsso
 │   │   │   ├── domain.go
 │   │   │   ├── domain_mongo.go
@@ -1101,6 +1106,7 @@
 │   ├── bundle
 │   │   ├── bundle.go
 │   │   ├── bundle_test.go
+│   │   ├── content.go
 │   │   ├── forge_test.go
 │   │   ├── frontmatter.go
 │   │   ├── invocations_test.go
@@ -1144,6 +1150,8 @@
 │   │   ├── kvflags.go
 │   │   ├── marketplace.go
 │   │   ├── marketplace_test.go
+│   │   ├── migrate_orgs.go
+│   │   ├── migrate_orgs_test.go
 │   │   ├── migrate_run_paths.go
 │   │   ├── migrate_run_paths_test.go
 │   │   ├── models.go
@@ -1205,6 +1213,7 @@
 │   │   └── yaml.go
 │   ├── dispatcher
 │   │   ├── boardmongo
+│   │   │   ├── admin.go
 │   │   │   ├── conformance_test.go
 │   │   │   ├── coordinator.go
 │   │   │   └── store.go
@@ -1407,9 +1416,12 @@
 │   │   ├── event_map.go
 │   │   ├── event_map_test.go
 │   │   ├── forgejo
+│   │   │   ├── ci.go
 │   │   │   ├── client.go
 │   │   │   ├── client_test.go
 │   │   │   ├── events.go
+│   │   │   ├── issues.go
+│   │   │   ├── issues_ci_test.go
 │   │   │   ├── oauth.go
 │   │   │   └── oauth_app_create_test.go
 │   │   ├── forgelive_test.go
@@ -1419,17 +1431,25 @@
 │   │   │   ├── app_manifest.go
 │   │   │   ├── app_manifest_test.go
 │   │   │   ├── app_test.go
+│   │   │   ├── ci.go
+│   │   │   ├── ci_test.go
 │   │   │   ├── client.go
 │   │   │   ├── client_test.go
 │   │   │   ├── events.go
+│   │   │   ├── issues.go
+│   │   │   ├── issues_test.go
 │   │   │   └── oauth.go
 │   │   ├── gitlab
+│   │   │   ├── capabilities_test.go
+│   │   │   ├── ci.go
 │   │   │   ├── client.go
 │   │   │   ├── client_test.go
 │   │   │   ├── events.go
+│   │   │   ├── issues.go
 │   │   │   ├── oauth.go
 │   │   │   ├── oauth_app_create_test.go
 │   │   │   └── oauth_test.go
+│   │   ├── issues.go
 │   │   ├── oauth_app_sealer.go
 │   │   ├── oauth_app_store.go
 │   │   ├── oauth_app_store_test.go
@@ -1558,6 +1578,8 @@
 │   │   ├── loop.go
 │   │   ├── loop_test.go
 │   │   ├── metrics_test.go
+│   │   ├── oauth_refresh.go
+│   │   ├── oauth_refresh_test.go
 │   │   └── secrets_mount_test.go
 │   ├── runtime
 │   │   ├── budget.go
@@ -1769,7 +1791,10 @@
 │   │   ├── auth_routes_test.go
 │   │   ├── backends_routes.go
 │   │   ├── backends_routes_test.go
+│   │   ├── board_cloud_routes.go
 │   │   ├── board_comment.go
+│   │   ├── board_forge.go
+│   │   ├── board_forge_test.go
 │   │   ├── boarddispatch.go
 │   │   ├── boarddispatch_test.go
 │   │   ├── bot_bindings_routes.go
@@ -1825,6 +1850,7 @@
 │   │   ├── org_sso_domain_routes.go
 │   │   ├── org_sso_routes.go
 │   │   ├── org_sso_routes_test.go
+│   │   ├── orgs_routes.go
 │   │   ├── password_routes.go
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
@@ -2041,6 +2067,8 @@
 │   ├── adhoc
 │   │   ├── whats-next-prompts-review.bot
 │   │   └── whats-next-skills-gen.bot
+│   ├── bench
+│   │   └── ci-build-bench.sh
 │   ├── build.sh
 │   ├── desktop
 │   │   ├── Dockerfile.appimage
@@ -2154,6 +2182,7 @@
 │   │   │   ├── marketplace.ts
 │   │   │   ├── memory.ts
 │   │   │   ├── native.ts
+│   │   │   ├── orgMembers.ts
 │   │   │   ├── orgSso.ts
 │   │   │   ├── orgs.ts
 │   │   │   ├── pats.ts
@@ -2463,6 +2492,7 @@
 │   │   │   │   ├── InnerTabBar.tsx
 │   │   │   │   ├── MainSpinner.tsx
 │   │   │   │   ├── NavLinks.tsx
+│   │   │   │   ├── OrgSwitcher.tsx
 │   │   │   │   ├── RunTabHost.tsx
 │   │   │   │   ├── ShortcutsHelp.tsx
 │   │   │   │   ├── Sidebar.tsx
@@ -2756,6 +2786,8 @@
 │   │   │   │   ├── ResetPassword.tsx
 │   │   │   │   └── __tests__
 │   │   │   │       └── ForcedPasswordChange.test.tsx
+│   │   │   ├── orgs
+│   │   │   │   └── OrgPage.tsx
 │   │   │   ├── settings
 │   │   │   │   ├── ApiKeys.tsx
 │   │   │   │   ├── OAuthConnections.tsx
@@ -9440,4 +9472,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1376 directories, 8622 files
+1378 directories, 8652 files

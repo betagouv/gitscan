@@ -1,54 +1,66 @@
 ## Changelog : iterion (30 derniers jours, au 2026-06-28)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, de la robustesse et de l'expérience utilisateur. Des fonctionnalités clés ont été ajoutées, notamment l'intégration de secrets, l'amélioration de la gestion des erreurs, et de nouvelles capacités pour les bots et les workflows. L'interface utilisateur a également été améliorée avec de nouvelles fonctionnalités et corrections de bugs. L'accent a été mis sur la préparation du projet pour un déploiement cloud plus stable et sécurisé.
+Ce mois-ci, iterion a connu une évolution significative, axée sur l'amélioration de la gestion des organisations, l'intégration de fonctionnalités de sécurité, l'optimisation de l'expérience utilisateur dans l'interface studio, et l'ajout de nouvelles capacités pour l'automatisation et l'orchestration des workflows.  Des améliorations importantes ont été apportées à l'authentification, à la gestion des équipes, et à la surveillance des performances.
 
 ### Évolutions fonctionnelles
-*   **Authentification et Sécurité :** Ajout de la gestion des secrets avec des fonctionnalités de chiffrement et de rotation des clés. Implémentation de l'authentification à deux facteurs et de la gestion des accès basée sur les rôles.
-*   **Intégrations :** Ajout de la prise en charge de GitHub Apps, GitLab et Forgejo pour l'intégration avec des dépôts de code.
-*   **Bots :**
-    *   Ajout de nouveaux bots pour l'analyse de sécurité du code (sec-audit-source).
-    *   Amélioration des bots existants, notamment Revi pour la revue de code et Nexie pour l'assistance aux utilisateurs.
-    *   Possibilité de définir des bots personnalisés avec des métadonnées et des workflows spécifiques.
-*   **Interface Utilisateur :**
-    *   Amélioration de l'interface utilisateur pour la gestion des runs et des logs.
-    *   Ajout d'une vue pour la gestion des secrets.
-    *   Amélioration de la navigation et de la recherche.
+*   **Gestion des organisations :** Ajout de la suppression d'organisations super-administrateur et de la gestion des entrées de navigation.
+*   **Authentification :** Implémentation de l'authentification SSO (Single Sign-On) avec prise en charge de domaines spécifiques à l'organisation.
+*   **Interface utilisateur (Studio) :**
+    *   Amélioration de la navigation avec un sélecteur d'organisation dédié.
+    *   Refonte de la page des paramètres d'organisation et des équipes.
+    *   Ajout d'un éditeur de métadonnées pour les bots.
+    *   Amélioration de l'accessibilité et de l'ergonomie générale.
+    *   Ajout d'un éditeur de fichiers dans le worktree en cours d'exécution.
+*   **Intégrations :**
+    *   Prise en charge de l'intégration avec GitHub Apps pour une authentification simplifiée.
+    *   Ajout de la prise en charge de Forgejo et GitLab pour les webhooks.
 *   **Workflows :**
-    *   Ajout de la possibilité de planifier des runs de bots avec un cron.
-    *   Amélioration de la gestion des erreurs et des retries dans les workflows.
-    *   Ajout de la possibilité de définir des dépendances entre les runs de bots.
-*   **Fonctionnalités diverses :**
-    *   Ajout d'un système d'alerte pour les runs qui échouent.
-    *   Amélioration de la documentation et des exemples.
-    *   Ajout de la possibilité de suivre l'utilisation des ressources (temps CPU, mémoire, etc.).
+    *   Ajout de la possibilité de planifier des bots avec un cron.
+    *   Amélioration de la gestion des webhooks pour déclencher des actions.
+*   **Sécurité :**
+    *   Implémentation de contrôles de sécurité pour empêcher les injections de code.
+    *   Amélioration de la gestion des secrets avec un nouveau système de stockage et de résolution.
+    *   Ajout d'un scanner de sécurité pour détecter les vulnérabilités dans les dépendances.
+*   **Bots :**
+    *   Ajout de nouveaux bots, dont Revi pour les revues de code et Bmady pour l'agilité.
+    *   Amélioration des bots existants, notamment pour la gestion des erreurs et la performance.
 
 ### Évolutions techniques
 *   **Architecture :**
-    *   Refactorisation de plusieurs composants pour améliorer la maintenabilité et la testabilité du code.
-    *   Amélioration de la gestion des erreurs et des exceptions.
-    *   Optimisation des performances de certains composants.
+    *   Refonte de l'architecture de l'authentification et de la gestion des organisations.
+    *   Amélioration de la gestion des erreurs et de la journalisation.
+    *   Optimisation des performances du serveur et de l'interface utilisateur.
 *   **Infrastructure :**
-    *   Mise à jour des dépendances vers les dernières versions.
+    *   Mise à jour des dépendances et des outils de développement.
     *   Amélioration de la configuration et du déploiement.
-    *   Ajout de tests d'intégration et de bout en bout.
-*   **Sécurité :**
-    *   Correction de plusieurs vulnérabilités de sécurité.
-    *   Implémentation de mesures de sécurité supplémentaires pour protéger les données sensibles.
-*   **Outils :**
-    *   Ajout de nouveaux outils pour le développement et le test.
-    *   Amélioration des outils existants.
+*   **CI/CD :**
+    *   Amélioration du pipeline CI/CD pour automatiser les tests et le déploiement.
+    *   Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+*   **Refactoring :**
+    *   Nombreux refactorings pour améliorer la lisibilité, la maintenabilité et la testabilité du code.
+    *   Simplification de l'architecture et réduction de la complexité.
+*   **Sandbox :**
+    *   Amélioration de la sécurité et de l'isolation des sandboxes.
+    *   Ajout de la prise en charge de volumes persistants pour les sandboxes.
 *   **Divers :**
-    *   Amélioration de la couverture de test.
-    *   Correction de bugs et amélioration de la stabilité.
-    *   Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-    *   Utilisation de nouvelles bibliothèques et frameworks pour améliorer les performances et la sécurité.
+    *   Utilisation de Docker pour la construction et le déploiement des images.
+    *   Utilisation de Kubernetes pour l'orchestration des conteneurs.
 
 ### Autres changements
-*   **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés au code.
-*   **Configuration :** Ajout de nouvelles options de configuration pour personnaliser le comportement du projet.
-*   **Nettoyage de code :** Suppression du code mort et des commentaires inutiles.
-*   **Tests :** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la couverture de test.
-*   **Chore:** Mise à jour des dépendances et des outils de développement.
-*   **CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de construction, de test et de déploiement.
-*   **Corrections de bugs:** Correction de nombreux bugs mineurs et amélioration de la stabilité du projet.
+*   **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés.
+*   **Configuration :** Ajout de nouvelles options de configuration pour personnaliser le comportement d'iterion.
+*   **Nettoyage de code :** Suppression de code obsolète et amélioration de la qualité du code.
+*   **Tests :** Ajout de nouveaux tests pour améliorer la couverture et la fiabilité du code.
+*   **Divers :** Corrections de bugs mineurs et améliorations de l'expérience utilisateur.
+*   **Amélioration des logs et de la surveillance.**
+*   **Ajout de métriques de performance.**
+*   **Correction de plusieurs vulnérabilités de sécurité.**
+*   **Amélioration de la gestion des erreurs et de la robustesse du système.**
+*   **Refonte de l'interface utilisateur pour une meilleure expérience utilisateur.**
+*   **Ajout de nouvelles fonctionnalités pour l'automatisation et l'orchestration des workflows.**
+*   **Amélioration de la gestion des secrets et de la sécurité des données.**
+*   **Optimisation des performances et de la scalabilité du système.**
+*   **Ajout de nouvelles intégrations avec d'autres outils et services.**
+*   **Amélioration de la documentation et de la facilité d'utilisation.**
+*   **Correction de bugs et amélioration de la stabilité du système.**
