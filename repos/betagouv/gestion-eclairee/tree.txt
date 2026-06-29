@@ -2,6 +2,7 @@
 ├── .aiignore
 ├── .gitignore
 ├── .python-version
+├── Procfile
 ├── README.md
 ├── gesec
 │   ├── __init__.py
@@ -9,16 +10,67 @@
 │   ├── common
 │   │   ├── __init__.py
 │   │   └── models.py
-│   ├── cpro
+│   ├── data
 │   │   ├── __init__.py
-│   │   ├── build_download_list.py
-│   │   ├── checks.py
-│   │   ├── db.py
 │   │   ├── dj_models.py
-│   │   ├── download_cpro.py
-│   │   ├── exports_to_db.py
-│   │   ├── pipeline.py
-│   │   └── schemas.py
+│   │   ├── pipeline
+│   │   │   ├── __init__.py
+│   │   │   ├── db.py
+│   │   │   ├── launcher.py
+│   │   │   ├── layer_1_bronze
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── cpro_export_facture_xml.py
+│   │   │   │   ├── cpro_export_factures.py
+│   │   │   │   ├── oda_export_row.py
+│   │   │   │   ├── schemas.py
+│   │   │   │   └── utils.py
+│   │   │   ├── layer_2_silver
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── cpro_export_factures.py
+│   │   │   │   ├── oda_export_ej_gm_mapping.py
+│   │   │   │   ├── schemas.py
+│   │   │   │   └── services.py
+│   │   │   ├── layer_3_gold
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── facture.py
+│   │   │   │   ├── facture_ligne.py
+│   │   │   │   └── schemas.py
+│   │   │   └── testing
+│   │   │       ├── __init__.py
+│   │   │       ├── dump.py
+│   │   │       └── test.py
+│   │   ├── processors
+│   │   │   ├── __init__.py
+│   │   │   └── cpro
+│   │   │       ├── __init__.py
+│   │   │       ├── facture_x.py
+│   │   │       ├── facture_xml.py
+│   │   │       ├── models
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── pivots_xml.py
+│   │   │       │   └── xsd
+│   │   │       │       └── UBL-2.0
+│   │   │       │           ├── common
+│   │   │       │           │   ├── CCTS_CCT_SchemaModule-2.0.xsd
+│   │   │       │           │   ├── CodeList_CurrencyCode_ISO_7_04.xsd
+│   │   │       │           │   ├── CodeList_LanguageCode_ISO_7_04.xsd
+│   │   │       │           │   ├── CodeList_MIMEMediaTypeCode_IANA_7_04.xsd
+│   │   │       │           │   ├── CodeList_UnitCode_UNECE_7_04.xsd
+│   │   │       │           │   ├── UBL-CommonAggregateComponents-2.0.xsd
+│   │   │       │           │   ├── UBL-CommonBasicComponents-2.0.xsd
+│   │   │       │           │   ├── UBL-CommonExtensionComponents-2.0.xsd
+│   │   │       │           │   ├── UBL-CoreComponentParameters-2.0.xsd
+│   │   │       │           │   ├── UBL-ExtensionContentDatatype-2.0.xsd
+│   │   │       │           │   ├── UBL-QualifiedDatatypes-2.0.xsd
+│   │   │       │           │   └── UnqualifiedDataTypeSchemaModule-2.0.xsd
+│   │   │       │           └── maindoc
+│   │   │       │               └── UBL-Invoice-2.0.xsd
+│   │   │       └── pivots_xml.py
+│   │   └── sync
+│   │       ├── __init__.py
+│   │       ├── build_download_list.py
+│   │       ├── checks.py
+│   │       └── download_cpro.py
 │   ├── front
 │   │   ├── __init__.py
 │   │   ├── asgi.py
@@ -31,9 +83,17 @@
 │   │   ├── views.py
 │   │   └── wsgi.py
 │   ├── logging.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       └── launch_pipeline.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_facture.py
+│   │   ├── 0003_facture_gm_facture_gm_list_facture_gm_multi_and_more.py
+│   │   ├── 0004_facture_ministere.py
+│   │   ├── 0005_facture_montant_remise_globale_ttc_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── settings.py
@@ -49,6 +109,7 @@
 │   └── templatetags
 │       ├── __init__.py
 │       └── gesec.py
+├── gunicorn_conf.py
 ├── main.py
 ├── manage.py
 ├── pyproject.toml
@@ -56,4 +117,4 @@
 │   └── css
 │       └── main.css
 └── uv.lock
-14 directories, 44 files
+29 directories, 90 files
