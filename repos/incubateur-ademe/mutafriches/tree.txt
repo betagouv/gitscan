@@ -19,8 +19,8 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── api-monitoring.yml
-│       ├── cci92-prefetch.yml
-│       └── ci.yml
+│       ├── ci.yml
+│       └── partenaires-prefetch.yml
 ├── .gitignore
 ├── .node-version
 ├── .npmrc
@@ -50,11 +50,6 @@
 │   │   │   │   ├── env.validation.spec.ts
 │   │   │   │   ├── env.validation.ts
 │   │   │   │   └── index.ts
-│   │   │   ├── contact
-│   │   │   │   ├── contact.module.ts
-│   │   │   │   ├── contact.repository.ts
-│   │   │   │   ├── contact.service.spec.ts
-│   │   │   │   └── contact.service.ts
 │   │   │   ├── donnees-externes
 │   │   │   │   ├── api-monitoring.config.ts
 │   │   │   │   ├── api-monitoring.service.spec.ts
@@ -274,6 +269,7 @@
 │   │   │   │   │   │   ├── algorithme.config.ts
 │   │   │   │   │   │   ├── algorithme.constants.ts
 │   │   │   │   │   │   ├── algorithme.types.ts
+│   │   │   │   │   │   ├── criteres-metadata.guard.spec.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.spec.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.ts
 │   │   │   │   │   │   └── versions
@@ -315,19 +311,6 @@
 │   │   │   │   └── services
 │   │   │   │       ├── evenement.service.spec.ts
 │   │   │   │       └── evenement.service.ts
-│   │   │   ├── mailer
-│   │   │   │   ├── mail.module.spec.ts
-│   │   │   │   ├── mail.module.ts
-│   │   │   │   ├── mail.service.spec.ts
-│   │   │   │   ├── mail.service.ts
-│   │   │   │   ├── mail.types.ts
-│   │   │   │   ├── providers
-│   │   │   │   │   ├── brevo.provider.ts
-│   │   │   │   │   └── smtp.provider.ts
-│   │   │   │   └── templates
-│   │   │   │       ├── contact-confirmation.template.ts
-│   │   │   │       ├── contact-notification.template.ts
-│   │   │   │       └── kit.ts
 │   │   │   ├── main.ts
 │   │   │   ├── metabase
 │   │   │   │   ├── metabase.controller.ts
@@ -345,7 +328,12 @@
 │   │   │   │   ├── import-epci-communes.ts
 │   │   │   │   ├── import-ite-fret.ts
 │   │   │   │   ├── import-transport-stops.ts
-│   │   │   │   └── prefetch-cci92.ts
+│   │   │   │   ├── partenaires
+│   │   │   │   │   ├── aura.ts
+│   │   │   │   │   ├── cci92.ts
+│   │   │   │   │   ├── registry.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── prefetch-partenaires.ts
 │   │   │   ├── shared
 │   │   │   │   ├── __test-helpers__
 │   │   │   │   │   ├── common.mocks.ts
@@ -379,6 +367,9 @@
 │   │   │   │   │   │   ├── 0021_demandes_contact.sql
 │   │   │   │   │   │   ├── 0022_besoin_ne_sait_pas.sql
 │   │   │   │   │   │   ├── 0023_ouverture_modale_multisites.sql
+│   │   │   │   │   │   ├── 0024_strong_wolfpack.sql
+│   │   │   │   │   │   ├── 0025_tracking_recap_detail_usage.sql
+│   │   │   │   │   │   ├── 0026_rare_medusa.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -400,12 +391,13 @@
 │   │   │   │   │   │       ├── 0018_snapshot.json
 │   │   │   │   │   │       ├── 0019_snapshot.json
 │   │   │   │   │   │       ├── 0020_snapshot.json
+│   │   │   │   │   │       ├── 0024_snapshot.json
+│   │   │   │   │   │       ├── 0026_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
 │   │   │   │   │       ├── api-health-snapshots.schema.ts
 │   │   │   │   │       ├── communes.schema.ts
-│   │   │   │   │       ├── demandes-contact.schema.ts
 │   │   │   │   │       ├── enrichissements.schema.ts
 │   │   │   │   │       ├── epci.schema.ts
 │   │   │   │   │       ├── evaluations.schema.ts
@@ -468,6 +460,7 @@
 │   │   ├── tsconfig.json
 │   │   └── vitest.config.ts
 │   └── ui
+│       ├── .env.example
 │       ├── .gitignore
 │       ├── index.html
 │       ├── package.json
@@ -535,22 +528,6 @@
 │       │   │   │   └── utils
 │       │   │   │       ├── enrichissment.mapper.spec.ts
 │       │   │   │       └── enrichissment.mapper.ts
-│       │   │   ├── cci92
-│       │   │   │   ├── components
-│       │   │   │   │   ├── CCI92AddSiteModal.tsx
-│       │   │   │   │   ├── CCI92DonneesForm.tsx
-│       │   │   │   │   ├── CCI92SiteDetail.tsx
-│       │   │   │   │   └── CCI92SiteList.tsx
-│       │   │   │   ├── data
-│       │   │   │   │   └── parcelles-cci92.ts
-│       │   │   │   ├── hooks
-│       │   │   │   │   └── useCustomSites.ts
-│       │   │   │   ├── pages
-│       │   │   │   │   ├── CCI92Page.css
-│       │   │   │   │   ├── CCI92Page.tsx
-│       │   │   │   │   └── PartenairesPage.tsx
-│       │   │   │   └── utils
-│       │   │   │       └── download-json.ts
 │       │   │   ├── comparaison-algo
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ComparaisonAlgoPanel.css
@@ -585,12 +562,12 @@
 │       │   │   │   │   └── DocumentationIframe.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── DocumentationIntegrationPage.tsx
-│       │   │   ├── donnees-externes
+│       │   │   ├── donnees-utilisees
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ApisExternesPanel.tsx
 │       │   │   │   │   └── ImportsPanel.tsx
 │       │   │   │   └── pages
-│       │   │   │       └── DonneesExternesPage.tsx
+│       │   │   │       └── DonneesUtiliseesPage.tsx
 │       │   │   ├── landing
 │       │   │   │   ├── components
 │       │   │   │   │   ├── CommentCaMarcheSection.tsx
@@ -601,11 +578,44 @@
 │       │   │   │   │   └── UsagesSection.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── LandingPage.tsx
+│       │   │   ├── legal
+│       │   │   │   └── pages
+│       │   │   │       ├── AccessibilitePage.tsx
+│       │   │   │       ├── MentionsLegalesPage.tsx
+│       │   │   │       └── PolitiqueConfidentialitePage.tsx
+│       │   │   ├── partenaires
+│       │   │   │   ├── README.md
+│       │   │   │   ├── core
+│       │   │   │   │   ├── components
+│       │   │   │   │   │   ├── AddSiteModal.tsx
+│       │   │   │   │   │   ├── DonneesExternesLink.tsx
+│       │   │   │   │   │   ├── DonneesForm.tsx
+│       │   │   │   │   │   ├── SiteDetail.tsx
+│       │   │   │   │   │   ├── SiteList.tsx
+│       │   │   │   │   │   └── SiteMap.tsx
+│       │   │   │   │   ├── download-json.ts
+│       │   │   │   │   ├── group.ts
+│       │   │   │   │   ├── hooks
+│       │   │   │   │   │   └── useCustomSites.ts
+│       │   │   │   │   ├── pages
+│       │   │   │   │   │   ├── MultisitePage.tsx
+│       │   │   │   │   │   └── PartenairesPage.tsx
+│       │   │   │   │   ├── partenaires.css
+│       │   │   │   │   └── types.ts
+│       │   │   │   ├── partners
+│       │   │   │   │   ├── aura
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── parcelles.ts
+│       │   │   │   │   └── cci92
+│       │   │   │   │       ├── index.ts
+│       │   │   │   │       └── parcelles.ts
+│       │   │   │   └── registry.ts
 │       │   │   ├── qualification
 │       │   │   │   ├── components
 │       │   │   │   │   ├── EnrichedInfoField.tsx
 │       │   │   │   │   ├── FormSelectField.tsx
 │       │   │   │   │   ├── PollutionField.tsx
+│       │   │   │   │   ├── RaccordementEauField.tsx
 │       │   │   │   │   ├── StepNavigation.tsx
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── config
@@ -626,8 +636,15 @@
 │       │   │   │   │   ├── PartnerCard.tsx
 │       │   │   │   │   ├── PodiumCard.css
 │       │   │   │   │   ├── PodiumCard.tsx
+│       │   │   │   │   ├── RecapBadges.tsx
+│       │   │   │   │   ├── RecapTable.css
+│       │   │   │   │   ├── RecapTable.tsx
 │       │   │   │   │   ├── ResultTable.css
-│       │   │   │   │   └── ResultTable.tsx
+│       │   │   │   │   ├── ResultTable.tsx
+│       │   │   │   │   ├── SiteRecapBanner.tsx
+│       │   │   │   │   ├── SiteRecapModal.tsx
+│       │   │   │   │   ├── UsageDetailModal.tsx
+│       │   │   │   │   └── UsageDetailTable.tsx
 │       │   │   │   ├── pages
 │       │   │   │   │   └── ResultatsPage.tsx
 │       │   │   │   └── utils
@@ -647,30 +664,27 @@
 │       │   │   └── tests
 │       │   │       ├── pages
 │       │   │       │   └── TestsPage.tsx
-│       │   │       ├── test-iframe
+│       │   │       ├── test-idu-diagnostic
+│       │   │       │   ├── README.md
 │       │   │       │   ├── components
-│       │   │       │   │   ├── ConfigPanel.tsx
-│       │   │       │   │   ├── IframeViewer.tsx
-│       │   │       │   │   ├── MessageConsole.tsx
-│       │   │       │   │   └── index.ts
+│       │   │       │   │   ├── DiagnosticIduTab.css
+│       │   │       │   │   ├── DiagnosticIduTab.tsx
+│       │   │       │   │   ├── InfosParcelleTab.tsx
+│       │   │       │   │   └── ParcelleInfoPanel.tsx
+│       │   │       │   ├── diagnostic.spec.ts
+│       │   │       │   ├── diagnostic.ts
+│       │   │       │   ├── geoportail.ts
 │       │   │       │   └── pages
-│       │   │       │       ├── TestCallback.tsx
-│       │   │       │       └── TestIframe.tsx
-│       │   │       └── test-mutabilite
+│       │   │       │       └── DiagnosticParcellePage.tsx
+│       │   │       └── test-iframe
 │       │   │           ├── components
-│       │   │           │   ├── BatchTestPanel.tsx
-│       │   │           │   ├── InputDataPanel.tsx
-│       │   │           │   ├── InputFormFields.tsx
-│       │   │           │   ├── ModeSelector.tsx
-│       │   │           │   ├── ResultsPanel.tsx
-│       │   │           │   ├── TestCasePanel.tsx
+│       │   │           │   ├── ConfigPanel.tsx
+│       │   │           │   ├── IframeViewer.tsx
+│       │   │           │   ├── MessageConsole.tsx
 │       │   │           │   └── index.ts
-│       │   │           ├── pages
-│       │   │           │   └── TestMutability.tsx
-│       │   │           ├── types
-│       │   │           │   └── tests.types.ts
-│       │   │           └── utils
-│       │   │               └── form-to-dto.mapper.ts
+│       │   │           └── pages
+│       │   │               ├── TestCallback.tsx
+│       │   │               └── TestIframe.tsx
 │       │   ├── main.tsx
 │       │   ├── shared
 │       │   │   ├── components
@@ -693,7 +707,10 @@
 │       │   │   │       └── index.ts
 │       │   │   ├── config
 │       │   │   │   ├── map-layers.config.ts
-│       │   │   │   └── routes.config.ts
+│       │   │   │   ├── routes.config.ts
+│       │   │   │   ├── storage-keys.config.ts
+│       │   │   │   ├── version.config.ts
+│       │   │   │   └── zcal.config.ts
 │       │   │   ├── form
 │       │   │   │   ├── FormContext.ts
 │       │   │   │   ├── FormContext.types.ts
@@ -736,6 +753,8 @@
 │       │   │   │   ├── parcelle-selection.types.ts
 │       │   │   │   └── parcelle.models.ts
 │       │   │   └── utils
+│       │   │       ├── cadastre.utils.spec.ts
+│       │   │       ├── cadastre.utils.ts
 │       │   │       ├── distance.formatter.ts
 │       │   │       └── geo.utils.ts
 │       │   └── vite-env.d.ts
@@ -767,8 +786,13 @@
 │   │   ├── 0013-zaenr-affichage-granulaire-scoring-grossier.md
 │   │   ├── 0014-referentiel-epci-communes-etalab.md
 │   │   ├── 0015-envoi-emails-smtp-mailhog-brevo.md
+│   │   ├── 0015-pages-partenaires-multisites-mutualisees.md
 │   │   ├── 0016-configuration-centralisee-appconfig.md
-│   │   └── 0017-emails-provider-brevo-api-mailhog.md
+│   │   ├── 0017-emails-provider-brevo-api-mailhog.md
+│   │   ├── 0018-identifiant-visiteur-anonyme-persistant.md
+│   │   ├── 0019-derivation-automatique-raccordement-eau.md
+│   │   └── 0020-contact-multisites-calendrier-zcal.md
+│   ├── analytics-tracking.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
 │   └── integration
@@ -841,7 +865,11 @@
 │       │   │   │   ├── type-proprietaire.enum.ts
 │       │   │   │   ├── usage.enum.ts
 │       │   │   │   └── valeur-architecturale.enum.ts
-│       │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   └── utils
+│       │   │       ├── index.ts
+│       │   │       ├── raccordement-eau.derivation.spec.ts
+│       │   │       └── raccordement-eau.derivation.ts
 │       │   ├── evenements
 │       │   │   ├── dto
 │       │   │   │   ├── evenement-input.dto.ts
@@ -852,6 +880,19 @@
 │       │   │   │   └── index.ts
 │       │   │   └── index.ts
 │       │   ├── index.ts
+│       │   ├── recapitulatif
+│       │   │   ├── criteres.metadata.spec.ts
+│       │   │   ├── criteres.metadata.ts
+│       │   │   ├── detail-usage.builder.spec.ts
+│       │   │   ├── detail-usage.builder.ts
+│       │   │   ├── detail-usage.types.ts
+│       │   │   ├── impact.labels.spec.ts
+│       │   │   ├── impact.labels.ts
+│       │   │   ├── index.ts
+│       │   │   ├── recapitulatif.builder.spec.ts
+│       │   │   ├── recapitulatif.builder.ts
+│       │   │   ├── recapitulatif.types.ts
+│       │   │   └── valeurs.labels.ts
 │       │   ├── shared
 │       │   │   ├── index.ts
 │       │   │   ├── types
@@ -877,30 +918,6 @@
 │       │       │   ├── index.ts
 │       │       │   └── test-case-converters.ts
 │       │       ├── data.ts
-│       │       ├── excel-sources
-│       │       │   ├── README.md
-│       │       │   ├── v1.0
-│       │       │   │   ├── v1.0_test-01_oyonnax.xlsx
-│       │       │   │   ├── v1.0_test-02_allegre.xlsx
-│       │       │   │   ├── v1.0_test-03_montbeugny.xlsx
-│       │       │   │   ├── v1.0_test-04_port-brillet.xlsx
-│       │       │   │   ├── v1.0_test-05_renaison.xlsx
-│       │       │   │   ├── v1.0_test-06_segre.xlsx
-│       │       │   │   ├── v1.0_test-07_saint-julien.xlsx
-│       │       │   │   ├── v1.0_test-08_thouars.xlsx
-│       │       │   │   ├── v1.0_test-09_trelaze.xlsx
-│       │       │   │   └── v1.0_test-10_villeurbanne.xlsx
-│       │       │   └── v1.1
-│       │       │       ├── v1.1_test-01_allegre.xlsx
-│       │       │       ├── v1.1_test-02_montbeugny.xlsx
-│       │       │       ├── v1.1_test-03_oyonnax.xlsx
-│       │       │       ├── v1.1_test-04_port-brillet.xlsx
-│       │       │       ├── v1.1_test-05_renaison.xlsx
-│       │       │       ├── v1.1_test-06_segre.xlsx
-│       │       │       ├── v1.1_test-07_st-julien.xlsx
-│       │       │       ├── v1.1_test-08_thouars.xlsx
-│       │       │       ├── v1.1_test-09_trelaze.xlsx
-│       │       │       └── v1.1_test-10_villeurbanne.xlsx
 │       │       ├── fixtures
 │       │       │   ├── v0
 │       │       │   │   ├── renaison.json
@@ -928,8 +945,6 @@
 │       │       │       ├── test-09-trelaze.json
 │       │       │       └── test-10-villeurbanne.json
 │       │       ├── index.ts
-│       │       ├── scripts
-│       │       │   └── excel-to-fixture.ts
 │       │       ├── types
 │       │       │   └── test-case.types.ts
 │       │       └── utils
@@ -942,4 +957,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-223 directories, 721 files
+220 directories, 739 files
