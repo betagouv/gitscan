@@ -95,12 +95,15 @@
 │       │   │       ├── WorkflowStatusCell.tsx
 │       │   │       └── WorkflowStatusPill.tsx
 │       │   ├── constants
+│       │   │   ├── eligibilityOptions.ts
 │       │   │   ├── nafSectionsOptions.ts
 │       │   │   └── themesOptions.ts
 │       │   ├── hooks
 │       │   │   └── programs
+│       │   │       ├── assignCanonicalId.ts
 │       │   │       ├── assignCreatorOnCreate.ts
-│       │   │       └── beforeChangeWorkflow.ts
+│       │   │       ├── beforeChangeWorkflow.ts
+│       │   │       └── syncCanonicalOnPublish.ts
 │       │   ├── scripts
 │       │   │   └── seed
 │       │   │       ├── geographic-areas
@@ -129,6 +132,19 @@
 │       │   │   │   ├── GeographicAreaAccessPolicy.ts
 │       │   │   │   ├── OperatorAccessPolicy.ts
 │       │   │   │   └── ProgramAccessPolicy.ts
+│       │   │   ├── canonical
+│       │   │   │   ├── ProgramCanonicalMapper.ts
+│       │   │   │   ├── canonicalMappings.ts
+│       │   │   │   ├── canonicalProgramService.ts
+│       │   │   │   ├── canonicalRepository.ts
+│       │   │   │   ├── mapperHelpers.ts
+│       │   │   │   ├── observability
+│       │   │   │   │   ├── PayloadLoggerEventSink.ts
+│       │   │   │   │   └── canonicalEventSink.ts
+│       │   │   │   └── rich-text
+│       │   │   │       ├── PayloadRichTextToMarkdown.ts
+│       │   │   │       ├── RichTextToMarkdown.ts
+│       │   │   │       └── richTextToMarkdownProvider.ts
 │       │   │   └── workflow
 │       │   │       ├── WorkflowAutomation.ts
 │       │   │       └── WorkflowTransitionPolicy.ts
@@ -165,7 +181,11 @@
 │       │   │   ├── api.int.spec.ts
 │       │   │   └── seed.int.spec.ts
 │       │   └── unit
-│       │       └── UserRole.spec.ts
+│       │       ├── CanonicalProgramService.spec.ts
+│       │       ├── ProgramCanonicalMapper.spec.ts
+│       │       ├── UserRole.spec.ts
+│       │       └── support
+│       │           └── canonicalProgramFixtures.ts
 │       ├── tsconfig.json
 │       ├── vitest.config.mts
 │       ├── vitest.global-setup.ts
@@ -180,7 +200,8 @@
 │   │   ├── 0005-programs-workflow-extended.md
 │   │   ├── 0006-programs-form-refactor.md
 │   │   ├── 0007-canonical-pivot-format.md
-│   │   └── 0007b-COG_CONVENTION.md
+│   │   ├── 0007b-COG_CONVENTION.md
+│   │   └── 0008-canonical-persistence-ddd.md
 │   ├── context
 │   │   ├── canonical-pivot-format.md
 │   │   ├── programs-model.md
@@ -203,46 +224,113 @@
 │       └── workflow-programs.png
 ├── eslint.config.mjs
 ├── libs
-│   └── canonical
-│       ├── CLAUDE.md
+│   ├── canonical
+│   │   ├── CLAUDE.md
+│   │   ├── README.md
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── project.json
+│   │   ├── src
+│   │   │   ├── canonical-program
+│   │   │   │   ├── CanonicalProgram.ts
+│   │   │   │   ├── CanonicalProgramRepository.ts
+│   │   │   │   ├── CanonicalProgramService.ts
+│   │   │   │   ├── CanonicalProgramValidator.ts
+│   │   │   │   ├── additional-data
+│   │   │   │   │   └── additional-data.schema.ts
+│   │   │   │   ├── canonical-program.schema.ts
+│   │   │   │   ├── canonical-program.types.ts
+│   │   │   │   ├── enums.ts
+│   │   │   │   ├── fields
+│   │   │   │   │   ├── aide.schema.ts
+│   │   │   │   │   ├── contenu.schema.ts
+│   │   │   │   │   ├── eligibilite.schema.ts
+│   │   │   │   │   └── identite.schema.ts
+│   │   │   │   └── variants
+│   │   │   │       └── variante.schema.ts
+│   │   │   ├── index.ts
+│   │   │   ├── observability
+│   │   │   │   ├── CanonicalEvent.ts
+│   │   │   │   ├── CanonicalEventSink.ts
+│   │   │   │   ├── CompositeEventSink.ts
+│   │   │   │   ├── NullEventSink.ts
+│   │   │   │   └── RoutingCanonicalEventSink.ts
+│   │   │   └── shared
+│   │   │       ├── cog.ts
+│   │   │       ├── deepFreeze.ts
+│   │   │       ├── primitives.ts
+│   │   │       └── schema
+│   │   │           ├── cog.ts
+│   │   │           └── operator.ts
+│   │   ├── tests
+│   │   │   ├── fixtures
+│   │   │   │   ├── valid-full.ts
+│   │   │   │   └── valid-minimal.ts
+│   │   │   └── unit
+│   │   │       ├── CanonicalProgram.spec.ts
+│   │   │       ├── CanonicalProgramService.spec.ts
+│   │   │       ├── CanonicalProgramValidator.spec.ts
+│   │   │       ├── canonical-program.schema.spec.ts
+│   │   │       ├── observability.spec.ts
+│   │   │       └── variante.schema.spec.ts
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.spec.json
+│   │   └── vitest.config.ts
+│   ├── canonical-store
+│   │   ├── canonical.db
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── project.json
+│   │   ├── src
+│   │   │   ├── DrizzleCanonicalProgramRepository.ts
+│   │   │   ├── createCanonicalProgramRepository.ts
+│   │   │   ├── db.ts
+│   │   │   ├── index.ts
+│   │   │   └── schema.ts
+│   │   ├── tests
+│   │   │   └── DrizzleCanonicalProgramRepository.spec.ts
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.spec.json
+│   │   └── vitest.config.ts
+│   └── format-adapters
 │       ├── README.md
 │       ├── eslint.config.mjs
+│       ├── package.json
 │       ├── project.json
+│       ├── scripts
+│       │   └── export-tee.ts
 │       ├── src
-│       │   ├── canonical-program
-│       │   │   ├── CanonicalProgram.ts
-│       │   │   ├── CanonicalProgramValidator.ts
-│       │   │   ├── additional-data
-│       │   │   │   └── additional-data.schema.ts
-│       │   │   ├── canonical-program.schema.ts
-│       │   │   ├── canonical-program.types.ts
-│       │   │   ├── enums.ts
-│       │   │   ├── fields
-│       │   │   │   ├── aide.schema.ts
-│       │   │   │   ├── contenu.schema.ts
-│       │   │   │   ├── eligibilite.schema.ts
-│       │   │   │   └── identite.schema.ts
-│       │   │   └── variants
-│       │   │       └── variante.schema.ts
+│       │   ├── __fixtures__
+│       │   │   └── canonical-programs.ts
 │       │   ├── index.ts
-│       │   └── shared
-│       │       ├── cog.ts
-│       │       ├── deepFreeze.ts
-│       │       ├── primitives.ts
-│       │       └── schema
-│       │           ├── cog.ts
-│       │           └── operator.ts
-│       ├── tests
-│       │   ├── fixtures
-│       │   │   ├── valid-full.ts
-│       │   │   └── valid-minimal.ts
-│       │   └── unit
-│       │       ├── CanonicalProgram.spec.ts
-│       │       ├── CanonicalProgramValidator.spec.ts
-│       │       ├── canonical-program.schema.spec.ts
-│       │       └── variante.schema.spec.ts
+│       │   ├── shared
+│       │   │   ├── ConsoleExportLogger.ts
+│       │   │   ├── ExportLogger.ts
+│       │   │   ├── ExportPolicy.ts
+│       │   │   ├── NafSectionResolver.spec.ts
+│       │   │   ├── NafSectionResolver.ts
+│       │   │   ├── RegionNameResolver.ts
+│       │   │   ├── ThemeMapper.ts
+│       │   │   └── TypeAideMapper.ts
+│       │   └── tee
+│       │       ├── TeeExporter.spec.ts
+│       │       ├── TeeExporter.ts
+│       │       ├── TeeImporter.spec.ts
+│       │       ├── TeeImporter.ts
+│       │       ├── __roundtrip__
+│       │       │   └── programs-roundtrip.spec.ts
+│       │       ├── tee-program.schema.ts
+│       │       └── tee-program.types.ts
+│       ├── static
+│       │   ├── exports
+│       │   │   └── tee-programs.json
+│       │   └── input
+│       │       └── programs.json
 │       ├── tsconfig.json
 │       ├── tsconfig.lib.json
+│       ├── tsconfig.scripts.json
 │       ├── tsconfig.spec.json
 │       └── vitest.config.ts
 ├── memory
@@ -253,4 +341,4 @@
 ├── pnpm-workspace.yaml
 ├── tsconfig.base.json
 └── tsconfig.json
-69 directories, 186 files
+87 directories, 256 files

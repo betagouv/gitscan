@@ -1,18 +1,18 @@
-## Changelog : mission-transition-ecologique-back (30 derniers jours, au 22 juin 2026)
+## Changelog : mission-transition-ecologique-back (30 derniers jours, au 27 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité du code et de l'infrastructure de test, ainsi que sur l'intégration d'un nouveau package et l'amélioration de l'apparence visuelle avec un design plus proche de DSFR.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité des données, notamment via la persistance des programmes publiés dans un espace de stockage "canonique". Des optimisations de la chaîne CI/CD ont également été apportées pour accélérer les tests et les déploiements. Enfin, des améliorations de l'interface utilisateur ont été initiées avec l'intégration d'éléments de design similaires à DSFR.
 
 ### Évolutions fonctionnelles
-- Intégration d'un nouveau package "canonical" pour améliorer la gestion des packages et des dépendances [#33](https://github.com/betagouv/mission-transition-ecologique-back/issues/33).
-- Amélioration de l'apparence visuelle de l'interface avec un design s'inspirant de DSFR [#3](https://github.com/betagouv/mission-transition-ecologique-back/issues/3).
+- Implémentation d'un stockage "canonique" pour les programmes publiés, assurant une meilleure qualité des données. [#33](https://github.com/betagouv/mission-transition-ecologique-back/issues/33)
+- Création d'un package pour les adaptateurs de format et réexportation de la TEE pour confirmer la qualité des données au format canonique. [#48](https://github.com/betagouv/mission-transition-ecologique-back/issues/48)
+- Début de l'intégration d'éléments de design de type DSFR pour améliorer l'interface utilisateur. [#3](https://github.com/betagouv/mission-transition-ecologique-back/issues/3)
 
 ### Évolutions techniques
-- Mise en place d'une parallélisation des jobs CI pour accélérer les builds.
-- Mise en cache de Playwright et Nx ainsi que des tests end-to-end (e2e) pour optimiser les performances de la CI [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42).
-- Correction des spécifications des tests e2e et configuration des commandes de test.
-- Configuration de Claude Code pour l'analyse du code avec des règles et des hooks spécifiques [#41](https://github.com/betagouv/mission-transition-ecologique-back/issues/41).
-- Ajout de tests unitaires, d'intégration et e2e dans la CI.
+- Parallélisation des jobs CI, et mise en cache de Playwright/Nx et des tests e2e pour accélérer la chaîne de production. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
+- Ajout de tests unitaires, d'intégration et e2e au pipeline CI/CMS. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
+- Correction des spécifications des tests e2e et configuration des commandes de test. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
+- Configuration de Claude Code pour le projet, incluant une règle de commentaire et des hooks. [#41](https://github.com/betagouv/mission-transition-ecologique-back/issues/41)
 
 ### Autres changements
 - Aucun changement significatif à signaler.
