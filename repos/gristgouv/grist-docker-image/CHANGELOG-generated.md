@@ -1,19 +1,20 @@
-## Changelog : grist-docker-image (30 derniers jours, au 22 juin 2026)
+## Changelog : grist-docker-image (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations de sécurité grâce à l'intégration d'un scanner de vulnérabilités (Trivy) et met à jour Grist vers la version 1.7.15.  Une nouvelle option de build utilisant une version plus récente de gvisor a également été ajoutée.
+Cette mise à jour apporte des améliorations significatives en matière de sécurité grâce à l'intégration d'un scanner de vulnérabilités (Trivy) et une meilleure gestion de l'environnement de construction avec GVISOR. L'image Grist a également été mise à jour vers la version 1.7.15.
 
 ### Évolutions fonctionnelles
-- Mise à jour de Grist vers la version 1.7.15 [#66](https://github.com/gristgouv/grist-docker-image/pull/66).
+- Mise à jour de l'image Grist vers la version 1.7.15 [#66](https://github.com/gristgouv/grist-docker-image/pull/66).
 
 ### Évolutions techniques
-- Intégration de Trivy pour l'analyse des vulnérabilités de l'image Docker.
-    - Ajout d'un job Trivy pour scanner les vulnérabilités [#67](https://github.com/gristgouv/grist-docker-image/pull/67).
-    - Génération d'un rapport JSON des vulnérabilités détectées.
-    - Déclenchement de l'analyse Trivy manuellement ou lors de la création d'une nouvelle image.
-- Ajout d'une nouvelle build utilisant une version plus récente de gvisor [#68](https://github.com/gristgouv/grist-docker-image/pull/68).
-- Amélioration de la configuration du workflow CI/CD pour une meilleure gestion des builds et des analyses de sécurité.
+- Intégration de Trivy pour l'analyse des vulnérabilités de l'image Docker [#67](https://github.com/gristgouv/grist-docker-image/pull/67).
+  - Ajout d'un rapport JSON des vulnérabilités détectées dans les artefacts de la CI.
+  - Déclenchement de l'analyse Trivy manuellement ou lors de la création d'une nouvelle image.
+- Amélioration de l'intégration du workflow GVISOR pour une meilleure abstraction et une construction plus robuste [#69](https://github.com/gristgouv/grist-docker-image/pull/69).
+- Ajout d'une construction avec une version plus récente de GVISOR [#78a357f](https://github.com/gristgouv/grist-docker-image/commit/78a357f).
+- Refactorisation de l'intégration du workflow GVISOR [#4f666cb](https://github.com/gristgouv/grist-docker-image/commit/4f666cb).
 
 ### Autres changements
-- Nettoyage de la configuration du workflow (suppression d'une dépendance inutilisée).
-- Amélioration des noms et titres des jobs CI/CD pour une meilleure lisibilité.
+- Suppression d'une dépendance inutilisée [#e3bc3ee](https://github.com/gristgouv/grist-docker-image/commit/e3bc3ee).
+- Amélioration des noms et titres des jobs CI [#3472f68](https://github.com/gristgouv/grist-docker-image/commit/3472f68) et [#5261fb1](https://github.com/gristgouv/grist-docker-image/commit/5261fb1).
+- Suppression de la dernière image Docker en cache [#50f7e8e](https://github.com/gristgouv/grist-docker-image/commit/50f7e8e).
