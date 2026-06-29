@@ -12,6 +12,7 @@
 │       ├── deactivate.yaml
 │       ├── preproduction.yaml
 │       ├── production.yaml
+│       ├── python-analysis.yml
 │       ├── quality.yml
 │       ├── release.yml
 │       ├── review-auto.yaml
@@ -89,6 +90,22 @@
 ├── .sonarcloud.properties
 ├── CHANGELOG.md
 ├── README.md
+├── analysis
+│   ├── .env.example
+│   ├── .python-version
+│   ├── README.md
+│   ├── notebooks
+│   │   └── search_stats.ipynb
+│   ├── pyproject.toml
+│   ├── src
+│   │   └── analysis
+│   │       ├── __init__.py
+│   │       ├── config.py
+│   │       ├── connectors
+│   │       │   ├── __init__.py
+│   │       │   └── matomo.py
+│   │       └── py.typed
+│   └── uv.lock
 ├── docker-compose.yml
 ├── lerna.json
 ├── package.json
@@ -570,7 +587,6 @@
     │   │   └── next
     │   │       └── router.ts
     │   ├── jest.config.js
-    │   ├── next-env.d.ts
     │   ├── next.config.mjs
     │   ├── noop.mjs
     │   ├── package.json
@@ -760,6 +776,7 @@
     │   │   │   │   │   ├── extensions
     │   │   │   │   │   │   ├── Alert.ts
     │   │   │   │   │   │   ├── Challenger.ts
+    │   │   │   │   │   │   ├── GoodToKnow.ts
     │   │   │   │   │   │   ├── Infographic.ts
     │   │   │   │   │   │   ├── Titles.ts
     │   │   │   │   │   │   └── index.ts
@@ -2164,4 +2181,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-572 directories, 1634 files
+577 directories, 1646 files
