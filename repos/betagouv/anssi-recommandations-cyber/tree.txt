@@ -48,6 +48,8 @@
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── api.py
+│   │   ├── api_avis.py
+│   │   ├── api_retour.py
 │   │   ├── conversation.py
 │   │   ├── recherche.py
 │   │   └── route_document_source.py
@@ -98,6 +100,7 @@
 │   │   └── test_adaptateur_sentry.py
 │   ├── api
 │   │   ├── conftest.py
+│   │   ├── test_avis_utilisateurice.py
 │   │   ├── test_conversation_ajoute_interaction.py
 │   │   ├── test_conversation_initie_conversation.py
 │   │   ├── test_extraits_type_utilisateur.py
@@ -145,6 +148,7 @@
 │   └── test_modeles_retour_utilisatrice.py
 ├── ui
 │   ├── .dockerignore
+│   ├── .env.template
 │   ├── .gitignore
 │   ├── .nvmrc
 │   ├── .prettierignore
@@ -206,6 +210,7 @@
 │   │   ├── composants
 │   │   │   ├── Bandeau.svelte
 │   │   │   ├── BandeauAvisUtilisateur.svelte
+│   │   │   ├── BandeauAvisUtilisateurBis.svelte
 │   │   │   ├── BandeauInformation.svelte
 │   │   │   ├── Conversation.svelte
 │   │   │   ├── EcranErreur.svelte
@@ -227,16 +232,18 @@
 │   │   └── stores
 │   │       ├── affichage.store.ts
 │   │       ├── avisUtilisateur.store.ts
+│   │       ├── avisUtilisateurBis.store.ts
 │   │       └── conversation.store.ts
 │   ├── svelte.config.js
 │   ├── tests
 │   │   ├── composants
 │   │   │   └── ValidateurQuestionUtilisateur.spec.ts
 │   │   └── stores
+│   │       ├── avisUtilisateurBis.store.spec.ts
 │   │       └── conversation.store.spec.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-46 directories, 195 files
+46 directories, 202 files

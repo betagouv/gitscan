@@ -1,27 +1,27 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber",
   "name": "anssi-recommandations-cyber",
-  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.",
+  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.  Elle offre une recherche et une interaction avec ces guides pour obtenir des recommandations en matière de cybersécurité.",
   "language": "Python",
   "features": [
     "Recherche",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Notifications & Alertes",
+    "Contenu éditorial"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "cryptography",
-    "fastapi",
-    "httpx",
-    "openai",
+    "FastAPI",
+    "OpenAI",
     "psycopg2-binary",
     "requests",
-    "sentry-sdk",
-    "slowapi",
-    "starlette",
     "uvicorn",
     "pytest",
-    "ruff"
+    "ruff",
+    "dompurify",
+    "sentry-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -37,8 +37,10 @@
   "tests": [
     "pytest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-05-22T14:10:37+02:00",
+  "workflows": [
+    "CI/CD & Déploiement"
+  ],
+  "lastActivity": "2026-06-26T10:43:55+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -49,8 +51,8 @@
     "openIssues": null
   },
   "tags": [
+    "Données & Open Data",
     "Sécurité & Conformité",
-    "Intelligence Artificielle & NLP",
-    "Données & Open Data"
+    "Intelligence Artificielle & NLP"
   ]
 }
