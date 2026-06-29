@@ -25,6 +25,12 @@
 ├── README.md
 ├── SECURITY.md
 ├── backend
+│   ├── admin_config
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_admin_config.py
 │   ├── bypass_auth
 │   │   ├── apps.py
 │   │   ├── auth.py
@@ -35,6 +41,7 @@
 │   ├── constatations
 │   │   ├── __init__.py
 │   │   ├── admin.py
+│   │   ├── apps.py
 │   │   ├── management
 │   │   │   └── commands
 │   │   │       └── regenerate_constatation_docs.py
@@ -46,69 +53,24 @@
 │   │   ├── models.py
 │   │   ├── prejudice.py
 │   │   ├── serializers.py
+│   │   ├── signals.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test_commands.py
 │   │   │   └── test_views.py
 │   │   └── views.py
-│   ├── dn
-│   │   ├── README.md
+│   ├── current_user
 │   │   ├── __init__.py
 │   │   ├── apps.py
-│   │   ├── client.py
-│   │   ├── fields.py
-│   │   ├── management
-│   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       ├── audit_dn_data_alignment.py
-│   │   │       ├── audit_dn_db_integrity.py
-│   │   │       ├── backfill_dn_boolean_fields.py
-│   │   │       ├── check_dn_emails.py
-│   │   │       ├── empty_constatations.py
-│   │   │       ├── generate_migrated_docs.py
-│   │   │       └── migrate_dn_to_constatations.py
-│   │   ├── queries.py
-│   │   └── sample-data-4
-│   ├── dn_signalements
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── dn_mappings.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_rename_auteur_signalement_to_constatant.py
-│   │   │   ├── 0003_remove_dnsignalement_souhaite_porter_plainte_and_more.py
-│   │   │   ├── 0004_remove_dnsignalement_risque_ecoulement.py
-│   │   │   ├── 0005_remove_dnsignalement_nom_entreprise_and_more.py
-│   │   │   ├── 0006_rename_dn_date_depot_to_creation.py
-│   │   │   ├── 0007_userdossier.py
-│   │   │   ├── 0008_dnsignalement_auteur_adresse_and_more.py
-│   │   │   ├── 0009_dnsignalement_constatant_civilite_and_more.py
-│   │   │   ├── 0010_rename_constatant_to_constatant_role.py
-│   │   │   ├── 0011_dnsignalement_user_alter_dnsignalement_commune_and_more.py
-│   │   │   ├── 0012_delete_userdossier.py
-│   │   │   ├── 0013_dnsignalement_entreprise_francaise.py
-│   │   │   ├── 0014_dnsignalement_ceci_est_un_test.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   ├── signals.py
-│   │   ├── tasks.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
-│   │   │   ├── test_doc_generation.py
-│   │   │   ├── test_process_dossier.py
-│   │   │   ├── test_process_dossier_auth.py
-│   │   │   ├── test_sync_api.py
-│   │   │   └── test_sync_user_dossiers.py
+│   │   │   └── test_views.py
 │   │   └── views.py
 │   ├── doc_maker
 │   │   ├── __init__.py
 │   │   ├── doc_templates
 │   │   │   ├── doc-constat.odt
 │   │   │   └── lettre-info.odt
-│   │   ├── example.py
 │   │   ├── odt.py
 │   │   ├── odt_utils.py
 │   │   └── settings.py
@@ -137,7 +99,6 @@
 │   │   ├── __init__.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
-│   │   │   ├── test_admin_config.py
 │   │   │   └── test_views.py
 │   │   └── views.py
 │   ├── procedures
@@ -149,10 +110,10 @@
 │   │   │   ├── 0002_suiviprocedure_identification_reussie.py
 │   │   │   ├── 0003_remove_suiviprocedure_motif_abandon_choisi.py
 │   │   │   ├── 0004_suiviprocedure_constatation_and_more.py
+│   │   │   ├── 0005_remove_suiviprocedure_signalement.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
-│   │   ├── tests.py
 │   │   └── views.py
 │   ├── proconnect
 │   │   ├── __init__.py
@@ -173,31 +134,6 @@
 │   │   ├── local.py
 │   │   ├── prod.py
 │   │   └── test.py
-│   ├── signalements
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_signalement_pdf_document.py
-│   │   │   ├── 0003_signalement_concerne_une_entreprise_and_more.py
-│   │   │   ├── 0004_remove_signalement_concerne_une_entreprise_and_more.py
-│   │   │   ├── 0005_signalement_risque_ecoulement.py
-│   │   │   ├── 0006_remove_signalement_pdf_document.py
-│   │   │   ├── 0007_renommer_doc_constat.py
-│   │   │   ├── 0008_signalement_lettre_info_and_more.py
-│   │   │   ├── 0009_signalement_created_signalement_modified.py
-│   │   │   ├── 0010_alter_signalement_nature_terrain.py
-│   │   │   ├── 0011_add_contact_person.py
-│   │   │   ├── 0012_rename_auteur_signalement_to_constatant.py
-│   │   │   ├── 0013_remove_signalement_souhaite_porter_plainte_and_more.py
-│   │   │   ├── 0014_remove_signalement_risque_ecoulement.py
-│   │   │   ├── 0015_remove_signalement_nom_entreprise_and_more.py
-│   │   │   ├── 0016_delete_signalement.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
-│   │   ├── prejudice.py
-│   │   ├── signals.py
-│   │   └── views.py
 │   ├── throttling
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -217,12 +153,6 @@
 │   ├── app.vue
 │   ├── components
 │   │   ├── StepperProcedure.vue
-│   │   ├── dossiers
-│   │   │   ├── AucuneProcedureBox.vue
-│   │   │   ├── BandeauInformation.vue
-│   │   │   ├── CartesDocuments.vue
-│   │   │   ├── ChargementDossier.vue
-│   │   │   └── DossierMetadata.vue
 │   │   ├── faq
 │   │   │   ├── FaqCategoryModal.vue
 │   │   │   ├── FaqItem.vue
@@ -237,6 +167,12 @@
 │   │   │       ├── SectionFinalisation.vue
 │   │   │       ├── SectionLocalisation.vue
 │   │   │       └── SectionPrejudice.vue
+│   │   ├── procedures
+│   │   │   ├── AucuneProcedureBox.vue
+│   │   │   ├── BandeauInformation.vue
+│   │   │   ├── CartesDocuments.vue
+│   │   │   ├── Chargement.vue
+│   │   │   └── Metadata.vue
 │   │   ├── shared
 │   │   │   ├── AddressAutocomplete.vue
 │   │   │   ├── BooleanRadioSet.vue
@@ -284,13 +220,11 @@
 │   │   ├── demarche-numerique-rejoindre-protectenvi.vue
 │   │   ├── donnees-personnelles.vue
 │   │   ├── faq.vue
-│   │   ├── joindre.vue
 │   │   ├── login-demo.vue
 │   │   ├── mentions-legales.vue
 │   │   ├── mes-procedures.vue
 │   │   ├── plan-du-site.vue
 │   │   ├── rdv.vue
-│   │   ├── rejoindre-le-dispositif.vue
 │   │   └── suivi-procedure.vue
 │   ├── services
 │   │   ├── api.ts
@@ -300,9 +234,10 @@
 │   │   └── urls.ts
 │   ├── stores
 │   │   ├── constatation.ts
-│   │   ├── dossier.ts
 │   │   ├── editMode.ts
-│   │   └── suivi-procedure.ts
+│   │   ├── procedure.ts
+│   │   ├── suivi-procedure.ts
+│   │   └── user.ts
 │   ├── styles
 │   │   ├── form-steps.css
 │   │   └── premium-design.css
@@ -311,11 +246,11 @@
 │   │   ├── contact.test.ts
 │   │   ├── mes-procedures.test.ts
 │   │   ├── section-constatation.test.ts
+│   │   ├── suivi-procedure.test.ts
 │   │   ├── urls.test.ts
 │   │   └── validation-auteur.test.ts
 │   ├── types
-│   │   ├── constatation.ts
-│   │   └── signalement.ts
+│   │   └── constatation.ts
 │   ├── utils
 │   │   ├── browser.ts
 │   │   ├── date.ts
@@ -361,9 +296,8 @@
 │   │       └── money.svg
 │   └── depot-de-dechet-sauvage-image-accueil.webp
 ├── templates
-│   ├── email-get-documents.html
 │   └── robots.txt
 ├── vite.config.ts
 ├── vitest.setup.ts
 └── yarn.lock
-64 directories, 304 files
+60 directories, 242 files
