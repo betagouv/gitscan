@@ -1,3 +1,11 @@
+2026-06-27T19:00:51+02:00 - 8707e7f - Jo : feat(build): forward --build-arg / --label across GitHub, GitLab & Forgejo (#1)
+2026-06-27T12:14:02+02:00 - 41100ba - devthejo : docs(pages): default the docs site to the dark theme (slate), keep the toggle
+2026-06-27T10:34:41+02:00 - f9e921e - devthejo : docs(pages): render the root README as the site home + add landscape page to nav
+2026-06-27T10:15:24+02:00 - 275c6ca - devthejo : feat(forgejo): reusable Forgejo Actions action + correct OIDC opt-in (enable-openid-connect)
+2026-06-27T10:11:44Z - 5e31673 - github-actions[bot] : chore: release v0.9.0
+2026-06-27T09:56:01+02:00 - 6629224 - devthejo : chore(devbox): up .lock
+2026-06-27T08:39:39+02:00 - 5634d1f - devthejo : feat(forgejo): document Forgejo Actions support + add forge CLIs to devbox
+2026-06-27T08:10:32+02:00 - 9deaf85 - devthejo : docs: build-acceleration market landscape + feature comparison
 2026-06-27T00:43:20+02:00 - 7bcb4f8 - devthejo : feat(action): gateway-host input for IP-independent gateway addressing
 2026-06-26T23:40:09+02:00 - 3c6daed - devthejo : test(e2e): live end-to-end suite for every feature + OIDC security
 2026-06-26T22:34:29+02:00 - cdfa6ae - devthejo : docs: PoC method — build from PIC + staged OIDC rollout (validated live)
@@ -39,39 +47,39 @@
 2026-06-26T01:14:11+02:00 - 19a182a - devthejo : fix(ci): lowercase image owner for cosign + disable matrix fail-fast
 2026-06-26T01:07:37+02:00 - 6817809 - devthejo : chore: release v0.5.0
 2026-06-26T01:04:54+02:00 - 3446961 - devthejo : feat: harden CI, supply-chain, observability and robustness from full project review
-2026-06-25T22:26:02Z - a90b10b - github-actions[bot] : chore: release v0.4.1
 2026-06-26T00:24:18+02:00 - c432a8a - devthejo : chore(security): harden chart, supply-chain and ops for production
-2026-06-25T22:20:48Z - cbeb56f - github-actions[bot] : chore: release v0.4.0
 2026-06-26T00:13:52+02:00 - 6591c11 - devthejo : chore(deps): bump Go 1.26.4, buildkit v0.31.1, k8s v0.36.1, controller-runtime v0.24.1
 2026-06-25T23:38:00+02:00 - 3758f9e - devthejo : docs: GitHub repo onboarding guide (org-level creds + copy-paste workflow)
 2026-06-25T23:01:59+02:00 - 61c81a7 - devthejo : chore: release v0.3.0
 2026-06-25T23:01:08+02:00 - 3cd485b - devthejo : feat(certs): opt-in cert-manager issuance for the mTLS material
+2026-06-25T22:26:02Z - a90b10b - github-actions[bot] : chore: release v0.4.1
+2026-06-25T22:20:48Z - cbeb56f - github-actions[bot] : chore: release v0.4.0
 2026-06-25T21:29:12+02:00 - b362f2a - devthejo : docs: cover off-cluster auth, supply-chain, LB timeout + production status
 2026-06-25T19:54:58+02:00 - 085b9de - devthejo : fix(helm): raise OVH/OpenStack LB idle timeout so cold-start routes and long builds aren't cut
 2026-06-25T19:10:52+02:00 - a8ffe1e - devthejo : docs(gitops): manifests for the 3 in-service pieces (kata-deploy, Kyverno exclude, operator sandbox)
 2026-06-25T18:57:57+02:00 - 34f8d38 - devthejo : feat(kata): target the whole build nodepool so replacement nodes auto-get Kata (durable)
 2026-06-25T18:52:09+02:00 - 260c791 - devthejo : docs: VM-isolated builds (Kata) + OVH MKS platform notes
 2026-06-25T18:09:54+02:00 - 663a4cc - devthejo : docs(kata): reproducible kata-clh setup for VM-isolated untrusted forks
-2026-06-25T15:18:47Z - 57506f6 - github-actions[bot] : chore: release v0.2.3
 2026-06-25T17:17:42+02:00 - 7290418 - devthejo : feat(sandbox): skip companion for forks; document Kata vCPU floor for nested virt
-2026-06-25T14:40:21Z - 2ffc40a - github-actions[bot] : chore: release v0.2.2
 2026-06-25T16:30:08+02:00 - 72553fb - devthejo : feat(sandbox): run sandboxed forks privileged + non-rootless (Kata microVM)
+2026-06-25T15:18:47Z - 57506f6 - github-actions[bot] : chore: release v0.2.3
+2026-06-25T14:40:21Z - 2ffc40a - github-actions[bot] : chore: release v0.2.2
 2026-06-25T14:19:51+02:00 - 2137727 - devthejo : style: gofmt router_test.go (comment alignment)
 2026-06-25T13:59:52+02:00 - 219ec50 - devthejo : fix: close metadata egress, release leaked inflight, normalize repo ports
-2026-06-25T11:26:54Z - 5c83198 - github-actions[bot] : chore: release v0.2.1
 2026-06-25T13:20:00+02:00 - 1b22e91 - devthejo : fix: harden routing, lifecycle and gateway (full review remediation)
-2026-06-25T11:13:51Z - 3026f2a - github-actions[bot] : chore: release v0.2.0
 2026-06-25T12:46:19+02:00 - 6a843f9 - devthejo : feat(daemon): bump default buildkit image to v0.22.0-rootless (ovh-prod parity)
 2026-06-25T11:56:06+02:00 - 761f6f2 - devthejo : feat(scheduling): pin daemon pods to a dedicated build nodepool
 2026-06-25T11:31:29+02:00 - 9fbf73e - devthejo : ci(release): best-effort dispatch images.yml on the new tag (token can't auto-trigger it)
+2026-06-25T11:26:54Z - 5c83198 - github-actions[bot] : chore: release v0.2.1
 2026-06-25T11:21:23+02:00 - 2cdd912 - devthejo : fix(release): create the GitHub release via gh CLI (release-it octokit call crashes on v17)
-2026-06-25T09:16:41Z - 76a7401 - github-actions[bot] : chore: release v0.1.0
 2026-06-25T11:16:14+02:00 - 3cb4cd1 - devthejo : fix(release): use npm ci so release-it sees a clean working dir
+2026-06-25T11:13:51Z - 3026f2a - github-actions[bot] : chore: release v0.2.0
 2026-06-25T11:13:20+02:00 - 6a7852b - devthejo : build(release): support releasing the current version as-is (--no-increment)
 2026-06-25T10:48:12+02:00 - e1647cc - devthejo : feat(security): opt-in internet-less egress for untrusted fork daemons
 2026-06-25T10:23:53+02:00 - 5d75ccc - devthejo : build(release): release-it + OCI Helm chart publishing + versioned releases
 2026-06-25T09:41:11+02:00 - 5f273d3 - devthejo : test(builder): sandbox RuntimeClass applies to fork daemons only
 2026-06-25T09:33:23+02:00 - 5f2dc25 - devthejo : feat: pull-through cache (base-image mirror) + sandboxed runtime for fork daemons
+2026-06-25T09:16:41Z - 76a7401 - github-actions[bot] : chore: release v0.1.0
 2026-06-25T09:14:20+02:00 - c439b04 - devthejo : feat(security): daemon egress NetworkPolicy + supply-chain attestations in the Action
 2026-06-25T08:39:17+02:00 - 2f13fd3 - devthejo : feat(action): optional gateway-ip input (no-wildcard-DNS escape hatch) + skip image rebuilds on docs/action changes
 2026-06-25T08:31:26+02:00 - d3be0ef - devthejo : fix(status): RetryOnConflict for touchLastBuild (correct the prior MergeFrom attempt)
