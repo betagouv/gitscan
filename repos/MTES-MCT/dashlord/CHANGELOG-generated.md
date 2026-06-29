@@ -1,14 +1,18 @@
-## Changelog : dashlord (30 derniers jours, au 21 juin 2026)
+## Changelog : dashlord (30 derniers jours, au 28 juin 2026)
 
 ### Résumé
-Ce changelog fait état d'une mise à jour massive des URLs surveillées par Dashlord.  De nombreux sites web et APIs de la fabrique numérique ont été mis à jour, assurant ainsi une surveillance continue de leur état de santé et de leur sécurité. Une modification mineure de la configuration a également été effectuée pour désactiver un type de vérification.
+Ce changelog couvre une période d'activité importante pour Dashlord, principalement axée sur la mise à jour des URLs des services surveillés. De nombreuses URLs de services Beta.gouv.fr ont été mises à jour, assurant ainsi la pertinence et la fiabilité des données affichées dans le tableau de bord. Un ajustement de la configuration a également été effectué pour désactiver un check spécifique.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements concernent principalement la mise à jour des URLs surveillées.
+*   Mise à jour de la liste des services surveillés avec leurs nouvelles URLs. Cela garantit que le tableau de bord affiche les informations les plus récentes et correctes pour chaque service.
+*   Mise à jour du titre et du logo de l'opérateur dans la configuration du tableau de bord.
+*   Désactivation du check Nuclei dans la configuration du tableau de bord [#46](https://github.com/MTES-MCT/dashlord/pull/46).
 
 ### Évolutions techniques
-- Désactivation des vérifications Nuclei dans la configuration de Dashlord [#issue à retrouver].
-- Mise à jour régulière des URLs surveillées pour refléter les changements dans l'infrastructure des services de la fabrique numérique.
+*   Aucune évolution technique majeure n'a été identifiée dans les commits analysés.
 
 ### Autres changements
-- Mise à jour du titre et du logo de l'opérateur dans le fichier `dashlord.yml`.
+*   Mise à jour de la documentation concernant l'URL du service de resorption-bidonvilles [#44](https://github.com/MTES-MCT/dashlord/pull/44).
+*   Mise à jour de la configuration du tableau de bord pour inclure les nouvelles URLs des services Beta.gouv.fr.
+*   Mise à jour des rapports de monitoring.
+*   Correction d'un patch [#41](https://github.com/MTES-MCT/dashlord/pull/41).
