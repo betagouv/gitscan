@@ -1,7 +1,17 @@
-## Changelog : skills (30 derniers jours, au 29 avril 2026)
+## Changelog : skills (30 derniers jours, au 16 juin 2026)
 
 ### Résumé
-Cette mise à jour se concentre sur une restructuration interne du projet pour mieux organiser les "skills" liées à la génération augmentée de récupération (RAG). Cette modification prépare le terrain pour de futures améliorations et une meilleure maintenabilité du code, sans impact direct sur l'utilisation actuelle du projet.
+Ce changelog fait état de mises à jour régulières de synchronisation des données depuis datagouv.fr. Ces mises à jour assurent que le projet skills reste à jour avec les informations les plus récentes disponibles sur la plateforme.
+
+### Évolutions fonctionnelles
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la synchronisation des données.
 
 ### Évolutions techniques
-- Refactorisation : Isolation des skills RAG dans le répertoire `skills/.experimental/` pour une meilleure organisation et modularité.  [#16](https://github.com/etalab-ia/skills/issues/16)
+- Synchronisation régulière des données depuis datagouv.fr via les workflows suivants :
+    - [#21](https://github.com/etalab-ia/skills/pull/21) (15 juin 2026)
+    - [#20](https://github.com/etalab-ia/skills/pull/20) (8 juin 2026)
+    - [#19](https://github.com/etalab-ia/skills/pull/19) (1 juin 2026)
+    - [#18](https://github.com/etalab-ia/skills/pull/18) (25 mai 2026)
+
+### Autres changements
+- Mise à jour automatisée des dépendances via l'action `chore(datagouv): sync upstream changes`.
