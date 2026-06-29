@@ -1,14 +1,14 @@
-## Changelog : fiches-vdd (30 derniers jours, au 26 juin 2026)
+## Changelog : fiches-vdd (30 derniers jours, au 28 juin 2026)
 
 ### Résumé
-Ce changelog couvre une période de 30 jours marquée par des mises à jour quotidiennes des données contenues dans les fiches VDD. Ces mises à jour visent à maintenir l'information sur les droits et démarches la plus à jour possible pour les utilisateurs. Il n'y a eu aucune modification technique ou fonctionnelle autre que ces mises à jour de données.
+Ce changelog couvre une période de 30 jours marquée par des mises à jour quotidiennes des données fournies par le projet. Ces mises à jour consistent en l'ajout et la modification de fiches relatives aux droits et démarches administratives, assurant ainsi la pertinence et l'actualité des informations disponibles via l'API.
 
 ### Évolutions fonctionnelles
-- Mise à jour quotidienne des données des fiches VDD, incluant de nouvelles informations et corrections. Les mises à jour concernent les périodes du 31 mai 2026 au 26 juin 2026.
-- Les dates de mise à jour sont les suivantes : 31 mai, 30 mai, 29 mai, 28 mai, 27 mai, 26 mai, 25 mai, 24 mai, 23 mai, 22 mai, 21 mai, 20 mai, 19 mai, 18 mai, 17 mai, 16 mai, 15 mai, 14 mai, 13 mai, 12 mai, 11 mai, 10 mai, 9 mai, 8 mai, 7 mai, 6 mai, 5 mai, 4 mai, 3 mai, 2 mai et 1er mai 2026.
+- Mise à jour quotidienne des données des fiches de droits et démarches administratives. Chaque jour, de nouvelles informations ou des modifications sont intégrées. Les mises à jour concernent les 30 derniers jours, du 31 mai 2026 au 28 juin 2026.
+- Les mises à jour de données sont identifiées par des dates spécifiques (ex: 20260628_1923, 20260627_1923, etc.).
 
 ### Évolutions techniques
-- Aucune évolution technique n'a été apportée durant cette période.
+- Aucune évolution technique significative n'a été identifiée durant cette période. Les commits concernent principalement les mises à jour des données.
 
 ### Autres changements
-- Aucune autre modification n'a été effectuée.
+- Aucun autre changement significatif n'a été identifié.
