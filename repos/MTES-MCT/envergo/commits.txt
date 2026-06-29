@@ -1,9 +1,27 @@
+2026-06-25T10:09:15+02:00 - be50ec5b - Thibault J. : Merge pull request #1188 from MTES-MCT/fix_ci_pre_commit
+2026-06-24T10:03:04+02:00 - 53964414 - nmh : Merge pull request #1192 from MTES-MCT/fix-natura2000
+2026-06-24T09:48:27+02:00 - dacfb198 - EH : Remove N2000 message en cours d'import
+2026-06-24T08:48:25+02:00 - 6bfdef22 - Alexis Athlani : Merge pull request #1117 from MTES-MCT/feat-homepage
+2026-06-24T08:45:16+02:00 - 9a02ed74 - Alexis Athlani : Merge pull request #1113 from MTES-MCT/feat-instruction-note-page
+2026-06-24T08:33:12+02:00 - 2134bcd3 - Alexis A. :   chore(petitions): merge migration leaves 0050
+2026-06-24T08:24:20+02:00 - 73365ae4 - Alexis A. : fix lint
+2026-06-24T08:23:26+02:00 - 523e0455 - Alexis Athlani : Update envergo/templates/haie/petitions/instructor_view_notes.html
+2026-06-24T08:23:06+02:00 - af42aed0 - Alexis Athlani : Update envergo/templates/haie/petitions/instructor_view_notes.html
+2026-06-24T08:20:27+02:00 - faa11eb9 - Alexis A. :   chore(petitions): merge migration leaves 0049
+2026-06-24T08:20:26+02:00 - a3c21692 - Alexis A. :   feat(petitions): notifier l'instructeur en cas d'erreur de formulaire des notes
+2026-06-24T08:20:26+02:00 - 6490e34d - Alexis A. :   style(instructor_notes): always show bottom edit button
+2026-06-24T08:20:26+02:00 - 4858d195 - Alexis A. : style(instructor_notes): align read mode labels with edit mode styling
+2026-06-24T08:20:26+02:00 - 1b9ac3de - Alexis A. : style(instructor_notes): improve notes page layout and link handling
+2026-06-24T08:20:26+02:00 - 164b0028 - Alexis A. : fix(petitions): fix instructor notes link assertions to match urlize_html output
+2026-06-24T08:20:21+02:00 - e8ec539d - Alexis A. : feat(petitions): add private notes field and redesign instruction notes page
+2026-06-23T14:21:16+02:00 - af6d1aac - Alexis A. : ⏺ refactor(home_department_combobox): use template literals in showDepartmentInfo
 2026-06-23T14:15:58+02:00 - f4b7589f - Thibault J. : Merge pull request #1189 from MTES-MCT/quickfix_invalid_intersections
 2026-06-23T12:21:29+02:00 - c05bf838 - Thibault Jouannic : Protect against invalid geometries in intersection
 2026-06-23T12:13:53+02:00 - 4808bef7 - nmh : Merge pull request #1187 from MTES-MCT/bug-icpe-non-soumis-non-depot-lse
 2026-06-23T10:50:49+02:00 - 810661ab - Thibault J. : Merge pull request #1147 from MTES-MCT/density_maps
 2026-06-23T10:49:31+02:00 - 8bec090a - Thibault Jouannic : Rename terres_emergees map type
 2026-06-23T10:49:30+02:00 - d8aa5536 - Thibault Jouannic : Display density maps on config page
+2026-06-23T10:45:22+02:00 - 9fcdc26b - Thibault Jouannic : Sync local and ci linting dependencies
 2026-06-23T10:08:44+02:00 - 884198ff - Thibault J. : Merge pull request #1174 from MTES-MCT/emergency_procedure
 2026-06-23T09:57:37+02:00 - fc8e271e - Thibault Jouannic : Remove useless method override
 2026-06-23T09:57:17+02:00 - c1718901 - Thibault Jouannic : Remove "droit_constant" from tests
@@ -23,8 +41,18 @@
 2026-06-22T14:57:31+02:00 - 4d6d5729 - EH : Substract non_depot_lse from LSE results non_soumis, non_disponible and action_requise
 2026-06-22T13:08:38+02:00 - 7a7e3027 - EH : Substract non_depot_lse in action to take matrix for LSE regulation
 2026-06-22T11:22:05+02:00 - 1f92eb4b - nmh : Merge pull request #1140 from MTES-MCT/parametrage-page-natura2000
+2026-06-22T11:02:37+02:00 - fcf25cb7 - Alexis A. :   refactor(petitions): move ask-new-link form id to settings
 2026-06-22T10:59:31+02:00 - fb51e0dd - Alexis Athlani : Merge pull request #1114 from MTES-MCT/feat-migration-n2000-criteria
 2026-06-22T10:18:41+02:00 - df2af387 - EH : Update doc (minor)
+2026-06-22T09:15:29+02:00 - 9cf00b7d - Alexis A. :   refactor(haie): move department contact form id to settings
+2026-06-22T09:15:22+02:00 - 661f107e - Alexis A. :   refactor(haie): use native GET form for homepage department search
+2026-06-22T09:14:42+02:00 - a6245827 - Alexis A. :   style(haie): make simulation button full-width on mobile
+2026-06-22T09:14:41+02:00 - e53e1824 - Alexis A. : feat(homepage): show contacts and warnings for non-activated departments
+2026-06-22T09:14:41+02:00 - 54435504 - Alexis A. : fix(homepage): encode department code in combobox URL parameter
+2026-06-22T09:14:41+02:00 - 475f776d - Alexis A. : fix(contact): scope absolute positioning of autocomplete menu to homepage only
+2026-06-22T09:14:41+02:00 - 301de1e2 - Alexis A. : style(haie): improve home page simulator section UI
+2026-06-22T09:14:36+02:00 - 48d5a9f3 - Alexis A. : feat(homepage): replace department select with autocomplete combobox and redesign layout
+2026-06-22T09:13:51+02:00 - 0c9868f0 - Alexis A. : feat(settings): add HOME_MAX_DEPARTMENT_TILES setting
 2026-06-22T08:54:51+02:00 - 3466c22b - Alexis A. :   feat(create_n2000_haie_criteria): forcer activation_mode hedges_intersection
 2026-06-22T08:54:50+02:00 - ea970b33 - Alexis A. : feat(create_n2000_haie_criteria): add prerequisite check before any database modification
 2026-06-22T08:54:50+02:00 - 99787f0e - Alexis A. :   feat(create_n2000_haie_criteria): corriger les espaces fines insécables des noms de cartes

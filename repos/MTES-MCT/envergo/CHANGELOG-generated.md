@@ -1,41 +1,26 @@
-## Changelog : envergo (30 derniers jours, au 23 juin 2026)
+## Changelog : envergo (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de la performance et de la stabilité de l'application, notamment au niveau de la gestion des données et des requêtes. Des corrections de bugs et des ajustements ont été apportés pour améliorer l'expérience utilisateur, en particulier concernant la gestion des critères Natura 2000, des données ICPE et des alertes. L'interface utilisateur a également été affinée et des nouvelles fonctionnalités ont été ajoutées pour faciliter la gestion des données et des configurations.
+Ce mois-ci, envergo a bénéficié d'améliorations significatives, notamment l'ajout de nouvelles fonctionnalités pour la gestion des ICPE (Installations Classées pour la Protection de l'Environnement) et une refonte de l'interface utilisateur pour une meilleure expérience. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer la stabilité et la fiabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des cartes de densité sur la page de configuration.
-- Implémentation d'une procédure d'urgence avec un formulaire dédié et une alerte d'information.
-- Amélioration de l'affichage et de la gestion des critères Natura 2000, incluant la prise en compte des haies et des zones spécifiques.
-- Correction d'un bug empêchant la soumission des ICPE non soumis et sans dépôt LSE.
-- Ajout de la possibilité d'importer plusieurs fichiers.
-- Amélioration de la gestion des actions à entreprendre pour les ICPE, avec des modèles spécifiques pour les cas par cas.
-- Modification du libellé "Administration" par "Espace instruction" pour plus de clarté.
-- Ajout de la possibilité d'importer des données Taxref pour mettre à jour les espèces.
-- Amélioration de l'affichage des données dans les tableaux, notamment l'ajout d'unités.
-- Correction de l'affichage des données dans les emails d'avis.
-- Amélioration de la gestion des conditions de plantation.
+- **ICPE :** Ajout de la gestion du cas par cas pour les ICPE, incluant des actions à entreprendre et des modèles spécifiques pour la création et la modification.  L'accès à certaines informations ICPE est désormais restreint au personnel autorisé.
+- **Page d'accueil :** Refonte de la page d'accueil avec un nouveau sélecteur de département utilisant une fonctionnalité de recherche automatique et affichant des informations de contact et des alertes pour les départements non activés.
+- **Notes de l'instructeur :**  Possibilité d'ajouter des notes privées pour les instructeurs, avec une interface améliorée pour la saisie et la consultation.
+- **Cartographie :** Ajout de cartes de densité pour faciliter la visualisation des données.
+- **Procédure d'urgence :** Implémentation d'une procédure d'urgence avec un formulaire dédié et une alerte d'information affichée aux utilisateurs.
+- **Import multiple :** Possibilité d'importer plusieurs fichiers simultanément.
 
 ### Évolutions techniques
-- Optimisation des performances de l'application, notamment au niveau des requêtes en base de données et de la récupération des données.
-- Refactorisation du code pour améliorer la qualité et la maintenabilité.
-- Mise à jour des dépendances, incluant Playwright et Node.js.
-- Amélioration de la sécurité en whitelistant les URL mappings vers les domaines locaux.
-- Suppression de données sensibles dans les URL.
-- Correction de bugs et amélioration des tests unitaires et d'intégration.
-- Mise en place de tests plus complets pour les critères ICPE.
-- Amélioration de la gestion des migrations de base de données.
-- Correction de conflits de migration.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- **Refactoring :** Amélioration de la structure du code, notamment pour la gestion des critères ICPE et des actions à entreprendre.
+- **Tests :** Ajout et mise à jour des tests unitaires et d'intégration, notamment pour les nouvelles fonctionnalités ICPE.
+- **CI/CD :** Mise à jour des dépendances et configuration du pipeline CI/CD pour assurer une intégration et un déploiement continus.
+- **Sécurité :** Sécurisation des URL et protection contre les géométries invalides.
+- **Mise à jour des dépendances :** Mise à jour de plusieurs dépendances, notamment Playwright et Node.js.
 
 ### Autres changements
-- Correction de fautes de frappe et amélioration de la qualité du code.
-- Mise à jour de la documentation.
-- Suppression de code inutile.
-- Amélioration des messages d'erreur.
-- Ajout de tests pour les nouvelles fonctionnalités.
-- Correction de problèmes de synchronisation entre les templates HTML et texte des avis.
-- Suppression du modèle `RecipientStatus` et des fonctionnalités associées à Brevo pour la gestion du RGPD.
-- Suppression du suivi des événements Brevo.
-- Correction de problèmes liés à la gestion des conditions et des coefficients pour les RU (Réglementation Urbanisme).
-- Amélioration de la gestion des erreurs et des exceptions.
+- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées.
+- **Nettoyage du code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Corrections de bugs :** Correction de plusieurs bugs mineurs, notamment liés à l'affichage des données et à la gestion des erreurs.
+- **Amélioration des messages d'erreur :** Clarification des messages d'erreur pour faciliter le diagnostic des problèmes.
+- **Gestion des migrations :** Résolution de conflits de migrations et ajout de nouvelles migrations pour les nouvelles fonctionnalités.
