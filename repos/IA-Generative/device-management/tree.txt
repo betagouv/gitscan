@@ -35,6 +35,7 @@
 │   │   │   └── keycloak.py
 │   │   ├── static
 │   │   │   └── dm-admin.css
+│   │   ├── suggest_utils.py
 │   │   └── templates
 │   │       ├── artifacts.html
 │   │       ├── audit_log.html
@@ -65,7 +66,9 @@
 │   │       ├── catalog_base.html
 │   │       ├── catalog_detail.html
 │   │       └── catalog_index.html
+│   ├── logfilters.py
 │   ├── main.py
+│   ├── pathsafe.py
 │   ├── postgres_queue.py
 │   ├── s3.py
 │   ├── services
@@ -84,6 +87,7 @@
 │   │   ├── .env.example
 │   │   ├── .env.secrets.example
 │   │   ├── Dockerfile
+│   │   ├── README.md
 │   │   ├── docker-compose.yml
 │   │   └── relay-assistant.conf.template
 │   ├── k8s
@@ -118,8 +122,18 @@
 │   │   └── overlays
 │   │       ├── dgx
 │   │       │   ├── env-secrets.yaml.example
+│   │       │   ├── grafana-dgx-patch.yaml
 │   │       │   ├── httproute.yaml
 │   │       │   ├── kustomization.yaml
+│   │       │   ├── observability
+│   │       │   │   ├── 40-tempo-pvc.yaml
+│   │       │   │   ├── 41-tempo-config.yaml
+│   │       │   │   ├── 42-tempo-deployment.yaml
+│   │       │   │   ├── 43-tempo-service.yaml
+│   │       │   │   ├── 44-grafana-pvc.yaml
+│   │       │   │   ├── 45-grafana-config.yaml
+│   │       │   │   ├── 46-grafana-deployment.yaml
+│   │       │   │   └── 47-grafana-service.yaml
 │   │       │   ├── proxy-patch-device-management-admin.yaml
 │   │       │   ├── proxy-patch-device-management.yaml
 │   │       │   ├── proxy-patch-queue-worker.yaml
@@ -156,18 +170,15 @@
 │   │   ├── developer-readme.md
 │   │   ├── mode-operatoire-campagnes.md
 │   │   └── test-cahier.md
-│   ├── plugin-developer
-│   │   ├── README.md
-│   │   ├── config.default.example.json
-│   │   ├── consumer-readme.md
-│   │   ├── mirai-catalog-snippet.html
-│   │   ├── mirai-integration-README.md
-│   │   ├── packaging-guide.md
-│   │   ├── plugin-dm-protocol-update-features.md
-│   │   └── plugin-integration-2-4-5.md
-│   └── security
+│   └── plugin-developer
 │       ├── README.md
-│       └── audit-remediation-report.md
+│       ├── config.default.example.json
+│       ├── consumer-readme.md
+│       ├── mirai-catalog-snippet.html
+│       ├── mirai-integration-README.md
+│       ├── packaging-guide.md
+│       ├── plugin-dm-protocol-update-features.md
+│       └── plugin-integration-2-4-5.md
 ├── keycloak
 │   ├── keycloak-bootstrap-client-example.json
 │   └── pkce-test.sh
@@ -197,7 +208,8 @@
 │   ├── repack-oxt.sh
 │   ├── reset-from-scratch.sh
 │   ├── setup-wireguard.sh
-│   └── test-all.sh
+│   ├── test-all.sh
+│   └── test-scaleway-key.py
 └── tests
     ├── conftest.py
     ├── test_admin_playwright.py
@@ -205,12 +217,16 @@
     ├── test_e2e_deployment.py
     ├── test_enriched_config.py
     ├── test_enroll.py
+    ├── test_logfilters.py
+    ├── test_observability.py
     ├── test_ops_metrics.py
+    ├── test_pathsafe.py
     ├── test_post_deploy.py
     ├── test_queue_load.py
     ├── test_queue_resilience_distributed.py
     ├── test_queue_security.py
     ├── test_queue_validation.py
     ├── test_relay.py
+    ├── test_security_suggest.py
     └── test_telemetry.py
-38 directories, 177 files
+38 directories, 193 files
