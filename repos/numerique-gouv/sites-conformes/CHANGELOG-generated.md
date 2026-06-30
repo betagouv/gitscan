@@ -1,22 +1,26 @@
-## Changelog : sites-conformes (30 derniers jours, au 10 juin 2026)
+## Changelog : sites-conformes (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Sites Conformes se concentrent sur l'amélioration de la robustesse du projet, avec l'ajout de Sentry pour la surveillance des erreurs, des corrections de bugs sur le frontend, et des améliorations de la configuration et du packaging. Une nouvelle fonctionnalité permet également le stockage des médias directement en base de données PostgreSQL, offrant une alternative à l'utilisation de S3.
+Ce mois-ci, les évolutions de Sites Conformes se concentrent sur l'amélioration du processus de publication, la correction de bugs et la préparation du déploiement sur Scalingo. Des améliorations ont également été apportées à la gestion des médias et à la configuration du projet, notamment via l'automatisation du versionnement et de la publication sur PyPi.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de stocker les médias en PostgreSQL, offrant une alternative à S3. [#482](https://github.com/numerique-gouv/sites-conformes/issues/482)
-- Corrections de bugs sur l'interface utilisateur (frontend). [#486](https://github.com/numerique-gouv/sites-conformes/issues/486)
-- Intégration de Sentry pour la surveillance et la gestion des erreurs. [#445](https://github.com/numerique-gouv/sites-conformes/issues/445)
+- Correction d'une erreur 500 qui se produisait lors du changement de type d'en-tête avec une image d'arrière-plan. [#512](https://github.com/numerique-gouv/sites-conformes/issues/512)
+- Correction d'une erreur 500 lors de l'absence d'image. [#531](https://github.com/numerique-gouv/sites-conformes/issues/531)
+- Amélioration de la gestion des médias avec des noms de dossiers spécifiques pour la descente et la restauration des médias.
+- Mise en place d'un déploiement en un clic sur Scalingo (avec correction). [#487](https://github.com/numerique-gouv/sites-conformes/issues/487)
+- Ajout de la possibilité de choisir la balise d'en-tête (heading tag) dans le stepper.
+- Ajout d'un titre sur les tags sélectionnés.
+- Ajout de tags non ordonnés.
+- Internationalisation (i18n) : plusieurs commits pour l'ajout et la correction de la gestion des traductions.
 
 ### Évolutions techniques
-- Amélioration de la configuration Docker. [#519](https://github.com/numerique-gouv/sites-conformes/issues/519)
-- Refonte du packaging du projet, incluant la récupération de la documentation. [#506](https://github.com/numerique-gouv/sites-conformes/issues/506) et [#514](https://github.com/numerique-gouv/sites-conformes/issues/514)
-- Mise à jour des dépendances Python. [#501](https://github.com/numerique-gouv/sites-conformes/issues/501)
-- Migration des sources namespacées vers `sites_conformes/`.
-- Application automatique de corrections via pre-commit.
+- Ajout du versionnement via GitHub Actions et publication sur PyPi. [#515](https://github.com/numerique-gouv/sites-conformes/issues/515)
+- Amélioration de la recette d'upgrade pour gérer le projet de démonstration. [#527](https://github.com/numerique-gouv/sites-conformes/issues/527)
+- Correction de la configuration Docker. [#519](https://github.com/numerique-gouv/sites-conformes/issues/519)
 - Correction des erreurs de validation du fichier `publiccode.yml`. [#496](https://github.com/numerique-gouv/sites-conformes/issues/496)
+- Amélioration des scripts de restauration des médias (gestion des erreurs, verbosité).
 
 ### Autres changements
-- Mise à jour de la documentation. [#511](https://github.com/numerique-gouv/sites-conformes/issues/511)
-- Ajout de `demo` à `slugignore`.
-- Revert d'une migration et ajout d'une nouvelle migration.
+- Commentaires ajoutés à certains scripts de migration.
+- Revert d'un commit d'ajout de migration.
+- Correction de bugs mineurs et améliorations diverses du code.
