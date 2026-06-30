@@ -1,25 +1,22 @@
-## Changelog : acceslibre (30 derniers jours, au 12 juin 2026)
+## Changelog : acceslibre (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la qualité des données, notamment via l'ajout de nouvelles questions dans le schéma de collecte et la correction de problèmes liés à l'importation et à la visualisation des données. Des ajustements ont également été apportés à l'interface utilisateur et à la sécurité, ainsi qu'à l'intégration de données externes via l'APIDAE.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données, notamment avec l'ajout d'un indicateur d'exemption RPA et la mise à jour du schéma de données à la version 0.0.20. Des corrections liées aux retours d'audit RGAA ont également été implémentées, ainsi que des ajustements de sécurité pour Google Analytics. De nombreuses mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de questions signalétiques et ajustement des questions concernant les établissements scolaires et les lieux de santé dans le formulaire de collecte de données [#2620](https://github.com/MTES-MCT/acceslibre/issues/2620).
-- Amélioration de l'ouverture des liens vers acceslibre dans une nouvelle fenêtre [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654).
-- Correction de l'affichage du taux de complétion en excluant certaines questions [#2656](https://github.com/MTES-MCT/acceslibre/issues/2656) et [#2653](https://github.com/MTES-MCT/acceslibre/issues/2653).
-- Possibilité d'exporter les mails [#2652](https://github.com/MTES-MCT/acceslibre/issues/2652).
-- Restriction de l'accès à l'interface d'administration aux utilisateurs "staff" [#2652](https://github.com/MTES-MCT/acceslibre/issues/2652).
-- Correction de la lecture des liens widget acceslibre [#2654](https://github.com/MTES-MCT/acceslibre/issues/2654).
-- Amélioration de la sélection de la commune pour optimiser les requêtes [#2655](https://github.com/MTES-MCT/acceslibre/issues/2655).
+- Ajout d'un indicateur d'exemption RPA (Référentiel des Gestes Alternatifs) sur la page d'accessibilité. [#2691](https://github.com/MTES-MCT/acceslibre/issues/2691)
+- Ajout d'une propriété RPA pour les établissements. [#2601](https://github.com/MTES-MCT/acceslibre/issues/2601)
+- Correction des retours d'audit RGAA pour améliorer l'accessibilité de l'application. [#2670](https://github.com/MTES-MCT/acceslibre/issues/2670)
+- Amélioration du calcul du taux de complétion. [#2681](https://github.com/MTES-MCT/acceslibre/issues/2681)
+- Ajustement de la sécurité de Google Analytics suite aux recommandations de zizmor. [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663)
+- Mise à jour du schéma de données à la version 0.0.20. [#2590](https://github.com/MTES-MCT/acceslibre/issues/2590)
 
 ### Évolutions techniques
-- Mise à jour du schéma de données vers la version 0.0.20 [#2590](https://github.com/MTES-MCT/acceslibre/issues/2590).
-- Intégration de l'importation de données via l'APIDAE [#2641](https://github.com/MTES-MCT/acceslibre/issues/2641).
-- Ajustements de sécurité liés à Google Analytics (GA) [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663).
-- Correction de bugs liés au schéma de base de données [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671).
-- Correction de problèmes liés à l'acquisition de données via Scrapfly (désactivée temporairement en attendant une réécriture) [#2640](https://github.com/MTES-MCT/acceslibre/issues/2640).
-- Correction de problèmes liés au wizard de contribution, nécessitant une authentification [#2636](https://github.com/MTES-MCT/acceslibre/issues/2636).
-- Correction de problèmes liés au feedback RGAA [#2670](https://github.com/MTES-MCT/acceslibre/issues/2670).
+- Corrections de la base du schéma de données. [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671)
+- Utilisation d'une locale `fr_FR` pour la génération de données factices avec Faker. [#2680](https://github.com/MTES-MCT/acceslibre/issues/2680)
+- Ajout d'outils sur la page d'accessibilité. [#2682](https://github.com/MTES-MCT/acceslibre/issues/2682)
 
 ### Autres changements
-- Mise à jour de la documentation et ajustements suite aux changements de schéma [#2651](https://github.com/MTES-MCT/acceslibre/issues/2651).
+- Documentation mise à jour.
+- Nettoyage et amélioration du code.
+- Mises à jour de nombreuses dépendances (dompurify, prettier, pnpm, ruff, weasyprint, djangorestframework-gis, djlint, faker, gunicorn, eslint, scrapfly-sdk, deepl, django-import-export, django-reversion). Ces mises à jour sont principalement liées à la sécurité et à la maintenance du projet.
