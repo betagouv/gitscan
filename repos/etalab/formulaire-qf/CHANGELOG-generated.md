@@ -1,18 +1,14 @@
 ## Changelog : formulaire-qf (30 derniers jours, au 08 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la correction d'un bug empêchant la sélection correcte des collectivités et sur la maintenance des dépendances du projet. L'équipe a également continué à améliorer la qualité du code grâce à des outils de linting.
+Ce mois-ci, les efforts de développement se sont concentrés sur la correction d'un bug affectant la sélection des collectivités et sur la maintenance générale du projet, incluant la mise à jour des dépendances pour assurer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug dans la sélection des collectivités : l'identifiant de la collectivité est maintenant correctement conservé lors de la soumission du formulaire, permettant une sélection correcte.  [#347](https://github.com/etalab/formulaire-qf/pull/347)
+- Correction d'un bug empêchant le bon fonctionnement de la sélection des collectivités dans certains cas. Le paramètre `id` est maintenant correctement conservé lors de l'appel à `set_collectivity` [#347](https://github.com/etalab/formulaire-qf/pull/347).
 
 ### Évolutions techniques
-- Mise à jour de Rubocop-rails : passage de la version 2.35.1 à 2.35.4.
-- Mise à jour de Faraday : passage à la version 2.14.2.
-- Mise à jour de Rubocop : passage à une version plus récente.
-- Mise à jour des dépendances de production : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations.
-- Mise à jour des dépendances de développement : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations.
-- Amélioration du linting du code.
+- Mise à jour de plusieurs dépendances Ruby, notamment `rubocop-rails` (de 2.35.1 à 2.35.4), `faraday` (à 2.14.2) et divers paquets du groupe `production-dependencies` et `development-dependencies` pour bénéficier des dernières corrections et améliorations de sécurité.
+- Amélioration de la qualité du code via des corrections de linting [#346](https://github.com/etalab/formulaire-qf/pull/346).
 
 ### Autres changements
-- Nettoyage du code et application des recommandations du linter.
+- Aucune information significative à signaler.
