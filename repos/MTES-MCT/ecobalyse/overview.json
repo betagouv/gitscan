@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Ecobalyse accélère la mise en place de l’affichage environnemental. L’application permet d’explorer et de comparer les impacts environnementaux de différents produits et processus.",
+  "description": "Ecobalyse accélère la mise en place de l’affichage environnemental. L’application est accessible à l’adresse https://ecobalyse.beta.gouv.fr.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,24 +11,32 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Simulation & Calcul",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Simulation & Calcul"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Python",
     "Elm",
     "NodeJS",
-    "PostgreSQL",
+    "Python",
+    "uv",
+    "gettext",
+    "transcrypt",
+    "docker",
     "Litestar",
-    "aiosqlite",
+    "asyncpg",
+    "PostgreSQL",
+    "aiosmtplib",
+    "emails",
+    "python-stdnum",
+    "pygithub",
+    "typer",
     "pytest",
-    "ruff",
-    "Parcel",
-    "Sentry"
+    "pytest-databases",
+    "psycopg",
+    "structlog",
+    "orjson",
+    "passlib",
+    "sentry-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -40,18 +48,18 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "jwt"
     ]
   },
   "tests": [
-    "Pytest",
-    "Jest",
-    "Playwright"
+    "pytest",
+    "jest",
+    "playwright"
   ],
   "workflows": [
     "node.js.yml"
   ],
-  "lastActivity": "2026-06-25T00:00:00Z",
+  "lastActivity": "2026-06-27T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -62,7 +70,6 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie",
-    "JavaScript"
+    "Environnement & Énergie"
   ]
 }
