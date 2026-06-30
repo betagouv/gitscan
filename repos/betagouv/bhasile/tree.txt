@@ -240,6 +240,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260618090100_drop_force_historize
 │   │   │   └── migration.sql
+│   │   ├── 20260625100701_flag_lgbt_fvvteh_incoherence
+│   │   │   └── migration.sql
+│   │   ├── 20260626133854_nullable_effective_date
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -332,7 +336,8 @@
 │   │   ├── 20260521-backfill-structure-version.ts
 │   │   ├── 20260610-backfill-structure-finess-and-descriptions.ts
 │   │   ├── 20260617-create-transformation-form-definitions.ts
-│   │   └── 20260622-fill-departement-population.ts
+│   │   ├── 20260622-fill-departement-population.ts
+│   │   └── 20260626-backfill-structure-dates.ts
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
@@ -535,7 +540,8 @@
 │   │   │   │       │   │       ├── PrahdaTypePlaceBlock.tsx
 │   │   │   │       │   │       ├── TypePlaceBlock.tsx
 │   │   │   │       │   │       ├── TypePlaceCharts.tsx
-│   │   │   │       │   │       └── TypePlaceHistory.tsx
+│   │   │   │       │   │       ├── TypePlaceHistory.tsx
+│   │   │   │       │   │       └── getTypePlaceHistoryHeadings.tsx
 │   │   │   │       │   ├── _context
 │   │   │   │       │   │   ├── StructureClientContext.tsx
 │   │   │   │       │   │   └── StructureContext.tsx
@@ -1285,10 +1291,12 @@
 │   │   │   └── structures
 │   │   │       └── [id]
 │   │   │           └── _components
-│   │   │               └── _description
-│   │   │                   └── _historique
-│   │   │                       ├── HistoryEventLabel.test.tsx
-│   │   │                       └── StructureRefLinks.test.tsx
+│   │   │               ├── _description
+│   │   │               │   └── _historique
+│   │   │               │       ├── HistoryEventLabel.test.tsx
+│   │   │               │       └── StructureRefLinks.test.tsx
+│   │   │               └── _type-places
+│   │   │                   └── getTypePlaceHistoryHeadings.test.tsx
 │   │   └── structures
 │   │       ├── StructuresTable.test.tsx
 │   │       ├── [id]
@@ -1591,4 +1599,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-418 directories, 1175 files
+421 directories, 1180 files
