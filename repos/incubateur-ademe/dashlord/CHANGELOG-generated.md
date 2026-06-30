@@ -1,28 +1,28 @@
-## Changelog : dashlord (30 derniers jours, au 21 juin 2026)
+## Changelog : dashlord (30 derniers jours, au 28 juin 2026)
 
 ### Résumé
-Ce changelog couvre une période d'activité principalement axée sur la mise à jour des configurations et des URLs des sites web surveillés par DashLord. Les mises à jour concernent un large éventail de sites, incluant ceux liés à la transition écologique, aux déchets, à l'énergie et à l'impact environnemental. Une mise à jour de l'action GitHub `dashlord-actions` a également été effectuée.
+Ce mois-ci, les mises à jour de DashLord se sont principalement concentrées sur la maintenance et l'actualisation des configurations pour le suivi de nombreux sites web gérés par l'ADEME et ses partenaires. Ces mises à jour garantissent que le tableau de bord continue de fournir des données précises et à jour sur les bonnes pratiques techniques de ces sites.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la maintenance et la mise à jour des sources de données.
+- Mise à jour des configurations pour le site tacct : [#1734](https://github.com/incubateur-ademe/dashlord/issues/1734) (par Lilian Saget-Lethias)
 
 ### Évolutions techniques
-- Mise à jour de l'action GitHub `dashlord-actions` vers la version v1.46.1 [#59554b2](https://github.com/incubateur-ademe/dashlord/commit/59554b2).
-- Mise à jour de la configuration pour le site `tacct` [#b973fbb](https://github.com/incubateur-ademe/dashlord/commit/b973fbb).
+- Mise à jour de la dépendance `dashlord-actions` vers la version v1.46.1 pour bénéficier des dernières corrections et améliorations.
 
 ### Autres changements
-- Mises à jour régulières des URLs des sites web suivants :
-    - `france-chaleur-urbaine.beta.gouv.fr`
-    - `tacct.ademe.fr`
-    - `benefriches.ademe.fr`
-    - `aldo.territoiresentransitions.fr`
-    - `app.territoiresentransitions.fr`
-    - `www.territoiresentransitions.fr`
-    - `mission-transition-ecologique.beta.gouv.fr`
-    - `mission-transition-ecologique.beta.gouv.fr/api/health`
-    - `plusfraichemaville.fr`
-    - `nosgestesclimat.fr`
-    - `impactco2.fr`
-    - `quefairedemesdechets.ademe.fr`
-    - `pacoupa.ademe.fr`
-    - `facili-tacct.beta.gouv.fr`
+- Mises à jour régulières des configurations de suivi pour les sites suivants :
+    - france-chaleur-urbaine.beta.gouv.fr
+    - tacct.ademe.fr
+    - benefriches.ademe.fr
+    - aldo.territoiresentransitions.fr
+    - territoriresentransitions.fr
+    - app.territoiresentransitions.fr
+    - mission-transition-ecologique.beta.gouv.fr
+    - mission-transition-ecologique.beta.gouv.fr/api/health
+    - plusfraichemaville.fr
+    - nosgestesclimat.fr
+    - impactco2.fr
+    - quefairedemesdechets.ademe.fr
+    - pacoupa.ademe.fr
+    - facili-tacct.beta.gouv.fr
+- Mises à jour du rapport de DashLord.
