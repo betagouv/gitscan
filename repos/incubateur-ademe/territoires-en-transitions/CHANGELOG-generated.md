@@ -1,31 +1,49 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 26 juin 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 29 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans le module d'audit et de labellisation, avec une refonte de l'interface et l'ajout de nouvelles fonctionnalités comme l'archivage des preuves et la gestion des rôles. Des efforts importants ont également été faits pour améliorer la performance et la sécurité de la plateforme, ainsi que pour faciliter l'import de plans d'action via un nouveau module dédié.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des audits et des référentiels, avec une refonte de l'interface de labellisation et l'ajout de nouvelles fonctionnalités comme l'archivage des preuves. Des efforts importants ont également été déployés pour améliorer la sécurité et la performance de la plateforme, notamment en corrigeant des vulnérabilités et en optimisant le chargement des données. L'import de plans via l'IA progresse avec l'ajout de nouveaux extracteurs et une architecture plus robuste.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bandeau permettant de basculer vers la nouvelle vue de labellisation [#6b4b226](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6b4b226).
-- Possibilité de dupliquer un plan d'action depuis son identifiant, avec copie des budgets et des preuves associées [#2bb4132](https://github.com/incubateur-ademe/territoires-en-transitions/commit/2bb4132), [#32a9d25](https://github.com/incubateur-ademe/territoires-en-transitions/commit/32a9d25), [#50fcabd](https://github.com/incubateur-ademe/territoires-en-transitions/commit/50fcabd).
-- Intégration des informations d'audit dans la vue tableau du référentiel, avec suppression de l'onglet "Suivi" [#6b5adc0](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6b5adc0).
-- Affichage du conseiller référent dans l'en-tête de la checklist d'audit [#6f3515a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6f3515a).
-- Possibilité de télécharger une archive des preuves d'un audit [#e59576d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/e59576d).
-- Amélioration de l'affichage des scores indicatifs dans les sous-mesures [#390be3d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/390be3d).
-- Ajout d'une action "Dupliquer l'action" dans les menus de fiche [#a428150](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a428150).
-- Possibilité de filtrer les mesures désactivées par la personnalisation [#ecec29f](https://github.com/incubateur-ademe/territoires-en-transitions/commit/ecec29f).
+- **Audits et Labellisation :**
+    - Nouvelle interface pour la gestion des audits, incluant une vue checklist plus intuitive et la possibilité de remplacer le rapport d'audit par l'auditeur. [#29 juin 2026]
+    - Possibilité de masquer les colonnes d'audit dans le référentiel. [#29 juin 2026]
+    - Les notes de l'auditeur sont désormais modifiables directement en ligne. [#29 juin 2026]
+    - Clôture d'audit en deux étapes avec une modale de confirmation. [#29 juin 2026]
+    - Intégration des informations d'audit directement dans la vue tableau du référentiel, supprimant l'onglet "Suivi". [#25 juin 2026]
+    - Affichage du conseiller référent dans l'en-tête de la checklist d'audit. [#25 juin 2026]
+    - Possibilité de télécharger une archive des preuves d'un audit. [#25 juin 2026]
+- **Référentiels :**
+    - Ajout d'un endpoint pour lister les archives de preuves, permettant d'accéder aux anciennes versions. [#29 juin 2026]
+    - Possibilité d'éditer le conseiller directement depuis l'en-tête du référentiel. [#29 juin 2026]
+    - Amélioration de l'affichage des preuves de mesures, limitées à la fenêtre de l'audit. [#16 juin 2026]
+    - Les preuves de labellisation sont verrouillées une fois l'audit validé. [#16 juin 2026]
+- **Plans d'action :**
+    - Ajout d'une action "Dupliquer l'action" dans les menus de fiche. [#10 juin 2026]
+    - Copie des budgets détaillés et des preuves/documents lors de la duplication d'un plan. [#9 juin 2026]
+- **Interface utilisateur :**
+    - Barre de recherche avec autofocus dans les listes de mesures, indicateurs, actions et collectivités. [#29 juin 2026]
+    - Amélioration de l'affichage du badge d'audit. [#24 juin 2026]
+    - Ajout d'une primitive FloatingPanel non-modale pour les composants de l'interface. [#23 juin 2026]
 
 ### Évolutions techniques
-- Application d'une Content Security Policy (CSP) globale à toutes les routes pour renforcer la sécurité [#e538a37](https://github.com/incubateur-ademe/territoires-en-transitions/commit/e538a37).
-- Refactor du code pour supprimer l'utilisation de row-level security (RLS) dans le service de base de données [#7217fd4](https://github.com/incubateur-ademe/territoires-en-transitions/commit/7217fd4).
-- Mise à jour de Next.js et eslint-config-next en version 16.2.7 [#b54924a](https://github.com/incubateur-ademe/territoires-en-transitions/commit/b54924a).
-- Amélioration des performances en différant le chargement des dépendances lourdes [#b45496d](https://github.com/incubateur-ademe/territoires-en-transitions/commit/b45496d).
-- Mise à jour de Node.js en version 24.18.0 pour corriger une régression avec node-fetch [#75dcfff](https://github.com/incubateur-ademe/territoires-en-transitions/commit/75dcfff).
-- Passage des tests Storybook à Vitest addon [#6d2ad2e](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6d2ad2e).
-- Parallelisation des tests e2e en CI avec une voie série dédiée [#49d89ed](https://github.com/incubateur-ademe/territoires-en-transitions/commit/49d89ed), [#00fc5c3](https://github.com/incubateur-ademe/territoires-en-transitions/commit/00fc5c3).
-- Refactor du module d'import de plans d'action pour une meilleure structuration et performance [#f9348bb](https://github.com/incubateur-ademe/territoires-en-transitions/commit/f9348bb), [#2c6eaa3](https://github.com/incubateur-ademe/territoires-en-transitions/commit/2c6eaa3), [#6a2fdb2](https://github.com/incubateur-ademe/territoires-en-transitions/commit/6a2fdb2).
+- **Sécurité :**
+    - Correction de plusieurs vulnérabilités de sécurité identifiées lors de tests d'intrusion (IDOR, SSRF, contrôle d'accès horizontal). [#12 juin 2026, #8 juin 2026]
+    - Renforcement de la politique de sécurité du contenu (CSP). [#26 juin 2026]
+    - Restriction de l'accès aux objets de stockage Supabase aux membres de la collectivité. [#12 juin 2026]
+- **Architecture et Performance :**
+    - Refactor de l'architecture de l'import de plans via l'IA, avec une séparation claire des responsabilités et une meilleure gestion des erreurs. [#4 juin 2026, #9 juin 2026]
+    - Optimisation du chargement des données et suppression de dépendances inutiles (Fuse.js). [#8 juin 2026]
+    - Amélioration de la gestion des états et des composants de l'interface utilisateur. [#10 juin 2026]
+    - Mise à jour de Node.js vers la version 24.18.0 pour corriger une régression. [#25 juin 2026]
+    - Mise en place de tests e2e parallèles pour accélérer les cycles de test. [#25 juin 2026]
+- **Infrastructure :**
+    - Mise à jour des dépendances (Next.js, eslint-config-next). [#12 juin 2026]
 
 ### Autres changements
-- Amélioration de la documentation du dépôt pour les agents IA [#cb735b0](https://github.com/incubateur-ademe/territoires-en-transitions/commit/cb735b0).
-- Mise à jour du schéma des préférences de la collectivité [#a6420d1](https://github.com/incubateur-ademe/territoires-en-transitions/commit/a6420d1).
-- Ajout d'un plan pour la bascule des référentiels CAE/ECI vers TE [#387f6dc](https://github.com/incubateur-ademe/territoires-en-transitions/commit/387f6dc).
-- Nettoyage du code et suppression de dépendances inutilisées.
-- Correction de bugs mineurs et améliorations de la stabilité.
+- Documentation améliorée pour l'utilisation de l'IA par les agents. [#25 juin 2026]
+- Ajout de jalons pour la bascule vers le nouveau référentiel TE. [#29 juin 2026]
+- Amélioration de la gestion des erreurs et des logs.
+- Nettoyage du code et refactoring de plusieurs composants.
+- Mise à jour du schéma des préférences de la collectivité. [#25 juin 2026]
+- Synchronisation des données CRM depuis les outils. [#8 juin 2026]
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.

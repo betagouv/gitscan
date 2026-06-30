@@ -1481,7 +1481,7 @@
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.spec.ts
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
 │   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   └── use-get-audit-status-badge.ts
+│   │   │   │   │   │   └── use-get-audit-badge.ts
 │   │   │   │   │   ├── checklist
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.spec.ts
@@ -1521,6 +1521,7 @@
 │   │   │   │   │   │   ├── referentiel-menu.button.tsx
 │   │   │   │   │   │   ├── referents-line.tsx
 │   │   │   │   │   │   ├── role-mesure.item.tsx
+│   │   │   │   │   │   ├── use-conseiller-referent.ts
 │   │   │   │   │   │   └── use-role-mesure.ts
 │   │   │   │   │   ├── checklist-view-model.ts
 │   │   │   │   │   ├── checklist.context.tsx
@@ -1677,6 +1678,7 @@
 │   │   │   │   │   │   ├── PreuveDoc.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.stories.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.tsx
+│   │   │   │   │   │   ├── canUserUpdateAuditReport.ts
 │   │   │   │   │   │   ├── fixture.ts
 │   │   │   │   │   │   ├── openPreuve.ts
 │   │   │   │   │   │   ├── saveBlob.ts
@@ -1684,6 +1686,7 @@
 │   │   │   │   │   │   ├── useEditPreuve.ts
 │   │   │   │   │   │   ├── useEditState.ts
 │   │   │   │   │   │   ├── useFichiers.ts
+│   │   │   │   │   │   ├── useReplaceAuditReportFile.ts
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── PreuvesAction.stories.tsx
 │   │   │   │   │   ├── PreuvesAction.tsx
@@ -1705,10 +1708,7 @@
 │   │   │   │   ├── referentiel.table
 │   │   │   │   │   ├── audit-input-cell.tsx
 │   │   │   │   │   ├── empty-cell.tsx
-│   │   │   │   │   ├── referentiel-table.audit-notes.cell
-│   │   │   │   │   │   ├── get-audit-note-preview-content.spec.ts
-│   │   │   │   │   │   ├── get-audit-note-preview-content.ts
-│   │   │   │   │   │   └── referentiel-table.audit-notes.cell.tsx
+│   │   │   │   │   ├── referentiel-table.audit-notes.cell.tsx
 │   │   │   │   │   ├── referentiel-table.audit-ordre-du-jour.cell.tsx
 │   │   │   │   │   ├── referentiel-table.audit-statut.cell.tsx
 │   │   │   │   │   ├── referentiel-table.categorie.cell.tsx
@@ -3199,6 +3199,12 @@
 │   │   │   │   │   │   ├── start-audit.router.e2e-spec.ts
 │   │   │   │   │   │   ├── start-audit.router.ts
 │   │   │   │   │   │   └── start-audit.service.ts
+│   │   │   │   │   ├── update-audit-report
+│   │   │   │   │   │   ├── update-audit-report.errors.ts
+│   │   │   │   │   │   ├── update-audit-report.input.ts
+│   │   │   │   │   │   ├── update-audit-report.router.e2e-spec.ts
+│   │   │   │   │   │   ├── update-audit-report.router.ts
+│   │   │   │   │   │   └── update-audit-report.service.ts
 │   │   │   │   │   └── validate-audit
 │   │   │   │   │       ├── validate-audit.router.e2e-spec.ts
 │   │   │   │   │       ├── validate-audit.router.ts
@@ -6125,6 +6131,7 @@
 │   │   ├── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
 │   │   ├── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
 │   │   ├── 2026-06-11-001-feat-bascule-referentiel-te-prd.md
+│   │   ├── 2026-06-24-001-refactor-auth-into-app-plan.md
 │   │   └── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
 │   └── solutions
 │       ├── architecture-patterns
@@ -6215,6 +6222,7 @@
 │   │   │   │   ├── audit-conduct-tabs-auditeur.spec.ts
 │   │   │   │   ├── audit-labellisation-to-action-scroll.spec.ts
 │   │   │   │   ├── candidature-documents-auditeur.spec.ts
+│   │   │   │   ├── candidature-documents-verrou.spec.ts
 │   │   │   │   ├── checklist-acte-engagement.spec.ts
 │   │   │   │   ├── checklist-candidature-documents.spec.ts
 │   │   │   │   ├── checklist-role-mesures.spec.ts
@@ -6224,6 +6232,7 @@
 │   │   │   │   ├── demandes-audit-labellisation.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
 │   │   │   │   ├── new-audit-labellisation.pom.ts
+│   │   │   │   ├── rapport-audit-bibliotheque.spec.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
 │   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
@@ -6547,6 +6556,12 @@
 │   │   │   │   │   ├── can-modify-candidature-documents
 │   │   │   │   │   │   ├── can-modify-candidature-documents.rule.spec.ts
 │   │   │   │   │   │   └── can-modify-candidature-documents.rule.ts
+│   │   │   │   │   ├── can-update-audit-report
+│   │   │   │   │   │   ├── can-update-audit-report.rule.spec.ts
+│   │   │   │   │   │   └── can-update-audit-report.rule.ts
+│   │   │   │   │   ├── can-user-update-candidature-documents
+│   │   │   │   │   │   ├── can-user-update-candidature-documents.rule.spec.ts
+│   │   │   │   │   │   └── can-user-update-candidature-documents.rule.ts
 │   │   │   │   │   ├── etoile-action-condition-definition.schema.ts
 │   │   │   │   │   ├── labellisation-audit.schema.ts
 │   │   │   │   │   ├── labellisation-critere.schema.ts
@@ -6606,6 +6621,7 @@
 │   │   │   │   │   ├── permission-operation.enum.schema.ts
 │   │   │   │   │   ├── permission.models.ts
 │   │   │   │   │   ├── resource-type.enum.schema.ts
+│   │   │   │   │   ├── user-permission.rule.spec.ts
 │   │   │   │   │   ├── user-permission.rules.ts
 │   │   │   │   │   ├── user-role.enum.schema.ts
 │   │   │   │   │   └── user-roles-and-permissions.schema.ts
@@ -7366,4 +7382,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1276 directories, 6335 files
+1278 directories, 6349 files
