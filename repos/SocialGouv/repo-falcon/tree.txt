@@ -34,8 +34,13 @@
 │   ├── AGENT_INTEGRATION.md
 │   ├── ARCHITECTURE.md
 │   ├── CI.md
+│   ├── evaluation-and-observations.md
+│   ├── followups.md
 │   ├── install.sh
-│   └── repofalcon_landscape_analysis.md
+│   ├── repofalcon_landscape_analysis.md
+│   └── worked
+│       ├── README.md
+│       └── repofalcon-self.md
 ├── go.mod
 ├── go.sum
 ├── integration
@@ -71,10 +76,16 @@
 │   ├── cli
 │   │   ├── agentcontext.go
 │   │   ├── agentsetup.go
+│   │   ├── callgraph.go
+│   │   ├── callgraph_test.go
 │   │   ├── fleet.go
 │   │   ├── index.go
+│   │   ├── index_test.go
+│   │   ├── label.go
 │   │   ├── mcp.go
+│   │   ├── memory.go
 │   │   ├── prpack.go
+│   │   ├── query.go
 │   │   ├── root.go
 │   │   ├── snapshot.go
 │   │   └── sync.go
@@ -91,6 +102,8 @@
 │   │   ├── js_test.go
 │   │   ├── python.go
 │   │   ├── python_test.go
+│   │   ├── refs_test.go
+│   │   ├── refs_treesitter.go
 │   │   ├── regex.go
 │   │   ├── regex_test.go
 │   │   └── types.go
@@ -110,14 +123,25 @@
 │   │   ├── id.go
 │   │   ├── id_test.go
 │   │   └── model.go
+│   ├── llm
+│   │   ├── client.go
+│   │   └── client_test.go
 │   ├── logging
 │   │   └── logging.go
 │   ├── mcp
 │   │   ├── exec.go
 │   │   ├── graph.go
+│   │   ├── graph_test.go
 │   │   ├── handlers.go
+│   │   ├── labels.go
+│   │   ├── louvain.go
+│   │   ├── louvain_test.go
 │   │   ├── server.go
 │   │   └── tools.go
+│   ├── memory
+│   │   ├── memory.go
+│   │   ├── reflect.go
+│   │   └── reflect_test.go
 │   ├── prpack
 │   │   ├── context_pack.go
 │   │   ├── context_pack_test.go
@@ -126,10 +150,78 @@
 │   │   ├── impact_test.go
 │   │   ├── report.go
 │   │   └── types.go
-│   └── repo
-│       ├── doc.go
-│       ├── scan.go
-│       └── scan_test.go
+│   ├── repo
+│   │   ├── doc.go
+│   │   ├── ignore.go
+│   │   ├── ignore_test.go
+│   │   ├── scan.go
+│   │   └── scan_test.go
+│   ├── secure
+│   │   ├── secure.go
+│   │   └── secure_test.go
+│   └── workspace
+│       ├── detect.go
+│       ├── detect_test.go
+│       ├── go.go
+│       ├── java.go
+│       ├── js.go
+│       ├── python.go
+│       └── testdata
+│           ├── go_workspace
+│           │   ├── go.work
+│           │   ├── lib-b
+│           │   │   └── go.mod
+│           │   └── svc-a
+│           │       └── go.mod
+│           ├── gradle_workspace
+│           │   ├── core
+│           │   │   └── build.gradle.kts
+│           │   ├── settings.gradle.kts
+│           │   └── web
+│           │       └── build.gradle.kts
+│           ├── maven_inherited_workspace
+│           │   ├── pom.xml
+│           │   └── svc
+│           │       └── pom.xml
+│           ├── maven_workspace
+│           │   ├── core
+│           │   │   └── pom.xml
+│           │   ├── pom.xml
+│           │   └── web
+│           │       └── pom.xml
+│           ├── nested_npm_workspace
+│           │   ├── package.json
+│           │   └── packages
+│           │       └── group
+│           │           └── core
+│           │               └── package.json
+│           ├── npm_workspace
+│           │   ├── package.json
+│           │   └── packages
+│           │       ├── core
+│           │       │   └── package.json
+│           │       └── web
+│           │           └── package.json
+│           ├── pnpm_workspace
+│           │   ├── apps
+│           │   │   └── frontend
+│           │   │       └── package.json
+│           │   ├── packages
+│           │   │   └── lib
+│           │   │       └── package.json
+│           │   └── pnpm-workspace.yaml
+│           └── python_workspace
+│               ├── packages
+│               │   ├── api
+│               │   │   └── pyproject.toml
+│               │   └── core
+│               │       └── pyproject.toml
+│               └── pyproject.toml
+├── npm
+│   ├── install.js
+│   ├── package.json
+│   ├── postinstall.js
+│   └── run.js
 ├── package.json
 ├── pnpm-lock.yaml
 ├── testdata
@@ -147,6 +239,7 @@
 │   ├── tinyrepo_go_js
 │   │   ├── .falcon
 │   │   │   └── CONTEXT.md
+│   │   ├── .gitignore
 │   │   ├── go.mod
 │   │   ├── pkg
 │   │   │   ├── greeter
@@ -159,6 +252,7 @@
 │   └── tinyrepo_go_py
 │       ├── .falcon
 │       │   └── CONTEXT.md
+│       ├── .gitignore
 │       ├── go.mod
 │       ├── main.go
 │       └── py
@@ -2194,4 +2288,4 @@
     │               └── timestamppb
     │                   └── timestamp.pb.go
     └── modules.txt
-340 directories, 2149 files
+375 directories, 2208 files
