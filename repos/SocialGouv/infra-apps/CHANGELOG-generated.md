@@ -1,32 +1,34 @@
-## Changelog : infra-apps (30 derniers jours, au 27 juin 2026)
+## Changelog : infra-apps (30 derniers jours, au 29 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'infrastructure Iterion, notamment avec le déploiement d'une nouvelle instance de production sur OVH, l'ajout de fonctionnalités de sécurité (authentification OIDC), et l'optimisation de la gestion des secrets et des environnements de développement. Des améliorations ont également été apportées à Buildkit Operator pour une meilleure gestion des environnements et des certificats.
+Ce changelog résume les évolutions récentes du projet infra-apps, axées principalement sur l'amélioration et le déploiement de l'application Iterion, ainsi que sur la mise en place de l'opérateur Buildkit. Les changements incluent l'ajout de fonctionnalités de sécurité, l'optimisation de l'infrastructure, et la préparation pour des tests et des déploiements en production.
 
 ### Évolutions fonctionnelles
-- **Iterion :**
-    - Activation de l'authentification unique (SSO) via GitHub sur les environnements preprod et production, permettant une gestion simplifiée des accès et l'ouverture de l'inscription en mode auto-provisionnement. [#43](https://github.com/SocialGouv/infra-apps/issues/43)
-    - Mise en place d'un accès en niveaux pour les utilisateurs GitHub sur Iterion (niveau soumetteur). [#45](https://github.com/SocialGouv/infra-apps/issues/45)
-    - Déploiement d'une nouvelle instance de production sur OVH avec une architecture haute disponibilité.
-    - Ajout d'un marketplace public sur Iterion. [#41](https://github.com/SocialGouv/infra-apps/issues/41)
-- **Buildkit Operator :**
-    - Ajout du support du fournisseur OIDC Forgejo (git.devthefuture.org) pour une authentification sécurisée. [#48](https://github.com/SocialGouv/infra-apps/issues/48)
-    - Renforcement de la sécurité de l'environnement OVH de production avec l'ajout d'un Ingress TLS, une épinglage strict et une limitation des gateways. [#47](https://github.com/SocialGouv/infra-apps/issues/47)
-- **Charon :** Autorisation du `redirect_uri` preprod egapro Atlas v2 (proconnecttest). [#7c6d852](https://github.com/SocialGouv/infra-apps/commit/7c6d852)
+- Ajout de l'authentification OIDC sur l'opérateur Buildkit pour l'environnement de production OVH [#48](https://github.com/SocialGouv/infra-apps/issues/48).
+- Renforcement de la sécurité de l'opérateur Buildkit en production (TLS Ingress, hard-pin, limitation du gateway) [#47](https://github.com/SocialGouv/infra-apps/issues/47).
+- Activation du mode d'inscription ouvert (self-provision) via GitHub SSO pour Iterion en production [#43](https://github.com/SocialGouv/infra-apps/issues/43).
+- Activation de la connexion GitHub SSO sur l'environnement de pré-production d'Iterion [#40](https://github.com/SocialGouv/infra-apps/issues/40).
+- Ajout d'un accès en tier "submitter" via GitHub SSO pour Iterion [#45](https://github.com/SocialGouv/infra-apps/issues/45).
+- Déploiement d'une version de Iterion (v0.21.0) en production avec GitHub SSO et un marketplace public [#41](https://github.com/SocialGouv/infra-apps/issues/41).
+- Mise en place d'un marketplace de bots pour Iterion [#42](https://github.com/SocialGouv/infra-apps/issues/42).
+- Autorisation du redirect URI pour l'environnement de pré-production d'Egapro Atlas v2 (proconnecttest) pour Charon [#7c6d852](https://github.com/SocialGouv/infra-apps/commit/7c6d852).
 
 ### Évolutions techniques
-- **Iterion :**
-    - Migration des datastores de Bitnami vers Groundhog2k Mongo RS3 et MinIO distribué pour une meilleure performance et fiabilité.
-    - Utilisation de SealedSecrets pour la gestion des secrets sensibles, améliorant la sécurité et la conformité.
-    - Déploiement de NATS en tant que conteneur non-root pour renforcer la sécurité.
-    - Mise en place d'un environnement sandbox Kubernetes pour les runners Iterion, avec gestion des secrets RBAC.
-    - Plusieurs déploiements et épinglage de versions pour stabiliser l'environnement de production.
-- **Buildkit Operator :**
-    - Mise à jour vers la version v0.9.0 pour des corrections et améliorations générales.
-    - Configuration du wildcard de gateway pour le domaine bkod.fabrique.
-    - Capture de la configuration live du gateway (443, extraDomains, external-dns).
+- Mise à jour de l'opérateur Buildkit en production vers la version v0.10.0.
+- Ajout d'un fournisseur OIDC Forgejo pour l'opérateur Buildkit (git.devthefuture.org).
+- Configuration du wildcard DNS pour l'opérateur Buildkit.
+- Amélioration de la capture de la configuration du gateway pour l'opérateur Buildkit.
+- Migration des datastores d'Iterion en production vers Groundhog2k Mongo RS3 et MinIO distribué.
+- Mise en place d'un environnement haute disponibilité (HA) pour Iterion en production.
+- Utilisation de Kubernetes sandbox avec host state et Secrets RBAC pour les runners d'Iterion.
+- Déploiement d'Iterion sur un environnement dédié en pré-production.
+- Mise en place de Valkey HA (Sentinel) pour Iterion.
+- Configuration de NATS en tant que processus non-root pour Iterion.
 
 ### Autres changements
-- Nettoyage et refactoring du code pour améliorer la maintenabilité.
-- Mise à jour de la documentation.
-- Corrections de bugs mineurs et améliorations de la stabilité.
+- Préparation de l'environnement de production d'Iterion pour des tests E2E.
+- Mise à jour et gestion des clés API Anthropic pour Iterion via SealedSecret.
+- Suppression de nats-box inutilisé pour Iterion.
+- Suppression des clés globales Iterion-LLM au profit d'une gestion BYOK par organisation.
+- Suspension temporaire de l'application Iterion en pré-production pendant un spike de performance.
+- Diverses corrections et ajustements de versions pour Iterion (v0.15.0, v0.16.0, v0.16.1, v0.17.1, v0.17.2, v0.22.0, v0.23.0, v0.23.2).
