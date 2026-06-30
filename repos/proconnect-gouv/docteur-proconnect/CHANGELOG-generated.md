@@ -1,24 +1,19 @@
-## Changelog : docteur-proconnect (30 derniers jours, au 12 juin 2026)
+## Changelog : docteur-proconnect (30 derniers jours, au 26 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la robustesse et à l'expérience utilisateur de Docteur ProConnect, notamment en corrigeant des problèmes liés à l'authentification OIDC et en améliorant la présentation visuelle. L'application a également été migrée vers un runtime Bun natif pour une meilleure performance sur l'environnement de production.
+Cette version apporte des améliorations significatives à la gestion de l'authentification OIDC, corrigeant des problèmes de redirection et de configuration. L'interface utilisateur a également été améliorée avec l'ajout de pages d'erreur DSFR et un ajustement de la mise en page pour une meilleure expérience utilisateur. Enfin, le projet a été migré vers un runtime Bun pour de meilleures performances en production.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème de redirection après authentification OIDC, assurant un retour correct à la page d'accueil après le login. [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67)
-- Amélioration de la présentation visuelle avec un affichage de type "cowboy shot" pour garantir que le pied de page reste visible, même sur les pages courtes.
-- Implémentation de pages d'erreur DSFR personnalisées pour les cas d'erreur 404, 500 et les problèmes d'authentification.
-- Amélioration de la journalisation des états d'authentification anormaux, incluant la chaîne complète des erreurs pour faciliter le débogage.
+- **Authentification OIDC :** Correction d'un problème de redirection après authentification, renvoyant l'utilisateur vers la page d'accueil comme prévu [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Authentification OIDC :** Suppression du scope "siren" qui n'est pas autorisé pour ce client [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Authentification OIDC :** Envoi de l'URI de redirection publique lors de l'échange de jetons [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Authentification OIDC :** Suppression de la configuration `userinfo alg` par défaut dans le fichier `.env` [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Pages d'erreur :** Ajout de pages d'erreur DSFR pour les cas 404, 500 et les erreurs d'authentification [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Mise en page :** Ajustement de la mise en page pour maintenir le pied de page en bas de la fenêtre, même sur les pages courtes [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
+- **Logging :** Amélioration du logging pour les états d'authentification inhabituels, incluant la chaîne complète de `error.cause` pour faciliter le débogage [#67](https://github.com/proconnect-gouv/docteur-proconnect/issues/67).
 
 ### Évolutions techniques
-- Migration vers un runtime Bun natif sur l'environnement Scalingo-24, améliorant les performances et l'efficacité de l'application. [#66](https://github.com/proconnect-gouv/docteur-proconnect/issues/66)
-- Correction de plusieurs problèmes liés à la configuration OIDC :
-    - Suppression de l'algorithme `userinfo` par défaut dans le fichier `.env`.
-    - Envoi de l'URL de redirection publique lors de l'échange de jetons.
-    - Suppression du scope `siren`, non autorisé pour ce client.
-
-### Autres changements
-- Mise à jour de dépendances :
-    - Morgan (1.10.1 -> 1.11.0) [#64](https://github.com/proconnect-gouv/docteur-proconnect/issues/64)
-    - Diverses mises à jour de patches. [#65](https://github.com/proconnect-gouv/docteur-proconnect/issues/65)
-    - EJS (5.0.2 -> 6.0.1) [#62](https://github.com/proconnect-gouv/docteur-proconnect/issues/62)
-    - QS (6.14.2 -> 6.15.2) [#61](https://github.com/proconnect-gouv/docteur-proconnect/issues/61)
+- **Runtime :** Migration vers un runtime Bun natif pour améliorer les performances en production [#66](https://github.com/proconnect-gouv/docteur-proconnect/issues/66).
+- **Dépendances :** Mise à jour de `morgan` vers la version 1.11.0 [#64](https://github.com/proconnect-gouv/docteur-proconnect/issues/64).
+- **Dépendances :** Mise à jour de `ejs` vers la version 6.0.1 [#62](https://github.com/proconnect-gouv/docteur-proconnect/issues/62).
+- **Dépendances :** Mise à jour de `actions/checkout` vers la version 7.0.0 [#68](https://github.com/proconnect-gouv/docteur-proconnect/issues/68).
