@@ -274,6 +274,7 @@
     │   │   │   │   ├── test_api_items_retrieve.py
     │   │   │   │   ├── test_api_items_search.py
     │   │   │   │   ├── test_api_items_search_fulltext.py
+    │   │   │   │   ├── test_api_items_search_location.py
     │   │   │   │   ├── test_api_items_trashbin.py
     │   │   │   │   ├── test_api_items_tree.py
     │   │   │   │   ├── test_api_items_update.py
@@ -295,6 +296,7 @@
     │   │   │   ├── test_api_sdk_relay.py
     │   │   │   ├── test_api_user_reconciliation.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_api_users_contacts.py
     │   │   │   ├── test_api_utils_detect_mimetype.py
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_flat_to_nested.py
@@ -344,6 +346,7 @@
     │   │   ├── management
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── e2e_fixture_filters.py
     │   │   │       └── e2e_fixture_search.py
     │   │   ├── serializers.py
     │   │   ├── tests
@@ -603,7 +606,6 @@
     │   │   │   │   │   │   │   │   ├── AppExplorerInner.tsx
     │   │   │   │   │   │   │   │   ├── AppExplorerSelectionBarGate.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerFilters.scss
-    │   │   │   │   │   │   │   │   ├── ExplorerFilters.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerSearchButton.tsx
     │   │   │   │   │   │   │   │   └── ExplorerSelectionBar.tsx
     │   │   │   │   │   │   │   ├── embedded-explorer
@@ -628,6 +630,14 @@
     │   │   │   │   │   │   │   │   │   ├── CustomizableColumnHeader.tsx
     │   │   │   │   │   │   │   │   │   └── SortColumnButton.tsx
     │   │   │   │   │   │   │   │   └── hooks.tsx
+    │   │   │   │   │   │   │   ├── filters
+    │   │   │   │   │   │   │   │   ├── ExplorerFilterCategory.tsx
+    │   │   │   │   │   │   │   │   ├── ExplorerFilterContact.tsx
+    │   │   │   │   │   │   │   │   ├── ExplorerFilterLocation.tsx
+    │   │   │   │   │   │   │   │   ├── ExplorerFilterModified.tsx
+    │   │   │   │   │   │   │   │   ├── ExplorerFilters.tsx
+    │   │   │   │   │   │   │   │   ├── filterUtils.tsx
+    │   │   │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   │   │   ├── icons
     │   │   │   │   │   │   │   │   └── ItemIcon.tsx
     │   │   │   │   │   │   │   ├── item-actions
@@ -702,8 +712,10 @@
     │   │   │   │   │   │   │   └── viewConfig.ts
     │   │   │   │   │   │   └── utils
     │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │       │   ├── dateFilters.test.ts
     │   │   │   │   │   │       │   ├── dropTraversal.test.ts
     │   │   │   │   │   │       │   └── ordering.test.ts
+    │   │   │   │   │   │       ├── dateFilters.ts
     │   │   │   │   │   │       ├── dropTraversal.ts
     │   │   │   │   │   │       ├── mimeTypes.ts
     │   │   │   │   │   │       ├── ordering.ts
@@ -912,6 +924,7 @@
     │   │   │   │   │   ├── duplicate-item.spec.ts
     │   │   │   │   │   ├── entitlement-disclaimers.spec.ts
     │   │   │   │   │   ├── file-preview-smoke.spec.ts
+    │   │   │   │   │   ├── filters.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
     │   │   │   │   │   ├── language-sync.spec.ts
@@ -1044,4 +1057,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-245 directories, 801 files
+246 directories, 813 files
