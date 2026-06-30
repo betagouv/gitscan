@@ -90,6 +90,8 @@
 │   │   │   │   ├── 0033_events_history_kickoff.py
 │   │   │   │   ├── 0034_alter_event_date_evenement_alter_event_profile.py
 │   │   │   │   ├── 0035_add_communes_procedures_events.py
+│   │   │   │   ├── 0036_alter_procedure_doc_type.py
+│   │   │   │   ├── 0037_update_rls_on_versements.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -228,15 +230,6 @@
 │   ├── assets
 │   │   ├── README.md
 │   │   ├── data
-│   │   │   ├── DU_events.json
-│   │   │   ├── DataSources.json
-│   │   │   ├── EPCI_no_towns.json
-│   │   │   ├── EPCI_towns.json
-│   │   │   ├── GeoJSON
-│   │   │   │   ├── FRA.json
-│   │   │   │   ├── FRA_country.json
-│   │   │   │   ├── FRA_parsed.json
-│   │   │   │   └── pcaet-topo.json
 │   │   │   ├── GeoRisquesMap.json
 │   │   │   ├── INSEE
 │   │   │   │   └── departements_small.json
@@ -316,7 +309,6 @@
 │   │   │       ├── Spectral-Regular.ttf
 │   │   │       ├── Spectral-SemiBold.ttf
 │   │   │       └── Spectral-SemiBoldItalic.ttf
-│   │   ├── friseActors.json
 │   │   ├── images
 │   │   │   ├── Republique_Francaise_RVB.png
 │   │   │   ├── icons
@@ -344,20 +336,8 @@
 │   │   │   └── sections.json
 │   │   └── variables.scss
 │   ├── components
-│   │   ├── Admin
-│   │   │   └── DdtRequestDialog.vue
 │   │   ├── Auth
 │   │   │   └── ResetPasswordDialog.vue
-│   │   ├── Charts
-│   │   │   ├── Axis.vue
-│   │   │   ├── Bars.vue
-│   │   │   ├── Circles.vue
-│   │   │   ├── Labels.vue
-│   │   │   ├── Layer.js
-│   │   │   ├── Layout.vue
-│   │   │   ├── Line.vue
-│   │   │   ├── Map.vue
-│   │   │   └── Scales.vue
 │   │   ├── Dashboard
 │   │   │   ├── DUInsertDialog.vue
 │   │   │   ├── DUItem.vue
@@ -366,7 +346,6 @@
 │   │   │   ├── DUProcedureItem.vue
 │   │   │   ├── DUSubProcedureItem.vue
 │   │   │   ├── PerimetreDialog.vue
-│   │   │   ├── SCOTsDepList.vue
 │   │   │   ├── SharePACDialog.vue
 │   │   │   └── collectivites
 │   │   │       └── InnerNav.vue
@@ -379,25 +358,17 @@
 │   │   ├── Ddt
 │   │   │   └── PerimeterCheckInput.vue
 │   │   ├── Frise
-│   │   │   ├── CheckpointsCard.vue
 │   │   │   ├── Dgd
 │   │   │   │   ├── StepForm.vue
 │   │   │   │   ├── VersExpPanel.vue
 │   │   │   │   ├── VersStepPanel.vue
 │   │   │   │   └── VersementForm.vue
 │   │   │   ├── DgdDialog.vue
-│   │   │   ├── DgdItem.vue
-│   │   │   ├── DocEventCard.vue
-│   │   │   ├── DocTimeline.vue
 │   │   │   ├── EventAttachementsCard.vue
 │   │   │   ├── EventCard.vue
 │   │   │   ├── EventForm.vue
 │   │   │   ├── EventSelector.vue
-│   │   │   ├── InfosDialog.vue
-│   │   │   ├── LastUpdatesCard.vue
-│   │   │   ├── RecommendedEventCard.vue
-│   │   │   ├── ShareDialog.vue
-│   │   │   └── VoletQualiDialog.vue
+│   │   │   └── ShareDialog.vue
 │   │   ├── GeoBretagneViewer.vue
 │   │   ├── GeoIDECardList.vue
 │   │   ├── Glossaire
@@ -413,7 +384,6 @@
 │   │   │   └── WordSlider.vue
 │   │   ├── Layouts
 │   │   │   ├── AppBar.vue
-│   │   │   ├── CustomApp.vue
 │   │   │   ├── Footer.vue
 │   │   │   └── LoginBanner.vue
 │   │   ├── Onboarding
@@ -449,42 +419,20 @@
 │   │   │   ├── TopicChips.vue
 │   │   │   └── UpdateForm.vue
 │   │   ├── README.md
-│   │   ├── RecordCard.vue
-│   │   ├── RecordList.vue
 │   │   ├── Ressources
 │   │   │   └── RessourcesList.vue
 │   │   ├── SignalementProbleme.vue
-│   │   ├── Stats
-│   │   │   ├── BarsCard.vue
-│   │   │   ├── BignumberCard.vue
-│   │   │   ├── DdtDashboard.vue
-│   │   │   ├── DeptsMapCard.vue
-│   │   │   ├── DonutCard.vue
-│   │   │   ├── FdrDashboard.vue
-│   │   │   ├── LineCard.vue
-│   │   │   ├── NpsDashboard.vue
-│   │   │   ├── PacDashboard.vue
-│   │   │   ├── ProceduresDashboard.vue
-│   │   │   ├── SocleDashboard.vue
-│   │   │   ├── SparklineCard.vue
-│   │   │   ├── State
-│   │   │   │   └── CommunesStateMap.vue
-│   │   │   └── TextCard.vue
 │   │   ├── VBigRadio.vue
 │   │   ├── VCollectivitesAutocomplete.vue
 │   │   ├── VConsentSnackbar.vue
 │   │   ├── VDeptAutocomplete.vue
-│   │   ├── VDocumentSelect.vue
-│   │   ├── VEpciAutocomplete.vue
 │   │   ├── VFileDropzone.vue
-│   │   ├── VFloatingShape.vue
 │   │   ├── VGlobalLoader.vue
 │   │   ├── VRegionAutocomplete.vue
 │   │   ├── VTextDatePicker.vue
 │   │   ├── VTiptap.vue
 │   │   ├── VTiptapItems.vue
-│   │   ├── VTiptapTableItems.vue
-│   │   └── VTownAutocomplete.vue
+│   │   └── VTiptapTableItems.vue
 │   ├── content
 │   │   ├── Dev
 │   │   │   └── API
@@ -805,9 +753,7 @@
 │   │   ├── print
 │   │   │   └── _projectId.vue
 │   │   ├── stats
-│   │   │   ├── index.vue
-│   │   │   ├── state.vue
-│   │   │   └── urba.vue
+│   │   │   └── index.vue
 │   │   ├── trames
 │   │   │   └── _githubRef.vue
 │   │   └── validation.vue
@@ -1101,4 +1047,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-211 directories, 934 files
+206 directories, 885 files
