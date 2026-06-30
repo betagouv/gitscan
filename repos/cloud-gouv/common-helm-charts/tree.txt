@@ -28,6 +28,19 @@
 │   │       ├── repository-credentials-secret.yaml
 │   │       └── repository-secret.yaml
 │   └── values.yaml
+├── auditbeat
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── configmap.yaml
+│   │   ├── cr.yaml
+│   │   ├── crb.yaml
+│   │   ├── daemonset.yaml
+│   │   ├── rb.yaml
+│   │   ├── roles.yaml
+│   │   └── serviceaccount.yaml
+│   └── values.yaml
 ├── cert-manager-issuers
 │   ├── Chart.yaml
 │   ├── README.md
@@ -103,7 +116,9 @@
 │   │   ├── extra-apps
 │   │   │   ├── argocd-apps.json
 │   │   │   ├── argocd-metrics.json
+│   │   │   ├── coturn.json
 │   │   │   ├── haproxy.json
+│   │   │   ├── node-exporter-vm.json
 │   │   │   └── postgres-overview.json
 │   │   ├── kube-mixins
 │   │   │   ├── cluster-total.json
@@ -192,6 +207,7 @@
 │   ├── Chart.yaml
 │   ├── README.md
 │   ├── scripts
+│   │   ├── launch_fio.sh
 │   │   ├── prepare_pgbench.sh
 │   │   ├── run_benchmark.sh
 │   │   └── run_pgbench_tests.sh
@@ -199,6 +215,8 @@
 │   │   ├── _helpers.tpl
 │   │   ├── configmap.yaml
 │   │   ├── deployment.yaml
+│   │   ├── fio-configmap.yaml
+│   │   ├── fio-deployment.yaml
 │   │   ├── job.yaml
 │   │   ├── pvc.yaml
 │   │   ├── secret.yaml
@@ -242,4 +260,4 @@
     │   ├── job.yaml.gotmpl
     │   └── rbac.yaml.gotmpl
     └── values.yaml
-52 directories, 192 files
+54 directories, 208 files
