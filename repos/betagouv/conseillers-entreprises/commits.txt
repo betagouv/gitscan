@@ -1,3 +1,91 @@
+2026-06-29T15:00:38+02:00 - 1c85737 - Nicolas Bouilleaud : Merge pull request #4544 from betagouv/nicolas/turbo-match-actions
+2026-06-25T14:59:22+02:00 - fd184a5 - Nicolas Bouilleaud : Replace the turbo streams with turbo frames
+2026-06-25T14:59:22+02:00 - 74d4ebe - Nicolas Bouilleaud : Make brakeman happy
+2026-06-25T14:59:22+02:00 - 71ab9f4 - Nicolas Bouilleaud : Replace the match#update js implementation with turbo streams
+2026-06-25T14:42:16+02:00 - 184a83a - Lucien : Merge pull request #4548 from betagouv/nicolas/match-sent-at-date
+2026-06-25T11:11:37+02:00 - b6373d5 - Nicolas Bouilleaud : Display the match.sent_at date in the need page as well
+2026-06-25T11:01:10+02:00 - a76cdd5 - Lucien : Merge pull request #4545 from betagouv/nicolas/db-config
+2026-06-23T17:15:20+02:00 - 5634e7a - Nicolas Bouilleaud : Fix the database timeout values
+2026-06-23T16:52:28+02:00 - aeb0dcf - Nicolas Bouilleaud : Checkin database.yml and use it in production
+2026-06-23T14:56:13+02:00 - 4d3b402 - Lucien : Merge pull request #4537 from betagouv/readd-matomo-events
+2026-06-23T14:36:55+02:00 - f459363 - Nicolas Bouilleaud : Correctly include custom pages matomo events
+2026-06-23T14:28:47+02:00 - eddf70e - Lucien : Merge pull request #4485 from betagouv/LucienMLD/emails-auto
+2026-06-23T14:22:19+02:00 - d1202a7 - LucienMLD : test only one email template instead of all in database
+2026-06-23T14:22:19+02:00 - 6ff8fc7 - LucienMLD : inline normalize_html in solicitation mail templates migration
+2026-06-23T14:15:05+02:00 - ff049bf - LucienMLD : fix migration
+2026-06-23T14:15:05+02:00 - fe7715b - LucienMLD : rename solicitation template view
+2026-06-23T14:15:05+02:00 - ed07695 - LucienMLD : refactor: replace `method_missing` with `send_email` in `SolicitationMailer`, update references across app
+2026-06-23T14:15:05+02:00 - eb317ac - LucienMLD : Enhance display of solicitation email body in `SolicitationMailTemplate` admin interface
+2026-06-23T14:15:05+02:00 - e57d9e5 - LucienMLD : spec: update mailer, controller and service specs for new email template fields
+2026-06-23T14:15:05+02:00 - e4ae3e3 - LucienMLD : locales, mail templates: update and remove unused keys, improve email content consistency and readability
+2026-06-23T14:15:05+02:00 - e1eef49 - LucienMLD : Replace localized email content with dynamic HTML from `SolicitationMailTemplate`
+2026-06-23T14:15:05+02:00 - daa7c56 - LucienMLD : fix: handle `bad_quality` email type without template, improve badge title resolution and add email type validation in tests
+2026-06-23T14:15:05+02:00 - d76f2cc - LucienMLD : fix migration
+2026-06-23T14:15:05+02:00 - d60d2c9 - LucienMLD : locales: remove unused `thanks_for_your_comprehension` key in mailers.fr.yml
+2026-06-23T14:15:05+02:00 - d4033a0 - LucienMLD : feat: add `position` to `SolicitationMailTemplate`, enable reordering in admin
+2026-06-23T14:15:05+02:00 - c04c3b2 - LucienMLD : rename send_email method to template
+2026-06-23T14:15:05+02:00 - be249f0 - LucienMLD : use string instead of symbol for bad_quality email template
+2026-06-23T14:15:05+02:00 - b9b5461 - LucienMLD : Add `SolicitationMailTemplate` model and migration with validations and specs
+2026-06-23T14:15:05+02:00 - b832aa2 - LucienMLD : locales, admin: update menu priority for solicitation mail templates, fix template locale key
+2026-06-23T14:15:05+02:00 - b82b9e2 - LucienMLD : add label to explain position
+2026-06-23T14:15:05+02:00 - a474fb6 - LucienMLD : db: add title column to solicitation mail templates
+2026-06-23T14:15:05+02:00 - a216712 - LucienMLD : Refactor `solicitation_mailer_preview` to dynamically define preview methods for email types based on database entries.
+2026-06-23T14:15:05+02:00 - 994c1ff - LucienMLD : fix: simplify badge title resolution in solicitation email service
+2026-06-23T14:15:05+02:00 - 943c9f6 - LucienMLD : gemfile: add `activeadmin_reorderable` dependency
+2026-06-23T14:15:05+02:00 - 8e9c23b - LucienMLD : Restrict `email_type` in `SolicitationMailTemplate` to valid generic email types excluding `bad_quality` and update related specs and factory.
+2026-06-23T14:15:05+02:00 - 87f685a - LucienMLD : fix: handle `bad_quality` email type separately in service and add unit test coverage
+2026-06-23T14:15:05+02:00 - 8473355 - LucienMLD : Improve `SolicitationMailTemplate` admin interface with enhanced email type display and localization adjustments
+2026-06-23T14:15:05+02:00 - 791279c - LucienMLD : chore: remove accidentally committed .antigravitycli file
+2026-06-23T14:15:05+02:00 - 7406b37 - LucienMLD : harmonize email_tyupe to string
+2026-06-23T14:15:05+02:00 - 7149172 - LucienMLD : refactor: simplify `to_s` method in `SolicitationMailTemplate` model
+2026-06-23T14:15:05+02:00 - 6f73d50 - LucienMLD : locales, tests: update error message for `bad_quality`
+2026-06-23T14:15:05+02:00 - 67b1b77 - LucienMLD : fix: remove `.strip` calls from `body_html` in solicitation mail templates
+2026-06-23T14:15:05+02:00 - 64ccf04 - LucienMLD : refactor: memoize `email_templates_by_type` in helper and remove duplication in view
+2026-06-23T14:15:05+02:00 - 6498f1c - LucienMLD : locales: remove unused activity report service file name keys in `views.fr.yml`
+2026-06-23T14:15:05+02:00 - 5bd92c1 - LucienMLD : Add `title` to `SolicitationMailTemplate`
+2026-06-23T14:15:05+02:00 - 59ff767 - LucienMLD : fix: ensure `email_type` is converted to string in solicitation email controller
+2026-06-23T14:15:05+02:00 - 4f6de7e - LucienMLD : Refactor `solicitation_mailer` by dynamically defining methods for generic email types excluding `bad_quality`.
+2026-06-23T14:15:05+02:00 - 4d9cd85 - LucienMLD : feat: use template title in dropdown and badges, optimize N+1 queries
+2026-06-23T14:15:05+02:00 - 4b39685 - LucienMLD : Render dynamic email preview in `SolicitationMailTemplate` admin interface
+2026-06-23T14:15:05+02:00 - 48e74f2 - LucienMLD : model/admin: restrict bad_quality and add email template validations
+2026-06-23T14:15:05+02:00 - 431fd2f - LucienMLD : mail templates: improve link formatting and ensure consistent structure across email bodies
+2026-06-23T14:15:05+02:00 - 3458990 - LucienMLD : remove white space outside html balises
+2026-06-23T14:15:05+02:00 - 2ec3910 - LucienMLD : Refactor `SolicitationMailer` to consolidate email templates and dynamically set `template_name` across generic email types.
+2026-06-23T14:15:05+02:00 - 2d58af3 - LucienMLD : locales, admin: adjust solicitation mail template keys, update menu priority for spam management in admin
+2026-06-23T14:15:05+02:00 - 2314ada - LucienMLD : refactor: optimize string transformations and improve locale key structure in solicitation mail templates
+2026-06-23T14:15:05+02:00 - 0698035 - LucienMLD : test only one email template instead of all in database
+2026-06-23T14:15:05+02:00 - 05b6719 - LucienMLD : locales: update template translations and remove obsolete static email keys
+2026-06-23T11:46:18+02:00 - f964313 - Nicolas Bouilleaud : Merge pull request #4542 from betagouv/nicolas/stop-using-jquery
+2026-06-23T11:36:58+02:00 - d75f1a1 - Nicolas Bouilleaud : Stop using jquery in server response scripts
+2026-06-22T11:22:00+02:00 - 7798d53 - Lucien : Merge pull request #4525 from betagouv/fewer-items-per-page-in-admin
+2026-06-22T11:11:43+02:00 - 5c1485c - Nicolas Bouilleaud : Fewer items per page in active admin
+2026-06-22T10:44:09+02:00 - 9aedd62 - Nicolas Bouilleaud : Merge pull request #4531 from betagouv/dependabot/npm_and_yarn/undici-6.27.0
+2026-06-22T10:37:56+02:00 - 36c62c5 - dependabot[bot] : Bump undici from 6.26.0 to 6.27.0
+2026-06-22T10:10:09+02:00 - 478763d - Nicolas Bouilleaud : Merge pull request #4530 from betagouv/dependabot/bundler/concurrent-ruby-1.3.7
+2026-06-22T09:46:22+02:00 - 33a6c77 - dependabot[bot] : Bump concurrent-ruby from 1.3.6 to 1.3.7
+2026-06-22T09:44:31+02:00 - 77b5473 - Nicolas Bouilleaud : Merge pull request #4529 from betagouv/dependabot/bundler/nokogiri-1.19.4
+2026-06-22T09:37:27+02:00 - 415a431 - dependabot[bot] : Bump nokogiri from 1.19.3 to 1.19.4
+2026-06-22T09:30:55+02:00 - ef682a4 - Nicolas Bouilleaud : Merge pull request #4518 from betagouv/nicolas/relative-percent
+2026-06-22T09:24:40+02:00 - 7286638 - Nicolas Bouilleaud : Display evolution as a relative percentage
+2026-06-22T09:24:40+02:00 - 43b97a5 - Nicolas Bouilleaud : Add test for provenance sheet values
+2026-06-22T09:21:45+02:00 - 064795d - Nicolas Bouilleaud : Merge pull request #4519 from betagouv/nicolas/more-time-duration-cleanup
+2026-06-22T09:15:48+02:00 - cb84217 - Nicolas Bouilleaud : Rewrite TimeDurationService classes as methods
+2026-06-22T09:15:48+02:00 - c809b2a - Nicolas Bouilleaud : Merge TimeDurationService in a single file
+2026-06-22T09:15:48+02:00 - bfe57f6 - Nicolas Bouilleaud : Rename TimeDurationService to ActivityPeriods
+2026-06-22T09:15:48+02:00 - 462a65a - Nicolas Bouilleaud : Get rid of TimeDurationService::Quarters.new.find_quarter_for_month
+2026-06-22T08:47:00+02:00 - 2f6cd31 - Nicolas Bouilleaud : Merge pull request #4520 from betagouv/webpack-to-esbuild
+2026-06-22T08:36:59+02:00 - bb6a0da - Nicolas Bouilleaud : Merge remove-unused-js into webpack-to-esbuild
+2026-06-22T08:35:45+02:00 - 84562e6 - Nicolas Bouilleaud : Remove gouvfr-nomodule
+2026-06-22T08:35:45+02:00 - 82cfe71 - Nicolas Bouilleaud : Remove babel and upgrade eslint
+2026-06-22T08:35:45+02:00 - 5aa6481 - Nicolas Bouilleaud : Make eslint happy
+2026-06-22T08:35:45+02:00 - 50b550b - Nicolas Bouilleaud : minify so that it’s comparable with the preexisting
+2026-06-22T08:35:45+02:00 - 4acfb34 - Nicolas Bouilleaud : Remove whatwg-fetch
+2026-06-22T08:35:45+02:00 - 42be67a - Nicolas Bouilleaud : Remove unused vendor directories
+2026-06-22T08:35:45+02:00 - 39045bc - Nicolas Bouilleaud : Remove  --public-path=/assets from esbuild command
+2026-06-22T08:35:45+02:00 - 35ced40 - Nicolas Bouilleaud : Remove webpack config
+2026-06-22T08:35:45+02:00 - 327b8ab - Nicolas Bouilleaud : Move from webpack to esbuild
+2026-06-22T08:35:45+02:00 - 2194cc4 - Nicolas Bouilleaud : Remove polyfill for Element.prototype.matches
+2026-06-22T08:35:45+02:00 - 0df9772 - Nicolas Bouilleaud : Remove jquery
 2026-06-19T10:46:07+02:00 - 1ffab68 - Nicolas Bouilleaud : Merge pull request #4526 from betagouv/LucienMLD/fixes/stats
 2026-06-19T10:27:19+02:00 - 86126a1 - LucienMLD : Revert "Potential fix for code scanning alert no. 14: Code injection"
 2026-06-18T16:48:29+02:00 - 0506c1c - Nicolas Bouilleaud : Merge pull request #4524 from betagouv/nicolas/fix-solicitation-blank-siret-reuse-facility

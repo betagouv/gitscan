@@ -7,7 +7,6 @@
 ├── .codeclimate.yml
 ├── .env.example
 ├── .erdconfig
-├── .eslintrc.js
 ├── .github
 │   ├── config
 │   │   └── rubocop_linter_action.yml
@@ -67,6 +66,7 @@
 │   │   ├── profil_picture.rb
 │   │   ├── reassign_matches.rb
 │   │   ├── solicitation.rb
+│   │   ├── solicitation_mail_templates.rb
 │   │   ├── spam.rb
 │   │   ├── subject.rb
 │   │   ├── theme.rb
@@ -220,10 +220,8 @@
 │   │   │       └── haut-de-page.png
 │   │   ├── javascripts
 │   │   │   ├── active_admin.js
-│   │   │   ├── admin
-│   │   │   │   └── custom.js
-│   │   │   └── pages
-│   │   │       └── matomo_events.js
+│   │   │   └── admin
+│   │   │       └── custom.js
 │   │   └── stylesheets
 │   │       ├── active_admin.sass
 │   │       ├── application
@@ -358,53 +356,6 @@
 │   │   └── users
 │   │       ├── invitations_controller.rb
 │   │       └── registrations_controller.rb
-│   ├── front
-│   │   ├── javascripts
-│   │   │   ├── application
-│   │   │   │   ├── annuaire.js
-│   │   │   │   ├── controllers
-│   │   │   │   │   ├── autocomplete_controller.js
-│   │   │   │   │   ├── badges_controller.js
-│   │   │   │   │   ├── cgu_acceptance_controller.js
-│   │   │   │   │   ├── coverage_controller.js
-│   │   │   │   │   ├── diagnosis_needs_step_controller.js
-│   │   │   │   │   ├── direct_submit_controller.js
-│   │   │   │   │   ├── expert_autocomplete_controller.js
-│   │   │   │   │   ├── feedback_form_controller.js
-│   │   │   │   │   ├── fr_header_controller.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── password_visibility_controller.js
-│   │   │   │   │   ├── toggle_block_controller.js
-│   │   │   │   │   └── user_app_info_controller.js
-│   │   │   │   ├── feedbacks.js
-│   │   │   │   └── index.js
-│   │   │   ├── pages
-│   │   │   │   ├── controllers
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── pages_siret_autocomplete_controller.js
-│   │   │   │   │   └── prefill_textarea_controller.js
-│   │   │   │   ├── iframe_external_links.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── navbar.js
-│   │   │   └── shared
-│   │   │       ├── checkboxes_require_one.js
-│   │   │       ├── column_charts.js
-│   │   │       ├── controllers
-│   │   │       │   ├── batch_check_controller.js
-│   │   │       │   ├── filters_controller.js
-│   │   │       │   ├── index.js
-│   │   │       │   ├── insee_code_controller.js
-│   │   │       │   └── stats_charts_controller.js
-│   │   │       ├── index.js
-│   │   │       ├── line_charts.js
-│   │   │       ├── percentage_column_chart.js
-│   │   │       ├── polyfills.js
-│   │   │       └── utils.js
-│   │   └── packs
-│   │       ├── application.js
-│   │       ├── gouvfr-module.js
-│   │       ├── gouvfr-nomodule.js
-│   │       └── pages.js
 │   ├── helpers
 │   │   ├── about_seo_helper.rb
 │   │   ├── active_admin_utilities_helper.rb
@@ -440,6 +391,52 @@
 │   │   ├── status_helper.rb
 │   │   ├── subject_questions_helper.rb
 │   │   └── user_tabs_helper.rb
+│   ├── javascript
+│   │   ├── application
+│   │   │   ├── annuaire.js
+│   │   │   ├── controllers
+│   │   │   │   ├── autocomplete_controller.js
+│   │   │   │   ├── badges_controller.js
+│   │   │   │   ├── cgu_acceptance_controller.js
+│   │   │   │   ├── coverage_controller.js
+│   │   │   │   ├── diagnosis_needs_step_controller.js
+│   │   │   │   ├── direct_submit_controller.js
+│   │   │   │   ├── expert_autocomplete_controller.js
+│   │   │   │   ├── feedback_form_controller.js
+│   │   │   │   ├── fr_header_controller.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── password_visibility_controller.js
+│   │   │   │   ├── toggle_block_controller.js
+│   │   │   │   └── user_app_info_controller.js
+│   │   │   ├── feedbacks.js
+│   │   │   └── index.js
+│   │   ├── application.js
+│   │   ├── gouvfr-module.js
+│   │   ├── pages
+│   │   │   ├── controllers
+│   │   │   │   ├── index.js
+│   │   │   │   ├── pages_siret_autocomplete_controller.js
+│   │   │   │   └── prefill_textarea_controller.js
+│   │   │   ├── iframe_external_links.js
+│   │   │   ├── index.js
+│   │   │   ├── matomo_events.js
+│   │   │   └── navbar.js
+│   │   ├── pages.js
+│   │   └── shared
+│   │       ├── checkboxes_require_one.js
+│   │       ├── controllers
+│   │       │   ├── batch_check_controller.js
+│   │       │   ├── charts
+│   │       │   │   ├── column_charts.js
+│   │       │   │   ├── line_charts.js
+│   │       │   │   └── percentage_column_chart.js
+│   │       │   ├── filters_controller.js
+│   │       │   ├── index.js
+│   │       │   ├── insee_code_controller.js
+│   │       │   └── stats_charts_controller.js
+│   │       ├── index.js
+│   │       ├── stimulus_app.js
+│   │       └── utils.js
 │   ├── jobs
 │   │   ├── abandon_needs_job.rb
 │   │   ├── activity_reports
@@ -531,6 +528,7 @@
 │   │   ├── reminders_register.rb
 │   │   ├── shared_satisfaction.rb
 │   │   ├── solicitation.rb
+│   │   ├── solicitation_mail_template.rb
 │   │   ├── spam.rb
 │   │   ├── subject.rb
 │   │   ├── subject_answer
@@ -578,6 +576,7 @@
 │   │       ├── expert_serializer.rb
 │   │       └── expert_subject_serializer.rb
 │   ├── services
+│   │   ├── activity_periods.rb
 │   │   ├── activity_reports
 │   │   │   ├── antenne_matches.rb
 │   │   │   ├── antenne_stats.rb
@@ -766,12 +765,6 @@
 │   │   │       └── invitation_accepted.rb
 │   │   ├── temoignage_generator.rb
 │   │   ├── temoignages_experts.rb
-│   │   ├── time_duration_service
-│   │   │   ├── base.rb
-│   │   │   ├── months.rb
-│   │   │   ├── quarters.rb
-│   │   │   └── years.rb
-│   │   ├── time_duration_service.rb
 │   │   ├── utilities
 │   │   │   └── arrays.rb
 │   │   ├── xlsx_export
@@ -1052,24 +1045,8 @@
 │       │   │   └── remind_involvement.text.erb
 │       │   ├── solicitation_mailer
 │       │   │   ├── _footer.mjml
-│       │   │   ├── administrations_collectivites.mjml
 │       │   │   ├── bad_quality.mjml
-│       │   │   ├── carsat.mjml
-│       │   │   ├── creation.mjml
-│       │   │   ├── employee_labor_law.mjml
-│       │   │   ├── formalites_asso_agri_sci.mjml
-│       │   │   ├── intermediary.mjml
-│       │   │   ├── kbis_extract.mjml
-│       │   │   ├── mediateurs.mjml
-│       │   │   ├── moderation.mjml
-│       │   │   ├── no_expert.mjml
-│       │   │   ├── no_expert_agri.mjml
-│       │   │   ├── recruitment_foreign_worker.mjml
-│       │   │   ├── retirement_liberal_professions.mjml
-│       │   │   ├── sie_sip_declare_and_pay.mjml
-│       │   │   ├── sie_tva_and_others.mjml
-│       │   │   ├── siret.mjml
-│       │   │   └── tns_training.mjml
+│       │   │   └── template.mjml
 │       │   └── user_mailer
 │       │       ├── antenne_activity_report.mjml
 │       │       ├── cooperation_activity_report.mjml
@@ -1083,8 +1060,8 @@
 │       │       ├── _stats_search.haml
 │       │       └── index.html.haml
 │       ├── matches
-│       │   ├── _match.haml
-│       │   └── update.js.haml
+│       │   ├── _match.html.haml
+│       │   └── update.html.haml
 │       ├── monitoring
 │       │   └── antennes
 │       │       ├── _antenne.html.haml
@@ -1213,7 +1190,6 @@
 │           └── registrations
 │               ├── antenne.html.haml
 │               └── password.html.haml
-├── babel.config.js
 ├── bin
 │   ├── brakeman
 │   ├── bundle
@@ -1238,7 +1214,7 @@
 │   │   ├── idcc_to_opco.yml
 │   │   ├── subject_answers.yml
 │   │   └── temoignages_experts.yml
-│   ├── database.example.yml
+│   ├── database.yml
 │   ├── environment.rb
 │   ├── environments
 │   │   ├── development.rb
@@ -1297,14 +1273,7 @@
 │   ├── secrets.yml
 │   ├── sidekiq.yml
 │   ├── spring.rb
-│   ├── storage.yml
-│   └── webpack
-│       ├── base.js
-│       ├── config.js
-│       ├── development.js
-│       ├── production.js
-│       ├── test.js
-│       └── webpack.config.js
+│   └── storage.yml
 ├── config.ru
 ├── db
 │   ├── migrate
@@ -1341,7 +1310,11 @@
 │   │   ├── 20260421130510_remove_is_global_zone_to_expert.rb
 │   │   ├── 20260423101238_add_satisfaction_third_question.rb
 │   │   ├── 20260423172541_remove_support_subject.rb
-│   │   └── 20260427143545_add_excluded_insee_codes_to_match_filters.rb
+│   │   ├── 20260427143545_add_excluded_insee_codes_to_match_filters.rb
+│   │   ├── 20260518121414_create_solicitation_mail_templates.rb
+│   │   ├── 20260518121930_seed_solicitation_mail_templates.rb
+│   │   ├── 20260522133821_add_title_to_solicitation_mail_templates.rb
+│   │   └── 20260609134557_add_position_to_solicitation_mail_templates.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1357,6 +1330,7 @@
 │   ├── logo-PDE-lineaire.svg
 │   ├── logo-PDE.svg
 │   └── picto-PDE.svg
+├── eslint.config.js
 ├── lib
 │   ├── api_adapters
 │   │   └── pde_adapter.rb
@@ -1486,6 +1460,7 @@
 │   │   ├── reminders_action.rb
 │   │   ├── reminders_registers.rb
 │   │   ├── shared_satisfactions.rb
+│   │   ├── solicitation_mail_template.rb
 │   │   ├── solicitations.rb
 │   │   ├── spams.rb
 │   │   ├── subject_answer_groupings.rb
@@ -1637,6 +1612,7 @@
 │   │   ├── record_extensions
 │   │   │   └── human_count_spec.rb
 │   │   ├── shared_satisfaction_spec.rb
+│   │   ├── solicitation_mail_template_spec.rb
 │   │   ├── solicitation_spec.rb
 │   │   ├── spam_spec.rb
 │   │   ├── subject_answert_spec.rb
@@ -1675,6 +1651,7 @@
 │   │   ├── landings_spec.rb
 │   │   └── solicitations_spec.rb
 │   ├── services
+│   │   ├── activity_periods_spec.rb
 │   │   ├── activity_reports
 │   │   │   ├── antenne_matches_spec.rb
 │   │   │   ├── antenne_stats_spec.rb
@@ -1755,11 +1732,6 @@
 │   │   │       ├── matches_spec.rb
 │   │   │       ├── needs_spec.rb
 │   │   │       └── solicitations_spec.rb
-│   │   ├── time_duration_service
-│   │   │   ├── months_spec.rb
-│   │   │   ├── quarters_spec.rb
-│   │   │   └── years_spec.rb
-│   │   ├── time_duration_service_spec.rb
 │   │   └── xlsx_export
 │   │       └── cooperation_exporter_spec.rb
 │   ├── spec_helper.rb
@@ -1817,11 +1789,5 @@
 │       └── swagger.yaml
 ├── tmp
 │   └── .keep
-├── vendor
-│   └── assets
-│       ├── javascripts
-│       │   └── .keep
-│       └── stylesheets
-│           └── .keep
 └── yarn.lock
-305 directories, 1530 files
+296 directories, 1505 files
