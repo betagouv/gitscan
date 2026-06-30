@@ -1,54 +1,54 @@
-## Changelog : eva-serveur (30 derniers jours, au 24 juin 2026)
+## Changelog : eva-serveur (30 derniers jours, au 28 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la restitution des évaluations Evapro et de la création de compte. Des corrections de bugs ont été apportées pour assurer la stabilité de l'application, en particulier lors de l'import de données et de la gestion des erreurs. Des améliorations techniques ont également été réalisées pour moderniser le code et l'infrastructure.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur les pages de connexion et de création de compte, ainsi que sur la gestion des évaluations Evapro. Des corrections de bugs ont été apportées pour stabiliser l'application et améliorer la gestion des données, en particulier lors de l'importation et de la restitution des évaluations. Des refactorings ont également été réalisés pour moderniser le code et préparer l'application à de futures évolutions.
 
 ### Évolutions fonctionnelles
 - Ajout de la navigation vers la liste des campagnes depuis un compte utilisateur.
-- Amélioration de la restitution des évaluations Evapro, notamment pour la gestion des scores et des réponses multiples.
+- Amélioration de l'accessibilité des pages de connexion et de création de compte (boutons actifs par défaut, hints clairs).
+- Création de nouveaux modèles `EvaluationEva` et `EvaluationEvapro` pour une meilleure gestion des évaluations.
+- Ajout de nouveaux accès démos depuis l'accueil.
 - Correction de l'affichage de la durée estimée d'une évaluation Evapro.
-- Amélioration de l'expérience de création de compte : correction des indications pour le mot de passe, activation par défaut des boutons de validation et de réinitialisation du mot de passe, et intégration d'un nouveau composant de saisie de mot de passe conforme au DSFR.
-- Ajout d'accès démos depuis l'accueil.
-- Ajout du profil aberrant pour la comparaison des évaluations.
-- Correction de l'affichage des indicateurs de coût et actualisation des conseils pour les bilans Evapro.
-- Correction du calcul du score de stratégie.
-- Ajout des URL officielles pour les compétences transversales.
-- Correction de l'import de questions avec des noms techniques de choix existants.
-- Possibilité de supprimer les réponses lors de l'import de questions QCM.
+- Correction du crash lors de la restitution d'une évaluation de campagne sans `parcourtype`.
+- Correction du comportement de l'accordéon de la numératie (suppression du JS custom).
+- Amélioration de la gestion des réponses multiples à la même question dans les évaluations Evapro (prise de la dernière réponse).
+- Correction d'un crash lors de l'importation d'un grand nombre d'erreurs.
+- Possibilité d'importer des questions avec des noms techniques de choix existants.
+- Ajout de profils aberrants pour la comparaison.
+- Ajout d'indicateurs de coût actualisés.
+- Actualisation des conseils des bilans Evapro.
 
 ### Évolutions techniques
-- Mise à jour des dépendances, incluant Puma en version 7.2 et image_processing en version 2.0.2 (nécessitant l'installation de ruby-vips).
-- Refonte des cartes de choix d'usage avec des composants DSFR.
-- Génération du schéma de la base de données au format Mermaid pour une meilleure lisibilité.
-- Simplification de la logique de calcul des coûts et des risques.
-- Suppression de code obsolète et simplification de certaines parties du code.
-- Utilisation d'un layout UI Kit pour une meilleure cohérence visuelle.
-- Suppression d'un composant impact_stepper non utilisé.
+- Mise à jour de plusieurs dépendances, dont Puma (7.2), image_processing (de 1.14.0 à 2.0.2, nécessitant l'installation de ruby-vips) et js-yaml (de 4.1.1 à 4.2.0).
+- Refactoring de la configuration d'erd pour utiliser Mermaid au lieu de PNG.
+- Simplification de la map des malus de pourcentage de risque.
+- Suppression de code commun redondant entre `input_component` et `password_input_component`.
+- Création d'un nouveau composant `PasswordInputComponent` conforme au DSFR.
+- Utilisation de lettres en majuscule pour les paliers.
+- Introduction d'un layout `ui_kit` pour une meilleure cohérence visuelle.
+- Suppression du composant `impact_stepper` non utilisé.
+- Généralisation de la suppression des réponses lors de l'import.
+- Simplification de `cout_presenter`.
+- Suppression des exemples de stratégies de contournement obsolètes.
 - Correction d'une race condition à la connexion Pro-Connect.
 - Réactivation de la vérification du token d'authenticité.
-- Ajout des permissions pour CodeQL.
-- Correction d'un crash lors de l'import de données en cas d'erreurs multiples.
-- Correction d'un crash lors de la restitution d'une évaluation de campagne sans parcourtype.
+- Retour à la configuration par défaut pour CodeQL.
 
 ### Autres changements
 - Amélioration de la documentation des indicateurs de risque.
-- Correction de l'opacité des EvaProScore.
-- Suppression des exemples de stratégies de contournement obsolètes.
-- Correction de la structure de la page de login pour l'accessibilité.
-- Migration de la page de démonstration d'Eva vers le nouveau layout.
-- Reprise des textes de l'écran de choix d'usage.
+- Ajout d'opacité pour les EvaProScore.
+- Correction de l'affichage du hint pour le mot de passe pour les superadmins.
+- Correction du crash lors de la tentative de définition d'un mot de passe invalide.
+- Correction du calcul du score de stratégie (basé sur les données pour le score numérique).
+- Ajout de traductions et formatage du SIRET dans le choix de structure.
+- Suppression des exemples de UI Kit.
 - Correction du style du bouton d'ajout de réponse.
-- Correction de bugs mineurs d'affichage et de style.
-- Ajout de traductions et formatage du SIRET dans le choix de la structure.
-- Correction d'une vue partielle manquante lors de la restitution PDF de la positionnement numératie.
-- Correction d'un problème d'affichage du hint pour le mot de passe pour les superadmins.
-- Correction d'un crash lors de la tentative de définition d'un mot de passe invalide.
-- Correction de la restitution d'une évaluation Evapro avec un score total supérieur à 167.
-- Simplification de la map des malus de pourcentage de risque.
-- Suppression des cas de synthèse avec un symbole pour le pourcentage de risque.
-- Correction d'un bug lié à l'accordéon de la numératie.
-- Changement de la couleur d'un badge aberrant.
-- Actualisation des indicateurs de coût.
-- Actualisation des conseils des bilans Evapro.
+- Correction du style du badge aberrant.
+- Correction de la structure de la page de login pour l'accessibilité.
+- Migration de la page de démo d'eva vers le nouveau layout.
+- Reprise des textes de l'écran de choix de l'usage.
+- Rétablissement de la marge sous les titres h3 de la numératie.
 - Actualisation des stanines des impacts, de l'analyse de risque et des coûts.
-- Correction d'un bug lié à la gestion du type de structure pour Evapro.
+- Extraction des chaînes de `impact_couts` dans le fichier de traduction.
+- Correction d'un bug lié à la restitution d'une évaluation Evapro avec un score total supérieur à 167.
+- Correction d'un bug empêchant la suppression des choix retirés d'une question lors de l'import.
