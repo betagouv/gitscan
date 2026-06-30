@@ -19,6 +19,7 @@
 │   └── pre-commit
 ├── .lintstagedrc.json
 ├── .npmrc
+├── CONTEXT.md
 ├── LICENSE
 ├── Makefile
 ├── Procfile
@@ -184,6 +185,7 @@
 │   │   │   │   │       └── relationnal.view.ts
 │   │   │   │   └── user
 │   │   │   │       ├── usecases
+│   │   │   │       │   ├── change-password.usecase.ts
 │   │   │   │       │   ├── create-managed-user.params.ts
 │   │   │   │       │   ├── create-managed-user.usecase.ts
 │   │   │   │       │   ├── findAll.usecase.ts
@@ -314,6 +316,7 @@
 │   │   │   │   │   │   ├── logout.controller.ts
 │   │   │   │   │   │   └── portal-auth.controller.ts
 │   │   │   │   │   ├── dtos
+│   │   │   │   │   │   ├── change-password.dto.ts
 │   │   │   │   │   │   ├── forgot-password.dto.ts
 │   │   │   │   │   │   ├── login.dto.ts
 │   │   │   │   │   │   └── reset-password.dto.ts
@@ -444,6 +447,7 @@
 │   │   │   │   │   │   └── not-found.filter.ts
 │   │   │   │   │   └── not-found.module.ts
 │   │   │   │   ├── ofs
+│   │   │   │   │   ├── commercial-transmission.entity.ts
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   ├── admin
 │   │   │   │   │   │   │   ├── create-ofs.controller.ts
@@ -454,6 +458,7 @@
 │   │   │   │   │   │       ├── find-my-ofs.controller.ts
 │   │   │   │   │   │       ├── get-ofss.controller.ts
 │   │   │   │   │   │       └── portal-ofss.controller.ts
+│   │   │   │   │   ├── distributor-eligibility-simulation.entity.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.ts
 │   │   │   │   │   │   ├── find-my-ofs.dto.ts
@@ -494,7 +499,8 @@
 │   │   │   │   │   │   ├── 1774000000000-add_user_roles_ofs_links_and_password_reset_tokens.ts
 │   │   │   │   │   │   ├── 1774100000000-add_ofs_fk_to_brs_diffusion_website.ts
 │   │   │   │   │   │   ├── 1775000000000-add_user_last_login_at.ts
-│   │   │   │   │   │   └── 1775000000000-create_ofs_eligibility_simulation_table.ts
+│   │   │   │   │   │   ├── 1775000000000-create_ofs_eligibility_simulation_table.ts
+│   │   │   │   │   │   └── 1776000000000-add_commercialisateur_transmissions.ts
 │   │   │   │   │   ├── seeds
 │   │   │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   │   │   ├── data.ts
@@ -716,6 +722,7 @@
 │   │   │   │   │       └── update.usecase.unit-spec.ts
 │   │   │   │   └── user
 │   │   │   │       └── usecases
+│   │   │   │           ├── change-password.usecase.unit-spec.ts
 │   │   │   │           ├── findOneByEmail.usecase.unit-spec.ts
 │   │   │   │           └── save.usecase.unit-spec.ts
 │   │   │   ├── config
@@ -738,6 +745,9 @@
 │   │   │   │   │   └── dtos
 │   │   │   │   │       ├── create.dto.unit-spec.ts
 │   │   │   │   │       └── update.dto.unit-spec.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   └── guards
+│   │   │   │   │       └── portal-api-authenticated.guard.unit-spec.ts
 │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   ├── brs-diffusion-website.entity.unit-spec.ts
 │   │   │   │   │   ├── brs-diffusion-website.repository.unit-spec.ts
@@ -1223,6 +1233,7 @@
 │       │   ├── app.html
 │       │   ├── assets
 │       │   │   └── logo.svg
+│       │   ├── hooks.server.ts
 │       │   ├── lib
 │       │   │   └── server
 │       │   │       ├── auth.ts
@@ -1233,20 +1244,35 @@
 │       │       ├── (app)
 │       │       │   ├── +layout.server.ts
 │       │       │   ├── +layout.svelte
+│       │       │   ├── commercialisateur
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   ├── +page.svelte
+│       │       │   │   ├── export
+│       │       │   │   │   └── +server.ts
+│       │       │   │   └── simulations
+│       │       │   │       └── [simulationId]
+│       │       │   │           └── metadata
+│       │       │   │               └── +server.ts
+│       │       │   ├── mon-compte
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   └── +page.svelte
 │       │       │   ├── ofs
 │       │       │   │   └── [id]
 │       │       │   │       ├── +page.server.ts
 │       │       │   │       ├── profil
 │       │       │   │       │   ├── +page.server.ts
 │       │       │   │       │   └── +page.svelte
-│       │       │   │       └── simulations
+│       │       │   │       ├── simulations
+│       │       │   │       │   ├── +page.server.ts
+│       │       │   │       │   ├── +page.svelte
+│       │       │   │       │   ├── [simulationId]
+│       │       │   │       │   │   └── metadata
+│       │       │   │       │   │       └── +server.ts
+│       │       │   │       │   └── export
+│       │       │   │       │       └── +server.ts
+│       │       │   │       └── transmissions
 │       │       │   │           ├── +page.server.ts
-│       │       │   │           ├── +page.svelte
-│       │       │   │           ├── [simulationId]
-│       │       │   │           │   └── metadata
-│       │       │   │           │       └── +server.ts
-│       │       │   │           └── export
-│       │       │   │               └── +server.ts
+│       │       │   │           └── +page.svelte
 │       │       │   └── selection-ofs
 │       │       │       ├── +page.server.ts
 │       │       │       └── +page.svelte
@@ -1278,6 +1304,9 @@
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── docker-compose.yml
+├── docs
+│   └── prd
+│       └── commercialisateur-transmissions.md
 ├── mise.toml
 ├── package-lock.json
 ├── package.json
@@ -1285,4 +1314,4 @@
 └── scalingo
     ├── build.sh
     └── start.sh
-376 directories, 911 files
+387 directories, 929 files
