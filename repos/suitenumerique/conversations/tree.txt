@@ -68,6 +68,7 @@
 │   │   ├── banner-conversations.png
 │   │   └── europe_opensource.png
 │   ├── attachments.md
+│   ├── celery.md
 │   ├── debug_mode.md
 │   ├── env.md
 │   ├── errors.md
@@ -81,6 +82,7 @@
 │   ├── history-processor.md
 │   ├── installation.md
 │   ├── llm-configuration.md
+│   ├── model-fallback.md
 │   ├── release.md
 │   ├── service_status.md
 │   ├── system-requirements.md
@@ -201,8 +203,10 @@
 │   │   │   │   ├── 0008_modelhealth.py
 │   │   │   │   ├── 0009_chatconversation_index_state_and_more.py
 │   │   │   │   ├── 0010_alter_modelhealth_status.py
+│   │   │   │   ├── 0011_chatconversation_model_hrid.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── model_health.py
+│   │   │   ├── model_routing.py
 │   │   │   ├── models.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
@@ -279,6 +283,7 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_chat_conversation_input_serializer.py
 │   │   │   │   │   ├── test_chat_conversation_request_serializer.py
+│   │   │   │   │   ├── test_chat_conversation_serializer.py
 │   │   │   │   │   └── test_chat_project_serializer.py
 │   │   │   │   ├── test_admin.py
 │   │   │   │   ├── test_ai_agent_service_co2.py
@@ -288,6 +293,7 @@
 │   │   │   │   ├── test_local_media_url_processors.py
 │   │   │   │   ├── test_malware_detection.py
 │   │   │   │   ├── test_model_health.py
+│   │   │   │   ├── test_model_routing.py
 │   │   │   │   ├── test_rate_limiting.py
 │   │   │   │   ├── tools
 │   │   │   │   │   ├── __init__.py
@@ -313,6 +319,8 @@
 │   │   │   │       │   │   ├── conftest.py
 │   │   │   │       │   │   ├── test_conversation.py
 │   │   │   │       │   │   ├── test_conversation_concatenate_system_messages.py
+│   │   │   │       │   │   ├── test_conversation_image_guard.py
+│   │   │   │       │   │   ├── test_conversation_model_routing.py
 │   │   │   │       │   │   ├── test_conversation_search_with_document_id.py
 │   │   │   │       │   │   ├── test_conversation_search_with_document_id_retry.py
 │   │   │   │       │   │   ├── test_conversation_with_document_upload.py
@@ -377,6 +385,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── asgi.py
 │   │   │   ├── brave_settings.py
+│   │   │   ├── celery_app.py
 │   │   │   ├── configuration
 │   │   │   │   ├── llm
 │   │   │   │   │   ├── default.e2e.json
@@ -437,12 +446,14 @@
 │   │   │   │   ├── 0011_accessbypassemail_user_organization_siret.py
 │   │   │   │   ├── 0012_chatcooldownsettings.py
 │   │   │   │   ├── 0013_siteconfiguration_block_on_full_outage.py
+│   │   │   │   ├── 0014_modelhealthsettings_fallback_eviction_threshold_and_more.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
 │   │   │   ├── static
 │   │   │   │   └── images
 │   │   │   │       └── logo.png
+│   │   │   ├── tasks.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── authentication
@@ -732,6 +743,7 @@
 │   │   │   │   │   │   │   ├── api
 │   │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   │   ├── useAssistantHealth.test.tsx
+│   │   │   │   │   │   │   │   │   ├── useChat.test.tsx
 │   │   │   │   │   │   │   │   │   └── useConversations.test.tsx
 │   │   │   │   │   │   │   │   ├── useAssistantHealth.ts
 │   │   │   │   │   │   │   │   ├── useChat.tsx
@@ -757,6 +769,7 @@
 │   │   │   │   │   │   │   │   ├── CodeBlock.tsx
 │   │   │   │   │   │   │   │   ├── DocumentParsingErrorBox.tsx
 │   │   │   │   │   │   │   │   ├── FeedbackButtons.tsx
+│   │   │   │   │   │   │   │   ├── ImageProcessingUnavailableBanner.tsx
 │   │   │   │   │   │   │   │   ├── InputChat.tsx
 │   │   │   │   │   │   │   │   ├── InputChatAction.tsx
 │   │   │   │   │   │   │   │   ├── MessageBlock.tsx
@@ -772,7 +785,9 @@
 │   │   │   │   │   │   │   │   ├── WelcomeLayout.tsx
 │   │   │   │   │   │   │   │   ├── WelcomeMessage.tsx
 │   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   ├── AttachmentList.test.tsx
 │   │   │   │   │   │   │   │   │   ├── ChatError.test.tsx
+│   │   │   │   │   │   │   │   │   ├── ImageProcessingUnavailableBanner.test.tsx
 │   │   │   │   │   │   │   │   │   ├── InputChat.test.tsx
 │   │   │   │   │   │   │   │   │   ├── InputChatAction.test.tsx
 │   │   │   │   │   │   │   │   │   ├── MessageBlock.test.tsx
@@ -1040,6 +1055,8 @@
 │   │   │   ├── generate-readme.sh
 │   │   │   ├── templates
 │   │   │   │   ├── _helpers.tpl
+│   │   │   │   ├── backend_celery_beat.yaml
+│   │   │   │   ├── backend_celery_worker.yaml
 │   │   │   │   ├── backend_cronjob_deindex.yaml
 │   │   │   │   ├── backend_cronjob_model_health.yaml
 │   │   │   │   ├── backend_deployment.yaml
@@ -1085,4 +1102,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-229 directories, 858 files
+229 directories, 875 files
