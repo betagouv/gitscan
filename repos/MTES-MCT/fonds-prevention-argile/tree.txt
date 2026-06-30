@@ -50,6 +50,9 @@
 │   │   ├── 0011-instance-unique-ds-et-permissions-token.md
 │   │   ├── 0012-url-reprise-dossier-basee-sur-depot.md
 │   │   ├── 0013-remediation-dossiers-dn-sync-erreur.md
+│   │   ├── 0014-perimetre-donnees-role-analyste.md
+│   │   ├── 0015-navigation-backoffice-unifiee.md
+│   │   ├── 0016-reouverture-demande-refusee.md
 │   │   └── README.md
 │   ├── parcours
 │   │   ├── FLOW-AND-SYNC.md
@@ -59,6 +62,7 @@
 │   │   └── PARTNER-TRACKING.md
 │   ├── security
 │   │   ├── RBAC-ROLES.md
+│   │   ├── RBAC-TEST-PLAN.md
 │   │   └── snyk-accepted-vulnerabilities.md
 │   └── testing
 │       ├── TESTING-AUTH.md
@@ -115,6 +119,8 @@
 │   │   ├── rga
 │   │   │   └── cta.png
 │   │   ├── sample.png
+│   │   ├── signatures
+│   │   │   └── bandeau-signature-rga-04.png
 │   │   ├── signes-a-surveiller
 │   │   │   ├── affaissement.png
 │   │   │   ├── decollement-plafond.png
@@ -167,9 +173,10 @@
 │   │   │   ├── check-ds-permissions.ts
 │   │   │   └── fetch-demarche-schema.ts
 │   │   ├── fix
+│   │   │   ├── detacher-amo.ts
 │   │   │   ├── fix-double-progression-amo.ts
 │   │   │   ├── fix-missing-epci.ts
-│   │   │   └── reset-amo-non-eligible.ts
+│   │   │   └── reouvrir-demande.ts
 │   │   ├── lib
 │   │   │   ├── anonymize.ts
 │   │   │   ├── args.ts
@@ -222,8 +229,6 @@
 │   │   │   │   ├── acquisition
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AcquisitionPanel.tsx
-│   │   │   │   │   │   ├── DepartementSelector.tsx
-│   │   │   │   │   │   ├── StatistiquesDepartement.tsx
 │   │   │   │   │   │   ├── simulateur
 │   │   │   │   │   │   │   ├── DetailEtapesFunnel.tsx
 │   │   │   │   │   │   │   ├── EntonnoirEligibilite.tsx
@@ -324,6 +329,7 @@
 │   │   │   │   │   │   └── DiagnosticsPanel.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.test.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── InProgress.tsx
@@ -381,6 +387,7 @@
 │   │   │   │   │   │   │   ├── GagnezDuTempsTravaux.tsx
 │   │   │   │   │   │   │   ├── InfoDossierCallout.tsx
 │   │   │   │   │   │   │   ├── PiecesJustificatives.tsx
+│   │   │   │   │   │   │   ├── ReouvrirDemandeButton.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
@@ -403,7 +410,9 @@
 │   │   │   │   ├── edition-donnees-simulation
 │   │   │   │   │   └── [id]
 │   │   │   │   │       └── page.tsx
+│   │   │   │   ├── layout.test.tsx
 │   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.test.ts
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── prospects
 │   │   │   │   │   ├── [id]
@@ -431,6 +440,7 @@
 │   │   │   │   │   │   ├── InfoLogement.tsx
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
 │   │   │   │   │   │   ├── QualificationAllersVers.tsx
+│   │   │   │   │   │   ├── ReouvrirDemandeModal.tsx
 │   │   │   │   │   │   ├── RepartitionCardTile.tsx
 │   │   │   │   │   │   ├── StatTile.tsx
 │   │   │   │   │   │   ├── UnarchiveModal.tsx
@@ -775,6 +785,8 @@
 │   │   │   │   └── services
 │   │   │   │       ├── agent-scope.service.test.ts
 │   │   │   │       ├── agent-scope.service.ts
+│   │   │   │       ├── backoffice-access.service.test.ts
+│   │   │   │       ├── backoffice-access.service.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── permissions.service.test.ts
 │   │   │   │       ├── permissions.service.ts
@@ -803,8 +815,6 @@
 │   │   │   ├── administration
 │   │   │   │   ├── acquisition
 │   │   │   │   │   ├── actions
-│   │   │   │   │   │   ├── get-agent-departements.action.ts
-│   │   │   │   │   │   ├── get-statistiques-departement.action.ts
 │   │   │   │   │   │   ├── get-statistiques.action.test.ts
 │   │   │   │   │   │   ├── get-statistiques.action.ts
 │   │   │   │   │   │   └── index.ts
@@ -895,9 +905,11 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── users-tracking.service.test.ts
 │   │   │   │   │       └── users-tracking.service.ts
 │   │   │   │   ├── diagnostics
 │   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── diagnostics.actions.test.ts
 │   │   │   │   │   │   └── diagnostics.actions.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   └── diagnostics.types.ts
@@ -920,6 +932,7 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── tableau-de-bord
 │   │   │   │       ├── actions
+│   │   │   │       │   ├── tableau-de-bord.actions.test.ts
 │   │   │   │       │   └── tableau-de-bord.actions.ts
 │   │   │   │       ├── domain
 │   │   │   │       │   └── types
@@ -931,6 +944,7 @@
 │   │   │   │   ├── creation-dossier
 │   │   │   │   │   ├── README.md
 │   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── create-dossier-aller-vers.action.test.ts
 │   │   │   │   │   │   ├── create-dossier-aller-vers.action.ts
 │   │   │   │   │   │   └── post-creation-redirect.ts
 │   │   │   │   │   ├── components
@@ -967,16 +981,21 @@
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── amo-accueil.service.test.ts
 │   │   │   │   │       ├── amo-accueil.service.ts
+│   │   │   │   │       ├── demande-detail.service.test.ts
 │   │   │   │   │       ├── demande-detail.service.ts
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── archive-dossier.actions.ts
 │   │   │   │   │   │   ├── get-dossiers-territoire-data.action.ts
+│   │   │   │   │   │   ├── get-nombre-dossiers.action.test.ts
 │   │   │   │   │   │   ├── get-nombre-dossiers.action.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── reouvrir-demande.actions.test.ts
+│   │   │   │   │   │   └── reouvrir-demande.actions.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── reouverture.ts
 │   │   │   │   │   │   ├── responsable-presentation.test.ts
 │   │   │   │   │   │   ├── responsable-presentation.ts
 │   │   │   │   │   │   └── types
@@ -1023,6 +1042,7 @@
 │   │   │   │   │       ├── actions.service.test.ts
 │   │   │   │   │       ├── actions.service.ts
 │   │   │   │   │       ├── agent-edit-info.service.ts
+│   │   │   │   │       ├── author-snapshot.ts
 │   │   │   │   │       ├── edition-simulation.service.ts
 │   │   │   │   │       └── parcours-creator.service.ts
 │   │   │   │   └── statistiques
@@ -1101,7 +1121,9 @@
 │   │   │   │   │   ├── amo-validation.service.test.ts
 │   │   │   │   │   ├── amo-validation.service.ts
 │   │   │   │   │   ├── brevo-webhook.service.test.ts
-│   │   │   │   │   └── brevo-webhook.service.ts
+│   │   │   │   │   ├── brevo-webhook.service.ts
+│   │   │   │   │   ├── reouverture-demande.service.test.ts
+│   │   │   │   │   └── reouverture-demande.service.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── amo.utils.test.ts
 │   │   │   │       └── amo.utils.ts
@@ -1434,6 +1456,7 @@
 │   │           ├── index.ts
 │   │           ├── rga.store.ts
 │   │           └── simulateur.store.ts
+│   ├── middleware.test.ts
 │   ├── middleware.ts
 │   ├── shared
 │   │   ├── adapters
@@ -1454,14 +1477,12 @@
 │   │   ├── components
 │   │   │   ├── AccesNonAutorise
 │   │   │   │   └── AccesNonAutorise.tsx
-│   │   │   ├── AdminNavigation
-│   │   │   │   ├── AdminNavigation.tsx
-│   │   │   │   └── index.ts
-│   │   │   ├── AgentNavigation
-│   │   │   │   ├── AgentNavigation.tsx
-│   │   │   │   └── index.ts
 │   │   │   ├── Alert
 │   │   │   │   └── Alert.tsx
+│   │   │   ├── BackofficeNavigation
+│   │   │   │   ├── BackofficeNavigation.test.tsx
+│   │   │   │   ├── BackofficeNavigation.tsx
+│   │   │   │   └── index.ts
 │   │   │   ├── ContactCard
 │   │   │   │   └── ContactCard.tsx
 │   │   │   ├── CountBadge
@@ -1545,6 +1566,7 @@
 │   │   │   │   ├── 0033_sad_star_brand.sql
 │   │   │   │   ├── 0034_nullable_ds_status.sql
 │   │   │   │   ├── 0035_puzzling_nomad.sql
+│   │   │   │   ├── 0036_even_hercules.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1582,6 +1604,7 @@
 │   │   │   │       ├── 0033_snapshot.json
 │   │   │   │       ├── 0034_snapshot.json
 │   │   │   │       ├── 0035_snapshot.json
+│   │   │   │       ├── 0036_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1727,4 +1750,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-483 directories, 1246 files
+483 directories, 1269 files
