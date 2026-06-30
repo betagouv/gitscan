@@ -1,19 +1,15 @@
-## Changelog : mednum-cli (30 derniers jours, au 02 juin 2024)
+## Changelog : mednum-cli (30 derniers jours, au 29 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion et à la publication des données de lieux de médiation numérique, notamment concernant la gestion des adresses, la prise en charge de nouvelles sources de données et l'optimisation du processus de géocodage. Des corrections ont également été apportées pour assurer la cohérence et la fiabilité des données publiées.
+Cette version apporte des mises à jour importantes des sources de données utilisées par `mednum-cli`. Les zones "ZRR" ont été remplacées par les zones "France Ruralités Revitalisation (FRR)", la source QPV a été migrée vers le jeu de données des quartiers prioritaires ANCT 2024, et une nouvelle source, "francilin", a été ajoutée. Des améliorations de la stabilité et de la publication des données ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout de la source de données "Meuse" pour enrichir la base de données des lieux de médiation numérique. [#348](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/348)
-- Publication du jeu de données national à partir des données dédupliquées. [#354](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/354)
-- Renommage de "di resources" en "national" pour plus de clarté. [#355](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/355)
-- Amélioration de la gestion des dates de mise à jour (`date_maj`) pour plusieurs sources de données. [#349](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/349)
-- Actualisation des adresses dans les fichiers JSON. [#350](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/350)
+- Ajout de la source de données "francilin" [#357](https://github.com/anct-cartographie-nationale/mednum-cli/issues/357).
+- Remplacement des zones "ZRR" par les zones "France Ruralités Revitalisation (FRR)" [#360](https://github.com/anct-cartographie-nationale/mednum-cli/issues/360).
+- Migration de la source QPV vers le jeu de données des quartiers prioritaires ANCT 2024 [#359](https://github.com/anct-cartographie-nationale/mednum-cli/issues/359).
+- Publication du jeu de données national à partir des données dédupliquées [#354](https://github.com/anct-cartographie-nationale/mednum-cli/issues/354).
+- Suppression des ressources DI et renommage en "national" [#355](https://github.com/anct-cartographie-nationale/mednum-cli/issues/355).
 
 ### Évolutions techniques
-- Migration du géocodage BAN vers l'API batch CSV, améliorant ainsi les performances et la scalabilité. [#347](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/347)
-- Mise en cache des adresses pour optimiser les performances. [#353](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/353)
-
-### Autres changements
-- Correction d'un bug où les adresses invalides étaient ignorées. [#352](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/352)
-- Mise à jour de la configuration. [#351](https://github.com/anct-cartographie-nationale/mednum-cli/pulls/351)
+- Amélioration de la stabilité de l'ordre de fusion des doublons internes avec une règle de départage par ID [#358](https://github.com/anct-cartographie-nationale/mednum-cli/issues/358).
+- Modification du planning de la publication nocturne pour éviter la congestion des Actions (passage à 22h48 UTC) [#356](https://github.com/anct-cartographie-nationale/mednum-cli/issues/356).

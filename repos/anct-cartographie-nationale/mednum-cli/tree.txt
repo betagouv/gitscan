@@ -213,7 +213,9 @@
 │   │   │   │   ├── exclude-by-id
 │   │   │   │   │   ├── exclude-by-id.spec.ts
 │   │   │   │   │   └── exclude-by-id.ts
-│   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── without-obsolete-labels.spec.ts
+│   │   │   │   └── without-obsolete-labels.ts
 │   │   │   ├── data
 │   │   │   │   ├── index.ts
 │   │   │   │   └── save
@@ -377,6 +379,15 @@
 │       │   │   ├── index.ts
 │       │   │   ├── save-fingerprints-in-file.ts
 │       │   │   └── save-fingerprints-with-lieux-mediation-numerique-api.ts
+│       │   ├── frr
+│       │   │   ├── frr-from-observatoire-des-territoires.ts
+│       │   │   ├── index.ts
+│       │   │   ├── is-in-frr.spec.ts
+│       │   │   ├── is-in-frr.ts
+│       │   │   └── transfer
+│       │   │       ├── frr.transfer.spec.ts
+│       │   │       ├── frr.transfer.ts
+│       │   │       └── index.ts
 │       │   ├── index.ts
 │       │   ├── localisation
 │       │   │   ├── localisation-from-geo.spec.ts
@@ -394,23 +405,14 @@
 │       │   │   ├── index.ts
 │       │   │   ├── save-outputs-in-files.ts
 │       │   │   └── save-outputs-with-lieux-inclusion-numerique-api.ts
-│       │   ├── source
-│       │   │   ├── api-or-csv.ts
-│       │   │   ├── index.ts
-│       │   │   ├── sources-from-cartographie-nationale-api.ts
-│       │   │   ├── transfer
-│       │   │   │   ├── source.transfer.spec.ts
-│       │   │   │   └── source.transfer.ts
-│       │   │   └── update-source-with-cartographie-nationale-api.ts
-│       │   └── zrr
+│       │   └── source
+│       │       ├── api-or-csv.ts
 │       │       ├── index.ts
-│       │       ├── is-in-zrr.spec.ts
-│       │       ├── is-in-zrr.ts
+│       │       ├── sources-from-cartographie-nationale-api.ts
 │       │       ├── transfer
-│       │       │   ├── index.ts
-│       │       │   ├── zrr.transfer.spec.ts
-│       │       │   └── zrr.transfer.ts
-│       │       └── zrr-from-equipements-sports-gouv-api.ts
+│       │       │   ├── source.transfer.spec.ts
+│       │       │   └── source.transfer.ts
+│       │       └── update-source-with-cartographie-nationale-api.ts
 │       ├── fields
 │       │   ├── adresse
 │       │   │   ├── adresse.field.spec.ts
@@ -427,9 +429,9 @@
 │       │   ├── autres-formations-labels
 │       │   │   ├── autres-formations-labels.field.spec.ts
 │       │   │   ├── autres-formations-labels.field.ts
+│       │   │   ├── frr.ts
 │       │   │   ├── index.ts
-│       │   │   ├── qpv.ts
-│       │   │   └── zrr.ts
+│       │   │   └── qpv.ts
 │       │   ├── contact
 │       │   │   ├── clean-operations.ts
 │       │   │   ├── contact.field.spec.ts
@@ -547,4 +549,4 @@
 │           └── to-osm-hours.ts
 ├── vitest.config.ts
 └── vitest.global-setup.ts
-163 directories, 386 files
+163 directories, 388 files
