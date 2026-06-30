@@ -1,3 +1,24 @@
+## [2.250.15](https://github.com/SocialGouv/domifa/compare/v2.250.14...v2.250.15) (2026-06-29)
+
+
+### Bug Fixes
+
+* **backend:** fix anon ([46a5411](https://github.com/SocialGouv/domifa/commit/46a54116107742e6ca23c314d5ba78d607ae251b))
+
+## [2.250.14](https://github.com/SocialGouv/domifa/compare/v2.250.13...v2.250.14) (2026-06-29)
+
+
+### Bug Fixes
+
+* **frontend:** fix password form & text ([2104ae6](https://github.com/SocialGouv/domifa/commit/2104ae6b11a461e77cf31fa28dffc12c1ecd4653))
+
+## [2.250.13](https://github.com/SocialGouv/domifa/compare/v2.250.12...v2.250.13) (2026-06-28)
+
+
+### Bug Fixes
+
+* **frontend:** fix warning alert ([5f3a485](https://github.com/SocialGouv/domifa/commit/5f3a4852036858c52a39dff16e9bc81115bc00d5))
+
 ## [2.250.12](https://github.com/SocialGouv/domifa/compare/v2.250.11...v2.250.12) (2026-06-26)
 
 
