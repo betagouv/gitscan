@@ -74,6 +74,7 @@
 ├── CLAUDE.md
 ├── Dockerfile.dev
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── SECURITY.md
 ├── apps
@@ -88,15 +89,19 @@
 │   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── data
+│   │   │   ├── README.md
 │   │   │   ├── aldo
 │   │   │   │   ├── README.md
 │   │   │   │   ├── carbonStorage.csv
 │   │   │   │   └── cities.csv
-│   │   │   └── dvf
-│   │   │       ├── .gitignore
+│   │   │   ├── dvf
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── README.md
+│   │   │   │   ├── build-city-stats.ts
+│   │   │   │   └── cityStats.csv
+│   │   │   └── france-ruralites
 │   │   │       ├── README.md
-│   │   │       ├── build-city-stats.ts
-│   │   │       └── cityStats.csv
+│   │   │       └── liste-communes-FRR-juillet2025.csv
 │   │   ├── docker-entrypoint.sh
 │   │   ├── docs
 │   │   │   ├── calculs-impacts
@@ -159,6 +164,7 @@
 │   │   │   │       │   ├── authLinkSendFailed.event.ts
 │   │   │   │       │   ├── loginAttempted.event.ts
 │   │   │   │       │   ├── loginSucceeded.event.ts
+│   │   │   │       │   ├── loginWithTokenFailed.event.ts
 │   │   │   │       │   └── userAccountCreated.event.ts
 │   │   │   │       ├── gateways
 │   │   │   │       │   ├── TokenAuthenticationAttemptRepository.ts
@@ -298,10 +304,6 @@
 │   │   │   │   │       │       ├── run-ademe-analysis.sh
 │   │   │   │   │       │       └── strip-trailing-empty-csv-rows.ts
 │   │   │   │   │       ├── queries
-│   │   │   │   │       │   ├── city-stats
-│   │   │   │   │       │   │   ├── InMemoryCityStatsQuery.ts
-│   │   │   │   │       │   │   ├── SqlCityStatsQuery.integration-spec.ts
-│   │   │   │   │       │   │   └── SqlCityStatsQuery.ts
 │   │   │   │   │       │   ├── reconversion-project-features
 │   │   │   │   │       │   │   ├── SqlReconversionProjectQuery.integration-spec.ts
 │   │   │   │   │       │   │   └── SqlReconversionProjectQuery.ts
@@ -323,7 +325,6 @@
 │   │   │   │       │   ├── reconversionProjectCreated.event.ts
 │   │   │   │       │   └── reconversionProjectDuplicated.event.ts
 │   │   │   │       ├── gateways
-│   │   │   │       │   ├── CityStatsProvider.ts
 │   │   │   │       │   ├── FakeGetSoilsCarbonStorageService.ts
 │   │   │   │       │   ├── ReconversionProjectRepository.ts
 │   │   │   │       │   └── SoilsCarbonStorageService.ts
@@ -341,7 +342,7 @@
 │   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.spec.ts
 │   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.ts
 │   │   │   │       │   │   │   ├── documentation-calculs-impacts.md
-│   │   │   │       │   │   │   ├── indirect-economic-impacts
+│   │   │   │       │   │   │   ├── indirect-impacts
 │   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.spec.ts
 │   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.ts
 │   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.spec.ts
@@ -352,8 +353,8 @@
 │   │   │   │       │   │   │   │   └── urbanProjectImpacts.ts
 │   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.spec.ts
 │   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.ts
-│   │   │   │       │   │   │   ├── projectIndirectEconomicImpacts.spec.ts
-│   │   │   │       │   │   │   ├── projectIndirectEconomicImpacts.ts
+│   │   │   │       │   │   │   ├── projectIndirectImpacts.spec.ts
+│   │   │   │       │   │   │   ├── projectIndirectImpacts.ts
 │   │   │   │       │   │   │   ├── projectOperatingEconomicBalance.spec.ts
 │   │   │   │       │   │   │   └── projectOperatingEconomicBalance.ts
 │   │   │   │       │   │   ├── economic-balance
@@ -428,7 +429,7 @@
 │   │   │   │           ├── generateReconversionProjectFromTemplate.usecase.ts
 │   │   │   │           ├── getReconversionProject.usecase.ts
 │   │   │   │           ├── getReconversionProjectFeatures.usecase.ts
-│   │   │   │           ├── getUserReconversionProjectsBySite.usecase.spec.ts
+│   │   │   │           ├── getUserReconversionProjectsBySite.spec.ts
 │   │   │   │           ├── getUserReconversionProjectsBySite.usecase.ts
 │   │   │   │           ├── quickComputeUrbanProjectImpactsOnFricheUseCase.usecase.ts
 │   │   │   │           ├── updateReconversionProject.usecase.spec.ts
@@ -530,17 +531,21 @@
 │   │   │   │   │       │   ├── 20260210154259_add-column-status-to-reconversion_projects-table.ts
 │   │   │   │   │       │   ├── 20260316144638_add-column-status-and-updated_at-to-sites-table.ts
 │   │   │   │   │       │   ├── 20260323152955_create-table-site-urban-zone-features.ts
-│   │   │   │   │       │   └── 20260413093021_add-buildings-reuse-fields-and-construction-costs-table.ts
+│   │   │   │   │       │   ├── 20260413093021_add-buildings-reuse-fields-and-construction-costs-table.ts
+│   │   │   │   │       │   ├── 20260616101543_create-table-france-ruralites.ts
+│   │   │   │   │       │   └── 20260623145011_add-involves_reinstatement-to-reconversion_projects-table.ts
 │   │   │   │   │       ├── scripts
 │   │   │   │   │       │   ├── README.md
 │   │   │   │   │       │   ├── initialize-or-update-city-stats.ts
 │   │   │   │   │       │   ├── initialize-site-actions.ts
 │   │   │   │   │       │   ├── merge-users-by-email.ts
-│   │   │   │   │       │   └── read-city-stats-csv.ts
+│   │   │   │   │       │   ├── read-city-stats-csv.ts
+│   │   │   │   │       │   └── read-france-ruralites-csv.ts
 │   │   │   │   │       ├── seeds
 │   │   │   │   │       │   ├── carbonStorage.ts
 │   │   │   │   │       │   ├── cities.ts
-│   │   │   │   │       │   └── cityStats.ts
+│   │   │   │   │       │   ├── cityStats.ts
+│   │   │   │   │       │   └── franceRuralites.ts
 │   │   │   │   │       ├── sqlConnection.module.ts
 │   │   │   │   │       ├── tableConsistency.integration-spec.ts
 │   │   │   │   │       └── tableTypes.d.ts
@@ -600,7 +605,7 @@
 │   │   │   │       │   ├── MutabilityEvaluationQuery.ts
 │   │   │   │       │   └── SiteEvaluationQuery.ts
 │   │   │   │       └── usecases
-│   │   │   │           ├── getUserSiteEvaluations.usecase.spec.ts
+│   │   │   │           ├── getUserSiteEvaluations.spec.ts
 │   │   │   │           └── getUserSiteEvaluations.usecase.ts
 │   │   │   ├── sites
 │   │   │   │   ├── adapters
@@ -633,8 +638,8 @@
 │   │   │   │       │   ├── impacts
 │   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.spec.ts
 │   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.ts
-│   │   │   │       │   │   ├── siteIndirectEconomicImpacts.spec.ts
-│   │   │   │       │   │   ├── siteIndirectEconomicImpacts.ts
+│   │   │   │       │   │   ├── siteIndirectImpacts.spec.ts
+│   │   │   │       │   │   ├── siteIndirectImpacts.ts
 │   │   │   │       │   │   ├── siteOperatingEconomicBalance.spec.ts
 │   │   │   │       │   │   └── siteOperatingEconomicBalance.ts
 │   │   │   │       │   ├── naturalAreaGenerator.ts
@@ -647,6 +652,7 @@
 │   │   │   │       └── usecases
 │   │   │   │           ├── archiveSite.usecase.spec.ts
 │   │   │   │           ├── archiveSite.usecase.ts
+│   │   │   │           ├── computeFricheInactionCost.usecase.spec.ts
 │   │   │   │           ├── computeFricheInactionCost.usecase.ts
 │   │   │   │           ├── computeSiteImpacts.usecase.spec.ts
 │   │   │   │           ├── computeSiteImpacts.usecase.ts
@@ -670,6 +676,28 @@
 │   │   │   │   └── core
 │   │   │   │       └── usecases
 │   │   │   │           └── computeEvaluatedProjectStats.usecase.ts
+│   │   │   ├── territory
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── primary
+│   │   │   │   │   │   ├── territory.controller.integration-spec.ts
+│   │   │   │   │   │   ├── territory.controller.ts
+│   │   │   │   │   │   └── territory.module.ts
+│   │   │   │   │   └── secondary
+│   │   │   │   │       ├── city-rurality-query
+│   │   │   │   │       │   ├── InMemoryCityRuralityQuery.ts
+│   │   │   │   │       │   ├── SqlCityRuralityQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlCityRuralityQuery.ts
+│   │   │   │   │       └── city-stats-query
+│   │   │   │   │           ├── InMemoryCityStatsQuery.ts
+│   │   │   │   │           ├── SqlCityStatsQuery.integration-spec.ts
+│   │   │   │   │           └── SqlCityStatsQuery.ts
+│   │   │   │   └── core
+│   │   │   │       ├── gateways
+│   │   │   │       │   ├── CityRuralityQuery.ts
+│   │   │   │       │   └── CityStatsProvider.ts
+│   │   │   │       └── usecases
+│   │   │   │           ├── getCityRurality.usecase.spec.ts
+│   │   │   │           └── getCityRurality.usecase.ts
 │   │   │   └── users
 │   │   │       ├── adapters
 │   │   │       │   ├── primary
@@ -693,13 +721,14 @@
 │   │   │           └── usecases
 │   │   │               ├── createUserFeatureAlert.usecase.spec.ts
 │   │   │               └── createUserFeatureAlert.usecase.ts
+│   │   ├── swc.config.json
 │   │   ├── test
-│   │   │   ├── integration-tests-global-hooks.ts
-│   │   │   ├── integration-tests-setup.ts
+│   │   │   ├── assertShapeEquals.ts
+│   │   │   ├── integration-global-setup.mts
+│   │   │   ├── integration-per-test-hooks.ts
+│   │   │   ├── swc-esm-loader.mjs
 │   │   │   ├── tablesToCleanUp.ts
-│   │   │   ├── testApp.ts
-│   │   │   ├── vitest.config.ts
-│   │   │   └── vitest.integration.config.ts
+│   │   │   └── testApp.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
 │   ├── e2e-tests
@@ -1059,7 +1088,10 @@
 │       │   │   │   │   │   │   ├── photovoltaicViewData.selectors.spec.ts
 │       │   │   │   │   │   │   ├── projectData.mock.ts
 │       │   │   │   │   │   │   ├── renewableEnergy.reducer.spec.ts
-│       │   │   │   │   │   │   └── stakeholders.selector.spec.ts
+│       │   │   │   │   │   │   ├── stakeholders.selector.spec.ts
+│       │   │   │   │   │   │   └── steps
+│       │   │   │   │   │   │       └── soils-decontamination
+│       │   │   │   │   │   │           └── involvesReinstatement.step.spec.ts
 │       │   │   │   │   │   ├── actions
 │       │   │   │   │   │   │   ├── customProjectSaved.action.ts
 │       │   │   │   │   │   │   ├── getPhotovoltaicExpectedPerformance.action.ts
@@ -1168,6 +1200,7 @@
 │       │   │   │   │   │       │   └── schedule-projection
 │       │   │   │   │   │       │       ├── scheduleProjection.handler.ts
 │       │   │   │   │   │       │       ├── scheduleProjection.schema.ts
+│       │   │   │   │   │       │       ├── scheduleProjection.selector.spec.ts
 │       │   │   │   │   │       │       ├── scheduleProjection.selector.ts
 │       │   │   │   │   │       │       ├── scheduleProjection.step.spec.ts
 │       │   │   │   │   │       │       └── scheduleProjection.stepperConfig.ts
@@ -1175,6 +1208,11 @@
 │       │   │   │   │   │       │   ├── projectStakeholder.schema.ts
 │       │   │   │   │   │       │   └── soils.schema.ts
 │       │   │   │   │   │       ├── soils-decontamination
+│       │   │   │   │   │       │   ├── involves-reinstatement
+│       │   │   │   │   │       │   │   ├── involvesReinstatement.handler.ts
+│       │   │   │   │   │       │   │   ├── involvesReinstatement.schema.ts
+│       │   │   │   │   │       │   │   ├── involvesReinstatement.selectors.ts
+│       │   │   │   │   │       │   │   └── involvesReinstatement.stepperConfig.ts
 │       │   │   │   │   │       │   ├── soils-decontamination-introduction
 │       │   │   │   │   │       │   │   ├── soilsDecontaminationIntroduction.handler.ts
 │       │   │   │   │   │       │   │   ├── soilsDecontaminationIntroduction.step.spec.ts
@@ -1301,26 +1339,41 @@
 │       │   │   │   │   │   │   ├── _testStoreHelpers.ts
 │       │   │   │   │   │   │   ├── previousStepRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── stepCompletionCancelled.reducer.spec.ts
-│       │   │   │   │   │   │   ├── stepCompletionConfirmed.reducer.spec.ts
 │       │   │   │   │   │   │   ├── stepCompletionRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── stepNavigationRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── steps
+│       │   │   │   │   │   │   │   ├── buildings
+│       │   │   │   │   │   │   │   │   └── buildingsNavigation.step.spec.ts
 │       │   │   │   │   │   │   │   ├── decontamination
-│       │   │   │   │   │   │   │   │   └── decontaminationPlanSelection.step.spec.ts
+│       │   │   │   │   │   │   │   │   ├── decontaminationPlanSelection.step.spec.ts
+│       │   │   │   │   │   │   │   │   └── soilsDecontaminationIntroduction.step.spec.ts
 │       │   │   │   │   │   │   │   ├── expenses
 │       │   │   │   │   │   │   │   │   ├── expensesInstallation.handler.spec.ts
+│       │   │   │   │   │   │   │   │   ├── expensesInstallation.step.spec.ts
 │       │   │   │   │   │   │   │   │   ├── expensesIntroduction.handler.spec.ts
+│       │   │   │   │   │   │   │   │   ├── expensesIntroduction.step.spec.ts
 │       │   │   │   │   │   │   │   │   ├── expensesProjectedBuildingsOperatingExpenses.handler.spec.ts
 │       │   │   │   │   │   │   │   │   ├── expensesReinstatement.handler.spec.ts
-│       │   │   │   │   │   │   │   │   └── expensesSitePurchaseAmounts.handler.spec.ts
+│       │   │   │   │   │   │   │   │   ├── expensesReinstatement.step.spec.ts
+│       │   │   │   │   │   │   │   │   ├── expensesSitePurchaseAmounts.handler.spec.ts
+│       │   │   │   │   │   │   │   │   └── expensesSitePurchaseAmounts.step.spec.ts
+│       │   │   │   │   │   │   │   ├── naming
+│       │   │   │   │   │   │   │   │   └── naming.step.spec.ts
+│       │   │   │   │   │   │   │   ├── reinstatement
+│       │   │   │   │   │   │   │   │   └── involvesReinstatement.step.spec.ts
 │       │   │   │   │   │   │   │   ├── revenues
 │       │   │   │   │   │   │   │   │   ├── revenueBuildingsOperationsYearlyRevenues.handler.spec.ts
 │       │   │   │   │   │   │   │   │   ├── revenueBuildingsResale.handler.spec.ts
 │       │   │   │   │   │   │   │   │   ├── revenueExpectedSiteResale.handler.spec.ts
+│       │   │   │   │   │   │   │   │   ├── revenueExpectedSiteResale.step.spec.ts
 │       │   │   │   │   │   │   │   │   ├── revenueFinancialAssistance.handler.spec.ts
 │       │   │   │   │   │   │   │   │   └── revenueIntroduction.handler.spec.ts
+│       │   │   │   │   │   │   │   ├── schedule
+│       │   │   │   │   │   │   │   │   ├── scheduleProjection.selectors.spec.ts
+│       │   │   │   │   │   │   │   │   └── scheduleProjection.step.spec.ts
 │       │   │   │   │   │   │   │   ├── site-resale
 │       │   │   │   │   │   │   │   │   ├── buildingsResaleSelection.step.spec.ts
+│       │   │   │   │   │   │   │   │   ├── siteResaleIntroduction.step.spec.ts
 │       │   │   │   │   │   │   │   │   └── siteResaleSelection.step.spec.ts
 │       │   │   │   │   │   │   │   ├── soils
 │       │   │   │   │   │   │   │   │   └── soilsCarbonSummary.handler.spec.ts
@@ -1328,6 +1381,8 @@
 │       │   │   │   │   │   │   │   │   ├── spacesIntroduction.step.spec.ts
 │       │   │   │   │   │   │   │   │   ├── spacesSelection.step.spec.ts
 │       │   │   │   │   │   │   │   │   └── spacesSurfaceArea.step.spec.ts
+│       │   │   │   │   │   │   │   ├── stakeholders
+│       │   │   │   │   │   │   │   │   └── stakeholdersNavigation.step.spec.ts
 │       │   │   │   │   │   │   │   └── uses
 │       │   │   │   │   │   │   │       ├── buildingsUsesFloorSurfaceArea.handler.spec.ts
 │       │   │   │   │   │   │   │       ├── usesFloorSurfaceArea.step.spec.ts
@@ -1473,6 +1528,8 @@
 │       │   │   │       │   │           └── index.tsx
 │       │   │   │       │   ├── soils-decontamination
 │       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── involves-reinstatement
 │       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── selection
 │       │   │   │       │   │   │   └── index.tsx
@@ -2047,6 +2104,7 @@
 │       │   │   ├── onboarding
 │       │   │   │   ├── core
 │       │   │   │   │   ├── AuthenticationGateway.ts
+│       │   │   │   │   ├── auth.reducer.spec.ts
 │       │   │   │   │   ├── auth.reducer.ts
 │       │   │   │   │   ├── authLinkRequestReset.action.ts
 │       │   │   │   │   ├── authLinkRequested.action.ts
@@ -2096,45 +2154,44 @@
 │       │   │   ├── projects
 │       │   │   │   ├── application
 │       │   │   │   │   ├── project-features
+│       │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   └── projectFeatures.selectors.spec.ts
 │       │   │   │   │   │   ├── projectFeatures.actions.ts
-│       │   │   │   │   │   └── projectFeatures.reducer.ts
+│       │   │   │   │   │   ├── projectFeatures.reducer.ts
+│       │   │   │   │   │   └── projectFeatures.selectors.ts
 │       │   │   │   │   └── project-impacts
 │       │   │   │   │       ├── __tests__
 │       │   │   │   │       │   ├── impactsOnboardingSkip.spec.ts
 │       │   │   │   │       │   ├── index.ts
+│       │   │   │   │       │   ├── projectImpacts.selectors.spec.ts
 │       │   │   │   │       │   └── projectImpactsFetching.spec.ts
 │       │   │   │   │       ├── actions
+│       │   │   │   │       │   ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
+│       │   │   │   │       │   ├── impactsOnboardingSkip.actions.ts
 │       │   │   │   │       │   ├── index.ts
 │       │   │   │   │       │   ├── urbanSprawlComparisonOnboardingSkip.action.ts
 │       │   │   │   │       │   └── urbanSprawlImpactsComparisonRequested.action.ts
-│       │   │   │   │       ├── exportImpacts.selectors.ts
-│       │   │   │   │       ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
-│       │   │   │   │       ├── impactsOnboardingSkip.actions.ts
-│       │   │   │   │       ├── impactsOnboardingSkip.selectors.ts
 │       │   │   │   │       ├── impactsOnboardingSkip.ts
-│       │   │   │   │       ├── projectAvoidedCostsAnalysis.selectors.ts
-│       │   │   │   │       ├── projectBreakEvenLevel.selectors.ts
-│       │   │   │   │       ├── projectDevelopmentScore.selectors.ts
 │       │   │   │   │       ├── projectImpacts.mock.ts
 │       │   │   │   │       ├── projectImpacts.reducer.ts
-│       │   │   │   │       ├── projectImpactsAreaChartsData.ts
-│       │   │   │   │       ├── projectImpactsEconomicBalance.selectors.spec.ts
-│       │   │   │   │       ├── projectImpactsEconomicBalance.selectors.ts
-│       │   │   │   │       ├── projectImpactsEnvironmental.selectors.spec.ts
-│       │   │   │   │       ├── projectImpactsEnvironmental.selectors.ts
-│       │   │   │   │       ├── projectImpactsSocial.selectors.spec.ts
-│       │   │   │   │       ├── projectImpactsSocial.selectors.ts
-│       │   │   │   │       ├── projectImpactsSocioEconomic.selectors.spec.ts
-│       │   │   │   │       ├── projectImpactsSocioEconomic.selectors.ts
-│       │   │   │   │       ├── projectKeyImpactIndicators.selectors.ts
-│       │   │   │   │       ├── projectSummary.selector.ts
-│       │   │   │   │       └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
-│       │   │   │   ├── core
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── projectFeatures.selectors.spec.ts
-│       │   │   │   │   │   └── projectImpacts.selectors.spec.ts
-│       │   │   │   │   ├── projectFeatures.selectors.ts
-│       │   │   │   │   └── projectImpacts.selectors.ts
+│       │   │   │   │       └── selectors
+│       │   │   │   │           ├── exportImpacts.selectors.ts
+│       │   │   │   │           ├── impactsOnboardingSkip.selectors.ts
+│       │   │   │   │           ├── projectAvoidedCostsAnalysis.selectors.ts
+│       │   │   │   │           ├── projectBreakEvenLevel.selectors.ts
+│       │   │   │   │           ├── projectDevelopmentScore.selectors.ts
+│       │   │   │   │           ├── projectImpacts.selectors.ts
+│       │   │   │   │           ├── projectImpactsEconomicBalance.selectors.spec.ts
+│       │   │   │   │           ├── projectImpactsEconomicBalance.selectors.ts
+│       │   │   │   │           ├── projectImpactsEnvironmental.selectors.spec.ts
+│       │   │   │   │           ├── projectImpactsEnvironmental.selectors.ts
+│       │   │   │   │           ├── projectImpactsSocial.selectors.spec.ts
+│       │   │   │   │           ├── projectImpactsSocial.selectors.ts
+│       │   │   │   │           ├── projectImpactsSocioEconomic.selectors.spec.ts
+│       │   │   │   │           ├── projectImpactsSocioEconomic.selectors.ts
+│       │   │   │   │           ├── projectKeyImpactIndicators.selectors.ts
+│       │   │   │   │           ├── projectSummary.selector.ts
+│       │   │   │   │           └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
 │       │   │   │   ├── domain
 │       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
 │       │   │   │   │   ├── groupIndirectImpactsByBearer.ts
@@ -2251,22 +2308,6 @@
 │       │   │   │       │   │   ├── ProjectImpactsView.tsx
 │       │   │   │       │   │   ├── about-impacts-modal
 │       │   │   │       │   │   │   └── AboutImpactsModalButton.tsx
-│       │   │   │       │   │   ├── charts-view
-│       │   │   │       │   │   │   ├── ImpactChartCard
-│       │   │   │       │   │   │   │   ├── ImpactAreaChartCard.tsx
-│       │   │   │       │   │   │   │   ├── ImpactChartCard.tsx
-│       │   │   │       │   │   │   │   └── ImpactColumnChartCard.tsx
-│       │   │   │       │   │   │   ├── ImpactsChartsView.tsx
-│       │   │   │       │   │   │   ├── impacts
-│       │   │   │       │   │   │   │   ├── cost-benefit-analysis
-│       │   │   │       │   │   │   │   │   └── CostBenefitAnalysisChartCard.tsx
-│       │   │   │       │   │   │   │   ├── economic-balance
-│       │   │   │       │   │   │   │   │   └── EconomicBalanceChartCard.tsx
-│       │   │   │       │   │   │   │   ├── social-and-environment
-│       │   │   │       │   │   │   │   │   └── ImpactAreaChartsSection.tsx
-│       │   │   │       │   │   │   │   └── socio-economic
-│       │   │   │       │   │   │   │       └── SocioEconomicImpactsChartCard.tsx
-│       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── getImpactColor.ts
 │       │   │   │       │   │   ├── getImpactLabel.ts
 │       │   │   │       │   │   ├── impact-description-modals
@@ -2504,6 +2545,7 @@
 │       │   │   │           │   ├── ProjectImpactsActionBar.tsx
 │       │   │   │           │   └── StickyActionBar.tsx
 │       │   │   │           ├── charts
+│       │   │   │           │   ├── ImpactChartCard.tsx
 │       │   │   │           │   └── useImpactAreaChartProps.tsx
 │       │   │   │           ├── emoji-li-item
 │       │   │   │           │   └── StepEmojiListItem.tsx
@@ -2765,6 +2807,7 @@
 │       │   │   │   │           │   ├── mutateState.spec.ts
 │       │   │   │   │           │   ├── mutateState.ts
 │       │   │   │   │           │   ├── navigateToStep.ts
+│       │   │   │   │           │   ├── projectSummary.spec.ts
 │       │   │   │   │           │   ├── projectSummary.ts
 │       │   │   │   │           │   ├── readState.spec.ts
 │       │   │   │   │           │   ├── readState.ts
@@ -2912,6 +2955,10 @@
 │       │   │   │   │           │   │       ├── siteResaleSelection.schema.ts
 │       │   │   │   │           │   │       └── siteResaleSelection.stepperConfig.ts
 │       │   │   │   │           │   ├── soils
+│       │   │   │   │           │   │   ├── involves-reinstatement
+│       │   │   │   │           │   │   │   ├── involvesReinstatement.handler.ts
+│       │   │   │   │           │   │   │   ├── involvesReinstatement.schema.ts
+│       │   │   │   │           │   │   │   └── involvesReinstatement.stepperConfig.ts
 │       │   │   │   │           │   │   ├── soils-carbon-summary
 │       │   │   │   │           │   │   │   ├── soilsCarbonSummary.handler.ts
 │       │   │   │   │           │   │   │   ├── soilsCarbonSummary.selector.ts
@@ -3010,8 +3057,8 @@
 │       │   │   │   └── urbanProject.ts
 │       │   │   ├── infrastructure
 │       │   │   │   ├── administrative-division-service
-│       │   │   │   │   ├── administrativeDivisionGeoApi.ts
-│       │   │   │   │   └── administrativeDivisionMock.ts
+│       │   │   │   │   ├── administrativeDivisionMock.ts
+│       │   │   │   │   └── municipalityDataService.ts
 │       │   │   │   ├── duplicate-project-service
 │       │   │   │   │   └── HttpDuplicateProjectService.ts
 │       │   │   │   ├── real-estate-valuation-service
@@ -3320,6 +3367,9 @@
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── decontamination-surface-area
 │       │   │       │   │   │   │   └── index.tsx
+│       │   │       │   │   │   ├── involves-reinstatement
+│       │   │       │   │   │   │   ├── InvolvesReinstatementForm.tsx
+│       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   └── summary
 │       │   │       │   │   │       ├── UrbanProjectSoilsSummary.tsx
 │       │   │       │   │   │       └── index.tsx
@@ -3375,7 +3425,7 @@
 │       ├── tsconfig.json
 │       ├── tsconfig.node.json
 │       └── vite.config.ts
-├── docker-compose.db.yml
+├── docker-compose.dev.yml
 ├── docker-compose.e2e.yml
 ├── docs
 │   ├── adr
@@ -3390,13 +3440,19 @@
 │   │   ├── 0008-static-per-parcel-type-step-ids-for-urban-zone.md
 │   │   ├── 0009-align-urban-project-engine-typing-with-urban-zone-patterns.md
 │   │   ├── 0010-scheduled-tasks-as-primary-adapters.md
+│   │   ├── 0011-use-node-test-for-shared-package-unit-tests.md
+│   │   ├── 0012-node-test-loader-stack-for-api-integration-tests.md
+│   │   ├── 0013-migrate-api-test-suite-from-vitest-to-node-test.md
+│   │   ├── 0014-migrate-api-to-esm.md
 │   │   └── README.md
 │   ├── feature-example.md
 │   ├── scheduled-tasks.md
 │   └── specs
 │       ├── 2026-03-23-buildings-reuse-and-construction-design.md
 │       ├── 2026-03-25-buildings-reuse-and-construction-work-tracker.md
-│       └── 2026-05-04-newsletter-subscription-sync.md
+│       ├── 2026-05-04-newsletter-subscription-sync.md
+│       ├── 2026-06-23-optional-reinstatement.md
+│       └── optional-reinstatement-impact-analysis.md
 ├── package.json
 ├── packages
 │   └── shared
@@ -3415,6 +3471,9 @@
 │       │   │   │   ├── getCurrentUser.dto.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   └── register.dto.ts
+│       │   │   ├── city-rurality
+│       │   │   │   ├── getCityRurality.dto.ts
+│       │   │   │   └── index.ts
 │       │   │   ├── index.ts
 │       │   │   ├── reconversion-projects
 │       │   │   │   ├── getReconversionProjectFeatures.dto.ts
@@ -3570,6 +3629,7 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── landParcel.ts
 │       │   │   │   └── urbanZoneType.ts
+│       │   │   ├── yearlyExpenses.spec.ts
 │       │   │   ├── yearlyExpenses.ts
 │       │   │   └── yearlyIncome.ts
 │       │   ├── siteActions.ts
@@ -3594,4 +3654,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-974 directories, 2622 files
+988 directories, 2668 files

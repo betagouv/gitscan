@@ -52,7 +52,7 @@ cp apps/api/.env.example apps/api/.env
 
 ```sh
 # à la racine du projet
-$ docker compose --env-file apps/api/.env -f docker-compose.db.yml up -d
+$ make dev-up
 ```
 
 #### avec PostgreSQL
@@ -71,6 +71,8 @@ pnpm --filter api knex:migrate-latest # lancement des migrations
 pnpm --filter api knex:seed-run # chargement des données nécessaires à l'application
 ```
 
+Les jeux de données de référence chargés par les seeds sont documentés dans [`apps/api/data/`](./apps/api/data/README.md).
+
 ### Lancement de l'application en mode développement
 
 La commande `setup-env-vars` génère le fichier `public/js/env-vars.js` à partir des variables `WEBAPP_*` du `.env`, afin de les exposer au navigateur au runtime.
@@ -86,11 +88,8 @@ pnpm --filter web dev
 La stack complète peut être lancée via Docker Compose dans un environnement similaire à la production (tests manuels, debugging, etc.).
 
 ```sh
-# Démarrer la stack (postgres, api, web, mailcatcher)
-docker compose --env-file .env.e2e -f docker-compose.e2e.yml up -d
-
-# Arrêter la stack
-docker compose --env-file .env.e2e -f docker-compose.e2e.yml down
+make e2e-up
+make e2e-down
 ```
 
 Services disponibles (configuration par défaut dans `.env.e2e`) :
@@ -112,17 +111,10 @@ pnpm run -r test
 Les tests E2E utilisent la stack Docker production-like.
 
 ```sh
-# Démarrer la stack Docker
-docker compose --env-file .env.e2e -f docker-compose.e2e.yml up -d
-
 # Installer les navigateurs Playwright (première fois uniquement)
 pnpm --filter e2e-tests exec playwright install --with-deps
 
-# Lancer les tests
-pnpm --filter e2e-tests test:headed
-
-# Arrêter la stack
-docker compose --env-file .env.e2e -f docker-compose.e2e.yml down
+make e2e-test-headed
 ```
 
 ## Build, lint et formattage
