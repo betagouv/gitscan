@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il centralise et valorise les données de transport disponibles sur data.gouv.fr.",
+  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il centralise et valorise les données de transport hébergées sur data.gouv.fr, le portail français des données ouvertes.",
   "language": "Elixir",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -19,35 +19,34 @@
   "audience": "Professionnels",
   "dependencies": [
     "Elixir",
+    "Phoenix",
     "PostgreSQL",
-    "Node.js",
-    "Yarn",
-    "Docker"
+    "JavaScript",
+    "React",
+    "Webpack"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "HTML / CSS / Templates visuels"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
-      "Google",
-      "GitHub",
-      "Microsoft"
+      "Datagouvfr"
     ]
   },
-  "tests": "Mix test",
+  "tests": "Mix test, Jest",
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-25T22:04:50Z",
+  "lastActivity": "2026-06-30T09:43:00Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -60,9 +59,13 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Transport & Mobilité",
-    "JavaScript",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Environnement & Énergie",
+    "Transport & Mobilité"
   ]
 }
