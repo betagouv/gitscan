@@ -1,100 +1,61 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 26 juin 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'accessibilité, notamment l'ajout d'attributs ARIA pour une meilleure expérience utilisateur avec les technologies d'assistance. Des corrections et des optimisations ont également été apportées à la gestion des erreurs, à la performance et à la robustesse de l'application, en particulier concernant l'intégration avec l'API Entreprise et la gestion des procédures. L'attestation v2 a reçu des améliorations, notamment la gestion des sauts de page. De nouvelles fonctionnalités ont été ajoutées, comme la gestion de l'avis d'imposition et la possibilité de préremplir certains champs.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment autour de la gestion des dossiers et des pièces jointes, ainsi que par des optimisations de performance et des corrections de bugs. Des efforts importants ont été consacrés à l'accessibilité et à la sécurité de la plateforme. De nouvelles fonctionnalités ont été ajoutées pour faciliter le travail des instructeurs et des administrateurs.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion de l'avis d'imposition avec extraction OCR et affichage d'informations pertinentes pour l'instructeur.
-- Possibilité de préremplir certains champs de formulaire, notamment l'adresse et la civilité, via des sources externes.
-- Amélioration de l'expérience utilisateur pour les demandes de correction, avec des messages d'erreur plus clairs.
-- Ajout d'une option pour insérer des sauts de page dans l'éditeur d'attestation v2.
-- Amélioration de l'affichage des badges d'expiration et de partage de dossiers.
-- Ajout d'une fonctionnalité pour gérer les procédures en construction qui ne peuvent plus expirer.
-- Amélioration de la gestion des erreurs lors du téléchargement de documents.
-- Ajout d'un indicateur visuel pour les champs optionnels dans l'attestation.
-- Possibilité d'ajouter une carte à l'attestation.
-- Ajout d'un message d'information expliquant les limitations du champ "Commune".
-- Amélioration de l'affichage des informations sur les procédures dans l'interface administrateur.
+- **Dossiers :**
+    - Les instructeurs peuvent désormais modifier les dossiers, avec une notification pour l'utilisateur.
+    - Ajout d'un composant pour afficher les modifications apportées à un dossier.
+    - Amélioration de l'affichage des dossiers partagés et en construction.
+    - Possibilité de filtrer les dossiers par statut et de rechercher plus efficacement.
+    - Ajout d'un indicateur visuel pour les dossiers en cours d'instruction.
+- **Pièces jointes :**
+    - Amélioration de la gestion des pièces jointes, notamment pour les avis d'imposition.
+    - Correction d'un problème d'encodage des fichiers ZIP.
+    - Possibilité de regénérer une attestation.
+- **Authentification :**
+    - Amélioration de la gestion de la connexion via ProConnect pour les procédures morales.
+    - Ajout de la possibilité de se connecter avec FranceConnect.
+- **Administration :**
+    - Ajout d'un système de bannières d'information pour les administrateurs.
+    - Amélioration de l'interface d'administration pour la gestion des procédures et des utilisateurs.
+    - Possibilité de gérer les droits d'accès des utilisateurs.
+- **Attestations :**
+    - Ajout de la possibilité d'ajouter des sauts de page dans l'éditeur d'attestation.
+    - Amélioration de la génération des PDF d'attestation, notamment pour la conformité PDF/UA.
+- **API :**
+    - Ajout de la possibilité de cloner une démarche avec des options spécifiques.
+    - Exposition de nouvelles données via l'API GraphQL.
 
 ### Évolutions techniques
-- Migration de composants HAML vers ERB pour améliorer la maintenabilité et la performance.
-- Optimisation des requêtes SQL pour améliorer la performance des exports.
-- Amélioration de la gestion des erreurs et des exceptions, notamment en cas d'échec de l'API Entreprise.
-- Mise à jour des dépendances et des librairies utilisées par l'application.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration de la gestion des jobs Sidekiq, notamment en matière de retry et de circuit breaker.
-- Mise à niveau de Rails vers la version 8.0.
-- Amélioration de la gestion des erreurs lors de l'extraction de données avec l'OCR.
-- Ajout d'un système de gestion des bannières d'information.
-- Amélioration de la gestion des données d'identification des entreprises.
-- Implémentation d'un système de cache pour améliorer la performance.
-- Ajout d'un système de monitoring et d'alerting pour surveiller l'état de l'application.
+- **Refactoring :**
+    - Migration de nombreux composants HAML vers ERB pour une meilleure maintenabilité.
+    - Simplification du code et suppression de code obsolète.
+    - Amélioration de la structure du code pour une meilleure lisibilité.
+- **Performance :**
+    - Optimisation des requêtes SQL pour améliorer les performances.
+    - Mise en place d'un système de cache pour réduire la charge sur la base de données.
+    - Amélioration de la gestion de la mémoire pour les exports de données.
+- **Sécurité :**
+    - Correction de failles de sécurité potentielles.
+    - Renforcement de la sécurité de l'authentification.
+    - Mise à jour des dépendances pour corriger les vulnérabilités connues.
+- **Infrastructure :**
+    - Mise à jour des dépendances Ruby et JavaScript.
+    - Amélioration de la configuration de l'environnement de production.
+- **Tests :**
+    - Ajout de nouveaux tests unitaires et d'intégration.
+    - Amélioration de la couverture de code des tests existants.
+- **CI/CD :**
+    - Amélioration du pipeline CI/CD pour une livraison plus rapide et plus fiable.
 
 ### Autres changements
-- Amélioration de l'accessibilité de l'application en ajoutant des attributs ARIA aux éléments de l'interface utilisateur.
-- Correction de fautes de frappe et d'erreurs de traduction.
-- Mise à jour de la documentation.
-- Amélioration de la configuration de l'application.
-- Nettoyage du code et suppression du code mort.
-- Ajout de tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Amélioration de la gestion des logs et des erreurs.
-- Mise en place d'un système de gestion des secrets pour protéger les informations sensibles.
-- Amélioration de la sécurité de l'application.
-- Refactorisation du code pour améliorer la modularité et la réutilisabilité.
-- Ajout de nouvelles métriques pour surveiller la performance de l'application.
-- Amélioration de la gestion des configurations.
-- Mise à jour des outils de développement.
-- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Amélioration de la gestion des dépendances.
-- Correction de problèmes de compatibilité avec les navigateurs.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de nouvelles fonctionnalités pour faciliter le développement et le test de l'application.
-- Amélioration de la sécurité de l'application.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Amélioration de la performance de l'application.
-- Ajout de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.
-- Amélioration de la documentation de l'application.
-- Correction de bugs et amélioration de la qualité du code.
-- Amélioration de la gestion des erreurs et des exceptions.
+- Amélioration de la documentation.
+- Correction de problèmes de typographie et de grammaire.
+- Mise à jour des traductions.
+- Amélioration de l'accessibilité de l'interface utilisateur.
+- Ajout de logs plus détaillés pour faciliter le débogage.
+- Suppression de feature flags obsolètes.
+- Amélioration de la gestion des erreurs.
+- Ajout de commentaires dans le code pour une meilleure compréhension.

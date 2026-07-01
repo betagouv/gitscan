@@ -58,6 +58,7 @@
 │   │   │   ├── Marianne-Regular.woff2
 │   │   │   ├── Spectral-Regular.ttf
 │   │   │   ├── marianne-bold.ttf
+│   │   │   ├── marianne-regular-italic.woff2
 │   │   │   ├── marianne-regular.ttf
 │   │   │   └── marianne-thin.ttf
 │   │   ├── images
@@ -193,6 +194,7 @@
 │   │       ├── card.scss
 │   │       ├── card_admin.scss
 │   │       ├── carte.scss
+│   │       ├── changes_component.scss
 │   │       ├── code_blocks.scss
 │   │       ├── code_example.scss
 │   │       ├── combobox.scss
@@ -583,7 +585,7 @@
 │   │   │   ├── notice_component
 │   │   │   │   ├── notice_component.en.yml
 │   │   │   │   ├── notice_component.fr.yml
-│   │   │   │   └── notice_component.html.haml
+│   │   │   │   └── notice_component.html.erb
 │   │   │   ├── notice_component.rb
 │   │   │   ├── progress_bar_component
 │   │   │   │   ├── progress_bar_component.en.yml
@@ -865,14 +867,35 @@
 │   │   │   │   └── customize_filters_component.html.erb
 │   │   │   ├── customize_filters_component.rb
 │   │   │   ├── dossier_traitements_component
+│   │   │   │   ├── dossier_traitements_component.en.yml
 │   │   │   │   ├── dossier_traitements_component.fr.yml
-│   │   │   │   └── dossier_traitements_component.html.haml
+│   │   │   │   └── dossier_traitements_component.html.erb
 │   │   │   ├── dossier_traitements_component.rb
 │   │   │   ├── dossiers_navigation_component
 │   │   │   │   ├── dossiers_navigation_component.en.yml
 │   │   │   │   ├── dossiers_navigation_component.fr.yml
 │   │   │   │   └── dossiers_navigation_component.html.haml
 │   │   │   ├── dossiers_navigation_component.rb
+│   │   │   ├── edit_dossier_alert_component
+│   │   │   │   ├── edit_dossier_alert_component.en.yml
+│   │   │   │   ├── edit_dossier_alert_component.fr.yml
+│   │   │   │   └── edit_dossier_alert_component.html.erb
+│   │   │   ├── edit_dossier_alert_component.rb
+│   │   │   ├── edit_dossier_button_component
+│   │   │   │   ├── edit_dossier_button_component.en.yml
+│   │   │   │   ├── edit_dossier_button_component.fr.yml
+│   │   │   │   └── edit_dossier_button_component.html.erb
+│   │   │   ├── edit_dossier_button_component.rb
+│   │   │   ├── edit_dossier_confirm_component
+│   │   │   │   ├── edit_dossier_confirm_component.en.yml
+│   │   │   │   ├── edit_dossier_confirm_component.fr.yml
+│   │   │   │   └── edit_dossier_confirm_component.html.erb
+│   │   │   ├── edit_dossier_confirm_component.rb
+│   │   │   ├── edit_dossier_footer_component
+│   │   │   │   ├── edit_dossier_footer_component.en.yml
+│   │   │   │   ├── edit_dossier_footer_component.fr.yml
+│   │   │   │   └── edit_dossier_footer_component.html.erb
+│   │   │   ├── edit_dossier_footer_component.rb
 │   │   │   ├── editable_filters_component
 │   │   │   │   ├── editable_filters_component.en.yml
 │   │   │   │   ├── editable_filters_component.fr.yml
@@ -883,11 +906,11 @@
 │   │   │   │   ├── en_construction_menu_component.fr.yml
 │   │   │   │   └── en_construction_menu_component.html.haml
 │   │   │   ├── en_construction_menu_component.rb
-│   │   │   ├── instruction_menu_component
-│   │   │   │   ├── instruction_menu_component.en.yml
-│   │   │   │   ├── instruction_menu_component.fr.yml
-│   │   │   │   └── instruction_menu_component.html.haml
-│   │   │   ├── instruction_menu_component.rb
+│   │   │   ├── instruction_button_component
+│   │   │   │   ├── instruction_button_component.en.yml
+│   │   │   │   ├── instruction_button_component.fr.yml
+│   │   │   │   └── instruction_button_component.html.haml
+│   │   │   ├── instruction_button_component.rb
 │   │   │   ├── ocr_viewer_component
 │   │   │   │   ├── ocr_viewer_component.en.yml
 │   │   │   │   ├── ocr_viewer_component.fr.yml
@@ -975,6 +998,12 @@
 │   │   │   │   ├── otp_attempt_input_component.fr.yml
 │   │   │   │   └── otp_attempt_input_component.html.erb
 │   │   │   └── otp_attempt_input_component.rb
+│   │   ├── message
+│   │   │   ├── dossier_modifier_par_instructeur_component
+│   │   │   │   ├── dossier_modifier_par_instructeur_component.en.yml
+│   │   │   │   ├── dossier_modifier_par_instructeur_component.fr.yml
+│   │   │   │   └── dossier_modifier_par_instructeur_component.html.erb
+│   │   │   └── dossier_modifier_par_instructeur_component.rb
 │   │   ├── nested_forms
 │   │   │   ├── form_owner_component
 │   │   │   │   └── form_owner_component.html.haml
@@ -1200,7 +1229,8 @@
 │   │   │   ├── configuration_error_component.rb
 │   │   │   ├── mapping_form_base.rb
 │   │   │   ├── mapping_form_component
-│   │   │   │   └── mapping_form_component.html.haml
+│   │   │   │   ├── mapping_form_component.fr.yml
+│   │   │   │   └── mapping_form_component.html.erb
 │   │   │   ├── mapping_form_component.rb
 │   │   │   ├── new_form_component
 │   │   │   │   ├── new_form_component.fr.yml
@@ -1210,10 +1240,12 @@
 │   │   │   ├── prefill_and_display_component.rb
 │   │   │   ├── referentiel_display_base_component.rb
 │   │   │   ├── referentiel_display_component
-│   │   │   │   └── referentiel_display_component.html.haml
+│   │   │   │   ├── referentiel_display_component.fr.yml
+│   │   │   │   └── referentiel_display_component.html.erb
 │   │   │   ├── referentiel_display_component.rb
 │   │   │   ├── referentiel_prefill_component
-│   │   │   │   └── referentiel_prefill_component.html.haml
+│   │   │   │   ├── referentiel_prefill_component.fr.yml
+│   │   │   │   └── referentiel_prefill_component.html.erb
 │   │   │   ├── referentiel_prefill_component.rb
 │   │   │   ├── response_renderer_component.html.haml
 │   │   │   ├── response_renderer_component.rb
@@ -1423,6 +1455,7 @@
 │   │   │   ├── commentaires_controller.rb
 │   │   │   ├── contact_informations_controller.rb
 │   │   │   ├── dossiers_controller.rb
+│   │   │   ├── edit_controller.rb
 │   │   │   ├── export_templates_controller.rb
 │   │   │   ├── groupe_instructeurs_controller.rb
 │   │   │   ├── instructeur_controller.rb
@@ -1733,6 +1766,7 @@
 │   │   ├── export_template_helper.rb
 │   │   ├── flipper_helper.rb
 │   │   ├── gallery_helper.rb
+│   │   ├── instruction_button_helper.rb
 │   │   ├── mailer_helper.rb
 │   │   ├── navigation_helper.rb
 │   │   ├── number_helper.rb
@@ -1837,6 +1871,7 @@
 │   │   │   ├── format_controller.ts
 │   │   │   ├── geo_area_controller.tsx
 │   │   │   ├── hide_target_controller.ts
+│   │   │   ├── instruction_modal_controller.ts
 │   │   │   ├── lazy
 │   │   │   │   ├── chartkick_controller.ts
 │   │   │   │   ├── lightbox_controller.ts
@@ -2736,6 +2771,7 @@
 │   │   ├── strict_email_validator.rb
 │   │   ├── tags_validator.rb
 │   │   ├── types_de_champ
+│   │   │   ├── api_particulier_validator.rb
 │   │   │   ├── condition_validator.rb
 │   │   │   ├── date_validator.rb
 │   │   │   ├── formatted_validator.rb
@@ -2929,8 +2965,8 @@
 │       │   ├── _footer.html.haml
 │       │   └── _general_footer_row.html.haml
 │       ├── attachments
-│       │   ├── destroy.turbo_stream.haml
-│       │   └── show.turbo_stream.haml
+│       │   ├── destroy.turbo_stream.erb
+│       │   └── show.turbo_stream.erb
 │       ├── avis_mailer
 │       │   ├── avis_invitation_and_confirm_email.html.haml
 │       │   └── notify_new_commentaire_to_expert.html.haml
@@ -2943,12 +2979,10 @@
 │       │   │   └── index.turbo_stream.erb
 │       │   ├── piece_justificative
 │       │   │   └── show.turbo_stream.erb
-│       │   ├── repetition
-│       │   │   ├── _actions.html.erb
-│       │   │   ├── add.turbo_stream.erb
-│       │   │   └── remove.turbo_stream.erb
-│       │   └── rna
-│       │       └── show.turbo_stream.erb
+│       │   └── repetition
+│       │       ├── _actions.html.erb
+│       │       ├── add.turbo_stream.erb
+│       │       └── remove.turbo_stream.erb
 │       ├── commencer
 │       │   └── show.html.erb
 │       ├── contact
@@ -3122,7 +3156,8 @@
 │       │   ├── avis
 │       │   │   └── _sidemenu.html.haml
 │       │   ├── batch_operations
-│       │   │   └── _commentaire_form.html.haml
+│       │   │   ├── _commentaire_form.html.haml
+│       │   │   └── batch_instruction_modal.turbo_stream.haml
 │       │   ├── champs
 │       │   │   └── edit.html.erb
 │       │   ├── commentaires
@@ -3134,6 +3169,7 @@
 │       │   │   └── new.html.haml
 │       │   ├── dossiers
 │       │   │   ├── _archived_block.html.haml
+│       │   │   ├── _dropdown_motivation_form.html.haml
 │       │   │   ├── _envoyer_dossier_block.html.haml
 │       │   │   ├── _expiration_banner.html.haml
 │       │   │   ├── _header.html.haml
@@ -3141,7 +3177,10 @@
 │       │   │   ├── _header_bottom.html.haml
 │       │   │   ├── _header_top.html.haml
 │       │   │   ├── _instruction_button_motivation.html.haml
-│       │   │   ├── _instruction_button_motivation_batch.html.haml
+│       │   │   ├── _instruction_modal_content.html.haml
+│       │   │   ├── _instruction_motivation_fields.html.haml
+│       │   │   ├── _instruction_selected_form.html.haml
+│       │   │   ├── _instruction_tiles.html.haml
 │       │   │   ├── _personnes_impliquees_block.html.haml
 │       │   │   ├── _print_and_export_actions.html.haml
 │       │   │   ├── _reaffectations_block.html.haml
@@ -3150,6 +3189,7 @@
 │       │   │   ├── avis.html.haml
 │       │   │   ├── avis_new.html.haml
 │       │   │   ├── change_state.turbo_stream.haml
+│       │   │   ├── instruction_modal.turbo_stream.haml
 │       │   │   ├── messagerie.html.haml
 │       │   │   ├── personnes_impliquees.html.haml
 │       │   │   ├── pieces_jointes.html.haml
@@ -3162,6 +3202,10 @@
 │       │   │   ├── show.html.erb
 │       │   │   ├── show_submitted_revision.html.erb
 │       │   │   └── update_annotations.turbo_stream.haml
+│       │   ├── edit
+│       │   │   ├── show.html.erb
+│       │   │   ├── update.turbo_stream.erb
+│       │   │   └── validate.turbo_stream.erb
 │       │   ├── export_templates
 │       │   │   ├── _checkbox_group.html.haml
 │       │   │   ├── _export_item.html.haml
@@ -3238,7 +3282,7 @@
 │       │   ├── commencer
 │       │   │   └── _no_procedure.html.haml
 │       │   ├── component_preview.html.haml
-│       │   ├── empty_layout.html.haml
+│       │   ├── empty_layout.html.erb
 │       │   ├── login.html.haml
 │       │   ├── mailers
 │       │   │   ├── _bizdev_signature.html.haml
@@ -3407,6 +3451,7 @@
 │       │   │   ├── _demande.html.erb
 │       │   │   ├── _edit.html.erb
 │       │   │   ├── _edit_annotations.html.erb
+│       │   │   ├── _edit_instructeur.html.erb
 │       │   │   ├── _france_connect_informations_notice.html.haml
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _identite_entreprise.html.haml
@@ -3416,7 +3461,9 @@
 │       │   │   ├── _mandataire_infos.html.haml
 │       │   │   ├── _messagerie.html.haml
 │       │   │   ├── _normalized_address.html.haml
+│       │   │   ├── _pro_connect_informations_notice.html.haml
 │       │   │   ├── _submit_is_over.html.haml
+│       │   │   ├── _update_all.turbo_stream.erb
 │       │   │   ├── _update_champ.turbo_stream.erb
 │       │   │   ├── _update_champs.turbo_stream.erb
 │       │   │   ├── _update_contact_information.html.haml
@@ -3528,7 +3575,7 @@
 │           │   │   ├── _download_justificatif.html.haml
 │           │   │   ├── _header.html.haml
 │           │   │   ├── _latest_message.html.haml
-│           │   │   └── _status_overview.html.haml
+│           │   │   └── _status_overview.html.erb
 │           │   ├── show.html.haml
 │           │   ├── show_deleted.html.haml
 │           │   ├── show_in_trash.html.haml
@@ -3667,6 +3714,7 @@
 │   │   ├── faqs.fr.yml
 │   │   ├── flipflop.fr.yml
 │   │   ├── fr.yml
+│   │   ├── instruction_button.fr.yml
 │   │   ├── kaminari.en.yml
 │   │   ├── kaminari.fr.yml
 │   │   ├── layouts.en.yml
@@ -4596,12 +4644,17 @@
 │   │   ├── 20260519131906_add_message_error_to_dossier_batch_operations.rb
 │   │   ├── 20260520122559_add_naf2025_to_etablissements.rb
 │   │   ├── 20260521105001_add_uuid_to_geo_area.rb
+│   │   ├── 20260601101322_drop_en_construction_close_to_expiration_notice_sent_at_from_dossiers.rb
 │   │   ├── 20260602100001_create_banners.rb
 │   │   ├── 20260602100002_add_unique_index_to_banners_target.rb
 │   │   ├── 20260602100003_seed_banners.rb
 │   │   ├── 20260602145306_add_checkpoint_to_champs.rb
 │   │   ├── 20260602145332_add_checkpoint_to_traitements.rb
-│   │   └── 20260622131426_add_estimated_processing_duration_visible_to_procedures.rb
+│   │   ├── 20260608084303_add_submitted_with_pro_connect_to_dossiers.rb
+│   │   ├── 20260618000000_add_instructeurs_can_edit_dossiers_to_procedures.rb
+│   │   ├── 20260622131426_add_estimated_processing_duration_visible_to_procedures.rb
+│   │   ├── 20260625153605_add_requires_ip_filtering_to_api_tokens.rb
+│   │   └── 20260625153641_change_requires_ip_filtering_default.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -4873,7 +4926,7 @@
 │   │   │   ├── column_picker_component_spec.rb
 │   │   │   ├── editable_filters_component_spec.rb
 │   │   │   ├── en_contruction_menu_component_spec.rb
-│   │   │   ├── instruction_menu_component_spec.rb
+│   │   │   ├── instruction_button_component_spec.rb
 │   │   │   ├── ocr_viewer_component_spec.rb
 │   │   │   ├── procedure_summary_component_spec.rb
 │   │   │   ├── rdv_card_component_spec.rb
@@ -4888,6 +4941,8 @@
 │   │   ├── main_navigation
 │   │   │   ├── announces_link_component_spec.rb
 │   │   │   └── instructeur_expert_navigation_component_spec.rb
+│   │   ├── message
+│   │   │   └── dossier_modifier_par_instructeur_component_spec.rb
 │   │   ├── previews
 │   │   │   ├── administrateurs
 │   │   │   │   └── select_procedure_drop_down_list_component_preview.rb
@@ -5912,6 +5967,7 @@
 │   │   ├── instructeurs
 │   │   │   ├── batch_operation_spec.rb
 │   │   │   ├── dossier_link_no_access_spec.rb
+│   │   │   ├── edit_dossier_spec.rb
 │   │   │   ├── expert_spec.rb
 │   │   │   ├── instructeur_creation_spec.rb
 │   │   │   ├── instruction_spec.rb
@@ -6085,6 +6141,7 @@
 │   ├── validators
 │   │   ├── export_template_validator_spec.rb
 │   │   └── types_de_champ
+│   │       ├── api_particulier_validator_spec.rb
 │   │       ├── condition_validator_spec.rb
 │   │       ├── date_validator_spec.rb
 │   │       ├── libelle_validator_spec.rb
@@ -6118,7 +6175,7 @@
 │       │   ├── dossiers
 │       │   │   ├── _envoyer_dossier_block.html.haml_spec.rb
 │       │   │   ├── _expiration_banner.html.haml_spec.rb
-│       │   │   ├── _instruction_button_motivation.html.haml_spec.rb
+│       │   │   ├── _instruction_selected_form.html.haml_spec.rb
 │       │   │   ├── annotations_privee.html.haml_spec.rb
 │       │   │   ├── print.html.haml_spec.rb
 │       │   │   └── show.html.haml_spec.rb
@@ -6166,7 +6223,7 @@
 │           │   ├── index.html.haml_spec.rb
 │           │   ├── show
 │           │   │   ├── _header.html.haml_spec.rb
-│           │   │   └── _status_overview.html.haml_spec.rb
+│           │   │   └── _status_overview.html.erb_spec.rb
 │           │   ├── show.html.haml_spec.rb
 │           │   ├── show_deleted.html.haml_spec.rb
 │           │   ├── show_in_trash.html.haml_spec.rb
@@ -6184,4 +6241,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-991 directories, 5512 files
+998 directories, 5562 files
