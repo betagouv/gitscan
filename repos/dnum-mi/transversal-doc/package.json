@@ -1,0 +1,24 @@
+{
+  "name": "transversal-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress --port 5172 --host 0.0.0.0 dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "docker:build": "docker build --tag transversal-doc --target prod .",
+    "docker:run": "docker run --publish 8080:8080 --rm transversal-doc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@gouvminint/vue-dsfr": "^8.9.1",
+    "@shikijs/vitepress-twoslash": "^1.29.2",
+    "typescript": "^5.9.3",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.22"
+  }
+}
