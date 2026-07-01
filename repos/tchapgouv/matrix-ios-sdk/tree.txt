@@ -1,0 +1,1230 @@
+.
+├── .github
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── ci-integration-tests.yml
+│       ├── ci-unit-tests.yml
+│       ├── nightly.yml
+│       └── zizmor.yml
+├── .gitignore
+├── AUTHORS.rst
+├── CHANGES.md
+├── CONTRIBUTING.md
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── MatrixSDK
+│   ├── Aggregations
+│   │   ├── Data
+│   │   │   ├── MXAggregatedReactions.h
+│   │   │   ├── MXAggregatedReactions.m
+│   │   │   ├── MXEventEditsListener.h
+│   │   │   ├── MXEventEditsListener.m
+│   │   │   ├── MXReactionCount.h
+│   │   │   ├── MXReactionCount.m
+│   │   │   ├── MXReactionCountChange.h
+│   │   │   ├── MXReactionCountChange.m
+│   │   │   ├── MXReactionCountChangeListener.h
+│   │   │   ├── MXReactionCountChangeListener.m
+│   │   │   ├── MXReactionOperation.h
+│   │   │   ├── MXReactionOperation.m
+│   │   │   ├── MXReactionRelation.h
+│   │   │   ├── MXReactionRelation.m
+│   │   │   └── Store
+│   │   │       ├── MXAggregationsStore.h
+│   │   │       └── Realm
+│   │   │           ├── MXRealmAggregationsMapper.h
+│   │   │           ├── MXRealmAggregationsMapper.m
+│   │   │           ├── MXRealmAggregationsStore.h
+│   │   │           ├── MXRealmAggregationsStore.m
+│   │   │           ├── MXRealmReactionCount.h
+│   │   │           ├── MXRealmReactionCount.m
+│   │   │           ├── MXRealmReactionRelation.h
+│   │   │           └── MXRealmReactionRelation.m
+│   │   ├── LocationSharing
+│   │   │   ├── MXBeaconAggregations.swift
+│   │   │   ├── MXBeaconInfoSummaryAllRoomListener.swift
+│   │   │   ├── MXBeaconInfoSummaryDeletionAllRoomListener.swift
+│   │   │   ├── MXBeaconInfoSummaryDeletionPerRoomListener.swift
+│   │   │   ├── MXBeaconInfoSummaryPerRoomListener.swift
+│   │   │   └── Store
+│   │   │       ├── MXBeaconInfoSummaryMemoryStore.swift
+│   │   │       ├── MXBeaconInfoSummaryStoreProtocol.swift
+│   │   │       └── Realm
+│   │   │           ├── MXBeaconInfoSummaryRealmStore.swift
+│   │   │           ├── MXRealmBeacon.swift
+│   │   │           ├── MXRealmBeaconInfo.swift
+│   │   │           ├── MXRealmBeaconInfoSummary.swift
+│   │   │           └── MXRealmBeaconMapper.swift
+│   │   ├── MXAggregatedEditsUpdater.h
+│   │   ├── MXAggregatedEditsUpdater.m
+│   │   ├── MXAggregatedPollsUpdater.swift
+│   │   ├── MXAggregatedReactionsUpdater.h
+│   │   ├── MXAggregatedReactionsUpdater.m
+│   │   ├── MXAggregatedReferencesUpdater.h
+│   │   ├── MXAggregatedReferencesUpdater.m
+│   │   ├── MXAggregations.h
+│   │   ├── MXAggregations.m
+│   │   └── MXAggregations_Private.h
+│   ├── Background
+│   │   ├── Crypto
+│   │   │   ├── MXBackgroundCrypto.swift
+│   │   │   └── MXBackgroundCryptoV2.swift
+│   │   ├── MXBackgroundPushRulesManager.swift
+│   │   ├── MXBackgroundStore.swift
+│   │   ├── MXBackgroundSyncService.swift
+│   │   ├── MXStopwatch.swift
+│   │   └── Store
+│   │       ├── MXSyncResponseStore.swift
+│   │       ├── MXSyncResponseStoreManager.swift
+│   │       ├── Model
+│   │       │   ├── MXCachedSyncResponse.h
+│   │       │   ├── MXCachedSyncResponse.m
+│   │       │   └── MXSyncResponseStoreMetaDataModel.swift
+│   │       └── SyncResponseFileStore
+│   │           └── MXSyncResponseFileStore.swift
+│   ├── Categories
+│   │   ├── MXEvent+Extensions.swift
+│   │   ├── MXKeysQueryResponse+Extensions.swift
+│   │   ├── MXRestClient+Extensions.swift
+│   │   ├── NSDictionary+MutableDeepCopy.h
+│   │   └── NSDictionary+MutableDeepCopy.m
+│   ├── ClientInformation
+│   │   └── MXClientInformationService.swift
+│   ├── ContentScan
+│   │   ├── Data
+│   │   │   ├── MXAntivirusScanStatus.h
+│   │   │   ├── MXAntivirusScanStatusFormatter.h
+│   │   │   ├── MXAntivirusScanStatusFormatter.m
+│   │   │   ├── MXContentScanEncryptedBody.h
+│   │   │   ├── MXContentScanEncryptedBody.m
+│   │   │   ├── MXEventScan.h
+│   │   │   ├── MXEventScan.m
+│   │   │   ├── MXMediaScan.h
+│   │   │   ├── MXMediaScan.m
+│   │   │   └── Store
+│   │   │       ├── MXEventScanStore.h
+│   │   │       ├── MXEventScanStoreDelegate.h
+│   │   │       ├── MXMediaScanStore.h
+│   │   │       ├── MXMediaScanStoreDelegate.h
+│   │   │       └── Realm
+│   │   │           ├── Event
+│   │   │           │   ├── MXRealmEventScan.h
+│   │   │           │   ├── MXRealmEventScan.m
+│   │   │           │   ├── MXRealmEventScanMapper.h
+│   │   │           │   ├── MXRealmEventScanMapper.m
+│   │   │           │   ├── MXRealmEventScanStore.h
+│   │   │           │   └── MXRealmEventScanStore.m
+│   │   │           ├── Media
+│   │   │           │   ├── MXRealmMediaScan.h
+│   │   │           │   ├── MXRealmMediaScan.m
+│   │   │           │   ├── MXRealmMediaScanMapper.h
+│   │   │           │   ├── MXRealmMediaScanMapper.m
+│   │   │           │   ├── MXRealmMediaScanStore.h
+│   │   │           │   └── MXRealmMediaScanStore.m
+│   │   │           └── RealmProvider
+│   │   │               ├── MXScanRealmFileProvider.h
+│   │   │               ├── MXScanRealmFileProvider.m
+│   │   │               ├── MXScanRealmInMemoryProvider.h
+│   │   │               ├── MXScanRealmInMemoryProvider.m
+│   │   │               └── MXScanRealmProvider.h
+│   │   ├── JSONModels
+│   │   │   ├── MXContentScanResult.h
+│   │   │   └── MXContentScanResult.m
+│   │   ├── MXScanManager.h
+│   │   ├── MXScanManager.m
+│   │   └── PKMessageWrapper.swift
+│   ├── Contrib
+│   │   └── Swift
+│   │       ├── Data
+│   │       │   ├── MX3PID.swift
+│   │       │   ├── MXEventTimeline.swift
+│   │       │   ├── MXRoom.swift
+│   │       │   ├── MXRoomState.swift
+│   │       │   └── MXSessionEventListener.swift
+│   │       ├── JSONModels
+│   │       │   ├── MXEvent.swift
+│   │       │   ├── MXJSONModels.swift
+│   │       │   └── MXRoomPowerLevels.swift
+│   │       ├── MXEnumConstants.swift
+│   │       ├── MXIdentityServerRestClient.swift
+│   │       ├── MXIdentityService.swift
+│   │       ├── MXImage.swift
+│   │       ├── MXResponse.swift
+│   │       ├── MXRestClient.swift
+│   │       ├── MXSession.swift
+│   │       └── ThreePidAdd
+│   │           └── MX3PidAddManager.swift
+│   ├── Crypto
+│   │   ├── Algorithms
+│   │   │   ├── MXDecryptionResult.h
+│   │   │   ├── MXDecryptionResult.m
+│   │   │   ├── MXEncrypting.h
+│   │   │   ├── MXEventDecryptionDecoration.swift
+│   │   │   ├── MXEventDecryptionResult.h
+│   │   │   ├── MXEventDecryptionResult.m
+│   │   │   └── RoomEvent
+│   │   │       ├── MXRoomEventDecryption.swift
+│   │   │       └── MXRoomEventEncryption.swift
+│   │   ├── CrossSigning
+│   │   │   ├── Data
+│   │   │   │   ├── MXCrossSigningInfo.h
+│   │   │   │   ├── MXCrossSigningInfo.m
+│   │   │   │   ├── MXCrossSigningInfo_Private.h
+│   │   │   │   └── MXCryptoUserIdentityWrapper.swift
+│   │   │   ├── JSONModels
+│   │   │   │   ├── MXCrossSigningKey.h
+│   │   │   │   └── MXCrossSigningKey.m
+│   │   │   ├── MXCrossSigning.h
+│   │   │   ├── MXCrossSigning.m
+│   │   │   ├── MXCrossSigningInfoSource.swift
+│   │   │   ├── MXCrossSigningTools.h
+│   │   │   ├── MXCrossSigningTools.m
+│   │   │   └── MXCrossSigningV2.swift
+│   │   ├── CryptoMachine
+│   │   │   ├── Extensions
+│   │   │   │   ├── EventEncryptionAlgorithm+String.swift
+│   │   │   │   ├── MXDeviceVerification+LocalTrust.swift
+│   │   │   │   ├── MXEventDecryptionResult+DecryptedEvent.swift
+│   │   │   │   └── MXRoomHistoryVisibility+HistoryVisibility.swift
+│   │   │   ├── MXCryptoMachine.swift
+│   │   │   ├── MXCryptoMachineStore.swift
+│   │   │   ├── MXCryptoProtocols.swift
+│   │   │   ├── MXCryptoRequests.swift
+│   │   │   ├── MXCryptoSDKLogger.swift
+│   │   │   └── MXKeysQueryScheduler.swift
+│   │   ├── Data
+│   │   │   ├── MXCryptoConstants.h
+│   │   │   ├── MXCryptoConstants.m
+│   │   │   ├── MXEncryptedAttachments.h
+│   │   │   ├── MXEncryptedAttachments.m
+│   │   │   ├── MXEncryptedContentFile.h
+│   │   │   ├── MXEncryptedContentFile.m
+│   │   │   ├── MXEncryptedContentKey.h
+│   │   │   ├── MXEncryptedContentKey.m
+│   │   │   ├── MXExportedOlmDevice.h
+│   │   │   ├── MXExportedOlmDevice.m
+│   │   │   ├── MXKey.h
+│   │   │   ├── MXKey.m
+│   │   │   ├── MXMegolmSessionData.h
+│   │   │   ├── MXMegolmSessionData.m
+│   │   │   ├── MXOlmSession.h
+│   │   │   ├── MXOlmSession.m
+│   │   │   ├── MXOlmSessionResult.h
+│   │   │   ├── MXOlmSessionResult.m
+│   │   │   ├── MXQueuedEncryption.h
+│   │   │   ├── MXQueuedEncryption.m
+│   │   │   ├── MXRoomSettings.swift
+│   │   │   ├── MXUsersDevicesMap.h
+│   │   │   ├── MXUsersDevicesMap.m
+│   │   │   └── Store
+│   │   │       ├── MXCryptoSecretStore.h
+│   │   │       └── MXCryptoVersion.h
+│   │   ├── Dehydration
+│   │   │   └── DehydrationService.swift
+│   │   ├── Devices
+│   │   │   ├── Data
+│   │   │   │   ├── MXCryptoDeviceWrapper.swift
+│   │   │   │   ├── MXDeviceInfo.h
+│   │   │   │   ├── MXDeviceInfo.m
+│   │   │   │   └── MXDeviceInfo_Private.h
+│   │   │   └── MXDeviceInfoSource.swift
+│   │   ├── KeyBackup
+│   │   │   ├── Data
+│   │   │   │   ├── Aes256
+│   │   │   │   │   ├── MXAes256BackupAuthData.h
+│   │   │   │   │   └── MXAes256BackupAuthData.m
+│   │   │   │   ├── Curve25519
+│   │   │   │   │   ├── MXCurve25519BackupAuthData.h
+│   │   │   │   │   └── MXCurve25519BackupAuthData.m
+│   │   │   │   ├── MXBaseKeyBackupAuthData.h
+│   │   │   │   ├── MXKeyBackupData.h
+│   │   │   │   ├── MXKeyBackupData.m
+│   │   │   │   ├── MXKeyBackupPreparationInfo.h
+│   │   │   │   ├── MXKeyBackupPreparationInfo.m
+│   │   │   │   ├── MXKeyBackupVersion.h
+│   │   │   │   ├── MXKeyBackupVersion.m
+│   │   │   │   ├── MXKeyBackupVersionTrust.h
+│   │   │   │   ├── MXKeyBackupVersionTrust.m
+│   │   │   │   ├── MXMegolmBackupCreationInfo.h
+│   │   │   │   └── MXMegolmBackupCreationInfo.m
+│   │   │   ├── Engine
+│   │   │   │   ├── MXCryptoKeyBackupEngine.swift
+│   │   │   │   ├── MXEncryptedKeyBackup.swift
+│   │   │   │   └── MXKeyBackupEngine.h
+│   │   │   ├── MXKeyBackup.h
+│   │   │   ├── MXKeyBackup.m
+│   │   │   ├── MXKeyBackupPassword.h
+│   │   │   ├── MXKeyBackupPassword.m
+│   │   │   ├── MXKeyBackup_Private.h
+│   │   │   ├── MXRecoveryKey.h
+│   │   │   └── MXRecoveryKey.m
+│   │   ├── KeyProvider
+│   │   │   ├── MXAesKeyData.h
+│   │   │   ├── MXAesKeyData.m
+│   │   │   ├── MXKeyData.h
+│   │   │   ├── MXKeyData.m
+│   │   │   ├── MXKeyProvider.h
+│   │   │   ├── MXKeyProvider.m
+│   │   │   ├── MXRawDataKey.h
+│   │   │   └── MXRawDataKey.m
+│   │   ├── KeySharing
+│   │   │   ├── Data
+│   │   │   │   ├── MXForwardedRoomKeyEventContent.h
+│   │   │   │   ├── MXForwardedRoomKeyEventContent.m
+│   │   │   │   ├── MXIncomingRoomKeyRequest.h
+│   │   │   │   ├── MXIncomingRoomKeyRequest.m
+│   │   │   │   ├── MXIncomingRoomKeyRequestCancellation.h
+│   │   │   │   ├── MXIncomingRoomKeyRequestCancellation.m
+│   │   │   │   ├── MXOutgoingRoomKeyRequest.h
+│   │   │   │   ├── MXOutgoingRoomKeyRequest.m
+│   │   │   │   ├── MXRoomKeyEventContent.h
+│   │   │   │   ├── MXRoomKeyEventContent.m
+│   │   │   │   └── MXSharedHistoryKeyRequest.swift
+│   │   │   ├── MXSharedHistoryKeyManager.swift
+│   │   │   ├── MXSharedHistoryKeyService.h
+│   │   │   ├── MXSharedHistoryKeyService.m
+│   │   │   ├── MXUnrequestedForwardedRoomKeyManager.swift
+│   │   │   └── Secret
+│   │   │       ├── Data
+│   │   │       │   ├── MXPendingSecretShareRequest.h
+│   │   │       │   └── MXPendingSecretShareRequest.m
+│   │   │       ├── JSONModels
+│   │   │       │   ├── MXSecretShareRequest.h
+│   │   │       │   ├── MXSecretShareRequest.m
+│   │   │       │   ├── MXSecretShareSend.h
+│   │   │       │   └── MXSecretShareSend.m
+│   │   │       ├── MXSecretShareManager.h
+│   │   │       └── MXSecretShareManager.m
+│   │   ├── MXCrypto.h
+│   │   ├── MXCrypto.m
+│   │   ├── MXCryptoV2.swift
+│   │   ├── MXCryptoV2Factory.swift
+│   │   ├── Recovery
+│   │   │   ├── Data
+│   │   │   │   ├── MXSecretRecoveryResult.h
+│   │   │   │   └── MXSecretRecoveryResult.m
+│   │   │   ├── MXRecoveryService.h
+│   │   │   ├── MXRecoveryService.m
+│   │   │   ├── MXRecoveryServiceDependencies.swift
+│   │   │   └── MXRecoveryService_Private.h
+│   │   ├── RoomKeys
+│   │   │   ├── MXRoomKeyInfo.swift
+│   │   │   └── MXRoomKeyResult.swift
+│   │   ├── SecretStorage
+│   │   │   ├── Data
+│   │   │   │   ├── MXSecretStorageKeyCreationInfo.h
+│   │   │   │   └── MXSecretStorageKeyCreationInfo.m
+│   │   │   ├── JSONModels
+│   │   │   │   ├── MXEncryptedSecretContent.h
+│   │   │   │   ├── MXEncryptedSecretContent.m
+│   │   │   │   ├── MXSecretStorageKeyContent.h
+│   │   │   │   ├── MXSecretStorageKeyContent.m
+│   │   │   │   ├── MXSecretStoragePassphrase.h
+│   │   │   │   └── MXSecretStoragePassphrase.m
+│   │   │   ├── MXCryptoSecretStoreV2.swift
+│   │   │   ├── MXSecretStorage.h
+│   │   │   ├── MXSecretStorage.m
+│   │   │   └── MXSecretStorage_Private.h
+│   │   ├── Trust
+│   │   │   ├── MXDeviceTrustLevel.h
+│   │   │   ├── MXDeviceTrustLevel.m
+│   │   │   ├── MXTrustLevelSource.swift
+│   │   │   ├── MXUserTrustLevel.h
+│   │   │   ├── MXUserTrustLevel.m
+│   │   │   ├── MXUsersTrustLevelSummary.h
+│   │   │   └── MXUsersTrustLevelSummary.m
+│   │   ├── Utils
+│   │   │   ├── MXAes.h
+│   │   │   ├── MXAes.m
+│   │   │   ├── MXAesHmacSha2.h
+│   │   │   ├── MXAesHmacSha2.m
+│   │   │   ├── MXCryptoTools.h
+│   │   │   ├── MXCryptoTools.m
+│   │   │   ├── MXHkdfSha256.h
+│   │   │   ├── MXHkdfSha256.m
+│   │   │   ├── MXMegolmExportEncryption.h
+│   │   │   └── MXMegolmExportEncryption.m
+│   │   └── Verification
+│   │       ├── Data
+│   │       │   ├── MXEmojiRepresentation.h
+│   │       │   ├── MXEmojiRepresentation.m
+│   │       │   ├── MXQRCodeData.h
+│   │       │   ├── MXQRCodeData.m
+│   │       │   ├── MXQRCodeDataBuilder.h
+│   │       │   ├── MXQRCodeDataBuilder.m
+│   │       │   ├── MXQRCodeDataCodable.h
+│   │       │   ├── MXQRCodeDataCoder.h
+│   │       │   ├── MXQRCodeDataCoder.m
+│   │       │   ├── MXSelfVerifyingMasterKeyNotTrustedQRCodeData.h
+│   │       │   ├── MXSelfVerifyingMasterKeyNotTrustedQRCodeData.m
+│   │       │   ├── MXSelfVerifyingMasterKeyTrustedQRCodeData.h
+│   │       │   ├── MXSelfVerifyingMasterKeyTrustedQRCodeData.m
+│   │       │   ├── MXTransactionCancelCode.h
+│   │       │   ├── MXTransactionCancelCode.m
+│   │       │   ├── MXVerifyingAnotherUserQRCodeData.h
+│   │       │   └── MXVerifyingAnotherUserQRCodeData.m
+│   │       ├── JSONModels
+│   │       │   ├── MXKeyVerificationAccept.h
+│   │       │   ├── MXKeyVerificationAccept.m
+│   │       │   ├── MXKeyVerificationCancel.h
+│   │       │   ├── MXKeyVerificationCancel.m
+│   │       │   ├── MXKeyVerificationDone.h
+│   │       │   ├── MXKeyVerificationDone.m
+│   │       │   ├── MXKeyVerificationJSONModel.h
+│   │       │   ├── MXKeyVerificationJSONModel.m
+│   │       │   ├── MXKeyVerificationKey.h
+│   │       │   ├── MXKeyVerificationKey.m
+│   │       │   ├── MXKeyVerificationMac.h
+│   │       │   ├── MXKeyVerificationMac.m
+│   │       │   ├── MXKeyVerificationReady.h
+│   │       │   ├── MXKeyVerificationReady.m
+│   │       │   ├── MXKeyVerificationRequestByDMJSONModel.h
+│   │       │   ├── MXKeyVerificationRequestByDMJSONModel.m
+│   │       │   ├── MXKeyVerificationRequestByToDeviceJSONModel.h
+│   │       │   ├── MXKeyVerificationRequestByToDeviceJSONModel.m
+│   │       │   ├── MXKeyVerificationStart.h
+│   │       │   ├── MXKeyVerificationStart.m
+│   │       │   ├── MXQRCodeKeyVerificationStart.h
+│   │       │   ├── MXQRCodeKeyVerificationStart.m
+│   │       │   ├── MXSASKeyVerificationStart.h
+│   │       │   └── MXSASKeyVerificationStart.m
+│   │       ├── MXKeyVerificationManager.h
+│   │       ├── MXKeyVerificationManager.m
+│   │       ├── MXKeyVerificationManagerV2.swift
+│   │       ├── Requests
+│   │       │   ├── MXKeyVerificationRequest.h
+│   │       │   ├── MXKeyVerificationRequest.m
+│   │       │   └── MXKeyVerificationRequestV2.swift
+│   │       ├── Status
+│   │       │   ├── MXKeyVerification.h
+│   │       │   ├── MXKeyVerification.m
+│   │       │   └── MXKeyVerificationStateResolver.swift
+│   │       └── Transactions
+│   │           ├── MXKeyVerificationTransaction.h
+│   │           ├── MXKeyVerificationTransaction.m
+│   │           ├── QRCode
+│   │           │   ├── MXQRCodeTransaction.h
+│   │           │   ├── MXQRCodeTransaction.m
+│   │           │   └── MXQRCodeTransactionV2.swift
+│   │           └── SAS
+│   │               ├── MXSASTransaction.h
+│   │               ├── MXSASTransaction.m
+│   │               └── MXSASTransactionV2.swift
+│   ├── Data
+│   │   ├── AutoDiscovery
+│   │   │   ├── MXAutoDiscovery.h
+│   │   │   ├── MXAutoDiscovery.m
+│   │   │   ├── MXDiscoveredClientConfig.h
+│   │   │   └── MXDiscoveredClientConfig.m
+│   │   ├── EventTimeline
+│   │   │   ├── MXEventTimeline.h
+│   │   │   ├── Room
+│   │   │   │   ├── MXRoomEventTimeline.h
+│   │   │   │   └── MXRoomEventTimeline.m
+│   │   │   └── Thread
+│   │   │       └── MXThreadEventTimeline.swift
+│   │   ├── EventsEnumerator
+│   │   │   ├── MXEventsByTypesEnumeratorOnArray.h
+│   │   │   ├── MXEventsByTypesEnumeratorOnArray.m
+│   │   │   ├── MXEventsEnumerator.h
+│   │   │   ├── MXEventsEnumeratorOnArray.h
+│   │   │   └── MXEventsEnumeratorOnArray.m
+│   │   ├── Filters
+│   │   │   ├── MXFilter.h
+│   │   │   ├── MXFilter.m
+│   │   │   ├── MXFilterJSONModel.h
+│   │   │   ├── MXFilterJSONModel.m
+│   │   │   ├── MXFilterObject.h
+│   │   │   ├── MXFilterObject.m
+│   │   │   ├── MXRoomEventFilter.h
+│   │   │   ├── MXRoomEventFilter.m
+│   │   │   ├── MXRoomFilter.h
+│   │   │   └── MXRoomFilter.m
+│   │   ├── MXAccountData.h
+│   │   ├── MXAccountData.m
+│   │   ├── MXCredentials.h
+│   │   ├── MXCredentials.m
+│   │   ├── MXEventListener.h
+│   │   ├── MXEventListener.m
+│   │   ├── MXGroup.h
+│   │   ├── MXGroup.m
+│   │   ├── MXInvite3PID.h
+│   │   ├── MXInvite3PID.m
+│   │   ├── MXMyUser.h
+│   │   ├── MXMyUser.m
+│   │   ├── MXPeekingRoom.h
+│   │   ├── MXPeekingRoom.m
+│   │   ├── MXPeekingRoomSummary.h
+│   │   ├── MXPeekingRoomSummary.m
+│   │   ├── MXRefreshTokenData.h
+│   │   ├── MXRefreshTokenData.m
+│   │   ├── MXRoom.h
+│   │   ├── MXRoom.m
+│   │   ├── MXRoomAccountData.h
+│   │   ├── MXRoomAccountData.m
+│   │   ├── MXRoomAccountDataUpdater.h
+│   │   ├── MXRoomAccountDataUpdater.m
+│   │   ├── MXRoomAccountDataUpdating.h
+│   │   ├── MXRoomLastMessage.h
+│   │   ├── MXRoomLastMessage.m
+│   │   ├── MXRoomMember.h
+│   │   ├── MXRoomMember.m
+│   │   ├── MXRoomMembers.h
+│   │   ├── MXRoomMembers.m
+│   │   ├── MXRoomMembersCount.h
+│   │   ├── MXRoomMembersCount.m
+│   │   ├── MXRoomNameDefaultStringLocalizer.h
+│   │   ├── MXRoomNameDefaultStringLocalizer.m
+│   │   ├── MXRoomNameStringLocalizerProtocol.h
+│   │   ├── MXRoomOperation.h
+│   │   ├── MXRoomOperation.m
+│   │   ├── MXRoomState.h
+│   │   ├── MXRoomState.m
+│   │   ├── MXRoomSummary.h
+│   │   ├── MXRoomSummary.m
+│   │   ├── MXRoomSummaryDataTypes.h
+│   │   ├── MXRoomSummaryProtocol.h
+│   │   ├── MXRoomSummarySentStatus.h
+│   │   ├── MXRoomSummaryUpdater.h
+│   │   ├── MXRoomSummaryUpdater.m
+│   │   ├── MXRoomThirdPartyInvite.h
+│   │   ├── MXRoomThirdPartyInvite.m
+│   │   ├── MXRoomType.h
+│   │   ├── MXRoomTypeMapper.swift
+│   │   ├── MXSendReplyEventDefaultStringLocalizer.h
+│   │   ├── MXSendReplyEventDefaultStringLocalizer.m
+│   │   ├── MXSendReplyEventStringLocalizerProtocol.h
+│   │   ├── MXSessionEventListener.h
+│   │   ├── MXSessionEventListener.m
+│   │   ├── MXUser.h
+│   │   ├── MXUser.m
+│   │   ├── ReplyEvent
+│   │   │   └── Parser
+│   │   │       ├── MXReplyEventBodyParts.h
+│   │   │       ├── MXReplyEventBodyParts.m
+│   │   │       ├── MXReplyEventFormattedBodyParts.h
+│   │   │       ├── MXReplyEventFormattedBodyParts.m
+│   │   │       ├── MXReplyEventParser.h
+│   │   │       ├── MXReplyEventParser.m
+│   │   │       ├── MXReplyEventParts.h
+│   │   │       └── MXReplyEventParts.m
+│   │   ├── RoomList
+│   │   │   ├── Common
+│   │   │   │   ├── MXBreadcrumbsRoomListDataFetcher.swift
+│   │   │   │   ├── MXRoomListDataFilterable.swift
+│   │   │   │   ├── MXRoomListDataSortable.swift
+│   │   │   │   ├── MXSuggestedRoomListDataCache.swift
+│   │   │   │   └── MXSuggestedRoomListDataFetcher.swift
+│   │   │   ├── CoreData
+│   │   │   │   ├── CoreDataContextable.swift
+│   │   │   │   ├── MXCoreDataRoomListDataFetcher.swift
+│   │   │   │   └── MXCoreDataRoomListDataManager.swift
+│   │   │   ├── MXRoomListData.swift
+│   │   │   ├── MXRoomListDataCounts.swift
+│   │   │   ├── MXRoomListDataFetchOptions.swift
+│   │   │   ├── MXRoomListDataFetcher.swift
+│   │   │   ├── MXRoomListDataFetcherDelegate.swift
+│   │   │   ├── MXRoomListDataFilterOptions.swift
+│   │   │   ├── MXRoomListDataManager.swift
+│   │   │   ├── MXRoomListDataPaginationOptions.swift
+│   │   │   ├── MXRoomListDataSortOptions.swift
+│   │   │   └── MXStore
+│   │   │       ├── MXStoreRoomListDataCounts.swift
+│   │   │       ├── MXStoreRoomListDataFetcher.swift
+│   │   │       └── MXStoreRoomListDataManager.swift
+│   │   ├── RoomSummaryStore
+│   │   │   ├── CoreData
+│   │   │   │   ├── MXCoreDataRoomSummaryStore.swift
+│   │   │   │   ├── MXCoreDataRoomSummaryStore.xcdatamodeld
+│   │   │   │   │   ├── .xccurrentversion
+│   │   │   │   │   ├── MXRoomSummaryCoreDataStore.xcdatamodel
+│   │   │   │   │   │   └── contents
+│   │   │   │   │   └── MXRoomSummaryCoreDataStore2.xcdatamodel
+│   │   │   │   │       └── contents
+│   │   │   │   ├── Models
+│   │   │   │   │   ├── MXRoomLastMessageMO.swift
+│   │   │   │   │   ├── MXRoomMembersCountMO.swift
+│   │   │   │   │   ├── MXRoomSummaryMO.swift
+│   │   │   │   │   └── MXUsersTrustLevelSummaryMO.swift
+│   │   │   │   └── NSManagedObject+MatrixSDK.swift
+│   │   │   ├── File
+│   │   │   │   ├── MXFileRoomSummaryStore.h
+│   │   │   │   └── MXFileRoomSummaryStore.m
+│   │   │   ├── MXRoomSummaryStore.h
+│   │   │   ├── Memory
+│   │   │   │   ├── MXMemoryRoomSummaryStore.h
+│   │   │   │   └── MXMemoryRoomSummaryStore.m
+│   │   │   └── Void
+│   │   │       ├── MXVoidRoomSummaryStore.h
+│   │   │       └── MXVoidRoomSummaryStore.m
+│   │   └── Store
+│   │       ├── MXCoreDataStore
+│   │       │   └── MXCoreDataStore.xcdatamodeld
+│   │       │       └── MXCoreDataStore.xcdatamodel
+│   │       │           └── contents
+│   │       ├── MXFileStore
+│   │       │   ├── MXFileRoomOutgoingMessagesStore.h
+│   │       │   ├── MXFileRoomOutgoingMessagesStore.m
+│   │       │   ├── MXFileRoomStore.h
+│   │       │   ├── MXFileRoomStore.m
+│   │       │   ├── MXFileStore.h
+│   │       │   ├── MXFileStore.m
+│   │       │   ├── MXFileStoreMetaData.h
+│   │       │   └── MXFileStoreMetaData.m
+│   │       ├── MXMemoryStore
+│   │       │   ├── MXMemoryRoomOutgoingMessagesStore.h
+│   │       │   ├── MXMemoryRoomOutgoingMessagesStore.m
+│   │       │   ├── MXMemoryRoomStore.h
+│   │       │   ├── MXMemoryRoomStore.m
+│   │       │   ├── MXMemoryStore.h
+│   │       │   ├── MXMemoryStore.m
+│   │       │   ├── MXReceiptData.h
+│   │       │   └── MXReceiptData.m
+│   │       ├── MXNoStore
+│   │       │   ├── MXNoStore.h
+│   │       │   └── MXNoStore.m
+│   │       ├── MXStore.h
+│   │       └── MXStoreService.swift
+│   ├── EventStream
+│   │   ├── MXEventStreamService.swift
+│   │   └── MXLiveEventListener.swift
+│   ├── HomeServer
+│   │   ├── MXHomeServerCapabilitiesService.swift
+│   │   └── MXRoomCapabilityType.swift
+│   ├── IdentityServer
+│   │   ├── MXIdentityServerRestClient.h
+│   │   ├── MXIdentityServerRestClient.m
+│   │   ├── MXIdentityService.h
+│   │   └── MXIdentityService.m
+│   ├── Info.plist
+│   ├── JSONModels
+│   │   ├── Aggregations
+│   │   │   ├── MXAggregationPaginatedResponse.h
+│   │   │   └── MXAggregationPaginatedResponse.m
+│   │   ├── Authentication
+│   │   │   ├── MXAuthMetadata.h
+│   │   │   ├── MXAuthMetadata.m
+│   │   │   ├── MXLoginPolicy.h
+│   │   │   ├── MXLoginPolicy.m
+│   │   │   ├── MXLoginPolicyData.h
+│   │   │   ├── MXLoginPolicyData.m
+│   │   │   ├── MXLoginTerms.h
+│   │   │   └── MXLoginTerms.m
+│   │   ├── AutoDiscovery
+│   │   │   ├── MXWellKnown.h
+│   │   │   ├── MXWellKnown.m
+│   │   │   ├── MXWellKnownAuthentication.h
+│   │   │   ├── MXWellKnownAuthentication.m
+│   │   │   ├── MXWellKnownBaseConfig.h
+│   │   │   ├── MXWellKnownBaseConfig.m
+│   │   │   ├── MXWellKnownTileServerConfig.h
+│   │   │   ├── MXWellKnownTileServerConfig.m
+│   │   │   ├── MXWellKnown_Private.h
+│   │   │   ├── MXWellknownIntegrations.h
+│   │   │   └── MXWellknownIntegrations.m
+│   │   ├── Call
+│   │   │   ├── Events
+│   │   │   │   ├── MXAssertedIdentityModel.h
+│   │   │   │   ├── MXAssertedIdentityModel.m
+│   │   │   │   ├── MXCallAnswerEventContent.h
+│   │   │   │   ├── MXCallAnswerEventContent.m
+│   │   │   │   ├── MXCallAssertedIdentityEventContent.h
+│   │   │   │   ├── MXCallAssertedIdentityEventContent.m
+│   │   │   │   ├── MXCallCandidatesEventContent.h
+│   │   │   │   ├── MXCallCandidatesEventContent.m
+│   │   │   │   ├── MXCallCapabilitiesModel.h
+│   │   │   │   ├── MXCallCapabilitiesModel.m
+│   │   │   │   ├── MXCallEventContent.h
+│   │   │   │   ├── MXCallEventContent.m
+│   │   │   │   ├── MXCallHangupEventContent.h
+│   │   │   │   ├── MXCallHangupEventContent.m
+│   │   │   │   ├── MXCallInviteEventContent.h
+│   │   │   │   ├── MXCallInviteEventContent.m
+│   │   │   │   ├── MXCallNegotiateEventContent.h
+│   │   │   │   ├── MXCallNegotiateEventContent.m
+│   │   │   │   ├── MXCallRejectEventContent.h
+│   │   │   │   ├── MXCallRejectEventContent.m
+│   │   │   │   ├── MXCallRejectReplacementEventContent.h
+│   │   │   │   ├── MXCallRejectReplacementEventContent.m
+│   │   │   │   ├── MXCallReplacesEventContent.h
+│   │   │   │   ├── MXCallReplacesEventContent.m
+│   │   │   │   ├── MXCallSelectAnswerEventContent.h
+│   │   │   │   ├── MXCallSelectAnswerEventContent.m
+│   │   │   │   ├── MXUserModel.h
+│   │   │   │   └── MXUserModel.m
+│   │   │   ├── MXCallCandidate.h
+│   │   │   ├── MXCallCandidate.m
+│   │   │   ├── MXCallSessionDescription.h
+│   │   │   ├── MXCallSessionDescription.m
+│   │   │   ├── MXTurnServerResponse.h
+│   │   │   ├── MXTurnServerResponse.m
+│   │   │   └── MatrixRTC
+│   │   │       ├── MXCallNotify.h
+│   │   │       └── MXCallNotify.m
+│   │   ├── Capabilities
+│   │   │   ├── MXBooleanCapability.h
+│   │   │   ├── MXBooleanCapability.m
+│   │   │   ├── MXCapabilities.h
+│   │   │   ├── MXCapabilities.m
+│   │   │   ├── MXRoomVersionsCapability.h
+│   │   │   └── MXRoomVersionsCapability.m
+│   │   ├── Event
+│   │   │   ├── Content
+│   │   │   │   ├── MXEventContentLocation.h
+│   │   │   │   ├── MXEventContentLocation.m
+│   │   │   │   ├── MXEventContentPollStart.h
+│   │   │   │   ├── MXEventContentPollStart.m
+│   │   │   │   ├── MXEventContentRelatesTo.h
+│   │   │   │   └── MXEventContentRelatesTo.m
+│   │   │   ├── MXEventAnnotation.h
+│   │   │   ├── MXEventAnnotation.m
+│   │   │   ├── MXEventAnnotationChunk.h
+│   │   │   ├── MXEventAnnotationChunk.m
+│   │   │   ├── MXEventReference.h
+│   │   │   ├── MXEventReference.m
+│   │   │   ├── MXEventReferenceChunk.h
+│   │   │   ├── MXEventReferenceChunk.m
+│   │   │   ├── MXEventRelationThread.h
+│   │   │   ├── MXEventRelationThread.m
+│   │   │   ├── MXEventRelations.h
+│   │   │   ├── MXEventRelations.m
+│   │   │   ├── MXEventReplace.h
+│   │   │   ├── MXEventReplace.m
+│   │   │   ├── MXEventUnsignedData.h
+│   │   │   ├── MXEventUnsignedData.m
+│   │   │   ├── MXInReplyTo.h
+│   │   │   ├── MXInReplyTo.m
+│   │   │   ├── MXMentions.h
+│   │   │   └── MXMentions.m
+│   │   ├── IdentityServer
+│   │   │   ├── MXIdentityServerHashDetails.h
+│   │   │   └── MXIdentityServerHashDetails.m
+│   │   ├── Location
+│   │   │   ├── MXBeacon.h
+│   │   │   ├── MXBeacon.m
+│   │   │   ├── MXBeaconInfo.h
+│   │   │   ├── MXBeaconInfo.m
+│   │   │   ├── MXGeoURIComponents.swift
+│   │   │   ├── MXLocation.h
+│   │   │   └── MXLocation.m
+│   │   ├── Login
+│   │   │   ├── MXLoginSSOFlow.h
+│   │   │   ├── MXLoginSSOFlow.m
+│   │   │   ├── MXLoginSSOIdentityProvider.h
+│   │   │   ├── MXLoginSSOIdentityProvider.m
+│   │   │   └── MXLoginSSOIdentityProviderBrand.h
+│   │   ├── MXDevice.h
+│   │   ├── MXDevice.m
+│   │   ├── MXEvent.h
+│   │   ├── MXEvent.m
+│   │   ├── MXEventAssetType.h
+│   │   ├── MXJSONModel.h
+│   │   ├── MXJSONModel.m
+│   │   ├── MXJSONModels.h
+│   │   ├── MXJSONModels.m
+│   │   ├── MXMatrixVersions.h
+│   │   ├── MXMatrixVersions.m
+│   │   ├── MXRefreshResponse.h
+│   │   ├── MXRefreshResponse.m
+│   │   ├── MXRoomAliasResolution.h
+│   │   ├── MXRoomAliasResolution.m
+│   │   ├── MXRoomCreateContent.h
+│   │   ├── MXRoomCreateContent.m
+│   │   ├── MXRoomCreationParameters.h
+│   │   ├── MXRoomCreationParameters.m
+│   │   ├── MXRoomPowerLevels.h
+│   │   ├── MXRoomPowerLevels.m
+│   │   ├── MXRoomPredecessorInfo.h
+│   │   ├── MXRoomPredecessorInfo.m
+│   │   ├── MXRoomTombStoneContent.h
+│   │   ├── MXRoomTombStoneContent.m
+│   │   ├── MXServerNoticeContent.h
+│   │   ├── MXServerNoticeContent.m
+│   │   ├── MXTaggedEventInfo.h
+│   │   ├── MXTaggedEventInfo.m
+│   │   ├── MXTaggedEvents.h
+│   │   ├── MXTaggedEvents.m
+│   │   ├── MXVirtualRoomInfo.h
+│   │   ├── MXVirtualRoomInfo.m
+│   │   ├── Media
+│   │   │   ├── MXURLPreview.h
+│   │   │   └── MXURLPreview.m
+│   │   ├── Push
+│   │   │   ├── MXPusher.h
+│   │   │   ├── MXPusher.m
+│   │   │   ├── MXPusherData.h
+│   │   │   └── MXPusherData.m
+│   │   ├── Sync
+│   │   │   ├── Group
+│   │   │   │   ├── MXGroupSyncProfile.h
+│   │   │   │   ├── MXGroupSyncProfile.m
+│   │   │   │   ├── MXGroupsSyncResponse.h
+│   │   │   │   ├── MXGroupsSyncResponse.m
+│   │   │   │   ├── MXInvitedGroupSync.h
+│   │   │   │   └── MXInvitedGroupSync.m
+│   │   │   ├── MXDeviceListResponse.h
+│   │   │   ├── MXDeviceListResponse.m
+│   │   │   ├── MXInvitedRoomSync.h
+│   │   │   ├── MXInvitedRoomSync.m
+│   │   │   ├── MXPresenceSyncResponse.h
+│   │   │   ├── MXPresenceSyncResponse.m
+│   │   │   ├── MXRoomInviteState.h
+│   │   │   ├── MXRoomInviteState.m
+│   │   │   ├── MXRoomsSyncResponse.h
+│   │   │   ├── MXRoomsSyncResponse.m
+│   │   │   ├── MXSyncResponse.h
+│   │   │   ├── MXSyncResponse.m
+│   │   │   ├── MXToDeviceSyncResponse.h
+│   │   │   ├── MXToDeviceSyncResponse.m
+│   │   │   └── Room
+│   │   │       ├── MXRoomSync.h
+│   │   │       ├── MXRoomSync.m
+│   │   │       ├── MXRoomSyncAccountData.h
+│   │   │       ├── MXRoomSyncAccountData.m
+│   │   │       ├── MXRoomSyncEphemeral.h
+│   │   │       ├── MXRoomSyncEphemeral.m
+│   │   │       ├── MXRoomSyncState.h
+│   │   │       ├── MXRoomSyncState.m
+│   │   │       ├── MXRoomSyncSummary.h
+│   │   │       ├── MXRoomSyncSummary.m
+│   │   │       ├── MXRoomSyncTimeline.h
+│   │   │       ├── MXRoomSyncTimeline.m
+│   │   │       ├── MXRoomSyncUnreadNotifications.h
+│   │   │       └── MXRoomSyncUnreadNotifications.m
+│   │   └── ThirdParty
+│   │       ├── MXThirdPartyProtocol.h
+│   │       ├── MXThirdPartyProtocol.m
+│   │       ├── MXThirdPartyProtocolInstance.h
+│   │       ├── MXThirdPartyProtocolInstance.m
+│   │       ├── MXThirdPartyUserInstance.h
+│   │       ├── MXThirdPartyUserInstance.m
+│   │       ├── MXThirdPartyUsersResponse.h
+│   │       ├── MXThirdPartyUsersResponse.m
+│   │       ├── MXThirdpartyProtocolsResponse.h
+│   │       └── MXThirdpartyProtocolsResponse.m
+│   ├── Lib
+│   │   ├── NSObject+sortedKeys.h
+│   │   └── NSObject+sortedKeys.m
+│   ├── LocationSharing
+│   │   ├── MXBeaconInfoSummary.swift
+│   │   ├── MXBeaconInfoSummaryProtocol.swift
+│   │   ├── MXLocationService.swift
+│   │   └── MXLocationServiceError.swift
+│   ├── MXEnumConstants.h
+│   ├── MXEnumConstants.m
+│   ├── MXError.h
+│   ├── MXError.m
+│   ├── MXRestClient.h
+│   ├── MXRestClient.m
+│   ├── MXSDKOptions.h
+│   ├── MXSDKOptions.m
+│   ├── MXSession.h
+│   ├── MXSession.m
+│   ├── MXSessionStartupProgress.swift
+│   ├── MatrixSDK.h
+│   ├── MatrixSDKSwiftHeader.h
+│   ├── MatrixSDKVersion.m
+│   ├── NotificationCenter
+│   │   ├── Checker
+│   │   │   ├── MXPushRuleConditionChecker.h
+│   │   │   ├── MXPushRuleDisplayNameCondtionChecker.h
+│   │   │   ├── MXPushRuleDisplayNameCondtionChecker.m
+│   │   │   ├── MXPushRuleEventMatchConditionChecker.h
+│   │   │   ├── MXPushRuleEventMatchConditionChecker.m
+│   │   │   ├── MXPushRuleRoomMemberCountConditionChecker.h
+│   │   │   ├── MXPushRuleRoomMemberCountConditionChecker.m
+│   │   │   ├── MXPushRuleSenderNotificationPermissionConditionChecker.h
+│   │   │   └── MXPushRuleSenderNotificationPermissionConditionChecker.m
+│   │   ├── MXNotificationCenter.h
+│   │   ├── MXNotificationCenter.m
+│   │   └── ServiceTerms
+│   │       ├── MXServiceTerms.h
+│   │       ├── MXServiceTerms.m
+│   │       ├── MXServiceTermsRestClient.h
+│   │       └── MXServiceTermsRestClient.m
+│   ├── PushGateway
+│   │   ├── MXPushGatewayRestClient.h
+│   │   └── MXPushGatewayRestClient.m
+│   ├── Room
+│   │   ├── Membership
+│   │   │   └── MXMembershipTransitionState.h
+│   │   ├── Polls
+│   │   │   ├── PollAggregator.swift
+│   │   │   ├── PollBuilder.swift
+│   │   │   └── PollModels.swift
+│   │   └── State
+│   │       └── MXRoomInitialStateEventBuilder.swift
+│   ├── Space
+│   │   ├── MXRoomAliasAvailabilityChecker.swift
+│   │   ├── MXSpace.swift
+│   │   ├── MXSpaceChildContent.h
+│   │   ├── MXSpaceChildContent.m
+│   │   ├── MXSpaceChildInfo.swift
+│   │   ├── MXSpaceChildSummaryResponse.h
+│   │   ├── MXSpaceChildSummaryResponse.m
+│   │   ├── MXSpaceChildrenRequestParameters.swift
+│   │   ├── MXSpaceChildrenResponse.h
+│   │   ├── MXSpaceChildrenResponse.m
+│   │   ├── MXSpaceChildrenSummary.swift
+│   │   ├── MXSpaceCreationParameters.swift
+│   │   ├── MXSpaceFileStore.swift
+│   │   ├── MXSpaceGraphData.swift
+│   │   ├── MXSpaceNotificationCounter.swift
+│   │   ├── MXSpaceNotificationState.swift
+│   │   ├── MXSpaceService.swift
+│   │   └── MXSpaceStore.swift
+│   ├── Threads
+│   │   ├── MXThread.swift
+│   │   ├── MXThreadModel.swift
+│   │   ├── MXThreadNotificationsCount.swift
+│   │   ├── MXThreadProtocol.swift
+│   │   └── MXThreadingService.swift
+│   ├── ThreePidAdd
+│   │   ├── MX3PidAddManager.h
+│   │   ├── MX3PidAddManager.m
+│   │   ├── MX3PidAddSession.h
+│   │   └── MX3PidAddSession.m
+│   ├── Utils
+│   │   ├── Categories
+│   │   │   ├── Array.swift
+│   │   │   ├── Dictionary.swift
+│   │   │   ├── FileManager+AppGroupContainer.swift
+│   │   │   ├── FileManager+Backup.swift
+│   │   │   ├── NSArray+MatrixSDK.h
+│   │   │   ├── NSArray+MatrixSDK.m
+│   │   │   ├── NSArray.swift
+│   │   │   ├── NSData+MatrixSDK.h
+│   │   │   ├── NSData+MatrixSDK.m
+│   │   │   └── NSDictionary.swift
+│   │   ├── Logs
+│   │   │   ├── MXAnalyticsDestination.swift
+│   │   │   ├── MXLog.h
+│   │   │   ├── MXLog.swift
+│   │   │   ├── MXLogObjcWrapper.h
+│   │   │   ├── MXLogObjcWrapper.m
+│   │   │   ├── MXLogger.h
+│   │   │   └── MXLogger.m
+│   │   ├── MXAllowedCertificates.h
+│   │   ├── MXAllowedCertificates.m
+│   │   ├── MXAnalyticsDelegate.h
+│   │   ├── MXApplicationProtocol.h
+│   │   ├── MXAsyncTaskQueue.swift
+│   │   ├── MXBackgroundModeHandler.h
+│   │   ├── MXBackgroundTask.h
+│   │   ├── MXBase64Tools.h
+│   │   ├── MXBase64Tools.m
+│   │   ├── MXBugReportRestClient.h
+│   │   ├── MXBugReportRestClient.m
+│   │   ├── MXDateProvider.swift
+│   │   ├── MXEventAssetTypeMapper.swift
+│   │   ├── MXHTTPClient.h
+│   │   ├── MXHTTPClient.m
+│   │   ├── MXHTTPClient_Private.h
+│   │   ├── MXHTTPOperation.h
+│   │   ├── MXHTTPOperation.m
+│   │   ├── MXLRUCache.h
+│   │   ├── MXLRUCache.m
+│   │   ├── MXMemory.swift
+│   │   ├── MXMulticastDelegate.swift
+│   │   ├── MXServerNotices.h
+│   │   ├── MXServerNotices.m
+│   │   ├── MXTaskQueue.swift
+│   │   ├── MXThrottler.h
+│   │   ├── MXThrottler.m
+│   │   ├── MXToDevicePayload.swift
+│   │   ├── MXTools.h
+│   │   ├── MXTools.m
+│   │   ├── MXTools.swift
+│   │   ├── MXUIKitApplicationStateService.swift
+│   │   ├── MXUIKitBackgroundModeHandler.h
+│   │   ├── MXUIKitBackgroundModeHandler.m
+│   │   ├── MXUIKitBackgroundTask.h
+│   │   ├── MXUIKitBackgroundTask.m
+│   │   ├── MXWarnings.h
+│   │   ├── Media
+│   │   │   ├── MXMediaLoader.h
+│   │   │   ├── MXMediaLoader.m
+│   │   │   ├── MXMediaManager.h
+│   │   │   └── MXMediaManager.m
+│   │   ├── Profiling
+│   │   │   ├── MXBaseProfiler.h
+│   │   │   ├── MXBaseProfiler.m
+│   │   │   ├── MXProfiler.h
+│   │   │   ├── MXTaskProfile.h
+│   │   │   ├── MXTaskProfile.m
+│   │   │   ├── MXTaskProfileName.h
+│   │   │   └── MXTaskProfile_Private.h
+│   │   ├── Protocols
+│   │   │   └── MXSummable.swift
+│   │   └── Realm
+│   │       ├── MXRealmHelper.h
+│   │       ├── MXRealmHelper.m
+│   │       ├── RLMRealm+MatrixSDK.h
+│   │       ├── RLMRealm+MatrixSDK.m
+│   │       ├── RLMSupport.swift
+│   │       └── Realm+MatrixSDK.swift
+│   └── VoIP
+│       ├── CallKit
+│       │   ├── MXCallKitAdapter.h
+│       │   ├── MXCallKitAdapter.m
+│       │   ├── MXCallKitConfiguration.h
+│       │   └── MXCallKitConfiguration.m
+│       ├── CallStack
+│       │   ├── MXCallAudioSessionConfigurator.h
+│       │   ├── MXCallStack.h
+│       │   └── MXCallStackCall.h
+│       ├── MXCall.h
+│       ├── MXCall.m
+│       ├── MXCallManager.h
+│       ├── MXCallManager.m
+│       ├── MXiOSAudioOutputRoute.swift
+│       ├── MXiOSAudioOutputRouteType.swift
+│       ├── MXiOSAudioOutputRouter.swift
+│       └── MXiOSAudioOutputRouterDelegate.swift
+├── MatrixSDK.podspec
+├── MatrixSDK.xcodeproj
+│   ├── project.pbxproj
+│   ├── project.xcworkspace
+│   │   └── contents.xcworkspacedata
+│   └── xcshareddata
+│       ├── IDETemplateMacros.plist
+│       └── xcschemes
+│           ├── MatrixSDK-iOS.xcscheme
+│           └── MatrixSDK-macOS.xcscheme
+├── MatrixSDKExtensions
+│   ├── MXAnalyticsDelegate
+│   │   └── GoogleAnalytics
+│   │       ├── MXGoogleAnalytics.h
+│   │       └── MXGoogleAnalytics.m
+│   └── VoIP
+│       └── Jingle
+│           ├── MXJingleCallAudioSessionConfigurator.h
+│           ├── MXJingleCallAudioSessionConfigurator.m
+│           ├── MXJingleCallStack.h
+│           ├── MXJingleCallStack.m
+│           ├── MXJingleCallStackCall.h
+│           ├── MXJingleCallStackCall.m
+│           ├── MXJingleCameraCaptureController.h
+│           ├── MXJingleCameraCaptureController.m
+│           ├── MXJingleVideoView.h
+│           └── MXJingleVideoView.m
+├── MatrixSDKTests
+│   ├── Crypto
+│   │   ├── Algorithms
+│   │   │   └── RoomEvents
+│   │   │       ├── MXRoomEventDecryptionUnitTests.swift
+│   │   │       └── MXRoomEventEncryptionUnitTests.swift
+│   │   ├── CrossSigning
+│   │   │   ├── Data
+│   │   │   │   ├── MXCrossSigningInfoUnitTests.swift
+│   │   │   │   ├── MXCrossSigningInfo_v0
+│   │   │   │   └── MXCrossSigningInfo_v1
+│   │   │   ├── MXCrossSigningInfoSourceUnitTests.swift
+│   │   │   └── MXCrossSigningV2UnitTests.swift
+│   │   ├── CryptoMachine
+│   │   │   ├── DecryptedEvent+Stub.swift
+│   │   │   ├── Device+Stub.swift
+│   │   │   ├── Extensions
+│   │   │   │   └── EventEncryptionAlgorithmUnitTests.swift
+│   │   │   ├── MXCryptoMachineUnitTests.swift
+│   │   │   ├── MXCryptoProtocolStubs.swift
+│   │   │   ├── MXCryptoRequestsUnitTests.swift
+│   │   │   ├── MXKeyProviderStub.swift
+│   │   │   └── MXKeysQuerySchedulerUnitTests.swift
+│   │   ├── Data
+│   │   │   └── MXMegolmSessionDataUnitTests.swift
+│   │   ├── Devices
+│   │   │   ├── Data
+│   │   │   │   └── MXDeviceInfoUnitTests.swift
+│   │   │   └── MXDeviceInfoSourceUnitTests.swift
+│   │   ├── KeyBackup
+│   │   │   ├── Data
+│   │   │   │   └── MXKeyBackupVersion+Stub.swift
+│   │   │   └── Engine
+│   │   │       └── MXCryptoKeyBackupEngineUnitTests.swift
+│   │   ├── KeySharing
+│   │   │   ├── Data
+│   │   │   │   ├── MXForwardedRoomKeyEventContentUnitTests.swift
+│   │   │   │   └── MXRoomKeyEventContentUnitTests.swift
+│   │   │   └── MXUnrequestedForwardedRoomKeyManagerUnitTests.swift
+│   │   ├── Migration
+│   │   │   └── LegacyRealmStore
+│   │   │       ├── archived_encrypted_event
+│   │   │       ├── legacy_deprecated1_account.realm
+│   │   │       ├── legacy_deprecated3_account.realm
+│   │   │       ├── legacy_unverified_account.realm
+│   │   │       ├── legacy_verified_account.realm
+│   │   │       └── legacy_version2_account.realm
+│   │   ├── Trust
+│   │   │   └── MXTrustLevelSourceUnitTests.swift
+│   │   └── Verification
+│   │       ├── MXKeyVerificationManagerV2UnitTests.swift
+│   │       ├── Requests
+│   │       │   ├── MXKeyVerificationRequestV2UnitTests.swift
+│   │       │   └── VerificationRequestStub.swift
+│   │       ├── Status
+│   │       │   └── MXKeyVerificationStateResolverUnitTests.swift
+│   │       └── Transactions
+│   │           ├── QRCode
+│   │           │   ├── MXQRCodeTransactionV2UnitTests.swift
+│   │           │   └── QrCodeStub.swift
+│   │           └── SAS
+│   │               ├── MXSASTransactionV2UnitTests.swift
+│   │               └── SasStub.swift
+│   ├── Data
+│   │   ├── EventsEnumerator
+│   │   │   ├── EventsEnumeratorDataSourceStub.swift
+│   │   │   ├── MXEventsByTypesEnumeratorOnArrayTests.swift
+│   │   │   └── MXEventsEnumeratorOnArrayTests.swift
+│   │   └── Store
+│   │       └── MXMemoryStore
+│   │           └── MXMemoryRoomStoreUnitTests.swift
+│   ├── DirectRoomTests.m
+│   ├── Dummy.swift
+│   ├── Info.plist
+│   ├── JSONModels
+│   │   ├── MXEventFixtures.swift
+│   │   ├── MXEventTests.m
+│   │   └── MXKeysQueryResponseUnitTests.swift
+│   ├── MXAccountDataTests.m
+│   ├── MXAes256KeyBackupTests.m
+│   ├── MXAesUnitTests.m
+│   ├── MXAggregatedEditsTests.m
+│   ├── MXAggregatedEditsUnitTests.m
+│   ├── MXAggregatedPollsUpdaterTests.swift
+│   ├── MXAggregatedReactionTests.m
+│   ├── MXAggregatedReferenceTests.m
+│   ├── MXAggregatedReferenceUnitTests.m
+│   ├── MXAsyncTaskQueueUnitTests.swift
+│   ├── MXAuthenticationSessionUnitTests.swift
+│   ├── MXAutoDiscoveryTests.m
+│   ├── MXBackgroundSyncServiceTests.swift
+│   ├── MXBackgroundTaskUnitTests.swift
+│   ├── MXBaseKeyBackupTests.h
+│   ├── MXBaseKeyBackupTests.m
+│   ├── MXBeaconAggregationsTests.swift
+│   ├── MXBeaconInfoUnitTests.swift
+│   ├── MXClientInformationServiceUnitTests.swift
+│   ├── MXCoreDataRoomListDataManagerUnitTests.swift
+│   ├── MXCredentialsUnitTests.swift
+│   ├── MXCrossSigningTests.m
+│   ├── MXCryptoKeyVerificationTests.m
+│   ├── MXCryptoRecoveryServiceTests.m
+│   ├── MXCryptoSecretStorageTests.m
+│   ├── MXCryptoShareTests.m
+│   ├── MXCryptoTests.m
+│   ├── MXDeviceListOperationsPoolTests.swift
+│   ├── MXErrorUnitTests.m
+│   ├── MXEventAnnotationUnitTests.swift
+│   ├── MXEventReferenceUnitTests.swift
+│   ├── MXEventScanStoreUnitTests.m
+│   ├── MXFilterTests.m
+│   ├── MXFilterUnitTests.m
+│   ├── MXGeoURIComponentsUnitTests.swift
+│   ├── MXHTTPAdditionalHeadersUnitTests.m
+│   ├── MXHTTPClientTests.m
+│   ├── MXHomeserverCapabilitiesTests.swift
+│   ├── MXJSONModelTests.m
+│   ├── MXJSONModelUnitTests.m
+│   ├── MXKeyBackupUnitTests.swift
+│   ├── MXKeyProviderUnitTests.m
+│   ├── MXLazyLoadingTests.m
+│   ├── MXLocationServiceTests.swift
+│   ├── MXLoggerUnitTests.m
+│   ├── MXMatrixVersionsUnitTests.swift
+│   ├── MXMediaScanStoreUnitTests.m
+│   ├── MXMegolmExportEncryptionUnitTests.m
+│   ├── MXMyUserTests.m
+│   ├── MXNotificationCenterTests.m
+│   ├── MXPeekingRoomTests.m
+│   ├── MXPollAggregatorTests.swift
+│   ├── MXPollBuilderTests.swift
+│   ├── MXPollRelationTests.m
+│   ├── MXPushRuleUnitTests.m
+│   ├── MXQRCodeDataUnitTests.m
+│   ├── MXReceiptDataIntegrationTests.swift
+│   ├── MXReplyEventParserUnitTests.m
+│   ├── MXResponseUnitTests.swift
+│   ├── MXRestClientExtensionsTests.m
+│   ├── MXRestClientNoAuthAPITests.m
+│   ├── MXRestClientTests.m
+│   ├── MXRoomAliasAvailabilityCheckerResultTests.swift
+│   ├── MXRoomEventFilterUnitTests.swift
+│   ├── MXRoomEventTimelineTests.m
+│   ├── MXRoomListDataManagerTests.swift
+│   ├── MXRoomMemberTests.m
+│   ├── MXRoomStateDynamicTests.m
+│   ├── MXRoomStateTests.m
+│   ├── MXRoomStateUnitTests.swift
+│   ├── MXRoomSummaryTests.m
+│   ├── MXRoomSummaryTrustTests.m
+│   ├── MXRoomTests.m
+│   ├── MXSelfSignedHomeserverTests.m
+│   ├── MXSessionStartupProgressUnitTests.swift
+│   ├── MXSessionTests.m
+│   ├── MXSpaceChildContentTests.swift
+│   ├── MXSpaceServiceTest.swift
+│   ├── MXStoreFileStoreTests.m
+│   ├── MXStoreMemoryStoreTests.m
+│   ├── MXStoreNoStoreTests.m
+│   ├── MXStoreRoomListDataManagerUnitTests.swift
+│   ├── MXStoreTests.h
+│   ├── MXStoreTests.m
+│   ├── MXSyncResponseUnitTests.swift
+│   ├── MXThreadEventTimelineUnitTests.swift
+│   ├── MXThreadingServiceTests.swift
+│   ├── MXThreadingServiceUnitTests.swift
+│   ├── MXThreadsNotificationCountTests.swift
+│   ├── MXToDevicePayloadUnitTests.swift
+│   ├── MXToolsUnitTests.m
+│   ├── MXUserTests.m
+│   ├── MXVoIPTests.m
+│   ├── MatrixSDKTests-Bridging-Header.h
+│   ├── MatrixSDKTestsData.h
+│   ├── MatrixSDKTestsData.m
+│   ├── MatrixSDKTestsData.swift
+│   ├── MatrixSDKTestsE2EData.h
+│   ├── MatrixSDKTestsE2EData.m
+│   ├── MatrixSDKTestsE2EData.swift
+│   ├── MatrixSDKTestsSwiftHeader.h
+│   ├── Mocks
+│   │   ├── MXMockCallStack.h
+│   │   ├── MXMockCallStack.m
+│   │   ├── MXMockCallStackCall.h
+│   │   ├── MXMockCallStackCall.m
+│   │   ├── MXRestClientStub.h
+│   │   ├── MXRestClientStub.m
+│   │   └── MockRoomSummary.swift
+│   ├── TestPlans
+│   │   ├── AllTests.xctestplan
+│   │   ├── AllTestsWithSanitizers.xctestplan
+│   │   ├── AllWorkingTests.xctestplan
+│   │   ├── UnitTests.xctestplan
+│   │   └── UnitTestsWithSanitizers.xctestplan
+│   └── Utils
+│       ├── Logs
+│       │   └── MXAnalyticsDestinationUnitTests.swift
+│       ├── MXSession.swift
+│       ├── MXSessionTracker.swift
+│       ├── MXTaskQueueUnitTests.swift
+│       └── TestObserver.swift
+├── Podfile
+├── Podfile.lock
+├── README.rst
+├── build.sh
+├── changelog.d
+│   ├── .gitignore
+│   └── _template.md.jinja
+├── codecov.yml
+├── fastlane
+│   └── Fastfile
+├── lint.sh
+├── scripts
+│   └── symbolicate
+│       ├── .gitignore
+│       ├── credentials.py
+│       └── symbolicate.py
+├── test.sh
+└── towncrier.toml
+192 directories, 1037 files
