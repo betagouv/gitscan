@@ -1,0 +1,794 @@
+.
+├── .browserslistrc
+├── .claude
+│   └── commands
+│       └── guide.md
+├── .docker
+│   ├── Dockerfile
+│   └── docker-compose.dev.yml
+├── .editorconfig
+├── .github
+│   ├── .copilot-commit-message-instructions.md
+│   ├── copilot-instructions.md
+│   ├── copilot-tasks.instructions.md
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── check-merge-branch.yml
+│       ├── check-pr-linked-issue.yml
+│       ├── publish-release-beta.yml
+│       ├── publish-release-next.yml
+│       ├── publish-release.yml
+│       └── run-tests.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   ├── pre-commit
+│   └── pre-push
+├── .lintstagedrc.json
+├── .npmrc
+├── .storybook
+│   ├── main.ts
+│   ├── manager-head.html
+│   ├── manager.ts
+│   ├── preview.ts
+│   ├── theme.css
+│   └── vue-dsfr-theme.ts
+├── .storybook-build
+│   ├── package.json
+│   └── pnpm-lock.yaml
+├── .vitepress
+│   ├── config.ts
+│   ├── plugins
+│   │   └── hmrFix.ts
+│   └── theme
+│       ├── AppColors.vue
+│       ├── AppIcons.vue
+│       ├── Story.vue
+│       ├── VIconLink.vue
+│       ├── index.ts
+│       ├── official-icons.css
+│       └── style.css
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── vue.code-snippets
+├── CLAUDE.md
+├── LICENSE.md
+├── README.md
+├── ci
+│   └── check-exports.mjs
+├── commitlint.config.cjs
+├── demo-app
+│   ├── App.vue
+│   ├── components
+│   │   ├── AppToaster.vue
+│   │   ├── AsyncButton.vue
+│   │   └── FdrAutoComplete.vue
+│   ├── composables
+│   │   └── use-toaster.ts
+│   ├── main.css
+│   ├── main.js
+│   ├── router.js
+│   └── views
+│       ├── AboutUs.vue
+│       ├── AppAccordions.vue
+│       ├── AppAlerts.vue
+│       ├── AppForm.vue
+│       ├── AppHome.vue
+│       ├── AppTabs.vue
+│       ├── AppTags.vue
+│       ├── CalloutTest.vue
+│       ├── CardTile.vue
+│       ├── LanguageSelector.vue
+│       ├── SchemeSettings.vue
+│       ├── SideMenu.vue
+│       └── SimpleModal.vue
+├── docs
+│   ├── _frame.md
+│   ├── colors.json
+│   ├── composables.md
+│   ├── composants.md
+│   ├── couleurs.md
+│   ├── docs-demo
+│   │   ├── DemoIconesDansComposants.vue
+│   │   ├── DsfrCheckboxSetV7Demo.vue
+│   │   └── IconesOfficielles.vue
+│   ├── guide
+│   │   ├── docs-demo
+│   │   │   └── PictogramsDemo.vue
+│   │   ├── ecosysteme.md
+│   │   ├── guide-contributeur.md
+│   │   ├── icones-officielles.md
+│   │   ├── icones.md
+│   │   ├── icons.json
+│   │   ├── index.md
+│   │   ├── migrations.md
+│   │   ├── pictogrammes.md
+│   │   ├── pictograms.json
+│   │   ├── pictograms.ts
+│   │   └── pour-commencer.md
+│   ├── index.md
+│   ├── nuxt
+│   │   └── index.md
+│   ├── recettes
+│   │   ├── bouton-dans-header.md
+│   │   ├── index.md
+│   │   └── toaster.md
+│   └── types.md
+├── env.d.ts
+├── eslint.config.js
+├── index.html
+├── meta
+│   ├── autoimport-preset.js
+│   ├── component-resolver.js
+│   ├── custom-icon-collections-creator-bin.js
+│   ├── custom-icon-collections-creator.js
+│   └── index.js
+├── package.json
+├── pnpm-lock.yaml
+├── public
+│   ├── _redirects
+│   ├── cat.svg
+│   ├── favicon.ico
+│   ├── icons
+│   │   ├── android-icon-144x144.png
+│   │   ├── android-icon-192x192.png
+│   │   ├── android-icon-36x36.png
+│   │   ├── android-icon-48x48.png
+│   │   ├── android-icon-72x72.png
+│   │   ├── android-icon-96x96.png
+│   │   ├── apple-icon-114x114.png
+│   │   ├── apple-icon-120x120.png
+│   │   ├── apple-icon-144x144.png
+│   │   ├── apple-icon-152x152.png
+│   │   ├── apple-icon-180x180.png
+│   │   ├── apple-icon-57x57.png
+│   │   ├── apple-icon-60x60.png
+│   │   ├── apple-icon-72x72.png
+│   │   ├── apple-icon-76x76.png
+│   │   ├── apple-icon-precomposed.png
+│   │   ├── apple-icon.png
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon-96x96.png
+│   │   ├── ms-icon-144x144.png
+│   │   ├── ms-icon-150x150.png
+│   │   ├── ms-icon-310x310.png
+│   │   └── ms-icon-70x70.png
+│   ├── marianne-icone.png
+│   └── nouveau-logo-marianne-gouvernement.png
+├── scripts
+│   └── get-colors.js
+├── src
+│   ├── assets
+│   │   ├── fonts
+│   │   │   ├── Marianne
+│   │   │   │   ├── Marianne-Bold.woff
+│   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   │   ├── Marianne-ExtraBold_Italic.woff
+│   │   │   │   ├── Marianne-ExtraBold_Italic.woff2
+│   │   │   │   ├── Marianne-Light.woff
+│   │   │   │   ├── Marianne-Light.woff2
+│   │   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   │   ├── Marianne-Medium.woff
+│   │   │   │   ├── Marianne-Medium.woff2
+│   │   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   │   ├── Marianne-Regular.woff
+│   │   │   │   ├── Marianne-Regular.woff2
+│   │   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   │   ├── Marianne-Thin.woff
+│   │   │   │   ├── Marianne-Thin.woff2
+│   │   │   │   ├── Marianne-Thin_Italic.woff
+│   │   │   │   └── Marianne-Thin_Italic.woff2
+│   │   │   └── Spectral
+│   │   │       ├── Spectral-Bold.ttf
+│   │   │       ├── Spectral-BoldItalic.ttf
+│   │   │       ├── Spectral-ExtraBold.ttf
+│   │   │       ├── Spectral-ExtraBoldItalic.ttf
+│   │   │       ├── Spectral-ExtraLight.ttf
+│   │   │       ├── Spectral-ExtraLightItalic.ttf
+│   │   │       ├── Spectral-Italic.ttf
+│   │   │       ├── Spectral-Light.ttf
+│   │   │       ├── Spectral-LightItalic.ttf
+│   │   │       ├── Spectral-Medium.ttf
+│   │   │       ├── Spectral-MediumItalic.ttf
+│   │   │       ├── Spectral-Regular.ttf
+│   │   │       ├── Spectral-SemiBold.ttf
+│   │   │       └── Spectral-SemiBoldItalic.ttf
+│   │   ├── fonts-dsfr.css
+│   │   ├── fonts-essential-dsfr.css
+│   │   ├── icone-marianne-seule.png
+│   │   ├── img
+│   │   │   └── technical-error.png
+│   │   └── variables-fdr.css
+│   ├── common-types.ts
+│   ├── components
+│   │   ├── DsfrAccordion
+│   │   │   ├── DsfrAccordion.md
+│   │   │   ├── DsfrAccordion.spec.ts
+│   │   │   ├── DsfrAccordion.stories.ts
+│   │   │   ├── DsfrAccordion.types.ts
+│   │   │   ├── DsfrAccordion.vue
+│   │   │   ├── DsfrAccordionsGroup.md
+│   │   │   ├── DsfrAccordionsGroup.stories.ts
+│   │   │   ├── DsfrAccordionsGroup.vue
+│   │   │   ├── docs-demo
+│   │   │   │   └── DsfrAccordionDemo.vue
+│   │   │   └── injection-key.ts
+│   │   ├── DsfrAlert
+│   │   │   ├── DsfrAlert.md
+│   │   │   ├── DsfrAlert.spec.ts
+│   │   │   ├── DsfrAlert.stories.ts
+│   │   │   ├── DsfrAlert.types.ts
+│   │   │   ├── DsfrAlert.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrAlertDemo.vue
+│   │   │       └── DsfrAlertExample.vue
+│   │   ├── DsfrBackToTop
+│   │   │   ├── DsfrBackToTop.md
+│   │   │   ├── DsfrBackToTop.spec.ts
+│   │   │   ├── DsfrBackToTop.stories.ts
+│   │   │   ├── DsfrBackToTop.types.ts
+│   │   │   ├── DsfrBackToTop.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrBackToTopDemo.vue
+│   │   ├── DsfrBadge
+│   │   │   ├── DsfrBadge.md
+│   │   │   ├── DsfrBadge.spec.ts
+│   │   │   ├── DsfrBadge.stories.ts
+│   │   │   ├── DsfrBadge.types.ts
+│   │   │   ├── DsfrBadge.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrBadgeExample.vue
+│   │   ├── DsfrBreadcrumb
+│   │   │   ├── DsfrBreadcrumb.md
+│   │   │   ├── DsfrBreadcrumb.spec.ts
+│   │   │   ├── DsfrBreadcrumb.stories.ts
+│   │   │   ├── DsfrBreadcrumb.types.ts
+│   │   │   ├── DsfrBreadcrumb.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrBreadcrumbDemo.vue
+│   │   ├── DsfrButton
+│   │   │   ├── DsfrButton.md
+│   │   │   ├── DsfrButton.spec.ts
+│   │   │   ├── DsfrButton.stories.ts
+│   │   │   ├── DsfrButton.types.ts
+│   │   │   ├── DsfrButton.vue
+│   │   │   ├── DsfrButtonGroup.md
+│   │   │   ├── DsfrButtonGroup.spec.ts
+│   │   │   ├── DsfrButtonGroup.stories.ts
+│   │   │   ├── DsfrButtonGroup.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrButtonDemo.vue
+│   │   │       ├── DsfrButtonExample1.vue
+│   │   │       ├── DsfrButtonExample2.vue
+│   │   │       └── DsfrButtonGroupDemo.vue
+│   │   ├── DsfrCallout
+│   │   │   ├── DsfrCallout.md
+│   │   │   ├── DsfrCallout.spec.ts
+│   │   │   ├── DsfrCallout.stories.ts
+│   │   │   ├── DsfrCallout.types.ts
+│   │   │   ├── DsfrCallout.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrCalloutDemo.vue
+│   │   ├── DsfrCard
+│   │   │   ├── DsfrCard.md
+│   │   │   ├── DsfrCard.spec.ts
+│   │   │   ├── DsfrCard.stories.ts
+│   │   │   ├── DsfrCard.types.ts
+│   │   │   ├── DsfrCard.vue
+│   │   │   ├── DsfrCardDetail.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrCardDemo.vue
+│   │   │       └── DsfrCardDemoActions.vue
+│   │   ├── DsfrCheckbox
+│   │   │   ├── DsfrCheckbox.md
+│   │   │   ├── DsfrCheckbox.spec.ts
+│   │   │   ├── DsfrCheckbox.stories.ts
+│   │   │   ├── DsfrCheckbox.types.ts
+│   │   │   ├── DsfrCheckbox.vue
+│   │   │   ├── DsfrCheckboxSet.md
+│   │   │   ├── DsfrCheckboxSet.spec.ts
+│   │   │   ├── DsfrCheckboxSet.stories.ts
+│   │   │   ├── DsfrCheckboxSet.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrCheckboxDemo.vue
+│   │   │       └── DsfrCheckboxSetDemo.vue
+│   │   ├── DsfrConsent
+│   │   │   ├── DsfrConsent.md
+│   │   │   ├── DsfrConsent.spec.ts
+│   │   │   ├── DsfrConsent.stories.ts
+│   │   │   ├── DsfrConsent.types.ts
+│   │   │   ├── DsfrConsent.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrConsentDemo.vue
+│   │   ├── DsfrDataTable
+│   │   │   ├── DsfrDataTable.md
+│   │   │   ├── DsfrDataTable.spec.ts
+│   │   │   ├── DsfrDataTable.stories.ts
+│   │   │   ├── DsfrDataTable.types.ts
+│   │   │   ├── DsfrDataTable.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrDataTableDemoColonnesEnteteMultiple.vue
+│   │   │       ├── DsfrDataTableDemoColonnesFixes.vue
+│   │   │       ├── DsfrDataTableDemoComplexe.vue
+│   │   │       ├── DsfrDataTableDemoPlusComplexe.vue
+│   │   │       ├── DsfrDataTableDemoSchedule.vue
+│   │   │       └── DsfrDataTableDemoSimple.vue
+│   │   ├── DsfrErrorPage
+│   │   │   ├── DsfrErrorPage.md
+│   │   │   ├── DsfrErrorPage.stories.ts
+│   │   │   ├── DsfrErrorPage.types.ts
+│   │   │   ├── DsfrErrorPage.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrErrorPageDemo.vue
+│   │   ├── DsfrFieldset
+│   │   │   ├── DsfrFieldset.md
+│   │   │   ├── DsfrFieldset.spec.ts
+│   │   │   ├── DsfrFieldset.stories.ts
+│   │   │   ├── DsfrFieldset.types.ts
+│   │   │   ├── DsfrFieldset.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrFieldsetDemo.vue
+│   │   ├── DsfrFileDownload
+│   │   │   ├── DsfrFileDownload.md
+│   │   │   ├── DsfrFileDownload.spec.ts
+│   │   │   ├── DsfrFileDownload.stories.ts
+│   │   │   ├── DsfrFileDownload.types.ts
+│   │   │   ├── DsfrFileDownload.vue
+│   │   │   ├── DsfrFileDownloadList.md
+│   │   │   ├── DsfrFileDownloadList.spec.ts
+│   │   │   ├── DsfrFileDownloadList.stories.ts
+│   │   │   ├── DsfrFileDownloadList.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrFileDownloadDemo.vue
+│   │   ├── DsfrFileUpload
+│   │   │   ├── DsfrFileUpload.md
+│   │   │   ├── DsfrFileUpload.spec.ts
+│   │   │   ├── DsfrFileUpload.stories.ts
+│   │   │   ├── DsfrFileUpload.types.ts
+│   │   │   ├── DsfrFileUpload.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrFileUploadDemo.vue
+│   │   ├── DsfrFollow
+│   │   │   ├── DsfrFollow.md
+│   │   │   ├── DsfrFollow.stories.ts
+│   │   │   ├── DsfrFollow.types.ts
+│   │   │   ├── DsfrFollow.vue
+│   │   │   ├── DsfrNewsLetter.md
+│   │   │   ├── DsfrNewsLetter.spec.ts
+│   │   │   ├── DsfrNewsLetter.stories.ts
+│   │   │   ├── DsfrNewsLetter.vue
+│   │   │   ├── DsfrSocialNetworks.md
+│   │   │   ├── DsfrSocialNetworks.spec.ts
+│   │   │   ├── DsfrSocialNetworks.stories.ts
+│   │   │   ├── DsfrSocialNetworks.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrFollowDemo.vue
+│   │   │       ├── DsfrNewsLetterDemo.vue
+│   │   │       └── DsfrSocialNetworksDemo.vue
+│   │   ├── DsfrFooter
+│   │   │   ├── DsfrFooter.md
+│   │   │   ├── DsfrFooter.spec.ts
+│   │   │   ├── DsfrFooter.stories.ts
+│   │   │   ├── DsfrFooter.types.ts
+│   │   │   ├── DsfrFooter.vue
+│   │   │   ├── DsfrFooterLink.md
+│   │   │   ├── DsfrFooterLink.vue
+│   │   │   ├── DsfrFooterLinkList.md
+│   │   │   ├── DsfrFooterLinkList.vue
+│   │   │   ├── DsfrFooterPartners.md
+│   │   │   ├── DsfrFooterPartners.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrFooterDemo.vue
+│   │   ├── DsfrFranceConnect
+│   │   │   ├── DsfrFranceConnect.md
+│   │   │   ├── DsfrFranceConnect.spec.ts
+│   │   │   ├── DsfrFranceConnect.stories.ts
+│   │   │   ├── DsfrFranceConnect.types.ts
+│   │   │   ├── DsfrFranceConnect.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrFranceConnectDemo.vue
+│   │   ├── DsfrHeader
+│   │   │   ├── DsfrHeader.md
+│   │   │   ├── DsfrHeader.spec.ts
+│   │   │   ├── DsfrHeader.stories.ts
+│   │   │   ├── DsfrHeader.types.ts
+│   │   │   ├── DsfrHeader.vue
+│   │   │   ├── DsfrHeaderMenuLink.md
+│   │   │   ├── DsfrHeaderMenuLink.spec.ts
+│   │   │   ├── DsfrHeaderMenuLink.vue
+│   │   │   ├── DsfrHeaderMenuLinks.md
+│   │   │   ├── DsfrHeaderMenuLinks.vue
+│   │   │   ├── docs-demo
+│   │   │   │   └── DsfrHeaderDemo.vue
+│   │   │   └── injection-key.ts
+│   │   ├── DsfrHighlight
+│   │   │   ├── DsfrHighlight.md
+│   │   │   ├── DsfrHighlight.spec.ts
+│   │   │   ├── DsfrHighlight.stories.ts
+│   │   │   ├── DsfrHighlight.types.ts
+│   │   │   ├── DsfrHighlight.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrHighlightDemo.vue
+│   │   ├── DsfrInput
+│   │   │   ├── DsfrInput.md
+│   │   │   ├── DsfrInput.spec.ts
+│   │   │   ├── DsfrInput.stories.ts
+│   │   │   ├── DsfrInput.types.ts
+│   │   │   ├── DsfrInput.vue
+│   │   │   ├── DsfrInputGroup.md
+│   │   │   ├── DsfrInputGroup.spec.ts
+│   │   │   ├── DsfrInputGroup.stories.ts
+│   │   │   ├── DsfrInputGroup.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrInputDemo.vue
+│   │   │       └── DsfrInputGroupDemo.vue
+│   │   ├── DsfrLanguageSelector
+│   │   │   ├── DsfrLanguageSelector.md
+│   │   │   ├── DsfrLanguageSelector.spec.ts
+│   │   │   ├── DsfrLanguageSelector.stories.ts
+│   │   │   ├── DsfrLanguageSelector.types.ts
+│   │   │   ├── DsfrLanguageSelector.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrLanguageSelectorDemo.vue
+│   │   ├── DsfrLogo
+│   │   │   ├── DsfrLogo.md
+│   │   │   ├── DsfrLogo.spec.ts
+│   │   │   ├── DsfrLogo.stories.ts
+│   │   │   ├── DsfrLogo.types.ts
+│   │   │   ├── DsfrLogo.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrLogoDemo.vue
+│   │   ├── DsfrMedia
+│   │   │   ├── DsfrMedia.types.ts
+│   │   │   ├── DsfrPicture.md
+│   │   │   ├── DsfrPicture.spec.ts
+│   │   │   ├── DsfrPicture.stories.ts
+│   │   │   ├── DsfrPicture.vue
+│   │   │   ├── DsfrVideo.md
+│   │   │   ├── DsfrVideo.spec.ts
+│   │   │   ├── DsfrVideo.stories.ts
+│   │   │   ├── DsfrVideo.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrPictureDemo.vue
+│   │   │       └── DsfrVideoDemo.vue
+│   │   ├── DsfrModal
+│   │   │   ├── DsfrModal.md
+│   │   │   ├── DsfrModal.spec.ts
+│   │   │   ├── DsfrModal.stories.ts
+│   │   │   ├── DsfrModal.types.ts
+│   │   │   ├── DsfrModal.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrModalDemo.vue
+│   │   │       ├── DsfrModalDemoActions.vue
+│   │   │       ├── DsfrModalDemoInteractionExterieureDesactivee.vue
+│   │   │       └── DsfrModalDemoTheme.vue
+│   │   ├── DsfrMultiselect
+│   │   │   ├── DsfrMultiSelect.stories.ts
+│   │   │   ├── DsfrMultiselect.md
+│   │   │   ├── DsfrMultiselect.spec.ts
+│   │   │   ├── DsfrMultiselect.types.ts
+│   │   │   ├── DsfrMultiselect.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrMultiselectDemoComplexe.vue
+│   │   │       └── DsfrMultiselectDemoSimple.vue
+│   │   ├── DsfrNavigation
+│   │   │   ├── DsfrNavigation.md
+│   │   │   ├── DsfrNavigation.spec.ts
+│   │   │   ├── DsfrNavigation.stories.ts
+│   │   │   ├── DsfrNavigation.types.ts
+│   │   │   ├── DsfrNavigation.vue
+│   │   │   ├── DsfrNavigationItem.md
+│   │   │   ├── DsfrNavigationItem.spec.ts
+│   │   │   ├── DsfrNavigationItem.stories.ts
+│   │   │   ├── DsfrNavigationItem.vue
+│   │   │   ├── DsfrNavigationMegaMenu.md
+│   │   │   ├── DsfrNavigationMegaMenu.spec.ts
+│   │   │   ├── DsfrNavigationMegaMenu.stories.ts
+│   │   │   ├── DsfrNavigationMegaMenu.vue
+│   │   │   ├── DsfrNavigationMegaMenuCategory.md
+│   │   │   ├── DsfrNavigationMegaMenuCategory.spec.ts
+│   │   │   ├── DsfrNavigationMegaMenuCategory.stories.ts
+│   │   │   ├── DsfrNavigationMegaMenuCategory.vue
+│   │   │   ├── DsfrNavigationMenu.md
+│   │   │   ├── DsfrNavigationMenu.spec.ts
+│   │   │   ├── DsfrNavigationMenu.stories.ts
+│   │   │   ├── DsfrNavigationMenu.vue
+│   │   │   ├── DsfrNavigationMenuItem.md
+│   │   │   ├── DsfrNavigationMenuItem.spec.ts
+│   │   │   ├── DsfrNavigationMenuItem.stories.ts
+│   │   │   ├── DsfrNavigationMenuItem.vue
+│   │   │   ├── DsfrNavigationMenuLink.md
+│   │   │   ├── DsfrNavigationMenuLink.spec.ts
+│   │   │   ├── DsfrNavigationMenuLink.stories.ts
+│   │   │   ├── DsfrNavigationMenuLink.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrNavigationDemo.vue
+│   │   ├── DsfrNotice
+│   │   │   ├── DsfrNotice.md
+│   │   │   ├── DsfrNotice.spec.ts
+│   │   │   ├── DsfrNotice.stories.ts
+│   │   │   ├── DsfrNotice.types.ts
+│   │   │   ├── DsfrNotice.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrNoticeExample.vue
+│   │   ├── DsfrPagination
+│   │   │   ├── DsfrPagination.md
+│   │   │   ├── DsfrPagination.spec.ts
+│   │   │   ├── DsfrPagination.stories.ts
+│   │   │   ├── DsfrPagination.types.ts
+│   │   │   ├── DsfrPagination.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrPaginationExample.vue
+│   │   ├── DsfrQuote
+│   │   │   ├── DsfrQuote.md
+│   │   │   ├── DsfrQuote.spec.ts
+│   │   │   ├── DsfrQuote.stories.ts
+│   │   │   ├── DsfrQuote.types.ts
+│   │   │   ├── DsfrQuote.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrQuoteDemo.vue
+│   │   ├── DsfrRadioButton
+│   │   │   ├── DsfrRadioButton.md
+│   │   │   ├── DsfrRadioButton.spec.ts
+│   │   │   ├── DsfrRadioButton.stories.ts
+│   │   │   ├── DsfrRadioButton.types.ts
+│   │   │   ├── DsfrRadioButton.vue
+│   │   │   ├── DsfrRadioButtonSet.md
+│   │   │   ├── DsfrRadioButtonSet.spec.ts
+│   │   │   ├── DsfrRadioButtonSet.stories.ts
+│   │   │   ├── DsfrRadioButtonSet.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrRadioButtonDemo.vue
+│   │   │       └── DsfrRadioButtonSetDemo.vue
+│   │   ├── DsfrRange
+│   │   │   ├── DsfrRange.md
+│   │   │   ├── DsfrRange.stories.ts
+│   │   │   ├── DsfrRange.types.ts
+│   │   │   ├── DsfrRange.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrRangeDemo.vue
+│   │   ├── DsfrSearchBar
+│   │   │   ├── DsfrSearchBar.md
+│   │   │   ├── DsfrSearchBar.spec.ts
+│   │   │   ├── DsfrSearchBar.stories.ts
+│   │   │   ├── DsfrSearchBar.types.ts
+│   │   │   ├── DsfrSearchBar.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSearchBarDemo.vue
+│   │   ├── DsfrSegmented
+│   │   │   ├── DsfrSegmented.md
+│   │   │   ├── DsfrSegmented.spec.ts
+│   │   │   ├── DsfrSegmented.stories.ts
+│   │   │   ├── DsfrSegmented.types.ts
+│   │   │   ├── DsfrSegmented.vue
+│   │   │   ├── DsfrSegmentedSet.md
+│   │   │   ├── DsfrSegmentedSet.spec.ts
+│   │   │   ├── DsfrSegmentedSet.stories.ts
+│   │   │   ├── DsfrSegmentedSet.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSegmentedDemo.vue
+│   │   ├── DsfrSelect
+│   │   │   ├── DsfrSelect.md
+│   │   │   ├── DsfrSelect.spec.ts
+│   │   │   ├── DsfrSelect.stories.ts
+│   │   │   ├── DsfrSelect.types.ts
+│   │   │   ├── DsfrSelect.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSelectDemo.vue
+│   │   ├── DsfrShare
+│   │   │   ├── DsfrShare.md
+│   │   │   ├── DsfrShare.spec.ts
+│   │   │   ├── DsfrShare.stories.ts
+│   │   │   ├── DsfrShare.types.ts
+│   │   │   ├── DsfrShare.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrShareDemo.vue
+│   │   ├── DsfrSideMenu
+│   │   │   ├── DsfrSideMenu.md
+│   │   │   ├── DsfrSideMenu.spec.ts
+│   │   │   ├── DsfrSideMenu.stories.ts
+│   │   │   ├── DsfrSideMenu.types.ts
+│   │   │   ├── DsfrSideMenu.vue
+│   │   │   ├── DsfrSideMenuButton.md
+│   │   │   ├── DsfrSideMenuButton.stories.ts
+│   │   │   ├── DsfrSideMenuButton.vue
+│   │   │   ├── DsfrSideMenuLink.md
+│   │   │   ├── DsfrSideMenuLink.stories.ts
+│   │   │   ├── DsfrSideMenuLink.vue
+│   │   │   ├── DsfrSideMenuList.md
+│   │   │   ├── DsfrSideMenuList.stories.ts
+│   │   │   ├── DsfrSideMenuList.vue
+│   │   │   ├── DsfrSideMenuListItem.md
+│   │   │   ├── DsfrSideMenuListItem.stories.ts
+│   │   │   ├── DsfrSideMenuListItem.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSideMenuDemo.vue
+│   │   ├── DsfrSkipLinks
+│   │   │   ├── DsfrSkipLinks.md
+│   │   │   ├── DsfrSkipLinks.spec.ts
+│   │   │   ├── DsfrSkipLinks.stories.ts
+│   │   │   ├── DsfrSkipLinks.types.ts
+│   │   │   ├── DsfrSkipLinks.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSkipLinksDemo.vue
+│   │   ├── DsfrStepper
+│   │   │   ├── DsfrStepper.md
+│   │   │   ├── DsfrStepper.spec.ts
+│   │   │   ├── DsfrStepper.stories.ts
+│   │   │   ├── DsfrStepper.types.ts
+│   │   │   ├── DsfrStepper.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrStepperDemo.vue
+│   │   ├── DsfrSummary
+│   │   │   ├── DsfrSummary.md
+│   │   │   ├── DsfrSummary.spec.ts
+│   │   │   ├── DsfrSummary.stories.ts
+│   │   │   ├── DsfrSummary.types.ts
+│   │   │   ├── DsfrSummary.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrSummaryDemo.vue
+│   │   ├── DsfrTable
+│   │   │   ├── DsfrTable.md
+│   │   │   ├── DsfrTable.spec.ts
+│   │   │   ├── DsfrTable.stories.ts
+│   │   │   ├── DsfrTable.types.ts
+│   │   │   ├── DsfrTable.vue
+│   │   │   ├── DsfrTableCell.md
+│   │   │   ├── DsfrTableCell.spec.ts
+│   │   │   ├── DsfrTableCell.stories.ts
+│   │   │   ├── DsfrTableCell.vue
+│   │   │   ├── DsfrTableHeader.md
+│   │   │   ├── DsfrTableHeader.spec.ts
+│   │   │   ├── DsfrTableHeader.stories.ts
+│   │   │   ├── DsfrTableHeader.vue
+│   │   │   ├── DsfrTableHeaders.md
+│   │   │   ├── DsfrTableHeaders.spec.ts
+│   │   │   ├── DsfrTableHeaders.stories.ts
+│   │   │   ├── DsfrTableHeaders.vue
+│   │   │   ├── DsfrTableRow.md
+│   │   │   ├── DsfrTableRow.spec.ts
+│   │   │   ├── DsfrTableRow.stories.ts
+│   │   │   ├── DsfrTableRow.vue
+│   │   │   ├── docs-demo
+│   │   │   │   ├── DsfrTableCellDemo.vue
+│   │   │   │   ├── DsfrTableDemoComplexe.vue
+│   │   │   │   ├── DsfrTableDemoSimple.vue
+│   │   │   │   ├── DsfrTableHeaderDemo.vue
+│   │   │   │   ├── DsfrTableHeadersDemo.vue
+│   │   │   │   └── DsfrTableRowDemo.vue
+│   │   │   ├── table.stories.css
+│   │   │   └── table.stories.styles.ts
+│   │   ├── DsfrTabs
+│   │   │   ├── DsfrTabContent.md
+│   │   │   ├── DsfrTabContent.stories.ts
+│   │   │   ├── DsfrTabContent.vue
+│   │   │   ├── DsfrTabItem.md
+│   │   │   ├── DsfrTabItem.stories.ts
+│   │   │   ├── DsfrTabItem.vue
+│   │   │   ├── DsfrTabs.md
+│   │   │   ├── DsfrTabs.spec.ts
+│   │   │   ├── DsfrTabs.stories.ts
+│   │   │   ├── DsfrTabs.types.ts
+│   │   │   ├── DsfrTabs.vue
+│   │   │   ├── docs-demo
+│   │   │   │   ├── DsfrTabsDemoComplex.vue
+│   │   │   │   └── DsfrTabsDemoSimple.vue
+│   │   │   └── injection-key.ts
+│   │   ├── DsfrTag
+│   │   │   ├── DsfrTag.md
+│   │   │   ├── DsfrTag.spec.ts
+│   │   │   ├── DsfrTag.stories.ts
+│   │   │   ├── DsfrTag.vue
+│   │   │   ├── DsfrTags.md
+│   │   │   ├── DsfrTags.stories.ts
+│   │   │   ├── DsfrTags.types.ts
+│   │   │   ├── DsfrTags.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrTagDemo.vue
+│   │   │       └── DsfrTagsDemo.vue
+│   │   ├── DsfrTile
+│   │   │   ├── DsfrTile.md
+│   │   │   ├── DsfrTile.spec.ts
+│   │   │   ├── DsfrTile.stories.ts
+│   │   │   ├── DsfrTile.vue
+│   │   │   ├── DsfrTiles.md
+│   │   │   ├── DsfrTiles.spec.ts
+│   │   │   ├── DsfrTiles.stories.ts
+│   │   │   ├── DsfrTiles.types.ts
+│   │   │   ├── DsfrTiles.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrTileDemo.vue
+│   │   │       └── DsfrTilesDemo.vue
+│   │   ├── DsfrToggleSwitch
+│   │   │   ├── DsfrToggleSwitch.md
+│   │   │   ├── DsfrToggleSwitch.spec.ts
+│   │   │   ├── DsfrToggleSwitch.stories.ts
+│   │   │   ├── DsfrToggleSwitch.types.ts
+│   │   │   ├── DsfrToggleSwitch.vue
+│   │   │   ├── DsfrToggleSwitchGroup.md
+│   │   │   ├── DsfrToggleSwitchGroup.spec.ts
+│   │   │   ├── DsfrToggleSwitchGroup.stories.ts
+│   │   │   ├── DsfrToggleSwitchGroup.vue
+│   │   │   └── docs-demo
+│   │   │       ├── DsfrToggleSwitchDemo.vue
+│   │   │       ├── DsfrToggleSwitchDemoStatutErreur.vue
+│   │   │       ├── DsfrToggleSwitchGroupDemo.vue
+│   │   │       ├── DsfrToggleSwitchGroupDemoDisabled.vue
+│   │   │       └── DsfrToggleSwitchGroupDemoErrorStatus.vue
+│   │   ├── DsfrTooltip
+│   │   │   ├── DsfrTooltip.md
+│   │   │   ├── DsfrTooltip.spec.ts
+│   │   │   ├── DsfrTooltip.stories.ts
+│   │   │   ├── DsfrTooltip.types.ts
+│   │   │   ├── DsfrTooltip.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrTooltipDemo.vue
+│   │   ├── DsfrTranscription
+│   │   │   ├── DsfrTranscription.md
+│   │   │   ├── DsfrTranscription.spec.ts
+│   │   │   ├── DsfrTranscription.stories.ts
+│   │   │   ├── DsfrTranscription.types.ts
+│   │   │   ├── DsfrTranscription.vue
+│   │   │   └── docs-demo
+│   │   │       └── DsfrTranscriptionDemo.vue
+│   │   ├── VIcon
+│   │   │   ├── VIcon.md
+│   │   │   ├── VIcon.spec.ts
+│   │   │   ├── VIcon.stories.ts
+│   │   │   ├── VIcon.types.ts
+│   │   │   ├── VIcon.vue
+│   │   │   └── docs-demo
+│   │   │       └── VIconExample.vue
+│   │   └── index.ts
+│   ├── composables
+│   │   ├── docs-demo
+│   │   │   ├── UseSchemeDemo.vue
+│   │   │   └── UseTabsDemo.vue
+│   │   ├── index.ts
+│   │   ├── useCollapsable.ts
+│   │   ├── useScheme.md
+│   │   ├── useScheme.ts
+│   │   ├── useTabs.md
+│   │   └── useTabs.ts
+│   ├── index.ts
+│   ├── init-dsfr.ts
+│   ├── main.css
+│   ├── stories
+│   │   ├── docs
+│   │   │   ├── 01-intro.mdx
+│   │   │   ├── github-fill.svg
+│   │   │   └── mail-fill.svg
+│   │   └── fondamentaux
+│   │       ├── classes-utilitaires.mdx
+│   │       ├── colors.mdx
+│   │       └── titles.stories.ts
+│   └── utils
+│       ├── random-utils.spec.ts
+│       ├── random-utils.ts
+│       ├── svg-data-uri-utils.spec.ts
+│       └── svg-data-uri-utils.ts
+├── tests
+│   └── unit
+│       ├── init-dsfr.ts
+│       ├── test-utils.ts
+│       └── vitest-setup.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.meta.json
+├── tsconfig.node.json
+├── tsconfig.vitest.json
+├── vite.config.demo.ts
+├── vite.config.ts
+├── vitest.config.ts
+└── vitest.shims.d.ts
+139 directories, 654 files
