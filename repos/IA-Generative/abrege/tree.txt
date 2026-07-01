@@ -5,6 +5,11 @@
 ├── .env.sample
 ├── .flake8
 ├── .github
+│   ├── releases
+│   │   ├── release-please-config-prerelease.json
+│   │   ├── release-please-config-release.json
+│   │   ├── release-please-manifest-prerelease.json
+│   │   └── release-please-manifest.json
 │   └── workflows
 │       ├── cd.yml
 │       ├── ci.yml
@@ -18,7 +23,6 @@
 │   ├── commit-msg
 │   └── pre-commit
 ├── .pre-commit-config.yaml
-├── .release-please-manifest-prerelease.json
 ├── .release-please-manifest.json
 ├── CHANGELOG.md
 ├── Makefile
@@ -69,35 +73,22 @@
 │   │   │   │   └── resume-card.png
 │   │   │   ├── auto-imports.d.ts
 │   │   │   ├── components
-│   │   │   │   ├── AppChatbot.vue
-│   │   │   │   ├── AppFooter.vue
 │   │   │   │   ├── AppHeader.vue
 │   │   │   │   ├── AppToaster.vue
-│   │   │   │   ├── ChatTaskFilterModal.vue
-│   │   │   │   ├── ClassificationTab.vue
 │   │   │   │   ├── CopiedTextTab.vue
 │   │   │   │   ├── CustomCard.vue
 │   │   │   │   ├── CustomTabs.vue
 │   │   │   │   ├── DsfrDropdown.vue
-│   │   │   │   ├── FileParamsModal.vue
-│   │   │   │   ├── LeaderboardModal.vue
-│   │   │   │   ├── OcrChatbot.vue
 │   │   │   │   ├── ParamsResume.vue
 │   │   │   │   ├── ProgressBar.vue
 │   │   │   │   ├── ResumeInfoBulle.vue
 │   │   │   │   ├── ResumeResult.vue
-│   │   │   │   ├── ResumeResultModal.vue
 │   │   │   │   ├── SideBar.vue
-│   │   │   │   ├── StatModel.vue
 │   │   │   │   ├── TaskTab.vue
 │   │   │   │   ├── UploadDocumentTab.vue
 │   │   │   │   └── UrlTab.vue
 │   │   │   ├── components.d.ts
 │   │   │   ├── composables
-│   │   │   │   ├── use-api-version.ts
-│   │   │   │   ├── use-chatbot.ts
-│   │   │   │   ├── use-parallel-file-processing.ts
-│   │   │   │   ├── use-parallel-url-processing.ts
 │   │   │   │   ├── use-resume-generator.ts
 │   │   │   │   └── use-toaster.ts
 │   │   │   ├── interfaces
@@ -129,8 +120,7 @@
 │       │   ├── Dockerfile
 │       │   ├── __init__.py
 │       │   ├── clients
-│       │   │   ├── ocr_client.py
-│       │   │   └── server.py
+│       │   │   └── ocr_client.py
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   └── openai.py
@@ -141,9 +131,6 @@
 │       │   ├── models
 │       │   │   ├── __init__.py
 │       │   │   ├── base.py
-│       │   │   ├── chunking
-│       │   │   │   ├── __init__.py
-│       │   │   │   └── model.py
 │       │   │   └── summary
 │       │   │       ├── __init__.py
 │       │   │       └── parallele_summary_chain.py
@@ -170,18 +157,6 @@
 │       │   ├── schemas
 │       │   │   ├── __init__.py
 │       │   │   └── content_type_categories.py
-│       │   ├── tasks
-│       │   │   ├── __init__.py
-│       │   │   ├── abrege_doc.py
-│       │   │   ├── abrege_pdf_images.py
-│       │   │   ├── abrege_text.py
-│       │   │   ├── abrege_url.py
-│       │   │   ├── base_task.py
-│       │   │   ├── chunk_task.py
-│       │   │   ├── errors.py
-│       │   │   ├── merge.py
-│       │   │   ├── tools.py
-│       │   │   └── update_task.py
 │       │   └── utils
 │       │       ├── __init__.py
 │       │       ├── content_type.py
@@ -209,12 +184,7 @@
 │       │   │   ├── document_summary.py
 │       │   │   ├── health.py
 │       │   │   ├── summarize.py
-│       │   │   ├── task.py
-│       │   │   └── v1
-│       │   │       ├── __init__.py
-│       │   │       ├── chat.py
-│       │   │       ├── chunk.py
-│       │   │       └── leaderboard.py
+│       │   │   └── task.py
 │       │   ├── schemas
 │       │   │   ├── __init__.py
 │       │   │   ├── content.py
@@ -248,8 +218,6 @@
 │       │       ├── 27cd95557285_add_position.py
 │       │       ├── 6fdb21e394c9_add_group_id_and_content_hash.py
 │       │       ├── 7c2d9f69f1f3_initiate.py
-│       │       ├── eaa4e990d2ea_add_chunk_table.py
-│       │       ├── f3271d7e43ea_add_mergetask_table.py
 │       │       └── fee9b70a042f_feat_move_content_to_input_result_to_.py
 │       ├── pyproject.toml
 │       ├── src
@@ -261,9 +229,9 @@
 │       │   │   ├── celery.py
 │       │   │   ├── connector.py
 │       │   │   ├── minio.py
-│       │   │   ├── openai.py
 │       │   │   ├── redis.py
-│       │   │   └── s3.py
+│       │   │   ├── s3.py
+│       │   │   └── sentry.py
 │       │   ├── connector
 │       │   │   ├── __init__.py
 │       │   │   ├── base.py
@@ -271,37 +239,21 @@
 │       │   ├── internal
 │       │   │   ├── __init__.py
 │       │   │   └── db.py
-│       │   ├── models
-│       │   │   ├── __init__.py
-│       │   │   ├── chunk.py
-│       │   │   ├── merge_task.py
-│       │   │   └── task.py
-│       │   ├── repositories
-│       │   │   ├── __init__.py
-│       │   │   ├── chunk_repo.py
-│       │   │   ├── merge_task_repo.py
-│       │   │   └── task_repo.py
 │       │   ├── schemas
 │       │   │   ├── __init__.py
-│       │   │   ├── chunk.py
 │       │   │   ├── code_error.py
 │       │   │   ├── content.py
 │       │   │   ├── health.py
-│       │   │   ├── merge_task.py
 │       │   │   ├── pagination.py
 │       │   │   ├── parameters.py
 │       │   │   ├── result.py
 │       │   │   └── task.py
-│       │   ├── services
-│       │   │   ├── __init__.py
-│       │   │   ├── chunk_service.py
-│       │   │   ├── merge_task_service.py
-│       │   │   └── task_service.py
 │       │   └── utils
 │       │       ├── __init__.py
 │       │       ├── logger.py
 │       │       └── url.py
 │       ├── tests
+│       │   ├── .env.testing
 │       │   ├── abrege_service
 │       │   │   ├── clients
 │       │   │   │   └── test_ocr_client.py
@@ -327,14 +279,13 @@
 │       │   │       ├── test_text_utils.py
 │       │   │       └── test_tokenizer_utils.py
 │       │   ├── api
-│       │   │   ├── _fastapi.py
 │       │   │   ├── client
 │       │   │   │   └── test_llm_guard_client.py
 │       │   │   ├── core
 │       │   │   │   └── security
 │       │   │   │       └── test_security_token.py
+│       │   │   ├── fastapi.py
 │       │   │   ├── routes
-│       │   │   │   ├── conftest.py
 │       │   │   │   ├── test_document_summarize.py
 │       │   │   │   ├── test_health_router.py
 │       │   │   │   ├── test_summarize.py
@@ -351,8 +302,6 @@
 │       │   │   └── video
 │       │   │       └── bonjour.mp4
 │       │   ├── src
-│       │   │   ├── repository
-│       │   │   │   └── test_chunk_repo.py
 │       │   │   ├── schemas
 │       │   │   │   ├── connector
 │       │   │   │   │   └── test_s3_connector.py
@@ -360,6 +309,7 @@
 │       │   │   │   ├── test_task.py
 │       │   │   │   └── test_task_schema_position.py
 │       │   │   └── utils
+│       │   │       ├── test_logger.py
 │       │   │       └── test_url.py
 │       │   └── test_data
 │       │       ├── 2106.11520v2.pdf
@@ -390,6 +340,7 @@
 │       └── values.yaml
 ├── commitlint.config.js
 ├── docker-compose.frontend.yml
+├── docker-compose.test.yaml
 ├── docker-compose.yaml
 ├── docs
 │   ├── diagram.md
@@ -400,9 +351,6 @@
 │   └── variables.md
 ├── package.json
 ├── pnpm-lock.yaml
-├── release-please-config-prerelease.json
-├── release-please-config-release.json
-├── release-please-manifest.json
 ├── scripts
 │   └── wait-for-llm-guard.sh
 └── sdk
@@ -426,4 +374,4 @@
     │   └── abrege_sdk
     │       └── test_sync_clinet.py
     └── uv.lock
-97 directories, 331 files
+91 directories, 285 files
