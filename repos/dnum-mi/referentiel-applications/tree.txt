@@ -1,0 +1,1119 @@
+.
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── BUG-REPPORT.yml
+│   │   ├── FEATURE-REQUEST.yml
+│   │   ├── config.yml
+│   │   ├── qa-accueil.md
+│   │   ├── qa-actions-crud.md
+│   │   ├── qa-administration-referentiels.md
+│   │   ├── qa-catalogue-filtres.md
+│   │   ├── qa-catalogue.md
+│   │   ├── qa-conformites.md
+│   │   ├── qa-data-application.md
+│   │   ├── qa-fiche-application.md
+│   │   ├── qa-historique.md
+│   │   ├── qa-impersonation.md
+│   │   ├── qa-maia.md
+│   │   ├── qa-permissions.md
+│   │   ├── qa-profil-utilisateur.md
+│   │   ├── qa-qualite-generale.md
+│   │   ├── qa-rgaa.md
+│   │   ├── qa-scope-acteurs.md
+│   │   ├── qa-signalements-abonnements.md
+│   │   ├── qa-time.md
+│   │   └── qa-transverse.md
+│   └── workflows
+│       ├── build.yml
+│       ├── commitlint.yml
+│       ├── main-ci.yml
+│       ├── qa-campaign.yml
+│       ├── qa-sync.yml
+│       ├── release-build.yml
+│       ├── release.yml
+│       └── tests-unit.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .prettierignore
+├── .prettierrc
+├── .release-please-manifest.json
+├── .vscode
+│   └── settings.json
+├── CHANGELOG.md
+├── README.md
+├── agent.md
+├── backend
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── coverage
+│   │   └── .gitkeep
+│   ├── docs
+│   │   └── hosting-normalization.md
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── prisma
+│   │   ├── docs
+│   │   │   └── schema.md
+│   │   ├── migrations
+│   │   │   ├── 20241206153840_init
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20241209140539_
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20241226164300_add_anomaly_notification
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250115091115_fix_name_anomaly_notification_history
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250117221550_add_wording_lifecycle_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250124151921_external_ressource
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250130093802_modify_actor_model
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250217141157_modify_actor_model_and_add_organization_model
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250218150047_add_relationship_application
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250219161340_add_events_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250225112641_use_only_date_for_events
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250226135009_remove_lifecycle
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250319162050_edit_actor_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250324105113_change_id_for_unique
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250324140548_add_field_population_cible
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250325101314_add_labels_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250327104659_remove_externals_unused_models
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250328130123_add_permissions_to_user
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250328181258_add_enum_priority_restart
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250331090308_new_link_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250401141811_add_hosting_model
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250402081911_add_delete_on_cascade_for_application
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250402183048_actor_type_data_cleanup
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250402183336_actor_type_migration
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250402184449_actor_type_schema_cleanup
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250408082709_add_actor_type_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250415115223_add_metadata_in_actor_and_link_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250424120154_add_unique_constraints_to_applications
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250429121810_add_tables_for_hosting_management
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250502120207_add_url_to_provider
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250505144837_add_hosting_option_model
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250506142924_remove_description_from_hosting_option
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250514132340_remove_legacy_hosting_fields
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250515111832_update_restart_priorities
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250523151523_add_metadata_relations
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250526113005_remove_role_from_actor
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250528145832_uppercase_tags
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250616100749_refacto_label
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250618142138_add_lastlogin_column
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250619104731_add_indice_qualite
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250626093112_fix_metadata_cascade_delete
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250630130049_add_status_application
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250703095636_add_detailed_export_view
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250709181929_refactor_compliance_system_issue_707
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250712135003_add_closure_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250715103257_no_null_iq
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250721160000_add_app_perms_matrix
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250722090647_add_quality_stats
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250729223658_add_admin_level
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250820092318_edit_anomaly_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250827134323_change_rgaa_score_to_decimal
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250912201919_add_homologation_date_end
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250912202152_delete_homologation_date
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250917065956_add_token
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250924073906_make_application_id_nullable_in_anomaly_notification
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251002090518_remove_maps_in_prisma_tables
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251006140947_rename_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251006142718_add_description_in_organization
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251008142714_rename_label_into_path_in_organization
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251015125541_remove_owner_feature
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251015151226_add_user_capabilities
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251020120250_add_status_history_and_remove_status_from_application
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251020135959_add_capability_for_global_anomaly
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251020201306_add_priority_restart_perm
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251024130421_add_tag_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251104164352_remove_create_at_from_application_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251106223951_add_email_notifications_enabled
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251208093828_add_subscriptions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251208112226_add_technical_debt_info
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251215102039_add_status_homologation
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251219201335_add_type_application
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251220120000_add_to_validate_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260122142255_technical_debt_info_decimals
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260204155106_add_note_field
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260205123650_remove_keycloak_id
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260210153723_add_application_view
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260213150501_add_varchar_constraints
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260216091134_update_application_types
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260217144145_add_label_source
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260217160246_add_business_division
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260223103234_rename_anomaly_notification_to_report_in_db
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260224120000_add_use_sso_of_relation_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260227163940_add_business_division_to_organization
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260303070625_add_notification_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260310151701_add_export_metadata_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260316102041_add_type_main_service
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260316140238_add_table_eco_energy
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260317154939_add_is_active_hosting
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260318152052_add_mediation_service_relation
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260319120000_move_ecoindex_to_compliance
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260327142142_rename_capabilities_by_additional_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260327144837_rename_app_permissions_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260327160844_update_change_admin_level_by_role
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260327165835_update_change_admin_level_by_role_in_token
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260407091210_add_user_permissions_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260408090401_add_user_log_connexion_in_own_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260409130136_add_relation_for_user_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260409133145_add_auth_time_to_connexion_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260409135915_add_mdit_list
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260410143819_delete_organization_closure
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260417161048_add_historic_for_technical_debt
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260421130610_add_application_status_version
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260422140458_add_organization_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260423143327_add_datasource_models
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260424093444_add_rgaa_compliance_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260506162746_update_auth_time_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260512130744_add_data_description_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260512143520_add_rgaa_to_metadata
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260515074512_add_group_actor
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260519081652_add_scope_organization
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260528163015_add_maia_organization_mapping
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260605082656_add_new_compliance_homologation_value
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260609153532_add_permissions_for_columns
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260616090000_add_application_fulltext_search
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260618120000_add_impersonation_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260618120000_add_millesime_to_technical_debt_info
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260618130000_add_mdit_campaign
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260625000000_rename_cost_maturity_to_cost_containment
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260625001000_technical_debt_scores_nullable_below_one
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260630120910_update_status_date_nullable_for_application
+│   │   │   │   └── migration.sql
+│   │   │   └── migration_lock.toml
+│   │   ├── schema
+│   │   │   ├── applications.prisma
+│   │   │   ├── business-division.prisma
+│   │   │   ├── compliance.prisma
+│   │   │   ├── data.prisma
+│   │   │   ├── externals.prisma
+│   │   │   ├── hosting.prisma
+│   │   │   ├── labels.prisma
+│   │   │   ├── mdit-campaign.prisma
+│   │   │   ├── metadata.prisma
+│   │   │   ├── notification-log.prisma
+│   │   │   ├── organization.prisma
+│   │   │   ├── permissions.prisma
+│   │   │   ├── report.prisma
+│   │   │   ├── rgaa-compliance.prisma
+│   │   │   ├── schema.prisma
+│   │   │   ├── stats.prisma
+│   │   │   ├── tag.prisma
+│   │   │   ├── technical-debt-info.prisma
+│   │   │   ├── token.prisma
+│   │   │   ├── user-log.prisma
+│   │   │   └── users.prisma
+│   │   ├── seed-qa.ts
+│   │   └── seed.ts
+│   ├── src
+│   │   ├── actor
+│   │   │   ├── actor.controller.ts
+│   │   │   ├── actor.module.ts
+│   │   │   ├── actor.service.ts
+│   │   │   ├── dto
+│   │   │   │   └── actor.dto.ts
+│   │   │   └── map
+│   │   │       └── actor.map.ts
+│   │   ├── actorType
+│   │   │   ├── actorType.controller.ts
+│   │   │   ├── actorType.module.ts
+│   │   │   ├── actorType.service.ts
+│   │   │   └── dto
+│   │   │       ├── actorType.dto.ts
+│   │   │       └── app-perms-matrix.dto.ts
+│   │   ├── app.controller.spec.ts
+│   │   ├── app.controller.ts
+│   │   ├── app.module.ts
+│   │   ├── app.service.ts
+│   │   ├── applications
+│   │   │   ├── application.controller.ts
+│   │   │   ├── application.module.ts
+│   │   │   ├── application.service.spec.ts
+│   │   │   ├── application.service.ts
+│   │   │   ├── columnLabels
+│   │   │   │   └── application-export.columnLabels.ts
+│   │   │   ├── constants
+│   │   │   │   ├── application-export.sheet-labels.ts
+│   │   │   │   ├── enum-label.ts
+│   │   │   │   └── relation-type-labels.ts
+│   │   │   ├── dto
+│   │   │   │   ├── application-rights.dto.ts
+│   │   │   │   ├── create-application.dto.ts
+│   │   │   │   ├── get-application.dto.ts
+│   │   │   │   ├── search-application.dto.ts
+│   │   │   │   └── technical-debt-point.dto.ts
+│   │   │   ├── export.service.ts
+│   │   │   ├── infrastructure
+│   │   │   │   └── repository
+│   │   │   │       ├── application.repository.interface.ts
+│   │   │   │       └── application.repository.ts
+│   │   │   ├── map
+│   │   │   │   └── application-export.map.ts
+│   │   │   ├── prisma-query-builder.service.spec.ts
+│   │   │   ├── prisma-query-builder.service.ts
+│   │   │   ├── search
+│   │   │   │   ├── application-search.service.spec.ts
+│   │   │   │   └── application-search.service.ts
+│   │   │   ├── types
+│   │   │   │   └── application.type.ts
+│   │   │   ├── usecases
+│   │   │   │   └── application-export.usecase.ts
+│   │   │   └── view.service.ts
+│   │   ├── business-division
+│   │   │   ├── business-division.controller.ts
+│   │   │   ├── business-division.module.ts
+│   │   │   ├── business-division.service.ts
+│   │   │   ├── dto
+│   │   │   │   └── business-division.dto.ts
+│   │   │   └── prisma-query-builder.service.ts
+│   │   ├── cmd
+│   │   │   ├── index.ts
+│   │   │   └── user
+│   │   │       ├── create.ts
+│   │   │       └── index.ts
+│   │   ├── common
+│   │   │   ├── base.service.ts
+│   │   │   ├── common.module.ts
+│   │   │   ├── decorators
+│   │   │   │   ├── impersonator.decorator.ts
+│   │   │   │   ├── required-permissions.decorator.ts
+│   │   │   │   ├── user-id.decorator.ts
+│   │   │   │   └── user.decorator.ts
+│   │   │   ├── dto
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── paginated-response.dto.ts
+│   │   │   │   └── pagination.dto.ts
+│   │   │   ├── guards
+│   │   │   │   └── permission.guard.ts
+│   │   │   ├── service
+│   │   │   │   ├── check-permissions.service.ts
+│   │   │   │   ├── excel-builder.service.ts
+│   │   │   │   └── prisma-query-builder.service.ts
+│   │   │   └── utils
+│   │   │       ├── enum.utils.ts
+│   │   │       ├── excel.utils.ts
+│   │   │       ├── quality.utils.ts
+│   │   │       └── types.ts
+│   │   ├── compliances
+│   │   │   ├── compliances.controller.ts
+│   │   │   ├── compliances.module.ts
+│   │   │   ├── compliances.service.ts
+│   │   │   ├── constants
+│   │   │   │   └── compliance-metadata.constants.ts
+│   │   │   ├── dto
+│   │   │   │   ├── create-compliance.dto.ts
+│   │   │   │   └── update-compliance.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── compliance.entity.ts
+│   │   │   └── utils
+│   │   │       ├── compliance.utils.ts
+│   │   │       └── ecoindex.utils.ts
+│   │   ├── config
+│   │   │   ├── app-config.ts
+│   │   │   ├── config.controller.ts
+│   │   │   ├── config.module.ts
+│   │   │   ├── config.service.ts
+│   │   │   ├── configs
+│   │   │   │   ├── app.config.ts
+│   │   │   │   ├── database.config.ts
+│   │   │   │   ├── email.config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── oidc.config.ts
+│   │   │   ├── domain
+│   │   │   │   └── configs.entity.ts
+│   │   │   └── dto
+│   │   │       └── config.dto.ts
+│   │   ├── data-catalog
+│   │   │   ├── data-catalog.controller.ts
+│   │   │   ├── data-catalog.service.ts
+│   │   │   ├── data-catalogue.module.ts
+│   │   │   ├── dto
+│   │   │   │   ├── create-data-application.dto.ts
+│   │   │   │   └── create-data-description.dto.ts
+│   │   │   └── infrastructure
+│   │   │       ├── data-catalog.repository.interface.ts
+│   │   │       └── data-catalog.repository.ts
+│   │   ├── ecoindex.d.ts
+│   │   ├── email
+│   │   │   ├── cron
+│   │   │   │   ├── application-validation-cron.service.spec.ts
+│   │   │   │   ├── application-validation-cron.service.ts
+│   │   │   │   └── email-cron.service.ts
+│   │   │   ├── email-templates.services.ts
+│   │   │   ├── email.controller.ts
+│   │   │   ├── email.module.ts
+│   │   │   ├── email.service.ts
+│   │   │   ├── error
+│   │   │   │   └── mail-send.exception.ts
+│   │   │   ├── exception-filter
+│   │   │   │   └── mail-exception.filter.ts
+│   │   │   └── templates
+│   │   │       ├── actor-added.template.html
+│   │   │       ├── actor-modified.template.html
+│   │   │       ├── application-validation-reminder.template.html
+│   │   │       ├── base.template.html
+│   │   │       ├── daily-digest.template.html
+│   │   │       ├── report-status-update.template.html
+│   │   │       └── user-organization-changed.template.html
+│   │   ├── enum.ts
+│   │   ├── health
+│   │   │   ├── health-check.controller.ts
+│   │   │   └── health-check.module.ts
+│   │   ├── hosting-option
+│   │   │   ├── dto
+│   │   │   │   └── hosting-option.dto.ts
+│   │   │   ├── hosting-option.controller.ts
+│   │   │   ├── hosting-option.module.ts
+│   │   │   └── hosting-option.service.ts
+│   │   ├── hostings
+│   │   │   ├── dto
+│   │   │   │   └── hosting.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── hosting.entity.ts
+│   │   │   ├── hostings.controller.ts
+│   │   │   ├── hostings.module.ts
+│   │   │   ├── hostings.service.ts
+│   │   │   └── site.controller.ts
+│   │   ├── import
+│   │   │   ├── PERMISSIONS.md
+│   │   │   ├── dto
+│   │   │   │   └── import-report.dto.ts
+│   │   │   ├── excel-import.service.spec.ts
+│   │   │   ├── excel-import.service.ts
+│   │   │   ├── import.controller.spec.ts
+│   │   │   ├── import.controller.ts
+│   │   │   ├── import.module.ts
+│   │   │   ├── processors
+│   │   │   │   ├── actors-sheet.processor.spec.ts
+│   │   │   │   ├── actors-sheet.processor.ts
+│   │   │   │   ├── applications-sheet.processor.spec.ts
+│   │   │   │   ├── applications-sheet.processor.ts
+│   │   │   │   ├── compliances-sheet.processor.spec.ts
+│   │   │   │   ├── compliances-sheet.processor.ts
+│   │   │   │   ├── hostings-sheet.processor.spec.ts
+│   │   │   │   └── hostings-sheet.processor.ts
+│   │   │   └── utils
+│   │   │       └── excel.utils.ts
+│   │   ├── label-source
+│   │   │   ├── dto
+│   │   │   │   └── label-source.dto.ts
+│   │   │   ├── label-source.controller.ts
+│   │   │   ├── label-source.module.ts
+│   │   │   └── label-source.service.ts
+│   │   ├── labels
+│   │   │   ├── dto
+│   │   │   │   ├── create-label.dto.ts
+│   │   │   │   └── label.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── label.entity.ts
+│   │   │   ├── labels.controller.ts
+│   │   │   ├── labels.module.ts
+│   │   │   └── labels.service.ts
+│   │   ├── links
+│   │   │   ├── dto
+│   │   │   │   └── links.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── link.entity.ts
+│   │   │   ├── links.controller.ts
+│   │   │   ├── links.module.ts
+│   │   │   └── links.service.ts
+│   │   ├── logger
+│   │   │   ├── logger.module.ts
+│   │   │   ├── logger.service.ts
+│   │   │   └── request-logging.interceptor.ts
+│   │   ├── main.ts
+│   │   ├── mdit-campaign
+│   │   │   ├── dto
+│   │   │   │   └── mdit-campaign.dto.ts
+│   │   │   ├── mdit-campaign.controller.ts
+│   │   │   ├── mdit-campaign.module.ts
+│   │   │   └── mdit-campaign.service.ts
+│   │   ├── metadatas
+│   │   │   ├── dto
+│   │   │   │   ├── metadata-filters.dto.ts
+│   │   │   │   └── metadata.dto.ts
+│   │   │   ├── infrastructure
+│   │   │   │   ├── metadata.repository.interface.ts
+│   │   │   │   └── metadata.repository.ts
+│   │   │   ├── metadatas.controller.ts
+│   │   │   ├── metadatas.module.ts
+│   │   │   └── metadatas.service.ts
+│   │   ├── middlewares
+│   │   │   └── auth.middleware.ts
+│   │   ├── organization-maia-references
+│   │   │   ├── dto
+│   │   │   │   └── organization-maia-references.dto.ts
+│   │   │   ├── organization-maia-references.controller.ts
+│   │   │   ├── organization-maia-references.module.ts
+│   │   │   └── organization-maia-references.service.ts
+│   │   ├── organizations
+│   │   │   ├── dto
+│   │   │   │   ├── filters.dto.ts
+│   │   │   │   └── organizations.dto.ts
+│   │   │   ├── organizations.controller.ts
+│   │   │   ├── organizations.module.ts
+│   │   │   ├── organizations.service.ts
+│   │   │   └── prisma-query-builder.service.ts
+│   │   ├── permissions
+│   │   │   └── role-to-permissions.ts
+│   │   ├── prisma
+│   │   │   ├── extensions
+│   │   │   │   ├── decimal-to-number.extension.ts
+│   │   │   │   └── pagination.extension.ts
+│   │   │   ├── prisma.module.ts
+│   │   │   ├── prisma.service.spec.ts
+│   │   │   └── prisma.service.ts
+│   │   ├── product
+│   │   │   └── application
+│   │   │       └── dto
+│   │   │           └── relation-type.dto.ts
+│   │   ├── relationship
+│   │   │   ├── application
+│   │   │   │   └── dto
+│   │   │   │       └── relation-application.dto.ts
+│   │   │   ├── infrastructure
+│   │   │   │   └── repository
+│   │   │   │       ├── relation.repository.interface.ts
+│   │   │   │       └── relation.repository.ts
+│   │   │   ├── relation.controller.ts
+│   │   │   ├── relation.module.ts
+│   │   │   └── relation.service.ts
+│   │   ├── report
+│   │   │   ├── dto
+│   │   │   │   ├── create-report.dto.ts
+│   │   │   │   ├── report-filters.dto.ts
+│   │   │   │   ├── report-notify-query.dto.ts
+│   │   │   │   ├── report.dto.ts
+│   │   │   │   └── update-report.dto.ts
+│   │   │   ├── report.controller.ts
+│   │   │   ├── report.module.ts
+│   │   │   ├── report.service.ts
+│   │   │   └── user-notification.service.ts
+│   │   ├── rgaa
+│   │   │   ├── dto
+│   │   │   │   └── rgaa-compliance.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── rgaa-compliance.entity.ts
+│   │   │   ├── rgaa.controller.ts
+│   │   │   ├── rgaa.module.ts
+│   │   │   └── rgaa.service.ts
+│   │   ├── services
+│   │   │   └── logging.service.ts
+│   │   ├── stats
+│   │   │   ├── application
+│   │   │   │   ├── dto
+│   │   │   │   │   └── get-iq-avg-grouped.dto.ts
+│   │   │   │   ├── stats.service.ts
+│   │   │   │   └── use-cases
+│   │   │   │       └── get-iq-avg-grouped.use-case.ts.ts
+│   │   │   ├── cron
+│   │   │   │   └── stats.cron.service.ts
+│   │   │   ├── infrastructure
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── stats.aggregator.ts
+│   │   │   │   │   └── stats.helper.ts
+│   │   │   │   ├── stats.repository-interface.ts
+│   │   │   │   └── stats.repository.ts
+│   │   │   ├── interfaces
+│   │   │   │   ├── stats.controller.ts
+│   │   │   │   └── types
+│   │   │   │       └── stats-entry.type.ts
+│   │   │   └── stats.module.ts
+│   │   ├── statuses
+│   │   │   ├── dto
+│   │   │   │   ├── application-status.dto.ts
+│   │   │   │   └── update-application-status.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── status.entity.ts
+│   │   │   ├── statuses.controller.ts
+│   │   │   ├── statuses.module.ts
+│   │   │   └── statuses.service.ts
+│   │   ├── swagger-config.ts
+│   │   ├── tag
+│   │   │   ├── dto
+│   │   │   │   └── tag.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── tag.entity.ts
+│   │   │   ├── prisma-query-builder.service.ts
+│   │   │   ├── tags.controller.ts
+│   │   │   ├── tags.module.ts
+│   │   │   └── tags.service.ts
+│   │   ├── technical-debt-info
+│   │   │   ├── dto
+│   │   │   │   ├── create-technical-debt-info.dto.ts
+│   │   │   │   └── update-technical-debt-info.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── technical-debt-info.entity.ts
+│   │   │   ├── technical-debt-info.controller.ts
+│   │   │   ├── technical-debt-info.module.ts
+│   │   │   ├── technical-debt-info.service.ts
+│   │   │   └── technical-debt.controller.ts
+│   │   ├── token
+│   │   │   ├── domain
+│   │   │   │   ├── token-status.entity.ts
+│   │   │   │   └── token.entity.ts
+│   │   │   ├── dto
+│   │   │   │   └── token.dto.ts
+│   │   │   ├── token.controller.ts
+│   │   │   ├── token.module.ts
+│   │   │   ├── token.service.ts
+│   │   │   └── use-cases.ts
+│   │   │       └── token-control.use-case.ts
+│   │   ├── user
+│   │   │   ├── dto
+│   │   │   │   ├── filters.dto.ts
+│   │   │   │   ├── maia-organization-suggestion.dto.ts
+│   │   │   │   ├── sync-organizations-response.dto.ts
+│   │   │   │   ├── sync-organizations.dto.ts
+│   │   │   │   ├── update-user.dto.ts
+│   │   │   │   └── user.error.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── user.entity.ts
+│   │   │   ├── errors
+│   │   │   │   └── scope-permissions.exception.ts
+│   │   │   ├── scope-permission
+│   │   │   │   └── scoped-permission.service.ts
+│   │   │   ├── user-connexion-log.service.ts
+│   │   │   ├── user-permission-log.service.ts
+│   │   │   ├── user-permissions.interceptor.ts
+│   │   │   ├── user.controller.ts
+│   │   │   ├── user.module.ts
+│   │   │   ├── user.service.ts
+│   │   │   └── utils
+│   │   │       └── maia.tools.ts
+│   │   └── utils
+│   │       ├── constants.util.ts
+│   │       ├── functions.ts
+│   │       ├── request-size.util.ts
+│   │       ├── sanitize-headers.util.ts
+│   │       ├── typeguard-includes.ts
+│   │       └── types.util.ts
+│   ├── tests
+│   │   ├── actor.e2e-spec.ts
+│   │   ├── app.e2e-spec.ts
+│   │   ├── applications.e2e-spec.ts
+│   │   ├── compliances.e2e-spec.ts
+│   │   ├── config.e2e-spec.ts
+│   │   ├── data-catalog.e2e-spec.ts
+│   │   ├── fakers
+│   │   │   ├── actor-type.faker.ts
+│   │   │   ├── actor.faker.ts
+│   │   │   ├── application.faker.ts
+│   │   │   ├── business-division.faker.ts
+│   │   │   ├── compliance.faker.ts
+│   │   │   ├── data-application.faker.ts
+│   │   │   ├── data-description.faker.ts
+│   │   │   ├── data-exposure.faker.ts
+│   │   │   ├── data-family.faker.ts
+│   │   │   ├── data-sensibility.faker.ts
+│   │   │   ├── hosting-option.faker.ts
+│   │   │   ├── hosting.faker.ts
+│   │   │   ├── label-source.faker.ts
+│   │   │   ├── link.faker.ts
+│   │   │   ├── organization.faker.ts
+│   │   │   ├── prisma.ts
+│   │   │   ├── stats.faker.ts
+│   │   │   ├── tag.faker.ts
+│   │   │   ├── technical-debt-info.faker.ts
+│   │   │   └── user.faker.ts
+│   │   ├── getToken.ts
+│   │   ├── global-setup.ts
+│   │   ├── global-teardown.ts
+│   │   ├── hosting-option.e2e-spec.ts
+│   │   ├── hostings.e2e-spec.ts
+│   │   ├── jest.setup.ts
+│   │   ├── label-source.e2e-spec.ts
+│   │   ├── labels.e2e-spec.ts
+│   │   ├── links.e2e-spec.ts
+│   │   ├── mdit-campaign.e2e-spec.ts
+│   │   ├── organization.e2e-spec.ts
+│   │   ├── relations.e2e-spec.ts
+│   │   ├── reports.e2e-spec.ts
+│   │   ├── rgaa-compliances.e2e-spec.ts
+│   │   ├── scoped-permission.service.spec.ts
+│   │   ├── setup.ts
+│   │   ├── swagger.e2e-spec.ts
+│   │   ├── tag.e2e-spec.ts
+│   │   ├── technical-debt-info.e2e-spec.ts
+│   │   ├── test-database.utils.ts
+│   │   └── user.e2e-spec.ts
+│   ├── tsconfig.build.json
+│   ├── tsconfig.json
+│   └── wait-for-it.sh
+├── commitlint.config.mjs
+├── docker-compose.ci.yml
+├── docker-compose.grist.yml
+├── docker-compose.matomo.yml
+├── docker-compose.prod.yml
+├── docker-compose.yml
+├── e2e
+│   ├── .gitignore
+│   ├── fixtures
+│   │   ├── api-client.ts
+│   │   ├── datafeature.ts
+│   │   └── test.ts
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── pnpm-lock.yaml
+│   ├── pom
+│   │   ├── admin.page.ts
+│   │   ├── application.page.ts
+│   │   ├── auth.ts
+│   │   ├── base.page.ts
+│   │   ├── chrome.page.ts
+│   │   ├── create-application.page.ts
+│   │   ├── data-detail.page.ts
+│   │   ├── history.page.ts
+│   │   ├── home.page.ts
+│   │   ├── index.ts
+│   │   ├── quality.page.ts
+│   │   ├── reports.page.ts
+│   │   ├── search.page.ts
+│   │   ├── time.page.ts
+│   │   ├── transverse.page.ts
+│   │   └── user-profile.page.ts
+│   ├── support
+│   │   ├── actor-import-xlsx.ts
+│   │   ├── db.ts
+│   │   ├── global-cleanup.ts
+│   │   ├── helpers.ts
+│   │   ├── import-xlsx.ts
+│   │   ├── mailpit.ts
+│   │   └── screenshots.ts
+│   ├── tests
+│   │   ├── accueil.spec.ts
+│   │   ├── actions-crud.spec.ts
+│   │   ├── administration-referentiels.spec.ts
+│   │   ├── catalogue-filtres.spec.ts
+│   │   ├── catalogue.spec.ts
+│   │   ├── conformites.spec.ts
+│   │   ├── data-application.spec.ts
+│   │   ├── fiche-application.spec.ts
+│   │   ├── historique.spec.ts
+│   │   ├── impersonation.spec.ts
+│   │   ├── maia.spec.ts
+│   │   ├── permissions.spec.ts
+│   │   ├── profil-utilisateur.spec.ts
+│   │   ├── qualite-generale.spec.ts
+│   │   ├── rgaa.spec.ts
+│   │   ├── scope-acteurs.spec.ts
+│   │   ├── signalements-abonnements.spec.ts
+│   │   ├── time.spec.ts
+│   │   └── transverse.spec.ts
+│   └── tsconfig.json
+├── eslint.config.js
+├── frontend
+│   ├── .editorconfig
+│   ├── .env.development
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── cypress
+│   │   ├── e2e
+│   │   │   └── demo.cy.ts
+│   │   └── support
+│   │       ├── commands.js
+│   │       ├── commands.ts
+│   │       ├── component-index.html
+│   │       ├── component.js
+│   │       └── e2e.ts
+│   ├── entrypoint.sh
+│   ├── env.d.ts
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── openapi
+│   │   └── swagger.yaml
+│   ├── openapi-ts.config.ts
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── assets
+│   │   │   ├── logo.svg
+│   │   │   ├── logotitle.svg
+│   │   │   ├── svg-centralize.svg
+│   │   │   ├── svg-dependencies.svg
+│   │   │   ├── svg-loupe.svg
+│   │   │   ├── svg-stats.svg
+│   │   │   ├── svgviewer-output(2).svg
+│   │   │   └── svgviewer-output(3).svg
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon.ico
+│   │   ├── manifest.json
+│   │   └── version.json
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── api
+│   │   │   ├── index.ts
+│   │   │   └── init-clients.ts
+│   │   ├── chart
+│   │   │   └── time-chart.builder.ts
+│   │   ├── components
+│   │   │   ├── AccessibleAutocomplete.vue
+│   │   │   ├── ActorActions.vue
+│   │   │   ├── AppLoader.vue
+│   │   │   ├── AppToaster.vue
+│   │   │   ├── ApplicationCardView.vue
+│   │   │   ├── ApplicationMetadatasTab.vue
+│   │   │   ├── ApplicationOverview.vue
+│   │   │   ├── ApplicationReportsTab.vue
+│   │   │   ├── ApplicationSearchActions.vue
+│   │   │   ├── ApplicationTableView.vue
+│   │   │   ├── ColumnCustomization.vue
+│   │   │   ├── EditRelationModal.vue
+│   │   │   ├── ImpersonationBanner.vue
+│   │   │   ├── InformationsGenerales.vue
+│   │   │   ├── LinksTab.vue
+│   │   │   ├── MarkdownDisplay.vue
+│   │   │   ├── MarkdownEditor.vue
+│   │   │   ├── PaginationFooter.vue
+│   │   │   ├── PermissionSelect.vue
+│   │   │   ├── PermissionWritePriorityRestart.vue
+│   │   │   ├── QualityTab.vue
+│   │   │   ├── RefAppTable.vue
+│   │   │   ├── RelationShipGraph.vue
+│   │   │   ├── RelationshipsTab.vue
+│   │   │   ├── ReloadPrompt.spec.ts
+│   │   │   ├── ReloadPrompt.vue
+│   │   │   ├── Report
+│   │   │   │   ├── Notes.vue
+│   │   │   │   ├── ReportStatusTag.vue
+│   │   │   │   └── ReportsTab.vue
+│   │   │   ├── ReportPermissionSelect.vue
+│   │   │   ├── StatusTab.vue
+│   │   │   ├── SuggestionsInput.vue
+│   │   │   ├── actor
+│   │   │   │   ├── ActorForm.vue
+│   │   │   │   └── ActorTab.vue
+│   │   │   ├── admin
+│   │   │   │   ├── AdminActorActions.vue
+│   │   │   │   ├── AdminActorsTab.vue
+│   │   │   │   ├── AdminBatchData.vue
+│   │   │   │   ├── AdminLabelSourcesTab.vue
+│   │   │   │   ├── AdminMditCampaignsTab.vue
+│   │   │   │   ├── AdminOrganizationsTab.vue
+│   │   │   │   ├── AdminPermsMatrixTab.vue
+│   │   │   │   ├── AdminTagsTab.vue
+│   │   │   │   ├── AdminUsersTab.vue
+│   │   │   │   ├── AppPermsMatrix.vue
+│   │   │   │   ├── LabelSourceActions.vue
+│   │   │   │   ├── MditCampaignActions.vue
+│   │   │   │   ├── OrganizationActions.vue
+│   │   │   │   ├── TagActions.vue
+│   │   │   │   ├── UserActions.vue
+│   │   │   │   └── UserPermissionsModal.vue
+│   │   │   ├── business-division
+│   │   │   │   └── BusinessDivisionSearch.vue
+│   │   │   ├── common
+│   │   │   │   ├── OrganizationSearchSelect.vue
+│   │   │   │   └── TagSearchSelect.vue
+│   │   │   ├── compliances
+│   │   │   │   ├── ComplianceForm.vue
+│   │   │   │   ├── CompliancesAccordionManager.vue
+│   │   │   │   └── RgaaComplianceSection.vue
+│   │   │   ├── data-application
+│   │   │   │   ├── DataApplicationDetail.vue
+│   │   │   │   └── DataApplicationTab.vue
+│   │   │   ├── form
+│   │   │   │   ├── ApplicationForm.vue
+│   │   │   │   ├── LinkForm.vue
+│   │   │   │   └── StatusForm.vue
+│   │   │   ├── hosting
+│   │   │   │   ├── HostingList.vue
+│   │   │   │   └── HostingModal.vue
+│   │   │   ├── label
+│   │   │   │   ├── LabelList.vue
+│   │   │   │   └── LabelModal.vue
+│   │   │   ├── modal
+│   │   │   │   ├── AddRelationModal.vue
+│   │   │   │   ├── DeleteConfirmationModal.vue
+│   │   │   │   └── ReportModal.vue
+│   │   │   ├── organization
+│   │   │   │   └── OgaLink.vue
+│   │   │   ├── search
+│   │   │   │   ├── ActorFilter.vue
+│   │   │   │   ├── ApplicationFilter.vue
+│   │   │   │   ├── CampaignFilter.vue
+│   │   │   │   ├── ComplianceFilter.vue
+│   │   │   │   ├── DataFilter.vue
+│   │   │   │   ├── HostingFilter.vue
+│   │   │   │   ├── PriorityRestartFilter.vue
+│   │   │   │   ├── QualityFilter.vue
+│   │   │   │   ├── RelationFilter.vue
+│   │   │   │   ├── SearchHeader.vue
+│   │   │   │   ├── SidebarFilter.vue
+│   │   │   │   └── StatusFilter.vue
+│   │   │   ├── stats
+│   │   │   │   ├── ApplicationsChart.vue
+│   │   │   │   ├── ApplicationsIqChart.vue
+│   │   │   │   ├── GlobalStats.vue
+│   │   │   │   └── IqChart.vue
+│   │   │   ├── technical-debt
+│   │   │   │   ├── TechnicalDebtCard.vue
+│   │   │   │   ├── TechnicalDebtChart.vue
+│   │   │   │   └── TechnicalDebtModal.vue
+│   │   │   └── users
+│   │   │       ├── UserInfoTab.vue
+│   │   │       ├── UserPermissionList.vue
+│   │   │       ├── UserPermissions.vue
+│   │   │       ├── UserTokensTab.vue
+│   │   │       └── UsrFollowTab.vue
+│   │   ├── composables
+│   │   │   ├── report
+│   │   │   │   └── use-notes-dialog.ts
+│   │   │   ├── use-accordion-manager.ts
+│   │   │   ├── use-application-search.ts
+│   │   │   ├── use-column-preferences.ts
+│   │   │   ├── use-completeness.ts
+│   │   │   ├── use-d3-graph.ts
+│   │   │   ├── use-date.ts
+│   │   │   ├── use-filter-watcher.ts
+│   │   │   ├── use-graph-style.ts
+│   │   │   ├── use-mdit-campaigns.ts
+│   │   │   ├── use-mermaid.ts
+│   │   │   ├── use-modal.ts
+│   │   │   ├── use-relation-manager.ts
+│   │   │   ├── use-sanitize-utils.ts
+│   │   │   └── use-technical-debt-chart.ts
+│   │   ├── constants
+│   │   │   ├── breakpoint.ts
+│   │   │   ├── data-catalog.constants.ts
+│   │   │   ├── dictionary.ts
+│   │   │   └── min-char-for-search.ts
+│   │   ├── main.css
+│   │   ├── main.ts
+│   │   ├── models
+│   │   │   ├── Application.ts
+│   │   │   ├── relations.ts
+│   │   │   └── user.ts
+│   │   ├── router
+│   │   │   ├── index.ts
+│   │   │   └── route-names.ts
+│   │   ├── services
+│   │   │   ├── authentication.ts
+│   │   │   ├── config.ts
+│   │   │   ├── impersonation.ts
+│   │   │   └── technicalDebt.ts
+│   │   ├── stores
+│   │   │   ├── actorTypeStore.ts
+│   │   │   ├── applicationStore.ts
+│   │   │   ├── hostingStore.ts
+│   │   │   ├── metadataStore.ts
+│   │   │   ├── organizationStore.ts
+│   │   │   ├── relationStore.ts
+│   │   │   ├── reportStore.ts
+│   │   │   ├── statisticsStore.ts
+│   │   │   ├── toasterStore.ts
+│   │   │   └── userStore.ts
+│   │   ├── types
+│   │   │   ├── columns.ts
+│   │   │   ├── relation-type-filter.ts
+│   │   │   └── table.ts
+│   │   ├── utils
+│   │   │   ├── chart.ts
+│   │   │   ├── cssVars.ts
+│   │   │   ├── fieldComparison.ts
+│   │   │   ├── generator-utils.ts
+│   │   │   ├── get-ecoindex-grade.ts
+│   │   │   ├── get-time-quadrant.ts
+│   │   │   ├── log-dsfr-version.ts
+│   │   │   ├── regex.ts
+│   │   │   ├── roles-utils.ts
+│   │   │   ├── typeguard-includes.ts
+│   │   │   └── types.ts
+│   │   ├── views
+│   │   │   ├── AccessibilityPage.vue
+│   │   │   ├── AdminPage.vue
+│   │   │   ├── ApplicationPage.vue
+│   │   │   ├── ApplicationSearchPage.vue
+│   │   │   ├── CreateApplicationPage.vue
+│   │   │   ├── ErrorPage.vue
+│   │   │   ├── HomePage.vue
+│   │   │   ├── MetadataDetailPage.vue
+│   │   │   ├── MetadataPage.vue
+│   │   │   ├── NotFoundPage.vue
+│   │   │   ├── QualityPage.vue
+│   │   │   ├── ReportsPage.vue
+│   │   │   ├── SiteMapPage.vue
+│   │   │   ├── TimePage.vue
+│   │   │   └── UserProfilePage.vue
+│   │   └── vite-env.d.ts
+│   ├── tests
+│   │   ├── adminAccess.spec.ts
+│   │   ├── adminLabelSource.spec.ts
+│   │   ├── applicationsView.spec.ts
+│   │   ├── complianceFilters.spec.ts
+│   │   ├── createApplication.spec.ts
+│   │   ├── navigation.spec.ts
+│   │   ├── qualityPage.spec.ts
+│   │   ├── reports.spec.ts
+│   │   ├── searchHeader.spec.ts
+│   │   ├── utils.ts
+│   │   └── vue.spec.ts
+│   ├── tests-examples
+│   │   └── demo-todo-app.spec.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── tsconfig.vitest.json
+│   ├── vite.config.ts
+│   ├── vitest-setup.ts
+│   └── vitest.config.ts
+├── keycloak
+│   └── realm-export.json
+├── krakend.json
+├── package.json
+├── pgadmin.json
+├── pnpm-lock.yaml
+├── qa
+│   ├── README.md
+│   ├── protocoles
+│   │   ├── accueil.md
+│   │   ├── actions-crud.md
+│   │   ├── administration-referentiels.md
+│   │   ├── catalogue-filtres.md
+│   │   ├── catalogue.md
+│   │   ├── conformites.md
+│   │   ├── data-application.md
+│   │   ├── fiche-application.md
+│   │   ├── historique.md
+│   │   ├── impersonation.md
+│   │   ├── maia.md
+│   │   ├── permissions.md
+│   │   ├── profil-utilisateur.md
+│   │   ├── qualite-generale.md
+│   │   ├── rgaa.md
+│   │   ├── scope-acteurs.md
+│   │   ├── signalements-abonnements.md
+│   │   ├── time.md
+│   │   └── transverse.md
+│   └── scripts
+│       ├── campaign.mjs
+│       └── sync-issue.mjs
+└── release-please-config.json
+301 directories, 817 files

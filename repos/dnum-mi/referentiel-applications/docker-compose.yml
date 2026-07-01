@@ -1,0 +1,107 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8081:80"
+    volumes:
+      - ./pgadmin.json:/pgadmin4/servers.json
+
+  backend:
+    build:
+      context: ./backend
+      target: dev
+      args:
+        VERSION: ${VERSION:-development}
+    command: pnpm start:dev
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
+      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:8080,http://krakend:8080
+      - OIDC_CONFIG_URL=http://localhost:8082/realms/referentiel-applications/.well-known/openid-configuration
+      - OIDC_JWKS_URL=http://keycloak:8080/realms/referentiel-applications/protocol/openid-connect/certs
+      - OIDC_CLIENT_ID=referentiel-applications
+      - LOG_LEVEL=debug
+      # - NON_ACTOR_PERMISSIONS=readBase
+      - SMTP_HOST=mailpit
+      - SMTP_PORT=1025
+      - SMTP_SECURE=false
+      - SMTP_FROM=noreply@example.local
+      - SMTP_ENABLED=true
+      - ENV_LABEL=developpement
+      - MOCK_MAIA_SERVICE=true
+      - MOCK_MAIA_ORGANIZATION=departements/77 SEINE-ET-MARNE/SGC/DIRECTION
+      - FOOTER_LINKS=[{"label":"Documentation","title":"Aller à la documentation","href":"#"},{"label":"Snapvisu","title":"Aller à Snapvisu","href":"#"},{"label":"CSU","title":"Aller au CSU","href":"#"},{"label":"Portail SH24","title":"Aller au Portail SH24","href":"#"}]
+    depends_on:
+      - postgres
+      - mailpit
+    ports:
+      - "3500:3500"
+    volumes:
+      - ./backend:/app
+      - ./frontend/openapi:/app/openapi
+
+  prisma-studio:
+    build:
+      context: ./backend
+    command: npx prisma studio
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
+      - OIDC_CONFIG_URL=http://localhost:8082/realms/referentiel-applications/.well-known/openid-configuration
+    depends_on:
+      - postgres
+    ports:
+      - "5555:5555"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4
+    command: [start-dev, --import-realm]
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=password
+    ports:
+      - "8082:8080"
+    healthcheck:
+      test: "exec 3<>/dev/tcp/127.0.0.1/9000;echo -e \"GET /health/ready HTTP/1.1\r\nhost: http://localhost\r\nConnection: close\r\n\r\n\" >&3;grep \"HTTP/1.1 200 OK\" <&3"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    depends_on:
+      - postgres
+
+  client:
+    build:
+      context: ./frontend
+      target: dev
+      args:
+        VERSION: ${VERSION:-development}
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: sh -c "npm install -g pnpm && pnpm install && pnpm dev"
+    environment:
+      - VITE_RDA_MATOMO_URL=http://localhost:8083
+      - VITE_RDA_MATOMO_SITE_ID=1
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend

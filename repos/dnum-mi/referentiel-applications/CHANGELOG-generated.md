@@ -1,0 +1,51 @@
+## Changelog : referentiel-applications (30 derniers jours, au 01 Juillet 2026)
+
+### Résumé
+Cette version apporte des améliorations significatives en termes d'accessibilité (RGAA), d'import de données (Excel, MAIA), de sécurité et de fonctionnalités d'administration. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de l'application.
+
+### Évolutions fonctionnelles
+- Ajout de la possibilité d'importer des acteurs depuis un fichier Excel [#751](https://github.com/dnum-mi/referentiel-applications/issues/751) [#1876](https://github.com/dnum-mi/referentiel-applications/issues/1876)
+- Implémentation de filtres de conformité et mise à jour des composants associés [#1788](https://github.com/dnum-mi/referentiel-applications/issues/1788)
+- Import Excel des onglets applications et hébergements [#752](https://github.com/dnum-mi/referentiel-applications/issues/752) [#1889](https://github.com/dnum-mi/referentiel-applications/issues/1889)
+- Ajout de la possibilité d'impersonner un utilisateur par un administrateur [#1764](https://github.com/dnum-mi/referentiel-applications/issues/1764) [#1873](https://github.com/dnum-mi/referentiel-applications/issues/1873)
+- Ajout de la possibilité de tracer les modifications de la matrice des droits dans l'historique [#1899](https://github.com/dnum-mi/referentiel-applications/issues/1899)
+- Ajout de la possibilité d'ajouter des applications favorites et de les lister avec le groupe d'acteurs [#1756](https://github.com/dnum-mi/referentiel-applications/issues/1756)
+- Ajout de la possibilité d'importer des organisations MAIA avec des références MAIA [#1747](https://github.com/dnum-mi/referentiel-applications/issues/1747)
+- Amélioration de la recherche avec l'ajout d'une recherche full-text des applications [#1753](https://github.com/dnum-mi/referentiel-applications/issues/1753) [#1842](https://github.com/dnum-mi/referentiel-applications/issues/1842)
+- Ajout de la gestion du millésime MDIT avec les campagnes dette IT et un sélecteur de temps pour l'administration [#1848](https://github.com/dnum-mi/referentiel-applications/issues/1848) [#1872](https://github.com/dnum-mi/referentiel-applications/issues/1872)
+- Ajout de la possibilité de restreindre la durée de DIMA/PDMA à des valeurs autorisées [#1901](https://github.com/dnum-mi/referentiel-applications/issues/1901) [#1910](https://github.com/dnum-mi/referentiel-applications/issues/1910)
+- Amélioration de la représentation graphique MDIT [#1871](https://github.com/dnum-mi/referentiel-applications/issues/1871)
+- Ajout de la possibilité d'attacher une organisation MAIA lors de la création d'un utilisateur [#1793](https://github.com/dnum-mi/referentiel-applications/issues/1793)
+- Amélioration de l'import Excel pour appliquer les droits par application et consigner les refus [#1892](https://github.com/dnum-mi/referentiel-applications/issues/1892)
+
+### Évolutions techniques
+- Correction d'alertes de sécurité CodeQL [#1846](https://github.com/dnum-mi/referentiel-applications/issues/1846)
+- Mise à jour de l'image frontend Docker pour permettre l'écriture sous OpenShift [#1914](https://github.com/dnum-mi/referentiel-applications/issues/1914)
+- Refactoring du code TypeScript pour corriger les "code smells" détectés par SonarQube [#1898](https://github.com/dnum-mi/referentiel-applications/issues/1898) [#1905](https://github.com/dnum-mi/referentiel-applications/issues/1905)
+- Activation de la configuration plate ESLint et résolution des erreurs de linting et de vérification de type [#1794](https://github.com/dnum-mi/referentiel-applications/issues/1794)
+- Correction d'un problème de type dans AdminActorsTab et configuration des tests unitaires [#1906](https://github.com/dnum-mi/referentiel-applications/issues/1906)
+- Utilisation d'éléments natifs au lieu de rôles ARIA dans les composants Vue pour améliorer l'accessibilité [#1897](https://github.com/dnum-mi/referentiel-applications/issues/1897) [#1907](https://github.com/dnum-mi/referentiel-applications/issues/1907)
+- Suppression du plugin vite-plugin-vue-devtools [#1840](https://github.com/dnum-mi/referentiel-applications/issues/1840)
+- Correction de la gestion des valeurs indéfinies dans le service de permissions [#1880](https://github.com/dnum-mi/referentiel-applications/issues/1880)
+- Amélioration de la fonction de comparaison pour les tris de tableaux [#1902](https://github.com/dnum-mi/referentiel-applications/issues/1902)
+
+### Autres changements
+- Correction du calcul de la valeur totale pour MDIT [#1923](https://github.com/dnum-mi/referentiel-applications/issues/1923)
+- Correction de l'ajout de `isGroup` et de l'import MAIA lors de la création d'une application [#1927](https://github.com/dnum-mi/referentiel-applications/issues/1927)
+- Correction d'un piège au clavier et de la gestion du focus SPA pour la conformité RGAA [#1919](https://github.com/dnum-mi/referentiel-applications/issues/1919)
+- Mise à jour de la table `refapptable` avec un tri [#1916](https://github.com/dnum-mi/referentiel-applications/issues/1916)
+- Renommage de `costMaturity` en `costContainment` et mise à jour du libellé correspondant [#1909](https://github.com/dnum-mi/referentiel-applications/issues/1909)
+- Suppression des permissions d'écriture en monde entier sur l'image frontend (alerte SonarQube S2612) [#1904](https://github.com/dnum-mi/referentiel-applications/issues/1904)
+- Correction d'un problème de Promise non résolue dans la recherche de statuts [#1903](https://github.com/dnum-mi/referentiel-applications/issues/1903)
+- Correction d'un bug dans la configuration des tests unitaires et de la tabulation AdminActorsTab [#1906](https://github.com/dnum-mi/referentiel-applications/issues/1906)
+- Ignorer les faux positifs SonarQube pour les tests Supertest et les modèles d'e-mail [#1908](https://github.com/dnum-mi/referentiel-applications/issues/1908)
+- Correction pour ne pas autoriser le nom de source vide pour la création de libellés [#1875](https://github.com/dnum-mi/referentiel-applications/issues/1875)
+- Correction pour permettre la déconnexion de l'utilisateur en cas de code 401 [#1843](https://github.com/dnum-mi/referentiel-applications/issues/1843)
+- Ajout de la possibilité de définir un intervalle de temps dans le graphique iqchart [#1879](https://github.com/dnum-mi/referentiel-applications/issues/1879)
+- Correction pour que l'index éco soit restreint et réinitialisé [#1758](https://github.com/dnum-mi/referentiel-applications/issues/1758)
+- Correction pour que l'IQ soit correctement mis à jour [#1742](https://github.com/dnum-mi/referentiel-applications/issues/1742)
+- Ajout de tests de non-régression pour 7 nouveaux domaines [#1849](https://github.com/dnum-mi/referentiel-applications/issues/1849)
+- Ajout de tests de non-régression supplémentaires [#1853](https://github.com/dnum-mi/referentiel-applications/issues/1853)
+- Mise à jour des URLs Swagger OIDC et refactorisation de l'interface FooterLink [#1719](https://github.com/dnum-mi/referentiel-applications/issues/1719)
+- Correction pour faire correspondre la ligne utilisateur par e-mail exact dans les tests E2E [#1911](https://github.com/dnum-mi/referentiel-applications/issues/1911)
+- La date de statut est maintenant optionnelle [#1925](https://github.com/dnum-mi/referentiel-applications/issues/1925)
