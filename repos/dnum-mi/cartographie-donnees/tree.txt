@@ -1,0 +1,340 @@
+.
+├── .github
+│   └── workflows
+│       └── ci-cd.yml
+├── .gitignore
+├── .gitlab-ci.yml
+├── .vscode
+│   └── launch.json
+├── LICENCE
+├── README.md
+├── backend
+│   ├── .flaskenv.dev
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── Procfile
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── applications.py
+│   │   │   ├── auth.py
+│   │   │   ├── commons.py
+│   │   │   ├── data_sources.py
+│   │   │   ├── enumerations.py
+│   │   │   ├── errors.py
+│   │   │   ├── kpi.py
+│   │   │   ├── users.py
+│   │   │   └── wild_cards.py
+│   │   ├── cli
+│   │   │   ├── __init__.py
+│   │   │   └── db.py
+│   │   ├── constants.py
+│   │   ├── decorators.py
+│   │   ├── emails.py
+│   │   ├── exceptions.py
+│   │   ├── models
+│   │   │   ├── Application.py
+│   │   │   ├── BaseModel.py
+│   │   │   ├── DataSource.py
+│   │   │   ├── EnumerationMixin.py
+│   │   │   ├── Exposition.py
+│   │   │   ├── Family.py
+│   │   │   ├── OpenData.py
+│   │   │   ├── Organization.py
+│   │   │   ├── Origin.py
+│   │   │   ├── RoutingKPI.py
+│   │   │   ├── SearchableMixin.py
+│   │   │   ├── SearchingKPI.py
+│   │   │   ├── Sensibility.py
+│   │   │   ├── Tag.py
+│   │   │   ├── Type.py
+│   │   │   ├── UpdateFrequency.py
+│   │   │   ├── User.py
+│   │   │   ├── WildCard.py
+│   │   │   └── __init__.py
+│   │   ├── openapi.yml
+│   │   ├── routes.py
+│   │   ├── search
+│   │   │   ├── __init__.py
+│   │   │   ├── enums.py
+│   │   │   ├── indexing.py
+│   │   │   ├── query_builder.py
+│   │   │   ├── text_analysis.py
+│   │   │   └── utils.py
+│   │   ├── staging_auth.py
+│   │   └── templates
+│   │       ├── reset_password.html
+│   │       └── reset_password.txt
+│   ├── backend.py
+│   ├── config.py
+│   ├── docker_boot.sh
+│   ├── migrations
+│   │   ├── README
+│   │   ├── alembic.ini
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 1b6f47c6e77a_init_database.py
+│   │       ├── 409d190618e4_add_unique_constraint_on_origin_.py
+│   │       ├── 46ce46c6bcda_add_data_source_name_and_application_.py
+│   │       ├── 5005c15e8770_remove_deprecated_attributes.py
+│   │       ├── 569168f6d86d_transform_origin_applications_.py
+│   │       ├── 56ae3b6a8cf0_unique_application_name.py
+│   │       ├── 5f95f134356d_browsing_kpi.py
+│   │       ├── 6053b0316777_rename_classification_to_analysis_axis.py
+│   │       ├── 6d5c56a846c9_application_long.py
+│   │       ├── 6d5c56a846d0_is_reference.py
+│   │       ├── 6d5c56a846d1_fix_constraints.py
+│   │       ├── b823920f67b6_add_data_source_highlights_index.py
+│   │       ├── d7982c8b8229_add_new_table_wildcard_for_config_.py
+│   │       └── dfee9776774b_remove_referentiel_id_attribute.py
+│   ├── requirements.txt
+│   ├── staging_boot.sh
+│   └── tests
+│       ├── __init__.py
+│       ├── api
+│       │   ├── __init__.py
+│       │   ├── applications
+│       │   │   ├── __init__.py
+│       │   │   ├── test_create_application.py
+│       │   │   ├── test_export_applications.py
+│       │   │   ├── test_fetch_applications.py
+│       │   │   ├── test_import_applications.py
+│       │   │   ├── test_modify_application.py
+│       │   │   └── test_reindex_applications.py
+│       │   ├── data_sources
+│       │   │   ├── __init__.py
+│       │   │   ├── test_create_data_source.py
+│       │   │   ├── test_export_data_source.py
+│       │   │   ├── test_fetch_data_source.py
+│       │   │   ├── test_import_data_source.py
+│       │   │   ├── test_modify_data_source.py
+│       │   │   └── test_reindex_data_source.py
+│       │   ├── test_auth.py
+│       │   └── users
+│       │       ├── __init__.py
+│       │       ├── test_count_users.py
+│       │       ├── test_create_user.py
+│       │       ├── test_delete_user.py
+│       │       ├── test_export_users.py
+│       │       ├── test_fetch_users.py
+│       │       ├── test_import_users.py
+│       │       ├── test_read_user.py
+│       │       ├── test_search_users.py
+│       │       └── test_update_user.py
+│       ├── conftest.py
+│       ├── constants.py
+│       ├── files
+│       │   ├── applications
+│       │   │   ├── clean.csv
+│       │   │   └── clean_with_unknown_admin.csv
+│       │   ├── data_sources
+│       │   │   ├── clean.csv
+│       │   │   ├── clean_with_unknown_application.csv
+│       │   │   ├── clean_with_unknown_family.csv
+│       │   │   └── clean_with_unknown_type.csv
+│       │   └── users
+│       │       ├── clean.csv
+│       │       ├── same_email.csv
+│       │       └── unknown_column.csv
+│       ├── search
+│       │   ├── __init__.py
+│       │   ├── query_builder
+│       │   │   ├── __init__.py
+│       │   │   ├── test_create_exclusion.py
+│       │   │   ├── test_create_filter_query.py
+│       │   │   ├── test_create_filter_value_query.py
+│       │   │   ├── test_create_filters_query.py
+│       │   │   ├── test_create_query_filter.py
+│       │   │   └── test_create_text_query.py
+│       │   └── test_utils.py
+│       └── test_boot.py
+├── docker-compose.yml
+└── frontend
+    ├── .gitignore
+    ├── README.md
+    ├── cypress
+    │   ├── e2e
+    │   │   ├── admin
+    │   │   │   ├── admin_page.cy.js
+    │   │   │   └── filters_page.cy.js
+    │   │   ├── home_page.cy.js
+    │   │   └── login_page.cy.js
+    │   ├── fixtures
+    │   │   ├── Applications.csv
+    │   │   ├── Données.csv
+    │   │   ├── Filtres.csv
+    │   │   └── default_admin.json
+    │   └── support
+    │       ├── commands.js
+    │       └── e2e.js
+    ├── cypress.config.js
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── apple-touch-icon.png
+    │   ├── favicon.ico
+    │   ├── favicon.svg
+    │   ├── index.html
+    │   ├── manifest.json
+    │   └── robots.txt
+    └── src
+        ├── App.css
+        ├── App.js
+        ├── admin
+        │   ├── AdminPage.css
+        │   ├── AdminPage.jsx
+        │   ├── KPI
+        │   │   ├── AdminKpi.jsx
+        │   │   ├── KpiPage.css
+        │   │   ├── KpiPage.jsx
+        │   │   ├── RoutingKpiTab.jsx
+        │   │   ├── SearchingKpiTab.jsx
+        │   │   └── kpi_definition.js
+        │   ├── applications
+        │   │   ├── ApplicationsList.css
+        │   │   ├── ApplicationsList.jsx
+        │   │   └── ApplicationsRouter.jsx
+        │   ├── data-sources
+        │   │   ├── DataSourceCreation.css
+        │   │   ├── DataSourceCreation.jsx
+        │   │   ├── DataSourcesList.css
+        │   │   ├── DataSourcesList.jsx
+        │   │   └── DataSourcesRouter.jsx
+        │   ├── enumerations
+        │   │   ├── EnumerationCategory.css
+        │   │   ├── EnumerationCategory.jsx
+        │   │   ├── EnumerationItem.css
+        │   │   ├── EnumerationItem.jsx
+        │   │   ├── EnumerationsList.css
+        │   │   ├── EnumerationsList.jsx
+        │   │   └── EnumerationsRouter.jsx
+        │   ├── settings
+        │   │   ├── SettingsHeader.css
+        │   │   ├── SettingsHeader.jsx
+        │   │   ├── SettingsHomepageSection.css
+        │   │   ├── SettingsHomepageSection.jsx
+        │   │   ├── SettingsPage.css
+        │   │   ├── SettingsPage.jsx
+        │   │   ├── SettingsRouter.jsx
+        │   │   ├── SettingsSynonymsSection.css
+        │   │   ├── SettingsSynonymsSection.jsx
+        │   │   ├── SettingsTooltipsSection.css
+        │   │   └── SettingsTooltipsSection.jsx
+        │   └── users
+        │       ├── UserAttributes.css
+        │       ├── UserAttributes.jsx
+        │       ├── UserCreation.jsx
+        │       ├── UserForm.jsx
+        │       ├── UserOwnership.jsx
+        │       ├── UserPage.css
+        │       ├── UserPage.jsx
+        │       ├── UserUpdate.jsx
+        │       ├── UsersList.css
+        │       ├── UsersList.jsx
+        │       └── UsersRouter.jsx
+        ├── api.js
+        ├── application
+        │   ├── ApplicationPage.css
+        │   ├── ApplicationPage.jsx
+        │   ├── ApplicationRedirect.jsx
+        │   └── emptyDataSourceForApplication.json
+        ├── auth
+        │   ├── ForgotPasswordPage.css
+        │   ├── ForgotPasswordPage.jsx
+        │   ├── LoginPage.css
+        │   ├── LoginPage.jsx
+        │   ├── ResetPasswordPage.css
+        │   ├── ResetPasswordPage.jsx
+        │   └── index.js
+        ├── components
+        │   ├── Alert.css
+        │   ├── ApplicationSearchSelect.jsx
+        │   ├── ApplicationSearchTag.jsx
+        │   ├── Attribute.css
+        │   ├── Attribute.jsx
+        │   ├── EmailField.jsx
+        │   ├── EnumSelect.jsx
+        │   ├── EnumTags.jsx
+        │   ├── Error.jsx
+        │   ├── Loading.css
+        │   ├── Loading.jsx
+        │   ├── NotFound.css
+        │   ├── NotFound.jsx
+        │   ├── PasswordFields.jsx
+        │   ├── SearchSelect.jsx
+        │   ├── UserSearchSelect.jsx
+        │   ├── Warning.jsx
+        │   ├── attributes
+        │   │   ├── ApplicationAttribute.jsx
+        │   │   ├── BooleanAttribute.jsx
+        │   │   ├── DateAttribute.jsx
+        │   │   ├── TagAttribute.jsx
+        │   │   ├── TextAttribute.jsx
+        │   │   ├── attributeDefaultProps.js
+        │   │   └── attributePropTypes.js
+        │   └── forms.css
+        ├── data-source
+        │   ├── ApplicationAdd.jsx
+        │   ├── ApplicationCard.jsx
+        │   ├── ApplicationSection.css
+        │   ├── ApplicationSection.jsx
+        │   ├── ApplicationSelect.css
+        │   ├── ApplicationSelect.jsx
+        │   ├── DataSourceAdminHeader.css
+        │   ├── DataSourceAdminHeader.jsx
+        │   ├── DataSourceFetcher.jsx
+        │   ├── DataSourceMainSection.css
+        │   ├── DataSourceMainSection.jsx
+        │   ├── DataSourceMetricsSection.css
+        │   ├── DataSourceMetricsSection.jsx
+        │   ├── DataSourcePage.css
+        │   ├── DataSourcePage.jsx
+        │   ├── DataSourceReutilizationsSection.css
+        │   ├── DataSourceReutilizationsSection.jsx
+        │   ├── attributes.js
+        │   └── emptyDataSource.json
+        ├── error
+        │   ├── ErrorFactory.js
+        │   └── errors.json
+        ├── filters.js
+        ├── hoc
+        │   ├── tooltips
+        │   │   ├── Tooltips.js
+        │   │   ├── TooltipsProvider.js
+        │   │   ├── post_tooltips.json
+        │   │   ├── tooltipsConstants.js
+        │   │   └── withTooltips.jsx
+        │   └── user
+        │       ├── User.js
+        │       ├── UserProvider.js
+        │       ├── defaultUser.js
+        │       └── withCurrentUser.jsx
+        ├── index.js
+        ├── logo_MIOM.svg
+        ├── navigation
+        │   ├── Navigation.css
+        │   ├── Navigation.jsx
+        │   ├── Router.jsx
+        │   └── RoutingCount.jsx
+        └── search
+            ├── MassEdition.css
+            ├── MassEdition.jsx
+            ├── MassEditionValueSelect.jsx
+            ├── QueryUtils.js
+            ├── Results.jsx
+            ├── SearchPage.css
+            ├── SearchPage.jsx
+            ├── SearchTree.css
+            ├── SearchTree.jsx
+            ├── query_titles.json
+            └── results
+                ├── ApplicationResult.css
+                ├── ApplicationResult.jsx
+                ├── DataSourceHighlight.jsx
+                ├── DataSourceResult.css
+                ├── DataSourceResult.jsx
+                ├── UserResult.css
+                └── UserResult.jsx
+51 directories, 288 files
