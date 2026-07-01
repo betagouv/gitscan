@@ -1,0 +1,67 @@
+services:
+  backend:
+    platform: ${DOCKER_PLATFORM:-linux/amd64}
+    build:
+      args:
+        - VERSION=${TAG:-latest}
+      context: ./backend
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000 --no-server-header
+    container_name: basegun-backend
+    environment:
+      - S3_URL_ENDPOINT=http://minio:9000
+      - S3_BUCKET_NAME=basegun-s3
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - EMAIL_HOST=mailpit
+      - EMAIL_PORT=1025
+      - OIDC_CONFIG_URL=http://localhost:8080/realms/basegun/.well-known/openid-configuration
+      - OIDC_JWKS_URL=http://keycloak:8080/realms/basegun/protocol/openid-connect/certs
+      - OIDC_JWKS_KID=basegun
+      - OIDC_CLIENT_ID=basegun
+      - IRCGN_PHONE=00 00 00 00 00
+      - IRCGN_CELLPHONE=00 00 00 00 00
+      - IRCGN_EMAIL=test@test.fr
+    ports:
+      - 5000:5000
+    volumes:
+      - ./backend/.:/app/.
+    depends_on:
+      keycloak:
+        condition: service_healthy
+
+  # Mock Cloud Pi S3
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    ports:
+      - 9000:9000
+      - 9001:9001
+
+  # Mock Passage2 OIDC
+  keycloak:
+    build:
+      context: .
+      dockerfile: keycloak/Dockerfile
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=password
+      - KC_HEALTH_ENABLED=true
+      - DSFR_THEME_SERVICE_TITLE=Basegun
+      - DSFR_THEME_BRAND_TOP=Ministère<br/>de l'Intérieur
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "exec 3<>/dev/tcp/127.0.0.1/9000; echo -e 'GET /health/ready HTTP/1.1\r\nHost: localhost:9000\r\nConnection: close\r\n\r\n' >&3;cat <&3 | grep -q '\"status\": \"UP\"' && exit 0 || exit 1"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  # Mock Email server
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - 8025:8025
+      - 1025:1025
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1

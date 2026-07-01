@@ -1,0 +1,84 @@
+{
+  "name": "basegun",
+  "version": "3.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "start": "API_HOST=http://localhost:5000 vite",
+    "lint": "eslint . --fix --ignore-path ../.gitignore",
+    "format": "prettier . --write",
+    "format-check": "prettier . --check",
+    "test:e2e-ci": "nyc cypress run",
+    "test:e2e-open": "cypress open --browser firefox"
+  },
+  "dependencies": {
+    "@gouvfr/dsfr": "~1.13.2",
+    "@gouvminint/vue-dsfr": "^8.16.1",
+    "axios": "^1.15.2",
+    "luxon": "^3.7.2",
+    "oidc-client-ts": "^3.5.0",
+    "pinia": "^2.3.1",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "swiper": "^11.2.10",
+    "vite": "^6.4.2",
+    "vue": "^3.5.33",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.14.7",
+    "@rushstack/eslint-patch": "^1.16.1",
+    "@testing-library/cypress": "^10.1.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.19.17",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@unocss/transformer-directives": "^65.5.0",
+    "@unocss/transformer-variant-group": "^66.6.8",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.7.0",
+    "cypress": "^14.5.4",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-cypress": "^3.6.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "nyc": "^17.1.0",
+    "prettier": "3.5.0",
+    "typescript": "^5.9.3",
+    "unocss": "^66.6.8",
+    "unplugin-auto-import": "^19.3.0",
+    "unplugin-vue-components": "^28.8.0",
+    "vite-plugin-istanbul": "^6.0.2",
+    "vite-plugin-pwa": "^0.21.2",
+    "vitest": "^3.2.4",
+    "workbox-window": "^7.4.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "volta": {
+    "node": "20.8.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov"
+    ],
+    "include": "src/*",
+    "exclude": [
+      "node_modules",
+      "tests"
+    ],
+    "extension": [
+      ".js",
+      ".ts",
+      ".vue"
+    ]
+  }
+}

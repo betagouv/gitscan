@@ -1,0 +1,334 @@
+.
+├── .dockerignore
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── build.yml
+│       ├── clean-registry.yml
+│       ├── main-ci.yml
+│       └── release.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .pre-commit-config.yaml
+├── .release-please-manifest.json
+├── CHANGELOG.md
+├── CODEOWNERS
+├── LICENSE
+├── Makefile
+├── README.md
+├── backend
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   ├── src
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── router.py
+│   │   └── utils.py
+│   └── tests
+│       ├── __init__.py
+│       ├── conftest.py
+│       ├── images
+│       │   ├── alarm_gun.jpg
+│       │   ├── epaule_a_levier_sous_garde.jpg
+│       │   ├── low_quality.jpg
+│       │   ├── no_text.jpg
+│       │   └── revolver.jpg
+│       ├── locustfile.py
+│       ├── test_api.py
+│       └── test_email.py
+├── docker-compose.ci.yml
+├── docker-compose.yml
+├── frontend
+│   ├── .editorconfig
+│   ├── .env.development
+│   ├── .env.production
+│   ├── .eslintrc-auto-import.json
+│   ├── .eslintrc.cjs
+│   ├── .prettierignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── cypress
+│   │   ├── .eslintrc.cjs
+│   │   ├── e2e
+│   │   │   ├── blank-gun-detection.cy.js
+│   │   │   ├── expert-contact-path.cy.js
+│   │   │   ├── firearm-confidence.cy.js
+│   │   │   ├── firearm-identification.cy.js
+│   │   │   ├── firearm-securing.cy.js
+│   │   │   ├── home.cy.js
+│   │   │   ├── old-mechanism-pistol-securing.cy.js
+│   │   │   ├── recommendations-civilians-vs-fsi.cy.js
+│   │   │   ├── shotgun-identification.cy.js
+│   │   │   ├── shotgun-securing.cy.js
+│   │   │   ├── shoulder-bolt-rifle-securing.cy.js
+│   │   │   ├── typology-revolver-identification.cy.js
+│   │   │   └── typology-revolver-securing.cy.js
+│   │   ├── images
+│   │   │   ├── arme-low.png
+│   │   │   ├── arme-medium.png
+│   │   │   ├── autre-pistolet.jpg
+│   │   │   ├── blank-gun.jpg
+│   │   │   ├── epaule-a-verrou.jpg
+│   │   │   ├── fusil-a-pompe.jpg
+│   │   │   ├── low-quality.jpg
+│   │   │   ├── no-text.jpg
+│   │   │   ├── pistolet-ancien-a-percussion-monocoup.jpg
+│   │   │   ├── pistolet-semi-auto.jpg
+│   │   │   └── revolver.jpg
+│   │   ├── support
+│   │   │   ├── commands.js
+│   │   │   ├── e2e.js
+│   │   │   └── index.js
+│   │   └── tsconfig.json
+│   ├── cypress.config.ts
+│   ├── index.html
+│   ├── jsconfig.json
+│   ├── nginx.conf
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
+│   │   ├── pwa-192x192.png
+│   │   ├── pwa-512x512.png
+│   │   └── robots.txt
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── api
+│   │   │   ├── api-client.ts
+│   │   │   └── api-routes.ts
+│   │   ├── assets
+│   │   │   ├── arme_cote_droit.png
+│   │   │   ├── arme_cote_gauche.png
+│   │   │   ├── arme_vue_rapprochee.png
+│   │   │   ├── bad-photo-example.jpg
+│   │   │   ├── basegun-logo-attention-direction-arme.jpg
+│   │   │   ├── basegun.png
+│   │   │   ├── basegun_green.png
+│   │   │   ├── basegun_long.png
+│   │   │   ├── chargeur.jpeg
+│   │   │   ├── guide-identification
+│   │   │   │   ├── icones
+│   │   │   │   │   ├── complements.jpg
+│   │   │   │   │   ├── gun.jpg
+│   │   │   │   │   └── warning.jpg
+│   │   │   │   └── photos
+│   │   │   │       ├── arme_alarme
+│   │   │   │       │   ├── BLOW_C75.jpg
+│   │   │   │       │   ├── BLOW_C75_Zoom.jpg
+│   │   │   │       │   ├── BLOW_F92.jpg
+│   │   │   │       │   ├── BLOW_F92_AUTO.jpg
+│   │   │   │       │   ├── BLOW_F92_AUTO_Zoom.jpg
+│   │   │   │       │   ├── BLOW_F92_Zoom.jpg
+│   │   │   │       │   ├── KIMAR_75_AUTO.jpg
+│   │   │   │       │   ├── KIMAR_75_AUTO_Zoom.jpg
+│   │   │   │       │   ├── KIMAR_911.png
+│   │   │   │       │   ├── KIMAR_911_Zoom.png
+│   │   │   │       │   ├── KIMAR_92_AUTO.jpg
+│   │   │   │       │   ├── KIMAR_92_AUTO_Zoom.jpg
+│   │   │   │       │   ├── KIMAR_CA.jpg
+│   │   │   │       │   ├── KIMAR_CA_Zoom.png
+│   │   │   │       │   ├── KIMAR_PA.jpg
+│   │   │   │       │   ├── KIMAR_PA_Zoom.jpg
+│   │   │   │       │   ├── ZORAKI_2906.png
+│   │   │   │       │   ├── ZORAKI_2906_Zoom.png
+│   │   │   │       │   ├── ZORAKI_906.jpg
+│   │   │   │       │   ├── ZORAKI_906_Zoom.jpg
+│   │   │   │       │   ├── ZORAKI_918.jpg
+│   │   │   │       │   ├── ZORAKI_918_Zoom.jpg
+│   │   │   │       │   ├── ZORAKI_925.jpg
+│   │   │   │       │   ├── ZORAKI_925_Zoom.jpg
+│   │   │   │       │   ├── ZORAKI_R2.jpg
+│   │   │   │       │   ├── ZORAKI_R2_Zoom.jpg
+│   │   │   │       │   └── picto.png
+│   │   │   │       ├── epaule_a_pompe
+│   │   │   │       │   ├── epaule_a_pompe_chargeur_bille.jpg
+│   │   │   │       │   └── epaule_a_pompe_chargeur_cartouche.jpeg
+│   │   │   │       ├── epaule_a_verrou
+│   │   │   │       │   ├── epaule_a_verrou_chargeur_bille.jpg
+│   │   │   │       │   └── epaule_a_verrou_chargeur_cartouche.jpg
+│   │   │   │       ├── pistolet_semi_auto_moderne
+│   │   │   │       │   ├── pistolet_sa_moderne_chargeur_bille.jpg
+│   │   │   │       │   └── pistolet_sa_moderne_chargeur_cartouche.jpg
+│   │   │   │       ├── revolver
+│   │   │   │       │   ├── revolver_cartouche_bille.jpg
+│   │   │   │       │   └── revolver_cartouche_pleine.jpg
+│   │   │   │       └── semi_auto_militaire_autre
+│   │   │   │           ├── autre-epaule-transparent-magazine-focus.jpg
+│   │   │   │           ├── autre-epaule-transparent-magazine.jpg
+│   │   │   │           ├── semi_automatique_militaire_autre_chargeur_billes.jpg
+│   │   │   │           └── semi_automatique_militaire_autre_chargeur_cartouche.jpg
+│   │   │   ├── guide-mise-en-securite
+│   │   │   │   ├── icones
+│   │   │   │   │   ├── consignes-securite.jpg
+│   │   │   │   │   ├── consignes-securite_new.jpg
+│   │   │   │   │   ├── fin-mise-en-securite-nok.jpg
+│   │   │   │   │   ├── fin-mise-en-securite-ok.jpg
+│   │   │   │   │   ├── gants-traces-et-indices.jpg
+│   │   │   │   │   ├── instructions.jpg
+│   │   │   │   │   ├── preconisations.jpg
+│   │   │   │   │   └── take-care.jpg
+│   │   │   │   ├── photos
+│   │   │   │   │   ├── autre_pistolet
+│   │   │   │   │   │   ├── autre_pistolet_derringer.jpg
+│   │   │   │   │   │   ├── autre_pistolet_drulov.jpg
+│   │   │   │   │   │   ├── autre_pistolet_fusil_scie.jpg
+│   │   │   │   │   │   └── autre_pistolet_thompson.jpg
+│   │   │   │   │   ├── epaule_a_levier_sous_garde
+│   │   │   │   │   │   ├── epaule_levier_ss_garde_magasin_avant.jpg
+│   │   │   │   │   │   └── epaule_levier_ss_garde_magasin_fixe.jpg
+│   │   │   │   │   ├── epaule_a_un_coup_par_canon
+│   │   │   │   │   │   ├── epaule_un_coup_cle_darne.jpg
+│   │   │   │   │   │   ├── epaule_un_coup_cle_lefaucheux.jpg
+│   │   │   │   │   │   └── epaule_un_coup_cle_pouce.jpg
+│   │   │   │   │   ├── pistolet_semi_auto_moderne
+│   │   │   │   │   │   ├── pistolet_semi_auto_pontet.jpg
+│   │   │   │   │   │   └── pistolet_semi_auto_talon.jpg
+│   │   │   │   │   ├── revolver
+│   │   │   │   │   │   ├── revolver_1_cheminees.jpg
+│   │   │   │   │   │   ├── revolver_2_1873_US.jpg
+│   │   │   │   │   │   ├── revolver_2_axe_barillet.jpg
+│   │   │   │   │   │   ├── revolver_2_bouton_barillet.jpg
+│   │   │   │   │   │   ├── revolver_2_cartouches.jpg
+│   │   │   │   │   │   ├── revolver_2_ew_brisure.jpg
+│   │   │   │   │   │   ├── revolver_2_portiere.jpg
+│   │   │   │   │   │   ├── revolver_2_sw_brisure.jpg
+│   │   │   │   │   │   ├── revolver_3_1873_FR.jpg
+│   │   │   │   │   │   └── revolver_3_1892.jpg
+│   │   │   │   │   └── semi_auto_militaire_autre
+│   │   │   │   │       ├── semi_auto_mil_ak.jpg
+│   │   │   │   │       ├── semi_auto_mil_ar15.jpg
+│   │   │   │   │       ├── semi_auto_mil_sten.jpg
+│   │   │   │   │       ├── semi_auto_mil_thompson.jpg
+│   │   │   │   │       └── semi_auto_mil_uzi.jpg
+│   │   │   │   └── videos
+│   │   │   │       ├── autre_pistolet
+│   │   │   │       │   ├── autre_pistolet_derringer.mp4
+│   │   │   │       │   ├── autre_pistolet_drulov.mp4
+│   │   │   │       │   ├── autre_pistolet_fusil_scie.mp4
+│   │   │   │       │   └── autre_pistolet_thompson.mp4
+│   │   │   │       ├── epaule_a_levier_sous_garde
+│   │   │   │       │   ├── epaule_levier_ss_garde_magasin_avant.mp4
+│   │   │   │       │   └── epaule_levier_ss_garde_magasin_fixe.mp4
+│   │   │   │       ├── epaule_a_pompe
+│   │   │   │       │   └── epaule_pompe_simple.mp4
+│   │   │   │       ├── epaule_a_un_coup_par_canon
+│   │   │   │       │   ├── cle-darne.mp4
+│   │   │   │       │   ├── cle-lefaucheux.mp4
+│   │   │   │       │   └── cle-pouce.mp4
+│   │   │   │       ├── epaule_a_verrou
+│   │   │   │       │   ├── epaule_verrou_chargeur-video.mp4
+│   │   │   │       │   └── epaule_verrou_surete.mp4
+│   │   │   │       ├── pistolet_semi_auto_moderne
+│   │   │   │       │   ├── pistolet_pontet.mp4
+│   │   │   │       │   └── pistolet_talon.mp4
+│   │   │   │       ├── revolver
+│   │   │   │       │   ├── revolver_1873_portiere_FR.mp4
+│   │   │   │       │   ├── revolver_1873_portiere_FR_debut.mp4
+│   │   │   │       │   ├── revolver_1873_portiere_FR_fin.mp4
+│   │   │   │       │   ├── revolver_1873_portiere_US.mp4
+│   │   │   │       │   ├── revolver_1892.mp4
+│   │   │   │       │   ├── revolver_axe_barillet.mp4
+│   │   │   │       │   ├── revolver_bouton_barillet.mp4
+│   │   │   │       │   ├── revolver_ew_brisure.mp4
+│   │   │   │       │   └── revolver_sw_brisure.mp4
+│   │   │   │       └── semi_auto_militaire_autre
+│   │   │   │           ├── semi_auto_mil_ak.mp4
+│   │   │   │           ├── semi_auto_mil_ar15.mp4
+│   │   │   │           ├── semi_auto_mil_sten.mp4
+│   │   │   │           ├── semi_auto_mil_thompson.mp4
+│   │   │   │           ├── semi_auto_mil_uzi.mp4
+│   │   │   │           └── semi_auto_mil_uzi_surete.mp4
+│   │   │   ├── instruction-screen-gun.webp
+│   │   │   ├── logo_dtnum.jpg
+│   │   │   ├── logo_gendarmerie.png
+│   │   │   ├── logo_police.png
+│   │   │   ├── logo_scae.png
+│   │   │   ├── markings.png
+│   │   │   ├── missing_card.png
+│   │   │   └── missing_markings.png
+│   │   ├── auto-imports.d.ts
+│   │   ├── components
+│   │   │   ├── AskingExpert.vue
+│   │   │   ├── ContactExpert.vue
+│   │   │   ├── HeaderMain.vue
+│   │   │   ├── MissingCardAlert.vue
+│   │   │   ├── OnboardingSwiper.vue
+│   │   │   ├── PopupVideo.vue
+│   │   │   ├── ResultPage.vue
+│   │   │   ├── SnackbarAlert.vue
+│   │   │   └── StepsGuide.vue
+│   │   ├── components.d.ts
+│   │   ├── env.d.ts
+│   │   ├── main.css
+│   │   ├── main.ts
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   ├── stores
+│   │   │   ├── result.ts
+│   │   │   └── snackbar.ts
+│   │   ├── utils
+│   │   │   ├── authentication.ts
+│   │   │   ├── firearms-utils
+│   │   │   │   ├── arme-alarme.ts
+│   │   │   │   ├── autre-pistolet.ts
+│   │   │   │   ├── epaule-a-levier-sous-garde.ts
+│   │   │   │   ├── epaule-a-pompe.ts
+│   │   │   │   ├── epaule-a-un-coup-par-canon.ts
+│   │   │   │   ├── epaule-a-verrou.ts
+│   │   │   │   ├── epaule-semi-auto-militaire-milieu-20e.ts
+│   │   │   │   ├── epaule-semi-auto-style-chasse.ts
+│   │   │   │   ├── epaule_mecanisme_ancien.ts
+│   │   │   │   ├── get-next-route-after-result.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── pistolet-mecanisme-ancien.ts
+│   │   │   │   ├── pistolet-semi-auto-moderne.ts
+│   │   │   │   ├── revolver.ts
+│   │   │   │   └── semi-auto-style-militaire-autre.ts
+│   │   │   ├── isUserUsingComputer.ts
+│   │   │   ├── isUserUsingCrosscall.ts
+│   │   │   ├── mentions.ts
+│   │   │   └── storage-utils.ts
+│   │   └── views
+│   │       ├── AboutPage.vue
+│   │       ├── AccessibilityPage.vue
+│   │       ├── ContactPage.vue
+│   │       ├── ErrorPage.vue
+│   │       ├── GuideAskingExpertise
+│   │       │   ├── ExpertContact.vue
+│   │       │   └── ExpertiseForm.vue
+│   │       ├── GuideIdentificationFirearm
+│   │       │   ├── GuideIdentificationFirearm.vue
+│   │       │   ├── IdentificationAlarmGun.vue
+│   │       │   ├── IdentificationFinalResult.vue
+│   │       │   ├── IdentificationFurtherInformations.vue
+│   │       │   ├── IdentificationSelectAmmo.vue
+│   │       │   └── IdentificationTypologyResult.vue
+│   │       ├── GuideSecuringFirearm
+│   │       │   ├── GuideSecuringFirearm.vue
+│   │       │   ├── SecuringAchievement.vue
+│   │       │   ├── SecuringFooter.vue
+│   │       │   ├── SecuringSelectOptionContent.vue
+│   │       │   └── SecuringTutorialContent.vue
+│   │       ├── HomePage.vue
+│   │       ├── InstructionsPage.vue
+│   │       ├── LegalPage.vue
+│   │       ├── MissingCardPage.vue
+│   │       └── StartPage.vue
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── tsconfig.vitest.json
+│   ├── uno.config.ts
+│   ├── vite.config.ts
+│   └── vitest.config.ts
+├── keycloak
+│   ├── Dockerfile
+│   ├── keycloak-theme-dsfr.jar
+│   └── realm-export.json
+└── release-please-config.json
+53 directories, 280 files
