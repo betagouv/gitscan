@@ -1,0 +1,1 @@
+# suadeo-test-argocd
