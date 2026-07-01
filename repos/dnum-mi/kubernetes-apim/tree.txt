@@ -1,0 +1,167 @@
+.
+├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── advanced
+│   ├── am-pattern-1
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── auth.json
+│   │   ├── requirements.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── am
+│   │   │   │   ├── instance-1
+│   │   │   │   │   ├── wso2am-pattern-1-am-conf.yaml
+│   │   │   │   │   ├── wso2am-pattern-1-am-deployment.yaml
+│   │   │   │   │   └── wso2am-pattern-1-am-service.yaml
+│   │   │   │   ├── instance-2
+│   │   │   │   │   ├── wso2am-pattern-1-am-conf.yaml
+│   │   │   │   │   ├── wso2am-pattern-1-am-deployment.yaml
+│   │   │   │   │   └── wso2am-pattern-1-am-service.yaml
+│   │   │   │   ├── wso2am-pattern-1-am-conf-entrypoint.yaml
+│   │   │   │   ├── wso2am-pattern-1-am-gateway-ingress.yaml
+│   │   │   │   ├── wso2am-pattern-1-am-ingress.yaml
+│   │   │   │   ├── wso2am-pattern-1-am-service.yaml
+│   │   │   │   ├── wso2am-pattern-1-am-volume-claims.yaml
+│   │   │   │   └── wso2am-pattern-1-am-websub-ingress.yaml
+│   │   │   ├── mi
+│   │   │   │   ├── instance-1
+│   │   │   │   │   ├── wso2am-pattern-1-mi-deployment.yaml
+│   │   │   │   │   └── wso2am-pattern-1-mi-service.yaml
+│   │   │   │   └── wso2am-pattern-1-mi-management-ingress.yaml
+│   │   │   ├── wso2am-pattern-1-am-secrets.yaml
+│   │   │   ├── wso2am-pattern-1-mi-secrets.yaml
+│   │   │   └── wso2am-pattern-1-service-account.yaml
+│   │   └── values.yaml
+│   ├── am-pattern-2
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── auth.json
+│   │   ├── requirements.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── mi
+│   │   │   │   ├── instance-2
+│   │   │   │   │   ├── wso2am-pattern-2-mi-deployment.yaml
+│   │   │   │   │   └── wso2am-pattern-2-mi-service.yaml
+│   │   │   │   └── wso2am-pattern-2-mi-management-ingress.yaml
+│   │   │   └── wso2am-pattern-2-secrets.yaml
+│   │   └── values.yaml
+│   ├── am-pattern-3
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── auth.json
+│   │   ├── requirements.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── am
+│   │   │   │   ├── control-plane
+│   │   │   │   │   ├── instance-1
+│   │   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-conf.yaml
+│   │   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-deployment.yaml
+│   │   │   │   │   │   └── wso2am-pattern-3-am-control-plane-service.yaml
+│   │   │   │   │   ├── instance-2
+│   │   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-conf.yaml
+│   │   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-deployment.yaml
+│   │   │   │   │   │   └── wso2am-pattern-3-am-control-plane-service.yaml
+│   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-conf-entrypoint.yaml
+│   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-ingress.yaml
+│   │   │   │   │   ├── wso2am-pattern-3-am-control-plane-service.yaml
+│   │   │   │   │   └── wso2am-pattern-3-am-control-plane-volume-claims.yaml
+│   │   │   │   └── gateway
+│   │   │   │       ├── wso2am-pattern-3-am-gateway-conf.yaml
+│   │   │   │       ├── wso2am-pattern-3-am-gateway-deployment.yaml
+│   │   │   │       ├── wso2am-pattern-3-am-gateway-ingress.yaml
+│   │   │   │       ├── wso2am-pattern-3-am-gateway-service.yaml
+│   │   │   │       └── wso2am-pattern-3-am-websub-ingress.yaml
+│   │   │   ├── mi
+│   │   │   │   ├── instance-1
+│   │   │   │   │   ├── wso2am-pattern-3-mi-deployment.yaml
+│   │   │   │   │   └── wso2am-pattern-3-mi-management-ingress.yaml
+│   │   │   │   └── wso2am-pattern-3-mi-service.yaml
+│   │   │   ├── wso2am-pattern-3-mi-secrets.yaml
+│   │   │   ├── wso2am-pattern-3-secrets.yaml
+│   │   │   └── wso2am-pattern-3-service-account.yaml
+│   │   └── values.yaml
+│   ├── am-pattern-4
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── auth.json
+│   │   ├── requirements.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── am
+│   │   │   │   ├── control-plane
+│   │   │   │   │   ├── instance-1
+│   │   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-conf.yaml
+│   │   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-deployment.yaml
+│   │   │   │   │   │   └── wso2am-pattern-4-am-control-plane-service.yaml
+│   │   │   │   │   ├── instance-2
+│   │   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-conf.yaml
+│   │   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-deployment.yaml
+│   │   │   │   │   │   └── wso2am-pattern-4-am-control-plane-service.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-conf-entrypoint.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-ingress.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-control-plane-service.yaml
+│   │   │   │   │   └── wso2am-pattern-4-am-control-plane-volume-claims.yaml
+│   │   │   │   ├── gateway
+│   │   │   │   │   ├── wso2am-pattern-4-am-gateway-conf.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-gateway-deployment.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-gateway-ingress.yaml
+│   │   │   │   │   ├── wso2am-pattern-4-am-gateway-service.yaml
+│   │   │   │   │   └── wso2am-pattern-4-am-websub-ingress.yaml
+│   │   │   │   └── traffic-manager
+│   │   │   │       ├── instance-1
+│   │   │   │       │   ├── wso2am-pattern-4-am-trafficmanager-conf.yaml
+│   │   │   │       │   ├── wso2am-pattern-4-am-trafficmanager-deployment.yaml
+│   │   │   │       │   └── wso2am-pattern-4-am-trafficmanager-service.yaml
+│   │   │   │       ├── instance-2
+│   │   │   │       │   ├── wso2am-pattern-4-am-trafficmanager-conf.yaml
+│   │   │   │       │   ├── wso2am-pattern-4-am-trafficmanager-deployment.yaml
+│   │   │   │       │   └── wso2am-pattern-4-am-trafficmanager-service.yaml
+│   │   │   │       ├── wso2am-pattern-4-am-trafficmanager-conf-entrypoint.yaml
+│   │   │   │       └── wso2am-pattern-4-am-trafficmanager-service.yaml
+│   │   │   ├── mi
+│   │   │   │   ├── wso2am-pattern-4-mi-deployment.yaml
+│   │   │   │   ├── wso2am-pattern-4-mi-management-ingress.yaml
+│   │   │   │   └── wso2am-pattern-4-mi-service.yaml
+│   │   │   ├── wso2am-pattern-4-mi-secrets.yaml
+│   │   │   ├── wso2am-pattern-4-secrets.yaml
+│   │   │   └── wso2am-pattern-4-service-account.yaml
+│   │   └── values.yaml
+│   └── mysql-am
+│       ├── Chart.yaml
+│       ├── requirements.yaml
+│       └── values.yaml
+├── issue_template.md
+├── pull_request_template.md
+└── simple
+    └── am-single
+        ├── Chart.yaml
+        ├── README.md
+        ├── auth.json
+        ├── requirements.yaml
+        ├── templates
+        │   ├── NOTES.txt
+        │   ├── _helpers.tpl
+        │   ├── am
+        │   │   ├── instance
+        │   │   │   ├── wso2am-deployment.yaml
+        │   │   │   ├── wso2am-service.yaml
+        │   │   │   └── wso2am-single-node-am-conf.yaml
+        │   │   ├── wso2am-conf-entrypoint.yaml
+        │   │   ├── wso2am-gateway-ingress.yaml
+        │   │   ├── wso2am-ingress.yaml
+        │   │   ├── wso2am-volume-claims.yaml
+        │   │   └── wso2am-websub-ingress.yaml
+        │   ├── wso2am-secrets.yaml
+        │   └── wso2am-service-account.yaml
+        └── values.yaml
+39 directories, 127 files
