@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/IA-Generative/ocr-api",
   "name": "ocr-api",
-  "description": "L'API OCR est une solution complète pour extraire du texte à partir de différents types de fichiers (PDF, images, documents bureautiques, emails) en utilisant des technologies avancées comme PaddleOCR et un pipeline asynchrone pour des résultats rapides et précis.",
+  "description": "Cette API fournit un service d’extraction de texte à partir de fichiers PDF ou d’images. Elle utilise un pipeline de traitement asynchrone avec Redis, S3 et PaddleOCR pour la reconnaissance de texte.",
   "language": "Python",
   "features": [
-    "OCR",
-    "Classification",
-    "Extractions d'entités",
-    "Templates"
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Redis",
+    "S3",
     "PaddleOCR",
     "FastAPI",
     "Keycloak"
@@ -18,24 +18,21 @@
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
-    "Microservices & Architecture"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "api-key"
+      "oauth2"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": "Jest, Pytest",
   "workflows": [
-    "CI/CD",
-    "release-please"
+    "release"
   ],
-  "lastActivity": "2026-06-02T00:00:00Z",
+  "lastActivity": "2026-06-30T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -46,9 +43,7 @@
     "openIssues": null
   },
   "tags": [
-    "OCR",
-    "Intelligence Artificielle & NLP",
     "Données & Open Data",
-    "API & Intégrations"
+    "Intelligence Artificielle & NLP"
   ]
 }

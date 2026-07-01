@@ -1,7 +1,13 @@
 .
 ├── .dockerignore
+├── .env
 ├── .env.local
 ├── .github
+│   ├── releases
+│   │   ├── .release-please-manifest.json
+│   │   ├── release-please-config-prerelease.json
+│   │   ├── release-please-config-release.json
+│   │   └── release-please-manifest.json
 │   └── workflows
 │       ├── cd.yml
 │       ├── ci.yml
@@ -17,15 +23,12 @@
 │   ├── commit-msg
 │   └── pre-commit
 ├── .pre-commit-config.yaml
-├── .release-please-manifest-prerelease.json
-├── .release-please-manifest.json
 ├── CHANGELOG.md
 ├── Makefile
 ├── README.md
 ├── alembic.ini
 ├── apps
 │   ├── client
-│   │   ├── .dockerignore
 │   │   ├── .editorconfig
 │   │   ├── .gitignore
 │   │   ├── CHANGELOG.md
@@ -38,7 +41,6 @@
 │   │   │   ├── 40x.html
 │   │   │   ├── 50x.html
 │   │   │   └── default.conf
-│   │   ├── package-lock.json
 │   │   ├── package.json
 │   │   ├── playwright
 │   │   │   ├── e2e
@@ -55,7 +57,6 @@
 │   │   │   ├── apple-touch-icon.png
 │   │   │   ├── browserconfig.xml
 │   │   │   ├── config.js
-│   │   │   ├── docs.md
 │   │   │   ├── favicon-16x16.png
 │   │   │   ├── favicon-32x32.png
 │   │   │   ├── favicon.ico
@@ -72,85 +73,38 @@
 │   │   │   │       ├── community.svg
 │   │   │   │       └── pen.svg
 │   │   │   ├── components
-│   │   │   │   ├── AnnotationLabelModal.vue
-│   │   │   │   ├── AppFooter.vue
 │   │   │   │   ├── AppHeader.vue
 │   │   │   │   ├── AppToaster.vue
-│   │   │   │   ├── BboxDetailPanel.vue
-│   │   │   │   ├── BboxDrawingOverlay.vue
-│   │   │   │   ├── BboxModal.vue
-│   │   │   │   ├── Classification.vue
-│   │   │   │   ├── ClassificationResult.vue
 │   │   │   │   ├── CustomCard.vue
-│   │   │   │   ├── DocTypeModal.vue
+│   │   │   │   ├── CustomTabs.vue
 │   │   │   │   ├── DsfrDropdown.vue
-│   │   │   │   ├── EntityDefinitionModal.vue
-│   │   │   │   ├── EntityDetailModal.vue
-│   │   │   │   ├── EntityExtraction.vue
-│   │   │   │   ├── EntityResult.vue
 │   │   │   │   ├── InfoBulle.vue
-│   │   │   │   ├── InfoTooltip.vue
-│   │   │   │   ├── LayoutDetailModal.vue
-│   │   │   │   ├── LeaderboardModal.vue
-│   │   │   │   ├── OcrChatbot.vue
-│   │   │   │   ├── OcrImageViewer.vue
-│   │   │   │   ├── OcrMetricsModal.vue
-│   │   │   │   ├── OcrSearchPanel.vue
-│   │   │   │   ├── OcrTextModal.vue
-│   │   │   │   ├── OcrTutorial.vue
-│   │   │   │   ├── OcrViewModeToggle.vue
 │   │   │   │   ├── OcrViewer.vue
-│   │   │   │   ├── OcrViewerModal.vue
-│   │   │   │   ├── PageClassificationPanel.vue
-│   │   │   │   ├── PredictionDetailModal.vue
 │   │   │   │   ├── ProgressBar.vue
 │   │   │   │   ├── SideBar.vue
 │   │   │   │   ├── StatModel.vue
-│   │   │   │   ├── TasksTab.vue
-│   │   │   │   ├── TemplateApplyModal.vue
-│   │   │   │   ├── TemplateFieldsModal.vue
-│   │   │   │   ├── TemplateHistoryModal.vue
-│   │   │   │   ├── TokenModal.vue
-│   │   │   │   └── layout
-│   │   │   │       ├── LayoutBlockFormula.vue
-│   │   │   │       ├── LayoutBlockImage.vue
-│   │   │   │       ├── LayoutBlockTable.vue
-│   │   │   │       └── types.ts
+│   │   │   │   └── TasksTab.vue
 │   │   │   ├── components.d.ts
 │   │   │   ├── composables
-│   │   │   │   ├── use-box-drawing.ts
-│   │   │   │   ├── use-ocr-chatbot.ts
-│   │   │   │   ├── use-ocr-metrics.ts
-│   │   │   │   ├── use-ocr-review.ts
-│   │   │   │   ├── use-ocr-viewer.ts
 │   │   │   │   └── use-toaster.ts
 │   │   │   ├── interfaces
-│   │   │   │   ├── IUser.ts
-│   │   │   │   ├── classification.ts
-│   │   │   │   └── review.ts
+│   │   │   │   └── IUser.ts
 │   │   │   ├── main.css
 │   │   │   ├── main.ts
 │   │   │   ├── router
 │   │   │   │   └── index.ts
 │   │   │   ├── stores
-│   │   │   │   ├── annotations.ts
 │   │   │   │   ├── ocr.ts
 │   │   │   │   ├── tasks.ts
-│   │   │   │   ├── templating.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── utils
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── keycloak.ts
 │   │   │   │   ├── methods.ts
-│   │   │   │   ├── uniqueId.ts
-│   │   │   │   └── upload.ts
+│   │   │   │   └── uniqueId.ts
 │   │   │   └── views
 │   │   │       ├── AboutUs.vue
-│   │   │       ├── AppHome.vue
-│   │   │       ├── DevOcrViewer.vue
-│   │   │       ├── Documentation.vue
-│   │   │       ├── OcrResultView.vue
-│   │   │       └── TemplatesView.vue
+│   │   │       └── AppHome.vue
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
@@ -162,6 +116,17 @@
 │   └── server
 │       ├── .python-version
 │       ├── CHANGELOG.md
+│       ├── benchmark
+│       │   └── paddle
+│       │       ├── 2.10.0
+│       │       │   ├── .python-version
+│       │       │   ├── Readme.md
+│       │       │   ├── main.py
+│       │       │   ├── pyproject-gpu.toml
+│       │       │   └── pyproject.toml
+│       │       └── 3.0.1
+│       │           ├── Readme.md
+│       │           └── main.py
 │       ├── business
 │       │   ├── __init__.py
 │       │   ├── cache
@@ -172,55 +137,41 @@
 │       │   │   └── models
 │       │   │       ├── __init__.py
 │       │   │       └── morpho.py
-│       │   ├── chunks
+│       │   ├── docling_inference
 │       │   │   ├── __init__.py
 │       │   │   ├── models
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── chunk_saver.py
-│       │   │   │   └── chunker.py
-│       │   │   └── worker.py
-│       │   ├── classification
-│       │   │   ├── __init__.py
-│       │   │   ├── models
-│       │   │   │   ├── __init__.py
-│       │   │   │   ├── openai_clip.py
-│       │   │   │   └── text.py
-│       │   │   ├── utils
-│       │   │   │   ├── __init__.py
-│       │   │   │   └── dl_models.py
-│       │   │   └── worker.py
-│       │   ├── entities
-│       │   │   ├── __init__.py
-│       │   │   └── models
+│       │   │   │   └── inference.py
+│       │   │   └── worker
 │       │   │       ├── __init__.py
-│       │   │       └── llm.py
+│       │   │       └── docling_worker.py
 │       │   ├── extractions
 │       │   │   ├── __init__.py
 │       │   │   ├── models
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── content_types.py
 │       │   │   │   ├── csv_extraction.py
 │       │   │   │   ├── docx_extraction.py
-│       │   │   │   ├── email_extraction.py
 │       │   │   │   ├── excel_extraction.py
-│       │   │   │   ├── file_extraction.py
 │       │   │   │   ├── inference.py
 │       │   │   │   └── libre_extraction.py
 │       │   │   └── worker
 │       │   │       ├── __init__.py
-│       │   │       ├── email_worker.py
 │       │   │       └── file_worker.py
+│       │   ├── features
+│       │   │   ├── __init__.py
+│       │   │   └── models
+│       │   │       ├── __init__.py
+│       │   │       ├── efficientnet_features.py
+│       │   │       ├── facebook.py
+│       │   │       ├── factory.py
+│       │   │       ├── features_extraction.py
+│       │   │       └── google.py
 │       │   ├── forms
 │       │   │   ├── __init__.py
 │       │   │   └── workers
 │       │   │       ├── __init__.py
 │       │   │       ├── pdf_worker.py
 │       │   │       └── template.py
-│       │   ├── layout
-│       │   │   └── models
-│       │   │       ├── __init__.py
-│       │   │       ├── descriptor.py
-│       │   │       └── prompts.py
 │       │   ├── llm
 │       │   │   ├── __init__.py
 │       │   │   ├── config.py
@@ -233,25 +184,19 @@
 │       │   │   └── workers
 │       │   │       ├── __init__.py
 │       │   │       └── llm_worker.py
-│       │   ├── paddleocr2
-│       │   │   ├── Dockerfile
-│       │   │   ├── Dockerfile.gpu
-│       │   │   ├── __init__.py
-│       │   │   ├── configs
-│       │   │   │   ├── __init__.py
-│       │   │   │   ├── classification.py
-│       │   │   │   └── paddle.py
-│       │   │   ├── models
-│       │   │   │   ├── __init__.py
-│       │   │   │   └── paddle.py
-│       │   │   └── utils
-│       │   │       ├── dl_ppstructure.py
-│       │   │       ├── download_paddle_models.2.10.0.py
-│       │   │       └── download_paddle_models_v3.py
-│       │   └── templating
+│       │   └── paddleocr2
+│       │       ├── Dockerfile
+│       │       ├── Dockerfile.gpu
 │       │       ├── __init__.py
-│       │       ├── filling_template.py
-│       │       └── model.py
+│       │       ├── configs
+│       │       │   ├── __init__.py
+│       │       │   └── paddle.py
+│       │       ├── models
+│       │       │   ├── __init__.py
+│       │       │   └── paddle.py
+│       │       └── utils
+│       │           ├── dl_ppstructure.py
+│       │           └── download_paddle_models.py
 │       ├── client
 │       │   ├── __init__.py
 │       │   └── backend.py
@@ -262,6 +207,34 @@
 │       │   └── paddle
 │       │       └── rec_labels
 │       │           └── en_dict.txt
+│       ├── evaluation
+│       │   ├── __init__.py
+│       │   ├── classification
+│       │   │   └── __init__.py
+│       │   └── features
+│       │       ├── Readme.md
+│       │       ├── __init__.py
+│       │       └── classification.py
+│       ├── exploration
+│       │   ├── Readme.md
+│       │   ├── __init__.py
+│       │   └── paddleocr3
+│       │       ├── Dockerfile
+│       │       ├── Dockerfile.gpu
+│       │       ├── Readme.md
+│       │       ├── __init__.py
+│       │       ├── config.py
+│       │       ├── models
+│       │       │   ├── __init__.py
+│       │       │   ├── formula.py
+│       │       │   ├── layout.py
+│       │       │   ├── paddle_pipe.py
+│       │       │   ├── pipeline.py
+│       │       │   └── table.py
+│       │       └── utils
+│       │           ├── __init__.py
+│       │           ├── download_paddle_models.py
+│       │           └── image.py
 │       ├── flower
 │       │   └── Dockerfile
 │       ├── migration
@@ -270,21 +243,12 @@
 │       │   └── versions
 │       │       ├── 124df8e39278_add_template_table.py
 │       │       ├── 2de301621b8c_make_type_as_primary_key.py
-│       │       ├── 356f06566bde_add_parent_id_to_task.py
-│       │       ├── 564486764bcd_add_annotations_table.py
-│       │       ├── 85ed6144852d_add_ocrchunkstable.py
 │       │       ├── 8eef5b5ca999_merge_parameters_and_template_bboxes_.py
 │       │       ├── 9a3cc1ff951a_add_parameters.py
-│       │       ├── a1b2c3d4e5f6_remove_task_id_from_annotations.py
 │       │       ├── a7253a308f09_add_position_in_queue.py
-│       │       ├── ad3749ac140f_add_entity_names.py
-│       │       ├── b2c3d4e5f6a7_create_ocr_chunks_table.py
-│       │       ├── b791ea2b8ac7_add_templating_table.py
-│       │       ├── c3f8a9b2d1e4_add_task_indexes_status_created_at.py
 │       │       ├── c6b9baace2a7_initial_db.py
 │       │       ├── c8f35b121800_add_input_output.py
 │       │       ├── cd886281153d_add_group_id_to_tasks_table.py
-│       │       ├── e35956b5d5f2_add_token_table.py
 │       │       ├── e39e0df5a1a7_add_hash_field_to_tasks.py
 │       │       ├── f0199d270d1c_merge_parameters_and_template_bboxes_.py
 │       │       └── f8470d5029e5_add_template_bboxes.py
@@ -300,27 +264,15 @@
 │       │   │       ├── factory.py
 │       │   │       └── token.py
 │       │   ├── main.py
-│       │   ├── mcp_compat.py
 │       │   └── routers
 │       │       ├── __init__.py
-│       │       ├── annotations.py
-│       │       ├── chat.py
 │       │       ├── collections.py
 │       │       ├── health.py
 │       │       ├── jobs.py
-│       │       ├── ocr_chunks.py
 │       │       ├── process.py
 │       │       ├── task.py
 │       │       ├── template.py
-│       │       ├── text.py
-│       │       └── v1
-│       │           ├── __init__.py
-│       │           ├── chat.py
-│       │           ├── models.py
-│       │           ├── schemas.py
-│       │           ├── templating.py
-│       │           ├── token.py
-│       │           └── utils.py
+│       │       └── text.py
 │       ├── ocr_purge
 │       │   ├── __init__.py
 │       │   ├── main.py
@@ -335,38 +287,22 @@
 │       │   │   ├── cache.py
 │       │   │   ├── model.py
 │       │   │   ├── pipeline.py
+│       │   │   ├── tracing.py
 │       │   │   └── worker.py
-│       │   ├── client
-│       │   │   ├── __init__.py
-│       │   │   ├── server.py
-│       │   │   └── tools.py
 │       │   ├── factory.py
 │       │   ├── main.py
-│       │   ├── tasks
-│       │   │   ├── __init__.py
-│       │   │   ├── classification.py
-│       │   │   ├── entity_extractions_task.py
-│       │   │   ├── filling_template_task.py
-│       │   │   ├── image_classification.py
-│       │   │   ├── ocr_chunk_task.py
-│       │   │   ├── ocr_tasks.py
-│       │   │   ├── signal.py
-│       │   │   └── templating.py
 │       │   └── utils
 │       │       ├── __init__.py
-│       │       ├── lazy_email.py
-│       │       ├── lazy_file.py
-│       │       ├── lazy_pdf.py
-│       │       └── validation.py
+│       │       └── lazy_pdf.py
 │       ├── src
 │       │   ├── __init__.py
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   ├── celery.py
 │       │   │   ├── ocr_model.py
-│       │   │   ├── openai.py
 │       │   │   ├── redis.py
-│       │   │   └── s3.py
+│       │   │   ├── s3.py
+│       │   │   └── sentry.py
 │       │   ├── connector
 │       │   │   ├── __init__.py
 │       │   │   ├── base.py
@@ -377,45 +313,19 @@
 │       │   │   ├── vector_store_factory.py
 │       │   │   └── vector_store_interface.py
 │       │   ├── logger.py
-│       │   ├── models
-│       │   │   ├── __init__.py
-│       │   │   ├── annotations.py
-│       │   │   ├── ocr_chunks.py
-│       │   │   ├── prediction.py
-│       │   │   ├── task.py
-│       │   │   ├── templates.py
-│       │   │   ├── templating.py
-│       │   │   └── token.py
-│       │   ├── repositories
-│       │   │   ├── __init__.py
-│       │   │   ├── task_repository.py
-│       │   │   └── templating_repository.py
 │       │   ├── schemas
 │       │   │   ├── __init__.py
 │       │   │   ├── box.py
-│       │   │   ├── classification.py
-│       │   │   ├── entity.py
 │       │   │   ├── health.py
 │       │   │   ├── input.py
 │       │   │   ├── layout.py
-│       │   │   ├── layouts
-│       │   │   │   ├── __init__.py
-│       │   │   │   ├── formula.py
-│       │   │   │   ├── image.py
-│       │   │   │   └── table.py
-│       │   │   ├── ocr_chunks.py
 │       │   │   ├── output.py
 │       │   │   ├── pagination.py
+│       │   │   ├── prediction.py
 │       │   │   ├── task.py
 │       │   │   ├── template.py
 │       │   │   ├── templates.py
-│       │   │   ├── templating.py
 │       │   │   └── vector.py
-│       │   ├── services
-│       │   │   ├── __init__.py
-│       │   │   ├── task_service.py
-│       │   │   ├── templating_service.py
-│       │   │   └── token_service.py
 │       │   └── utils
 │       │       ├── __init__.py
 │       │       ├── bboxes.py
@@ -427,12 +337,11 @@
 │       │   ├── 1-stress-test.py
 │       │   └── 2-process-stats.py
 │       ├── tests
+│       │   ├── .env.testing
 │       │   ├── business
 │       │   │   ├── checkbox_service
-│       │   │   │   └── test_integration.py
-│       │   │   ├── classifications
-│       │   │   │   └── models
-│       │   │   │       └── test_openai_clip.py
+│       │   │   │   ├── test_integration.py
+│       │   │   │   └── test_models_morpho.py
 │       │   │   ├── extractions
 │       │   │   │   ├── test_model_csv_extraction.py
 │       │   │   │   ├── test_model_excel_extraction.py
@@ -451,11 +360,16 @@
 │       │   │   │   └── worker
 │       │   │   │       ├── test_pdf_worker.py
 │       │   │   │       └── test_template_worker.py
-│       │   │   ├── paddleocr2
-│       │   │   │   └── test_models_paddle2.py
-│       │   │   └── templating
-│       │   │       ├── test_templating_filled_model.py
-│       │   │       └── test_templating_model.py
+│       │   │   ├── llm
+│       │   │   │   └── models
+│       │   │   │       ├── test_form_classification.py
+│       │   │   │       ├── test_llm_pipeline_integration.py
+│       │   │   │       ├── test_llm_vision.py
+│       │   │   │       ├── test_llm_vision_models.py
+│       │   │   │       └── test_template_model.py
+│       │   │   └── paddleocr2
+│       │   │       └── test_models_paddle2.py
+│       │   ├── conftest.py
 │       │   ├── connector
 │       │   │   ├── conftest.py
 │       │   │   ├── test_qdrant_vector_store.py
@@ -468,8 +382,7 @@
 │       │   │   ├── file_example_PPT_250kB.ppt
 │       │   │   ├── file_example_XLSX_10.xlsx
 │       │   │   ├── invalid
-│       │   │   │   ├── cerfa_13750-05-rempli-page-001-724x1024.jpg.webp
-│       │   │   │   └── file-sample_100kB-invalid.odt
+│       │   │   │   └── cerfa_13750-05-rempli-page-001-724x1024.jpg.webp
 │       │   │   ├── predictions
 │       │   │   │   └── valid
 │       │   │   │       ├── Exo7-algebre-page40
@@ -491,9 +404,6 @@
 │       │   │       ├── Exo7-algebre-page40.jpg
 │       │   │       ├── cerfa_11573-09-filled.pdf
 │       │   │       ├── cerfa_13750-05-1.pdf
-│       │   │       ├── file-sample_100kB-valid-to-fill.odt
-│       │   │       ├── file-sample_100kB-valid.odt
-│       │   │       ├── file-sample_100kB.odt
 │       │   │       ├── file-sample_500kB.docx
 │       │   │       ├── formulaire-cerfa-complete.png
 │       │   │       ├── formule.png
@@ -502,143 +412,104 @@
 │       │   │       │   └── copie-bac-2021-2.jpg
 │       │   │       ├── identite.jpg
 │       │   │       ├── tableau.png
-│       │   │       ├── test-integration.eml
 │       │   │       └── test.csv
+│       │   ├── evaluation
+│       │   │   └── features
+│       │   │       └── test_classification.py
+│       │   ├── exploration
+│       │   │   └── paddleocr3
+│       │   │       └── models
+│       │   │           ├── test_formula_models.py
+│       │   │           ├── test_layout_models.py
+│       │   │           ├── test_paddle_ocr_models.py
+│       │   │           ├── test_pipeline_models.py
+│       │   │           └── test_tableau_models.py
 │       │   ├── ocr_backend
-│       │   │   ├── conftest.py
 │       │   │   ├── core
 │       │   │   │   └── security
 │       │   │   │       └── test_security_token.py
-│       │   │   └── routers
-│       │   │       ├── test_collections.py
-│       │   │       ├── test_health_route.py
-│       │   │       ├── test_jobs_route.py
-│       │   │       ├── test_process_routes.py
-│       │   │       ├── test_task_router.py
-│       │   │       ├── test_template_route.py
-│       │   │       └── v1
-│       │   │           ├── test_chat_routes.py
-│       │   │           ├── test_chat_routes_integration.py
-│       │   │           ├── test_models_routes.py
-│       │   │           └── test_utils.py
+│       │   │   ├── routers
+│       │   │   │   ├── test_collections.py
+│       │   │   │   ├── test_health_route.py
+│       │   │   │   ├── test_jobs_route.py
+│       │   │   │   ├── test_process_routes.py
+│       │   │   │   ├── test_task_router.py
+│       │   │   │   └── test_template_route.py
+│       │   │   └── schema
+│       │   │       └── test_position.py
 │       │   ├── ocr_purge
 │       │   │   └── test_main_purge.py
 │       │   ├── services
 │       │   │   ├── base
 │       │   │   │   ├── test_base_cache.py
-│       │   │   │   ├── test_base_pipeline.py
-│       │   │   │   └── test_base_worker.py
+│       │   │   │   ├── test_base_worker.py
+│       │   │   │   └── test_tracing.py
 │       │   │   ├── test_main.py
-│       │   │   ├── test_pipeline_factory_integration.py
-│       │   │   └── utils
-│       │   │       ├── test_lazy_email.py
-│       │   │       └── test_validation.py
+│       │   │   └── test_pipeline_factory_integration.py
 │       │   └── src
-│       │       ├── conftest.py
 │       │       ├── connector
+│       │       │   ├── _collection_manager.py
+│       │       │   ├── _qdrant_vector_store.py
 │       │       │   ├── test_base.py
-│       │       │   ├── test_collection_manager.py
-│       │       │   ├── test_qdrant_vector_store.py
 │       │       │   ├── test_s3_connector.py
 │       │       │   └── test_vector_store_factory.py
-│       │       ├── repositories
-│       │       │   └── test_task_repository.py
 │       │       ├── schemas
 │       │       │   ├── test_box_model.py
 │       │       │   ├── test_output_schema.py
+│       │       │   ├── test_task_table.py
 │       │       │   └── test_template_table.py
 │       │       └── utils
 │       │           └── test_bboxes_utils.py
-│       ├── training
-│       │   ├── datasets
-│       │   │   ├── __init__.py
-│       │   │   └── funsd.py
-│       │   ├── evaluations.py
-│       │   └── train_rec.py
 │       └── uv.lock
 ├── commitlint.config.js
 ├── docker-compose-test.yaml
 ├── docker-compose.frontend.yaml
 ├── docker-compose.yaml
 ├── docs
-│   ├── classification
-│   │   └── README.md
-│   ├── extractions
-│   │   └── README.md
 │   ├── images
 │   │   ├── Diagrame.drawio.png
-│   │   ├── classification
-│   │   │   ├── classification-definition.png
-│   │   │   └── main.png
-│   │   ├── demo-ocr.gif
-│   │   ├── entity
-│   │   │   ├── entity-definition.png
-│   │   │   └── main.png
-│   │   ├── ocr
-│   │   │   ├── ocr-bbox-prediction.png
-│   │   │   └── ocr-simple.png
-│   │   └── templates
-│   │       └── main.png
-│   ├── ocr
-│   │   └── README.md
+│   │   └── demo-ocr.gif
 │   ├── security
 │   │   └── readme.md
 │   ├── server
-│   │   ├── INSTALL.md
-│   │   ├── USAGE.md
 │   │   └── asyncronus.md
-│   ├── templates
-│   │   └── README.md
 │   └── variables.md
 ├── infra
 ├── kind
 │   └── config.yaml
 ├── package.json
 ├── pnpm-lock.yaml
-├── release-please-config-prerelease.json
-├── release-please-config-release.json
-├── release-please-manifest.json
-├── sdk
-│   ├── .gitignore
-│   ├── CHANGELOG.md
-│   ├── QUICKSTART.md
-│   ├── README.md
-│   ├── USAGE_GUIDE.md
-│   ├── examples
-│   │   ├── async_example.py
-│   │   └── sync_example.py
-│   ├── ocr_sdk
-│   │   ├── __init__.py
-│   │   ├── client_async.py
-│   │   ├── client_sync.py
-│   │   ├── exceptions.py
-│   │   ├── models.py
-│   │   └── schemas
-│   │       ├── __init__.py
-│   │       ├── box.py
-│   │       ├── health.py
-│   │       ├── input.py
-│   │       ├── layout.py
-│   │       ├── output.py
-│   │       ├── prediction.py
-│   │       ├── task.py
-│   │       ├── template.py
-│   │       └── vector.py
-│   ├── pyproject.toml
-│   ├── tests
-│   │   └── ocr_sdk
-│   │       ├── test_client_sync.py
-│   │       └── test_models.py
-│   └── uv.lock
-└── training
-    ├── .python-version
-    ├── 1_download_dataset.sh
-    ├── 2_train.sh
-    ├── 3_eval.sh
-    ├── 4_export.sh
-    ├── Dockerfile
+└── sdk
+    ├── .gitignore
+    ├── CHANGELOG.md
+    ├── QUICKSTART.md
     ├── README.md
-    ├── docker-compose.yaml
+    ├── USAGE_GUIDE.md
+    ├── examples
+    │   ├── async_example.py
+    │   └── sync_example.py
+    ├── ocr_sdk
+    │   ├── __init__.py
+    │   ├── client_async.py
+    │   ├── client_sync.py
+    │   ├── exceptions.py
+    │   ├── models.py
+    │   └── schemas
+    │       ├── __init__.py
+    │       ├── box.py
+    │       ├── health.py
+    │       ├── input.py
+    │       ├── layout.py
+    │       ├── output.py
+    │       ├── prediction.py
+    │       ├── task.py
+    │       ├── template.py
+    │       └── vector.py
     ├── pyproject.toml
+    ├── tests
+    │   └── ocr_sdk
+    │       ├── conftest.py
+    │       ├── test_client_sync.py
+    │       └── test_models.py
     └── uv.lock
-143 directories, 500 files
+133 directories, 381 files
