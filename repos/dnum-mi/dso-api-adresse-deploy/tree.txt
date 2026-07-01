@@ -1,0 +1,49 @@
+.
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── Dockerfile
+├── README.md
+├── app
+│   ├── datadl-chunk.rb
+│   ├── datadl.sh
+│   └── dataloader.sh
+└── helm
+    ├── .helmignore
+    ├── Chart.yaml
+    ├── secrets
+    │   ├── encrypt.sh
+    │   ├── ovh
+    │   │   └── dev
+    │   │       └── secrets.yml.enc
+    │   └── scaleway
+    │       └── dev
+    │           └── secrets.yml.enc
+    ├── templates
+    │   ├── _helpers.tpl
+    │   ├── addok
+    │   │   ├── addok-env.cm.yaml
+    │   │   ├── conf.pvc.yaml
+    │   │   ├── data.pvc.yaml
+    │   │   ├── deployment.yaml
+    │   │   ├── hpa.yaml
+    │   │   ├── ingress.yaml
+    │   │   ├── init-conf.cm.yaml
+    │   │   ├── init-db.cm.yaml
+    │   │   ├── service.yaml
+    │   │   └── serviceaccount.yaml
+    │   ├── addok-redis
+    │   │   ├── deployment.yaml
+    │   │   ├── ingress.yaml
+    │   │   ├── init.cm.yaml
+    │   │   ├── pvc.yaml
+    │   │   ├── service.yaml
+    │   │   └── serviceaccount.yaml
+    │   ├── dataloader
+    │   │   ├── config.cm.yaml
+    │   │   └── dataloader.cj.yml
+    │   └── sops
+    │       └── secrets.yml
+    ├── values-ovh-dev.yaml
+    ├── values-scaleway-dev.yaml
+    └── values.yaml
+13 directories, 35 files
