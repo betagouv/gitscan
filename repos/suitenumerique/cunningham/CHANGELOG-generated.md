@@ -1,13 +1,11 @@
-## Changelog : cunningham (30 derniers jours, au 27 avril 2026)
+## Changelog : cunningham (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte une correction importante à l'état désactivé des liens dans les boutons, améliorant ainsi l'expérience utilisateur et la conformité aux standards d'accessibilité.
+Cette version apporte des améliorations d'accessibilité au composant Select, en masquant la flèche du menu déroulant aux lecteurs d'écran et en l'excluant de l'ordre de tabulation. Une correction a également été apportée pour améliorer l'affichage du sous-titre de la modale sur les petits écrans. Enfin, une nouvelle version des packages a été publiée.
 
 ### Évolutions fonctionnelles
-- Correction du comportement du bouton lien désactivé : le bouton affiche désormais correctement l'état désactivé, améliorant l'expérience utilisateur et l'accessibilité. [#1234](https://github.com/suitenumerique/cunningham/issues/1234)
+- **Select :** Amélioration de l'accessibilité en masquant la flèche du menu déroulant aux lecteurs d'écran et en l'excluant de l'ordre de tabulation. [#issue à identifier](https://github.com/suitenumerique/cunningham/issues/)
+- **Modale :** Correction de l'affichage du sous-titre de la modale sur les petits écrans, assurant une meilleure expérience utilisateur sur les appareils mobiles. [#issue à identifier](https://github.com/suitenumerique/cunningham/issues/)
 
 ### Évolutions techniques
-Aucune évolution technique significative à signaler durant cette période.
-
-### Autres changements
-Aucun autre changement à signaler.
+- Publication d'une nouvelle version des packages. [3c13c21](https://github.com/suitenumerique/cunningham/commit/3c13c21)
