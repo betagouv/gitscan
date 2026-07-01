@@ -21,6 +21,7 @@
 │       └── version.yml
 ├── .gitignore
 ├── .graphifyignore
+├── .node-version
 ├── .npmrc
 ├── .release-it.json
 ├── .trivyignore
@@ -220,6 +221,38 @@
 │   │       └── package-managers.md
 │   ├── smoke
 │   │   └── board_smoke.bot
+│   ├── supply-shield
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── diff-scope.md
+│   │       ├── forge-report.md
+│   │       ├── iterion-board.md
+│   │       ├── js-xray.md
+│   │       ├── lang-generic.md
+│   │       ├── lang-go.md
+│   │       ├── lang-js.md
+│   │       ├── lang-py.md
+│   │       ├── malware-signals.md
+│   │       ├── package-cache.md
+│   │       └── supply-shield.md
+│   ├── supply-shield-cve
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── cve-scanning.md
+│   │       ├── diff-scope.md
+│   │       ├── forge-report.md
+│   │       ├── iterion-board.md
+│   │       ├── lang-generic.md
+│   │       ├── lang-go.md
+│   │       ├── lang-js.md
+│   │       ├── lang-py.md
+│   │       ├── malware-signals.md
+│   │       ├── package-cache.md
+│   │       └── supply-shield-cve.md
 │   ├── test-coverage
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -341,6 +374,9 @@
 │   │   ├── memory.go
 │   │   ├── migrate.go
 │   │   ├── models.go
+│   │   ├── openapi.go
+│   │   ├── plugin.go
+│   │   ├── remote.go
 │   │   ├── report.go
 │   │   ├── resume.go
 │   │   ├── run.go
@@ -480,7 +516,10 @@
 │   │   ├── 045-whole-improve-loop-progressive-context-disclosure.md
 │   │   ├── 046-event-driven-runs-trigger-spine.md
 │   │   ├── 047-forge-token-out-of-git-config.md
-│   │   └── 048-org-team-hierarchy.md
+│   │   ├── 048-org-team-hierarchy.md
+│   │   ├── 049-forge-as-interchangeable-substrate.md
+│   │   ├── 050-dsl-turing-completeness-fuel-liveness.md
+│   │   └── 051-in-bot-event-driven-primitives.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── attachments.md
@@ -506,6 +545,8 @@
 │   │   ├── sec-audit-deps.md
 │   │   ├── sec-audit-source.md
 │   │   ├── secured-renovacy.md
+│   │   ├── supply-shield-cve.md
+│   │   ├── supply-shield.md
 │   │   ├── test-coverage.md
 │   │   ├── whats-next.md
 │   │   └── whole-improve-loop.md
@@ -535,14 +576,17 @@
 │   ├── desktop.md
 │   ├── development.md
 │   ├── dispatcher.md
+│   ├── dsl-totality-and-tc.md
 │   ├── dsl.md
 │   ├── e2e_coverage.md
 │   ├── examples.md
 │   ├── forge-conversations.md
 │   ├── forge-integrations.md
+│   ├── forge-permissions.md
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
+│   ├── groups-iteration-subbots.md
 │   ├── human-in-the-loop.md
 │   ├── images
 │   │   ├── iterion-logo.png
@@ -593,6 +637,7 @@
 │   ├── outbound-callbacks.md
 │   ├── permissions.md
 │   ├── persisted-formats.md
+│   ├── plugins.md
 │   ├── privacy_filter.md
 │   ├── quotas-and-limits.md
 │   ├── recipes.md
@@ -606,7 +651,6 @@
 │   ├── reviews
 │   │   └── codebase-2026-05-17.md
 │   ├── routers.md
-│   ├── rtk.md
 │   ├── sandbox.md
 │   ├── scheduling.md
 │   ├── secrets-reference.md
@@ -614,6 +658,7 @@
 │   ├── security-bots-distributed.md
 │   ├── security-bots.md
 │   ├── security-patcher.md
+│   ├── session-board.md
 │   ├── skill.md
 │   ├── supervisors.md
 │   ├── thinking-metrics.md
@@ -632,6 +677,7 @@
 │   ├── claw_tool_coverage_live_test.go
 │   ├── dispatcher_test.go
 │   ├── e2e_test.go
+│   ├── events_emit_wait_test.go
 │   ├── feature_dev_test.go
 │   ├── fixtures
 │   │   ├── feature-dev-go-service
@@ -711,12 +757,12 @@
 │   ├── live_feat_board_caps_test.go
 │   ├── live_feat_budget_resume_test.go
 │   ├── live_feat_budget_test.go
+│   ├── live_feat_compress_test.go
 │   ├── live_feat_cursors_test.go
 │   ├── live_feat_fork_test.go
 │   ├── live_feat_permission_ask_test.go
 │   ├── live_feat_permission_test.go
 │   ├── live_feat_router_llm_test.go
-│   ├── live_feat_rtk_test.go
 │   ├── live_feat_sandbox_net_test.go
 │   ├── live_feat_schedule_test.go
 │   ├── live_feat_skills_test.go
@@ -748,9 +794,9 @@
 │   │   ├── feat_backend_autodetect.bot
 │   │   ├── feat_board_caps.bot
 │   │   ├── feat_budget.bot
+│   │   ├── feat_compress.bot
 │   │   ├── feat_permission_ask.bot
 │   │   ├── feat_permission_deny.bot
-│   │   ├── feat_rtk.bot
 │   │   ├── feat_sandbox_net.bot
 │   │   ├── feat_sched.bot
 │   │   ├── feat_verified_action.bot
@@ -775,6 +821,7 @@
 │   │   │   └── skills
 │   │   │       └── demo-token.md
 │   │   └── vision_attachments.bot
+│   ├── turing_countdown_test.go
 │   ├── verified_action_test.go
 │   ├── vision_attachments_live_test.go
 │   ├── whats_next_loop_test.go
@@ -782,6 +829,9 @@
 ├── examples
 │   ├── clarify
 │   │   └── main.bot
+│   ├── composition
+│   │   ├── child.bot
+│   │   └── composition.bot
 │   ├── cursors
 │   │   ├── cursors.bot
 │   │   └── sample.bot
@@ -791,6 +841,8 @@
 │   │   │   └── devcontainer.json
 │   │   ├── README.md
 │   │   └── devbox.json
+│   ├── events
+│   │   └── pingpong.bot
 │   ├── github-actions
 │   │   └── iterion-hitl.yml
 │   ├── human-in-the-loop.bot
@@ -799,11 +851,14 @@
 │   ├── review-merge-gate.bot
 │   ├── supervisor
 │   │   └── sample.bot
+│   ├── turing
+│   │   └── countdown.bot
 │   └── ultracode
 │       └── sample.bot
 ├── go.mod
 ├── go.sum
 ├── marketplace.json
+├── openapi.json
 ├── package.json
 ├── pkg
 │   ├── alert
@@ -812,6 +867,9 @@
 │   │   ├── manager_test.go
 │   │   ├── webhook.go
 │   │   └── webhook_test.go
+│   ├── artifactlabels
+│   │   ├── classify.go
+│   │   └── classify_test.go
 │   ├── audit
 │   │   ├── audit.go
 │   │   ├── audit_test.go
@@ -931,6 +989,7 @@
 │   │   │   ├── manager.go
 │   │   │   ├── oauth.go
 │   │   │   ├── oauth_test.go
+│   │   │   ├── plugin_servers.go
 │   │   │   ├── rpc.go
 │   │   │   ├── sanitize.go
 │   │   │   └── sanitize_test.go
@@ -965,6 +1024,7 @@
 │   │   │   ├── llm_tool.go
 │   │   │   ├── memory_tools.go
 │   │   │   ├── memory_tools_test.go
+│   │   │   ├── modelspec.go
 │   │   │   ├── modelspecs.go
 │   │   │   ├── modelspecs_test.go
 │   │   │   ├── network_retry_test.go
@@ -982,6 +1042,8 @@
 │   │   │   ├── secrets_materialize_test.go
 │   │   │   ├── session.go
 │   │   │   ├── session_test.go
+│   │   │   ├── settings_hooks.go
+│   │   │   ├── settings_hooks_test.go
 │   │   │   ├── stamp_delegate_meta_test.go
 │   │   │   ├── streaming_types.go
 │   │   │   ├── subagent.go
@@ -999,9 +1061,9 @@
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
-│   │   ├── rtk
-│   │   │   ├── rtk.go
-│   │   │   └── rtk_test.go
+│   │   ├── rewrite
+│   │   │   ├── rewrite.go
+│   │   │   └── rewrite_test.go
 │   │   ├── secretguard
 │   │   │   ├── encodings.go
 │   │   │   ├── host.go
@@ -1157,6 +1219,8 @@
 │   │   ├── models.go
 │   │   ├── models_test.go
 │   │   ├── output.go
+│   │   ├── plugin.go
+│   │   ├── remote.go
 │   │   ├── report.go
 │   │   ├── resume.go
 │   │   ├── resume_helpers.go
@@ -1197,6 +1261,9 @@
 │   │   ├── metrics
 │   │   │   ├── metrics.go
 │   │   │   └── metrics_test.go
+│   │   ├── orgsweep
+│   │   │   ├── sweep.go
+│   │   │   └── sweep_test.go
 │   │   └── tracing
 │   │       ├── tracing.go
 │   │       └── tracing_test.go
@@ -1299,6 +1366,8 @@
 │   │   │   ├── forgejo_test.go
 │   │   │   ├── github.go
 │   │   │   ├── github_test.go
+│   │   │   ├── gitlab.go
+│   │   │   ├── gitlab_test.go
 │   │   │   ├── labels.go
 │   │   │   ├── tracker.go
 │   │   │   └── validate.go
@@ -1313,22 +1382,32 @@
 │   │   │   ├── jsonenc_test.go
 │   │   │   └── pos.go
 │   │   ├── expr
+│   │   │   ├── combinators_test.go
 │   │   │   ├── expr.go
 │   │   │   ├── expr_test.go
 │   │   │   ├── overflow_test.go
 │   │   │   └── snapshot.go
 │   │   ├── ir
+│   │   │   ├── artifact_labels_test.go
 │   │   │   ├── attachments_test.go
 │   │   │   ├── bench_test.go
+│   │   │   ├── budget_ceiling_test.go
 │   │   │   ├── compile.go
 │   │   │   ├── compile_cursors.go
 │   │   │   ├── compile_supervisors.go
 │   │   │   ├── compile_supervisors_test.go
 │   │   │   ├── compile_test.go
+│   │   │   ├── compress_test.go
 │   │   │   ├── compute_when_test.go
 │   │   │   ├── cursor_resolve_test.go
 │   │   │   ├── cursors_test.go
+│   │   │   ├── diag_codes_test.go
 │   │   │   ├── env_expand_test.go
+│   │   │   ├── events_test.go
+│   │   │   ├── expand_groups.go
+│   │   │   ├── expand_groups_test.go
+│   │   │   ├── fan_out_each_test.go
+│   │   │   ├── foreach_test.go
 │   │   │   ├── ir.go
 │   │   │   ├── memory_validate_test.go
 │   │   │   ├── memory_visibility_test.go
@@ -1340,28 +1419,21 @@
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
 │   │   │   ├── review_test.go
-│   │   │   ├── rtk_test.go
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_test.go
 │   │   │   ├── secrets_test.go
+│   │   │   ├── subbot_test.go
 │   │   │   ├── typecheck.go
 │   │   │   ├── ultracode_test.go
+│   │   │   ├── unbounded_loop_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_audit_test.go
-│   │   │   ├── validate_capabilities.go
-│   │   │   ├── validate_capabilities_test.go
-│   │   │   ├── validate_cursors.go
-│   │   │   ├── validate_expr_types_test.go
-│   │   │   ├── validate_provider.go
-│   │   │   ├── validate_provider_test.go
-│   │   │   ├── validate_test.go
-│   │   │   ├── validate_var_default_test.go
-│   │   │   ├── validate_verified_action.go
+│   │   │   ├── validate_*.go  (10 files)
 │   │   │   ├── verified_action_test.go
 │   │   │   └── worktree_default_test.go
 │   │   ├── parser
 │   │   │   ├── bench_test.go
 │   │   │   ├── diagnostic.go
+│   │   │   ├── fan_out_each_test.go
 │   │   │   ├── fuzz_test.go
 │   │   │   ├── lexer.go
 │   │   │   ├── parser.go
@@ -1369,6 +1441,7 @@
 │   │   │   ├── parser_keyword_names_test.go
 │   │   │   ├── parser_mcp.go
 │   │   │   ├── parser_mcp_test.go
+│   │   │   ├── parser_resources_lease_test.go
 │   │   │   ├── parser_sandbox.go
 │   │   │   ├── parser_sandbox_test.go
 │   │   │   ├── parser_test.go
@@ -1389,12 +1462,13 @@
 │   │   │   └── types.go
 │   │   ├── unparse
 │   │   │   ├── capabilities_test.go
+│   │   │   ├── compress_test.go
 │   │   │   ├── cursors_test.go
+│   │   │   ├── foreach_test.go
 │   │   │   ├── memory_test.go
 │   │   │   ├── permission_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── roundtrip_test.go
-│   │   │   ├── rtk_test.go
 │   │   │   ├── secrets_test.go
 │   │   │   ├── supervisors_test.go
 │   │   │   ├── unparse.go
@@ -1562,6 +1636,26 @@
 │   │   ├── mongo_test.go
 │   │   ├── pat.go
 │   │   └── pat_test.go
+│   ├── plugin
+│   │   ├── builtin
+│   │   │   ├── graphify
+│   │   │   │   ├── plugin.yaml
+│   │   │   │   └── skills
+│   │   │   │       └── graphify.md
+│   │   │   ├── repo-falcon
+│   │   │   │   ├── plugin.yaml
+│   │   │   │   └── skills
+│   │   │   │       └── code-knowledge-graph.md
+│   │   │   └── rtk
+│   │   │       └── plugin.yaml
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── install.go
+│   │   ├── manifest.go
+│   │   ├── plugin_test.go
+│   │   ├── registry.go
+│   │   ├── skilllib.go
+│   │   └── skilllib_test.go
 │   ├── queue
 │   │   ├── nats
 │   │   │   ├── dlq.go
@@ -1596,8 +1690,14 @@
 │   │   ├── engine.go
 │   │   ├── engine_test.go
 │   │   ├── errors.go
+│   │   ├── events.go
+│   │   ├── events_test.go
 │   │   ├── fan_out.go
+│   │   ├── fan_out_each.go
+│   │   ├── fan_out_each_test.go
 │   │   ├── fan_out_internal_test.go
+│   │   ├── fan_out_subbot_test.go
+│   │   ├── foreach_test.go
 │   │   ├── git_unix.go
 │   │   ├── git_windows.go
 │   │   ├── hardening_test.go
@@ -1606,6 +1706,9 @@
 │   │   ├── on_node_finished_test.go
 │   │   ├── parallel_test.go
 │   │   ├── pause_test.go
+│   │   ├── plugin_hooks.go
+│   │   ├── plugin_hooks_test.go
+│   │   ├── plugin_skills.go
 │   │   ├── presets_test.go
 │   │   ├── recipe_test.go
 │   │   ├── recovery
@@ -1635,6 +1738,8 @@
 │   │   ├── spendcap.go
 │   │   ├── spendcap_engine_test.go
 │   │   ├── spendcap_test.go
+│   │   ├── subbot_test.go
+│   │   ├── unbounded_loop_test.go
 │   │   ├── validation_test.go
 │   │   ├── worktree.go
 │   │   ├── worktree_default_test.go
@@ -1670,6 +1775,7 @@
 │   │   ├── runlog_test.go
 │   │   ├── service.go
 │   │   ├── service_artifacts.go
+│   │   ├── service_artifacts_test.go
 │   │   ├── service_attachments.go
 │   │   ├── service_control.go
 │   │   ├── service_drain_test.go
@@ -1814,12 +1920,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_github_manifest_routes.go
-│   │   ├── forge_oauth_app_routes.go
-│   │   ├── forge_oauth_app_routes_test.go
-│   │   ├── forge_provisioning_routes.go
-│   │   ├── forge_routes.go
-│   │   ├── forge_routes_test.go
+│   │   ├── forge_*.go  (8 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_test.go
@@ -1832,12 +1933,7 @@
 │   │   ├── launch_gate_test.go
 │   │   ├── limits.go
 │   │   ├── limits_test.go
-│   │   ├── marketplace_cloud.go
-│   │   ├── marketplace_cloud_test.go
-│   │   ├── marketplace_download.go
-│   │   ├── marketplace_public_test.go
-│   │   ├── marketplace_routes.go
-│   │   ├── marketplace_routes_test.go
+│   │   ├── marketplace_*.go  (6 files)
 │   │   ├── mcp_board_handler.go
 │   │   ├── mcp_board_handler_test.go
 │   │   ├── memory_routes.go
@@ -1847,6 +1943,10 @@
 │   │   ├── middleware_webhook.go
 │   │   ├── oauth_routes.go
 │   │   ├── oauth_team_routes.go
+│   │   ├── openapi.go
+│   │   ├── openapi_schema.go
+│   │   ├── openapi_spec.go
+│   │   ├── openapi_test.go
 │   │   ├── org_sso_domain_routes.go
 │   │   ├── org_sso_routes.go
 │   │   ├── org_sso_routes_test.go
@@ -1854,12 +1954,14 @@
 │   │   ├── password_routes.go
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
+│   │   ├── plugins.go
 │   │   ├── projects
 │   │   │   ├── prune_test.go
 │   │   │   └── registry.go
 │   │   ├── projects.go
 │   │   ├── queue_sweeper.go
 │   │   ├── queue_sweeper_test.go
+│   │   ├── route_recorder.go
 │   │   ├── runs.go
 │   │   ├── runs_browser.go
 │   │   ├── runs_commits.go
@@ -1924,6 +2026,13 @@
 │   │   ├── webhooks_prforge.go
 │   │   ├── webhooks_routes.go
 │   │   └── webhooks_routes_test.go
+│   ├── sessionboard
+│   │   ├── bot.go
+│   │   ├── coordinator.go
+│   │   ├── env.go
+│   │   ├── sessionboard_test.go
+│   │   ├── spec.go
+│   │   └── store.go
 │   ├── store
 │   │   ├── attachments.go
 │   │   ├── attachments_test.go
@@ -2065,6 +2174,7 @@
 │       └── Dockerfile
 ├── scripts
 │   ├── adhoc
+│   │   ├── supply-shield-fixtures.sh
 │   │   ├── whats-next-prompts-review.bot
 │   │   └── whats-next-skills-gen.bot
 │   ├── bench
@@ -2186,6 +2296,7 @@
 │   │   │   ├── orgSso.ts
 │   │   │   ├── orgs.ts
 │   │   │   ├── pats.ts
+│   │   │   ├── plugins.ts
 │   │   │   ├── projects.ts
 │   │   │   ├── queueMessages.ts
 │   │   │   ├── runs
@@ -2203,8 +2314,11 @@
 │   │   │   ├── runs.lifecycle.test.ts
 │   │   │   ├── runs.ts
 │   │   │   ├── runsStats.ts
+│   │   │   ├── schema.ts
 │   │   │   ├── secrets.ts
+│   │   │   ├── tokens.ts
 │   │   │   ├── triggers.ts
+│   │   │   ├── typed.ts
 │   │   │   ├── types.ts
 │   │   │   ├── usage.ts
 │   │   │   ├── webhooks.ts
@@ -2299,6 +2413,7 @@
 │   │   │   │   ├── CostPreviewChip.tsx
 │   │   │   │   ├── EventLog.test.tsx
 │   │   │   │   ├── EventLog.tsx
+│   │   │   │   ├── FanoutFrame.tsx
 │   │   │   │   ├── FileDiffDialog.tsx
 │   │   │   │   ├── FileEditDialog.tsx
 │   │   │   │   ├── FilesPanel.tsx
@@ -2331,6 +2446,8 @@
 │   │   │   │   ├── StatusDot.tsx
 │   │   │   │   ├── ThinkingFooter.tsx
 │   │   │   │   ├── ToolRunningFooter.tsx
+│   │   │   │   ├── artifacts
+│   │   │   │   │   └── ArtifactsPanel.tsx
 │   │   │   │   ├── budgetPillTooltip.test.ts
 │   │   │   │   ├── cancelTooltip.test.ts
 │   │   │   │   ├── conversation
@@ -2434,6 +2551,11 @@
 │   │   │   │   │   ├── useRunConsoleLayout.ts
 │   │   │   │   │   ├── useRunSnapshot.ts
 │   │   │   │   │   └── useSelectionState.ts
+│   │   │   │   ├── sessionboard
+│   │   │   │   │   ├── SessionBoardTab.tsx
+│   │   │   │   │   └── widgets.tsx
+│   │   │   │   ├── todoChecklist.tsx
+│   │   │   │   ├── todoStatus.ts
 │   │   │   │   ├── toolFormatters.test.ts
 │   │   │   │   ├── toolFormatters.ts
 │   │   │   │   └── usePreview.ts
@@ -2511,6 +2633,7 @@
 │   │   │       ├── BrandMark.tsx
 │   │   │       ├── BrandWordmark.tsx
 │   │   │       ├── Button.tsx
+│   │   │       ├── Card.tsx
 │   │   │       ├── Checkbox.tsx
 │   │   │       ├── Chip.tsx
 │   │   │       ├── Combobox.tsx
@@ -2527,8 +2650,10 @@
 │   │   │       ├── IconButton.tsx
 │   │   │       ├── InlineBanner.tsx
 │   │   │       ├── Input.tsx
+│   │   │       ├── Kbd.tsx
 │   │   │       ├── LiveDot.tsx
 │   │   │       ├── MarkdownPreview.tsx
+│   │   │       ├── PageHeader.tsx
 │   │   │       ├── Popover.tsx
 │   │   │       ├── PromptOverlayHighlight.tsx
 │   │   │       ├── Radio.tsx
@@ -2558,6 +2683,7 @@
 │   │   │   ├── useAutoValidation.ts
 │   │   │   ├── useBoardKeyboard.ts
 │   │   │   ├── useBotForOpenFile.ts
+│   │   │   ├── useCanManageTeam.ts
 │   │   │   ├── useCanvasConnections.ts
 │   │   │   ├── useCanvasKeyboard.ts
 │   │   │   ├── useCanvasLayout.ts
@@ -2625,6 +2751,8 @@
 │   │   │   ├── errorHints.test.ts
 │   │   │   ├── errorHints.ts
 │   │   │   ├── eventIter.ts
+│   │   │   ├── fanoutRegions.test.ts
+│   │   │   ├── fanoutRegions.ts
 │   │   │   ├── fileTree.test.ts
 │   │   │   ├── fileTree.ts
 │   │   │   ├── format.ts
@@ -2732,6 +2860,7 @@
 │   │   │   │   │   └── useUndoTransitions.ts
 │   │   │   │   ├── boardShared.ts
 │   │   │   │   └── index.tsx
+│   │   │   ├── CliAuthPage.tsx
 │   │   │   ├── CloudLanding.tsx
 │   │   │   ├── Dispatcher
 │   │   │   │   ├── RetriesTable.tsx
@@ -2750,6 +2879,7 @@
 │   │   │   │   ├── ModerationQueue.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   └── installState.ts
+│   │   │   ├── Plugins.tsx
 │   │   │   ├── ProjectSwitcher
 │   │   │   │   ├── AddProjectDialog.tsx
 │   │   │   │   └── index.tsx
@@ -2786,8 +2916,13 @@
 │   │   │   │   ├── ResetPassword.tsx
 │   │   │   │   └── __tests__
 │   │   │   │       └── ForcedPasswordChange.test.tsx
+│   │   │   ├── integrations
+│   │   │   │   ├── IntegrationsPage.tsx
+│   │   │   │   └── ModelProvidersTab.tsx
 │   │   │   ├── orgs
 │   │   │   │   └── OrgPage.tsx
+│   │   │   ├── plugins
+│   │   │   │   └── PluginConfigForm.tsx
 │   │   │   ├── settings
 │   │   │   │   ├── ApiKeys.tsx
 │   │   │   │   ├── OAuthConnections.tsx
@@ -9472,4 +9607,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1378 directories, 8652 files
+1399 directories, 8787 files
