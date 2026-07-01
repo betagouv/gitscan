@@ -1,0 +1,309 @@
+.
+├── .dockerignore
+├── .editorconfig
+├── .github
+│   └── workflows
+│       ├── Deploy Eleventy with GitHub Pages_dependencies_preinstalled.yml
+│       └── Deploy docker image.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitlab-ci.yml
+├── .idea
+│   ├── .gitignore
+│   ├── eleventy-dsfr.iml
+│   ├── misc.xml
+│   ├── modules.xml
+│   └── vcs.xml
+├── .vscode
+│   └── settings.json
+├── Dockerfile
+├── Dockerfile.bitnami
+├── LICENSE.md
+├── LICENSES
+│   ├── LICENSE.Etalab-2.0.md
+│   └── LICENSE.MIT.md
+├── README.md
+├── _data
+│   ├── data.js
+│   ├── i18n
+│   │   ├── en
+│   │   │   └── index.js
+│   │   ├── fr
+│   │   │   └── index.js
+│   │   └── index.js
+│   └── metadata.js
+├── _includes
+│   ├── components
+│   │   ├── accordionsgroup.njk
+│   │   ├── add_to_calendar.njk
+│   │   ├── back_to_top.njk
+│   │   ├── breadcrumb.njk
+│   │   ├── callout.njk
+│   │   ├── card.njk
+│   │   ├── component.njk
+│   │   ├── quote.njk
+│   │   ├── table.njk
+│   │   ├── taggroup-disabled.njk
+│   │   ├── taggroup.njk
+│   │   └── tile.njk
+│   ├── layouts
+│   │   ├── base.njk
+│   │   ├── home.njk
+│   │   ├── page.njk
+│   │   ├── page_date_readtime.njk
+│   │   ├── page_readtime.njk
+│   │   └── post.njk
+│   ├── postslist.njk
+│   └── templates
+│       ├── display.njk
+│       ├── footer.njk
+│       ├── header.njk
+│       ├── navigation.njk
+│       ├── newsletter_and_follow_us.njk
+│       ├── pagination.njk
+│       ├── share.njk
+│       └── translate.njk
+├── content
+│   ├── 404.njk
+│   ├── calendar
+│   │   ├── calendar.11tydata.js
+│   │   ├── calendar.njk
+│   │   └── event.njk
+│   ├── en
+│   │   ├── about
+│   │   │   └── index.md
+│   │   ├── blog
+│   │   │   ├── index.njk
+│   │   │   ├── posts
+│   │   │   │   ├── fifthpost.md
+│   │   │   │   ├── firstpost.md
+│   │   │   │   ├── fourthpost
+│   │   │   │   │   ├── fourthpost.md
+│   │   │   │   │   └── possum.png
+│   │   │   │   ├── posts.11tydata.js
+│   │   │   │   ├── secondpost.md
+│   │   │   │   └── thirdpost.md
+│   │   │   ├── tags.njk
+│   │   │   └── tags_index.njk
+│   │   ├── en.11tydata.js
+│   │   ├── index.njk
+│   │   └── search-results.njk
+│   ├── feed
+│   │   ├── feed.11tydata.js
+│   │   ├── feed.njk
+│   │   └── json.njk
+│   ├── fr
+│   │   ├── 1-chapeau
+│   │   │   ├── 2-presentation-generale.md
+│   │   │   ├── Guide_CCT_dans_la_commande_publique.md
+│   │   │   ├── readme.md
+│   │   │   ├── x-glossaire.md
+│   │   │   ├── xx-contribution-au-cct.md
+│   │   │   └── xx-gestion-du-cct.md
+│   │   ├── 2-referentiel-normes-europeenees-et-intermin
+│   │   │   ├── readme.md
+│   │   │   └── referentiel_normes.md
+│   │   ├── 3-doctrine-d-hebergement
+│   │   │   ├── 1-cloud-native
+│   │   │   │   ├── 1-cct-cloud-native
+│   │   │   │   │   ├── 1-introduction.md
+│   │   │   │   │   ├── 2-contexte-enjeux-vision.md
+│   │   │   │   │   ├── 3-principes-generaux-cadre-cloud-native.md
+│   │   │   │   │   ├── normes-applicables.md
+│   │   │   │   │   └── sommaire.md
+│   │   │   │   ├── 2-integration-et-deploiement
+│   │   │   │   │   ├── certification.md
+│   │   │   │   │   ├── offre-interministerielle-cloud-pi-native.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 3-hebergement-et-exploitation
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 4-securite
+│   │   │   │   │   ├── SSI-et-homologation.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 5-exigences-d-architecture
+│   │   │   │   │   ├── exigences-architecture.md
+│   │   │   │   │   ├── patten-architecture.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 2-cloud-pi
+│   │   │   │   ├── 1-cct-cloud-pi
+│   │   │   │   │   └── sommaire.md
+│   │   │   │   ├── 2-integration-et-deploiement
+│   │   │   │   │   ├── Forge-dc.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 3-hebergement-et-exploitation
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 4-securite
+│   │   │   │   │   ├── SSI-et-homologation.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 5-exigences-d-architecture
+│   │   │   │   │   ├── exigences-architecture.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 3-sgami
+│   │   │   │   ├── 2-integration-et-deploiement
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 3-hebergement-et-exploitation
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 4-securite
+│   │   │   │   │   ├── SSI-et-homologation.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   ├── 5-exigences-d-architecture
+│   │   │   │   │   ├── exigences-architecture.md
+│   │   │   │   │   └── readme.md
+│   │   │   │   └── readme.md
+│   │   │   ├── introduction.md
+│   │   │   └── readme.md
+│   │   ├── 4-environnement-numerique-de-travail
+│   │   │   ├── 1-ent-agent
+│   │   │   │   ├── 1-sommaire.md
+│   │   │   │   ├── 2-sauvegarde-et-diffusion-des-donnees.md
+│   │   │   │   ├── 3-referentiel-produits.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 2-ent-developpeur
+│   │   │   │   ├── 1-sommaire.md
+│   │   │   │   ├── 2-sauvegarde-et-diffusion-des-donnees.md
+│   │   │   │   ├── 3-referentiel-produits.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 3-ent-administrateur
+│   │   │   │   ├── 1-sommaire.md
+│   │   │   │   ├── 2-sauvegarde-et-diffusion-des-donnees.md
+│   │   │   │   ├── 3-referentiel-produits.md
+│   │   │   │   └── readme.md
+│   │   │   └── introduction.md
+│   │   ├── 5-socle-d-architecture
+│   │   │   ├── 1-contexte-utilisateur
+│   │   │   │   ├── 0-introduction.md
+│   │   │   │   ├── 1.1-Pilier_utilisateur_Gestion_identite_usager.md
+│   │   │   │   ├── 1.2-Pilier_utilisateur_Gestion_identite_agent.md
+│   │   │   │   ├── 1.3-Pilier_utilisateur_Gestion_identite_personne_morale.md
+│   │   │   │   ├── 2-Pilier_utilisateur_qualite_parcours_utilisateur.md
+│   │   │   │   ├── 3-Pilier_utilisateur_CSU.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 2-donnees-et-api
+│   │   │   │   ├── 0-introduction.md
+│   │   │   │   ├── 1-donnees-et-services.md
+│   │   │   │   ├── 2-gestion-des-echanges.md
+│   │   │   │   ├── 3-strategie-api
+│   │   │   │   │   ├── cover.jpg
+│   │   │   │   │   ├── introduction.md
+│   │   │   │   │   ├── principes.md
+│   │   │   │   │   └── regles.md
+│   │   │   │   ├── 4-analyser-et-valoriser-les-donnees.md
+│   │   │   │   ├── 5-cycle-de-vie.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 3-services-applicatifs
+│   │   │   │   ├── construction-d-un-site-web.md
+│   │   │   │   ├── emploi-donnees-geographiques.md
+│   │   │   │   ├── gestion-documentaire.md
+│   │   │   │   ├── introduction.md
+│   │   │   │   ├── messagerie-securisee.md
+│   │   │   │   ├── readme.md
+│   │   │   │   └── solutions-captcha.md
+│   │   │   ├── 4-exigences-d-architecture
+│   │   │   │   ├── exigences-architecture.md
+│   │   │   │   ├── introduction.md
+│   │   │   │   └── readme.md
+│   │   │   ├── 5-strategie-reseau-radio-telecom-et-moyens-de-communication
+│   │   │   │   ├── readme.md
+│   │   │   │   └── strategie-reseau.md
+│   │   │   ├── 6-enregistrement-d-un-element-au-registre-des-identites-a-visee-internationale
+│   │   │   │   ├── identifiants-uniques.md
+│   │   │   │   └── readme.md
+│   │   │   └── Introduction.md
+│   │   ├── 6-socle-de-securite
+│   │   │   ├── donnees-personnelles.md
+│   │   │   ├── exigences-ssi-comunes.md
+│   │   │   ├── introduction.md
+│   │   │   ├── readme.md
+│   │   │   └── referentiel-des-produits-securite.md
+│   │   ├── about.md
+│   │   ├── accessibility
+│   │   │   └── index.md
+│   │   ├── blog
+│   │   │   ├── index.njk
+│   │   │   ├── posts
+│   │   │   │   ├── architecture.md
+│   │   │   │   ├── cloud-pi-native.md
+│   │   │   │   ├── donnees-api.md
+│   │   │   │   ├── ent.md
+│   │   │   │   ├── legacy.md
+│   │   │   │   ├── posts.11tydata.js
+│   │   │   │   └── securite.md
+│   │   │   ├── tags.njk
+│   │   │   └── tags_index.njk
+│   │   ├── contact
+│   │   │   └── index.md
+│   │   ├── fr.11tydata.js
+│   │   ├── images
+│   │   │   ├── CommandePubliquesAutres.png
+│   │   │   ├── cct-2.png
+│   │   │   ├── cct-cycle-de-vie-des-applications.png
+│   │   │   └── cct-themes.png
+│   │   ├── index.11tydata.js
+│   │   ├── index.njk
+│   │   ├── legal
+│   │   │   └── index.md
+│   │   ├── menu-architecture.md
+│   │   ├── menu-ent.md
+│   │   ├── menu-hebergement.md
+│   │   ├── menu-normes.md
+│   │   ├── menu-presentation.md
+│   │   ├── menu-securite.md
+│   │   ├── personal-data
+│   │   │   └── index.md
+│   │   └── search-results.njk
+│   └── sitemap
+│       ├── sitemap.njk
+│       └── sitemap.xml.njk
+├── eleventy-dsfr.png
+├── eleventy.config.calendar.js
+├── eleventy.config.drafts.js
+├── eleventy.config.i18n.js
+├── eleventy.config.images.js
+├── eleventy.config.js
+├── eleventy.config.pagination.js
+├── markdown-custom-containers.js
+├── nginx
+│   └── nginx-run.template
+├── package.json
+└── public
+    ├── css
+    │   ├── index.css
+    │   └── prism-diff.css
+    ├── icons
+    │   ├── 1F3DB.svg
+    │   ├── logo
+    │   │   ├── peertube.svg
+    │   │   └── sourcehut.svg
+    │   ├── undraw_design_team_re_gh2d.svg
+    │   ├── undraw_home_run_acyh.svg
+    │   ├── undraw_online_collaboration_re_bkpm.svg
+    │   ├── undraw_team_collaboration_re_ow29.svg
+    │   └── undraw_team_collaboration_re_ow29_green.svg
+    ├── img
+    │   ├── .gitkeep
+    │   ├── CommandePubliquesAutres.png
+    │   ├── cct-2.png
+    │   ├── cct-cycle-de-vie-des-applications.png
+    │   ├── cct-themes.png
+    │   ├── cloudnative_modele_responsabilites.png
+    │   ├── cloudnative_segmentation_hebergement.png
+    │   ├── image7.png
+    │   ├── placeholder.16x9.png
+    │   ├── placeholder.1x1.png
+    │   ├── undraw_Engineering_team_a7n2.png
+    │   ├── undraw_Location_tracking_re_n3ok.png
+    │   ├── undraw_Secure_server_re_8wsq.png
+    │   ├── undraw_Security_on_re_e491.png
+    │   ├── undraw_Services_re_hu5n.png
+    │   ├── undraw_Terms_re_6ak4.png
+    │   ├── undraw_Weather_app_re_kcb1.png
+    │   ├── undraw_cloud_files_wmo8.png
+    │   ├── undraw_progressive_app_m9ms.png
+    │   └── undraw_urban_design_kpu8.png
+    └── js
+        ├── matomo.js
+        ├── search-results.js
+        └── search.js
+71 directories, 237 files
