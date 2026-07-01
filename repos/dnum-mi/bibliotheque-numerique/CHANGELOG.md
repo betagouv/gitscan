@@ -1,0 +1,1938 @@
+# Changelog
+
+## [5.14.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.13.0...v5.14.0) (2026-06-08)
+
+
+### Features
+
+* ajout de bn-configurations/client aux chemins autorisés dans TermsOfUseGuard ([887ff18](https://github.com/dnum-mi/bibliotheque_numerique/commit/887ff180759896d9b18c5b11068f5876bd68db9e))
+* ajout de l'endpoint acceptTerms pour gérer l'acceptation de la charte d'utilisation ([38fed92](https://github.com/dnum-mi/bibliotheque_numerique/commit/38fed9210e739f6e562474f197a898bc09077925))
+* ajout de la page des conditions générales d'utilisation ([df35a99](https://github.com/dnum-mi/bibliotheque_numerique/commit/df35a997efbdb1a569393f8ada01c1a9d2ee87ed))
+* ajout de TermsOfUseGuard pour la validation de l'acceptation de la charte d'utilisation ([93b7706](https://github.com/dnum-mi/bibliotheque_numerique/commit/93b7706478332048599a84bbb1f58e6d6a0e6522))
+* ajout du champ termsAcceptedAt au modèle utilisateur et aux DTO associés ([4ccc5fc](https://github.com/dnum-mi/bibliotheque_numerique/commit/4ccc5fc08be2a6936e3890999b2216c538c6236b))
+* mis à jour du TermsOfUseGuard et améliorer la gestion des erreurs lors de l'acceptation des CGU ([c7c1f7e](https://github.com/dnum-mi/bibliotheque_numerique/commit/c7c1f7ec046d196fd8581aa3d2e7dcce337f6ff6))
+* mise à jour du flow d'acceptation de la charte d'utilisation ([194908e](https://github.com/dnum-mi/bibliotheque_numerique/commit/194908e92d812cd3afa553f146b8b56df5a995ec))
+* rendre la page CGU consultable en publique ([10a819c](https://github.com/dnum-mi/bibliotheque_numerique/commit/10a819c10981a6c4dbf298812f4d61ace3f8df18))
+
+
+### Bug Fixes
+
+* build client with option VITE_APP_OPEN_SOURCE ([8faf802](https://github.com/dnum-mi/bibliotheque_numerique/commit/8faf802a777b3fb6f79b8c375f072b06f66b907c))
+* set default VITE_APP_OPEN_SOURCE to false ([1ed0a52](https://github.com/dnum-mi/bibliotheque_numerique/commit/1ed0a52867ef6b898139b0a4c0b3f584e33036d2))
+* use good command for start worker ([cbf5545](https://github.com/dnum-mi/bibliotheque_numerique/commit/cbf5545b524145a51801a94b2c35b4ec2a53191b))
+
+## [5.13.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.12.1...v5.13.0) (2026-06-03)
+
+
+### Features
+
+* erc.aws not existe, so change to office image ([e2181a6](https://github.com/dnum-mi/bibliotheque_numerique/commit/e2181a6ffdfbe74b63f9faa0a66cba9a96492c5b))
+
+
+### Bug Fixes
+
+* mise a jours du dockerfile client ([0f8ce48](https://github.com/dnum-mi/bibliotheque_numerique/commit/0f8ce4864999c04312c7c8f681dd2ecff3037139))
+* mise jours pour le proxy local ([222062f](https://github.com/dnum-mi/bibliotheque_numerique/commit/222062f4eed26ff1da0f4ee9c8c9ed2ec610b4db))
+* nginx office image, use root ([abbbef6](https://github.com/dnum-mi/bibliotheque_numerique/commit/abbbef670dd1e68b31b98c8ab64e4157a5d56391))
+* type manquant dans la vue ([30907f2](https://github.com/dnum-mi/bibliotheque_numerique/commit/30907f260c123ab35920700209b64e29b603a533))
+* utilisateur node pour le containeur du server ([45947d5](https://github.com/dnum-mi/bibliotheque_numerique/commit/45947d541ed7df6d3d699ade8be23093575d2c44))
+* verifier le run du server par liveness dans le CI ([abceedc](https://github.com/dnum-mi/bibliotheque_numerique/commit/abceedcd13a2aa5ffdc2b8d5576eb80578d1568c))
+
+## [5.12.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.12.0...v5.12.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* variabiliser les timeout du health ([e02a2ca](https://github.com/dnum-mi/bibliotheque_numerique/commit/e02a2ca484636fc6f6985138efbf9da12465bc60))
+
+## [5.12.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.11.3...v5.12.0) (2026-05-28)
+
+
+### Features
+
+* save health check in DB to optimise perfs ([dc065ec](https://github.com/dnum-mi/bibliotheque_numerique/commit/dc065ecc3204757a0e839d8f41d0e1ad16bfddc2))
+
+
+### Bug Fixes
+
+* correct error on migration ([3a90131](https://github.com/dnum-mi/bibliotheque_numerique/commit/3a901313a0d12f7c7a74279cb7574777aca299fe))
+* doc contribution ([d47ae97](https://github.com/dnum-mi/bibliotheque_numerique/commit/d47ae97b3182240bc66996c019b8a3fe476faecf))
+* logo warning design ([#2386](https://github.com/dnum-mi/bibliotheque_numerique/issues/2386)) ([951e07b](https://github.com/dnum-mi/bibliotheque_numerique/commit/951e07bff39681b3ebb0be42abc793904eeb8196))
+* re-activate nestjs logging for errors ([af22965](https://github.com/dnum-mi/bibliotheque_numerique/commit/af2296540789026e1f5527df5801cdbdb59a19a2))
+* verifie tous les api tous les 10s ([37c149c](https://github.com/dnum-mi/bibliotheque_numerique/commit/37c149ca52acb944d3d604a6fffdb704c5d703f8))
+
+## [5.11.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.11.2...v5.11.3) (2026-05-22)
+
+
+### Bug Fixes
+
+* correction lié rebase et revue de code ([d710a11](https://github.com/dnum-mi/bibliotheque_numerique/commit/d710a1101f41593644536d0c68b7d523fa547dd1))
+* export interface for pinia ([e738a51](https://github.com/dnum-mi/bibliotheque_numerique/commit/e738a512f64413c12178024fdf0af727f709cd69))
+* **maarch:** ajouter la suppression des tables de projection et des view associées dans la méthode deleteImport ([febce74](https://github.com/dnum-mi/bibliotheque_numerique/commit/febce749d2fbe877443bccee7110a0a4049fd313))
+* mis à jour de la fonction du mécanisme d'échappement pour utiliser replaceAll qui améliore la gestion des guillemets simples ([c55a14f](https://github.com/dnum-mi/bibliotheque_numerique/commit/c55a14fe191e2d7d3fc87e4a56e74beeda18700a))
+
+## [5.11.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.11.1...v5.11.2) (2026-05-20)
+
+
+### Bug Fixes
+
+* set maarch ar file path ([7ae899b](https://github.com/dnum-mi/bibliotheque_numerique/commit/7ae899b398a9d323ec144b8ee6384ddf7564b704))
+* set maarch ar path path ([69d20ed](https://github.com/dnum-mi/bibliotheque_numerique/commit/69d20ed7eea66515787eecb6625bd8a8f28b6180))
+
+## [5.11.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.11.0...v5.11.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* switch deploy to main ([7f584be](https://github.com/dnum-mi/bibliotheque_numerique/commit/7f584be6ba6fdaea2964b62f89ac36ae4e4d0f04))
+
+## [5.11.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.10.2...v5.11.0) (2026-05-04)
+
+
+### Features
+
+* **maarch:** ajout de la prise en charge des fichiers 'accusés de réception' dans le processus d'importation ([48ee194](https://github.com/dnum-mi/bibliotheque_numerique/commit/48ee1945f116d471c46dd1c368aba064d86e7401))
+* **maarch:** refonte du mappage des colonnes pour utiliser ExtendedMappingColumn avec prise en charge de csvColumnLabel ([1b4e0e2](https://github.com/dnum-mi/bibliotheque_numerique/commit/1b4e0e271b125d33b9bf1a103e289ecf663d15b3))
+
+
+### Bug Fixes
+
+* **maarch:** réorganisation des constantes et correction des retours pr ([563c7ce](https://github.com/dnum-mi/bibliotheque_numerique/commit/563c7ce50c028ae393291fdfeef60748fbc0a76f))
+
+## [5.10.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.10.1...v5.10.2) (2026-04-30)
+
+
+### Bug Fixes
+
+* beaucoup de log pour AxiosError sur les dependencies ([0f4fe15](https://github.com/dnum-mi/bibliotheque_numerique/commit/0f4fe15a6cf4b78ffa0cbf8e5c85fb20ecc3f920))
+* mis à jour des styles de DataTable pour rendre visible les barres de défilement ([#2370](https://github.com/dnum-mi/bibliotheque_numerique/issues/2370)) ([ea9a852](https://github.com/dnum-mi/bibliotheque_numerique/commit/ea9a8522f47dae86cb1a41680e5b630490cb8a58))
+
+## [5.10.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.10.0...v5.10.1) (2026-04-24)
+
+
+### Bug Fixes
+
+* ([#2366](https://github.com/dnum-mi/bibliotheque_numerique/issues/2366)) :recycle: refactoriser le bouton téléchargement et appliquer au list des dossiers ([9cf2783](https://github.com/dnum-mi/bibliotheque_numerique/commit/9cf278380cec8cdc9fa93137ff1c487139144097))
+* afficher les icons dans un réseau fermé ([f431cf9](https://github.com/dnum-mi/bibliotheque_numerique/commit/f431cf9cbeecbd4c05d32ef465b119730f5b1489))
+
+## [5.10.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.6...v5.10.0) (2026-04-15)
+
+
+### Features
+
+* **désactiver les associations:** ajouter le config IS_ASSOCIATIONS_ENABLED ([d5cf68d](https://github.com/dnum-mi/bibliotheque_numerique/commit/d5cf68df6b9b88a19e0c67e862bc8ef2c70fd9fa))
+* permettre la recherche et l'affichage conditionnel des associations en fonction de la configuration ([15bac91](https://github.com/dnum-mi/bibliotheque_numerique/commit/15bac9114009cd56b0f3f85e94af1e923f393f8e))
+
+
+### Bug Fixes
+
+* affiche au moins un  button fiche organisme valide ([6678f1d](https://github.com/dnum-mi/bibliotheque_numerique/commit/6678f1dcf3ab387f46759c82a226c05b89f8bf97))
+* désactivation de tri, filtre de results de la recherche des organismes ([87c6fa0](https://github.com/dnum-mi/bibliotheque_numerique/commit/87c6fa04ef8d5d49f568422a92f25b7cd6b219aa))
+* désactiver dans les associations dans api-client front ([456d8b6](https://github.com/dnum-mi/bibliotheque_numerique/commit/456d8b63f30b67ae206904002858f843a57d6511))
+* **désactiver les associations:** factorisation et fixer la constant pour cacher les associations ([c8b03c6](https://github.com/dnum-mi/bibliotheque_numerique/commit/c8b03c6cce18a0a2be60af0170225e0017490692))
+* **list dossiers de la fiche organsime:** fusion des events et la liste de dossiers de BN ([cdb3cbd](https://github.com/dnum-mi/bibliotheque_numerique/commit/cdb3cbdbfb2edfc03d3b7e9d79924003eed48a61))
+* list Pj pour un champs dans le fiche dossier ([182a7bf](https://github.com/dnum-mi/bibliotheque_numerique/commit/182a7bf814f5efeca9236dc86d0ce5152649e609))
+* log de undefined object ([2e51d80](https://github.com/dnum-mi/bibliotheque_numerique/commit/2e51d8064f5fa72b2717404d160451f0c40edaf4))
+* logger un undefined ne doit pas crasher ([7552e7a](https://github.com/dnum-mi/bibliotheque_numerique/commit/7552e7a1a601cd7e97ae2f62d1b8e3bd041b1fa8))
+* open fiche organisme corse ([8a0a5b2](https://github.com/dnum-mi/bibliotheque_numerique/commit/8a0a5b25efc5c36f4e6f8f6f4ec09997f76d0e1d))
+* parametre activation de pagination de datatable ([07706ac](https://github.com/dnum-mi/bibliotheque_numerique/commit/07706ac0ed11ef442afe4ab71478fdf5457a822d))
+
+## [5.9.6](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.5...v5.9.6) (2026-04-14)
+
+
+### Bug Fixes
+
+* corrige la completude de numéro pour la corse ([692fc30](https://github.com/dnum-mi/bibliotheque_numerique/commit/692fc3057b0231085b0ccd27322dd3fb3771405d))
+
+## [5.9.5](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.4...v5.9.5) (2026-04-14)
+
+
+### Bug Fixes
+
+* correction de données lié au service instructeur ([655df5e](https://github.com/dnum-mi/bibliotheque_numerique/commit/655df5e0007620420ea2bf0d602def3c0228770a))
+* **pj des dossiers:** télécharger pj avec le nom original ([418da5b](https://github.com/dnum-mi/bibliotheque_numerique/commit/418da5b97729323976c4226433f0ae336bb3050a))
+* recherche fondation de corse ([19ab8ea](https://github.com/dnum-mi/bibliotheque_numerique/commit/19ab8eaf1f43240c85d1cb86631b5d467b85f547))
+* renommer 'Préfecture' en 'Service instructeur' dans la fiche organisme ([90f201b](https://github.com/dnum-mi/bibliotheque_numerique/commit/90f201b374027c9e85755118035562beb25a9240))
+
+## [5.9.4](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.3...v5.9.4) (2026-04-09)
+
+
+### Bug Fixes
+
+* correction regex incorrection pour la migration de field des organismes ([df8b1ea](https://github.com/dnum-mi/bibliotheque_numerique/commit/df8b1ea561986caa0a930aafdc8ee9dbf2e26f77))
+* endppoint pour reconstruire les projections ([1a835c3](https://github.com/dnum-mi/bibliotheque_numerique/commit/1a835c317362035a2ce14a4e17f8badff48a382c))
+* migration pour supprimer le mot 'ERROR-' dans les fields des organsimes ([e0ac842](https://github.com/dnum-mi/bibliotheque_numerique/commit/e0ac8429a01e38b10dab1d6e83975431e8e9c618))
+
+## [5.9.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.2...v5.9.3) (2026-04-08)
+
+
+### Bug Fixes
+
+* **Correction Accessibilitée:** partie 1 ([#2210](https://github.com/dnum-mi/bibliotheque_numerique/issues/2210)) ([2f93fd0](https://github.com/dnum-mi/bibliotheque_numerique/commit/2f93fd0a62ed03722506dd0b806f97de4a082c37))
+* hors delais ([b19d9bd](https://github.com/dnum-mi/bibliotheque_numerique/commit/b19d9bd4d7454105123010de8c877ea5696603e9))
+* masquer les types inutilisés sur les filtres de la liste démarches ([bf3fadf](https://github.com/dnum-mi/bibliotheque_numerique/commit/bf3fadf18064eeb32905d1095477ab0c28cd74aa))
+* **members:** refonte de l'affichage de l'onglet dirigeants ([#2313](https://github.com/dnum-mi/bibliotheque_numerique/issues/2313)) ([d467a8e](https://github.com/dnum-mi/bibliotheque_numerique/commit/d467a8eaeb65ba94907b977aa08fb52e87c54a92))
+* renommer les propriétés des dépôts comptes ([179da77](https://github.com/dnum-mi/bibliotheque_numerique/commit/179da779a8dd83ef016f7c5a68d25b3104b12712))
+
+## [5.9.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.1...v5.9.2) (2026-04-02)
+
+
+### Bug Fixes
+
+* corrige le bloquage du lancement de sync-file ([1c02b55](https://github.com/dnum-mi/bibliotheque_numerique/commit/1c02b55198cf57d2749800872d6f775b24382751))
+
+## [5.9.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.9.0...v5.9.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* corrige le module ejsAdatater non trouver ([38d4fd3](https://github.com/dnum-mi/bibliotheque_numerique/commit/38d4fd396640e0b9eebe98db0c0c22c07e646307))
+* mise à jours de aws-s3 client ([e5a9275](https://github.com/dnum-mi/bibliotheque_numerique/commit/e5a92757c8a6607d451c661a3e18f34bda47c357))
+
+## [5.9.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.8.1...v5.9.0) (2026-04-01)
+
+
+### Features
+
+* ajout les filtres booléens dans datatable client side et mettre à jour les paramètres de filtrage dans liste des dossiers ([410728b](https://github.com/dnum-mi/bibliotheque_numerique/commit/410728b0448a765b40fd506bba2362e6fdd23d01))
+* ajouter des largeurs personnalisées pour les colonnes dans la liste des dossiers ([becef5b](https://github.com/dnum-mi/bibliotheque_numerique/commit/becef5b31752cd36b2e7fd9925f0ce6eff875486))
+* correction après revue de code ([33d5703](https://github.com/dnum-mi/bibliotheque_numerique/commit/33d5703e33e8af30672763909928b4232cdb2ce8))
+* mis à jour du formatage des valeurs de la colonne source et simplification de la logique d'autorisation dans la liste des dossiers. ([c2fa03d](https://github.com/dnum-mi/bibliotheque_numerique/commit/c2fa03d11fc81091422f0a352049fa3ad6d6a04e))
+* mis à jour du fusion des events et dossier Bn et ajout des colonnes pour dossierNumber et isCorrection ([e0c583b](https://github.com/dnum-mi/bibliotheque_numerique/commit/e0c583b66bfe8cfaf8111177f0d0bdca3b6af793))
+* normaliser la source et le statut dans le traitement des dossiers d'organismes ([2cbdbf5](https://github.com/dnum-mi/bibliotheque_numerique/commit/2cbdbf59ef3c938c7d442642116038da43c85d43))
+* refactoriser les composants de la liste des dossiers ([fe83441](https://github.com/dnum-mi/bibliotheque_numerique/commit/fe83441fd9215301439160f0ddae921225e8b05f))
+
+
+### Bug Fixes
+
+* correction lié au renommage de CustomFilter vers Views ([9fe4224](https://github.com/dnum-mi/bibliotheque_numerique/commit/9fe42240efec787bda91b0884ce8d31b03cb94a7))
+
+## [5.8.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.8.0...v5.8.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* ajout du service instructeur 99 dans la liste des préfecture ([130507f](https://github.com/dnum-mi/bibliotheque_numerique/commit/130507f0209afd9ea509bd7c9b89a1d1f76f14fe))
+* **dossier:** afficher originalLabel plutot que label pour les fichiers joints ([5b0eb17](https://github.com/dnum-mi/bibliotheque_numerique/commit/5b0eb17bccb773876c0adc027d09551c04cb1ccb))
+* fixer la précision de numberValue à 22 a cause des bigInt ([7409a7e](https://github.com/dnum-mi/bibliotheque_numerique/commit/7409a7eb530af88e78dbed3d322f79cb3175b46d))
+* le clé primaire sont obligatoire unique ([888aa98](https://github.com/dnum-mi/bibliotheque_numerique/commit/888aa981f4d8e9ce3644cb4fb545608dcae4be99))
+* mettre à null le columnLabel de en-tête dans les mappingColumns ([65be747](https://github.com/dnum-mi/bibliotheque_numerique/commit/65be747ae6b7156fc684632f1f6b1f52a9bc56e7))
+* migration associé au renommage custom-filter ver views ([8be11c1](https://github.com/dnum-mi/bibliotheque_numerique/commit/8be11c17e9b6334978bfb8a12b8c27b4419b117f))
+* migration pour le type strings de enum FieldType ([b9d2fdc](https://github.com/dnum-mi/bibliotheque_numerique/commit/b9d2fdc77295bb567b58077a28cbad1bd80ffa31))
+* **organisme:** ajout de la la liste des années non déclarées et de l'état du dépot de comptes ([9f531da](https://github.com/dnum-mi/bibliotheque_numerique/commit/9f531da3177a0d200e29ea1d450c0f1abe0dcfa0))
+* pour éviter de générer une migration problématique ([512475b](https://github.com/dnum-mi/bibliotheque_numerique/commit/512475b16c8b2c7a1cca47a0fe244da6563705ee))
+* retirer le commentaire dans la base de données ([f79cb47](https://github.com/dnum-mi/bibliotheque_numerique/commit/f79cb477ac46ba6d2e3ac69332661fa8bbaae4e0))
+
+## [5.8.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.7.3...v5.8.0) (2026-03-20)
+
+
+### Features
+
+* **mise a jours end-point de recherche organisme:** :recycle: refacto du formulaire de la recherche ([567a627](https://github.com/dnum-mi/bibliotheque_numerique/commit/567a627c14ce92ace008992cd81716550d305eed))
+* **mise a jours end-point de recherche organisme:** ajout de dto pour search organimse ([0ccd469](https://github.com/dnum-mi/bibliotheque_numerique/commit/0ccd469d60dc6fd3654bb1ccd783de708d79929f))
+* **mise a jours end-point de recherche organisme:** mise à jours du back ([dcc17ec](https://github.com/dnum-mi/bibliotheque_numerique/commit/dcc17ece8415d748979da7e0c1fbf11df29c9379))
+* **mise a jours end-point de recherche organisme:** mise à jours du formulaire ([b939dde](https://github.com/dnum-mi/bibliotheque_numerique/commit/b939dded04dd7f08bfd9b3cf6a242bdb9d7f88d6))
+
+## [5.7.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.7.2...v5.7.3) (2026-03-18)
+
+
+### Bug Fixes
+
+* :lipstick: mise à jour UI du champs de recherche des fondations par identifiant ([#2208](https://github.com/dnum-mi/bibliotheque_numerique/issues/2208)) ([6a1321a](https://github.com/dnum-mi/bibliotheque_numerique/commit/6a1321a6030bd84a2a8817fc3ae3e815ce435db9))
+* correcting volontary error on context-logger ([3ddb2e3](https://github.com/dnum-mi/bibliotheque_numerique/commit/3ddb2e3962bae5cd87d6429fe097604376ccb79c))
+* label error if not from payload ([1cbf6fd](https://github.com/dnum-mi/bibliotheque_numerique/commit/1cbf6fda8c243a1e6613b7d5807d3658dce29f80))
+* mis à jour de @dnum-mi/ds-api-client vers la version 1.9.2 ([#2253](https://github.com/dnum-mi/bibliotheque_numerique/issues/2253)) ([a917256](https://github.com/dnum-mi/bibliotheque_numerique/commit/a9172561e021d5850a4b95619ec6f68e04d3e99c))
+
+## [5.7.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.7.1...v5.7.2) (2026-03-12)
+
+
+### Bug Fixes
+
+* do NOT use turbo to run in prod ([b2e3b5e](https://github.com/dnum-mi/bibliotheque_numerique/commit/b2e3b5ebd83004e6ea46b2873950dc41c984a408))
+* undefined properties in logs ([581ac60](https://github.com/dnum-mi/bibliotheque_numerique/commit/581ac6098a2be666701efc804924bf303cb89e87))
+
+## [5.7.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.7.0...v5.7.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **deployment:** update branch to dev plateform ([46dc957](https://github.com/dnum-mi/bibliotheque_numerique/commit/46dc957d6c7a28573f3ad7c1522284f608d15c4d))
+
+## [5.7.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.6.0...v5.7.0) (2026-03-12)
+
+
+### Features
+
+* setting some data in interceptor ALS for logs ([65780df](https://github.com/dnum-mi/bibliotheque_numerique/commit/65780df5e6c6819c881e06db80898d9a5c9783e9))
+
+
+### Bug Fixes
+
+* better intercepter ([b2b2c17](https://github.com/dnum-mi/bibliotheque_numerique/commit/b2b2c17cef11fe6a575e0b02c5700c08cf13d583))
+* deleting useless env variable ([f91b346](https://github.com/dnum-mi/bibliotheque_numerique/commit/f91b3467dbfeccbffef05d57596ed9f7b43b17ca))
+* json log one-liner ([f5ca5f0](https://github.com/dnum-mi/bibliotheque_numerique/commit/f5ca5f0fae054669661f708eb3f1c3b7fd7c4fd4))
+
+## [5.6.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.5.1...v5.6.0) (2026-03-10)
+
+
+### Features
+
+* dependencies management ([ae6bc40](https://github.com/dnum-mi/bibliotheque_numerique/commit/ae6bc405d17cd3cd7449917e8fe7eb9ac6ee992a))
+* inform client of down services ([14d3bc3](https://github.com/dnum-mi/bibliotheque_numerique/commit/14d3bc3c80437064f1c7a983eb57bcc7b4d66615))
+
+
+### Bug Fixes
+
+* e2e front ([d6b6ced](https://github.com/dnum-mi/bibliotheque_numerique/commit/d6b6ced07ac50dc1510e63fe174f5e17251cb5f9))
+* health route for hub ([de1d58b](https://github.com/dnum-mi/bibliotheque_numerique/commit/de1d58bce70f5c669017fa508004d0c6df31fd9f))
+* in DC set default MINIO_ROOT_USER with var env ([b6bb3ef](https://github.com/dnum-mi/bibliotheque_numerique/commit/b6bb3ef51e2f41b0f2cd3e82be8f1c715f8d1ce2))
+* wait app to initialize before checking dependencies ([07e5f0f](https://github.com/dnum-mi/bibliotheque_numerique/commit/07e5f0f6aba67268472ac10149dc8a3b73a2b402))
+* waiting for postgre to start docker before test ([76d6969](https://github.com/dnum-mi/bibliotheque_numerique/commit/76d6969ad0ab6431f76f3bbe9de641d33ccf2428))
+
+## [5.5.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.5.0...v5.5.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* set PROJECT_NAME to bn ([1968251](https://github.com/dnum-mi/bibliotheque_numerique/commit/1968251d89ec9f1a472463349aa42eb75c381cbd))
+
+## [5.5.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.4.0...v5.5.0) (2026-03-05)
+
+
+### Features
+
+* add start.sh for run all BN pod ([5fbd9b6](https://github.com/dnum-mi/bibliotheque_numerique/commit/5fbd9b61eaccaa0b5d68eb9f33b46e183698b42b))
+* create start.sh for run BN, and update README ([2bb2f15](https://github.com/dnum-mi/bibliotheque_numerique/commit/2bb2f15b458200989091ef8b6a046d8f49297129))
+* implémenter le téléchargement de plusieurs fichiers pour les organismes ([92351ad](https://github.com/dnum-mi/bibliotheque_numerique/commit/92351ad25a0a8c40ee67a1940641d6fbf97c9e12))
+
+
+### Bug Fixes
+
+* :bug: :recycle: correction et factorisation de code pour la paramatrage d'affichage ([9b4274f](https://github.com/dnum-mi/bibliotheque_numerique/commit/9b4274f86a7d0f43ba6f7a8e103eaeea6388fb43))
+* :bug: ajout le flag données sensible ([#2187](https://github.com/dnum-mi/bibliotheque_numerique/issues/2187)) ([dcc7a0f](https://github.com/dnum-mi/bibliotheque_numerique/commit/dcc7a0ff4810416191278d853d258ab8f17bb25e))
+* add stop.sh ([d28009d](https://github.com/dnum-mi/bibliotheque_numerique/commit/d28009d234d3cf107881f5794668db27bc83c15e))
+* afficher le titre du original du champs dans la fiche dossier ([6fb1d95](https://github.com/dnum-mi/bibliotheque_numerique/commit/6fb1d95464960d106f9817b88ed34eba9b86d094))
+* ajout info date du terme sur la fiche organisme ([#2205](https://github.com/dnum-mi/bibliotheque_numerique/issues/2205)) ([01ff5e5](https://github.com/dnum-mi/bibliotheque_numerique/commit/01ff5e527162e4375416c99b18a65a2989fb77f7))
+* ajoute de qualité déclarant ([#2185](https://github.com/dnum-mi/bibliotheque_numerique/issues/2185)) ([bcf0251](https://github.com/dnum-mi/bibliotheque_numerique/commit/bcf02513c013b0d62543636feed81f582c0283f1))
+* correction suit à la revue de code [#2126](https://github.com/dnum-mi/bibliotheque_numerique/issues/2126) ([6ac647e](https://github.com/dnum-mi/bibliotheque_numerique/commit/6ac647ebd54f153cc004301173f9bdd1dafebc36))
+* create server_image for server and wokers, reset default password ([a9177b1](https://github.com/dnum-mi/bibliotheque_numerique/commit/a9177b1ead748d137473fdb349b12a5c1cb204ec))
+* del old routeName no use ([fdc4317](https://github.com/dnum-mi/bibliotheque_numerique/commit/fdc4317fee8cf0192b15db946cbf5c78eb41072f))
+* dossierId with quote because sql sucks ([36c1335](https://github.com/dnum-mi/bibliotheque_numerique/commit/36c13356c2d81d5860d84b59186acee9682b5922))
+* README with mode docker and mode dev ([d9ef3a6](https://github.com/dnum-mi/bibliotheque_numerique/commit/d9ef3a6bf7b17accd88c260d1895d63097769b23))
+* refacto README.md ([6685e7a](https://github.com/dnum-mi/bibliotheque_numerique/commit/6685e7aa2dba274f3679d9dc1a34f69da40a4265))
+* rename var env for port of docker compose ([3a6ccef](https://github.com/dnum-mi/bibliotheque_numerique/commit/3a6ccef65c4997186919dba074c655f7f41ce3fa))
+* rendre visibles les deux tables de l'onglet dirigeant et ranger par date de sortie ([75e325c](https://github.com/dnum-mi/bibliotheque_numerique/commit/75e325ccecd337e1ddf7c3b1782ea2e7ea863527))
+* retirer le titre de organisme du numéro ([#2189](https://github.com/dnum-mi/bibliotheque_numerique/issues/2189)) ([47b4e8d](https://github.com/dnum-mi/bibliotheque_numerique/commit/47b4e8d1d42096f49bf1d00ec2e86c64d1c326d6))
+* set profile to prod ([75aa0f3](https://github.com/dnum-mi/bibliotheque_numerique/commit/75aa0f3a81e1dc7e4d86ec9a0e5632703c5caf47))
+* set tags with helm ([f7ea87e](https://github.com/dnum-mi/bibliotheque_numerique/commit/f7ea87e2a92e0880d03f3c266b4896c83b54892e))
+* set tags with helm ([18640fa](https://github.com/dnum-mi/bibliotheque_numerique/commit/18640fab709b8633dda1e64d2d225741aede87ab))
+* update README for start.sh ([aa3dc43](https://github.com/dnum-mi/bibliotheque_numerique/commit/aa3dc437e2cd5835d7fa4e6081626148db986f98))
+* use client production target ([bce16a8](https://github.com/dnum-mi/bibliotheque_numerique/commit/bce16a89423eae5d7e60842744f66a0e386b7de0))
+
+## [5.4.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.3.0...v5.4.0) (2026-02-24)
+
+
+### Features
+
+* [2114-P16]: Do not use on Module init ([17d41b1](https://github.com/dnum-mi/bibliotheque_numerique/commit/17d41b1cca146ba126ec621ac837f49e83b7b3b8))
+
+## [5.3.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.2.1...v5.3.0) (2026-02-24)
+
+
+### Features
+
+* [2114-P1]: Projection module et son squelette ([c0505be](https://github.com/dnum-mi/bibliotheque_numerique/commit/c0505be19057156cea9db83dfa2fe4f2f167cb3c))
+* [2114-P10]:correcting unit tests ([3b9f640](https://github.com/dnum-mi/bibliotheque_numerique/commit/3b9f640d851c598f651218bd4d34b7bbaa3a44fd))
+* [2114-P11]: rebuild projection table on anonymised ([603f93a](https://github.com/dnum-mi/bibliotheque_numerique/commit/603f93a95371965e99a76b1b8480f0a49e843136))
+* [2114-P12]: make anonymised job lighter ([5c531a5](https://github.com/dnum-mi/bibliotheque_numerique/commit/5c531a5b3a0c9a18c08b8eb967630fcb68f15c2c))
+* [2114-P13]: rebuild tables in temp tables ([8a8ad91](https://github.com/dnum-mi/bibliotheque_numerique/commit/8a8ad91d1b2f90cd83ae46c01875e340324cf1a6))
+* [2114-P14]: correctings e2e tests ([fdb6501](https://github.com/dnum-mi/bibliotheque_numerique/commit/fdb65019ab4518ea96e55cdb38fcb62d8a31e7b8))
+* [2114-P15]: factoring mapping column operations ([0083fe1](https://github.com/dnum-mi/bibliotheque_numerique/commit/0083fe1aca7e09de1267ea3c181e02059ea87114))
+* [2114-P2]: Projection creation table for fields ([c0a9ff2](https://github.com/dnum-mi/bibliotheque_numerique/commit/c0a9ff2e7f9cb6cc81ddc4b58069b3a6deadbd0f))
+* [2114-P3]: search fields use projection ([d226149](https://github.com/dnum-mi/bibliotheque_numerique/commit/d226149336c57a24809ff2357910284fc3100f07))
+* [2114-P4]: adding dossier to projection ([e6f7167](https://github.com/dnum-mi/bibliotheque_numerique/commit/e6f7167e29f5fef59f9056a552c84d9008aa974e))
+* [2114-P5]: building table on module init ([4d65db3](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d65db3af27f6d409546f7adc43756ab9d14c86a))
+* [2114-P6]: dossier project ([02d40a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/02d40a18ba9685742329a0ab6a8af8466fea9bd2))
+* [2114-P7]: link demarche synchronisation ([dbcfd89](https://github.com/dnum-mi/bibliotheque_numerique/commit/dbcfd89f8eae2053a593a330dc3c9b2accf9fbf8))
+* [2114-P8]: dossier-search replaced ([0906f7a](https://github.com/dnum-mi/bibliotheque_numerique/commit/0906f7a67441d7728078be5a684e0022f8cb6665))
+* [2114-P9]: suppression de l'ancien code ([f3bba17](https://github.com/dnum-mi/bibliotheque_numerique/commit/f3bba174967fdde17ba0b98771f0445d5eadce51))
+
+
+### Bug Fixes
+
+* dont send width to api on research ([168a9f3](https://github.com/dnum-mi/bibliotheque_numerique/commit/168a9f32b49eecd1b72e240b281e36d5b2dbd636))
+* eslint ([767ba53](https://github.com/dnum-mi/bibliotheque_numerique/commit/767ba5377bc3320e0af2b21b11fc8410f87126f2))
+* migration pour modifier le type de champs service intructeur des mappingColumns ([6de76bb](https://github.com/dnum-mi/bibliotheque_numerique/commit/6de76bbaeea11555938217d520af80bab17d7a91))
+* recherche par label dans filtre de enum pour corriger le filtre de service instructeur ([9171ef2](https://github.com/dnum-mi/bibliotheque_numerique/commit/9171ef214fa64916f285732ac0f5303af05b0ab0))
+* store mode group view ([4b87782](https://github.com/dnum-mi/bibliotheque_numerique/commit/4b87782d346d9ec6adc9234f716f46da488fef5b))
+* tests ([f0ea671](https://github.com/dnum-mi/bibliotheque_numerique/commit/f0ea671c797bfe0ac4cdf719605cb38f7b01edfe))
+
+## [5.2.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.2.0...v5.2.1) (2026-02-12)
+
+
+### Bug Fixes
+
+* correction de l'identification type d'organisme ([5cb275c](https://github.com/dnum-mi/bibliotheque_numerique/commit/5cb275c3865deef7b06782a75b1d13cb721fd81b))
+* correction de la mise en forme du long texte dans fiche organisme ([#2122](https://github.com/dnum-mi/bibliotheque_numerique/issues/2122)) ([cb412bf](https://github.com/dnum-mi/bibliotheque_numerique/commit/cb412bf5e5ea9d92a587891b888716eb1d921bd2))
+
+## [5.2.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.1.2...v5.2.0) (2026-02-12)
+
+
+### Features
+
+* refonte fiche organisme ([#2110](https://github.com/dnum-mi/bibliotheque_numerique/issues/2110))([#1885](https://github.com/dnum-mi/bibliotheque_numerique/issues/1885)) ([cb856ac](https://github.com/dnum-mi/bibliotheque_numerique/commit/cb856acbd04008db1b2d61a75bfdbbb300e4deb1))
+
+## [5.1.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.1.1...v5.1.2) (2026-02-03)
+
+
+### Bug Fixes
+
+* **Ajout personne morale:** ajout des personnes morales au FRONT ([9222fd6](https://github.com/dnum-mi/bibliotheque_numerique/commit/9222fd6b7352730f4df9614233b972977d6ced80))
+* **Ajout personne morale:** ajout des personnes morales dans les models ([c5a5581](https://github.com/dnum-mi/bibliotheque_numerique/commit/c5a55813630f1b50502dac7b55a5dfa0dadad464))
+* echec de récupération d'un organisme quand il y a 404 sur la récupération des évenements ([#2091](https://github.com/dnum-mi/bibliotheque_numerique/issues/2091)) ([0511c27](https://github.com/dnum-mi/bibliotheque_numerique/commit/0511c27590938922be443ff693a7c10c712e5f20))
+* empecher de retourner des données de l'utilisateur lors de l'inscription ([#2095](https://github.com/dnum-mi/bibliotheque_numerique/issues/2095)) ([cbe37b8](https://github.com/dnum-mi/bibliotheque_numerique/commit/cbe37b8a3f2350d4c856c7555ce813068f02cebb))
+* les long texts fini par ... suivant la taille de la cellule ([104efb7](https://github.com/dnum-mi/bibliotheque_numerique/commit/104efb754c271b2f31b2256245c8635ad6a9ac39))
+* **maarch:** correction du mapping des PJ pour la fiche des dossiers et optimisation des index  ([#2074](https://github.com/dnum-mi/bibliotheque_numerique/issues/2074)) ([6a78052](https://github.com/dnum-mi/bibliotheque_numerique/commit/6a78052eeec341a1339390b1a6dc0a5488e6e8c2))
+* mettre le nom de fichier et l'extension lors du téléchargement de fichier ([#2092](https://github.com/dnum-mi/bibliotheque_numerique/issues/2092)) ([d46a6fb](https://github.com/dnum-mi/bibliotheque_numerique/commit/d46a6fb73c1ad6570a2e6f3f1d03f15fa3a15d6c))
+* ne pas synchroniser les démarches avec identifiant de DS manquant ([474e376](https://github.com/dnum-mi/bibliotheque_numerique/commit/474e3760be2f2dfb04465f42a7fe285c7f5cde02))
+
+## [5.1.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.1.0...v5.1.1) (2026-01-22)
+
+
+### Bug Fixes
+
+* afficher list dossier dans la fiche association ([ada7ad2](https://github.com/dnum-mi/bibliotheque_numerique/commit/ada7ad22aaddee7480fa5b6b05162ffe124c1dd9))
+* ajout dans orgnismeRef dans le dossier lors de l'import MAARCH ([47c212d](https://github.com/dnum-mi/bibliotheque_numerique/commit/47c212db7a54c0566688ea471f5dc6a5251be043))
+* correcion de titre organisme dans les dossiers Maarch ([11b5de4](https://github.com/dnum-mi/bibliotheque_numerique/commit/11b5de46dba9d7c20831efcd977ce6ebb63a0e7c))
+* mettre en majuscule le numéro de l'organisme dans maarch ([1b83c08](https://github.com/dnum-mi/bibliotheque_numerique/commit/1b83c083913cc636c223c1f9af57be3e1e9b2cc9))
+
+## [5.1.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v5.0.0...v5.1.0) (2026-01-22)
+
+
+### Features
+
+* ✨ handle filterable and sortable columns in DataTable components ([b296368](https://github.com/dnum-mi/bibliotheque_numerique/commit/b29636845ffcab454a4c75378b158a1fa96eb7ae))
+* ✨ permet à DataTableServerSide de mieux gérer les filtres ([baa9df3](https://github.com/dnum-mi/bibliotheque_numerique/commit/baa9df33e14c884b1272c7ba497fc9db5428f952))
+* ✨ permet d’afficher plus de lignes dans DataTableServerSide ([e980a33](https://github.com/dnum-mi/bibliotheque_numerique/commit/e980a336a5965cd9993578dfc8d6fc70170d9c58))
+* ✨ permet l’écriture des affichages personnalisés dans DataTableServerSide ([2a63abd](https://github.com/dnum-mi/bibliotheque_numerique/commit/2a63abd4b63ee1be0d200d6cc1bb5c759cc8af8d))
+* ✨ permet la lecture des affichages personnalisés avec DataTable ([fc4cc07](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc4cc07dacbc29e3ddcf862c1be93471bcfe55ee))
+* ✨ permet le clic sur une ligne de la liste des démarches ([505a300](https://github.com/dnum-mi/bibliotheque_numerique/commit/505a300e1be689f1da6b1278d2da726ce781b5ad))
+* ✨ permet le redimensionnement des colonnes dans DataTableServerSide.vue ([4a0562c](https://github.com/dnum-mi/bibliotheque_numerique/commit/4a0562c1f41507cc0b338da82b0bd3d70fa67d79))
+* ✨ permet le réordonnancement des colonnes dans DataTableServerSide.vue ([6d6c8ee](https://github.com/dnum-mi/bibliotheque_numerique/commit/6d6c8ee59184b1315690a49b08a559765529e95b))
+* ✨ prend en charge les filtres avec multiselect ([b829c6f](https://github.com/dnum-mi/bibliotheque_numerique/commit/b829c6f36f9570a1d112023e86eb284cc96440b2))
+* ✨ prend en compte cellStyle de la colonne dans DataTableServerSide ([30ee270](https://github.com/dnum-mi/bibliotheque_numerique/commit/30ee27099ed1306ca8ee1c6ca9bd32837dd33f32))
+* ✨ surligne les sous-lignes sous le curseur dans DataTableServerSide.vue ([b4d4232](https://github.com/dnum-mi/bibliotheque_numerique/commit/b4d42329b8b66109535600035aaf28e6b3929a24))
+* 💄 améliore la présentation des cellules dans DataTableServerSide ([94a6e5c](https://github.com/dnum-mi/bibliotheque_numerique/commit/94a6e5c496fe1b0b931dbea5a657eb9dd047c9d5))
+* add custom number and string filters for primevue and update related components ([de8a9b3](https://github.com/dnum-mi/bibliotheque_numerique/commit/de8a9b3c85d480448123b721a4ab37eeea6dbf9b))
+* **AttachedFileList:** ✨ utilise DataTableServerSide pour lister les fichiers attachés ([810207f](https://github.com/dnum-mi/bibliotheque_numerique/commit/810207f51bede84c81d95acf6f003cbafe6221ba))
+* **datatable:** add row click functionality and improve column filtering ([906ec80](https://github.com/dnum-mi/bibliotheque_numerique/commit/906ec806c3998be32b5aa3f77cc4780e1d212283))
+* **DataTableServerSide:** ✨ ajoute des fonctions de réinitialisation des personnalisations ([7685bce](https://github.com/dnum-mi/bibliotheque_numerique/commit/7685bce60050a6d56848269ac43ffc64188929a7))
+* **DataTableServerSide:** ✨ ajoute la persistance de l'ordre des colonnes ([3fbcfaf](https://github.com/dnum-mi/bibliotheque_numerique/commit/3fbcfaff64cd700cea9faf16972265007936eefc))
+* **DataTableServerSide:** ✨ ajoute la persistance des largeurs de colonnes ([fe2a7f4](https://github.com/dnum-mi/bibliotheque_numerique/commit/fe2a7f467bf0e3e6743ffe79de7c69aeab74346b))
+* **DataTableServerSide:** ✨ sauve et restaure les préférences de tableau dans localStorage ([a8a373f](https://github.com/dnum-mi/bibliotheque_numerique/commit/a8a373f7c24ccad3a279481bb50133ddc0999575))
+* **DataTableServerSide:** ajoute la fonctionnalité de tableau de données côté serveur avec PrimeVue ([3d3dbd3](https://github.com/dnum-mi/bibliotheque_numerique/commit/3d3dbd38f2e3c507f16c1d87b4cc09a7acd0b1a1))
+* **DataTableServerSide:** gère les colonnes cachées ([7468392](https://github.com/dnum-mi/bibliotheque_numerique/commit/7468392b60941ffbd1fb7c72cfaeb0b3825f854b))
+* implémenter PrimeSetFilter pour combiner tous filtres de type enum ([54a53e4](https://github.com/dnum-mi/bibliotheque_numerique/commit/54a53e425729ee2ff83dc87ad6600c581c6285b5))
+* **list de dossiers dans fiche organisme:** mise à jours les composants datatable client side ([39ab474](https://github.com/dnum-mi/bibliotheque_numerique/commit/39ab474d6a8ab45bd508f0de888b3fcab9f0470a))
+* **list de dossiers dans fiche organisme:** rentre triable les colonnes de la liste de dossiers ([a824640](https://github.com/dnum-mi/bibliotheque_numerique/commit/a824640cd26fad45b746e346fe4fe64a4854a0eb))
+* psychological loading ([1f9a6c4](https://github.com/dnum-mi/bibliotheque_numerique/commit/1f9a6c4869b02668202095b15e2f665a95c62365))
+* Refacto View ([7b852d3](https://github.com/dnum-mi/bibliotheque_numerique/commit/7b852d3287b0a97fdfc6ebecb8aa7aa6b69500c6))
+
+
+### Bug Fixes
+
+* 🐛 corrige le clic sur un dossier ([6adb5de](https://github.com/dnum-mi/bibliotheque_numerique/commit/6adb5de1749fc4587b3d11198603774397b0cde9))
+* 🐛 corrige warning important de vue ([439008a](https://github.com/dnum-mi/bibliotheque_numerique/commit/439008a8e1a6ef8286fd44438238762da578300d))
+* 🐛 gère correctement les filtres de type "set" ([c9b59e8](https://github.com/dnum-mi/bibliotheque_numerique/commit/c9b59e8f036bc97fc52b91993816abc9d6ac3872))
+* 💄 corrige certains bugs d'affichage ([1c94354](https://github.com/dnum-mi/bibliotheque_numerique/commit/1c94354c3d8260fe3730d6b0fa610233c07f0ec7))
+* 10 ms pour le stepper ([74309d1](https://github.com/dnum-mi/bibliotheque_numerique/commit/74309d1e412e9081739501b815182182f6610eed))
+* active les filtres et tri de toutes les colonnes la liste des démarches ([bfe5339](https://github.com/dnum-mi/bibliotheque_numerique/commit/bfe533952b074be665506d6113f73310875bb349))
+* ameliorer le rendu des filtres de fichier et les définitions des colonnes dans la liste des fichiers joints ([17428a5](https://github.com/dnum-mi/bibliotheque_numerique/commit/17428a5d23a168e02d11efe3c7105ad728150223))
+* cacher les colonnes hide dans la liste ([a70edd3](https://github.com/dnum-mi/bibliotheque_numerique/commit/a70edd3895e089734127243256be0b9473f96ac5))
+* **client/datatable:** force DataTable re-render on column order reset using dynamic key ([ec19c43](https://github.com/dnum-mi/bibliotheque_numerique/commit/ec19c43824b0ccfb6d04aecfd2716d79eacad081))
+* correctio du clique sur la ligne d'utilisateur sue la page admin ([1fd386c](https://github.com/dnum-mi/bibliotheque_numerique/commit/1fd386cb26625eadb25edf9ee86cfc809dcc33cf))
+* correction aprés cherry-pick ([11fcb3d](https://github.com/dnum-mi/bibliotheque_numerique/commit/11fcb3d374ed8445d71a9d142aac4b01df940758))
+* correction de aucune cas coché affiche une erreur dans la liste demarches ([0b8c7bf](https://github.com/dnum-mi/bibliotheque_numerique/commit/0b8c7bfb130b20cefe45d116491979db9e8e7f82))
+* correction des erreurs indiqués par le lint ([a65da5a](https://github.com/dnum-mi/bibliotheque_numerique/commit/a65da5abfc0d441fd07f14f332ccbf78114dba75))
+* correction dû au renommage en 'view' ([748b6f8](https://github.com/dnum-mi/bibliotheque_numerique/commit/748b6f81df51d88de90db7d32da7d66deb1ace30))
+* correction filtre - etat du dossier - pour le dataTable clientside ([a0009e6](https://github.com/dnum-mi/bibliotheque_numerique/commit/a0009e61f0e3e6b12849bcf5e65f5d2818ba9b73))
+* correction filtre de booléen ([7fafa43](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fafa43a8cb670b3f88706ae8c8c6042728a1c80))
+* **DataTableServerSide:** 🐛 correction de la fonction resetColumnsWidth() ([93734d2](https://github.com/dnum-mi/bibliotheque_numerique/commit/93734d2e82e8529b6ae9591d996c9cb8cd014063))
+* **DataTableServerSide:** 🐛 correction du mécanisme "Displays" pour la limitation des colonnes API ([bd9620f](https://github.com/dnum-mi/bibliotheque_numerique/commit/bd9620f15504c5928fc5a7fd92dacd6a6d99c110))
+* deplacer datatable client-side dans datatable ([4d84922](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d8492213990048417a143e289cfb801bdd82a7d))
+* DnD is back on right side panel ([0802b28](https://github.com/dnum-mi/bibliotheque_numerique/commit/0802b28aa937f4635a4e61aee57a13069823f10f))
+* dossier id is not a link anymore ([dcbf889](https://github.com/dnum-mi/bibliotheque_numerique/commit/dcbf88996ed20131b4e924c9e85f342aa689b30d))
+* double scroll ([9358121](https://github.com/dnum-mi/bibliotheque_numerique/commit/93581215a12b64e1aaa6a16c7cd1fe78f069a346))
+* exclure le ficher .md du linter ([f30a463](https://github.com/dnum-mi/bibliotheque_numerique/commit/f30a46385364d2d2adc8106ff6431234ee7d6455))
+* export le type dans event d'une fonction click ([65f788b](https://github.com/dnum-mi/bibliotheque_numerique/commit/65f788b20551d7ff6728e900a0ec796ef8ec2994))
+* filtre des numberValues par zéro ([fcc6363](https://github.com/dnum-mi/bibliotheque_numerique/commit/fcc6363de91c713e2e660be6eb29a54d020e36c4))
+* filtre service intructeur dans datatable client-side ([0095658](https://github.com/dnum-mi/bibliotheque_numerique/commit/00956586a6d3d31a0111a6c8d13afcce24ac5f95))
+* fix statistics page ([bccdeb6](https://github.com/dnum-mi/bibliotheque_numerique/commit/bccdeb6d13eff40ac2bd468508e7173c532ba8c3))
+* le steppeur pour tous chargement de données dans datatable Server Side ([270b4c9](https://github.com/dnum-mi/bibliotheque_numerique/commit/270b4c95cd42a1d3a981f43b6f41c0d6eac0a924))
+* mettre en format français le filtre de date ([eb6bd80](https://github.com/dnum-mi/bibliotheque_numerique/commit/eb6bd804f316070bc380ae11a68a4bd5173bc1f6))
+* mise à jour de la logique de validation des filtres et ajustement des cas de tests ([3cfe3eb](https://github.com/dnum-mi/bibliotheque_numerique/commit/3cfe3eb13e8c93b7f1d751fbfe14bf23512c1f09))
+* mise à jour de le gestion des filtres, de la pagination et de la restauration d'état depuis local storage ([dfbf782](https://github.com/dnum-mi/bibliotheque_numerique/commit/dfbf782fcf064ee72c01d1e32e37eb7342c487bf))
+* mise à jour de package.json et pnpm-lock.json pour linux ([e5c2572](https://github.com/dnum-mi/bibliotheque_numerique/commit/e5c2572463dc1b6ea1ea3f9a92f49426a62925b2))
+* mise à jours fichiers auto-générer ([587a34d](https://github.com/dnum-mi/bibliotheque_numerique/commit/587a34d0e26f25ba6540d00b6f2d01bcbb919dab))
+* mise à jours liste des dossiers en integrant datatable client-side ([336fbaa](https://github.com/dnum-mi/bibliotheque_numerique/commit/336fbaa61a46b6815fbfe646d2d026a9c29c0d52))
+* no more post logging ([754acfe](https://github.com/dnum-mi/bibliotheque_numerique/commit/754acfeae44ca6f26a04a1c557b55d96e1a0f8ab))
+* nouveau tutorial pour les vues ([38b6a16](https://github.com/dnum-mi/bibliotheque_numerique/commit/38b6a16c296aafdc927b58490a3094fde5945e1b))
+* numéro de dossier est unlien ([4d74fbe](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d74fbe51f6443e51767d9c9cb07cf9805bd556f))
+* optimiser le calcul de la hauteur de défilement et de redimensionnement avec rebond du datatable ([3c51d65](https://github.com/dnum-mi/bibliotheque_numerique/commit/3c51d6554b56c32983fbe1c4ff806be16ac67da8))
+* position du composant pagination dans la fiche organisme ([592b267](https://github.com/dnum-mi/bibliotheque_numerique/commit/592b267bfe99b6f2861d369882400810e4bca2ad))
+* prettier data table right bar menu ([a48797f](https://github.com/dnum-mi/bibliotheque_numerique/commit/a48797fa20627beb0b5ded31124734f5acc75767))
+* re-order column refresh table state ([90f89f8](https://github.com/dnum-mi/bibliotheque_numerique/commit/90f89f82414affa09f3af5192ec9c131afceba53))
+* Refacto view ([5d0a2a3](https://github.com/dnum-mi/bibliotheque_numerique/commit/5d0a2a34e58a45ed99412bbb317348a6793ceb34))
+* renommage du dossier ag-grid en datatable ([9c9d26b](https://github.com/dnum-mi/bibliotheque_numerique/commit/9c9d26b37d36ae2f9773d53da6d8739c9329e6d8))
+* renommer le datatable client-side ([a1169f6](https://github.com/dnum-mi/bibliotheque_numerique/commit/a1169f6897e58c47c0a08b3b2c8230cd1eee24a3))
+* reset view from statistic card click ([06a1592](https://github.com/dnum-mi/bibliotheque_numerique/commit/06a1592e6de6ed3789171dc9305ad63fd2622b20))
+* retirer package.json du linter ([6d9f496](https://github.com/dnum-mi/bibliotheque_numerique/commit/6d9f4968b00d2e3b162a36d3d5d55a32aee241b1))
+* supprimer des imports et du code commenté ([50889ff](https://github.com/dnum-mi/bibliotheque_numerique/commit/50889ffe41bc552860d63d0ba90b389c7a2277ad))
+* update datatable client-side ([b3506f4](https://github.com/dnum-mi/bibliotheque_numerique/commit/b3506f454729a40cdcfae9aaee3b004c8386c8e7))
+
+
+### Miscellaneous Chores
+
+* fix release version ([0994a37](https://github.com/dnum-mi/bibliotheque_numerique/commit/0994a37173b9185d87bc7bb3aceee0f293a010d6))
+
+## [5.0.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v4.1.2...v5.0.0) (2026-01-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* Merge primevue (#1913 from dnum-mi/feat/primevue-datatable)
+
+### Features
+
+* ✨ handle filterable and sortable columns in DataTable components ([c15b300](https://github.com/dnum-mi/bibliotheque_numerique/commit/c15b30040f885f4fa63b982c9e051d5e37dad24b))
+* ✨ permet à DataTableServerSide de mieux gérer les filtres ([751acf9](https://github.com/dnum-mi/bibliotheque_numerique/commit/751acf98789f6ffb20bc30edb95286a2028b1879))
+* ✨ permet d’afficher plus de lignes dans DataTableServerSide ([c0883de](https://github.com/dnum-mi/bibliotheque_numerique/commit/c0883debca5a7a6e093da52e5539d809542cfe06))
+* ✨ permet l’écriture des affichages personnalisés dans DataTableServerSide ([1ba7715](https://github.com/dnum-mi/bibliotheque_numerique/commit/1ba7715f7b312e600c2b053aa7d4623ce8881e27))
+* ✨ permet la lecture des affichages personnalisés avec DataTable ([7351882](https://github.com/dnum-mi/bibliotheque_numerique/commit/7351882b17b2ad3565d2bc1a238c2af20c33da60))
+* ✨ permet le clic sur une ligne de la liste des démarches ([f4e4c2a](https://github.com/dnum-mi/bibliotheque_numerique/commit/f4e4c2a47d7edab3f93247a0c44a939efba95be5))
+* ✨ permet le redimensionnement des colonnes dans DataTableServerSide.vue ([b580061](https://github.com/dnum-mi/bibliotheque_numerique/commit/b580061becb4d7c04a453524237fe316e6a5669f))
+* ✨ permet le réordonnancement des colonnes dans DataTableServerSide.vue ([d22d9ae](https://github.com/dnum-mi/bibliotheque_numerique/commit/d22d9ae45a3433df5f7b432933134ff8a255d6e7))
+* ✨ prend en charge les filtres avec multiselect ([662d47b](https://github.com/dnum-mi/bibliotheque_numerique/commit/662d47bf31af80d0b240cc560b4efef85fc11e64))
+* ✨ prend en compte cellStyle de la colonne dans DataTableServerSide ([e791317](https://github.com/dnum-mi/bibliotheque_numerique/commit/e791317fdaed0a34ee177fffd0d207a6e9797430))
+* ✨ surligne les sous-lignes sous le curseur dans DataTableServerSide.vue ([899b1d7](https://github.com/dnum-mi/bibliotheque_numerique/commit/899b1d71fe75dd20ceb147a849807ba1f686973b))
+* 💄 améliore la présentation des cellules dans DataTableServerSide ([659182e](https://github.com/dnum-mi/bibliotheque_numerique/commit/659182e73530bed751f9d2b6344d5e0c7360271b))
+* add custom number and string filters for primevue and update related components ([f22e1d8](https://github.com/dnum-mi/bibliotheque_numerique/commit/f22e1d8626cba3f59d282ac33b8988d9b36ab2e0))
+* **AttachedFileList:** ✨ utilise DataTableServerSide pour lister les fichiers attachés ([ff3a59b](https://github.com/dnum-mi/bibliotheque_numerique/commit/ff3a59b90356c3aef48e798a27ade6a09321ebb2))
+* **datatable:** add row click functionality and improve column filtering ([2957e29](https://github.com/dnum-mi/bibliotheque_numerique/commit/2957e2976769503dbab58c1890d3728ae6b3f883))
+* **DataTableServerSide:** ✨ ajoute des fonctions de réinitialisation des personnalisations ([1096fa1](https://github.com/dnum-mi/bibliotheque_numerique/commit/1096fa1a555412f8c09697af17a62c7256265640))
+* **DataTableServerSide:** ✨ ajoute la persistance de l'ordre des colonnes ([d663521](https://github.com/dnum-mi/bibliotheque_numerique/commit/d663521d9fdba6ad781e44eb5ffeb7b91547858f))
+* **DataTableServerSide:** ✨ ajoute la persistance des largeurs de colonnes ([0554556](https://github.com/dnum-mi/bibliotheque_numerique/commit/0554556d911e06539210af8832d676bd5c18b8ce))
+* **DataTableServerSide:** ✨ sauve et restaure les préférences de tableau dans localStorage ([4ca3014](https://github.com/dnum-mi/bibliotheque_numerique/commit/4ca301484c24f6faee2a410f19cd7f1c660d8747))
+* **DataTableServerSide:** ajoute la fonctionnalité de tableau de données côté serveur avec PrimeVue ([917b1b2](https://github.com/dnum-mi/bibliotheque_numerique/commit/917b1b2f82fd84d93bbad608cc69f4574fc743ba))
+* **DataTableServerSide:** gère les colonnes cachées ([15ceb45](https://github.com/dnum-mi/bibliotheque_numerique/commit/15ceb452e44c950ef029d7a15b4bb727f9bbf936))
+* implémenter PrimeSetFilter pour combiner tous filtres de type enum ([58c45d9](https://github.com/dnum-mi/bibliotheque_numerique/commit/58c45d98298319cd5ef63d38591ce25ce39fd185))
+* **list de dossiers dans fiche organisme:** mise à jours les composants datatable client side ([79eaf54](https://github.com/dnum-mi/bibliotheque_numerique/commit/79eaf544b5adef08cb05bf478a08e429fc1ebc15))
+* **list de dossiers dans fiche organisme:** rentre triable les colonnes de la liste de dossiers ([a861818](https://github.com/dnum-mi/bibliotheque_numerique/commit/a86181824360f5804008ad803a2fd58e8cf543c5))
+* Merge primevue ([#1913](https://github.com/dnum-mi/bibliotheque_numerique/issues/1913) from dnum-mi/feat/primevue-datatable) ([e119f5a](https://github.com/dnum-mi/bibliotheque_numerique/commit/e119f5ab80a89ceefba2beeab67cf0d5b3b81646))
+
+
+### Bug Fixes
+
+* 🐛 corrige le clic sur un dossier ([7a1dc9f](https://github.com/dnum-mi/bibliotheque_numerique/commit/7a1dc9fed1e642ef2331c90ba9e78486106c4f5c))
+* 🐛 corrige warning important de vue ([1ec8de8](https://github.com/dnum-mi/bibliotheque_numerique/commit/1ec8de818ac37deb88e3bfae6ed78080bc2ad9ba))
+* 🐛 gère correctement les filtres de type "set" ([5e8ecff](https://github.com/dnum-mi/bibliotheque_numerique/commit/5e8ecffa9133e63b4a14585a3acf7d51b76e269f))
+* 💄 corrige certains bugs d'affichage ([4430ba3](https://github.com/dnum-mi/bibliotheque_numerique/commit/4430ba38f56aa990d50ca6775a856180eb68e9df))
+* active les filtres et tri de toutes les colonnes la liste des démarches ([f1d41ff](https://github.com/dnum-mi/bibliotheque_numerique/commit/f1d41ff3473fd819c4f18fb77482efc879ea0977))
+* ajout liste dossiers pour les associations ([c3656d1](https://github.com/dnum-mi/bibliotheque_numerique/commit/c3656d10981f0de9dc28fb9589be1d9169148680))
+* clear currentOrganisme dans le store ([3306f64](https://github.com/dnum-mi/bibliotheque_numerique/commit/3306f649194124450709877b96554f6540fafe60))
+* **client/datatable:** force DataTable re-render on column order reset using dynamic key ([0da86a8](https://github.com/dnum-mi/bibliotheque_numerique/commit/0da86a85af90412a7aab9eb17d89b167c592030c))
+* correctio du clique sur la ligne d'utilisateur sue la page admin ([3380d51](https://github.com/dnum-mi/bibliotheque_numerique/commit/3380d512def252b2c6c59fb091f2fd9fba80d080))
+* correction aprés cherry-pick ([32c6cea](https://github.com/dnum-mi/bibliotheque_numerique/commit/32c6cea830bf2807d3c72e9bcd0d7e12c9716487))
+* correction des erreurs indiqués par le lint ([e4d8f99](https://github.com/dnum-mi/bibliotheque_numerique/commit/e4d8f9965de9d6dc0acd40aac4adddd159053009))
+* correction recuperation propriété d'une valeur undefined ([82fa2ca](https://github.com/dnum-mi/bibliotheque_numerique/commit/82fa2ca249c57224cae483dcd723d37771292698))
+* **DataTableServerSide:** 🐛 correction de la fonction resetColumnsWidth() ([7491ee7](https://github.com/dnum-mi/bibliotheque_numerique/commit/7491ee7cccc58e23362ad3aaa8841021072d89a0))
+* **DataTableServerSide:** 🐛 correction du mécanisme "Displays" pour la limitation des colonnes API ([983ebe7](https://github.com/dnum-mi/bibliotheque_numerique/commit/983ebe79c782dd41fef65a457aea07247a662e16))
+* double scroll ([17611c4](https://github.com/dnum-mi/bibliotheque_numerique/commit/17611c467c643c13403e727553d94160ee9aa7ac))
+* exclure le ficher .md du linter ([a22abb8](https://github.com/dnum-mi/bibliotheque_numerique/commit/a22abb81ee66edaf8c33d66eda2496d3b6934acb))
+* export le type dans event d'une fonction click ([6392a7c](https://github.com/dnum-mi/bibliotheque_numerique/commit/6392a7c3f84360c1259d3443f95c947affddddbd))
+* mise à jour de la logique de validation des filtres et ajustement des cas de tests ([42ffbf4](https://github.com/dnum-mi/bibliotheque_numerique/commit/42ffbf44edc74328d8c5684cc132f07165a09cba))
+* mise à jour de le gestion des filtres, de la pagination et de la restauration d'état depuis local storage ([4343c2f](https://github.com/dnum-mi/bibliotheque_numerique/commit/4343c2f304d72028ea5760f31edf323f9b847903))
+* mise à jour de package.json et pnpm-lock.json pour linux ([40d9b65](https://github.com/dnum-mi/bibliotheque_numerique/commit/40d9b6515454e19fb83b19ced85bc29fea5f0c29))
+* mise à jours fichiers auto-générer ([f54b1cb](https://github.com/dnum-mi/bibliotheque_numerique/commit/f54b1cbeb9854d136747610ba744d92a306f4aef))
+* mise à jours liste des dossiers en integrant datatable client-side ([71ac78f](https://github.com/dnum-mi/bibliotheque_numerique/commit/71ac78fc44e3ef0082a38826826f2826d93d9e59))
+* optimiser le calcul de la hauteur de défilement et de redimensionnement avec rebond du datatable ([f6d3560](https://github.com/dnum-mi/bibliotheque_numerique/commit/f6d35603ff44ce65ae8396fcc7e7c7b541508a0d))
+* position du composant pagination dans la fiche organisme ([2be251a](https://github.com/dnum-mi/bibliotheque_numerique/commit/2be251a94838c867b990793e27a958001f9213f2))
+* renommage du dossier ag-grid en datatable ([310fe86](https://github.com/dnum-mi/bibliotheque_numerique/commit/310fe8641c1af841d0a83f606126ee1b5d6f2cf2))
+* retirer package.json du linter ([bcb1a59](https://github.com/dnum-mi/bibliotheque_numerique/commit/bcb1a59bd64ac0b7b2a3c2606338b5c1fadf365d))
+* update datatable client-side ([ce08e38](https://github.com/dnum-mi/bibliotheque_numerique/commit/ce08e38f19ffedabe7f140e748771ed27afe19ea))
+
+## [4.1.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v4.1.1...v4.1.2) (2026-01-14)
+
+
+### Bug Fixes
+
+* ajout liste dossiers pour les associations ([602fcb0](https://github.com/dnum-mi/bibliotheque_numerique/commit/602fcb00ede40902bf413f7412cd8e195d42cb9d))
+* clear currentOrganisme dans le store ([07a4f91](https://github.com/dnum-mi/bibliotheque_numerique/commit/07a4f91abd3928c087ce91d98dc76fd82a843b84))
+* correction recuperation propriété d'une valeur undefined ([ac3f2f6](https://github.com/dnum-mi/bibliotheque_numerique/commit/ac3f2f69e9469b5cae2f93af8ed7d14fbe3ec374))
+* retirer le bouton fiche organisme pour un fiche dossier sans organisme ([ee6bbec](https://github.com/dnum-mi/bibliotheque_numerique/commit/ee6bbec72bef2f0eb84af0998935c1bdc35d5666))
+
+## [4.1.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v4.1.0...v4.1.1) (2026-01-12)
+
+
+### Bug Fixes
+
+* ajout des index à la table demarche ([23a608b](https://github.com/dnum-mi/bibliotheque_numerique/commit/23a608b12dc0bf7f73bece07f16636600d9ea241))
+* ajout un index à la table dossier ([bf1cc5f](https://github.com/dnum-mi/bibliotheque_numerique/commit/bf1cc5f2573ed4f8f82dfb0c6978b45f611266fe))
+* ajouter un message erreur pour un organisme inexistant ([8da8971](https://github.com/dnum-mi/bibliotheque_numerique/commit/8da8971af97ba15c64235dca554387ab79d2e20a))
+* badge de type organisme dans le banniere du fiche organisme ([85535b1](https://github.com/dnum-mi/bibliotheque_numerique/commit/85535b1a2fee0ca3cf9f924ec2aa2a76b5309ff9))
+* correction le lien demarche et dossier dans l'historique fondation ([5c34fa6](https://github.com/dnum-mi/bibliotheque_numerique/commit/5c34fa6d20318413eed0aabf1096dc94cafa1d0d))
+* message en français si aucun events ([3231c7f](https://github.com/dnum-mi/bibliotheque_numerique/commit/3231c7fb01ad338407d4bbd7fc789fef092eae61))
+* migration et gestion du champ numberValue vers un type numérique ([3a89665](https://github.com/dnum-mi/bibliotheque_numerique/commit/3a896653632f27b7091fbea5b7ed622cc7546789))
+* mise jours des élements pour la fiche association ([ae169d2](https://github.com/dnum-mi/bibliotheque_numerique/commit/ae169d29ee32c4223785099a1b911cec0436320c))
+* ne pas afficher la fiche organisme si API retourne une erreur ([fc1d967](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc1d96738fbbb40900d330edd33fcfcbf61d1d9e))
+* ne pas completer numéro rnf lors de la saisie dans la recherche ([20bdab6](https://github.com/dnum-mi/bibliotheque_numerique/commit/20bdab6f6b72a3dca721d2f1f60b712e4308fe85))
+* obtenir le events des associations ([f832c5d](https://github.com/dnum-mi/bibliotheque_numerique/commit/f832c5d2d222ae25f7f0e68980ab287f5d200c94))
+* optimisation des liens des events et les dossiers ([16b7bda](https://github.com/dnum-mi/bibliotheque_numerique/commit/16b7bda124f3471fa78eec43b69da95689a53e95))
+* renommer la propriete publication JO ([c96b4e9](https://github.com/dnum-mi/bibliotheque_numerique/commit/c96b4e9a989d053c8b881191be7629a09835d612))
+* supprimer un bouton inutile ([00d6ff9](https://github.com/dnum-mi/bibliotheque_numerique/commit/00d6ff96cebf398604ddb249ec903c53993cc2f3))
+
+## [4.1.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v4.0.1...v4.1.0) (2026-01-09)
+
+
+### Features
+
+* **maarch:** implement Maarch files pj upload functionality and enhance S3 integration ([b6c4397](https://github.com/dnum-mi/bibliotheque_numerique/commit/b6c4397f731b6925d75d943d1f9d74d58ddd9101))
+
+
+### Bug Fixes
+
+* appliquer l'option expiresIn lors de la signature du jwt token ([cbc7c6a](https://github.com/dnum-mi/bibliotheque_numerique/commit/cbc7c6a09819d01e1bd8aea69856a59b575debfb))
+
+## [4.0.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v4.0.0...v4.0.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* file fondation ([409f050](https://github.com/dnum-mi/bibliotheque_numerique/commit/409f05069e8858929cbb79129e0110981292fdab))
+
+## [4.0.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.1.3...v4.0.0) (2025-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* suppression des organismes ([#2014](https://github.com/dnum-mi/bibliotheque_numerique/issues/2014)) (#2010)
+
+### Features
+
+* suppression des organismes ([#2014](https://github.com/dnum-mi/bibliotheque_numerique/issues/2014)) ([#2010](https://github.com/dnum-mi/bibliotheque_numerique/issues/2010)) ([b52b8bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/b52b8bc3a17745a11b05acee8986c20afdfb7b36))
+
+## [3.1.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.1.2...v3.1.3) (2025-12-05)
+
+
+### Bug Fixes
+
+* **recherche organisme:** ajout correction multiples requêtes envoyés et redirection directe ([#1997](https://github.com/dnum-mi/bibliotheque_numerique/issues/1997)) ([ce124e9](https://github.com/dnum-mi/bibliotheque_numerique/commit/ce124e92e4473b569940f2f8a887306fd7f30402))
+
+## [3.1.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.1.1...v3.1.2) (2025-11-26)
+
+
+### Bug Fixes
+
+* état et PJs dans la page info des organismes ([4602b42](https://github.com/dnum-mi/bibliotheque_numerique/commit/4602b429e0bca61af348e49ef4a3417996359786))
+* propriétés optionnel pour l'interface events ([7e2517b](https://github.com/dnum-mi/bibliotheque_numerique/commit/7e2517b2639da29bcc6eaa217f714438aa14acb6))
+* retirer le onglets PJs vide ([008596b](https://github.com/dnum-mi/bibliotheque_numerique/commit/008596b585ad077964d51fd3a3e7c8805a5c9975))
+* synchroniser les events en même que la fondation ([4f26917](https://github.com/dnum-mi/bibliotheque_numerique/commit/4f2691723eb97d01b2dbef8bdbd2f28f83fbe238))
+
+## [3.1.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.1.0...v3.1.1) (2025-11-25)
+
+
+### Bug Fixes
+
+* add var env for refApi in stating ([83ba218](https://github.com/dnum-mi/bibliotheque_numerique/commit/83ba218bf2659bcb8a84d7cdef9a1a2047408898))
+* ajout de propriété données personnelle sensible pour les organismes ([4959924](https://github.com/dnum-mi/bibliotheque_numerique/commit/49599243a47bd4f64f3965366ab97e4052f8f3e1))
+* ajout des années de depots des comptes ([41060f7](https://github.com/dnum-mi/bibliotheque_numerique/commit/41060f729b6de017f5b20b55da99b3c9f2ce734c))
+* ajout des onglets Évènements et Relations ([f59cb5a](https://github.com/dnum-mi/bibliotheque_numerique/commit/f59cb5ab355af1cc3ca65c9214ff2b8fc81c74c6))
+* mis à jour des données de mock-hub ([5d489f8](https://github.com/dnum-mi/bibliotheque_numerique/commit/5d489f8f9a5e2d9b72391b918a19f16ba8e29ea8))
+* mise à jour onglet évènement et ajout champs isDissolution dans IDsEvent ([f56f481](https://github.com/dnum-mi/bibliotheque_numerique/commit/f56f48143be43d8520a0880784f0a6ec7d3a7f6f))
+
+## [3.1.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.0.1...v3.1.0) (2025-11-21)
+
+
+### Features
+
+* ajout du composant MapMarkers ([2c8c360](https://github.com/dnum-mi/bibliotheque_numerique/commit/2c8c360c98ee0c477cd23d8ed0374c0bb1ba8448))
+* proposal v1 for the new fiche organisme ([1493d62](https://github.com/dnum-mi/bibliotheque_numerique/commit/1493d62d5ba53ee249b0f2b66669ec61480c1c16))
+
+
+### Bug Fixes
+
+* ajout de l'onglet pour les établissements ([30e90ad](https://github.com/dnum-mi/bibliotheque_numerique/commit/30e90ad2bb7086094d5f4edd4b86ecc294f56d16))
+* ajouter le nombre de dossiers sur l'onget dossiers ([e424046](https://github.com/dnum-mi/bibliotheque_numerique/commit/e424046f42f1a9dc9e9e47f6d99aa376aa2ac722))
+* ajouter un onglet tech pour un admin tech ([dcf1efb](https://github.com/dnum-mi/bibliotheque_numerique/commit/dcf1efbe3dad7b665ac38b95e4fbb3722cbef55e))
+* correction design de la vue nouvelle fiche organisme ([5d2b703](https://github.com/dnum-mi/bibliotheque_numerique/commit/5d2b703f99d74132fe1243b595e4f2d12adba665))
+* correction different de la nouvelle fiche organisme ([4ca22bd](https://github.com/dnum-mi/bibliotheque_numerique/commit/4ca22bdd7732fab9e75ae541be1e41e34ac5869b))
+* factorisation de la nouvelle fiche organisme ([e12504d](https://github.com/dnum-mi/bibliotheque_numerique/commit/e12504d497ed1948a7466787732122be5547a888))
+* integrer l'appel api de la nouvelle fiche organisme ([7fb2c9e](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fb2c9e8cfdce39559af6475eecbf5d4b642872a))
+* integrer la nouvelle vue dans le fiche organisme ([3903fae](https://github.com/dnum-mi/bibliotheque_numerique/commit/3903faee4bc28d0095003bd514b386b9ea7e0207))
+* list des dirigeants visible au chargement de la vue ([ad6c780](https://github.com/dnum-mi/bibliotheque_numerique/commit/ad6c780f6ab71527fb49b33e54238464dfe31d30))
+* move components used by fiche organisme ([fced550](https://github.com/dnum-mi/bibliotheque_numerique/commit/fced55082b4ec8460c7f03aa849f44ca0a9d2b23))
+* ne pas afficher les dirigeants si aucun ([b1f8467](https://github.com/dnum-mi/bibliotheque_numerique/commit/b1f84674d814bdbe4ed584485c622358e8cf64b4))
+* ordonnées la liste de dossiers par la date de dépot ([57d8b70](https://github.com/dnum-mi/bibliotheque_numerique/commit/57d8b705678046e5693d432b67da6a6792be6d55))
+* retoure en arrière MapCard.vue ([936ba7c](https://github.com/dnum-mi/bibliotheque_numerique/commit/936ba7c2416187ddfe009962ae795e721536fc48))
+* update type file-to-download in DownloadFile.vue ([a4adbd3](https://github.com/dnum-mi/bibliotheque_numerique/commit/a4adbd3683d6d75a446da8dbfd3137b7e70dd9a9))
+
+## [3.0.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v3.0.0...v3.0.1) (2025-11-17)
+
+
+### Bug Fixes
+
+* fix migration to remove SYNC_RNF_VIA_HUB ([4402097](https://github.com/dnum-mi/bibliotheque_numerique/commit/440209797f79afffd73eea6ef2a49db5a6aca18c))
+
+## [3.0.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.41.0...v3.0.0) (2025-11-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* add siaf interfaces v2 ([#1945](https://github.com/dnum-mi/bibliotheque_numerique/issues/1945))
+
+### Features
+
+* adapter la synchronisation avec les nouveaux modéles ([#1946](https://github.com/dnum-mi/bibliotheque_numerique/issues/1946)) ([#1955](https://github.com/dnum-mi/bibliotheque_numerique/issues/1955)) ([534c578](https://github.com/dnum-mi/bibliotheque_numerique/commit/534c57875afd82095a69078ef2e01aecd50f529b))
+* add siaf interfaces v2 ([#1945](https://github.com/dnum-mi/bibliotheque_numerique/issues/1945)) ([fa296f0](https://github.com/dnum-mi/bibliotheque_numerique/commit/fa296f08d57ad9f5b4b594f1e6dc82cf4d589883))
+* update fiche persons for new models ([ec76f7b](https://github.com/dnum-mi/bibliotheque_numerique/commit/ec76f7b48874c4f62323435a6902b42826112da3))
+* update general design of fiche organisme ([c11bebc](https://github.com/dnum-mi/bibliotheque_numerique/commit/c11bebc58eec0d83eb4a07d8249dc9209730fcae))
+* update info organisme vue for new models ([53fb76c](https://github.com/dnum-mi/bibliotheque_numerique/commit/53fb76cdab1e3865e664100de783a9d8783d1db9))
+
+
+### Bug Fixes
+
+* add new models in index of lib/shared ([230c905](https://github.com/dnum-mi/bibliotheque_numerique/commit/230c905cf1a0c01e14880e4eb0af049706f92ce6))
+* download PJs ([514b8d4](https://github.com/dnum-mi/bibliotheque_numerique/commit/514b8d404bfe463779e2ed35a08009e037251f72))
+* move rna-event to other file ([24d2851](https://github.com/dnum-mi/bibliotheque_numerique/commit/24d2851e6149d8d4cef7625a0558d354c66a6b0c))
+* remove _ for properties begin with _ from hub ([1fc6c04](https://github.com/dnum-mi/bibliotheque_numerique/commit/1fc6c040d8b36936c1a4f59ff0bccd3d6d9ae3bb))
+* rename properties of organisme from hub ([7f206cc](https://github.com/dnum-mi/bibliotheque_numerique/commit/7f206ccc62c191b411591717b3710ff494ae36d0))
+* sync organisme from hub ([0d54aea](https://github.com/dnum-mi/bibliotheque_numerique/commit/0d54aead0c81b10b70a271782f185f7b98fedbec))
+* update address for search organisme for new models ([015377f](https://github.com/dnum-mi/bibliotheque_numerique/commit/015377f67326da69841f75f4da3c77332b685f02))
+
+## [2.41.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.40.0...v2.41.0) (2025-11-07)
+
+
+### Features
+
+* pagination de la liste des démarches ([#1935](https://github.com/dnum-mi/bibliotheque_numerique/issues/1935)) ([#1934](https://github.com/dnum-mi/bibliotheque_numerique/issues/1934)) ([eb9c960](https://github.com/dnum-mi/bibliotheque_numerique/commit/eb9c9600609d391701ce90151b702aea23f12a13))
+
+
+### Bug Fixes
+
+* sync all dossiers with pagination ([6d00e46](https://github.com/dnum-mi/bibliotheque_numerique/commit/6d00e46c8152dd66ca66168328d5359db7a084c4))
+
+## [2.40.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.39.1...v2.40.0) (2025-10-30)
+
+
+### Features
+
+* **maarch:** adapt the import script for FE file ([1a4a7e1](https://github.com/dnum-mi/bibliotheque_numerique/commit/1a4a7e18cbb7f83b6c15cdcfd5c63f206b403087))
+
+## [2.39.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.39.0...v2.39.1) (2025-10-21)
+
+
+### Bug Fixes
+
+* download files with special characters in the file name ([#1922](https://github.com/dnum-mi/bibliotheque_numerique/issues/1922)) ([#1931](https://github.com/dnum-mi/bibliotheque_numerique/issues/1931)) ([e977765](https://github.com/dnum-mi/bibliotheque_numerique/commit/e977765f70cd8b38dc5c900b467d76a68bcf10a5))
+* **synchro:** jobs accumulation ([#1932](https://github.com/dnum-mi/bibliotheque_numerique/issues/1932)) ([17d4fcf](https://github.com/dnum-mi/bibliotheque_numerique/commit/17d4fcfa8407bd800716a1cb417c38d6cd999fe1))
+
+## [2.39.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.38.0...v2.39.0) (2025-10-13)
+
+
+### Features
+
+* add SUDO_VALIDATE_ACCOUNT support for user validation and update related logic ([232f178](https://github.com/dnum-mi/bibliotheque_numerique/commit/232f178d08ec045e1162ec0015d862b061b42019))
+
+## [2.38.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.37.1...v2.38.0) (2025-10-10)
+
+
+### Features
+
+* add deleteUserRefreshTokens call and reset login attempts on confirmation of request manual reset password ([dfafe3b](https://github.com/dnum-mi/bibliotheque_numerique/commit/dfafe3b2d17d2898315732389f96d60c9d6e81d5))
+* add email sending after manual reset password requested ([71daeb4](https://github.com/dnum-mi/bibliotheque_numerique/commit/71daeb4b2ebd1a5fdf1b13756fa9f681f25a1a70))
+* **client:** add validate account by sudo feature ([872d732](https://github.com/dnum-mi/bibliotheque_numerique/commit/872d732c54bdc16852a7983ee90633d3816cf8f9))
+* enhance password link generation modal with email prop and update messaging ([602d529](https://github.com/dnum-mi/bibliotheque_numerique/commit/602d5295855f22bc55092bbdfe1808e56471dc7a))
+* implement password update link generation and related modal functionality ([75cf9a5](https://github.com/dnum-mi/bibliotheque_numerique/commit/75cf9a5cd6f7c64ef9de0d4eceeea208da2a6c3c))
+* **server:** add validate account by sudo feature ([f2adec7](https://github.com/dnum-mi/bibliotheque_numerique/commit/f2adec74198439d85b7c6bc3b5269b7771852226))
+* update http verb for manage password requests ([7632ec2](https://github.com/dnum-mi/bibliotheque_numerique/commit/7632ec2880f39d1ed23c539d4cd2bf2ebba8dc6b))
+* update route name of manual request password and update user service request manual ([9c15485](https://github.com/dnum-mi/bibliotheque_numerique/commit/9c154857507f738d10b57674c03e36a0ad4970ce))
+
+
+### Bug Fixes
+
+* correct typo in password reset request email template ([3454c2b](https://github.com/dnum-mi/bibliotheque_numerique/commit/3454c2b4d6eff297dcbf499ff768103ea0980315))
+* remove console log from user list response test for cleaner output ([38f702d](https://github.com/dnum-mi/bibliotheque_numerique/commit/38f702d534cd5dc056542339543ac9de5e5eccd4))
+* remove redundant line in typeSelected assignment for clarity ([82fdc45](https://github.com/dnum-mi/bibliotheque_numerique/commit/82fdc453a6b9a5133b2e49dc8b6357d7d8afeac2))
+
+## [2.37.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.37.0...v2.37.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* dossier.service tests ([f76a32a](https://github.com/dnum-mi/bibliotheque_numerique/commit/f76a32aceafaa7becdf8df76580b01e87fd699e9))
+* update dossier access check to include isMaarchDossier condition ([7fdd018](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fdd018e99fbf0de5d82893257b8da95c967bdeb))
+* update dossier fields repository requests ([4f83965](https://github.com/dnum-mi/bibliotheque_numerique/commit/4f83965191f9c0f0e8b59ee975f2a4333554530a))
+* update dossier handling ([b97d1ca](https://github.com/dnum-mi/bibliotheque_numerique/commit/b97d1ca86aa9a72f6b9e084ec12d656afc3f836e))
+* update fiche dossier display ([340c001](https://github.com/dnum-mi/bibliotheque_numerique/commit/340c001aa89faf5ff220a8ed8991673a4246e7d2))
+
+## [2.37.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.36.0...v2.37.0) (2025-10-01)
+
+
+### Features
+
+* add doc of projet ([dfb6eec](https://github.com/dnum-mi/bibliotheque_numerique/commit/dfb6eece9c25af853cc7057058685c1cd2a26426))
+* make the default page configurable ([f15ac2e](https://github.com/dnum-mi/bibliotheque_numerique/commit/f15ac2e8bfa2af2db62f6ee1f6a643910bca9fb4))
+
+
+### Bug Fixes
+
+* adapt auth guard to block access public pages after authenticated ([9905d27](https://github.com/dnum-mi/bibliotheque_numerique/commit/9905d27aa7a9a9e6c15a563929f2602c77a574a7))
+* add Apache2 license ([4511a09](https://github.com/dnum-mi/bibliotheque_numerique/commit/4511a090a1772e4dc588e0b16d4b264a75d1b6fc))
+* add bash of synco public repository ([7fd6180](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fd6180b69ade23635e358c6ae6ebf76cf60c6f0))
+* add health/ds and health/hub ([1e6101c](https://github.com/dnum-mi/bibliotheque_numerique/commit/1e6101c18806e4ce3d23be239243a2626ff0de54))
+* correct label in button sync ([34446d6](https://github.com/dnum-mi/bibliotheque_numerique/commit/34446d6fac7272d9534d59aeeb9c56a2d923526f))
+* redirect to auth pages after authenticated ([a9fa758](https://github.com/dnum-mi/bibliotheque_numerique/commit/a9fa75867620e0d95e24f00ecb337ce3bcabef74))
+* update name file navigation composable and update use of IS_OPEN_SOURCE on routes ([fde914c](https://github.com/dnum-mi/bibliotheque_numerique/commit/fde914c27e5d534c3bd1bb52c627bfa5ef7b609b))
+* use ecr.aws/bitnami for docker ([b994ca5](https://github.com/dnum-mi/bibliotheque_numerique/commit/b994ca5fc9b60e9129b951337bde6b0821f1cd16))
+* use ecr.aws/bitnami for docker nginx ([d5da0f3](https://github.com/dnum-mi/bibliotheque_numerique/commit/d5da0f3b2f7e0fc8635db46d42b34c484b545a7d))
+
+## [2.36.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.35.0...v2.36.0) (2025-09-01)
+
+
+### Features
+
+* Sync rna from hub ([#1864](https://github.com/dnum-mi/bibliotheque_numerique/issues/1864)) ([f8e912f](https://github.com/dnum-mi/bibliotheque_numerique/commit/f8e912fa3ea925296820cd05b14de56141e8f969))
+
+## [2.35.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.34.0...v2.35.0) (2025-08-29)
+
+
+### Features
+
+* del elk ([2819099](https://github.com/dnum-mi/bibliotheque_numerique/commit/2819099d123328d4f7d2f280ccb2a515f1c6cf39))
+
+
+### Bug Fixes
+
+* **#1865:** selected children of mappingColumns gone after sync demarche ([26aca4c](https://github.com/dnum-mi/bibliotheque_numerique/commit/26aca4c802b63dcbb8de986c2021b59e8f950073))
+* create migration to update fields.stringValue index ([7863252](https://github.com/dnum-mi/bibliotheque_numerique/commit/7863252eb3da2e3b7641a3833e0ebdb31baba9b1))
+* replace ds url with new url ([5aafd67](https://github.com/dnum-mi/bibliotheque_numerique/commit/5aafd67926732ac45c4098423b0b0c6a6caa3f0a))
+* set characters length of fields.stringValue index to 400 ([0bcc953](https://github.com/dnum-mi/bibliotheque_numerique/commit/0bcc953fa3faf7730bddcddf42e5b3ada53b7b84))
+* standardization text in code ([7a6ef11](https://github.com/dnum-mi/bibliotheque_numerique/commit/7a6ef11dd69bf425e15d228d4f20f6330ade2640))
+* standardization text in code 2 ([7a69d77](https://github.com/dnum-mi/bibliotheque_numerique/commit/7a69d77883181067ff58630594c8907ad206664b))
+* update max characters on index fields.stringValue ([9a9e7e9](https://github.com/dnum-mi/bibliotheque_numerique/commit/9a9e7e9c1c64d4bd7e64eb02d7cf6fe896567923))
+* use main for env dev ([63dffb7](https://github.com/dnum-mi/bibliotheque_numerique/commit/63dffb79fcfb1e713079ce700fa8d1595c1e19c4))
+* use main with default branch ([97efbb0](https://github.com/dnum-mi/bibliotheque_numerique/commit/97efbb0d44b66c81bfe3d8e563cc16f6b8f05b2c))
+
+## [2.34.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.33.1...v2.34.0) (2025-08-13)
+
+
+### Features
+
+* add prority job for sync organisme rnf ([0fed444](https://github.com/dnum-mi/bibliotheque_numerique/commit/0fed444d3d8808762e03682799a21c0427f216a4))
+* add refresh the synchronisation of one organisme in front ([e3331d6](https://github.com/dnum-mi/bibliotheque_numerique/commit/e3331d6f4d4a9070722ae7ff2c64f9fe1e7db457))
+* add spinner for fiche organisme ([8239985](https://github.com/dnum-mi/bibliotheque_numerique/commit/8239985ba494ee5139b3034f072f89891e81462a))
+* add table of synchronization state ([4119332](https://github.com/dnum-mi/bibliotheque_numerique/commit/41193324024a175ba2f9acc2aba041388e6eb53f))
+* add varaiable of foundation for sync hub ([af53918](https://github.com/dnum-mi/bibliotheque_numerique/commit/af539187844c4f89947f31f1259caf98eafb5422))
+* add variable configuration for synchronization with hub ([9e65e3d](https://github.com/dnum-mi/bibliotheque_numerique/commit/9e65e3d532c4a99cd4f030c37cff38947b5f3274))
+* config variable ENABLE_SIAF to ENABLE_SEARCH_HUB ([a4c9a88](https://github.com/dnum-mi/bibliotheque_numerique/commit/a4c9a8821f6efb73a61374a5c41e43622c548d68))
+* expose status of synchronization RNF ([c2511a3](https://github.com/dnum-mi/bibliotheque_numerique/commit/c2511a3d475ebcbfebd9ea65acf7f2e90526fe7f))
+* set synchrionization status for rnf ([1bbd7eb](https://github.com/dnum-mi/bibliotheque_numerique/commit/1bbd7eb8fb16296f4f11aa65ad24fb55aa77f21a))
+* synchronize foundation files with hub ([6394811](https://github.com/dnum-mi/bibliotheque_numerique/commit/63948115e865b05e28d8b6fb8a84c10dd1d6f134))
+* synchronize foundation with hub ([7c7047b](https://github.com/dnum-mi/bibliotheque_numerique/commit/7c7047b5eaec32a3447ad4477b2f5820411d598f))
+* synchronize selected fondation from search hub ([69da0e6](https://github.com/dnum-mi/bibliotheque_numerique/commit/69da0e6ba8d77b44a4cf12b7d765ea9f1b2cf257))
+
+
+### Bug Fixes
+
+* add interface for entity SyncState ([9eb425e](https://github.com/dnum-mi/bibliotheque_numerique/commit/9eb425e5a22475ff062a6e5edce7b186bb5c5f9b))
+* bug in the synchronizatiion of organisme ([8387151](https://github.com/dnum-mi/bibliotheque_numerique/commit/83871510a2ba0572faae5ee45745f8e3dcf36e1a))
+* update title of tabs without unregistry ([26f7a4f](https://github.com/dnum-mi/bibliotheque_numerique/commit/26f7a4f0179f139b509d4f21d0a9e2acdf280d57))
+
+## [2.33.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.33.0...v2.33.1) (2025-07-23)
+
+
+### Bug Fixes
+
+* filtering on type and missingDeclarationYears columns ([d7903a5](https://github.com/dnum-mi/bibliotheque_numerique/commit/d7903a5a5bbce707f64449b61b1e0f6134ff0678))
+
+## [2.33.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.32.2...v2.33.0) (2025-07-23)
+
+
+### Features
+
+* add organisme history ([#1834](https://github.com/dnum-mi/bibliotheque_numerique/issues/1834)) ([4b5f22d](https://github.com/dnum-mi/bibliotheque_numerique/commit/4b5f22d7e39f88952d78f390e5cf48c5e8b1f0c2))
+
+
+### Bug Fixes
+
+* remove fetch font of google by unocss ([1d0cd3c](https://github.com/dnum-mi/bibliotheque_numerique/commit/1d0cd3c6f3bbe166cb0c5f08711bc252ee14bf2d))
+
+## [2.32.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.32.1...v2.32.2) (2025-07-10)
+
+
+### Bug Fixes
+
+* échec de suppression du filtre Exercices manquants de type CustomNumbersFilter ([c7a8ea1](https://github.com/dnum-mi/bibliotheque_numerique/commit/c7a8ea11fafa41f76ddc1d6531942b44c125738e))
+* refus d ajout d une préfecture en tant qu administrateur national([#1823](https://github.com/dnum-mi/bibliotheque_numerique/issues/1823))([#1842](https://github.com/dnum-mi/bibliotheque_numerique/issues/1842)) ([6cabe9a](https://github.com/dnum-mi/bibliotheque_numerique/commit/6cabe9aac6acb5bf5609b220058ffdd860965d31))
+
+## [2.32.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.32.0...v2.32.1) (2025-07-04)
+
+
+### Bug Fixes
+
+* add ds and hub check in health ([db2b18b](https://github.com/dnum-mi/bibliotheque_numerique/commit/db2b18baa965fc833ebf7a84de217a6a83870b14))
+* add endpoint /health/info and /health/liveliness ([cfa56d5](https://github.com/dnum-mi/bibliotheque_numerique/commit/cfa56d5bdc8db11ab23e39b676238e2bd62dc22c))
+* debug woker docker for start ([e511f00](https://github.com/dnum-mi/bibliotheque_numerique/commit/e511f00e78ce1678aece974d07d4bc7c339f73ed))
+* set DS_API_HEALTH default false ([f36e2d5](https://github.com/dnum-mi/bibliotheque_numerique/commit/f36e2d5d24a9e724cf944917fdda963a5f9fa55e))
+
+## [2.32.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.31.0...v2.32.0) (2025-06-30)
+
+
+### Features
+
+* add tour functionality with Shepherd.js integration and new BnTourStep component ([bf68b9b](https://github.com/dnum-mi/bibliotheque_numerique/commit/bf68b9b5e12adc4db1d77a5c3fc9c421dc5a0925))
+* add tutorial steps for filter functionality and integrate help button in demarche page ([71f8a29](https://github.com/dnum-mi/bibliotheque_numerique/commit/71f8a297f8276c1377df7e98da020cb3a7d69cb2))
+* enhance shepherd footer styles and button interactions ([ce84085](https://github.com/dnum-mi/bibliotheque_numerique/commit/ce8408536d613bb628062bb064b2e38ceb1b5eb1))
+* enhance useTour functionality with improved error handling and cleanup processes ([1d980e9](https://github.com/dnum-mi/bibliotheque_numerique/commit/1d980e9798123388fddeb8a4a8a4d4794898df38))
+* refactor tour step creation and update filter tutorial steps ([0b8b963](https://github.com/dnum-mi/bibliotheque_numerique/commit/0b8b9630f6b0b2d9d95985978e0c9099f40b6c7c))
+* reorganize display component and help button ([f33247c](https://github.com/dnum-mi/bibliotheque_numerique/commit/f33247c03cb118245d8f226cd69e0658656bee28))
+* reposition help button to improve user accessibility for the tutorial ([0787301](https://github.com/dnum-mi/bibliotheque_numerique/commit/07873017ea674f25e240ccb1bcb417ab1311ceb4))
+
+
+### Bug Fixes
+
+* close filter modal after saving current filter ([af04a40](https://github.com/dnum-mi/bibliotheque_numerique/commit/af04a4045d1228e8ab86e9a37d2282118a72f795))
+
+## [2.31.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.30.1...v2.31.0) (2025-06-26)
+
+
+### Features
+
+* ([#1715](https://github.com/dnum-mi/bibliotheque_numerique/issues/1715)) récupérer les pièces joints en provenance de différent source ([#1800](https://github.com/dnum-mi/bibliotheque_numerique/issues/1800)) ([01ad326](https://github.com/dnum-mi/bibliotheque_numerique/commit/01ad3262fbc50bcb1ebf4794f4853eaa87166933))
+* Mettre en visibilité les filtres actifs dans les listes (Organismes, Démarches, Administrations) ([#1791](https://github.com/dnum-mi/bibliotheque_numerique/issues/1791)) ([e1095f9](https://github.com/dnum-mi/bibliotheque_numerique/commit/e1095f99cbebb2f912d8836876ad543b0d2f1235))
+
+
+### Bug Fixes
+
+* ([#1781](https://github.com/dnum-mi/bibliotheque_numerique/issues/1781)) Replace DsfrTabe by one component Tabs  ([a5ac7ad](https://github.com/dnum-mi/bibliotheque_numerique/commit/a5ac7ad129979adc9ccc933b4a037559ffb64b01))
+* delete/set repeatable jobs ([0d97031](https://github.com/dnum-mi/bibliotheque_numerique/commit/0d970313b62d2d3120ed0eeddbe9d55171428dfd))
+* enhance cell validation by trimming and case-insensitive matching against authorized list ([5a8763a](https://github.com/dnum-mi/bibliotheque_numerique/commit/5a8763a35bbeb16f5f86d5c21bd10a5f73774dab))
+* gestion des préfectures pour toutes les démarches ([#1802](https://github.com/dnum-mi/bibliotheque_numerique/issues/1802)) ([191ac27](https://github.com/dnum-mi/bibliotheque_numerique/commit/191ac274cec6d82ea79d593c9cf0bdc5492d6c11))
+
+## [2.30.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.30.0...v2.30.1) (2025-05-26)
+
+
+### Bug Fixes
+
+* debug formatPrefecture and add log when run user-import ([96763de](https://github.com/dnum-mi/bibliotheque_numerique/commit/96763dee4bf14b1185e6521d533c9f1141e69174))
+* update code department of Corse ([4f728a7](https://github.com/dnum-mi/bibliotheque_numerique/commit/4f728a7ff89b019d582e67ff05d9fd901272a9c9))
+* user-import check email is unique in excel data ([96e07bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/96e07bc88ac67b2df83354ac26672210bbf98d33))
+
+## [2.30.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.29.0...v2.30.0) (2025-05-20)
+
+
+### Features
+
+* add date formatting to long string fr format ([c8b571d](https://github.com/dnum-mi/bibliotheque_numerique/commit/c8b571d72e87b9e79b1a6f386eddd81d1be461ce))
+* add DossierChamps component like slot into DossierSection ([438bc5f](https://github.com/dnum-mi/bibliotheque_numerique/commit/438bc5f2c40de3d5103d63f6acdebb935fe9b5ef))
+* add DossierSection and DossierSidemenu components with grouped champs functionality ([f5e1ec3](https://github.com/dnum-mi/bibliotheque_numerique/commit/f5e1ec39cdb3319dfe97b238141cb0dcbdc6a96c))
+* implement grouped champs functionality in Dossier components and improve layout styles ([97f6961](https://github.com/dnum-mi/bibliotheque_numerique/commit/97f6961906f0e0290aa0230443196833dfae2c75))
+* update Dossier views for improved layout and type handling ([5a433a6](https://github.com/dnum-mi/bibliotheque_numerique/commit/5a433a6f7aba21dce4bf5d1c1caaec70c0a96753))
+
+
+### Bug Fixes
+
+* add new departments in shared ([6215ce0](https://github.com/dnum-mi/bibliotheque_numerique/commit/6215ce0253f50929c5841dc0d80bd6aa9d833b44))
+* decrement remainin time ([#1771](https://github.com/dnum-mi/bibliotheque_numerique/issues/1771)) ([105a090](https://github.com/dnum-mi/bibliotheque_numerique/commit/105a09062fa921ee9d686ffc50ac9d59be14ccb0))
+* delete cron job existing to update ([99fc97b](https://github.com/dnum-mi/bibliotheque_numerique/commit/99fc97be2d5ee7dcdb7472d932d98d58ecb2e3a8))
+* migration to add new departments ([5ed0d85](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ed0d8591832183734007187f226c2e7be798e52))
+
+## [2.29.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.28.1...v2.29.0) (2025-05-14)
+
+
+### Features
+
+* correction of authentification email and support url  ([22121a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/22121a165d4d742681e40543e5a6ac2251a54431))
+* reverse menu order, set defaut page to organisme list ([0c3ab98](https://github.com/dnum-mi/bibliotheque_numerique/commit/0c3ab98f1e5381e34e245b59155498c075ef9c3f))
+
+
+### Bug Fixes
+
+* del copy link in organisme file ([e9a3944](https://github.com/dnum-mi/bibliotheque_numerique/commit/e9a3944ebaaf509cc3bdd2df0cef32ea16f1ff39))
+* set text for blanks of ag grid filtre ([5bf301f](https://github.com/dnum-mi/bibliotheque_numerique/commit/5bf301f8814d1223392e7d299bad84c90c33775f))
+* show message of dossier in tabContent ([a894c19](https://github.com/dnum-mi/bibliotheque_numerique/commit/a894c1963c05a2317aab4a362368116f266cdbb7))
+* show PJ in page Fiche organisme ([c539264](https://github.com/dnum-mi/bibliotheque_numerique/commit/c5392641d1828db070bd79227ef8acd19e77b3fd))
+* show pj in the page dossier ([#1774](https://github.com/dnum-mi/bibliotheque_numerique/issues/1774)) ([673fdf0](https://github.com/dnum-mi/bibliotheque_numerique/commit/673fdf0f75a145240cff481779cb9c01c8073dc1))
+* update the types of organisme ([fc97bd1](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc97bd1d1d5d62125924657643a5465c7bad34ff))
+* use same color DS for dossier state ([d37cca8](https://github.com/dnum-mi/bibliotheque_numerique/commit/d37cca83e036bb862f7b9b669c9ca3e61201b596))
+* use same dsfr icon in menu and each page ([a621a8d](https://github.com/dnum-mi/bibliotheque_numerique/commit/a621a8d139ad11bba8481dcf2cc3544906f1d2fe))
+
+## [2.28.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.28.0...v2.28.1) (2025-04-23)
+
+
+### Features
+
+* save display on localStorage ([228c719](https://github.com/dnum-mi/bibliotheque_numerique/commit/228c7190c29b44d313e63c1fa4f8e0ea06501836))
+
+
+### Bug Fixes
+
+* filter date saved for ag-grid ([65c5bd8](https://github.com/dnum-mi/bibliotheque_numerique/commit/65c5bd812eea06aa148c7b3a2836fdc6515c1cff))
+* filter with operator AND and OR ([76d710f](https://github.com/dnum-mi/bibliotheque_numerique/commit/76d710f8a79c987c2553cdb84031807ba8ec6431))
+* select filter ([91dfd45](https://github.com/dnum-mi/bibliotheque_numerique/commit/91dfd4567c28a3c89b2389f6c5ae9e58bebbcfbc))
+* select filter ([#1750](https://github.com/dnum-mi/bibliotheque_numerique/issues/1750)) ([91dfd45](https://github.com/dnum-mi/bibliotheque_numerique/commit/91dfd4567c28a3c89b2389f6c5ae9e58bebbcfbc))
+* selected configuration of demarche ([b0ba038](https://github.com/dnum-mi/bibliotheque_numerique/commit/b0ba038b0056e31e2eafda823aaa06f13c106e2a))
+* update list of columns of dossiers in after modified configuration ([0752cc1](https://github.com/dnum-mi/bibliotheque_numerique/commit/0752cc1b117be1d4f518dc6a20f0f8ac12d1cc4a))
+* wording - list of organismes ([064194f](https://github.com/dnum-mi/bibliotheque_numerique/commit/064194f21bc3d5d72b30e908f6ca9e185408e76b))
+
+## [2.28.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.27.2...v2.28.0) (2025-04-17)
+
+
+### Features
+
+* add double authentification on admin ([#1685](https://github.com/dnum-mi/bibliotheque_numerique/issues/1685)) ([26fc291](https://github.com/dnum-mi/bibliotheque_numerique/commit/26fc2917e865aa2373cd24a7bb65773de54c834c))
+* add send mail on failure after three login attempts ([#1692](https://github.com/dnum-mi/bibliotheque_numerique/issues/1692)) ([a6e809e](https://github.com/dnum-mi/bibliotheque_numerique/commit/a6e809e6355e9aa03971032a26c23dae6877b5af))
+
+
+### Bug Fixes
+
+* add prefecture of user in the page of manage role ([436b27a](https://github.com/dnum-mi/bibliotheque_numerique/commit/436b27a13893051be86297642e898f6a7936bfec))
+* do not override sudo while importing ([d2fa0ae](https://github.com/dnum-mi/bibliotheque_numerique/commit/d2fa0ae968a5af86c30028a296f6b2d911317e63))
+* transition tabs in list dossiers ([583f431](https://github.com/dnum-mi/bibliotheque_numerique/commit/583f431a70909a33266a5c83703a0c17844de1c0))
+* update heigth of list organisme ([c725c3a](https://github.com/dnum-mi/bibliotheque_numerique/commit/c725c3ab4e0b16e9350e0f66998610708ba0d233))
+
+## [2.27.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.27.1...v2.27.2) (2025-04-10)
+
+
+### Bug Fixes
+
+* autorize show tabs in demarche view ([3c1d7a6](https://github.com/dnum-mi/bibliotheque_numerique/commit/3c1d7a6044f1028eace904d931583592a361da31))
+
+## [2.27.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.27.0...v2.27.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* resize ag-grid ([1eaa092](https://github.com/dnum-mi/bibliotheque_numerique/commit/1eaa09297664d5fae8caf8d3a14b5912dd77b35c))
+
+## [2.27.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.26.1...v2.27.0) (2025-04-10)
+
+
+### Features
+
+* filter number accepte blank and notBlank ([e372afe](https://github.com/dnum-mi/bibliotheque_numerique/commit/e372afe972e03870104c8bca679d26d0eef54cdb))
+* import users by excel file ([3c16b2c](https://github.com/dnum-mi/bibliotheque_numerique/commit/3c16b2c0ab755c52f68a2f39abdca1309f3b3ca8))
+* importing an existing user update its role. ([6f79592](https://github.com/dnum-mi/bibliotheque_numerique/commit/6f795920b7369c7ee263560815fdafd7075609c9))
+* update design for smaller screen ([76daa53](https://github.com/dnum-mi/bibliotheque_numerique/commit/76daa53776cb0fd1bac607ac98a0687d8278a79e))
+* upgrade the page of manage role of users ([d923daa](https://github.com/dnum-mi/bibliotheque_numerique/commit/d923daa8276245673fd7cda2675091a4ebe3eca3))
+
+
+### Bug Fixes
+
+* cypresse error in dossier demande vue ([ce3de2c](https://github.com/dnum-mi/bibliotheque_numerique/commit/ce3de2c05fffa36c4cc4bb40b46d794e217597a9))
+* del rnf config ([e105b25](https://github.com/dnum-mi/bibliotheque_numerique/commit/e105b25f7564c64e5898a0e4d2ca1e3a931bfb8a))
+* do not filter or sort column if unselected ([8a1f5fa](https://github.com/dnum-mi/bibliotheque_numerique/commit/8a1f5fa998ffbf33648d3ee93d0867c3d14bf33b))
+* migration db to remove ENABLE_RNF_SIAF ([370491e](https://github.com/dnum-mi/bibliotheque_numerique/commit/370491e9fb7b7563e173fd0fdc9bb1c55dbbb0b3))
+* naming on organism header ([08db0de](https://github.com/dnum-mi/bibliotheque_numerique/commit/08db0de1e43f9835c60ca28e3c227b5c435c0e5a))
+* no more in-range for number filters ([5ae6e1f](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ae6e1f5508dedf172292e77fb985bf3e96931a3))
+* notEqual filter ([0712bfe](https://github.com/dnum-mi/bibliotheque_numerique/commit/0712bfe74a057810051e966c415b02dede1b26b1))
+* remove button on dossier & improve navbar on small screen ([0c30616](https://github.com/dnum-mi/bibliotheque_numerique/commit/0c306161588d1d8e8b5c27bc619f4ba317a2baba))
+* wording prefecture in fiche organisme ([ede38be](https://github.com/dnum-mi/bibliotheque_numerique/commit/ede38beee7cacf1de22a01ad579cef6d06f4f5be))
+* wording service instructor in list dossier of fiche organisme ([3795de0](https://github.com/dnum-mi/bibliotheque_numerique/commit/3795de08d5e26087ca162e5d45453adfe604a86f))
+
+## [2.26.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.26.0...v2.26.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* add token for api SIAF ([bec121c](https://github.com/dnum-mi/bibliotheque_numerique/commit/bec121c309b440e092f51e377ebef797c264f81a))
+* correct prefecture label inside list ([bcda41a](https://github.com/dnum-mi/bibliotheque_numerique/commit/bcda41a016740b149bf22423beacf9d56c272482))
+
+## [2.26.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.25.2...v2.26.0) (2025-03-26)
+
+
+### Features
+
+* delete refresh token expiered ([871f9d5](https://github.com/dnum-mi/bibliotheque_numerique/commit/871f9d5b094e1c2dbae9ec9acdb38ad48be6fdbd))
+* Prefecture inside user - Harmonising prefecture in app ([1c62147](https://github.com/dnum-mi/bibliotheque_numerique/commit/1c621470afb3028c5520ed477d050e3388a98312))
+
+
+### Bug Fixes
+
+* changing password validate email too ([157df75](https://github.com/dnum-mi/bibliotheque_numerique/commit/157df757937e67c37feca6b841db7288e97c8bd8))
+* clear cookies after status 401 ([697b94d](https://github.com/dnum-mi/bibliotheque_numerique/commit/697b94d4b1315061310534473b3c6569510d07b7))
+* do not send refresh token inside all request ([0eb7140](https://github.com/dnum-mi/bibliotheque_numerique/commit/0eb7140bb1bd52b3b70c4a6a24fcefa25a0c564c))
+* instantly disconnect a user on 403 ([d59cac5](https://github.com/dnum-mi/bibliotheque_numerique/commit/d59cac5e3365ae5dbf54436e7bc88c3093deb029))
+* interceptor jwt error ([688366b](https://github.com/dnum-mi/bibliotheque_numerique/commit/688366b0c180d333364401a79415de7c7cb0cc62))
+* remove try catch of logout endpoint ([3932435](https://github.com/dnum-mi/bibliotheque_numerique/commit/39324358c6709a39a1fa6a843117e869a7cca058))
+* remove try catch of refresh endpoint ([5701434](https://github.com/dnum-mi/bibliotheque_numerique/commit/5701434f68020460efccdfad70fb1491839cdfe5))
+
+## [2.25.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.25.1...v2.25.2) (2025-03-21)
+
+
+### Bug Fixes
+
+* delete organisme in FRONT ([0eb3eb8](https://github.com/dnum-mi/bibliotheque_numerique/commit/0eb3eb8cf7b2ab525281cc0046b97c5bcc2cbb3f))
+* delete organisme in server ([a0c035a](https://github.com/dnum-mi/bibliotheque_numerique/commit/a0c035a02c3996062da1881c554f42be0ebd193b))
+* download file ([#1659](https://github.com/dnum-mi/bibliotheque_numerique/issues/1659)) ([26692a2](https://github.com/dnum-mi/bibliotheque_numerique/commit/26692a245760f01b0e3e399e1adf2f049fbbfa92))
+* download file ([#1659](https://github.com/dnum-mi/bibliotheque_numerique/issues/1659)) ([26692a2](https://github.com/dnum-mi/bibliotheque_numerique/commit/26692a245760f01b0e3e399e1adf2f049fbbfa92))
+* jwt env variables ([7aba3bf](https://github.com/dnum-mi/bibliotheque_numerique/commit/7aba3bf5e4fa665a6915ce6393d494d07bf99dab))
+* replace npm xlsx ([#1657](https://github.com/dnum-mi/bibliotheque_numerique/issues/1657)) ([4bacc2f](https://github.com/dnum-mi/bibliotheque_numerique/commit/4bacc2fe0e8da7757e2cf2ab0c45eef4ecfa2382))
+* run dev:client in project root ([9a08fdb](https://github.com/dnum-mi/bibliotheque_numerique/commit/9a08fdbd0a1d36d4040e9a5a2fd585ef06778a5a))
+* the message null has no properties ([54fe26b](https://github.com/dnum-mi/bibliotheque_numerique/commit/54fe26b0e846e3fa462acbd930f6dd5e0f53819a))
+* update dependency Vue-dsfr v8 ([#1647](https://github.com/dnum-mi/bibliotheque_numerique/issues/1647)) ([3130402](https://github.com/dnum-mi/bibliotheque_numerique/commit/31304024ea03aca20255af2682e7d16dd1a74a87))
+
+## [2.25.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.25.0...v2.25.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* debug ci scaleway ([46de4ce](https://github.com/dnum-mi/bibliotheque_numerique/commit/46de4cebd3b9d19ac8f72aadd219673f5b7be8a7))
+
+## [2.25.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.24.2...v2.25.0) (2025-03-13)
+
+
+### Features
+
+* add jwt authentification ([62f2b5d](https://github.com/dnum-mi/bibliotheque_numerique/commit/62f2b5daad3b65a11a7e889dd6f6cd476e0beeb3))
+* remove eslint warning, eslint ignore and add confirmation modal ([c9630a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/c9630a1678a47354997c6bf8e16981c405134e33))
+* remove eslint warning, eslint ignore and add confirmation modal ([c9630a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/c9630a1678a47354997c6bf8e16981c405134e33))
+* remove first letter from prefecture ([23bfa3d](https://github.com/dnum-mi/bibliotheque_numerique/commit/23bfa3d74c72273046b0398dd2136c022ea5a288))
+
+
+### Bug Fixes
+
+* adress for associations ([fb0fda7](https://github.com/dnum-mi/bibliotheque_numerique/commit/fb0fda7968cfe18d451c3c73df30f4f3653ab845))
+* linter ([92caaf9](https://github.com/dnum-mi/bibliotheque_numerique/commit/92caaf9adc2a8c154247193046c5330b86afb9d3))
+* linter client ([887c2cb](https://github.com/dnum-mi/bibliotheque_numerique/commit/887c2cb366384c90b5655e5882307d9ff8b426e1))
+* linter server ([d080b94](https://github.com/dnum-mi/bibliotheque_numerique/commit/d080b9437bd0ec542e9ea68061ad804276bfc642))
+* organism search ([4209ecb](https://github.com/dnum-mi/bibliotheque_numerique/commit/4209ecbce4e5347bcac765c2053a2386a9bf6381))
+* organism search ([4209ecb](https://github.com/dnum-mi/bibliotheque_numerique/commit/4209ecbce4e5347bcac765c2053a2386a9bf6381))
+* organism search ([71e60ad](https://github.com/dnum-mi/bibliotheque_numerique/commit/71e60adc2138610d657f8bbcf2a0583d4fb55105))
+* readd comment and create modal confirm component ([72bf6a6](https://github.com/dnum-mi/bibliotheque_numerique/commit/72bf6a682265823831891a5d8b151ee3b48a1c68))
+* remove typescript exceptions ([a0cb73e](https://github.com/dnum-mi/bibliotheque_numerique/commit/a0cb73eb67926afb703137a5b09bd8afae4b6dfd))
+* remove useless async ([5a59b2b](https://github.com/dnum-mi/bibliotheque_numerique/commit/5a59b2b0b0ebb312850972e8fee84abf8f83bd01))
+* replace confirm by confirmModal ([778211c](https://github.com/dnum-mi/bibliotheque_numerique/commit/778211cf9967a42e0898a733046146baa9383558))
+* show dossier when prefecture is null ([242129e](https://github.com/dnum-mi/bibliotheque_numerique/commit/242129ed1228a6232c45f379c8fe937a923ecc21))
+* typescript ([2966f89](https://github.com/dnum-mi/bibliotheque_numerique/commit/2966f890666630f333da9bbde895a1e69384708b))
+* typescript any in sendMail ([10f8f2a](https://github.com/dnum-mi/bibliotheque_numerique/commit/10f8f2ad5a4c88f82978d2a1625a175b25138eb9))
+* typescript interface ([ba8b7da](https://github.com/dnum-mi/bibliotheque_numerique/commit/ba8b7dad52c3ab646259570fe931562eacfcf04e))
+* use DsfrModal ([80fe7a8](https://github.com/dnum-mi/bibliotheque_numerique/commit/80fe7a8a395ec9294f0b5aa594f2adaf11bf44be))
+
+## [2.24.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.24.1...v2.24.2) (2025-02-18)
+
+
+### Bug Fixes
+
+* del CI/CD for OVH staging ([8ec0ac9](https://github.com/dnum-mi/bibliotheque_numerique/commit/8ec0ac953b3394e70e32e333119b2af0e2451845))
+* show tab raf only for foundation ([b960ec0](https://github.com/dnum-mi/bibliotheque_numerique/commit/b960ec0c007d1de6ac52de4d8ddd9e6dda640097))
+
+## [2.24.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.24.0...v2.24.1) (2025-02-14)
+
+
+### Bug Fixes
+
+* add profession of person in fiche organisme ([7168772](https://github.com/dnum-mi/bibliotheque_numerique/commit/7168772e2dfb8dd7e306f0059e758d5ec1efcf74))
+
+## [2.24.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.23.1...v2.24.0) (2025-02-13)
+
+
+### Features
+
+* add feature flag ([5757849](https://github.com/dnum-mi/bibliotheque_numerique/commit/5757849e1425c6a36393d1ac6cb5c6cc28c80614))
+* enable by default sso ([c189d0c](https://github.com/dnum-mi/bibliotheque_numerique/commit/c189d0cc82ea12719ecb5a2a5cd6243e9397ccf3))
+* update association of format RAF in server ([8fc6ede](https://github.com/dnum-mi/bibliotheque_numerique/commit/8fc6edee115fc2c2a53027326dec82c7695de0f6))
+* update config and improvements on sso ([a416a49](https://github.com/dnum-mi/bibliotheque_numerique/commit/a416a49372fb987dadcf976a5f0291f601f573ac))
+* update fiche organisme for  hub - code refactoring ([3a0e3fe](https://github.com/dnum-mi/bibliotheque_numerique/commit/3a0e3fec8d509731e6694d83139aadbba4ef81ed))
+* update interface to insert association of RAF ([7ee79cc](https://github.com/dnum-mi/bibliotheque_numerique/commit/7ee79cc79d86a9b7e71bca7571fda38c48aeee6b))
+* update proconnect button ([4523e31](https://github.com/dnum-mi/bibliotheque_numerique/commit/4523e31028f59db736b08d5d3cbf1b6036327d7a))
+
+
+### Bug Fixes
+
+* bug undefined in fiche organisme ([f4016c1](https://github.com/dnum-mi/bibliotheque_numerique/commit/f4016c14308992c5465d12cd8cfb753efcb00089))
+* change wording and remove default config ([342e9e6](https://github.com/dnum-mi/bibliotheque_numerique/commit/342e9e61cd1709844321d4ff701bf27017ff7490))
+* conflicts ([a1dcd7a](https://github.com/dnum-mi/bibliotheque_numerique/commit/a1dcd7aa8105cac130dbe0e13e95570d414f6f27))
+* conflicts on vite.config.ts ([e97acea](https://github.com/dnum-mi/bibliotheque_numerique/commit/e97acea9fc44b5d697c027881dde5901e6f24dc5))
+* linter ([e93e6ff](https://github.com/dnum-mi/bibliotheque_numerique/commit/e93e6ff3347541eff9e077bd376735dbd3004c5b))
+* objet and "Caractère ..." are in 4 lines max otherwise display scroll bar ([076afd5](https://github.com/dnum-mi/bibliotheque_numerique/commit/076afd5d618ab03e281fbc115d22d2e5b72ef7d1))
+* refacto fiche association for hub v0.0.9 ([6287dfd](https://github.com/dnum-mi/bibliotheque_numerique/commit/6287dfd9f6f3b8c209da35de9c658ada7e8b555b))
+* remove comment useless ([83012f3](https://github.com/dnum-mi/bibliotheque_numerique/commit/83012f3ee0b8e836e43c820d826cb92dcb453239))
+* remove duplicate client and useless test ([d2636d8](https://github.com/dnum-mi/bibliotheque_numerique/commit/d2636d84cba0c3ad0ff7315f1188190137117abc))
+* remove proconnect svg ([0422ac8](https://github.com/dnum-mi/bibliotheque_numerique/commit/0422ac8669aaf9f21a7f3fb3bb0a60b426eb53a0))
+* rename function get foundation from hub ([f8aece4](https://github.com/dnum-mi/bibliotheque_numerique/commit/f8aece4ea54a45ad9c55ea3e6539c864ae7ac752))
+* typo on typescript ([29631d3](https://github.com/dnum-mi/bibliotheque_numerique/commit/29631d3154b19f87c9ea46642f9a47b2e632d449))
+* update interface for foundation ([99ea903](https://github.com/dnum-mi/bibliotheque_numerique/commit/99ea903516d539a010ca1136eaee8576f81ce0a0))
+* update sso discovery url ([a566993](https://github.com/dnum-mi/bibliotheque_numerique/commit/a5669939c0ecc772714ed8b4e04880593d152e5d))
+
+## [2.23.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.23.0...v2.23.1) (2025-02-07)
+
+
+### Bug Fixes
+
+* add proxy for sso ([d6cad5f](https://github.com/dnum-mi/bibliotheque_numerique/commit/d6cad5f1b3aa91c41247a466ae82a79d13ed6133))
+* gestion error init Proconnect with proxy ([2bcc3bb](https://github.com/dnum-mi/bibliotheque_numerique/commit/2bcc3bb4a6e6dc0c950b4dbe2b43360bad2e7972))
+* move proconnect - front ([74c2da9](https://github.com/dnum-mi/bibliotheque_numerique/commit/74c2da92b3c8fdf5e228523f6f5761111d8f996a))
+* use algoritm json for open-id connect ([563dab1](https://github.com/dnum-mi/bibliotheque_numerique/commit/563dab18a9aaf301407cf2cf72998fa93110911a))
+
+## [2.23.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.22.0...v2.23.0) (2025-02-05)
+
+
+### Features
+
+* **1491:** add SSO on BN ([90e9109](https://github.com/dnum-mi/bibliotheque_numerique/commit/90e9109daff59530990fe92d22075f3d8ffe83cb))
+* fix linter ([bb0b237](https://github.com/dnum-mi/bibliotheque_numerique/commit/bb0b237a275ade152b13cfb93151c9ac8f067658))
+* fix pnpm-lock ([836d7a5](https://github.com/dnum-mi/bibliotheque_numerique/commit/836d7a5597cf420c7e6fa00a9e1eef26122a1011))
+* improve wording ([2329c9a](https://github.com/dnum-mi/bibliotheque_numerique/commit/2329c9a62a9afba801f2e6e0f1d4206073ae8e6d))
+
+
+### Bug Fixes
+
+* add one category of demarche in role of user ([4d74dbe](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d74dbe1868bc189277229c4e21e9290fcdfe2ef))
+* debug ci, add default conf for proconnect ([55cb890](https://github.com/dnum-mi/bibliotheque_numerique/commit/55cb8908682490a1702b0fb09a62a1073b2396d5))
+* update gitignore for pnpm store ([c99c411](https://github.com/dnum-mi/bibliotheque_numerique/commit/c99c4117bc2b85d96234a97bf97467edcf6d878e))
+* update openid-client version for proconnect, and gestion error for client ([6739d7c](https://github.com/dnum-mi/bibliotheque_numerique/commit/6739d7cb08224f3c97a889843291cf5766d02c1a))
+* wording for data missing ([ef7bb04](https://github.com/dnum-mi/bibliotheque_numerique/commit/ef7bb04c62306f013c8136b6c0a84f298cb32717))
+* wording in fiche organisme ([a5feb6d](https://github.com/dnum-mi/bibliotheque_numerique/commit/a5feb6def5b3c88f6bb103ea7a238fa7592ad475))
+
+## [2.22.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.21.3...v2.22.0) (2025-01-14)
+
+
+### Features
+
+* ✨ [#1530](https://github.com/dnum-mi/bibliotheque_numerique/issues/1530) ajoute une carte dans fiche info organisme ([2678ecc](https://github.com/dnum-mi/bibliotheque_numerique/commit/2678ecc055b262f29d7fe5f62e12bb298a8c0892))
+* disable build rnf image in gitlab ci ([59155b6](https://github.com/dnum-mi/bibliotheque_numerique/commit/59155b6725440758fb9b57c7ed735b61138efc57))
+* **FicheOrganisme:** ✨ [#1530](https://github.com/dnum-mi/bibliotheque_numerique/issues/1530) ajout autres infos dans fiche info ([346f6bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/346f6bc91bf3b7dd36028347e41ae21bdb78fb98))
+* **rnf:** del rnf ([8dc5c78](https://github.com/dnum-mi/bibliotheque_numerique/commit/8dc5c78f45f67de754c23eb2b11777428edc481c))
+
+
+### Bug Fixes
+
+* add module tsconfig for node 20 ([b5f765f](https://github.com/dnum-mi/bibliotheque_numerique/commit/b5f765fe74e978556edf6a5f2f76137f84347fbb))
+* error to read properties from undefined ([43c1f12](https://github.com/dnum-mi/bibliotheque_numerique/commit/43c1f12413d9880a1a2841f78ab7b07ae70f6966))
+* fix code from linter ([079741b](https://github.com/dnum-mi/bibliotheque_numerique/commit/079741b8258c133ef5202afe055f9d1b7ea2d79a))
+* pnpm to v8.12.1 ([50ef7ba](https://github.com/dnum-mi/bibliotheque_numerique/commit/50ef7ba1b083b3345262a788883ed9248dd79021))
+* replace function of fakerJs deprecated ([ea61420](https://github.com/dnum-mi/bibliotheque_numerique/commit/ea61420b14e02ae7bf972ebe197a51c3e9308a4d))
+* **rnf:** debug release-please and clean rnf in docs ([eb75fa1](https://github.com/dnum-mi/bibliotheque_numerique/commit/eb75fa1a909d7e7b26cdc557d87e6fca8435081e))
+
+## [2.21.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.21.2...v2.21.3) (2025-01-07)
+
+
+### Bug Fixes
+
+* delete existing job cron ([2be82c8](https://github.com/dnum-mi/bibliotheque_numerique/commit/2be82c82f9eb9652334de5e1476003b36c849614))
+* init keys redis to synchro organisme by dossier ([e98a85b](https://github.com/dnum-mi/bibliotheque_numerique/commit/e98a85b590037ce9c7bd655b6dabafd1c4c7d895))
+* set new endpoint password ([067f6a4](https://github.com/dnum-mi/bibliotheque_numerique/commit/067f6a4216cc9148d5964d19fbc6fee5785ccef6))
+
+## [2.21.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.21.1...v2.21.2) (2024-12-12)
+
+
+### Bug Fixes
+
+* job-id is useless and prevent re-sync ([f6f3c96](https://github.com/dnum-mi/bibliotheque_numerique/commit/f6f3c96a16a342f4477173d677ba90d61c59e036))
+* remove queue for organismes synchronization ([9c4fbb1](https://github.com/dnum-mi/bibliotheque_numerique/commit/9c4fbb130c02af0219b936feb4154bc2642c4895))
+
+## [2.21.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.21.0...v2.21.1) (2024-12-09)
+
+
+### Bug Fixes
+
+* [#1538](https://github.com/dnum-mi/bibliotheque_numerique/issues/1538) - service instructeur no show in list dossiers ([bc3e1ab](https://github.com/dnum-mi/bibliotheque_numerique/commit/bc3e1ab13ea11f9117d169c5eff9b8996ac1d81e))
+* [#1542](https://github.com/dnum-mi/bibliotheque_numerique/issues/1542): update description title and logo MI ([e8ff1c5](https://github.com/dnum-mi/bibliotheque_numerique/commit/e8ff1c5a63844a007fa65887e295afafd0abfc21))
+* synchronization rna by ask admin-tech ([120d5db](https://github.com/dnum-mi/bibliotheque_numerique/commit/120d5db4c2f9a869747416c379d99be386b321af))
+
+## [2.21.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.20.1...v2.21.0) (2024-11-28)
+
+
+### Features
+
+* use dockerhub for build image ([eaf1762](https://github.com/dnum-mi/bibliotheque_numerique/commit/eaf1762932066307256cfd0330e6ef7e7f057a91))
+
+## [2.20.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.20.0...v2.20.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* preventing db crash on BIG INT ([22ea2d9](https://github.com/dnum-mi/bibliotheque_numerique/commit/22ea2d915bb6f02217233aab7954332002b59f0d))
+
+## [2.20.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.19.0...v2.20.0) (2024-11-19)
+
+
+### Features
+
+* add qualification ci ([62a2571](https://github.com/dnum-mi/bibliotheque_numerique/commit/62a2571f91adac13660746b39f9faf0d0a8bf8ae))
+
+
+### Bug Fixes
+
+* new endpoint from  rnf-siaf ([511d422](https://github.com/dnum-mi/bibliotheque_numerique/commit/511d4228d75b8f9e78ac3ba9ea2cf4f001f2bd86))
+* remove search results raw data in front ([b06423e](https://github.com/dnum-mi/bibliotheque_numerique/commit/b06423ede5fb0cec932810154a855015947f4532))
+* rename variable env of siaf ([52e4fdf](https://github.com/dnum-mi/bibliotheque_numerique/commit/52e4fdf6969a91aac4165d76dec3c502c9f10f49))
+* show fiche organisme fron fiche dossier ([59643c0](https://github.com/dnum-mi/bibliotheque_numerique/commit/59643c042253af5d87eb861b99f9a528b7be7f7a))
+
+## [2.19.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.18.1...v2.19.0) (2024-11-07)
+
+
+### Features
+
+* configuration env for SIAF ([588c5a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/588c5a14ac7f4708dd89ff1ebb95ffb284daa91c))
+* get organisme from hub ([0f4e234](https://github.com/dnum-mi/bibliotheque_numerique/commit/0f4e2341ec2ef23363082861b3a5a1ee6c019d03))
+* search in register of association and foundation ([be30bba](https://github.com/dnum-mi/bibliotheque_numerique/commit/be30bba1040ac9204fd0b8a94f0066e3f92df54f))
+
+
+### Bug Fixes
+
+* migration enableRnfSiaf and enableSiaf ([d375d29](https://github.com/dnum-mi/bibliotheque_numerique/commit/d375d298bb04222dfa4dd4814bffbb03c3c98214))
+
+## [2.18.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.18.0...v2.18.1) (2024-11-06)
+
+
+### Bug Fixes
+
+* run turbo in pod of kube ([e01923a](https://github.com/dnum-mi/bibliotheque_numerique/commit/e01923aa7953329e8a2a7c7c6d9bb4c04d5ea326))
+
+## [2.18.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.17.1...v2.18.0) (2024-11-06)
+
+
+### Features
+
+* add ApiProperty for get foundation by idRnf ([e18224a](https://github.com/dnum-mi/bibliotheque_numerique/commit/e18224ab81ba20d78fde16acd20109aeb75c1f8e))
+* add config get url siaf-rnf ([8def52d](https://github.com/dnum-mi/bibliotheque_numerique/commit/8def52d44ada69735a3a6cb29ba1089b2e8f0d4a))
+* adding test digit inside rnf for qualification ([0e6a918](https://github.com/dnum-mi/bibliotheque_numerique/commit/0e6a918fbc1b419383e77d5b2e9b2765512d846e))
+* configuration for rnf-siaf ([4148887](https://github.com/dnum-mi/bibliotheque_numerique/commit/414888780333cd8ea14bca359adbd049416acf8b))
+* interfaces model from rnf-siaf ([cd618d3](https://github.com/dnum-mi/bibliotheque_numerique/commit/cd618d30fe3aed0b16cd0e1fdc9d502b58457113))
+* rnf api http-proxy for switch staging or prod ([ef7e6d1](https://github.com/dnum-mi/bibliotheque_numerique/commit/ef7e6d1f92aa38fca9d42ddb579bc4133a9661fe))
+* update entity for model siaf-rnf ([07a90e4](https://github.com/dnum-mi/bibliotheque_numerique/commit/07a90e4035b1d1a37602bb9c9128d99109ccb8d9))
+* update syncho rnf to synchro rnf-siaf ([eee07aa](https://github.com/dnum-mi/bibliotheque_numerique/commit/eee07aa3cc46ad8c3c9e8208709c5db5b1d30f8a))
+
+
+### Bug Fixes
+
+* fr word for anonymise ([d1f7109](https://github.com/dnum-mi/bibliotheque_numerique/commit/d1f7109c349de495a5dc81669cd4fd45b558bb0c))
+* get env when start with turbo ([78d00e9](https://github.com/dnum-mi/bibliotheque_numerique/commit/78d00e93ea77c7845f7085957dc79f2bd12ffaaa))
+* test-e2e anonymization ([04019b8](https://github.com/dnum-mi/bibliotheque_numerique/commit/04019b8a272b2a8bcec115dcfdb0c5eb981b9923))
+
+## [2.17.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.17.0...v2.17.1) (2024-09-09)
+
+
+### Bug Fixes
+
+* build container rnf-server ([1b631b2](https://github.com/dnum-mi/bibliotheque_numerique/commit/1b631b2a9971d5d335f68dbf961ad8d5958701c1))
+
+## [2.17.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.16.0...v2.17.0) (2024-09-09)
+
+
+### Features
+
+* add configuration anonymization ([d90b0af](https://github.com/dnum-mi/bibliotheque_numerique/commit/d90b0af754dea6c7f886e296e74cdea64c5728e6))
+* add mapping anonymized in demarche and api for patch and get ([dceda37](https://github.com/dnum-mi/bibliotheque_numerique/commit/dceda3744056c43a3c553e21f6925a62abd37cd0))
+* **anonymization-champs:** entity and migration ([22a751f](https://github.com/dnum-mi/bibliotheque_numerique/commit/22a751f2b3f788a49bed05d1f290cca3f4014c30))
+* **anonymization-chmaps:** :wip: add new configuation event for anonymization ([957ad7d](https://github.com/dnum-mi/bibliotheque_numerique/commit/957ad7d60ad65f04912607828d97904a5d5be81a))
+* job and service for anonymisation the champs and annotations in dossier ([4307864](https://github.com/dnum-mi/bibliotheque_numerique/commit/430786487bfab0958d9c6f272bc7f4a03ef1235e))
+* migration for anonymisation ([90891d4](https://github.com/dnum-mi/bibliotheque_numerique/commit/90891d439d7fb1b1d2f0fc430e039669f654ce02))
+* no display fix-field and champs deleted in mappngColumn for anonymization ([fad9a72](https://github.com/dnum-mi/bibliotheque_numerique/commit/fad9a7219a05c401fba81b5679fbb8a16e9c668a))
+* set dateTraiment when synchronisation ([57349f5](https://github.com/dnum-mi/bibliotheque_numerique/commit/57349f5378bc440712bc1a8e9f2ab21e85fd72d7))
+* shared interface anonymization ([e247c96](https://github.com/dnum-mi/bibliotheque_numerique/commit/e247c9626ac8d2dc184aec4be22058be0832de4e))
+
+
+### Bug Fixes
+
+* add or remove all anonymized field in array ([cce9aaf](https://github.com/dnum-mi/bibliotheque_numerique/commit/cce9aaf6e2fe7fb6d881b8183a80607feaf50835))
+* **anonymization:** anonymize field of type repetitionChamp ([137e1be](https://github.com/dnum-mi/bibliotheque_numerique/commit/137e1be44de3508bf9d038a87ae073f840e16b9f))
+* **anonymization:** repetitionChamp use rows in new version or champs in old version ([448967a](https://github.com/dnum-mi/bibliotheque_numerique/commit/448967a8c8988c586f35ff3be664cbc7db63fc95))
+* **anonymization:** test-e2e for fields without repetitionChamp ([7927541](https://github.com/dnum-mi/bibliotheque_numerique/commit/792754103af7528c9ed0a00cfb0e7a22ae5e8e00))
+* can disable anonymisation for one demarche ([60e77dd](https://github.com/dnum-mi/bibliotheque_numerique/commit/60e77dd30196d8a07318381cd4d4c5b1d66648a5))
+* cron job run by event ([8c746ac](https://github.com/dnum-mi/bibliotheque_numerique/commit/8c746ac8b06a77670497059d6729c0e2caea03b3))
+* datas of anonymization can to be NULL ([60a7428](https://github.com/dnum-mi/bibliotheque_numerique/commit/60a742841c52a73ce6e5d10bd0762329c1fbe49f))
+* delete anomymised file in S3 ([08c324b](https://github.com/dnum-mi/bibliotheque_numerique/commit/08c324bd30fc80757fa8cf69ca69cb743c98dccd))
+* get date from dateChamp to dateValue of field ([1e59f8d](https://github.com/dnum-mi/bibliotheque_numerique/commit/1e59f8dd3df0b93c7f236f1e66755728be4c6620))
+* model of anonymization ([d3359e1](https://github.com/dnum-mi/bibliotheque_numerique/commit/d3359e1f66e5a137b6aec8d6aa76e14a11dc27f7))
+* optimise code for anonymise ([fc05c80](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc05c8017e729ac5b60e1299240a4c41a969af54))
+* rename type MappingColunm ([56e55db](https://github.com/dnum-mi/bibliotheque_numerique/commit/56e55db9054075b9338f0b3258c261298d5e2ad0))
+* test e2e for anonymise ([1e2a007](https://github.com/dnum-mi/bibliotheque_numerique/commit/1e2a0079dc2353017131fc328232049e7ca05fb7))
+* update ds-api-client ([3cdecef](https://github.com/dnum-mi/bibliotheque_numerique/commit/3cdecef6a362423920f3eb3d08dbac38b9cc5b14))
+* wording ([2054edb](https://github.com/dnum-mi/bibliotheque_numerique/commit/2054edbc74c809ef54140c1ba77ceedc9f6fc836))
+* wording in fiche organisme ([ec8defa](https://github.com/dnum-mi/bibliotheque_numerique/commit/ec8defa15994eebf92616797be8b8e5e8447134d))
+
+## [2.16.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.15.0...v2.16.0) (2024-07-25)
+
+
+### Features
+
+* **bn:** add new qualities director ([5ebd7df](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ebd7df2fb97793930a2d2eddad4df747d527b29))
+* get motivation attachment from ds ([2a318c0](https://github.com/dnum-mi/bibliotheque_numerique/commit/2a318c0c20d6e64965a3f0d124efd63d6b81f866))
+* **rnf:** add creation date of foundation for all demarche of creation ([d5a4ba2](https://github.com/dnum-mi/bibliotheque_numerique/commit/d5a4ba22a3e9d5a952a1c1a2ce143c06aa64b3fd))
+* **rnf:** add new qualities director ([f573090](https://github.com/dnum-mi/bibliotheque_numerique/commit/f573090b25bb2093d157b352bc891be0b94e5a0f))
+
+
+### Bug Fixes
+
+* create number rnf for dossier in instruction only ([a10fc7b](https://github.com/dnum-mi/bibliotheque_numerique/commit/a10fc7bab934631bd5f7ea9484787c2ff653459c))
+* make filter date work wether its a date or a datetime ([dc46a65](https://github.com/dnum-mi/bibliotheque_numerique/commit/dc46a65c7594d087dc6cd0ebfdca2082f580e65e))
+* migration for yes-no champs for type dsChampType of field ([d18197e](https://github.com/dnum-mi/bibliotheque_numerique/commit/d18197e726dd53e871992c71a50bd2aaa3a7089f))
+* no limit when download organisme xlsx ([056da72](https://github.com/dnum-mi/bibliotheque_numerique/commit/056da728c195efc51d5af73d4abe99b130906dbf))
+* syntax error on missingDeclarationYears column name inside hash ([380f83a](https://github.com/dnum-mi/bibliotheque_numerique/commit/380f83a5ac3dc5dfc9dc879381c4624c9498c2a2))
+* typo, renaming error ([fb9dbd0](https://github.com/dnum-mi/bibliotheque_numerique/commit/fb9dbd07f3ca870cdf07855e7293487c27d7787f))
+* wording ([339d33f](https://github.com/dnum-mi/bibliotheque_numerique/commit/339d33f9201766357d31a79880c9bbbe65e3bdc3))
+
+## [2.15.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.14.0...v2.15.0) (2024-07-11)
+
+
+### Features
+
+* add functions and mappers to create, to update and dissolve FRUP ([562dbe9](https://github.com/dnum-mi/bibliotheque_numerique/commit/562dbe9d07f6c113472fab5958b7f7cddcbb0604))
+* add in controller the trigger to update and to dissolve FRUP ([824d0de](https://github.com/dnum-mi/bibliotheque_numerique/commit/824d0de3e080cabebea8294ba2bd7a2bd77b32b0))
+* add mingration, schema, entity for FRUP into db rnf ([1060e41](https://github.com/dnum-mi/bibliotheque_numerique/commit/1060e410b281d770cc0062bb184a53312fb4cfb0))
+* mapper get code from annotations (date creation FRUP) ([5fa47fb](https://github.com/dnum-mi/bibliotheque_numerique/commit/5fa47fb8c8b6e693554efa15532e6ec3a1e1288c))
+
+
+### Bug Fixes
+
+* test-e2e for frup ([76f60cc](https://github.com/dnum-mi/bibliotheque_numerique/commit/76f60ccee23a8f818a1ecee84742bd611e97d2ba))
+* wording prefecture to service instructeur ([a699e7e](https://github.com/dnum-mi/bibliotheque_numerique/commit/a699e7eadfae0bc3d569c313260fbd660f14091d))
+
+## [2.14.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.13.1...v2.14.0) (2024-07-02)
+
+
+### Features
+
+* build image by sequential ([85c5927](https://github.com/dnum-mi/bibliotheque_numerique/commit/85c5927479e0b9db78090bcd74c6bcde62a169de))
+
+
+### Bug Fixes
+
+* change REGISTRY_URL in ci dso ([5ac1b06](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ac1b06fff7c42ae6e320ae32fcc725fe96b0594))
+
+## [2.13.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.13.0...v2.13.1) (2024-07-01)
+
+
+### Bug Fixes
+
+* remove unicity job for dossier ([1c521dd](https://github.com/dnum-mi/bibliotheque_numerique/commit/1c521dd370c1259dcfa9f2b29368e10726842db6))
+
+## [2.13.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.12.1...v2.13.0) (2024-06-27)
+
+
+### Features
+
+* icon and message for incorrect address ([c170a55](https://github.com/dnum-mi/bibliotheque_numerique/commit/c170a552ccc4dbe98ce45fe41ec753923d9981f0))
+* **rnf:** get department from department champs ([5638a9f](https://github.com/dnum-mi/bibliotheque_numerique/commit/5638a9f5dab1b509f6d6f128db0655f081a8988c))
+* **rnf:** save incorrect address ([88208e6](https://github.com/dnum-mi/bibliotheque_numerique/commit/88208e6021dff5165e2fce82c969740f7b91abe1))
+
+
+### Bug Fixes
+
+* add log in rnf-back ([d49ade1](https://github.com/dnum-mi/bibliotheque_numerique/commit/d49ade1ff6e1b50e583cd33a29284d128572a13d))
+* **BN:** update fondation even if there are not field ([e7c3540](https://github.com/dnum-mi/bibliotheque_numerique/commit/e7c35403b9cbf680c70e097b9855c4be289edd2e))
+* debug gitlab-ci-dso for DSO ([4d78ada](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d78adac70b1de705fe2a46c91ce3a4e4e7d1b1c))
+* DepartementChamps from ds-api-client ([3aa3be1](https://github.com/dnum-mi/bibliotheque_numerique/commit/3aa3be1f057440b6646982933c41f862f325a805))
+* message for department missing ([25eff37](https://github.com/dnum-mi/bibliotheque_numerique/commit/25eff3709a607faf1e85e4841583b1273bbca9aa))
+* test components ([4f97aff](https://github.com/dnum-mi/bibliotheque_numerique/commit/4f97affd7c06625749f75d49f2cec621ffebc032))
+* update vue-dsfr ([0d005e6](https://github.com/dnum-mi/bibliotheque_numerique/commit/0d005e6774d52f1f52e60a36beeed397e8751e10))
+
+## [2.12.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.12.0...v2.12.1) (2024-06-14)
+
+
+### Bug Fixes
+
+* add type yes-no from DS ([46c9a62](https://github.com/dnum-mi/bibliotheque_numerique/commit/46c9a6206c01dffd54260b21997c5f99bb536ae1))
+* build docker for packageManager missing in package.json ([2eb0d75](https://github.com/dnum-mi/bibliotheque_numerique/commit/2eb0d75a308af4d3127e1004476c08b9cbe0fcda))
+* catch error by job for no stop others jobs ([84c4f9e](https://github.com/dnum-mi/bibliotheque_numerique/commit/84c4f9ec8fa545bd6f00d986af5e5b446eadb429))
+* display collision even if there are not files ([3c5c62c](https://github.com/dnum-mi/bibliotheque_numerique/commit/3c5c62cd23704c9a546ef491375f5f783eb33bac))
+* filter ag-grid for boolean ([0ce1354](https://github.com/dnum-mi/bibliotheque_numerique/commit/0ce1354b6d3a17719871c6c2c0da4d481cef6216))
+* fix: build docker for packageManager missing in package.json for rnf ([34fa7c2](https://github.com/dnum-mi/bibliotheque_numerique/commit/34fa7c245e27c3b8afc808843e369c51e3d0a3f2))
+* new design front collison ([d4d6d21](https://github.com/dnum-mi/bibliotheque_numerique/commit/d4d6d2125530da15daecf21bb58305b32ea63b2a))
+* not message from adress null in fiche organisme ([7aa73b7](https://github.com/dnum-mi/bibliotheque_numerique/commit/7aa73b7292ea3a0ad5e29529f058afb3246ef747))
+* remove button to link TLD in front ([f36ef39](https://github.com/dnum-mi/bibliotheque_numerique/commit/f36ef398a1b6ad9ca93cdd4c356bbc7e84fafbd3))
+* rename of types ([a62e064](https://github.com/dnum-mi/bibliotheque_numerique/commit/a62e064e4172f58a7e569f68769c17df20eae2c5))
+* set filter into ag-grid from server ([76959a7](https://github.com/dnum-mi/bibliotheque_numerique/commit/76959a7da1fba5fcab8eee4cfdb5eaee4ac70a0a))
+* split error messages of inputs  on front RNF ([d449736](https://github.com/dnum-mi/bibliotheque_numerique/commit/d449736fc8190383aca528723ff5aa79d402df00))
+* transaction for error entity field building from DS ([d295982](https://github.com/dnum-mi/bibliotheque_numerique/commit/d2959826d8c5dd5b37aef14c713ef3f4fd6df02b))
+* update nestjs/swagger in rnf ([e283350](https://github.com/dnum-mi/bibliotheque_numerique/commit/e28335001bb2d88e567b08e2b1d224e0801c0fbc))
+* upload first file from ds ([4438c4d](https://github.com/dnum-mi/bibliotheque_numerique/commit/4438c4d1e15ddf29f09508110fe4186f3113c298))
+* wording - Status ([c475780](https://github.com/dnum-mi/bibliotheque_numerique/commit/c475780a39e4b0763a51f888e007ea11439714d0))
+* wording - syncchronization ([871667b](https://github.com/dnum-mi/bibliotheque_numerique/commit/871667b3a7f90c9cf23aa7a67ede7e90d13d4000))
+* write annotation private by demarcheId ([c8d3408](https://github.com/dnum-mi/bibliotheque_numerique/commit/c8d3408573b7b1548c44007799b0baeb1fc13f99))
+
+## [2.12.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.11.1...v2.12.0) (2024-05-16)
+
+
+### Features
+
+* unicity of synchronising dossier and organisme ([ccd43f7](https://github.com/dnum-mi/bibliotheque_numerique/commit/ccd43f73ef9c69d69cef7e597e8595f80ca0556d))
+
+
+### Bug Fixes
+
+* null value convert to empty string value for stringValue of Fields ([6fe4348](https://github.com/dnum-mi/bibliotheque_numerique/commit/6fe434864f378b23ffa87e5b735a67609a71ae5e))
+
+## [2.11.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.11.0...v2.11.1) (2024-05-02)
+
+
+### Bug Fixes
+
+* prefecture name now works with both different hyphens (– OR -) ([94a8fe9](https://github.com/dnum-mi/bibliotheque_numerique/commit/94a8fe9dd5f0af093f9c99bdd930746bdfdf86ec))
+* pretty status in filter in statistics cards ([46a350a](https://github.com/dnum-mi/bibliotheque_numerique/commit/46a350aab6d4bae036ef86af4181a0bbb6711a9a))
+
+## [2.11.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.10.0...v2.11.0) (2024-04-29)
+
+
+### Features
+
+* update for redeployer ([d6ce146](https://github.com/dnum-mi/bibliotheque_numerique/commit/d6ce146ccc4133222043dafb7139f82b9e9f02c8))
+
+
+### Bug Fixes
+
+* catching error rnf during crons ([acddade](https://github.com/dnum-mi/bibliotheque_numerique/commit/acddade1377f32fa90d8cd3bdb1b9dbc47f17682))
+* message of already registered ([eecd591](https://github.com/dnum-mi/bibliotheque_numerique/commit/eecd591a6fe69dd1714416273e1fd4b6da16b5ec))
+* update auto-imports ([4e96c75](https://github.com/dnum-mi/bibliotheque_numerique/commit/4e96c75e938141d1b0795fd42e3030506cdb0e59))
+
+## [2.10.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.9.2...v2.10.0) (2024-04-23)
+
+
+### Features
+
+* anonymisation ([57a6974](https://github.com/dnum-mi/bibliotheque_numerique/commit/57a69740938dbc66bfeac2b0e9385230f676e5a2))
+* date creation inside DNR demarche ([a6a7981](https://github.com/dnum-mi/bibliotheque_numerique/commit/a6a79811777a825a772e694a5a5b562e4afc079b))
+
+
+### Bug Fixes
+
+* display prefecture of one organisme ([11ba33c](https://github.com/dnum-mi/bibliotheque_numerique/commit/11ba33c85e56120c977c39ed12b718222a1491a4))
+* espace between columns for persons in fiche organism ([3b1dea7](https://github.com/dnum-mi/bibliotheque_numerique/commit/3b1dea72ffcffa83db6d37a20d1bd5d196228160))
+* remove variable env useless ([00bb867](https://github.com/dnum-mi/bibliotheque_numerique/commit/00bb86745ccb74759b41dfe21ccdfa2729ce49d1))
+* replace FE_EXCEL_AMOUNT_CHAMP_ID by FE_AMOUNT_CHAMP_TAG in ds_configuration ([7fd940d](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fd940dbd691e8b48dbf0438d16809cbffc75249))
+* variables name in env-exemple ([c103008](https://github.com/dnum-mi/bibliotheque_numerique/commit/c10300861a4894a81fca65e63eea6a34f9c39183))
+
+## [2.9.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.9.1...v2.9.2) (2024-04-10)
+
+
+### Bug Fixes
+
+* all log true by default ([2e76ff4](https://github.com/dnum-mi/bibliotheque_numerique/commit/2e76ff4ca2a7eeaf354ad7f0b0859d2877cc1404))
+* already declared years ([f36ca75](https://github.com/dnum-mi/bibliotheque_numerique/commit/f36ca7549c74138bbdb64bd5f760a5472ae36b4e))
+
+## [2.9.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.9.0...v2.9.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* better design for organism file ([bc5feb4](https://github.com/dnum-mi/bibliotheque_numerique/commit/bc5feb43996c6a605aac416b71bf054d653b9c8e))
+* edge case when foundation has no fiscalendDate ([5251a6e](https://github.com/dnum-mi/bibliotheque_numerique/commit/5251a6ed6f7c92b5fc72c11137509f5b7772db73))
+* rnf: person field should not be mandatory ([e94b208](https://github.com/dnum-mi/bibliotheque_numerique/commit/e94b2080fd7b87f9fcedbbec30a6221ba3c85fbb))
+
+## [2.9.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.8.1...v2.9.0) (2024-04-09)
+
+
+### Features
+
+* add persons in migration and entity organisme ([b05d0d4](https://github.com/dnum-mi/bibliotheque_numerique/commit/b05d0d4d4424c54e72538864158c7ebd756a64e8))
+* adding decleration years on organisme ([7fcba42](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fcba425b80f272c58f1daabd24f5e5297f8021f))
+* display persons of organisme ([aad1754](https://github.com/dnum-mi/bibliotheque_numerique/commit/aad17542fa25e3af928fc8604dfef5fe6dc9d5ec))
+* interface Organisme Person ([7d0d62a](https://github.com/dnum-mi/bibliotheque_numerique/commit/7d0d62a11d6380f626402c085a40f7b21bf4b47c))
+* rnf, add isfounder in person of foudation ([b303b52](https://github.com/dnum-mi/bibliotheque_numerique/commit/b303b52628f1b262d5cc2f2239dfe22513164907))
+* rnf, add new demarche administration changes for fdd and fe ([8d4631d](https://github.com/dnum-mi/bibliotheque_numerique/commit/8d4631d35fe372c805c23f99d463f621a8241061))
+* rnf, change person by demarche administration changes ([a2bf8ea](https://github.com/dnum-mi/bibliotheque_numerique/commit/a2bf8ea8fa06caffdc2bb19b703347ac9ad77b4f))
+* rnf, update ds-api-client for debug get dossier with champDescriptor ([ec9d45a](https://github.com/dnum-mi/bibliotheque_numerique/commit/ec9d45a2d276f1923468b5499c2ab7353d3bfd79))
+* rnf, update person foudation with new role ([6d4fad8](https://github.com/dnum-mi/bibliotheque_numerique/commit/6d4fad82b07c46f4286a0caf5e04bad8b9877507))
+
+
+### Bug Fixes
+
+* add filter enum for etat delai ([7608320](https://github.com/dnum-mi/bibliotheque_numerique/commit/760832017ac79c340bed2af74bd3c2e9135750e6))
+* add isFondateur and refacto person interface in libShared ([606522c](https://github.com/dnum-mi/bibliotheque_numerique/commit/606522c34c88e55e13bad41d49f8c6a6edefbf93))
+* add new type benificiaire ([a4959cb](https://github.com/dnum-mi/bibliotheque_numerique/commit/a4959cb97131b0cfc0bab5232cd6009b012839ca))
+* create fields instruction-time for dossiers without date instruction ([86dc3e0](https://github.com/dnum-mi/bibliotheque_numerique/commit/86dc3e08b2ac3c4161e18335df9820b96d45e42d))
+* display obsolete due to missing children ([50477b5](https://github.com/dnum-mi/bibliotheque_numerique/commit/50477b5f0c89fe744a0b81f0e8d2891b48260b7a))
+* footer mini ([7fe9c20](https://github.com/dnum-mi/bibliotheque_numerique/commit/7fe9c20f75bcd18f2bc3d665385b4167bf3ff8fe))
+* get organisme with person fron rnf ([dc01558](https://github.com/dnum-mi/bibliotheque_numerique/commit/dc01558b17154db20d4e8f1f005ecad6bd3d30d5))
+* list benificiaires and creators ([c6e05bd](https://github.com/dnum-mi/bibliotheque_numerique/commit/c6e05bd5e85b0de26fdf2ef14fa6f25446dbca71))
+* new wording regarding connection failure ([50d07bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/50d07bc0f27840e43f34fe67d04ad66aeda007e6))
+* order person role of organisme ([c9bce1c](https://github.com/dnum-mi/bibliotheque_numerique/commit/c9bce1cc474d016e18a44db373512f19b3bb0d82))
+* rename isFondateur to isfounder in BN ([fad8851](https://github.com/dnum-mi/bibliotheque_numerique/commit/fad88515546b7af327e42d8c65c537e9b6399dd5))
+* resume redis after test-e2e ([b2444e4](https://github.com/dnum-mi/bibliotheque_numerique/commit/b2444e4e8a1d14dc4d47b69440a45b9e2e7ce944))
+* rnf, del old person when update foudation ([32d72cd](https://github.com/dnum-mi/bibliotheque_numerique/commit/32d72cd87eda8000dcc81ce61087f85899e1e03c))
+* rnf, regroup foundation change method in service ([3998ce4](https://github.com/dnum-mi/bibliotheque_numerique/commit/3998ce452d0d2ade0309d67d93452c5cb79803a4))
+* show footer on all pages ([4477465](https://github.com/dnum-mi/bibliotheque_numerique/commit/4477465ceb00ed609ae7786d226179df585d10f6))
+* type formatFunctionRef in fonction sync excel ([7ded3a0](https://github.com/dnum-mi/bibliotheque_numerique/commit/7ded3a012d789f3f2c3d6aaffc3b050e641afbcf))
+* update query of pagination to get dossiers when filter enum is select no value ([761a4b6](https://github.com/dnum-mi/bibliotheque_numerique/commit/761a4b69842fb0a706c7621bdf51c4b95fbe0cc2))
+* wording no role in profile page ([b6ba6e2](https://github.com/dnum-mi/bibliotheque_numerique/commit/b6ba6e2cf41d3111bcd63222b2ea42a41c2e89f0))
+
+## [2.8.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.8.0...v2.8.1) (2024-03-28)
+
+
+### Bug Fixes
+
+* client docker, sed cmd in entrypoint.sh ([48ae71d](https://github.com/dnum-mi/bibliotheque_numerique/commit/48ae71d2807c4180c4d890b32eef6627d17da9dc))
+
+## [2.8.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.7.4...v2.8.0) (2024-03-27)
+
+
+### Features
+
+* only national admin can configure demarche ([259ce32](https://github.com/dnum-mi/bibliotheque_numerique/commit/259ce32fda120fefd64390da2d49a1a95ab07bbd))
+
+
+### Bug Fixes
+
+* date traitement can be a string ([b1ae1fa](https://github.com/dnum-mi/bibliotheque_numerique/commit/b1ae1fa3a5176cb01d051ab3d5635966c0e7b8d1))
+
+## [2.7.4](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.7.3...v2.7.4) (2024-03-26)
+
+
+### Bug Fixes
+
+* debug sed cmd in entrypoint.sh ([90ba956](https://github.com/dnum-mi/bibliotheque_numerique/commit/90ba95658ae650836b2e6815aac750691eb45b0f))
+
+## [2.7.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.7.2...v2.7.3) (2024-03-26)
+
+
+### Bug Fixes
+
+* add licence ag grid ([1327984](https://github.com/dnum-mi/bibliotheque_numerique/commit/1327984f3ab322a427df0902df4aba471e180f33))
+* create the feilds even if one champ is not in mapping ([bff58f8](https://github.com/dnum-mi/bibliotheque_numerique/commit/bff58f8acd63aee8d6fe8dba9d2825e59ecbca82))
+* debug when user has demarche soft deleted ([c8e343b](https://github.com/dnum-mi/bibliotheque_numerique/commit/c8e343b9f33868dab93e3d5748e20640c1b7140a))
+* filter demarche with all cas 0 null undefined ([87a1f24](https://github.com/dnum-mi/bibliotheque_numerique/commit/87a1f24f9e9daeff2a4ffe059e174f9c984e9e5d))
+* not return demarche soft deleted for user profile ([6fe4bbb](https://github.com/dnum-mi/bibliotheque_numerique/commit/6fe4bbbbcb0962f24bbbd27561798821aecc9377))
+* use license key in var env ([664aa6a](https://github.com/dnum-mi/bibliotheque_numerique/commit/664aa6aa48304a92caf4afa93d339f1dbf59c820))
+
+## [2.7.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.7.1...v2.7.2) (2024-03-21)
+
+
+### Bug Fixes
+
+* upload checksum onl if s3 went correctly ([add9835](https://github.com/dnum-mi/bibliotheque_numerique/commit/add98357953ce6c4ff68e384600193249ce7bb50))
+
+## [2.7.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.7.0...v2.7.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* delete dummy error ([519088b](https://github.com/dnum-mi/bibliotheque_numerique/commit/519088bd1744977e96c72dbae15e2ddc1b470d67))
+
+## [2.7.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.6.2...v2.7.0) (2024-03-21)
+
+
+### Features
+
+* ✨ [#1180](https://github.com/dnum-mi/bibliotheque_numerique/issues/1180) set fixed list in ag-grid filters ([3a87400](https://github.com/dnum-mi/bibliotheque_numerique/commit/3a87400599d6d99bd562c4745c8c1681568e6d4f))
+* ✨ set fixed list of filters for types of organismes ([3d983b9](https://github.com/dnum-mi/bibliotheque_numerique/commit/3d983b90a2b63c543ac43c0e643b25f9f0051239))
+* All fields can have code. All tab for organisme files. Sudo can synchronise one dossier at a time. ([7d79ceb](https://github.com/dnum-mi/bibliotheque_numerique/commit/7d79ceb3980157dbe14a0b6e2ce878c2e2d01d7e))
+* instructor can only see files from its prefecture ([ab4698e](https://github.com/dnum-mi/bibliotheque_numerique/commit/ab4698ea6c8c180ff55859dc51e4b6da1b48773d))
+* synchronising files from rna to organisme ([4e5350b](https://github.com/dnum-mi/bibliotheque_numerique/commit/4e5350b4d8bc2f794e73f5519a2b1ebd0f71c9e6))
+
+
+### Bug Fixes
+
+* 🐛 properly throw error in interceptor ([9021681](https://github.com/dnum-mi/bibliotheque_numerique/commit/90216819d6d1e02add8dd9cd1a32ba8118ab1578))
+* acces files for instructeurs ([f478850](https://github.com/dnum-mi/bibliotheque_numerique/commit/f47885086c5898fe4e128a86fbb84652ec6623e0))
+* add function to update and return entity ([812fa0f](https://github.com/dnum-mi/bibliotheque_numerique/commit/812fa0f38e7702d04805127db1f036845d32d23d))
+* correct error from s3 and convert stream to buffer for excel ([fc29967](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc29967bf0ee094613b5b6948d1967bebd45170d))
+* debug creation total amount fields ([74c1494](https://github.com/dnum-mi/bibliotheque_numerique/commit/74c149408b1eb4effdad8fefc2446e2519f335b7))
+* display correctly tab files in fiche dossier ([9c4de29](https://github.com/dnum-mi/bibliotheque_numerique/commit/9c4de298e72c48318bf7514a3f55b7b53575e86d))
+* display number files for one dossier with the role restriction ([336d635](https://github.com/dnum-mi/bibliotheque_numerique/commit/336d63552873cb32eb71af0d1a14c37542583e7e))
+* File type in configuration of demarche for front ([ac94abd](https://github.com/dnum-mi/bibliotheque_numerique/commit/ac94abd196e5237adb37479c5447e3889a6cbba5))
+* from upgrade ds-api-client ([4c9c8a2](https://github.com/dnum-mi/bibliotheque_numerique/commit/4c9c8a2a8abe482dcef2c1415e3141eddb370d44))
+* get entity updated ([589528c](https://github.com/dnum-mi/bibliotheque_numerique/commit/589528c13205b8d2dd9ebece0a50fa5182a884d6))
+* get files summary of one dossier ([d7477e4](https://github.com/dnum-mi/bibliotheque_numerique/commit/d7477e43c9f0eaf43e6911e8a01e6f42c1bdb817))
+* keep new description reference on mappingColumn to find new codes in description ([a7dc95b](https://github.com/dnum-mi/bibliotheque_numerique/commit/a7dc95bb5767b30c85aa00f57e7e8826b59f13da))
+* keycode instruction times in service ([e7516d1](https://github.com/dnum-mi/bibliotheque_numerique/commit/e7516d13cd3e514692e00497996633546fc34168))
+* listing demarche now return only necessary data ([509ed02](https://github.com/dnum-mi/bibliotheque_numerique/commit/509ed02446d12bfe73c47b7653121d280fcebf5f))
+* merge file into files by ds-api-client ([a485c23](https://github.com/dnum-mi/bibliotheque_numerique/commit/a485c23bbdcab0b7ea35d04d3da7c4575e9836d9))
+* patch flaky demarche e2e test ([56c9268](https://github.com/dnum-mi/bibliotheque_numerique/commit/56c9268a99df70612b53fb1402ed0c111e43d3c0))
+* set date-inconnue if there is a error in filed year ([fb320a1](https://github.com/dnum-mi/bibliotheque_numerique/commit/fb320a10c9fd2a6b03e8199be0bf618bb29b4509))
+* set organisme for only dossiers accpeted ([ed2fce1](https://github.com/dnum-mi/bibliotheque_numerique/commit/ed2fce11dd87c1721a578cbdb5ddbdc7dfe1bedd))
+* skipping e2e flaky admin test ([29e996f](https://github.com/dnum-mi/bibliotheque_numerique/commit/29e996f740fd3770d4c412b71c6b17b62d608049))
+* test-unit for get files with rewrite url ([7cf06f8](https://github.com/dnum-mi/bibliotheque_numerique/commit/7cf06f8066eca5690ee37f3db9a10b4101caea3c))
+* type of organisme for pagination to enum ([528d3c2](https://github.com/dnum-mi/bibliotheque_numerique/commit/528d3c270bfa4ac7ce0bfceeec9b7839042cb794))
+* update ds-api-client to get dossiers by updated Since ([78dd1cd](https://github.com/dnum-mi/bibliotheque_numerique/commit/78dd1cd91a0a45c8bda6243a39f4e17973bdaced))
+
+## [2.6.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.6.1...v2.6.2) (2024-03-05)
+
+
+### Bug Fixes
+
+* set KUBERNETES_MEMORY_LIMIT to 5 go for build front in gitlab ([2796e8f](https://github.com/dnum-mi/bibliotheque_numerique/commit/2796e8fe74db1eb53074573b06bf7e5ce733445d))
+
+## [2.6.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.6.0...v2.6.1) (2024-03-05)
+
+
+### Bug Fixes
+
+* not change version for http-proxy image ([699bd74](https://github.com/dnum-mi/bibliotheque_numerique/commit/699bd747d7b40c52d1cda3394657ec133575d22c))
+* not change version for http-proxy image ([ed98818](https://github.com/dnum-mi/bibliotheque_numerique/commit/ed988187fdd90af0ad3f83ee0371e69d487c8ebe))
+
+## [2.6.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.5.0...v2.6.0) (2024-03-05)
+
+
+### Features
+
+* gitlab ci build image when is change ([9bcad9d](https://github.com/dnum-mi/bibliotheque_numerique/commit/9bcad9d081b702e2aac6d830bb440babe19df0cb))
+
+## [2.5.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.4.5...v2.5.0) (2024-03-05)
+
+
+### Features
+
+* ✨ get ready for files summary ([fb50395](https://github.com/dnum-mi/bibliotheque_numerique/commit/fb50395c9e82e69549f5fb2f5ca44a4f7ff06f03))
+* add soft-delete demarche in backend ([afa3eb9](https://github.com/dnum-mi/bibliotheque_numerique/commit/afa3eb9e767275c5e4ee763ccba410e0638416aa))
+* add soft-delete demarche in client ([50d66ad](https://github.com/dnum-mi/bibliotheque_numerique/commit/50d66adad95a6ee6eb70d6aef7e88c1315ba2da2))
+* add soft-delete dossier in backend ([8184523](https://github.com/dnum-mi/bibliotheque_numerique/commit/8184523c8930bfb66d78d0b1163b9cd0381d25bb))
+* del endpoint for get log ([de77ef4](https://github.com/dnum-mi/bibliotheque_numerique/commit/de77ef4e791f38a19e0b565d4da1658c881fd779))
+* file pagination ([3b9ac6f](https://github.com/dnum-mi/bibliotheque_numerique/commit/3b9ac6f1fd41028b6e4fc35adc2d74f157dccdeb))
+
+
+### Bug Fixes
+
+* build error because import DsfrButton ([7aecb5c](https://github.com/dnum-mi/bibliotheque_numerique/commit/7aecb5ccae88f24ff1f58b8ee59e335a839c3460))
+* change url of file in dossier before send to front ([64922f0](https://github.com/dnum-mi/bibliotheque_numerique/commit/64922f02e31e74b3259f13b7066fe0f63d043ad4))
+* debug in test e2e dossier-searche ([89c7385](https://github.com/dnum-mi/bibliotheque_numerique/commit/89c7385f3baefe1575aad65d3faadd030b6635cd))
+* dowload pj and add demandeur icon in messagearies ([501cabd](https://github.com/dnum-mi/bibliotheque_numerique/commit/501cabd2dd0f8e0502bb790c1ecb99c4ad012d8a))
+* download file in dossier on FRONT ([653d304](https://github.com/dnum-mi/bibliotheque_numerique/commit/653d30462770594079aa33db85fd4a590641fa42))
+* error in test-e2e to get annotations which is string ([a01f57a](https://github.com/dnum-mi/bibliotheque_numerique/commit/a01f57afc304f2dc2bf756823d191a4cdf50be42))
+* rename deleteDemarche to softDeleteDemarche ([0fb3024](https://github.com/dnum-mi/bibliotheque_numerique/commit/0fb3024932ce5160d834b5a0d4791dd7aed96ae2))
+* resolved migration to have cascade SET NULL when deleting organism ([7dd8130](https://github.com/dnum-mi/bibliotheque_numerique/commit/7dd813009e697965e2c5eb98c12ea1bdbf5afc0e))
+* route to organismes files ([d3b992b](https://github.com/dnum-mi/bibliotheque_numerique/commit/d3b992b00461b7cfbee2a54ce772531d867bb634))
+* synchro-file and join file and dossier ([81e2499](https://github.com/dnum-mi/bibliotheque_numerique/commit/81e24999ee2a5a9851739d4e798b3c9cf65624cf))
+* toaster for file with state no uploaded ([02d476d](https://github.com/dnum-mi/bibliotheque_numerique/commit/02d476d7ebefbe7fd8188719dc85b95efd298b33))
+* update route file list for organisme and callApi is generic ([44cdab5](https://github.com/dnum-mi/bibliotheque_numerique/commit/44cdab58d7705788d7e56147291ad5e465d2a1e7))
+
+
+### Performance Improvements
+
+* ⚡ only load file list when the tab is active ([28c0219](https://github.com/dnum-mi/bibliotheque_numerique/commit/28c0219608bcf60d2bc6bed81e4e124c34009015))
+
+## [2.4.5](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.4.4...v2.4.5) (2024-02-23)
+
+
+### Bug Fixes
+
+* update start worker script for deployer ([a80571e](https://github.com/dnum-mi/bibliotheque_numerique/commit/a80571e198dfff8766e4427b0fade014009c7b1e))
+
+## [2.4.4](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.4.3...v2.4.4) (2024-02-23)
+
+
+### Bug Fixes
+
+* use bullboard self login, and not login for mailhog ([f2ea044](https://github.com/dnum-mi/bibliotheque_numerique/commit/f2ea0442c6ce9e8e74a4f7917e2040249457d5f3))
+
+## [2.4.3](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.4.2...v2.4.3) (2024-02-22)
+
+
+### Bug Fixes
+
+* add index.html for auth http proxy ([fa855cb](https://github.com/dnum-mi/bibliotheque_numerique/commit/fa855cb07fc95127bce4611a5ab300349a8e676f))
+
+## [2.4.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.4.1...v2.4.2) (2024-02-22)
+
+
+### Bug Fixes
+
+* run deploy to dev when release is created ([3c19a61](https://github.com/dnum-mi/bibliotheque_numerique/commit/3c19a6182d18a06a6242c8ff9a589a0ddca2ec1e))
+
+## [2.4.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.3.1...v2.4.0) (2024-02-22)
+
+
+### Features
+
+* date fin exercice - add fiscalEndDateAt in db of bn ([c458094](https://github.com/dnum-mi/bibliotheque_numerique/commit/c458094a745b8fce398ed46eea6e70137ffd29a4))
+* date fin exercice - get fiscal end date from rnf to bn ([1ef65ab](https://github.com/dnum-mi/bibliotheque_numerique/commit/1ef65abc1d969d64e7168c119d3152c4cf249bba))
+
+## [2.3.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.3.0...v2.3.1) (2024-02-22)
+
+
+### Bug Fixes
+
+* run deploy to dev when released ([5050f94](https://github.com/dnum-mi/bibliotheque_numerique/commit/5050f948802ef4360b456c0eb90f9609b069e328))
+
+## [2.3.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.2.2...v2.3.0) (2024-02-22)
+
+
+### Features
+
+* add basic auth for nginx http proxy ([222de27](https://github.com/dnum-mi/bibliotheque_numerique/commit/222de27854bfd50ff24d5b2c6a7a8ad9e44d8737))
+* add bn-configuration for client ([0103860](https://github.com/dnum-mi/bibliotheque_numerique/commit/0103860115c586e628a639bb6383478070f0079a))
+* add docker redis ([1bf8f1e](https://github.com/dnum-mi/bibliotheque_numerique/commit/1bf8f1e7bb5ab9d805caa2d61c30497dd869faad))
+* add new module bn-configuration for save the conf in db ([4a42db3](https://github.com/dnum-mi/bibliotheque_numerique/commit/4a42db37daefd0717b2f7f14faa5ca1f77913cc4))
+* add redis config ([bf2da00](https://github.com/dnum-mi/bibliotheque_numerique/commit/bf2da00917aa5179057a7b0ae9486f5ed8719473))
+* auto deploy to dev after release ([77022dc](https://github.com/dnum-mi/bibliotheque_numerique/commit/77022dce21bf08ccb55018f4f156076742a1ad3a))
+* date fin exercice: add fiscal end date into rnf-server ([70eb34b](https://github.com/dnum-mi/bibliotheque_numerique/commit/70eb34b37d5a87e04cd3ca2eac1d4b1e3331668b))
+* export organismes for client ([be2d85a](https://github.com/dnum-mi/bibliotheque_numerique/commit/be2d85a6d8507ef7b830c3e7b2130e698dfd3857))
+* export organismes for server ([73d6ed7](https://github.com/dnum-mi/bibliotheque_numerique/commit/73d6ed728c9c9c451430fac64082b0e33739d574))
+* new schema - date de fin exercice ([76ab6e7](https://github.com/dnum-mi/bibliotheque_numerique/commit/76ab6e7c7b468dc581f2b31bcfb514ad42290583))
+
+
+### Bug Fixes
+
+* add method delete for bn-configuration controller ([05fa31a](https://github.com/dnum-mi/bibliotheque_numerique/commit/05fa31a45ff01925fa62812b17ca02ee04d011a6))
+* createMissingMandatoryData config when app bootstrap ([0e2de2c](https://github.com/dnum-mi/bibliotheque_numerique/commit/0e2de2ccc6ec89065893402bd56faf0efc225a15))
+* move fonction of files of shared-utils ([a26fa1d](https://github.com/dnum-mi/bibliotheque_numerique/commit/a26fa1deacbc7054264560cfd9e58a2cdd5ff898))
+* to run server on PRDO (Why?) ([07babca](https://github.com/dnum-mi/bibliotheque_numerique/commit/07babca1147484773b770a586b80bea96dc62bcf))
+* update env and code for test:e2e ([e6f45fd](https://github.com/dnum-mi/bibliotheque_numerique/commit/e6f45fdf56eb0af4e197e1a1286b9c11598e1c73))
+
+## [2.2.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.2.1...v2.2.2) (2024-01-23)
+
+
+### Bug Fixes
+
+* add config rna et rnf in worker ([2197276](https://github.com/dnum-mi/bibliotheque_numerique/commit/2197276138fbdc240f51c56b553620c4d8b4ebc8))
+
+## [2.2.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.2.0...v2.2.1) (2024-01-23)
+
+
+### Bug Fixes
+
+* :bug: fix ag-grid custom-filter composition API bug ([60519ec](https://github.com/dnum-mi/bibliotheque_numerique/commit/60519ecd606528d62d29ffae6a3c7e56bb15ba9a))
+
+## [2.2.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.1.0...v2.2.0) (2024-01-22)
+
+
+### Features
+
+* date filter can now accept a list of defined range ([a4b3983](https://github.com/dnum-mi/bibliotheque_numerique/commit/a4b3983f91760f55a48319815130be4c418b81f8))
+* **Worker Update Organisme:** add in cron to update organisme from RNF ([b2b761c](https://github.com/dnum-mi/bibliotheque_numerique/commit/b2b761cde9615260579ce30e9e44fa86d265be18))
+* **Worker Update Organisme:** get list fondation from RNF ([807e7c3](https://github.com/dnum-mi/bibliotheque_numerique/commit/807e7c35cb2721e019eee988dca40e9564b05a27))
+
+
+### Bug Fixes
+
+* query of filter for blank, not blank and in range ([37db3e0](https://github.com/dnum-mi/bibliotheque_numerique/commit/37db3e028b803d6a5c8b6049826214a1b5a25152))
+* translate to french name filter date of ag-grid ([55c3764](https://github.com/dnum-mi/bibliotheque_numerique/commit/55c3764fefe96e4ece3bba98ca67b6c9c43cbc62))
+
+## [2.1.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v2.0.0...v2.1.0) (2024-01-16)
+
+
+### Features
+
+* ✨ handle click on dossier only when allowed ([f4ea015](https://github.com/dnum-mi/bibliotheque_numerique/commit/f4ea0153df1215f9f82e04195e542d17be780a03))
+* feat: fix-field Personne moral of demandeur ([2cf3445](https://github.com/dnum-mi/bibliotheque_numerique/commit/2cf344508d63409d06f19408cc6e3aced46e954d))
+* fix-field Personne physique of demandeur ([74b5019](https://github.com/dnum-mi/bibliotheque_numerique/commit/74b501907868e7ee86b8cccaab1b858d19bf13fa))
+* select a second total ([bd17940](https://github.com/dnum-mi/bibliotheque_numerique/commit/bd179403a13da1224e9ba837fc27a45c0c70c1f1))
+* test for fix-field personne physique of demandeur ([7447844](https://github.com/dnum-mi/bibliotheque_numerique/commit/7447844df10de6cdbba9b7b0a6791767247401fe))
+
+
+### Bug Fixes
+
+* convert the date string to JS Date to get list RNF by date ([a9626e7](https://github.com/dnum-mi/bibliotheque_numerique/commit/a9626e7680d0835c85a116b4250773fce16d3dff))
+* failed update mapping when the mapping-column donot have a fix-field ([eaf0523](https://github.com/dnum-mi/bibliotheque_numerique/commit/eaf052344c422d16e1e317c5ba86af0184f4b603))
+* to update mappingColumn when fix-field changed ([e4d056c](https://github.com/dnum-mi/bibliotheque_numerique/commit/e4d056c4372bafdf7d4f715dc62df4d4831e6065))
+* typo Type of demarches on Page Configure Application ([0e20f4b](https://github.com/dnum-mi/bibliotheque_numerique/commit/0e20f4b6a89b08f0ec0a825de91ef9a4741572f6))
+
+## [2.0.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.9.2...v2.0.0) (2024-01-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **database:** version 2.0.0
+
+### Features
+
+* **database:** passage en production ([2ed09fa](https://github.com/dnum-mi/bibliotheque_numerique/commit/2ed09fae3cb62c55b065d9ad02a493cdce3d3649))
+
+## [1.9.2](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.9.1...v1.9.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* 🐛 redirect to 404 page if resource not found ([fb44ee0](https://github.com/dnum-mi/bibliotheque_numerique/commit/fb44ee02852e07e1e34248a20dc5ddddb57c8ac6))
+* 🐛 reset store data appropriately (before get) ([4cf5dab](https://github.com/dnum-mi/bibliotheque_numerique/commit/4cf5dab759170407fb38164ede6929e777652215))
+* categories of demarche is in bold ([846da79](https://github.com/dnum-mi/bibliotheque_numerique/commit/846da7931bfc31521465f9081a2daec8607b5d79))
+* component test of fiche dossier for the value Etat ([761f153](https://github.com/dnum-mi/bibliotheque_numerique/commit/761f153ca5a91b340ac29aadae2c5c65a23be834))
+* direct user to connection on valid email ([8665313](https://github.com/dnum-mi/bibliotheque_numerique/commit/86653131c029140fc6d037a7c87b036fa1d433a0))
+* liste demarche number and dates ([b58820f](https://github.com/dnum-mi/bibliotheque_numerique/commit/b58820fea6977cb4aff40766e0e759012e59d930))
+* not empty or empty filter.filter for string filter in dossier listing ([cd1b016](https://github.com/dnum-mi/bibliotheque_numerique/commit/cd1b016c4a23e8d6002c7a4692fa3e276387e695))
+* null in RNA address ([c6d19e5](https://github.com/dnum-mi/bibliotheque_numerique/commit/c6d19e50a0ce4c43a89fd56981af50074d138b74))
+* oui ou non instead of false or true in fiche dossier ([6fbfe10](https://github.com/dnum-mi/bibliotheque_numerique/commit/6fbfe100b390a50971ae5a4347fa27e79a15b998))
+* use mapping column in search providers instead of looking from type with a query request on field table. ([c78f7bb](https://github.com/dnum-mi/bibliotheque_numerique/commit/c78f7bb818888f4f3410164aade64826d33952cf))
+* using status badge in dossier header ([3b8acba](https://github.com/dnum-mi/bibliotheque_numerique/commit/3b8acba7ed65d2027f36cd10dcab60c5f88bf2d1))
+
+## [1.9.1](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.9.0...v1.9.1) (2024-01-08)
+
+
+### Bug Fixes
+
+* ✏️ fix typos on obsolete ([a84ab15](https://github.com/dnum-mi/bibliotheque_numerique/commit/a84ab1575a5b1565139796ae64edb80e43337f07))
+* 🐛 fix blank-page-on-new-version bug ([e92038d](https://github.com/dnum-mi/bibliotheque_numerique/commit/e92038ddbab8c08f7a81c9e24d73215213bce682))
+* 🐛 fix missing icon ([d4ccdfa](https://github.com/dnum-mi/bibliotheque_numerique/commit/d4ccdfaf2466f2a15ce002526491fae33bea77e3))
+* 🐛 fix quick links in header ([d90680f](https://github.com/dnum-mi/bibliotheque_numerique/commit/d90680f41ba7d427baa32283a079e98693e39865))
+* 🚸 improve ui/ux if no custom filters for user ([0f39441](https://github.com/dnum-mi/bibliotheque_numerique/commit/0f394410a9f3fc9a45c371fd5b5531adca6170eb))
+* add config instrutcion time for worker ([7184462](https://github.com/dnum-mi/bibliotheque_numerique/commit/7184462398ea193fc866c65015b7ff70b372a929))
+* error de test sur client ([3e34901](https://github.com/dnum-mi/bibliotheque_numerique/commit/3e34901deb895040c8a823d4d89c4b44c71032fe))
+* reverse fistname and lastname in mail to validate inscription ([a18c677](https://github.com/dnum-mi/bibliotheque_numerique/commit/a18c677d79f0f9e6f2cd4d1107f52f75d1f2ba8c))
+
+## [1.9.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.8.0...v1.9.0) (2024-01-05)
+
+### Features
+
+* ✨ use custom footer ([f669a69](https://github.com/dnum-mi/bibliotheque_numerique/commit/f669a6991817529cece88d41266111afad8bf983))
+* admin can now see if user is verified ([b951c88](https://github.com/dnum-mi/bibliotheque_numerique/commit/b951c88230d90c8dcfa41fd75a09da2acf7c0fd5))
+* job name in signup is now required. ([5ce6af4](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ce6af4678d109ee60242e346b5bd5137ea2f99f))
+* update page accessibility ([61bd123](https://github.com/dnum-mi/bibliotheque_numerique/commit/61bd1233c73ebbe03046f00d46b1e93a5cc44484))
+* user is now aware of obsolete 'affichage' ([69c3799](https://github.com/dnum-mi/bibliotheque_numerique/commit/69c379946be62b6ba07d2fe66983f51cec89d8a1))
+
+### Bug Fixes
+
+* :bug: fix e2e tests ([f868c81](https://github.com/dnum-mi/bibliotheque_numerique/commit/f868c810d59affbaae717fd22f2cb96a38332ca2))
+* 🐛 corrige le test de connexion ([3d5fa82](https://github.com/dnum-mi/bibliotheque_numerique/commit/3d5fa821ebfbf557dd181a41a3064771959d2b66))
+* 🐛 Fix ag-grid error ([2ad10f5](https://github.com/dnum-mi/bibliotheque_numerique/commit/2ad10f56797a51ea2033554d78556571ab309cb8))
+* dont reset filter by default, let front control it ([10caa17](https://github.com/dnum-mi/bibliotheque_numerique/commit/10caa17eda31ee20d83119cb6904b300d566ff82))
+* give orginal name of column in affichage if columnLabel has been unchecked ([87aa90f](https://github.com/dnum-mi/bibliotheque_numerique/commit/87aa90f955d3054bce81a9df4040acfdb0ca4020))
+* preventing sql injection on the searchs requests ([541e23d](https://github.com/dnum-mi/bibliotheque_numerique/commit/541e23d1dc7093835fb834d8f72beb50dd25f756))
+
+## [1.8.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.7.0...v1.8.0) (2023-12-22)
+
+### Features
+
+* :sparkles: display attachments in demarche dossier ([ab63fac](https://github.com/dnum-mi/bibliotheque_numerique/commit/ab63facaf806f293e9c86665a25e66db47c9984c))
+* :sparkles: redesign configuration page ([5345c38](https://github.com/dnum-mi/bibliotheque_numerique/commit/5345c382a08a3e7033bb29bc3996bc90aa5c7730))
+
+### Bug Fixes
+
+* annonation privee is singular in mapping column source ([ed9e243](https://github.com/dnum-mi/bibliotheque_numerique/commit/ed9e243479ea809fe04cfbb51de8d877bfe32151))
+* blank filter string is working ([9dfd078](https://github.com/dnum-mi/bibliotheque_numerique/commit/9dfd0789b40f4606c72b4fd1b375f9377a6de9a9))
+* call endpoint dossier-search when a demarche have not repeatable fields ([1e474ee](https://github.com/dnum-mi/bibliotheque_numerique/commit/1e474ee459b4c3b886762a051dc5cb5bb68b2fba))
+* createdAt and UpdatedAt from new migration db ([d6c63bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/d6c63bc632e1dfcbc5c481891eaad3cfde648495))
+* del not work code in release action ([72cf5ce](https://github.com/dnum-mi/bibliotheque_numerique/commit/72cf5cee05f2a5cc0336367363dec8494ef3ac97))
+* fields-search now separated multiple repeatble fields ([680ba34](https://github.com/dnum-mi/bibliotheque_numerique/commit/680ba343c28d44a7c17322d0c16341f2aea9f98a))
+* no display switch by vue by dossier ([641e1ea](https://github.com/dnum-mi/bibliotheque_numerique/commit/641e1eae7bf35ba0a90a6835eb0bda5f1893363a))
+* update a good default hashed password ([9a7f396](https://github.com/dnum-mi/bibliotheque_numerique/commit/9a7f3967a79e4d4569c868a6796e137a435c540a))
+
+## [1.7.0](https://github.com/dnum-mi/bibliotheque_numerique/compare/v1.6.15...v1.7.0) (2023-12-19)
+
+### Features
+
+* add footer in template and show version run-env accessibility in app ([cea6d64](https://github.com/dnum-mi/bibliotheque_numerique/commit/cea6d645c422a6668669b5c29f6d38f24ebbe9f1))
+* **Profile:** dto to update profile ([66e0f9c](https://github.com/dnum-mi/bibliotheque_numerique/commit/66e0f9c9cf239c77093b967f286bd219827d51fc))
+* **Profile:** editable field for profile in FRONT ([91ec325](https://github.com/dnum-mi/bibliotheque_numerique/commit/91ec325640a7f288d1c558f3f0b3f305626f35de))
+* **Profile:** endpoint to update profile in sever ([50a2162](https://github.com/dnum-mi/bibliotheque_numerique/commit/50a2162b2dd34b279352b88cbfdbe61b54084b40))
+* **Profile:** get porofile user updated without logout ([bfcedd7](https://github.com/dnum-mi/bibliotheque_numerique/commit/bfcedd7a2edcd05311a2589ce272df723b99a690))
+* **Profile:** udpate profile in api client and store ([db02305](https://github.com/dnum-mi/bibliotheque_numerique/commit/db023056c6078f4ad912b9519d772e89eda4c735))
+
+### Bug Fixes
+
+* :pencil2: rename poste by fonction ([d671cdc](https://github.com/dnum-mi/bibliotheque_numerique/commit/d671cdc960c3e7f51044fb9d74629ca6b8bb5173))
+* add deps sanitize-html ([cf45146](https://github.com/dnum-mi/bibliotheque_numerique/commit/cf451461842e59468c90c2f06e255aa920f9cb7a))
+* add page cookies for client ([a2b0d95](https://github.com/dnum-mi/bibliotheque_numerique/commit/a2b0d952e155533f8a616f33a25a19765b63bed8))
+* add version and run-env in api health ([d78a994](https://github.com/dnum-mi/bibliotheque_numerique/commit/d78a99450006a5df6597f158c22919dc374de71c))
+* add vue accessibility ([e3436fa](https://github.com/dnum-mi/bibliotheque_numerique/commit/e3436fa5f5f2b746e27cc309067b05079c6ebf5f))
+* debug build docker image ([4d8154e](https://github.com/dnum-mi/bibliotheque_numerique/commit/4d8154e6237accf430be95f1ff78b4702778552e))
+* Error message for status 500 ([f7c5cfa](https://github.com/dnum-mi/bibliotheque_numerique/commit/f7c5cfa66310e7ca37d8724cfb1447d76e8063be))
+* prevent user from clicking to an organisme if we didnt find it ([a58de70](https://github.com/dnum-mi/bibliotheque_numerique/commit/a58de70043621b87b4e40dfb4cdffd27197de0ea))
+* remove place-holder of "job title" input on sign-up ([e27380f](https://github.com/dnum-mi/bibliotheque_numerique/commit/e27380f476cfe5fea1b7754c4e8702b33d9e03bb))
+* render in number for array from excel ([63052d6](https://github.com/dnum-mi/bibliotheque_numerique/commit/63052d6ef4411707ed74557bb7603038452c2f60))
+* reset on logout ([fc2b12e](https://github.com/dnum-mi/bibliotheque_numerique/commit/fc2b12e1bb2fcfb7e0eb8f243572f5ad3350e43f))
+* RNF: error message for address no exist in dossier DS ([a137f55](https://github.com/dnum-mi/bibliotheque_numerique/commit/a137f55dbb11033fb8c22e4a716b6c9f142bb0f1))
+* sanitize html to display messages of dossier ([9d8f5bc](https://github.com/dnum-mi/bibliotheque_numerique/commit/9d8f5bcf007cd5f644addb8b44d7cb1be515e999))
+* **sign-up:** send job title to server ([7249364](https://github.com/dnum-mi/bibliotheque_numerique/commit/7249364693d50cc683ab578d9cbb87f7c7849c12))
+* substring 6 instead of 7 ([ff5aa1c](https://github.com/dnum-mi/bibliotheque_numerique/commit/ff5aa1cfc74f6b480098d79b69ee6f94d6e2c9b2))
+* synchro dossier after to update demarche DS ([5ec1d17](https://github.com/dnum-mi/bibliotheque_numerique/commit/5ec1d17040118b93c0007227af507b368f7ecc1d))
+* test component dossier: fail when id = 0 in generateDossier ([af34bee](https://github.com/dnum-mi/bibliotheque_numerique/commit/af34bee38dbcdeb6856912db002b042a27f3ef4c))
+* unit test to synchronize dossiers after to update demarche DS ([5d86bfd](https://github.com/dnum-mi/bibliotheque_numerique/commit/5d86bfdeb36032839da45bb212737121127683ef))
+* update script fixture in package to commonjs ([ff72a09](https://github.com/dnum-mi/bibliotheque_numerique/commit/ff72a09ed024ec7375a6b6f923209ae21e90e515))
+
+## [v1.6.15] - 2023-12-23
+
+### Added
+
+* Toutes les fonctionnalités développées jusqu’ici

@@ -1,0 +1,1610 @@
+.
+├── .dockerignore
+├── .editorconfig
+├── .github
+│   ├── actions
+│   │   └── ci-update-deploy-tag
+│   │       └── action.yml
+│   └── workflows
+│       ├── build-deploy_development.yml
+│       ├── ci.yml
+│       └── release-please.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .husky
+│   ├── commit-msg
+│   ├── pre-commit
+│   └── pre-push
+├── .npmrc
+├── .prettierrc
+├── .release-please-manifest.json
+├── .vscode
+│   └── bn.code-snippets
+├── .yo-rc.json
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── apps
+│   ├── client
+│   │   ├── .editorconfig
+│   │   ├── .env-example
+│   │   ├── .eslintrc-auto-import.json
+│   │   ├── .gitignore
+│   │   ├── .lintstagedrc.json
+│   │   ├── .vscode
+│   │   │   ├── extensions.json
+│   │   │   ├── settings.json
+│   │   │   └── vue-dsfr.code-snippets
+│   │   ├── Dockerfile
+│   │   ├── README.md
+│   │   ├── cypress
+│   │   │   ├── .eslintrc.cjs
+│   │   │   ├── e2e
+│   │   │   │   ├── admin.e2e.ts
+│   │   │   │   ├── dossier.e2e.ts
+│   │   │   │   ├── home.e2e.ts
+│   │   │   │   ├── organisme.e2e.ts
+│   │   │   │   ├── sign-in.e2e.ts
+│   │   │   │   └── terms.e2e.ts
+│   │   │   ├── fixtures
+│   │   │   │   ├── admin-local-profile.json
+│   │   │   │   ├── admin-no-terms-accepted.json
+│   │   │   │   ├── admin-profile.json
+│   │   │   │   ├── custom-filters.json
+│   │   │   │   ├── demarche.json
+│   │   │   │   ├── demarches.json
+│   │   │   │   ├── dossier-without-annotaions.json
+│   │   │   │   ├── example.json
+│   │   │   │   ├── fields-search.json
+│   │   │   │   ├── files.json
+│   │   │   │   ├── instructor-profile.json
+│   │   │   │   ├── no-role-user-selected.json
+│   │   │   │   ├── none-profile.json
+│   │   │   │   └── user-selected.json
+│   │   │   ├── support
+│   │   │   │   ├── commands.ts
+│   │   │   │   ├── component-index.html
+│   │   │   │   ├── component.ts
+│   │   │   │   ├── e2e.ts
+│   │   │   │   └── mailhog-commands.ts
+│   │   │   ├── tsconfig.json
+│   │   │   └── utils
+│   │   │       ├── foundation-hub.ts
+│   │   │       └── usersRoles.ts
+│   │   ├── cypress.config.ts
+│   │   ├── entrypoint.sh
+│   │   ├── env.d.ts
+│   │   ├── eslint.config.js
+│   │   ├── frontend.instructions.md
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── public
+│   │   │   ├── browserconfig.xml
+│   │   │   ├── countries-svg
+│   │   │   │   ├── afghanistan.svg
+│   │   │   │   ├── afrique-du-sud.svg
+│   │   │   │   ├── albanie.svg
+│   │   │   │   ├── algerie.svg
+│   │   │   │   ├── allemagne.svg
+│   │   │   │   ├── andorre.svg
+│   │   │   │   ├── angola.svg
+│   │   │   │   ├── antigua-et-barbuda.svg
+│   │   │   │   ├── arabie-saoudite.svg
+│   │   │   │   ├── argentine.svg
+│   │   │   │   ├── armenie.svg
+│   │   │   │   ├── aruba.svg
+│   │   │   │   ├── australie.svg
+│   │   │   │   ├── autriche.svg
+│   │   │   │   ├── azerbaidjan.svg
+│   │   │   │   ├── bahamas.svg
+│   │   │   │   ├── bahrein.svg
+│   │   │   │   ├── bangladesh.svg
+│   │   │   │   ├── barbade.svg
+│   │   │   │   ├── belgique.svg
+│   │   │   │   ├── belize.svg
+│   │   │   │   ├── benin.svg
+│   │   │   │   ├── bermudes.svg
+│   │   │   │   ├── bhoutan.svg
+│   │   │   │   ├── bielorussie.svg
+│   │   │   │   ├── birmanie.svg
+│   │   │   │   ├── bolivie.svg
+│   │   │   │   ├── bosnie-herzegovine.svg
+│   │   │   │   ├── botswana.svg
+│   │   │   │   ├── bresil.svg
+│   │   │   │   ├── brunei.svg
+│   │   │   │   ├── bulgarie.svg
+│   │   │   │   ├── burkina-faso.svg
+│   │   │   │   ├── burundi.svg
+│   │   │   │   ├── cambodge.svg
+│   │   │   │   ├── cameroun.svg
+│   │   │   │   ├── canada.svg
+│   │   │   │   ├── cap-vert.svg
+│   │   │   │   ├── chili.svg
+│   │   │   │   ├── chine.svg
+│   │   │   │   ├── chypre.svg
+│   │   │   │   ├── colombie.svg
+│   │   │   │   ├── comores.svg
+│   │   │   │   ├── congo-rep-dem.svg
+│   │   │   │   ├── congo.svg
+│   │   │   │   ├── coree-du-nord.svg
+│   │   │   │   ├── coree-du-sud.svg
+│   │   │   │   ├── costa-rica.svg
+│   │   │   │   ├── cote-divoire.svg
+│   │   │   │   ├── croatie.svg
+│   │   │   │   ├── cuba.svg
+│   │   │   │   ├── curacao.svg
+│   │   │   │   ├── danemark.svg
+│   │   │   │   ├── djibouti.svg
+│   │   │   │   ├── dominique.svg
+│   │   │   │   ├── egypte.svg
+│   │   │   │   ├── emirats-arabes-unis.svg
+│   │   │   │   ├── equateur.svg
+│   │   │   │   ├── erythree.svg
+│   │   │   │   ├── espagne.svg
+│   │   │   │   ├── estonie.svg
+│   │   │   │   ├── eswatini.svg
+│   │   │   │   ├── etats-unis.svg
+│   │   │   │   ├── ethiopie.svg
+│   │   │   │   ├── fidji.svg
+│   │   │   │   ├── finlande.svg
+│   │   │   │   ├── france.svg
+│   │   │   │   ├── gabon.svg
+│   │   │   │   ├── gambie.svg
+│   │   │   │   ├── georgie.svg
+│   │   │   │   ├── ghana.svg
+│   │   │   │   ├── gibraltar.svg
+│   │   │   │   ├── grece.svg
+│   │   │   │   ├── grenade.svg
+│   │   │   │   ├── groenland.svg
+│   │   │   │   ├── guam.svg
+│   │   │   │   ├── guatemala.svg
+│   │   │   │   ├── guinee-bissau.svg
+│   │   │   │   ├── guinee-equatoriale.svg
+│   │   │   │   ├── guinee.svg
+│   │   │   │   ├── guyana.svg
+│   │   │   │   ├── haiti.svg
+│   │   │   │   ├── honduras.svg
+│   │   │   │   ├── hong-kong-chine.svg
+│   │   │   │   ├── hongrie.svg
+│   │   │   │   ├── ile-de-man.svg
+│   │   │   │   ├── ile-maurice.svg
+│   │   │   │   ├── iles-*.svg  (7 files)
+│   │   │   │   ├── inde.svg
+│   │   │   │   ├── indonesie.svg
+│   │   │   │   ├── irak.svg
+│   │   │   │   ├── iran.svg
+│   │   │   │   ├── irlande.svg
+│   │   │   │   ├── islande.svg
+│   │   │   │   ├── israel.svg
+│   │   │   │   ├── italie.svg
+│   │   │   │   ├── jamaique.svg
+│   │   │   │   ├── japon.svg
+│   │   │   │   ├── jordanie.svg
+│   │   │   │   ├── kazakhstan.svg
+│   │   │   │   ├── kenya.svg
+│   │   │   │   ├── kirghizistan.svg
+│   │   │   │   ├── kiribati.svg
+│   │   │   │   ├── kosovo.svg
+│   │   │   │   ├── koweit.svg
+│   │   │   │   ├── laos.svg
+│   │   │   │   ├── lesotho.svg
+│   │   │   │   ├── lettonie.svg
+│   │   │   │   ├── liban.svg
+│   │   │   │   ├── liberia.svg
+│   │   │   │   ├── libye.svg
+│   │   │   │   ├── liechtenstein.svg
+│   │   │   │   ├── lituanie.svg
+│   │   │   │   ├── luxembourg.svg
+│   │   │   │   ├── macao-chine.svg
+│   │   │   │   ├── macedoine-du-nord.svg
+│   │   │   │   ├── madagascar.svg
+│   │   │   │   ├── malaisie.svg
+│   │   │   │   ├── malawi.svg
+│   │   │   │   ├── maldives.svg
+│   │   │   │   ├── mali.svg
+│   │   │   │   ├── malte.svg
+│   │   │   │   ├── maroc.svg
+│   │   │   │   ├── mauritanie.svg
+│   │   │   │   ├── mexique.svg
+│   │   │   │   ├── micronesie.svg
+│   │   │   │   ├── moldavie.svg
+│   │   │   │   ├── monaco.svg
+│   │   │   │   ├── mongolie.svg
+│   │   │   │   ├── montenegro.svg
+│   │   │   │   ├── mozambique.svg
+│   │   │   │   ├── namibie.svg
+│   │   │   │   ├── nauru.svg
+│   │   │   │   ├── nepal.svg
+│   │   │   │   ├── nicaragua.svg
+│   │   │   │   ├── niger.svg
+│   │   │   │   ├── nigeria.svg
+│   │   │   │   ├── norvege.svg
+│   │   │   │   ├── nouvelle-zelande.svg
+│   │   │   │   ├── oman.svg
+│   │   │   │   ├── ouzbekistan.svg
+│   │   │   │   ├── pakistan.svg
+│   │   │   │   ├── palaos.svg
+│   │   │   │   ├── panama.svg
+│   │   │   │   ├── papouasie-nouvelle-guinee.svg
+│   │   │   │   ├── paraguay.svg
+│   │   │   │   ├── pays-bas.svg
+│   │   │   │   ├── perou.svg
+│   │   │   │   ├── philippines.svg
+│   │   │   │   ├── pologne.svg
+│   │   │   │   ├── porto-rico.svg
+│   │   │   │   ├── portugal.svg
+│   │   │   │   ├── qatar.svg
+│   │   │   │   ├── quebec.svg
+│   │   │   │   ├── republique-centrafricaine.svg
+│   │   │   │   ├── republique-dominicaine.svg
+│   │   │   │   ├── republique-tcheque.svg
+│   │   │   │   ├── roumanie.svg
+│   │   │   │   ├── royaume-uni.svg
+│   │   │   │   ├── russie.svg
+│   │   │   │   ├── rwanda.svg
+│   │   │   │   ├── saint-*.svg  (5 files)
+│   │   │   │   ├── sainte-lucie.svg
+│   │   │   │   ├── salvador.svg
+│   │   │   │   ├── samoa-americaines.svg
+│   │   │   │   ├── samoa.svg
+│   │   │   │   ├── sao-tome-et-principe.svg
+│   │   │   │   ├── senegal.svg
+│   │   │   │   ├── serbie.svg
+│   │   │   │   ├── seychelles.svg
+│   │   │   │   ├── sierra-leone.svg
+│   │   │   │   ├── singapour.svg
+│   │   │   │   ├── slovaquie.svg
+│   │   │   │   ├── slovenie.svg
+│   │   │   │   ├── somalie.svg
+│   │   │   │   ├── soudan-du-sud.svg
+│   │   │   │   ├── soudan.svg
+│   │   │   │   ├── sri-lanka.svg
+│   │   │   │   ├── suede.svg
+│   │   │   │   ├── suisse.svg
+│   │   │   │   ├── suriname.svg
+│   │   │   │   ├── syrie.svg
+│   │   │   │   ├── tadjikistan.svg
+│   │   │   │   ├── taiwan.svg
+│   │   │   │   ├── tanzanie.svg
+│   │   │   │   ├── tchad.svg
+│   │   │   │   ├── territoires-palestiniens.svg
+│   │   │   │   ├── thailande.svg
+│   │   │   │   ├── timor-oriental.svg
+│   │   │   │   ├── togo.svg
+│   │   │   │   ├── tonga.svg
+│   │   │   │   ├── trinite-et-tobago.svg
+│   │   │   │   ├── tunisie.svg
+│   │   │   │   ├── turkmenistan.svg
+│   │   │   │   ├── turquie.svg
+│   │   │   │   ├── tuvalu.svg
+│   │   │   │   ├── uganda.svg
+│   │   │   │   ├── ukraine.svg
+│   │   │   │   ├── uruguay.svg
+│   │   │   │   ├── vanuatu.svg
+│   │   │   │   ├── vatican.svg
+│   │   │   │   ├── venezuela.svg
+│   │   │   │   ├── viet-nam.svg
+│   │   │   │   ├── yemen.svg
+│   │   │   │   ├── zambie.svg
+│   │   │   │   └── zimbabwe.svg
+│   │   │   ├── favicon.ico
+│   │   │   ├── icons
+│   │   │   │   ├── android-icon-144x144.png
+│   │   │   │   ├── android-icon-192x192.png
+│   │   │   │   ├── android-icon-36x36.png
+│   │   │   │   ├── android-icon-48x48.png
+│   │   │   │   ├── android-icon-72x72.png
+│   │   │   │   ├── android-icon-96x96.png
+│   │   │   │   ├── apple-icon-114x114.png
+│   │   │   │   ├── apple-icon-120x120.png
+│   │   │   │   ├── apple-icon-144x144.png
+│   │   │   │   ├── apple-icon-152x152.png
+│   │   │   │   ├── apple-icon-180x180.png
+│   │   │   │   ├── apple-icon-57x57.png
+│   │   │   │   ├── apple-icon-60x60.png
+│   │   │   │   ├── apple-icon-72x72.png
+│   │   │   │   ├── apple-icon-76x76.png
+│   │   │   │   ├── apple-icon-precomposed.png
+│   │   │   │   ├── apple-icon.png
+│   │   │   │   ├── favicon-16x16.png
+│   │   │   │   ├── favicon-32x32.png
+│   │   │   │   ├── favicon-96x96.png
+│   │   │   │   ├── ms-icon-144x144.png
+│   │   │   │   ├── ms-icon-150x150.png
+│   │   │   │   ├── ms-icon-310x310.png
+│   │   │   │   └── ms-icon-70x70.png
+│   │   │   ├── manifest.json
+│   │   │   ├── marianne_icon.png
+│   │   │   ├── mockServiceWorker.js
+│   │   │   └── pdf-sample.pdf
+│   │   ├── scripts
+│   │   │   └── icons.js
+│   │   ├── src
+│   │   │   ├── App.vue
+│   │   │   ├── __test__
+│   │   │   │   └── ds-type.ts
+│   │   │   ├── api
+│   │   │   │   ├── ErrorValidEmail.ts
+│   │   │   │   ├── api-client.ts
+│   │   │   │   ├── bn-api-routes.ts
+│   │   │   │   ├── sudo-api-client.ts
+│   │   │   │   └── sync-state-api-client.ts
+│   │   │   ├── assets
+│   │   │   │   ├── bn.svg
+│   │   │   │   ├── icone-ronde-marianne.png
+│   │   │   │   └── map-marker.png
+│   │   │   ├── auto-imports.d.ts
+│   │   │   ├── components
+│   │   │   │   ├── AppDsfrFooter.vue
+│   │   │   │   ├── AppToaster.vue
+│   │   │   │   ├── AttachmentList.vue
+│   │   │   │   ├── Badges
+│   │   │   │   │   ├── delay-state
+│   │   │   │   │   │   ├── DelayStateBadge.vue
+│   │   │   │   │   │   └── DelayStateRenderer.vue
+│   │   │   │   │   ├── establishment
+│   │   │   │   │   │   └── EstablishmentStatusBadge.vue
+│   │   │   │   │   ├── file-tag
+│   │   │   │   │   │   ├── FileTagBadge.vue
+│   │   │   │   │   │   └── FileTagBadgeRenderer.vue
+│   │   │   │   │   ├── organisme
+│   │   │   │   │   │   ├── OrganismeBadge.vue
+│   │   │   │   │   │   ├── OrganismeBadgesRenderer.vue
+│   │   │   │   │   │   ├── OrganismeStatusBadge.vue
+│   │   │   │   │   │   └── OrganismeStatusBadgeRenderer.vue
+│   │   │   │   │   ├── role
+│   │   │   │   │   │   ├── RoleBadge.vue
+│   │   │   │   │   │   └── RoleBadgesRenderer.vue
+│   │   │   │   │   └── status
+│   │   │   │   │       ├── StatusBadge.vue
+│   │   │   │   │       └── StatusBadgesRenderer.vue
+│   │   │   │   ├── BnCheckerPassword.vue
+│   │   │   │   ├── BnMultiSelect.vue
+│   │   │   │   ├── BnRefreshSyncButton.vue
+│   │   │   │   ├── BnTabsContainer
+│   │   │   │   │   ├── BnTab.vue
+│   │   │   │   │   ├── BnTabsContainer.vue
+│   │   │   │   │   ├── injection-key.ts
+│   │   │   │   │   └── useTabManager.ts
+│   │   │   │   ├── DisplayLabelsValues.vue
+│   │   │   │   ├── DownloadButton.vue
+│   │   │   │   ├── DownloadDsFile.vue
+│   │   │   │   ├── DownloadHubFile.vue
+│   │   │   │   ├── FilePreviewModal.vue
+│   │   │   │   ├── HealthIndicator
+│   │   │   │   │   ├── HealthIndicator.vue
+│   │   │   │   │   └── health-dependencies-dictionary.const.ts
+│   │   │   │   ├── HorizontalTimeline.vue
+│   │   │   │   ├── InfoContact.vue
+│   │   │   │   ├── Layout
+│   │   │   │   │   ├── LayoutAccueil.vue
+│   │   │   │   │   ├── LayoutBanner.vue
+│   │   │   │   │   ├── LayoutFiche.vue
+│   │   │   │   │   ├── LayoutList.vue
+│   │   │   │   │   └── LayoutOrganisme.vue
+│   │   │   │   ├── MapCard.vue
+│   │   │   │   ├── MapMarkers.vue
+│   │   │   │   ├── ModalConfirm.vue
+│   │   │   │   ├── PasswordHint.vue
+│   │   │   │   ├── PermissionOption
+│   │   │   │   │   └── PermissionOptionNumber.vue
+│   │   │   │   ├── ProConnect.vue
+│   │   │   │   ├── Spinner.vue
+│   │   │   │   ├── TableCellAction.vue
+│   │   │   │   ├── TableTagInfo.vue
+│   │   │   │   ├── TextWithReadMore.vue
+│   │   │   │   ├── ToggleInputPassword.vue
+│   │   │   │   ├── TransitionExpand.vue
+│   │   │   │   ├── YesNoEmoji.vue
+│   │   │   │   ├── custom-tooltip
+│   │   │   │   │   └── CustomTooltip.vue
+│   │   │   │   ├── datatable
+│   │   │   │   │   ├── DataTableAttachmentCell.vue
+│   │   │   │   │   ├── active-filters
+│   │   │   │   │   │   ├── ActiveFiltersDropdown.vue
+│   │   │   │   │   │   ├── activeFilters.type.ts
+│   │   │   │   │   │   └── useActiveFilter.ts
+│   │   │   │   │   ├── client-side
+│   │   │   │   │   │   └── DataTableClientSide.vue
+│   │   │   │   │   ├── files
+│   │   │   │   │   │   ├── AttachedFileList.vue
+│   │   │   │   │   │   ├── AttachedFileStateCellRenderer.vue
+│   │   │   │   │   │   ├── MimeTypeCellRenderer.vue
+│   │   │   │   │   │   └── file.utils.ts
+│   │   │   │   │   ├── server-side
+│   │   │   │   │   │   ├── DataTableColumnList.vue
+│   │   │   │   │   │   ├── DataTableServerSide.vue
+│   │   │   │   │   │   ├── bn-col-def.interface.ts
+│   │   │   │   │   │   ├── columndef-base.ts
+│   │   │   │   │   │   ├── custom-filters
+│   │   │   │   │   │   │   └── PrimeSetFilter.vue
+│   │   │   │   │   │   ├── data-table-types.ts
+│   │   │   │   │   │   ├── filter-model.interface.ts
+│   │   │   │   │   │   ├── filters.utils.ts
+│   │   │   │   │   │   ├── useAmountLines.ts
+│   │   │   │   │   │   └── utils
+│   │   │   │   │   │       ├── datatable.const.ts
+│   │   │   │   │   │       └── datatable.utils.ts
+│   │   │   │   │   └── utils.ts
+│   │   │   │   └── dsfr-extends
+│   │   │   │       └── DsfrWarningButton.vue
+│   │   │   ├── components.d.ts
+│   │   │   ├── composables
+│   │   │   │   ├── navigation.ts
+│   │   │   │   ├── use-configuration.ts
+│   │   │   │   ├── use-page-title.ts
+│   │   │   │   ├── use-toaster.ts
+│   │   │   │   └── use-tour.ts
+│   │   │   ├── config.ts
+│   │   │   ├── env.d.ts
+│   │   │   ├── icon-collections.ts
+│   │   │   ├── main.css
+│   │   │   ├── main.ts
+│   │   │   ├── messages.ts
+│   │   │   ├── mocks
+│   │   │   │   ├── browser.ts
+│   │   │   │   └── handlers.ts
+│   │   │   ├── router
+│   │   │   │   ├── about.route.ts
+│   │   │   │   ├── accessibility.route.ts
+│   │   │   │   ├── admin.route.ts
+│   │   │   │   ├── auth.route.ts
+│   │   │   │   ├── configuration.route.ts
+│   │   │   │   ├── cookies.route.ts
+│   │   │   │   ├── demarches.route.ts
+│   │   │   │   ├── dossier.route.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── organisme.route.ts
+│   │   │   │   ├── password.route.ts
+│   │   │   │   ├── profile.route.ts
+│   │   │   │   ├── route-names.ts
+│   │   │   │   ├── statistic.route.ts
+│   │   │   │   └── terms-of-use.route.ts
+│   │   │   ├── shared
+│   │   │   │   ├── auth-utils.ts
+│   │   │   │   ├── constants
+│   │   │   │   │   └── primevue.const.ts
+│   │   │   │   ├── dictionaries
+│   │   │   │   │   ├── dossier-status.dictionary.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── guards
+│   │   │   │   │   ├── auth.guards.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── Role.interface.ts
+│   │   │   │   │   ├── User.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── DataTable.type.ts
+│   │   │   │       ├── Demarche.type.ts
+│   │   │   │       ├── DossierStatusBadgeType.type.ts
+│   │   │   │       ├── Establishment.type.ts
+│   │   │   │       ├── InstructionTime.type.ts
+│   │   │   │       ├── Permission.type.ts
+│   │   │   │       ├── SyncState.type.ts
+│   │   │   │       └── index.ts
+│   │   │   ├── stores
+│   │   │   │   ├── configuration.ts
+│   │   │   │   ├── demarche.ts
+│   │   │   │   ├── dossier.ts
+│   │   │   │   ├── filtres.ts
+│   │   │   │   ├── health.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── organisme-hub.ts
+│   │   │   │   ├── user.ts
+│   │   │   │   └── views.ts
+│   │   │   ├── styles
+│   │   │   │   └── primevue-overrides.css
+│   │   │   ├── unregister.ts
+│   │   │   ├── utils
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── fake-data.ts
+│   │   │   │   ├── boolean-to-string.ts
+│   │   │   │   ├── clipboard.ts
+│   │   │   │   ├── date-to-string.ts
+│   │   │   │   ├── demarche-mapping.ts
+│   │   │   │   ├── downloadFile.ts
+│   │   │   │   ├── file.utils.ts
+│   │   │   │   ├── first-upper-case.ts
+│   │   │   │   ├── format-siret.ts
+│   │   │   │   ├── french-number.ts
+│   │   │   │   ├── helperDemandeur.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── name-to-initials.spec.ts
+│   │   │   │   ├── name-to-initials.ts
+│   │   │   │   ├── object.spec.ts
+│   │   │   │   ├── object.ts
+│   │   │   │   ├── organisme.util.ts
+│   │   │   │   ├── password.validator.spec.ts
+│   │   │   │   ├── password.validator.ts
+│   │   │   │   ├── pluralize.ts
+│   │   │   │   ├── prefeture.util.ts
+│   │   │   │   ├── pretty-byte-size.ts
+│   │   │   │   └── state-to-string.ts
+│   │   │   └── views
+│   │   │       ├── AboutUs.vue
+│   │   │       ├── Accessibility.vue
+│   │   │       ├── AppHome.vue
+│   │   │       ├── Configuration
+│   │   │       │   ├── MainConfiguration.vue
+│   │   │       │   └── Tools
+│   │   │       │       ├── BnConfiguration.vue
+│   │   │       │       └── DsSynchronization.vue
+│   │   │       ├── Cookies.vue
+│   │   │       ├── Error404.vue
+│   │   │       ├── TermsOfUse.vue
+│   │   │       ├── __tests__
+│   │   │       │   ├── demarches.ts
+│   │   │       │   ├── dossiers.ts
+│   │   │       │   └── users.ts
+│   │   │       ├── admin
+│   │   │       │   ├── Admin.vue
+│   │   │       │   ├── ListUsers.vue
+│   │   │       │   └── one-user
+│   │   │       │       ├── DemarcheLocalization.vue
+│   │   │       │       ├── GeneratePasswordLinkModal.vue
+│   │   │       │       ├── User.vue
+│   │   │       │       ├── UserGeographicalRights.vue
+│   │   │       │       ├── UserRole.vue
+│   │   │       │       └── localization.enum.ts
+│   │   │       ├── authentification
+│   │   │       │   ├── Logout.cy.ts
+│   │   │       │   ├── Logout.vue
+│   │   │       │   ├── ProConnectCallback.vue
+│   │   │       │   ├── Signin.cy.ts
+│   │   │       │   ├── Signin.vue
+│   │   │       │   ├── Signup.cy.ts
+│   │   │       │   ├── Signup.vue
+│   │   │       │   └── VerifyAuth.vue
+│   │   │       ├── demarches
+│   │   │       │   ├── demarche
+│   │   │       │   │   ├── Demarche.vue
+│   │   │       │   │   ├── configuration
+│   │   │       │   │   │   ├── DemarcheConfigurationMappingColumn.vue
+│   │   │       │   │   │   ├── DemarcheConfigurationSelectableItem.vue
+│   │   │       │   │   │   ├── DemarcheConfigurationSelectedItem.vue
+│   │   │       │   │   │   ├── DemarcheConfigurations.vue
+│   │   │       │   │   │   └── DemarcheConfigurationsCommon.vue
+│   │   │       │   │   ├── dossiers
+│   │   │       │   │   │   ├── DemarcheDossierCellRenderer.vue
+│   │   │       │   │   │   ├── DemarcheDossiers.vue
+│   │   │       │   │   │   ├── DemarcheDossiersViews.vue
+│   │   │       │   │   │   ├── TutoViewDossier.ts
+│   │   │       │   │   │   └── view-with-errors.type.ts
+│   │   │       │   │   ├── information
+│   │   │       │   │   │   ├── DemarcheGrpInstructeurs.cy.ts
+│   │   │       │   │   │   ├── DemarcheGrpInstructeurs.vue
+│   │   │       │   │   │   ├── DemarcheInformations.cy.ts
+│   │   │       │   │   │   ├── DemarcheInformations.vue
+│   │   │       │   │   │   ├── DemarcheService.cy.ts
+│   │   │       │   │   │   └── DemarcheService.vue
+│   │   │       │   │   └── options
+│   │   │       │   │       ├── DemarcheOptions.vue
+│   │   │       │   │       └── SelectAnonymousChamps.vue
+│   │   │       │   └── list
+│   │   │       │       ├── Demarches.vue
+│   │   │       │       └── columns-def.const.ts
+│   │   │       ├── dossiers
+│   │   │       │   ├── Dossier.cy.ts
+│   │   │       │   ├── Dossier.vue
+│   │   │       │   ├── DossierAnnotations.cy.ts
+│   │   │       │   ├── DossierAnnotations.vue
+│   │   │       │   ├── DossierChamp.cy.ts
+│   │   │       │   ├── DossierChamp.vue
+│   │   │       │   ├── DossierChamps.cy.ts
+│   │   │       │   ├── DossierChamps.vue
+│   │   │       │   ├── DossierDemande.cy.ts
+│   │   │       │   ├── DossierDemande.vue
+│   │   │       │   ├── DossierDemandeurMoral.cy.ts
+│   │   │       │   ├── DossierDemandeurMoral.vue
+│   │   │       │   ├── DossierDemandeurPhysique.cy.ts
+│   │   │       │   ├── DossierDemandeurPhysique.vue
+│   │   │       │   ├── DossierHeader.cy.ts
+│   │   │       │   ├── DossierHeader.vue
+│   │   │       │   ├── DossierInformations.cy.ts
+│   │   │       │   ├── DossierInformations.vue
+│   │   │       │   ├── DossierMessagerie.vue
+│   │   │       │   ├── DossierSection.vue
+│   │   │       │   ├── DossierSidemenu.vue
+│   │   │       │   └── composables
+│   │   │       │       └── useSections.ts
+│   │   │       ├── organismes
+│   │   │       │   ├── FicheOrganisme.vue
+│   │   │       │   ├── SearchOrganisme.vue
+│   │   │       │   ├── association
+│   │   │       │   │   ├── FicheAssociation.vue
+│   │   │       │   │   └── info-tab
+│   │   │       │   │       ├── FicheAssociationInfoTab.vue
+│   │   │       │   │       └── InfoSectionQuality.vue
+│   │   │       │   ├── common
+│   │   │       │   │   ├── EtablissementTab.vue
+│   │   │       │   │   ├── RelationTab.vue
+│   │   │       │   │   ├── dossier-list-tab
+│   │   │       │   │   │   ├── DossierListTab.vue
+│   │   │       │   │   │   └── table-headers.const.ts
+│   │   │       │   │   ├── file-tab
+│   │   │       │   │   │   ├── FileActionsCell.vue
+│   │   │       │   │   │   └── FileTab.vue
+│   │   │       │   │   ├── info-tab
+│   │   │       │   │   │   ├── InfoSectionActivity.vue
+│   │   │       │   │   │   ├── InfoSectionCompte.vue
+│   │   │       │   │   │   └── InfoSectionIdentity.vue
+│   │   │       │   │   └── member-tab
+│   │   │       │   │       ├── MembersCardView.vue
+│   │   │       │   │       ├── MembersTab.vue
+│   │   │       │   │       ├── MembersTableView.vue
+│   │   │       │   │       ├── PersonExitBadge.vue
+│   │   │       │   │       ├── PersonIsFounderBadge.vue
+│   │   │       │   │       ├── legal-entity.utils.ts
+│   │   │       │   │       └── members.type.ts
+│   │   │       │   ├── components
+│   │   │       │   │   ├── FicheSidebar.vue
+│   │   │       │   │   ├── InfoRow.vue
+│   │   │       │   │   └── LastHubUpdate.vue
+│   │   │       │   ├── fondation
+│   │   │       │   │   ├── FicheFondation.vue
+│   │   │       │   │   └── FicheFoundationInfoTab.vue
+│   │   │       │   └── search
+│   │   │       │       ├── SearchOrganismeById.vue
+│   │   │       │       ├── SearchOrganismeInput.vue
+│   │   │       │       └── SubLayoutSearch.vue
+│   │   │       ├── passwords
+│   │   │       │   ├── ResetPassword.cy.ts
+│   │   │       │   ├── ResetPassword.vue
+│   │   │       │   ├── UpdatePassword.cy.ts
+│   │   │       │   ├── UpdatePassword.vue
+│   │   │       │   └── ValidEmail.vue
+│   │   │       ├── profile
+│   │   │       │   ├── EditableField.vue
+│   │   │       │   ├── Profile.cy.ts
+│   │   │       │   └── Profile.vue
+│   │   │       └── statistics
+│   │   │           ├── Statistics.vue
+│   │   │           ├── StatisticsCard.vue
+│   │   │           └── StatisticsCards.vue
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.cypress.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   ├── tsconfig.vitest.json
+│   │   ├── uno.config.ts
+│   │   ├── vite.config.ts
+│   │   ├── vitest-setup.ts
+│   │   └── vitest.config.ts
+│   ├── http-proxy
+│   │   ├── Dockerfile
+│   │   ├── entrypoint.sh
+│   │   └── nginx
+│   │       └── bn.conf
+│   └── server
+│       ├── .dockerignore
+│       ├── .env-example
+│       ├── .env.docker
+│       ├── .gitignore
+│       ├── .lintstagedrc.json
+│       ├── .prettierrc
+│       ├── .vscode
+│       │   └── settings.json
+│       ├── Dockerfile
+│       ├── README.md
+│       ├── database
+│       │   ├── data-source.typeorm.ts
+│       │   ├── migrations
+│       │   │   ├── 1702911301002-Init.ts
+│       │   │   ├── 1706793538441-addFiscalEndDateAt.ts
+│       │   │   ├── 1707320285330-CreateConfigurations.ts
+│       │   │   ├── 1708698980525-UpdateBnConfiguration.ts
+│       │   │   ├── 1708699052609-File.ts
+│       │   │   ├── 1708953903679-OrganismeState.ts
+│       │   │   ├── 1709056637248-AddDeletedDateInDemarche.ts
+│       │   │   ├── 1709056691001-OrganismeCascade.ts
+│       │   │   ├── 1709199445870-AddDeletedDateInDossier.ts
+│       │   │   ├── 1710222777024-FieldCode.ts
+│       │   │   ├── 1712064152572-organismePerson.ts
+│       │   │   ├── 1712253127922-DeclarationYears.ts
+│       │   │   ├── 1712828894878-NewFieldsType.ts
+│       │   │   ├── 1712828991146-PersonDefaultArray.ts
+│       │   │   ├── 1712829016018-NoMoreDateTime.ts
+│       │   │   ├── 1712918705631-AddFeAmountChampTag.ts
+│       │   │   ├── 1713522823175-Anonymisation.ts
+│       │   │   ├── 1713771396794-DossierDepotDate.ts
+│       │   │   ├── 1718717774800-ConfigurationAnonymisation.ts
+│       │   │   ├── 1719332411123-dossierToAnonymize.ts
+│       │   │   ├── 1721751909010-add-motivation-attachment.ts
+│       │   │   ├── 1721752279518-yes-no-champs.ts
+│       │   │   ├── 1723563852156-AddMappingAnonymizedInDemarche.ts
+│       │   │   ├── 1729849383773-AddEnableRnfSiaf.ts
+│       │   │   ├── 1730824022525-add-enable-siaf.ts
+│       │   │   ├── 1742895658620-PrefectureInUser.ts
+│       │   │   ├── 1742976190790-RefreshToken.ts
+│       │   │   ├── 1743548646650-AddLoginAttemptsToUser.ts
+│       │   │   ├── 1744126635825-delEnableRnfSiaf.ts
+│       │   │   ├── 1745849929815-UpdateOrganismeTypeEnumReplaceArupCulteByAsso.ts
+│       │   │   ├── 1747647764546-addNewDepartements.ts
+│       │   │   ├── 1748251805946-UpdateDepartmentCorse.ts
+│       │   │   ├── 1748272962122-addColumnForFileStorageIn.ts
+│       │   │   ├── 1751467389595-add-table-sync-state-organisme.ts
+│       │   │   ├── 1751894220903-addVariableConfigForSyncHub.ts
+│       │   │   ├── 1753188808068-RemoveOldFieldsStringValueColumnIndex.ts
+│       │   │   ├── 1753196323011-ChangeFieldsNumberValueColumnToNumeric.ts
+│       │   │   ├── 1755851903577-AddMaarchValueOnDemarchesIdentificationEnum.ts
+│       │   │   ├── 1755870503128-AddOnDeleteCascadeDossierOnFieldAndFile.ts
+│       │   │   ├── 1761734997769-update-organsime-new-models.ts
+│       │   │   ├── 1761754545567-remove-SYNC_RNF_VIA_HUB.ts
+│       │   │   ├── 1761819679015-AddDsFieldAndfillDemarches.ts
+│       │   │   ├── 1763159302964-AddSourcePathColumnInFile.ts
+│       │   │   ├── 1765448282936-add-ref-organisme.ts
+│       │   │   ├── 1765519161936-RecentlyConsultedOrganisme.ts
+│       │   │   ├── 1765970525282-NoMoreOrganismeInDossier.ts
+│       │   │   ├── 1765970655983-NoMoreOrganismeInFile.ts
+│       │   │   ├── 1765977164642-NoMoreOrganismeInFields.ts
+│       │   │   ├── 1765979350768-NoMoreOrganismeAtAll.ts
+│       │   │   ├── 1765982015587-NoMoreOrganismeConfiguration.ts
+│       │   │   ├── 1767795185790-add-index-in-demarche.ts
+│       │   │   ├── 1767795269287-add-index-in-dossier.ts
+│       │   │   ├── 1768485876104-AddIndexesInFieldsFile.ts
+│       │   │   ├── 1768827661385-AddColumnWidthInCustomFilter.ts
+│       │   │   ├── 1768831457489-RenameCustomFilterAsViews.ts
+│       │   │   ├── 1769499471474-AddMaarchValueOnFileSourceLabelEnum.ts
+│       │   │   ├── 1770977682268-FixToEnumForServiceInstructeur.ts
+│       │   │   ├── 1774276560295-fix-migrations-to-views.ts
+│       │   │   ├── 1774281859492-update-fields-types-enum.ts
+│       │   │   ├── 1774282985005-add-service-instructeur-99.ts
+│       │   │   ├── 1774537596342-UnsetHeaderOfDossiersIntoColumnsOfListeDossiers.ts
+│       │   │   ├── 1775652853111-RemoveOrganismeErrorFlag.ts
+│       │   │   ├── 1775745368159-fixServiceIntructeur99InDossiers.ts
+│       │   │   ├── 1775745567966-fixServiceIntructeur99InFields.ts
+│       │   │   ├── 1776930947987-AddTermsAcceptedAtInUser.ts
+│       │   │   ├── 1777972033863-AddIsEnableAssociationsInBnConfiguration.ts
+│       │   │   └── 1779790045467-HealthSnapshot.ts
+│       │   └── typeorm.config.ts
+│       ├── docker
+│       │   └── docker-entrypoint-initdb.d
+│       │       └── init.sql
+│       ├── docker-compose.yml
+│       ├── eslint.config.mjs
+│       ├── nest-cli.json
+│       ├── package.json
+│       ├── src
+│       │   ├── apps
+│       │   │   ├── api
+│       │   │   │   ├── api-dependencies-policy.const.ts
+│       │   │   │   ├── api.module.ts
+│       │   │   │   └── main.ts
+│       │   │   ├── app-context.module.ts
+│       │   │   ├── apps.const.ts
+│       │   │   ├── worker-file
+│       │   │   │   ├── main.ts
+│       │   │   │   ├── processor
+│       │   │   │   │   └── file.processor.ts
+│       │   │   │   ├── worker-file-dependencies-policy.const.ts
+│       │   │   │   └── worker-file.module.ts
+│       │   │   └── worker-sync
+│       │   │       ├── main.ts
+│       │   │       ├── processors
+│       │   │       │   ├── demarche.processor.ts
+│       │   │       │   ├── dossier.processor.ts
+│       │   │       │   └── fe.processor.ts
+│       │   │       ├── worker-sync-dependencies-policy.const.ts
+│       │   │       └── worker-sync.module.ts
+│       │   ├── config
+│       │   │   ├── auth.config.ts
+│       │   │   ├── bull.config.ts
+│       │   │   ├── configuration.ts
+│       │   │   ├── cron.config.ts
+│       │   │   ├── ds.config.ts
+│       │   │   ├── file.config.ts
+│       │   │   ├── hub.config.ts
+│       │   │   ├── instructionTimeMapping.config.ts
+│       │   │   ├── jwt.config.ts
+│       │   │   ├── logger.config.ts
+│       │   │   ├── redis.config.ts
+│       │   │   ├── rna.config.ts
+│       │   │   ├── rnf.config.ts
+│       │   │   ├── smtp.config.ts
+│       │   │   ├── sudo-user.config.ts
+│       │   │   └── typeorm-nest.config.ts
+│       │   ├── config-main.ts
+│       │   ├── modules
+│       │   │   ├── auth
+│       │   │   │   ├── auth.module.ts
+│       │   │   │   ├── auth.types.ts
+│       │   │   │   ├── controllers
+│       │   │   │   │   └── auth.controller.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   ├── constants.ts
+│       │   │   │   │   ├── dto
+│       │   │   │   │   │   ├── auth-output.dto.ts
+│       │   │   │   │   │   ├── auth-proconnect-output.dto.ts
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   └── refresh-token.entity.ts
+│       │   │   │   └── providers
+│       │   │   │       ├── auth.service.ts
+│       │   │   │       ├── jwt-auth.guard.ts
+│       │   │   │       └── jwt.strategy.ts
+│       │   │   ├── cron
+│       │   │   │   ├── cron.module.ts
+│       │   │   │   └── cron.service.ts
+│       │   │   ├── demarches
+│       │   │   │   ├── controllers
+│       │   │   │   │   ├── demarche-configuration.controller.ts
+│       │   │   │   │   ├── demarche-dossier.controller.ts
+│       │   │   │   │   ├── demarche-option.controller.ts
+│       │   │   │   │   ├── demarche-view.controller.ts
+│       │   │   │   │   └── demarche.controller.ts
+│       │   │   │   ├── demarche.module.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   ├── const
+│       │   │   │   │   │   ├── demarche-field-type-hash.const.ts
+│       │   │   │   │   │   ├── maarch-champ.dictionary.ts
+│       │   │   │   │   │   ├── maarch-champ.enum.ts
+│       │   │   │   │   │   └── maarch.types.ts
+│       │   │   │   │   ├── dtos
+│       │   │   │   │   │   ├── create-demarche.dto.ts
+│       │   │   │   │   │   ├── demarch-anonymised-information-payload.dto.ts
+│       │   │   │   │   │   ├── demarche-option-input.dto.ts
+│       │   │   │   │   │   ├── demarche-option-output.dto.ts
+│       │   │   │   │   │   ├── demarche-output.dto.ts
+│       │   │   │   │   │   ├── import-maarch-input.dto.ts
+│       │   │   │   │   │   ├── import-maarch-output.dto.ts
+│       │   │   │   │   │   ├── mapping-anonymized.dto.ts
+│       │   │   │   │   │   ├── mapping-column.dto.ts
+│       │   │   │   │   │   ├── paginated-small-demarche.dto.ts
+│       │   │   │   │   │   ├── pagination-small-demarche.dto.ts
+│       │   │   │   │   │   ├── small-demarche-output.dto.ts
+│       │   │   │   │   │   ├── update-demarche.dto.ts
+│       │   │   │   │   │   ├── update-one-field-anonymized.dto.ts
+│       │   │   │   │   │   └── update-one-field-configuration.dto.ts
+│       │   │   │   │   └── entities
+│       │   │   │   │       └── demarche.entity.ts
+│       │   │   │   ├── providers
+│       │   │   │   │   ├── decorators
+│       │   │   │   │   │   └── current-demarche.decorator.ts
+│       │   │   │   │   ├── interceptors
+│       │   │   │   │   │   ├── all-demarche.interceptor.ts
+│       │   │   │   │   │   ├── current-demarche.interceptor.spec.ts
+│       │   │   │   │   │   └── current-demarche.interceptor.ts
+│       │   │   │   │   └── services
+│       │   │   │   │       ├── demarche-synchronise.service.spec.ts
+│       │   │   │   │       ├── demarche-synchronise.service.ts
+│       │   │   │   │       ├── demarche.service.ts
+│       │   │   │   │       └── maarch
+│       │   │   │   │           ├── csv-processor.service.spec.ts
+│       │   │   │   │           ├── csv-processor.service.ts
+│       │   │   │   │           ├── data-formatter.service.spec.ts
+│       │   │   │   │           ├── data-formatter.service.ts
+│       │   │   │   │           ├── demarche-maarch.service.spec.ts
+│       │   │   │   │           ├── demarche-maarch.service.ts
+│       │   │   │   │           ├── dossier-transformer.service.spec.ts
+│       │   │   │   │           ├── dossier-transformer.service.ts
+│       │   │   │   │           ├── field-builder.service.spec.ts
+│       │   │   │   │           ├── field-builder.service.ts
+│       │   │   │   │           ├── file-builder.service.spec.ts
+│       │   │   │   │           ├── file-builder.service.ts
+│       │   │   │   │           └── utils
+│       │   │   │   │               └── file-helper.ts
+│       │   │   │   └── utils
+│       │   │   │       └── demarche.utils.ts
+│       │   │   ├── dossiers
+│       │   │   │   ├── controllers
+│       │   │   │   │   ├── dossier-file.controller.ts
+│       │   │   │   │   ├── dossier-organisme.controller.ts
+│       │   │   │   │   └── dossier.controller.ts
+│       │   │   │   ├── dossier.module.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   ├── constante
+│       │   │   │   │   │   ├── excel-champ.enum.ts
+│       │   │   │   │   │   ├── field-code.enum.ts
+│       │   │   │   │   │   ├── fix-field-demandeur.dictionnary.ts
+│       │   │   │   │   │   ├── fix-field-excel-champ.dictionnary.ts
+│       │   │   │   │   │   ├── fix-field-value-getter.ts
+│       │   │   │   │   │   └── fix-field.dictionnary.ts
+│       │   │   │   │   ├── dto
+│       │   │   │   │   │   ├── dossier-search-output.dto.ts
+│       │   │   │   │   │   ├── dossier-with-fields-output.dto.ts
+│       │   │   │   │   │   ├── fields
+│       │   │   │   │   │   │   ├── create-field.dto.ts
+│       │   │   │   │   │   │   └── field-search-output.dto.ts
+│       │   │   │   │   │   ├── lean-dossier-output.dto.ts
+│       │   │   │   │   │   └── search-dossier.dto.ts
+│       │   │   │   │   └── entities
+│       │   │   │   │       ├── dossier.entity.ts
+│       │   │   │   │       └── field.entity.ts
+│       │   │   │   └── providers
+│       │   │   │       ├── current-dossier.decorator.ts
+│       │   │   │       ├── current-dossier.interceptor.ts
+│       │   │   │       ├── dossier.service.ts
+│       │   │   │       ├── dossier.services.spec.ts
+│       │   │   │       ├── field.service.spec.ts
+│       │   │   │       ├── field.service.ts
+│       │   │   │       ├── has-full-current-dossier-access.decorator.ts
+│       │   │   │       └── synchronization
+│       │   │   │           ├── dossier-synchronise.service.spec.ts
+│       │   │   │           ├── dossier-synchronise.service.ts
+│       │   │   │           ├── excel
+│       │   │   │           │   ├── dossier-synchronise-excel.service.spec.ts
+│       │   │   │           │   └── dossier-synchronise-excel.service.ts
+│       │   │   │           ├── file
+│       │   │   │           │   ├── dossier-synchronize-file.service.spec.ts
+│       │   │   │           │   └── dossier-synchronize-file.service.ts
+│       │   │   │           └── organisme
+│       │   │   │               ├── dossier-synchronise-organisme.service.spec.ts
+│       │   │   │               └── dossier-synchronise-organisme.service.ts
+│       │   │   ├── files
+│       │   │   │   ├── controllers
+│       │   │   │   │   └── file.controller.ts
+│       │   │   │   ├── file.module.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   ├── const
+│       │   │   │   │   │   ├── code-to-labels-and-tag.const.spec.ts
+│       │   │   │   │   │   ├── code-to-labels-and-tag.const.ts
+│       │   │   │   │   │   ├── file-field-type-hash.const.ts
+│       │   │   │   │   │   ├── file-storage-in.enum.ts
+│       │   │   │   │   │   ├── get-tag-for-file-type.const.spec.ts
+│       │   │   │   │   │   ├── get-tag-for-file-type.const.ts
+│       │   │   │   │   │   └── rna-code-to-label-and-tag.const.ts
+│       │   │   │   │   ├── dto
+│       │   │   │   │   │   ├── file-output.dto.ts
+│       │   │   │   │   │   ├── input
+│       │   │   │   │   │   │   ├── upser-rna-file.dto.ts
+│       │   │   │   │   │   │   └── upsert-ds-file.dto.ts
+│       │   │   │   │   │   ├── output
+│       │   │   │   │   │   │   └── small-file-output.dto.ts
+│       │   │   │   │   │   ├── paginated-file.dto.ts
+│       │   │   │   │   │   └── pagination-file.dto.ts
+│       │   │   │   │   ├── entities
+│       │   │   │   │   │   └── file.entity.ts
+│       │   │   │   │   └── types
+│       │   │   │   │       ├── file-common.type.ts
+│       │   │   │   │       └── tag-definition.type.ts
+│       │   │   │   └── providers
+│       │   │   │       └── file.service.ts
+│       │   │   ├── health
+│       │   │   │   ├── health.controller.ts
+│       │   │   │   ├── health.module.ts
+│       │   │   │   ├── infrastructure
+│       │   │   │   │   ├── dependencies
+│       │   │   │   │   │   ├── ds.dependency.ts
+│       │   │   │   │   │   ├── hub.dependency.ts
+│       │   │   │   │   │   ├── redis.dependency.ts
+│       │   │   │   │   │   └── s3.dependency.ts
+│       │   │   │   │   └── dependency.types.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   └── health-snapshot.entity.ts
+│       │   │   │   └── providers
+│       │   │   │       ├── depency-check.service.ts
+│       │   │   │       ├── dependency-supervisor.service.ts
+│       │   │   │       ├── health-cron.service.ts
+│       │   │   │       └── health.service.ts
+│       │   │   ├── hub
+│       │   │   │   ├── controllers
+│       │   │   │   │   └── hub.controller.ts
+│       │   │   │   ├── hub.module.ts
+│       │   │   │   ├── last-assocation-output.type.ts
+│       │   │   │   ├── last-commun-output.type.ts
+│       │   │   │   ├── last-foundation-output.type.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   └── dto
+│       │   │   │   │       ├── input
+│       │   │   │   │       │   ├── download-multiple-files.dto.ts
+│       │   │   │   │       │   └── search-input.dto.ts
+│       │   │   │   │       └── output
+│       │   │   │   │           └── organisme-dossier.dto.ts
+│       │   │   │   ├── providers
+│       │   │   │   │   ├── hub.service.spec.ts
+│       │   │   │   │   └── hub.service.ts
+│       │   │   │   └── utils
+│       │   │   │       └── organisme-dossier.utils.ts
+│       │   │   ├── instruction_time
+│       │   │   │   ├── constante
+│       │   │   │   │   └── fix-field-instrucation-times.dictionnary.ts
+│       │   │   │   ├── instruction_time.entity.ts
+│       │   │   │   ├── instruction_times.module.ts
+│       │   │   │   ├── instruction_times.service.spec.ts
+│       │   │   │   ├── instruction_times.service.ts
+│       │   │   │   └── instruction_times.service_check_dates.spec.ts
+│       │   │   ├── projection
+│       │   │   │   ├── controllers
+│       │   │   │   │   └── projection.controller.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   └── dtos
+│       │   │   │   │       └── projection-init-input.dto.ts
+│       │   │   │   ├── projection.module.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── dossier-projection
+│       │   │   │   │   │   ├── dossier-projection.service.spec.ts
+│       │   │   │   │   │   └── dossier-projection.service.ts
+│       │   │   │   │   ├── field-projection
+│       │   │   │   │   │   ├── field-projection.service.spec.ts
+│       │   │   │   │   │   └── field-projection.service.ts
+│       │   │   │   │   ├── projection-manager
+│       │   │   │   │   │   └── projection-manager.service.ts
+│       │   │   │   │   └── projection-search
+│       │   │   │   │       └── projection-search.service.ts
+│       │   │   │   └── utils
+│       │   │   │       ├── projection-utils.spec.ts
+│       │   │   │       └── projection-utils.ts
+│       │   │   ├── sendmail
+│       │   │   │   ├── sendmail.module.ts
+│       │   │   │   ├── sendmail.service.spec.ts
+│       │   │   │   ├── sendmail.service.ts
+│       │   │   │   └── templates
+│       │   │   │       ├── alreadySignUp.ejs
+│       │   │   │       ├── footer.ejs
+│       │   │   │       ├── generateUpdatePasswordLink.ejs
+│       │   │   │       ├── header.ejs
+│       │   │   │       ├── loginWithVerifyAuth.ejs
+│       │   │   │       ├── resetPasswordAfterThreeAttempts.ejs
+│       │   │   │       ├── resetPwd.ejs
+│       │   │   │       └── validSignUp.ejs
+│       │   │   ├── users
+│       │   │   │   ├── controllers
+│       │   │   │   │   ├── user-me.controller.ts
+│       │   │   │   │   ├── user-role.controller.ts
+│       │   │   │   │   └── user.controller.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   ├── consts
+│       │   │   │   │   │   └── user-field-type-hash.const.ts
+│       │   │   │   │   ├── dtos
+│       │   │   │   │   │   ├── input
+│       │   │   │   │   │   │   ├── add-recently-consulted-organisme-input.dto.ts
+│       │   │   │   │   │   │   ├── create-user.dto.ts
+│       │   │   │   │   │   │   ├── credentials-input.dto.ts
+│       │   │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   │   ├── is-password-strong-enough.spec.ts
+│       │   │   │   │   │   │   ├── is-password-strong-enough.ts
+│       │   │   │   │   │   │   ├── pagination-user.dto.ts
+│       │   │   │   │   │   │   ├── reset-password-input.dto.ts
+│       │   │   │   │   │   │   ├── update-one-role-option.dto.ts
+│       │   │   │   │   │   │   ├── update-profile.dto.ts
+│       │   │   │   │   │   │   ├── update-user-password.dto.ts
+│       │   │   │   │   │   │   ├── update-user-role-label-input.dto.ts
+│       │   │   │   │   │   │   └── validate-email.dto.ts
+│       │   │   │   │   │   └── output
+│       │   │   │   │   │       ├── datatable-user.dto.ts
+│       │   │   │   │   │       ├── generate-link-password.dto.ts
+│       │   │   │   │   │       ├── index.ts
+│       │   │   │   │   │       ├── my-profile-output.dto.ts
+│       │   │   │   │   │       ├── paginated-user.dto.ts
+│       │   │   │   │   │       ├── recently-consulted-organisme-output.dto.ts
+│       │   │   │   │   │       ├── signup-output.dto.ts
+│       │   │   │   │   │       ├── user-output.dto.ts
+│       │   │   │   │   │       └── user-with-editable-role.dto.ts
+│       │   │   │   │   ├── types
+│       │   │   │   │   │   └── excel-user.type.ts
+│       │   │   │   │   └── user.entity.ts
+│       │   │   │   ├── providers
+│       │   │   │   │   ├── decorators
+│       │   │   │   │   │   ├── current-user-id.decorator.ts
+│       │   │   │   │   │   ├── current-user-role.decorator.ts
+│       │   │   │   │   │   ├── current-user.decorator.ts
+│       │   │   │   │   │   ├── public-route.decorator.ts
+│       │   │   │   │   │   ├── role.decorator.ts
+│       │   │   │   │   │   ├── target-user-with-editable-role.decorator.ts
+│       │   │   │   │   │   └── target-user.decorator.ts
+│       │   │   │   │   ├── guards
+│       │   │   │   │   │   ├── check-email-token.ts
+│       │   │   │   │   │   ├── role.guard.spec.ts
+│       │   │   │   │   │   ├── role.guard.ts
+│       │   │   │   │   │   ├── terms-of-use.guard.ts
+│       │   │   │   │   │   └── validate-sign-up.guard.ts
+│       │   │   │   │   ├── interceptors
+│       │   │   │   │   │   └── target-user.interceptor.ts
+│       │   │   │   │   ├── role.service.spec.ts
+│       │   │   │   │   ├── role.service.ts
+│       │   │   │   │   ├── user-import.service.ts
+│       │   │   │   │   ├── user-import.spec.ts
+│       │   │   │   │   └── user.service.ts
+│       │   │   │   ├── user.module.ts
+│       │   │   │   └── utils
+│       │   │   │       ├── role.utils.spec.ts
+│       │   │   │       └── role.utils.ts
+│       │   │   └── views
+│       │   │       ├── controllers
+│       │   │       │   └── view.controller.ts
+│       │   │       ├── objects
+│       │   │       │   ├── dtos
+│       │   │       │   │   ├── create-view.dto.ts
+│       │   │       │   │   ├── patch-view.dto.ts
+│       │   │       │   │   ├── small-view.dto.ts
+│       │   │       │   │   ├── total.dto.ts
+│       │   │       │   │   ├── user-friendly-filter.dto.ts
+│       │   │       │   │   ├── view-output.dto.ts
+│       │   │       │   │   └── view-stats-output.dto.ts
+│       │   │       │   ├── entities
+│       │   │       │   │   └── view.entity.ts
+│       │   │       │   └── totals-output.interface.ts
+│       │   │       ├── providers
+│       │   │       │   ├── decorator
+│       │   │       │   │   └── current-views.decorator.ts
+│       │   │       │   ├── interceptors
+│       │   │       │   │   └── current-views.interceptor.ts
+│       │   │       │   └── services
+│       │   │       │       └── view.service.ts
+│       │   │       └── view.module.ts
+│       │   ├── shared
+│       │   │   ├── base-entity
+│       │   │   │   ├── base-entity.service.ts
+│       │   │   │   └── base.entity.ts
+│       │   │   ├── constants
+│       │   │   │   └── http-headers.constants.ts
+│       │   │   ├── documentation
+│       │   │   │   └── usual-api-operation.decorator.ts
+│       │   │   ├── exceptions
+│       │   │   │   ├── custom-validation.exception.ts
+│       │   │   │   └── filters
+│       │   │   │       ├── all-exception.filter.ts
+│       │   │   │       ├── axios-exception.filter.ts
+│       │   │   │       ├── custom-validation-exception.filter.ts
+│       │   │   │       ├── entity-not-found-error.filter.ts
+│       │   │   │       ├── jwt-exception.filter.ts
+│       │   │   │       └── query-failed.filter.ts
+│       │   │   ├── modules
+│       │   │   │   ├── als
+│       │   │   │   │   ├── als.middleware.ts
+│       │   │   │   │   ├── als.module.ts
+│       │   │   │   │   └── async-local-store.type.ts
+│       │   │   │   ├── bn-configurations
+│       │   │   │   │   ├── bn-configuration.module.ts
+│       │   │   │   │   ├── controllers
+│       │   │   │   │   │   └── bn-configuration.controller.ts
+│       │   │   │   │   ├── objects
+│       │   │   │   │   │   ├── const
+│       │   │   │   │   │   │   └── bn-configuration-default.const.ts
+│       │   │   │   │   │   ├── dto
+│       │   │   │   │   │   │   ├── bn-configuration-output.dto.ts
+│       │   │   │   │   │   │   ├── create-bn-configuration.dto.ts
+│       │   │   │   │   │   │   └── update-bn-configuration.dto.ts
+│       │   │   │   │   │   └── entities
+│       │   │   │   │   │       └── bn-configuration.entity.ts
+│       │   │   │   │   └── providers
+│       │   │   │   │       └── bn-configuration.service.ts
+│       │   │   │   ├── custom-bull
+│       │   │   │   │   ├── custom-base.processor.ts
+│       │   │   │   │   ├── custom-bull.module.ts
+│       │   │   │   │   ├── custom-bull.service.ts
+│       │   │   │   │   ├── file-queue-event.service.ts
+│       │   │   │   │   ├── objects
+│       │   │   │   │   │   └── const
+│       │   │   │   │   │       ├── job-name.enum.ts
+│       │   │   │   │   │       ├── job-payload.type.ts
+│       │   │   │   │   │       └── queues-name.enum.ts
+│       │   │   │   │   ├── sync-queue-event.service.ts
+│       │   │   │   │   └── utils
+│       │   │   │   │       └── bull-key.utils.ts
+│       │   │   │   ├── ds-api
+│       │   │   │   │   ├── ds-api.module.ts
+│       │   │   │   │   └── objects
+│       │   │   │   │       ├── ds-champ-type.enum.ts
+│       │   │   │   │       └── ds-champ.utils.ts
+│       │   │   │   ├── logger
+│       │   │   │   │   ├── context-logger.service.ts
+│       │   │   │   │   ├── log-payload.interface.ts
+│       │   │   │   │   ├── logger.module.ts
+│       │   │   │   │   ├── logger.service.ts
+│       │   │   │   │   └── logging.interceptor.ts
+│       │   │   │   ├── pdf-export
+│       │   │   │   │   ├── generators
+│       │   │   │   │   │   └── fiche-organisme.generator.ts
+│       │   │   │   │   ├── interfaces
+│       │   │   │   │   │   └── pdf-generator.interface.ts
+│       │   │   │   │   ├── pdf-export.module.ts
+│       │   │   │   │   └── pdf-export.service.ts
+│       │   │   │   ├── redis
+│       │   │   │   │   ├── redis.module.ts
+│       │   │   │   │   └── redis.service.ts
+│       │   │   │   ├── s3
+│       │   │   │   │   ├── s3.module.ts
+│       │   │   │   │   └── s3.service.ts
+│       │   │   │   └── xlsx
+│       │   │   │       ├── xlsx.constants.ts
+│       │   │   │       ├── xlsx.module.ts
+│       │   │   │       ├── xlsx.service.spec.ts
+│       │   │   │       └── xlsx.service.ts
+│       │   │   ├── pagination
+│       │   │   │   ├── column-contains-key.contraint.ts
+│       │   │   │   ├── filters
+│       │   │   │   │   ├── date.filter.dto.ts
+│       │   │   │   │   ├── enum.filter.dto.ts
+│       │   │   │   │   ├── filter.dto.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── is-valid-filter.decorator.ts
+│       │   │   │   │   ├── number.filter.dto.ts
+│       │   │   │   │   ├── numbers.filter.dto.ts
+│       │   │   │   │   ├── string.filter.dto.ts
+│       │   │   │   │   └── strings.filter.dto.ts
+│       │   │   │   ├── paginated.dto.ts
+│       │   │   │   ├── pagination.dto.ts
+│       │   │   │   ├── sort.dto.ts
+│       │   │   │   └── utils
+│       │   │   │       ├── build-filter.utils.spec.ts
+│       │   │   │       ├── build-filter.utils.ts
+│       │   │   │       ├── common-search.utils.ts
+│       │   │   │       └── search-dictionnaries.const.ts
+│       │   │   ├── pipe
+│       │   │   │   ├── custom-validation.pipe.ts
+│       │   │   │   ├── filter.pipe.spec.ts
+│       │   │   │   └── filter.pipe.ts
+│       │   │   ├── sync-state
+│       │   │   │   ├── arg-sync-state.type.ts
+│       │   │   │   ├── controllers
+│       │   │   │   │   └── sync-state.controller.ts
+│       │   │   │   ├── objects
+│       │   │   │   │   └── entities
+│       │   │   │   │       ├── base-entity-sync-state.entity.ts
+│       │   │   │   │       └── sync-state.entity.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── sync-state-generic.service.spec.ts
+│       │   │   │   │   ├── sync-state-generic.service.ts
+│       │   │   │   │   └── sync-state.service.ts
+│       │   │   │   └── sync-state.module.ts
+│       │   │   ├── types
+│       │   │   │   ├── Permission.type.ts
+│       │   │   │   ├── excel-data.type.ts
+│       │   │   │   ├── node-env.enum.ts
+│       │   │   │   └── raw-champ.type.ts
+│       │   │   └── utils
+│       │   │       ├── array.utils.ts
+│       │   │       ├── bn-code.utils.spec.ts
+│       │   │       ├── bn-code.utils.ts
+│       │   │       ├── dayjs.ts
+│       │   │       ├── rnf.utils.ts
+│       │   │       └── typeorm-factory-loader.ts
+│       │   └── version.json
+│       ├── test
+│       │   ├── .env.test
+│       │   ├── api.http
+│       │   ├── e2e
+│       │   │   ├── common
+│       │   │   │   ├── jobs-utils.ts
+│       │   │   │   └── testing-module.factory.ts
+│       │   │   ├── data-source-e2e.typeorm.ts
+│       │   │   ├── fixtures
+│       │   │   │   ├── bn-configuration.fixture.yml
+│       │   │   │   ├── demarche.fixture.yml
+│       │   │   │   ├── dossier.fixture.yml
+│       │   │   │   ├── field.fixture.yml
+│       │   │   │   ├── file.fixture.yml
+│       │   │   │   ├── sync-state.fixture.yml
+│       │   │   │   ├── user.fixture.yml
+│       │   │   │   └── views.yml
+│       │   │   ├── jest-e2e.json
+│       │   │   ├── launch-e2e-test.sh
+│       │   │   └── tests
+│       │   │       ├── authentication.e2e-spec.ts
+│       │   │       ├── bn-configuration.e2e-spec.ts
+│       │   │       ├── demarche-configuration.e2e-spec.ts
+│       │   │       ├── demarche-options.e2e-spec.ts
+│       │   │       ├── demarches.e2e-spec.ts
+│       │   │       ├── dossier-search.e2e-spec.ts
+│       │   │       ├── dossiers.e2e-spec.ts
+│       │   │       ├── field-search.e2e-spec.ts
+│       │   │       ├── files.e2e-spec.ts
+│       │   │       ├── processors
+│       │   │       │   └── sync
+│       │   │       │       ├── demarche-processor.e2e-spec.ts
+│       │   │       │       └── dossier-processor.e2e-spec.ts
+│       │   │       ├── user-role.e2e-spec.ts
+│       │   │       ├── users.e2e-spec.ts
+│       │   │       ├── views-stats.e2e-spec.ts
+│       │   │       └── views.e2e-spec.ts
+│       │   ├── mock
+│       │   │   ├── ds-api-client
+│       │   │   │   ├── data
+│       │   │   │   │   ├── demarche-and-dossier-fe.data.mock.ts
+│       │   │   │   │   ├── demarche-fe.data.mock.ts
+│       │   │   │   │   ├── demarche-with-prefecture.mock.ts
+│       │   │   │   │   ├── demarche-with-rnf-and-rna.data.mock.ts
+│       │   │   │   │   ├── small-demarche-and-dossier-fe.data.mock.ts
+│       │   │   │   │   ├── small-demarche-and-dossiers-with-demandeur-moral.ts
+│       │   │   │   │   └── small-demarche-and-dossiers-with-demandeur-physique.ts
+│       │   │   │   └── ds-api-client.mock.ts
+│       │   │   ├── excel-service
+│       │   │   │   ├── data
+│       │   │   │   │   └── DeclarationFE.xlsx
+│       │   │   │   └── excel-service.mock.ts
+│       │   │   ├── logger-service.mock.ts
+│       │   │   ├── mailer-service.mock.ts
+│       │   │   ├── mock-hub
+│       │   │   │   └── data
+│       │   │   │       ├── association.data.mock.ts
+│       │   │   │       ├── events.data.mock.ts
+│       │   │   │       └── foundation.data.mock.ts
+│       │   │   ├── rna-service
+│       │   │   │   ├── data
+│       │   │   │   │   └── fabulous-association.data.mock.ts
+│       │   │   │   └── rna-service.mock.ts
+│       │   │   ├── rnf-service
+│       │   │   │   └── data
+│       │   │   │       └── chocolate-foundation.data.mock.ts
+│       │   │   └── s3-service
+│       │   │       ├── coucou.txt
+│       │   │       ├── hub.txt
+│       │   │       └── s3-service.mock.ts
+│       │   └── unit
+│       │       ├── fake-data
+│       │       │   ├── demarche.fake-data.ts
+│       │       │   ├── dossier.fake-data.ts
+│       │       │   └── instruction-time.fake-data.ts
+│       │       ├── jest-unit.json
+│       │       ├── launch-unit-test.sh
+│       │       └── setup.ts
+│       ├── tsconfig.build.json
+│       ├── tsconfig.eslint.json
+│       ├── tsconfig.json
+│       ├── variables_env.md
+│       └── vendor
+│           ├── README.md
+│           └── xlsx-0.20.3.tgz
+├── bin
+│   ├── start.sh
+│   └── stop.sh
+├── bruno
+│   ├── .gitignore
+│   ├── Auth
+│   │   ├── folder.yml
+│   │   └── sign-in.yml
+│   ├── Health
+│   │   ├── Health.yml
+│   │   ├── Worker File Health.yml
+│   │   ├── Worker Sync Health.yml
+│   │   └── folder.yml
+│   ├── Projection
+│   │   ├── Initiation Projection.yml
+│   │   └── folder.yml
+│   ├── demarche
+│   │   ├── configuration
+│   │   │   ├── configuration.yml
+│   │   │   └── folder.yml
+│   │   └── folder.yml
+│   ├── environments
+│   │   └── local.yml
+│   ├── me
+│   │   ├── folder.yml
+│   │   └── me.yml
+│   └── opencollection.yml
+├── ci
+│   ├── includes
+│   │   ├── docker.yml
+│   │   ├── node.yml
+│   │   ├── rules.yml
+│   │   └── vault.yml
+│   └── scripts
+│       └── check_http.sh
+├── commitlint.config.cjs
+├── docker
+│   ├── .env-bn.local
+│   └── nginx
+│       └── bn.conf
+├── docs
+│   ├── Architecture.md
+│   ├── Convention
+│   │   └── README.md
+│   ├── Developpement
+│   │   └── development.md
+│   ├── ERD.png
+│   ├── Pagination des Dossiers
+│   │   ├── dossier-listing.xlsx
+│   │   └── pagination.md
+│   ├── Structure du code
+│   │   └── backend-code.md
+│   ├── Synchronisation
+│   │   ├── code
+│   │   │   ├── codes.md
+│   │   │   └── ds-champs-descriptor.png
+│   │   └── synchronisation.md
+│   ├── adr
+│   │   └── dependency-health-strategy.md
+│   ├── diag-apps.jpg
+│   └── graphana
+│       ├── README.md
+│       └── dashboard
+│           ├── dev
+│           │   ├── bnum.json
+│           │   └── errors.json
+│           └── qualif
+│               ├── bnum.json
+│               └── errors.json
+├── package.json
+├── packages
+│   └── shared
+│       ├── .gitignore
+│       ├── .vscode
+│       │   └── settings.json
+│       ├── README.md
+│       ├── eslint.config.js
+│       ├── nodemon.json
+│       ├── package.json
+│       ├── src
+│       │   ├── bn-configurations
+│       │   │   ├── bn-configuration-output.interface.ts
+│       │   │   ├── create-bn-configuration.interface.ts
+│       │   │   ├── enums
+│       │   │   │   ├── bn-configuration-types.enum.ts
+│       │   │   │   ├── bn-configuration.enum.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   └── update-bn-configuration.interface.ts
+│       │   ├── common
+│       │   │   ├── base-entity.interface.ts
+│       │   │   ├── date-range.enum.ts
+│       │   │   ├── dynamic-keys.ts
+│       │   │   ├── index.ts
+│       │   │   ├── total.interface.ts
+│       │   │   └── utils
+│       │   │       ├── date.utils.ts
+│       │   │       ├── index.ts
+│       │   │       └── string.utils.ts
+│       │   ├── demarches
+│       │   │   ├── anonymisation-event-list.enum.ts
+│       │   │   ├── create-demarche.interface.ts
+│       │   │   ├── datatable-small-demarche.interface.ts
+│       │   │   ├── demarche-option.interface.ts
+│       │   │   ├── demarche.interface.ts
+│       │   │   ├── identification-demarches.ts
+│       │   │   ├── index.ts
+│       │   │   ├── mapping-anonymous.interface.ts
+│       │   │   ├── mapping-column.interface.ts
+│       │   │   ├── paginated-small-demarche.interface.ts
+│       │   │   ├── pagination-small-demarche.interface.ts
+│       │   │   ├── small-demarche-output.interface.ts
+│       │   │   ├── update-demarche.interface.ts
+│       │   │   ├── update-one-anonymized-champ.interface.ts
+│       │   │   └── update-one-field-configuration.interface.ts
+│       │   ├── dossiers
+│       │   │   ├── dossier-anonymised-value.ts
+│       │   │   ├── dossier-search-output.interface.ts
+│       │   │   ├── dossier-state-keys.ts
+│       │   │   ├── dossier-with-fields-output.interface.ts
+│       │   │   ├── dossier.interface.ts
+│       │   │   ├── field-search-output.interface.ts
+│       │   │   ├── fields
+│       │   │   │   ├── field-source.enum.ts
+│       │   │   │   ├── field-type.enum.ts
+│       │   │   │   ├── field.interface.ts
+│       │   │   │   ├── format-function-ref.enum.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   ├── lean-dossier-output.interface.ts
+│       │   │   └── search-dossier.interface.ts
+│       │   ├── factories
+│       │   │   ├── build-record.factory.ts
+│       │   │   ├── create-enum.factory.ts
+│       │   │   └── index.ts
+│       │   ├── files
+│       │   │   ├── enums
+│       │   │   │   ├── file-extension.enum.ts
+│       │   │   │   ├── file-source-label.enum.ts
+│       │   │   │   ├── file-tag.enum.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── excel-cell.const.ts
+│       │   │   ├── index.ts
+│       │   │   └── interfaces
+│       │   │       ├── download-multipe-files-input.interfaces.ts
+│       │   │       ├── file-output.interface.ts
+│       │   │       ├── index.ts
+│       │   │       ├── paginated-file.interface.ts
+│       │   │       └── pagination-file.interface.ts
+│       │   ├── health
+│       │   │   ├── environment.type.ts
+│       │   │   ├── health-output.interface.ts
+│       │   │   └── index.ts
+│       │   ├── hub
+│       │   │   ├── basic-organisme.interface.ts
+│       │   │   ├── hub-opertator-to-search.enum.ts
+│       │   │   ├── hub-organimse-type-to-search.enum.ts
+│       │   │   ├── hub-search-input.interface.ts
+│       │   │   ├── hub-search-organisme-output.interface.ts
+│       │   │   ├── hub.utils.ts
+│       │   │   ├── index.ts
+│       │   │   ├── organisme-category.enum.ts
+│       │   │   ├── organisme-state.enum.ts
+│       │   │   ├── raf-event.interface.ts
+│       │   │   └── rna-event-output.ts
+│       │   ├── index.ts
+│       │   ├── instruction-times
+│       │   │   ├── index.ts
+│       │   │   ├── instriction-time.dictionnary.ts
+│       │   │   └── intruction-time.type.ts
+│       │   ├── organismes
+│       │   │   ├── address.interface.ts
+│       │   │   ├── index.ts
+│       │   │   ├── organisme-output.interface.ts
+│       │   │   ├── organisme-type.enums.ts
+│       │   │   ├── organisme.interface.ts
+│       │   │   ├── organismes.const.ts
+│       │   │   ├── organsime-output-dto.interface.ts
+│       │   │   ├── rna-output.interface.ts
+│       │   │   └── siaf
+│       │   │       ├── association-output.interface.ts
+│       │   │       ├── common-output.interface.ts
+│       │   │       ├── ds-event-output.interface.ts
+│       │   │       ├── enums
+│       │   │       │   ├── asso-quality.enum.ts
+│       │   │       │   ├── dossier-source.enum.ts
+│       │   │       │   ├── foundation-type.enum.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── job-position.enum.ts
+│       │   │       │   ├── organimse-kind.enum.ts
+│       │   │       │   ├── organisme-status.enum.ts
+│       │   │       │   ├── prefix-s3.enum.ts
+│       │   │       │   ├── quality-in-organisme.enum.ts
+│       │   │       │   ├── rna-type-file.enum.ts
+│       │   │       │   ├── rna-type-recepisse.enum.ts
+│       │   │       │   └── type-file.enum.ts
+│       │   │       ├── file-output.interface.ts
+│       │   │       ├── foundation-output.interface.ts
+│       │   │       ├── index.ts
+│       │   │       ├── legal-entity.interface.ts
+│       │   │       ├── organisme-dossier.interface.ts
+│       │   │       ├── organisme-output.interface.ts
+│       │   │       ├── person.interface.ts
+│       │   │       └── rna-event-output.interface.ts
+│       │   ├── pagination
+│       │   │   ├── date.filter.interface.ts
+│       │   │   ├── enum.filter.interface.ts
+│       │   │   ├── filter.interface.ts
+│       │   │   ├── index.ts
+│       │   │   ├── number.filter.interface.ts
+│       │   │   ├── numbers.filter.interface.ts
+│       │   │   ├── paginated.interface.ts
+│       │   │   ├── pagination.interface.ts
+│       │   │   ├── sort.interface.ts
+│       │   │   ├── string.filter.interface.ts
+│       │   │   └── strings.filter.interface.ts
+│       │   ├── prefectures
+│       │   │   ├── index.ts
+│       │   │   └── prefectures.enum.ts
+│       │   ├── rnf
+│       │   │   ├── index.ts
+│       │   │   └── rnf.utils.ts
+│       │   ├── roles
+│       │   │   ├── index.ts
+│       │   │   ├── role.interface.ts
+│       │   │   ├── role.utils.ts
+│       │   │   └── roles.enum.ts
+│       │   ├── state
+│       │   │   ├── entity-with-sync-state.interface.ts
+│       │   │   ├── index.ts
+│       │   │   ├── state.enum.ts
+│       │   │   └── sync-state.interface.ts
+│       │   ├── users
+│       │   │   ├── constants
+│       │   │   │   └── user-error-codes.const.ts
+│       │   │   ├── create-user.interface.ts
+│       │   │   ├── credentials-input.interface.ts
+│       │   │   ├── datatable-user.interface.ts
+│       │   │   ├── generate-update-password-link.interface.ts
+│       │   │   ├── index.ts
+│       │   │   ├── last-consulted-organisme.interface.ts
+│       │   │   ├── my-profile-output.interface.ts
+│       │   │   ├── paginated-user.interface.ts
+│       │   │   ├── pagination-user.interface.ts
+│       │   │   ├── reset-password-input.interface.ts
+│       │   │   ├── update-one-role-option.interface.ts
+│       │   │   ├── update-profile.interface.ts
+│       │   │   ├── update-user-password.interface.ts
+│       │   │   ├── update-user-role-label-input.interface.ts
+│       │   │   ├── user-friendly-filter.interface.ts
+│       │   │   ├── user-output.interface.ts
+│       │   │   ├── user-with-editable-role.interface.ts
+│       │   │   ├── user.interface.ts
+│       │   │   └── validate-email.interface.ts
+│       │   └── views
+│       │       ├── create-view.interface.ts
+│       │       ├── index.ts
+│       │       ├── patch-view.interface.ts
+│       │       ├── small-view-dto.interface.ts
+│       │       ├── view-stats.interface.ts
+│       │       └── view.interface.ts
+│       ├── tsconfig.json
+│       └── tsup.config.ts
+├── patches
+│   └── typeorm-fixtures-cli@3.1.0.patch
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── release-please-config.json
+└── turbo.json
+311 directories, 1308 files
