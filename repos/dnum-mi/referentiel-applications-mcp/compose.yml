@@ -1,0 +1,31 @@
+services:
+  refapp-mcp:
+    build: .
+    environment:
+      SWAGGER_URL: http://host.docker.internal:3500/api/v2/swagger/json
+    ports:
+      - "9000:9000"
+
+  open-web-ui:
+    image: ghcr.io/open-webui/open-webui:main
+    depends_on:
+      - refapp-mcp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8180:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    environment:
+      OPENAI_API_BASE_URL: ${LLM_API_BASE_URL:-https://api.openai.com/v1}
+      OPENAI_API_KEY: ${LLM_API_KEY:-}
+      WEBUI_AUTH: "false"
+      DEFAULT_USER_ROLE: "user"
+      ENABLE_LOGIN_FORM: "false"
+      ENABLE_SIGNUP: "false"
+      ENABLE_ONBOARDING: "false"
+      TOOL_SERVER_CONNECTIONS: >-
+        [{"url":"http://refapp-mcp:9000/mcp","path":"/mcp","type":"mcp","auth_type":"bearer","key":"${REFAPP_TOKEN:-}","config":{"enable":true},"info":{"id":"refapp-mcp","name":"RefApp MCP"}}]
+
+volumes:
+  ollama:
