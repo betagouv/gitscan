@@ -187,6 +187,7 @@
 │   │   ├── api_urls.py
 │   │   ├── api_views.py
 │   │   ├── apps.py
+│   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -198,6 +199,9 @@
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
+│   │   ├── templates
+│   │   │   └── fi
+│   │   │       └── authorize.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test_authorize.py
@@ -206,7 +210,8 @@
 │   │   │   ├── test_models.py
 │   │   │   ├── test_token.py
 │   │   │   └── test_userinfo.py
-│   │   └── utils.py
+│   │   ├── utils.py
+│   │   └── views.py
 │   ├── followup
 │   │   ├── __init__.py
 │   │   ├── api_urls.py
@@ -226,7 +231,9 @@
 │   ├── notification
 │   │   ├── __init__.py
 │   │   ├── api_urls.py
+│   │   ├── api_urls_v2.py
 │   │   ├── api_views.py
+│   │   ├── api_views_v2.py
 │   │   ├── apps.py
 │   │   ├── channel_consumer.py
 │   │   ├── channel_routing.py
@@ -251,6 +258,9 @@
 │   │   │   ├── 0012_valid_until.py
 │   │   │   ├── 0013_item_is_archived.py
 │   │   │   ├── 0014_content_icon.py
+│   │   │   ├── 0015_apiv2_fields.py
+│   │   │   ├── 0016_apiv2_fields.py
+│   │   │   ├── 0017_apiv2_fields.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -261,8 +271,12 @@
 │   │       │   ├── __init__.py
 │   │       │   ├── test_notification.py
 │   │       │   ├── test_partner_notifications.py
-│   │       │   └── test_scheduled_notification.py
+│   │       │   ├── test_scheduled_notification.py
+│   │       │   └── v2
+│   │       │       ├── __init__.py
+│   │       │       └── test_partner_events.py
 │   │       ├── test_delete-published-scheduled-notifications_command.py
+│   │       ├── test_migrations.py
 │   │       ├── test_publish-scheduled-notifications_command.py
 │   │       └── test_websocket.py
 │   ├── partner
@@ -294,6 +308,7 @@
 │   │   │   ├── 0006_alter_anonymizeduser_replication_id.py
 │   │   │   ├── 0007_anonymizedregistration_subscription.py
 │   │   │   ├── 0008_user.py
+│   │   │   ├── 0009_apiv2_fields.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── router.py
@@ -607,4 +622,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-116 directories, 493 files
+119 directories, 505 files
