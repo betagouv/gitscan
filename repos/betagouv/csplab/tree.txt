@@ -195,7 +195,9 @@
     │   │   │   └── process_webhook.py
     │   │   └── use_cases
     │   │       ├── __init__.py
+    │   │       ├── _talentsoft_source.py
     │   │       ├── archive_offer.py
+    │   │       ├── batch_archive_offers.py
     │   │       ├── clean_raw_offer.py
     │   │       ├── import_offers.py
     │   │       ├── load_sources.py
@@ -203,11 +205,13 @@
     │   │       ├── save_raw_offer.py
     │   │       └── save_webhook.py
     │   ├── bin
+    │   │   ├── archive_offers.py
     │   │   ├── import_offers.py
     │   │   ├── run_migrations.sh
     │   │   ├── start_flower.sh
     │   │   ├── start_web.sh
     │   │   └── start_worker.sh
+    │   ├── cron.json
     │   ├── domain
     │   │   ├── __init__.py
     │   │   ├── entities
@@ -220,6 +224,7 @@
     │   │   ├── gateways
     │   │   │   ├── __init__.py
     │   │   │   ├── archive_gateway.py
+    │   │   │   ├── offers_by_source_gateway.py
     │   │   │   ├── offers_cleaner.py
     │   │   │   ├── offers_gateway.py
     │   │   │   ├── publish_offer_gateway.py
@@ -256,6 +261,7 @@
     │   │   │   │   └── talentsoft_dtos.py
     │   │   │   ├── talentsoft_client.py
     │   │   │   ├── web_archive_gateway.py
+    │   │   │   ├── web_offers_by_source_gateway.py
     │   │   │   ├── web_publish_offer_gateway.py
     │   │   │   └── web_sources_gateway.py
     │   │   ├── gateways
@@ -321,6 +327,7 @@
     │   │       │   ├── __init__.py
     │   │       │   └── test_offers_cleaner.py
     │   │       ├── test_async_http_client.py
+    │   │       ├── test_batch_archive_offers_use_case.py
     │   │       ├── test_clean_raw_offer_use_case.py
     │   │       ├── test_credentials_store.py
     │   │       ├── test_import_offers_use_case.py
@@ -335,6 +342,7 @@
     │   │       ├── test_sources_repository.py
     │   │       ├── test_talentsoft_client_repository.py
     │   │       ├── test_value_objects.py
+    │   │       ├── test_web_offers_by_source_gateway.py
     │   │       └── test_web_publish_offer_gateway.py
     │   └── uv.lock
     ├── notebook
@@ -427,6 +435,11 @@
         │   │       ├── match_cv_to_opportunities.py
         │   │       ├── process_uploaded_cv.py
         │   │       └── submit_application.py
+        │   ├── commons
+        │   │   ├── __init__.py
+        │   │   └── usecases
+        │   │       ├── __init__.py
+        │   │       └── calculate_daily_stats.py
         │   ├── exceptions.py
         │   ├── identite
         │   │   ├── __init__.py
@@ -525,9 +538,14 @@
         │   │   ├── repositories
         │   │   │   ├── __init__.py
         │   │   │   └── audit_log_repository_interface.py
-        │   │   └── services
+        │   │   ├── services
+        │   │   │   ├── __init__.py
+        │   │   │   ├── audit_log_writer.py
+        │   │   │   ├── offer_stats_query_service_interface.py
+        │   │   │   └── stat_snapshot_writer_interface.py
+        │   │   └── value_objects
         │   │       ├── __init__.py
-        │   │       └── audit_log_writer.py
+        │   │       └── stat_snapshot.py
         │   ├── identite
         │   │   ├── entities
         │   │   │   ├── __init__.py
@@ -577,6 +595,7 @@
         │   │   │   ├── api_log_daily_aggregation_repository_interface.py
         │   │   │   ├── api_log_repository_interface.py
         │   │   │   ├── document_repository_interface.py
+        │   │   │   ├── ingestion_offers_repository_interface.py
         │   │   │   ├── repository_factory_interface.py
         │   │   │   ├── source_repository_interface.py
         │   │   │   ├── user_source_repository_interface.py
@@ -656,6 +675,7 @@
         │   │   │   ├── apps.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   ├── 0002_statsnapshotmodel.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models.py
         │   │   ├── ingestion
@@ -755,6 +775,7 @@
         │   │   │   │   ├── 0035_restore_offers_primary_key.py
         │   │   │   │   ├── 0036_fix_missing_id_indexes.py
         │   │   │   │   ├── 0037_offermodel_application_url_offermodel_conditions_and_more.py
+        │   │   │   │   ├── 0038_alter_offermodel_conditions_and_more.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -827,7 +848,8 @@
         │   │   ├── organisme_identite_mapper.py
         │   │   ├── organisme_recruteur_mapper.py
         │   │   ├── qdrant_filters_mapper.py
-        │   │   └── queryset_page.py
+        │   │   ├── queryset_page.py
+        │   │   └── stat_snapshot_mapper.py
         │   └── repositories
         │       ├── __init__.py
         │       ├── candidate
@@ -837,7 +859,9 @@
         │       │   └── postgres_cv_metadata_repository.py
         │       ├── commons
         │       │   ├── __init__.py
-        │       │   └── postgres_audit_log_repository.py
+        │       │   ├── postgres_audit_log_repository.py
+        │       │   ├── postgres_offer_stats_query_service.py
+        │       │   └── postgres_stat_snapshot_writer.py
         │       ├── identite
         │       │   ├── __init__.py
         │       │   ├── postgres_agent_repository.py
@@ -1083,8 +1107,12 @@
         │   │   │   ├── features
         │   │   │   │   └── ats
         │   │   │   │       ├── HomeView.vue
+        │   │   │   │       ├── ParametresView.vue
+        │   │   │   │       ├── api
+        │   │   │   │       │   └── recrutement.ts
         │   │   │   │       ├── components
-        │   │   │   │       │   └── AtsAppShell.vue
+        │   │   │   │       │   ├── AtsAppShell.vue
+        │   │   │   │       │   └── EtapesRecrutementList.vue
         │   │   │   │       ├── navigation.ts
         │   │   │   │       └── recrutements
         │   │   │   │           └── MesRecrutementsView.vue
@@ -1113,12 +1141,12 @@
         │   │   │   ├── types
         │   │   │   │   └── api.d.ts
         │   │   │   └── utils
+        │   │   │       ├── api.test.ts
+        │   │   │       ├── api.ts
         │   │   │       ├── errors.test.ts
         │   │   │       ├── errors.ts
         │   │   │       ├── format.test.ts
-        │   │   │       ├── format.ts
-        │   │   │       ├── http.test.ts
-        │   │   │       └── http.ts
+        │   │   │       └── format.ts
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
@@ -1283,6 +1311,9 @@
         │   │   │   ├── test_match_cv_to_opportunities.py
         │   │   │   ├── test_process_uploaded_cv.py
         │   │   │   └── test_submit_application.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_calculate_daily_stats.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
         │   │   │   └── test_create_organisme.py
@@ -1323,7 +1354,8 @@
         │   │   │   └── cv_metadata_factory.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
-        │   │   │   └── audit_log_factory.py
+        │   │   │   ├── audit_log_factory.py
+        │   │   │   └── stat_snapshot_factory.py
         │   │   ├── datetime_utils.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
@@ -1354,6 +1386,9 @@
         │   │       └── offer_factory.py
         │   ├── infrastructure
         │   │   ├── __init__.py
+        │   │   ├── authentification
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_api_key_authentication.py
         │   │   ├── candidate
         │   │   │   ├── __init__.py
         │   │   │   ├── test_candidature_admin.py
@@ -1364,10 +1399,10 @@
         │   │   │   └── test_submit_candidature.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_calculate_daily_stats.py
         │   │   │   └── test_postgres_audit_log_repository.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_api_key_authentication.py
         │   │   │   ├── test_create_agent.py
         │   │   │   ├── test_create_candidat.py
         │   │   │   ├── test_create_organisme.py
@@ -1491,4 +1526,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-311 directories, 1182 files
+317 directories, 1211 files
