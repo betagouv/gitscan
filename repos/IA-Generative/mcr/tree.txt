@@ -246,6 +246,7 @@
 │   │   │   │   │       └── transcription_generation_success.html
 │   │   │   │   ├── evaluation_zip.py
 │   │   │   │   ├── feedback.py
+│   │   │   │   ├── meeting_state_machine.py
 │   │   │   │   ├── meeting_transitions.py
 │   │   │   │   ├── report_rendering.py
 │   │   │   │   ├── transcription_queue_estimation.py
@@ -276,9 +277,6 @@
 │   │   │   │   ├── meeting_transition_record.py
 │   │   │   │   ├── transcription_model.py
 │   │   │   │   └── user_model.py
-│   │   │   ├── orchestrators
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── meeting_transitions_orchestrator.py
 │   │   │   ├── schemas
 │   │   │   │   ├── S3_types.py
 │   │   │   │   ├── __init__.py
@@ -304,7 +302,6 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── prompt.py
 │   │   │   │   │   └── spelling_corrector.py
-│   │   │   │   ├── deliverable_service.py
 │   │   │   │   ├── docx_generation
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── templated_docx_generator.py
@@ -312,50 +309,32 @@
 │   │   │   │   ├── email
 │   │   │   │   │   └── __init__.py
 │   │   │   │   ├── llm_post_processing.py
-│   │   │   │   ├── meeting_service.py
 │   │   │   │   ├── meeting_to_transcription_service.py
-│   │   │   │   ├── meeting_transition_record_service.py
 │   │   │   │   ├── report_content
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── markdown_to_docx.py
 │   │   │   │   │   ├── template_renderer.py
 │   │   │   │   │   └── templates
 │   │   │   │   │       └── detailed_synthesis.md.jinja
-│   │   │   │   ├── report_task_service.py
 │   │   │   │   ├── s3_service.py
-│   │   │   │   ├── speech_to_text
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── diarization_processor.py
-│   │   │   │   │   ├── participants_naming
-│   │   │   │   │   │   ├── __init__.py
-│   │   │   │   │   │   ├── match_speakers_with_participants.py
-│   │   │   │   │   │   ├── participant_extraction.py
-│   │   │   │   │   │   └── prompts.py
-│   │   │   │   │   ├── speech_to_text.py
-│   │   │   │   │   ├── transcription_post_process.py
-│   │   │   │   │   ├── transcription_processor.py
-│   │   │   │   │   ├── types.py
-│   │   │   │   │   └── utils
-│   │   │   │   │       ├── __init__.py
-│   │   │   │   │       ├── audio.py
-│   │   │   │   │       ├── chunking.py
-│   │   │   │   │       ├── models.py
-│   │   │   │   │       ├── types.py
-│   │   │   │   │       └── vad.py
-│   │   │   │   ├── transcription_task_service.py
-│   │   │   │   └── user_service.py
-│   │   │   ├── state_machine
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── graph
-│   │   │   │   │   ├── ImportMeetingStateMachine.png
-│   │   │   │   │   ├── RecordMeetingStateMachine.png
-│   │   │   │   │   └── VisioMeetingStateMachine.png
-│   │   │   │   ├── import_meeting_state_machine.py
-│   │   │   │   ├── record_meeting_state_machine.py
-│   │   │   │   └── visio_meeting_state_machine.py
-│   │   │   ├── statemachine_actions
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── meeting_actions.py
+│   │   │   │   └── speech_to_text
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── diarization_processor.py
+│   │   │   │       ├── participants_naming
+│   │   │   │       │   ├── __init__.py
+│   │   │   │       │   ├── match_speakers_with_participants.py
+│   │   │   │       │   ├── participant_extraction.py
+│   │   │   │       │   └── prompts.py
+│   │   │   │       ├── speech_to_text.py
+│   │   │   │       ├── transcription_post_process.py
+│   │   │   │       ├── transcription_processor.py
+│   │   │   │       └── utils
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── audio.py
+│   │   │   │           ├── chunking.py
+│   │   │   │           ├── models.py
+│   │   │   │           ├── types.py
+│   │   │   │           └── vad.py
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _shared
@@ -403,7 +382,6 @@
 │   │   │       ├── filename_header.py
 │   │   │       ├── langfuse_observability.py
 │   │   │       ├── load_speech_to_text_model.py
-│   │   │       ├── meeting.py
 │   │   │       ├── s3_client.py
 │   │   │       └── sentry_context.py
 │   │   ├── evaluation
@@ -555,6 +533,7 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── speech_to_text_pipeline
 │   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_diarization_async.py
 │   │   │   │   ├── test_integration_center_process.py
 │   │   │   │   ├── test_integration_full_process.py
 │   │   │   │   ├── test_integration_post_process.py
@@ -562,10 +541,7 @@
 │   │   │   │   ├── test_phase_aware_downmix.py
 │   │   │   │   └── test_silent_audio_detection.py
 │   │   │   ├── test_custom_report_generation.py
-│   │   │   ├── test_deliverable_service.py
 │   │   │   ├── test_detailed_synthesis_generation.py
-│   │   │   ├── test_meeting_transitions_service.py
-│   │   │   ├── test_report_task_service.py
 │   │   │   └── test_s3_multipart.py
 │   │   ├── unit
 │   │   │   ├── __init__.py
@@ -1164,4 +1140,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-220 directories, 946 files
+216 directories, 926 files
