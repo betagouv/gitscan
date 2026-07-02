@@ -1,16 +1,25 @@
-## Changelog : france-chaleur-urbaine-pac (30 derniers jours, au 19 juin 2026)
+## Changelog : france-chaleur-urbaine-pac (30 derniers jours, au 1er août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une refonte significative de l'interface utilisateur, passant d'une approche basée sur React-DSFR à un système de questionnaire étape par étape pour une meilleure expérience utilisateur.  Le projet a également été initialisé avec les bases du comparateur et a vu un découpage du composant principal pour faciliter le développement futur.
+Ce mois-ci, le projet a connu une refonte significative de l'interface utilisateur et de l'expérience utilisateur (UX) du questionnaire et de la page de résultats. L'objectif principal est d'améliorer la clarté et la facilité d'utilisation du comparateur de PAC, notamment sur mobile.  Une séparation du code en composants plus spécifiques a également été entreprise pour une meilleure maintenabilité.
 
 ### Évolutions fonctionnelles
-- Refonte complète de la page de résultats pour une présentation plus claire et intuitive.
-- Implémentation d'un système de "stepper" (questionnaire étape par étape) remplaçant l'utilisation de React-DSFR, améliorant ainsi le flux de saisie des informations. [#1234](https://github.com/incubateur-ademe/france-chaleur-urbaine-pac/issues/1234) (issue hypothétique pour l'exemple)
-- Découpage du composant `App` principal en `Questionnaire` et `ResultsPage` pour une meilleure organisation du code et une maintenance facilitée.
+- Amélioration de l'UX du formulaire de questionnaire, avec des ajustements graphiques et un réagencement de l'ordre des questions.
+- Ajout d'une barre de défilement (scroll) sur les recommandations affichées.
+- Correction de l'affichage du logo France Renov.
+- Amélioration de l'affichage sur les appareils mobiles.
+- L'option "Je ne sais pas" dans le questionnaire est maintenant affichée sur une nouvelle ligne pour une meilleure lisibilité.
+- Redesign complet de la page de résultats pour une présentation plus claire et intuitive.
+- Remplacement de la librairie `react-dsfr` par un système de "stepper" pour guider l'utilisateur à travers le questionnaire.
 
 ### Évolutions techniques
-- Renommage des références "IFPEN" en "PAC" dans le code pour une meilleure cohérence avec l'objectif du projet.
-- Ajout d'une configuration de build pour optimiser le processus de compilation et de déploiement.
+- Séparation du composant `HomeScreen` dans un fichier dédié pour une meilleure organisation du code.
+- Découpage du composant principal `App` en `Questionnaire` et `ResultsPage` pour une meilleure modularité.
+- Découpe de composants en éléments plus spécifiques pour faciliter la maintenance et la réutilisation.
+- Ajout d'une configuration de build.
+- Renommage de "IFPEN" en "PAC" dans le code pour plus de cohérence.
 
 ### Autres changements
-- Initialisation du comparateur PAC avec les premières bases fonctionnelles.
+- Initialisation du comparateur IFPEN (premières étapes de développement).
+- Renommage de "journey" en "questionnaire" dans le code.
+- Ajustements graphiques du graphique de résultats.
