@@ -420,7 +420,6 @@
 │       │   └── urls.ts
 │       ├── e2e
 │       │   ├── features
-│       │   │   ├── age.spec.ts
 │       │   │   ├── cookies.spec.ts
 │       │   │   ├── groups.spec.ts
 │       │   │   ├── locale-persistence.spec.ts
@@ -1078,6 +1077,42 @@
 │       │   │   │   │   ├── _constants
 │       │   │   │   │   │   └── waterFAQJsonLd.ts
 │       │   │   │   │   └── page.tsx
+│       │   │   │   ├── evenement
+│       │   │   │   │   └── [id]
+│       │   │   │   │       ├── _components
+│       │   │   │   │       │   ├── EventCTAs.tsx
+│       │   │   │   │       │   ├── EventDetail.tsx
+│       │   │   │   │       │   ├── EventHero.tsx
+│       │   │   │   │       │   ├── EventPodium.tsx
+│       │   │   │   │       │   ├── EventStatistics.tsx
+│       │   │   │   │       │   ├── EventTestimonies.tsx
+│       │   │   │   │       │   ├── EventTutorial.tsx
+│       │   │   │   │       │   ├── eventCTAs
+│       │   │   │   │       │   │   └── ActionCard.tsx
+│       │   │   │   │       │   ├── eventHero
+│       │   │   │   │       │   │   ├── CircularProgressbar.tsx
+│       │   │   │   │       │   │   ├── EventHeroCard.tsx
+│       │   │   │   │       │   │   └── eventHeroCard
+│       │   │   │   │       │   │       ├── AnimatedCounterBlock.tsx
+│       │   │   │   │       │   │       ├── EventCountdown.tsx
+│       │   │   │   │       │   │       └── EventDynamicCounter.tsx
+│       │   │   │   │       │   ├── eventPodium
+│       │   │   │   │       │   │   ├── AnimatedPodiumBlock.tsx
+│       │   │   │   │       │   │   ├── EventTabs.tsx
+│       │   │   │   │       │   │   ├── ListItem.tsx
+│       │   │   │   │       │   │   ├── PodiumBlock.tsx
+│       │   │   │   │       │   │   ├── PodiumVisual.tsx
+│       │   │   │   │       │   │   └── RankBadge.tsx
+│       │   │   │   │       │   ├── eventStatistics
+│       │   │   │   │       │   │   └── EventNumber.tsx
+│       │   │   │   │       │   ├── eventTestimonies
+│       │   │   │   │       │   │   └── TestimonyCard.tsx
+│       │   │   │   │       │   └── eventTutorial
+│       │   │   │   │       │       ├── StepCard.tsx
+│       │   │   │   │       │       └── Toggle.tsx
+│       │   │   │   │       ├── _helpers
+│       │   │   │   │       │   └── eventPageData.tsx
+│       │   │   │   │       └── page.tsx
 │       │   │   │   ├── globals.css
 │       │   │   │   ├── layout.tsx
 │       │   │   │   ├── marianne.tsx
@@ -1113,13 +1148,6 @@
 │       │   │   │   │   │   │   │   └── OrganisationPrivacy.tsx
 │       │   │   │   │   │   │   └── reuseSimulationForPoll
 │       │   │   │   │   │   │       └── ReuseButtons.tsx
-│       │   │   │   │   │   ├── age
-│       │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   └── AgeForm.tsx
-│       │   │   │   │   │   │   ├── _hooks
-│       │   │   │   │   │   │   │   ├── useAgeForm.ts
-│       │   │   │   │   │   │   │   └── useUpdateUserAgeRange.ts
-│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── campagne
 │       │   │   │   │   │   │   └── [pollIdOrSlug]
 │       │   │   │   │   │   │       ├── layout.tsx
@@ -1208,10 +1236,6 @@
 │       │   │   │   │   ├── ActionCard.module.css
 │       │   │   │   │   └── ActionCard.tsx
 │       │   │   │   ├── ActionTracker.tsx
-│       │   │   │   ├── ActionsCarousel
-│       │   │   │   │   ├── ActionsCarousel.css
-│       │   │   │   │   ├── ActionsCarousel.tsx
-│       │   │   │   │   └── ActionsCarouselClient.tsx
 │       │   │   │   ├── BetaBanner.tsx
 │       │   │   │   ├── HighestImpactActionsSection.tsx
 │       │   │   │   ├── ThemeBadge.tsx
@@ -1223,6 +1247,8 @@
 │       │   │   │   │       └── RecommendedAction.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── ActionsPage.tsx
+│       │   │   ├── animations
+│       │   │   │   └── StaggeredCards.tsx
 │       │   │   ├── charts
 │       │   │   │   ├── BilanChart.tsx
 │       │   │   │   ├── HorizontalBarChartItem.tsx
@@ -1538,7 +1564,6 @@
 │       │   │   ├── simulation
 │       │   │   │   ├── TopBar.tsx
 │       │   │   │   └── topBar
-│       │   │   │       ├── ButtonBack.tsx
 │       │   │   │       ├── Category.tsx
 │       │   │   │       ├── Progress.tsx
 │       │   │   │       ├── TotalButtons.tsx
@@ -1672,6 +1697,11 @@
 │       │   │   │   │   └── CopyButton.test.tsx
 │       │   │   │   ├── buttonStyles.ts
 │       │   │   │   └── useButtonState.ts
+│       │   │   ├── carousel
+│       │   │   │   ├── Carousel.css
+│       │   │   │   ├── Carousel.stories.tsx
+│       │   │   │   ├── Carousel.tsx
+│       │   │   │   └── CarouselClient.tsx
 │       │   │   ├── cms
 │       │   │   │   ├── AllBlogCategories.stories.tsx
 │       │   │   │   ├── AllBlogCategories.tsx
@@ -1773,6 +1803,10 @@
 │       │   │   │   ├── ConfirmationModal.tsx
 │       │   │   │   ├── Modal.stories.tsx
 │       │   │   │   └── Modal.tsx
+│       │   │   ├── scroll-reveal
+│       │   │   │   ├── ScrollReveal.stories.tsx
+│       │   │   │   ├── ScrollReveal.tsx
+│       │   │   │   └── useScrollReveal.ts
 │       │   │   ├── sharing
 │       │   │   │   ├── Share.stories.tsx
 │       │   │   │   ├── Share.tsx
@@ -1803,7 +1837,8 @@
 │       │   │   │   └── getFormattedDate.ts
 │       │   │   ├── foldEveryQuestionsUntil.ts
 │       │   │   ├── formatters
-│       │   │   │   └── formatFootprint.ts
+│       │   │   │   ├── formatFootprint.ts
+│       │   │   │   └── getCategoryTitle.ts
 │       │   │   ├── getCategoriesDisplayData.tsx
 │       │   │   ├── getCategoryColorClass.ts
 │       │   │   ├── getLocalisedMDX.ts
@@ -2201,15 +2236,12 @@
 │       │   │   ├── partners
 │       │   │   │   ├── exportSituation.ts
 │       │   │   │   └── verifyPartner.ts
-│       │   │   ├── tracking
-│       │   │   │   ├── GoogleTagManager.ts
-│       │   │   │   ├── Posthog.ts
-│       │   │   │   ├── cookieStateStore.ts
-│       │   │   │   ├── iframeInformation.ts
-│       │   │   │   └── posthogServer.ts
-│       │   │   └── users
-│       │   │       ├── get-user-age-range.ts
-│       │   │       └── revalidate-age-page.ts
+│       │   │   └── tracking
+│       │   │       ├── GoogleTagManager.ts
+│       │   │       ├── Posthog.ts
+│       │   │       ├── cookieStateStore.ts
+│       │   │       ├── iframeInformation.ts
+│       │   │       └── posthogServer.ts
 │       │   ├── types
 │       │   │   ├── .gitignore
 │       │   │   ├── app-env.d.ts
@@ -2425,4 +2457,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-625 directories, 1847 files
+634 directories, 1870 files
