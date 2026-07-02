@@ -1282,16 +1282,15 @@
     │   │   │   │   │   │   │   │   │   ├── candidateProfilePageLogic.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── certification-authority-details
+    │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccountCard.tsx
     │   │   │   │   │   │   │   │   │   ├── certificationAuthorityDetails.hooks.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── multiple-certification-authorities-selection
     │   │   │   │   │   │   │   │   │   ├── certification-authorities-list
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityCard.tsx
-    │   │   │   │   │   │   │   │   │   │   ├── certification-authority-selection
-    │   │   │   │   │   │   │   │   │   │   │   └── [certificationAuthorityId]
-    │   │   │   │   │   │   │   │   │   │   │       ├── certificationAuthoritySelection.hooks.ts
-    │   │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── multipleCertificationAuthoritiesList.hooks.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   └── disclaimer
@@ -1752,10 +1751,6 @@
     │   │   │   │   └── CandidacyBackButton.tsx
     │   │   │   ├── candidacy-status-tag
     │   │   │   │   └── CandidacyStatusTag.tsx
-    │   │   │   ├── candidacy-summary
-    │   │   │   │   └── certification-authority
-    │   │   │   │       ├── CertificationAuthorityCard.tsx
-    │   │   │   │       └── CertificationAuthorityLocalAccountCard.tsx
     │   │   │   ├── candidacy-tags-aap
     │   │   │   │   └── CandidacyTagsAap.tsx
     │   │   │   ├── card
@@ -2035,8 +2030,6 @@
     │   │   │   │       │   ├── certification-authority-details.spec.ts
     │   │   │   │       │   ├── multiple-certification-authorities-selection
     │   │   │   │       │   │   ├── certification-authorities-list
-    │   │   │   │       │   │   │   ├── certification-authority-selection
-    │   │   │   │       │   │   │   │   └── certification-authority-selection-page.spec.ts
     │   │   │   │       │   │   │   └── multiple-certification-authorities-list-page.spec.ts
     │   │   │   │       │   │   └── disclaimer
     │   │   │   │       │   │       └── multiple-certification-cuthorities-selection-disclaimer-page.spec.ts
@@ -2295,11 +2288,7 @@
     │   │   │   │   ├── certification.security.ts
     │   │   │   │   └── features
     │   │   │   │       ├── getCertificationByCandidacyId.ts
-    │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.test.ts
-    │   │   │   │       ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertification.ts
-    │   │   │   │       ├── updateCertificationAuthorityOfCandidacy.test.ts
-    │   │   │   │       ├── updateCertificationAuthorityOfCandidacy.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.test.ts
     │   │   │   │       ├── updateCertificationOfCandidacy.ts
     │   │   │   │       ├── updateCertificationWithinOrganismScope.test.ts
@@ -2364,6 +2353,10 @@
     │   │   │   │   ├── getExperiencesByCandidacyId.ts
     │   │   │   │   ├── getFirstActiveCandidacyByCandidateId.ts
     │   │   │   │   ├── getReferentOrganismFromCandidacyId.ts
+    │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.test.ts
+    │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.ts
+    │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.test.ts
+    │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.test.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacyAsAdmin.ts
@@ -2378,6 +2371,8 @@
     │   │   │   │   ├── takeOverCandidacy.ts
     │   │   │   │   ├── unarchiveCandidacy.test.ts
     │   │   │   │   ├── unarchiveCandidacy.ts
+    │   │   │   │   ├── updateCandidacyCertificationAuthority.test.ts
+    │   │   │   │   ├── updateCandidacyCertificationAuthority.ts
     │   │   │   │   ├── updateCandidacyCertificationCompletion.ts
     │   │   │   │   ├── updateCandidacyEndAccompagnementDecision.ts
     │   │   │   │   ├── updateCandidacyFinanceModule.ts
@@ -2548,6 +2543,8 @@
     │   │   │       ├── getOrganismsByAccountId.ts
     │   │   │       ├── getPaginatedCertifications.ts
     │   │   │       ├── getParcoursForCertificationAndCertificationAuthority.ts
+    │   │   │       ├── isCandidacyCertificationAuthorityUpdatable.test.ts
+    │   │   │       ├── isCandidacyCertificationAuthorityUpdatable.ts
     │   │   │       ├── isUserCertificationRegistryManagerOfCertification.ts
     │   │   │       ├── searchCertificationAuthoritiesAndLocalAccounts.ts
     │   │   │       ├── sendEmailsForCertificationExpiration.ts
@@ -4515,6 +4512,8 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260625114106_add_prerequisites_comment_dematerialized_feasibility_file_table
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260630095137_add_df_demat_autonome_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4679,6 +4678,7 @@
     │   │   │   │   ├── information.svg
     │   │   │   │   ├── innovation.svg
     │   │   │   │   ├── mail-send.svg
+    │   │   │   │   ├── school.svg
     │   │   │   │   ├── search.svg
     │   │   │   │   ├── self-learning.svg
     │   │   │   │   ├── self-training.svg
@@ -4860,6 +4860,7 @@
     │   │   │   │   │           ├── DossierValidationTile.tsx
     │   │   │   │   │           ├── ExperiencesTile.tsx
     │   │   │   │   │           ├── FeasibilityTile.tsx
+    │   │   │   │   │           ├── FormationsTile.tsx
     │   │   │   │   │           ├── GoalsTile.tsx
     │   │   │   │   │           ├── IncompleteBadge.tsx
     │   │   │   │   │           ├── OrganismTile.tsx
@@ -4935,6 +4936,9 @@
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── experiences.hooks.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── set-formations
+    │   │   │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   │   │   └── set-formations.hooks.ts
     │   │   │   │   │   │   │   │   │   ├── set-goals
     │   │   │   │   │   │   │   │   │   │   ├── page.tsx
     │   │   │   │   │   │   │   │   │   │   └── set-goals.hooks.ts
@@ -5054,7 +5058,9 @@
     │   │   │   │   │   │   │   ├── (vae-collective)
     │   │   │   │   │   │   │   │   └── vae-collective
     │   │   │   │   │   │   │   │       ├── [codeInscription]
-    │   │   │   │   │   │   │   │       │   ├── createVaeCollectiveCandidacy.hook.ts
+    │   │   │   │   │   │   │   │       │   ├── consent
+    │   │   │   │   │   │   │   │       │   │   ├── createVaeCollectiveCandidacy.hook.ts
+    │   │   │   │   │   │   │   │       │   │   └── page.tsx
     │   │   │   │   │   │   │   │       │   ├── getVaeCollective.hook.ts
     │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │       ├── _components
@@ -6096,4 +6102,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2048 directories, 4050 files
+2047 directories, 4057 files
