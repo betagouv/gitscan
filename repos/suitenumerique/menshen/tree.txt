@@ -10,6 +10,8 @@
 │       ├── _docker-publish.yml
 │       ├── backend.yml
 │       ├── docker-hub.yml
+│       ├── helm.yml
+│       ├── release-helm-chart.yml
 │       └── security.yml
 ├── .gitignore
 ├── .gitlint
@@ -20,6 +22,7 @@
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
+├── Tiltfile
 ├── bin
 │   ├── _config.sh
 │   ├── compose
@@ -103,6 +106,26 @@
     │   │   ├── urls.py
     │   │   └── views.py
     │   └── uv.lock
+    ├── helm
+    │   ├── env.d
+    │   │   └── dev
+    │   │       ├── values.dev-backend.yaml.gotmpl
+    │   │       └── values.menshen.yaml.gotmpl
+    │   ├── helmfile.yaml.gotmpl
+    │   └── menshen
+    │       ├── Chart.yaml
+    │       ├── README.md
+    │       ├── generate-readme.sh
+    │       ├── templates
+    │       │   ├── _helpers.tpl
+    │       │   ├── backend_deployment.yaml
+    │       │   ├── backend_job.yml
+    │       │   ├── backend_job_createsuperuser.yaml
+    │       │   ├── backend_job_migrate.yaml
+    │       │   ├── backend_svc.yaml
+    │       │   ├── ingress.yaml
+    │       │   └── ingress_admin.yaml
+    │       └── values.yaml
     └── playground
         ├── source
         │   ├── .python-version
@@ -187,4 +210,4 @@
             ├── templates
             │   └── base.html
             └── uv.lock
-54 directories, 135 files
+59 directories, 153 files
