@@ -313,7 +313,8 @@
 │   │   │   ├── migrate.mjs
 │   │   │   ├── post-process-schema-wiki.ts
 │   │   │   ├── seed-demo-stats.mjs
-│   │   │   └── seed-dev.mjs
+│   │   │   ├── seed-dev.mjs
+│   │   │   └── visual-fidelity-probe.mjs
 │   │   ├── src
 │   │   │   ├── __tests__
 │   │   │   │   ├── middleware.test.ts
@@ -500,6 +501,7 @@
 │   │   │   │   │   ├── declaration-flows.ts
 │   │   │   │   │   ├── declaration-history.ts
 │   │   │   │   │   ├── dsfr.ts
+│   │   │   │   │   ├── impersonation.ts
 │   │   │   │   │   ├── login.ts
 │   │   │   │   │   ├── maildev.ts
 │   │   │   │   │   └── notifications-worker.ts
@@ -650,6 +652,7 @@
 │   │   │   │   │       ├── types.ts
 │   │   │   │   │       └── useDebouncedValue.ts
 │   │   │   │   ├── aide
+│   │   │   │   │   ├── AideCallout.module.scss
 │   │   │   │   │   ├── AideCallout.tsx
 │   │   │   │   │   ├── AideIllustration.tsx
 │   │   │   │   │   ├── AideLayout.module.scss
@@ -748,6 +751,7 @@
 │   │   │   │   │   ├── StepPageClient.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── DeclarationLayout.test.tsx
+│   │   │   │   │   │   ├── StepPageClient.test.tsx
 │   │   │   │   │   │   ├── computeIndicatorPercentages.test.ts
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── index.ts
@@ -779,6 +783,7 @@
 │   │   │   │   │   │   ├── InterpretationCallout.module.scss
 │   │   │   │   │   │   ├── NextStepsBox.module.scss
 │   │   │   │   │   │   ├── NextStepsBox.tsx
+│   │   │   │   │   │   ├── OrdinalLongDate.tsx
 │   │   │   │   │   │   ├── PayGapTable.module.scss
 │   │   │   │   │   │   ├── PayGapTable.tsx
 │   │   │   │   │   │   ├── PrefillResetConfirmDialog.tsx
@@ -799,6 +804,7 @@
 │   │   │   │   │   │   │   ├── DevFillButton.test.tsx
 │   │   │   │   │   │   │   ├── FormActions.test.tsx
 │   │   │   │   │   │   │   ├── GapInterpretationCallout.test.tsx
+│   │   │   │   │   │   │   ├── OrdinalLongDate.test.tsx
 │   │   │   │   │   │   │   ├── PrefillResetWarning.test.tsx
 │   │   │   │   │   │   │   ├── PrefillSource.test.tsx
 │   │   │   │   │   │   │   ├── StepIndicator.test.tsx
@@ -828,16 +834,17 @@
 │   │   │   │   │   │   │   ├── useDraftAutoSave.ts
 │   │   │   │   │   │   │   └── useDraftHydration.ts
 │   │   │   │   │   │   ├── funnelConfig.ts
-│   │   │   │   │   │   ├── gapBadge.module.scss
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
 │   │   │   │   │   │   ├── gipToStepData.ts
 │   │   │   │   │   │   ├── indicatorRowMapping.ts
 │   │   │   │   │   │   └── lock
 │   │   │   │   │   │       ├── DeclarationLockAlert.tsx
+│   │   │   │   │   │       ├── DeclarationModificationClosedAlert.tsx
 │   │   │   │   │   │       ├── LockContext.tsx
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── DeclarationLockAlert.test.tsx
+│   │   │   │   │   │       │   ├── DeclarationModificationClosedAlert.test.tsx
 │   │   │   │   │   │       │   ├── LockContext.test.tsx
 │   │   │   │   │   │       │   └── useDeclarationLock.test.tsx
 │   │   │   │   │   │       └── useDeclarationLock.ts
@@ -896,6 +903,7 @@
 │   │   │   │   │   │   │   │   └── JointEvaluationPage.test.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── secondDeclaration
+│   │   │   │   │   │   │   ├── ReferencePeriodPicker.module.scss
 │   │   │   │   │   │   │   ├── ReferencePeriodPicker.tsx
 │   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.tsx
 │   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.tsx
@@ -1613,4 +1621,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-275 directories, 1340 files
+275 directories, 1348 files
