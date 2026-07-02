@@ -612,6 +612,7 @@
         │   │   │   └── contents.xcworkspacedata
         │   │   └── xcshareddata
         │   │       └── xcschemes
+        │   │           ├── AssistantTranscripts Release.xcscheme
         │   │           └── AssistantTranscripts.xcscheme
         │   ├── AssistantTranscripts.xcworkspace
         │   │   └── contents.xcworkspacedata
@@ -629,11 +630,10 @@
         │   │   │   └── Logomark Transcripts.png
         │   │   └── icon.json
         │   └── start.wav
-        ├── jest.config.js
         ├── metro.config.js
         ├── package.json
         ├── patches
-        │   └── react-native-audio-api+0.11.7.patch
+        │   └── react-native-audio-api+0.12.2.patch
         ├── react-native.config.js
         ├── scripts
         │   └── release_bump.sh
@@ -699,6 +699,7 @@
         │   │   │       ├── updateUserPreferences.ts
         │   │   │       └── useUser.tsx
         │   │   ├── config
+        │   │   │   ├── RecoverModal.tsx
         │   │   │   └── UpdateModal.tsx
         │   │   ├── files
         │   │   │   └── api
@@ -715,6 +716,7 @@
         │   │       ├── hooks
         │   │       │   └── useLocalRecordings.ts
         │   │       └── utils
+        │   │           ├── concatSubAudioFiles.ts
         │   │           └── formatDuration.ts
         │   ├── i18n
         │   │   ├── i18next.d.ts
@@ -748,11 +750,12 @@
         │   │   ├── localRecording.ts
         │   │   └── settings.ts
         │   └── utils
-        │       ├── deleteLocalRecordingFile.ts
         │       ├── fileUpload.ts
+        │       ├── localRecordingFile.ts
         │       ├── omit.ts
         │       ├── shareLocalRecording.ts
-        │       └── useInsets.ts
+        │       ├── useInsets.ts
+        │       └── wait.ts
         ├── tsconfig.json
         └── yarn.lock
-185 directories, 572 files
+185 directories, 575 files
