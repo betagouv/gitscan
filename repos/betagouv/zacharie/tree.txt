@@ -82,6 +82,7 @@
 │   │   ├── fill-ccg-db.ts
 │   │   ├── import-official-cfei.ts
 │   │   ├── populate-test-db.ts
+│   │   ├── seed-trichine-labos.ts
 │   │   └── seed-villette
 │   │       ├── cleanup-villettes-preprod.ts
 │   │       ├── seed-villettes-actors.ts
@@ -261,6 +262,7 @@
 │   ├── README.md
 │   ├── __tests__
 │   │   ├── create-new-carcasse.test.ts
+│   │   ├── trichine.test.ts
 │   │   └── update-carcasse-status.test.ts
 │   ├── eslint.config.js
 │   ├── index.html
@@ -813,6 +815,7 @@
 │   │   │   ├── Section.tsx
 │   │   │   ├── SelectCustom.tsx
 │   │   │   ├── TableFilterable.tsx
+│   │   │   ├── TrichineSection.tsx
 │   │   │   ├── UnexpectedError.tsx
 │   │   │   ├── ValorisationTable.tsx
 │   │   │   ├── VideoOverlay.tsx
@@ -996,6 +999,12 @@
 │   │   │   │   ├── frc-layout.tsx
 │   │   │   │   ├── frc-router.tsx
 │   │   │   │   └── frc-tableau-de-bord.tsx
+│   │   │   ├── laboratoire
+│   │   │   │   ├── laboratoire-ftp.tsx
+│   │   │   │   ├── laboratoire-ftps.tsx
+│   │   │   │   ├── laboratoire-layout.tsx
+│   │   │   │   ├── laboratoire-profil.tsx
+│   │   │   │   └── laboratoire-router.tsx
 │   │   │   ├── landing-demarches.tsx
 │   │   │   ├── landing-pros.tsx
 │   │   │   ├── landing.tsx
@@ -1027,13 +1036,20 @@
 │   │   │   │   ├── svi-layout.tsx
 │   │   │   │   ├── svi-navigation-menu.ts
 │   │   │   │   └── svi-router.tsx
-│   │   │   └── tableau-de-bord-redirect.tsx
+│   │   │   ├── tableau-de-bord-redirect.tsx
+│   │   │   └── trichine
+│   │   │       ├── trichine-ftp-detail.tsx
+│   │   │       ├── trichine-nouveau-pool.tsx
+│   │   │       ├── trichine-nouvelle-ftp.tsx
+│   │   │       └── trichine-tableau.tsx
 │   │   ├── service-worker.ts
 │   │   ├── services
 │   │   │   ├── api.ts
 │   │   │   ├── indexed-db.ts
+│   │   │   ├── laboratoire.ts
 │   │   │   ├── matomo.ts
 │   │   │   ├── sentry.ts
+│   │   │   ├── trichine.ts
 │   │   │   ├── usePWAManager.js
 │   │   │   └── useSaveScroll.ts
 │   │   ├── sw
@@ -1077,6 +1093,8 @@
 │   │   │   ├── sync-data.ts
 │   │   │   ├── transmission-labels.test.ts
 │   │   │   ├── transmission-labels.ts
+│   │   │   ├── trichine-hooks.ts
+│   │   │   ├── trichine.ts
 │   │   │   ├── useCarcasseStatusAndRefus.tsx
 │   │   │   ├── useGetCommunesDeChasseFavorites.ts
 │   │   │   ├── useLocalStorage.ts
@@ -1280,6 +1298,7 @@
 │   │       ├── 131-fiches-list-sorting.spec.ts
 │   │       ├── 132-working-for-pii-leak-requested-relation.spec.ts
 │   │       ├── 133-fiches-pagination.spec.ts
+│   │       ├── 134-compte-en-attente-validation-alert.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1356,4 +1375,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-324 directories, 1049 files
+326 directories, 1066 files
