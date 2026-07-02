@@ -22,6 +22,7 @@
 │   ├── CODEOWNERS
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug-report.yml
+│   │   ├── epic.yml
 │   │   ├── feature-request.yml
 │   │   └── task-request.yml
 │   ├── copilot-instructions.md
@@ -313,6 +314,7 @@
 │   │   │   │   │   └── etablissementRecruteur.controller.test.ts.snap
 │   │   │   │   ├── _private
 │   │   │   │   │   ├── admin
+│   │   │   │   │   │   ├── processor.admin.routes.test.ts
 │   │   │   │   │   │   └── processor.admin.routes.ts
 │   │   │   │   │   ├── geo.private.controller.ts
 │   │   │   │   │   └── seo.private.controller.ts
@@ -741,7 +743,8 @@
 │   │   │   ├── 20260605185522-normalize-offer-origin-jobs-partners.ts
 │   │   │   ├── 20260611143504-restore-jobs-partners-offres-emploi-lba.ts
 │   │   │   ├── 20260612162005-fill-empty-level-lba-jobs.ts
-│   │   │   └── 20260618102545-cancel-jobs-partners-with-invalid-computed.ts
+│   │   │   ├── 20260618102545-cancel-jobs-partners-with-invalid-computed.ts
+│   │   │   └── 20260626000000-update-diploma-labels-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -1468,7 +1471,8 @@
 │   │   │       │   │   ├── processeur
 │   │   │       │   │   │   ├── ProcesseurPage.tsx
 │   │   │       │   │   │   ├── components
-│   │   │       │   │   │   │   └── ProcessorStatusProvider.tsx
+│   │   │       │   │   │   │   ├── ProcessorStatusProvider.tsx
+│   │   │       │   │   │   │   └── ProcessorTriggerButtons.tsx
 │   │   │       │   │   │   ├── cron
 │   │   │       │   │   │   │   └── [name]
 │   │   │       │   │   │   │       ├── ProcesseurCronPage.tsx
@@ -1643,7 +1647,12 @@
 │   │   │   ├── _components
 │   │   │   │   ├── AlgoHome.tsx
 │   │   │   │   ├── AmeliorerLBA.tsx
+│   │   │   │   ├── AppreciationUsagers.tsx
 │   │   │   │   ├── CalculRemuneration.tsx
+│   │   │   │   ├── GrandsGroupes.tsx
+│   │   │   │   ├── GrandsGroupesCandidat.tsx
+│   │   │   │   ├── GrandsGroupesLink.tsx
+│   │   │   │   ├── GrandsGroupesRecruteur.tsx
 │   │   │   │   ├── HomeCircleImageDecoration.tsx
 │   │   │   │   ├── HomeRechercheForm.tsx
 │   │   │   │   ├── HowTo.tsx
@@ -2137,7 +2146,23 @@
 │   │   │   ├── head_with_bulb.svg
 │   │   │   ├── home_hero_background.svg
 │   │   │   ├── home_pics
+│   │   │   │   ├── avatars
+│   │   │   │   │   ├── avatar_femme_01.png
+│   │   │   │   │   ├── avatar_femme_02.png
+│   │   │   │   │   ├── avatar_homme_01.png
+│   │   │   │   │   ├── cfa_01.png
+│   │   │   │   │   ├── cfa_02.png
+│   │   │   │   │   ├── cfa_03.png
+│   │   │   │   │   ├── recruteur_01.png
+│   │   │   │   │   ├── recruteur_02.png
+│   │   │   │   │   └── recruteur_03.png
 │   │   │   │   ├── facilitezRDVA.svg
+│   │   │   │   ├── icons
+│   │   │   │   │   ├── envelop.svg
+│   │   │   │   │   ├── file_eyes.svg
+│   │   │   │   │   ├── files.svg
+│   │   │   │   │   ├── malette.svg
+│   │   │   │   │   └── ordi.svg
 │   │   │   │   ├── illu-calcul-remuneration.svg
 │   │   │   │   ├── illu-candidatures.svg
 │   │   │   │   ├── illu-candidatures@2x.png
@@ -2156,6 +2181,21 @@
 │   │   │   │   ├── illu-support@2x.png
 │   │   │   │   ├── illu-votrebesoin.svg
 │   │   │   │   ├── illu-votrebesoin@2x.png
+│   │   │   │   ├── logos_partenaires
+│   │   │   │   │   ├── auchan.svg
+│   │   │   │   │   ├── daher.svg
+│   │   │   │   │   ├── decathlon.svg
+│   │   │   │   │   ├── engie.svg
+│   │   │   │   │   ├── ep.svg
+│   │   │   │   │   ├── ft.svg
+│   │   │   │   │   ├── hw.svg
+│   │   │   │   │   ├── institut-pasteur.svg
+│   │   │   │   │   ├── job-teaser.svg
+│   │   │   │   │   ├── la-poste.svg
+│   │   │   │   │   ├── loreal.svg
+│   │   │   │   │   ├── pass.svg
+│   │   │   │   │   ├── talentplug.svg
+│   │   │   │   │   └── veritone.svg
 │   │   │   │   ├── mail-in-clouds.svg
 │   │   │   │   └── parcoursup.svg
 │   │   │   ├── homereview.svg
@@ -2259,7 +2299,8 @@
 │   │   │   │   ├── illu-lba.svg
 │   │   │   │   ├── illu-liste-offres.svg
 │   │   │   │   ├── illu-plateforme-jeunes.svg
-│   │   │   │   └── illu-rdv.svg
+│   │   │   │   ├── illu-rdv.svg
+│   │   │   │   └── illu-soliciter-cfa.svg
 │   │   │   ├── je-suis-recruteur
 │   │   │   │   ├── illu-lba.svg
 │   │   │   │   ├── illu-marche-cache.svg
@@ -2298,8 +2339,22 @@
 │   │   │   │   │   └── parcoursup.svg
 │   │   │   │   ├── partenaire-1j1s.webp
 │   │   │   │   ├── partenaire-affelnet.webp
+│   │   │   │   ├── partenaire-apec.webp
+│   │   │   │   ├── partenaire-auchan.webp
+│   │   │   │   ├── partenaire-bpce.webp
+│   │   │   │   ├── partenaire-daher.webp
+│   │   │   │   ├── partenaire-decathlon.webp
 │   │   │   │   ├── partenaire-diagoriente.webp
+│   │   │   │   ├── partenaire-edf.webp
+│   │   │   │   ├── partenaire-enedis.webp
+│   │   │   │   ├── partenaire-engie.webp
 │   │   │   │   ├── partenaire-france-travail.webp
+│   │   │   │   ├── partenaire-hellowork.webp
+│   │   │   │   ├── partenaire-institut-pasteur.webp
+│   │   │   │   ├── partenaire-laposte.webp
+│   │   │   │   ├── partenaire-leboncoin.webp
+│   │   │   │   ├── partenaire-loreal.webp
+│   │   │   │   ├── partenaire-meteojob.webp
 │   │   │   │   ├── partenaire-onisep.webp
 │   │   │   │   ├── partenaire-opco-2i.webp
 │   │   │   │   ├── partenaire-opco-afdas.webp
@@ -2313,8 +2368,14 @@
 │   │   │   │   ├── partenaire-opco-sante.webp
 │   │   │   │   ├── partenaire-opco-uniformation.webp
 │   │   │   │   ├── partenaire-parcoursup.webp
+│   │   │   │   ├── partenaire-pass.webp
 │   │   │   │   ├── partenaire-rco.svg
-│   │   │   │   └── partenaire-tdb.webp
+│   │   │   │   ├── partenaire-rh-alternance.webp
+│   │   │   │   ├── partenaire-taleez.webp
+│   │   │   │   ├── partenaire-talentplug.webp
+│   │   │   │   ├── partenaire-tdb.webp
+│   │   │   │   ├── partenaire-toulouse-metropole.webp
+│   │   │   │   └── partenaire-veritone.webp
 │   │   │   ├── lostCat.svg
 │   │   │   ├── marianne.svg
 │   │   │   ├── paperplane.svg
@@ -2508,4 +2569,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-483 directories, 2595 files
+486 directories, 2653 files

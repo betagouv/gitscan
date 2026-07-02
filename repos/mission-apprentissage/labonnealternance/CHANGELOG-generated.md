@@ -1,55 +1,40 @@
-## Changelog : labonnealternance (30 derniers jours, au 26 juin 2026)
+## Changelog : labonnealternance (30 derniers jours, au 2026-07-01)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'intégration avec France Travail, notamment pour le flux d'offres d'alternance, ainsi que sur des corrections de bugs et des optimisations de l'expérience utilisateur. Des améliorations ont également été apportées à la gestion des offres, à la géolocalisation et à l'infrastructure.
+Ce mois-ci, les évolutions de la plateforme se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur les pages d'accueil et les formulaires, ainsi que sur l'intégration et le traitement des offres d'alternance provenant de France Travail et d'autres partenaires. Des corrections de bugs et des optimisations techniques ont également été apportées pour assurer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Transmission des offres confiées en flux dédié à France Travail. [#4831](https://github.com/mission-apprentissage/labonnealternance/issues/4831)
-- Affichage des informations emploi et formation pour les offres de GEIQ. [#4801](https://github.com/mission-apprentissage/labonnealternance/issues/4801)
-- Ajout de Maazi à la white list pour une meilleure classification des offres. [#4863](https://github.com/mission-apprentissage/labonnealternance/issues/4863)
-- Possibilité pour les recruteurs d'indiquer s'ils souhaitent être accompagnés par un conseiller France Travail. [#4714](https://github.com/mission-apprentissage/labonnealternance/issues/4714)
-- Ajout du champ "date de début de contrat" lors du dépôt d'une offre. [#4768](https://github.com/mission-apprentissage/labonnealternance/issues/4768)
-- Amélioration UX du formulaire de prise de RDV CFA (Centre de Formation d'Apprentis). [#4773](https://github.com/mission-apprentissage/labonnealternance/issues/4773)
-- Renommage du libellé du filtre "candidatures spontanées" en "entreprise à contacter". [#4797](https://github.com/mission-apprentissage/labonnealternance/issues/4797)
-- Application du seuil de 80 candidatures aux offres partenaires en smart apply. [#4799](https://github.com/mission-apprentissage/labonnealternance/issues/4799)
-- Ajout d'un garde-fou pour éviter un double envoi de données. [#4728](https://github.com/mission-apprentissage/labonnealternance/issues/4728)
-- Mise à jour du SMIC au 1er juin 2026 dans le simulateur alternant. [#4724](https://github.com/mission-apprentissage/labonnealternance/issues/4724)
+- **Page d'accueil et Landing Pages :** Mise à jour des visuels et des contenus pour les candidats, les recruteurs et les CFA [#4824](https://github.com/mission-apprentissage/labonnealternance/issues/4824).
+- **Intégration France Travail :** Amélioration de l'export des offres d'alternance confiées par France Travail, avec gestion des filtres d'expiration, de plafond et des correspondants [#4882](https://github.com/mission-apprentissage/labonnealternance/issues/4882).
+- **GEIQ :** Affichage des informations emploi et formation pour les offres proposées par les GEIQ [#4801](https://github.com/mission-apprentissage/labonnealternance/issues/4801).
+- **CFA :** Amélioration de l'UX du formulaire de prise de rendez-vous avec les CFA [#4773](https://github.com/mission-apprentissage/labonnealternance/issues/4773).
+- **Candidatures :** Ajout d'un focus sur le premier champ en erreur lors de la soumission du formulaire de candidature [#4771](https://github.com/mission-apprentissage/labonnealternance/issues/4771).
+- **Dépôt d'offre :** Ajout de la possibilité de spécifier la date de début de contrat lors du dépôt d'une offre [#4768](https://github.com/mission-apprentissage/labonnealternance/issues/4768).
+- **Filtres :** Renommage du filtre "candidatures spontanées" en "entreprise à contacter" [#4797](https://github.com/mission-apprentissage/labonnealternance/issues/4797).
+- **Intention Recruteurs :** Refonte de l'interface utilisateur pour la gestion des intentions des recruteurs [#4866](https://github.com/mission-apprentissage/labonnealternance/issues/4866).
+- **Niveaux d'étude :** Mise à jour du wording des niveaux d'étude [#4869](https://github.com/mission-apprentissage/labonnealternance/issues/4869).
 
 ### Évolutions techniques
-- Migration des serveurs lba-production, lba-preview et lba-recette. [#4837](https://github.com/mission-apprentissage/labonnealternance/issues/4837), [#4829](https://github.com/mission-apprentissage/labonnealternance/issues/4829), [#4828](https://github.com/mission-apprentissage/labonnealternance/issues/4828)
-- Généralisation de la règle binary des PNG dans le fichier `.gitattributes`. [#4805](https://github.com/mission-apprentissage/labonnealternance/issues/4805)
-- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories`. [#4825](https://github.com/mission-apprentissage/labonnealternance/issues/4825)
-- Mise à jour de Next.js. [#4691](https://github.com/mission-apprentissage/labonnealternance/issues/4691)
-- Suppression de Swagger et de ses dépendances de l'API v1. [#4717](https://github.com/mission-apprentissage/labonnealternance/issues/4717)
-- Unification du logging sur Pino avec corrélation reqId et enrichissement des logs HTTP. [#4800](https://github.com/mission-apprentissage/labonnealternance/issues/4800)
+- **Migration Serveurs :** Migration des serveurs lba-production, lba-preview et lba-recette [#4837](https://github.com/mission-apprentissage/labonnealternance/issues/4837), [#4829](https://github.com/mission-apprentissage/labonnealternance/issues/4829), [#4828](https://github.com/mission-apprentissage/labonnealternance/issues/4828).
+- **Logging :** Unification du logging avec Pino, incluant la corrélation reqId et l'enrichissement des logs HTTP [#4800](https://github.com/mission-apprentissage/labonnealternance/issues/4800).
+- **Sentry :** Désactivation temporaire de Sentry côté serveur pendant la migration [#4871](https://github.com/mission-apprentissage/labonnealternance/issues/4871).
+- **Jobs :** Déplacement de `processMissingRomeAndImportToJobPartners` vers un job manuel [#4827](https://github.com/mission-apprentissage/labonnealternance/issues/4827).
+- **Architecture :** Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` [#4825](https://github.com/mission-apprentissage/labonnealternance/issues/4825).
+- **Configuration :** Ajout de Maazi à la white list [#4863](https://github.com/mission-apprentissage/labonnealternance/issues/4863).
+- **Standardisation :** Standardisation du champ `offer_origin` [#4789](https://github.com/mission-apprentissage/labonnealternance/issues/4789).
 
 ### Autres changements
-- Correction de l'import Décathlon défaillant. [#4836](https://github.com/mission-apprentissage/labonnealternance/issues/4836)
-- Ajout d'une migration de nettoyage pour corriger un problème lié à lba-4821. [#4834](https://github.com/mission-apprentissage/labonnealternance/issues/4834)
-- Correction d'un dépassement BSON lors de la détection des doublons. [#4839](https://github.com/mission-apprentissage/labonnealternance/issues/4839)
-- Correction de la détection des doublons qui était en erreur. [#4833](https://github.com/mission-apprentissage/labonnealternance/issues/4833)
-- Standardisation du champ `offer_origin`. [#4789](https://github.com/mission-apprentissage/labonnealternance/issues/4789)
-- Ajout de l'entrée générique `BTP CFA` à la liste des CFA bloqués. [#4798](https://github.com/mission-apprentissage/labonnealternance/issues/4798)
-- Correction du mapper Kelio pour gérer les `cover_url` nullables et valider le code postal. [#4803](https://github.com/mission-apprentissage/labonnealternance/issues/4803)
-- Suppression de la fonte Marianne Medium inutilisée. [#4762](https://github.com/mission-apprentissage/labonnealternance/issues/4762)
-- Génération d'un fichier `llms.txt` à la racine du site. [#4765](https://github.com/mission-apprentissage/labonnealternance/issues/4765)
-- Correction d'un bug de maj de la description de l'offre. [#4804](https://github.com/mission-apprentissage/labonnealternance/issues/4804)
-- Suppression du rate-limit par IP sur les routes consommées via api-apprentissage. [#4810](https://github.com/mission-apprentissage/labonnealternance/issues/4810)
-- Restauration des offres `offres_emploi_lba` désactivées par erreur. [#4813](https://github.com/mission-apprentissage/labonnealternance/issues/4813)
-- Mise à jour de l'accès BAL. [#4817](https://github.com/mission-apprentissage/labonnealternance/issues/4817)
-- Suppression de la collection `eligible_trainings_for_appointments_histories` et refactoring du job de nettoyage. [#4725](https://github.com/mission-apprentissage/labonnealternance/issues/4725)
-- Modernisation des templates d'issues et migration des références Jira vers GitHub Issues. [#4698](https://github.com/mission-apprentissage/labonnealternance/issues/4698)
-- Correction du conflit `_id` lors de l'upsert des recruteurs lba. [#4708](https://github.com/mission-apprentissage/labonnealternance/issues/4708)
-- Fallback géolocalisation france travail sur le chef-lieu du département. [#4709](https://github.com/mission-apprentissage/labonnealternance/issues/4709)
-- Correction de l'envoi des emails de RDV bloqués. [#580](https://github.com/mission-apprentissage/labonnealternance/issues/580)
-- Correction du problème de graisse de font Marianne. [#4720](https://github.com/mission-apprentissage/labonnealternance/issues/4720)
-- Correction d'un bug de classification cfa: suppression du passage de l'id. [#4779](https://github.com/mission-apprentissage/labonnealternance/issues/4779)
-- Correction d'un hardbounce Brevo qui ne retirait pas l'email des recruteurs_lba. [#4734](https://github.com/mission-apprentissage/labonnealternance/issues/4734)
-- Correction de la validation des numéros d'issues pour éviter les cascades d'erreurs GraphQL. [#4732](https://github.com/mission-apprentissage/labonnealternance/issues/4732)
-- Configurer le merge driver sops pour les fichiers d'environnement chiffrés. [#4736](https://github.com/mission-apprentissage/labonnealternance/issues/4736)
-- Correction de la signature de `onSuccessFunction` (pluginConfig, context). [#4764](https://github.com/mission-apprentissage/labonnealternance/issues/4764)
-- Correction de `onSuccessFunction` qui devait être une fonction, pas un chemin. [#4763](https://github.com/mission-apprentissage/labonnealternance/issues/4763)
-- Suppression des scripts Biome redondants et mise à jour de la documentation. [#4761](https://github.com/mission-apprentissage/labonnealternance/issues/4761)
-- Amélioration des notifications Slack MEP et release (Block Kit). [#4751](https://github.com/mission-apprentissage/labonnealternance/issues/4751)
-- Ajout de business error expired pour tous les mappers. [#4740](https://github.com/mission-apprentissage/labonnealternance/issues/4740)
-- Correction d'un bug d'affichage du titre 1j1s sur la page recruteur. [#4744](https://github.com/mission-apprentissage/labonnealternance/issues/4744)
+- **Documentation :** Mise à jour du texte de la page Espace développeur [#4873](https://github.com/mission-apprentissage/labonnealternance/issues/4873).
+- **Git Attributes :** Généralisation de la règle binary des PNG dans `.gitattributes` [#4805](https://github.com/mission-apprentissage/labonnealternance/issues/4805).
+- **Epic :** Renommage de l'epic en epic.yml et création d'un template pour les epics GitHub [#4886](https://github.com/mission-apprentissage/labonnealternance/issues/4886), [#4878](https://github.com/mission-apprentissage/labonnealternance/issues/4878).
+- **SEO :** Ajout de la génération d'un fichier `llms.txt` à la racine du site [#4765](https://github.com/mission-apprentissage/labonnealternance/issues/4765) et implémentation de hubs SEO/GEO pour l'alternance [#3222](https://github.com/mission-apprentissage/labonnealternance/issues/3222).
+- **Correction :** Correction d'un problème de calibration du passage des headers en sticky [#4855](https://github.com/mission-apprentissage/labonnealternance/issues/4855).
+- **Correction :** Correction d'une erreur d'hydratation React sur les pages ville [#4884](https://github.com/mission-apprentissage/labonnealternance/issues/4884).
+- **Correction :** Correction de l'import Décathlon défaillant [#4836](https://github.com/mission-apprentissage/labonnealternance/issues/4836).
+- **Correction :** Correction d'une erreur de détection de doublons [#4833](https://github.com/mission-apprentissage/labonnealternance/issues/4833).
+- **Correction :** Correction du mapper Kelio pour gérer les URLs de couverture nullables et valider le code postal [#4803](https://github.com/mission-apprentissage/labonnealternance/issues/4803).
+- **Correction :** Correction d'un bug de mise à jour de la description de l'offre [#4804](https://github.com/mission-apprentissage/labonnealternance/issues/4804).
+- **Correction :** Correction de la classification erronée des offres CFA [#4784](https://github.com/mission-apprentissage/labonnealternance/issues/4784).
+- **Correction :** Correction d'un bug d'affichage du titre 1j1s sur la page recruteur [#4744](https://github.com/mission-apprentissage/labonnealternance/issues/4744).
+- **Correction :** Correction d'un problème lié à l'annulation des offres absentes du flux [#4814](https://github.com/mission-apprentissage/labonnealternance/issues/4814).
+- **Correction :** Correction d'un problème lié à l'envoi des emails de rendez-vous [#4826](https://github.com/mission-apprentissage/labonnealternance/issues/4826).
