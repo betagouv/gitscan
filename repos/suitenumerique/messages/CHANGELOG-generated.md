@@ -1,41 +1,38 @@
-## Changelog : messages (30 derniers jours, au 24 juin 2026)
+## Changelog : messages (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'expérience utilisateur, notamment dans la composition des emails, la gestion des brouillons et la navigation entre les fils de discussion. Des corrections de bugs et des améliorations de sécurité ont également été implémentées, ainsi qu'une refonte technique majeure avec le passage à Vite et TanStack Router pour le frontend.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec des corrections de bugs et des améliorations de l'interface, notamment dans la composition des messages et la navigation entre les fils de discussion. Des efforts importants ont été faits pour renforcer la sécurité et la robustesse du système, en particulier au niveau de la gestion des emails entrants et sortants. Une refonte technique majeure a également eu lieu, remplaçant Next.js par Vite et TanStack Router pour une meilleure performance et maintenabilité.
 
 ### Évolutions fonctionnelles
-- Possibilité de supprimer définitivement les brouillons et amélioration de l'édition des brouillons.
-- Création de boîtes de réception sans mot de passe possible lorsque la synchronisation d'identité est désactivée [#707].
-- Regroupement des paramètres de la boîte de réception dans une boîte de dialogue.
-- Traduction des espaces réservés des modèles et ajout de la variable intégrée `user_name`.
-- Amélioration de la navigation entre les fils de discussion et de la sélection multiple [#708].
-- Affinement du menu déroulant des boîtes de réception [#705].
-- Nouvelle illustration pour la page d'accueil [#702].
-- Ajout de l'en-tête `To` aux emails sortants qui en étaient dépourvus [#712].
-- Correction d'un problème d'affichage des événements récurrents avec des exceptions.
-- Correction d'un problème de saut de ligne dans le compositeur sur Chrome Android [#725].
+- Amélioration de l'édition et de la suppression des brouillons de messages.
+- Possibilité de créer une boîte de réception sans synchronisation d'identité.
+- Amélioration de la navigation et de la sélection dans les fils de discussion, notamment pour l'accessibilité.
+- Amélioration du menu déroulant des boîtes de réception.
+- Regroupement des paramètres des boîtes de réception dans un dialogue dédié.
+- Traduction des espaces réservés des modèles et ajout de la variable `user_name`.
+- Ajout d'un indicateur d'état de l'auto-réponse.
+- Correction d'un problème d'affichage des sauts de ligne dans le composeur sur Android Chrome.
+- Correction d'un problème de sélection des éléments dans les fils de discussion.
+- Ajout de l'en-tête `To` aux emails sortants qui en étaient dépourvus.
+- Correction de l'ordre et de la sélection par défaut du calendrier lors de la réponse aux invitations.
 
 ### Évolutions techniques
-- Refonte du frontend : remplacement de Next.js par Vite et TanStack Router [#675].
-- Déplacement de l'analyseur et du compositeur d'emails vers la nouvelle bibliothèque `jmap-email` [#700].
+- Refonte de l'architecture frontend : remplacement de Next.js par Vite et TanStack Router [#675].
+- Migration du parser et du compositeur d'emails vers la nouvelle librairie `jmap-email` [#700].
 - Ajout de scripts de publication PyPI pour `jmap-email`.
-- Utilisation du composant `LaGaufreV2`.
-- Amélioration de la gestion des pièces jointes dans le compositeur.
-- Mise à jour de la bibliothèque `dompurify`.
-- Mise à jour de `django-lasuite` à la version 0.0.27.
-- Mise à jour de Keycloak à la version 26.6.3 [#718].
+- Mise à jour de la librairie `dompurify`.
+- Mise à jour de la librairie `django-lasuite`.
+- Renforcement de la sécurité de la connexion SMTP et de la configuration des proxys.
+- Ajout de mesures de défense en profondeur.
+- Amélioration de la robustesse de l'analyse des emails entrants.
+- Correction d'une course aux permissions de socket Milter au démarrage.
 
 ### Autres changements
-- Ajout de rapports d'état de l'auto-vérification à Sentry [#694].
-- Renforcement de la sécurité de la connexion SMTP et de la configuration des proxys.
-- Renforcement de l'analyse des emails entrants [#695].
-- Correction d'un problème de concurrence de permissions de socket milter au démarrage [#693].
-- Correction d'un problème de détection de mbox comme `text/html` avec certaines versions de libmagic [#696].
-- Correction d'un problème de chargement des certificats TLS opportunistes [#687].
-- Correction d'un problème de persistance du nom de la boîte de réception lorsque le contact est manquant.
-- Correction d'un problème d'ordre et de sélection par défaut du calendrier lors de la confirmation de présence [#699].
-- Correction d'un attribut inutile dans le frontend.
-- Internationalisation des chaînes de caractères manquantes.
-- Amélioration de l'accessibilité de la navigation entre les fils de discussion.
-- Amélioration des paramètres de la boîte de réception.
-- Mise à jour de la liste des préfixes de dossiers d'emails PST.
+- Nouvelle illustration pour la page d'accueil [#702].
+- Ajout de rapports d'état de l'auto-vérification à Sentry.
+- Correction d'un problème d'indentation dans le fichier de configuration Postfix.
+- Mise à jour de la version du thème Keycloak.
+- Mises à jour de Keycloak (26.6.3 -> 26.6.4).
+- Installation de `jmap-email` depuis PyPI.
+- Correction d'un langage codé en dur qui pouvait déclencher une traduction automatique.
+- Publication de la version 0.8.0 [#715].
