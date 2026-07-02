@@ -177,6 +177,7 @@
 │   ├── app
 │   │   ├── .env.sample
 │   │   ├── .storybook
+│   │   │   ├── README.md
 │   │   │   ├── main.ts
 │   │   │   ├── preview.css
 │   │   │   └── preview.tsx
@@ -3262,6 +3263,11 @@
 │   │   │   │   │   │   ├── build-liens-csv.ts
 │   │   │   │   │   │   ├── prepare-archive-entries.spec.ts
 │   │   │   │   │   │   └── prepare-archive-entries.ts
+│   │   │   │   │   ├── delete-preuves-archive
+│   │   │   │   │   │   ├── delete-preuves-archive.service.spec.ts
+│   │   │   │   │   │   ├── delete-preuves-archive.service.ts
+│   │   │   │   │   │   ├── select-archives-to-delete.spec.ts
+│   │   │   │   │   │   └── select-archives-to-delete.ts
 │   │   │   │   │   ├── generate-preuves-archive
 │   │   │   │   │   │   ├── generate-archive-folder-arborescence.spec.ts
 │   │   │   │   │   │   ├── generate-archive-folder-arborescence.ts
@@ -3288,6 +3294,7 @@
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   └── audit-preuves-archive.table.ts
 │   │   │   │   │   ├── preuves-archive.constants.ts
+│   │   │   │   │   ├── preuves-archive.delete.e2e-spec.ts
 │   │   │   │   │   ├── preuves-archive.errors.ts
 │   │   │   │   │   ├── preuves-archive.full-pipeline.e2e-spec.ts
 │   │   │   │   │   ├── preuves-archive.queue.ts
@@ -4467,6 +4474,7 @@
 │   │   │   │   ├── bucket@v4.36.0.sql
 │   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
+│   │   │   │   ├── bucket_rls_super_admin_write.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5007,6 +5015,7 @@
 │   │   │   │   ├── bucket@v4.36.0.sql
 │   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
+│   │   │   │   ├── bucket_rls_super_admin_write.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5549,6 +5558,7 @@
 │   │       │   ├── bucket@v4.36.0.sql
 │   │       │   ├── bucket_rls_ademe_read.sql
 │   │       │   ├── bucket_rls_strict_read.sql
+│   │       │   ├── bucket_rls_super_admin_write.sql
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
 │   │       │   ├── collectivite@v2.8.0.sql
@@ -6061,6 +6071,7 @@
 │   └── tests
 │       ├── collectivite
 │       │   ├── bucket_rls.sql
+│       │   ├── bucket_rls_super_admin.sql
 │       │   ├── collectivite_test.sql
 │       │   └── identite.sql
 │       ├── evaluation
@@ -6920,6 +6931,7 @@
 │       │   │   │   ├── FieldMessage.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── FloatingPanel
+│       │   │   │   ├── FloatingPanel.behavior.test.tsx
 │       │   │   │   ├── FloatingPanel.stories.tsx
 │       │   │   │   ├── FloatingPanel.tsx
 │       │   │   │   └── index.ts
@@ -7382,4 +7394,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1278 directories, 6349 files
+1279 directories, 6360 files
