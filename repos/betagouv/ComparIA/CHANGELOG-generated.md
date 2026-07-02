@@ -1,35 +1,29 @@
-## Changelog : ComparIA (30 derniers jours, au 26 juin 2026)
+## Changelog : ComparIA (30 derniers jours, au 29 juin 2026)
 
 ### Résumé
-Ce mois-ci, ComparIA a connu des améliorations significatives en termes de fonctionnalités et de performance. L'ajout de la recherche web intégrée aux comparaisons, l'amélioration de la gestion des modèles (ajout, archivage, informations) et l'optimisation de l'export des données sont les évolutions les plus notables. Des corrections de bugs et des mises à jour de traductions ont également été apportées pour améliorer l'expérience utilisateur.
+Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de fonctionnalités et de performance. L'ajout de la recherche web aux comparaisons, l'amélioration de l'interface utilisateur pour le classement des modèles, et l'optimisation de l'export des données sont les points forts de cette période. Des mises à jour de modèles et de traductions ont également été intégrées.
 
 ### Évolutions fonctionnelles
-- **Recherche web intégrée :** Ajout de la possibilité d'intégrer des résultats de recherche web directement dans les comparaisons, avec un toggle pour activer/désactiver cette fonctionnalité. [#549](https://github.com/betagouv/ComparIA/issues/549)
-- **Nouveaux modèles :** Ajout du modèle GLM 5.2 et MiniMax M3 au catalogue. [#540](https://github.com/betagouv/ComparIA/issues/540), [#531](https://github.com/betagouv/ComparIA/issues/531)
-- **Gestion des modèles :** Archivage des modèles GPT 5.4, GLM 5 et MiniMax M2.5.
-- **Amélioration de l'interface utilisateur :**
-    - Correction de bugs d'affichage et de comportement sur mobile. [#545](https://github.com/betagouv/ComparIA/issues/545)
-    - Amélioration de la réactivité de l'arène.
-    - Correction de l'état désactivé du sélecteur de modèle.
-    - Ajout d'un contrôle de style sur le classement (leaderboard). [#532](https://github.com/betagouv/ComparIA/issues/532)
-- **Gestion des datasets :** Simplification de la page des datasets pour n'afficher qu'un seul dataset. [#517](https://github.com/betagouv/ComparIA/issues/517)
-- **Gestion des utilisateurs :** Ajout d'informations sur les organisations, licences et LLMs. [#512](https://github.com/betagouv/ComparIA/issues/512)
+- Ajout de la possibilité d'intégrer des résultats de recherche web dans les comparaisons, avec un toggle pour activer/désactiver cette fonctionnalité. [#549](https://github.com/betagouv/ComparIA/pull/549)
+- Implémentation d'un contrôle de style sur le classement des modèles, permettant de modifier l'affichage. [#532](https://github.com/betagouv/ComparIA/pull/532)
+- Ajout du modèle GLM 5.2 au catalogue. [#540](https://github.com/betagouv/ComparIA/pull/540)
+- Ajout du modèle MiniMax M3 au catalogue. [#531](https://github.com/betagouv/ComparIA/pull/531)
+- Amélioration de la gestion des modèles Grok : désactivation et archivage des comparaisons associées. [#512](https://github.com/betagouv/ComparIA/pull/512)
+- Ajout de nouvelles informations (db_id) aux licences, organisations et LLMs. [#517](https://github.com/betagouv/ComparIA/pull/517)
 
 ### Évolutions techniques
-- **Performance :** Optimisation de l'export des datasets pour réduire la consommation de mémoire et améliorer la vitesse. [#516](https://github.com/betagouv/ComparIA/issues/516)
-- **Base de données :**
-    - Ajout de migrations pour gérer les nouvelles fonctionnalités et les corrections de bugs.
-    - Correction de problèmes liés aux migrations et à la gestion des données archivées.
-- **Cache :** Implémentation d'un cache pour les résultats de recherche web.
-- **Sécurité :**
-    - Mise en place d'un "guardrail" de sécurité de contenu pour les prompts utilisateurs. [#542](https://github.com/betagouv/ComparIA/issues/542)
-    - Correction de vulnérabilités potentielles liées à la gestion des jetons Altcha. [#463](https://github.com/betagouv/ComparIA/issues/463)
-- **Logging :** Utilisation de LokiQueueHandler pour éviter les blocages lors de l'envoi de logs.
-- **Dépendances :** Mises à jour de certaines dépendances.
+- Optimisation de l'export des données pour améliorer les performances, notamment en utilisant un streaming mémoire limité et en évitant la concaténation répétée de dataframes. [#516](https://github.com/betagouv/ComparIA/pull/516)
+- Refactorisation du code pour améliorer la réactivité de l'interface utilisateur dans l'arène. [#545](https://github.com/betagouv/ComparIA/pull/545)
+- Amélioration de la gestion du cache pour les résultats de recherche web.
+- Mise à jour des migrations de la base de données pour une meilleure gestion des données archivées et des comparaisons.
+- Correction de bugs liés à la validation des IDs des LLM et au rafraîchissement des tokens Altcha. [#391](https://github.com/betagouv/ComparIA/pull/391), [#463](https://github.com/betagouv/ComparIA/pull/463)
+- Amélioration de la gestion des erreurs et des logs, notamment pour la communication avec Loki.
+- Mise à jour des dépendances npm et pip.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation et du fichier README.
-- **Traductions :** Mise à jour des traductions dans plusieurs langues (italien, espagnol, estonien, suédois, lituanien, danois, anglais, etc.).
-- **Nettoyage de code :** Suppression de code inutile et refactoring de certaines parties du code.
-- **Configuration :** Ajout de la variable d'environnement `LINKUP_API_KEY` pour la configuration de l'API Linkup.
-- **Tests :** Ajout et mise à jour de tests unitaires et d'intégration.
+- Mise à jour des traductions pour l'italien, le norvégien bokmål, l'espagnol, l'estonien, le suédois, le lituanien, le danois et l'anglais.
+- Corrections de bugs mineurs dans l'interface utilisateur (marges, états désactivés des sélecteurs de modèles).
+- Amélioration de la documentation et des tests.
+- Corrections de problèmes liés à la sélection de la locale et au bug de l'affichage en anglais.
+- Ajout de traductions en danois pour MiniMax M3.
+- Correction de bugs liés à l'exclusion des cohortes dans l'export des données.
