@@ -1,18 +1,20 @@
-## Changelog : mission-transition-ecologique-back (30 derniers jours, au 27 juin 2026)
+## Changelog : mission-transition-ecologique-back (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la qualité des données, notamment via la persistance des programmes publiés dans un espace de stockage "canonique". Des optimisations de la chaîne CI/CD ont également été apportées pour accélérer les tests et les déploiements. Enfin, des améliorations de l'interface utilisateur ont été initiées avec l'intégration d'éléments de design similaires à DSFR.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la gestion des données "canoniques" (données de référence) des programmes de transition écologique, avec notamment la persistance de ces données et la création de packages pour faciliter leur utilisation. Des optimisations de la chaîne CI/CD ont également été apportées pour accélérer les tests et les déploiements. Enfin, des fonctionnalités liées à l'export de données et à l'intégration de l'IA ont été ajoutées.
 
 ### Évolutions fonctionnelles
-- Implémentation d'un stockage "canonique" pour les programmes publiés, assurant une meilleure qualité des données. [#33](https://github.com/betagouv/mission-transition-ecologique-back/issues/33)
-- Création d'un package pour les adaptateurs de format et réexportation de la TEE pour confirmer la qualité des données au format canonique. [#48](https://github.com/betagouv/mission-transition-ecologique-back/issues/48)
-- Début de l'intégration d'éléments de design de type DSFR pour améliorer l'interface utilisateur. [#3](https://github.com/betagouv/mission-transition-ecologique-back/issues/3)
+- Ajout de la possibilité d'exporter les données "agir" via l'API, en provenance des données canoniques. [#48](https://github.com/betagouv/mission-transition-ecologique-back/issues/48)
+- Implémentation d'une nouvelle compétence "worktree-init" pour l'IA. [#44](https://github.com/betagouv/mission-transition-ecologique-back/issues/44)
+- Persistance des programmes publiés dans un espace de stockage canonique dédié.
+- Amélioration de l'aspect visuel avec un design type DSFR. [#3](https://github.com/betagouv/mission-transition-ecologique-back/issues/3)
 
 ### Évolutions techniques
-- Parallélisation des jobs CI, et mise en cache de Playwright/Nx et des tests e2e pour accélérer la chaîne de production. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
-- Ajout de tests unitaires, d'intégration et e2e au pipeline CI/CMS. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
-- Correction des spécifications des tests e2e et configuration des commandes de test. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
-- Configuration de Claude Code pour le projet, incluant une règle de commentaire et des hooks. [#41](https://github.com/betagouv/mission-transition-ecologique-back/issues/41)
+- Création de packages pour les adaptateurs de format de données, permettant de garantir la qualité des données au format canonique. [#48](https://github.com/betagouv/mission-transition-ecologique-back/issues/48)
+- Mise en place d'un package "canonical" pour centraliser la gestion des données canoniques. [#33](https://github.com/betagouv/mission-transition-ecologique-back/issues/33)
+- Optimisation de la chaîne CI/CD : parallélisation des jobs, mise en cache de Playwright/Nx et des tests end-to-end pour les builds de production. [#42](https://github.com/betagouv/mission-transition-ecologique-back/issues/42)
+- Correction des spécifications des tests end-to-end et configuration des commandes de test.
+- Configuration du projet avec Claude Code (règles de commentaires et hooks). [#41](https://github.com/betagouv/mission-transition-ecologique-back/issues/41)
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Correction automatique du fichier `tsconfig.lib.json` pour le formatage des adaptateurs (nx).
