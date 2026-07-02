@@ -13,16 +13,22 @@
 │       │       └── tech-summary.md
 │       ├── edit-endpoint
 │       │   └── SKILL.md
-│       └── explorer-api-fournisseur
+│       ├── explorer-api-fournisseur
+│       │   ├── SKILL.md
+│       │   ├── references
+│       │   │   ├── cas-usage-et-fiche.md
+│       │   │   ├── plan-doc-exploration.md
+│       │   │   └── questions-checklist.md
+│       │   └── scripts
+│       │       ├── field_stats.py
+│       │       ├── probe_api.sh
+│       │       └── sample_api.sh
+│       └── hyperping-incidents
 │           ├── SKILL.md
 │           ├── references
-│           │   ├── cas-usage-et-fiche.md
-│           │   ├── plan-doc-exploration.md
-│           │   └── questions-checklist.md
+│           │   └── api_reference.md
 │           └── scripts
-│               ├── field_stats.py
-│               ├── probe_api.sh
-│               └── sample_api.sh
+│               └── hyperping
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
@@ -5569,6 +5575,7 @@
     │   │   ├── abstract_documentation_page.rb
     │   │   ├── abstract_endpoint.rb
     │   │   ├── abstract_faq_entry.rb
+    │   │   ├── abstract_fiche_pratique.rb
     │   │   ├── abstract_provider.rb
     │   │   ├── access_log.rb
     │   │   ├── admin_activity.rb
@@ -5578,6 +5585,7 @@
     │   │   │   ├── documentation_page.rb
     │   │   │   ├── endpoint.rb
     │   │   │   ├── faq_entry.rb
+    │   │   │   ├── fiche_pratique.rb
     │   │   │   └── provider.rb
     │   │   ├── api_particulier
     │   │   │   ├── abstract_endpoint.rb
@@ -5587,6 +5595,7 @@
     │   │   │   ├── endpoint.rb
     │   │   │   ├── endpoint_v2.rb
     │   │   │   ├── faq_entry.rb
+    │   │   │   ├── fiche_pratique.rb
     │   │   │   └── provider.rb
     │   │   ├── api_request_parameter.rb
     │   │   ├── application_record.rb
@@ -5676,6 +5685,11 @@
     │   │   ├── api_particulier
     │   │   │   └── endpoints_store.rb
     │   │   ├── route_scopes_store.rb
+    │   │   ├── simplifions
+    │   │   │   ├── grist_client.rb
+    │   │   │   ├── remote_cache.rb
+    │   │   │   └── sitemap.rb
+    │   │   ├── simplifions_store.rb
     │   │   └── throttle_store.rb
     │   └── views
     │       ├── admin
@@ -5758,7 +5772,6 @@
     │       │   ├── endpoints
     │       │   │   ├── _details.html.erb
     │       │   │   ├── _endpoint.html.erb
-    │       │   │   ├── _use_cases.html.erb
     │       │   │   ├── index.html.erb
     │       │   │   └── show.html.erb
     │       │   ├── faq
@@ -5845,7 +5858,6 @@
     │       │   ├── endpoints
     │       │   │   ├── _details.html.erb
     │       │   │   ├── _endpoint.html.erb
-    │       │   │   ├── _use_cases.html.erb
     │       │   │   ├── index.html.erb
     │       │   │   └── show.html.erb
     │       │   ├── faq
@@ -5984,9 +5996,11 @@
     │           ├── blog_posts
     │           │   └── show.html.erb
     │           ├── cas_usages
-    │           │   ├── _list-api.html.erb
+    │           │   ├── _endpoints_table.html.erb
+    │           │   ├── _internal_use_case_card.html.erb
     │           │   ├── _others.html.erb
-    │           │   └── _show.html.erb
+    │           │   ├── _show.html.erb
+    │           │   └── _simplifions_card.html.erb
     │           ├── changelogs
     │           │   ├── _subscription.html.erb
     │           │   └── index.html.erb
@@ -5998,6 +6012,7 @@
     │           │   └── _header.html.erb
     │           ├── endpoints
     │           │   ├── _property.html.erb
+    │           │   ├── _use_cases.html.erb
     │           │   ├── example.html.erb
     │           │   └── status.html.erb
     │           ├── faq
@@ -6138,17 +6153,17 @@
     │   ├── locales
     │   │   ├── admin_activities.fr.yml
     │   │   ├── api_entreprise
-    │   │   │   ├── cas_usages_entries.fr.yml
     │   │   │   ├── documentation.fr.yml
     │   │   │   ├── endpoint.fr.yml
     │   │   │   ├── faq_entries.fr.yml
+    │   │   │   ├── fiches_pratiques_entries.fr.yml
     │   │   │   ├── fr.yml
     │   │   │   ├── missing_endpoints.fr.yml
     │   │   │   └── providers.fr.yml
     │   │   ├── api_particulier
-    │   │   │   ├── cas_usages_entries.fr.yml
     │   │   │   ├── documentation.fr.yml
     │   │   │   ├── faq_entries.fr.yml
+    │   │   │   ├── fiches_pratiques_entries.fr.yml
     │   │   │   ├── fr.yml
     │   │   │   └── providers.fr.yml
     │   │   ├── errors.fr.yml
@@ -7022,7 +7037,8 @@
     │   │   └── specs_helper.rb
     │   ├── helpers_spec
     │   │   ├── external_url_helper_spec.rb
-    │   │   └── scope_helper_spec.rb
+    │   │   ├── scope_helper_spec.rb
+    │   │   └── tag_color_helper_spec.rb
     │   ├── i18n_spec.rb
     │   ├── integration
     │   │   └── editor
@@ -7102,6 +7118,7 @@
     │   │           ├── reporters_mailer_preview.rb
     │   │           └── token_mailer_preview.rb
     │   ├── models
+    │   │   ├── abstract_fiche_pratique_spec.rb
     │   │   ├── access_log_spec.rb
     │   │   ├── admin_activity_spec.rb
     │   │   ├── api_entreprise
@@ -7177,8 +7194,11 @@
     │   │   └── status_page_spec.rb
     │   ├── spec_helper.rb
     │   ├── stores
-    │   │   └── api_entreprise
-    │   │       └── endpoints_store_spec.rb
+    │   │   ├── api_entreprise
+    │   │   │   └── endpoints_store_spec.rb
+    │   │   ├── simplifions
+    │   │   │   └── sitemap_spec.rb
+    │   │   └── simplifions_store_spec.rb
     │   ├── support
     │   │   ├── hubee_api_mocks.rb
     │   │   ├── insee_sirene_api_mocks.rb
@@ -7231,4 +7251,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1465 directories, 6098 files
+1470 directories, 6113 files
