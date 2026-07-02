@@ -82,7 +82,8 @@
 │           │   │       ├── 2026-05-04_add_last_login_497ff53f5f65.py
 │           │   │       ├── 2026-05-22_rename_waste_qtyvariationratio_bcba8b753777.py
 │           │   │       ├── 2026-06-03_store_component_as_json_21f0598992ca.py
-│           │   │       └── 2026-06-24_resync_db_migrations_06e520393a50.py
+│           │   │       ├── 2026-06-24_resync_db_migrations_06e520393a50.py
+│           │   │       └── 2026-06-30_elec_mj_to_kwh_e93537b074f9.py
 │           │   └── models
 │           │       ├── __init__.py
 │           │       ├── component.py
@@ -204,7 +205,6 @@
 │   │   └── lcia_info.py
 │   ├── common
 │   │   ├── __init__.py
-│   │   ├── base_ingredient.py
 │   │   ├── biosphere.py
 │   │   ├── brightway_patch.py
 │   │   ├── bw
@@ -221,6 +221,7 @@
 │   │   ├── export.py
 │   │   ├── impacts.py
 │   │   ├── import_.py
+│   │   ├── infer_metadata.py
 │   │   ├── score_history
 │   │   │   ├── create_table_score_history.sql
 │   │   │   └── score_history.py
@@ -504,7 +505,6 @@
 │   │   │   ├── lentils-uncooked-non-eu.json
 │   │   │   ├── lettuce-eu.json
 │   │   │   ├── lettuce-fr.json
-│   │   │   ├── linseed-seed.json
 │   │   │   ├── live-beef-for-direct-consumption-consumption-mix.json
 │   │   │   ├── live-broiler-for-direct-consumption-consumption-mix.json
 │   │   │   ├── live-lamb-consumption-mix.json
@@ -670,7 +670,6 @@
 │   │   │   ├── snail-wild.json
 │   │   │   ├── soft-*.json  (16 files)
 │   │   │   ├── soluble-200g-powder-proxy-pack-glass.json
-│   │   │   ├── sorghum-default.json
 │   │   │   ├── sorghum-fr.json
 │   │   │   ├── soup-dehydrated-fr.json
 │   │   │   ├── soup-fr.json
@@ -1060,6 +1059,7 @@
 │   │   │   ├── rice-basmati.json
 │   │   │   ├── rye-whole-default.json
 │   │   │   ├── sesame-seed.json
+│   │   │   ├── sorghum-default.json
 │   │   │   ├── spinach.json
 │   │   │   ├── strawberry.json
 │   │   │   ├── sweet-corn.json
@@ -1141,7 +1141,6 @@
 │   │   │   ├── cassava-organic.json
 │   │   │   ├── celery-organic.json
 │   │   │   ├── cherry-organic.json
-│   │   │   ├── cherry-tomato-organic.json
 │   │   │   ├── chestnut-organic.json
 │   │   │   ├── chicory-root-organic.json
 │   │   │   ├── chinese-cabbage-organic.json
@@ -1151,7 +1150,6 @@
 │   │   │   ├── coriander-organic.json
 │   │   │   ├── corn-organic.json
 │   │   │   ├── cranberry-organic.json
-│   │   │   ├── cucumber-organic.json
 │   │   │   ├── date-organic.json
 │   │   │   ├── durum-wheat-grain-organic-fr.json
 │   │   │   ├── durum-wheat-organic.json
@@ -1163,7 +1161,6 @@
 │   │   │   ├── garden-peas-organic.json
 │   │   │   ├── ginger-organic.json
 │   │   │   ├── grape-black-or-white-organic.json
-│   │   │   ├── grapefruit-organic.json
 │   │   │   ├── guava-organic.json
 │   │   │   ├── hazelnut-organic.json
 │   │   │   ├── hazelnut-unshelled-organic.json
@@ -1190,7 +1187,6 @@
 │   │   │   ├── pear-organic.json
 │   │   │   ├── pineapple-organic.json
 │   │   │   ├── pistachio-organic.json
-│   │   │   ├── plantain-organic.json
 │   │   │   ├── potato-industry-organic.json
 │   │   │   ├── potato-table-organic.json
 │   │   │   ├── quinoa-organic.json
@@ -1256,7 +1252,8 @@
 │   │   └── woolmark
 │   │       └── ei-laine-par-defaut.json
 │   ├── migrations
-│   │   └── 2026-06-03-add-food-type-cereals-legumes.py
+│   │   ├── 2026-06-03-add-food-type-cereals-legumes.py
+│   │   └── 2026-06-22-use-kwh-instead-of-mj.py
 │   ├── models
 │   │   └── process.py
 │   ├── notebooks
@@ -1288,7 +1285,7 @@
 │   │   ├── conftest.py
 │   │   ├── fixtures
 │   │   │   ├── activities.json
-│   │   │   ├── bw-project-forwast-with-patched-ef31.tar.gz
+│   │   │   ├── bw-project-forwast-with-ef31.tar.gz
 │   │   │   ├── food
 │   │   │   │   ├── ecosystemic_factors.csv
 │   │   │   │   ├── feed.json
@@ -1481,6 +1478,8 @@
 │   │   │   ├── Amount.elm
 │   │   │   └── Config.elm
 │   │   ├── Component.elm
+│   │   ├── Country
+│   │   │   └── Code.elm
 │   │   ├── Country.elm
 │   │   ├── Dataset.elm
 │   │   ├── Db.elm
@@ -1707,4 +1706,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-143 directories, 1914 files
+144 directories, 1912 files
