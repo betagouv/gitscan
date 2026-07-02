@@ -36,6 +36,7 @@
 │   ├── 0007-side_window_rework.md
 │   ├── 0008-oidc-proxy-pour-tests-cypress.md
 │   ├── 0009-navigating-in-trips.md
+│   ├── 0010-migration-eslint-vers-oxlint.md
 │   ├── adrs.iml
 │   └── images
 │       └── pno_types_architecture.png
@@ -44,6 +45,7 @@
 │   ├── .env.example
 │   ├── .env.local.defaults
 │   ├── .gitignore
+│   ├── .lintstagedrc.json
 │   ├── .mvn
 │   │   └── wrapper
 │   │       ├── MavenWrapperDownloader.java
@@ -51,6 +53,9 @@
 │   │       └── maven-wrapper.properties
 │   ├── HELP.md
 │   ├── build.gradle.kts
+│   ├── config
+│   │   └── ktlint
+│   │       └── baseline.xml
 │   ├── docs
 │   │   ├── PROD.md
 │   │   ├── README.md
@@ -1633,6 +1638,7 @@
 │   │       │                   │   │   │   ├── DisplayedReportingDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionSuspicionDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionThreatCharacterizationDataOutputUTests.kt
+│   │       │                   │   │   │   ├── MissionActionDataOutputUTests.kt
 │   │       │                   │   │   │   ├── RiskFactorDataOutputUTests.kt
 │   │       │                   │   │   │   ├── Utils.kt
 │   │       │                   │   │   │   └── utils
@@ -1732,14 +1738,15 @@
 │   │           └── static
 │   │               └── index.html
 │   └── tools
-│       └── check-clean-architecture.sh
+│       ├── check-clean-architecture.sh
+│       └── ktlint
 ├── docker-compose.yml
 ├── frontend
 │   ├── .env.example
 │   ├── .env.local.defaults
-│   ├── .eslintrc.cjs
 │   ├── .gitignore
 │   ├── .madgerc
+│   ├── .oxlintrc.json
 │   ├── .prettierignore
 │   ├── .prettierrc
 │   ├── README.md
@@ -1752,7 +1759,8 @@
 │   │   │   └── fileMock.js
 │   │   ├── cypress.config.ts
 │   │   ├── husky
-│   │   │   └── pre-commit
+│   │   │   ├── pre-commit
+│   │   │   └── pre-push
 │   │   ├── jest.config.js
 │   │   ├── jest.fileTransformer.js
 │   │   ├── jest.global.js
@@ -1962,6 +1970,7 @@
 │   │       ├── commands.ts
 │   │       ├── e2e.ts
 │   │       └── test_flaky_test.sh
+│   ├── eslint-typed.config.cjs
 │   ├── frontend.iml
 │   ├── index.html
 │   ├── package-lock.json
@@ -4348,8 +4357,6 @@
 │   │   │   │   └── EmptyCardTable.tsx
 │   │   │   ├── formiks
 │   │   │   │   └── FormikFilterTagBar.tsx
-│   │   │   ├── shared
-│   │   │   │   └── locale_frFR.jsx
 │   │   │   ├── styled.d.ts
 │   │   │   └── theme.ts
 │   │   ├── utils
@@ -5909,4 +5916,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-799 directories, 5426 files
+800 directories, 5432 files
