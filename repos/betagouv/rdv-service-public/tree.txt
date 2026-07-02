@@ -86,7 +86,9 @@
 │   │       │   ├── calendrier.png
 │   │       │   ├── carotte.png
 │   │       │   ├── ecosystem.svg
+│   │       │   ├── gendarmerie.svg
 │   │       │   ├── homepage_hero.svg
+│   │       │   ├── ministere-armee.png
 │   │       │   ├── partenaire-62.jpg
 │   │       │   ├── partenaire-asp.png
 │   │       │   ├── partenaire-chomerac.png
@@ -534,7 +536,6 @@
 │   │       ├── application_agent_config.scss
 │   │       ├── components
 │   │       │   ├── _accordion.scss
-│   │       │   ├── _alert.scss
 │   │       │   ├── _arrow_list.scss
 │   │       │   ├── _autocomplete.scss
 │   │       │   ├── _backgrounds.scss
@@ -550,7 +551,6 @@
 │   │       │   ├── _logo_partenaire.scss
 │   │       │   ├── _motifs.scss
 │   │       │   ├── _nav.scss
-│   │       │   ├── _pagination.scss
 │   │       │   ├── _planning_agents_select.scss
 │   │       │   ├── _rdv_solidarites_instance_name.scss
 │   │       │   ├── _rdv_status.scss
@@ -1025,7 +1025,8 @@
 │       │   │   │   ├── _configuration_principale.html.slim
 │       │   │   │   ├── _location_types.html.slim
 │       │   │   │   ├── _organisations_picker.html.slim
-│       │   │   │   └── _resa_en_ligne.html.slim
+│       │   │   │   ├── _resa_en_ligne.html.slim
+│       │   │   │   └── _sectorisation_field.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   ├── new.html.slim
 │       │   │   └── show.html.slim
@@ -1041,8 +1042,10 @@
 │       │   │   ├── online_booking
 │       │   │   │   └── motifs
 │       │   │   │       ├── _availability_badge.html.slim
+│       │   │   │       ├── _bookable_by_text.html.slim
 │       │   │   │       ├── edit.html.slim
 │       │   │   │       ├── edit_instructions.html.slim
+│       │   │   │       ├── edit_sectorisation.html.slim
 │       │   │   │       └── show.html.slim
 │       │   │   ├── online_bookings
 │       │   │   │   ├── _booking_link.html.slim
@@ -2130,6 +2133,7 @@
 │       └── omniauth-rdv-service-public.gemspec
 ├── log
 │   └── .keep
+├── mise.toml
 ├── package.json
 ├── postcss.config.js
 ├── public
@@ -2174,6 +2178,7 @@
 │   ├── extract_mairie_from_territory.rb
 │   ├── invite_user.rb
 │   ├── merge_two_agents.rb
+│   ├── move_etat_organisations_to_new_domain.rb
 │   ├── move_organisation_to_other_territory.rb
 │   └── split_territory.rb
 ├── spec
@@ -2421,6 +2426,7 @@
 │   │   ├── operators
 │   │   │   └── can_manage_espaces_spec.rb
 │   │   ├── prescripteurs
+│   │   │   ├── booking_from_a_motif_link_spec.rb
 │   │   │   ├── can_add_a_user_to_a_rdv_collectif_spec.rb
 │   │   │   ├── can_cancel_rdv_for_a_user_spec.rb
 │   │   │   ├── can_create_rdv_for_a_user_in_rdv_mairie_spec.rb
@@ -2494,6 +2500,7 @@
 │   │   └── vcr_cassettes
 │   │       ├── caldav
 │   │       │   ├── event_list_weekly_and_daily.yml
+│   │       │   ├── event_without_dtend.yml
 │   │       │   ├── no_event.yml
 │   │       │   ├── sync_with_empty_calendar_data.yml
 │   │       │   ├── sync_with_vtodos.yml
@@ -2955,4 +2962,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-457 directories, 2500 files
+457 directories, 2507 files
