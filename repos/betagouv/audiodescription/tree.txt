@@ -32,6 +32,7 @@
 │   │   └── prod
 │   │       ├── caddy
 │   │       │   └── Caddyfile
+│   │       ├── example.settings.local.php
 │   │       └── php
 │   │           ├── Dockerfile
 │   │           └── php.ini
@@ -43,13 +44,17 @@
 │   │   │       ├── Dockerfile
 │   │   │       └── php.ini
 │   │   └── prod
+│   │       ├── .env.local.dist
 │   │       ├── caddy
 │   │       │   └── Caddyfile
 │   │       └── php
 │   │           ├── Dockerfile
 │   │           └── php.ini
-│   └── postgres
-│       └── init-patrimony-db.sh
+│   ├── postgres
+│   │   └── init-patrimony-db.sh
+│   └── s3
+│       ├── Dockerfile
+│       └── entrypoint.sh
 ├── docs
 │   ├── 1.0-Introduction.md
 │   ├── 2.0-StructureStack.md
@@ -383,11 +388,9 @@
 │   │       ├── field.field.config_pages.movies.field_block_contact_title.yml
 │   │       ├── field.field.config_pages.movies.field_block_platforms_no_result.yml
 │   │       ├── field.field.config_pages.movies.field_block_platforms_title.yml
-│   │       ├── field.field.config_pages.newsletter.field_news_api_key.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_confirm_cta.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_confirm_text.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_confirm_under_cta.yml
-│   │       ├── field.field.config_pages.newsletter.field_news_list.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_unsub_confirm_cta.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_unsub_confirm_text.yml
 │   │       ├── field.field.config_pages.newsletter.field_news_unsub_text.yml
@@ -578,11 +581,9 @@
 │   │       ├── field.storage.config_pages.field_infos_title.yml
 │   │       ├── field.storage.config_pages.field_near_end_movies_title.yml
 │   │       ├── field.storage.config_pages.field_new_movies_title.yml
-│   │       ├── field.storage.config_pages.field_news_api_key.yml
 │   │       ├── field.storage.config_pages.field_news_confirm_cta.yml
 │   │       ├── field.storage.config_pages.field_news_confirm_text.yml
 │   │       ├── field.storage.config_pages.field_news_confirm_under_cta.yml
-│   │       ├── field.storage.config_pages.field_news_list.yml
 │   │       ├── field.storage.config_pages.field_news_unsub_confirm_cta.yml
 │   │       ├── field.storage.config_pages.field_news_unsub_confirm_text.yml
 │   │       ├── field.storage.config_pages.field_news_unsub_text.yml
@@ -846,6 +847,8 @@
 │   │       ├── node.type.movie.yml
 │   │       ├── node.type.page.yml
 │   │       ├── olivero.settings.yml
+│   │       ├── openid_connect.client.proconnect.yml
+│   │       ├── openid_connect.settings.yml
 │   │       ├── paragraphs.paragraphs_type.pg_card.yml
 │   │       ├── paragraphs.paragraphs_type.pg_cards.yml
 │   │       ├── paragraphs.paragraphs_type.pg_cta.yml
@@ -979,156 +982,184 @@
 │       │       └── lit-all.min.js
 │       ├── modules
 │       │   └── custom
-│       │       └── audiodescription
-│       │           ├── audiodescription.info.yml
-│       │           ├── audiodescription.install
-│       │           ├── audiodescription.libraries.yml
-│       │           ├── audiodescription.module
-│       │           ├── audiodescription.routing.yml
-│       │           ├── audiodescription.services.yml
-│       │           ├── files
-│       │           │   ├── full-movies-bck.csv
-│       │           │   ├── full-movies.csv
-│       │           │   └── publics.csv
-│       │           ├── images
-│       │           │   ├── AD.png
-│       │           │   ├── hero.png
-│       │           │   └── information.svg
-│       │           ├── js
-│       │           │   ├── back-button.js
-│       │           │   ├── iframe-responsive.js
-│       │           │   ├── newsletter-form.js
-│       │           │   ├── search-ajax-live-update.js
-│       │           │   └── search-ajax-url-update.js
+│       │       ├── audiodescription
+│       │       │   ├── audiodescription.info.yml
+│       │       │   ├── audiodescription.install
+│       │       │   ├── audiodescription.libraries.yml
+│       │       │   ├── audiodescription.module
+│       │       │   ├── audiodescription.routing.yml
+│       │       │   ├── audiodescription.services.yml
+│       │       │   ├── files
+│       │       │   │   ├── full-movies-bck.csv
+│       │       │   │   ├── full-movies.csv
+│       │       │   │   └── publics.csv
+│       │       │   ├── images
+│       │       │   │   ├── AD.png
+│       │       │   │   ├── hero.png
+│       │       │   │   └── information.svg
+│       │       │   ├── js
+│       │       │   │   ├── back-button.js
+│       │       │   │   ├── iframe-responsive.js
+│       │       │   │   ├── newsletter-form.js
+│       │       │   │   ├── search-ajax-live-update.js
+│       │       │   │   └── search-ajax-url-update.js
+│       │       │   ├── src
+│       │       │   │   ├── AudiodescriptionServiceProvider.php
+│       │       │   │   ├── Breadcrumb
+│       │       │   │   │   ├── CollectionBreadcrumbBuilder.php
+│       │       │   │   │   ├── DirectorBreadcrumbBuilder.php
+│       │       │   │   │   ├── GenreBreadcrumbBuilder.php
+│       │       │   │   │   ├── MovieBreadcrumbBuilder.php
+│       │       │   │   │   ├── NodeBreadcrumbBuilder.php
+│       │       │   │   │   ├── SearchBreadcrumbBuilder.php
+│       │       │   │   │   └── ViewBreadcrumbBuilder.php
+│       │       │   │   ├── Command
+│       │       │   │   │   ├── SearchAjaxResetFiltersCommand.php
+│       │       │   │   │   ├── SearchAjaxUpdateTitleCommand.php
+│       │       │   │   │   └── SearchAjaxUrlUpdateCommand.php
+│       │       │   │   ├── Controller
+│       │       │   │   │   ├── Error410Controller.php
+│       │       │   │   │   ├── ErrorController.php
+│       │       │   │   │   ├── GenresController.php
+│       │       │   │   │   ├── HomepageController.php
+│       │       │   │   │   ├── MovieSearchController.php
+│       │       │   │   │   └── NewsletterController.php
+│       │       │   │   ├── Drush
+│       │       │   │   │   └── Commands
+│       │       │   │   │       ├── ImportAllPatrimonyCommand.php
+│       │       │   │   │       ├── ImportGenresPatrimonyCommand.php
+│       │       │   │   │       ├── ImportMoviesCommand.php
+│       │       │   │   │       ├── ImportPublicsCommand.php
+│       │       │   │   │       ├── ImportUnpublishMoviesCommand.php
+│       │       │   │   │       └── SynchronizeScratCommand.php
+│       │       │   │   ├── EntityManager
+│       │       │   │   │   ├── ActorManager.php
+│       │       │   │   │   ├── DirectorManager.php
+│       │       │   │   │   ├── GenreManager.php
+│       │       │   │   │   ├── MovieManager.php
+│       │       │   │   │   ├── NationalityManager.php
+│       │       │   │   │   ├── OfferManager.php
+│       │       │   │   │   ├── PartnerManager.php
+│       │       │   │   │   └── PublicManager.php
+│       │       │   │   ├── Enum
+│       │       │   │   │   ├── ImportSourceType.php
+│       │       │   │   │   └── Taxonomy.php
+│       │       │   │   ├── EventSubscriber
+│       │       │   │   │   ├── Error410ResponseSubscriber.php
+│       │       │   │   │   └── MovieExceptionSubscriber.php
+│       │       │   │   ├── Form
+│       │       │   │   │   ├── AbstractMovieSearchForm.php
+│       │       │   │   │   ├── FiltersMovieSearchForm.php
+│       │       │   │   │   ├── NewsletterSubscriptionForm.php
+│       │       │   │   │   ├── NewsletterUnsubscriptionForm.php
+│       │       │   │   │   └── SimpleMovieSearchForm.php
+│       │       │   │   ├── Importer
+│       │       │   │   │   ├── Director
+│       │       │   │   │   │   └── DirectorPatrimonyImporter.php
+│       │       │   │   │   ├── Genre
+│       │       │   │   │   │   └── GenrePatrimonyImporter.php
+│       │       │   │   │   ├── ImportException.php
+│       │       │   │   │   ├── Movie
+│       │       │   │   │   │   ├── CncCsvImporter.php
+│       │       │   │   │   │   ├── ImporterFactory.php
+│       │       │   │   │   │   ├── MovieImporterInterface.php
+│       │       │   │   │   │   └── MoviePatrimonyImporter.php
+│       │       │   │   │   ├── Nationality
+│       │       │   │   │   │   └── NationalityPatrimonyImporter.php
+│       │       │   │   │   ├── Offer
+│       │       │   │   │   │   └── OfferPatrimonyImporter.php
+│       │       │   │   │   ├── Partner
+│       │       │   │   │   │   └── PartnerPatrimonyImporter.php
+│       │       │   │   │   └── Public
+│       │       │   │   │       ├── PublicCsvImporter.php
+│       │       │   │   │       └── PublicPatrimonyImporter.php
+│       │       │   │   ├── Manager
+│       │       │   │   │   └── MovieSearchManager.php
+│       │       │   │   ├── Parser
+│       │       │   │   │   └── CsvParser.php
+│       │       │   │   ├── Plugin
+│       │       │   │   │   └── Block
+│       │       │   │   │       ├── BackButtonBlock.php
+│       │       │   │   │       ├── BackToTopBlock.php
+│       │       │   │   │       ├── HeaderSearchFormBlock.php
+│       │       │   │   │       ├── HpCollectionsBlock.php
+│       │       │   │   │       ├── HpFreeMoviesBlock.php
+│       │       │   │   │       ├── HpHighlightedCollectionsBlock.php
+│       │       │   │   │       ├── HpLastMoviesBlock.php
+│       │       │   │   │       ├── HpNearEndFreeMoviesBlock.php
+│       │       │   │   │       ├── HpNewFreeMoviesBlock.php
+│       │       │   │   │       ├── InfoBannerBlock.php
+│       │       │   │   │       ├── SearchBlock.php
+│       │       │   │   │       └── SearchContactBlock.php
+│       │       │   │   ├── Popo
+│       │       │   │   │   └── MovieSearchParametersBag.php
+│       │       │   │   ├── SearchAPI
+│       │       │   │   │   └── Query
+│       │       │   │   │       └── FilterBuilder.php
+│       │       │   │   └── TwigExtension
+│       │       │   │       ├── RemovePrefixNumberTwigFilter.php
+│       │       │   │       └── WysiwygChapoTwigFilter.php
+│       │       │   └── templates
+│       │       │       ├── back-button-block.html.twig
+│       │       │       ├── back-to-top-block.html.twig
+│       │       │       ├── error-403.html.twig
+│       │       │       ├── error-404.html.twig
+│       │       │       ├── error-410.html.twig
+│       │       │       ├── genres-list.html.twig
+│       │       │       ├── header-search-form-block.html.twig
+│       │       │       ├── homepage.html.twig
+│       │       │       ├── hp-collections-block.html.twig
+│       │       │       ├── hp-free-movies-block.twig
+│       │       │       ├── hp-highlighted-collections-block.html.twig
+│       │       │       ├── hp-near-end-free-movies-block.twig
+│       │       │       ├── hp-new-free-movies-block.twig
+│       │       │       ├── info-banner-block.html.twig
+│       │       │       ├── movie-search-ajax.html.twig
+│       │       │       ├── movie-search.html.twig
+│       │       │       ├── movies-contact-block.html.twig
+│       │       │       ├── newsletter-confirmation.html.twig
+│       │       │       ├── newsletter-subscription.html.twig
+│       │       │       ├── newsletter-unsubscription-confirmation.html.twig
+│       │       │       ├── newsletter-unsubscription.html.twig
+│       │       │       ├── search-block.html.twig
+│       │       │       └── search-contact-block.html.twig
+│       │       └── proconnect
+│       │           ├── config
+│       │           │   └── install
+│       │           │       └── openid_connect.client.proconnect.yml
+│       │           ├── proconnect.info.yml
+│       │           ├── proconnect.install
+│       │           ├── proconnect.links.menu.yml
+│       │           ├── proconnect.module
+│       │           ├── proconnect.routing.yml
+│       │           ├── proconnect.services.yml
 │       │           ├── src
-│       │           │   ├── AudiodescriptionServiceProvider.php
-│       │           │   ├── Breadcrumb
-│       │           │   │   ├── CollectionBreadcrumbBuilder.php
-│       │           │   │   ├── DirectorBreadcrumbBuilder.php
-│       │           │   │   ├── GenreBreadcrumbBuilder.php
-│       │           │   │   ├── MovieBreadcrumbBuilder.php
-│       │           │   │   ├── NodeBreadcrumbBuilder.php
-│       │           │   │   ├── SearchBreadcrumbBuilder.php
-│       │           │   │   └── ViewBreadcrumbBuilder.php
-│       │           │   ├── Command
-│       │           │   │   ├── SearchAjaxResetFiltersCommand.php
-│       │           │   │   ├── SearchAjaxUpdateTitleCommand.php
-│       │           │   │   └── SearchAjaxUrlUpdateCommand.php
 │       │           │   ├── Controller
-│       │           │   │   ├── Error410Controller.php
-│       │           │   │   ├── ErrorController.php
-│       │           │   │   ├── GenresController.php
-│       │           │   │   ├── HomepageController.php
-│       │           │   │   ├── MovieSearchController.php
-│       │           │   │   └── NewsletterController.php
-│       │           │   ├── Drush
-│       │           │   │   └── Commands
-│       │           │   │       ├── ImportAllPatrimonyCommand.php
-│       │           │   │       ├── ImportGenresPatrimonyCommand.php
-│       │           │   │       ├── ImportMoviesCommand.php
-│       │           │   │       ├── ImportPublicsCommand.php
-│       │           │   │       ├── ImportUnpublishMoviesCommand.php
-│       │           │   │       └── SynchronizeScratCommand.php
-│       │           │   ├── EntityManager
-│       │           │   │   ├── ActorManager.php
-│       │           │   │   ├── DirectorManager.php
-│       │           │   │   ├── GenreManager.php
-│       │           │   │   ├── MovieManager.php
-│       │           │   │   ├── NationalityManager.php
-│       │           │   │   ├── OfferManager.php
-│       │           │   │   ├── PartnerManager.php
-│       │           │   │   └── PublicManager.php
-│       │           │   ├── Enum
-│       │           │   │   ├── ImportSourceType.php
-│       │           │   │   └── Taxonomy.php
+│       │           │   │   ├── AccessDeniedController.php
+│       │           │   │   └── ProConnectController.php
 │       │           │   ├── EventSubscriber
-│       │           │   │   ├── Error410ResponseSubscriber.php
-│       │           │   │   └── MovieExceptionSubscriber.php
+│       │           │   │   └── ProConnectFormAlterSubscriber.php
 │       │           │   ├── Form
-│       │           │   │   ├── AbstractMovieSearchForm.php
-│       │           │   │   ├── FiltersMovieSearchForm.php
-│       │           │   │   ├── NewsletterSubscriptionForm.php
-│       │           │   │   ├── NewsletterUnsubscriptionForm.php
-│       │           │   │   └── SimpleMovieSearchForm.php
-│       │           │   ├── Importer
-│       │           │   │   ├── Director
-│       │           │   │   │   └── DirectorPatrimonyImporter.php
-│       │           │   │   ├── Genre
-│       │           │   │   │   └── GenrePatrimonyImporter.php
-│       │           │   │   ├── ImportException.php
-│       │           │   │   ├── Movie
-│       │           │   │   │   ├── CncCsvImporter.php
-│       │           │   │   │   ├── ImporterFactory.php
-│       │           │   │   │   ├── MovieImporterInterface.php
-│       │           │   │   │   └── MoviePatrimonyImporter.php
-│       │           │   │   ├── Nationality
-│       │           │   │   │   └── NationalityPatrimonyImporter.php
-│       │           │   │   ├── Offer
-│       │           │   │   │   └── OfferPatrimonyImporter.php
-│       │           │   │   ├── Partner
-│       │           │   │   │   └── PartnerPatrimonyImporter.php
-│       │           │   │   └── Public
-│       │           │   │       ├── PublicCsvImporter.php
-│       │           │   │       └── PublicPatrimonyImporter.php
-│       │           │   ├── Manager
-│       │           │   │   └── MovieSearchManager.php
-│       │           │   ├── Parser
-│       │           │   │   └── CsvParser.php
+│       │           │   │   └── AccessDomainsForm.php
 │       │           │   ├── Plugin
-│       │           │   │   └── Block
-│       │           │   │       ├── BackButtonBlock.php
-│       │           │   │       ├── BackToTopBlock.php
-│       │           │   │       ├── HeaderSearchFormBlock.php
-│       │           │   │       ├── HpCollectionsBlock.php
-│       │           │   │       ├── HpFreeMoviesBlock.php
-│       │           │   │       ├── HpHighlightedCollectionsBlock.php
-│       │           │   │       ├── HpLastMoviesBlock.php
-│       │           │   │       ├── HpNearEndFreeMoviesBlock.php
-│       │           │   │       ├── HpNewFreeMoviesBlock.php
-│       │           │   │       ├── InfoBannerBlock.php
-│       │           │   │       ├── SearchBlock.php
-│       │           │   │       └── SearchContactBlock.php
-│       │           │   ├── Popo
-│       │           │   │   └── MovieSearchParametersBag.php
-│       │           │   ├── SearchAPI
-│       │           │   │   └── Query
-│       │           │   │       └── FilterBuilder.php
-│       │           │   └── TwigExtension
-│       │           │       ├── RemovePrefixNumberTwigFilter.php
-│       │           │       └── WysiwygChapoTwigFilter.php
+│       │           │   │   └── OpenIDConnectClient
+│       │           │   │       └── ProConnect.php
+│       │           │   └── Service
+│       │           │       ├── ProConnectAccessDeniedContentManager.php
+│       │           │       ├── ProConnectClient.php
+│       │           │       ├── ProConnectHookHandler.php
+│       │           │       ├── ProConnectPreAuthorizeHandler.php
+│       │           │       ├── ProConnectStateManager.php
+│       │           │       └── ProConnectUserManager.php
 │       │           └── templates
-│       │               ├── back-button-block.html.twig
-│       │               ├── back-to-top-block.html.twig
-│       │               ├── error-403.html.twig
-│       │               ├── error-404.html.twig
-│       │               ├── error-410.html.twig
-│       │               ├── genres-list.html.twig
-│       │               ├── header-search-form-block.html.twig
-│       │               ├── homepage.html.twig
-│       │               ├── hp-collections-block.html.twig
-│       │               ├── hp-free-movies-block.twig
-│       │               ├── hp-highlighted-collections-block.html.twig
-│       │               ├── hp-near-end-free-movies-block.twig
-│       │               ├── hp-new-free-movies-block.twig
-│       │               ├── info-banner-block.html.twig
-│       │               ├── movie-search-ajax.html.twig
-│       │               ├── movie-search.html.twig
-│       │               ├── movies-contact-block.html.twig
-│       │               ├── newsletter-confirmation.html.twig
-│       │               ├── newsletter-subscription.html.twig
-│       │               ├── newsletter-unsubscription-confirmation.html.twig
-│       │               ├── newsletter-unsubscription.html.twig
-│       │               ├── search-block.html.twig
-│       │               └── search-contact-block.html.twig
-│       ├── sites
-│       │   └── default
-│       │       └── settings.bkp
+│       │               └── proconnect-access-denied.html.twig
 │       └── themes
 │           └── ad_theme
 │               ├── ad_theme.info.yml
 │               ├── ad_theme.libraries.yml
 │               ├── ad_theme.theme
 │               ├── css
+│               │   ├── ckeditor-admin-reset.css
 │               │   ├── styles.css
 │               │   └── styles.css.map
 │               ├── dist
@@ -1250,7 +1281,8 @@
 │               │   │   └── node--page--full.html.twig
 │               │   ├── page
 │               │   │   ├── genres-list.html.twig
-│               │   │   └── homepage.html.twig
+│               │   │   ├── homepage.html.twig
+│               │   │   └── page--user--login.html.twig
 │               │   ├── paragraph
 │               │   │   ├── paragraph--pg-card--full.html.twig
 │               │   │   ├── paragraph--pg-cards--full.html.twig
@@ -1473,10 +1505,10 @@
 │   │   │   ├── OidcAuthenticator.php
 │   │   │   └── OidcService.php
 │   │   ├── Service
-│   │   │   ├── BrevoCampaignService.php
 │   │   │   ├── MovieAutoMerger.php
 │   │   │   ├── MovieFetcher.php
-│   │   │   └── NewsletterContentGenerator.php
+│   │   │   ├── NewsletterContentGenerator.php
+│   │   │   └── SendethicCampaignService.php
 │   │   └── Util
 │   │       └── EntityCodeService.php
 │   ├── startup.sh
@@ -1524,4 +1556,4 @@
     ├── logrotate
     ├── restore_drupal.sh
     └── restore_patrimony.sh
-159 directories, 1389 files
+169 directories, 1411 files
