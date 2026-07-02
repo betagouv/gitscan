@@ -1,37 +1,35 @@
-## Changelog : ma-cantine (30 derniers jours, au 2026-06-25)
+## Changelog : ma-cantine (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives sur la gestion des achats, notamment une refonte de l'interface et l'ajout de nouveaux champs d'information. Des efforts ont également été déployés pour améliorer la qualité des données, en particulier concernant les diagnostics et les évaluations du gaspillage, avec l'ajout de champs de traçabilité et des corrections de données. Enfin, des optimisations techniques ont été apportées pour améliorer la performance et la maintenabilité du code.
+Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration de la gestion des achats, notamment avec l'ajout de nouvelles informations sur l'origine des produits (circuit court, local, etc.) et la refonte de l'interface utilisateur pour la création et la modification des achats. Des améliorations techniques ont également été apportées pour le suivi des modifications des données et l'audit des actions réalisées par les utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Achats :** Le formulaire d'achat a été amélioré avec une présentation sur trois colonnes et la suppression du fond bleu. [#6847](https://github.com/betagouv/ma-cantine/issues/6847)
-- **Achats :** Ajout de la possibilité de sélectionner une cantine lors de la duplication d'un achat. [#6823](https://github.com/betagouv/ma-cantine/issues/6823)
-- **Achats :** Ajout de l'autocomplétion pour les champs "Description" et "Fournisseurs". [#6797](https://github.com/betagouv/ma-cantine/issues/6797)
-- **Achats :** Ajout des champs "Caractéristiques" et "Famille de produit". [#6782](https://github.com/betagouv/ma-cantine/issues/6782)
-- **Achats :** Début de la migration de la page de création d'achat vers la nouvelle interface (Vue3). [#6759](https://github.com/betagouv/ma-cantine/issues/6759)
-- **Achats :** Mise à jour des valeurs autorisées pour le champ "Origines" et réorganisation des valeurs pour "Définition de locale". [#6803](https://github.com/betagouv/ma-cantine/issues/6803)
-- **Achats :** Ajout de la modification d'un achat à partir du nouveau formulaire. [#6783](https://github.com/betagouv/ma-cantine/issues/6783)
-- **Achats :** Remplacement de l'ancienne URL par la nouvelle URL officielle. [#6789](https://github.com/betagouv/ma-cantine/issues/6789)
-- **Ressources :** Ajout des nouveaux guides du CNRC. [#6835](https://github.com/betagouv/ma-cantine/issues/6835)
-- **Diagnostics :** Amélioration du script pour remplir les champs `invalid_reason_list` & `warning_reason_list` pour les diagnostics 1TD1Site. [#6820](https://github.com/betagouv/ma-cantine/issues/6820)
-- **Diagnostics :** Marquage comme aberrant des diagnostics avec un coût de repas inférieur à 0.1. [#6795](https://github.com/betagouv/ma-cantine/issues/6795)
-- **API :** Stockage de l'information sur l'application OAuth2 ayant créé la cantine, le bilan, l'achat ou l'évaluation du gaspillage. [#6843](https://github.com/betagouv/ma-cantine/issues/6843)
+- **Achats :** Ajout de nouveaux champs pour caractériser les achats : catégories ÉGalim, origine, indication si le produit est local ou en circuit court.
+- **Achats :** Refonte de la définition du "local" avec la possibilité de spécifier une distance en kilomètres.
+- **Achats :** Possibilité de dupliquer un achat en sélectionnant une cantine différente.
+- **Achats :** Amélioration de l'autocomplétion des champs "Description" et "Fournisseurs" lors de la création d'un achat.
+- **Achats :** L'API permet désormais de créer, modifier et supprimer des achats via un nouvel endpoint.
+- **Achats :** Ajout d'un endpoint dédié à l'upload et la suppression de factures.
+- **Ressources :** Ajout des nouveaux guides du CNRC.
+- **Diagnostics :** Amélioration du script de remplissage des champs `invalid_reason_list` et `warning_reason_list`.
+- **Diagnostics :** Les diagnostics avec un coût de repas inférieur à 0.1 sont maintenant marqués comme aberrants.
 
 ### Évolutions techniques
-- **Commandes de gestion :** Ajout d'une nouvelle classe de base `MaCantineBaseCommand` pour gérer le loggage des résultats des commandes. [#6838](https://github.com/betagouv/ma-cantine/issues/6838)
-- **Commandes de gestion :** Loggage des résultats des commandes dans une table dédiée `CommandLog`. [#6837](https://github.com/betagouv/ma-cantine/issues/6837)
-- **API :** Amélioration de la manière de créer les champs metadata et suppression de leur renvoi dans les réponses. [#6829](https://github.com/betagouv/ma-cantine/issues/6829)
-- **API :** Utilisation de `IsCanteenManagerUrlParam` au lieu de `IsLinkedCanteenManager` dans plusieurs vues pour une meilleure cohérence. [#6815](https://github.com/betagouv/ma-cantine/issues/6815), [#6812](https://github.com/betagouv/ma-cantine/issues/6812), [#6814](https://github.com/betagouv/ma-cantine/issues/6814)
-- **API :** Retour d'une erreur 404 si l'objet n'appartient pas à la cantine. [#6816](https://github.com/betagouv/ma-cantine/issues/6816)
-- **Diagnostics :** Amélioration du script pour remplir les champs calculés (dont le nouveau `cout_repas`). [#6754](https://github.com/betagouv/ma-cantine/issues/6754)
-- **Diagnostics :** Ajout d'un nouveau champ `cout_repas` pour stocker le coût du repas. [#6753](https://github.com/betagouv/ma-cantine/issues/6753)
-- **Données Géo :** Suppression du code lié à l'API Adresse, car elle n'est plus utilisée. [#6787](https://github.com/betagouv/ma-cantine/issues/6787)
-- **Achats :** Séparation de FRANCE de CIRCUIT_COURT & LOCAL dans les calculs d'aggrégation. [#6731](https://github.com/betagouv/ma-cantine/issues/6731)
-- **Achats :** Renommage des champs du modèle en français. [#6765](https://github.com/betagouv/ma-cantine/issues/6765)
-- **Tests :** Homogénéisation des tests API suite aux changements récents. [#6757](https://github.com/betagouv/ma-cantine/issues/6757)
+- **Historisation :** Ajout d'un nouveau champ `history_source` pour identifier l'application OAuth2 ayant modifié un objet (cantine, diagnostic, achat, évaluation de gaspillage).
+- **Historisation :** Refactorisation du système d'historisation pour améliorer la traçabilité des modifications.
+- **API :** Restriction de l'accès aux achats pour les éditeurs, qui ne peuvent désormais accéder qu'à leurs propres achats.
+- **API :** Ouverture de l'accès aux achats pour les utilisateurs authentifiés via OAuth2.
+- **API :** Amélioration de la gestion des erreurs et des codes de retour (retour d'un 404 si la cantine n'est pas trouvée).
+- **Commandes de gestion :** Ajout d'une classe de base pour les commandes de gestion afin de faciliter le logging des résultats.
+- **Commandes de gestion :** Les résultats des commandes de gestion sont maintenant enregistrés dans une table dédiée.
+- **Tests :** Correction de tests cassés suite aux modifications apportées.
+- **Refactoring :** Suppression du code lié à l'ancienne API Adresse.
+- **Refactoring :** Simplification du code lié au calcul du coût des repas.
 
 ### Autres changements
-- Correction de plusieurs tests suite aux modifications apportées.
-- Divers correctifs suite au recettage avant mise en ligne des achats. [#6800](https://github.com/betagouv/ma-cantine/issues/6800)
-- Ajout de champs `creation_user` et `creation_source` pour la traçabilité de la création des cantines, diagnostics et évaluations du gaspillage. [#6750](https://github.com/betagouv/ma-cantine/issues/6750), [#6761](https://github.com/betagouv/ma-cantine/issues/6761), [#6763](https://github.com/betagouv/ma-cantine/issues/6763)
-- Ajout d'un nouveau champ `groupe_snapshot` pour les diagnostics 1TD1Site. [#6799](https://github.com/betagouv/ma-cantine/issues/6799)
+- **Documentation :** Mise à jour de la documentation de l'API pour refléter les changements apportés.
+- **Imports :** Ajout de support pour les nouveaux formats d'import des achats.
+- **Imports :** Réorganisation de la page d'import.
+- **Achats :** Renommage des champs du modèle Achats en français.
+- **Achats :** Mise à jour des valeurs autorisées pour les champs "Origines" et "Définition de locale".
+- **Achats :** Correction de divers problèmes d'affichage et de comportement du formulaire d'achat.

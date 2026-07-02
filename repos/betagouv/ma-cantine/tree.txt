@@ -88,6 +88,7 @@
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
 │   │   │   ├── ImportAdminCallout.vue
+│   │   │   ├── ImportCard.vue
 │   │   │   ├── ImportDeprecatedWarning.vue
 │   │   │   ├── ImportExplanation.vue
 │   │   │   ├── ImportFileUpload.vue
@@ -116,6 +117,8 @@
 │   │   │   ├── ObservatoryShare.vue
 │   │   │   ├── ObservatoryWarnings.vue
 │   │   │   ├── PurchaseForm.vue
+│   │   │   ├── PurchaseFormSuccessModal.vue
+│   │   │   ├── PurchaseInvoice.vue
 │   │   │   ├── SourceChart.vue
 │   │   │   ├── WasteMeasurementDetail.vue
 │   │   │   ├── WasteMeasurementSteps
@@ -257,6 +260,7 @@
 │   │   ├── statistics.py
 │   │   ├── teledeclaration.py
 │   │   ├── user.py
+│   │   ├── utils.py
 │   │   ├── vegetarianexpe.py
 │   │   ├── videotutorial.py
 │   │   ├── wasteaction.py
@@ -296,8 +300,6 @@
 │   │   │   │   ├── purchases_bad_empty_rows_old.csv
 │   │   │   │   ├── purchases_bad_extra_columns.csv
 │   │   │   │   ├── purchases_bad_extra_columns_old.csv
-│   │   │   │   ├── purchases_bad_no_definition_local.csv
-│   │   │   │   ├── purchases_bad_no_definition_local_old.csv
 │   │   │   │   ├── purchases_bad_no_header.csv
 │   │   │   │   ├── purchases_bad_no_header_old.csv
 │   │   │   │   ├── purchases_bad_old.csv
@@ -457,6 +459,7 @@
 │   │   ├── test_partners.py
 │   │   ├── test_partnertypes.py
 │   │   ├── test_purchase_export.py
+│   │   ├── test_purchase_facture.py
 │   │   ├── test_purchases.py
 │   │   ├── test_purchases_import.py
 │   │   ├── test_purchases_import_old.py
@@ -930,6 +933,8 @@
 │   │   ├── 0263_diagnostic_groupe_snapshot_and_more.py
 │   │   ├── 0264_wastemeasurement_creation_user_and_source.py
 │   │   ├── 0265_creation_source_api_oauth2_application.py
+│   │   ├── 0266_purchase_definition_local_km.py
+│   │   ├── 0267_history_source_and_api_oauth2.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1694,12 +1699,15 @@
     │   │   ├── partner-default-image.jpg
     │   │   ├── peeps-illustration-couple.png
     │   │   ├── picto-dsfr
+    │   │   │   ├── companie.svg
     │   │   │   ├── crisp-bien-demarrer.svg
     │   │   │   ├── crisp-teledeclaration.svg
     │   │   │   ├── data-visualization.svg
     │   │   │   ├── document-add.svg
     │   │   │   ├── documents.svg
     │   │   │   ├── flow-list.svg
+    │   │   │   ├── food.svg
+    │   │   │   ├── money.svg
     │   │   │   ├── school.svg
     │   │   │   ├── search.svg
     │   │   │   ├── self-training.svg
@@ -1766,4 +1774,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1701 files
+140 directories, 1709 files
