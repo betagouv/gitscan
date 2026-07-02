@@ -1,26 +1,31 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une plateforme permettant la gestion des données relatives aux prélèvements et analyses, notamment dans le domaine de l'environnement. Elle vise à faciliter le suivi et la gestion des informations pour les administrations et les laboratoires.",
+  "description": "Maestro est une application web permettant de gérer des données relatives à des prélèvements et analyses, notamment dans le domaine de la santé et de l'environnement. Elle offre des fonctionnalités pour les laboratoires, les administrations et les utilisateurs finaux.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Données & Schémas",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Interface utilisateur & Design",
+    "Suivi & Traçabilité",
+    "Collaboration & Workflow"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels"
+  ],
   "dependencies": [
     "React",
     "Node.js",
     "PostgreSQL",
     "S3",
-    "KnexJS",
     "nodemailer",
     "Browserless"
   ],
@@ -34,14 +39,19 @@
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "saml"
-    ],
-    "providers": []
+      "sso"
+    ]
   },
-  "tests": "Jest, Vitest, Cypress",
-  "workflows": [],
-  "lastActivity": "2026-06-25T16:32:38+02:00",
+  "tests": [
+    "Jest",
+    "Vitest"
+  ],
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-07-01T12:23:48+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -60,6 +70,7 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Environnement & Énergie",
+    "Santé & Épidémiologie"
   ]
 }

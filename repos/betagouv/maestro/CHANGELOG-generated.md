@@ -1,33 +1,44 @@
-## Changelog : maestro (30 derniers jours, au 25 juin 2026)
+## Changelog : maestro (30 derniers jours, au 01 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Maestro se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des documents, des analyses et des laboratoires. Des corrections de bugs et des améliorations de la sécurité ont également été apportées. L'intégration avec des services externes comme Inovalys et Brevo a été optimisée.
+Cette période a été marquée par de nombreuses améliorations et corrections, notamment autour de l'intégration avec des partenaires comme Inovalys et Sèves, de la gestion des documents et des analyses, ainsi que par des optimisations de l'interface utilisateur et de la sécurité. Des mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- **Laboratoires :** Amélioration de la recherche de laboratoires grâce à une autocomplétion. [#1136](https://github.com/betagouv/maestro/issues/1136)
-- **Prélèvements :** Possibilité de modifier un prélèvement même si l'utilisateur n'est pas le préleveur initial, sous confirmation volontaire. [#1090](https://github.com/betagouv/maestro/issues/1090)
-- **Labcam :** Correction des droits d'accès aux données du Labcam pour le bureau des laboratoires. [#1135](https://github.com/betagouv/maestro/issues/1135)
-- **Documents :** Les utilisateurs du "Suivi national" peuvent maintenant supprimer des documents. [#1114](https://github.com/betagouv/maestro/issues/1114)
-- **DAI :** Possibilité de remettre en erreur des DAI pour les relancer. [#1063](https://github.com/betagouv/maestro/issues/1063)
-- **Sacha :** Amélioration de la gestion des destinataires et de l'envoi d'emails. [#1047](https://github.com/betagouv/maestro/issues/1047) et [#1062](https://github.com/betagouv/maestro/issues/1062)
-- **LMR :** Gestion améliorée des LMR optionnelles et des alertes associées. [#1085](https://github.com/betagouv/maestro/issues/1085) et [#1092](https://github.com/betagouv/maestro/issues/1092)
-- **Interface utilisateur :** Implémentation d'un nouveau header. [#1127](https://github.com/betagouv/maestro/issues/1127)
-- **Plans :** Refonte de la gestion des plans avec introduction de "sous-plans". [#1007](https://github.com/betagouv/maestro/issues/1007)
-- **SEVES :** Ajout d'un bandeau d'alerte SEVES pour les dépassements de LMR. [#1074](https://github.com/betagouv/maestro/issues/1074)
+- Amélioration de l'affichage des analyses après interprétation, les repositionnant en haut de l'écran. [#1164](https://github.com/betagouv/maestro/issues/1164)
+- Amélioration des libellés dans l'administration. [#1165](https://github.com/betagouv/maestro/issues/1165)
+- Possibilité pour les utilisateurs 'Suivi national' de supprimer des documents. [#1114](https://github.com/betagouv/maestro/issues/1114)
+- Ajout d'une API pour l'intégration avec SEVES. [#900](https://github.com/betagouv/maestro/issues/900)
+- Ajout de la gestion des agréments des laboratoires (Labcam). [#871](https://github.com/betagouv/maestro/issues/871)
+- Les utilisateurs désactivés ne reçoivent plus de notifications. [#1144](https://github.com/betagouv/maestro/issues/1144)
+- Possibilité de repasser des DAI en erreur pour pouvoir les relancer. [#1113](https://github.com/betagouv/maestro/issues/1113)
+- Ajout d'un bandeau d'alerte pour les dépassements de LMR (Limites de Maximum de Résidus). [#1074](https://github.com/betagouv/maestro/issues/1074)
+- Possibilité d'imprimer un formulaire vierge pour les DAOA après sélection de l'abattoir. [#1011](https://github.com/betagouv/maestro/issues/1011)
+- Amélioration de la gestion des LMR optionnelles. [#1013](https://github.com/betagouv/maestro/issues/1013)
+- Ajout de nouveaux types de ressources (réglementation et modèle) pour les documents. [#988](https://github.com/betagouv/maestro/issues/988)
+- Correction de l'affichage du menu des laboratoires agréés qui sortait de l'écran. [#1150](https://github.com/betagouv/maestro/issues/1150)
+- Correction pour permettre la modification d'un prélèvement par un utilisateur non préleveur (sur action volontaire). [#1090](https://github.com/betagouv/maestro/issues/1090)
+- Correction des droits d'accès aux données du Labcam pour le bureau des labos. [#1135](https://github.com/betagouv/maestro/issues/1135)
+- Correction des informations de conformité lors de l'export. [#1152](https://github.com/betagouv/maestro/issues/1152)
+- Correction de l'emplacement de l'adresse des laboratoires sur les étiquettes, privilégiant l'adresse de facturation. [#1093](https://github.com/betagouv/maestro/issues/1093)
+- Correction de l'affichage du dashboard quand il n'y a pas d'actions prioritaires. [#1054](https://github.com/betagouv/maestro/issues/1054)
+- Correction pour ne plus envoyer d'erreurs lors de la mise à jour de la contamination. [#1112](https://github.com/betagouv/maestro/issues/1112)
+- Correction pour autoriser le dépôt de documents pour le suivi national. [#1051](https://github.com/betagouv/maestro/issues/1051)
 
 ### Évolutions techniques
-- **Refactoring :** Utilisation d'un outil de génération d'URL pour l'export dans le module Labcam. [#1128](https://github.com/betagouv/maestro/issues/1128)
-- **Refactoring :** Séparation des routes des documents de prélèvements et des documents ressources. [#1123](https://github.com/betagouv/maestro/issues/1123)
-- **API :** Ajout d'une API pour SEVES. [#900](https://github.com/betagouv/maestro/issues/900)
-- **Typage :** Amélioration du typage des réponses API. [#1006](https://github.com/betagouv/maestro/issues/1006)
-- **Nodemailer :** Utilisation du relai SMTP Brevo pour l'envoi d'emails. [#991](https://github.com/betagouv/maestro/issues/991)
-- **GPG :** Importation dynamique de la clé GPG si elle est mise à jour. [#1129](https://github.com/betagouv/maestro/issues/1129)
-- **Tests :** Ajout d'un tri par défaut pour corriger un test intermittent. [#1121](https://github.com/betagouv/maestro/issues/1121)
+- Refactor de l'implémentation du nouveau design du tableau de programmation (vue nationale). [#1126](https://github.com/betagouv/maestro/issues/1126)
+- Refactor pour utiliser un outil de génération d'URL pour l'export des données. [#1128](https://github.com/betagouv/maestro/issues/1128)
+- Séparation des routes des documents de prélèvements et des documents ressources. [#1123](https://github.com/betagouv/maestro/issues/1123)
+- Refactor pour implémenter une notion de sous-plans au lieu des kinds. [#1007](https://github.com/betagouv/maestro/issues/1007)
+- Amélioration du typage des réponses de l'API. [#1006](https://github.com/betagouv/maestro/issues/1006)
+- Mise à jour de plusieurs dépendances (nodemailer, @sentry/node, @aws-sdk/client-s3, etc.).
+- Correction de l'exemple de configuration Dex. [#1163](https://github.com/betagouv/maestro/issues/1163)
+- Mise à jour de la gestion des emails Brevo (utilisation du relai SMTP). [#991](https://github.com/betagouv/maestro/issues/991)
 
 ### Autres changements
-- **Documentation :** Mises à jour et améliorations de la documentation.
-- **Dépendances :** Mises à jour de plusieurs dépendances (React Router, Faker, Fast XML Parser, Actions Checkout, etc.). Ces mises à jour sont gérées par Dependabot et ne sont pas listées en détail ici.
-- **Configuration :** Diverses modifications de configuration et nettoyage de code.
-- **Sentry :** Capture correcte des erreurs console.error. (revert d'un commit précédent)
-- **Étiquettes :** Correction de la génération des anciennes étiquettes. [#1065](https://github.com/betagouv/maestro/issues/1065)
-- **Dashboard :** Correction de l'affichage des actions prioritaires. [#1054](https://github.com/betagouv/maestro/issues/1054)
+- Ajout d'un autocomplete pour le filtre des laboratoires. [#1136](https://github.com/betagouv/maestro/issues/1136)
+- Ajout de tests pour éviter les tests clignotants. [#1121](https://github.com/betagouv/maestro/issues/1121)
+- Suppression d'un revert de fonctionnalité.
+- Nettoyage et simplification du code.
+- Correction de la largeur de la colonne "référence" et du tableau des documents. [#1083](https://github.com/betagouv/maestro/issues/1083)
+- Ajout de la gestion des millisecondes dans le nom des fichiers pour éviter les conflits. [#1075](https://github.com/betagouv/maestro/issues/1075)
+- Mise à jour de la documentation et de la configuration.
