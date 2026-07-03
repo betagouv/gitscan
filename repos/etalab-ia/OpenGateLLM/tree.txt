@@ -178,7 +178,6 @@
 │   │   ├── chunks.py
 │   │   ├── collections.py
 │   │   ├── documents.py
-│   │   ├── embeddings.py
 │   │   ├── me
 │   │   │   ├── __init__.py
 │   │   │   ├── info.py
@@ -234,6 +233,7 @@
 │   │   │   │   │   ├── routers.py
 │   │   │   │   │   └── users.py
 │   │   │   │   ├── auth.py
+│   │   │   │   ├── embeddings.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── health.py
 │   │   │   │   ├── models.py
@@ -248,6 +248,7 @@
 │   │   │       │   ├── routers.py
 │   │   │       │   └── users.py
 │   │   │       ├── auth.py
+│   │   │       ├── embeddings.py
 │   │   │       ├── health.py
 │   │   │       ├── models.py
 │   │   │       └── rerank.py
@@ -402,7 +403,6 @@
 │   │   │   ├── elasticsearch.py
 │   │   │   └── models.py
 │   │   ├── documents.py
-│   │   ├── embeddings.py
 │   │   ├── exception.py
 │   │   ├── me
 │   │   │   ├── __init__.py
@@ -470,8 +470,7 @@
 │   │   │   ├── test_providers
 │   │   │   │   ├── test_mistral_image_to_text.py
 │   │   │   │   ├── test_mistral_speech_automatic_regonition.py
-│   │   │   │   ├── test_mistral_text_image_to_text.py
-│   │   │   │   └── test_tei_text_embeddings_inference.py
+│   │   │   │   └── test_mistral_text_image_to_text.py
 │   │   │   ├── test_search.py
 │   │   │   ├── test_tools.py
 │   │   │   └── utils.py
@@ -526,6 +525,7 @@
 │   │   │   │   │       └── test_get_users.py
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_auth_login.py
+│   │   │   │   ├── test_embeddings.py
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   ├── test_rerank.py
@@ -658,6 +658,8 @@
 │   │           │       └── test_getusersusecase.py
 │   │           ├── auth
 │   │           │   └── test_authloginusecase.py
+│   │           ├── embeddings
+│   │           │   └── test_createembeddingsusecase.py
 │   │           ├── factories.py
 │   │           ├── health
 │   │           │   ├── __init__.py
@@ -707,6 +709,9 @@
 │   │   ├── auth
 │   │   │   ├── __init__.py
 │   │   │   └── _authloginusecase.py
+│   │   ├── embeddings
+│   │   │   ├── __init__.py
+│   │   │   └── _createembeddingsusecase.py
 │   │   ├── health
 │   │   │   ├── __init__.py
 │   │   │   └── _gethealthmodelsusecase.py
@@ -970,4 +975,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-218 directories, 754 files
+220 directories, 757 files
