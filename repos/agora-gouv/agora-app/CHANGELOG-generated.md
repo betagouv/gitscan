@@ -1,21 +1,23 @@
-## Changelog : agora-app (30 derniers jours, au 11 juin 2026)
+## Changelog : agora-app (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'expérience utilisateur sur iOS et Android, notamment concernant le partage de contenu, l'accessibilité et l'affichage des informations. De nouvelles fonctionnalités sont également introduites pour l'affichage des thèmes hebdomadaires et des détails des Questions/Réponses (QAGs).
+Les dernières mises à jour de l'application agora-app se concentrent sur l'amélioration de l'expérience utilisateur, notamment en corrigeant des problèmes liés au partage de contenu, aux liens profonds (deeplinks) et à l'affichage. Des ajustements ont également été apportés pour assurer la conformité avec le Design System FR (DSFR).
 
 ### Évolutions fonctionnelles
-- Correction du partage sur iOS [#702](https://github.com/agora-gouv/agora-app/issues/702).
-- Amélioration de l'accessibilité de la page de détail [#695](https://github.com/agora-gouv/agora-app/issues/695).
-- Ajout d'une nouvelle "Bottom Sheet" pour afficher les détails des QAGs [#694](https://github.com/agora-gouv/agora-app/issues/694).
-- Implémentation de l'utilisation de l'API pour les thèmes hebdomadaires [#693](https://github.com/agora-gouv/agora-app/issues/693).
-- Ajout d'un mock UI pour la tuile des thèmes [#692](https://github.com/agora-gouv/agora-app/issues/692).
-- Correction de l'affichage du gras et de l'italique dans l'éditeur de texte riche [#703](https://github.com/agora-gouv/agora-app/issues/703).
-- Correction des bords arrondis pour un affichage plus précis [#701](https://github.com/agora-gouv/agora-app/issues/701).
-- Ajout de certificats pour améliorer la sécurité [#699](https://github.com/agora-gouv/agora-app/issues/699).
-- Ajustements divers de l'interface utilisateur [#696](https://github.com/agora-gouv/agora-app/issues/697).
+- Ajout d'un bouton de partage sur la tuile du thème hebdomadaire, avec un changement d'icône associé. [#707](https://github.com/agora-gouv/agora-app/issues/707)
+- Correction du lien "À la Une" sur la page d'accueil. [#706](https://github.com/agora-gouv/agora-app/issues/706)
+- Correction du partage sur iOS. [#702](https://github.com/agora-gouv/agora-app/issues/702)
+- Suppression du partage avant modération. [#710](https://github.com/agora-gouv/agora-app/issues/710)
+- Correction du lien dans le partage. [#708](https://github.com/agora-gouv/agora-app/issues/708)
+- Correction des deeplinks vers l'application. [#711](https://github.com/agora-gouv/agora-app/issues/711)
+- Correction du deeplink final. [#714](https://github.com/agora-gouv/agora-app/issues/714)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `hive` vers `hive_ce` [#691](https://github.com/agora-gouv/agora-app/issues/691).
+- Ajout de certificats Sectigo pour améliorer la sécurité. [#712](https://github.com/agora-gouv/agora-app/issues/712)
+- Correction de l'affichage du texte en gras et en italique dans l'éditeur de texte enrichi. [#703](https://github.com/agora-gouv/agora-app/issues/703)
+- Alignement de la navigation par onglets avec le Design System FR (DSFR). [#709](https://github.com/agora-gouv/agora-app/issues/709)
+- Correction des bords arrondis pour les afficher en angle droit. [#701](https://github.com/agora-gouv/agora-app/issues/701)
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Ajout de certificats pour corriger des problèmes de compatibilité. [#699](https://github.com/agora-gouv/agora-app/issues/699)
+- Correction des certificats. [#713](https://github.com/agora-gouv/agora-app/issues/713)
