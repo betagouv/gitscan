@@ -1,15 +1,19 @@
-## Changelog : guides.data.gouv.fr (30 derniers jours, au 11 mai 2026)
+## Changelog : guides.data.gouv.fr (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les guides ont été mis à jour avec de nouvelles informations issues de la newsletter, notamment concernant les actualités. Des avancées ont également été apportées à la documentation concernant la validation technique des standards de données et des modèles de standards. Enfin, la documentation des éditeurs partiels a été enrichie.
+Ce mois-ci, les mises à jour se concentrent principalement sur la documentation de Passemarche, avec des corrections et des ajouts pour améliorer la compréhension et l'utilisation de la plateforme. Des corrections typographiques et des améliorations de la documentation GitBook ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout des actualités de la Newsletter 3 au guide. [#24](https://github.com/datagouv/guides.data.gouv.fr/issues/24)
-- Documentation des éditeurs partiels enrichie. [#69](https://github.com/datagouv/guides.data.gouv.fr/issues/69)
-- Ajout de la validation technique du standard et du modèle de standard au guide. [#27](https://github.com/datagouv/guides.data.gouv.fr/issues/27)
+- **Passemarche :**
+    - Correction d'un exemple concernant les lots et ajout d'un script de seed pour générer 1000 lots.
+    - Mise à jour du flux acheteur pour gérer les lots hétérogènes et l'intégration de webhooks.
+    - Mise à jour de la documentation de l'API concernant les lots et les DLRO.
+    - Ajout d'informations sur les potentielles causes de délais et sur la longueur des noms de colonnes. [#26](https://github.com/datagouv/guides.data.gouv.fr/pull/26)
+- **Fonctionnalité Candidature FAS :** Ajout d'une fonctionnalité permettant aux candidats de postuler à nouveau avant la date limite. [#15](https://github.com/datagouv/guides.data.gouv.fr/issues/15)
 
 ### Évolutions techniques
-- (Aucune évolution technique significative à signaler)
+- Synchronisation de la documentation avec GitBook (plusieurs commits sans message spécifique).
+- Corrections typographiques dans la documentation.
 
 ### Autres changements
-- Diverses mises à jour et corrections mineures. [#23](https://github.com/datagouv/guides.data.gouv.fr/issues/23), [#25](https://github.com/datagouv/guides.data.gouv.fr/issues/25), [#70](https://github.com/datagouv/guides.data.gouv.fr/issues/70), [#71](https://github.com/datagouv/guides.data.gouv.fr/issues/71)
+- Aucune information supplémentaire.
