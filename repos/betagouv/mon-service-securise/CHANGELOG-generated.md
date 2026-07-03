@@ -1,45 +1,38 @@
-## Changelog : mon-service-securise (30 derniers jours, au 26 juin 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de l'expérience administrateur, notamment avec la refonte de la gestion des utilisateurs et des permissions. Des corrections d'accessibilité ont également été apportées, ainsi que des optimisations de sécurité et de maintenance technique. L'ajout de nouvelles fonctionnalités pour la gestion des risques v2 et l'amélioration du suivi des événements sont également notables.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur avec l'adoption des composants du Design System de la République Française (DSFR), améliorant ainsi l'accessibilité et la cohérence visuelle. Des fonctionnalités d'administration des utilisateurs et de gestion des risques ont été ajoutées ou améliorées, notamment la gestion des rôles d'administration et la visualisation des risques V2. Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la gestion des risques v2 : affichage des descriptions et exemples, modification du niveau de gravité, affichage cohérent en lecture seule.
-- Ajout d'une page dédiée à la gestion des administrateurs et superviseurs, incluant la recherche, la gestion des permissions et l'attribution de rôles.
-- Possibilité de nommer un administrateur sur un périmètre complet.
-- Affichage des actions de suppression et d'attribution de rôles pour les utilisateurs administrés.
-- Ajout d'une fonctionnalité permettant de retirer l'accès d'un utilisateur à des services.
-- Amélioration de l'affichage des entités et des services associés à un utilisateur.
-- Ajout d'un fil d'Ariane plus précis sur certaines pages.
-- Affichage des statistiques de supervision.
-- Ajout d'un tableau de bord spécifique pour les administrateurs et superviseurs.
-- Affichage des badges d'administrateur sur la liste des utilisateurs.
-- Amélioration de l'affichage des matrices de risque v2.
-- Ajout d'une page "Conseils cyber" utilisant des composants DSFR.
+- Implémentation de l'attribution de rôles (admin, superviseur) aux utilisateurs : permet de gérer les permissions d'accès aux fonctionnalités d'administration.
+- Affichage des actions de retrait d'accès aux services d'un utilisateur administré.
+- Amélioration de l'affichage des risques V2 : affichage de la description des risques, des badges, et intégration d'identifiants numériques.
+- Ajout d'une recherche textuelle sur les responsables de mesures.
+- Affichage des risques spécifiques dans les matrices.
+- Possibilité de surcharger la gravité d'un risque général V2.
+- Ajout d'une indication de fichier généré lors de la sélection des vecteurs et des matrices.
+- Amélioration de l'affichage des entités et des utilisateurs administrés dans l'interface d'administration.
+- Ajout d'une page dédiée à la gestion des administrateurs supervisés par un superviseur.
+- Affichage d'une alerte lors de l'attribution d'un rôle à un utilisateur.
+- Ajout d'un bandeau d'information remplaçant l'ancien, utilisant des tuiles DSFR.
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances (axios, @tiptap, vite, svelte, etc.).
-- Amélioration de la configuration Knex et simplification de la connexion à la base de données.
-- Ajout de tests d'accessibilité et corrections associées.
-- Implémentation d'un adaptateur de persistance mémoire pour les tests d'accessibilité.
-- Ajout d'un système de journalisation des événements (audit) pour les actions d'administration.
-- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- Ajout de règles ESLint pour améliorer la qualité du code.
-- Amélioration de la sécurité en désactivant les identifiants git dans les actions CI/CD et en mettant à jour des dépendances vulnérables (multer, vite, svelte).
-- Ajout d'un fichier `robots.txt` et d'un sitemap pour améliorer le référencement.
-- Utilisation de zizmor pour valider la configuration.
+- Migration vers les composants DSFR pour l'interface utilisateur : amélioration de l'accessibilité et de la cohérence visuelle (tableaux, boutons, liens, etc.).
+- Refonte de la gestion des configurations de risques.
+- Amélioration de la gestion des événements et des journaux d'audit.
+- Mise à jour des dépendances : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+- Amélioration de la configuration et des tests d'accessibilité.
+- Utilisation d'un singleton pour la connexion Knex.
+- Ajout de tests d'accessibilité pour les pages d'administration et les tiroirs.
+- Suppression de code obsolète et factorisation du code.
+- Amélioration de la gestion des secrets et des configurations.
+- Ajout d'un script pour faciliter la mise à jour de l'UI Kit.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de problèmes de contraste et d'accessibilité.
-- Amélioration de l'affichage des messages et des infobulles.
-- Suppression de code obsolète.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout d'un fichier `robots.txt` pour améliorer le référencement.
+- Ajout d'un sitemap pour faciliter l'indexation par les moteurs de recherche.
+- Ajout de documentation et de commentaires pour améliorer la maintenabilité du code.
+- Corrections de typos et d'erreurs de style.
+- Amélioration des messages d'erreur et des notifications.
+- Ajout de badges "bêta" pour les nouvelles fonctionnalités en phase de test.
 - Ajout de tests unitaires et d'intégration.
-- Correction de bugs mineurs.
-- Suppression de code inutile.
-- Uniformisation de certains composants et styles.
-- Ajout de variables d'environnement pour la configuration.
-- Amélioration de la gestion des secrets.
-- Ajout de la possibilité de suivre la navigation dans la SPA avec Matomo.

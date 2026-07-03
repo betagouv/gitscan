@@ -18,6 +18,7 @@
 ├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc.json
+├── CLAUDE.md
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
@@ -175,12 +176,17 @@
 │   ├── 20260507133356_migreDonneesEtSiretSuperviseurs.js
 │   ├── 20260507135337_ajouteContraintesSuperviseurs.js
 │   ├── 20260608151615_creationTableAuditAdminsOrganisations.js
+│   ├── 20260702121910_migreDonneesRisquesSpecifiquesV2AvecIdentifiantNumerique.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
 ├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── poc-pdf
+│   ├── .gitignore
+│   ├── dossier.typ
+│   └── feedback.ts
 ├── public
 │   ├── accueilInscription.mjs
 │   ├── apresAuthentification.js
@@ -335,7 +341,7 @@
 │   │   │   │   │   └── SYNDICAT MIXTE LA FIBRE64.webp
 │   │   │   │   └── tableau-de-bord.png
 │   │   │   ├── icone_*.svg  (112 files)
-│   │   │   ├── illustration_*.svg  (14 files)
+│   │   │   ├── illustration_*.svg  (17 files)
 │   │   │   ├── image_intro_mss.svg
 │   │   │   ├── invitation_envoyee.svg
 │   │   │   ├── landing
@@ -393,6 +399,7 @@
 │   │   │   │   │   ├── moduleRisquesV2.png
 │   │   │   │   │   ├── nouvelleDoctrineHomologation.png
 │   │   │   │   │   ├── prioritePlanAction.png
+│   │   │   │   │   ├── risquesV2.png
 │   │   │   │   │   ├── serviceImpactNational.png
 │   │   │   │   │   ├── tableauDeBordV2.png
 │   │   │   │   │   ├── televersementMesures.png
@@ -417,16 +424,9 @@
 │   │   │   │   ├── echangeOuReceptionEmails.svg
 │   │   │   │   └── postesDeTravail.svg
 │   │   │   ├── tableauDeBord
-│   │   │   │   ├── icone_indice_cyber_moyen.svg
-│   │   │   │   ├── icone_nombre_homologation_expirees.svg
-│   │   │   │   ├── icone_nombre_services.svg
-│   │   │   │   ├── icone_nombre_services_homologues.svg
-│   │   │   │   ├── icone_ouvrir_agrandir.svg
-│   │   │   │   ├── icone_superviseur.svg
-│   │   │   │   ├── image_decouvrez_blog.svg
 │   │   │   │   ├── image_equipe_webinaire.png
 │   │   │   │   ├── image_promotion_msc.png
-│   │   │   │   └── image_rejoignez_communaute.svg
+│   │   │   │   └── image_rejoignez_communaute.png
 │   │   │   ├── tampon_homologation.png
 │   │   │   ├── toasts
 │   │   │   │   ├── icone_alerte.svg
@@ -553,8 +553,7 @@
 │   │   ├── bandeauReferentielV2.js
 │   │   ├── decrireV2.mjs
 │   │   ├── descriptionService.mjs
-│   │   ├── pagesService.mjs
-│   │   └── risquesV2.mjs
+│   │   └── pagesService.mjs
 │   ├── simulationV2.mjs
 │   ├── supervision.mjs
 │   └── tableauDeBord.mjs
@@ -612,8 +611,10 @@
 │   │   ├── adaptateurOidc.ts
 │   │   ├── adaptateurOidcTestsAccessibilite.ts
 │   │   ├── adaptateurPdf.configurationTamponHomologation.ts
+│   │   ├── adaptateurPdf.interface.ts
 │   │   ├── adaptateurPdf.js
 │   │   ├── adaptateurPdf.puppeteer.ts
+│   │   ├── adaptateurPdf.typst.ts
 │   │   ├── adaptateurPersistance.interface.ts
 │   │   ├── adaptateurPersistanceMemoire.js
 │   │   ├── adaptateurPersistanceMemoireTS.ts
@@ -627,7 +628,9 @@
 │   │   ├── adaptateurProtection.js
 │   │   ├── adaptateurRechercheEntreprise.interface.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.js
-│   │   ├── adaptateurStatistiquesMetabase.js
+│   │   ├── adaptateurStatistiques.interface.ts
+│   │   ├── adaptateurStatistiquesMemoire.ts
+│   │   ├── adaptateurStatistiquesMetabase.ts
 │   │   ├── adaptateurSupervision.interface.ts
 │   │   ├── adaptateurSupervisionMetabase.ts
 │   │   ├── adaptateurTeleversementModelesMesureSpecifique.xls.js
@@ -647,6 +650,7 @@
 │   │   ├── fabriqueAdaptateurPersistance.js
 │   │   ├── fabriqueAdaptateurPersistanceTS.ts
 │   │   ├── fabriqueAdaptateurProfilAnssi.js
+│   │   ├── fabriqueAdaptateurStatistiques.ts
 │   │   ├── fabriqueAdaptateurSupervision.ts
 │   │   ├── fabriqueAdaptateurTracking.js
 │   │   └── persistanceTS.interface.ts
@@ -674,6 +678,7 @@
 │   │   │   ├── consigneProprietaireCreeUnServiceDansJournal.js
 │   │   │   ├── consigneRattachementDeServiceAPrestataireDansJournal.js
 │   │   │   ├── consigneRisquesDansJournal.js
+│   │   │   ├── consigneRisquesV2DansJournal.ts
 │   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.js
@@ -719,7 +724,8 @@
 │   │   ├── evenementModelesMesureSpecifiqueImportes.js
 │   │   ├── evenementNouveauServiceCree.ts
 │   │   ├── evenementNouvelleConnexionUtilisateur.ts
-│   │   ├── evenementRisqueServiceModifie.js
+│   │   ├── evenementRisqueServiceModifie.ts
+│   │   ├── evenementRisquesV2ServiceModifies.ts
 │   │   ├── evenementRoleUtilisateurAdministreAttribue.ts
 │   │   ├── evenementServiceRattacheAPrestataire.js
 │   │   ├── evenementServiceSupprime.js
@@ -853,7 +859,8 @@
 │   │   │   ├── evenementNouvelleHomologationCreee.js
 │   │   │   ├── evenementProfilUtilisateurModifie.js
 │   │   │   ├── evenementRetourUtilisateurMesure.js
-│   │   │   ├── evenementRisquesServiceModifies.js
+│   │   │   ├── evenementRisquesServiceModifies.ts
+│   │   │   ├── evenementRisquesV2ServiceModifies.ts
 │   │   │   ├── evenementRoleUtilisateurAdministreAttribue.ts
 │   │   │   ├── evenementServiceMigreEnV2.js
 │   │   │   ├── evenementServiceRattacheAPrestataire.js
@@ -1102,81 +1109,106 @@
 │   │   ├── pMap.ts
 │   │   ├── pThrottle.ts
 │   │   └── tableau.ts
-│   └── vues
-│       ├── 404.pug
-│       ├── aPropos.pug
-│       ├── accessibilite.pug
-│       ├── accueilInscription.pug
-│       ├── admin
-│       │   ├── administrateurs.pug
-│       │   ├── entites.pug
-│       │   └── utilisateurs.pug
-│       ├── apresAuthentification.pug
-│       ├── article.pug
-│       ├── base.pug
-│       ├── cgu.pug
-│       ├── confidentialite.pug
-│       ├── connexion.pug
-│       ├── conseilsCyber.pug
-│       ├── creation-compte.pug
-│       ├── csrf.pug
-│       ├── doctrineHomologation.pug
-│       ├── erreur.pug
-│       ├── erreurAccesRefuse.pug
-│       ├── fragments
-│       │   ├── avancementEtape.pug
-│       │   ├── blocCommunaute.pug
-│       │   ├── composantSvelte.pug
-│       │   ├── donneesPartagees.pug
-│       │   ├── elementsAjoutables
-│       │   │   ├── elementsAjoutables.pug
-│       │   │   ├── elementsAjoutablesAvis.pug
-│       │   │   └── elementsAjoutablesDescription.pug
-│       │   ├── entites.pug
-│       │   ├── fonctionnalitesSegmentees.pug
-│       │   ├── footer.pug
-│       │   ├── formulaireDescriptionService.pug
-│       │   ├── header.pug
-│       │   ├── inputChoix.pug
-│       │   ├── lienNouvelOnglet.pug
-│       │   └── texteTronque.pug
-│       ├── home
-│       │   └── temoignages.pug
-│       ├── home.pug
-│       ├── industrialisezHomologations.pug
-│       ├── listeMesures.pug
-│       ├── maintenance.pug
-│       ├── mentionsLegales.pug
-│       ├── mss.pug
-│       ├── mssConnecte.pug
-│       ├── mssDeconnecte.pug
-│       ├── mssDocumentation.pug
-│       ├── parcoursService.pug
-│       ├── profil.pug
-│       ├── securisezServiceNumerique.pug
-│       ├── securite.pug
-│       ├── service
-│       │   ├── creation-v2.pug
-│       │   ├── decrire-v2.pug
-│       │   ├── decrire.pug
-│       │   ├── descriptionService.pug
-│       │   ├── pagesService.pug
-│       │   ├── risquesV2.pug
-│       │   └── simulation-referentiel-v2.pug
-│       ├── statistiques.pug
-│       ├── supervision.pug
-│       ├── tableauDeBord.pug
-│       ├── tiroirs
-│       │   ├── documentTelechargeable.pug
-│       │   ├── tiroir.pug
-│       │   ├── tiroirExport.pug
-│       │   ├── tiroirExportMesures.pug
-│       │   ├── tiroirMesure.pug
-│       │   ├── tiroirSuppressionDossierCourant.pug
-│       │   └── tiroirTelechargement.pug
-│       └── visiteGuidee
-│           └── creationService.pug
+│   ├── vues
+│   │   ├── 404.pug
+│   │   ├── CLAUDE.md
+│   │   ├── aPropos.pug
+│   │   ├── accessibilite.pug
+│   │   ├── accueilInscription.pug
+│   │   ├── admin
+│   │   │   ├── administrateurs.pug
+│   │   │   ├── entites.pug
+│   │   │   └── utilisateurs.pug
+│   │   ├── apresAuthentification.pug
+│   │   ├── article.pug
+│   │   ├── base.pug
+│   │   ├── cgu.pug
+│   │   ├── confidentialite.pug
+│   │   ├── connexion.pug
+│   │   ├── conseilsCyber.pug
+│   │   ├── creation-compte.pug
+│   │   ├── csrf.pug
+│   │   ├── doctrineHomologation.pug
+│   │   ├── erreur.pug
+│   │   ├── erreurAccesRefuse.pug
+│   │   ├── fragments
+│   │   │   ├── avancementEtape.pug
+│   │   │   ├── blocCommunaute.pug
+│   │   │   ├── composantSvelte.pug
+│   │   │   ├── donneesPartagees.pug
+│   │   │   ├── elementsAjoutables
+│   │   │   │   ├── elementsAjoutables.pug
+│   │   │   │   ├── elementsAjoutablesAvis.pug
+│   │   │   │   └── elementsAjoutablesDescription.pug
+│   │   │   ├── entites.pug
+│   │   │   ├── fonctionnalitesSegmentees.pug
+│   │   │   ├── footer.pug
+│   │   │   ├── formulaireDescriptionService.pug
+│   │   │   ├── header.pug
+│   │   │   ├── inputChoix.pug
+│   │   │   ├── lienNouvelOnglet.pug
+│   │   │   └── texteTronque.pug
+│   │   ├── home
+│   │   │   └── temoignages.pug
+│   │   ├── home.pug
+│   │   ├── industrialisezHomologations.pug
+│   │   ├── listeMesures.pug
+│   │   ├── maintenance.pug
+│   │   ├── mentionsLegales.pug
+│   │   ├── mss.pug
+│   │   ├── mssConnecte.pug
+│   │   ├── mssDeconnecte.pug
+│   │   ├── mssDocumentation.pug
+│   │   ├── parcoursService.pug
+│   │   ├── profil.pug
+│   │   ├── securisezServiceNumerique.pug
+│   │   ├── securite.pug
+│   │   ├── service
+│   │   │   ├── creation-v2.pug
+│   │   │   ├── decrire-v2.pug
+│   │   │   ├── decrire.pug
+│   │   │   ├── descriptionService.pug
+│   │   │   ├── pagesService.pug
+│   │   │   └── simulation-referentiel-v2.pug
+│   │   ├── statistiques.pug
+│   │   ├── supervision.pug
+│   │   ├── tableauDeBord.pug
+│   │   ├── tiroirs
+│   │   │   ├── documentTelechargeable.pug
+│   │   │   ├── tiroir.pug
+│   │   │   ├── tiroirExport.pug
+│   │   │   ├── tiroirExportMesures.pug
+│   │   │   ├── tiroirMesure.pug
+│   │   │   ├── tiroirSuppressionDossierCourant.pug
+│   │   │   └── tiroirTelechargement.pug
+│   │   └── visiteGuidee
+│   │       └── creationService.pug
+│   └── vuesPdf
+│       ├── assets
+│       │   ├── icone_alerte.svg
+│       │   ├── logo_anssi.png
+│       │   ├── logo_mss.png
+│       │   ├── logo_republique.png
+│       │   ├── niveau1.svg
+│       │   ├── niveau2.svg
+│       │   └── niveau3.svg
+│       ├── commun.typ
+│       ├── fonts
+│       │   ├── Marianne-Bold.ttf
+│       │   ├── Marianne-BoldItalic.ttf
+│       │   ├── Marianne-ExtraBold.ttf
+│       │   ├── Marianne-ExtraBoldItalic.ttf
+│       │   ├── Marianne-Light.ttf
+│       │   ├── Marianne-LightItalic.ttf
+│       │   ├── Marianne-Medium.ttf
+│       │   ├── Marianne-MediumItalic.ttf
+│       │   ├── Marianne-Regular.ttf
+│       │   ├── Marianne-RegularItalic.ttf
+│       │   ├── Marianne-Thin.ttf
+│       │   └── Marianne-ThinItalic.ttf
+│       └── syntheseSecurite.typ
 ├── svelte
+│   ├── CLAUDE.md
 │   ├── eslint.config.js
 │   ├── lib
 │   │   ├── accueilInscription
@@ -1542,7 +1574,8 @@
 │   │   │   ├── LegendeMatriceRisques.svelte
 │   │   │   ├── LigneRisque.svelte
 │   │   │   ├── MatriceRisques.svelte
-│   │   │   ├── Risques.svelte
+│   │   │   ├── PageRisques.svelte
+│   │   │   ├── RisquesV1.svelte
 │   │   │   ├── SelectionCategorieRisque.svelte
 │   │   │   ├── SelectionGravite.svelte
 │   │   │   ├── SelectionVraisemblance.svelte
@@ -1555,15 +1588,18 @@
 │   │   │   └── risques.ts
 │   │   ├── risquesV2
 │   │   │   ├── RisquesV2.svelte
+│   │   │   ├── TableauAnciensRisques.svelte
 │   │   │   ├── TableauRisquesV2.svelte
 │   │   │   ├── kit
 │   │   │   │   ├── CartoucheIdentifiantRisque.svelte
+│   │   │   │   ├── CartoucheIdentifiantRisqueSpecifiqueV2.svelte
 │   │   │   │   ├── CartouchesRisqueV2.svelte
 │   │   │   │   ├── Niveau.svelte
 │   │   │   │   └── kit.ts
 │   │   │   ├── matrice
 │   │   │   │   ├── LegendeMatrice.svelte
-│   │   │   │   └── MatriceRisquesV2.svelte
+│   │   │   │   ├── MatriceRisquesV2.svelte
+│   │   │   │   └── matrice.ts
 │   │   │   ├── modale
 │   │   │   │   ├── ModaleAnciensRisques.svelte
 │   │   │   │   ├── ModaleCartographies.svelte
@@ -1571,7 +1607,6 @@
 │   │   │   │   └── TableauRisquesMesuresAssociees.svelte
 │   │   │   ├── risquesV2.api.ts
 │   │   │   ├── risquesV2.d.ts
-│   │   │   ├── risquesV2.ts
 │   │   │   └── tiroir
 │   │   │       ├── BadgesTiroirRisqueSpecifiqueV2.svelte
 │   │   │       ├── BadgesTiroirRisqueV2.svelte
@@ -1595,11 +1630,11 @@
 │   │   │   ├── ActionsDesServices.svelte
 │   │   │   ├── BandeauBlog.svelte
 │   │   │   ├── BandeauFiltres.svelte
-│   │   │   ├── BandeauInfo.svelte
 │   │   │   ├── CarteDePromotion.svelte
 │   │   │   ├── TableauDeBord.svelte
 │   │   │   ├── TableauDesServices.svelte
 │   │   │   ├── TableauVide.svelte
+│   │   │   ├── Tuiles.svelte
 │   │   │   ├── elementsDeService
 │   │   │   │   ├── ActionRecommandee.svelte
 │   │   │   │   ├── EtiquetteCompletude.svelte
@@ -1854,6 +1889,7 @@
 │   │   │   ├── consigneProprietaireCreeUnServiceDansJournal.spec.js
 │   │   │   ├── consigneRattachementDeServiceAPrestataireDansJournal.spec.js
 │   │   │   ├── consigneRisqueDansJournal.spec.js
+│   │   │   ├── consigneRisquesV2DansJournal.spec.ts
 │   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.spec.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.spec.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.spec.js
@@ -1893,7 +1929,8 @@
 │   │   ├── evenementMesureServiceModifiee.spec.js
 │   │   ├── evenementNouveauServiceCree.spec.ts
 │   │   ├── evenementNouvelleConnexionUtilisateur.spec.ts
-│   │   ├── evenementRisqueServiceModifie.spec.js
+│   │   ├── evenementRisqueServiceModifie.spec.ts
+│   │   ├── evenementRisquesV2ServiceModifies.spec.ts
 │   │   ├── evenementServiceSupprime.spec.js
 │   │   ├── evenementServicesImportes.spec.js
 │   │   ├── evenementUtilisateurInscrit.spec.js
@@ -2009,7 +2046,8 @@
 │   │   │   ├── evenementNouvelleHomologationCreee.spec.js
 │   │   │   ├── evenementProfilUtilisateurModifie.spec.js
 │   │   │   ├── evenementRetourUtilisateurMesure.spec.js
-│   │   │   ├── evenementRisquesServiceModifies.spec.js
+│   │   │   ├── evenementRisquesServiceModifies.spec.ts
+│   │   │   ├── evenementRisquesV2ServiceModifies.spec.ts
 │   │   │   ├── evenementRoleUtilisateurAdministreAttribue.spec.ts
 │   │   │   ├── evenementServiceRattacheAPrestataire.spec.js
 │   │   │   ├── evenementServiceSupprime.spec.js
@@ -2099,6 +2137,8 @@
 │   │       ├── risqueSpecifiqueV2.spec.ts
 │   │       ├── risqueV2.spec.ts
 │   │       ├── risquesV2.spec.ts
+│   │       ├── scripts
+│   │       │   └── transformeCSVPourVraisemblance.spec.ts
 │   │       ├── selectionObjectifsVises.spec.ts
 │   │       ├── selectionVecteurs.spec.ts
 │   │       ├── vraisemblance.predicats.spec.ts
@@ -2192,4 +2232,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-293 directories, 2025 files
+298 directories, 2063 files
