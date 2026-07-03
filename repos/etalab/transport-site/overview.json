@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il centralise et valorise les données de transport hébergées sur data.gouv.fr, le portail français des données ouvertes.",
+  "description": "Ce projet fournit un point d'accès national aux données de mobilité. Il centralise les données de mobilité hébergées sur data.gouv.fr, le portail français des données ouvertes.",
   "language": "Elixir",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -13,17 +13,18 @@
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Contenu éditorial",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Elixir",
-    "Phoenix",
     "PostgreSQL",
-    "JavaScript",
-    "React",
-    "Webpack"
+    "Node.js",
+    "Yarn",
+    "Phoenix",
+    "Leaflet",
+    "Vega",
+    "S3"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,7 +32,8 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
@@ -39,14 +41,20 @@
       "session"
     ],
     "providers": [
-      "Datagouvfr"
+      "Google",
+      "GitHub"
     ]
   },
-  "tests": "Mix test, Jest",
+  "tests": [
+    "ExUnit",
+    "Credo",
+    "Eslint",
+    "Stylelint"
+  ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-30T09:43:00Z",
+  "lastActivity": "2026-07-02T14:03:16Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -59,13 +67,12 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "Environnement & Énergie",
-    "Transport & Mobilité"
+    "Transport & Mobilité",
+    "JavaScript",
+    "PostgreSQL",
+    "Elixir",
+    "API",
+    "Sécurité",
+    "Données & Schémas"
   ]
 }
