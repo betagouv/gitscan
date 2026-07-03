@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+  redis:
+    image: redis
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && foreman start -f Procfile.dev"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3000"
+      - "9394:9394"
+    environment:
+      RAILS_ENV: development
+      PORT: 3000
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+
+  test_web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && rails s -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - test_web_tmp:/app/tmp # Volume pour les fichiers temporaires
+      - ./tmp/capybara:/app/tmp/capybara # Volume pour les captures d'écran Capybara
+    ports:
+      - "3002:3000"
+    environment:
+      RAILS_ENV: test
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+
+networks:
+  default:
+
+volumes:
+  postgres_data:
+  test_web_tmp:

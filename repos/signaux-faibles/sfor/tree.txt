@@ -1,0 +1,1656 @@
+.
+├── .dockerignore
+├── .env.example
+├── .erdconfig
+├── .gitattributes
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       └── docker-publish.yml
+├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   ├── modules.xml
+│   └── signaux-faibles-v2.iml
+├── .rubocop.yml
+├── .ruby-version
+├── AGENTS.md
+├── DEAD_CODE_REPORT.md
+├── Dockerfile
+├── Dockerfile.dev
+├── Dockerfile.prometheus
+├── Gemfile
+├── Gemfile.lock
+├── Gemfile.prometheus
+├── Makefile
+├── Procfile
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── builds
+│   │   │   └── .keep
+│   │   ├── config
+│   │   │   └── manifest.js
+│   │   ├── images
+│   │   │   └── .keep
+│   │   └── stylesheets
+│   │       ├── _custom.scss
+│   │       ├── _dsfr.scss
+│   │       ├── _tom-select.min.scss
+│   │       ├── _utility.scss
+│   │       └── application.scss
+│   ├── channels
+│   │   └── application_cable
+│   │       ├── channel.rb
+│   │       └── connection.rb
+│   ├── components
+│   │   ├── contributors_info_component.html.erb
+│   │   ├── contributors_info_component.rb
+│   │   ├── establishment_info_component.html.erb
+│   │   ├── establishment_info_component.rb
+│   │   ├── tracking_info_component.html.erb
+│   │   └── tracking_info_component.rb
+│   ├── controllers
+│   │   ├── admin
+│   │   │   ├── app_settings_controller.rb
+│   │   │   ├── application_controller.rb
+│   │   │   ├── imports_controller.rb
+│   │   │   ├── notifications_controller.rb
+│   │   │   ├── users_controller.rb
+│   │   │   └── zones_controller.rb
+│   │   ├── application_controller.rb
+│   │   ├── campaigns_controller.rb
+│   │   ├── comments_controller.rb
+│   │   ├── companies_controller.rb
+│   │   ├── concerns
+│   │   │   ├── .keep
+│   │   │   ├── debit_freshnessable.rb
+│   │   │   ├── detection_widgetable.rb
+│   │   │   ├── establishment_trackings
+│   │   │   │   ├── contributors_manageable.rb
+│   │   │   │   ├── creatable.rb
+│   │   │   │   ├── exportable.rb
+│   │   │   │   ├── filterable.rb
+│   │   │   │   ├── loadable.rb
+│   │   │   │   ├── notifiable.rb
+│   │   │   │   ├── state_manageable.rb
+│   │   │   │   └── supporting_services_trackable.rb
+│   │   │   ├── forward_fillable.rb
+│   │   │   ├── list_export_trackable.rb
+│   │   │   ├── multiselect_parseable.rb
+│   │   │   ├── out_of_zone_trackable.rb
+│   │   │   ├── procol_statusable.rb
+│   │   │   └── siren_siret_redirectable.rb
+│   │   ├── contacts_controller.rb
+│   │   ├── establishment_trackings_controller.rb
+│   │   ├── establishments_controller.rb
+│   │   ├── lists_controller.rb
+│   │   ├── notifications_controller.rb
+│   │   ├── pages_controller.rb
+│   │   ├── statistics_controller.rb
+│   │   ├── summaries_controller.rb
+│   │   ├── users
+│   │   │   └── sessions_controller.rb
+│   │   └── users_controller.rb
+│   ├── helpers
+│   │   ├── application_helper.rb
+│   │   ├── campaigns_helper.rb
+│   │   ├── companies_helper.rb
+│   │   ├── establishment_trackings_helper.rb
+│   │   ├── lists_helper.rb
+│   │   └── titles_helper.rb
+│   ├── javascript
+│   │   ├── application.js
+│   │   ├── controllers
+│   │   │   ├── auto_resize_controller.js
+│   │   │   ├── confidentiality_modal_controller.js
+│   │   │   ├── download_controller.js
+│   │   │   ├── feedback_detection_controller.js
+│   │   │   ├── filters_toggle_controller.js
+│   │   │   ├── financial_chart_widget_controller.js
+│   │   │   ├── geo_search_controller.js
+│   │   │   ├── index.js
+│   │   │   ├── multiselect_controller.js
+│   │   │   ├── orthogonal_chart_widget_controller.js
+│   │   │   ├── ransack_sort_controller.js
+│   │   │   ├── segmented_control_widget_controller.js
+│   │   │   ├── set_time_zone.js
+│   │   │   ├── theme_controller.js
+│   │   │   ├── tom_select_controller.js
+│   │   │   ├── tracking_status_controller.js
+│   │   │   ├── view_toggle_controller.js
+│   │   │   └── waterfall_chart_widget_controller.js
+│   │   └── track_tabs.js
+│   ├── jobs
+│   │   └── application_job.rb
+│   ├── mailers
+│   │   ├── application_mailer.rb
+│   │   └── establishment_tracking_mailer.rb
+│   ├── models
+│   │   ├── activity_sector.rb
+│   │   ├── ahoy
+│   │   │   ├── event.rb
+│   │   │   └── visit.rb
+│   │   ├── app_setting.rb
+│   │   ├── application_record.rb
+│   │   ├── campaign.rb
+│   │   ├── campaign_company.rb
+│   │   ├── codefi_redirect.rb
+│   │   ├── comment.rb
+│   │   ├── company.rb
+│   │   ├── company_list.rb
+│   │   ├── company_list_rating.rb
+│   │   ├── company_score_entry.rb
+│   │   ├── concerns
+│   │   │   ├── .keep
+│   │   │   └── user
+│   │   │       └── omniauthable.rb
+│   │   ├── contact.rb
+│   │   ├── criticality.rb
+│   │   ├── department.rb
+│   │   ├── department_geo_access.rb
+│   │   ├── difficulty.rb
+│   │   ├── entity.rb
+│   │   ├── establishment.rb
+│   │   ├── establishment_tracking.rb
+│   │   ├── establishment_tracking_action.rb
+│   │   ├── establishment_tracking_label.rb
+│   │   ├── establishment_tracking_snapshot.rb
+│   │   ├── geo_access.rb
+│   │   ├── import.rb
+│   │   ├── list.rb
+│   │   ├── list_export_log.rb
+│   │   ├── network.rb
+│   │   ├── network_membership.rb
+│   │   ├── notification.rb
+│   │   ├── notification_read.rb
+│   │   ├── osf_ap.rb
+│   │   ├── osf_cotisation.rb
+│   │   ├── osf_debit.rb
+│   │   ├── osf_delai.rb
+│   │   ├── osf_effectif.rb
+│   │   ├── osf_ent_effectif.rb
+│   │   ├── osf_procol.rb
+│   │   ├── out_of_zone_access.rb
+│   │   ├── rating_reason.rb
+│   │   ├── rating_reasons_rating.rb
+│   │   ├── region.rb
+│   │   ├── role.rb
+│   │   ├── sector.rb
+│   │   ├── segment.rb
+│   │   ├── size.rb
+│   │   ├── sjcf_company.rb
+│   │   ├── summary.rb
+│   │   ├── supporting_service.rb
+│   │   ├── tracking_event.rb
+│   │   ├── tracking_label.rb
+│   │   ├── tracking_participant.rb
+│   │   ├── tracking_referent.rb
+│   │   ├── user.rb
+│   │   ├── user_action.rb
+│   │   ├── user_department.rb
+│   │   └── zone.rb
+│   ├── policies
+│   │   ├── application_policy.rb
+│   │   ├── comment_policy.rb
+│   │   ├── company_policy.rb
+│   │   ├── contact_policy.rb
+│   │   ├── establishment_tracking_policy.rb
+│   │   ├── summary_policy.rb
+│   │   └── user_policy.rb
+│   ├── services
+│   │   ├── api
+│   │   │   ├── banque_de_france_api_service.rb
+│   │   │   ├── base_api_service.rb
+│   │   │   ├── financial_ratios_api_service.rb
+│   │   │   ├── inpi_api_service.rb
+│   │   │   ├── insee_api_service.rb
+│   │   │   └── recherche_entreprises_api_service.rb
+│   │   ├── base_osf_sync_service.rb
+│   │   ├── companies
+│   │   │   ├── alert_history_builder.rb
+│   │   │   ├── ap_data_builder.rb
+│   │   │   ├── cotisations_series_builder.rb
+│   │   │   ├── debits_data_builder.rb
+│   │   │   ├── debits_series_builder.rb
+│   │   │   ├── delais_series_builder.rb
+│   │   │   ├── effectif_ap_series_builder.rb
+│   │   │   ├── establishment_enrichment_builder.rb
+│   │   │   ├── financial_data_builder.rb
+│   │   │   ├── insee_data_builder.rb
+│   │   │   ├── periods_builder.rb
+│   │   │   ├── urssaf_series_builder.rb
+│   │   │   └── waterfall_chart_builder.rb
+│   │   ├── establishment_tracking_snapshot_service.rb
+│   │   ├── establishments
+│   │   │   ├── effectif_ap_series_builder.rb
+│   │   │   ├── insee_data_builder.rb
+│   │   │   └── urssaf_series_builder.rb
+│   │   ├── excel
+│   │   │   ├── establishment_tracking_generator.rb
+│   │   │   └── list_generator.rb
+│   │   ├── osf
+│   │   │   ├── ap_sync_service.rb
+│   │   │   ├── cotisation_sync_service.rb
+│   │   │   ├── database_connection_service.rb
+│   │   │   ├── debit_sync_service.rb
+│   │   │   ├── delai_sync_service.rb
+│   │   │   ├── effectif_ent_sync_service.rb
+│   │   │   ├── effectif_sync_service.rb
+│   │   │   ├── procol_sync_service.rb
+│   │   │   ├── sirene_sync_service.rb
+│   │   │   └── sirene_ul_sync_service.rb
+│   │   └── users
+│   │       └── csv_importer.rb
+│   └── views
+│       ├── admin
+│       │   ├── app_settings
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── imports
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── notifications
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── users
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── import.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   └── zones
+│       │       ├── _form.html.erb
+│       │       ├── edit.html.erb
+│       │       ├── index.html.erb
+│       │       └── new.html.erb
+│       ├── comments
+│       │   ├── _comment.html.erb
+│       │   ├── _form.html.erb
+│       │   ├── create.turbo_stream.erb
+│       │   ├── destroy.turbo_stream.erb
+│       │   ├── edit.turbo_stream.erb
+│       │   └── update.turbo_stream.erb
+│       ├── companies
+│       │   ├── _companies_table.html.erb
+│       │   ├── _data_effectif_ap_widget.html.erb
+│       │   ├── _data_panel_with_widgets.html.erb
+│       │   ├── _data_urssaf_widget.html.erb
+│       │   ├── _detection_widget.html.erb
+│       │   ├── _establishment_trackings_list_panel.html.erb
+│       │   ├── _establishment_trackings_list_table.html.erb
+│       │   ├── _establishment_trackings_list_widget.html.erb
+│       │   ├── _establishments_widget.html.erb
+│       │   ├── _feedback_detection_widget.html.erb
+│       │   ├── _filters.html.erb
+│       │   ├── _financial_panel.html.erb
+│       │   ├── _financial_widget.html.erb
+│       │   ├── _history_detection_widget.html.erb
+│       │   ├── _info_panel.html.erb
+│       │   ├── _info_panel_with_widgets.html.erb
+│       │   ├── _insee_widget.html.erb
+│       │   ├── _waterfall_detection_widget.html.erb
+│       │   ├── index.html.erb
+│       │   └── show.html.erb
+│       ├── contacts
+│       │   ├── _form.html.erb
+│       │   ├── edit.html.erb
+│       │   └── new.html.erb
+│       ├── devise
+│       │   ├── confirmations
+│       │   │   └── new.html.erb
+│       │   ├── mailer
+│       │   │   ├── confirmation_instructions.html.erb
+│       │   │   ├── email_changed.html.erb
+│       │   │   ├── password_change.html.erb
+│       │   │   ├── reset_password_instructions.html.erb
+│       │   │   └── unlock_instructions.html.erb
+│       │   ├── passwords
+│       │   │   ├── edit.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── registrations
+│       │   │   ├── edit.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── sessions
+│       │   │   └── new.html.erb
+│       │   ├── shared
+│       │   │   ├── _error_messages.html.erb
+│       │   │   └── _links.html.erb
+│       │   └── unlocks
+│       │       └── new.html.erb
+│       ├── establishment_tracking_mailer
+│       │   ├── contributor_added.html.erb
+│       │   └── contributor_added.text.erb
+│       ├── establishment_trackings
+│       │   ├── _establishment_trackings_table.html.erb
+│       │   ├── _filters.html.erb
+│       │   ├── _info_panel.html.erb
+│       │   ├── confirm.html.erb
+│       │   ├── edit.html.erb
+│       │   ├── index.html.erb
+│       │   ├── info_panel
+│       │   │   ├── _company_trackings.html.erb
+│       │   │   ├── _contacts_list.html.erb
+│       │   │   └── _tracking_history.html.erb
+│       │   ├── manage_contributors.html.erb
+│       │   ├── new.html.erb
+│       │   ├── remove_participant.turbo_stream.erb
+│       │   ├── remove_referent.turbo_stream.erb
+│       │   └── show.html.erb
+│       ├── establishments
+│       │   ├── _data_effectif_ap_widget.html.erb
+│       │   ├── _data_panel_with_widgets.html.erb
+│       │   ├── _data_urssaf_widget.html.erb
+│       │   ├── _establishment_trackings_list_panel.html.erb
+│       │   ├── _establishment_trackings_list_widget.html.erb
+│       │   ├── _establishment_trackings_row.html.erb
+│       │   ├── _establishment_trackings_table_light.html.erb
+│       │   ├── _establishments_table.html.erb
+│       │   ├── _info_panel_with_widgets.html.erb
+│       │   ├── _insee_widget.html.erb
+│       │   ├── index.html.erb
+│       │   └── show.html.erb
+│       ├── kaminari
+│       │   ├── _first_page.html.erb
+│       │   ├── _gap.html.erb
+│       │   ├── _last_page.html.erb
+│       │   ├── _next_page.html.erb
+│       │   ├── _page.html.erb
+│       │   ├── _paginator.html.erb
+│       │   └── _prev_page.html.erb
+│       ├── layouts
+│       │   ├── _footer.html.erb
+│       │   ├── _header.html.erb
+│       │   ├── _main_navigation.html.erb
+│       │   ├── _sentry.html.erb
+│       │   ├── _theme_modal.html.erb
+│       │   ├── admin
+│       │   │   └── application.html.erb
+│       │   ├── application.html.erb
+│       │   ├── devise.html.erb
+│       │   ├── mailer.html.erb
+│       │   └── mailer.text.erb
+│       ├── lists
+│       │   ├── _company_card.html.erb
+│       │   ├── _search_form.html.erb
+│       │   ├── alert_breakdown.html.erb
+│       │   ├── enrich_company.html.erb
+│       │   ├── index.html.erb
+│       │   ├── load_more.turbo_stream.erb
+│       │   └── show.html.erb
+│       ├── notifications
+│       │   ├── index.html.erb
+│       │   └── show.html.erb
+│       ├── pages
+│       │   ├── _result_card.html.erb
+│       │   ├── _search_form.html.erb
+│       │   ├── accessibilite.html.erb
+│       │   ├── home.html.erb
+│       │   ├── search.html.erb
+│       │   ├── support.html.erb
+│       │   └── unauthorized.html.erb
+│       ├── shared
+│       │   ├── _data_state.html.erb
+│       │   ├── _error.html.erb
+│       │   └── _flash.html.erb
+│       ├── statistics
+│       │   └── index.html.erb
+│       └── summaries
+│           ├── _form.html.erb
+│           ├── _summary.html.erb
+│           ├── cancel.turbo_stream.erb
+│           ├── create.turbo_stream.erb
+│           ├── edit.turbo_stream.erb
+│           └── update.turbo_stream.erb
+├── bin
+│   ├── bundle
+│   ├── dev
+│   ├── docker-entrypoint
+│   ├── importmap
+│   ├── jobs
+│   ├── rails
+│   ├── rake
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── cable.yml
+│   ├── database.yml
+│   ├── database.yml.example
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── importmap.rb
+│   ├── initializers
+│   │   ├── ahoy.rb
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── devise.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── fix_hidden_field_autocomplete.rb
+│   │   ├── inflections.rb
+│   │   ├── kaminari_config.rb
+│   │   ├── mail_logger_interceptor.rb
+│   │   ├── mime_types.rb
+│   │   ├── paper_trail.rb
+│   │   ├── permissions_policy.rb
+│   │   ├── prometheus.rb
+│   │   └── sentry.rb
+│   ├── locales
+│   │   ├── devise.en.yml
+│   │   ├── devise.fr.yml
+│   │   ├── en.yml
+│   │   └── fr.yml
+│   ├── puma.rb
+│   ├── queue.yml
+│   ├── recurring.yml
+│   ├── routes.rb
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── migrate
+│   │   ├── 20240606093902_create_establishments.rb
+│   │   ├── 20240607144403_create_campaigns.rb
+│   │   ├── 20240607144415_create_campaign_memberships.rb
+│   │   ├── 20240608185525_create_departments.rb
+│   │   ├── 20240608185536_add_department_to_establishments.rb
+│   │   ├── 20240608190142_change_department_not_null_in_establishments.rb
+│   │   ├── 20240608200527_devise_create_users.rb
+│   │   ├── 20240608200613_add_trackable_to_users.rb
+│   │   ├── 20240609184714_create_establishment_followers.rb
+│   │   ├── 20240619131821_add_omniauth_to_users.rb
+│   │   ├── 20240620124213_add_id_token_to_users.rb
+│   │   ├── 20240625073227_add_wekan_document_id_to_users.rb
+│   │   ├── 20240628092813_add_unique_index_to_establishments_siret.rb
+│   │   ├── 20240704190247_create_roles.rb
+│   │   ├── 20240704190257_create_join_table_users_roles.rb
+│   │   ├── 20240711144647_drop_establishment_followers.rb
+│   │   ├── 20240712092902_create_establishment_trackings.rb
+│   │   ├── 20240712093006_create_tracking_participants.rb
+│   │   ├── 20240716135722_create_activity_sectors.rb
+│   │   ├── 20240716141053_add_activity_sector_to_establishments.rb
+│   │   ├── 20240717084417_add_level_one_activity_sector_to_establishments.rb
+│   │   ├── 20240717132130_create_companies.rb
+│   │   ├── 20240717132235_add_company_to_establishments.rb
+│   │   ├── 20240718085055_remove_parent_company_id_from_establishments.rb
+│   │   ├── 20240718090459_add_is_siege_to_establishments.rb
+│   │   ├── 20240718131720_add_parent_establishment_id_to_establishments.rb
+│   │   ├── 20240718142116_drop_campaign_memberships.rb
+│   │   ├── 20240718142204_create_campaign_companies.rb
+│   │   ├── 20240718172117_create_lists.rb
+│   │   ├── 20240718173437_create_company_lists.rb
+│   │   ├── 20240718193653_add_department_to_companies.rb
+│   │   ├── 20240718194541_add_activity_sector_to_companies.rb
+│   │   ├── 20240814134832_create_entities.rb
+│   │   ├── 20240814134846_create_segments.rb
+│   │   ├── 20240814135001_add_entity_and_segment_to_users.rb
+│   │   ├── 20240814145316_add_level_and_description_to_users.rb
+│   │   ├── 20240814153847_create_geo_accesses.rb
+│   │   ├── 20240814154001_add_geo_access_to_users.rb
+│   │   ├── 20240820085404_create_tracking_referents.rb
+│   │   ├── 20240820100834_create_tracking_labels.rb
+│   │   ├── 20240820100938_create_establishment_tracking_labels.rb
+│   │   ├── 20240821132401_create_regions.rb
+│   │   ├── 20240821132437_add_region_to_departments.rb
+│   │   ├── 20240822071729_create_user_departments.rb
+│   │   ├── 20240822071737_create_user_regions.rb
+│   │   ├── 20240822191637_create_department_geo_accesses.rb
+│   │   ├── 20240822192111_drop_user_regions.rb
+│   │   ├── 20240903082827_create_summaries.rb
+│   │   ├── 20240903082843_create_comments.rb
+│   │   ├── 20240903100100_add_is_codefi_to_summaries.rb
+│   │   ├── 20240903160204_add_is_codefi_to_comments.rb
+│   │   ├── 20240904091045_add_user_to_comments.rb
+│   │   ├── 20240906131139_rename_status_to_state_in_establishment_trackings.rb
+│   │   ├── 20240930151318_create_actions.rb
+│   │   ├── 20240930151621_create_establishment_tracking_actions.rb
+│   │   ├── 20241001131200_add_discarded_at_to_users.rb
+│   │   ├── 20241002110136_create_versions.rb
+│   │   ├── 20241007140347_add_unique_indexes_to_summaries.rb
+│   │   ├── 20241010084904_add_unique_index_to_establishment_trackings_in_progress.rb
+│   │   ├── 20241011115239_create_label_groups.rb
+│   │   ├── 20241011115359_add_label_group_to_tracking_labels.rb
+│   │   ├── 20241014125930_add_locking_to_summaries.rb
+│   │   ├── 20241018164240_add_contact_column_to_establishment_tracking.rb
+│   │   ├── 20241021152100_add_discarded_at_to_establishment_trackings.rb
+│   │   ├── 20241115093941_create_networks.rb
+│   │   ├── 20241115141441_remove_segment_from_summaries.rb
+│   │   ├── 20241115141502_add_network_to_summaries.rb
+│   │   ├── 20241115141519_remove_segment_from_comments.rb
+│   │   ├── 20241115141552_add_network_to_comments.rb
+│   │   ├── 20241119103703_add_unique_index_to_summaries.rb
+│   │   ├── 20241128104938_create_sizes.rb
+│   │   ├── 20241128104946_create_sectors.rb
+│   │   ├── 20241128104957_create_criticalities.rb
+│   │   ├── 20241128105842_add_size_and_criticality_to_establishment_trackings.rb
+│   │   ├── 20241128105844_create_establishment_tracking_sectors.rb
+│   │   ├── 20241128143715_remove_label_group_reference_from_tracking_labels.rb
+│   │   ├── 20241128143728_drop_label_groups_table.rb
+│   │   ├── 20241209102310_add_time_zone_to_users.rb
+│   │   ├── 20241211152436_add_modified_at_to_establishment_trackings.rb
+│   │   ├── 20250115000003_create_osf_ap.rb
+│   │   ├── 20250115000004_drop_legacy_osf_tables.rb
+│   │   ├── 20250204131152_create_contacts.rb
+│   │   ├── 20250219135402_add_description_to_contact.rb
+│   │   ├── 20250307140825_add_active_to_networks.rb
+│   │   ├── 20250307171933_create_difficulties.rb
+│   │   ├── 20250307172043_create_join_table_establishment_trackings_difficulties.rb
+│   │   ├── 20250311101452_rename_action_to_user_action.rb
+│   │   ├── 20250311105714_create_codefi_redirects.rb
+│   │   ├── 20250311105802_create_join_table_establishment_trackings_codefi_redirects.rb
+│   │   ├── 20250321154427_make_company_mandatory_for_establishments.rb
+│   │   ├── 20250324150812_create_supporting_services.rb
+│   │   ├── 20250324150917_create_establishment_tracking_supporting_services.rb
+│   │   ├── 20250326085418_add_position_to_user_actions.rb
+│   │   ├── 20250326093418_add_position_to_codefi_redirects.rb
+│   │   ├── 20250408142318_add_object_changes_to_versions.rb
+│   │   ├── 20250617130331_add_discarded_at_to_user_actions.rb
+│   │   ├── 20250618141705_add_discarded_at_to_tracking_labels.rb
+│   │   ├── 20250703131455_create_ahoy_visits_and_events.rb
+│   │   ├── 20250708131200_create_tracking_events.rb
+│   │   ├── 20250708131243_create_establishment_tracking_snapshots.rb
+│   │   ├── 20250807092701_create_osf_apconso.rb
+│   │   ├── 20250807092718_create_osf_apdemande.rb
+│   │   ├── 20251007132906_create_osf_effectifs.rb
+│   │   ├── 20251028135842_remove_fields_from_establishments.rb
+│   │   ├── 20251029091900_reshape_companies_for_new_schema.rb
+│   │   ├── 20251031110334_add_establishment_siret_to_establishment_trackings.rb
+│   │   ├── 20251031110451_finalize_siret_link_and_drop_old_establishment_id.rb
+│   │   ├── 20251031135649_add_unique_index_for_in_progress_trackings_on_siret.rb
+│   │   ├── 20251103120413_add_establishment_siret_to_contacts.rb
+│   │   ├── 20251103120441_finalize_siret_link_for_contacts_and_drop_old_establishment_id.rb
+│   │   ├── 20251103151934_remove_foreign_keys_from_establishments_and_related_tables.rb
+│   │   ├── 20251104101754_create_osf_ent_effectifs.rb
+│   │   ├── 20251106135730_create_osf_cotisations.rb
+│   │   ├── 20251106143721_create_osf_delais.rb
+│   │   ├── 20251106144248_create_osf_debits.rb
+│   │   ├── 20251117134406_create_company_score_entries.rb
+│   │   ├── 20251117134500_add_defaults_to_company_score_entries_timestamps.rb
+│   │   ├── 20251121083444_change_company_lists_to_use_siren.rb
+│   │   ├── 20251121084906_change_company_score_entries_to_use_list_name.rb
+│   │   ├── 20251126150412_add_composite_index_to_company_score_entries.rb
+│   │   ├── 20251127150829_create_osf_procols.rb
+│   │   ├── 20251201165909_add_siren_to_osf_procols.rb
+│   │   ├── 20251201170000_create_procol_at_date_function.rb
+│   │   ├── 20251202115823_add_list_date_to_lists.rb
+│   │   ├── 20251203141608_fix_procol_at_date_function.rb
+│   │   ├── 20251203155502_add_naf_code_to_companies.rb
+│   │   ├── 20251208102214_change_naf_code_limit_in_companies.rb
+│   │   ├── 20251209091842_add_naf_section_to_companies.rb
+│   │   ├── 20251209093628_add_department_code_to_companies.rb
+│   │   ├── 20251210135923_add_siren_index_to_establishments.rb
+│   │   ├── 20251210143944_add_is_last_to_osf_debits.rb
+│   │   ├── 20251210164442_add_is_active_to_establishments.rb
+│   │   ├── 20251210171355_add_is_last_to_osf_aps.rb
+│   │   ├── 20251210172346_add_is_latest_to_osf_effectifs.rb
+│   │   ├── 20251210172352_add_is_latest_to_osf_ent_effectifs.rb
+│   │   ├── 20251211135426_add_address_to_establishments_and_remove_address_fields.rb
+│   │   ├── 20251211143512_create_sjcf_companies.rb
+│   │   ├── 20251215090615_add_defaults_to_sjcf_companies_timestamps.rb
+│   │   ├── 20251215135752_change_osf_procols_to_use_siren_only.rb
+│   │   ├── 20251216140000_add_libelle_procol_to_osf_procols.rb
+│   │   ├── 20251216140001_update_procol_at_date_function_to_include_libelle_procol.rb
+│   │   ├── 20251218160000_add_index_on_company_score_entries_list_name_and_siren.rb
+│   │   ├── 20251220160000_add_performance_indexes_for_lists_controller.rb
+│   │   ├── 20251220172255_add_last_confidentiality_acknowledged_at_to_users.rb
+│   │   ├── 20251221100000_create_rating_reasons.rb
+│   │   ├── 20251221100001_create_company_list_ratings.rb
+│   │   ├── 20251221100002_create_rating_reasons_ratings.rb
+│   │   ├── 20251221100003_change_user_id_to_user_email_in_company_list_ratings.rb
+│   │   ├── 20260120161457_create_out_of_zone_accesses.rb
+│   │   ├── 20260121132237_create_list_export_logs.rb
+│   │   ├── 20260121153743_add_libelles_and_is_active_to_companies.rb
+│   │   ├── 20260122000000_add_index_for_excel_export_tracking_queries.rb
+│   │   ├── 20260122000001_add_composite_index_to_osf_procols_for_excel_export.rb
+│   │   ├── 20260123000000_add_index_for_siege_establishments_excel_export.rb
+│   │   ├── 20260128000000_create_app_settings.rb
+│   │   ├── 20260129000000_add_sjcf_filter_active_to_lists.rb
+│   │   ├── 20260209085758_create_imports.rb
+│   │   ├── 20260212120000_add_entreprises_recentes_filter_date_to_app_settings.rb
+│   │   ├── 20260226120000_update_procol_at_date_function_filter_terminated_procols.rb
+│   │   ├── 20260227120000_add_defaults_to_rating_reasons_ratings_timestamps.rb
+│   │   ├── 20260227131000_add_primary_key_to_codefi_redirects_establishment_trackings.rb
+│   │   ├── 20260227132000_add_primary_key_to_difficulties_establishment_trackings.rb
+│   │   ├── 20260306120000_add_admin_fields_to_users.rb
+│   │   ├── 20260318120000_create_notifications.rb
+│   │   ├── 20260318121000_add_show_as_flash_to_notifications.rb
+│   │   ├── 20260319120000_add_index_to_company_score_entries_list_name_siren_created_at.rb
+│   │   ├── 20260320080000_remove_wekan_document_id_from_users.rb
+│   │   ├── 20260320090000_drop_redundant_indexes_on_company_score_entries.rb
+│   │   ├── 20260324200000_add_partial_index_to_establishments_siege.rb
+│   │   ├── 20260326100000_fix_procol_at_date_function_filter_column.rb
+│   │   ├── 20260401120000_add_siret_siege_to_companies.rb
+│   │   ├── 20260401130000_add_social_debt_total_to_companies.rb
+│   │   ├── 20260401140000_add_latest_effectif_to_companies.rb
+│   │   ├── 20260401150000_add_current_procol_status_to_companies.rb
+│   │   ├── 20260401160000_add_score_and_alert_to_company_lists.rb
+│   │   ├── 20260401170000_add_cascade_delete_to_company_lists_fk.rb
+│   │   ├── 20260401180000_add_score_breakdown_to_company_lists.rb
+│   │   ├── 20260401190000_add_tracking_and_delai_to_companies.rb
+│   │   ├── 20260401200000_add_covering_index_to_company_lists.rb
+│   │   ├── 20260423100000_create_zones.rb
+│   │   ├── 20260507144800_add_partial_index_to_osf_effectifs_latest.rb
+│   │   └── 20260518180000_add_index_to_osf_procols_for_procol_status_distinct_on.rb
+│   ├── queue_schema.rb
+│   ├── schema.rb
+│   ├── seeds
+│   │   ├── actions_seeds.rb
+│   │   ├── activity_sectors_seeds.rb
+│   │   ├── departments_seeds.rb
+│   │   ├── establishments_seeds.rb
+│   │   ├── geo_accesses_seed.rb
+│   │   ├── labels_and_tracking_metadata_seeds.rb
+│   │   ├── naf_codes.csv
+│   │   ├── networks_entities_segments_seeds.rb
+│   │   ├── test_establishments_seeds.rb
+│   │   ├── trackings_seeds.rb
+│   │   └── users_seeds.rb
+│   └── seeds.rb
+├── docker-compose.yml
+├── erd.pdf
+├── filtered_lines.csv
+├── lib
+│   ├── assets
+│   │   └── .keep
+│   └── tasks
+│       ├── .keep
+│       ├── companies_delai_urssaf.rake
+│       ├── companies_latest_effectif.rake
+│       ├── companies_procol_status.rake
+│       ├── companies_social_debt.rake
+│       ├── companies_tracking_status.rake
+│       ├── company_lists_rebuild.rake
+│       ├── osf_ap_sync.rake
+│       ├── osf_cotisation_sync.rake
+│       ├── osf_debit_sync.rake
+│       ├── osf_delai_sync.rake
+│       ├── osf_effectif_ent_sync.rake
+│       ├── osf_effectif_sync.rake
+│       ├── osf_procol_sync.rake
+│       ├── osf_sirene_sync.rake
+│       ├── osf_sirene_ul_sync.rake
+│       ├── osf_sync_all.rake
+│       └── sentry.rake
+├── log
+│   └── .keep
+├── public
+│   ├── 404.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   ├── fonts
+│   │   ├── Marianne-Bold.woff
+│   │   ├── Marianne-Bold.woff2
+│   │   ├── Marianne-Bold_Italic.woff
+│   │   ├── Marianne-Bold_Italic.woff2
+│   │   ├── Marianne-Light.woff
+│   │   ├── Marianne-Light.woff2
+│   │   ├── Marianne-Light_Italic.woff
+│   │   ├── Marianne-Light_Italic.woff2
+│   │   ├── Marianne-Medium.woff
+│   │   ├── Marianne-Medium.woff2
+│   │   ├── Marianne-Medium_Italic.woff
+│   │   ├── Marianne-Medium_Italic.woff2
+│   │   ├── Marianne-Regular.woff
+│   │   ├── Marianne-Regular.woff2
+│   │   ├── Marianne-Regular_Italic.woff
+│   │   ├── Marianne-Regular_Italic.woff2
+│   │   ├── Spectral-ExtraBold.woff
+│   │   ├── Spectral-ExtraBold.woff2
+│   │   ├── Spectral-Regular.woff
+│   │   └── Spectral-Regular.woff2
+│   ├── icons
+│   │   ├── arrows
+│   │   │   ├── arrow-*.svg  (44 files)
+│   │   │   ├── contract-*.svg  (8 files)
+│   │   │   ├── corner-*.svg  (16 files)
+│   │   │   ├── expand-*.svg  (8 files)
+│   │   │   ├── fr--arrow-left-s-first-line.svg
+│   │   │   ├── fr--arrow-left-s-line-double.svg
+│   │   │   ├── fr--arrow-right-s-last-line.svg
+│   │   │   ├── fr--arrow-right-s-line-double.svg
+│   │   │   ├── skip-down-fill.svg
+│   │   │   ├── skip-down-line.svg
+│   │   │   ├── skip-up-fill.svg
+│   │   │   └── skip-up-line.svg
+│   │   ├── buildings
+│   │   │   ├── ancient-gate-fill.svg
+│   │   │   ├── ancient-gate-line.svg
+│   │   │   ├── ancient-pavilion-fill.svg
+│   │   │   ├── ancient-pavilion-line.svg
+│   │   │   ├── bank-fill.svg
+│   │   │   ├── bank-line.svg
+│   │   │   ├── building-4-fill.svg
+│   │   │   ├── building-4-line.svg
+│   │   │   ├── building-fill.svg
+│   │   │   ├── building-line.svg
+│   │   │   ├── community-fill.svg
+│   │   │   ├── community-line.svg
+│   │   │   ├── government-fill.svg
+│   │   │   ├── government-line.svg
+│   │   │   ├── home-4-fill.svg
+│   │   │   ├── home-4-line.svg
+│   │   │   ├── home-office-fill.svg
+│   │   │   ├── home-office-line.svg
+│   │   │   ├── hospital-fill.svg
+│   │   │   ├── hospital-line.svg
+│   │   │   ├── hotel-fill.svg
+│   │   │   ├── hotel-line.svg
+│   │   │   ├── school-fill.svg
+│   │   │   ├── school-line.svg
+│   │   │   ├── store-fill.svg
+│   │   │   ├── store-line.svg
+│   │   │   ├── tent-fill.svg
+│   │   │   └── tent-line.svg
+│   │   ├── business
+│   │   │   ├── archive-drawer-fill.svg
+│   │   │   ├── archive-drawer-line.svg
+│   │   │   ├── archive-fill.svg
+│   │   │   ├── archive-line.svg
+│   │   │   ├── at-fill.svg
+│   │   │   ├── at-line.svg
+│   │   │   ├── attachment-fill.svg
+│   │   │   ├── attachment-line.svg
+│   │   │   ├── award-fill.svg
+│   │   │   ├── award-line.svg
+│   │   │   ├── bar-*.svg  (8 files)
+│   │   │   ├── bookmark-fill.svg
+│   │   │   ├── bookmark-line.svg
+│   │   │   ├── briefcase-fill.svg
+│   │   │   ├── briefcase-line.svg
+│   │   │   ├── bubble-chart-fill.svg
+│   │   │   ├── bubble-chart-line.svg
+│   │   │   ├── calculator-fill.svg
+│   │   │   ├── calculator-line.svg
+│   │   │   ├── calendar-*.svg  (12 files)
+│   │   │   ├── cloud-fill.svg
+│   │   │   ├── cloud-line.svg
+│   │   │   ├── cloud-off-fill.svg
+│   │   │   ├── cloud-off-line.svg
+│   │   │   ├── copyright-fill.svg
+│   │   │   ├── copyright-line.svg
+│   │   │   ├── customer-service-fill.svg
+│   │   │   ├── customer-service-line.svg
+│   │   │   ├── donut-chart-fill.svg
+│   │   │   ├── donut-chart-line.svg
+│   │   │   ├── flag-fill.svg
+│   │   │   ├── flag-line.svg
+│   │   │   ├── global-fill.svg
+│   │   │   ├── global-line.svg
+│   │   │   ├── honour-fill.svg
+│   │   │   ├── honour-line.svg
+│   │   │   ├── inbox-*.svg  (8 files)
+│   │   │   ├── line-chart-fill.svg
+│   │   │   ├── line-chart-line.svg
+│   │   │   ├── links-fill.svg
+│   │   │   ├── links-line.svg
+│   │   │   ├── mail-*.svg  (26 files)
+│   │   │   ├── medal-fill.svg
+│   │   │   ├── medal-line.svg
+│   │   │   ├── megaphone-fill.svg
+│   │   │   ├── megaphone-line.svg
+│   │   │   ├── pass-*.svg  (6 files)
+│   │   │   ├── pie-*.svg  (6 files)
+│   │   │   ├── presentation-fill.svg
+│   │   │   ├── presentation-line.svg
+│   │   │   ├── printer-cloud-fill.svg
+│   │   │   ├── printer-cloud-line.svg
+│   │   │   ├── printer-fill.svg
+│   │   │   ├── printer-line.svg
+│   │   │   ├── profil-fill.svg
+│   │   │   ├── profil-line.svg
+│   │   │   ├── projector-2-fill.svg
+│   │   │   ├── projector-2-line.svg
+│   │   │   ├── record-mail-fill.svg
+│   │   │   ├── record-mail-line.svg
+│   │   │   ├── reply-all-fill.svg
+│   │   │   ├── reply-all-line.svg
+│   │   │   ├── reply-fill.svg
+│   │   │   ├── reply-line.svg
+│   │   │   ├── send-plane-fill.svg
+│   │   │   ├── send-plane-line.svg
+│   │   │   ├── seo-fill.svg
+│   │   │   ├── seo-line.svg
+│   │   │   ├── service-fill.svg
+│   │   │   ├── service-line.svg
+│   │   │   ├── shake-hands-fill.svg
+│   │   │   ├── shake-hands-line.svg
+│   │   │   ├── slideshow-fill.svg
+│   │   │   ├── slideshow-line.svg
+│   │   │   ├── stack-fill.svg
+│   │   │   ├── stack-line.svg
+│   │   │   ├── window-2-fill.svg
+│   │   │   ├── window-2-line.svg
+│   │   │   ├── window-fill.svg
+│   │   │   └── window-line.svg
+│   │   ├── communication
+│   │   │   ├── chat-*.svg  (32 files)
+│   │   │   ├── discuss-fill.svg
+│   │   │   ├── discuss-line.svg
+│   │   │   ├── emoji-sticker-fill.svg
+│   │   │   ├── emoji-sticker-line.svg
+│   │   │   ├── feedback-fill.svg
+│   │   │   ├── feedback-line.svg
+│   │   │   ├── message-2-fill.svg
+│   │   │   ├── message-2-line.svg
+│   │   │   ├── message-3-fill.svg
+│   │   │   ├── message-3-line.svg
+│   │   │   ├── question-answer-fill.svg
+│   │   │   ├── question-answer-line.svg
+│   │   │   ├── questionnaire-fill.svg
+│   │   │   ├── questionnaire-line.svg
+│   │   │   ├── speak-fill.svg
+│   │   │   ├── speak-line.svg
+│   │   │   ├── video-chat-fill.svg
+│   │   │   └── video-chat-line.svg
+│   │   ├── design
+│   │   │   ├── anticlockwise-fill.svg
+│   │   │   ├── anticlockwise-line.svg
+│   │   │   ├── artboard-fill.svg
+│   │   │   ├── artboard-line.svg
+│   │   │   ├── ball-pen-fill.svg
+│   │   │   ├── ball-pen-line.svg
+│   │   │   ├── blur-off-fill.svg
+│   │   │   ├── blur-off-line.svg
+│   │   │   ├── brush-3-fill.svg
+│   │   │   ├── brush-3-line.svg
+│   │   │   ├── brush-fill.svg
+│   │   │   ├── brush-line.svg
+│   │   │   ├── circle-fill.svg
+│   │   │   ├── circle-line.svg
+│   │   │   ├── clockwise-fill.svg
+│   │   │   ├── clockwise-line.svg
+│   │   │   ├── collage-fill.svg
+│   │   │   ├── collage-line.svg
+│   │   │   ├── compasses-2-fill.svg
+│   │   │   ├── compasses-2-line.svg
+│   │   │   ├── contrast-drop-2-fill.svg
+│   │   │   ├── contrast-drop-2-line.svg
+│   │   │   ├── contrast-fill.svg
+│   │   │   ├── contrast-line.svg
+│   │   │   ├── crop-fill.svg
+│   │   │   ├── crop-line.svg
+│   │   │   ├── crosshair-2-fill.svg
+│   │   │   ├── crosshair-2-line.svg
+│   │   │   ├── drag-drop-fill.svg
+│   │   │   ├── drag-drop-line.svg
+│   │   │   ├── drag-move-2-fill.svg
+│   │   │   ├── drag-move-2-line.svg
+│   │   │   ├── drop-fill.svg
+│   │   │   ├── drop-line.svg
+│   │   │   ├── edit-*.svg  (6 files)
+│   │   │   ├── eraser-fill-1.svg
+│   │   │   ├── eraser-fill.svg
+│   │   │   ├── eraser-line-1.svg
+│   │   │   ├── eraser-line.svg
+│   │   │   ├── focus-3-fill.svg
+│   │   │   ├── focus-3-line.svg
+│   │   │   ├── grid-fill.svg
+│   │   │   ├── grid-line.svg
+│   │   │   ├── hammer-fill.svg
+│   │   │   ├── hammer-line.svg
+│   │   │   ├── hexagon-fill.svg
+│   │   │   ├── hexagon-line.svg
+│   │   │   ├── ink-bottle-fill.svg
+│   │   │   ├── ink-bottle-line.svg
+│   │   │   ├── layout-*.svg  (18 files)
+│   │   │   ├── magic-fill.svg
+│   │   │   ├── magic-line.svg
+│   │   │   ├── mark-pen-fill.svg
+│   │   │   ├── mark-pen-line.svg
+│   │   │   ├── markup-fill.svg
+│   │   │   ├── markup-line.svg
+│   │   │   ├── octagon-fill.svg
+│   │   │   ├── octagon-line.svg
+│   │   │   ├── paint-brush-fill.svg
+│   │   │   ├── paint-brush-line.svg
+│   │   │   ├── paint-fill.svg
+│   │   │   ├── paint-line.svg
+│   │   │   ├── palette-fill.svg
+│   │   │   ├── palette-line.svg
+│   │   │   ├── pantone-fill.svg
+│   │   │   ├── pantone-line.svg
+│   │   │   ├── pen-nib-fill.svg
+│   │   │   ├── pen-nib-line.svg
+│   │   │   ├── pencil-fill.svg
+│   │   │   ├── pencil-line.svg
+│   │   │   ├── pencil-ruler-fill.svg
+│   │   │   ├── pencil-ruler-line.svg
+│   │   │   ├── pentagon-fill.svg
+│   │   │   ├── pentagon-line.svg
+│   │   │   ├── quill-pen-fill.svg
+│   │   │   ├── quill-pen-line.svg
+│   │   │   ├── rectangle-fill.svg
+│   │   │   ├── rectangle-line.svg
+│   │   │   ├── ruler-fill.svg
+│   │   │   ├── ruler-line.svg
+│   │   │   ├── scissors-cut-fill.svg
+│   │   │   ├── scissors-cut-line.svg
+│   │   │   ├── scissors-fill.svg
+│   │   │   ├── scissors-line.svg
+│   │   │   ├── screenshot-2-fill.svg
+│   │   │   ├── screenshot-2-line.svg
+│   │   │   ├── shape-fill.svg
+│   │   │   ├── shape-line.svg
+│   │   │   ├── shapes-fill.svg
+│   │   │   ├── shapes-line.svg
+│   │   │   ├── sip-fill.svg
+│   │   │   ├── sip-line.svg
+│   │   │   ├── slice-fill.svg
+│   │   │   ├── slice-line.svg
+│   │   │   ├── square-fill.svg
+│   │   │   ├── square-line.svg
+│   │   │   ├── table-alt-fill.svg
+│   │   │   ├── table-alt-line.svg
+│   │   │   ├── table-fill.svg
+│   │   │   ├── table-line.svg
+│   │   │   ├── tools-fill.svg
+│   │   │   ├── tools-line.svg
+│   │   │   ├── triangle-fill.svg
+│   │   │   └── triangle-line.svg
+│   │   ├── development
+│   │   │   ├── braces-fill.svg
+│   │   │   ├── braces-line.svg
+│   │   │   ├── brackets-fill.svg
+│   │   │   ├── brackets-line.svg
+│   │   │   ├── bug-fill.svg
+│   │   │   ├── bug-line.svg
+│   │   │   ├── code-box-fill.svg
+│   │   │   ├── code-box-line.svg
+│   │   │   ├── code-fill.svg
+│   │   │   ├── code-line.svg
+│   │   │   ├── code-s-slash-fill.svg
+│   │   │   ├── code-s-slash-line.svg
+│   │   │   ├── command-fill.svg
+│   │   │   ├── command-line.svg
+│   │   │   ├── css3-fill.svg
+│   │   │   ├── css3-line.svg
+│   │   │   ├── cursor-fill.svg
+│   │   │   ├── cursor-line.svg
+│   │   │   ├── git-branch-fill.svg
+│   │   │   ├── git-branch-line.svg
+│   │   │   ├── git-close-pull-request-fill.svg
+│   │   │   ├── git-close-pull-request-line.svg
+│   │   │   ├── git-commit-fill.svg
+│   │   │   ├── git-commit-line.svg
+│   │   │   ├── git-merge-fill.svg
+│   │   │   ├── git-merge-line.svg
+│   │   │   ├── git-pull-request-fill.svg
+│   │   │   ├── git-pull-request-line.svg
+│   │   │   ├── git-repository-commits-fill.svg
+│   │   │   ├── git-repository-commits-line.svg
+│   │   │   ├── git-repository-fill.svg
+│   │   │   ├── git-repository-line.svg
+│   │   │   ├── git-repository-private-fill.svg
+│   │   │   ├── git-repository-private-line.svg
+│   │   │   ├── html5-fill.svg
+│   │   │   ├── html5-line.svg
+│   │   │   ├── javascript-fill.svg
+│   │   │   ├── javascript-line.svg
+│   │   │   ├── parentheses-fill.svg
+│   │   │   ├── parentheses-line.svg
+│   │   │   ├── terminal-box-fill.svg
+│   │   │   ├── terminal-box-line.svg
+│   │   │   ├── terminal-fill.svg
+│   │   │   ├── terminal-line.svg
+│   │   │   ├── terminal-window-fill.svg
+│   │   │   └── terminal-window-line.svg
+│   │   ├── device
+│   │   │   ├── airplay-fill.svg
+│   │   │   ├── airplay-line.svg
+│   │   │   ├── barcode-box-fill.svg
+│   │   │   ├── barcode-box-line.svg
+│   │   │   ├── barcode-fill.svg
+│   │   │   ├── barcode-line.svg
+│   │   │   ├── base-station-fill.svg
+│   │   │   ├── base-station-line.svg
+│   │   │   ├── battery-*.svg  (6 files)
+│   │   │   ├── bluetooth-connect-fill.svg
+│   │   │   ├── bluetooth-connect-line.svg
+│   │   │   ├── bluetooth-fill.svg
+│   │   │   ├── bluetooth-line.svg
+│   │   │   ├── cast-fill.svg
+│   │   │   ├── cast-line.svg
+│   │   │   ├── cellphone-fill.svg
+│   │   │   ├── cellphone-line.svg
+│   │   │   ├── computer-fill.svg
+│   │   │   ├── computer-line.svg
+│   │   │   ├── cpu-fill.svg
+│   │   │   ├── cpu-line.svg
+│   │   │   ├── dashboard-3-fill.svg
+│   │   │   ├── dashboard-3-line.svg
+│   │   │   ├── database-fill.svg
+│   │   │   ├── database-line.svg
+│   │   │   ├── device-fill.svg
+│   │   │   ├── device-line.svg
+│   │   │   ├── device-recover-fill.svg
+│   │   │   ├── device-recover-line.svg
+│   │   │   ├── fingerprint-fill.svg
+│   │   │   ├── fingerprint-line.svg
+│   │   │   ├── gamepad-fill.svg
+│   │   │   ├── gamepad-line.svg
+│   │   │   ├── gps-fill.svg
+│   │   │   ├── gps-line.svg
+│   │   │   ├── gradienter-fill.svg
+│   │   │   ├── gradienter-line.svg
+│   │   │   ├── hard-drive-2-fill.svg
+│   │   │   ├── hard-drive-2-line.svg
+│   │   │   ├── hotspot-fill.svg
+│   │   │   ├── hotspot-line.svg
+│   │   │   ├── install-fill.svg
+│   │   │   ├── install-line.svg
+│   │   │   ├── instance-fill.svg
+│   │   │   ├── instance-line.svg
+│   │   │   ├── keyboard-fill.svg
+│   │   │   ├── keyboard-line.svg
+│   │   │   ├── mac-fill.svg
+│   │   │   ├── mac-line.svg
+│   │   │   ├── macbook-fill.svg
+│   │   │   ├── macbook-line.svg
+│   │   │   ├── mouse-fill.svg
+│   │   │   ├── mouse-line.svg
+│   │   │   ├── phone-*.svg  (6 files)
+│   │   │   ├── qr-code-fill.svg
+│   │   │   ├── qr-code-line.svg
+│   │   │   ├── qr-scan-fill.svg
+│   │   │   ├── qr-scan-line.svg
+│   │   │   ├── radar-fill.svg
+│   │   │   ├── radar-line.svg
+│   │   │   ├── remote-control-2-fill.svg
+│   │   │   ├── remote-control-2-line.svg
+│   │   │   ├── remote-control-fill.svg
+│   │   │   ├── remote-control-line.svg
+│   │   │   ├── restart-fill.svg
+│   │   │   ├── restart-line.svg
+│   │   │   ├── rfid-fill.svg
+│   │   │   ├── rfid-line.svg
+│   │   │   ├── rotate-lock-fill.svg
+│   │   │   ├── rotate-lock-line.svg
+│   │   │   ├── router-fill.svg
+│   │   │   ├── router-line.svg
+│   │   │   ├── rss-fill.svg
+│   │   │   ├── rss-line.svg
+│   │   │   ├── save-3-fill.svg
+│   │   │   ├── save-3-line.svg
+│   │   │   ├── save-fill.svg
+│   │   │   ├── save-line.svg
+│   │   │   ├── scan-fill.svg
+│   │   │   ├── scan-line.svg
+│   │   │   ├── sd-card-fill.svg
+│   │   │   ├── sd-card-line.svg
+│   │   │   ├── sd-card-mini-fill.svg
+│   │   │   ├── sd-card-mini-line.svg
+│   │   │   ├── sensor-fill.svg
+│   │   │   ├── sensor-line.svg
+│   │   │   ├── server-fill.svg
+│   │   │   ├── server-line.svg
+│   │   │   ├── shut-down-fill.svg
+│   │   │   ├── shut-down-line.svg
+│   │   │   ├── signal-*.svg  (6 files)
+│   │   │   ├── sim-card-2-fill.svg
+│   │   │   ├── sim-card-2-line.svg
+│   │   │   ├── smartphone-fill.svg
+│   │   │   ├── smartphone-line.svg
+│   │   │   ├── tablet-fill.svg
+│   │   │   ├── tablet-line.svg
+│   │   │   ├── tv-fill.svg
+│   │   │   ├── tv-line.svg
+│   │   │   ├── u-disk-fill.svg
+│   │   │   ├── u-disk-line.svg
+│   │   │   ├── uninstall-fill.svg
+│   │   │   ├── uninstall-line.svg
+│   │   │   ├── usb-fill.svg
+│   │   │   ├── usb-line.svg
+│   │   │   ├── wifi-fill.svg
+│   │   │   ├── wifi-line.svg
+│   │   │   ├── wifi-off-fill.svg
+│   │   │   ├── wifi-off-line.svg
+│   │   │   ├── wireless-charging-fill.svg
+│   │   │   └── wireless-charging-line.svg
+│   │   ├── document
+│   │   │   ├── article-fill.svg
+│   │   │   ├── article-line.svg
+│   │   │   ├── book-2-fill.svg
+│   │   │   ├── book-2-line.svg
+│   │   │   ├── booklet-fill.svg
+│   │   │   ├── booklet-line.svg
+│   │   │   ├── clipboard-fill.svg
+│   │   │   ├── clipboard-line.svg
+│   │   │   ├── draft-fill.svg
+│   │   │   ├── draft-line.svg
+│   │   │   ├── file-add-fill.svg
+│   │   │   ├── file-add-line.svg
+│   │   │   ├── file-copy-line.svg
+│   │   │   ├── file-download-fill.svg
+│   │   │   ├── file-download-line.svg
+│   │   │   ├── file-fill.svg
+│   │   │   ├── file-line.svg
+│   │   │   ├── file-pdf-fill.svg
+│   │   │   ├── file-pdf-line.svg
+│   │   │   ├── file-text-fill.svg
+│   │   │   ├── file-text-line.svg
+│   │   │   ├── folder-2-fill.svg
+│   │   │   ├── folder-2-line.svg
+│   │   │   ├── newspaper-fill.svg
+│   │   │   ├── newspaper-line.svg
+│   │   │   ├── survey-fill.svg
+│   │   │   ├── survey-line.svg
+│   │   │   ├── todo-fill.svg
+│   │   │   └── todo-line.svg
+│   │   ├── editor
+│   │   │   ├── align-center.svg
+│   │   │   ├── align-justify.svg
+│   │   │   ├── align-left.svg
+│   │   │   ├── align-right.svg
+│   │   │   ├── code-block.svg
+│   │   │   ├── code-view.svg
+│   │   │   ├── font-color.svg
+│   │   │   ├── font-size.svg
+│   │   │   ├── format-clear.svg
+│   │   │   ├── fr--bold.svg
+│   │   │   ├── fr--highlight.svg
+│   │   │   ├── fr--quote-fill.svg
+│   │   │   ├── fr--quote-line.svg
+│   │   │   ├── h-1.svg
+│   │   │   ├── h-2.svg
+│   │   │   ├── h-3.svg
+│   │   │   ├── h-4.svg
+│   │   │   ├── h-5.svg
+│   │   │   ├── h-6.svg
+│   │   │   ├── hashtag.svg
+│   │   │   ├── indent-decrease.svg
+│   │   │   ├── indent-increase.svg
+│   │   │   ├── italic.svg
+│   │   │   ├── link-unlink.svg
+│   │   │   ├── link.svg
+│   │   │   ├── list-check.svg
+│   │   │   ├── list-ordered.svg
+│   │   │   ├── list-unordered.svg
+│   │   │   ├── question-mark.svg
+│   │   │   ├── separator.svg
+│   │   │   ├── sort-asc.svg
+│   │   │   ├── sort-desc.svg
+│   │   │   ├── space.svg
+│   │   │   ├── strikethrough.svg
+│   │   │   ├── subscript.svg
+│   │   │   ├── superscript.svg
+│   │   │   ├── table-2.svg
+│   │   │   ├── text-direction-r.svg
+│   │   │   ├── translate-2.svg
+│   │   │   └── underline.svg
+│   │   ├── finance
+│   │   │   ├── bank-card-fill.svg
+│   │   │   ├── bank-card-line.svg
+│   │   │   ├── coin-fill.svg
+│   │   │   ├── gift-fill.svg
+│   │   │   ├── gift-line.svg
+│   │   │   ├── money-euro-box-fill.svg
+│   │   │   ├── money-euro-box-line.svg
+│   │   │   ├── money-euro-circle-fill.svg
+│   │   │   ├── money-euro-circle-line.svg
+│   │   │   ├── secure-payment-fill.svg
+│   │   │   ├── secure-payment-line.svg
+│   │   │   ├── shopping-bag-fill.svg
+│   │   │   ├── shopping-bag-line.svg
+│   │   │   ├── shopping-cart-2-fill.svg
+│   │   │   ├── shopping-cart-2-line.svg
+│   │   │   ├── trophy-fill.svg
+│   │   │   └── trophy-line.svg
+│   │   ├── health
+│   │   │   ├── capsule-fill.svg
+│   │   │   ├── capsule-line.svg
+│   │   │   ├── dislike-fill.svg
+│   │   │   ├── dislike-line.svg
+│   │   │   ├── dossier-fill.svg
+│   │   │   ├── dossier-line.svg
+│   │   │   ├── first-aid-kit-fill.svg
+│   │   │   ├── first-aid-kit-line.svg
+│   │   │   ├── hand-sanitizer-fill.svg
+│   │   │   ├── hand-sanitizer-line.svg
+│   │   │   ├── health-book-fill.svg
+│   │   │   ├── health-book-line.svg
+│   │   │   ├── heart-fill.svg
+│   │   │   ├── heart-line.svg
+│   │   │   ├── heart-pulse-fill.svg
+│   │   │   ├── heart-pulse-line.svg
+│   │   │   ├── lungs-fill.svg
+│   │   │   ├── lungs-line.svg
+│   │   │   ├── medicine-bottle-fill.svg
+│   │   │   ├── medicine-bottle-line.svg
+│   │   │   ├── mental-health-fill.svg
+│   │   │   ├── mental-health-line.svg
+│   │   │   ├── microscope-fill.svg
+│   │   │   ├── microscope-line.svg
+│   │   │   ├── psychotherapy-fill.svg
+│   │   │   ├── psychotherapy-line.svg
+│   │   │   ├── pulse-line.svg
+│   │   │   ├── stethoscope-fill.svg
+│   │   │   ├── stethoscope-line.svg
+│   │   │   ├── surgical-mask-fill.svg
+│   │   │   ├── surgical-mask-line.svg
+│   │   │   ├── syringe-fill.svg
+│   │   │   ├── syringe-line.svg
+│   │   │   ├── test-tube-fill.svg
+│   │   │   ├── test-tube-line.svg
+│   │   │   ├── thermometer-fill.svg
+│   │   │   ├── thermometer-line.svg
+│   │   │   ├── virus-fill.svg
+│   │   │   └── virus-line.svg
+│   │   ├── logo
+│   │   │   ├── bluesky-fill.svg
+│   │   │   ├── bluesky-line.svg
+│   │   │   ├── chrome-fill.svg
+│   │   │   ├── chrome-line.svg
+│   │   │   ├── edge-fill.svg
+│   │   │   ├── edge-line.svg
+│   │   │   ├── facebook-circle-fill.svg
+│   │   │   ├── facebook-circle-line.svg
+│   │   │   ├── firefox-fill.svg
+│   │   │   ├── firefox-line.svg
+│   │   │   ├── fr--dailymotion-fill.svg
+│   │   │   ├── fr--dailymotion-line.svg
+│   │   │   ├── fr--tiktok-fill.svg
+│   │   │   ├── fr--tiktok-line.svg
+│   │   │   ├── github-fill.svg
+│   │   │   ├── github-line.svg
+│   │   │   ├── google-fill.svg
+│   │   │   ├── google-line.svg
+│   │   │   ├── ie-fill.svg
+│   │   │   ├── ie-line.svg
+│   │   │   ├── instagram-fill.svg
+│   │   │   ├── instagram-line.svg
+│   │   │   ├── linkedin-box-fill.svg
+│   │   │   ├── linkedin-box-line.svg
+│   │   │   ├── mastodon-fill.svg
+│   │   │   ├── mastodon-line.svg
+│   │   │   ├── npmjs-fill.svg
+│   │   │   ├── npmjs-line.svg
+│   │   │   ├── remixicon-fill.svg
+│   │   │   ├── remixicon-line.svg
+│   │   │   ├── safari-fill.svg
+│   │   │   ├── safari-line.svg
+│   │   │   ├── slack-fill.svg
+│   │   │   ├── slack-line.svg
+│   │   │   ├── snapchat-fill.svg
+│   │   │   ├── snapchat-line.svg
+│   │   │   ├── telegram-fill.svg
+│   │   │   ├── telegram-line.svg
+│   │   │   ├── threads-fill.svg
+│   │   │   ├── threads-line.svg
+│   │   │   ├── twitch-fill.svg
+│   │   │   ├── twitch-line.svg
+│   │   │   ├── twitter-fill.svg
+│   │   │   ├── twitter-line.svg
+│   │   │   ├── twitter-x-fill.svg
+│   │   │   ├── twitter-x-line.svg
+│   │   │   ├── vimeo-fill.svg
+│   │   │   ├── vimeo-line.svg
+│   │   │   ├── vuejs-fill.svg
+│   │   │   ├── vuejs-line.svg
+│   │   │   ├── whatsapp-fill.svg
+│   │   │   ├── whatsapp-line.svg
+│   │   │   ├── youtube-fill.svg
+│   │   │   └── youtube-line.svg
+│   │   ├── map
+│   │   │   ├── anchor-fill.svg
+│   │   │   ├── anchor-line.svg
+│   │   │   ├── bike-fill.svg
+│   │   │   ├── bike-line.svg
+│   │   │   ├── bus-fill.svg
+│   │   │   ├── bus-line.svg
+│   │   │   ├── car-fill.svg
+│   │   │   ├── car-line.svg
+│   │   │   ├── caravan-fill.svg
+│   │   │   ├── caravan-line.svg
+│   │   │   ├── charging-pile-2-fill.svg
+│   │   │   ├── charging-pile-2-line.svg
+│   │   │   ├── compass-3-fill.svg
+│   │   │   ├── compass-3-line.svg
+│   │   │   ├── cup-fill.svg
+│   │   │   ├── cup-line.svg
+│   │   │   ├── earth-fill.svg
+│   │   │   ├── earth-line.svg
+│   │   │   ├── france-fill.svg
+│   │   │   ├── france-line.svg
+│   │   │   ├── gas-station-fill.svg
+│   │   │   ├── gas-station-line.svg
+│   │   │   ├── goblet-fill.svg
+│   │   │   ├── goblet-line.svg
+│   │   │   ├── map-pin-2-fill.svg
+│   │   │   ├── map-pin-2-line.svg
+│   │   │   ├── map-pin-user-fill.svg
+│   │   │   ├── map-pin-user-line.svg
+│   │   │   ├── motorbike-fill.svg
+│   │   │   ├── motorbike-line.svg
+│   │   │   ├── passport-fill.svg
+│   │   │   ├── passport-line.svg
+│   │   │   ├── restaurant-fill.svg
+│   │   │   ├── restaurant-line.svg
+│   │   │   ├── road-map-fill.svg
+│   │   │   ├── road-map-line.svg
+│   │   │   ├── sailboat-fill.svg
+│   │   │   ├── sailboat-line.svg
+│   │   │   ├── ship-2-fill.svg
+│   │   │   ├── ship-2-line.svg
+│   │   │   ├── signal-tower-fill.svg
+│   │   │   ├── signal-tower-line.svg
+│   │   │   ├── suitcase-2-fill.svg
+│   │   │   ├── suitcase-2-line.svg
+│   │   │   ├── taxi-fill.svg
+│   │   │   ├── taxi-line.svg
+│   │   │   ├── train-fill.svg
+│   │   │   └── train-line.svg
+│   │   ├── media
+│   │   │   ├── camera-fill.svg
+│   │   │   ├── camera-line.svg
+│   │   │   ├── clapperboard-fill.svg
+│   │   │   ├── clapperboard-line.svg
+│   │   │   ├── equalizer-fill.svg
+│   │   │   ├── equalizer-line.svg
+│   │   │   ├── film-fill.svg
+│   │   │   ├── film-line.svg
+│   │   │   ├── fullscreen-line.svg
+│   │   │   ├── gallery-fill.svg
+│   │   │   ├── gallery-line.svg
+│   │   │   ├── headphone-fill.svg
+│   │   │   ├── headphone-line.svg
+│   │   │   ├── image-add-fill.svg
+│   │   │   ├── image-add-line.svg
+│   │   │   ├── image-edit-fill.svg
+│   │   │   ├── image-edit-line.svg
+│   │   │   ├── image-fill.svg
+│   │   │   ├── image-line.svg
+│   │   │   ├── live-fill.svg
+│   │   │   ├── live-line.svg
+│   │   │   ├── mic-fill.svg
+│   │   │   ├── mic-line.svg
+│   │   │   ├── music-2-fill.svg
+│   │   │   ├── music-2-line.svg
+│   │   │   ├── notification-3-fill.svg
+│   │   │   ├── notification-3-line.svg
+│   │   │   ├── pause-circle-fill.svg
+│   │   │   ├── pause-circle-line.svg
+│   │   │   ├── play-circle-fill.svg
+│   │   │   ├── play-circle-line.svg
+│   │   │   ├── stop-circle-fill.svg
+│   │   │   ├── stop-circle-line.svg
+│   │   │   ├── volume-down-fill.svg
+│   │   │   ├── volume-down-line.svg
+│   │   │   ├── volume-mute-fill.svg
+│   │   │   ├── volume-mute-line.svg
+│   │   │   ├── volume-up-fill.svg
+│   │   │   └── volume-up-line.svg
+│   │   ├── others
+│   │   │   ├── fr--accessibility-fill.svg
+│   │   │   ├── fr--accessibility-line.svg
+│   │   │   ├── fr--ear-off-fill.svg
+│   │   │   ├── fr--ear-off-line.svg
+│   │   │   ├── fr--mental-disabilities-fill.svg
+│   │   │   ├── fr--mental-disabilities-line.svg
+│   │   │   ├── fr--sign-language-fill.svg
+│   │   │   ├── fr--sign-language-line.svg
+│   │   │   ├── leaf-fill.svg
+│   │   │   ├── leaf-line.svg
+│   │   │   ├── lightbulb-fill.svg
+│   │   │   ├── lightbulb-line.svg
+│   │   │   ├── plant-fill.svg
+│   │   │   ├── plant-line.svg
+│   │   │   ├── recycle-fill.svg
+│   │   │   ├── recycle-line.svg
+│   │   │   ├── scales-3-fill.svg
+│   │   │   ├── scales-3-line.svg
+│   │   │   ├── seedling-fill.svg
+│   │   │   ├── seedling-line.svg
+│   │   │   ├── umbrella-fill.svg
+│   │   │   ├── umbrella-line.svg
+│   │   │   ├── wheelchair-fill.svg
+│   │   │   └── wheelchair-line.svg
+│   │   ├── system
+│   │   │   ├── add-circle-fill.svg
+│   │   │   ├── add-circle-line.svg
+│   │   │   ├── add-line.svg
+│   │   │   ├── alarm-warning-fill.svg
+│   │   │   ├── alarm-warning-line.svg
+│   │   │   ├── alert-fill.svg
+│   │   │   ├── alert-line.svg
+│   │   │   ├── check-line.svg
+│   │   │   ├── checkbox-circle-fill.svg
+│   │   │   ├── checkbox-circle-line.svg
+│   │   │   ├── checkbox-fill.svg
+│   │   │   ├── checkbox-line.svg
+│   │   │   ├── close-circle-fill.svg
+│   │   │   ├── close-circle-line.svg
+│   │   │   ├── close-line.svg
+│   │   │   ├── delete-bin-fill.svg
+│   │   │   ├── delete-bin-line.svg
+│   │   │   ├── download-fill.svg
+│   │   │   ├── download-line.svg
+│   │   │   ├── error-warning-fill.svg
+│   │   │   ├── error-warning-line.svg
+│   │   │   ├── external-link-fill.svg
+│   │   │   ├── external-link-line.svg
+│   │   │   ├── eye-fill.svg
+│   │   │   ├── eye-line.svg
+│   │   │   ├── eye-off-fill.svg
+│   │   │   ├── eye-off-line.svg
+│   │   │   ├── filter-fill.svg
+│   │   │   ├── filter-line.svg
+│   │   │   ├── fr-*.svg  (13 files)
+│   │   │   ├── information-fill.svg
+│   │   │   ├── information-line.svg
+│   │   │   ├── lock-fill.svg
+│   │   │   ├── lock-line.svg
+│   │   │   ├── lock-unlock-fill.svg
+│   │   │   ├── lock-unlock-line.svg
+│   │   │   ├── logout-box-r-fill.svg
+│   │   │   ├── logout-box-r-line.svg
+│   │   │   ├── menu-2-fill.svg
+│   │   │   ├── menu-fill.svg
+│   │   │   ├── more-fill.svg
+│   │   │   ├── more-line.svg
+│   │   │   ├── notification-badge-fill.svg
+│   │   │   ├── notification-badge-line.svg
+│   │   │   ├── question-fill.svg
+│   │   │   ├── question-line.svg
+│   │   │   ├── refresh-fill.svg
+│   │   │   ├── refresh-line.svg
+│   │   │   ├── search-fill.svg
+│   │   │   ├── search-line.svg
+│   │   │   ├── settings-5-fill.svg
+│   │   │   ├── settings-5-line.svg
+│   │   │   ├── share-fill.svg
+│   │   │   ├── share-forward-fill.svg
+│   │   │   ├── share-forward-line.svg
+│   │   │   ├── share-line.svg
+│   │   │   ├── shield-fill.svg
+│   │   │   ├── shield-line.svg
+│   │   │   ├── star-fill.svg
+│   │   │   ├── star-line.svg
+│   │   │   ├── star-s-fill.svg
+│   │   │   ├── star-s-line.svg
+│   │   │   ├── subtract-line.svg
+│   │   │   ├── thumb-down-fill.svg
+│   │   │   ├── thumb-down-line.svg
+│   │   │   ├── thumb-up-fill.svg
+│   │   │   ├── thumb-up-line.svg
+│   │   │   ├── time-fill.svg
+│   │   │   ├── time-line.svg
+│   │   │   ├── timer-fill.svg
+│   │   │   ├── timer-line.svg
+│   │   │   ├── upload-2-fill.svg
+│   │   │   ├── upload-2-line.svg
+│   │   │   ├── upload-fill.svg
+│   │   │   ├── upload-line.svg
+│   │   │   ├── zoom-in-fill.svg
+│   │   │   ├── zoom-in-line.svg
+│   │   │   ├── zoom-out-fill.svg
+│   │   │   └── zoom-out-line.svg
+│   │   ├── user
+│   │   │   ├── account-circle-fill.svg
+│   │   │   ├── account-circle-line.svg
+│   │   │   ├── account-pin-circle-fill.svg
+│   │   │   ├── account-pin-circle-line.svg
+│   │   │   ├── admin-fill.svg
+│   │   │   ├── admin-line.svg
+│   │   │   ├── group-fill.svg
+│   │   │   ├── group-line.svg
+│   │   │   ├── parent-fill.svg
+│   │   │   ├── parent-line.svg
+│   │   │   ├── team-fill.svg
+│   │   │   ├── team-line.svg
+│   │   │   ├── user-add-fill.svg
+│   │   │   ├── user-add-line.svg
+│   │   │   ├── user-fill.svg
+│   │   │   ├── user-heart-fill.svg
+│   │   │   ├── user-heart-line.svg
+│   │   │   ├── user-line.svg
+│   │   │   ├── user-search-fill.svg
+│   │   │   ├── user-search-line.svg
+│   │   │   ├── user-setting-fill.svg
+│   │   │   ├── user-setting-line.svg
+│   │   │   ├── user-star-fill.svg
+│   │   │   └── user-star-line.svg
+│   │   └── weather
+│   │       ├── cloudy-2-fill.svg
+│   │       ├── cloudy-2-line.svg
+│   │       ├── fire-fill.svg
+│   │       ├── fire-line.svg
+│   │       ├── flashlight-fill.svg
+│   │       ├── flashlight-line.svg
+│   │       ├── flood-fill.svg
+│   │       ├── flood-line.svg
+│   │       ├── fr--avalanches-fill.svg
+│   │       ├── fr--avalanches-line.svg
+│   │       ├── fr--submersion-fill.svg
+│   │       ├── fr--submersion-line.svg
+│   │       ├── heavy-showers-fill.svg
+│   │       ├── heavy-showers-line.svg
+│   │       ├── moon-fill.svg
+│   │       ├── moon-line.svg
+│   │       ├── snowy-fill.svg
+│   │       ├── snowy-line.svg
+│   │       ├── sparkling-2-fill.svg
+│   │       ├── sparkling-2-line.svg
+│   │       ├── sun-fill.svg
+│   │       ├── sun-line.svg
+│   │       ├── temp-cold-fill.svg
+│   │       ├── temp-cold-line.svg
+│   │       ├── thunderstorms-fill.svg
+│   │       ├── thunderstorms-line.svg
+│   │       ├── tornado-fill.svg
+│   │       ├── tornado-line.svg
+│   │       ├── typhoon-fill.svg
+│   │       ├── typhoon-line.svg
+│   │       ├── windy-fill.svg
+│   │       └── windy-line.svg
+│   ├── maintenance.html
+│   ├── robots.txt
+│   └── text_signaux_faibles.svg
+├── storage
+│   └── .keep
+├── test
+│   ├── application_system_test_case.rb
+│   ├── channels
+│   │   └── application_cable
+│   │       └── connection_test.rb
+│   ├── controllers
+│   │   ├── admin
+│   │   │   ├── users_controller_test.rb
+│   │   │   └── zones_controller_test.rb
+│   │   ├── comments_controller_test.rb
+│   │   ├── companies_controller_test.rb
+│   │   ├── contacts_controller_test.rb
+│   │   ├── establishment_trackings_controller_create_test.rb
+│   │   ├── establishment_trackings_controller_test.rb
+│   │   ├── establishments_controller_test.rb
+│   │   ├── lists_controller_test.rb
+│   │   ├── notifications_controller_test.rb
+│   │   └── summaries_controller_test.rb
+│   ├── fixtures
+│   │   ├── codefi_redirects.yml
+│   │   ├── comments.yml
+│   │   ├── companies.yml
+│   │   ├── company_lists.yml
+│   │   ├── company_score_entries.yml
+│   │   ├── contacts.yml
+│   │   ├── criticalities.yml
+│   │   ├── departments.yml
+│   │   ├── difficulties.yml
+│   │   ├── entities.yml
+│   │   ├── establishment_trackings.yml
+│   │   ├── establishments.yml
+│   │   ├── geo_accesses.yml
+│   │   ├── imports.yml
+│   │   ├── lists.yml
+│   │   ├── networks.yml
+│   │   ├── notifications.yml
+│   │   ├── osf_aps.yml
+│   │   ├── osf_cotisations.yml
+│   │   ├── osf_debits.yml
+│   │   ├── osf_delais.yml
+│   │   ├── osf_effectifs.yml
+│   │   ├── osf_ent_effectifs.yml
+│   │   ├── osf_procols.yml
+│   │   ├── regions.yml
+│   │   ├── sectors.yml
+│   │   ├── segments.yml
+│   │   ├── sizes.yml
+│   │   ├── sjcf_companies.yml
+│   │   ├── summaries.yml
+│   │   ├── supporting_services.yml
+│   │   ├── tracking_labels.yml
+│   │   ├── user_actions.yml
+│   │   ├── users.yml
+│   │   └── zones.yml
+│   ├── helpers
+│   │   └── .keep
+│   ├── integration
+│   │   ├── .keep
+│   │   ├── establishment_tracking_edit_test.rb
+│   │   ├── establishment_tracking_show_test.rb
+│   │   └── user_authentication_test.rb
+│   ├── mailers
+│   │   └── .keep
+│   ├── models
+│   │   ├── .keep
+│   │   ├── codefi_redirect_test.rb
+│   │   ├── difficulty_test.rb
+│   │   ├── establishment_tracking_test.rb
+│   │   ├── user_test.rb
+│   │   └── zone_test.rb
+│   ├── support
+│   │   └── integration_test_helpers.rb
+│   ├── system
+│   │   └── .keep
+│   └── test_helper.rb
+├── tmp
+│   ├── .keep
+│   ├── pids
+│   │   └── .keep
+│   └── storage
+│       └── .keep
+└── vendor
+    └── javascript
+        ├── @kurkle--color.js
+        ├── ahoy.js
+        ├── chart.umd.js
+        ├── dsfr.module.min.js
+        ├── dsfr.nomodule.min.js
+        ├── os.js
+        └── tom-select.js
+117 directories, 1750 files
