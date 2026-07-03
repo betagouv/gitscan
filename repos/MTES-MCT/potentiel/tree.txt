@@ -757,12 +757,19 @@
 │   │   │   │       │   └── seed.ts
 │   │   │   │       ├── candidature
 │   │   │   │       │   ├── _helpers
+│   │   │   │       │   │   ├── applyTemplateToPayload.test.ts
+│   │   │   │       │   │   ├── applyTemplateToPayload.ts
 │   │   │   │       │   │   ├── getAppelOffres.ts
+│   │   │   │       │   │   ├── getTechnologieEolien.test.ts
+│   │   │   │       │   │   ├── getTechnologieEolien.ts
 │   │   │   │       │   │   ├── mapDNDétailToDétailFournisseur.test.ts
 │   │   │   │       │   │   ├── mapDNDétailToDétailFournisseur.ts
 │   │   │   │       │   │   ├── mapDétailToDétailFournisseur.test.ts
 │   │   │   │       │   │   ├── mapDétailToDétailFournisseur.ts
-│   │   │   │       │   │   └── mapDétailsToFournisseur.ts
+│   │   │   │       │   │   ├── mapDétailsToFournisseur.ts
+│   │   │   │       │   │   ├── mapDétailsToTypeTerrainImplantation.test.ts
+│   │   │   │       │   │   ├── mapDétailsToTypeTerrainImplantation.ts
+│   │   │   │       │   │   └── templatesVérificationDétailCandidature.ts
 │   │   │   │       │   ├── candidatureCorrigée.projector.ts
 │   │   │   │       │   ├── candidatureCorrigéeV1.projector.ts
 │   │   │   │       │   ├── candidatureImportée.projector.ts
@@ -925,6 +932,10 @@
 │   │   │   │       │   │   │   │   ├── demandeComplèteRaccordementModifiéeV3.projector.ts
 │   │   │   │       │   │   │   │   ├── demandeComplèteRaccordementModifiéeV4.projector.ts
 │   │   │   │       │   │   │   │   └── index.ts
+│   │   │   │       │   │   │   ├── documentsRaccordement
+│   │   │   │       │   │   │   │   ├── documentRaccordementModifié.projector.ts
+│   │   │   │       │   │   │   │   ├── documentRaccordementTransmis.projector.ts
+│   │   │   │       │   │   │   │   └── index.ts
 │   │   │   │       │   │   │   ├── dossierDuRaccordementSuppriméV1.projector.ts
 │   │   │   │       │   │   │   ├── propositionTechniqueEtFinancière
 │   │   │   │       │   │   │   │   ├── index.ts
@@ -1024,6 +1035,10 @@
 │   │   │   ├── package.json
 │   │   │   ├── src
 │   │   │   │   ├── _helpers
+│   │   │   │   │   ├── createRoute.ts
+│   │   │   │   │   ├── filterSearchParams.test.ts
+│   │   │   │   │   ├── filterSearchParams.ts
+│   │   │   │   │   ├── withFilters.test.ts
 │   │   │   │   │   └── withFilters.ts
 │   │   │   │   ├── accès
 │   │   │   │   │   ├── accès.routes.ts
@@ -1202,8 +1217,8 @@
 │   │   │   │   │   │       │   ├── ImporterCandidaturesParCSV.form.tsx
 │   │   │   │   │   │       │   └── importerCandidaturesParCSV.action.ts
 │   │   │   │   │   │       ├── (demarche-simplifiée)
-│   │   │   │   │   │       │   ├── ImporterCandidaturesParDS.form.tsx
-│   │   │   │   │   │       │   └── importerCandidaturesParDS.action.ts
+│   │   │   │   │   │       │   ├── ImporterCandidaturesParDémarcheNumérique.form.tsx
+│   │   │   │   │   │       │   └── importerCandidaturesParDémarcheNumérique.action.ts
 │   │   │   │   │   │       ├── ImporterCandidatures.form.tsx
 │   │   │   │   │   │       ├── ImporterCandidatures.page.tsx
 │   │   │   │   │   │       └── page.tsx
@@ -1344,6 +1359,7 @@
 │   │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   │   └── ÉvaluationCarbone.page.tsx
 │   │   │   │   │   │   │   │   ├── historique
+│   │   │   │   │   │   │   │   │   ├── CatégorieFilter.tsx
 │   │   │   │   │   │   │   │   │   ├── HistoriqueLauréat.page.tsx
 │   │   │   │   │   │   │   │   │   ├── HistoriqueLauréatTimelineItem.tsx
 │   │   │   │   │   │   │   │   │   ├── _helpers
@@ -2320,8 +2336,6 @@
 │   │   │   │   │   │   ├── ConfirmationAction.tsx
 │   │   │   │   │   │   ├── CopyButton.tsx
 │   │   │   │   │   │   ├── CountryPicker.tsx
-│   │   │   │   │   │   ├── Filter.tsx
-│   │   │   │   │   │   ├── FiltersTagList.tsx
 │   │   │   │   │   │   ├── LinkAction.tsx
 │   │   │   │   │   │   ├── ListFilters.tsx
 │   │   │   │   │   │   ├── ListItem.tsx
@@ -2334,6 +2348,10 @@
 │   │   │   │   │   │   │   ├── CandidatureListLegendAndSymbols.ts
 │   │   │   │   │   │   │   ├── NotificationBadge.tsx
 │   │   │   │   │   │   │   └── StatutCandidatureBadge.tsx
+│   │   │   │   │   │   ├── filters
+│   │   │   │   │   │   │   ├── Filter.tsx
+│   │   │   │   │   │   │   ├── FiltersTagList.tsx
+│   │   │   │   │   │   │   └── useFilters.ts
 │   │   │   │   │   │   ├── projet
 │   │   │   │   │   │   │   ├── ChiffresClésProjet.tsx
 │   │   │   │   │   │   │   ├── ProjetBanner.template.tsx
@@ -2641,7 +2659,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── récupérerDépartementRégionParCodePostal.test.ts
 │   │   │   │   │   └── récupérerDépartementRégionParCodePostal.ts
-│   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── nombresEnToutesLettres.ts
 │   │   │   └── tsconfig.json
 │   │   ├── projet
 │   │   │   ├── package.json
@@ -3220,9 +3239,7 @@
 │   │   │   │   │   ├── lauréat.register.ts
 │   │   │   │   │   ├── lister
 │   │   │   │   │   │   ├── listerLauréat.query.ts
-│   │   │   │   │   │   ├── listerLauréatEnrichi.query.ts
-│   │   │   │   │   │   ├── mapDétailsToTypeTerrainImplantation.test.ts
-│   │   │   │   │   │   └── mapDétailsToTypeTerrainImplantation.ts
+│   │   │   │   │   │   └── listerLauréatEnrichi.query.ts
 │   │   │   │   │   ├── listerHistorique
 │   │   │   │   │   │   └── listerHistoriqueLauréat.query.ts
 │   │   │   │   │   ├── nature-de-l-exploitation
@@ -3430,6 +3447,10 @@
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.command.ts
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.options.ts
 │   │   │   │   │   │   │   │   └── modifierDemandeComplèteRaccordement.usecase.ts
+│   │   │   │   │   │   │   ├── documentsRaccordement
+│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.command.ts
+│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.options.ts
+│   │   │   │   │   │   │   │   └── modifierDocumentRaccordement.usecase.ts
 │   │   │   │   │   │   │   ├── gestionnaireRéseauDuRaccordement
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseau.options.ts
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseauRaccordement.command.ts
@@ -3473,10 +3494,15 @@
 │   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.command.ts
 │   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.options.ts
 │   │   │   │   │   │   │   │   └── transmettreDemandeComplèteRaccordement.usecase.ts
+│   │   │   │   │   │   │   ├── documentsRaccordement
+│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.command.ts
+│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.options.ts
+│   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.usecase.ts
 │   │   │   │   │   │   │   └── propositionTechniqueEtFinancière
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.command.ts
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.options.ts
 │   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.usecase.ts
+│   │   │   │   │   │   ├── typeDocumentsRaccordement.valueType.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeRaccordement.valueType.ts
 │   │   │   │   │   ├── représentantLégal
 │   │   │   │   │   │   ├── changement
@@ -3763,27 +3789,7 @@
 │   │       │   └── zone.valueType.ts
 │   │       └── tsconfig.json
 │   ├── infrastructure
-│   │   ├── domain-adapters
-│   │   │   ├── package.json
-│   │   │   ├── src
-│   │   │   │   ├── appel-offre
-│   │   │   │   │   └── loadAppelOffreAggregate.adapter.ts
-│   │   │   │   ├── document
-│   │   │   │   │   ├── document.adapter.ts
-│   │   │   │   │   ├── enregistrerDocumentSubstitut.adapter.ts
-│   │   │   │   │   └── générerDocumentPdf.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── projet
-│   │   │   │   │   ├── getProjetAggregateRoot.adapter.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── récupérerConstitutionGarantiesFinancières.adapter.ts
-│   │   │   │   ├── statistiques
-│   │   │   │   │   └── statistiques.adapter.ts
-│   │   │   │   └── utilisateur
-│   │   │   │       ├── getScopeProjetUtilisateur.adapter.ts
-│   │   │   │       └── index.ts
-│   │   │   └── tsconfig.json
-│   │   ├── ds-api-client
+│   │   ├── dn-api-client
 │   │   │   ├── codegen.ts
 │   │   │   ├── package.json
 │   │   │   ├── src
@@ -3835,6 +3841,26 @@
 │   │   │   │       ├── GetDemarcheAvecDossiers.graphql
 │   │   │   │       ├── GetDemarcheIdParDossier.graphql
 │   │   │   │       └── GetDossier.graphql
+│   │   │   └── tsconfig.json
+│   │   ├── domain-adapters
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── appel-offre
+│   │   │   │   │   └── loadAppelOffreAggregate.adapter.ts
+│   │   │   │   ├── document
+│   │   │   │   │   ├── document.adapter.ts
+│   │   │   │   │   ├── enregistrerDocumentSubstitut.adapter.ts
+│   │   │   │   │   └── générerDocumentPdf.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── projet
+│   │   │   │   │   ├── getProjetAggregateRoot.adapter.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── récupérerConstitutionGarantiesFinancières.adapter.ts
+│   │   │   │   ├── statistiques
+│   │   │   │   │   └── statistiques.adapter.ts
+│   │   │   │   └── utilisateur
+│   │   │   │       ├── getScopeProjetUtilisateur.adapter.ts
+│   │   │   │       └── index.ts
 │   │   │   └── tsconfig.json
 │   │   ├── email
 │   │   │   ├── package.json
@@ -4429,6 +4455,17 @@
 │   │   │   │   │   │   │   │   ├── demandeComplèteRaccordement.then.ts
 │   │   │   │   │   │   │   │   └── demandeComplèteRaccordement.when.ts
 │   │   │   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.feature
+│   │   │   │   │   │   ├── documentsRaccordement
+│   │   │   │   │   │   │   ├── documentRaccordement.world.ts
+│   │   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.fixture.ts
+│   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.fixture.ts
+│   │   │   │   │   │   │   ├── modifierUnDocumentRaccordement.feature
+│   │   │   │   │   │   │   ├── stepDefinitions
+│   │   │   │   │   │   │   │   ├── documentRaccordement.given.ts
+│   │   │   │   │   │   │   │   ├── documentRaccordement.then.ts
+│   │   │   │   │   │   │   │   └── documentRaccordement.when.ts
+│   │   │   │   │   │   │   └── transmettreUnDocumentRaccordement.feature
 │   │   │   │   │   │   ├── dossierRaccordement
 │   │   │   │   │   │   │   ├── fixtures
 │   │   │   │   │   │   │   │   └── modifierRéférenceDossierRaccordement.fixture.ts
@@ -4443,17 +4480,6 @@
 │   │   │   │   │   │   │       ├── gestionnaireRéseauRaccordement.given.ts
 │   │   │   │   │   │   │       ├── gestionnaireRéseauRaccordement.then.ts
 │   │   │   │   │   │   │       └── gestionnaireRéseauRaccordement.when.ts
-│   │   │   │   │   │   ├── propositionTechniqueEtFinancière
-│   │   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.fixture.ts
-│   │   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.fixture.ts
-│   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.feature
-│   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.world.ts
-│   │   │   │   │   │   │   ├── stepDefinitions
-│   │   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.given.ts
-│   │   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière.then.ts
-│   │   │   │   │   │   │   │   └── propositionTechniqueEtFinancière.when.ts
-│   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.feature
 │   │   │   │   │   │   ├── raccordement.world.ts
 │   │   │   │   │   │   └── stepDefinitions
 │   │   │   │   │   │       └── raccordement.then.ts
@@ -4635,4 +4661,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1126 directories, 3511 files
+1130 directories, 3533 files
