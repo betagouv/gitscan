@@ -1,30 +1,33 @@
-## Changelog : nosgestesclimat (30 derniers jours, au 25 juin 2026)
+## Changelog : nosgestesclimat (30 derniers jours, au 01 Juillet 2026)
 
 ### Résumé
-Ce mois-ci, nosgestesclimat a connu une évolution significative avec l'ajout de nombreuses nouvelles actions, notamment dans les domaines de la mobilité, du logement, de la vie quotidienne et de la consommation. Des améliorations ont également été apportées à la précision des calculs, à la gestion des actions et à l'expérience utilisateur, notamment via des corrections de traduction et des ajustements suite aux retours des utilisateurs.
+Ce mois-ci, les améliorations se concentrent sur l'enrichissement du référentiel d'actions, la correction de bugs et l'amélioration de la précision des calculs, notamment pour les émissions liées au chauffage et aux transports. Une nouvelle fonctionnalité permet de prendre en compte les PAC collectives. Des mises à jour des données (DLUO, coûts moyens) ont également été intégrées pour une meilleure estimation de l'empreinte carbone.
 
 ### Évolutions fonctionnelles
-- Ajout d'actions liées à la mobilité : nouvelles actions pour les mobilités, notamment des actions de reconditionnement [#2775](https://github.com/incubateur-ademe/nosgestesclimat/issues/2775).
-- Ajout d'actions liées au logement : ajout d'actions pour l'amélioration de l'isolation via le DPE, le chauffage collectif et l'adaptation des actions en fonction du type de logement [#2781](https://github.com/incubateur-ademe/nosgestesclimat/issues/2781).
-- Ajout d'actions liées à la vie quotidienne : intégration de nouvelles actions pour la vie quotidienne [#2782](https://github.com/incubateur-ademe/nosgestesclimat/issues/2782).
-- Ajout d'une action pour réduire la consommation de viande [#97e6bda4](https://github.com/incubateur-ademe/nosgestesclimat/commit/97e6bda4).
-- Amélioration de la description des repas avec ajout de la portion [#2785](https://github.com/incubateur-ademe/nosgestesclimat/issues/2785).
-- Correction de l'impact de la piscine sur l'empreinte eau [#13683ec4](https://github.com/incubateur-ademe/nosgestesclimat/commit/13683ec4).
-- Correction de la vitesse des avions pour une meilleure précision des calculs [#2778](https://github.com/incubateur-ademe/nosgestesclimat/issues/2778).
-- Suppression des suggestions de vacances. [#df6d5d71](https://github.com/incubateur-ademe/nosgestesclimat/commit/df6d5d71)
-- Désactivation des actions v2 pour le mode jeune. [#2762](https://github.com/incubateur-ademe/nosgestesclimat/issues/2762)
+- Ajout de la prise en compte des Pac (Pompes à Chaleur) collectives dans le calcul de l'empreinte carbone [#2781](https://github.com/incubateur-ademe/nosgestesclimat/pull/2781).
+- Amélioration de la description des repas avec ajout de la portion consommée [#2785](https://github.com/incubateur-ademe/nosgestesclimat/pull/2785).
+- Ajout d'un nouveau parcours climat [#2786](https://github.com/incubateur-ademe/nosgestesclimat/pull/2786).
+- Renommage de la catégorie "divers" en "consommation" pour plus de clarté [#2788](https://github.com/incubateur-ademe/nosgestesclimat/pull/2788).
+- Correction de l'affichage des questions réversibles.
+- Correction de l'inversion entre TER et Intercités dans les transports.
+- Correction de l'application du chauffage collectif uniquement aux maisons.
 
 ### Évolutions techniques
-- Refonte de la gestion des dates de péremption (DLUO) pour l'écobalyse et l'agribalyse [#48d8c9c4](https://github.com/incubateur-ademe/nosgestesclimat/commit/48d8c9c4).
-- Mise à jour de l'interface utilisateur pour l'affichage des données Agribalyse [#331ac51a](https://github.com/incubateur-ademe/nosgestesclimat/commit/331ac51a).
-- Correction de la gestion de la désactivation des actions pour l'évaluation des émissions différées (ED) [#f9a5211c](https://github.com/incubateur-ademe/nosgestesclimat/commit/f9a5211c).
-- Corrections et ajustements suite aux retours des phases de tests (MEP) [#a7b6ba2a](https://github.com/incubateur-ademe/nosgestesclimat/commit/a7b6ba2a).
-- Gestion de la cohabitation des nouvelles et anciennes actions [#55fc9821](https://github.com/incubateur-ademe/nosgestesclimat/commit/55fc9821).
-- Corrections de namespace pour les actions logement [#92f8a861](https://github.com/incubateur-ademe/nosgestesclimat/commit/92f8a861).
+- Mise à jour du référentiel d'actions [#2762](https://github.com/incubateur-ademe/nosgestesclimat/pull/2762).
+- Refonte des calculs d'émissions climatiques et des PAC [#2782](https://github.com/incubateur-ademe/nosgestesclimat/pull/2782).
+- Mise à jour des packages et de pnpm.
+- Correction de la vitesse des avions pour un calcul plus précis.
+- Repousse de la date de fin de validité des données (DLUO) pour certains éléments.
+- Désactivation des actions pour le mode "jeune".
+- Correction de l'action légumineuse non quantifiable.
 
 ### Autres changements
-- Corrections de traductions et d'orthographe [#cb2b54c9](https://github.com/incubateur-ademe/nosgestesclimat/commit/cb2b54c9), [#dd5763eb](https://github.com/incubateur-ademe/nosgestesclimat/commit/dd5763eb), [#19e71a58](https://github.com/incubateur-ademe/nosgestesclimat/commit/19e71a58), [#9b6a98ad](https://github.com/incubateur-ademe/nosgestesclimat/commit/9b6a98ad).
-- Publication des versions 4.13.0-rc.1, 4.13.0-rc.2 et 4.13.1 [#006715d4](https://github.com/incubateur-ademe/nosgestesclimat/commit/006715d4), [#f1c9d809](https://github.com/incubateur-ademe/nosgestesclimat/commit/f1c9d809), [#6d01b87b](https://github.com/incubateur-ademe/nosgestesclimat/commit/6d01b87b).
-- Ajout des identifiants manquants [#0b06e539](https://github.com/incubateur-ademe/nosgestesclimat/commit/0b06e539).
-- Corrections de conditions d'actions [#c4bb9d68](https://github.com/incubateur-ademe/nosgestesclimat/commit/c4bb9d68), [#c03c0a82](https://github.com/incubateur-ademe/nosgestesclimat/commit/c03c0a82), [#14ebcefa](https://github.com/incubateur-ademe/nosgestesclimat/commit/14ebcefa).
-- Correction d'une action légumineuse non quantifiable [#099d95fd](https://github.com/incubateur-ademe/nosgestesclimat/commit/099d95fd).
+- Mises à jour des données DLUO pour les trains, les transports en commun, les ferries, le photovoltaïque, le bois, le fioul, le gaz propane et le réseau chaleur.
+- Mises à jour des chiffres concernant le coût moyen du réseau chaleur et les km moyens pour les différents modes de transport.
+- Corrections de traduction et de wording.
+- Ajout d'identifiants manquants.
+- Suppression de règles intensité carbone selon zone.
+- Suppression de règles manquantes.
+- Correction de l'URL.
+- Correction de l'unité d'affichage.
+- Correction de l'affichage des suggestions de vacances.
