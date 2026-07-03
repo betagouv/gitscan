@@ -1,52 +1,58 @@
-## Changelog : docs (30 derniers jours, au 24 juin 2026)
+## Changelog : docs (30 derniers jours, au 01 juillet 2026)
 
 ### Résumé
-Ce changelog résume les améliorations apportées au projet Docs au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration de l'accessibilité, l'ajout de nouvelles fonctionnalités comme le mode présentateur et la possibilité de quitter un document, ainsi que des corrections de bugs et des optimisations de performance.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment en matière d'accessibilité, de recherche et de gestion des documents. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la documentation et de la configuration.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de quitter un document.
-- Implémentation du mode présentateur pour les documents.
+- Ajout d'un menu utilisateur dans l'interface ([#2463](https://github.com/suitenumerique/docs/issues/2463)).
 - Les utilisateurs non authentifiés peuvent désormais effectuer des recherches.
+- Possibilité de créer des sous-documents à partir d'un document existant.
 - Ajout d'un bouton pour créer des sous-documents.
-- Support des liens `mailto:` dans le menu d'aide.
-- Ajout d'un badge DPG au README.
-- Possibilité d'ajouter un sous-menu "Légal" configurable dans le menu d'aide.
-- Amélioration de la gestion des réactions sur les commentaires avec une limite.
-- Ajout d'un support pour les liens d'ancrage dans la table des matières.
-- Ajout d'un bouton pour laisser un document.
+- Ajout de la possibilité de quitter un document.
+- Ajout d'un support pour les liens "mailto" dans le menu d'aide.
+- Ajout d'un sous-menu légal configurable dans le menu d'aide.
+- Amélioration de la recherche avec l'ajout du document parent supérieur.
+- Limitation du nombre de réactions distinctes par commentaire.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des événements PostHog côté backend.
-- Amélioration des performances de l'arbre de navigation.
-- Correction d'un bug lié au service worker causant un rechargement de l'onglet.
-- Mise à jour de BlockNote à la version 0.51.4.
-- Correction d'un problème de chargement de l'élément "left panel" dans certaines conditions.
-- Optimisation de la récupération des commentaires pour éviter les requêtes N+1.
-- Correction de problèmes liés à la gestion des threads orphelins.
-- Suppression de Crisp (outil de chat).
-- Suppression du code de masquage des documents.
-- Amélioration de la gestion des erreurs de connexion à la base de données lors des tests.
-- Suppression d'un paramètre de tri inutile dans la classe Paginator.
-- Mise à jour des dépendances JavaScript.
-- Correction d'une vulnérabilité de sécurité.
-- Suppression d'une tâche CI inutile.
-- Amélioration de la gestion des événements lors de la création, suppression et modification de documents.
+- Mise à jour de la méthode de suppression d'un utilisateur pour gérer correctement les relations associées.
+- Refonte de la suppression d'un utilisateur dans l'interface d'administration.
+- Utilisation de l'ID utilisateur au lieu de la relation utilisateur dans le module de partage.
+- Amélioration des performances de l'arbre de navigation des documents.
+- Correction d'un problème de rechargement de la page lors du focus sur un onglet.
+- Correction d'un problème de positionnement du composant Waffle.
+- Correction d'un problème de crash lors de l'affichage de threads orphelins.
+- Correction d'un problème de chargement de contenu asynchrone sous ASGI.
+- Préchargement de l'arbre des commentaires d'un thread pour éviter les requêtes N+1.
+- Correction d'un problème de restauration de la suppression héritée.
+- Correction d'un problème empêchant le propriétaire de quitter un document supprimé.
+- Montée du certificat CA personnalisé dans le déploiement yprovider (helm).
+- Mise à jour de la gestion des conversions HTML/Markdown pour préserver les éléments spécifiques (citations, PDF, sauts de page, liens internes, texte commenté).
+- Correction d'un test interlinking markdown pour blocknote 0.51.4.
+- Correction d'un bug empêchant le stream de chaînes vides avec un itérateur asynchrone sous ASGI.
 
 ### Autres changements
-- Corrections de typos dans le guide de contribution.
-- Améliorations de l'accessibilité de divers composants (champs de recherche, modales, titres, etc.).
-- Mise à jour des chaînes de traduction.
+- Améliorations de l'accessibilité :
+    - Suppression d'un attribut `aria-label` redondant sur les liens de la table des matières.
+    - Amélioration de l'accessibilité des composants de recherche.
+    - Amélioration de l'accessibilité du mode présentateur.
+    - Alignement de l'étiquette du champ de recherche modale avec son espace réservé.
+    - Ajout d'IDs aux en-têtes BlockNote pour les ancres de la table des matières.
+    - Masquage du panneau latéral mobile pour les lecteurs d'écran lorsqu'il est réduit.
+    - Utilisation d'éléments d'en-tête pour le titre de la section des documents épinglés.
+    - Utilisation de liens d'ancrage pour les entrées de la table des matières.
+    - Focus sur le sélecteur de format dans la modale d'exportation.
+    - Piégeage du focus dans le dialogue du présentateur.
+    - Annonce de la position de la diapositive en mode présentateur.
+- Ajout d'un badge DPG au README.
 - Ajout d'un badge Snyk au README.
-- Amélioration de la gestion du focus dans les modales.
-- Correction de problèmes d'affichage de titres longs dans la table des matières.
-- Amélioration de l'affichage des icônes dans l'en-tête du panneau gauche.
-- Correction de bugs liés à la conversion HTML/Markdown (préservation des éléments formatés).
-- Ajout de tests unitaires pour le mode présentateur.
-- Correction de bugs liés à l'exportation de documents.
-- Ajout de la configuration de PostHog.
-- Mise à jour de la documentation pour inclure le nouveau paramètre de configuration.
-- Correction de problèmes liés à l'affichage des emojis.
-- Amélioration de la gestion des erreurs lors de l'importation de documents.
-- Correction de bugs liés au chargement des documents.
-- Correction de bugs liés à la gestion des accès aux documents.
-- Mise à jour de la documentation pour inclure le nouveau paramètre CONVERSION_UPLOAD_ENABLED.
+- Mise à jour des chaînes de traduction.
+- Correction de fautes de frappe dans le guide de contribution.
+- Suppression de Crisp du projet.
+- Mise à jour des dépendances (js et PyJWT).
+- Epinglage des dépendances Prosemirror.
+- Correction d'un avertissement de sécurité JavaScript.
+- Suppression d'un job de test E2E inutile.
+- Suppression d'objets créés dans le stockage d'objets pendant les tests.
+- Ajout d'un paramètre de configuration manquant CONVERSION_UPLOAD_ENABLED.
+- Publication des versions 5.2.0, 5.2.1 et 5.3.0.

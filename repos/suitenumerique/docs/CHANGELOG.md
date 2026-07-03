@@ -10,6 +10,7 @@ and this project adheres to
 
 - ✨(y-provider) preserve callouts, PDFs, page breaks, interlinking
   links and commented text on HTML/markdown export #2296
+- ✨(frontend) add a user menu #2463
 
 ### Changed
 
@@ -20,11 +21,14 @@ and this project adheres to
 - ♻️(frontend) new create button for docs #2423
 - ♿️(frontend) align search modal field label with placeholder #2384
 - 🚚(frontend) move Waffle to bottom left #2455
+- ♿️(frontend) remove redundant aria-label on table of contents links #2459
 
 ### Fixed
 
+- 🐛(backend) prevent owner from leaving a soft-deleted document
 - 🐛(frontend) fix removed item in the tree #2420
 - 🐛(frontend) fix service worker causing reload on tab focus #2454
+- 🐛(backend) update restore ability for inherited deletion #2148
 
 ## [v5.3.0] - 2026-06-19
 
