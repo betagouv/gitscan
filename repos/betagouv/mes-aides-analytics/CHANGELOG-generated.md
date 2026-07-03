@@ -1,11 +1,13 @@
-## Changelog : mes-aides-analytics (30 derniers jours)
+## Changelog : mes-aides-analytics (30 derniers jours, au 24 juin 2026)
 
 ### Résumé
-Cette mise à jour apporte une amélioration de l'expérience utilisateur avec l'ajout d'un indicateur de chargement visuel. De plus, des mises à jour de dépendances ont été effectuées pour assurer la sécurité et la stabilité de l'application.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la documentation du projet, notamment la mise à jour du fichier README pour une meilleure compréhension et utilisation par les contributeurs et les utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un indicateur de chargement pour améliorer l'expérience utilisateur lors des opérations longues. (#295)
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de dépendances critiques pour corriger des vulnérabilités et améliorer la stabilité. (#297)
-- Mise à jour générale des dépendances du projet. (#294)
+Aucune évolution technique majeure n'a été déployée durant cette période.
+
+### Autres changements
+- Mise à jour du fichier README pour améliorer la documentation du projet [#307](https://github.com/betagouv/mes-aides-analytics/pull/307).
