@@ -1,22 +1,27 @@
-## Changelog : acceslibre (30 derniers jours, au 25 juin 2026)
+## Changelog : acceslibre (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données, notamment avec l'ajout d'un indicateur d'exemption RPA et la mise à jour du schéma de données à la version 0.0.20. Des corrections liées aux retours d'audit RGAA ont également été implémentées, ainsi que des ajustements de sécurité pour Google Analytics. De nombreuses mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la stabilité du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des ERP en Référencement Public d'Accès (RPA), avec l'ajout de fonctionnalités spécifiques et des corrections pour une meilleure expérience utilisateur. Des ajustements ont également été apportés à la collecte de données et à la sécurité, ainsi que des mises à jour techniques pour maintenir la performance et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un indicateur d'exemption RPA (Référentiel des Gestes Alternatifs) sur la page d'accessibilité. [#2691](https://github.com/MTES-MCT/acceslibre/issues/2691)
-- Ajout d'une propriété RPA pour les établissements. [#2601](https://github.com/MTES-MCT/acceslibre/issues/2601)
-- Correction des retours d'audit RGAA pour améliorer l'accessibilité de l'application. [#2670](https://github.com/MTES-MCT/acceslibre/issues/2670)
-- Amélioration du calcul du taux de complétion. [#2681](https://github.com/MTES-MCT/acceslibre/issues/2681)
-- Ajustement de la sécurité de Google Analytics suite aux recommandations de zizmor. [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663)
+- Ajout d'un indicateur d'exemption RPA accessible uniquement aux gestionnaires. [#2691](https://github.com/MTES-MCT/acceslibre/issues/2691)
+- Les ERP en RPA ne peuvent plus être modifiés.
+- Amélioration de la page d'accessibilité avec l'ajout d'outils pertinents. [#2682](https://github.com/MTES-MCT/acceslibre/issues/2682)
+- Correction de l'affichage du bouton de confirmation pour les ERP en RPA. [#2698](https://github.com/MTES-MCT/acceslibre/issues/2698)
+- Export de l'indicateur RPA pour une meilleure identification. [#2601](https://github.com/MTES-MCT/acceslibre/issues/2601)
+- Ajustement du calcul du taux de complétion. [#2681](https://github.com/MTES-MCT/acceslibre/issues/2681)
+- Correction de problèmes liés aux retours d'expérience RGAA. [#2670](https://github.com/MTES-MCT/acceslibre/issues/2670)
 - Mise à jour du schéma de données à la version 0.0.20. [#2590](https://github.com/MTES-MCT/acceslibre/issues/2590)
+- Amélioration de la sécurité de Google Analytics (GA) suite aux recommandations de zizmor. [#2663](https://github.com/MTES-MCT/acceslibre/issues/2663)
+- Corrections de règles de déclenchement de la modale RPA. [#2701](https://github.com/MTES-MCT/acceslibre/issues/2701)
+- Modifications sur la page de succès et la page de réclamation. [#2700](https://github.com/MTES-MCT/acceslibre/issues/2700) et [#2699](https://github.com/MTES-MCT/acceslibre/issues/2699)
 
 ### Évolutions techniques
-- Corrections de la base du schéma de données. [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671)
-- Utilisation d'une locale `fr_FR` pour la génération de données factices avec Faker. [#2680](https://github.com/MTES-MCT/acceslibre/issues/2680)
-- Ajout d'outils sur la page d'accessibilité. [#2682](https://github.com/MTES-MCT/acceslibre/issues/2682)
+- Mise à jour de plusieurs dépendances : `sentry-sdk`, `djlint`, `scrapfly-sdk`, `actions/checkout`, `dompurify`, `prettier`, `pnpm`, `ruff`, `weasyprint`, `djangorestframework-gis`, `deepl`, `django-import-export`, `eslint`, `outscraper`, `django-reversion`, `gunicorn`, `faker`.
+- Correction de la base schema. [#2671](https://github.com/MTES-MCT/acceslibre/issues/2671)
+- Utilisation d'une locale `fr_FR` pour la librairie `faker`. [#2680](https://github.com/MTES-MCT/acceslibre/issues/2680)
+- Suppression d'instructions `print` inutiles.
 
 ### Autres changements
 - Documentation mise à jour.
-- Nettoyage et amélioration du code.
-- Mises à jour de nombreuses dépendances (dompurify, prettier, pnpm, ruff, weasyprint, djangorestframework-gis, djlint, faker, gunicorn, eslint, scrapfly-sdk, deepl, django-import-export, django-reversion). Ces mises à jour sont principalement liées à la sécurité et à la maintenance du projet.
+- Nettoyage du code.
