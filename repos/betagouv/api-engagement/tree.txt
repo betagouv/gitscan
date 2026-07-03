@@ -91,7 +91,8 @@
 │   │       ├── 20260508092925_add_stat_event_source_email.sql
 │   │       ├── 20260602131500_drop_user_scoring_expires_at.sql
 │   │       ├── 20260623113922_add_publisher_diffusion_rule.sql
-│   │       └── 20260625101014_drop_publisher_diffusion_exclusion.sql
+│   │       ├── 20260625101014_drop_publisher_diffusion_exclusion.sql
+│   │       └── 20260626140956_add_tracking_event.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -289,6 +290,9 @@
 │   │   │   ├── export-to-analytics-raw
 │   │   │   │   ├── config.ts
 │   │   │   │   └── handler.ts
+│   │   │   ├── export-tracking-raw
+│   │   │   │   ├── config.ts
+│   │   │   │   └── handler.ts
 │   │   │   ├── run-job.ts
 │   │   │   └── types.ts
 │   │   ├── services
@@ -296,7 +300,10 @@
 │   │   │   ├── process-definition.ts
 │   │   │   ├── slack.ts
 │   │   │   ├── sql.ts
-│   │   │   └── state.ts
+│   │   │   ├── state.ts
+│   │   │   └── tracking
+│   │   │       ├── index.ts
+│   │   │       └── posthog.ts
 │   │   └── utils
 │   │       ├── format-timestamp.ts
 │   │       └── get-job-time.ts
@@ -536,6 +543,8 @@
 │   │   │   ├── 20260622120000_add_publisher_demarche_simplifiees_table
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260625100835_drop_publisher_diffusion_tables
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260629120123_add_mission_active_publisher_start_at_index
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -1541,6 +1550,7 @@
 │   │   │   │   └── similar-missions.tsx
 │   │   │   ├── missions
 │   │   │   │   ├── filters.tsx
+│   │   │   │   ├── match-mission-card.tsx
 │   │   │   │   └── mission-card.tsx
 │   │   │   ├── quiz
 │   │   │   │   ├── back-button.tsx
@@ -1621,6 +1631,15 @@
 │   │   │   ├── geolocation.ts
 │   │   │   ├── matching.ts
 │   │   │   ├── mission-browse.ts
+│   │   │   ├── tracking
+│   │   │   │   ├── events.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── providers
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── local.ts
+│   │   │   │   │   └── posthog.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils.ts
 │   │   │   └── user-scoring.ts
 │   │   ├── stores
 │   │   │   └── quiz.ts
@@ -1806,4 +1825,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-419 directories, 1475 files
+424 directories, 1489 files
