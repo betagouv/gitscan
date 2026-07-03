@@ -48,12 +48,8 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── collectivites_en_base.py
-│   │   │   │       ├── fill_started_before_huwart_law.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
-│   │   │   │       ├── migrate_procedure_topics.py
-│   │   │   │       ├── migrate_sudocuh_comments.py
-│   │   │   │       ├── update_nuxt3_trigger.py
-│   │   │   │       └── update_procedure_doc_type.py
+│   │   │   │       └── update_nuxt3_trigger.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -147,18 +143,21 @@
 │   │   │   │       └── change_user_form.html
 │   │   │   └── core
 │   │   │       └── collectivite.html
-│   │   └── users
+│   │   ├── users
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── enums.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_add_column_departements.py
+│   │   │   │   ├── 0003_session.py
+│   │   │   │   ├── 0004_add_encrypted_password_to_users.py
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   └── utils
 │   │       ├── __init__.py
-│   │       ├── admin.py
-│   │       ├── apps.py
-│   │       ├── enums.py
-│   │       ├── migrations
-│   │       │   ├── 0001_initial.py
-│   │       │   ├── 0002_add_column_departements.py
-│   │       │   ├── 0003_session.py
-│   │       │   ├── 0004_add_encrypted_password_to_users.py
-│   │       │   └── __init__.py
-│   │       └── models.py
+│   │       └── enums.py
 │   ├── exports
 │   │   └── README.md
 │   ├── manage.py
@@ -184,11 +183,7 @@
 │   │   │   │   └── regions.json
 │   │   │   ├── management
 │   │   │   │   └── commands
-│   │   │   │       ├── __init__.py
-│   │   │   │       ├── test_fill_launched_before_huwart_law.py
-│   │   │   │       ├── test_migrate_procedure_topics.py
-│   │   │   │       ├── test_migrate_sudocuh_comments.py
-│   │   │   │       └── test_update_procedure_doc_type.py
+│   │   │   │       └── __init__.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_models.py
 │   │   │   └── test_views.py
@@ -1047,4 +1042,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-206 directories, 885 files
+207 directories, 879 files
