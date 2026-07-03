@@ -136,7 +136,7 @@ Utilise la structure suivante en markdown :
 ## Changelog : $REPO_NAME ($DAYS derniers jours, au $CURRENT_DATE)
 
 ### Résumé
-Un paragraphe d'introduction non technique résumant les évolutions récentes notables du projet. Ce résumé doit être compréhensible par une personne non technique (product owner, décideur, utilisateur final) mais va à l'essentiel.
+Un paragraphe d'introduction non technique résumant les évolutions récentes notables du projet. Ce résumé doit être compréhensible par une personne non technique (product owner, décideur, utilisateur final). va à l'essentiel.
 
 ### Évolutions fonctionnelles
 Les changements visibles pour les utilisateurs : nouvelles fonctionnalités, améliorations, corrections impactant l'expérience utilisateur.
@@ -156,6 +156,7 @@ Instructions :
 - Ne génère pas de contenu ou structure vide ou inutile
 - Ne génère que le markdown, sans blocs de code englobants
 - Sois concis mais informatif
+- No bullshit
 
 Informations du dépôt :
 $CONTEXT"
