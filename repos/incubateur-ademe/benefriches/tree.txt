@@ -9,24 +9,29 @@
 │   ├── hooks
 │   │   └── format-check.sh
 │   ├── rules
-│   │   └── api
-│   │       ├── api-architecture.md
-│   │       ├── api-controller.md
-│   │       ├── api-domain-events.md
-│   │       ├── api-integration-testing.md
-│   │       ├── api-migrations.md
-│   │       ├── api-modules-and-di.md
-│   │       ├── api-naming.md
-│   │       ├── api-query.md
-│   │       ├── api-repository.md
-│   │       ├── api-unit-testing.md
-│   │       └── api-usecase.md
+│   │   ├── api
+│   │   │   ├── api-architecture.md
+│   │   │   ├── api-controller.md
+│   │   │   ├── api-domain-events.md
+│   │   │   ├── api-integration-testing.md
+│   │   │   ├── api-migrations.md
+│   │   │   ├── api-modules-and-di.md
+│   │   │   ├── api-naming.md
+│   │   │   ├── api-query.md
+│   │   │   ├── api-repository.md
+│   │   │   ├── api-unit-testing.md
+│   │   │   └── api-usecase.md
+│   │   └── testing.md
 │   ├── settings.json
 │   └── skills
 │       ├── adr
 │       │   └── SKILL.md
 │       ├── code-reviewer
-│       │   └── SKILL.md
+│       │   ├── SKILL.md
+│       │   └── reference
+│       │       ├── api.md
+│       │       ├── cross-cutting.md
+│       │       └── web.md
 │       ├── create-database-migration
 │       │   └── SKILL.md
 │       ├── create-e2e-test
@@ -330,85 +335,9 @@
 │   │   │   │       │   └── SoilsCarbonStorageService.ts
 │   │   │   │       ├── model
 │   │   │   │       │   ├── formatProjectInputToFeatures.ts
-│   │   │   │       │   ├── project-impacts
-│   │   │   │       │   │   ├── PhotovoltaicProjectImpactsService.spec.ts
-│   │   │   │       │   │   ├── PhotovoltaicProjectImpactsService.ts
-│   │   │   │       │   │   ├── ReconversionProjectImpactsService.spec.ts
-│   │   │   │       │   │   ├── ReconversionProjectImpactsService.ts
-│   │   │   │       │   │   ├── ReconversionProjectImpactsServiceInterface.ts
-│   │   │   │       │   │   ├── UrbanProjectImpactsService.spec.ts
-│   │   │   │       │   │   ├── UrbanProjectImpactsService.ts
-│   │   │   │       │   │   ├── break-even-level
-│   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.spec.ts
-│   │   │   │       │   │   │   ├── computeImpactsWithBreakEvenLevel.ts
-│   │   │   │       │   │   │   ├── documentation-calculs-impacts.md
-│   │   │   │       │   │   │   ├── indirect-impacts
-│   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.spec.ts
-│   │   │   │       │   │   │   │   ├── natureConservationRelatedImpacts.ts
-│   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.spec.ts
-│   │   │   │       │   │   │   │   ├── photovoltaicRelatedImpacts.ts
-│   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.spec.ts
-│   │   │   │       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.ts
-│   │   │   │       │   │   │   │   ├── urbanProjectImpacts.spec.ts
-│   │   │   │       │   │   │   │   └── urbanProjectImpacts.ts
-│   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.spec.ts
-│   │   │   │       │   │   │   ├── projectDevelopmentEconomicBalance.ts
-│   │   │   │       │   │   │   ├── projectIndirectImpacts.spec.ts
-│   │   │   │       │   │   │   ├── projectIndirectImpacts.ts
-│   │   │   │       │   │   │   ├── projectOperatingEconomicBalance.spec.ts
-│   │   │   │       │   │   │   └── projectOperatingEconomicBalance.ts
-│   │   │   │       │   │   ├── economic-balance
-│   │   │   │       │   │   │   ├── economicBalanceImpact.spec.ts
-│   │   │   │       │   │   │   └── economicBalanceImpact.ts
-│   │   │   │       │   │   ├── full-time-jobs
-│   │   │   │       │   │   │   ├── fullTimeJobsImpactService.spec.ts
-│   │   │   │       │   │   │   └── fullTimeJobsImpactService.ts
-│   │   │   │       │   │   ├── impact.ts
-│   │   │   │       │   │   ├── impactsEvaluationPeriod.ts
-│   │   │   │       │   │   ├── influence-area-service
-│   │   │   │       │   │   │   ├── InfluenceAreaService.spec.ts
-│   │   │   │       │   │   │   └── InfluenceAreaService.ts
-│   │   │   │       │   │   ├── nature-conservation
-│   │   │   │       │   │   │   ├── NatureConservationImpactsService.spec.ts
-│   │   │   │       │   │   │   ├── NatureConservationImpactsService.ts
-│   │   │   │       │   │   │   ├── natureConservationYearlyMonetaryValue.spec.ts
-│   │   │   │       │   │   │   ├── natureConservationYearlyMonetaryValue.ts
-│   │   │   │       │   │   │   ├── nonContaminatedSurfaceImpact.spec.ts
-│   │   │   │       │   │   │   ├── nonContaminatedSurfaceImpact.ts
-│   │   │   │       │   │   │   ├── permeableSurfaceAreaImpact.spec.ts
-│   │   │   │       │   │   │   └── permeableSurfaceAreaImpact.ts
-│   │   │   │       │   │   ├── property-value
-│   │   │   │       │   │   │   ├── propertyValueImpact.spec.ts
-│   │   │   │       │   │   │   └── propertyValueImpact.ts
-│   │   │   │       │   │   ├── renewable-energy
-│   │   │   │       │   │   │   ├── avoided-CO2-with-energy-production
-│   │   │   │       │   │   │   │   ├── avoidedCO2WithEnergyProductionImpact.spec.ts
-│   │   │   │       │   │   │   │   └── avoidedCO2WithEnergyProductionImpact.ts
-│   │   │   │       │   │   │   └── households-powered-by-renewable-energy
-│   │   │   │       │   │   │       ├── householdsPoweredByRenewableEnergyImpact.spec.ts
-│   │   │   │       │   │   │       └── householdsPoweredByRenewableEnergyImpact.ts
-│   │   │   │       │   │   ├── roads-and-utilities-expenses
-│   │   │   │       │   │   │   ├── roadsAndUtilitiesContruction.ts
-│   │   │   │       │   │   │   ├── roadsAndUtilitiesExpensesImpact.spec.ts
-│   │   │   │       │   │   │   └── roadsAndUtilitiesExpensesImpact.ts
-│   │   │   │       │   │   ├── soils-co2eq-storage
-│   │   │   │       │   │   │   ├── soilsCo2eqStorage.spec.ts
-│   │   │   │       │   │   │   └── soilsCo2eqStorage.ts
-│   │   │   │       │   │   ├── travel-related-impacts-service
-│   │   │   │       │   │   │   ├── TravelRelatedImpactsService.spec.ts
-│   │   │   │       │   │   │   ├── TravelRelatedImpactsService.ts
-│   │   │   │       │   │   │   ├── YearlyTravelRelatedImpacts.spec.ts
-│   │   │   │       │   │   │   └── YearlyTravelRelatedImpacts.ts
-│   │   │   │       │   │   └── urban-freshness-related-impacts-service
-│   │   │   │       │   │       ├── UrbanFreshnessRelatedImpactsService.spec.ts
-│   │   │   │       │   │       ├── UrbanFreshnessRelatedImpactsService.ts
-│   │   │   │       │   │       ├── YearlyUrbanFreshnessRelatedImpacts.spec.ts
-│   │   │   │       │   │       └── YearlyUrbanFreshnessRelatedImpacts.ts
+│   │   │   │       │   ├── impactsEvaluationPeriod.ts
 │   │   │   │       │   ├── reconversionProject.mock.ts
 │   │   │   │       │   ├── reconversionProject.ts
-│   │   │   │       │   ├── sum-on-evolution-period
-│   │   │   │       │   │   ├── SumOnEvolutionPeriodService.spec.ts
-│   │   │   │       │   │   └── SumOnEvolutionPeriodService.ts
 │   │   │   │       │   └── urbanProjects.ts
 │   │   │   │       └── usecases
 │   │   │   │           ├── archiveReconversionProject.usecase.spec.ts
@@ -635,13 +564,6 @@
 │   │   │   │       ├── models
 │   │   │   │       │   ├── agriculturalOperationGenerator.ts
 │   │   │   │       │   ├── fricheGenerator.ts
-│   │   │   │       │   ├── impacts
-│   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.spec.ts
-│   │   │   │       │   │   ├── computeStatuQuoSiteImpacts.ts
-│   │   │   │       │   │   ├── siteIndirectImpacts.spec.ts
-│   │   │   │       │   │   ├── siteIndirectImpacts.ts
-│   │   │   │       │   │   ├── siteOperatingEconomicBalance.spec.ts
-│   │   │   │       │   │   └── siteOperatingEconomicBalance.ts
 │   │   │   │       │   ├── naturalAreaGenerator.ts
 │   │   │   │       │   ├── site.mock.ts
 │   │   │   │       │   ├── site.spec.ts
@@ -2163,8 +2085,13 @@
 │       │   │   │   │       ├── __tests__
 │       │   │   │   │       │   ├── impactsOnboardingSkip.spec.ts
 │       │   │   │   │       │   ├── index.ts
+│       │   │   │   │       │   ├── projectImpacts.mock.ts
 │       │   │   │   │       │   ├── projectImpacts.selectors.spec.ts
-│       │   │   │   │       │   └── projectImpactsFetching.spec.ts
+│       │   │   │   │       │   ├── projectImpactsEconomicBalance.selectors.spec.ts
+│       │   │   │   │       │   ├── projectImpactsEnvironmental.selectors.spec.ts
+│       │   │   │   │       │   ├── projectImpactsFetching.spec.ts
+│       │   │   │   │       │   ├── projectImpactsSocial.selectors.spec.ts
+│       │   │   │   │       │   └── projectImpactsSocioEconomic.selectors.spec.ts
 │       │   │   │   │       ├── actions
 │       │   │   │   │       │   ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
 │       │   │   │   │       │   ├── impactsOnboardingSkip.actions.ts
@@ -2172,7 +2099,6 @@
 │       │   │   │   │       │   ├── urbanSprawlComparisonOnboardingSkip.action.ts
 │       │   │   │   │       │   └── urbanSprawlImpactsComparisonRequested.action.ts
 │       │   │   │   │       ├── impactsOnboardingSkip.ts
-│       │   │   │   │       ├── projectImpacts.mock.ts
 │       │   │   │   │       ├── projectImpacts.reducer.ts
 │       │   │   │   │       └── selectors
 │       │   │   │   │           ├── exportImpacts.selectors.ts
@@ -2181,21 +2107,11 @@
 │       │   │   │   │           ├── projectBreakEvenLevel.selectors.ts
 │       │   │   │   │           ├── projectDevelopmentScore.selectors.ts
 │       │   │   │   │           ├── projectImpacts.selectors.ts
-│       │   │   │   │           ├── projectImpactsEconomicBalance.selectors.spec.ts
-│       │   │   │   │           ├── projectImpactsEconomicBalance.selectors.ts
-│       │   │   │   │           ├── projectImpactsEnvironmental.selectors.spec.ts
-│       │   │   │   │           ├── projectImpactsEnvironmental.selectors.ts
-│       │   │   │   │           ├── projectImpactsSocial.selectors.spec.ts
-│       │   │   │   │           ├── projectImpactsSocial.selectors.ts
-│       │   │   │   │           ├── projectImpactsSocioEconomic.selectors.spec.ts
-│       │   │   │   │           ├── projectImpactsSocioEconomic.selectors.ts
-│       │   │   │   │           ├── projectKeyImpactIndicators.selectors.ts
 │       │   │   │   │           ├── projectSummary.selector.ts
 │       │   │   │   │           └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
 │       │   │   │   ├── domain
 │       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
 │       │   │   │   │   ├── groupIndirectImpactsByBearer.ts
-│       │   │   │   │   ├── projectImpactsAreaChartsData.ts
 │       │   │   │   │   ├── projectImpactsEconomicBalance.ts
 │       │   │   │   │   ├── projectImpactsEnvironmental.ts
 │       │   │   │   │   ├── projectImpactsSocial.ts
@@ -2391,67 +2307,65 @@
 │       │   │   │       │   │   │   │   │   └── householdsPoweredByEnR.tsx
 │       │   │   │       │   │   │   │   └── time-travel-saved
 │       │   │   │       │   │   │   │       └── TimeTravelSavedDescription.tsx
-│       │   │   │       │   │   │   ├── socio-economic
-│       │   │   │       │   │   │   │   ├── EconomicDirectDescription.tsx
-│       │   │   │       │   │   │   │   ├── EconomicIndirectDescription.tsx
-│       │   │   │       │   │   │   │   ├── EnvironmentalMonetaryDescription.tsx
-│       │   │   │       │   │   │   │   ├── SocialMonetaryDescription.tsx
-│       │   │   │       │   │   │   │   ├── SocioEconomicDescription.tsx
-│       │   │   │       │   │   │   │   ├── SocioEconomicModalWizard.tsx
-│       │   │   │       │   │   │   │   ├── SocioEconomicSubSectionDescription.tsx
-│       │   │   │       │   │   │   │   ├── avoided-air-conditionning-expenses
-│       │   │   │       │   │   │   │   │   └── AvoidedAirConditionningExpensesDescription.tsx
-│       │   │   │       │   │   │   │   ├── avoided-air-pollution
-│       │   │   │       │   │   │   │   │   └── AvoidedAirPollutionDescription.tsx
-│       │   │   │       │   │   │   │   ├── avoided-car-related-expenses
-│       │   │   │       │   │   │   │   │   └── AvoidedCarRelatedExpensesDescription.tsx
-│       │   │   │       │   │   │   │   ├── avoided-co2-monetary-value
-│       │   │   │       │   │   │   │   │   ├── AirConditionningRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── RenewableEnergyRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── TravelRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── avoided-friche-costs
-│       │   │   │       │   │   │   │   │   ├── AvoidedFricheCostsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedIllegalDumpingCostsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedOtherSecuringCostsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedSecurityCostsDescription.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── avoided-property-damages-expenses
-│       │   │   │       │   │   │   │   │   └── AvoidedPropertyDamagesExpenses.tsx
-│       │   │   │       │   │   │   │   ├── avoided-traffic-accidents-monetary-value
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsDeathsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsMinorInjuries.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsSevereInjuriesDescription.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── breadcrumbSections.ts
-│       │   │   │       │   │   │   │   ├── ecosystem-services
-│       │   │   │       │   │   │   │   │   ├── EcosystemServicesDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── ForestRelatedProductDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── InvasiveSpeciesRegulationDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── NatureRelatedWellnessAndLeisureDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── NitrogenCycleDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── PollinationDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── SoilErosionDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── SoilsStorageRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── WaterCycle.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── property-value-increase
-│       │   │   │       │   │   │   │   │   ├── PropertyTransferDutiesIncreaseDescription.tsx
-│       │   │   │       │   │   │   │   │   └── PropertyValueIncreaseDescription.tsx
-│       │   │   │       │   │   │   │   ├── rental-income
-│       │   │   │       │   │   │   │   │   └── RentalIncomeDescription.tsx
-│       │   │   │       │   │   │   │   ├── roads-and-utilities-maintenance-expenses
-│       │   │   │       │   │   │   │   │   └── RoadsAndUtilitiesMaintenanceExpenses.tsx
-│       │   │   │       │   │   │   │   ├── taxes-income
-│       │   │   │       │   │   │   │   │   └── TaxesIncomeDescription.tsx
-│       │   │   │       │   │   │   │   ├── time-travel-saved
-│       │   │   │       │   │   │   │   │   └── TimeTravelSavedMonetaryValueDescription.tsx
-│       │   │   │       │   │   │   │   └── water-regulation
-│       │   │   │       │   │   │   │       └── WaterRegulationDescription.tsx
-│       │   │   │       │   │   │   └── soils-carbon-storage
-│       │   │   │       │   │   │       └── SoilsCarbonStorageDescription.tsx
+│       │   │   │       │   │   │   └── socio-economic
+│       │   │   │       │   │   │       ├── EconomicDirectDescription.tsx
+│       │   │   │       │   │   │       ├── EconomicIndirectDescription.tsx
+│       │   │   │       │   │   │       ├── EnvironmentalMonetaryDescription.tsx
+│       │   │   │       │   │   │       ├── SocialMonetaryDescription.tsx
+│       │   │   │       │   │   │       ├── SocioEconomicDescription.tsx
+│       │   │   │       │   │   │       ├── SocioEconomicModalWizard.tsx
+│       │   │   │       │   │   │       ├── SocioEconomicSubSectionDescription.tsx
+│       │   │   │       │   │   │       ├── avoided-air-conditionning-expenses
+│       │   │   │       │   │   │       │   └── AvoidedAirConditionningExpensesDescription.tsx
+│       │   │   │       │   │   │       ├── avoided-air-pollution
+│       │   │   │       │   │   │       │   └── AvoidedAirPollutionDescription.tsx
+│       │   │   │       │   │   │       ├── avoided-car-related-expenses
+│       │   │   │       │   │   │       │   └── AvoidedCarRelatedExpensesDescription.tsx
+│       │   │   │       │   │   │       ├── avoided-co2-monetary-value
+│       │   │   │       │   │   │       │   ├── AirConditionningRelatedCo2MonetaryValueDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedCo2MonetaryValueDescription.tsx
+│       │   │   │       │   │   │       │   ├── RenewableEnergyRelatedCo2MonetaryValueDescription.tsx
+│       │   │   │       │   │   │       │   ├── TravelRelatedCo2MonetaryValueDescription.tsx
+│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
+│       │   │   │       │   │   │       ├── avoided-friche-costs
+│       │   │   │       │   │   │       │   ├── AvoidedFricheCostsDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedIllegalDumpingCostsDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedOtherSecuringCostsDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedSecurityCostsDescription.tsx
+│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
+│       │   │   │       │   │   │       ├── avoided-property-damages-expenses
+│       │   │   │       │   │   │       │   └── AvoidedPropertyDamagesExpenses.tsx
+│       │   │   │       │   │   │       ├── avoided-traffic-accidents-monetary-value
+│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsDeathsDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsDescription.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsMinorInjuries.tsx
+│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsSevereInjuriesDescription.tsx
+│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
+│       │   │   │       │   │   │       ├── breadcrumbSections.ts
+│       │   │   │       │   │   │       ├── ecosystem-services
+│       │   │   │       │   │   │       │   ├── EcosystemServicesDescription.tsx
+│       │   │   │       │   │   │       │   ├── ForestRelatedProductDescription.tsx
+│       │   │   │       │   │   │       │   ├── InvasiveSpeciesRegulationDescription.tsx
+│       │   │   │       │   │   │       │   ├── NatureRelatedWellnessAndLeisureDescription.tsx
+│       │   │   │       │   │   │       │   ├── NitrogenCycleDescription.tsx
+│       │   │   │       │   │   │       │   ├── PollinationDescription.tsx
+│       │   │   │       │   │   │       │   ├── SoilErosionDescription.tsx
+│       │   │   │       │   │   │       │   ├── SoilsStorageRelatedCo2MonetaryValueDescription.tsx
+│       │   │   │       │   │   │       │   ├── WaterCycle.tsx
+│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
+│       │   │   │       │   │   │       ├── property-value-increase
+│       │   │   │       │   │   │       │   ├── PropertyTransferDutiesIncreaseDescription.tsx
+│       │   │   │       │   │   │       │   └── PropertyValueIncreaseDescription.tsx
+│       │   │   │       │   │   │       ├── rental-income
+│       │   │   │       │   │   │       │   └── RentalIncomeDescription.tsx
+│       │   │   │       │   │   │       ├── roads-and-utilities-maintenance-expenses
+│       │   │   │       │   │   │       │   └── RoadsAndUtilitiesMaintenanceExpenses.tsx
+│       │   │   │       │   │   │       ├── taxes-income
+│       │   │   │       │   │   │       │   └── TaxesIncomeDescription.tsx
+│       │   │   │       │   │   │       ├── time-travel-saved
+│       │   │   │       │   │   │       │   └── TimeTravelSavedMonetaryValueDescription.tsx
+│       │   │   │       │   │   │       └── water-regulation
+│       │   │   │       │   │   │           └── WaterRegulationDescription.tsx
 │       │   │   │       │   │   ├── index.tsx
 │       │   │   │       │   │   ├── list-view
 │       │   │   │       │   │   │   ├── ImpactActorsItem.tsx
@@ -3203,9 +3117,9 @@
 │       │   │       │   ├── SidebarLayout
 │       │   │       │   │   ├── Sidebar.tsx
 │       │   │       │   │   ├── SidebarContainerLayout.tsx
+│       │   │       │   │   ├── SidebarCurrentStepContext.ts
 │       │   │       │   │   ├── SidebarLayout.css
 │       │   │       │   │   ├── SidebarLayout.tsx
-│       │   │       │   │   ├── SidebarLayoutContext.ts
 │       │   │       │   │   └── SidebarLayoutFooter.tsx
 │       │   │       │   ├── TileFormWrapper
 │       │   │       │   │   ├── TileFormFieldWrapper.tsx
@@ -3513,11 +3427,63 @@
 │       │   ├── object-keys
 │       │   │   └── index.ts
 │       │   ├── reconversion-project-impacts
+│       │   │   ├── computeImpactsWithBreakEvenLevel.spec.ts
+│       │   │   ├── computeImpactsWithBreakEvenLevel.ts
+│       │   │   ├── documentation-calculs-impacts.md
+│       │   │   ├── economic-balance
+│       │   │   │   ├── projectDevelopmentEconomicBalance.spec.ts
+│       │   │   │   ├── projectDevelopmentEconomicBalance.ts
+│       │   │   │   ├── projectOperatingEconomicBalance.spec.ts
+│       │   │   │   └── projectOperatingEconomicBalance.ts
+│       │   │   ├── format-impacts
+│       │   │   │   ├── formatImpacts.ts
+│       │   │   │   ├── socioEconomic.types.ts
+│       │   │   │   └── types.ts
 │       │   │   ├── index.ts
-│       │   │   ├── projectImpactsDataView.types.ts
-│       │   │   ├── siteImpactsDataView.types.ts
-│       │   │   ├── socioEconomic.types.ts
-│       │   │   └── types.ts
+│       │   │   ├── indirect-impacts
+│       │   │   │   ├── fullTimeJobs.helper.ts
+│       │   │   │   ├── influence-area-service
+│       │   │   │   │   ├── InfluenceAreaService.spec.ts
+│       │   │   │   │   └── InfluenceAreaService.ts
+│       │   │   │   ├── projectIndirectImpacts.spec.ts
+│       │   │   │   ├── projectIndirectImpacts.ts
+│       │   │   │   ├── renewable-energy
+│       │   │   │   │   ├── avoided-CO2-with-energy-production
+│       │   │   │   │   │   ├── avoidedCO2WithEnergyProductionImpact.spec.ts
+│       │   │   │   │   │   └── avoidedCO2WithEnergyProductionImpact.ts
+│       │   │   │   │   ├── households-powered-by-renewable-energy
+│       │   │   │   │   │   ├── householdsPoweredByRenewableEnergyImpact.spec.ts
+│       │   │   │   │   │   └── householdsPoweredByRenewableEnergyImpact.ts
+│       │   │   │   │   ├── photovoltaicRelatedImpacts.spec.ts
+│       │   │   │   │   └── photovoltaicRelatedImpacts.ts
+│       │   │   │   ├── site-reconversion
+│       │   │   │   │   ├── siteReconversionRelatedEconomicImpacts.spec.ts
+│       │   │   │   │   └── siteReconversionRelatedEconomicImpacts.ts
+│       │   │   │   ├── soils-tranformation
+│       │   │   │   │   ├── SoilsTransformationImpactsService.spec.ts
+│       │   │   │   │   └── SoilsTransformationImpactsService.ts
+│       │   │   │   └── urban-project
+│       │   │   │       ├── property-value
+│       │   │   │       │   ├── propertyValueImpact.spec.ts
+│       │   │   │       │   └── propertyValueImpact.ts
+│       │   │   │       ├── roads-and-utilities-expenses
+│       │   │   │       │   ├── roadsAndUtilitiesContruction.ts
+│       │   │   │       │   ├── roadsAndUtilitiesExpensesImpact.spec.ts
+│       │   │   │       │   └── roadsAndUtilitiesExpensesImpact.ts
+│       │   │   │       ├── travel-related-impacts-service
+│       │   │   │       │   ├── TravelRelatedImpactsService.spec.ts
+│       │   │   │       │   ├── TravelRelatedImpactsService.ts
+│       │   │   │       │   ├── YearlyTravelRelatedImpacts.spec.ts
+│       │   │   │       │   └── YearlyTravelRelatedImpacts.ts
+│       │   │   │       ├── urban-freshness-related-impacts-service
+│       │   │   │       │   ├── UrbanFreshnessRelatedImpactsService.spec.ts
+│       │   │   │       │   ├── UrbanFreshnessRelatedImpactsService.ts
+│       │   │   │       │   ├── YearlyUrbanFreshnessRelatedImpacts.spec.ts
+│       │   │   │       │   └── YearlyUrbanFreshnessRelatedImpacts.ts
+│       │   │   │       ├── urbanProjectImpacts.spec.ts
+│       │   │   │       └── urbanProjectImpacts.ts
+│       │   │   ├── projectImpacts.types.ts
+│       │   │   └── projectImpactsDataView.types.ts
 │       │   ├── reconversion-projects
 │       │   │   ├── _common
 │       │   │   │   ├── creationMode.ts
@@ -3624,7 +3590,14 @@
 │       │   │   ├── site.ts
 │       │   │   ├── stakeholder.ts
 │       │   │   ├── statu-quo-impacts
-│       │   │   │   └── impacts.types.ts
+│       │   │   │   ├── computeStatuQuoSiteImpacts.spec.ts
+│       │   │   │   ├── computeStatuQuoSiteImpacts.ts
+│       │   │   │   ├── impacts.types.ts
+│       │   │   │   ├── siteImpactsDataView.types.ts
+│       │   │   │   ├── siteIndirectImpacts.spec.ts
+│       │   │   │   ├── siteIndirectImpacts.ts
+│       │   │   │   ├── siteOperatingEconomicBalance.spec.ts
+│       │   │   │   └── siteOperatingEconomicBalance.ts
 │       │   │   ├── urban-zone
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── landParcel.ts
@@ -3635,11 +3608,21 @@
 │       │   ├── siteActions.ts
 │       │   ├── soils
 │       │   │   ├── constrainedSoilTypes.spec.ts
+│       │   │   ├── constrainedSoilTypes.ts
+│       │   │   ├── impacts
+│       │   │   │   ├── natureConservationYearlyMonetaryValue.spec.ts
+│       │   │   │   └── natureConservationYearlyMonetaryValue.ts
 │       │   │   ├── index.ts
 │       │   │   ├── soilDistribution.ts
 │       │   │   ├── soilDistributionByType.ts
-│       │   │   ├── soils.spec.ts
+│       │   │   ├── soilType.spec.ts
+│       │   │   ├── soilType.ts
+│       │   │   ├── soilsCarbonStorage.types.ts
 │       │   │   └── soilsDistributionObjToArray.ts
+│       │   ├── sum-on-evolution-period
+│       │   │   ├── SumOnEvolutionPeriodService.spec.ts
+│       │   │   ├── SumOnEvolutionPeriodService.ts
+│       │   │   └── computeCumulativeByYear.ts
 │       │   └── surface-area
 │       │       ├── index.ts
 │       │       ├── surfaceArea.spec.ts
@@ -3654,4 +3637,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-988 directories, 2668 files
+987 directories, 2652 files
