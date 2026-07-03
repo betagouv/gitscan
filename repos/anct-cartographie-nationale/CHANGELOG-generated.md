@@ -1,17 +1,14 @@
-# Synthèse d'activité : anct-cartographie-nationale (du 23/05 au 02/06)
+# Synthèse d'activité : anct-cartographie-nationale (du 17/06 au 29/06)
 
 ## Résumé de l'activité
-L'organisation a connu une semaine productive, axée sur l'amélioration de la qualité et de la disponibilité des données de médiation numérique, ainsi que sur la modernisation de l'application cartographique principale.  [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a bénéficié d'optimisations significatives du processus de géocodage et de l'intégration de nouvelles sources de données.  Parallèlement, [cartographie](/repos/anct-cartographie-nationale/cartographie) a subi une refonte architecturale majeure et des améliorations de l'observabilité, rendant l'application plus robuste et plus facile à diagnostiquer.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration des données utilisées pour la cartographie des lieux d'inclusion numérique et sur la modernisation de l'application web.  [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a été mis à jour avec de nouvelles sources de données (Francilin) et des corrections de zonage (remplacement ZRR par FRR, mise à jour QPV). L'application [cartographie](/repos/anct-cartographie-nationale/cartographie) a bénéficié d'un filtre par source de données, d'une meilleure gestion du cache et de l'intégration de Sentry pour le suivi des erreurs. Ces améliorations visent à fournir des données plus précises et une expérience utilisateur plus stable et performante.
 
 ## Sécurité
-- Intégration de gitleaks dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour la détection de secrets dans le code et les commits.
-- Intégration de Sentry dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour le suivi des erreurs applicatives.
+L'intégration de Sentry dans [cartographie](/repos/anct-cartographie-nationale/cartographie) inclut un filtrage des données sensibles lors de la remontée des erreurs, améliorant ainsi la sécurité des données utilisateurs.
 
 ## Autres changements notables
-- Migration du géocodage BAN vers l'API batch CSV dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), améliorant les performances et la scalabilité.
-- Refactorisation majeure de l'architecture Next.js dans [cartographie](/repos/anct-cartographie-nationale/cartographie) avec l'adoption de `@arckit/nextjs`.
-- Mise en place d'une journalisation structurée et d'une corrélation des logs Nginx avec Sentry dans [cartographie](/repos/anct-cartographie-nationale/cartographie).
+[cartographie](/repos/anct-cartographie-nationale/cartographie) a entrepris une modernisation technique significative avec l'adoption de nouvelles bibliothèques (@arckit/nextjs, @arckit/form, @arckit/daisyui) et l'émission des logs Nginx au format JSON pour une meilleure intégration avec Grafana. Ces changements visent à améliorer la maintenabilité et l'observabilité de l'application.
 
 ## Dépôts les plus actifs
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Amélioration de la gestion et de la publication des données de lieux de médiation numérique, incluant l'ajout de nouvelles sources de données et l'optimisation du géocodage.
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Refonte architecturale majeure et amélioration de l'observabilité pour une application plus robuste et facile à maintenir.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour des sources de données et amélioration de la stabilité de la publication des données nationales.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Amélioration de l'interface utilisateur avec un filtre par source de données, intégration d'un outil de suivi des erreurs et modernisation de la base de code.

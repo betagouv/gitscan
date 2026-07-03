@@ -1,22 +1,23 @@
-# Synthèse d'activité : cloud-gouv (du 19/06 au 26/06)
+# Synthèse d'activité : cloud-gouv (du 19 juin 2026 au 26 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, de l'observabilité et de la flexibilité de ses projets. Des corrections de vulnérabilités ont été apportées à [openbao](/repos/cloud-gouv/openbao) et des logs structurés ont été implémentés dans [portail](/repos/cloud-gouv/portail) pour faciliter le débogage et le monitoring.  Plusieurs dépôts ont également bénéficié de mises à jour de versions et de corrections de bugs, notamment [securix](/repos/cloud-gouv/securix), [dockerfiles](/repos/cloud-gouv/dockerfiles) et [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, de la stabilité et de l'observabilité de ses projets. OpenBao a reçu des corrections de sécurité critiques et des améliorations de la robustesse. Le projet Portail a progressé sur l'observabilité et la flexibilité de la gestion des backends. Des améliorations significatives ont également été apportées aux charts Helm communs, notamment avec l'ajout de tableaux de bord Grafana pour Coturn et le monitoring de machines virtuelles, ainsi que des tests de performance pour PostgreSQL.  Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de corrections de bugs pour assurer une meilleure expérience utilisateur.
 
 ## Sécurité
-Plusieurs améliorations de sécurité ont été apportées :
-- Correction de vulnérabilités dans `go.opentelemetry.io/otel/sdk` et Go dans [openbao](/repos/cloud-gouv/openbao).
-- Désactivation de KWallet pour renforcer la sécurité dans [securix](/repos/cloud-gouv/securix).
+Plusieurs changements liés à la sécurité ont été déployés :
+
+- Correction de vulnérabilités dans OpenBao ([openbao](/repos/cloud-gouv/openbao)) avec des mises à jour de `go.opentelemetry.io/otel/sdk` et de Go lui-même.
+- Désactivation de KWallet dans Securix ([securix](/repos/cloud-gouv/securix)) pour renforcer la sécurité.
 
 ## Autres changements notables
-- Implémentation de logs structurés au format JSON dans [portail](/repos/cloud-gouv/portail) pour une meilleure observabilité.
-- Mise à jour de `clusterctl` dans [dockerfiles](/repos/cloud-gouv/dockerfiles) vers la version 1.13.1.
-- Refactorisation des tableaux de bord Grafana dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts) pour une meilleure gestion des données.
-- Correction de problèmes liés aux versions d'API pour les ressources OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- Intégration de tests de stress FIO aux benchmarks PostgreSQL dans les charts Helm communs ([common-helm-charts](/repos/cloud-gouv/common-helm-charts)).
+- Refonte de la configuration des règles ACL dans le Portail ([portail](/repos/cloud-gouv/portail)) pour une meilleure flexibilité.
+- Mise à jour de `clusterctl` dans les Dockerfiles ([dockerfiles](/repos/cloud-gouv/dockerfiles)) pour bénéficier des dernières fonctionnalités.
+- Ajout de `golang` à l'image Docker `gitlab-runner` ([dockerfiles](/repos/cloud-gouv/dockerfiles)).
 
 ## Dépôts les plus actifs
-- [portail](/repos/cloud-gouv/portail) : Améliorations significatives de l'observabilité, de la flexibilité et de la gestion des backends.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité pour une meilleure stabilité et protection.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Amélioration de la gestion des secrets, des tableaux de bord Grafana et de la configuration des charts Helm.
 - [securix](/repos/cloud-gouv/securix) : Améliorations de la localisation, correction de bugs liés au démarrage sécurisé et à l'installateur.
-- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mise à jour des versions des outils inclus dans les images Docker.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de sécurité, améliorations de la stabilité et de la gestion des montages.
+- [portail](/repos/cloud-gouv/portail) : Amélioration de l'observabilité, flexibilité de la gestion des backends et corrections de bugs.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de tableaux de bord Grafana et intégration de tests de performance pour PostgreSQL.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mises à jour des versions des outils et corrections de sommes SHA.

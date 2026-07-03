@@ -1,25 +1,28 @@
-# Synthèse d'activité : IA-Generative (du 24 mai au 26 juin 2026)
+# Synthèse d'activité : IA-Generative (du 22/06 au 29/06)
 
 ## Résumé de l'activité
-L'organisation IA-Generative a connu une période d'activité soutenue, axée sur l'amélioration de la sécurité, l'ajout de nouvelles fonctionnalités et l'optimisation de l'expérience utilisateur. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment en matière de sécurité avec des corrections de vulnérabilités critiques dans [device-management](/repos/IA-Generative/device-management) et [myvault](/repos/IA-Generative/myvault).  Des améliorations fonctionnelles ont été apportées à des outils clés comme [mcr](/repos/IA-Generative/mcr) avec l'ajout du téléchargement de rapports sur Google Drive et [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) avec l'importation de vidéos YouTube. L'intégration de l'IA et du RAG progresse dans plusieurs projets, notamment [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) et [mcr](/repos/IA-Generative/mcr).
+L'organisation IA-Generative a connu une semaine riche en activités, axée sur l'amélioration de la sécurité, de la robustesse et de l'expérience utilisateur de ses différents projets. Plusieurs dépôts ont bénéficié de correctifs de sécurité importants, notamment [myvault](/repos/IA-Generative/myvault) et [device-management](/repos/IA-Generative/device-management).  Des avancées significatives ont été réalisées dans l'intégration de l'IA, avec l'ajout de fonctionnalités RAG dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) et l'amélioration de l'API [mirai-api](/repos/IA-Generative/mirai-api). L'accent a également été mis sur l'automatisation et l'amélioration des processus de développement, avec des mises à jour de CI/CD et l'intégration d'outils d'observabilité.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations significatives en matière de sécurité :
 
-- Correction de vulnérabilités critiques dans [device-management](/repos/IA-Generative/device-management) concernant l'authentification, la révocation d'accès et les dépendances.
-- Implémentation d'une garde anti-prompt-injection dans [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) pour se protéger contre les attaques.
-- Renforcement de la sécurité de [myvault](/repos/IA-Generative/myvault) avec l'ajout de l'authentification à deux facteurs (2FA), la limitation du débit et le hachage des secrets.
-- Amélioration de la sécurité de [dictaphone](/repos/IA-Generative/dictaphone) avec la gestion des jetons JWT et PKCE.
+- [myvault](/repos/IA-Generative/myvault) : Ajout de l'authentification à deux facteurs (2FA), limitation du débit, renforcement de la gestion des secrets M2M, et correction de vulnérabilités.
+- [device-management](/repos/IA-Generative/device-management) : Correction de vulnérabilités suite à un audit de sécurité, renforcement de la gestion des secrets et suppression de composants non sécurisés.
+- [abrege](/repos/IA-Generative/abrege) : Correction d'une vulnérabilité de sécurité.
+- [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution) : Renforcement de la sécurité du dépôt avec un `.gitignore` plus restrictif et l'intégration de `gitleaks`.
+- [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) : Implémentation d'une garde anti-prompt-injection et de limitations de débit.
 
 ## Autres changements notables
-- Refonte architecturale de [mcr](/repos/IA-Generative/mcr) vers une architecture basée sur des cas d'utilisation.
-- Migration de [kevent-ai](/repos/IA-Generative/kevent-ai) de Kafka à Redis pour la gestion des files d'attente.
-- Refactorisation du parser de fichiers dans [ocr-api](/repos/IA-Generative/ocr-api) pour une meilleure cohérence.
-- Mise en place de pre-commit hooks dans [mcr](/repos/IA-Generative/mcr) pour la qualité du code.
+Plusieurs évolutions techniques majeures ont été apportées :
+
+- **Infrastructure :** Passage à Redis pour la gestion des files d'attente dans [kevent-ai](/repos/IA-Generative/kevent-ai).
+- **Architecture :** Refactorisation de l'architecture de [mcr](/repos/IA-Generative/mcr) vers une approche basée sur les "use cases" et migration vers une approche asynchrone pour la diarisation.
+- **Intégration :** Intégration de Grafana avec SSO Keycloak dans [device-management](/repos/IA-Generative/device-management).
+- **Développement :** Amélioration des processus de CI/CD dans [abrege](/repos/IA-Generative/abrege) et [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution).
 
 ## Dépôts les plus actifs
-- [myvault](/repos/IA-Generative/myvault) : Renforcement significatif de la sécurité avec 2FA et gestion des accès.
-- [mcr](/repos/IA-Generative/mcr) : Refonte architecturale et ajout de nouvelles fonctionnalités (téléchargement Google Drive, gestion des erreurs).
-- [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) : Ajout de l'importation de vidéos YouTube et amélioration de l'importation depuis MCR.
-- [device-management](/repos/IA-Generative/device-management) : Ajout de la prise en charge de la génération de fichiers XML/JSON et correction de vulnérabilités de sécurité.
-- [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Optimisation des performances et intégration initiale d'un système RAG pour l'IA.
+- [myvault](/repos/IA-Generative/myvault) : Améliorations majeures de la sécurité et ajout de l'authentification à deux facteurs.
+- [device-management](/repos/IA-Generative/device-management) : Renforcement de la sécurité et amélioration de l'observabilité.
+- [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Intégration de fonctionnalités RAG et optimisation des performances.
+- [mcr](/repos/IA-Generative/mcr) : Refactorisation de l'architecture et amélioration de la gestion de la diarisation.
+- [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) : Ajout de l'importation de vidéos YouTube et amélioration de la gestion des fichiers MCR.

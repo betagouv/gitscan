@@ -1,26 +1,23 @@
-# Synthèse d'activité : datagouv (du 12 mai au 26 juin 2026)
+# Synthèse d'activité : datagouv (du 13 mai 2026 au 02 juillet 2026)
 
 ## Résumé de l'activité
-L'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour importantes de plusieurs de ses services et API.  Une attention particulière a été portée à la modernisation des infrastructures (migration vers Rails 8.1, PNPM, Airflow 3), à l'amélioration de la qualité des données (mise à jour des découpages administratifs, données cadastrales, données météo) et à la préparation de nouvelles fonctionnalités, notamment dans les domaines de l'IA et de l'évaluation des modèles.  Plusieurs dépôts ont bénéficié d'améliorations de la sécurité et de la robustesse, ainsi que d'optimisations de performance. Les projets `relais`, `hydra`, `datagouvfr_data_pipelines` et `api-tabular` ont été particulièrement actifs.
+L'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour importantes de plusieurs de ses produits phares. On observe une forte concentration sur l'amélioration de l'infrastructure et de la qualité du code, avec des migrations vers de nouvelles versions de librairies et des refactorings architecturaux majeurs (notamment sur `relais`, `hubee` et `api-tabular`). Des efforts significatifs ont également été déployés pour améliorer la gestion des données géographiques et administratives, avec des mises à jour des données de découpage administratif et des corrections pour assurer la cohérence des informations. Enfin, plusieurs dépôts ont bénéficié d'améliorations de l'expérience utilisateur, comme l'ajout de nouvelles fonctionnalités de recherche et de filtrage sur `passemarche` et `cdata`.
 
 ## Sécurité
-Plusieurs dépôts ont intégré des améliorations de sécurité :
-- Correction d'une vulnérabilité dans `datagouv-mcp` concernant la librairie `urllib3`.
-- Renforcement de la sécurité des informations sensibles dans `hubee` avec l'interdiction de références confidentielles dans le dépôt public.
-- Correction d'une vulnérabilité dans `datagouv-mcp` en contraignant la version de `urllib3`.
+Des corrections de vulnérabilités ont été apportées à `apistration` pour corriger des failles liées au tabnapping et au XSS sur les liens DataPass. De plus, `datagouv-mcp` a bénéficié d'une mise à jour de la librairie `urllib3` pour corriger une vulnérabilité de sécurité.
 
 ## Autres changements notables
-- Migration vers PNPM dans `ouverture.data.gouv.fr` pour une meilleure gestion des dépendances.
-- Mise à jour vers Rails 8.1 et intégration de GoodJob dans `relais` pour une meilleure performance et scalabilité.
-- Migration vers Airflow 3 dans `data-engineering-stack` pour des améliorations de performance.
-- Refonte de l'architecture de `hubee` vers une approche modulaire.
-- Introduction d'une nouvelle version de l'API géographique (v2) dans `api-decoupage-administratif`.
-- Migration des buckets vers OVH Minio dans `datagouvfr_data_pipelines`.
+- Migration vers Rails 8.1 et intégration de GoodJob pour la gestion des tâches asynchrones dans `relais`.
+- Refonte architecturale majeure de `hubee` vers un modèle modulaire.
+- Migration de `api-tabular` vers une configuration plus flexible de l'agrégation des données.
+- Passage à Airflow 3 dans `data-engineering-stack`.
+- Nouvelle version (v2) de l'API géographique dans `api-decoupage-administratif`.
+- Migration de `datagouv-cli` pour une distribution autonome et des builds multi-plateformes.
 
 ## Dépôts les plus actifs
-- [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et intégration de nouvelles fonctionnalités pour la gestion des données.
-- [hydra](/repos/datagouv/hydra) : Amélioration de la robustesse, de la performance et de la gestion des fichiers.
-- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Migration vers OVH Minio et améliorations de l'automatisation des pipelines.
-- [api-tabular](/repos/datagouv/api-tabular) : Amélioration de la configuration de l'agrégation des données et corrections de bugs.
-- [passemarche](/repos/datagouv/passemarche) : Amélioration de l'expérience utilisateur pour la gestion des lots et des marchés.
-- [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation) : Refonte de l'architecture et ajout de nouvelles fonctionnalités pour l'évaluation des modèles d'IA.
+- [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et de l'architecture, avec intégration de CNOUS et gestion des demandes proactives.
+- [passemarche](/repos/datagouv/passemarche) : Amélioration significative de la gestion des lots et de l'expérience utilisateur.
+- [cdata](/repos/datagouv/cdata) : Nombreuses corrections de bugs, améliorations de l'interface et optimisations de performance.
+- [hydra](/repos/datagouv/hydra) : Amélioration de la robustesse, corrections de bugs et intégration de nouvelles fonctionnalités.
+- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Migration vers OVH, gestion des données géographiques et corrections de bugs.
+- [datagouv-cli](/repos/datagouv/datagouv-cli) : Migration du code CLI et amélioration du processus de construction.

@@ -1,16 +1,16 @@
-# Synthèse d'activité : betagouv-experimentations (du 13 mai au 22 mai 2026)
+# Synthèse d'activité : betagouv-experimentations (du 13 mai au 26 mai 2026)
 
 ## Résumé de l'activité
-La période a été marquée par une forte activité de lancement de nouveaux prototypes, avec une majorité de dépôts initialisés et configurés avec Coolify. Plusieurs projets ont progressé vers des premières versions fonctionnelles, notamment [crm-asn](/repos/betagouv-experimentations/crm-asn) et [repo-test](/repos/betagouv-experimentations/repo-test), qui proposent déjà des applications concrètes de suivi de contacts et de gestion de tâches.  L'accent est mis sur l'utilisation d'outils modernes comme Next.js, React, TypeScript, PostgreSQL et le Design System Français, ainsi que sur l'intégration de l'IA via Claude Code.
+L'activité de l'organisation "betagouv-experimentations" au cours des deux dernières semaines a été marquée par le lancement de plusieurs nouveaux prototypes et l'avancement de projets existants. Plusieurs dépôts ont été initialisés avec une configuration Coolify et un fichier README, posant les bases pour le développement futur.  Le projet [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) a connu une progression significative avec l'ajout de fonctionnalités clés pour la gestion et l'analyse des logs, ainsi que l'intégration avec GitHub. Le projet [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) et [crm-asn](/repos/betagouv-experimentations/crm-asn) ont abouti à la création d'une application de suivi des contacts pour l'équipe ASN de la DINUM.
 
 ## Sécurité
-Une correction de vulnérabilité SQL injection a été appliquée dans [test-jb3](/repos/betagouv-experimentations/test-jb3), renforçant la sécurité de l'application. De plus, [crm-asn](/repos/betagouv-experimentations/crm-asn) a bénéficié de l'ajout d'headers de sécurité pour une meilleure protection.
+Une correction de vulnérabilité SQL injection de haute sévérité a été appliquée dans le dépôt [test-jb3](/repos/betagouv-experimentations/test-jb3). Des headers de sécurité ont également été ajoutés au projet [crm-asn](/repos/betagouv-experimentations/crm-asn) pour renforcer la protection de l'application.
 
 ## Autres changements notables
-Le projet [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) a connu des avancées significatives avec l'ajout de fonctionnalités pour la récupération des logs, l'authentification via GitHub et l'intégration avec les webhooks GitHub.  [template-proto](/repos/betagouv-experimentations/template-proto) a intégré l'auto-provisionnement Coolify et prépare l'intégration des compétences d'IA d'Etalab.
+Le projet [template-proto](/repos/betagouv-experimentations/template-proto) a intégré l'auto-provisionnement de Coolify et l'utilisation des skills d'IA d'Etalab, marquant une avancée significative dans l'automatisation du déploiement et l'intégration de l'intelligence artificielle.  Une mise à jour vers la version 1.32 du Design System Fr a été effectuée dans ce même dépôt.
 
 ## Dépôts les plus actifs
-- [crm-asn](/repos/betagouv-experimentations/crm-asn) : Développement d'une application de suivi des contacts pour l'équipe ASN de la DINUM, avec ajout de fonctionnalités et améliorations de sécurité.
-- [repo-test](/repos/betagouv-experimentations/repo-test) : Implémentation d'une application de liste de tâches complète avec fonctionnalités CRUD et persistance des données.
-- [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Développement d'un proxy pour les logs Coolify avec ajout de fonctionnalités d'authentification et d'intégration avec GitHub.
-- [test-jb2](/repos/betagouv-experimentations/test-jb2) et [test-jb4](/repos/betagouv-experimentations/test-jb4) : Initialisation de nouveaux projets prototypes avec configuration de l'environnement et du workflow CI/CD.
+*   [template-proto](/repos/betagouv-experimentations/template-proto) : Amélioration continue de l'intégration avec Coolify et de l'utilisation de l'IA.
+*   [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Développement de fonctionnalités pour la gestion et l'analyse des logs Coolify.
+*   [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) et [crm-asn](/repos/betagouv-experimentations/crm-asn) : Création d'une application de suivi des contacts pour l'équipe ASN.
+*   [test-jb2](/repos/betagouv-experimentations/test-jb2) et [test-jb1](/repos/betagouv-experimentations/test-jb1) : Initialisation de nouveaux prototypes avec configuration Coolify.

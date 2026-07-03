@@ -1,34 +1,33 @@
-# Synthèse d'activité : MTES-MCT (du 23 mai au 23 juin 2026)
+# Synthèse d'activité : MTES-MCT (du 23 mai au 29 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration de l'expérience utilisateur, la sécurité et la qualité des données. Plusieurs projets ont bénéficié de refontes d'interface, d'ajouts de fonctionnalités clés (comme l'authentification multi-facteurs pour Trackdéchets et l'importation massive de données pour MesADS) et de corrections de bugs.  Un effort important a également été consacré à la modernisation des infrastructures et des dépendances, notamment pour assurer la sécurité et la performance des applications. Les projets *Lucca*, *Dossier Facile* et *Ecobalyse* ont été particulièrement actifs, avec des mises à jour significatives sur de nombreux aspects.
+L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration des applications existantes, avec des mises à jour significatives pour des outils clés comme Trackdéchets, Partageons l'eau, et les plateformes autour de l'accès au logement (Dossier Facile, Mon Devis Sans Oublis). Ces mises à jour incluent des améliorations de la sécurité (authentification multi-facteurs sur Trackdéchets, correction de vulnérabilités), de l'expérience utilisateur (nouvelles fonctionnalités, refonte d'interfaces), et de la performance (optimisation des requêtes, migration vers des technologies plus récentes).  Plusieurs dépôts ont bénéficié d'améliorations de la qualité du code et de l'automatisation des tests. L'intégration de nouvelles sources de données et l'ajout de fonctionnalités spécifiques à certains domaines (ICPE pour Envergo, gestion des ERP pour Acceslibre) témoignent d'une volonté de répondre aux besoins spécifiques des utilisateurs.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   **Trackdechets :** Implémentation de l'authentification multi-facteurs (MFA) avec gestion des réinitialisations et récupération de compte.
-*   **Mesads :** Correction d'une faille de sécurité potentielle en utilisant `format_html` pour éviter l'exécution de JavaScript non intentionnel.
-*   **Apilos :** Mise à jour de la dépendance `sentry-sdk` pour corriger des vulnérabilités.
-*   **Carbure :** Correction de vulnérabilités de sécurité (CVE openssl) dans l'image de développement.
+*   **Trackdéchets** : Implémentation de l'authentification multi-facteurs (MFA) avec journalisation des événements, gestion des réinitialisations et codes de récupération.
+*   **Apilos** : Correction d'une vulnérabilité CVE.
+*   **Keycloak-FranceConnect** : Activation de l'authentification à deux facteurs pour ProConnect.
+*   **Docurba**: Mise en place d'un reverse proxy Nginx pour améliorer la sécurité.
 
 ## Autres changements notables
-*   **Zero-logement-vacant :** Migration vers React Router v7 et refonte de l'importation des données LOVAC avec DuckDB et Parquet pour une meilleure performance et scalabilité.
-*   **Vizeau :** Nouvelle gestion complète des projets avec étapes, tags et documents associés.
-*   **Verseau2 :** Ajout de la gestion des erreurs via Sentry et optimisation des requêtes avec une vue matérialisée.
-*   **Trackdechets-vigiedechets :** Ajout de la possibilité de joindre plusieurs pièces jointes au formulaire de contact/assistance.
-*   **Sparte :** Refonte de la page d'accueil et amélioration de la lisibilité des indicateurs.
-*   **Potentiel :** Ajout de la possibilité pour les PP de corriger leur numéro d'identification.
-*   **Monitorfish :** Migration vers les nouvelles versions de Spring Boot et Security.
-*   **Docurba :** Intégration de Supabase pour l'authentification et remplacement de `wget` par `curl`.
+Plusieurs projets ont connu des évolutions techniques majeures :
+
+*   **Zero-logement-vacant** : Migration vers React Router v7 et refonte de l'importation des données LOVAC avec DuckDB et Parquet pour une meilleure performance et scalabilité.
+*   **Vizeau** : Ajout de la gestion des étapes de projet et d'une page "Mes territoires".
+*   **Sparte** : Refonte de la page d'accueil et correction de problèmes de cache.
+*   **Partaj** : Migration vers React 18 et mise à jour de plusieurs dépendances.
+*   **Lucca-scripts** : Ajout d'une colonne 'parcelle' dans l'historique des statistiques.
+*   **Docurba**: Intégration de l'authentification Supabase et refactorisation de l'architecture Django.
 
 ## Dépôts les plus actifs
-*   **Dossier-Facile-Frontend :** Amélioration de l'expérience utilisateur, correction de bugs et amélioration des tests E2E.
-*   **Trackdechets :** Implémentation de l'authentification multi-facteurs et corrections de blocages critiques.
-*   **Lucca :** Ajout de la gestion des adhérents et amélioration de l'interface d'administration.
-*   **Mesads :** Ajout de l'importation massive de données et amélioration de la gestion des utilisateurs.
-*   **Ecobalyse :** Ajout de nouvelles données pour les batteries, les emballages et les transports, ainsi que des améliorations techniques.
-*   **Docurba :** Amélioration de l'affichage, ajout de fonctionnalités d'administration et migration vers Supabase.
-*   **Potentiel :** Amélioration de l'interface et ajout de fonctionnalités pour les utilisateurs.
-*   **Monitorfish :** Amélioration de l'interface et des fonctionnalités pour les contrôles en mer et à la débarque.
-*   **Dialog :** Ajout de la gestion des cartes de densité et d'une procédure d'urgence.
-*   **Apilos :** Amélioration de la génération de documents et correction de bugs.
+*   **Trackdéchets** : Améliorations majeures de la sécurité avec l'implémentation de l'authentification multi-facteurs et corrections de bugs critiques.
+*   **Partageons l'eau** : Amélioration de la gestion de l'environnement de sandbox et des workflows Git.
+*   **Dossier Facile (frontend et backend)** : Nombreuses améliorations de l'interface utilisateur, de la gestion des données et de la sécurité.
+*   **Envergo** : Ajout de nouvelles fonctionnalités pour la gestion des ICPE et refonte de l'interface utilisateur.
+*   **Acceslibre** : Ajout de la gestion des ERP en RPA et amélioration de la collecte de données.
+*   **Docurba**: Refonte de l'architecture et ajout de nouvelles fonctionnalités.
+*   **Lucca**: Ajout de la gestion des adhérents et amélioration de l'importation des données.
+*   **Aigle (frontend et api)** : Ajout de nouveaux statuts et amélioration de la gestion des données.
+*   **Dahlia**: Intégration du SSO ProConnect et amélioration du scrapping.
