@@ -1,29 +1,35 @@
-## Changelog : dahlia (30 derniers jours, au 26 juin 2026)
+## Changelog : dahlia (30 derniers jours, au 01 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'application Dahlia a connu des améliorations significatives en termes de fonctionnalités, notamment l'ajout du scrapping automatisé des dossiers, l'amélioration de la recherche et du tri, ainsi que l'intégration de l'authentification SSO ProConnect. Des efforts importants ont également été consacrés à l'amélioration de la stabilité et de la maintenance du projet, avec des mises à jour de dépendances et une configuration optimisée de Dependabot.
+Le projet Dahlia a connu un mois de juin riche en améliorations, axées sur l'expérience utilisateur, la robustesse du système et l'automatisation des tâches. Les principales évolutions concernent l'ajout de nouvelles fonctionnalités comme le téléchargement de listes de dossiers, l'édition des métadonnées des pièces, et des améliorations significatives du scrapping et de la recherche. L'infrastructure a également été renforcée avec une meilleure gestion des dépendances et l'intégration du SSO ProConnect.
 
 ### Évolutions fonctionnelles
-- **Scrapping et gestion des pièces :** Amélioration du scrapping des données et ajout de la possibilité d'éditer les pièces d'un dossier [#50](https://github.com/MTES-MCT/dahlia/issues/50).
-- **Recherche et tri :** Ajout de la recherche et du tri dans les tableaux des pièces et de l'historique [#22](https://github.com/MTES-MCT/dahlia/issues/22) et amélioration de la recherche et du tri des dossiers [#19](https://github.com/MTES-MCT/dahlia/issues/19).
-- **Authentification :** Intégration de l'authentification SSO ProConnect [#7](https://github.com/MTES-MCT/dahlia/issues/7).
-- **Gestion des dossiers :** Ajout de la possibilité de télécharger un fichier, d'un bouton pour rafraîchir le dossier et amélioration de l'accessibilité des dossiers supprimés [#16](https://github.com/MTES-MCT/dahlia/issues/16).
-- **Informations dossier :** Ajout de détails supplémentaires dans les dossiers [#13](https://github.com/MTES-MCT/dahlia/issues/13).
-- **Interface utilisateur :** Mise en page de la page de garde [#49](https://github.com/MTES-MCT/dahlia/issues/49), ajout d'un bandeau indiquant l'environnement (non-production) [#20](https://github.com/MTES-MCT/dahlia/issues/20) et ajout d'un badge "très urgent" [#21](https://github.com/MTES-MCT/dahlia/issues/21).
-- **Synchronisation :** Ajout d'une synchronisation nocturne des données [#12](https://github.com/MTES-MCT/dahlia/issues/12).
+- Ajout d'un bouton pour télécharger la liste des dossiers [#57](https://github.com/MTES-MCT/dahlia/issues/57).
+- Possibilité d'éditer les métadonnées des pièces jointes à un dossier [#51](https://github.com/MTES-MCT/dahlia/issues/51).
+- Amélioration de la recherche et du tri des dossiers et des pièces [#19](https://github.com/MTES-MCT/dahlia/issues/19), [#22](https://github.com/MTES-MCT/dahlia/issues/22).
+- Ajout d'un bandeau d'alerte pour indiquer l'environnement (non-production) [#20](https://github.com/MTES-MCT/dahlia/issues/20).
+- Ajout d'un badge "très urgent" pour signaler la criticité des dossiers [#21](https://github.com/MTES-MCT/dahlia/issues/21).
+- Amélioration de la gestion des tableaux avec une meilleure organisation [#53](https://github.com/MTES-MCT/dahlia/issues/53).
+- Affichage des pièces anonymisées dans tous les environnements, sauf en production [#55](https://github.com/MTES-MCT/dahlia/issues/55).
+- Script pour télécharger les fichiers et bouton de rafraîchissement des dossiers, avec gestion des dossiers supprimés [#16](https://github.com/MTES-MCT/dahlia/issues/16).
+- Ajout de détails dans les dossiers pour une meilleure information [#13](https://github.com/MTES-MCT/dahlia/issues/13).
+- Ajout de la date de délétion des dossiers [#40](https://github.com/MTES-MCT/dahlia/issues/40).
+- Ajout de la colonne "dernier producteur" pour identifier l'équipe responsable [#44](https://github.com/MTES-MCT/dahlia/issues/44).
 
 ### Évolutions techniques
-- **CI/CD :** Ajout de permissions dans la CI [#48](https://github.com/MTES-MCT/dahlia/issues/48) et ajout de la création de release et du déploiement en production [#17](https://github.com/MTES-MCT/dahlia/issues/17).
-- **Dependabot :** Amélioration de la configuration de Dependabot [#30](https://github.com/MTES-MCT/dahlia/issues/30) et amélioration de Dependabot pour gérer les mises à jour de dépendances [#36](https://github.com/MTES-MCT/dahlia/issues/36).
-- **Scrapping :** Anonymisation du scrapping selon l'environnement [#14](https://github.com/MTES-MCT/dahlia/issues/14) et ajout d'un mécanisme de ré-essai en cas d'erreurs temporaires lors du scrapping [#8](https://github.com/MTES-MCT/dahlia/issues/8).
-- **Configuration :** Surdéfinition de `vite` dans la configuration npm [#46](https://github.com/MTES-MCT/dahlia/issues/46).
-- **Divers :** Ajout de la colonne "dernier producteur" [#44](https://github.com/MTES-MCT/dahlia/issues/44) et ajout de la date de délétion [#40](https://github.com/MTES-MCT/dahlia/issues/40).
+- Intégration du SSO ProConnect pour l'authentification [#7](https://github.com/MTES-MCT/dahlia/issues/7).
+- Amélioration du scrapping pour une meilleure récupération des données et gestion des erreurs temporaires [#6](https://github.com/MTES-MCT/dahlia/issues/6), [#8](https://github.com/MTES-MCT/dahlia/issues/8).
+- Mise en place d'une synchronisation nocturne des données [#12](https://github.com/MTES-MCT/dahlia/issues/12).
+- Refonte de la configuration de Dependabot pour une gestion plus efficace des dépendances [#30](https://github.com/MTES-MCT/dahlia/issues/30), [#36](https://github.com/MTES-MCT/dahlia/issues/36).
+- Mise à jour massive des dépendances pour bénéficier des dernières corrections et améliorations [#45](https://github.com/MTES-MCT/dahlia/issues/45).
+- Réorganisation des tests unitaires et d'intégration pour une meilleure couverture et maintenabilité [#56](https://github.com/MTES-MCT/dahlia/issues/56).
+- Correction d'un problème de déconnexion intempestive après authentification [#10](https://github.com/MTES-MCT/dahlia/issues/10).
+- Ajout de permissions pour la CI afin de garantir la sécurité des déploiements [#48](https://github.com/MTES-MCT/dahlia/issues/48).
+- Mise en place de la création de releases et du déploiement en production [#17](https://github.com/MTES-MCT/dahlia/issues/17).
 
 ### Autres changements
 - Mise à jour de la documentation INVESTIGATION [#37](https://github.com/MTES-MCT/dahlia/issues/37).
-- Correction d'un problème où le lien de déconnexion déconnectait l'utilisateur immédiatement après la connexion [#10](https://github.com/MTES-MCT/dahlia/issues/10).
-- Correction d'un problème d'anonymisation incomplète [#11](https://github.com/MTES-MCT/dahlia/issues/11).
-- Mise à jour massive des dépendances [#45](https://github.com/MTES-MCT/dahlia/issues/45) et mises à jour de dépendances spécifiques (prettier, eslint-config-next, @codegouvfr/react-dsfr, next, better-auth, tailwindcss, @tailwindcss/postcss) [#25](https://github.com/MTES-MCT/dahlia/issues/25), [#27](https://github.com/MTES-MCT/dahlia/issues/27), [#28](https://github.com/MTES-MCT/dahlia/issues/28), [#29](https://github.com/MTES-MCT/dahlia/issues/29), [#33](https://github.com/MTES-MCT/dahlia/issues/33), [#35](https://github.com/MTES-MCT/dahlia/issues/35), [#39](https://github.com/MTES-MCT/dahlia/issues/39), [#41](https://github.com/MTES-MCT/dahlia/issues/41), [#42](https://github.com/MTES-MCT/dahlia/issues/42), [#43](https://github.com/MTES-MCT/dahlia/issues/43).
-- Mise en forme du code avec Prettier et Linter [#15](https://github.com/MTES-MCT/dahlia/issues/15).
-- Correction d'un bug dans la configuration de Dependabot [#24](https://github.com/MTES-MCT/dahlia/issues/24).
-- Correction d'un problème de checkout avant le déploiement [#4](https://github.com/MTES-MCT/dahlia/issues/4).
+- Amélioration de la gestion du header et des filtres [#23](https://github.com/MTES-MCT/dahlia/issues/23).
+- Mise en forme du code avec Prettier et Linter pour une meilleure lisibilité [#15](https://github.com/MTES-MCT/dahlia/issues/15).
+- Correction de l'anonymisation incomplète des données [#11](https://github.com/MTES-MCT/dahlia/issues/11).
+- Anonymisation du scrapping en fonction de l'environnement [#14](https://github.com/MTES-MCT/dahlia/issues/14).

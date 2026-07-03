@@ -101,9 +101,12 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── pieces
 │   │   │   │       └── [encodedFileId]
+│   │   │   │           ├── actions.ts
 │   │   │   │           ├── data
 │   │   │   │           │   └── route.ts
 │   │   │   │           └── page.tsx
+│   │   │   ├── export
+│   │   │   │   └── route.ts
 │   │   │   └── page.tsx
 │   │   └── layout.tsx
 │   ├── api
@@ -111,8 +114,8 @@
 │   │       ├── [...all]
 │   │       │   └── route.ts
 │   │       └── proconnect-logout
-│   │           ├── route.test.ts
-│   │           └── route.ts
+│   │           ├── route.ts
+│   │           └── route.unit.test.ts
 │   ├── apple-icon.png
 │   ├── connexion
 │   │   └── page.tsx
@@ -122,98 +125,180 @@
 │   ├── layout.tsx
 │   ├── lib
 │   │   ├── auth-client.ts
-│   │   ├── auth.test.ts
 │   │   ├── auth.ts
+│   │   ├── auth.unit.test.ts
+│   │   ├── carried-search-params.ts
 │   │   ├── case-file-format.ts
-│   │   ├── case-file-search.test.ts
 │   │   ├── case-file-search.ts
+│   │   ├── case-file-search.unit.test.ts
+│   │   ├── case-file-tabs.ts
+│   │   ├── case-files-dashboard-columns.ts
+│   │   ├── dashboard-filter.ts
 │   │   ├── data
 │   │   │   ├── attached-files.ts
-│   │   │   ├── case-files.test.ts
-│   │   │   └── case-files.ts
+│   │   │   ├── attached-files.unit.test.ts
+│   │   │   ├── case-file-events.ts
+│   │   │   ├── case-file-pieces.integration.test.tsx
+│   │   │   ├── case-files.ts
+│   │   │   └── case-files.unit.test.ts
+│   │   ├── fetch-paginated-table-data.ts
+│   │   ├── historique-table.ts
+│   │   ├── mocked-pieces.ts
+│   │   ├── mocked-pieces.unit.test.ts
+│   │   ├── piece-display.ts
+│   │   ├── piece-display.unit.test.ts
 │   │   ├── pieces-table.ts
 │   │   ├── prisma.ts
-│   │   ├── table-query.test.ts
-│   │   ├── table-query.ts
+│   │   ├── search-where.ts
+│   │   ├── status-label-plural.ts
+│   │   ├── status-label-plural.unit.test.ts
+│   │   ├── table-page-size.ts
+│   │   ├── table-page-size.unit.test.ts
+│   │   ├── table-query-state.ts
+│   │   ├── table-search-context.ts
+│   │   ├── table-search-context.unit.test.ts
+│   │   ├── table-sort.ts
 │   │   └── telerecours.ts
 │   ├── page.tsx
 │   └── ui
-│       ├── case-file-tabs.test.tsx
-│       ├── case-file-tabs.tsx
-│       ├── case-files-search-bar.test.tsx
-│       ├── case-files-search-bar.tsx
-│       ├── case-files-search-by-status.test.tsx
-│       ├── case-files-search-by-status.tsx
-│       ├── case-files-search.test.tsx
-│       ├── case-files-search.tsx
-│       ├── client-table.test.tsx
-│       ├── client-table.tsx
-│       ├── column-filter-button.test.tsx
-│       ├── column-filter-button.tsx
-│       ├── column-header.test.tsx
-│       ├── column-header.tsx
-│       ├── environment-banner.test.tsx
-│       ├── environment-banner.tsx
-│       ├── header-dahlia.test.tsx
-│       ├── header-dahlia.tsx
-│       ├── hidden-field.test.tsx
-│       ├── hidden-field.tsx
-│       ├── memory-deadline-cell.test.tsx
-│       ├── memory-deadline-cell.tsx
-│       ├── pending-validation.test.tsx
+│       ├── breadcrumb
+│       │   ├── case-file-breadcrumb.tsx
+│       │   ├── case-file-breadcrumb.unit.test.tsx
+│       │   ├── piece-case-file-breadcrumb.tsx
+│       │   └── piece-case-file-breadcrumb.unit.test.tsx
+│       ├── button
+│       │   ├── column-filter-button.tsx
+│       │   ├── column-filter-button.unit.test.tsx
+│       │   ├── download-button.tsx
+│       │   ├── download-button.unit.test.tsx
+│       │   ├── proconnect-login-button.tsx
+│       │   ├── proconnect-login-button.unit.test.tsx
+│       │   ├── refresh-case-file-button.tsx
+│       │   └── refresh-case-file-button.unit.test.tsx
+│       ├── card
+│       │   ├── case-file-details-card.tsx
+│       │   └── case-file-details-card.unit.test.tsx
+│       ├── form
+│       │   ├── case-files-search-by-status.tsx
+│       │   ├── case-files-search-by-status.unit.test.tsx
+│       │   ├── case-files-search.tsx
+│       │   ├── case-files-search.unit.test.tsx
+│       │   ├── hidden-field.tsx
+│       │   ├── hidden-field.unit.test.tsx
+│       │   ├── piece-metadata-form.tsx
+│       │   ├── search-bar.tsx
+│       │   ├── search-bar.unit.test.tsx
+│       │   ├── table-search-bar.tsx
+│       │   ├── table-search-bar.unit.test.tsx
+│       │   ├── table-search-form.tsx
+│       │   └── table-search-form.unit.test.tsx
+│       ├── header
+│       │   ├── environment-banner.tsx
+│       │   ├── environment-banner.unit.test.tsx
+│       │   ├── header-dahlia.tsx
+│       │   └── header-dahlia.unit.test.tsx
 │       ├── pending-validation.tsx
+│       ├── pending-validation.unit.test.tsx
+│       ├── piece-metadata.tsx
 │       ├── piece-navigator.tsx
 │       ├── piece-viewer.tsx
-│       ├── proconnect-login-button.test.tsx
-│       ├── proconnect-login-button.tsx
-│       ├── refresh-case-file-button.test.tsx
-│       ├── refresh-case-file-button.tsx
-│       ├── search-bar.test.tsx
-│       ├── search-bar.tsx
-│       ├── sortable-column-header.test.tsx
-│       ├── sortable-column-header.tsx
-│       ├── table-search-bar.test.tsx
-│       ├── table-search-bar.tsx
-│       ├── table-search.test.tsx
-│       └── table-search.tsx
+│       ├── table
+│       │   ├── column-header.tsx
+│       │   ├── column-header.unit.test.tsx
+│       │   ├── data-table-footer.tsx
+│       │   ├── data-table-footer.unit.test.tsx
+│       │   ├── data-table.tsx
+│       │   ├── data-table.unit.test.tsx
+│       │   ├── memory-deadline-cell.tsx
+│       │   ├── memory-deadline-cell.unit.test.tsx
+│       │   ├── piece-table-cells.tsx
+│       │   ├── piece-table-cells.unit.test.tsx
+│       │   ├── sortable-column-header.tsx
+│       │   ├── sortable-column-header.unit.test.tsx
+│       │   ├── table-page-size-select.tsx
+│       │   ├── table-pagination-footer.tsx
+│       │   └── use-table-page-size.ts
+│       └── tabs
+│           ├── case-file-tab-nav.tsx
+│           ├── case-file-tab-nav.unit.test.tsx
+│           ├── case-file-tabs.tsx
+│           └── case-file-tabs.unit.test.tsx
 ├── cron.json
 ├── data
-│   ├── anonymize.test.ts
 │   ├── anonymize.ts
+│   ├── anonymize.unit.test.ts
 │   ├── cli
-│   │   ├── parse-args.test.ts
 │   │   ├── parse-args.ts
+│   │   ├── parse-args.unit.test.ts
 │   │   └── scrape-telerecours.ts
 │   ├── persistence
-│   │   ├── enrich-case-file.test.ts
 │   │   ├── enrich-case-file.ts
+│   │   ├── enrich-case-file.unit.test.ts
 │   │   ├── paginate.ts
 │   │   └── upsert-case-file.ts
 │   ├── scrape
-│   │   ├── phase-a-list.test.ts
 │   │   ├── phase-a-list.ts
+│   │   ├── phase-a-list.unit.test.ts
 │   │   ├── phase-b-enrich.ts
 │   │   ├── phase-c-related.ts
 │   │   ├── pipeline.ts
-│   │   ├── where.test.ts
-│   │   └── where.ts
+│   │   ├── where.ts
+│   │   └── where.unit.test.ts
 │   ├── telecharge-fichier.ts
 │   ├── telerecours
 │   │   ├── auth.ts
 │   │   ├── client.interface.ts
 │   │   ├── client.ts
-│   │   ├── http.test.ts
 │   │   ├── http.ts
+│   │   ├── http.unit.test.ts
 │   │   └── types.ts
 │   ├── test-support
 │   │   ├── fake-client.ts
-│   │   └── fixtures.ts
+│   │   ├── fixtures.ts
+│   │   ├── integration-db.ts
+│   │   └── server-only-stub.ts
 │   └── tsconfig.json
 ├── docker-compose.yml
 ├── docs
 │   ├── CHOIX_TECHNOLOGIQUE.md
 │   └── INVESTIGATION.md
 ├── eslint.config.mjs
+├── files
+│   └── mocked_pdfs
+│       ├── Accuse_de_reception_de_la_requete.pdf
+│       ├── Accuse_de_reception_de_la_requete_-_DALO_1.pdf
+│       ├── Accuse_de_reception_de_la_requete_-_DALO_2.pdf
+│       ├── Aide_juridictionelle.pdf
+│       ├── Autre(s)_piece(s).pdf
+│       ├── Autre.pdf
+│       ├── Avis_*.pdf  (6 files)
+│       ├── Communication_*.pdf  (12 files)
+│       ├── Decision_attaquee.pdf
+│       ├── Decision_de_la_juridiction.pdf
+│       ├── Demande_d_execution_du_jugement.pdf
+│       ├── Demande_de_delai_supplementaire.pdf
+│       ├── Demande_de_pieces_pour_completer_l_instruction.pdf
+│       ├── Demande_sur_l_etat_de_l_instruction.pdf
+│       ├── EXE_-_Demande_a_l_administration_d_executer_une_decision.pdf
+│       ├── EXE_-_Notif._ordonnance_-_ouverture_proc._juridictionnelle.pdf
+│       ├── Inventaire_document.pdf
+│       ├── Inventaire_requete.pdf
+│       ├── Lettre.pdf
+│       ├── Lettre_d_information_-_R._611-11-1.pdf
+│       ├── Lettre_du_greffier.pdf
+│       ├── Memoire.pdf
+│       ├── Memoire_en_defense.pdf
+│       ├── Memoire_en_defense_-_refere.pdf
+│       ├── Mise_en_demeure_defendeur.pdf
+│       ├── Note_en_delibere.pdf
+│       ├── Notification_*.pdf  (6 files)
+│       ├── Piece_jointe_document.pdf
+│       ├── Piece_jointe_requete.pdf
+│       ├── Pieces.pdf
+│       ├── Pieces_complementaires.pdf
+│       ├── Pieces_demandees.pdf
+│       ├── Reponse_sur_l_etat_de_l_instruction.pdf
+│       └── Requete.pdf
 ├── next.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
@@ -259,6 +344,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260626140000_case_file_event_pieces_non_downloadable_boolean
 │   │   │   └── migration.sql
+│   │   ├── 20260626150000_attached_file_dahlia_metadata
+│   │   │   └── migration.sql
+│   │   ├── 20260629120000_table_search_normalized
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -276,8 +365,8 @@
 │       ├── urgency.prisma
 │       └── user.prisma
 ├── prisma.config.ts
-├── proxy.test.ts
 ├── proxy.ts
+├── proxy.unit.test.ts
 ├── skills-lock.json
 ├── src
 │   └── dsfr-bootstrap
@@ -285,5 +374,7 @@
 │       ├── index.tsx
 │       └── server-only-index.tsx
 ├── tsconfig.json
-└── vitest.config.mts
-61 directories, 227 files
+├── vitest.config.mts
+├── vitest.integration.config.mts
+└── vitest.unit.config.mts
+73 directories, 327 files

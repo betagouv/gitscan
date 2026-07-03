@@ -21,7 +21,9 @@
     "db:format": "prisma format",
     "scrape:dev": "ts-node -P data/tsconfig.json data/cli/scrape-telerecours.ts",
     "download:dev": "ts-node -P data/tsconfig.json data/telecharge-fichier.ts",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:unit": "vitest run --config vitest.unit.config.mts",
+    "test:integration": "vitest run --config vitest.integration.config.mts"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.32.4",
@@ -35,6 +37,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
     "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
     "jose": "^6.2.3",
     "next": "16.2.9",
     "pg": "^8.22.0",
@@ -55,7 +58,7 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.9",
     "jsdom": "^29.1.1",
-    "postcss": ">=8.5.10",
+    "postcss": ">=8.5.16",
     "prettier": "3.8.4",
     "prettier-plugin-tailwindcss": "0.8.0",
     "sass": "^1.101.0",
