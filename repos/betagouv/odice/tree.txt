@@ -2,12 +2,14 @@
 ├── .claude
 │   ├── hooks
 │   │   └── format-on-write.sh
+│   ├── launch.json
 │   ├── settings.json
 │   └── skills
 │       ├── adr
 │       │   └── SKILL.md
 │       └── verif
 │           └── SKILL.md
+├── .env.example
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
@@ -32,7 +34,11 @@
 │   │   ├── 0003-oracle-xlsx-moteur.md
 │   │   ├── 0004-versionnage-regles-in-code.md
 │   │   ├── 0005-monitoring-erreurs-maison.md
-│   │   └── 0006-fixture-oracle-compacte-etablissements.md
+│   │   ├── 0006-fixture-oracle-compacte-etablissements.md
+│   │   ├── 0007-affichage-progressif-champs-simulateurs.md
+│   │   ├── 0008-analytics-matomo-wrapper-maison.md
+│   │   └── 0009-mesure-audience-cookieless.md
+│   ├── matomo-funnel.md
 │   ├── simulateur-abattoirs-points-a-valider.md
 │   ├── simulateur-abattoirs.md
 │   ├── simulateur-etablissements.md
@@ -143,11 +149,22 @@
 │   │       │       ├── EtablissementsForm.tsx
 │   │       │       └── EtablissementsResult.tsx
 │   │       └── pages
+│   │           ├── SimulateursIndexPage.spec.tsx
 │   │           └── SimulateursIndexPage.tsx
 │   ├── main.tsx
 │   ├── shared
+│   │   ├── analytics
+│   │   │   ├── Matomo.tsx
+│   │   │   ├── events.ts
+│   │   │   ├── index.ts
+│   │   │   ├── matomo.client.ts
+│   │   │   ├── matomo.env.spec.ts
+│   │   │   ├── matomo.env.ts
+│   │   │   ├── useMatomo.spec.tsx
+│   │   │   └── useMatomo.ts
 │   │   ├── components
 │   │   │   ├── Breadcrumb.tsx
+│   │   │   ├── CarteZonesHint.tsx
 │   │   │   ├── ErrorBoundary.tsx
 │   │   │   ├── Notice.tsx
 │   │   │   ├── PageContainer.tsx
@@ -157,7 +174,12 @@
 │   │   │   └── layout
 │   │   │       └── Layout.tsx
 │   │   ├── config
-│   │   │   └── routes.config.ts
+│   │   │   ├── external-links.ts
+│   │   │   ├── routes.config.ts
+│   │   │   └── version.config.ts
+│   │   ├── hooks
+│   │   │   ├── useProgressiveFields.spec.ts
+│   │   │   └── useProgressiveFields.ts
 │   │   ├── labels
 │   │   │   ├── abattoirs.labels.ts
 │   │   │   ├── common.labels.ts
@@ -191,4 +213,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-54 directories, 139 files
+56 directories, 159 files
