@@ -1,27 +1,33 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 30 juin 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'ajout d'un système de plugins pour étendre les fonctionnalités de Recoco, l'amélioration de l'authentification avec une nouvelle méthode de connexion par code, et des corrections de bugs et optimisations de performance. Des améliorations ont également été apportées à la gestion des projets et à l'interface utilisateur.
+Ce mois-ci, les évolutions se concentrent sur une refonte de l'interface utilisateur pour la gestion des organisations et des projets, l'ajout de fonctionnalités de plugins pour une extensibilité accrue, ainsi que des améliorations de sécurité et de la gestion des utilisateurs. Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Plugins :** Introduction d'un système de plugins pour étendre les fonctionnalités de Recoco. Cela inclut la possibilité d'ajouter des composants personnalisés aux conversations et d'utiliser des hooks JavaScript pour interagir avec l'application. [#2188](https://github.com/betagouv/recommandations-collaboratives/pull/2188)
-- **Authentification :** Nouvelle méthode de connexion par code, remplaçant l'ancienne méthode "magic link". Cette nouvelle méthode est plus sécurisée et offre une meilleure expérience utilisateur. [#2212](https://github.com/betagouv/recommandations-collaboratives/pull/2212)
-- **Gestion des projets :** Ajout d'un filtre "Mes projets" sur la page de la carte pour faciliter la recherche de projets. [#2144](https://github.com/betagouv/recommandations-collaboratives/pull/2144)
-- **Interface utilisateur :** Amélioration de l'interface utilisateur de la page de connexion et ajout d'une nouvelle page 403.
-- **CRM :** Tri de la liste des utilisateurs CRM par date d'inscription. [#2226](https://github.com/betagouv/recommandations-collaboratives/pull/2226)
+- **Gestion des organisations :** Refonte complète de la page de gestion des organisations avec une nouvelle interface, des filtres améliorés (géographique, département), et des informations plus détaillées sur les organisations (nombre de membres, dossiers). [#2182](https://github.com/betagouv/recommandations-collaboratives/pull/2182)
+- **Fusion d'organisations :** Amélioration de l'expérience utilisateur lors de la fusion d'organisations, avec des récapitulatifs clairs des données de chaque organisation. [#2180](https://github.com/betagouv/recommandations-collaboratives/pull/2180)
+- **CRM :** Tri de la liste des utilisateurs du CRM par date d'inscription. [#2226](https://github.com/betagouv/recommandations-collaboratives/pull/2226)
+- **Nouveaux projets :** Possibilité de masquer le bouton de création de nouveaux projets via un indicateur de fonctionnalité. [#2205](https://github.com/betagouv/recommandations-collaboratives/pull/2205)
+- **Authentification :** Amélioration de la sécurité de l'authentification par code, notamment en limitant la durée de validité du code et en renforçant la gestion des cookies. [#2150](https://github.com/betagouv/recommandations-collaboratives/pull/2150)
+- **Conversation :** Ajout de hooks JavaScript pour personnaliser l'affichage des composants de conversation. [#2188](https://github.com/betagouv/recommandations-collaboratives/pull/2188)
+- **Gestion des tâches :** Possibilité de déclencher des actions lors du passage d'une tâche à l'état "Terminé" via les plugins.
+- **Interface utilisateur :** Ajout d'une nouvelle timeline d'activité. [#2181](https://github.com/betagouv/recommandations-collaboratives/pull/2181)
+- **Filtres projets :** Correction d'un bug dans les filtres de la page "Mes projets". [#2152](https://github.com/betagouv/recommandations-collaboratives/pull/2152)
 
 ### Évolutions techniques
-- **Dépendances :** Mise à jour de plusieurs dépendances, notamment Django, pyjwt, et les dépendances frontend (dompurify, vite, form-data, tar, @babel/core).
-- **CI/CD :** Ajout de `uv-audit` pour la sécurité des dépendances et suppression de `uv-secure`.
-- **Architecture :** Refactorisation du code pour supprimer du code mort et améliorer la structure du projet.
-- **Tests :** Ajout et amélioration des tests unitaires et d'intégration.
-- **Outils :** Migration de la gestion des dépendances vers `uv` et suppression du fichier `requirements.txt`.
-- **Sécurité :** Amélioration de la sécurité en empêchant la fuite du nom du schéma de base de données et en utilisant des échappements SQL appropriés.
-- **Docker :** Utilisation de `uv` pour la gestion des dépendances Docker.
+- **Plugins :** Implémentation d'un système de plugins pour étendre les fonctionnalités de l'application, incluant la découverte automatique des plugins et la gestion des migrations. [#1986](https://github.com/betagouv/recommandations-collaboratives/pull/1986)
+- **Dépendances :** Mise à jour de plusieurs dépendances, notamment `uv`, `django`, `pyjwt`, `bleach`, `tornado`, `dompurify`, `vite`, `form-data`, `tar` et `@babel/core`.
+- **CI/CD :** Ajout de `uv-audit` pour l'analyse des vulnérabilités des dépendances et remplacement de `uv-secure`.
+- **Pré-commit :** Ajout de `gitleaks` au processus de pré-commit pour détecter les secrets potentiellement divulgués.
+- **Refactoring :** Suppression de code obsolète et simplification de certaines parties du code.
+- **Docker :** Passage à `uv` pour la gestion des dépendances Docker.
+- **Tests :** Amélioration de la robustesse des tests, notamment pour les documents et l'authentification.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés au système de plugins.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Corrections :** Correction de plusieurs bugs mineurs et améliorations de la stabilité de l'application.
-- **Configuration :** Mise à jour de la configuration pour utiliser les noms de routes au lieu des chemins pour les redirections de connexion.
-- **Suppression de code déprécié :** Suppression de code lié à l'ancienne méthode d'authentification "magic link".
+- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements de configuration.
+- **Configuration :** Amélioration de la configuration de l'authentification et des redirections.
+- **Nettoyage de code :** Suppression de fichiers inutiles et amélioration de la lisibilité du code.
+- **Correction de bugs mineurs :** Correction de plusieurs bugs mineurs dans l'interface utilisateur et la logique applicative.
+- **Amélioration des messages d'erreur :** Augmentation de la longueur maximale des messages d'erreur pour une meilleure clarté. [#2218](https://github.com/betagouv/recommandations-collaboratives/pull/2218)
+- **Suppression de `requirements.txt` :** Suppression du fichier `requirements.txt` au profit de `uv`.
+- **Amélioration des styles CSS :** Ajustements et corrections de styles CSS pour améliorer l'apparence de l'application.
