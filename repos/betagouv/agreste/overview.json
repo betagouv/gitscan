@@ -1,21 +1,24 @@
 {
   "url": "https://github.com/betagouv/agreste",
   "name": "agreste",
-  "description": "Ce projet est une adaptation de Sites Conformes, visant à simplifier la création de sites web pour l'administration française en utilisant le Système de design de l’État.",
+  "description": "La statistique agricole. Basé sur Sites Conformes, ce projet permet la création de sites web conformes aux normes numériques en vigueur pour le domaine .gouv.fr.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
     "Visualisation de données & Cartographie",
-    "Contenu éditorial",
-    "Sécurité & Conformité"
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Contenu éditorial"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Wagtail",
-    "psycopg2-binary",
+    "django-dsfr",
+    "PostgreSQL",
     "python-dotenv",
     "dj-database-url",
     "gunicorn",
@@ -24,14 +27,7 @@
     "wagtailmenus",
     "wagtail-modeladmin",
     "wagtail-markdown",
-    "beautifulsoup4",
-    "django-taggit",
-    "wagtail-localize",
-    "icalendar",
-    "mozilla-django-oidc",
-    "wand",
-    "wagtail-honeypot",
-    "sentry-sdk"
+    "icalendar"
   ],
   "components": [
     "API REST & GraphQL",
@@ -39,24 +35,25 @@
     "React / Next.js",
     "Python (scripts & backend)",
     "Django",
-    "Wagtail",
-    "Design System (DSFR & UI libs)"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "Tests automatisés couvrant Python 3.10 à 3.14 et PostgreSQL 14 à 17.",
-  "workflows": [],
-  "lastActivity": "2026-06-12T13:59:12+00:00",
+  "tests": "Tests automatisés couvrant les versions de Python 3.10 à 3.14 et PostgreSQL 14 à 17.",
+  "workflows": [
+    "CI/CD workflows for release"
+  ],
+  "lastActivity": "2026-07-02T10:15:09+02:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "contributors": null,
+    "stars": 11,
+    "forks": 1,
+    "contributors": 11,
     "openIssues": 0
   },
   "tags": [
