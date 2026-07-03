@@ -16,12 +16,17 @@ and this project adheres to
 - 🧱(helm) run clean files command as cronjob
 - ✨(backend) add fallback to save recordings without S3/MinIO webhooks
 - 🩹(frontend) enable screen share button in PiP #1458
+- 🐛(backend) support unencoded S3 notification object keys #1455
 
 ### Changed
 
 - ✨(summary) generalized stt api call #1420
 - ♻️(env) refactor env variables handling
 - 🚸(frontend) use "Advanced" instead of "Premium" in the sidepanel
+
+### Fixed
+
+- 🛂(backend) reject user access tokens on the API
 
 ## [1.21.0] - 2026-06-15
 
