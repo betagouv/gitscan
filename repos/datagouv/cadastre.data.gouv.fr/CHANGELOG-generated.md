@@ -1,14 +1,11 @@
-## Changelog : cadastre.data.gouv.fr (30 derniers jours, au 9 avril 2026)
+## Changelog : cadastre.data.gouv.fr (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Cette mise à jour intègre les données cadastrales les plus récentes disponibles (au 1er mars 2026) et met à jour la description du site pour refléter cette actualisation.  Cela garantit que les utilisateurs ont accès aux informations les plus à jour concernant les données cadastrales.
+Cette mise à jour intègre les données cadastrales les plus récentes (au 1er juin 2026) et corrige des erreurs mineures d'affichage liées à l'utilisation incorrecte de guillemets. Plusieurs fusions de branches ont été réalisées pour intégrer ces modifications.
 
 ### Évolutions fonctionnelles
-- Mise à jour des données cadastrales avec la version du 1er mars 2026. [#169](https://github.com/datagouv/cadastre.data.gouv.fr/pull/169)
-- Mise à jour de la description du site pour indiquer la date de la dernière mise à jour des données cadastrales. [#169](https://github.com/datagouv/cadastre.data.gouv.fr/pull/169)
+- Mise à jour des données cadastrales avec les informations du 1er juin 2026. [#171](https://github.com/datagouv/cadastre.data.gouv.fr/pulls/171)
+- Correction de l'affichage de certains textes contenant des guillemets. [#166](https://github.com/datagouv/cadastre.data.gouv.fr/pulls/166)
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler.
-
-### Autres changements
-- Aucune autre modification à signaler.
+- Intégration de correctifs via plusieurs fusions de branches (agarrone-patch-1, agarrone-patch-2). [#165](https://github.com/datagouv/cadastre.data.gouv.fr/pulls/165)
