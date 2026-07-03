@@ -1,0 +1,267 @@
+.
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── container.yml
+├── .gitignore
+├── .logs
+├── .vscode
+│   └── extensions.json
+├── CLAUDE.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── build-container
+│   ├── Dockerfile
+│   ├── build.sh
+│   └── local_data
+│       └── naf
+│           ├── 5to1.csv
+│           ├── libelles_ape.csv
+│           ├── naf1.csv
+│           ├── naf2.csv
+│           ├── naf3.csv
+│           ├── naf4.csv
+│           └── naf5.csv
+├── computePerimeterHandler.go
+├── config-sample.toml
+├── docs
+│   ├── documentation_ap.md
+│   ├── documentation_debit.md
+│   ├── documentation_donnees_brutes.md
+│   ├── documentation_filter.md
+│   ├── documentation_procol.md
+│   └── documentation_tables.md
+├── e2e_cli_test.go
+├── e2e_export_test.go
+├── e2e_filter_test.go
+├── e2e_import_test.go
+├── e2e_parsefile_test.go
+├── e2e_procol_test.go
+├── e2e_test.go
+├── exportHandler.go
+├── go.mod
+├── go.sum
+├── importHandler.go
+├── importHandler_test.go
+├── lib
+│   ├── db
+│   │   ├── db.go
+│   │   ├── matviews.go
+│   │   ├── migrations
+│   │   │   ├── 001_create_import_logs.sql
+│   │   │   ├── 002_create_naf.sql
+│   │   │   ├── 003_create_sirene_ul.sql
+│   │   │   ├── 004_create_filter.sql
+│   │   │   ├── 005_create_apdemande.sql
+│   │   │   ├── 006_create_apconso.sql
+│   │   │   ├── 007_create_ap_views.sql
+│   │   │   ├── 008_create_sirene.sql
+│   │   │   ├── 009_create_sirene_views.sql
+│   │   │   ├── 010_create_cotisation.sql
+│   │   │   ├── 011_create_cotisation_views.sql
+│   │   │   ├── 012_create_debit.sql
+│   │   │   ├── 013_create_debit_views.sql
+│   │   │   ├── 014_create_delai.sql
+│   │   │   ├── 015_create_delai_views.sql
+│   │   │   ├── 016_create_effectif.sql
+│   │   │   ├── 017_create_effectif_views.sql
+│   │   │   ├── 018_create_procol.sql
+│   │   │   ├── 019_create_procol_views.sql
+│   │   │   ├── 020_create_sirene_histo.sql
+│   │   │   ├── 021_create_sirene_histo_views.sql
+│   │   │   ├── 022_create_procol_helper_fun.sql
+│   │   │   ├── 023_change_effectif_views.sql
+│   │   │   ├── 024_change_debit_views.sql
+│   │   │   ├── 025_add_end_date_to_import_logs.sql
+│   │   │   ├── 026_update_sirene_est_actif.sql
+│   │   │   ├── 027_update_sirene_views.sql
+│   │   │   ├── 028_add_is_last_to_clean_ap.sql
+│   │   │   ├── 029_improve_procol_labels.sql
+│   │   │   ├── 030_add_debit_id.sql
+│   │   │   ├── 031_fix_debit_computations.sql
+│   │   │   ├── 032_improve_sirene_views.sql
+│   │   │   ├── 033_add_naf_label.sql
+│   │   │   ├── 034_add_categories_juridiques_label.sql
+│   │   │   ├── 035_improve_sirene_views_2.sql
+│   │   │   ├── 036_add_region.sql
+│   │   │   ├── 037_improve_sirene_views_3.sql
+│   │   │   ├── 038_improve_sirene_histo.sql
+│   │   │   ├── 039_fix_clean_ap.sql
+│   │   │   ├── 040_remove_siren_indexes.sql
+│   │   │   ├── 041_create_saved_indexes.sql
+│   │   │   ├── 042_change_perimeter.sql
+│   │   │   ├── 043_update_procol_at_date_function.sql
+│   │   │   ├── 044_create_procol_at_date_view.sql
+│   │   │   ├── 045_add_siret_siege_in_clean_sirene_ul.sql
+│   │   │   ├── 046_add_pg_parquet_extension.sql
+│   │   │   ├── 047_ensure_pg_parquet_extension.sql
+│   │   │   ├── 048_add_naf25l.sql
+│   │   │   ├── 049_add_naf25_to_sirene_ul.sql
+│   │   │   └── 050_fix_procol_at_date_exclusions.sql
+│   │   ├── migrations.go
+│   │   └── tables.go
+│   ├── engine
+│   │   ├── adminBatch.go
+│   │   ├── adminBatch_test.go
+│   │   ├── batch.go
+│   │   ├── batch_testing.go
+│   │   ├── batchkey.go
+│   │   ├── batchkey_test.go
+│   │   ├── cron.go
+│   │   ├── dataSink.go
+│   │   ├── filter.go
+│   │   ├── parser.go
+│   │   ├── parserRegistry.go
+│   │   ├── parserRegistry_test.go
+│   │   ├── parser_test.go
+│   │   ├── parser_types.go
+│   │   ├── reports.go
+│   │   ├── test_data
+│   │   │   └── empty_file
+│   │   ├── testing.go
+│   │   ├── tracker.go
+│   │   └── tracker_test.go
+│   ├── export
+│   │   └── main.go
+│   ├── filter
+│   │   ├── csvreader.go
+│   │   ├── csvreader_test.go
+│   │   ├── csvwriter.go
+│   │   ├── filter.go
+│   │   ├── filter_test.go
+│   │   ├── main.go
+│   │   ├── main_test.go
+│   │   ├── mapfilter.go
+│   │   ├── mapfilter_test.go
+│   │   ├── report.go
+│   │   ├── resolver.go
+│   │   ├── sqlreader.go
+│   │   ├── sqlwriter.go
+│   │   ├── testData
+│   │   │   ├── minimal_effectif.csv
+│   │   │   ├── test_data.csv
+│   │   │   ├── test_golden.txt
+│   │   │   ├── test_golden_err.txt
+│   │   │   └── test_uniteLegale.csv
+│   │   └── testing.go
+│   ├── parsing
+│   │   ├── apconso
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   └── tuple.go
+│   │   ├── apdemande
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   ├── testData
+│   │   │   │   ├── apdemandeTestData.csv
+│   │   │   │   └── expectedApdemande.json
+│   │   │   └── tuple.go
+│   │   ├── csvparser.go
+│   │   ├── csvparser_test.go
+│   │   ├── effectif
+│   │   │   ├── common.go
+│   │   │   ├── entParser.go
+│   │   │   ├── entTuple.go
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   ├── testing.go
+│   │   │   └── tuple.go
+│   │   ├── indexer.go
+│   │   ├── indexer_test.go
+│   │   ├── sirene
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   ├── testData
+│   │   │   │   ├── expectedSirene.json
+│   │   │   │   └── sireneTestData.csv
+│   │   │   ├── testing.go
+│   │   │   └── tuple.go
+│   │   ├── sirene_histo
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   ├── testData
+│   │   │   │   ├── expectedSireneHisto.json
+│   │   │   │   └── sireneHistoTestData.csv
+│   │   │   └── tuple.go
+│   │   ├── sirene_ul
+│   │   │   ├── parser.go
+│   │   │   ├── parser_test.go
+│   │   │   ├── testData
+│   │   │   │   ├── expectedSireneUL.json
+│   │   │   │   └── sireneULTestData.csv
+│   │   │   ├── testing.go
+│   │   │   └── tuple.go
+│   │   ├── testing.go
+│   │   ├── urssaf
+│   │   │   ├── ccsfParser.go
+│   │   │   ├── ccsfTuple.go
+│   │   │   ├── cotisationParser.go
+│   │   │   ├── cotisationTuple.go
+│   │   │   ├── debitParser.go
+│   │   │   ├── debitTuple.go
+│   │   │   ├── delaiParser.go
+│   │   │   ├── delaiTuple.go
+│   │   │   ├── procolParser.go
+│   │   │   ├── procolTuple.go
+│   │   │   ├── testData
+│   │   │   │   ├── ccsfTestData.csv
+│   │   │   │   ├── cotisationTestData.csv
+│   │   │   │   ├── debitCorrompuTestData.csv
+│   │   │   │   ├── debitTestData.csv
+│   │   │   │   ├── delaiTestData.csv
+│   │   │   │   ├── expectedCcsf.json
+│   │   │   │   ├── expectedCotisation.json
+│   │   │   │   ├── expectedDebit.json
+│   │   │   │   ├── expectedDebitCorrompu.json
+│   │   │   │   ├── expectedDelai.json
+│   │   │   │   ├── expectedProcol.json
+│   │   │   │   └── procolTestData.csv
+│   │   │   ├── urssaf_test.go
+│   │   │   ├── utils.go
+│   │   │   └── utils_test.go
+│   │   ├── utils.go
+│   │   └── utils_test.go
+│   ├── prepare-import
+│   │   ├── .editorconfig
+│   │   ├── .gitignore
+│   │   ├── Makefile
+│   │   ├── README.md
+│   │   ├── adminobject.go
+│   │   ├── adminobject_test.go
+│   │   ├── end_to_end_golden.txt
+│   │   ├── filesproperty.go
+│   │   ├── filesproperty_test.go
+│   │   ├── parsertypes.go
+│   │   ├── parsertypes_test.go
+│   │   ├── prepareimport.go
+│   │   ├── prepareimport_test.go
+│   │   └── testing.go
+│   ├── registry
+│   │   └── main.go
+│   ├── sfregexp
+│   │   ├── regexp.go
+│   │   └── regexp_test.go
+│   └── sinks
+│       ├── compositeSink.go
+│       ├── compostieSink_test.go
+│       ├── csvSink.go
+│       ├── csvSink_test.go
+│       ├── main.go
+│       ├── postgresSink.go
+│       ├── postgresSink_test.go
+│       └── stdoutSink.go
+├── logger.go
+├── main.go
+├── parseFileHandler.go
+├── test-all.sh
+└── tests
+    ├── output-snapshots
+    │   └── test-*.txt  (50 files)
+    └── testData
+        ├── apconsoTestData.csv
+        ├── apdemandeTestData.csv
+        ├── effectifEntTestData.csv
+        └── effectifTestData.csv
+36 directories, 279 files
