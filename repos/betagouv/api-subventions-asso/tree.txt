@@ -14,7 +14,6 @@
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
-├── .npmrc
 ├── .prettierrc
 ├── .versionrc.json
 ├── CHANGELOG.md
@@ -29,7 +28,6 @@
 ├── packages
 │   ├── api
 │   │   ├── .gitignore
-│   │   ├── .npmrc
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.yaml
 │   │   ├── CHANGELOG.md
@@ -65,7 +63,6 @@
 │   │   │   ├── 20220524120853-fill-association-name-with-osiris-requests.js
 │   │   │   ├── 20220525083959-update-fonjep-import-date-and-add-templs-plein.js
 │   │   │   ├── 20220527070446-replace-siret-to-siren-association-names.js
-│   │   │   ├── 20220607092507-lower-case-user.js
 │   │   │   ├── 20220607103015-fix-osiris-status-null.js
 │   │   │   ├── 20220620093606-current-osiris-import-is-2021.js
 │   │   │   ├── 20220804083655-addDauhpinConfig.js
@@ -132,24 +129,30 @@
 │   │   │   ├── 20260323195850-remove-overwriteAlert-deposit-log.js
 │   │   │   ├── 20260428231703-osiris-request-raw-entity.js
 │   │   │   ├── 20260512233618-osiris-action-raw-entity.js
-│   │   │   └── 20260605132926-add-service-instructeur-to-dn-application-flat.js
+│   │   │   ├── 20260605132926-add-service-instructeur-to-dn-application-flat.js
+│   │   │   └── 20260615000000-chorus-remove-unique-id.js
 │   │   ├── nodemon.json
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── @enums
 │   │   │   │   ├── FileExtensionEnum.ts
 │   │   │   │   ├── ProviderEnum.ts
-│   │   │   │   ├── RolesEnum.ts
 │   │   │   │   └── StructureIdentifiersEnum.ts
 │   │   │   ├── @types
 │   │   │   │   ├── ApiRequests.ts
+│   │   │   │   ├── BaseNotifyImport.ts
 │   │   │   │   ├── CliInterfaces.ts
 │   │   │   │   ├── CronController.ts
 │   │   │   │   ├── DefaultObjects.ts
 │   │   │   │   ├── Falsy.ts
+│   │   │   │   ├── ImportNotificationDetails.ts
+│   │   │   │   ├── ImportReport.ts
+│   │   │   │   ├── NotifyImportFailureContext.ts
+│   │   │   │   ├── NotifyImportSuccessContext.ts
 │   │   │   │   ├── ParserInfo.ts
 │   │   │   │   ├── ParserPath.ts
 │   │   │   │   ├── ParserScheme.ts
+│   │   │   │   ├── PlainObject.ts
 │   │   │   │   ├── ProviderData.ts
 │   │   │   │   ├── S3FileData.ts
 │   │   │   │   ├── ScdlProcess.ts
@@ -472,6 +475,7 @@
 │   │   │   │       │   │   ├── __snapshots__
 │   │   │   │       │   │   │   └── unique-visit-by-day.adapter.test.ts.snap
 │   │   │   │       │   │   ├── association-visit.adapter.ts
+│   │   │   │       │   │   ├── association-visit.dbo.ts
 │   │   │   │       │   │   ├── logs.adapter.test.ts
 │   │   │   │       │   │   ├── logs.adapter.ts
 │   │   │   │       │   │   ├── logs.port.ts
@@ -494,15 +498,15 @@
 │   │   │   │       │   └── user
 │   │   │   │       │       ├── @errors
 │   │   │   │       │       │   └── UserUpdateError.ts
-│   │   │   │       │       ├── @types
-│   │   │   │       │       │   └── UserDbo.ts
-│   │   │   │       │       ├── ac-token.port.ts
 │   │   │   │       │       ├── consumer-token.adapter.ts
 │   │   │   │       │       ├── consumer-token.port.ts
+│   │   │   │       │       ├── pro-connect-token.port.ts
 │   │   │   │       │       ├── pro-connect.adapter.ts
 │   │   │   │       │       ├── user-reset.adapter.ts
 │   │   │   │       │       ├── user-reset.port.ts
 │   │   │   │       │       ├── user.adapter.ts
+│   │   │   │       │       ├── user.dbo.ts
+│   │   │   │       │       ├── user.mapper.ts
 │   │   │   │       │       └── user.port.ts
 │   │   │   │       └── s3
 │   │   │   │           ├── @errors
@@ -514,7 +518,7 @@
 │   │   │   │   ├── authentication.test.ts
 │   │   │   │   ├── authentication.ts
 │   │   │   │   ├── express.auth.hooks.ts
-│   │   │   │   └── proconnect.strategy.ts
+│   │   │   │   └── pro-connect.strategy.ts
 │   │   │   ├── cli.ts
 │   │   │   ├── configurations
 │   │   │   │   ├── apis.conf.ts
@@ -532,6 +536,31 @@
 │   │   │   │   ├── cron.decorator.test.ts
 │   │   │   │   ├── cron.decorator.ts
 │   │   │   │   └── static-implements.decorator.ts
+│   │   │   ├── domain
+│   │   │   │   ├── errors
+│   │   │   │   │   └── MissingFieldError.ts
+│   │   │   │   └── users
+│   │   │   │       ├── @types
+│   │   │   │       │   ├── AdminTerritorialLevel.ts
+│   │   │   │       │   ├── AgentJobType.ts
+│   │   │   │       │   ├── AgentType.ts
+│   │   │   │       │   ├── AnonymizedUser.ts
+│   │   │   │       │   ├── FutureUser.ts
+│   │   │   │       │   ├── OptionalUserFields.ts
+│   │   │   │       │   ├── RegistrationSrcType.ts
+│   │   │   │       │   ├── RequiredUserFields.ts
+│   │   │   │       │   ├── TerritorialScope.ts
+│   │   │   │       │   ├── UpdatableUserFields.ts
+│   │   │   │       │   ├── UserAuth.ts
+│   │   │   │       │   ├── UserEmail.ts
+│   │   │   │       │   ├── UserJwt.ts
+│   │   │   │       │   ├── UserRoles.ts
+│   │   │   │       │   ├── UserServiceError.ts
+│   │   │   │       │   ├── UserWithAuth.ts
+│   │   │   │       │   └── UserWithJwt.ts
+│   │   │   │       ├── AbstractUserEntity.ts
+│   │   │   │       ├── NewUserEntity.ts
+│   │   │   │       └── UserEntity.ts
 │   │   │   ├── entities
 │   │   │   │   ├── DomaineFonctionnelEntity.ts
 │   │   │   │   ├── GrantFlatEntity.ts
@@ -599,14 +628,22 @@
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   └── application-flat.fixture.ts
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── application-flat.mapper.test.ts.snap
 │   │   │   │   │   │   └── application-flat.service.test.ts.snap
 │   │   │   │   │   ├── application-flat.helper.test.ts
 │   │   │   │   │   ├── application-flat.helper.ts
 │   │   │   │   │   ├── application-flat.mapper.test.ts
 │   │   │   │   │   ├── application-flat.mapper.ts
 │   │   │   │   │   ├── application-flat.service.test.ts
-│   │   │   │   │   └── application-flat.service.ts
+│   │   │   │   │   ├── application-flat.service.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── __snapshots__
+│   │   │   │   │       │   └── transform-to-demande-subvention.test.ts.snap
+│   │   │   │   │       ├── get-applications.ts
+│   │   │   │   │       ├── get-association-applications.ts
+│   │   │   │   │       ├── get-establishment-applications.ts
+│   │   │   │   │       ├── get-subventions-by-identifier.ts
+│   │   │   │   │       ├── transform-to-demande-subvention.test.ts
+│   │   │   │   │       └── transform-to-demande-subvention.ts
 │   │   │   │   ├── association-identifier
 │   │   │   │   │   ├── IdentifierError.ts
 │   │   │   │   │   ├── association-identifier.service.test.ts
@@ -714,7 +751,6 @@
 │   │   │   │   │   └── establishment.service.ts
 │   │   │   │   ├── grant
 │   │   │   │   │   ├── @types
-│   │   │   │   │   │   ├── GrantProvider.ts
 │   │   │   │   │   │   ├── GrantToExtract.ts
 │   │   │   │   │   │   └── RawGrant.ts
 │   │   │   │   │   ├── __snapshots__
@@ -727,6 +763,8 @@
 │   │   │   │   │   ├── grant.mapper.ts
 │   │   │   │   │   ├── grant.service.test.ts
 │   │   │   │   │   ├── grant.service.ts
+│   │   │   │   │   ├── raw-grant.service.test.ts
+│   │   │   │   │   ├── raw-grant.service.ts
 │   │   │   │   │   └── use-cases
 │   │   │   │   │       ├── get-provider-details.use-case.test.ts
 │   │   │   │   │       └── get-provider-details.use-case.ts
@@ -741,17 +779,21 @@
 │   │   │   │   │   ├── notificiation-env.conf.ts
 │   │   │   │   │   ├── notify.service.test.ts
 │   │   │   │   │   ├── notify.service.ts
-│   │   │   │   │   └── out-pipes
-│   │   │   │   │       ├── __snapshots__
-│   │   │   │   │       │   ├── brevo-contact.pipe.test.ts.snap
-│   │   │   │   │       │   └── mattermost.pipe.test.ts.snap
-│   │   │   │   │       ├── brevo-contact.pipe.test.ts
-│   │   │   │   │       ├── brevo-contact.pipe.ts
-│   │   │   │   │       ├── brevo-mail.pipe.test.ts
-│   │   │   │   │       ├── brevo-mail.pipe.ts
-│   │   │   │   │       ├── index.ts
-│   │   │   │   │       ├── mattermost.pipe.test.ts
-│   │   │   │   │       └── mattermost.pipe.ts
+│   │   │   │   │   ├── out-pipes
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   ├── brevo-contact.pipe.test.ts.snap
+│   │   │   │   │   │   │   └── mattermost.pipe.test.ts.snap
+│   │   │   │   │   │   ├── brevo-contact.pipe.test.ts
+│   │   │   │   │   │   ├── brevo-contact.pipe.ts
+│   │   │   │   │   │   ├── brevo-mail.pipe.test.ts
+│   │   │   │   │   │   ├── brevo-mail.pipe.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── mattermost.pipe.test.ts
+│   │   │   │   │   │   └── mattermost.pipe.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── notify-import-failure.use-case.ts
+│   │   │   │   │       ├── notify-import-success.use-case.ts
+│   │   │   │   │       └── notify-import.use-case.test.ts
 │   │   │   │   ├── open-data
 │   │   │   │   │   ├── grant
 │   │   │   │   │   │   └── open-data-grant.service.ts
@@ -775,10 +817,12 @@
 │   │   │   │   │   ├── payment-flat.mapper.test.ts
 │   │   │   │   │   ├── payment-flat.mapper.ts
 │   │   │   │   │   ├── payment-flat.service.test.ts
-│   │   │   │   │   └── payment-flat.service.ts
+│   │   │   │   │   ├── payment-flat.service.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── get-association-payments.ts
+│   │   │   │   │       ├── get-establishment-payments.ts
+│   │   │   │   │       └── get-payments.ts
 │   │   │   │   ├── payments
-│   │   │   │   │   ├── @types
-│   │   │   │   │   │   └── PaymentProvider.ts
 │   │   │   │   │   ├── payments.service.test.ts
 │   │   │   │   │   └── payments.service.ts
 │   │   │   │   ├── provider-request
@@ -1149,28 +1193,21 @@
 │   │   │   │   │   │   └── user-id.migration.ts
 │   │   │   │   │   ├── stats.service.test.ts
 │   │   │   │   │   └── stats.service.ts
-│   │   │   │   ├── subventions
-│   │   │   │   │   ├── @types
-│   │   │   │   │   │   ├── ApplicationProvider.ts
-│   │   │   │   │   │   └── SubventionsFlux.ts
-│   │   │   │   │   ├── subventions.service.test.ts
-│   │   │   │   │   └── subventions.service.ts
 │   │   │   │   └── user
 │   │   │   │       ├── @types
-│   │   │   │       │   ├── AgentConnectUser.ts
-│   │   │   │       │   └── UserServiceError.ts
+│   │   │   │       │   └── ProConnectUser.ts
 │   │   │   │       ├── __fixtures__
+│   │   │   │       │   ├── user-reset.fixture.ts
 │   │   │   │       │   └── user.fixture.ts
 │   │   │   │       ├── entities
 │   │   │   │       │   ├── ConsumerToken.ts
-│   │   │   │       │   └── UserReset.ts
+│   │   │   │       │   ├── ConsumerTokenEntity.ts
+│   │   │   │       │   ├── UserReset.ts
+│   │   │   │       │   └── UserResetEntity.ts
 │   │   │   │       ├── services
 │   │   │   │       │   ├── activation
 │   │   │   │       │   │   ├── user.activation.service.test.ts
 │   │   │   │       │   │   └── user.activation.service.ts
-│   │   │   │       │   ├── agentConnect
-│   │   │   │       │   │   ├── user.agentConnect.service.test.ts
-│   │   │   │       │   │   └── user.agentConnect.service.ts
 │   │   │   │       │   ├── auth
 │   │   │   │       │   │   ├── user.auth.service.test.ts
 │   │   │   │       │   │   └── user.auth.service.ts
@@ -1185,6 +1222,11 @@
 │   │   │   │       │   │   │   └── user.crud.service.test.ts.snap
 │   │   │   │       │   │   ├── user.crud.service.test.ts
 │   │   │   │       │   │   └── user.crud.service.ts
+│   │   │   │       │   ├── pro-connect
+│   │   │   │       │   │   ├── __snapshots__
+│   │   │   │       │   │   │   └── user.pro-connect.service.test.ts.snap
+│   │   │   │       │   │   ├── user.pro-connect.service.test.ts
+│   │   │   │       │   │   └── user.pro-connect.service.ts
 │   │   │   │       │   ├── profile
 │   │   │   │       │   │   ├── __snapshots__
 │   │   │   │       │   │   │   └── user.profile.service.test.ts.snap
@@ -1204,9 +1246,7 @@
 │   │   │   │       ├── user.constant.ts
 │   │   │   │       ├── user.enum.ts
 │   │   │   │       ├── user.helper.test.ts
-│   │   │   │       ├── user.helper.ts
-│   │   │   │       ├── user.migration.test.ts
-│   │   │   │       └── user.migrations.ts
+│   │   │   │       └── user.helper.ts
 │   │   │   ├── server.ts
 │   │   │   └── shared
 │   │   │       ├── @types
@@ -1233,7 +1273,6 @@
 │   │   │       ├── ProviderValueFactory.ts
 │   │   │       ├── Validators.test.ts
 │   │   │       ├── Validators.ts
-│   │   │       ├── WithStringId.ts
 │   │   │       ├── __mocks__
 │   │   │       │   └── EventManager.ts
 │   │   │       ├── __snapshots__
@@ -1267,16 +1306,12 @@
 │   │   │       │   ├── NumberHelper.ts
 │   │   │       │   ├── ObjectHelper.test.ts
 │   │   │       │   ├── ObjectHelper.ts
-│   │   │       │   ├── PortHelper.test.ts
-│   │   │       │   ├── PortHelper.ts
 │   │   │       │   ├── StringHelper.test.ts
 │   │   │       │   ├── StringHelper.ts
 │   │   │       │   ├── TimeHelper.ts
 │   │   │       │   ├── UserHelper.test.ts
 │   │   │       │   ├── UserHelper.ts
 │   │   │       │   ├── WaitHelper.ts
-│   │   │       │   ├── __snapshots__
-│   │   │       │   │   └── PortHelper.test.ts.snap
 │   │   │       │   └── validation.helper.ts
 │   │   │       └── mappers
 │   │   │           ├── provider-value.mapper.test.ts
@@ -1421,10 +1456,6 @@
 │   │   │           │   └── user.spec.ts.snap
 │   │   │           ├── authentification.spec.ts
 │   │   │           ├── consumer.spec.ts
-│   │   │           ├── port
-│   │   │           │   ├── __snapshots__
-│   │   │           │   │   └── user.port.test.ts.snap
-│   │   │           │   └── user.port.test.ts
 │   │   │           ├── user.agentConnect.spec.ts
 │   │   │           └── user.spec.ts
 │   │   ├── tools
@@ -1447,7 +1478,6 @@
 │   │   └── tsoa.json
 │   ├── core
 │   │   ├── .gitignore
-│   │   ├── .npmrc
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.yaml
 │   │   ├── CHANGELOG.md
@@ -1466,6 +1496,7 @@
 │   │   │   │   ├── BadRequestError.ts
 │   │   │   │   ├── ConflictError.ts
 │   │   │   │   ├── ForbiddenError.ts
+│   │   │   │   ├── GoneError.ts
 │   │   │   │   ├── HttpError.ts
 │   │   │   │   ├── InternalServerError.ts
 │   │   │   │   ├── NotFoundErrors
@@ -1489,7 +1520,6 @@
 │   │       └── IdentifierNames.ts
 │   ├── dto
 │   │   ├── .gitignore
-│   │   ├── .npmrc
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.yaml
 │   │   ├── CHANGELOG.md
@@ -1597,7 +1627,6 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── search
 │   │   │   │   ├── AssociationNameDto.ts
-│   │   │   │   ├── SearchCodeError.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── shared
 │   │   │   │   ├── Adresse.ts
@@ -1629,14 +1658,12 @@
 │   │   │       ├── UserDataDto.ts
 │   │   │       ├── UserDto.ts
 │   │   │       ├── UserDtoResponse.ts
-│   │   │       ├── UserErrorCodes.ts
 │   │   │       ├── UserListDtoResponse.ts
 │   │   │       └── index.ts
 │   │   └── tsconfig.json
 │   ├── front
 │   │   ├── .env
 │   │   ├── .gitignore
-│   │   ├── .npmrc
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.yaml
 │   │   ├── CHANGELOG.md
@@ -2214,7 +2241,6 @@
 │   │   └── vite.config.ts
 │   └── tools
 │       ├── .gitignore
-│       ├── .npmrc
 │       ├── .prettierignore
 │       ├── .prettierrc.yaml
 │       ├── CHANGELOG.md
@@ -2242,4 +2268,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-519 directories, 1725 files
+521 directories, 1749 files

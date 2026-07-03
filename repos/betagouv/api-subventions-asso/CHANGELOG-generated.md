@@ -1,26 +1,28 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 17 juin 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 2 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'API a bénéficié d'améliorations significatives concernant la gestion des subventions Osiris, avec l'ajout de nouvelles routes et d'une meilleure intégration des données. Des corrections ont également été apportées pour améliorer la robustesse et la précision des données traitées, notamment en gérant différents formats numériques et en normalisant les données RNA.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse de l'API, notamment en gérant mieux les erreurs et en normalisant les données. Des optimisations ont été apportées à l'import des données Chorus et à la gestion des identifiants Osiris. Des corrections de bugs ont également été implémentées pour améliorer la précision des recherches et la gestion des alertes.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles routes pour accéder aux détails des subventions Osiris, permettant une intégration plus fine avec cette source de données. [#3840](https://github.com/betagouv/api-subventions-asso/issues/3840)
-- Amélioration de la détection des nouveaux fichiers Chorus sur le bucket S3, assurant une mise à jour plus rapide des informations sur les subventions. [#3931](https://github.com/betagouv/api-subventions-asso/issues/3931)
-- Ajout d'un tag après l'import des données, facilitant leur identification et leur suivi. [#3932](https://github.com/betagouv/api-subventions-asso/issues/3932)
-- Normalisation des RNA (numéros de référence des associations) pour permettre une recherche insensible à la casse. [#3862](https://github.com/betagouv/api-subventions-asso/issues/3862)
-- Gestion des formats numériques européens utilisant la virgule comme séparateur décimal. [#3955](https://github.com/betagouv/api-subventions-asso/issues/3955)
-- Correction de l'envoi de paramètres vides à l'API Brevo Transaction. [#3822](https://github.com/betagouv/api-subventions-asso/issues/3822)
+- Correction d'un bug où l'API pouvait planter lors de la récupération d'associations via l'API asso. [#3981](https://github.com/betagouv/api-subventions-asso/issues/3981)
+- Amélioration de la gestion des notifications lors de l'import des données des fournisseurs. [#3954](https://github.com/betagouv/api-subventions-asso/issues/3954)
+- Correction d'un bug qui affichait des alertes de doublons SIREN incorrectes. [#3965](https://github.com/betagouv/api-subventions-asso/issues/3965)
+- Ajout de la détection de nouveaux fichiers Chorus sur le bucket S3. [#3937](https://github.com/betagouv/api-subventions-asso/issues/3937)
+- Ajout d'un tag après l'import des données. [#3959](https://github.com/betagouv/api-subventions-asso/issues/3959)
+- Gestion améliorée des formats de nombres européens avec la virgule comme séparateur décimal. [#3956](https://github.com/betagouv/api-subventions-asso/issues/3956)
+- Normalisation du RNA (Numéro de Répertoire Associatif) pour une recherche insensible à la casse. [#3966](https://github.com/betagouv/api-subventions-asso/issues/3966)
 
 ### Évolutions techniques
-- Refactorisation du code pour renommer les variables `uniteLegalEntrepriseXXX` en `uniteLegaleEntrepriseXXX` pour une meilleure cohérence. [#3888](https://github.com/betagouv/api-subventions-asso/issues/3888)
-- Migration du service `api-asso` vers une architecture basée sur des adaptateurs et des ports, améliorant la modularité et la testabilité. [#3549](https://github.com/betagouv/api-subventions-asso/issues/3549)
-- Validation des requêtes pour une meilleure robustesse de l'API. [#3906](https://github.com/betagouv/api-subventions-asso/issues/3906)
-- Mise à jour de la configuration TypeScript avec l'ajout de `todos` pour faciliter la maintenance du code. [#3904](https://github.com/betagouv/api-subventions-asso/issues/3904)
-- Ajout de documentation expliquant la différence entre les endpoints de téléchargement par association et par document. [#3927](https://github.com/betagouv/api-subventions-asso/issues/3927)
+- Refactor de la gestion des grants pour simplifier le code. [#3961](https://github.com/betagouv/api-subventions-asso/issues/3961)
+- Suppression des codes d'erreur HTTP personnalisés pour simplifier la gestion des erreurs. [#3979](https://github.com/betagouv/api-subventions-asso/issues/3979)
+- Refactor pour utiliser l'entité `UserEntity` au lieu de `_id`. [#3978](https://github.com/betagouv/api-subventions-asso/issues/3978)
+- Refactor pour remplacer `Chorus uniqueId` par un index composite. [#3968](https://github.com/betagouv/api-subventions-asso/issues/3968)
+- Mise à jour de l'URL de l'API SIRENE pour utiliser un lien stable. [#3983](https://github.com/betagouv/api-subventions-asso/issues/3983)
+- Migration vers pnpm 11. [#3958](https://github.com/betagouv/api-subventions-asso/issues/3958)
+- Renommage de certains champs et variables pour améliorer la lisibilité et la cohérence du code. [#3973](https://github.com/betagouv/api-subventions-asso/issues/3973), [#3960](https://github.com/betagouv/api-subventions-asso/issues/3960)
 
 ### Autres changements
-- Ajout de la dernière agrégation à la documentation de l'API. [#3928](https://github.com/betagouv/api-subventions-asso/issues/3928)
-- Mise à jour des dépendances du frontend. [#3922](https://github.com/betagouv/api-subventions-asso/issues/3922)
-- Correction du fichier `Procfile`. [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000)
-- Ajout du fichier `.versionrc.json`. [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000)
-- Correction du fichier `CHANGELOG.md`. [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000)
+- Ajout de documentation sur les agrégations. [#3952](https://github.com/betagouv/api-subventions-asso/issues/3952)
+- Mise à jour de la configuration TypeScript pour inclure les TODOs. [#3951](https://github.com/betagouv/api-subventions-asso/issues/3951)
+- Correction du fichier `CHANGELOG.md`.
+- Suppression temporaire des index `osiris-request` et `osiris-action` pour investigation.
