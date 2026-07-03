@@ -1,21 +1,24 @@
-## Changelog : accounts (30 derniers jours, au 2026-06-16)
+## Changelog : accounts (30 derniers jours, au 2026-06-15)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'infrastructure CI/CD, la qualité du code et la préparation de l'intégration d'une nouvelle interface utilisateur. Des fondations ont été posées pour des tests end-to-end et une refonte de l'application frontend.
+Ce mois-ci, les efforts de développement se sont concentrés sur la modernisation de l'infrastructure CI/CD, l'amélioration de la qualité du code grâce à l'intégration d'outils d'analyse statique, et la préparation du terrain pour une nouvelle interface utilisateur.  Une base pour les tests end-to-end a également été mise en place.
 
 ### Évolutions fonctionnelles
-- Initialisation de l'application frontend avec Webaoo et la mise en place d'un stack de tests end-to-end. [#1234](https://github.com/suitenumerique/accounts/issues/1234) (impliqué par le commit c725e59)
+- Initialisation de l'application frontend avec Webaoo et la mise en place d'une base pour les tests end-to-end. [#1234](https://github.com/suitenumerique/accounts/issues/1234) (implicite, basé sur le commit)
+- Suppression de l'ancien boilerplate frontend, ouvrant la voie à la nouvelle interface.
 
 ### Évolutions techniques
-- **CI/CD :** Amélioration significative de la configuration CI/CD, incluant l'extraction de tâches communes dans des workflows réutilisables, l'optimisation de la détection des commits de type `fixup!` et `squash!`, et la gestion plus sécurisée des secrets.
-- **Qualité du code :** Activation de règles supplémentaires de Ruff (Pyflakes et Pyupgrade) pour améliorer la qualité et la cohérence du code Python.
-- **Docker :** Simplification de la gestion des versions dans les images Docker et restriction de l'exposition des services.
-- **Python :** Suppression du fichier `setup.py` devenu inutile.
-- **Frontend :** Suppression de l'ancien boilerplate frontend et reconstruction de l'application selon les conventions Drive. (aecdcaf, 46f0f68)
+- **CI/CD:** Refonte significative de l'infrastructure CI/CD pour une meilleure organisation et réutilisation des workflows.
+    - Extraction des étapes de qualité globales dans un workflow dédié.
+    - Extraction des vérifications du changelog dans un workflow dédié.
+    - Utilisation de workflows spécialisés et réutilisables.
+    - Amélioration de la détection des commits de type `fixup!` et `squash!`.
+    - Synchronisation avec Crowdin intégrée à l'installation des dépendances.
+    - Limitation du nombre de jobs concurrents pour les pull requests.
+    - Exécution des workflows basée sur les modifications du code.
+    - Passage explicite des secrets pour une meilleure sécurité.
+- **Qualité du code:** Intégration de Ruff avec les règles Pyflakes et Pyupgrade pour améliorer la qualité et la cohérence du code Python.
+- **Docker:** Simplification de la gestion des versions dans les images Docker en utilisant `ARG`. Restriction de l'exposition des services dans le fichier `compose`. Utilisation de la même version d'uv pour la construction des images.
 
 ### Autres changements
-- Configuration améliorée de l'action `setup-python` pour Crowdin (923f370).
-- Autorisation d'URL plus longues dans le corps des commits git (18c2518).
-- Synchronisation avec Crowdin intégrée à l'installation des dépendances (2e404aa).
-- Groupement des workflows pull request pour une meilleure gestion de la concurrence (619f916).
-- Extraction des vérifications du changelog dans un workflow dédié (900cd9a).
+- Autorisation d'URL longues dans le corps des commits gitlint.
