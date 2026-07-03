@@ -129,6 +129,7 @@
 │   │   │   │                   │   │   │   ├── CanDeleteMissionResponse.kt
 │   │   │   │                   │   │   │   ├── MissionEntity.kt
 │   │   │   │                   │   │   │   ├── MissionSourceEnum.kt
+│   │   │   │                   │   │   │   ├── MissionTagEntity.kt
 │   │   │   │                   │   │   │   ├── MissionTypeEnum.kt
 │   │   │   │                   │   │   │   ├── PatchableMissionEntity.kt
 │   │   │   │                   │   │   │   ├── envAction
@@ -225,6 +226,8 @@
 │   │   │   │                   │   │   ├── ILastPositionRepository.kt
 │   │   │   │                   │   │   ├── ILocalizedAreasRepository.kt
 │   │   │   │                   │   │   ├── IMissionRepository.kt
+│   │   │   │                   │   │   ├── IMissionTagMissionsRepository.kt
+│   │   │   │                   │   │   ├── IMissionTagsRepository.kt
 │   │   │   │                   │   │   ├── IMonitorFishMissionActionsRepository.kt
 │   │   │   │                   │   │   ├── INatinfRepository.kt
 │   │   │   │                   │   │   ├── IPostgisFunctionRepository.kt
@@ -306,6 +309,10 @@
 │   │   │   │                   │   │   │   └── GetPositions.kt
 │   │   │   │                   │   │   ├── localizedArea
 │   │   │   │                   │   │   │   └── GetAllLocalizedAreas.kt
+│   │   │   │                   │   │   ├── missionTag
+│   │   │   │                   │   │   │   ├── GetMissionTags.kt
+│   │   │   │                   │   │   │   ├── GetUnarchivedMissionTags.kt
+│   │   │   │                   │   │   │   └── SaveMissionTag.kt
 │   │   │   │                   │   │   ├── missions
 │   │   │   │                   │   │   │   ├── BypassActionCheckAndDeleteMission.kt
 │   │   │   │                   │   │   │   ├── CanDeleteMission.kt
@@ -323,6 +330,7 @@
 │   │   │   │                   │   │   │   ├── GetMissions.kt
 │   │   │   │                   │   │   │   ├── GetMissionsByIds.kt
 │   │   │   │                   │   │   │   ├── PatchMission.kt
+│   │   │   │                   │   │   │   ├── SaveMissionTagMission.kt
 │   │   │   │                   │   │   │   ├── dtos
 │   │   │   │                   │   │   │   │   ├── ControlUnitToMissionSources.kt
 │   │   │   │                   │   │   │   │   ├── MissionDetailsDTO.kt
@@ -421,8 +429,10 @@
 │   │   │   │                   │   │   │   │   │   │   └── ImageDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── missions
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateMissionDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   ├── CreaterOrUpdateMissionTagInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── MissionEnvActionControlInfractionDataInput.kt
-│   │   │   │                   │   │   │   │   │   │   └── MissionEnvActionControlPlanDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   ├── MissionEnvActionControlPlanDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   └── MissionTagInput.kt
 │   │   │   │                   │   │   │   │   │   ├── recentActivity
 │   │   │   │                   │   │   │   │   │   │   └── RecentControlsActivityDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── regulatoryArea
@@ -477,6 +487,7 @@
 │   │   │   │                   │   │   │   │       │   ├── MissionDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── MissionDetachedReportingDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── MissionEnvActionControlPlanDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── MissionTagDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── MissionsDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── positions
 │   │   │   │                   │   │   │   │       │   └── PositionOutput.kt
@@ -644,6 +655,8 @@
 │   │   │   │                   │   │   │   ├── MissionControlResourceModel.kt
 │   │   │   │                   │   │   │   ├── MissionControlUnitModel.kt
 │   │   │   │                   │   │   │   ├── MissionModel.kt
+│   │   │   │                   │   │   │   ├── MissionTagMissionModel.kt
+│   │   │   │                   │   │   │   ├── MissionTagModel.kt
 │   │   │   │                   │   │   │   ├── NaflModel.kt
 │   │   │   │                   │   │   │   ├── NatinfModel.kt
 │   │   │   │                   │   │   │   ├── RegulatoryAreaModel.kt
@@ -686,6 +699,7 @@
 │   │   │   │                   │   │       ├── JpaLastPositionRepository.kt
 │   │   │   │                   │   │       ├── JpaLocalizedAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaMissionRepository.kt
+│   │   │   │                   │   │       ├── JpaMissionTagsRepository.kt
 │   │   │   │                   │   │       ├── JpaNatinfRepository.kt
 │   │   │   │                   │   │       ├── JpaPostgisFunctionRepository.kt
 │   │   │   │                   │   │       ├── JpaRegulatoryAreaRepository.kt
@@ -721,6 +735,8 @@
 │   │   │   │                   │   │       │   ├── IDBMissionControlResourceRepository.kt
 │   │   │   │                   │   │       │   ├── IDBMissionControlUnitRepository.kt
 │   │   │   │                   │   │       │   ├── IDBMissionRepository.kt
+│   │   │   │                   │   │       │   ├── IDBMissionTagMissionsRepository.kt
+│   │   │   │                   │   │       │   ├── IDBMissionTagsRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNafRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNatinfRepository.kt
 │   │   │   │                   │   │       │   ├── IDBRegulatoryAreaRepository.kt
@@ -966,7 +982,9 @@
 │   │   │       │   │   │   ├── V0.219__add_columns_action_diving_incident.sql
 │   │   │       │   │   │   ├── V0.220__delete_old_regulatory_areas_table.sql
 │   │   │       │   │   │   ├── V0.221__add_tags.sql
-│   │   │       │   │   │   └── V0.222__delete_create_row_hash_function.sql
+│   │   │       │   │   │   ├── V0.222__delete_create_row_hash_function.sql
+│   │   │       │   │   │   ├── V0.224__create_table_mission_tags.sql
+│   │   │       │   │   │   └── V0.225__add_column_notable_operation.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1041,7 +1059,8 @@
 │   │   │       │       ├── V666.25__insert_vessels.sql
 │   │   │       │       ├── V666.26__insert_positions.sql
 │   │   │       │       ├── V666.27__insert_last_positions.sql
-│   │   │       │       └── V666.29__insert_themes_natinfs.sql
+│   │   │       │       ├── V666.29__insert_themes_natinfs.sql
+│   │   │       │       └── V666.30__insert_mission_tags.sql
 │   │   │       ├── log4j2-spring.xml
 │   │   │       └── template_export_brief.docx
 │   │   └── test
@@ -1122,6 +1141,11 @@
 │   │       │                   │   │   │   └── GetDepartmentAreasUTests.kt
 │   │       │                   │   │   ├── localizedArea
 │   │       │                   │   │   │   └── GetAllLocalizedAreasUTests.kt
+│   │       │                   │   │   ├── missionTag
+│   │       │                   │   │   │   ├── GetMissionTagsUTest.kt
+│   │       │                   │   │   │   ├── SaveMissionTagUTest.kt
+│   │       │                   │   │   │   └── fixtures
+│   │       │                   │   │   │       └── MissionTagFixture.kt
 │   │       │                   │   │   ├── missions
 │   │       │                   │   │   │   ├── BypassActionCheckAndDeleteMissionUTest.kt
 │   │       │                   │   │   │   ├── CanDeleteMissionUTests.kt
@@ -1139,6 +1163,7 @@
 │   │       │                   │   │   │   ├── GetMissionsByIdsUTest.kt
 │   │       │                   │   │   │   ├── GetMissionsUTest.kt
 │   │       │                   │   │   │   ├── PatchMissionUTest.kt
+│   │       │                   │   │   │   ├── SaveMissionTagMissionUTest.kt
 │   │       │                   │   │   │   ├── TestUtils.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── MissionFixture.kt
@@ -1286,6 +1311,7 @@
 │   │       │                       │       ├── JpaFacadeAreasRepositoryTests.kt
 │   │       │                       │       ├── JpaLastPositionRepositoryTest.kt
 │   │       │                       │       ├── JpaMissionRepositoryITests.kt
+│   │       │                       │       ├── JpaMissionTagsRepositoryITest.kt
 │   │       │                       │       ├── JpaNatinfRepositoryITests.kt
 │   │       │                       │       ├── JpaPostgisFunctionRepositoryITests.kt
 │   │       │                       │       ├── JpaRegulatoryAreaRepositoryITests.kt
@@ -1335,6 +1361,9 @@
 │   │   │   │   │   └── row_actions.spec.ts
 │   │   │   │   ├── control_unit_form.spec.ts
 │   │   │   │   ├── control_unit_table
+│   │   │   │   │   ├── filters.spec.ts
+│   │   │   │   │   └── row_actions.spec.ts
+│   │   │   │   ├── mission_tag_table
 │   │   │   │   │   ├── filters.spec.ts
 │   │   │   │   │   └── row_actions.spec.ts
 │   │   │   │   ├── regulatory_area
@@ -1784,6 +1813,7 @@
 │   │   │   ├── infractionsAPI.ts
 │   │   │   ├── legacyControlUnitsAPI.ts
 │   │   │   ├── localizedAreasAPI.ts
+│   │   │   ├── missionTagsAPI.ts
 │   │   │   ├── missionsAPI.ts
 │   │   │   ├── natinfsAPI.ts
 │   │   │   ├── nearbyUnitsAPI.ts
@@ -1885,6 +1915,7 @@
 │   │   │   │   ├── legacyControlUnit.ts
 │   │   │   │   ├── map
 │   │   │   │   │   └── constants.ts
+│   │   │   │   ├── missionTags.ts
 │   │   │   │   ├── missions.ts
 │   │   │   │   ├── natinfs.ts
 │   │   │   │   ├── reporting.ts
@@ -2341,6 +2372,7 @@
 │   │   │   │   │   │   ├── GeneralInformationsForm.tsx
 │   │   │   │   │   │   ├── MissionForm.tsx
 │   │   │   │   │   │   ├── MissionFormBottomBar.tsx
+│   │   │   │   │   │   ├── MissionTagsField.tsx
 │   │   │   │   │   │   ├── MissionZonePicker.tsx
 │   │   │   │   │   │   ├── Schemas
 │   │   │   │   │   │   │   ├── ActionDates.ts
@@ -2370,6 +2402,7 @@
 │   │   │   │   │   │   │   ├── ActionsCell.tsx
 │   │   │   │   │   │   │   ├── CompletionStatusCell.tsx
 │   │   │   │   │   │   │   ├── ControlsCell.tsx
+│   │   │   │   │   │   │   ├── MissionTagsCell.tsx
 │   │   │   │   │   │   │   ├── MissionTypeCell.tsx
 │   │   │   │   │   │   │   ├── NumberOfControlsCell.tsx
 │   │   │   │   │   │   │   ├── ResourcesCell.tsx
@@ -2405,6 +2438,8 @@
 │   │   │   │   │   │   ├── isMissionPartOfSelectedAdministrationNames.ts
 │   │   │   │   │   │   ├── isMissionPartOfSelectedCompletionStatus.tsx
 │   │   │   │   │   │   ├── isMissionPartOfSelectedControlUnitIds.ts
+│   │   │   │   │   │   ├── isMissionPartOfSelectedIsNoteworthy.tsx
+│   │   │   │   │   │   ├── isMissionPartOfSelectedMissionTags.ts
 │   │   │   │   │   │   ├── isMissionPartOfSelectedTags.ts
 │   │   │   │   │   │   ├── isMissionPartOfSelectedTheme.ts
 │   │   │   │   │   │   └── isMissionPartOfSelectedWithEnvActions.tsx
@@ -2412,6 +2447,21 @@
 │   │   │   │   │   └── switchTab.ts
 │   │   │   │   ├── utils.test.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── MissionTags
+│   │   │   │   └── components
+│   │   │   │       ├── Table
+│   │   │   │       │   ├── Cells
+│   │   │   │       │   │   ├── EditableSelectCell.tsx
+│   │   │   │       │   │   └── EditableTextCell.tsx
+│   │   │   │       │   ├── Columns
+│   │   │   │       │   │   └── constants.tsx
+│   │   │   │       │   ├── FilterBar.tsx
+│   │   │   │       │   ├── index.tsx
+│   │   │   │       │   ├── slice.ts
+│   │   │   │       │   ├── types.ts
+│   │   │   │       │   └── utils.tsx
+│   │   │   │       └── useCases
+│   │   │   │           └── saveMissionTag.ts
 │   │   │   ├── RecentActivity
 │   │   │   │   ├── components
 │   │   │   │   │   ├── Layers
@@ -3308,4 +3358,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-604 directories, 2706 files
+614 directories, 2746 files
