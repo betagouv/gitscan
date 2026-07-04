@@ -1,24 +1,22 @@
-# Synthèse d'activité : proconnect-gouv (du 16 mars 2026 au 22 juin 2026)
+# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 2 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, de la robustesse et de la fonctionnalité de ses différents services. Des progrès significatifs ont été réalisés sur [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec des améliorations de la gestion des ACR, de la limitation des tentatives de vérification par email et de la simplification de l'adhésion pour certaines organisations.  [hyyypertool](/repos/proconnect-gouv/hyyypertool) a bénéficié d'améliorations de sécurité et de nouvelles fonctionnalités pour la gestion des utilisateurs et des organisations. Plusieurs dépôts ont également reçu des mises à jour de dépendances pour maintenir la sécurité et la stabilité. L'initialisation de nouveaux projets comme [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) et [mx-resolver](/repos/proconnect-gouv/mx-resolver) pose les bases pour de futurs développements.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment autour de l'authentification et de la gestion des utilisateurs. Plusieurs dépôts ont bénéficié de mises à jour pour supporter de nouveaux standards (eIDAS) et améliorer l'expérience utilisateur. L'équipe a également investi dans la modernisation de l'infrastructure et des dépendances pour assurer la stabilité et la performance des applications. Les dépôts [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) ont été particulièrement actifs.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Restriction des accès en écriture à la base de données aux rôles autorisés.
-- [federation](/repos/proconnect-gouv/federation) : Suppression d'anciennes adresses IP et d'une exigence d'autorisation obsolète pour le scope `roles`.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Correction de vulnérabilités de dépendances.
+Plusieurs améliorations de sécurité ont été apportées :
+- Restriction de l'accès en écriture à la base de données aux administrateurs et modérateurs dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
 
 ## Autres changements notables
-- Migration de [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers un runtime Bun pour améliorer les performances.
-- Préparation de la base de données de [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) pour la compatibilité avec PostgreSQL 17.
-- Remplacement de `axios` par `fetch` dans [federation](/repos/proconnect-gouv/federation) pour améliorer les performances.
-- Suppression de PM2 des images de production de [federation](/repos/proconnect-gouv/federation) pour simplifier le déploiement.
+- Migration du runtime vers Bun dans [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) pour de meilleures performances.
+- Mise à jour du schéma de la base de données pour la compatibilité avec PostgreSQL 17 dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Suppression de PM2 des images de production pour simplifier le déploiement dans [federation](/repos/proconnect-gouv/federation).
+- Abaissement de la version de PostgreSQL à 16 pour alignement avec la production dans [federation](/repos/proconnect-gouv/federation).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la gestion des ACR, de la sécurité et de l'expérience utilisateur.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Ajout de fonctionnalités de sécurité, d'affichage d'informations et d'amélioration de l'interface utilisateur.
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de la recherche d'utilisateurs, de la gestion des collaborateurs et de la sécurité.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la gestion des utilisateurs, ajout de nouveaux niveaux d'ACR et correction de bugs.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation eIDAS et correction de bugs liés à l'authentification.
+- [federation](/repos/proconnect-gouv/federation) : Ajout de la gestion des collaborateurs et amélioration de l'interface d'administration.
 - [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
 - [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Correction de bugs d'authentification et migration vers Bun.

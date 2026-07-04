@@ -1,15 +1,14 @@
-# Synthèse d'activité : mte-dgpr (du 19/05 au 19/06/2026)
+# Synthèse d'activité : mte-dgpr (du 19/05 au 19/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'analyse et du traitement des arrêtés et des permis. Les améliorations apportées à [ocapi](/repos/mte-dgpr/ocapi) permettent une meilleure gestion des opérations et une intégration plus précise des données financières (coûts PIAG). Parallèlement, [arretify](/repos/mte-dgpr/arretify) a bénéficié d'améliorations significatives dans la détection des structures des arrêtés, comme les tableaux et les annexes, ce qui améliore la qualité de l'analyse du contenu. Ces évolutions contribuent à une meilleure automatisation et à une plus grande fiabilité des informations extraites.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la qualité et de la précision des outils de traitement des arrêtés et des permis. [ocapi](/repos/mte-dgpr/ocapi) a bénéficié d'optimisations de son modèle de langage et de corrections pour une meilleure gestion des opérations et des coûts. [arretify](/repos/mte-dgpr/arretify) a quant à lui vu des améliorations significatives dans la détection des éléments structuraux des arrêtés, notamment les tableaux et les prescriptions annexées, ce qui permettra une conversion plus précise en HTML et une meilleure extraction d'informations.
 
 ## Sécurité
 Aucun changement lié à la sécurité n'a été identifié durant cette période.
 
 ## Autres changements notables
-- [ocapi](/repos/mte-dgpr/ocapi) a bénéficié d'un changement de modèle de langage par défaut, visant à améliorer la performance et la précision de ses analyses.
-- Des optimisations et des corrections de bugs ont été apportées à [arretify](/repos/mte-dgpr/arretify) pour améliorer sa stabilité et sa fiabilité.
+[ocapi](/repos/mte-dgpr/ocapi) a changé de modèle de langage par défaut pour améliorer ses performances et sa précision. [arretify](/repos/mte-dgpr/arretify) a subi un refactoring pour une meilleure cohérence des identifiants et des améliorations de sa configuration CI.
 
 ## Dépôts les plus actifs
-- [ocapi](/repos/mte-dgpr/ocapi) : Amélioration de la gestion des opérations et intégration des coûts PIAG pour une génération de permis plus précise.
-- [arretify](/repos/mte-dgpr/arretify) : Amélioration significative de la détection des structures des arrêtés (tableaux, annexes) et des adverbes multiplicatifs pour une analyse plus fine du contenu.
+- [ocapi](/repos/mte-dgpr/ocapi) : Corrections et améliorations de la gestion des opérations, de la détection des arrêtés et intégration des coûts PIAG.
+- [arretify](/repos/mte-dgpr/arretify) : Amélioration significative de la détection des tableaux et des prescriptions annexées dans les arrêtés.

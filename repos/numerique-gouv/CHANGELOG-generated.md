@@ -1,21 +1,19 @@
-# Synthèse d'activité : numerique-gouv (du 2024-05-20 au 2024-06-20)
+# Synthèse d'activité : numerique-gouv (du 2024-05-12 au 2024-06-30)
 
 ## Résumé de l'activité
-L'organisation numerique-gouv a connu une période d'activité soutenue, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'internationalisation des plateformes [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), permettant une meilleure accessibilité pour un public plus large.  Des améliorations importantes ont également été apportées à la sécurité et à la robustesse de services comme [sites-conformes](/repos/numerique-gouv/sites-conformes) avec l'intégration de Sentry et l'ajout de stockage des médias en PostgreSQL.  Enfin, des mises à jour ont été déployées pour améliorer l'expérience utilisateur sur les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android), ainsi que pour optimiser les processus de développement et de déploiement.
+L'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs dans plusieurs de ses projets. On note des avancées significatives sur l'internationalisation de [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion de plusieurs langues et d'un sélecteur de langue.  Des améliorations ont également été apportées à la gestion des notifications avec [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et à l'affichage des bannières dans les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android). Enfin, des efforts ont été déployés pour simplifier le déploiement et améliorer la stabilité de certains services, comme [sites-conformes](/repos/numerique-gouv/sites-conformes) et [francetransfert](/repos/numerique-gouv/francetransfert).
 
 ## Sécurité
-- Intégration de Sentry pour la surveillance et la gestion des erreurs sur [sites-conformes](/repos/numerique-gouv/sites-conformes).
-- Mise à jour de l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles) pour bénéficier des dernières corrections de sécurité.
+- Correction d'une vulnérabilité potentielle en mettant à jour l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
 
 ## Autres changements notables
-- Implémentation de l'authentification via FranceConnect FI sur [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
-- Refactoring de la structure du projet [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios) pour une meilleure organisation.
-- Automatisation de la publication des releases GitHub sur [b3desk](/repos/numerique-gouv/b3desk).
-- Ajout de la possibilité de stocker les médias en PostgreSQL sur [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Automatisation du versionnement et de la publication sur PyPi pour [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Refactorisation de la structure du projet et adoption de la couleur d'accent par défaut du DSFR pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
 
 ## Dépôts les plus actifs
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Ajout d'un sélecteur de langue et internationalisation des champs de formulaire pour une meilleure gestion du contenu multilingue.
-- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Amélioration de la robustesse avec l'intégration de Sentry et ajout du stockage des médias en PostgreSQL.
-- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et des utilisateurs, avec la délégation de gestion et le mapping des informations utilisateur OIDC.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Intégration de FranceConnect FI et amélioration de l'affichage des notifications.
-- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Correction de l'affichage des formulaires DSFR et amélioration du processus de publication des releases.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Amélioration de l'internationalisation et simplification du déploiement.
+- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Amélioration du processus de publication et correction de bugs.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Amélioration de la gestion des notifications et des préférences de localisation.
+- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Correction de l'affichage des formulaires DSFR et amélioration du processus de release.
+- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et automatisation de la publication des releases.

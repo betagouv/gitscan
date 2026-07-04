@@ -1,28 +1,24 @@
-# Synthèse d'activité : tchapgouv (du 2024-06-07 au 2024-07-07)
+# Synthèse d'activité : tchapgouv (du 20 mai 2026 au 26 juin 2026)
 
 ## Résumé de l'activité
-Au cours des dernières semaines, l'organisation tchapgouv a concentré ses efforts sur l'amélioration de la sécurité, de la stabilité et de l'expérience utilisateur de ses différentes applications. Des fonctionnalités importantes ont été ajoutées, notamment l'activation des salles privées non chiffrées (avec alertes de partage de fichiers) sur les plateformes Android et iOS, ainsi que l'amélioration de l'authentification et de la gestion des comptes. Des corrections de bugs et des optimisations ont également été apportées à plusieurs dépôts, notamment `tchap-web-v4`, `synapse` et `matrix-authentication-service`, pour améliorer la performance et la fiabilité des services. L'ajout de la mise à jour automatique sur tchap-desktop est une amélioration significative pour les utilisateurs.
+L'activité récente de tchapgouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités pour les applications iOS, Android et web. Des efforts importants ont été déployés pour améliorer l'expérience utilisateur, notamment en simplifiant la création de salles privées chiffrées, en optimisant l'affichage des fichiers et en améliorant la gestion des invitations.  Des mises à jour significatives ont également été apportées à l'infrastructure serveur, notamment au niveau de l'authentification et de la gestion des accès, avec l'introduction de nouvelles fonctionnalités et la correction de vulnérabilités. Les dépôts [tchap-x-ios](/repos/tchapgouv/tchap-x-ios), [tchap-x-android](/repos/tchapgouv/tchap-x-android) et [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) ont été particulièrement actifs.
 
 ## Sécurité
-Plusieurs améliorations de sécurité ont été implémentées :
-
-*   Correction de vulnérabilités et mise à jour de dépendances critiques dans [tchap-desktop](/repos/tchapgouv/tchap-desktop) et [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
-*   Amélioration de la gestion des certificats Let's Encrypt dans [tchap-x-android](/repos/tchapgouv/tchap-x-android).
-*   Corrections de sécurité mineures sur la version desktop de [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
-*   Ajout d'un écran d'expiration de compte dans [tchap-x-android](/repos/tchapgouv/tchap-x-android) pour renforcer la sécurité.
+Plusieurs changements ont été apportés pour renforcer la sécurité :
+- Correction de vulnérabilités mineures sur la version desktop de [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
+- Mise à jour de dépendances critiques dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) (rustls-webpki, opa-wasm, wasmtime) pour corriger des vulnérabilités.
+- Suppression d'un token npm dans le workflow CI/CD de [element-call](/repos/tchapgouv/element-call) pour renforcer la sécurité.
 
 ## Autres changements notables
-*   **Synapse :** Amélioration de la gestion des règles d'accès aux salles et intégration de l'expiration des comptes avec MAS.
-*   **tchap-web-v4 :** Réactivation de la "liste rouge" et amélioration du flux d'invitations externes.
-*   **tchap-desktop :** Implémentation de la mise à jour automatique et activation de l'installation dans le contexte utilisateur.
-*   **matrix-authentication-service :** Amélioration de la gestion des erreurs du serveur d'identité et ajout de la possibilité d'envoyer des notifications à tous les utilisateurs via MAS.
-*   **matrix-admin-bot :** Ajout d'une commande `user` pour gérer les utilisateurs et correction de l'affichage du nom et de l'adresse email.
+- Intégration de nouvelles versions d'EC (Element Client) dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) pour bénéficier des dernières améliorations et corrections.
+- Refactorisation de l'authentification OIDC vers OAuth dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios).
+- Amélioration de la gestion des utilisateurs et des accès avec l'introduction de l'expiration des comptes et des règles d'accès aux salles dans [synapse](/repos/tchapgouv/synapse) et [synapse-room-access-rules](/repos/tchapgouv/synapse-room-access-rules).
+- Mise à jour des SDK Rust Matrix dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios), [tchap-x-android](/repos/tchapgouv/tchap-x-android) et [matrix-rust-components-kotlin](/repos/tchapgouv/matrix-rust-components-kotlin).
 
 ## Dépôts les plus actifs
-*   [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Ajout de fonctionnalités et corrections de bugs concernant les salles privées, l'expiration de compte et l'optimisation des images.
-*   [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Ajout de fonctionnalités et corrections de bugs concernant les salles privées, les notifications et la gestion des fichiers.
-*   [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Amélioration de l'expérience utilisateur et corrections de bugs liés aux invitations externes et à la configuration.
-*   [synapse](/repos/tchapgouv/synapse) : Amélioration de la gestion des accès et de l'expiration des comptes.
-*   [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de la gestion des utilisateurs et des notifications.
-*   [tchap-desktop](/repos/tchapgouv/tchap-desktop) : Ajout de la mise à jour automatique et amélioration de l'installation.
-*   [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright) : Ajout de tests d'intégration et refactoring du code.
+- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités et corrections de bugs.
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Ajout de badges pour les salles privées chiffrées et amélioration de l'affichage des fichiers.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Améliorations de la sécurité, corrections de bugs et intégration de la dernière version d'EC.
+- [synapse](/repos/tchapgouv/synapse) : Amélioration de la gestion des accès aux salles et de l'expiration des comptes.
+- [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright) : Ajout et amélioration des tests d'intégration et d'authentification.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de la gestion des utilisateurs et correction de vulnérabilités.
