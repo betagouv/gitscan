@@ -238,6 +238,7 @@
     │   │   └── value_objects
     │   │       ├── __init__.py
     │   │       ├── credentials.py
+    │   │       ├── talentsoft_credential.py
     │   │       ├── webhook_event.py
     │   │       └── webhook_type.py
     │   ├── infrastructure
@@ -329,6 +330,8 @@
     │   │       ├── test_async_http_client.py
     │   │       ├── test_batch_archive_offers_use_case.py
     │   │       ├── test_clean_raw_offer_use_case.py
+    │   │       ├── test_config.py
+    │   │       ├── test_container.py
     │   │       ├── test_credentials_store.py
     │   │       ├── test_import_offers_use_case.py
     │   │       ├── test_ingest_offer_pipeline.py
@@ -478,7 +481,8 @@
         │       ├── __init__.py
         │       └── usecases
         │           ├── get_organisme_recruteur.py
-        │           └── initialize_organisme_steps.py
+        │           ├── initialize_organisme_steps.py
+        │           └── update_organisme_steps.py
         ├── bin
         │   ├── backup-db-to-scaleway.sh
         │   ├── postdeploy.sh
@@ -1254,6 +1258,9 @@
         │       ├── 403.html
         │       ├── 404.html
         │       ├── 500.html
+        │       ├── admin
+        │       │   └── commons
+        │       │       └── stat_snapshot_list.html
         │       ├── api
         │       │   └── redoc.html
         │       ├── ats
@@ -1526,4 +1533,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-317 directories, 1211 files
+319 directories, 1216 files
