@@ -280,8 +280,6 @@
 │   │   │   │   │   │   │   │       │   ├── tdb-pa-fiches-action-count.modal.tsx
 │   │   │   │   │   │   │   │       │   └── tdb-pa-fiches-action-count.module.tsx
 │   │   │   │   │   │   │   │       ├── _hooks
-│   │   │   │   │   │   │   │       │   ├── use-delete-module.ts
-│   │   │   │   │   │   │   │       │   ├── use-fetch-modules.ts
 │   │   │   │   │   │   │   │       │   └── use-upsert-module.ts
 │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── referentiel
@@ -441,7 +439,8 @@
 │   │   │   │   │   │   │   │   │   ├── _hooks
 │   │   │   │   │   │   │   │   │   │   ├── use-tdb-perso-fetch-metrics.ts
 │   │   │   │   │   │   │   │   │   │   ├── use-tdb-perso-fetch-modules.ts
-│   │   │   │   │   │   │   │   │   │   └── use-tdb-perso-fetch-single.ts
+│   │   │   │   │   │   │   │   │   │   ├── use-tdb-perso-fetch-single.ts
+│   │   │   │   │   │   │   │   │   │   └── use-tdb-perso-upsert-module.ts
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   └── synthetique
 │   │   │   │   │   │   │   │       ├── _components
@@ -941,6 +940,78 @@
 │   │   │   │   │   ├── trajectoire-colors.ts
 │   │   │   │   │   └── trajectoire-constants.ts
 │   │   │   │   └── valeurs
+│   │   │   │       ├── grid
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── grid-fixtures.ts
+│   │   │   │       │   │   ├── grid-model.spec.ts
+│   │   │   │       │   │   ├── indicateur-values-grid.stories.tsx
+│   │   │   │       │   │   ├── open-data-cell.spec.tsx
+│   │   │   │       │   │   ├── parse-cell-key.spec.ts
+│   │   │   │       │   │   ├── parse-cell-number.spec.ts
+│   │   │   │       │   │   ├── render-smoke.spec.tsx
+│   │   │   │       │   │   ├── reorderable.spec.tsx
+│   │   │   │       │   │   └── user-data-cell.spec.tsx
+│   │   │   │       │   ├── cell-input.tsx
+│   │   │   │       │   ├── cell-props.ts
+│   │   │   │       │   ├── choices-snapshot.spec.ts
+│   │   │   │       │   ├── choices-snapshot.ts
+│   │   │   │       │   ├── drag-reorder
+│   │   │   │       │   │   ├── drag-handle.tsx
+│   │   │   │       │   │   ├── draggable-header-label.tsx
+│   │   │   │       │   │   ├── sortable-grid-row.tsx
+│   │   │   │       │   │   ├── sortable-group-body.tsx
+│   │   │   │       │   │   ├── use-grid-drag-handlers.ts
+│   │   │   │       │   │   ├── use-grid-reorder.spec.ts
+│   │   │   │       │   │   └── use-grid-reorder.ts
+│   │   │   │       │   ├── grid-body.tsx
+│   │   │   │       │   ├── grid-context.tsx
+│   │   │   │       │   ├── grid-frame.tsx
+│   │   │   │       │   ├── grid-head.tsx
+│   │   │   │       │   ├── grid-model.ts
+│   │   │   │       │   ├── group-header-cell.tsx
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── indicateur-values-grid.tsx
+│   │   │   │       │   ├── keyboard-navigation
+│   │   │   │       │   │   ├── grid-navigation.spec.ts
+│   │   │   │       │   │   ├── grid-navigation.ts
+│   │   │   │       │   │   ├── keyboard-nav.spec.tsx
+│   │   │   │       │   │   └── use-grid-keyboard-nav.ts
+│   │   │   │       │   ├── open-data-cell.tsx
+│   │   │   │       │   ├── open-data-picker
+│   │   │   │       │   │   ├── build-column-selection.spec.ts
+│   │   │   │       │   │   ├── build-column-selection.ts
+│   │   │   │       │   │   ├── build-open-data-handlers.spec.ts
+│   │   │   │       │   │   ├── build-open-data-handlers.ts
+│   │   │   │       │   │   ├── coverage-dot.spec.tsx
+│   │   │   │       │   │   ├── coverage-dot.tsx
+│   │   │   │       │   │   ├── open-data-picker.spec.tsx
+│   │   │   │       │   │   ├── open-data-picker.stories.tsx
+│   │   │   │       │   │   ├── open-data-picker.tsx
+│   │   │   │       │   │   └── open-data-selector.tsx
+│   │   │   │       │   ├── parse-cell-number.ts
+│   │   │   │       │   ├── paste
+│   │   │   │       │   │   ├── grid-paste.spec.tsx
+│   │   │   │       │   │   ├── paste-values.spec.ts
+│   │   │   │       │   │   ├── paste-values.ts
+│   │   │   │       │   │   └── use-grid-copy-paste.ts
+│   │   │   │       │   ├── reference-year
+│   │   │   │       │   │   ├── reference-year-editor.spec.tsx
+│   │   │   │       │   │   └── reference-year-editor.tsx
+│   │   │   │       │   ├── row-header.tsx
+│   │   │   │       │   ├── save-ack.tsx
+│   │   │   │       │   ├── source-badge.tsx
+│   │   │   │       │   ├── types.ts
+│   │   │   │       │   ├── unit.tsx
+│   │   │   │       │   ├── use-cell-edit.spec.ts
+│   │   │   │       │   ├── use-cell-edit.ts
+│   │   │   │       │   ├── use-choices-snapshot.ts
+│   │   │   │       │   ├── use-get-table.tsx
+│   │   │   │       │   ├── user-data-cell.tsx
+│   │   │   │       │   ├── variation
+│   │   │   │       │   │   ├── variation-hint.tsx
+│   │   │   │       │   │   ├── variation.spec.ts
+│   │   │   │       │   │   └── variation.ts
+│   │   │   │       │   └── year-column-header.tsx
 │   │   │   │       ├── use-list-indicateur-valeurs.ts
 │   │   │   │       └── use-upsert-indicateur-valeur.ts
 │   │   │   ├── labels
@@ -1788,6 +1859,9 @@
 │   │   │   │   │   │   └── module.tsx
 │   │   │   │   │   └── module.page.tsx
 │   │   │   │   ├── plans-action
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── use-delete-module.ts
+│   │   │   │   │   │   └── use-fetch-modules.ts
 │   │   │   │   │   ├── fiches-action
 │   │   │   │   │   │   └── fiches-action.module.tsx
 │   │   │   │   │   ├── fiches-action-count-by
@@ -2372,13 +2446,6 @@
 │   │   │   │   │       ├── imports-commune.table.ts
 │   │   │   │   │       ├── imports-departement.table.ts
 │   │   │   │   │       └── imports-region.table.ts
-│   │   │   │   ├── tableau-de-bord
-│   │   │   │   │   ├── get-tableau-de-bord-module.request.ts
-│   │   │   │   │   ├── tableau-de-bord-collectivite.router.e2e-spec.ts
-│   │   │   │   │   ├── tableau-de-bord-collectivite.router.ts
-│   │   │   │   │   ├── tableau-de-bord-collectivite.service.ts
-│   │   │   │   │   ├── tableau-de-bord-module.table.ts
-│   │   │   │   │   └── tableau-de-bord.module.ts
 │   │   │   │   └── tags
 │   │   │   │       ├── categorie-tag.fixture.ts
 │   │   │   │       ├── categorie-tag.table.ts
@@ -2455,6 +2522,8 @@
 │   │   │   │   │   └── indicateur-definitions.repository.ts
 │   │   │   │   ├── indicateurs
 │   │   │   │   │   ├── export-indicateurs
+│   │   │   │   │   │   ├── export-indicateurs.builder.spec.ts
+│   │   │   │   │   │   ├── export-indicateurs.builder.ts
 │   │   │   │   │   │   ├── export-indicateurs.controller.e2e-spec.ts
 │   │   │   │   │   │   ├── export-indicateurs.controller.ts
 │   │   │   │   │   │   ├── export-indicateurs.request.ts
@@ -2566,12 +2635,22 @@
 │   │   │   │       └── valeurs.constants.ts
 │   │   │   ├── main.ts
 │   │   │   ├── metrics
-│   │   │   │   ├── collectivite-metrics.response.ts
+│   │   │   │   ├── collectivites
+│   │   │   │   │   ├── collectivite-metrics.output.ts
+│   │   │   │   │   ├── collectivites-metrics.router.e2e-spec.ts
+│   │   │   │   │   ├── collectivites-metrics.router.ts
+│   │   │   │   │   ├── collectivites-metrics.service.ts
+│   │   │   │   │   ├── collectivites-modules.service.ts
+│   │   │   │   │   └── get-module.request.ts
 │   │   │   │   ├── metrics.module.ts
-│   │   │   │   ├── metrics.router.spec.ts
+│   │   │   │   ├── metrics.router.e2e-spec.ts
 │   │   │   │   ├── metrics.router.ts
-│   │   │   │   ├── metrics.service.ts
-│   │   │   │   └── personal-metrics.response.ts
+│   │   │   │   ├── module.table.ts
+│   │   │   │   └── users
+│   │   │   │       ├── personal-metrics.output.ts
+│   │   │   │       ├── users-metrics.router.ts
+│   │   │   │       ├── users-metrics.service.ts
+│   │   │   │       └── users-modules.service.ts
 │   │   │   ├── plans
 │   │   │   │   ├── axes
 │   │   │   │   │   ├── axe.module.ts
@@ -3392,8 +3471,6 @@
 │   │   │   │       ├── sous-thematique.table.ts
 │   │   │   │       ├── thematique.service.ts
 │   │   │   │       └── thematique.table.ts
-│   │   │   ├── types
-│   │   │   │   └── pdf-parse-debugging-disabled.d.ts
 │   │   │   ├── users
 │   │   │   │   ├── apikeys
 │   │   │   │   │   ├── apikeys.controller.e2e-spec.ts
@@ -4475,6 +4552,7 @@
 │   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── bucket_rls_super_admin_write.sql
+│   │   │   │   ├── bucket_rls_visiteur_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -4804,6 +4882,7 @@
 │   │   │   │   ├── add_adaptation_niveau.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── add_thematique_sgpe.sql
 │   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
@@ -5016,6 +5095,7 @@
 │   │   │   │   ├── bucket_rls_ademe_read.sql
 │   │   │   │   ├── bucket_rls_strict_read.sql
 │   │   │   │   ├── bucket_rls_super_admin_write.sql
+│   │   │   │   ├── bucket_rls_visiteur_read.sql
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5346,6 +5426,7 @@
 │   │   │   │   ├── add_adaptation_niveau.sql
 │   │   │   │   ├── add_audit_etoiles.sql
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
+│   │   │   │   ├── add_thematique_sgpe.sql
 │   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
 │   │   │   │   ├── business_update.sql
@@ -5559,6 +5640,7 @@
 │   │       │   ├── bucket_rls_ademe_read.sql
 │   │       │   ├── bucket_rls_strict_read.sql
 │   │       │   ├── bucket_rls_super_admin_write.sql
+│   │       │   ├── bucket_rls_visiteur_read.sql
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
 │   │       │   ├── collectivite@v2.8.0.sql
@@ -5887,6 +5969,7 @@
 │   │       │   ├── add_adaptation_niveau.sql
 │   │       │   ├── add_audit_etoiles.sql
 │   │       │   ├── add_demande_associated_collectivite_id.sql
+│   │       │   ├── add_thematique_sgpe.sql
 │   │       │   ├── audit_preuves_archive.sql
 │   │       │   ├── banatic_2025.sql
 │   │       │   ├── business_update.sql
@@ -6189,6 +6272,9 @@
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── indicateurs
+│   │   │   ├── export-indicateurs
+│   │   │   │   ├── export-indicateurs.pom.ts
+│   │   │   │   └── export-indicateurs.spec.ts
 │   │   │   ├── indicateur-detail
 │   │   │   │   ├── indicateur-detail.pom.ts
 │   │   │   │   └── indicateur-detail.spec.ts
@@ -6327,17 +6413,6 @@
 │   │   │   │   ├── panierAPI.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── plan-actions
-│   │   │   │   ├── dashboards
-│   │   │   │   │   └── personal-dashboard
-│   │   │   │   │       ├── actions
-│   │   │   │   │       │   ├── module.fetch.ts
-│   │   │   │   │       │   ├── modules.fetch.test.ts
-│   │   │   │   │       │   ├── modules.fetch.ts
-│   │   │   │   │       │   ├── modules.save.test.ts
-│   │   │   │   │       │   ├── modules.save.ts
-│   │   │   │   │       │   └── modules.test-fixture.ts
-│   │   │   │   │       └── domain
-│   │   │   │   │           └── module.schema.ts
 │   │   │   │   ├── fiche-resumes.list
 │   │   │   │   │   └── data-access
 │   │   │   │   │       └── fiche-action.save.ts
@@ -6453,14 +6528,6 @@
 │   │   │   │   ├── personne-tag.schema.ts
 │   │   │   │   ├── service-tag.schema.ts
 │   │   │   │   ├── structure-tag.schema.ts
-│   │   │   │   ├── tableau-de-bord
-│   │   │   │   │   ├── collectivite-default-module-keys.enum.schema.ts
-│   │   │   │   │   ├── collectivite-module-type.enum.schema.ts
-│   │   │   │   │   ├── collectivite-module.schema.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── module-fiche-action-count-by.schema.ts
-│   │   │   │   │   ├── module-plan-action-list.schema.ts
-│   │   │   │   │   └── tableau-de-bord-module.schema.ts
 │   │   │   │   └── tag.base.schema.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── definitions
@@ -6493,7 +6560,14 @@
 │   │   │   │   │   └── values.constants.ts
 │   │   │   │   └── verification-trajectoire-status.ts
 │   │   │   ├── metrics
-│   │   │   │   └── index.ts
+│   │   │   │   ├── collectivite-default-module-keys.enum.schema.ts
+│   │   │   │   ├── collectivite-module-type.enum.schema.ts
+│   │   │   │   ├── collectivite-module.schema.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── module-fiche-action-count-by.schema.ts
+│   │   │   │   ├── module-plan-action-list.schema.ts
+│   │   │   │   ├── personnel-module.schema.ts
+│   │   │   │   └── tableau-de-bord-module.schema.ts
 │   │   │   ├── plans
 │   │   │   │   ├── count-by-property-options.enum.ts
 │   │   │   │   ├── fiches
@@ -6545,6 +6619,7 @@
 │   │   │   │   │   │   └── is-action-statut-detaille.rules.ts
 │   │   │   │   │   ├── action-statut-avancement.enum.schema.ts
 │   │   │   │   │   ├── action-statut.schema.ts
+│   │   │   │   │   ├── action-thematique-sgpe.enum.ts
 │   │   │   │   │   ├── action-type.enum.ts
 │   │   │   │   │   └── list-actions.input.ts
 │   │   │   │   ├── historique
@@ -7394,4 +7469,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1279 directories, 6360 files
+1284 directories, 6430 files
