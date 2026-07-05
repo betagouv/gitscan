@@ -1,20 +1,21 @@
-## Changelog : infra (30 derniers jours, au 30 juin 2026)
+## Changelog : infra (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Ce changelog fait état d'une période de migrations de serveurs et de réorganisation de l'infrastructure. Les serveurs de production et de recette ont été migrés, et les habilitations d'accès ont été mises à jour. Des améliorations ont également été apportées à la configuration Ansible pour une meilleure gestion des tâches.
+Ce mois-ci, l'infrastructure a subi une vague de migrations de serveurs vers de nouvelles instances. Plusieurs accès ont été révoqués et un nouveau produit, Sentry, a été intégré pour le monitoring des erreurs. Des ajustements ont été faits aux workflows Ansible pour améliorer la gestion des accès et la configuration des serveurs.
 
 ### Évolutions fonctionnelles
-- Correction de la variable `PRODUCT_OPENPGP_KEY` dans le playbook `all-servers-unban-ip.yml` pour assurer le bon fonctionnement du déblocage d'adresses IP. [#222](https://github.com/mission-apprentissage/infra/issues/222)
-- Correction de la configuration SOPS pour le playbook `all-servers-unban-ip.yml` afin de garantir la sécurité des secrets.
+- Ajout du produit Sentry pour le monitoring des erreurs et l'alerte. [#198](https://github.com/mission-apprentissage/infra/issues/198)
+- Prise en charge du serveur Sentry dans les pipelines de déploiement.
+- Mise à jour de la clé OpenPGP utilisée pour le workflow `all-servers-unban-ip.yml`. [#222](https://github.com/mission-apprentissage/infra/issues/222)
 
 ### Évolutions techniques
-- Migration des serveurs `api-production`, `lba-production`, `tdb-production` et `bal-production`.
-- Migration des serveurs `lba-preview`, `tdb-recette`, `lba-recette`, `bal-recette` et `api-recette`.
-- Suppression des sous-modules `authorizations` et `inventories` pour simplifier la structure du dépôt.
-- Réorganisation des tâches Ansible pour une meilleure organisation et maintenabilité.
-- Ajout du tag `always` aux tâches Ansible globales pour garantir leur exécution dans tous les contextes.
-- Mise à jour des habilitations du projet `tdb`.
+- Migrations des serveurs : api-production, lba-production, tdb-production, bal-production, lba-preview, tdb-recette, lba-recette, bal-recette.
+- Suppression des sous-modules `authorizations` et `inventories`.
+- Suppression du produit `sandbox`.
+- Réversion d'une modification temporaire concernant le profil TLSClient de Certbot.
+- Suppression des accès de Rémy aux projets mongodb, lba, api et bal.
 
 ### Autres changements
-- Suppression de Rémy des habilitations des projets `mongodb`, `lba`, `api` et `bal`.
-- Remplacement d'une ancienne adresse IP.
+- Correction des conditions pour Sentry dans le workflow `install-app.yml`.
+- Amélioration de la gestion des secrets avec SOPS pour le workflow `all-servers-unban-ip.yml`.
+- Migration du serveur monitoring-production.
