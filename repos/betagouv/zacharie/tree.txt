@@ -72,6 +72,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260623100352_drop_svi_assigned_to_fei_at
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260703121730_deprecated_fei_fields
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -82,18 +84,14 @@
 │   │   ├── fill-ccg-db.ts
 │   │   ├── import-official-cfei.ts
 │   │   ├── populate-test-db.ts
-│   │   ├── seed-trichine-labos.ts
-│   │   └── seed-villette
-│   │       ├── cleanup-villettes-preprod.ts
-│   │       ├── seed-villettes-actors.ts
-│   │       ├── seed-villettes-helpers.ts
-│   │       └── seed-villettes-preprod.ts
+│   │   └── seed-trichine-labos.ts
 │   ├── src
 │   │   ├── __tests__
 │   │   │   ├── carcasse-side-effects.test.ts
 │   │   │   ├── cronjob-feis.test.ts
 │   │   │   ├── entite-partenaires.test.ts
 │   │   │   ├── entite-working-for.test.ts
+│   │   │   ├── fei-side-effects.test.ts
 │   │   │   ├── permissions-carcasse-ownership.test.ts
 │   │   │   ├── soft-delete-cascade-e2e.test.ts
 │   │   │   ├── sort-entities-by-type-and-id.test.ts
@@ -683,6 +681,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260623100352_drop_svi_assigned_to_fei_at
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260703121730_deprecated_fei_fields
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -871,7 +871,6 @@
 │   │   │   │   ├── user.$userId.tsx
 │   │   │   │   └── users.tsx
 │   │   │   ├── chasseur
-│   │   │   │   ├── chasseur-current-owner-confirm.tsx
 │   │   │   │   ├── chasseur-deactivated.tsx
 │   │   │   │   ├── chasseur-demande-de-modification-detail.tsx
 │   │   │   │   ├── chasseur-demandes-de-modification.tsx
@@ -1073,9 +1072,7 @@
 │   │   │   ├── export-carcasses.ts
 │   │   │   ├── export-transmissions.ts
 │   │   │   ├── filter-carcasse.ts
-│   │   │   ├── gert-fei-key-dates.tsx
-│   │   │   ├── get-*.ts  (16 files)
-│   │   │   ├── get-ongoing-cell.tsx
+│   │   │   ├── get-*.ts  (19 files)
 │   │   │   ├── get-previous-detenteur-from-transmission.tsx
 │   │   │   ├── is-carcasse-done.test.ts
 │   │   │   ├── is-carcasse-done.ts
@@ -1087,6 +1084,7 @@
 │   │   │   ├── merge-fetched-items.ts
 │   │   │   ├── modif-requests.ts
 │   │   │   ├── quiz-shuffle.ts
+│   │   │   ├── search-local.test.ts
 │   │   │   ├── search-local.ts
 │   │   │   ├── sort.ts
 │   │   │   ├── standalone.ts
@@ -1121,7 +1119,6 @@
 ├── doc
 │   ├── Instruction 2021-555_final.pdf
 │   ├── automatic reload.md
-│   ├── e2e-tests-status.md
 │   ├── emails.md
 │   ├── from_fei_to_carcasse.md
 │   ├── project_overview
@@ -1150,7 +1147,8 @@
 │   │   │   ├── 113-chain-avec-collecteur.spec.ts
 │   │   │   ├── 114-chain-dispatch-hybride.spec.ts
 │   │   │   ├── 115-chain-refus-total-etg.spec.ts
-│   │   │   └── 116-chain-refus-partiel-svi.spec.ts
+│   │   │   ├── 116-chain-refus-partiel-svi.spec.ts
+│   │   │   └── 133-chain-300-carcasses-offline.spec.ts
 │   │   ├── circuit-court
 │   │   │   ├── 89-reception-directe-pd.spec.ts
 │   │   │   ├── 91-liste-triable.spec.ts
@@ -1307,7 +1305,8 @@
 │       ├── connect-with.ts
 │       ├── logout-and-connect.ts
 │       ├── network-throttling.ts
-│       └── react-select.ts
+│       ├── react-select.ts
+│       └── test.ts
 ├── expo
 │   ├── .gitignore
 │   ├── .npmrc
@@ -1375,4 +1374,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-326 directories, 1066 files
+327 directories, 1067 files
