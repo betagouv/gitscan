@@ -1,0 +1,864 @@
+.
+├── .dockerignore
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── back_mrm
+│   ├── README.md
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── context_processors.py
+│   ├── data
+│   │   ├── operateurs.json
+│   │   ├── operateurs.yml
+│   │   ├── sql
+│   │   │   └── init_qos_regions.sql
+│   │   └── srid.json
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       └── __init__.py
+│   ├── metropole
+│   │   └── metropole.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── data_date_description.py
+│   │   ├── data_source_list.py
+│   │   ├── departements.py
+│   │   ├── forms
+│   │   │   └── data_date_description.py
+│   │   ├── log.py
+│   │   ├── operateurs.py
+│   │   ├── parameters_link.py
+│   │   ├── regions.py
+│   │   ├── sites.py
+│   │   ├── supports.py
+│   │   └── users.py
+│   ├── process
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── couvertures.py
+│   │   └── sites.py
+│   ├── scripts
+│   │   ├── __init__.py
+│   │   ├── anfr.py
+│   │   ├── couverture.py
+│   │   ├── couverture_stats_commune.py
+│   │   ├── couverture_stats_departement.py
+│   │   ├── couverture_stats_nbope.py
+│   │   ├── couverture_stats_region.py
+│   │   ├── couverture_stats_territoire.py
+│   │   ├── couverture_theorique.py
+│   │   ├── delete_table.py
+│   │   ├── emetteur.py
+│   │   ├── emetteur_link.py
+│   │   ├── import_script.py
+│   │   ├── import_site.py
+│   │   ├── insert_csv.py
+│   │   ├── qos.py
+│   │   ├── qos_csv.py
+│   │   ├── site.py
+│   │   ├── stats_couv.py
+│   │   ├── support_antenne_emetteur.py
+│   │   ├── tests_process.py
+│   │   ├── update_couvertures.py
+│   │   └── yaml_to_json.py
+│   ├── serializers
+│   │   ├── __init__.py
+│   │   ├── departements.py
+│   │   ├── operateurs.py
+│   │   ├── parameters.py
+│   │   ├── regions.py
+│   │   └── supports.py
+│   ├── stat
+│   │   ├── antenne_operateur.py
+│   │   ├── couv_operateur.py
+│   │   ├── couverture.py
+│   │   ├── nbope.py
+│   │   ├── qos.py
+│   │   ├── qosmodule
+│   │   │   └── qosbyoperator.py
+│   │   ├── signalement.py
+│   │   ├── signalementmodule
+│   │   │   └── detail.py
+│   │   ├── territoire_train.py
+│   │   ├── test.py
+│   │   ├── zac_operateur.py
+│   │   └── zone.py
+│   ├── static
+│   │   ├── base.js
+│   │   ├── couverture.js
+│   │   ├── css
+│   │   │   ├── bootstrap-icons.min.css
+│   │   │   ├── fonts
+│   │   │   │   ├── bootstrap-icons.woff
+│   │   │   │   ├── bootstrap-icons.woff2
+│   │   │   │   ├── fa-brands-400.ttf
+│   │   │   │   ├── fa-regular-400.ttf
+│   │   │   │   ├── fa-solid-900.ttf
+│   │   │   │   └── fa-v4compatibility.ttf
+│   │   │   ├── jquery.dataTables.min.css
+│   │   │   └── style.css
+│   │   ├── docs
+│   │   │   ├── DU-backend.docx
+│   │   │   └── Documentation_qos.xlsx
+│   │   ├── images
+│   │   │   └── arcep.png
+│   │   ├── info.js
+│   │   ├── js
+│   │   │   ├── bootstrap.bundle.min.js
+│   │   │   ├── dataTable.js
+│   │   │   ├── editable-select.js
+│   │   │   ├── jquery-ui.js
+│   │   │   └── jquery.js
+│   │   ├── qos.js
+│   │   ├── signalements.js
+│   │   ├── site.js
+│   │   ├── utils.js
+│   │   └── zac.js
+│   ├── templates
+│   │   ├── 404.html
+│   │   ├── admin
+│   │   │   ├── base.html
+│   │   │   └── base_site.html
+│   │   ├── base.html
+│   │   ├── couvertures.html
+│   │   ├── home.html
+│   │   ├── login.html
+│   │   ├── qos.html
+│   │   ├── signalements.html
+│   │   ├── sites.html
+│   │   ├── success.html
+│   │   ├── template_mail
+│   │   │   ├── mail_error.html
+│   │   │   ├── mail_table.html
+│   │   │   ├── mail_vide.html
+│   │   │   └── signalement
+│   │   │       ├── error.html
+│   │   │       └── mail.html
+│   │   ├── upload.html
+│   │   └── zac.html
+│   ├── tests
+│   │   └── __init__.py
+│   ├── urls.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── cmdprocess.py
+│   │   ├── data.py
+│   │   ├── datapusher.py
+│   │   ├── db.py
+│   │   ├── file_analysis.py
+│   │   ├── folderfilter.py
+│   │   ├── formatDateTime.py
+│   │   ├── params.py
+│   │   ├── pusher
+│   │   │   ├── csv.py
+│   │   │   └── gpkg.py
+│   │   ├── querybuilder.py
+│   │   ├── send_mail.py
+│   │   ├── text.py
+│   │   └── writter
+│   │       └── csv.py
+│   └── views
+│       ├── __init__.py
+│       ├── csrf.py
+│       ├── dataqostype.py
+│       ├── delete_file.py
+│       ├── delete_file_db.py
+│       ├── delete_source_desc.py
+│       ├── delete_table.py
+│       ├── getCrowdFromSource.py
+│       ├── get_files_sabes.py
+│       ├── import_couvertures.py
+│       ├── import_engine.py
+│       ├── import_file_db.py
+│       ├── import_file_qos.py
+│       ├── import_qos.py
+│       ├── import_signalements.py
+│       ├── import_sites.py
+│       ├── import_zac.py
+│       ├── is_file_generated.py
+│       ├── login.py
+│       ├── logout.py
+│       ├── operateurs.py
+│       ├── parameterslink.py
+│       ├── process.py
+│       ├── redirect.py
+│       ├── testmail.py
+│       ├── update_after_import.py
+│       ├── upload.py
+│       └── upload_file.py
+├── cron_signalement.py
+├── cron_update_site.py
+├── docs
+│   ├── SECURITY.md
+│   ├── antenna.png
+│   ├── coverage.png
+│   ├── en
+│   │   └── README.en.md
+│   ├── es
+│   │   └── README.es.md
+│   ├── qos.png
+│   ├── signalements.png
+│   ├── stack.png
+│   └── zac.png
+├── front_mrm
+│   ├── .env
+│   ├── .env.sample
+│   ├── .eslintrc.json
+│   ├── .nvmrc
+│   ├── .prettierrc.json
+│   ├── .sample.env
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── collections
+│   │   ├── Get communes.bru
+│   │   ├── Get departement.bru
+│   │   ├── Get departements.bru
+│   │   ├── Get operateurs.bru
+│   │   ├── Get region.bru
+│   │   ├── Get regions.bru
+│   │   ├── bruno.json
+│   │   └── environments
+│   │       └── dev.bru
+│   ├── next.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   ├── .htaccess
+│   │   ├── assets
+│   │   │   ├── antennes.png
+│   │   │   ├── antennes.webp
+│   │   │   ├── couverture-theorique.png
+│   │   │   ├── departements
+│   │   │   │   ├── 0*.svg  (9 files)
+│   │   │   │   ├── 1*.svg  (10 files)
+│   │   │   │   ├── 2*.svg  (9 files)
+│   │   │   │   ├── 2A.svg
+│   │   │   │   ├── 2B.svg
+│   │   │   │   ├── 3*.svg  (10 files)
+│   │   │   │   ├── 4*.svg  (10 files)
+│   │   │   │   ├── 5*.svg  (10 files)
+│   │   │   │   ├── 6*.svg  (10 files)
+│   │   │   │   ├── 7*.svg  (10 files)
+│   │   │   │   ├── 8*.svg  (10 files)
+│   │   │   │   ├── 9*.svg  (13 files)
+│   │   │   │   └── metropole.svg
+│   │   │   ├── icons
+│   │   │   │   ├── Frame 391.png
+│   │   │   │   ├── InZone.png
+│   │   │   │   ├── InZoneLoad.png
+│   │   │   │   ├── Site-Number-Region.png
+│   │   │   │   ├── Site-Number-Region.svg
+│   │   │   │   ├── a_venir
+│   │   │   │   │   ├── antenne_a_venir-light.png
+│   │   │   │   │   ├── antenne_a_venir.png
+│   │   │   │   │   ├── antenne_a_venir___.png
+│   │   │   │   │   ├── cluster_all_step_1.png
+│   │   │   │   │   ├── cluster_all_step_2.png
+│   │   │   │   │   ├── cluster_all_step_3.png
+│   │   │   │   │   ├── cluster_all_step_4.png
+│   │   │   │   │   ├── cluster_all_step_5.png
+│   │   │   │   │   ├── cluster_all_step_6.png
+│   │   │   │   │   ├── cluster_step_1.png
+│   │   │   │   │   ├── cluster_step_2.png
+│   │   │   │   │   ├── cluster_step_3.png
+│   │   │   │   │   ├── cluster_step_4.png
+│   │   │   │   │   ├── cluster_step_5.png
+│   │   │   │   │   └── cluster_step_6.png
+│   │   │   │   ├── aller_plus_loin.png
+│   │   │   │   ├── antenna-active.png
+│   │   │   │   ├── antenne_*.png  (17 files)
+│   │   │   │   ├── antenne_en_maintenance.svg
+│   │   │   │   ├── arrow.png
+│   │   │   │   ├── arrow_back.png
+│   │   │   │   ├── beam.png
+│   │   │   │   ├── buildings.png
+│   │   │   │   ├── check.png
+│   │   │   │   ├── cluster.png
+│   │   │   │   ├── cluster_*.png  (12 files)
+│   │   │   │   ├── copy_icon.svg
+│   │   │   │   ├── echec.png
+│   │   │   │   ├── icon_right.svg
+│   │   │   │   ├── measure-a.png
+│   │   │   │   ├── measure-b.png
+│   │   │   │   ├── poi-arrete-icon.png
+│   │   │   │   ├── poi-arrete.png
+│   │   │   │   ├── poi_out_zone.png
+│   │   │   │   ├── poi_selected.png
+│   │   │   │   ├── quadruple-fleches.png
+│   │   │   │   ├── quality_active.png
+│   │   │   │   ├── question_mark.png
+│   │   │   │   ├── settings_input_antenna.png
+│   │   │   │   ├── site.png
+│   │   │   │   ├── stack.png
+│   │   │   │   ├── success.png
+│   │   │   │   └── success_partiel.png
+│   │   │   ├── images
+│   │   │   │   ├── basemap_clair.png
+│   │   │   │   ├── basemap_classique.png
+│   │   │   │   ├── basemap_satellite.png
+│   │   │   │   └── basemap_sombre.png
+│   │   │   ├── pwa.png
+│   │   │   ├── qos.webp
+│   │   │   ├── qualite-reseau.png
+│   │   │   ├── signalement.webp
+│   │   │   ├── splashscreen.png
+│   │   │   └── zac.webp
+│   │   ├── js
+│   │   │   └── matomo.js
+│   │   ├── manifest.json
+│   │   ├── maplibre-gl-measures.js
+│   │   ├── next.svg
+│   │   ├── operator.json
+│   │   └── vercel.svg
+│   ├── server.js
+│   ├── sonar-project.properties
+│   ├── src
+│   │   ├── app
+│   │   │   ├── components
+│   │   │   │   ├── DataFilter.tsx
+│   │   │   │   ├── ImageDepartement.tsx
+│   │   │   │   ├── action.tsx
+│   │   │   │   ├── activeRadio.tsx
+│   │   │   │   ├── alert.tsx
+│   │   │   │   ├── antenne
+│   │   │   │   │   ├── deploiement.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── links.tsx
+│   │   │   │   │   ├── operatorsAndAll.tsx
+│   │   │   │   │   ├── statistiques.tsx
+│   │   │   │   │   ├── switchButtonService.tsx
+│   │   │   │   │   └── technologies.tsx
+│   │   │   │   ├── arrowButton.tsx
+│   │   │   │   ├── badge.tsx
+│   │   │   │   ├── breadcrumbs.tsx
+│   │   │   │   ├── button.tsx
+│   │   │   │   ├── buttonGroup.tsx
+│   │   │   │   ├── buttonServices.tsx
+│   │   │   │   ├── buttonTerritoireSelected.tsx
+│   │   │   │   ├── copyLabel.tsx
+│   │   │   │   ├── couverture
+│   │   │   │   │   ├── action.tsx
+│   │   │   │   │   ├── arrowButton.tsx
+│   │   │   │   │   ├── buttonServices.tsx
+│   │   │   │   │   ├── dataLinks.tsx
+│   │   │   │   │   ├── modalStat.tsx
+│   │   │   │   │   ├── operators.tsx
+│   │   │   │   │   ├── superposer.tsx
+│   │   │   │   │   └── technologies.tsx
+│   │   │   │   ├── credit.tsx
+│   │   │   │   ├── dataLinks.tsx
+│   │   │   │   ├── dropDownBlock.tsx
+│   │   │   │   ├── footer.tsx
+│   │   │   │   ├── footerMenu.tsx
+│   │   │   │   ├── geometricShape.tsx
+│   │   │   │   ├── headerPanel.tsx
+│   │   │   │   ├── help.tsx
+│   │   │   │   ├── home
+│   │   │   │   │   ├── donnees.tsx
+│   │   │   │   │   ├── downloadPwa.tsx
+│   │   │   │   │   ├── searchTerritory.tsx
+│   │   │   │   │   ├── testQualite.tsx
+│   │   │   │   │   ├── themes.tsx
+│   │   │   │   │   └── themesBurger.tsx
+│   │   │   │   ├── iconcmp.tsx
+│   │   │   │   ├── info.tsx
+│   │   │   │   ├── iosPWAPopup.tsx
+│   │   │   │   ├── language.tsx
+│   │   │   │   ├── legend.tsx
+│   │   │   │   ├── linkTransport.tsx
+│   │   │   │   ├── loading.tsx
+│   │   │   │   ├── map
+│   │   │   │   │   ├── advanceFilter.tsx
+│   │   │   │   │   ├── basemapControl.tsx
+│   │   │   │   │   ├── controler
+│   │   │   │   │   │   └── measure.ts
+│   │   │   │   │   ├── drawMap
+│   │   │   │   │   │   ├── antenne
+│   │   │   │   │   │   │   ├── draw.ts
+│   │   │   │   │   │   │   └── sitecoming.ts
+│   │   │   │   │   │   ├── antenne.tsx
+│   │   │   │   │   │   ├── couverture.tsx
+│   │   │   │   │   │   ├── hexa.tsx
+│   │   │   │   │   │   ├── qualitytest
+│   │   │   │   │   │   │   ├── filterOperator.tsx
+│   │   │   │   │   │   │   ├── filterProtocole.tsx
+│   │   │   │   │   │   │   ├── filterSituation.tsx
+│   │   │   │   │   │   │   └── filterZone.tsx
+│   │   │   │   │   │   ├── qualitytest.tsx
+│   │   │   │   │   │   ├── searchterritory.tsx
+│   │   │   │   │   │   ├── signalement.tsx
+│   │   │   │   │   │   ├── site.tsx
+│   │   │   │   │   │   ├── territory
+│   │   │   │   │   │   │   └── couverture.ts
+│   │   │   │   │   │   ├── transport.ts
+│   │   │   │   │   │   ├── utils.tsx
+│   │   │   │   │   │   ├── zone
+│   │   │   │   │   │   │   └── drawselection.tsx
+│   │   │   │   │   │   └── zone.tsx
+│   │   │   │   │   ├── drawMap.tsx
+│   │   │   │   │   ├── events.ts
+│   │   │   │   │   ├── filter.tsx
+│   │   │   │   │   ├── infoPoint.tsx
+│   │   │   │   │   ├── legend.tsx
+│   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   ├── reset.tsx
+│   │   │   │   │   ├── superposer.tsx
+│   │   │   │   │   └── tools.tsx
+│   │   │   │   ├── map.tsx
+│   │   │   │   ├── menu
+│   │   │   │   │   ├── News.tsx
+│   │   │   │   │   └── moreUtils.tsx
+│   │   │   │   ├── modalBubbleText.tsx
+│   │   │   │   ├── modalStat.tsx
+│   │   │   │   ├── moreInfo.tsx
+│   │   │   │   ├── multiprogressbar.tsx
+│   │   │   │   ├── navigation
+│   │   │   │   │   ├── antennes.tsx
+│   │   │   │   │   ├── couverture.tsx
+│   │   │   │   │   ├── qos.tsx
+│   │   │   │   │   ├── signalement.tsx
+│   │   │   │   │   ├── utils.ts
+│   │   │   │   │   └── zone.tsx
+│   │   │   │   ├── navigation-events.tsx
+│   │   │   │   ├── navigation.tsx
+│   │   │   │   ├── netWorkLevelGrid.tsx
+│   │   │   │   ├── networkLevel.tsx
+│   │   │   │   ├── networkLevelLegend.tsx
+│   │   │   │   ├── operatorsAndAll.tsx
+│   │   │   │   ├── pages
+│   │   │   │   │   ├── BreadcrumbsPage.tsx
+│   │   │   │   │   ├── antennes.tsx
+│   │   │   │   │   ├── couverture.tsx
+│   │   │   │   │   ├── home.tsx
+│   │   │   │   │   ├── homeMenu.tsx
+│   │   │   │   │   ├── signalements.tsx
+│   │   │   │   │   ├── subPages
+│   │   │   │   │   │   ├── antennes
+│   │   │   │   │   │   │   ├── site.tsx
+│   │   │   │   │   │   │   └── support.tsx
+│   │   │   │   │   │   └── qualitytest
+│   │   │   │   │   │       └── emplacement_test.tsx
+│   │   │   │   │   ├── territoires.tsx
+│   │   │   │   │   ├── test.tsx
+│   │   │   │   │   └── zones.tsx
+│   │   │   │   ├── panel.tsx
+│   │   │   │   ├── progressbar.tsx
+│   │   │   │   ├── search.tsx
+│   │   │   │   ├── searchBar.tsx
+│   │   │   │   ├── searchResult.tsx
+│   │   │   │   ├── signalement
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── info.tsx
+│   │   │   │   │   ├── links.tsx
+│   │   │   │   │   ├── operatorsAndAll.tsx
+│   │   │   │   │   └── statistiques.tsx
+│   │   │   │   ├── superposition
+│   │   │   │   │   ├── basemap.tsx
+│   │   │   │   │   ├── basemapitem.tsx
+│   │   │   │   │   ├── credits.tsx
+│   │   │   │   │   ├── help.tsx
+│   │   │   │   │   ├── mode.tsx
+│   │   │   │   │   ├── theme
+│   │   │   │   │   │   ├── action.ts
+│   │   │   │   │   │   ├── filter.ts
+│   │   │   │   │   │   └── map.ts
+│   │   │   │   │   ├── theme.tsx
+│   │   │   │   │   ├── themeitem.tsx
+│   │   │   │   │   └── utils.ts
+│   │   │   │   ├── superposition.tsx
+│   │   │   │   ├── support
+│   │   │   │   │   ├── breadCrumbs.tsx
+│   │   │   │   │   ├── buttonOperators.tsx
+│   │   │   │   │   ├── cardAntenne.tsx
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   └── dataSupport.json
+│   │   │   │   │   ├── infoAntennes.tsx
+│   │   │   │   │   ├── infoSite.tsx
+│   │   │   │   │   ├── infoSupport.tsx
+│   │   │   │   │   ├── links.tsx
+│   │   │   │   │   ├── listOperators.tsx
+│   │   │   │   │   ├── operators.tsx
+│   │   │   │   │   └── siteIndisponible.tsx
+│   │   │   │   ├── switcher.tsx
+│   │   │   │   ├── symbole.tsx
+│   │   │   │   ├── territoire
+│   │   │   │   │   ├── antenneTerritoire.tsx
+│   │   │   │   │   ├── couverture.tsx
+│   │   │   │   │   ├── couverture_elements
+│   │   │   │   │   │   └── buttonServices.tsx
+│   │   │   │   │   ├── more.tsx
+│   │   │   │   │   ├── more_elements
+│   │   │   │   │   │   ├── dataLinks.tsx
+│   │   │   │   │   │   └── dataLinksMyConnexion.tsx
+│   │   │   │   │   ├── qualityTest.tsx
+│   │   │   │   │   ├── route_elements
+│   │   │   │   │   │   ├── button_services.tsx
+│   │   │   │   │   │   ├── operators.tsx
+│   │   │   │   │   │   ├── routes.tsx
+│   │   │   │   │   │   └── statistiques.tsx
+│   │   │   │   │   ├── signalementTerritoire.tsx
+│   │   │   │   │   ├── train_elements
+│   │   │   │   │   │   ├── button_services.tsx
+│   │   │   │   │   │   ├── operators.tsx
+│   │   │   │   │   │   ├── statistiques.tsx
+│   │   │   │   │   │   ├── type_axes.tsx
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── transportRoute.tsx
+│   │   │   │   │   ├── transportTrain.tsx
+│   │   │   │   │   └── zoneTerritoire.tsx
+│   │   │   │   ├── territory.tsx
+│   │   │   │   ├── testQualite
+│   │   │   │   │   ├── arrowButton.tsx
+│   │   │   │   │   ├── buttonServices.tsx
+│   │   │   │   │   ├── density.tsx
+│   │   │   │   │   ├── emplacement_test
+│   │   │   │   │   │   ├── details.tsx
+│   │   │   │   │   │   ├── infoEmplacementTest.tsx
+│   │   │   │   │   │   ├── operator.tsx
+│   │   │   │   │   │   └── resume.tsx
+│   │   │   │   │   ├── filter
+│   │   │   │   │   │   ├── location.tsx
+│   │   │   │   │   │   └── zone.tsx
+│   │   │   │   │   ├── filtreTests.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── operatorsAndAll.tsx
+│   │   │   │   │   ├── progressBar.tsx
+│   │   │   │   │   └── typeTests.tsx
+│   │   │   │   ├── thematiqueBar.tsx
+│   │   │   │   ├── title.tsx
+│   │   │   │   ├── titlePage.tsx
+│   │   │   │   ├── toggle.tsx
+│   │   │   │   ├── tools
+│   │   │   │   │   ├── altimetric
+│   │   │   │   │   │   └── draw.ts
+│   │   │   │   │   ├── dataLinksTools.tsx
+│   │   │   │   │   ├── print
+│   │   │   │   │   │   └── map-generator.ts
+│   │   │   │   │   ├── tools.tsx
+│   │   │   │   │   ├── toolsAltimetric.tsx
+│   │   │   │   │   └── toolsDistance.tsx
+│   │   │   │   ├── tools.tsx
+│   │   │   │   ├── translations.tsx
+│   │   │   │   ├── useViewPort.tsx
+│   │   │   │   └── zone
+│   │   │   │       ├── axeSwitcher.tsx
+│   │   │   │       ├── breadCrumbs.tsx
+│   │   │   │       ├── dispositifCC.tsx
+│   │   │   │       ├── linksZone.tsx
+│   │   │   │       ├── operator.tsx
+│   │   │   │       ├── operatorsAndAll.tsx
+│   │   │   │       ├── statistiquesZone.tsx
+│   │   │   │       ├── utils.ts
+│   │   │   │       ├── zoneInfo.tsx
+│   │   │   │       └── zones.tsx
+│   │   │   ├── constant
+│   │   │   │   ├── antennes.ts
+│   │   │   │   ├── constant.tsx
+│   │   │   │   ├── couverture.ts
+│   │   │   │   ├── icon_departements.tsx
+│   │   │   │   ├── qos.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── superposition.ts
+│   │   │   │   └── train.tsx
+│   │   │   ├── doc
+│   │   │   │   ├── action
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── activeRadio
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── arrowButton
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── badge
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── breadcrumbs
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── dataLinks
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── dropDownBlock
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── geometricShape
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── groupButton
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── help
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── info
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── modalStat
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── multiprogressbar
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── networkLevel
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── operatorsAndAll
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── progressbar
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── switcher
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── symbole
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── title
+│   │   │   │       └── page.tsx
+│   │   │   ├── favicon.ico
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── themes
+│   │   │       ├── default.css
+│   │   │       ├── deuteranomalie.css
+│   │   │       ├── monochrome.css
+│   │   │       └── protanomalie.css
+│   │   ├── assets
+│   │   │   ├── franceReseau.svg
+│   │   │   ├── home.svg
+│   │   │   ├── iconRight.svg
+│   │   │   ├── icons
+│   │   │   │   ├── Cross.svg
+│   │   │   │   ├── CrossMenu.svg
+│   │   │   │   ├── Current-location.svg
+│   │   │   │   ├── DCCHome.svg
+│   │   │   │   ├── Icon_couverture_help.png
+│   │   │   │   ├── Icon_couverture_help.svg
+│   │   │   │   ├── InZone.svg
+│   │   │   │   ├── InZoneLegend.svg
+│   │   │   │   ├── InZoneLoad.svg
+│   │   │   │   ├── OutZone.svg
+│   │   │   │   ├── POI-inZone-icon.svg
+│   │   │   │   ├── POI-inZone.svg
+│   │   │   │   ├── POI-outZone.svg
+│   │   │   │   ├── Rf.svg
+│   │   │   │   ├── accessibility.svg
+│   │   │   │   ├── accessibility_switcher.svg
+│   │   │   │   ├── all_train.svg
+│   │   │   │   ├── antenna-active.png
+│   │   │   │   ├── arcep.png
+│   │   │   │   ├── arcepFooter.png
+│   │   │   │   ├── arrow_back.svg
+│   │   │   │   ├── arrow_forward.svg
+│   │   │   │   ├── axePrioritaires.svg
+│   │   │   │   ├── axePrioritaires_legend.svg
+│   │   │   │   ├── bgpb.svg
+│   │   │   │   ├── buildings.png
+│   │   │   │   ├── car.svg
+│   │   │   │   ├── caret_down.svg
+│   │   │   │   ├── caret_left.svg
+│   │   │   │   ├── check.svg
+│   │   │   │   ├── checkIcon.svg
+│   │   │   │   ├── close.svg
+│   │   │   │   ├── commune.svg
+│   │   │   │   ├── contact_group.svg
+│   │   │   │   ├── copyIcon.svg
+│   │   │   │   ├── coverLevels.svg
+│   │   │   │   ├── currentLocation.svg
+│   │   │   │   ├── data_filter_active.svg
+│   │   │   │   ├── data_filter_inactive.svg
+│   │   │   │   ├── departement.svg
+│   │   │   │   ├── departements
+│   │   │   │   │   ├── 0*.svg  (9 files)
+│   │   │   │   │   ├── 1*.svg  (10 files)
+│   │   │   │   │   ├── 2*.svg  (9 files)
+│   │   │   │   │   ├── 2A.svg
+│   │   │   │   │   ├── 2B.svg
+│   │   │   │   │   ├── 3*.svg  (10 files)
+│   │   │   │   │   ├── 4*.svg  (10 files)
+│   │   │   │   │   ├── 5*.svg  (10 files)
+│   │   │   │   │   ├── 6*.svg  (10 files)
+│   │   │   │   │   ├── 7*.svg  (10 files)
+│   │   │   │   │   ├── 8*.svg  (10 files)
+│   │   │   │   │   ├── 9*.svg  (13 files)
+│   │   │   │   │   └── metropole.svg
+│   │   │   │   ├── drag_drop.svg
+│   │   │   │   ├── ellipse.svg
+│   │   │   │   ├── facebook.svg
+│   │   │   │   ├── fail.svg
+│   │   │   │   ├── french.svg
+│   │   │   │   ├── fullNetLevelSquare.svg
+│   │   │   │   ├── fullNetLevelTriangle.svg
+│   │   │   │   ├── fullNetLevelTriangleForLegend.svg
+│   │   │   │   ├── group.svg
+│   │   │   │   ├── guadeloupe-old.svg
+│   │   │   │   ├── guadeloupe.svg
+│   │   │   │   ├── guyane.svg
+│   │   │   │   ├── guyaneRegion.svg
+│   │   │   │   ├── head_icon.svg
+│   │   │   │   ├── help_active.svg
+│   │   │   │   ├── help_drag_drop.svg
+│   │   │   │   ├── help_filter.svg
+│   │   │   │   ├── help_juxtaposer.svg
+│   │   │   │   ├── hexagone.svg
+│   │   │   │   ├── home.svg
+│   │   │   │   ├── iconCheck.svg
+│   │   │   │   ├── iconDown.svg
+│   │   │   │   ├── iconHelp.svg
+│   │   │   │   ├── iconInfo.svg
+│   │   │   │   ├── iconLeft.svg
+│   │   │   │   ├── iconLink.svg
+│   │   │   │   ├── iconMap.svg
+│   │   │   │   ├── iconRight.svg
+│   │   │   │   ├── iconTerritoire.svg
+│   │   │   │   ├── iconX.svg
+│   │   │   │   ├── icon_alert_help.png
+│   │   │   │   ├── icon_*.svg  (5 files)
+│   │   │   │   ├── icon_support_help.png
+│   │   │   │   ├── icon_test_qualite_help.png
+│   │   │   │   ├── icon_zone_help.png
+│   │   │   │   ├── intermediaire.png
+│   │   │   │   ├── leftArrow.svg
+│   │   │   │   ├── linkedin.svg
+│   │   │   │   ├── loading-circle.gif
+│   │   │   │   ├── marker.svg
+│   │   │   │   ├── martinique.svg
+│   │   │   │   ├── mastodon.svg
+│   │   │   │   ├── mayotte.svg
+│   │   │   │   ├── menu.svg
+│   │   │   │   ├── metropoleRegion.svg
+│   │   │   │   ├── metros.svg
+│   │   │   │   ├── middleNetLevelSquare.svg
+│   │   │   │   ├── middleNetLevelTriangle.svg
+│   │   │   │   ├── middleNetLevelTriangleForLegend.svg
+│   │   │   │   ├── minNetLevelSquare.svg
+│   │   │   │   ├── minNetLevelTriangle.svg
+│   │   │   │   ├── minNetLevelTriangleForLegend.svg
+│   │   │   │   ├── moreVert.svg
+│   │   │   │   ├── moutain.svg
+│   │   │   │   ├── multi_squares.png
+│   │   │   │   ├── noneNetLevelSquare.svg
+│   │   │   │   ├── noneNetLevelTriangle.svg
+│   │   │   │   ├── noneNetLevelTriangleForLegend.svg
+│   │   │   │   ├── partialSuccess.svg
+│   │   │   │   ├── poi.svg
+│   │   │   │   ├── poi_out_zone.svg
+│   │   │   │   ├── poi_out_zone_legend.svg
+│   │   │   │   ├── poi_selected.png
+│   │   │   │   ├── prioritaire5G.svg
+│   │   │   │   ├── prioritaire5G_legend.svg
+│   │   │   │   ├── qoscheck.svg
+│   │   │   │   ├── quit.svg
+│   │   │   │   ├── region.svg
+│   │   │   │   ├── rer.svg
+│   │   │   │   ├── reunion.svg
+│   │   │   │   ├── reunionRegion.svg
+│   │   │   │   ├── rf_color.svg
+│   │   │   │   ├── rightArrow.svg
+│   │   │   │   ├── ruler.svg
+│   │   │   │   ├── rurale.png
+│   │   │   │   ├── saint_bart.svg
+│   │   │   │   ├── saint_mart.svg
+│   │   │   │   ├── search.svg
+│   │   │   │   ├── settings_input_antenna.svg
+│   │   │   │   ├── signal.svg
+│   │   │   │   ├── site_maintenance.svg
+│   │   │   │   ├── site_to_build.svg
+│   │   │   │   ├── stack.svg
+│   │   │   │   ├── subtract.png
+│   │   │   │   ├── success.svg
+│   │   │   │   ├── tgv.svg
+│   │   │   │   ├── touristique.png
+│   │   │   │   ├── train.svg
+│   │   │   │   ├── twitter.svg
+│   │   │   │   ├── united_kingdom.svg
+│   │   │   │   ├── wayToCover.svg
+│   │   │   │   ├── wayToCover_legend.svg
+│   │   │   │   └── x-lg.svg
+│   │   │   ├── interrogation.svg
+│   │   │   ├── logoArcep.png
+│   │   │   ├── logoHdMRM.svg
+│   │   │   ├── logoMRM.svg
+│   │   │   ├── logoMRMNew.png
+│   │   │   ├── logo_footer.png
+│   │   │   ├── pwa.png
+│   │   │   ├── pwa.svg
+│   │   │   ├── splashscreen.png
+│   │   │   └── splashscreen.svg
+│   │   ├── service
+│   │   │   ├── alert.ts
+│   │   │   ├── altimetrie.tsx
+│   │   │   ├── antennes.ts
+│   │   │   ├── color_theme.tsx
+│   │   │   ├── crowd.tsx
+│   │   │   ├── csrf.ts
+│   │   │   ├── density.ts
+│   │   │   ├── emplacementTest.ts
+│   │   │   ├── geolocalisation.ts
+│   │   │   ├── operators.tsx
+│   │   │   ├── qos.ts
+│   │   │   ├── search.tsx
+│   │   │   ├── statsCouvOperateur.ts
+│   │   │   ├── statsNbope.ts
+│   │   │   ├── supports.tsx
+│   │   │   ├── territoire_train.ts
+│   │   │   ├── territory.tsx
+│   │   │   ├── useFormatPathname.tsx
+│   │   │   ├── window.ts
+│   │   │   └── zac.ts
+│   │   ├── store
+│   │   │   ├── antenne.ts
+│   │   │   ├── ariane.tsx
+│   │   │   ├── couverture.ts
+│   │   │   ├── crowd.tsx
+│   │   │   ├── filter.tsx
+│   │   │   ├── legend.tsx
+│   │   │   ├── map.tsx
+│   │   │   ├── navigation.ts
+│   │   │   ├── news.ts
+│   │   │   ├── operators.tsx
+│   │   │   ├── print.ts
+│   │   │   ├── pwa.ts
+│   │   │   ├── qos.ts
+│   │   │   ├── qualityTest.tsx
+│   │   │   ├── route.ts
+│   │   │   ├── search.ts
+│   │   │   ├── selectedCoordStore.tsx
+│   │   │   ├── serviceCouvTerritory.ts
+│   │   │   ├── signalement.ts
+│   │   │   ├── stat.tsx
+│   │   │   ├── store.tsx
+│   │   │   ├── superposition.ts
+│   │   │   ├── support.ts
+│   │   │   ├── themes.ts
+│   │   │   ├── togglePanel.ts
+│   │   │   ├── toolAttribute.tsx
+│   │   │   ├── tools.tsx
+│   │   │   ├── train.ts
+│   │   │   ├── translation.tsx
+│   │   │   ├── utils
+│   │   │   │   ├── antenne.ts
+│   │   │   │   ├── couverture.ts
+│   │   │   │   ├── qos.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── signalements.ts
+│   │   │   │   ├── valueUrl.ts
+│   │   │   │   └── zone.ts
+│   │   │   ├── utils.ts
+│   │   │   └── zone.tsx
+│   │   ├── translations
+│   │   │   ├── en.json
+│   │   │   └── fr.json
+│   │   └── utils
+│   │       ├── activeEntite.tsx
+│   │       ├── adjustColor.ts
+│   │       ├── currentInsee.tsx
+│   │       ├── mapGlobalParameters.tsx
+│   │       ├── titleTerritoire.ts
+│   │       ├── useIsFirstMount.tsx
+│   │       └── utils.tsx
+│   ├── svgo.config.mjs
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+├── pyproject.toml
+├── requirements-dev.in
+├── requirements-dev.txt
+├── requirements.in
+├── requirements.txt
+├── skeleton-db-mrm.sql
+├── sonar-project.properties
+└── static
+    └── css
+        └── style.css
+111 directories, 965 files
