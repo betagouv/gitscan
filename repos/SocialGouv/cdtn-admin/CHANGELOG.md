@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.77.2](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.1...v2.77.2) (2026-07-03)
+
+### Bug Fixes
+
+- **dares:** exclut les accords et statuts des alertes de suppression ([#1696](https://github.com/SocialGouv/cdtn-admin/issues/1696)) ([95c388b](https://github.com/SocialGouv/cdtn-admin/commit/95c388b64ee83162db941ad02ee3043f3b34d939))
+
+## [2.77.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.0...v2.77.1) (2026-07-02)
+
+### Bug Fixes
+
+- **dares:** correction du parsing du document des idccs ([#1694](https://github.com/SocialGouv/cdtn-admin/issues/1694)) ([c892cf1](https://github.com/SocialGouv/cdtn-admin/commit/c892cf15b6c67d7f1013483ef46d78f64dbc8831))
+- **data:** mise en place du package Python pour l'analyse des statistiques ([#1690](https://github.com/SocialGouv/cdtn-admin/issues/1690)) ([42671e6](https://github.com/SocialGouv/cdtn-admin/commit/42671e62e793d82449f5e9cc21d3bc039af0d866))
+
 # [2.77.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.76.0...v2.77.0) (2026-06-22)
 
 ### Features

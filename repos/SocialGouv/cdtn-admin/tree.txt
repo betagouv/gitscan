@@ -236,12 +236,14 @@
     │   ├── src
     │   │   ├── dares
     │   │   │   ├── __mocks__
+    │   │   │   │   ├── Dares_Suivi_Historique_convention_collective_Juin2026.xlsx
     │   │   │   │   ├── getAgreementsData.ts
     │   │   │   │   ├── getDaresData.ts
     │   │   │   │   └── page_dares.html
     │   │   │   ├── __tests__
     │   │   │   │   ├── difference.test.ts
     │   │   │   │   ├── getDaresData.test.ts
+    │   │   │   │   ├── parseDaresWorksheets.test.ts
     │   │   │   │   └── scrapping.test.ts
     │   │   │   ├── config.ts
     │   │   │   ├── difference.ts
@@ -250,6 +252,7 @@
     │   │   │   ├── getAgreementsData.ts
     │   │   │   ├── getDaresData.ts
     │   │   │   ├── index.ts
+    │   │   │   ├── parseDaresWorksheets.ts
     │   │   │   ├── save.ts
     │   │   │   ├── scrapping.ts
     │   │   │   └── types.ts
@@ -2111,7 +2114,13 @@
     │           ├── 1778198400000_create_schema_reference_value
     │           │   ├── down.sql
     │           │   └── up.sql
-    │           └── 1778198401000_create_table_reference_value_smic_values
+    │           ├── 1778198401000_create_table_reference_value_smic_values
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1782950400000_clean_dares_alerts_todo
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           └── 1783069572156_clean_dares_alerts_accords_statuts
     │               ├── down.sql
     │               └── up.sql
     └── ingester
@@ -2181,4 +2190,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-577 directories, 1646 files
+579 directories, 1653 files
