@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+- 🚀 (front) fix frontend build failure
+
+## [1.22.0] - 2026-07-03
+
 ### Added
 
 - ✨(frontend) cap and paginate tiles in picture-in-picture #1383
@@ -23,10 +27,13 @@ and this project adheres to
 - ✨(summary) generalized stt api call #1420
 - ♻️(env) refactor env variables handling
 - 🚸(frontend) use "Advanced" instead of "Premium" in the sidepanel
+- ♿️(frontend) make fullscreen share warning keyboard accessible #1459
+- ⬆️(summary) update docker alpine to 3.24 & ffmpeg to 8.1.2 #1471
 
 ### Fixed
 
 - 🛂(backend) reject user access tokens on the API
+- 🩹(helm) fix Helm ingress rendering when passing multiple hosts
 
 ## [1.21.0] - 2026-06-15
 

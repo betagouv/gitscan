@@ -1,46 +1,41 @@
-## Changelog : meet (30 derniers jours, au 2026-07-02)
+## Changelog : meet (30 derniers jours, au 2026-07-03)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'ajout d'outils d'analyse pour mieux comprendre l'utilisation de la plateforme, l'amélioration de la gestion des fichiers et des corrections de bugs pour une expérience utilisateur plus fluide. Des améliorations de l'accessibilité et des mises à jour de sécurité ont également été apportées. L'addon Outlook a été amélioré avec de nouvelles fonctionnalités.
+Les dernières mises à jour de Meet se concentrent sur l'amélioration de la stabilité, de la sécurité et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant la gestion des fichiers S3 et l'intégration avec des outils tiers comme Outlook. De nouvelles fonctionnalités ont été ajoutées, comme l'amélioration de la réduction du bruit et la possibilité de personnaliser l'interface avec des sondages de satisfaction. L'ajout d'un système d'analyse permet également de mieux comprendre l'utilisation de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un système d'analyse configurable (PostHog) pour suivre les événements, notamment la génération de liens de réunion. [#1383](https://github.com/suitenumerique/meet/issues/1383)
-- Amélioration de l'addon Outlook : ajout d'un lien de feedback, support de l'internationalisation et amélioration de la gestion des liens.
-- Ajout d'un sondage de satisfaction optionnel en bas de la page de résumé.
+- Ajout d'un système d'analyse configurable (PostHog) pour suivre les événements, notamment la génération de liens de réunion.
+- Amélioration de la réduction du bruit grâce à un pipeline audio BBBA.
+- Possibilité d'ajouter un formulaire de feedback dans le pied de page de l'application.
+- Ajout d'un indicateur de satisfaction optionnel en bas de l'écran.
+- Amélioration de l'intégration avec l'add-in Outlook : support de l'internationalisation, lien de feedback, et gestion plus intelligente des liens.
 - Possibilité de masquer le bouton de connexion via un paramètre d'URL.
-- Possibilité de désactiver la connexion silencieuse via un paramètre d'URL.
-- Amélioration de la gestion des effets vidéo pour une meilleure accessibilité.
-- Amélioration de la pagination dans la vue PiP (Picture-in-Picture) avec une meilleure accessibilité.
-- Ajout d'un administrateur spécifique pour la gestion des fichiers.
-- Ajout d'une commande pour nettoyer les fichiers en attente et supprimés.
-- Amélioration du bruit de fond avec un pipeline de traitement audio BBBA.
+- Possibilité de désactiver le login silencieux via un paramètre d'URL.
+- Amélioration de l'accessibilité des effets vidéo et du panneau des paramètres.
+- Limitation du nombre de vignettes affichées en mode Picture-in-Picture pour améliorer les performances.
+- Mise à jour de l'interface utilisateur pour remplacer "Premium" par "Avancé".
 
 ### Évolutions techniques
-- Intégration du SDK PostHog dans le backend.
-- Normalisation des clés d'objets S3 pour la compatibilité avec les notifications.
-- Refactorisation de la gestion des variables d'environnement.
-- Mise à jour de plusieurs dépendances (eslint, react-i18next, aiohttp, urllib3, posthog-js).
-- Amélioration de la robustesse du processus de suppression de fichiers.
-- Utilisation de `ReturnType<typeof setTimeout>` pour une meilleure typage.
-- Amélioration de la gestion de l'état des fichiers dans la base de données.
-- Lazy loading de `@libreaudio/la-call` pour optimiser les performances.
-- Mise à jour des librairies libcrypto3 et libssl3.
-- Passage à ESLint 9.
-- Mise à jour de la configuration CSP pour corriger une régression.
-- Mise à jour du chart Helm.
+- Mise à jour de plusieurs dépendances, notamment `ffmpeg`, `posthog-js`, `jose`, `react-i18next`, et des librairies cryptographiques.
+- Correction d'un problème de build frontend sur Scalingo.
+- Amélioration de la gestion des variables d'environnement.
+- Refactorisation de la gestion des clés d'objets S3 pour une meilleure compatibilité.
+- Amélioration de la configuration de Content Security Policy (CSP) pour corriger des régressions.
+- Mise à jour de l'image Alpine de base.
+- Ajout d'un job Kubernetes pour exécuter la commande de fusion des utilisateurs en double.
+- Amélioration de la gestion des erreurs et des exceptions dans le backend.
+- Ajout d'un fallback pour l'enregistrement des réunions en cas de problème avec les webhooks S3/MinIO.
+- Lazy loading de la librairie `@libreaudio/la-call` pour améliorer les performances.
 
 ### Autres changements
-- Ajout de Clever Cloud comme fournisseur SaaS pour La Suite Meet dans la documentation.
-- Clarification des directives de contribution dans la documentation.
-- Ajout de l'instance email.eu à la liste des instances connues.
-- Ajout d'un badge DPG au README.
-- Documentation de la personnalisation du favicon via un volume mount.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
+- Ajout de badges DPG au README.
+- Mise à jour de la documentation pour refléter les changements et améliorer la clarté.
+- Ajout de Clever Cloud à la liste des fournisseurs SaaS.
+- Précision de la traduction française dans la documentation.
+- Mise à jour des versions des charts Helm.
 - Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de dépendances inutiles.
-- Correction de problèmes d'accessibilité sur les effets vidéo.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Correction de problèmes liés à l'audio (canal gauche uniquement).
-- Correction de problèmes liés à la collecte de métadonnées.
-- Correction d'un bug dans le collecteur d'agents.
-- Mise à jour des migrations de base de données.
+- Ajout de tests pour la gestion des clés S3 encodées.
+- Documentation de la personnalisation du favicon via un volume mount.
+- Suppression de l'utilisation de la police par défaut au profit de la police de l'application.
+- Correction d'un problème d'affichage du bouton "Ajouter" dans l'add-in Outlook.
+- Correction d'un bug empêchant la fermeture de l'agent de métadonnées.
