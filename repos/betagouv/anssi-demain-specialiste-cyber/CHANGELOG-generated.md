@@ -1,12 +1,16 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 17 juin 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'expérience utilisateur en permettant aux personnes intéressées de participer à un accompagnement dans le cadre de la campagne "DemainSpécialisteCyber". Des corrections de tests ont également été effectuées pour assurer la stabilité de l'application. Enfin, les versions des dépendances ont été épinglées pour garantir la reproductibilité des builds.
+Ce mois-ci, les améliorations se concentrent sur la mise à jour des dépendances du projet, l'amélioration de l'expérience utilisateur en permettant la participation à un accompagnement, et la correction de tests front-end. La configuration de Renovate a été ajoutée pour automatiser les mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- Possibilité de s'inscrire pour participer à un accompagnement [#8f379ae](https://github.com/betagouv/anssi-demain-specialiste-cyber/pull/8f379ae)
+- Possibilité pour les utilisateurs de postuler pour un accompagnement [#8f379ae](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/8f379ae).
 
 ### Évolutions techniques
-- Mise à jour du kit d'interface utilisateur `@lab-anssi/ui-kit` vers la version 1.53.3 [#b2a6754](https://github.com/betagouv/anssi-demain-specialiste-cyber/pull/b2a6754)
-- Épinglage des versions des dépendances dans les workflows GitHub Actions [#c58addd](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/c58addd)
-- Correction des tests front-end [#6709edb](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/6709edb)
+- Mise à jour de la version du `@lab-anssi/ui-kit` vers la version 1.53.3 [#b2a6754](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/b2a6754).
+- Correction des tests front-end [#6709edb](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/6709edb).
+- Configuration de Renovate pour la gestion automatisée des dépendances [#fb2fc24](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/fb2fc24) et [#badb3ea](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/badb3ea).
+- Épinglage des versions des dépendances utilisées dans les GitHub Actions [#c58addd](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/c58addd).
+
+### Autres changements
+- Mises à jour de sécurité et de versions mineures de plusieurs dépendances (express, brace-expansion, vitest, multer, qs) via Renovate. Ces mises à jour sont gérées automatiquement et ne nécessitent pas d'intervention manuelle.
