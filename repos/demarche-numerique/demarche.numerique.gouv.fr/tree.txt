@@ -598,7 +598,7 @@
 │   │   │   ├── sidemenu_component
 │   │   │   │   ├── sidemenu_component.en.yml
 │   │   │   │   ├── sidemenu_component.fr.yml
-│   │   │   │   └── sidemenu_component.html.haml
+│   │   │   │   └── sidemenu_component.html.erb
 │   │   │   ├── sidemenu_component.rb
 │   │   │   ├── toggle_component
 │   │   │   │   └── toggle_component.html.erb
@@ -610,12 +610,12 @@
 │   │   │   │   └── address_component.html.haml
 │   │   │   ├── address_component.rb
 │   │   │   ├── annuaire_education_component
-│   │   │   │   └── annuaire_education_component.html.haml
+│   │   │   │   └── annuaire_education_component.html.erb
 │   │   │   ├── annuaire_education_component.rb
 │   │   │   ├── asterisk_mandatory_component
 │   │   │   │   ├── asterisk_mandatory_component.en.yml
 │   │   │   │   ├── asterisk_mandatory_component.fr.yml
-│   │   │   │   └── asterisk_mandatory_component.html.haml
+│   │   │   │   └── asterisk_mandatory_component.html.erb
 │   │   │   ├── asterisk_mandatory_component.rb
 │   │   │   ├── carte_component
 │   │   │   │   ├── carte_component.en.yml
@@ -625,7 +625,7 @@
 │   │   │   ├── champ_label_component
 │   │   │   │   ├── champ_label_component.en.yml
 │   │   │   │   ├── champ_label_component.fr.yml
-│   │   │   │   └── champ_label_component.html.haml
+│   │   │   │   └── champ_label_component.html.erb
 │   │   │   ├── champ_label_component.rb
 │   │   │   ├── champ_label_content_component
 │   │   │   │   ├── champ_label_content_component.en.yml
@@ -1577,9 +1577,6 @@
 │   │   ├── extensions
 │   │   │   ├── attachment.rb
 │   │   │   └── titre_identite_guard.rb
-│   │   ├── loaders
-│   │   │   ├── association.rb
-│   │   │   └── dossier.rb
 │   │   ├── mutations
 │   │   │   ├── base_mutation.rb
 │   │   │   ├── create_direct_upload.rb
@@ -1618,6 +1615,9 @@
 │   │   │   ├── groupe_instructeur_modifier.rb
 │   │   │   └── groupe_instructeur_supprimer_instructeurs.rb
 │   │   ├── schema.graphql
+│   │   ├── sources
+│   │   │   ├── association.rb
+│   │   │   └── record_by_id.rb
 │   │   └── types
 │   │       ├── address_type.rb
 │   │       ├── avis_type.rb
@@ -1927,6 +1927,7 @@
 │   │   │   ├── activestorage
 │   │   │   │   ├── auto-upload.ts
 │   │   │   │   ├── file-upload-error.ts
+│   │   │   │   ├── progress-bar.test.ts
 │   │   │   │   ├── progress-bar.ts
 │   │   │   │   ├── ujs.js
 │   │   │   │   └── uploader.ts
@@ -2490,6 +2491,12 @@
 │   │   └── zone_label.rb
 │   ├── policies
 │   │   ├── application_policy.rb
+│   │   ├── champ_policy.rb
+│   │   ├── champs
+│   │   │   ├── carte_champ_policy.rb
+│   │   │   ├── piece_justificative_champ_policy.rb
+│   │   │   ├── repetition_champ_policy.rb
+│   │   │   └── rna_champ_policy.rb
 │   │   └── dossier_policy.rb
 │   ├── queries
 │   │   └── llm
@@ -2788,7 +2795,7 @@
 │       │   └── blobs
 │       │       └── _blob.html.erb
 │       ├── admin
-│       │   └── _mail_template_attestation_inconsistency_alert.html.haml
+│       │   └── _mail_template_attestation_inconsistency_alert.html.erb
 │       ├── administrate
 │       │   └── application
 │       │       └── _pagination.html.haml
@@ -3007,7 +3014,7 @@
 │       ├── dossier_mailer
 │       │   ├── notify_automatic_deletion_for_tiers.html.haml
 │       │   ├── notify_automatic_deletion_to_administration.html.haml
-│       │   ├── notify_automatic_deletion_to_user.html.haml
+│       │   ├── notify_automatic_deletion_to_user.html.erb
 │       │   ├── notify_brouillon_deletion.html.haml
 │       │   ├── notify_brouillon_near_deletion.html.haml
 │       │   ├── notify_brouillon_not_submitted.html.haml
@@ -3015,7 +3022,7 @@
 │       │   ├── notify_groupe_instructeur_changed.html.haml
 │       │   ├── notify_near_deletion_for_tiers.html.haml
 │       │   ├── notify_near_deletion_to_administration.html.haml
-│       │   ├── notify_near_deletion_to_user.html.haml
+│       │   ├── notify_near_deletion_to_user.html.erb
 │       │   ├── notify_new_answer.html.haml
 │       │   ├── notify_new_avis_to_instructeur.html.haml
 │       │   ├── notify_new_commentaire_to_instructeur.html.haml
@@ -3918,6 +3925,7 @@
 │   │   └── views
 │   │       ├── admin
 │   │       │   └── mail_template_attestation_inconsistency_alert
+│   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── administrateurs
 │   │       │   ├── attestation_template_v2s
@@ -3999,6 +4007,10 @@
 │   │       │   └── notify_transfer
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
+│   │       ├── expert_mailer
+│   │       │   └── send_dossier_decision
+│   │       │       ├── en.yml
+│   │       │       └── fr.yml
 │   │       ├── experts
 │   │       │   └── avis
 │   │       │       ├── en.yml
@@ -4015,6 +4027,7 @@
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
 │   │       │   ├── notify_new_commentaire_groupe_gestionnaire
+│   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
 │   │       │   ├── notify_removed_administrateur
 │   │       │   │   ├── en.yml
@@ -4039,6 +4052,25 @@
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
 │   │       │   └── notify_removed_instructeur_from_all_groupes
+│   │       │       ├── en.yml
+│   │       │       └── fr.yml
+│   │       ├── instructeur_mailer
+│   │       │   ├── last_week_overview
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   ├── send_dossier
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   ├── send_login_token
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   ├── send_notifications
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   ├── trusted_device_token_renewal
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   └── user_to_instructeur
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── instructeurs
@@ -4069,6 +4101,9 @@
 │   │       │       └── notification_preferences
 │   │       │           ├── en.yml
 │   │       │           └── fr.yml
+│   │       ├── invite_mailer
+│   │       │   ├── en.yml
+│   │       │   └── fr.yml
 │   │       ├── layouts
 │   │       │   ├── _breadcrumb.en.yml
 │   │       │   ├── _breadcrumb.fr.yml
@@ -4891,6 +4926,7 @@
 │   │   ├── dsfr
 │   │   │   ├── callout_component_spec.rb
 │   │   │   ├── input_component_spec.rb
+│   │   │   ├── input_status_message_component_spec.rb
 │   │   │   └── toggle_component_spec.rb
 │   │   ├── editable_champ
 │   │   │   ├── champ_label_content_component_spec.rb
@@ -5827,6 +5863,7 @@
 │   │   ├── heavy_dossier_spec.rb
 │   │   └── instructeur_dossier_controller_spec.rb
 │   ├── policies
+│   │   ├── champ_policy_spec.rb
 │   │   └── dossier_policy_spec.rb
 │   ├── queries
 │   │   └── llm
@@ -6241,4 +6278,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-998 directories, 5562 files
+1009 directories, 5588 files
