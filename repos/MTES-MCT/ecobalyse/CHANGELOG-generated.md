@@ -1,31 +1,33 @@
-## Changelog : ecobalyse (30 derniers jours, au 01 juillet 2026)
+## Changelog : ecobalyse (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour d'ecobalyse se concentrent sur l'enrichissement des données avec de nouveaux éléments (aliments, véhicules, matériaux d'emballage) et l'amélioration de la précision des calculs, notamment en intégrant des données plus récentes (EF 3.1 adapté 1.03). Des corrections et des refactorings ont également été apportés pour améliorer la stabilité et la cohérence de l'application.
+Cette version apporte des améliorations significatives aux données, notamment des mises à jour des données LCI pour divers produits alimentaires et matériaux (lait, sorgho, lin, haricots, amarante, agrumes, tomates, café, etc.). Des ajustements ont été apportés aux données relatives aux véhicules (batteries, pneus, câbles) et aux emballages. Des corrections et des améliorations ont également été apportées à l'interface utilisateur et à l'architecture du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de multiples exemples d'aliments dans l'interface pour faciliter l'utilisation. [#2563](https://github.com/MTES-MCT/ecobalyse/issues/2563)
-- Ajout d'un exemple de "Pizza bolognese Bio (350g)". [#2553](https://github.com/MTES-MCT/ecobalyse/issues/2553)
-- Amélioration de la gestion des processus génériques avec la prise en compte de la masse du produit. [#2560](https://github.com/MTES-MCT/ecobalyse/issues/2560)
-- Ajout de la possibilité de définir l'origine par défaut des processus génériques. [#2414](https://github.com/MTES-MCT/ecobalyse/issues/2414)
-- Ajout de composants pour les véhicules (batteries, câbles, pneus). [#2459](https://github.com/MTES-MCT/ecobalyse/issues/2459), [#2366](https://github.com/MTES-MCT/ecobalyse/issues/2366)
-- Ajout de matériaux d'emballage pour objets et véhicules. [#2555](https://github.com/MTES-MCT/ecobalyse/issues/2555)
-- Ajout de données pour les transports routiers depuis le Maroc. [#2144](https://github.com/MTES-MCT/ecobalyse/issues/2144)
-- Mise à jour des données EF3.1 avec la version adaptée 1.03. [#2395](https://github.com/MTES-MCT/ecobalyse/issues/2395)
+- Ajout de liens de documentation configurables. [#2577](https://github.com/MTES-MCT/ecobalyse/issues/2577)
+- Mise à jour des ratios de transport routier/maritime. [#2575](https://github.com/MTES-MCT/ecobalyse/issues/2575)
+- Ajout d'un champ d'origine par défaut pour les processus génériques. [#2414](https://github.com/MTES-MCT/ecobalyse/issues/2414)
+- Amélioration de l'interface utilisateur pour la gestion des emballages dans le calculateur générique. [#2438](https://github.com/MTES-MCT/ecobalyse/issues/2438)
+- Ajout de la possibilité de filtrer les processus invisibles dans le calculateur générique. [#2537](https://github.com/MTES-MCT/ecobalyse/issues/2537)
+- Ajout de plusieurs exemples d'aliments dans l'interface. [#2563](https://github.com/MTES-MCT/ecobalyse/issues/2563)
+- Ajout d'une région "Maghreb". [#2568](https://github.com/MTES-MCT/ecobalyse/issues/2568)
+- Remplacement de l'unité "elecMJ" par "elecKwh". [#2561](https://github.com/MTES-MCT/ecobalyse/issues/2561)
+- Ajout de la prise en charge de la phase d'utilisation pour les objets et véhicules. [#1710](https://github.com/MTES-MCT/ecobalyse/issues/1710)
+- Ajout de pays aux explorateurs d'objets/véhicules. [#1724](https://github.com/MTES-MCT/ecobalyse/issues/1724)
 
 ### Évolutions techniques
-- Refactorisation du chargement des données en utilisant HTTP. [#2416](https://github.com/MTES-MCT/ecobalyse/issues/2416)
-- Synchronisation de la base de données avec les modèles via une migration. [#2536](https://github.com/MTES-MCT/ecobalyse/issues/2536)
-- Mise à jour des dépendances npm et yarn. [#2499](https://github.com/MTES-MCT/ecobalyse/issues/2499), [#2486](https://github.com/MTES-MCT/ecobalyse/issues/2486), [#2341](https://github.com/MTES-MCT/ecobalyse/issues/2341)
-- Mise à jour des dépendances Python. [#2399](https://github.com/MTES-MCT/ecobalyse/issues/2399)
+- Mise à jour des dépendances Litestar, Sentry et des outils de développement. [#2584](https://github.com/MTES-MCT/ecobalyse/issues/2584), [#2585](https://github.com/MTES-MCT/ecobalyse/issues/2585), [#2583](https://github.com/MTES-MCT/ecobalyse/issues/2583), [#2582](https://github.com/MTES-MCT/ecobalyse/issues/2582)
+- Refactorisation du pipeline de données pour la gestion des fichiers de transport. [#2535](https://github.com/MTES-MCT/ecobalyse/issues/2535)
+- Utilisation de JSON pour stocker les composants. [#2393](https://github.com/MTES-MCT/ecobalyse/issues/2393)
+- Mise à jour des dépendances Node.js. [#2532](https://github.com/MTES-MCT/ecobalyse/issues/2532), [#2486](https://github.com/MTES-MCT/ecobalyse/issues/2486), [#2499](https://github.com/MTES-MCT/ecobalyse/issues/2499), [#2500](https://github.com/MTES-MCT/ecobalyse/issues/2500)
+- Ajout d'un tag `productmassdependent` pour les processus. [#2579](https://github.com/MTES-MCT/ecobalyse/issues/2579)
+- Mise à jour de la base de données et des modèles via une migration. [#2536](https://github.com/MTES-MCT/ecobalyse/issues/2536)
 - Amélioration de la fiabilité des tests E2E. [#2422](https://github.com/MTES-MCT/ecobalyse/issues/2422)
-- Modification de la logique pour gérer les transports aériens dans les calculs. [#2377](https://github.com/MTES-MCT/ecobalyse/issues/2377)
 
 ### Autres changements
-- Corrections et ajustements de données pour divers produits (orange, tomate, café, betterave sucrière, graines de tournesol, etc.). [#2514](https://github.com/MTES-MCT/ecobalyse/issues/2514), [#2505](https://github.com/MTES-MCT/ecobalyse/issues/2505), [#2503](https://github.com/MTES-MCT/ecobalyse/issues/2503), [#2484](https://github.com/MTES-MCT/ecobalyse/issues/2484), [#2476](https://github.com/MTES-MCT/ecobalyse/issues/2476), [#2474](https://github.com/MTES-MCT/ecobalyse/issues/2474)
-- Modification de l'unité d'électricité de "elecMJ" à "elecKwh". [#2561](https://github.com/MTES-MCT/ecobalyse/issues/2561)
-- Ajout d'une région "Maghreb". [#2568](https://github.com/MTES-MCT/ecobalyse/issues/2568)
-- Amélioration de l'affichage de l'application (ajout de "Alimentaire BÉTA"). [#2538](https://github.com/MTES-MCT/ecobalyse/issues/2538)
-- Correction de la syntaxe des modèles d'issues. [#2544](https://github.com/MTES-MCT/ecobalyse/issues/2544)
-- Suppression de processus obsolètes dans les données VELI. [#2472](https://github.com/MTES-MCT/ecobalyse/issues/2472)
-- Amélioration de la terminologie pour les données alimentaires. [#2523](https://github.com/MTES-MCT/ecobalyse/issues/2523)
+- Mises à jour des données LCI pour plusieurs produits : lait, sorgho, seigle, graines de lin, haricots, amarante, tournesol, café, tomate, orange, etc.
+- Ajout de données pour les batteries de véhicules électriques. [#2459](https://github.com/MTES-MCT/ecobalyse/issues/2459), [#2453](https://github.com/MTES-MCT/ecobalyse/issues/2453), [#2406](https://github.com/MTES-MCT/ecobalyse/issues/2406)
+- Ajout de données pour les emballages en bois et papier. [#2404](https://github.com/MTES-MCT/ecobalyse/issues/2404)
+- Correction de la syntaxe du modèle d'issue. [#2544](https://github.com/MTES-MCT/ecobalyse/issues/2544)
+- Suppression de processus obsolètes pour les véhicules. [#2472](https://github.com/MTES-MCT/ecobalyse/issues/2472)
+- Amélioration de la formulation pour les aliments. [#2523](https://github.com/MTES-MCT/ecobalyse/issues/2523)
