@@ -11,6 +11,8 @@ and this project adheres to
 - ✨(y-provider) preserve callouts, PDFs, page breaks, interlinking
   links and commented text on HTML/markdown export #2296
 - ✨(frontend) add a user menu #2463
+- ✨(frontend) new header and responsive harmonization #2471
+- ✨(backend) add management command to reset a Document #1882
 
 ### Changed
 
@@ -29,6 +31,10 @@ and this project adheres to
 - 🐛(frontend) fix removed item in the tree #2420
 - 🐛(frontend) fix service worker causing reload on tab focus #2454
 - 🐛(backend) update restore ability for inherited deletion #2148
+
+### Removed
+
+- 🔥(backend) remove unused default authentication backend
 
 ## [v5.3.0] - 2026-06-19
 

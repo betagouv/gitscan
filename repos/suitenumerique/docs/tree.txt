@@ -183,6 +183,7 @@
     │   │   │   ├── __init__.py
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── clean_document.py
     │   │   │       ├── index.py
     │   │   │       └── update_files_content_type_metadata.py
     │   │   ├── middleware.py
@@ -248,6 +249,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
     │   │   │   ├── commands
+    │   │   │   │   ├── test_clean_document.py
     │   │   │   │   ├── test_index.py
     │   │   │   │   └── test_update_files_content_type_metadata.py
     │   │   │   ├── conftest.py
@@ -521,6 +523,7 @@
     │   │       ├── package.json
     │   │       ├── public
     │   │       │   ├── assets
+    │   │       │   │   ├── Docs-lottie.json
     │   │       │   │   ├── SC1-en.webm
     │   │       │   │   ├── SC1-fr.webm
     │   │       │   │   ├── favicon-dark-dsfr.png
@@ -947,6 +950,7 @@
     │   │       │   │   │   ├── EmojiPicker.tsx
     │   │       │   │   │   └── initEmojiCallout.ts
     │   │       │   │   ├── ErrorPage.tsx
+    │   │       │   │   ├── FloatingBar.tsx
     │   │       │   │   ├── Icon.tsx
     │   │       │   │   ├── InfiniteScroll.tsx
     │   │       │   │   ├── Link.tsx
@@ -955,6 +959,7 @@
     │   │       │   │   ├── SkipToContent.tsx
     │   │       │   │   ├── Text.tsx
     │   │       │   │   ├── TextErrors.tsx
+    │   │       │   │   ├── Title.tsx
     │   │       │   │   ├── Waffle.tsx
     │   │       │   │   ├── __tests__
     │   │       │   │   │   └── Box.spec.tsx
@@ -1178,11 +1183,12 @@
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── AlertNetwork.tsx
     │   │       │   │   │   │   │   ├── AlertRestore.tsx
+    │   │       │   │   │   │   │   ├── DocFloatingBar.tsx
     │   │       │   │   │   │   │   ├── DocHeader.tsx
     │   │       │   │   │   │   │   ├── DocHeaderInfo.tsx
+    │   │       │   │   │   │   │   ├── DocLeftPanelCollapseButton.tsx
     │   │       │   │   │   │   │   ├── DocTitle.tsx
     │   │       │   │   │   │   │   ├── DocToolBox.tsx
-    │   │       │   │   │   │   │   ├── FloatingBar.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   ├── hooks
     │   │       │   │   │   │   │   └── useCopyCurrentEditorToClipboard.tsx
@@ -1383,13 +1389,15 @@
     │   │       │   │   │   ├── index.tsx
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── header
+    │   │       │   │   │   ├── assets
+    │   │       │   │   │   │   └── DocsLoader.gif
     │   │       │   │   │   ├── components
-    │   │       │   │   │   │   ├── Header.tsx
-    │   │       │   │   │   │   ├── Title.tsx
+    │   │       │   │   │   │   ├── HeaderFloatingBar.tsx
+    │   │       │   │   │   │   ├── HeaderIcon.tsx
     │   │       │   │   │   │   └── index.ts
-    │   │       │   │   │   ├── conf.ts
-    │   │       │   │   │   ├── index.ts
-    │   │       │   │   │   └── types.ts
+    │   │       │   │   │   ├── hooks
+    │   │       │   │   │   │   └── useHideOnScroll.ts
+    │   │       │   │   │   └── index.ts
     │   │       │   │   ├── help
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   ├── drag_indicator.svg
@@ -1446,18 +1454,16 @@
     │   │       │   │   │   │   ├── LeftPanel.tsx
     │   │       │   │   │   │   ├── LeftPanelCollapseButton.tsx
     │   │       │   │   │   │   ├── LeftPanelContent.tsx
-    │   │       │   │   │   │   ├── LeftPanelDocContent.tsx
-    │   │       │   │   │   │   ├── LeftPanelFavoriteItem.tsx
     │   │       │   │   │   │   ├── LeftPanelFavorites.tsx
     │   │       │   │   │   │   ├── LeftPanelFooter.tsx
     │   │       │   │   │   │   ├── LeftPanelHeader.tsx
-    │   │       │   │   │   │   ├── LeftPanelToggleMobile.tsx
     │   │       │   │   │   │   ├── ResizableLeftPanel.tsx
     │   │       │   │   │   │   └── index.tsx
     │   │       │   │   │   ├── index.ts
-    │   │       │   │   │   └── stores
-    │   │       │   │   │       ├── index.ts
-    │   │       │   │   │       └── useLeftPanelStore.tsx
+    │   │       │   │   │   ├── stores
+    │   │       │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   └── useLeftPanelStore.tsx
+    │   │       │   │   │   └── types.ts
     │   │       │   │   ├── right-panel
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── RightPanel.tsx
@@ -1710,4 +1716,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-301 directories, 1487 files
+303 directories, 1491 files
