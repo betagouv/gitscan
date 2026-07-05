@@ -1,38 +1,35 @@
 ## Changelog : resorption-bidonvilles (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment autour de la gestion des actions et des indicateurs, ainsi que par des optimisations techniques et des corrections de bugs. L'accent a été mis sur l'amélioration de l'expérience utilisateur, la clarté des données affichées et la robustesse du système. Des fonctionnalités de filtrage et de tri ont été ajoutées, ainsi que des validations pour garantir l'intégrité des données.
+Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment au niveau du filtrage et de l'affichage des données, en particulier concernant les actions et les indicateurs scolaires. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des ajustements pour améliorer la qualité des données exportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des indicateurs de scolarisation et ajout de nouvelles données (mineurs scolarisés, etc.).
-- Ajout de la possibilité de filtrer les actions par structure pour les opérateurs.
-- Introduction d'un onglet "Actions de ma structure" pour faciliter la gestion des actions par les opérateurs.
-- Possibilité de masquer le filtre "Financement DIHAL" en fonction des permissions de l'utilisateur.
-- Ajout d'un bouton pour mettre à jour les sites sans modification.
-- Amélioration de l'affichage des noms d'actions et des structures.
-- Ajout d'un indicateur visuel pour les actions en cours et terminées.
-- Ajout de la possibilité de désigner un opérateur principal pour chaque action.
-- Amélioration du tri des actions avec des options multi-critères.
-- Correction d'un bug empêchant l'affichage correct du filtre "Indicateurs".
-- Correction d'un bug lié au calcul des actions financées par la DIHAL.
-- Correction d'un bug lié à l'affichage de l'item actif dans le menu.
+- Ajout d'un onglet "Actions de ma structure" pour les opérateurs, permettant de filtrer les actions par organisation. [#2692](https://trello.com/c/wvr2hd4B/2692)
+- Amélioration du filtre "Indicateurs" qui affiche désormais correctement les résultats. [#2701](https://trello.com/c/VuiTrNnL/2701)
+- Ajout de validations de cohérence pour les indicateurs d'action (mineurs, ménages, santé, emploi, logement). [#2560](https://trello.com/c/fvbTRXQz/2560)
+- Possibilité de filtrer les actions par structure côté frontend. [#2692](https://trello.com/c/wvr2hd4B/2692)
+- Statistiques séparées pour les actions en cours et terminées. [#2692](https://trello.com/c/wvr2hd4B/2692)
+- Correction de l'affichage des badges d'indicateurs, qui ne s'affichent désormais que s'il y a des actions. [#2701](https://trello.com/c/VuiTrNnL/2701)
+- Ajout de l'option "Inconnu" au filtre "Type de propriétaire". [#2703](https://trello.com/c/9JS8SJF6/2703)
 
 ### Évolutions techniques
-- Refactorisation importante du code, notamment autour de la gestion des indicateurs et des opérateurs, pour améliorer la maintenabilité et la lisibilité.
-- Amélioration des validations côté API et frontend pour garantir l'intégrité des données.
-- Optimisation des requêtes et des performances.
-- Mise à jour des dépendances et correction de vulnérabilités.
-- Ajout de tests unitaires pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Utilisation de nouvelles fonctionnalités de TypeScript pour améliorer la sécurité du code.
+- Refactor de l'API pour utiliser des types plus cohérents et améliorer la validation des données. [#2560](https://trello.com/c/fvbTRXQz/2560)
+- Amélioration de la performance du filtrage des données. [#2561](https://trello.com/c/sqy3f0kc/2561)
+- Utilisation de `structuredClone` au lieu de `cloneDeep` pour améliorer la performance et la compatibilité. [#2560](https://trello.com/c/fvbTRXQz/2560)
+- Suppression de code mort et nettoyage général du code. [#2560](https://trello.com/c/fvbTRXQz/2560)
+- Correction de plusieurs erreurs relevées par SonarQube. [#2560](https://trello.com/c/fvbTRXQz/2560)
+- Mise à jour des dépendances et correction de problèmes de linting.
 - Amélioration de la gestion des erreurs et des messages d'erreur.
-- Suppression de code obsolète et simplification de la structure du code.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de problèmes de linting et de style de code.
-- Amélioration de la gestion des logs.
-- Correction de petites erreurs d'orthographe et de typographie.
-- Mise à jour des informations de version et des métadonnées.
-- Ajout d'un bandeau d'information concernant la canicule.
-- Correction de liens et de références externes.
-- Amélioration de la structure des migrations de base de données.
+- Mise à jour des conditions d'utilisation. [#2712](https://trello.com/c/PXmPMtEe/2712)
+- Ajout de tests unitaires pour l'API. [#2706](https://trello.com/c/17BTTncn/2706)
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout d'un bandeau d'alerte pour la canicule.
+- Mise à jour du numéro de version à v2.55.0 et v2.54.0.
+- Correction de l'affichage de l'item actif dans le menu.
+- Correction de la popup.
+- Correction des coins vides des boutons de zoom.
+- Correction de l'affichage de l'item actif dans le menu.
+- Correction de l'affichage de l'item actif dans le menu.
+- Correction de l'affichage de l'item actif dans le menu.
