@@ -309,15 +309,14 @@
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── conftest.py
+│   │   ├── constants.py
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   ├── commands
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── alti.py
 │   │   │   │   ├── batch_import_maps.py
 │   │   │   │   ├── copy_geometries_to_prod.py
-│   │   │   │   ├── import_alti.py
 │   │   │   │   ├── import_catchment_area_rasters.py
 │   │   │   │   ├── import_departments.py
 │   │   │   │   ├── import_shapefiles.py
@@ -633,6 +632,8 @@
 │   │   │   ├── 0126_create_non_depot_lse.py
 │   │   │   ├── 0127_rename_a_verifier_creation_template.py
 │   │   │   ├── 0128_alter_moulinettetemplate_key.py
+│   │   │   ├── 0129_multi_categories_criteria.py
+│   │   │   ├── 0130_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -677,6 +678,8 @@
 │   │   │   ├── test_evalenv.py
 │   │   │   ├── test_evalenv_cas_par_cas_icpe.py
 │   │   │   ├── test_fields.py
+│   │   │   ├── test_get_criteria.py
+│   │   │   ├── test_haie_criterion_evaluator.py
 │   │   │   ├── test_loisurleau.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_n2000_evalenv.py
@@ -729,7 +732,7 @@
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
-│   │   ├── demarches_simplifiees
+│   │   ├── demarche_numerique
 │   │   │   ├── client.py
 │   │   │   ├── data
 │   │   │   │   ├── Coriandrum_sativum.jpg
@@ -816,10 +819,16 @@
 │   │   │   ├── 0048_alter_statuslog_update_comment.py
 │   │   │   ├── 0049_add_urgence_non_to_moulinette_urls.py
 │   │   │   ├── 0049_merge_20260506_1542.py
+│   │   │   ├── 0049_petitionproject_category.py
 │   │   │   ├── 0049_petitionproject_dn_archive.py
 │   │   │   ├── 0050_merge_20260622_1031.py
 │   │   │   ├── 0050_merge_20260623_0916.py
+│   │   │   ├── 0050_petitionproject_original_multi_category_moulinette_url.py
 │   │   │   ├── 0051_merge_20260624_0831.py
+│   │   │   ├── 0051_migrate_category_values.py
+│   │   │   ├── 0052_merge_20260618_1147.py
+│   │   │   ├── 0053_merge_20260701_1003.py
+│   │   │   ├── 0054_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -838,6 +847,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
 │   │   │   ├── test_commands.py
+│   │   │   ├── test_forms.py
 │   │   │   ├── test_middleware.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_services.py
@@ -1056,7 +1066,7 @@
 │   │   │   │   └── fieldset.html
 │   │   │   ├── moulinette
 │   │   │   │   ├── confighaie
-│   │   │   │   │   └── demarche_simplifiee_pre_fill_config_help_text.html
+│   │   │   │   │   └── demarche_numerique_pre_fill_config_help_text.html
 │   │   │   │   ├── criterion
 │   │   │   │   │   └── change_form.html
 │   │   │   │   └── moulinetteconfig
@@ -1232,21 +1242,26 @@
 │   │   │   │   ├── rights_assigned.html
 │   │   │   │   └── rights_assigned.txt
 │   │   │   ├── forms
+│   │   │   │   ├── fields
+│   │   │   │   │   └── simulation_url.html
 │   │   │   │   └── widgets
 │   │   │   │       ├── hedge_radio.html
 │   │   │   │       ├── hedge_radio_option.html
 │   │   │   │       └── project_stage.html
 │   │   │   ├── moulinette
 │   │   │   │   ├── _actions_banner.html
+│   │   │   │   ├── _category_hedges.html
+│   │   │   │   ├── _city_hall_submission_callout.html
 │   │   │   │   ├── _department_doctrine_button.html
 │   │   │   │   ├── _department_doctrine_modal.html
 │   │   │   │   ├── _form_footer.html
 │   │   │   │   ├── _form_introduction.html
 │   │   │   │   ├── _hedge_input_modal.html
-│   │   │   │   ├── _init_dossier_on_demarches_simplifees.html
+│   │   │   │   ├── _init_dossier_on_demarche_numerique.html
 │   │   │   │   ├── _map_li_snippet.html
 │   │   │   │   ├── _plantation_conditions.html
 │   │   │   │   ├── _result_regulation.html
+│   │   │   │   ├── _result_regulation_title.html
 │   │   │   │   ├── _sensitive_areas.html
 │   │   │   │   ├── confighaie_403.html
 │   │   │   │   ├── confighaie_404.html
@@ -1287,26 +1302,50 @@
 │   │   │   │   │   ├── soumis_adequate.html
 │   │   │   │   │   └── soumis_inadequate.html
 │   │   │   │   ├── plantation_result
-│   │   │   │   │   ├── action_requise.html
-│   │   │   │   │   ├── autorisation.html
-│   │   │   │   │   ├── declaration.html
-│   │   │   │   │   ├── inadequate.html
-│   │   │   │   │   ├── interdit.html
-│   │   │   │   │   ├── non_soumis.html
-│   │   │   │   │   └── soumis.html
-│   │   │   │   ├── result
-│   │   │   │   │   ├── _replantation.html
-│   │   │   │   │   ├── droit_constant
+│   │   │   │   │   ├── hru
 │   │   │   │   │   │   ├── action_requise.html
+│   │   │   │   │   │   ├── inadequate.html
 │   │   │   │   │   │   ├── interdit.html
 │   │   │   │   │   │   ├── non_disponible.html
 │   │   │   │   │   │   ├── non_soumis.html
 │   │   │   │   │   │   └── soumis.html
-│   │   │   │   │   └── regime_unique
+│   │   │   │   │   ├── l350_3
+│   │   │   │   │   │   ├── action_requise.html
+│   │   │   │   │   │   ├── inadequate.html
+│   │   │   │   │   │   ├── interdit.html
+│   │   │   │   │   │   ├── non_disponible.html
+│   │   │   │   │   │   ├── non_soumis.html
+│   │   │   │   │   │   └── soumis.html
+│   │   │   │   │   ├── read_only.html
+│   │   │   │   │   └── ru
 │   │   │   │   │       ├── autorisation.html
 │   │   │   │   │       ├── declaration.html
-│   │   │   │   │       ├── hors_regime_unique.html
-│   │   │   │   │       └── interdit.html
+│   │   │   │   │       ├── inadequate.html
+│   │   │   │   │       ├── interdit.html
+│   │   │   │   │       ├── non_disponible.html
+│   │   │   │   │       └── non_soumis.html
+│   │   │   │   ├── result
+│   │   │   │   │   ├── _replantation.html
+│   │   │   │   │   ├── hru
+│   │   │   │   │   │   ├── action_requise.html
+│   │   │   │   │   │   ├── interdit.html
+│   │   │   │   │   │   ├── non_concerne.html
+│   │   │   │   │   │   ├── non_disponible.html
+│   │   │   │   │   │   ├── non_soumis.html
+│   │   │   │   │   │   └── soumis.html
+│   │   │   │   │   ├── l350_3
+│   │   │   │   │   │   ├── action_requise.html
+│   │   │   │   │   │   ├── interdit.html
+│   │   │   │   │   │   ├── non_concerne.html
+│   │   │   │   │   │   ├── non_disponible.html
+│   │   │   │   │   │   ├── non_soumis.html
+│   │   │   │   │   │   └── soumis.html
+│   │   │   │   │   └── ru
+│   │   │   │   │       ├── autorisation.html
+│   │   │   │   │       ├── declaration.html
+│   │   │   │   │       ├── interdit.html
+│   │   │   │   │       ├── non_disponible.html
+│   │   │   │   │       └── non_soumis.html
 │   │   │   │   ├── result.html
 │   │   │   │   ├── result_base.html
 │   │   │   │   ├── result_debug.html
@@ -1327,6 +1366,7 @@
 │   │   │   │   ├── _alternatives_table.html
 │   │   │   │   ├── _dossier_followers.html
 │   │   │   │   ├── _follow_form.html
+│   │   │   │   ├── _hedge_category.html
 │   │   │   │   ├── _hedges_compensation_details.html
 │   │   │   │   ├── _invitation_token_email_body.html
 │   │   │   │   ├── _invitation_token_email_body.txt
@@ -1343,10 +1383,13 @@
 │   │   │   │   ├── _ru_plantation_condition_details.html
 │   │   │   │   ├── _summary_dossier.html
 │   │   │   │   ├── alignement_arbres
-│   │   │   │   │   ├── alignement_arbres_plantation_condition_details.html
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── hru
+│   │   │   │   │   │   └── alignement_arbres_calvados_before_ru_plantation_condition_details.html
 │   │   │   │   │   ├── instruction_guidelines.html
-│   │   │   │   │   └── key_elements.html
+│   │   │   │   │   ├── key_elements.html
+│   │   │   │   │   └── l350_3
+│   │   │   │   │       └── alignement_arbres_plantation_condition_details.html
 │   │   │   │   ├── code_rural_haie
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
@@ -1357,12 +1400,14 @@
 │   │   │   │   ├── consultation.html
 │   │   │   │   ├── ep
 │   │   │   │   │   ├── consultation.html
-│   │   │   │   │   ├── ep_aisne_plantation_condition_details.html
-│   │   │   │   │   ├── ep_normandie_plantation_condition_details.html
-│   │   │   │   │   ├── ep_regime_unique_plantation_condition_details.html
+│   │   │   │   │   ├── hru
+│   │   │   │   │   │   ├── ep_aisne_plantation_condition_details.html
+│   │   │   │   │   │   └── ep_normandie_plantation_condition_details.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   ├── instructor_result_details.html
-│   │   │   │   │   └── key_elements.html
+│   │   │   │   │   ├── key_elements.html
+│   │   │   │   │   └── ru
+│   │   │   │   │       └── ep_regime_unique_plantation_condition_details.html
 │   │   │   │   ├── instructor_dossier_list.html
 │   │   │   │   ├── instructor_view.html
 │   │   │   │   ├── instructor_view_alternatives.html
@@ -1374,12 +1419,12 @@
 │   │   │   │   ├── instructor_view_procedure.html
 │   │   │   │   ├── instructor_view_regulation.html
 │   │   │   │   ├── invalid_invitation_token.html
-│   │   │   │   ├── mattermost_demarches_simplifiees_api_error.txt
-│   │   │   │   ├── mattermost_demarches_simplifiees_api_error_change_dossier_state.txt
-│   │   │   │   ├── mattermost_demarches_simplifiees_api_error_dossier_send_message.txt
-│   │   │   │   ├── mattermost_demarches_simplifiees_api_error_one_dossier.txt
-│   │   │   │   ├── mattermost_demarches_simplifiees_api_unexpected_format.txt
-│   │   │   │   ├── mattermost_demarches_simplifiees_donnees_manquantes.txt
+│   │   │   │   ├── mattermost_demarche_numerique_api_error.txt
+│   │   │   │   ├── mattermost_demarche_numerique_api_error_change_dossier_state.txt
+│   │   │   │   ├── mattermost_demarche_numerique_api_error_dossier_send_message.txt
+│   │   │   │   ├── mattermost_demarche_numerique_api_error_one_dossier.txt
+│   │   │   │   ├── mattermost_demarche_numerique_api_unexpected_format.txt
+│   │   │   │   ├── mattermost_demarche_numerique_donnees_manquantes.txt
 │   │   │   │   ├── mattermost_dossier_state_updated_outside_of_guh.txt
 │   │   │   │   ├── mattermost_dossier_submission_notif.txt
 │   │   │   │   ├── mattermost_project_creation_anomalie.txt
@@ -1398,7 +1443,8 @@
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── regime_unique_haie
 │   │   │   │   │   ├── instructor_result_details.html
-│   │   │   │   │   └── regime_unique_haie_plantation_condition_details.html
+│   │   │   │   │   └── ru
+│   │   │   │   │       └── regime_unique_haie_plantation_condition_details.html
 │   │   │   │   ├── reserves_naturelles
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
@@ -1485,63 +1531,93 @@
 │   │   │   │   ├── pc_icpe_inconnu.html
 │   │   │   │   └── suspension_delai_icpe.html
 │   │   │   ├── alignement_arbres
-│   │   │   │   ├── alignement_arbres_non_soumis.html
-│   │   │   │   ├── alignement_arbres_soumis_autorisation.html
-│   │   │   │   ├── alignement_arbres_soumis_esthetique.html
-│   │   │   │   ├── alignement_arbres_soumis_securite.html
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── alignement_arbres_calvados_before_ru_soumis_autorisation.html
+│   │   │   │   │   ├── alignement_arbres_calvados_before_ru_soumis_esthetique.html
+│   │   │   │   │   └── alignement_arbres_calvados_before_ru_soumis_securite.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   ├── alignement_arbres_soumis_autorisation.html
+│   │   │   │   │   ├── alignement_arbres_soumis_esthetique.html
+│   │   │   │   │   └── alignement_arbres_soumis_securite.html
 │   │   │   │   ├── result_non_active.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_concerne.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── result_non_soumis.html
 │   │   │   ├── base.html
 │   │   │   ├── base_result.html
 │   │   │   ├── code_rural_haie
-│   │   │   │   ├── code_rural_a_verifier.html
+│   │   │   │   ├── hru
+│   │   │   │   │   └── code_rural_a_verifier.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   └── result_non_disponible.html
 │   │   │   ├── conditionnalite_pac
-│   │   │   │   ├── bcae8_dispense_petit.html
-│   │   │   │   ├── bcae8_interdit_amelioration_culture.html
-│   │   │   │   ├── bcae8_interdit_amelioration_ecologique.html
-│   │   │   │   ├── bcae8_interdit_amenagement.html
-│   │   │   │   ├── bcae8_interdit_autre.html
-│   │   │   │   ├── bcae8_interdit_chemin_acces.html
-│   │   │   │   ├── bcae8_interdit_embellissement.html
-│   │   │   │   ├── bcae8_interdit_meilleur_emplacement.html
-│   │   │   │   ├── bcae8_interdit_securite.html
-│   │   │   │   ├── bcae8_interdit_transfert_parcelles.html
-│   │   │   │   ├── bcae8_non_soumis.html
-│   │   │   │   ├── bcae8_soumis_amenagement.html
-│   │   │   │   ├── bcae8_soumis_chemin_acces.html
-│   │   │   │   ├── bcae8_soumis_fosse.html
-│   │   │   │   ├── bcae8_soumis_incendie.html
-│   │   │   │   ├── bcae8_soumis_maladie.html
-│   │   │   │   ├── bcae8_soumis_meilleur_emplacement.html
-│   │   │   │   ├── bcae8_soumis_remplacement.html
-│   │   │   │   ├── bcae8_soumis_transfert_parcelles.html
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── bcae8_dispense_petit.html
+│   │   │   │   │   ├── bcae8_interdit_amelioration_culture.html
+│   │   │   │   │   ├── bcae8_interdit_amelioration_ecologique.html
+│   │   │   │   │   ├── bcae8_interdit_amenagement.html
+│   │   │   │   │   ├── bcae8_interdit_autre.html
+│   │   │   │   │   ├── bcae8_interdit_chemin_acces.html
+│   │   │   │   │   ├── bcae8_interdit_embellissement.html
+│   │   │   │   │   ├── bcae8_interdit_meilleur_emplacement.html
+│   │   │   │   │   ├── bcae8_interdit_securite.html
+│   │   │   │   │   ├── bcae8_interdit_transfert_parcelles.html
+│   │   │   │   │   ├── bcae8_non_soumis.html
+│   │   │   │   │   ├── bcae8_soumis_amenagement.html
+│   │   │   │   │   ├── bcae8_soumis_chemin_acces.html
+│   │   │   │   │   ├── bcae8_soumis_fosse.html
+│   │   │   │   │   ├── bcae8_soumis_incendie.html
+│   │   │   │   │   ├── bcae8_soumis_maladie.html
+│   │   │   │   │   ├── bcae8_soumis_meilleur_emplacement.html
+│   │   │   │   │   ├── bcae8_soumis_remplacement.html
+│   │   │   │   │   └── bcae8_soumis_transfert_parcelles.html
 │   │   │   │   ├── result_non_active.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       ├── bcae8_dispense_petit.html
+│   │   │   │       ├── bcae8_interdit_amelioration_culture.html
+│   │   │   │       ├── bcae8_interdit_amelioration_ecologique.html
+│   │   │   │       ├── bcae8_interdit_amenagement.html
+│   │   │   │       ├── bcae8_interdit_autre.html
+│   │   │   │       ├── bcae8_interdit_chemin_acces.html
+│   │   │   │       ├── bcae8_interdit_embellissement.html
+│   │   │   │       ├── bcae8_interdit_meilleur_emplacement.html
+│   │   │   │       ├── bcae8_interdit_securite.html
+│   │   │   │       ├── bcae8_interdit_transfert_parcelles.html
+│   │   │   │       ├── bcae8_non_soumis.html
+│   │   │   │       ├── bcae8_soumis_amenagement.html
+│   │   │   │       ├── bcae8_soumis_chemin_acces.html
+│   │   │   │       ├── bcae8_soumis_fosse.html
+│   │   │   │       ├── bcae8_soumis_incendie.html
+│   │   │   │       ├── bcae8_soumis_maladie.html
+│   │   │   │       ├── bcae8_soumis_meilleur_emplacement.html
+│   │   │   │       ├── bcae8_soumis_remplacement.html
+│   │   │   │       └── bcae8_soumis_transfert_parcelles.html
 │   │   │   ├── debug.html
 │   │   │   ├── debug_result.html
 │   │   │   ├── debug_result_non_disponible.html
 │   │   │   ├── ep
 │   │   │   │   ├── _species_cortege_ru.html
-│   │   │   │   ├── ep_aisne_derogation_inventaire.html
-│   │   │   │   ├── ep_aisne_derogation_simplifiee.html
-│   │   │   │   ├── ep_aisne_interdit.html
-│   │   │   │   ├── ep_normandie_a_verifier_L350.html
-│   │   │   │   ├── ep_normandie_derogation_simplifiee.html
-│   │   │   │   ├── ep_normandie_dispense.html
-│   │   │   │   ├── ep_normandie_dispense_10m.html
-│   │   │   │   ├── ep_normandie_dispense_20m.html
-│   │   │   │   ├── ep_normandie_dispense_L350.html
-│   │   │   │   ├── ep_normandie_dispense_coupe_a_blanc.html
-│   │   │   │   ├── ep_normandie_interdit.html
-│   │   │   │   ├── ep_regime_unique_derogation_inventaire.html
-│   │   │   │   ├── ep_regime_unique_derogation_simplifiee.html
-│   │   │   │   ├── ep_regime_unique_dispense.html
-│   │   │   │   ├── ep_regime_unique_non_concerne.html
-│   │   │   │   ├── ep_simple_soumis.html
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── ep_aisne_derogation_inventaire.html
+│   │   │   │   │   ├── ep_aisne_derogation_simplifiee.html
+│   │   │   │   │   ├── ep_aisne_interdit.html
+│   │   │   │   │   ├── ep_normandie_a_verifier_L350.html
+│   │   │   │   │   ├── ep_normandie_derogation_simplifiee.html
+│   │   │   │   │   ├── ep_normandie_dispense.html
+│   │   │   │   │   ├── ep_normandie_dispense_10m.html
+│   │   │   │   │   ├── ep_normandie_dispense_20m.html
+│   │   │   │   │   ├── ep_normandie_dispense_L350.html
+│   │   │   │   │   ├── ep_normandie_dispense_coupe_a_blanc.html
+│   │   │   │   │   ├── ep_normandie_interdit.html
+│   │   │   │   │   └── ep_simple_soumis.html
 │   │   │   │   ├── result_non_active.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       ├── ep_regime_unique_derogation_inventaire.html
+│   │   │   │       ├── ep_regime_unique_derogation_simplifiee.html
+│   │   │   │       ├── ep_regime_unique_dispense.html
+│   │   │   │       └── ep_regime_unique_non_concerne.html
 │   │   │   ├── eval_body_action_requise.html
 │   │   │   ├── eval_env
 │   │   │   │   ├── _cas_par_cas_details.html
@@ -1651,9 +1727,10 @@
 │   │   │   │   ├── zone_inondable_non_soumis.html
 │   │   │   │   └── zone_inondable_soumis.html
 │   │   │   ├── natura2000_haie
-│   │   │   │   ├── natura2000_haie_non_soumis.html
-│   │   │   │   ├── natura2000_haie_non_soumis_aa.html
-│   │   │   │   ├── natura2000_haie_soumis.html
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── natura2000_haie_non_soumis.html
+│   │   │   │   │   ├── natura2000_haie_non_soumis_aa.html
+│   │   │   │   │   └── natura2000_haie_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   └── result_non_disponible.html
@@ -1663,14 +1740,18 @@
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   └── result_non_disponible.html
 │   │   │   ├── regime_unique_haie
-│   │   │   │   ├── regime_unique_haie_non_concerne.html
-│   │   │   │   ├── regime_unique_haie_non_concerne_aa.html
-│   │   │   │   ├── regime_unique_haie_soumis.html
+│   │   │   │   ├── hru
+│   │   │   │   │   └── regime_unique_haie_non_concerne.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── regime_unique_haie_non_concerne.html
 │   │   │   │   ├── result_non_active.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       └── regime_unique_haie_soumis.html
 │   │   │   ├── reserves_naturelles
-│   │   │   │   ├── reserves_naturelles_soumis_autorisation.html
-│   │   │   │   ├── reserves_naturelles_soumis_declaration.html
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── reserves_naturelles_soumis_autorisation.html
+│   │   │   │   │   └── reserves_naturelles_soumis_declaration.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   └── result_non_disponible.html
@@ -1724,7 +1805,12 @@
 │   │   │   │   ├── result_non_disponible.html
 │   │   │   │   └── result_soumis.html
 │   │   │   └── urbanisme_haie
-│   │   │       └── urbanisme_haie_a_verifier.html
+│   │   │       ├── hru
+│   │   │       │   └── urbanisme_haie_a_verifier.html
+│   │   │       ├── l350_3
+│   │   │       │   └── urbanisme_haie_a_verifier.html
+│   │   │       └── ru
+│   │   │           └── urbanisme_haie_a_verifier.html
 │   │   ├── multisite_base.html
 │   │   ├── pages
 │   │   │   ├── about.html
@@ -1873,4 +1959,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-224 directories, 1670 files
+249 directories, 1731 files
