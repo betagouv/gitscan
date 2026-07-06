@@ -266,7 +266,8 @@
 │   │   │   │   │       ├── RéponseAbandonAvecRecandidature.tsx
 │   │   │   │   │       ├── Signature.tsx
 │   │   │   │   │       ├── accordAbandonAvecRecandidature.stories.tsx
-│   │   │   │   │       └── buildDocument.ts
+│   │   │   │   │       ├── buildDocument.ts
+│   │   │   │   │       └── index.ts
 │   │   │   │   ├── assets
 │   │   │   │   │   ├── docx
 │   │   │   │   │   │   ├── abandon-modèle-réponse.docx
@@ -359,23 +360,32 @@
 │   │   │   │   │               ├── ppe2.elimine.stories.tsx
 │   │   │   │   │               └── ppe2.laureat.stories.tsx
 │   │   │   │   ├── index.ts
-│   │   │   │   └── modèleRéponseSignée
-│   │   │   │       ├── abandon
-│   │   │   │       │   └── modèleRéponseSignéeAbandon.ts
-│   │   │   │       ├── actionnaire
-│   │   │   │       │   └── modèleRéponseSignéeActionnaire.ts
-│   │   │   │       ├── délai
-│   │   │   │       │   └── modèleRéponseSignéeDélai.ts
-│   │   │   │       ├── garantiesFinancières
-│   │   │   │       │   ├── modèleRéponseSignéeMainlevée.ts
-│   │   │   │       │   └── modèleRéponseSignéeMiseEnDemeure.ts
-│   │   │   │       ├── générerModèleRéponseSignée.ts
+│   │   │   │   ├── modèleRéponseSignée
+│   │   │   │   │   ├── abandon
+│   │   │   │   │   │   └── modèleRéponseSignéeAbandon.ts
+│   │   │   │   │   ├── actionnaire
+│   │   │   │   │   │   └── modèleRéponseSignéeActionnaire.ts
+│   │   │   │   │   ├── délai
+│   │   │   │   │   │   └── modèleRéponseSignéeDélai.ts
+│   │   │   │   │   ├── garantiesFinancières
+│   │   │   │   │   │   ├── modèleRéponseSignéeMainlevée.ts
+│   │   │   │   │   │   └── modèleRéponseSignéeMiseEnDemeure.ts
+│   │   │   │   │   ├── générerModèleRéponseSignée.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── modèleRéponseSignée.ts
+│   │   │   │   │   ├── puissance
+│   │   │   │   │   │   └── modèleRéponseSignéePuissance.ts
+│   │   │   │   │   └── recours
+│   │   │   │   │       └── modèleRéponseSignéeRecours.ts
+│   │   │   │   └── synthèsePériode
+│   │   │   │       ├── Header.tsx
+│   │   │   │       ├── Introduction.tsx
+│   │   │   │       ├── PageFooter.tsx
+│   │   │   │       ├── SynthèsePériode.tsx
+│   │   │   │       ├── TableauLauréatsPériode.tsx
+│   │   │   │       ├── buildDocument.ts
 │   │   │   │       ├── index.ts
-│   │   │   │       ├── modèleRéponseSignée.ts
-│   │   │   │       ├── puissance
-│   │   │   │       │   └── modèleRéponseSignéePuissance.ts
-│   │   │   │       └── recours
-│   │   │   │           └── modèleRéponseSignéeRecours.ts
+│   │   │   │       └── synthèsePériode.stories.tsx
 │   │   │   └── tsconfig.json
 │   │   ├── notifications
 │   │   │   ├── package.json
@@ -2179,8 +2189,13 @@
 │   │   │   │   │   ├── periodes
 │   │   │   │   │   │   ├── PériodeList.page.tsx
 │   │   │   │   │   │   ├── PériodeListItem.tsx
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   ├── formatNumbersForDocument.ts
+│   │   │   │   │   │   │   └── getPériodePrixMoyenPondéré.ts
 │   │   │   │   │   │   ├── notifierPériode.action.ts
-│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── telecharger-synthese-periode
+│   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── projets
 │   │   │   │   │   │   └── [identifiant]
 │   │   │   │   │   │       └── page.tsx
@@ -4661,4 +4676,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1130 directories, 3533 files
+1133 directories, 3545 files

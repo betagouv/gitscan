@@ -1,39 +1,32 @@
-## Changelog : potentiel (30 derniers jours, au 2026-07-02)
+## Changelog : potentiel (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment concernant la gestion des garanties financières, des raccordements et des candidatures. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de la plateforme. Des optimisations techniques ont également été réalisées, notamment au niveau des scripts de restauration de base de données et des projections de données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment concernant la gestion des garanties financières, des documents de raccordement et des informations relatives aux projets. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Renommage de "démarches simplifiées" en "Démarche Numérique" pour plus de clarté. [#4403](https://github.com/MTES-MCT/potentiel/issues/4403)
-- Amélioration de la redirection après une demande ou un passage en instruction de mainlevée. [#4412](https://github.com/MTES-MCT/potentiel/issues/4412)
-- Affichage d'un bloc d'information pour les producteurs d'énergie avant de demander une mainlevée de garanties financières. [#4410](https://github.com/MTES-MCT/potentiel/issues/4410)
-- Affichage du lien d'action sous le producteur et son identification. [#4407](https://github.com/MTES-MCT/potentiel/issues/4407)
-- Correction des routes des candidatures. [#4404](https://github.com/MTES-MCT/potentiel/issues/4404)
-- Possibilité de déselectionner une valeur dans un filtre multiple. [#4384](https://github.com/MTES-MCT/potentiel/issues/4384)
-- Ajout de la possibilité de transmettre et modifier un document de raccordement. [#4385](https://github.com/MTES-MCT/potentiel/issues/4385)
-- Affichage des données vérifiées dans la projection du détail de la candidature. [#4340](https://github.com/MTES-MCT/potentiel/issues/4340)
-- Amélioration du wording concernant la date de mise en service. [#4397](https://github.com/MTES-MCT/potentiel/issues/4397)
-- Affichage du motif de garantie financière en attente sur la page projet. [#4320](https://github.com/MTES-MCT/potentiel/issues/4320)
-- Possibilité pour les producteurs de corriger leur numéro d'identification (SIRET/SIREN). [#4322](https://github.com/MTES-MCT/potentiel/issues/4322) et [#4317](https://github.com/MTES-MCT/potentiel/issues/4317)
-- Ajout de l'opérateur "between" pour les exports lauréat et éliminés. [#4323](https://github.com/MTES-MCT/potentiel/issues/4323)
-- Possibilité d'ouvrir un document sans le télécharger. [#4068](https://github.com/MTES-MCT/potentiel/issues/4068)
-- Ajout de l'accès aux pages raccordement pour les GRD. [#4311](https://github.com/MTES-MCT/potentiel/issues/4311)
-- Amélioration de la navigation au clavier du composant Multiselect (accessibilité). [#4346](https://github.com/MTES-MCT/potentiel/issues/4346)
-- Amélioration de l'accessibilité des liens d'évitement. [#4350](https://github.com/MTES-MCT/potentiel/issues/4350)
-- Ajout de labels ARIA sur les boutons "Copier" pour l'accessibilité. [#4387](https://github.com/MTES-MCT/potentiel/issues/4387)
+- Possibilité d'exporter en PDF les candidats lauréats d'une nouvelle période. [#4409](https://github.com/MTES-MCT/potentiel/issues/4409)
+- Amélioration de l'affichage et de la gestion des motifs de garantie financière. [#4320](https://github.com/MTES-MCT/potentiel/issues/4320)
+- Affichage d'une alerte sur la page projet en cas de dossier DCR manquant. [#4315](https://github.com/MTES-MCT/potentiel/issues/4315)
+- Les producteurs peuvent désormais corriger leur numéro d'identification (SIRET/SIREN). [#4322](https://github.com/MTES-MCT/potentiel/issues/4322) et [#4317](https://github.com/MTES-MCT/potentiel/issues/4317)
+- Amélioration de l'information des PP avant de demander la mainlevée des gfs. [#4410](https://github.com/MTES-MCT/potentiel/issues/4410)
+- Ajout d'un bloc d'information pour les PP avant de demander la mainlevée des gfs. [#4410](https://github.com/MTES-MCT/potentiel/issues/4410)
+- Redirection après demande/passage en instruction de mainlevée. [#4412](https://github.com/MTES-MCT/potentiel/issues/4412)
+- Correction de l'affichage des notes des derniers retenus. [#4388](https://github.com/MTES-MCT/potentiel/issues/4388)
+- Amélioration de l'accessibilité des liens d'évitement. [#4331](https://github.com/MTES-MCT/potentiel/issues/4331)
+- Possibilité de filtrer les lauréats dans la synthèse de période. [#4416](https://github.com/MTES-MCT/potentiel/issues/4416)
 
 ### Évolutions techniques
-- Rendre le script de restauration de base de données accessible aux review apps. [#4405](https://github.com/MTES-MCT/potentiel/issues/4405)
-- Intégration des modifications des releases 3.80, 3.81, 3.82 et 3.83. [#4399](https://github.com/MTES-MCT/potentiel/issues/4399), [#4361](https://github.com/MTES-MCT/potentiel/issues/4361), [#4353](https://github.com/MTES-MCT/potentiel/issues/4353), [#4314](https://github.com/MTES-MCT/potentiel/issues/4314)
-- Simplification du code et des composants, notamment au niveau des streams et des formulaires.
-- Correction et amélioration des scripts de migration de base de données.
+- Intégration des modifications de la release 3.83. [#4417](https://github.com/MTES-MCT/potentiel/issues/4417), [#4415](https://github.com/MTES-MCT/potentiel/issues/4415), [#4399](https://github.com/MTES-MCT/potentiel/issues/4399), [#4393](https://github.com/MTES-MCT/potentiel/issues/4393)
+- Intégration des modifications de la release 3.82. [#4375](https://github.com/MTES-MCT/potentiel/issues/4375), [#4367](https://github.com/MTES-MCT/potentiel/issues/4367), [#4361](https://github.com/MTES-MCT/potentiel/issues/4361), [#4353](https://github.com/MTES-MCT/potentiel/issues/4353), [#4333](https://github.com/MTES-MCT/potentiel/issues/4333)
 - Amélioration de la cohérence du stream d'achèvement. [#4307](https://github.com/MTES-MCT/potentiel/issues/4307)
-- Utilisation des SHA1 des actions GitHub plutôt que des tags pour plus de sécurité. [#4310](https://github.com/MTES-MCT/potentiel/issues/4310)
-- Correction des scripts DB et ajout du paramètre sslrootcert. [#4306](https://github.com/MTES-MCT/potentiel/issues/4306)
-- Suppression de code obsolète (adapters, scripts de migration).
+- Rendre le script de restauration de DB accessible aux review apps. [#4405](https://github.com/MTES-MCT/potentiel/issues/4405)
+- Simplification des readable stream. [#4321](https://github.com/MTES-MCT/potentiel/issues/4321)
+- Suppression de scripts de migration et d'adapters legacy. [#4338](https://github.com/MTES-MCT/potentiel/issues/4338), [#4337](https://github.com/MTES-MCT/potentiel/issues/4337)
+- Correction de bugs liés à la pagination et aux filtres. [#4374](https://github.com/MTES-MCT/potentiel/issues/4374), [#4384](https://github.com/MTES-MCT/potentiel/issues/4384), [#4380](https://github.com/MTES-MCT/potentiel/issues/4380)
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Mise à jour des dépendances npm/yarn. [#4366](https://github.com/MTES-MCT/potentiel/issues/4366) et [#4365](https://github.com/MTES-MCT/potentiel/issues/4365)
-- Amélioration de la documentation et des tests.
-- Nettoyage du code et refactoring.
+- Renommage "démarches simplifiées" en "Démarche Numérique". [#4403](https://github.com/MTES-MCT/potentiel/issues/4403)
+- Mise à jour de la sécurité de la librairie shell-quote. [#4324](https://github.com/MTES-MCT/potentiel/issues/4324)
+- Ajout de labels ARIA pour améliorer l'accessibilité. [#4387](https://github.com/MTES-MCT/potentiel/issues/4387) et [#4346](https://github.com/MTES-MCT/potentiel/issues/4346)
+- Amélioration de la hiérarchie des titres pour l'accessibilité. [#4348](https://github.com/MTES-MCT/potentiel/issues/4348)
+- Correction de wording et amélioration de la clarté des messages. [#4390](https://github.com/MTES-MCT/potentiel/issues/4390), [#4362](https://github.com/MTES-MCT/potentiel/issues/4362), [#4397](https://github.com/MTES-MCT/potentiel/issues/4397)
