@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est un moteur de workflow qui transforme des fichiers `.bot` en pipelines d'IA exécutables. Il permet de définir des workflows complexes avec des agents, des juges, des routeurs et des boucles, tout en gérant les budgets et en assurant la sécurité.",
+  "description": "Iterion est un moteur de workflow permettant de transformer des fichiers `.bot` en pipelines d'IA exécutables. Il permet de définir des bots comme des graphes d'exécution auditables, avec des capacités d'orchestration avancées.",
   "language": "Go",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -13,17 +13,26 @@
     "Données & Schémas",
     "Administration & Backoffice",
     "Interface utilisateur & Design",
+    "Suivi & Traçabilité",
     "Collaboration & Workflow",
     "Intelligence Artificielle & NLP"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Développeurs",
+    "Professionnels"
+  ],
   "dependencies": [
-    "Docker",
-    "Kubernetes",
+    "Go",
     "MongoDB",
     "NATS JetStream",
+    "Docker",
+    "Kubernetes",
+    "Helm",
     "Prometheus",
-    "Go"
+    "OTLP",
+    "Grafana",
+    "Claude",
+    "OpenAI"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,22 +40,20 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Kubernetes & Helm"
+    "Kubernetes & Helm",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso"
-    ],
-    "providers": [
-      "GitHub"
+      "api-key"
     ]
   },
   "tests": "Tests unitaires et d'intégration",
   "workflows": [
     "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-06-30T23:49:20Z",
+  "lastActivity": "2026-07-05T23:40:41Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,13 +66,12 @@
   "tags": [
     "Données & Open Data",
     "Intelligence Artificielle & LLM",
-    "Sécurité & Auth",
     "JavaScript",
     "Python",
+    "Sécurité & Auth",
     "Docker",
     "Kubernetes",
-    "CI/CD",
-    "Automatisation",
-    "Orchestration"
+    "API",
+    "Automatisation"
   ]
 }
