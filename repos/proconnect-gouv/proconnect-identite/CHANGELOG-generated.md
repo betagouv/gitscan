@@ -1,26 +1,25 @@
-## Changelog : proconnect-identite (30 derniers jours, au 23 juin 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 30 juin 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de ProConnect Identité se sont concentrées sur l'amélioration de la sécurité et de l'expérience utilisateur, notamment en renforçant la gestion des niveaux d'authentification (ACR), en optimisant le processus d'inscription et en améliorant la surveillance et l'analyse des données via Metabase. Des corrections de bugs et des mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la performance de la plateforme.
+Ce mois-ci, les évolutions de ProConnect Identité se sont concentrées sur l'amélioration de la sécurité, de la performance et de l'expérience utilisateur. Des restrictions ont été ajoutées aux méthodes d'authentification, des optimisations de base de données ont été réalisées et des corrections ont été apportées pour prévenir les abus liés à la vérification par email. De plus, la compatibilité avec PostgreSQL 17 a été assurée et de nouvelles catégories juridiques ont été ajoutées.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Ajout de nouveaux niveaux d'ACR (Authentification Context Reference) pour une gestion plus fine des exigences d'authentification. [#1965](https://github.com/proconnect-gouv/proconnect-identite/pull/1965)
-- **Inscription :** Amélioration de la validation automatique des utilisateurs lors de l'inscription avec un domaine de contact officiel. [#1934](https://github.com/proconnect-gouv/proconnect-identite/pull/1934)
-- **Annuaire Service Public :** Correction d'un bug empêchant l'exclusion des adresses email non valides lors de la recherche. [#1996](https://github.com/proconnect-gouv/proconnect-identite/pull/1996)
-- **Certification Dirigeant :** Correction d'un bug lié à la compatibilité des nouvelles valeurs ACR avec le processus de certification des dirigeants. [#2004](https://github.com/proconnect-gouv/proconnect-identite/pull/2004)
-- **Catégorie Juridique :** Ajout du "Pôle d'équilibre territorial et rural" à la liste des catégories juridiques. [#1982](https://github.com/proconnect-gouv/proconnect-identite/pull/1982)
-- **Raison d'utilisation :** Ajout d'un nouveau champ "raison d'utilisation" dans la base de données pour une meilleure traçabilité. [#1931](https://github.com/proconnect-gouv/proconnect-identite/pull/1931)
-- **Whitelist Administration Etat :** Ajout de la gestion de la whitelist pour l'administration de l'état. [#1969](https://github.com/proconnect-gouv/proconnect-identite/pull/1969)
+- Correction d'un problème empêchant de sélectionner une organisation après un échec de certification. [#1974](https://github.com/proconnect-gouv/proconnect-identite/issues/1974)
+- Ajout de la catégorie juridique "Pôle d'équilibre territorial et rural". [#1982](https://github.com/proconnect-gouv/proconnect-identite/issues/1982)
+- Prévention de l'envoi répétitif de codes de vérification par email pour limiter les abus. [#2004](https://github.com/proconnect-gouv/proconnect-identite/issues/2004)
+- Mise à jour des valeurs AMR (Authentification Method Reference) pour utiliser des valeurs standard, notamment pour l'authentification TOTP. [#2012](https://github.com/proconnect-gouv/proconnect-identite/issues/2012)
+- Restriction des méthodes d'authentification autorisées au niveau du endpoint de token. [#2003](https://github.com/proconnect-gouv/proconnect-identite/issues/2003)
 
 ### Évolutions techniques
-- **Performance :** Ajout d'un index sur la table `users_oidc_clients` pour améliorer les performances des requêtes. [#1989](https://github.com/proconnect-gouv/proconnect-identite/pull/1989)
-- **Base de données :** Mise à jour du schéma de la base de données pour assurer la compatibilité avec PostgreSQL 17. [#1983](https://github.com/proconnect-gouv/proconnect-identite/pull/1983)
-- **Metabase :** Intégration des authenticators aux statistiques Metabase pour un meilleur suivi. [#1967](https://github.com/proconnect-gouv/proconnect-identite/pull/1967)
-- **Dépendances :** Mise à jour de plusieurs dépendances (Hono, undici, sentry, proconnect-test-client, etc.) pour bénéficier des dernières corrections et améliorations.
-- **CI/CD :** Amélioration du pipeline CI/CD pour la publication des packages.
+- Optimisation de la performance en ajoutant un index sur les tables `users_oidc_clients`. [#1989](https://github.com/proconnect-gouv/proconnect-identite/issues/1989)
+- Mise à jour de la compatibilité avec PostgreSQL 17. [#1983](https://github.com/proconnect-gouv/proconnect-identite/issues/1983)
+- Mise à jour des dépendances : `ioredis`, `vite`, `nodemailer`, `qs`, `@cypress/request`, `undici`, `hono`, `tmp`, `form-data`, `actions/checkout`, `@electric-sql/pglite`, `proconnect-gouv/proconnect-test-client`, `concurrently`.
+- Amélioration de la gestion des nouveaux niveaux ACR (Action Credential Request).
+- Intégration d'un authentificateur pour Metabase. [#1967](https://github.com/proconnect-gouv/proconnect-identite/issues/1967)
 
 ### Autres changements
-- **Documentation :** Amélioration de la documentation interne.
-- **Configuration :** Ajustements de la configuration pour améliorer la stabilité.
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Sécurité :** Correction d'un problème permettant de spammer les codes de vérification par email. [#2004](https://github.com/proconnect-gouv/proconnect-identite/pull/2004)
+- Correction d'un bug dans l'annuaire du service public qui incluait les adresses email falsy dans les résultats. [#1996](https://github.com/proconnect-gouv/proconnect-identite/issues/1996)
+- Modification du type d'un paramètre dans `certification-dirigeant` pour plus de précision. [#1985](https://github.com/proconnect-gouv/proconnect-identite/issues/1985)
+- Mise à jour de la configuration par défaut de `allow_editing` à `false` pour la modération. [#1981](https://github.com/proconnect-gouv/proconnect-identite/issues/1981)
+- Rétrogradation d'une mise à jour de `@electric-sql/pglite` suite à un problème. [#1997](https://github.com/proconnect-gouv/proconnect-identite/issues/1997)
+- Revert d'une modification permettant les scripts postinstall de Cypress.
