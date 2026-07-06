@@ -1372,9 +1372,6 @@
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── comptes-collaborateurs
     │   │   │   │   │   │   │   │   │   │   ├── [certificationAuthorityLocalAccountId]
-    │   │   │   │   │   │   │   │   │   │   │   ├── _components
-    │   │   │   │   │   │   │   │   │   │   │   │   └── admin-certification-authority-local-account-breadcrumb
-    │   │   │   │   │   │   │   │   │   │   │   │       └── AdminCertificationAuthorityLocalAccountBreadcrumb.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── certifications
     │   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
     │   │   │   │   │   │   │   │   │   │   │   │   └── updateLocalAccountCertificationsPage.hook.ts
@@ -1781,6 +1778,8 @@
     │   │   │   │   │   └── summary-cards
     │   │   │   │   │       └── general-information-card
     │   │   │   │   │           └── LocalAccountGeneralInformationSummaryCard.tsx
+    │   │   │   │   ├── settings-breadcrumb-segments
+    │   │   │   │   │   └── adminCertificationAuthorityBreadcrumbSegments.ts
     │   │   │   │   └── summary-cards
     │   │   │   │       ├── certification-authority-local-accounts-summary-card
     │   │   │   │       │   └── CertificationAuthorityLocalAccountsSummaryCard.tsx
@@ -1916,6 +1915,10 @@
     │   │   │   │   │   └── AAPSettingsSummarySectionRemote.tsx
     │   │   │   │   ├── collaborateur-settings-summary-section-onsite
     │   │   │   │   │   └── AAPSettingsSummarySectionRemote.tsx
+    │   │   │   │   ├── settings-breadcrumb
+    │   │   │   │   │   └── SettingsBreadcrumb.tsx
+    │   │   │   │   ├── settings-page-header
+    │   │   │   │   │   └── SettingsPageHeader.tsx
     │   │   │   │   └── user-account-form
     │   │   │   │       └── UserAccountForm.tsx
     │   │   │   ├── small-notice
@@ -2355,6 +2358,7 @@
     │   │   │   │   ├── getReferentOrganismFromCandidacyId.ts
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.test.ts
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.ts
+    │   │   │   │   ├── markFeasibilityFileResourceFirstAsRead.ts
     │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.test.ts
     │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.test.ts
@@ -2624,6 +2628,7 @@
     │   │   │   │   │   ├── checkIsDFFReadyToBeSentToCertificationAuthorityById.ts
     │   │   │   │   │   ├── confirmDematerializedFeasibilityFileByCandidate.test.ts
     │   │   │   │   │   ├── confirmDematerializedFeasibilityFileByCandidate.ts
+    │   │   │   │   │   ├── createDefaultDFF.ts
     │   │   │   │   │   ├── createOrUpdateAapDecision.ts
     │   │   │   │   │   ├── createOrUpdateAttachments.ts
     │   │   │   │   │   ├── createOrUpdateCertificationAuthorityDecision.test.ts
@@ -4514,6 +4519,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260630095137_add_df_demat_autonome_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260701140311_add_rncp_objectifs_contexte_to_searchable_text_of_certification_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260702091644_add_feasibility_file_resource_first_read_at_column_to_candidacy_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4646,6 +4655,8 @@
     │   ├── postcss.config.js
     │   ├── public
     │   │   ├── bg-candidate.svg
+    │   │   ├── components
+    │   │   │   └── verified-badge.svg
     │   │   ├── files
     │   │   │   ├── Dossier_faisabilité_candidat_autonome.pdf
     │   │   │   └── attestation_sur_l_honneur_modele.pdf
@@ -4964,14 +4975,32 @@
     │   │   │   │   │   │   │   │   │   └── waiting-for-training
     │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   ├── (autonome)
-    │   │   │   │   │   │   │   │   │   └── feasibility
-    │   │   │   │   │   │   │   │   │       ├── _components
-    │   │   │   │   │   │   │   │   │       │   ├── FeasibilityBanner.tsx
-    │   │   │   │   │   │   │   │   │       │   ├── FeasibilityDecisionDisplay.tsx
-    │   │   │   │   │   │   │   │   │       │   ├── SendFeasibilityForm.component.tsx
-    │   │   │   │   │   │   │   │   │       │   ├── SendFeasibilityForm.hooks.ts
-    │   │   │   │   │   │   │   │   │       │   └── UploadForm.tsx
-    │   │   │   │   │   │   │   │   │       ├── feasibility.hook.ts
+    │   │   │   │   │   │   │   │   │   ├── feasibility
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── FeasibilityBanner.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── FeasibilityDecisionDisplay.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── SendFeasibilityForm.component.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── SendFeasibilityForm.hooks.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── UploadForm.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── feasibility.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── feasibility-demat-autonome
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── AttachmentsSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── CertificationSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── CompetenciesBlocksSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── EligibilitySection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── PrerequisitesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── certification
+    │   │   │   │   │   │   │   │   │   │   │   ├── certification.hook.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── eligibility
+    │   │   │   │   │   │   │   │   │   │   │   ├── eligibility.hook.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── feasibility-demat-autonome.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   └── feasibility-demat-autonome-resources
+    │   │   │   │   │   │   │   │   │       ├── feasibility-demat-autonome-resources.hook.ts
     │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   ├── (general)
     │   │   │   │   │   │   │   │   │   ├── archive
@@ -5090,11 +5119,20 @@
     │   │   │   │   └── useAutocompleteAddress.hook.ts
     │   │   │   ├── back-button
     │   │   │   │   └── BackButton.tsx
+    │   │   │   ├── badge
+    │   │   │   │   ├── badge-completed
+    │   │   │   │   │   └── BadgeCompleted.tsx
+    │   │   │   │   └── badge-to-complete
+    │   │   │   │       └── BadgeToComplete.tsx
     │   │   │   ├── card
     │   │   │   │   ├── candidacy-card
     │   │   │   │   │   └── CandidacyCard.tsx
     │   │   │   │   ├── candidacy-statuses
     │   │   │   │   │   └── CandidacyStatuses.tsx
+    │   │   │   │   ├── certification-card-read-only
+    │   │   │   │   │   └── CertificationCardReadOnly.tsx
+    │   │   │   │   ├── enhanced-section-card
+    │   │   │   │   │   └── EnhancedSectionCard.tsx
     │   │   │   │   ├── gray-card
     │   │   │   │   │   └── GrayCard.tsx
     │   │   │   │   ├── section-card
@@ -5170,6 +5208,7 @@
     │   │   │   │       │       ├── CandidateSection.tsx
     │   │   │   │       │       ├── CertificationCompetenceAccordion.tsx
     │   │   │   │       │       ├── CertificationSection.tsx
+    │   │   │   │       │       ├── ComplementExperienceParcoursViseAccordion.tsx
     │   │   │   │       │       ├── ContactInfosSection.tsx
     │   │   │   │       │       ├── DecisionSection.tsx
     │   │   │   │       │       ├── ExperiencesSection.tsx
@@ -5190,6 +5229,8 @@
     │   │   │   │   └── previousPath.tsx
     │   │   │   ├── script
     │   │   │   │   └── TarteaucitronScript.ts
+    │   │   │   ├── small-notice
+    │   │   │   │   └── SmallNotice.tsx
     │   │   │   ├── toast
     │   │   │   │   └── toast.tsx
     │   │   │   └── tooltip
@@ -5469,6 +5510,7 @@
     │   └── utils
     │       ├── errors.ts
     │       ├── graphqlClient.ts
+    │       ├── jwt.test.ts
     │       ├── jwt.ts
     │       ├── keycloak.ts
     │       ├── mappers
@@ -6102,4 +6144,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2047 directories, 4057 files
+2062 directories, 4084 files

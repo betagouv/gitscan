@@ -1,100 +1,54 @@
-## Changelog : reva (30 derniers jours, au 01 juillet 2026)
+## Changelog : reva (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'expérience utilisateur dans l'administration, notamment au niveau de la gestion des candidatures et des organismes certificateurs. Des améliorations ont également été apportées à l'importation des données ASP, à la gestion des fichiers et à la sécurité, avec l'ajout de l'analyse antivirus. Enfin, des travaux ont été réalisés pour faciliter l'authentification et l'inscription des utilisateurs.
+Les dernières mises à jour de reva se concentrent sur l'amélioration de l'expérience utilisateur dans l'interface d'administration, notamment pour la gestion des organismes de certification et des candidatures. Des améliorations ont également été apportées à l'interopérabilité avec des systèmes externes, ainsi qu'à la sécurité avec l'ajout de l'authentification par email. Des corrections de bugs et des optimisations de performance ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de sélection de l'organisme certificateur dans l'administration, permettant une gestion plus fine des accès et des responsabilités. [#1037](https://github.com/betagouv/reva/pull/1037)
-- Amélioration de l'interface utilisateur des pages de gestion des expériences, des pièces jointes, des compétences et de l'éligibilité dans l'administration.
-- Possibilité de mettre à jour manuellement l'organisme certificateur d'une candidature depuis l'administration.
-- Ajout de filtres pour les organismes certificateurs et les candidatures dans l'administration.
-- Amélioration de l'importation des résultats ASP, avec des résumés plus clairs et la gestion des doublons.
-- Ajout de la possibilité d'importer les expériences pour la DF DEMAT autonome.
-- Ajout de la possibilité d'ajouter des formations pour la DF DEMAT autonome.
-- Ajout d'une page de consentement au traitement des données avant l'adhésion à une cohorte.
-- Amélioration de la gestion des comptes collaborateurs des AAP (Ajouts, accès).
-- Ajout de la possibilité de signaler une DV (Décision de Validation) comme invalide depuis l'interopérabilité.
-- Ajout d'un champ "déclaration sur l'honneur" aux pièces jointes pour la décision de faisabilité.
-- Amélioration de la gestion des images (aspect ratio, chargement).
-- Ajout d'un indicateur visuel pour les cas d'erreur de faisabilité.
-- Possibilité de ne pas autoriser la certification partielle après un rejet de faisabilité la même année.
+- Ajout de la possibilité de mettre à jour l'autorité de certification dans la page récapitulative d'une candidature ([#1057](https://github.com/betagouv/reva/issues/1057)).
+- Amélioration de l'interface utilisateur des pages "expériences du candidat", "pièces jointes", "prérequis", "compétences-blocs" et "certification" dans l'administration.
+- Ajout d'une page de sélection de l'autorité de certification avec une liste et une action de mise à jour directe.
+- Possibilité de voir les domaines de certification au lieu des sous-domaines dans l'administration.
+- Ajout d'un bouton pour impersonner un utilisateur dans la nouvelle liste des comptes AAP.
+- Ajout d'un message de confirmation lors de la mise à jour de l'autorité de certification.
+- Ajout de la possibilité d'ajouter des commentaires et des décisions à l'historique de faisabilité dans l'interopérabilité.
+- Ajout de la possibilité d'accepter des résultats par compétence lors de la mise à jour des résultats du jury dans l'interopérabilité.
+- Ajout d'une alerte dans l'administration pour les candidatures sans financement.
+- Ajout de la possibilité de supprimer le financement dans la page récapitulative de la candidature.
+- Ajout d'une nouvelle page pour la gestion des comptes collaborateurs AAP.
+- Ajout de la possibilité d'ajouter de nouveaux comptes collaborateurs AAP depuis la liste.
+- Ajout de la possibilité de s'inscrire avec un mot de passe (contrôlé par un flag de fonctionnalité).
+- Ajout de la vérification par email (OTP) pour l'authentification.
+- Ajout d'un lien vers un formulaire de pré-qualification dans le pied de page du site web.
 
 ### Évolutions techniques
 - Mise à jour de la version de Keycloak (26.6.1 -> 26.6.4).
-- Refactorisation du code pour améliorer la structure et la maintenabilité.
+- Amélioration de la gestion des sessions SSO.
+- Ajout d'un index sur la colonne `create_at` de la table `account_email_otp` pour optimiser les performances.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
 - Amélioration de la gestion des erreurs et des logs.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Mise en place d'un système d'analyse antivirus pour les fichiers téléchargés par les utilisateurs.
-- Optimisation des requêtes et des performances.
-- Amélioration de la gestion des sessions et de l'authentification.
-- Utilisation de feature flags pour activer/désactiver certaines fonctionnalités.
-- Amélioration de la gestion des événements d'audit.
-- Migration de certains tests Cypress vers Playwright.
+- Ajout de tests Cypress et Playwright.
+- Ajout d'un service ClamAV pour l'analyse antivirus des fichiers téléchargés par les utilisateurs.
+- Optimisation des requêtes SQL.
+- Amélioration de la gestion des transactions.
+- Ajout de tests pour la vérification de la signature des fichiers.
 
 ### Autres changements
-- Documentation mise à jour.
-- Corrections de bugs mineurs.
-- Nettoyage du code.
-- Mise à jour des dépendances.
-- Amélioration de la gestion des variables d'environnement.
-- Correction de la gestion des erreurs OTP (One-Time Password).
-- Suppression de code obsolète.
-- Amélioration de la gestion des liens de contact sur le site web.
-- Correction de la gestion des formats de fichiers acceptés pour les justificatifs.
-- Correction de l'affichage des organismes certificateurs.
-- Amélioration de la gestion des statuts de candidature.
-- Ajout de logs pour faciliter le débogage.
-- Correction de problèmes de navigation dans l'interface d'administration.
-- Correction de la gestion des URL de création de comptes collaborateurs.
-- Correction de la gestion des décisions de faisabilité dans l'interopérabilité.
-- Correction de la gestion des erreurs côté client.
-- Correction de la gestion des filtres de statut.
-- Correction de la gestion des droits d'accès.
-- Correction de la gestion des images.
-- Correction de la gestion des erreurs d'authentification.
-- Correction de la gestion des erreurs de validation.
-- Correction de la gestion des erreurs de chargement.
-- Correction de la gestion des erreurs de sauvegarde.
-- Correction de la gestion des erreurs de suppression.
-- Correction de la gestion des erreurs de mise à jour.
-- Correction de la gestion des erreurs de recherche.
-- Correction de la gestion des erreurs de filtrage.
-- Correction de la gestion des erreurs de tri.
-- Correction de la gestion des erreurs de pagination.
-- Correction de la gestion des erreurs de formulaire.
-- Correction de la gestion des erreurs de connexion.
-- Correction de la gestion des erreurs de déconnexion.
-- Correction de la gestion des erreurs de mot de passe.
-- Correction de la gestion des erreurs de profil.
-- Correction de la gestion des erreurs de paramétrage.
-- Correction de la gestion des erreurs de sécurité.
-- Correction de la gestion des erreurs de performance.
-- Correction de la gestion des erreurs de compatibilité.
-- Correction de la gestion des erreurs de configuration.
-- Correction de la gestion des erreurs de déploiement.
-- Correction de la gestion des erreurs de maintenance.
-- Correction de la gestion des erreurs de supervision.
-- Correction de la gestion des erreurs de journalisation.
-- Correction de la gestion des erreurs de notification.
-- Correction de la gestion des erreurs de reporting.
-- Correction de la gestion des erreurs de sauvegarde.
-- Correction de la gestion des erreurs de restauration.
-- Correction de la gestion des erreurs de migration.
-- Correction de la gestion des erreurs de versioning.
-- Correction de la gestion des erreurs de documentation.
-- Correction de la gestion des erreurs de traduction.
-- Correction de la gestion des erreurs de localisation.
-- Correction de la gestion des erreurs de test.
-- Correction de la gestion des erreurs de débogage.
-- Correction de la gestion des erreurs de monitoring.
-- Correction de la gestion des erreurs de alerting.
-- Correction de la gestion des erreurs de scaling.
-- Correction de la gestion des erreurs de clustering.
-- Correction de la gestion des erreurs de caching.
-- Correction de la gestion des erreurs de load balancing.
-- Correction de la gestion des erreurs de reverse proxy.
-- Correction de la gestion des erreurs de firewall.
-- Correction de la gestion des erreurs de DNS.
-- Correction de la gestion des erreurs de réseau.
-- Correction de la gestion des erreurs de stockage.
-- Correction de la gestion des erreurs de base de données.
+- Mise à jour des dépendances (js-yaml, @microsoft/kiota-http-fetchlibrary, vite, shell-quote, form-data, undici, dompurify).
+- Correction de bugs mineurs et améliorations de la documentation.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration des messages d'erreur et des validations.
+- Correction de tests cassés.
+- Suppression de code dupliqué.
+- Amélioration de la structure du projet.
+- Ajout de commentaires au code.
+- Correction de problèmes de typage.
+- Amélioration de la sécurité.
+- Ajout de logs pour le débogage.
+- Correction de problèmes de performance.
+- Amélioration de l'accessibilité.
+- Correction de problèmes de compatibilité.
+- Amélioration de la configuration.
+- Mise à jour des fichiers de documentation.
+- Correction de problèmes de build.
+- Amélioration de la gestion des erreurs de build.

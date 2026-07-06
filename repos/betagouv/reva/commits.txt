@@ -1,3 +1,38 @@
+2026-07-03T16:56:12+02:00 - dda396e - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/certification page for df demat autonome
+2026-07-03T16:41:46+02:00 - cfd1ac8 - ThomasDos : test(interop): bootstrap vitest with jwt round-trip test and CI job
+2026-07-03T16:27:58+02:00 - f29da56 - fbonniec : Merge pull request #1057 from betagouv/dependabot/npm_and_yarn/packages/reva-api/microsoft/kiota-http-fetchlibrary-1.0.0-preview.103
+2026-07-03T16:23:06+02:00 - cc41f23 - fbonniec : Merge pull request #1056 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/js-yaml-4.3.0
+2026-07-03T15:55:45+02:00 - 6ce5827 - ThomasDos : fix(api): reject jury result blocs not belonging to the candidacy dossier
+2026-07-03T15:52:54+02:00 - 3fc635d - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/eligibility page for df demat autonome
+2026-07-03T14:55:38+02:00 - 33ef046 - fbonniec : Merge pull request #1058 from betagouv/dependabot/npm_and_yarn/packages/reva-website/js-yaml-4.3.0
+2026-07-03T14:15:34+02:00 - 4569b68 - Florian Bonniec : feat(candidate): added feasibility-demat-autonome page for df demat autonome
+2026-07-03T12:57:58Z - 17f2fd7 - dependabot[bot] : chore(deps): bump js-yaml from 4.1.1 to 4.3.0 in /packages/reva-interop
+2026-07-03T11:23:25+02:00 - 73e3214 - Alexandre Garbe : feat(admin): added confirmation modal when updating certification authority
+2026-07-03T10:35:19+02:00 - bccf9a1 - ThomasDos : fix(interop): populate blocsDeCompetences on feasibility list endpoint
+2026-07-03T10:35:17+02:00 - 5629d85 - ThomasDos : feat(interop): expose competence blocs on jury result and feasibility reads
+2026-07-03T10:35:16+02:00 - dc754e7 - ThomasDos : feat(interop): accept per-competence-bloc results on PUT jury result
+2026-07-03T10:17:20+02:00 - 233ad6c - Alexandre Garbe : feat(admin): user can now update the certification authority in the candidacy summary page
+2026-07-02T17:06:38+02:00 - dbd9c6b - Cédric Soulas : fix(admin): align certification authority header actions
+2026-07-02T17:06:38+02:00 - cc0de62 - Cédric Soulas : feat(admin): align structure general information header
+2026-07-02T17:06:38+02:00 - bd210fb - Cédric Soulas : refactor(admin): introduce shared settings page header
+2026-07-02T17:06:38+02:00 - b2b2c4a - Cédric Soulas : fix(admin): remove duplicated intervention area copy
+2026-07-02T17:06:38+02:00 - 809fa23 - Cédric Soulas : test(admin): remove duplicated await in intervention area spec
+2026-07-02T17:06:38+02:00 - 5d9b9ac - Cédric Soulas : feat(admin): align certification authority settings headers
+2026-07-02T17:06:38+02:00 - 25ba7f3 - Cédric Soulas : fix(admin): align certification authority breadcrumbs
+2026-07-02T16:55:19+02:00 - 8e32552 - Cédric Soulas : feat(admin): remove candidacy summary funding alert
+2026-07-02T16:15:05+02:00 - 42101e6 - Pierre A : feat(collective):show certification domains instead of subdomains
+2026-07-02T15:55:11+02:00 - 4d8d121 - Alexandre Garbe : fix(admin): fixed flaky test
+2026-07-02T15:48:50+02:00 - cd4c746 - Alexandre Garbe : feat(admin): handled update button on certification authority card in candidacy summary page
+2026-07-02T14:46:12+02:00 - 1fa4dc5 - Florian Bonniec : fix:(candidate): fixed FeasibilityTile component props
+2026-07-02T14:06:20+02:00 - 83f9fe0 - Alexandre Garbe : fix(admin): CertificationAuthorityCard was missing clickable hints
+2026-07-02T12:19:14+02:00 - 383363b - Pierre A : feat(admin):readd impersonate button in new AAP account listing flow
+2026-07-02T12:14:00+02:00 - 67197f5 - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome-resources page for df demat autonome
+2026-07-02T11:01:03+02:00 - cd6edbc - ThomasDos : fix(candidate): add certification.codeRncp to add-experience query to fix build type error
+2026-07-02T10:29:40+02:00 - 7b80a2f - ThomasDos : feat(api): add rncp_objectifs_contexte to certification searchable_text
+2026-07-02T10:18:11+02:00 - 2beed3f - Pierre A : fix(api):check certificationb authority membership before allowing suer to accept TOS
+2026-07-02T10:17:35+02:00 - 60cc204 - Pierre A : fix(api):also try to get account id from root in certification authority local account preset
+2026-07-01T19:55:39Z - 23caaa8 - dependabot[bot] : chore(deps-dev): bump js-yaml in /packages/reva-website
+2026-07-01T16:58:11+02:00 - 005a7d8 - Pierre A : fix(api):check certification authority local account ownership in resolver security
 2026-07-01T16:27:44+02:00 - 9c62cf6 - Alexandre Garbe : feat(api): added a Candidacy-> isCandidacyCertificationAuthorityUpdatable resolver
 2026-07-01T16:00:50+02:00 - 4e399b7 - Florian Bonniec : feat(api,candidate): added experiences for df demat autonome
 2026-07-01T15:46:09+02:00 - 9bb8a58 - Alexandre Garbe : chore(admin): removed CertificationAuthoritySelectionPage
@@ -17,6 +52,7 @@
 2026-06-30T16:04:17+02:00 - 15ceb2f - Pierre A : tests(candidate):update vae collective candidation creation tests for new consent flow
 2026-06-30T15:45:58+02:00 - 434d9de - Pierre A : feat(candidate):add data processing consent page before letting a candidate join a cohort
 2026-06-30T14:46:30+02:00 - f74790a - Florian Bonniec : feat(api,candidate): added goals for df demat autonome
+2026-06-30T14:05:36Z - 0d79251 - dependabot[bot] : chore(deps): bump @microsoft/kiota-http-fetchlibrary
 2026-06-30T11:43:18+02:00 - 7a3e5bb - Florian Bonniec : chore: updated keycloak version from 26.6.1 to 26.6.4
 2026-06-29T16:58:07+02:00 - d4d5dd5 - Alexandre Garbe : chore(api): moved updateCandidacyCertificationAuthority feature to the proper folder
 2026-06-29T16:58:07+02:00 - bd67784 - Alexandre Garbe : feat(api): added logs when manually updating a candidacy certification authority
