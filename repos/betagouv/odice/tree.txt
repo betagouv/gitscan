@@ -37,7 +37,8 @@
 │   │   ├── 0006-fixture-oracle-compacte-etablissements.md
 │   │   ├── 0007-affichage-progressif-champs-simulateurs.md
 │   │   ├── 0008-analytics-matomo-wrapper-maison.md
-│   │   └── 0009-mesure-audience-cookieless.md
+│   │   ├── 0009-mesure-audience-cookieless.md
+│   │   └── 0010-tracking-combinaisons-event-name.md
 │   ├── matomo-funnel.md
 │   ├── simulateur-abattoirs-points-a-valider.md
 │   ├── simulateur-abattoirs.md
@@ -61,7 +62,8 @@
 │   ├── icons
 │   │   ├── building.png
 │   │   ├── cochon.png
-│   │   └── truck.png
+│   │   ├── truck.png
+│   │   └── viande.svg
 │   ├── images
 │   │   ├── image-1.png
 │   │   ├── image-2.png
@@ -147,14 +149,20 @@
 │   │       ├── etablissements
 │   │       │   └── components
 │   │       │       ├── EtablissementsForm.tsx
-│   │       │       └── EtablissementsResult.tsx
+│   │       │       ├── EtablissementsResult.tsx
+│   │       │       ├── traitementFields.spec.ts
+│   │       │       └── traitementFields.ts
 │   │       └── pages
 │   │           ├── SimulateursIndexPage.spec.tsx
-│   │           └── SimulateursIndexPage.tsx
+│   │           ├── SimulateursIndexPage.tsx
+│   │           ├── typeEtablissement.spec.ts
+│   │           └── typeEtablissement.ts
 │   ├── main.tsx
 │   ├── shared
 │   │   ├── analytics
 │   │   │   ├── Matomo.tsx
+│   │   │   ├── combinaison.spec.ts
+│   │   │   ├── combinaison.ts
 │   │   │   ├── events.ts
 │   │   │   ├── index.ts
 │   │   │   ├── matomo.client.ts
@@ -165,6 +173,7 @@
 │   │   ├── components
 │   │   │   ├── Breadcrumb.tsx
 │   │   │   ├── CarteZonesHint.tsx
+│   │   │   ├── DocumentAnimauxHint.tsx
 │   │   │   ├── ErrorBoundary.tsx
 │   │   │   ├── Notice.tsx
 │   │   │   ├── PageContainer.tsx
@@ -213,4 +222,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-56 directories, 159 files
+56 directories, 168 files
