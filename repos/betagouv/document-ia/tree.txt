@@ -44,42 +44,57 @@
 │   │   │   ├── environments
 │   │   │   │   ├── Albert.bru
 │   │   │   │   ├── Local.bru
+│   │   │   │   ├── Production.bru
 │   │   │   │   ├── Sandbox.bru
 │   │   │   │   └── Staging.bru
-│   │   │   └── v1
-│   │   │       ├── Admin
-│   │   │       │   ├── api-keys
-│   │   │       │   │   ├── create api key for organization.bru
-│   │   │       │   │   ├── delete an api key.bru
-│   │   │       │   │   ├── folder.bru
-│   │   │       │   │   └── update api key status for organization.bru
-│   │   │       │   ├── folder.bru
-│   │   │       │   ├── organizations
-│   │   │       │   │   ├── create new organization.bru
-│   │   │       │   │   ├── delete an organization.bru
-│   │   │       │   │   ├── folder.bru
-│   │   │       │   │   ├── get organization details.bru
-│   │   │       │   │   └── list all organizations.bru
-│   │   │       │   └── webhooks
-│   │   │       │       ├── create webhook.bru
-│   │   │       │       ├── delete a webhook.bru
-│   │   │       │       ├── folder.bru
-│   │   │       │       └── list organization webhooks.bru
+│   │   │   ├── v1
+│   │   │   │   ├── Admin
+│   │   │   │   │   ├── api-keys
+│   │   │   │   │   │   ├── create api key for organization.bru
+│   │   │   │   │   │   ├── delete an api key.bru
+│   │   │   │   │   │   ├── folder.bru
+│   │   │   │   │   │   └── update api key status for organization.bru
+│   │   │   │   │   ├── folder.bru
+│   │   │   │   │   ├── organizations
+│   │   │   │   │   │   ├── create new organization.bru
+│   │   │   │   │   │   ├── delete an organization.bru
+│   │   │   │   │   │   ├── folder.bru
+│   │   │   │   │   │   ├── get organization details.bru
+│   │   │   │   │   │   └── list all organizations.bru
+│   │   │   │   │   └── webhooks
+│   │   │   │   │       ├── create webhook.bru
+│   │   │   │   │       ├── delete a webhook.bru
+│   │   │   │   │       ├── folder.bru
+│   │   │   │   │       └── list organization webhooks.bru
+│   │   │   │   ├── folder.bru
+│   │   │   │   ├── secure
+│   │   │   │   │   ├── Execute Workflow Sync.bru
+│   │   │   │   │   ├── Execute Workflow.bru
+│   │   │   │   │   ├── Get execution details.bru
+│   │   │   │   │   └── folder.bru
+│   │   │   │   └── unsecure
+│   │   │   │       ├── Get all extraction schemas.bru
+│   │   │   │       ├── Health.bru
+│   │   │   │       └── folder.bru
+│   │   │   └── v2
 │   │   │       ├── folder.bru
-│   │   │       ├── secure
-│   │   │       │   ├── Execute Workflow Sync.bru
-│   │   │       │   ├── Execute Workflow.bru
-│   │   │       │   ├── Get execution details.bru
-│   │   │       │   └── folder.bru
-│   │   │       └── unsecure
-│   │   │           ├── Get all extraction schemas.bru
-│   │   │           ├── Health.bru
-│   │   │           └── folder.bru
+│   │   │       └── secure
+│   │   │           ├── folder.bru
+│   │   │           └── workflows
+│   │   │               ├── Execute workflow Sync.bru
+│   │   │               ├── Execute workflow.bru
+│   │   │               ├── Get All Workflows.bru
+│   │   │               └── folder.bru
 │   │   └── README.md
 │   ├── docs
 │   │   ├── API_SUMMARY.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── AUTHENTICATION.md
+│   │   ├── ERROR_HANDLING.md
 │   │   ├── RATE_LIMITING.md
-│   │   └── WORKFLOW_EXECUTION_API.md
+│   │   ├── ROUTES.md
+│   │   ├── WORKFLOW_V1_DEPRECATED.md
+│   │   └── WORKFLOW_V2.md
 │   ├── migration.sql
 │   ├── poetry.lock
 │   ├── poetry.toml
@@ -118,14 +133,19 @@
 │   │   │   │   │   ├── webhook
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   └── webhook.py
-│   │   │   │   │   └── workflow.py
+│   │   │   │   │   ├── workflow.py
+│   │   │   │   │   └── workflow_v2.py
 │   │   │   │   ├── exceptions
 │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── auth_exception.py
 │   │   │   │   │   ├── entity_not_found_exception.py
 │   │   │   │   │   ├── handler
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   └── exception_handlers.py
 │   │   │   │   │   └── rate_limit_exception.py
+│   │   │   │   ├── mapper
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── workflow_v2_mapper.py
 │   │   │   │   ├── middleware
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── aggregator_middleware.py
@@ -134,16 +154,19 @@
 │   │   │   │   ├── routes
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── main.py
-│   │   │   │   │   └── v1
+│   │   │   │   │   ├── v1
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── admin
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   ├── api_key.py
+│   │   │   │   │   │   │   ├── organization.py
+│   │   │   │   │   │   │   └── webhook.py
+│   │   │   │   │   │   ├── executions.py
+│   │   │   │   │   │   ├── extraction_schemas.py
+│   │   │   │   │   │   ├── health_check.py
+│   │   │   │   │   │   └── workflow.py
+│   │   │   │   │   └── v2
 │   │   │   │   │       ├── __init__.py
-│   │   │   │   │       ├── admin
-│   │   │   │   │       │   ├── __init__.py
-│   │   │   │   │       │   ├── api_key.py
-│   │   │   │   │       │   ├── organization.py
-│   │   │   │   │       │   └── webhook.py
-│   │   │   │   │       ├── executions.py
-│   │   │   │   │       ├── extraction_schemas.py
-│   │   │   │   │       ├── health_check.py
 │   │   │   │   │       └── workflow.py
 │   │   │   │   └── routes.py
 │   │   │   ├── application
@@ -164,7 +187,8 @@
 │   │   │   │       │   ├── __init__.py
 │   │   │   │       │   ├── mapper.py
 │   │   │   │       │   └── webhook_service.py
-│   │   │   │       └── workflow_service.py
+│   │   │   │       ├── workflow_service.py
+│   │   │   │       └── workflow_v2_service.py
 │   │   │   ├── core
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── config.py
@@ -212,7 +236,8 @@
 │           │   ├── test_health_check.py
 │           │   ├── test_organizations.py
 │           │   ├── test_webhooks.py
-│           │   └── test_workflow_execution.py
+│           │   ├── test_workflow_execution.py
+│           │   └── test_workflows_v2.py
 │           ├── application
 │           │   └── services
 │           │       └── test_api_keys_service.py
@@ -227,7 +252,9 @@
 │               ├── __init__.py
 │               ├── test_aggregator_middleware.py
 │               ├── test_execution_service.py
-│               └── test_file_validator.py
+│               ├── test_file_validator.py
+│               ├── test_redis_lag_check.py
+│               └── test_workflow_v2_service.py
 ├── document-ia-evals
 │   ├── .buildpacks
 │   ├── .env.example
@@ -262,11 +289,16 @@
 │   │       ├── __init__.py
 │   │       ├── app.py
 │   │       ├── assets
-│   │       │   └── logo.svg
+│   │       │   ├── logo.svg
+│   │       │   └── snippets
+│   │       │       ├── example.java
+│   │       │       ├── example.sh
+│   │       │       └── example.ts
 │   │       ├── components
 │   │       │   ├── __init__.py
 │   │       │   ├── document_type_selector.py
 │   │       │   ├── project_selector.py
+│   │       │   ├── workflow_configurator.py
 │   │       │   └── workflow_selector.py
 │   │       ├── database
 │   │       │   ├── __init__.py
@@ -274,6 +306,11 @@
 │   │       │   └── models.py
 │   │       ├── metrics
 │   │       │   ├── __init__.py
+│   │       │   ├── classification
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── metric.py
+│   │       │   │   ├── models.py
+│   │       │   │   └── renderer.py
 │   │       │   ├── compare_functions.py
 │   │       │   ├── json_schema_extra
 │   │       │   │   ├── __init__.py
@@ -286,14 +323,19 @@
 │   │       ├── pages
 │   │       │   ├── administration.py
 │   │       │   ├── create_dataset.py
+│   │       │   ├── create_dataset_v2.py
 │   │       │   ├── create_predictions.py
+│   │       │   ├── create_predictions_v2.py
 │   │       │   ├── evaluate_metrics.py
+│   │       │   ├── evaluate_metrics_v2.py
 │   │       │   ├── export_dataset.py
 │   │       │   ├── home.py
 │   │       │   ├── list_experiments.py
 │   │       │   ├── prompt_playground.py
 │   │       │   ├── retrieve_api_execution.py
-│   │       │   └── run_api_workflow.py
+│   │       │   ├── run_api_workflow.py
+│   │       │   ├── run_api_workflow_v2.py
+│   │       │   └── workflow_generator.py
 │   │       ├── services
 │   │       │   ├── __init__.py
 │   │       │   ├── administration_service.py
@@ -315,6 +357,7 @@
 │           ├── __init__.py
 │           └── metrics
 │               ├── __init__.py
+│               ├── test_classification_accuracy.py
 │               ├── test_compare_number.py
 │               ├── test_compare_string_date.py
 │               ├── test_compare_token_set_equality.py
@@ -433,13 +476,17 @@
 │   │       │   └── workflow
 │   │       │       ├── __init__.py
 │   │       │       ├── data
-│   │       │       │   └── workflows.json
+│   │       │       │   ├── workflows.json
+│   │       │       │   └── workflows.yaml
 │   │       │       ├── dto
 │   │       │       │   ├── __init__.py
-│   │       │       │   └── workflow_dto.py
+│   │       │       │   ├── enums.py
+│   │       │       │   ├── workflow_dto.py
+│   │       │       │   └── workflow_v2_dto.py
 │   │       │       └── repository
 │   │       │           ├── __init__.py
-│   │       │           └── workflow.py
+│   │       │           ├── workflow.py
+│   │       │           └── workflow_v2_repository.py
 │   │       ├── exception
 │   │       │   ├── __init__.py
 │   │       │   ├── entity_not_found_exception.py
@@ -504,9 +551,12 @@
 │           │   │       └── test_webhook_repository.py
 │           │   └── workflow
 │           │       ├── __init__.py
+│           │       ├── dto
+│           │       │   └── test_workflow_v2_dto.py
 │           │       └── repository
 │           │           ├── __init__.py
-│           │           └── test_workflow_repository.py
+│           │           ├── test_workflow_repository.py
+│           │           └── test_workflow_v2_repository.py
 │           ├── openai
 │           │   └── test_response_format.py
 │           ├── redis
@@ -678,6 +728,8 @@
 │   │           │       ├── llm_result.py
 │   │           │       ├── ocr_result.py
 │   │           │       └── preprocess_file_result.py
+│   │           ├── step_factory_v1.py
+│   │           ├── step_factory_v2.py
 │   │           └── workflow_manager.py
 │   └── tests
 │       ├── conftest.py
@@ -709,6 +761,7 @@
 │       └── unit
 │           ├── test_deepseek_ocr_service.py
 │           ├── test_extract_content_ocr_step.py
+│           ├── test_llm_classify_document_step.py
 │           ├── test_llm_extract.py
 │           ├── test_marker_service.py
 │           ├── test_mistral_ocr_service.py
@@ -716,7 +769,9 @@
 │           ├── test_preprocess_file_step.py
 │           ├── test_prompt_service.py
 │           ├── test_save_workflow_result_step.py
-│           └── test_workflow_manager.py
+│           ├── test_step_factory_v1.py
+│           ├── test_workflow_manager.py
+│           └── test_workflow_manager_prepare_executor.py
 ├── env.example
 ├── mockserver
 │   └── config
@@ -724,4 +779,4 @@
 ├── pyrightconfig.json
 └── scripts
     └── init-s3-bucket.py
-185 directories, 541 files
+193 directories, 588 files
