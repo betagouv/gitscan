@@ -23,23 +23,39 @@
 │       │   │           └── beta
 │       │   │               └── gouv
 │       │   │                   └── doctorat
+│       │   │                       ├── AlbertDocumentTestRunner.java
+│       │   │                       ├── AlbertSearchTestRunner.java
 │       │   │                       ├── CorsConfig.java
 │       │   │                       ├── DoctoratGouvBackendApplication.java
+│       │   │                       ├── LoggingInterceptor.java
+│       │   │                       ├── RestConfig.java
 │       │   │                       ├── SecurityConfig.java
 │       │   │                       ├── config
-│       │   │                       │   └── AdumApiProperties.java
+│       │   │                       │   ├── AdumApiProperties.java
+│       │   │                       │   └── IndexationConfig.java
 │       │   │                       ├── controller
+│       │   │                       │   ├── AlbertSearchController.java
 │       │   │                       │   ├── AngularForwardController.java
 │       │   │                       │   ├── ContactController.java
 │       │   │                       │   ├── FilterController.java
-│       │   │                       │   └── PropositionTheseController.java
+│       │   │                       │   ├── PropositionTheseController.java
+│       │   │                       │   └── ScalewaySearchController.java
 │       │   │                       ├── dto
+│       │   │                       │   ├── AlbertDocumentRequest.java
+│       │   │                       │   ├── AlbertDocumentResponse.java
+│       │   │                       │   ├── AlbertSearchHit.java
+│       │   │                       │   ├── AlbertSearchResponse.java
 │       │   │                       │   ├── AllFilterOptions.java
 │       │   │                       │   ├── Attachment.java
+│       │   │                       │   ├── ChunkWithType.java
 │       │   │                       │   ├── ContactRequest.java
-│       │   │                       │   └── PropositionTheseDto.java
+│       │   │                       │   ├── PropositionTheseDto.java
+│       │   │                       │   ├── TheseSemanticDocument.java
+│       │   │                       │   └── VectorSearchHit.java
 │       │   │                       ├── entity
-│       │   │                       │   └── PropositionThese.java
+│       │   │                       │   ├── PropositionThese.java
+│       │   │                       │   ├── ScalewayQueryLog.java
+│       │   │                       │   └── SujetEmbedding.java
 │       │   │                       ├── enums
 │       │   │                       │   ├── DomaineScientifique.java
 │       │   │                       │   ├── RegionsFrance.java
@@ -52,16 +68,36 @@
 │       │   │                       │   ├── AdumResponse.java
 │       │   │                       │   └── AmethisResponse.java
 │       │   │                       ├── repository
-│       │   │                       │   └── PropositionTheseRepository.java
+│       │   │                       │   ├── PropositionTheseRepository.java
+│       │   │                       │   ├── ScalewayQueryLogRepository.java
+│       │   │                       │   └── SujetEmbeddingRepository.java
 │       │   │                       ├── scheduler
 │       │   │                       │   ├── AdumScheduler.java
-│       │   │                       │   └── AmethisScheduler.java
+│       │   │                       │   ├── AlbertIndexationScheduler.java
+│       │   │                       │   ├── AmethisScheduler.java
+│       │   │                       │   └── EmbeddingScheduler.java
 │       │   │                       └── service
 │       │   │                           ├── AdumApiService.java
+│       │   │                           ├── AlbertChunkDeletionService.java
+│       │   │                           ├── AlbertChunkService.java
+│       │   │                           ├── AlbertDocumentDeletionService.java
+│       │   │                           ├── AlbertDocumentService.java
+│       │   │                           ├── AlbertReindexService.java
+│       │   │                           ├── AlbertSearchService.java
 │       │   │                           ├── AmethisApiService.java
+│       │   │                           ├── BlocExtractor.java
 │       │   │                           ├── BrevoEmailService.java
+│       │   │                           ├── EmbeddingIndexationService.java
 │       │   │                           ├── FilterService.java
-│       │   │                           └── PropositionTheseService.java
+│       │   │                           ├── PropositionTheseService.java
+│       │   │                           ├── ScalewayEmbeddingService.java
+│       │   │                           ├── SearchCriteriaExtractor.java
+│       │   │                           ├── SearchRerankerService.java
+│       │   │                           ├── TextChunker.java
+│       │   │                           ├── TheseIndexationService.java
+│       │   │                           ├── TheseSemanticBuilder.java
+│       │   │                           ├── TheseSemanticExportService.java
+│       │   │                           └── VectorSearchService.java
 │       │   └── resources
 │       │       ├── application-dev.properties
 │       │       ├── application-prod.properties
@@ -247,4 +283,4 @@
 ├── pom.xml
 ├── start.sh
 └── system.properties
-58 directories, 191 files
+58 directories, 227 files
