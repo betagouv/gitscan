@@ -6,7 +6,61 @@
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── apps
-│   └── simulateur-transport
+│   ├── glossaire-notion
+│   │   ├── icons
+│   │   │   ├── icon-128.png
+│   │   │   ├── icon-16.png
+│   │   │   ├── icon-32.png
+│   │   │   └── icon-48.png
+│   │   ├── index.html
+│   │   ├── manifest.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── config.ts
+│   │   │   ├── notion.ts
+│   │   │   ├── popup
+│   │   │   │   ├── Popup.tsx
+│   │   │   │   ├── main.tsx
+│   │   │   │   └── popup.css
+│   │   │   ├── search.ts
+│   │   │   └── storage.ts
+│   │   ├── tests
+│   │   │   ├── Popup.test.tsx
+│   │   │   ├── fixtures
+│   │   │   │   └── glossaire-recordmap.json
+│   │   │   ├── notion.test.ts
+│   │   │   ├── search.test.ts
+│   │   │   ├── setup.ts
+│   │   │   └── storage.test.ts
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│   ├── identification
+│   │   ├── .env.example
+│   │   ├── README.md
+│   │   ├── index.html
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── config.ts
+│   │   │   ├── ctx.ts
+│   │   │   ├── main.tsx
+│   │   │   ├── redirect.ts
+│   │   │   └── referentiel.ts
+│   │   ├── tests
+│   │   │   ├── App.test.tsx
+│   │   │   ├── config.test.ts
+│   │   │   ├── ctx.test.ts
+│   │   │   ├── redirect.test.ts
+│   │   │   └── setup.ts
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│   └── simulateur-eligibilite
 │       ├── SPEC.md
 │       ├── index.html
 │       ├── package-lock.json
@@ -17,20 +71,26 @@
 │       │   ├── App.tsx
 │       │   ├── FormField.tsx
 │       │   ├── Resultats.tsx
+│       │   ├── ctx.ts
 │       │   ├── engine.ts
-│       │   └── main.tsx
+│       │   ├── main.tsx
+│       │   └── session.ts
 │       ├── tests
 │       │   ├── App.test.tsx
-│       │   ├── accord-prealable.test.ts
-│       │   ├── eligibilite.test.ts
+│       │   ├── checklist-alerte.test.ts
+│       │   ├── dap.test.ts
 │       │   ├── engine.ts
-│       │   ├── mode-transport.test.ts
+│       │   ├── helpers.ts
+│       │   ├── resultat.test.ts
+│       │   ├── session.test.ts
 │       │   └── setup.ts
 │       ├── tsconfig.app.json
-│       ├── tsconfig.app.tsbuildinfo
 │       ├── tsconfig.json
 │       ├── tsconfig.node.json
-│       ├── tsconfig.node.tsbuildinfo
 │       └── vite.config.ts
+├── docs
+│   └── architecture
+│       ├── analytics.md
+│       └── identification.md
 └── mise.toml
-8 directories, 27 files
+19 directories, 76 files
