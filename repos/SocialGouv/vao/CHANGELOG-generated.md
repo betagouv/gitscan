@@ -1,25 +1,31 @@
-## Changelog : vao (30 derniers jours, au 26 juin 2026)
+## Changelog : vao (30 derniers jours, au 03 Juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des corrections de bugs et des améliorations de l'expérience utilisateur, notamment concernant le renouvellement des agréments, la gestion des documents, la sécurité (OTP) et l'accessibilité (RGAA). Des optimisations techniques ont également été apportées, ainsi que des mises à jour de dépendances.
+Cette période a été marquée par des améliorations significatives en matière d'accessibilité (RGAA) et de correction de bugs, notamment concernant le processus d'agrément et la gestion des documents. Des fonctionnalités liées à la sécurité (OTP) et à l'expérience utilisateur ont également été améliorées, ainsi que des optimisations techniques et des mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- **Renouvellement d'agrément :** Amélioration du bouton de suppression lors de l'étape 4 du renouvellement [#1451](https://github.com/SocialGouv/vao/issues/1451).
-- **Documents :** Normalisation des noms de fichiers uploadés en supprimant les caractères spéciaux [#1389](https://github.com/SocialGouv/vao/issues/1389). Correction de problèmes liés aux documents joints lors du renouvellement [#1420](https://github.com/SocialGouv/vao/issues/1420).
-- **Authentification :** Implémentation de la validation du code OTP par email, avec gestion des tentatives et possibilité de renvoi [#1396](https://github.com/SocialGouv/vao/issues/1396), [#1408](https://github.com/SocialGouv/vao/issues/1408), [#1416](https://github.com/SocialGouv/vao/issues/1416). Ajout de la persistance du code OTP avec l'option "se souvenir de moi" [#1408](https://github.com/SocialGouv/vao/issues/1408).
-- **RGAA :** Améliorations de l'accessibilité sur la page "Mon agrément" [#1391](https://github.com/SocialGouv/vao/issues/1391) et pour l'hébergement [#1436](https://github.com/SocialGouv/vao/issues/1436). Correction d'une date invalide provenant de l'environnement de pré-production [#1450](https://github.com/SocialGouv/vao/issues/1450).
-- **EIG :** Ajout d'un validateur pour le schéma EIG dans le back-office [#1437](https://github.com/SocialGouv/vao/issues/1437). Modification du datePicker dans le back-office EIG [#1441](https://github.com/SocialGouv/vao/issues/1441). Ajout de texte de sensibilisation et des CGUs pour l'EIG [#1417](https://github.com/SocialGouv/vao/issues/1417), [#1418](https://github.com/SocialGouv/vao/issues/1418).
-- **Fusager :** Correction de l'accès aux comptes Fusager en provenance de la pré-production [#1445](https://github.com/SocialGouv/vao/issues/1445). Correction d'un problème d'activation du bouton dans le brouillon lorsque le SIRET est correct [#1352](https://github.com/SocialGouv/vao/issues/1352), [#1390](https://github.com/SocialGouv/vao/issues/1390).
-- **Autres :** Correction d'un problème lié aux informations de la personne physique [#1388](https://github.com/SocialGouv/vao/issues/1388).
+- Amélioration de l'accessibilité (RGAA) sur plusieurs pages : création de compte, mon agrément, étape de renouvellement, page d'hébergement. [#1258](https://github.com/SocialGouv/vao/issues/1258), [#1440](https://github.com/SocialGouv/vao/issues/1440), [#1428](https://github.com/SocialGouv/vao/issues/1428)
+- Ajout de la possibilité de renvoyer le code OTP et validation de la connexion. [#1396](https://github.com/SocialGouv/vao/issues/1396)
+- Amélioration du processus d'agrément avec la première étape du fusager. [#1463](https://github.com/SocialGouv/vao/issues/1463)
+- Amélioration de la gestion des documents joints et des messages affichés lors du dépôt de fichiers. [#1406](https://github.com/SocialGouv/vao/issues/1406), [#1407](https://github.com/SocialGouv/vao/issues/1407)
+- Ajout de la possibilité de modifier la date de l'EIG dans le back-office. [#1441](https://github.com/SocialGouv/vao/issues/1441)
+- Amélioration de la gestion des informations relatives aux personnes physiques. [#1388](https://github.com/SocialGouv/vao/issues/1388)
+- Ajout de la possibilité de supprimer des documents lors du renouvellement. [#1451](https://github.com/SocialGouv/vao/issues/1451)
+- Correction de l'affichage des dates invalides dans le processus OTP. [#1450](https://github.com/SocialGouv/vao/issues/1450)
+- Amélioration de la gestion des mails liés au workflow d'agrément. [#1423](https://github.com/SocialGouv/vao/issues/1423)
 
 ### Évolutions techniques
-- **Antivirus :** Configuration de l'antivirus pour qu'il échoue en mode fermé, améliorant la sécurité [#1413](https://github.com/SocialGouv/vao/issues/1413).
-- **Infrastructure :** Augmentation des ressources CPU et mémoire pour la base de données CNPG en production [#1362](https://github.com/SocialGouv/vao/issues/1362), [#1363](https://github.com/SocialGouv/vao/issues/1363).
-- **CI/CD :** Publication de la version 1.28.0 en pré-production [#1422](https://github.com/SocialGouv/vao/issues/1422).
-- **Typescript :** Migration vers des routes Typescript [#1380](https://github.com/SocialGouv/vao/issues/1380).
+- Mise en place d'un feature flag pour l'insertion de l'OTP. [#1409](https://github.com/SocialGouv/vao/issues/1409)
+- Amélioration de la gestion des ressources PostgreSQL en préproduction (CPU et mémoire). [#1362](https://github.com/SocialGouv/vao/issues/1362), [#1363](https://github.com/SocialGouv/vao/issues/1363)
+- Correction d'un problème de validation du schéma de route DS. [#1458](https://github.com/SocialGouv/vao/issues/1458)
+- Normalisation des noms de fichiers uploadés pour supprimer les caractères spéciaux. [#1389](https://github.com/SocialGouv/vao/issues/1389)
+- Correction d'un bug empêchant l'activation du bouton dans le fusager lorsque le SIRET est correct. [#1352](https://github.com/SocialGouv/vao/issues/1352)
+- Mise à jour de plusieurs dépendances : eslint, knex, nodemailer, nestjs. [#1379](https://github.com/SocialGouv/vao/issues/1379), [#1392](https://github.com/SocialGouv/vao/issues/1392), [#1393](https://github.com/SocialGouv/vao/issues/1393), [#1394](https://github.com/SocialGouv/vao/issues/1394)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation.
-- **Dépendances :** Mises à jour de plusieurs dépendances (NestJS, Nodemailer, Knex, ts-jest, axios, multer, nuxt) pour bénéficier des dernières corrections et améliorations.
-- **Tests :** Amélioration de la configuration des tests.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+- Ajout de tests pour l'extension de visibilité de l'EIG. [#1452](https://github.com/SocialGouv/vao/issues/1452)
+- Correction de la date interne des messages. [#1460](https://github.com/SocialGouv/vao/issues/1460)
+- Ajout de texte de sensibilisation pour l'EIG. [#1411](https://github.com/SocialGouv/vao/issues/1411)
+- Ajout des CGU et du texte associé. [#1417](https://github.com/SocialGouv/vao/issues/1417), [#1427](https://github.com/SocialGouv/vao/issues/1427)
+- Mise en place de routes TypeScript. [#1380](https://github.com/SocialGouv/vao/issues/1380)
+- Publication de la version 1.28.0 en préproduction et 1.28.1 en production. [#1422](https://github.com/SocialGouv/vao/issues/1422), [#1462](https://github.com/SocialGouv/vao/issues/1462)
