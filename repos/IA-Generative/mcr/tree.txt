@@ -54,10 +54,12 @@
 │   ├── auth
 │   │   ├── .env.kc.local
 │   │   └── kc-mcr-local-config.json
-│   └── drive
-│       ├── compose.override.yml.drive
-│       ├── docker-compose.override.yml.mcr
-│       └── setup-drive.sh
+│   ├── drive
+│   │   ├── compose.override.yml.drive
+│   │   ├── docker-compose.override.yml.mcr
+│   │   └── setup-drive.sh
+│   └── ingress
+│       └── default.conf.template
 ├── docker-compose.yaml
 ├── image
 │   └── schema-archi-fonctionnel.jpg
@@ -466,6 +468,7 @@
 │   │   │   ├── noisy_dataset_standardisation.py
 │   │   │   └── utils.py
 │   │   ├── download_chunk.sh
+│   │   ├── download_meeting.sh
 │   │   ├── generate_state_machine_graph.py
 │   │   ├── process_audio.sh
 │   │   ├── provisioning.py
@@ -663,8 +666,6 @@
 │   │   │   │   ├── AddMeetingForm.vue
 │   │   │   │   ├── CreateVisioMeetingForm.vue
 │   │   │   │   ├── DeliverableItem.vue
-│   │   │   │   ├── ImportMeetingForm.vue
-│   │   │   │   ├── ImportMeetingProgressBar.vue
 │   │   │   │   ├── LiveRecordingInProgress.vue
 │   │   │   │   ├── MeetingAudioCard.vue
 │   │   │   │   ├── MeetingDeliverableCard.vue
@@ -679,8 +680,6 @@
 │   │   │   │   ├── forms
 │   │   │   │   │   ├── EditNameMeetingForm.vue
 │   │   │   │   │   ├── RecordMeetingForm.vue
-│   │   │   │   │   ├── import-meeting
-│   │   │   │   │   │   └── import-meeting.schema.ts
 │   │   │   │   │   ├── record-meeting
 │   │   │   │   │   │   ├── RecordMeetingFormNotice.vue
 │   │   │   │   │   │   ├── RecordMeetingStep1.spec.ts
@@ -696,7 +695,6 @@
 │   │   │   │   │   ├── DeleteMeetingModal.vue
 │   │   │   │   │   ├── EditMeetingModal.vue
 │   │   │   │   │   ├── EndLiveMeetingModal.vue
-│   │   │   │   │   ├── ImportMeetingModal.vue
 │   │   │   │   │   ├── LiveMeetingAdvicesModal.vue
 │   │   │   │   │   ├── RecordMeetingModal.vue
 │   │   │   │   │   └── VisioAdvicesModal.vue
@@ -745,6 +743,8 @@
 │   │   │   ├── use-chunk-upload.spec.ts
 │   │   │   ├── use-chunk-upload.ts
 │   │   │   ├── use-feature-flag.ts
+│   │   │   ├── use-import-meeting.spec.ts
+│   │   │   ├── use-import-meeting.ts
 │   │   │   ├── use-leave-guard.ts
 │   │   │   ├── use-meeting-peremption.spec.ts
 │   │   │   ├── use-meeting-peremption.ts
@@ -799,7 +799,9 @@
 │   │   │   ├── http
 │   │   │   │   ├── http.interceptors.ts
 │   │   │   │   ├── http.service.ts
-│   │   │   │   └── http.utils.ts
+│   │   │   │   ├── http.utils.spec.ts
+│   │   │   │   ├── http.utils.ts
+│   │   │   │   └── reachability.ts
 │   │   │   ├── lookup
 │   │   │   │   ├── lookup.service.ts
 │   │   │   │   └── lookup.types.ts
@@ -1140,4 +1142,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-216 directories, 926 files
+216 directories, 928 files
