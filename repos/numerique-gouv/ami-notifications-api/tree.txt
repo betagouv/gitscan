@@ -408,10 +408,10 @@
 │   │   │   │   ├── addressesFromBAN.ts
 │   │   │   │   ├── agenda.test.ts
 │   │   │   │   ├── agenda.ts
-│   │   │   │   ├── api-catalog.test.ts
-│   │   │   │   ├── api-catalog.ts
-│   │   │   │   ├── api-inventory.test.ts
-│   │   │   │   ├── api-inventory.ts
+│   │   │   │   ├── api-agenda.test.ts
+│   │   │   │   ├── api-agenda.ts
+│   │   │   │   ├── api-followup.test.ts
+│   │   │   │   ├── api-followup.ts
 │   │   │   │   ├── assets
 │   │   │   │   │   └── installation
 │   │   │   │   │       ├── ajout_icone.png
@@ -429,6 +429,10 @@
 │   │   │   │   │   ├── BackButton.svelte
 │   │   │   │   │   ├── BackButton.svelte.test.ts
 │   │   │   │   │   ├── Card.svelte
+│   │   │   │   │   ├── Followup.svelte
+│   │   │   │   │   ├── Followup.svelte.test.ts
+│   │   │   │   │   ├── FollowupItem.svelte
+│   │   │   │   │   ├── FollowupItem.svelte.test.ts
 │   │   │   │   │   ├── Icon.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte.test.ts
@@ -437,10 +441,6 @@
 │   │   │   │   │   ├── NotificationIcon.svelte
 │   │   │   │   │   ├── NotificationIcon.svelte.test.ts
 │   │   │   │   │   ├── PageWrapper.svelte
-│   │   │   │   │   ├── RequestItem.svelte
-│   │   │   │   │   ├── RequestItem.svelte.test.ts
-│   │   │   │   │   ├── Requests.svelte
-│   │   │   │   │   ├── Requests.svelte.test.ts
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
@@ -449,6 +449,8 @@
 │   │   │   │   │   └── modal
 │   │   │   │   │       ├── AgendaItemModal.svelte
 │   │   │   │   │       ├── AgendaItemModal.svelte.test.ts
+│   │   │   │   │       ├── FollowupItemModal.svelte
+│   │   │   │   │       ├── FollowupItemModal.svelte.test.ts
 │   │   │   │   │       ├── ItemModal.svelte
 │   │   │   │   │       ├── Logout.svelte
 │   │   │   │   │       ├── LogoutFooter.svelte
@@ -456,16 +458,14 @@
 │   │   │   │   │       ├── Modal.svelte
 │   │   │   │   │       ├── Modal.svelte.test.ts
 │   │   │   │   │       ├── NavWithBackButton.svelte
-│   │   │   │   │       ├── RequestItemModal.svelte
-│   │   │   │   │       ├── RequestItemModal.svelte.test.ts
 │   │   │   │   │       ├── ZonePreferences.svelte
 │   │   │   │   │       ├── ZonePreferences.svelte.test.ts
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
 │   │   │   │   ├── dsfr-icon.test.ts
 │   │   │   │   ├── dsfr-icon.ts
 │   │   │   │   ├── dsfr.ts
-│   │   │   │   ├── follow-up.test.ts
-│   │   │   │   ├── follow-up.ts
+│   │   │   │   ├── followup.test.ts
+│   │   │   │   ├── followup.ts
 │   │   │   │   ├── france-connect.test.js
 │   │   │   │   ├── france-connect.ts
 │   │   │   │   ├── index.ts
@@ -518,6 +518,12 @@
 │   │   │       ├── fi
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── followup
+│   │   │       │   ├── +page.svelte
+│   │   │       │   ├── archived
+│   │   │       │   │   ├── +page.svelte
+│   │   │       │   │   └── page.svelte.test.ts
+│   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── forbidden
 │   │   │       │   └── +page.svelte
 │   │   │       ├── layout.svelte.test.ts
@@ -544,12 +550,6 @@
 │   │   │       │   └── +page.svelte
 │   │   │       ├── profile
 │   │   │       │   ├── +page.svelte
-│   │   │       │   └── page.svelte.test.ts
-│   │   │       ├── requests
-│   │   │       │   ├── +page.svelte
-│   │   │       │   ├── archived
-│   │   │       │   │   ├── +page.svelte
-│   │   │       │   │   └── page.svelte.test.ts
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── silent-login
 │   │   │       │   ├── +page.svelte

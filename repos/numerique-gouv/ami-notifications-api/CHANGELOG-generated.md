@@ -1,30 +1,47 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 30 juin 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 02 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des notifications et des préférences de localisation. Des corrections et des améliorations ont également été apportées à l'API et à l'interface d'administration, ainsi qu'à la gestion des identifiants et de l'authentification.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment sur les pages de suivi et d'agenda, ainsi que par l'implémentation de la gestion des notifications archivées. Des travaux ont également été réalisés pour préparer l'intégration avec le service FranceConnect et améliorer la robustesse de la réplication des données.
 
 ### Évolutions fonctionnelles
-- **Gestion des notifications :** Amélioration de l'affichage des icônes de notification, avec récupération depuis l'API et gestion des cas où l'icône n'est pas disponible. Ajout de la possibilité d'archiver les notifications et les éléments associés.
-- **Préférences de localisation :** Refonte de la page de gestion des zones de notification, avec la possibilité de sélectionner une zone en fonction de la ville. Ajout d'une fonctionnalité pour effacer les adresses enregistrées.
-- **Authentification :** Implémentation d'une procédure de "silent login" avec FranceConnect pour une expérience utilisateur plus fluide. Amélioration de la gestion des tokens et des sessions.
-- **API :** Ajout d'un endpoint pour la gestion des événements v2 et amélioration de la gestion des champs liés aux items.
-- **Interface d'administration :** Amélioration de l'envoi de notifications depuis l'interface d'administration.
+- **Suivi des demandes (FollowUp):**
+    - Ajout de la possibilité d'archiver les demandes de suivi.
+    - Page dédiée pour consulter les demandes archivées.
+    - Simplification de l'interface de suivi, suppression des onglets.
+    - Ajout d'un indicateur visuel pour les demandes archivées.
+- **Notifications:**
+    - Amélioration de l'affichage des icônes de notification, avec récupération depuis l'item associé ou utilisation d'une icône par défaut.
+    - Exclusion des notifications expirées lors de la récupération en liste.
+    - Ajout d'un champ `valid_until` pour gérer la durée de validité des notifications.
+- **FranceConnect (FI):**
+    - Implémentation d'une vue pour l'authentification silencieuse via FranceConnect.
+    - Ajout d'une page intermédiaire pour gérer le processus d'authentification FI.
+    - Possibilité de choisir le fournisseur d'authentification FranceConnect.
+    - Affichage des données de l'utilisateur après authentification FI.
+- **Adresse:** Correction d'un bug d'affichage sur la page d'édition d'adresse.
 
 ### Évolutions techniques
-- **Infrastructure :** Mise à jour de plusieurs dépendances, notamment `uv`, `js-yaml`, `pyjwt`, `cryptography`, `esbuild`, `svelte`, `vitest`, `ws`, `idna` et `ujson`.
-- **Architecture :** Refactorisation de certains composants de l'interface utilisateur pour améliorer la maintenabilité et la performance.
-- **Tests :** Amélioration des tests unitaires, notamment pour la page de préférences de zone.
-- **Réplication :** Amélioration de la réplication des données, notamment pour la gestion des abonnements et l'accès aux données depuis le datawarehouse.
-- **Outils :** Configuration de Vite avec LightningCSS.
-- **Gestion des tâches :** Utilisation de `django-tasks-db` pour la gestion des tâches asynchrones.
+- **API:**
+    - Ajout du champ `item_is_archived` au modèle de notification.
+    - Modification de l'API pour exposer les champs `external_item_type` et `external_item_id` pour les suivis.
+    - Implémentation d'un nouveau point de terminaison pour archiver un item de suivi.
+    - Refactorisation de l'API pour gérer les notifications expirées.
+- **Infrastructure:**
+    - Mise à jour des dépendances : `ujson`, `msgpack`, `pyjwt`, `webob`, `cryptography`, `esbuild`, `@sveltejs/vite-plugin-svelte`, `vite`, `@vitejs/plugin-basic-ssl`, `dompurify`, `js-yaml`.
+    - Utilisation de `django-tasks-db` par défaut pour la gestion des tâches asynchrones.
+    - Ajout de tests pour la page de préférences de zone.
+- **Réplication:**
+    - Prise en compte du champ `subscription` lors de la réplication des enregistrements.
 
 ### Autres changements
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de problèmes de RGAA (accessibilité).
-- Nettoyage du code et suppression de fichiers inutiles.
-- Ajout de meta tags pour la compatibilité avec certains outils.
-- Correction de bugs mineurs et amélioration de la stabilité de l'application.
-- Suppression des valeurs par défaut pour certains champs dans l'API d'administration.
-- Ajout d'un mécanisme pour éviter de retourner des notifications expirées.
-- Amélioration de la gestion des erreurs et des logs.
-- Correction d'un bug lié à la gestion des cookies lors du login avec FranceConnect.
+- Amélioration de la conformité RGAA (accessibilité) sur plusieurs composants de l'interface utilisateur.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la documentation.
+- Suppression de code obsolète.
+- Amélioration des performances de la récupération de la liste des notifications.
+- Ajout de métriques pour suivre le nombre de notifications envoyées.
+- Correction d'un problème de déconnexion inattendue avec FranceConnect.
+- Ajout d'un meta tag pour la sécurité (referrer).
+- Correction de l'affichage de la hauteur de la page en mode mobile.
+- Suppression de code inutile sur la page d'agenda.
+- Renommage de certaines librairies et routes pour plus de cohérence (agenda, followup, requests).
