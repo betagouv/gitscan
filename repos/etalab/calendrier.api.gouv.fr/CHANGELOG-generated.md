@@ -1,13 +1,10 @@
 ## Changelog : calendrier.api.gouv.fr (30 derniers jours, au 01 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les modifications apportées au projet se concentrent sur la maintenance de l'infrastructure et la vérification du bon fonctionnement continu de l'API. Aucune nouvelle fonctionnalité ou correction de bug visible pour les utilisateurs n'a été déployée.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle à signaler.
+Ce mois-ci, l'API a été maintenue en production grâce à une vérification automatisée de son fonctionnement continu. Aucune nouvelle fonctionnalité ou correction de bug n'a été déployée.
 
 ### Évolutions techniques
-- Mise à jour du workflow GitHub Actions pour confirmer le fonctionnement continu de l'API au 1er juillet 2026.
+- Vérification du bon fonctionnement de l'API via une action GitHub pour s'assurer de sa disponibilité continue. [#1](https://github.com/etalab/calendrier.api.gouv.fr/commit/50c3d01)
 
 ### Autres changements
-Aucun autre changement à signaler.
+- Aucune modification significative.
