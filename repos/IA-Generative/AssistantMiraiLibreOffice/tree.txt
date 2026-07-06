@@ -28,6 +28,7 @@
 │   ├── DEBUG.md
 │   ├── DEPLOY.md
 │   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── PLUGIN_DEVELOPER_GUIDE.md
 │   ├── TELEMETRY.md
 │   ├── deploy-auto-update-report.md
 │   └── notice-utilisateur.md
@@ -116,6 +117,7 @@
 │   ├── bump-version.sh
 │   ├── deploy-release.sh
 │   ├── dev-launch.sh
+│   ├── smoke-deploy.sh
 │   └── test-update.sh
 ├── src
 │   ├── __init__.py
@@ -162,6 +164,8 @@
 │       │   └── writer.py
 │       └── security_flow.py
 └── tests
+    ├── RAPPORT-richard-menucontext.md
+    ├── TEST-MANUEL-utilisateur.md
     ├── __init__.py
     ├── fixtures
     │   ├── formula_test.ods
@@ -181,8 +185,12 @@
     │   └── uno_stubs.py
     └── unit
         ├── __init__.py
+        ├── conftest.py
+        ├── test_bootstrap_insecure_ssl.py
+        ├── test_build_oxt_smoke.py
         ├── test_calc_menu_actions.py
         ├── test_calc_prompt_function.py
+        ├── test_config_fetch_perf.py
         ├── test_documentation_url.py
         ├── test_enrollment.py
         ├── test_models_fetch.py
@@ -190,7 +198,8 @@
         ├── test_set_config.py
         ├── test_summarize_writer.py
         ├── test_token_logic.py
+        ├── test_update_blocked.py
         ├── test_update_directive.py
         ├── test_update_features.py
         └── test_user_agent.py
-28 directories, 167 files
+28 directories, 176 files

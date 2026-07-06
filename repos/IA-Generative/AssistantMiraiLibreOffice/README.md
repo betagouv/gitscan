@@ -158,13 +158,21 @@ Le pourcentage est calculé par un hash du `client_uuid` — c'est déterministe
 
 1. Le plugin appelle `/config/{slug}/config.json` au démarrage et à chaque action
 2. Le DM compare la version du plugin avec la campagne active
-3. Si une mise à jour est disponible, le plugin télécharge l'artefact via `/catalog/{slug}/download`
+3. Si une mise à jour est disponible, le plugin télécharge l'artefact via `/catalog/{slug}/download` — avec **failover multi-bootstrap** (chaque DM essayé en ordre *last-good d'abord*, TLS par-URL) pour ne pas rester bloqué sur une URL injoignable _(#16)_
 4. Vérifie le checksum SHA-256
-5. Crée un script d'installation : quit LO → `unopkg remove` → `unopkg add` → relaunch
-6. Propose à l'utilisateur de redémarrer (Oui / Non)
-7. Le script logge chaque étape dans `~/log.txt` avec le préfixe `[UPDATE]`
+5. **Installe la mise à jour**, avec repli en cascade :
+   1. **In-process** — `ExtensionManager.get(ctx)` (le **singleton** ; `createInstance` et `getValueByName` renvoient `None`) → `addExtension`, puis redémarrage natif (`OfficeRestartManager`). **Aucun processus enfant** → immunisé à la GPO « block Office child process » des postes durcis qui bloque `cmd.exe` (`[WinError 5]`). Chemin principal, garde le pilotage DM (cohortes / canary). _(#4, #15)_
+   2. Sinon, **script d'install** (`unopkg remove` → `unopkg add` via `.bat`, log `~/log.txt` préfixe `[UPDATE]`) — bloqué sur postes durcis.
+   3. Sinon, **boîte « mise à jour bloquée »** : mode opératoire manuel (Gestionnaire d'extensions) + bouton **« Ouvrir le dossier »** qui ouvre l'explorateur sur le fichier téléchargé en **natif** (`SystemShellExecute`, **sans `cmd.exe`** — validé sur poste durci). _(#7, #12)_
+6. Report du statut au DM via `/update/status` (relay-headers requis)
 
-Protection anti-boucle : le plugin compare `target_version` avec sa version courante et ignore les directives identiques.
+**Protection anti-boucle** : `target_version` comparée à la version courante (directives identiques ignorées) ; un target dont l'install a été bloquée n'est plus reproposé.
+
+**Diagnostic / test** :
+- `MIRAI_SELFTEST_UPDATE_BLOCKED=1` force la boîte « mise à jour bloquée » via *À propos ▸ Vérifier les mises à jour*, sans déployer de MAJ _(#7)_.
+- Le dialogue *À propos* expose aussi un bouton **« Ouvrir dossier »** (même ouverture native que ci-dessus) pour tester localement, Mac inclus.
+
+> **Suivi du mécanisme de MAJ** : issue-parapluie **#9** · install in-process **#4** (singleton `.get` **#15**) · download failover **#16** · bouton « Ouvrir le dossier » **#7**/**#12** · option native `<update-information>` **#5** (flux format LibreOffice côté DM : IA-Generative/device-management#23) · cache binaire DM : IA-Generative/device-management#24.
 
 ### Suivi et contrôle
 
@@ -242,7 +250,8 @@ scripts/
 
 docs/
 ├── DEPLOY.md                  # Guide de déploiement complet
-└── TELEMETRY.md               # Documentation télémétrie OpenTelemetry
+├── TELEMETRY.md               # Documentation télémétrie OpenTelemetry
+└── PLUGIN_DEVELOPER_GUIDE.md  # Onboarding développeur tiers (DM, enrôlement, manifests, WAF)
 
 tests/
 ├── unit/                      # Tests unitaires (pytest)
@@ -344,12 +353,17 @@ sequenceDiagram
 
 | Version | Changements principaux |
 | --- | --- |
+| 0.0.1.0.4+ | **Stabilité multi-instance** : SIGTERM remplace `desktop.terminate()` (plus de crash depuis un thread background), flags enrollment/update partagés entre instances LO, attente de la config avant tout trigger |
+| 0.0.1.0.4+ | **UX update** : popup de mise à jour différée jusqu'après l'enrôlement, réouverture du document actif (et non du Start Center) après auto-update, lancement du script de mise à jour seulement après confirmation utilisateur |
+| 0.0.1.0.4+ | **Auto-update fiabilisé** : chemin OXT stable, attente effective de la fermeture de LO, traces dans `~/log.txt`, anti-boucle (skip si déjà à `target_version`) |
 | 0.0.8+ | **Télémétrie enrichie** : `plugin.action`, `trigger.source`, `X-Client-UUID` header, traces Calc |
 | 0.0.8+ | **Mise à jour automatique** : download via catalog, checksum, staged install cross-platform, anti-boucle |
 | 0.0.8+ | **Fix UI** : filtrage `<think>` dans Edit, suggestions IA sync (pas de gel), retry 403 |
 | 0.0.8+ | **Déploiement** : endpoint unifié `/api/plugins/{slug}/deploy`, `bump-version.sh`, rollout canary/immediate |
 | 0.2.0 | **Ajuster la longueur**, suggestions IA, générateur formules, dialogue À propos, toolbar, deploy automatisé |
 | 0.1.0 | Générer, Modifier, Résumer, Reformuler (Writer), Transformer, Formule, Analyser (Calc), enrollment Keycloak |
+
+> **Développeur de plug-in tiers ?** Tout ce qu'il faut connaître pour intégrer un plug-in (Writer/Calc, navigateur MV3, Thunderbird, MS Office) au Device Management — manifests, enrôlement, sécurité, contournement WAF, auto-update — est consolidé dans [docs/PLUGIN_DEVELOPER_GUIDE.md](docs/PLUGIN_DEVELOPER_GUIDE.md).
 
 ---
 
