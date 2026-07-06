@@ -40,10 +40,26 @@
 │   │   ├── pdf-preview.spec.tsx
 │   │   ├── unsupported-file-preview.spec.tsx
 │   │   └── video-preview.spec.tsx
-│   └── helpers
-│       ├── fixtures.ts
-│       ├── mount-preview.tsx
-│       └── pdf-helpers.ts
+│   ├── filter
+│   │   ├── filter-reset.spec.tsx
+│   │   └── filter.spec.tsx
+│   ├── help-menu
+│   │   └── help-menu.spec.tsx
+│   ├── helpers
+│   │   ├── fixtures.ts
+│   │   ├── mount-filter.tsx
+│   │   ├── mount-help-menu.tsx
+│   │   ├── mount-la-gaufre.tsx
+│   │   ├── mount-preview.tsx
+│   │   ├── mount-search-filter.tsx
+│   │   ├── mount-smart-scroller.tsx
+│   │   └── pdf-helpers.ts
+│   ├── la-gaufre
+│   │   └── la-gaufre-v2.spec.tsx
+│   ├── search-filter
+│   │   └── search-filter.spec.tsx
+│   └── smart-scroller
+│       └── smart-scroller.spec.tsx
 ├── eslint.config.js
 ├── package.json
 ├── playwright
@@ -92,6 +108,7 @@
 │   │   │       ├── mime-calc.svg
 │   │   │       ├── mime-doc-mini.svg
 │   │   │       ├── mime-doc.svg
+│   │   │       ├── mime-docs-mini.svg
 │   │   │       ├── mime-folder-mini.svg
 │   │   │       ├── mime-grist-mini.svg
 │   │   │       ├── mime-grist.svg
@@ -183,6 +200,7 @@
 │   │   ├── filter
 │   │   │   ├── Filter.stories.tsx
 │   │   │   ├── Filter.tsx
+│   │   │   ├── FilterResetRow.tsx
 │   │   │   └── index.scss
 │   │   ├── footer
 │   │   │   ├── Footer.stories.tsx
@@ -219,6 +237,7 @@
 │   │   │       ├── index.scss
 │   │   │       └── textarea.stories.tsx
 │   │   ├── help-menu
+│   │   │   ├── HelpMenu.mdx
 │   │   │   ├── HelpMenu.tsx
 │   │   │   ├── help-menu.stories.tsx
 │   │   │   ├── index.scss
@@ -234,6 +253,7 @@
 │   │   │   ├── IconSvg.stories.tsx
 │   │   │   ├── IconSvg.tsx
 │   │   │   ├── icons
+│   │   │   │   ├── Accessibility.tsx
 │   │   │   │   ├── All.tsx
 │   │   │   │   ├── AndroidLogo.tsx
 │   │   │   │   ├── AppleLogo.tsx
@@ -244,6 +264,7 @@
 │   │   │   │   ├── ArrowDownCircleFilled.tsx
 │   │   │   │   ├── ArrowDownLeft.tsx
 │   │   │   │   ├── ArrowDownRight.tsx
+│   │   │   │   ├── ArrowDownWideNarrow.tsx
 │   │   │   │   ├── ArrowDropDown.tsx
 │   │   │   │   ├── ArrowLeft.tsx
 │   │   │   │   ├── ArrowLeftRight.tsx
@@ -255,9 +276,12 @@
 │   │   │   │   ├── ArrowUpDown.tsx
 │   │   │   │   ├── ArrowUpDownCircle.tsx
 │   │   │   │   ├── ArrowUpLeft.tsx
+│   │   │   │   ├── ArrowUpNarrowWide.tsx
 │   │   │   │   ├── ArrowUpRight.tsx
+│   │   │   │   ├── AttachFile.tsx
 │   │   │   │   ├── BadgeCheck.tsx
 │   │   │   │   ├── BadgeQuestion.tsx
+│   │   │   │   ├── Ban.tsx
 │   │   │   │   ├── Bell.tsx
 │   │   │   │   ├── BellOff.tsx
 │   │   │   │   ├── Bento.tsx
@@ -279,6 +303,7 @@
 │   │   │   │   ├── BubbleLock.tsx
 │   │   │   │   ├── BubbleText.tsx
 │   │   │   │   ├── BubbleTextNotif.tsx
+│   │   │   │   ├── BubbleXMark.tsx
 │   │   │   │   ├── Bug.tsx
 │   │   │   │   ├── Building.tsx
 │   │   │   │   ├── Building2.tsx
@@ -307,6 +332,7 @@
 │   │   │   │   ├── CircleCheck.tsx
 │   │   │   │   ├── CircleCheckFilled.tsx
 │   │   │   │   ├── CircleDot.tsx
+│   │   │   │   ├── CirclePause.tsx
 │   │   │   │   ├── Clock.tsx
 │   │   │   │   ├── ClockArrowCirclepath.tsx
 │   │   │   │   ├── ClosedCaption.tsx
@@ -376,6 +402,7 @@
 │   │   │   │   ├── FolderPerso.tsx
 │   │   │   │   ├── FolderPlus.tsx
 │   │   │   │   ├── FolderPublic.tsx
+│   │   │   │   ├── FolderRestricted.tsx
 │   │   │   │   ├── FolderShared.tsx
 │   │   │   │   ├── FolderStar.tsx
 │   │   │   │   ├── FolderUp.tsx
@@ -436,6 +463,7 @@
 │   │   │   │   ├── Icon8CircleFilled.tsx
 │   │   │   │   ├── Icon9CircleFilled.tsx
 │   │   │   │   ├── Identity.tsx
+│   │   │   │   ├── ImageAdd.tsx
 │   │   │   │   ├── ImagePlus.tsx
 │   │   │   │   ├── ImageSpark.tsx
 │   │   │   │   ├── Incognito.tsx
@@ -462,6 +490,7 @@
 │   │   │   │   ├── Logout.tsx
 │   │   │   │   ├── Mail.tsx
 │   │   │   │   ├── MailCheckFilled.tsx
+│   │   │   │   ├── MapPin.tsx
 │   │   │   │   ├── Maximize.tsx
 │   │   │   │   ├── Measure.tsx
 │   │   │   │   ├── Meet.tsx
@@ -510,6 +539,7 @@
 │   │   │   │   ├── PlusDashedEdit.tsx
 │   │   │   │   ├── Present.tsx
 │   │   │   │   ├── Presentation.tsx
+│   │   │   │   ├── Print.tsx
 │   │   │   │   ├── Public.tsx
 │   │   │   │   ├── Puzzle.tsx
 │   │   │   │   ├── PuzzleFilled.tsx
@@ -529,6 +559,7 @@
 │   │   │   │   ├── Scale.tsx
 │   │   │   │   ├── ScreenShareOff.tsx
 │   │   │   │   ├── Sd.tsx
+│   │   │   │   ├── Send.tsx
 │   │   │   │   ├── Server.tsx
 │   │   │   │   ├── Settings.tsx
 │   │   │   │   ├── Shapes.tsx
@@ -547,17 +578,28 @@
 │   │   │   │   ├── Shortcut.tsx
 │   │   │   │   ├── Show.tsx
 │   │   │   │   ├── Solo.tsx
+│   │   │   │   ├── Sparkle.tsx
+│   │   │   │   ├── Sparkle2.tsx
 │   │   │   │   ├── Sparkles2.tsx
 │   │   │   │   ├── Speaker.tsx
+│   │   │   │   ├── Spotlight.tsx
 │   │   │   │   ├── Stack.tsx
 │   │   │   │   ├── StackTemplate.tsx
 │   │   │   │   ├── Star.tsx
 │   │   │   │   ├── StarFilled.tsx
 │   │   │   │   ├── StarSlash.tsx
 │   │   │   │   ├── Strikethrough.tsx
+│   │   │   │   ├── Suggest.tsx
 │   │   │   │   ├── Sun.tsx
 │   │   │   │   ├── Table.tsx
+│   │   │   │   ├── TagAdd.tsx
+│   │   │   │   ├── TagOff.tsx
+│   │   │   │   ├── Tchap.tsx
 │   │   │   │   ├── TerminalFilled.tsx
+│   │   │   │   ├── TextAlignCenter.tsx
+│   │   │   │   ├── TextAlignEnd.tsx
+│   │   │   │   ├── TextAlignJustify.tsx
+│   │   │   │   ├── TextAlignStart.tsx
 │   │   │   │   ├── Thread.tsx
 │   │   │   │   ├── ThumbDown.tsx
 │   │   │   │   ├── ThumbDownFilled.tsx
@@ -580,6 +622,7 @@
 │   │   │   │   ├── UnpinFilled.tsx
 │   │   │   │   ├── Upload.tsx
 │   │   │   │   ├── User.tsx
+│   │   │   │   ├── UserAdd.tsx
 │   │   │   │   ├── UserCheck.tsx
 │   │   │   │   ├── UserLock.tsx
 │   │   │   │   ├── UserSearch.tsx
@@ -641,6 +684,8 @@
 │   │   │   ├── index.tsx
 │   │   │   └── spinner.stories.tsx
 │   │   ├── menu
+│   │   │   ├── MenuItemBody.stories.tsx
+│   │   │   ├── MenuItemBody.tsx
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
 │   │   ├── modal
@@ -741,6 +786,7 @@
 │   │   │   ├── index.scss
 │   │   │   └── resize-handle.stories.tsx
 │   │   ├── search-filter
+│   │   │   ├── SearchFilter.mdx
 │   │   │   ├── SearchFilter.tsx
 │   │   │   ├── UserSearchFilter.tsx
 │   │   │   ├── index.scss
@@ -794,6 +840,12 @@
 │   │   │   └── utils
 │   │   │       ├── ShareModalCopyLinkFooter.tsx
 │   │   │       └── index.tsx
+│   │   ├── smart-scroller
+│   │   │   ├── SmartScroller.mdx
+│   │   │   ├── SmartScroller.tsx
+│   │   │   ├── index.scss
+│   │   │   ├── index.tsx
+│   │   │   └── smart-scroller.stories.tsx
 │   │   ├── storage-gauge
 │   │   │   ├── StorageGauge.tsx
 │   │   │   ├── index.scss
@@ -878,4 +930,4 @@
 ├── tsconfig.json
 ├── vite.config.ts
 └── yarn.lock
-107 directories, 773 files
+113 directories, 819 files

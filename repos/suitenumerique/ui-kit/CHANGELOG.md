@@ -1,10 +1,40 @@
 # @gouvfr-lasuite/ui-kit
 
-[UNRELEASED]
+## [UNRELEASED]
+
+## 0.26.0
+
+### Patch Changes
+
+- 🐛(front) dismiss filter sub-panel on click outside, not hover out
+- ♻️(front) keep SmartScroller arrows mounted for smooth fades
+- ♻️(front) improve SmartScroller blurry gradient
+- 🐛(front) fix SmartScroller button background
+- 💄(front) refresh the mini file icons
+- ✨(front) add a reset row to Filter
+- ✨(front) add a reset row to SearchFilter
+- ♻️(front) use Icon components for menu item affordances
+
+## 0.25.0
+
+### Minor Changes
+
+- 🐛(tree-view) remove pointer-events rules breaking drag-and-drop #215
+- 📱(user-menu) add withMobileView prop to hide mobile view rendering #264
+- ♿️(user-menu) add accessibility to user menu item #265
+
+## 0.24.0
 
 ### Minor Changes
 
 - ♿️(menu) add opensInNewWindow for external link aria-label #246
+- 🚸(LaGaufreV2) automatic positionning #260
+- ✨(filter) add custom sub-element support to options
+- ✨(help-menu) add legal links and custom options
+- ✨(front) add SmartScroller component
+- ✨(front) add a reset row to Filter
+- ✨(front) add a reset row to SearchFilter and ui revamp
+- ✨(front) align menu item to figma ( mainly smaller )
 
 ## 0.23.2
 
@@ -26,7 +56,7 @@
 
 ### Major Changes
 
-- 💥(frontend) add dedicated icons entrypoint 
+- 💥(frontend) add dedicated icons entrypoint
 
 ### Patch Changes
 
