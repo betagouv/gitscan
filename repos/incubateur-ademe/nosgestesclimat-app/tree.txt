@@ -372,6 +372,7 @@
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── sync-brevo-contacts.spec.ts
 │   │   │   │   │   └── sync-notion-actions.spec.ts
+│   │   │   │   ├── cleanup-expired-tokens.ts
 │   │   │   │   ├── compute-poll-stats.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── __tests__
@@ -425,11 +426,11 @@
 │       │   │   ├── locale-persistence.spec.ts
 │       │   │   ├── mode-scolaire.spec.ts
 │       │   │   ├── organisation-admin.spec.ts
-│       │   │   ├── poll-creation.ts
 │       │   │   ├── polls.spec.ts
 │       │   │   ├── resultat.spec.ts
 │       │   │   ├── test.spec.ts
-│       │   │   └── tutorial.spec.ts
+│       │   │   ├── tutorial.spec.ts
+│       │   │   └── user-account.spec.ts
 │       │   ├── fixtures
 │       │   │   ├── cookie-banner.ts
 │       │   │   ├── feature-flags.ts
@@ -734,7 +735,8 @@
 │       │   │   │   │   │   │           └── page.tsx
 │       │   │   │   │   │   ├── amis
 │       │   │   │   │   │   │   ├── _helpers
-│       │   │   │   │   │   │   │   └── getParticipantName.ts
+│       │   │   │   │   │   │   │   ├── getParticipantName.ts
+│       │   │   │   │   │   │   │   └── isGroupOwner.ts
 │       │   │   │   │   │   │   ├── creer
 │       │   │   │   │   │   │   │   ├── connexion
 │       │   │   │   │   │   │   │   │   └── page.tsx
@@ -749,32 +751,31 @@
 │       │   │   │   │   │   │   │   │   ├── InvitationForm.tsx
 │       │   │   │   │   │   │   │   │   ├── InvitationPage.tsx
 │       │   │   │   │   │   │   │   │   └── LaconicRanking.tsx
-│       │   │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   ├── resultats
-│       │   │   │   │   │   │   │   ├── _actions.ts
-│       │   │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   │   ├── EditableGroupTitle.tsx
-│       │   │   │   │   │   │   │   │   ├── GroupPage.tsx
-│       │   │   │   │   │   │   │   │   ├── GroupResults.tsx
-│       │   │   │   │   │   │   │   │   ├── UpdateSimulationUsed.tsx
-│       │   │   │   │   │   │   │   │   └── groupResults
-│       │   │   │   │   │   │   │   │       ├── InviteBlock.tsx
-│       │   │   │   │   │   │   │   │       ├── OwnerAdminSection.tsx
-│       │   │   │   │   │   │   │   │       ├── ParticipantAdminSection.tsx
-│       │   │   │   │   │   │   │   │       ├── PointsFortsFaibles.tsx
-│       │   │   │   │   │   │   │   │       ├── Ranking.tsx
-│       │   │   │   │   │   │   │   │       ├── pointsFortsFaibles
-│       │   │   │   │   │   │   │   │       │   ├── PointsListItem.tsx
-│       │   │   │   │   │   │   │   │       │   └── pointsListItem
-│       │   │   │   │   │   │   │   │       │       └── ValueDiff.tsx
-│       │   │   │   │   │   │   │   │       └── ranking
-│       │   │   │   │   │   │   │   │           └── RankingMember.tsx
 │       │   │   │   │   │   │   │   ├── guard.ts
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   └── supprimer
+│       │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   └── resultats
+│       │   │   │   │   │   │       ├── _actions
+│       │   │   │   │   │   │       │   └── delete-group.action.ts
+│       │   │   │   │   │   │       ├── _components
+│       │   │   │   │   │   │       │   ├── EditableGroupTitle.tsx
+│       │   │   │   │   │   │       │   ├── GroupPage.tsx
+│       │   │   │   │   │   │       │   ├── GroupResults.tsx
+│       │   │   │   │   │   │       │   ├── UpdateSimulationUsed.tsx
+│       │   │   │   │   │   │       │   └── groupResults
+│       │   │   │   │   │   │       │       ├── InviteBlock.tsx
+│       │   │   │   │   │   │       │       ├── OwnerAdminSection.tsx
+│       │   │   │   │   │   │       │       ├── ParticipantAdminSection.tsx
+│       │   │   │   │   │   │       │       ├── PointsFortsFaibles.tsx
+│       │   │   │   │   │   │       │       ├── Ranking.tsx
+│       │   │   │   │   │   │       │       ├── pointsFortsFaibles
+│       │   │   │   │   │   │       │       │   ├── PointsListItem.tsx
+│       │   │   │   │   │   │       │       │   └── pointsListItem
+│       │   │   │   │   │   │       │       │       └── ValueDiff.tsx
+│       │   │   │   │   │   │       │       └── ranking
+│       │   │   │   │   │   │       │           └── RankingMember.tsx
+│       │   │   │   │   │   │       ├── guard.ts
 │       │   │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── fin
@@ -815,6 +816,7 @@
 │       │   │   │   │   │   │   │   ├── campagnes
 │       │   │   │   │   │   │   │   │   └── [pollSlug]
 │       │   │   │   │   │   │   │   │       ├── _components
+│       │   │   │   │   │   │   │   │       │   ├── CommunicationKit.tsx
 │       │   │   │   │   │   │   │   │       │   ├── PollNotFound.tsx
 │       │   │   │   │   │   │   │   │       │   ├── ShareSection.tsx
 │       │   │   │   │   │   │   │   │       │   └── footPrintDistribution
@@ -836,9 +838,7 @@
 │       │   │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   │   ├── CloseButton.tsx
 │       │   │   │   │   │   │   │   │   │   ├── PollModeForm.tsx
-│       │   │   │   │   │   │   │   │   │   ├── PollNameForm.tsx
-│       │   │   │   │   │   │   │   │   │   └── actions
-│       │   │   │   │   │   │   │   │   │       └── revalidationOrganisationPath.ts
+│       │   │   │   │   │   │   │   │   │   └── PollNameForm.tsx
 │       │   │   │   │   │   │   │   │   ├── _constants
 │       │   │   │   │   │   │   │   │   │   └── sessionStorage.ts
 │       │   │   │   │   │   │   │   │   ├── _hooks
@@ -1157,6 +1157,8 @@
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── tutoriel
+│       │   │   │   │   │       ├── _actions
+│       │   │   │   │   │       │   └── start-simulation.action.ts
 │       │   │   │   │   │       ├── _components
 │       │   │   │   │   │       │   └── ButtonNext.tsx
 │       │   │   │   │   │       ├── layout.tsx
@@ -1831,8 +1833,6 @@
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
 │       │   │   │   └── getPageNumber.ts
-│       │   │   ├── client
-│       │   │   │   └── fetchClient.ts
 │       │   │   ├── date
 │       │   │   │   └── getFormattedDate.ts
 │       │   │   ├── foldEveryQuestionsUntil.ts
@@ -1886,17 +1886,11 @@
 │       │   │   ├── regions
 │       │   │   │   └── getIsFrenchRegion.ts
 │       │   │   ├── server
-│       │   │   │   ├── actions
-│       │   │   │   │   └── migrateAnonSession.ts
-│       │   │   │   ├── dal
-│       │   │   │   │   ├── _helpers
-│       │   │   │   │   │   ├── getRegionFromParams.ts
-│       │   │   │   │   │   └── resolveRegion.ts
-│       │   │   │   │   ├── anonSession.ts
-│       │   │   │   │   ├── authCookie.ts
-│       │   │   │   │   ├── constants.ts
-│       │   │   │   │   ├── middleware.ts
-│       │   │   │   │   └── user.ts
+│       │   │   │   ├── cookie
+│       │   │   │   │   ├── auth.cookie.ts
+│       │   │   │   │   ├── helpers.ts
+│       │   │   │   │   ├── region.cookie.ts
+│       │   │   │   │   └── types.ts
 │       │   │   │   ├── error.ts
 │       │   │   │   ├── fetchServer.ts
 │       │   │   │   ├── getLinkToSimulateur.ts
@@ -1906,21 +1900,23 @@
 │       │   │   │   │   ├── models.ts
 │       │   │   │   │   ├── newsletter.ts
 │       │   │   │   │   ├── organisations.ts
-│       │   │   │   │   ├── poll.ts
 │       │   │   │   │   ├── simulationResult.ts
 │       │   │   │   │   ├── simulations.ts
-│       │   │   │   │   ├── user.ts
 │       │   │   │   │   └── utils
 │       │   │   │   │       ├── getTendency.ts
 │       │   │   │   │       └── setDefaultExtendedSituation.ts
+│       │   │   │   ├── proxy
+│       │   │   │   │   ├── auth.middleware.ts
+│       │   │   │   │   ├── feature-flags.middleware.ts
+│       │   │   │   │   ├── migrate-legacy-sessions.middleware.ts
+│       │   │   │   │   ├── region.middleware.ts
+│       │   │   │   │   └── types.ts
 │       │   │   │   └── revalidate.ts
 │       │   │   ├── shared
 │       │   │   │   └── handleApiResponse.ts
 │       │   │   ├── simulation
 │       │   │   │   ├── generateSimulation.ts
-│       │   │   │   ├── postSimulation.ts
-│       │   │   │   ├── sanitizeSimulation.ts
-│       │   │   │   └── saveSimulation.ts
+│       │   │   │   └── sanitizeSimulation.ts
 │       │   │   ├── tests
 │       │   │   │   └── wrapper.tsx
 │       │   │   ├── tracking
@@ -1941,24 +1937,18 @@
 │       │   │   │   │   │   └── createGroup.ts
 │       │   │   │   │   └── useGetGroupStats.test.ts
 │       │   │   │   ├── useCreateGroup.ts
-│       │   │   │   ├── useDeleteGroup.ts
-│       │   │   │   ├── useFetchGroup.ts
 │       │   │   │   ├── useGetGroupAndUserFootprints
 │       │   │   │   │   ├── getCategoriesObject.ts
 │       │   │   │   │   └── getSubcategoriesObject.ts
 │       │   │   │   ├── useGetGroupAndUserFootprints.ts
 │       │   │   │   ├── useGetGroupStats.ts
 │       │   │   │   ├── useGroupIdInQueryParams.ts
-│       │   │   │   ├── useIsGroupOwner.ts
 │       │   │   │   ├── useRemoveParticipant.ts
 │       │   │   │   └── useUpdateGroup.ts
 │       │   │   ├── iframe
 │       │   │   │   └── useShouldHideIfIframe.ts
-│       │   │   ├── navigation
-│       │   │   │   └── useGroupPagesGuard.ts
 │       │   │   ├── organisations
 │       │   │   │   ├── polls
-│       │   │   │   │   ├── useCreatePoll.ts
 │       │   │   │   │   ├── useDeletePoll.ts
 │       │   │   │   │   ├── useFetchPoll.ts
 │       │   │   │   │   ├── useFetchPolls.ts
@@ -1998,8 +1988,7 @@
 │       │   │   ├── usePRNumber.ts
 │       │   │   ├── usePersonas.ts
 │       │   │   ├── useRedirectIfInAppBrowser.ts
-│       │   │   ├── useSortedCategoriesByFootprint.ts
-│       │   │   └── useUserInfosParams.ts
+│       │   │   └── useSortedCategoriesByFootprint.ts
 │       │   ├── i18nConfig.ts
 │       │   ├── instrumentation-client.ts
 │       │   ├── instrumentation.ts
@@ -2116,7 +2105,6 @@
 │       │   │   │   ├── googlebot.json
 │       │   │   │   ├── special-crawlers.json
 │       │   │   │   └── user-triggered-fetchers.json
-│       │   │   ├── featureFlagMiddleware.ts
 │       │   │   └── i18nMiddleware.ts
 │       │   ├── proxy.ts
 │       │   ├── publicodes-state
@@ -2155,12 +2143,12 @@
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   ├── useChoices.ts
 │       │   │   │   │   │   ├── useContent.ts
+│       │   │   │   │   │   ├── useDisplayValue.ts
 │       │   │   │   │   │   ├── useMissing.ts
 │       │   │   │   │   │   ├── useNotifications.ts
 │       │   │   │   │   │   ├── useQuestionsOfMosaic.ts
 │       │   │   │   │   │   ├── useSetValue.ts
-│       │   │   │   │   │   ├── useType.ts
-│       │   │   │   │   │   └── useValue.ts
+│       │   │   │   │   │   └── useType.ts
 │       │   │   │   │   └── useRule.ts
 │       │   │   │   ├── useTempEngine
 │       │   │   │   │   └── useTempEngine.ts
@@ -2168,8 +2156,7 @@
 │       │   │   │       ├── hooks
 │       │   │   │       │   ├── useActions.ts
 │       │   │   │       │   ├── useSimulations.ts
-│       │   │   │       │   ├── useTutorials.ts
-│       │   │   │       │   └── useUserDetails.ts
+│       │   │   │       │   └── useTutorials.ts
 │       │   │   │       └── useUser.ts
 │       │   │   ├── index.ts
 │       │   │   ├── providers
@@ -2192,7 +2179,7 @@
 │       │   │   │   └── userProvider
 │       │   │   │       ├── context.ts
 │       │   │   │       ├── hooks
-│       │   │   │       │   ├── useMigrateAnonSession.ts
+│       │   │   │       │   ├── usePersistentPendingVerification.ts
 │       │   │   │       │   ├── usePersistentTutorials.ts
 │       │   │   │       │   └── usePersistentUser.ts
 │       │   │   │       └── provider.tsx
@@ -2205,6 +2192,14 @@
 │       │   │   │   ├── get-themes.ts
 │       │   │   │   ├── has-action-v2-rollout.ts
 │       │   │   │   └── themes.dto.ts
+│       │   │   ├── auth
+│       │   │   │   ├── create-app-session.ts
+│       │   │   │   ├── create-verification-code.ts
+│       │   │   │   ├── get-user-session.ts
+│       │   │   │   ├── login.ts
+│       │   │   │   ├── logout.ts
+│       │   │   │   ├── require-auth-user.ts
+│       │   │   │   └── with-user-id.ts
 │       │   │   ├── cms
 │       │   │   │   ├── fetchAllArticleTitlesAndSlugs.ts
 │       │   │   │   ├── fetchArticlePageContent.ts
@@ -2229,19 +2224,48 @@
 │       │   │   │   ├── flags.ts
 │       │   │   │   ├── getFeatureFlag.ts
 │       │   │   │   └── urlParams.ts
+│       │   │   ├── geolocation
+│       │   │   │   └── get-geolocation.ts
 │       │   │   ├── groups
-│       │   │   │   └── updateGroupParticipant.ts
+│       │   │   │   ├── create-group.ts
+│       │   │   │   ├── delete-group.ts
+│       │   │   │   ├── remove-participant.ts
+│       │   │   │   ├── update-group-participant.ts
+│       │   │   │   └── update-group.ts
 │       │   │   ├── organisations
-│       │   │   │   └── fetchPollResults.ts
+│       │   │   │   ├── create-organisation.ts
+│       │   │   │   ├── create-poll-simulation.ts
+│       │   │   │   ├── create-poll.ts
+│       │   │   │   ├── delete-poll.ts
+│       │   │   │   ├── download-poll-results.ts
+│       │   │   │   ├── get-organisation-poll.ts
+│       │   │   │   ├── get-organisation-polls.ts
+│       │   │   │   ├── get-organisation.ts
+│       │   │   │   ├── get-public-poll.ts
+│       │   │   │   ├── is-organisation-admin.ts
+│       │   │   │   ├── update-organisation.ts
+│       │   │   │   └── update-poll.ts
 │       │   │   ├── partners
 │       │   │   │   ├── exportSituation.ts
 │       │   │   │   └── verifyPartner.ts
-│       │   │   └── tracking
-│       │   │       ├── GoogleTagManager.ts
-│       │   │       ├── Posthog.ts
-│       │   │       ├── cookieStateStore.ts
-│       │   │       ├── iframeInformation.ts
-│       │   │       └── posthogServer.ts
+│       │   │   ├── simulations
+│       │   │   │   ├── create-simulation.ts
+│       │   │   │   ├── delete-simulation.ts
+│       │   │   │   ├── get-completed-simulations.ts
+│       │   │   │   ├── get-current-simulation.ts
+│       │   │   │   ├── get-simulation.ts
+│       │   │   │   ├── get-simulations.ts
+│       │   │   │   ├── save-simulation.ts
+│       │   │   │   └── upload-local-simulations.ts
+│       │   │   ├── tracking
+│       │   │   │   ├── GoogleTagManager.ts
+│       │   │   │   ├── Posthog.ts
+│       │   │   │   ├── cookieStateStore.ts
+│       │   │   │   ├── iframeInformation.ts
+│       │   │   │   └── posthogServer.ts
+│       │   │   └── users
+│       │   │       ├── region.ts
+│       │   │       └── update-user.ts
 │       │   ├── types
 │       │   │   ├── .gitignore
 │       │   │   ├── app-env.d.ts
@@ -2342,6 +2366,8 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260617160000_alter_model_domain_accept_nightly
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260617173101_add_refresh_token_table
+│       │   │   │   └── migration.sql
 │       │   │   ├── 20260622120000_anon_user_remove_name_add_simulations
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
@@ -2395,11 +2421,54 @@
 │       │   │   │       ├── action.ts
 │       │   │   │       ├── seo-metadata.ts
 │       │   │   │       └── theme.ts
+│       │   │   ├── auth
+│       │   │   │   ├── constants
+│       │   │   │   │   └── session.ts
+│       │   │   │   ├── exceptions
+│       │   │   │   │   ├── forbidden.exception.ts
+│       │   │   │   │   ├── session-crypto.exception.ts
+│       │   │   │   │   ├── token-consumed.exception.ts
+│       │   │   │   │   └── token-expired.exception.ts
+│       │   │   │   ├── factories
+│       │   │   │   │   └── refresh-token.factory.ts
+│       │   │   │   ├── helpers
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── assert-ownership.test.ts
+│       │   │   │   │   │   ├── encrypt-session.test.ts
+│       │   │   │   │   │   ├── hash-token.test.ts
+│       │   │   │   │   │   └── is-session-expired.test.ts
+│       │   │   │   │   ├── assert-ownership.ts
+│       │   │   │   │   ├── encrypt-session.ts
+│       │   │   │   │   ├── get-session-encryption-key.ts
+│       │   │   │   │   ├── hash-token.ts
+│       │   │   │   │   └── is-session-expired.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   ├── refresh-token.mapper.ts
+│       │   │   │   │   └── refresh-token.repository.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── cleanup-expired-tokens.service.spec.ts
+│       │   │   │   │   │   ├── create-session.service.spec.ts
+│       │   │   │   │   │   ├── decrypt-session.service.spec.ts
+│       │   │   │   │   │   ├── migrate-legacy-sessions.service.spec.ts
+│       │   │   │   │   │   ├── revoke-all-sessions.service.spec.ts
+│       │   │   │   │   │   └── rotate-session.service.spec.ts
+│       │   │   │   │   ├── cleanup-expired-tokens.service.ts
+│       │   │   │   │   ├── create-session.service.ts
+│       │   │   │   │   ├── decrypt-session.service.ts
+│       │   │   │   │   ├── migrate-legacy-sessions.service.ts
+│       │   │   │   │   ├── revoke-all-sessions.service.ts
+│       │   │   │   │   └── rotate-session.service.ts
+│       │   │   │   └── types
+│       │   │   │       ├── refresh-token.ts
+│       │   │   │       └── session.ts
 │       │   │   ├── geo
 │       │   │   │   └── types
 │       │   │   │       └── language.ts
 │       │   │   ├── logger
 │       │   │   │   └── index.ts
+│       │   │   ├── region
+│       │   │   │   └── region.schema.ts
 │       │   │   ├── simulation-computation
 │       │   │   │   ├── exceptions
 │       │   │   │   │   └── simulation-computation.exception.ts
@@ -2457,4 +2526,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-634 directories, 1870 files
+647 directories, 1926 files
