@@ -1,14 +1,13 @@
-## Changelog : prelevements-deau-front (30 derniers jours, au 8 juin 2026)
+## Changelog : prelevements-deau-front (30 derniers jours, au 2 juillet 2026)
 
 ### Résumé
-Cette mise à jour comprend une amélioration de la gestion des erreurs lors de la soumission des formulaires, ainsi que des corrections mineures d'interface utilisateur pour une meilleure expérience globale. L'application est également mise à jour avec les dernières dépendances pour assurer sa stabilité et sa sécurité.
+Cette mise à jour apporte une amélioration à la gestion des documents, en permettant de spécifier un autre type de document lors de la saisie des informations de prélèvement. Cette modification vise à rendre l'application plus flexible et adaptée aux différents types de documents rencontrés.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des erreurs lors de la soumission des formulaires : les messages d'erreur sont plus clairs et informatifs, guidant l'utilisateur vers la correction des données.
-- Correction de l'affichage des dates dans certains cas spécifiques.
+- Ajout de la possibilité de spécifier "autre" comme type de document dans le formulaire de saisie. [#issue à ajouter si pertinent]
 
 ### Évolutions techniques
-- Mise à jour des dépendances du projet.
+- Aucune évolution technique notable.
 
 ### Autres changements
-- Mise à jour de la documentation interne.
+- Mise à jour générale du projet.
