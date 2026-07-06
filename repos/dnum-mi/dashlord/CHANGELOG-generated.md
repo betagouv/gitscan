@@ -1,15 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 01 juillet 2026)
+## Changelog : dashlord (30 derniers jours, au 5 juillet 2026)
 
 ### Résumé
-Cette mise à jour majeure se concentre sur l'enrichissement de la base de données d'URLs surveillées. Plus de 200 URLs de sites gouvernementaux français ont été ajoutées ou mises à jour, incluant des sites liés aux permis de conduire, aux passeports, aux élections, aux préfectures et à divers services publics. Cette évolution permet à DashLord d'étendre sa couverture et d'offrir une analyse plus complète des bonnes pratiques techniques sur les sites web de l'administration française.
+Ce changelog détaille les mises à jour récentes de DashLord, principalement axées sur l'ajout et la mise à jour de sources de données.  Le projet continue d'enrichir sa couverture de sites web gouvernementaux et administratifs français pour améliorer la surveillance des bonnes pratiques techniques.
 
 ### Évolutions fonctionnelles
-*   Ajout de la surveillance de nombreuses nouvelles URLs de services publics français.
-*   Mise à jour des URLs existantes pour garantir la pertinence des analyses.
+Aucune évolution fonctionnelle visible pour les utilisateurs n'a été apportée durant cette période.
 
 ### Évolutions techniques
-*   Aucune évolution technique significative à signaler dans cette période.
+*   Mise à jour massive des sources de données : de nombreux sites web gouvernementaux et administratifs ont été ajoutés ou mis à jour pour assurer une couverture exhaustive des données surveillées.
+*   Mise à jour des dépendances de reporting.
 
 ### Autres changements
-*   Mise à jour des scripts d'automatisation pour intégrer les nouvelles URLs.
-*   Amélioration de la maintenance de la liste des URLs surveillées.
+Aucun autre changement significatif n'a été apporté.
