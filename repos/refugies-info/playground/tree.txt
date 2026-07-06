@@ -65,6 +65,7 @@
 │   │   ├── package.json
 │   │   ├── postcss.config.mjs
 │   │   ├── public
+│   │   │   ├── empty-state-no-result.svg
 │   │   │   ├── logo-ri.svg
 │   │   │   └── rco-json-schema.json
 │   │   ├── src
@@ -102,6 +103,9 @@
 │   │   │   │   │   ├── translations
 │   │   │   │   │   │   ├── TranslationsList.tsx
 │   │   │   │   │   │   ├── [id]
+│   │   │   │   │   │   │   ├── activity-logs
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── columns.tsx
 │   │   │   │   │   │   ├── error.tsx
@@ -172,7 +176,6 @@
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── DocumentActionsContext.tsx
 │   │   │   │   │   │   ├── hooks
-│   │   │   │   │   │   │   ├── useAutosave.ts
 │   │   │   │   │   │   │   ├── useEditLock.ts
 │   │   │   │   │   │   │   └── usePublicationRealtime.ts
 │   │   │   │   │   │   ├── index.ts
@@ -182,6 +185,7 @@
 │   │   │   │   │   │       └── PublishSuccessDialog.tsx
 │   │   │   │   │   ├── activity-logs
 │   │   │   │   │   │   ├── ActivityLogsView.tsx
+│   │   │   │   │   │   ├── NoteComposer.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── arbitration
 │   │   │   │   │   │   ├── ArbitrationView.tsx
@@ -276,6 +280,7 @@
 │   │   │   ├── contexts
 │   │   │   │   └── SidebarContext.tsx
 │   │   │   ├── hooks
+│   │   │   │   ├── useAutosave.ts
 │   │   │   │   └── useUrlFilters.ts
 │   │   │   ├── lib
 │   │   │   │   ├── auth.ts
@@ -295,9 +300,10 @@
 │   │   │   │   │   └── seededRandom.ts
 │   │   │   │   ├── payload-builder.ts
 │   │   │   │   ├── preview-utils.ts
-│   │   │   │   ├── profile-name.ts
+│   │   │   │   ├── profile.ts
 │   │   │   │   ├── publication-errors.ts
 │   │   │   │   ├── sanitize-ri-metadata.ts
+│   │   │   │   ├── search-params.ts
 │   │   │   │   ├── supabase
 │   │   │   │   │   └── client.ts
 │   │   │   │   ├── url-builder.ts
@@ -311,7 +317,9 @@
 │   │   │   │   ├── edit-lock-actions.ts
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── metadata-actions.ts
+│   │   │   │   ├── note-actions.ts
 │   │   │   │   ├── permission-helper.ts
+│   │   │   │   ├── profiles.ts
 │   │   │   │   ├── publication-urls.ts
 │   │   │   │   ├── ri-reference-data.ts
 │   │   │   │   ├── translation-actions.ts
@@ -559,8 +567,7 @@
 │   │   │       ├── date.ts
 │   │   │       ├── document.ts
 │   │   │       ├── index.ts
-│   │   │       ├── metadata-ri.ts
-│   │   │       └── user.ts
+│   │   │       └── metadata-ri.ts
 │   │   ├── tests
 │   │   │   ├── metadata.test.ts
 │   │   │   └── workflow-status.test.ts
@@ -829,6 +836,7 @@
 │       │   │   │   └── publish-translation.ts
 │       │   │   └── translation
 │       │   │       ├── add-trad-to-airtable.ts
+│       │   │       ├── assign-translator.ts
 │       │   │       ├── create-translation-records.ts
 │       │   │       ├── generate-translation.ts
 │       │   │       ├── get-available-translation-agents.ts
@@ -993,4 +1001,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-223 directories, 772 files
+224 directories, 779 files
