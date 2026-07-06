@@ -218,6 +218,9 @@
 │   │   │   ├── cache.ts
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── donneesEvenement.ts
+│   │   │   ├── enrichissement
+│   │   │   │   ├── adaptateurEnrichissement.ts
+│   │   │   │   └── composantsAutorises.genere.ts
 │   │   │   ├── entrepotFavoriPostgres.ts
 │   │   │   ├── entrepotFinancementGrist.ts
 │   │   │   ├── entrepotGrist.ts
@@ -1074,7 +1077,7 @@
 │   │   │   │   ├── MenuBurger.svelte
 │   │   │   │   ├── Navigation.svelte
 │   │   │   │   ├── NavigationTertiaire.svelte
-│   │   │   │   └── fragmentDeNavigation.ts
+│   │   │   │   └── fragmentDeNavigation.svelte.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── AccordeonNis2.svelte
 │   │   │   │   ├── Avertissements.svelte
@@ -1175,6 +1178,12 @@
 │   │   │   │   └── modales
 │   │   │   │       ├── ModaleBadgeCyberdepartDebloque.svelte
 │   │   │   │       └── ModaleModuleTermine.svelte
+│   │   │   ├── plateforme
+│   │   │   │   ├── aseptisationDuHtml.client.ts
+│   │   │   │   ├── aseptisationDuHtml.serveur.ts
+│   │   │   │   ├── plateforme.plugin.ts
+│   │   │   │   ├── webComponent.client.ts
+│   │   │   │   └── webComponent.serveur.ts
 │   │   │   ├── protection
 │   │   │   │   ├── Proteger.svelte
 │   │   │   │   ├── associations
@@ -1273,8 +1282,9 @@
 │   │   │   │       └── transisitons.ts
 │   │   │   ├── utils
 │   │   │   │   ├── arrondis.ts
-│   │   │   │   ├── aseptisationDuHtml.ts
-│   │   │   │   └── erreurApi.ts
+│   │   │   │   ├── composantsAutorises.plugin.ts
+│   │   │   │   ├── erreurApi.ts
+│   │   │   │   └── injecteNonce.plugin.ts
 │   │   │   └── vite-env.d.ts
 │   │   ├── svelte.config.js
 │   │   ├── test
@@ -1320,8 +1330,6 @@
 │   │   │   │   └── stores
 │   │   │   │       ├── questionnaire.store.spec.ts
 │   │   │   │       └── questionnaireAvecUndo.store.spec.ts
-│   │   │   ├── stores
-│   │   │   │   └── profil.store.spec.ts
 │   │   │   ├── test-maturite
 │   │   │   │   ├── repartitions.spec.ts
 │   │   │   │   └── stores
@@ -1330,6 +1338,7 @@
 │   │   │       └── erreurApi.spec.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
+│   │   ├── vite.config.ssr.ts
 │   │   ├── vite.config.ts
 │   │   └── vitest.config.js
 │   ├── ma-maturite.html
@@ -1408,4 +1417,4 @@
 ├── renovate.json
 └── scripts
     └── get-node-version.sh
-199 directories, 1254 files
+200 directories, 1262 files
