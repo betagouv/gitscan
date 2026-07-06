@@ -300,6 +300,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260630120910_update_status_date_nullable_for_application
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260702142029_update_add_actor_permission_dataread
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260702160951_update_set_data_read_permission_by_true
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -678,6 +682,7 @@
 │   │   │   ├── token.module.ts
 │   │   │   ├── token.service.ts
 │   │   │   └── use-cases.ts
+│   │   │       ├── token-control.use-case.spec.ts
 │   │   │       └── token-control.use-case.ts
 │   │   ├── user
 │   │   │   ├── dto
@@ -692,6 +697,7 @@
 │   │   │   ├── errors
 │   │   │   │   └── scope-permissions.exception.ts
 │   │   │   ├── scope-permission
+│   │   │   │   ├── scoped-permission.service.spec.ts
 │   │   │   │   └── scoped-permission.service.ts
 │   │   │   ├── user-connexion-log.service.ts
 │   │   │   ├── user-permission-log.service.ts
@@ -919,6 +925,7 @@
 │   │   │   │   ├── AdminOrganizationsTab.vue
 │   │   │   │   ├── AdminPermsMatrixTab.vue
 │   │   │   │   ├── AdminTagsTab.vue
+│   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
 │   │   │   │   ├── AppPermsMatrix.vue
 │   │   │   │   ├── LabelSourceActions.vue
@@ -1045,6 +1052,7 @@
 │   │   │   ├── log-dsfr-version.ts
 │   │   │   ├── regex.ts
 │   │   │   ├── roles-utils.ts
+│   │   │   ├── token-utils.ts
 │   │   │   ├── typeguard-includes.ts
 │   │   │   └── types.ts
 │   │   ├── views
@@ -1117,4 +1125,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-301 directories, 818 files
+303 directories, 824 files

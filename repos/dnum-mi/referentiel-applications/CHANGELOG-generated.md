@@ -1,23 +1,57 @@
-## Changelog : referentiel-applications (30 derniers jours, au 2 juillet 2026)
+## Changelog : referentiel-applications (30 derniers jours, au 04 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le référentiel d'applications a bénéficié d'améliorations significatives en termes d'accessibilité (RGAA), d'importation de données (Excel), de sécurité et de fonctionnalités pour les administrateurs. Des corrections de bugs et des optimisations ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
+Cette version apporte des améliorations significatives en termes d'accessibilité (RGAA), d'import de données (Excel, MAIA) et de fonctionnalités d'administration (gestion des droits, impersonation). Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Accessibilité :** Amélioration de l'accessibilité de l'application pour se conformer aux critères RGAA, notamment pour les combobox, les étiquettes de champs, la gestion du focus et les messages d'état. ([#1776](https://github.com/dnum-mi/referentiel-applications/issues/1776), [#1779](https://github.com/dnum-mi/referentiel-applications/issues/1779), [#1784](https://github.com/dnum-mi/referentiel-applications/issues/1784), [#1770](https://github.com/dnum-mi/referentiel-applications/issues/1770), [#1780](https://github.com/dnum-mi/referentiel-applications/issues/1780), [#1775](https://github.com/dnum-mi/referentiel-applications/issues/1775))
-- **Import Excel :** Possibilité d'importer des données depuis des fichiers Excel pour les applications, les hébergements, les conformités et les acteurs. Les droits d'accès sont appliqués lors de l'importation et les refus sont consignés. ([#752](https://github.com/dnum-mi/referentiel-applications/issues/752), [#753](https://github.com/dnum-mi/referentiel-applications/issues/753), [#1876](https://github.com/dnum-mi/referentiel-applications/issues/1876), [#1889](https://github.com/dnum-mi/referentiel-applications/issues/1889))
-- **Administration :** Ajout de la possibilité pour les administrateurs de modifier globalement les applications et d'impersonner d'autres utilisateurs. ([#1888](https://github.com/dnum-mi/referentiel-applications/issues/1888), [#1764](https://github.com/dnum-mi/referentiel-applications/issues/1764), [#1873](https://github.com/dnum-mi/referentiel-applications/issues/1873))
-- **Recherche :** Implémentation d'une recherche plein texte des applications. ([#1753](https://github.com/dnum-mi/referentiel-applications/issues/1753), [#1842](https://github.com/dnum-mi/referentiel-applications/issues/1842))
-- **MDIT :** Ajout de la gestion des millésimes MDIT avec des campagnes dette IT et un sélecteur de période. ([#1848](https://github.com/dnum-mi/referentiel-applications/issues/1848), [#1872](https://github.com/dnum-mi/referentiel-applications/issues/1872))
-- **Favoris et Mes Applications :** Possibilité d'ajouter des applications aux favoris et de visualiser les applications associées à un groupe d'acteurs. ([#1756](https://github.com/dnum-mi/referentiel-applications/issues/1756))
+- **Import de données :**
+    - Ajout de l'import d'acteurs depuis un fichier Excel [#751](https://github.com/dnum-mi/referentiel-applications/issues/751)
+    - Import Excel des onglets applications et hébergements [#752](https://github.com/dnum-mi/referentiel-applications/issues/752)
+    - Import Excel avec gestion des conformités [#1881](https://github.com/dnum-mi/referentiel-applications/issues/1881)
+- **Administration :**
+    - Possibilité de modifier globalement les applications en tant qu'administrateur [#1888](https://github.com/dnum-mi/referentiel-applications/issues/1888)
+    - Implémentation de l'impersonation d'un utilisateur par un administrateur [#1764](https://github.com/dnum-mi/referentiel-applications/issues/1764)
+- **Recherche :**
+    - Mise en place d'une recherche plein texte des applications [#1753](https://github.com/dnum-mi/referentiel-applications/issues/1753)
+- **MDIT :**
+    - Ajout de la gestion des millésimes MDIT (campagnes dette IT) avec sélecteur de période et accès administrateur [#1848](https://github.com/dnum-mi/referentiel-applications/issues/1848)
+- **MAIA :**
+    - Intégration de l'import MAIA dans le formulaire d'acteur [#1762](https://github.com/dnum-mi/referentiel-applications/issues/1762)
+    - Vérification de l'email MAIA lors de la modification d'un utilisateur [#1818](https://github.com/dnum-mi/referentiel-applications/issues/1818)
+    - Gestion des organisations MAIA lors de la création d'un utilisateur [#1793](https://github.com/dnum-mi/referentiel-applications/issues/1793)
+- **Filtres :**
+    - Ajout de filtres de conformité et mise à jour des composants associés [#1788](https://github.com/dnum-mi/referentiel-applications/issues/1788)
 
 ### Évolutions techniques
-- **Sécurité :** Résolution des alertes de sécurité détectées par l'analyse de code CodeQL. ([#1846](https://github.com/dnum-mi/referentiel-applications/issues/1846))
-- **Docker :** Correction pour rendre l'image frontend Docker accessible sous OpenShift avec un UID arbitraire. ([#1914](https://github.com/dnum-mi/referentiel-applications/issues/1914))
-- **CI/CD :** Publication des versions 1.79.0 et 1.80.1. ([#1757](https://github.com/dnum-mi/referentiel-applications/issues/1757), [#1915](https://github.com/dnum-mi/referentiel-applications/issues/1915))
-- **Refactoring & Qualité du code :** Correction de code smells TypeScript détectés par SonarQube, amélioration de la structure du code et suppression de configurations inutiles. ([#1898](https://github.com/dnum-mi/referentiel-applications/issues/1898), [#1905](https://github.com/dnum-mi/referentiel-applications/issues/1905), [#1794](https://github.com/dnum-mi/referentiel-applications/issues/1794))
-- **Tests :** Ajout de tests unitaires et de tests d'intégration (e2e) pour améliorer la couverture et la robustesse de l'application. ([#1849](https://github.com/dnum-mi/referentiel-applications/issues/1849), [#1791](https://github.com/dnum-mi/referentiel-applications/issues/1791), [#1853](https://github.com/dnum-mi/referentiel-applications/issues/1853))
+- **Accessibilité (RGAA) :**
+    - Amélioration de l'accessibilité de plusieurs composants (combobox, autocomplete, étiquettes de champs, gestion du focus, etc.) pour répondre aux critères RGAA.
+- **Sécurité :**
+    - Résolution des alertes de sécurité détectées par CodeQL [#1846](https://github.com/dnum-mi/referentiel-applications/issues/1846)
+- **Infrastructure :**
+    - Correction pour permettre l'écriture de l'image frontend dans un environnement OpenShift [#1914](https://github.com/dnum-mi/referentiel-applications/issues/1914)
+- **Tests :**
+    - Ajout de tests de non-régression (e2e) pour plusieurs domaines fonctionnels.
+- **Refactoring :**
+    - Correction de code smells TypeScript détectés par SonarQube [#1898](https://github.com/dnum-mi/referentiel-applications/issues/1898)
+    - Amélioration de la gestion des erreurs et des promesses.
+- **CI/CD :**
+    - Publication des versions 1.80.1 et 1.80.0.
 
 ### Autres changements
-- **Documentation :** Mise à jour des URLs Swagger pour l'authentification OIDC. ([#1719](https://github.com/dnum-mi/referentiel-applications/issues/1719))
-- **Corrections :** Diverses corrections de bugs et améliorations mineures de l'interface utilisateur et de la logique applicative. ([#1923](https://github.com/dnum-mi/referentiel-applications/issues/1923), [#1925](https://github.com/dnum-mi/referentiel-applications/issues/1925), [#1927](https://github.com/dnum-mi/referentiel-applications/issues/1927), [#1931](https://github.com/dnum-mi/referentiel-applications/issues/1931))
+- Mise à jour de la configuration des tests unitaires frontend.
+- Suppression du plugin vite-plugin-vue-devtools.
+- Correction de la valeur totale pour le MDIT.
+- Amélioration de la représentation graphique du MDIT.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout de la validation par défaut dans la page de recherche d'applications.
+- Possibilité de rendre la date de statut optionnelle.
+- Ajout de la gestion des groupes MAIA/MOE lors de la création d'une application.
+- Correction de l'affichage des valeurs dans le graphique iqchart.
+- Mise à jour des URLs Swagger OIDC.
+- Correction d'un bug lié à la gestion des permissions.
+- Ajout d'une fonction de comparaison pour les tris de tableaux.
+- Correction de l'affichage des libellés "Maîtrise des coûts".
+- Suppression des permissions d'écriture globales sur l'image frontend.
+- Correction de l'emplacement du titre "Détails de la modification" dans les tests e2e.
+- Mise à jour de la table refapp avec le tri.
+- Ajout de la possibilité de tracer les modifications de la matrice des droits dans l'historique de refapp.
