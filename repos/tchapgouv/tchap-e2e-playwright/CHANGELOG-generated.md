@@ -1,31 +1,27 @@
-## Changelog : tchap-e2e-playwright (30 derniers jours, au 11 juin 2026)
+## Changelog : tchap-e2e-playwright (30 derniers jours, au 04 juillet 2026)
 
 ### Résumé
-Ce changelog couvre les dernières améliorations apportées aux tests d'intégration et d'authentification de Tchap. Les efforts se sont concentrés sur l'amélioration de la couverture des tests, notamment pour la fédération, les règles d'accès, l'invitation d'utilisateurs externes et les scénarios de départ de salles. Des refactorings ont également été effectués pour améliorer l'organisation du code et la fiabilité des tests.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la couverture des tests, notamment concernant la rétention des salons publics, l'invitation d'utilisateurs externes, les restrictions d'accès et les tests de l'API. Des refactorings ont également été effectués pour optimiser le code et améliorer sa structure.
 
 ### Évolutions fonctionnelles
-- Ajout de scénarios de test pour quitter une salle, que celle-ci soit chiffrée ou non. [#44](https://github.com/tchapgouv/tchap-e2e-playwright/issues/44)
-- Amélioration des tests liés à l'invitation d'utilisateurs externes et aux niveaux d'autorisation (power levels).
-- Ajout de tests pour la mise à niveau de salles. [#47](https://github.com/tchapgouv/tchap-e2e-playwright/issues/47)
-- Ajout de tests pour la recherche fédérée. [#44](https://github.com/tchapgouv/tchap-e2e-playwright/issues/44)
-- Ajout de la possibilité de spécifier un nom d'affichage lors de la création d'un utilisateur. [#44](https://github.com/tchapgouv/tchap-e2e-playwright/issues/44)
-- Ajout de tests pour les règles d'accès via l'API. [#46](https://github.com/tchapgouv/tchap-e2e-playwright/issues/46)
-- Ajout de tests de fédération. [#50](https://github.com/tchapgouv/tchap-e2e-playwright/issues/50)
-- Ajout de scénarios pour le dernier administrateur d'une salle.
+- Ajout de tests pour la rétention des salons publics. [#56](https://github.com/tchapgouv/tchap-e2e-playwright/issues/56)
+- Ajout de scénarios de test pour quitter un salon, qu'il soit chiffré ou non.
+- Ajout de tests pour l'invitation d'utilisateurs externes et la gestion des niveaux d'administration (power levels).
+- Ajout de tests pour les restrictions de recherche externes.
+- Ajout de scénarios pour le dernier administrateur d'un salon.
+- Amélioration des tests existants avec l'ajout d'attentes pour les messages.
+- Adaptation des tests minimaux avec les règles d'accès et le nouveau flux avec un environnement externe.
 
 ### Évolutions techniques
-- Refactorisation du client d'administration MAS. [#52](https://github.com/tchapgouv/tchap-e2e-playwright/issues/52)
+- Refactoring du client d'administration MAS [#52](https://github.com/tchapgouv/tchap-e2e-playwright/issues/52) pour améliorer sa maintenabilité.
+- Optimisation générale du code. [#54](https://github.com/tchapgouv/tchap-e2e-playwright/issues/54)
 - Déplacement des tests API vers un dossier spécifique pour une meilleure organisation.
-- Refactorisation des tests pour améliorer la lisibilité et la maintenance.
+- Renommage de la variable `BASE_URL` en `MATRIX_URL` pour plus de clarté.
+- Ajout de la variable `MAS_ADMIN_URL` pour configurer l'URL de l'administration MAS.
+- Correction du chemin d'accès à l'API.
 - Correction de l'URL `EXTERNAL_MAS_URL`.
-- Renommage de `BASE_URL` en `MATRIX_URL`.
-- Ajout de la variable d'environnement `MAS_ADMIN_URL`.
-- Correction du chemin d'accès pour certains tests.
-- Suppression d'un test temporairement défaillant.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de la documentation.
-- Organisation des tests d'intégration dans un dossier dédié.
-- Correction de l'exécution des tests.
-- Refactorisation du test minimal. [#49](https://github.com/tchapgouv/tchap-e2e-playwright/issues/49)
+- Déplacement des informations d'identification vers un fichier de secrets pour une meilleure sécurité. [#53](https://github.com/tchapgouv/tchap-e2e-playwright/issues/53)
+- Suppression temporaire d'un test en échec.
+- Ajout d'un second appel dans un test.
