@@ -1,18 +1,21 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est une plateforme open source permettant de collecter des données de préférences humaines pour l'évaluation de modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
+  "description": "ComparIA est une plateforme open source permettant de collecter des données de préférence humaine pour l'évaluation des modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
     "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Intelligence Artificielle & NLP"
   ],
   "audience": [
+    "Grand public",
     "Professionnels",
     "Agents de l'Administration",
     "Associations"
@@ -20,16 +23,26 @@
   "dependencies": [
     "ecologits",
     "fastapi",
+    "json5",
     "litellm",
+    "google-auth",
+    "numpy",
+    "prometheus-fastapi-instrumentator",
     "psycopg2-binary",
     "pydantic",
     "sqlalchemy",
+    "pydantic-settings",
+    "python-logging-loki",
     "redis",
     "requests",
-    "numpy",
-    "pandas",
-    "polars",
-    "huggingface_hub"
+    "rich",
+    "sentry-sdk",
+    "uvicorn",
+    "altcha",
+    "sqlmodel",
+    "psycopg",
+    "alembic",
+    "linkup-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -45,20 +58,13 @@
       "oauth2"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
+  "tests": null,
+  "workflows": null,
   "lastActivity": "2026-06-29T12:00:36+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
