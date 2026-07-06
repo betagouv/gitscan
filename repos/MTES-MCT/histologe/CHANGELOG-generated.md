@@ -1,41 +1,34 @@
-## Changelog : histologe (30 derniers jours, au 01 Juillet 2026)
+## Changelog : histologe (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment au niveau du formulaire de suivi usager avec des corrections d'accessibilité et des améliorations de l'interface. Des corrections de bugs et des optimisations techniques ont également été apportées, ainsi que des évolutions concernant la gestion des signalements et des données, notamment l'ajout de fonctionnalités pour les injonctions aux bailleurs et la gestion des doublons.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'accessibilité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment pour la gestion des arrêtés, des signalements et l'espace bailleur. Des optimisations techniques ont également été apportées pour améliorer la performance et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-
-*   **Formulaire de suivi usager :** Amélioration de l'accessibilité avec des validations W3C, harmonisation des boutons et déplacement de l'encart sur le dossier [#5996].
-*   **Démarche Accélérée :** Affinements du système de relances [#6053] et ajout d'un mini-dashboard [#5942].
-*   **Espace bailleur :** Améliorations rapides et modification du champ d'upload de fichier [#6023, #5940].
-*   **Gestion des signalements :**
-    *   Ajout d'un filtre "Démarche accélérée" dans la liste des signalements [#6041].
-    *   Commande temporaire de clôture de signalements en back-office [#6040].
-    *   Possibilité de clôturer des signalements à partir d'un fichier CSV [#6020].
-*   **RT (Réseau de Terrain) :** Création d'une liste des doublons de dossiers à la même adresse [#5864].
-*   **Annuaire :** Correction de l'export pour les utilisateurs non-RT [#5925].
-*   **Injonction bailleur :** Améliorations et suppression du résumé des suivis générés par l'IA [#6023, #6039].
-*   **Ajout d'une colonne "zones"** à l'export des données [#5883].
-*   **Ajout d'insalubrité** lorsque l'absence d'eau chaude est signalée [#5908].
+- **Espace bailleur :** Améliorations de l'interface et ajout de fonctionnalités pour la messagerie, notamment la modification du champ d'upload de fichiers [#5940](https://github.com/MTES-MCT/histologe/issues/5940).
+- **Gestion des arrêtés :** Mise en place d'un socle pour la gestion des arrêtés, incluant la liste des arrêtés [#6026](https://github.com/MTES-MCT/histologe/issues/6026) et l'adaptation du parser EtageParser pour répondre aux contraintes d'esabora [#6100](https://github.com/MTES-MCT/histologe/issues/6100).
+- **Signalements :**
+    - Ajout d'un suivi automatique interne de l'historique de l'adresse lors de l'enregistrement d'un signalement [#6056](https://github.com/MTES-MCT/histologe/issues/6056).
+    - Ajout d'un filtre "Démarche accélérée" dans la liste des signalements [#6041](https://github.com/MTES-MCT/histologe/issues/6041).
+    - Possibilité de clôturer des signalements en masse via une commande temporaire [#6040](https://github.com/MTES-MCT/histologe/issues/6040).
+    - Ajout d'une commande pour fermer des signalements à partir d'un fichier CSV [#5980](https://github.com/MTES-MCT/histologe/issues/5980).
+- **Formulaire Pro :** Amélioration de la navigation au clavier et corrections d'accessibilité [#6005](https://github.com/MTES-MCT/histologe/issues/6005) et [#5979](https://github.com/MTES-MCT/histologe/issues/5979).
+- **Suivi Usager :** Améliorations d'accessibilité, notamment la précision des liens, l'harmonisation des boutons et le déplacement de l'encart sur le dossier [#5993](https://github.com/MTES-MCT/histologe/issues/5993), [#5994](https://github.com/MTES-MCT/histologe/issues/5994) et [#5996](https://github.com/MTES-MCT/histologe/issues/5996).
+- **Environnements de test :** Ajout d'un bandeau d'alerte [#6081](https://github.com/MTES-MCT/histologe/issues/6081).
+- **Login bailleur :** Copie de l'interface de login standard [#6073](https://github.com/MTES-MCT/histologe/issues/6073).
+- **Mini Dashboard :** Ajout d'un mini dashboard pour la démarche accélérée [#5942](https://github.com/MTES-MCT/histologe/issues/5942).
 
 ### Évolutions techniques
-
-*   **Rationalisation des flush :** Première étape d'une optimisation de la gestion des flush en base de données [#5977].
-*   **Nettoyage de la table signalement :** Optimisation de la table signalement [#5950].
-*   **Mise à jour de Jmespath :** Correction d'une vulnérabilité de sécurité (CVE) [#6028].
-*   **Mise à jour des dépendances :**
-    *   Mise à jour de npm packages [#6036, #5964, #5965].
-    *   Mise à jour de tinymce [#5955].
-*   **Configuration CI/CD :** Utilisation de `.env.ci` dans le pipeline CI principal [#5842].
-*   **Sentry Monitoring :** Exclusion des messages provenant du scheduler (esabora) des alertes Sentry [#5978].
-*   **Suppression d'une variable d'environnement :** Suppression de `FEATURE_INJONCTION_BAILLEUR` [#6000].
+- **Rationalisation des flush :** Première étape pour rationaliser les flush de la base de données [#5977](https://github.com/MTES-MCT/histologe/issues/5977).
+- **Nettoyage table signalement :** Nettoyage de la table signalement [#5950](https://github.com/MTES-MCT/histologe/issues/5950).
+- **Mise à jour des dépendances :** Mise à jour de Jmespath suite à une CVE détectée [#6028](https://github.com/MTES-MCT/histologe/issues/6028) et de npm packages [#5964](https://github.com/MTES-MCT/histologe/issues/5964).
+- **Sentry Monitoring :** Configuration pour ne pas alerter Sentry si le message provient du scheduler esabora [#5978](https://github.com/MTES-MCT/histologe/issues/5978).
+- **Configuration CI/CD :** Utilisation de `.env.ci` dans le pipeline CI principal [#5842](https://github.com/MTES-MCT/histologe/issues/5842).
+- **Suppression de code :** Suppression du résumé des suivis généré par l'IA [#6025](https://github.com/MTES-MCT/histologe/issues/6025).
+- **Gestion des erreurs :** Correction d'une erreur de type sur la normalisation du code INSEE [#6055](https://github.com/MTES-MCT/histologe/issues/6055).
 
 ### Autres changements
-
-*   **Documentation API :** Mise à jour de la documentation de l'API [#5928].
-*   **Commandes de gestion :** Ajout de nouvelles commandes pour la gestion des données (mise à jour des communes fusionnées, désynchronisation Sish) [#5910, #6019].
-*   **Amélioration de la navigation au clavier :** Amélioration de l'accessibilité du formulaire Pro [#6005].
-*   **Corrections de bugs :** Diverses corrections de bugs mineurs et améliorations de la stabilité [#6016, #6017, #6052, #6055, #6062, #5954, #5959, #5970, #5971, #5972, #5981].
-*   **Corrections de pagination :** Correction d'un bug lié à la pagination de l'API Permissions [#6075].
-*   **Correction d'un TypeError :** Correction d'une erreur de type lors de la normalisation du code INSEE [#6055].
-*   **Gestion des erreurs d'envoi Brevo :** Amélioration du suivi des erreurs d'envoi d'emails Brevo [#5952].
+- **Documentation :** Mise à jour des CGU [#6003](https://github.com/MTES-MCT/histologe/issues/6003).
+- **Commandes :** Ajout d'une commande pour mettre à jour les communes fusionnées [#5910](https://github.com/MTES-MCT/histologe/issues/5910).
+- **Corrections diverses :** Corrections diverses HTML dans le formulaire bailleur [#6076](https://github.com/MTES-MCT/histologe/issues/6076).
+- **Accessibilité :** Amélioration de l'accessibilité du login utilisateur [#6079](https://github.com/MTES-MCT/histologe/issues/6079).
+- **Corrections de bugs :** Correction de bugs mineurs et améliorations diverses.

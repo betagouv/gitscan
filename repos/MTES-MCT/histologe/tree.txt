@@ -124,6 +124,8 @@
 │   │   │   │   │   ├── form_upload_documents.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
+│   │   │   │   ├── back_territory_management_arrete_index
+│   │   │   │   │   └── back_territory_management_arrete_index.js
 │   │   │   │   ├── back_territory_management_document
 │   │   │   │   │   └── back_territory_management_document_index.js
 │   │   │   │   ├── back_territory_view
@@ -328,8 +330,7 @@
 ├── config
 │   ├── app
 │   │   ├── competences.yaml
-│   │   ├── csp.yaml
-│   │   └── suivi_messages.yaml
+│   │   └── csp.yaml
 │   ├── bundles.php
 │   ├── packages
 │   │   ├── cache.yaml
@@ -413,7 +414,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (112 files)
+│   └── Version*.php  (115 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -611,6 +612,7 @@
 │   │   │   ├── AffectationController.php
 │   │   │   ├── AnnuaireController.php
 │   │   │   ├── ArchivedSignalementController.php
+│   │   │   ├── ArreteController.php
 │   │   │   ├── AutoAffectationRuleController.php
 │   │   │   ├── AutoAssignerSimulatorController.php
 │   │   │   ├── BackAffectationWithoutSubscriptionController.php
@@ -1060,6 +1062,7 @@
 │   │   ├── SearchArchivedPartnerType.php
 │   │   ├── SearchArchivedSignalementType.php
 │   │   ├── SearchArchivedUserType.php
+│   │   ├── SearchArreteType.php
 │   │   ├── SearchAutoAffectationRuleType.php
 │   │   ├── SearchBailleurType.php
 │   │   ├── SearchClubEventType.php
@@ -1163,6 +1166,7 @@
 │   │       │   └── DossierMessageSISHHandler.php
 │   │       ├── FileDuplicationMessageHandler.php
 │   │       ├── GenerateFileZipMessageHandler.php
+│   │       ├── HistoriqueEvenementsMessageHandler.php
 │   │       ├── Idoss
 │   │       │   └── DossierMessageHandler.php
 │   │       ├── InactiveUserExportMessageHandler.php
@@ -1209,6 +1213,8 @@
 │   │   ├── PartnerRepository.php
 │   │   ├── PopNotificationRepository.php
 │   │   ├── Query
+│   │   │   ├── Arrete
+│   │   │   │   └── ArreteQuery.php
 │   │   │   ├── Commune
 │   │   │   │   └── CommuneStatisticsQuery.php
 │   │   │   ├── Dashboard
@@ -1486,6 +1492,7 @@
 │   │   │   ├── SearchArchivedPartner.php
 │   │   │   ├── SearchArchivedSignalement.php
 │   │   │   ├── SearchArchivedUser.php
+│   │   │   ├── SearchArrete.php
 │   │   │   ├── SearchAutoAffectationRule.php
 │   │   │   ├── SearchBailleur.php
 │   │   │   ├── SearchClubEvent.php
@@ -1655,9 +1662,11 @@
 │   │   │   ├── SignalementProfileOccupantMapper.php
 │   │   │   ├── SignalementQualificationNde.php
 │   │   │   ├── Suivi
+│   │   │   │   ├── HistoriqueEvenementsGenerator.php
 │   │   │   │   ├── SuiviCategoryMapper.php
 │   │   │   │   ├── SuiviDescriptionHelper.php
 │   │   │   │   ├── SuiviHelper.php
+│   │   │   │   ├── SuiviRecipient.php
 │   │   │   │   ├── SuiviSeenMarker.php
 │   │   │   │   └── SuiviTransformerService.php
 │   │   │   ├── VisiteNotifier.php
@@ -1841,6 +1850,10 @@
 │   │   │   └── index.html.twig
 │   │   ├── annuaire
 │   │   │   ├── export-annuaire.html.twig
+│   │   │   └── index.html.twig
+│   │   ├── arrete
+│   │   │   ├── _table-list-results.html.twig
+│   │   │   ├── _title-list-results.html.twig
 │   │   │   └── index.html.twig
 │   │   ├── auto-affectation-rule
 │   │   │   ├── _form.html.twig
@@ -2301,6 +2314,7 @@
 │   │   │   ├── Back
 │   │   │   │   ├── AdminTerritoryFilesControllerTest.php
 │   │   │   │   ├── AffectationControllerTest.php
+│   │   │   │   ├── ArreteControllerTest.php
 │   │   │   │   ├── AutoAffectationRuleControllerTest.php
 │   │   │   │   ├── AutoAssignerSimulatorControllerTest.php
 │   │   │   │   ├── BackArchivedPartnerControllerTest.php
@@ -2325,7 +2339,6 @@
 │   │   │   │   ├── SignalementFileGenerateZipControllerTest.php
 │   │   │   │   ├── SignalementInjonctionControllerTest.php
 │   │   │   │   ├── SignalementListControllerTest.php
-│   │   │   │   ├── SignalementSameAddressControllerTest.php
 │   │   │   │   ├── SignalementVisitesControllerTest.php
 │   │   │   │   ├── TerritoryFilesControllerTest.php
 │   │   │   │   ├── UserApiPermissionControllerTest.php
@@ -2389,6 +2402,7 @@
 │   │   │   └── UserManagerTest.php
 │   │   ├── Messenger
 │   │   │   └── MessageHandler
+│   │   │       ├── HistoriqueEvenementsMessageHandlerTest.php
 │   │   │       ├── InactiveUserExportMessageHandlerTest.php
 │   │   │       ├── ListExportMessageHandlerTest.php
 │   │   │       ├── PdfExportMessageHandlerTest.php
@@ -2397,6 +2411,7 @@
 │   │   │       └── UserExportMessageHandlerTest.php
 │   │   ├── Repository
 │   │   │   ├── AffectationRepositoryTest.php
+│   │   │   ├── ArreteRepositoryTest.php
 │   │   │   ├── AutoAffectationRuleRepositoryTest.php
 │   │   │   ├── BailleurRepositoryTest.php
 │   │   │   ├── Behaviour
@@ -2719,7 +2734,9 @@
 │   │   │   │   ├── SignalementDuplicateCheckerTest.php
 │   │   │   │   ├── SignalementFileProcessorTest.php
 │   │   │   │   ├── SignalementInputValueMapperTest.php
-│   │   │   │   └── SignalementProfileOccupantMapperTest.php
+│   │   │   │   ├── SignalementProfileOccupantMapperTest.php
+│   │   │   │   └── Suivi
+│   │   │   │       └── HistoriqueEvenementsGeneratorTest.php
 │   │   │   └── TimezoneProviderTest.php
 │   │   ├── Twig
 │   │   │   └── AppExtensionTest.php
@@ -2893,4 +2910,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-486 directories, 2537 files
+490 directories, 2553 files
