@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une fédération d'identité pour les professionnels, avec des fonctionnalités de gestion des utilisateurs, des organisations et des collaborateurs.",
+  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification et de fédération pour les professionnels, offrant des fonctionnalités de gestion des utilisateurs, d'authentification et d'intégration avec divers services.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des organisations & Structures",
     "API & Intégrations",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion documentaire & Fichiers",
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -16,13 +17,12 @@
     "Yarn",
     "Docker",
     "PostgreSQL",
-    "Redis",
     "MongoDB",
+    "Redis",
     "amqplib",
-    "bcryptjs",
-    "class-validator",
-    "express",
+    "fastapi",
     "mongoose",
+    "passport",
     "oidc-provider"
   ],
   "components": [
@@ -31,12 +31,14 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Microservices & Architecture"
+    "Microservices & Architecture",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "saml"
+      "sso"
     ]
   },
   "tests": [
@@ -46,7 +48,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-30T11:34:48+02:00",
+  "lastActivity": "2026-07-02T18:00:59+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -58,12 +60,12 @@
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
+    "Sécurité & Auth",
     "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "JavaScript",
+    "API & Intégrations",
+    "Docker",
+    "CI/CD",
+    "Microservices & Architecture"
   ]
 }
