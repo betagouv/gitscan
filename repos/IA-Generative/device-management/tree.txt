@@ -13,7 +13,8 @@
 │   ├── script.py.mako
 │   └── versions
 │       ├── 001_initial_schema.py
-│       └── 002_extension_update_metadata.py
+│       ├── 002_extension_update_metadata.py
+│       └── 003_runtime_config.py
 ├── alembic.ini
 ├── app
 │   ├── __init__.py
@@ -32,7 +33,8 @@
 │   │   │   ├── communications.py
 │   │   │   ├── devices.py
 │   │   │   ├── flags.py
-│   │   │   └── keycloak.py
+│   │   │   ├── keycloak.py
+│   │   │   └── runtime_config.py
 │   │   ├── static
 │   │   │   └── dm-admin.css
 │   │   ├── suggest_utils.py
@@ -70,11 +72,13 @@
 │   ├── main.py
 │   ├── pathsafe.py
 │   ├── postgres_queue.py
+│   ├── runtime_config.py
 │   ├── s3.py
 │   ├── services
 │   │   ├── __init__.py
 │   │   ├── crypto.py
-│   │   └── db.py
+│   │   ├── db.py
+│   │   └── health.py
 │   ├── settings.py
 │   └── worker_main.py
 ├── config
@@ -89,6 +93,13 @@
 │   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── docker-compose.yml
+│   │   ├── local-rcfg
+│   │   │   ├── .env.example
+│   │   │   ├── docker-compose.dm.yml
+│   │   │   ├── docker-compose.observability.yml
+│   │   │   ├── grafana
+│   │   │   │   └── datasource.yml
+│   │   │   └── tempo.yaml
 │   │   └── relay-assistant.conf.template
 │   ├── k8s
 │   │   ├── NORMALIZATION-secrets.md
@@ -214,6 +225,7 @@
     ├── conftest.py
     ├── test_admin_playwright.py
     ├── test_admin_ui.py
+    ├── test_bootstrap_urls.py
     ├── test_e2e_deployment.py
     ├── test_enriched_config.py
     ├── test_enroll.py
@@ -226,7 +238,10 @@
     ├── test_queue_resilience_distributed.py
     ├── test_queue_security.py
     ├── test_queue_validation.py
+    ├── test_readiness_gate.py
     ├── test_relay.py
+    ├── test_root_admin_redirects.py
+    ├── test_runtime_config.py
     ├── test_security_suggest.py
     └── test_telemetry.py
-38 directories, 193 files
+40 directories, 206 files

@@ -1,3 +1,35 @@
+2026-07-05T05:05:19+02:00 - 3abf196 - etiquet : Merge pull request #21 from IA-Generative/feat/root-and-admin-slash-redirects
+2026-07-05T04:57:46+02:00 - b673c7b - etiquet : feat(routing): / -> /catalog/ + /admin -> /admin/ (proxy-safe)
+2026-07-05T04:37:03+02:00 - ecf2fd2 - etiquet : Merge pull request #20 from IA-Generative/fix/log-filter-config-propagation
+2026-07-05T04:33:24+02:00 - 18935b2 - etiquet : feat(logs): filtre aussi /admin/api/config/propagation (polling admin 5s)
+2026-07-05T03:57:08+02:00 - 67fbd84 - etiquet : Merge pull request #19 from IA-Generative/feat/runtime-config-overrides
+2026-07-05T03:51:47+02:00 - ead569f - etiquet : style(lint): CI verte — tri imports (I001), déquote annotation (UP037), E402 bootstrap pré-import, nosec B311 jitter
+2026-07-02T06:17:51+02:00 - 597d0af - etiquet : chore(release): bump image 0.8.0 -> 0.8.1 (overlays scaleway/dgx + DM_APP_VERSION 20/22/23/28)
+2026-07-02T06:16:30+02:00 - 27f7885 - etiquet : test(config): couvre les 3 nouveaux credentials + one-shot bootstrap_env_overrides
+2026-07-02T06:10:01+02:00 - cba003d - etiquet : fix(k8s): telemetry-relay (image DM) — bloc runtime-config + /readyz (exemple public)
+2026-07-02T06:08:04+02:00 - 3659333 - etiquet : feat(logs): filtre sondes — +/readyz, récap 15 min, fenêtre de grâce au démarrage + nginx access_log off
+2026-07-02T06:05:25+02:00 - be95426 - etiquet : feat(config): légende + tooltips des statuts (modifié/redémarrage requis/secret) sur /admin/debug
+2026-07-02T06:04:44+02:00 - 5e60baa - etiquet : feat(config): credentials éditables (Keycloak/relais) + bootstrap pré-import des overrides
+2026-06-28T16:25:37+02:00 - 65a4d9c - etiquet : fix(admin): logout Keycloak — passe client_id (évite 'Missing parameters: id_token_hint')
+2026-06-28T16:17:38+02:00 - db52fc6 - etiquet : chore(local): exemple — KEYCLOAK_ISSUER_URL + SSO admin (admin-dm-ui) renseignés
+2026-06-28T16:10:59+02:00 - 474a141 - etiquet : chore(local): harnais dev local persistant (DM + Tempo/Grafana + relay-assistant)
+2026-06-28T15:56:24+02:00 - 65f17d3 - etiquet : feat(config): reaper auto des pods obsolètes + heartbeat résilient
+2026-06-28T14:39:00+02:00 - 6a722b9 - etiquet : feat(config): manifests k8s — Downward API (POD_IP/NODE_NAME), DM_CONFIG_SECRET_KEY, /readyz, version 0.8.0 (Stage 7)
+2026-06-28T14:35:24+02:00 - 650bf05 - etiquet : feat(config): UI page debug — édition inline, diff, reset, recharger, éditeur ordonné, flotte santé (Stage 6)
+2026-06-28T14:32:35+02:00 - ced4199 - etiquet : feat(config): endpoints admin + endpoint interne + bootstrapUrls (Stage 4+5+8)
+2026-06-28T14:27:21+02:00 - f9a9168 - etiquet : feat(config): câblage synchro runtime + garde de disponibilité (Stage 3+9)
+2026-06-28T14:23:48+02:00 - f89379d - etiquet : feat(config): module cœur runtime_config (registre, baseline, résolution, reload, génération, enrôlement, poll+NOTIFY)
+2026-06-28T14:18:54+02:00 - f326a84 - etiquet : feat(config): helper santé par pod (RAM/load/cpu/requêtes), stdlib pur
+2026-06-28T14:18:19+02:00 - d6cd45b - etiquet : feat(config): schéma des surcharges runtime (config_state, config_overrides, config_pod_state)
+2026-06-28T14:16:37+02:00 - 8422bea - etiquet : feat(config): chiffrement réversible Fernet pour les secrets de surcharge runtime
+2026-06-28T05:03:30+02:00 - 221e676 - etiquet : test(ci): rend test_queue_load_smoke robuste au runner CI
+2026-06-28T05:00:11+02:00 - d9e6e8a - etiquet : test(ci): skip propre de test_admin_playwright si playwright absent
+2026-06-28T04:57:36+02:00 - 0af4f43 - etiquet : test(ci): rend l'étape Pytest verte (collecte + isolation + integration)
+2026-06-28T04:31:25+02:00 - a0d4751 - etiquet : security(bandit): durcit ou justifie les findings → Bandit exit 0
+2026-06-28T04:21:05+02:00 - d412b36 - etiquet : style(lint): chaînage d'exceptions + découpe d'instructions → Ruff vert
+2026-06-28T04:21:05+02:00 - 134f712 - etiquet : chore(lint): Bandit devient la source unique de SAST (retire S de Ruff)
+2026-06-28T04:13:30+02:00 - 6a0452b - etiquet : fix(admin): corrige 2 NameError latents dans le router
+2026-06-28T04:08:41+02:00 - 3c3ec04 - etiquet : style(lint): applique les corrections Ruff sûres (imports, datetime.UTC, f-strings)
 2026-06-28T04:01:39+02:00 - 932500d - etiquet : Merge pull request #17 from IA-Generative/sec/admin-observability-and-suggest-hardening
 2026-06-24T04:31:18+02:00 - c5203f8 - etiquet : fix(security): observabilité de l'audit + robustesse de l'endpoint suggest
 2026-06-19T04:30:44+02:00 - 3de3271 - etiquet : test(security): couverture de la validation des chemins (segments, symlinks, frontière)
