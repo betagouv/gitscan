@@ -153,6 +153,7 @@
 │   │   │   │                   │   │   │   │       ├── InfractionCategory.kt
 │   │   │   │                   │   │   │   │       ├── InfractionThreatCharacterization.kt
 │   │   │   │                   │   │   │   │       ├── InfractionType.kt
+│   │   │   │                   │   │   │   │       ├── LogbookMessagePurpose.kt
 │   │   │   │                   │   │   │   │       ├── MissionAction.kt
 │   │   │   │                   │   │   │   │       ├── MissionActionType.kt
 │   │   │   │                   │   │   │   │       └── SpeciesControl.kt
@@ -173,6 +174,7 @@
 │   │   │   │                   │   │   │   │   ├── crew
 │   │   │   │                   │   │   │   │   │   ├── AgentEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── AgentRoleEntity.kt
+│   │   │   │                   │   │   │   │   │   ├── MissionCrewAbsenceEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── MissionCrewEntity.kt
 │   │   │   │                   │   │   │   │   │   ├── MissionPassengerEntity.kt
 │   │   │   │                   │   │   │   │   │   └── MissionPassengerOrganization.kt
@@ -198,15 +200,23 @@
 │   │   │   │                   │   │   │   │           └── TargetType.kt
 │   │   │   │                   │   │   │   ├── sati
 │   │   │   │                   │   │   │   │   ├── AddressEntity.kt
+│   │   │   │                   │   │   │   │   ├── AuthorityType.kt
 │   │   │   │                   │   │   │   │   ├── ContactEntity.kt
+│   │   │   │                   │   │   │   │   ├── PartyType.kt
 │   │   │   │                   │   │   │   │   ├── SatiEntity.kt
-│   │   │   │                   │   │   │   │   └── SatiEntityMapper.kt
+│   │   │   │                   │   │   │   │   ├── SatiEntityMapper.kt
+│   │   │   │                   │   │   │   │   ├── SatiInspectorEntity.kt
+│   │   │   │                   │   │   │   │   ├── SatiJpeEntity.kt
+│   │   │   │                   │   │   │   │   ├── SatiModuleType.kt
+│   │   │   │                   │   │   │   │   ├── SatiPartyEntity.kt
+│   │   │   │                   │   │   │   │   └── SatiVesselEntity.kt
 │   │   │   │                   │   │   │   └── v2
 │   │   │   │                   │   │   │       ├── BaseMissionActionEntity.kt
 │   │   │   │                   │   │   │       ├── BaseMissionEnvAction.kt
 │   │   │   │                   │   │   │       ├── BaseMissionFishAction.kt
 │   │   │   │                   │   │   │       ├── BaseMissionNavAction.kt
 │   │   │   │                   │   │   │       ├── ControlEntity.kt
+│   │   │   │                   │   │   │       ├── CountryEntity.kt
 │   │   │   │                   │   │   │       ├── CrossControlDataEntity.kt
 │   │   │   │                   │   │   │       ├── EstablishmentEntity.kt
 │   │   │   │                   │   │   │       ├── InfractionEntity.kt
@@ -330,6 +340,7 @@
 │   │   │   │                   │   │   │   │       ├── CreateNavAction.kt
 │   │   │   │                   │   │   │   │       ├── DeleteNavAction.kt
 │   │   │   │                   │   │   │   │       ├── DeleteTarget.kt
+│   │   │   │                   │   │   │   │       ├── EnableSati.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeEnvActionListByMissionId.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeEnvTarget.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeFishActionListByMissionId.kt
@@ -380,6 +391,8 @@
 │   │   │   │                   │   │   │   │   └── GetStatusDurations.kt
 │   │   │   │                   │   │   │   └── v2
 │   │   │   │                   │   │   │       ├── BaseMissionListProcessor.kt
+│   │   │   │                   │   │   │       ├── Country.kt
+│   │   │   │                   │   │   │       ├── CountryMapper.kt
 │   │   │   │                   │   │   │       ├── CreateGeneralInfos.kt
 │   │   │   │                   │   │   │       ├── CreateMission.kt
 │   │   │   │                   │   │   │       ├── CreateMissionNav.kt
@@ -390,6 +403,7 @@
 │   │   │   │                   │   │   │       ├── GetAllGeneralInfos.kt
 │   │   │   │                   │   │   │       ├── GetComputeEnvMission.kt
 │   │   │   │                   │   │   │       ├── GetComputeNavMission.kt
+│   │   │   │                   │   │   │       ├── GetCountries.kt
 │   │   │   │                   │   │   │       ├── GetGeneralInfo2.kt
 │   │   │   │                   │   │   │       ├── GetMissionActionControls.kt
 │   │   │   │                   │   │   │       ├── GetMissionCrew.kt
@@ -523,6 +537,7 @@
 │   │   │   │                       │   │   │   │   ├── AgentInput2.kt
 │   │   │   │                       │   │   │   │   ├── AgentRole.kt
 │   │   │   │                       │   │   │   │   ├── MissionCrew.kt
+│   │   │   │                       │   │   │   │   ├── MissionCrewAbsence.kt
 │   │   │   │                       │   │   │   │   ├── MissionPassenger.kt
 │   │   │   │                       │   │   │   │   ├── ResourceInput.kt
 │   │   │   │                       │   │   │   │   └── Service.kt
@@ -535,7 +550,11 @@
 │   │   │   │                       │   │   │   │   ├── Address.kt
 │   │   │   │                       │   │   │   │   ├── Contact.kt
 │   │   │   │                       │   │   │   │   ├── Sati.kt
-│   │   │   │                       │   │   │   │   └── SatiMapper.kt
+│   │   │   │                       │   │   │   │   ├── SatiInspector.kt
+│   │   │   │                       │   │   │   │   ├── SatiJpe.kt
+│   │   │   │                       │   │   │   │   ├── SatiMapper.kt
+│   │   │   │                       │   │   │   │   ├── SatiParty.kt
+│   │   │   │                       │   │   │   │   └── SatiVessel.kt
 │   │   │   │                       │   │   │   └── v2
 │   │   │   │                       │   │   │       ├── BaseMissionEnvActionData.kt
 │   │   │   │                       │   │   │       ├── BaseMissionFishActionData.kt
@@ -575,6 +594,7 @@
 │   │   │   │                       │   │   │   ├── AgentRestController.kt
 │   │   │   │                       │   │   │   ├── AgentRoleController.kt
 │   │   │   │                       │   │   │   ├── ControlUnitResourceRestController.kt
+│   │   │   │                       │   │   │   ├── CountryRestController.kt
 │   │   │   │                       │   │   │   ├── FishAuctionController.kt
 │   │   │   │                       │   │   │   ├── GeneralInfoRestController.kt
 │   │   │   │                       │   │   │   ├── InquiryRestController.kt
@@ -642,6 +662,7 @@
 │   │   │   │                       │   │   │   ├── crew
 │   │   │   │                       │   │   │   │   ├── AgentModel.kt
 │   │   │   │                       │   │   │   │   ├── AgentRoleModel.kt
+│   │   │   │                       │   │   │   │   ├── MissionCrewAbsenceModel.kt
 │   │   │   │                       │   │   │   │   └── MissionCrewModel.kt
 │   │   │   │                       │   │   │   ├── fish
 │   │   │   │                       │   │   │   │   └── FishAuctionModel.kt
@@ -656,8 +677,11 @@
 │   │   │   │                       │   │   │   ├── sati
 │   │   │   │                       │   │   │   │   ├── AddressModel.kt
 │   │   │   │                       │   │   │   │   ├── ContactModel.kt
+│   │   │   │                       │   │   │   │   ├── SatiInspectorModel.kt
 │   │   │   │                       │   │   │   │   ├── SatiModel.kt
-│   │   │   │                       │   │   │   │   └── SatiModelMapper.kt
+│   │   │   │                       │   │   │   │   ├── SatiModelMapper.kt
+│   │   │   │                       │   │   │   │   ├── SatiPartyModel.kt
+│   │   │   │                       │   │   │   │   └── SatiVesselModel.kt
 │   │   │   │                       │   │   │   └── target2
 │   │   │   │                       │   │   │       └── v2
 │   │   │   │                       │   │   │           └── TargetModel.kt
@@ -757,9 +781,11 @@
 │   │   │   │                       │       ├── ThreatHierarchyDataOutput.kt
 │   │   │   │                       │       └── VesselIdentityDataOutput.kt
 │   │   │   │                       └── utils
+│   │   │   │                           ├── APIGetCountryRepository.kt
 │   │   │   │                           ├── Base64Converter.kt
 │   │   │   │                           ├── FileUtils.kt
 │   │   │   │                           ├── HttpRequestUtils.kt
+│   │   │   │                           ├── ICountryRepository.kt
 │   │   │   │                           ├── ZipUtils.kt
 │   │   │   │                           └── office
 │   │   │   │                               ├── ExportExcelFile.kt
@@ -930,6 +956,8 @@
 │   │   │       │       ├── V1.2026.02.11.16.16__target_mission_source_enum.sql
 │   │   │       │       ├── V1.2026.02.17.16.16__user_status.sql
 │   │   │       │       ├── V1.2026.02.17.17.00__create_authentication_audit_table.sql
+│   │   │       │       ├── V1.2026.02.20.08.12__create_table_mission_crew_absence.sql
+│   │   │       │       ├── V1.2026.02.20.10.12__update_mission_crew2.sql
 │   │   │       │       ├── V1.2026.03.17.10.00__move_legacy_tables_to_archived_schema.sql
 │   │   │       │       ├── V1.2026.03.23.15.39__create_sati_table_and_correspondance.sql
 │   │   │       │       ├── V1.2026.03.23.15.42__alter_mission_action_fix_training_type.sql
@@ -942,6 +970,9 @@
 │   │   │       │       ├── V1.2026.05.11.27.47__alter_agent_table_add_card_id.sql
 │   │   │       │       ├── V1.2026.05.28.10.00__create_mission_action_resource_table.sql
 │   │   │       │       ├── V1.2026.06.09.10.00__backfill_location_type_gps_for_controls.sql
+│   │   │       │       ├── V1.2026.06.22.15.55__update_sati_table_and_correspondance.sql
+│   │   │       │       ├── V1.2026.06.30.10.00__delete_duplicate_target2_external_id.sql
+│   │   │       │       ├── V1.2026.07.01.10.00__unique_constraint_general_info_mission_id.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1019,15 +1050,17 @@
 │   │       │                   │   │   │   │       ├── ControlResourceEntityTest.kt
 │   │       │                   │   │   │   │       ├── LegacyControlUnitEntityTest.kt
 │   │       │                   │   │   │   │       └── LegacyControlUnitResourceEntityTest.kt
-│   │       │                   │   │   │   └── nav
-│   │       │                   │   │   │       ├── crew
-│   │       │                   │   │   │       │   └── MissionPassengerEntityTest.kt
-│   │       │                   │   │   │       ├── generalinfo
-│   │       │                   │   │   │       │   └── MissionGeneralInfoEntityTest.kt
-│   │       │                   │   │   │       └── v2
-│   │       │                   │   │   │           ├── ControlEntityTest.kt
-│   │       │                   │   │   │           ├── InfractionEnvEntityTest.kt
-│   │       │                   │   │   │           └── TargetEntityTest.kt
+│   │       │                   │   │   │   ├── nav
+│   │       │                   │   │   │   │   ├── crew
+│   │       │                   │   │   │   │   │   └── MissionPassengerEntityTest.kt
+│   │       │                   │   │   │   │   ├── generalinfo
+│   │       │                   │   │   │   │   │   └── MissionGeneralInfoEntityTest.kt
+│   │       │                   │   │   │   │   └── v2
+│   │       │                   │   │   │   │       ├── ControlEntityTest.kt
+│   │       │                   │   │   │   │       ├── InfractionEnvEntityTest.kt
+│   │       │                   │   │   │   │       └── TargetEntityTest.kt
+│   │       │                   │   │   │   └── sati
+│   │       │                   │   │   │       └── SatiEntityMapperTest.kt
 │   │       │                   │   │   └── v2
 │   │       │                   │   │       ├── EstablishmentEntityTest.kt
 │   │       │                   │   │       ├── InquiryEntityTest.kt
@@ -1097,6 +1130,7 @@
 │   │       │                   │   │   │   │       ├── DeleteNavActionTest.kt
 │   │       │                   │   │   │   │       ├── DeleteTargetTest.kt
 │   │       │                   │   │   │   │       ├── GetFishActionListByMissionIdTest.kt
+│   │       │                   │   │   │   │       ├── GetMissionActionTest.kt
 │   │       │                   │   │   │   │       ├── GetNavActionListByOwnerIdTest.kt
 │   │       │                   │   │   │   │       ├── GetStatusForAction2Test.kt
 │   │       │                   │   │   │   │       ├── ProcessEnvActionTest.kt
@@ -1253,6 +1287,7 @@
 │   │       │                   │   │                   └── BackendUsageErrorDataOutputTest.kt
 │   │       │                   │   ├── bff
 │   │       │                   │   │   ├── adapters
+│   │       │                   │   │   │   ├── CountryMapperTest.kt
 │   │       │                   │   │   │   └── mission
 │   │       │                   │   │   │       └── MissionEnvInputTest.kt
 │   │       │                   │   │   ├── controllers
@@ -1260,6 +1295,7 @@
 │   │       │                   │   │   │   ├── AgentRestControllerTest.kt
 │   │       │                   │   │   │   ├── AgentRoleControllerTest.kt
 │   │       │                   │   │   │   ├── ControlUnitResourceRestControllerTest.kt
+│   │       │                   │   │   │   ├── CountryRestControllerTest.kt
 │   │       │                   │   │   │   ├── FishAuctionControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfoRestControllerTest.kt
 │   │       │                   │   │   │   ├── MissionRestControllerTest.kt
@@ -1345,6 +1381,7 @@
 │   │       │                   │   │       ├── MissionActionDataOutputTest.kt
 │   │       │                   │   │       └── VesselIdentityDataOutputTest.kt
 │   │       │                   │   └── utils
+│   │       │                   │       ├── APIGetCountryRepositoryTest.kt
 │   │       │                   │       ├── ExportZipTest.kt
 │   │       │                   │       ├── FileUtilsTest.kt
 │   │       │                   │       ├── HttpRequestUtilsTest.kt
@@ -1584,8 +1621,7 @@
 │   │   │       │   ├── env-themes.ts
 │   │   │       │   ├── fish-mission-types.ts
 │   │   │       │   ├── infraction-types.ts
-│   │   │       │   ├── mission-types.ts
-│   │   │       │   └── service-types.ts
+│   │   │       │   └── mission-types.ts
 │   │   │       └── utils
 │   │   │           ├── dates-for-humans.test.ts
 │   │   │           ├── dates-for-humans.ts
@@ -1915,6 +1951,7 @@
 │   │   │   │   │   │   ├── use-address-service.tsx
 │   │   │   │   │   │   ├── use-administrations.tsx
 │   │   │   │   │   │   ├── use-agent-roles.tsx
+│   │   │   │   │   │   ├── use-agent-services.tsx
 │   │   │   │   │   │   ├── use-agents.tsx
 │   │   │   │   │   │   ├── use-create-action.tsx
 │   │   │   │   │   │   ├── use-delete-action.tsx
@@ -1958,6 +1995,7 @@
 │   │   │   │   │       ├── role-type.ts
 │   │   │   │   │       ├── sector-types.ts
 │   │   │   │   │       ├── service-agents-types.ts
+│   │   │   │   │       ├── service-types.ts
 │   │   │   │   │       ├── target-types.ts
 │   │   │   │   │       ├── unit-management-type.ts
 │   │   │   │   │       ├── user.ts
@@ -2122,7 +2160,8 @@
 │   │   │   │   │   └── validation-schema
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   └── control-nautical-leisure.test.ts
-│   │   │   │   │       └── conrtol-nautical-leisure.ts
+│   │   │   │   │       ├── conrtol-nautical-leisure.ts
+│   │   │   │   │       └── date-validation.ts
 │   │   │   │   ├── mission-control
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
@@ -2173,6 +2212,8 @@
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   └── use-mission-general-information.tsx
 │   │   │   │   │   └── ui
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   └── mission-crew-list.test.tsx
 │   │   │   │   │       ├── mission-crew-form-no-comment.tsx
 │   │   │   │   │       ├── mission-crew-list-no-comment.tsx
 │   │   │   │   │       ├── mission-crew-list.tsx
@@ -2310,22 +2351,35 @@
 │   │   │   │   │   │   ├── element
 │   │   │   │   │   │   │   ├── general-info
 │   │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-form.test.tsx
-│   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam.test.tsx
 │   │   │   │   │   │   │   │   │   ├── mission-general-information-form-pam.test.tsx
 │   │   │   │   │   │   │   │   │   ├── mission-general-information-pam-body.test.tsx
 │   │   │   │   │   │   │   │   │   ├── mission-general-information-pam.test.tsx
-│   │   │   │   │   │   │   │   │   ├── mission-general-information-passenger-pam-form.test.tsx
-│   │   │   │   │   │   │   │   │   ├── mission-general-information-passenger-pam.test.tsx
 │   │   │   │   │   │   │   │   │   └── mission-service.test.tsx
-│   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-form.tsx
-│   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam.tsx
+│   │   │   │   │   │   │   │   ├── crew
+│   │   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   │   ├── crew-absence-form.test.tsx
+│   │   │   │   │   │   │   │   │   │   ├── crew-full-mission-absence-form.test.tsx
+│   │   │   │   │   │   │   │   │   │   ├── crew-temporary-absence-form-item.test.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-absence-form.test.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-form.test.tsx
+│   │   │   │   │   │   │   │   │   │   └── mission-general-information-crew-pam.test.tsx
+│   │   │   │   │   │   │   │   │   ├── crew-absence-form.tsx
+│   │   │   │   │   │   │   │   │   ├── crew-full-mission-absence-form.tsx
+│   │   │   │   │   │   │   │   │   ├── crew-temporary-absence-form-item.tsx
+│   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-absence-modal.tsx
+│   │   │   │   │   │   │   │   │   ├── mission-general-information-crew-pam-form.tsx
+│   │   │   │   │   │   │   │   │   └── mission-general-information-crew-pam.tsx
 │   │   │   │   │   │   │   │   ├── mission-general-information-form-pam.tsx
 │   │   │   │   │   │   │   │   ├── mission-general-information-pam-body.tsx
 │   │   │   │   │   │   │   │   ├── mission-general-information-pam.tsx
-│   │   │   │   │   │   │   │   ├── mission-general-information-passenger-pam-form.tsx
 │   │   │   │   │   │   │   │   ├── mission-general-information-passenger-pam.tsx
-│   │   │   │   │   │   │   │   └── mission-service.tsx
+│   │   │   │   │   │   │   │   ├── mission-service.tsx
+│   │   │   │   │   │   │   │   └── passengers
+│   │   │   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │   │   │       │   ├── mission-general-information-passenger-pam-form.test.tsx
+│   │   │   │   │   │   │   │       │   └── mission-general-information-passenger-pam.test.tsx
+│   │   │   │   │   │   │   │       ├── mission-general-information-passenger-pam-form.tsx
+│   │   │   │   │   │   │   │       └── mission-general-information-passenger-pam.tsx
 │   │   │   │   │   │   │   ├── mission-action-pam-body.tsx
 │   │   │   │   │   │   │   ├── mission-action-pam-header.tsx
 │   │   │   │   │   │   │   ├── mission-action-pam-item.tsx
@@ -2353,20 +2407,33 @@
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── __snapshots__
+│   │   │   │   │   │       │   │   ├── crew-absence-tag.test.tsx.snap
+│   │   │   │   │   │       │   │   ├── mission-crew-list-item-pam.test.tsx.snap
 │   │   │   │   │   │       │   │   └── mission-interservices-tag.test.tsx.snap
+│   │   │   │   │   │       │   ├── crew-absence-tag.test.tsx
+│   │   │   │   │   │       │   ├── mission-crew-list-item-pam.test.tsx
 │   │   │   │   │   │       │   ├── mission-interservices-tag.test.tsx
 │   │   │   │   │   │       │   ├── mission-psssenger-list-item-pam.test.tsx
 │   │   │   │   │   │       │   └── offline-dialog.test.tsx
+│   │   │   │   │   │       ├── crew-absence-tag.tsx
 │   │   │   │   │   │       ├── mission-crew-list-item-pam.tsx
 │   │   │   │   │   │       ├── mission-interservices-tag.tsx
 │   │   │   │   │   │       ├── mission-passenger-list-item-pam.tsx
 │   │   │   │   │   │       └── offline-dialog.tsx
 │   │   │   │   │   └── hooks
 │   │   │   │   │       ├── __tests__
-│   │   │   │   │       │   └── use-pam-mission-general-information-form.test.tsx
+│   │   │   │   │       │   ├── use-crew-absence-form.test.tsx
+│   │   │   │   │       │   ├── use-crew-absence-reason.test.tsx
+│   │   │   │   │       │   ├── use-crew-absence.test.tsx
+│   │   │   │   │       │   ├── use-pam-mission-general-information-form.test.tsx
+│   │   │   │   │       │   └── use-passenger-form.test.tsx
+│   │   │   │   │       ├── use-crew-absence-form.tsx
+│   │   │   │   │       ├── use-crew-absence-reason.tsx
+│   │   │   │   │       ├── use-crew-absence.tsx
 │   │   │   │   │       ├── use-pam-action-registry.tsx
 │   │   │   │   │       ├── use-pam-mission-general-information-form.tsx
-│   │   │   │   │       └── use-pam-timeline-registry.tsx
+│   │   │   │   │       ├── use-pam-timeline-registry.tsx
+│   │   │   │   │       └── use-passenger-form.tsx
 │   │   │   │   └── ulam
 │   │   │   │       ├── components
 │   │   │   │       │   ├── element
@@ -2475,4 +2542,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-495 directories, 2018 files
+501 directories, 2079 files
