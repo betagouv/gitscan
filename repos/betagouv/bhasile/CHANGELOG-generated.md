@@ -1,45 +1,38 @@
-## Changelog : bhasile (30 derniers jours, au 03 juillet 2026)
+## Changelog : bhasile (30 derniers jours, au 6 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur et de la gestion des transformations de structures d'hébergement. L'ajout de statistiques et l'amélioration des indicateurs d'impact permettent un meilleur suivi de l'activité. Plusieurs corrections de bugs et optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Cette version apporte des améliorations significatives à la gestion des transformations de structures d'hébergement, avec notamment la prise en charge des avenants, des actes administratifs et des places d'hébergement. L'interface utilisateur a été améliorée, notamment avec l'ajout de statistiques et la correction de bugs visuels. Des optimisations techniques ont également été réalisées pour améliorer la performance et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de statistiques sur les places et les structures, accessibles via de nouveaux blocs dans l'interface. [#1430](https://github.com/betagouv/bhasile/issues/1430)
-- Affichage du nombre de places clôturées sur la page de vérification. [#1429](https://github.com/betagouv/bhasile/issues/1429)
-- Ajout de boutons de suppression pour les codes DNA et FINESS. [#1428](https://github.com/betagouv/bhasile/issues/1428)
-- Affichage d'un badge indiquant les transformations à venir. [#1425](https://github.com/betagouv/bhasile/issues/1425)
-- Gestion du transfert des codes DNA pour les transformations. [#1424](https://github.com/betagouv/bhasile/issues/1424)
-- Sauvegarde des valeurs du formulaire lors de la navigation. [#1419](https://github.com/betagouv/bhasile/issues/1419)
-- Ajout de la date de fermeture à la structure. [#1432](https://github.com/betagouv/bhasile/issues/1432)
-- Suppression de la question relative à l'adresse administrative. [#1427](https://github.com/betagouv/bhasile/issues/1427)
-- Préremplissage de l'opérateur lors de la création. [#1420](https://github.com/betagouv/bhasile/issues/1420)
-- Autorisation de la sauvegarde d'un formulaire de transformation sans FINESS. [#1421](https://github.com/betagouv/bhasile/issues/1421)
-- Amélioration de la mise en page de l'onglet historique. [#1423](https://github.com/betagouv/bhasile/issues/1423)
-- Ajout de la possibilité de modifier le cas de figure. [#1406](https://github.com/betagouv/bhasile/issues/1406)
-- Affichage des marqueurs de transformation sur le tableau des lieux. [#1407](https://github.com/betagouv/bhasile/issues/1407)
-- Conservation de la date de création de la structure. [#1413](https://github.com/betagouv/bhasile/issues/1413)
-- Autorisation de la date d'effet nulle. [#1412](https://github.com/betagouv/bhasile/issues/1412)
-- Ajout de la logique côté serveur pour les structures fermées. [#1408](https://github.com/betagouv/bhasile/issues/1408)
-- Ajout de marqueurs de transformation sur le tableau des finances. [#1403](https://github.com/betagouv/bhasile/issues/1403)
-- Ajout d'un onglet historique. [#1382](https://github.com/betagouv/bhasile/issues/1382)
-- Affichage de la structure nouvellement créée. [#1399](https://github.com/betagouv/bhasile/issues/1399)
-- Ajout de la possibilité de modifier les actes lors de la validation d'une transformation. [#1402](https://github.com/betagouv/bhasile/issues/1402)
-- Ajout de la possibilité de créer des structures à partir de transformations. [#1354](https://github.com/betagouv/bhasile/issues/1354)
-- Ajout de formulaires pour l'extension/contraction des actes administratifs et de l'hébergement. [#1323](https://github.com/betagouv/bhasile/issues/1323), [#1321](https://github.com/betagouv/bhasile/issues/1321)
-- Ajout d'une page de validation de transformation. [#1312](https://github.com/betagouv/bhasile/issues/1312)
-- Ajout d'une liste des transformations en cours. [#1309](https://github.com/betagouv/bhasile/issues/1309)
+- Ajout de la gestion des RMU (Référentiel des Mouvements Urbains) [#1441](https://github.com/betagouv/bhasile/issues/1441).
+- Amélioration de l'affichage des actes sur la page structure [#1447](https://github.com/betagouv/bhasile/issues/1447).
+- Affichage du nombre de places fermées sur la page de vérification [#1429](https://github.com/betagouv/bhasile/issues/1429).
+- Ajout de boutons de suppression pour les codes DNA et FINESS [#1428](https://github.com/betagouv/bhasile/issues/1428).
+- Affichage d'un badge pour les transformations à venir [#1425](https://github.com/betagouv/bhasile/issues/1425).
+- Ajout de la possibilité de modifier le cas de figure [#1406](https://github.com/betagouv/bhasile/issues/1406).
+- Ajout de la gestion des avenants dans les transformations [#1330](https://github.com/betagouv/bhasile/issues/1330).
+- Ajout de la gestion de l'extension/contraction des actes administratifs [#1323](https://github.com/betagouv/bhasile/issues/1323) et de l'hébergement [#1321](https://github.com/betagouv/bhasile/issues/1321).
+- Ajout de statistiques sur les structures et les places [#1337](https://github.com/betagouv/bhasile/issues/1337), [#1414](https://github.com/betagouv/bhasile/issues/1414), [#1418](https://github.com/betagouv/bhasile/issues/1418).
+- Ajout d'indicateurs d'impact [#1331](https://github.com/betagouv/bhasile/issues/1331), [#1360](https://github.com/betagouv/bhasile/issues/1360).
+- Amélioration de la pré-remplissage des informations lors de la création de structures [#1420](https://github.com/betagouv/bhasile/issues/1420).
 
 ### Évolutions techniques
-- Intégration des blocs de statistiques à l'API. [#1430](https://github.com/betagouv/bhasile/issues/1430)
-- Refonte de la gestion des requêtes SQL pour les structures. [#1400](https://github.com/betagouv/bhasile/issues/1400)
-- Mise en place d'une migration pour les transformations. [#1324](https://github.com/betagouv/bhasile/issues/1324)
-- Amélioration des tests E2E pour la nouvelle version. [#1395](https://github.com/betagouv/bhasile/issues/1395), [#1394](https://github.com/betagouv/bhasile/issues/1394), [#1390](https://github.com/betagouv/bhasile/issues/1390)
-- Ajout de la gestion des versions de structure.
-- Suppression de code mort. [#1327](https://github.com/betagouv/bhasile/issues/1327)
+- Mise à jour de Zod vers la version 4 [#1440](https://github.com/betagouv/bhasile/issues/1440).
+- Suppression des requêtes SQL obsolètes pour les structures, CPOMs et opérateurs [#1400](https://github.com/betagouv/bhasile/issues/1400), [#1435](https://github.com/betagouv/bhasile/issues/1435), [#1434](https://github.com/betagouv/bhasile/issues/1434).
+- Refactorisation de la gestion des erreurs API [#1443](https://github.com/betagouv/bhasile/issues/1443).
+- Utilisation de `useSaveMutation` pour les sauvegardes [#1445](https://github.com/betagouv/bhasile/issues/1445).
+- Introduction de la notion de `structureVersion` pour gérer l'historique des structures [#1354](https://github.com/betagouv/bhasile/issues/1354).
+- Migration des transformations [#1324](https://github.com/betagouv/bhasile/issues/1324).
+- Amélioration des tests (traduction en français, ajout de tests e2e) [#1431](https://github.com/betagouv/bhasile/issues/1431), [#1377](https://github.com/betagouv/bhasile/issues/1377).
 
 ### Autres changements
-- Correction de plusieurs bugs liés aux formulaires de transformation. [#1409](https://github.com/betagouv/bhasile/issues/1409), [#1410](https://github.com/betagouv/bhasile/issues/1410), [#1411](https://github.com/betagouv/bhasile/issues/1411)
-- Amélioration de la mise en page et du style de certains éléments de l'interface. [#1426](https://github.com/betagouv/bhasile/issues/1426)
-- Corrections de tests et amélioration de la couverture.
-- Mise à jour de diverses dépendances.
-- Ajout de documentation pour Dependabot. [#1322](https://github.com/betagouv/bhasile/issues/1322)
+- Correction de bugs visuels (flickering de l'en-tête) [#1456](https://github.com/betagouv/bhasile/issues/1456).
+- Suppression de la génération statique de nonce et state dans la configuration d'authentification [#1457](https://github.com/betagouv/bhasile/issues/1457).
+- Améliorations de l'interface utilisateur (design, layout) [#1455](https://github.com/betagouv/bhasile/issues/1455), [#1426](https://github.com/betagouv/bhasile/issues/1426).
+- Ajout de la possibilité de spécifier l'extension/contraction sur le label des places autorisées [#1436](https://github.com/betagouv/bhasile/issues/1436).
+- Déduction du nombre de places LGBT/FVV [#1439](https://github.com/betagouv/bhasile/issues/1439).
+- Ajout d'un lien vers la campagne sur la page de version de la structure [#1379](https://github.com/betagouv/bhasile/issues/1379).
+- Correction de l'utilisation de l'année pour les indicateurs financiers [#1433](https://github.com/betagouv/bhasile/issues/1433).
+- Suppression des activités SQL [#1437](https://github.com/betagouv/bhasile/issues/1437).
+- Ajout de la possibilité de spécifier la date de fermeture d'une structure [#1432](https://github.com/betagouv/bhasile/issues/1432).
+- Suppression de la question sur l'adresse administrative [#1427](https://github.com/betagouv/bhasile/issues/1427).

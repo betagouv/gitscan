@@ -247,6 +247,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260630084445_add_structure_fermeture_date
 │   │   │   └── migration.sql
+│   │   ├── 20260701125625_add_rmus
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -266,6 +268,7 @@
 │   │   ├── note.prisma
 │   │   ├── operateur.prisma
 │   │   ├── reporting.prisma
+│   │   ├── rmu.prisma
 │   │   ├── schema.prisma
 │   │   ├── structure-version.prisma
 │   │   ├── structure.prisma
@@ -293,6 +296,7 @@
 │   │   ├── indicateur-financier.ts
 │   │   ├── note.seed.ts
 │   │   ├── operateur.seed.ts
+│   │   ├── rmu.seed.ts
 │   │   ├── structure-typologie.seed.ts
 │   │   ├── structure-version.seed.ts
 │   │   └── user.seed.ts
@@ -349,16 +353,20 @@
 │   │   ├── fill-monthly-reporting.ts
 │   │   ├── fill-roles.ts
 │   │   ├── ofii-fill-referential-and-activity.ts
-│   │   └── reporting-indicator-categories.ts
+│   │   ├── reporting-indicator-categories.ts
+│   │   └── rmu-fill.ts
 │   ├── run-one-off.sh
 │   ├── utils
 │   │   ├── csv-loader.ts
+│   │   ├── departement-name.ts
 │   │   ├── ensure-operateurs-exist.ts
 │   │   ├── ofii-fill-activity.ts
 │   │   ├── ofii-fill-referential.ts
 │   │   ├── ofii-xlsx.ts
 │   │   ├── parse-date.ts
-│   │   └── xlsx-loader.ts
+│   │   ├── rmu-xlsx.ts
+│   │   ├── xlsx-loader.ts
+│   │   └── xlsx-utils.ts
 │   └── views
 │       ├── 000_structures_core.sql
 │       ├── 001_structures_filling.sql
@@ -457,7 +465,11 @@
 │   │   │   │   │   │   ├── activite
 │   │   │   │   │   │   │   └── ActiviteBlock.tsx
 │   │   │   │   │   │   ├── controle-qualite
-│   │   │   │   │   │   │   └── ControleQualiteBlock.tsx
+│   │   │   │   │   │   │   ├── ControleQualiteBlock.tsx
+│   │   │   │   │   │   │   ├── ControleQualiteStatsTable.tsx
+│   │   │   │   │   │   │   ├── EIGChart.tsx
+│   │   │   │   │   │   │   ├── EvaluationChart.tsx
+│   │   │   │   │   │   │   └── TimePeriodSelector.tsx
 │   │   │   │   │   │   ├── finances
 │   │   │   │   │   │   │   ├── BalanceChart.tsx
 │   │   │   │   │   │   │   ├── FinanceCards.tsx
@@ -734,6 +746,7 @@
 │   │   │   │   ├── activite.repository.ts
 │   │   │   │   ├── activite.service.ts
 │   │   │   │   ├── activite.type.ts
+│   │   │   │   ├── activite.util.ts
 │   │   │   │   └── stats
 │   │   │   │       └── route.ts
 │   │   │   ├── adresses
@@ -757,7 +770,6 @@
 │   │   │   ├── cpoms
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
-│   │   │   │   ├── cpom.constants.ts
 │   │   │   │   ├── cpom.db.type.ts
 │   │   │   │   ├── cpom.repository.ts
 │   │   │   │   ├── cpom.service.ts
@@ -799,7 +811,7 @@
 │   │   │   │   ├── operateur.db.type.ts
 │   │   │   │   ├── operateur.repository.ts
 │   │   │   │   ├── operateur.service.ts
-│   │   │   │   ├── operateur.sql.ts
+│   │   │   │   ├── operateur.util.ts
 │   │   │   │   ├── route.ts
 │   │   │   │   └── suggestions
 │   │   │   │       └── route.ts
@@ -850,7 +862,6 @@
 │   │   │   │   ├── structure.db.type.ts
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
-│   │   │   │   ├── structure.sql.ts
 │   │   │   │   └── structure.util.ts
 │   │   │   ├── transformations
 │   │   │   │   ├── [id]
@@ -871,8 +882,11 @@
 │   │   │       └── user-action.util.ts
 │   │   ├── components
 │   │   │   ├── AccordionTitle.tsx
+│   │   │   ├── ErrorDisclosure.tsx
+│   │   │   ├── ErrorNotice.tsx
 │   │   │   ├── ErrorToast.tsx
 │   │   │   ├── InformationCard.tsx
+│   │   │   ├── InformationCardBridge.tsx
 │   │   │   ├── Logo.tsx
 │   │   │   ├── Menu.tsx
 │   │   │   ├── MenuFooter.tsx
@@ -882,7 +896,6 @@
 │   │   │   ├── NoDataAccordion.tsx
 │   │   │   ├── SearchBar.tsx
 │   │   │   ├── StructureCard.tsx
-│   │   │   ├── SubmitError.tsx
 │   │   │   ├── Tracking.tsx
 │   │   │   ├── User.tsx
 │   │   │   ├── WorkInProgress.tsx
@@ -913,6 +926,7 @@
 │   │   │   │   ├── SeeFileButton.tsx
 │   │   │   │   ├── SegmentedControl.tsx
 │   │   │   │   ├── SimplePagination.tsx
+│   │   │   │   ├── StackedBarChart.tsx
 │   │   │   │   ├── StackedBarLineChart.tsx
 │   │   │   │   └── Table.tsx
 │   │   │   ├── filters
@@ -1048,8 +1062,6 @@
 │   │   │   │   │   ├── FieldSetDescription.tsx
 │   │   │   │   │   ├── FieldSetDirectionGenerale.tsx
 │   │   │   │   │   └── FieldSetSiegeSocial.tsx
-│   │   │   │   ├── ouvertureFermeture
-│   │   │   │   │   └── FieldSetOuvertureFermeture.tsx
 │   │   │   │   ├── transformation-types
 │   │   │   │   │   ├── CreationTransformationForm.tsx
 │   │   │   │   │   ├── FromStructureCard.tsx
@@ -1140,6 +1152,7 @@
 │   │   │   ├── useOperateurSuggestion.ts
 │   │   │   ├── usePersistStructuresSearchQuery.ts
 │   │   │   ├── useRedirectStructureCreation.ts
+│   │   │   ├── useSaveMutation.ts
 │   │   │   ├── useSpreadsheetParse.ts
 │   │   │   ├── useStructureAdresseExistence.ts
 │   │   │   ├── useStructureSelections.ts
@@ -1157,6 +1170,8 @@
 │   │   └── utils
 │   │       ├── acteAdministratif.util.ts
 │   │       ├── adresse.util.ts
+│   │       ├── apiError.util.ts
+│   │       ├── apiErrorResponse.util.ts
 │   │       ├── bhasile.util.ts
 │   │       ├── budget.util.ts
 │   │       ├── classname.util.ts
@@ -1174,10 +1189,12 @@
 │   │       ├── finalisationForm.util.ts
 │   │       ├── getErrorMessages.util.ts
 │   │       ├── indicateurFinancier.util.ts
+│   │       ├── list.util.ts
 │   │       ├── math.util.ts
 │   │       ├── number.util.ts
 │   │       ├── operateur.util.ts
 │   │       ├── phone.util.ts
+│   │       ├── refresh.util.ts
 │   │       ├── statistiques-format.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
@@ -1185,8 +1202,8 @@
 │   │       ├── structureTypology.util.ts
 │   │       ├── transformation.util.ts
 │   │       ├── tutorials.util.ts
-│   │       ├── zodCustomFields.ts
-│   │       └── zodErrorMap.ts
+│   │       ├── zodConfig.ts
+│   │       └── zodCustomFields.ts
 │   ├── config
 │   │   ├── acte-administratif.config.ts
 │   │   ├── operateur.config.ts
@@ -1364,11 +1381,15 @@
 │   │   ├── actes-administratifs
 │   │   │   └── acte-administratif.util.test.ts
 │   │   ├── activites
+│   │   │   ├── activite.repository.test.ts
+│   │   │   ├── activite.util.test.ts
 │   │   │   └── stats
 │   │   │       └── route.test.ts
 │   │   ├── cpoms
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
+│   │   │   ├── cpom.repository.test.ts
+│   │   │   ├── cpom.util.test.ts
 │   │   │   └── route.test.ts
 │   │   ├── dna-codes
 │   │   │   ├── dna-codes.repository.test.ts
@@ -1380,6 +1401,8 @@
 │   │   ├── operateurs
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
+│   │   │   ├── operateur.repository.test.ts
+│   │   │   ├── operateur.util.test.ts
 │   │   │   ├── route.test.ts
 │   │   │   └── suggestions
 │   │   │       └── route.test.ts
@@ -1412,6 +1435,7 @@
 │   │       ├── transformation.repository.test.ts
 │   │       └── transformation.util.test.ts
 │   ├── components
+│   │   ├── ErrorToast.test.tsx
 │   │   ├── Menu.test.tsx
 │   │   ├── StructureCard.test.tsx
 │   │   ├── forms
@@ -1442,7 +1466,8 @@
 │   │   ├── data
 │   │   │   ├── cpom.factory.ts
 │   │   │   ├── ids.ts
-│   │   │   └── structure.factory.ts
+│   │   │   ├── structure.factory.ts
+│   │   │   └── transformation.factory.ts
 │   │   ├── fixtures
 │   │   │   ├── files
 │   │   │   │   └── sample.pdf
@@ -1452,7 +1477,21 @@
 │   │   ├── pages
 │   │   │   ├── cpom-creation.page.ts
 │   │   │   ├── cpom-modification.page.ts
+│   │   │   ├── shared
+│   │   │   │   ├── actes.helper.ts
+│   │   │   │   ├── address.helper.ts
+│   │   │   │   ├── autocomplete.helper.ts
+│   │   │   │   ├── ban-mock.helper.ts
+│   │   │   │   └── wait.helper.ts
 │   │   │   ├── structure-modification.page.ts
+│   │   │   ├── transformation
+│   │   │   │   ├── entry.helper.ts
+│   │   │   │   ├── fillers
+│   │   │   │   │   └── step-fillers.ts
+│   │   │   │   ├── flows
+│   │   │   │   │   └── transformation-flows.ts
+│   │   │   │   ├── selection.helper.ts
+│   │   │   │   └── transformation-nav.helper.ts
 │   │   │   └── upload.helper.ts
 │   │   ├── playwright.config.ts
 │   │   ├── proconnect-login.ts
@@ -1461,11 +1500,15 @@
 │   │   │   ├── cpom.seed.ts
 │   │   │   ├── orphan-cleanup.ts
 │   │   │   ├── prisma.ts
-│   │   │   └── structure.seed.ts
+│   │   │   ├── structure.seed.ts
+│   │   │   ├── transformation-assert.ts
+│   │   │   └── transformation-source.seed.ts
 │   │   └── specs
 │   │       ├── cpom-creation.spec.ts
 │   │       ├── cpom-modification.spec.ts
-│   │       └── structure-modification.spec.ts
+│   │       ├── structure-modification.spec.ts
+│   │       ├── transformation-cross-cutting.spec.ts
+│   │       └── transformation.spec.ts
 │   ├── e2e-legacy
 │   │   ├── cpom-ajout.spec.ts
 │   │   ├── fixtures
@@ -1593,6 +1636,7 @@
 │   ├── utils
 │   │   ├── acteAdministratif.util.test.ts
 │   │   ├── adresse.util.test.ts
+│   │   ├── budget.util.test.ts
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
 │   │   ├── date.util.test.ts
@@ -1600,6 +1644,7 @@
 │   │   ├── eig.util.test.ts
 │   │   ├── getErrorMessages.util.test.ts
 │   │   ├── getInitialAntennes.test.ts
+│   │   ├── list.util.test.ts
 │   │   ├── math.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
@@ -1611,4 +1656,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-426 directories, 1187 files
+430 directories, 1228 files
