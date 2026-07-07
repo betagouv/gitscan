@@ -24,6 +24,7 @@ and this project adheres to
 - ♿️(frontend) align search modal field label with placeholder #2384
 - 🚚(frontend) move Waffle to bottom left #2455
 - ♿️(frontend) remove redundant aria-label on table of contents links #2459
+- ♻️(core) fix typo in settings COLLABORATION_WS_NOT_CONNECTED_READY_ONLY #2481
 
 ### Fixed
 
@@ -31,6 +32,8 @@ and this project adheres to
 - 🐛(frontend) fix removed item in the tree #2420
 - 🐛(frontend) fix service worker causing reload on tab focus #2454
 - 🐛(backend) update restore ability for inherited deletion #2148
+- 🔧(dev) make the dev stack domain-agnostic #2498
+- 🐛(frontend) stop force index redirect when delete doc #2490
 
 ### Removed
 
