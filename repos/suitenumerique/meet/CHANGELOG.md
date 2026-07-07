@@ -8,7 +8,19 @@ and this project adheres to
 
 ## [Unreleased]
 
-- 🚀 (front) fix frontend build failure
+### Changed
+
+- ⬆️(agents) upgrade to python 3.14 slim
+- ⬆️(dependencies) update python dependencies
+- 💥(summary) remove v1 related code #1362
+- ✨(meet) use compatible with summary v2 #1362
+
+### Fixed
+
+- 🚀(front) fix frontend build failure
+- 🐛(makefile) fix args in make test
+- 🩹(backend) fix case-insensitive email deduplication in merge command
+- 🐛(summary) support media files with bad streams #1478
 
 ## [1.22.0] - 2026-07-03
 

@@ -291,6 +291,7 @@
     │   │   │   ├── 0018_rename_active_application_is_active.py
     │   │   │   ├── 0019_user_unique_email_when_sub_is_null.py
     │   │   │   ├── 0020_alter_file_upload_state.py
+    │   │   │   ├── 0021_recording_external_process_id_alter_recording_status.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -377,6 +378,7 @@
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   └── test_recording_events.py
     │   │   │   │   ├── test_api_recordings_delete.py
+    │   │   │   │   ├── test_api_recordings_external_process_hook.py
     │   │   │   │   ├── test_api_recordings_list.py
     │   │   │   │   ├── test_api_recordings_media_auth.py
     │   │   │   │   ├── test_api_recordings_retrieve.py
@@ -1257,7 +1259,6 @@
         │   │   ├── main.py
         │   │   └── route
         │   │       ├── __init__.py
-        │   │       ├── tasks.py
         │   │       └── tasks_v2.py
         │   ├── core
         │   │   ├── __init__.py
@@ -1265,6 +1266,7 @@
         │   │   ├── celery_config.py
         │   │   ├── celery_worker.py
         │   │   ├── config.py
+        │   │   ├── docs_service.py
         │   │   ├── file_service.py
         │   │   ├── llm_service.py
         │   │   ├── locales
@@ -1288,7 +1290,6 @@
             ├── api
             │   ├── __init__.py
             │   ├── test_api_health.py
-            │   ├── test_api_tasks.py
             │   └── test_api_tasks_v2.py
             ├── assets
             │   ├── audio-sample-android-chrome.webm
@@ -1307,4 +1308,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-247 directories, 1062 files
+247 directories, 1063 files
