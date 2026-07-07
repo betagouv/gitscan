@@ -1,17 +1,19 @@
-## Changelog : tchap-ios (30 derniers jours, au 30 avril 2026)
+## Changelog : tchap-ios (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des corrections importantes pour assurer la compatibilité avec les dernières versions d'iOS (26.3.1) et améliore la fiabilité du processus de création de compte. Une correction spécifique a été apportée pour éviter un écran blanc sur iOS 26.3.1.
+Cette mise à jour apporte des améliorations à la sécurité avec la mise à jour du certificat, des corrections de l'interface utilisateur et des ajustements pour préparer la sortie de la nouvelle version de l'application. L'application a également été mise à jour vers la version Element 1.11.38.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'écran blanc sur iOS 26.3.1 [#ab34fbe25](https://github.com/tchapgouv/tchap-ios/commit/ab34fbe25).
-- Amélioration de la création de compte, corrigeant un bug rencontré lors de ce processus [#b33ae0ff8](https://github.com/tchapgouv/tchap-ios/commit/b33ae0ff8).
+- Mise à jour du nom de l'application et de l'icône. [#1287](https://github.com/tchapgouv/tchap-ios/pull/1287)
+- Mise à jour du certificat de l'application pour renforcer la sécurité. [#1288](https://github.com/tchapgouv/tchap-ios/pull/1288)
+- Suppression du bouton "Plus d'informations" lors de la déconnexion. [#1273](https://github.com/tchapgouv/tchap-ios/pull/1273)
+- Mise à jour des liens vers les articles de FAQ concernant les notifications par email et le déchiffrement des messages. [#1286](https://github.com/tchapgouv/tchap-ios/pull/1286)
 
 ### Évolutions techniques
-- Désactivation de la gestion de la compatibilité OIDC pour le flux Tchap MAS, afin d'éviter des problèmes potentiels [#e9c4fa5cb](https://github.com/tchapgouv/tchap-ios/commit/e9c4fa5cb).
-- Mise à jour de la version de l'application à 2.12.3.
-- Mise à jour de la version de l'application à 2.12.4.
+- Mise à jour vers la version Element 1.11.38. [#1286](https://github.com/tchapgouv/tchap-ios/pull/1286)
+- Modification du format de l'icône de l'application. [#1290](https://github.com/tchapgouv/tchap-ios/pull/1290)
+- Correction du script de copie de l'icône suite au changement de nom de l'application.
 
 ### Autres changements
-- Mise à jour du changelog pour refléter les changements apportés.
-- Préparation des releases 2.12.3 et 2.12.4.
+- Mise à jour de la version de l'application et du changelog. [#1289](https://github.com/tchapgouv/tchap-ios/pull/1289)
+- Mise à jour de la FAQ. [#1287](https://github.com/tchapgouv/tchap-ios/pull/1287)
