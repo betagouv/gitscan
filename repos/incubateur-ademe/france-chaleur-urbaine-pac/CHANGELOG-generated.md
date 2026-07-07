@@ -1,25 +1,28 @@
-## Changelog : france-chaleur-urbaine-pac (30 derniers jours, au 1er août 2026)
+## Changelog : france-chaleur-urbaine-pac (30 derniers jours, au 6 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une refonte significative de l'interface utilisateur et de l'expérience utilisateur (UX) du questionnaire et de la page de résultats. L'objectif principal est d'améliorer la clarté et la facilité d'utilisation du comparateur de PAC, notamment sur mobile.  Une séparation du code en composants plus spécifiques a également été entreprise pour une meilleure maintenabilité.
+Ce mois-ci, le projet a connu une refonte significative de l'interface utilisateur et de l'expérience utilisateur du comparateur de PAC. Les améliorations se concentrent sur la clarté du formulaire, la présentation des résultats et l'adaptation aux écrans mobiles. Des optimisations graphiques et des ajustements de l'ordre des questions ont également été apportés.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'UX du formulaire de questionnaire, avec des ajustements graphiques et un réagencement de l'ordre des questions.
-- Ajout d'une barre de défilement (scroll) sur les recommandations affichées.
-- Correction de l'affichage du logo France Renov.
-- Amélioration de l'affichage sur les appareils mobiles.
-- L'option "Je ne sais pas" dans le questionnaire est maintenant affichée sur une nouvelle ligne pour une meilleure lisibilité.
+- Ajout d'un bouton de partage de simulation pour faciliter le partage des résultats.
+- Implémentation d'un bouton "Question précédente" pour une navigation plus fluide dans le questionnaire.
+- Ajout d'une barre de progression (stepper) pour le questionnaire, remplaçant l'utilisation de React-DSFR.
+- Amélioration de la gestion de l'option "Je ne sais pas" dans le formulaire, pour une meilleure lisibilité.
+- Ajout d'une zone de défilement pour les recommandations.
 - Redesign complet de la page de résultats pour une présentation plus claire et intuitive.
-- Remplacement de la librairie `react-dsfr` par un système de "stepper" pour guider l'utilisateur à travers le questionnaire.
+- Amélioration de la qualité de l'image des PAC affichées.
+- Adaptation de l'affichage pour les écrans mobiles.
 
 ### Évolutions techniques
 - Séparation du composant `HomeScreen` dans un fichier dédié pour une meilleure organisation du code.
-- Découpage du composant principal `App` en `Questionnaire` et `ResultsPage` pour une meilleure modularité.
-- Découpe de composants en éléments plus spécifiques pour faciliter la maintenance et la réutilisation.
-- Ajout d'une configuration de build.
-- Renommage de "IFPEN" en "PAC" dans le code pour plus de cohérence.
+- Renommage du composant `journey` en `questionnaire` pour une meilleure sémantique.
+- Refactorisation du code pour découper les composants en éléments plus spécifiques et réutilisables.
+- Modification de la configuration de build pour tester le déploiement sur electrifionslafrance.
+- Tests de l'intégration des assets en ligne.
+- Suppression de CSS inutilisés pour optimiser la taille du bundle.
 
 ### Autres changements
-- Initialisation du comparateur IFPEN (premières étapes de développement).
-- Renommage de "journey" en "questionnaire" dans le code.
-- Ajustements graphiques du graphique de résultats.
+- Correction du logo France Renov.
+- Ajustements graphiques divers basés sur les retours de recette.
+- Renommage de "IFPEN" en "PAC" dans le code.
+- Initialisation du comparateur IFPEN (premiers pas).
