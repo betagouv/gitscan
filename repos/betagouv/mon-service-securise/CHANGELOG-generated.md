@@ -1,38 +1,43 @@
-## Changelog : mon-service-securise (30 derniers jours, au 02 juillet 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur avec l'adoption des composants du Design System de la République Française (DSFR), améliorant ainsi l'accessibilité et la cohérence visuelle. Des fonctionnalités d'administration des utilisateurs et de gestion des risques ont été ajoutées ou améliorées, notamment la gestion des rôles d'administration et la visualisation des risques V2. Des corrections de bugs et des optimisations de performance ont également été apportées.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment l'adoption de composants Design System France (DSFR) pour une meilleure cohérence visuelle et accessibilité. Des efforts significatifs ont également été consacrés à la gestion des rôles et des permissions, en particulier pour les administrateurs et superviseurs, avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Enfin, des améliorations ont été apportées à la gestion des risques, notamment avec l'implémentation de la génération de rapports au format PDF avec Typst.
 
 ### Évolutions fonctionnelles
-- Implémentation de l'attribution de rôles (admin, superviseur) aux utilisateurs : permet de gérer les permissions d'accès aux fonctionnalités d'administration.
-- Affichage des actions de retrait d'accès aux services d'un utilisateur administré.
-- Amélioration de l'affichage des risques V2 : affichage de la description des risques, des badges, et intégration d'identifiants numériques.
-- Ajout d'une recherche textuelle sur les responsables de mesures.
-- Affichage des risques spécifiques dans les matrices.
-- Possibilité de surcharger la gravité d'un risque général V2.
-- Ajout d'une indication de fichier généré lors de la sélection des vecteurs et des matrices.
-- Amélioration de l'affichage des entités et des utilisateurs administrés dans l'interface d'administration.
-- Ajout d'une page dédiée à la gestion des administrateurs supervisés par un superviseur.
-- Affichage d'une alerte lors de l'attribution d'un rôle à un utilisateur.
-- Ajout d'un bandeau d'information remplaçant l'ancien, utilisant des tuiles DSFR.
+- Implémentation de la première page du PDF "Annexes" en Typst, incluant les pages de mesures.
+- Ajout de boîtes contenant les indices cyber, les mesures par niveau de criticité et par catégorie.
+- Ajout de l'annexe des risques (v1 et v2) au format PDF.
+- Amélioration de l'affichage des risques spécifiques dans les matrices.
+- Possibilité de surcharger la gravité d'un risque général V2 via l'API et l'interface utilisateur.
+- Ajout d'une recherche textuelle sur les noms des responsables de mesures.
+- Ajout d'une page "Documents" et "Avis".
+- Ajout d'une indication de fichier généré pour la sélection des vecteurs et des matrices.
+- Ajout d'une fonctionnalité permettant d'étendre la recherche textuelle aux noms des responsables de mesures.
+- Ajout d'une page permettant de gérer les administrateurs et superviseurs.
+- Possibilité de nommer un administrateur sur un périmètre complet.
+- Affichage d'un indicateur si un utilisateur est le seul propriétaire d'un service.
+- Ajout d'une modale listant les entités d'un utilisateur administré.
+- Ajout d'une action pour modifier le périmètre d'un administrateur.
 
 ### Évolutions techniques
-- Migration vers les composants DSFR pour l'interface utilisateur : amélioration de l'accessibilité et de la cohérence visuelle (tableaux, boutons, liens, etc.).
-- Refonte de la gestion des configurations de risques.
-- Amélioration de la gestion des événements et des journaux d'audit.
-- Mise à jour des dépendances : plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
-- Amélioration de la configuration et des tests d'accessibilité.
-- Utilisation d'un singleton pour la connexion Knex.
+- Migration vers Typst pour la génération de rapports PDF (annexes).
+- Refonte de l'interface utilisateur avec l'utilisation de composants DSFR (boutons, tableaux, liens, etc.).
+- Amélioration de la gestion de la configuration Knex avec un singleton.
+- Optimisation de la gestion des secrets dans les GitHub Actions.
+- Mise à jour de nombreuses dépendances (Express, ESLint, Playwright, Vitest, etc.).
 - Ajout de tests d'accessibilité pour les pages d'administration et les tiroirs.
-- Suppression de code obsolète et factorisation du code.
-- Amélioration de la gestion des secrets et des configurations.
-- Ajout d'un script pour faciliter la mise à jour de l'UI Kit.
+- Implémentation d'un adaptateur de persistance mémoire pour les tests d'accessibilité.
+- Ajout de logs d'audit pour les actions d'administration (nomination, retrait d'administrateurs).
+- Amélioration de la gestion des événements et des abonnements.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Ajout d'un fichier `robots.txt` pour améliorer le référencement.
-- Ajout d'un sitemap pour faciliter l'indexation par les moteurs de recherche.
-- Ajout de documentation et de commentaires pour améliorer la maintenabilité du code.
-- Corrections de typos et d'erreurs de style.
-- Amélioration des messages d'erreur et des notifications.
-- Ajout de badges "bêta" pour les nouvelles fonctionnalités en phase de test.
+- Ajout d'un badge "bêta" sur la page des risques v2.
+- Correction de nombreux problèmes de contraste et d'accessibilité.
+- Suppression de code obsolète et de dépendances inutiles.
+- Amélioration de la documentation et des commentaires.
+- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
 - Ajout de tests unitaires et d'intégration.
+- Mise à jour des illustrations et des textes.
+- Ajout d'un fichier `robots.txt` et d'un sitemap.
+- Ajout d'un système de suivi des événements avec Matomo.
