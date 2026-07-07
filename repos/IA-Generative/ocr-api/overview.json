@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/IA-Generative/ocr-api",
   "name": "ocr-api",
-  "description": "Cette API fournit un service d’extraction de texte à partir de fichiers PDF ou d’images. Elle utilise un pipeline de traitement asynchrone avec Redis, S3 et PaddleOCR pour la reconnaissance de texte.",
+  "description": "Cette API fournit un service d’extraction de texte à partir de fichiers PDF ou d’images. Elle repose sur un pipeline de traitement asynchrone utilisant Redis, S3 et PaddleOCR pour effectuer la reconnaissance de texte.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -22,19 +22,20 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Jest, Pytest",
+  "tests": "Tests unitaires et E2E",
   "workflows": [
-    "release"
+    "CI/CD"
   ],
-  "lastActivity": "2026-06-30T00:00:00Z",
+  "lastActivity": "2026-07-05T00:00:00Z",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": null,

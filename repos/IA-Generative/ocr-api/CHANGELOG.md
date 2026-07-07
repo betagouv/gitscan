@@ -29,6 +29,42 @@
 - code clean
 - :art: change minio vars
 
+## [0.12.6](https://github.com/IA-Generative/ocr-api/compare/v0.12.5...v0.12.6) (2026-07-05)
+
+
+### Bug Fixes
+
+* **paddleocr:** remove enable_mkldnn parameter from PaddleOCR initialization ([f272783](https://github.com/IA-Generative/ocr-api/commit/f2727835d5033cf55d00d7ae6960048bfa11a559))
+* **tracing:** update trace generation method in LangFuseTracingService ([f272783](https://github.com/IA-Generative/ocr-api/commit/f2727835d5033cf55d00d7ae6960048bfa11a559))
+
+## [0.12.5](https://github.com/IA-Generative/ocr-api/compare/v0.12.4...v0.12.5) (2026-07-05)
+
+
+### Bug Fixes
+
+* **paddleocr:** update PaddleOCR model initialization and enhance inference tests ([bc9c870](https://github.com/IA-Generative/ocr-api/commit/bc9c870f9a1a46e648de6370ec1bb6cc69d9d342))
+
+## [0.12.4](https://github.com/IA-Generative/ocr-api/compare/v0.12.3...v0.12.4) (2026-07-05)
+
+
+### Bug Fixes
+
+* **docker:** add TORCHINDUCTOR_CACHE_DIR environment variable to Dockerfiles ([61dd89a](https://github.com/IA-Generative/ocr-api/commit/61dd89a7a8e54ff93340bf02abe10efddcd31781))
+
+## [0.12.3](https://github.com/IA-Generative/ocr-api/compare/v0.12.2...v0.12.3) (2026-07-01)
+
+
+### Bug Fixes
+
+* **security:** security fixed ([27d799c](https://github.com/IA-Generative/ocr-api/commit/27d799ced960c469c9a24cc29668b39afb6878d8))
+
+## [0.12.2](https://github.com/IA-Generative/ocr-api/compare/v0.12.1...v0.12.2) (2026-07-01)
+
+
+### Bug Fixes
+
+* **dso:** ci for dso ([6e13d1c](https://github.com/IA-Generative/ocr-api/commit/6e13d1c28434b9a90b111e7ed810937f8d38f963))
+
 ## [0.12.1](https://github.com/IA-Generative/ocr-api/compare/v0.12.0...v0.12.1) (2026-06-30)
 
 
