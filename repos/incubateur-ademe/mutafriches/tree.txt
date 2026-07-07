@@ -243,9 +243,7 @@
 │   │   │   ├── evaluation
 │   │   │   │   ├── __test-helpers__
 │   │   │   │   │   ├── evaluation.builder.ts
-│   │   │   │   │   ├── evaluation.mocks.ts
-│   │   │   │   │   ├── fixture-debug-logger.ts
-│   │   │   │   │   └── fixtures.helpers.ts
+│   │   │   │   │   └── evaluation.mocks.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── input
 │   │   │   │   │   │   ├── calculer-mutabilite.dto.ts
@@ -283,7 +281,6 @@
 │   │   │   │   │   │       ├── v1.7.ts
 │   │   │   │   │   │       ├── v1.8.ts
 │   │   │   │   │   │       └── v1.9.ts
-│   │   │   │   │   ├── calcul-fixtures.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
 │   │   │   │   │   ├── orchestrateur.service.spec.ts
@@ -317,6 +314,17 @@
 │   │   │   │   ├── metabase.module.ts
 │   │   │   │   ├── metabase.service.spec.ts
 │   │   │   │   └── metabase.service.ts
+│   │   │   ├── partenaires
+│   │   │   │   ├── ban-reverse.util.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   └── input
+│   │   │   │   │       ├── ajouter-site.dto.ts
+│   │   │   │   │       └── renommer-site.dto.ts
+│   │   │   │   ├── partenaires.controller.ts
+│   │   │   │   ├── partenaires.module.ts
+│   │   │   │   ├── partenaires.service.ts
+│   │   │   │   └── repositories
+│   │   │   │       └── partenaire.repository.ts
 │   │   │   ├── scripts
 │   │   │   │   ├── data
 │   │   │   │   │   ├── base-ite-3000.geojson
@@ -331,9 +339,11 @@
 │   │   │   │   ├── partenaires
 │   │   │   │   │   ├── aura.ts
 │   │   │   │   │   ├── cci92.ts
+│   │   │   │   │   ├── ddt-vosges.ts
 │   │   │   │   │   ├── registry.ts
 │   │   │   │   │   └── types.ts
-│   │   │   │   └── prefetch-partenaires.ts
+│   │   │   │   ├── prefetch-partenaires.ts
+│   │   │   │   └── seed-partenaires.ts
 │   │   │   ├── shared
 │   │   │   │   ├── __test-helpers__
 │   │   │   │   │   ├── common.mocks.ts
@@ -370,6 +380,8 @@
 │   │   │   │   │   │   ├── 0024_strong_wolfpack.sql
 │   │   │   │   │   │   ├── 0025_tracking_recap_detail_usage.sql
 │   │   │   │   │   │   ├── 0026_rare_medusa.sql
+│   │   │   │   │   │   ├── 0027_partage_page_partenaire.sql
+│   │   │   │   │   │   ├── 0028_partenaires_et_sites.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -393,6 +405,8 @@
 │   │   │   │   │   │       ├── 0020_snapshot.json
 │   │   │   │   │   │       ├── 0024_snapshot.json
 │   │   │   │   │   │       ├── 0026_snapshot.json
+│   │   │   │   │   │       ├── 0027_snapshot.json
+│   │   │   │   │   │       ├── 0028_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
@@ -402,6 +416,8 @@
 │   │   │   │   │       ├── epci.schema.ts
 │   │   │   │   │       ├── evaluations.schema.ts
 │   │   │   │   │       ├── evenements.schema.ts
+│   │   │   │   │       ├── partenaire-sites.schema.ts
+│   │   │   │   │       ├── partenaires.schema.ts
 │   │   │   │   │       ├── raw-ademe-sites-pollues.schema.ts
 │   │   │   │   │       ├── raw-bpe.schema.ts
 │   │   │   │   │       ├── raw-imports-log.schema.ts
@@ -502,6 +518,7 @@
 │       │   │   ├── undraw_order-confirmed_m9e9.svg
 │       │   │   └── undraw_personal-site_z6pl.svg
 │       │   └── images
+│       │       ├── logo-ademe.png
 │       │       ├── logo-ademe.svg
 │       │       ├── logo-benefriches.png
 │       │       ├── logo-cartofriches.svg
@@ -590,13 +607,16 @@
 │       │   │   │   │   │   ├── AddSiteModal.tsx
 │       │   │   │   │   │   ├── DonneesExternesLink.tsx
 │       │   │   │   │   │   ├── DonneesForm.tsx
+│       │   │   │   │   │   ├── PartagerButton.tsx
+│       │   │   │   │   │   ├── RenameSiteModal.tsx
 │       │   │   │   │   │   ├── SiteDetail.tsx
 │       │   │   │   │   │   ├── SiteList.tsx
 │       │   │   │   │   │   └── SiteMap.tsx
 │       │   │   │   │   ├── download-json.ts
 │       │   │   │   │   ├── group.ts
 │       │   │   │   │   ├── hooks
-│       │   │   │   │   │   └── useCustomSites.ts
+│       │   │   │   │   │   ├── usePartenaireSites.ts
+│       │   │   │   │   │   └── useSiteUserData.ts
 │       │   │   │   │   ├── pages
 │       │   │   │   │   │   ├── MultisitePage.tsx
 │       │   │   │   │   │   └── PartenairesPage.tsx
@@ -606,7 +626,10 @@
 │       │   │   │   │   ├── aura
 │       │   │   │   │   │   ├── index.ts
 │       │   │   │   │   │   └── parcelles.ts
-│       │   │   │   │   └── cci92
+│       │   │   │   │   ├── cci92
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── parcelles.ts
+│       │   │   │   │   └── ddt-vosges
 │       │   │   │   │       ├── index.ts
 │       │   │   │   │       └── parcelles.ts
 │       │   │   │   └── registry.ts
@@ -633,18 +656,22 @@
 │       │   │   ├── resultats
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ContactMultisitesModal.tsx
+│       │   │   │   │   ├── ExportModal.tsx
 │       │   │   │   │   ├── PartnerCard.tsx
 │       │   │   │   │   ├── PodiumCard.css
 │       │   │   │   │   ├── PodiumCard.tsx
-│       │   │   │   │   ├── RecapBadges.tsx
-│       │   │   │   │   ├── RecapTable.css
 │       │   │   │   │   ├── RecapTable.tsx
 │       │   │   │   │   ├── ResultTable.css
 │       │   │   │   │   ├── ResultTable.tsx
 │       │   │   │   │   ├── SiteRecapBanner.tsx
 │       │   │   │   │   ├── SiteRecapModal.tsx
-│       │   │   │   │   ├── UsageDetailModal.tsx
-│       │   │   │   │   └── UsageDetailTable.tsx
+│       │   │   │   │   └── UsageDetailModal.tsx
+│       │   │   │   ├── export
+│       │   │   │   │   ├── MutabilitePdfDocument.tsx
+│       │   │   │   │   ├── buildResultatsJson.ts
+│       │   │   │   │   ├── downloadFile.ts
+│       │   │   │   │   ├── generateMutabilitePdf.tsx
+│       │   │   │   │   └── types.ts
 │       │   │   │   ├── pages
 │       │   │   │   │   └── ResultatsPage.tsx
 │       │   │   │   └── utils
@@ -657,6 +684,7 @@
 │       │   │   │       │   └── types.ts
 │       │   │   │       ├── dynamicTags.spec.ts
 │       │   │   │       ├── mutability.mapper.ts
+│       │   │   │       ├── podiumTags.ts
 │       │   │   │       └── usagesLabels.utils.ts
 │       │   │   ├── statistiques
 │       │   │   │   └── pages
@@ -698,13 +726,19 @@
 │       │   │   │   │   ├── DsfrAccordion.css
 │       │   │   │   │   ├── DsfrAccordion.tsx
 │       │   │   │   │   └── DsfrTabs.tsx
-│       │   │   │   └── layout
-│       │   │   │       ├── Footer.tsx
-│       │   │   │       ├── Header.tsx
-│       │   │   │       ├── Layout.tsx
-│       │   │   │       ├── SimpleHeader.tsx
-│       │   │   │       ├── Stepper.tsx
-│       │   │   │       ├── ThemeModal.tsx
+│       │   │   │   ├── layout
+│       │   │   │   │   ├── Footer.tsx
+│       │   │   │   │   ├── Header.tsx
+│       │   │   │   │   ├── Layout.tsx
+│       │   │   │   │   ├── SimpleHeader.tsx
+│       │   │   │   │   ├── Stepper.tsx
+│       │   │   │   │   ├── ThemeModal.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── recap
+│       │   │   │       ├── RecapBadges.tsx
+│       │   │   │       ├── RecapTable.css
+│       │   │   │       ├── UsageDetailTable.tsx
+│       │   │   │       ├── UsageRatioBar.tsx
 │       │   │   │       └── index.ts
 │       │   │   ├── config
 │       │   │   │   ├── map-layers.config.ts
@@ -741,6 +775,7 @@
 │       │   │   │   │   ├── api.evaluation.service.ts
 │       │   │   │   │   ├── api.evenements.service.ts
 │       │   │   │   │   ├── api.metabase.service.ts
+│       │   │   │   │   ├── api.partenaires.service.ts
 │       │   │   │   │   ├── api.types.ts
 │       │   │   │   │   └── api.utils.ts
 │       │   │   │   ├── cadastre
@@ -792,7 +827,11 @@
 │   │   ├── 0017-emails-provider-brevo-api-mailhog.md
 │   │   ├── 0018-identifiant-visiteur-anonyme-persistant.md
 │   │   ├── 0019-derivation-automatique-raccordement-eau.md
-│   │   └── 0020-contact-multisites-calendrier-zcal.md
+│   │   ├── 0020-contact-multisites-calendrier-zcal.md
+│   │   ├── 0021-persistance-base-partenaires-sites.md
+│   │   ├── 0022-migration-typescript-6.md
+│   │   └── 0023-export-pdf-react-pdf-renderer.md
+│   ├── ajout-partenaire.md
 │   ├── analytics-tracking.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
@@ -881,6 +920,11 @@
 │       │   │   │   └── index.ts
 │       │   │   └── index.ts
 │       │   ├── index.ts
+│       │   ├── partenaires
+│       │   │   ├── dto
+│       │   │   │   ├── partenaire-input.dto.ts
+│       │   │   │   └── partenaire-output.dto.ts
+│       │   │   └── index.ts
 │       │   ├── recapitulatif
 │       │   │   ├── criteres.metadata.spec.ts
 │       │   │   ├── criteres.metadata.ts
@@ -907,49 +951,9 @@
 │       │   │       ├── index.ts
 │       │   │       ├── parcelle.utils.spec.ts
 │       │   │       └── parcelle.utils.ts
-│       │   ├── stats
-│       │   │   ├── index.ts
-│       │   │   └── stat.dto.ts
-│       │   └── test-cases
-│       │       ├── config
-│       │       │   ├── excel-structure.config.ts
-│       │       │   └── excel-to-enum-values.config.ts
-│       │       ├── converters
-│       │       │   ├── enum-converters.ts
-│       │       │   ├── index.ts
-│       │       │   └── test-case-converters.ts
-│       │       ├── data.ts
-│       │       ├── fixtures
-│       │       │   ├── v0
-│       │       │   │   ├── renaison.json
-│       │       │   │   └── trelaze.json
-│       │       │   ├── v1.0
-│       │       │   │   ├── test-01-oyonnax.json
-│       │       │   │   ├── test-02-allegre.json
-│       │       │   │   ├── test-03-montbeugny.json
-│       │       │   │   ├── test-04-port-brillet.json
-│       │       │   │   ├── test-05-renaison.json
-│       │       │   │   ├── test-06-segre.json
-│       │       │   │   ├── test-07-saint-julien.json
-│       │       │   │   ├── test-08-thouars.json
-│       │       │   │   ├── test-09-trelaze.json
-│       │       │   │   └── test-10-villeurbanne.json
-│       │       │   └── v1.1
-│       │       │       ├── test-01-allegre.json
-│       │       │       ├── test-02-montbeugny.json
-│       │       │       ├── test-03-oyonnax.json
-│       │       │       ├── test-04-port-brillet.json
-│       │       │       ├── test-05-renaison.json
-│       │       │       ├── test-06-segre.json
-│       │       │       ├── test-07-st-julien.json
-│       │       │       ├── test-08-thouars.json
-│       │       │       ├── test-09-trelaze.json
-│       │       │       └── test-10-villeurbanne.json
+│       │   └── stats
 │       │       ├── index.ts
-│       │       ├── types
-│       │       │   └── test-case.types.ts
-│       │       └── utils
-│       │           └── test-case.utils.ts
+│       │       └── stat.dto.ts
 │       ├── tsconfig.json
 │       └── vitest.config.ts
 ├── pnpm-lock.yaml
@@ -958,4 +962,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-220 directories, 740 files
+220 directories, 744 files
