@@ -3,10 +3,6 @@
 ├── .bundler-audit.yml
 ├── .claude
 │   └── settings.json
-├── .devcontainer
-│   ├── Dockerfile
-│   ├── compose.yaml
-│   └── devcontainer.json
 ├── .dockerignore
 ├── .git-hooks
 │   └── pre-commit
@@ -52,7 +48,8 @@
 │   │   │   └── .keep
 │   │   └── portail
 │   │       ├── base_controller.rb
-│   │       └── dashboard_controller.rb
+│   │       ├── dashboard_controller.rb
+│   │       └── errors_controller.rb
 │   ├── helpers
 │   │   └── application_helper.rb
 │   ├── interactors
@@ -116,8 +113,17 @@
 │       │   ├── mailer.text.erb
 │       │   └── portail.html.erb
 │       ├── portail
-│       │   └── dashboard
-│       │       └── index.html.erb
+│       │   ├── dashboard
+│       │   │   └── index.html.erb
+│       │   ├── errors
+│       │   │   ├── internal_server_error.html.erb
+│       │   │   ├── not_found.html.erb
+│       │   │   └── unprocessable_entity.html.erb
+│       │   └── shared
+│       │       ├── _flash.html.erb
+│       │       ├── _footer.html.erb
+│       │       ├── _header.html.erb
+│       │       └── _skip_links.html.erb
 │       └── pwa
 │           ├── manifest.json.erb
 │           └── service-worker.js
@@ -157,9 +163,11 @@
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
 │   │   ├── pagy.rb
+│   │   ├── sentry.rb
 │   │   └── strong_migrations.rb
 │   ├── locales
-│   │   └── en.yml
+│   │   ├── en.yml
+│   │   └── fr.yml
 │   ├── puma.rb
 │   ├── queue.yml
 │   ├── recurring.yml
@@ -213,6 +221,9 @@
 ├── script
 │   └── .keep
 ├── spec
+│   ├── controllers
+│   │   └── portail
+│   │       └── errors_controller_spec.rb
 │   ├── factories
 │   │   ├── data_packages.rb
 │   │   ├── data_streams.rb
@@ -254,7 +265,10 @@
 │   ├── support
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
 │   │   ├── shared_examples_for_pagination.rb
-│   │   └── shared_examples_for_uuid_v7.rb
+│   │   ├── shared_examples_for_uuid_v7.rb
+│   │   └── system.rb
+│   ├── system
+│   │   └── portail_home_dsfr_layout_spec.rb
 │   └── validators
 │       └── data_package
 │           └── delivery_criteria_validator_spec.rb
@@ -270,4 +284,4 @@
     ├── .keep
     └── javascript
         └── .keep
-84 directories, 188 files
+88 directories, 198 files
