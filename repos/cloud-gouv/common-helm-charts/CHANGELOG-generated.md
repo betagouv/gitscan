@@ -1,21 +1,16 @@
-## Changelog : common-helm-charts (30 derniers jours, au 25 juin 2026)
+## Changelog : common-helm-charts (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les charts Helm de common-helm-charts ont bénéficié d'améliorations significatives en termes de monitoring et de tests de performance. Des tableaux de bord Grafana ont été ajoutés pour Coturn et pour le monitoring de machines virtuelles, et des tests de stress ont été intégrés pour PostgreSQL. Des corrections ont également été apportées pour améliorer la stabilité et la configuration des charts existants.
+Cette version apporte des améliorations à plusieurs charts, notamment l'ajout d'annotations aux applications, la possibilité d'ajouter des annotations à External Secrets, l'intégration d'un fingerprint d'alerte pour Matrix, un tableau de bord de base pour Coturn et l'ajout d'Auditbeat. Une fonctionnalité de test de stress a également été ajoutée à pgbench.
 
 ### Évolutions fonctionnelles
-- Ajout d'un tableau de bord Grafana basique pour le serveur Coturn, permettant de visualiser les métriques de performance. [#26](https://github.com/cloud-gouv/common-helm-charts/pull/26)
-- Ajout d'un tableau de bord Grafana pour afficher les métriques d'une machine virtuelle. [#26](https://github.com/cloud-gouv/common-helm-charts/pull/26)
-- Intégration de tests de stress FIO aux benchmarks PostgreSQL pour évaluer les performances en conditions de charge. [#22](https://github.com/cloud-gouv/common-helm-charts/pull/22)
-- Ajout de l'ID et de l'empreinte (fingerprint) des alertes Matrix dans les templates pour une identification plus facile. [#28](https://github.com/cloud-gouv/common-helm-charts/pull/28)
+- **Applications:** Ajout d'annotations aux charts d'applications pour une meilleure identification et gestion. [#32](https://github.com/cloud-gouv/common-helm-charts/pull/32)
+- **External Secrets:** Permet désormais l'ajout d'annotations aux ressources External Secrets. [#29](https://github.com/cloud-gouv/common-helm-charts/pull/29)
+- **Matrix:** Ajout de l'ID et du fingerprint d'alerte dans les templates pour une meilleure traçabilité des alertes. [#28](https://github.com/cloud-gouv/common-helm-charts/pull/28)
+- **Coturn:** Intégration d'un tableau de bord basique pour visualiser les métriques de Coturn.
+- **pgbench:** Ajout d'une fonctionnalité de test de stress pour évaluer les performances de pgbench. [#22](https://github.com/cloud-gouv/common-helm-charts/pull/22)
 
 ### Évolutions techniques
-- Refactorisation des tableaux de bord Grafana pour éviter la multiplication des ConfigMaps et simplifier la gestion. [#25](https://github.com/cloud-gouv/common-helm-charts/pull/25)
-- Correction d'une condition dans les tableaux de bord Grafana pour gérer correctement les cas où l'objet `$data` est vide. [#24](https://github.com/cloud-gouv/common-helm-charts/pull/24)
-- Amélioration de la configuration des tests PostgreSQL en permettant la variation des tailles de blocs et des modes de lecture/écriture.
-- Correction de la gestion des namespaces dans le provisioning des secrets, limitant à un seul namespace. [#17](https://github.com/cloud-gouv/common-helm-charts/pull/17)
-- Ajout de variables d'environnement supplémentaires pour une configuration plus flexible.
-
-### Autres changements
-- Ajout d'un nouveau chart. [#35ba62e](https://github.com/cloud-gouv/common-helm-charts/commit/35ba62e118018068955941143239571593885374)
-- Ajout d'une condition RBAC et d'un job pour le provisioning des secrets. [#17](https://github.com/cloud-gouv/common-helm-charts/pull/17)
+- **Coturn:** Correction de la source de données pour le tableau de bord.
+- **Auditbeat:** Intégration du chart Auditbeat pour l'audit des événements Kubernetes. [#26](https://github.com/cloud-gouv/common-helm-charts/pull/26)
+- **VM:** Ajout d'un tableau de bord pour afficher toutes les métriques d'une machine virtuelle.
