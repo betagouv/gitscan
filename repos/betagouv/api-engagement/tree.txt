@@ -546,6 +546,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260629120123_add_mission_active_publisher_start_at_index
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260701120000_add_mission_org_and_org_client_id_indexes
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -653,6 +655,7 @@
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
 │   │   │   ├── moderation.ts
+│   │   │   ├── newsletter.ts
 │   │   │   ├── organization.ts
 │   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
@@ -955,6 +958,8 @@
 │   │   │   │   └── types.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
+│   │   │   ├── newsletter
+│   │   │   │   └── index.ts
 │   │   │   ├── observability
 │   │   │   │   └── metrics.ts
 │   │   │   ├── organization.ts
@@ -1479,6 +1484,7 @@
 │   │   │       ├── mission-domain.ts
 │   │   │       ├── mission-email.ts
 │   │   │       ├── mission-match.ts
+│   │   │       ├── newsletter.ts
 │   │   │       └── user-scoring.ts
 │   │   └── tsconfig.json
 │   └── taxonomy
@@ -1595,6 +1601,7 @@
 │   │   │   ├── api.missions.browse.$id.ts
 │   │   │   ├── api.missions.browse.ts
 │   │   │   ├── api.missions.match.ts
+│   │   │   ├── api.newsletter.ts
 │   │   │   ├── api.user-scoring.$id.ts
 │   │   │   ├── api.user-scoring.ts
 │   │   │   ├── mission-detail.tsx
@@ -1631,6 +1638,7 @@
 │   │   │   ├── geolocation.ts
 │   │   │   ├── matching.ts
 │   │   │   ├── mission-browse.ts
+│   │   │   ├── newsletter.ts
 │   │   │   ├── tracking
 │   │   │   │   ├── events.ts
 │   │   │   │   ├── index.ts
@@ -1825,4 +1833,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-424 directories, 1489 files
+426 directories, 1495 files

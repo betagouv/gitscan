@@ -1,30 +1,33 @@
-## Changelog : api-engagement (30 derniers jours, au 2 juillet 2026)
+## Changelog : api-engagement (30 derniers jours, au 3 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du suivi des engagements via l'intégration d'un service de tracking (Posthog), l'optimisation de la recherche de missions et la gestion des règles de diffusion. Des corrections et des refactorings ont également été effectués pour améliorer la stabilité et la performance de l'API et de la plateforme. Des améliorations d'accessibilité ont été apportées à l'interface utilisateur.
+Cette période a été marquée par des améliorations significatives de la performance de l'API, notamment au niveau des requêtes liées aux organisations. De nouvelles fonctionnalités ont été ajoutées pour le suivi des newsletters et l'intégration avec des services tiers comme Brevo et Demarches Simplifiées. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment sur la plateforme et dans le back-office.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de filtrer les missions par dispositif. [#1211](https://github.com/betagouv/api-engagement/issues/1211)
-- Amélioration de la gestion des règles de diffusion pour les éditeurs, avec la possibilité de les consulter et de les modifier dans le back-office. [#1151](https://github.com/betagouv/api-engagement/issues/1151)
-- Intégration de Demarches Simplifiées pour l'enrichissement des missions. [#1154](https://github.com/betagouv/api-engagement/issues/1154)
-- Ajout d'une extension Chrome pour faciliter l'interaction avec la plateforme. [#1178](https://github.com/betagouv/api-engagement/issues/1178)
-- Amélioration de l'affichage des missions sur la carte et dans la liste. [#1207](https://github.com/betagouv/api-engagement/issues/1207)
-- Ajout d'un lien vers les résultats de la recherche dans les emails envoyés aux utilisateurs. [#1208](https://github.com/betagouv/api-engagement/issues/1208)
-- Amélioration de la gestion des adresses sur la plateforme. [#1114](https://github.com/betagouv/api-engagement/issues/1114)
-- Ajout d'un paramètre de débogage pour afficher un bouton de débogage sur la plateforme. [#1126](https://github.com/betagouv/api-engagement/issues/1126)
+- Ajout de la possibilité d'enregistrer les adresses email des utilisateurs pour la newsletter via Brevo. [#1209](https://github.com/betagouv/api-engagement/issues/1209)
+- Intégration avec Demarches Simplifiées pour l'import de données. [#1154](https://github.com/betagouv/api-engagement/issues/1154)
+- Amélioration des filtres de recherche de missions sur la plateforme, avec une logique disjonctive. [#1215](https://github.com/betagouv/api-engagement/issues/1215)
+- Ajout de badges de compensation sur la plateforme. [#1173](https://github.com/betagouv/api-engagement/issues/1173)
+- Ajout d'un filtre "dispositif" pour les missions sur la plateforme. [#1211](https://github.com/betagouv/api-engagement/issues/1211)
+- Amélioration de l'affichage des images et de la mise en page sur tablette dans l'application. [#1210](https://github.com/betagouv/api-engagement/issues/1210)
+- Ajout d'un lien vers les résultats de la recherche dans les emails. [#1208](https://github.com/betagouv/api-engagement/issues/1208)
+- Amélioration de l'expérience utilisateur sur mobile avec des corrections de feedback. [#1228](https://github.com/betagouv/api-engagement/issues/1228)
+- Ajout d'une extension Chrome pour faciliter certaines tâches. [#1178](https://github.com/betagouv/api-engagement/issues/1178)
 
 ### Évolutions techniques
-- Intégration d'un service de tracking (Posthog) pour le suivi des événements. [#1174](https://github.com/betagouv/api-engagement/issues/1174) et [#1218](https://github.com/betagouv/api-engagement/issues/1218)
-- Refactor de la logique de recherche de missions pour utiliser Typesense multi-search, améliorant ainsi les performances. [#1200](https://github.com/betagouv/api-engagement/issues/1200)
-- Suppression des tables de diffusion des éditeurs, simplifiant ainsi l'architecture. [#1206](https://github.com/betagouv/api-engagement/issues/1206)
-- Mise à jour des dépendances (Vite, ESLint, etc.).
-- Amélioration de la gestion des files d'attente pour l'enrichissement des missions. [#1108](https://github.com/betagouv/api-engagement/issues/1108)
-- Ajout d'une file d'attente de lettres mortes pour améliorer la robustesse. [#1113](https://github.com/betagouv/api-engagement/issues/1113)
-- Refactor de la gestion des règles de diffusion des éditeurs. [#1187](https://github.com/betagouv/api-engagement/issues/1187) et [#1188](https://github.com/betagouv/api-engagement/issues/1188)
+- Optimisation des requêtes pour accélérer l'affichage des organisations (myorganization). [#1229](https://github.com/betagouv/api-engagement/issues/1229)
+- Refonte de la gestion des règles de diffusion des publications. [#1187](https://github.com/betagouv/api-engagement/issues/1187)
+- Mise en place d'un système de suivi (tracking) avec PostHog. [#1174](https://github.com/betagouv/api-engagement/issues/1174) et [#1218](https://github.com/betagouv/api-engagement/issues/1218)
+- Suppression des tables `publisher_diffusion` et refactorisation du code associé. [#1206](https://github.com/betagouv/api-engagement/issues/1206) et [#1195](https://github.com/betagouv/api-engagement/issues/1195)
+- Utilisation de Typesense pour améliorer la recherche. [#1200](https://github.com/betagouv/api-engagement/issues/1200)
+- Mise à jour de nombreuses dépendances (Vite, ESLint, etc.).
+- Amélioration de la sécurité de l'enrichissement des missions. [#1141](https://github.com/betagouv/api-engagement/issues/1141)
+- Suppression du point de terminaison `stats-mean` de l'API. [#1213](https://github.com/betagouv/api-engagement/issues/1213)
 
 ### Autres changements
-- Amélioration de la documentation sur les règles de diffusion. [#1142](https://github.com/betagouv/api-engagement/issues/1142) et [#1177](https://github.com/betagouv/api-engagement/issues/1177)
-- Corrections de bugs mineurs sur l'interface utilisateur et l'API.
-- Améliorations de l'accessibilité (RGAA) de l'interface utilisateur. [#1128](https://github.com/betagouv/api-engagement/issues/1128) et [#1155](https://github.com/betagouv/api-engagement/issues/1155)
-- Suppression d'un endpoint obsolète. [#1213](https://github.com/betagouv/api-engagement/issues/1213)
+- Amélioration de la documentation sur les règles de diffusion. [#1177](https://github.com/betagouv/api-engagement/issues/1177)
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour des versions de release : v1.14.2, v1.14.1, v1.14.0, v1.13.0, v1.12.0, v1.11.0, v1.9.3, v1.9.2, v1.9.1, v1.9.0.
 - Ajout d'un script pour générer automatiquement le changelog. [#1202](https://github.com/betagouv/api-engagement/issues/1202)
+- Suppression d'une migration obsolète liée à l'exclusion des publishers pour les analyses.
+- Correction de l'erreur "mission not found" lors de la redirection. [#1214](https://github.com/betagouv/api-engagement/issues/1214)
