@@ -214,8 +214,10 @@
 │   │   ├── JobPage.vue
 │   │   ├── PreviewLoader.vue
 │   │   └── PreviewStep.vue
+│   ├── HeroBanner.vue
 │   ├── InputGroup
 │   │   └── InputGroup.vue
+│   ├── LinkCard.vue
 │   ├── LinkToSubject.vue
 │   ├── LinkedToAccordion
 │   │   └── LinkedToAccordion.vue
@@ -322,7 +324,7 @@
 │   │   ├── EditableText.vue
 │   │   ├── EditoBlocs.vue
 │   │   ├── EditoFooter.vue
-│   │   ├── EditoHeader.vue
+│   │   ├── EditoSearchForm.vue
 │   │   ├── HeroBloc.vue
 │   │   ├── LinksListBloc.vue
 │   │   ├── MarkdownBloc.vue
@@ -401,6 +403,7 @@
 │   ├── useJobItems.ts
 │   ├── useMarkAsRead.ts
 │   ├── useNotifications.client.ts
+│   ├── useOrganizationBlocs.ts
 │   ├── useRecommendationReason.ts
 │   ├── useSiteBlocs.ts
 │   ├── useTranslation.ts
@@ -1011,6 +1014,7 @@
 │   │   │   ├── datasets.vue
 │   │   │   ├── index.vue
 │   │   │   ├── information.vue
+│   │   │   ├── presentation.vue
 │   │   │   ├── reuses.vue
 │   │   │   └── search.vue
 │   │   ├── [oid].vue
@@ -1038,6 +1042,9 @@
 │   │   └── index.vue
 │   ├── reutilisateurs.vue
 │   ├── setup-two-factor.vue
+│   ├── suivi-de-publication
+│   │   ├── engagements-et-demandes.vue
+│   │   └── index.vue
 │   ├── support
 │   │   └── [...path].vue
 │   ├── tf-validate.vue
@@ -1343,6 +1350,7 @@
 │   │   │   ├── wikimedia.png
 │   │   │   ├── wikimedia@2x.png
 │   │   │   └── wikimedia@3x.png
+│   │   ├── ouvertures.svg
 │   │   ├── presidentielles.png
 │   │   ├── products
 │   │   │   ├── annuaire-des-entreprises.png
@@ -1451,18 +1459,24 @@
 │   │   ├── index.spec.ts
 │   │   ├── invitations.spec.ts
 │   │   ├── organizations.spec.ts
-│   │   └── partial-editor.spec.ts
+│   │   ├── partial-editor.spec.ts
+│   │   └── presentation.spec.ts
 │   ├── pages
 │   │   ├── error-page-navigation.spec.ts
 │   │   └── not-found.spec.ts
 │   ├── posts
 │   │   ├── blocs.spec.ts
 │   │   └── kind.spec.ts
+│   ├── products
+│   │   └── roadmap.spec.ts
 │   ├── reuses
 │   │   ├── [rid].spec.ts
 │   │   ├── creation.spec.ts
 │   │   ├── edition.spec.ts
 │   │   └── search.spec.ts
+│   ├── suivi-de-publication
+│   │   ├── engagements-et-demandes.spec.ts
+│   │   └── index.spec.ts
 │   ├── transfers
 │   │   └── transfer.spec.ts
 │   ├── translation.spec.ts
@@ -1486,6 +1500,7 @@
 │   ├── shims
 │   │   └── datagouv-components.ts
 │   └── utils
+│       ├── api.spec.ts
 │       ├── datasets.spec.ts
 │       ├── helpers.spec.ts
 │       ├── openapi-bouquet.spec.ts
@@ -1517,8 +1532,10 @@
 │   ├── dataservices.ts
 │   ├── datasets.ts
 │   ├── discussions.ts
+│   ├── grist.ts
 │   ├── harvesters.ts
 │   ├── helpers.ts
+│   ├── hero.ts
 │   ├── navigation.ts
 │   ├── notifications.ts
 │   ├── openapi-bouquet.ts
@@ -1530,4 +1547,4 @@
 │   ├── posts.ts
 │   └── reuses.ts
 └── vitest.config.ts
-233 directories, 1299 files
+236 directories, 1313 files
