@@ -1,20 +1,26 @@
-## Changelog : acces-cible (30 derniers jours, au 29 juin 2026)
+## Changelog : acces-cible (30 derniers jours, au 6 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de bugs, l'optimisation des tests et la simplification de la configuration Docker. Des améliorations de la documentation et l'ajout d'un en-tête `User-Agent` personnalisé ont également été apportées.  Des suppressions de colonnes obsolètes dans la table `audits` ont été réalisées.
+Les dernières évolutions d'acces-cible se concentrent sur l'amélioration de la détection des pages d'accessibilité, le renforcement de la sécurité et la simplification de l'infrastructure. Des corrections ont également été apportées pour améliorer la fiabilité des tests et la gestion des audits.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant le chargement des snapshots HTML [#593](https://github.com/betagouv/acces-cible/issues/593).
-- Ajout d'un en-tête `User-Agent` personnalisé pour les requêtes [#601](https://github.com/betagouv/acces-cible/issues/601).
-- Amélioration de la documentation de la page d'aide concernant les en-têtes [#602](https://github.com/betagouv/acces-cible/issues/602).
-- Correction d'un bug empêchant l'import CSV de ne pas gérer les doublons de tags [#577](https://github.com/betagouv/acces-cible/issues/577).
+- Amélioration de la détection des pages d'accessibilité. [#610](https://github.com/betagouv/acces-cible/issues/610)
+- Ajout d'un en-tête `User-Agent` personnalisé pour les requêtes. [#601](https://github.com/betagouv/acces-cible/issues/601)
+- Mise à jour de la page d'aide concernant les en-têtes. [#602](https://github.com/betagouv/acces-cible/issues/602)
 
 ### Évolutions techniques
-- Mise à jour de la configuration Docker pour utiliser le Dockerfile officiel [#547](https://github.com/betagouv/acces-cible/issues/547).
-- Amélioration des mocks pour les tests Axe afin d'assurer leur fiabilité [#586](https://github.com/betagouv/acces-cible/issues/586).
-- Suppression de la dépendance vers une version personnalisée d'Omniauth [#587](https://github.com/betagouv/acces-cible/issues/587).
-- Suppression des colonnes `url` et `current` de la table `audits` [#582](https://github.com/betagouv/acces-cible/issues/582) et [#580](https://github.com/betagouv/acces-cible/issues/580).
-- Correction d'une erreur de test locale `run_axe_on_homepage_spec` [#609](https://github.com/betagouv/acces-cible/issues/609).
+- Mise à jour de SolidCable vers la version 4.0.0. [#607](https://github.com/betagouv/acces-cible/issues/607)
+- Mise à jour des actions de checkout vers la version 7. [#596](https://github.com/betagouv/acces-cible/issues/596)
+- Mise à jour de plusieurs dépendances de développement (rubocop-capybara, shoulda-matchers, etc.). [#608](https://github.com/betagouv/acces-cible/issues/608), [#606](https://github.com/betagouv/acces-cible/issues/606), [#590](https://github.com/betagouv/acces-cible/issues/590)
+- Refonte du Dockerfile pour une meilleure configuration. [#547](https://github.com/betagouv/acces-cible/issues/547)
+- Suppression d'une branche personnalisée d'Omniauth.
+- Amélioration du mocking des tests Axe. [#586](https://github.com/betagouv/acces-cible/issues/586)
+- Isolation de la page dans un nouveau contexte pour un nettoyage plus efficace avec Ferrum. [#592](https://github.com/betagouv/acces-cible/issues/592)
+- Ajout de jemalloc buildpack pour optimiser la gestion de la mémoire. [#591](https://github.com/betagouv/acces-cible/issues/591)
+- Suppression des colonnes `url` et `current` de la table `audits`. [#582](https://github.com/betagouv/acces-cible/issues/582), [#580](https://github.com/betagouv/acces-cible/issues/580)
 
 ### Autres changements
-- Mises à jour de dépendances (SolidQueue, SolidCable, Rubocop, Shoulda-matchers, actions/checkout) - ces mises à jour sont gérées automatiquement et n'impactent pas directement les utilisateurs.
+- Correction d'un échec de test local (`run_axe_on_homepage_spec`). [#609](https://github.com/betagouv/acces-cible/issues/609)
+- Blocage de davantage d'extensions de fichiers et de domaines de tracking. [#598](https://github.com/betagouv/acces-cible/issues/598)
+- Mise à jour de l'adresse mail de contact d'Acces Cible. [#618](https://github.com/betagouv/acces-cible/issues/618)
+- Correction du chargement des snapshots HTML. [#593](https://github.com/betagouv/acces-cible/issues/593)
