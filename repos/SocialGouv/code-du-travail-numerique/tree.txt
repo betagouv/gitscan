@@ -1,7 +1,9 @@
 .
 ├── .claude
 │   └── skills
-│       └── sentry-issues
+│       ├── sentry-issues
+│       │   └── SKILL.md
+│       └── tracking-plan
 │           └── SKILL.md
 ├── .dockerignore
 ├── .editorconfig
@@ -22,6 +24,7 @@
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       ├── review.yaml
+│       ├── stats-events-wiki.yml
 │       ├── stats-events.yml
 │       └── verification-production.yml
 ├── .gitignore
@@ -512,6 +515,8 @@
 │   │   │   │   │       └── service.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils
+│   │   │   │       ├── constants.ts
+│   │   │   │       ├── dila-api-client.ts
 │   │   │   │       ├── elasticsearch.ts
 │   │   │   │       ├── errors.ts
 │   │   │   │       ├── index.ts
@@ -3816,13 +3821,17 @@
 │   │   └── tsconfig.json
 │   ├── code-du-travail-stats
 │   │   ├── .gitignore
+│   │   ├── .prettierignore
 │   │   ├── .prettierrc.mjs
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── events
+│   │   │   ├── TRACKING_PLAN.md
 │   │   │   └── events.extracted.json
 │   │   ├── jest.config.cjs
 │   │   ├── package.json
+│   │   ├── scripts
+│   │   │   └── wiki-upsert.mjs
 │   │   ├── src
 │   │   │   ├── __tests__
 │   │   │   │   ├── aggregate.test.ts
@@ -3896,4 +3905,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-951 directories, 2947 files
+953 directories, 2954 files
