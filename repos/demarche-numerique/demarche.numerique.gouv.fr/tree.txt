@@ -1307,6 +1307,11 @@
 │   │   │   │   ├── champ_formatted_simple_component.fr.yml
 │   │   │   │   └── champ_formatted_simple_component.html.haml
 │   │   │   ├── champ_formatted_simple_component.rb
+│   │   │   ├── champ_piece_justificative_component
+│   │   │   │   ├── champ_piece_justificative_component.en.yml
+│   │   │   │   ├── champ_piece_justificative_component.fr.yml
+│   │   │   │   └── champ_piece_justificative_component.html.erb
+│   │   │   ├── champ_piece_justificative_component.rb
 │   │   │   ├── dossier_link_champ_component
 │   │   │   │   └── dossier_link_champ_component.html.haml
 │   │   │   ├── dossier_link_champ_component.rb
@@ -1810,6 +1815,7 @@
 │   │   │   │   │   ├── SearchField.css
 │   │   │   │   │   ├── SearchField.tsx
 │   │   │   │   │   ├── Select.css
+│   │   │   │   │   ├── TagGroup.tsx
 │   │   │   │   │   └── theme.css
 │   │   │   │   ├── hooks.ts
 │   │   │   │   └── props.ts
@@ -2003,7 +2009,8 @@
 │   │   │   │   ├── instructeur_connected_by_month_job.rb
 │   │   │   │   ├── procedure_by_month_job.rb
 │   │   │   │   ├── procedure_closed_by_month_job.rb
-│   │   │   │   └── user_connected_with_france_connect_by_month_job.rb
+│   │   │   │   ├── user_connected_with_france_connect_by_month_job.rb
+│   │   │   │   └── user_with_pro_connect_by_month_job.rb
 │   │   │   ├── discarded_brouillon_dossiers_deletion_job.rb
 │   │   │   ├── discarded_dossiers_deletion_base_job.rb
 │   │   │   ├── discarded_en_construction_dossiers_deletion_job.rb
@@ -2174,7 +2181,6 @@
 │   │   ├── invite_mailer.rb
 │   │   ├── notification_mailer.rb
 │   │   ├── phishing_alert_mailer.rb
-│   │   ├── preactivate_users_mailer.rb
 │   │   ├── super_admin_mailer.rb
 │   │   └── user_mailer.rb
 │   ├── middleware
@@ -2593,6 +2599,7 @@
 │   │   ├── pro_connect_service.rb
 │   │   ├── procedure_archive_service.rb
 │   │   ├── procedure_export_service
+│   │   │   ├── csv_export.rb
 │   │   │   ├── xlsx_export.rb
 │   │   │   └── xlsx_streamer.rb
 │   │   ├── procedure_export_service.rb
@@ -2809,9 +2816,9 @@
 │       │   ├── _login_banner.html.haml
 │       │   ├── _main_navigation.html.haml
 │       │   ├── api_tokens
-│       │   │   ├── autorisations.html.haml
-│       │   │   ├── create.html.haml
-│       │   │   ├── edit.html.haml
+│       │   │   ├── autorisations.html.erb
+│       │   │   ├── create.html.erb
+│       │   │   ├── edit.html.erb
 │       │   │   ├── nom.html.haml
 │       │   │   └── securite.html.haml
 │       │   ├── archives
@@ -3928,6 +3935,9 @@
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── administrateurs
+│   │       │   ├── api_tokens
+│   │       │   │   ├── create.en.yml
+│   │       │   │   └── create.fr.yml
 │   │       │   ├── attestation_template_v2s
 │   │       │   │   └── fr.yml
 │   │       │   ├── experts_procedures
@@ -4055,6 +4065,8 @@
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── instructeur_mailer
+│   │       │   ├── en.yml
+│   │       │   ├── fr.yml
 │   │       │   ├── last_week_overview
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
@@ -4103,7 +4115,13 @@
 │   │       │           └── fr.yml
 │   │       ├── invite_mailer
 │   │       │   ├── en.yml
-│   │       │   └── fr.yml
+│   │       │   ├── fr.yml
+│   │       │   ├── invite_guest
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   └── invite_user
+│   │       │       ├── en.yml
+│   │       │       └── fr.yml
 │   │       ├── layouts
 │   │       │   ├── _breadcrumb.en.yml
 │   │       │   ├── _breadcrumb.fr.yml
@@ -4117,6 +4135,10 @@
 │   │       │   ├── send_accuse_lecture_notification
 │   │       │   │   └── fr.yml
 │   │       │   └── send_notification_for_tiers
+│   │       │       └── fr.yml
+│   │       ├── phishing_alert_mailer
+│   │       │   └── notify
+│   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── pro_connect
 │   │       │   ├── en.yml
@@ -4911,6 +4933,7 @@
 │   │   │   ├── errors_full_messages_component_spec.rb
 │   │   │   ├── export_dropdown_component_spec.rb
 │   │   │   ├── export_link_component_spec.rb
+│   │   │   ├── geo_area_component_spec.rb
 │   │   │   ├── individual_form_component_spec.rb
 │   │   │   ├── message_component_spec.rb
 │   │   │   ├── no_access_to_dossier_component_spec.rb
@@ -5508,7 +5531,8 @@
 │   │   │   │   ├── instructeur_connected_by_month_job_spec.rb
 │   │   │   │   ├── procedure_by_month_job_spec.rb
 │   │   │   │   ├── procedure_closed_by_month_job_spec.rb
-│   │   │   │   └── user_connected_with_france_connect_by_month_job_spec.rb
+│   │   │   │   ├── user_connected_with_france_connect_by_month_job_spec.rb
+│   │   │   │   └── user_with_pro_connect_by_month_job_spec.rb
 │   │   │   ├── discarded_brouillon_dossiers_deletion_job_spec.rb
 │   │   │   ├── discarded_dossiers_deletion_base_job_spec.rb
 │   │   │   ├── discarded_en_construction_dossiers_deletion_job_spec.rb
@@ -6278,4 +6302,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1009 directories, 5588 files
+1015 directories, 5606 files

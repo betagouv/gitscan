@@ -1,5 +1,35 @@
+2026-07-06T17:09:44+02:00 - ebea6dcac - mfo : deadcopde(preactivate_users_mailer): dead since 2020: a3cf7fce3a
+2026-07-06T17:09:44+02:00 - 827eb4cc7 - mfo : i18n(invite_mailer): extract hardcoded strings from InviteMailer
+2026-07-06T17:09:44+02:00 - 6c9994041 - mfo : i18n(phishing_alert_mailer): extract hardcoded strings from PhishingAlertMailer
+2026-07-06T17:09:44+02:00 - 35f175a90 - mfo : feat(i18n-tasks): ignore unsupported i18n-tasks checks
+2026-07-06T17:09:39+02:00 - b1fb1bae2 - mfo : i18n(instructeur_mailer): extract hardcoded strings from InstructeurMailer
+2026-07-06T17:05:13+02:00 - 63dffaf4c - mfo : ui(attestation_editor): checkbox to show non mandatory or conditional tags
+2026-07-06T17:05:13+02:00 - 441169a52 - mfo : clean(text): better wording for toggle
+2026-07-06T17:05:09+02:00 - fa9f11ac8 - mfo : refactor(attestation): invert tag logic from optional to mandatory
+2026-07-06T16:59:04+02:00 - e7c3de0b4 - benoitqueyron : fix(datgouv): uses Time zone rather than Date, to include the last day of the month
+2026-07-06T16:58:55+02:00 - 6303d582b - benoitqueyron : feat(datagouv): publishes a new dataset on account creation via ProConnect
+2026-07-06T16:23:47Z - 4e1e63a56 - Benoit Queyron : Merge pull request #13363 from demarche-numerique/datagouv-new-data-on-proconnect
+2026-07-06T15:40:59+02:00 - 622d411b7 - mfo : test: add system spec for tag a11y (single button, aria-label)
+2026-07-06T15:40:55+02:00 - 9fc66b741 - mfo : a11y: replace React Aria TagGroup with native DSFR dismiss buttons
+2026-07-06T15:14:53Z - f6a852738 - mfo : Merge pull request #13417 from demarche-numerique/auto/i18n-hardcoded/batch-85b14a8c
+2026-07-06T15:11:18Z - 9455bacdb - mfo : Merge pull request #13405 from demarche-numerique/US/rework-attestatino-conditional
+2026-07-06T14:03:09Z - ca0c53101 - mfo : Merge pull request #13414 from mfo/13403
+2026-07-06T13:21:20Z - 7411b5c57 - mfo : Merge pull request #13404 from demarche-numerique/auto/haml-migration/batch-ad73ecab
+2026-07-06T11:52:31+02:00 - 5771130d1 - mfo : perf(tests): let_it_be — file_input_component_spec
+2026-07-06T10:08:29Z - 1f5194ef6 - LeSim : Merge pull request #13374 from demarche-numerique/ddocs_improvments
+2026-07-06T09:57:39Z - c74378285 - mfo : Merge pull request #13422 from demarche-numerique/auto/test-optimization/c-a-file_input_component
+2026-07-06T09:53:58Z - 334e94795 - mfo : Merge pull request #13415 from demarche-numerique/fix-backfill_naf_2025
+2026-07-06T09:22:08Z - 43c10ac9b - Paul Chavard : Merge pull request #13407 from demarche-numerique/push-wopwkkommnws
+2026-07-06T09:07:02Z - e97b1b6d7 - Eric Leroy-Terquem : Merge pull request #13413 from demarche-numerique/fix/geo-area-zoom-uuid-mismatch
+2026-07-06T09:06:17Z - f0b3f36da - Colin Darie : Merge pull request #13367 from colinux/fix-tabs-en-test-wording
+2026-07-06T08:53:47Z - bec7ec39a - Colin Darie : Merge pull request #13396 from colinux/stream-csv
+2026-07-06T06:51:47Z - ca0b38f64 - Eric Leroy-Terquem : Merge pull request #13416 from demarche-numerique/fix/carte-cadastre-numero-label
+2026-07-05T05:19:50Z - 51a1a812b - mfo : Merge pull request #13408 from demarche-numerique/auto/test-optimization/c-a-file_field_component
 2026-07-03T18:14:40Z - c0ffd6a88 - mfo : Merge pull request #13412 from demarche-numerique/auto/flaky-test-fix/s-u-list_dossiers
+2026-07-03T17:16:41+02:00 - 0bb629295 - Eric Leroy-Terquem : fix(geo area): display parcelle numbers on cadastral card
+2026-07-03T17:03:45+02:00 - e27457093 - mfo : perf(tests): let_it_be + aggregate_failures — file_field_component_spec.rb
 2026-07-03T17:02:52+02:00 - 45c8f187a - mfo : fix: stabiliser le test flaky lists only hidden dossiers
+2026-07-03T16:27:37+02:00 - e5c87661c - mfo : fix(backfill_naf_2025_task): worled locally, not on production. assuming small diff between replication db/production db leading to timeout
 2026-07-03T15:57:18+02:00 - b405658ac - Mathieu Magnin : refactor(expired): simplify silent-purge scope after review
 2026-07-03T15:17:34+02:00 - 7c759ae4c - mfo : lint: trad, add ignore_unused undetected by i18n-tasks
 2026-07-03T15:17:33+02:00 - f1f745e46 - mfo : i18n(groupe_gestionnaire_mailer): extract hardcoded strings from GroupeGestionnaireMailer
@@ -8,10 +38,16 @@
 2026-07-03T15:17:33+02:00 - 815aa879a - mfo : i18n(groupe_instructeur_mailer): extract hardcoded strings from GroupeInstructeurMailer
 2026-07-03T15:17:30+02:00 - f616f4088 - mfo : i18n(expert_mailer): extract hardcoded strings from ExpertMailer
 2026-07-03T15:15:37+02:00 - 5dce51e84 - mfo : perf(GraphQL): fix N+1 on procedure_paths in DemarcheDescriptorType and query_type
+2026-07-03T14:59:27+02:00 - 98546d49e - Eric Leroy-Terquem : fix(geo area): zoom on zone at click
 2026-07-03T14:02:21Z - 44231fc5d - Mathieu Magnin : Merge pull request #13378 from demarche-numerique/delete-expired-brouillons-without-notice
 2026-07-03T13:29:21Z - 1889e5234 - mfo : Merge pull request #13409 from demarche-numerique/auto/n1-query-fix/m-c-procedure_path_concern
 2026-07-03T13:26:08Z - bce0645a4 - mfo : Merge pull request #13399 from demarche-numerique/auto/i18n-hardcoded/batch-539aa2ae
+2026-07-02T16:59:22+02:00 - 9b535f437 - mfo : refactor(haml): migrate api_tokens create to ERB
+2026-07-02T16:59:22+02:00 - 8d696ae20 - mfo : refactor(haml): migrate api_tokens edit to ERB
+2026-07-02T16:59:19+02:00 - 3acb187e2 - mfo : refactor(haml): migrate autorisations to ERB
 2026-07-02T14:55:31+02:00 - a650bf9a5 - mfo : refactor(haml): migrate _mail_template_attestation_inconsistency_alert to ERB
+2026-07-02T14:53:56+02:00 - d61e18e94 - Paul Chavard : fix(db): create french_unaccent config in every database on schema load
+2026-07-02T14:53:44+02:00 - 01ba84155 - Paul Chavard : fix(flipper): really check for database existence in initializer
 2026-07-02T13:01:45Z - 58ecaca60 - mfo : Merge pull request #13400 from demarche-numerique/auto/haml-migration/v-a-_mail_template_atte-4ec52b
 2026-07-02T10:06:02+02:00 - 42d77fab8 - Mathieu Magnin : a11y: simplify status announcement emission and reuse status_announcement?
 2026-07-02T10:06:02+02:00 - 2aa41e790 - Mathieu Magnin : a11y: drop antivirus concatenation (antivirus announcement removed in #13104)
@@ -39,8 +75,10 @@
 2026-07-02T07:46:39Z - 6dde286a1 - mfo : Merge pull request #13385 from demarche-numerique/auto/haml-migration/batch-d57fc094
 2026-07-02T07:24:40Z - ffe256720 - mfo : Merge pull request #13383 from demarche-numerique/auto/haml-migration/batch-b26b1d99
 2026-07-02T07:23:43Z - efe0580a6 - Mathieu Magnin : Merge pull request #13382 from demarche-numerique/13247-emails-corbeille-expire-bientot
+2026-07-01T17:53:56+02:00 - 575bb3a12 - Colin Darie : feat(export): stream csv exports via CsvExport to cut memory
 2026-07-01T17:22:44+02:00 - 7c41301f6 - Paul Chavard : test(policies): add specs for ChampPolicy and DossierPolicy
 2026-07-01T17:22:44+02:00 - 10aab9604 - Paul Chavard : refactor(champs): use Pundit policies for champ authorization
+2026-07-01T17:15:19+02:00 - cd8e61668 - Colin Darie : i18n(en test): align wording with actual deletion behavior
 2026-07-01T16:57:06+02:00 - ec75ae7c6 - Paul Chavard : refactor(graphql): use dataloader
 2026-07-01T16:06:07+02:00 - cb515097e - Colin Darie : fix(admin): wrap long service names instead of pushing actions off-screen
 2026-07-01T15:28:18Z - dfa3c2a66 - Paul Chavard : Merge pull request #12993 from demarche-numerique/push-tuxtzsvqprkt
@@ -98,6 +136,25 @@
 2026-06-29T19:10:39+02:00 - 7fd4b6597 - Mathieu Magnin : feat(expired): silently delete expired brouillons without notice
 2026-06-29T19:10:39+02:00 - 773f034ea - Mathieu Magnin : test(expired): pin notice-grace-window survival and scope filter arms
 2026-06-29T19:10:38+02:00 - 144104602 - Mathieu Magnin : feat(expired): add brouillon_expired_without_notice scope
+2026-06-29T17:15:14+02:00 - ec493b03f - simon lehericey : chore: linter
+2026-06-29T17:15:13+02:00 - adf80506a - simon lehericey : feat(ocr_compatible): only allow document_text and image_scan
+2026-06-29T17:15:13+02:00 - 21edee835 - simon lehericey : feat(ocr_compatible): only allow one upload
+2026-06-29T17:15:12+02:00 - 3f87d04d9 - simon lehericey : feat(editor_pj_component): add ocr_notice for justificatif_domicile and avis_impot
+2026-06-29T17:15:11+02:00 - f210eafc2 - simon lehericey : refactor: simplify pj_format_families checked? logic
+2026-06-29T17:15:11+02:00 - 8fa801b3d - simon lehericey : refactor: move ocr_compatible? from champ to type_de_champ
+2026-06-29T17:15:10+02:00 - f0e7a2296 - simon lehericey : refactor: use class_names helper
+2026-06-29T17:15:10+02:00 - bd3bf3909 - simon lehericey : refactor: simplify a class_names
+2026-06-29T17:15:09+02:00 - e31bf354a - simon lehericey : UI(editor_pj_component): same spacing between topics
+2026-06-29T17:15:09+02:00 - d9a7306bc - simon lehericey : refactor(editor_pj_component): form.object == type_de_champ
+2026-06-29T17:15:09+02:00 - 786b6eed0 - simon lehericey : refactor(editor_pj_component): more helpers
+2026-06-29T17:15:08+02:00 - d9b705c68 - simon lehericey : refactor(editor_pj_component): nature_dom_id go into ruby
+2026-06-29T17:15:07+02:00 - 97b225a50 - simon lehericey : refactor(champ_editor): i18n identity_notice -> file_analysis
+2026-06-29T17:15:07+02:00 - 85e209356 - simon lehericey : refactor(editor_pj_component): group by topic
+2026-06-29T17:15:06+02:00 - ddc6f2df8 - simon lehericey : clean(champ_editor): remove unused translation
+2026-06-29T17:15:06+02:00 - 2c463fd8e - simon lehericey : refactor(champ_editor): move RIB notice upper to follow UI
+2026-06-29T17:15:05+02:00 - 5dd1a763e - simon lehericey : UI(champ_editor): remove duplicated rgpd cni notice
+2026-06-29T17:15:04+02:00 - 498abe841 - simon lehericey : refactor(champ_editor): declare natures_for_select in rb, remove feature flag
+2026-06-29T17:15:04+02:00 - 4416f7b43 - simon lehericey : refactor(champ_editor): extract pj logic into dedicated component
 2026-06-29T16:27:44+02:00 - e9ced66f7 - Eric Leroy-Terquem : fix(attestation): apply italic style in attestation PDFs
 2026-06-29T15:45:40Z - 950e396b8 - Paul Chavard : Merge pull request #13369 from demarche-numerique/push-szqrxqnylvwl
 2026-06-29T14:54:27+02:00 - bdfc0f3e7 - Eric Leroy-Terquem : chore(api geo): update data
@@ -136,6 +193,7 @@
 2026-06-26T15:18:58Z - 958e0c1c8 - mfo : Merge pull request #13348 from demarche-numerique/auto/haml-migration/batch-5c8ae63c
 2026-06-26T15:11:06Z - b4f71c4b3 - mfo : Merge pull request #13349 from demarche-numerique/auto/test-optimization/s-a-procedure_attest-47bf11
 2026-06-26T15:10:55Z - d089298ae - mfo : Merge pull request #13324 from demarche-numerique/auto/i18n-hardcoded/batch-578b4b09
+2026-06-26T15:03:55+02:00 - 462735e29 - benoitqueyron : feat(datagouv): publishes the description of procedures when there is at least one dosssier
 2026-06-26T13:59:35+02:00 - bec36f7c9 - mfo : supprime l'attribut transitoire procedure_expires_when_termine_enabled
 2026-06-26T13:41:14+02:00 - f06045de3 - mfo : feat(attestation): render optional tag with a different color
 2026-06-26T13:41:14+02:00 - d961726b4 - mfo : feat(attestation): add spport for carte

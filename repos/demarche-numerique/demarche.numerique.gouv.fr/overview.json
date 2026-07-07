@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle permet la gestion des démarches administratives en ligne.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source sous licence AGPL.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,47 +9,46 @@
     "Notifications & Alertes",
     "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
     "API & Intégrations"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "Ruby",
-    "Rails",
+    "Sidekiq",
+    "GraphQL",
     "React",
-    "GraphQL"
+    "lightgallery"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
+    "Microservices & Architecture",
+    "Documentation & Schémas",
+    "CI/CD & Déploiement",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
-    ],
-    "providers": [
-      "FranceConnect",
-      "ProConnect"
+      "saml"
     ]
   },
   "tests": [
     "RSpec",
-    "Selenium",
     "Capybara",
+    "Selenium",
     "Cypress"
   ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-07-03T18:14:40Z",
+  "lastActivity": "2026-07-06T17:09:44+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
