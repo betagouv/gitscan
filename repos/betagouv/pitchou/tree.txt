@@ -14,6 +14,8 @@
 ├── .npmrc
 ├── .prettierignore
 ├── .prettierrc.json
+├── AGENTS.md
+├── CLAUDE.md
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -59,6 +61,7 @@
 │       │   │   │   ├── admin.ts
 │       │   │   │   └── adminEspeces.ts
 │       │   │   ├── components
+│       │   │   │   ├── CartographieProjet.svelte
 │       │   │   │   ├── DSFR
 │       │   │   │   │   ├── BoutonModale.svelte
 │       │   │   │   │   └── Pagination.svelte
@@ -84,7 +87,8 @@
 │       │   │   │   └── suiviDossier.ts
 │       │   │   ├── especes
 │       │   │   │   ├── activitésMéthodesMoyensDePoursuite.ts
-│       │   │   │   └── créerEspècesGroupéesParImpact.ts
+│       │   │   │   ├── créerEspècesGroupéesParImpact.ts
+│       │   │   │   └── créerEspècesGroupéesParImpact.xlsx.test.ts
 │       │   │   ├── server
 │       │   │   │   ├── auth.ts
 │       │   │   │   ├── fichier.test.ts
@@ -249,12 +253,14 @@
 │       │       │       │   │   ├── contrôle.ts
 │       │       │       │   │   ├── décisionAdministrative.ts
 │       │       │       │   │   └── prescriptions.ts
+│       │       │       │   ├── CopyIconButton.svelte
 │       │       │       │   ├── DossierAvis.svelte
 │       │       │       │   ├── DossierContrôles.svelte
 │       │       │       │   ├── DossierContrôles.svelte.test.ts
 │       │       │       │   ├── DossierGénérationDocuments.svelte
 │       │       │       │   ├── DossierInstruction.svelte
 │       │       │       │   ├── DossierMessagerie.svelte
+│       │       │       │   ├── DossierPorteurDeProjet.svelte
 │       │       │       │   ├── DossierProjet.svelte
 │       │       │       │   ├── EnteteDossier.svelte
 │       │       │       │   ├── ModaleAjouterPièceJointe.svelte
@@ -1208,7 +1214,10 @@
 │   │   │   ├── 20260623094941_ajout-colonne-enjeu-dossier.ts
 │   │   │   ├── 20260623110921_supprimer-enjeu-politique-et-ecologique-dossier.ts
 │   │   │   ├── 20260626120000_supprimer-date-envoi-derniere-contribution-ddep.ts
-│   │   │   └── 20260629140000_unique-nom-numéro-démarche-groupe-instructeurs.ts
+│   │   │   ├── 20260629120000_ajout-date-mise-en-service.ts
+│   │   │   ├── 20260629140000_unique-nom-numéro-démarche-groupe-instructeurs.ts
+│   │   │   ├── 20260701120000_porteur-de-projet.ts
+│   │   │   └── 20260702120000_cartographie-projet.ts
 │   │   ├── package.json
 │   │   ├── seeds
 │   │   │   ├── dev
@@ -1374,6 +1383,7 @@
 │       ├── rafraichir-reference-especes.ts
 │       ├── sync-démarche-numérique.ts
 │       ├── synchronisation-ds
+│       │   ├── inseeHeadcountRange.ts
 │       │   ├── makeColonnesCommunesDossierPourSynchro88444.ts
 │       │   ├── makeDossiersPourSynchronisation.ts
 │       │   ├── synchronisation-dossier-88444.ts
@@ -1398,4 +1408,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-186 directories, 1255 files
+186 directories, 1265 files

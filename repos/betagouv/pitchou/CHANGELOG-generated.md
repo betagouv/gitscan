@@ -1,47 +1,47 @@
-## Changelog : pitchou (30 derniers jours, au 01 juillet 2026)
+## Changelog : pitchou (30 derniers jours, au 6 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des données, la migration vers de nouvelles infrastructures de stockage, et l'ajout de nouvelles fonctionnalités pour faciliter le travail des agents de l'administration. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, l'application a connu des améliorations significatives en termes de gestion des utilisateurs, de synchronisation des données et d'expérience utilisateur. Des fonctionnalités ont été ajoutées pour faciliter le travail des instructeurs, notamment l'accès aux informations sur les porteurs de projet et la consultation de cartographies. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de télécharger les événements utilisateurs pour les statistiques AARRI. [#591]
-- Ajout d'une page d'erreur 404 personnalisée pour une meilleure expérience utilisateur. [#596]
-- Amélioration de la section évolution des indicateurs AARRI dans les statistiques. [#597]
-- Ajout d'un bouton "Retour" sur la page des dossiers. [#609]
-- Ajout d'un fil d'Ariane pour faciliter la navigation dans la documentation. [#610]
-- Possibilité d'éditer les dates de consultation du public dans l'onglet instruction. [#600]
-- Possibilité d'éditer le champ "enjeux" dans l'instruction. [#604]
-- Ajout de la possibilité d'ajouter des pièces jointes aux seeds. [#614]
-- Ajout de nouveaux fichiers de saisine CSRPN de la DREAL ARA et un nouveau mail de saisine au CNPN.
-- Ajout de la possibilité d'autoriser les domaines ext.beta.gouv.fr et loir-et-cher.gouv.fr pour la connexion. [#601]
-- Ajout de l'espèce *Cosentinia vellea* à la liste des espèces protégées du CNPN. [#66dcc9c]
-- Affichage d'un message d'erreur si le domaine utilisé pour la connexion n'est pas autorisé. [#602]
-- Ajout de dossiers D10 et D11 aux seeds. [#623]
+- Les instructeurs peuvent désormais accéder au groupe instructeur associé à chaque utilisateur. [#633](https://github.com/betagouv/pitchou/issues/633)
+- Correction de la sélection de géométrie GraphQL dans la synchronisation des données. [#629](https://github.com/betagouv/pitchou/issues/632)
+- Les instructeurs peuvent afficher et télécharger la cartographie associée à un dossier. [#629](https://github.com/betagouv/pitchou/issues/629)
+- Possibilité de contacter le déposeur du dossier directement depuis l'entête. [#630](https://github.com/betagouv/pitchou/issues/630)
+- Ajout d'un onglet "Porteur de projet" pour faciliter l'accès aux informations du demandeur. [#627](https://github.com/betagouv/pitchou/issues/627)
+- Ajout de la date de mise en service dans les informations du dossier (en préparation de la prochaine MEP). [#616](https://github.com/betagouv/pitchou/issues/616)
+- L'application accepte désormais les fichiers .xlsx pour les espèces. [#628](https://github.com/betagouv/pitchou/issues/628)
+- Ajout d'un bouton "Retour" dans la page du dossier. [#609](https://github.com/betagouv/pitchou/issues/609)
+- Ajout d'un fil d'Ariane pour faciliter la navigation dans l'application. [#610](https://github.com/betagouv/pitchou/issues/610)
+- Les dates de consultation du public sont désormais éditables dans l'onglet instruction. [#600](https://github.com/betagouv/pitchou/issues/600)
+- Ajout d'une page d'erreur 404 personnalisée. [#596](https://github.com/betagouv/pitchou/issues/596)
+- Amélioration de la section évolution des indicateurs AARRI dans les statistiques. [#597](https://github.com/betagouv/pitchou/issues/597)
+- Ajout d'une page utilisateurs dans l'administration avec le niveau AARRI. [#591](https://github.com/betagouv/pitchou/issues/591)
+- Migration de la liste des espèces protégées du CSV vers une table en base de données. [#589](https://github.com/betagouv/pitchou/issues/589)
+- Correction de l'affichage du fichier espèces impactées après migration vers l'object storage. [#590](https://github.com/betagouv/pitchou/issues/589)
+- Ajout d'un bouton pour télécharger les événements utilisateurs pour les statistiques AARRI. [#592](https://github.com/betagouv/pitchou/issues/592)
 
 ### Évolutions techniques
-- Migration des fichiers vers Outscale Object Storage pour une meilleure scalabilité et fiabilité. [#573]
-- Migration du frontend de Svelte vers Typescript. [#568, #567]
-- Refactorisation du dépôt en monorepo pour une meilleure organisation du code. [#595, #593]
-- Correction du fuseau horaire des dates. [#612]
-- Correction du chemin du schéma DS pour le worker. [#603]
-- Suppression des liens vers la démarche numérique dans les dossiers/avis d'expert. [#5554cde]
-- Suppression de la synchronisation des "enjeux politique et écologique" (annotation privée) depuis la démarche numérique. [#605]
-- Suppression de la date d'envoi de la dernière contribution dans l'historique. [#615]
-- Suppression de la personne associée à un dossier si elle n'y a plus accès. [#625]
-- Mise à jour du DPO dans la documentation sur les données personnelles. [#624]
+- Refactorisation du dépôt en monorepo. [#595](https://github.com/betagouv/pitchou/issues/595) et [#593](https://github.com/betagouv/pitchou/issues/593)
+- Correction du chemin du schéma DS pour le worker. [#603](https://github.com/betagouv/pitchou/issues/603)
+- Correction du fuseau horaire des dates. [#612](https://github.com/betagouv/pitchou/issues/612)
+- Suppression de la synchronisation des "enjeux politique et écologique" (annotation privée) depuis la démarche numérique. [#605](https://github.com/betagouv/pitchou/issues/605)
+- Ajout de domaines autorisés pour la connexion (ext.beta.gouv.fr). [#601](https://github.com/betagouv/pitchou/issues/601)
+- Correction d'un problème de réinitialisation de l'état "vu" des notifications lors de la resynchronisation. [#592](https://github.com/betagouv/pitchou/issues/592)
 
 ### Autres changements
-- Mise à jour des modèles pour la génération de documents. [#5f8e0f5]
-- Ajout de seeds plus réalistes pour les dossiers. [#608]
-- Correction du format du fichier CSV pour les événements métriques AARRI. [#585]
-- Ajout de la matrice d'impact à la page des statistiques. [#599]
-- Correction de bugs liés à la synchronisation des données en local.
-- Correction d'erreurs 500 lors du téléchargement de fichiers. [#587]
-- Correction de problèmes d'affichage du fichier espèces impactées après la migration vers l'object storage. [#590]
-- Correction de problèmes de réinitialisation de l'état "vu" des notifications lors de la synchronisation. [#592]
-- Ajout de domaines autorisés pour la connexion. [#579]
-- Suppression de décisions administratives en double lors de la synchronisation. [#584]
-- Amélioration de la conformité du header et du footer avec les standards DSFR. [#583]
-- Fusion de la page AARRI dans la page des statistiques. [#582]
-- Ajout de liens vers les pages de statistiques, de budget et du bouton de thème dans le footer. [#581]
-- Ajout de documentation sur le suivi des événements utilisateurs. [#586]
+- Mise à jour des modèles pour la génération de documents.
+- Ajout de nouveaux fichiers de saisine CSRPN (DREAL ARA) et de mail de saisine au CNPN.
+- Ajout de nouveaux types de fichiers de saisine.
+- Documentation sur le suivi des événements utilisateurs.
+- Suppression de l'historique de la date d'envoi de la dernière contribution.
+- Ajout de pièces jointes dans les seeds.
+- Correction du format des fichiers CSV pour les statistiques AARRI.
+- Suppression de liens vers la démarche numérique dans les dossiers/avis d'expert.
+- Correction de bugs liés à la synchronisation avec la démarche numérique en local.
+- Suppression de la personne qui suit un dossier si elle n'a pas accès au dossier. [#625](https://github.com/betagouv/pitchou/issues/625)
+- Mise à jour du DPO dans la documentation sur les données personnelles. [#624](https://github.com/betagouv/pitchou/issues/624)
+- Ajout de seeds (D10 et D11) pour les tests. [#623](https://github.com/betagouv/pitchou/issues/623)
+- Ajout de seeds en staging. [#620](https://github.com/betagouv/pitchou/issues/620)
+- Remplacement de `db-clear` par `data-clear` pour vider la base de données et le bucket S3. [#615](https://github.com/betagouv/pitchou/issues/615)
+- Enrichissement des seeds avec des dossiers plus réalistes. [#608](https://github.com/betagouv/pitchou/issues/608)
