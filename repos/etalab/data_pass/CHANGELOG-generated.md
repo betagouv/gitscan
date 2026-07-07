@@ -1,37 +1,31 @@
-## Changelog : data_pass (30 derniers jours, au 29 juin 2026)
+## Changelog : data_pass (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de data_pass se concentrent sur l'amélioration de l'expérience utilisateur, notamment via la gestion des autorisations, l'ajout de fonctionnalités pour les API et la correction de bugs. Des mises à jour de sécurité et de conformité ont également été apportées, ainsi que des améliorations de la documentation et de la gestion des dépendances.
+Les dernières semaines ont été marquées par des améliorations de la sécurité (durcissement de la session, gestion des clés API), des corrections de bugs et des évolutions fonctionnelles pour faciliter l'administration des autorisations et l'intégration avec d'autres services (HubEE, CNOUS). L'expérience utilisateur a également été améliorée grâce à des optimisations de la recherche et de l'affichage des données.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de lister les cas d'usages [#1645](https://github.com/etalab/data_pass/pull/1645).
-- Implémentation de la modification d'une définition d'autorisation [#1640](https://github.com/etalab/data_pass/pull/1640).
-- Affichage des définitions d'autorisation avec une fonction de recherche [#1637](https://github.com/etalab/data_pass/pull/1637).
-- Amélioration des libellés pour les cas d'usage API particulier [#1647](https://github.com/etalab/data_pass/pull/1647).
-- Ajout d'un lien "Ne plus recevoir ces emails" dans les emails d'instruction [#1592](https://github.com/etalab/data_pass/pull/1592).
-- Mise à jour des CGU Prosanté Connect et TDAE [#1585](https://github.com/etalab/data_pass/pull/1585), [#1590](https://github.com/etalab/data_pass/pull/1590).
-- Possibilité de trier les résultats des endpoints de l'API DataPass [#1636](https://github.com/etalab/data_pass/pull/1636).
-- Activation des brouillons pour les instructeurs FranceConnect [#1597](https://github.com/etalab/data_pass/pull/1597).
-- Amélioration de la gestion des préférences et ajout d'un token de désinscription pour les emails [#1606](https://github.com/etalab/data_pass/pull/1606).
-- Permettre aux développeurs de créer et supprimer leurs clés API [#1618](https://github.com/etalab/data_pass/pull/1618).
-- Amélioration de la recherche d'utilisateurs et de la gestion des droits [#1625](https://github.com/etalab/data_pass/pull/1625).
+- Ajout de la démarche DDMariage au formulaire HubEE DILA. (PR [#1667](https://github.com/etalab/data_pass/pull/1667))
+- Amélioration de la recherche d'utilisateurs et de la gestion des droits. (PR [#1608](https://github.com/etalab/data_pass/pull/1608), [#1625](https://github.com/etalab/data_pass/pull/1625))
+- Possibilité pour les managers d'attribuer le rôle développeur à leurs utilisateurs. (PR [#1618](https://github.com/etalab/data_pass/pull/1618))
+- Ajout d'une fonctionnalité de désinscription en un clic depuis un email. (PR [#1606](https://github.com/etalab/data_pass/pull/1606))
+- Affichage des demandes validées dans les résultats de recherche par ID. (PR [#1602](https://github.com/etalab/data_pass/pull/1602))
+- Intégration de la gestion des communes CNOUS avec affichage client-side du périmètre géographique. (PR [#1584](https://github.com/etalab/data_pass/pull/1584), [#1626](https://github.com/etalab/data_pass/pull/1626))
+- Amélioration des wordings pour le cas d'usage EAJE pour l'API particulier. (PR [#1647](https://github.com/etalab/data_pass/pull/1647))
+- Mise à jour des liens vers les CGU des services CISIRH. (PR [#1617](https://github.com/etalab/data_pass/pull/1617), [#1621](https://github.com/etalab/data_pass/pull/1621))
+- Ajout de la possibilité de définir plusieurs templates de cas d'usage pour un même formulaire. (PR [#1612](https://github.com/etalab/data_pass/pull/1612))
 
 ### Évolutions techniques
-- Réduction de la durée de vie de la session DataPass à 12 heures, alignée sur ProConnect [#1625](https://github.com/etalab/data_pass/pull/1625).
-- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP [#1622](https://github.com/etalab/data_pass/pull/1622).
-- Refactoring de la gestion des communes CNOUS pour une meilleure validation et affichage [#1633](https://github.com/etalab/data_pass/pull/1633).
-- Amélioration des performances du dashboard en réduisant les requêtes répétées et en optimisant l'utilisation de Rails Pulse [#1564](https://github.com/etalab/data_pass/pull/1564).
-- Correction d'un bug empêchant la suppression correcte des droits utilisateurs [#1634](https://github.com/etalab/data_pass/pull/1634).
-- Mise à jour de Ruby à la dernière version stable [#1285](https://github.com/etalab/data_pass/pull/1285).
-- Correction de tests Cucumber instables liés à l'API particulier [#1590](https://github.com/etalab/data_pass/pull/1590).
-- Suppression de lignes de code inutilisées et amélioration de la lisibilité du code.
-- Mise à jour des dépendances (Rubocop, Yard, Faraday, etc.).
+- Durcissement de la session à 12 heures fixes. (PR [#1657](https://github.com/etalab/data_pass/pull/1657))
+- Mise en place d'un module de gestion des *feature flags* centralisé. (PR [#1656](https://github.com/etalab/data_pass/pull/1656))
+- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP. (PR [#1622](https://github.com/etalab/data_pass/pull/1622))
+- Refactoring du code pour améliorer la performance et la maintenabilité (plusieurs PRs).
+- Correction d'une fuite mémoire potentielle dans les alertes utilisateur. (PR [#1656](https://github.com/etalab/data_pass/pull/1656))
+- Correction d'un problème de suppression de lignes de droits utilisateur. (PR [#1634](https://github.com/etalab/data_pass/pull/1634))
+- Correction d'un problème de restauration d'autorisation. (PR [#1655](https://github.com/etalab/data_pass/pull/1655))
 
 ### Autres changements
-- Ajout de documentation pour l'authentification ProConnect [#1622](https://github.com/etalab/data_pass/pull/1622).
-- Amélioration de la gestion des erreurs et des validations pour les données CNOUS.
-- Correction de liens brisés dans la documentation Swagger.
-- Ajout d'un seed pour la fonctionnalité geo/cnous.
-- Amélioration des messages d'erreur et de l'UX pour les formulaires dynamiques.
-- Ajout d'un service de migration de scope pour standardiser les renommages.
-- Correction de bugs mineurs et amélioration de la qualité du code.
+- Documentation de l'authentification ProConnect. (PR [#1622](https://github.com/etalab/data_pass/pull/1622))
+- Mise à jour des dépendances (Rubocop, Yard, Faraday, etc.).
+- Amélioration de la documentation et des tests.
+- Nettoyage du code et refactoring de certains composants.
+- Ajout de tests pour les nouvelles fonctionnalités.

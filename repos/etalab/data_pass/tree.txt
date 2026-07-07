@@ -878,8 +878,14 @@
 │   │   │   ├── action_card_component.html.erb
 │   │   │   ├── action_card_component.rb
 │   │   │   ├── color_badge_component.rb
+│   │   │   ├── config_block_component.html.erb
+│   │   │   ├── config_block_component.rb
+│   │   │   ├── copy_button_component.html.erb
+│   │   │   ├── copy_button_component.rb
 │   │   │   ├── edit_definition_block_component.html.erb
-│   │   │   └── edit_definition_block_component.rb
+│   │   │   ├── edit_definition_block_component.rb
+│   │   │   ├── form_buttons_component.html.erb
+│   │   │   └── form_buttons_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
@@ -922,16 +928,17 @@
 │   │   │   │   ├── authorization_definition
 │   │   │   │   │   ├── card_component.html.erb
 │   │   │   │   │   ├── card_component.rb
-│   │   │   │   │   ├── config_block_component.html.erb
 │   │   │   │   │   ├── config_block_component.rb
-│   │   │   │   │   ├── config_chip_component.html.erb
-│   │   │   │   │   ├── config_chip_component.rb
 │   │   │   │   │   ├── edit_header_component.html.erb
 │   │   │   │   │   ├── edit_header_component.rb
-│   │   │   │   │   ├── form_card_component.html.erb
-│   │   │   │   │   ├── form_card_component.rb
 │   │   │   │   │   ├── forms_header_component.html.erb
 │   │   │   │   │   ├── forms_header_component.rb
+│   │   │   │   │   ├── show_header_component.html.erb
+│   │   │   │   │   └── show_header_component.rb
+│   │   │   │   ├── form
+│   │   │   │   │   ├── card_component.html.erb
+│   │   │   │   │   ├── card_component.rb
+│   │   │   │   │   ├── config_block_component.rb
 │   │   │   │   │   ├── show_header_component.html.erb
 │   │   │   │   │   └── show_header_component.rb
 │   │   │   │   ├── user_rights
@@ -1481,6 +1488,7 @@
 │   │   ├── denial_of_authorization.rb
 │   │   ├── eligibility_option.rb
 │   │   ├── eligibility_rule.rb
+│   │   ├── feature_flag.rb
 │   │   ├── form_template.rb
 │   │   ├── france_connect_default_data.rb
 │   │   ├── habilitation_type.rb
@@ -2166,7 +2174,8 @@
 │       │   │   ├── _authorizations.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── forms
-│       │   │   └── index.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── france_connected_authorizations
 │       │   │   └── index.html.erb
 │       │   ├── instructor_draft_requests
@@ -2651,6 +2660,7 @@
 │   │   ├── authentification_proconnect.md
 │   │   ├── datagouv-habilitations-sync.md
 │   │   ├── design.md
+│   │   ├── feature_flags.md
 │   │   ├── geo_data.md
 │   │   ├── habilitation_type_dynamique.md
 │   │   ├── modal.md
@@ -2998,7 +3008,10 @@
 │   │       ├── atoms
 │   │       │   ├── action_card_component_preview.rb
 │   │       │   ├── color_badge_component_preview.rb
-│   │       │   └── edit_definition_block_component_preview.rb
+│   │       │   ├── config_block_component_preview.rb
+│   │       │   ├── copy_button_component_preview.rb
+│   │       │   ├── edit_definition_block_component_preview.rb
+│   │       │   └── form_buttons_component_preview.rb
 │   │       ├── authorization_header_component_preview.rb
 │   │       ├── dashboard
 │   │       │   └── blank_state_component_preview.rb
@@ -3021,10 +3034,12 @@
 │   │       │   │   ├── authorization_definition
 │   │       │   │   │   ├── card_component_preview.rb
 │   │       │   │   │   ├── config_block_component_preview.rb
-│   │       │   │   │   ├── config_chip_component_preview.rb
 │   │       │   │   │   ├── edit_header_component_preview.rb
-│   │       │   │   │   ├── form_card_component_preview.rb
 │   │       │   │   │   ├── forms_header_component_preview.rb
+│   │       │   │   │   └── show_header_component_preview.rb
+│   │       │   │   ├── form
+│   │       │   │   │   ├── card_component_preview.rb
+│   │       │   │   │   ├── config_block_component_preview.rb
 │   │       │   │   │   └── show_header_component_preview.rb
 │   │       │   │   ├── user_rights
 │   │       │   │   │   ├── readonly_rights_list_component_preview.rb
@@ -3296,6 +3311,7 @@
 │   │   ├── data_provider_spec.rb
 │   │   ├── denial_of_authorization_spec.rb
 │   │   ├── eligibility_rule_spec.rb
+│   │   ├── feature_flag_spec.rb
 │   │   ├── form_template_spec.rb
 │   │   ├── france_connect_default_data_spec.rb
 │   │   ├── habilitation_type_spec.rb
@@ -3521,4 +3537,4 @@
     ├── .keep
     └── javascript
         └── .keep
-494 directories, 3167 files
+496 directories, 3181 files
