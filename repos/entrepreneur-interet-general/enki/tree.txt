@@ -1,0 +1,1626 @@
+.
+├── .envs
+│   ├── .local
+│   │   ├── example.env.auth
+│   │   ├── example.env.flaskenv
+│   │   ├── example.env.kong
+│   │   ├── example.env.minio
+│   │   ├── example.env.pg
+│   │   └── test.kong
+│   ├── .prod
+│   │   ├── example.env.auth
+│   │   ├── example.env.flaskenv
+│   │   └── example.env.kong
+│   └── .test
+│       ├── .env.elastic
+│       ├── .env.flaskenv
+│       └── .env.pg
+├── .gitignore
+├── .gitlab-ci.yml
+├── COPYING
+├── Makefile
+├── README.md
+├── authentication
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.rst
+│   ├── docker
+│   │   ├── Dockerfile.provision
+│   │   ├── requirements.txt
+│   │   └── scripts
+│   │       ├── groups.csv
+│   │       ├── import_users.py
+│   │       ├── roles.csv
+│   │       └── users_seed.csv
+│   ├── docker-compose.provision.yml
+│   ├── docker-compose.yml
+│   ├── enki-theme
+│   │   ├── account
+│   │   │   ├── account.ftl
+│   │   │   ├── applications.ftl
+│   │   │   ├── federatedIdentity.ftl
+│   │   │   ├── log.ftl
+│   │   │   ├── messages
+│   │   │   │   ├── messages_ca.properties
+│   │   │   │   ├── messages_cs.properties
+│   │   │   │   ├── messages_de.properties
+│   │   │   │   ├── messages_en.properties
+│   │   │   │   ├── messages_es.properties
+│   │   │   │   ├── messages_fr.properties
+│   │   │   │   ├── messages_it.properties
+│   │   │   │   ├── messages_ja.properties
+│   │   │   │   ├── messages_lt.properties
+│   │   │   │   ├── messages_nl.properties
+│   │   │   │   ├── messages_no.properties
+│   │   │   │   ├── messages_pl.properties
+│   │   │   │   ├── messages_pt_BR.properties
+│   │   │   │   ├── messages_ru.properties
+│   │   │   │   ├── messages_sk.properties
+│   │   │   │   ├── messages_sv.properties
+│   │   │   │   ├── messages_tr.properties
+│   │   │   │   └── messages_zh_CN.properties
+│   │   │   ├── password.ftl
+│   │   │   ├── resource-detail.ftl
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   └── account.css
+│   │   │   │   └── img
+│   │   │   │       ├── icon-sidebar-active.png
+│   │   │   │       ├── keycloak-logo.png
+│   │   │   │       └── logo.png
+│   │   │   ├── resources.ftl
+│   │   │   ├── sessions.ftl
+│   │   │   ├── template.ftl
+│   │   │   ├── theme.properties
+│   │   │   └── totp.ftl
+│   │   ├── admin
+│   │   │   ├── index.ftl
+│   │   │   ├── messages
+│   │   │   │   ├── admin-messages_ca.properties
+│   │   │   │   ├── admin-messages_de.properties
+│   │   │   │   ├── admin-messages_en.properties
+│   │   │   │   ├── admin-messages_es.properties
+│   │   │   │   ├── admin-messages_fr.properties
+│   │   │   │   ├── admin-messages_it.properties
+│   │   │   │   ├── admin-messages_ja.properties
+│   │   │   │   ├── admin-messages_lt.properties
+│   │   │   │   ├── admin-messages_nl.properties
+│   │   │   │   ├── admin-messages_no.properties
+│   │   │   │   ├── admin-messages_pl.properties
+│   │   │   │   ├── admin-messages_pt_BR.properties
+│   │   │   │   ├── admin-messages_ru.properties
+│   │   │   │   ├── admin-messages_zh_CN.properties
+│   │   │   │   ├── messages_ca.properties
+│   │   │   │   ├── messages_de.properties
+│   │   │   │   ├── messages_en.properties
+│   │   │   │   ├── messages_es.properties
+│   │   │   │   ├── messages_fr.properties
+│   │   │   │   ├── messages_it.properties
+│   │   │   │   ├── messages_ja.properties
+│   │   │   │   ├── messages_lt.properties
+│   │   │   │   ├── messages_nl.properties
+│   │   │   │   ├── messages_no.properties
+│   │   │   │   ├── messages_pl.properties
+│   │   │   │   ├── messages_pt_BR.properties
+│   │   │   │   ├── messages_ru.properties
+│   │   │   │   └── messages_zh_CN.properties
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   └── styles.css
+│   │   │   │   ├── img
+│   │   │   │   │   ├── keyclok-logo.png
+│   │   │   │   │   ├── keyclok-logo.svg
+│   │   │   │   │   └── select-arrow.png
+│   │   │   │   ├── js
+│   │   │   │   │   ├── app.js
+│   │   │   │   │   ├── authz
+│   │   │   │   │   │   ├── authz-app.js
+│   │   │   │   │   │   ├── authz-controller.js
+│   │   │   │   │   │   └── authz-services.js
+│   │   │   │   │   ├── controllers
+│   │   │   │   │   │   ├── clients.js
+│   │   │   │   │   │   ├── groups.js
+│   │   │   │   │   │   ├── realm.js
+│   │   │   │   │   │   ├── roles.js
+│   │   │   │   │   │   └── users.js
+│   │   │   │   │   ├── loaders.js
+│   │   │   │   │   └── services.js
+│   │   │   │   ├── partials
+│   │   │   │   │   ├── authentication-flow-bindings.html
+│   │   │   │   │   ├── authentication-flows.html
+│   │   │   │   │   ├── authenticator-config.html
+│   │   │   │   │   ├── authz
+│   │   │   │   │   │   ├── mgmt
+│   │   │   │   │   │   │   ├── broker-permissions.html
+│   │   │   │   │   │   │   ├── client-permissions.html
+│   │   │   │   │   │   │   ├── client-role-permissions.html
+│   │   │   │   │   │   │   ├── group-permissions.html
+│   │   │   │   │   │   │   ├── realm-role-permissions.html
+│   │   │   │   │   │   │   └── users-permissions.html
+│   │   │   │   │   │   ├── permission
+│   │   │   │   │   │   │   ├── provider
+│   │   │   │   │   │   │   │   ├── resource-server-policy-resource-detail.html
+│   │   │   │   │   │   │   │   └── resource-server-policy-scope-detail.html
+│   │   │   │   │   │   │   └── resource-server-permission-list.html
+│   │   │   │   │   │   ├── policy
+│   │   │   │   │   │   │   ├── provider
+│   │   │   │   │   │   │   │   ├── resource-server-policy-aggregate-detail.html
+│   │   │   │   │   │   │   │   ├── resource-server-policy-client-detail.html
+│   │   │   │   │   │   │   │   ├── resource-server-policy-group-detail.html
+│   │   │   │   │   │   │   │   ├── resource-server-policy-js-detail.html
+│   │   │   │   │   │   │   │   ├── resource-server-policy-role-detail.html
+│   │   │   │   │   │   │   │   ├── resource-server-policy-time-detail.html
+│   │   │   │   │   │   │   │   └── resource-server-policy-user-detail.html
+│   │   │   │   │   │   │   ├── resource-server-policy-evaluate-result.html
+│   │   │   │   │   │   │   ├── resource-server-policy-evaluate.html
+│   │   │   │   │   │   │   └── resource-server-policy-list.html
+│   │   │   │   │   │   ├── resource-server-detail.html
+│   │   │   │   │   │   ├── resource-server-export-settings.html
+│   │   │   │   │   │   ├── resource-server-list.html
+│   │   │   │   │   │   ├── resource-server-resource-detail.html
+│   │   │   │   │   │   ├── resource-server-resource-list.html
+│   │   │   │   │   │   ├── resource-server-scope-detail.html
+│   │   │   │   │   │   └── resource-server-scope-list.html
+│   │   │   │   │   ├── brute-force.html
+│   │   │   │   │   ├── claims.html
+│   │   │   │   │   ├── client-*.html  (48 files)
+│   │   │   │   │   ├── create-*.html  (5 files)
+│   │   │   │   │   ├── default-groups.html
+│   │   │   │   │   ├── defense-headers.html
+│   │   │   │   │   ├── forbidden.html
+│   │   │   │   │   ├── group-*.html  (5 files)
+│   │   │   │   │   ├── home.html
+│   │   │   │   │   ├── identity-provider-mapper-detail.html
+│   │   │   │   │   ├── identity-provider-mappers.html
+│   │   │   │   │   ├── menu.html
+│   │   │   │   │   ├── modal
+│   │   │   │   │   │   ├── realm-events-admin-auth.html
+│   │   │   │   │   │   ├── realm-events-admin-representation.html
+│   │   │   │   │   │   ├── role-selector.html
+│   │   │   │   │   │   ├── unregistered-required-action-selector.html
+│   │   │   │   │   │   ├── user-credential-data.html
+│   │   │   │   │   │   ├── view-key.html
+│   │   │   │   │   │   └── view-object.html
+│   │   │   │   │   ├── notfound.html
+│   │   │   │   │   ├── otp-policy.html
+│   │   │   │   │   ├── pagenotfound.html
+│   │   │   │   │   ├── partial-export.html
+│   │   │   │   │   ├── partial-import.html
+│   │   │   │   │   ├── password-policy.html
+│   │   │   │   │   ├── protocol-mapper-detail.html
+│   │   │   │   │   ├── realm-*.html  (48 files)
+│   │   │   │   │   ├── required-actions.html
+│   │   │   │   │   ├── role-attributes.html
+│   │   │   │   │   ├── role-detail.html
+│   │   │   │   │   ├── role-list.html
+│   │   │   │   │   ├── role-mappings.html
+│   │   │   │   │   ├── server-info-providers.html
+│   │   │   │   │   ├── server-info.html
+│   │   │   │   │   ├── session-realm.html
+│   │   │   │   │   ├── session-revocation.html
+│   │   │   │   │   ├── user-*.html  (17 files)
+│   │   │   │   │   ├── webauthn-policy-passwordless.html
+│   │   │   │   │   └── webauthn-policy.html
+│   │   │   │   └── templates
+│   │   │   │       ├── authz
+│   │   │   │       │   ├── kc-authz-modal.html
+│   │   │   │       │   └── kc-tabs-resource-server.html
+│   │   │   │       ├── kc-component-config.html
+│   │   │   │       ├── kc-copy.html
+│   │   │   │       ├── kc-dropdown.html
+│   │   │   │       ├── kc-edit.html
+│   │   │   │       ├── kc-menu.html
+│   │   │   │       ├── kc-modal-message.html
+│   │   │   │       ├── kc-modal.html
+│   │   │   │       ├── kc-paging.html
+│   │   │   │       ├── kc-provider-config.html
+│   │   │   │       ├── kc-switch.html
+│   │   │   │       ├── kc-tabs-authentication.html
+│   │   │   │       ├── kc-tabs-client-role.html
+│   │   │   │       ├── kc-tabs-client-scope.html
+│   │   │   │       ├── kc-tabs-client.html
+│   │   │   │       ├── kc-tabs-clients.html
+│   │   │   │       ├── kc-tabs-group-list.html
+│   │   │   │       ├── kc-tabs-group.html
+│   │   │   │       ├── kc-tabs-identity-provider.html
+│   │   │   │       ├── kc-tabs-ldap.html
+│   │   │   │       ├── kc-tabs-realm.html
+│   │   │   │       ├── kc-tabs-role.html
+│   │   │   │       ├── kc-tabs-user-storage.html
+│   │   │   │       ├── kc-tabs-user.html
+│   │   │   │       └── kc-tabs-users.html
+│   │   │   └── theme.properties
+│   │   ├── common
+│   │   │   └── resources
+│   │   │       └── img
+│   │   │           └── favicon.ico
+│   │   ├── email
+│   │   │   ├── html
+│   │   │   │   ├── email-test.ftl
+│   │   │   │   ├── email-verification-with-code.ftl
+│   │   │   │   ├── email-verification.ftl
+│   │   │   │   ├── event-login_error.ftl
+│   │   │   │   ├── event-remove_totp.ftl
+│   │   │   │   ├── event-update_password.ftl
+│   │   │   │   ├── event-update_totp.ftl
+│   │   │   │   ├── executeActions.ftl
+│   │   │   │   ├── identity-provider-link.ftl
+│   │   │   │   └── password-reset.ftl
+│   │   │   ├── messages
+│   │   │   │   ├── messages_ca.properties
+│   │   │   │   ├── messages_cs.properties
+│   │   │   │   ├── messages_de.properties
+│   │   │   │   ├── messages_en.properties
+│   │   │   │   ├── messages_es.properties
+│   │   │   │   ├── messages_fr.properties
+│   │   │   │   ├── messages_it.properties
+│   │   │   │   ├── messages_ja.properties
+│   │   │   │   ├── messages_lt.properties
+│   │   │   │   ├── messages_nl.properties
+│   │   │   │   ├── messages_no.properties
+│   │   │   │   ├── messages_pl.properties
+│   │   │   │   ├── messages_pt_BR.properties
+│   │   │   │   ├── messages_ru.properties
+│   │   │   │   ├── messages_sk.properties
+│   │   │   │   ├── messages_sv.properties
+│   │   │   │   ├── messages_tr.properties
+│   │   │   │   └── messages_zh_CN.properties
+│   │   │   ├── text
+│   │   │   │   ├── email-test.ftl
+│   │   │   │   ├── email-verification-with-code.ftl
+│   │   │   │   ├── email-verification.ftl
+│   │   │   │   ├── event-login_error.ftl
+│   │   │   │   ├── event-remove_totp.ftl
+│   │   │   │   ├── event-update_password.ftl
+│   │   │   │   ├── event-update_totp.ftl
+│   │   │   │   ├── executeActions.ftl
+│   │   │   │   ├── identity-provider-link.ftl
+│   │   │   │   └── password-reset.ftl
+│   │   │   └── theme.properties
+│   │   ├── login
+│   │   │   ├── cli_splash.ftl
+│   │   │   ├── code.ftl
+│   │   │   ├── error.ftl
+│   │   │   ├── info.ftl
+│   │   │   ├── login-config-totp-text.ftl
+│   │   │   ├── login-config-totp.ftl
+│   │   │   ├── login-idp-link-confirm.ftl
+│   │   │   ├── login-idp-link-email.ftl
+│   │   │   ├── login-oauth-grant.ftl
+│   │   │   ├── login-otp.ftl
+│   │   │   ├── login-page-expired.ftl
+│   │   │   ├── login-password.ftl
+│   │   │   ├── login-reset-password.ftl
+│   │   │   ├── login-update-password.ftl
+│   │   │   ├── login-update-profile.ftl
+│   │   │   ├── login-username.ftl
+│   │   │   ├── login-verify-email-code-text.ftl
+│   │   │   ├── login-verify-email.ftl
+│   │   │   ├── login-x509-info.ftl
+│   │   │   ├── login.ftl
+│   │   │   ├── messages
+│   │   │   │   ├── messages_ca.properties
+│   │   │   │   ├── messages_cs.properties
+│   │   │   │   ├── messages_de.properties
+│   │   │   │   ├── messages_en.properties
+│   │   │   │   ├── messages_es.properties
+│   │   │   │   ├── messages_fr.properties
+│   │   │   │   ├── messages_it.properties
+│   │   │   │   ├── messages_ja.properties
+│   │   │   │   ├── messages_lt.properties
+│   │   │   │   ├── messages_nl.properties
+│   │   │   │   ├── messages_no.properties
+│   │   │   │   ├── messages_pl.properties
+│   │   │   │   ├── messages_pt_BR.properties
+│   │   │   │   ├── messages_ru.properties
+│   │   │   │   ├── messages_sk.properties
+│   │   │   │   ├── messages_sv.properties
+│   │   │   │   ├── messages_tr.properties
+│   │   │   │   └── messages_zh_CN.properties
+│   │   │   ├── register.ftl
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   ├── fonts.css
+│   │   │   │   │   ├── login.css
+│   │   │   │   │   ├── main.css
+│   │   │   │   │   ├── main.css.map
+│   │   │   │   │   └── styles.css
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── OpenSans-ExtraBold.ttf
+│   │   │   │   │   ├── OpenSans-Light.ttf
+│   │   │   │   │   ├── OpenSans-SemiBold.ttf
+│   │   │   │   │   ├── Overpass-Black.ttf
+│   │   │   │   │   ├── Overpass-BlackItalic.ttf
+│   │   │   │   │   ├── Overpass-Bold.ttf
+│   │   │   │   │   ├── Overpass-BoldItalic.ttf
+│   │   │   │   │   ├── Overpass-ExtraBold.ttf
+│   │   │   │   │   ├── Overpass-ExtraBoldItalic.ttf
+│   │   │   │   │   ├── Overpass-ExtraLight.ttf
+│   │   │   │   │   ├── Overpass-ExtraLightItalic.ttf
+│   │   │   │   │   ├── Overpass-Italic.ttf
+│   │   │   │   │   ├── Overpass-Light.ttf
+│   │   │   │   │   ├── Overpass-LightItalic.ttf
+│   │   │   │   │   ├── Overpass-Regular.ttf
+│   │   │   │   │   ├── Overpass-SemiBold.ttf
+│   │   │   │   │   ├── Overpass-SemiBoldItalic.ttf
+│   │   │   │   │   ├── Overpass-Thin.ttf
+│   │   │   │   │   └── Overpass-ThinItalic.ttf
+│   │   │   │   ├── img
+│   │   │   │   │   ├── Republique_Francaise.png
+│   │   │   │   │   ├── background-france.png
+│   │   │   │   │   ├── eye-close.svg
+│   │   │   │   │   ├── eye-open.svg
+│   │   │   │   │   ├── feedback-error-arrow-down.png
+│   │   │   │   │   ├── feedback-error-sign.png
+│   │   │   │   │   ├── feedback-success-arrow-down.png
+│   │   │   │   │   ├── feedback-success-sign.png
+│   │   │   │   │   ├── feedback-warning-arrow-down.png
+│   │   │   │   │   ├── feedback-warning-sign.png
+│   │   │   │   │   ├── illus.png
+│   │   │   │   │   ├── keycloak-bg.png
+│   │   │   │   │   ├── keycloak-logo-text.png
+│   │   │   │   │   ├── keycloak-logo.png
+│   │   │   │   │   ├── login-background.jpg
+│   │   │   │   │   └── nexsis.svg
+│   │   │   │   ├── js
+│   │   │   │   │   ├── app.js
+│   │   │   │   │   └── base64url.js
+│   │   │   │   └── scss
+│   │   │   │       ├── _enkitheme.scss
+│   │   │   │       └── main.scss
+│   │   │   ├── saml-post-form.ftl
+│   │   │   ├── select-authenticator.ftl
+│   │   │   ├── template.ftl
+│   │   │   ├── terms.ftl
+│   │   │   ├── theme.properties
+│   │   │   ├── webauthn-authenticate.ftl
+│   │   │   ├── webauthn-error.ftl
+│   │   │   └── webauthn-register.ftl
+│   │   ├── messages
+│   │   │   └── messages_fr.properties
+│   │   ├── resources
+│   │   │   ├── css
+│   │   │   │   ├── open-sans.css
+│   │   │   │   └── styles.css
+│   │   │   ├── fonts
+│   │   │   │   ├── OpenSans-ExtraBold.ttf
+│   │   │   │   ├── OpenSans-Light.ttf
+│   │   │   │   └── OpenSans-SemiBold.ttf
+│   │   │   └── img
+│   │   │       ├── login-background.jpg
+│   │   │       └── nexsis.svg
+│   │   ├── theme.properties
+│   │   └── welcome
+│   │       ├── index.ftl
+│   │       ├── resources
+│   │       │   ├── admin-console.png
+│   │       │   ├── alert.png
+│   │       │   ├── bg.png
+│   │       │   ├── bug.png
+│   │       │   ├── css
+│   │       │   │   └── welcome.css
+│   │       │   ├── jboss_community.png
+│   │       │   ├── keycloak-project.png
+│   │       │   ├── keycloak_logo.png
+│   │       │   ├── logo.png
+│   │       │   ├── mail.png
+│   │       │   └── user.png
+│   │       └── theme.properties
+│   ├── enki-theme_old
+│   │   ├── account
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   └── account.css
+│   │   │   │   └── img
+│   │   │   │       ├── icon-sidebar-active.png
+│   │   │   │       ├── keycloak-logo.png
+│   │   │   │       └── logo.png
+│   │   │   └── theme.properties
+│   │   ├── admin
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   └── styles.css
+│   │   │   │   └── img
+│   │   │   │       ├── keyclok-logo.png
+│   │   │   │       ├── keyclok-logo.svg
+│   │   │   │       └── select-arrow.png
+│   │   │   └── theme.properties
+│   │   ├── common
+│   │   │   └── resources
+│   │   │       └── img
+│   │   │           └── favicon.ico
+│   │   ├── email
+│   │   │   └── theme.properties
+│   │   ├── login
+│   │   │   ├── error.ftl
+│   │   │   ├── login.ftl
+│   │   │   ├── messages
+│   │   │   │   └── messages_fr.properties
+│   │   │   ├── resources
+│   │   │   │   ├── css
+│   │   │   │   │   ├── fonts.css
+│   │   │   │   │   ├── login.css
+│   │   │   │   │   ├── main.css
+│   │   │   │   │   ├── main.css.map
+│   │   │   │   │   └── styles.css
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── OpenSans-ExtraBold.ttf
+│   │   │   │   │   ├── OpenSans-Light.ttf
+│   │   │   │   │   ├── OpenSans-SemiBold.ttf
+│   │   │   │   │   ├── Overpass-Black.ttf
+│   │   │   │   │   ├── Overpass-BlackItalic.ttf
+│   │   │   │   │   ├── Overpass-Bold.ttf
+│   │   │   │   │   ├── Overpass-BoldItalic.ttf
+│   │   │   │   │   ├── Overpass-ExtraBold.ttf
+│   │   │   │   │   ├── Overpass-ExtraBoldItalic.ttf
+│   │   │   │   │   ├── Overpass-ExtraLight.ttf
+│   │   │   │   │   ├── Overpass-ExtraLightItalic.ttf
+│   │   │   │   │   ├── Overpass-Italic.ttf
+│   │   │   │   │   ├── Overpass-Light.ttf
+│   │   │   │   │   ├── Overpass-LightItalic.ttf
+│   │   │   │   │   ├── Overpass-Regular.ttf
+│   │   │   │   │   ├── Overpass-SemiBold.ttf
+│   │   │   │   │   ├── Overpass-SemiBoldItalic.ttf
+│   │   │   │   │   ├── Overpass-Thin.ttf
+│   │   │   │   │   └── Overpass-ThinItalic.ttf
+│   │   │   │   ├── img
+│   │   │   │   │   ├── Republique_Francaise.png
+│   │   │   │   │   ├── background-france.png
+│   │   │   │   │   ├── eye-close.svg
+│   │   │   │   │   ├── eye-open.svg
+│   │   │   │   │   ├── feedback-error-arrow-down.png
+│   │   │   │   │   ├── feedback-error-sign.png
+│   │   │   │   │   ├── feedback-success-arrow-down.png
+│   │   │   │   │   ├── feedback-success-sign.png
+│   │   │   │   │   ├── feedback-warning-arrow-down.png
+│   │   │   │   │   ├── feedback-warning-sign.png
+│   │   │   │   │   ├── illus.png
+│   │   │   │   │   ├── keycloak-bg.png
+│   │   │   │   │   ├── keycloak-logo-text.png
+│   │   │   │   │   ├── keycloak-logo.png
+│   │   │   │   │   ├── login-background.jpg
+│   │   │   │   │   └── nexsis.svg
+│   │   │   │   ├── js
+│   │   │   │   │   └── app.js
+│   │   │   │   └── scss
+│   │   │   │       ├── _styles.scss
+│   │   │   │       └── main.scss
+│   │   │   ├── template.ftl
+│   │   │   └── theme.properties
+│   │   ├── messages
+│   │   │   └── messages_fr.properties
+│   │   ├── resources
+│   │   │   ├── css
+│   │   │   │   ├── open-sans.css
+│   │   │   │   └── styles.css
+│   │   │   ├── fonts
+│   │   │   │   ├── OpenSans-ExtraBold.ttf
+│   │   │   │   ├── OpenSans-Light.ttf
+│   │   │   │   └── OpenSans-SemiBold.ttf
+│   │   │   └── img
+│   │   │       ├── login-background.jpg
+│   │   │       └── nexsis.svg
+│   │   ├── theme.properties
+│   │   └── welcome
+│   │       ├── index.ftl
+│   │       ├── resources
+│   │       │   ├── admin-console.png
+│   │       │   ├── alert.png
+│   │       │   ├── bg.png
+│   │       │   ├── bug.png
+│   │       │   ├── css
+│   │       │   │   └── welcome.css
+│   │       │   ├── jboss_community.png
+│   │       │   ├── keycloak-project.png
+│   │       │   ├── keycloak_logo.png
+│   │       │   ├── logo.png
+│   │       │   ├── mail.png
+│   │       │   └── user.png
+│   │       └── theme.properties
+│   ├── notebooks
+│   │   ├── Import users.ipynb
+│   │   ├── Keycloak Client.ipynb
+│   │   └── Update users.ipynb
+│   ├── provider
+│   │   └── keycloak-franceconnect-2.1.jar
+│   ├── realms
+│   │   ├── enki-realm-export-prod.json
+│   │   └── enki-realm-export.json
+│   ├── seed
+│   │   └── communes.csv
+│   ├── standalone-ha.xml
+│   └── user_api
+│       ├── .babelrc
+│       ├── configuration
+│       │   └── keycloak-config.js
+│       ├── controller
+│       │   └── controller.js
+│       ├── index.js
+│       ├── keycloak.json
+│       ├── package.json
+│       └── yarn.lock
+├── backend
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── TESTS.md
+│   ├── alembic.ini
+│   ├── docker-compose.provision.yml
+│   ├── docker-compose.test.yml
+│   ├── docker-compose.yml
+│   ├── notebook
+│   │   ├── Authorization service.ipynb
+│   │   ├── DataClass.ipynb
+│   │   ├── Diagram.ipynb
+│   │   ├── Fake Data.ipynb
+│   │   ├── Migrate Minio to Scaleway.ipynb
+│   │   ├── Polygon Query Elasticsearch.ipynb
+│   │   ├── Send Email.ipynb
+│   │   ├── User Creation.ipynb
+│   │   ├── __init__.py
+│   │   ├── enki.png
+│   │   └── nexsis.png
+│   ├── provision
+│   │   ├── Dockerfile.provision
+│   │   ├── __init__.py
+│   │   ├── data
+│   │   │   ├── 2019_77_interventions.csv
+│   │   │   └── xml_cisu
+│   │   │       ├── 4bc6d047-bf3f-439a-93ed-6f18b64eb579.xml
+│   │   │       ├── 9a009967-00f6-480c-aa70-78ffe52221fc.xml
+│   │   │       ├── b6650872-42f6-4bb5-ace5-760d005632b5.xml
+│   │   │       └── b785a68f-13b6-4b63-bb41-f7453e267358.xml
+│   │   ├── example.env
+│   │   ├── requirements.txt
+│   │   ├── scripts
+│   │   │   ├── __init__.py
+│   │   │   ├── import_77_interventions.py
+│   │   │   └── run_provision.sh
+│   │   └── templates
+│   │       └── affairs.json
+│   ├── pytest.ini
+│   ├── requirements.dev.txt
+│   ├── requirements.txt
+│   ├── scripts
+│   │   ├── test_create_csv.py
+│   │   ├── test_searchable.py
+│   │   └── update_cisu_package.sh
+│   ├── setup.py
+│   ├── src
+│   │   ├── adapters
+│   │   │   ├── __init__.py
+│   │   │   ├── elasticsearch
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── affair_repository.py
+│   │   │   │   ├── base_repo.py
+│   │   │   │   └── templates
+│   │   │   │       ├── affairs.json
+│   │   │   │       └── affairs_test.json
+│   │   │   ├── http
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── keycloak.py
+│   │   │   │   ├── sge.py
+│   │   │   │   └── sig.py
+│   │   │   ├── minio
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── resource_content_repository.py
+│   │   │   ├── notifications
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── assets
+│   │   │   │   │   ├── Republique_Francaise.jpg
+│   │   │   │   │   └── accident-de-voiture.png
+│   │   │   │   ├── email.py
+│   │   │   │   ├── service
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── email.py
+│   │   │   │   ├── sms.py
+│   │   │   │   └── templates
+│   │   │   │       ├── email.html
+│   │   │   │       └── invite_evenement.html
+│   │   │   ├── postgres
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base_orm.py
+│   │   │   │   ├── orm
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── echanges.py
+│   │   │   │   │   ├── evenements.py
+│   │   │   │   │   ├── metadata.py
+│   │   │   │   │   ├── user_groups.py
+│   │   │   │   │   └── utils.py
+│   │   │   │   ├── pg_contact_repository.py
+│   │   │   │   ├── pg_echange_repository.py
+│   │   │   │   ├── pg_evenement_repository.py
+│   │   │   │   ├── pg_group_repository.py
+│   │   │   │   ├── pg_invitation_repository.py
+│   │   │   │   ├── pg_meeting_repository.py
+│   │   │   │   ├── pg_message_repository.py
+│   │   │   │   ├── pg_resource_repository.py
+│   │   │   │   ├── pg_simple_affair_repository.py
+│   │   │   │   ├── pg_tag_repository.py
+│   │   │   │   ├── pg_user_repository.py
+│   │   │   │   └── repository.py
+│   │   │   ├── random
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── random_cisu_repository.py
+│   │   │   └── xml
+│   │   │       ├── __init__.py
+│   │   │       ├── data
+│   │   │       │   └── edxl-de-affaire.test.xml
+│   │   │       └── xml_cisu_repository.py
+│   │   ├── domain
+│   │   │   ├── __init__.py
+│   │   │   ├── affairs
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── affair_entity.py
+│   │   │   │   │   └── simple_affair_entity.py
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── affair_repository.py
+│   │   │   │   │   └── simple_affair_repository.py
+│   │   │   │   ├── schema
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── simple_affair.py
+│   │   │   │   └── services
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── affair_service.py
+│   │   │   ├── core
+│   │   │   │   ├── commands.py
+│   │   │   │   ├── entity.py
+│   │   │   │   ├── events.py
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── abstract_repository.py
+│   │   │   │   │   └── event_bus.py
+│   │   │   │   ├── timestamped.py
+│   │   │   │   └── topics.py
+│   │   │   ├── echanges
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── echange_entity.py
+│   │   │   │   ├── ports
+│   │   │   │   │   └── echange_repository.py
+│   │   │   │   ├── schema
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── echange.py
+│   │   │   │   └── services
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── echange_service.py
+│   │   │   ├── evenements
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── commands.py
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── evenement_entity.py
+│   │   │   │   │   ├── evenement_type.py
+│   │   │   │   │   ├── meeting_entity.py
+│   │   │   │   │   ├── message_entity.py
+│   │   │   │   │   ├── reaction_entity.py
+│   │   │   │   │   ├── resource.py
+│   │   │   │   │   └── tag_entity.py
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── evenement_repository.py
+│   │   │   │   │   ├── meeting_repository.py
+│   │   │   │   │   ├── message_repository.py
+│   │   │   │   │   ├── resource_repository.py
+│   │   │   │   │   └── tag_repository.py
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── evenement_schema.py
+│   │   │   │   │   ├── meeting_schema.py
+│   │   │   │   │   ├── message_tag_schema.py
+│   │   │   │   │   ├── reaction_schema.py
+│   │   │   │   │   └── resource_schema.py
+│   │   │   │   └── services
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── evenement_service.py
+│   │   │   │       ├── meeting_service.py
+│   │   │   │       ├── message_service.py
+│   │   │   │       ├── resource_service.py
+│   │   │   │       └── tag_service.py
+│   │   │   └── users
+│   │   │       ├── __init__.py
+│   │   │       ├── command.py
+│   │   │       ├── entities
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── contact.py
+│   │   │       │   ├── group.py
+│   │   │       │   ├── invitation.py
+│   │   │       │   └── user.py
+│   │   │       ├── ports
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── contact_repository.py
+│   │   │       │   ├── group_repository.py
+│   │   │       │   ├── invitation_repository.py
+│   │   │       │   └── user_repository.py
+│   │   │       ├── schemas
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── contact.py
+│   │   │       │   ├── group.py
+│   │   │       │   ├── invitation.py
+│   │   │       │   └── user.py
+│   │   │       └── services
+│   │   │           ├── __init__.py
+│   │   │           ├── authorization_service.py
+│   │   │           ├── contact_service.py
+│   │   │           ├── group_service.py
+│   │   │           ├── invitation_service.py
+│   │   │           └── user_service.py
+│   │   ├── entrypoints
+│   │   │   ├── __init__.py
+│   │   │   ├── commands
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── seeds
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── affairs.py
+│   │   │   │       ├── create_custom_location.py
+│   │   │   │       ├── create_sdis_groups.py
+│   │   │   │       ├── data
+│   │   │   │       │   ├── communes-version-simplifiee.geojson
+│   │   │   │       │   └── departements-version-simplifiee.geojson
+│   │   │   │       ├── group_and_location.py
+│   │   │   │       ├── position_group.py
+│   │   │   │       └── user.py
+│   │   │   ├── commons
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── plugin.py
+│   │   │   │   ├── specs.py
+│   │   │   │   └── templates
+│   │   │   │       ├── redoc.html
+│   │   │   │       ├── swagger.j2
+│   │   │   │       └── swagger.json
+│   │   │   ├── config.py
+│   │   │   ├── errors.py
+│   │   │   ├── extensions.py
+│   │   │   ├── flask_app.py
+│   │   │   ├── middleware.py
+│   │   │   ├── repositories.py
+│   │   │   ├── serializers.py
+│   │   │   └── views
+│   │   │       ├── __init__.py
+│   │   │       ├── core
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── blueprint.py
+│   │   │       │   └── resources
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── health.py
+│   │   │       ├── echanges
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── blueprint.py
+│   │   │       │   └── resources
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── echanges.py
+│   │   │       └── enki
+│   │   │           ├── __init__.py
+│   │   │           ├── blueprint.py
+│   │   │           └── v1
+│   │   │               ├── __init__.py
+│   │   │               ├── blueprint.py
+│   │   │               └── resources
+│   │   │                   ├── __init__.py
+│   │   │                   ├── affairs
+│   │   │                   │   ├── __init__.py
+│   │   │                   │   ├── affair_evenement_ressource.py
+│   │   │                   │   ├── affair_ressource.py
+│   │   │                   │   └── random_affair_resource.py
+│   │   │                   ├── evenements
+│   │   │                   │   ├── __init__.py
+│   │   │                   │   ├── envement_invitation_resource.py
+│   │   │                   │   ├── evenement_export_resource.py
+│   │   │                   │   ├── evenement_resource.py
+│   │   │                   │   ├── meeting_ressources.py
+│   │   │                   │   ├── message_reactions.py
+│   │   │                   │   ├── message_resource_resource.py
+│   │   │                   │   ├── message_ressource.py
+│   │   │                   │   ├── message_tag_resource.py
+│   │   │                   │   ├── resource_ressources.py
+│   │   │                   │   └── tag_ressources.py
+│   │   │                   └── users
+│   │   │                       ├── __init__.py
+│   │   │                       ├── contact_ressources.py
+│   │   │                       ├── group_ressources.py
+│   │   │                       ├── invitation_ressources.py
+│   │   │                       ├── location_ressources.py
+│   │   │                       ├── me
+│   │   │                       │   ├── __init__.py
+│   │   │                       │   ├── me_affairs_ressources.py
+│   │   │                       │   └── me_ressources.py
+│   │   │                       ├── user_favorite_ressources.py
+│   │   │                       └── user_ressources.py
+│   │   ├── heplers
+│   │   │   └── clock.py
+│   │   ├── keycloak.json
+│   │   ├── migrations
+│   │   │   ├── README
+│   │   │   ├── env.py
+│   │   │   ├── script.py.mako
+│   │   │   └── versions
+│   │   │       ├── 0aabf94af7a7_change_enum_type_into_simple_strings.py
+│   │   │       ├── 0c5a21b27a64_add_email_column.py
+│   │   │       ├── 135e6a9eaa01_merge_ae1_and_27c.py
+│   │   │       ├── 423720a57676_change_tag_message_table_name.py
+│   │   │       ├── 4f34195b9bda_update_evenement_type.py.py
+│   │   │       ├── 7f37af72c71e_add_message_parent.py
+│   │   │       ├── 9272b0456c5c_add_epci_group_type.py
+│   │   │       ├── a878d35f3dcb_add_restricted_groups_on_messages.py
+│   │   │       └── fd55144271ea_add_evenement_types.py
+│   │   ├── service_layer
+│   │   │   ├── __init__.py
+│   │   │   ├── handlers
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── commands.py
+│   │   │   │   └── events.py
+│   │   │   ├── messagebus.py
+│   │   │   └── unit_of_work.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── conftest.py
+│   │       ├── data
+│   │       │   ├── 4bc6d047-bf3f-439a-93ed-6f18b64eb579.xml
+│   │       │   ├── 9a009967-00f6-480c-aa70-78ffe52221fc.xml
+│   │       │   ├── b6650872-42f6-4bb5-ace5-760d005632b5.xml
+│   │       │   ├── b785a68f-13b6-4b63-bb41-f7453e267358.xml
+│   │       │   ├── paris_4bc6d047-bf3f-439a-93ed-6f18b64eb579.xml
+│   │       │   ├── paris_9a009967-00f6-480c-aa70-78ffe52221fc.xml
+│   │       │   ├── polygons
+│   │       │   │   ├── chelles.json
+│   │       │   │   └── paris.json
+│   │       │   └── response
+│   │       │       └── sig
+│   │       │           ├── chelles.json
+│   │       │           ├── empty.json
+│   │       │           └── paris.json
+│   │       ├── e2e
+│   │       │   ├── __init__.py
+│   │       │   ├── affairs
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_echange_message_affair_api.py
+│   │       │   ├── conftest.py
+│   │       │   ├── test_health.py
+│   │       │   ├── test_message_api.py
+│   │       │   ├── test_random_affair_api.py
+│   │       │   ├── test_tag_api.py
+│   │       │   └── test_tag_to_task_api.py
+│   │       ├── factories
+│   │       │   ├── __init__.py
+│   │       │   ├── message.py
+│   │       │   └── tag.py
+│   │       ├── helpers
+│   │       │   ├── __init__.py
+│   │       │   └── filter.py
+│   │       ├── integration
+│   │       │   ├── __init__.py
+│   │       │   ├── conftest.py
+│   │       │   ├── elasticsearch
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── conftest.py
+│   │       │   │   ├── test_affairs.py
+│   │       │   │   ├── test_health.py
+│   │       │   │   └── utils.py
+│   │       │   ├── repositories
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── conftest.py
+│   │       │   │   ├── evenements
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── conftest.py
+│   │       │   │   │   ├── test_evenements_service.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── helpers.py
+│   │       │   │   ├── test_affairs_service.py
+│   │       │   │   ├── test_message_add_tags_service.py
+│   │       │   │   ├── test_message_service.py
+│   │       │   │   └── test_tag_service.py
+│   │       │   └── uow
+│   │       │       ├── __init__.py
+│   │       │       ├── conftest.py
+│   │       │       ├── test_message.py
+│   │       │       └── test_tag.py
+│   │       └── unit
+│   │           ├── __init__.py
+│   │           ├── evenements
+│   │           │   ├── __init__.py
+│   │           │   ├── conftest.py
+│   │           │   ├── test_evenement.py
+│   │           │   ├── test_message.py
+│   │           │   └── test_tag.py
+│   │           └── users
+│   │               ├── __init__.py
+│   │               ├── conftest.py
+│   │               └── test_user.py
+│   └── tox.ini
+├── broker
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── docker-compose.yml
+│   ├── event-consumer.py
+│   ├── message-consumer.py
+│   ├── message-producer.py
+│   └── requirements.txt
+├── cisu
+│   ├── __init__.py
+│   ├── notebook
+│   │   ├── Fake.ipynb
+│   │   ├── Process Cisu Files .ipynb
+│   │   ├── Template.ipynb
+│   │   └── edxl-de-affaire.test.xml
+│   ├── requirements.test.txt
+│   ├── requirements.txt
+│   ├── setup.py
+│   ├── src
+│   │   ├── __init__.py
+│   │   └── cisu
+│   │       ├── __init__.py
+│   │       ├── constants
+│   │       │   ├── __init__.py
+│   │       │   ├── constants.py
+│   │       │   ├── nature-de-fait.json
+│   │       │   ├── pathologies.json
+│   │       │   ├── risque-menaces.json
+│   │       │   └── type-de-lieu.json
+│   │       ├── entities
+│   │       │   ├── __init__.py
+│   │       │   ├── alert_entity.py
+│   │       │   ├── cisu_entity.py
+│   │       │   ├── commons
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── cisu_enum.py
+│   │       │   │   ├── common_alerts.py
+│   │       │   │   ├── date_type.py
+│   │       │   │   ├── location_type.py
+│   │       │   │   ├── severity.py
+│   │       │   │   ├── string_validator.py
+│   │       │   │   ├── uid.py
+│   │       │   │   └── utils.py
+│   │       │   ├── edxl_entity.py
+│   │       │   ├── event_entity.py
+│   │       │   └── schema
+│   │       │       ├── alert.xsd
+│   │       │       ├── cisu.xsd
+│   │       │       ├── common.xsd
+│   │       │       ├── edxl.xsd
+│   │       │       ├── edxl_commons.xsd
+│   │       │       ├── event.xsd
+│   │       │       └── message.xsd
+│   │       ├── factories
+│   │       │   ├── __init__.py
+│   │       │   ├── ack_message_factory.py
+│   │       │   ├── alert_code_factory.py
+│   │       │   ├── alert_factory.py
+│   │       │   ├── cisu_factory.py
+│   │       │   ├── commons.py
+│   │       │   ├── edxl_factory.py
+│   │       │   ├── event_factory.py
+│   │       │   ├── factory.py
+│   │       │   ├── location_factory.py
+│   │       │   ├── random
+│   │       │   │   └── __init__.py
+│   │       │   ├── seeds.py
+│   │       │   └── uid_factory.py
+│   │       └── templates
+│   │           ├── ack-message.xml
+│   │           ├── cisu.xml
+│   │           ├── create-event.xml
+│   │           └── message.xml
+│   └── tests
+│       ├── __init__.py
+│       └── unit
+│           ├── __init__.py
+│           ├── data
+│           │   ├── 4bc6d047-bf3f-439a-93ed-6f18b64eb579.xml
+│           │   ├── 9a009967-00f6-480c-aa70-78ffe52221fc.xml
+│           │   ├── ack
+│           │   │   ├── other.xml
+│           │   │   └── test_file1.xml
+│           │   ├── b6650872-42f6-4bb5-ace5-760d005632b5.xml
+│           │   ├── b785a68f-13b6-4b63-bb41-f7453e267358.xml
+│           │   ├── edxl-de-affaire.test.xml
+│           │   └── report
+│           │       └── test_file1.xml
+│           ├── test_build_ack.py
+│           ├── test_cisu.py
+│           ├── test_constant_handlers.py
+│           └── test_factories.py
+├── dat
+│   ├── Enki_ArchiApplicative.png
+│   └── README.md
+├── docker
+│   ├── dev
+│   │   ├── docker-compose.app.yml
+│   │   ├── docker-compose.auth.yml
+│   │   └── docker-compose.gateway.yml
+│   └── prod
+│       ├── docker-compose.app.yml
+│       ├── docker-compose.auth.yml
+│       └── docker-compose.gateway.yml
+├── docker-compose.app.dev.yml
+├── docker-compose.app.yml
+├── docker-compose.auth.dev.yml
+├── docker-compose.auth.yml
+├── docker-compose.gateway.dev.yml
+├── docker-compose.gateway.yml
+├── docker-compose.provision.yml
+├── e2e
+│   ├── README.md
+│   ├── gymnase.jpg
+│   ├── package.json
+│   ├── register.js
+│   ├── testAsMaire.js
+│   └── testAsPrefet.js
+├── elk
+│   ├── .dockerignore
+│   ├── .gitattributes
+│   ├── .travis.yml
+│   ├── LICENSE
+│   ├── Makefile
+│   ├── README.md
+│   ├── docker-compose.logstash.yml
+│   ├── docker-compose.pipeline.yml
+│   ├── docker-compose.yml
+│   ├── docker-stack.yml
+│   ├── elasticsearch
+│   │   ├── Dockerfile
+│   │   └── config
+│   │       └── elasticsearch.yml
+│   ├── extensions
+│   │   ├── README.md
+│   │   ├── apm-server
+│   │   │   ├── Dockerfile
+│   │   │   ├── README.md
+│   │   │   ├── apm-server-compose.yml
+│   │   │   └── config
+│   │   │       └── apm-server.yml
+│   │   ├── curator
+│   │   │   ├── Dockerfile
+│   │   │   ├── README.md
+│   │   │   ├── config
+│   │   │   │   ├── curator.yml
+│   │   │   │   └── delete_log_files_curator.yml
+│   │   │   ├── curator-compose.yml
+│   │   │   └── entrypoint.sh
+│   │   ├── enterprise-search
+│   │   │   ├── Dockerfile
+│   │   │   ├── README.md
+│   │   │   ├── config
+│   │   │   │   └── enterprise-search.yml
+│   │   │   └── enterprise-search-compose.yml
+│   │   └── logspout
+│   │       ├── Dockerfile
+│   │       ├── README.md
+│   │       ├── build.sh
+│   │       ├── logspout-compose.yml
+│   │       └── modules.go
+│   ├── kibana
+│   │   ├── Dockerfile
+│   │   └── config
+│   │       └── kibana.yml
+│   ├── logstash
+│   │   ├── Dockerfile
+│   │   ├── config
+│   │   │   └── logstash.yml
+│   │   └── pipeline
+│   │       └── logstash.conf
+│   └── notebooks
+│       └── Untitled.ipynb
+├── front
+│   ├── .browserslistrc
+│   ├── .dockerignore
+│   ├── .editorconfig
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── angular.json
+│   ├── data
+│   │   └── interventionsx10.json
+│   ├── design-system
+│   │   ├── .gitignore
+│   │   ├── Makefile
+│   │   ├── README.md
+│   │   ├── dist
+│   │   │   ├── BarlowSemiCondensed-*.eot  (36 files)
+│   │   │   ├── BarlowSemiCondensed-*.woff  (36 files)
+│   │   │   ├── BarlowSemiCondensed-*.woff2  (36 files)
+│   │   │   ├── BarlowSemiCondensed-*.svg  (36 files)
+│   │   │   ├── BarlowSemiCondensed-*.ttf  (36 files)
+│   │   │   ├── Overpass-*.ttf  (35 files)
+│   │   │   ├── Overpass-*.eot  (32 files)
+│   │   │   ├── Overpass-*.woff2  (32 files)
+│   │   │   ├── Overpass-*.svg  (32 files)
+│   │   │   ├── Overpass-*.woff  (32 files)
+│   │   │   ├── composer.json
+│   │   │   ├── index.html
+│   │   │   ├── index.php
+│   │   │   ├── main.0762dfb3.css
+│   │   │   ├── main.0762dfb3.css.map
+│   │   │   ├── main.48b3db1d.css
+│   │   │   ├── main.48b3db1d.css.map
+│   │   │   ├── main.48b3db1d.js
+│   │   │   └── main.48b3db1d.js.map
+│   │   ├── docs
+│   │   │   ├── Barlow-*.svg  (18 files)
+│   │   │   ├── Barlow-*.ttf  (18 files)
+│   │   │   ├── Barlow-*.eot  (18 files)
+│   │   │   ├── Barlow-*.woff2  (18 files)
+│   │   │   ├── Barlow-*.woff  (18 files)
+│   │   │   ├── BarlowSemiCondensed-*.woff  (18 files)
+│   │   │   ├── BarlowSemiCondensed-*.woff2  (18 files)
+│   │   │   ├── BarlowSemiCondensed-*.eot  (18 files)
+│   │   │   ├── BarlowSemiCondensed-*.ttf  (18 files)
+│   │   │   ├── BarlowSemiCondensed-*.svg  (18 files)
+│   │   │   ├── Overpass-*.eot  (16 files)
+│   │   │   ├── Overpass-*.woff2  (16 files)
+│   │   │   ├── Overpass-*.svg  (16 files)
+│   │   │   ├── Overpass-*.ttf  (19 files)
+│   │   │   ├── Overpass-*.woff  (16 files)
+│   │   │   ├── index.html
+│   │   │   ├── main.0ea8e84a.css
+│   │   │   ├── main.0ea8e84a.css.map
+│   │   │   ├── main.47d5dc96.css
+│   │   │   ├── main.47d5dc96.css.map
+│   │   │   ├── main.bf21d67b.css
+│   │   │   ├── main.bf21d67b.css.map
+│   │   │   ├── organisms.60771641.css
+│   │   │   ├── organisms.60771641.css.map
+│   │   │   ├── organisms.e1fb11d1.css
+│   │   │   ├── organisms.e1fb11d1.css.map
+│   │   │   ├── styles.5c2b00a8.css
+│   │   │   └── styles.5c2b00a8.css.map
+│   │   ├── index.html
+│   │   ├── index.js
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   └── styles
+│   │       ├── _base_elements.scss
+│   │       ├── _fonts.scss
+│   │       ├── _mixins.scss
+│   │       ├── _normalize.scss
+│   │       ├── _organisms.scss
+│   │       ├── _variables.scss
+│   │       ├── atoms
+│   │       │   ├── _badges.scss
+│   │       │   ├── _burger.scss
+│   │       │   ├── _buttons.scss
+│   │       │   ├── _imagepreview.scss
+│   │       │   ├── _typography.scss
+│   │       │   └── _utilities.scss
+│   │       ├── atoms.scss
+│   │       ├── fonts
+│   │       │   ├── barlow
+│   │       │   │   ├── BarlowSemiCondensed-*.eot  (18 files)
+│   │       │   │   ├── BarlowSemiCondensed-*.svg  (18 files)
+│   │       │   │   ├── BarlowSemiCondensed-*.ttf  (18 files)
+│   │       │   │   ├── BarlowSemiCondensed-*.woff  (18 files)
+│   │       │   │   ├── BarlowSemiCondensed-*.woff2  (18 files)
+│   │       │   │   ├── demo.html
+│   │       │   │   └── stylesheet.css
+│   │       │   └── overpass
+│   │       │       ├── Overpass-*.eot  (16 files)
+│   │       │       ├── Overpass-*.svg  (16 files)
+│   │       │       ├── Overpass-*.ttf  (16 files)
+│   │       │       ├── Overpass-*.woff  (16 files)
+│   │       │       └── Overpass-*.woff2  (16 files)
+│   │       ├── main.scss
+│   │       ├── molecules
+│   │       │   ├── _form_elements.scss
+│   │       │   ├── _fullscreen_form.scss
+│   │       │   ├── _grid.scss
+│   │       │   ├── _head_tab.scss
+│   │       │   └── _list.scss
+│   │       ├── molecules.scss
+│   │       └── styles.scss
+│   ├── docker-compose.prod.yml
+│   ├── docker-compose.yml
+│   ├── e2e
+│   │   ├── protractor.conf.js
+│   │   ├── src
+│   │   │   ├── app.e2e-spec.ts
+│   │   │   └── app.po.ts
+│   │   └── tsconfig.json
+│   ├── karma.conf.js
+│   ├── package.json
+│   ├── src
+│   │   ├── app
+│   │   │   ├── account
+│   │   │   │   ├── account.component.ts
+│   │   │   │   ├── account.module.ts
+│   │   │   │   └── invitation
+│   │   │   │       ├── invitation.component.html
+│   │   │   │       ├── invitation.component.scss
+│   │   │   │       └── invitation.component.ts
+│   │   │   ├── affaires
+│   │   │   │   ├── affaires.module.ts
+│   │   │   │   ├── affaires.service.ts
+│   │   │   │   ├── detail
+│   │   │   │   │   ├── detail-affaire.component.html
+│   │   │   │   │   ├── detail-affaire.component.scss
+│   │   │   │   │   └── detail-affaire.component.ts
+│   │   │   │   └── liste-affaires
+│   │   │   │       ├── liste-affaires.component.html
+│   │   │   │       ├── liste-affaires.component.scss
+│   │   │   │       └── liste-affaires.component.ts
+│   │   │   ├── annuaire
+│   │   │   │   ├── annuaire-routes.txt
+│   │   │   │   ├── annuaire.component.ts
+│   │   │   │   ├── annuaire.module.ts
+│   │   │   │   ├── annuaire.service.spec.ts
+│   │   │   │   ├── annuaire.service.ts
+│   │   │   │   ├── contact-add
+│   │   │   │   │   ├── contact-add.component.html
+│   │   │   │   │   ├── contact-add.component.scss
+│   │   │   │   │   └── contact-add.component.ts
+│   │   │   │   ├── contact-detail
+│   │   │   │   │   ├── contact-detail.component.html
+│   │   │   │   │   ├── contact-detail.component.scss
+│   │   │   │   │   └── contact-detail.component.ts
+│   │   │   │   ├── contact-list
+│   │   │   │   │   ├── contact-list.component.html
+│   │   │   │   │   ├── contact-list.component.scss
+│   │   │   │   │   └── contact-list.component.ts
+│   │   │   │   └── search-contact
+│   │   │   │       ├── search-contact.component.html
+│   │   │   │       ├── search-contact.component.scss
+│   │   │   │       ├── search-contact.component.ts
+│   │   │   │       └── search-contact.pipe.ts
+│   │   │   ├── app-auth-guard.service.spec.ts
+│   │   │   ├── app-auth-guard.service.ts
+│   │   │   ├── app-routing.module.ts
+│   │   │   ├── app.component.html
+│   │   │   ├── app.component.scss
+│   │   │   ├── app.component.spec.ts
+│   │   │   ├── app.component.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── constants
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── group_init.ts
+│   │   │   │   ├── location_init.ts
+│   │   │   │   └── message_init.ts
+│   │   │   ├── directives.module.ts
+│   │   │   ├── evenements
+│   │   │   │   ├── create-evenement
+│   │   │   │   │   ├── create-evenement.component.html
+│   │   │   │   │   ├── create-evenement.component.scss
+│   │   │   │   │   ├── create-evenement.component.spec.ts
+│   │   │   │   │   └── create-evenement.component.ts
+│   │   │   │   ├── detail-evenement
+│   │   │   │   │   ├── detail-evenement.component.html
+│   │   │   │   │   ├── detail-evenement.component.scss
+│   │   │   │   │   ├── detail-evenement.component.spec.ts
+│   │   │   │   │   └── detail-evenement.component.ts
+│   │   │   │   ├── evenement-detail-resolver.service.ts
+│   │   │   │   ├── evenements.module.ts
+│   │   │   │   ├── evenements.service.spec.ts
+│   │   │   │   ├── evenements.service.ts
+│   │   │   │   ├── liste-evenements
+│   │   │   │   │   ├── filter-status.pipe.spec.ts
+│   │   │   │   │   ├── filter-status.pipe.ts
+│   │   │   │   │   ├── liste-evenements.component.html
+│   │   │   │   │   ├── liste-evenements.component.scss
+│   │   │   │   │   ├── liste-evenements.component.spec.ts
+│   │   │   │   │   └── liste-evenements.component.ts
+│   │   │   │   ├── main-courante
+│   │   │   │   │   ├── add-label
+│   │   │   │   │   │   ├── add-label.component.html
+│   │   │   │   │   │   ├── add-label.component.scss
+│   │   │   │   │   │   ├── add-label.component.spec.ts
+│   │   │   │   │   │   ├── add-label.component.ts
+│   │   │   │   │   │   ├── filter-labels.pipe.spec.ts
+│   │   │   │   │   │   └── filter-labels.pipe.ts
+│   │   │   │   │   ├── add-message
+│   │   │   │   │   │   ├── add-message.component.html
+│   │   │   │   │   │   ├── add-message.component.scss
+│   │   │   │   │   │   ├── add-message.component.spec.ts
+│   │   │   │   │   │   └── add-message.component.ts
+│   │   │   │   │   ├── detail-message
+│   │   │   │   │   │   ├── detail-message.component.html
+│   │   │   │   │   │   ├── detail-message.component.scss
+│   │   │   │   │   │   ├── detail-message.component.spec.ts
+│   │   │   │   │   │   └── detail-message.component.ts
+│   │   │   │   │   ├── filter-messages
+│   │   │   │   │   │   ├── filter-messages.component.html
+│   │   │   │   │   │   ├── filter-messages.component.scss
+│   │   │   │   │   │   └── filter-messages.component.ts
+│   │   │   │   │   ├── filter-messages.pipe.ts
+│   │   │   │   │   ├── labels.service.spec.ts
+│   │   │   │   │   ├── labels.service.ts
+│   │   │   │   │   ├── liste-main-courante
+│   │   │   │   │   │   ├── liste-main-courante.component.html
+│   │   │   │   │   │   ├── liste-main-courante.component.scss
+│   │   │   │   │   │   ├── liste-main-courante.component.spec.ts
+│   │   │   │   │   │   └── liste-main-courante.component.ts
+│   │   │   │   │   ├── main-courante.component.html
+│   │   │   │   │   ├── main-courante.component.ts
+│   │   │   │   │   ├── main-courante.scss
+│   │   │   │   │   ├── messages.service.spec.ts
+│   │   │   │   │   └── messages.service.ts
+│   │   │   │   ├── participants
+│   │   │   │   │   ├── participants.component.html
+│   │   │   │   │   ├── participants.component.scss
+│   │   │   │   │   └── participants.component.ts
+│   │   │   │   ├── share-evenement
+│   │   │   │   │   ├── search-user
+│   │   │   │   │   │   ├── search-user.component.html
+│   │   │   │   │   │   ├── search-user.component.scss
+│   │   │   │   │   │   └── search-user.component.ts
+│   │   │   │   │   ├── share-evenement.component.html
+│   │   │   │   │   ├── share-evenement.component.scss
+│   │   │   │   │   └── share-evenement.component.ts
+│   │   │   │   ├── share-evenement.service.ts
+│   │   │   │   ├── share-tab
+│   │   │   │   │   ├── share-tab.component.html
+│   │   │   │   │   ├── share-tab.component.scss
+│   │   │   │   │   └── share-tab.component.ts
+│   │   │   │   ├── summary-evenement
+│   │   │   │   │   ├── summary-evenement.component.html
+│   │   │   │   │   ├── summary-evenement.component.scss
+│   │   │   │   │   ├── summary-evenement.component.spec.ts
+│   │   │   │   │   └── summary-evenement.component.ts
+│   │   │   │   └── tabbar
+│   │   │   │       ├── tabbar.component.html
+│   │   │   │       ├── tabbar.component.scss
+│   │   │   │       └── tabbar.component.ts
+│   │   │   ├── focus-form-input.directive.ts
+│   │   │   ├── guards
+│   │   │   │   ├── can-deactivate.guard.spec.ts
+│   │   │   │   ├── can-deactivate.guard.ts
+│   │   │   │   ├── guard-register.guard.spec.ts
+│   │   │   │   ├── guard-register.guard.ts
+│   │   │   │   └── user-info.guard.ts
+│   │   │   ├── highlight-included-chars.pipe.ts
+│   │   │   ├── history-url.service.ts
+│   │   │   ├── in-memory-data.service.ts
+│   │   │   ├── interfaces
+│   │   │   │   ├── Affaire.ts
+│   │   │   │   ├── Contact.ts
+│   │   │   │   ├── Evenement.ts
+│   │   │   │   ├── Group.ts
+│   │   │   │   ├── Location.ts
+│   │   │   │   ├── Message.ts
+│   │   │   │   ├── MessageFilter.ts
+│   │   │   │   ├── Participant.ts
+│   │   │   │   ├── Toast.ts
+│   │   │   │   ├── User.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── map
+│   │   │   │   ├── map.component.html
+│   │   │   │   ├── map.component.scss
+│   │   │   │   ├── map.component.ts
+│   │   │   │   └── map.module.ts
+│   │   │   ├── mobile-prototype
+│   │   │   │   ├── mobile-prototype.component.html
+│   │   │   │   ├── mobile-prototype.component.ts
+│   │   │   │   └── mobile-prototype.service.ts
+│   │   │   ├── mocks
+│   │   │   │   └── contacts-mocks.ts
+│   │   │   ├── naturedefait.json
+│   │   │   ├── page-not-found
+│   │   │   │   ├── page-not-found.component.html
+│   │   │   │   ├── page-not-found.component.scss
+│   │   │   │   ├── page-not-found.component.spec.ts
+│   │   │   │   └── page-not-found.component.ts
+│   │   │   ├── pipes.module.ts
+│   │   │   ├── previous-properties-map.ts
+│   │   │   ├── registration
+│   │   │   │   ├── register
+│   │   │   │   │   ├── first-step
+│   │   │   │   │   │   ├── first-step.component.html
+│   │   │   │   │   │   ├── first-step.component.scss
+│   │   │   │   │   │   ├── first-step.component.spec.ts
+│   │   │   │   │   │   └── first-step.component.ts
+│   │   │   │   │   └── register.component.ts
+│   │   │   │   ├── register.service.ts
+│   │   │   │   ├── registration-routes.md
+│   │   │   │   ├── registration.module.ts
+│   │   │   │   └── second-step
+│   │   │   │       ├── second-step.component.html
+│   │   │   │       ├── second-step.component.scss
+│   │   │   │       ├── second-step.component.spec.ts
+│   │   │   │       └── second-step.component.ts
+│   │   │   ├── search-etablissement
+│   │   │   │   ├── search-etablissement.component.html
+│   │   │   │   ├── search-etablissement.component.ts
+│   │   │   │   ├── search-etablissement.module.ts
+│   │   │   │   └── search-etablissement.service.ts
+│   │   │   ├── search-location
+│   │   │   │   ├── search-location.component.html
+│   │   │   │   ├── search-location.component.scss
+│   │   │   │   ├── search-location.component.ts
+│   │   │   │   ├── search-location.module.ts
+│   │   │   │   └── search-location.service.ts
+│   │   │   ├── toast
+│   │   │   │   ├── toast-container.component.scss
+│   │   │   │   ├── toast-container.component.ts
+│   │   │   │   ├── toast.component.scss
+│   │   │   │   ├── toast.component.spec.ts
+│   │   │   │   ├── toast.component.ts
+│   │   │   │   ├── toast.service.spec.ts
+│   │   │   │   └── toast.service.ts
+│   │   │   ├── toast.directive.ts
+│   │   │   ├── ui
+│   │   │   │   ├── header
+│   │   │   │   │   ├── header.component.html
+│   │   │   │   │   ├── header.component.scss
+│   │   │   │   │   ├── header.component.spec.ts
+│   │   │   │   │   └── header.component.ts
+│   │   │   │   ├── menu
+│   │   │   │   │   ├── menu.component.html
+│   │   │   │   │   ├── menu.component.scss
+│   │   │   │   │   ├── menu.component.ts
+│   │   │   │   │   └── menu.service.ts
+│   │   │   │   ├── modal
+│   │   │   │   │   ├── modal.component.html
+│   │   │   │   │   ├── modal.component.scss
+│   │   │   │   │   └── modal.component.ts
+│   │   │   │   ├── small-heading
+│   │   │   │   │   ├── small-heading.component.scss
+│   │   │   │   │   └── small-heading.component.ts
+│   │   │   │   ├── svg-definitions
+│   │   │   │   │   ├── svg-definitions.component.html
+│   │   │   │   │   ├── svg-definitions.component.spec.ts
+│   │   │   │   │   └── svg-definitions.component.ts
+│   │   │   │   └── ui.module.ts
+│   │   │   ├── user
+│   │   │   │   ├── user.service.spec.ts
+│   │   │   │   └── user.service.ts
+│   │   │   ├── user-dashboard
+│   │   │   │   ├── user-dashboard
+│   │   │   │   │   ├── departements.ts
+│   │   │   │   │   ├── user-dashboard.component.html
+│   │   │   │   │   ├── user-dashboard.component.scss
+│   │   │   │   │   ├── user-dashboard.component.spec.ts
+│   │   │   │   │   └── user-dashboard.component.ts
+│   │   │   │   └── user-dashboard.module.ts
+│   │   │   └── utilities.ts
+│   │   ├── assets
+│   │   │   ├── .gitkeep
+│   │   │   ├── FCboutons-10.svg
+│   │   │   ├── Marianne.jpg
+│   │   │   ├── Republique_Francaise.png
+│   │   │   ├── actus.png
+│   │   │   ├── chiffres.png
+│   │   │   ├── empty-contact-list.jpg
+│   │   │   ├── icons
+│   │   │   │   ├── icon-128x128.png
+│   │   │   │   ├── icon-144x144.png
+│   │   │   │   ├── icon-152x152.png
+│   │   │   │   ├── icon-192x192.png
+│   │   │   │   ├── icon-384x384.png
+│   │   │   │   ├── icon-512x512.png
+│   │   │   │   ├── icon-72x72.png
+│   │   │   │   └── icon-96x96.png
+│   │   │   ├── marker-icon-2x.png
+│   │   │   ├── meteo-chelles.png
+│   │   │   ├── natureDeFaits
+│   │   │   │   ├── Incendies.png
+│   │   │   │   └── accident-de-voiture.png
+│   │   │   ├── silent-check-sso.html
+│   │   │   ├── svg-icons
+│   │   │   │   ├── add-contact.svg
+│   │   │   │   ├── add.svg
+│   │   │   │   ├── add_circle.svg
+│   │   │   │   ├── alert.svg
+│   │   │   │   ├── arrow_*.svg  (7 files)
+│   │   │   │   ├── attach_file.svg
+│   │   │   │   ├── burger-menu.svg
+│   │   │   │   ├── calendar.svg
+│   │   │   │   ├── camera.svg
+│   │   │   │   ├── cancel.svg
+│   │   │   │   ├── check.svg
+│   │   │   │   ├── check_circle.svg
+│   │   │   │   ├── checkbox-deselected.svg
+│   │   │   │   ├── checkbox-selected.svg
+│   │   │   │   ├── circle.svg
+│   │   │   │   ├── close-big.svg
+│   │   │   │   ├── close.svg
+│   │   │   │   ├── comment.svg
+│   │   │   │   ├── contacts.svg
+│   │   │   │   ├── delete.svg
+│   │   │   │   ├── download.svg
+│   │   │   │   ├── edit.svg
+│   │   │   │   ├── email.svg
+│   │   │   │   ├── event.svg
+│   │   │   │   ├── eye-hide.svg
+│   │   │   │   ├── eye-visible.svg
+│   │   │   │   ├── facebook.svg
+│   │   │   │   ├── file.svg
+│   │   │   │   ├── filter.svg
+│   │   │   │   ├── format_bold.svg
+│   │   │   │   ├── format_italic.svg
+│   │   │   │   ├── format_list.svg
+│   │   │   │   ├── format_underlined.svg
+│   │   │   │   ├── keyboard_hide.svg
+│   │   │   │   ├── label.svg
+│   │   │   │   ├── layers.svg
+│   │   │   │   ├── link.svg
+│   │   │   │   ├── lock.svg
+│   │   │   │   ├── logo.svg
+│   │   │   │   ├── main-courante.svg
+│   │   │   │   ├── more.svg
+│   │   │   │   ├── news.svg
+│   │   │   │   ├── note.svg
+│   │   │   │   ├── notification.svg
+│   │   │   │   ├── phone.svg
+│   │   │   │   ├── pin-1.svg
+│   │   │   │   ├── pin.svg
+│   │   │   │   ├── play.svg
+│   │   │   │   ├── post-it.svg
+│   │   │   │   ├── radio-deselected.svg
+│   │   │   │   ├── radio-selected.svg
+│   │   │   │   ├── refresh.svg
+│   │   │   │   ├── remove.svg
+│   │   │   │   ├── save.svg
+│   │   │   │   ├── search.svg
+│   │   │   │   ├── share-1.svg
+│   │   │   │   ├── share.svg
+│   │   │   │   ├── sort.svg
+│   │   │   │   ├── star.svg
+│   │   │   │   ├── stats.svg
+│   │   │   │   ├── sun.svg
+│   │   │   │   ├── tchat.svg
+│   │   │   │   ├── twitter.svg
+│   │   │   │   ├── unlock.svg
+│   │   │   │   ├── user.svg
+│   │   │   │   ├── videocam.svg
+│   │   │   │   └── water.svg
+│   │   │   ├── twitter.png
+│   │   │   └── vigicrue.png
+│   │   ├── environments
+│   │   │   ├── environment.local.ts
+│   │   │   ├── environment.noauth.ts
+│   │   │   ├── environment.prod.ts
+│   │   │   └── environment.ts
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   ├── manifest.webmanifest
+│   │   ├── polyfills.ts
+│   │   ├── proxy.conf.json
+│   │   ├── styles.scss
+│   │   └── test.ts
+│   ├── test.html
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.spec.json
+│   ├── tslint.json
+│   └── yarn.lock
+├── gateway
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── docker
+│   │   ├── Dockerfile.provision
+│   │   ├── requirements.txt
+│   │   └── scripts
+│   │       ├── kong_cors_plugin.py
+│   │       ├── kong_oidc_import.py
+│   │       ├── kong_oidc_import_test.py
+│   │       ├── logstash_plugin.py
+│   │       └── run_provision.sh
+│   ├── docker-compose.provision.yml
+│   ├── docker-compose.yml
+│   └── notebooks
+│       ├── Configure Kong local dev.ipynb
+│       ├── Configure Kong production.ipynb
+│       └── Kong OIDC.ipynb
+├── package-lock.json
+├── proxy
+│   ├── Dockerfile
+│   ├── acme-companion.sh
+│   ├── data
+│   │   ├── nginx
+│   │   │   └── app.conf
+│   │   ├── nginx_app
+│   │   │   └── app.conf
+│   │   ├── nginx_gateway
+│   │   │   └── app.conf
+│   │   └── nginx_gateway_auth
+│   │       └── app.conf
+│   ├── init-letsencrypt.sh
+│   ├── nginx-gen.sh
+│   └── nginx-proxy.sh
+└── scripts
+    └── build_design_system.sh
+296 directories, 2194 files
