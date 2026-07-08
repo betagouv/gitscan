@@ -1,0 +1,204 @@
+.
+├── .gitattributes
+├── .gitignore
+├── .rspec
+├── .ruby-version
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── builds
+│   │   │   └── .keep
+│   │   ├── config
+│   │   │   └── manifest.js
+│   │   ├── images
+│   │   │   ├── .keep
+│   │   │   ├── 10x10-particulier-3.png
+│   │   │   ├── header_x1.png
+│   │   │   ├── icons
+│   │   │   │   ├── arrow-xl-right.svg
+│   │   │   │   ├── check-circle.svg
+│   │   │   │   ├── info-mark-circled.svg
+│   │   │   │   ├── map-france.svg
+│   │   │   │   ├── return.svg
+│   │   │   │   ├── search.svg
+│   │   │   │   ├── secure.svg
+│   │   │   │   └── socials
+│   │   │   │       ├── .DS_Store
+│   │   │   │       ├── facebook-footer.svg
+│   │   │   │       ├── linkedin-footer.svg
+│   │   │   │       ├── twitter-footer.svg
+│   │   │   │       └── youtube-footer.svg
+│   │   │   └── logo-urssaf.svg
+│   │   └── stylesheets
+│   │       ├── application.bootstrap.scss
+│   │       ├── components
+│   │       │   ├── alert.scss
+│   │       │   ├── background.scss
+│   │       │   ├── buttons.scss
+│   │       │   ├── card.scss
+│   │       │   ├── footer.scss
+│   │       │   ├── form.scss
+│   │       │   ├── header.scss
+│   │       │   ├── icons.scss
+│   │       │   ├── list.scss
+│   │       │   ├── navbar.scss
+│   │       │   ├── section.scss
+│   │       │   └── spacing.scss
+│   │       ├── default
+│   │       │   └── typography.scss
+│   │       └── variables
+│   │           └── colors.scss
+│   ├── channels
+│   │   └── application_cable
+│   │       ├── channel.rb
+│   │       └── connection.rb
+│   ├── controllers
+│   │   ├── application_controller.rb
+│   │   ├── artisans_controller.rb
+│   │   └── concerns
+│   │       └── .keep
+│   ├── helpers
+│   │   ├── application_helper.rb
+│   │   └── artisans_helper.rb
+│   ├── javascript
+│   │   ├── application.js
+│   │   ├── controllers
+│   │   │   ├── application.js
+│   │   │   ├── hello_controller.js
+│   │   │   └── index.js
+│   │   └── pages
+│   │       └── artisan.js
+│   ├── jobs
+│   │   └── application_job.rb
+│   ├── mailers
+│   │   └── application_mailer.rb
+│   ├── models
+│   │   ├── application_record.rb
+│   │   ├── artisan.rb
+│   │   └── concerns
+│   │       └── .keep
+│   ├── resources
+│   │   ├── artisan_contact.rb
+│   │   ├── concerns
+│   │   │   └── api_sirene.rb
+│   │   └── naf2008-liste-n4-classes.csv
+│   └── views
+│       ├── artisans
+│       │   ├── _artisan.html.slim
+│       │   ├── _artisan_form.html.slim
+│       │   ├── _footer.html.slim
+│       │   ├── _pourquoi_verifier_siret.slim
+│       │   ├── _verifier_infos.html.slim
+│       │   └── show.html.slim
+│       └── layouts
+│           ├── application.html.erb
+│           ├── mailer.html.erb
+│           ├── mailer.text.erb
+│           └── shared
+│               ├── _navbar.html.slim
+│               └── _upper_header.html.slim
+├── bin
+│   ├── bundle
+│   ├── dev
+│   ├── rails
+│   ├── rake
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── cable.yml
+│   ├── credentials.yml.enc
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── initializers
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   ├── permissions_policy.rb
+│   │   ├── simple_form.rb
+│   │   └── simple_form_bootstrap.rb
+│   ├── locales
+│   │   ├── en.yml
+│   │   └── simple_form.en.yml
+│   ├── puma.rb
+│   ├── routes.rb
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── migrate
+│   │   ├── 20220530092453_create_artisans.rb
+│   │   └── 20220602120948_add_fields_to_artisan.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── lib
+│   ├── assets
+│   │   └── .keep
+│   ├── tasks
+│   │   └── .keep
+│   └── templates
+│       └── erb
+│           └── scaffold
+│               └── _form.html.erb
+├── log
+│   └── .keep
+├── package.json
+├── public
+│   ├── 404.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   └── robots.txt
+├── spec
+│   ├── helpers
+│   │   └── artisans_helper_spec.rb
+│   ├── models
+│   │   └── artisan_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   └── artisans_spec.rb
+│   └── spec_helper.rb
+├── storage
+│   └── .keep
+├── test
+│   ├── application_system_test_case.rb
+│   ├── channels
+│   │   └── application_cable
+│   │       └── connection_test.rb
+│   ├── controllers
+│   │   └── .keep
+│   ├── fixtures
+│   │   └── files
+│   │       └── .keep
+│   ├── helpers
+│   │   └── .keep
+│   ├── integration
+│   │   └── .keep
+│   ├── mailers
+│   │   └── .keep
+│   ├── models
+│   │   └── .keep
+│   ├── system
+│   │   └── .keep
+│   └── test_helper.rb
+├── tmp
+│   ├── .keep
+│   ├── pids
+│   │   └── .keep
+│   └── storage
+│       └── .keep
+├── vendor
+│   └── .keep
+└── yarn.lock
+65 directories, 138 files
