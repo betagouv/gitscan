@@ -1,0 +1,563 @@
+.
+├── .gitignore
+├── LICENSE
+├── README.md
+├── cis
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── _backups_collections
+│   │   │   └── __init__.py
+│   │   ├── api
+│   │   │   └── __init__.py
+│   │   ├── backend
+│   │   │   ├── __init__.py
+│   │   │   ├── config_env.py
+│   │   │   ├── config_logging.py
+│   │   │   └── config_secret_vars_example.py
+│   │   ├── forms
+│   │   │   ├── __init__.py
+│   │   │   └── form_user.py
+│   │   ├── frontend
+│   │   │   ├── package-lock.json
+│   │   │   ├── package.json
+│   │   │   ├── scripts
+│   │   │   │   ├── cisProjectSearchAPI.js
+│   │   │   │   ├── components
+│   │   │   │   │   ├── Brand.vue
+│   │   │   │   │   ├── CISProjectCard.vue
+│   │   │   │   │   ├── CISSearchResultsCountAndTabs.vue
+│   │   │   │   │   ├── FiltersFeedback.vue
+│   │   │   │   │   ├── Footer.vue
+│   │   │   │   │   ├── MailchimpSubscribe.vue
+│   │   │   │   │   ├── NavBar.vue
+│   │   │   │   │   ├── NavBarContent.vue
+│   │   │   │   │   ├── NotFoundError.vue
+│   │   │   │   │   ├── SearchResultsList.vue
+│   │   │   │   │   ├── SearchResultsMap.vue
+│   │   │   │   │   ├── SearchScreenSqueleton.vue
+│   │   │   │   │   ├── SearchWithFilters.vue
+│   │   │   │   │   ├── UserMenu.vue
+│   │   │   │   │   └── screens
+│   │   │   │   │       ├── CISProjectScreen.vue
+│   │   │   │   │       ├── NotFoundScreen.vue
+│   │   │   │   │       ├── SearchListScreen.vue
+│   │   │   │   │       └── SearchMapScreen.vue
+│   │   │   │   ├── constants.js
+│   │   │   │   └── main.js
+│   │   │   └── styles
+│   │   │       ├── cis-colors.scss
+│   │   │       ├── cis-misc.scss
+│   │   │       ├── cis-spacing.scss
+│   │   │       ├── commons.scss
+│   │   │       ├── contact.scss
+│   │   │       ├── custom-bulma.scss
+│   │   │       ├── home.scss
+│   │   │       ├── http-errors.scss
+│   │   │       ├── le-collectif.scss
+│   │   │       ├── le-projet.scss
+│   │   │       ├── main.scss
+│   │   │       ├── navbar.scss
+│   │   │       ├── nous-rejoindre.scss
+│   │   │       ├── outils.scss
+│   │   │       ├── parlent-de-nous.scss
+│   │   │       ├── qui-fait-quoi.scss
+│   │   │       ├── recompenses.scss
+│   │   │       ├── rem.scss
+│   │   │       └── spa.scss
+│   │   ├── logs
+│   │   │   └── README.md
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── model_mixins.py
+│   │   │   ├── model_partner.py
+│   │   │   ├── model_preregister.py
+│   │   │   └── model_user.py
+│   │   ├── proxy_management.py
+│   │   ├── settings
+│   │   │   ├── __init__.py
+│   │   │   ├── app_choices.py
+│   │   │   ├── app_files.py
+│   │   │   ├── app_languages.py
+│   │   │   ├── app_nomenclature_tags.py
+│   │   │   └── app_settings.py
+│   │   ├── static
+│   │   │   ├── _cis_temp_echanges_fichiers
+│   │   │   │   └── Icon\015
+│   │   │   ├── build
+│   │   │   │   └── readme.md
+│   │   │   ├── css
+│   │   │   │   └── bulma-ext
+│   │   │   │       ├── bulma-accordion.js
+│   │   │   │       ├── bulma-accordion.min.css
+│   │   │   │       ├── bulma-accordion.min.js
+│   │   │   │       ├── bulma-accordion.sass
+│   │   │   │       ├── bulma-badge.min.css
+│   │   │   │       ├── bulma-badge.sass
+│   │   │   │       ├── bulma-carousel.js
+│   │   │   │       ├── bulma-carousel.min.css
+│   │   │   │       ├── bulma-carousel.min.js
+│   │   │   │       ├── bulma-carousel.sass
+│   │   │   │       ├── bulma-checkradio.min.css
+│   │   │   │       ├── bulma-divider.min.css
+│   │   │   │       ├── bulma-pricingtable.min.css
+│   │   │   │       ├── bulma-pricingtable.sass
+│   │   │   │       ├── bulma-slider.js
+│   │   │   │       ├── bulma-slider.min.css
+│   │   │   │       ├── bulma-slider.min.js
+│   │   │   │       ├── bulma-slider.sass
+│   │   │   │       ├── bulma-steps.js
+│   │   │   │       ├── bulma-steps.min.css
+│   │   │   │       ├── bulma-steps.min.js
+│   │   │   │       ├── bulma-steps.sass
+│   │   │   │       ├── bulma-switch.min.css
+│   │   │   │       ├── bulma-switch.sass
+│   │   │   │       ├── bulma-tagsinput.js
+│   │   │   │       ├── bulma-tagsinput.min.css
+│   │   │   │       ├── bulma-tagsinput.min.js
+│   │   │   │       ├── bulma-tagsinput.sass
+│   │   │   │       ├── bulma-timeline.min.css
+│   │   │   │       ├── bulma-timeline.sass
+│   │   │   │       └── bulma-tooltip.min.css
+│   │   │   ├── data
+│   │   │   │   ├── members.csv
+│   │   │   │   └── members_bis.csv
+│   │   │   ├── favicon
+│   │   │   │   ├── android-icon-144x144.png
+│   │   │   │   ├── android-icon-192x192.png
+│   │   │   │   ├── android-icon-36x36.png
+│   │   │   │   ├── android-icon-48x48.png
+│   │   │   │   ├── android-icon-72x72.png
+│   │   │   │   ├── android-icon-96x96.png
+│   │   │   │   ├── apple-icon-114x114.png
+│   │   │   │   ├── apple-icon-120x120.png
+│   │   │   │   ├── apple-icon-144x144.png
+│   │   │   │   ├── apple-icon-152x152.png
+│   │   │   │   ├── apple-icon-180x180.png
+│   │   │   │   ├── apple-icon-57x57.png
+│   │   │   │   ├── apple-icon-60x60.png
+│   │   │   │   ├── apple-icon-72x72.png
+│   │   │   │   ├── apple-icon-76x76.png
+│   │   │   │   ├── apple-icon-precomposed.png
+│   │   │   │   ├── apple-icon.png
+│   │   │   │   ├── browserconfig.xml
+│   │   │   │   ├── favicon-16x16.png
+│   │   │   │   ├── favicon-32x32.png
+│   │   │   │   ├── favicon-96x96.png
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── manifest.json
+│   │   │   │   ├── ms-icon-144x144.png
+│   │   │   │   ├── ms-icon-150x150.png
+│   │   │   │   ├── ms-icon-310x310.png
+│   │   │   │   └── ms-icon-70x70.png
+│   │   │   ├── files
+│   │   │   │   ├── Charte_carrefourdesinnovationssociales_VF_V2.pdf
+│   │   │   │   ├── Icon\015
+│   │   │   │   └── LicenceCCBYSA_landing_mentionslegales.png
+│   │   │   ├── icons
+│   │   │   │   ├── icon_*.svg  (72 files)
+│   │   │   │   └── readme.md
+│   │   │   ├── illustrations
+│   │   │   │   ├── HP_*.png  (9 files)
+│   │   │   │   ├── Icon\015
+│   │   │   │   ├── Illustration_Christophe.png
+│   │   │   │   ├── Illustration_Emma.png
+│   │   │   │   ├── Illustration_Giorgia.png
+│   │   │   │   ├── Landing_applat_bleu_beta_testeur.png
+│   │   │   │   ├── Moteur_recherche_lame1_rectangle_Moteur_recherche_lame1.png
+│   │   │   │   ├── Nous_rejoindre_fleche_1@2x.png
+│   │   │   │   ├── Nous_rejoindre_fleche_2@2x.png
+│   │   │   │   ├── Nous_rejoindre_porteur_projet.png
+│   │   │   │   ├── Nous_rejoindre_structure.png
+│   │   │   │   ├── Projet_*.png  (20 files)
+│   │   │   │   ├── _PAS_D_ACCENTS_DANS_LES_NOMS_DE_FICHIERS_SVP_.txt
+│   │   │   │   ├── erreur_404.png
+│   │   │   │   ├── erreur_bug.png
+│   │   │   │   ├── erreur_no_results.png
+│   │   │   │   ├── illustrations_*.png  (7 files)
+│   │   │   │   ├── landing_*.png  (16 files)
+│   │   │   │   └── textures
+│   │   │   │       ├── large_texture 1.png
+│   │   │   │       ├── large_texture 10.png
+│   │   │   │       ├── large_texture 11.png
+│   │   │   │       ├── large_texture 12.png
+│   │   │   │       ├── large_texture 13.png
+│   │   │   │       ├── large_texture 14.png
+│   │   │   │       ├── large_texture 15.png
+│   │   │   │       ├── large_texture 16.png
+│   │   │   │       ├── large_texture 2.png
+│   │   │   │       ├── large_texture 3.png
+│   │   │   │       ├── large_texture 4.png
+│   │   │   │       ├── large_texture 5.png
+│   │   │   │       ├── large_texture 6.png
+│   │   │   │       ├── large_texture 7.png
+│   │   │   │       ├── large_texture 8.png
+│   │   │   │       ├── large_texture 9.png
+│   │   │   │       ├── medium_fiche_1.png
+│   │   │   │       ├── medium_fiche_10.png
+│   │   │   │       ├── medium_fiche_11.png
+│   │   │   │       ├── medium_fiche_12.png
+│   │   │   │       ├── medium_fiche_13.png
+│   │   │   │       ├── medium_fiche_14.png
+│   │   │   │       ├── medium_fiche_15.png
+│   │   │   │       ├── medium_fiche_16.png
+│   │   │   │       ├── medium_fiche_2.png
+│   │   │   │       ├── medium_fiche_3.png
+│   │   │   │       ├── medium_fiche_4.png
+│   │   │   │       ├── medium_fiche_5.png
+│   │   │   │       ├── medium_fiche_6.png
+│   │   │   │       ├── medium_fiche_7.png
+│   │   │   │       ├── medium_fiche_8.png
+│   │   │   │       ├── medium_fiche_9.png
+│   │   │   │       ├── textures_encarts_fiches_texture 1.png
+│   │   │   │       ├── textures_encarts_fiches_texture 2.png
+│   │   │   │       ├── textures_encarts_fiches_texture 3.png
+│   │   │   │       ├── textures_encarts_fiches_texture 4.png
+│   │   │   │       ├── textures_encarts_fiches_texture 5.png
+│   │   │   │       ├── textures_encarts_fiches_texture 6.png
+│   │   │   │       ├── textures_encarts_fiches_texture 7.png
+│   │   │   │       ├── textures_encarts_fiches_texture 8.png
+│   │   │   │       ├── thin_fiche_1.png
+│   │   │   │       ├── thin_fiche_2.png
+│   │   │   │       ├── thin_fiche_3.png
+│   │   │   │       ├── thin_fiche_4.png
+│   │   │   │       ├── thin_fiche_5.png
+│   │   │   │       ├── thin_fiche_6.png
+│   │   │   │       ├── thin_fiche_7.png
+│   │   │   │       └── thin_fiche_8.png
+│   │   │   ├── js
+│   │   │   │   └── Bouture.js
+│   │   │   ├── json
+│   │   │   │   ├── CATEGORIES_CIS_DICT.js
+│   │   │   │   ├── CATEGORIES_CIS_DICT_FLAT.js
+│   │   │   │   ├── CHOICES_FILTERS_GEOLOC.js
+│   │   │   │   ├── CHOICES_FILTERS_PARTNERS.js
+│   │   │   │   ├── CHOICES_FILTERS_TAGS.js
+│   │   │   │   ├── NOMENCLATURE_CIS_DICT.js
+│   │   │   │   ├── NORMALIZATION_TAGS_SOURCES_CIS.js
+│   │   │   │   └── NORMALIZATION_TAGS_SOURCES_CIS_DICT.js
+│   │   │   ├── logos
+│   │   │   │   ├── CIS
+│   │   │   │   │   ├── CIS_beta_logo_HD.png
+│   │   │   │   │   ├── CIS_beta_logo_LD.png
+│   │   │   │   │   ├── CIS_logo.png
+│   │   │   │   │   ├── CIS_logo_triangle_HD.png
+│   │   │   │   │   └── CIS_logo_triangles_LD.png
+│   │   │   │   ├── Icon\015
+│   │   │   │   ├── Partenaires
+│   │   │   │   │   ├── Associations_et_accompagnateurs
+│   │   │   │   │   │   ├── AEIDL_CMYK.png
+│   │   │   │   │   │   ├── AEIDL_NB.png
+│   │   │   │   │   │   ├── AVISE_RVB.png
+│   │   │   │   │   │   ├── AVISE_RVB_NB_#7d7d7d.png
+│   │   │   │   │   │   ├── AVISE_RVB_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Ashoka_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Ashoka_bleu.png
+│   │   │   │   │   │   ├── BBZ.png
+│   │   │   │   │   │   ├── BBZ_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── BRUDED.png
+│   │   │   │   │   │   ├── BRUDED_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── BrieNov.png
+│   │   │   │   │   │   ├── BrieNov_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── COORACE.png
+│   │   │   │   │   │   ├── Coexister.png
+│   │   │   │   │   │   ├── G2C.png
+│   │   │   │   │   │   ├── G2C_LOGO_NB_#7d7d7d
+│   │   │   │   │   │   ├── G2C_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── GNIAC.png
+│   │   │   │   │   │   ├── GNIAC_NB_#7d7d7d.png
+│   │   │   │   │   │   ├── GNIAC_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── NovImpact.png
+│   │   │   │   │   │   ├── Ouishare.png
+│   │   │   │   │   │   ├── Ouishare_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── PRIMA TERRA_NB_#7d7d7d.png
+│   │   │   │   │   │   ├── PRIMA_TERRA.png
+│   │   │   │   │   │   ├── PRIMA_TERRA_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Ronalpia.png
+│   │   │   │   │   │   ├── SIILAB.png
+│   │   │   │   │   │   ├── SIILAB_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── SOCIAL_PLANET_FORMATION.png
+│   │   │   │   │   │   ├── SOCIAL_PLANET_FORMATION_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── SYNERGIE.png
+│   │   │   │   │   │   ├── SYNERGIE_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── TERRITORIA-HQ.png
+│   │   │   │   │   │   ├── TERRITORIA-HQ_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Ticket_for_Change.png
+│   │   │   │   │   │   ├── Ticket_for_Change_NB_#7d7d7d.png
+│   │   │   │   │   │   ├── Ticket_for_Change_NIVEAU_GRIS.png
+│   │   │   │   │   │   └── VillesInternet.png
+│   │   │   │   │   ├── Fondation_et_acteurs_engages_RSE
+│   │   │   │   │   │   ├── FCC.png
+│   │   │   │   │   │   ├── FFE.png
+│   │   │   │   │   │   ├── FNCE_Horizontal_200ans.png
+│   │   │   │   │   │   ├── FNCE_Horizontal_200ans_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── FONDATION_COGNAC_JAY.png
+│   │   │   │   │   │   └── FONDATION_COGNAC_JAY_NB.png
+│   │   │   │   │   ├── Institution_et_tetes_de_reseau
+│   │   │   │   │   │   ├── ADEME.png
+│   │   │   │   │   │   ├── ADEME_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── AMRF.png
+│   │   │   │   │   │   ├── AMRF_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── APIE_sans_signature copie_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── APIE_sans_signature.png
+│   │   │   │   │   │   ├── Animafac.png
+│   │   │   │   │   │   ├── Animafac_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── CGET_signat_seul_CMJN.png
+│   │   │   │   │   │   ├── CGET_signat_seul_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── CRESS.png
+│   │   │   │   │   │   ├── CRESS_Pdl.png
+│   │   │   │   │   │   ├── CRESS_Pdl_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── DGCS.png
+│   │   │   │   │   │   ├── DGEFP.jpg
+│   │   │   │   │   │   ├── DRJSCS_HDF.png
+│   │   │   │   │   │   ├── DRJSCS_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── EIG.png
+│   │   │   │   │   │   ├── EIG_niveau_gris.png
+│   │   │   │   │   │   ├── Etalab logo.PNG
+│   │   │   │   │   │   ├── Etalab_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Federation_GEIQ.png
+│   │   │   │   │   │   ├── Federation_GEIQ_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Injep+fej.png
+│   │   │   │   │   │   ├── Injep+fej_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Investissements_d'avenir_-_logo.jpeg
+│   │   │   │   │   │   ├── Marianne_MCT_CGET_NB.png
+│   │   │   │   │   │   ├── Mission_numerique.png
+│   │   │   │   │   │   ├── Mission_numerique_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── RTES_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── RTES_quadri.png
+│   │   │   │   │   │   ├── Reseau_rural.png
+│   │   │   │   │   │   ├── Reseau_rural_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── SGSCOP.png
+│   │   │   │   │   │   ├── Sceaux_up_ville_de _sceaux.png
+│   │   │   │   │   │   ├── Sceaux_up_ville_de _sceaux_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Sceaux_valley_.png
+│   │   │   │   │   │   ├── Sceaux_valley_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── Unadel.png
+│   │   │   │   │   │   ├── Unadel_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── dihal.png
+│   │   │   │   │   │   ├── enssemble.org.png
+│   │   │   │   │   │   └── logoEIG-01.png
+│   │   │   │   │   ├── Medias_de_solutions
+│   │   │   │   │   │   ├── Sparknews.png
+│   │   │   │   │   │   ├── Sparknews_NIVEAU_GRIS.png
+│   │   │   │   │   │   └── la_part_du_colibri.png
+│   │   │   │   │   ├── Think_Thank_et_acteurs_de_la_recherche
+│   │   │   │   │   │   ├── APRILES.png
+│   │   │   │   │   │   ├── APRILES_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── CITEGO.png
+│   │   │   │   │   │   ├── CITEGO_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── LaFonda_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── LaFonda_RVB.png
+│   │   │   │   │   │   ├── Labo_ESS.png
+│   │   │   │   │   │   ├── Labo_ESS_NIVEAU_GRIS.png
+│   │   │   │   │   │   ├── ecoleparismanagt.png
+│   │   │   │   │   │   └── ecoleparismanagt_NIVEAU_GRIS.png
+│   │   │   │   │   └── logos à ajouter
+│   │   │   │   │       ├── FCC_LOGO_SS_SIGNATURE_CMJN.jpg
+│   │   │   │   │       ├── FCC_LOGO_SS_SIGNATURE_CMJN.png
+│   │   │   │   │       ├── FFE.png
+│   │   │   │   │       ├── FFE_NIVEAU_GRIS.png
+│   │   │   │   │       └── image001.png
+│   │   │   │   ├── _PAS_D_ACCENTS_DANS_LES_NOMS_DE_FICHIERS_SVP_.txt
+│   │   │   │   ├── presse
+│   │   │   │   │   ├── 18ed65b92a1595543467608b74d3b94c0550d520.png
+│   │   │   │   │   ├── AR-texte-gauche.jpg
+│   │   │   │   │   ├── EIG.png
+│   │   │   │   │   ├── Etalab logo.PNG
+│   │   │   │   │   ├── FqENOrjE_400x400.jpg
+│   │   │   │   │   ├── LOGO-600x220-463.jpg
+│   │   │   │   │   ├── Le_Monde.svg.png
+│   │   │   │   │   ├── Logo-Fondation-4.jpg
+│   │   │   │   │   ├── NumeriquESS.png
+│   │   │   │   │   ├── README_presse.md
+│   │   │   │   │   ├── images.png
+│   │   │   │   │   ├── logo-eig3.png
+│   │   │   │   │   ├── logo.svg
+│   │   │   │   │   ├── logo_bdt_territoires_desktop.png
+│   │   │   │   │   ├── logos-Lab-Territorial.png
+│   │   │   │   │   └── tw1324le_400x400.jpg
+│   │   │   │   ├── recompense
+│   │   │   │   │   ├── Fondation_bien_commun.jpg
+│   │   │   │   │   ├── OECD_logo_new.svg.png
+│   │   │   │   │   ├── logo_transformateur_numerique.png
+│   │   │   │   │   └── logos des structures
+│   │   │   │   └── soutiens
+│   │   │   │       ├── Etalab logo.PNG
+│   │   │   │       ├── FFE.png
+│   │   │   │       ├── FNCE_Horizontal_200ans.png
+│   │   │   │       ├── Logo-PIA.png
+│   │   │   │       ├── logoEIG-01.png
+│   │   │   │       └── logos partenaires financiers
+│   │   │   ├── photos
+│   │   │   │   ├── 1-HSibilleNB.jpg
+│   │   │   │   ├── 180620_CollectifCIS_photos (2).jpg
+│   │   │   │   ├── 2-FRaineix-copyr-GGonzales.jpg
+│   │   │   │   ├── 2bis-PLaurent.jpg
+│   │   │   │   ├── 3-YBlancNB.jpg
+│   │   │   │   ├── 4_Giorgia_copyright_AlexandraLebon copie.jpg
+│   │   │   │   ├── 4_Giorgia_copyright_AlexandraLebon.jpg
+│   │   │   │   ├── 5-CSzabo-copyr-LDaniereNB.jpg
+│   │   │   │   ├── 5bis-JKounowski.JPG
+│   │   │   │   ├── 6-EStokkingNB copie.jpg
+│   │   │   │   ├── 6-EStokkingNB.jpg
+│   │   │   │   ├── 6-EStokkingNB.png
+│   │   │   │   ├── 7-CThevignotNB.jpg
+│   │   │   │   ├── 8-SBertal.jpg
+│   │   │   │   ├── Icon\015
+│   │   │   │   ├── Portraits_photos_Hugues_Sibille.png
+│   │   │   │   ├── Portraits_photos_cedric_szabo.png
+│   │   │   │   ├── Portraits_photos_christophe_thevignot copie 4.png
+│   │   │   │   ├── Portraits_photos_christophe_thevignot.png
+│   │   │   │   ├── Portraits_photos_emma_stocking.png
+│   │   │   │   ├── Portraits_photos_florence_raineix.png
+│   │   │   │   ├── Portraits_photos_giorgia_segrebondi.png
+│   │   │   │   ├── Portraits_photos_julien_kounowski.png
+│   │   │   │   ├── Portraits_photos_philippe_laurent.png
+│   │   │   │   ├── Portraits_photos_steven_bertal.png
+│   │   │   │   ├── Portraits_photos_yannick_blanc.png
+│   │   │   │   ├── _NI_AROBASE_NICOPYRIGHT_NI_ACCENTS_DANS_LES_NOMS_DE_FICHIERS_SVP_.txt
+│   │   │   │   ├── bastien_engelbach.png
+│   │   │   │   ├── benedicte_pachod.png
+│   │   │   │   ├── denis_sabardine.png
+│   │   │   │   ├── elise_lalique.png
+│   │   │   │   ├── emmanuel_dupont.png
+│   │   │   │   ├── fondation.jpg
+│   │   │   │   ├── imageEIG.png
+│   │   │   │   ├── julien_paris.png
+│   │   │   │   ├── membres
+│   │   │   │   │   ├── Arthur Caillier ODAS.jpg
+│   │   │   │   │   ├── AurélienDENAES.jpg
+│   │   │   │   │   ├── Bertal_Steven_Generation2conseil.jpg
+│   │   │   │   │   ├── Bouftaim_Intissar_Ticket_for_change.jpg
+│   │   │   │   │   ├── Cabantous_Stephanie_Citego.jpg
+│   │   │   │   │   ├── Caritey_Chantal_DGEFP.jpg
+│   │   │   │   │   ├── Ceriani_Sebregondi_Cognacq_Jay_copyr_AlexandraLebon.jpg
+│   │   │   │   │   ├── Dallet_Sylvie_copyr_LaurenceHonnorat.jpg
+│   │   │   │   │   ├── Denis_Sabardine_GNIAC.jpg
+│   │   │   │   │   ├── Dubouetiez_Thierry_GNIAC.jpg
+│   │   │   │   │   ├── Dupont_Emmanuel_CGET.jpg
+│   │   │   │   │   ├── Engelbach_Bastien_La_Fonda.jpg
+│   │   │   │   │   ├── Federici_Anne_Laure_RTES.jpg
+│   │   │   │   │   ├── FlorenceRAINEIX-copyr-GGonzales.jpg
+│   │   │   │   │   ├── FrancisLEVY.jpg
+│   │   │   │   │   ├── Galet_Didier_Brienov.JPG
+│   │   │   │   │   ├── Geitner_Lena_Ronalpia.jpg
+│   │   │   │   │   ├── Jung_Marie_Christine_Territoria.jpg
+│   │   │   │   │   ├── Labille_Lois_Animafac.jpg
+│   │   │   │   │   ├── Lalique_Elise_CGET.JPG
+│   │   │   │   │   ├── Leclair_Cecile_Avise.jpg
+│   │   │   │   │   ├── Pachod_Benedicte_CGET.jpg
+│   │   │   │   │   ├── Pansu_Denis_FING.jpeg
+│   │   │   │   │   ├── Paris_Julien_CGET.JPG
+│   │   │   │   │   ├── PhilippeLAURENT_copyr_mairiedeSceaux.jpg
+│   │   │   │   │   ├── Photo_2_Nathalie_David_DGEFP.jpg
+│   │   │   │   │   ├── Poyau_Valérian_UNADEL.jpg
+│   │   │   │   │   ├── Sanossian_Jennifer_Institut_Godin.jpg
+│   │   │   │   │   ├── Sibille_Hugues.jpg
+│   │   │   │   │   ├── SophieMILJKOVIC.jpg
+│   │   │   │   │   ├── Stokking_Emma_Sparknews.png
+│   │   │   │   │   ├── Szabo_Cedric_AMRF_copyr_LDaniere.jpg
+│   │   │   │   │   ├── Thevignot_Christophe_AEIDL.png
+│   │   │   │   │   ├── Vondahle_Catherine_NovImpact.jpg
+│   │   │   │   │   └── Yannick_Blanc.jpg
+│   │   │   │   └── transformateur_numerique.jpg
+│   │   │   ├── texts
+│   │   │   │   ├── Icon\015
+│   │   │   │   ├── texte_beta_testeur.txt
+│   │   │   │   ├── texte_créeruncompte.txt
+│   │   │   │   ├── texte_landing.txt
+│   │   │   │   ├── texte_landing_footer.txt
+│   │   │   │   ├── texte_partenaires_creer_compte.txt
+│   │   │   │   ├── texte_rubrique_contact.txt
+│   │   │   │   ├── texte_rubrique_ilsparlentdenous.txt
+│   │   │   │   ├── texte_rubrique_leprojet.txt
+│   │   │   │   └── texte_rubrique_quisommesnous.txt
+│   │   │   └── videos
+│   │   │       ├── CIS_VIDEO_V1_reduc.mp4
+│   │   │       ├── Export_video_son_V1.m4v
+│   │   │       ├── Icon\015
+│   │   │       ├── video_CIS_V2_son.m4v
+│   │   │       └── video_cis_son_V3.m4v
+│   │   ├── templates
+│   │   │   ├── admin
+│   │   │   │   ├── bo_brand.html
+│   │   │   │   ├── create.html
+│   │   │   │   ├── edit.html
+│   │   │   │   ├── index.html
+│   │   │   │   └── list.html
+│   │   │   ├── contact.html
+│   │   │   ├── elements
+│   │   │   │   ├── flash-messages.html
+│   │   │   │   └── newsletter-mailchimp.html
+│   │   │   ├── errors
+│   │   │   │   ├── 403.html
+│   │   │   │   ├── 404.html
+│   │   │   │   └── 500.html
+│   │   │   ├── footer.html
+│   │   │   ├── forms
+│   │   │   │   ├── form-feedback.html
+│   │   │   │   ├── form-login.html
+│   │   │   │   ├── form-not-referenced-project-carrier.html
+│   │   │   │   ├── form-referenced-project-carrier.html
+│   │   │   │   ├── form-register.html
+│   │   │   │   ├── form-structure-no-projects.html
+│   │   │   │   ├── form-structure-with-projects.html
+│   │   │   │   ├── form-user-parameters.html
+│   │   │   │   └── form-user-password.html
+│   │   │   ├── layout.html
+│   │   │   ├── le-collectif.html
+│   │   │   ├── le-projet-english.html
+│   │   │   ├── le-projet.html
+│   │   │   ├── les-outils-english.html
+│   │   │   ├── les-outils.html
+│   │   │   ├── login.html
+│   │   │   ├── main.html
+│   │   │   ├── navbars
+│   │   │   │   ├── navbar-main-english.html
+│   │   │   │   └── navbar-main.html
+│   │   │   ├── new-home-english.html
+│   │   │   ├── new-home.html
+│   │   │   ├── nous-rejoindre.html
+│   │   │   ├── parlent-de-nous.html
+│   │   │   ├── qui-fait-quoi.html
+│   │   │   ├── recompenses-english.html
+│   │   │   ├── recompenses.html
+│   │   │   ├── register.html
+│   │   │   ├── spa.html
+│   │   │   └── user_preferences
+│   │   │       └── user_parameters.html
+│   │   ├── utils
+│   │   │   └── __init__.py
+│   │   └── views.py
+│   ├── run_cis_front.py
+│   └── wsgi.py
+├── nginx
+│   └── working_nginx_config
+├── requirements.txt
+├── screenshots
+│   ├── Icon\015
+│   ├── LANDING_PAGE_V4.pdf
+│   ├── Mon compte
+│   │   ├── MON COMPTE - 1 menu au survol@2x.png
+│   │   ├── MON COMPTE - 2 Parametres@2x.png
+│   │   ├── MON COMPTE - 3Parametre - mot de passe@2x.png
+│   │   ├── MON COMPTE - 4 Mes projets@2x.png
+│   │   ├── MON COMPTE - 5 Projets sauvegardés@2x.png
+│   │   └── MON COMPTE - 6 Projets sauvegardés - suppression@2x.png
+│   ├── Page "projet"
+│   │   ├── PAGE PROJET - 1.pdf
+│   │   ├── PAGE PROJET - 1.png
+│   │   └── PAGE PROJET - 1@2x.png
+│   ├── cis-front-backoffice-feedbacks.png
+│   ├── cis-front-backoffice-users.png
+│   ├── cis-front-feedback-form-beta-users-framaform.png
+│   ├── cis-front-feedback-form-beta-users-kinto.png
+│   ├── cis-front-landing-full.png
+│   ├── cis-front-landing.png
+│   ├── cis-front-login.png
+│   ├── cis-front-register.png
+│   ├── cis-front-user-index.png
+│   ├── cis-front-user-modal-who.png
+│   └── cis-front-user-search.png
+└── unit
+    └── working_service_config.service
+57 directories, 624 files
