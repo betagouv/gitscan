@@ -1,0 +1,604 @@
+.
+├── .babelrc
+├── .env.example
+├── .gitattributes
+├── .github
+│   └── ISSUE_TEMPLATE
+│       └── signaler-un-d-faut.md
+├── .gitignore
+├── AUTHORS
+├── LICENSE
+├── app
+│   ├── Console
+│   │   ├── Commands
+│   │   │   ├── CheckOrigImages.php
+│   │   │   ├── FixNullAuthors.php
+│   │   │   ├── GenerateSitemaps.php
+│   │   │   ├── HotFixVenteInTitleDesignation.php
+│   │   │   ├── ImportAuthors.php
+│   │   │   ├── ImportUpdatedOn.php
+│   │   │   ├── RefreshSelectionPosterImages.php
+│   │   │   ├── RenameImages.php
+│   │   │   ├── RenameImagesFromOrig.php
+│   │   │   ├── RepairCorruptedImages.php
+│   │   │   ├── TransitionLegacyInventoryNumbers.php
+│   │   │   ├── WarmCache.php
+│   │   │   └── import.php
+│   │   └── Kernel.php
+│   ├── Exceptions
+│   │   └── Handler.php
+│   ├── Http
+│   │   ├── Controllers
+│   │   │   ├── Auth
+│   │   │   │   ├── ForgotPasswordController.php
+│   │   │   │   ├── LoginController.php
+│   │   │   │   ├── RegisterController.php
+│   │   │   │   ├── ResetPasswordController.php
+│   │   │   │   └── VerificationController.php
+│   │   │   ├── Controller.php
+│   │   │   ├── HomeController.php
+│   │   │   ├── InvitationController.php
+│   │   │   ├── OaiPmhController.php
+│   │   │   ├── ProductController.php
+│   │   │   ├── SearchController.php
+│   │   │   ├── SelectionsController.php
+│   │   │   └── UserController.php
+│   │   ├── Kernel.php
+│   │   ├── Middleware
+│   │   │   ├── Authenticate.php
+│   │   │   ├── EncryptCookies.php
+│   │   │   ├── RedirectIfAuthenticated.php
+│   │   │   ├── TrimStrings.php
+│   │   │   ├── TrustProxies.php
+│   │   │   └── VerifyCsrfToken.php
+│   │   ├── OaiPmh
+│   │   │   ├── FormatterOaiDc.php
+│   │   │   ├── RecordMetadataBuilder.php
+│   │   │   └── Repository.php
+│   │   ├── Resources
+│   │   │   ├── ListedSelection.php
+│   │   │   ├── Selection.php
+│   │   │   ├── SelectionCollection.php
+│   │   │   └── User.php
+│   │   └── View
+│   │       └── Composers
+│   │           ├── FiltersComposer.php
+│   │           └── RandomProductsComposer.php
+│   ├── Mail
+│   │   ├── AddedToSelection.php
+│   │   ├── EmailVerification.php
+│   │   ├── InvitedToSelection.php
+│   │   ├── PasswordReset.php
+│   │   └── UserWelcome.php
+│   ├── Models
+│   │   ├── Author.php
+│   │   ├── Authorship.php
+│   │   ├── EntryMode.php
+│   │   ├── Image.php
+│   │   ├── Invitation.php
+│   │   ├── Material.php
+│   │   ├── Period.php
+│   │   ├── Product.php
+│   │   ├── ProductType.php
+│   │   ├── ProductionOrigin.php
+│   │   ├── Selection.php
+│   │   ├── Style.php
+│   │   └── Traits
+│   │       └── Mappable.php
+│   ├── Observers
+│   │   └── UserObserver.php
+│   ├── Policies
+│   │   └── SelectionPolicy.php
+│   ├── Providers
+│   │   ├── AppServiceProvider.php
+│   │   ├── AuthServiceProvider.php
+│   │   ├── BroadcastServiceProvider.php
+│   │   ├── EventServiceProvider.php
+│   │   └── RouteServiceProvider.php
+│   ├── User.php
+│   └── helpers.php
+├── artisan
+├── bootstrap
+│   ├── app.php
+│   └── cache
+│       └── .gitignore
+├── composer.json
+├── composer.lock
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── blade-svg.php
+│   ├── broadcasting.php
+│   ├── cache.php
+│   ├── database.php
+│   ├── debugbar.php
+│   ├── es.php
+│   ├── filesystems.php
+│   ├── hashing.php
+│   ├── image-optimizer.php
+│   ├── image.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── scout.php
+│   ├── seotools.php
+│   ├── services.php
+│   ├── session.php
+│   ├── sitemap.php
+│   ├── trustedproxy.php
+│   └── view.php
+├── database
+│   ├── .gitignore
+│   ├── factories
+│   │   └── UserFactory.php
+│   ├── mappings
+│   │   ├── materials_gar.tsv
+│   │   ├── materials_mat.tsv
+│   │   ├── product_types_den.tsv
+│   │   ├── product_types_gracat.tsv
+│   │   ├── product_types_titapp.tsv
+│   │   ├── production_origins_inventory_root.tsv
+│   │   ├── production_origins_numgraca.tsv
+│   │   └── styles_numepo.tsv
+│   ├── migrations
+│   │   ├── 2014_10_12_000000_create_users_table.php
+│   │   ├── 2014_10_12_100000_create_password_resets_table.php
+│   │   ├── 2018_04_26_093650_create_periods_table.php
+│   │   ├── 2018_04_26_094438_create_product_types_table.php
+│   │   ├── 2018_04_27_094640_create_authors_table.php
+│   │   ├── 2018_05_04_123922_create_products_table.php
+│   │   ├── 2018_05_04_124000_create_authorships_table.php
+│   │   ├── 2018_05_04_160902_create_images_table.php
+│   │   ├── 2018_05_04_162742_create_legacy_inventory_numbers_table.php
+│   │   ├── 2018_06_01_090946_create_styles_table.php
+│   │   ├── 2018_06_01_091244_add_style_id_to_products.php
+│   │   ├── 2018_06_01_230825_create_materials_table.php
+│   │   ├── 2018_06_19_010437_create_production_origins_table.php
+│   │   ├── 2018_06_20_232951_add_first_last_name_to_authors.php
+│   │   ├── 2018_12_13_154314_add_publication_attributes_to_images.php
+│   │   ├── 2018_12_14_055513_add_publication_attributes_to_products.php
+│   │   ├── 2018_12_14_131333_add_attributes_to_authors.php
+│   │   ├── 2018_12_14_141752_add_order_to_styles.php
+│   │   ├── 2018_12_14_224133_add_years_to_styles.php
+│   │   ├── 2018_12_15_065851_add_mapping_key_to_styles.php
+│   │   ├── 2019_01_21_132128_add_legacy_inventory_number_to_products.php
+│   │   ├── 2019_01_21_152410_drop_legacy_inventory_numbers_table.php
+│   │   ├── 2019_03_18_124837_create_entry_modes.php
+│   │   ├── 2019_04_14_154939_add_api_token_to_users.php
+│   │   ├── 2019_06_07_115718_create_selections_table.php
+│   │   ├── 2019_06_07_120928_create_selection_user_table.php
+│   │   ├── 2019_06_07_174903_create_product_selection_table.php
+│   │   ├── 2019_08_17_001422_add_identity_code_to_users.php
+│   │   ├── 2019_09_09_090534_add_f_k_constraints_on_selection_rels.php
+│   │   ├── 2019_09_20_112840_create_invitations_table.php
+│   │   ├── 2019_10_01_023705_add_email_verified_at_to_users.php
+│   │   ├── 2019_10_10_090759_add_token_to_invitations.php
+│   │   ├── 2019_10_21_104730_create_image_selection_table.php
+│   │   ├── 2020_03_05_094132_add_is_poster_to_images.php
+│   │   └── 2020_03_27_182152_add_legacy_updated_on_to_products.php
+│   └── seeds
+│       ├── DatabaseSeeder.php
+│       ├── MaterialSeeder.php
+│       ├── ProductTypeSeeder.php
+│       ├── ProductionOriginSeeder.php
+│       ├── StyleSeeder.php
+│       ├── materials.tsv
+│       ├── product_types.tsv
+│       └── styles.tsv
+├── documentation
+│   ├── Archi logique.svg
+│   ├── Archi technique.svg
+│   ├── Flux de donnees.svg
+│   ├── OAI_PMH.md
+│   ├── Suivi découvrabilité.md
+│   ├── aspect_ratio_examples.md
+│   ├── deployment_log.md
+│   ├── flow_invitations.txt
+│   ├── image_pipeline_notes.md
+│   ├── media_processing.md
+│   ├── query_string_syntax_fr.md
+│   └── tinker_bloc_notes.md
+├── package-lock.json
+├── package.json
+├── phpunit.xml
+├── postmark-templates-master 2
+│   ├── LICENSE
+│   ├── README.md
+│   ├── templates
+│   │   ├── comment_notification.html
+│   │   ├── comment_notification.txt
+│   │   ├── invoice.html
+│   │   ├── invoice.txt
+│   │   ├── password_reset.html
+│   │   ├── password_reset.txt
+│   │   ├── password_reset_help.html
+│   │   ├── password_reset_help.txt
+│   │   ├── receipt.html
+│   │   ├── receipt.txt
+│   │   ├── trial_expired.html
+│   │   ├── trial_expired.txt
+│   │   ├── trial_expiring.html
+│   │   ├── trial_expiring.txt
+│   │   ├── user_invitation.html
+│   │   ├── user_invitation.txt
+│   │   ├── welcome.html
+│   │   └── welcome.txt
+│   └── templates_inlined
+│       ├── comment_notification.html
+│       ├── invoice.html
+│       ├── password_reset.html
+│       ├── password_reset_help.html
+│       ├── receipt.html
+│       ├── trial_expired.html
+│       ├── trial_expiring.html
+│       ├── user_invitation.html
+│       └── welcome.html
+├── public
+│   ├── .htaccess
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   ├── apple-touch-icon.png
+│   ├── browserconfig.xml
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── fonts
+│   │   ├── OFL.txt
+│   │   ├── SourceSansPro-Bold.otf.woff
+│   │   ├── SourceSansPro-Bold.otf.woff2
+│   │   ├── SourceSansPro-Bold.ttf.woff
+│   │   ├── SourceSansPro-Bold.ttf.woff2
+│   │   ├── SourceSansPro-Regular.otf.woff
+│   │   ├── SourceSansPro-Regular.otf.woff2
+│   │   ├── SourceSansPro-Regular.ttf.woff
+│   │   ├── SourceSansPro-Regular.ttf.woff2
+│   │   ├── SourceSansPro-Semibold.ttf.woff
+│   │   ├── SourceSansPro-Semibold.ttf.woff2
+│   │   ├── SourceSerifPro-Regular.otf.woff
+│   │   ├── SourceSerifPro-Regular.otf.woff2
+│   │   ├── SourceSerifPro-Regular.ttf.woff
+│   │   ├── SourceSerifPro-Regular.ttf.woff2
+│   │   ├── SourceSerifPro-Semibold.otf.woff
+│   │   └── SourceSerifPro-Semibold.otf.woff2
+│   ├── google15b52f86abed8698.html
+│   ├── images
+│   │   ├── emails
+│   │   │   ├── collection_animated.gif
+│   │   │   └── collections-mobilier-national-mnlab@2x.jpg
+│   │   ├── ilu-dimensions@2x.png
+│   │   ├── logos
+│   │   │   ├── Logo-etalab@3x.png
+│   │   │   ├── Mariane@3x.png
+│   │   │   ├── MarianneMC@3x.png
+│   │   │   ├── eig@3x.png
+│   │   │   ├── gobelins_logo@3x.png
+│   │   │   └── label-IA-2018@3x.png
+│   │   └── sharing
+│   │       ├── mobilier_campagne_napoleon.jpg
+│   │       ├── mobilier_national-gobelins.jpg
+│   │       └── tissage_mobilier_national.jpg
+│   ├── index.php
+│   ├── js
+│   │   └── proto_routing.js
+│   ├── mstile-144x144.png
+│   ├── mstile-150x150.png
+│   ├── mstile-310x150.png
+│   ├── mstile-310x310.png
+│   ├── mstile-70x70.png
+│   ├── robots.txt
+│   ├── safari-pinned-tab.svg
+│   └── site.webmanifest
+├── readme.md
+├── resources
+│   ├── assets
+│   │   ├── js
+│   │   │   ├── App.jsx
+│   │   │   ├── AppRouter.jsx
+│   │   │   ├── Auth
+│   │   │   │   ├── AuthModal.jsx
+│   │   │   │   ├── AuthModal.scss
+│   │   │   │   ├── EditUserForm.jsx
+│   │   │   │   └── EditUserModal.jsx
+│   │   │   ├── Collection
+│   │   │   │   ├── Collection.jsx
+│   │   │   │   ├── Collection.scss
+│   │   │   │   ├── CollectionGrid.jsx
+│   │   │   │   ├── CollectionGridAbandonned.jsx
+│   │   │   │   ├── CollectionGridItem.jsx
+│   │   │   │   ├── CollectionList.jsx
+│   │   │   │   ├── Filters
+│   │   │   │   │   ├── Authors.jsx
+│   │   │   │   │   ├── Authors.scss
+│   │   │   │   │   ├── AuthorsList.jsx
+│   │   │   │   │   ├── AuthorsMobile.jsx
+│   │   │   │   │   ├── AuthorsMobile.scss
+│   │   │   │   │   ├── CriteriaPhrase.jsx
+│   │   │   │   │   ├── CriteriaPhrase.scss
+│   │   │   │   │   ├── DesktopOverlayZone.jsx
+│   │   │   │   │   ├── DesktopOverlayZone.scss
+│   │   │   │   │   ├── DimensionSlider.jsx
+│   │   │   │   │   ├── Dimensions.jsx
+│   │   │   │   │   ├── Dimensions.scss
+│   │   │   │   │   ├── DimensionsMobile.jsx
+│   │   │   │   │   ├── DimensionsMobile.scss
+│   │   │   │   │   ├── FilterPanelDesktop.jsx
+│   │   │   │   │   ├── FilterPanelDesktop.scss
+│   │   │   │   │   ├── FilterPanelMobile.jsx
+│   │   │   │   │   ├── FilterPanelMobile.scss
+│   │   │   │   │   ├── Filters.jsx
+│   │   │   │   │   ├── Filters.scss
+│   │   │   │   │   ├── FiltersMobile.jsx
+│   │   │   │   │   ├── FiltersMobile.scss
+│   │   │   │   │   ├── Materials.jsx
+│   │   │   │   │   ├── Materials.scss
+│   │   │   │   │   ├── MaterialsMobile.jsx
+│   │   │   │   │   ├── MaterialsMobile.scss
+│   │   │   │   │   ├── MobileSearch.jsx
+│   │   │   │   │   ├── MobileSearch.scss
+│   │   │   │   │   ├── Periods.jsx
+│   │   │   │   │   ├── Periods.scss
+│   │   │   │   │   ├── PeriodsMobile.jsx
+│   │   │   │   │   ├── PeriodsMobile.scss
+│   │   │   │   │   ├── ProductTypes.jsx
+│   │   │   │   │   ├── ProductTypes.scss
+│   │   │   │   │   ├── ProductTypesMobile.jsx
+│   │   │   │   │   ├── ProductTypesMobile.scss
+│   │   │   │   │   ├── ProductionOrigins.jsx
+│   │   │   │   │   ├── ProductionOrigins.scss
+│   │   │   │   │   ├── ProductionOriginsMobile.jsx
+│   │   │   │   │   ├── ProductionOriginsMobile.scss
+│   │   │   │   │   ├── SliderComponents.jsx
+│   │   │   │   │   ├── Styles.jsx
+│   │   │   │   │   ├── Styles.scss
+│   │   │   │   │   ├── StylesMobile.jsx
+│   │   │   │   │   └── StylesMobile.scss
+│   │   │   │   ├── Result.jsx
+│   │   │   │   ├── ResultCount.jsx
+│   │   │   │   ├── ResultCount.scss
+│   │   │   │   ├── ScrollToTop.jsx
+│   │   │   │   ├── ScrollToTop.scss
+│   │   │   │   ├── Settings
+│   │   │   │   │   ├── Settings.jsx
+│   │   │   │   │   └── Settings.scss
+│   │   │   │   └── TirelessMason.jsx
+│   │   │   ├── Detail
+│   │   │   │   ├── BackToCollection.jsx
+│   │   │   │   ├── Data.jsx
+│   │   │   │   ├── Detail.jsx
+│   │   │   │   ├── Detail.scss
+│   │   │   │   ├── DetailZoomed.jsx
+│   │   │   │   ├── DownloadModal.jsx
+│   │   │   │   ├── ImageList.jsx
+│   │   │   │   ├── Info.jsx
+│   │   │   │   ├── MainImage.jsx
+│   │   │   │   └── Title.jsx
+│   │   │   ├── Loader.jsx
+│   │   │   ├── Modal.scss
+│   │   │   ├── Selection
+│   │   │   │   ├── AddToSelectionModal.jsx
+│   │   │   │   ├── AddToSelectionSteps.jsx
+│   │   │   │   ├── CollaborationsHandler.jsx
+│   │   │   │   ├── CollaborationsHandler.scss
+│   │   │   │   ├── EditSelectionForm.jsx
+│   │   │   │   ├── EditSelectionModal.jsx
+│   │   │   │   ├── ImagesPlaceholder.jsx
+│   │   │   │   ├── MySelections.jsx
+│   │   │   │   ├── MySelections.scss
+│   │   │   │   ├── SelectionDetail.jsx
+│   │   │   │   ├── SelectionDetail.scss
+│   │   │   │   ├── SelectionDetailPage.jsx
+│   │   │   │   ├── SelectionInput.jsx
+│   │   │   │   ├── SelectionModal.scss
+│   │   │   │   ├── SelectionPick.jsx
+│   │   │   │   ├── Selections.scss
+│   │   │   │   ├── SelectionsIndex.jsx
+│   │   │   │   ├── SelectionsList.jsx
+│   │   │   │   ├── SelectionsList.scss
+│   │   │   │   ├── SelectionsListItem.jsx
+│   │   │   │   ├── SelectionsListItem.scss
+│   │   │   │   ├── SelectionsNav.jsx
+│   │   │   │   └── SelectionsNav.scss
+│   │   │   ├── bootstrap.js
+│   │   │   ├── context
+│   │   │   │   ├── AppProviders.jsx
+│   │   │   │   ├── auth-context.js
+│   │   │   │   └── selections-context.js
+│   │   │   ├── icons
+│   │   │   │   ├── AddedToSelection.jsx
+│   │   │   │   ├── ArrowBack.jsx
+│   │   │   │   ├── ArrowBottomRight.jsx
+│   │   │   │   ├── ArrowCta.jsx
+│   │   │   │   ├── ArrowDown.jsx
+│   │   │   │   ├── ArrowNext.jsx
+│   │   │   │   ├── ArrowPrev.jsx
+│   │   │   │   ├── ArrowTop.jsx
+│   │   │   │   ├── Cross.jsx
+│   │   │   │   ├── CrossCriterion.jsx
+│   │   │   │   ├── CrossLarge.jsx
+│   │   │   │   ├── CrossSimple.jsx
+│   │   │   │   ├── Download.jsx
+│   │   │   │   ├── Eye.jsx
+│   │   │   │   ├── EyeHover.jsx
+│   │   │   │   ├── Gear.jsx
+│   │   │   │   ├── Heart.jsx
+│   │   │   │   ├── MagnifyingGlass.jsx
+│   │   │   │   ├── MnLogo.jsx
+│   │   │   │   ├── PadlockTiny.jsx
+│   │   │   │   ├── PaperPlane.jsx
+│   │   │   │   ├── Pencil.jsx
+│   │   │   │   ├── Plus.jsx
+│   │   │   │   ├── PlusLarge.jsx
+│   │   │   │   ├── SelectionsBlank.jsx
+│   │   │   │   ├── ShareFacebook.jsx
+│   │   │   │   ├── SharePinterest.jsx
+│   │   │   │   ├── ShareTwitter.jsx
+│   │   │   │   ├── ShareUrl.jsx
+│   │   │   │   ├── StackHeart.jsx
+│   │   │   │   ├── ToggleVisibility.jsx
+│   │   │   │   ├── TrashCan.jsx
+│   │   │   │   ├── ZoomIn.jsx
+│   │   │   │   └── ZoomOut.jsx
+│   │   │   ├── ui
+│   │   │   │   ├── Button.jsx
+│   │   │   │   ├── Button.scss
+│   │   │   │   ├── ConfirmedDelete.jsx
+│   │   │   │   ├── ConfirmedDelete.scss
+│   │   │   │   ├── InputField.jsx
+│   │   │   │   ├── InputField.scss
+│   │   │   │   ├── LibraryBoard.jsx
+│   │   │   │   ├── LibraryBoard.scss
+│   │   │   │   ├── Loader.jsx
+│   │   │   │   ├── Loader.scss
+│   │   │   │   ├── Notification.jsx
+│   │   │   │   ├── Notification.scss
+│   │   │   │   ├── RemoveButton.jsx
+│   │   │   │   ├── RemoveButton.scss
+│   │   │   │   ├── Switch.jsx
+│   │   │   │   ├── Switch.scss
+│   │   │   │   ├── Textarea.jsx
+│   │   │   │   └── Textarea.scss
+│   │   │   ├── utils
+│   │   │   │   ├── api-client.js
+│   │   │   │   ├── auth-client.js
+│   │   │   │   ├── image-url.js
+│   │   │   │   ├── notifier.js
+│   │   │   │   └── selections-client.js
+│   │   │   └── vendor
+│   │   │       └── react-responsive-pinch-zoom-pan
+│   │   │           ├── LICENSE
+│   │   │           ├── PinchZoomPan.js
+│   │   │           ├── README.md
+│   │   │           └── Utils.js
+│   │   ├── sass
+│   │   │   ├── app.scss
+│   │   │   ├── blocks
+│   │   │   │   ├── Info.scss
+│   │   │   │   └── SearchLayout.scss
+│   │   │   └── shared
+│   │   │       ├── aspect-ratio.scss
+│   │   │       ├── breakpoints.scss
+│   │   │       ├── colors.scss
+│   │   │       ├── global.scss
+│   │   │       ├── grids.scss
+│   │   │       ├── reset-reset.scss
+│   │   │       ├── spinner.scss
+│   │   │       └── typography.scss
+│   │   └── svg
+│   │       ├── icons
+│   │       │   ├── AddedToSelection.svg
+│   │       │   ├── ArrowBack.svg
+│   │       │   ├── ArrowBottomRight.svg
+│   │       │   ├── ArrowCTA.svg
+│   │       │   ├── ArrowDown.svg
+│   │       │   ├── ArrowNext.svg
+│   │       │   ├── ArrowPrev.svg
+│   │       │   ├── ArrowTop.svg
+│   │       │   ├── Cross.svg
+│   │       │   ├── CrossCriterion.svg
+│   │       │   ├── CrossLarge.svg
+│   │       │   ├── CrossSimple.svg
+│   │       │   ├── Download.svg
+│   │       │   ├── Gear.svg
+│   │       │   ├── Heart.svg
+│   │       │   ├── MagnifyingGlass.svg
+│   │       │   ├── PadlockTiny.svg
+│   │       │   ├── PaperPlane.svg
+│   │       │   ├── Pencil.svg
+│   │       │   ├── Plus.svg
+│   │       │   ├── PlusLarge.svg
+│   │       │   ├── ShareFacebook.svg
+│   │       │   ├── SharePinterest.svg
+│   │       │   ├── ShareTwitter.svg
+│   │       │   ├── ShareUrl.svg
+│   │       │   ├── StackHeart.svg
+│   │       │   ├── ToggleVisibility.svg
+│   │       │   ├── TrashCan.svg
+│   │       │   ├── ZoomIn.svg
+│   │       │   ├── ZoomOut.svg
+│   │       │   ├── eye-hover.svg
+│   │       │   ├── eye.svg
+│   │       │   ├── magnifying_glass.svg
+│   │       │   ├── mn-logo.svg
+│   │       │   └── selections-blank.svg
+│   │       ├── logo_mn.svg
+│   │       └── mariane.svg
+│   ├── lang
+│   │   ├── en
+│   │   │   ├── auth.php
+│   │   │   ├── pagination.php
+│   │   │   ├── passwords.php
+│   │   │   └── validation.php
+│   │   └── fr
+│   │       ├── auth.php
+│   │       ├── pagination.php
+│   │       ├── passwords.php
+│   │       ├── selection.php
+│   │       └── validation.php
+│   └── views
+│       ├── auth
+│       │   ├── _background_images.blade.php
+│       │   ├── login.blade.php
+│       │   ├── login~old.blade.php
+│       │   ├── passwords
+│       │   │   ├── email.blade.php
+│       │   │   └── reset.blade.php
+│       │   ├── register.blade.php
+│       │   ├── register~old.blade.php
+│       │   └── verify.blade.php
+│       ├── emails
+│       │   ├── added_to_selection.blade.php
+│       │   ├── password_reset.blade.php
+│       │   ├── user_invitation.blade.php
+│       │   ├── user_welcome.blade.php
+│       │   └── verify-email.blade.php
+│       ├── layouts
+│       │   ├── app.blade.php
+│       │   └── default.blade.php
+│       └── site
+│           ├── _product.blade.php
+│           ├── _selection.blade.php
+│           ├── home.blade.php
+│           ├── info.blade.php
+│           ├── product.blade.php
+│           ├── search.blade.php
+│           ├── search_ssr.blade.php
+│           └── selection.blade.php
+├── routes
+│   ├── api.php
+│   ├── channels.php
+│   ├── console.php
+│   ├── images.php
+│   └── web.php
+├── server.php
+├── storage
+│   ├── app
+│   │   ├── .gitignore
+│   │   └── public
+│   │       └── .gitignore
+│   ├── debugbar
+│   │   └── .gitignore
+│   ├── framework
+│   │   ├── .gitignore
+│   │   ├── cache
+│   │   │   ├── .gitignore
+│   │   │   └── data
+│   │   │       └── .gitignore
+│   │   ├── sessions
+│   │   │   └── .gitignore
+│   │   ├── testing
+│   │   │   └── .gitignore
+│   │   └── views
+│   │       └── .gitignore
+│   └── logs
+│       └── .gitignore
+├── svgo.json
+├── tests
+│   ├── CreatesApplication.php
+│   ├── Feature
+│   │   └── ExampleTest.php
+│   ├── TestCase.php
+│   └── Unit
+│       └── ExampleTest.php
+├── tsconfig.json
+└── webpack.mix.js
+84 directories, 519 files
