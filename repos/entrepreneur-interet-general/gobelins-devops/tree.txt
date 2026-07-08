@@ -1,0 +1,230 @@
+.
+├── .gitignore
+├── LICENSE.md
+├── README.md
+├── README_barn.md
+├── Vagrantfile
+├── ansible.cfg
+├── deploy
+│   ├── after_setup.yml
+│   ├── after_symlink.yml
+│   ├── after_symlink_shared.yml
+│   ├── before_setup_tasks.yml
+│   ├── before_symlink.yml
+│   ├── before_symlink_shared.yml
+│   └── steps
+│       ├── chown_shared_storage.yml
+│       ├── clear_app_cache.yml
+│       ├── clear_opcache.yml
+│       ├── composer.yml
+│       ├── ensure_storage_writable.yml
+│       ├── link_uploads.yml
+│       ├── npm.yml
+│       ├── optimize.yml
+│       └── restart_queue.yml
+├── deploy-datasource.yml
+├── deploy-gobelins.yml
+├── dotenv_templates
+│   ├── centos7-test.blog.j2
+│   ├── cmn-p0-app201.culture.fr.datasource.j2
+│   ├── cmn-p0-app201.culture.fr.gobelins.j2
+│   ├── eig-r0-mlt201.culture.fr.datasource.j2
+│   ├── eig-r0-mlt201.culture.fr.gobelins.j2
+│   ├── localhost.datasource.j2
+│   ├── localhost.gobelins.j2
+│   ├── tarabiscot.datasource.j2
+│   ├── tarabiscot.gobelins.j2
+│   └── ubuntu-test.blog.j2
+├── elasticsearchservers.yml
+├── group_vars
+│   ├── all.yml
+│   ├── development.yml
+│   ├── production.yml
+│   ├── recette.yml
+│   └── staging.yml
+├── inventory
+│   ├── cmn-p0-app201
+│   ├── dsi-culture
+│   ├── eig-r0-mlt201
+│   ├── online
+│   └── vagrant
+├── pgsqlservers.yml
+├── queueservers.yml
+├── roles
+│   ├── ansistrano.deploy
+│   │   ├── .gitignore
+│   │   ├── .travis.yml
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── TESTING.md
+│   │   ├── Vagrantfile
+│   │   ├── ansible.cfg
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── docs
+│   │   │   ├── ansistrano-flow.png
+│   │   │   └── figure.md
+│   │   ├── example
+│   │   │   ├── my-app
+│   │   │   │   └── index.html
+│   │   │   └── my-playbook
+│   │   │       ├── ansible.cfg
+│   │   │       ├── deploy-svn.yml
+│   │   │       ├── deploy.yml
+│   │   │       ├── hosts
+│   │   │       └── rollback.yml
+│   │   ├── meta
+│   │   │   ├── .galaxy_install_info
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       ├── anon-stats.yml
+│   │       ├── cleanup.yml
+│   │       ├── empty.yml
+│   │       ├── main.yml
+│   │       ├── rsync-deploy.yml
+│   │       ├── setup.yml
+│   │       ├── symlink-shared.yml
+│   │       ├── symlink.yml
+│   │       ├── update-code
+│   │       │   ├── copy.yml
+│   │       │   ├── copy_unarchive.yml
+│   │       │   ├── download.yml
+│   │       │   ├── download_unarchive.yml
+│   │       │   ├── gcs.yml
+│   │       │   ├── gcs_unarchive.yml
+│   │       │   ├── git.yml
+│   │       │   ├── hg.yml
+│   │       │   ├── rsync.yml
+│   │       │   ├── s3.yml
+│   │       │   ├── s3_unarchive.yml
+│   │       │   ├── svn.yml
+│   │       │   └── unarchive.yml
+│   │       └── update-code.yml
+│   ├── ansistrano.rollback
+│   │   ├── .gitignore
+│   │   ├── .travis.yml
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   ├── .galaxy_install_info
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       ├── anon-stats.yml
+│   │       ├── cleanup.yml
+│   │       ├── empty.yml
+│   │       ├── main.yml
+│   │       ├── setup.yml
+│   │       └── symlink.yml
+│   ├── common
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       ├── cron-apt.yml
+│   │       ├── main.yml
+│   │       ├── ntp.yml
+│   │       ├── remi.yml
+│   │       ├── selinux.yml
+│   │       ├── swap.yml
+│   │       ├── user.yml
+│   │       └── yum-cron.yml
+│   ├── custom
+│   │   ├── files
+│   │   │   └── .gitignore
+│   │   ├── handlers
+│   │   │   └── .gitignore
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── templates
+│   │       └── .gitignore
+│   ├── elasticsearchtier
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       ├── elasticsearch-apt-repo.yml
+│   │       ├── elasticsearch-plugins.yml
+│   │       ├── elasticsearch-yum-repo.yml
+│   │       ├── elasticsearch.yml
+│   │       ├── java.yml
+│   │       └── main.yml
+│   ├── geerlingguy.postgresql
+│   │   ├── .gitignore
+│   │   ├── .travis.yml
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   ├── .galaxy_install_info
+│   │   │   └── main.yml
+│   │   ├── molecule
+│   │   │   └── default
+│   │   │       ├── molecule.yml
+│   │   │       ├── playbook.yml
+│   │   │       ├── tests
+│   │   │       │   └── test_default.py
+│   │   │       └── yaml-lint.yml
+│   │   ├── tasks
+│   │   │   ├── configure.yml
+│   │   │   ├── databases.yml
+│   │   │   ├── initialize.yml
+│   │   │   ├── main.yml
+│   │   │   ├── setup-Debian.yml
+│   │   │   ├── setup-RedHat.yml
+│   │   │   ├── users.yml
+│   │   │   └── variables.yml
+│   │   ├── templates
+│   │   │   ├── pg_hba.conf.j2
+│   │   │   └── postgres.sh.j2
+│   │   └── vars
+│   │       ├── Debian-7.yml
+│   │       ├── Debian-8.yml
+│   │       ├── Debian-9.yml
+│   │       ├── RedHat-6.yml
+│   │       ├── RedHat-7.yml
+│   │       ├── Ubuntu-14.yml
+│   │       ├── Ubuntu-16.yml
+│   │       └── Ubuntu-18.yml
+│   ├── queuetier
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   ├── beanstalk.yml
+│   │   │   ├── main.yml
+│   │   │   ├── redis.yml
+│   │   │   └── supervisor.yml
+│   │   └── templates
+│   │       ├── supervisor-horizon.conf.j2
+│   │       └── supervisor.conf.j2
+│   └── webtier
+│       ├── handlers
+│       │   └── main.yml
+│       ├── tasks
+│       │   ├── composer.yml
+│       │   ├── cron.yml
+│       │   ├── dotenv.yml
+│       │   ├── firewalld.yml
+│       │   ├── jpegoptim.yml
+│       │   ├── letsencrypt.yml
+│       │   ├── main.yml
+│       │   ├── nginx.yml
+│       │   ├── nodejs.yml
+│       │   ├── ondrej.yml
+│       │   ├── php-fpm.yml
+│       │   ├── php.yml
+│       │   ├── redis.yml
+│       │   ├── remi.yml
+│       │   └── selinux.yml
+│       └── templates
+│           ├── htpasswd.j2
+│           ├── nginx-ssl-virtualhost.conf.j2
+│           ├── nginx-virtualhost.conf.j2
+│           ├── nginx.conf.j2
+│           ├── php-fpm.conf.j2
+│           └── php.ini.j2
+├── site.yml
+└── webservers.yml
+49 directories, 180 files
