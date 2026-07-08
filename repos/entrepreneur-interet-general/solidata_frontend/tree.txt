@@ -1,0 +1,350 @@
+.
+├── .babelrc
+├── .eslintrc.js
+├── .gitignore
+├── .vscode
+│   └── settings.json
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── GUIDELINES_DEV.md
+├── LICENCE
+├── README.md
+├── assets
+│   ├── README.md
+│   ├── images
+│   │   ├── Green_Rubber_Band_Ball.jpg
+│   │   └── stack
+│   │       ├── chartjs-logo.jpg
+│   │       ├── flask-logo.png
+│   │       ├── flask-restplus-logo.png
+│   │       ├── mongodb-logo.jpg
+│   │       ├── nuxt-logo.png
+│   │       ├── python-logo.png
+│   │       ├── vue-logo.png
+│   │       └── vuetify-logo.png
+│   ├── particlesjs-config.json
+│   └── style
+│       └── app.styl
+├── components
+│   ├── Datasets
+│   │   ├── dsi
+│   │   │   ├── DsiListvue
+│   │   │   └── DsiPreview.vue
+│   │   ├── prj
+│   │   │   ├── DsiListvue
+│   │   │   └── PrjPreview.vue
+│   │   ├── rec
+│   │   │   ├── DsiListvue
+│   │   │   └── RecPreview.vue
+│   │   ├── tag
+│   │   │   ├── DsiListvue
+│   │   │   └── TagPreview.vue
+│   │   └── usr
+│   │       ├── DsiListvue
+│   │       └── UsrPreview.vue
+│   ├── Footer
+│   │   └── Footer.vue
+│   ├── Forms
+│   │   ├── Fields
+│   │   │   ├── checkboxfield.vue
+│   │   │   ├── comboboxfield.vue
+│   │   │   ├── email.vue
+│   │   │   ├── filefield.vue
+│   │   │   ├── password.vue
+│   │   │   ├── selectfield.vue
+│   │   │   ├── textarea.vue
+│   │   │   └── textfield.vue
+│   │   ├── combobox_new_columns.vue
+│   │   ├── createItem.vue
+│   │   ├── login.vue
+│   │   ├── recipes_geoloc.vue
+│   │   └── register.vue
+│   ├── Navigation
+│   │   ├── MainDrawer.vue
+│   │   ├── SecondaryDrawer.vue
+│   │   └── Toolbar.vue
+│   ├── NuxtLogo.vue
+│   ├── README.md
+│   ├── UI
+│   │   ├── btnCreate.vue
+│   │   ├── cardCreate.vue
+│   │   ├── cardDmf.vue
+│   │   ├── cardPreview.vue
+│   │   ├── cardPreview_dense.vue
+│   │   ├── cardTitle.vue
+│   │   ├── itemDocDataRaw.vue
+│   │   ├── itemDocInfos.vue
+│   │   ├── itemDocUses.vue
+│   │   ├── itemToolbar.vue
+│   │   ├── itemsList.vue
+│   │   ├── itemsList_dataIterator.vue
+│   │   ├── parentFields
+│   │   │   ├── cardInfos.vue
+│   │   │   ├── valueEdit.vue
+│   │   │   └── valueEditDialog.vue
+│   │   ├── sectionTitle.vue
+│   │   ├── settingsToolbar.vue
+│   │   ├── viewEditDMF.vue
+│   │   ├── viewEditDMF_openlevel.vue
+│   │   ├── viewEditDMT.vue
+│   │   ├── viewEditDSI.vue
+│   │   ├── viewEditDSI_mapHeaders.vue
+│   │   ├── viewEditDSI_table.vue
+│   │   ├── viewEditDoc.vue
+│   │   ├── viewEditListDMF.vue
+│   │   ├── viewEditPRJ.vue
+│   │   └── viewEditTAG.vue
+│   ├── VuetifyLogo.vue
+│   └── _canvas_component.vue
+├── config.js
+├── layouts
+│   ├── README.md
+│   └── default.vue
+├── locales
+│   ├── en.json
+│   ├── esp.json
+│   └── fr.json
+├── middleware
+│   ├── README.md
+│   ├── authenticated.js
+│   ├── checkTokens.js
+│   ├── getItem.js
+│   ├── getListItems.js
+│   ├── i18n.js
+│   └── notAuthenticated.js
+├── nuxt.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── README.md
+│   ├── _lang
+│   │   ├── about
+│   │   │   └── index.vue
+│   │   ├── dashboard.vue
+│   │   ├── dmf
+│   │   │   ├── _id
+│   │   │   │   └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   ├── dmt
+│   │   │   ├── _id
+│   │   │   │   └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   ├── dsi
+│   │   │   ├── _id
+│   │   │   │   └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   ├── forgotpwd.vue
+│   │   ├── index.vue
+│   │   ├── index_gradient.vue
+│   │   ├── inspire.vue
+│   │   ├── login.vue
+│   │   ├── logout.vue
+│   │   ├── prj
+│   │   │   ├── _id
+│   │   │   │   ├── index.vue
+│   │   │   │   └── map
+│   │   │   │       └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   ├── rec
+│   │   │   ├── _id
+│   │   │   │   └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   ├── register.vue
+│   │   ├── tag
+│   │   │   ├── _id
+│   │   │   │   └── index.vue
+│   │   │   ├── create.vue
+│   │   │   └── index.vue
+│   │   └── usr
+│   │       ├── _id
+│   │       │   └── index.vue
+│   │       └── index.vue
+│   ├── about
+│   │   └── index.vue
+│   ├── admin
+│   │   └── index.vue
+│   ├── dashboard.vue
+│   ├── dmf
+│   │   ├── _id
+│   │   │   └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   ├── dmt
+│   │   ├── _id
+│   │   │   └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   ├── dsi
+│   │   ├── _id
+│   │   │   └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   ├── forgotpwd.vue
+│   ├── index.vue
+│   ├── inspire.vue
+│   ├── login.vue
+│   ├── logout.vue
+│   ├── prj
+│   │   ├── _id
+│   │   │   ├── index.vue
+│   │   │   └── map
+│   │   │       └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   ├── rec
+│   │   ├── _id
+│   │   │   └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   ├── register.vue
+│   ├── tag
+│   │   ├── _id
+│   │   │   └── index.vue
+│   │   ├── create.vue
+│   │   └── index.vue
+│   └── usr
+│       └── _id
+│           └── index.vue
+├── plugins
+│   ├── README.md
+│   ├── auth.js
+│   ├── axios.js
+│   ├── core-components.js
+│   ├── crypto.js
+│   ├── encrypt.js
+│   ├── i18n.js
+│   ├── spinners.js
+│   ├── text_filters.js
+│   ├── uploadBtn.js
+│   ├── utils
+│   │   ├── auth
+│   │   │   ├── index.js
+│   │   │   └── init.js
+│   │   ├── checkDocUserAuth.js
+│   │   ├── checkValueType.js
+│   │   ├── encryptPWD.js
+│   │   ├── generateJWT.js
+│   │   ├── objectCleaner.js
+│   │   ├── objectFormatterCreate.js
+│   │   ├── objectFormatterUpdate.js
+│   │   ├── sortArrayOfObjects.js
+│   │   └── syncScrolls.js
+│   ├── vue-leaflet.js
+│   ├── vue-scroll-sync.js
+│   ├── vue-scroll.js
+│   ├── vueParticles.js
+│   └── vuetify.js
+├── prod_snippets
+│   ├── README.md
+│   ├── solidata_back_supervisor.md
+│   ├── solidata_front_npm.md
+│   ├── solidata_front_pm2.md
+│   ├── solidata_prod_git.md
+│   ├── solidata_prod_mongo.md
+│   ├── solidata_prod_nginx.md
+│   └── solidata_prod_ubuntu.md
+├── screenshots
+│   ├── Models-collections-copy-copy.pdf
+│   ├── create_dsi_en.png
+│   ├── create_prj_en.png
+│   ├── dashboard_en.png
+│   ├── documentation
+│   │   ├── AUTH_PROCESS_fixed.jpeg
+│   │   ├── AUTH_PROCESS_fixed.pdf
+│   │   ├── Solidata-Models-collections.jpeg
+│   │   ├── Solidata-Models-collections.pdf
+│   │   ├── Solidata_models_datamodels_map.pdf
+│   │   ├── Solidata_models_datamodels_map.png
+│   │   ├── Tadata_uses_features_BENCHMARK_ETL.pdf
+│   │   └── Tadata_uses_features_BENCHMARK_ETL.png
+│   ├── edit_dmf_en.png
+│   ├── edit_dmf_settings_en.png
+│   ├── edit_dmt_en.png
+│   ├── edit_dmt_settings_en.png
+│   ├── edit_dsi_en.png
+│   ├── edit_prj_en.png
+│   ├── edit_prj_map_dsi_en.png
+│   ├── home_en.png
+│   ├── home_en_menu.png
+│   ├── list_dmf_en.png
+│   ├── list_dmt_en.png
+│   └── login_en.png
+├── static
+│   ├── README.md
+│   ├── favicon.ico
+│   ├── favicons
+│   │   ├── favicon.ico
+│   │   └── favicons
+│   │       ├── android-chrome-192x192.png
+│   │       ├── apple-touch-icon.png
+│   │       ├── browserconfig.xml
+│   │       ├── favicon-16x16.png
+│   │       ├── favicon-32x32.png
+│   │       ├── favicon.ico
+│   │       ├── mstile-150x150.png
+│   │       ├── safari-pinned-tab.svg
+│   │       └── site.webmanifest
+│   ├── logos
+│   │   ├── logo_codemos_01.png
+│   │   ├── logo_codemos_01b.png
+│   │   ├── logo_codemos_01c.png
+│   │   ├── logo_codemos_02.png
+│   │   ├── logo_codemos_02b.png
+│   │   ├── logo_solidata.png
+│   │   ├── logo_solidata.svg
+│   │   ├── logo_solidata_10a.png
+│   │   ├── logo_solidata_10a_lg.png
+│   │   ├── logo_solidata_11a_lg.png
+│   │   ├── logo_solidata_11b.png
+│   │   ├── logo_solidata_11c.png
+│   │   ├── logo_solidata_11c_lg.png
+│   │   ├── logo_solidata_11d.png
+│   │   ├── logo_solidata_11e.png
+│   │   ├── logo_solidata_12a_lg.png
+│   │   ├── logo_solidata_13a.png
+│   │   ├── logo_solidata_13a_lg.png
+│   │   ├── logo_solidata_13b.png
+│   │   ├── logo_solidata_13c.png
+│   │   ├── logo_solidata_13d.png
+│   │   ├── logo_solidata_13d_lg.png
+│   │   ├── logo_solidata_14a.png
+│   │   ├── logo_solidata_14a_lg.png
+│   │   ├── logo_solidata_15a.png
+│   │   ├── logo_solidata_15a_lg.png
+│   │   ├── logo_solidata_2.png
+│   │   ├── logo_solidata_3.png
+│   │   ├── logo_solidata_4.png
+│   │   ├── logo_solidata_5.png
+│   │   ├── logo_solidata_6a.png
+│   │   ├── logo_solidata_6b.png
+│   │   ├── logo_solidata_6c.png
+│   │   ├── logo_solidata_6d.png
+│   │   ├── logo_solidata_6e.png
+│   │   ├── logo_solidata_7a.png
+│   │   ├── logo_solidata_7b.png
+│   │   ├── logo_solidata_7c.png
+│   │   ├── logo_solidata_8a.png
+│   │   ├── logo_solidata_8a_lg.png
+│   │   ├── logo_solidata_8a_white.png
+│   │   ├── logo_solidata_9a.png
+│   │   └── logo_solidata_9a_lg.png
+│   └── v.png
+└── store
+    ├── README.md
+    ├── auth.js
+    ├── dmf.js
+    ├── dmt.js
+    ├── dsi.js
+    ├── dso.js
+    ├── dsr.js
+    ├── index.js
+    ├── prj.js
+    ├── rec.js
+    ├── tag.js
+    └── usr.js
+68 directories, 281 files
