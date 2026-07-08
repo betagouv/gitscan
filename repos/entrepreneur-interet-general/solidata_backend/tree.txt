@@ -1,0 +1,194 @@
+.
+├── .flaskenv
+├── .gitignore
+├── .vscode
+│   └── settings.json
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── GUIDELINES_DEV.md
+├── LICENCE
+├── README.md
+├── _notebooks
+│   ├── TEST_get data from API.ipynb
+│   ├── TEST_read csv pipe-separated.ipynb
+│   ├── concat reindex dsi.ipynb
+│   ├── merge list of dicts.ipynb
+│   ├── pivot table.ipynb
+│   ├── test multiprocessing.ipynb
+│   ├── test_df_types_conversions.ipynb
+│   ├── tests_geopy_03.ipynb
+│   ├── tests_jupyter
+│   │   ├── 2016_codes_postaux_population.csv
+│   │   ├── 2016_codes_postaux_prep.csv
+│   │   ├── 2016_pays_INSEE_norm.csv
+│   │   ├── 2017_communes_fr_com_code.csv
+│   │   └── export_openscraper_5aa3de630a828651b2ebfe3e.csv
+│   └── tests_pandas_read_csv.ipynb
+├── admin
+│   └── __init__.py
+├── appserver.py
+├── log_config.py
+├── logs
+│   └── help.md
+├── manage.py
+├── prod_snippets
+│   ├── README.md
+│   ├── solidata_back_supervisor.md
+│   ├── solidata_prod_git.md
+│   ├── solidata_prod_mongo.md
+│   ├── solidata_prod_nginx.md
+│   └── solidata_prod_ubuntu.md
+├── requirements.txt
+├── screenshots
+│   ├── endpoints_auth_server.png
+│   ├── endpoints_dataset_inputs.png
+│   ├── endpoints_projects.png
+│   └── endpoints_users.png
+├── solidata_api
+│   ├── __init__.py
+│   ├── _auth
+│   │   ├── __init__.py
+│   │   ├── auth_confirmation_email.py
+│   │   ├── auth_decorators.py
+│   │   └── authorizations.py
+│   ├── _choices
+│   │   ├── __init__.py
+│   │   ├── _choices_docs.py
+│   │   ├── _choices_f_types.py
+│   │   ├── _choices_files.py
+│   │   ├── _choices_licences.py
+│   │   ├── _choices_mapping.py
+│   │   ├── _choices_open_level.py
+│   │   ├── _choices_updates.py
+│   │   └── _choices_user.py
+│   ├── _core
+│   │   ├── __init__.py
+│   │   ├── async_tasks
+│   │   │   └── __init__.py
+│   │   ├── cors
+│   │   │   └── __init__.py
+│   │   ├── emailing
+│   │   │   └── __init__.py
+│   │   ├── ext_services
+│   │   │   └── __init__.py
+│   │   ├── pandas_ops
+│   │   │   ├── __init__.py
+│   │   │   ├── pd_concat_prj.py
+│   │   │   ├── pd_read_dict.py
+│   │   │   ├── pd_read_files.py
+│   │   │   └── pd_utils.py
+│   │   ├── queries_db
+│   │   │   ├── __init__.py
+│   │   │   ├── query_build_dso.py
+│   │   │   ├── query_delete.py
+│   │   │   ├── query_doc.py
+│   │   │   ├── query_insert_doc.py
+│   │   │   ├── query_list.py
+│   │   │   ├── query_solidify.py
+│   │   │   ├── query_update.py
+│   │   │   └── query_utils.py
+│   │   ├── solidify
+│   │   │   ├── __init__.py
+│   │   │   ├── geoloc
+│   │   │   │   └── __init__.py
+│   │   │   └── siret
+│   │   │       └── __init__.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       ├── app_auth_files.py
+│   │       ├── app_logs.py
+│   │       ├── app_payload.py
+│   │       └── app_python_ops.py
+│   ├── _models
+│   │   ├── __init__.py
+│   │   ├── models_datamodel_field.py
+│   │   ├── models_datamodel_template.py
+│   │   ├── models_dataset_input.py
+│   │   ├── models_dataset_output.py
+│   │   ├── models_dataset_raw.py
+│   │   ├── models_generic.py
+│   │   ├── models_project.py
+│   │   ├── models_recipe.py
+│   │   ├── models_solidify.py
+│   │   ├── models_tag.py
+│   │   ├── models_updates.py
+│   │   └── models_user.py
+│   ├── _parsers
+│   │   ├── __init__.py
+│   │   ├── parser_classes.py
+│   │   ├── parser_files.py
+│   │   ├── parser_pagination.py
+│   │   └── parser_queries.py
+│   ├── _serializers
+│   │   ├── __init__.py
+│   │   ├── schema_generic.py
+│   │   ├── schema_logs.py
+│   │   ├── schema_pagination.py
+│   │   └── schema_users.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── api_auth
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_user_login.py
+│   │   │   ├── endpoint_user_password.py
+│   │   │   └── endpoint_user_tokens.py
+│   │   ├── api_datamodel_fields
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_dmf.py
+│   │   │   ├── endpoint_dmf_create.py
+│   │   │   └── endpoint_dmf_edit.py
+│   │   ├── api_datamodel_templates
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_dmt.py
+│   │   │   ├── endpoint_dmt_create.py
+│   │   │   └── endpoint_dmt_edit.py
+│   │   ├── api_dataset_inputs
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_dsi.py
+│   │   │   ├── endpoint_dsi_create.py
+│   │   │   ├── endpoint_dsi_edit.py
+│   │   │   └── endpoint_dsi_reload.py
+│   │   ├── api_dataset_outputs
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_dso.py
+│   │   │   └── endpoint_dso_edit.py
+│   │   ├── api_projects
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_prj.py
+│   │   │   ├── endpoint_prj_create.py
+│   │   │   ├── endpoint_prj_edit.py
+│   │   │   ├── endpoint_prj_mapping.py
+│   │   │   └── endpoint_prj_solidify.py
+│   │   ├── api_recipes
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_rec.py
+│   │   │   ├── endpoint_rec_create.py
+│   │   │   └── endpoint_rec_edit.py
+│   │   ├── api_tags
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoint_tag.py
+│   │   │   ├── endpoint_tag_create.py
+│   │   │   └── endpoint_tag_edit.py
+│   │   └── api_users
+│   │       ├── __init__.py
+│   │       ├── endpoint_usr.py
+│   │       ├── endpoint_usr_edit.py
+│   │       └── endpoint_usr_register.py
+│   ├── application.py
+│   ├── config.py
+│   ├── config_default_docs.py
+│   └── config_prod_example.py
+├── templates
+│   └── emails
+│       ├── confirm_email.html
+│       ├── email.html
+│       └── reset_your_password.html
+├── uploads
+│   └── data_sources
+│       ├── 2016_codes_postaux_population.csv
+│       ├── 2016_codes_postaux_prep.csv
+│       ├── 2016_pays_INSEE_norm.csv
+│       └── 2017_communes_fr_com_code.csv
+├── wsgi.py
+└── wsgi_preprod.py
+39 directories, 154 files
