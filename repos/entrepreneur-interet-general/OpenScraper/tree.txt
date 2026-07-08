@@ -1,0 +1,190 @@
+.
+├── .gitignore
+├── LICENSE
+├── README.md
+├── acor
+├── nginx
+│   ├── default.conf
+│   ├── example_digitalocean_nginx_proxy.conf
+│   ├── example_eig_nginx_proxy.conf
+│   ├── example_minimal_tornado_proxy.conf
+│   └── working_basic_tornado_nginx_config.conf
+├── openscraper
+│   ├── __init__.py
+│   ├── _backups_collections
+│   │   └── __init__.py
+│   ├── admin.py
+│   ├── api_handler.py
+│   ├── base_handler.py
+│   ├── base_utils.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── app_infos.py
+│   │   ├── core_classes.py
+│   │   ├── settings_cleaning.py
+│   │   ├── settings_corefields.py
+│   │   ├── settings_errors.py
+│   │   ├── settings_example.py
+│   │   ├── settings_logging.py
+│   │   ├── settings_queries.py
+│   │   ├── settings_scrapy.py
+│   │   └── settings_threading.py
+│   ├── controller.py
+│   ├── forms.py
+│   ├── handler_threading.py
+│   ├── logs
+│   │   └── __init__.py
+│   ├── main.py
+│   ├── scraper
+│   │   ├── __init__.py
+│   │   ├── cis_spiders
+│   │   │   ├── __init__.py
+│   │   │   ├── cis_spiders
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── items.py
+│   │   │   │   ├── middlewares.py
+│   │   │   │   ├── pipelines.py
+│   │   │   │   ├── settings.py
+│   │   │   │   └── spiders
+│   │   │   │       └── __init__.py
+│   │   │   └── scrapy.cfg
+│   │   ├── default_test_spider.py
+│   │   ├── downloaders.py
+│   │   ├── items.py
+│   │   ├── masterspider.py
+│   │   ├── mixins.py
+│   │   ├── pipelines.py
+│   │   └── settings_scrapy.py
+│   ├── spider_handler.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── bulma-ext
+│   │   │   │   ├── bulma-accordion.js
+│   │   │   │   ├── bulma-accordion.min.css
+│   │   │   │   ├── bulma-accordion.min.js
+│   │   │   │   ├── bulma-accordion.sass
+│   │   │   │   ├── bulma-badge.min.css
+│   │   │   │   ├── bulma-badge.sass
+│   │   │   │   ├── bulma-carousel.js
+│   │   │   │   ├── bulma-carousel.min.css
+│   │   │   │   ├── bulma-carousel.min.js
+│   │   │   │   ├── bulma-carousel.sass
+│   │   │   │   ├── bulma-checkradio.min.css
+│   │   │   │   ├── bulma-divider.min.css
+│   │   │   │   ├── bulma-pricingtable.min.css
+│   │   │   │   ├── bulma-pricingtable.sass
+│   │   │   │   ├── bulma-slider.js
+│   │   │   │   ├── bulma-slider.min.css
+│   │   │   │   ├── bulma-slider.min.js
+│   │   │   │   ├── bulma-slider.sass
+│   │   │   │   ├── bulma-steps.js
+│   │   │   │   ├── bulma-steps.min.css
+│   │   │   │   ├── bulma-steps.min.js
+│   │   │   │   ├── bulma-steps.sass
+│   │   │   │   ├── bulma-switch.min.css
+│   │   │   │   ├── bulma-switch.sass
+│   │   │   │   ├── bulma-tagsinput.js
+│   │   │   │   ├── bulma-tagsinput.min.css
+│   │   │   │   ├── bulma-tagsinput.min.js
+│   │   │   │   ├── bulma-tagsinput.sass
+│   │   │   │   ├── bulma-timeline.min.css
+│   │   │   │   ├── bulma-timeline.sass
+│   │   │   │   └── bulma-tooltip.min.css
+│   │   │   ├── custom.css
+│   │   │   ├── recommended.css
+│   │   │   └── style.css
+│   │   ├── images
+│   │   │   ├── brush.png
+│   │   │   ├── brush_B.png
+│   │   │   ├── collective_intelligence.gif
+│   │   │   ├── contribute
+│   │   │   │   ├── boards.png
+│   │   │   │   ├── issues.png
+│   │   │   │   └── repo.png
+│   │   │   ├── ex.png
+│   │   │   ├── head_first_python.gif
+│   │   │   ├── logo_openscraper.png
+│   │   │   ├── restful_web_services.gif
+│   │   │   ├── stack
+│   │   │   │   ├── bulma-banner.png
+│   │   │   │   ├── bulma-logo.png
+│   │   │   │   ├── chartjs-logo.jpg
+│   │   │   │   ├── mongodb-logo.jpg
+│   │   │   │   ├── python-logo.png
+│   │   │   │   ├── scrapy-logo.png
+│   │   │   │   ├── selenium-logo.png
+│   │   │   │   └── tornado-logo.png
+│   │   │   └── tutos
+│   │   │       ├── api_api_00.png
+│   │   │       ├── api_csv_00.png
+│   │   │       ├── datamodel_00.png
+│   │   │       ├── datamodel_00a.png
+│   │   │       ├── datamodel_00b.png
+│   │   │       ├── datamodel_00c.png
+│   │   │       ├── datamodel_00d.png
+│   │   │       ├── datamodel_01.png
+│   │   │       ├── datamodel_02.png
+│   │   │       ├── datamodel_03.png
+│   │   │       ├── intro_00.png
+│   │   │       ├── intro_01.png
+│   │   │       ├── request_00.png
+│   │   │       ├── request_01.png
+│   │   │       ├── scraper_00.png
+│   │   │       ├── scraper_01.png
+│   │   │       ├── spider_add_advanced_settings_00.png
+│   │   │       ├── spider_add_custom_fields_00.png
+│   │   │       ├── spider_add_custom_fields_01.png
+│   │   │       ├── spider_add_global_fields_00.png
+│   │   │       ├── spider_add_global_fields_01.png
+│   │   │       └── spider_add_notes_00.png
+│   │   └── js
+│   │       ├── modal_error.js
+│   │       ├── recommended.js
+│   │       └── script.js
+│   ├── templates
+│   │   ├── 404.html
+│   │   ├── api_doc.html
+│   │   ├── contribute.html
+│   │   ├── contributor_delete.html
+│   │   ├── contributor_edit.html
+│   │   ├── contributor_edit_accordion.html
+│   │   ├── contributor_reset_data.html
+│   │   ├── contributors_view.html
+│   │   ├── credits.html
+│   │   ├── data_view.html
+│   │   ├── datamodel_edit.html
+│   │   ├── datamodel_new_field.html
+│   │   ├── datamodel_view.html
+│   │   ├── dataviz.html
+│   │   ├── footer.html
+│   │   ├── form_instance.html
+│   │   ├── index.html
+│   │   ├── login_register.html
+│   │   ├── main.html
+│   │   ├── modules
+│   │   │   ├── mod_contributor.html
+│   │   │   ├── mod_error_modal.html
+│   │   │   ├── mod_info_modal.html
+│   │   │   ├── mod_pagination.html
+│   │   │   └── mod_tabs.html
+│   │   ├── navbar.html
+│   │   ├── stack.html
+│   │   ├── test_bulma_extensions.html
+│   │   ├── tuto.html
+│   │   └── why.html
+│   └── urls.py
+├── requirements.txt
+├── screenshots
+│   ├── 2018_10_10 - PITCH OPENSCRAPER - DEMO CDC.pdf
+│   ├── openscraper_v0.1_beta-add_datamodel.png
+│   ├── openscraper_v0.1_beta-api_query_01.png
+│   ├── openscraper_v0.1_beta-edit_datamodel.png
+│   ├── openscraper_v0.1_beta-edit_scrapers.png
+│   ├── openscraper_v0.1_beta-index.png
+│   ├── openscraper_v0.1_beta-list_data.png
+│   ├── openscraper_v0.1_beta-list_datamodel.png
+│   ├── openscraper_v0.1_beta-list_scrapers.png
+│   └── openscraper_v0.1_beta-list_scrapers_user.png
+└── supervisor
+    └── working_basic_tornado_supervisor_config.conf
+22 directories, 167 files
