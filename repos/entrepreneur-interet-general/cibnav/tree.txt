@@ -1,0 +1,174 @@
+.
+├── .env.example
+├── .flake8
+├── .github
+│   └── workflows
+│       ├── linting.yml
+│       └── vuepress-deploy.yml
+├── .gitignore
+├── .ipynb_checkpoints
+│   ├── choosing_model-checkpoint.ipynb
+│   ├── cibnav-visites-mlp-checkpoint.ipynb
+│   └── dataset_visits-checkpoint.ipynb
+├── LICENSE.md
+├── Makefile
+├── README.md
+├── dist
+│   ├── cibnav-0.1.0-py3-none-any.whl
+│   └── cibnav-0.1.0.tar.gz
+├── docker-compose.yml
+├── docs
+│   ├── .vuepress
+│   │   ├── config.js
+│   │   └── public
+│   │       ├── Arbre_de_décision.png
+│   │       ├── annee_construction.jpg
+│   │       ├── archi_prod.png
+│   │       ├── archi_rd.png
+│   │       ├── capture-cibnav.png
+│   │       ├── distribution_resultat_controles.png
+│   │       ├── favicon.ico
+│   │       ├── features_importances_top10.png
+│   │       ├── genre_navigation.jpg
+│   │       ├── genre_navigation.png
+│   │       ├── logo-cib-nav.png
+│   │       ├── longueur_hors_tout.jpg
+│   │       ├── nav_sitreps.png
+│   │       ├── nombre_prescriptions.jpg
+│   │       ├── nombre_prescriptions_majeurs.jpg
+│   │       ├── origine.jpg
+│   │       ├── puissance_propulsive.jpg
+│   │       ├── repartition_sitreps.png
+│   │       ├── sitreps.png
+│   │       ├── turn_over.jpg
+│   │       ├── turn_over.png
+│   │       ├── type_carburant.jpg
+│   │       ├── type_moteur.jpg
+│   │       └── type_navire.jpg
+│   ├── README.md
+│   ├── accidentologie.md
+│   ├── algorithme2.md
+│   ├── ameliorations.md
+│   ├── analyse_securite.md
+│   ├── annexes.md
+│   ├── cadrage.md
+│   ├── controles_gens_de_mer.md
+│   ├── controles_securite.md
+│   ├── donnees2.md
+│   ├── evolution_cibnav_v2.md
+│   ├── faq.md
+│   ├── fonctionnement_analyse.md
+│   ├── general2.md
+│   ├── installation.md
+│   ├── modeles_donnees.md
+│   ├── moteur_regles.md
+│   ├── package-lock.json
+│   ├── parametres_en_cours_analyse.md
+│   ├── parametres_non_retenus.md
+│   ├── usage-cibnav.md
+│   └── vide.md
+├── embulk
+│   ├── __init__.py
+│   ├── datasources
+│   │   ├── _in_oracle.yml.liquid
+│   │   └── _out_postgresql.yml.liquid
+│   └── oracle_to_postgres.yml.liquid
+├── fact_sheet.html
+├── notebooks
+│   ├── 1_transformation_frequence.qmd
+│   ├── 2_analyse_exploratoire_PC.html
+│   ├── 2_analyse_exploratoire_PC.qmd
+│   ├── 2_analyse_exploratoire_PC_files
+│   │   └── figure-html
+│   │       ├── auto_EDA-1.png
+│   │       ├── auto_EDA-2.png
+│   │       ├── auto_EDA_2-1.png
+│   │       ├── auto_EDA_2_bis-1.png
+│   │       ├── auto_EDA_3-1.png
+│   │       ├── auto_EDA_4-1.png
+│   │       ├── auto_EDA_4-2.png
+│   │       ├── auto_EDA_4_bis-1.png
+│   │       ├── auto_EDA_4_bis-2.png
+│   │       ├── auto_EDA_5-1.png
+│   │       ├── auto_EDA_5_bis-1.png
+│   │       ├── correl_annee_prescriptions_maj-1.png
+│   │       ├── correl_prescriptions_min_maj-1.png
+│   │       ├── explo_prescr_by_age-1.png
+│   │       ├── explo_prescr_by_category-1.png
+│   │       ├── explo_prescr_by_genre-1.png
+│   │       ├── explo_prescr_by_length-1.png
+│   │       ├── explo_prescr_by_moteur-1.png
+│   │       ├── plot_age-1.png
+│   │       ├── plot_age-2.png
+│   │       ├── plot_age_2-1.png
+│   │       ├── plot_age_bis-1.png
+│   │       ├── plot_cat_age_prescr-1.png
+│   │       ├── plot_longueur_motorisation-1.png
+│   │       ├── plot_longueur_puissance-1.png
+│   │       ├── plot_longueur_puissance-2.png
+│   │       ├── plot_longueur_puissance_coque-1.png
+│   │       ├── plot_longueur_puissance_coque_2-1.png
+│   │       ├── plot_longueur_puissance_genre-1.png
+│   │       ├── plot_longueur_puissance_jauge-1.png
+│   │       └── plot_longueur_puissance_motorisation-1.png
+│   ├── 3_exploration_glm.html
+│   ├── 3_exploration_glm.qmd
+│   ├── 3_exploration_glm_files
+│   │   └── figure-html
+│   │       ├── diag_1prescr_ou_plus_2-1.png
+│   │       ├── diag_age-1.png
+│   │       ├── diag_annees-1.png
+│   │       ├── diag_categ-1.png
+│   │       ├── diag_materiau_coque-1.png
+│   │       ├── diag_mean-1.png
+│   │       ├── diag_zeros_2-1.png
+│   │       ├── diagnostics-1.png
+│   │       ├── model_coefs-1.png
+│   │       ├── model_coefs_1-1.png
+│   │       ├── model_coefs_4-1.png
+│   │       └── model_coefs_5-1.png
+│   ├── Makefile
+│   └── static
+│       ├── favicon.ico
+│       ├── header_include.html
+│       ├── logo.svg
+│       └── style.scss
+├── package.json
+├── poetry.lock
+├── pyproject.toml
+├── requirements.txt
+├── scripts
+│   ├── drop_data_db.sh
+│   ├── setup_db.sh
+│   └── setup_postgres_data.sh
+├── sql
+│   ├── categorie_navigation.sql
+│   ├── categorie_navigation_complet.sql
+│   ├── navire.sql
+│   ├── plaisance.sql
+│   └── visite_securite.sql
+├── src
+│   ├── __init__.py
+│   ├── airflow.cfg
+│   ├── coefficient.csv
+│   ├── dags
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── categ_navigation_oracle_postgre.py
+│   │   ├── categ_navigation_oracle_postgre_complet.py
+│   │   ├── helpers.py
+│   │   ├── historicize_score.py
+│   │   ├── navire_oracle_postgre.py
+│   │   ├── plaisance_oracle_postgre.py
+│   │   ├── sitrep.ipynb
+│   │   ├── sitrep_web_postgre.py
+│   │   └── visite_oracle_postgre.py
+│   ├── flotteurs.csv
+│   ├── modeles
+│   │   ├── cibnav_ml_v2.pkle
+│   │   └── cibnav_ml_v2_majeur.pkle
+│   ├── operations.csv
+│   ├── secmar_filtres.csv
+│   └── unittests.cfg
+└── wip.txt
+21 directories, 152 files

@@ -1,0 +1,83 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data:rw
+      - ./dump:/home/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_PASSWORD
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - PGUSER=postgres
+    ports:
+      - 6542:5432
+  metabase:
+    image: metabase/metabase:v0.45.0
+    depends_on:
+      mb-postgres-setup:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+    ports:
+      - 3000:3000
+    environment:
+      # Metabase application database configuration
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_USER=metabase
+      - MB_DB_PASS=${MB_POSTGRES_PASSWORD}
+      - MB_DB_HOST=mb-postgres
+  mb-postgres:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./docker/mb-postgres/data:/var/lib/postgresql/data:rw
+      - ./dump:/home/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_PASSWORD=${MB_POSTGRES_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - PGUSER=postgres
+    ports:
+      - 6543:5432
+
+  mb-postgres-setup:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data:rw
+      - .:/home
+    depends_on:
+      mb-postgres:
+        condition: service_healthy
+    restart: "no"
+    entrypoint:
+      [
+        "bash",
+        "-c",
+        "cd /home && source /home/scripts/setup_db.sh && create_or_import_database mb-postgres 5432 metabase metabase ${MB_POSTGRES_PASSWORD}"
+      ]
+
+  postgres-data-setup:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data:rw
+      - .:/home/
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    entrypoint:
+      [
+        "bash",
+        "-c",
+        "cd /home && source /home/scripts/setup_db.sh && create_or_import_database postgres 5432 cibnav cibnav ${POSTGRES_PASSWORD}"
+      ]
